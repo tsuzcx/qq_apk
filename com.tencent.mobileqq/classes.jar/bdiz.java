@@ -1,102 +1,168 @@
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.os.SystemClock;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.utils.PerformanceReportUtils.1;
+import com.tencent.mobileqq.utils.PerformanceReportUtils.3;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class bdiz
 {
-  private static int c;
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener;
-  private bdjb jdField_a_of_type_Bdjb;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b;
+  private static long jdField_a_of_type_Long = 14400000L;
+  private static String jdField_a_of_type_JavaLangString = "uiswitchinterval";
+  static String[] jdField_a_of_type_ArrayOfJavaLangString = { jdField_e_of_type_JavaLangString, jdField_f_of_type_JavaLangString, jdField_g_of_type_JavaLangString, jdField_h_of_type_JavaLangString, i, j, k };
+  private static long jdField_b_of_type_Long;
+  private static String jdField_b_of_type_JavaLangString = "uiswitchflag";
+  private static long jdField_c_of_type_Long;
+  private static String jdField_c_of_type_JavaLangString = "fpsinterval";
+  private static long jdField_d_of_type_Long;
+  private static String jdField_d_of_type_JavaLangString = "fpsflag";
+  private static long jdField_e_of_type_Long;
+  private static String jdField_e_of_type_JavaLangString = "actUISwitchC2C";
+  private static long jdField_f_of_type_Long;
+  private static String jdField_f_of_type_JavaLangString = "actUISwitchGroup";
+  private static long jdField_g_of_type_Long;
+  private static String jdField_g_of_type_JavaLangString = "actUISwitchDiscuss";
+  private static long jdField_h_of_type_Long;
+  private static String jdField_h_of_type_JavaLangString = "actUISwitchQzone";
+  private static String i = "actUISwitchUserAlbum";
+  private static String j = "actUISwitchQunAlbum";
+  private static String k = "actUISwitchUserHome";
+  private static String l = "actUISwitchPushBannerMyfeed";
+  private static String m = "actUISwitchNotificationMyfeed";
+  private static String n = "actUISwitchMyfeed";
+  private static String o = "actUISwitchAioPreload";
+  private static String p = "";
   
-  public bdiz(View paramView, int paramInt, bdjb parambdjb)
+  public static String a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Bdjb = parambdjb;
-    b();
+    long l2 = 0L;
+    if (fx.c) {
+      l2 = 0L | 0x200;
+    }
+    long l1 = l2;
+    if (BubbleManager.a) {
+      l1 = l2 | 0x100;
+    }
+    l2 = l1;
+    if (AvatarPendantManager.b) {
+      l2 = l1 | 0x400;
+    }
+    return String.valueOf(l2);
   }
   
-  public static int a(int paramInt)
+  public static void a()
   {
-    int i;
-    if (paramInt == 0) {
-      i = aekt.a(210.0F, BaseApplicationImpl.getContext().getResources());
+    fx.c = false;
+    AvatarPendantManager.b = false;
+    BubbleManager.a = false;
+    anwm.a().d();
+    ThreadManager.executeOnSubThread(new PerformanceReportUtils.3());
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt, long paramLong)
+  {
+    ThreadManager.post(new PerformanceReportUtils.1(paramInt, paramLong, paramString), 8, null, false);
+  }
+  
+  public static void a(Intent paramIntent, int paramInt, String paramString)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = paramIntent.getLongExtra("key_time_record", -1L);
+    if (l2 != -1L)
+    {
+      paramIntent.removeExtra("key_time_record");
+      a(BaseApplicationImpl.getContext(), paramString, paramInt, l1 - l2);
+    }
+  }
+  
+  public static void a(String paramString1, int paramInt, String paramString2)
+  {
+    new bdja(paramString1, paramInt, paramString2).execute(new Void[0]);
+  }
+  
+  public static void a(String paramString, long paramLong)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PerformanceReportUtils", 4, "reportFPS saveCompleteTime ：tag:" + paramString + ",time:" + paramLong);
+    }
+    if ("actFPSAIO".equals(paramString)) {
+      jdField_b_of_type_Long = paramLong;
     }
     do
     {
-      return i;
-      if (c == 0) {
-        c = b();
+      return;
+      if ("actFPSRecent".equals(paramString))
+      {
+        jdField_c_of_type_Long = paramLong;
+        return;
       }
-      i = paramInt;
-    } while (paramInt <= c);
-    return c;
-  }
-  
-  private static int b()
-  {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    if (bhzc.a(localBaseApplication)) {
-      i = bhzc.a(localBaseApplication);
-    }
-    for (int i = (int)((localBaseApplication.getResources().getDisplayMetrics().heightPixels + i) * 0.4D);; i = (int)(localBaseApplication.getResources().getDisplayMetrics().heightPixels * 0.4D))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoftKeyboardHeight", 2, new Object[] { "getMaxEmotionPanelHeight, max keyboard height:", Integer.valueOf(i) });
+      if ("actFPSFriend".equals(paramString))
+      {
+        jdField_d_of_type_Long = paramLong;
+        return;
       }
-      return i;
+      if ("actFPSQZoneFriendFeed".equals(paramString))
+      {
+        jdField_e_of_type_Long = paramLong;
+        return;
+      }
+      if ("actFPSQZoneMyFeed".equals(paramString))
+      {
+        jdField_f_of_type_Long = paramLong;
+        return;
+      }
+      if ("actFPSQZoneUserHome".equals(paramString))
+      {
+        jdField_g_of_type_Long = paramLong;
+        return;
+      }
+    } while (!"actFPSQZoneMoodList".equals(paramString));
+    jdField_h_of_type_Long = paramLong;
+  }
+  
+  private static SharedPreferences b()
+  {
+    BaseApplication localBaseApplication = BaseApplication.getContext();
+    if (Build.VERSION.SDK_INT > 10) {}
+    for (int i1 = 4;; i1 = 0) {
+      return localBaseApplication.getSharedPreferences("PerformanceReportUtils", i1);
     }
   }
   
-  private void b()
+  private static boolean b(String paramString)
   {
-    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new bdja(this);
-  }
-  
-  public int a()
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("sp_soft_keyboard", 0);
-    int i;
-    if (localSharedPreferences.contains("key_height"))
-    {
-      i = localSharedPreferences.getInt("key_height", 0);
-      this.jdField_a_of_type_Bdjb.a(i, true);
+    long l1;
+    if ("actFPSAIO".equals(paramString)) {
+      l1 = jdField_b_of_type_Long;
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoftKeyboardHeight", 2, new Object[] { "getSoftKeyboardHeight, keyboard height:", Integer.valueOf(i) });
+      if (l1 == 0L) {}
+      while ((float)(SystemClock.uptimeMillis() - l1) / 1000.0F >= 10.0F)
+      {
+        return false;
+        if ("actFPSRecent".equals(paramString))
+        {
+          l1 = jdField_c_of_type_Long;
+          break;
+        }
+        if (!"actFPSFriend".equals(paramString)) {
+          break label72;
+        }
+        l1 = jdField_d_of_type_Long;
+        break;
       }
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-      return i;
-      i = 0;
+      return true;
+      label72:
+      l1 = 0L;
     }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener != null)
-    {
-      if (Build.VERSION.SDK_INT < 16) {
-        this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
   }
 }
 

@@ -4,31 +4,31 @@ import android.text.TextUtils;
 import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
 import com.tencent.util.Pair;
 import svx;
-import yho;
-import yhs;
+import ymb;
+import ymf;
 
 public class SubscribeDraftManager$3
   implements Runnable
 {
   public void run()
   {
-    Object localObject = yho.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
+    Object localObject = ymb.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
     if (localObject != null)
     {
-      localObject = yho.a(this.this$0, (String)((Pair)localObject).second);
+      localObject = ymb.a(this.this$0, (String)((Pair)localObject).second);
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         break label90;
       }
       localObject = (SubscribeDraftBean)svx.a().a((String)localObject, SubscribeDraftBean.class);
-      if ((localObject != null) && (this.jdField_a_of_type_Yhs != null)) {
-        this.jdField_a_of_type_Yhs.a(5, true, this.b, new Object[] { localObject });
+      if ((localObject != null) && (this.jdField_a_of_type_Ymf != null)) {
+        this.jdField_a_of_type_Ymf.a(5, true, this.b, new Object[] { localObject });
       }
     }
     label90:
-    while (this.jdField_a_of_type_Yhs == null) {
+    while (this.jdField_a_of_type_Ymf == null) {
       return;
     }
-    this.jdField_a_of_type_Yhs.a(5, false, this.b, null);
+    this.jdField_a_of_type_Ymf.a(5, false, this.b, null);
   }
 }
 

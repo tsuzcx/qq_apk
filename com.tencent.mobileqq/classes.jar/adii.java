@@ -1,159 +1,70 @@
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.activity.PhoneUnityVerifyActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.net.URLEncoder;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adii
-  extends alxu
+  extends amdg
 {
-  public adii(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public adii(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
   
-  public void a(int paramInt, String paramString)
+  protected void b(boolean paramBoolean, bade parambade)
   {
-    Object localObject = this.a;
-    RelativeLayout localRelativeLayout = this.a.jdField_b_of_type_AndroidWidgetRelativeLayout;
-    if (paramInt == 0) {}
-    for (int i = 1;; i = 3)
+    if (QLog.isColorLevel())
     {
-      PhoneUnityBindInfoActivity.a((PhoneUnityBindInfoActivity)localObject, localRelativeLayout, i, 2);
-      if (paramInt != 0)
-      {
-        if (paramInt != 39) {
-          break;
-        }
-        azmj.b(this.a.app, "CliOper", "", "", "0X8005BFD", "0X8005BFD", 0, 0, "", "", "", "");
-        bdcd.a(this.a, 230, this.a.getString(2131695164), this.a.getString(2131695163), null, this.a.getString(2131692209), new adin(this), null).show();
+      QLog.d("SUB_ACCOUNT", 2, "LoginVerifyCodeActivity.onBindSubAccount() isSucc=" + paramBoolean);
+      if (parambade != null) {
+        QLog.d("SUB_ACCOUNT", 2, "LoginVerifyCodeActivity.onBindSubAccount() mainAccount=" + parambade.b + " subAccount=" + parambade.c + " errType=" + parambade.jdField_a_of_type_Int + " errMsg=" + parambade.jdField_a_of_type_JavaLangString);
       }
-      return;
     }
-    localObject = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      localObject = this.a.getString(2131695162);
-    }
-    QQToast.a(this.a, (CharSequence)localObject, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    PhoneUnityBindInfoActivity.a(this.a);
+    this.a.c();
+    Object localObject;
     if (paramBoolean)
     {
-      bhpy localbhpy = this.a.jdField_a_of_type_Bhpy;
-      if (localbhpy != null) {
-        localbhpy.dismiss();
+      this.a.a(2131720400, 2);
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub success............");
       }
+      bact.b(this.a.app);
+      bact.a(this.a.app);
+      bact.c(this.a.app);
+      bact.d(this.a.app);
+      localObject = new Intent(this.a, SplashActivity.class);
+      ((Intent)localObject).putExtra("tab_index", MainFragment.b);
+      ((Intent)localObject).setFlags(67108864);
+      this.a.startActivity((Intent)localObject);
+      this.a.finish();
     }
     for (;;)
     {
-      PhoneUnityBindInfoActivity.a(this.a, paramBoolean, paramBundle, true);
-      return;
-      PhoneUnityBindInfoActivity.a(this.a, 2131695063);
-    }
-  }
-  
-  public void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    PhoneUnityBindInfoActivity.a(this.a);
-    if (this.a.isFinishing()) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          int i;
-          do
-          {
-            return;
-            if (paramBoolean) {
-              break label587;
-            }
-            if (paramBundle == null) {
-              break label551;
-            }
-            this.a.jdField_a_of_type_AndroidOsBundle = paramBundle;
-            localObject = this.a;
-            i = paramBundle.getInt("sso_result", -1);
-            if (i != 66) {
-              break;
-            }
-            if (this.a.jdField_a_of_type_Bdfq == null)
-            {
-              this.a.jdField_a_of_type_Bdfq = bdcd.a((Context)localObject, 230, alpo.a(2131708424), "该手机号码已绑定一个无密码的QQ号，需给原QQ号设置密码后才能解绑并绑定新QQ号。", null, alpo.a(2131708421), new adij(this), null);
-              this.a.jdField_a_of_type_Bdfq.setOnCancelListener(new adik(this));
-            }
-            if ((this.a.jdField_a_of_type_Bdfq != null) && (!this.a.jdField_a_of_type_Bdfq.isShowing()) && (!this.a.isFinishing()))
-            {
-              this.a.jdField_a_of_type_Bdfq.show();
-              this.a.e = true;
-            }
-            paramBundle = this.a.jdField_a_of_type_Bhpy;
-          } while (paramBundle == null);
-          paramBundle.dismiss();
-          return;
-          if (i != 65) {
-            break;
-          }
-          if (this.a.jdField_b_of_type_Bdfq == null)
-          {
-            this.a.jdField_b_of_type_Bdfq = bdcd.a((Context)localObject, 230, alpo.a(2131708414), alpo.a(2131708410), null, alpo.a(2131708402), new adil(this), null);
-            this.a.jdField_b_of_type_Bdfq.setOnCancelListener(new adim(this));
-          }
-          if ((this.a.jdField_b_of_type_Bdfq != null) && (!this.a.jdField_b_of_type_Bdfq.isShowing()) && (!this.a.isFinishing()))
-          {
-            this.a.jdField_b_of_type_Bdfq.show();
-            this.a.e = true;
-          }
-          paramBundle = this.a.jdField_a_of_type_Bhpy;
-        } while (paramBundle == null);
-        paramBundle.dismiss();
-        return;
-      } while (!paramBundle.containsKey("skip_url"));
-      paramBundle = paramBundle.getString("skip_url");
-    } while (TextUtils.isEmpty(paramBundle));
-    paramBundle = new StringBuilder(paramBundle);
-    paramBundle.append("?");
-    paramBundle.append("type=" + apwq.d);
-    paramBundle.append("&plat=1");
-    paramBundle.append("&app=1");
-    paramBundle.append("&version=8.3.3.4515");
-    paramBundle.append("&device=" + URLEncoder.encode(Build.DEVICE));
-    paramBundle.append("&system=" + Build.VERSION.RELEASE);
-    paramBundle.append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
-    paramBundle = paramBundle.toString();
-    Object localObject = new Intent(this.a, PhoneUnityVerifyActivity.class);
-    ((Intent)localObject).putExtra("url", paramBundle);
-    this.a.startActivityForResult((Intent)localObject, 1006);
-    BaseActivity.sTopActivity.overridePendingTransition(2130771997, 0);
-    return;
-    label551:
-    QQToast.a(this.a, this.a.getString(2131695147), 0).b(this.a.getTitleBarHeight());
-    this.a.finish();
-    return;
-    label587:
-    PhoneUnityBindInfoActivity.a(this.a);
-    if (paramBoolean)
-    {
-      localObject = this.a.jdField_a_of_type_Bhpy;
-      if (localObject != null) {
-        ((bhpy)localObject).dismiss();
+      if ((parambade != null) && (QLog.isColorLevel())) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub failed............ ...errorMsg = " + parambade.jdField_a_of_type_JavaLangString + "...errorType = " + parambade.jdField_a_of_type_Int);
       }
-      azmj.b(this.a.app, "CliOper", "", "", "0X8005D0B", "0X8005D0B", 0, 0, "", "", "", "");
-      PhoneUnityBindInfoActivity.a(this.a, paramBoolean, paramBundle, true);
       return;
+      if (parambade != null) {
+        switch (parambade.jdField_a_of_type_Int)
+        {
+        default: 
+          this.a.a(2131720389, 0);
+          break;
+        case 1002: 
+          bacu.a(this.a.app, this.a);
+          break;
+        case 1003: 
+          this.a.a(2131720390, 0);
+          break;
+        case 1004: 
+          String str = parambade.jdField_a_of_type_JavaLangString;
+          localObject = str;
+          if (TextUtils.isEmpty(str)) {
+            localObject = this.a.getString(2131720391);
+          }
+          this.a.a((String)localObject, 0);
+        }
+      }
     }
-    PhoneUnityBindInfoActivity.a(this.a, alpo.a(2131708404));
   }
 }
 

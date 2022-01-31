@@ -1,41 +1,105 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileYearNodeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tribe.async.dispatch.Dispatcher;
 
 public class vbk
-  extends unk
+  extends vbo
 {
-  public String a;
+  public static final String a;
+  public QQUserUIItem a;
+  private boolean a;
   
-  public String a()
+  static
   {
-    return ume.a("StorySvc.get_profile_year_node_info");
+    jdField_a_of_type_JavaLangString = uqn.a(2131700066);
   }
   
-  public unf a(byte[] paramArrayOfByte)
+  public vbk(ViewGroup paramViewGroup)
   {
-    qqstory_service.RspProfileYearNodeList localRspProfileYearNodeList = new qqstory_service.RspProfileYearNodeList();
-    try
-    {
-      localRspProfileYearNodeList.mergeFrom(paramArrayOfByte);
-      return new vbl(localRspProfileYearNodeList);
+    super(paramViewGroup, 2131561509);
+  }
+  
+  protected String a(QQUserUIItem paramQQUserUIItem)
+  {
+    if ((paramQQUserUIItem == null) || (!paramQQUserUIItem.isAvailable())) {
+      return null;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
+      return paramQQUserUIItem.nickName;
+    }
+    return paramQQUserUIItem.getDisplayName();
+  }
+  
+  protected void a(String paramString)
+  {
+    b(xsj.b(paramString));
+  }
+  
+  protected void a(String paramString, boolean paramBoolean, uyg paramuyg)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramString, paramBoolean);
+  }
+  
+  public void a(uyg paramuyg)
+  {
+    super.a(paramuyg);
+    wxe.a("FollowNodeViewHolder", "bindData %s", paramuyg);
+    this.itemView.setTag(paramuyg.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((uwm)uwa.a(2)).a(paramuyg.jdField_a_of_type_JavaLangString, false);
+    this.jdField_a_of_type_Boolean = true;
+    boolean bool;
+    Object localObject2;
+    Object localObject1;
+    if (vaw.h)
     {
-      for (;;)
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVipButNoFriend()))
       {
-        paramArrayOfByte.printStackTrace();
+        bool = true;
+        this.jdField_a_of_type_Boolean = bool;
       }
     }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqProfileYearNodeList localReqProfileYearNodeList = new qqstory_service.ReqProfileYearNodeList();
-    localReqProfileYearNodeList.union_id.set(ByteStringMicro.copyFromUtf8(this.a));
-    return localReqProfileYearNodeList.toByteArray();
+    else
+    {
+      localObject2 = a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label194;
+      }
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = alud.a(2131705064);
+      }
+    }
+    for (;;)
+    {
+      localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        localObject1 = jdField_a_of_type_JavaLangString;
+        if (!TextUtils.isEmpty(paramuyg.c)) {
+          localObject1 = paramuyg.c;
+        }
+        wxe.a("FollowNodeViewHolder", "bindData() with fallback nickname %s, unionId = %s", localObject1, paramuyg.jdField_a_of_type_JavaLangString);
+        umc.a().dispatch(new uyf(paramuyg.jdField_a_of_type_JavaLangString));
+        localObject2 = localObject1;
+      }
+      a((String)localObject2, this.jdField_a_of_type_Boolean, paramuyg);
+      a(paramuyg.g);
+      return;
+      bool = false;
+      break;
+      label194:
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)
+      {
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq;
+        }
+      }
+    }
   }
 }
 

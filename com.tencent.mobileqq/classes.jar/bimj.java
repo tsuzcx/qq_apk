@@ -1,13 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 final class bimj
-  extends OnPluginInstallListener.Stub
+  implements OnPluginInstallListener
 {
-  bimj(bimn parambimn, bimp parambimp, Context paramContext) {}
+  bimj(AppRuntime paramAppRuntime, bime parambime, bimk parambimk, int paramInt) {}
+  
+  public IBinder asBinder()
+  {
+    return null;
+  }
   
   public void onInstallBegin(String paramString) {}
   
@@ -15,29 +19,19 @@ final class bimj
   
   public void onInstallError(String paramString, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("plugin_tag", 4, "doHandleOtherProcess onInstallError");
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginPreloader", 2, "pluginType:" + this.jdField_a_of_type_Bime.b + " preload:fail:installerror");
     }
-    if (this.jdField_a_of_type_Bimn != null) {
-      this.jdField_a_of_type_Bimn.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bimp);
-    }
+    bimc.a(this.jdField_a_of_type_MqqAppAppRuntime, 1, this.jdField_a_of_type_Bime.b, this.jdField_a_of_type_Bime.c, 3, "preload:fail:installerror", this.jdField_a_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_Bime.d) });
   }
   
   public void onInstallFinish(String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("plugin_tag", 4, "doHandleOtherProcess onInstallFinish");
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginPreloader", 2, "plugin install success, do preload.");
     }
-    if (this.jdField_a_of_type_Bimn != null)
-    {
-      paramString = bimg.a().queryPlugin(this.jdField_a_of_type_Bimp.b);
-      if (paramString != null)
-      {
-        this.jdField_a_of_type_Bimp.c = paramString.mInstalledPath;
-        this.jdField_a_of_type_Bimp.a(paramString);
-      }
-      this.jdField_a_of_type_Bimn.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bimp);
-    }
+    bimc.a(this.jdField_a_of_type_MqqAppAppRuntime, 0, this.jdField_a_of_type_Bime.b, this.jdField_a_of_type_Bime.c, this.jdField_a_of_type_Bimk.jdField_a_of_type_Int, this.jdField_a_of_type_Bimk.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_Bime.d) });
+    this.jdField_a_of_type_Bime.a();
   }
 }
 

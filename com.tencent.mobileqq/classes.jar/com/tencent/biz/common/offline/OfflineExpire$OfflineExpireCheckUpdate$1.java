@@ -4,7 +4,7 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
 import nce;
-import zab;
+import zeq;
 
 public class OfflineExpire$OfflineExpireCheckUpdate$1
   implements Runnable
@@ -15,7 +15,7 @@ public class OfflineExpire$OfflineExpireCheckUpdate$1
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof AppInterface)) {
-      new zab((AppInterface)localAppRuntime).a();
+      new zeq((AppInterface)localAppRuntime).a();
     }
   }
 }

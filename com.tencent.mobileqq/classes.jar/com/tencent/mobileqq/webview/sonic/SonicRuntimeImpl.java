@@ -5,10 +5,10 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bavf;
-import bdee;
-import befr;
-import begt;
+import bazo;
+import bdin;
+import beka;
+import belc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
@@ -90,7 +90,7 @@ public class SonicRuntimeImpl
       long l = System.currentTimeMillis();
       Object localObject1 = localObject4;
       localObject2 = localObject3;
-      if (bavf.b() != null)
+      if (bazo.b() != null)
       {
         localObject2 = localObject3;
         Uri localUri = Uri.parse(paramString);
@@ -125,7 +125,7 @@ public class SonicRuntimeImpl
                 }
               }
               localObject2 = localObject3;
-              localObject1 = bavf.a().a(localUri.getHost(), 1013, false);
+              localObject1 = bazo.a().a(localUri.getHost(), 1013, false);
             }
           }
         }
@@ -149,12 +149,12 @@ public class SonicRuntimeImpl
   
   public String getUserAgent()
   {
-    return begt.a();
+    return belc.a();
   }
   
   public boolean isNetworkValid()
   {
-    return bdee.a(BaseApplicationImpl.getContext()) != 0;
+    return bdin.a(BaseApplicationImpl.getContext()) != 0;
   }
   
   public boolean isSonicUrl(String paramString)
@@ -201,7 +201,7 @@ public class SonicRuntimeImpl
         continue;
         label188:
         localObject1 = paramString.trim();
-        Object localObject2 = befr.b((String)localObject1);
+        Object localObject2 = beka.b((String)localObject1);
         if ((!"http".equals(localObject2)) && (!"https".equals(localObject2))) {
           break;
         }
@@ -260,7 +260,7 @@ public class SonicRuntimeImpl
   
   public void notifyError(SonicSessionClient paramSonicSessionClient, String paramString, int paramInt)
   {
-    int j = bdee.a(BaseApplicationImpl.getContext());
+    int j = bdin.a(BaseApplicationImpl.getContext());
     int i = j;
     if (j == 0) {
       i = -1;

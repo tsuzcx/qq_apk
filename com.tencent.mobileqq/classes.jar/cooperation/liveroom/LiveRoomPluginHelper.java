@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import beav;
+import befe;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -33,7 +33,7 @@ public class LiveRoomPluginHelper
       paramIntent.putExtra("window_no_title", false);
       paramIntent.putExtra("webview_hide_progress", true);
       paramActivity = new LiveRoomWebViewBuilder(paramActivity, paramActivity, paramIntent, localLiveRoomInterfaceProxy);
-      new beav(paramActivity).a(null, localLiveRoomInterfaceProxy, paramIntent);
+      new befe(paramActivity).a(null, localLiveRoomInterfaceProxy, paramIntent);
       return paramActivity;
     }
     QLog.e("LiveRoomPluginHelper", 2, "createWebView: app should be AppInterface");

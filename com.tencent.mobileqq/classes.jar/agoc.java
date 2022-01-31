@@ -1,54 +1,68 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 class agoc
-  extends aqnl
+  extends alwx
 {
-  agoc(agnz paramagnz) {}
+  agoc(agnn paramagnn) {}
   
-  protected void a(aqxx paramaqxx)
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    if (paramaqxx == null) {}
-    do
+    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
     {
-      FileManagerEntity localFileManagerEntity;
-      do
-      {
-        do
-        {
-          return;
-        } while (!(paramaqxx.a instanceof FileManagerEntity));
-        localFileManagerEntity = (FileManagerEntity)paramaqxx.a;
-      } while ((paramaqxx.b == null) || (paramaqxx.b.length() <= 0));
-      localFileManagerEntity.strThumbPath = paramaqxx.b;
-      this.a.a.a().c(localFileManagerEntity);
-    } while (agnz.a(this.a) == null);
-    agnz.a(this.a).notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    if (agnz.a(this.a) != null) {
-      agnz.a(this.a).notifyDataSetChanged();
+      if (QLog.isColorLevel()) {
+        QLog.d("BusinessChatPie", 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+      }
+      return;
     }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
     if (QLog.isColorLevel()) {
-      QLog.d("MultiForwardActivity", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
+      QLog.d("BusinessChatPie", 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
     }
-    if (agnz.a(this.a) != null) {
-      agnz.a(this.a).notifyDataSetChanged();
+    if ((QLog.isColorLevel()) && (paramInt1 == 1024)) {
+      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "errorCode" + paramInt2, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+    }
+    this.a.e(196608);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
+    {
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.m();
+      }
     }
   }
   
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    if (agnz.a(this.a) != null) {
-      agnz.a(this.a).notifyDataSetChanged();
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      return;
     }
+    this.a.u = true;
+    this.a.a(262144, null, paramLong);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
+    {
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.m();
+      }
+    }
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    this.a.e(65536);
   }
 }
 

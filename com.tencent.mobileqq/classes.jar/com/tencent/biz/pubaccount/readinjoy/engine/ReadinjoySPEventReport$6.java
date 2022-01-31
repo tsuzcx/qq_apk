@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.util.Pair;
-import bjxj;
+import bkbq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import ors;
@@ -20,9 +20,9 @@ public class ReadinjoySPEventReport$6
       try
       {
         int i = oxp.c(this.this$0).size();
-        if (i > bjxj.f(ors.a()))
+        if (i > bkbq.f(ors.a()))
         {
-          l1 = i - bjxj.f(ors.a());
+          l1 = i - bkbq.f(ors.a());
           l2 = l1 - 1L;
           if (l1 > 0L)
           {

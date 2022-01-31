@@ -1,84 +1,181 @@
-import android.util.AndroidRuntimeException;
-import com.tencent.qqmini.sdk.annotation.RuntimeLoaderInfo;
-import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.qqmini.sdk.core.widget.ActionSheetDialog.1;
+import com.tencent.qqmini.sdk.core.widget.ActionSheetDialog.3;
 import com.tencent.qqmini.sdk.log.QMLog;
-import java.lang.reflect.Field;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class bgqs
+  extends Dialog
+  implements DialogInterface.OnCancelListener
 {
-  private final List<bgqt> a = new ArrayList();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private ArrayList<Button> jdField_a_of_type_JavaUtilArrayList;
+  private boolean jdField_a_of_type_Boolean;
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
+  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
   
-  public bgqs(AppRuntimeLoaderManager paramAppRuntimeLoaderManager)
+  private void a()
   {
-    paramAppRuntimeLoaderManager = (bghj)paramAppRuntimeLoaderManager.getClass().getAnnotation(bghj.class);
-    if (paramAppRuntimeLoaderManager == null) {}
-    do
-    {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
-      paramAppRuntimeLoaderManager = paramAppRuntimeLoaderManager.a();
-    } while (paramAppRuntimeLoaderManager == null);
-    int j = paramAppRuntimeLoaderManager.length;
-    int i = 0;
-    label49:
-    bgqt localbgqt;
+    }
+    int m = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int k = 0;
+    Object localObject1;
+    label63:
     Object localObject2;
-    if (i < j)
+    if (k < m)
     {
-      Object localObject1 = paramAppRuntimeLoaderManager[i];
-      try
+      localObject1 = (Button)this.jdField_a_of_type_JavaUtilArrayList.get(k);
+      int j = ((Integer)((Button)localObject1).getTag()).intValue();
+      int i;
+      if ((k == 0) && (m == 1))
       {
-        localbgqt = new bgqt();
-        localObject2 = Class.forName(localObject1.className());
-        if (!bgqg.class.isAssignableFrom((Class)localObject2)) {
-          throw new AndroidRuntimeException("RuntimeLoaderConfig requires child class of BaseAppRuntimeLoader, current class is " + localObject1.className());
+        i = 2130840819;
+        switch (j)
+        {
+        default: 
+          j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165773);
         }
       }
-      catch (Throwable localThrowable)
+      for (;;)
       {
-        QMLog.w("RuntimeLoaderConfiguration", "", localThrowable);
+        ((Button)localObject1).setBackgroundResource(i);
+        ((Button)localObject1).setTextColor(j);
+        k += 1;
+        break;
+        if ((k == 0) && (m > 1))
+        {
+          i = 2130840822;
+          break label63;
+        }
+        if ((k == m - 1) && (m > 1))
+        {
+          i = 2130840809;
+          break label63;
+        }
+        i = 2130840816;
+        break label63;
+        j = -16777216;
+        ((Button)localObject1).setTextSize(0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297242));
+        ((Button)localObject1).setClickable(false);
+        ((Button)localObject1).setVisibility(8);
+        a(((Button)localObject1).getText().toString());
+        continue;
+        j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165776);
+        continue;
+        DisplayUtil.dip2px(getContext(), 8.0F);
+        j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165773);
+        localObject2 = new SpannableString(((Button)localObject1).getText());
+        Object localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840976);
+        ((Drawable)localObject3).setBounds(0, 0, ((Drawable)localObject3).getIntrinsicWidth(), ((Drawable)localObject3).getIntrinsicHeight());
+        localObject3 = new ImageSpan((Drawable)localObject3, 1);
+        if ((((SpannableString)localObject2).length() >= 1) && (((SpannableString)localObject2).charAt(((SpannableString)localObject2).length() - 1) == '@')) {
+          ((SpannableString)localObject2).setSpan(localObject3, ((SpannableString)localObject2).length() - 1, ((SpannableString)localObject2).length(), 33);
+        }
+        ((Button)localObject1).setText((CharSequence)localObject2);
       }
     }
-    for (;;)
+    if (!this.jdField_b_of_type_Boolean)
     {
-      i += 1;
-      break label49;
-      break;
-      localbgqt.jdField_a_of_type_JavaLangClass = ((Class)localObject2);
-      localbgqt.jdField_a_of_type_Int = localThrowable.type();
-      localObject2 = localbgqt.jdField_a_of_type_JavaLangClass.getField("CREATOR");
-      if ((((Field)localObject2).getModifiers() & 0x8) == 0) {
-        throw new AndroidRuntimeException("RuntimeLoader protocol requires the CREATOR object to be static on class " + localThrowable.className());
-      }
-      if (!bgqh.class.isAssignableFrom(((Field)localObject2).getType())) {
-        throw new AndroidRuntimeException("RuntimeLoader requires a BaseAppRuntimeLoader.Creator object called CREATOR on class " + localThrowable.className());
-      }
-      localbgqt.jdField_a_of_type_Bgqh = ((bgqh)((Field)localObject2).get(null));
-      this.a.add(localbgqt);
+      localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559334, null);
+      localObject2 = (Button)((View)localObject1).findViewById(2131361914);
+      ((Button)localObject2).setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+      ((Button)localObject2).setText(2131694328);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
+      this.jdField_b_of_type_Boolean = true;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public TextView a(String paramString)
+  {
+    try
+    {
+      Button localButton = new Button(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localButton, 0);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localButton.getLayoutParams();
+      localLayoutParams.width = -1;
+      localLayoutParams.height = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297210));
+      localLayoutParams.gravity = 17;
+      localButton.setLayoutParams(localLayoutParams);
+      localButton.setTextSize(0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297242));
+      localButton.setText(paramString);
+      localButton.setTextColor(-16777216);
+      localButton.setBackgroundResource(2130840822);
+      localButton.setClickable(false);
+      return localButton;
+    }
+    catch (Exception paramString)
+    {
+      QMLog.e("ActionSheetDialog", "e:" + paramString.toString());
+    }
+    return null;
+  }
+  
+  public void dismiss()
+  {
+    if (this.c)
+    {
+      this.c = false;
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ActionSheetDialog.3(this), 0L);
     }
   }
   
-  public List<bgqt> a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    return this.a;
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(null);
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
   }
   
-  public String toString()
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{");
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      bgqt localbgqt = (bgqt)localIterator.next();
-      if (localbgqt != null) {
-        localStringBuilder.append("***Loader:").append(localbgqt.jdField_a_of_type_JavaLangClass.getName()).append(", Creator:").append(localbgqt.jdField_a_of_type_Bgqh.getClass().getName()).append("***");
-      }
+    if (paramInt == 82) {
+      dismiss();
     }
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    return super.onKeyDown(paramInt, paramKeyEvent);
+  }
+  
+  public void show()
+  {
+    super.show();
+    a();
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(4);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
+    this.c = true;
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ActionSheetDialog.1(this), 0L);
   }
 }
 

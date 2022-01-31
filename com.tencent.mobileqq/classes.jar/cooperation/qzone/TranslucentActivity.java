@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,10 +9,10 @@ import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bepp;
-import bimg;
-import bimp;
-import bjcs;
+import bety;
+import biqn;
+import biqw;
+import bjgz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
@@ -24,34 +24,34 @@ public class TranslucentActivity
 {
   private void a(Intent paramIntent)
   {
-    bepp localbepp;
-    if (!((bimg)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(27)).isPlugininstalled("qzone_plugin.apk"))
+    bety localbety;
+    if (!((biqn)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(27)).isPlugininstalled("qzone_plugin.apk"))
     {
-      localbepp = new bepp(this, getResources().getDimensionPixelSize(2131298914));
-      localbepp.a(alpo.a(2131715452));
-      localbepp.setOnDismissListener(new bjcs(this));
+      localbety = new bety(this, getResources().getDimensionPixelSize(2131298914));
+      localbety.a(alud.a(2131715464));
+      localbety.setOnDismissListener(new bjgz(this));
     }
     for (;;)
     {
       String str = QzonePluginProxyActivity.a(paramIntent);
       paramIntent.putExtra("userQqResources", 2);
-      bimp localbimp = new bimp(0);
-      localbimp.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
-      localbimp.d = "QZone";
-      localbimp.jdField_a_of_type_JavaLangString = "";
-      localbimp.e = str;
-      localbimp.jdField_a_of_type_JavaLangClass = QzonePluginProxyActivity.class;
-      localbimp.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      localbimp.jdField_b_of_type_Int = -1;
-      localbimp.jdField_a_of_type_AndroidAppDialog = localbepp;
-      localbimp.c = 10000;
-      localbimp.f = null;
-      bimg.a(this, localbimp);
-      if (localbepp == null) {
+      biqw localbiqw = new biqw(0);
+      localbiqw.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
+      localbiqw.d = "QZone";
+      localbiqw.jdField_a_of_type_JavaLangString = "";
+      localbiqw.e = str;
+      localbiqw.jdField_a_of_type_JavaLangClass = QzonePluginProxyActivity.class;
+      localbiqw.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      localbiqw.jdField_b_of_type_Int = -1;
+      localbiqw.jdField_a_of_type_AndroidAppDialog = localbety;
+      localbiqw.c = 10000;
+      localbiqw.f = null;
+      biqn.a(this, localbiqw);
+      if (localbety == null) {
         finish();
       }
       return;
-      localbepp = null;
+      localbety = null;
     }
   }
   

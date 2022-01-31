@@ -1,39 +1,54 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoDelete;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.lang.ref.WeakReference;
 
-class xlg
-  extends naa
+public class xlg
+  extends xlo<xlb, xlb>
 {
-  xlg(xlf paramxlf) {}
+  private int a;
+  public WeakReference<Activity> a;
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public xlg(@NonNull Activity paramActivity, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "troop story revoke result, code=" + paramInt);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected void a(JobContext paramJobContext, xlb paramxlb)
+  {
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localActivity == null)
+    {
+      wxe.e("Q.qqstory.publish.edit.GeneratePicThumbSegment", "ChangePicArgToVideoArgSegment, activity is null");
+      super.notifyError(new ErrorMessage(-1, "ChangePicArgToVideoArgSegment error"));
+      return;
     }
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      try
-      {
-        paramBundle = new qqstory_group.RspGroupVideoDelete();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = (qqstory_struct.ErrorInfo)paramBundle.result.get();
-        if (paramArrayOfByte.error_code.has()) {
-          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "revoke rsp.result.error_code=" + paramArrayOfByte.error_code.get());
-        }
-        return paramArrayOfByte;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "parse RspGroupVideoDelete error", paramArrayOfByte);
-        }
+    Object localObject = paramxlb.jdField_a_of_type_Xlf.jdField_a_of_type_JavaLangString;
+    paramJobContext = (JobContext)localObject;
+    if (!paramxlb.jdField_a_of_type_Xlf.jdField_b_of_type_Boolean)
+    {
+      paramJobContext = (JobContext)localObject;
+      if (paramxlb.jdField_a_of_type_Xlf.jdField_a_of_type_Boolean) {
+        paramJobContext = paramxlb.jdField_a_of_type_Xlf.jdField_b_of_type_JavaLangString;
       }
     }
-    return null;
+    localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(paramJobContext, (BitmapFactory.Options)localObject);
+    int i = ((BitmapFactory.Options)localObject).outWidth;
+    int j = ((BitmapFactory.Options)localObject).outHeight;
+    if (this.jdField_a_of_type_Int == 5) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramxlb.jdField_a_of_type_Xlh = new xlh(localActivity, i, j, paramJobContext, 0.0F, bool, 0, 0.0D, 0.0D, null, false);
+      paramxlb.jdField_a_of_type_JavaLangString = paramJobContext;
+      super.notifyResult(paramxlb);
+      return;
+    }
   }
 }
 

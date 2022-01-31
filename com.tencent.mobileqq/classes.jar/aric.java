@@ -1,12 +1,14 @@
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+
 class aric
-  implements ardi
 {
-  aric(arhz paramarhz) {}
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = null;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void a(int paramInt)
-  {
-    this.a.a(paramInt);
-  }
+  private aric(aria paramaria) {}
 }
 
 

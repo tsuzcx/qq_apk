@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.troop.aioapp;
 
-import bbib;
-import bbid;
-import bbif;
-import bbig;
+import bbmk;
+import bbmm;
+import bbmo;
+import bbmp;
 
 public class AioGroupAppsManager$2
   implements Runnable
 {
-  public AioGroupAppsManager$2(bbib parambbib, long paramLong) {}
+  public AioGroupAppsManager$2(bbmk parambbmk, long paramLong) {}
   
   public void run()
   {
-    bbib.a(this.this$0).a();
-    if (!bbig.a(this.this$0.a(this.a))) {
-      bbif.a(bbib.a(this.this$0), this.a);
+    bbmk.a(this.this$0).a();
+    if (!bbmp.a(this.this$0.a(this.a))) {
+      bbmo.a(bbmk.a(this.this$0), this.a);
     }
   }
 }

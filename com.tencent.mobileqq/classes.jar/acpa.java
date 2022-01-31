@@ -1,20 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.app.Activity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class acpa
-  implements DialogInterface.OnClickListener
+public abstract interface acpa
 {
-  public acpa(DialogActivity paramDialogActivity) {}
+  public abstract void a(Activity paramActivity);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = this.a.app.a();
-    paramDialogInterface.e();
-    paramDialogInterface.d();
-    this.a.finish();
-  }
+  public abstract void a(QQAppInterface paramQQAppInterface, int paramInt);
+  
+  public abstract void b(QQAppInterface paramQQAppInterface, int paramInt);
 }
 
 

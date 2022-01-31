@@ -1,46 +1,53 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.ui.TouchWebView.OnOverScrollHandler;
 
-public class beji
-  implements View.OnTouchListener
+class beji
+  implements TouchWebView.OnOverScrollHandler
 {
-  public beji(ClearableEditText paramClearableEditText) {}
+  beji(bejh parambejh, TouchWebView paramTouchWebView, RefreshView paramRefreshView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onBack()
   {
-    int i = 1;
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    label107:
-    for (;;)
+    this.jdField_a_of_type_Bejh.a = false;
+    this.jdField_a_of_type_ComTencentBizUiRefreshView.onBack();
+    this.jdField_a_of_type_Bejh.b(true);
+  }
+  
+  public void onOverScroll(int paramInt)
+  {
+    Object localObject;
+    if (!this.jdField_a_of_type_Bejh.a)
     {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
+      this.jdField_a_of_type_Bejh.a = true;
+      localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    }
+    try
+    {
+      localObject = Uri.parse((String)localObject);
+      if ((localObject != null) && (((Uri)localObject).isHierarchical())) {
+        this.jdField_a_of_type_Bejh.b.setText(alud.a(2131715087) + ((Uri)localObject).getHost() + alud.a(2131715080));
+      }
+      this.jdField_a_of_type_Bejh.b.setVisibility(0);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
-        for (;;)
-        {
-          if (i == 0) {
-            break label107;
-          }
-          this.a.setText("");
-          this.a.setClearButtonVisible(false);
-          if (this.a.jdField_a_of_type_Bejl == null) {
-            break;
-          }
-          this.a.jdField_a_of_type_Bejl.m();
-          return false;
-          i = 0;
-        }
+        localException.printStackTrace();
+        this.jdField_a_of_type_Bejh.b.setVisibility(8);
       }
     }
+    this.jdField_a_of_type_ComTencentBizUiRefreshView.onOverScroll(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beji
  * JD-Core Version:    0.7.0.1
  */

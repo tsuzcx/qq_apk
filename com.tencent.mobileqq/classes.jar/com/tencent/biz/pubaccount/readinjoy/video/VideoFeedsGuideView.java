@@ -18,7 +18,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import bcwh;
+import bdaq;
 import rdj;
 import rdk;
 import rdl;
@@ -77,17 +77,17 @@ public class VideoFeedsGuideView
   
   private void a()
   {
-    this.b = bcwh.a(getContext(), 150.0F);
-    this.jdField_a_of_type_Int = bcwh.a(getContext(), 180.0F);
-    this.c = bcwh.a(getContext(), 8.0F);
-    this.e = bcwh.a(getContext(), 70.0F);
-    this.g = bcwh.a(getContext(), 70.0F);
+    this.b = bdaq.a(getContext(), 150.0F);
+    this.jdField_a_of_type_Int = bdaq.a(getContext(), 180.0F);
+    this.c = bdaq.a(getContext(), 8.0F);
+    this.e = bdaq.a(getContext(), 70.0F);
+    this.g = bdaq.a(getContext(), 70.0F);
     this.d = this.e;
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130842708);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130842721);
     this.jdField_a_of_type_Rdj = new rdj(this, null);
     this.jdField_a_of_type_Rdk = new rdk(this, null);
     this.jdField_a_of_type_Rdl = new rdl(this, null);

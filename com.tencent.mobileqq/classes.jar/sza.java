@@ -13,7 +13,7 @@ final class sza
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramInt = 1;
-    bjxj.a("readinjoy_user_data_switch", Integer.valueOf(0));
+    bkbq.a("readinjoy_user_data_switch", Integer.valueOf(0));
     paramDialogInterface.dismiss();
     paramDialogInterface = new JSONObject();
     try

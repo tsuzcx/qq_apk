@@ -1,9 +1,19 @@
-public class bjeu
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.QZoneShareData;
+
+public final class bjeu
+  implements Parcelable.Creator<QZoneShareData>
 {
-  public long a;
-  public String a;
-  public long b;
-  public long c;
+  public QZoneShareData a(Parcel paramParcel)
+  {
+    return new QZoneShareData(paramParcel, null);
+  }
+  
+  public QZoneShareData[] a(int paramInt)
+  {
+    return new QZoneShareData[paramInt];
+  }
 }
 
 

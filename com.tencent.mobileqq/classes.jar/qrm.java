@@ -1,7 +1,7 @@
 import android.view.View;
 
 public class qrm
-  extends biac<qrw>
+  extends biej<qrw>
 {
   public qrm(qrl paramqrl, View paramView)
   {

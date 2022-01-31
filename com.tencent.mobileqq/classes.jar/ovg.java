@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class ovg<K, D>
-  extends RecyclerView.Adapter<biac>
+  extends RecyclerView.Adapter<biej>
 {
   protected int a;
   protected Context a;

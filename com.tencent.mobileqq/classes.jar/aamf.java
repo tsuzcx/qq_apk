@@ -1,34 +1,15 @@
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.ad.tangram.image.AdImageViewAdapter.Callback;
+import com.tencent.ad.tangram.image.AdImageViewAdapter.Params;
+import java.lang.ref.WeakReference;
 
 class aamf
-  implements EIPCResultCallback
+  implements aauo
 {
-  aamf(aame paramaame, aamh paramaamh, int paramInt) {}
+  aamf(aame paramaame, AdImageViewAdapter.Params paramParams) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(boolean paramBoolean)
   {
-    String str2 = null;
-    String str1;
-    if (this.jdField_a_of_type_Aamh != null)
-    {
-      str1 = this.jdField_a_of_type_Aamh.a();
-      if (this.jdField_a_of_type_Aamh != null) {
-        str2 = this.jdField_a_of_type_Aamh.b();
-      }
-      if (paramEIPCResult == null) {
-        break label91;
-      }
-    }
-    label91:
-    for (boolean bool = paramEIPCResult.isSuccess();; bool = false)
-    {
-      aanp.b("GdtIPCManager", String.format("ClientToServerIPCModule.onCallback action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(bool) }));
-      this.jdField_a_of_type_Aame.callbackResult(this.jdField_a_of_type_Int, paramEIPCResult);
-      return;
-      str1 = null;
-      break;
-    }
+    ((AdImageViewAdapter.Callback)this.jdField_a_of_type_ComTencentAdTangramImageAdImageViewAdapter$Params.callback.get()).onStopLoad(paramBoolean);
   }
 }
 

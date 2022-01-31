@@ -1,21 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
-class ailw
-  implements ailu
+public class ailw
+  implements DialogInterface.OnClickListener
 {
-  ailw(ailv paramailv) {}
+  public ailw(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public void a(long paramLong, float paramFloat, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ailv.a(this.a).put(Long.valueOf(paramLong), Float.valueOf(paramFloat));
-    ailv.a(this.a).a(paramLong, paramFloat, paramString);
-  }
-  
-  public void b(long paramLong)
-  {
-    QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onDownloadSuccess:" + paramLong);
-    ailv.a(this.a).b(paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.d("BindVerifyActivity", 2, "new user guild confirm unbind");
+    }
+    this.a.a.b(BindVerifyActivity.a(this.a), BindVerifyActivity.b(this.a), 0, BindVerifyActivity.a(this.a), BindVerifyActivity.b(this.a));
+    this.a.a(2131719785, 1000L, true);
   }
 }
 

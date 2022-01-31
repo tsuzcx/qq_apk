@@ -18,7 +18,7 @@ public class cg
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramCompoundButton.setChecked(paramBoolean);
-        QQToast.a(this.a, 1, alpo.a(2131706566), 0).b(this.a.getTitleBarHeight());
+        QQToast.a(this.a, 1, alud.a(2131706578), 0).b(this.a.getTitleBarHeight());
         return;
       }
     }

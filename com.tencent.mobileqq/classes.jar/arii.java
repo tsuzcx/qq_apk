@@ -1,38 +1,60 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class arii
-  implements bhqp
+public class arii
+  implements aocf
 {
-  arii(arif paramarif) {}
+  private DataLineMsgRecord a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public arii(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    paramAdapterView = this.a;
-    boolean bool;
-    if (!arif.a(this.a))
+    this.a = paramDataLineMsgRecord;
+  }
+  
+  private String a()
+  {
+    String str = "";
+    try
     {
-      bool = true;
-      arif.a(paramAdapterView, bool);
-      if (this.a.jdField_a_of_type_Ardo != null) {
-        this.a.jdField_a_of_type_Ardo.a(arif.a(this.a));
+      JSONObject localJSONObject = new JSONObject();
+      if (this.a != null)
+      {
+        localJSONObject.put("file_color_note_uniSeq", this.a.sessionid);
+        str = localJSONObject.toString();
       }
-      if (!arif.a(this.a)) {
-        break label110;
-      }
-      this.a.jdField_a_of_type_Arjx.a(false);
-      this.a.jdField_a_of_type_Arjx.b(false);
+      return str;
     }
-    for (;;)
+    catch (JSONException localJSONException) {}
+    return "";
+  }
+  
+  public ColorNote getColorNote()
+  {
+    if (this.a == null)
     {
-      this.a.jdField_a_of_type_Arjx.e(arif.a(this.a));
-      return;
-      bool = false;
-      break;
-      label110:
-      this.a.jdField_a_of_type_Arjx.a(true);
-      this.a.b();
+      QLog.i("DatalineFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
+      return null;
     }
+    aocl localaocl = new aocl();
+    localaocl.a(17039360);
+    String str = arsx.b(6, this.a.sessionid + "");
+    if (QLog.isColorLevel()) {
+      QLog.i("DatalineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    }
+    localaocl.a(str);
+    localaocl.b(this.a.filename);
+    localaocl.c(arso.a(this.a.filesize));
+    int i = arrr.a(arrr.a(this.a.filename));
+    localaocl.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localaocl.a(str.getBytes());
+    }
+    return localaocl.a();
   }
 }
 

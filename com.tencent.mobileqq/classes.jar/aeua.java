@@ -1,22 +1,10 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aeua
-  implements View.OnClickListener
+final class aeua
+  implements DialogInterface.OnClickListener
 {
-  public aeua(VoiceTextEditPanel paramVoiceTextEditPanel) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((VoiceTextEditPanel.a(this.a).get() == 1) || (VoiceTextEditPanel.a(this.a).get() == 3)) {
-      QQToast.a(this.a.getContext(), alpo.a(2131717239), 0).b(this.a.getContext().getResources().getDimensionPixelSize(2131298914));
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

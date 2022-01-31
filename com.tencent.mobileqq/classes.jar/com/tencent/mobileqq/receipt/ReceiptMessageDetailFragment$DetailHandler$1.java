@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.receipt;
 
-import axgd;
+import axkm;
 
 public class ReceiptMessageDetailFragment$DetailHandler$1
   implements Runnable
 {
-  public ReceiptMessageDetailFragment$DetailHandler$1(axgd paramaxgd, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  public ReceiptMessageDetailFragment$DetailHandler$1(axkm paramaxkm, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
   public void run()
   {

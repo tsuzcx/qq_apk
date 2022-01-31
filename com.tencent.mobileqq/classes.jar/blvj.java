@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
+import android.os.Handler;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.Collections;
 import java.util.List;
 
-public class blvj
-  implements View.OnClickListener
+class blvj
+  implements bmsf
 {
-  public blvj(AdvancedProviderView paramAdvancedProviderView) {}
+  blvj(blvi paramblvi) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, List<uxf> paramList)
   {
-    paramView = bnky.a().a();
-    if (paramView.size() > 1) {
-      xoo.a(this.a.a, paramView.get(1));
+    wxe.b("PasterDataManager", "onPOIPostersRequestResult callback");
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = Collections.EMPTY_LIST;
     }
+    umc.a().dispatch(new bmsd(paramInt, (List)localObject));
   }
 }
 

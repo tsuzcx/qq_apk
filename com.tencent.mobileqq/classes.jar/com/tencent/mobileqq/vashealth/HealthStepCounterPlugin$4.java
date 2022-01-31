@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.vashealth;
 
-import alpo;
-import bdtu;
-import becq;
+import alud;
+import bdyd;
+import begz;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class HealthStepCounterPlugin$4
   implements Runnable
 {
-  public HealthStepCounterPlugin$4(bdtu parambdtu) {}
+  public HealthStepCounterPlugin$4(bdyd parambdyd) {}
   
   public void run()
   {
     QQToast localQQToast = new QQToast(this.this$0.mRuntime.a().getContext());
-    QQToast.a(this.this$0.mRuntime.a().getContext(), alpo.a(2131705836), 0).b((int)(localQQToast.b() * 2.5D));
+    QQToast.a(this.this$0.mRuntime.a().getContext(), alud.a(2131705848), 0).b((int)(localQQToast.b() * 2.5D));
   }
 }
 

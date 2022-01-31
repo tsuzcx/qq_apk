@@ -1,6 +1,25 @@
-public abstract interface aobi
+import android.content.res.Resources;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.campuscircle.CampusCircleReplyActivity;
+
+public class aobi
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void a(boolean paramBoolean);
+  public aobi(CampusCircleReplyActivity paramCampusCircleReplyActivity) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    paramCompoundButton = this.a.getResources();
+    TextView localTextView = CampusCircleReplyActivity.a(this.a);
+    if (paramBoolean) {}
+    for (paramCompoundButton = paramCompoundButton.getColorStateList(2131166256);; paramCompoundButton = paramCompoundButton.getColorStateList(2131166258))
+    {
+      localTextView.setTextColor(paramCompoundButton);
+      return;
+    }
+  }
 }
 
 

@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
 
 public class xvq
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public xvq(QRLoginMgrActivity paramQRLoginMgrActivity) {}
+  public xvq(AbsEmptyView paramAbsEmptyView, View.OnClickListener paramOnClickListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAbsEmptyView.a(3);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+  }
 }
 
 

@@ -1,22 +1,23 @@
-import java.util.Comparator;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.View;
+import android.widget.RadioGroup;
+import com.tencent.biz.qqcircle.widgets.QCirclePersonalBottomView;
 
-final class ueh
-  implements Comparator<ueq>
+public class ueh
+  implements ViewPager.OnPageChangeListener
 {
-  public int a(ueq paramueq1, ueq paramueq2)
+  public ueh(QCirclePersonalBottomView paramQCirclePersonalBottomView) {}
+  
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (paramueq1.a() > paramueq2.a()) {}
-    do
-    {
-      return 1;
-      if (paramueq1.a() < paramueq2.a()) {
-        return -1;
-      }
-      if (paramueq1.d() == paramueq2.d()) {
-        return 0;
-      }
-    } while (paramueq1.d() < paramueq2.d());
-    return -1;
+    
+    if ((QCirclePersonalBottomView.a(this.a) != null) && (QCirclePersonalBottomView.a(this.a).getChildCount() > paramInt)) {
+      QCirclePersonalBottomView.a(this.a).getChildAt(paramInt).performClick();
+    }
   }
 }
 

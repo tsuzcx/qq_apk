@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.shortvideo.util.ShortVideoGuideUtil.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaFormat;
+import java.nio.ByteBuffer;
 
 public class azgs
-  implements TVK_SDKMgr.InstallListener
 {
-  public azgs(ShortVideoGuideUtil.1 param1) {}
+  public int a;
+  public MediaCodec.BufferInfo a;
+  public MediaFormat a;
+  public ByteBuffer a;
+  public boolean a;
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public azgs(azgr paramazgr)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(azgr.a, 2, "installSDK onInstalledFailed arg0=" + paramInt);
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(azgr.a, 2, "installSDK onInstalledSuccessed=");
-    }
+    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

@@ -4,7 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.view.ViewGroup;
-import annv;
+import anse;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopLayout;
 import com.tencent.mobileqq.mini.util.DisplayUtil;

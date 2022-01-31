@@ -1,14 +1,4 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-
-public class bbew
-  implements DialogInterface.OnClickListener
-{
-  public bbew(TroopBarPublishActivity paramTroopBarPublishActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
-}
+class bbew {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

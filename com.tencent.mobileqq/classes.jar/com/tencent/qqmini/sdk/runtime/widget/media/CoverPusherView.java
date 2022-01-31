@@ -5,7 +5,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
@@ -23,14 +23,14 @@ public class CoverPusherView
     addView(this.a, paramContext);
   }
   
-  public void a(bgkd parambgkd, JSONObject paramJSONObject)
+  public void a(bgok parambgok, JSONObject paramJSONObject)
   {
-    this.a.a(parambgkd, paramJSONObject);
+    this.a.a(parambgok, paramJSONObject);
   }
   
-  public void a(String paramString, bgkd parambgkd, JSONObject paramJSONObject)
+  public void a(String paramString, bgok parambgok, JSONObject paramJSONObject)
   {
-    this.a.a(paramString, parambgkd, paramJSONObject);
+    this.a.a(paramString, parambgok, paramJSONObject);
   }
   
   public void a(JSONObject paramJSONObject)

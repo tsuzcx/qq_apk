@@ -1,7 +1,19 @@
-public abstract interface bmje
-  extends bmiw
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+
+public final class bmje
+  implements Parcelable.Creator<EditLocalVideoSource>
 {
-  public abstract int a();
+  public EditLocalVideoSource a(Parcel paramParcel)
+  {
+    return new EditLocalVideoSource(paramParcel);
+  }
+  
+  public EditLocalVideoSource[] a(int paramInt)
+  {
+    return new EditLocalVideoSource[paramInt];
+  }
 }
 
 

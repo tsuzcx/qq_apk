@@ -15,14 +15,14 @@ import android.view.ViewParent;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import appt;
-import apsj;
-import apsm;
-import apsr;
-import apup;
-import apur;
-import apuu;
-import apuv;
+import apuc;
+import apws;
+import apwv;
+import apxa;
+import apyy;
+import apza;
+import apzd;
+import apze;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -37,13 +37,13 @@ public class SystemAndEmojiUniversalPanel
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new apuu(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new apzd(this);
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private appt jdField_a_of_type_Appt;
-  private apsm jdField_a_of_type_Apsm;
-  private apup jdField_a_of_type_Apup;
-  private apuv jdField_a_of_type_Apuv;
+  private apuc jdField_a_of_type_Apuc;
+  private apwv jdField_a_of_type_Apwv;
+  private apyy jdField_a_of_type_Apyy;
+  private apze jdField_a_of_type_Apze;
   private EmotionPanelListView jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView;
   private boolean jdField_a_of_type_Boolean;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
@@ -69,7 +69,7 @@ public class SystemAndEmojiUniversalPanel
   
   private int a()
   {
-    int j = this.jdField_a_of_type_Apsm.jdField_b_of_type_Int;
+    int j = this.jdField_a_of_type_Apwv.jdField_b_of_type_Int;
     int i = j;
     if (this.jdField_a_of_type_Boolean)
     {
@@ -77,7 +77,7 @@ public class SystemAndEmojiUniversalPanel
       i = j;
       if (QLog.isColorLevel())
       {
-        QLog.d("EmoticonUniversalPanel", 2, "multiWindowMode: " + this.jdField_a_of_type_Apsm.jdField_b_of_type_Int + "->" + j);
+        QLog.d("EmoticonUniversalPanel", 2, "multiWindowMode: " + this.jdField_a_of_type_Apwv.jdField_b_of_type_Int + "->" + j);
         i = j;
       }
     }
@@ -113,7 +113,7 @@ public class SystemAndEmojiUniversalPanel
     }
   }
   
-  private void a(List<apsj> paramList, ListView paramListView)
+  private void a(List<apws> paramList, ListView paramListView)
   {
     if ((paramListView != null) && (paramList != null) && (paramList.size() > 0))
     {
@@ -125,10 +125,10 @@ public class SystemAndEmojiUniversalPanel
       int i = j;
       while ((i < j + 35) && (i < paramList.size()))
       {
-        paramListView = (apsj)paramList.get(i);
-        if ((paramListView instanceof apur))
+        paramListView = (apws)paramList.get(i);
+        if ((paramListView instanceof apza))
         {
-          paramListView = (apur)paramListView;
+          paramListView = (apza)paramListView;
           if ((paramListView.c != 3) && (paramListView.jdField_b_of_type_Int != -1))
           {
             paramListView = paramListView.a(false);
@@ -147,10 +147,10 @@ public class SystemAndEmojiUniversalPanel
       i = j;
       while ((i >= 0) && (i > j - 35) && (i < paramList.size()))
       {
-        paramListView = (apsj)paramList.get(i);
-        if ((paramListView instanceof apur))
+        paramListView = (apws)paramList.get(i);
+        if ((paramListView instanceof apza))
         {
-          paramListView = (apur)paramListView;
+          paramListView = (apza)paramListView;
           if ((paramListView.c != 3) && (paramListView.jdField_b_of_type_Int != -1))
           {
             paramListView = paramListView.a(getContext(), this.jdField_a_of_type_Float);
@@ -217,7 +217,7 @@ public class SystemAndEmojiUniversalPanel
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((this.jdField_a_of_type_Apuv != null) && (this.jdField_a_of_type_Apuv.a(paramKeyEvent))) {
+    if ((this.jdField_a_of_type_Apze != null) && (this.jdField_a_of_type_Apze.a(paramKeyEvent))) {
       return true;
     }
     return super.dispatchKeyEvent(paramKeyEvent);
@@ -233,8 +233,8 @@ public class SystemAndEmojiUniversalPanel
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() == 2131365086) && (this.jdField_a_of_type_Appt != null)) {
-      this.jdField_a_of_type_Appt.b();
+    if ((paramView.getId() == 2131365088) && (this.jdField_a_of_type_Apuc != null)) {
+      this.jdField_a_of_type_Apuc.b();
     }
   }
   
@@ -282,8 +282,8 @@ public class SystemAndEmojiUniversalPanel
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonUniversalPanel", 2, "onMeasure: oldWidth=" + paramInt2 + " newWidth=" + paramInt1);
       }
-      apsr.a().a();
-      apsr.jdField_a_of_type_Int = paramInt1;
+      apxa.a().a();
+      apxa.jdField_a_of_type_Int = paramInt1;
       if (paramInt1 / localDisplayMetrics.widthPixels >= 0.66F) {
         break label140;
       }
@@ -293,21 +293,21 @@ public class SystemAndEmojiUniversalPanel
     {
       this.jdField_a_of_type_Boolean = bool;
       this.jdField_a_of_type_Int = paramInt1;
-      if ((this.jdField_a_of_type_Apup != null) && (this.jdField_a_of_type_AndroidWidgetImageButton != null)) {
+      if ((this.jdField_a_of_type_Apyy != null) && (this.jdField_a_of_type_AndroidWidgetImageButton != null)) {
         ThreadManagerV2.getUIHandlerV2().post(new SystemAndEmojiUniversalPanel.2(this));
       }
       return;
     }
   }
   
-  public void setDispatchKeyEventListener(apuv paramapuv)
+  public void setDispatchKeyEventListener(apze paramapze)
   {
-    this.jdField_a_of_type_Apuv = paramapuv;
+    this.jdField_a_of_type_Apze = paramapze;
   }
   
-  public void setEmoticonCallback(appt paramappt)
+  public void setEmoticonCallback(apuc paramapuc)
   {
-    this.jdField_a_of_type_Appt = paramappt;
+    this.jdField_a_of_type_Apuc = paramapuc;
   }
   
   public void setShowCommonUsedSystemEmoji(boolean paramBoolean)

@@ -1,18 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
 
 public class adwg
-  implements bcts
+  implements View.OnClickListener
 {
-  public adwg(TextPreviewActivity paramTextPreviewActivity) {}
+  public adwg(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void a() {}
-  
-  public void b()
+  public void onClick(View paramView)
   {
-    Message localMessage = this.a.a.obtainMessage(20);
-    this.a.a.sendMessage(localMessage);
+    this.a.getActivity().finish();
   }
 }
 

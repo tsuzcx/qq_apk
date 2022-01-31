@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bkoi;
+import bksp;
 
 public class AECameraManager$12
   implements Runnable
 {
-  public AECameraManager$12(bkoi parambkoi, int paramInt) {}
+  public AECameraManager$12(bksp parambksp, int paramInt) {}
   
   public void run()
   {
-    bkoi.c(this.this$0, this.a);
+    bksp.c(this.this$0, this.a);
   }
 }
 

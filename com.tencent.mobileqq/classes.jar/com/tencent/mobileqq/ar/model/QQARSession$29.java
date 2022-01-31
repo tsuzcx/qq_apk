@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.model;
 
-import amxr;
-import anbo;
+import anca;
+import anfx;
 
 public class QQARSession$29
   implements Runnable
 {
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Int != 2) || (!anbo.a(this.this$0))) {
+    if ((this.this$0.jdField_a_of_type_Int != 2) || (!anfx.a(this.this$0))) {
       return;
     }
-    if (this.this$0.jdField_a_of_type_Amxr != null) {
-      this.this$0.jdField_a_of_type_Amxr.a(false, anbo.a(this.this$0), anbo.b(this.this$0));
+    if (this.this$0.jdField_a_of_type_Anca != null) {
+      this.this$0.jdField_a_of_type_Anca.a(false, anfx.a(this.this$0), anfx.b(this.this$0));
     }
-    anbo.a(this.this$0, 0);
+    anfx.a(this.this$0, 0);
     this.this$0.c = false;
   }
 }

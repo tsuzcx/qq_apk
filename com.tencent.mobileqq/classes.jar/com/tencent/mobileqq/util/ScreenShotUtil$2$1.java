@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import bczp;
+import bddy;
 
 class ScreenShotUtil$2$1
   implements Runnable
@@ -9,7 +9,7 @@ class ScreenShotUtil$2$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Bczp.a(this.a, this.this$0.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.this$0.jdField_a_of_type_Bddy.a(this.a, this.this$0.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

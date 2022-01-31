@@ -1,8 +1,17 @@
-public class afsb
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
+
+class afsb
+  extends afuf
 {
-  public static boolean a(String paramString)
+  afsb(afpy paramafpy)
   {
-    return ("2658655094".equals(paramString)) || ("3142131160".equals(paramString));
+    super(paramafpy, null);
+  }
+  
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afwr(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

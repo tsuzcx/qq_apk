@@ -9,7 +9,7 @@ public class lfo
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    azmj.b(null, "CliOper", "", "", "0x8006994", "0x8006994", 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", "0x8006994", "0x8006994", 0, 0, "", "", "", "");
   }
 }
 

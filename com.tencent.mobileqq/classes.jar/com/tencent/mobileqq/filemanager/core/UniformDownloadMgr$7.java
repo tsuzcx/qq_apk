@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.core;
 
 import android.os.Bundle;
-import aqwa;
+import araj;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -10,7 +10,7 @@ import java.net.URLConnection;
 public class UniformDownloadMgr$7
   implements Runnable
 {
-  public UniformDownloadMgr$7(aqwa paramaqwa, String paramString, Bundle paramBundle) {}
+  public UniformDownloadMgr$7(araj paramaraj, String paramString, Bundle paramBundle) {}
   
   public void run()
   {
@@ -39,8 +39,8 @@ public class UniformDownloadMgr$7
       }
     }
     this.jdField_a_of_type_AndroidOsBundle.putLong("_filesize_from_dlg", l);
-    aqwa.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    aqwa.b(this.this$0);
+    araj.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    araj.b(this.this$0);
   }
 }
 

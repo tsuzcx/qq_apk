@@ -1,49 +1,113 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
+import android.net.Uri;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-final class alfv
-  implements akzo
+public class alfv
 {
-  alfv(String paramString, String[] paramArrayOfString, alfs paramalfs, int paramInt) {}
+  public String a;
+  public final HashMap<String, String> a;
+  public final List<alfx> a;
+  public String b;
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public alfv()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public String a(boolean paramBoolean)
+  {
+    if (!a()) {
+      return "";
     }
-    if (paramBoolean)
+    StringBuilder localStringBuilder = new StringBuilder();
+    for (;;)
     {
-      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
-      if (paramArrayOfInt.exists()) {
-        try
+      int j;
+      int i;
+      try
+      {
+        j = this.jdField_a_of_type_JavaUtilList.size();
+        i = 0;
+        if (i < j)
         {
-          paramString = alft.a(this.jdField_a_of_type_ArrayOfJavaLangString);
-          if (alft.a(this.jdField_a_of_type_JavaLangString))
-          {
-            paramArrayOfInt = alft.a(paramArrayOfInt, paramString);
-            this.jdField_a_of_type_Alfs.a(0, paramString, paramArrayOfInt);
+          alfx localalfx = (alfx)this.jdField_a_of_type_JavaUtilList.get(i);
+          if ((localalfx == null) || (TextUtils.isEmpty(localalfx.jdField_a_of_type_JavaLangString))) {
+            break label397;
           }
-          while (QLog.isColorLevel())
-          {
-            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString + " id:" + this.jdField_a_of_type_Int });
-            return;
-            this.jdField_a_of_type_Alfs.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
+          if ((localalfx.jdField_a_of_type_Int != 6) && (localalfx.jdField_a_of_type_Int != 7)) {
+            break label236;
           }
-          this.jdField_a_of_type_Alfs.a(-1, null, null);
+          if (TextUtils.isEmpty(Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter(localalfx.b))) {
+            break label397;
+          }
+          if (paramBoolean)
+          {
+            localStringBuilder.append(bhsz.a(localalfx.jdField_a_of_type_JavaLangString)).append("=").append(bhsz.a(localalfx.b));
+            if (i == j - 1) {
+              break label397;
+            }
+            localStringBuilder.append("&");
+            break label397;
+          }
+          localStringBuilder.append(localalfx.jdField_a_of_type_JavaLangString).append("=").append(localalfx.b);
+          continue;
         }
-        catch (Exception paramString)
-        {
-          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
-          return;
+        if (localException.jdField_a_of_type_Int != 8) {
+          break label318;
         }
       }
+      catch (Exception localException)
+      {
+        QLog.e("apollo_client_ApolloSSOConfig", 1, localException, new Object[0]);
+        if (QLog.isColorLevel()) {
+          QLog.d("apollo_client_ApolloSSOConfig", 2, new Object[] { "getParameterStr parameterBuilder:", localStringBuilder.toString() });
+        }
+        return localStringBuilder.toString();
+      }
+      label236:
+      if (paramBoolean) {
+        localStringBuilder.append(bhsz.a(localException.jdField_a_of_type_JavaLangString)).append("=").append(System.currentTimeMillis());
+      }
+      while (i != j - 1)
+      {
+        localStringBuilder.append("&");
+        break;
+        localStringBuilder.append(localException.jdField_a_of_type_JavaLangString).append("=").append(System.currentTimeMillis());
+        continue;
+        label318:
+        if (paramBoolean) {
+          localStringBuilder.append(bhsz.a(localException.jdField_a_of_type_JavaLangString)).append("=").append(bhsz.a(localException.b));
+        }
+        while (i != j - 1)
+        {
+          localStringBuilder.append("&");
+          break;
+          localStringBuilder.append(localException.jdField_a_of_type_JavaLangString).append("=").append(localException.b);
+        }
+      }
+      label397:
+      i += 1;
     }
-    else
-    {
-      this.jdField_a_of_type_Alfs.a(-1, null, null);
-    }
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b));
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("CGIConfig{");
+    localStringBuffer.append("mUrl='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mMethod='").append(this.b).append('\'');
+    localStringBuffer.append(", mHeaders=").append(this.jdField_a_of_type_JavaUtilHashMap);
+    localStringBuffer.append(", mParameters=").append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

@@ -2,21 +2,21 @@ package com.tencent.widget;
 
 import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
-import bhpy;
-import bhqa;
+import bhuf;
+import bhuh;
 
 public class ActionSheet$3
   implements Runnable
 {
-  public ActionSheet$3(bhpy parambhpy) {}
+  public ActionSheet$3(bhuf parambhuf) {}
   
   public void run()
   {
-    bhpy.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, bhpy.a(this.this$0).getHeight()));
-    bhpy.a(this.this$0).setDuration(200L);
-    bhpy.a(this.this$0).setFillAfter(true);
-    bhpy.a(this.this$0).startAnimation(bhpy.a(this.this$0));
-    bhpy.a(this.this$0).setAnimationListener(new bhqa(this));
+    bhuf.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, bhuf.a(this.this$0).getHeight()));
+    bhuf.a(this.this$0).setDuration(200L);
+    bhuf.a(this.this$0).setFillAfter(true);
+    bhuf.a(this.this$0).startAnimation(bhuf.a(this.this$0));
+    bhuf.a(this.this$0).setAnimationListener(new bhuh(this));
   }
 }
 

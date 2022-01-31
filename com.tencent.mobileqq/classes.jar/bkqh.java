@@ -1,29 +1,16 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View.OnClickListener;
 
 class bkqh
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  bkqh(bkqa parambkqa, boolean paramBoolean, int paramInt, String paramString) {}
+  bkqh(bkqg parambkqg) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    bkqa.a(this.jdField_a_of_type_Bkqa, false);
-    bkqa.b(this.jdField_a_of_type_Bkqa).setVisibility(8);
-    bkqa.a(this.jdField_a_of_type_Bkqa).setVisibility(8);
-    if ((this.jdField_a_of_type_Boolean) && (!bkqa.a(this.jdField_a_of_type_Bkqa).get())) {
-      bkqa.a(this.jdField_a_of_type_Bkqa, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    if (this.a.a != null) {
+      this.a.a.b();
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    bkqa.a(this.jdField_a_of_type_Bkqa, true);
   }
 }
 

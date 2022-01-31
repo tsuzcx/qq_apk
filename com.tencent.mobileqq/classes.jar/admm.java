@@ -1,10 +1,31 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class admm
+  extends alvn
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  public admm(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  
+  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
+    }
+    if ((paramBoolean1) && (paramInt == 64)) {
+      this.a.a(paramBoolean2);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
+    }
+    if (!paramBoolean1) {
+      this.a.a(2131719884, 1);
+    }
+    this.a.a(paramBoolean2);
+  }
 }
 
 

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.microapp.apkg;
 
 import Wallet.ApkgConfig;
 import Wallet.GetMiniAppReq;
-import aiqs;
-import aitd;
-import ajaf;
+import aivh;
+import aixs;
+import ajeu;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.microapp.ext.ManagerProxy;
@@ -42,7 +42,7 @@ public class ApkgConfigManager
     if (LaunchParam.isCollectionPage(paramMiniAppConfig2.config.mini_appid)) {
       return true;
     }
-    return ajaf.c(paramMiniAppConfig1.config.union_id, paramMiniAppConfig2.config.union_id);
+    return ajeu.c(paramMiniAppConfig1.config.union_id, paramMiniAppConfig2.config.union_id);
   }
   
   public BaseLibInfo getBaseLibInfo()
@@ -52,15 +52,15 @@ public class ApkgConfigManager
     String str1;
     if (this.baseLibInfo == null)
     {
-      aitd localaitd = ManagerProxy.getQWalletConfigManager(this.mApp);
+      aixs localaixs = ManagerProxy.getQWalletConfigManager(this.mApp);
       str3 = "";
       str2 = "";
       str1 = "";
-      if (localaitd != null)
+      if (localaixs != null)
       {
-        str3 = localaitd.a("miniapp", "", new String[] { "base_lib_url" });
-        str2 = localaitd.a("miniapp", "", new String[] { "base_lib_key" });
-        str1 = localaitd.a("miniapp", "", new String[] { "base_lib_version" });
+        str3 = localaixs.a("miniapp", "", new String[] { "base_lib_url" });
+        str2 = localaixs.a("miniapp", "", new String[] { "base_lib_key" });
+        str1 = localaixs.a("miniapp", "", new String[] { "base_lib_version" });
       }
       if ((!TextUtils.isEmpty(str3)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1))) {
         break label130;
@@ -96,7 +96,7 @@ public class ApkgConfigManager
     if (QLog.isColorLevel()) {
       QLog.d("ApkgConfigManager", 2, "getNewestConfig GetMiniAppReq|" + localGetMiniAppReq);
     }
-    aiqs.a(localGetMiniAppReq, new c(this, parama, paramLaunchParam));
+    aivh.a(localGetMiniAppReq, new c(this, parama, paramLaunchParam));
   }
   
   public void onDestroy() {}

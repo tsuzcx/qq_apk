@@ -9,8 +9,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bdkf;
-import bjxj;
+import bdoo;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -75,7 +75,7 @@ public abstract class ReadInJoyBaseFragment
   
   private void c(MessageRecord paramMessageRecord)
   {
-    if ((bjxj.j()) && ((getActivity() instanceof SplashActivity))) {
+    if ((bkbq.j()) && ((getActivity() instanceof SplashActivity))) {
       return;
     }
     d(paramMessageRecord);
@@ -85,7 +85,7 @@ public abstract class ReadInJoyBaseFragment
   
   private void d(MessageRecord paramMessageRecord)
   {
-    if ((bjxj.k()) && ((this instanceof ReadInJoyRecommendFeedsFragment))) {
+    if ((bkbq.k()) && ((this instanceof ReadInJoyRecommendFeedsFragment))) {
       ThreadManager.getSubThreadHandler().post(new ReadInJoyBaseFragment.1(this, paramMessageRecord));
     }
   }
@@ -213,7 +213,7 @@ public abstract class ReadInJoyBaseFragment
     }
     j = i;
     if (i <= 0) {
-      j = bdkf.b(80.5F) + ImmersiveUtils.getStatusBarHeight(getActivity());
+      j = bdoo.b(80.5F) + ImmersiveUtils.getStatusBarHeight(getActivity());
     }
     return j;
   }

@@ -1,20 +1,26 @@
-import android.animation.Animator;
-import android.animation.ValueAnimator;
-import android.view.View;
-import android.view.animation.Animation;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class axkz
+  implements ViewPager.OnPageChangeListener
 {
-  public static Animator a(View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt2, paramInt3 });
-    localValueAnimator.addUpdateListener(new axlb(paramInt1, paramView));
-    return localValueAnimator;
-  }
+  public axkz(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public static Animation a(View paramView, float paramFloat1, float paramFloat2)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    return new bdjs(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new axla(paramView));
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).setSelectedTab(paramInt, true);
+    if (paramInt == 0)
+    {
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).a(false);
+      return;
+    }
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).a(true);
   }
 }
 

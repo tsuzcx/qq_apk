@@ -1,45 +1,29 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.text.TextUtils;
 
 public class wan
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wbc>
+  extends umf<wah, utf>
 {
-  public wan(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public wan(wah paramwah)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super(paramwah);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wbc paramwbc)
+  public void a(@NonNull wah paramwah, @NonNull utf paramutf)
   {
-    if (paramwbc.a == 1)
+    if ((paramwah.a != null) && (TextUtils.equals(paramwah.a.b, paramutf.a)))
     {
-      paramQQStoryShareGroupProfileActivity.g = true;
-      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Wbb.a();
-      paramQQStoryShareGroupProfileActivity.b(true);
-      paramwbc = paramQQStoryShareGroupProfileActivity.b;
-      if (!paramQQStoryShareGroupProfileActivity.g) {
-        break label82;
-      }
-    }
-    label82:
-    for (paramQQStoryShareGroupProfileActivity = "1";; paramQQStoryShareGroupProfileActivity = "2")
-    {
-      wta.a("share_story", "clk_rank", 0, 0, new String[] { paramwbc, paramQQStoryShareGroupProfileActivity });
-      return;
-      if (paramwbc.a != 0) {
-        break;
-      }
-      paramQQStoryShareGroupProfileActivity.g = false;
-      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean = false;
-      break;
+      wxe.a(this.TAG, "receive feed info change event. %s.", paramutf.toString());
+      paramwah.i();
     }
   }
   
   public Class acceptEventClass()
   {
-    return wbc.class;
+    return utf.class;
   }
+  
+  public void b(@NonNull wah paramwah, @NonNull utf paramutf) {}
 }
 
 

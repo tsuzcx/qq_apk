@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import almt;
-import almu;
-import almv;
+import alri;
+import alrj;
+import alrk;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +19,10 @@ class DiscussionInfoCardActivity$5
     if (this.a) {}
     try
     {
-      almu localalmu = new almu();
-      localalmu.a = String.valueOf(DiscussionInfoCardActivity.a(this.this$0));
-      localalmu.b = localArrayList.size();
-      DiscussionInfoCardActivity.a(this.this$0).a(localalmu);
+      alrj localalrj = new alrj();
+      localalrj.a = String.valueOf(DiscussionInfoCardActivity.a(this.this$0));
+      localalrj.b = localArrayList.size();
+      DiscussionInfoCardActivity.a(this.this$0).a(localalrj);
       return;
     }
     catch (Exception localException)

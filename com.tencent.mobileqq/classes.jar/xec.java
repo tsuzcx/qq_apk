@@ -1,24 +1,16 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.PointF;
 
-public class xec
-  implements ViewPager.OnPageChangeListener
+public abstract interface xec
 {
-  public xec(FaceViewPager paramFaceViewPager) {}
+  public abstract void a();
   
-  public void onPageScrollStateChanged(int paramInt) {}
+  public abstract void a(float paramFloat);
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
   
-  public void onPageSelected(int paramInt)
-  {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((xed)localIterator.next()).b(paramInt);
-    }
-  }
+  public abstract boolean a(xed paramxed);
+  
+  public abstract void b();
 }
 
 

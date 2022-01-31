@@ -1,17 +1,16 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
-final class aqld
-  implements army
+public class aqld
+  implements View.OnClickListener
 {
-  aqld(Activity paramActivity, FileManagerEntity paramFileManagerEntity) {}
+  public aqld(FMActivity paramFMActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    arni.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
+    FMActivity.c(this.a);
   }
-  
-  public void b() {}
 }
 
 

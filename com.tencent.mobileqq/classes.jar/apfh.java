@@ -1,25 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.PrecoverConfig;
 
-class apfh
+public final class apfh
+  implements Parcelable.Creator<PrecoverConfig>
 {
-  apfh(apfg paramapfg) {}
-  
-  @QQPermissionDenied(1818)
-  public void denied()
+  public PrecoverConfig a(Parcel paramParcel)
   {
-    QLog.e("VoiceInputHelper", 1, "checkPermission user denied");
-    apfg.a(this.a);
-    this.a.onGetError(1830001);
+    return new PrecoverConfig(paramParcel);
   }
   
-  @QQPermissionGrant(1818)
-  public void grant()
+  public PrecoverConfig[] a(int paramInt)
   {
-    QLog.d("VoiceInputHelper", 1, "checkPermission user grant");
-    apfg.a(this.a);
-    apfg.b(this.a);
+    return new PrecoverConfig[paramInt];
   }
 }
 

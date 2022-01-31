@@ -1,18 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.CommonlyUsedTroop;
+import java.util.Comparator;
 
 public class akbu
-  implements anoi
+  implements Comparator<CommonlyUsedTroop>
 {
-  public akbu(SessionClearFragment paramSessionClearFragment) {}
+  protected akbu(akbr paramakbr) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForDiscuss onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
+      return 1;
     }
-    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
+    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
+      return -1;
+    }
+    return 0;
   }
 }
 

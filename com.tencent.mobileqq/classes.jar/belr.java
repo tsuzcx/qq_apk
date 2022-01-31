@@ -1,30 +1,11 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.widget.GridListView;
-
-public class belr
-  extends DataSetObserver
+public abstract interface belr
+  extends begg
 {
-  public belr(GridListView paramGridListView) {}
+  public abstract int a();
   
-  public void onChanged()
-  {
-    if (this.a.jdField_a_of_type_Belu != null) {
-      GridListView.a(this.a, this.a.jdField_a_of_type_Belu.getCount());
-    }
-    if (this.a.jdField_a_of_type_Belv != null) {
-      this.a.jdField_a_of_type_Belv.notifyDataSetChanged();
-    }
-  }
+  public abstract void a(int paramInt);
   
-  public void onInvalidated()
-  {
-    if (this.a.jdField_a_of_type_Belu != null) {
-      GridListView.a(this.a, this.a.jdField_a_of_type_Belu.getCount());
-    }
-    if (this.a.jdField_a_of_type_Belv != null) {
-      this.a.jdField_a_of_type_Belv.notifyDataSetInvalidated();
-    }
-  }
+  public abstract void a(long paramLong);
 }
 
 

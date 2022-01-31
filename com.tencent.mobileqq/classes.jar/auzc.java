@@ -1,17 +1,22 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 class auzc
-  extends nab
+  implements DialogInterface.OnClickListener
 {
-  auzc(auza paramauza, auzh paramauzh) {}
+  auzc(auzb paramauzb, oidb_0x8e4.RspBody paramRspBody) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("reportPlay", 1, " reportPlay code:" + paramInt);
-    if (this.jdField_a_of_type_Auzh != null) {
-      this.jdField_a_of_type_Auzh.a(paramInt, paramArrayOfByte, paramBundle);
-    }
+    paramDialogInterface = this.jdField_a_of_type_TencentImOidbCmd0x8e4Oidb_0x8e4$RspBody.poi_info;
+    String str = paramDialogInterface.bytes_uid.get().toStringUtf8();
+    auzg.a(this.jdField_a_of_type_Auzb.a, HotChatInfo.createHotChat(paramDialogInterface, false, 0), paramDialogInterface.uint32_group_code.get(), str, paramDialogInterface.bytes_name.get().toStringUtf8());
   }
 }
 

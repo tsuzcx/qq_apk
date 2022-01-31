@@ -53,18 +53,18 @@ public class mse
   
   RelativeLayout a(AVActivity paramAVActivity)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramAVActivity.findViewById(2131367368);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramAVActivity.findViewById(2131367378);
     if (localRelativeLayout != null) {
       paramAVActivity = localRelativeLayout;
     }
     for (;;)
     {
       return paramAVActivity;
-      localRelativeLayout = (RelativeLayout)paramAVActivity.getLayoutInflater().inflate(2131559624, (RelativeLayout)paramAVActivity.findViewById(2131372540)).findViewById(2131367368);
+      localRelativeLayout = (RelativeLayout)paramAVActivity.getLayoutInflater().inflate(2131559623, (RelativeLayout)paramAVActivity.findViewById(2131372566)).findViewById(2131367378);
       a(localRelativeLayout);
       b();
-      localRelativeLayout.findViewById(2131367369).setOnClickListener(new msf(this));
-      Object localObject = localRelativeLayout.findViewById(2131367366);
+      localRelativeLayout.findViewById(2131367379).setOnClickListener(new msf(this));
+      Object localObject = localRelativeLayout.findViewById(2131367376);
       if (this.b == null) {
         this.b = msp.a("qav_redpacket_result_close.png", true);
       }
@@ -73,9 +73,9 @@ public class mse
       }
       ((View)localObject).setOnClickListener(new msg(this));
       String str = msp.b();
-      if (bdcs.b(str))
+      if (bdhb.b(str))
       {
-        localObject = (VideoView)localRelativeLayout.findViewById(2131367371);
+        localObject = (VideoView)localRelativeLayout.findViewById(2131367381);
         ((VideoView)localObject).setVideoPath(str);
         ((VideoView)localObject).setZOrderOnTop(true);
         ((VideoView)localObject).setOnPreparedListener(this);
@@ -145,14 +145,14 @@ public class mse
     Object localObject = a();
     if (localObject != null)
     {
-      RelativeLayout localRelativeLayout = (RelativeLayout)((Activity)localObject).findViewById(2131367368);
+      RelativeLayout localRelativeLayout = (RelativeLayout)((Activity)localObject).findViewById(2131367378);
       if (localRelativeLayout != null)
       {
         localRelativeLayout.setOnTouchListener(null);
-        localObject = (RelativeLayout)((Activity)localObject).findViewById(2131372540);
+        localObject = (RelativeLayout)((Activity)localObject).findViewById(2131372566);
         if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
         {
-          VideoView localVideoView = (VideoView)localRelativeLayout.findViewById(2131367371);
+          VideoView localVideoView = (VideoView)localRelativeLayout.findViewById(2131367381);
           if (localVideoView != null) {
             localVideoView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap));
           }
@@ -195,7 +195,7 @@ public class mse
       paramMediaPlayer = a();
       if (paramMediaPlayer != null)
       {
-        paramMediaPlayer = (VideoView)paramMediaPlayer.findViewById(2131367371);
+        paramMediaPlayer = (VideoView)paramMediaPlayer.findViewById(2131367381);
         if (paramMediaPlayer != null) {
           paramMediaPlayer.setBackgroundDrawable(null);
         }
@@ -210,7 +210,7 @@ public class mse
     Object localObject = a();
     if (localObject != null)
     {
-      localObject = (VideoView)((AVActivity)localObject).findViewById(2131367371);
+      localObject = (VideoView)((AVActivity)localObject).findViewById(2131367381);
       if (localObject != null)
       {
         ((VideoView)localObject).start();

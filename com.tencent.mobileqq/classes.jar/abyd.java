@@ -1,60 +1,102 @@
-import android.app.Dialog;
-import android.content.Intent;
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class abyd
-  implements View.OnClickListener
+class abyd
+  implements AdapterView.OnItemClickListener
 {
-  public abyd(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  abyd(abyc paramabyc, int paramInt, abwu paramabwu) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (!AddFriendVerifyActivity.a(this.a)) {
+    paramAdapterView = paramView.getTag();
+    if (paramAdapterView == null) {
       return;
     }
-    if (this.a.a != null)
+    this.jdField_a_of_type_Abyc.a.dismiss();
+    long l = paramLong;
+    label92:
+    int j;
+    int i;
+    switch (((bdmy)paramAdapterView).a.action)
     {
-      this.a.getWindow().setSoftInputMode(2);
-      this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-      AddFriendVerifyActivity.a(this.a).clearFocus();
-    }
-    if (AddFriendVerifyActivity.a(this.a).getText().toString().length() > 90)
-    {
-      paramView = new Dialog(this.a, 2131755801);
-      paramView.setContentView(2131562559);
-      ((TextView)paramView.findViewById(2131365231)).setText(this.a.getString(2131691148));
-      ((ProgressBar)paramView.findViewById(2131366685)).setVisibility(8);
-      ((ImageView)paramView.findViewById(2131379296)).setImageResource(2130839406);
-      paramView.show();
-      return;
-    }
-    this.a.a(AddFriendVerifyActivity.a(this.a).getText().toString(), true);
-    if (bdee.d(this.a))
-    {
-      if (AddFriendVerifyActivity.a(this.a) != null) {}
-      for (int i = AddFriendVerifyActivity.a(this.a).a();; i = 2000)
-      {
-        QLog.e("AddFriendVerifyActivity", 1, "joinTroop templateId: " + i);
-        AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), AddFriendVerifyActivity.a(this.a).getText().toString(), this.a.getIntent().getIntExtra("stat_option", 0), i);
-        azmj.b(null, "dc00898", "", "", "qq_vip", "0X800A62B", afsm.a(i), 0, "", "", "", "");
-        if (!"d2g".equals(this.a.getIntent().getStringExtra("jump_from"))) {
-          break;
+    default: 
+      l = paramLong;
+    case 4: 
+    case 5: 
+    case 6: 
+    case 7: 
+    case 8: 
+      j = (int)l;
+      if ((l == 2L) || (l == 3L)) {
+        if (!WXShareHelper.a().a()) {
+          i = 2131721491;
         }
-        azmj.b(this.a.app, "P_CliOper", "Grp_discuss", "", "discuss_set", "send_ask", 0, 0, AddFriendVerifyActivity.a(this.a), "", "", "");
-        return;
       }
+      break;
     }
-    QQToast.a(this.a, 1, 2131694766, 0).b(this.a.getTitleBarHeight());
+    for (;;)
+    {
+      for (;;)
+      {
+        if (i != -1)
+        {
+          paramAdapterView = BaseApplicationImpl.getContext();
+          QQToast.a(paramAdapterView, paramAdapterView.getString(i), 0).b(this.jdField_a_of_type_Int);
+          return;
+          l = 0L;
+          break label92;
+          l = 1L;
+          break label92;
+          l = 3L;
+          break label92;
+          l = 2L;
+          break label92;
+          l = 4L;
+          break label92;
+          if (WXShareHelper.a().b()) {
+            break label316;
+          }
+          i = 2131721492;
+          continue;
+        }
+        paramAdapterView = new JSONObject();
+        try
+        {
+          paramAdapterView.put("selectChanel", j);
+          acab.a(this.jdField_a_of_type_Abwu, paramAdapterView);
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i("DoraemonApi.ShareModule", 2, "onItemClick.chooseChannel: " + paramInt + "," + l);
+          return;
+        }
+        catch (Exception paramAdapterView)
+        {
+          for (;;)
+          {
+            paramView = paramAdapterView.getMessage();
+            QLog.e("DoraemonApi.ShareModule", 1, "put channel failed!");
+            abwu localabwu = this.jdField_a_of_type_Abwu;
+            paramAdapterView = paramView;
+            if (paramView == null) {
+              paramAdapterView = "";
+            }
+            acab.a(localabwu, -1, paramAdapterView);
+          }
+        }
+      }
+      label316:
+      i = -1;
+    }
   }
 }
 

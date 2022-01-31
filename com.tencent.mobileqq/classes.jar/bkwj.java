@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
 class bkwj
-  extends bavs
+  implements bmeo<Boolean>
 {
-  bkwj(bkwi parambkwi, QQAppInterface paramQQAppInterface, String paramString, Runnable paramRunnable, long paramLong)
-  {
-    super(paramQQAppInterface, paramString, paramRunnable, paramLong);
-  }
+  bkwj(bkvx parambkvx) {}
   
-  protected void realCancel()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    blfg.b("AEResManager", "[startPreDownLoad], preDownloadTask.realCancel()");
+    if (paramBoolean == null) {}
+    while (bkvx.a(this.a) == null) {
+      return;
+    }
+    bkvx.a(this.a).a(paramBoolean.booleanValue());
   }
 }
 

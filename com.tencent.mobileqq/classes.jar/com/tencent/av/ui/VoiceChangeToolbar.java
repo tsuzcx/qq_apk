@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import aekt;
+import aepi;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout.LayoutParams;
-import bdkf;
+import bdoo;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -87,9 +87,9 @@ public class VoiceChangeToolbar
   
   private void updateEarbackBtn()
   {
-    int i = 2130841950;
+    int i = 2130841963;
     if (this.mApp.a().a().az) {
-      i = 2130841951;
+      i = 2130841964;
     }
     this.mEarbackBtn.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
   }
@@ -100,9 +100,9 @@ public class VoiceChangeToolbar
     {
       this.mUIInfo = new mej();
       this.mUIInfo.d = 5;
-      this.mUIInfo.f = 2131559644;
-      this.mUIInfo.e = 2130841932;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131696387);
+      this.mUIInfo.f = 2131559643;
+      this.mUIInfo.e = 2130841945;
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131696389);
     }
     return this.mUIInfo;
   }
@@ -166,7 +166,7 @@ public class VoiceChangeToolbar
   protected void onCreate(long paramLong, AVActivity paramAVActivity)
   {
     mToolbarInstance = this;
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131367793));
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131367803));
     this.mListView.setStayDisplayOffsetZero(true);
     this.mItemInfo = getList();
     this.mAdapter = new mjk(this.mApp, paramAVActivity, this.mItemInfo, this.mListView);
@@ -174,8 +174,8 @@ public class VoiceChangeToolbar
     this.mAdapter.b(true);
     this.mAdapter.a(this.mVoiceClickCallback);
     this.mListView.setAdapter(this.mAdapter);
-    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131364101));
-    this.mEarbackBtn.setTextSize(bdkf.e(aekt.a(12.0F, paramAVActivity.getResources())));
+    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131364103));
+    this.mEarbackBtn.setTextSize(bdoo.e(aepi.a(12.0F, paramAVActivity.getResources())));
     this.mEarbackBtn.setOnClickListener(this);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams.setMargins(mjk.a(paramAVActivity.getResources(), this.mAdapter.a(), 0.1666667F), 0, 0, 0);

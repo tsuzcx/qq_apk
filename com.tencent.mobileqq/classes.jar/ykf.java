@@ -1,6 +1,8 @@
-public abstract interface ykf
+public abstract interface ykf<T>
 {
-  public abstract void a(int paramInt);
+  public abstract void a(ykh<T> paramykh);
+  
+  public abstract void b();
 }
 
 

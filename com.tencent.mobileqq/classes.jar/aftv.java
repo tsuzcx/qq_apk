@@ -1,20 +1,18 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aftv
-  extends aelt
+class aftv
+  extends afuf
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public RelativeLayout b;
-  public TextView b;
-  public View c;
-  public TextView c;
+  aftv(afpy paramafpy)
+  {
+    super(paramafpy, null);
+  }
   
-  public aftv(aftr paramaftr) {}
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new aspt(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
 }
 
 

@@ -1,63 +1,21 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Color;
+import android.view.View;
 
-public class axpk
+final class axpk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  protected int a;
-  protected PublishVideoEntry a;
-  protected int b;
-  protected int c;
-  protected int d = -1;
-  protected int e = -1;
+  final int jdField_a_of_type_Int = Color.red(this.d);
+  final int b = Color.green(this.d);
+  final int c = Color.blue(this.d);
   
-  public axpk(int paramInt, PublishVideoEntry paramPublishVideoEntry)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.copy(paramPublishVideoEntry);
-    a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode);
-  }
+  axpk(int paramInt, View paramView) {}
   
-  private int b(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 7: 
-      return 5;
-    case 8: 
-      return 6;
-    case 9: 
-      return 7;
-    }
-    return 4;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 3: 
-    case 4: 
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
-    }
-    return 3;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = b(paramInt);
-    this.c = a(paramInt);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.d = paramInt;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
   }
 }
 

@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
 public class ajvr
-  implements DialogInterface.OnClickListener
+  implements MediaPlayer.OnCompletionListener
 {
-  public ajvr(SelectMemberActivity paramSelectMemberActivity) {}
+  public ajvr(FixedSizeVideoView paramFixedSizeVideoView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    paramDialogInterface.dismiss();
+    if (this.a.a != null)
+    {
+      if (FixedSizeVideoView.a(this.a) != null) {
+        FixedSizeVideoView.a(this.a).removeMessages(0);
+      }
+      this.a.a.a(paramMediaPlayer);
+    }
   }
 }
 

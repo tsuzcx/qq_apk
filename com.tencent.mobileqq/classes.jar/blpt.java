@@ -1,27 +1,11 @@
-import com.tencent.qphone.base.util.QLog;
-
-final class blpt
-  implements xpb
+public abstract interface blpt
+  extends blpp
 {
-  public void onFailure(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onFailure: invoked. info: Failed showFFmpegFormats. message = " + paramString);
-    }
-  }
+  public abstract void l();
   
-  public void onFinish(boolean paramBoolean) {}
+  public abstract void q();
   
-  public void onProgress(String paramString) {}
-  
-  public void onStart() {}
-  
-  public void onSuccess(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onSuccess: invoked. Message: message: showFFmpegFormats ok. " + paramString);
-    }
-  }
+  public abstract void r();
 }
 
 

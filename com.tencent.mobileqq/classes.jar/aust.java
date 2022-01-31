@@ -1,15 +1,17 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
 
 final class aust
-  implements avpl
+  implements Comparator<String>
 {
-  aust(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
-  
-  public void onClick(View paramView)
+  public int a(String paramString1, String paramString2)
   {
-    auss.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
+    if (paramString1.length() > paramString2.length()) {
+      return -1;
+    }
+    if (paramString1.length() < paramString2.length()) {
+      return 1;
+    }
+    return 0;
   }
 }
 

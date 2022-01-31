@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agot;
-import bdpx;
+import agti;
+import bdug;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
@@ -9,17 +9,17 @@ import java.util.List;
 public class PublicAccountChatPie$6
   implements Runnable
 {
-  public PublicAccountChatPie$6(agot paramagot) {}
+  public PublicAccountChatPie$6(agti paramagti) {}
   
   public void run()
   {
-    int j = agot.a(this.this$0);
+    int j = agti.a(this.this$0);
     int i = j;
     if (j > 2) {
       i = 2;
     }
     List localList = this.this$0.a.a().a("2747277822", 1008, i);
-    ((bdpx)this.this$0.a.a(71)).a(2, localList);
+    ((bdug)this.this$0.a.a(71)).a(2, localList);
   }
 }
 

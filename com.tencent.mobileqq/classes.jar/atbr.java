@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class atbr
-  extends balh
+  implements View.OnClickListener
 {
-  atbr(atbq paramatbq) {}
+  atbr(atbp paramatbp) {}
   
-  protected void a(boolean paramBoolean, balk parambalk, int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if ((!paramBoolean) || (parambalk == null)) {}
-    do
-    {
-      do
-      {
-        return;
-        QLog.i("WatchTogetherManager", 1, "onGetPlayState  groupuin = " + parambalk.e);
-      } while (!(parambalk instanceof WatchTogetherSession));
-      paramString = atbq.a(this.a, (WatchTogetherSession)parambalk);
-    } while (paramString == null);
-    this.a.b(parambalk.e, paramString);
-    paramInt = paramString.a;
-    this.a.a("100", paramInt, null);
+    atbp.a(this.a);
   }
 }
 

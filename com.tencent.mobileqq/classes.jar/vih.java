@@ -1,14 +1,20 @@
-import android.support.v4.view.ViewPager;
-
-class vih
-  implements berl
+public abstract interface vih
 {
-  vih(vig paramvig) {}
+  public abstract void a();
   
-  public void onTabSelected(int paramInt1, int paramInt2)
-  {
-    this.a.a.setCurrentItem(paramInt2);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d();
+  
+  public abstract void d(int paramInt);
 }
 
 

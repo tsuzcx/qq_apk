@@ -1,23 +1,18 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import mqq.os.MqqHandler;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 public class addg
-  extends MqqHandler
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public addg(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public addg(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 2014: 
-      this.a.finish();
-      return;
+    banm.a(paramBoolean);
+    if (paramBoolean) {
+      banm.a(new addh(this.a.jdField_a_of_type_Adyd, this.a.jdField_a_of_type_AndroidViewView));
     }
-    this.a.finish();
   }
 }
 

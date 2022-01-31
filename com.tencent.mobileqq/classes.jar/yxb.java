@@ -1,11 +1,23 @@
-import com.tencent.oskplayer.util.Singleton;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout.LayoutParams;
 
 class yxb
-  extends Singleton<ywz>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  protected ywz a()
+  yxb(ywy paramywy, View paramView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new ywz(null);
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    if ((localLayoutParams instanceof LinearLayout.LayoutParams))
+    {
+      ((LinearLayout.LayoutParams)localLayoutParams).topMargin = paramValueAnimator.intValue();
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    }
   }
 }
 

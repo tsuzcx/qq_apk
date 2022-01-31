@@ -1,19 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.ptv.LWMotionEvent;
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
-public final class bmau
-  implements Parcelable.Creator<LWMotionEvent>
+public abstract interface bmau
 {
-  public LWMotionEvent a(Parcel paramParcel)
-  {
-    return new LWMotionEvent(paramParcel, null);
-  }
+  public abstract int a();
   
-  public LWMotionEvent[] a(int paramInt)
-  {
-    return new LWMotionEvent[paramInt];
-  }
+  public abstract void a(int paramInt, QIMFilterCategoryItem paramQIMFilterCategoryItem);
+  
+  public abstract void a(int paramInt, Object paramObject);
+  
+  public abstract void a(int paramInt, Object... paramVarArgs);
+  
+  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d(int paramInt);
+  
+  public abstract void e(int paramInt);
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void k();
 }
 
 

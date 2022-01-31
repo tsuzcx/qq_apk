@@ -1,34 +1,53 @@
-public class azrk
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+class azrk
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public azrk(String paramString)
+  public azrk(long paramLong, String paramString1, String paramString2)
   {
-    this(null, null, null, null, null, null, null, paramString);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    int i;
+    if (paramString1 == null)
+    {
+      i = 0;
+      if (paramString2 != null) {
+        break label67;
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = (j + (i + 19 + 1) + 1);
+      return;
+      i = paramString1.getBytes().length;
+      break;
+      label67:
+      j = paramString2.getBytes().length;
+    }
   }
   
-  public azrk(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
+  public String toString()
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
-    this.g = paramString7;
-    this.h = paramString8;
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    Date localDate = new Date(this.jdField_a_of_type_Long);
+    localStringBuilder.append(azri.a().format(localDate));
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("\n");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azrk
  * JD-Core Version:    0.7.0.1
  */

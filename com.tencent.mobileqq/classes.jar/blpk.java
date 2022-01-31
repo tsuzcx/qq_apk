@@ -1,26 +1,17 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StBatchGetMusicInfoRsp;
-import NS_QQ_STORY_META.META.StMusic;
-import com.tencent.mobileqq.data.FlowMusic;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import com.tencent.tavcut.session.TAVCutSession;
 
-public class blpk
-  implements yvn<CLIENT.StBatchGetMusicInfoRsp>
+class blpk
+  implements blpg
 {
-  public blpk(QIMMusicConfigManager paramQIMMusicConfigManager, blne paramblne) {}
+  blpk(blpi paramblpi, TAVCutSession paramTAVCutSession, int paramInt) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StBatchGetMusicInfoRsp paramStBatchGetMusicInfoRsp)
+  public void a(blpo paramblpo)
   {
-    if ((!paramBoolean) || (paramStBatchGetMusicInfoRsp.vecMusic.size() == 0)) {
-      this.jdField_a_of_type_Blne.a(false, new FlowMusic());
+    if ((paramblpo instanceof bloy))
+    {
+      paramblpo = (bloy)paramblpo;
+      blpi.a(this.jdField_a_of_type_Blpi, this.jdField_a_of_type_ComTencentTavcutSessionTAVCutSession, paramblpo.a(), paramblpo.a(), this.jdField_a_of_type_Int);
     }
-    while (this.jdField_a_of_type_Blne == null) {
-      return;
-    }
-    paramString = new FlowMusic((META.StMusic)paramStBatchGetMusicInfoRsp.vecMusic.get(0));
-    QLog.i("QIMMusicConfigManager", 1, "getSingleFullMusicInfo from story success flow info:" + paramString.toString());
-    this.jdField_a_of_type_Blne.a(true, paramString);
   }
 }
 

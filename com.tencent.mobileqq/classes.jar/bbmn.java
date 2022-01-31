@@ -1,23 +1,28 @@
-import com.tencent.mobileqq.troop.createNewTroop.RelationTroopEntity;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class bbmn
-  implements bccr
+public abstract class bbmn
+  implements BusinessObserver
 {
-  bbmn(bbml parambbml, bbmt parambbmt) {}
+  protected abstract void a(long paramLong);
   
-  public void a(ArrayList<bccq> paramArrayList)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayList.size())
+    if (QLog.isColorLevel())
     {
-      RelationTroopEntity localRelationTroopEntity = new RelationTroopEntity();
-      localRelationTroopEntity.troopInfo = ((bccq)paramArrayList.get(i)).a;
-      localArrayList.add(localRelationTroopEntity);
-      i += 1;
+      String str = "success = [" + paramBoolean + "], [" + paramBundle + "]";
+      QLog.i("GroupAppsObserver", 2, " onReceive: invoked. " + str);
     }
-    this.jdField_a_of_type_Bbmt.a(localArrayList);
+    if (!paramBoolean) {
+      return;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBundle.getLong("KEY_GROUP_UIN"));
   }
 }
 

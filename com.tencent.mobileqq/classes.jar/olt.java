@@ -89,7 +89,7 @@ public class olt
     if ((paramArticleInfo instanceof AdvertisementInfo)) {
       localIntent.putExtra("arg_ad_show_biu", false);
     }
-    adky.a(paramActivity, localIntent, PublicTransFragmentActivity.class, ReadInJoyCommentComponentFragment.class, 117);
+    adpn.a(paramActivity, localIntent, PublicTransFragmentActivity.class, ReadInJoyCommentComponentFragment.class, 117);
     if (paramolu != null) {
       paramolu.a();
     }
@@ -140,7 +140,7 @@ public class olt
       localIntent.putExtra("comment_is_show_pic", otd.a());
     }
     localIntent.putExtra("arg_ad_show_biu", paramBoolean2);
-    adky.a(paramActivity, localIntent, PublicTransFragmentActivity.class, ReadInJoyCommentComponentFragment.class, 117);
+    adpn.a(paramActivity, localIntent, PublicTransFragmentActivity.class, ReadInJoyCommentComponentFragment.class, 117);
     if (paramolu != null) {
       paramolu.a();
     }
@@ -170,7 +170,7 @@ public class olt
   {
     if (paramIntent == null)
     {
-      QQToast.a(BaseApplication.getContext(), 1, BaseApplication.getContext().getString(2131718788), 0).a();
+      QQToast.a(BaseApplication.getContext(), 1, BaseApplication.getContext().getString(2131718800), 0).a();
       QLog.d("ReadInJoyCommentUtils", 2, "comment result intent data is null");
     }
     ArticleInfo localArticleInfo;
@@ -197,7 +197,7 @@ public class olt
     do
     {
       return;
-      paramString = oqu.g + bdbi.encodeToString(paramString.getBytes(), 2);
+      paramString = oqu.g + bdfr.encodeToString(paramString.getBytes(), 2);
       ors.a(paramContext, paramString);
     } while (!QLog.isColorLevel());
     QLog.d("ReadInJoyCommentUtils", 2, "personal url =" + paramString);
@@ -223,7 +223,7 @@ public class olt
         if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.getText())))
         {
           paramContext = String.valueOf(paramContext.getText());
-          paramString = new baig(ayvy.b(paramString), 7, 18).toString();
+          paramString = new bamp(azah.b(paramString), 7, 18).toString();
           if (!TextUtils.isEmpty(paramContext)) {
             return paramContext.contains(paramString);
           }

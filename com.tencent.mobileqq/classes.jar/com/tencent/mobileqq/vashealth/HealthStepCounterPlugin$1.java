@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.vashealth;
 
-import bdtu;
+import bdyd;
 
 public class HealthStepCounterPlugin$1
   implements Runnable
 {
-  public HealthStepCounterPlugin$1(bdtu parambdtu, String paramString) {}
+  public HealthStepCounterPlugin$1(bdyd parambdyd, String paramString) {}
   
   public void run()
   {
-    bdtu.a(this.this$0, this.a);
+    bdyd.a(this.this$0, this.a);
   }
 }
 

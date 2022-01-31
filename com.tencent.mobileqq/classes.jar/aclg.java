@@ -1,60 +1,30 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.Map;
 
-public class aclg
-  extends alox
+public final class aclg
+  implements DialogInterface.OnClickListener
 {
-  public aclg(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aclg(QQAppInterface paramQQAppInterface, aclo paramaclo, long paramLong, Context paramContext, acln paramacln) {}
   
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onSetGenralSettingsTroopFilter(paramBoolean, paramMap);
-    if ((paramMap == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null)) {
-      return;
+    auwm localauwm = (auwm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(66);
+    if (localauwm != null) {
+      localauwm.a((byte)0);
     }
-    if (!paramBoolean) {
-      if (paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin) != null) {
-        QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131721089), 0).b(this.a.getTitleBarHeight());
-      }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true);
+    if (this.jdField_a_of_type_Aclo.a) {
+      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(17);
-      return;
-      paramMap = (Integer)paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
-      if (paramMap != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopmask = paramMap.intValue();
-      }
+    this.jdField_a_of_type_Aclo.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acln, this.jdField_a_of_type_Aclo);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {}
-    try
-    {
-      l = Long.valueOf(paramString).longValue();
-      if (l != 0L) {
-        this.a.a(l);
-      }
-      return;
-    }
-    catch (NumberFormatException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        long l = 0L;
-      }
-    }
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString) {}
 }
 
 

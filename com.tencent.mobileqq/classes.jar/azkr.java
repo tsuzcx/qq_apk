@@ -1,22 +1,10 @@
-import android.widget.ImageView;
-
-public final class azkr
-  implements azje
+public class azkr
 {
-  public azkr(ImageView paramImageView1, ImageView paramImageView2) {}
-  
-  public void a()
-  {
-    if ((this.a != null) && (this.b != null))
-    {
-      this.a.setVisibility(8);
-      this.b.setVisibility(8);
-    }
-  }
+  public static boolean a = true;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azkr
  * JD-Core Version:    0.7.0.1
  */

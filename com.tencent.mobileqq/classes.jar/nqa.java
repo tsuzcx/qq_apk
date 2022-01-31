@@ -17,7 +17,7 @@ public class nqa
       this.a.b = paramString;
       if ((PublicAccountBrowser.a(this.a) == null) || (PublicAccountBrowser.a(this.a).getVisibility() != 0))
       {
-        PublicAccountBrowser.a(this.a).setImageResource(2130848864);
+        PublicAccountBrowser.a(this.a).setImageResource(2130848937);
         PublicAccountBrowser.a(this.a).setVisibility(0);
         PublicAccountBrowser.a(this.a).setVisibility(8);
       }
@@ -25,7 +25,7 @@ public class nqa
       {
         PublicAccountBrowser.b(this.a);
         return;
-        PublicAccountBrowser.a(this.a).setImageResource(2130848919);
+        PublicAccountBrowser.a(this.a).setImageResource(2130848992);
         PublicAccountBrowser.a(this.a).setVisibility(0);
         PublicAccountBrowser.a(this.a).setVisibility(0);
       }

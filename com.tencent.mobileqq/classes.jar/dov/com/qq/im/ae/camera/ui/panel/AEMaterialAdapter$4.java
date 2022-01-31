@@ -1,11 +1,11 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import bktf;
+import bkxm;
 
 public class AEMaterialAdapter$4
   implements Runnable
 {
-  public AEMaterialAdapter$4(bktf parambktf, int paramInt) {}
+  public AEMaterialAdapter$4(bkxm parambkxm, int paramInt) {}
   
   public void run()
   {

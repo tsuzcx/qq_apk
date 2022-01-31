@@ -1,51 +1,83 @@
-import android.text.TextUtils;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.ilive_feeds_like.FeedsLikeRsp;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class avro
-  implements ActionMode.Callback
+final class avro
+  implements avdq
 {
-  public avro(OCRResultActivity paramOCRResultActivity, EditText paramEditText) {}
+  avro(avrs paramavrs) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramMenuItem.getItemId() == 2131371318)
+    bool3 = true;
+    boolean bool2 = true;
+    int j = 0;
+    int k = 0;
+    i = 0;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new oidb_0xada.RspBody();
+    }
+    for (;;)
     {
-      paramActionMode = OCRResultActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, this.jdField_a_of_type_AndroidWidgetEditText);
-      if (TextUtils.isEmpty(paramActionMode)) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, 1, alpo.a(2131708200), 0).a();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (paramBundle.busi_buf.has())
+        {
+          paramArrayOfByte = new ilive_feeds_like.FeedsLikeRsp();
+          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+          if (paramArrayOfByte.ret.has())
+          {
+            paramInt = paramArrayOfByte.ret.get();
+            if (paramInt == 0) {
+              i = k;
+            }
+          }
+        }
       }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        bool1 = false;
+        paramInt = j;
+      }
+      try
+      {
+        j = paramArrayOfByte.total.get();
+        paramInt = j;
+        bool1 = bool2;
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          i = j;
+          QLog.i("NearbyMomentProtocol", 2, "like success, total:   " + j);
+          bool1 = bool2;
+          paramInt = j;
+        }
+        if (this.a != null) {
+          this.a.a(bool1, paramInt);
+        }
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramInt = i;
+          bool1 = bool3;
+        }
+      }
+      QLog.i("NearbyMomentProtocol", 1, "like error, ret=" + paramArrayOfByte.ret.get() + ",err_msg=" + paramBundle.err_msg.get());
+      bool1 = false;
+      paramInt = i;
+      continue;
+      paramArrayOfByte.printStackTrace();
     }
-    else
-    {
-      return false;
-    }
-    OCRTextSearchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, paramActionMode);
-    this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity.overridePendingTransition(2130771992, 0);
-    return true;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    paramActionMode = paramActionMode.getMenuInflater();
-    if (paramActionMode != null) {
-      paramActionMode.inflate(2131623940, paramMenu);
-    }
-    return true;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
   }
 }
 

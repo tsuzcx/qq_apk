@@ -1,10 +1,11 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
 
-class afyq
+public class afyq
   implements DialogInterface.OnClickListener
 {
-  afyq(afyl paramafyl) {}
+  public afyq(QQStoryItemBuilder paramQQStoryItemBuilder) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }

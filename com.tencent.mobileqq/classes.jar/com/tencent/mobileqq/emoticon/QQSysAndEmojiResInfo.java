@@ -4,9 +4,9 @@ import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import apoa;
-import apod;
-import bdcs;
+import apsj;
+import apsm;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -24,7 +24,7 @@ public abstract class QQSysAndEmojiResInfo
 {
   private static JSONObject a;
   protected Drawable a;
-  protected apod a;
+  protected apsm a;
   protected ArrayList<Integer> a;
   protected HashMap<Integer, QQSysAndEmojiResInfo.QQEmoConfigItem> a;
   protected HashMap<Integer, Integer> b;
@@ -43,7 +43,7 @@ public abstract class QQSysAndEmojiResInfo
       long l = System.currentTimeMillis();
       paramString = new File(paramString + "face_config.json");
       if (paramString.exists()) {}
-      for (paramString = bdcs.a(paramString); (paramString != null) && (paramString.length() > 0); paramString = localObject)
+      for (paramString = bdhb.a(paramString); (paramString != null) && (paramString.length() > 0); paramString = localObject)
       {
         jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString);
         if (!QLog.isColorLevel()) {
@@ -78,7 +78,7 @@ public abstract class QQSysAndEmojiResInfo
     {
       try
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130837914);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130837915);
         localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         localURLDrawableOptions.mPlayGifImage = paramBoolean;
@@ -114,7 +114,7 @@ public abstract class QQSysAndEmojiResInfo
   public JSONObject a()
   {
     if (jdField_a_of_type_OrgJsonJSONObject == null) {
-      a(apoa.b());
+      a(apsj.b());
     }
     return jdField_a_of_type_OrgJsonJSONObject;
   }
@@ -181,18 +181,18 @@ public abstract class QQSysAndEmojiResInfo
   
   public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Apod == null) {
+    if (this.jdField_a_of_type_Apsm == null) {
       b();
     }
-    this.jdField_a_of_type_Apod.a(paramInt);
+    this.jdField_a_of_type_Apsm.a(paramInt);
   }
   
   public abstract void c();
   
   public void d()
   {
-    if (this.jdField_a_of_type_Apod != null) {
-      this.jdField_a_of_type_Apod.a();
+    if (this.jdField_a_of_type_Apsm != null) {
+      this.jdField_a_of_type_Apsm.a();
     }
   }
 }

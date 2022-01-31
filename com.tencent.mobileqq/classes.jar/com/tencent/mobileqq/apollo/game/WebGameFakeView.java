@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.game;
 
-import akpc;
-import akpx;
-import akpz;
+import aktr;
+import akum;
+import akuo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -28,7 +28,7 @@ import org.json.JSONObject;
 public class WebGameFakeView
 {
   public static AtomicBoolean a;
-  public akpx a;
+  public akum a;
   public Context a;
   public Bundle a;
   private View a;
@@ -82,7 +82,7 @@ public class WebGameFakeView
     if ((this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView$Director != null) && (this.jdField_a_of_type_AndroidViewView != null))
     {
       localRelativeLayout1 = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362639);
-      localRelativeLayout2 = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364766);
+      localRelativeLayout2 = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364767);
       localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362638);
       localTextView.setVisibility(0);
       localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362640);
@@ -91,7 +91,7 @@ public class WebGameFakeView
         if (!this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView$Director.frontColor.trim().toLowerCase().equals("#000000")) {
           break label234;
         }
-        localImageView.setImageResource(2130839779);
+        localImageView.setImageResource(2130839780);
         localRelativeLayout2.setBackgroundResource(0);
         if (ImmersiveUtils.a()) {
           ImmersiveUtils.a(this.jdField_a_of_type_AndroidViewWindow, false);
@@ -111,8 +111,8 @@ public class WebGameFakeView
       label234:
       if (this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView$Director.frontColor.trim().toLowerCase().equals("#ffffff"))
       {
-        localImageView.setImageResource(2130847164);
-        localRelativeLayout2.setBackgroundResource(2130838376);
+        localImageView.setImageResource(2130847237);
+        localRelativeLayout2.setBackgroundResource(2130838377);
         if (ImmersiveUtils.a()) {
           ImmersiveUtils.a(this.jdField_a_of_type_AndroidViewWindow, true);
         }
@@ -141,9 +141,9 @@ public class WebGameFakeView
     }
   }
   
-  public void a(akpx paramakpx)
+  public void a(akum paramakum)
   {
-    this.jdField_a_of_type_Akpx = paramakpx;
+    this.jdField_a_of_type_Akum = paramakum;
   }
   
   public void a(Intent paramIntent)
@@ -152,11 +152,11 @@ public class WebGameFakeView
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
       localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362640);
-      if (akpc.a().a() <= 1) {
+      if (aktr.a().a() <= 1) {
         break label83;
       }
       localImageView.setVisibility(0);
-      localImageView.setOnClickListener(new akpz(this, localImageView));
+      localImageView.setOnClickListener(new akuo(this, localImageView));
     }
     for (;;)
     {
@@ -181,7 +181,7 @@ public class WebGameFakeView
     {
       this.jdField_a_of_type_AndroidViewView = paramView;
       TextView localTextView = (TextView)paramView.findViewById(2131362638);
-      paramView = (FrameLayout)paramView.findViewById(2131367059);
+      paramView = (FrameLayout)paramView.findViewById(2131367069);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
       localLayoutParams.addRule(3, 2131362639);
       paramView.setLayoutParams(localLayoutParams);
@@ -199,22 +199,22 @@ public class WebGameFakeView
   public void a(CmGameInitParams paramCmGameInitParams)
   {
     this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = paramCmGameInitParams;
-    if (this.jdField_a_of_type_Akpx != null) {
-      this.jdField_a_of_type_Akpx.a(paramCmGameInitParams);
+    if (this.jdField_a_of_type_Akum != null) {
+      this.jdField_a_of_type_Akum.a(paramCmGameInitParams);
     }
   }
   
   public void a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Akpx != null) {
-      this.jdField_a_of_type_Akpx.b(paramString1, paramString2);
+    if (this.jdField_a_of_type_Akum != null) {
+      this.jdField_a_of_type_Akum.b(paramString1, paramString2);
     }
   }
   
   public void a(boolean paramBoolean)
   {
     this.jdField_a_of_type_AndroidViewWindow = null;
-    this.jdField_a_of_type_Akpx = null;
+    this.jdField_a_of_type_Akum = null;
     this.jdField_a_of_type_AndroidOsBundle = null;
     this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = null;
     this.jdField_a_of_type_AndroidViewView = null;
@@ -233,8 +233,8 @@ public class WebGameFakeView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Akpx != null) {
-      this.jdField_a_of_type_Akpx.b();
+    if (this.jdField_a_of_type_Akum != null) {
+      this.jdField_a_of_type_Akum.b();
     }
   }
   
@@ -247,36 +247,36 @@ public class WebGameFakeView
   
   public void c()
   {
-    if (this.jdField_a_of_type_Akpx != null) {
-      this.jdField_a_of_type_Akpx.c();
+    if (this.jdField_a_of_type_Akum != null) {
+      this.jdField_a_of_type_Akum.c();
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Akpx != null) {
-      this.jdField_a_of_type_Akpx.e();
+    if (this.jdField_a_of_type_Akum != null) {
+      this.jdField_a_of_type_Akum.e();
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Akpx != null) {
-      this.jdField_a_of_type_Akpx.d();
+    if (this.jdField_a_of_type_Akum != null) {
+      this.jdField_a_of_type_Akum.d();
     }
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_Akpx != null) {
-      this.jdField_a_of_type_Akpx.f();
+    if (this.jdField_a_of_type_Akum != null) {
+      this.jdField_a_of_type_Akum.f();
     }
   }
   
   public void g()
   {
-    if (this.jdField_a_of_type_Akpx != null) {
-      this.jdField_a_of_type_Akpx.g();
+    if (this.jdField_a_of_type_Akum != null) {
+      this.jdField_a_of_type_Akum.g();
     }
   }
 }

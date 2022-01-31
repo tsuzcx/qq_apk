@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class aiym
-  implements View.OnClickListener
+public abstract class aiym
+  implements TextWatcher
 {
-  public aiym(DrawHbFragment paramDrawHbFragment) {}
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public void onClick(View paramView)
-  {
-    DrawHbFragment.b(this.a).c("draw.wrappacket.random");
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

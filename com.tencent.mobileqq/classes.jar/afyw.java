@@ -1,32 +1,22 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class afyw
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  afyw(afyu paramafyu, afyy paramafyy, CharSequence paramCharSequence) {}
+  afyw(afyv paramafyv) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Afyy.d.setText(this.jdField_a_of_type_JavaLangCharSequence);
-    this.jdField_a_of_type_Afyy.d.startAnimation(this.jdField_a_of_type_Afyu.a);
-    this.jdField_a_of_type_Afyy.a.requestLayout();
-    this.jdField_a_of_type_Afyy.g = 0;
-    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Afyy.a.getLayoutParams();
-    paramAnimation.width = -2;
-    paramAnimation.height = -2;
-    this.jdField_a_of_type_Afyy.a.setAnimation(null);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Afyy.g = 0;
-    this.jdField_a_of_type_Afyy.d.startAnimation(this.jdField_a_of_type_Afyu.b);
+    paramView = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(paramView))
+    {
+      ajet.b(this.a.jdField_a_of_type_AndroidContentContext, paramView);
+      if ((this.a.m > 0) && ((this.a.n == 2) || (this.a.n == 3))) {
+        azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "wrap.aiotail.click", 0, 0, "" + this.a.m, "", "", "");
+      }
+    }
   }
 }
 

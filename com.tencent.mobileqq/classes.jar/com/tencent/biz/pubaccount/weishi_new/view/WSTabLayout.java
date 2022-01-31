@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.weishi_new.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import azgq;
+import azkz;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -15,9 +15,9 @@ import toe;
 public class WSTabLayout
   extends TabLayoutCompat
 {
-  public static float c = azgq.a(22.0F);
-  public static float d = azgq.a(15.0F);
-  public static float e = azgq.a(2.0F);
+  public static float c = azkz.a(22.0F);
+  public static float d = azkz.a(15.0F);
+  public static float e = azkz.a(2.0F);
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private tod jdField_a_of_type_Tod;
   
@@ -88,7 +88,7 @@ public class WSTabLayout
           setTabGravity(1);
           break label76;
         }
-        paramList.a(2131559868);
+        paramList.a(2131559867);
         toe localtoe = new toe(this, paramList.a());
         localtoe.a(i);
         paramList.a(localtoe);

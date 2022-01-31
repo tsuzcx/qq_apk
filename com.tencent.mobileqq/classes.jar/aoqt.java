@@ -1,67 +1,84 @@
 import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoqt
-  extends aopw<aoqs>
+  extends aokh<aoqv>
 {
-  public static aoqs c()
+  private void b(aoqv paramaoqv)
   {
-    aoqs localaoqs2 = (aoqs)aogj.a().a(469);
-    aoqs localaoqs1 = localaoqs2;
-    if (localaoqs2 == null) {
-      localaoqs1 = new aoqs();
-    }
-    return localaoqs1;
+    if (paramaoqv == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!paramaoqv.a.a());
+      String str = paramaoqv.a.a;
+      if (!TextUtils.isEmpty(str)) {
+        URLDrawable.getDrawable(str).startDownload(false);
+      }
+      paramaoqv = paramaoqv.a.b;
+    } while (TextUtils.isEmpty(paramaoqv));
+    URLDrawable.getDrawable(paramaoqv).startDownload(false);
   }
   
   public int a()
   {
-    return 469;
+    return 545;
   }
   
   @NonNull
-  public aoqs a()
+  public aoqv a(int paramInt)
   {
-    return new aoqs();
+    return new aoqv();
   }
   
-  @NonNull
-  public aoqs a(aogf[] paramArrayOfaogf)
+  @Nullable
+  public aoqv a(aoko[] paramArrayOfaoko)
   {
-    boolean bool = true;
-    localaoqs = new aoqs();
-    paramArrayOfaogf = paramArrayOfaogf[0].jdField_a_of_type_JavaLangString;
-    try
-    {
-      paramArrayOfaogf = new JSONObject(paramArrayOfaogf);
-      if (paramArrayOfaogf.optInt("is_show_recover_entry", 1) == 1) {}
-      for (;;)
-      {
-        localaoqs.jdField_a_of_type_Boolean = bool;
-        localaoqs.jdField_a_of_type_JavaLangString = paramArrayOfaogf.optString("recover_text", localaoqs.jdField_a_of_type_JavaLangString);
-        localaoqs.b = paramArrayOfaogf.optString("recover_url", localaoqs.b);
-        localaoqs.c = paramArrayOfaogf.optString("recoveryHomePageUrl", localaoqs.c);
-        return localaoqs;
-        bool = false;
-      }
-      return localaoqs;
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aoqv.a(paramArrayOfaoko);
     }
-    catch (JSONException paramArrayOfaogf)
-    {
-      wsv.e("QVipFriendTag2Processor", "QVipFriendTag2Config onParsed exception :" + paramArrayOfaogf.getMessage());
+    return null;
+  }
+  
+  public Class<aoqv> a()
+  {
+    return aoqv.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aoqv paramaoqv)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSysAndEmojiConfProcessor", 2, "QQSysAndEmojiConfProcessor onUpdate");
     }
+    b(paramaoqv);
+    apsj.a().a();
   }
   
-  public Class<aoqs> a()
+  public boolean a()
   {
-    return aoqs.class;
+    return false;
   }
   
-  @NonNull
-  public aoqs b()
+  public int b()
   {
-    return new aoqs();
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

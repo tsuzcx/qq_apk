@@ -1,22 +1,22 @@
 package com.tencent.qqmini.sdk.task;
 
-import bhhn;
-import bhhq;
+import bhlu;
+import bhlx;
 
 public class TaskFlowEngine$1
   implements Runnable
 {
-  public TaskFlowEngine$1(bhhq parambhhq) {}
+  public TaskFlowEngine$1(bhlx parambhlx) {}
   
   public void run()
   {
-    bhhn[] arrayOfbhhn = bhhq.access$000(this.this$0);
-    int j = arrayOfbhhn.length;
+    bhlu[] arrayOfbhlu = bhlx.access$000(this.this$0);
+    int j = arrayOfbhlu.length;
     int i = 0;
     while (i < j)
     {
-      bhhn localbhhn = arrayOfbhhn[i];
-      this.this$0.executeTask(localbhhn);
+      bhlu localbhlu = arrayOfbhlu[i];
+      this.this$0.executeTask(localbhlu);
       i += 1;
     }
   }

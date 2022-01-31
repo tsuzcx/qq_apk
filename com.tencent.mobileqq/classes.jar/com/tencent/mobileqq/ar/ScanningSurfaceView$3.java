@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import bdda;
+import bdhj;
 import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.QLog;
 
@@ -21,7 +21,7 @@ class ScanningSurfaceView$3
           localURLDrawable.startDownload();
           return;
         }
-        this.a.b = bdda.a(localURLDrawable);
+        this.a.b = bdhj.a(localURLDrawable);
         return;
       }
     }

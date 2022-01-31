@@ -1,40 +1,46 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
-import cooperation.vip.ar.util.VipARUtils.3;
+import android.content.Context;
+import android.view.View;
+import android.widget.PopupWindow;
+import java.lang.ref.WeakReference;
 
 public class bkau
-  implements ModuleDownloadListener
+  extends PopupWindow
 {
-  public bkau(VipARUtils.3 param3) {}
+  private WeakReference<Context> a;
   
-  public void onDownloadCanceled(String paramString)
+  public bkau(Context paramContext)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+    super(paramContext);
+    this.a = new WeakReference(paramContext);
   }
   
-  public void onDownloadFailed(String paramString)
+  public void showAsDropDown(View paramView)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("vip_tar_engine.jar")) {
+    if (this.a.get() == null) {
       return;
     }
-    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bkar.a(), " onDownloadSucceed = ", bkar.b() });
-    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bkar.b());
+    super.showAsDropDown(paramView);
+  }
+  
+  public void showAsDropDown(View paramView, int paramInt1, int paramInt2)
+  {
+    if (this.a.get() == null) {
+      return;
+    }
+    super.showAsDropDown(paramView, paramInt1, paramInt2);
+  }
+  
+  public void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.get() == null) {
+      return;
+    }
+    super.showAtLocation(paramView, paramInt1, paramInt2, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bkau
  * JD-Core Version:    0.7.0.1
  */

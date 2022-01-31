@@ -1,25 +1,39 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class acrx
-  implements View.OnClickListener
+  extends amdd
 {
-  public acrx(EmosmActivity paramEmosmActivity) {}
+  public acrx(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void a(List<String> paramList)
   {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    while (!apih.a(this.a)) {
-      return;
+    amnz localamnz;
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      localamnz = this.a.a.a();
+      if (localamnz != null) {
+        break label37;
+      }
+      QLog.d("Q.recent", 1, "onBatchDelete, proxy == null");
     }
-    this.a.jdField_a_of_type_Boolean = true;
-    EmojiHomeUiPlugin.openEmojiHomePage((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.app.getAccount(), 2);
-    azmj.b(this.a.app, "CliOper", "", "", "EmosSetting", "ForwardEmojiHome", 0, 0, "", "", "", "");
+    for (;;)
+    {
+      return;
+      label37:
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        RecentUser localRecentUser = localamnz.a((String)paramList.next(), 0);
+        if (localRecentUser != null) {
+          localamnz.b(localRecentUser);
+        }
+      }
+    }
   }
 }
 

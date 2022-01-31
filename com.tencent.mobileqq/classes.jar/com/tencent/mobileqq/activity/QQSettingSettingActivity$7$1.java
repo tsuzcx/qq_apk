@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import adop;
+import adte;
 
 public class QQSettingSettingActivity$7$1
   implements Runnable
 {
-  public QQSettingSettingActivity$7$1(adop paramadop, String paramString) {}
+  public QQSettingSettingActivity$7$1(adte paramadte, String paramString) {}
   
   public void run()
   {
-    QQSettingSettingActivity.a(this.jdField_a_of_type_Adop.a, this.jdField_a_of_type_JavaLangString);
+    QQSettingSettingActivity.a(this.jdField_a_of_type_Adte.a, this.jdField_a_of_type_JavaLangString);
   }
 }
 

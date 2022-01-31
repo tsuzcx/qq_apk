@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent;
 
-import azmj;
+import azqs;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,11 +27,11 @@ public final class RecentUtil$7
         localMessage.saveExtInfoToExtStr("recent_list_advertisement_message_first_click", "true");
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessage.frienduin, localMessage.msgtype, localMessage.uniseq, "extStr", localMessage.extStr);
         if (this.jdField_a_of_type_Nlo.a != null) {
-          azmj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nlo.a.jdField_a_of_type_JavaLangString, "0X8008F5E", "0X8008F5E", 0, 0, this.jdField_a_of_type_Nlo.a.c, "", nmh.a(), this.jdField_a_of_type_Nlo.a.b);
+          azqs.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nlo.a.jdField_a_of_type_JavaLangString, "0X8008F5E", "0X8008F5E", 0, 0, this.jdField_a_of_type_Nlo.a.c, "", nmh.a(), this.jdField_a_of_type_Nlo.a.b);
         }
       }
       if (this.jdField_a_of_type_Nlo.a != null) {
-        azmj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nlo.a.jdField_a_of_type_JavaLangString, "0X8008F60", "0X8008F60", 0, 0, this.jdField_a_of_type_Nlo.a.c, "", "", this.jdField_a_of_type_Nlo.a.b);
+        azqs.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nlo.a.jdField_a_of_type_JavaLangString, "0X8008F60", "0X8008F60", 0, 0, this.jdField_a_of_type_Nlo.a.c, "", "", this.jdField_a_of_type_Nlo.a.b);
       }
     }
   }

@@ -1,10 +1,37 @@
-public abstract interface xfs
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
+
+class xfs
+  implements TextWatcher
 {
-  public abstract void a();
+  xfs(xfr paramxfr) {}
   
-  public abstract void a(xgc paramxgc);
+  public void afterTextChanged(Editable paramEditable)
+  {
+    if (this.a.jdField_a_of_type_Xfv != null)
+    {
+      this.a.jdField_a_of_type_Xeq.a = paramEditable.toString();
+      this.a.jdField_a_of_type_Xfv.a(this.a.jdField_a_of_type_Xeq);
+    }
+  }
   
-  public abstract void b();
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.jdField_a_of_type_Xfv == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.a(paramCharSequence.toString()) <= 420);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setText(paramCharSequence.subSequence(0, paramInt1));
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setSelection(paramInt1);
+    } while (this.a.jdField_a_of_type_Xfv == null);
+    this.a.jdField_a_of_type_Xfv.b(420);
+  }
 }
 
 

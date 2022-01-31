@@ -2,14 +2,14 @@ package com.tencent.mobileqq.data;
 
 import android.database.Cursor;
 import android.text.TextUtils;
-import awbv;
-import awdg;
-import awdj;
-import bdfe;
+import awge;
+import awhp;
+import awhs;
+import bdjn;
 import com.tencent.qphone.base.util.QLog;
 
 public class DiscussionInfo
-  extends awbv
+  extends awge
 {
   public static final long UIControlFlag_Hidden_RecentUser = 1L;
   public static final long UIControlFlag_default = 0L;
@@ -23,19 +23,19 @@ public class DiscussionInfo
   public boolean hasCollect;
   public long infoSeq;
   public String inheritOwnerUin;
-  @awdg
+  @awhp
   public long lastMsgTime;
   public int mComparePartInt;
   public String mCompareSpell;
   public long mOrigin = -1L;
   public long mOriginExtra = 0L;
   public int mSelfRight = -1;
-  @awdg
+  @awhp
   public int mUnreliableMemberCount = 100;
   public String ownerUin;
   public long timeSec;
   public long uiControlFlag = 0L;
-  @awdj
+  @awhs
   public String uin;
   
   public static boolean isValidDisUin(String paramString)
@@ -86,7 +86,7 @@ public class DiscussionInfo
   
   public int getHrExtra()
   {
-    return bdfe.a(this.mOriginExtra);
+    return bdjn.a(this.mOriginExtra);
   }
   
   public boolean hasRenamed()
@@ -96,12 +96,12 @@ public class DiscussionInfo
   
   public boolean isDiscussHrMeeting()
   {
-    return bdfe.b(this.mOrigin);
+    return bdjn.b(this.mOrigin);
   }
   
   public boolean isHidden()
   {
-    return ((this.mOrigin & 0x2) == 2L) && (getHrExtra() == 1) && (bdfe.a(this.mSelfRight));
+    return ((this.mOrigin & 0x2) == 2L) && (getHrExtra() == 1) && (bdjn.a(this.mSelfRight));
   }
   
   public boolean isOwnerOrInheritOwner(String paramString)
@@ -115,7 +115,7 @@ public class DiscussionInfo
   
   public boolean isPSTNConf()
   {
-    return bdfe.a(this.mOrigin);
+    return bdjn.a(this.mOrigin);
   }
   
   public boolean isUIControlFlag_Hidden_RecentUser()

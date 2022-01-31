@@ -1,25 +1,15 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule.2;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
 public class aiwn
-  implements aivs
+  implements DialogInterface.OnClickListener
 {
-  public aiwn(QWalletIPCModule.2 param2, ResultReceiver paramResultReceiver) {}
+  public aiwn(SendHbActivity paramSendHbActivity) {}
   
-  public void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadModule" + paramString2 + "|" + paramResourceInfo + "|" + System.currentTimeMillis());
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("id", paramString1);
-    localBundle.putInt("result", paramInt);
-    localBundle.putString("path", paramString2);
-    localBundle.putSerializable("res_info", paramResourceInfo);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
+    this.a.finish();
   }
 }
 

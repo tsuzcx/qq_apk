@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 class qgj
   implements View.OnClickListener
 {
-  qgj(qgi paramqgi, boolean paramBoolean, ymk paramymk, String paramString, int paramInt1, int paramInt2, ViewGroup paramViewGroup) {}
+  qgj(qgi paramqgi, boolean paramBoolean, yqz paramyqz, String paramString, int paramInt1, int paramInt2, ViewGroup paramViewGroup) {}
   
   public void onClick(View paramView)
   {
     this.jdField_a_of_type_Qgi.b();
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ymk != null))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Yqz != null))
     {
       paramView = new Bundle();
       paramView.putString("from", String.valueOf(16));
@@ -21,12 +21,12 @@ class qgj
       paramView.putInt("redpack_type", this.jdField_a_of_type_Int);
       paramView.putInt("plat_source", this.b);
       paramView.putBoolean("open_readinjoy_tab", true);
-      this.jdField_a_of_type_Ymk.a(127, paramView);
+      this.jdField_a_of_type_Yqz.a(127, paramView);
       return;
     }
-    bjxj.e(1);
-    bjxj.a(true);
-    bjxj.a(true);
+    bkbq.e(1);
+    bkbq.a(true);
+    bkbq.a(true);
     paramView = this.jdField_a_of_type_AndroidViewViewGroup.getContext();
     Intent localIntent = nxu.a(paramView, 16);
     localIntent.putExtra("redpackid", this.jdField_a_of_type_JavaLangString);

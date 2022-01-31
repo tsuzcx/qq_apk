@@ -1,51 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.qphone.base.util.QLog;
-
-class avbq
-  extends Handler
+public abstract interface avbq
 {
-  avbq(avbo paramavbo, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_Avbz != null)
-      {
-        int i = this.a.jdField_a_of_type_Avbz.a();
-        this.a.jdField_a_of_type_Avbx.a(i);
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoPlayerView", 2, "PROGRESS_MSG :" + i);
-        }
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2025, 100L);
-      return;
-      if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.getParent() != null) && (((ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent()).getChildAt(0) != this.a.jdField_a_of_type_AndroidWidgetImageView))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("VideoPlayerView", 2, "UPDATE_COVER  mPlayer.getCurrentPosition()=" + this.a.jdField_a_of_type_Avbz.a());
-        }
-        ((ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent()).removeView(this.a.jdField_a_of_type_AndroidWidgetImageView);
-        avbo.a(this.a).addView(this.a.jdField_a_of_type_AndroidWidgetImageView, 0, new RelativeLayout.LayoutParams(-1, -1));
-        avbo.a(this.a).requestLayout();
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("VideoPlayerView", 2, "UPDATE_COVER  2do nothing()=");
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

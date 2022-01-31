@@ -1,22 +1,24 @@
-import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public final class ukm
+class ukm
+  implements Animation.AnimationListener
 {
-  public ShareGroupFeedItem a;
-  public VideoListFeedItem a;
-  public ArrayList<ukl> a;
+  ukm(ukl paramukl) {}
   
-  public ukm()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.a.b.setVisibility(8);
+    this.a.d.setVisibility(8);
+    this.a.g.setVisibility(8);
   }
   
-  public String toString()
-  {
-    return "ShareGroupFakeItem{mFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem + ", mSucFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem + ", mVideos=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

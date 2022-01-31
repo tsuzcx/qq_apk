@@ -80,29 +80,29 @@ public class rbt
   {
     super(paramView, paramInt);
     this.t = paramView;
-    this.B = ((TextView)paramView.findViewById(2131377973));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsUGView = ((VideoFeedsUGView)paramView.findViewById(2131379176));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsUGView = ((VideoFeedsUGView)paramView.findViewById(2131379174));
-    this.jdField_l_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131367594));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131367566));
+    this.B = ((TextView)paramView.findViewById(2131378027));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsUGView = ((VideoFeedsUGView)paramView.findViewById(2131379234));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsUGView = ((VideoFeedsUGView)paramView.findViewById(2131379232));
+    this.jdField_l_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131367604));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131367576));
     VideoFeedsAccessibilityHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView, this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131367563));
-    this.jdField_a_of_type_Qyu = ((qyu)paramView.findViewById(2131367557));
-    this.m = ((ViewGroup)paramView.findViewById(2131366711));
-    this.k = ((ImageView)paramView.findViewById(2131366697));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131367573));
+    this.jdField_a_of_type_Qyu = ((qyu)paramView.findViewById(2131367567));
+    this.m = ((ViewGroup)paramView.findViewById(2131366721));
+    this.k = ((ImageView)paramView.findViewById(2131366707));
     if (paramInt == 2) {
-      this.o = ((ViewGroup)paramView.findViewById(2131371350));
+      this.o = ((ViewGroup)paramView.findViewById(2131371369));
     }
-    this.jdField_l_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366704));
-    this.n = ((ViewGroup)paramView.findViewById(2131366721));
-    this.j = ((ImageView)paramView.findViewById(2131366698));
-    this.D = ((TextView)paramView.findViewById(2131366700));
-    this.C = ((TextView)paramView.findViewById(2131366720));
-    this.E = ((TextView)paramView.findViewById(2131366707));
-    this.F = ((TextView)paramView.findViewById(2131366695));
-    this.p = ((ViewGroup)paramView.findViewById(2131379623));
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)paramView.findViewById(2131372963));
-    this.jdField_b_of_type_AndroidViewViewStub = ((ViewStub)paramView.findViewById(2131372959));
+    this.jdField_l_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366714));
+    this.n = ((ViewGroup)paramView.findViewById(2131366731));
+    this.j = ((ImageView)paramView.findViewById(2131366708));
+    this.D = ((TextView)paramView.findViewById(2131366710));
+    this.C = ((TextView)paramView.findViewById(2131366730));
+    this.E = ((TextView)paramView.findViewById(2131366717));
+    this.F = ((TextView)paramView.findViewById(2131366705));
+    this.p = ((ViewGroup)paramView.findViewById(2131379681));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)paramView.findViewById(2131372989));
+    this.jdField_b_of_type_AndroidViewViewStub = ((ViewStub)paramView.findViewById(2131372985));
   }
   
   public void a(String paramString)

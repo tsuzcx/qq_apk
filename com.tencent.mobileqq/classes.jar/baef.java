@@ -1,20 +1,15 @@
-import android.net.Uri;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 
-class baef
-  extends baei
+public abstract interface baef
 {
-  baef(baed parambaed)
-  {
-    super(parambaed);
-  }
+  public abstract int a(int paramInt1, int paramInt2, int paramInt3, String paramString, Paint paramPaint);
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
-  }
+  public abstract String a(badl parambadl, String paramString);
+  
+  public abstract void a(int paramInt, String paramString, Paint paramPaint);
+  
+  public abstract boolean a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2, Paint paramPaint);
 }
 
 

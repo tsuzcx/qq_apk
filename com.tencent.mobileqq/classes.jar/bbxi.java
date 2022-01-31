@@ -1,18 +1,8 @@
-import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScanTask;
 
-class bbxi
-  implements URLDrawable.DownloadListener
+public abstract interface bbxi
 {
-  bbxi(bbxf parambbxf) {}
-  
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    bbxf.a(this.a);
-  }
+  public abstract void a(long paramLong, boolean paramBoolean, int paramInt, TroopFileScanTask paramTroopFileScanTask);
 }
 
 

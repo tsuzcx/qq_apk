@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import aekt;
-import ajli;
-import ajnj;
+import aepi;
+import ajpx;
+import ajry;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import azhe;
-import bcuq;
-import bhou;
+import azln;
+import bcyz;
+import bhtb;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
@@ -31,14 +31,14 @@ class NewFlowCameraActivity$6
     {
       this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
       this.this$0.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      azhe.a(this.this$0.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.2F, 0.1F, 1.2F, 400, null);
-      if (bhou.e()) {
+      azln.a(this.this$0.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.2F, 0.1F, 1.2F, 400, null);
+      if (bhtb.e()) {
         this.this$0.I();
       }
-      NewFlowCameraActivity.a(this.this$0).put("cameraType", String.valueOf(ajli.a));
+      NewFlowCameraActivity.a(this.this$0).put("cameraType", String.valueOf(ajpx.a));
       NewFlowCameraActivity.a(this.this$0).put("isTemplateMode", String.valueOf(this.this$0.f));
-      if (this.this$0.jdField_a_of_type_Ajnj != null) {
-        str = this.this$0.jdField_a_of_type_Ajnj.a();
+      if (this.this$0.jdField_a_of_type_Ajry != null) {
+        str = this.this$0.jdField_a_of_type_Ajry.a();
       }
       NewFlowCameraActivity.a(this.this$0).put("templateId", str);
       if ((this.this$0.o != 90) && (this.this$0.o != 270)) {
@@ -60,14 +60,14 @@ class NewFlowCameraActivity$6
         return;
         this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         Object localObject;
-        if (this.this$0.jdField_a_of_type_Ajnj != null)
+        if (this.this$0.jdField_a_of_type_Ajry != null)
         {
-          localObject = this.this$0.jdField_a_of_type_Ajnj.a();
+          localObject = this.this$0.jdField_a_of_type_Ajry.a();
           if ((localObject == null) || (TextUtils.isEmpty(((PtvTemplateManager.PtvTemplateInfo)localObject).iconurl))) {
             break label499;
           }
           URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          i = aekt.a(50.0F, this.this$0.getResources());
+          i = aepi.a(50.0F, this.this$0.getResources());
           GradientDrawable localGradientDrawable = new GradientDrawable();
           localGradientDrawable.setColor(this.this$0.getResources().getColor(2131165804));
           localGradientDrawable.setShape(1);
@@ -77,13 +77,13 @@ class NewFlowCameraActivity$6
           localURLDrawableOptions.mFailedDrawable = localGradientDrawable;
           localURLDrawableOptions.mLoadingDrawable = localGradientDrawable;
           localObject = URLDrawable.getDrawable(((PtvTemplateManager.PtvTemplateInfo)localObject).iconurl, localURLDrawableOptions);
-          ((URLDrawable)localObject).setTag(bcuq.a(i, i));
-          ((URLDrawable)localObject).setDecodeHandler(bcuq.a);
+          ((URLDrawable)localObject).setTag(bcyz.a(i, i));
+          ((URLDrawable)localObject).setDecodeHandler(bcyz.a);
           this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
         }
         for (;;)
         {
-          if (!bhou.e()) {
+          if (!bhtb.e()) {
             break label562;
           }
           this.this$0.I();
@@ -93,7 +93,7 @@ class NewFlowCameraActivity$6
           {
             this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
             this.this$0.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            azhe.a(this.this$0.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.2F, 0.1F, 1.2F, 400, null);
+            azln.a(this.this$0.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.2F, 0.1F, 1.2F, 400, null);
           }
         }
         break;

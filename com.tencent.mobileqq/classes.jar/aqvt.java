@@ -1,18 +1,22 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class aqvt
-  implements birw
+class aqvt
+  implements arrh
 {
-  aqvt(aqvs paramaqvs) {}
+  aqvt(aqvp paramaqvp, FileManagerEntity paramFileManagerEntity) {}
   
-  public boolean a(int paramInt, Bundle paramBundle)
+  public void a()
   {
-    new Handler(Looper.getMainLooper()).post(new QfavFilePreviewController.1.1(this, paramBundle));
-    return true;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    {
+      this.jdField_a_of_type_Aqvp.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      return;
+    }
+    this.jdField_a_of_type_Aqvp.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
+  
+  public void b() {}
 }
 
 

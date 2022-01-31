@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent;
 
-import azyl;
+import bacu;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class RecentUtil$5
@@ -12,8 +12,8 @@ public final class RecentUtil$5
   {
     if (this.a != null)
     {
-      azyl.c(this.a);
-      azyl.a(this.a, true, null);
+      bacu.c(this.a);
+      bacu.a(this.a, true, null);
     }
   }
 }

@@ -1,12 +1,9 @@
-import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 
-public class bene
+public abstract interface bene
 {
-  public float a;
-  public Bitmap a;
-  public float b;
-  public float c;
-  public float d;
+  public abstract Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2);
 }
 
 

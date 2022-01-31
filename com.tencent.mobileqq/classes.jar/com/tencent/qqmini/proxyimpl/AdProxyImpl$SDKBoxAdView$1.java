@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
-import aais;
-import aait;
+import aanh;
+import aani;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.gdtad.api.adbox.GdtAdBoxData;
@@ -56,7 +56,7 @@ class AdProxyImpl$SDKBoxAdView$1
         this.this$1.mBoxListener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
         return;
         label164:
-        this.this$1.mGdtBoxView = aais.a(this.val$activity).a(new GdtAdBoxData(paramJSONObject)).a(new AdProxyImpl.SDKBoxAdView.1.1(this)).a();
+        this.this$1.mGdtBoxView = aanh.a(this.val$activity).a(new GdtAdBoxData(paramJSONObject)).a(new AdProxyImpl.SDKBoxAdView.1.1(this)).a();
         if (this.this$1.mGdtBoxView != null)
         {
           if (this.this$1.mBoxListener != null) {

@@ -1,18 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import GIFT_MALL_PROTOCOL.DouFuInfo;
+import GIFT_MALL_PROTOCOL.doufu_piece_rsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class bjhv
-  implements DialogInterface.OnClickListener
+class bjhv
+  extends avvd
 {
-  public bjhv(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  public WeakReference<QQAppInterface> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void j(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.stopPlay();
-    QzoneWebMusicJsPlugin.access$300(this.a, "cancel");
-    paramDialogInterface.dismiss();
-    QzoneWebMusicJsPlugin.access$902(this.a, false);
+    if (this.a == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("UndealCount.QZoneObserver", 2, "onGetBirthDayNoticeData appRef==null");
+      }
+    }
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.a.get();
+      if (localQQAppInterface != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("UndealCount.QZoneObserver", 2, "onGetBirthDayNoticeData app == null ");
+    return;
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof doufu_piece_rsp)))
+    {
+      paramBundle = ((doufu_piece_rsp)paramBundle).doufu.iterator();
+      while (paramBundle.hasNext()) {
+        bjhu.a(localQQAppInterface, (DouFuInfo)paramBundle.next());
+      }
+    }
+    localQQAppInterface.unRegistObserver(bjhu.a());
   }
 }
 

@@ -1,20 +1,16 @@
-import com.tencent.tavcut.bean.TextEditorData;
-import com.tencent.tavcut.session.TAVCutSession;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
-class blkx
-  implements blku
+public class blkx
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  blkx(blkw paramblkw, TextEditorData paramTextEditorData, TAVCutSession paramTAVCutSession) {}
+  public blkx(AEEditorAILoadingView paramAEEditorAILoadingView) {}
   
-  public void a(bllc parambllc)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((parambllc instanceof bllb))
-    {
-      parambllc = (bllb)parambllc;
-      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setContent(parambllc.a());
-      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setTextColor(parambllc.a());
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutSession.updateTextSticker(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
-    }
+    AEEditorAILoadingView.a(this.a).setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 

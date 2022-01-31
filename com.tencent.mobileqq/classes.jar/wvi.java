@@ -1,81 +1,49 @@
-import android.view.MotionEvent;
+import android.app.Activity;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-public class wvi
-  implements View.OnTouchListener
+class wvi
+  extends wrj
 {
-  private int jdField_a_of_type_Int;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  private wvh jdField_a_of_type_Wvh;
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int = 5;
-  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
-  private boolean jdField_b_of_type_Boolean;
+  wvi(wvg paramwvg) {}
   
-  public wvi(wvh paramwvh)
+  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
   {
-    this.jdField_a_of_type_Wvh = paramwvh;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_Wvh == null) {}
-    do
+    if ((paramView == paramwtq.a(2131373794)) || (paramView == paramwtq.a(2131373795)) || (paramView == paramwtq.a(2131373798))) {
+      if (wvg.a(this.a)) {
+        wxe.d("Q.qqstory.home.LocalVideoPushSegment", "now is opening the new page, so ignore the click");
+      }
+    }
+    while (paramView != paramwtq.a(2131373793))
     {
-      do
+      return;
+      wvg.a(this.a, true);
+      paramObject = new Bundle();
+      paramObject.putInt("capture_intent_mode", 3);
+      if (wvg.a(this.a) == 1) {
+        paramObject.putString("story_capture_album_id", "default_id");
+      }
+      for (;;)
       {
-        float f;
-        do
+        xpk.a().a((Activity)wvg.a(this.a), paramObject, 20000);
+        wxj.a("home_page", "clk_smartalbum", 0, 0, new String[] { wvg.a(this.a, wvg.a(this.a)) });
+        return;
+        if (wvg.a(this.a) == 2)
         {
-          do
+          if (wvg.a(this.a) != null) {}
+          for (paramView = String.valueOf(wvg.a(this.a).a());; paramView = "default_id")
           {
-            return true;
-            f = paramMotionEvent.getY();
-            switch (paramMotionEvent.getAction() & 0xFF)
-            {
-            case 3: 
-            case 4: 
-            default: 
-              return true;
-            case 0: 
-              this.jdField_a_of_type_Int = ((int)f);
-              this.jdField_a_of_type_Boolean = false;
-              this.jdField_b_of_type_Boolean = false;
-              this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-              return true;
-            }
-          } while (paramMotionEvent.getPointerCount() > 2);
-          if (this.jdField_b_of_type_Boolean)
-          {
-            this.jdField_a_of_type_Wvh.a(paramMotionEvent);
-            return true;
+            paramObject.putString("story_capture_album_id", paramView);
+            break;
           }
-          this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Wvh.a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent);
-        } while ((!this.jdField_b_of_type_Boolean) || (!(paramView instanceof ViewParent)));
-        ((ViewParent)paramView).requestDisallowInterceptTouchEvent(true);
-        return true;
-        if (Math.abs((int)(f - this.jdField_a_of_type_Int)) > 5) {
-          this.jdField_a_of_type_Boolean = true;
         }
-      } while (!this.jdField_b_of_type_Boolean);
-      this.jdField_a_of_type_Wvh.a(paramMotionEvent);
-      return true;
-    } while ((paramMotionEvent.getPointerCount() > 2) || (!this.jdField_b_of_type_Boolean));
-    this.jdField_a_of_type_Wvh.a(paramMotionEvent);
-    return true;
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Wvh.onClick(paramView);
+        if (wvg.a(this.a) != 3) {}
+      }
     }
-    if ((this.jdField_b_of_type_Boolean) && ((paramView instanceof ViewParent))) {
-      ((ViewParent)paramView).requestDisallowInterceptTouchEvent(false);
-    }
-    this.jdField_a_of_type_Wvh.a(paramMotionEvent);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    return true;
+    this.a.a.b("last_cancel_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
+    this.a.a(null, 4);
+    wxj.a("home_page", "close_smartalbum", 0, 0, new String[] { wvg.a(this.a, wvg.a(this.a)) });
   }
 }
 

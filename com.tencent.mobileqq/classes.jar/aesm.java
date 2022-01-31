@@ -1,15 +1,31 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class aesm
-  implements azzg
+  implements DialogInterface.OnClickListener
 {
-  aesm(aesi paramaesi) {}
+  aesm(aesk paramaesk) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    azzm localazzm = new azzm(3000, 360, 0);
-    localazzm.a = true;
-    this.a.a.g.a(new azzf[] { localazzm });
+    try
+    {
+      if ((aesk.a(this.a) != null) && (aesk.a(this.a).isShowing())) {
+        aesk.a(this.a).dismiss();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, "disband cancel");
+      }
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
+    }
   }
 }
 

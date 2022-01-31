@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.util.BinderWarpper;
+import android.util.Pair;
 
-public final class bhnw
-  implements Parcelable.Creator<BinderWarpper>
+final class bhnw
+  implements bhny
 {
-  public BinderWarpper a(Parcel paramParcel)
+  public Pair<String, String> a(String paramString)
   {
-    return new BinderWarpper(paramParcel.readStrongBinder());
-  }
-  
-  public BinderWarpper[] a(int paramInt)
-  {
-    return new BinderWarpper[paramInt];
+    paramString = paramString.split(":", 2);
+    if ((paramString == null) || (paramString.length < 2)) {
+      return null;
+    }
+    return new Pair(paramString[0].trim(), paramString[1].trim());
   }
 }
 

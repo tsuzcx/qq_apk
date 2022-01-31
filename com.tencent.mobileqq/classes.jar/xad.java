@@ -1,20 +1,21 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+
 public class xad
+  implements Animation.AnimationListener
 {
-  public int a;
-  public xab a;
-  public int b;
+  public xad(EditVideoGuide paramEditVideoGuide) {}
   
-  private xad(xaf paramxaf)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Xab = xaf.a(paramxaf);
-    this.jdField_a_of_type_Int = xaf.a(paramxaf);
-    this.b = xaf.b(paramxaf);
+    this.a.g();
+    this.a.a.a(0);
   }
   
-  public String toString()
-  {
-    return "DoodleConfig{doodleStrategy=" + this.jdField_a_of_type_Xab + ", maxBitmapWidth=" + this.jdField_a_of_type_Int + ", maxBitmapHeight=" + this.b + '}';
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

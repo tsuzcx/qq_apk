@@ -1,83 +1,83 @@
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserCloudStorageReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserCloudStorageRsp;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StKVData;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bgys
-  extends bgzp
+final class bgys
+  implements bgyr, bgyt
 {
-  private CloudStorage.StGetUserCloudStorageReq a = new CloudStorage.StGetUserCloudStorageReq();
+  private int jdField_a_of_type_Int;
+  private final bgyt jdField_a_of_type_Bgyt;
+  private bgyu jdField_a_of_type_Bgyu;
+  private String jdField_a_of_type_JavaLangString;
+  private Throwable jdField_a_of_type_JavaLangThrowable;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  public bgys(String[] paramArrayOfString, String paramString)
+  bgys(bgyt parambgyt)
   {
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
+    this.jdField_a_of_type_Bgyt = parambgyt;
+  }
+  
+  private void a()
+  {
+    bgyt localbgyt;
+    bgyu localbgyu;
+    if ((this.jdField_a_of_type_Boolean) && (this.b)) {
+      if (!this.c)
+      {
+        localbgyt = this.jdField_a_of_type_Bgyt;
+        localbgyu = this.jdField_a_of_type_Bgyu;
+        if (this.jdField_a_of_type_JavaLangThrowable == null) {
+          break label79;
+        }
+      }
+    }
+    label79:
+    for (String str = this.jdField_a_of_type_JavaLangThrowable.getMessage();; str = "download plugin fail")
     {
-      String str = paramArrayOfString[i];
-      this.a.keyList.add(str);
-      i += 1;
+      localbgyt.onInitGpkgInfo(2022, localbgyu, str);
+      this.jdField_a_of_type_Bgyt.onInitGpkgInfo(this.jdField_a_of_type_Int, this.jdField_a_of_type_Bgyu, this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    this.a.appid.set(paramString);
   }
   
-  protected String a()
+  public void a(boolean paramBoolean, Throwable paramThrowable)
   {
-    return "mini_app_cloudstorage";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    Object localObject1 = new CloudStorage.StGetUserCloudStorageRsp();
     try
     {
-      ((CloudStorage.StGetUserCloudStorageRsp)localObject1).mergeFrom(a(paramArrayOfByte));
-      if ((localObject1 == null) || (((CloudStorage.StGetUserCloudStorageRsp)localObject1).KVDataList == null)) {
-        break label174;
-      }
-      paramArrayOfByte = new JSONObject();
-      Object localObject2 = ((CloudStorage.StGetUserCloudStorageRsp)localObject1).KVDataList.get();
-      localObject1 = new JSONArray();
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        CloudStorage.StKVData localStKVData = (CloudStorage.StKVData)((Iterator)localObject2).next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("key", localStKVData.key.get());
-        localJSONObject.put("value", localStKVData.value.get());
-        ((JSONArray)localObject1).put(localJSONObject);
-      }
-      paramArrayOfByte.put("KVDataList", localObject1);
+      this.b = true;
+      this.c = paramBoolean;
+      this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+      a();
+      return;
     }
-    catch (Exception paramArrayOfByte)
+    finally
     {
-      QMLog.d("GetCloudStorageRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramThrowable = finally;
+      throw paramThrowable;
     }
-    return paramArrayOfByte;
-    label174:
-    QMLog.d("GetCloudStorageRequest", "onResponse fail.rsp = null");
-    return null;
   }
   
-  protected byte[] a()
+  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
   {
-    return this.a.toByteArray();
+    this.jdField_a_of_type_Bgyt.onDownloadGpkgProgress(paramMiniAppInfo, paramFloat, paramLong);
   }
   
-  protected String b()
+  public void onInitGpkgInfo(int paramInt, bgyu parambgyu, String paramString)
   {
-    return "GetUserCloudStorage";
+    try
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_Bgyu = parambgyu;
+      this.jdField_a_of_type_JavaLangString = paramString;
+      a();
+      return;
+    }
+    finally
+    {
+      parambgyu = finally;
+      throw parambgyu;
+    }
   }
 }
 

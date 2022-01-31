@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.subaccount;
 
-import azyl;
+import bacu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class SubAccountControll$5
   implements Runnable
 {
-  public SubAccountControll$5(azyl paramazyl) {}
+  public SubAccountControll$5(bacu parambacu) {}
   
   public void run()
   {

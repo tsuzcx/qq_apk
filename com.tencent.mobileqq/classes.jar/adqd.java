@@ -1,30 +1,16 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 public class adqd
-  implements ActionMode.Callback
+  implements DialogInterface.OnClickListener
 {
-  public adqd(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public adqd(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    paramMenu.clear();
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

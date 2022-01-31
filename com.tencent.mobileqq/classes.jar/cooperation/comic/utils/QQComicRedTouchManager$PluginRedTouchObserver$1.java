@@ -1,12 +1,12 @@
 package cooperation.comic.utils;
 
-import bike;
+import biol;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQComicRedTouchManager$PluginRedTouchObserver$1
   implements Runnable
 {
-  public QQComicRedTouchManager$PluginRedTouchObserver$1(bike parambike) {}
+  public QQComicRedTouchManager$PluginRedTouchObserver$1(biol parambiol) {}
   
   public void run()
   {

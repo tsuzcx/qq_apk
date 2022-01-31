@@ -1,22 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-class acrd
-  implements DialogInterface.OnClickListener
+public class acrd
+  extends awhw
 {
-  acrd(acrb paramacrb) {}
+  public acrd(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a.a.sendEmptyMessage(259);
-    paramDialogInterface.dismiss();
+    if (paramBoolean1)
+    {
+      int i = ContactSyncJumpActivity.a(this.a).d();
+      if ((i == 1) || (i == 5))
+      {
+        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
+        this.a.finish();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acrd
  * JD-Core Version:    0.7.0.1
  */

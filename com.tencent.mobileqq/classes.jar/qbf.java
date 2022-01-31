@@ -10,9 +10,9 @@ import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
 public class qbf
   extends qbh
 {
-  public qbf(Context paramContext, bcws parambcws, rqj paramrqj)
+  public qbf(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl g()

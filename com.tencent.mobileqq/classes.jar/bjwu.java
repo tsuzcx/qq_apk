@@ -1,263 +1,79 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Rect;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class bjwu
-  extends Drawable
-  implements Animatable
+  extends bjxz
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  long jdField_a_of_type_Long;
-  Handler jdField_a_of_type_AndroidOsHandler = new bjww(this, Looper.getMainLooper());
-  public bjwx a;
-  private bjwy jdField_a_of_type_Bjwy;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
-  private boolean d;
-  
-  public bjwu()
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    this.jdField_a_of_type_Bjwy = new bjwy(this, null);
-  }
-  
-  public bjwu(bjwy parambjwy)
-  {
-    this.jdField_a_of_type_Bjwy = parambjwy;
-  }
-  
-  public bjwu(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_Bjwy = new bjwy(this, null);
-    a(paramString, paramInt);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Bjwy.b();
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_Bjwy.jdField_a_of_type_JavaLangString;
-  }
-  
-  @Deprecated
-  public void a()
-  {
-    this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa.a();
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-    if (this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa != null) {
-      this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa.a(this.jdField_a_of_type_Float);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Bjwy != null) && (this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa != null)) {
-      this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa.c(paramInt);
-    }
-  }
-  
-  public void a(bjwx parambjwx)
-  {
-    this.jdField_a_of_type_Bjwx = parambjwx;
-  }
-  
-  public void a(bjxg parambjxg)
-  {
-    if (this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa != null) {
-      this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa.a(parambjxg);
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_Bjwy.a(paramString, paramInt);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Bjwy != null) && (this.jdField_a_of_type_Bjwy.jdField_a_of_type_Boolean);
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Bjwy != null) && (this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa != null)) {
-      this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa.a();
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Bjwy != null) && (this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa != null)) {
-      this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa.a(paramInt, null);
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    if ((this.jdField_a_of_type_Bjwy == null) || (this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa == null)) {}
-    while (this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa.a() == null) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void c()
-  {
-    this.d = true;
-    this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa.a(new bjwv(this));
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if (!this.jdField_a_of_type_Bjwy.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa.a(0, null);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 1000 / this.jdField_a_of_type_Bjwy.jdField_a_of_type_Int);
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (!this.b) && (!this.d)) {}
-    Drawable localDrawable;
+    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
+    boolean bool;
     do
     {
       do
       {
-        return;
-      } while (!this.jdField_a_of_type_Bjwy.jdField_a_of_type_Boolean);
-      localDrawable = this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa.a();
-    } while (localDrawable == null);
-    localDrawable.setBounds(getBounds());
-    localDrawable.draw(paramCanvas);
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    Drawable localDrawable;
-    if (this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa != null)
-    {
-      localDrawable = this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa.a();
-      if (localDrawable != null) {}
-    }
-    else
-    {
-      return -1;
-    }
-    return (int)(localDrawable.getIntrinsicHeight() * this.jdField_a_of_type_Float);
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    Drawable localDrawable;
-    if (this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa != null)
-    {
-      localDrawable = this.jdField_a_of_type_Bjwy.jdField_a_of_type_Bjxa.a();
-      if (localDrawable != null) {}
-    }
-    else
-    {
-      return -1;
-    }
-    return (int)(localDrawable.getIntrinsicWidth() * this.jdField_a_of_type_Float);
-  }
-  
-  public int getOpacity()
-  {
-    return 0;
-  }
-  
-  public boolean isRunning()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected void onBoundsChange(Rect paramRect)
-  {
-    this.jdField_a_of_type_Bjwy.a(paramRect);
-    super.onBoundsChange(paramRect);
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
-  
-  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i;
-    if (isVisible() != paramBoolean1)
-    {
-      i = 1;
-      if (i != 0)
+        do
+        {
+          do
+          {
+            return false;
+          } while ((!"getQZoneLiveStatus".equals(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length <= 0));
+          try
+          {
+            paramString1 = new JSONObject(paramVarArgs[0]);
+            paramJsBridgeListener = paramString1.optString("callback");
+            bool = paramString1.optBoolean("needInstall");
+            if (QLog.isColorLevel()) {
+              QLog.i("QZoneLiveJsPlugin", 2, "H5参数：" + paramString1);
+            }
+            paramString1 = new JSONObject();
+            paramString2 = bjpz.a();
+            if (QLog.isColorLevel()) {
+              QLog.i("QZoneLiveJsPlugin", 2, "pluginid ：" + paramString2);
+            }
+            if (!TextUtils.isEmpty(paramString2)) {
+              break;
+            }
+            paramString1.put("isInstalled", false);
+            if (QLog.isColorLevel()) {
+              QLog.i("QZoneLiveJsPlugin", 2, "pluginid 为空，返回：" + paramString1);
+            }
+            this.a.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+            return false;
+          }
+          catch (Exception paramJsBridgeListener) {}
+        } while (!QLog.isColorLevel());
+        QLog.e("QZoneLiveJsPlugin", 2, "", paramJsBridgeListener);
+        return false;
+        if (!"qzone_live_video_plugin.apk".equals(paramString2)) {
+          break;
+        }
+      } while (TextUtils.isEmpty(paramJsBridgeListener));
+      paramString2 = this.a.mRuntime.a();
+      if (paramString2 == null)
       {
-        if (!paramBoolean1) {
-          break label48;
+        paramString1.put("isInstalled", false);
+        if (QLog.isColorLevel()) {
+          QLog.i("QZoneLiveJsPlugin", 2, "context 为空，返回：" + paramString1);
         }
-        if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
-        }
+        this.a.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+        return false;
       }
-    }
-    for (;;)
-    {
-      return super.setVisible(paramBoolean1, paramBoolean2);
-      i = 0;
-      break;
-      label48:
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-    }
-  }
-  
-  public void start()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if (!this.jdField_a_of_type_Bjwy.jdField_a_of_type_Boolean) {
-      return;
-    }
-    d();
-  }
-  
-  public void stop()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void unscheduleSelf(Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    super.unscheduleSelf(paramRunnable);
+      PluginManagerHelper.getPluginInterface(paramString2, new bjwv(this, paramString1, paramJsBridgeListener, bool));
+      return false;
+    } while ((!paramString2.equals("qzone_live_video_plugin_hack.apk")) || (TextUtils.isEmpty(paramJsBridgeListener)));
+    bjpr.a(BaseApplicationImpl.getContext(), new bjww(this, paramString1, bool, paramJsBridgeListener));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjwu
  * JD-Core Version:    0.7.0.1
  */

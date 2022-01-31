@@ -1,18 +1,18 @@
 package cooperation.qqfav;
 
 import android.content.Context;
-import biqt;
-import biqv;
+import biva;
+import bivc;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class QfavBuilder$1
   implements Runnable
 {
-  public QfavBuilder$1(biqt parambiqt, Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString) {}
+  public QfavBuilder$1(biva parambiva, Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    biqv.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, false);
+    bivc.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

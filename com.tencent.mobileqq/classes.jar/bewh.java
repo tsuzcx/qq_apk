@@ -1,127 +1,22 @@
-import android.os.Bundle;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.ims.bankcode_info.BankcodeCtrlInfo;
-import com.tencent.ims.bankcode_info.BankcodeElem;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.VoteView;
+import com.tencent.mobileqq.widget.VoteView.1;
 
-final class bewh
-  extends ClickableSpan
+public class bewh
+  implements View.OnClickListener
 {
-  bewh(String paramString, int paramInt, long paramLong, bankcode_info.BankcodeCtrlInfo paramBankcodeCtrlInfo, boolean paramBoolean) {}
+  public bewh(VoteView.1 param1) {}
   
   public void onClick(View paramView)
   {
-    int k = 0;
-    int i = 0;
-    paramView = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    int j = k;
-    Object localObject1;
-    if (paramView != null)
-    {
-      paramView = (QQMessageFacade)paramView.getManager(20);
-      j = k;
-      if (paramView != null)
-      {
-        paramView = paramView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-        if (paramView == null) {
-          return;
-        }
-        localObject1 = paramView.getExtInfoFromExtStr("sens_msg_attr");
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-      }
-    }
-    label105:
-    label363:
-    label368:
-    for (;;)
-    {
-      boolean bool;
-      try
-      {
-        j = Integer.parseInt((String)localObject1);
-        i = j;
-      }
-      catch (Exception localException)
-      {
-        Object localObject3;
-        String str1;
-        String str2;
-        localException.printStackTrace();
-        continue;
-      }
-      paramView = paramView.getExtInfoFromExtStr("sens_msg_need_mask");
-      j = i;
-      Object localObject2;
-      if (!TextUtils.isEmpty(paramView))
-      {
-        bool = Boolean.parseBoolean(paramView);
-        if ((this.jdField_a_of_type_Boolean) || (!bool)) {
-          break label356;
-        }
-        paramView = (Bundle)bdat.a().a("SensMsgTipsCfg", "Action", 1, i);
-        if (paramView == null) {
-          break;
-        }
-        localObject1 = paramView.keySet().iterator();
-        if (((Iterator)localObject1).hasNext())
-        {
-          localObject3 = paramView.getBundle((String)((Iterator)localObject1).next());
-          if ((localObject3 == null) || (((Bundle)localObject3).getString("Type").compareToIgnoreCase("showAlert") != 0)) {
-            continue;
-          }
-          localObject2 = ((Bundle)localObject3).getString("AlertTitle");
-          str1 = ((Bundle)localObject3).getString("AlertText");
-          str2 = ((Bundle)localObject3).getString("AlertOtherBtnText");
-          localObject3 = ((Bundle)localObject3).getString("AlertCancelBtnText");
-          bewd.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, (String)localObject2, str1, str2, (String)localObject3);
-          continue;
-        }
-        break;
-        if (!this.jdField_a_of_type_ComTencentImsBankcode_info$BankcodeCtrlInfo.bankcode_elems.has()) {
-          continue;
-        }
-        Iterator localIterator = this.jdField_a_of_type_ComTencentImsBankcode_info$BankcodeCtrlInfo.bankcode_elems.get().iterator();
-        i = 0;
-        if (!localIterator.hasNext()) {
-          break label368;
-        }
-        localObject2 = (bankcode_info.BankcodeElem)localIterator.next();
-        if (!((bankcode_info.BankcodeElem)localObject2).bankcode_attr.has()) {
-          break label363;
-        }
-      }
-      for (j = ((bankcode_info.BankcodeElem)localObject2).bankcode_attr.get();; j = 0)
-      {
-        if (j > i) {}
-        for (;;)
-        {
-          i = j;
-          break label298;
-          bool = true;
-          i = j;
-          break label105;
-          break;
-          j = i;
-        }
-      }
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(true);
-    paramTextPaint.setColor(-12541697);
+    paramView = new Intent(this.a.this$0.getContext(), QQBrowserActivity.class);
+    String str = bdtg.a(this.a.this$0.getContext(), "praise", "");
+    VasWebviewUtil.openQQBrowserWithoutAD(this.a.this$0.getContext(), str, 536870912L, paramView, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(null, "thumbup", "others_click", null, 1, 0, 0, null, "1", null);
   }
 }
 

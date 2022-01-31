@@ -1,24 +1,6 @@
-import android.net.Uri;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-
-class beac
-  extends beag
+public abstract interface beac
 {
-  beac(beaa parambeaa)
-  {
-    super(parambeaa, null);
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "new shouldInterceptRequest");
-    }
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
-  }
+  public abstract void callback(int paramInt);
 }
 
 

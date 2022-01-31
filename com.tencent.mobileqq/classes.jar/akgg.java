@@ -1,68 +1,29 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment.1.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.List;
 
-class akgg
-  implements View.OnClickListener
+public class akgg
+  implements amml
 {
-  akgg(akge paramakge) {}
+  public akgg(SessionClearFragment paramSessionClearFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (!akge.a(this.a)) {
-      bdcd.a(akge.a(this.a), 230, "", alpo.a(2131713861), new akgh(this), null).show();
-    }
-    do
+    if (QLog.isColorLevel())
     {
-      return;
-      localObject = paramView.getTag();
-    } while ((localObject == null) || (!(localObject instanceof String)));
-    if ((paramView instanceof Button))
-    {
-      paramView = (Button)paramView;
-      if (paramView != null) {
-        paramView.setEnabled(false);
-      }
+      QLog.d("SessionClearFragment", 2, "onLoadStart");
+      this.a.a();
     }
-    Object localObject = (String)localObject;
-    for (;;)
-    {
-      try
-      {
-        l1 = Long.parseLong(akge.a(this.a));
-      }
-      catch (Exception paramView)
-      {
-        try
-        {
-          l2 = Long.parseLong((String)localObject);
-          akge.a(this.a).add(localObject);
-          ((alzf)akge.a(this.a).a(20)).c(l1, l2);
-          if (akge.a(this.a) == null) {
-            break;
-          }
-          azmj.b(akge.a(this.a).app, "dc00898", "", "", "", "0X8009FA0", 0, 0, (String)localObject, "", "", "");
-          return;
-        }
-        catch (Exception paramView)
-        {
-          long l1;
-          long l2;
-          break label189;
-        }
-        paramView = paramView;
-        l1 = 0L;
-      }
-      label189:
-      if (QLog.isColorLevel()) {
-        QLog.d("RobotAdapter", 2, "parseLong err", paramView);
-      }
-      l2 = 0L;
+  }
+  
+  public void a(List<ammf> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SessionClearFragment", 2, "onLoadFinish");
     }
+    SessionClearFragment.a(this.a).runOnUiThread(new SessionClearFragment.1.1(this, paramList));
   }
 }
 

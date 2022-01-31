@@ -1,6 +1,6 @@
 package dov.com.qq.im.ptv;
 
-import bmar;
+import bmfd;
 import com.tencent.widget.PatchedButton;
 
 public final class AIOBusinessOperation$4
@@ -10,7 +10,7 @@ public final class AIOBusinessOperation$4
   
   public void run()
   {
-    bmar.a(this.jdField_a_of_type_ComTencentWidgetPatchedButton, this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl);
+    bmfd.a(this.jdField_a_of_type_ComTencentWidgetPatchedButton, this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl);
   }
 }
 

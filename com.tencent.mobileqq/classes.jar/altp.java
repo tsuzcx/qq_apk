@@ -1,55 +1,31 @@
-import java.nio.ByteBuffer;
-import oicq.wlogin_sdk.tools.MD5;
+import com.tencent.mobileqq.app.FriendsManager.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
 public class altp
+  extends AccountObserver
 {
-  public static String a(String paramString)
+  altp(alto paramalto) {}
+  
+  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return paramString;
-    }
-    StringBuffer localStringBuffer = new StringBuffer(paramString.length());
-    int i = 0;
-    if (i < paramString.length())
-    {
-      char c = paramString.charAt(i);
-      if ((c == ' ') || (c == '-') || (c == ')') || (c == '(') || (c == '_')) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuffer.append(c);
-      }
-    }
-    return localStringBuffer.toString();
+    ThreadManager.executeOnSubThread(new FriendsManager.1.1(this, paramString2, paramString1));
   }
   
-  public static String a(String paramString1, String paramString2)
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
-    paramString1 = paramString1.getBytes();
-    byte[] arrayOfByte = paramString2.getBytes();
-    if (paramString1.length > 10)
-    {
-      paramString2 = new byte[10];
-      System.arraycopy(paramString1, 0, paramString2, 0, 10);
-      paramString1 = paramString2;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.contacttab.friend", 2, "onOnlineStatusChanged isSuccess = " + paramBoolean1 + " ,curStatus =  , isUserSet = " + paramStatus + " ,isFriendListChang = " + paramBoolean3 + " ,timeStamp = " + paramLong + " ,isGatherListChange = " + paramBoolean4);
     }
-    for (;;)
+    alto.a(this.a).a.a(paramBoolean3, paramLong, paramBoolean4);
+    if (!paramBoolean3)
     {
-      return MD5.toMD5(ByteBuffer.allocate(paramString1.length + arrayOfByte.length).put(paramString1).put(arrayOfByte).array());
-    }
-  }
-  
-  public static String b(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    for (paramString = "#";; paramString = String.valueOf(paramString.charAt(0)).toUpperCase())
-    {
-      String str = paramString;
-      if (!bdje.b(paramString.charAt(0))) {
-        str = "#";
-      }
-      return str;
+      paramStatus = new amax(alto.a(this.a));
+      alto.a(this.a).a.a(101, paramStatus);
     }
   }
 }

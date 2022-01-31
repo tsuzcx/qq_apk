@@ -1,18 +1,21 @@
-public final class aogf
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+class aogf
+  implements EIPCResultCallback
 {
-  @Deprecated
-  public int a;
-  public String a;
+  aogf(aoge paramaoge) {}
   
-  aogf(int paramInt, String paramString)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    QLog.d("DanmuDataIPCClient", 1, new Object[] { "get barrage list, IPC success, msgSeq:", Long.valueOf(paramEIPCResult.data.getLong("key_barrage_msg_seq")) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aogf
  * JD-Core Version:    0.7.0.1
  */

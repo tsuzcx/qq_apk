@@ -46,7 +46,7 @@ import tencent.im.oidb.cmd0x6a6.oidb_0x6a6.RspBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class npt
-  extends alko
+  extends alpd
 {
   private final long jdField_a_of_type_Long = 30000L;
   public String a;
@@ -666,7 +666,7 @@ public class npt
     ByteStringMicro localByteStringMicro = ByteStringMicro.copyFromUtf8(paramString1);
     localGetPhotoCollectionInfoRequest.article_id.set(localByteStringMicro);
     localGetPhotoCollectionInfoRequest.cuin.set(Long.valueOf(getCurrentAccountUin()).longValue());
-    localGetPhotoCollectionInfoRequest.versionInfo.set("8.3.3,3,4515");
+    localGetPhotoCollectionInfoRequest.versionInfo.set("8.3.5,3,4555");
     localGetPhotoCollectionInfoRequest.click_source.set(paramInt2);
     localGetPhotoCollectionInfoRequest.recommend_position.set(paramInt1);
     localGetPhotoCollectionInfoRequest.recommend_source.set(paramString2);
@@ -692,11 +692,11 @@ public class npt
     paramString2 = ByteStringMicro.copyFromUtf8("Android");
     localReportGalleryInfoRequest.os.set(paramString2);
     localReportGalleryInfoRequest.is_qq.set(1);
-    paramString2 = ByteStringMicro.copyFromUtf8("8.3.3");
+    paramString2 = ByteStringMicro.copyFromUtf8("8.3.5");
     localReportGalleryInfoRequest.mv.set(paramString2);
-    paramString2 = ByteStringMicro.copyFromUtf8("4515");
+    paramString2 = ByteStringMicro.copyFromUtf8("4555");
     localReportGalleryInfoRequest.subv.set(paramString2);
-    paramString2 = ByteStringMicro.copyFromUtf8(aljq.c[bdee.a(this.mApp.getApp().getBaseContext())]);
+    paramString2 = ByteStringMicro.copyFromUtf8(alof.c[bdin.a(this.mApp.getApp().getBaseContext())]);
     localReportGalleryInfoRequest.network.set(paramString2);
     paramString1 = ByteStringMicro.copyFromUtf8(paramString1);
     localReportGalleryInfoRequest.rowkey.set(paramString1);
@@ -771,7 +771,7 @@ public class npt
     paramString = ByteStringMicro.copyFromUtf8(paramString);
     localGetRecommendInfoRequest.article_id.set(paramString);
     localGetRecommendInfoRequest.cuin.set(Long.valueOf(getCurrentAccountUin()).longValue());
-    localGetRecommendInfoRequest.versionInfo.set("8.3.3,3,4515");
+    localGetRecommendInfoRequest.versionInfo.set("8.3.5,3,4555");
     paramString = createToServiceMsg("PubAccountArticleCenter.GetRecommendInfo");
     paramString.putWupBuffer(localGetRecommendInfoRequest.toByteArray());
     paramString.setTimeout(30000L);
@@ -834,7 +834,7 @@ public class npt
     return !this.jdField_a_of_type_JavaUtilSet.contains(paramString);
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return npu.class;
   }

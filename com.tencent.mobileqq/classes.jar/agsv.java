@@ -1,8 +1,14 @@
-public abstract interface agsv
+import android.view.View;
+
+class agsv
+  implements bhuk
 {
-  public abstract void a();
+  agsv(agso paramagso, bhuf parambhuf) {}
   
-  public abstract void b();
+  public void OnClick(View paramView, int paramInt)
+  {
+    agso.a(this.jdField_a_of_type_Agso, paramView, paramInt, this.jdField_a_of_type_Bhuf);
+  }
 }
 
 

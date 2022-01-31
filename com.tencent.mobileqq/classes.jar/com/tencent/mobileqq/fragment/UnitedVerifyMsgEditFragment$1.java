@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.fragment;
 
-import alpo;
+import alud;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdbt;
+import bdgc;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -28,7 +28,7 @@ class UnitedVerifyMsgEditFragment$1
       if (localObject1 != null) {
         break label153;
       }
-      localObject1 = bdbt.a(this.this$0.a.app, this.this$0.a.app.getAccount());
+      localObject1 = bdgc.a(this.this$0.a.app, this.this$0.a.app.getAccount());
       label97:
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         break label255;
@@ -36,7 +36,7 @@ class UnitedVerifyMsgEditFragment$1
     }
     label153:
     label255:
-    for (localObject2 = String.format(Locale.getDefault(), alpo.a(2131716279), new Object[] { localObject1 });; localObject2 = String.format(Locale.getDefault(), alpo.a(2131716280), new Object[] { localObject2, localObject1 }))
+    for (localObject2 = String.format(Locale.getDefault(), alud.a(2131716291), new Object[] { localObject1 });; localObject2 = String.format(Locale.getDefault(), alud.a(2131716292), new Object[] { localObject2, localObject1 }))
     {
       this.this$0.a.runOnUiThread(new UnitedVerifyMsgEditFragment.1.1(this, (String)localObject2, (String)localObject1));
       return;
@@ -62,7 +62,7 @@ class UnitedVerifyMsgEditFragment$1
         localObject1 = ((TroopMemberInfo)localObject1).friendnick;
         break label97;
       }
-      localObject1 = bdbt.a(this.this$0.a.app, this.this$0.a.app.getAccount());
+      localObject1 = bdgc.a(this.this$0.a.app, this.this$0.a.app.getAccount());
       break label97;
     }
   }

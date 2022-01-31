@@ -1,35 +1,59 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.DownloadResult.Status;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class ajiq
-  implements bejw
+class ajiq
+  implements Downloader.DownloadListener
 {
-  public ajiq(LoginView paramLoginView, ImageView paramImageView, int paramInt) {}
+  private volatile int jdField_a_of_type_Int;
+  private ajin jdField_a_of_type_Ajin;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private volatile int b;
+  private int c;
   
-  public int a()
+  public ajiq(ajip paramajip, QQAppInterface paramQQAppInterface, ajin paramajin, int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Ajin = paramajin;
+    this.c = paramInt;
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
   }
   
-  public void a(boolean paramBoolean)
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("QbossADBannerConfigManager", 2, "diy data download fail url = " + paramString);
+    }
+    this.b += 1;
+    ajip.a(this.jdField_a_of_type_Ajip, this.jdField_a_of_type_Ajin, paramString, false);
+    if (this.jdField_a_of_type_Ajin != null) {
+      bjqm.a().a(2741, this.jdField_a_of_type_Ajin.c, 101, "qboss download resources fail mErrCode = " + paramDownloadResult.getStatus().httpStatus + " resUrl = " + paramString);
+    }
+    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.b + this.jdField_a_of_type_Int == this.c) {
+      ajip.a(this.jdField_a_of_type_Ajip, paramString);
     }
   }
   
-  public void b(boolean paramBoolean)
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.5F);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("QbossADBannerConfigManager", 2, "banner resources download success url = " + paramString);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+    this.jdField_a_of_type_Int += 1;
+    ajip.a(this.jdField_a_of_type_Ajip, this.jdField_a_of_type_Ajin, paramString, true);
+    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.jdField_a_of_type_Int == this.c) {
+      ajip.b(this.jdField_a_of_type_Ajip, paramString);
+    }
   }
 }
 

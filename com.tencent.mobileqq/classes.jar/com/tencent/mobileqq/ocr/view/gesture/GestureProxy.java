@@ -2,10 +2,10 @@ package com.tencent.mobileqq.ocr.view.gesture;
 
 import android.view.MotionEvent;
 import android.view.View;
-import avvf;
-import avvk;
-import avvt;
-import avvu;
+import avzo;
+import avzt;
+import awac;
+import awad;
 import com.tencent.mobileqq.ocr.view.gesture.control.GestureController;
 import java.util.List;
 
@@ -17,12 +17,12 @@ public class GestureProxy
     super(paramView);
   }
   
-  public avvk a()
+  public avzt a()
   {
-    return this.jdField_a_of_type_Avvk;
+    return this.jdField_a_of_type_Avzt;
   }
   
-  public avvt a()
+  public awac a()
   {
     return this.c;
   }
@@ -34,11 +34,11 @@ public class GestureProxy
   
   public void a()
   {
-    this.jdField_a_of_type_Avvu.a(this.c);
-    this.jdField_a_of_type_Avvu.a(this.d);
-    this.jdField_a_of_type_Avvu.a(this.jdField_a_of_type_Avvt);
-    this.jdField_a_of_type_Avvu.a(this.b);
-    if (this.jdField_a_of_type_Avvu.b(this.c))
+    this.jdField_a_of_type_Awad.a(this.c);
+    this.jdField_a_of_type_Awad.a(this.d);
+    this.jdField_a_of_type_Awad.a(this.jdField_a_of_type_Awac);
+    this.jdField_a_of_type_Awad.a(this.b);
+    if (this.jdField_a_of_type_Awad.b(this.c))
     {
       g();
       return;
@@ -46,14 +46,14 @@ public class GestureProxy
     f();
   }
   
-  public void a(avvf paramavvf)
+  public void a(avzo paramavzo)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramavvf);
+    this.jdField_a_of_type_JavaUtilList.add(paramavzo);
   }
   
-  public void a(avvk paramavvk)
+  public void a(avzt paramavzt)
   {
-    this.jdField_a_of_type_Avvk = paramavvk;
+    this.jdField_a_of_type_Avzt = paramavzt;
   }
   
   public boolean a(View paramView, MotionEvent paramMotionEvent)
@@ -64,7 +64,7 @@ public class GestureProxy
   public void b()
   {
     e();
-    if (this.jdField_a_of_type_Avvu.a(this.c))
+    if (this.jdField_a_of_type_Awad.a(this.c))
     {
       g();
       return;

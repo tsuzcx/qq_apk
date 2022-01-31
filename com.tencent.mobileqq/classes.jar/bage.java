@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.teamwork.ReSendCmd;
 
-public class bage
-  extends badk
+public final class bage
+  implements Parcelable.Creator<ReSendCmd>
 {
-  public bage(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString)
+  public ReSendCmd a(Parcel paramParcel)
   {
-    GroupTeamWorkListActivity.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("GroupTeamWorkListActivity", 2, " onDeletePad success: " + paramBoolean);
-    }
+    return new ReSendCmd(paramParcel);
+  }
+  
+  public ReSendCmd[] a(int paramInt)
+  {
+    return new ReSendCmd[paramInt];
   }
 }
 

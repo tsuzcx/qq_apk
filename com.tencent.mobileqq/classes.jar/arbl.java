@@ -1,72 +1,37 @@
-import android.app.Activity;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class arbl
 {
-  public static View.OnClickListener a(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString)
+  private static arbl jdField_a_of_type_Arbl;
+  public static String a;
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new arbm(this, "Module_WeiyunDownloadService");
+  private ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  public static arbl a()
   {
-    return new arbq(paramActivity, paramFileManagerEntity, paramString);
+    if (jdField_a_of_type_Arbl == null) {}
+    try
+    {
+      jdField_a_of_type_Arbl = new arbl();
+      return jdField_a_of_type_Arbl;
+    }
+    finally {}
   }
   
-  public static View.OnClickListener a(Activity paramActivity, String paramString)
+  private QQAppInterface a()
   {
-    return new arbx(paramActivity, paramString);
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    return null;
   }
   
-  public static View.OnClickListener a(ardn paramardn, FileManagerEntity paramFileManagerEntity)
+  public QIPCModule a()
   {
-    return new arbs(paramFileManagerEntity, paramardn);
-  }
-  
-  public static View.OnClickListener a(ardn paramardn, FileManagerEntity paramFileManagerEntity, Activity paramActivity)
-  {
-    return new arbt(paramFileManagerEntity, paramActivity, paramardn);
-  }
-  
-  public static View.OnClickListener a(ardn paramardn, String paramString)
-  {
-    return new arbm(paramString, paramardn);
-  }
-  
-  public static View.OnClickListener a(FileManagerEntity paramFileManagerEntity, Activity paramActivity)
-  {
-    return a(paramFileManagerEntity, paramActivity, false);
-  }
-  
-  public static View.OnClickListener a(FileManagerEntity paramFileManagerEntity, Activity paramActivity, boolean paramBoolean)
-  {
-    return new arbp(paramFileManagerEntity, paramActivity, paramBoolean);
-  }
-  
-  public static View.OnClickListener b(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString)
-  {
-    return new arbr(paramActivity, paramFileManagerEntity, paramString);
-  }
-  
-  public static View.OnClickListener b(ardn paramardn, FileManagerEntity paramFileManagerEntity)
-  {
-    return new arbu(paramFileManagerEntity, paramardn);
-  }
-  
-  public static View.OnClickListener b(ardn paramardn, String paramString)
-  {
-    return new arbw(paramString, paramardn);
-  }
-  
-  public static View.OnClickListener c(ardn paramardn, FileManagerEntity paramFileManagerEntity)
-  {
-    return new arbv(paramFileManagerEntity, paramardn);
-  }
-  
-  public static View.OnClickListener d(ardn paramardn, FileManagerEntity paramFileManagerEntity)
-  {
-    return new arby(paramardn, paramFileManagerEntity);
-  }
-  
-  public static View.OnClickListener e(ardn paramardn, FileManagerEntity paramFileManagerEntity)
-  {
-    return new arbz(paramardn, paramFileManagerEntity);
+    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
   }
 }
 

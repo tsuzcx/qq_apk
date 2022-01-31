@@ -124,7 +124,7 @@ public class tho
       tlo.d("WS_VIDEO_PLAYER", "[VideoPlayerWrapper.java][createVideoViewScroll]: error, mContext null");
       return null;
     }
-    if (bhou.d()) {
+    if (bhtb.d()) {
       return (View)this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView_Scroll(this.jdField_a_of_type_AndroidContentContext);
     }
     return (View)this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView(this.jdField_a_of_type_AndroidContentContext);

@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import aljq;
-import bhpd;
+import alof;
+import bhtk;
 
 public final class ReadInJoyUtils$25
   implements Runnable
 {
   public void run()
   {
-    bhpd.a().b(aljq.Q);
+    bhtk.a().b(alof.Q);
   }
 }
 

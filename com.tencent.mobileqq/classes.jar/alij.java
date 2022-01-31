@@ -1,16 +1,31 @@
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloPanel.36.1;
-import com.tencent.qphone.base.util.QLog;
-
 public class alij
-  implements akju
 {
-  public alij(ApolloPanel paramApolloPanel) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
   
-  public void a(int paramInt, boolean paramBoolean)
+  public String toString()
   {
-    QLog.d("ApolloPanel", 2, "onStatusUpdate, currentStatus=" + paramInt + "， is3dAvailable=" + paramBoolean);
-    this.a.post(new ApolloPanel.36.1(this));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{").append("errCode:").append(this.a).append(",cost:").append(this.b);
+    if (this.c > 0) {
+      localStringBuilder.append(",mem:").append(this.c);
+    }
+    if (this.d > 0) {
+      localStringBuilder.append(",cpu:").append(this.d);
+    }
+    if (this.f != 0) {
+      localStringBuilder.append(",javaHeap:").append(this.f);
+    }
+    if (this.g != 0) {
+      localStringBuilder.append(",nativeHeap:").append(this.g);
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

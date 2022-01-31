@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ocr.ui;
 
 import android.view.View;
-import avul;
+import avyu;
 
 public class SearchSougouResultItemBuilder$UrlDownloadListener$1
   implements Runnable
 {
-  public SearchSougouResultItemBuilder$UrlDownloadListener$1(avul paramavul, View paramView) {}
+  public SearchSougouResultItemBuilder$UrlDownloadListener$1(avyu paramavyu, View paramView) {}
   
   public void run()
   {

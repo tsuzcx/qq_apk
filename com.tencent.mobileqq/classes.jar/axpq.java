@@ -1,7 +1,6 @@
-public class axpq
+public abstract interface axpq
 {
-  public static boolean a = true;
-  public static boolean b = true;
+  public abstract void a(boolean paramBoolean);
 }
 
 

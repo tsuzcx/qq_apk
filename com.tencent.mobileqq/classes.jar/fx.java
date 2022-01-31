@@ -101,7 +101,7 @@ public class fx
   public int a;
   public Handler a;
   public HandlerThread a;
-  public bdwb a;
+  public beak a;
   public ETEngine a;
   public QQAppInterface a;
   final Object jdField_a_of_type_JavaLangObject = new Object();
@@ -136,7 +136,7 @@ public class fx
   
   static
   {
-    jdField_a_of_type_JavaLangString = bduw.a(aljq.aX + ".font_info");
+    jdField_a_of_type_JavaLangString = bdzf.a(alof.aX + ".font_info");
     jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + File.separator + "fz2.0/";
     jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     jdField_e_of_type_Boolean = true;
@@ -152,14 +152,14 @@ public class fx
     jdField_e_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
     jdField_a_of_type_JavaUtilVector = new Vector();
     jdField_e_of_type_Int = -1;
-    jdField_f_of_type_JavaLangString = bduw.a(aljq.aX + ".font_effect");
+    jdField_f_of_type_JavaLangString = bdzf.a(alof.aX + ".font_effect");
     jdField_g_of_type_JavaLangString = jdField_f_of_type_JavaLangString + File.separator + "magicFontConfig.json";
   }
   
   public fx(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_Bdwb = null;
+    this.jdField_a_of_type_Beak = null;
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_a_of_type_Int = -1;
     this.jdField_f_of_type_Int = -1;
@@ -167,16 +167,16 @@ public class fx
     this.jdField_g_of_type_Float = 1.5F;
     this.jdField_h_of_type_Float = 1.3F;
     this.jdField_i_of_type_Float = 1.5F;
-    this.jdField_h_of_type_JavaLangString = alpo.a(2131705062);
+    this.jdField_h_of_type_JavaLangString = alud.a(2131705074);
     this.jdField_i_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    a(bdiv.a(paramQQAppInterface.getApp(), paramQQAppInterface.c(), "vas_font_switch_config"));
+    a(bdne.a(paramQQAppInterface.getApp(), paramQQAppInterface.c(), "vas_font_switch_config"));
     this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("font_open_switch", 4).getBoolean("isUserOpenFontSwitch_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), false);
     paramQQAppInterface = new StringBuilder();
     if (!this.jdField_d_of_type_Boolean) {
-      paramQQAppInterface.append(bdcb.i()).append("; CPU number: ").append(bdcb.b()).append("; CPU frequency: ").append(bdcb.a()).append("; RAM: ").append(bdcb.d());
+      paramQQAppInterface.append(bdgk.i()).append("; CPU number: ").append(bdgk.b()).append("; CPU frequency: ").append(bdgk.a()).append("; RAM: ").append(bdgk.d());
     }
     this.jdField_d_of_type_JavaLangString = paramQQAppInterface.toString();
     this.jdField_a_of_type_Boolean = c();
@@ -381,12 +381,12 @@ public class fx
         Object localObject = paramBaseChatPie.a.getChildAt(i3 + n - i1);
         if (localObject != null)
         {
-          if (!(aekt.a((View)localObject) instanceof afys)) {
+          if (!(aepi.a((View)localObject) instanceof agdh)) {
             break label113;
           }
-          localObject = (afys)aekt.a((View)localObject);
-          if ((((afys)localObject).d instanceof ETTextView)) {
-            ((ETTextView)((afys)localObject).d).startAnimation(false, true);
+          localObject = (agdh)aepi.a((View)localObject);
+          if ((((agdh)localObject).d instanceof ETTextView)) {
+            ((ETTextView)((agdh)localObject).d).startAnimation(false, true);
           }
         }
         for (;;)
@@ -394,16 +394,16 @@ public class fx
           n += 1;
           break;
           label113:
-          if ((aekt.a((View)localObject) instanceof afvg))
+          if ((aepi.a((View)localObject) instanceof afzv))
           {
-            localObject = (afvg)aekt.a((View)localObject);
-            if ((((afvg)localObject).a != null) && (((afvg)localObject).a.a != null)) {
-              ((afvg)localObject).a.a.startAnimation(false, true);
+            localObject = (afzv)aepi.a((View)localObject);
+            if ((((afzv)localObject).a != null) && (((afzv)localObject).a.a != null)) {
+              ((afzv)localObject).a.a.startAnimation(false, true);
             }
           }
-          else if ((aekt.a((View)localObject) instanceof aflh))
+          else if ((aepi.a((View)localObject) instanceof afpw))
           {
-            ((aflh)aekt.a((View)localObject)).a.c();
+            ((afpw)aepi.a((View)localObject)).a.c();
           }
         }
       }
@@ -458,7 +458,7 @@ public class fx
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString, ExtensionInfo paramExtensionInfo, int paramInt1, int paramInt2)
   {
-    aloz localaloz = (aloz)paramQQAppInterface.getManager(51);
+    alto localalto = (alto)paramQQAppInterface.getManager(51);
     ExtensionInfo localExtensionInfo = paramExtensionInfo;
     if (paramExtensionInfo == null)
     {
@@ -473,12 +473,12 @@ public class fx
       if (QLog.isColorLevel()) {
         QLog.d("VasFont", 2, "checkUpdateDIYConfig uin = " + paramString + " fontId = " + paramInt1 + " oldTime = " + localExtensionInfo.diyFontTimestampMap.get(Integer.valueOf(paramInt1)) + " newTime = " + paramInt2);
       }
-      paramQQAppInterface = (alxl)paramQQAppInterface.a(13);
+      paramQQAppInterface = (amca)paramQQAppInterface.a(13);
       paramExtensionInfo = new HashMap();
       paramExtensionInfo.put(paramString, Integer.valueOf(paramInt1));
       paramQQAppInterface.a(paramExtensionInfo);
       localExtensionInfo.diyFontTimestampMap.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-      localaloz.a(localExtensionInfo);
+      localalto.a(localExtensionInfo);
       return true;
     }
     return false;
@@ -502,7 +502,7 @@ public class fx
   {
     if (this.jdField_f_of_type_Int == -1)
     {
-      if (((bdcb.b() < 2) || (bdcb.a() <= 1000L)) && ((bdcb.b() < 4) || (bdcb.d() <= 838860800L))) {
+      if (((bdgk.b() < 2) || (bdgk.a() <= 1000L)) && ((bdgk.b() < 4) || (bdgk.d() <= 838860800L))) {
         break label92;
       }
       if (QLog.isColorLevel()) {
@@ -512,7 +512,7 @@ public class fx
     }
     for (;;)
     {
-      bdqk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_font_dpc_fail", "font_dpc_fail", this.jdField_d_of_type_JavaLangString, paramString, 0.0F);
+      bdut.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_font_dpc_fail", "font_dpc_fail", this.jdField_d_of_type_JavaLangString, paramString, 0.0F);
       if (this.jdField_f_of_type_Int != 1) {
         break;
       }
@@ -520,7 +520,7 @@ public class fx
       label92:
       this.jdField_f_of_type_Int = 0;
       if (QLog.isColorLevel()) {
-        QLog.d("VasFont", 2, "getChatFontAbilityFromLocal return false. CPU number = " + bdcb.b() + " CPU Frequency = " + bdcb.a() + " Memory = " + bdcb.d());
+        QLog.d("VasFont", 2, "getChatFontAbilityFromLocal return false. CPU number = " + bdgk.b() + " CPU Frequency = " + bdgk.a() + " Memory = " + bdgk.d());
       }
     }
     return false;
@@ -540,7 +540,7 @@ public class fx
       if (ETEngine.getInstance().native_diyFontIsDIYFont(paramfw.jdField_a_of_type_ComEtrumpMixlayoutETFont))
       {
         paramfw.jdField_a_of_type_Boolean = true;
-        Object localObject2 = ((aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(paramString);
+        Object localObject2 = ((alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(paramString);
         Object localObject1 = localObject2;
         if (localObject2 == null)
         {
@@ -791,7 +791,7 @@ public class fx
           if (QLog.isColorLevel()) {
             QLog.d("VasFont", 2, "doGetUserFont msg do not has font id");
           }
-          localObject = ((aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a((String)localObject, false);
+          localObject = ((alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a((String)localObject, false);
           if (localObject != null)
           {
             n = (int)((ExtensionInfo)localObject).uVipFont;
@@ -870,7 +870,7 @@ public class fx
         localJSONObject2.put("status", 3);
         localJSONObject2.put("progress", 100);
         localJSONObject1.put("result", 0);
-        localJSONObject1.put("message", alpo.a(2131705063));
+        localJSONObject1.put("message", alud.a(2131705075));
       }
       for (;;)
       {
@@ -889,7 +889,7 @@ public class fx
         }
         localJSONObject2.put("status", 3);
         localJSONObject1.put("result", 0);
-        localJSONObject1.put("message", alpo.a(2131705064));
+        localJSONObject1.put("message", alud.a(2131705076));
         break label392;
         localJSONObject2.put("canceling", paramInt2);
         localJSONObject2.put("progress", 100.0F * f1);
@@ -906,19 +906,19 @@ public class fx
         {
           localException.put("status", 1);
           localJSONObject1.put("result", -1);
-          localJSONObject1.put("message", alpo.a(2131705061));
+          localJSONObject1.put("message", alud.a(2131705073));
         }
         else
         {
           localException.put("status", 2);
           localJSONObject1.put("result", 0);
-          localJSONObject1.put("message", alpo.a(2131705059));
+          localJSONObject1.put("message", alud.a(2131705071));
           break label392;
           label344:
           localException.put("status", 1);
           localException.put("progress", 0);
           localJSONObject1.put("result", 0);
-          localJSONObject1.put("message", alpo.a(2131705060));
+          localJSONObject1.put("message", alud.a(2131705072));
           continue;
         }
         label392:
@@ -945,11 +945,11 @@ public class fx
     {
       return;
       gh.a().a(paramInt1, -102);
-    } while ((TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) || (this.jdField_a_of_type_Bdwb == null));
+    } while ((TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) || (this.jdField_a_of_type_Beak == null));
     Bundle localBundle = new Bundle();
     localBundle.putString("callbackId", this.jdField_e_of_type_JavaLangString);
     localBundle.putInt("srcType", 9);
-    this.jdField_a_of_type_Bdwb.a(0L, -1, localBundle);
+    this.jdField_a_of_type_Beak.a(0L, -1, localBundle);
     this.jdField_e_of_type_JavaLangString = null;
   }
   
@@ -991,12 +991,12 @@ public class fx
               new Bundle().putInt("id", paramInt1);
               gh.a().callbackResult(i1, (EIPCResult)localObject1);
             }
-            if (this.jdField_a_of_type_Bdwb != null)
+            if (this.jdField_a_of_type_Beak != null)
             {
               localObject1 = new Bundle();
               ((Bundle)localObject1).putString("callbackId", ???);
               ((Bundle)localObject1).putInt("srcType", 2);
-              ??? = this.jdField_a_of_type_Bdwb;
+              ??? = this.jdField_a_of_type_Beak;
               l1 = paramInt1;
               if (paramInt2 != 0) {
                 break label400;
@@ -1007,7 +1007,7 @@ public class fx
           }
           if (paramInt2 == 0)
           {
-            bdkd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            bdom.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
             f();
           }
           return;
@@ -1065,7 +1065,7 @@ public class fx
   {
     fx localfx = (fx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(42);
     float f1 = localfx.jdField_g_of_type_Float;
-    if (alnq.a() == 18.0F) {
+    if (alsf.a() == 18.0F) {
       f1 = localfx.jdField_h_of_type_Float;
     }
     for (;;)
@@ -1075,9 +1075,9 @@ public class fx
     }
   }
   
-  public void a(bdwb parambdwb)
+  public void a(beak parambeak)
   {
-    this.jdField_a_of_type_Bdwb = parambdwb;
+    this.jdField_a_of_type_Beak = parambeak;
   }
   
   public void a(ChatMessage paramChatMessage)
@@ -1095,15 +1095,15 @@ public class fx
       for (paramChatMessage = ((MessageForText)localObject).sb2; paramChatMessage != null; paramChatMessage = ((MessageForText)localObject).sb)
       {
         localObject = (fx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(42);
-        if (!(paramChatMessage instanceof baig)) {
+        if (!(paramChatMessage instanceof bamp)) {
           break;
         }
-        paramChatMessage = (bain[])((baig)paramChatMessage).getSpans(0, paramChatMessage.length(), bain.class);
+        paramChatMessage = (bamw[])((bamp)paramChatMessage).getSpans(0, paramChatMessage.length(), bamw.class);
         int i1 = paramChatMessage.length;
         int n = 0;
         while (n < i1)
         {
-          paramChatMessage[n].a(azgq.a(Math.round(((fx)localObject).jdField_i_of_type_Float * 32.0F)));
+          paramChatMessage[n].a(azkz.a(Math.round(((fx)localObject).jdField_i_of_type_Float * 32.0F)));
           n += 1;
         }
       }
@@ -1126,7 +1126,7 @@ public class fx
       int n;
       try
       {
-        paramFile = new JSONObject(bdcs.a(paramFile));
+        paramFile = new JSONObject(bdhb.a(paramFile));
         Object localObject = paramFile.optJSONArray("defaultEffect");
         if (1 == ((JSONArray)localObject).length()) {
           this.jdField_c_of_type_Int = ((JSONObject)((JSONArray)localObject).get(0)).optInt("effectID", 1);
@@ -1156,7 +1156,7 @@ public class fx
             QLog.i("VasFont", 2, "fontEffectPrefer = " + this.jdField_c_of_type_Int + " enlargeFontText = " + this.jdField_g_of_type_Float + " enlargeFontTextMax = " + this.jdField_h_of_type_Float + " enlargeFontEmo = " + this.jdField_i_of_type_Float + " enlargeFontSwitch = " + this.jdField_h_of_type_Boolean + " enlargeFontDesc = " + this.jdField_h_of_type_JavaLangString + " enlargeFontImgURL = " + this.jdField_i_of_type_JavaLangString);
           }
           this.jdField_i_of_type_Boolean = true;
-          bdkd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          bdom.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
           return;
         }
       }
@@ -1175,8 +1175,8 @@ public class fx
   public void a(String paramString, int paramInt)
   {
     int i1 = 1;
-    aloz localaloz = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    ExtensionInfo localExtensionInfo2 = localaloz.a(paramString);
+    alto localalto = (alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    ExtensionInfo localExtensionInfo2 = localalto.a(paramString);
     int n = 0;
     ExtensionInfo localExtensionInfo1 = localExtensionInfo2;
     if (localExtensionInfo2 == null)
@@ -1195,7 +1195,7 @@ public class fx
     for (paramInt = i1;; paramInt = n)
     {
       if (paramInt != 0) {
-        localaloz.a(localExtensionInfo1);
+        localalto.a(localExtensionInfo1);
       }
       return;
     }
@@ -1211,7 +1211,7 @@ public class fx
         if (!this.jdField_a_of_type_Boolean) {
           break label596;
         }
-        localObject = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+        localObject = (alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
         this.jdField_a_of_type_ComEtrumpMixlayoutETEngine = ETEngine.getInstance();
         this.jdField_b_of_type_ComEtrumpMixlayoutETEngine = ETEngine.getInstanceForAnimation();
         if ((this.jdField_a_of_type_ComEtrumpMixlayoutETEngine == null) || (this.jdField_b_of_type_ComEtrumpMixlayoutETEngine == null)) {
@@ -1242,12 +1242,12 @@ public class fx
                 break label577;
               }
               String str1 = "1";
-              localObject = ((aloz)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+              localObject = ((alto)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
               if ((localObject == null) || (0L == ((ExtensionInfo)localObject).uVipFont) || (((ExtensionInfo)localObject).vipFontType != 1)) {
                 break label604;
               }
               localObject = "0";
-              azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Font_Mall", "0X80072CB", 0, 0, str1, (String)localObject, "", "");
+              azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Font_Mall", "0X80072CB", 0, 0, str1, (String)localObject, "", "");
               if (QLog.isColorLevel()) {
                 QLog.d("VasFont", 2, "VipFontReport: AIO engine status, status=" + str1 + ", hgType=" + (String)localObject);
               }
@@ -1262,7 +1262,7 @@ public class fx
             if (paramBoolean) {
               break label596;
             }
-            azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Font_Mall", "0X80072C9", 0, 0, "", "", "", "");
+            azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Font_Mall", "0X80072C9", 0, 0, "", "", "", "");
             if (!QLog.isColorLevel()) {
               break label596;
             }
@@ -1273,7 +1273,7 @@ public class fx
         catch (Exception localException)
         {
           QLog.e("VasFont", 1, "init font engine fail " + localException.getMessage());
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Font_Mall", "load_font_fail", 0, 1, "-1", "", "", "");
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Font_Mall", "load_font_fail", 0, 1, "-1", "", "", "");
           return;
         }
         int i1 = 0;
@@ -1281,7 +1281,7 @@ public class fx
       catch (Throwable localThrowable)
       {
         QLog.e("VasFont", 1, "init font engine fail " + localThrowable.getMessage());
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Font_Mall", "load_font_fail", 0, 1, "-1", "", "", "");
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Font_Mall", "load_font_fail", 0, 1, "-1", "", "", "");
         return;
       }
       continue;
@@ -1313,14 +1313,14 @@ public class fx
     return this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_isFontLoaded(paramInt);
   }
   
-  public boolean a(aelt paramaelt, ChatMessage paramChatMessage)
+  public boolean a(aeqi paramaeqi, ChatMessage paramChatMessage)
   {
-    if ((paramaelt instanceof afys))
+    if ((paramaeqi instanceof agdh))
     {
-      paramaelt = (afys)paramaelt;
-      if ((paramaelt.d instanceof ETTextView))
+      paramaeqi = (agdh)paramaeqi;
+      if ((paramaeqi.d instanceof ETTextView))
       {
-        if (((ETTextView)paramaelt.d).mFont == null)
+        if (((ETTextView)paramaeqi.d).mFont == null)
         {
           if (QLog.isColorLevel()) {
             QLog.d("VasFont", 2, "isAioNeedRefresh text has no font yet");
@@ -1328,9 +1328,9 @@ public class fx
           return true;
         }
         fw localfw = b(paramChatMessage);
-        if ((localfw != null) && ((paramaelt.d instanceof ETTextView)))
+        if ((localfw != null) && ((paramaeqi.d instanceof ETTextView)))
         {
-          ETTextView localETTextView = (ETTextView)paramaelt.d;
+          ETTextView localETTextView = (ETTextView)paramaeqi.d;
           if (localETTextView.mFont.mFontId != localfw.jdField_a_of_type_Int)
           {
             if (QLog.isColorLevel()) {
@@ -1346,7 +1346,7 @@ public class fx
             return true;
           }
         }
-        if (a(paramChatMessage) != ((ETTextView)paramaelt.d).mMagicFont)
+        if (a(paramChatMessage) != ((ETTextView)paramaeqi.d).mMagicFont)
         {
           if (QLog.isColorLevel()) {
             QLog.d("VasFont", 2, "isAioNeedRefresh text has magicfont change");
@@ -1361,8 +1361,8 @@ public class fx
           }
           return true;
         }
-        paramaelt = (ETTextView)paramaelt.d;
-        if ((paramaelt.getETLayout() != null) && (paramaelt.mMagicFont != paramaelt.getETLayout().jdField_b_of_type_Boolean))
+        paramaeqi = (ETTextView)paramaeqi.d;
+        if ((paramaeqi.getETLayout() != null) && (paramaeqi.mMagicFont != paramaeqi.getETLayout().jdField_b_of_type_Boolean))
         {
           if (QLog.isColorLevel()) {
             QLog.d("VasFont", 2, "isAioNeedRefresh text has magicfont change 2");
@@ -1394,7 +1394,7 @@ public class fx
             bool1 = false;
             return bool1;
           }
-          if (bdcs.a((File)???) == null)
+          if (bdhb.a((File)???) == null)
           {
             b(paramfw.jdField_a_of_type_Int, 1);
             VasWebviewUtil.reportVasStatus("Font", "FontMd5Check", "0", 0, 0, paramfw.jdField_a_of_type_Int, 1, "", "");
@@ -1434,7 +1434,7 @@ public class fx
       boolean bool1 = bool2;
       if (a(paramString, paramfw, paramInt))
       {
-        bdkd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        bdom.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
         bool1 = bool2;
       }
     }
@@ -1461,8 +1461,8 @@ public class fx
       }
       return new fw(0, null);
     }
-    aloz localaloz = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    ExtensionInfo localExtensionInfo = localaloz.a(str1, false);
+    alto localalto = (alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    ExtensionInfo localExtensionInfo = localalto.a(str1, false);
     String str2 = paramChatMessage.getExtInfoFromExtStr("vip_font_id");
     if (QLog.isColorLevel()) {
       QLog.d("VasFont", 2, "getUserFont: message font id = " + str2 + " uin = " + str1);
@@ -1486,7 +1486,7 @@ public class fx
           if (QLog.isColorLevel()) {
             QLog.d("VasFont", 2, "getUserFont: message font not equals local uin = " + str1);
           }
-          bdbg.a(str1);
+          bdfp.a(str1);
           n = 1;
         }
       }
@@ -1494,7 +1494,7 @@ public class fx
     for (;;)
     {
       if (n != 0) {
-        bdbg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        bdfp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
       return a(paramChatMessage);
       label370:
@@ -1503,13 +1503,13 @@ public class fx
         if (QLog.isColorLevel()) {
           QLog.d("VasFont", 2, "getUserFont: message magicfont not equals local uin = " + str1);
         }
-        bdbg.a(str1);
+        bdfp.a(str1);
         n = 1;
         continue;
         if (localExtensionInfo != null) {
           return a(paramChatMessage);
         }
-        new QueryTask(new fy(this, localaloz, str1), new fz(this, paramChatMessage)).a(null);
+        new QueryTask(new fy(this, localalto, str1), new fz(this, paramChatMessage)).a(null);
         if (QLog.isColorLevel()) {
           QLog.i("VasFont", 2, "getUserFont extensionInfo no cache.");
         }
@@ -1746,14 +1746,14 @@ public class fx
     label266:
     QLog.i("tag.vasFont.enlarge", 2, "enableEnlargeFontEffect --> disable enlarge font, enlargeFontSwitch close.");
     return false;
-    aloz localaloz;
+    alto localalto;
     if (paramChatMessage.isSend())
     {
       str = paramChatMessage.selfuin;
-      localaloz = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-      if (localaloz != null)
+      localalto = (alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+      if (localalto != null)
       {
-        ExtensionInfo localExtensionInfo = localaloz.a(str, false);
+        ExtensionInfo localExtensionInfo = localalto.a(str, false);
         if (localExtensionInfo == null) {
           break label517;
         }
@@ -1765,8 +1765,8 @@ public class fx
           if (QLog.isColorLevel()) {
             QLog.i("tag.vasFont.enlarge", 2, "enableEnlargeFontEffect --> fontEffectId not equal with local.");
           }
-          bdbg.a(str);
-          bdbg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          bdfp.a(str);
+          bdfp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
         }
       }
       label438:
@@ -1790,7 +1790,7 @@ public class fx
       }
       str = paramChatMessage.senderuin;
       break;
-      ThreadManager.post(new FontManager.8(this, localaloz, str), 5, null, true);
+      ThreadManager.post(new FontManager.8(this, localalto, str), 5, null, true);
       break label438;
     }
   }
@@ -1954,12 +1954,12 @@ public class fx
     //   187: aload_0
     //   188: aconst_null
     //   189: putfield 386	fx:jdField_b_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   192: invokestatic 1623	asnp:a	()Lasnp;
-    //   195: getfield 1624	asnp:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   192: invokestatic 1623	asry:a	()Lasry;
+    //   195: getfield 1624	asry:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   198: iconst_0
     //   199: invokevirtual 439	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   202: invokestatic 1623	asnp:a	()Lasnp;
-    //   205: getfield 1625	asnp:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   202: invokestatic 1623	asry:a	()Lasry;
+    //   205: getfield 1625	asry:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   208: iconst_0
     //   209: invokevirtual 439	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   212: aload_0

@@ -1,18 +1,33 @@
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.QCircleInitBean;
 import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
 import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
+import feedcloud.FeedCloudMeta.StTagInfo;
 
-class tzl
-  implements yvn<FeedCloudRead.StGetFeedListRsp>
+public class tzl
+  extends yka
 {
-  tzl(tzk paramtzk, QCircleGetFeedListRequest paramQCircleGetFeedListRequest, boolean paramBoolean) {}
+  private QCircleInitBean a;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
+  public tzl(QCircleInitBean paramQCircleInitBean)
   {
-    boolean bool = VSNetworkHelper.a(paramString);
-    QLog.d("QCircleTagPageViewModel", 1, "requestTagPageData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + bool);
-    this.jdField_a_of_type_Tzk.a(paramBoolean, paramLong, paramString, paramStGetFeedListRsp, this.jdField_a_of_type_Boolean);
+    this.a = paramQCircleInitBean;
+  }
+  
+  public void a() {}
+  
+  public void a(ykg paramykg)
+  {
+    if ((this.a != null) && (this.a.getTagInfo() != null) && ((!TextUtils.isEmpty(this.a.getTagInfo().tagId.get())) || (!TextUtils.isEmpty(this.a.getTagInfo().tagName.get()))))
+    {
+      QCircleGetFeedListRequest localQCircleGetFeedListRequest = new QCircleGetFeedListRequest(this.a.getTagInfo().tagId.get(), this.a.getTagInfo().tagName.get(), null);
+      paramykg = new tzm(this, localQCircleGetFeedListRequest, paramykg);
+      localQCircleGetFeedListRequest.setEnableCache(true);
+      VSNetworkHelper.a().a(localQCircleGetFeedListRequest, paramykg);
+      QLog.d("QCircleTagPreLoaderTask", 1, "QCircleTagPreLoaderTask->sendQCircleRequest: CmdName:" + localQCircleGetFeedListRequest.getCmdName() + "| TraceId:" + localQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + localQCircleGetFeedListRequest.getCurrentSeq());
+    }
   }
 }
 

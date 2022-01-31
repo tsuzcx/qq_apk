@@ -4,11 +4,11 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import anxm;
-import anxo;
-import anxw;
-import aobp;
-import azmj;
+import aobv;
+import aobx;
+import aocf;
+import aofy;
+import azqs;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.colornote.swipeback.PostTable;
@@ -98,7 +98,7 @@ class SwipeBackLayout$1
       paramView = paramView.parseBundle();
       paramView.putInt("color_note_curd_from_type", 1);
       SwipeBackLayout.access$900(this.this$0).a(paramView);
-      azmj.b(null, "dc00898", "", "", "0X800A742", "0X800A742", anxm.a(SwipeBackLayout.access$1200(this.this$0).getColorNote().mServiceType), 0, "", "", "", "");
+      azqs.b(null, "dc00898", "", "", "0X800A742", "0X800A742", aobv.a(SwipeBackLayout.access$1200(this.this$0).getColorNote().mServiceType), 0, "", "", "", "");
       i = 0;
       j = 1;
       label274:
@@ -121,7 +121,7 @@ class SwipeBackLayout$1
       label338:
       i = 1;
       SwipeBackLayout.access$1300(this.this$0).a(0.0D);
-      azmj.b(null, "dc00898", "", "", "0X800A6CF", "0X800A6CF", 1, 0, "", "", "", "");
+      azqs.b(null, "dc00898", "", "", "0X800A6CF", "0X800A6CF", 1, 0, "", "", "", "");
       label376:
       j = 0;
       break label274;

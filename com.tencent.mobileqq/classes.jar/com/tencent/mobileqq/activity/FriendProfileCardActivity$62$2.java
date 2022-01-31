@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import acwj;
+import aday;
 import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 import com.tencent.qphone.base.util.QLog;
 
 public class FriendProfileCardActivity$62$2
   implements Runnable
 {
-  public FriendProfileCardActivity$62$2(acwj paramacwj) {}
+  public FriendProfileCardActivity$62$2(aday paramaday) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class FriendProfileCardActivity$62$2
       this.a.a.g();
       if (this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView != null)
       {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.a.a.jdField_a_of_type_Awmk, false, new String[0]);
+        this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.a.a.jdField_a_of_type_Awqt, false, new String[0]);
         return;
       }
     }

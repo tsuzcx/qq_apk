@@ -1,49 +1,15 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class aank
-  implements aanf
+  implements DialogInterface.OnDismissListener
 {
-  public boolean a(aamm paramaamm, String paramString, String... paramVarArgs)
+  aank(aanj paramaanj) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Object localObject = null;
-    if (paramaamm != null) {}
-    for (paramVarArgs = paramaamm.a(); (paramaamm == null) || (paramVarArgs == null); paramVarArgs = null)
-    {
-      aanp.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("netType", aanr.a(paramVarArgs));
-    }
-    catch (JSONException localJSONException)
-    {
-      try
-      {
-        for (;;)
-        {
-          paramaamm.callJs(paramString, new String[] { localJSONObject.toString() });
-          paramString = localObject;
-          if (paramaamm != null) {
-            paramString = paramaamm.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getNetType", paramString);
-          return true;
-          localJSONException = localJSONException;
-          aanp.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error", localJSONException);
-        }
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          aanp.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error", paramString);
-        }
-      }
-    }
+    this.a.jdField_a_of_type_Aans.d();
+    this.a.jdField_a_of_type_Aanh.c();
   }
 }
 

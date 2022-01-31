@@ -1,122 +1,139 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
+import android.annotation.SuppressLint;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.canvas.report.AdRefreshCallback;
-import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
-import com.tencent.ad.tangram.util.AdHexUtil;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.security.MessageDigest;
-import java.util.concurrent.ConcurrentHashMap;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
 public class aapc
-  implements AdRefreshCallback
+  implements View.OnTouchListener
 {
-  private static volatile aapc jdField_a_of_type_Aapc;
-  private bfka jdField_a_of_type_Bfka = new aapd(this);
-  private AdAppBtnData jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasComponentsAppbuttonAdAppBtnData;
-  private GdtAd jdField_a_of_type_ComTencentGdtadAditemGdtAd;
-  private final String jdField_a_of_type_JavaLangString = "GdtDownloadReportManager";
-  private ConcurrentHashMap<String, GdtAd> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, GdtAd> b = new ConcurrentHashMap();
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private aapd jdField_a_of_type_Aapd;
+  private List<WeakReference<View>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private int c;
+  private int d;
   
-  private aapc()
+  String a(String paramString, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    a();
-  }
-  
-  public static aapc a()
-  {
-    if (jdField_a_of_type_Aapc == null) {}
-    try
+    long l1 = this.jdField_b_of_type_Long;
+    long l2 = this.jdField_a_of_type_Long;
+    long l3 = System.currentTimeMillis();
+    long l4 = this.jdField_b_of_type_Long;
+    long l5 = System.currentTimeMillis();
+    long l6 = this.jdField_a_of_type_Long;
+    int i;
+    int j;
+    int k;
+    Object localObject;
+    if (paramBoolean1)
     {
-      if (jdField_a_of_type_Aapc == null) {
-        jdField_a_of_type_Aapc = new aapc();
-      }
-      return jdField_a_of_type_Aapc;
-    }
-    finally {}
-  }
-  
-  private String a(String paramString)
-  {
-    Object localObject1 = null;
-    try
-    {
-      paramString = BaseApplicationImpl.getApplication().getApplicationContext().getPackageManager().getPackageInfo(paramString, 64).signatures;
-      Object localObject2 = MessageDigest.getInstance("MD5");
-      ((MessageDigest)localObject2).update(paramString[0].toByteArray());
-      localObject2 = AdHexUtil.bytes2HexString(((MessageDigest)localObject2).digest());
-      paramString = localObject1;
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        paramString = ((String)localObject2).toUpperCase();
-      }
-      return paramString;
-    }
-    catch (Exception paramString) {}
-    return null;
-  }
-  
-  private void a()
-  {
-    aanp.a("GdtDownloadReportManager", "registerDownloadListener: ");
-    bfgi.a().a(this.jdField_a_of_type_Bfka);
-  }
-  
-  private void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    this.b.remove(paramString);
-  }
-  
-  private boolean a(DownloadInfo paramDownloadInfo, GdtAd paramGdtAd)
-  {
-    if ((paramDownloadInfo == null) || (paramGdtAd == null) || (TextUtils.isEmpty(paramDownloadInfo.e)) || (TextUtils.isEmpty(paramGdtAd.getAppPackageName())) || (TextUtils.isEmpty(paramDownloadInfo.c)) || (TextUtils.isEmpty(paramGdtAd.getAppId()))) {}
-    while ((!paramDownloadInfo.e.equals(paramGdtAd.getAppPackageName())) || (!paramDownloadInfo.c.equals(paramGdtAd.getAppId()))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void a(GdtAd paramGdtAd, int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == 0)
-    {
-      if (!paramBoolean) {
-        break label23;
-      }
-      aaod.a(paramGdtAd, 269);
+      i = 1;
+      j = azkz.b(BaseApplicationImpl.getContext());
+      k = azkz.a(BaseApplicationImpl.getContext());
+      localObject = new JSONObject();
     }
     for (;;)
     {
-      aaod.a(paramGdtAd, 272);
-      return;
-      label23:
-      aaod.a(paramGdtAd, 268);
+      try
+      {
+        ((JSONObject)localObject).put("g", String.valueOf(l1 - l2));
+        ((JSONObject)localObject).put("sc", String.valueOf(l3 - l4));
+        ((JSONObject)localObject).put("ec", String.valueOf(l5 - l6));
+        ((JSONObject)localObject).put("aa", String.valueOf(this.jdField_a_of_type_Int));
+        ((JSONObject)localObject).put("ab", String.valueOf(this.jdField_b_of_type_Int));
+        ((JSONObject)localObject).put("ba", String.valueOf(this.c));
+        ((JSONObject)localObject).put("bb", String.valueOf(this.d));
+        ((JSONObject)localObject).put("d", String.valueOf(0));
+        ((JSONObject)localObject).put("p", String.valueOf(paramLong));
+        ((JSONObject)localObject).put("f", String.valueOf(0));
+        ((JSONObject)localObject).put("x", String.valueOf(i));
+        ((JSONObject)localObject).put("sz", String.valueOf(-999));
+        ((JSONObject)localObject).put("da", String.valueOf(k));
+        ((JSONObject)localObject).put("db", String.valueOf(j));
+        if (!paramBoolean2) {
+          continue;
+        }
+        i = 2;
+        ((JSONObject)localObject).put("vca", String.valueOf(i));
+      }
+      catch (Exception localException)
+      {
+        String str;
+        aase.d("GdtMotiveVideoClickCoordinateReportHelper", "getReportString error", localException);
+        continue;
+        paramString = "?";
+        continue;
+      }
+      str = ((JSONObject)localObject).toString();
+      localObject = paramString;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        localObject = paramString;
+        if (!paramString.contains("&s={"))
+        {
+          localObject = new StringBuilder().append(paramString);
+          if (!paramString.contains("?")) {
+            continue;
+          }
+          paramString = "&";
+          localObject = paramString + "s=" + str;
+          aase.d("GdtMotiveVideoClickCoordinateReportHelper", "getReportString click url result : " + (String)localObject);
+        }
+      }
+      return localObject;
+      i = 0;
+      break;
+      i = 1;
     }
   }
   
-  public void a(String paramString, GdtAd paramGdtAd, AdAppBtnData paramAdAppBtnData)
+  public void a()
   {
-    if (TextUtils.isEmpty(paramString))
+    this.jdField_a_of_type_Aapd = null;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      aanp.d("GdtDownloadReportManager", "appId isEmpty");
-      return;
+      View localView = (View)((WeakReference)localIterator.next()).get();
+      if (localView != null) {
+        localView.setOnTouchListener(null);
+      }
     }
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramGdtAd);
-    }
-    this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasComponentsAppbuttonAdAppBtnData = paramAdAppBtnData;
   }
   
-  public void onAdRefresh(Ad paramAd)
+  void a(View paramView)
   {
-    if ((paramAd instanceof GdtAd)) {
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)paramAd);
+    this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramView));
+    paramView.setOnTouchListener(this);
+  }
+  
+  @SuppressLint({"ClickableViewAccessibility"})
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
+      this.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawY());
+      continue;
+      this.jdField_b_of_type_Long = System.currentTimeMillis();
+      this.c = ((int)paramMotionEvent.getRawX());
+      this.d = ((int)paramMotionEvent.getRawY());
+      if (this.jdField_a_of_type_Aapd != null) {
+        this.jdField_a_of_type_Aapd.a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d);
+      }
     }
   }
 }

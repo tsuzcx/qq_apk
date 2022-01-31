@@ -12,7 +12,7 @@ public class szw
 {
   private static final String jdField_a_of_type_JavaLangString = MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString();
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "_data", "date_added" };
-  private static final String jdField_b_of_type_JavaLangString = alpo.a(2131713960);
+  private static final String jdField_b_of_type_JavaLangString = alud.a(2131713972);
   private int jdField_a_of_type_Int;
   private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
   private FileObserver jdField_a_of_type_AndroidOsFileObserver;

@@ -1,75 +1,93 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.util.Pair;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 
 public class aojp
-  extends aofy<aojo>
 {
-  public int a()
-  {
-    return 492;
-  }
+  public float a;
+  public int a;
+  public String a;
+  public ArrayList<Pair<String, Float>> a;
+  Set<Integer> a;
+  public boolean a;
+  public int b;
+  public int c = 36;
   
-  @NonNull
-  public aojo a(int paramInt)
+  public aojp(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("GroupIntimateRelationshipConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new aojo();
-  }
-  
-  @Nullable
-  public aojo a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = aojh.a(paramString, this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Float = aojh.a(paramString);
+    this.b = this.jdField_a_of_type_JavaUtilArrayList.size();
+    this.c = a(this.b);
+    this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1));
+    if (this.jdField_a_of_type_Boolean)
     {
-      aojo localaojo = aojo.a(paramArrayOfaogf[0]);
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupIntimateRelationshipConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b));
+      if (this.b % 2 != 0) {
+        break label172;
       }
-      return localaojo;
     }
-    return new aojo();
-  }
-  
-  public Class<aojo> a()
-  {
-    return aojo.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupIntimateRelationshipConfProcessor", 2, "onReqFailed failCode:" + paramInt);
+    for (;;)
+    {
+      if (i != 0)
+      {
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(2));
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 2));
+      }
+      return;
+      label172:
+      i = 0;
     }
   }
   
-  public void a(aojo paramaojo)
+  private int a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupIntimateRelationshipConfProcessor", 2, "onUpdate newConf:" + paramaojo);
+    if (paramInt <= 2) {
+      paramInt = aojh.a.nextInt(8) - 4 + 74;
+    }
+    for (;;)
+    {
+      return paramInt / 4 * 4;
+      if (paramInt <= 4) {
+        paramInt = aojh.a.nextInt(8) - 4 + 70;
+      } else if (paramInt <= 6) {
+        paramInt = aojh.a.nextInt(8) - 4 + 66;
+      } else if (paramInt <= 8) {
+        paramInt = aojh.a.nextInt(8) - 4 + 62;
+      } else {
+        paramInt = aojh.a.nextInt(8) - 4 + 60;
+      }
     }
   }
   
-  public int b()
+  public void a()
   {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    if (this.jdField_a_of_type_Boolean) {
+      if (this.b % 3 != 0) {
+        break label56;
+      }
+    }
+    label56:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 3));
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aojp
  * JD-Core Version:    0.7.0.1
  */

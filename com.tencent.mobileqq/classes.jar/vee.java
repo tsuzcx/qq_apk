@@ -1,58 +1,123 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.widget.PollContainerLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
-import java.net.URI;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStorySubmitRateData;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStorySubmitRateData;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tribe.async.dispatch.Dispatcher;
 
-class vee
-  implements vzt
+public class vee
+  implements urr<vez<qqstory_service.ReqStorySubmitRateData>, vgx>
 {
-  vee(ved paramved, utb paramutb) {}
+  public static final String a;
+  public final int a;
+  public final String b;
+  public final String c;
   
-  public void a(String paramString, Bitmap paramBitmap)
+  static
   {
-    paramString = BaseApplicationImpl.getContext();
-    Object localObject = new PollContainerLayout(paramString);
-    ((PollContainerLayout)localObject).a(this.jdField_a_of_type_Utb, -1, null);
-    FrameLayout localFrameLayout = new FrameLayout(paramString);
-    localFrameLayout.setBackgroundDrawable(new BitmapDrawable(paramString.getResources(), paramBitmap));
-    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(paramBitmap.getWidth(), paramBitmap.getHeight()));
-    localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
-    localFrameLayout.measure(View.MeasureSpec.makeMeasureSpec(paramBitmap.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramBitmap.getHeight(), 1073741824));
-    localFrameLayout.layout(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    ((PollContainerLayout)localObject).a(this.jdField_a_of_type_Utb, -1, null);
-    localObject = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
-    Canvas localCanvas = new Canvas((Bitmap)localObject);
-    localCanvas.drawBitmap(paramBitmap, new Matrix(), null);
-    localFrameLayout.draw(localCanvas);
-    paramString = paramString.getCacheDir().getAbsolutePath() + "/" + System.currentTimeMillis() + ".png";
-    if (xmn.a((Bitmap)localObject, paramString)) {
-      this.jdField_a_of_type_Ved.a("result", new File(paramString).toURI().toString());
+    jdField_a_of_type_JavaLangString = uqn.a("StorySvc.submit_rate_data");
+  }
+  
+  vee(String paramString1, String paramString2, int paramInt)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.c = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private void a()
+  {
+    wxe.a("Q.qqstory.pollData.SendVidRateDataHandler", "sendRequest() feed=%s, vid=%s, rate=%d", this.jdField_b_of_type_JavaLangString, this.c, Integer.valueOf(this.jdField_a_of_type_Int));
+    Object localObject = new qqstory_service.ReqStorySubmitRateData();
+    ((qqstory_service.ReqStorySubmitRateData)localObject).vid.set(ByteStringMicro.copyFromUtf8(this.c));
+    ((qqstory_service.ReqStorySubmitRateData)localObject).rate_data.set(this.jdField_a_of_type_Int);
+    localObject = new vez(jdField_a_of_type_JavaLangString, (MessageMicro)localObject, null);
+    urp.a().a((urt)localObject, this);
+  }
+  
+  public static void a(@Nullable String paramString1, String paramString2, int paramInt)
+  {
+    new vee(paramString1, paramString2, paramInt).a();
+  }
+  
+  public void a(@NonNull vez<qqstory_service.ReqStorySubmitRateData> paramvez, @Nullable vgx paramvgx, @NonNull ErrorMessage paramErrorMessage)
+  {
+    int j = -1;
+    paramvez = (uvx)uwa.a(5);
+    StoryVideoItem localStoryVideoItem = paramvez.a(this.c);
+    int i;
+    long l;
+    label57:
+    vef localvef;
+    if (localStoryVideoItem != null)
+    {
+      i = localStoryVideoItem.mRateResult;
+      if (localStoryVideoItem != null) {
+        j = localStoryVideoItem.mTotalRateCount;
+      }
+      if (localStoryVideoItem == null) {
+        break label205;
+      }
+      l = localStoryVideoItem.mTotalScore;
+      localvef = new vef();
+      if ((!paramErrorMessage.isFail()) && (paramvgx != null)) {
+        break label213;
+      }
+      wxe.e("Q.qqstory.pollData.SendVidRateDataHandler", "onCmdRespond Request Error:%s", new Object[] { paramErrorMessage.toString() });
+      localvef.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      localvef.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      localvef.jdField_b_of_type_JavaLangString = this.c;
+      localvef.jdField_a_of_type_Int = i;
+      localvef.jdField_b_of_type_Int = j;
+      localvef.jdField_a_of_type_Long = l;
     }
     for (;;)
     {
-      ((Bitmap)localObject).recycle();
-      ved.a(this.jdField_a_of_type_Ved, true);
+      if (localStoryVideoItem != null)
+      {
+        localStoryVideoItem.mRateResult = localvef.jdField_a_of_type_Int;
+        localStoryVideoItem.mTotalRateCount = localvef.jdField_b_of_type_Int;
+        localStoryVideoItem.mTotalScore = localvef.jdField_a_of_type_Long;
+        paramvez.a(localStoryVideoItem);
+      }
+      umc.a().dispatch(localvef);
+      xsf.a(QQStoryContext.a());
       return;
-      this.jdField_a_of_type_Ved.a("result", this.jdField_a_of_type_Ved.a.mVideoThumbnailUrl);
+      i = -1;
+      break;
+      label205:
+      l = -1L;
+      break label57;
+      label213:
+      paramErrorMessage = new qqstory_service.RspStorySubmitRateData();
+      try
+      {
+        paramErrorMessage.mergeFrom(paramvgx.a);
+        localvef.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(paramErrorMessage.result.error_code.get(), paramErrorMessage.result.error_desc.get().toStringUtf8());
+        localvef.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+        localvef.jdField_b_of_type_JavaLangString = this.c;
+        localvef.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+        localvef.jdField_b_of_type_Int = paramErrorMessage.total_rate_count.get();
+        localvef.jdField_a_of_type_Long = paramErrorMessage.total_rate_score.get();
+        localvef.c = paramErrorMessage.comment_id.get();
+        localvef.jdField_b_of_type_Long = paramErrorMessage.fake_id.get();
+        wxe.b("Q.qqstory.pollData.SendVidRateDataHandler", "onCmdRespond() feed=%s, vid=%s, rate=%s, rateCount=%s, rateScore=%s, commentId=%s, commentFakeId=%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.c, Integer.valueOf(localvef.jdField_a_of_type_Int), Integer.valueOf(localvef.jdField_b_of_type_Int), Long.valueOf(localvef.jdField_a_of_type_Long), Integer.valueOf(localvef.c), Long.valueOf(localvef.jdField_b_of_type_Long) });
+      }
+      catch (InvalidProtocolBufferMicroException paramvez)
+      {
+        paramvez.printStackTrace();
+        wxe.c("Q.qqstory.pollData.SendVidRateDataHandler", "onCmdRespond Request parse Error!", paramvez);
+      }
     }
-  }
-  
-  public void a(String paramString, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_Ved.a("result", this.jdField_a_of_type_Ved.a.mVideoThumbnailUrl);
-    ved.b(this.jdField_a_of_type_Ved, true);
   }
 }
 

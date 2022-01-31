@@ -1,40 +1,15 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.events.QCircleTaskCenterEvent;
-import com.tencent.biz.qqcircle.widgets.QCircleTaskItemView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import qqcircle.TaskCenterReader.TaskRecord;
+import com.tencent.biz.qqcircle.events.QCircleFeedCommentEllipseEvent;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
 public class ucx
-  implements View.OnClickListener
+  implements ypw
 {
-  public ucx(QCircleTaskItemView paramQCircleTaskItemView, TaskCenterReader.TaskRecord paramTaskRecord) {}
+  public ucx(QCircleFeedCommentWidget paramQCircleFeedCommentWidget) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    try
-    {
-      if (bdje.a(this.jdField_a_of_type_QqcircleTaskCenterReader$TaskRecord.jumpUrl.get())) {
-        QLog.w("QCircleTaskItemView", 1, "task item url is empty");
-      }
-      paramView = new Intent(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTaskItemView.getContext(), JumpActivity.class);
-      paramView.setData(Uri.parse(this.jdField_a_of_type_QqcircleTaskCenterReader$TaskRecord.jumpUrl.get()));
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTaskItemView.getContext().startActivity(paramView);
-      tyj.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 8, 3L, this.jdField_a_of_type_QqcircleTaskCenterReader$TaskRecord.taskType.get());
-      yej.a().a(new QCircleTaskCenterEvent(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTaskItemView.getContext().hashCode(), false));
-      return;
-    }
-    catch (Exception paramView)
-    {
-      paramView.printStackTrace();
+    if (QCircleFeedCommentWidget.a(this.a) != null) {
+      yiw.a().a(new QCircleFeedCommentEllipseEvent(QCircleFeedCommentWidget.a(this.a)));
     }
   }
 }

@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.minigame.plugins;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import bgwc;
+import bhaj;
 
 class OpenDataJsPlugin$8$1
   implements DialogInterface.OnClickListener
@@ -20,8 +20,8 @@ class OpenDataJsPlugin$8$1
     }
     catch (Throwable paramDialogInterface)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE  share error " + paramDialogInterface.getMessage());
-      bgwc.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE   share error " + paramDialogInterface.getMessage());
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE  share error " + paramDialogInterface.getMessage());
+      bhaj.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE   share error " + paramDialogInterface.getMessage());
     }
   }
 }

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.app;
 
-import allq;
-import amlp;
-import amlu;
-import bdii;
+import alqf;
+import amqe;
+import amqj;
+import bdmr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class ConfigHandler$11
   implements Runnable
 {
-  public ConfigHandler$11(allq paramallq) {}
+  public ConfigHandler$11(alqf paramalqf) {}
   
   public void run()
   {
-    Object localObject = amlp.a().a();
+    Object localObject = amqe.a().a();
     if ((localObject == null) || (((UpgradeDetailWrapper)localObject).a == null)) {
       return;
     }
-    boolean bool = bdii.b();
-    int i = bdii.b();
+    boolean bool = bdmr.b();
+    int i = bdmr.b();
     int j = ((UpgradeDetailWrapper)localObject).a.a;
     if ((bool) && (j == i)) {}
     for (i = 1;; i = 0)
@@ -28,9 +28,9 @@ public class ConfigHandler$11
       if (i != 0) {
         break;
       }
-      amlp.a().a((QQAppInterface)localObject, true);
-      bdii.b(j);
-      bdii.b(true);
+      amqe.a().a((QQAppInterface)localObject, true);
+      bdmr.b(j);
+      bdmr.b(true);
       return;
     }
   }

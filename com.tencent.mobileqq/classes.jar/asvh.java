@@ -1,15 +1,6 @@
-import android.content.Context;
-import java.util.concurrent.Callable;
-
-final class asvh
-  implements Callable<asux>
+public abstract interface asvh
 {
-  asvh(Context paramContext, String paramString) {}
-  
-  public asux a()
-  {
-    return asvg.b(this.jdField_a_of_type_AndroidContentContext, "Now", this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(asvi paramasvi);
 }
 
 

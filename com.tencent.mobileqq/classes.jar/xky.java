@@ -1,59 +1,86 @@
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.LayoutInflater.Factory;
-import android.view.LayoutInflater.Factory2;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import java.util.ArrayList;
 
 public class xky
-  implements LayoutInflater.Factory2
+  extends bici
 {
-  private final LayoutInflater.Factory2 jdField_a_of_type_AndroidViewLayoutInflater$Factory2;
-  private final LayoutInflater.Factory jdField_a_of_type_AndroidViewLayoutInflater$Factory;
-  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  public static final TroopBarPOI a;
+  protected LayoutInflater a;
+  protected ArrayList<TroopBarPOI> a;
+  protected TroopBarPOI b;
   
-  public xky(@NonNull LayoutInflater paramLayoutInflater)
+  static
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
-    this.jdField_a_of_type_AndroidViewLayoutInflater$Factory = paramLayoutInflater.getFactory();
-    this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2 = paramLayoutInflater.getFactory2();
+    jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI = new TroopBarPOI("-1", "", alud.a(2131711382), 0, "", 0, "");
   }
   
-  protected View a(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  public xky(Context paramContext)
   {
-    xkz.a("LayoutModifier", "onCreateViewPrivate " + paramString);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+  }
+  
+  public void a(ArrayList<TroopBarPOI> paramArrayList, TroopBarPOI paramTroopBarPOI)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    if (paramTroopBarPOI != null) {
+      this.b = new TroopBarPOI(paramTroopBarPOI);
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
     return null;
   }
   
-  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  public long getItemId(int paramInt)
   {
-    View localView2 = a(paramView, paramString, paramContext, paramAttributeSet);
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = localView2;
-      if (this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2 != null) {
-        localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
-      }
-    }
-    xkz.a("LayoutModifier", "onCreateView " + localView1);
-    return localView1;
+    return 0L;
   }
   
-  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView2 = a(null, paramString, paramContext, paramAttributeSet);
-    View localView1 = localView2;
-    if (localView2 == null)
+    TroopBarPOI localTroopBarPOI;
+    if (paramView == null)
     {
-      localView1 = localView2;
-      if (this.jdField_a_of_type_AndroidViewLayoutInflater$Factory != null) {
-        localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater$Factory.onCreateView(paramString, paramContext, paramAttributeSet);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561545, null);
+      paramViewGroup = new xkz();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376376));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369316));
+      paramView.setTag(paramViewGroup);
+      localTroopBarPOI = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopBarPOI.c);
+      paramViewGroup = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
+      if (!localTroopBarPOI.equals(this.b)) {
+        break label135;
       }
     }
-    xkz.a("LayoutModifier", "onCreateView " + localView1);
-    return localView1;
+    label135:
+    for (paramInt = 0;; paramInt = 8)
+    {
+      paramViewGroup.setVisibility(paramInt);
+      paramView.setContentDescription(localTroopBarPOI.c);
+      paramView.setFocusable(true);
+      paramView.setFocusableInTouchMode(true);
+      return paramView;
+      paramViewGroup = (xkz)paramView.getTag();
+      break;
+    }
   }
 }
 

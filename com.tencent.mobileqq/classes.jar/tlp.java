@@ -23,7 +23,7 @@ public class tlp
   public static stLinkStragegyArgs a()
   {
     stLinkStragegyArgs localstLinkStragegyArgs = new stLinkStragegyArgs();
-    localstLinkStragegyArgs.hasInstalledWeish = xoo.a(BaseApplicationImpl.getApplication().getApplicationContext());
+    localstLinkStragegyArgs.hasInstalledWeish = xsx.a(BaseApplicationImpl.getApplication().getApplicationContext());
     localstLinkStragegyArgs.todayClickCount = b();
     localstLinkStragegyArgs.todayEnterCount = a();
     localstLinkStragegyArgs.todayLastLinkId = c();
@@ -48,7 +48,7 @@ public class tlp
   private static boolean a(String paramString1, String paramString2, int paramInt)
   {
     long l = LocalMultiProcConfig.getLong("weishi_usergrowth", paramString2, 0L);
-    boolean bool = bjpr.a(System.currentTimeMillis(), l);
+    boolean bool = bjty.a(System.currentTimeMillis(), l);
     if (!bool) {
       ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.3(paramString1, paramInt, paramString2));
     }
@@ -116,7 +116,7 @@ public class tlp
     {
       str1 = str2;
       if (!TextUtils.isEmpty(localAppRuntime.getAccount())) {
-        str1 = bfhh.a(localAppRuntime.getAccount());
+        str1 = bflq.a(localAppRuntime.getAccount());
       }
     }
     return str1 + "_" + str3;

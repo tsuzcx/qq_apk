@@ -1,6 +1,23 @@
-public abstract interface aexi
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.ImageView;
+
+class aexi
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(int paramInt);
+  aexi(aexh paramaexh) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
+    if (aexh.a(this.a) != null) {
+      aexh.a(this.a).setAlpha((float)d);
+    }
+    if (aexh.a(this.a) != null) {
+      aexh.a(this.a).setAlpha((float)d * 2.0F);
+    }
+  }
 }
 
 

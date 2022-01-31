@@ -1,26 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
-class ajdd
-  implements View.OnClickListener
+public class ajdd
+  extends aiym
 {
-  ajdd(ajbm paramajbm, int paramInt) {}
+  public ajdd(DrawHbFragment paramDrawHbFragment) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (BaseActivity.sTopActivity != null) {
-      aucf.a().a(BaseActivity.sTopActivity, this.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      aucf.m();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
-      }
-    }
+    DrawHbFragment.a(this.a);
   }
 }
 

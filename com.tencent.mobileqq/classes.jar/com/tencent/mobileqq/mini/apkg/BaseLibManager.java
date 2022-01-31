@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.apkg;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import arof;
-import bfhi;
+import arso;
+import bflr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -243,7 +243,7 @@ public class BaseLibManager
     }
     try
     {
-      paramString1 = AppLoaderFactory.BASE_LIB_PATH_DIR + File.separator + bfhi.d(paramString1) + "_" + paramString2 + File.separator;
+      paramString1 = AppLoaderFactory.BASE_LIB_PATH_DIR + File.separator + bflr.d(paramString1) + "_" + paramString2 + File.separator;
       return paramString1;
     }
     catch (Throwable paramString1)
@@ -267,7 +267,7 @@ public class BaseLibManager
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
       return null;
     }
-    return AppLoaderFactory.BASE_LIB_PATH_DIR + File.separator + bfhi.d(paramString1) + "_" + paramString2 + ".zip";
+    return AppLoaderFactory.BASE_LIB_PATH_DIR + File.separator + bflr.d(paramString1) + "_" + paramString2 + ".zip";
   }
   
   public boolean installInnerBaseLib()
@@ -291,7 +291,7 @@ public class BaseLibManager
       }
       File localFile = new File(str);
       if (localFile.exists()) {
-        arof.a(localFile);
+        arso.a(localFile);
       }
       QLog.w("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] install inner baseLib fail, from mini to " + str + ", tryCount:" + i + ", totalCount:" + j);
       i += 1;

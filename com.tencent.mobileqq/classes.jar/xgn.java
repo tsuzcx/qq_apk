@@ -1,21 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
 public class xgn
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public xgn(PermissionSettingActivity paramPermissionSettingActivity) {}
+  public xgn(DoodleLayout paramDoodleLayout) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramView = PermissionSettingActivity.a(this.a).a();
-    if (paramView != null)
-    {
-      PermissionSettingActivity.a(this.a, paramView);
-      this.a.finish();
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
+    if (this.a.jdField_a_of_type_Xgo != null) {
+      this.a.jdField_a_of_type_Xgo.a(null);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

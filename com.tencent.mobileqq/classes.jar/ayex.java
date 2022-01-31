@@ -1,284 +1,75 @@
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
-import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
-import com.tencent.mobileqq.search.fragment.SearchEntryFragment;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import pb.unify.search.UnifySearchAssociationWord.SuggestUrlItem;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.sign.BoxShadowLayout;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class ayex
-  extends amao
+  extends ayey
 {
-  public ayex(UniteSearchActivity paramUniteSearchActivity) {}
+  public int a;
+  public long a;
+  TextView a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
   
-  private void a(aykr paramaykr)
+  public ayex(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
   {
-    if (paramaykr == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.UniteSearchActivity", 2, "patchRichExtraData, source:" + this.a.jdField_a_of_type_Int + " from:" + this.a.jdField_c_of_type_Int);
-    }
-    int j = this.a.jdField_a_of_type_Int;
-    int i = j;
-    if (this.a.jdField_a_of_type_Int == 0) {
-      switch (this.a.jdField_c_of_type_Int)
-      {
-      default: 
-        i = j;
-      }
-    }
-    for (;;)
-    {
-      boolean bool = ThemeUtil.isNowThemeIsNight(this.a.app, false, null);
-      String str = ayol.a(i, paramaykr.c(), paramaykr.g, bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.uniteSearch.UniteSearchActivity", 2, "patchRichExtraData, extraData:" + str);
-      }
-      paramaykr.b(str);
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-    }
+    super(paramContext, paramAppInterface, paramView, paramString);
+    this.e = 2;
+    this.i = 2130845710;
+    VasWebviewUtil.reportCommercialDrainage(paramAppInterface.getCurrentAccountUin(), "signature_aio", "show", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
   
-  private void a(List<ayjk> paramList)
+  protected int a()
   {
-    if (paramList != null)
-    {
-      Iterator localIterator1 = paramList.iterator();
-      while (localIterator1.hasNext())
-      {
-        paramList = (ayjk)localIterator1.next();
-        if ((paramList != null) && (paramList.a() != null) && (paramList.a().equals(yuh.c)))
-        {
-          paramList = paramList.a();
-          if (paramList != null)
-          {
-            Iterator localIterator2 = paramList.iterator();
-            label76:
-            QQAppInterface localQQAppInterface;
-            while (localIterator2.hasNext())
-            {
-              paramList = (ayjl)localIterator2.next();
-              if ((paramList != null) && ((paramList instanceof ayju)))
-              {
-                paramList = (ayju)paramList;
-                localQQAppInterface = this.a.app;
-                if (paramList.b() == null) {
-                  break label159;
-                }
-              }
-            }
-            label159:
-            for (paramList = paramList.b();; paramList = "")
-            {
-              azmj.b(localQQAppInterface, "dc00898", "", paramList, "auth_search", "exp", 0, 0, "", "", "", "");
-              break label76;
-              break;
-            }
-          }
-        }
-      }
-    }
+    return 3;
   }
   
-  private void b(aykr paramaykr)
+  public View a(RichStatus paramRichStatus)
   {
-    if (paramaykr == null) {
-      return;
-    }
-    int i = paramaykr.g();
-    if (paramaykr.c())
-    {
-      aynt.a(this.a.app, this.a.jdField_a_of_type_Int, this.a.jdField_c_of_type_Int, "0X8009D2C", i, 0, paramaykr.g);
-      return;
-    }
-    aynt.a(this.a.app, this.a.jdField_a_of_type_Int, this.a.jdField_c_of_type_Int, "0X8009D40", i, 0, paramaykr.g);
+    paramRichStatus = super.a(paramRichStatus);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mMsgId = this.jdField_a_of_type_Long;
+    l();
+    return paramRichStatus;
   }
   
-  private void b(List<ayjk> paramList)
+  protected void a()
   {
-    if (paramList == null) {
-      label4:
-      return;
-    } else {
-      paramList = paramList.iterator();
-    }
-    for (;;)
-    {
-      if (!paramList.hasNext()) {
-        break label4;
-      }
-      Object localObject1 = (ayjk)paramList.next();
-      if ((((ayjk)localObject1).a() == null) || (((ayjk)localObject1).a().size() == 0)) {
-        break;
-      }
-      Object localObject2 = ((ayjk)localObject1).a().iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        ayjl localayjl = (ayjl)((Iterator)localObject2).next();
-        if ((localayjl instanceof ayjm)) {
-          ((ayjm)localayjl).b(this.a.jdField_a_of_type_Int);
-        }
-      }
-      if (!(localObject1 instanceof ayje)) {
-        break;
-      }
-      localObject1 = ((ayjk)localObject1).a().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (ayjl)((Iterator)localObject1).next();
-        if ((localObject2 instanceof aykr))
-        {
-          int i = ((aykr)localObject2).f();
-          if (!ayop.a().a(i))
-          {
-            ((Iterator)localObject1).remove();
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.uniteSearch.UniteSearchActivity", 2, "handleUniteSearchResult, remove rich node:" + i);
-            }
-          }
-          a((aykr)localObject2);
-          b((aykr)localObject2);
-        }
-      }
-    }
+    this.h = aepi.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166371);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 12.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
+    int i = aepi.a(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    Object localObject = new FrameLayout.LayoutParams(-1, i);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.setYOffset(i + aepi.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    i = (int)(azkz.jdField_a_of_type_Int * 0.11F);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.a(i);
+    localObject = (ViewGroup.MarginLayoutParams)this.b.getLayoutParams();
+    localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getLayoutParams();
+    ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    ((ViewGroup.MarginLayoutParams)localObject).topMargin = aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
-  public void a(int paramInt1, String paramString, int paramInt2) {}
-  
-  public void a(String paramString, int paramInt, List<AssociateSearchWordsFragment.AssociateItem> paramList, List<UnifySearchAssociationWord.SuggestUrlItem> paramList1, UnifySearchAssociationWord.SuggestUrlItem paramSuggestUrlItem)
+  protected boolean a()
   {
-    if (paramString.equals(this.a.f))
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment = new AssociateSearchWordsFragment();
-      }
-      paramList1 = new ArrayList();
-      paramSuggestUrlItem = new AssociateSearchWordsFragment.AssociateItem();
-      paramSuggestUrlItem.jdField_a_of_type_Int = 1;
-      StringBuilder localStringBuilder = new StringBuilder("");
-      if ((paramList != null) && (paramList.size() > 0))
-      {
-        paramInt = 0;
-        if (paramInt < paramList.size())
-        {
-          String str = ((AssociateSearchWordsFragment.AssociateItem)paramList.get(paramInt)).jdField_a_of_type_JavaLangString;
-          AssociateSearchWordsFragment.AssociateItem localAssociateItem = new AssociateSearchWordsFragment.AssociateItem();
-          localAssociateItem.jdField_a_of_type_JavaLangString = str;
-          localAssociateItem.jdField_a_of_type_Int = 3;
-          localAssociateItem.d = (paramInt + 1);
-          paramList1.add(localAssociateItem);
-          if (paramInt != paramList.size() - 1)
-          {
-            paramList1.add(paramSuggestUrlItem);
-            localStringBuilder.append(str).append("::");
-          }
-          for (;;)
-          {
-            paramInt += 1;
-            break;
-            localStringBuilder.append(str);
-          }
-        }
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramString);
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramList1);
-      aynt.a(null, new ReportModelDC02528().module("all_result").action("exp_thinkword_list").ver1(this.a.a()).ver2(aynt.a(this.a.jdField_c_of_type_Int)).ver4(localStringBuilder.toString()).ver7("{experiment_id:" + aynt.b + "}"));
-    }
-  }
-  
-  public void a(String paramString1, Integer paramInteger, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.UniteSearchActivity", 2, "handleAssociateResultError keyword=" + paramString1 + "  resultCode=" + paramInteger + "  errorMsg=" + paramString2);
-    }
-  }
-  
-  public void a(String paramString1, boolean paramBoolean, String paramString2, int paramInt, String paramString3)
-  {
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.b.equals(paramString2)) {}
-    while (!this.a.f.equals(paramString1)) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramString1, paramInt, paramString3);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.uniteSearch.UniteSearchActivity", 2, "handleUniteSearchError resultCode=" + paramInt + " key=" + paramString1);
-    }
-    this.a.jdField_c_of_type_AndroidViewView.setVisibility(0);
-  }
-  
-  public void a(String paramString1, boolean paramBoolean1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean2, List<ayjf> paramList, List<ayjk> paramList1)
-  {
-    for (;;)
-    {
-      try
-      {
-        boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.b.equals(paramString2);
-        if (!bool) {
-          return;
-        }
-        if ((this.a.f == null) || (!this.a.f.equals(paramString1))) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.uniteSearch.UniteSearchActivity", 2, "handleUniteSearchResult, keyword = " + paramString1 + ", isFirstReq = " + paramBoolean1 + ", reqTime = " + paramString2 + ", cookie = " + paramArrayOfByte + ", isEnd = " + paramBoolean2 + ", tabList = " + paramList + ", result = " + paramList1);
-        }
-        b(paramList1);
-        if (!paramBoolean1)
-        {
-          this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-          this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramArrayOfByte);
-          paramString2 = aydw.a(paramList1, paramBoolean1);
-          this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramString1, paramBoolean1, paramArrayOfByte, paramBoolean2, paramString2);
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          break label252;
-        }
-      }
-      finally {}
-      QLog.i("Q.uniteSearch.UniteSearchActivity", 2, "handleUniteSearchResult isEnd=" + paramBoolean2 + " key=" + paramString1);
-      label252:
-      if (paramList == null)
-      {
-        a(paramString1, paramBoolean1, paramString2, -1, "tabList == null");
-      }
-      else
-      {
-        if ((paramList.size() > 0) && ((((ayjf)paramList.get(0)).jdField_a_of_type_JavaLangString.equals(alpo.a(2131716285))) || ((((ayjf)paramList.get(0)).jdField_a_of_type_JavaUtilList != null) && (((ayjf)paramList.get(0)).jdField_a_of_type_JavaUtilList.size() == 0)))) {
-          paramList.remove(0);
-        }
-        this.a.jdField_c_of_type_AndroidViewView.setVisibility(0);
-        this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramArrayOfByte);
-        paramString2 = aydw.a(paramList1, paramBoolean1);
-        a(paramList1);
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramString1, paramBoolean1, paramArrayOfByte, paramBoolean2, paramString2);
-        UniteSearchActivity.d = true;
-      }
-    }
-  }
-  
-  public void a(List<ayks> paramList, int paramInt)
-  {
-    if (paramInt != this.a.c()) {}
-    while (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentSearchEntryFragment == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentSearchEntryFragment.a(paramList, true);
+    return true;
   }
 }
 

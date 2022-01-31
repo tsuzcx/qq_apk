@@ -1,42 +1,38 @@
+import android.graphics.Rect;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class wjr
-  implements View.OnClickListener, View.OnLongClickListener
+class wjr
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View b;
+  private int jdField_a_of_type_Int;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private boolean jdField_a_of_type_Boolean;
   
-  public wjr(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369748);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369770));
-    this.b = paramView.findViewById(2131370729);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370718));
-    paramView.setOnClickListener(this);
-    paramView.setOnLongClickListener(this);
-  }
+  wjr(wjq paramwjq) {}
   
-  public void a(int paramInt)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.onItemClick(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    wjq.a(this.jdField_a_of_type_Wjq).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
+    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
+    if (i != this.jdField_a_of_type_Int)
+    {
+      int j = wjq.a(this.jdField_a_of_type_Wjq).getRootView().getHeight();
+      if (j - i <= j / 4) {
+        break label79;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      wjq.a(this.jdField_a_of_type_Wjq);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
+      label79:
+      if (this.jdField_a_of_type_Boolean) {
+        wjq.b(this.jdField_a_of_type_Wjq);
+      }
+    }
   }
 }
 

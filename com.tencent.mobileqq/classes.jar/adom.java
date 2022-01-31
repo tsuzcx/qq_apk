@@ -1,34 +1,15 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
 public class adom
-  extends allb
+  implements DialogInterface.OnClickListener
 {
-  public adom(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public adom(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
-      QQSettingSettingActivity.a(this.a, (Card)paramObject);
-    }
-  }
-  
-  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if ((paramString != null) && (paramString.equals(this.a.app.getCurrentAccountUin())))
-    {
-      if (paramBoolean1) {
-        this.a.a(this.a.app.getCurrentAccountUin());
-      }
-      return;
-    }
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    QLog.e("QQSetting2Activity", 2, "onGetAllowSeeLoginDays isSuccess " + paramBoolean1 + "isAllow:" + paramBoolean2 + "uin " + str);
+    this.a.finish();
   }
 }
 

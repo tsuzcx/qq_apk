@@ -1,34 +1,18 @@
-import android.util.Log;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class akmc
-  implements akmf
 {
-  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
-  {
-    try
-    {
-      paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, null);
-      return paramEGL10;
-    }
-    catch (Throwable paramEGL10)
-    {
-      Log.e("GLTextureView", "eglCreateWindowSurface", paramEGL10);
-    }
-    return null;
-  }
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
-  {
-    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
-  }
+  protected akmc(akmb paramakmb) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akmc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;
@@ -9,7 +9,7 @@ import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import bdbt;
+import bdgc;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
@@ -66,8 +66,8 @@ public class ComponentAccountSummary
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131559978, this, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131364667));
+    LayoutInflater.from(paramContext).inflate(2131559977, this, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131364668));
   }
   
   public void a(Object paramObject)
@@ -90,7 +90,7 @@ public class ComponentAccountSummary
     }
     if (TextUtils.isEmpty(paramObject)) {
       if (localpgd.a() == 33) {
-        paramObject = alpo.a(2131702701);
+        paramObject = alud.a(2131702713);
       }
     }
     for (;;)
@@ -119,7 +119,7 @@ public class ComponentAccountSummary
             QLog.d("Q.readinjoy.ui", 2, "Comment String: " + ((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Qmr.a);
           }
           label352:
-          str = alpo.a(2131702663);
+          str = alud.a(2131702675);
           paramObject.append(" ");
           paramObject.append(str);
           paramObject.setSpan(new qbw((ArticleInfo)localObject, -3355444, getContext(), getResources(), this.jdField_a_of_type_Qbs), paramObject.length() - str.length(), paramObject.length(), 33);
@@ -130,7 +130,7 @@ public class ComponentAccountSummary
       }
       for (;;)
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(alpo.a(2131702720));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(alud.a(2131702732));
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMaxLines(7);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new qbv(this, localpgd.a(), -3355444));
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setText(localSpannableStringBuilder);
@@ -138,25 +138,25 @@ public class ComponentAccountSummary
         return;
         if ((this.jdField_a_of_type_Qbs.b()) || (this.jdField_a_of_type_Qbs.d()) || (this.jdField_a_of_type_Qbs.e()))
         {
-          paramObject = alpo.a(2131702704);
+          paramObject = alud.a(2131702716);
           break;
         }
         if ((this.jdField_a_of_type_Qbs.c()) || (this.jdField_a_of_type_Qbs.g()))
         {
-          paramObject = alpo.a(2131702681);
+          paramObject = alud.a(2131702693);
           break;
         }
         if (this.jdField_a_of_type_Qbs.h())
         {
-          paramObject = alpo.a(2131702692);
+          paramObject = alud.a(2131702704);
           break;
         }
-        paramObject = alpo.a(2131702706);
+        paramObject = alud.a(2131702718);
         break;
         localObject = String.valueOf(localpgd.a().mSocialFeedInfo.jdField_a_of_type_Qnm.b);
         if (ors.a())
         {
-          str = bdbt.b((QQAppInterface)ors.a(), (String)localObject, true);
+          str = bdgc.b((QQAppInterface)ors.a(), (String)localObject, true);
           break label199;
         }
         str = localpgd.a().b(localpgd.a().mSocialFeedInfo.jdField_a_of_type_Qnm.b);

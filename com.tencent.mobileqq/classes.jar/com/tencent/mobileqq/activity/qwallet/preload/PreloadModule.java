@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import aiwc;
-import ajaf;
+import ajar;
+import ajeu;
 import android.net.Uri;
 import android.text.TextUtils;
-import bdvu;
+import bead;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -75,7 +75,7 @@ public class PreloadModule
       paramString.printStackTrace();
       return;
     }
-    nbv.b(paramString, paramAppRuntime, true, new aiwc(this));
+    nbv.b(paramString, paramAppRuntime, true, new ajar(this));
   }
   
   private boolean a(String paramString)
@@ -184,7 +184,7 @@ public class PreloadModule
     }
   }
   
-  public void downloadModule(boolean paramBoolean1, bdvu parambdvu, PreloadManager paramPreloadManager, boolean paramBoolean2)
+  public void downloadModule(boolean paramBoolean1, bead parambead, PreloadManager paramPreloadManager, boolean paramBoolean2)
   {
     if (this.name.equals("wallet_offline")) {
       handleHtmlOffline(paramPreloadManager.a);
@@ -205,7 +205,7 @@ public class PreloadModule
           }
           else if ((localPreloadResource.isAbiMatch()) && (localPreloadResource.isTimeToDownload(paramPreloadManager)))
           {
-            localPreloadResource.startDownload(paramPreloadManager, this, parambdvu, paramBoolean2);
+            localPreloadResource.startDownload(paramPreloadManager, this, parambead, paramBoolean2);
           }
         }
       }
@@ -271,7 +271,7 @@ public class PreloadModule
     while (localIterator.hasNext())
     {
       PreloadResource localPreloadResource = (PreloadResource)localIterator.next();
-      if (ajaf.c(localPreloadResource.mResId, paramString)) {
+      if (ajeu.c(localPreloadResource.mResId, paramString)) {
         return localPreloadResource;
       }
     }
@@ -303,7 +303,7 @@ public class PreloadModule
   {
     boolean bool2 = false;
     boolean bool1;
-    if (!ajaf.c(this.mid, paramPreloadModule.mid))
+    if (!ajeu.c(this.mid, paramPreloadModule.mid))
     {
       bool1 = true;
       return bool1;
@@ -311,7 +311,7 @@ public class PreloadModule
     if (this.mBackControl != paramPreloadModule.mBackControl) {
       return true;
     }
-    if (!ajaf.c(this.name, paramPreloadModule.name)) {
+    if (!ajeu.c(this.name, paramPreloadModule.name)) {
       return true;
     }
     if (this.option != paramPreloadModule.option) {
@@ -326,7 +326,7 @@ public class PreloadModule
     if (this.mRetryCount != paramPreloadModule.mRetryCount) {
       return true;
     }
-    if (!ajaf.c(this.mBaseUrl, paramPreloadModule.mBaseUrl)) {
+    if (!ajeu.c(this.mBaseUrl, paramPreloadModule.mBaseUrl)) {
       return true;
     }
     List localList = getResList();

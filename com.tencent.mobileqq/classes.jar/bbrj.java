@@ -1,13 +1,17 @@
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import org.json.JSONObject;
 
 class bbrj
-  implements arnx
+  implements bckx
 {
-  bbrj(bbrf parambbrf) {}
+  bbrj(bbri parambbri, bcml parambcml, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.a.c(paramView);
+    if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode", -1) == 0)) {
+      this.jdField_a_of_type_Bcml.a(this.jdField_a_of_type_Bbri.a.a.a, 0, this.jdField_a_of_type_Int);
+    }
   }
 }
 

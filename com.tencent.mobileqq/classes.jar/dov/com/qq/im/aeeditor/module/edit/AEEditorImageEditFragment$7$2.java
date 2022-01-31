@@ -1,24 +1,16 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import blin;
+import blmy;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class AEEditorImageEditFragment$7$2
   implements Runnable
 {
-  public AEEditorImageEditFragment$7$2(blin paramblin) {}
+  public AEEditorImageEditFragment$7$2(blmy paramblmy) {}
   
   public void run()
   {
-    this.a.a.b();
-    QQToast.a(this.a.a.getActivity(), "导出成功", 0).a();
-    Intent localIntent = new Intent();
-    localIntent.putExtra("PeakConstants.selectedMediaInfoHashMap", AEEditorImageEditFragment.a(this.a.a, AEEditorImageEditFragment.b(this.a.a)));
-    localIntent.putExtra("PhotoConst.PHOTO_PATHS", AEEditorImageEditFragment.b(this.a.a));
-    this.a.a.getActivity().setResult(-1, localIntent);
-    this.a.a.getActivity().finish();
+    QQToast.a(this.a.a.a, 2131689920, 0).a();
   }
 }
 

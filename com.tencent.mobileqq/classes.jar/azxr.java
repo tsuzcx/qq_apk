@@ -1,39 +1,89 @@
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.shadow.dynamic.host.DynamicPluginManager;
-import com.tencent.shadow.dynamic.host.EnterCallback;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class azxr
-  implements azxq
+  extends azut
 {
-  private final DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
-  private final String jdField_a_of_type_JavaLangString = "shadow::PluginManagerWrapper";
-  private final String b;
-  
-  public azxr(String paramString, DynamicPluginManager paramDynamicPluginManager)
+  private LinearLayout a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = paramDynamicPluginManager;
-    this.b = paramString;
+    paramContext = new LinearLayout(paramContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    localLayoutParams.gravity = 17;
+    paramContext.setLayoutParams(localLayoutParams);
+    return paramContext;
   }
   
-  public void enter(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
+  protected int b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("shadow::PluginManagerWrapper", 2, "enter formId:" + paramLong + " enterCallback:" + paramEnterCallback);
-    }
-    asve.a().a(this.b, this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    return 23;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    Object localObject2;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)) && ((paramView.getTag() instanceof azxs)))
     {
-      localObject = (azxf)((QQAppInterface)localObject).getManager(362);
-      if (localObject != null) {
-        ((azxf)localObject).a(this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
+      localazxs = (azxs)paramView.getTag();
+      localIterator = this.a.iterator();
+      for (;;)
+      {
+        localObject1 = paramView;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = (azus)localIterator.next();
+        if ("button".equals(((azus)localObject1).a))
+        {
+          localObject2 = (TextView)((azus)localObject1).a(paramContext, localazxs.a, paramBundle);
+          if (TextUtils.isEmpty(((azwp)localObject1).c())) {
+            ((TextView)localObject2).setTextSize(16.0F);
+          }
+          if (TextUtils.isEmpty(((azwp)localObject1).d())) {
+            ((TextView)localObject2).setTextColor(Color.parseColor("#12b7f5"));
+          }
+        }
       }
     }
-    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
+    Object localObject1 = a(paramContext);
+    azxs localazxs = new azxs();
+    Iterator localIterator = this.a.iterator();
+    paramView = null;
+    while (localIterator.hasNext())
+    {
+      localObject2 = (azus)localIterator.next();
+      if ("button".equals(((azus)localObject2).a))
+      {
+        paramView = (TextView)((azus)localObject2).a(paramContext, null, paramBundle);
+        if (TextUtils.isEmpty(((azwp)localObject2).c())) {
+          paramView.setTextSize(16.0F);
+        }
+        if (TextUtils.isEmpty(((azwp)localObject2).d())) {
+          paramView.setTextColor(Color.parseColor("#12b7f5"));
+        }
+        localObject2 = new LinearLayout.LayoutParams(-1, aepi.a(41.0F, paramContext.getResources()));
+        ((LinearLayout.LayoutParams)localObject2).gravity = 17;
+        ((LinearLayout)localObject1).addView(paramView, (ViewGroup.LayoutParams)localObject2);
+      }
+    }
+    if (paramView != null) {
+      localazxs.a = paramView;
+    }
+    ((LinearLayout)localObject1).setTag(localazxs);
+    return localObject1;
+  }
+  
+  public String b()
+  {
+    return "layout23";
   }
 }
 

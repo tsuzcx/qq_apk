@@ -1,16 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.PromotionEntry;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.TranslateFragment;
 
 public class avxh
-  implements View.OnClickListener
+  implements avzl
 {
-  public avxh(PromotionEntry paramPromotionEntry, ampd paramampd) {}
+  public avxh(TranslateFragment paramTranslateFragment, avvs paramavvs) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, avzm paramavzm)
   {
-    azmj.b(null, "CliOper", "", "", "0X8009C6B", "0X8009C6B", 0, 0, this.jdField_a_of_type_Ampd.a, "0", "0", "");
-    PromotionEntry.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry).b(this.jdField_a_of_type_Ampd);
+    if ((paramavzm != null) && (!TextUtils.isEmpty(paramavzm.b)))
+    {
+      if (!this.jdField_a_of_type_Avvs.b.equalsIgnoreCase(paramavzm.b)) {
+        TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, paramavzm.b, this.jdField_a_of_type_Avvs.b(paramavzm.b));
+      }
+      avvq.a("0X800AD30", avvq.a(paramavzm.b));
+    }
   }
 }
 

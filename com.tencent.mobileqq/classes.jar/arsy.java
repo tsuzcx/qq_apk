@@ -1,12 +1,15 @@
-class arsy
-  implements almm
+import android.view.View;
+import android.view.View.OnClickListener;
+
+final class arsy
+  implements View.OnClickListener
 {
-  arsy(arsx paramarsx) {}
+  arsy(arsg paramarsg) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      this.a.a();
+    if (this.a != null) {
+      this.a.onClick(paramView);
     }
   }
 }

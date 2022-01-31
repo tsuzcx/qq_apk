@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acgy;
-import adtg;
-import adth;
-import adti;
-import aloz;
-import alpo;
+import acln;
+import adxv;
+import adxw;
+import adxx;
+import alto;
+import alud;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -13,8 +13,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import bdcd;
-import bdfq;
+import bdgm;
+import bdjz;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
@@ -23,8 +23,8 @@ import mqq.app.AppRuntime;
 public class ShortcutRouterActivity
   extends BaseActivity
 {
-  private acgy jdField_a_of_type_Acgy;
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new adti(this);
+  private acln jdField_a_of_type_Acln;
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new adxx(this);
   
   private int a(Intent paramIntent)
   {
@@ -36,7 +36,7 @@ public class ShortcutRouterActivity
     if (paramIntent.getBooleanExtra("isTroopCard", false)) {
       return 0;
     }
-    if (!((aloz)this.app.getManager(51)).b(str)) {
+    if (!((alto)this.app.getManager(51)).b(str)) {
       return 2;
     }
     return 0;
@@ -45,25 +45,25 @@ public class ShortcutRouterActivity
   private void a()
   {
     String str = getAppRuntime().getAccount();
-    bdfq localbdfq = bdcd.a(this, 230);
+    bdjz localbdjz = bdgm.a(this, 230);
     TextView localTextView = new TextView(this);
     localTextView.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
     localTextView.setGravity(17);
     localTextView.setTextSize(getResources().getInteger(2131427336));
     localTextView.setTextColor(getResources().getColor(2131165448));
     if (TextUtils.isEmpty(str)) {
-      localTextView.setText(alpo.a(2131714384));
+      localTextView.setText(alud.a(2131714396));
     }
     for (;;)
     {
-      localbdfq.setNegativeButton(2131720083, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-      localbdfq.addView(localTextView);
-      localbdfq.setOnDismissListener(new adth(this));
+      localbdjz.setNegativeButton(2131720095, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+      localbdjz.addView(localTextView);
+      localbdjz.setOnDismissListener(new adxw(this));
       if (!isFinishing()) {
-        localbdfq.show();
+        localbdjz.show();
       }
       return;
-      localTextView.setText(alpo.a(2131714400) + str + alpo.a(2131714403));
+      localTextView.setText(alud.a(2131714412) + str + alud.a(2131714415));
     }
   }
   
@@ -100,7 +100,7 @@ public class ShortcutRouterActivity
       if ((!TextUtils.isEmpty(str2)) && (str2.equals("starClub")) && (str1.equals(ChatActivity.class.getName())))
       {
         paramBundle.putExtra("uin", "1413778541");
-        paramBundle.putExtra("uinname", alpo.a(2131714405));
+        paramBundle.putExtra("uinname", alud.a(2131714417));
         paramBundle.putExtra("uintype", 1008);
         paramBundle.putExtra("from", "starShortcut");
         paramBundle.setClassName(this, str1);
@@ -121,7 +121,7 @@ public class ShortcutRouterActivity
         }
         break;
       case 1: 
-        QQToast.a(this, getString(2131720081), 0).b(getTitleBarHeight());
+        QQToast.a(this, getString(2131720093), 0).b(getTitleBarHeight());
         finish();
         return true;
       case 2: 
@@ -132,11 +132,11 @@ public class ShortcutRouterActivity
       str2 = paramBundle.getStringExtra("uinname");
       i = paramBundle.getIntExtra("uintype", 0);
       paramBundle = paramBundle.getStringExtra("extraUin");
-      if (this.jdField_a_of_type_Acgy == null) {
-        this.jdField_a_of_type_Acgy = new adtg(this);
+      if (this.jdField_a_of_type_Acln == null) {
+        this.jdField_a_of_type_Acln = new adxv(this);
       }
       bool1 = bool2;
-    } while (!ChatActivityUtils.a(this.app, this, i, str1, str2, null, true, paramBundle, true, true, this.jdField_a_of_type_Acgy, "from_internal"));
+    } while (!ChatActivityUtils.a(this.app, this, i, str1, str2, null, true, paramBundle, true, true, this.jdField_a_of_type_Acln, "from_internal"));
     finish();
     return true;
   }

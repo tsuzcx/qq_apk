@@ -1,32 +1,22 @@
-import android.graphics.drawable.Drawable;
-import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
-import cooperation.vip.vipcomponent.util.VipResourcesListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class bkcl
+class bkcl
+  extends Handler
 {
-  public static bkcl a;
-  
-  public static bkcl a()
+  bkcl(bkck parambkck, Looper paramLooper)
   {
-    if (a == null) {}
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1)
     {
-      if (a == null) {
-        a = new bkcl();
-      }
-      return a;
+      this.a.jdField_a_of_type_Bkch = null;
+      this.a.jdField_a_of_type_Boolean = false;
     }
-    finally {}
-  }
-  
-  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, VipResourcesListener paramVipResourcesListener)
-  {
-    return QzoneHuangzuanVipIconShow.getInstance().getLayers(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString1, paramInt3, paramInt4, paramString2, paramVipResourcesListener, 0);
-  }
-  
-  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt3, VipResourcesListener paramVipResourcesListener)
-  {
-    return a(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString, paramInt3, 100, null, paramVipResourcesListener);
   }
 }
 

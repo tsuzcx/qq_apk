@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
 public class ohx
-  extends alox
+  extends altm
 {
   public ohx(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   

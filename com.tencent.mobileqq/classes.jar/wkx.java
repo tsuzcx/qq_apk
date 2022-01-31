@@ -1,49 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class wkx
-  extends wmg<GeneralFeedItem>
+class wkx
+  extends vii
 {
-  public boolean a;
+  wkx(wkw paramwkw) {}
   
-  public wkx(@NonNull GeneralFeedItem paramGeneralFeedItem)
+  public void a()
   {
-    super(paramGeneralFeedItem);
+    super.a();
+    wkw.a(this.a, null);
   }
   
-  public GeneralFeedItem a()
+  public void a(int paramInt)
   {
-    return (GeneralFeedItem)super.a();
+    super.a(paramInt);
+    wxj.a("home_page", "suc_share", 2, paramInt, new String[] { wxj.b(wkw.a(this.a).a) + "", wxj.a(wkw.a(this.a).a) + "", wkw.a(this.a).a.feedId });
   }
   
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
+  public void b(int paramInt)
   {
-    Object localObject = (qqstory_struct.GeneralFeed)paramStoryFeed.general_feed.get();
-    ((GeneralFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.GeneralFeed)localObject);
-    ((GeneralFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    wsv.a("Q.qqstory.home.data.GeneralHomeFeed", "GeneralHomeFeed convertFrom, feedSourceType:%s, feedId:%s", Integer.valueOf(((GeneralFeedItem)this.a).feedSourceTagType), ((GeneralFeedItem)this.a).feedId);
-    paramStoryFeed = new ArrayList();
-    localObject = ((qqstory_struct.GeneralFeed)localObject).feed_video_info_list.get().iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      qqstory_struct.FeedVideoInfo localFeedVideoInfo = (qqstory_struct.FeedVideoInfo)((Iterator)localObject).next();
-      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-      localStoryVideoItem.convertFrom("Q.qqstory.home.data.GeneralHomeFeed", localFeedVideoInfo);
-      paramStoryFeed.add(localStoryVideoItem);
-    }
-    c(paramStoryFeed, true);
-    return true;
+    super.b(paramInt);
+    wxj.a("home_page", "share_chanel", 2, paramInt, new String[] { wxj.b(wkw.a(this.a).a) + "", wxj.a(wkw.a(this.a).a) + "", wkw.a(this.a).a.feedId });
   }
 }
 

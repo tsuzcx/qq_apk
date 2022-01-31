@@ -1,22 +1,22 @@
 package cooperation.qlink;
 
-import bioj;
+import bisq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimerTask;
 
 public class QQProxyForQlink$9
   extends TimerTask
 {
-  public QQProxyForQlink$9(bioj parambioj) {}
+  public QQProxyForQlink$9(bisq parambisq) {}
   
   public void run()
   {
-    bioj.a(this.this$0);
-    if (bioj.b(this.this$0) > 1)
+    bisq.a(this.this$0);
+    if (bisq.b(this.this$0) > 1)
     {
       QLog.e("QQProxyForQlink", 1, "[QLINK]-QQ qlink pulgin is dead:");
-      bioj.a(this.this$0, new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false));
-      bioj.c(this.this$0);
+      bisq.a(this.this$0, new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false));
+      bisq.c(this.this$0);
       return;
     }
     this.this$0.e();

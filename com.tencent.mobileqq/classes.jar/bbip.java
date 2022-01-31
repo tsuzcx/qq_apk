@@ -1,75 +1,64 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
 public class bbip
-  extends BaseAdapter
+  extends AsyncTask<Void, Void, Bundle>
 {
-  public static final String a;
-  public static final String b = alpo.a(2131701839);
-  protected Context a;
-  protected LayoutInflater a;
-  protected QQAppInterface a;
-  protected NewTroopCateView a;
-  protected ArrayList<bbkk> a;
+  public bbip(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  static
+  protected Bundle a(Void... paramVarArgs)
   {
-    jdField_a_of_type_JavaLangString = alpo.a(2131701838);
-  }
-  
-  public bbip(NewTroopCateView paramNewTroopCateView, QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentContext = paramNewTroopCateView.a;
-    this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCateView = paramNewTroopCateView;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a(ArrayList<bbkk> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    super.notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
-    {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560424, null);
-      paramView = new bbis(this, localView);
-      localView.setTag(paramView);
-      paramViewGroup = paramView;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("forward_type", 1);
+    paramVarArgs = new File(alof.bY);
+    if (!paramVarArgs.exists()) {
+      paramVarArgs.mkdirs();
     }
-    for (;;)
+    String str = alof.bY + this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_JavaLangString + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    paramVarArgs = str;
+    if (!new File(str).exists()) {}
+    try
     {
-      paramViewGroup.a((bbkk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-      return localView;
-      paramViewGroup = (bbis)paramView.getTag();
-      localView = paramView;
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
+      localBundle.putBoolean("forward_urldrawable", true);
+      localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
+      localBundle.putString("forward_filepath", paramVarArgs);
+      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+      localBundle.putString("forward_extra", paramVarArgs);
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.l)
+      {
+        localBundle.putString("forward_thumb", paramVarArgs);
+        localBundle.putBoolean("key_flag_from_plugin", true);
+      }
+      return localBundle;
     }
+    catch (IOException paramVarArgs)
+    {
+      QLog.e("foward", 2, "IOException", paramVarArgs);
+    }
+    return null;
+  }
+  
+  protected void a(Bundle paramBundle)
+  {
+    if (paramBundle == null)
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, alud.a(2131715606), 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getTitleBarHeight());
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramBundle);
+    aryv.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, localIntent, 21);
+    TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, "0X8006A81", "0X8006A95");
   }
 }
 

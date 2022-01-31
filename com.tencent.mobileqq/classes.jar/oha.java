@@ -9,7 +9,7 @@ class oha
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (ogy.a(this.jdField_a_of_type_Ogy)) {}
-    while ((!aaon.a()) || (this.jdField_a_of_type_Boolean)) {
+    while ((!aatc.a()) || (this.jdField_a_of_type_Boolean)) {
       return;
     }
     this.jdField_a_of_type_Ogy.g();

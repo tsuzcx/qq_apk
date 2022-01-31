@@ -1,63 +1,20 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGroupDateVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGroupDateVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
+@Deprecated
 public class vbm
-  extends unk
+  extends vbo
 {
-  public String a;
-  public long b;
-  public String b;
-  public int c;
-  private final String c;
-  public int d;
-  public int e;
-  public int f;
-  
-  public vbm()
+  public vbm(ViewGroup paramViewGroup)
   {
-    this.jdField_c_of_type_JavaLangString = ume.a("StoryGroupSvc.datacard_get_feeds_new");
-    this.jdField_b_of_type_JavaLangString = "";
+    super(paramViewGroup, 2131561509);
   }
   
-  public String a()
+  public void a(uyg paramuyg)
   {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public unf a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGroupDateVideoList localRspGroupDateVideoList = new qqstory_service.RspGroupDateVideoList();
-    try
-    {
-      localRspGroupDateVideoList.mergeFrom(paramArrayOfByte);
-      return new vdc(this.a, localRspGroupDateVideoList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wsv.b("Q.qqstory.shareGroup:GetShareGroupDateListRequest", a(), paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGroupDateVideoList localReqGroupDateVideoList = new qqstory_service.ReqGroupDateVideoList();
-    localReqGroupDateVideoList.from.set(this.e);
-    localReqGroupDateVideoList.group_unionid.set(ByteStringMicro.copyFromUtf8(this.a));
-    localReqGroupDateVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqGroupDateVideoList.date_count.set(this.jdField_c_of_type_Int);
-    localReqGroupDateVideoList.video_count.set(this.d);
-    localReqGroupDateVideoList.seqno.set(this.jdField_b_of_type_Long);
-    if (this.f != -1) {
-      localReqGroupDateVideoList.time_zone.set(this.f);
-    }
-    return localReqGroupDateVideoList.toByteArray();
+    super.a(paramuyg);
+    this.a.setDisplayState(5);
+    this.a.setNodeName(alud.a(2131707336), false);
   }
 }
 

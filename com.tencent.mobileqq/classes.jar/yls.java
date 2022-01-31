@@ -1,10 +1,6 @@
-public class yls
+public abstract interface yls
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public yls(ylr paramylr) {}
+  public abstract void a(boolean paramBoolean);
 }
 
 

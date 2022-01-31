@@ -1,22 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import dov.com.qq.im.ae.play.AEPlayShowPageView;
 
 public class blgi
-  implements Animator.AnimatorListener
+  extends RecyclerView.ItemDecoration
 {
-  public blgi(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  public blgi(AEPlayShowPageView paramAEPlayShowPageView, blgc paramblgc) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    this.a.a();
+    if (AEPlayShowPageView.a(this.jdField_a_of_type_DovComQqImAePlayAEPlayShowPageView) != 1)
+    {
+      paramRect.left = this.jdField_a_of_type_Blgc.c;
+      paramRect.right = this.jdField_a_of_type_Blgc.c;
+      paramRect.top = this.jdField_a_of_type_Blgc.d;
+      paramRect.bottom = this.jdField_a_of_type_Blgc.d;
+      return;
+    }
+    paramRect.bottom = this.jdField_a_of_type_Blgc.d;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

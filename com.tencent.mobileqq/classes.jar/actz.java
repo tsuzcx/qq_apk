@@ -1,44 +1,43 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.QLog;
 
 public class actz
-  implements aylz
+  extends altm
 {
-  public actz(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public actz(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void a(View paramView)
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    int i = 1;
-    ayjh localayjh = (ayjh)paramView.getTag(2131379913);
-    if (localayjh == null) {}
-    for (;;)
+    if (paramBoolean)
     {
+      this.a.a();
+      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
+      DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+    }
+    while ((this.a.jdField_a_of_type_Bety == null) || (!this.a.jdField_a_of_type_Bety.isShowing()) || (this.a.isFinishing())) {
       return;
-      String str1 = localayjh.b();
-      String str2 = localayjh.a().toString();
-      paramView = "-1";
-      if ((localayjh instanceof ayhv))
+    }
+    this.a.jdField_a_of_type_Bety.dismiss();
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin != null))
       {
-        paramView = ((ayhv)localayjh).e();
-        i = 3000;
-      }
-      while ((i != -1) && (ForwardTroopListFragment.a(this.a, new ResultRecord(str1, str2, i, paramView, ""))))
-      {
-        this.a.a.notifyDataSetChanged();
-        return;
-        if ((localayjh instanceof ayib)) {
-          paramView = ((ayib)localayjh).a;
-        } else if ((localayjh instanceof ayig)) {
-          paramView = ((ayig)localayjh).a().troopuin;
-        } else if ((localayjh instanceof ayhw)) {
-          i = 0;
-        } else {
-          i = -1;
+        paramString = ((alto)this.a.app.getManager(51)).e(this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin + "");
+        if (paramString != null) {
+          this.a.d = paramString.name;
         }
       }
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("DiscussionInfoCardActivity", 2, "onUpdateFriendInfo get owner name failed");
   }
 }
 

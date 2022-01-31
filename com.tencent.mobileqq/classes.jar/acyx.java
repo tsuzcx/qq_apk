@@ -1,38 +1,28 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.12.2;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
 public class acyx
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public acyx(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  public acyx(FriendProfileCardActivity.12.2 param2) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 1;
-    paramCompoundButton = this.a;
-    String str = this.a.app.getCurrentAccountUin();
-    if (paramBoolean)
+    if (bdin.g(this.a.jdField_a_of_type_Acyw.a))
     {
-      i = 2;
-      GesturePWDUtils.setGesturePWDState(paramCompoundButton, str, i);
-      this.a.a(paramBoolean);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label93;
+      this.a.jdField_a_of_type_Alpk.c(this.a.jdField_a_of_type_JavaLangString);
+      if (this.a.jdField_a_of_type_Acyw.a.jdField_a_of_type_Adcl != null) {
+        this.a.jdField_a_of_type_Acyw.a.jdField_a_of_type_Adcl.b();
       }
-    }
-    label93:
-    for (int i = j;; i = 0)
-    {
-      azmj.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
-      this.a.a();
       return;
-      i = 1;
-      break;
     }
+    this.a.jdField_a_of_type_Alpk.h();
+    this.a.jdField_a_of_type_Alpk.a(this.a.jdField_a_of_type_Acyw.a.jdField_a_of_type_Awqt.a.jdField_a_of_type_JavaLangString, "");
+    this.a.jdField_a_of_type_Acyw.a.a(alud.a(2131705312), 0);
+    this.a.jdField_a_of_type_Acyw.a.A();
   }
 }
 

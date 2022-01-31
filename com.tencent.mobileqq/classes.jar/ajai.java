@@ -1,18 +1,17 @@
-import Wallet.ReportHBGameRsp;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
 
-final class ajai
-  implements BusinessObserver
+public class ajai
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public bead a;
+  public PreloadModule a;
+  public PreloadResource a;
+  
+  public ajai(PreloadResource paramPreloadResource, PreloadModule paramPreloadModule, bead parambead)
   {
-    paramBundle = (ReportHBGameRsp)paramBundle.getSerializable("rsp");
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletTools", 2, "ReportHBGameRsp reportObserver:" + paramBoolean + "|" + paramBundle);
-    }
-    if ((paramBoolean) && (paramBundle != null) && (paramBundle.result == 0)) {}
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource = paramPreloadResource;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule = paramPreloadModule;
+    this.jdField_a_of_type_Bead = parambead;
   }
 }
 

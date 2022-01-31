@@ -1,42 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class arql
-  implements View.OnClickListener
+public class arql
 {
-  arql(arqk paramarqk) {}
-  
-  public void onClick(View paramView)
+  public static int a(bigh parambigh, long paramLong1, long paramLong2, long paramLong3)
   {
-    if (!this.a.a) {
-      return;
-    }
-    int i = 4;
-    if (arqk.a(this.a) == 1)
+    if (paramLong3 == 0L)
     {
-      i = 2;
-      if (!arqk.a(this.a).equals(aljq.z)) {
-        break label131;
-      }
-      i = 3;
-    }
-    label131:
-    for (;;)
-    {
-      long l = aqxj.b();
-      azmj.b(null, "dc00898", "", "", "0X800AA92", "0X800AA92", i, 0, "" + l, "0", "", "");
-      if (arqk.a(this.a) == 1)
+      if (paramLong1 < parambigh.a(BaseApplication.getContext(), paramLong1, paramLong3, 1024)) {}
+      for (;;)
       {
-        arqk.a(this.a);
-        return;
-        if (arqk.a(this.a) != 0) {
-          break;
+        i = (int)paramLong1;
+        int k = bigk.a(BaseApplication.getContext());
+        int j;
+        if (k != 1)
+        {
+          j = i;
+          if (k != 2) {}
         }
-        i = 1;
-        break;
+        else
+        {
+          j = i;
+          if (i > 16384) {
+            j = 16384;
+          }
+        }
+        i = Math.min(j, 1048576);
+        if (QLog.isColorLevel()) {
+          QLog.d("OfflineFileHttpUtils<FileAssistant>", 2, "sendFilePakage transferedSize[" + paramLong2 + "], size[" + i + "]");
+        }
+        return i;
+        paramLong1 = 1024L;
       }
-      arqk.b(this.a);
-      return;
+    }
+    int i = parambigh.a(BaseApplication.getContext(), paramLong1, paramLong2, 131072);
+    if (paramLong1 < i + paramLong2) {}
+    for (paramLong1 -= paramLong2;; paramLong1 = i)
+    {
+      i = (int)paramLong1;
+      break;
     }
   }
 }

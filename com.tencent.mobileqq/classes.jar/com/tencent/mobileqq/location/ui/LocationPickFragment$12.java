@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.location.ui;
 
-import atnf;
+import atro;
 
 class LocationPickFragment$12
   implements Runnable

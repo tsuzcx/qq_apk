@@ -1,43 +1,37 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.os.Message;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
-import com.tencent.mobileqq.widget.ScrollerRunnable.4;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.IphoneTreeView;
 
 public class beqv
-  implements Animator.AnimatorListener
+  implements View.OnTouchListener
 {
-  public beqv(ScrollerRunnable.4 param4) {}
+  public beqv(IphoneTreeView paramIphoneTreeView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a.getParent() != null)
+    boolean bool = true;
+    switch (paramMotionEvent.getAction())
     {
-      this.a.a.clearAnimation();
-      if (QLog.isColorLevel()) {
-        QLog.i("ScrollerRunnable", 2, "onAnimationEnd-->clearAnimation");
-      }
+    case 2: 
+    default: 
+      bool = false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ScrollerRunnable", 2, "onAnimationEnd:" + hashCode() + "," + this.a.a.hashCode() + "," + this.a.a.getParent());
-    }
-    if ((bblr.a(this.a.this$0.k)) && (this.a.this$0.a != null)) {
-      this.a.this$0.a.obtainMessage(50).sendToTarget();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScrollerRunnable", 2, "onAnimationStart:" + hashCode() + "," + this.a.a.hashCode() + "," + this.a.a.getParent());
-    }
+    do
+    {
+      return bool;
+      paramView.setPressed(true);
+      this.a.invalidate();
+      return true;
+      paramView.setPressed(false);
+      this.a.invalidate();
+      break;
+    } while (!paramView.isPressed());
+    paramView.setPressed(false);
+    this.a.collapseGroup(this.a.jdField_a_of_type_Int);
+    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
+    this.a.jdField_a_of_type_AndroidViewView = null;
+    return true;
   }
 }
 

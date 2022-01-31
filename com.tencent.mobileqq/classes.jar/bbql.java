@@ -1,23 +1,18 @@
-import java.util.UUID;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
-class bbql
-  implements amji
+public final class bbql
+  implements Parcelable.Creator<TroopBarPOI>
 {
-  bbql(bbqi parambbqi, UUID paramUUID) {}
-  
-  public void a(String paramString)
+  public TroopBarPOI a(Parcel paramParcel)
   {
-    bbrc.d("TroopFileDataBaseProxy", bbrc.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[add]. table:" + paramString);
+    return new TroopBarPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
   }
   
-  public void a(String paramString, int paramInt)
+  public TroopBarPOI[] a(int paramInt)
   {
-    bbrc.d("TroopFileDataBaseProxy", bbrc.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[up]. table:" + paramString);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    bbrc.d("TroopFileDataBaseProxy", bbrc.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish. table:" + paramString);
+    return null;
   }
 }
 

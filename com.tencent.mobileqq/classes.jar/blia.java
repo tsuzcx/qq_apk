@@ -1,16 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
+import android.graphics.Bitmap;
 
 public class blia
-  implements DialogInterface.OnClickListener
 {
-  public blia(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
+  public final int a;
+  public final Bitmap a;
+  public final String a;
+  public final Throwable a;
+  public final boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private blia(boolean paramBoolean, int paramInt, String paramString, Throwable paramThrowable, Bitmap paramBitmap)
   {
-    AEEditorVideoClipFragment.a(this.a);
-    this.a.a().a(this.a.getActivity());
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  private static blia b(int paramInt, String paramString)
+  {
+    return new blia(false, paramInt, paramString, null, null);
+  }
+  
+  private static blia b(Bitmap paramBitmap)
+  {
+    return new blia(true, 0, null, null, paramBitmap);
+  }
+  
+  public String toString()
+  {
+    return "ChangeFaceResult{isSuccess=" + this.jdField_a_of_type_Boolean + ", errCode=" + this.jdField_a_of_type_Int + ", msg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", exception=" + this.jdField_a_of_type_JavaLangThrowable + ", data=" + this.jdField_a_of_type_AndroidGraphicsBitmap + '}';
   }
 }
 

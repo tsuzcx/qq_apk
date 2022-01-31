@@ -1,15 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
+import com.tencent.biz.ui.PopupMenu.1.1;
 
-class yxl
+public class yxl
   implements View.OnClickListener
 {
-  yxl(yxj paramyxj) {}
+  yxl(yxk paramyxk, String paramString, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    yxj.a(this.a).setVisibility(8);
+    if (this.jdField_a_of_type_Yxk.a != null) {
+      this.jdField_a_of_type_Yxk.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 2);
+    }
+    paramView.post(new PopupMenu.1.1(this));
   }
 }
 

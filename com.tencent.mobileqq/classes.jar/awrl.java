@@ -1,29 +1,80 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
+import android.text.TextUtils;
 
 public class awrl
-  implements Animation.AnimationListener
 {
-  public awrl(ProfileTagView paramProfileTagView, View paramView) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public int f;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  private String b()
   {
-    paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView;
-    paramAnimation.i -= 1;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.i == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b();
+    switch (this.jdField_c_of_type_Int)
+    {
+    default: 
+      return "";
+    case 4: 
+      return alud.a(2131713956);
+    case 5: 
+      return alud.a(2131713954);
+    case 6: 
+      return alud.a(2131713952);
+    case 7: 
+      return alud.a(2131713953);
+    case 8: 
+      return alud.a(2131713957);
     }
-    ((FriendProfileCardActivity)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a).l();
+    return alud.a(2131713955);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_b_of_type_Int == 3)
+    {
+      if (this.jdField_d_of_type_Int > 0) {
+        localStringBuilder.append(this.jdField_d_of_type_Int + "级");
+      }
+      if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))
+      {
+        if (localStringBuilder.length() > 0) {
+          localStringBuilder.append("   ");
+        }
+        localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+      }
+      if (this.jdField_c_of_type_Int > 0)
+      {
+        String str = b();
+        if (!TextUtils.isEmpty(str))
+        {
+          if (localStringBuilder.length() > 0) {
+            localStringBuilder.append("   ");
+          }
+          localStringBuilder.append(str);
+        }
+      }
+    }
+    for (;;)
+    {
+      return localStringBuilder.toString();
+      if (this.jdField_d_of_type_Int > 0) {
+        localStringBuilder.append(this.jdField_d_of_type_Int + "级");
+      }
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String toString()
+  {
+    return "uint32_idx:" + this.jdField_a_of_type_Int + " uint32_category:" + this.jdField_b_of_type_Int + " str_school_id:" + this.jdField_a_of_type_JavaLangString + " str_school_name:" + this.jdField_b_of_type_JavaLangString + " str_department_id:" + this.jdField_c_of_type_JavaLangString + " str_department_name:" + this.jdField_d_of_type_JavaLangString + " uint32_degree:" + this.jdField_c_of_type_Int + " uint32_enrollment_year:" + this.jdField_d_of_type_Int + " uint32_graduation_year:" + this.e + " uint32_allow_recommend:" + this.f;
+  }
 }
 
 

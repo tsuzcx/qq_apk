@@ -1,23 +1,26 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class vur
-  extends vrn
+  implements View.OnClickListener
 {
-  public vur(AbsVideoInfoWidget paramAbsVideoInfoWidget, StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
+  public vur(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    super.a(paramInt);
-    paramInt = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.b;
-    if ((paramInt >= this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.size()) || (paramInt < 0))
+    if (!bdin.g(this.a.jdField_a_of_type_AndroidViewView.getContext()))
     {
-      wsv.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b, "Position error , get data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.size()) });
+      QQToast.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131694766, 0).a();
       return;
     }
-    vpk localvpk = (vpk)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.get(paramInt);
-    AbsVideoInfoWidget.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget, localvpk);
+    wxe.d(this.a.jdField_a_of_type_JavaLangString, "video view error, retry, show loading view");
+    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.a.a(10, true, "retry play");
   }
 }
 

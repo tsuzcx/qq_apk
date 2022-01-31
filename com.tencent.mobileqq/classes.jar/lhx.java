@@ -99,7 +99,7 @@ class lhx
                   }
                   for (;;)
                   {
-                    azmj.b(null, "dc00898", "", "", "0X800A2C7", "0X800A2C7", 0, 0, "", "", "", "");
+                    azqs.b(null, "dc00898", "", "", "0X800A2C7", "0X800A2C7", 0, 0, "", "", "", "");
                     return;
                     a(l, (VideoAppInterface)localObject, paramContext, paramIntent.E, paramIntent.g);
                   }
@@ -113,7 +113,7 @@ class lhx
                 if (QLog.isColorLevel()) {
                   QLog.i("QAVNotifyActionMonitor", 2, "onAEResDownloadResult, package[" + i + ", isDownloaded[" + bool + ", errorType[" + j + "]");
                 }
-              } while ((!bool) || (i != bkwh.b.a));
+              } while ((!bool) || (i != blao.b.a));
               paramContext = VideoController.a().a();
             } while (paramContext == null);
             llg.a(paramContext);
@@ -128,7 +128,7 @@ class lhx
             if (QLog.isColorLevel()) {
               QLog.i("QAVNotifyActionMonitor", 2, "ACTION_PTU_LIBPAG_DOWNLOAD_RET onAEResDownloadResult, package[" + i + ", isDownloaded[" + bool + ", errorType[" + j + "]");
             }
-          } while ((!bool) || (i != bkwh.c.a));
+          } while ((!bool) || (i != blao.c.a));
           paramContext = VideoController.a().a();
         } while (paramContext == null);
         lro.b(paramContext);

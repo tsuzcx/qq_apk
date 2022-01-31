@@ -1,205 +1,280 @@
-import android.media.ExifInterface;
+import NS_MOBILE_CLIENT_UPDATE.SQ_CLIENT_UPDATE_RSP;
+import NS_MOBILE_CLIENT_UPDATE.UPDATE_INFO;
+import android.content.Context;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.image.JpegExifReader;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.util.QZLog;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import cooperation.qzone.plugin.PluginIntent;
+import cooperation.qzone.plugin.PluginRecord;
+import cooperation.qzone.report.lp.LpReportInfo_dc01500;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class bjpw
 {
-  public static boolean a(String paramString, double paramDouble1, double paramDouble2)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  bjpy jdField_a_of_type_Bjpy;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private Map<String, PluginRecord> jdField_a_of_type_JavaUtilMap;
+  HashMap<String, PluginRecord> b = new HashMap();
+  
+  public bjpw(QQAppInterface paramQQAppInterface, Context paramContext, Handler paramHandler)
   {
-    if ((QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneGpsComplement", 1) == 0) || (LocalMultiProcConfig.getInt("Qzone_gps_switch", 1) == 0)) {
-      return false;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    paramQQAppInterface = new PluginRecord();
+    paramQQAppInterface.ver = "0";
+    this.jdField_a_of_type_JavaUtilHashMap.put("qzone_live_video_plugin_hack.apk", "com.tencent.mobileqq:qzonelive");
+    paramQQAppInterface.name = "qzone_live_video_plugin_hack.apk";
+    paramQQAppInterface.id = "qzone_live_video_plugin_hack.apk";
+    this.b.put(paramQQAppInterface.id, paramQQAppInterface);
+    paramQQAppInterface = new PluginRecord();
+    paramQQAppInterface.ver = "0";
+    paramQQAppInterface.name = "qzone_vertical_video_plugin.apk";
+    paramQQAppInterface.id = "qzone_vertical_video_plugin.apk";
+    this.b.put(paramQQAppInterface.id, paramQQAppInterface);
+    this.jdField_a_of_type_JavaUtilHashMap.put("qzone_vertical_video_plugin.apk", "com.tencent.mobileqq:qzone");
+    paramQQAppInterface = new PluginRecord();
+    paramQQAppInterface.ver = "0";
+    paramQQAppInterface.name = "QZoneWeishiFeedsVideo";
+    paramQQAppInterface.id = "qzone_weishi_feeds_plugin.apk";
+    this.b.put(paramQQAppInterface.id, paramQQAppInterface);
+    this.jdField_a_of_type_JavaUtilHashMap.put("qzone_weishi_feeds_plugin.apk", "com.tencent.mobileqq:qzonelive");
+    bjpz.a(paramContext, this.jdField_a_of_type_JavaUtilMap);
+  }
+  
+  public static String a(Map<Integer, String> paramMap, Integer paramInteger)
+  {
+    if (paramMap != null) {
+      return (String)paramMap.get(paramInteger);
     }
-    if (JpegExifReader.isCrashJpeg(paramString)) {
-      return false;
-    }
-    ExifInterface localExifInterface;
-    try
+    return null;
+  }
+  
+  private void a(SQ_CLIENT_UPDATE_RSP paramSQ_CLIENT_UPDATE_RSP)
+  {
+    if (paramSQ_CLIENT_UPDATE_RSP != null)
     {
-      localExifInterface = new ExifInterface(paramString);
-      if (localExifInterface == null) {
-        return false;
-      }
-    }
-    catch (IOException paramString)
-    {
-      paramString.printStackTrace();
-      return false;
-    }
-    QLog.i("ExifComplement", 2, "complementByDB destPath:" + paramString + "\nlat: " + paramDouble2 + " lng:" + paramDouble1 + "\nTAG_GPS_LATITUDE:" + localExifInterface.getAttribute("GPSLatitude"));
-    if ((paramDouble1 == 0.0D) || (paramDouble2 == 0.0D) || (!TextUtils.isEmpty(localExifInterface.getAttribute("GPSLatitude")))) {
-      return false;
-    }
-    QZLog.i("ExifComplement", 2, "[Complement] complementByDB gps lat: " + paramDouble2 + " lng:" + paramDouble1);
-    localExifInterface.setAttribute("GPSLatitude", bjqi.a(paramDouble2));
-    localExifInterface.setAttribute("GPSLongitude", bjqi.a(paramDouble1));
-    if (paramDouble1 > 0.0D)
-    {
-      paramString = "E";
-      localExifInterface.setAttribute("GPSLongitudeRef", paramString);
-      if (paramDouble2 <= 0.0D) {
-        break label320;
-      }
-    }
-    label320:
-    for (paramString = "N";; paramString = "S")
-    {
-      localExifInterface.setAttribute("GPSLatitudeRef", paramString);
-      localExifInterface.setAttribute("DateTime", new SimpleDateFormat("yyyy:MM:dd hh:mm:ss").format(new Date()));
-      try
+      String str1 = paramSQ_CLIENT_UPDATE_RSP.md5;
+      String str2 = paramSQ_CLIENT_UPDATE_RSP.upUrl;
+      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
       {
-        localExifInterface.saveAttributes();
-        paramString = new HashMap();
-        paramString.put("gpsPicEdit", String.valueOf(1));
-        paramString.put("gpsComplementByDB", String.valueOf(1));
-        azmz.a(BaseApplication.getContext()).a(null, "gpsComplement", true, 0L, 0L, paramString, null, true);
-        return true;
+        if (QLog.isColorLevel()) {
+          QLog.d("QZonePluginUpdater", 2, "收到补丁包信息：" + paramSQ_CLIENT_UPDATE_RSP);
+        }
+        bjny.a().a(str1, str2);
       }
-      catch (IOException paramString)
+    }
+  }
+  
+  private void a(SQ_CLIENT_UPDATE_RSP paramSQ_CLIENT_UPDATE_RSP, String[] paramArrayOfString)
+  {
+    if (paramSQ_CLIENT_UPDATE_RSP != null)
+    {
+      if ((paramSQ_CLIENT_UPDATE_RSP.vPlugin != null) && (paramSQ_CLIENT_UPDATE_RSP.vPlugin.size() > 0))
       {
-        paramString.printStackTrace();
+        a(paramSQ_CLIENT_UPDATE_RSP.vPlugin, paramArrayOfString);
+        QLog.i("QZonePluginUpdater", 2, "plugin need update：" + paramSQ_CLIENT_UPDATE_RSP + ", size = " + paramSQ_CLIENT_UPDATE_RSP.vPlugin.size());
+        return;
       }
-      paramString = "W";
+      QLog.i("QZonePluginUpdater", 2, "plugin don not need update：" + paramSQ_CLIENT_UPDATE_RSP);
+      return;
+    }
+    QLog.i("QZonePluginUpdater", 2, "response == null");
+  }
+  
+  private void a(UPDATE_INFO paramUPDATE_INFO, PluginRecord paramPluginRecord)
+  {
+    if ((paramPluginRecord == null) || (paramUPDATE_INFO == null)) {
+      return;
+    }
+    paramPluginRecord.app = paramUPDATE_INFO.app;
+    paramPluginRecord.id = paramUPDATE_INFO.id;
+    paramPluginRecord.actype = paramUPDATE_INFO.actype;
+    paramPluginRecord.mainVersion = paramUPDATE_INFO.mainVersion;
+    paramPluginRecord.md5 = paramUPDATE_INFO.md5;
+    paramPluginRecord.name = paramUPDATE_INFO.name;
+    paramPluginRecord.old_ver = paramPluginRecord.ver;
+    paramPluginRecord.ver = paramUPDATE_INFO.ver;
+    paramPluginRecord.actype = paramUPDATE_INFO.actype;
+    paramPluginRecord.url = a(paramUPDATE_INFO.plugin_info, Integer.valueOf(0));
+    paramPluginRecord.mProcesses = ((String)this.jdField_a_of_type_JavaUtilHashMap.get(paramPluginRecord.id));
+    paramPluginRecord.mInstalledPath = bjpz.a(BaseApplicationImpl.getContext(), paramPluginRecord.id).getAbsolutePath();
+  }
+  
+  private void a(PluginRecord paramPluginRecord)
+  {
+    File localFile = bjpz.c(BaseApplicationImpl.getContext(), paramPluginRecord.id);
+    if ((localFile != null) && (localFile.exists())) {
+      localFile.delete();
+    }
+    bjpz.a(paramPluginRecord);
+    LpReportInfo_dc01500.reportConfig(paramPluginRecord.id, paramPluginRecord.old_ver, paramPluginRecord.ver, 0);
+  }
+  
+  private void a(String paramString)
+  {
+    paramString = bjpz.c(BaseApplicationImpl.getContext(), paramString);
+    if ((paramString != null) && (paramString.exists())) {
+      paramString.delete();
+    }
+  }
+  
+  private void a(WeakReference<QQAppInterface> paramWeakReference, String[] paramArrayOfString)
+  {
+    PluginIntent localPluginIntent = new PluginIntent(BaseApplicationImpl.getContext(), bjnz.class);
+    localPluginIntent.a = a();
+    localPluginIntent.b = bjml.a().a();
+    localPluginIntent.a(new bjpx(this));
+    localPluginIntent.putExtra("forceDownLoadPlugins", paramArrayOfString);
+    paramArrayOfString = null;
+    if (paramWeakReference != null) {
+      paramArrayOfString = (QQAppInterface)paramWeakReference.get();
+    }
+    if (paramArrayOfString != null) {
+      paramArrayOfString.startServlet(localPluginIntent);
+    }
+  }
+  
+  private static void b(String paramString)
+  {
+    QLog.i("QZonePluginManger", 2, paramString);
+  }
+  
+  public PluginRecord a(String paramString)
+  {
+    return (PluginRecord)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+  }
+  
+  public ArrayList<UPDATE_INFO> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    StringBuilder localStringBuilder = new StringBuilder();
+    this.b.putAll(this.jdField_a_of_type_JavaUtilMap);
+    Iterator localIterator = this.b.values().iterator();
+    while (localIterator.hasNext())
+    {
+      PluginRecord localPluginRecord = (PluginRecord)localIterator.next();
+      UPDATE_INFO localUPDATE_INFO = new UPDATE_INFO();
+      localUPDATE_INFO.id = localPluginRecord.id;
+      localUPDATE_INFO.app = localPluginRecord.id;
+      localUPDATE_INFO.ver = (localPluginRecord.ver + "");
+      localArrayList.add(localUPDATE_INFO);
+      localStringBuilder.append("id=").append(localUPDATE_INFO.id).append(",app=").append(localUPDATE_INFO.app).append(",ver=").append(localUPDATE_INFO.ver).append("\r\n");
+    }
+    b("getRequestUpdateInfo:" + localStringBuilder);
+    return localArrayList;
+  }
+  
+  Map<String, PluginRecord> a()
+  {
+    return this.jdField_a_of_type_JavaUtilMap;
+  }
+  
+  public void a()
+  {
+    a(this.jdField_a_of_type_JavaLangRefWeakReference, null);
+  }
+  
+  public void a(bjpy parambjpy)
+  {
+    this.jdField_a_of_type_Bjpy = parambjpy;
+  }
+  
+  public void a(ArrayList<UPDATE_INFO> paramArrayList, String[] paramArrayOfString)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        paramArrayOfString = (UPDATE_INFO)paramArrayList.next();
+        if (paramArrayOfString.actype == 4)
+        {
+          b("delete plugin, " + paramArrayOfString.name);
+          if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramArrayOfString.id))
+          {
+            this.jdField_a_of_type_JavaUtilMap.remove(paramArrayOfString.id);
+            a(paramArrayOfString.id);
+          }
+        }
+        else
+        {
+          PluginRecord localPluginRecord1 = new PluginRecord();
+          a(paramArrayOfString, localPluginRecord1);
+          if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramArrayOfString.id))
+          {
+            PluginRecord localPluginRecord2 = (PluginRecord)this.jdField_a_of_type_JavaUtilMap.get(paramArrayOfString.id);
+            if (!localPluginRecord1.equals(localPluginRecord2))
+            {
+              if (localPluginRecord2 == null) {
+                break label241;
+              }
+              a(paramArrayOfString, localPluginRecord2);
+            }
+            for (;;)
+            {
+              a((PluginRecord)this.jdField_a_of_type_JavaUtilMap.get(paramArrayOfString.id));
+              b("onPluginResponse contain update plugin, name = " + paramArrayOfString.name + ", ver = " + paramArrayOfString.ver);
+              break;
+              label241:
+              this.jdField_a_of_type_JavaUtilMap.put(paramArrayOfString.id, localPluginRecord1);
+            }
+          }
+          this.jdField_a_of_type_JavaUtilMap.put(paramArrayOfString.id, localPluginRecord1);
+          a((PluginRecord)this.jdField_a_of_type_JavaUtilMap.get(paramArrayOfString.id));
+          b("onPluginResponse not contain update plugin, name = " + paramArrayOfString.name + ", ver = " + paramArrayOfString.ver);
+        }
+      }
+    }
+  }
+  
+  public boolean a(PluginRecord paramPluginRecord)
+  {
+    if (paramPluginRecord == null) {
+      return false;
+    }
+    PluginRecord localPluginRecord = b(paramPluginRecord.id);
+    String str;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("QZonePluginUpdater", 2, "pre: " + paramPluginRecord.md5);
+      StringBuilder localStringBuilder = new StringBuilder().append("new: ");
+      if (localPluginRecord != null)
+      {
+        str = localPluginRecord.md5;
+        QLog.d("QZonePluginUpdater", 2, str);
+      }
+    }
+    else
+    {
+      if ((localPluginRecord == null) || (!localPluginRecord.md5.equals(paramPluginRecord.md5))) {
+        break label121;
+      }
+    }
+    label121:
+    for (boolean bool = true;; bool = false)
+    {
+      return bool;
+      str = null;
       break;
     }
-    return false;
   }
   
-  public static boolean a(String paramString1, String paramString2)
+  public PluginRecord b(String paramString)
   {
-    if ((QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneGpsComplement", 1) == 0) || (LocalMultiProcConfig.getInt("Qzone_gps_switch", 1) == 0)) {
-      return false;
-    }
-    if ((JpegExifReader.isCrashJpeg(paramString2)) || (JpegExifReader.isCrashJpeg(paramString1))) {
-      return false;
-    }
-    ExifInterface localExifInterface1;
-    ExifInterface localExifInterface2;
-    try
-    {
-      localExifInterface1 = new ExifInterface(paramString2);
-      localExifInterface2 = new ExifInterface(paramString1);
-      if ((localExifInterface2 == null) || (localExifInterface1 == null)) {
-        return false;
-      }
-    }
-    catch (IOException paramString1)
-    {
-      paramString1.printStackTrace();
-      return false;
-    }
-    QLog.i("ExifComplement", 2, "complementByExif srcPath:" + paramString1 + "\ndestPath:" + paramString2 + "\nTAG_GPS_LONGITUDE:" + localExifInterface1.getAttribute("GPSLongitude"));
-    paramString1 = new HashMap();
-    if ((localExifInterface2 != null) && (TextUtils.isEmpty(localExifInterface1.getAttribute("GPSLongitude"))))
-    {
-      paramString2 = localExifInterface2.getAttribute("GPSLongitude");
-      String str = localExifInterface2.getAttribute("GPSLatitude");
-      if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(str)))
-      {
-        QZLog.i("ExifComplement", 2, "[Complement] complementByExif lat: " + str + " lng:" + paramString2);
-        localExifInterface1.setAttribute("GPSLongitude", paramString2);
-        localExifInterface1.setAttribute("GPSLatitude", str);
-        if (localExifInterface2.getAttribute("GPSLongitudeRef") != null) {
-          localExifInterface1.setAttribute("GPSLongitudeRef", localExifInterface2.getAttribute("GPSLongitudeRef"));
-        }
-        if (localExifInterface2.getAttribute("GPSLatitudeRef") != null) {
-          localExifInterface1.setAttribute("GPSLatitudeRef", localExifInterface2.getAttribute("GPSLatitudeRef"));
-        }
-        if (localExifInterface2.getAttribute("DateTime") != null) {
-          localExifInterface1.setAttribute("DateTime", localExifInterface2.getAttribute("DateTime"));
-        }
-        if (localExifInterface2.getAttribute("Make") != null) {
-          localExifInterface1.setAttribute("Make", localExifInterface2.getAttribute("Make"));
-        }
-        if (localExifInterface2.getAttribute("Model") != null) {
-          localExifInterface1.setAttribute("Model", localExifInterface2.getAttribute("Model"));
-        }
-        try
-        {
-          localExifInterface1.saveAttributes();
-          paramString1.put("gpsPicEdit", String.valueOf(1));
-          paramString1.put("gpsComplementByExif", String.valueOf(1));
-          azmz.a(BaseApplication.getContext()).a(null, "gpsComplement", true, 0L, 0L, paramString1, null, true);
-          return true;
-        }
-        catch (Exception paramString1)
-        {
-          paramString1.printStackTrace();
-          return false;
-        }
-      }
-    }
-    return false;
-  }
-  
-  public static boolean b(String paramString, double paramDouble1, double paramDouble2)
-  {
-    if ((QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneGpsComplement", 1) == 0) || (LocalMultiProcConfig.getInt("Qzone_gps_switch", 1) == 0)) {
-      return false;
-    }
-    if ((paramDouble1 == 4.9E-324D) || (paramDouble2 == 4.9E-324D)) {
-      return false;
-    }
-    if (!JpegExifReader.isCrashJpeg(paramString)) {
-      for (;;)
-      {
-        try
-        {
-          ExifInterface localExifInterface = new ExifInterface(paramString);
-          QLog.i("ExifComplement", 2, "complementByLocal path:" + paramString + "\nlat: " + paramDouble2 + " lng:" + paramDouble1 + "\nTAG_GPS_LATITUDE:" + localExifInterface.getAttribute("GPSLatitude"));
-          if ((localExifInterface == null) || (!TextUtils.isEmpty(localExifInterface.getAttribute("GPSLatitude")))) {
-            break;
-          }
-          QLog.i("ExifComplement", 2, "[Complement] complementByLocal lat: " + paramDouble2 + " lng:" + paramDouble1);
-          localExifInterface.setAttribute("GPSLatitude", bjqi.a(paramDouble2));
-          localExifInterface.setAttribute("GPSLongitude", bjqi.a(paramDouble1));
-          if (paramDouble1 > 0.0D)
-          {
-            paramString = "E";
-            localExifInterface.setAttribute("GPSLongitudeRef", paramString);
-            if (paramDouble2 <= 0.0D) {
-              break label320;
-            }
-            paramString = "N";
-            localExifInterface.setAttribute("GPSLatitudeRef", paramString);
-            localExifInterface.setAttribute("DateTime", new SimpleDateFormat("yyyy:MM:dd hh:mm:ss").format(new Date()));
-          }
-          paramString = "W";
-        }
-        catch (IOException paramString)
-        {
-          try
-          {
-            localExifInterface.saveAttributes();
-            paramString = new HashMap();
-            paramString.put("gpsCapturePic", String.valueOf(1));
-            paramString.put("gpsComplementByLocal", String.valueOf(1));
-            azmz.a(BaseApplication.getContext()).a(null, "gpsComplement", true, 0L, 0L, paramString, null, true);
-            return true;
-          }
-          catch (IOException paramString)
-          {
-            paramString.printStackTrace();
-            return false;
-          }
-          paramString = paramString;
-          paramString.printStackTrace();
-          return false;
-        }
-        continue;
-        label320:
-        paramString = "S";
-      }
-    }
-    return false;
+    return (PluginRecord)this.jdField_a_of_type_JavaUtilMap.get(paramString);
   }
 }
 

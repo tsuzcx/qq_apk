@@ -2,27 +2,27 @@ package com.tencent.biz.qqstory.playvideo.playerwidget;
 
 import android.app.Activity;
 import android.os.Bundle;
-import vvc;
-import vvi;
-import vvj;
-import xlb;
+import vzl;
+import vzr;
+import vzs;
+import xpk;
 
 public class BottomVideoInfoWidget$8$1
   implements Runnable
 {
-  public BottomVideoInfoWidget$8$1(vvi paramvvi) {}
+  public BottomVideoInfoWidget$8$1(vzr paramvzr) {}
   
   public void run()
   {
-    Activity localActivity = this.a.jdField_a_of_type_Vvc.b();
-    if (xlb.a().a(localActivity, new Bundle(), 467)) {
-      vvc.a(this.a.jdField_a_of_type_Vvc, localActivity, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.d, this.a.e, this.a.f, this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+    Activity localActivity = this.a.jdField_a_of_type_Vzl.b();
+    if (xpk.a().a(localActivity, new Bundle(), 467)) {
+      vzl.a(this.a.jdField_a_of_type_Vzl, localActivity, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.d, this.a.e, this.a.f, this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Vvc.l();
+      this.a.jdField_a_of_type_Vzl.l();
       return;
-      vvc.a(this.a.jdField_a_of_type_Vvc, new vvj(this, localActivity));
+      vzl.a(this.a.jdField_a_of_type_Vzl, new vzs(this, localActivity));
     }
   }
 }

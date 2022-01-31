@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bgnf;
-import bgte;
-import bgyg;
-import bhij;
+import bgrm;
+import bgxl;
+import bhcn;
+import bhmq;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -19,7 +19,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 public class DefaultMoreItemSelectedListener
-  implements bhij
+  implements bhmq
 {
   private static final String TAG = "DefaultMoreItemSelectedListener";
   
@@ -29,7 +29,7 @@ public class DefaultMoreItemSelectedListener
     while (!paramIMiniRuntime.getMiniAppInfo().isEngineTypeMiniGame()) {
       return;
     }
-    bgyg.a(paramIMiniRuntime.getMiniAppInfo(), bgyg.a(paramIMiniRuntime.getMiniAppInfo()), null, "user_click", "more_button", paramString);
+    bhcn.a(paramIMiniRuntime.getMiniAppInfo(), bhcn.a(paramIMiniRuntime.getMiniAppInfo()), null, "user_click", "more_button", paramString);
   }
   
   private void startAboutPage(Activity paramActivity, MiniAppInfo paramMiniAppInfo, ShareState paramShareState)
@@ -55,7 +55,7 @@ public class DefaultMoreItemSelectedListener
         localUnsupportedEncodingException.printStackTrace();
       }
     }
-    Object localObject = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + paramString + "&openid=" + bgte.a().a() + "&avatar=" + (String)localObject + "&nickname=游客";
+    Object localObject = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + paramString + "&openid=" + bgxl.a().a() + "&avatar=" + (String)localObject + "&nickname=游客";
     paramString = new Intent();
     paramString.putExtra("url", (String)localObject);
     paramString.putExtra("title", "投诉与反馈");
@@ -109,7 +109,7 @@ public class DefaultMoreItemSelectedListener
       str = "report";
       continue;
       paramIMiniRuntime.toggleDebugPanel();
-      bgnf.a(localActivity, "调试面板需重启生效", 1).a();
+      bgrm.a(localActivity, "调试面板需重启生效", 1).a();
       continue;
       paramIMiniRuntime.toggleMonitorPanel();
       continue;

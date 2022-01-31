@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.haoliyou.JefsClass;
 
 public class asqc
-  implements DialogInterface.OnClickListener
+  extends ThreadLocal<Boolean>
 {
-  public asqc(HotPicPageView paramHotPicPageView, asqh paramasqh) {}
+  public asqc(JefsClass paramJefsClass) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected Boolean a()
   {
-    this.jdField_a_of_type_Asqh.a(-11);
-    QLog.d("HotPicManagerHotPicPageView", 2, "User disallowed downd");
+    return Boolean.valueOf(false);
   }
 }
 

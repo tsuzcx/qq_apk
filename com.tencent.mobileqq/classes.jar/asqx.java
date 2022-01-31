@@ -1,30 +1,15 @@
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class asqx
-  implements baxv
+class asqx
+  implements DialogInterface.OnClickListener
 {
-  public asqx(HotVideoData paramHotVideoData, asqz paramasqz, asqy paramasqy) {}
+  asqx(asqs paramasqs) {}
   
-  public void a(bawo parambawo, baxd parambaxd)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (parambaxd != null) {
-      if (parambaxd.a.size() > 0)
-      {
-        parambawo = (baxr)parambaxd.a.get(0);
-        this.jdField_a_of_type_Asqz.a(parambawo);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Asqy.a(this.jdField_a_of_type_Asqz);
-      return;
-      this.jdField_a_of_type_Asqz.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Asqz.jdField_a_of_type_JavaLangString = "Unknown error！";
-      continue;
-      this.jdField_a_of_type_Asqz.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Asqz.jdField_a_of_type_JavaLangString = "Unknown error！";
-    }
+    asqs.a(this.a).finish();
   }
 }
 

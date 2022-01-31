@@ -1,38 +1,14 @@
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
+import android.view.View.OnClickListener;
 
-public class ayrp
-  implements ayrt
+class ayrp
+  implements View.OnClickListener
 {
-  protected View a;
+  ayrp(ayro paramayro, ayod paramayod) {}
   
-  public ayrp(ViewGroup paramViewGroup)
+  public void onClick(View paramView)
   {
-    this.a = new LinearLayout(paramViewGroup.getContext());
-    this.a.setVisibility(8);
-  }
-  
-  public View a()
-  {
-    return this.a;
-  }
-  
-  public TextView a()
-  {
-    return null;
-  }
-  
-  public List<ayru> a()
-  {
-    return null;
-  }
-  
-  public TextView b()
-  {
-    return null;
+    this.jdField_a_of_type_Ayod.a(paramView);
   }
 }
 

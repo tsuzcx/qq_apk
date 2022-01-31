@@ -1,40 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import java.util.Map;
+import android.content.Context;
 
-class bfkn
-  extends alls
+public class bfkn
 {
-  private bfkn(bfkl parambfkl) {}
+  private android.webkit.CookieSyncManager jdField_a_of_type_AndroidWebkitCookieSyncManager;
+  private com.tencent.smtt.sdk.CookieSyncManager jdField_a_of_type_ComTencentSmttSdkCookieSyncManager;
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2)
+  public bfkn(Context paramContext)
   {
-    bfhg.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver onGetAuthCode isSuccess|" + paramBoolean + " code|" + paramString1 + " reqId|" + paramString2);
-    if (paramString2 == null) {
-      return;
+    this.jdField_a_of_type_ComTencentSmttSdkCookieSyncManager = com.tencent.smtt.sdk.CookieSyncManager.createInstance(paramContext);
+    this.jdField_a_of_type_AndroidWebkitCookieSyncManager = android.webkit.CookieSyncManager.createInstance(paramContext);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentSmttSdkCookieSyncManager != null) {
+      this.jdField_a_of_type_ComTencentSmttSdkCookieSyncManager.sync();
     }
-    Bundle localBundle = (Bundle)bfkl.a(this.a).get(paramString2);
-    if (localBundle == null)
-    {
-      bfhg.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver reqId|" + paramString2 + "  but params context is null");
-      return;
-    }
-    int i = localBundle.getInt("CallbackId");
-    paramString2 = new Bundle();
-    paramString2.putString("PackageName", localBundle.getString("PackageName"));
-    paramString2.putInt("VersionCode", localBundle.getInt("VersionCode"));
-    if (paramBoolean)
-    {
-      paramString2.putBoolean("IsSuccess", true);
-      paramString2.putString("Code", paramString1);
-    }
-    for (;;)
-    {
-      bfhg.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver callbackId|" + i + " result|" + paramString2);
-      bfkl.a(this.a).callbackResult(i, EIPCResult.createSuccessResult(paramString2));
-      return;
-      paramString2.putBoolean("IsSuccess", false);
+    if (this.jdField_a_of_type_AndroidWebkitCookieSyncManager != null) {
+      this.jdField_a_of_type_AndroidWebkitCookieSyncManager.sync();
     }
   }
 }

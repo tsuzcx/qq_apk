@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.tfs.mini;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
@@ -79,7 +79,7 @@ public class BaselibLoadAsyncTask
       }
       finally {}
       return;
-      onTaskFailed(-3, alpo.a(2131701383));
+      onTaskFailed(-3, alud.a(2131701395));
       continue;
       label363:
       int i = 1;

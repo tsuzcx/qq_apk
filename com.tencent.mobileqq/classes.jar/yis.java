@@ -1,16 +1,12 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
 public class yis
-  implements View.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  public yis(VideoPlayerView paramVideoPlayerView) {}
-  
-  public void onClick(View paramView)
+  public yis(View paramView)
   {
-    VideoPlayerView.h(this.a);
-    this.a.f();
+    super(paramView);
   }
 }
 

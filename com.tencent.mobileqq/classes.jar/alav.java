@@ -1,43 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONArray;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class alav
-  implements aklp
+  implements aleg
 {
-  alav(alau paramalau) {}
+  alav(alas paramalas, boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2) {}
   
-  public void a(boolean paramBoolean, String paramString1, List<aklm> paramList, String paramString2)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    QLog.i("ApolloPluginRscLoader", 1, "checkRoomRsc downloadApolloRes onDownLoadFinish success:" + paramBoolean);
-    int i = 0;
-    if (i < this.a.jdField_a_of_type_ArrayOfInt.length)
-    {
-      paramString1 = akll.a().a(8, this.a.jdField_a_of_type_ArrayOfInt[i]);
-      int j;
-      if (paramString1 != null)
-      {
-        paramList = this.a.jdField_a_of_type_Alap;
-        int k = paramString1.b;
-        if (paramString1.a())
-        {
-          j = 0;
-          label88:
-          paramString1 = alap.a(paramList, 8, String.valueOf(k), j);
-          this.a.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        j = 2;
-        break label88;
-        paramString1 = alap.a(this.a.jdField_a_of_type_Alap, 8, String.valueOf(this.a.jdField_a_of_type_ArrayOfInt[i]), 2);
-        this.a.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Alas.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, this.b);
     }
-    this.a.jdField_a_of_type_Alap.a(this.a.jdField_a_of_type_JavaLangString, alpo.a(2131700871), this.a.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 

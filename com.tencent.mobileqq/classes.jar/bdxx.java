@@ -1,17 +1,27 @@
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qphone.base.util.QLog;
+
 public class bdxx
+  extends Handler
 {
-  public String a;
-  public String b;
+  public bdxx(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public bdxx(String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public String toString()
-  {
-    return "LiangHaoUinData{" + "hide" + ", light='" + this.b + '\'' + '}';
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      QLog.d("HealthBusinessPlugin", 1, "plugin success");
+      return;
+    case 1: 
+      QLog.d("HealthBusinessPlugin", 1, "plugin fail");
+      return;
+    }
+    QLog.d("HealthBusinessPlugin", 1, String.format("plugin install %d", new Object[] { Integer.valueOf(this.a.c) }));
   }
 }
 

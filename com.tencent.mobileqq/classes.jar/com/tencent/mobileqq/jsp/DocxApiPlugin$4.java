@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.jsp;
 
-import atcy;
-import badd;
+import athh;
+import bahm;
 
 public class DocxApiPlugin$4
   implements Runnable
 {
-  public DocxApiPlugin$4(atcy paramatcy, String paramString) {}
+  public DocxApiPlugin$4(athh paramathh, String paramString) {}
   
   public void run()
   {
-    badd.a(this.a);
+    bahm.a(this.a);
   }
 }
 

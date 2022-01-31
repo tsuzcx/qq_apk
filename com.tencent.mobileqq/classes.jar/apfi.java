@@ -1,27 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.PrecoverResource;
 
-class apfi
-  extends Handler
+public final class apfi
+  implements Parcelable.Creator<PrecoverResource>
 {
-  apfi(apfg paramapfg, Looper paramLooper)
+  public PrecoverResource a(Parcel paramParcel)
   {
-    super(paramLooper);
+    return new PrecoverResource(paramParcel);
   }
   
-  public void handleMessage(Message paramMessage)
+  public PrecoverResource[] a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (apfg.c(this.a));
-    QLog.e("VoiceInputHelper", 1, "checkPermission uncertain");
-    this.a.onGetError(1830002);
+    return new PrecoverResource[paramInt];
   }
 }
 

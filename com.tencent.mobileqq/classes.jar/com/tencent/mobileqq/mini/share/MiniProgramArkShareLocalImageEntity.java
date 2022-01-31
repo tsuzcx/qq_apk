@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.share;
 
-import awbv;
+import awge;
 import java.io.Serializable;
 
 public class MiniProgramArkShareLocalImageEntity
-  extends awbv
+  extends awge
   implements Serializable
 {
   public String arkPath;

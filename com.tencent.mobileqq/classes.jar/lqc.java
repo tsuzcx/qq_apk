@@ -10,8 +10,8 @@ public class lqc
   {
     if (this.a.a != null)
     {
-      this.a.a.setViewEnable(2131372731, false);
-      this.a.a.setViewEnable(2131372730, false);
+      this.a.a.setViewEnable(2131372757, false);
+      this.a.a.setViewEnable(2131372756, false);
       this.a.a.setViewEnable(2131362956, false);
     }
   }

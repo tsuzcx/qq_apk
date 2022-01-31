@@ -1,52 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
 
-public class agtx
+class agtx
+  implements bhuk
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
+  agtx(agti paramagti) {}
   
-  public static agtx a(String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    agtx localagtx = new agtx();
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
+    if (this.a.ah) {
+      return;
+    }
+    this.a.ah = true;
+    if ((this.a.jdField_a_of_type_ArrayOfInt != null) && (this.a.jdField_a_of_type_ArrayOfInt.length > 0))
     {
-      paramString = new JSONObject(paramString);
-      if ((paramString.has("useRecommendedSticker")) && (paramString.has("maxMatchLength")))
-      {
-        localagtx.a(paramString.getBoolean("useRecommendedSticker"));
-        localagtx.a(paramString.getInt("maxMatchLength"));
+      this.a.A(2131695780);
+      paramInt = this.a.jdField_a_of_type_ArrayOfInt[0];
+      if (paramInt == 0) {
+        this.a.b(true, 0);
       }
-      return localagtx;
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("StickerRecConfigBean", 2, paramString.getMessage());
+      this.a.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      this.a.b(false, paramInt);
+      continue;
+      this.a.A(2131695780);
+      this.a.b(true, 0);
     }
-    return localagtx;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 

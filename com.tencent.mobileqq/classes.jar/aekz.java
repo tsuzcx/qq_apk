@@ -1,8 +1,8 @@
+import com.tencent.mobileqq.activity.UpgradeTipsDialog;
+
 public abstract interface aekz
 {
-  public abstract int a();
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public abstract void a(UpgradeTipsDialog paramUpgradeTipsDialog);
 }
 
 

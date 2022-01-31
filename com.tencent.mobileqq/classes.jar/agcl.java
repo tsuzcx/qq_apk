@@ -1,36 +1,15 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.panel.PEPanel;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class agcl
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
+  implements PopupWindow.OnDismissListener
 {
-  public agcl(PEPanel paramPEPanel) {}
+  public agcl(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onDismiss()
   {
-    if ((PEPanel.a(this.a) != null) && (QLog.isColorLevel())) {
-      QLog.d("PokeEmo.PEPanel", 2, String.format(" playLottieAnim onAnimationEnd listView.visibility = %d ", new Object[] { Integer.valueOf(PEPanel.a(this.a).getVisibility()) }));
-    }
-    if ((PEPanel.a(this.a) != null) && (PEPanel.a(this.a).getVisibility() != 0)) {
-      PEPanel.a(this.a).setVisibility(0);
-    }
+    StructingMsgItemBuilder.a(this.a, false);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.setListViewVisibile(8);
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
 }
 
 

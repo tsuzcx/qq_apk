@@ -1,15 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.widget.RangeButtonView;
 
-class biaj
-  implements View.OnClickListener
+public class biaj
 {
-  biaj(biai parambiai) {}
+  public float a;
+  public int a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public float d;
+  public int d;
+  public float e;
+  public float f;
   
-  public void onClick(View paramView)
-  {
-    this.a.b(true);
-  }
+  public biaj(RangeButtonView paramRangeButtonView) {}
 }
 
 

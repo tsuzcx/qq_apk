@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import alpo;
+import alud;
 import android.text.TextUtils;
-import apdn;
-import apdr;
-import apds;
+import aphw;
+import apia;
+import apib;
 import appoint.define.appoint_define.AppointInfo;
 import appoint.define.appoint_define.DateComment;
 import appoint.define.appoint_define.DateEvent;
 import appoint.define.appoint_define.StrangerInfo;
-import awbv;
-import awdg;
-import awdj;
+import awge;
+import awhp;
+import awhs;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -19,33 +19,33 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import org.json.JSONObject;
 
 public class DateEventMsg
-  extends awbv
+  extends awge
   implements Comparable<DateEventMsg>
 {
   public int attendIdx;
   public byte bDeleted;
   public byte bReaded;
-  @awdg
-  public apdn date_comment;
-  @awdg
+  @awhp
+  public aphw date_comment;
+  @awhp
   public appoint_define.AppointInfo date_info;
-  @awdj
+  @awhs
   public long event_id;
-  @awdg
+  @awhp
   boolean isInited = false;
   public String msg_content;
   public byte[] msg_date_info;
   public String msg_user_info;
-  @awdg
+  @awhp
   public String strReadableTime;
-  @awdg
+  @awhp
   public String strTime;
-  @awdg
+  @awhp
   public String str_event_tips;
   public long time;
   public int type;
-  @awdg
-  public apdr user_info;
+  @awhp
+  public apia user_info;
   
   public static DateEventMsg convertFrom(appoint_define.DateEvent paramDateEvent)
   {
@@ -61,7 +61,7 @@ public class DateEventMsg
     localDateEventMsg.bReaded = 0;
     if (paramDateEvent.msg_user_info.has())
     {
-      localDateEventMsg.user_info = apdr.a((appoint_define.StrangerInfo)paramDateEvent.msg_user_info.get());
+      localDateEventMsg.user_info = apia.a((appoint_define.StrangerInfo)paramDateEvent.msg_user_info.get());
       label96:
       if (!paramDateEvent.msg_date_info.has()) {
         break label175;
@@ -79,13 +79,13 @@ public class DateEventMsg
       }
     }
     if (paramDateEvent.msg_comment.has()) {
-      localDateEventMsg.date_comment = apdn.a((appoint_define.DateComment)paramDateEvent.msg_comment.get());
+      localDateEventMsg.date_comment = aphw.a((appoint_define.DateComment)paramDateEvent.msg_comment.get());
     }
     for (;;)
     {
-      apds.a("DateEventMsg.convertFrom", new Object[] { localDateEventMsg.date_comment });
+      apib.a("DateEventMsg.convertFrom", new Object[] { localDateEventMsg.date_comment });
       break;
-      apds.b("DateEventMsg.convertFrom", new Object[] { "msg_comment no value" });
+      apib.b("DateEventMsg.convertFrom", new Object[] { "msg_comment no value" });
     }
     localDateEventMsg.str_event_tips = paramDateEvent.str_event_tips.get();
     if (TextUtils.isEmpty(localDateEventMsg.str_event_tips)) {
@@ -95,13 +95,13 @@ public class DateEventMsg
     }
     for (;;)
     {
-      apds.a("DateEventMsg.convertFrom", new Object[] { paramDateEvent.str_event_tips.get(), localDateEventMsg.str_event_tips });
+      apib.a("DateEventMsg.convertFrom", new Object[] { paramDateEvent.str_event_tips.get(), localDateEventMsg.str_event_tips });
       break;
-      localDateEventMsg.str_event_tips = alpo.a(2131703156);
+      localDateEventMsg.str_event_tips = alud.a(2131703168);
       continue;
-      localDateEventMsg.str_event_tips = alpo.a(2131703157);
+      localDateEventMsg.str_event_tips = alud.a(2131703169);
       continue;
-      localDateEventMsg.str_event_tips = alpo.a(2131703158);
+      localDateEventMsg.str_event_tips = alud.a(2131703170);
     }
   }
   
@@ -147,7 +147,7 @@ public class DateEventMsg
       try
       {
         if (TextUtils.isEmpty(this.msg_user_info)) {}
-        for (this.user_info = null; (this.msg_date_info == null) || (this.msg_date_info.length == 0); this.user_info = apdr.a(new JSONObject(this.msg_user_info)))
+        for (this.user_info = null; (this.msg_date_info == null) || (this.msg_date_info.length == 0); this.user_info = apia.a(new JSONObject(this.msg_user_info)))
         {
           this.date_info = null;
           if ((this.type != 1) && (this.type != 2)) {
@@ -184,8 +184,8 @@ public class DateEventMsg
             localInvalidProtocolBufferMicroException.printStackTrace();
           }
         }
-        this.date_comment = apdn.a(new JSONObject(this.msg_content));
-        apds.a("DateEventMsg.init", new Object[] { Integer.valueOf(this.type), this.date_comment, this.msg_content });
+        this.date_comment = aphw.a(new JSONObject(this.msg_content));
+        apib.a("DateEventMsg.init", new Object[] { Integer.valueOf(this.type), this.date_comment, this.msg_content });
         return;
       }
     } while ((this.type != 3) && (this.type != 4) && (this.type != 5));
@@ -194,7 +194,7 @@ public class DateEventMsg
   
   public void prewrite()
   {
-    Object localObject = apdr.a(this.user_info);
+    Object localObject = apia.a(this.user_info);
     if (localObject == null)
     {
       localObject = "";
@@ -207,7 +207,7 @@ public class DateEventMsg
       if ((this.type != 1) && (this.type != 2)) {
         break label99;
       }
-      localObject = apdn.a(this.date_comment);
+      localObject = aphw.a(this.date_comment);
       if (localObject != null) {
         break label91;
       }
@@ -238,7 +238,7 @@ public class DateEventMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.DateEventMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,95 +1,89 @@
-import android.graphics.Rect;
-import android.os.Build.VERSION;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
-public class ydi
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract class ydi<T>
+  implements Handler.Callback
 {
-  private int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final List<ydj> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  protected int a;
+  protected Context a;
+  protected Handler a;
+  protected int b = -1;
+  protected View b;
   
-  public ydi(View paramView)
+  public ydi(Context paramContext, boolean paramBoolean)
   {
-    this(paramView, false);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (paramBoolean) {
+      j();
+    }
   }
   
-  public ydi(View paramView, boolean paramBoolean)
+  protected Context a()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    paramView.getViewTreeObserver().addOnGlobalLayoutListener(this);
+    return this.jdField_a_of_type_AndroidContentContext;
   }
   
-  private void a(int paramInt)
+  protected Resources a()
+  {
+    if (this.jdField_a_of_type_AndroidContentContext != null) {
+      return this.jdField_a_of_type_AndroidContentContext.getResources();
+    }
+    return null;
+  }
+  
+  protected final void a(Runnable paramRunnable)
+  {
+    if (paramRunnable == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void b(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      ydj localydj = (ydj)localIterator.next();
-      if (localydj != null) {
-        localydj.a(paramInt);
-      }
-    }
   }
   
-  private void b()
+  public abstract void c();
+  
+  protected abstract void d();
+  
+  public void e()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      ydj localydj = (ydj)localIterator.next();
-      if (localydj != null) {
-        localydj.a();
-      }
-    }
+    f();
+    b(-1);
   }
   
-  public void a()
+  protected abstract void f();
+  
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (Build.VERSION.SDK_INT < 16)
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      return;
+    default: 
+      return false;
     }
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    d();
+    return true;
   }
   
-  public void a(ydj paramydj)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramydj);
-  }
+  protected abstract void j();
   
-  public void onGlobalLayout()
+  public final void k()
   {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    int i = localRect.height();
-    if (this.b == 0) {
-      this.b = i;
-    }
-    do
-    {
-      return;
-      i = this.b - i;
-      if ((!this.jdField_a_of_type_Boolean) && (i >= 250))
-      {
-        this.jdField_a_of_type_Boolean = true;
-        a(i);
-        return;
-      }
-    } while ((!this.jdField_a_of_type_Boolean) || (i >= 100));
-    this.jdField_a_of_type_Boolean = false;
-    b();
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
   }
 }
 

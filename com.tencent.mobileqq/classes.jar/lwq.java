@@ -4,30 +4,30 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class lwq
-  extends anol
+  extends ansu
 {
-  public String a(anop paramanop)
+  public String a(ansy paramansy)
   {
-    paramanop = len.g() + paramanop.b + File.separator;
+    paramansy = len.g() + paramansy.b + File.separator;
     if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketRDHandler", 2, "getUnzipDirPath dir = " + paramanop);
+      QLog.d("AVRedPacketRDHandler", 2, "getUnzipDirPath dir = " + paramansy);
     }
-    return paramanop;
+    return paramansy;
   }
   
-  public boolean a(anop paramanop, boolean paramBoolean)
+  public boolean a(ansy paramansy, boolean paramBoolean)
   {
     long l1 = -1L;
     boolean bool1 = true;
     boolean bool2 = true;
-    if (paramanop.a)
+    if (paramansy.a)
     {
-      long l3 = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4).getLong(paramanop.b, -1L);
-      paramanop = new File(a(paramanop));
+      long l3 = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4).getLong(paramansy.b, -1L);
+      paramansy = new File(a(paramansy));
       paramBoolean = bool2;
-      if (paramanop.exists())
+      if (paramansy.exists())
       {
-        long l2 = paramanop.lastModified();
+        long l2 = paramansy.lastModified();
         l1 = l2;
         paramBoolean = bool2;
         if (l3 > 0L)
@@ -51,13 +51,13 @@ public class lwq
     return bool1;
   }
   
-  public String b(anop paramanop)
+  public String b(ansy paramansy)
   {
-    paramanop = len.g() + paramanop.b + ".end";
+    paramansy = len.g() + paramansy.b + ".end";
     if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketRDHandler", 2, "getDownloadPath path[" + paramanop + "]");
+      QLog.d("AVRedPacketRDHandler", 2, "getDownloadPath path[" + paramansy + "]");
     }
-    return paramanop;
+    return paramansy;
   }
 }
 

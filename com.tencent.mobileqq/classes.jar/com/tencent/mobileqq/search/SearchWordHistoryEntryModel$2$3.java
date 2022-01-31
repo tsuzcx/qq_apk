@@ -2,17 +2,17 @@ package com.tencent.mobileqq.search;
 
 import android.view.View;
 import android.widget.RelativeLayout;
-import aydz;
-import ayeb;
+import ayii;
+import ayik;
 
 public class SearchWordHistoryEntryModel$2$3
   implements Runnable
 {
-  public SearchWordHistoryEntryModel$2$3(ayeb paramayeb, int[] paramArrayOfInt1, View paramView, int[] paramArrayOfInt2) {}
+  public SearchWordHistoryEntryModel$2$3(ayik paramayik, int[] paramArrayOfInt1, View paramView, int[] paramArrayOfInt2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ayeb.a.a.getLocationOnScreen(this.jdField_a_of_type_ArrayOfInt);
+    this.jdField_a_of_type_Ayik.a.a.getLocationOnScreen(this.jdField_a_of_type_ArrayOfInt);
     this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(this.b);
     if (this.jdField_a_of_type_ArrayOfInt[1] > this.b[1])
     {

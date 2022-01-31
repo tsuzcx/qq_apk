@@ -1,6 +1,6 @@
-class bdav
+public abstract interface bdav
 {
-  static bdat a = new bdat(null);
+  public abstract void onInfo(long paramLong, double paramDouble);
 }
 
 

@@ -3,18 +3,18 @@ import java.util.Iterator;
 import java.util.List;
 
 public class qwd
-  implements aypx<ayjl>
+  implements ayug<aynu>
 {
   private List<qwe> a = new ArrayList();
   
-  public List<ayjl> a(ayql paramayql)
+  public List<aynu> a(ayuu paramayuu)
   {
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       qwe localqwe = (qwe)localIterator.next();
-      if (localqwe.a(paramayql.a)) {
+      if (localqwe.a(paramayuu.a)) {
         localArrayList.add(localqwe);
       }
     }
@@ -31,9 +31,9 @@ public class qwd
     }
   }
   
-  public void a(ayql paramayql, aypy<ayjl> paramaypy)
+  public void a(ayuu paramayuu, ayuh<aynu> paramayuh)
   {
-    paramaypy.a(a(paramayql), 1);
+    paramayuh.a(a(paramayuu), 1);
   }
   
   public void b() {}

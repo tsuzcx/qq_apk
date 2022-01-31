@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.tablequery;
 
-import babe;
+import bafn;
 
 public class TableQueryController$2$1
   implements Runnable
 {
-  public TableQueryController$2$1(babe parambabe) {}
+  public TableQueryController$2$1(bafn parambafn) {}
   
   public void run()
   {
-    babd.a = true;
+    bafm.a = true;
   }
 }
 

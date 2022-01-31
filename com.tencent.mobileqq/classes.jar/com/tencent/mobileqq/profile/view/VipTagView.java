@@ -12,25 +12,25 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
-import awsj;
-import awsk;
-import awsn;
-import bdjs;
-import bdlf;
-import bdlg;
-import bdlh;
+import awws;
+import awwt;
+import awww;
+import bdob;
+import bdpo;
+import bdpp;
+import bdpq;
 
 public final class VipTagView
   extends TextView
-  implements bdlg
+  implements bdpp
 {
   private static final int[] jdField_a_of_type_ArrayOfInt = { 2131298390, 2131298391, 2131298392, 2131298393, 2131298394 };
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private awsn jdField_a_of_type_Awsn;
-  private bdjs<Float> jdField_a_of_type_Bdjs;
+  private awww jdField_a_of_type_Awww;
+  private bdob<Float> jdField_a_of_type_Bdob;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
@@ -69,7 +69,7 @@ public final class VipTagView
   
   private void a(int paramInt)
   {
-    setBackgroundResource(2130846875);
+    setBackgroundResource(2130846948);
     if ((paramInt > 0) && (paramInt <= 5))
     {
       Object localObject = getBackground();
@@ -115,11 +115,11 @@ public final class VipTagView
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.LEFT);
     this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText("+1"), i, Bitmap.Config.ARGB_4444);
     new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap).drawText("+1", 0.0F, i, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_Awsn = new awsn(this);
-    this.jdField_a_of_type_Bdjs = new bdjs(Float.valueOf(0.0F), Float.valueOf(1.0F), new awsj(this));
-    this.jdField_a_of_type_Bdjs.setDuration(800L);
-    this.jdField_a_of_type_Bdjs.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_Bdjs.setAnimationListener(new awsk(this));
+    this.jdField_a_of_type_Awww = new awww(this);
+    this.jdField_a_of_type_Bdob = new bdob(Float.valueOf(0.0F), Float.valueOf(1.0F), new awws(this));
+    this.jdField_a_of_type_Bdob.setDuration(800L);
+    this.jdField_a_of_type_Bdob.setInterpolator(new DecelerateInterpolator());
+    this.jdField_a_of_type_Bdob.setAnimationListener(new awwt(this));
   }
   
   private void c()
@@ -141,23 +141,23 @@ public final class VipTagView
   {
     this.jdField_a_of_type_Int += 1;
     this.b = true;
-    startAnimation(this.jdField_a_of_type_Bdjs);
+    startAnimation(this.jdField_a_of_type_Bdob);
     c();
   }
   
-  public void a(bdlf parambdlf, float paramFloat1, float paramFloat2) {}
+  public void a(bdpo parambdpo, float paramFloat1, float paramFloat2) {}
   
-  public void a(bdlf parambdlf, bdlh parambdlh, float paramFloat1, float paramFloat2) {}
+  public void a(bdpo parambdpo, bdpq parambdpq, float paramFloat1, float paramFloat2) {}
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Awsn.a();
+    return this.jdField_a_of_type_Awww.a();
   }
   
-  public boolean a(bdlf parambdlf, float paramFloat1, float paramFloat2)
+  public boolean a(bdpo parambdpo, float paramFloat1, float paramFloat2)
   {
     bringToFront();
-    this.jdField_a_of_type_Awsn.b();
+    this.jdField_a_of_type_Awww.b();
     return true;
   }
   
@@ -201,10 +201,10 @@ public final class VipTagView
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Awsn.a();
+      this.jdField_a_of_type_Awww.a();
       return;
     }
-    this.jdField_a_of_type_Awsn.b();
+    this.jdField_a_of_type_Awww.b();
   }
   
   public void setTagColor(int paramInt1, int paramInt2)

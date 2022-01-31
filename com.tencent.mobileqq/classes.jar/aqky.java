@@ -1,24 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
-
 public class aqky
-  extends Handler
+  extends aqkw
 {
-  public aqky(FileAssistantActivity paramFileAssistantActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void handleMessage(Message paramMessage)
+  public aqky(String paramString1, boolean paramBoolean, String paramString2, String paramString3)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    FileAssistantActivity.f(this.a);
+    super(1, paramString1);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString3;
   }
 }
 

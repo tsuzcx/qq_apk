@@ -22,7 +22,7 @@ public class leo
   {
     try
     {
-      paramString = bdbi.decode(paramString, 0);
+      paramString = bdfr.decode(paramString, 0);
       paramString = new JSONObject(new String(new Cryptor().decrypt(paramString, "^%QAI$I+j{2HuP0L".getBytes())));
       if (paramString.has("uid")) {
         this.d = paramString.getString("uid");

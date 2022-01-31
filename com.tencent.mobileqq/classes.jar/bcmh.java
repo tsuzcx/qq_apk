@@ -1,13 +1,21 @@
-import android.view.View;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
+import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 
 public class bcmh
 {
-  public View a;
-  public URLImageView a;
+  public int a;
+  public long a;
+  public String a;
+  public long b;
   
-  public bcmh(AvatarWallViewPagerAdapter paramAvatarWallViewPagerAdapter) {}
+  public bcmh(TroopBatchAddFriendMgr paramTroopBatchAddFriendMgr, String paramString, int paramInt, long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+  }
 }
 
 

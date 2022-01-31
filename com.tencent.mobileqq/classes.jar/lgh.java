@@ -25,8 +25,8 @@ public class lgh
 {
   public static String a;
   int jdField_a_of_type_Int = 0;
-  alox jdField_a_of_type_Alox = new lgi(this);
-  alsi jdField_a_of_type_Alsi = new lgj(this);
+  altm jdField_a_of_type_Altm = new lgi(this);
+  alwx jdField_a_of_type_Alwx = new lgj(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   public HashMap<String, lgk> a;
   boolean jdField_a_of_type_Boolean = false;
@@ -43,8 +43,8 @@ public class lgh
       QLog.d(jdField_a_of_type_JavaLangString, 2, "AvAddFriendLogic");
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Alsi);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Alox);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Alwx);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Altm);
   }
   
   private void a(String paramString, int paramInt)
@@ -83,9 +83,9 @@ public class lgh
     if (paramStructMsg != null)
     {
       long l = ((structmsg.StructMsg)paramStructMsg.get()).msg_seq.get() + ((structmsg.StructMsg)paramStructMsg.get()).msg_type.get();
-      baaz.a().a(Long.valueOf(l), (structmsg.StructMsg)paramStructMsg.get());
-      baaz.a().b(l);
-      baaz.a().a(paramLong);
+      bafi.a().a(Long.valueOf(l), (structmsg.StructMsg)paramStructMsg.get());
+      bafi.a().b(l);
+      bafi.a().a(paramLong);
     }
   }
   
@@ -104,10 +104,10 @@ public class lgh
       try
       {
         Long.parseLong(paramString);
-        aloz localaloz = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-        if (localaloz != null)
+        alto localalto = (alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+        if (localalto != null)
         {
-          paramString = localaloz.e(paramString);
+          paramString = localalto.e(paramString);
           if ((paramString == null) || (paramString.groupid < 0)) {
             break;
           }
@@ -148,8 +148,8 @@ public class lgh
       QLog.d(jdField_a_of_type_JavaLangString, 2, "AvAddFriendLogic onDestory");
     }
     this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alsi);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alox);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alwx);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Altm);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
   
@@ -173,7 +173,7 @@ public class lgh
       return false;
     }
     this.jdField_a_of_type_Int = paramInt;
-    if (((aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(paramString))
+    if (((alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(paramString))
     {
       locallgk = new lgk(this);
       this.jdField_a_of_type_JavaUtilHashMap.put(paramString, locallgk);
@@ -222,7 +222,7 @@ public class lgh
         {
           return;
           new ArrayList();
-          localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(aljq.M, 0);
+          localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(alof.M, 0);
           localStructMsg = null;
           if (localList != null) {
             break;

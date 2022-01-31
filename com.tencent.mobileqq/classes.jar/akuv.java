@@ -1,10 +1,8 @@
-public class akuv
+public abstract interface akuv
 {
-  int jdField_a_of_type_Int;
-  akun jdField_a_of_type_Akun;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  String b;
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
 }
 
 

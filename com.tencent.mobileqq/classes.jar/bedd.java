@@ -1,36 +1,20 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.webview.swift.SwiftFragmentTabBar;
-import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
-import cooperation.comic.ui.QQComicTabBarView;
-import cooperation.qqreader.view.ReaderTabBarView;
-import java.util.List;
-
 public class bedd
 {
-  public static View a(Context paramContext, Intent paramIntent, List<WebViewTabBarData> paramList, berl paramberl)
+  public long a;
+  public String a = "";
+  public long b;
+  public String b = "";
+  public long c;
+  public String c = "";
+  public long d;
+  public String d;
+  public long e;
+  public long f;
+  
+  public bedd()
   {
-    int i = 0;
-    if (paramIntent != null) {
-      i = paramIntent.getIntExtra("tabBarStyle", 0);
-    }
-    bixe.d("WebviewFragmentTabBarBuilder", "tab bar style =" + i);
-    if (i == 1)
-    {
-      paramContext = new QQComicTabBarView(paramContext);
-      paramContext.a(paramIntent, paramList, paramberl);
-      return paramContext;
-    }
-    if (i == 2)
-    {
-      paramContext = new ReaderTabBarView(paramContext);
-      paramContext.a(paramIntent, paramList, paramberl);
-      return paramContext;
-    }
-    paramContext = new SwiftFragmentTabBar(paramContext);
-    paramContext.a(paramList, paramberl);
-    return paramContext;
+    this.jdField_d_of_type_Long = 999L;
+    this.jdField_d_of_type_JavaLangString = "";
   }
 }
 

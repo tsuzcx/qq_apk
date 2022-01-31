@@ -1,12 +1,14 @@
-import java.util.List;
-
-public abstract interface aovd
+public class aovd
 {
-  public abstract int a();
+  public String a;
+  public boolean a;
+  public String b = "https://club.vip.qq.com/interact/recovery?_wv=16777218&friend=%s&type=%d";
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(List<String> paramList);
+  public aovd()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = alud.a(2131711657);
+  }
 }
 
 

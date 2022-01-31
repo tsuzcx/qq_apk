@@ -1,18 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
-class vwr
-  implements DialogInterface.OnDismissListener
+public class vwr
+  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  vwr(vwq paramvwq) {}
+  public void OnDownloadCallback(String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.a.a != null) {
-      this.a.a.c(false);
-    }
+    return false;
   }
+  
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  {
+    return false;
+  }
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
 }
 
 

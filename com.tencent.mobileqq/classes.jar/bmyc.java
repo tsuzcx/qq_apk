@@ -1,18 +1,12 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
+import android.animation.TimeInterpolator;
 
 public class bmyc
-  implements View.OnLayoutChangeListener
+  implements TimeInterpolator
 {
-  public bmyc(SlideBottomPanel paramSlideBottomPanel) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public float getInterpolation(float paramFloat)
   {
-    paramView.setTop(paramInt6);
-    paramView.setBottom(paramInt8);
-    paramView.setLeft(paramInt5);
-    paramView.setRight(paramInt7);
+    double d = Math.pow(2.0D, -10.0F * paramFloat);
+    return (float)(Math.sin((paramFloat - 0.7F / 4.0F) * 6.283185307179586D / 0.7F) * d + 1.0D);
   }
 }
 

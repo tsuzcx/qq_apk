@@ -1,51 +1,25 @@
-import android.graphics.RectF;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.CircleProgressBar;
 
-public final class beno
+public class beno
+  extends Handler
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  public baig a;
-  private List<RectF> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private List<baig> b = new ArrayList();
+  public beno(CircleProgressBar paramCircleProgressBar) {}
   
-  private beno(baig parambaig)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Baig = parambaig;
-  }
-  
-  private void a(RectF paramRectF, baig parambaig)
-  {
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    switch (paramMessage.what)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      int i = 0;
-      j = i;
-      if (!localIterator.hasNext()) {
-        break label63;
-      }
-      if (!paramRectF.equals((RectF)localIterator.next())) {
-        break label91;
-      }
-      i = 1;
     }
-    label63:
-    label91:
-    for (;;)
+    do
     {
-      break;
-      j = 0;
-      if (j == 0)
-      {
-        this.jdField_a_of_type_JavaUtilList.add(paramRectF);
-        this.b.add(parambaig);
-      }
       return;
-    }
+      paramMessage = this.a;
+      paramMessage.i += 3;
+      this.a.postInvalidate();
+    } while (!this.a.a);
+    sendEmptyMessageDelayed(10000, 50L);
   }
 }
 

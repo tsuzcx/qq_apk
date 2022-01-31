@@ -1,26 +1,15 @@
+import android.graphics.Bitmap;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+
 class anph
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  static final float[] a;
+  anph(anpg paramanpg) {}
   
-  static
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    int k = 0;
-    a = new float[8192];
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = k;
-      if (i >= 8192) {
-        break;
-      }
-      a[i] = ((float)Math.sin((i + 0.5F) / 8192.0F * 6.283186F));
-      i += 1;
-    }
-    while (j < 360)
-    {
-      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.sin(j * 0.01745329F));
-      j += 90;
+    if (paramBitmap != null) {
+      anpd.a(this.a.jdField_a_of_type_Anpd, paramBitmap, this.a.jdField_a_of_type_AndroidContentContext);
     }
   }
 }

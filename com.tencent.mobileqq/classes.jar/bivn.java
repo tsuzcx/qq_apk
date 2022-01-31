@@ -1,19 +1,15 @@
-import cooperation.qqreader.VipProxyRreLoadReaderProcess.1;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class bivn
-  implements nbs
 {
-  public bivn(VipProxyRreLoadReaderProcess.1 param1) {}
+  public ChatMessage a;
+  public String a;
   
-  public void loaded(String paramString, int paramInt)
+  public bivn(ChatMessage paramChatMessage, String paramString)
   {
-    bixe.d("VipProxyRreLoadReaderProcess", "Load offline package finish, code = " + paramInt);
-    if (paramInt != 0) {
-      bixe.a("VipProxyRreLoadReaderProcess", "offline update failed.");
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

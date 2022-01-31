@@ -1,8 +1,10 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface auzh
+final class auzh
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

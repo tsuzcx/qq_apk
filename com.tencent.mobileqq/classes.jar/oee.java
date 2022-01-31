@@ -153,7 +153,7 @@ public class oee
     if (paramContext == null) {
       return null;
     }
-    float f9 = aekt.a(1.0F, paramContext.getResources());
+    float f9 = aepi.a(1.0F, paramContext.getResources());
     float f1 = 6;
     float f2 = 6;
     float f3 = 6;
@@ -194,7 +194,7 @@ public class oee
         str2 = str3;
         try
         {
-          if (bdem.a(paramActivity, new JSONObject(paramVideoInfo.a.r).optString("pkg_name")))
+          if (bdiv.a(paramActivity, new JSONObject(paramVideoInfo.a.r).optString("pkg_name")))
           {
             paramActivity = "打开";
             if (paramInt == 1) {
@@ -273,7 +273,7 @@ public class oee
             {
               localObject1 = localObject2;
               if (a(paramVideoInfo.a)) {
-                localObject1 = paramResources.getText(2131718896).toString();
+                localObject1 = paramResources.getText(2131718908).toString();
               }
             }
           }
@@ -282,13 +282,13 @@ public class oee
           }
           try
           {
-            if (bdem.a(paramActivity, new JSONObject(paramVideoInfo.a.r).optString("pkg_name"))) {
-              return paramResources.getText(2131718893).toString();
+            if (bdiv.a(paramActivity, new JSONObject(paramVideoInfo.a.r).optString("pkg_name"))) {
+              return paramResources.getText(2131718905).toString();
             }
             paramActivity = (Activity)localObject1;
             if (TextUtils.isEmpty((CharSequence)localObject1))
             {
-              paramActivity = paramResources.getText(2131718891).toString();
+              paramActivity = paramResources.getText(2131718903).toString();
               return paramActivity;
             }
           }
@@ -298,10 +298,10 @@ public class oee
           }
         }
       } while (!TextUtils.isEmpty((CharSequence)localObject1));
-      return paramResources.getText(2131718891).toString();
+      return paramResources.getText(2131718903).toString();
       paramActivity = (Activity)localObject1;
     } while (!TextUtils.isEmpty((CharSequence)localObject1));
-    return paramResources.getText(2131718941).toString();
+    return paramResources.getText(2131718953).toString();
   }
   
   @NonNull
@@ -312,7 +312,7 @@ public class oee
     {
       try
       {
-        if (bdem.a(paramContext, new JSONObject(paramAdvertisementInfo.mAdExt).optString("pkg_name"))) {
+        if (bdiv.a(paramContext, new JSONObject(paramAdvertisementInfo.mAdExt).optString("pkg_name"))) {
           return "打开";
         }
         paramContext = str;
@@ -347,14 +347,14 @@ public class oee
       paramAdvertisementInfo = null;
       return paramAdvertisementInfo;
     }
-    Object localObject1 = alpo.a(2131713225);
+    Object localObject1 = alud.a(2131713237);
     for (;;)
     {
       try
       {
         if (oem.a(paramAdvertisementInfo))
         {
-          str = alpo.a(2131713258);
+          str = alud.a(2131713270);
           localObject1 = str;
         }
       }
@@ -364,10 +364,10 @@ public class oee
         {
           String str;
           if (a(paramAdvertisementInfo)) {
-            return BaseApplicationImpl.getContext().getResources().getString(2131718895);
+            return BaseApplicationImpl.getContext().getResources().getString(2131718907);
           }
           if (e(paramAdvertisementInfo)) {
-            return BaseApplicationImpl.getContext().getResources().getString(2131718896);
+            return BaseApplicationImpl.getContext().getResources().getString(2131718908);
           }
           int i = a(paramAdvertisementInfo);
           if ((AdvertisementInfo.isAppAdvertisementInfo(paramAdvertisementInfo)) || (i == 2))
@@ -380,14 +380,14 @@ public class oee
             }
             if (!TextUtils.isEmpty(paramAdvertisementInfo.mAdCustomizedInvokeUrl))
             {
-              if (bdem.a(BaseApplicationImpl.getContext(), str)) {
+              if (bdiv.a(BaseApplicationImpl.getContext(), str)) {
                 return a((String)localObject2);
               }
               if (!TextUtils.isEmpty(paramAdvertisementInfo.mAdBtnTxt)) {
                 return paramAdvertisementInfo.mAdBtnTxt;
               }
             }
-            if (bdem.a(BaseApplicationImpl.getContext(), str)) {
+            if (bdiv.a(BaseApplicationImpl.getContext(), str)) {
               return a((String)localObject2);
             }
             if (!TextUtils.isEmpty(paramAdvertisementInfo.mAdBtnTxt)) {
@@ -398,7 +398,7 @@ public class oee
             return paramAdvertisementInfo.mAdBtnTxt;
           }
           if (i == 1) {
-            return BaseApplicationImpl.getContext().getResources().getString(2131718896);
+            return BaseApplicationImpl.getContext().getResources().getString(2131718908);
           }
           if (!AdvertisementInfo.isAppAdvertisementInfo(paramAdvertisementInfo))
           {
@@ -407,7 +407,7 @@ public class oee
               break;
             }
           }
-          paramAdvertisementInfo = BaseApplicationImpl.getContext().getResources().getString(2131718891);
+          paramAdvertisementInfo = BaseApplicationImpl.getContext().getResources().getString(2131718903);
           return paramAdvertisementInfo;
         }
         catch (JSONException paramAdvertisementInfo)
@@ -485,9 +485,9 @@ public class oee
     }
     int i = paramString.length();
     if ((i > 0) && (i <= 2)) {
-      return alpo.a(2131713092) + paramString;
+      return alud.a(2131713104) + paramString;
     }
-    return BaseApplicationImpl.getContext().getResources().getString(2131718893);
+    return BaseApplicationImpl.getContext().getResources().getString(2131718905);
   }
   
   public static JSONObject a(int paramInt1, int paramInt2)
@@ -665,7 +665,7 @@ public class oee
       try
       {
         paramAdvertisementInfo = new GdtAd(szl.a(paramAdvertisementInfo));
-        aail.a().a(paramAdvertisementInfo);
+        aana.a().a(paramAdvertisementInfo);
         return;
       }
       catch (Exception paramAdvertisementInfo)
@@ -866,14 +866,14 @@ public class oee
   
   public static boolean a(rcy paramrcy)
   {
-    String str = bjxj.a("sp_key_ad_soft_total_area");
+    String str = bkbq.a("sp_key_ad_soft_total_area");
     if ((TextUtils.isEmpty(str)) || ("0".equals(str))) {}
     int i;
     int j;
     do
     {
       return true;
-      i = npd.a(bjxj.a("sp_key_ad_soft_ad_max"), 25);
+      i = npd.a(bkbq.a("sp_key_ad_soft_ad_max"), 25);
       j = paramrcy.b();
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyAdUtils", 2, "isOverAdFrequency: dayDisplayCount=" + j + ",adShowMaxCount=" + i);
@@ -1009,7 +1009,7 @@ public class oee
   
   public static String c(AdvertisementInfo paramAdvertisementInfo)
   {
-    String str = alpo.a(2131713202);
+    String str = alud.a(2131713214);
     try
     {
       JSONObject localJSONObject = new JSONObject(paramAdvertisementInfo.mAdExtInfo);
@@ -1044,7 +1044,7 @@ public class oee
       if (i == 2) {
         str = b(paramAdvertisementInfo);
       }
-      boolean bool3 = bdem.a(BaseApplicationImpl.getContext(), str);
+      boolean bool3 = bdiv.a(BaseApplicationImpl.getContext(), str);
       bool1 = bool2;
       if (!bool3) {
         bool1 = true;
@@ -1064,7 +1064,7 @@ public class oee
     try
     {
       paramAdvertisementInfo = new JSONObject(paramAdvertisementInfo.mAdExt).optString("pkg_name");
-      boolean bool3 = bdem.a(BaseApplicationImpl.getContext(), paramAdvertisementInfo);
+      boolean bool3 = bdiv.a(BaseApplicationImpl.getContext(), paramAdvertisementInfo);
       bool1 = bool2;
       if (bool3) {
         bool1 = true;

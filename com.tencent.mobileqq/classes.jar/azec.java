@@ -1,21 +1,45 @@
-final class azec
-  extends azef
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.3;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.utils.quic.QuicResDownload;
+import java.util.Properties;
+import mqq.app.MobileQQ;
+
+public class azec
+  implements azef
 {
-  public double a(int paramInt1, int paramInt2)
+  public azec(ShortVideoResourceManager.3 param3) {}
+  
+  public void G_()
   {
-    double d2 = paramInt1 / (paramInt1 + paramInt2);
-    double d3 = paramInt2 / (paramInt1 + paramInt2);
-    double d1 = 0.0D;
-    if (paramInt1 > 0)
+    VideoEnvironment.a("QuicResDownload", "doUserDownloadQuicResourceAsync: [onNetWorkNone]", null);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    VideoEnvironment.a("QuicResDownload", "doUserDownloadQuicResourceAsync: [onDownloadFinish]name=" + paramString1 + " filepath=" + paramString2, null);
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
+  {
+    if ((paramLong1 == paramLong2) && (!QuicResDownload.a)) {
+      QuicResDownload.a = true;
+    }
+    try
     {
-      d1 = -d2;
-      d1 = 0.0D + Math.log(d2) * d1;
+      Properties localProperties = new Properties();
+      localProperties.put("version", "8.3.5.4555");
+      localProperties.put("appid", String.valueOf(AppSetting.a()));
+      localProperties.put("release", String.valueOf(true));
+      localProperties.put("name", paramString);
+      azqh.a(this.a.a.getApplication().getApplicationContext()).reportKVEvent("msf_quic_resdown", localProperties);
+      return;
     }
-    d2 = d1;
-    if (paramInt2 > 0) {
-      d2 = d1 + -d3 * Math.log(d3);
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
-    return d2 / Math.log(2.0D);
   }
 }
 

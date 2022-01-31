@@ -1,19 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import android.text.style.CharacterStyle;
 
-class benz
-  implements ValueAnimator.AnimatorUpdateListener
+public class benz
 {
-  benz(benw parambenw) {}
+  public int a;
+  public CharacterStyle a;
+  public String a;
+  public int b;
+  public int c;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public benz(int paramInt1, int paramInt2, int paramInt3, String paramString, CharacterStyle paramCharacterStyle)
   {
-    if (benw.a(this.a) != null)
-    {
-      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-      benw.a(this.a).setAlpha(f);
-    }
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidTextStyleCharacterStyle = paramCharacterStyle;
   }
 }
 

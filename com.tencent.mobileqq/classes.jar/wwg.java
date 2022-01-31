@@ -1,14 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wwg
-  implements DialogInterface.OnClickListener
+public class wwg
+  extends QQUIEventReceiver<wvq, uow>
 {
-  wwg(wwe paramwwe) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public wwg(@NonNull wvq paramwvq)
   {
-    this.a.c();
+    super(paramwvq);
+  }
+  
+  public void a(@NonNull wvq paramwvq, @NonNull uow paramuow)
+  {
+    if (paramuow.a())
+    {
+      wxe.b(this.TAG, "group video upload");
+      return;
+    }
+    if (!paramuow.b())
+    {
+      wxe.b(this.TAG, "ignore personal video");
+      return;
+    }
+    paramwvq.a(paramuow);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uow.class;
   }
 }
 

@@ -1,59 +1,58 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class abyn
-  implements View.OnClickListener
+class abyn
+  implements BusinessObserver
 {
-  public abyn(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  abyn(abyi paramabyi, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.a != null)
-    {
-      this.a.getWindow().setSoftInputMode(2);
-      this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-      AddFriendVerifyActivity.a(this.a).clearFocus();
+    Object localObject = paramBundle.getString("ssoAccount");
+    if (QLog.isColorLevel()) {
+      QLog.d(abyi.jdField_a_of_type_JavaLangString, 2, "-->doAuthorize-onReceive, ssoAccount: " + (String)localObject + " | uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
     }
-    paramView = AddFriendVerifyActivity.a(this.a).getText().toString();
-    if (TextUtils.isEmpty(paramView))
+    if (!this.jdField_a_of_type_JavaLangString.equals(localObject)) {
+      return;
+    }
+    paramInt = paramBundle.getInt("code");
+    if (paramBoolean)
     {
-      if (!this.a.isFinishing())
+      localObject = new SdkAuthorize.AuthorizeResponse();
+      try
       {
-        paramView = new nba(this.a);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131700222));
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845672);
-        paramView.a();
+        paramBundle = (SdkAuthorize.AuthorizeResponse)((SdkAuthorize.AuthorizeResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
+        paramInt = paramBundle.ret.get();
+        localObject = paramBundle.msg.get();
+        if (paramInt != 0)
+        {
+          acab.a(this.jdField_a_of_type_Abyi.jdField_a_of_type_Abwu, paramInt, (String)localObject);
+          return;
+        }
       }
+      catch (Exception paramBundle)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d(abyi.jdField_a_of_type_JavaLangString, 2, "parse do auth result error: \n" + paramBundle.getMessage());
+        }
+        acab.a(this.jdField_a_of_type_Abyi.jdField_a_of_type_Abwu, -2, "parse do auth result error");
+        return;
+      }
+      localObject = new abyh();
+      ((abyh)localObject).jdField_a_of_type_JavaLangString = paramBundle.openid.get().toUpperCase();
+      ((abyh)localObject).b = paramBundle.access_token.get().toUpperCase();
+      paramBundle = paramBundle.callbackURL.get();
+      if (QLog.isColorLevel()) {}
+      abyi.b(this.jdField_a_of_type_Abyi, paramBundle);
+      this.jdField_a_of_type_Abyi.jdField_a_of_type_Abye.a((abyh)localObject);
+      acab.a(this.jdField_a_of_type_Abyi.jdField_a_of_type_Abwu, ((abyh)localObject).a());
       return;
     }
-    if (paramView.length() > 90)
-    {
-      paramView = new Dialog(this.a, 2131755801);
-      paramView.setContentView(2131562559);
-      ((TextView)paramView.findViewById(2131365231)).setText(this.a.getString(2131691148));
-      ((ProgressBar)paramView.findViewById(2131366685)).setVisibility(8);
-      ((ImageView)paramView.findViewById(2131379296)).setImageResource(2130839406);
-      paramView.show();
-      return;
-    }
-    this.a.a(AddFriendVerifyActivity.a(this.a).getText().toString(), true);
-    if (bdee.d(this.a))
-    {
-      AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), AddFriendVerifyActivity.a(this.a).getText().toString(), this.a.getIntent().getIntExtra("stat_option", 0), 2000);
-      return;
-    }
-    QQToast.a(this.a, 1, 2131694766, 0).b(this.a.getTitleBarHeight());
+    acab.a(this.jdField_a_of_type_Abyi.jdField_a_of_type_Abwu, paramInt, "do auth error");
   }
 }
 

@@ -1,16 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditScrollerView;
 
 public class aeyw
-  implements DialogInterface.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public aeyw(AIOLongShotHelper paramAIOLongShotHelper) {}
+  public aeyw(VoiceTextEditScrollerView paramVoiceTextEditScrollerView, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramDialogInterface.dismiss();
+    if (VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView) != null)
+    {
+      if (this.jdField_a_of_type_Int == 0) {
+        VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView).j();
+      }
+    }
+    else {
+      return;
+    }
+    VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView).k();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

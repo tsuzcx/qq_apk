@@ -78,11 +78,11 @@ public class rio
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    if ((TextUtils.isEmpty(bjxj.a("sp_key_ad_soft_total_area"))) || ("1".equals(bjxj.a("sp_key_ad_soft_total_area")))) {}
+    if ((TextUtils.isEmpty(bkbq.a("sp_key_ad_soft_total_area"))) || ("1".equals(bkbq.a("sp_key_ad_soft_total_area")))) {}
     for (boolean bool = true;; bool = false)
     {
       this.jdField_b_of_type_Boolean = bool;
-      this.jdField_a_of_type_Int = npd.a(bjxj.a("sp_key_ad_soft_kd_max"), 2147483647);
+      this.jdField_a_of_type_Int = npd.a(bkbq.a("sp_key_ad_soft_kd_max"), 2147483647);
       this.jdField_b_of_type_Int = rdm.a(paramQQAppInterface);
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "onCreate() mConfigIsOpen = " + this.jdField_b_of_type_Boolean + ", mConfigMaxShowCount = " + this.jdField_a_of_type_Int + ", mTodayShowCount = " + this.jdField_b_of_type_Int);

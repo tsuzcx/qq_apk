@@ -1,20 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import android.annotation.TargetApi;
+import android.graphics.drawable.Drawable;
+import android.view.View;
 
-public class aqgx
-  extends BroadcastReceiver
+@TargetApi(16)
+class aqgx
 {
-  public aqgx(FMActivity paramFMActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static void a(View paramView, Drawable paramDrawable)
   {
-    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
+    paramView.setBackground(paramDrawable);
+  }
+  
+  public static void a(View paramView, Runnable paramRunnable)
+  {
+    paramView.postOnAnimation(paramRunnable);
   }
 }
 

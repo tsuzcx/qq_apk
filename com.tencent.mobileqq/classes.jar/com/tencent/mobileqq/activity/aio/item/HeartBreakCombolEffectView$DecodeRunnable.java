@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afky;
+import afpn;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory.Options;
-import bdda;
+import bdhj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -30,7 +30,7 @@ public class HeartBreakCombolEffectView$DecodeRunnable
       localObject3 = this.this$0;
       int i = ((HeartBreakCombolEffectView)localObject3).b;
       ((HeartBreakCombolEffectView)localObject3).b = (i + 1);
-      localObject3 = (afky)((ArrayList)localObject1).get(i);
+      localObject3 = (afpn)((ArrayList)localObject1).get(i);
       if (localObject3 != null)
       {
         this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inSampleSize = 1;
@@ -52,7 +52,7 @@ public class HeartBreakCombolEffectView$DecodeRunnable
         }
         try
         {
-          localObject1 = bdda.a(((afky)localObject3).a, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
+          localObject1 = bdhj.a(((afpn)localObject3).a, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
           if (localObject1 == null) {
             break;
           }

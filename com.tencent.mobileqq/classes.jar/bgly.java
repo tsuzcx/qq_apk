@@ -1,8 +1,6 @@
-public abstract interface bgly<T>
+public abstract interface bgly
 {
-  public abstract void a(bglx<T> parambglx);
-  
-  public abstract void b(bglx<T> parambglx);
+  public abstract <T> T get(Class paramClass);
 }
 
 

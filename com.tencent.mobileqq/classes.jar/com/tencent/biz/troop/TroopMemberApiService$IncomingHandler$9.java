@@ -1,12 +1,12 @@
 package com.tencent.biz.troop;
 
 import owy;
-import ync;
+import yrr;
 
 public class TroopMemberApiService$IncomingHandler$9
   implements Runnable
 {
-  public TroopMemberApiService$IncomingHandler$9(ync paramync, long paramLong, int paramInt) {}
+  public TroopMemberApiService$IncomingHandler$9(yrr paramyrr, long paramLong, int paramInt) {}
   
   public void run()
   {

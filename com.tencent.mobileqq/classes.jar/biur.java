@@ -1,16 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-
 class biur
-  extends biwj
+  implements aznz
 {
-  biur(biuq parambiuq) {}
+  biur(biup parambiup) {}
   
-  public void a(@NonNull biwi parambiwi)
+  public void a()
   {
-    parambiwi = parambiwi.a();
-    biuq.a(this.a, parambiwi);
-    bixi.a(BaseApplicationImpl.getContext(), parambiwi);
+    biup.b(this.a);
+  }
+  
+  public void b()
+  {
+    biup.a(this.a, 1);
   }
 }
 

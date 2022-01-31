@@ -1,33 +1,18 @@
-import android.content.Context;
-import android.content.ServiceConnection;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiFeedCommInfo;
 
-public class bjlk
+public final class bjlk
+  implements Parcelable.Creator<WeishiFeedCommInfo>
 {
-  private static ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new bjll();
-  static bjko jdField_a_of_type_Bjko;
-  private static WeakReference<bjlm> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public static void a(Context paramContext, bjlm parambjlm)
+  public WeishiFeedCommInfo a(Parcel paramParcel)
   {
-    if ((jdField_a_of_type_Bjko != null) && (jdField_a_of_type_Bjko.b()))
-    {
-      if (parambjlm != null) {
-        parambjlm.onQzonePluginClientReady(jdField_a_of_type_Bjko);
-      }
-      return;
-    }
-    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambjlm);
-    bjki.a().a(paramContext, jdField_a_of_type_AndroidContentServiceConnection, 0);
+    return new WeishiFeedCommInfo(paramParcel);
   }
   
-  private static void b()
+  public WeishiFeedCommInfo[] a(int paramInt)
   {
-    if (jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      jdField_a_of_type_JavaLangRefWeakReference.clear();
-      jdField_a_of_type_JavaLangRefWeakReference = null;
-    }
+    return new WeishiFeedCommInfo[paramInt];
   }
 }
 

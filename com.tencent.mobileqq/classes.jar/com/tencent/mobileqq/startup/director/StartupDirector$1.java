@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.startup.director;
 
-import ajfw;
+import ajkl;
 import android.text.TextUtils;
-import azjg;
-import azkw;
-import azmj;
-import azmz;
+import aznp;
+import azpf;
+import azqs;
+import azri;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 public class StartupDirector$1
   implements Runnable
 {
-  public StartupDirector$1(azjg paramazjg, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6) {}
+  public StartupDirector$1(aznp paramaznp, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class StartupDirector$1
     if (BaseApplicationImpl.sProcessId == 1)
     {
       if (this.a > 0L) {
-        azmz.a(BaseApplicationImpl.sApplication).a(null, "actLoginA", true, this.a, 0L, null, null);
+        azri.a(BaseApplicationImpl.sApplication).a(null, "actLoginA", true, this.a, 0L, null, null);
       }
       if (this.b > 0L)
       {
@@ -38,7 +38,7 @@ public class StartupDirector$1
             break label519;
           }
           localObject1 = "1";
-          azmj.b((QQAppInterface)localObject2, "CliOper", "", "", "0X80064F6", "0X80064F6", 0, 0, (String)localObject1, "", "", "");
+          azqs.b((QQAppInterface)localObject2, "CliOper", "", "", "0X80064F6", "0X80064F6", 0, 0, (String)localObject1, "", "", "");
         }
       }
       if (this.c > 0L)
@@ -46,7 +46,7 @@ public class StartupDirector$1
         QLog.d("AutoMonitor", 1, "ActionLoginM, cost=" + this.d);
         localObject1 = new HashMap();
         ((HashMap)localObject1).put("cost", this.d + "");
-        azmz.a(BaseApplicationImpl.sApplication).a(null, "actLoginM", true, this.d, 0L, (HashMap)localObject1, null);
+        azri.a(BaseApplicationImpl.sApplication).a(null, "actLoginM", true, this.d, 0L, (HashMap)localObject1, null);
       }
       if ((this.e > 0L) && (this.f < 30000L))
       {
@@ -57,26 +57,26 @@ public class StartupDirector$1
         if ((localObject1 == null) || (!(localObject1 instanceof QQAppInterface))) {
           break label548;
         }
-        if (!ajfw.a((QQAppInterface)localObject1)) {
+        if (!ajkl.a((QQAppInterface)localObject1)) {
           break label542;
         }
         localObject1 = "1";
         label315:
         ((HashMap)localObject2).put("bootOpt", localObject1);
         label323:
-        localObject1 = ajfw.a(BaseApplicationImpl.context);
+        localObject1 = ajkl.a(BaseApplicationImpl.context);
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           ((HashMap)localObject2).put("bootOptCrashMessage", localObject1);
         }
-        if (!ajfw.a(BaseApplicationImpl.context)) {
+        if (!ajkl.a(BaseApplicationImpl.context)) {
           break label560;
         }
         localObject1 = "1";
         label357:
         ((HashMap)localObject2).put("bootOptHasCrash", localObject1);
-        ((HashMap)localObject2).put("bootOptTotalSize", ajfw.a() + "");
-        ((HashMap)localObject2).put("bootOptFailSize", ajfw.b() + "");
-        azmz.a(BaseApplicationImpl.sApplication).a(null, "actLoginS", true, this.f, 0L, (HashMap)localObject2, null);
+        ((HashMap)localObject2).put("bootOptTotalSize", ajkl.a() + "");
+        ((HashMap)localObject2).put("bootOptFailSize", ajkl.b() + "");
+        azri.a(BaseApplicationImpl.sApplication).a(null, "actLoginS", true, this.f, 0L, (HashMap)localObject2, null);
       }
       localObject2 = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
       if (localObject2 != null) {
@@ -86,11 +86,11 @@ public class StartupDirector$1
     }
     for (;;)
     {
-      azmj.a((QQAppInterface)localObject2, "P_CliOper", "Vip_login_upload", "", "upload", "report", 0, 0, AppSetting.a(BaseApplicationImpl.sApplication, (String)localObject1), "", "", "");
+      azqs.a((QQAppInterface)localObject2, "P_CliOper", "Vip_login_upload", "", "upload", "report", 0, 0, AppSetting.a(BaseApplicationImpl.sApplication, (String)localObject1), "", "", "");
       if ("Success".equals(BaseApplicationImpl.sInjectResult)) {
         UnifiedMonitor.a().b();
       }
-      azkw.b(42, this.this$0, null).step();
+      azpf.b(42, this.this$0, null).step();
       return;
       label519:
       if (this.b == 2200L)

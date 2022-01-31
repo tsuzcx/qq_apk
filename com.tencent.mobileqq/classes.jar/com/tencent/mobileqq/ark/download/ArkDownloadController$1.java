@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ark.download;
 
-import anmb;
+import anqk;
 
 public class ArkDownloadController$1
   implements Runnable
 {
-  public ArkDownloadController$1(anmb paramanmb, String paramString) {}
+  public ArkDownloadController$1(anqk paramanqk, String paramString) {}
   
   public void run()
   {
-    anmb.a(this.this$0, this.a);
+    anqk.a(this.this$0, this.a);
   }
 }
 

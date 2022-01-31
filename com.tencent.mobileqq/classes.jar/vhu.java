@@ -1,6 +1,18 @@
-public abstract interface vhu
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+
+public class vhu
+  extends uro
 {
-  public abstract void a(int paramInt);
+  public final String a;
+  public final int b;
+  
+  public vhu(qqstory_service.RspGetWeather paramRspGetWeather)
+  {
+    this.b = paramRspGetWeather.temperature.get();
+    this.a = paramRspGetWeather.wea_desc.get();
+  }
 }
 
 

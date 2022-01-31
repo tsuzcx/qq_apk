@@ -1,12 +1,32 @@
-public class bdvw
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
+
+class bdvw
+  implements Observer
 {
-  public int a;
-  public long a;
+  bdvw(bdvv parambdvv) {}
   
-  public bdvw()
+  public void update(Observable paramObservable, Object paramObject)
   {
-    this.jdField_a_of_type_Int = 1000277;
-    this.jdField_a_of_type_Long = -1L;
+    if (QLog.isColorLevel()) {
+      QLog.d("SignatureFontAdapter", 2, "SignatureFontAdapter type = " + paramObject);
+    }
+    if ((paramObject instanceof Integer))
+    {
+      switch (((Integer)paramObject).intValue())
+      {
+      default: 
+        return;
+      case 1: 
+        this.a.a.a().sendEmptyMessage(10003);
+        return;
+      }
+      this.a.a.a().sendEmptyMessage(10002);
+      return;
+    }
+    this.a.a.a().sendEmptyMessage(10003);
   }
 }
 

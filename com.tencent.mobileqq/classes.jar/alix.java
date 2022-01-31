@@ -1,24 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.view.ApolloSlaveViewBinder.1;
-import com.tencent.mobileqq.apollo.view.ApolloSlaveViewBinder.1.1.1;
+import com.tencent.mobileqq.data.ApolloFavActionData;
+import java.util.Comparator;
 
-public class alix
-  implements Animation.AnimationListener
+class alix
+  implements Comparator<ApolloFavActionData>
 {
-  public alix(ApolloSlaveViewBinder.1.1.1 param1) {}
+  alix(aliw paramaliw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(ApolloFavActionData paramApolloFavActionData1, ApolloFavActionData paramApolloFavActionData2)
   {
-    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.a.a.a.b.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.a.a.a.jdField_a_of_type_Alhm.a = null;
+    if (paramApolloFavActionData2.favId == paramApolloFavActionData1.favId) {
+      return 0;
+    }
+    if (paramApolloFavActionData2.favId > paramApolloFavActionData1.favId) {
+      return 1;
+    }
+    return -1;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

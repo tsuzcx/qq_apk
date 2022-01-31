@@ -1,13 +1,34 @@
-import android.os.IInterface;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import java.io.File;
+import java.text.SimpleDateFormat;
 
-public abstract interface amva
-  extends IInterface
+public class amva
 {
-  public abstract void a(int paramInt);
+  public static String a()
+  {
+    String str = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath();
+    return str + "/Camera/ARVideoRecord.tmp";
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public static boolean a()
+  {
+    return (Build.VERSION.SDK_INT >= 18) && (amyr.a().d) && (!Build.MODEL.equalsIgnoreCase("CAM-TL00"));
+  }
   
-  public abstract void b(int paramInt1, int paramInt2);
+  public static String b()
+  {
+    String str = ShortVideoUtils.d();
+    str = str + new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(Long.valueOf(System.currentTimeMillis()));
+    str = str + mpw.a;
+    File localFile = new File(str).getParentFile();
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return str;
+  }
 }
 
 

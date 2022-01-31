@@ -1,27 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import cooperation.vip.pb.TianShuAccess.AdItem;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 class bjzw
-  implements View.OnClickListener
 {
-  bjzw(bjzu parambjzu) {}
-  
-  public void onClick(View paramView)
+  public static File a()
   {
-    bjzu.a(this.a);
-    if ((bjzu.a(this.a) != null) && (bjzu.a(this.a).a() != null) && (bjzu.a(this.a).a().app != null) && (bjzu.a(this.a) != null)) {
-      bjzt.a(bjzu.a(this.a).a().app, 122, String.valueOf(bjzu.a(this.a).iAdId.get()), bjzu.a(this.a).traceinfo.get());
+    try
+    {
+      String str = bjih.b;
+      File localFile1 = new File(str);
+      boolean bool = localFile1.exists();
+      if (!bool) {
+        try
+        {
+          new File(str, ".nomedia").createNewFile();
+          if (!localFile1.mkdirs())
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("InnerEnvironment", 2, "Unable to create external cache directory");
+            }
+            return null;
+          }
+        }
+        catch (IOException localIOException)
+        {
+          for (;;)
+          {
+            localIOException.printStackTrace();
+          }
+        }
+      }
     }
+    finally {}
+    return localFile2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjzw
  * JD-Core Version:    0.7.0.1
  */

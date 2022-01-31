@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
-import bibd;
+import bifk;
 import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.ReadInJoyDynamicChannelBaseFragment;
 import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
 import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
@@ -27,7 +27,7 @@ import owf;
 public class ReadInJoyCGIDynamicChannelFragment
   extends ReadInJoyDynamicChannelBaseFragment
 {
-  private bibd jdField_a_of_type_Bibd = new ovp(this);
+  private bifk jdField_a_of_type_Bifk = new ovp(this);
   private ovm jdField_a_of_type_Ovm;
   private ovy jdField_a_of_type_Ovy = new ovo(this);
   
@@ -123,7 +123,7 @@ public class ReadInJoyCGIDynamicChannelFragment
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setRefreshCallback(this.jdField_a_of_type_Bibd);
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setRefreshCallback(this.jdField_a_of_type_Bifk);
   }
   
   public void i()

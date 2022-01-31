@@ -1,29 +1,34 @@
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public abstract interface alos
+public class alos
+  implements EIPCResultCallback
 {
-  public abstract ViewGroup a();
+  public alos(BaseActivity paramBaseActivity) {}
   
-  public abstract bhxu a(String paramString);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(Configuration paramConfiguration);
-  
-  public abstract void a(QQAppInterface paramQQAppInterface);
-  
-  public abstract void a(String paramString, bhxu parambhxu);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    if (paramEIPCResult.data == null) {}
+    do
+    {
+      return;
+      switch (paramEIPCResult.data.getInt("param_cmd"))
+      {
+      default: 
+        return;
+      }
+    } while (paramEIPCResult.code != 0);
+    paramEIPCResult = paramEIPCResult.data;
+    if (QLog.isDevelopLevel())
+    {
+      int i = paramEIPCResult.getInt("param_proc_badge_count");
+      QLog.i("MiniMsgIPCServer", 2, "doRefreshMiniBadge COUNT = " + i);
+    }
+    this.a.doRefreshMiniBadge(paramEIPCResult);
+  }
 }
 
 

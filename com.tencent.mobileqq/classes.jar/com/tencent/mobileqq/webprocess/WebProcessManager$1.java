@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.webprocess;
 
-import bdzz;
+import beei;
 
 class WebProcessManager$1
   implements Runnable
 {
-  WebProcessManager$1(WebProcessManager paramWebProcessManager, bdzz parambdzz) {}
+  WebProcessManager$1(WebProcessManager paramWebProcessManager, beei parambeei) {}
   
   public void run()
   {

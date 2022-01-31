@@ -1,20 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import android.os.Bundle;
+import com.tencent.biz.subscribe.event.SimpleEventBus.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import mqq.os.MqqHandler;
 
 public class yix
-  implements View.OnClickListener
+  extends QIPCModule
 {
-  public yix(VideoPlayerView paramVideoPlayerView) {}
-  
-  public void onClick(View paramView)
+  yix(yiw paramyiw, String paramString)
   {
-    if (VideoPlayerView.a(this.a) != null) {
-      VideoPlayerView.a(this.a).setVisibility(8);
-    }
-    VideoPlayerView.a(this.a, false);
-    VideoPlayerView.a(true);
-    this.a.d();
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    ThreadManager.getUIHandler().post(new SimpleEventBus.1.1(this, paramString, paramBundle));
+    return null;
   }
 }
 

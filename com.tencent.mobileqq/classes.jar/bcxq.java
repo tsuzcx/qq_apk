@@ -1,109 +1,109 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 class bcxq
-  implements bcxs
+  extends ameq
 {
-  bcxq(bcxp parambcxp) {}
+  bcxq(bcxl parambcxl) {}
   
-  public void a(int paramInt, List<bcxt> paramList)
+  public void a(boolean paramBoolean, bcxk parambcxk)
   {
-    if ((paramInt != 1) || (paramList == null) || (paramList.isEmpty())) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopShareUtility", 2, "onTroopShareLink start");
     }
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder(200);
-      localStringBuilder.append("fetchInfoBatch size:").append(paramList.size()).append("  [");
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin == null) || (parambcxk == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin.equals(parambcxk.jdField_a_of_type_JavaLangString))) {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+      }
     }
+    label423:
+    label604:
     for (;;)
     {
-      ArrayList localArrayList = new ArrayList(paramList.size());
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      return;
+      if ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing()) && (this.a.jdField_a_of_type_Int != -1) && (this.a.jdField_b_of_type_Int != -1))
       {
-        bcxt localbcxt = (bcxt)paramList.next();
-        if ((localbcxt != null) && (localbcxt.jdField_a_of_type_Int == 1) && (localbcxt.a()))
+        if ((!paramBoolean) || (parambcxk.jdField_a_of_type_Int != 0)) {
+          break label423;
+        }
+        if (parambcxk.jdField_a_of_type_Boolean)
         {
-          if ((localbcxt.jdField_a_of_type_JavaLangString != null) && (localbcxt.jdField_a_of_type_JavaLangString.length() > 0)) {
-            localArrayList.add(localbcxt.jdField_a_of_type_JavaLangString);
-          }
-          if (localStringBuilder != null) {
-            localStringBuilder.append(localbcxt.jdField_a_of_type_JavaLangString).append(",");
+          this.a.jdField_a_of_type_JavaLangString = parambcxk.jdField_b_of_type_JavaLangString;
+          if (this.a.jdField_b_of_type_Int != 0)
+          {
+            if (!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+              continue;
+            }
+            ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
           }
         }
-      }
-      if ((QLog.isColorLevel()) && (localStringBuilder != null))
-      {
-        localStringBuilder.append("]");
-        QLog.i("FetchBuddyAndTroopNameHelper", 2, localStringBuilder.toString());
-      }
-      paramList = (FriendListHandler)bcxp.a(this.a).a(1);
-      if (paramList == null) {
-        break;
-      }
-      paramList.a(localArrayList, false);
-      return;
-      localStringBuilder = null;
-    }
-  }
-  
-  public void a(bcxt parambcxt)
-  {
-    if ((parambcxt == null) || (!parambcxt.a())) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
+        else
         {
-          do
+          this.a.jdField_b_of_type_JavaLangString = parambcxk.jdField_b_of_type_JavaLangString;
+          if (this.a.jdField_b_of_type_Int != 1)
           {
-            do
-            {
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.d("FetchBuddyAndTroopNameHelper", 2, bdje.a(new Object[] { "fetchInfo()", parambcxt.toString() }));
-              }
-              if (parambcxt.jdField_a_of_type_Int != 2) {
-                break;
-              }
-              localObject = (alzf)bcxp.a(this.a).a(20);
-            } while (localObject == null);
-            ((alzf)localObject).m(parambcxt.jdField_a_of_type_JavaLangString);
-            return;
-            if (parambcxt.jdField_a_of_type_Int != 1) {
-              break;
+            if (!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+              continue;
             }
-            localObject = (FriendListHandler)bcxp.a(this.a).a(1);
-          } while (localObject == null);
-          ((FriendListHandler)localObject).b(parambcxt.jdField_a_of_type_JavaLangString);
-          return;
-          if (parambcxt.jdField_a_of_type_Int != 3) {
+            ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+            return;
+          }
+        }
+        switch (this.a.jdField_a_of_type_Int)
+        {
+        }
+      }
+      for (;;)
+      {
+        if (!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+          break label604;
+        }
+        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+        return;
+        this.a.b();
+        bcxl.b(this.a);
+        continue;
+        this.a.b();
+        bcxl.c(this.a);
+        continue;
+        this.a.c = bckq.a("", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, 0);
+        this.a.b();
+        bcxl.d(this.a);
+        continue;
+        this.a.b();
+        bcxl.e(this.a);
+        continue;
+        this.a.b();
+        bcxl.f(this.a);
+        continue;
+        if ((parambcxk.jdField_a_of_type_Boolean) && (this.a.jdField_b_of_type_Int != 0))
+        {
+          if (!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
             break;
           }
-          localObject = (alzf)bcxp.a(this.a).a(20);
-        } while (localObject == null);
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(parambcxt.jdField_a_of_type_JavaLangString);
-        if ((parambcxt.jdField_a_of_type_AndroidOsBundle != null) && (parambcxt.jdField_a_of_type_AndroidOsBundle.getInt(bdbt.jdField_a_of_type_JavaLangString) == bdbt.b))
-        {
-          ((alzf)localObject).a(parambcxt.b, localArrayList, false, parambcxt.jdField_a_of_type_AndroidOsBundle);
+          ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
           return;
         }
-        ((alzf)localObject).a(parambcxt.b, (String)parambcxt.jdField_a_of_type_JavaLangObject, localArrayList);
-        return;
-      } while (parambcxt.jdField_a_of_type_Int != 4);
-      localObject = (FriendListHandler)bcxp.a(this.a).a(1);
-    } while (localObject == null);
-    ((FriendListHandler)localObject).a(parambcxt.jdField_a_of_type_JavaLangString, true);
+        if ((!parambcxk.jdField_a_of_type_Boolean) && (this.a.jdField_b_of_type_Int != 1))
+        {
+          if (!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+            break;
+          }
+          ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+          return;
+        }
+        if (this.a.jdField_a_of_type_Bcxu != null) {
+          this.a.jdField_a_of_type_Bcxu.a(this.a.jdField_a_of_type_Int, false);
+        }
+        this.a.b();
+        QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131693136), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+        this.a.jdField_a_of_type_Int = -1;
+        this.a.jdField_b_of_type_Int = -1;
+      }
+    }
   }
 }
 

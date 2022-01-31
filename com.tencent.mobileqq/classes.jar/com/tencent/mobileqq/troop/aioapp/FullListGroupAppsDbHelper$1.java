@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.aioapp;
 
-import bbic;
+import bbml;
 import com.tencent.mobileqq.troop.aioapp.data.FullListGroupAppEntity;
 
 public class FullListGroupAppsDbHelper$1
   implements Runnable
 {
-  public FullListGroupAppsDbHelper$1(bbic parambbic, FullListGroupAppEntity paramFullListGroupAppEntity) {}
+  public FullListGroupAppsDbHelper$1(bbml parambbml, FullListGroupAppEntity paramFullListGroupAppEntity) {}
   
   public void run()
   {
-    bbic.a(this.this$0, this.a);
+    bbml.a(this.this$0, this.a);
   }
 }
 

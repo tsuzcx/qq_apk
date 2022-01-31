@@ -1,20 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class airq
-  implements bejn
+class airq
+  implements DialogInterface.OnClickListener
 {
-  public airq(RedPacketPopFragment paramRedPacketPopFragment, Context paramContext) {}
+  airq(airj paramairj, Runnable paramRunnable) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramClickableColorSpanTextView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramClickableColorSpanTextView);
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

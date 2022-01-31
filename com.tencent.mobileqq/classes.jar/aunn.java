@@ -1,44 +1,80 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import java.util.HashMap;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardRootLayout;
 
 public class aunn
-  extends aumi
 {
-  public aunn(MusicPlayerActivity paramMusicPlayerActivity) {}
+  public float a;
+  public int a;
+  public ViewGroup.LayoutParams a;
+  public aumy a;
+  public MultiCardCustomLayout a;
+  public MultiCardRootLayout a;
+  public float b;
+  public int b;
+  public int c;
   
-  public void onPlaySongChanged(SongInfo paramSongInfo)
+  public aunn(MultiCardFragment paramMultiCardFragment, MultiCardRootLayout paramMultiCardRootLayout, MultiCardCustomLayout paramMultiCardCustomLayout, aumy paramaumy, auna paramauna)
   {
-    if (paramSongInfo != null)
-    {
-      localObject = MusicPlayerActivity.a(this.a, paramSongInfo);
-      if (!MusicPlayerActivity.b().containsKey(localObject)) {
-        break label64;
-      }
-      localObject = (aunt)MusicPlayerActivity.b().get(localObject);
-      paramSongInfo = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, ((aunt)localObject).a);
-      MusicPlayerActivity.a(this.a, (aunt)localObject, paramSongInfo);
-    }
-    label64:
-    while (MusicPlayerActivity.a().containsKey(localObject)) {
-      return;
-    }
-    Object localObject = MusicPlayerActivity.a(this.a);
-    if (localObject != null) {}
-    for (int i = ((aumk)localObject).c();; i = 0)
-    {
-      localObject = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, -1L);
-      MusicPlayerActivity.a(this.a, paramSongInfo.c, paramSongInfo.h, paramSongInfo.e, (String)localObject, false, false);
-      MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramSongInfo.c, paramSongInfo.h, paramSongInfo.g, String.valueOf(paramSongInfo.a), paramSongInfo.d, i);
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout = paramMultiCardRootLayout;
+    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout = paramMultiCardCustomLayout;
+    this.jdField_a_of_type_Aumy = paramaumy;
+    if (this.jdField_a_of_type_Aumy != null) {
+      this.jdField_a_of_type_Aumy.a(paramauna);
     }
   }
   
-  public void onPlayStateChanged(int paramInt)
+  public void a()
   {
-    Message.obtain(MusicPlayerActivity.a(this.a), 50, paramInt, 0).sendToTarget();
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.a(false);
+      this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getScaleX();
+      this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getScaleY();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null)
+    {
+      this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getLayoutParams();
+      Object localObject = new int[2];
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getLocationOnScreen((int[])localObject);
+      this.jdField_b_of_type_Int = localObject[0];
+      this.c = localObject[1];
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.a(true);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.findViewById(2131370868);
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_Int = ((View)localObject).getVisibility();
+        ((View)localObject).setVisibility(8);
+      }
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout);
+    }
+    if (this.jdField_a_of_type_Aumy != null) {
+      this.jdField_a_of_type_Aumy.b(0);
+    }
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null))
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getParent() instanceof ViewGroup)) {
+        ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getParent()).removeView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.a(false);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setScaleX(1.0F);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setScaleY(1.0F);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.a(true);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.addView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout, 0);
+    }
+    if (this.jdField_a_of_type_Aumy != null) {
+      this.jdField_a_of_type_Aumy.b(1);
+    }
   }
 }
 

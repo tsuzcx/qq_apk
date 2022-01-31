@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.utils;
 
-import aloz;
+import alto;
 import android.os.Handler;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 
 final class VipUtils$3
   implements Runnable
 {
-  VipUtils$3(aloz paramaloz, String paramString, VipUtils.UpdateRecentEfficientVipIconTask paramUpdateRecentEfficientVipIconTask) {}
+  VipUtils$3(alto paramalto, String paramString, VipUtils.UpdateRecentEfficientVipIconTask paramUpdateRecentEfficientVipIconTask) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aloz.e(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Alto.e(this.jdField_a_of_type_JavaLangString);
     ThreadManagerV2.getUIHandlerV2().post(this.jdField_a_of_type_ComTencentMobileqqUtilsVipUtils$UpdateRecentEfficientVipIconTask);
   }
 }

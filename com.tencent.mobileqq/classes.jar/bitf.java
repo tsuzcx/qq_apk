@@ -1,24 +1,28 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import android.app.Dialog;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.qlink.QlinkLeakHelper.2.1;
 
-public class bitf
-  extends bepp
+public final class bitf
+  implements View.OnClickListener
 {
-  public bitf(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext, int paramInt)
+  public void onClick(View paramView)
   {
-    super(paramContext, paramInt);
-  }
-  
-  public void onBackPressed()
-  {
-    if (this.a.a) {
-      super.onBackPressed();
+    if (this.a != null) {
+      this.a.dismiss();
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131710278) + "/Tencent/MobileQQ/log/", 1).a();
+    paramView = ThreadManager.newFreeHandlerThread("qlink-leaker", 10);
+    paramView.start();
+    paramView = paramView.getLooper();
+    if (paramView != null) {
+      new Handler(paramView).post(new QlinkLeakHelper.2.1(this));
     }
-    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
   }
 }
 

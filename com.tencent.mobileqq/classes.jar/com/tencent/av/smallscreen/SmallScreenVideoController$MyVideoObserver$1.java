@@ -2,7 +2,7 @@ package com.tencent.av.smallscreen;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdiv;
+import bdne;
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
 import lid;
@@ -18,7 +18,7 @@ public class SmallScreenVideoController$MyVideoObserver$1
   public void run()
   {
     Object localObject2 = null;
-    Object localObject1 = bdiv.a(this.jdField_a_of_type_Mbz.a.jdField_a_of_type_AndroidContentContext);
+    Object localObject1 = bdne.a(this.jdField_a_of_type_Mbz.a.jdField_a_of_type_AndroidContentContext);
     if (!((SharedPreferences)localObject1).getBoolean("kick_out_self", false))
     {
       if ((this.jdField_a_of_type_Mbz.a.c != 1) && (this.jdField_a_of_type_Mbz.a.c != 2)) {

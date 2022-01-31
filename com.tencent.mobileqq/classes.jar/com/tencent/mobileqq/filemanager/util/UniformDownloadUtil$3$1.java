@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import arpg;
-import arph;
+import artp;
+import artq;
 
 public class UniformDownloadUtil$3$1
   implements Runnable
 {
-  public UniformDownloadUtil$3$1(arph paramarph) {}
+  public UniformDownloadUtil$3$1(artq paramartq) {}
   
   public void run()
   {
-    arpg.a(this.this$0.a, this.this$0.b);
+    artp.a(this.this$0.a, this.this$0.b);
   }
 }
 

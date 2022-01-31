@@ -1,26 +1,28 @@
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.3.1;
+import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.3.2;
+import mqq.os.MqqHandler;
 
-public abstract interface blbr
+public class blbr
+  implements blae
 {
-  public abstract void a(VideoMaterial paramVideoMaterial);
+  blbr(blbp paramblbp) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void a(MetaMaterial paramMetaMaterial)
+  {
+    ThreadManager.getUIHandler().post(new AEVideoStoryGIFTplViewModel.3.1(this, paramMetaMaterial));
+  }
   
-  public abstract void b();
+  public void a(MetaMaterial paramMetaMaterial, int paramInt)
+  {
+    blbp.a(this.a).a(new blaj(paramMetaMaterial, 1, paramInt));
+  }
   
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
+  public void b(MetaMaterial paramMetaMaterial)
+  {
+    ThreadManager.getUIHandler().post(new AEVideoStoryGIFTplViewModel.3.2(this, paramMetaMaterial));
+  }
 }
 
 

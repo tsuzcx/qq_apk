@@ -1,17 +1,17 @@
 package cooperation.qzone.webviewplugin;
 
-import bjmn;
-import bjmp;
-import bjtn;
+import bjqu;
+import bjqw;
+import bjxu;
 
 public class QzoneDynamicAlbumPlugin$3
   implements Runnable
 {
-  public QzoneDynamicAlbumPlugin$3(bjtn parambjtn, String paramString) {}
+  public QzoneDynamicAlbumPlugin$3(bjxu parambjxu, String paramString) {}
   
   public void run()
   {
-    bjmn.a().a().b(this.a);
+    bjqu.a().a().b(this.a);
   }
 }
 

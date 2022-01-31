@@ -1,47 +1,84 @@
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tencent.biz.qqstory.msgTabNode.view.viewholder.FriendNodeViewHolder.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.filter.FilterItem;
+import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFilterList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FilterListPack;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class uxc
-  extends uxf
+  extends uro
 {
-  public uxc(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup, 2131561491);
-  }
+  @NonNull
+  public final String a;
+  @NonNull
+  public final List<FilterItem> a;
+  public final boolean a;
+  public final int b;
   
-  public void a(utx paramutx)
+  public uxc(byte[] paramArrayOfByte)
   {
-    wsv.a("FriendNodeViewHolder", "bindData %s", paramutx);
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    QQAppInterface localQQAppInterface;
-    String str;
-    if ((localObject instanceof QQAppInterface))
+    Object localObject1 = new qqstory_service.RspGetFilterList();
+    for (;;)
     {
-      localQQAppInterface = (QQAppInterface)localObject;
-      str = String.valueOf(paramutx.b);
-      b(xoa.b(paramutx.g));
-      if (!uwn.h) {
-        break label180;
-      }
-    }
-    label180:
-    for (localObject = bdbt.m(localQQAppInterface, str);; localObject = str)
-    {
-      this.a.setNodeName((String)localObject, false);
-      ThreadManager.post(new FriendNodeViewHolder.1(this, localQQAppInterface, str), 8, null, true);
-      if (QLog.isColorLevel())
+      try
       {
-        QLog.e("FriendNodeViewHolder", 2, new Object[] { "userItem = " + paramutx.b + ", name = " + (String)localObject, " list: ", String.valueOf(paramutx.a) });
-        QLog.e("FriendNodeViewHolder", 2, new Object[] { "data: ", String.valueOf(paramutx) });
+        ((qqstory_service.RspGetFilterList)localObject1).mergeFrom(paramArrayOfByte);
+        this.jdField_a_of_type_Int = ((qqstory_service.RspGetFilterList)localObject1).result.error_code.get();
+        this.jdField_b_of_type_JavaLangString = ((qqstory_service.RspGetFilterList)localObject1).result.error_desc.get().toStringUtf8();
+        if (((qqstory_service.RspGetFilterList)localObject1).is_end.get() != 0)
+        {
+          this.jdField_a_of_type_Boolean = bool;
+          this.jdField_a_of_type_JavaLangString = ((qqstory_service.RspGetFilterList)localObject1).next_cookie.get().toStringUtf8();
+          this.jdField_b_of_type_Int = ((qqstory_service.RspGetFilterList)localObject1).frequency.get();
+          paramArrayOfByte = new ArrayList();
+          localObject1 = ((qqstory_service.RspGetFilterList)localObject1).filter_list.get().iterator();
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
+          Object localObject2 = (qqstory_struct.FilterListPack)((Iterator)localObject1).next();
+          uwu localuwu = new uwu();
+          localuwu.jdField_a_of_type_Long = ((qqstory_struct.FilterListPack)localObject2).filter_id.get();
+          localuwu.jdField_a_of_type_JavaLangString = ((qqstory_struct.FilterListPack)localObject2).filter_name.get().toStringUtf8();
+          localuwu.jdField_a_of_type_Int = ((qqstory_struct.FilterListPack)localObject2).filter_type.get();
+          localuwu.jdField_b_of_type_JavaLangString = ((qqstory_struct.FilterListPack)localObject2).filter_config_file.get().toStringUtf8();
+          localuwu.c = ((qqstory_struct.FilterListPack)localObject2).filter_config_md5.get().toStringUtf8();
+          try
+          {
+            localObject2 = localuwu.a();
+            paramArrayOfByte.add(localObject2);
+            wxe.d("VideoFilterManager", "GET Filter : id=%d, name=%s, type=%d, url=%s, md5=%s", new Object[] { Long.valueOf(((FilterItem)localObject2).filterId), ((FilterItem)localObject2).filterName, Integer.valueOf(((FilterItem)localObject2).filterType), ((FilterItem)localObject2).filterConfigUrl, ((FilterItem)localObject2).filterConfigMd5 });
+          }
+          catch (FilterItem.FilterItemIllegalException localFilterItemIllegalException)
+          {
+            wxe.c("VideoFilterManager", "GET Filter error : ", localFilterItemIllegalException);
+          }
+          continue;
+        }
+        bool = false;
       }
-      super.a(paramutx);
-      return;
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        wxe.e("VideoFilterManager", "GetEmojiPackInfoListRequest error : " + paramArrayOfByte);
+        this.jdField_a_of_type_Int = -1;
+        this.jdField_b_of_type_JavaLangString = alud.a(2131716656);
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_JavaUtilList = Collections.EMPTY_LIST;
+        this.jdField_a_of_type_JavaLangString = "";
+        this.jdField_b_of_type_Int = 0;
+        return;
+      }
     }
+    this.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(paramArrayOfByte);
   }
 }
 

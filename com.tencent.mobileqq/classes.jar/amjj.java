@@ -1,21 +1,31 @@
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import com.tencent.qphone.base.util.QLog;
+
 public class amjj
+  extends altm
 {
-  public void a() {}
+  public amjj(HiddenChatFragment paramHiddenChatFragment) {}
   
-  public void a(int paramInt)
+  protected void onSetHiddenChatSwitch(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1000: 
-      a();
-      return;
+    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 2)) {
+      QLog.e("tag_hidden_chat", 1, "data not right");
     }
-    b();
+    do
+    {
+      do
+      {
+        return;
+        String[] arrayOfString = (String[])paramArrayOfObject[0];
+        paramArrayOfObject = (boolean[])paramArrayOfObject[1];
+        if (QLog.isColorLevel()) {
+          QLog.d("tag_hidden_chat", 2, new Object[] { "res:", Boolean.valueOf(paramBoolean), " len1:", Integer.valueOf(arrayOfString.length), " len2:", Integer.valueOf(paramArrayOfObject.length) });
+        }
+      } while (!paramBoolean);
+      this.a.a();
+    } while (!QLog.isColorLevel());
+    QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch");
   }
-  
-  public void b() {}
 }
 
 

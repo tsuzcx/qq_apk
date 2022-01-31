@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import aksm;
-import alce;
+import akxb;
+import algt;
 
 public class CmGameAvHandler$5
   implements Runnable
 {
-  public CmGameAvHandler$5(aksm paramaksm, boolean paramBoolean) {}
+  public CmGameAvHandler$5(akxb paramakxb, boolean paramBoolean) {}
   
   public void run()
   {
-    aksm.a(this.this$0, this.a);
+    akxb.a(this.this$0, this.a);
     if (this.a) {
-      alce.a().c();
+      algt.a().c();
     }
-    alce.a().a(this.a);
+    algt.a().a(this.a);
   }
 }
 

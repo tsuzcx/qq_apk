@@ -67,31 +67,31 @@ public class suv
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  private TroopBarData a(awbw paramawbw, QQAppInterface paramQQAppInterface, String paramString)
+  private TroopBarData a(awgf paramawgf, QQAppInterface paramQQAppInterface, String paramString)
   {
     a(paramQQAppInterface);
     synchronized (this.jdField_a_of_type_JavaUtilMap)
     {
       TroopBarData localTroopBarData = (TroopBarData)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      paramawbw = localTroopBarData;
+      paramawgf = localTroopBarData;
       if (localTroopBarData == null)
       {
         localTroopBarData = new TroopBarData();
         localTroopBarData.mUin = paramString;
         paramQQAppInterface = paramQQAppInterface.a();
-        paramawbw = localTroopBarData;
+        paramawgf = localTroopBarData;
         if (paramQQAppInterface != null)
         {
           paramQQAppInterface = paramQQAppInterface.a(paramString, 1008);
-          paramawbw = localTroopBarData;
+          paramawgf = localTroopBarData;
           if (paramQQAppInterface != null)
           {
             localTroopBarData.mLastDraftTime = paramQQAppInterface.getTime();
-            paramawbw = localTroopBarData;
+            paramawgf = localTroopBarData;
           }
         }
       }
-      return paramawbw;
+      return paramawgf;
     }
   }
   
@@ -135,12 +135,12 @@ public class suv
     finally {}
   }
   
-  private void a(QQAppInterface paramQQAppInterface, awbw paramawbw, TroopBarData paramTroopBarData)
+  private void a(QQAppInterface paramQQAppInterface, awgf paramawgf, TroopBarData paramTroopBarData)
   {
     if (paramTroopBarData == null) {
       return;
     }
-    paramawbw = (TroopBarData)this.jdField_a_of_type_JavaUtilMap.get(paramTroopBarData.mUin);
+    paramawgf = (TroopBarData)this.jdField_a_of_type_JavaUtilMap.get(paramTroopBarData.mUin);
     synchronized (this.jdField_a_of_type_JavaUtilMap)
     {
       this.jdField_a_of_type_JavaUtilMap.put(paramTroopBarData.mUin, paramTroopBarData);
@@ -151,8 +151,8 @@ public class suv
       {
         if (this.jdField_a_of_type_JavaUtilList != null)
         {
-          if (paramawbw != null) {
-            this.jdField_a_of_type_JavaUtilList.remove(paramawbw);
+          if (paramawgf != null) {
+            this.jdField_a_of_type_JavaUtilList.remove(paramawgf);
           }
           this.jdField_a_of_type_JavaUtilList.remove(paramTroopBarData);
           this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaUtilList.size(), paramTroopBarData);
@@ -161,10 +161,10 @@ public class suv
           }
         }
         a();
-        paramawbw = (ProxyManager)paramQQAppInterface.getManager(18);
+        paramawgf = (ProxyManager)paramQQAppInterface.getManager(18);
         if (paramTroopBarData.getStatus() == 1000)
         {
-          paramawbw.a(paramQQAppInterface.getAccount(), 0, paramTroopBarData.getTableName(), paramTroopBarData, 3, null);
+          paramawgf.a(paramQQAppInterface.getAccount(), 0, paramTroopBarData.getTableName(), paramTroopBarData, 3, null);
           paramQQAppInterface = (KandianMergeManager)paramQQAppInterface.getManager(162);
           paramQQAppInterface.k();
           paramQQAppInterface.b(null);
@@ -173,7 +173,7 @@ public class suv
           throw paramQQAppInterface;
         }
       }
-      paramawbw.a(paramQQAppInterface.getAccount(), 0, paramTroopBarData.getTableName(), paramTroopBarData, 4, null);
+      paramawgf.a(paramQQAppInterface.getAccount(), 0, paramTroopBarData.getTableName(), paramTroopBarData, 4, null);
     }
   }
   
@@ -202,7 +202,7 @@ public class suv
     }
   }
   
-  private boolean a(awbw paramawbw, String paramString)
+  private boolean a(awgf paramawgf, String paramString)
   {
     TroopBarData localTroopBarData;
     Object localObject2;
@@ -236,7 +236,7 @@ public class suv
         if (??? == null) {
           break;
         }
-        if (paramawbw.b((awbv)???)) {
+        if (paramawgf.b((awge)???)) {
           break label175;
         }
         if (QLog.isColorLevel()) {
@@ -245,8 +245,8 @@ public class suv
         return true;
       }
       finally {}
-      paramawbw = finally;
-      throw paramawbw;
+      paramawgf = finally;
+      throw paramawgf;
       label175:
       if (QLog.isColorLevel()) {
         QLog.i("TroopBarAssistantManager", 2, "remove TroopBarData " + ((TroopBarData)???).mUin + " from em success");
@@ -259,7 +259,7 @@ public class suv
   {
     int j = 0;
     Object localObject = (TroopManager)paramQQAppInterface.getManager(52);
-    amjk localamjk = paramQQAppInterface.a().a();
+    amnz localamnz = paramQQAppInterface.a().a();
     if (localObject == null) {
       return false;
     }
@@ -273,12 +273,12 @@ public class suv
     }
     if (i != 0)
     {
-      localObject = localamjk.a(aljq.ac, 7210);
+      localObject = localamnz.a(alof.ac, 7210);
       if (((RecentUser)localObject).lastmsgtime < paramLong) {
         ((RecentUser)localObject).lastmsgtime = paramLong;
       }
       if (b(paramQQAppInterface)) {
-        localamjk.a((RecentUser)localObject);
+        localamnz.a((RecentUser)localObject);
       }
     }
     for (;;)
@@ -295,9 +295,9 @@ public class suv
       ((RecentUser)localObject).lastmsgtime = localTroopBarData.mLastMsgTime;
       ((RecentUser)localObject).lastmsgdrafttime = localTroopBarData.mLastDraftTime;
       break;
-      localObject = localamjk.b(aljq.ac, 7210);
+      localObject = localamnz.b(alof.ac, 7210);
       if (localObject != null) {
-        localamjk.b((RecentUser)localObject);
+        localamnz.b((RecentUser)localObject);
       }
     }
   }
@@ -332,7 +332,7 @@ public class suv
     }
   }
   
-  private void b(awbw arg1, QQAppInterface paramQQAppInterface)
+  private void b(awgf arg1, QQAppInterface paramQQAppInterface)
   {
     for (;;)
     {
@@ -489,7 +489,7 @@ public class suv
         {
           this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
           Object localObject = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getString("troopbar_assist_new_unread_list", "");
-          if (bjxj.b()) {
+          if (bkbq.b()) {
             QLog.i("TroopBarAssistantManager", 2, "changeAccount, get newMsgStr from sp:" + (String)localObject);
           }
           try
@@ -518,7 +518,7 @@ public class suv
               QLog.e("TroopBarAssistantManager", 2, "initNewMsgMapIfNeeds:" + paramQQAppInterface.toString());
             }
             this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-            if (bjxj.b()) {
+            if (bkbq.b()) {
               QLog.i("TroopBarAssistantManager", 2, "initNewMsgMapIfNeeds, succ");
             }
           }
@@ -611,9 +611,9 @@ public class suv
   public int a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
     int i = 0;
-    abol localabol = paramQQAppInterface.a();
+    abta localabta = paramQQAppInterface.a();
     Object localObject1 = paramQQAppInterface.a();
-    if ((localabol == null) || (localObject1 == null))
+    if ((localabta == null) || (localObject1 == null))
     {
       if (QLog.isColorLevel()) {
         QLog.w("TroopBarAssistantManager", 2, "countAllSubscriptionUnread getConversationFacade fail");
@@ -646,7 +646,7 @@ public class suv
           localObject1 = paramQQAppInterface.a().b(localTroopBarData.mUin, 1008);
           if ((localObject1 != null) && (ssp.d(paramQQAppInterface, ((MessageRecord)localObject1).frienduin)))
           {
-            j = localabol.a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop);
+            j = localabta.a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop);
             if (!paramBoolean) {
               break label201;
             }
@@ -675,7 +675,7 @@ public class suv
   
   public long a(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = paramQQAppInterface.a().a().a(aljq.ac, 7210);
+    paramQQAppInterface = paramQQAppInterface.a().a().a(alof.ac, 7210);
     long l = 0L;
     if (paramQQAppInterface != null) {
       l = paramQQAppInterface.lastmsgtime;
@@ -737,7 +737,7 @@ public class suv
   
   public String a(String paramString, QQAppInterface paramQQAppInterface)
   {
-    paramString = ((aluw)paramQQAppInterface.getManager(56)).a(paramString);
+    paramString = ((alzl)paramQQAppInterface.getManager(56)).a(paramString);
     if (paramString != null) {
       return paramString.name;
     }
@@ -817,13 +817,13 @@ public class suv
     }
   }
   
-  public void a(awbw paramawbw, QQAppInterface paramQQAppInterface)
+  public void a(awgf paramawgf, QQAppInterface paramQQAppInterface)
   {
     try
     {
       a(paramQQAppInterface);
-      amjk localamjk = paramQQAppInterface.a().a();
-      Object localObject2 = localamjk.a(false);
+      amnz localamnz = paramQQAppInterface.a().a();
+      Object localObject2 = localamnz.a(false);
       long l = System.currentTimeMillis() / 1000L;
       Object localObject1 = new ArrayList();
       Object localObject3;
@@ -845,7 +845,7 @@ public class suv
         if (((Iterator)localObject1).hasNext())
         {
           localObject2 = (RecentUser)((Iterator)localObject1).next();
-          localObject3 = a(paramawbw, paramQQAppInterface, ((RecentUser)localObject2).uin);
+          localObject3 = a(paramawgf, paramQQAppInterface, ((RecentUser)localObject2).uin);
           ((TroopBarData)localObject3).mLastDraftTime = ((RecentUser)localObject2).lastmsgdrafttime;
           QQMessageFacade.Message localMessage;
           if (((RecentUser)localObject2).lastmsgtime == 0L)
@@ -855,8 +855,8 @@ public class suv
           }
           for (((TroopBarData)localObject3).mLastMsgTime = localMessage.time;; ((TroopBarData)localObject3).mLastMsgTime = ((RecentUser)localObject2).lastmsgtime)
           {
-            a(paramQQAppInterface, paramawbw, (TroopBarData)localObject3);
-            localamjk.b((RecentUser)localObject2);
+            a(paramQQAppInterface, paramawgf, (TroopBarData)localObject3);
+            localamnz.b((RecentUser)localObject2);
             e(((TroopBarData)localObject3).mUin, paramQQAppInterface);
             break;
           }
@@ -866,7 +866,7 @@ public class suv
       paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("init_troopbar_assist", false).commit();
       return;
     }
-    catch (Exception paramawbw) {}
+    catch (Exception paramawgf) {}
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -880,9 +880,9 @@ public class suv
         if (i != 0)
         {
           ??? = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-          b((awbw)???, paramQQAppInterface);
-          ((awbw)???).a();
-          paramQQAppInterface = ((aluw)paramQQAppInterface.getManager(56)).a();
+          b((awgf)???, paramQQAppInterface);
+          ((awgf)???).a();
+          paramQQAppInterface = ((alzl)paramQQAppInterface.getManager(56)).a();
           if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
           {
             this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
@@ -909,12 +909,12 @@ public class suv
     }
     this.jdField_a_of_type_Long = paramLong;
     paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putLong("troopbar_assist_last_read_time", paramLong).commit();
-    RecentUser localRecentUser = paramQQAppInterface.a().a().a(aljq.ac, 7210);
+    RecentUser localRecentUser = paramQQAppInterface.a().a().a(alof.ac, 7210);
     if (localRecentUser != null) {
       localRecentUser.lastmsgtime = paramLong;
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    if (bjxj.b()) {
+    if (bkbq.b()) {
       QLog.i("TroopBarAssistantManager", 2, "setLastReadTime, newMsgStr clear in memory");
     }
     l(paramQQAppInterface);
@@ -930,7 +930,7 @@ public class suv
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(0));
     }
     l(paramQQAppInterface);
-    ajgm.b(paramQQAppInterface, paramString, syb.b(paramQQAppInterface, paramString));
+    ajlb.b(paramQQAppInterface, paramString, syb.b(paramQQAppInterface, paramString));
   }
   
   public void a(QQAppInterface paramQQAppInterface, List<PublicAccountInfo> paramList)
@@ -939,10 +939,10 @@ public class suv
     do
     {
       return;
-      if (((aluw)paramQQAppInterface.getManager(56)).jdField_a_of_type_Boolean) {
+      if (((alzl)paramQQAppInterface.getManager(56)).jdField_a_of_type_Boolean) {
         break;
       }
-    } while (!bjxj.b());
+    } while (!bkbq.b());
     QLog.w("TroopBarAssistantManager", 2, "refreshSettings but padm not cached");
     return;
     this.d = true;
@@ -977,21 +977,21 @@ public class suv
     {
       if (i != 0)
       {
-        localObject = paramQQAppInterface.a().a().a(aljq.ac, 7210);
+        localObject = paramQQAppInterface.a().a().a(alof.ac, 7210);
         if (paramMessageRecord.time >= ((RecentUser)localObject).lastmsgtime) {
           c(paramQQAppInterface, false);
         }
       }
       Object localObject = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      a(paramMessageRecord, paramMessageRecord.frienduin, paramMessageRecord.time, (awbw)localObject, paramQQAppInterface);
-      ((awbw)localObject).a();
+      a(paramMessageRecord, paramMessageRecord.frienduin, paramMessageRecord.time, (awgf)localObject, paramQQAppInterface);
+      ((awgf)localObject).a();
       return;
     }
   }
   
-  public void a(MessageRecord paramMessageRecord, String paramString, long paramLong, awbw paramawbw, QQAppInterface paramQQAppInterface)
+  public void a(MessageRecord paramMessageRecord, String paramString, long paramLong, awgf paramawgf, QQAppInterface paramQQAppInterface)
   {
-    TroopBarData localTroopBarData = a(paramawbw, paramQQAppInterface, paramString);
+    TroopBarData localTroopBarData = a(paramawgf, paramQQAppInterface, paramString);
     if ((paramMessageRecord != null) && (paramMessageRecord.time > paramLong))
     {
       localTroopBarData.mLastMsgTime = paramMessageRecord.time;
@@ -1009,7 +1009,7 @@ public class suv
           localTroopBarData.mLatestMessage = localMessage;
         }
       }
-      a(paramQQAppInterface, paramawbw, localTroopBarData);
+      a(paramQQAppInterface, paramawgf, localTroopBarData);
       a(paramMessageRecord, paramString, paramQQAppInterface);
       if (this.c) {
         a(paramQQAppInterface, false);
@@ -1023,16 +1023,16 @@ public class suv
   
   public void a(String paramString, QQAppInterface paramQQAppInterface)
   {
-    awbw localawbw = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if (a(localawbw, paramString)) {
+    awgf localawgf = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if (a(localawgf, paramString)) {
       d(paramString, paramQQAppInterface);
     }
-    localawbw.a();
+    localawgf.a();
   }
   
-  public void a(String paramString, QQAppInterface paramQQAppInterface, Context paramContext, alvc paramalvc)
+  public void a(String paramString, QQAppInterface paramQQAppInterface, Context paramContext, alzr paramalzr)
   {
-    syb.a(paramQQAppInterface, paramContext, paramString, true, paramalvc);
+    syb.a(paramQQAppInterface, paramContext, paramString, true, paramalzr);
   }
   
   public void a(String paramString, QQAppInterface paramQQAppInterface, boolean paramBoolean)
@@ -1059,9 +1059,9 @@ public class suv
     {
       if (this.jdField_a_of_type_JavaUtilList == null)
       {
-        awbw localawbw = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-        b(localawbw, paramQQAppInterface);
-        localawbw.a();
+        awgf localawgf = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+        b(localawgf, paramQQAppInterface);
+        localawgf.a();
       }
       return this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
     }
@@ -1204,7 +1204,7 @@ public class suv
   
   public List<PublicAccountInfo> c(QQAppInterface paramQQAppInterface)
   {
-    Object localObject = ((aluw)paramQQAppInterface.getManager(56)).a();
+    Object localObject = ((alzl)paramQQAppInterface.getManager(56)).a();
     if (localObject != null)
     {
       ArrayList localArrayList = new ArrayList();
@@ -1224,7 +1224,7 @@ public class suv
   public void c(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    if (bjxj.b()) {
+    if (bkbq.b()) {
       QLog.i("TroopBarAssistantManager", 2, "setFirstEnterFeeds, newMsgStr clear in memory");
     }
     l(paramQQAppInterface);
@@ -1289,11 +1289,11 @@ public class suv
   
   public void f(QQAppInterface paramQQAppInterface)
   {
-    amjk localamjk = paramQQAppInterface.a().a();
-    awbw localawbw = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    amnz localamnz = paramQQAppInterface.a().a();
+    awgf localawgf = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
     Object localObject2 = new ArrayList();
     Object localObject1 = new ArrayList();
-    ??? = localamjk.a(false);
+    ??? = localamnz.a(false);
     Object localObject4;
     if ((??? != null) && (((List)???).size() > 0))
     {
@@ -1331,7 +1331,7 @@ public class suv
       if (((Iterator)localObject2).hasNext())
       {
         ??? = (RecentUser)((Iterator)localObject2).next();
-        localObject4 = a(localawbw, paramQQAppInterface, ((RecentUser)???).uin);
+        localObject4 = a(localawgf, paramQQAppInterface, ((RecentUser)???).uin);
         if (((RecentUser)???).lastmsgtime == 0L)
         {
           localObject5 = paramQQAppInterface.a().a(((TroopBarData)localObject4).mUin, 1008);
@@ -1339,8 +1339,8 @@ public class suv
         }
         for (((TroopBarData)localObject4).mLastMsgTime = ((QQMessageFacade.Message)localObject5).time;; ((TroopBarData)localObject4).mLastMsgTime = ((RecentUser)???).lastmsgtime)
         {
-          a(paramQQAppInterface, localawbw, (TroopBarData)localObject4);
-          localamjk.b((RecentUser)???);
+          a(paramQQAppInterface, localawgf, (TroopBarData)localObject4);
+          localamnz.b((RecentUser)???);
           e(((RecentUser)???).uin, paramQQAppInterface);
           break;
         }
@@ -1352,26 +1352,26 @@ public class suv
       while (((Iterator)localObject2).hasNext())
       {
         ??? = (TroopBarData)((Iterator)localObject2).next();
-        localObject4 = localamjk.a(((TroopBarData)???).mUin, 1008);
+        localObject4 = localamnz.a(((TroopBarData)???).mUin, 1008);
         ((RecentUser)localObject4).uin = ((TroopBarData)???).mUin;
         ((RecentUser)localObject4).setType(1008);
         ((RecentUser)localObject4).lastmsgtime = ((TroopBarData)???).mLastMsgTime;
         ((RecentUser)localObject4).lastmsgdrafttime = ((TroopBarData)???).mLastDraftTime;
-        if (bjxj.b())
+        if (bkbq.b())
         {
-          localObject1 = (aluw)paramQQAppInterface.getManager(56);
-          QLog.i("TroopBarAssistantManager", 2, "uinConfigMap size: " + this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.size() + ", pam cache: " + ((aluw)localObject1).jdField_a_of_type_Boolean);
+          localObject1 = (alzl)paramQQAppInterface.getManager(56);
+          QLog.i("TroopBarAssistantManager", 2, "uinConfigMap size: " + this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.size() + ", pam cache: " + ((alzl)localObject1).jdField_a_of_type_Boolean);
           QLog.i("TroopBarAssistantManager", 2, "to remove incognizance TroopBarData " + ((TroopBarData)???).mUin + " from dataList");
         }
-        if (a(localawbw, ((TroopBarData)???).mUin))
+        if (a(localawgf, ((TroopBarData)???).mUin))
         {
           if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap == null) {}
           for (localObject1 = null;; localObject1 = (PublicAccountInfo)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(((TroopBarData)???).mUin))
           {
             if (localObject1 != null) {
-              localamjk.a((RecentUser)localObject4);
+              localamnz.a((RecentUser)localObject4);
             }
-            if (bjxj.b()) {
+            if (bkbq.b()) {
               QLog.i("TroopBarAssistantManager", 2, "to remove incognizance uin " + ((TroopBarData)???).mUin + " from newMsgSet");
             }
             d(((TroopBarData)???).mUin, paramQQAppInterface);
@@ -1384,8 +1384,8 @@ public class suv
     if (localObject1 != null) {
       a(paramQQAppInterface, ((TroopBarData)localObject1).mLastMsgTime);
     }
-    if (localawbw != null) {
-      localawbw.a();
+    if (localawgf != null) {
+      localawgf.a();
     }
   }
   
@@ -1428,9 +1428,9 @@ public class suv
       k(paramQQAppInterface);
       if (a(paramQQAppInterface) == true)
       {
-        awbw localawbw = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-        a(localawbw, paramQQAppInterface);
-        localawbw.a();
+        awgf localawgf = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+        a(localawgf, paramQQAppInterface);
+        localawgf.a();
       }
       b(paramQQAppInterface);
       return;

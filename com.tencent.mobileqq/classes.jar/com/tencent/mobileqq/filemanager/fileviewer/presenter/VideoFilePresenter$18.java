@@ -1,38 +1,38 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.os.Handler;
-import aris;
-import arke;
+import arnb;
+import aron;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class VideoFilePresenter$18
   implements Runnable
 {
-  public VideoFilePresenter$18(aris paramaris) {}
+  public VideoFilePresenter$18(arnb paramarnb) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Arke.d(aris.a(this.this$0));
+    this.this$0.jdField_a_of_type_Aron.d(arnb.a(this.this$0));
     if (this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {}
-    while ((aris.b(this.this$0)) || (!this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying())) {
+    while ((arnb.b(this.this$0)) || (!this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying())) {
       return;
     }
     int i = (int)this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
     int j = (int)this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
-    this.this$0.jdField_a_of_type_Arke.b(i);
-    if ((!aris.c(this.this$0)) && (i > aris.b(this.this$0))) {
-      aris.b(this.this$0, i);
+    this.this$0.jdField_a_of_type_Aron.b(i);
+    if ((!arnb.c(this.this$0)) && (i > arnb.b(this.this$0))) {
+      arnb.b(this.this$0, i);
     }
     float f = i / j;
     if (f <= 0.001D)
     {
-      aris.a(this.this$0).postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 100L);
+      arnb.a(this.this$0).postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 100L);
       return;
     }
-    if (i >= aris.a(this.this$0)) {
-      this.this$0.jdField_a_of_type_Arke.c((int)(f * 10000.0F));
+    if (i >= arnb.a(this.this$0)) {
+      this.this$0.jdField_a_of_type_Aron.c((int)(f * 10000.0F));
     }
-    aris.a(this.this$0).postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 100L);
+    arnb.a(this.this$0).postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 100L);
   }
 }
 

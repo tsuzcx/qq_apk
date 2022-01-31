@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.servlet;
 
-import ayxi;
+import azbr;
 
 class LoginVerifyServlet$3$2
   implements Runnable

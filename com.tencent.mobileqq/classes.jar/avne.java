@@ -1,45 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_write.DelFeedRsp;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
 
-final class avne
-  implements auyy
+class avne
+  implements Animation.AnimationListener
 {
-  avne(avnh paramavnh, String paramString) {}
+  avne(avmf paramavmf) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    boolean bool = true;
-    if (paramInt == 0) {
-      paramBundle = new ilive_feeds_write.DelFeedRsp();
-    }
-    for (;;)
+    if (paramAnimation == avmf.b(this.a))
     {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramInt = paramBundle.ret.get();
-        if (paramInt == 0)
-        {
-          if (this.jdField_a_of_type_Avnh != null) {
-            this.jdField_a_of_type_Avnh.a(bool, this.jdField_a_of_type_JavaLangString);
-          }
-          return;
-        }
-        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, ret=" + paramInt + ",msg=" + paramBundle.err_msg.get().toStringUtf8());
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, e=" + paramArrayOfByte.toString());
-        continue;
-      }
-      bool = false;
-      continue;
-      QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
+      avmf.a(this.a).setVisibility(8);
+      avmf.a(this.a).setVisibility(4);
+      avmf.a(this.a).clearAnimation();
+      avmf.a(this.a).clearAnimation();
+      avmf.a(this.a).setBackgroundResource(2130848660);
+      avmf.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166606));
+      avmf.b(this.a).setTextColor(this.a.a.getResources().getColor(2131166606));
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (paramAnimation == avmf.a(this.a))
+    {
+      avmf.a(this.a).setVisibility(0);
+      avmf.a(this.a).setVisibility(0);
+      avmf.a(this.a).setBackgroundResource(2130850060);
+      avmf.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166897));
+      avmf.b(this.a).setTextColor(this.a.a.getResources().getColor(2131166897));
     }
   }
 }

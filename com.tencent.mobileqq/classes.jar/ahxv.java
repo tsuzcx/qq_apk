@@ -1,23 +1,76 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.graphics.Color;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class ahxv
-  implements View.OnClickListener
+  extends RecyclerView.Adapter
 {
-  public ahxv(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public List<String> a = new ArrayList();
   
-  public void onClick(View paramView)
+  public ahxv(List<String> paramList)
   {
-    paramView = new ArrayList();
-    Iterator localIterator = this.a.a.b.iterator();
-    while (localIterator.hasNext()) {
-      paramView.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
+    if (paramList != null)
+    {
+      this.a.clear();
+      this.a.addAll(paramList);
     }
-    ChatHistoryTroopMemberFragment.a(this.a, paramView);
+  }
+  
+  public int getItemCount()
+  {
+    if (this.a != null) {
+      return this.a.size();
+    }
+    return 0;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    paramViewHolder = ((ahxw)paramViewHolder).a;
+    if (!TextUtils.isEmpty((String)this.a.get(paramInt)))
+    {
+      if (paramInt != 0) {
+        break label92;
+      }
+      String str = (String)this.a.get(paramInt);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mFailedDrawable = bayu.a;
+      localURLDrawableOptions.mLoadingDrawable = bayu.a;
+      localURLDrawableOptions.mPlayGifImage = awkr.a(str);
+      localURLDrawableOptions.mUseAutoScaleParams = true;
+      paramViewHolder.setImageDrawable(URLDrawable.getFileDrawable(str, localURLDrawableOptions));
+    }
+    label92:
+    do
+    {
+      return;
+      if (paramInt == 1)
+      {
+        paramViewHolder.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        paramViewHolder.setPadding(0, 0, 0, 0);
+        paramViewHolder.setImageDrawable(null);
+        paramViewHolder.setBackgroundColor(Color.parseColor("#9A989EB4"));
+        return;
+      }
+    } while (paramInt != 2);
+    paramViewHolder.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    paramViewHolder.setPadding(0, 0, 0, 0);
+    paramViewHolder.setImageDrawable(null);
+    paramViewHolder.setBackgroundColor(Color.parseColor("#48989EB4"));
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new ahxw(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559059, paramViewGroup, false));
   }
 }
 

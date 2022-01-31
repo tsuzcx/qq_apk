@@ -29,9 +29,9 @@ public class mte
       int[] arrayOfInt = new int[5];
       localmwz.a(2131689581);
       arrayOfInt[0] = 1;
-      localmwz.b(2131720898);
+      localmwz.b(2131720910);
       arrayOfInt[1] = 2;
-      localmwz.b(2131720920);
+      localmwz.b(2131720932);
       localmwz.c(2131690648);
       localmwz.a(new mtf());
       localmwz.a(new mtg(localmwz, arrayOfInt, paramSessionInfo, paramQQAppInterface, paramContext, paramInt));
@@ -39,10 +39,10 @@ public class mte
     } while (paramInt != 3);
     if (paramSessionInfo.jdField_a_of_type_Int == 1)
     {
-      azmj.b(paramQQAppInterface, "CliOper", "", "", "0X800A517", "0X800A517", 0, 2, "", "", "", "");
+      azqs.b(paramQQAppInterface, "CliOper", "", "", "0X800A517", "0X800A517", 0, 2, "", "", "", "");
       return;
     }
-    azmj.b(paramQQAppInterface, "CliOper", "", "", "0X800A517", "0X800A517", 0, 1, "", "", "", "");
+    azqs.b(paramQQAppInterface, "CliOper", "", "", "0X800A517", "0X800A517", 0, 1, "", "", "", "");
   }
   
   private static void b(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, boolean paramBoolean)
@@ -55,7 +55,7 @@ public class mte
     if (!paramBoolean) {}
     for (paramBoolean = bool;; paramBoolean = false)
     {
-      agbu.a(paramQQAppInterface, paramContext, paramSessionInfo, 10, paramBoolean, paramQQAppInterface.c(), "");
+      aggj.a(paramQQAppInterface, paramContext, paramSessionInfo, 10, paramBoolean, paramQQAppInterface.c(), "");
       return;
     }
   }
@@ -67,13 +67,13 @@ public class mte
     {
       return;
       QLog.w(jdField_a_of_type_JavaLangString, 1, "enterC2CAudioVideo,, isAudio[" + paramBoolean + "], fromType[" + paramInt + "], msgSelfUin[" + paramQQAppInterface.c() + "], uinType[" + paramSessionInfo.jdField_a_of_type_Int + "], groupId[" + paramSessionInfo.jdField_a_of_type_JavaLangString + "], curFriendNick[" + paramSessionInfo.d + "], troopUin[" + paramSessionInfo.b + "]");
-      localObject = (aubm)paramQQAppInterface.getManager(11);
+      localObject = (aufv)paramQQAppInterface.getManager(11);
     } while (localObject == null);
     String str;
     if (paramSessionInfo.jdField_a_of_type_Int == 1006) {
-      str = ((aubm)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
+      str = ((aufv)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
     }
-    for (Object localObject = paramSessionInfo.jdField_a_of_type_JavaLangString;; localObject = ((aubm)localObject).b(str))
+    for (Object localObject = paramSessionInfo.jdField_a_of_type_JavaLangString;; localObject = ((aufv)localObject).b(str))
     {
       ChatActivityUtils.a(paramQQAppInterface, paramContext, paramSessionInfo.jdField_a_of_type_Int, str, paramSessionInfo.d, (String)localObject, paramBoolean, paramSessionInfo.b, true, true, null, "from_internal", paramMap);
       return;

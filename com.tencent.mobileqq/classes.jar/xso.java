@@ -1,203 +1,107 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.net.URL;
 
-public class xso
-  extends Drawable
+class xso
+  implements URLDrawable.DownloadListener, URLDrawable.URLDrawableListener
 {
-  public float a;
-  public int a;
-  public Bitmap a;
-  public BitmapShader a;
-  public Paint a;
-  public Path a;
-  public RectF a;
-  public boolean a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
+  public static String c;
+  public static int f = 1;
+  public static int g = 2;
+  public static int h = 4;
+  public static int i = 8;
+  public static int j = 16;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  String jdField_a_of_type_JavaLangString;
+  xsq jdField_a_of_type_Xsq;
+  int jdField_b_of_type_Int = 0;
+  long jdField_b_of_type_Long = 0L;
+  String jdField_b_of_type_JavaLangString = "";
+  int c;
+  int d = 0;
+  int e = 0;
   
-  public xso()
+  static
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+    jdField_c_of_type_JavaLangString = "story_url_drawable";
   }
   
-  private void a()
+  public xso(xsq paramxsq, URLDrawable paramURLDrawable, String paramString)
   {
-    Matrix localMatrix = new Matrix();
-    localMatrix.set(null);
-    int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    localMatrix.postScale(getIntrinsicWidth() / i, getIntrinsicHeight() / j);
-    localMatrix.postTranslate(this.jdField_a_of_type_AndroidGraphicsRectF.left, this.jdField_a_of_type_AndroidGraphicsRectF.top);
-    this.jdField_a_of_type_AndroidGraphicsBitmapShader.setLocalMatrix(localMatrix);
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+    this.jdField_a_of_type_Xsq = paramxsq;
+    this.jdField_a_of_type_JavaLangString = paramURLDrawable.getURL().toString();
+    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  private void a(int paramInt, Path paramPath)
+  void a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      a(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
-      return;
-    case 1: 
-      c(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
-      return;
-    case 2: 
-      b(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
-      return;
-    }
-    d(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.jdField_b_of_type_Long;
+    wxj.b(jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 0, this.jdField_b_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_Long), String.valueOf(l1 - l2), String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString });
   }
   
-  private void a(Canvas paramCanvas)
+  public void onFileDownloadFailed(int paramInt)
   {
-    switch (this.jdField_c_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      a(this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPath);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      do
-      {
-        return;
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-        break;
-      } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmapShader == null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-      }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader);
-      a();
-    }
+    this.jdField_b_of_type_Int |= g;
+    this.jdField_a_of_type_Int = paramInt;
+    wxe.a("Q.qqstory.UIUtils", "onFileDownloadFailed() %s, error(%d), %s, %d", this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt), this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
   }
   
-  private void a(RectF paramRectF, Path paramPath)
+  public void onFileDownloadStarted()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.d = ((paramRectF.bottom - paramRectF.top) / 2.0F - this.jdField_a_of_type_Float / 2.0F);
-    }
-    paramPath.moveTo(this.jdField_a_of_type_Float + paramRectF.left + this.jdField_b_of_type_Float, paramRectF.top);
-    paramPath.lineTo(paramRectF.width() - this.jdField_b_of_type_Float, paramRectF.top);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.top, paramRectF.right, this.jdField_b_of_type_Float + paramRectF.top), 270.0F, 90.0F);
-    paramPath.lineTo(paramRectF.right, paramRectF.bottom - this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float, paramRectF.right, paramRectF.bottom), 0.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float + this.jdField_b_of_type_Float, paramRectF.bottom);
-    paramPath.arcTo(new RectF(paramRectF.left + this.jdField_a_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float, this.jdField_b_of_type_Float + paramRectF.left + this.jdField_a_of_type_Float, paramRectF.bottom), 90.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float, this.jdField_c_of_type_Float + this.d);
-    paramPath.lineTo(paramRectF.left, this.d + this.jdField_c_of_type_Float / 2.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float, this.d);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float, paramRectF.top + this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.left + this.jdField_a_of_type_Float, paramRectF.top, this.jdField_b_of_type_Float + paramRectF.left + this.jdField_a_of_type_Float, this.jdField_b_of_type_Float + paramRectF.top), 180.0F, 90.0F);
-    paramPath.close();
+    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    wxe.a("Q.qqstory.UIUtils", "onFileDownloadStarted() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
   }
   
-  private void b(RectF paramRectF, Path paramPath)
+  public void onFileDownloadSucceed(long paramLong)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.d = ((paramRectF.right - paramRectF.left) / 2.0F - this.jdField_a_of_type_Float / 2.0F);
-    }
-    paramPath.moveTo(paramRectF.left + Math.min(this.d, this.jdField_b_of_type_Float), paramRectF.top + this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.left + this.d, paramRectF.top + this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float / 2.0F + this.d, paramRectF.top);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float + this.d, paramRectF.top + this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.top + this.jdField_c_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.top + this.jdField_c_of_type_Float, paramRectF.right, this.jdField_b_of_type_Float + paramRectF.top + this.jdField_c_of_type_Float), 270.0F, 90.0F);
-    paramPath.lineTo(paramRectF.right, paramRectF.bottom - this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float, paramRectF.right, paramRectF.bottom), 0.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_b_of_type_Float, paramRectF.bottom);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.bottom - this.jdField_b_of_type_Float, this.jdField_b_of_type_Float + paramRectF.left, paramRectF.bottom), 90.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left, paramRectF.top + this.jdField_c_of_type_Float + this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.top + this.jdField_c_of_type_Float, this.jdField_b_of_type_Float + paramRectF.left, this.jdField_b_of_type_Float + paramRectF.top + this.jdField_c_of_type_Float), 180.0F, 90.0F);
-    paramPath.close();
+    this.jdField_b_of_type_Int |= f;
+    this.jdField_a_of_type_Long = paramLong;
+    wxe.a("Q.qqstory.UIUtils", "onFileDownloadSucceed() %s, %d, %s, %d", this.jdField_a_of_type_JavaLangString, Long.valueOf(paramLong), this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
   }
   
-  private void c(RectF paramRectF, Path paramPath)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.d = ((paramRectF.bottom - paramRectF.top) / 2.0F - this.jdField_a_of_type_Float / 2.0F);
-    }
-    paramPath.moveTo(paramRectF.left + this.jdField_b_of_type_Float, paramRectF.top);
-    paramPath.lineTo(paramRectF.width() - this.jdField_b_of_type_Float - this.jdField_a_of_type_Float, paramRectF.top);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float - this.jdField_a_of_type_Float, paramRectF.top, paramRectF.right - this.jdField_a_of_type_Float, this.jdField_b_of_type_Float + paramRectF.top), 270.0F, 90.0F);
-    paramPath.lineTo(paramRectF.right - this.jdField_a_of_type_Float, this.d);
-    paramPath.lineTo(paramRectF.right, this.d + this.jdField_c_of_type_Float / 2.0F);
-    paramPath.lineTo(paramRectF.right - this.jdField_a_of_type_Float, this.d + this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.right - this.jdField_a_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float - this.jdField_a_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float, paramRectF.right - this.jdField_a_of_type_Float, paramRectF.bottom), 0.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float, paramRectF.bottom);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.bottom - this.jdField_b_of_type_Float, this.jdField_b_of_type_Float + paramRectF.left, paramRectF.bottom), 90.0F, 90.0F);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.top, this.jdField_b_of_type_Float + paramRectF.left, this.jdField_b_of_type_Float + paramRectF.top), 180.0F, 90.0F);
-    paramPath.close();
+    this.jdField_b_of_type_Int |= j;
+    wxe.a("Q.qqstory.UIUtils", "onLoadCanceled() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    a();
+    this.e += 1;
+    this.jdField_a_of_type_Xsq.a(this);
   }
   
-  private void d(RectF paramRectF, Path paramPath)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.d = ((paramRectF.right - paramRectF.left) / 2.0F - this.jdField_a_of_type_Float / 2.0F);
-    }
-    paramPath.moveTo(paramRectF.left + this.jdField_b_of_type_Float, paramRectF.top);
-    paramPath.lineTo(paramRectF.width() - this.jdField_b_of_type_Float, paramRectF.top);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.top, paramRectF.right, this.jdField_b_of_type_Float + paramRectF.top), 270.0F, 90.0F);
-    paramPath.lineTo(paramRectF.right, paramRectF.bottom - this.jdField_c_of_type_Float - this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float - this.jdField_c_of_type_Float, paramRectF.right, paramRectF.bottom - this.jdField_c_of_type_Float), 0.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float + this.d, paramRectF.bottom - this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.left + this.d + this.jdField_a_of_type_Float / 2.0F, paramRectF.bottom);
-    paramPath.lineTo(paramRectF.left + this.d, paramRectF.bottom - this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.left + Math.min(this.jdField_b_of_type_Float, this.d), paramRectF.bottom - this.jdField_c_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.bottom - this.jdField_b_of_type_Float - this.jdField_c_of_type_Float, this.jdField_b_of_type_Float + paramRectF.left, paramRectF.bottom - this.jdField_c_of_type_Float), 90.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left, paramRectF.top + this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.top, this.jdField_b_of_type_Float + paramRectF.left, this.jdField_b_of_type_Float + paramRectF.top), 180.0F, 90.0F);
-    paramPath.close();
+    this.jdField_b_of_type_Int |= i;
+    wxe.a("Q.qqstory.UIUtils", "onLoadFialed() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    a();
+    this.jdField_c_of_type_Int += 1;
+    this.jdField_a_of_type_Xsq.a(this);
   }
   
-  public void draw(Canvas paramCanvas)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    a(paramCanvas);
+    wxe.a("Q.qqstory.UIUtils", "onLoadProgressed(%d/10000%%) %s, %s, %d", Integer.valueOf(paramInt), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
   }
   
-  public int getIntrinsicHeight()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return (int)this.jdField_a_of_type_AndroidGraphicsRectF.height();
+    this.jdField_b_of_type_Int |= h;
+    wxe.a("Q.qqstory.UIUtils", "onLoadSuccessed() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    a();
+    this.d += 1;
+    this.jdField_a_of_type_Xsq.a(this);
   }
   
-  public int getIntrinsicWidth()
+  public String toString()
   {
-    return (int)this.jdField_a_of_type_AndroidGraphicsRectF.width();
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  protected void onBoundsChange(Rect paramRect)
-  {
-    super.onBoundsChange(paramRect);
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    return "DrawableListenerHolder{url='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileSize=" + this.jdField_a_of_type_Long + ", startTime=" + this.jdField_b_of_type_Long + ", errorCode=" + this.jdField_a_of_type_Int + ", result=" + this.jdField_b_of_type_Int + ", loadFailTime=" + this.jdField_c_of_type_Int + ", loadSuccessTime=" + this.d + ", loadCancelTime=" + this.e + ", op_name='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 

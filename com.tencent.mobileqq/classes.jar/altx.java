@@ -1,28 +1,24 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-public class altx
-  extends awdo
+public final class altx
+  implements Comparator<String>
 {
-  public altx(PhoneContactManagerImp paramPhoneContactManagerImp) {}
-  
-  protected void a(boolean paramBoolean)
+  public int a(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, String.format("onQueryShowBindPhonePage result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (paramBoolean)
+    try
     {
-      paramBoolean = PhoneContactManagerImp.b(this.a, PhoneContactManagerImp.g(this.a));
-      PhoneContactManagerImp.d(this.a, paramBoolean);
+      long l1 = Long.parseLong(paramString1);
+      long l2 = Long.parseLong(paramString2);
+      if (l1 == l2) {
+        return 0;
+      }
+      if (l1 > l2) {
+        return 2;
+      }
+      return -1;
     }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, String.format("onSetShowBindPhonePageResult result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
+    catch (Exception paramString1) {}
+    return 0;
   }
 }
 

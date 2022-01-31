@@ -4,7 +4,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class lgi
-  extends alox
+  extends altm
 {
   lgi(lgh paramlgh) {}
   

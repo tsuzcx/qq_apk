@@ -1,24 +1,24 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bmhd;
-import bmix;
+import bmlp;
+import bmnj;
 
 public class EditVideoDoodle$9
   implements Runnable
 {
-  public EditVideoDoodle$9(bmhd parambmhd) {}
+  public EditVideoDoodle$9(bmlp parambmlp) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Int == 2) {
-      this.this$0.jdField_a_of_type_Bmix.f();
+      this.this$0.jdField_a_of_type_Bmnj.f();
     }
     for (;;)
     {
       this.this$0.jdField_a_of_type_Int = 1;
       return;
       if (this.this$0.jdField_a_of_type_Int == 3) {
-        this.this$0.jdField_a_of_type_Bmix.u();
+        this.this$0.jdField_a_of_type_Bmnj.u();
       }
     }
   }

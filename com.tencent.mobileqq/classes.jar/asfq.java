@@ -1,17 +1,16 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
+
 public class asfq
+  implements View.OnClickListener
 {
-  public int a;
-  public int b;
+  public asfq(LangSettingFragment paramLangSettingFragment) {}
   
-  public asfq(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public String toString()
-  {
-    return "Point{x=" + this.a + ", y=" + this.b + '}';
+    LangSettingFragment.a(this.a).dismiss();
   }
 }
 

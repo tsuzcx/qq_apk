@@ -1,19 +1,14 @@
-import com.tencent.tavcut.bean.CropConfig;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class blgb
+class blgb
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public CropConfig a;
-  public String a;
-  public int b;
+  blgb(blfz paramblfz, blab paramblab) {}
   
-  public blgb(String paramString, int paramInt1, int paramInt2, CropConfig paramCropConfig)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentTavcutBeanCropConfig = new CropConfig(0.0F, 0.0F, 1.0F, 1.0F);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_ComTencentTavcutBeanCropConfig = paramCropConfig;
+    blfz.a(this.jdField_a_of_type_Blfz, this.jdField_a_of_type_Blab);
   }
 }
 

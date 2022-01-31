@@ -1,23 +1,53 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.fragment.MessageSearchFragment;
-import com.tencent.widget.ListView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aygo
-  extends ayff<ayjl, ayru>
+  extends Handler
 {
-  public aygo(MessageSearchFragment paramMessageSearchFragment, ListView paramListView, bcws parambcws)
+  public aygo(ScribbleResMgr paramScribbleResMgr, Looper paramLooper)
   {
-    super(paramListView, parambcws);
+    super(paramLooper);
   }
   
-  protected aymg<ayjl, ayru> a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new aynd(this.a.a);
-  }
-  
-  protected ayrv a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new aytk(paramViewGroup, 2131562589);
+    if (QLog.isColorLevel()) {
+      QLog.d("ScribbleResMgr", 2, "handleMessage  status: " + paramMessage.what + " type: " + paramMessage.arg1);
+    }
+    if (paramMessage.what == 1001) {
+      ScribbleResMgr.a(this.a, paramMessage.arg1, paramMessage.arg2, true);
+    }
+    for (;;)
+    {
+      return;
+      if (paramMessage.what == 1002)
+      {
+        ScribbleResMgr.a(this.a, paramMessage.arg1, paramMessage.arg2, false);
+        return;
+      }
+      Iterator localIterator = ScribbleResMgr.a(this.a).iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (aygs)localIterator.next();
+        if (localObject != null)
+        {
+          View localView = ((aygs)localObject).a();
+          localObject = ((aygs)localObject).a();
+          if ((localView != null) && (localObject != null)) {
+            ((aygt)localObject).a(localView, paramMessage.arg1, (ScribbleResMgr.ResInfo)paramMessage.obj, paramMessage.what);
+          } else {
+            localIterator.remove();
+          }
+        }
+      }
+    }
   }
 }
 

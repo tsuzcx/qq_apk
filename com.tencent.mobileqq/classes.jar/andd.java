@@ -1,23 +1,81 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 
 class andd
-  implements Animator.AnimatorListener
+  implements andz
 {
-  andd(andc paramandc) {}
+  andd(andc paramandc, andg paramandg, ArCloudConfigInfo paramArCloudConfigInfo, anax paramanax) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    if (andc.a(this.a) != null) {
-      andc.a(this.a).a();
+    if (this.jdField_a_of_type_Andg != null) {
+      this.jdField_a_of_type_Andg.d();
     }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Andg != null) {
+      this.jdField_a_of_type_Andg.a(paramInt);
+    }
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    int j = 0;
+    int i = 0;
+    if (this.jdField_a_of_type_Andg != null) {
+      this.jdField_a_of_type_Andg.a(paramBoolean, paramInt, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    }
+    if (paramInt == 2)
+    {
+      this.jdField_a_of_type_Andc.jdField_d_of_type_Long = (System.currentTimeMillis() - this.jdField_a_of_type_Andc.jdField_a_of_type_Long);
+      localandc = this.jdField_a_of_type_Andc;
+      if (paramBoolean)
+      {
+        paramInt = i;
+        localandc.jdField_a_of_type_Int = paramInt;
+      }
+    }
+    while (paramInt != 3) {
+      for (;;)
+      {
+        return;
+        paramInt = 1;
+      }
+    }
+    this.jdField_a_of_type_Andc.g = (System.currentTimeMillis() - this.jdField_a_of_type_Andc.jdField_a_of_type_Long);
+    andc localandc = this.jdField_a_of_type_Andc;
+    if (paramBoolean) {}
+    for (paramInt = j;; paramInt = 1)
+    {
+      localandc.jdField_b_of_type_Int = paramInt;
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Andg != null) {
+      this.jdField_a_of_type_Andg.a(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    }
+    this.jdField_a_of_type_Andc.jdField_b_of_type_Long = System.currentTimeMillis();
+    andc localandc = this.jdField_a_of_type_Andc;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
+    {
+      localandc.jdField_d_of_type_Int = i;
+      this.jdField_a_of_type_Andc.e();
+      if (paramBoolean)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_b_of_type_Int != 1) {
+          andc.a(this.jdField_a_of_type_Andc, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.a.a, this.jdField_a_of_type_Anax);
+        }
+        andc.a(this.jdField_a_of_type_Andc, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+      }
+      return;
+    }
+  }
 }
 
 

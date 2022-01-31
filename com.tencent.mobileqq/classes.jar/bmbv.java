@@ -1,26 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
-import dov.com.qq.im.ptv.LightWeightProgress;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import dov.com.qq.im.capture.view.TransitionProviderView;
 
 public class bmbv
-  extends AnimatorListenerAdapter
+  extends blts
 {
-  public bmbv(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public bmbv(TransitionProviderView paramTransitionProviderView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation mProgressView 50ms end");
-    }
-  }
+  public void a(int paramInt) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean) {}
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    this.a.a.setStatus(true);
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation mProgressView begin");
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath().equals(paramString))) {
+      this.a.jdField_a_of_type_Bhtd.sendEmptyMessage(1);
     }
   }
 }

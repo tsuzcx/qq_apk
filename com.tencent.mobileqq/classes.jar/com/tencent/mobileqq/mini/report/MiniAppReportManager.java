@@ -7,10 +7,10 @@ import android.content.SharedPreferences;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.text.TextUtils;
-import awbv;
-import awbw;
-import awbx;
-import bexd;
+import awge;
+import awgf;
+import awgg;
+import bfbm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -101,7 +101,7 @@ public class MiniAppReportManager
         localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
         if ((localObject != null) && (paramMiniAppReportEntity != null))
         {
-          ((awbw)localObject).b(paramMiniAppReportEntity);
+          ((awgf)localObject).b(paramMiniAppReportEntity);
           return;
         }
       }
@@ -190,7 +190,7 @@ public class MiniAppReportManager
     }
     try
     {
-      long l = bexd.a().a();
+      long l = bfbm.a().a();
       localObject1 = localObject3;
       String str2 = paramMiniAppReportEntity.appId;
       localObject2 = str1;
@@ -308,16 +308,16 @@ public class MiniAppReportManager
     //   47: invokestatic 220	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   50: return
     //   51: aload_1
-    //   52: invokevirtual 226	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lawbx;
-    //   55: invokevirtual 232	awbx:createEntityManager	()Lawbw;
+    //   52: invokevirtual 226	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lawgg;
+    //   55: invokevirtual 232	awgg:createEntityManager	()Lawgf;
     //   58: astore_2
     //   59: aload_2
     //   60: ifnull -10 -> 50
     //   63: aload_2
-    //   64: invokevirtual 394	awbw:a	()Lawby;
+    //   64: invokevirtual 394	awgf:a	()Lawgh;
     //   67: astore_1
     //   68: aload_1
-    //   69: invokevirtual 398	awby:a	()V
+    //   69: invokevirtual 398	awgh:a	()V
     //   72: aload_0
     //   73: invokeinterface 402 1 0
     //   78: astore_0
@@ -330,7 +330,7 @@ public class MiniAppReportManager
     //   97: astore_3
     //   98: aload_2
     //   99: aload_3
-    //   100: invokestatic 415	com/tencent/mobileqq/mini/report/MiniAppReportManager:updateEntity	(Lawbw;Lawbv;)Z
+    //   100: invokestatic 415	com/tencent/mobileqq/mini/report/MiniAppReportManager:updateEntity	(Lawgf;Lawge;)Z
     //   103: pop
     //   104: invokestatic 347	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   107: ifeq -28 -> 79
@@ -354,7 +354,7 @@ public class MiniAppReportManager
     //   149: aload_0
     //   150: invokestatic 243	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   153: aload_1
-    //   154: invokevirtual 422	awby:b	()V
+    //   154: invokevirtual 422	awgh:b	()V
     //   157: return
     //   158: astore_0
     //   159: ldc 45
@@ -364,20 +364,20 @@ public class MiniAppReportManager
     //   166: invokestatic 243	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   169: return
     //   170: aload_1
-    //   171: invokevirtual 427	awby:c	()V
+    //   171: invokevirtual 427	awgh:c	()V
     //   174: aload_1
-    //   175: invokevirtual 422	awby:b	()V
+    //   175: invokevirtual 422	awgh:b	()V
     //   178: return
     //   179: astore_0
     //   180: aload_1
-    //   181: invokevirtual 422	awby:b	()V
+    //   181: invokevirtual 422	awgh:b	()V
     //   184: aload_0
     //   185: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	186	0	paramList	List<MiniAppReportEntity>
     //   3	178	1	localObject	Object
-    //   58	41	2	localawbw	awbw
+    //   58	41	2	localawgf	awgf
     //   97	30	3	localMiniAppReportEntity	MiniAppReportEntity
     // Exception table:
     //   from	to	target	type
@@ -468,7 +468,7 @@ public class MiniAppReportManager
           if (localObject1 == null) {
             break label75;
           }
-          localObject1 = ((awbw)localObject1).a(MiniAppReportEntity.class, MiniAppReportEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+          localObject1 = ((awgf)localObject1).a(MiniAppReportEntity.class, MiniAppReportEntity.class.getSimpleName(), false, null, null, null, null, null, null);
         }
       }
       catch (Throwable localThrowable)
@@ -696,31 +696,31 @@ public class MiniAppReportManager
     }
   }
   
-  private static boolean updateEntity(awbw paramawbw, awbv paramawbv)
+  private static boolean updateEntity(awgf paramawgf, awge paramawge)
   {
     boolean bool2 = false;
     boolean bool1 = false;
-    if (paramawbw.a()) {
-      if (paramawbv.getStatus() == 1000)
+    if (paramawgf.a()) {
+      if (paramawge.getStatus() == 1000)
       {
-        paramawbw.b(paramawbv);
-        if (paramawbv.getStatus() == 1001) {
+        paramawgf.b(paramawge);
+        if (paramawge.getStatus() == 1001) {
           bool1 = true;
         }
-        paramawbw.a();
+        paramawgf.a();
       }
     }
     do
     {
       return bool1;
-      if ((paramawbv.getStatus() != 1001) && (paramawbv.getStatus() != 1002)) {
+      if ((paramawge.getStatus() != 1001) && (paramawge.getStatus() != 1002)) {
         break;
       }
-      bool1 = paramawbw.a(paramawbv);
+      bool1 = paramawgf.a(paramawge);
       break;
       bool1 = bool2;
     } while (!QLog.isColorLevel());
-    QLog.d("MiniAppReportManager", 2, "updateEntity em closed e=" + paramawbv.getTableName());
+    QLog.d("MiniAppReportManager", 2, "updateEntity em closed e=" + paramawge.getTableName());
     return false;
   }
   

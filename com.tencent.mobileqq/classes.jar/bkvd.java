@@ -1,6 +1,24 @@
-public abstract interface bkvd
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
+
+class bkvd
+  implements Animator.AnimatorListener
 {
-  public abstract void a();
+  bkvd(bkuy parambkuy) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AEWaterMarkListPart", 2, "Watermark panel down");
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

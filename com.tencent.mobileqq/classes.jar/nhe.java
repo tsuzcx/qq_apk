@@ -20,7 +20,7 @@ class nhe
     }
     for (;;)
     {
-      azmj.b(this.jdField_a_of_type_Ngw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", this.jdField_a_of_type_Ngw.jdField_a_of_type_JavaLangString, "0X8006981", "0X8006981", 0, 0, String.valueOf(this.jdField_a_of_type_Nhq.a.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Nhq.a.d), String.valueOf(this.jdField_a_of_type_Nhq.a.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Nhq.a.jdField_b_of_type_Int));
+      azqs.b(this.jdField_a_of_type_Ngw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", this.jdField_a_of_type_Ngw.jdField_a_of_type_JavaLangString, "0X8006981", "0X8006981", 0, 0, String.valueOf(this.jdField_a_of_type_Nhq.a.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Nhq.a.d), String.valueOf(this.jdField_a_of_type_Nhq.a.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Nhq.a.jdField_b_of_type_Int));
       JSONObject localJSONObject = new JSONObject();
       if (!this.jdField_a_of_type_Ngw.jdField_a_of_type_Boolean) {}
       try
@@ -34,7 +34,7 @@ class nhe
         if (this.jdField_a_of_type_Ngw.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
         for (paramView = "02";; paramView = "01")
         {
-          azmj.b(localQQAppInterface, "dc01160", "Pb_account_lifeservice", str, "0X80077FA", "0X80077FA", 0, 0, String.valueOf(i), String.valueOf(l), paramView, localJSONObject.toString());
+          azqs.b(localQQAppInterface, "dc01160", "Pb_account_lifeservice", str, "0X80077FA", "0X80077FA", 0, 0, String.valueOf(i), String.valueOf(l), paramView, localJSONObject.toString());
           return;
           if ((this.jdField_a_of_type_Int != 2) || (this.jdField_a_of_type_Ngw.jdField_a_of_type_Nhu == null)) {
             break;

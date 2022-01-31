@@ -1,13 +1,12 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public abstract interface vnd
+class vnd
 {
-  public abstract void a();
+  public ImageView a;
+  public TextView a;
   
-  public abstract void a(@NonNull weh paramweh, ErrorMessage paramErrorMessage, boolean paramBoolean);
-  
-  public abstract void a(@NonNull weh paramweh, boolean paramBoolean);
+  vnd(vnc paramvnc) {}
 }
 
 

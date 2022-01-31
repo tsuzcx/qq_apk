@@ -1,6 +1,8 @@
+import com.tencent.mobileqq.remind.widget.WheelView;
+
 public abstract interface axmz
 {
-  public abstract void a(double paramDouble);
+  public abstract long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt);
 }
 
 

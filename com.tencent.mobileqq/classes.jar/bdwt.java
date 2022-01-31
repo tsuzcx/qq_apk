@@ -1,107 +1,99 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.mobileqq.vip.diy.ETTextViewPlus;
-import com.tencent.mobileqq.vip.diy.ProfileTemplateNickNameContainer;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class bdwt
-  extends bkbk
+  extends bdwi
 {
-  private String a;
-  private String b = "";
-  private int c = -1;
-  private int d = -1;
+  public static final bdwt a;
+  private List<bdwu> a;
   
-  public bdwt(String paramString1, View paramView, String paramString2)
+  static
   {
-    super(paramString1, paramView);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = paramString2;
+    jdField_a_of_type_Bdwt = new bdwt();
   }
   
-  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
+  private ArrayList<bdwu> a()
   {
-    paramLayoutParams.width = -1;
-    paramLayoutParams.height = -2;
-    int i = ((ViewGroup.MarginLayoutParams)paramLayoutParams).leftMargin;
-    ((ViewGroup.MarginLayoutParams)paramLayoutParams).leftMargin = 0;
-    if ((this.jdField_a_of_type_AndroidViewView instanceof ProfileTemplateNickNameContainer))
+    localArrayList = new ArrayList();
+    try
     {
-      ProfileTemplateNickNameContainer localProfileTemplateNickNameContainer = (ProfileTemplateNickNameContainer)this.jdField_a_of_type_AndroidViewView;
-      localProfileTemplateNickNameContainer.setTextViewX(i);
-      if ("center_horizontal".equals(paramJSONObject.optString("gravity"))) {
-        localProfileTemplateNickNameContainer.setTextCenter();
-      }
-    }
-    return paramLayoutParams;
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if ("f".equals(paramString1)) {}
-    for (;;)
-    {
-      try
+      JSONArray localJSONArray = new JSONObject(bdhb.b(new File(getSavePath(BaseApplicationImpl.getContext(), "namePlate_UrlConfig")))).getJSONArray("namePlateUrlConfig");
+      int i = 0;
+      while (i < localJSONArray.length())
       {
-        this.c = Integer.parseInt(paramString2);
-        if (QLog.isColorLevel()) {
-          QLog.d("DIYProfileTemplate.ProfileTemplateNickNameViewModule", 1, "parse name font id=" + this.c);
-        }
-        return;
+        JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+        bdwu localbdwu = new bdwu();
+        localbdwu.a = localJSONObject.optString("vipType");
+        localbdwu.b = localJSONObject.optString("itemId");
+        localbdwu.d = localJSONObject.optString("drawerUrl");
+        localbdwu.e = localJSONObject.optString("VaProfileUrl");
+        localbdwu.f = localJSONObject.optString("ctocUrl");
+        localbdwu.c = localJSONObject.optString("nameplateType");
+        localbdwu.g = localJSONObject.optString("VaProfileGuestUrl");
+        localbdwu.h = localJSONObject.optString("ctocGuestUrl");
+        localbdwu.i = localJSONObject.optString("ctocSettingUrl");
+        localbdwu.j = localJSONObject.optString("ctocSettingGuestUrl");
+        localArrayList.add(localbdwu);
+        i += 1;
       }
-      catch (NumberFormatException paramString1)
-      {
-        wsv.e("DIYProfileTemplate.ProfileTemplateNickNameViewModule", "pf_name font id illegal :" + paramString2 + " error=" + paramString1);
-        return;
-      }
-      if ("ft".equals(paramString1)) {
-        try
-        {
-          this.d = Integer.parseInt(paramString2);
-          if (QLog.isColorLevel())
-          {
-            QLog.d("DIYProfileTemplate.ProfileTemplateNickNameViewModule", 1, "parse name font type=" + this.d);
-            return;
-          }
-        }
-        catch (NumberFormatException paramString1)
-        {
-          wsv.e("DIYProfileTemplate.ProfileTemplateNickNameViewModule", "pf_name font type illegal :" + paramString2 + " error=" + paramString1);
-          return;
-        }
-      }
+      return localArrayList;
     }
-    if ("bg".equals(paramString1))
+    catch (Exception localException)
     {
-      this.jdField_a_of_type_JavaLangString = paramString2;
-      return;
+      localException.printStackTrace();
     }
-    super.a(paramString1, paramString2);
   }
   
-  protected void b()
+  public bdwu a(int paramInt1, int paramInt2, int paramInt3)
   {
-    super.b();
-    if ((this.jdField_a_of_type_AndroidViewView instanceof ProfileTemplateNickNameContainer))
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    try
     {
-      ETTextViewPlus localETTextViewPlus = ((ProfileTemplateNickNameContainer)this.jdField_a_of_type_AndroidViewView).a();
-      if ((this.c <= 0) || (this.d <= 0)) {
-        break label112;
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        this.jdField_a_of_type_JavaUtilList = a();
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("DIYProfileTemplate.ProfileTemplateNickNameViewModule", 1, "set name font id=" + this.c + " type=" + this.d);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        bdwu localbdwu = (bdwu)localIterator.next();
+        if ((localbdwu.a.equals(String.valueOf(paramInt1))) && (localbdwu.b.equals(String.valueOf(paramInt2))) && (localbdwu.c.equals(String.valueOf(paramInt3)))) {
+          return localbdwu;
+        }
       }
-      localETTextViewPlus.setFontAsync(this.c, this.d);
     }
-    for (;;)
-    {
-      ((ProfileTemplateNickNameContainer)this.jdField_a_of_type_AndroidViewView).setTextBgUrl(this.jdField_a_of_type_JavaLangString);
-      return;
-      label112:
-      wsv.e("DIYProfileTemplate.ProfileTemplateNickNameViewModule", "profile nick name set font error because font id=" + this.c + " type=" + this.d + " is illegal!");
-    }
+    finally {}
+    return null;
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    return super.isFileExists(paramQQAppInterface, getBID(), paramString);
+  }
+  
+  public long getBID()
+  {
+    return 34L;
+  }
+  
+  protected String getRootDir()
+  {
+    return "vipicon";
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "namePlate_UrlConfig";
+  }
+  
+  protected boolean isZip_KeepZip()
+  {
+    return false;
   }
 }
 

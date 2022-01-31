@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
+import awge;
 import java.io.Serializable;
 
 public class PushSwitchGrayTipsInfo
-  extends awbv
+  extends awge
   implements Serializable
 {
   public long lastShowTime;

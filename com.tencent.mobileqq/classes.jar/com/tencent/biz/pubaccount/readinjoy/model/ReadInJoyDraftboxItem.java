@@ -3,11 +3,11 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import awbv;
+import awge;
 import pgl;
 
 public class ReadInJoyDraftboxItem
-  extends awbv
+  extends awge
   implements Parcelable
 {
   public static final Parcelable.Creator<ReadInJoyDraftboxItem> CREATOR = new pgl();

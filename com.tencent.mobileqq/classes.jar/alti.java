@@ -1,10 +1,25 @@
-public abstract interface alti
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.FriendListHandler;
+import mqq.os.MqqHandler;
+
+public class alti
+  extends MqqHandler
 {
-  public abstract void ao_();
+  public alti(FriendListHandler paramFriendListHandler, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void b();
-  
-  public abstract void j_(int paramInt);
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    FriendListHandler.a(this.a);
+  }
 }
 
 

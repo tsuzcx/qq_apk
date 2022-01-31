@@ -1,16 +1,18 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface uuj
+class uuj
+  implements View.OnClickListener
 {
-  public abstract void a();
+  uuj(uui paramuui, uuh paramuuh) {}
   
-  public abstract void a(ArrayList<utx> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
-  
-  public abstract void a(utx paramutx, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    int i = this.jdField_a_of_type_Uuh.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Uui.a.a(this.jdField_a_of_type_Uuh.itemView, i);
+    }
+  }
 }
 
 

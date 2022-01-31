@@ -1,28 +1,16 @@
 import android.view.View;
-import android.view.animation.AlphaAnimation;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class besu
+  implements View.OnClickListener
 {
-  public static void a(View paramView)
-  {
-    if (paramView.isEnabled())
-    {
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.5F);
-      localAlphaAnimation.setDuration(200L);
-      localAlphaAnimation.setFillAfter(true);
-      paramView.startAnimation(localAlphaAnimation);
-    }
-  }
+  public besu(ProfileCardMoreInfoView paramProfileCardMoreInfoView, View paramView) {}
   
-  public static void b(View paramView)
+  public void onClick(View paramView)
   {
-    if (paramView.isEnabled())
-    {
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
-      localAlphaAnimation.setDuration(200L);
-      localAlphaAnimation.setFillAfter(true);
-      paramView.startAnimation(localAlphaAnimation);
-    }
+    awrn.a().c(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 

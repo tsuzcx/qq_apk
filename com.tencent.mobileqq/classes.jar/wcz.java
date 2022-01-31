@@ -1,22 +1,26 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class wcz
-  implements wdc
+  extends nac
 {
-  wcz(wcy paramwcy, PublishParam paramPublishParam, String paramString, int paramInt) {}
+  wcz(wcv paramwcv, boolean paramBoolean) {}
   
-  public void a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    wsv.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
-    wcy.a(this.jdField_a_of_type_Wcy, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-  }
-  
-  public void b()
-  {
-    wsv.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
-    wcy.a(this.jdField_a_of_type_Wcy).finish();
-    wcy.a(this.jdField_a_of_type_Wcy).overridePendingTransition(0, 0);
+    if (paramInt != 0)
+    {
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramArrayOfByte.a(5, bool);
+        this.a.a(0, this.a.a.getString(2131721096));
+        return;
+      }
+    }
+    ((ulu)this.a.a.app.getManager(181)).c(this.b);
   }
 }
 

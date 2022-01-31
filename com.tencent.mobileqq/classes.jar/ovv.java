@@ -43,7 +43,7 @@ public class ovv
     }
     paramInt = owy.a().a(Integer.valueOf(paramInt));
     if ((paramBoolean1) && (paramInt > 0)) {}
-    for (String str = String.format(this.a.getResources().getString(2131718721), new Object[] { Integer.valueOf(paramInt) });; str = this.a.getResources().getString(2131718720))
+    for (String str = String.format(this.a.getResources().getString(2131718733), new Object[] { Integer.valueOf(paramInt) });; str = this.a.getResources().getString(2131718732))
     {
       ReadInJoyDynamicChannelFragment.c(this.a).a(paramBoolean1, str);
       if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app.activateFriends;
 
-import ambl;
-import ambo;
+import amga;
+import amgd;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ActivateFriendsManager$4
   implements Runnable
 {
-  public ActivateFriendsManager$4(ambl paramambl) {}
+  public ActivateFriendsManager$4(amga paramamga) {}
   
   public void run()
   {
-    ambl.a(this.this$0).notifyObservers(ambo.class, 115, true, null);
+    amga.a(this.this$0).notifyObservers(amgd.class, 115, true, null);
   }
 }
 

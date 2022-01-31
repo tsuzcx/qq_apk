@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiBasicInfo;
+import cooperation.qzone.UndealCount.QZoneCountUserInfo;
 
 public final class bjhb
-  implements Parcelable.Creator<WeishiBasicInfo>
+  implements Parcelable.Creator<QZoneCountUserInfo>
 {
-  public WeishiBasicInfo a(Parcel paramParcel)
+  public QZoneCountUserInfo a(Parcel paramParcel)
   {
-    return new WeishiBasicInfo(paramParcel);
+    return new QZoneCountUserInfo(paramParcel);
   }
   
-  public WeishiBasicInfo[] a(int paramInt)
+  public QZoneCountUserInfo[] a(int paramInt)
   {
-    return new WeishiBasicInfo[paramInt];
+    return new QZoneCountUserInfo[paramInt];
   }
 }
 

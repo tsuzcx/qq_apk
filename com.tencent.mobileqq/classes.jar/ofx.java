@@ -35,10 +35,10 @@ public class ofx
 {
   private static final String jdField_a_of_type_JavaLangString = ofx.class.getName();
   private long jdField_a_of_type_Long;
-  private aaqp jdField_a_of_type_Aaqp;
+  private aave jdField_a_of_type_Aave;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private besa jdField_a_of_type_Besa;
+  private bewj jdField_a_of_type_Bewj;
   private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
   private SoftKeyboardStateHelper jdField_a_of_type_ComTencentMobileqqMiniUtilSoftKeyboardStateHelper;
   private WebViewProgressBar jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar;
@@ -155,23 +155,23 @@ public class ofx
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeAllViews();
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizUiTouchWebView, new RelativeLayout.LayoutParams(-1, -1));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_a_of_type_Aaqp = new ogc(this, paramActivity.getApplicationContext(), paramActivity, null, localAppInterface);
-    this.jdField_a_of_type_Aaqp.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    new beav(this.jdField_a_of_type_Aaqp).a(null, localAppInterface, null);
+    this.jdField_a_of_type_Aave = new ogc(this, paramActivity.getApplicationContext(), paramActivity, null, localAppInterface);
+    this.jdField_a_of_type_Aave.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
+    new befe(this.jdField_a_of_type_Aave).a(null, localAppInterface, null);
   }
   
   private void b()
   {
-    View localView = getLayoutInflater().inflate(2131559891, null);
-    ((RelativeLayout)localView.findViewById(2131372165)).setOnClickListener(new ofz(this));
+    View localView = getLayoutInflater().inflate(2131559890, null);
+    ((RelativeLayout)localView.findViewById(2131372185)).setOnClickListener(new ofz(this));
     localView.setOnClickListener(new oga(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = ((WebViewProgressBar)localView.findViewById(2131372322));
-    this.jdField_a_of_type_Besa = new besa();
-    this.jdField_a_of_type_Besa.a(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setController(this.jdField_a_of_type_Besa);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131372168));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = ((WebViewProgressBar)localView.findViewById(2131372342));
+    this.jdField_a_of_type_Bewj = new bewj();
+    this.jdField_a_of_type_Bewj.a(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setController(this.jdField_a_of_type_Bewj);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131372188));
     this.jdField_a_of_type_ComTencentMobileqqMiniUtilSoftKeyboardStateHelper = new SoftKeyboardStateHelper(localView);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131372166));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131372186));
     Object localObject = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
     this.jdField_c_of_type_Long = System.currentTimeMillis();
     this.jdField_a_of_type_ComTencentMobileqqMiniUtilSoftKeyboardStateHelper.addSoftKeyboardStateListener(new ogb(this, (RelativeLayout.LayoutParams)localObject));
@@ -182,7 +182,7 @@ public class ofx
     int j = ((Context)localObject).getResources().getDisplayMetrics().heightPixels;
     int k = (int)(i * 0.85D);
     int m = (int)(k * 0.72D);
-    localObject = (RelativeLayout)localView.findViewById(2131372166);
+    localObject = (RelativeLayout)localView.findViewById(2131372186);
     if (localObject != null)
     {
       localObject = ((RelativeLayout)localObject).getLayoutParams();
@@ -203,10 +203,10 @@ public class ofx
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "onDismiss h5Url = " + this.jdField_b_of_type_JavaLangString);
     }
-    if (this.jdField_a_of_type_Aaqp != null)
+    if (this.jdField_a_of_type_Aave != null)
     {
-      this.jdField_a_of_type_Aaqp.c();
-      this.jdField_a_of_type_Aaqp = null;
+      this.jdField_a_of_type_Aave.c();
+      this.jdField_a_of_type_Aave = null;
     }
     if (this.jdField_a_of_type_Ogd != null) {
       this.jdField_a_of_type_Ogd.a();
@@ -221,8 +221,8 @@ public class ofx
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setVisibility(0);
     }
-    if (this.jdField_a_of_type_Besa != null) {
-      this.jdField_a_of_type_Besa.a((byte)0);
+    if (this.jdField_a_of_type_Bewj != null) {
+      this.jdField_a_of_type_Bewj.a((byte)0);
     }
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);

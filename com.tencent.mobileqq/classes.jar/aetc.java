@@ -1,34 +1,34 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioTransitionAnimManager.1;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import java.util.Set;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
 
 public class aetc
-  implements OnCompositionLoadedListener
+  implements Animator.AnimatorListener
 {
-  public aetc(AudioTransitionAnimManager.1 param1) {}
+  public aetc(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramLottieComposition == null)
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      QLog.e("AudioTransitionAnimManager", 2, "getDrawable onCompositionLoaded lottieComposition is null or mIsDestroyed:");
+      this.a.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(0.0F);
+      this.a.b.setTranslationX(this.a.f);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel getDrawable finish type" + this.a.jdField_a_of_type_Int);
-    }
-    aetb.a(this.a.this$0).remove(Integer.valueOf(this.a.jdField_a_of_type_Int));
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    aeth localaeth = new aeth(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_JavaLangString);
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.setImageAssetDelegate(localaeth);
-    aetb.a(this.a.this$0).put(this.a.jdField_a_of_type_JavaLangString, localLottieDrawable);
-    aetb.a(this.a.this$0, localLottieDrawable, this.a.jdField_a_of_type_Int);
+    this.a.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(this.a.f);
+    this.a.b.setTranslationX(0.0F);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    onAnimationCancel(paramAnimator);
+    IntimateTitleSwitchView.f(this.a);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

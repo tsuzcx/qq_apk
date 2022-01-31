@@ -1,110 +1,71 @@
-import SummaryCardTaf.SSummaryCardRsp;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Pair;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.earlydownload.xmldata.QavVideoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class aplu
-  extends allb
+  extends apld
 {
-  public aplu(MessengerService paramMessengerService) {}
-  
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public aplu(QQAppInterface paramQQAppInterface)
   {
-    long l2 = 0L;
+    super("qq.android.qav.video", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10049;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QavVideoData.class;
+  }
+  
+  public String a()
+  {
+    return "qavDownloadVideoDuration";
+  }
+  
+  public void a(String paramString)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("MessengerService.onCardDownload", 2, "received onCardDownload");
+      QLog.d("QavVideoDownloadHandler", 2, "download success: " + paramString);
     }
-    Object localObject;
-    long l1;
-    int i;
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Card)))
+    try
     {
-      paramObject = (Card)paramObject;
-      localObject = (QQAppInterface)MessengerService.h(this.a);
-      if ((localObject != null) && (bdal.a(((QQAppInterface)localObject).getCurrentAccountUin(), paramObject.uin))) {
-        if ((paramObject.templateRet == 0) || (paramObject.templateRet == 101107) || (paramObject.templateRet == 101108))
-        {
-          l1 = paramObject.lCurrentBgId;
-          l2 = paramObject.lCurrentStyleId;
-          if (awmr.a(l2)) {
-            l1 = paramObject.cardId;
-          }
-          i = 0;
-        }
-      }
-    }
-    for (;;)
-    {
-      paramObject = new Bundle();
-      paramObject.putLong("currentId", l1);
-      paramObject.putLong("styleId", l2);
-      paramObject.putInt("result", i);
-      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
-      {
-        localObject = (Bundle)this.a.jdField_a_of_type_JavaUtilList.remove(0);
-        ((Bundle)localObject).putBundle("response", paramObject);
-        this.a.a((Bundle)localObject);
-      }
+      bdhb.a(paramString, mum.c(), false);
       return;
-      i = -1;
-      l1 = 0L;
-      continue;
-      i = -1;
-      l1 = 0L;
-      continue;
-      QLog.e("Q.emoji.web.MessengerService", 1, "onCardDownload fail isSuccess = " + paramBoolean + "data = " + paramObject);
-      i = -1;
-      l1 = 0L;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
-  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
+  public void a(boolean paramBoolean)
   {
-    int j = 0;
-    int i = -1;
-    String str2 = "";
-    String str1 = "";
-    if ((paramBoolean) && (paramObject != null)) {
-      if ((paramObject instanceof Card)) {
-        i = 0;
-      }
-    }
-    for (;;)
+    QavVideoData localQavVideoData = (QavVideoData)a();
+    if ((localQavVideoData != null) && (!localQavVideoData.autoDownload))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.emoji.web.MessengerService", 2, "onSetCardTemplateReturn...resultCode=" + i);
-      }
-      if (this.a.jdField_a_of_type_AndroidOsBundle != null)
-      {
-        paramObject = new Bundle();
-        this.a.jdField_a_of_type_AndroidOsBundle.putString("cmd", "card_setSummaryCard");
-        paramObject.putInt("result", i);
-        paramObject.putString("message", str2);
-        if (TextUtils.isEmpty(str1)) {
-          paramObject.putString("aid", str1);
-        }
-        paramObject.putInt("payType", j);
-        this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
-        this.a.a(this.a.jdField_a_of_type_AndroidOsBundle);
-        this.a.jdField_a_of_type_AndroidOsBundle = null;
-      }
-      return;
-      if ((paramObject instanceof Pair))
-      {
-        paramObject = (Pair)paramObject;
-        i = ((Integer)paramObject.first).intValue();
-        str2 = ((SSummaryCardRsp)paramObject.second).emsg;
-        j = ((SSummaryCardRsp)paramObject.second).payType;
-        str1 = ((SSummaryCardRsp)paramObject.second).aid;
-        continue;
-        QLog.e("Q.emoji.web.MessengerService", 1, "onSetCardTemplateReturn fail isSuccess = " + paramBoolean + "obj = " + paramObject);
-      }
+      localQavVideoData.autoDownload = true;
+      apkr.a(localQavVideoData, new String[] { "autoDownload" });
     }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean h()
+  {
+    return ((QavVideoData)a()).autoDownload;
   }
 }
 

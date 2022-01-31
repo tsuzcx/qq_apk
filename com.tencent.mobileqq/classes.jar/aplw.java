@@ -1,68 +1,111 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.MessengerService.8.1;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.TipsInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.ViolaBizLibData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aplw
-  implements axxl
+  extends apld
 {
-  public aplw(MessengerService paramMessengerService) {}
+  public static final String[] a = { "libviola.so" };
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
+  public aplw(QQAppInterface paramQQAppInterface)
   {
-    if (this.a.b != null)
+    super("android.qq.readinjoy.viola_biz_810", paramQQAppInterface);
+  }
+  
+  public static void a()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      this.a.b.putString("cmd", "ipc_signature_setordelete");
-      paramRichStatus = new Bundle();
-      paramRichStatus.putInt("result", paramInt);
-      paramRichStatus.putBoolean("hasTipsInfo", false);
-      if ((paramObject instanceof TipsInfo))
+      localObject = (apks)((QQAppInterface)localObject).getManager(77);
+      if (localObject != null)
       {
-        paramObject = (TipsInfo)paramObject;
-        if (paramObject.type > 0)
+        localObject = (aplw)((apks)localObject).a("android.qq.readinjoy.viola_biz_810");
+        if (localObject != null)
         {
-          paramRichStatus.putInt("result", paramObject.ret);
-          paramRichStatus.putBoolean("hasTipsInfo", true);
-          paramRichStatus.putInt("tips_type", paramObject.type);
-          paramRichStatus.putString("tips_titleWording", paramObject.titleWording);
-          paramRichStatus.putString("tips_wording", paramObject.wording);
-          paramRichStatus.putString("tips_rightBtnWording", paramObject.rightBtnWording);
-          paramRichStatus.putString("tips_leftBtnWording", paramObject.leftBtnWording);
-          paramRichStatus.putString("tips_vipType", paramObject.vipType);
-          paramRichStatus.putInt("tips_vipMonth", paramObject.vipMonth);
-          paramRichStatus.putString("tips_url", paramObject.url);
+          ((aplw)localObject).a(true);
+          QLog.i("viola.ViolaBizLibHandler", 1, "restartDownloadLib");
         }
       }
-      this.a.b.putBundle("response", paramRichStatus);
-      this.a.a(this.a.b);
-      this.a.b = null;
     }
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public static boolean i()
   {
-    if (paramInt == -1) {
-      if (this.a.a != null) {
-        this.a.a.post(new MessengerService.8.1(this));
+    String str = oxo.a();
+    int i = 0;
+    while (i < a.length)
+    {
+      File localFile = new File(str, a[i]);
+      if ((localFile == null) || (!localFile.exists()) || (!localFile.isFile())) {
+        return false;
       }
+      i += 1;
     }
-    while (this.a.c == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SigImg2Zone", 4, "isSync: " + paramBoolean);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSync", paramBoolean);
-    this.a.c.putBundle("response", localBundle);
-    this.a.a(this.a.c);
-    this.a.c = null;
+    return true;
   }
   
-  public void b(int paramInt, boolean paramBoolean) {}
+  public int a()
+  {
+    return 10079;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return ViolaBizLibData.class;
+  }
+  
+  public String a()
+  {
+    return "viola.ViolaBizLibHandler";
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.i("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess]:" + paramString);
+    XmlData localXmlData = a();
+    if (localXmlData != null) {
+      QLog.i("viola.ViolaBizLibHandler", 1, "version:" + localXmlData.Version);
+    }
+    if (new File(paramString).exists())
+    {
+      if (oxo.a(paramString)) {
+        break label124;
+      }
+      if (localXmlData != null)
+      {
+        localXmlData.loadState = 0;
+        localXmlData.Version = 0;
+        apkr.a(localXmlData, new String[] { "loadState", "Version" });
+      }
+      QLog.e("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess],unzip android.qq.readinjoy.viola_biz_810 lib failed!");
+    }
+    label124:
+    do
+    {
+      return;
+      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
+      if (paramString != null) {
+        paramString.edit().putString("res_name", "android.qq.readinjoy.viola_biz_810").commit();
+      }
+    } while (!aplx.i());
+    oxi.a("biz doOnDownloadSuccess");
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
 }
 
 

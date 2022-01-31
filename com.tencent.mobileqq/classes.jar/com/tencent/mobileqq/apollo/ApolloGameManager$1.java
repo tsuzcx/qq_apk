@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo;
 
-import akje;
+import aknt;
 
 public class ApolloGameManager$1
   implements Runnable
 {
-  public ApolloGameManager$1(akje paramakje) {}
+  public ApolloGameManager$1(aknt paramaknt) {}
   
   public void run()
   {
-    if (akje.a(this.this$0) == null) {}
+    if (aknt.a(this.this$0) == null) {}
   }
 }
 

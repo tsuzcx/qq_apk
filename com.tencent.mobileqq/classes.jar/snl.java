@@ -44,7 +44,7 @@ public class snl
       if (localAppRuntime == null) {
         return null;
       }
-      paramString = bdcs.a("viola_cache_file_" + paramString + "_" + localAppRuntime.getAccount());
+      paramString = bdhb.a("viola_cache_file_" + paramString + "_" + localAppRuntime.getAccount());
       if ((paramString instanceof String)) {
         return (String)paramString;
       }
@@ -89,7 +89,7 @@ public class snl
     if (localHashMap.containsKey(sno.j)) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.setIsStatusImmersive(((Boolean)localHashMap.get(sno.j)).booleanValue());
     }
-    paramViewGroup = (FrameLayout)paramViewGroup.findViewById(2131379949);
+    paramViewGroup = (FrameLayout)paramViewGroup.findViewById(2131380007);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.setViolaGestureListener(new snm(this, paramViewGroup));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.setContentScrollListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.getActivity(), -1, -1, true);
@@ -138,7 +138,7 @@ public class snl
   
   public void a(@NonNull ViewGroup paramViewGroup, @NonNull JSONObject paramJSONObject, boolean paramBoolean, srk paramsrk)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramViewGroup.findViewById(2131379948));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramViewGroup.findViewById(2131380006));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView = new ViolaBaseView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.getActivity());
     if (!paramBoolean) {
       this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
@@ -162,7 +162,7 @@ public class snl
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.d();
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.getActivity().doOnBackPressed();
     } while (!paramBoolean);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.getActivity().overridePendingTransition(2130772214, 2130772217);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.getActivity().overridePendingTransition(2130772215, 2130772218);
     return;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.a(0, 4);
   }

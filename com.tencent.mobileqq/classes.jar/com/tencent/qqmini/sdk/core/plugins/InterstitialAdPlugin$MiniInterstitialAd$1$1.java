@@ -2,16 +2,16 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
 import android.content.Intent;
-import bghk;
-import bgjd;
-import bgje;
+import bglr;
+import bgnk;
+import bgnl;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsInterstitialAdView;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.InterstitialADLisener;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.lang.ref.WeakReference;
 
 class InterstitialAdPlugin$MiniInterstitialAd$1$1
-  implements bgje
+  implements bgnl
 {
   InterstitialAdPlugin$MiniInterstitialAd$1$1(InterstitialAdPlugin.MiniInterstitialAd.1 param1) {}
   
@@ -21,7 +21,7 @@ class InterstitialAdPlugin$MiniInterstitialAd$1$1
     String str;
     if (paramInt1 == 10001)
     {
-      bghk.b(false);
+      bglr.b(false);
       if (paramInt2 != -1) {
         break label132;
       }
@@ -29,7 +29,7 @@ class InterstitialAdPlugin$MiniInterstitialAd$1$1
       if (InterstitialAdPlugin.MiniInterstitialAd.access$300(this.this$2.this$1) != null) {
         InterstitialAdPlugin.MiniInterstitialAd.access$300(this.this$2.this$1).onDismiss();
       }
-      bgjd.a().b(this);
+      bgnk.a().b(this);
       if (InterstitialAdPlugin.MiniInterstitialAd.access$000(this.this$2.this$1) == null) {
         break label139;
       }

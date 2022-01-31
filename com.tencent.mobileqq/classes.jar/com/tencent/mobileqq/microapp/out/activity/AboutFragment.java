@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.out.activity;
 
 import Wallet.ApkgConfig;
-import adky;
+import adpn;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdje;
+import bdnn;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForMiniApp;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -52,7 +52,7 @@ public class AboutFragment
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("app_config", paramMiniAppConfig);
     localIntent.putExtra("versionType", paramInt);
-    adky.a(paramContext, localIntent, PublicFragmentActivityForMiniApp.class, AboutFragment.class);
+    adpn.a(paramContext, localIntent, PublicFragmentActivityForMiniApp.class, AboutFragment.class);
   }
   
   public boolean needImmersive()
@@ -187,7 +187,7 @@ public class AboutFragment
     {
       return;
       paramView = this.mConfig.desc_info;
-    } while (bdje.a(paramView));
+    } while (bdnn.a(paramView));
     try
     {
       this.mDescObj = new JSONObject(paramView);

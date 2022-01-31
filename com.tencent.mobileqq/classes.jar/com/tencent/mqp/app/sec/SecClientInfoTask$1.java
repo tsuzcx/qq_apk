@@ -1,6 +1,6 @@
 package com.tencent.mqp.app.sec;
 
-import abqi;
+import abux;
 import android.content.pm.ApplicationInfo;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -44,7 +44,7 @@ class SecClientInfoTask$1
         localObject3 = new ClientInfoA.EnvParamPacket();
         ((ClientInfoA.EnvParamPacket)localObject3).u32_platform.set(1);
         ((ClientInfoA.EnvParamPacket)localObject3).str_sysversion.set(Build.VERSION.RELEASE);
-        ((ClientInfoA.EnvParamPacket)localObject3).str_qqversion.set("8.3.3.4515");
+        ((ClientInfoA.EnvParamPacket)localObject3).str_qqversion.set("8.3.5.4555");
         ((ClientInfoA.EnvParamPacket)localObject3).u32_appid.set(AppSetting.a());
         ((ClientInfoA.EnvParamPacket)localObject3).bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
         ((ClientInfoA.EnvParamPacket)localObject3).str_uin.set(str);
@@ -76,7 +76,7 @@ class SecClientInfoTask$1
       {
         if (!SecClientInfoTask.a())
         {
-          SecClientInfoTask.a(abqi.a(localQQAppInterface.getApplication().getApplicationInfo().sourceDir));
+          SecClientInfoTask.a(abux.a(localQQAppInterface.getApplication().getApplicationInfo().sourceDir));
           SecClientInfoTask.a(true);
         }
         if ((SecClientInfoTask.a() != null) && (SecClientInfoTask.a().length() > 0)) {

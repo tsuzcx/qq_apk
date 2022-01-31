@@ -1,15 +1,15 @@
 package com.tencent.mqp.app.sec;
 
-import bewm;
+import bfav;
 
 public class SecShareInfoUtil$1
   implements Runnable
 {
-  public SecShareInfoUtil$1(bewm parambewm) {}
+  public SecShareInfoUtil$1(bfav parambfav) {}
   
   public void run()
   {
-    bewm.a(this.this$0);
+    bfav.a(this.this$0);
   }
 }
 

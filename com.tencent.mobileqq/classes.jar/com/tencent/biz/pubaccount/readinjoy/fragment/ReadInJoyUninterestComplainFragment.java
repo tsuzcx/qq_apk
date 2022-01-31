@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import alpo;
+import alud;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -74,21 +74,21 @@ public class ReadInJoyUninterestComplainFragment
   {
     this.vg.a(true);
     if (this.leftView != null) {
-      this.leftView.setText(alpo.a(2131713180));
+      this.leftView.setText(alud.a(2131713192));
     }
-    setTitle(alpo.a(2131713197));
+    setTitle(alud.a(2131713209));
     if (ThemeUtil.isInNightMode(ors.a())) {
-      View.inflate(getActivity(), 2131560084, this.titleRoot);
+      View.inflate(getActivity(), 2131560083, this.titleRoot);
     }
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131364661));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131364663));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131364870));
-    this.b = ((EditText)this.mContentView.findViewById(2131371752));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131377163));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131364872));
+    this.b = ((EditText)this.mContentView.findViewById(2131371772));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131377217));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -183,7 +183,7 @@ public class ReadInJoyUninterestComplainFragment
   
   public int getContentLayoutId()
   {
-    return 2131560144;
+    return 2131560143;
   }
   
   public void onActivityCreated(Bundle paramBundle)

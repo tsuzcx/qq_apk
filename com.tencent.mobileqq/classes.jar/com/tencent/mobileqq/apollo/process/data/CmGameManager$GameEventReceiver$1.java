@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import akro;
-import akuc;
+import akwd;
+import akyr;
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -9,7 +9,7 @@ import org.json.JSONObject;
 public class CmGameManager$GameEventReceiver$1
   implements Runnable
 {
-  public CmGameManager$GameEventReceiver$1(akuc paramakuc, String paramString) {}
+  public CmGameManager$GameEventReceiver$1(akyr paramakyr, String paramString) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class CmGameManager$GameEventReceiver$1
         if (localObject != null)
         {
           i = ((JSONObject)localObject).optInt("__apollo_game_id__");
-          localObject = akro.a();
+          localObject = akwd.a();
           if (localObject != null) {
             ((ApolloCmdChannel)localObject).handleWebEvent(this.a, i);
           }

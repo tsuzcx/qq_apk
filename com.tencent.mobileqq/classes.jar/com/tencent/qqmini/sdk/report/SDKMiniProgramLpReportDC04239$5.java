@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.report;
 
-import bgyg;
+import bhcn;
 
 public final class SDKMiniProgramLpReportDC04239$5
   implements Runnable
 {
   public void run()
   {
-    bgyg.a(this.a, this.b, this.c, this.d, this.e, this.f);
+    bhcn.a(this.a, this.b, this.c, this.d, this.e, this.f);
   }
 }
 

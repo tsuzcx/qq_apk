@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import bdcs;
+import bdhb;
 import com.tencent.viola.utils.ViolaUtils;
 import ors;
 
@@ -11,14 +11,14 @@ class ViolaBaseView$18
   
   public void run()
   {
-    Object localObject = bdcs.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + ors.a());
+    Object localObject = bdhb.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + ors.a());
     if (localObject == null) {
-      bdcs.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + ors.a(), ViolaBaseView.b(this.this$0));
+      bdhb.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + ors.a(), ViolaBaseView.b(this.this$0));
     }
     while ((!(localObject instanceof String)) || (ViolaBaseView.b(this.this$0).equals(localObject))) {
       return;
     }
-    bdcs.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + ors.a(), ViolaBaseView.b(this.this$0));
+    bdhb.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + ors.a(), ViolaBaseView.b(this.this$0));
   }
 }
 

@@ -1,16 +1,16 @@
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback.Stub;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager;
 import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
-final class bgua
-  extends MiniCmdCallback.Stub
+public class bgua
+  implements AsyncResult
 {
-  bgua(MiniAppInfo paramMiniAppInfo) {}
+  public bgua(AppBrandLaunchManager paramAppBrandLaunchManager) {}
   
-  public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.d("ApkgMainProcessManager", "removeSubProcessLoadTask() called with: miniAppConfig = [" + this.a + "]");
+    QMLog.i("minisdk-start_AppBrandLaunchManager", "---startApp---- useUserApp isSuccess = " + paramBoolean);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import bhuz;
+import bhzg;
 
 class HorizontalListView$3
   implements Runnable

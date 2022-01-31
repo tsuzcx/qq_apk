@@ -1,189 +1,259 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.onlinestatus.AutoReplyManager.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import android.graphics.Point;
+import android.graphics.PointF;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import com.tencent.mobileqq.ocr.view.gesture.Settings;
 
 public class awad
-  implements Manager
 {
-  private awbw jdField_a_of_type_Awbw;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private List<AutoReplyText> jdField_a_of_type_JavaUtilList;
+  private static final Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
+  private static final PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  private static final Rect jdField_a_of_type_AndroidGraphicsRect;
+  private static final RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private static final awac jdField_a_of_type_Awac = new awac();
+  private float jdField_a_of_type_Float;
+  private final avzy jdField_a_of_type_Avzy;
+  private final awaa jdField_a_of_type_Awaa;
+  private final Settings jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public awad(QQAppInterface paramQQAppInterface)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Awbw = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    a();
+    jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   }
   
-  private void a()
+  public awad(Settings paramSettings)
   {
-    ThreadManager.getFileThreadHandler().post(new AutoReplyManager.1(this));
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings = paramSettings;
+    this.jdField_a_of_type_Awaa = new awaa(paramSettings);
+    this.jdField_a_of_type_Avzy = new avzy(paramSettings);
   }
   
-  public AutoReplyText a()
+  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
   {
-    Object localObject = null;
-    List localList = a();
-    Iterator localIterator = localList.iterator();
-    if (localIterator.hasNext())
-    {
-      AutoReplyText localAutoReplyText = (AutoReplyText)localIterator.next();
-      if (!localAutoReplyText.isChecked()) {
-        break label107;
-      }
-      localObject = localAutoReplyText;
-    }
-    label107:
+    if (paramFloat5 == 1.0F) {}
     for (;;)
     {
-      break;
-      if (localObject == null)
-      {
-        localObject = (AutoReplyText)localList.get(0);
-        QLog.d("AutoReplyManager", 1, "getCurrentAutoReplyText is null, default check index 0");
+      return paramFloat1;
+      float f = paramFloat3 / paramFloat5;
+      if ((paramFloat1 < paramFloat3) && (paramFloat1 < paramFloat2)) {
+        paramFloat3 = (paramFloat3 - paramFloat1) / (paramFloat3 - f);
       }
-      for (;;)
+      while (paramFloat3 != 0.0F)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("AutoReplyManager", 2, "getCurrentAutoReplyText: " + localObject);
+        return paramFloat1 + (float)Math.sqrt(paramFloat3) * (paramFloat2 - paramFloat1);
+        if ((paramFloat1 > paramFloat4) && (paramFloat1 > paramFloat2)) {
+          paramFloat3 = (paramFloat1 - paramFloat4) / (paramFloat4 * paramFloat5 - paramFloat4);
+        } else {
+          paramFloat3 = 0.0F;
         }
-        return localObject;
       }
     }
   }
   
-  public List<AutoReplyText> a()
+  private float b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      return new ArrayList(this.jdField_a_of_type_JavaUtilList);
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new AutoReplyText(alpo.a(2131701228), 0));
-    localArrayList.add(new AutoReplyText(alpo.a(2131701227), 1));
-    localArrayList.add(new AutoReplyText(alpo.a(2131701225), 2));
-    localArrayList.add(new AutoReplyText(alpo.a(2131701226), 2147483647));
-    ((AutoReplyText)localArrayList.get(0)).mCheckFlag = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoReplyManager", 2, "getAutoReplyCache, buffList == null");
-    }
-    a();
-    return localArrayList;
-  }
-  
-  public void a(List<AutoReplyText> paramList, int paramInt)
-  {
-    if (paramList == null) {
-      return;
-    }
-    Object localObject2 = null;
-    ??? = null;
+    float f1 = 1.0F;
+    if (paramFloat5 == 0.0F) {}
     for (;;)
     {
-      try
-      {
-        localawby = this.jdField_a_of_type_Awbw.a();
-        ??? = localawby;
-        localObject2 = localawby;
-        localawby.a();
-        ??? = localawby;
-        localObject2 = localawby;
-        this.jdField_a_of_type_Awbw.a(AutoReplyText.class);
-        ??? = localawby;
-        localObject2 = localawby;
-        Iterator localIterator = paramList.iterator();
-        ??? = localawby;
-        localObject2 = localawby;
-        if (!localIterator.hasNext()) {
-          break label251;
-        }
-        ??? = localawby;
-        localObject2 = localawby;
-        localAutoReplyText = (AutoReplyText)localIterator.next();
-        ??? = localawby;
-        localObject2 = localawby;
-        if (localAutoReplyText.getTextId() != paramInt) {
-          continue;
-        }
-        ??? = localawby;
-        localObject2 = localawby;
-        localAutoReplyText.mCheckFlag = 1;
+      return paramFloat1;
+      float f2 = (paramFloat1 + paramFloat2) * 0.5F;
+      if ((f2 < paramFloat3) && (paramFloat1 < paramFloat2)) {
+        paramFloat3 = (paramFloat3 - f2) / paramFloat5;
       }
-      catch (Exception localException)
+      while (paramFloat3 != 0.0F)
       {
-        awby localawby;
-        AutoReplyText localAutoReplyText;
-        localObject2 = ???;
-        localException.printStackTrace();
-        localObject2 = ???;
-        QLog.d("AutoReplyManager", 1, "updateAutoReplyList, exception: ", localException);
-        if (??? == null) {
-          continue;
+        if (paramFloat3 > 1.0F) {
+          paramFloat3 = f1;
         }
-        ???.b();
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        for (;;)
         {
-          if (this.jdField_a_of_type_JavaUtilList != null) {
-            break label322;
+          return paramFloat1 - (float)Math.sqrt(paramFloat3) * (paramFloat1 - paramFloat2);
+          if ((f2 <= paramFloat4) || (paramFloat1 <= paramFloat2)) {
+            break label98;
           }
-          this.jdField_a_of_type_JavaUtilList = new ArrayList();
-          this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-          return;
+          paramFloat3 = (f2 - paramFloat4) / paramFloat5;
+          break;
         }
-        ??? = localException;
-        localObject2 = localException;
-        localAutoReplyText.mCheckFlag = 0;
-        continue;
-      }
-      finally
-      {
-        if (localObject2 == null) {
-          continue;
-        }
-        localObject2.b();
-      }
-      ??? = localawby;
-      localObject2 = localawby;
-      this.jdField_a_of_type_Awbw.b(localAutoReplyText);
-    }
-    for (;;)
-    {
-      label251:
-      ??? = localException;
-      localObject2 = localException;
-      localException.c();
-      ??? = localException;
-      localObject2 = localException;
-      if (QLog.isColorLevel())
-      {
-        ??? = localException;
-        localObject2 = localException;
-        QLog.d("AutoReplyManager", 2, String.format("updateAutoReplyListCache, textList: %s, selectId: %s", new Object[] { paramList, Integer.valueOf(paramInt) }));
-      }
-      if (localException != null)
-      {
-        localException.b();
-        continue;
-        label322:
-        this.jdField_a_of_type_JavaUtilList.clear();
+        label98:
+        paramFloat3 = 0.0F;
       }
     }
   }
   
-  public void onDestroy()
+  public awac a(awac paramawac, float paramFloat1, float paramFloat2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoReplyManager", 2, "AutoReplyManager onDestroy");
+    this.jdField_a_of_type_Awaa.a(paramawac);
+    float f2 = this.jdField_a_of_type_Awaa.c();
+    float f1;
+    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.c() > 0.0F)
+    {
+      f1 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.c();
+      if (paramawac.c() >= 0.5F * (f2 + f1)) {
+        break label82;
+      }
     }
-    this.jdField_a_of_type_Awbw.a();
+    for (;;)
+    {
+      paramawac = paramawac.a();
+      paramawac.b(f1, paramFloat1, paramFloat2);
+      return paramawac;
+      f1 = this.jdField_a_of_type_Awaa.b();
+      break;
+      label82:
+      f1 = f2;
+    }
+  }
+  
+  public awac a(awac paramawac1, awac paramawac2, float paramFloat1, float paramFloat2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    jdField_a_of_type_Awac.a(paramawac1);
+    if (a(jdField_a_of_type_Awac, paramawac2, paramFloat1, paramFloat2, paramBoolean1, paramBoolean2, paramBoolean3)) {
+      return jdField_a_of_type_Awac.a();
+    }
+    return null;
+  }
+  
+  public void a(awac paramawac)
+  {
+    if (this.jdField_a_of_type_Float > 0.0F) {
+      paramawac.a(paramawac.a(), paramawac.b(), paramawac.c() * this.jdField_a_of_type_Float, paramawac.d());
+    }
+  }
+  
+  public void a(awac paramawac, RectF paramRectF)
+  {
+    this.jdField_a_of_type_Avzy.a(paramawac).a(paramRectF);
+  }
+  
+  public boolean a(awac paramawac)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return b(paramawac);
+  }
+  
+  public boolean a(awac paramawac1, awac paramawac2, float paramFloat1, float paramFloat2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.i()) {
+      return false;
+    }
+    float f2;
+    float f1;
+    if (!Float.isNaN(paramFloat1))
+    {
+      f2 = paramFloat1;
+      f1 = paramFloat2;
+      if (!Float.isNaN(paramFloat2)) {}
+    }
+    else
+    {
+      awae.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings, jdField_a_of_type_AndroidGraphicsPoint);
+      f2 = jdField_a_of_type_AndroidGraphicsPoint.x;
+      f1 = jdField_a_of_type_AndroidGraphicsPoint.y;
+    }
+    if ((paramBoolean3) && (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.f()))
+    {
+      paramFloat1 = Math.round(paramawac1.d() / 90.0F) * 90.0F;
+      if (!awac.a(paramFloat1, paramawac1.d())) {
+        paramawac1.d(paramFloat1, f2, f1);
+      }
+    }
+    label233:
+    label491:
+    label500:
+    for (paramBoolean3 = true;; paramBoolean3 = false)
+    {
+      this.jdField_a_of_type_Awaa.a(paramawac1);
+      float f5 = this.jdField_a_of_type_Awaa.a();
+      float f4 = this.jdField_a_of_type_Awaa.b();
+      float f3;
+      if (paramBoolean2)
+      {
+        paramFloat1 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.d();
+        f3 = this.jdField_a_of_type_Awaa.a(paramawac1.c(), paramFloat1);
+        paramFloat2 = f3;
+        if (paramawac2 != null) {
+          paramFloat2 = a(f3, paramawac2.c(), f5, f4, paramFloat1);
+        }
+        if (awac.a(paramFloat2, paramawac1.c())) {
+          break label510;
+        }
+        paramawac1.b(paramFloat2, f2, f1);
+      }
+      label247:
+      label510:
+      for (paramBoolean2 = true;; paramBoolean2 = paramBoolean3)
+      {
+        if (paramBoolean1)
+        {
+          f1 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.e();
+          if (!paramBoolean1) {
+            break label491;
+          }
+          f2 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.f();
+          this.jdField_a_of_type_Avzy.a(paramawac1);
+          this.jdField_a_of_type_Avzy.a(paramawac1.a(), paramawac1.b(), f1, f2, jdField_a_of_type_AndroidGraphicsPointF);
+          f4 = jdField_a_of_type_AndroidGraphicsPointF.x;
+          f3 = jdField_a_of_type_AndroidGraphicsPointF.y;
+          if (paramFloat2 >= f5) {
+            break label500;
+          }
+          paramFloat1 = (float)Math.sqrt((paramFloat2 * paramFloat1 / f5 - 1.0F) / (paramFloat1 - 1.0F));
+          this.jdField_a_of_type_Avzy.a(f4, f3, jdField_a_of_type_AndroidGraphicsPointF);
+          paramFloat2 = jdField_a_of_type_AndroidGraphicsPointF.x;
+          f5 = jdField_a_of_type_AndroidGraphicsPointF.y;
+          paramFloat2 += (f4 - paramFloat2) * paramFloat1;
+        }
+        for (paramFloat1 = (f3 - f5) * paramFloat1 + f5;; paramFloat1 = f3)
+        {
+          f4 = paramFloat1;
+          f3 = paramFloat2;
+          if (paramawac2 != null)
+          {
+            this.jdField_a_of_type_Avzy.a(jdField_a_of_type_AndroidGraphicsRectF);
+            f3 = b(paramFloat2, paramawac2.a(), jdField_a_of_type_AndroidGraphicsRectF.left, jdField_a_of_type_AndroidGraphicsRectF.right, f1);
+            f4 = b(paramFloat1, paramawac2.b(), jdField_a_of_type_AndroidGraphicsRectF.top, jdField_a_of_type_AndroidGraphicsRectF.bottom, f2);
+          }
+          if ((!awac.a(f3, paramawac1.a())) || (!awac.a(f4, paramawac1.b())))
+          {
+            paramawac1.b(f3, f4);
+            return true;
+            paramFloat1 = 1.0F;
+            break;
+            f1 = 0.0F;
+            break label233;
+            f2 = 0.0F;
+            break label247;
+          }
+          return paramBoolean2;
+          paramFloat2 = f4;
+        }
+      }
+    }
+  }
+  
+  public boolean b(awac paramawac)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramawac.a(0.0F, 0.0F, this.jdField_a_of_type_Awaa.a(paramawac).c(), 0.0F);
+      awae.a(paramawac, this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings, jdField_a_of_type_AndroidGraphicsRect);
+      paramawac.b(jdField_a_of_type_AndroidGraphicsRect.left, jdField_a_of_type_AndroidGraphicsRect.top);
+      if ((!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.k()) || (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.l())) {}
+      for (boolean bool = true;; bool = false)
+      {
+        this.jdField_a_of_type_Boolean = bool;
+        if (this.jdField_a_of_type_Boolean) {
+          break;
+        }
+        return true;
+      }
+      return false;
+    }
+    a(paramawac, paramawac, (0.0F / 0.0F), (0.0F / 0.0F), false, false, true);
+    return false;
   }
 }
 

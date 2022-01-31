@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.activity;
 
 import android.view.View;
-import bbed;
+import bbim;
 
 public class TroopAvatarWallPreviewActivity$4$1
   implements Runnable
 {
-  public TroopAvatarWallPreviewActivity$4$1(bbed parambbed) {}
+  public TroopAvatarWallPreviewActivity$4$1(bbim parambbim) {}
   
   public void run()
   {

@@ -1,31 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
 
 public class wth
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public wth(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
+  public wth(StoryListPresenter.4.1 param1) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 84) {
-      return true;
-    }
-    if (paramInt == 4)
-    {
-      this.a.a();
-      this.a.a();
-      paramDialogInterface = this.a.a;
-      paramKeyEvent = this.a.a;
-      paramDialogInterface.setResult(0);
-      this.a.a.finish();
-      DanceMachineUploadVideoFragment.a(this.a, false);
-      return true;
-    }
-    return false;
+    wxj.a("home_page", "clk_up_shoot", 0, 0, new String[0]);
+    this.a.a.this$0.jdField_a_of_type_Wtr.a(false, true, 13, null);
+    this.a.a.this$0.jdField_a_of_type_Wwk.dismiss();
   }
 }
 

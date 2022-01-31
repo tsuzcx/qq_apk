@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.bubble;
 
-import aqro;
+import aqvx;
 
 public class QFileBubbleModel$1
   implements Runnable
 {
-  public QFileBubbleModel$1(aqro paramaqro) {}
+  public QFileBubbleModel$1(aqvx paramaqvx) {}
   
   public void run()
   {

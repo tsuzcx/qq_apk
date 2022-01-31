@@ -1,21 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.62.1;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.62.2;
 
 public class aday
-  implements View.OnTouchListener
+  implements beth
 {
-  public aday(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  public aday(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, String paramString)
   {
-    if (!this.a.a)
-    {
-      azmj.b(this.a.app, "dc00898", "", "", "0X8008438", "0X8008438", 0, 0, "", "", "", "");
-      this.a.a = true;
+    if ("profile_btn_config".equals(paramString)) {
+      this.a.runOnUiThread(new FriendProfileCardActivity.62.1(this));
     }
-    return false;
+    while (!"profile_switch_config".equals(paramString)) {
+      return;
+    }
+    this.a.runOnUiThread(new FriendProfileCardActivity.62.2(this));
   }
 }
 

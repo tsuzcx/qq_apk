@@ -1,11 +1,16 @@
-import java.util.Observable;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
 
-public class aslc
-  extends Observable
+class aslc
+  extends AnimatorListenerAdapter
 {
-  public void setChanged()
+  aslc(askz paramaskz) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super.setChanged();
+    super.onAnimationEnd(paramAnimator);
+    askz.a(this.a).sendEmptyMessage(2);
   }
 }
 

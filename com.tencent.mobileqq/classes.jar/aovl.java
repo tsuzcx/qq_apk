@@ -1,20 +1,59 @@
-import java.io.File;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aovl
-  implements Comparator<File>
+public class aovl
+  extends aouf<aovk>
 {
-  aovl(aovk paramaovk) {}
-  
-  public int a(File paramFile1, File paramFile2)
+  public static aovk a()
   {
-    if (paramFile2.lastModified() > paramFile1.lastModified()) {
-      return 1;
+    return (aovk)aoks.a().a(413);
+  }
+  
+  public int a()
+  {
+    return 413;
+  }
+  
+  @NonNull
+  public aovk a(@NonNull aoko[] paramArrayOfaoko)
+  {
+    aovk localaovk = new aovk();
+    paramArrayOfaoko = paramArrayOfaoko[0].a;
+    if (paramArrayOfaoko != null) {}
+    try
+    {
+      if (!"".equals(paramArrayOfaoko))
+      {
+        paramArrayOfaoko = new JSONObject(paramArrayOfaoko);
+        localaovk.a(paramArrayOfaoko.getString("url"));
+        localaovk.a(paramArrayOfaoko.getBoolean("isEnable"));
+        localaovk.b(paramArrayOfaoko.getBoolean("hideHotValue"));
+      }
+      return localaovk;
     }
-    if (paramFile2.lastModified() < paramFile1.lastModified()) {
-      return -1;
+    catch (JSONException paramArrayOfaoko)
+    {
+      paramArrayOfaoko.printStackTrace();
     }
-    return 0;
+    return localaovk;
+  }
+  
+  public Class<aovk> a()
+  {
+    return aovk.class;
+  }
+  
+  @NonNull
+  public aovk b()
+  {
+    return new aovk();
+  }
+  
+  @NonNull
+  public aovk c()
+  {
+    return new aovk();
   }
 }
 

@@ -1,37 +1,16 @@
-import android.support.v4.util.ArraySet;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class aoit
+class aoit
 {
-  public ArraySet<String> a = new ArraySet();
-  
-  public static aoit a(String paramString)
-  {
-    localaoit = new aoit();
-    try
-    {
-      paramString = new JSONObject(paramString).getJSONArray("white_list");
-      int i = 0;
-      while (i < paramString.length())
-      {
-        localaoit.a.add(paramString.optString(i, ""));
-        i += 1;
-      }
-      return localaoit;
-    }
-    catch (Throwable paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("BroadcastConfProcessor", 2, paramString, new Object[0]);
-      }
-    }
-  }
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoit
  * JD-Core Version:    0.7.0.1
  */

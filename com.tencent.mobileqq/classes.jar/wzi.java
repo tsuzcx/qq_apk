@@ -1,83 +1,67 @@
-import android.animation.ValueAnimator;
-import android.graphics.Canvas;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.view.animation.LinearInterpolator;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class wzi
-  extends xeh
+class wzi
+  extends QQUIEventReceiver<wzb, xfc>
 {
-  public final RectF a;
-  public final Drawable a;
-  public final String d;
-  public final String e;
-  
-  public wzi(wze paramwze, @NonNull Drawable paramDrawable, @NonNull wzm paramwzm, String paramString1, String paramString2)
+  public wzi(@NonNull wzb paramwzb)
   {
-    super(paramwzm.jdField_a_of_type_AndroidGraphicsPointF, paramwzm.jdField_a_of_type_Float, paramwzm.jdField_b_of_type_Float, paramwzm.c, paramwzm.d, paramwzm.jdField_a_of_type_Int, paramwzm.jdField_b_of_type_Int, true);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_d_of_type_JavaLangString = paramString1;
-    this.e = paramString2;
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramDrawable.getBounds());
+    super(paramwzb);
   }
   
-  public void a(Canvas paramCanvas)
+  public void a(@NonNull wzb paramwzb, @NonNull xfc paramxfc)
   {
-    float f2 = this.n;
-    float f1 = this.o;
-    if (f2 * this.j < 200.0F) {
-      f2 = 200.0F / this.j;
+    if (paramxfc.jdField_a_of_type_Int != 0) {
+      paramwzb.jdField_a_of_type_Xan.a("fail_face", 0, 0, new String[0]);
     }
-    if (this.j * f1 < 200.0F) {
-      f1 = 200.0F / this.j;
-    }
-    paramCanvas.save();
-    paramCanvas.concat(this.b.a.a(this));
-    paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.restore();
-    if (this.jdField_d_of_type_Boolean) {
-      xee.a(paramCanvas, this.b.a, this, 0, 2130844157, 2130844164);
-    }
-  }
-  
-  public void a(Canvas paramCanvas, boolean paramBoolean)
-  {
-    float f2 = this.n;
-    float f1 = this.o;
-    if (f2 * this.j < 200.0F) {
-      f2 = 200.0F / this.j;
-    }
-    if (this.j * f1 < 200.0F) {
-      f1 = 200.0F / this.j;
-    }
-    paramCanvas.save();
-    paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
+    wzl localwzl = paramwzb.jdField_a_of_type_Wzl;
+    if (localwzl != null)
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.85F, 1.0F });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new wzj(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new wzk(this));
+      Object localObject = localwzl.a(paramxfc.jdField_a_of_type_Xes.a);
+      if (!(localObject instanceof xhx))
+      {
+        wxe.d(this.TAG, "DoodleEmojiDownloadEventReceiver no FacePackage found by pack id = " + paramxfc.jdField_a_of_type_Xes.a);
+        return;
+      }
+      localObject = (xhx)localObject;
+      if (paramxfc.jdField_a_of_type_Int == 0)
+      {
+        if (paramxfc.jdField_a_of_type_Boolean)
+        {
+          wxe.b(this.TAG, "notify ui we finish downloading");
+          ((xhx)localObject).jdField_a_of_type_Boolean = false;
+          ((xhx)localObject).f = paramxfc.jdField_a_of_type_Xes.a();
+          ((xhx)localObject).jdField_a_of_type_Int = 0;
+          ((xhx)localObject).b = 0;
+          localwzl.a((xhr)localObject);
+          return;
+        }
+        wxe.a(this.TAG, "notify ui we new progress : " + paramxfc.b + " / " + paramxfc.jdField_a_of_type_Long);
+        ((xhx)localObject).jdField_a_of_type_Boolean = true;
+        ((xhx)localObject).f = null;
+        ((xhx)localObject).jdField_a_of_type_Int = ((int)paramxfc.jdField_a_of_type_Long);
+        ((xhx)localObject).b = ((int)paramxfc.b);
+        localwzl.a((xhr)localObject);
+        return;
+      }
+      ((xhx)localObject).jdField_a_of_type_Boolean = false;
+      ((xhx)localObject).f = null;
+      ((xhx)localObject).jdField_a_of_type_Int = 0;
+      ((xhx)localObject).b = 0;
+      localwzl.a((xhr)localObject);
+      wxe.e(this.TAG, "DoodleEmojiDownloadEventReceiver download error = " + paramxfc.jdField_a_of_type_Int);
+      QQToast.a(paramwzb.a(), alud.a(2131704312), 1).a();
+      wxk.a("0X80076C9");
+      wxk.b("0X80075DE");
+      return;
     }
-    if (!this.c) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-    }
+    wxe.b(this.TAG, "DoodleEmojiDownloadEventReceiver adapter is null");
   }
   
-  public void c()
+  public Class acceptEventClass()
   {
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.c)) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-    }
+    return xfc.class;
   }
 }
 

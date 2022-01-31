@@ -1,60 +1,16 @@
 import android.content.Context;
-import com.tencent.mobileqq.vas.quickupdate.UpdateCallbackSelector.1;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
 
-public class bdsj
+class bdsj
+  extends bdjz
 {
-  private static bdrz jdField_a_of_type_Bdrz = new bdsa();
-  private static final HashMap<Long, bdrz> jdField_a_of_type_JavaUtilHashMap = new UpdateCallbackSelector.1();
-  
-  public static bdrz a(long paramLong)
+  bdsj(bdsg parambdsg, Context paramContext, int paramInt)
   {
-    bdrz localbdrz2 = (bdrz)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-    bdrz localbdrz1 = localbdrz2;
-    if (localbdrz2 == null) {
-      localbdrz1 = jdField_a_of_type_Bdrz;
-    }
-    return localbdrz1;
+    super(paramContext, paramInt);
   }
   
-  public static void a(Context paramContext)
+  public void onBackPressed()
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((bdrz)localIterator.next()).cleanCache(paramContext);
-    }
-  }
-  
-  public static void a(bdrz parambdrz)
-  {
-    try
-    {
-      jdField_a_of_type_Bdrz = parambdrz;
-      return;
-    }
-    finally
-    {
-      parambdrz = finally;
-      throw parambdrz;
-    }
-  }
-  
-  public static void b(bdrz parambdrz)
-  {
-    try
-    {
-      if (jdField_a_of_type_Bdrz == parambdrz) {
-        jdField_a_of_type_Bdrz = new bdsa();
-      }
-      return;
-    }
-    finally
-    {
-      parambdrz = finally;
-      throw parambdrz;
-    }
+    super.onBackPressed();
   }
 }
 

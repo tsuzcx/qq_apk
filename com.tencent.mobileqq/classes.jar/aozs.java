@@ -1,40 +1,84 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Comic;
-import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import java.util.Iterator;
 import java.util.List;
 
-public final class aozs
-  implements Parcelable.Creator
+public class aozs
 {
-  public IPSiteModel.Comic a(Parcel paramParcel)
+  public byte a;
+  public int a;
+  public long a;
+  public LebaPluginInfo a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  
+  public aozs()
   {
-    IPSiteModel.Comic localComic = new IPSiteModel.Comic();
-    localComic.comicType = paramParcel.readInt();
-    localComic.cover = paramParcel.readString();
-    localComic.desc = paramParcel.readString();
-    localComic.id = paramParcel.readString();
-    localComic.jumpUrl = paramParcel.readString();
-    localComic.name = paramParcel.readString();
-    localComic.recommDesc = paramParcel.readString();
-    localComic.typeName = paramParcel.readString();
-    if (localComic.comicRiches == null) {
-      localComic.comicRiches = new ArrayList();
-    }
-    localComic.comicRiches.clear();
-    paramParcel.readList(localComic.comicRiches, IPSiteModel.ComicRich.class.getClassLoader());
-    return localComic;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public IPSiteModel.Comic[] a(int paramInt)
+  public static String a(List<aozs> paramList)
   {
-    return new IPSiteModel.Comic[paramInt];
+    if (paramList == null) {
+      return " print lebaData == null";
+    }
+    if (paramList.isEmpty()) {
+      return " print lebaData.isEmpty()";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(" print lebaData size = ").append(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      aozs localaozs = (aozs)paramList.next();
+      if (localaozs == null)
+      {
+        localStringBuilder.append("|item = null");
+      }
+      else
+      {
+        localStringBuilder.append("|item = ").append(localaozs.jdField_a_of_type_Long).append("|").append(localaozs.jdField_a_of_type_JavaLangString).append("|").append(localaozs.jdField_b_of_type_JavaLangString).append("|").append(localaozs.jdField_a_of_type_Int).append("|").append(localaozs.jdField_a_of_type_Byte).append("|").append(localaozs.jdField_b_of_type_Long).append("|").append(localaozs.jdField_a_of_type_Boolean).append("|");
+        if (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) {
+          localStringBuilder.append("info=null");
+        } else {
+          localStringBuilder.append(localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.toString());
+        }
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramObject == null) || (this.jdField_a_of_type_Long == 0L)) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (this == paramObject);
+      if (!(paramObject instanceof aozs)) {
+        break;
+      }
+      paramObject = (aozs)paramObject;
+      bool1 = bool2;
+    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return Long.valueOf(this.jdField_a_of_type_Long).hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aozs
  * JD-Core Version:    0.7.0.1
  */

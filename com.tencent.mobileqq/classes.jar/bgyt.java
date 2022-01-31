@@ -1,62 +1,10 @@
-import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeReq;
-import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeRsp;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.utils.JSONConverter;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bgyt
-  extends bgzp
+public abstract interface bgyt
 {
-  private MiniAppStore.StGetFirstPageByTypeReq a = new MiniAppStore.StGetFirstPageByTypeReq();
+  public abstract void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong);
   
-  public bgyt(int paramInt)
-  {
-    this.a.uiPageType.set(paramInt);
-  }
-  
-  protected String a()
-  {
-    return "store_app_client";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    MiniAppStore.StGetFirstPageByTypeRsp localStGetFirstPageByTypeRsp = new MiniAppStore.StGetFirstPageByTypeRsp();
-    try
-    {
-      localStGetFirstPageByTypeRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetFirstPageByTypeRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("data", JSONConverter.convert2JSONArray(localStGetFirstPageByTypeRsp.vecAppInfo.get()).toString());
-        paramArrayOfByte.put("dataType", "string");
-        return paramArrayOfByte;
-      }
-      QMLog.d("GetFirstPageByTypeRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("GetFirstPageByTypeRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetFirstPageByType";
-  }
+  public abstract void onInitGpkgInfo(int paramInt, bgyu parambgyu, String paramString);
 }
 
 

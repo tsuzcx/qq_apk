@@ -1,29 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.open.agent.BindGroupFragment;
-import com.tencent.widget.AdapterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
 
 public class beza
-  implements bhqp
+  implements DialogInterface.OnShowListener
 {
-  public beza(BindGroupFragment paramBindGroupFragment) {}
+  public beza(ShareActionSheetV2 paramShareActionSheetV2) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    paramAdapterView = ((beys)paramView.getTag()).a;
-    if (paramAdapterView.isThirdAppBind())
-    {
-      BindGroupFragment.b(this.a, alpo.a(2131701495));
-      return;
+    ShareActionSheetV2.a(this.a, false);
+    if (ShareActionSheetV2.a(this.a) != null) {
+      ShareActionSheetV2.a(this.a).onShow(paramDialogInterface);
     }
-    if (paramAdapterView.isNewTroop())
-    {
-      BindGroupFragment.a(this.a, alpo.a(2131701481), paramAdapterView.troopuin);
-      return;
-    }
-    BindGroupFragment.a(this.a, alpo.a(2131701484));
-    ((alzf)BindGroupFragment.a(this.a).a(20)).a(Integer.valueOf(BindGroupFragment.a(this.a)).intValue(), Integer.valueOf(BindGroupFragment.b(this.a)).intValue(), Long.valueOf(paramAdapterView.troopuin).longValue(), BindGroupFragment.c(this.a));
+    ShareActionSheetV2.c(this.a);
   }
 }
 

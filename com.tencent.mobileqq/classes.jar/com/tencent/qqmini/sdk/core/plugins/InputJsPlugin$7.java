@@ -5,8 +5,8 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
-import bghn;
-import bgkd;
+import bglu;
+import bgok;
 import com.tencent.qqmini.sdk.core.widget.KeyboardLayout;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.utils.DisplayUtil;
@@ -16,7 +16,7 @@ import org.json.JSONObject;
 class InputJsPlugin$7
   implements View.OnClickListener
 {
-  InputJsPlugin$7(InputJsPlugin paramInputJsPlugin, EditText paramEditText, bgkd parambgkd, KeyboardLayout paramKeyboardLayout, Context paramContext) {}
+  InputJsPlugin$7(InputJsPlugin paramInputJsPlugin, EditText paramEditText, bgok parambgok, KeyboardLayout paramKeyboardLayout, Context paramContext) {}
   
   public void onClick(View paramView)
   {

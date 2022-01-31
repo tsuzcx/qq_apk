@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.troopbarassit;
 
-import abol;
-import ajgm;
+import abta;
+import ajlb;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -18,9 +18,9 @@ public class TroopBarAssistantManager$3
   
   public void run()
   {
-    abol localabol = this.a.a();
+    abta localabta = this.a.a();
     Object localObject1 = this.a.a();
-    if ((localabol == null) || (localObject1 == null))
+    if ((localabta == null) || (localObject1 == null))
     {
       if (QLog.isColorLevel()) {
         QLog.w("TroopBarAssistantManager", 2, "clearAllSubscriptionUnreadMsgLite getConversationFacade fail");
@@ -43,12 +43,12 @@ public class TroopBarAssistantManager$3
               break label192;
             }
             localObject1 = this.a.a().b(localTroopBarData.mUin, 1008);
-            if ((localObject1 == null) || (localabol.a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop) <= 0)) {
+            if ((localObject1 == null) || (localabta.a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop) <= 0)) {
               continue;
             }
             int i = syb.b(this.a, ((MessageRecord)localObject1).frienduin);
-            ajgm.b(this.a, ((MessageRecord)localObject1).frienduin, i);
-            localabol.a(((MessageRecord)localObject1).frienduin, i, true);
+            ajlb.b(this.a, ((MessageRecord)localObject1).frienduin, i);
+            localabta.a(((MessageRecord)localObject1).frienduin, i, true);
           }
         }
       }

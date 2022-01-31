@@ -1,18 +1,38 @@
-public class atrq
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+
+class atrq
+  implements bhtv
 {
-  public int a;
-  public String a;
-  public String b = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121848_eHHesyqska.png";
+  private int jdField_a_of_type_Int;
   
-  public atrq()
-  {
-    this.jdField_a_of_type_JavaLangString = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121837_iSfyMAuKAV.png";
-    this.jdField_a_of_type_Int = 360;
-  }
+  atrq(atro paramatro) {}
   
-  public String toString()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    return "popup_url=" + this.jdField_a_of_type_JavaLangString + "\nfixed_entrance_url=" + this.b + "\nrequest_interval=" + this.jdField_a_of_type_Int;
+    paramInt = paramAbsListView.getFirstVisiblePosition();
+    if (paramInt > this.jdField_a_of_type_Int)
+    {
+      if (!atro.a(this.jdField_a_of_type_Atro).b()) {
+        atro.a(this.jdField_a_of_type_Atro).a();
+      }
+      if (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("LocationShareController", 4, "onScrollStateChanged");
+        }
+        atro.a(this.jdField_a_of_type_Atro).a();
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+      if (paramInt >= this.jdField_a_of_type_Int) {}
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.dataline.activities;
 
-import amfy;
+import amkn;
 import android.content.Context;
 import android.text.ClipboardManager;
 import at;

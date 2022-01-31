@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import bghn;
-import bgkd;
+import bglu;
+import bgok;
 import org.json.JSONException;
 import org.json.JSONObject;
 

@@ -1,11 +1,18 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.appstore.component.CommonTitleBar;
 
-public abstract interface bfki
+public class bfki
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString);
+  public bfki(CommonTitleBar paramCommonTitleBar) {}
   
-  public abstract void a(List<DownloadInfo> paramList);
+  public void onClick(View paramView)
+  {
+    if (CommonTitleBar.a(this.a) != null) {
+      CommonTitleBar.a(this.a).a();
+    }
+  }
 }
 
 

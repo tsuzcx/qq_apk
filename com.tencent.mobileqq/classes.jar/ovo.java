@@ -53,7 +53,7 @@ public class ovo
       }
     }
     label175:
-    for (String str = String.format(this.a.getResources().getString(2131718721), new Object[] { Integer.valueOf(i) });; str = this.a.getResources().getString(2131718720))
+    for (String str = String.format(this.a.getResources().getString(2131718733), new Object[] { Integer.valueOf(i) });; str = this.a.getResources().getString(2131718732))
     {
       ReadInJoyCGIDynamicChannelFragment.c(this.a).a(paramBoolean1, str);
       if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {

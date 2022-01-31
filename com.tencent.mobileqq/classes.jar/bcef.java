@@ -1,186 +1,77 @@
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import mqq.manager.Manager;
-import tencent.im.oidb.oidb_0x8c9.oidb_0x8c9.GroupAppUnreadInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.lang.ref.WeakReference;
 
 public class bcef
-  implements Manager
+  extends JobSegment<bced, bced>
 {
-  private HashMap<Long, bcee> a = new HashMap();
-  private HashMap<Long, bcee> b = new HashMap();
+  private int jdField_a_of_type_Int;
+  private bced jdField_a_of_type_Bced;
+  private bkdb jdField_a_of_type_Bkdb;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<XMediaEditor> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public bcef()
+  public bcef(int paramInt, XMediaEditor paramXMediaEditor, String paramString)
   {
-    this.a.clear();
-    this.b.clear();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramXMediaEditor);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public bcee a(Long paramLong)
+  protected void a(JobContext paramJobContext, bced parambced)
   {
-    return (bcee)this.a.get(paramLong);
-  }
-  
-  public void a(long paramLong)
-  {
-    bcee localbcee = (bcee)this.a.get(Long.valueOf(paramLong));
-    if (localbcee != null) {
-      localbcee.c(0);
+    if (isCanceled()) {
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadMediaSegment", 2, new Object[] { "UploadMediaSegment start. mediaType=", Integer.valueOf(this.jdField_a_of_type_Int), ", info status=", Integer.valueOf(parambced.g) });
+    }
+    this.jdField_a_of_type_Bced = parambced;
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    for (paramJobContext = parambced.c;; paramJobContext = ((bcej)parambced).g)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadMediaSegment", 2, new Object[] { "UploadMediaSegment start - getFilePath: ", paramJobContext });
+      }
+      if (TextUtils.isEmpty(paramJobContext)) {
+        break;
+      }
+      this.jdField_a_of_type_Bkdb = parambced.a(paramJobContext, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Bkdb.a(new bceg(this));
+      this.jdField_a_of_type_Bkdb.b();
+      return;
+    }
+    notifyError(new Error("-2"));
   }
   
-  public void a(long paramLong, int paramInt, boolean paramBoolean)
+  public void onCancel()
   {
-    Object localObject = (bcee)this.a.get(Long.valueOf(paramLong));
-    if (localObject != null) {
-      ((bcee)localObject).c(0);
+    if (QLog.isColorLevel()) {
+      QLog.d(getClass().getSimpleName(), 2, new Object[] { "UploadMediaSegment onCancel. mediaType=", Integer.valueOf(this.jdField_a_of_type_Int) });
     }
-    localObject = (bcee)this.b.get(Long.valueOf(paramLong));
-    if (localObject == null) {}
+    if (this.jdField_a_of_type_Bkdb != null) {
+      this.jdField_a_of_type_Bkdb.c();
+    }
+    Error localError;
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      localError = new Error("c_1001");
+    }
     for (;;)
     {
+      notifyError(localError);
       return;
-      ((bcee)localObject).a(paramInt);
-      if (paramBoolean) {
-        ((bcee)localObject).b(paramInt);
-      }
-      if (paramInt == 0)
-      {
-        localObject = ((bcee)localObject).a().iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          bcea localbcea = (bcea)((Iterator)localObject).next();
-          localbcea.a(localbcea.c());
-        }
-      }
-      else
-      {
-        localObject = ((bcee)localObject).a().iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((bcea)((Iterator)localObject).next()).a(1);
-        }
-      }
+      localError = new Error("c_2002");
+      continue;
+      localError = new Error("c_2003");
     }
   }
-  
-  public void a(long paramLong1, long paramLong2, int paramInt)
-  {
-    Object localObject = (bcee)this.a.get(Long.valueOf(paramLong1));
-    if (localObject != null) {
-      ((bcee)localObject).c(0);
-    }
-    localObject = (bcee)this.b.get(Long.valueOf(paramLong1));
-    if (localObject != null)
-    {
-      localObject = ((bcee)localObject).a().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        bcea localbcea = (bcea)((Iterator)localObject).next();
-        if (localbcea.a() == paramLong2) {
-          localbcea.a(paramInt);
-        }
-      }
-    }
-  }
-  
-  public void a(bceb parambceb, boolean paramBoolean) {}
-  
-  public void a(Long paramLong, bcee parambcee)
-  {
-    Object localObject = (bcee)this.a.get(paramLong);
-    if ((localObject != null) && (parambcee != null))
-    {
-      parambcee.a(((bcee)localObject).b());
-      localObject = ((bcee)localObject).a();
-      Iterator localIterator1 = parambcee.a().iterator();
-      for (;;)
-      {
-        if (!localIterator1.hasNext()) {
-          break label119;
-        }
-        bcea localbcea1 = (bcea)localIterator1.next();
-        Iterator localIterator2 = ((ArrayList)localObject).iterator();
-        if (localIterator2.hasNext())
-        {
-          bcea localbcea2 = (bcea)localIterator2.next();
-          if (localbcea1.a() != localbcea2.a()) {
-            break;
-          }
-          localbcea1.b(localbcea2.b());
-        }
-      }
-    }
-    label119:
-    this.a.put(paramLong, parambcee);
-  }
-  
-  public void a(Long paramLong, List<oidb_0x8c9.GroupAppUnreadInfo> paramList)
-  {
-    paramLong = (bcee)this.a.get(paramLong);
-    if (paramLong == null) {}
-    label129:
-    for (;;)
-    {
-      return;
-      paramLong.a(paramLong.c() + System.currentTimeMillis());
-      paramLong = paramLong.a().iterator();
-      for (;;)
-      {
-        if (!paramLong.hasNext()) {
-          break label129;
-        }
-        bcea localbcea = (bcea)paramLong.next();
-        long l1 = localbcea.a();
-        Iterator localIterator = paramList.iterator();
-        if (localIterator.hasNext())
-        {
-          oidb_0x8c9.GroupAppUnreadInfo localGroupAppUnreadInfo = (oidb_0x8c9.GroupAppUnreadInfo)localIterator.next();
-          long l2 = localGroupAppUnreadInfo.opt_uint64_appid.get();
-          int i = localGroupAppUnreadInfo.opt_int32_group_unread_num.get();
-          if (l2 != l1) {
-            break;
-          }
-          localbcea.b(i);
-        }
-      }
-    }
-  }
-  
-  public bcee b(Long paramLong)
-  {
-    return (bcee)this.b.get(paramLong);
-  }
-  
-  public void b(long paramLong1, long paramLong2, int paramInt)
-  {
-    Object localObject = a(Long.valueOf(paramLong1));
-    if (localObject == null) {}
-    bcea localbcea;
-    do
-    {
-      return;
-      while (!((Iterator)localObject).hasNext())
-      {
-        do
-        {
-          localObject = ((bcee)localObject).a();
-        } while (localObject == null);
-        localObject = ((List)localObject).iterator();
-      }
-      localbcea = (bcea)((Iterator)localObject).next();
-    } while (localbcea.a() != paramLong2);
-    localbcea.b(paramInt);
-  }
-  
-  public void b(Long paramLong, bcee parambcee)
-  {
-    this.b.put(paramLong, parambcee);
-  }
-  
-  public void onDestroy() {}
 }
 
 

@@ -1,80 +1,123 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.graphics.Rect;
+import android.os.Message;
+import android.view.MotionEvent;
+import android.widget.RelativeLayout;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-public abstract class bmup
-  implements TextWatcher, TextView.OnEditorActionListener
+public class bmup
+  implements bmrj<bmre>
 {
-  protected EditText a;
-  protected TextView a;
-  protected bmuq a;
+  private final int jdField_a_of_type_Int = bmyg.b(DoodleLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout), 40.0F);
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
   
-  @NonNull
-  public static bmup a(int paramInt)
+  private bmup(DoodleLayout paramDoodleLayout) {}
+  
+  public boolean a(bmre parambmre, MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
+    float f3 = paramMotionEvent.getX();
+    float f4 = paramMotionEvent.getY();
+    if (bnle.b()) {}
+    for (float f1 = bnle.e;; f1 = 0.0F)
     {
-    default: 
-      throw new IllegalArgumentException("unSupport interactType:" + paramInt);
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a() == DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) {
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(7);
+      }
+      float f2 = f1;
+      if (bidj.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.getContext())) {
+        f2 = f1 + bidj.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.getContext());
+      }
+      int i = (int)Math.abs(f4 - DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout));
+      int j;
+      int k;
+      int m;
+      switch (paramMotionEvent.getAction() & 0xFF)
+      {
+      case 3: 
+      case 4: 
+      default: 
+      case 0: 
+      case 2: 
+      case 5: 
+      case 6: 
+        do
+        {
+          return false;
+          DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, true);
+          if (DoodleLayout.d(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) {
+            bmpt.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+          }
+          this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidWidgetRelativeLayout.getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
+          parambmre = this.jdField_a_of_type_AndroidGraphicsRect;
+          parambmre.top -= this.jdField_a_of_type_Int;
+          parambmre = this.jdField_a_of_type_AndroidGraphicsRect;
+          parambmre.bottom += this.jdField_a_of_type_Int;
+          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b.getGlobalVisibleRect(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect);
+          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(4);
+          DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, (int)f4);
+          return false;
+        } while (i <= DoodleLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout));
+        if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a()) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.e()))
+        {
+          i = (int)f3;
+          j = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.left;
+          k = (int)f4;
+          m = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.top;
+          if ((this.jdField_a_of_type_AndroidGraphicsRect.contains(i + j, k + m)) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(f3, f4, null, f2)))
+          {
+            DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, true);
+            return false;
+          }
+          DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
+          return false;
+        }
+        if ((paramMotionEvent.getPointerCount() == 1) && (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f3, (int)f4)))
+        {
+          DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, true);
+          return false;
+        }
+        DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
+        return false;
+      }
+      if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a()) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.e())))
+      {
+        i = (int)f3;
+        j = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.left;
+        k = (int)f4;
+        m = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.top;
+        if ((DoodleLayout.e(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) && ((this.jdField_a_of_type_AndroidGraphicsRect.contains(i + j, k + m)) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(f3, f4, null, f2))))
+        {
+          parambmre.a();
+          DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
+          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(false, 0.0F, 0, 0, null, false, 0);
+          if (QLog.isColorLevel()) {
+            QLog.d("DoodleLayout", 2, "delete face, disable guideline");
+          }
+        }
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.n();
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(0);
+        DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
+        if ((DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout) != null) || (DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout) == null)) {
+          break;
+        }
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(false, false, false, false);
+        return false;
+        if ((paramMotionEvent.getPointerCount() == 1) && (this.jdField_a_of_type_AndroidGraphicsRect != null) && (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f3, (int)f4)))
+        {
+          parambmre.a();
+          DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
+        }
+      }
+      DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout).a.a(Message.obtain(null, 17, 0, 0, new bmnc(false, false, false, false, true)));
+      return false;
     }
-    return new bmus();
   }
-  
-  protected abstract View a();
-  
-  public abstract bmur a();
-  
-  public void a() {}
-  
-  public void a(Context paramContext, bmur parambmur, EditText paramEditText, TextView paramTextView, bmuq parambmuq)
-  {
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_Bmuq = parambmuq;
-  }
-  
-  protected void a(CharSequence paramCharSequence, int paramInt)
-  {
-    int i = bdje.b(paramCharSequence.toString());
-    if (paramInt - i <= 6)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("%s/%s", new Object[] { Integer.valueOf(i / 2), Integer.valueOf(paramInt / 2) }));
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-  }
-  
-  protected void a(CharSequence paramCharSequence, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(paramCharSequence);
-      this.jdField_a_of_type_AndroidWidgetEditText.getText().clear();
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-  }
-  
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    return false;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

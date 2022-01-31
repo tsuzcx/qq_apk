@@ -1,28 +1,86 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.4.1;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.4.2;
+import android.graphics.BitmapFactory.Options;
+import android.os.Bundle;
+import android.os.Parcelable;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aeri
-  extends View
+  implements ajal
 {
-  aeri(aerh paramaerh, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public aeri(CustomizeStrategyFactory.SkinRedPacketStrategy.1 param1) {}
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.4.1(this));
+    Object localObject1 = paramPathResult.folderPath;
+    if (paramInt == 0) {}
+    try
+    {
+      if (this.a.a.skinType != 1) {
+        break label372;
+      }
+      paramPathResult = (String)localObject1 + File.separator;
+      str1 = paramPathResult + "corner.png";
+      localObject2 = paramPathResult + "base_bg.png";
+      String str2 = paramPathResult + "anim_fg";
+      paramInt = (int)(CustomizeStrategyFactory.a * 50.0F + 0.5D);
+      i = (int)(CustomizeStrategyFactory.a * 300.0F + 0.5D);
+      i = (int)(CustomizeStrategyFactory.a * 50.0F + 0.5D);
+      BitmapFactory.Options localOptions = bdhj.a(str1, paramInt);
+      this.a.a.corner = SafeBitmapFactory.decodeFile(str1, localOptions);
+      this.a.a.resPath = ((String)localObject1);
+      this.a.a.background = ((String)localObject2);
+      this.a.a.animInfo = AnimationView.AnimationInfo.loadFromFolder(str2);
+      localObject1 = agnc.a;
+      j = localObject1.length;
+      paramInt = 0;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.4.2(this));
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
+      {
+        String str1;
+        Object localObject2;
+        int i;
+        int j;
+        label372:
+        paramPathResult.printStackTrace();
+        continue;
+        paramInt += 1;
+      }
     }
-    return true;
+    if (paramInt < j)
+    {
+      str1 = localObject1[paramInt];
+      localObject2 = paramPathResult + str1 + ".png";
+      localObject2 = SafeBitmapFactory.decodeFile((String)localObject2, bdhj.a((String)localObject2, i));
+      if (localObject2 != null) {
+        this.a.a.attribute.putParcelable(str1, (Parcelable)localObject2);
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "TYPE_AIO_REDPACKET background=" + this.a.a.background + ",animInfo=" + this.a.a.animInfo);
+      }
+      for (;;)
+      {
+        CustomizeStrategyFactory.a().a(this.a.a);
+        return;
+        if (this.a.a.skinType == 2)
+        {
+          this.a.a.resPath = ((String)localObject1);
+          if (QLog.isColorLevel()) {
+            QLog.d("CustomizeStrategyFactory", 2, "TYPE_POP_REDPACKET path=" + (String)localObject1);
+          }
+        }
+      }
+    }
   }
 }
 

@@ -1,23 +1,34 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
-
 public class bbbh
-  implements Animation.AnimationListener
+  extends bbbi
 {
-  public bbbh(AudioRecordFragment paramAudioRecordFragment) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public bbbh()
   {
-    this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-    this.a.jdField_b_of_type_AndroidViewView.setBackgroundColor(2130706432);
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" name:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" size:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" voiceLength:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" autoToText:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" type:").append(this.c).append(" audioPanel:").append(this.d);
+    return localStringBuilder.toString();
+  }
 }
 
 

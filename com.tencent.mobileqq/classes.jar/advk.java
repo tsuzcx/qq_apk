@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class advk
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public advk(SubLoginActivity paramSubLoginActivity) {}
+  public advk(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b = false;
+    this.a.a(this.a.a);
   }
 }
 

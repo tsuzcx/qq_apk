@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bdcd;
-import bdee;
-import bdfq;
+import bdgm;
+import bdin;
+import bdjz;
 import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
 import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
 import com.tencent.mobileqq.widget.QQToast;
@@ -62,15 +62,15 @@ public class EditColumnFragment
   public void e()
   {
     super.e();
-    bdcd.a(getActivity(), 230).setMessage(2131718762).setNegativeButton(2131718758, new qtr(this)).setPositiveButton(2131718761, new qtq(this)).show();
+    bdgm.a(getActivity(), 230).setMessage(2131718774).setNegativeButton(2131718770, new qtr(this)).setPositiveButton(2131718773, new qtq(this)).show();
   }
   
   public void f()
   {
     super.f();
-    if (!bdee.a())
+    if (!bdin.a())
     {
-      QQToast.a(getActivity(), 0, getString(2131694764), 0).a();
+      QQToast.a(getActivity(), 0, getString(2131694766), 0).a();
       return;
     }
     this.jdField_a_of_type_Qtv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, a());
@@ -83,8 +83,8 @@ public class EditColumnFragment
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo == null) {
       QLog.e("RIJUGC.PublishTopicFragment", 1, "EditTopicFragment, mEditedTopicInfo == null");
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131718761);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718872);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131718773);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718884);
     b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo);
     this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.setCountChangeListener(new qtp(this));
     return paramLayoutInflater;

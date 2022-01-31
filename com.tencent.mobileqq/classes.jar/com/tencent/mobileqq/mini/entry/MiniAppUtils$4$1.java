@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.entry;
 
-import begh;
+import bekq;
 import com.tencent.mobileqq.mini.appbrand.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppUtils$4$1
   implements Runnable
 {
-  MiniAppUtils$4$1(MiniAppUtils.4 param4, begh parambegh) {}
+  MiniAppUtils$4$1(MiniAppUtils.4 param4, bekq parambekq) {}
   
   public void run()
   {

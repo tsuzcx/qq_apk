@@ -1,176 +1,41 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.os.Build.VERSION;
-import android.text.Spannable;
-import android.text.TextUtils;
-import android.text.style.BackgroundColorSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.TextView;
-import android.widget.TextView.BufferType;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.graphics.Bitmap;
 
 public class awnh
-  implements View.OnClickListener, View.OnLongClickListener, bhrf
 {
-  private BackgroundColorSpan jdField_a_of_type_AndroidTextStyleBackgroundColorSpan;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private awjt jdField_a_of_type_Awjt;
-  private awni jdField_a_of_type_Awni;
+  public int a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public int b;
+  public Bitmap b;
+  public String b;
+  public int c;
+  public Bitmap c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public String h;
   
-  private awnh(TextView paramTextView, awjt paramawjt)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_Awjt = paramawjt;
-  }
+  public awnh() {}
   
-  public static void a(TextView paramTextView, String paramString)
+  public awnh(Bitmap paramBitmap, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5)
   {
-    if (paramTextView != null)
-    {
-      String str = paramTextView.getText().toString();
-      awjt localawjt = new awjt(str);
-      localawjt.a(paramString, str);
-      paramTextView.setOnLongClickListener(new awnh(paramTextView, localawjt));
-      paramTextView.setText(paramTextView.getText(), TextView.BufferType.SPANNABLE);
-    }
-  }
-  
-  public static void a(TextView paramTextView, String paramString1, String paramString2, awni paramawni)
-  {
-    if (paramTextView != null)
-    {
-      awjt localawjt = new awjt(paramString1);
-      localawjt.a(paramString2, paramString1);
-      paramString1 = new awnh(paramTextView, localawjt);
-      paramString1.a(paramawni);
-      paramTextView.setOnLongClickListener(paramString1);
-      paramTextView.setText(paramTextView.getText(), TextView.BufferType.SPANNABLE);
-    }
-  }
-  
-  private void a(awni paramawni)
-  {
-    this.jdField_a_of_type_Awni = paramawni;
-  }
-  
-  private void a(String paramString)
-  {
-    if (paramString != null) {
-      try
-      {
-        BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-        if (localBaseApplicationImpl != null)
-        {
-          if (Build.VERSION.SDK_INT < 11)
-          {
-            ((android.text.ClipboardManager)localBaseApplicationImpl.getSystemService("clipboard")).setText(paramString);
-            return;
-          }
-          ((android.content.ClipboardManager)localBaseApplicationImpl.getSystemService("clipboard")).setText(paramString);
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("TextViewCopyAction", 0, "copyContent fail.", paramString);
-      }
-    }
-  }
-  
-  private void b()
-  {
-    int k;
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      k = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString().length();
-      if (!(this.jdField_a_of_type_AndroidWidgetTextView.getText() instanceof Spannable)) {
-        break label104;
-      }
-    }
-    label71:
-    label104:
-    for (Spannable localSpannable = (Spannable)this.jdField_a_of_type_AndroidWidgetTextView.getText();; localSpannable = null)
-    {
-      int i;
-      if (localSpannable != null) {
-        if (this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan == null) {
-          i = 1714664933;
-        }
-      }
-      try
-      {
-        int j = Color.parseColor("#33000000");
-        i = j;
-      }
-      catch (Exception localException)
-      {
-        break label71;
-      }
-      this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan = new BackgroundColorSpan(i);
-      localSpannable.setSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan, 0, k, 17);
-      return;
-    }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      Spannable localSpannable = null;
-      if ((this.jdField_a_of_type_AndroidWidgetTextView.getText() instanceof Spannable)) {
-        localSpannable = (Spannable)this.jdField_a_of_type_AndroidWidgetTextView.getText();
-      }
-      if (localSpannable != null) {
-        localSpannable.removeSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan);
-      }
-    }
-  }
-  
-  public void a()
-  {
-    c();
-  }
-  
-  public void onClick(View paramView)
-  {
-    String str = null;
-    if (this.jdField_a_of_type_Awjt != null)
-    {
-      if (!(paramView instanceof TextView)) {
-        break label93;
-      }
-      paramView = ((TextView)paramView).getText().toString();
-    }
-    label93:
-    for (str = this.jdField_a_of_type_Awjt.a(paramView);; str = this.jdField_a_of_type_Awjt.a)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TextViewCopyAction", 0, String.format("onClick copyResult=%s", new Object[] { str }));
-      }
-      if (!TextUtils.isEmpty(str))
-      {
-        a(str);
-        if (this.jdField_a_of_type_Awni != null) {
-          this.jdField_a_of_type_Awni.a(str);
-        }
-      }
-      return;
-    }
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Awjt != null)
-    {
-      bdkz localbdkz = new bdkz();
-      this.jdField_a_of_type_Awjt.a(localbdkz);
-      b();
-      bdbk.a(paramView, localbdkz, this, this);
-    }
-    return true;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_e_of_type_JavaLangString = paramString1;
+    this.jdField_f_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString3;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_e_of_type_Int = paramInt4;
+    this.jdField_f_of_type_Int = paramInt5;
   }
 }
 

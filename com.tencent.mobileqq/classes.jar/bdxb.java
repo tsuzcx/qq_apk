@@ -1,30 +1,38 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import java.lang.ref.WeakReference;
-
 public class bdxb
-  extends baum
 {
-  private WeakReference<View> a;
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public bdxb(View paramView)
+  public bdxb()
   {
-    this.a = new WeakReference(paramView);
+    this.a = "0";
+    this.b = "";
+    this.c = "";
   }
   
-  public static void a(URLDrawable paramURLDrawable, View paramView)
+  public bdxb(String paramString1, String paramString2, String paramString3)
   {
-    if (paramURLDrawable.getStatus() != 1) {
-      paramURLDrawable.setURLDrawableListener(new bdxb(paramView));
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public boolean equals(Object paramObject)
   {
-    paramURLDrawable = (View)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.invalidate();
+    if (this == paramObject) {
+      return true;
     }
+    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+      return false;
+    }
+    paramObject = (bdxb)paramObject;
+    return this.b.equals(paramObject.b);
+  }
+  
+  public String toString()
+  {
+    return "WallpaperConfig{itemId='" + this.a + '\'' + ", imgPath='" + this.b + '\'' + ", videoPath='" + this.c + '\'' + '}';
   }
 }
 

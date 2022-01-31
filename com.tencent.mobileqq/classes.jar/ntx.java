@@ -31,10 +31,10 @@ class ntx
       if ("action_get_PA_head".equals(???))
       {
         ??? = paramIntent.getStringExtra("uin");
-        if ((TextUtils.isEmpty(???)) || (this.a.jdField_a_of_type_Bcws == null)) {
+        if ((TextUtils.isEmpty(???)) || (this.a.jdField_a_of_type_Bdbb == null)) {
           continue;
         }
-        paramIntent = this.a.jdField_a_of_type_Bcws.a(1, ???);
+        paramIntent = this.a.jdField_a_of_type_Bdbb.a(1, ???);
         if (paramIntent != null)
         {
           localObject = new Intent("action_decode_finish");
@@ -43,7 +43,7 @@ class ntx
           BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject);
           return;
         }
-        this.a.jdField_a_of_type_Bcws.a(???, 1, true);
+        this.a.jdField_a_of_type_Bdbb.a(???, 1, true);
         return;
       }
       int i;
@@ -70,7 +70,7 @@ class ntx
           }
           if (??? != null)
           {
-            ajgm.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, 1008);
+            ajlb.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, 1008);
             paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
             if (paramIntent != null) {
               paramIntent.a(???.frienduin, ???.istroop, true);
@@ -92,7 +92,7 @@ class ntx
             return;
           }
         }
-        azmj.b(null, "dc00899", "Pb_account_lifeservice", (String)localObject, "0X80064D2", "0X80064D2", 0, 0, "" + i, "", "", "");
+        azqs.b(null, "dc00899", "Pb_account_lifeservice", (String)localObject, "0X80064D2", "0X80064D2", 0, 0, "" + i, "", "", "");
         return;
       }
       if ("action_folder_set_read".equals(???))
@@ -159,7 +159,7 @@ class ntx
         if (l == -1L) {
           continue;
         }
-        bool = ((aluw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).a(Long.valueOf(l));
+        bool = ((alzl)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).a(Long.valueOf(l));
         paramIntent = new Intent("action_follow_status_finish");
         paramIntent.putExtra("isFollow", bool);
         paramIntent.putExtra("uin", String.valueOf(l));

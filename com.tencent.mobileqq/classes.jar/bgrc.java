@@ -1,20 +1,74 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 class bgrc
-  implements bgrg
+  extends BaseAdapter
 {
-  bgrc(bgrb parambgrb, bgrh parambgrh, long paramLong, MiniAppInfo paramMiniAppInfo) {}
+  bgrc(bgrb parambgrb) {}
   
-  public void a(bgjw parambgjw, int paramInt, String paramString)
+  public int getCount()
   {
-    if ((paramInt == 0) && (parambgjw != null)) {
-      bgrb.a(this.jdField_a_of_type_Bgrb, this.jdField_a_of_type_Bgrh, 0, parambgjw, "Apkg init succ :" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
+      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
+    }
+    paramViewGroup = paramView;
+    if (paramView == null)
+    {
+      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.a.a(), null);
+      paramView = new bgrj(this.a, null);
+      paramView.a = ((TextView)paramViewGroup.findViewById(2131368575));
+      paramViewGroup.setTag(paramView);
+    }
+    paramView = (bgrj)paramViewGroup.getTag();
+    int i;
+    int j;
+    int k;
+    int m;
+    if (paramView.a != null)
+    {
+      paramView.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+      paramView.a.setOnClickListener(new bgri(this.a, paramInt));
+      i = paramView.a.getPaddingTop();
+      j = paramView.a.getPaddingLeft();
+      k = paramView.a.getPaddingRight();
+      m = paramView.a.getPaddingBottom();
+      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
+        break label212;
+      }
+      paramView.a.setBackgroundResource(2130840870);
     }
     for (;;)
     {
-      bgyd.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 13, null, null, null, 0);
-      return;
-      bgrb.a(this.jdField_a_of_type_Bgrb, this.jdField_a_of_type_Bgrh, paramInt, null, paramString);
+      paramView.a.setPadding(j, i, k, m);
+      return paramViewGroup;
+      label212:
+      if (paramInt == 0) {
+        paramView.a.setBackgroundResource(2130840871);
+      } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
+        paramView.a.setBackgroundResource(2130840869);
+      }
     }
   }
 }

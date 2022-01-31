@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import aivw;
+import ajal;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.mobileqq.microapp.c.c;
 import com.tencent.mobileqq.microapp.sdk.OnUpdateListener;
 import java.io.File;
 
 final class e
-  implements aivw
+  implements ajal
 {
   e(d paramd, String paramString) {}
   

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
-import aaik;
-import aano;
+import aamz;
+import aasd;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -153,7 +153,7 @@ public class RewardedVideoAdPlugin
     }
     try
     {
-      this.adInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString))));
+      this.adInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString))));
       return;
     }
     catch (Throwable paramString)

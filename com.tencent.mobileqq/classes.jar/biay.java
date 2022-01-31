@@ -1,8 +1,13 @@
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 
-public abstract interface biay
+public class biay
 {
-  public abstract void a(RecyclerView.Adapter paramAdapter);
+  public int a;
+  public final Rect a = new Rect();
+  public Drawable a;
+  public boolean a;
+  public int b;
 }
 
 

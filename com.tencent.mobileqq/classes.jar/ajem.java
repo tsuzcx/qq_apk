@@ -1,229 +1,189 @@
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.mobileqq.activity.recent.data.RecentItemAppletsFolderData;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
-import java.util.ArrayList;
-import java.util.List;
+import Wallet.AcsMsg;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper.ConvertParam;
+import com.tencent.mobileqq.activity.qwallet.utils.ComIPCUtils.1;
+import com.tencent.mobileqq.activity.qwallet.utils.ComIPCUtils.2;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.microapp.apkg.AppInfo;
+import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
+import com.tencent.mobileqq.microapp.sdk.LaunchParam;
+import com.tencent.mobileqq.microapp.sdk.OnUpdateListener;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class ajem
-  extends ajff
 {
-  protected int a;
-  private List<String> a;
-  
-  public ajem()
+  public static SoConfig.SoInfo a(String paramString)
   {
-    this.jdField_a_of_type_Int = 2131562525;
-  }
-  
-  public int a()
-  {
-    return 2;
-  }
-  
-  public View a(int paramInt, Object paramObject, ajfa paramajfa, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajgx paramajgx)
-  {
-    Object localObject1;
-    if ((paramView != null) && ((paramView.getTag() instanceof ajen)))
-    {
-      paramajgx = (ajen)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = paramajgx;
-      localObject1 = paramContext.getResources();
-      paramajgx = ((Resources)localObject1).getColorStateList(2131166979);
-      localObject1 = ((Resources)localObject1).getColorStateList(2131166980);
-      if (!ThemeUtil.isNowThemeIsDefault(null, false, null)) {
-        break label522;
-      }
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject1, 0);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 14);
+    localBundle.putString("name", paramString);
+    localBundle.putInt("call_type", azms.b);
+    paramString = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "ComIPCUtils", localBundle);
+    if ((paramString != null) && (paramString.isSuccess()) && (paramString.data != null)) {
+      return (SoConfig.SoInfo)paramString.data.getSerializable("res");
     }
-    for (;;)
+    return null;
+  }
+  
+  public static String a(String paramString)
+  {
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("oper_type", 0);
+    ((Bundle)localObject).putString("uin", paramString);
+    EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "ComIPCUtils", (Bundle)localObject);
+    localObject = paramString;
+    if (localEIPCResult != null)
     {
-      paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(Integer.valueOf(paramInt));
-      if (AppSetting.c) {
-        paramViewGroup.setContentDescription(null);
-      }
-      if ((paramObject instanceof RecentItemAppletsFolderData))
+      localObject = paramString;
+      if (localEIPCResult.isSuccess())
       {
-        paramajgx = (RecentItemAppletsFolderData)paramObject;
-        if (paramajfa != null) {
-          a(paramViewGroup, paramajgx, paramContext, paramajfa.a(paramajgx.mUser.uin, paramView.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.getMeasuredWidth(), paramView.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.getMeasuredHeight(), paramajgx.iconUrl, paramajgx.iconUrlSimple));
+        localObject = paramString;
+        if (localEIPCResult.data != null) {
+          localObject = localEIPCResult.data.getString("res");
         }
       }
-      a(paramContext, paramViewGroup, paramInt, paramObject, paramView, paramOnClickListener);
-      paramViewGroup.setOnClickListener(paramOnClickListener);
-      paramViewGroup.setOnLongClickListener(paramOnLongClickListener);
-      paramViewGroup.setTag(-1, Integer.valueOf(paramInt));
-      return paramViewGroup;
-      paramView = new ajen();
-      paramViewGroup = a(paramContext, this.jdField_a_of_type_Int, paramView);
-      paramView.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramViewGroup.findViewById(2131367808));
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramViewGroup.findViewById(2131377884));
-      paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramViewGroup.findViewById(2131379273));
-      paramView.b = ((SingleLineTextView)paramViewGroup.findViewById(2131365127));
-      Object localObject2 = paramContext.getResources();
-      float f = bdcb.a();
-      paramajgx = ((Resources)localObject2).getColorStateList(2131166979);
-      localObject1 = ((Resources)localObject2).getColorStateList(2131166908);
-      localObject2 = ((Resources)localObject2).getColorStateList(2131166980);
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor((ColorStateList)localObject1);
-      if (ThemeUtil.isNowThemeIsDefault(null, false, null)) {
-        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject2, 0);
-      }
-      for (;;)
-      {
-        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
-        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
-        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding((int)(2.0F * f), (int)(1.0F * f));
-        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(5.0F * f), 2);
-        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramajgx, 2);
-        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
-        paramView.b.setTextColor(paramajgx);
-        paramView.b.setExtendTextPadding((int)(f * 2.0F), 1);
-        paramView.b.setExtendTextSize(14.0F, 1);
-        paramViewGroup.setTag(paramView);
-        if (this.jdField_a_of_type_Ajee != null) {
-          paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_Ajee.a());
-        }
-        break;
-        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramajgx, 0);
-      }
-      label522:
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramajgx, 0);
     }
+    return localObject;
   }
   
-  public List<String> a(RecentBaseData paramRecentBaseData, Context paramContext)
+  public static void a(int paramInt)
   {
-    if ((paramRecentBaseData == null) || (paramContext == null)) {
-      return null;
-    }
-    int i = paramRecentBaseData.mMenuFlag;
-    paramRecentBaseData = paramContext.getResources();
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList == null)
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      j = i & 0xF0;
-      if (j != 32) {
-        break label115;
-      }
-      this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[2]));
-    }
-    for (;;)
-    {
-      if ((i & 0xF) == 1) {
-        this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[0]));
-      }
-      return this.jdField_a_of_type_JavaUtilList;
-      this.jdField_a_of_type_JavaUtilList.clear();
-      break;
-      label115:
-      if (j == 16) {
-        this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[3]));
-      }
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 8);
+    localBundle.putInt("req_id", paramInt);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
   }
   
-  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable)
+  public static void a(int paramInt, MiniAppConfig paramMiniAppConfig)
   {
-    int k = 0;
-    if ((paramView == null) || (paramRecentBaseData == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "bindView|param invalidate");
-      }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 5);
+    localBundle.putInt("action", paramInt);
+    localBundle.putSerializable("req_param", paramMiniAppConfig);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static void a(AcsMsg paramAcsMsg)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 11);
+    localBundle.putSerializable("req_param", paramAcsMsg);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static void a(EmojiGifHelper.ConvertParam paramConvertParam, EIPCResultCallback paramEIPCResultCallback)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 7);
+    localBundle.putSerializable("req_param", paramConvertParam);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, paramEIPCResultCallback);
+  }
+  
+  public static void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 4);
+    localBundle.putSerializable("req_param", paramStartCheckParam);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static void a(AppInfo paramAppInfo)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 3);
+    localBundle.putSerializable("req_param", paramAppInfo);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static void a(LaunchParam paramLaunchParam, int paramInt, OnUpdateListener paramOnUpdateListener)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 2);
+    localBundle.putSerializable("mini_launch_param", paramLaunchParam);
+    localBundle.putInt("version", paramInt);
+    localBundle.putParcelable("receiver", ajao.a(new ComIPCUtils.1(null, paramOnUpdateListener)));
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static void a(LaunchParam paramLaunchParam, EIPCResultCallback paramEIPCResultCallback)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 1);
+    localBundle.putSerializable("mini_launch_param", paramLaunchParam);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, paramEIPCResultCallback);
+  }
+  
+  public static void a(String paramString, aixw paramaixw)
+  {
+    if (paramaixw == null) {
       return;
     }
-    if ((paramView.getTag() instanceof ajen)) {}
-    for (ajen localajen = (ajen)paramView.getTag();; localajen = null) {
-      for (;;)
-      {
-        if (localajen == null)
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("Q.recent", 2, "bindView|holder is null, tag = " + paramView.getTag());
-          return;
-        }
-        localajen.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageDrawable(paramDrawable);
-        a(localajen.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView);
-        localajen.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendText(paramRecentBaseData.mShowTime, 0);
-        localajen.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecentBaseData.mTitleName);
-        try
-        {
-          localajen.b.setText(paramRecentBaseData.mLastMsg);
-          j = paramRecentBaseData.mUnreadNum;
-          i = paramRecentBaseData.mUnreadFlag;
-          if (j > 0) {
-            if (i == 0)
-            {
-              localajen.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, paramView);
-              j = 0;
-              i = 0;
-              bhro.a(localajen.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, j, k, 99, null);
-              if ((paramRecentBaseData.mMenuFlag & 0xF0) != 32) {
-                break label340;
-              }
-            }
-          }
-        }
-        catch (Exception paramDrawable)
-        {
-          for (;;)
-          {
-            try
-            {
-              localajen.g.setBackgroundResource(2130839217);
-              if (!AppSetting.c) {
-                break;
-              }
-              paramView.setContentDescription(paramRecentBaseData.mContentDesc);
-              return;
-              paramDrawable = paramDrawable;
-              paramDrawable.printStackTrace();
-              localajen.b.setText(paramRecentBaseData.mLastMsg + " ");
-              continue;
-              if (i == 2)
-              {
-                i = 1;
-                localajen.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, paramView);
-                j = 0;
-                continue;
-              }
-              i = 3;
-              localajen.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, paramView);
-              localajen.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(paramContext.getResources().getColor(2131167025));
-              k = 2130849732;
-              continue;
-              label340:
-              localajen.g.setBackgroundResource(2130839216);
-              continue;
-            }
-            catch (Throwable paramContext)
-            {
-              continue;
-            }
-            int j = 0;
-            int i = 0;
-          }
-        }
-      }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 15);
+    localBundle.putString("key", paramString);
+    localBundle.putInt("code", paramaixw.hashCode());
+    localBundle.putParcelable("receiver", ajao.a(new ComIPCUtils.2(null, paramaixw, paramString)));
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static void a(String paramString, EIPCResultCallback paramEIPCResultCallback, int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 14);
+    localBundle.putString("name", paramString);
+    localBundle.putInt("call_type", paramInt);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, paramEIPCResultCallback);
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 10);
+    localBundle.putBoolean("req_param", paramBoolean);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static boolean a()
+  {
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("oper_type", 9);
+    localObject = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "ComIPCUtils", (Bundle)localObject);
+    if ((localObject != null) && (((EIPCResult)localObject).isSuccess()) && (((EIPCResult)localObject).data != null)) {
+      return ((EIPCResult)localObject).data.getBoolean("res");
     }
+    return false;
+  }
+  
+  public static void b(AcsMsg paramAcsMsg)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 12);
+    localBundle.putSerializable("req_param", paramAcsMsg);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static void b(String paramString, aixw paramaixw)
+  {
+    if (paramaixw == null) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 16);
+    localBundle.putString("key", paramString);
+    localBundle.putInt("code", paramaixw.hashCode());
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static void c(AcsMsg paramAcsMsg)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 13);
+    localBundle.putSerializable("req_param", paramAcsMsg);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
   }
 }
 

@@ -1,17 +1,23 @@
-import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
-import com.tencent.biz.subscribe.component.base.ComponentPageView;
+import android.app.Activity;
+import android.graphics.drawable.AnimationDrawable;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.3.1;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 
 public class ydz
-  implements SwipeRefreshLayout.OnRefreshListener
+  implements ylh
 {
-  public ydz(ComponentPageView paramComponentPageView) {}
+  ydz(ydw paramydw) {}
   
-  public void onRefresh()
+  public void a() {}
+  
+  public void a(AnimationDrawable paramAnimationDrawable)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
+    if (ydw.a(this.a) != null) {
+      ydw.f(this.a).runOnUiThread(new DetailBaseAdapter.3.1(this, paramAnimationDrawable));
     }
   }
+  
+  public void a(QQAnimationDrawable paramQQAnimationDrawable) {}
 }
 
 

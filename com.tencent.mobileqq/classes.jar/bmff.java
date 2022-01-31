@@ -1,18 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class bmff
-  implements bepg
+public abstract interface bmff
 {
-  bmff(bmfc parambmfc) {}
+  public abstract Activity a();
   
-  public void a(bepe parambepe)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambepe);
-    }
-  }
+  public abstract SessionInfo a();
   
-  public void a(bepe parambepe, int paramInt1, int paramInt2) {}
+  public abstract QQAppInterface a();
+  
+  public abstract boolean a();
 }
 
 

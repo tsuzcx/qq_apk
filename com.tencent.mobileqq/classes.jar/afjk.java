@@ -1,23 +1,6 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-
-class afjk
-  implements arnx
+public abstract interface afjk
 {
-  afjk(afjb paramafjb) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = new Bundle();
-    paramView.putString(bdqe.e, "QQ会员");
-    paramView.putString(bdqe.f, "LTMCLUB");
-    paramView.putString(bdqe.d, "1450000515");
-    paramView.putInt(bdqe.b, 3);
-    paramView.putString(bdqe.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    paramView.putString(bdqe.i, bdvo.a().c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-    bdqe.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramView);
-  }
+  public abstract void a();
 }
 
 

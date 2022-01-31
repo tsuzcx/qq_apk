@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.utils;
 
-import awbv;
-import awbw;
-import awcw;
-import bchl;
+import awge;
+import awgf;
+import awhf;
+import bclu;
 import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -13,23 +13,23 @@ import java.util.List;
 public class TroopAppMgr$3
   implements Runnable
 {
-  public TroopAppMgr$3(bchl parambchl, ArrayList paramArrayList, awbw paramawbw, int paramInt) {}
+  public TroopAppMgr$3(bclu parambclu, ArrayList paramArrayList, awgf paramawgf, int paramInt) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      Object localObject1 = awcw.b(TroopAIOAppInfo.class);
+      Object localObject1 = awhf.b(TroopAIOAppInfo.class);
       Object localObject2;
       if (QLog.isColorLevel())
       {
-        localObject2 = this.jdField_a_of_type_Awbw.a(TroopAIOAppInfo.class);
+        localObject2 = this.jdField_a_of_type_Awgf.a(TroopAIOAppInfo.class);
         this.this$0.a(".troop.troop_appVASH", "before delete type:" + this.jdField_a_of_type_Int, (List)localObject2);
       }
-      this.jdField_a_of_type_Awbw.a((String)localObject1, "groupType=?", new String[] { String.valueOf(this.jdField_a_of_type_Int) });
+      this.jdField_a_of_type_Awgf.a((String)localObject1, "groupType=?", new String[] { String.valueOf(this.jdField_a_of_type_Int) });
       if (QLog.isColorLevel())
       {
-        localObject1 = this.jdField_a_of_type_Awbw.a(TroopAIOAppInfo.class);
+        localObject1 = this.jdField_a_of_type_Awgf.a(TroopAIOAppInfo.class);
         this.this$0.a(".troop.troop_appVASH", "before update after delete type:" + this.jdField_a_of_type_Int, (List)localObject1);
       }
       localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -37,15 +37,15 @@ public class TroopAppMgr$3
       {
         localObject2 = (TroopAIOAppInfo)((Iterator)localObject1).next();
         ((TroopAIOAppInfo)localObject2).setStatus(1000);
-        this.this$0.a(this.jdField_a_of_type_Awbw, (awbv)localObject2);
+        this.this$0.a(this.jdField_a_of_type_Awgf, (awge)localObject2);
       }
       if (QLog.isColorLevel())
       {
-        localObject1 = this.jdField_a_of_type_Awbw.a(TroopAIOAppInfo.class);
+        localObject1 = this.jdField_a_of_type_Awgf.a(TroopAIOAppInfo.class);
         this.this$0.a(".troop.troop_appVASH", "after update type:" + this.jdField_a_of_type_Int, (List)localObject1);
       }
     }
-    this.jdField_a_of_type_Awbw.a();
+    this.jdField_a_of_type_Awgf.a();
   }
 }
 

@@ -1,17 +1,8 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.widget.ParticipleView;
-
-public class benm
-  extends AnimatorListenerAdapter
+public abstract interface benm
 {
-  public benm(ParticipleView paramParticipleView) {}
+  public abstract void a(float paramFloat1, float paramFloat2);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ParticipleView.a(this.a, 1.0F);
-    this.a.invalidate();
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

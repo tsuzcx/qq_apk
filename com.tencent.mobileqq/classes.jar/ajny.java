@@ -1,15 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import android.text.TextUtils;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class ajny
   implements DialogInterface.OnClickListener
 {
-  public ajny(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
+  public ajny(LoginView paramLoginView) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
+    paramDialogInterface = this.a.a.getText().toString();
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      this.a.b(paramDialogInterface);
+    }
   }
 }
 

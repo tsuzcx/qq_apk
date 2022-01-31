@@ -1,52 +1,25 @@
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.List;
 
-class bcqb
-  implements ITransactionCallback
+public class bcqb
 {
-  bcqb(bcqa parambcqa) {}
+  public int a;
+  public long a;
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public int b = 0;
+  public String b;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public String a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "upload onFailed errn:" + paramInt);
+    if ((this.a == null) || (this.a.size() == 0)) {
+      return "";
     }
-    this.a.e();
+    if (paramInt < this.a.size()) {
+      return (String)this.a.get(paramInt);
+    }
+    return (String)this.a.get(this.a.size() - 1);
   }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "upload onSuccess");
-    }
-    paramHashMap = new Bdh_extinfo.CommFileExtRsp();
-    try
-    {
-      paramHashMap.mergeFrom(paramArrayOfByte);
-      this.a.b = paramHashMap.bytes_download_url.get().toStringUtf8();
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.b();
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
 }
 
 

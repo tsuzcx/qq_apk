@@ -3,13 +3,13 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 class SchemeJsPlugin$1
   extends ResultReceiver
 {
-  SchemeJsPlugin$1(SchemeJsPlugin paramSchemeJsPlugin, Handler paramHandler, bgkd parambgkd, String paramString)
+  SchemeJsPlugin$1(SchemeJsPlugin paramSchemeJsPlugin, Handler paramHandler, bgok parambgok, String paramString)
   {
     super(paramHandler);
   }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import aeiy;
-import afdt;
+import aenn;
+import afii;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -11,8 +11,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bdjj;
-import bdkf;
+import bdns;
+import bdoo;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 import com.tencent.mobileqq.data.ArkAppMessage;
@@ -21,7 +21,7 @@ import com.tencent.qphone.base.util.QLog;
 public class BirthdayActivatePageArkView
   extends ActivateBasePage
 {
-  afdt jdField_a_of_type_Afdt;
+  afii jdField_a_of_type_Afii;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   public ArkAppView a;
@@ -36,12 +36,12 @@ public class BirthdayActivatePageArkView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560767, this, false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373416));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560785, this, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373468));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361941));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365766));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365768));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361955));
-    this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365751));
+    this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365753));
     addView(this.jdField_a_of_type_AndroidViewView);
   }
   
@@ -51,7 +51,7 @@ public class BirthdayActivatePageArkView
     {
       try
       {
-        Object localObject = bdjj.a(getContext(), 3, paramLong);
+        Object localObject = bdns.a(getContext(), 3, paramLong);
         this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
         if (TextUtils.isEmpty(paramString))
         {
@@ -62,26 +62,26 @@ public class BirthdayActivatePageArkView
         if (getContext() != null)
         {
           i = getContext().getResources().getDisplayMetrics().widthPixels;
-          i -= bdkf.b(68.0F);
-          paramInt -= bdkf.b(35.0F);
+          i -= bdoo.b(68.0F);
+          paramInt -= bdoo.b(35.0F);
           localObject = new ArkAppMessage();
           ((ArkAppMessage)localObject).fromAppXml(paramString);
-          if (this.jdField_a_of_type_Afdt != null)
+          if (this.jdField_a_of_type_Afii != null)
           {
             QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  initdata destroy");
-            this.jdField_a_of_type_Afdt.doOnEvent(2);
+            this.jdField_a_of_type_Afii.doOnEvent(2);
           }
-          this.jdField_a_of_type_Afdt = new afdt();
+          this.jdField_a_of_type_Afii = new afii();
           QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  arkAppContainer  init height =" + paramInt);
-          this.jdField_a_of_type_Afdt.a(((ArkAppMessage)localObject).appName, ((ArkAppMessage)localObject).appView, ((ArkAppMessage)localObject).appMinVersion, ((ArkAppMessage)localObject).metaList, getResources().getDisplayMetrics().scaledDensity, new SessionInfo());
+          this.jdField_a_of_type_Afii.a(((ArkAppMessage)localObject).appName, ((ArkAppMessage)localObject).appView, ((ArkAppMessage)localObject).appMinVersion, ((ArkAppMessage)localObject).metaList, getResources().getDisplayMetrics().scaledDensity, new SessionInfo());
           this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
           this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
-          this.jdField_a_of_type_Afdt.setFixSize(i, paramInt);
-          this.jdField_a_of_type_Afdt.setMaxSize(i, paramInt);
-          this.jdField_a_of_type_Afdt.setMinSize(i, paramInt);
-          paramString = new aeiy(this);
+          this.jdField_a_of_type_Afii.setFixSize(i, paramInt);
+          this.jdField_a_of_type_Afii.setMaxSize(i, paramInt);
+          this.jdField_a_of_type_Afii.setMinSize(i, paramInt);
+          paramString = new aenn(this);
           this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setLoadCallback(paramString);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.initArkView(this.jdField_a_of_type_Afdt);
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.initArkView(this.jdField_a_of_type_Afii);
           return;
         }
       }
@@ -90,7 +90,7 @@ public class BirthdayActivatePageArkView
         QLog.e("BirthdayActivatePageArkView", 1, "@arkgif  initdata erro" + paramString.toString());
         return;
       }
-      int i = bdkf.a();
+      int i = bdoo.a();
     }
   }
   
@@ -111,10 +111,10 @@ public class BirthdayActivatePageArkView
   public void b()
   {
     super.b();
-    if (this.jdField_a_of_type_Afdt != null)
+    if (this.jdField_a_of_type_Afii != null)
     {
       QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  destroy");
-      this.jdField_a_of_type_Afdt.doOnEvent(2);
+      this.jdField_a_of_type_Afii.doOnEvent(2);
     }
   }
   
@@ -133,7 +133,7 @@ public class BirthdayActivatePageArkView
   public void g()
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130844258));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130844330));
     this.f.setVisibility(0);
   }
   

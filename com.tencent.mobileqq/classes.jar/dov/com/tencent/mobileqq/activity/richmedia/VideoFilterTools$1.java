@@ -1,13 +1,13 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
-import bncp;
+import bnhb;
 
 public class VideoFilterTools$1
   implements Runnable
 {
   public void run()
   {
-    bncp.a(this.this$0);
+    bnhb.a(this.this$0);
   }
 }
 

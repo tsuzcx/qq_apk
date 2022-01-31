@@ -9,9 +9,9 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bhzz;
-import biai;
-import biau;
+import bieg;
+import biep;
+import bifb;
 import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 import com.tencent.widget.pull2refresh.XRecyclerView;
 import tat;
@@ -53,8 +53,8 @@ public abstract class WSBaseHomeFragment<V extends tat, P extends taw<V>, M>
   
   private void b(View paramView)
   {
-    this.b = paramView.findViewById(2131367686);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView = ((XRecyclerView)paramView.findViewById(2131380263));
+    this.b = paramView.findViewById(2131367696);
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView = ((XRecyclerView)paramView.findViewById(2131380321));
     if (this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView != null)
     {
       paramView = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a();
@@ -79,7 +79,7 @@ public abstract class WSBaseHomeFragment<V extends tat, P extends taw<V>, M>
   
   protected abstract RecyclerView.LayoutManager a();
   
-  protected abstract bhzz a();
+  protected abstract bieg a();
   
   public abstract void a();
   
@@ -135,7 +135,7 @@ public abstract class WSBaseHomeFragment<V extends tat, P extends taw<V>, M>
     {
       return 0;
     }
-    return ((biau)localRecyclerViewWithHeaderFooter.getAdapter()).a();
+    return ((bifb)localRecyclerViewWithHeaderFooter.getAdapter()).a();
   }
   
   public abstract void c();
@@ -155,7 +155,7 @@ public abstract class WSBaseHomeFragment<V extends tat, P extends taw<V>, M>
       a(getArguments());
     }
     if (a() != -1) {}
-    for (this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(a(), paramViewGroup, false);; this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559857, paramViewGroup, false)) {
+    for (this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(a(), paramViewGroup, false);; this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559856, paramViewGroup, false)) {
       return this.jdField_a_of_type_AndroidViewView;
     }
   }

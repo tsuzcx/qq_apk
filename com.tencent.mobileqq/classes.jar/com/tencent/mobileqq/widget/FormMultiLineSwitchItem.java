@@ -8,8 +8,8 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcvq;
-import bdkf;
+import bczz;
+import bdoo;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 
@@ -47,20 +47,20 @@ public class FormMultiLineSwitchItem
     }
     if ((AppSetting.c) && (Build.VERSION.SDK_INT >= 16))
     {
-      bcvq.a(this.b, false);
+      bczz.a(this.b, false);
       setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText() + " " + this.jdField_a_of_type_JavaLangString);
     }
     this.b.setSingleLine(false);
     this.b.setDuplicateParentStateEnabled(true);
-    int i = bdkf.a();
-    int j = bdkf.a(96.0F);
+    int i = bdoo.a();
+    int j = bdoo.a(96.0F);
     this.b.setMaxWidth(i - j);
     localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131296637);
     localLayoutParams.bottomMargin = getResources().getDimensionPixelOffset(2131296643);
     localLayoutParams.leftMargin = getResources().getDimensionPixelSize(2131298038);
-    localLayoutParams.addRule(3, 2131366747);
+    localLayoutParams.addRule(3, 2131366757);
     i = getResources().getDimensionPixelSize(2131296662);
-    this.b.setTextColor(getResources().getColorStateList(2131166975));
+    this.b.setTextColor(getResources().getColorStateList(2131166977));
     this.b.setTextSize(0, i);
     this.b.setGravity(19);
     addView(this.b, localLayoutParams);

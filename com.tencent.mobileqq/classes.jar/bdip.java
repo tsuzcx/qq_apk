@@ -1,12 +1,24 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import java.lang.ref.WeakReference;
 
-public class bdip
+class bdip
+  implements DialogInterface.OnKeyListener
 {
-  public ImageView a;
-  public TextView a;
-  public ShareActionSheetBuilder.ActionSheetItem a;
+  bdip(bdio parambdio) {}
+  
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4)
+    {
+      this.a.dismiss();
+      ((Activity)this.a.a.get()).finish();
+      return true;
+    }
+    return false;
+  }
 }
 
 

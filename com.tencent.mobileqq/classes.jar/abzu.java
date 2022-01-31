@@ -1,52 +1,53 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.widget.EditText;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class abzu
-  implements CompoundButton.OnCheckedChangeListener
+class abzu
+  extends abzv
 {
-  public abzu(AssistantSettingActivity paramAssistantSettingActivity) {}
+  abzu(abzt paramabzt) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onSuccess(JSONObject paramJSONObject)
   {
-    int i;
-    label43:
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    super.onSuccess(paramJSONObject);
+    try
     {
-      i = 1;
-      bjxj.e(i);
-      bjxj.a(paramBoolean);
-      bjxj.a(true);
-      if (!paramBoolean) {
-        break label98;
+      paramJSONObject = paramJSONObject.getJSONArray("appfriends");
+      JSONObject localJSONObject1 = new JSONObject();
+      localJSONObject1.put("rankingID", 11001);
+      JSONArray localJSONArray1 = new JSONArray();
+      int i = 0;
+      int j = paramJSONObject.length();
+      while (i < j)
+      {
+        Object localObject = paramJSONObject.getJSONObject(i).getString("openid");
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("openid", localObject);
+        localJSONObject2.put("score", (int)Math.floor(Math.random() * 1000.0D));
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("key", "test_key");
+        ((JSONObject)localObject).put("value", (int)Math.floor(Math.random() * 100.0D));
+        ((JSONObject)localObject).put("type", 1);
+        JSONArray localJSONArray2 = new JSONArray();
+        localJSONArray2.put(localObject);
+        localJSONObject2.put("extraList", localJSONArray2);
+        localJSONArray1.put(localJSONObject2);
+        i += 1;
       }
-      QQToast.a(this.a.getBaseContext(), 2, 2131719039, 2000).a();
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label121;
+      localJSONObject1.put("scoreList", localJSONArray1);
+      this.a.a.jdField_a_of_type_Abwx.a("reportScore", localJSONObject1, new abzv(this.a.a.jdField_a_of_type_AndroidWidgetEditText));
+      if (this.a.a.jdField_a_of_type_AndroidWidgetEditText != null) {
+        new AlertDialog.Builder(this.a.a.jdField_a_of_type_AndroidWidgetEditText.getContext()).setTitle("reportScore").setMessage(localJSONObject1.toString()).setNegativeButton("知道了", null).create().show();
       }
-      paramCompoundButton = "0X8008236";
-      label59:
-      if (!paramBoolean) {
-        break label127;
-      }
-    }
-    label98:
-    label121:
-    label127:
-    for (String str = "0X8008236";; str = "0X8008235")
-    {
-      nrt.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
       return;
-      i = 0;
-      break;
-      QQToast.a(this.a.getBaseContext(), 2, 2131719037, 2000).a();
-      break label43;
-      paramCompoundButton = "0X8008235";
-      break label59;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
     }
   }
 }

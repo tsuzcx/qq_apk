@@ -1,24 +1,24 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.FriendListHandler;
-import mqq.os.MqqHandler;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class alot
-  extends MqqHandler
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public alot(FriendListHandler paramFriendListHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public alot(BaseActivity paramBaseActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    switch (paramMessage.what)
+    if (paramInt == 0) {}
+    for (boolean bool = false;; bool = true)
     {
-    default: 
+      BaseActivity.mIsInMultiScreen = bool;
+      this.a.onMultiWindowModeChanged(BaseActivity.mIsInMultiScreen);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("qqBaseActivity", 4, "onSystemUiVisibilityChange:" + paramInt + ",Activity name:" + getClass().getName());
+      }
       return;
     }
-    FriendListHandler.a(this.a);
   }
 }
 

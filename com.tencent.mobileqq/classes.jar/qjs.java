@@ -33,12 +33,12 @@ public class qjs
   
   public static String a()
   {
-    return bduw.a(aljq.aX + ".readInjoy/refresh_res/");
+    return bdzf.a(alof.aX + ".readInjoy/refresh_res/");
   }
   
   public static String a(String paramString)
   {
-    return bduw.a(aljq.aX + ".readInjoy/refresh_res/" + paramString);
+    return bdzf.a(alof.aX + ".readInjoy/refresh_res/" + paramString);
   }
   
   public static List<String> a()
@@ -116,7 +116,7 @@ public class qjs
       {
         str1 = str2;
         localObject = localJSONObject;
-        str2 = bdcs.b(localFile);
+        str2 = bdhb.b(localFile);
         str1 = str2;
         localObject = str2;
         localJSONObject = new JSONObject(str2);
@@ -184,7 +184,7 @@ public class qjs
   
   public static boolean a(String paramString)
   {
-    return azzp.a(new File(a(paramString)));
+    return bady.a(new File(a(paramString)));
   }
   
   public static int b()
@@ -194,7 +194,7 @@ public class qjs
   
   public static String b()
   {
-    return bduw.a(aljq.aX + ".readInjoy/refresh_res/" + jdField_a_of_type_JavaLangString);
+    return bdzf.a(alof.aX + ".readInjoy/refresh_res/" + jdField_a_of_type_JavaLangString);
   }
   
   private static void b()

@@ -1,54 +1,28 @@
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
 import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
 
-public class bczi
+final class bczi
+  implements DownloadParams.DecodeHandler
 {
-  public static URLDrawable a(ImageView paramImageView, String paramString)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    return a(paramImageView, paramString, bczv.a);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, Drawable paramDrawable)
-  {
-    return a(paramImageView, paramString, bczv.a, paramDrawable, paramDrawable);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
-  {
-    return a(paramImageView, paramString, paramDecodeHandler, null);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler, Drawable paramDrawable)
-  {
-    return a(paramImageView, paramString, paramDecodeHandler, paramDrawable, paramDrawable);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler, Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if (paramImageView.getLayoutParams() != null)
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    Object localObject;
+    do
     {
-      localURLDrawableOptions.mRequestWidth = paramImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramImageView.getLayoutParams().height;
-    }
-    if ((localURLDrawableOptions.mRequestWidth <= 0) || (localURLDrawableOptions.mRequestHeight <= 0))
-    {
-      localURLDrawableOptions.mRequestWidth = Math.max(paramImageView.getWidth(), 0);
-      localURLDrawableOptions.mRequestHeight = Math.max(paramImageView.getHeight(), 0);
-    }
-    localURLDrawableOptions.mFailedDrawable = paramDrawable2;
-    localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
-    if (paramDecodeHandler != null) {
-      localURLDrawableOptions.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
-    }
-    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    paramString.setDecodeHandler(paramDecodeHandler);
-    paramImageView.setImageDrawable(paramString);
-    return paramString;
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 2);
+    paramDownloadParams = (int[])localObject;
+    return bdhj.d(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

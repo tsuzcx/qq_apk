@@ -2,16 +2,16 @@ package com.tencent.qqmini.sdk.runtime.core.page;
 
 import android.animation.ValueAnimator;
 import android.view.View;
-import bhbw;
+import bhgd;
 
 public class PageWebviewContainer$7$1
   implements Runnable
 {
-  public PageWebviewContainer$7$1(bhbw parambhbw, ValueAnimator paramValueAnimator) {}
+  public PageWebviewContainer$7$1(bhgd parambhgd, ValueAnimator paramValueAnimator) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bhbw.a.getView().scrollTo(0, ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue());
+    this.jdField_a_of_type_Bhgd.a.getView().scrollTo(0, ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue());
   }
 }
 

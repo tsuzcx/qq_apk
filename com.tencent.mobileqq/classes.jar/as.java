@@ -8,9 +8,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class as
-  implements bhqd
+  implements bhuk
 {
-  public as(LiteActivity paramLiteActivity, long paramLong, DataLineMsgSet paramDataLineMsgSet, List paramList, bhpy parambhpy) {}
+  public as(LiteActivity paramLiteActivity, long paramLong, DataLineMsgSet paramDataLineMsgSet, List paramList, bhuf parambhuf) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -19,11 +19,11 @@ public class as
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhpy.cancel();
+      this.jdField_a_of_type_Bhuf.cancel();
       return;
       if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(this.jdField_a_of_type_Long))
       {
-        paramView = (allz)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
+        paramView = (alqo)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
         this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
         if (paramView.a(this.jdField_a_of_type_JavaUtilList))
         {
@@ -42,7 +42,7 @@ public class as
         }
         else
         {
-          armz.a(2131694062);
+          arri.a(2131694064);
         }
       }
     }

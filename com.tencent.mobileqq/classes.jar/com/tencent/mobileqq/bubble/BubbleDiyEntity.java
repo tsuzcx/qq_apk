@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.bubble;
 
 import android.text.TextUtils;
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
 public class BubbleDiyEntity
-  extends awbv
+  extends awge
 {
   public String bottomLeftId;
   public String bottomRightId;
   public String diyText = "";
   public String topLeftId;
   public String topRightId;
-  @awdj
+  @awhs
   public String uinAndDiyId;
   
   public static void parsePasterMap(BubbleDiyEntity paramBubbleDiyEntity, HashMap<String, String> paramHashMap)

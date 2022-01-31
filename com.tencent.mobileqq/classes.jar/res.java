@@ -94,7 +94,7 @@ public class res
       return false;
     }
     if (this.jdField_a_of_type_Int < 0) {
-      this.jdField_a_of_type_Int = bjxj.H(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_Int = bkbq.H(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "innerCheckIsNeedShow() 本地显示次数(更新前) mLocalShowCountToday=" + this.jdField_a_of_type_Int);
@@ -110,7 +110,7 @@ public class res
   void a()
   {
     if (this.jdField_a_of_type_Int > 0) {
-      bjxj.y(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int);
+      bkbq.y(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int);
     }
   }
   
@@ -129,20 +129,20 @@ public class res
       this.jdField_a_of_type_Boolean = true;
       if (paramrbs.j == null)
       {
-        paramrbs.j = ((ViewGroup)((ViewStub)paramrbs.p.findViewById(2131379635)).inflate());
-        paramrbs.jdField_c_of_type_ComTencentImageURLImageView = ((URLImageView)paramrbs.j.findViewById(2131376625));
-        paramrbs.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramrbs.j.findViewById(2131376626));
+        paramrbs.j = ((ViewGroup)((ViewStub)paramrbs.p.findViewById(2131379693)).inflate());
+        paramrbs.jdField_c_of_type_ComTencentImageURLImageView = ((URLImageView)paramrbs.j.findViewById(2131376679));
+        paramrbs.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramrbs.j.findViewById(2131376680));
       }
     } while (paramrbs.j.getVisibility() == 0);
     if (!TextUtils.isEmpty(paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar.jdField_a_of_type_JavaLangString)) {}
     try
     {
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = bdkf.a(32.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = bdkf.a(32.0F);
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = bdoo.a(32.0F);
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = bdoo.a(32.0F);
       localObject = URLDrawable.getDrawable(paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setTag(new int[] { 0, 0, bcwh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 3.0F), 3 });
-      ((URLDrawable)localObject).setDecodeHandler(bcuq.j);
+      ((URLDrawable)localObject).setTag(new int[] { 0, 0, bdaq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 3.0F), 3 });
+      ((URLDrawable)localObject).setDecodeHandler(bcyz.j);
       paramrbs.jdField_c_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
       label235:
       paramrbs.jdField_c_of_type_AndroidWidgetTextView.setText(paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar.b);

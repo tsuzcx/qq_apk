@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.intervideo.huiyin;
 
 import android.content.Intent;
-import asxy;
+import atch;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class HuiyinUtilsImpl$4
   implements Runnable
 {
-  public HuiyinUtilsImpl$4(asxy paramasxy, AppInterface paramAppInterface, Intent paramIntent) {}
+  public HuiyinUtilsImpl$4(atch paramatch, AppInterface paramAppInterface, Intent paramIntent) {}
   
   public void run()
   {

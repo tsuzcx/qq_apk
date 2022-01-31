@@ -3,11 +3,11 @@ package com.tencent.mobileqq.activity.photo;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
-import baux;
+import bazg;
 import java.net.URL;
 
 public class AppVideoDecoder
-  implements baux
+  implements bazg
 {
   Context mContext;
   LocalMediaInfo mLocalMediaInfo;

@@ -69,7 +69,7 @@ public class mts
     if (localPair == null) {
       return;
     }
-    azmj.b(null, "dc00898", "", "", "0X800A2BB", "0X800A2BB", ((Integer)localPair.first).intValue(), 0, String.valueOf(((Integer)localPair.second).intValue()), "", "", "");
+    azqs.b(null, "dc00898", "", "", "0X800A2BB", "0X800A2BB", ((Integer)localPair.first).intValue(), 0, String.valueOf(((Integer)localPair.second).intValue()), "", "", "");
   }
   
   public static void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
@@ -93,7 +93,7 @@ public class mts
       if (!TextUtils.isEmpty(paramString)) {
         localObject = paramString;
       }
-      azmj.b(null, "dc00898", "", "", str, str, paramInt1, 0, (String)localObject, "", "", "");
+      azqs.b(null, "dc00898", "", "", str, str, paramInt1, 0, (String)localObject, "", "", "");
       return;
       str = "0X800A3E1";
       continue;
@@ -104,7 +104,7 @@ public class mts
   public static void a(int paramInt, String paramString)
   {
     if (paramInt == 1) {
-      azmj.b(null, "dc00898", "", "", "0X800A3E2", "0X800A3E2", 0, 0, "", paramString, "", "");
+      azqs.b(null, "dc00898", "", "", "0X800A3E2", "0X800A3E2", 0, 0, "", paramString, "", "");
     }
   }
   

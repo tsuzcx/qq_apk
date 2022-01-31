@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import adce;
+import adgt;
 
 class Leba$36$4
   implements Runnable

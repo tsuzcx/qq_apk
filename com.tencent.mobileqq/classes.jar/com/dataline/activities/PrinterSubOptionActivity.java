@@ -1,8 +1,8 @@
 package com.dataline.activities;
 
-import allz;
-import alpo;
-import aluk;
+import alqo;
+import alud;
+import alyz;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -26,7 +26,7 @@ public class PrinterSubOptionActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  public allz a;
+  public alqo a;
   public LayoutInflater a;
   public XListView a;
   cv jdField_a_of_type_Cv;
@@ -38,18 +38,18 @@ public class PrinterSubOptionActivity
   
   public PrinterSubOptionActivity()
   {
-    this.jdField_a_of_type_Allz = null;
+    this.jdField_a_of_type_Alqo = null;
     this.jdField_a_of_type_AndroidViewLayoutInflater = null;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_Allz.jdField_a_of_type_Df != null)
+    if (this.jdField_a_of_type_Alqo.jdField_a_of_type_Df != null)
     {
       int j = 0;
       int k = 0;
       this.b.clear();
-      List localList = this.jdField_a_of_type_Allz.jdField_a_of_type_Df.a();
+      List localList = this.jdField_a_of_type_Alqo.jdField_a_of_type_Df.a();
       int i1 = localList.size();
       int i = 0;
       if (i < i1)
@@ -93,23 +93,23 @@ public class PrinterSubOptionActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this);
-    this.jdField_a_of_type_Allz = ((allz)this.app.a(8));
-    this.jdField_a_of_type_Allz.jdField_a_of_type_Aluh.jdField_a_of_type_JavaUtilList = null;
+    this.jdField_a_of_type_Alqo = ((alqo)this.app.a(8));
+    this.jdField_a_of_type_Alqo.jdField_a_of_type_Alyw.jdField_a_of_type_JavaUtilList = null;
     getWindow().setBackgroundDrawableResource(2131165395);
-    setContentView(2131558985);
-    setTitle(2131691428);
+    setContentView(2131558984);
+    setTitle(2131691429);
     getWindow().setBackgroundDrawable(null);
     this.jdField_a_of_type_Cv = new cv(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131372253));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131372273));
     this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361806, "n/a");
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Cv);
-    if (!this.jdField_a_of_type_Allz.jdField_a_of_type_Df.a())
+    if (!this.jdField_a_of_type_Alqo.jdField_a_of_type_Df.a())
     {
-      paramBundle = findViewById(2131365743);
+      paramBundle = findViewById(2131365745);
       paramBundle.setVisibility(0);
-      paramBundle.setContentDescription(alpo.a(2131708806));
-      ((TextView)findViewById(2131378126)).setText(getString(2131691420));
-      ((TextView)findViewById(2131363435)).setText(getString(2131691419));
+      paramBundle.setContentDescription(alud.a(2131708818));
+      ((TextView)findViewById(2131378180)).setText(getString(2131691421));
+      ((TextView)findViewById(2131363435)).setText(getString(2131691420));
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     }
     for (;;)
@@ -118,24 +118,24 @@ public class PrinterSubOptionActivity
       this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361806, "n/a");
       return true;
       a();
-      this.jdField_a_of_type_Allz.jdField_a_of_type_Df.a(this.jdField_a_of_type_Di);
+      this.jdField_a_of_type_Alqo.jdField_a_of_type_Df.a(this.jdField_a_of_type_Di);
     }
   }
   
   public void doOnDestroy()
   {
-    this.jdField_a_of_type_Allz.jdField_a_of_type_Df.a();
+    this.jdField_a_of_type_Alqo.jdField_a_of_type_Df.a();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_JavaLangString = getString(2131691421);
+    this.jdField_a_of_type_JavaLangString = getString(2131691422);
     this.b.clear();
     a();
-    aluk localaluk = (aluk)this.app.a(74);
-    this.jdField_a_of_type_Boolean = localaluk.a();
-    localaluk.a();
+    alyz localalyz = (alyz)this.app.a(74);
+    this.jdField_a_of_type_Boolean = localalyz.a();
+    localalyz.a();
   }
   
   public boolean onBackEvent()

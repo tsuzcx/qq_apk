@@ -12,7 +12,7 @@ public class PublicAccountH5AbilityPlugin$10
   
   public void run()
   {
-    QQToast.a(this.this$0.a, 0, this.this$0.a.getResources().getString(2131719011), 0).a();
+    QQToast.a(this.this$0.a, 0, this.this$0.a.getResources().getString(2131719023), 0).a();
   }
 }
 

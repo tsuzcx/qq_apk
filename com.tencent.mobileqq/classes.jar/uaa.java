@@ -1,60 +1,18 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.style.ImageSpan;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.requests.QCircleHeartbeatSignalReportRequest;
+import com.tencent.qphone.base.util.QLog;
+import qqcircle.QQCircleReport.StHeartbeatSignalRsp;
 
-public class uaa
-  extends ImageSpan
+class uaa
+  implements zac<QQCircleReport.StHeartbeatSignalRsp>
 {
-  public uaa(@NonNull Drawable paramDrawable)
-  {
-    super(paramDrawable);
-  }
+  uaa(tzy paramtzy, QCircleHeartbeatSignalReportRequest paramQCircleHeartbeatSignalReportRequest) {}
   
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleReport.StHeartbeatSignalRsp paramStHeartbeatSignalRsp)
   {
-    try
-    {
-      paramCharSequence = getDrawable();
-      paramCanvas.save();
-      paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
-      paramCharSequence.draw(paramCanvas);
-      paramCanvas.restore();
-      return;
+    if (((!paramBoolean) || (paramLong != 0L) || (paramStHeartbeatSignalRsp == null)) && (!TextUtils.isEmpty(paramString))) {
+      QLog.e("QCircleReportHelper", 1, "reportQCircleActiveIntervalTime error:" + paramString + ",traceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleHeartbeatSignalReportRequest.getTraceId());
     }
-    catch (Exception paramCanvas)
-    {
-      paramCanvas.printStackTrace();
-    }
-  }
-  
-  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    try
-    {
-      paramCharSequence = getDrawable().getBounds();
-      if (paramFontMetricsInt != null)
-      {
-        paramPaint = paramPaint.getFontMetricsInt();
-        paramInt2 = paramPaint.bottom - paramPaint.top;
-        int i = paramCharSequence.bottom - paramCharSequence.top;
-        paramInt1 = i / 2 - paramInt2 / 4;
-        i /= 2;
-        paramInt2 = paramInt2 / 4 + i;
-        paramFontMetricsInt.ascent = (-paramInt2);
-        paramFontMetricsInt.top = (-paramInt2);
-        paramFontMetricsInt.bottom = paramInt1;
-        paramFontMetricsInt.descent = paramInt1;
-      }
-      paramInt1 = paramCharSequence.right;
-      return paramInt1;
-    }
-    catch (Exception paramPaint) {}
-    return 20;
   }
 }
 

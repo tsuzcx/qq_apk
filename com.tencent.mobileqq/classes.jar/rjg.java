@@ -396,7 +396,7 @@ public class rjg
       return;
     }
     paramqyp.jdField_b_of_type_AndroidViewView = localView;
-    localView.setId(2131375243);
+    localView.setId(2131375294);
     paramqyp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup.setKeepScreenOn(true);
     paramqyp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup.removeAllViews();
     paramqyp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup.addView(localView, new ViewGroup.LayoutParams(-1, -1));
@@ -695,7 +695,7 @@ public class rjg
     {
       this.jdField_a_of_type_Rjn.h();
       this.jdField_d_of_type_Boolean = paramBoolean;
-      if (!bdee.h(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext())) {
+      if (!bdin.h(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext())) {
         this.jdField_a_of_type_Rjn.k();
       }
       a(this.jdField_b_of_type_Rjk, this.jdField_a_of_type_Rjn, 5, Boolean.valueOf(this.jdField_d_of_type_Boolean));

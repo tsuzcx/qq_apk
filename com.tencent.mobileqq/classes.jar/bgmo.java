@@ -1,10 +1,15 @@
-import org.json.JSONArray;
+import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bgmo
+class bgmo
+  implements bgma
 {
-  public JSONArray a;
-  public boolean a;
-  public boolean b;
+  bgmo(bgmn parambgmn) {}
+  
+  public void a(Context paramContext, MiniAppInfo paramMiniAppInfo)
+  {
+    bgnc.a(bgxl.a().a(), paramMiniAppInfo, false, new bgmp(this, paramMiniAppInfo));
+  }
 }
 
 

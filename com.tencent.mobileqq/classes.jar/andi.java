@@ -1,28 +1,92 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class andi
-  extends AnimatorListenerAdapter
+class andi
+  implements bazz
 {
-  public andi(QRScanEntryView paramQRScanEntryView, View paramView, boolean paramBoolean) {}
+  andi(andh paramandh, andn paramandn) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(bazy parambazy)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, "onPreDownloadStart");
+  }
+  
+  public void onResp(bavf parambavf)
+  {
+    if (parambavf.jdField_a_of_type_Int == 3) {
+      QLog.i("AREngine_ARPreSoResourceDownload", 1, "Download init. url = " + ((baub)parambavf.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      return;
+      int i;
+      synchronized (andh.a(this.jdField_a_of_type_Andh))
+      {
+        if (andh.a(this.jdField_a_of_type_Andh) != null)
+        {
+          i = 0;
+          label67:
+          if (i < andh.a(this.jdField_a_of_type_Andh).size())
+          {
+            if (!((andn)andh.a(this.jdField_a_of_type_Andh).get(i)).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Andn.jdField_a_of_type_JavaLangString)) {
+              break label342;
+            }
+            andh.a(this.jdField_a_of_type_Andh).remove(i);
+          }
+        }
+      }
+      synchronized (andh.a(this.jdField_a_of_type_Andh))
+      {
+        ??? = (andm)andh.a(this.jdField_a_of_type_Andh).get(this.jdField_a_of_type_Andn.b);
+        if (parambavf.jdField_a_of_type_Int == 0)
+        {
+          if (andh.a(this.jdField_a_of_type_Andh) != null) {
+            andh.a(this.jdField_a_of_type_Andh).a(this.jdField_a_of_type_Andn.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Andn.jdField_a_of_type_Long);
+          }
+          ??? = new File(((baub)parambavf.jdField_a_of_type_Bave).c);
+          String str = awni.a(((File)???).getAbsolutePath());
+          if (((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_Andn.b))) && (this.jdField_a_of_type_Andn.jdField_a_of_type_Int != 1))
+          {
+            QLog.i("AREngine_ARPreSoResourceDownload", 1, "Download end. MD5 check error. url = " + ((baub)parambavf.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString + ", fileName = " + ((File)???).getAbsolutePath() + ", fileMD5 = " + str);
+            if (??? == null) {
+              continue;
+            }
+            ((andm)???).a(false, this.jdField_a_of_type_Andn);
+            return;
+            label342:
+            i += 1;
+            break label67;
+            parambavf = finally;
+            throw parambavf;
+          }
+        }
+      }
+      for (boolean bool = true; ??? != null; bool = false)
+      {
+        ((andm)???).a(bool, this.jdField_a_of_type_Andn);
+        return;
+        if (andh.a(this.jdField_a_of_type_Andh) != null) {
+          andh.a(this.jdField_a_of_type_Andh).a(this.jdField_a_of_type_Andn.jdField_a_of_type_JavaLangString, -1L);
+        }
       }
     }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onUpdateProgeress(bave arg1, long paramLong1, long paramLong2)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARPreSoResourceDownload", 2, "onUpdateProgeress. url = " + ((baub)???).jdField_a_of_type_JavaLangString + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
+    }
+    synchronized (andh.a(this.jdField_a_of_type_Andh))
+    {
+      andm localandm = (andm)andh.a(this.jdField_a_of_type_Andh).get(this.jdField_a_of_type_Andn.b);
+      if (localandm != null) {
+        localandm.a(paramLong1, paramLong2);
+      }
+      return;
     }
   }
 }

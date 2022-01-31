@@ -1,34 +1,41 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
+import java.lang.reflect.Field;
 
-final class xpg
-  extends xos
+public class xpg
 {
-  xpg(xos paramxos, PublishVideoEntry paramPublishVideoEntry) {}
-  
-  public void onFailure(String paramString)
+  public static void a(@NonNull LayoutInflater paramLayoutInflater, @NonNull LayoutInflater.Factory paramFactory)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
+    try
+    {
+      paramLayoutInflater.setFactory(paramFactory);
+      return;
     }
-    this.jdField_a_of_type_Xos.onFailure(paramString);
-    if ((this.jdField_a_of_type_Xos instanceof ukz)) {
-      ((ukz)this.jdField_a_of_type_Xos).a(941004);
+    catch (IllegalStateException localIllegalStateException)
+    {
+      xpi.c("LayoutModifier", "LayoutInflater.setFactory IllegalStateException " + localIllegalStateException);
+      try
+      {
+        Field localField1 = LayoutInflater.class.getDeclaredField("mFactory");
+        localField1.setAccessible(true);
+        Field localField2 = LayoutInflater.class.getDeclaredField("mFactory2");
+        localField2.setAccessible(true);
+        localField1.set(paramLayoutInflater, paramFactory);
+        localField2.set(paramLayoutInflater, paramFactory);
+        if ((paramLayoutInflater.getFactory() == paramFactory) && (paramLayoutInflater.getFactory2() == paramFactory))
+        {
+          xpi.b("LayoutModifier", "hookLayoutInflaterFactory success");
+          return;
+        }
+      }
+      catch (Exception paramLayoutInflater)
+      {
+        xpi.d("LayoutModifier", "hook setFactory " + paramLayoutInflater);
+        return;
+      }
+      xpi.b("LayoutModifier", "hookLayoutInflaterFactory failed");
     }
-    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 failed message：" + paramString);
-  }
-  
-  public void onStart()
-  {
-    super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 start");
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.b;
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 success cost：" + String.valueOf(l1 - l2) + "ms\n");
   }
 }
 

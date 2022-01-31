@@ -1,168 +1,114 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
-import com.tencent.mobileqq.richmediabrowser.view.AIOVideoView.1.1;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
-import mqq.os.MqqHandler;
+import android.opengl.GLES20;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
 
 public class axwg
-  implements VideoPlayerCallback
+  extends GPUBaseFilter
 {
-  axwg(axwf paramaxwf) {}
+  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230755);
+  private float jdField_a_of_type_Float = 0.0F;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean = false;
+  private int c;
   
-  public void onCapFrame(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public axwg()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOVideoView", 0, "onCapFrame, id:" + paramLong + ", isSuccess:" + paramBoolean + ", w:" + paramInt1 + ", h:" + paramInt2);
-    }
-    axwf.a(this.a, paramBitmap);
+    this("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
   }
   
-  public void onDownloadComplete(long paramLong)
+  public axwg(String paramString1, String paramString2)
   {
-    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "onDownloadComplete");
-    ailz localailz = this.a.jdField_a_of_type_Axup.a(this.a.a());
-    if (localailz != null) {
-      localailz.jdField_a_of_type_Boolean = false;
-    }
-    this.a.jdField_a_of_type_Axup.a(2003, 0L);
+    super(paramString1, paramString2);
+    this.mFilterType = 0;
   }
   
-  public void onDownloadProgress(long paramLong1, long paramLong2) {}
-  
-  public void onLoopBack(long paramLong1, long paramLong2) {}
-  
-  public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  public void a(boolean paramBoolean)
   {
-    paramString = null;
-    if (paramInt1 == 3)
-    {
-      ailz localailz = this.a.jdField_a_of_type_Axup.a(this.a.a());
-      if ((localailz != null) && (localailz.jdField_a_of_type_ArrayOfJavaLangString != null) && (!bdje.a(localailz.c)))
-      {
-        String[] arrayOfString = localailz.jdField_a_of_type_ArrayOfJavaLangString;
-        int i = arrayOfString.length;
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          String str = arrayOfString[paramInt2];
-          if (!bdje.a(str)) {
-            bavf.a().a(localailz.c, bavf.a(str), 1005);
-          }
-          paramInt2 += 1;
-        }
-        axuz.a().a();
-      }
-    }
-    if (paramInt1 == 1) {
-      paramString = this.a.mContext.getString(2131720114);
-    }
-    if (paramInt3 == 14011001)
-    {
-      paramString = this.a.mContext.getString(2131719264);
-      this.a.jdField_a_of_type_Axup.a(5002, 0L);
-    }
-    ThreadManager.getUIHandler().post(new AIOVideoView.1.1(this, paramString));
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void onPlayProgress(long paramLong1, long paramLong2)
+  public void a(boolean paramBoolean, float paramFloat)
   {
-    axwf.a(this.a, paramLong2);
-    int i = (int)(paramLong2 / this.a.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getVideoDurationMs() * 10000.0D);
-    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "onPlayProgress, id = " + paramLong1 + " , position = " + paramLong2 + " , progress = " + i);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ShortVideoUtils.a(paramLong2));
-    this.a.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(i);
-  }
-  
-  public void onStateChange(long paramLong, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOVideoView", 0, "onStateChange , state = " + paramInt + ", msgUniseq=" + paramLong);
-    }
-    switch (paramInt)
-    {
-    case 6: 
-    case 7: 
-    default: 
-    case 4: 
-      RichMediaBrowserInfo localRichMediaBrowserInfo;
-      do
-      {
-        do
-        {
-          return;
-          if (this.a.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null)
-          {
-            long l = this.a.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getVideoDurationMs();
-            BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "videoDuration = " + l);
-            this.a.jdField_b_of_type_AndroidWidgetTextView.setText(ShortVideoUtils.a(l));
-            this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ShortVideoUtils.a(0L));
-          }
-          this.a.jdField_a_of_type_Axup.onLoadFinish(this.a.jdField_a_of_type_Axup.getSelectedIndex(), true);
-          this.a.f(true);
-          this.a.e(false);
-          this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-          axwf.a(this.a).setVisibility(8);
-          axwf.a(this.a).setVisibility(8);
-          axwf.a(this.a, true);
-          this.a.jdField_a_of_type_Axup.b(paramLong);
-        } while (!this.a.jdField_a_of_type_Axup.a(this.a.jdField_a_of_type_Axup.getCurrentPosition()));
-        this.a.jdField_a_of_type_Axup.a();
-        localRichMediaBrowserInfo = this.a.jdField_a_of_type_Axup.getSelectedItem();
-      } while ((localRichMediaBrowserInfo == null) || (!(localRichMediaBrowserInfo.baseData instanceof AIOBrowserBaseData)) || (this.a.jdField_a_of_type_Axup.a() == null) || (this.a.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView == null));
-      this.a.jdField_a_of_type_Axup.a().a(axts.a(((AIOBrowserBaseData)localRichMediaBrowserInfo.baseData).d, this.a.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getCurPlayingPos(), this.a.jdField_a_of_type_Axup.a(), this.a.jdField_a_of_type_Axup.a));
-      return;
-    case 8: 
-      this.a.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.a.jdField_a_of_type_AndroidWidgetSeekBar.getMax());
-      return;
-    case 9: 
-      this.a.jdField_a_of_type_Axup.onLoadFinish(this.a.jdField_a_of_type_Axup.getSelectedIndex(), true);
-      this.a.f(true);
-      this.a.e(false);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getVideoDurationMs()));
-      this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      axwf.a(this.a).setVisibility(8);
-      axwf.a(this.a).setVisibility(0);
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130845634);
-      axwf.a(this.a, true);
-      axwf.a(this.a);
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null)
-    {
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.isPlaying()) {
-        break label640;
-      }
-      this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    float f2 = 1.0F;
+    float f1 = 0.0F;
+    if (paramFloat > 1.0F) {
+      paramFloat = f2;
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Axup.onLoadFinish(this.a.jdField_a_of_type_Axup.getSelectedIndex(), true);
-      this.a.f(true);
-      this.a.e(false);
-      axwf.a(this.a).setVisibility(8);
-      axwf.a(this.a, true);
+      if (paramFloat < 0.0F) {
+        paramFloat = f1;
+      }
+      for (;;)
+      {
+        this.jdField_b_of_type_Boolean = paramBoolean;
+        this.jdField_a_of_type_Float = paramFloat;
+        return;
+      }
+    }
+  }
+  
+  public void onDrawTexture()
+  {
+    float f2 = 1.0F;
+    int i = this.jdField_b_of_type_Int;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      f1 = 1.0F;
+      GLES20.glUniform1f(i, f1);
+      GLES20.glUniform1f(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float);
+      i = this.c;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label57;
+      }
+    }
+    label57:
+    for (float f1 = f2;; f1 = 2.0F)
+    {
+      GLES20.glUniform1f(i, f1);
       return;
-      label640:
-      this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      f1 = 2.0F;
+      break;
+    }
+  }
+  
+  public void onInitialized()
+  {
+    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "percent");
+    this.jdField_b_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "drawPart");
+    this.c = GLES20.glGetUniformLocation(getProgram(), "cutX");
+  }
+  
+  public String toString()
+  {
+    double d2 = 1.0D;
+    int i = this.mFilterType;
+    double d1;
+    float f;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      d1 = 1.0D;
+      f = this.jdField_a_of_type_Float;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label77;
+      }
+    }
+    for (;;)
+    {
+      return String.format("filter type=%s, draw left=%s, draw percent=%s, directionx=%s", new Object[] { Integer.valueOf(i), Double.valueOf(d1), Float.valueOf(f), Double.valueOf(d2) });
+      d1 = 2.0D;
+      break;
+      label77:
+      d2 = 2.0D;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axwg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.Contacts;
 
 public class acre
-  extends bdng
+  extends avva
 {
-  public acre(EditInfoActivity paramEditInfoActivity) {}
+  public acre(Contacts paramContacts) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    EditInfoActivity.a(this.a, EditInfoActivity.b(this.a));
+    if (Contacts.a(this.a)) {
+      Contacts.a(this.a);
+    }
   }
 }
 

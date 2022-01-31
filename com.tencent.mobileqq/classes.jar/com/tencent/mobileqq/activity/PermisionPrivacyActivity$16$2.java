@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import adhz;
+import admo;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class PermisionPrivacyActivity$16$2
   implements Runnable
 {
-  public PermisionPrivacyActivity$16$2(adhz paramadhz) {}
+  public PermisionPrivacyActivity$16$2(admo paramadmo) {}
   
   public void run()
   {

@@ -1,6 +1,6 @@
 package dov.com.qq.im.aeeditor.module.clip.image;
 
-import alpo;
+import alud;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -20,23 +20,23 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdcd;
-import bdfq;
-import bdkf;
-import blen;
-import blfg;
-import blfr;
-import blhi;
-import blhj;
-import blhk;
-import blhl;
-import blhm;
-import blhn;
-import blho;
-import blhp;
-import blhq;
-import bllm;
-import bllp;
+import bdgm;
+import bdjz;
+import bdoo;
+import bliu;
+import bljn;
+import bljy;
+import bllr;
+import blls;
+import bllt;
+import bllu;
+import bllv;
+import bllw;
+import bllx;
+import blly;
+import bllz;
+import blpy;
+import blqb;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.tavcut.bean.Size;
 import com.tencent.tavcut.util.BitmapUtil;
@@ -47,7 +47,7 @@ import dov.com.qq.im.aeeditor.view.EditorClipView;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import xod;
+import xsm;
 
 public class AEEditorImageClipFragment
   extends AEEditorBaseFragment
@@ -64,7 +64,7 @@ public class AEEditorImageClipFragment
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private blhq jdField_a_of_type_Blhq;
+  private bllz jdField_a_of_type_Bllz;
   private AEEditorClipPageTopBar jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorClipPageTopBar;
   private EditorClipView jdField_a_of_type_DovComQqImAeeditorViewEditorClipView;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -79,7 +79,7 @@ public class AEEditorImageClipFragment
   private ImageView jdField_c_of_type_AndroidWidgetImageView;
   private boolean jdField_c_of_type_Boolean;
   private int[] jdField_c_of_type_ArrayOfInt = new int[9];
-  private int jdField_d_of_type_Int = bdkf.a();
+  private int jdField_d_of_type_Int = bdoo.a();
   private boolean jdField_d_of_type_Boolean;
   private int[] jdField_d_of_type_ArrayOfInt = new int[9];
   private int[] e = new int[9];
@@ -133,25 +133,25 @@ public class AEEditorImageClipFragment
     this.jdField_b_of_type_Int = 0;
     this.jdField_c_of_type_Int = 0;
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, paramInt1 });
-    localValueAnimator.addUpdateListener(new blhl(this, paramEditorClipView));
+    localValueAnimator.addUpdateListener(new bllu(this, paramEditorClipView));
     localValueAnimator.setDuration(paramInt2);
     localValueAnimator.start();
     localValueAnimator = ValueAnimator.ofInt(new int[] { 0, paramInt1 });
-    localValueAnimator.addUpdateListener(new blhm(this, paramEditorClipView));
+    localValueAnimator.addUpdateListener(new bllv(this, paramEditorClipView));
     localValueAnimator.setDuration(paramInt2);
     localValueAnimator.start();
-    localValueAnimator.addListener(new blhn(this, paramEditorClipView));
+    localValueAnimator.addListener(new bllw(this, paramEditorClipView));
   }
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131364934));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375157));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375158));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375159));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364321));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131377772));
-    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorClipPageTopBar = ((AEEditorClipPageTopBar)paramView.findViewById(2131364322));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131364936));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375208));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375209));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375210));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364323));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131377826));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorClipPageTopBar = ((AEEditorClipPageTopBar)paramView.findViewById(2131364324));
   }
   
   private void a(EditorPicInfo paramEditorPicInfo)
@@ -239,7 +239,7 @@ public class AEEditorImageClipFragment
       i = Math.max(OfflineConfig.getPhonePerfLevel() - 1, 0);
       i = Math.max(this.jdField_b_of_type_ArrayOfInt[paramInt] / jdField_a_of_type_ArrayOfInt[i], this.jdField_c_of_type_ArrayOfInt[paramInt] / jdField_a_of_type_ArrayOfInt[i]);
       localObject = a((String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), i + 1);
-      Bitmap localBitmap = xod.a((Bitmap)localObject, this.e[paramInt]);
+      Bitmap localBitmap = xsm.a((Bitmap)localObject, this.e[paramInt]);
       if ((localObject != localBitmap) && (localObject != null) && (!((Bitmap)localObject).isRecycled())) {
         ((Bitmap)localObject).recycle();
       }
@@ -249,15 +249,15 @@ public class AEEditorImageClipFragment
         return;
       }
       localObject = LayoutInflater.from(getActivity()).inflate(2131558526, this.jdField_a_of_type_AndroidWidgetFrameLayout, false);
-      ((EditorClipView)((View)localObject).findViewById(2131364937)).setImageBitmap(localBitmap);
-      ((EditorClipView)((View)localObject).findViewById(2131364937)).setClipWindowWidthChangeListener(new blhj(this));
-      ((EditorClipView)((View)localObject).findViewById(2131364937)).setClipViewOperateListener(new blhk(this));
+      ((EditorClipView)((View)localObject).findViewById(2131364939)).setImageBitmap(localBitmap);
+      ((EditorClipView)((View)localObject).findViewById(2131364939)).setClipWindowWidthChangeListener(new blls(this));
+      ((EditorClipView)((View)localObject).findViewById(2131364939)).setClipViewOperateListener(new bllt(this));
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localBitmap);
       this.jdField_b_of_type_AndroidUtilSparseArray.put(paramInt, localObject);
     }
     for (;;)
     {
-      this.jdField_a_of_type_DovComQqImAeeditorViewEditorClipView = ((EditorClipView)((View)localObject).findViewById(2131364937));
+      this.jdField_a_of_type_DovComQqImAeeditorViewEditorClipView = ((EditorClipView)((View)localObject).findViewById(2131364939));
       this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView((View)localObject);
       a((int)(this.jdField_d_of_type_Int / jdField_a_of_type_ArrayOfDouble[this.jdField_d_of_type_ArrayOfInt[0]] - this.jdField_d_of_type_Int / jdField_a_of_type_ArrayOfDouble[this.jdField_d_of_type_ArrayOfInt[paramInt]]) / 2, 10, this.jdField_a_of_type_DovComQqImAeeditorViewEditorClipView);
@@ -346,9 +346,9 @@ public class AEEditorImageClipFragment
   
   private void d()
   {
-    int i = bdkf.a();
-    int j = bdkf.b();
-    int k = bllm.a(getActivity(), 250.0F);
+    int i = bdoo.a();
+    int j = bdoo.b();
+    int k = blpy.a(getActivity(), 250.0F);
     i = Math.max((int)((i - (j - k) * 3 / 4.0F) / 2.0F), 0);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setPadding(i, 0, i, 0);
   }
@@ -359,13 +359,13 @@ public class AEEditorImageClipFragment
     int i;
     if (paramInt == 0)
     {
-      i = 2130837675;
+      i = 2130837676;
       localImageView.setImageResource(i);
       localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
       if (paramInt != 1) {
         break label64;
       }
-      i = 2130837677;
+      i = 2130837678;
       label32:
       localImageView.setImageResource(i);
       localImageView = this.jdField_c_of_type_AndroidWidgetImageView;
@@ -375,13 +375,13 @@ public class AEEditorImageClipFragment
     }
     label64:
     label71:
-    for (paramInt = 2130837679;; paramInt = 2130837680)
+    for (paramInt = 2130837680;; paramInt = 2130837681)
     {
       localImageView.setImageResource(paramInt);
       return;
-      i = 2130837676;
+      i = 2130837677;
       break;
-      i = 2130837678;
+      i = 2130837679;
       break label32;
     }
   }
@@ -392,7 +392,7 @@ public class AEEditorImageClipFragment
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorClipPageTopBar.setClipPageTopBarClickListener(new blhi(this));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorClipPageTopBar.setClipPageTopBarClickListener(new bllr(this));
   }
   
   private void f()
@@ -403,7 +403,7 @@ public class AEEditorImageClipFragment
     }
     for (;;)
     {
-      bllp.a(jdField_a_of_type_ArrayOfDouble[i]);
+      blqb.a(jdField_a_of_type_ArrayOfDouble[i]);
       Arrays.fill(this.jdField_d_of_type_ArrayOfInt, i);
       Arrays.fill(this.jdField_a_of_type_ArrayOfBoolean, true);
       d(i);
@@ -423,9 +423,9 @@ public class AEEditorImageClipFragment
   
   private void g()
   {
-    blfg.d(jdField_b_of_type_JavaLangString, "handleNextStep");
+    bljn.d(jdField_b_of_type_JavaLangString, "handleNextStep");
     ArrayList localArrayList = new ArrayList();
-    blen.a().a(this.jdField_a_of_type_JavaUtilArrayList.size());
+    bliu.a().a(this.jdField_a_of_type_JavaUtilArrayList.size());
     int j = 0;
     int i = 0;
     Object localObject1;
@@ -439,7 +439,7 @@ public class AEEditorImageClipFragment
       }
       if (this.jdField_b_of_type_AndroidUtilSparseArray.get(i) != null)
       {
-        localObject1 = (EditorClipView)((View)this.jdField_b_of_type_AndroidUtilSparseArray.get(i)).findViewById(2131364937);
+        localObject1 = (EditorClipView)((View)this.jdField_b_of_type_AndroidUtilSparseArray.get(i)).findViewById(2131364939);
         if (this.jdField_d_of_type_ArrayOfInt[0] == this.jdField_d_of_type_ArrayOfInt[i]) {
           localObject1 = ((EditorClipView)localObject1).a();
         }
@@ -451,7 +451,7 @@ public class AEEditorImageClipFragment
         ((EditorPicInfo)localObject1).originPicHeight = this.jdField_c_of_type_ArrayOfInt[i];
         a((EditorPicInfo)localObject1);
         localArrayList.add(localObject1);
-        blfg.d(jdField_b_of_type_JavaLangString, "cropInfo::" + ((EditorPicInfo)localObject1).x + "," + ((EditorPicInfo)localObject1).y + "," + ((EditorPicInfo)localObject1).w + "," + ((EditorPicInfo)localObject1).h + "," + ((EditorPicInfo)localObject1).originPicWidth + "," + ((EditorPicInfo)localObject1).originPicHeight);
+        bljn.d(jdField_b_of_type_JavaLangString, "cropInfo::" + ((EditorPicInfo)localObject1).x + "," + ((EditorPicInfo)localObject1).y + "," + ((EditorPicInfo)localObject1).w + "," + ((EditorPicInfo)localObject1).h + "," + ((EditorPicInfo)localObject1).originPicWidth + "," + ((EditorPicInfo)localObject1).originPicHeight);
         j = 1;
         break;
         RectF localRectF1;
@@ -521,7 +521,7 @@ public class AEEditorImageClipFragment
         }
       }
     }
-    blfg.d(jdField_b_of_type_JavaLangString, "cropInfo  end");
+    bljn.d(jdField_b_of_type_JavaLangString, "cropInfo  end");
     if (j != 0)
     {
       localObject1 = new Bundle(getArguments());
@@ -547,8 +547,8 @@ public class AEEditorImageClipFragment
     Object localObject = new LinearLayoutManager(getActivity());
     ((LinearLayoutManager)localObject).setOrientation(0);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager((RecyclerView.LayoutManager)localObject);
-    this.jdField_a_of_type_Blhq = new blhq(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Blhq);
+    this.jdField_a_of_type_Bllz = new bllz(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bllz);
   }
   
   public String a()
@@ -562,12 +562,12 @@ public class AEEditorImageClipFragment
       return false;
     }
     Object localObject = getActivity();
-    localObject = bdcd.a((Context)localObject, 230).setTitle(alpo.a(2131689805)).setMessage(((Context)localObject).getString(2131689806)).setPositiveButton(((Context)localObject).getString(2131689805), new blhp(this)).setNegativeButton(((Context)localObject).getString(2131689792), new blho(this));
+    localObject = bdgm.a((Context)localObject, 230).setTitle(alud.a(2131689805)).setMessage(((Context)localObject).getString(2131689806)).setPositiveButton(((Context)localObject).getString(2131689805), new blly(this)).setNegativeButton(((Context)localObject).getString(2131689792), new bllx(this));
     if (localObject != null) {}
     try
     {
-      if (!((bdfq)localObject).isShowing()) {
-        ((bdfq)localObject).show();
+      if (!((bdjz)localObject).isShowing()) {
+        ((bdjz)localObject).show();
       }
       label92:
       return true;
@@ -592,7 +592,7 @@ public class AEEditorImageClipFragment
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131375157)
+    if (i == 2131375208)
     {
       c(0);
       this.jdField_d_of_type_Boolean = true;
@@ -600,31 +600,31 @@ public class AEEditorImageClipFragment
     do
     {
       return;
-      if (i == 2131375158)
+      if (i == 2131375209)
       {
         c(1);
         this.jdField_d_of_type_Boolean = true;
         return;
       }
-      if (i == 2131375159)
+      if (i == 2131375210)
       {
         c(2);
         this.jdField_d_of_type_Boolean = true;
         return;
       }
-    } while (i != 2131364321);
+    } while (i != 2131364323);
     g();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    blfg.b(jdField_b_of_type_JavaLangString, "onCreate");
+    bljn.b(jdField_b_of_type_JavaLangString, "onCreate");
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    blfg.b(jdField_b_of_type_JavaLangString, "onCreateView");
+    bljn.b(jdField_b_of_type_JavaLangString, "onCreateView");
     a(2131165220);
     if (this.jdField_a_of_type_AndroidViewView == null) {
       this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131558529, paramViewGroup, false);
@@ -638,7 +638,7 @@ public class AEEditorImageClipFragment
   public void onDestroy()
   {
     super.onDestroy();
-    blfg.b(jdField_b_of_type_JavaLangString, "onDestroy");
+    bljn.b(jdField_b_of_type_JavaLangString, "onDestroy");
     if (this.jdField_a_of_type_AndroidUtilSparseArray != null)
     {
       int i = 0;

@@ -1,19 +1,29 @@
-import eipc.EIPCResult;
+import android.content.Context;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-class akrl
-  implements bdpy
+public class akrl
+  extends ajit
 {
-  akrl(akrg paramakrg, bdpx parambdpx, int paramInt) {}
-  
-  public void a(boolean paramBoolean)
+  public akrl(HotChatCenterFragment paramHotChatCenterFragment, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, ajim paramajim, int paramInt)
   {
-    this.jdField_a_of_type_Bdpx.a(null);
-    if (paramBoolean) {}
-    for (int i = 0;; i = -1)
+    super(paramContext, paramQQAppInterface, paramXListView, paramajim, paramInt);
+  }
+  
+  public void a(RecentBaseData paramRecentBaseData, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.a(paramRecentBaseData, paramString);
+  }
+  
+  public void b(RecentBaseData paramRecentBaseData, String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      EIPCResult localEIPCResult = EIPCResult.createResult(i, null);
-      this.jdField_a_of_type_Akrg.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
-      return;
+      this.jdField_a_of_type_JavaUtilList.remove(paramRecentBaseData);
+      notifyDataSetChanged();
     }
   }
 }

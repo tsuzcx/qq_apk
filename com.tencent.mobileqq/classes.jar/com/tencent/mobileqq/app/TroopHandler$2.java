@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import alzf;
+import amdu;
 import com.tencent.mobileqq.data.TroopInfo;
 
 public class TroopHandler$2
   implements Runnable
 {
-  public TroopHandler$2(alzf paramalzf, String paramString, long paramLong, TroopInfo paramTroopInfo) {}
+  public TroopHandler$2(amdu paramamdu, String paramString, long paramLong, TroopInfo paramTroopInfo) {}
   
   public void run()
   {
-    alzf.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+    amdu.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
   }
 }
 

@@ -1,18 +1,13 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
-import mqq.app.TicketManagerListener;
+import com.tencent.mobileqq.voicechange.QQVoiceChangerThread;
 
 public class bedr
-  implements TicketManagerListener
 {
-  public void onTicketRefreshed()
-  {
-    QLog.i("SwiftBrowserCookieMonster", 1, "TicketManager invoke onTicketRefreshed");
-    SwiftBrowserCookieMonster.d();
-    SwiftBrowserCookieMonster.b(MobileQQ.sMobileQQ.waitAppRuntime(null), new Intent());
-  }
+  int jdField_a_of_type_Int;
+  bedk jdField_a_of_type_Bedk;
+  bedp jdField_a_of_type_Bedp;
+  beds jdField_a_of_type_Beds;
+  QQVoiceChangerThread jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread;
+  boolean jdField_a_of_type_Boolean;
 }
 
 

@@ -1,88 +1,25 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.text.DynamicTextItem;
 
 class bmsl
-  implements URLDrawableDownListener
+  implements View.OnClickListener
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
-  private final WeakReference<ProgressBar> b;
+  bmsl(bmsi parambmsi) {}
   
-  public bmsl(@NonNull String paramString, @NonNull ImageView paramImageView, @NonNull ProgressBar paramProgressBar)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
-    this.b = new WeakReference(paramProgressBar);
-  }
-  
-  private boolean a(ImageView paramImageView)
-  {
-    paramImageView = (String)paramImageView.getTag(2131377396);
-    return (!TextUtils.isEmpty(paramImageView)) && (paramImageView.equals(this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
-  {
-    wsv.b("LocationFaceAdapter", "onLoadCanceled,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    if (this.a.jdField_b_of_type_DovComQqImCaptureTextDynamicTextItem != null)
     {
-      paramURLDrawable.setVisibility(4);
-      paramView.setTag(2131377365, Boolean.valueOf(false));
-      return;
+      bmsi.a(this.a, false);
+      this.a.a = this.a.jdField_b_of_type_DovComQqImCaptureTextDynamicTextItem;
+      this.a.a.a(bmsi.a(this.a), this.a.jdField_b_of_type_JavaLangString);
+      this.a.a.c(this.a.i);
+      if ((this.a.a instanceof blyg)) {
+        ((blyg)this.a.a).a(this.a.h);
+      }
+      this.a.a(false);
     }
-    wsv.b("LocationFaceAdapter", "onLoadCanceled error.");
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    wsv.b("LocationFaceAdapter", "onLoadFialed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(0);
-      paramView.setTag(2131377365, Boolean.valueOf(false));
-      return;
-    }
-    wsv.b("LocationFaceAdapter", "onLoadFialed error.");
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    wsv.b("LocationFaceAdapter", "onLoadProgressed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(0);
-      paramView.setTag(2131377365, Boolean.valueOf(false));
-      return;
-    }
-    wsv.b("LocationFaceAdapter", "onLoadProgressed error.");
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    wsv.b("LocationFaceAdapter", "onLoadSuccessed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(4);
-      paramView.setTag(2131377365, Boolean.valueOf(true));
-      return;
-    }
-    wsv.b("LocationFaceAdapter", "onLoadSuccessed error.");
   }
 }
 

@@ -1,109 +1,124 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mobileqq.hiboom.HiBoomPanelView;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import android.app.Activity;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForPubAccount;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.view.ArkHeaderView;
+import com.tencent.mobileqq.gamecenter.view.GameArkView;
+import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
+import com.tencent.mobileqq.gamecenter.view.MoreMsgHeaderView;
+import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.List;
 
 public class asof
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public asof(HiBoomPanelView paramHiBoomPanelView)
+  public static asnu a(MessageRecord paramMessageRecord, Activity paramActivity)
   {
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(-1));
-  }
-  
-  public int a(int paramInt)
-  {
-    return ((Integer)this.jdField_a_of_type_JavaUtilList.get(paramInt)).intValue();
-  }
-  
-  public void a(List<Integer> paramList1, List<Integer> paramList2, List<Integer> paramList3)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramList1 != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList1);
+    if ((paramMessageRecord instanceof MessageForArkApp)) {
+      return new ArkHeaderView(paramActivity, null);
     }
-    if ((paramList2 != null) && (paramList2.size() > 0)) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList2);
-    }
-    if ((paramList3 != null) && (paramList3.size() > 0)) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList3);
-    }
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(-1));
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (a(paramInt) == -2) {
-      return 2;
-    }
-    return 1;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((paramViewHolder instanceof asog))
+    if ((paramMessageRecord instanceof MessageForStructing)) {}
+    for (;;)
     {
-      paramViewHolder = (asog)paramViewHolder;
-      paramViewHolder.jdField_a_of_type_Int = paramInt;
-      if (paramViewHolder.jdField_a_of_type_Boolean) {}
-    }
-    else
-    {
-      return;
-    }
-    paramInt = a(paramInt);
-    ViewGroup.LayoutParams localLayoutParams = paramViewHolder.itemView.getLayoutParams();
-    localLayoutParams.height = HiBoomPanelView.jdField_a_of_type_Int;
-    localLayoutParams.width = HiBoomPanelView.b;
-    paramViewHolder.itemView.setPadding(0, 0, HiBoomPanelView.c, HiBoomPanelView.c);
-    localLayoutParams = paramViewHolder.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.getLayoutParams();
-    localLayoutParams.width = (HiBoomPanelView.b - HiBoomPanelView.c - HiBoomPanelView.d * 2);
-    localLayoutParams.height = localLayoutParams.width;
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.a(paramViewHolder, paramInt);
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    Object localObject = null;
-    boolean bool = true;
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    try
-    {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext()).inflate(2131562809, paramViewGroup, false);
-      localObject = paramViewGroup;
-      if (paramViewGroup == null) {
-        localObject = new View(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext());
-      }
-      return new asog(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView, (View)localObject, bool);
-    }
-    catch (Exception paramViewGroup)
-    {
-      for (;;)
+      int n;
+      int i1;
+      try
       {
-        QLog.e("HiBoomFont.HiBoomPanelView", 1, "inflate hiboom item error: ", paramViewGroup);
-        bool = false;
-        paramViewGroup = (ViewGroup)localObject;
+        paramMessageRecord = (ArrayList)((StructMsgForGeneralShare)((MessageForStructing)paramMessageRecord).structingMsg).getStructMsgItemLists();
+        if (paramMessageRecord != null) {
+          break label247;
+        }
+        return null;
       }
+      catch (Throwable paramMessageRecord)
+      {
+        QLog.e("QQGamePubHeaderFactory", 1, "createHeader failed structMsg error=" + paramMessageRecord.toString());
+        return null;
+      }
+      if (n < paramMessageRecord.size())
+      {
+        if (!(paramMessageRecord.get(n) instanceof azut)) {
+          break label269;
+        }
+        ArrayList localArrayList = ((azut)paramMessageRecord.get(n)).a;
+        k = i;
+        i = j;
+        i1 = 0;
+        j = k;
+        k = j;
+        m = i;
+        if (i1 >= localArrayList.size()) {
+          break label275;
+        }
+        if ((localArrayList.get(i1) instanceof StructMsgItemTitle))
+        {
+          k = 1;
+          if ((k != 0) && (j != 0))
+          {
+            paramMessageRecord = new ImgHeaderView(paramActivity);
+            return paramMessageRecord;
+          }
+        }
+        else
+        {
+          k = i;
+          if (!(localArrayList.get(i1) instanceof azwv)) {
+            continue;
+          }
+          j = 1;
+          k = i;
+          continue;
+        }
+      }
+      else
+      {
+        if (paramMessageRecord.size() != 2) {
+          continue;
+        }
+        paramMessageRecord = new TextHeaderView(paramActivity);
+        return paramMessageRecord;
+        if ((paramMessageRecord instanceof MessageForPubAccount)) {
+          return new ImgHeaderView(paramActivity);
+        }
+        return new MoreMsgHeaderView(paramActivity);
+        label247:
+        n = 0;
+        i = 0;
+        j = 0;
+        continue;
+      }
+      i1 += 1;
+      int i = k;
+      continue;
+      label269:
+      int m = j;
+      int k = i;
+      label275:
+      n += 1;
+      int j = m;
+      i = k;
     }
+  }
+  
+  public static asnu a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity)
+  {
+    if (paramQQGameMsgInfo == null) {
+      return new MoreMsgHeaderView(paramActivity);
+    }
+    if (paramQQGameMsgInfo.msgType == 1) {
+      return new GameArkView(paramActivity, null);
+    }
+    if (paramQQGameMsgInfo.msgType == 2) {
+      return new ImgHeaderView(paramActivity);
+    }
+    if (paramQQGameMsgInfo.msgType == 3) {
+      return new TextHeaderView(paramActivity);
+    }
+    return new MoreMsgHeaderView(paramActivity);
   }
 }
 

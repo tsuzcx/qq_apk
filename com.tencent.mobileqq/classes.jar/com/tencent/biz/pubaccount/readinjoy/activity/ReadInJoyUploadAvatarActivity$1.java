@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import alpo;
+import alud;
 import android.app.ProgressDialog;
 import android.widget.TextView;
 import oak;
@@ -18,8 +18,8 @@ public class ReadInJoyUploadAvatarActivity$1
     this.this$0.a = new ProgressDialog(this.this$0, 2131755801);
     this.this$0.a.setCancelable(true);
     this.this$0.a.show();
-    this.this$0.a.setContentView(2131559438);
-    ((TextView)this.this$0.a.findViewById(2131371874)).setText(alpo.a(2131713338));
+    this.this$0.a.setContentView(2131559437);
+    ((TextView)this.this$0.a.findViewById(2131371894)).setText(alud.a(2131713350));
     this.this$0.a.setOnCancelListener(new oak(this));
   }
 }

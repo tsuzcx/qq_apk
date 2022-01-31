@@ -11,7 +11,7 @@ public class qsd
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new qse(this);
   private Queue<qrw> jdField_a_of_type_JavaUtilQueue = new ArrayDeque();
-  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor = alza.a(64);
+  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor = amdp.a(64);
   private qsa jdField_a_of_type_Qsa;
   private boolean jdField_a_of_type_Boolean;
   private Queue<qrw> b = new ArrayDeque();

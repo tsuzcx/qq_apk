@@ -3,9 +3,9 @@ package com.tencent.av.opengl.effects;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import axld;
-import azgm;
-import bdcb;
+import axpm;
+import azkv;
+import bdgk;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import lnz;
@@ -66,8 +66,8 @@ public class AEFilterSupport
     {
       lrm locallrm = new lrm();
       locallrm.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
-      locallrm.jdField_b_of_type_Float = ((float)bdcb.d() / 1.073742E+009F);
-      locallrm.jdField_b_of_type_Int = bdcb.b();
+      locallrm.jdField_b_of_type_Float = ((float)bdgk.d() / 1.073742E+009F);
+      locallrm.jdField_b_of_type_Int = bdgk.b();
       locallrm.jdField_a_of_type_Float = ((float)lnz.d() / 1048576.0F);
       jdField_a_of_type_Lrm = locallrm;
     }
@@ -123,7 +123,7 @@ public class AEFilterSupport
       return bool;
       if (jdField_a_of_type_Int != 1)
       {
-        if (azgm.a())
+        if (azkv.a())
         {
           jdField_a_of_type_Int = 1;
           return true;
@@ -161,9 +161,9 @@ public class AEFilterSupport
     if (QLog.isColorLevel()) {
       l1 = SystemClock.elapsedRealtime();
     }
-    boolean bool = azgm.a();
+    boolean bool = azkv.a();
     if (!bool) {
-      bool = axld.a(false);
+      bool = axpm.a(false);
     }
     for (;;)
     {

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.vip.lianghao.net;
 
 import android.os.SystemClock;
-import bdxw;
-import bdyb;
+import becf;
+import beck;
 
 public class CheckRegisterLiangHao$1
   implements Runnable
 {
-  public CheckRegisterLiangHao$1(bdyb parambdyb) {}
+  public CheckRegisterLiangHao$1(beck parambeck) {}
   
   public void run()
   {
-    bdyb.a(this.this$0, SystemClock.elapsedRealtime());
-    bdxw localbdxw = bdyb.a(this.this$0);
-    bdyb.a(this.this$0, localbdxw);
+    beck.a(this.this$0, SystemClock.elapsedRealtime());
+    becf localbecf = beck.a(this.this$0);
+    beck.a(this.this$0, localbecf);
   }
 }
 

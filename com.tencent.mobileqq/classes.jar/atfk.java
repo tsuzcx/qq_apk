@@ -1,48 +1,71 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
-import com.tencent.smtt.sdk.WebView;
-import java.util.concurrent.atomic.AtomicLong;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessServlet;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class atfk
-  extends BroadcastReceiver
+  extends QIPCModule
 {
-  public atfk(UiApiPlugin paramUiApiPlugin) {}
+  private static volatile atfk a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public atfk(String paramString)
   {
-    paramContext = (ResultReceiver)paramIntent.getParcelableExtra("receiver");
-    long l = paramIntent.getLongExtra("seq", 0L);
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("seq", l);
-    if (UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get() != -1L) {
-      paramContext.send(-1, localBundle);
-    }
-    String str = paramIntent.getStringExtra("date");
-    paramIntent = paramIntent.getStringExtra("id");
-    Object localObject = this.a.mRuntime.a();
-    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
+    super(paramString);
+  }
+  
+  public static atfk a()
+  {
+    if (a == null) {}
+    try
     {
-      localObject = this.a.mRuntime.a();
-      if ((localObject == null) || (((WebView)localObject).getX5WebViewExtension() == null))
-      {
-        paramContext.send(-2, localBundle);
-        return;
+      if (a == null) {
+        a = new atfk("TogetherBusinessIPCModule");
       }
-      localBundle = new Bundle();
-      localBundle.putString("date", str);
-      localBundle.putString("id", paramIntent);
-      UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(l);
-      UiApiPlugin.jdField_a_of_type_AndroidOsResultReceiver = paramContext;
-      ((WebView)localObject).getX5WebViewExtension().invokeMiscMethod("uploadX5CoreLiveLog", localBundle);
-      return;
+      return a;
     }
-    paramContext.send(-2, localBundle);
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherBusinessIPCModule", 2, "call TogetherBusinessIPCModule action=" + paramString);
+    }
+    if ("action_open_identify".equals(paramString)) {
+      TogetherBusinessServlet.a("QQAIOMediaSvc.open_identify", (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramBundle, new atfl(this, paramInt));
+    }
+    do
+    {
+      boolean bool2;
+      do
+      {
+        do
+        {
+          return null;
+          if ("action_open_start".equals(paramString))
+          {
+            TogetherBusinessServlet.a("QQAIOMediaSvc.open_start", (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramBundle, new atfl(this, paramInt));
+            return null;
+          }
+        } while (!"action_set_floating".equals(paramString));
+        boolean bool1 = paramBundle.getBoolean("BUNDLE_SET_STATUS");
+        paramString = paramBundle.getString("BUNDLE_SET_KEY_UIN", "");
+        paramInt = paramBundle.getInt("BUNDLE_SET_KEY_SESSION_TYPE", -1);
+        bool2 = paramBundle.getBoolean("BUNDLE_SET_KEY_REFRESH_UI", true);
+        atfm.a(bool1, paramString, paramInt, bool2);
+        if (QLog.isColorLevel()) {
+          QLog.d("TogetherBusinessIPCModule", 2, "ACTION_SET_FLOATING " + " isShow=" + bool1 + " uin=" + paramString + " sessionType=" + paramInt + " refresh=" + bool2);
+        }
+      } while (!bool2);
+      paramBundle = (baph)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(339);
+      paramString = (WatchTogetherSession)paramBundle.a(2, paramInt, paramString);
+    } while (paramString == null);
+    paramBundle.a(true, paramString, 1002, "");
+    return null;
   }
 }
 

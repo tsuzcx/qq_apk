@@ -1,11 +1,15 @@
-public class bamg
-  extends bdlo
+import android.text.Editable;
+import android.text.Editable.Factory;
+
+final class bamg
+  extends Editable.Factory
 {
-  boolean a = false;
-  
-  public bamg(String paramString, byte[] paramArrayOfByte, bdlq parambdlq, boolean paramBoolean)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    super(paramString, paramArrayOfByte, parambdlq, paramBoolean);
+    if ((paramCharSequence instanceof bamf)) {
+      return (Editable)paramCharSequence;
+    }
+    return new bamf(paramCharSequence, 32);
   }
 }
 

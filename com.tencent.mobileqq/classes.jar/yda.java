@@ -1,25 +1,75 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetRecommendUserListRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.biz.videostory.network.request.SubscribeGetRecommendUserListRequest;
+import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
+
 public class yda
+  implements ycy
 {
-  public static String a(long paramLong)
+  private static String jdField_a_of_type_JavaLangString = "TopPanelPresenter";
+  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  private ycz jdField_a_of_type_Ycz;
+  
+  public yda(ycz paramycz)
   {
-    long l = paramLong;
-    if (paramLong < 0L) {
-      l = 0L;
-    }
-    String str1 = alpo.a(2131705103);
-    if (l < 10000L) {
-      return String.valueOf(l);
-    }
-    if (l < 10000000L)
+    this.jdField_a_of_type_Ycz = paramycz;
+    this.jdField_a_of_type_Ycz.setPresenter(this);
+  }
+  
+  private List<ydn> a(CertifiedAccountRead.StGetRecommendUserListRsp paramStGetRecommendUserListRsp)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramStGetRecommendUserListRsp.expType.get() == 0)
     {
-      str1 = String.valueOf(l / 10000.0D + 0.05D);
-      return str1.substring(0, str1.indexOf(".") + 2) + "w";
+      if (paramStGetRecommendUserListRsp.vecUser.has())
+      {
+        paramStGetRecommendUserListRsp = paramStGetRecommendUserListRsp.vecUser.get().iterator();
+        while (paramStGetRecommendUserListRsp.hasNext()) {
+          localArrayList.add(new ydn((CertifiedAccountMeta.StUser)paramStGetRecommendUserListRsp.next()));
+        }
+      }
     }
-    if (l < 100000000L) {
-      return l / 10000L + "w";
+    else if ((paramStGetRecommendUserListRsp.expType.get() == 1) && (paramStGetRecommendUserListRsp.vecUserWithFeed.has()))
+    {
+      paramStGetRecommendUserListRsp = paramStGetRecommendUserListRsp.vecUserWithFeed.get().iterator();
+      while (paramStGetRecommendUserListRsp.hasNext()) {
+        localArrayList.add(new ydn((CertifiedAccountMeta.StFeed)paramStGetRecommendUserListRsp.next()));
+      }
     }
-    String str2 = String.valueOf(l / 100000000.0D);
-    return str2.substring(0, str2.indexOf(".") + 2) + str1;
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    long l = System.currentTimeMillis();
+    localObject = new SubscribeGetRecommendUserListRequest((String)localObject, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt, 100, 0);
+    ((SubscribeGetRecommendUserListRequest)localObject).setEnableCache(false);
+    VSNetworkHelper.a().a((VSBaseRequest)localObject, new ydb(this, l));
+  }
+  
+  public void b()
+  {
+    a();
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Ycz != null)
+    {
+      this.jdField_a_of_type_Ycz.setPresenter(null);
+      this.jdField_a_of_type_Ycz = null;
+    }
   }
 }
 

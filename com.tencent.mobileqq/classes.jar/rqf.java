@@ -3,13 +3,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class rqf
-  implements azzg
+  implements badp
 {
-  public rqf(RainView paramRainView, baaj parambaaj) {}
+  public rqf(RainView paramRainView, baes parambaes) {}
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.b(this.jdField_a_of_type_Baaj);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.b(this.jdField_a_of_type_Baes);
     if ((RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).incrementAndGet() == RainView.a() * RainView.b() * RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).get()) && (RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView) != null))
     {
       RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);

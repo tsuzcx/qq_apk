@@ -1,43 +1,46 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class acpk
-  extends alox
+  implements bhuk
 {
-  public acpk(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public acpk(ChatSettingForTroop paramChatSettingForTroop, bhuf parambhuf) {}
   
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramBoolean)
+    switch (paramInt)
     {
-      this.a.a();
-      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
-      DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
-    }
-    while ((this.a.jdField_a_of_type_Bepp == null) || (!this.a.jdField_a_of_type_Bepp.isShowing()) || (this.a.isFinishing())) {
+    default: 
       return;
     }
-    this.a.jdField_a_of_type_Bepp.dismiss();
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin != null))
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Beub == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Beub = new beub(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+    }
+    if (bdin.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop))
+    {
+      paramView = (amdu)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.a(20);
+      if (paramView != null)
       {
-        paramString = ((aloz)this.a.app.getManager(51)).e(this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin + "");
-        if (paramString != null) {
-          this.a.d = paramString.name;
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.k & 0x1) == 0)
+        {
+          ChatSettingForTroop localChatSettingForTroop = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop;
+          localChatSettingForTroop.k |= 0x1;
+          paramView.l(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
         }
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Beub.b(0, 2131692293, 1000);
       }
     }
-    while (!QLog.isColorLevel()) {
+    for (;;)
+    {
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Bhuf.cancel();
       return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Beub.b(2, 2131692289, 1500);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Beub.b(2, 2131694831, 1500);
     }
-    QLog.d("DiscussionInfoCardActivity", 2, "onUpdateFriendInfo get owner name failed");
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.device.datadef;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import zou;
+import ztj;
 
 public class ProductNetLinkInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ProductNetLinkInfo> CREATOR = new zou();
+  public static final Parcelable.Creator<ProductNetLinkInfo> CREATOR = new ztj();
   public String linkResetVoiceDesc;
   public int productId;
   public String stopSoundWaveDesc1;

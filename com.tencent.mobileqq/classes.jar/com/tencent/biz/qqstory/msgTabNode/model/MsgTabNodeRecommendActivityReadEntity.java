@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
-import utx;
+import uyg;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="unionId,nodeType")
 public class MsgTabNodeRecommendActivityReadEntity
-  extends awbv
+  extends awge
 {
   public static final int HAS_READ = 1;
   public static final String TABLE_NAME = MsgTabNodeRecommendActivityReadEntity.class.getSimpleName();
@@ -17,19 +17,19 @@ public class MsgTabNodeRecommendActivityReadEntity
   
   public MsgTabNodeRecommendActivityReadEntity() {}
   
-  public MsgTabNodeRecommendActivityReadEntity(utx paramutx, int paramInt)
+  public MsgTabNodeRecommendActivityReadEntity(uyg paramuyg, int paramInt)
   {
-    this.nodeType = paramutx.jdField_a_of_type_Int;
-    this.unionId = paramutx.jdField_a_of_type_JavaLangString;
+    this.nodeType = paramuyg.jdField_a_of_type_Int;
+    this.unionId = paramuyg.jdField_a_of_type_JavaLangString;
     this.hasRead = paramInt;
   }
   
-  public static String[] getArgs(utx paramutx)
+  public static String[] getArgs(uyg paramuyg)
   {
-    int i = paramutx.jdField_a_of_type_Int;
-    if (paramutx.jdField_a_of_type_JavaLangString == null) {}
-    for (paramutx = "";; paramutx = paramutx.jdField_a_of_type_JavaLangString) {
-      return new String[] { String.valueOf(i), paramutx };
+    int i = paramuyg.jdField_a_of_type_Int;
+    if (paramuyg.jdField_a_of_type_JavaLangString == null) {}
+    for (paramuyg = "";; paramuyg = paramuyg.jdField_a_of_type_JavaLangString) {
+      return new String[] { String.valueOf(i), paramuyg };
     }
   }
   

@@ -1,145 +1,102 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aotm
+  extends aokh<aotk>
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString = "";
-  private String b = "";
-  private String c = "";
-  private String d = "";
-  
-  public static aotm a(aogf[] paramArrayOfaogf)
+  public int a()
   {
-    int j = 0;
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
-      return null;
-    }
-    aotm localaotm = new aotm();
-    try
-    {
-      paramArrayOfaogf = new JSONObject(paramArrayOfaogf[0].jdField_a_of_type_JavaLangString);
-      if (!paramArrayOfaogf.has("DocsImportFileInfo")) {
-        break label412;
-      }
-      paramArrayOfaogf = paramArrayOfaogf.getJSONObject("DocsImportFileInfo");
-      if (paramArrayOfaogf.has("importFileMaxSize"))
+    return 85;
+  }
+  
+  @NonNull
+  public aotk a(int paramInt)
+  {
+    return new aotk();
+  }
+  
+  @Nullable
+  public aotk a(aoko[] paramArrayOfaoko)
+  {
+    QLog.i("QFileDownloadConfigProcessor", 1, "onParsed");
+    if (paramArrayOfaoko != null) {
+      try
       {
-        localObject1 = paramArrayOfaogf.getString("importFileMaxSize");
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          localaotm.jdField_a_of_type_Long = Long.parseLong((String)localObject1);
-        }
-      }
-      if (!paramArrayOfaogf.has("importFileType")) {
-        break label245;
-      }
-      localObject1 = paramArrayOfaogf.getJSONArray("importFileType");
-      localStringBuilder = new StringBuilder();
-      localObject2 = new StringBuilder();
-      if ((localObject1 == null) || (((JSONArray)localObject1).length() <= 0)) {
-        break label227;
-      }
-      i = 0;
-    }
-    catch (JSONException paramArrayOfaogf)
-    {
-      label412:
-      for (;;)
-      {
-        Object localObject1;
-        StringBuilder localStringBuilder;
-        Object localObject2;
-        int i;
-        JSONObject localJSONObject;
-        label227:
-        label245:
-        if (QLog.isColorLevel())
+        if (paramArrayOfaoko.length > 0)
         {
-          QLog.e("TencentDocImportFileInfoBean", 1, "exception = " + paramArrayOfaogf.toString());
-          continue;
-          i += 1;
-          continue;
-          i += 1;
+          paramArrayOfaoko = (aotk)aolc.a(paramArrayOfaoko[0].jdField_a_of_type_JavaLangString, aotk.class);
+          return paramArrayOfaoko;
         }
       }
-    }
-    if (i < ((JSONArray)localObject1).length())
-    {
-      localJSONObject = (JSONObject)((JSONArray)localObject1).get(i);
-      if (localJSONObject.has("suffix"))
+      catch (QStorageInstantiateException paramArrayOfaoko)
       {
-        localStringBuilder.append(localJSONObject.getString("suffix"));
-        ((StringBuilder)localObject2).append(localJSONObject.getString("suffix"));
-        if (localJSONObject.has("maxSize")) {
-          ((StringBuilder)localObject2).append("_").append(localJSONObject.getString("maxSize")).append("#");
-        }
+        QLog.e("QFileDownloadConfigProcessor", 1, "onParsed : error " + paramArrayOfaoko.getMessage());
       }
     }
-    else
+    return null;
+  }
+  
+  public Class<aotk> a()
+  {
+    return aotk.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.i("QFileDownloadConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
+  }
+  
+  public void a(aotk paramaotk)
+  {
+    if ((paramaotk != null) && (paramaotk.jdField_a_of_type_JavaUtilHashMap != null))
     {
-      localaotm.b = ((StringBuilder)localObject2).toString();
-      localaotm.c = localStringBuilder.toString();
-      if (paramArrayOfaogf.has("fileGroupType"))
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(localObject instanceof QQAppInterface)) {
+        break label156;
+      }
+    }
+    label156:
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      if (localObject != null)
       {
-        localObject1 = paramArrayOfaogf.getJSONArray("fileGroupType");
-        localStringBuilder = new StringBuilder();
-        if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+        if (!TextUtils.isEmpty(paramaotk.jdField_a_of_type_JavaLangString))
         {
-          i = j;
-          if (i < ((JSONArray)localObject1).length())
-          {
-            localObject2 = (JSONObject)((JSONArray)localObject1).get(i);
-            if ((!((JSONObject)localObject2).has("group")) || (!((JSONObject)localObject2).has("suffix"))) {
-              break label459;
-            }
-            localStringBuilder.append(((JSONObject)localObject2).getString("group") + "_" + ((JSONObject)localObject2).getString("suffix") + "&");
-            break label459;
-          }
+          SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject).c(), 0).edit();
+          localEditor.putString("qfile_file_auto_download", paramaotk.jdField_a_of_type_JavaLangString);
+          localEditor.apply();
+          QLog.i("QFileDownloadConfigProcessor", 1, "save download config [" + paramaotk.jdField_a_of_type_JavaLangString + "]");
         }
-        localaotm.d = localStringBuilder.toString();
-      }
-      if (paramArrayOfaogf.has("importFileTips"))
-      {
-        paramArrayOfaogf = paramArrayOfaogf.getString("importFileTips");
-        if (!TextUtils.isEmpty(paramArrayOfaogf)) {
-          localaotm.jdField_a_of_type_JavaLangString = paramArrayOfaogf;
+        localObject = (aqud)((QQAppInterface)localObject).getManager(317);
+        if (localObject != null) {
+          ((aqud)localObject).a(paramaotk.jdField_a_of_type_JavaUtilHashMap);
         }
       }
-      return localaotm;
+      return;
     }
   }
   
-  public long a()
+  public int b()
   {
-    return this.jdField_a_of_type_Long;
+    return 0;
   }
   
-  public String a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return false;
   }
   
-  public void a(String paramString)
+  public boolean c()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String d()
-  {
-    return this.d;
+    return false;
   }
 }
 

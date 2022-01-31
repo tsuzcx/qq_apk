@@ -1,17 +1,25 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class tsg
-  implements MediaPlayer.OnPreparedListener
+public class tsg
+  implements skr
 {
-  tsg(tsf paramtsf) {}
+  public tsg(QCircleFolderFragmentsPart paramQCircleFolderFragmentsPart) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public View a(ViewGroup paramViewGroup)
   {
-    QLog.d("QCircleFolderSplashPart", 1, "videoView onPrepared!");
-    paramMediaPlayer.start();
-    paramMediaPlayer.setOnInfoListener(new tsh(this));
+    return LayoutInflater.from(BaseApplicationImpl.getApplication()).inflate(2131560552, paramViewGroup, false);
+  }
+  
+  public void a(sko paramsko1, @Nullable sko paramsko2, int paramInt)
+  {
+    if (paramsko1 != null) {
+      QCircleFolderFragmentsPart.a(this.a, paramsko1.a(), 1);
+    }
   }
 }
 

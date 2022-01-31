@@ -1,17 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
-import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 
 class auxu
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  auxu(auxt paramauxt) {}
+  auxu(auxs paramauxs, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.jdField_a_of_type_Avbn.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
-    this.a.jdField_a_of_type_Avbn.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData);
+    if (this.jdField_a_of_type_Auxs.b)
+    {
+      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = i;
+      this.jdField_a_of_type_Auxs.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_Auxs.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+      return;
+    }
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
   }
 }
 

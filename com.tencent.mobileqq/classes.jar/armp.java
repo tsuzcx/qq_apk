@@ -1,50 +1,16 @@
-import com.tencent.mobileqq.filemanager.settings.FMSettings.4;
+import android.view.View;
+import com.tencent.widget.AdapterView;
 
-public class armp
-  implements armn
+class armp
+  implements bhux
 {
-  public armp(FMSettings.4 param4) {}
+  armp(armo paramarmo) {}
   
-  public void a()
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    synchronized (this.a.this$0)
-    {
-      armo localarmo2 = this.a.this$0;
-      localarmo2.jdField_a_of_type_Int += 1;
-      armo.a(1, "onMovedOver,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
-      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
-      {
-        armo.a(1, "moveFileToDefaultPath,move over!");
-        this.a.jdField_a_of_type_Armn.a();
-      }
-      return;
-    }
+    this.a.a.f();
+    return true;
   }
-  
-  public void a(int paramInt)
-  {
-    synchronized (this.a.this$0)
-    {
-      armo localarmo2 = this.a.this$0;
-      localarmo2.jdField_a_of_type_Int += 1;
-      armo.a(1, "onMoveFail,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
-      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
-      {
-        armo.a(1, "moveFileToDefaultPath,move over!");
-        this.a.jdField_a_of_type_Armn.a(16);
-      }
-      return;
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    armo localarmo = this.a.this$0;
-    localarmo.jdField_a_of_type_Long += paramLong1;
-    this.a.jdField_a_of_type_Armn.a(this.a.this$0.jdField_a_of_type_Long, this.a.this$0.b);
-  }
-  
-  public void a(String paramString1, String paramString2) {}
 }
 
 

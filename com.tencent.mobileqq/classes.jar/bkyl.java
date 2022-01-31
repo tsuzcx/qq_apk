@@ -1,21 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.TextView;
 
 class bkyl
-  extends RecyclerView.ViewHolder
+  implements bmeo<bkyr>
 {
-  TextView a;
+  bkyl(bkyj parambkyj) {}
   
-  public bkyl(View paramView)
+  public void a(@Nullable bkyr parambkyr)
   {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131373286));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.itemView.setSelected(paramBoolean);
+    if (parambkyr == null) {
+      return;
+    }
+    bkyj.d(this.a).setSelected(parambkyr.a());
   }
 }
 

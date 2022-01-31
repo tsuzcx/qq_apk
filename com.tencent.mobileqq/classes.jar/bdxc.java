@@ -1,37 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
+import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper;
+import java.lang.ref.WeakReference;
 
 public class bdxc
-  implements DownloadParams.DecodeHandler
+  implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-  private int a;
-  private int b;
+  private final WeakReference<WallpaperHelper> a;
   
-  @Deprecated
-  public bdxc() {}
-  
-  public bdxc(int paramInt1, int paramInt2)
+  public bdxc(WallpaperHelper paramWallpaperHelper)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.a = new WeakReference(paramWallpaperHelper);
   }
   
-  @Deprecated
-  public void a(int paramInt1, int paramInt2)
+  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    return bdia.a(paramBitmap, this.a, this.b);
-  }
-  
-  public String toString()
-  {
-    return "NinePatchDecoderHandler{reqW=" + this.a + ", reqH=" + this.b + '}';
+    paramString = (WallpaperHelper)this.a.get();
+    if (paramString != null) {
+      WallpaperHelper.a(paramString, VipWallpaperService.a(paramSharedPreferences), true);
+    }
   }
 }
 

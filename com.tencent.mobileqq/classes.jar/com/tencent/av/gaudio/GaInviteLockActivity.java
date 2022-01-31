@@ -1,6 +1,6 @@
 package com.tencent.av.gaudio;
 
-import alpo;
+import alud;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -13,10 +13,10 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azmj;
-import bdcd;
-import bdee;
-import betl;
+import azqs;
+import bdgm;
+import bdin;
+import bexu;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.AVActivity;
@@ -107,7 +107,7 @@ public class GaInviteLockActivity
     }
     if (!bool)
     {
-      QQToast.a(this, alpo.a(2131705375), 1).b(getResources().getDimensionPixelSize(2131298914));
+      QQToast.a(this, alud.a(2131705387), 1).b(getResources().getDimensionPixelSize(2131298914));
       finish();
     }
   }
@@ -165,7 +165,7 @@ public class GaInviteLockActivity
     {
       return;
       if (mvn.a(paramIntent)) {
-        azmj.b(null, "dc00898", "", "", "0X800A2C5", "0X800A2C5", 0, 0, "", "", "", "");
+        azqs.b(null, "dc00898", "", "", "0X800A2C5", "0X800A2C5", 0, 0, "", "", "", "");
       }
       long l = AudioHelper.b();
       String str1 = paramIntent.getAction();
@@ -185,7 +185,7 @@ public class GaInviteLockActivity
           d();
           this.jdField_d_of_type_Boolean = true;
           label109:
-          azmj.b(null, "dc00898", "", "", "0X800A2C6", "0X800A2C6", 0, 0, "", "", "", "");
+          azqs.b(null, "dc00898", "", "", "0X800A2C6", "0X800A2C6", 0, 0, "", "", "", "");
         }
       }
       for (;;)
@@ -225,7 +225,7 @@ public class GaInviteLockActivity
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c())
     {
       mtq.e(false, true);
-      bdcd.b(this, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695918), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695916), null, new lqg(this), null);
+      bdgm.b(this, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695920), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695918), null, new lqg(this), null);
       bool = true;
     }
     return bool;
@@ -240,8 +240,8 @@ public class GaInviteLockActivity
       if (QLog.isColorLevel()) {
         QLog.d(this.jdField_b_of_type_JavaLangString, 2, "startVideo phone is calling!");
       }
-      String str = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695916);
-      bdcd.b(this, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695918), str, null, new lqi(this), null);
+      String str = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695918);
+      bdgm.b(this, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695920), str, null, new lqi(this), null);
       bool = true;
     }
     return bool;
@@ -262,7 +262,7 @@ public class GaInviteLockActivity
     int i;
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839162);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839163);
       i = 1;
       if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
         break label104;
@@ -302,32 +302,32 @@ public class GaInviteLockActivity
       return;
       str = "2";
       break;
-      azmj.b(null, "CliOper", "", "", "0X8009E93", "0X8009E93", 0, 0, str, "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8009E93", "0X8009E93", 0, 0, str, "", "", "");
       c(-1037L);
       return;
     } while (e());
-    azmj.b(null, "CliOper", "", "", "0X8009E94", "0X8009E94", 0, 0, str, "", "", "");
+    azqs.b(null, "CliOper", "", "", "0X8009E94", "0X8009E94", 0, 0, str, "", "", "");
     d();
   }
   
   protected void c()
   {
     h();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131372635));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372622));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372638));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = mtn.a(super.getApplicationContext(), 2130841755);
-    View localView = super.findViewById(2131372639);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131372661));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372648));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372664));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = mtn.a(super.getApplicationContext(), 2130841768);
+    View localView = super.findViewById(2131372665);
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {
       localView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      this.c = ((TextView)super.findViewById(2131372647));
-      if ((!bdee.h(super.getApplicationContext())) && ((bdee.c(super.getApplicationContext())) || (bdee.b(super.getApplicationContext()))))
+      this.c = ((TextView)super.findViewById(2131372673));
+      if ((!bdin.h(super.getApplicationContext())) && ((bdin.c(super.getApplicationContext())) || (bdin.b(super.getApplicationContext()))))
       {
         this.c.setVisibility(0);
-        this.c.setText(2131696410);
+        this.c.setText(2131696412);
       }
-      this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList = ((MutiMemberThumbList)findViewById(2131372759));
+      this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList = ((MutiMemberThumbList)findViewById(2131372785));
       if (this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList != null)
       {
         this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList.setRelationShipInfo(this.jdField_a_of_type_Long, this.jdField_b_of_type_Int);
@@ -352,7 +352,7 @@ public class GaInviteLockActivity
         this.jdField_a_of_type_Mkb.a();
       }
       return;
-      localView.setBackgroundResource(2130841755);
+      localView.setBackgroundResource(2130841768);
       break;
     }
   }
@@ -384,13 +384,13 @@ public class GaInviteLockActivity
     boolean bool = VideoController.a(this);
     if (this.jdField_a_of_type_ComTencentAvUiQavPanel == null)
     {
-      this.jdField_a_of_type_ComTencentAvUiQavPanel = ((QavPanel)super.findViewById(2131372773));
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131559613);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel = ((QavPanel)super.findViewById(2131372799));
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131559612);
       this.jdField_a_of_type_ComTencentAvUiQavPanel.setWaveVisibility(8);
       this.jdField_a_of_type_ComTencentAvUiQavPanel.a(new lqf(this));
     }
-    View localView1 = this.jdField_a_of_type_ComTencentAvUiQavPanel.findViewById(2131372642);
-    View localView2 = this.jdField_a_of_type_ComTencentAvUiQavPanel.findViewById(2131372640);
+    View localView1 = this.jdField_a_of_type_ComTencentAvUiQavPanel.findViewById(2131372668);
+    View localView2 = this.jdField_a_of_type_ComTencentAvUiQavPanel.findViewById(2131372666);
     if (bool) {}
     for (int i = 8;; i = 0)
     {
@@ -401,7 +401,7 @@ public class GaInviteLockActivity
       }
       localView2.setVisibility(i);
       if ((ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) && (!bool)) {
-        super.findViewById(2131372770).setVisibility(0);
+        super.findViewById(2131372796).setVisibility(0);
       }
       return;
     }
@@ -417,7 +417,7 @@ public class GaInviteLockActivity
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
     this.jdField_b_of_type_MqqOsMqqHandler = ThreadManager.getUIHandler();
-    super.setContentView(2131559564);
+    super.setContentView(2131559563);
     super.onCreate(paramBundle);
     j();
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Lht);
@@ -489,7 +489,7 @@ public class GaInviteLockActivity
   {
     if (paramInt == 4)
     {
-      azmj.b(null, "CliOper", "", "", "0X800420F", "0X800420F", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X800420F", "0X800420F", 0, 0, "", "", "", "");
       return true;
     }
     return super.onKeyDown(paramInt, paramKeyEvent);
@@ -507,16 +507,16 @@ public class GaInviteLockActivity
     super.onPause();
     this.jdField_a_of_type_Lmz.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_ComTencentAvVideoController);
     if (!this.f) {
-      betl.a(BaseApplicationImpl.getContext(), true, 50, 1);
+      bexu.a(BaseApplicationImpl.getContext(), true, 50, 1);
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    betl.a(BaseApplicationImpl.getContext(), 50, 0);
-    betl.a(BaseApplicationImpl.getContext(), false, 50, 1);
-    betl.a(BaseApplicationImpl.getContext(), 50, 2);
+    bexu.a(BaseApplicationImpl.getContext(), 50, 0);
+    bexu.a(BaseApplicationImpl.getContext(), false, 50, 1);
+    bexu.a(BaseApplicationImpl.getContext(), 50, 2);
     h();
     if (this.jdField_a_of_type_Lid != null) {
       this.jdField_a_of_type_ComTencentAvVideoController.a(GaInviteLockActivity.class);

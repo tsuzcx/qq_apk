@@ -1,64 +1,94 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import android.text.TextUtils;
+import javax.annotation.Nullable;
+import org.json.JSONObject;
 
 public class bcdw
-  extends ahad
+  implements ulj
 {
-  public bcdw(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  
+  public bcdw()
   {
-    super(paramContext, paramQQAppInterface, paramBoolean);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
   }
   
-  protected int a()
+  @Nullable
+  public JSONObject a(int paramInt)
   {
-    return 10100;
-  }
-  
-  protected void a(RecommendTroopItem paramRecommendTroopItem)
-  {
-    String str1 = paramRecommendTroopItem.uin;
-    String str2 = paramRecommendTroopItem.recomAlgol;
-    if (paramRecommendTroopItem.isJoined()) {}
-    for (paramRecommendTroopItem = "1";; paramRecommendTroopItem = "2")
+    int j = 1;
+    int i = 1;
+    JSONObject localJSONObject = new JSONObject();
+    switch (paramInt)
     {
-      azmj.b(null, "dc00899", "Grp_recom", "", "set_page", "clk_grp", 0, 0, str1, str2, paramRecommendTroopItem, "");
-      return;
+    default: 
+      paramInt = i;
+    }
+    while (paramInt != 0)
+    {
+      return null;
+      paramInt = i;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        localJSONObject.put("raw_url", this.jdField_a_of_type_JavaLangString);
+        paramInt = 0;
+        continue;
+        paramInt = j;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        {
+          localJSONObject.put("raw_url", this.jdField_a_of_type_JavaLangString);
+          paramInt = 0;
+        }
+        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+        {
+          localJSONObject.put("fake_url", this.jdField_b_of_type_JavaLangString);
+          paramInt = 0;
+        }
+      }
+    }
+    return localJSONObject;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("raw_url");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("fake_url");
+  }
+  
+  public void copy(Object paramObject)
+  {
+    if ((paramObject instanceof bcdw))
+    {
+      paramObject = (bcdw)paramObject;
+      if (!TextUtils.isEmpty(paramObject.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaLangString = paramObject.jdField_a_of_type_JavaLangString;
+      }
+      if (!TextUtils.isEmpty(paramObject.jdField_b_of_type_JavaLangString)) {
+        this.jdField_b_of_type_JavaLangString = paramObject.jdField_b_of_type_JavaLangString;
+      }
+      if (paramObject.jdField_a_of_type_Int != -1) {
+        this.jdField_a_of_type_Int = paramObject.jdField_a_of_type_Int;
+      }
+      if (paramObject.jdField_b_of_type_Int != -1) {
+        this.jdField_b_of_type_Int = paramObject.jdField_b_of_type_Int;
+      }
     }
   }
   
-  protected int b()
+  public boolean equals(Object paramObject)
   {
-    return 39;
-  }
-  
-  protected void b(RecommendTroopItem paramRecommendTroopItem)
-  {
-    String str1 = String.valueOf(paramRecommendTroopItem.uin);
-    String str2 = paramRecommendTroopItem.recomAlgol;
-    if (paramRecommendTroopItem.isJoined()) {}
-    for (paramRecommendTroopItem = "1";; paramRecommendTroopItem = "2")
+    if ((paramObject instanceof bcdw))
     {
-      azmj.b(null, "dc00899", "Grp_recom", "", "set_page", "clk_add", 0, 0, str1, str2, paramRecommendTroopItem, "");
-      return;
+      paramObject = (bcdw)paramObject;
+      if ((this.jdField_b_of_type_JavaLangString != null) && (paramObject.jdField_b_of_type_JavaLangString != null)) {
+        return TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString);
+      }
+      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString);
     }
-  }
-  
-  protected int c()
-  {
-    return 10101;
-  }
-  
-  protected void c(RecommendTroopItem paramRecommendTroopItem)
-  {
-    String str1 = paramRecommendTroopItem.uin;
-    String str2 = paramRecommendTroopItem.recomAlgol;
-    if (paramRecommendTroopItem.isJoined()) {}
-    for (paramRecommendTroopItem = "1";; paramRecommendTroopItem = "2")
-    {
-      azmj.b(null, "dc00899", "Grp_recom", "", "set_page", "exp_grp", 0, 0, str1, str2, paramRecommendTroopItem, "");
-      return;
-    }
+    return false;
   }
 }
 

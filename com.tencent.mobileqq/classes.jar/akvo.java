@@ -1,188 +1,96 @@
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.ui.framework.QzoneGameFloatView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class akvo
-  implements View.OnTouchListener
+  extends BaseAdapter
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  int b;
-  int c;
-  int d;
-  int e = 2000;
-  int f;
-  int g;
-  int h;
-  int i;
+  public Context a;
+  private List<ApolloGameData> a;
+  private List<String> b = new ArrayList();
   
-  public akvo(QzoneGameFloatView paramQzoneGameFloatView, DisplayMetrics paramDisplayMetrics) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public akvo(akvn paramakvn, Context paramContext)
   {
-    boolean bool = false;
-    if (paramView == this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView) {
-      switch (paramMotionEvent.getAction())
-      {
-      default: 
-        bool = true;
-      }
-    }
-    label204:
-    do
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramakvn != null)
     {
-      return bool;
-      this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.c.setVisibility(8);
-      int j = (int)paramMotionEvent.getRawX();
-      this.jdField_a_of_type_Int = j;
-      this.c = j;
-      j = (int)paramMotionEvent.getRawY();
-      this.jdField_b_of_type_Int = j;
-      this.d = j;
+      this.jdField_a_of_type_JavaUtilList = paramakvn.b;
+      this.b = paramakvn.c;
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1;
+    if (paramView == null)
+    {
+      paramViewGroup = new akvp(this);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558823, null);
+      paramView.setPadding(0, 0, 0, 0);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131368784));
+      paramViewGroup.b = ((CornerImageView)paramView.findViewById(2131368785));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378797));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368786));
+      float f = mww.a(this.jdField_a_of_type_AndroidContentContext, 5.0F);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(f);
+      paramViewGroup.b.setRadius(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f, f, f, f });
+      paramView.setTag(paramViewGroup);
+      Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = ((int)mww.a(this.jdField_a_of_type_AndroidContentContext, 103.0F));
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = ((int)mww.a(this.jdField_a_of_type_AndroidContentContext, 58.0F));
+      localObject1 = (ApolloGameData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      localObject2 = URLDrawable.getDrawable(((ApolloGameData)localObject1).listCoverUrl, (URLDrawable.URLDrawableOptions)localObject2);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable((Drawable)localObject2);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(Integer.valueOf(((ApolloGameData)localObject1).gameId));
+      if (!((ApolloGameData)localObject1).isGameApp) {
+        break label333;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838384);
+    }
+    for (;;)
+    {
+      localObject1 = (String)this.b.get(paramInt);
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        paramViewGroup.b.setVisibility(0);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
+      }
+      return paramView;
+      paramViewGroup = (akvp)paramView.getTag();
       break;
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.getVisibility() == 0) {
-        break;
-      }
-      j = (int)paramMotionEvent.getRawX() - this.jdField_a_of_type_Int;
-      int k = (int)paramMotionEvent.getRawY() - this.jdField_b_of_type_Int;
-      this.e = (paramView.getLeft() + j);
-      this.f = (paramView.getTop() + k);
-      this.g = (j + paramView.getRight());
-      this.h = (paramView.getBottom() + k);
-      if (this.e < 0)
-      {
-        this.e = 0;
-        this.g = (this.e + paramView.getWidth());
-        if (this.f >= 0) {
-          break label416;
-        }
-        this.f = 0;
-        this.h = (this.f + paramView.getHeight());
-      }
-      for (;;)
-      {
-        paramView.layout(this.e, this.f, this.g, this.h);
-        this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
-        this.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawY());
-        if ((this.jdField_a_of_type_Boolean) || ((Math.abs(paramMotionEvent.getRawX() - this.c) <= this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 5.0F) && (Math.abs(paramMotionEvent.getRawY() - this.d) <= this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 5.0F))) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.setFloatBtnBackground(this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView, true);
-        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.i.setVisibility(8);
-        this.jdField_a_of_type_Boolean = true;
-        break;
-        if (this.g <= this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_Int) {
-          break label204;
-        }
-        this.g = this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_Int;
-        this.e = (this.g - paramView.getWidth());
-        break label204;
-        if (this.h > this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_Int)
-        {
-          this.h = this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_Int;
-          this.f = (this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_Int - paramView.getHeight());
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.setFloatBtnBackground(this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView, true);
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.getVisibility() == 0)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setVisibility(8);
-          this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.setFloatBtnBackground(this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView, true);
-          this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.i.setVisibility(8);
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.setFloatBtnBackground(this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView, false);
-        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.i.setVisibility(0);
-        j = paramView.getTop();
-        k = paramView.getWidth() / 2;
-        if (this.e + k < this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_Int / 2) {
-          if (Build.VERSION.SDK_INT < 11) {}
-        }
-        for (;;)
-        {
-          try
-          {
-            this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.setRotationY(180.0F);
-            paramView = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.getLayoutParams();
-            paramView.gravity = 3;
-            paramView.leftMargin = (k + this.e);
-            paramView.topMargin = j;
-            this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setLayoutParams(paramView);
-            this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setPadding((int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 35.0F), this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.getPaddingTop(), (int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 20.0F), this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.getPaddingBottom());
-            if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) {
-              break;
-            }
-            akro.a(akro.a(), akpq.a(0, 0, 3, 901003001, this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId, this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src));
-          }
-          catch (Throwable paramView)
-          {
-            QLog.e("cmframe_QzoneGameFloatView", 1, "floatbtn.setrotationy error!", paramView);
-            continue;
-          }
-          if (Build.VERSION.SDK_INT >= 11) {}
-          try
-          {
-            this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.setRotationY(0.0F);
-            paramMotionEvent = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.getLayoutParams();
-            paramMotionEvent.gravity = 5;
-            paramMotionEvent.rightMargin = (k + (this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_Int - paramView.getRight()));
-            paramMotionEvent.topMargin = j;
-            this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setLayoutParams(paramMotionEvent);
-            this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setPadding((int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 20.0F), this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.getPaddingTop(), (int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 35.0F), this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.getPaddingBottom());
-          }
-          catch (Throwable paramMotionEvent)
-          {
-            for (;;)
-            {
-              QLog.e("cmframe_QzoneGameFloatView", 1, "floatbtn.setrotationy error!", paramMotionEvent);
-            }
-          }
-        }
-      }
-      this.i = Math.min(this.e, this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_Int - this.g);
-      if (this.i == this.e)
-      {
-        paramMotionEvent = new TranslateAnimation(0.0F, -this.e, 0.0F, 0.0F);
-        this.e = 0;
-        this.g = (this.e + paramView.getWidth());
-      }
-      for (;;)
-      {
-        paramMotionEvent.setDuration(500L);
-        paramView.setVisibility(8);
-        paramMotionEvent.setAnimationListener(new akvp(this, paramView));
-        paramView.startAnimation(paramMotionEvent);
-        break;
-        paramMotionEvent = new TranslateAnimation(0.0F, this.i, 0.0F, 0.0F);
-        this.g = this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_Int;
-        this.e = (this.g - paramView.getWidth());
-      }
-      if (paramView == this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.c)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.c.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.setFloatBtnBackground(this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView, true);
-        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.i.setVisibility(8);
-        return true;
-      }
-    } while (paramView != this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.i);
-    label416:
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.c.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.setFloatBtnBackground(this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView, true);
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.i.setVisibility(8);
-    return true;
+      label333:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
   }
 }
 

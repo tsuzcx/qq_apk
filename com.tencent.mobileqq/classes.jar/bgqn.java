@@ -1,18 +1,6 @@
-import android.content.Context;
-
-class bgqn
+public class bgqn
 {
-  bgql a;
-  
-  public bgqn(Context paramContext)
-  {
-    this.a = new bgql(paramContext, null);
-  }
-  
-  public bgql a()
-  {
-    return this.a;
-  }
+  public int a;
 }
 
 

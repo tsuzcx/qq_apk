@@ -1,26 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.canvas.report.AdRefreshCallback;
-import com.tencent.ad.tangram.canvas.report.AdReportAdapter;
-import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
-import com.tencent.gdtad.aditem.GdtAd;
-
 public class aahw
-  implements AdReportAdapter
 {
-  public void downloadReport(Ad paramAd, String paramString, int paramInt, boolean paramBoolean, AdAppBtnData paramAdAppBtnData)
-  {
-    if ((!(paramAd instanceof GdtAd)) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    aapc.a().a(paramString, (GdtAd)paramAd, paramAdAppBtnData);
-    aapc.a().a((GdtAd)paramAd, paramInt, paramBoolean);
-  }
-  
-  public AdRefreshCallback getAdReportAdapter()
-  {
-    return aapc.a();
-  }
+  public int a;
+  public String a = "";
+  public int b;
+  public String b = "-1";
+  public int c;
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "0";
 }
 
 

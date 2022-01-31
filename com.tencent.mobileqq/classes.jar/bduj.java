@@ -1,312 +1,166 @@
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.hardware.Sensor;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Handler.Callback;
+import android.content.res.Resources;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Content;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.vashealth.SportManager.1;
-import com.tencent.mobileqq.vashealth.StepAlarmReceiver;
+import com.tencent.mobileqq.config.business.qvip.QQLevelIconConfig;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.vas.avatar.VasFaceManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
-import java.util.Random;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.app.NewIntent;
 import mqq.manager.Manager;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
 
 public class bduj
   implements Manager
 {
-  public static SensorManager a;
-  public static volatile boolean a;
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long = 0L;
-  AlarmManager jdField_a_of_type_AndroidAppAlarmManager = null;
-  PendingIntent jdField_a_of_type_AndroidAppPendingIntent = null;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new bdum(this);
-  Handler jdField_a_of_type_AndroidOsHandler;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  StepAlarmReceiver jdField_a_of_type_ComTencentMobileqqVashealthStepAlarmReceiver;
-  BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new bdul(this);
-  PendingIntent b = null;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = true;
-  }
+  public apod a;
+  public aptb a;
+  public arws a;
+  public asrm a;
+  public awqu a;
+  public bdrv a;
+  private bduk a;
+  public bdww a;
+  public QQAppInterface a;
+  public VasFaceManager a;
   
   public bduj(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
-    ThreadManager.post(new SportManager.1(this), 5, null, true);
+    this.jdField_a_of_type_Aptb = new aptb(paramQQAppInterface);
+    this.jdField_a_of_type_Arws = new arws(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager = new VasFaceManager(paramQQAppInterface);
+    this.jdField_a_of_type_Apod = new apod(paramQQAppInterface);
+    this.jdField_a_of_type_Awqu = new awqu(paramQQAppInterface);
+    this.jdField_a_of_type_Bdrv = new bdrv(paramQQAppInterface);
+    this.jdField_a_of_type_Asrm = new asrm(paramQQAppInterface);
+    this.jdField_a_of_type_Bdww = new bdww(paramQQAppInterface);
+    this.jdField_a_of_type_Bduk = new bduk();
+    AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApp(), this.jdField_a_of_type_Bduk);
   }
   
-  public static SharedPreferences a()
+  public static String a(int paramInt)
   {
-    String str2 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "noLogin";
+    int i = paramInt & 0xF;
+    String str = null;
+    if (i == 1)
+    {
+      str = aoup.c().mNotifyPaymentText;
+      if (TextUtils.isEmpty(str)) {
+        break label112;
+      }
+      i = 0;
+      switch (paramInt >> 4)
+      {
+      default: 
+        paramInt = i;
+      }
     }
-    return BaseApplicationImpl.getApplication().getSharedPreferences("Sport" + str1, 0);
+    for (;;)
+    {
+      if (paramInt == 0) {
+        break label112;
+      }
+      return str.replace("[vip]", BaseApplicationImpl.getContext().getResources().getString(paramInt));
+      if (i != 2) {
+        break;
+      }
+      str = aoup.c().mExpiredNotifyPaymentText;
+      break;
+      paramInt = 2131695646;
+      continue;
+      paramInt = 2131720522;
+      continue;
+      paramInt = 2131690515;
+    }
+    label112:
+    return "";
   }
   
   public static boolean a()
   {
-    if (Build.VERSION.SDK_INT < 19) {
-      return false;
-    }
-    if (jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      jdField_a_of_type_AndroidHardwareSensorManager = (SensorManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("sensor");
-    }
-    return jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(19) != null;
-  }
-  
-  public static void d()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null)
+    if (beav.a().a())
     {
-      QLog.i("SportManager", 1, "max_interval:" + localSharedPreferences.getInt("max_interval", 0));
-      QLog.i("SportManager", 1, "max_increment:" + localSharedPreferences.getInt("max_increment", 0));
-      QLog.i("SportManager", 1, "timer1_start_hour:" + localSharedPreferences.getInt("timer1_start_hour", 0));
-      QLog.i("SportManager", 1, "timer1_start_min:" + localSharedPreferences.getInt("timer1_start_min", 0));
-      QLog.i("SportManager", 1, "timer1_end_hour:" + localSharedPreferences.getInt("timer1_end_hour", 0));
-      QLog.i("SportManager", 1, "timer1_end_min:" + localSharedPreferences.getInt("timer1_end_min", 0));
-      QLog.i("SportManager", 1, "timer1_interval:" + localSharedPreferences.getInt("timer1_interval", 0));
-      QLog.i("SportManager", 1, "timer1_increment:" + localSharedPreferences.getInt("timer1_increment", 0));
-      QLog.i("SportManager", 1, "timer1_span_minute:" + localSharedPreferences.getInt("timer1_span_minute", 0));
-      QLog.i("SportManager", 1, "timer2_start_hour:" + localSharedPreferences.getInt("timer2_start_hour", 0));
-      QLog.i("SportManager", 1, "timer2_end_hour:" + localSharedPreferences.getInt("timer2_end_hour", 0));
-      QLog.i("SportManager", 1, "timer2_interval:" + localSharedPreferences.getInt("timer2_interval", 0));
-      QLog.i("SportManager", 1, "timer2_retry_times:" + localSharedPreferences.getInt("timer2_retry_times", 0));
-      QLog.i("SportManager", 1, "config_ready:" + localSharedPreferences.getBoolean("config_ready", false));
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqVashealthStepAlarmReceiver == null) {
-      this.jdField_a_of_type_ComTencentMobileqqVashealthStepAlarmReceiver = new StepAlarmReceiver(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext();
-    Object localObject2 = new IntentFilter();
-    ((IntentFilter)localObject2).addAction("action_sport_timer1");
-    ((IntentFilter)localObject2).addAction("action_sport_timer2");
-    ((IntentFilter)localObject2).addAction("StepAlarmReceiver_long_time_report");
-    try
-    {
-      ((Context)localObject1).registerReceiver(this.jdField_a_of_type_ComTencentMobileqqVashealthStepAlarmReceiver, (IntentFilter)localObject2);
-      localObject2 = a();
-      bool = ((SharedPreferences)localObject2).getBoolean("config_ready", false);
-      if (bool)
+      if (bdin.b(BaseApplicationImpl.getApplication()) == 0)
       {
-        Intent localIntent1 = new Intent("action_sport_timer1");
-        Intent localIntent2 = new Intent("action_sport_timer2");
-        if (this.jdField_a_of_type_AndroidAppPendingIntent == null) {
-          this.jdField_a_of_type_AndroidAppPendingIntent = PendingIntent.getBroadcast((Context)localObject1, 0, localIntent1, 0);
-        }
-        if (this.b == null) {
-          this.b = PendingIntent.getBroadcast((Context)localObject1, 0, localIntent2, 0);
-        }
-        if (this.jdField_a_of_type_AndroidAppAlarmManager == null) {
-          this.jdField_a_of_type_AndroidAppAlarmManager = ((AlarmManager)((Context)localObject1).getSystemService("alarm"));
-        }
-        int j = ((SharedPreferences)localObject2).getInt("timer1_span_minute", 20);
-        int i = j;
-        if (j <= 0) {
-          i = 20;
-        }
-        i = new Random().nextInt(i);
-        j = new Random().nextInt(59);
-        localObject1 = Calendar.getInstance();
-        ((Calendar)localObject1).setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
-        ((Calendar)localObject1).set(11, ((SharedPreferences)localObject2).getInt("timer1_start_hour", 0));
-        ((Calendar)localObject1).set(12, i + ((SharedPreferences)localObject2).getInt("timer1_start_min", 0));
-        ((Calendar)localObject1).set(13, j);
-        ((Calendar)localObject1).set(14, 0);
-        long l = ((Calendar)localObject1).getTimeInMillis();
-        this.jdField_a_of_type_AndroidAppAlarmManager.set(1, l, this.jdField_a_of_type_AndroidAppPendingIntent);
-        QLog.i("SportManager", 1, "register AlarmManager, alarmTime1:" + l);
-        ((Calendar)localObject1).setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
-        i = new Random().nextInt(25);
-        j = new Random().nextInt(59);
-        ((Calendar)localObject1).set(12, i + 5);
-        ((Calendar)localObject1).set(13, j);
-        ((Calendar)localObject1).set(14, 0);
-        if (((Calendar)localObject1).get(11) < ((SharedPreferences)localObject2).getInt("timer2_end_hour", 0))
-        {
-          ((Calendar)localObject1).set(11, 0);
-          l = ((Calendar)localObject1).getTimeInMillis();
-          this.jdField_a_of_type_AndroidAppAlarmManager.set(1, l, this.b);
-          QLog.i("SportManager", 1, "register AlarmManager, alarmTime2:" + l);
-          return;
-        }
+        beav.a().a(null, false);
+        return true;
       }
+      QLog.d("KC.TMSManager", 1, "can only query in mobile connection");
+      return true;
     }
-    catch (Exception localException)
-    {
-      boolean bool;
-      for (;;)
-      {
-        QLog.e("SportManager", 1, "registerReceiver error", localException);
-        continue;
-        ((Calendar)localObject1).set(11, localException.getInt("timer2_start_hour", 0));
-      }
-      QLog.e("SportManager", 1, "isConfigReady:" + bool);
-    }
+    QLog.d("KC.TMSManager", 1, "tms can not work");
+    return false;
   }
   
-  public void a(ConfigurationService.Config paramConfig)
+  public static String b(int paramInt)
   {
-    if ((paramConfig.msg_content_list != null) && (paramConfig.msg_content_list.size() > 0))
+    switch (paramInt)
     {
-      paramConfig = (ConfigurationService.Content)paramConfig.msg_content_list.get(0);
-      if (paramConfig != null) {}
-      for (;;)
-      {
-        try
-        {
-          if (paramConfig.compress.get() == 1)
-          {
-            paramConfig = amsl.a(paramConfig.content.get().toByteArray());
-            if (paramConfig == null) {
-              break label357;
-            }
-            paramConfig = new String(paramConfig, "utf-8");
-            if (QLog.isColorLevel()) {
-              QLog.i("SportManager", 2, "get sport config:" + paramConfig);
-            }
-            if (!TextUtils.isEmpty(paramConfig)) {}
-          }
-          else
-          {
-            paramConfig = new String(paramConfig.content.get().toByteArray(), "utf-8");
-            continue;
-          }
-          paramConfig = new JSONObject(paramConfig).getJSONObject("android");
-          a().edit().putInt("max_interval", paramConfig.optInt("max_interval")).putInt("max_increment", paramConfig.optInt("max_increment")).putInt("timer1_start_hour", paramConfig.optInt("timer1_start_hour")).putInt("timer1_start_min", paramConfig.optInt("timer1_start_min")).putInt("timer1_end_hour", paramConfig.optInt("timer1_end_hour")).putInt("timer1_end_min", paramConfig.optInt("timer1_end_min")).putInt("timer1_interval", paramConfig.optInt("timer1_interval")).putInt("timer1_increment", paramConfig.optInt("timer1_increment")).putInt("timer1_span_minute", paramConfig.optInt("timer1_span_minute")).putInt("timer2_start_hour", paramConfig.optInt("timer2_start_hour")).putInt("timer2_end_hour", paramConfig.optInt("timer2_end_hour")).putInt("timer2_interval", paramConfig.optInt("timer2_interval")).putInt("timer2_retry_times", paramConfig.optInt("timer2_retry_times")).putBoolean("config_ready", true).commit();
-          return;
-        }
-        catch (Exception paramConfig)
-        {
-          QLog.e("SportManager", 1, "handleSportConfig error:", paramConfig);
-          return;
-        }
-        label357:
-        paramConfig = null;
-        continue;
-        paramConfig = null;
-      }
+    default: 
+      return "";
+    case 17: 
+    case 33: 
+      return "mvip.n.a.qlevel_cuifei";
+    case 18: 
+    case 34: 
+      return "mvip.n.a.qlevel_guoqi";
+    case 49: 
+      return "jhan_qlevel_cuifei";
     }
+    return "jhan_qlevel_guoqi";
   }
   
-  public void a(String paramString)
+  public static String c(int paramInt)
   {
-    QLog.i("SportManager", 1, "refreshCurrentStep call from:" + paramString);
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (System.currentTimeMillis() - this.jdField_a_of_type_Long < 10000L)) {
-      return;
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 17: 
+    case 18: 
+      return "LTMCLUB";
+    case 33: 
+    case 34: 
+      return "CJCLUBT";
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    paramString = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), bduo.class);
-    paramString.putExtra("msf_cmd_type", "cmd_refresh_steps");
-    paramString.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramString);
+    return "SVHHZLH";
   }
   
-  public void b()
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SportManager", 2, "doOnTimer1");
-    }
-    Object localObject1 = a();
-    int i = ((SharedPreferences)localObject1).getInt("timer1_interval", 0);
-    int j = ((SharedPreferences)localObject1).getInt("timer1_increment", 0);
-    Object localObject2 = Calendar.getInstance();
-    ((Calendar)localObject2).setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
-    ((Calendar)localObject2).set(11, ((SharedPreferences)localObject1).getInt("timer1_end_hour", 0));
-    ((Calendar)localObject2).set(12, ((SharedPreferences)localObject1).getInt("timer1_end_min", 0));
-    ((Calendar)localObject2).set(13, 0);
-    ((Calendar)localObject2).set(14, 0);
-    long l = ((Calendar)localObject2).getTimeInMillis();
-    QLog.i("SportManager", 1, "do on timer 1,interval:" + i + ",increment:" + j + ",enable:" + jdField_a_of_type_Boolean);
-    if ((!jdField_a_of_type_Boolean) || (j == 0) || (i == 0)) {}
-    do
-    {
-      return;
-      localObject1 = new bduk(this, l, i, j);
-    } while (jdField_a_of_type_AndroidHardwareSensorManager == null);
-    localObject2 = jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(19);
-    try
-    {
-      jdField_a_of_type_AndroidHardwareSensorManager.registerListener((SensorEventListener)localObject1, (Sensor)localObject2, 3, 60000);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("SportManager", 1, localException, new Object[0]);
-    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    return BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).getInt("is_show_qq_level_notice", 0);
   }
   
-  public void c()
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SportManager", 2, "doOnTimer2");
-    }
-    this.jdField_a_of_type_Int = 0;
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    QLog.e("QQLevelNotice", 1, "setShowQQLevelNoticeValue: " + paramInt + ", " + str);
+    BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).edit().putInt("is_show_qq_level_notice", paramInt).commit();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).edit().putBoolean("is_show_host_qq_level_guide", paramBoolean).commit();
+  }
+  
+  public boolean b()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    return BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).getBoolean("is_show_host_qq_level_guide", true);
   }
   
   public void onDestroy()
   {
-    if ((this.jdField_a_of_type_AndroidAppAlarmManager != null) && (this.jdField_a_of_type_AndroidAppPendingIntent != null) && (this.b != null))
-    {
-      this.jdField_a_of_type_AndroidAppAlarmManager.cancel(this.jdField_a_of_type_AndroidAppPendingIntent);
-      this.jdField_a_of_type_AndroidAppAlarmManager.cancel(this.b);
-      this.jdField_a_of_type_AndroidAppAlarmManager = null;
-      this.jdField_a_of_type_AndroidAppPendingIntent = null;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqVashealthStepAlarmReceiver != null) {}
-    try
-    {
-      BaseApplicationImpl.getApplication().getApplicationContext().unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqVashealthStepAlarmReceiver);
-      this.jdField_a_of_type_ComTencentMobileqqVashealthStepAlarmReceiver.a();
-      this.jdField_a_of_type_ComTencentMobileqqVashealthStepAlarmReceiver = null;
-      label85:
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-      jdField_a_of_type_AndroidHardwareSensorManager = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label85;
-    }
+    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Bduk);
+    this.jdField_a_of_type_Arws.onDestroy();
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager.onDestroy();
+    this.jdField_a_of_type_Bdww.a();
+    this.jdField_a_of_type_Bdrv.onDestroy();
+    this.jdField_a_of_type_Asrm.a();
   }
 }
 

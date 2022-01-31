@@ -1,23 +1,30 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.data.QQAlbumInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
 
-public abstract interface bkmq
+class bkmq
+  extends Handler
 {
-  public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup);
+  public bkmq(Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract String a();
-  
-  public abstract List<LocalMediaInfo> a(Context paramContext, int paramInt1, int paramInt2, MediaFileFilter paramMediaFileFilter, int paramInt3, boolean paramBoolean, ArrayList<String> paramArrayList);
-  
-  public abstract List<QQAlbumInfo> a(List<QQAlbumInfo> paramList1, List<QQAlbumInfo> paramList2, int paramInt);
-  
-  public abstract void a(int paramInt);
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 3000: 
+      bkmm.c((Activity)paramMessage.obj, paramMessage.arg1);
+      return;
+    }
+    bkmm.a(null);
+    bkmm.a(SystemClock.uptimeMillis());
+  }
 }
 
 

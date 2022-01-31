@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.colornote.data;
 
-import anyf;
-import awbw;
+import aoco;
+import awgf;
 
 public class ColorNoteProxy$1
   implements Runnable
 {
-  public ColorNoteProxy$1(anyf paramanyf, ColorNote paramColorNote) {}
+  public ColorNoteProxy$1(aoco paramaoco, ColorNote paramColorNote) {}
   
   public void run()
   {
-    if (anyf.a(this.this$0) != null) {
-      anyf.a(this.this$0).b(this.a);
+    if (aoco.a(this.this$0) != null) {
+      aoco.a(this.this$0).b(this.a);
     }
   }
 }

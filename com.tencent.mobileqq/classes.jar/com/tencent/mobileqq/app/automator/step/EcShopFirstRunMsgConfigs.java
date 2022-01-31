@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import amdh;
+import amhw;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import apih;
-import bdvv;
-import bdvx;
-import bdwa;
+import apmq;
+import beae;
+import beag;
+import beaj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -27,7 +27,7 @@ public class EcShopFirstRunMsgConfigs
       QLog.d("QQInitHandler", 2, "EcShopFirstRunMsgConfigs start in addEcShopAssistToRUFirstTime...");
     }
     ((ntw)this.a.app.getManager(88)).c();
-    amdh localamdh = new amdh(this);
+    amhw localamhw = new amhw(this);
     List localList1 = Arrays.asList(new String[] { "http://imgcache.qq.com/zzapp/qqshop/stat/qqshp_client_log_wl_conf.json", "http://imgcache.qq.com/zzapp/qqshop/stat/qqshp_client_log_jd_conf.json" });
     List localList2 = Arrays.asList(new String[] { ntw.e, ntw.f });
     List localList3 = Arrays.asList(new String[] { "last_modified_report_json", "last_modified_behaviors_json" });
@@ -42,27 +42,27 @@ public class EcShopFirstRunMsgConfigs
       {
         i += 1;
         break;
-        bdwa localbdwa = ((bdvx)this.a.app.getManager(47)).a(1);
-        if (localbdwa != null)
+        beaj localbeaj = ((beag)this.a.app.getManager(47)).a(1);
+        if (localbeaj != null)
         {
-          Object localObject3 = apih.a("VIP_shop_assit_cfg", (String)localObject2);
-          if (localbdwa.a((String)localObject3) == null)
+          Object localObject3 = apmq.a("VIP_shop_assit_cfg", (String)localObject2);
+          if (localbeaj.a((String)localObject3) == null)
           {
             localObject2 = new File(str);
-            localObject3 = new bdvv((String)localObject3, (File)localObject2);
+            localObject3 = new beae((String)localObject3, (File)localObject2);
             if (((File)localObject2).exists())
             {
               long l = ((File)localObject2).lastModified();
-              ((bdvv)localObject3).i = this.a.app.getApp().getSharedPreferences("ecshop_sp", 0).getLong((String)localObject1, 0L);
-              if (Long.valueOf(l).longValue() != ((bdvv)localObject3).i) {
-                ((bdvv)localObject3).m = true;
+              ((beae)localObject3).i = this.a.app.getApp().getSharedPreferences("ecshop_sp", 0).getLong((String)localObject1, 0L);
+              if (Long.valueOf(l).longValue() != ((beae)localObject3).i) {
+                ((beae)localObject3).m = true;
               }
             }
-            ((bdvv)localObject3).j = true;
-            ((bdvv)localObject3).p = false;
+            ((beae)localObject3).j = true;
+            ((beae)localObject3).p = false;
             localObject1 = new Bundle();
             ((Bundle)localObject1).putString("path", str);
-            localbdwa.a((bdvv)localObject3, localamdh, (Bundle)localObject1);
+            localbeaj.a((beae)localObject3, localamhw, (Bundle)localObject1);
           }
         }
       }

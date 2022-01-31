@@ -1,58 +1,17 @@
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 
-public class ywz
+class ywz
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  private static final yxb jdField_a_of_type_Yxb = new yxb(null);
-  private CopyOnWriteArrayList<ywr> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  ywz(ywy paramywy, View paramView) {}
   
-  public static ywz a()
+  public boolean onPreDraw()
   {
-    return (ywz)jdField_a_of_type_Yxb.getInstance();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((ywr)localIterator.next()).b();
-      }
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (!this.jdField_a_of_type_Boolean))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((ywr)localIterator.next()).a(paramLong);
-      }
-    }
-  }
-  
-  public void a(ywr paramywr)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramywr);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((ywr)localIterator.next()).a();
-      }
-    }
-  }
-  
-  public void b(ywr paramywr)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramywr);
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
+    ywy.a(this.jdField_a_of_type_Ywy, this.jdField_a_of_type_AndroidViewView);
+    return false;
   }
 }
 

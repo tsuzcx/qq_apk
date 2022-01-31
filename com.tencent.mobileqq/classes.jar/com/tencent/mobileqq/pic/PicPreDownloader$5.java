@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.pic;
 
-import aweu;
-import awfc;
+import awjd;
+import awjl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -19,7 +19,7 @@ class PicPreDownloader$5
     {
       int j;
       int i;
-      awfc localawfc;
+      awjl localawjl;
       synchronized (this.this$0.jdField_a_of_type_JavaUtilList)
       {
         Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
@@ -28,27 +28,27 @@ class PicPreDownloader$5
         if (!localIterator.hasNext()) {
           break label310;
         }
-        localawfc = (awfc)localIterator.next();
-        switch (localawfc.f)
+        localawjl = (awjl)localIterator.next();
+        switch (localawjl.f)
         {
         case 4: 
           k += 1;
-          localawfc.e = localawfc.f;
-          this.this$0.jdField_a_of_type_JavaUtilMap.put(localawfc.a.g, Integer.valueOf(localawfc.e));
-          this.this$0.d.add(0, localawfc);
-          localawfc.e = localawfc.f;
-          this.this$0.jdField_a_of_type_JavaUtilMap.put(localawfc.a.g, Integer.valueOf(localawfc.e));
+          localawjl.e = localawjl.f;
+          this.this$0.jdField_a_of_type_JavaUtilMap.put(localawjl.a.g, Integer.valueOf(localawjl.e));
+          this.this$0.d.add(0, localawjl);
+          localawjl.e = localawjl.f;
+          this.this$0.jdField_a_of_type_JavaUtilMap.put(localawjl.a.g, Integer.valueOf(localawjl.e));
         }
       }
       i += 1;
-      localawfc.e = localawfc.f;
-      this.this$0.jdField_a_of_type_JavaUtilMap.put(localawfc.a.g, Integer.valueOf(localawfc.e));
-      this.this$0.b.add(0, localawfc);
+      localawjl.e = localawjl.f;
+      this.this$0.jdField_a_of_type_JavaUtilMap.put(localawjl.a.g, Integer.valueOf(localawjl.e));
+      this.this$0.b.add(0, localawjl);
       continue;
       j += 1;
-      localawfc.e = localawfc.f;
-      this.this$0.jdField_a_of_type_JavaUtilMap.put(localawfc.a.g, Integer.valueOf(localawfc.e));
-      this.this$0.c.add(0, localawfc);
+      localawjl.e = localawjl.f;
+      this.this$0.jdField_a_of_type_JavaUtilMap.put(localawjl.a.g, Integer.valueOf(localawjl.e));
+      this.this$0.c.add(0, localawjl);
       continue;
       label310:
       this.this$0.jdField_a_of_type_JavaUtilList.clear();

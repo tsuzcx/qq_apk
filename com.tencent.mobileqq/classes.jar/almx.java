@@ -1,153 +1,161 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.35.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionPackage;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import mqq.os.MqqHandler;
 
 public class almx
-  extends MSFServlet
+  implements alnh
 {
-  private byte[] a(String[] paramArrayOfString1, String[] paramArrayOfString2)
-  {
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    localOIDBSSOPkg.uint32_command.set(1274);
-    localOIDBSSOPkg.uint32_service_type.set(7);
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramArrayOfString1.length * 2 + 4 + paramArrayOfString2.length * 4);
-    int n = paramArrayOfString1.length;
-    int i = (byte)(n >> 8 & 0xFF);
-    int j = (byte)(n & 0xFF);
-    byte[] arrayOfByte = new byte[paramArrayOfString1.length * 2];
-    int i1 = 0;
-    int i2 = paramArrayOfString1.length;
-    n = 0;
-    long l;
-    while (n < i2)
-    {
-      l = Long.parseLong(paramArrayOfString1[n]);
-      arrayOfByte[i1] = ((byte)(int)(l >> 8 & 0xFF));
-      arrayOfByte[(i1 + 1)] = ((byte)(int)(l & 0xFF));
-      i1 += 2;
-      n += 1;
-    }
-    n = paramArrayOfString2.length;
-    int k = (byte)(n >> 8 & 0xFF);
-    int m = (byte)(n & 0xFF);
-    i1 = 0;
-    paramArrayOfString1 = new byte[n * 4];
-    i2 = paramArrayOfString2.length;
-    n = 0;
-    while (n < i2)
-    {
-      l = Long.parseLong(paramArrayOfString2[n]);
-      paramArrayOfString1[(i1 + 3)] = ((byte)(int)(0xFF & l));
-      paramArrayOfString1[(i1 + 2)] = ((byte)(int)(l >> 8 & 0xFF));
-      paramArrayOfString1[(i1 + 1)] = ((byte)(int)(l >> 16 & 0xFF));
-      paramArrayOfString1[i1] = ((byte)(int)(l >> 24 & 0xFF));
-      i1 += 4;
-      n += 1;
-    }
-    localByteBuffer.put(new byte[] { i, j }).put(arrayOfByte).put(new byte[] { k, m }).put(paramArrayOfString1);
-    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localByteBuffer.array()));
-    paramArrayOfString1 = localOIDBSSOPkg.toByteArray();
-    paramArrayOfString2 = ByteBuffer.allocate(paramArrayOfString1.length + 4);
-    paramArrayOfString2.putInt(paramArrayOfString1.length + 4);
-    paramArrayOfString2.put(paramArrayOfString1);
-    return paramArrayOfString2.array();
-  }
+  public almx(ApolloPanel paramApolloPanel) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public alnp a(int paramInt)
   {
-    int j = paramIntent.getIntExtra("key_cmd", -1);
-    paramFromServiceMsg.isSuccess();
-    Bundle localBundle = new Bundle();
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    switch (j)
+    switch (paramInt)
     {
     default: 
+      return new alkz(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    }
+    if (aknx.c("gamePanelSwitch") != 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPanel", 2, "loadPanel gameSwitch is 0 return null");
+      }
+      return null;
+    }
+    return new alln(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+  }
+  
+  public void a()
+  {
+    ApolloPanel.a(this.a).post(new ApolloPanel.35.1(this));
+  }
+  
+  public void a(int paramInt)
+  {
+    SharedPreferences.Editor localEditor = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("apollo_sp" + this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).edit();
+    if (paramInt < 0) {
+      localEditor.remove("sp_key_apollo_current_page_index_3d");
+    }
+    for (;;)
+    {
+      localEditor.apply();
       return;
+      localEditor.putString("sp_key_apollo_current_page_index_3d", String.valueOf(paramInt));
+    }
+  }
+  
+  public void a(List<alnp> paramList, List<ApolloActionPackage> paramList1, boolean paramBoolean)
+  {
+    int i = 0;
+    int m = 0;
+    while (i < paramList.size())
+    {
+      m += ((alnp)paramList.get(i)).a();
+      i += 1;
+    }
+    i = -1;
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("apollo_sp" + this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
+    if (((SharedPreferences)localObject).contains("sp_key_apollo_current_page_index_3d"))
+    {
+      localObject = ((SharedPreferences)localObject).getString("sp_key_apollo_current_page_index_3d", null);
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
     }
     for (;;)
     {
       try
       {
-        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        byte[] arrayOfByte = new byte[paramFromServiceMsg.getInt() - 4];
-        paramFromServiceMsg.get(arrayOfByte);
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom(arrayOfByte);
-        if (paramFromServiceMsg.uint32_result.get() == 0)
-        {
-          bool = true;
-          paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-          if (bool)
-          {
-            arrayOfByte = new byte[2];
-            paramFromServiceMsg.get(arrayOfByte);
-            int k = bdal.a(arrayOfByte, 0);
-            int i = 0;
-            if (i < k)
-            {
-              arrayOfByte = new byte[4];
-              paramFromServiceMsg.get(arrayOfByte);
-              localArrayList2.add(String.valueOf(bdal.a(arrayOfByte, 0)));
-              arrayOfByte = new byte[2];
-              paramFromServiceMsg.get(arrayOfByte);
-              long l = bdal.a(arrayOfByte, 0);
-              arrayOfByte = new byte[2];
-              paramFromServiceMsg.get(arrayOfByte);
-              l = bdal.a(arrayOfByte, 0);
-              arrayOfByte = new byte[2];
-              paramFromServiceMsg.get(arrayOfByte);
-              arrayOfByte = new byte[bdal.a(arrayOfByte, 0)];
-              paramFromServiceMsg.get(arrayOfByte);
-              localArrayList1.add(new String(arrayOfByte, "utf-8"));
-              i += 1;
-              continue;
-            }
-          }
-          localBundle.putStringArrayList("nickname_list", (ArrayList)localArrayList1);
-          localBundle.putStringArrayList("uin_list", (ArrayList)localArrayList2);
-          notifyObserver(paramIntent, j, bool, localBundle, xvc.class);
-          return;
+        j = Integer.parseInt((String)localObject);
+        if (j >= m) {
+          continue;
         }
       }
-      catch (Exception paramIntent)
+      catch (Exception localException1)
       {
-        paramIntent.printStackTrace();
+        int k;
+        int n;
+        j = -1;
+        i = 0;
+        QLog.e("ApolloPanel", 1, "parse previousSavedPagerIndexStr error", localException1);
+        continue;
+        k += 1;
+        continue;
+        j = 0;
+        continue;
+      }
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] from previous saved for 3d, pagerIndex=", Integer.valueOf(j) });
+        }
+        i = j;
+        j = 1;
+        k = j;
+        j = i;
+        i = k;
+        if (i != 0) {
+          continue;
+        }
+        n = paramList1.size();
+        k = 0;
+        if (k >= n) {
+          continue;
+        }
+        localObject = (ApolloActionPackage)paramList1.get(k);
+        if ((localObject == null) || (((ApolloActionPackage)localObject).packageId != 300)) {
+          continue;
+        }
+      }
+      catch (Exception localException2)
+      {
+        i = 1;
+        continue;
+        k = i;
+        i = j;
+        j = k;
+        continue;
+        k = 0;
+        continue;
+      }
+      if (k < paramList.size())
+      {
+        i = ApolloPanel.a(this.a, paramList, k);
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] default single action, pagerIndex=", Integer.valueOf(i) });
+        }
+        j = 1;
+        if (j == 0) {
+          i = 1;
+        }
+        if (i < m)
+        {
+          ApolloPanel.jdField_a_of_type_Int = i;
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] sCurrentIndex= ", Integer.valueOf(ApolloPanel.jdField_a_of_type_Int) });
+          }
+        }
         return;
       }
-      boolean bool = false;
+      i = 0;
+      int j = -1;
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public boolean a(int paramInt)
   {
-    int i = paramIntent.getIntExtra("key_cmd", -1);
-    String str = null;
-    switch (i)
-    {
-    }
-    for (paramIntent = str;; paramIntent = str)
-    {
-      if (paramIntent != null) {
-        paramPacket.setSSOCommand(paramIntent);
-      }
-      return;
-      str = "OidbSvc.0x4fa_7";
-      paramPacket.putSendData(a(paramIntent.getStringArrayExtra("field_id"), paramIntent.getStringArrayExtra("uin_list")));
-    }
+    return (paramInt >= 100) && (paramInt != 400);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     almx
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.microapp.c;
 
 import android.content.res.AssetManager;
 import android.text.TextUtils;
-import bdje;
+import bdnn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.microapp.apkg.q;
 import com.tencent.mobileqq.microapp.apkg.r;
@@ -532,7 +532,7 @@ public final class c
   
   public String c(String paramString)
   {
-    if (bdje.a(paramString)) {
+    if (bdnn.a(paramString)) {
       return "";
     }
     String str2 = a.c(paramString);

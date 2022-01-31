@@ -1,206 +1,169 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Content;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailFetchMgr.1;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.UUID;
 
 public class bbwz
+  implements bbxc
 {
-  public int a;
-  public Context a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = 40;
-  public int d = 50;
+  private LinkedList<String> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private Map<String, bbxa> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private LinkedList<bbxa> b = new LinkedList();
   
-  public bbwz(Context paramContext, String paramString)
+  private String a()
   {
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_b_of_type_Int = 10;
-    this.jdField_b_of_type_JavaLangString = "WXARS1005SNG1523440966";
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    b();
+    return " WS:" + this.jdField_a_of_type_JavaUtilMap.size() + " QS:" + this.jdField_a_of_type_JavaUtilLinkedList.size() + " RS:" + this.b.size();
   }
   
-  private SharedPreferences a()
+  public static String a(UUID paramUUID, int paramInt)
   {
-    return this.jdField_a_of_type_AndroidContentContext.getSharedPreferences(this.jdField_a_of_type_JavaLangString + "_" + "HWTroopReciteConfig", 0);
+    return paramUUID.toString() + "_" + paramInt;
   }
   
-  private void a()
+  private void d()
   {
-    a().edit().putInt("max_remind_num", this.jdField_a_of_type_Int).putInt("max_allow_wrong_num", this.d).putInt("max_detect_num_in_article", this.jdField_b_of_type_Int).putInt("max_detect_num_in_recite", this.c).putString("wx_voice_app_id", this.jdField_b_of_type_JavaLangString).commit();
-    if (QLog.isColorLevel()) {
-      QLog.i("ReciteConfig", 2, "saveConfig: " + toString());
-    }
-  }
-  
-  private void a(Context paramContext, String paramString)
-  {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().remove(paramString + "_" + "troop_hw_recite_cfg_version").commit();
-  }
-  
-  private void a(Context paramContext, String paramString, int paramInt)
-  {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putInt(paramString + "_" + "troop_hw_recite_cfg_version", paramInt).commit();
-  }
-  
-  private void a(ConfigurationService.Config paramConfig)
-  {
-    if ((paramConfig.msg_content_list != null) && (paramConfig.msg_content_list.size() > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ReciteConfig", 2, "parseConfig: list.size() " + paramConfig.msg_content_list.size());
-      }
-      Iterator localIterator = paramConfig.msg_content_list.get().iterator();
-      if (!localIterator.hasNext()) {
-        break label298;
-      }
-      paramConfig = (ConfigurationService.Content)localIterator.next();
-      if ((paramConfig != null) && (paramConfig.content.has())) {
-        if (paramConfig.compress.get() == 1)
-        {
-          paramConfig = aova.b(paramConfig.content.get().toByteArray());
-          if (paramConfig == null) {
-            break label299;
-          }
-        }
-      }
-    }
+    if (this.b.size() >= 10) {}
+    label79:
     for (;;)
     {
-      try
-      {
-        paramConfig = new String(paramConfig, "UTF-8");
-        if (QLog.isColorLevel()) {
-          QLog.i("ReciteConfig", 2, "parseConfig: contentitem.content =  " + paramConfig);
-        }
-        if ((TextUtils.isEmpty(paramConfig)) || (!a(paramConfig))) {
-          break;
-        }
-        a();
-      }
-      catch (Exception paramConfig)
-      {
-        QLog.e("ReciteConfig", 1, "parseConfig|uncompress failed" + paramConfig);
-        paramConfig = null;
-        continue;
-      }
-      paramConfig = paramConfig.content.get().toStringUtf8();
-      continue;
-      QLog.i("ReciteConfig", 1, "empty contentitem");
-      break;
-      a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.i("ReciteConfig", 2, "handleReceiptConfig:msg_content_list is empty ,version: " + paramConfig.version.get());
-      }
-      label298:
       return;
-      label299:
-      paramConfig = null;
-    }
-  }
-  
-  private boolean a(String paramString)
-  {
-    boolean bool = false;
-    if (!TextUtils.isEmpty(paramString)) {}
-    while (!QLog.isColorLevel())
-    {
-      try
+      for (;;)
       {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("HWTroopReciteConfig"))
+        if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
+          break label79;
+        }
+        Object localObject = (String)this.jdField_a_of_type_JavaUtilLinkedList.remove(0);
+        localObject = (bbxa)this.jdField_a_of_type_JavaUtilMap.remove(localObject);
+        if (localObject != null)
         {
-          paramString = paramString.getJSONObject("HWTroopReciteConfig");
-          if (paramString.has("max_remind_num")) {
-            this.jdField_a_of_type_Int = paramString.getInt("max_remind_num");
+          this.b.add(localObject);
+          if (((bbxa)localObject).a()) {
+            break;
           }
-          if (paramString.has("max_allow_wrong_num")) {
-            this.d = paramString.getInt("max_allow_wrong_num");
-          }
-          if (paramString.has("max_detect_num_in_article")) {
-            this.jdField_b_of_type_Int = paramString.getInt("max_detect_num_in_article");
-          }
-          if (paramString.has("max_detect_num_in_recite")) {
-            this.c = paramString.getInt("max_detect_num_in_recite");
-          }
-          if (paramString.has("wx_voice_app_id"))
-          {
-            paramString = paramString.getString("wx_voice_app_id");
-            if (!TextUtils.isEmpty(paramString)) {
-              this.jdField_b_of_type_JavaLangString = paramString;
-            }
-          }
+          this.b.remove(localObject);
         }
-        bool = true;
       }
-      catch (JSONException paramString)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("ReciteConfig", 2, paramString, new Object[0]);
-        return false;
-      }
-      return bool;
-    }
-    QLog.i("ReciteConfig", 2, "parseConfig:config_content is null");
-    return false;
-  }
-  
-  private void b()
-  {
-    SharedPreferences localSharedPreferences = a();
-    this.jdField_a_of_type_Int = localSharedPreferences.getInt("max_remind_num", this.jdField_a_of_type_Int);
-    this.d = localSharedPreferences.getInt("max_allow_wrong_num", this.d);
-    this.jdField_b_of_type_Int = localSharedPreferences.getInt("max_detect_num_in_article", this.jdField_b_of_type_Int);
-    this.c = localSharedPreferences.getInt("max_detect_num_in_recite", this.c);
-    this.jdField_b_of_type_JavaLangString = localSharedPreferences.getString("wx_voice_app_id", this.jdField_b_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.i("ReciteConfig", 2, "loadConfig: " + toString());
     }
   }
   
-  public int a(Context paramContext, String paramString)
+  public int a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "troop_hw_recite_cfg_version", 0);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig)
-  {
-    int i = paramConfig.version.get();
-    int j = a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.i("ReciteConfig", 2, "handleConfig: ,version: " + paramConfig.version.get() + "| localVersion: " + j);
+    if ((paramLong == 0L) || (paramItem == null)) {
+      return -1;
     }
-    if (i != j)
+    if (paramItem.Id == null) {
+      return -2;
+    }
+    if (paramInt == 0) {
+      return -5;
+    }
+    String str = a(paramItem.Id, paramInt);
+    if (a(str))
     {
-      a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, i);
-      a(paramConfig);
+      bbvl.c("TroopFileThumbnailFetchMgr", bbvl.a, "[" + str + "] fetchFileThumbnail worker exsited. ");
+      return -4;
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    bbxa localbbxa = bbxa.a(paramLong, paramItem, paramInt, this);
+    if (localbbxa == null) {
+      return -3;
     }
-    QLog.i("ReciteConfig", 2, "handleConfig:localVersion == version ");
+    bbxf.a(paramItem, paramInt);
+    this.jdField_a_of_type_JavaUtilMap.put(str, localbbxa);
+    this.jdField_a_of_type_JavaUtilLinkedList.add(str);
+    bbvl.c("TroopFileThumbnailFetchMgr", bbvl.a, "[" + str + "] fetchFileThumbnail fileName. " + paramItem.FileName + a());
+    d();
+    return 0;
   }
   
-  public String toString()
+  public int a(UUID paramUUID, int paramInt)
   {
-    return "ReciteConfig{mMaxRemindNum=" + this.jdField_a_of_type_Int + ", mMaxDetectNumInArticle=" + this.jdField_b_of_type_Int + ", mMaxDetectNumInRecite=" + this.c + ", mMaxAllowWrongNum=" + this.d + ", mWXVoiceAppId='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    if (paramUUID == null) {
+      return -2;
+    }
+    String str = a(paramUUID, paramInt);
+    Object localObject = this.b.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      bbxa localbbxa = (bbxa)((Iterator)localObject).next();
+      if (str.equalsIgnoreCase(localbbxa.a()))
+      {
+        localbbxa.a();
+        ((Iterator)localObject).remove();
+      }
+    }
+    for (paramInt = 1;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (paramInt == 0)
+      {
+        localObject = (bbxa)this.jdField_a_of_type_JavaUtilMap.remove(paramUUID);
+        if (localObject == null) {
+          break label168;
+        }
+        ((bbxa)localObject).a();
+        paramInt |= 0x1;
+      }
+      label168:
+      for (;;)
+      {
+        boolean bool = this.jdField_a_of_type_JavaUtilLinkedList.remove(paramUUID) | paramInt;
+        if (bool) {
+          bbvl.c("TroopFileThumbnailFetchMgr", bbvl.a, "[" + str + "] stopFetch. " + a());
+        }
+        d();
+        return 0;
+      }
+    }
+  }
+  
+  public void a() {}
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt, bbxa parambbxa)
+  {
+    bbvc.a(new TroopFileThumbnailFetchMgr.1(this, paramString, paramBoolean, paramInt, parambbxa), false);
+  }
+  
+  protected boolean a(String paramString)
+  {
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      if (paramString.equalsIgnoreCase(((bbxa)localIterator.next()).a())) {
+        return true;
+      }
+    }
+    return this.jdField_a_of_type_JavaUtilMap.containsKey(paramString);
+  }
+  
+  public void b()
+  {
+    c();
+  }
+  
+  public void b(String paramString, boolean paramBoolean, int paramInt, bbxa parambbxa)
+  {
+    this.b.remove(parambbxa);
+    bbvl.c("TroopFileThumbnailFetchMgr", bbvl.a, "[" + paramString + "] onWorkDoneInter. bSuc:" + paramBoolean + " errCode:" + paramInt + a());
+    d();
+  }
+  
+  protected void c()
+  {
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      ((bbxa)localIterator.next()).a();
+    }
+    this.b.clear();
+    localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext()) {
+      ((bbxa)localIterator.next()).a();
+    }
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.jdField_a_of_type_JavaUtilLinkedList.clear();
+    bbvl.c("TroopFileThumbnailFetchMgr", bbvl.a, "stopAllInter");
   }
 }
 

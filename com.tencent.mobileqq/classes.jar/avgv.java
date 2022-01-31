@@ -1,68 +1,106 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import java.io.File;
 
-class avgv
-  implements DialogInterface.OnClickListener
+public class avgv
+  implements avgi
 {
-  avgv(avgk paramavgk, boolean paramBoolean) {}
+  TextureVideoView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public avgv(Context paramContext)
   {
-    if (this.jdField_a_of_type_Boolean)
+    this.a = new TextureVideoView(paramContext.getApplicationContext());
+  }
+  
+  public int a()
+  {
+    if (this.a == null) {
+      return 0;
+    }
+    return (int)(this.a.getCurrentPosition() / (this.a.getDuration() + 0.1D) * 100.0D);
+  }
+  
+  public long a()
+  {
+    return this.a.getCurrentPosition();
+  }
+  
+  public View a()
+  {
+    return this.a;
+  }
+  
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(long paramLong)
+  {
+    this.a.seekTo((int)paramLong);
+  }
+  
+  public void a(avgj paramavgj)
+  {
+    this.a.setOnCompletionListener(new avgw(this, paramavgj));
+  }
+  
+  public void a(avgk paramavgk) {}
+  
+  public void a(avgl paramavgl)
+  {
+    this.a.setOnErrorListener(new avgx(this, paramavgl, null));
+  }
+  
+  public void a(avgm paramavgm)
+  {
+    this.a.setOnInfoListener(new avgy(this, paramavgm));
+  }
+  
+  public void a(avgn paramavgn)
+  {
+    TextureVideoView localTextureVideoView = this.a;
+    if (paramavgn == null) {}
+    for (paramavgn = null;; paramavgn = new avgz(this, paramavgn))
     {
-      paramDialogInterface = new Intent();
-      paramDialogInterface.setAction("android.intent.action.VIEW");
-      paramDialogInterface.setData(Uri.parse(avgk.a(this.jdField_a_of_type_Avgk).guideAppNowJumpUri));
-      this.jdField_a_of_type_Avgk.a.startActivity(paramDialogInterface);
+      localTextureVideoView.setOnPreparedListener(paramavgn);
       return;
     }
-    if ("com.tencent.now".equals(avgk.a(this.jdField_a_of_type_Avgk).guideAppNowPackage))
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, long paramLong)
+  {
+    paramString1 = paramString3;
+    if (!TextUtils.isEmpty(paramString2))
     {
-      paramDialogInterface = BaseApplicationImpl.getContext().getSharedPreferences("now_down_apk", 4);
-      if (paramDialogInterface.getInt("state", 0) == 1) {
-        try
-        {
-          arpg.a(paramDialogInterface.getString("filePath", ""));
-          paramDialogInterface.edit().putInt("state", 0).apply();
-          return;
-        }
-        catch (Exception paramDialogInterface)
-        {
-          QLog.e("NearbyProfileDisplayPanel", 1, paramDialogInterface, new Object[0]);
-          this.jdField_a_of_type_Avgk.a(avgk.a(this.jdField_a_of_type_Avgk).guideAppNowDownloadUrl, "now.apk", "now_down_apk");
-          return;
-        }
-      }
-      this.jdField_a_of_type_Avgk.a(avgk.a(this.jdField_a_of_type_Avgk).guideAppNowDownloadUrl, "now.apk", "now_down_apk");
-      return;
-    }
-    paramDialogInterface = avgk.a(this.jdField_a_of_type_Avgk).guideAppNowPackage.replaceAll("\\.", "_") + "_apk";
-    String str = avgk.a(this.jdField_a_of_type_Avgk).guideAppNowPackage.replaceAll("\\.", "_") + ".apk";
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences(paramDialogInterface, 4);
-    if (localSharedPreferences.getInt("state", 0) == 1) {
-      try
-      {
-        arpg.a(localSharedPreferences.getString("filePath", ""));
-        localSharedPreferences.edit().putInt("state", 0).apply();
-        return;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("NearbyProfileDisplayPanel", 1, localException, new Object[0]);
-        this.jdField_a_of_type_Avgk.a(avgk.a(this.jdField_a_of_type_Avgk).guideAppNowDownloadUrl, str, paramDialogInterface);
-        return;
+      paramString1 = paramString3;
+      if (unk.a(new File(paramString2))) {
+        paramString1 = paramString2;
       }
     }
-    this.jdField_a_of_type_Avgk.a(avgk.a(this.jdField_a_of_type_Avgk).guideAppNowDownloadUrl, str, paramDialogInterface);
+    this.a.setVideoPath(paramString1);
+  }
+  
+  public boolean a()
+  {
+    return this.a.isPlaying();
+  }
+  
+  public void b()
+  {
+    this.a.start();
+  }
+  
+  public void c()
+  {
+    this.a.pause();
+  }
+  
+  public void d()
+  {
+    b();
   }
 }
 

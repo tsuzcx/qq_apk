@@ -1,79 +1,51 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.window.FloatMapWidget;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 class atqf
-  implements atlm
+  implements alpg
 {
-  atqf(atqe paramatqe) {}
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public void a(atlh paramatlh, int paramInt)
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  protected void c(boolean paramBoolean, Object paramObject) {}
+  
+  protected void d(boolean paramBoolean, Object paramObject) {}
+  
+  protected void e(boolean paramBoolean, Object paramObject) {}
+  
+  protected void f(boolean paramBoolean, Object paramObject) {}
+  
+  protected void g(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, "onKickOff: invoked. roomKey: " + paramatlh + " mRoomKey: " + atqe.a(this.a));
+      QLog.d("LocationObserverBase", 2, new Object[] { "onUpdate: invoked. ", " type: ", Integer.valueOf(paramInt), " isSuccess: ", Boolean.valueOf(paramBoolean), " data: ", paramObject });
     }
-    QQToast.a(BaseApplicationImpl.context, "已在其他设备进行共享", 0).a();
-  }
-  
-  public void a(atlh paramatlh, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, new Object[] { "onOperateRoomResponse: invoked. ", " roomKey: ", paramatlh, " errorCode: ", Integer.valueOf(paramInt1), " operateType: ", Integer.valueOf(paramInt2) });
-    }
-    if (!paramatlh.equals(atqe.a(this.a))) {}
-    do
+    switch (paramInt)
     {
-      do
-      {
-        return;
-        paramatlh = BaseActivity.sTopActivity;
-        if (paramInt1 != 10100) {
-          break;
-        }
-      } while ((paramatlh == null) || (paramatlh.isFinishing()));
-      atmi.a(paramatlh);
+    default: 
       return;
-    } while ((paramInt1 != 10101) || (paramatlh == null) || (paramatlh.isFinishing()));
-    atmi.b(paramatlh);
-  }
-  
-  public void a(atlh paramatlh, LocationRoom.Venue paramVenue, List<atlf> paramList)
-  {
-    if (!paramatlh.equals(atqe.a(this.a)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationShareController", 2, new Object[] { "onUpdateUserLocations: invoked. ", " roomKey: ", paramatlh, " mRoomKey: ", atqe.a(this.a) });
-      }
+    case 1: 
+      g(paramBoolean, paramObject);
+      return;
+    case 2: 
+      a(paramBoolean, paramObject);
+      return;
+    case 3: 
+      f(paramBoolean, paramObject);
+      return;
+    case 4: 
+      e(paramBoolean, paramObject);
+      return;
+    case 5: 
+      d(paramBoolean, paramObject);
+      return;
+    case 6: 
+      c(paramBoolean, paramObject);
       return;
     }
-    paramVenue = paramList.iterator();
-    while (paramVenue.hasNext())
-    {
-      paramList = (atlf)paramVenue.next();
-      Bitmap localBitmap = this.a.a(paramList.a());
-      if (localBitmap != null)
-      {
-        localBitmap = bdda.c(localBitmap, 16, 16);
-        atqe.a(this.a).a(paramList.a(), localBitmap);
-      }
-    }
-    atqe.a(this.a).a(paramatlh);
-  }
-  
-  public void b(atlh paramatlh, int paramInt)
-  {
-    if (!paramatlh.equals(atqe.a(this.a))) {}
-    while ((paramInt == 2) || (paramInt == 1) || (BaseActivity.sTopActivity == null)) {
-      return;
-    }
-    atmi.a(BaseActivity.sTopActivity);
+    b(paramBoolean, paramObject);
   }
 }
 

@@ -1,21 +1,35 @@
-import android.view.MotionEvent;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class avel
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  avel(avek paramavek) {}
+  avel(avek paramavek, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    switch (paramMotionEvent.getAction())
+    Object localObject = paramView.getContext();
+    if ((localObject instanceof BaseActivity))
     {
+      localObject = (BaseActivity)localObject;
+      if ((((BaseActivity)localObject).app == null) || (this.jdField_a_of_type_Long != Long.parseLong(((BaseActivity)localObject).app.getCurrentAccountUin()))) {}
     }
-    for (;;)
+    for (int i = 2;; i = 3)
     {
-      return true;
-      this.a.dismiss();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("&from=3");
+      ((StringBuilder)localObject).append("&mode=" + i);
+      ((StringBuilder)localObject).append("&now_id=" + this.b);
+      ((StringBuilder)localObject).append("&now_user_type=" + this.c);
+      localObject = "mqq://card/show_pslcard/?uin=" + this.jdField_a_of_type_Long + "&card_type=nearby" + ((StringBuilder)localObject).toString();
+      paramView.getContext().startActivity(new Intent(paramView.getContext(), JumpActivity.class).setData(Uri.parse((String)localObject)));
+      return;
     }
   }
 }

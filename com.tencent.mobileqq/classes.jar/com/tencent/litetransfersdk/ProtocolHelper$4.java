@@ -1,6 +1,6 @@
 package com.tencent.litetransfersdk;
 
-import armz;
+import arri;
 
 class ProtocolHelper$4
   implements Runnable
@@ -9,7 +9,7 @@ class ProtocolHelper$4
   
   public void run()
   {
-    armz.a(2131694060);
+    arri.a(2131694062);
   }
 }
 

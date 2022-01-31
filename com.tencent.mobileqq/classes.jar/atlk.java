@@ -1,138 +1,75 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
+import android.widget.TextView;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.location.qq_lbs_share.PushExtInfo;
-import tencent.im.s2c.msgtype0x210.submsgtype0x125.submsgtype0x125.MsgBody;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class atlk
 {
-  private static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
+  public static int a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CLocationPushDecoder", 2, new Object[] { "onDecodeC2cLbsUserQuitRoom: invoked. ", " operateUin = [" + paramLong1 + "], sessionUin = [" + paramLong2 + "]" });
+    if (paramInt == 1) {
+      return 1;
     }
-    if (paramLong1 == paramQQAppInterface.getLongAccountUin()) {
-      atln.a(paramQQAppInterface).a(new atlh(0, String.valueOf(paramLong2)), false);
-    }
+    return 2;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, submsgtype0x125.MsgBody paramMsgBody)
+  public static int a(RedTouch paramRedTouch)
   {
-    paramQQAppInterface = atln.a(paramQQAppInterface);
-    paramMsgBody = paramMsgBody.bytes_ext_info.get().toByteArray();
-    qq_lbs_share.PushExtInfo localPushExtInfo = new qq_lbs_share.PushExtInfo();
-    try
+    if ((paramRedTouch == null) || (!paramRedTouch.a())) {}
+    do
     {
-      localPushExtInfo.mergeFrom(paramMsgBody);
-      long l = localPushExtInfo.peer_uin.get();
-      paramQQAppInterface.a.a(0, String.valueOf(l));
-      return;
-    }
-    catch (Exception paramQQAppInterface)
+      return 0;
+      paramRedTouch = paramRedTouch.a();
+    } while ((paramRedTouch == null) || (paramRedTouch.isEmpty()));
+    paramRedTouch = paramRedTouch.iterator();
+    while (paramRedTouch.hasNext())
     {
-      QLog.e("C2CLocationPushDecoder", 1, "onPushRoomMemberChanged: failed. ", paramQQAppInterface);
+      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramRedTouch.next();
+      if (localRedTypeInfo.red_type.get() == 0) {
+        return 1;
+      }
+      if (localRedTypeInfo.red_type.get() == 5) {
+        return 2;
+      }
+      if (localRedTypeInfo.red_type.get() == 11) {
+        return 3;
+      }
     }
+    return 3;
   }
   
-  static void a(QQAppInterface paramQQAppInterface, submsgtype0x125.MsgBody paramMsgBody, int paramInt)
+  public static int a(boolean paramBoolean, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
   {
-    paramQQAppInterface = atln.a(paramQQAppInterface);
-    long l1 = paramMsgBody.uint64_oper_uin.get();
-    paramMsgBody = paramMsgBody.bytes_ext_info.get().toByteArray();
-    qq_lbs_share.PushExtInfo localPushExtInfo = new qq_lbs_share.PushExtInfo();
-    for (;;)
-    {
-      try
-      {
-        localPushExtInfo.mergeFrom(paramMsgBody);
-        long l2 = localPushExtInfo.peer_uin.get();
-        paramMsgBody = new atlh(0, String.valueOf(l2));
-        paramQQAppInterface.a.a(0, String.valueOf(l2));
-        switch (paramInt)
-        {
-        case 101: 
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.d("C2CLocationPushDecoder", 2, new Object[] { "[venue] c2c onPushRoomVenueChanged: invoked. roomKey: ", paramMsgBody + " opt: " + paramInt + " optUin: " + l1 });
-          return;
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        QLog.e("C2CLocationPushDecoder", 1, "[venue] c2c onPushRoomVenueChanged: failed. opt: " + paramInt + " optUin: " + l1, paramQQAppInterface);
-        return;
-      }
-      paramQQAppInterface.a(paramMsgBody, String.valueOf(l1));
-      continue;
-      paramQQAppInterface.a(paramMsgBody);
-      continue;
-      paramQQAppInterface.b(paramMsgBody);
+    if ((!paramBoolean) || (paramRedTypeInfo == null)) {
+      return 0;
     }
+    if (paramRedTypeInfo.red_type.get() == 0) {
+      return 1;
+    }
+    if (paramRedTypeInfo.red_type.get() == 5) {
+      return 2;
+    }
+    return 3;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, short paramShort, int paramInt, boolean paramBoolean)
+  public static azte a(String paramString)
   {
-    submsgtype0x125.MsgBody localMsgBody = new submsgtype0x125.MsgBody();
-    if (paramArrayOfByte != null) {}
-    for (;;)
-    {
-      long l;
-      try
-      {
-        localMsgBody.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = atln.a(paramQQAppInterface);
-        byte[] arrayOfByte = localMsgBody.bytes_ext_info.get().toByteArray();
-        qq_lbs_share.PushExtInfo localPushExtInfo = new qq_lbs_share.PushExtInfo();
-        localPushExtInfo.mergeFrom(arrayOfByte);
-        l = localPushExtInfo.peer_uin.get();
-        paramShort = localPushExtInfo.client_type.get();
-        paramInt = localMsgBody.uint32_msg_type.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("C2CLocationPushDecoder", 2, new Object[] { "processC2C: invoked. ", " isOffline: ", Boolean.valueOf(paramBoolean), " optType: ", Integer.valueOf(paramInt) });
-        }
-        if (paramInt != 4) {
-          break label290;
-        }
-        atpu.a(paramQQAppInterface, String.valueOf(l));
-        paramArrayOfByte.notifyUI(5, true, new Object[] { Integer.valueOf(0), String.valueOf(l) });
-        atpv.a(paramQQAppInterface);
-        paramArrayOfByte.notifyUI(4, true, new Object[] { localMsgBody });
-        return;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        label188:
-        QLog.e("C2CLocationPushDecoder", 1, "processC2C: failed. ", paramQQAppInterface);
-        return;
-      }
-      atpv.a(paramQQAppInterface, 0, String.valueOf(l), true);
-      continue;
-      label290:
-      do
-      {
-        if (paramInt == 5)
-        {
-          atpu.a(paramQQAppInterface, String.valueOf(l));
-          paramArrayOfByte.notifyUI(6, true, new Object[] { Integer.valueOf(0), String.valueOf(l), Integer.valueOf(paramShort) });
-          atpv.a(paramQQAppInterface);
-          break;
-        }
-        if (paramInt != 3) {
-          break;
-        }
-        a(paramQQAppInterface, localMsgBody.uint64_oper_uin.get(), l);
-        break;
-        return;
-        if (paramInt == 1) {
-          break label188;
-        }
-      } while (paramInt != 2);
+    azte localazte = new azte();
+    localazte.i = "trends_tab";
+    localazte.j = "trends_plugin";
+    localazte.k = paramString;
+    return localazte;
+  }
+  
+  public static int b(RedTouch paramRedTouch)
+  {
+    if (paramRedTouch == null) {}
+    while ((paramRedTouch.a == null) || (paramRedTouch.a.getVisibility() != 0)) {
+      return 0;
     }
+    return 1;
   }
 }
 

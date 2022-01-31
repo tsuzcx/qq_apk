@@ -1,18 +1,14 @@
-public class bfeh
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+
+class bfeh
+  implements bfhx
 {
-  public static String a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  bfeh(bfeg parambfeg, ImageView paramImageView) {}
+  
+  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("||||||||||");
-    localStringBuilder.append(paramInt1);
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramInt2);
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramInt3);
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramInt4);
-    localStringBuilder.append("|");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
   }
 }
 

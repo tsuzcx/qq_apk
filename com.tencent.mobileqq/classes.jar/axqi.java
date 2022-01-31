@@ -1,21 +1,10 @@
-import android.annotation.TargetApi;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-
-@TargetApi(18)
-public class axqi
-  extends axrn
+public abstract interface axqi
 {
-  @NonNull
-  protected axrp a(Looper paramLooper)
-  {
-    return new axrp(this, paramLooper, this);
-  }
+  public abstract void a();
   
-  public void a(Runnable paramRunnable)
-  {
-    this.a.post(paramRunnable);
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

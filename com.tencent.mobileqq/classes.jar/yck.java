@@ -1,16 +1,22 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerEntryItemView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import common.config.service.QzoneConfig;
+import mqq.app.AppRuntime;
 
-class yck
+public class yck
   implements View.OnClickListener
 {
-  yck(ych paramych, CertifiedAccountMeta.StComment paramStComment) {}
+  public yck(RecommendBannerEntryItemView paramRecommendBannerEntryItemView) {}
   
   public void onClick(View paramView)
   {
-    ybx.a(this.jdField_a_of_type_Ych.a, ybx.a(this.jdField_a_of_type_Ych.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, null);
-    ybx.a(this.jdField_a_of_type_Ych.a).dismiss();
+    paramView = QzoneConfig.getInstance().getConfig("qqminiapp", "publicAcuntDiscoverPageSchema", "mqqapi://miniapp/open?_atype=0&_mappid=1109786902&_mvid=&_vt=3&_sig=f945854d8893417d87b3599d8dce7bdde77f409be5548044ed67383266b1fbf4");
+    MiniAppLauncher.startMiniApp(this.a.getContext(), paramView, 2016, null, null);
+    bjdt.a();
+    zaj.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "auth_page", "clk_find", 0, 0, new String[0]);
   }
 }
 

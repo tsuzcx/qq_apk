@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import acnb;
+import acrq;
 import com.tencent.qphone.base.util.QLog;
-import uwn;
+import vaw;
 
 public class Conversation$26$1
   implements Runnable
 {
-  public Conversation$26$1(acnb paramacnb) {}
+  public Conversation$26$1(acrq paramacrq) {}
   
   public void run()
   {

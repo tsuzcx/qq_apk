@@ -1,68 +1,83 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.support.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import java.io.File;
 
 public class aoqe
-  extends aopw<aoqd>
+  extends aokh<blze>
 {
   public int a()
   {
-    return 95;
+    return 309;
   }
   
   @NonNull
-  public aoqd a()
+  public blze a(int paramInt)
   {
-    return new aoqd();
+    return new blze();
   }
   
-  @NonNull
-  public aoqd a(aogf[] paramArrayOfaogf)
+  @Nullable
+  public blze a(aoko[] paramArrayOfaoko)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    int j = paramArrayOfaogf.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        String str = paramArrayOfaogf[i].a;
-        if (QLog.isColorLevel()) {
-          QLog.i("PushOpenNotify", 2, "config :" + str);
-        }
-        if (!TextUtils.isEmpty(str))
-        {
-          amij.a(localQQAppInterface, str, false);
-          PreferenceManager.getDefaultSharedPreferences(localQQAppInterface.getApp()).edit().putString(localQQAppInterface.c() + "_" + "push_open_notify_xml", str).commit();
-        }
-      }
-      else
-      {
-        return new aoqd();
-      }
-      i += 1;
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length == 0)) {
+      return null;
+    }
+    paramArrayOfaoko = paramArrayOfaoko[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onParsed, content:" + paramArrayOfaoko);
+    }
+    return new blzb().a(paramArrayOfaoko, DynamicTextConfigManager.a.getAbsolutePath(), "temp_dynamic_text_zip", new aoqf(this));
+  }
+  
+  public Class<blze> a()
+  {
+    return blze.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onReqFailed");
     }
   }
   
-  public Class<aoqd> a()
+  public void a(blze paramblze)
   {
-    return aoqd.class;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onUpdate");
+    }
   }
   
-  @NonNull
-  public aoqd b()
+  public int b()
   {
-    return new aoqd();
+    if (!DynamicTextConfigManager.b()) {
+      return 0;
+    }
+    return bdne.a(BaseApplicationImpl.getContext());
+  }
+  
+  public int b(int paramInt)
+  {
+    if (!DynamicTextConfigManager.b())
+    {
+      QLog.i("QIMDynamicTextConfigProcessor", 1, "config file not exist");
+      aoks.a().a(309, 0);
+      return 0;
+    }
+    return super.b(paramInt);
+  }
+  
+  public boolean b()
+  {
+    return false;
   }
   
   public boolean c()
   {
-    return false;
+    return true;
   }
 }
 

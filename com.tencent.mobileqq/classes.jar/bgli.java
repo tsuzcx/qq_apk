@@ -1,19 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import com.tencent.qqconnect.wtlogin.Login;
 
-class bgli
-  extends BroadcastReceiver
+public class bgli
+  implements TextWatcher
 {
-  bgli(bglh parambglh) {}
+  public bgli(Login paramLogin) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (bglo.a(paramIntent.getAction())) {}
-    while (bglh.a(this.a) == null) {
+    if (paramInt3 < 2)
+    {
+      this.a.jdField_b_of_type_Boolean = false;
+      if (paramCharSequence.length() == 0) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
+      }
+    }
+    else
+    {
       return;
     }
-    bglh.a(this.a).a(paramContext, paramIntent);
+    this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

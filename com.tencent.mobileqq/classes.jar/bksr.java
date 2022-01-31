@@ -1,29 +1,22 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.7.1;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.core.AECameraManager.8;
 
 public class bksr
-  implements bmac<bksi>
+  implements azht
 {
-  bksr(bksk parambksk) {}
+  public bksr(AECameraManager.8 param8) {}
   
-  public void a(@Nullable bksi parambksi)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject = bkse.a(parambksi);
-    parambksi = new LinkedList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      bksi localbksi = (bksi)((Iterator)localObject).next();
-      bksu localbksu = new bksu(null);
-      localbksu.a = bksw.a(localbksi);
-      parambksi.add(localbksu);
+    if (QLog.isColorLevel()) {
+      QLog.d("AECameraManager", 2, "onAutoFocusCallback single tap focus " + paramBoolean1 + ", camera2:" + paramBoolean2);
     }
-    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.7.1(this, parambksi));
+    if (paramBoolean1)
+    {
+      bksp.c(this.a.this$0, true);
+      return;
+    }
+    bksp.a().g();
   }
 }
 

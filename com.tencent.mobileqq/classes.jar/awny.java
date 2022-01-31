@@ -1,91 +1,105 @@
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.TextUtils;
-import android.util.SparseArray;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PrecoverResource;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import eipc.EIPCResult;
 
 public class awny
+  implements awnp
 {
-  public static awny a;
-  public SparseArray<awnz> a;
+  private static awny jdField_a_of_type_Awny;
+  private awnq jdField_a_of_type_Awnq;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new awnz(this, "PrecoverIPCServer_MODEL");
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  private awny()
   {
-    if (jdField_a_of_type_Awny == null) {
-      return a(awob.a(paramQQAppInterface.getApp()) + "xydata.json");
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+      this.jdField_a_of_type_Awnq = ((awnq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(179));
+      this.jdField_a_of_type_Awnq.a().a(this);
     }
-    return true;
   }
   
-  public static boolean a(String paramString)
+  public static awny a()
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("VipWZRYTemplateConfig", 2, "configPath = " + paramString);
-      }
-      return false;
-    }
-    Object localObject = new File(paramString);
+    if (jdField_a_of_type_Awny == null) {}
     try
     {
-      localObject = bdcs.b((File)localObject);
-      if (TextUtils.isEmpty((CharSequence)localObject))
-      {
-        QLog.e("VipWZRYTemplateConfig", 1, paramString + " content is empty.");
-        return false;
+      if (jdField_a_of_type_Awny == null) {
+        jdField_a_of_type_Awny = new awny();
       }
+      return jdField_a_of_type_Awny;
     }
-    catch (Exception paramString)
+    finally {}
+  }
+  
+  private EIPCResult a(Bundle paramBundle, int paramInt)
+  {
+    Object localObject1 = null;
+    Object localObject2 = paramBundle.getString("businessId");
+    String str = paramBundle.getString("md5");
+    if (TextUtils.isEmpty(str))
     {
-      QLog.e("VipWZRYTemplateConfig", 1, paramString.getMessage());
-      return false;
+      localObject1 = EIPCResult.createResult(10, paramBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("PrecoverIPCServer", 2, "getResource, md5 emtpy");
+      }
+      paramBundle.putInt("callbackId", paramInt);
+      return localObject1;
     }
-    paramString = new awny();
-    localObject = new JSONObject((String)localObject).optJSONArray("cardWZResourceGrade");
-    int i;
-    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+    if (this.jdField_a_of_type_Awnq != null)
     {
-      paramString.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-      i = 0;
+      localObject1 = this.jdField_a_of_type_Awnq.a((String)localObject2, str);
+      if (localObject1 == null) {
+        break label100;
+      }
+      paramBundle.putParcelable("resource", (Parcelable)localObject1);
+      localObject1 = EIPCResult.createSuccessResult(paramBundle);
     }
     for (;;)
     {
-      if (i < ((JSONArray)localObject).length())
+      paramBundle.putInt("callbackId", paramInt);
+      return localObject1;
+      label100:
+      localObject2 = EIPCResult.createResult(12, paramBundle);
+      localObject1 = localObject2;
+      if (QLog.isColorLevel())
       {
-        JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(i);
-        if (localJSONObject != null)
-        {
-          awnz localawnz = new awnz();
-          localawnz.jdField_a_of_type_Int = localJSONObject.optInt("wz_id");
-          localawnz.jdField_a_of_type_JavaLangString = localJSONObject.optString("wz_name");
-          localawnz.jdField_b_of_type_JavaLangString = localJSONObject.optString("wz_format");
-          localawnz.jdField_b_of_type_Int = localJSONObject.optInt("position_type", 1);
-          if (localJSONObject.has("wz_icon"))
-          {
-            awoa localawoa = new awoa();
-            localJSONObject = localJSONObject.getJSONObject("wz_icon");
-            localawoa.jdField_a_of_type_JavaLangString = localJSONObject.optString("src");
-            localawoa.jdField_a_of_type_Int = localJSONObject.optInt("size");
-            localawoa.jdField_b_of_type_JavaLangString = localJSONObject.optString("md5");
-            localawoa.jdField_b_of_type_Int = localJSONObject.optInt("width");
-            localawoa.jdField_c_of_type_Int = localJSONObject.optInt("height");
-            localawoa.jdField_c_of_type_JavaLangString = localJSONObject.optString("mainColor");
-            localawnz.jdField_a_of_type_Awoa = localawoa;
-          }
-          paramString.jdField_a_of_type_AndroidUtilSparseArray.put(localawnz.jdField_a_of_type_Int, localawnz);
-        }
+        QLog.d("PrecoverIPCServer", 2, "getResource, RESULT_RESOURCE_NOT_FOUND");
+        localObject1 = localObject2;
       }
-      else
-      {
-        jdField_a_of_type_Awny = paramString;
-        return true;
-      }
-      i += 1;
     }
   }
+  
+  public QIPCModule a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
+  }
+  
+  public void a(int paramInt, String paramString, PrecoverResource paramPrecoverResource, Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof Object[])) && ("PrecoverIPCServer_MODEL".equals(((Object[])(Object[])paramObject)[0])))
+    {
+      int i = ((Integer)((Object[])(Object[])paramObject)[1]).intValue();
+      paramObject = new Bundle();
+      paramObject.putString("key_action", awnx.b);
+      paramObject.putParcelable("resource", paramPrecoverResource);
+      paramObject.putInt("errCode", paramInt);
+      paramObject.putString("errDesc", paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("PrecoverIPCServer", 2, "onDownloadFinish, errCode=" + paramInt + ", errDesc=" + paramString + ", resource" + paramPrecoverResource);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule.callbackResult(i, EIPCResult.createSuccessResult(paramObject));
+    }
+  }
+  
+  public void a(PrecoverResource paramPrecoverResource, Object paramObject, long paramLong1, long paramLong2) {}
 }
 
 

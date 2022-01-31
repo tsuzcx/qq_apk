@@ -1,10 +1,10 @@
 package com.tencent.qqmini.nativePlugins;
 
 import android.os.Bundle;
-import bfhg;
-import bghn;
-import bgjm;
-import bgkd;
+import bflp;
+import bglu;
+import bgnt;
+import bgok;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -26,7 +26,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
   public static final String MODULE_NAME = "Module_WeiyunDownloadClient";
   public static final String TAG = "WeiyunDownloadClientIPC";
   private CopyOnWriteArraySet<String> downloadIdList = new CopyOnWriteArraySet();
-  private WeakReference<bgkd> weiyunDownloadFileJsContextWeakReference;
+  private WeakReference<bgok> weiyunDownloadFileJsContextWeakReference;
   
   private WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQIPCModule()
   {
@@ -40,7 +40,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    bfhg.c("WeiyunDownloadClientIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
+    bflp.c("WeiyunDownloadClientIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
     if (paramBundle == null) {}
     for (;;)
     {
@@ -61,21 +61,21 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
           localJSONObject.put("writtenBytes", ((File)localObject2).length());
           localJSONObject.put("totalBytes", ((File)localObject2).length());
           ((JSONObject)localObject1).put("data", localJSONObject);
-          localObject2 = (bgkd)this.weiyunDownloadFileJsContextWeakReference.get();
+          localObject2 = (bgok)this.weiyunDownloadFileJsContextWeakReference.get();
           if (localObject2 != null) {
-            ((bgkd)localObject2).a.a("onWeiyunDownLoadEvent", ((JSONObject)localObject1).toString(), 0);
+            ((bgok)localObject2).a.a("onWeiyunDownLoadEvent", ((JSONObject)localObject1).toString(), 0);
           }
           localObject1 = new JSONObject();
           ((JSONObject)localObject1).put("taskId", paramBundle.get("taskId"));
           ((JSONObject)localObject1).put("eventName", "success");
           paramBundle = new JSONObject();
           paramBundle.put("statusCode", 200);
-          paramBundle.put("tempFilePath", bgjm.a().e(paramString));
+          paramBundle.put("tempFilePath", bgnt.a().e(paramString));
           ((JSONObject)localObject1).put("data", paramBundle);
           if (localObject2 == null) {
             continue;
           }
-          ((bgkd)localObject2).a.a("onWeiyunDownLoadEvent", ((JSONObject)localObject1).toString(), 0);
+          ((bgok)localObject2).a.a("onWeiyunDownLoadEvent", ((JSONObject)localObject1).toString(), 0);
           return null;
         }
         catch (JSONException paramString)
@@ -97,7 +97,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
           paramBundle.put("errCode", localObject1);
           paramBundle.put("errMsg", localObject2);
           paramString.put("data", paramBundle);
-          paramBundle = (bgkd)this.weiyunDownloadFileJsContextWeakReference.get();
+          paramBundle = (bgok)this.weiyunDownloadFileJsContextWeakReference.get();
           if (paramBundle == null) {
             continue;
           }
@@ -125,9 +125,9 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
             ((JSONObject)localObject2).put("retCode", paramInt);
             ((JSONObject)localObject2).put("retMsg", localObject1);
             paramString.put("data", localObject2);
-            localObject1 = (bgkd)this.weiyunDownloadFileJsContextWeakReference.get();
+            localObject1 = (bgok)this.weiyunDownloadFileJsContextWeakReference.get();
             if (localObject1 != null) {
-              ((bgkd)localObject1).a.a("onWeiyunDownLoadEvent", paramString.toString(), 0);
+              ((bgok)localObject1).a.a("onWeiyunDownLoadEvent", paramString.toString(), 0);
             }
             unregisterModule(paramBundle.getString("taskId"));
             return null;
@@ -153,7 +153,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
             paramBundle.put("writtenBytes", l1);
             paramBundle.put("totalBytes", l2);
             paramString.put("data", paramBundle);
-            paramBundle = (bgkd)this.weiyunDownloadFileJsContextWeakReference.get();
+            paramBundle = (bgok)this.weiyunDownloadFileJsContextWeakReference.get();
             if (paramBundle != null)
             {
               paramBundle.a.a("onWeiyunDownLoadEvent", paramString.toString(), 0);
@@ -186,9 +186,9 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
     }
   }
   
-  public void setWeiyunDownloadFileJsContext(bgkd parambgkd)
+  public void setWeiyunDownloadFileJsContext(bgok parambgok)
   {
-    this.weiyunDownloadFileJsContextWeakReference = new WeakReference(parambgkd);
+    this.weiyunDownloadFileJsContextWeakReference = new WeakReference(parambgok);
   }
   
   public void unregisterModule()

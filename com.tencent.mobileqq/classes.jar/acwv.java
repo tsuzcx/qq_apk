@@ -1,25 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import mqq.os.MqqHandler;
 
 public class acwv
-  implements View.OnClickListener
+  extends MqqHandler
 {
-  public acwv(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public acwv(FontSettingActivity paramFontSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramView.getId() == 2131365063)
+    if (16711697 == paramMessage.what)
     {
-      paramView = this.a.jdField_a_of_type_Acxg.a();
-      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (paramView != null))
-      {
-        bhpy localbhpy = (bhpy)bhql.a(this.a, null);
-        localbhpy.a(2131693482, 3);
-        localbhpy.c(2131690648);
-        localbhpy.a(new acww(this, paramView, localbhpy));
-        localbhpy.show();
-      }
+      alsf.a(this.a, FontSettingActivity.a(this.a), false);
+      this.a.c = true;
+      this.a.a.notifyDataSetChanged();
     }
   }
 }

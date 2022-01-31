@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
-import aypx;
+import ayug;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 

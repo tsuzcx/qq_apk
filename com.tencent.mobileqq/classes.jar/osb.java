@@ -312,7 +312,7 @@ public class osb
       if (AdvertisementInfo.isAppAdvertisementInfo(paramArticleInfo))
       {
         localObject1 = localObject2;
-        if (bdee.h(null))
+        if (bdin.h(null))
         {
           if (!((String)localObject2).contains("?")) {
             break label716;
@@ -337,7 +337,7 @@ public class osb
       long l = System.currentTimeMillis();
       localBundle.putLong("startOpenPageTime", l);
       localBundle.putLong("click_time", l);
-      localBundle.putLong("available_memory", bdcb.e());
+      localBundle.putLong("available_memory", bdgk.e());
       localBundle.putBoolean("preload_tool_white_list", ors.f());
       localObject2 = new Intent(paramContext, ReadInJoyArticleDetailActivity.class);
       localObject1 = PreloadManager.a((String)localObject1);
@@ -345,7 +345,7 @@ public class osb
       if (localObject1 == null) {
         paramContext = "";
       }
-      if ((bdcs.b(aljq.cH + paramContext)) && (PreloadManager.a().b(paramContext) != null))
+      if ((bdhb.b(alof.cH + paramContext)) && (PreloadManager.a().b(paramContext) != null))
       {
         localBundle.putString("read_in_joy_from_cache", paramContext);
         if (!owy.a().a(paramArticleInfo.mArticleID))

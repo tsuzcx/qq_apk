@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
-import arch;
-import arcj;
+import argq;
+import args;
 
 class SimpleFileViewer$7
   implements Runnable
 {
-  SimpleFileViewer$7(SimpleFileViewer paramSimpleFileViewer, String paramString, arcj paramarcj) {}
+  SimpleFileViewer$7(SimpleFileViewer paramSimpleFileViewer, String paramString, args paramargs) {}
   
   public void run()
   {
-    arch localarch = arch.a();
-    SimpleFileViewer.a(this.this$0, localarch.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Arcj));
+    argq localargq = argq.a();
+    SimpleFileViewer.a(this.this$0, localargq.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Args));
     SimpleFileViewer.a(this.this$0, null, SimpleFileViewer.a(this.this$0), false);
     SimpleFileViewer.a(this.this$0);
   }

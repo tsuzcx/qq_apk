@@ -1,12 +1,13 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.ttpic.video.AECoderFactory.AEDecoderFactory;
+import com.tencent.ttpic.video.AEDecoder;
 
-public abstract interface bkor
+final class bkor
+  implements AECoderFactory.AEDecoderFactory
 {
-  public abstract void onAETavSessionExportCompleted(String paramString, LocalMediaInfo paramLocalMediaInfo);
-  
-  public abstract void onAETavSessionExportError(String paramString, int paramInt);
-  
-  public abstract void onAETavSessionExporting(String paramString, float paramFloat);
+  public AEDecoder createDecoder(String paramString)
+  {
+    return new axto(paramString);
+  }
 }
 
 

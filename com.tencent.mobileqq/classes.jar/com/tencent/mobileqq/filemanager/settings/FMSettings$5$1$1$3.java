@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.settings;
 
-import armn;
-import armo;
-import armq;
-import armr;
-import arni;
+import arqw;
+import arqx;
+import arqz;
+import arra;
+import arrr;
 
 public class FMSettings$5$1$1$3
   implements Runnable
 {
-  public FMSettings$5$1$1$3(armr paramarmr) {}
+  public FMSettings$5$1$1$3(arra paramarra) {}
   
   public void run()
   {
-    armo.a(4, "-------onMovedOver-------");
-    armo.a(4, arni.a());
+    arqx.a(4, "-------onMovedOver-------");
+    arqx.a(4, arrr.a());
     this.a.a.a.a.a();
     this.a.a.a.this$0.b();
   }

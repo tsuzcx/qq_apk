@@ -1,21 +1,21 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import azgk;
-import bdee;
-import bnkz;
+import azkt;
+import bdin;
+import bnpl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class QIMPtvTemplateManager$3
   implements Runnable
 {
-  public QIMPtvTemplateManager$3(bnkz parambnkz) {}
+  public QIMPtvTemplateManager$3(bnpl parambnpl) {}
   
   public void run()
   {
     int i = 1;
-    boolean bool1 = azgk.c();
-    boolean bool2 = bdee.d(BaseApplication.getContext());
+    boolean bool1 = azkt.c();
+    boolean bool2 = bdin.d(BaseApplication.getContext());
     if (BaseApplicationImpl.sProcessId == 1) {
       i = 0;
     }

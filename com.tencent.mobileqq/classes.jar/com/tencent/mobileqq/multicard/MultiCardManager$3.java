@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.multicard;
 
-import aujf;
-import auji;
+import auno;
+import aunr;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -11,17 +11,17 @@ import mqq.os.MqqHandler;
 public class MultiCardManager$3
   implements Runnable
 {
-  public MultiCardManager$3(aujf paramaujf, long paramLong, auji paramauji) {}
+  public MultiCardManager$3(auno paramauno, long paramLong, aunr paramaunr) {}
   
   public void run()
   {
-    ArrayList localArrayList = aujf.a(this.this$0, this.jdField_a_of_type_Long);
+    ArrayList localArrayList = auno.a(this.this$0, this.jdField_a_of_type_Long);
     if (localArrayList != null) {}
     for (;;)
     {
-      synchronized (aujf.a(this.this$0))
+      synchronized (auno.a(this.this$0))
       {
-        aujf.a(this.this$0).put(Long.valueOf(this.jdField_a_of_type_Long), (ArrayList)localArrayList.clone());
+        auno.a(this.this$0).put(Long.valueOf(this.jdField_a_of_type_Long), (ArrayList)localArrayList.clone());
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder().append("callbackWithNativeUinList ").append(this.jdField_a_of_type_Long).append(" ");

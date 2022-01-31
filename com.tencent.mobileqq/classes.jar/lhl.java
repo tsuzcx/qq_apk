@@ -48,7 +48,7 @@ public class lhl
       Object localObject1 = new HashMap();
       ((HashMap)localObject1).put("lowMemoryLevel", String.valueOf(paramInt));
       ((HashMap)localObject1).put("isExit", String.valueOf(paramBoolean));
-      azmz.a(BaseApplicationImpl.getApplication()).a(null, "av_qua_low_memory", true, 0L, 0L, (HashMap)localObject1, "", true);
+      azri.a(BaseApplicationImpl.getApplication()).a(null, "av_qua_low_memory", true, 0L, 0L, (HashMap)localObject1, "", true);
       localObject1 = Build.MODEL;
       String str1 = String.valueOf(Build.VERSION.SDK_INT);
       String str2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
@@ -76,7 +76,7 @@ public class lhl
       if (QLog.isColorLevel()) {
         QLog.d("GMemoryMonitor", 2, "reportLowMemory  dcDetail = " + (String)localObject1);
       }
-      azlj.a(null, "dc02660", (String)localObject1);
+      azps.a(null, "dc02660", (String)localObject1);
       return;
     }
     catch (Exception localException)

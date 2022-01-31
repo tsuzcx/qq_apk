@@ -1,24 +1,7 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-class bkub
-  implements Animation.AnimationListener
+public class bkub
 {
-  bkub(bkua parambkua) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (bkua.a(this.a) != null)
-    {
-      bkua.a(this.a).clearAnimation();
-      bkua.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a = 0;
+  public int b = 0;
 }
 
 

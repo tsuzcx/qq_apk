@@ -25,7 +25,7 @@ class OtherJsPlugin$6$1
         ((AppBrandPageContainer)this.this$1.this$0.jsPluginEngine.appBrandRuntime.getContainer()).notifyOnAddColorNote();
       }
       OtherJsPlugin.access$600(this.this$1.this$0, this.this$1.val$finalColorNoteController);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690904), 5000).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690905), 5000).a();
       return;
     }
     catch (Exception paramDialogInterface)

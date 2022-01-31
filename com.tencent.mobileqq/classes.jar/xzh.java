@@ -1,52 +1,75 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowRcmdRsp;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.network.SubscribeGetFollowRcmdRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.biz.videostory.network.request.VSBaseRequest;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
-class xzh
-  implements yvn<CertifiedAccountRead.StGetFollowRcmdRsp>
+public class xzh
+  implements View.OnTouchListener
 {
-  xzh(xzg paramxzg, SubscribeGetFollowRcmdRequest paramSubscribeGetFollowRcmdRequest, xzj paramxzj) {}
+  public xzh(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFollowRcmdRsp paramStGetFollowRcmdRsp)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = VSNetworkHelper.a(paramString);
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetFollowRcmdRsp == null))
+    switch (paramView.getId())
     {
-      if ((!TextUtils.isEmpty(paramString)) && (xzg.a(this.jdField_a_of_type_Xzg) != null)) {
-        QQToast.a(xzg.b(this.jdField_a_of_type_Xzg), 1, paramString, 0).a();
-      }
-      if (!bool)
+    }
+    for (;;)
+    {
+      return false;
+      if (paramMotionEvent.getAction() == 0)
       {
-        VSBaseRequest.reMoveCache(this.jdField_a_of_type_ComTencentBizSubscribeNetworkSubscribeGetFollowRcmdRequest);
-        if ((this.jdField_a_of_type_Xzg.getItemCount() == 0) && (this.jdField_a_of_type_Xzj != null)) {
-          this.jdField_a_of_type_Xzj.a();
+        this.a.b.setImageResource(2130846531);
+      }
+      else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      {
+        this.a.b.setImageResource(2130846530);
+      }
+      else if (paramMotionEvent.getAction() == 2)
+      {
+        int i = (int)paramMotionEvent.getRawX();
+        int j = (int)paramMotionEvent.getRawY();
+        if (!QRDisplayActivity.a(paramView, i, j))
+        {
+          this.a.b.setImageResource(2130846530);
+          continue;
+          if (paramMotionEvent.getAction() == 0)
+          {
+            this.a.c.setImageResource(2130846533);
+          }
+          else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+          {
+            this.a.c.setImageResource(2130846532);
+          }
+          else if (paramMotionEvent.getAction() == 2)
+          {
+            i = (int)paramMotionEvent.getRawX();
+            j = (int)paramMotionEvent.getRawY();
+            if (!QRDisplayActivity.a(paramView, i, j))
+            {
+              this.a.c.setImageResource(2130846532);
+              continue;
+              if (paramMotionEvent.getAction() == 0)
+              {
+                this.a.d.setImageResource(2130846554);
+              }
+              else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+              {
+                this.a.d.setImageResource(2130846553);
+              }
+              else if (paramMotionEvent.getAction() == 2)
+              {
+                i = (int)paramMotionEvent.getRawX();
+                j = (int)paramMotionEvent.getRawY();
+                if (!QRDisplayActivity.a(paramView, i, j)) {
+                  this.a.d.setImageResource(2130846553);
+                }
+              }
+            }
+          }
         }
       }
     }
-    do
-    {
-      do
-      {
-        return;
-        paramString = paramStGetFollowRcmdRsp.rcmdList.get();
-      } while ((bool) && (!xzg.a(this.jdField_a_of_type_Xzg)));
-      if ((paramString != null) && (paramString.size() > 0))
-      {
-        if (xzg.a(this.jdField_a_of_type_Xzg)) {
-          xzg.a(this.jdField_a_of_type_Xzg, false);
-        }
-        xzg.a(this.jdField_a_of_type_Xzg, paramString, paramStGetFollowRcmdRsp.extInfo, true);
-        yvu.b("auth_follow", "blank_exp", 0, 0, new String[0]);
-        return;
-      }
-    } while ((bool) || (this.jdField_a_of_type_Xzg.getItemCount() != 0));
-    xzg.b(this.jdField_a_of_type_Xzg, true);
-    this.jdField_a_of_type_Xzg.notifyDataSetChanged();
   }
 }
 

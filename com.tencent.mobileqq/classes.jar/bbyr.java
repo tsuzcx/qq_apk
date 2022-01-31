@@ -1,12 +1,7 @@
-import android.widget.TextView;
-
 public class bbyr
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  
-  protected bbyr(bbyq parambbyq) {}
+  public String a;
+  public String b;
 }
 
 

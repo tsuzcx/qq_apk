@@ -23,7 +23,7 @@ class maz
     {
       this.a.c = paramObject;
       this.a.b = paramReqCreateShareUrl;
-      bdex.a().a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, this.a.c);
+      bdjg.a().a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, this.a.c);
     }
     for (;;)
     {

@@ -4,7 +4,7 @@ import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StGetUserHealthDataRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdku;
+import bdpd;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
@@ -60,7 +60,7 @@ public class MiniAppUserHealthDataServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_user_info.GetUserHealthData");
-      paramPacket.putSendData(bdku.a((byte[])localObject1));
+      paramPacket.putSendData(bdpd.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;

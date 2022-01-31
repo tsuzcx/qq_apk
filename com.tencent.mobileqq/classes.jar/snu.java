@@ -13,11 +13,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class snu
-  implements bhqg
+  implements bhun
 {
   public static String a;
   private int jdField_a_of_type_Int;
-  private bhpy jdField_a_of_type_Bhpy;
+  private bhuf jdField_a_of_type_Bhuf;
   private WeakReference<BridgeModule> jdField_a_of_type_JavaLangRefWeakReference;
   public boolean a;
   
@@ -46,10 +46,10 @@ public class snu
       int n;
       try
       {
-        localObject1 = bhpy.a((Context)localObject1);
+        localObject1 = bhuf.a((Context)localObject1);
         Object localObject2 = paramJSONObject.optString("title");
         if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          ((bhpy)localObject1).a((CharSequence)localObject2);
+          ((bhuf)localObject1).a((CharSequence)localObject2);
         }
         localObject2 = paramJSONObject.optJSONArray("items");
         int m = paramJSONObject.optInt("selected", -1);
@@ -59,7 +59,7 @@ public class snu
           break label367;
         }
         this.jdField_a_of_type_Boolean = true;
-        ((bhpy)localObject1).a(str, 3);
+        ((bhuf)localObject1).a(str, 3);
         i = 1;
         j = i;
         if (localObject2 != null)
@@ -83,7 +83,7 @@ public class snu
                   break label372;
                 }
                 bool = true;
-                ((bhpy)localObject1).a(str, bool);
+                ((bhuf)localObject1).a(str, bool);
                 j += 1;
                 continue;
               }
@@ -91,22 +91,22 @@ public class snu
             if (j >= n) {
               break label378;
             }
-            ((bhpy)localObject1).c(((JSONArray)localObject2).getString(j));
+            ((bhuf)localObject1).c(((JSONArray)localObject2).getString(j));
             j += 1;
             continue;
           }
         }
         paramJSONObject = paramJSONObject.optString("cancel");
         if (!TextUtils.isEmpty(paramJSONObject)) {
-          ((bhpy)localObject1).d(paramJSONObject);
+          ((bhuf)localObject1).d(paramJSONObject);
         }
-        ((bhpy)localObject1).a(new snv(this, paramString));
-        ((bhpy)localObject1).a(new snw(this, paramString));
-        ((bhpy)localObject1).setOnCancelListener(new snx(this, paramString));
-        ((bhpy)localObject1).a(this);
-        this.jdField_a_of_type_Bhpy = ((bhpy)localObject1);
+        ((bhuf)localObject1).a(new snv(this, paramString));
+        ((bhuf)localObject1).a(new snw(this, paramString));
+        ((bhuf)localObject1).setOnCancelListener(new snx(this, paramString));
+        ((bhuf)localObject1).a(this);
+        this.jdField_a_of_type_Bhuf = ((bhuf)localObject1);
         this.jdField_a_of_type_Int = j;
-        this.jdField_a_of_type_Bhpy.show();
+        this.jdField_a_of_type_Bhuf.show();
         return;
       }
       catch (JSONException paramJSONObject) {}
@@ -137,7 +137,7 @@ public class snu
     new Handler(BaseActivity.sTopActivity.getMainLooper()).post(new ActionSheetHelper.1(this, paramJSONObject, paramString));
   }
   
-  public void as_() {}
+  public void ap_() {}
 }
 
 

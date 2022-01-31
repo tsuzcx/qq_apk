@@ -1,17 +1,36 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.widget.SwipListView;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView;
 
-class ahbq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class ahbq
+  extends RecyclerView.OnScrollListener
 {
-  ahbq(ahbp paramahbp) {}
+  public boolean a;
   
-  public void onGlobalLayout()
+  public ahbq(ZhituPanelView paramZhituPanelView) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.a.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.a.a.setListViewHeightBasedOnChildren(this.a.a.a);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
+    {
+      GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
+      if ((localGridLayoutManager.findLastCompletelyVisibleItemPosition() + 1 == localGridLayoutManager.getItemCount()) && (this.jdField_a_of_type_Boolean)) {
+        ((ahbr)paramRecyclerView.getAdapter()).a();
+      }
+    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (paramInt2 > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
   }
 }
 

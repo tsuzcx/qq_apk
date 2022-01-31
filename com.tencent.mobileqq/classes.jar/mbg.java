@@ -2,9 +2,9 @@ import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 
 class mbg
-  implements bhqd
+  implements bhuk
 {
-  mbg(mbc parammbc, long paramLong, bhpy parambhpy) {}
+  mbg(mbc parammbc, long paramLong, bhuf parambhuf) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -20,7 +20,7 @@ class mbg
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhpy.dismiss();
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
       this.jdField_a_of_type_Mbc.b(this.jdField_a_of_type_Long, paramView);
       continue;

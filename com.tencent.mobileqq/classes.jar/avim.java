@@ -1,13 +1,4 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class avim
-  implements DialogInterface.OnClickListener
-{
-  avim(avhw paramavhw) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
-}
+public class avim {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

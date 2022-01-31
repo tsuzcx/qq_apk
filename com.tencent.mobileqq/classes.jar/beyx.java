@@ -1,37 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.open.agent.BindGroupConfirmActivity.8;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
 
 public class beyx
-  implements DialogInterface.OnClickListener
+  implements ansr
 {
-  public beyx(BindGroupConfirmActivity.8 param8) {}
+  public beyx(ShareActionSheetV2 paramShareActionSheetV2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    if (paramInt == 1)
-    {
-      this.a.this$0.a.cancel();
-      this.a.this$0.finish();
+    if (paramBitmap == null) {
       return;
     }
-    try
-    {
-      arys.a(this.a.this$0, true, "action_game_bind_group", Long.valueOf(this.a.this$0.c).longValue(), -1, this.a.a);
-      this.a.this$0.a.cancel();
-      BindGroupConfirmActivity.a(this.a.this$0, -1);
-      BindGroupConfirmActivity.a(this.a.this$0);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        QLog.e("BindGroupConfirmActivity", 1, "showAlertDlg error = " + paramDialogInterface);
-      }
-    }
+    ShareActionSheetV2.a(this.a, paramString1, paramString2, paramBitmap);
   }
 }
 

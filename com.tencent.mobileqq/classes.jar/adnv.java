@@ -1,17 +1,10 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adnv
-  extends avqr
+public final class adnv
+  implements DialogInterface.OnClickListener
 {
-  public adnv(QQSettingMe paramQQSettingMe) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (this.a.c) {
-      this.a.i();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

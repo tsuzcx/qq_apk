@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import addg;
-import addh;
-import addi;
-import addj;
-import addk;
-import addn;
+import adhv;
+import adhw;
+import adhx;
+import adhy;
+import adhz;
+import adic;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -19,9 +19,9 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import awdr;
-import bdee;
-import bdes;
+import awia;
+import bdin;
+import bdjb;
 import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.ConfigClearableEditText;
@@ -33,13 +33,13 @@ public class LoginPhoneNumActivity
   extends RegisterNewBaseActivity
   implements TextWatcher, View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
-  private addn jdField_a_of_type_Addn;
+  private adic jdField_a_of_type_Adic;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ConfigClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new addk(this);
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new addg(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new adhz(this);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new adhv(this);
   private boolean jdField_a_of_type_Boolean;
   private TextView b;
   private String d;
@@ -128,7 +128,7 @@ public class LoginPhoneNumActivity
     this.jdField_a_of_type_JavaLangString = a(this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.getText().toString());
     if (this.jdField_a_of_type_JavaLangString == null)
     {
-      a(2131717498, 1);
+      a(2131717510, 1);
       bool = false;
     }
     return bool;
@@ -136,30 +136,30 @@ public class LoginPhoneNumActivity
   
   private void d()
   {
-    c(2131721259);
+    c(2131721272);
     b();
     a(false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379074));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379132));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362828));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379073));
-    this.jdField_b_of_type_JavaLangString = bdes.b(this);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379131));
+    this.jdField_b_of_type_JavaLangString = bdjb.b(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setText("+" + this.jdField_b_of_type_JavaLangString);
     if ("86".equals(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131717444));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131717456));
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText = ((ConfigClearableEditText)findViewById(2131371305));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText = ((ConfigClearableEditText)findViewById(2131371324));
     this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.addTextChangedListener(this);
     if (Build.VERSION.SDK_INT >= 11) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.setCustomSelectionActionModeCallback(new addi(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.setCustomSelectionActionModeCallback(new adhx(this));
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363636));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363638));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.setOnCreateContextMenuListener(new addj(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.setOnCreateContextMenuListener(new adhy(this));
     }
   }
   
@@ -169,15 +169,15 @@ public class LoginPhoneNumActivity
     do
     {
       return;
-      if (!bdee.d(BaseApplication.getContext()))
+      if (!bdin.d(BaseApplication.getContext()))
       {
-        a(2131692397, 0);
+        a(2131692398, 0);
         return;
       }
-      b(2131717544);
-    } while (awdr.a().a(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver) == 0);
+      b(2131717556);
+    } while (awia.a().a(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver) == 0);
     c();
-    a(getString(2131717515), 1);
+    a(getString(2131717527), 1);
   }
   
   public void a()
@@ -212,7 +212,7 @@ public class LoginPhoneNumActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131561008);
+    setContentView(2131561026);
     paramBundle = getIntent();
     if (paramBundle != null) {
       this.jdField_a_of_type_Boolean = paramBundle.getBooleanExtra("isSubaccount", false);
@@ -221,9 +221,9 @@ public class LoginPhoneNumActivity
       this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
     }
     d();
-    this.jdField_a_of_type_Addn = new addn();
-    paramBundle = new addh(this);
-    this.jdField_a_of_type_Addn.a(paramBundle);
+    this.jdField_a_of_type_Adic = new adic();
+    paramBundle = new adhw(this);
+    this.jdField_a_of_type_Adic.a(paramBundle);
     return true;
   }
   
@@ -270,11 +270,11 @@ public class LoginPhoneNumActivity
     default: 
       return;
     case 2131362828: 
-    case 2131379074: 
+    case 2131379132: 
       startActivityForResult(new Intent(this, NewStyleCountryActivity.class), 1);
       return;
     }
-    if (!this.jdField_a_of_type_Addn.a(this))
+    if (!this.jdField_a_of_type_Adic.a(this))
     {
       ((InputMethodManager)getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
       return;

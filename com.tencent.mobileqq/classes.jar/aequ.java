@@ -1,8 +1,8 @@
+import com.tencent.mobileqq.data.MessageRecord;
+
 public abstract interface aequ
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public abstract void a(MessageRecord paramMessageRecord);
 }
 
 

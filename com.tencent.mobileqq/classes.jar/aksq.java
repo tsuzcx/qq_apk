@@ -1,13 +1,21 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
-
-class aksq
-  extends AVVideoCtrl.EnableCameraCompleteCallback
+public class aksq
 {
-  aksq(aksm paramaksm) {}
+  public float a;
+  public float b;
+  public float c;
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public aksq(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (paramInt == 0) {}
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ApolloRoleInfo:").append("scale:").append(this.a).append(",xPos:").append(this.b).append(",yPos:").append(this.c);
+    return localStringBuilder.toString();
   }
 }
 

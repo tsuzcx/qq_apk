@@ -1,8 +1,24 @@
-public abstract interface vtw
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import java.util.List;
+
+class vtw
+  implements vor
 {
-  public abstract vtr a();
+  vtw(vtv paramvtv) {}
   
-  public abstract vtr b();
+  public void a(String paramString)
+  {
+    int i = 0;
+    while (i < this.a.a.size())
+    {
+      if (TextUtils.equals(paramString, ((vtt)this.a.a.get(i)).a)) {
+        ((StoryPlayerGroupHolder)this.a.a()).a.setCurrentItem(i);
+      }
+      i += 1;
+    }
+  }
 }
 
 

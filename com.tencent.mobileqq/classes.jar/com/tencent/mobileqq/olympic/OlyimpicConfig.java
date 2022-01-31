@@ -3,14 +3,14 @@ package com.tencent.mobileqq.olympic;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import avvx;
+import awag;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class OlyimpicConfig
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<OlyimpicConfig> CREATOR = new avvx();
+  public static final Parcelable.Creator<OlyimpicConfig> CREATOR = new awag();
   public long grabInterval = -1L;
   public int id;
   public long reportActiveInterval = -1L;

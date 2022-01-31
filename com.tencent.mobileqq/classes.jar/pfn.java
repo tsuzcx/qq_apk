@@ -24,9 +24,9 @@ public class pfn
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
   
-  public pfn(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public pfn(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
     d();
   }
   
@@ -38,8 +38,8 @@ public class pfn
     for (int i = 0;; i = 1)
     {
       localJSONObject2.put("req_type", i);
-      localJSONObject2.put("ad_code", amkv.b());
-      localJSONObject2.put("city_name", amkv.a());
+      localJSONObject2.put("ad_code", ampk.b());
+      localJSONObject2.put("city_name", ampk.a());
       localJSONObject1.put("dynamic_header_req_param", localJSONObject2);
       return localJSONObject1;
     }
@@ -73,7 +73,7 @@ public class pfn
   
   private void d()
   {
-    String str = (String)bjxj.a("sp_key_daily_dynamic_header_data", "");
+    String str = (String)bkbq.a("sp_key_daily_dynamic_header_data", "");
     QLog.i("DynamicHeaderModule", 1, "[startLoadFromDisk] json=" + str);
     if (!TextUtils.isEmpty(str)) {
       a(str);
@@ -107,13 +107,13 @@ public class pfn
         if ((paramToServiceMsg.bytes_nearby_cookie.has()) && (paramToServiceMsg.bytes_nearby_cookie.get() != null))
         {
           paramToServiceMsg = paramToServiceMsg.bytes_nearby_cookie.get().toStringUtf8();
-          bjxj.a("sp_key_daily_dynamic_header_data", paramToServiceMsg);
+          bkbq.a("sp_key_daily_dynamic_header_data", paramToServiceMsg);
           a(paramToServiceMsg);
         }
       }
       return;
     }
-    bjxj.a("sp_key_daily_dynamic_header_data", "");
+    bkbq.a("sp_key_daily_dynamic_header_data", "");
     ThreadManagerV2.getUIHandlerV2().post(new DailyDynamicHeaderModule.2(this));
   }
   

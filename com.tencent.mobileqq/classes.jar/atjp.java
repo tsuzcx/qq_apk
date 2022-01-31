@@ -1,48 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.app.Activity;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONObject;
 
-class atjp
-  implements atik
+public class atjp
+  extends bead
 {
-  atjp(atjn paramatjn) {}
+  public atjp(UiApiPlugin paramUiApiPlugin, String paramString, JSONObject paramJSONObject) {}
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  public void onDone(beae parambeae)
   {
-    int i = this.a.jdField_a_of_type_Atjl.e;
-    String str3 = this.a.jdField_a_of_type_Atjl.b;
-    this.a.b(i, str3);
-    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(i, str3, paramBoolean);
-    if ((i == 2) && (!TextUtils.isEmpty(str3))) {
-      azmj.b(null, "dc00899", "c2c_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", "", "");
-    }
-    while ((i != 1) || (TextUtils.isEmpty(str3))) {
+    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
+    if ((localActivity == null) || (localActivity.isFinishing())) {
       return;
     }
-    String str2 = "2";
-    TroopInfo localTroopInfo = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(str3);
-    String str1 = str2;
-    if (localTroopInfo != null)
+    if (parambeae.a == 0)
     {
-      if (!localTroopInfo.isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) {
-        break label180;
-      }
-      str1 = "0";
-    }
-    for (;;)
-    {
-      azmj.b(null, "dc00899", "Grp_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", str1, "");
-      return;
-      label180:
-      str1 = str2;
-      if (localTroopInfo.isAdmin()) {
-        str1 = "1";
+      parambeae = baqn.d(this.jdField_a_of_type_JavaLangString);
+      if (new File(parambeae).exists())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, parambeae, 0);
+        return;
       }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, null, -2);
   }
 }
 

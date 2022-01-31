@@ -3,9 +3,9 @@ package com.tencent.qqmini.sdk.receiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import bgqj;
-import bgxz;
-import bgyd;
+import bguq;
+import bhcg;
+import bhck;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
 import com.tencent.qqmini.sdk.launcher.shell.IAppBrandProxy;
@@ -20,7 +20,7 @@ public class MainReceiverProxy
   {
     paramContext = paramIntent.getAction();
     if ("mini_preload_app".equals(paramContext)) {
-      if (bgqj.shouldIgnorePreload()) {
+      if (bguq.shouldIgnorePreload()) {
         QMLog.w("minisdk-start", "Already started, ignore broadcast: " + paramContext);
       }
     }
@@ -42,13 +42,13 @@ public class MainReceiverProxy
         AppLoaderFactory.g().getAppBrandProxy().onAppStart(null, paramContext);
         return;
       } while (!"mini_preload_game".equals(paramContext));
-      if (bgqj.shouldIgnorePreload())
+      if (bguq.shouldIgnorePreload())
       {
         QMLog.w("minisdk-start", "Already started, ignore broadcast: " + paramContext);
         return;
       }
       QMLog.i("minisdk-start", "预加载小游戏");
-      bgyd.a(bgxz.a(), 605, "1");
+      bhck.a(bhcg.a(), 605, "1");
     } while ((!GameWnsUtils.gameEnable()) || (!GameWnsUtils.enablePreloadGameBaseLib()));
     paramIntent = paramIntent.getExtras();
     paramContext = paramIntent;

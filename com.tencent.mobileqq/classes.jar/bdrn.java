@@ -1,32 +1,23 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
 class bdrn
-  implements Observer
+  extends GridLayoutManager.SpanSizeLookup
 {
   bdrn(bdrm parambdrm) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public int getSpanSize(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignatureFontAdapter", 2, "SignatureFontAdapter type = " + paramObject);
-    }
-    if ((paramObject instanceof Integer))
+    int i = 3;
+    switch (this.a.getItemViewType(paramInt))
     {
-      switch (((Integer)paramObject).intValue())
-      {
-      default: 
-        return;
-      case 1: 
-        this.a.a.a().sendEmptyMessage(10003);
-        return;
-      }
-      this.a.a.a().sendEmptyMessage(10002);
-      return;
+    default: 
+      i = 1;
+    case 1: 
+    case 2: 
+    case 4: 
+      return i;
     }
-    this.a.a.a().sendEmptyMessage(10003);
+    return 1;
   }
 }
 

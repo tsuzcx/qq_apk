@@ -1,6 +1,6 @@
-public class azgc
+public abstract interface azgc
 {
-  public int[] a = new int[5];
+  public abstract int a(azgc paramazgc, boolean paramBoolean, int paramInt1, int paramInt2);
 }
 
 

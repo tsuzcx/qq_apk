@@ -1,6 +1,20 @@
-public abstract interface bdlp
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout.DispatchKeyEventListener;
+
+class bdlp
+  implements MyLinearLayout.DispatchKeyEventListener
 {
-  public abstract void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong);
+  bdlp(bdll parambdll) {}
+  
+  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+  {
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.b))
+    {
+      this.a.a();
+      return true;
+    }
+    return false;
+  }
 }
 
 

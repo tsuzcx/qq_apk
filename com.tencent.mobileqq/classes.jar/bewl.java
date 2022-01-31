@@ -1,72 +1,31 @@
-import android.os.Bundle;
-import java.io.File;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import mqq.util.WeakReference;
 
-public class bewl
-  implements bewc
+class bewl
+  extends Handler
 {
-  private void a(Document paramDocument, Bundle paramBundle)
+  final WeakReference<bewj> a;
+  
+  public bewl(bewj parambewj)
   {
-    NodeList localNodeList = paramDocument.getElementsByTagName("ModifyPwdUrls");
-    paramDocument = new Bundle();
-    if ((localNodeList != null) && (localNodeList.getLength() >= 1))
-    {
-      localNodeList = localNodeList.item(0).getChildNodes();
-      int i = 0;
-      while (i < localNodeList.getLength())
-      {
-        Object localObject = localNodeList.item(i);
-        if ((localObject instanceof Element))
-        {
-          String str = ((Element)localObject).getAttribute("Name");
-          localObject = ((Element)localObject).getAttribute("Url");
-          if ((str != null) && (localObject != null) && (!str.equals("")) && (!((String)localObject).equals(""))) {
-            paramDocument.putString(str, (String)localObject);
-          }
-        }
-        i += 1;
-      }
-      paramBundle.putBundle("ModifyPwdUrls", paramDocument);
-    }
+    super(Looper.getMainLooper());
+    this.a = new WeakReference(parambewj);
   }
   
-  public bewj a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    paramString = new File(paramString);
-    Object localObject1 = DocumentBuilderFactory.newInstance();
-    try
-    {
-      paramString = ((DocumentBuilderFactory)localObject1).newDocumentBuilder().parse(paramString);
-      Object localObject2 = paramString.getDocumentElement();
-      localObject1 = new Bundle();
-      localObject2 = ((Element)localObject2).getAttribute("Version");
-      int i = -1;
-      try
-      {
-        int j = Integer.parseInt((String)localObject2);
-        i = j;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          localThrowable.printStackTrace();
-        }
-      }
-      ((Bundle)localObject1).putInt("version", i);
-      a(paramString, (Bundle)localObject1);
-      return new bewk((Bundle)localObject1);
+    bewj localbewj = (bewj)this.a.get();
+    if (localbewj == null) {
+      return;
     }
-    catch (Exception paramString)
+    switch (paramMessage.what)
     {
-      paramString.printStackTrace();
+    default: 
+      return;
     }
-    return null;
+    localbewj.e();
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import acms;
+import acrh;
 import android.os.Message;
-import bdiv;
+import bdne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
 import com.tencent.qphone.base.util.QLog;
@@ -11,11 +11,11 @@ import mqq.os.MqqHandler;
 public class Conversation$1$4
   implements Runnable
 {
-  public Conversation$1$4(acms paramacms) {}
+  public Conversation$1$4(acrh paramacrh) {}
   
   public void run()
   {
-    long l = bdiv.a(this.a.a.a.getApplication(), this.a.a.a.getCurrentAccountUin());
+    long l = bdne.a(this.a.a.a.getApplication(), this.a.a.a.getCurrentAccountUin());
     if (System.currentTimeMillis() - l >= 86400000L)
     {
       localUpgradeTIMWrapper = UpgradeTIMWrapper.a();

@@ -10,9 +10,9 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import apga;
-import apgb;
-import apgc;
+import apkj;
+import apkk;
+import apkl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ComboNavigateBar
@@ -21,7 +21,7 @@ public class ComboNavigateBar
 {
   protected Animation a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  apga jdField_a_of_type_Apga;
+  apkj jdField_a_of_type_Apkj;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean = true;
@@ -35,47 +35,47 @@ public class ComboNavigateBar
     super(paramContext, paramAttributeSet);
   }
   
-  private Drawable a(View paramView, apgc paramapgc)
+  private Drawable a(View paramView, apkl paramapkl)
   {
     paramView = paramView.getLayoutParams();
-    paramView.width = paramapgc.jdField_a_of_type_Int;
-    paramView.height = paramapgc.b;
-    return paramapgc.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    paramView.width = paramapkl.jdField_a_of_type_Int;
+    paramView.height = paramapkl.b;
+    return paramapkl.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
   
   private boolean a()
   {
-    apgc localapgc = apgb.a();
-    if (localapgc == null)
+    apkl localapkl = apkk.a();
+    if (localapkl == null)
     {
       this.jdField_a_of_type_Boolean = false;
       return false;
     }
-    this.e.setImageDrawable(a(this.e, localapgc));
+    this.e.setImageDrawable(a(this.e, localapkl));
     return true;
   }
   
   private boolean a(ImageView paramImageView, int paramInt)
   {
-    apgc localapgc = apgb.a(paramInt);
-    if (localapgc == null)
+    apkl localapkl = apkk.a(paramInt);
+    if (localapkl == null)
     {
       this.jdField_a_of_type_Boolean = false;
       return false;
     }
-    paramImageView.setImageDrawable(a(paramImageView, localapgc));
+    paramImageView.setImageDrawable(a(paramImageView, localapkl));
     return true;
   }
   
   private boolean b()
   {
-    apgc localapgc = apgb.b();
-    if (localapgc == null)
+    apkl localapkl = apkk.b();
+    if (localapkl == null)
     {
       this.jdField_a_of_type_Boolean = false;
       return false;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(this.jdField_a_of_type_AndroidWidgetImageView, localapgc));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(this.jdField_a_of_type_AndroidWidgetImageView, localapkl));
     return true;
   }
   
@@ -120,7 +120,7 @@ public class ComboNavigateBar
   
   public void setCountNum()
   {
-    int k = this.jdField_a_of_type_Apga.jdField_a_of_type_Int;
+    int k = this.jdField_a_of_type_Apkj.jdField_a_of_type_Int;
     int j = k / 10;
     int i;
     if (j != 0)
@@ -163,12 +163,12 @@ public class ComboNavigateBar
     }
   }
   
-  public void setInfo(apga paramapga)
+  public void setInfo(apkj paramapkj)
   {
-    this.jdField_a_of_type_Apga = paramapga;
+    this.jdField_a_of_type_Apkj = paramapkj;
     this.jdField_a_of_type_Boolean = true;
-    String str = paramapga.jdField_a_of_type_JavaLangString;
-    int i = paramapga.jdField_a_of_type_Int;
+    String str = paramapkj.jdField_a_of_type_JavaLangString;
+    int i = paramapkj.jdField_a_of_type_Int;
     setCountNum();
     if (this.jdField_a_of_type_Boolean == true)
     {

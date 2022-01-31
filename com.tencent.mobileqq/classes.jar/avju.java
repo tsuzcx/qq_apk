@@ -1,37 +1,57 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.ClipData.Item;
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
 
-class avju
-  implements View.OnLongClickListener
+public class avju
+  extends avjs
+  implements View.OnClickListener
 {
-  avju(avjc paramavjc) {}
-  
-  @TargetApi(11)
-  public boolean onLongClick(View paramView)
+  protected int a()
   {
-    if (this.a.a.getChildCount() <= 1) {
-      return true;
-    }
-    Object localObject = new ClipData.Item("");
-    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new avkf(this.a, paramView), paramView, 0);
-    localObject = avjc.a(this.a, (PicInfo)paramView.getTag(), null);
-    ((RelativeLayout)localObject).setVisibility(4);
-    avjc.a(this.a, (RelativeLayout)localObject);
-    int i = this.a.a.indexOfChild(paramView);
-    if (i != -1)
+    return 2131561049;
+  }
+  
+  protected LabelContainer a(View paramView, int paramInt1, avau paramavau, int paramInt2)
+  {
+    ((TextView)paramView.findViewById(2131379228)).setText(c[paramInt1]);
+    paramInt1 = xin.b(this.jdField_a_of_type_AndroidContentContext, 6.0F);
+    int i = xin.b(this.jdField_a_of_type_AndroidContentContext, 6.0F);
+    LabelContainer localLabelContainer = (LabelContainer)paramView.findViewById(2131369120);
+    localLabelContainer.setSpace(paramInt1, i);
+    paramView.setTag(paramavau);
+    paramView.setOnClickListener(this);
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() == paramInt2 - 1)
     {
-      this.a.a.removeView(paramView);
-      this.a.a.addView(avjc.a(this.a), i);
-      return true;
+      paramInt1 = xin.b(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+      paramView.setBackgroundResource(2130839261);
+      paramView.setPadding(0, paramInt1, 0, paramInt1);
     }
-    paramView.setVisibility(4);
+    return localLabelContainer;
+  }
+  
+  protected boolean a()
+  {
     return true;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((paramView.getTag() instanceof avau))
+    {
+      paramView = (avau)paramView.getTag();
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, ChooseInterestTagActivity.class);
+      localIntent.putExtra("interest_tag_type", paramView.jdField_a_of_type_Int);
+      localIntent.putExtra("is_from_judge", false);
+      localIntent.putExtra("is_from_nearby", true);
+      localIntent.putExtra("from_where", "NearbyPeopleProfileActivity");
+      localIntent.putParcelableArrayListExtra("choosed_interest_tags", paramView.jdField_a_of_type_JavaUtilArrayList);
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 11);
+    }
   }
 }
 

@@ -1,62 +1,72 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils.TruncateAt;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 
-class ardl
-  implements arbj
+public class ardl
+  implements aywd
 {
-  ardl(ardk paramardk, BaseActivity paramBaseActivity) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
   
-  public arfz a()
+  public ardl(ViewGroup paramViewGroup)
   {
-    Object localObject3 = null;
-    int i = 0;
-    Object localObject1;
-    switch (this.jdField_a_of_type_Ardk.a())
-    {
-    default: 
-      localObject1 = null;
-    }
-    int j;
-    int k;
-    for (;;)
-    {
-      Object localObject2 = localObject3;
-      if (localObject1 != null)
-      {
-        localObject2 = localObject3;
-        if (((List)localObject1).size() > 0)
-        {
-          localObject2 = (ardq)((List)localObject1).get(i);
-          j = ((ardq)localObject2).c();
-          k = ((ardq)localObject2).b();
-          if (j != 7) {
-            break;
-          }
-          localObject2 = new argh(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-        }
-      }
-      return localObject2;
-      localObject1 = this.jdField_a_of_type_Ardk.a();
-      i = this.jdField_a_of_type_Ardk.b();
-      continue;
-      localObject1 = this.jdField_a_of_type_Ardk.a();
-      i = this.jdField_a_of_type_Ardk.b();
-      continue;
-      localObject1 = new ArrayList(1);
-      ((List)localObject1).add(this.jdField_a_of_type_Ardk.a());
-    }
-    if (j == 9) {
-      return new arfw(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    }
-    switch (k)
-    {
-    default: 
-      return new arev(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    case 6000: 
-      return new arfb(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    }
-    return new arfr(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560680, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366301));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366313));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365104));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(1);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.a();
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131366315));
+    this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public View a(String paramString)
+  {
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return null;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+  }
+  
+  public ImageView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public TextView c()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public TextView d()
+  {
+    return null;
   }
 }
 

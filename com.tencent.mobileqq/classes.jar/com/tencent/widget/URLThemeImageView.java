@@ -3,15 +3,15 @@ package com.tencent.widget;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import bhxo;
-import bhxp;
+import bibv;
+import bibw;
 import com.tencent.image.URLImageView;
 
 public class URLThemeImageView
   extends URLImageView
-  implements bhxp
+  implements bibw
 {
-  public bhxo a;
+  public bibv a;
   
   public URLThemeImageView(Context paramContext)
   {
@@ -54,7 +54,7 @@ public class URLThemeImageView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new bhxo();
+        this.a = new bibv();
       }
       this.a.a(true);
     }

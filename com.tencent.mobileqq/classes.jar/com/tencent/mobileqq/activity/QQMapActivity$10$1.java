@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import admq;
+import adrf;
 
 public class QQMapActivity$10$1
   implements Runnable
 {
-  public QQMapActivity$10$1(admq paramadmq) {}
+  public QQMapActivity$10$1(adrf paramadrf) {}
   
   public void run()
   {

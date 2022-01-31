@@ -1,55 +1,18 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
 
-public class bbym
-  extends BaseAdapter
+public final class bbym
+  implements Parcelable.Creator<HWGuideItem>
 {
-  public bbyn a;
-  protected List<String> a = new ArrayList();
-  
-  public String a(int paramInt)
+  public HWGuideItem a(Parcel paramParcel)
   {
-    return (String)this.a.get(paramInt);
+    return new HWGuideItem(paramParcel);
   }
   
-  public void a(String paramString)
+  public HWGuideItem[] a(int paramInt)
   {
-    this.a.add(paramString);
-  }
-  
-  public int getCount()
-  {
-    return this.a.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560476, null, false);
-      paramViewGroup = new bbyo(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378967));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramViewGroup);
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      String str = a(paramInt);
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      return paramView;
-      paramViewGroup = (bbyo)paramView.getTag();
-    }
+    return new HWGuideItem[paramInt];
   }
 }
 

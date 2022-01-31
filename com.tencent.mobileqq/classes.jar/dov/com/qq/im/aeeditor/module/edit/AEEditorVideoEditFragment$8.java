@@ -1,7 +1,7 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import alpo;
-import blja;
+import alud;
+import blnm;
 
 public class AEEditorVideoEditFragment$8
   implements Runnable
@@ -10,7 +10,7 @@ public class AEEditorVideoEditFragment$8
   
   public void run()
   {
-    this.this$0.a(alpo.a(2131689811), true, 0L, new blja(this));
+    this.this$0.a(alud.a(2131689811), true, 0L, new blnm(this));
   }
 }
 

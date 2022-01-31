@@ -1,8 +1,58 @@
-import android.view.View;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public abstract interface bcdl
+class bcdl
+  implements nbs
 {
-  public abstract void a(View paramView);
+  bcdl(bcdk parambcdk) {}
+  
+  public void loaded(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLibraryLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
+    }
+    if (paramInt == 0) {}
+    while (bcdk.a(bcdk.a(this.a), bcdk.b(this.a)))
+    {
+      do
+      {
+        String str;
+        try
+        {
+          paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
+          str = paramString.optString("url");
+          paramInt = paramString.optInt("filesize");
+          if ((str != null) && (str.endsWith("patch")))
+          {
+            bdhb.a(ncb.a(bcdk.a(this.a)) + bcdk.a(this.a));
+            bcdk.a(this.a);
+            return;
+          }
+        }
+        catch (Exception paramString)
+        {
+          do
+          {
+            paramString.printStackTrace();
+          } while (bcdk.a(bcdk.a(this.a), bcdk.b(this.a)));
+          bcdk.b(this.a);
+          return;
+        }
+        if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
+        {
+          bcdk.a(this.a, paramString);
+          return;
+        }
+      } while (bcdk.a(bcdk.a(this.a), bcdk.b(this.a)));
+      bcdk.b(this.a);
+      return;
+    }
+    bcdk.b(this.a);
+  }
+  
+  public void progress(int paramInt) {}
 }
 
 

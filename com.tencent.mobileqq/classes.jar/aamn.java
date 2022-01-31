@@ -1,28 +1,25 @@
-import com.tencent.gdtad.jsbridge.GdtBannerFragmentForJS;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.ad.tangram.thread.AdThreadManagerAdapter;
+import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.1;
+import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.2;
+import java.util.Map;
 
-public class aamn
-  implements aanf
+public final class aamn
+  implements AdThreadManagerAdapter
 {
-  public boolean a(aamm paramaamm, String paramString, String... paramVarArgs)
+  public boolean postDelayed(Runnable paramRunnable, int paramInt, long paramLong)
   {
-    if (paramaamm != null) {}
-    for (paramString = paramaamm.a(); (paramaamm == null) || (paramString == null); paramString = null)
-    {
-      aanp.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
-      return true;
+    GdtThreadManagerAdapter.1 local1 = new GdtThreadManagerAdapter.1(this);
+    if (paramInt == 0) {
+      return new Handler(Looper.getMainLooper()).postDelayed(paramRunnable, paramLong);
     }
-    try
+    if (local1.containsKey(Integer.valueOf(paramInt)))
     {
-      GdtBannerFragmentForJS.a(paramString, new JSONObject(paramVarArgs[0]), GdtBannerFragmentForJS.class);
-      return true;
+      paramInt = ((Integer)local1.get(Integer.valueOf(paramInt))).intValue();
+      return new Handler(Looper.getMainLooper()).postDelayed(new GdtThreadManagerAdapter.2(this, paramRunnable, paramInt), paramLong);
     }
-    catch (JSONException paramaamm)
-    {
-      aanp.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramaamm);
-    }
-    return true;
+    return false;
   }
 }
 

@@ -1,42 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.Friends;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aefh
-  extends allb
+  implements View.OnClickListener
 {
-  public aefh(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public aefh(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (!paramBoolean) {
-      return;
+    this.a.c = false;
+    this.a.t = "";
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.d != 22) {
+      this.a.b.setVisibility(0);
     }
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
-    {
-      if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.uin)))
-      {
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        aefn localaefn;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localaefn = (aefn)localIterator.next();
-        } while ((localaefn.a == null) || (!(localaefn.a instanceof Friends)) || (!paramObject.uin.equals(((Friends)localaefn.a).uin)));
-      }
-      for (int i = 1; i != 0; i = 0)
-      {
-        UncommonlyUsedContactsActivity.a(this.a);
-        this.a.jdField_a_of_type_Aefl.notifyDataSetChanged();
-        return;
-      }
-      break;
+    if (this.a.jdField_a_of_type_Aegv != null) {
+      this.a.jdField_a_of_type_Aegv.a();
     }
   }
 }

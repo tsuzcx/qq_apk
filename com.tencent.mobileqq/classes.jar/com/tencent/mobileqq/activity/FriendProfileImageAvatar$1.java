@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.activity;
 
-import acxe;
-import acxi;
-import awbw;
-import awbx;
+import adbt;
+import adbx;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Setting;
 
 public class FriendProfileImageAvatar$1
   implements Runnable
 {
-  public FriendProfileImageAvatar$1(acxe paramacxe, acxi paramacxi) {}
+  public FriendProfileImageAvatar$1(adbt paramadbt, adbx paramadbx) {}
   
   public void run()
   {
-    localawbw = this.this$0.a.getEntityManagerFactory().createEntityManager();
-    if (localawbw != null) {}
+    localawgf = this.this$0.a.getEntityManagerFactory().createEntityManager();
+    if (localawgf != null) {}
     try
     {
-      Setting localSetting = (Setting)localawbw.a(Setting.class, this.a.d);
+      Setting localSetting = (Setting)localawgf.a(Setting.class, this.a.d);
       if ((localSetting != null) && ((localSetting.headImgTimestamp != 0L) || (localSetting.updateTimestamp != 0L)))
       {
         localSetting.headImgTimestamp = 0L;
         localSetting.updateTimestamp = 0L;
-        localawbw.a(localSetting);
+        localawgf.a(localSetting);
         this.this$0.a.a(localSetting);
       }
     }
@@ -31,12 +31,12 @@ public class FriendProfileImageAvatar$1
     {
       for (;;)
       {
-        localawbw.a();
+        localawgf.a();
       }
     }
     finally
     {
-      localawbw.a();
+      localawgf.a();
     }
     this.this$0.a.e(this.this$0.b);
   }

@@ -1,8 +1,6 @@
 public abstract interface bnmb
 {
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
-  
-  public abstract void b(int paramInt, String paramString, boolean paramBoolean);
+  public abstract void m(boolean paramBoolean);
 }
 
 

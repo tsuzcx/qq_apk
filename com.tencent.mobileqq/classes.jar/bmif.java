@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGame.GameResultItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.widget.TextView;
 
-public final class bmif
-  implements Parcelable.Creator<EditVideoGame.GameResultItem>
+class bmif
+  implements DialogInterface.OnCancelListener
 {
-  public EditVideoGame.GameResultItem a(Parcel paramParcel)
-  {
-    return new EditVideoGame.GameResultItem(paramParcel);
-  }
+  bmif(bmhu parambmhu) {}
   
-  public EditVideoGame.GameResultItem[] a(int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    return new EditVideoGame.GameResultItem[paramInt];
+    bmhu.b(this.a).R();
+    bmhu.a(this.a).setVisibility(0);
+    if (bmhu.a(this.a) != null) {
+      bmhu.a(this.a).startAnimation(bmhu.a(this.a));
+    }
+    bmhu.c(this.a);
+    bmhu.a(this.a, true);
   }
 }
 

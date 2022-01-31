@@ -1,31 +1,6 @@
-import com.tencent.widget.AuthorizationItem;
-
-public final class bhra
+public abstract interface bhra
 {
-  public final int a;
-  public final String a;
-  public final String b;
-  
-  public bhra(String paramString1, String paramString2, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static bhra a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return AuthorizationItem.d;
-    case 0: 
-      return AuthorizationItem.a;
-    case 1: 
-      return AuthorizationItem.b;
-    }
-    return AuthorizationItem.c;
-  }
+  public abstract void a(long paramLong);
 }
 
 

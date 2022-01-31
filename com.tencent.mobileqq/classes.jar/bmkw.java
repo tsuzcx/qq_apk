@@ -1,19 +1,6 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
-
-public class bmkw
-  implements vue
+public abstract interface bmkw
 {
-  public bmkw(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
-  
-  public void a_(vtz paramvtz)
-  {
-    wsv.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).c();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
-  }
+  public abstract void a(int paramInt);
 }
 
 

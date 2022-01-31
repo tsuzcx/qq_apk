@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.materialdownload;
 
 import android.text.TextUtils;
-import bdiv;
+import bdne;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -31,10 +31,10 @@ public class AdMaterialResManager$3
         if ((ocx.a(this.this$0) == null) || (ocx.b(this.this$0).getApp() == null) || (ocx.c(this.this$0).getCurrentAccountUin() == null)) {
           break;
         }
-        bdiv.D(ocx.d(this.this$0).getApp(), ocx.e(this.this$0).getCurrentAccountUin());
+        bdne.D(ocx.d(this.this$0).getApp(), ocx.e(this.this$0).getCurrentAccountUin());
         ArrayList localArrayList = new ArrayList();
         Object localObject = new JSONObject(this.a);
-        bdiv.V(ocx.f(this.this$0).getApp(), ocx.g(this.this$0).getCurrentAccountUin(), ((JSONObject)localObject).optInt("is_preview"));
+        bdne.V(ocx.f(this.this$0).getApp(), ocx.g(this.this$0).getCurrentAccountUin(), ((JSONObject)localObject).optInt("is_preview"));
         ocu.a = ((JSONObject)localObject).optLong("req_interval");
         localObject = ((JSONObject)localObject).optJSONArray("res_list");
         i = 0;

@@ -1,21 +1,54 @@
-import NS_MINI_APP_MISC.MISC.StAppPlayingInfo;
-import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.qphone.base.util.QLog;
 
 class asej
-  implements View.OnClickListener
+  extends URLDrawableDownListener.Adapter
 {
-  asej(asei paramasei, MISC.StAppPlayingInfo paramStAppPlayingInfo) {}
+  asej(asei paramasei) {}
   
-  public void onClick(View paramView)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if ((this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo.appId.get())) && (paramView != null)) {
-      MiniAppLauncher.launchMiniAppById(paramView.getContext(), this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo.appId.get(), null, null, null, null, asei.a(this.jdField_a_of_type_Asei));
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardStructingMsgOption", 2, "onLoadCancelled");
     }
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardStructingMsgOption", 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardStructingMsgOption", 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {}
+    do
+    {
+      return;
+      paramView.setBackgroundDrawable(null);
+      if ((paramView instanceof ImageView))
+      {
+        ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
+        ((ImageView)paramView).setImageDrawable(paramURLDrawable);
+        paramView.requestLayout();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ForwardOption.ForwardStructingMsgOption", 2, "onLoadSuccessed");
   }
 }
 

@@ -1,25 +1,27 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-class akff
-  implements View.OnTouchListener
+public class akff
+  implements Animation.AnimationListener
 {
-  akff(akfe paramakfe) {}
+  public akff(SpecailCareListActivity paramSpecailCareListActivity, akfw paramakfw) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    this.jdField_a_of_type_Akfw.a.clearAnimation();
+    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
+    paramAnimation.addRule(1, 2131367819);
+    paramAnimation.setMargins(0, (int)(24.0F * SpecailCareListActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, 0);
+    this.jdField_a_of_type_Akfw.a.setLayoutParams(paramAnimation);
+    this.jdField_a_of_type_Akfw.a.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,18 +1,22 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import mqq.os.MqqHandler;
 
 public class ajzp
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends MqqHandler
 {
-  public ajzp(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public ajzp(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public void onGlobalLayout()
+  public void handleMessage(Message paramMessage)
   {
-    ThreadManager.post(this.a, 8, null, false);
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    switch (paramMessage.what)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
+    }
+    this.a.d();
   }
 }
 

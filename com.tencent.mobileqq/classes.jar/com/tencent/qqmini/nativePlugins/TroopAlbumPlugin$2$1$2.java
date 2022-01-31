@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
-import bgho;
+import bglv;
 import com.tencent.common.app.BaseApplicationImpl;
 import cooperation.qzone.QzonePluginProxyActivity;
 import mqq.app.AppRuntime;
@@ -20,7 +20,7 @@ class TroopAlbumPlugin$2$1$2
     paramDialogInterface.dismiss();
     paramDialogInterface = BaseApplicationImpl.sApplication.getRuntime().getAccount();
     Intent localIntent = new Intent();
-    String str = TroopAlbumPlugin.access$900(this.this$2.this$1.this$0).a().getResources().getString(2131718150);
+    String str = TroopAlbumPlugin.access$900(this.this$2.this$1.this$0).a().getResources().getString(2131718162);
     QzonePluginProxyActivity.a(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
     localIntent.putExtra("aid", "jhan_plxz");
     localIntent.putExtra("success_tips", str);

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import amzy;
-import arfz;
+import aneh;
+import arki;
 
 public class FileBrowserModelBase$3
   implements Runnable
 {
-  public FileBrowserModelBase$3(arfz paramarfz) {}
+  public FileBrowserModelBase$3(arki paramarki) {}
   
   public void run()
   {
-    if (arfz.a(this.this$0) == null)
+    if (arki.a(this.this$0) == null)
     {
-      arfz.a(this.this$0, amzy.a());
-      arfz.a(this.this$0).a(this.this$0.a, hashCode(), "MiniCode_FileBrowser");
+      arki.a(this.this$0, aneh.a());
+      arki.a(this.this$0).a(this.this$0.a, hashCode(), "MiniCode_FileBrowser");
     }
   }
 }

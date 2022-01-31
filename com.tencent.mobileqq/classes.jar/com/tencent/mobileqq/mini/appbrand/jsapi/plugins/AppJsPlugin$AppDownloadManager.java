@@ -2,9 +2,9 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bked;
-import bkem;
-import bkeu;
+import bkik;
+import bkit;
+import bkjb;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.wadl.ipc.WadlParams;
 import java.util.ArrayList;
@@ -26,9 +26,9 @@ public class AppJsPlugin$AppDownloadManager
   private HashMap<String, AppJsPlugin.IWaldlCallback> mQueryCallbackMap = new HashMap();
   private HashMap<String, List<AppJsPlugin.IWaldlCallback>> mQueryDownloadInfoListenerMap = new HashMap();
   private int mRetryCount;
-  private bked mWadlCallback = new AppJsPlugin.AppDownloadManager.1(this);
+  private bkik mWadlCallback = new AppJsPlugin.AppDownloadManager.1(this);
   private HashMap<String, WadlParams> mWadlParams = new HashMap();
-  private bkem mWadlProxyService;
+  private bkit mWadlProxyService;
   
   public AppJsPlugin$AppDownloadManager(AppJsPlugin paramAppJsPlugin, Context paramContext)
   {
@@ -93,7 +93,7 @@ public class AppJsPlugin$AppDownloadManager
     this.mIsInitFlag = true;
     this.mRetryCount = 0;
     this.mDownloadListenerMap = new HashMap();
-    this.mWadlProxyService = new bkem();
+    this.mWadlProxyService = new bkit();
     this.mWadlProxyService.a(this.mWadlCallback);
   }
   
@@ -128,8 +128,8 @@ public class AppJsPlugin$AppDownloadManager
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramString);
     paramString = new AppJsPlugin.AppDownloadManager.QueryDownloadInfoListener(this, paramString, paramIWaldlCallback);
-    bkeu.a().a(paramString);
-    bkeu.a().a("10036618", localArrayList);
+    bkjb.a().a(paramString);
+    bkjb.a().a("10036618", localArrayList);
   }
   
   public void removeDownloadListener(String paramString)

@@ -1,17 +1,42 @@
-class akxq
-  extends akxp
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler.1;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
+public class akxq
+  implements alkd
 {
-  private int b;
+  public akxq(CmGameSubProcessHandler.1 param1) {}
   
-  public akxq(int paramInt1, int paramInt2, akxr paramakxr, akxn paramakxn)
+  public void a(int paramInt)
   {
-    super(paramInt1, paramakxr, paramakxn);
-    this.b = paramInt2;
-  }
-  
-  public aknh a(long paramLong, String paramString1, String paramString2)
-  {
-    return null;
+    int i = 0;
+    ApolloCmdChannel localApolloCmdChannel = akwd.a();
+    if (localApolloCmdChannel != null) {}
+    for (;;)
+    {
+      try
+      {
+        if (!QLog.isColorLevel()) {
+          break label106;
+        }
+        QLog.d("cmgame_process.CmGameSubProcessHandler", 2, new Object[] { "createGameShortCut errorCode:", Integer.valueOf(paramInt) });
+      }
+      catch (Exception localException)
+      {
+        JSONObject localJSONObject;
+        QLog.e("cmgame_process.CmGameSubProcessHandler", 1, "createGameShortCut Exception:" + localException);
+        return;
+      }
+      localJSONObject = new JSONObject();
+      localJSONObject.put("ret", i);
+      localApolloCmdChannel.callbackFromRequest(this.a.a, i, "cs.create_xy_shortcut.local", localJSONObject.toString());
+      return;
+      label106:
+      if (paramInt == 1) {
+        i = -1;
+      }
+    }
   }
 }
 

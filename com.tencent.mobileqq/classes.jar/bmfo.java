@@ -1,23 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.richmedia.capture.view.SimpleEffectsCaptureView;
+import dov.com.qq.im.ptv.LightWeightCameraCaptureUnit.10;
 
-class bmfo
-  extends blpg
+public class bmfo
+  implements DialogInterface.OnClickListener
 {
-  bmfo(bmfh parambmfh) {}
+  public bmfo(LightWeightCameraCaptureUnit.10 param10) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean) {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditProviderPart", 2, "EditProviderPart onFinish key=" + paramString + " result=" + paramBoolean);
+    paramDialogInterface = this.a.this$0.jdField_a_of_type_Bmhh.a();
+    if (paramInt == 1)
+    {
+      this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSimpleEffectsCaptureView.setCameraPermissionResult(false);
+      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      localIntent.setData(Uri.fromParts("package", paramDialogInterface.getPackageName(), null));
+      paramDialogInterface.startActivity(localIntent);
+      return;
     }
+    paramDialogInterface.finish();
   }
 }
 

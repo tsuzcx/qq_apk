@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.troopbarassit;
 
-import awbv;
-import awdg;
-import awdj;
+import awge;
+import awhp;
+import awhs;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class TroopBarData
-  extends awbv
+  extends awge
 {
   public boolean mIsSticky;
   public long mLastDraftTime;
   public long mLastMsgTime;
   public long mLastStickyTime;
-  @awdg
+  @awhp
   public MessageRecord mLatestMessage;
-  @awdj
+  @awhs
   public String mUin;
   
   public String getTableName()

@@ -1,14 +1,24 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import java.util.List;
 
-public final class aypo
-  implements ThreadFactory
+public class aypo
+  extends aypn
 {
-  private final AtomicInteger a = new AtomicInteger(1);
-  
-  public Thread newThread(Runnable paramRunnable)
+  aynt a(ahip paramahip, List<aynu> paramList, String paramString1, boolean paramBoolean, String paramString2)
   {
-    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
+    ayvl.a(70);
+    return new aymv(paramahip, paramList, paramString1);
+  }
+  
+  aynu a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  {
+    return null;
+  }
+  
+  aynu a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  {
+    return new aymw(paramrecord, paramString, paramCharSequence);
   }
 }
 

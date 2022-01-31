@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.ARPromotionMgr;
 
-import alpo;
-import ampe;
-import ampk;
+import alud;
+import amtt;
+import amtz;
 import com.tencent.common.app.AppInterface;
 
 public class PromotionResDownload$1
   implements Runnable
 {
-  public PromotionResDownload$1(ampk paramampk, boolean paramBoolean, AppInterface paramAppInterface, ampe paramampe) {}
+  public PromotionResDownload$1(amtz paramamtz, boolean paramBoolean, AppInterface paramAppInterface, amtt paramamtt) {}
   
   public void run()
   {
-    ampk.a(this.this$0, alpo.a(2131708897), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Ampe.e, this.jdField_a_of_type_Ampe.a, this.jdField_a_of_type_Ampe);
+    amtz.a(this.this$0, alud.a(2131708909), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Amtt.e, this.jdField_a_of_type_Amtt.a, this.jdField_a_of_type_Amtt);
   }
 }
 

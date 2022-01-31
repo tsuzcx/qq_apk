@@ -1,31 +1,22 @@
-import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-
 class aqfl
-  implements Animation.AnimationListener
+  extends aqbl
 {
   aqfl(aqfk paramaqfk) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(boolean paramBoolean, int paramInt, aqcl paramaqcl, String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.removeView(this.a.jdField_a_of_type_AndroidViewView);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getWindow().setBackgroundDrawable(null);
-    Face2FaceAddFriendActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.n = true;
-    if (aqgc.a >= aqgc.b)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(aqgc.a, aqgc.b);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(aqgc.a, 0L);
+    this.a.a().a(paramBoolean, paramInt, paramaqcl, paramString);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  protected void a(boolean paramBoolean, aqcl paramaqcl)
+  {
+    this.a.a().a(paramBoolean, paramaqcl);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void e(boolean paramBoolean)
+  {
+    this.a.a().a(paramBoolean);
+  }
 }
 
 

@@ -1,10 +1,9 @@
+import android.view.View;
+import android.view.ViewGroup;
+
 public abstract interface bjit
 {
-  public abstract void a();
-  
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(float paramFloat1, float paramFloat2);
+  public abstract void a(int paramInt, View paramView, ViewGroup paramViewGroup);
 }
 
 

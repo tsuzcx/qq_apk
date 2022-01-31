@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class acur
-  extends bdke
+  extends altm
 {
-  public acur(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
-  {
-    super(paramInt);
-  }
+  public acur(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void a()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.e == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (this.a.jdField_a_of_type_Acxw != null) {
-        this.a.jdField_a_of_type_Acxw.a(bool);
-      }
-      VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "defaultcard", "click_customized", "", 1, 0, 0, "", "", "");
-      this.a.b(3);
-      return;
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
     }
   }
 }

@@ -1,386 +1,429 @@
-import android.app.Activity;
-import android.os.Bundle;
+import android.content.res.AssetManager;
+import android.support.annotation.WorkerThread;
+import android.text.TextUtils;
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.data.CaptureSet.1;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.BaseApplication;
+import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFiltersManager.1;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFiltersManager.4;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFiltersManager.5;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArraySet;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class blnt
-  extends blng
-  implements blnh
+public final class blnt
 {
-  float jdField_a_of_type_Float = 1.0F;
-  public long a;
-  public WeakReference<Activity> a;
-  private final CopyOnWriteArraySet<blng> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-  public boolean a;
-  public ArrayList<blng> b = new ArrayList();
+  private static volatile blnt jdField_a_of_type_Blnt;
+  private static final String jdField_a_of_type_JavaLangString = blke.b;
+  private final bmen<List<AEEditorFilterBean>> jdField_a_of_type_Bmen = new bmen();
+  private final Map<String, AEEditorDownloadResBean> jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
+  private volatile boolean jdField_a_of_type_Boolean;
+  private final Map<String, AtomicBoolean> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private volatile boolean jdField_b_of_type_Boolean;
+  private final Map<String, List<blny>> c = new HashMap();
   
-  public blnt(Object paramObject)
+  private blnt()
   {
-    super(paramObject);
+    b();
   }
   
-  public float a()
+  public static blnt a()
   {
+    if (jdField_a_of_type_Blnt == null) {}
     try
     {
-      Iterator localIterator = this.b.iterator();
-      float f2;
-      float f3;
-      for (float f1 = 0.0F; localIterator.hasNext(); f1 += f3 * f2)
-      {
-        blng localblng = (blng)localIterator.next();
-        f2 = localblng.a();
-        if (QLog.isDevelopLevel()) {
-          QLog.i("QCombo", 2, "getProgress " + localblng.toString() + " progress =" + f2);
-        }
-        f3 = this.jdField_a_of_type_Float;
+      if (jdField_a_of_type_Blnt == null) {
+        jdField_a_of_type_Blnt = new blnt();
       }
-      return f1;
+      return jdField_a_of_type_Blnt;
     }
-    catch (Exception localException) {}
-    return 0.0F;
+    finally {}
   }
   
-  public int a()
+  @NotNull
+  private String a(AEEditorDownloadResBean paramAEEditorDownloadResBean)
   {
-    int j = 0;
-    int k = 1;
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    return jdField_a_of_type_JavaLangString + File.separator + paramAEEditorDownloadResBean.getId() + File.separator + paramAEEditorDownloadResBean.getMd5();
+  }
+  
+  private void a(@NotNull AEEditorDownloadResBean paramAEEditorDownloadResBean, blny paramblny)
+  {
+    bljn.b("AEEditorFiltersManager", "downLoadOneResInternal---BEGIN: id=" + paramAEEditorDownloadResBean.getId());
+    String str = paramAEEditorDownloadResBean.getMd5();
+    AtomicBoolean localAtomicBoolean;
+    synchronized (this.jdField_b_of_type_JavaUtilMap)
     {
-      localStringBuilder = new StringBuilder("getState = ");
-      localStringBuilder.append(toString());
-      localStringBuilder.append("  ");
+      if ((AtomicBoolean)this.jdField_b_of_type_JavaUtilMap.get(str) == null) {
+        this.jdField_b_of_type_JavaUtilMap.put(str, new AtomicBoolean(false));
+      }
+      localAtomicBoolean = (AtomicBoolean)this.jdField_b_of_type_JavaUtilMap.get(str);
     }
+    try
+    {
+      if (localAtomicBoolean.get())
+      {
+        localObject2 = (List)this.c.get(str);
+        ??? = localObject2;
+        if (localObject2 == null)
+        {
+          ??? = new ArrayList();
+          this.c.put(str, ???);
+        }
+        if (paramblny != null) {
+          ((List)???).add(paramblny);
+        }
+        bljn.b("AEEditorFiltersManager", "downLoadOneResInternal---is DOWNLOADING: id=" + paramAEEditorDownloadResBean.getId());
+        return;
+        paramAEEditorDownloadResBean = finally;
+        throw paramAEEditorDownloadResBean;
+      }
+      localAtomicBoolean.compareAndSet(false, true);
+      if (a(paramAEEditorDownloadResBean))
+      {
+        if (paramblny != null) {
+          paramblny.a(true);
+        }
+        a(str, true);
+        bljn.b("AEEditorFiltersManager", "downLoadOneResInternal---is DOWNLOADED by other: id=" + paramAEEditorDownloadResBean.getId());
+        return;
+      }
+    }
+    finally {}
+    ??? = jdField_a_of_type_JavaLangString + File.separator + paramAEEditorDownloadResBean.getId() + File.separator;
+    bdhb.a((String)???);
+    Object localObject2 = (String)??? + str + ".zip";
+    blji.a().a(paramAEEditorDownloadResBean.getUrl(), (String)localObject2, new blnx(this, paramblny, str, paramAEEditorDownloadResBean, (String)localObject2, (String)???));
+  }
+  
+  private void a(String paramString, boolean paramBoolean)
+  {
+    AtomicBoolean localAtomicBoolean = (AtomicBoolean)this.jdField_b_of_type_JavaUtilMap.get(paramString);
+    if (localAtomicBoolean == null) {
+      return;
+    }
+    try
+    {
+      localAtomicBoolean.compareAndSet(true, false);
+      paramString = (List)this.c.get(paramString);
+      if (paramString != null)
+      {
+        Iterator localIterator = paramString.iterator();
+        while (localIterator.hasNext())
+        {
+          blny localblny = (blny)localIterator.next();
+          if (localblny != null) {
+            localblny.a(paramBoolean);
+          }
+        }
+        paramString.clear();
+      }
+    }
+    finally {}
+  }
+  
+  private boolean a(@NotNull AEEditorDownloadResBean paramAEEditorDownloadResBean)
+  {
+    return new File(a(paramAEEditorDownloadResBean)).exists();
+  }
+  
+  private boolean a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
     for (;;)
     {
-      Iterator localIterator = this.b.iterator();
       int i;
-      if (localIterator.hasNext())
+      try
       {
-        blng localblng = (blng)localIterator.next();
-        i = localblng.a();
-        if (QLog.isColorLevel())
+        ndr.a(new File(paramString1), paramString2);
+        paramString1 = new File(paramString2);
+        if ((paramString1.exists()) && (paramString1.isDirectory()))
         {
-          localStringBuilder.append(i);
-          localStringBuilder.append("|");
-          localStringBuilder.append(localblng.toString());
-          localStringBuilder.append("   ");
-        }
-        if (i == 2)
-        {
+          paramString1 = paramString1.listFiles();
+          if ((paramString1 == null) || (paramString1.length <= 0)) {
+            break label225;
+          }
+          int j = paramString1.length;
           i = 0;
-          j = 1;
+          if (i < j)
+          {
+            Object localObject = paramString1[i];
+            if (!localObject.getName().equals(paramString3)) {
+              break label227;
+            }
+            bljn.b("AEEditorFiltersManager", "begin rename zip folder---from: " + localObject.getName() + ", to: " + paramString4);
+            return bdhb.c(paramString2 + paramString3, paramString2 + paramString4);
+          }
+          bljn.d("AEEditorFiltersManager", "unZipAndRenameSpecificFolder--NOT found folder named " + paramString3);
+          return false;
         }
       }
+      catch (Exception paramString1)
+      {
+        bljn.a("AEEditorFiltersManager", "unZipAndRenameSpecificFolder--exception ", paramString1);
+        paramString1.printStackTrace();
+        return false;
+      }
+      bljn.d("AEEditorFiltersManager", "unZipAndRenameSpecificFolder--toDir not exists or not a directory: " + paramString1);
+      label225:
+      return false;
+      label227:
+      i += 1;
+    }
+  }
+  
+  @WorkerThread
+  private String b(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    String str1 = "";
+    for (;;)
+    {
+      try
+      {
+        localInputStream = BaseApplicationImpl.getContext().getAssets().open(paramString);
+        localObject1 = localInputStream;
+        localObject2 = localInputStream;
+        String str2 = ndq.a(localInputStream);
+        paramString = str2;
+        localObject2 = paramString;
+      }
+      catch (Throwable localThrowable)
+      {
+        InputStream localInputStream;
+        localObject2 = localIOException1;
+        bljn.a("AEEditorFiltersManager", "readAssetsFileContent---read assets json exception: fileName=" + paramString, localThrowable);
+        localObject2 = localIOException1;
+        localThrowable.printStackTrace();
+        localObject2 = str1;
+        if (localIOException1 == null) {
+          continue;
+        }
+        try
+        {
+          localIOException1.close();
+          return "";
+        }
+        catch (IOException paramString)
+        {
+          paramString.printStackTrace();
+          return "";
+        }
+      }
+      finally
+      {
+        if (localObject2 == null) {
+          break label128;
+        }
+      }
+      try
+      {
+        localInputStream.close();
+        localObject2 = paramString;
+        return localObject2;
+      }
+      catch (IOException localIOException1)
+      {
+        localIOException1.printStackTrace();
+        return paramString;
+      }
+    }
+    try
+    {
+      ((InputStream)localObject2).close();
+      label128:
+      throw paramString;
+    }
+    catch (IOException localIOException2)
+    {
       for (;;)
       {
-        label125:
-        if (QLog.isColorLevel()) {
-          QLog.i("QCombo", 2, localStringBuilder.toString());
-        }
-        if (j != 0)
-        {
-          b(2);
-          i = 2;
-        }
-        do
-        {
-          return i;
-          if (i != 1) {
-            break;
-          }
-          i = 1;
-          break label125;
-          if (i == 0) {
-            break label211;
-          }
-          if (this.jdField_a_of_type_Int != 1) {
-            b();
-          }
-          i = k;
-        } while (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 60000L);
-        b(2);
-        a(5);
-        return 2;
-        label211:
-        b(3);
-        return 3;
-        i = 0;
-      }
-      localStringBuilder = null;
-    }
-  }
-  
-  public int a(Activity paramActivity, int paramInt)
-  {
-    if ((this instanceof blob)) {
-      if (blni.a((blob)this, paramInt))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("QCombo", 2, "apply already" + toString());
-        }
-        bncp.a().a((blob)this, paramActivity, paramInt);
+        localIOException2.printStackTrace();
       }
     }
-    label337:
-    do
+  }
+  
+  private void b()
+  {
+    bljn.b("AEEditorFiltersManager", "loadAssets");
+    ThreadManager.excute(new AEEditorFiltersManager.1(this), 64, null, true);
+  }
+  
+  @WorkerThread
+  private void c()
+  {
+    bljn.b("AEEditorFiltersManager", "setupDisplayFilterList--BEGIN");
+    Object localObject1 = b("camera/ae_camera_editor_display_filters.json");
+    if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      Object localObject1;
-      Object localObject3;
-      do
+      bljn.d("AEEditorFiltersManager", "setupDisplayFilterList---read assets json content empty");
+      return;
+    }
+    Object localObject3 = new Gson();
+    try
+    {
+      localObject1 = (List)((Gson)localObject3).fromJson((String)localObject1, new blnu(this).getType());
+      StringBuilder localStringBuilder = new StringBuilder().append("setupDisplayFilterList---filters size = ");
+      if (localObject1 == null)
       {
-        do
-        {
-          do
-          {
-            return 0;
-            localObject2 = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaLangObject;
-            if ((localObject2 != null) && (paramInt == 0))
-            {
-              localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-              if ("back".equals(((QIMFilterCategoryItem)localObject2).g))
-              {
-                localObject2 = new Bundle();
-                ((Bundle)localObject2).putInt(azcx.b, 2);
-                ((AppRuntime)localObject1).notifyObservers(blnr.class, 970, true, (Bundle)localObject2);
-              }
-            }
-            else
-            {
-              localObject1 = bncp.a().a[paramInt];
-              if (localObject1 != null) {
-                ((blob)localObject1).a(paramActivity, paramInt);
-              }
-              bncp.a().a((blob)this, paramActivity, paramInt);
-              if (QLog.isColorLevel()) {
-                QLog.i("QCombo", 2, "apply " + toString() + ", " + paramInt);
-              }
-              localObject1 = new ArrayList();
-              localObject2 = this.b.iterator();
-            }
-            for (;;)
-            {
-              if (!((Iterator)localObject2).hasNext()) {
-                break label337;
-              }
-              localObject3 = (blng)((Iterator)localObject2).next();
-              if ((localObject3 instanceof blni))
-              {
-                ((List)localObject1).add(((blni)localObject3).a);
-                continue;
-                if ((!"front".equals(((QIMFilterCategoryItem)localObject2).g)) || (!azcv.c())) {
-                  break;
-                }
-                localObject2 = new Bundle();
-                ((Bundle)localObject2).putInt(azcx.b, 1);
-                ((AppRuntime)localObject1).notifyObservers(blnr.class, 970, true, (Bundle)localObject2);
-                break;
-              }
-              ((blng)localObject3).a(paramActivity, paramInt);
-            }
-          } while (!(this instanceof blob));
-          localObject2 = (blnl)blmf.a(5);
-          if (localObject2.jdField_a_of_type_ArrayOfBlnp[paramInt].a()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("QCombo", 2, "apply " + toString() + ", " + paramInt + " comboApplyFilterAborted");
-        return 0;
-        localObject2.jdField_a_of_type_ArrayOfBlnp[paramInt].a(null);
-        localObject3 = ((blnl)localObject2).jdField_a_of_type_Bncq;
-      } while (localObject3 == null);
-      Object localObject2 = ((blnl)localObject2).a((blob)this, ((bncq)localObject3).a(paramInt).c);
-      bncp.a().b((QIMFilterCategoryItem)localObject2, paramActivity, paramInt);
-      bncp.a().a((QIMFilterCategoryItem)localObject2, paramInt);
-      blni.a(paramActivity, (List)localObject1, this, paramInt);
-    } while ((!(this.jdField_a_of_type_JavaLangObject instanceof QIMFilterCategoryItem)) || (!((QIMFilterCategoryItem)this.jdField_a_of_type_JavaLangObject).c()) || (paramInt == 1) || (paramInt == 3));
-    ((blpo)blmf.a().c(8)).a(paramInt);
-    return 0;
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    blnl localblnl = (blnl)blmf.b(5);
-    if (localblnl != null) {
-      localblnl.a(this, paramInt);
+        localObject3 = "null";
+        bljn.b("AEEditorFiltersManager", localObject3);
+        this.jdField_a_of_type_Bmen.a(localObject1);
+        return;
+      }
     }
-  }
-  
-  public void a(Activity paramActivity, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QCombo", 2, "unApply " + toString() + ", " + paramInt);
-    }
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      ((blng)localIterator.next()).a(paramActivity, paramInt);
-    }
-  }
-  
-  public void a(blng paramblng)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QCombo", 2, "onDownloadStart " + toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
-    }
-  }
-  
-  public void a(blng paramblng, int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramblng);
-    if (QLog.isColorLevel()) {
-      QLog.i("QCombo", 2, "onDownloadError " + toString() + ":" + paramblng.toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
+    catch (JsonSyntaxException localJsonSyntaxException)
     {
-      b(2);
-      a(paramInt);
+      for (;;)
+      {
+        bljn.a("AEEditorFiltersManager", "setupDisplayFilterList---parse json exception: ", localJsonSyntaxException);
+        localJsonSyntaxException.printStackTrace();
+        Object localObject2 = null;
+        continue;
+        localObject3 = Integer.valueOf(localObject2.size());
+      }
     }
   }
   
-  public int b()
+  @WorkerThread
+  private void d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QCombo", 2, "download " + toString());
-    }
-    if (!bdee.g(BaseApplicationImpl.getContext()))
+    Object localObject3;
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
     {
-      a(6);
-      return 2;
+      if (this.jdField_a_of_type_Boolean) {
+        return;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      bljn.b("AEEditorFiltersManager", "ensureSetupDownloadConfig--BEGIN");
+      localObject3 = b("camera/ae_camera_editor_download_resources.json");
+      if (TextUtils.isEmpty((CharSequence)localObject3))
+      {
+        bljn.d("AEEditorFiltersManager", "ensureSetupDownloadConfig---read assets json content empty");
+        return;
+      }
     }
-    ThreadManager.getSubThreadHandler().post(new CaptureSet.1(this));
-    return 1;
+    Object localObject4 = new Gson();
+    Object localObject2 = null;
+    try
+    {
+      localObject3 = (List)((Gson)localObject4).fromJson((String)localObject3, new blnv(this).getType());
+      localObject2 = localObject3;
+    }
+    catch (JsonSyntaxException localJsonSyntaxException)
+    {
+      for (;;)
+      {
+        bljn.a("AEEditorFiltersManager", "ensureSetupDownloadConfig---parse json exception: ", localJsonSyntaxException);
+        localJsonSyntaxException.printStackTrace();
+        continue;
+        Integer localInteger = Integer.valueOf(((List)localObject2).size());
+      }
+    }
+    localObject4 = new StringBuilder().append("ensureSetupDownloadConfig---size = ");
+    if (localObject2 == null)
+    {
+      localObject3 = "null";
+      bljn.b("AEEditorFiltersManager", localObject3);
+      if (localObject2 == null) {
+        break label210;
+      }
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (AEEditorDownloadResBean)((Iterator)localObject2).next();
+        this.jdField_a_of_type_JavaUtilMap.put(((AEEditorDownloadResBean)localObject3).getId(), localObject3);
+      }
+    }
+    label210:
+  }
+  
+  public bmen<List<AEEditorFilterBean>> a()
+  {
+    return this.jdField_a_of_type_Bmen;
+  }
+  
+  public String a()
+  {
+    d();
+    return a((AEEditorDownloadResBean)this.jdField_a_of_type_JavaUtilMap.get("AIPhotoConfig"));
+  }
+  
+  @Nullable
+  public String a(AEEditorFilterBean paramAEEditorFilterBean)
+  {
+    if (paramAEEditorFilterBean == null) {
+      return null;
+    }
+    d();
+    AEEditorDownloadResBean localAEEditorDownloadResBean = (AEEditorDownloadResBean)this.jdField_a_of_type_JavaUtilMap.get(paramAEEditorFilterBean.getSid());
+    if (localAEEditorDownloadResBean == null) {
+      return null;
+    }
+    return a(localAEEditorDownloadResBean) + File.separator + paramAEEditorFilterBean.getLutName();
+  }
+  
+  @Nullable
+  public String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    d();
+    AEEditorDownloadResBean localAEEditorDownloadResBean = (AEEditorDownloadResBean)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (localAEEditorDownloadResBean == null) {
+      return null;
+    }
+    return a(localAEEditorDownloadResBean) + File.separator + paramString + ".png";
+  }
+  
+  public void a()
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    this.jdField_b_of_type_Boolean = true;
+    ThreadManager.excute(new AEEditorFiltersManager.4(this), 128, null, false);
+  }
+  
+  public void a(String paramString, blny paramblny)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      if (paramblny != null) {
+        paramblny.a(false);
+      }
+      return;
+    }
+    ThreadManager.excute(new AEEditorFiltersManager.5(this, paramString, paramblny), 128, null, false);
+  }
+  
+  public boolean a()
+  {
+    return new File(a()).exists();
   }
   
   public String b()
   {
-    if (this.jdField_a_of_type_JavaLangObject != null) {
-      return ((QIMFilterCategoryItem)this.jdField_a_of_type_JavaLangObject).a;
-    }
-    return "unknown" + hashCode();
+    d();
+    return a((AEEditorDownloadResBean)this.jdField_a_of_type_JavaUtilMap.get("AIVideoConfig"));
   }
   
-  public void b()
+  public boolean b()
   {
-    super.b();
-    blnl localblnl = (blnl)blmf.b(5);
-    if (localblnl != null) {
-      localblnl.a(this);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void b(blng paramblng)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramblng);
-    if (QLog.isColorLevel()) {
-      QLog.i("QCombo", 2, "onDownloadSuccess= " + toString() + ":" + paramblng.toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        b(2);
-        a(4);
-      }
-    }
-    else {
-      return;
-    }
-    b(3);
-    if (QLog.isColorLevel()) {
-      QLog.i("QCombo", 2, "onDownloadFinish= " + toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
-    }
-    b();
-  }
-  
-  public int c()
-  {
-    Object localObject = this.b.iterator();
-    int j = 0;
-    int i = 0;
-    blng localblng;
-    if (((Iterator)localObject).hasNext())
-    {
-      localblng = (blng)((Iterator)localObject).next();
-      if (localblng.a() == 2)
-      {
-        localblng.a(this);
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(localblng);
-        localblng.b();
-        if (QLog.isColorLevel()) {
-          QLog.i("QCombo", 2, "download " + toString() + "  " + localblng.toString());
-        }
-        i = j;
-        j = 1;
-      }
-    }
-    for (;;)
-    {
-      int k = j;
-      j = i;
-      i = k;
-      break;
-      if (localblng.a() == 1)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(localblng);
-        localblng.a(this);
-        if (QLog.isColorLevel()) {
-          QLog.i("QCombo", 2, "downloading " + toString() + ":" + localblng.toString());
-        }
-        k = 1;
-        j = i;
-        i = k;
-        continue;
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size() > 0)
-        {
-          b(1);
-          a();
-          localObject = (blnl)blmf.b(5);
-          if (localObject != null) {
-            ((blnl)localObject).b(this);
-          }
-        }
-        if ((i != 0) || (j != 0))
-        {
-          b(1);
-          return 1;
-        }
-        b(3);
-        b();
-        return 3;
-      }
-      else
-      {
-        k = i;
-        i = j;
-        j = k;
-      }
-    }
-  }
-  
-  public void c(blng paramblng)
-  {
-    this.b.add(paramblng);
-    this.jdField_a_of_type_Float = (1.0F / this.b.size());
+    return new File(b()).exists();
   }
 }
 

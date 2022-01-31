@@ -1,30 +1,16 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ListView;
 
 class bbcr
-  implements View.OnTouchListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bbcr(bbcq parambbcq) {}
+  bbcr(bbco parambbco) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramView.setAlpha(1.0F);
-        }
-      }
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    bbco.a(this.a).setPadding(bdaq.a(bbco.a(this.a).getContext(), 8.0F), i, 0, 0);
   }
 }
 

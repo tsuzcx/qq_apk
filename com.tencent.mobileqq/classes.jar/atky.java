@@ -1,8 +1,8 @@
-public class atky
+import android.view.View;
+
+public abstract interface atky
 {
-  public int a;
-  public String a;
-  public String b;
+  public abstract void a(View paramView, aozs paramaozs, atli paramatli);
 }
 
 

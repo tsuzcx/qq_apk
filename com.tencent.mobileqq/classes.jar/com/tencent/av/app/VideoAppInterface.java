@@ -1,7 +1,7 @@
 package com.tencent.av.app;
 
-import alko;
-import alkr;
+import alpd;
+import alpg;
 import android.app.Notification;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -15,13 +15,13 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import awbx;
-import axht;
-import ayya;
-import azmj;
-import azng;
-import bapv;
-import baqu;
+import awgg;
+import axmc;
+import azcj;
+import azqs;
+import azrp;
+import baue;
+import bavd;
 import com.tencent.av.VideoController;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.av.opengl.effects.AEFilterSupport;
@@ -93,17 +93,17 @@ import mvj;
 
 public class VideoAppInterface
   extends AppInterface
-  implements azng
+  implements azrp
 {
   private static String jdField_a_of_type_JavaLangString = "VideoAppInterface";
   protected int a;
   protected Handler a;
-  private awbx jdField_a_of_type_Awbx;
-  private baqu jdField_a_of_type_Baqu;
+  private awgg jdField_a_of_type_Awgg;
+  private bavd jdField_a_of_type_Bavd;
   public VideoController a;
   protected DeviceCapabilityExamination a;
   private Runnable jdField_a_of_type_JavaLangRunnable;
-  protected List<alkr> a;
+  protected List<alpg> a;
   private lfz jdField_a_of_type_Lfz;
   private lga jdField_a_of_type_Lga;
   lgf jdField_a_of_type_Lgf;
@@ -251,7 +251,7 @@ public class VideoAppInterface
     return this.jdField_a_of_type_Lhy.a(paramString);
   }
   
-  public alko a(int paramInt)
+  public alpd a(int paramInt)
   {
     return this.jdField_a_of_type_Lja.a(this, paramInt);
   }
@@ -293,12 +293,12 @@ public class VideoAppInterface
       return null;
     }
     paramString.setClassLoader(RedAppInfo.class.getClassLoader());
-    return axht.a((RedAppInfo)paramString.getParcelable("red_touch_red_app_info"));
+    return axmc.a((RedAppInfo)paramString.getParcelable("red_touch_red_app_info"));
   }
   
   public String a()
   {
-    String str2 = getApp().getString(2131721336);
+    String str2 = getApp().getString(2131721349);
     Object localObject = a();
     String str1 = str2;
     if (localObject != null)
@@ -308,7 +308,7 @@ public class VideoAppInterface
       localObject = ((VideoController)localObject).a().f;
       str1 = str2;
       if (i == 9500) {
-        str1 = getDisplayName(i, str3, (String)localObject) + getApp().getString(2131721338);
+        str1 = getDisplayName(i, str3, (String)localObject) + getApp().getString(2131721351);
       }
     }
     return str1;
@@ -399,7 +399,7 @@ public class VideoAppInterface
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "getVideoConfigUpdate");
     }
-    NewIntent localNewIntent = new NewIntent(this.app, ayya.class);
+    NewIntent localNewIntent = new NewIntent(this.app, azcj.class);
     localNewIntent.putExtra("reqType", 11);
     startServlet(localNewIntent);
   }
@@ -493,7 +493,7 @@ public class VideoAppInterface
         if ((this.jdField_a_of_type_ComTencentAvVideoController != null) && (this.jdField_a_of_type_ComTencentAvVideoController.a() != null))
         {
           if (this.jdField_a_of_type_ComTencentAvVideoController.a().H) {
-            azmj.b(null, "CliOper", "", "", "0X8008AAD", "0X8008AAD", 0, 0, "", "", "", "");
+            azqs.b(null, "CliOper", "", "", "0X8008AAD", "0X8008AAD", 0, 0, "", "", "", "");
           }
         }
         else
@@ -534,7 +534,7 @@ public class VideoAppInterface
           return;
           bool = false;
           continue;
-          azmj.b(null, "CliOper", "", "", "0X8008AAC", "0X8008AAC", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X8008AAC", "0X8008AAC", 0, 0, "", "", "", "");
         }
         catch (NullPointerException localNullPointerException)
         {
@@ -669,15 +669,15 @@ public class VideoAppInterface
     return this.jdField_a_of_type_Lhy.a(paramString);
   }
   
-  public void addObserver(alkr paramalkr)
+  public void addObserver(alpg paramalpg)
   {
-    addObserver(paramalkr, false);
+    addObserver(paramalpg, false);
   }
   
-  public void addObserver(alkr paramalkr, boolean paramBoolean)
+  public void addObserver(alpg paramalpg, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramalkr)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramalkr);
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramalpg)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramalpg);
     }
   }
   
@@ -847,7 +847,7 @@ public class VideoAppInterface
     return AppSetting.a();
   }
   
-  public List<alkr> getBusinessObserver(int paramInt)
+  public List<alpg> getBusinessObserver(int paramInt)
   {
     if (paramInt == 0) {
       return this.jdField_a_of_type_JavaUtilList;
@@ -865,12 +865,12 @@ public class VideoAppInterface
     return this.jdField_a_of_type_Lhy.b(paramInt, paramString1, paramString2);
   }
   
-  public awbx getEntityManagerFactory(String paramString)
+  public awgg getEntityManagerFactory(String paramString)
   {
-    if (this.jdField_a_of_type_Awbx == null) {
-      this.jdField_a_of_type_Awbx = new QQEntityManagerFactory(getAccount());
+    if (this.jdField_a_of_type_Awgg == null) {
+      this.jdField_a_of_type_Awgg = new QQEntityManagerFactory(getAccount());
     }
-    return this.jdField_a_of_type_Awbx;
+    return this.jdField_a_of_type_Awgg;
   }
   
   public Class<? extends MSFServlet>[] getMessagePushServlets()
@@ -878,12 +878,12 @@ public class VideoAppInterface
     return new Class[] { lgc.class };
   }
   
-  public bapv getNetEngine(int paramInt)
+  public baue getNetEngine(int paramInt)
   {
-    if (this.jdField_a_of_type_Baqu == null) {
-      this.jdField_a_of_type_Baqu = new baqu();
+    if (this.jdField_a_of_type_Bavd == null) {
+      this.jdField_a_of_type_Bavd = new bavd();
     }
-    return this.jdField_a_of_type_Baqu.a(this, paramInt);
+    return this.jdField_a_of_type_Bavd.a(this, paramInt);
   }
   
   public boolean h()
@@ -1011,11 +1011,11 @@ public class VideoAppInterface
     this.jdField_a_of_type_Lgf.b();
     this.jdField_a_of_type_Lhy.b();
     this.jdField_a_of_type_Lhy.d();
-    if (this.jdField_a_of_type_Baqu != null) {}
+    if (this.jdField_a_of_type_Bavd != null) {}
     try
     {
-      this.jdField_a_of_type_Baqu.onDestroy();
-      this.jdField_a_of_type_Baqu = null;
+      this.jdField_a_of_type_Bavd.onDestroy();
+      this.jdField_a_of_type_Bavd = null;
       PtvTemplateManager.a();
       AVRedPacketManager.b();
       this.jdField_a_of_type_Lhn.b();
@@ -1037,14 +1037,14 @@ public class VideoAppInterface
     {
       for (;;)
       {
-        this.jdField_a_of_type_Baqu.onDestroy();
+        this.jdField_a_of_type_Bavd.onDestroy();
       }
     }
   }
   
-  public void removeObserver(alkr paramalkr)
+  public void removeObserver(alpg paramalpg)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramalkr);
+    this.jdField_a_of_type_JavaUtilList.remove(paramalpg);
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)

@@ -1,165 +1,113 @@
+import android.os.Bundle;
 import android.os.Handler;
-import android.util.Pair;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.webkit.WebView;
+import android.util.SparseArray;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.minigame.ui.VConsoleDragView;
-import com.tencent.qqmini.sdk.minigame.ui.VConsoleView;
-import com.tencent.qqmini.sdk.minigame.utils.VConsoleLogManager.3;
-import com.tencent.qqmini.sdk.minigame.utils.VConsoleLogManager.4;
-import java.util.concurrent.ArrayBlockingQueue;
+import com.tencent.qqmini.sdk.manager.EngineChannel;
+import com.tencent.qqmini.sdk.manager.EngineManager.EngineChannelReceiver.1;
+import com.tencent.qqmini.sdk.manager.InstalledEngine;
+import com.tencent.qqmini.sdk.utils.WnsUtil;
+import java.util.Iterator;
+import java.util.List;
 
 public class bgwh
-  implements bgvx
+  implements bgvz
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bgwj(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private WebView jdField_a_of_type_AndroidWebkitWebView;
-  private VConsoleDragView jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleDragView;
-  private VConsoleView jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleView;
-  String jdField_a_of_type_JavaLangString = "file:///android_asset/mini/mini_vconsole.html";
-  private ArrayBlockingQueue jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue = new ArrayBlockingQueue(1000);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
-  private boolean d;
+  public bgwh(bgwe parambgwe) {}
   
-  private void a()
+  public void a(int paramInt, Bundle paramBundle)
   {
-    this.b = true;
-    for (Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.poll(); localPair != null; localPair = (Pair)this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.poll()) {
-      b((String)localPair.first, (String)localPair.second);
-    }
-    this.b = false;
-  }
-  
-  private void a(String paramString)
-  {
-    ThreadManager.c().post(new VConsoleLogManager.4(this, paramString));
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    boolean bool = false;
-    this.c = paramBoolean;
-    a("javascript:showPannel()");
-    VConsoleView localVConsoleView;
-    if (this.d)
+    paramBundle.setClassLoader(getClass().getClassLoader());
+    int i = paramBundle.getInt("baseLibType");
+    int j = paramBundle.getInt("enginePid");
+    EngineChannel localEngineChannel = (EngineChannel)paramBundle.getParcelable("engineChannel");
+    if (localEngineChannel != null)
     {
-      localVConsoleView = this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleView;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label63;
+      if (bgwe.a(this.a).indexOfKey(j) > 0) {
+        QMLog.w("EngineManager", "[MiniEng] channel already exists for pid " + j + " replacing");
       }
+      bgwe.a(this.a).put(j, localEngineChannel);
     }
-    label63:
-    for (int i = 8;; i = 0)
+    localEngineChannel = (EngineChannel)bgwe.a(this.a).get(j);
+    if (localEngineChannel == null)
     {
-      localVConsoleView.setVisibility(i);
-      paramBoolean = bool;
-      if (!this.jdField_a_of_type_Boolean) {
-        paramBoolean = true;
-      }
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      a();
+      QMLog.e("EngineManager", "[MiniEng]no channel available for pid " + j);
       return;
     }
-  }
-  
-  private void b()
-  {
-    boolean bool1 = true;
-    boolean bool2 = false;
-    if ((this.jdField_a_of_type_AndroidWebkitWebView == null) || (this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleView == null)) {
+    QMLog.i("EngineManager", "[MiniEng] onReceiveData what=" + paramInt + ",baseLibType=" + i + ",pid=" + j + ",remote=" + localEngineChannel + ",channelCount=" + bgwe.a(this.a).size());
+    localEngineChannel.a(55, null);
+    Object localObject;
+    if (paramInt == 1)
+    {
+      paramBundle = bgwe.a().a(i);
+      localObject = new Bundle();
+      ((Bundle)localObject).putParcelableArrayList("installedEngineList", paramBundle);
+      localEngineChannel.a(51, (Bundle)localObject);
+      bgwe.a(this.a, localEngineChannel);
+      QMLog.i("EngineManager", "[MiniEng]LiveChannel count " + bgwe.a(this.a).size());
       return;
     }
-    if (this.c)
-    {
-      VConsoleView localVConsoleView = this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleView;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (int i = 8;; i = 0)
+    if (paramInt == 3) {
+      if (i == 2)
       {
-        localVConsoleView.setVisibility(i);
-        bool1 = bool2;
-        if (!this.jdField_a_of_type_Boolean) {
-          bool1 = true;
-        }
-        this.jdField_a_of_type_Boolean = bool1;
-        this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleDragView.bringToFront();
+        paramBundle = this.a.a(i).iterator();
+        do
+        {
+          if (!paramBundle.hasNext()) {
+            break;
+          }
+          localObject = (InstalledEngine)paramBundle.next();
+        } while ((!((InstalledEngine)localObject).b) || (!((InstalledEngine)localObject).a));
+      }
+    }
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if ((!bgxk.a().a()) && (paramInt == 0))
+      {
+        ThreadManager.b().post(new EngineManager.EngineChannelReceiver.1(this, localEngineChannel));
         return;
       }
-    }
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      this.d = bool1;
-      break;
-      bool1 = false;
-    }
-  }
-  
-  private void b(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_AndroidWebkitWebView == null)
-    {
-      QMLog.e("[minigame] VConsoleLogManager", "consoleWebView is not ready");
+      if (bgxk.a().b())
+      {
+        paramBundle = WnsUtil.getGameBaseLibInfo();
+        QMLog.i("EngineManager", "[MiniEng] QQSpeed INSTALL_LATEST_ENGINE gameEngineLib " + paramBundle);
+        if ((paramBundle == null) || (paramBundle.baseLibType != 2)) {
+          break;
+        }
+        bgwe.b(this.a, paramBundle, localEngineChannel);
+        return;
+      }
+      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib("0,0,1", false, true, new bgwi(this, i, localEngineChannel));
+      return;
+      if (paramInt == 5)
+      {
+        if ((i == 2) && (bgxk.a().b()))
+        {
+          paramBundle = WnsUtil.getGameBaseLibInfo();
+          QMLog.i("EngineManager", "[MiniEng] QQSpeed UPGRADE_ENGINE gameEngineLib " + paramBundle);
+          if ((paramBundle == null) || (paramBundle.baseLibType != 2)) {
+            break;
+          }
+          bgwe.c(this.a, paramBundle, localEngineChannel);
+          return;
+        }
+        ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib("0,0,1", false, true, new bgwj(this, i, localEngineChannel));
+        return;
+      }
+      if (paramInt != 56) {
+        break;
+      }
+      paramBundle = (InstalledEngine)paramBundle.getParcelable("invalidEngine");
+      QMLog.i("EngineManager", "[MiniEng] receive delete InstalledEngine from pid:" + j + ", baseLibType:" + i + ", targetEngine:" + paramBundle);
+      if (paramBundle == null) {
+        break;
+      }
+      bgwa.a(paramBundle);
       return;
     }
-    ThreadManager.c().post(new VConsoleLogManager.3(this, paramString1, paramString2));
-  }
-  
-  public void a(VConsoleView paramVConsoleView, VConsoleDragView paramVConsoleDragView, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleView = paramVConsoleView;
-    this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleDragView = paramVConsoleDragView;
-    this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleDragView.bringToFront();
-    this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleDragView.setListener(this);
-    this.jdField_a_of_type_AndroidWebkitWebView = paramVConsoleView.jdField_a_of_type_AndroidWebkitWebView;
-    this.jdField_a_of_type_AndroidWebkitWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWebkitWebView.setWebViewClient(new bgwi(this));
-    this.jdField_a_of_type_Boolean = false;
-    paramVConsoleView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidViewView = paramVConsoleView.jdField_a_of_type_AndroidWidgetImageView;
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (paramBoolean) {
-      b();
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    String str = paramString2.replace("\n", "\\r\\n").replace("\\\"", "\"").replace("\"", "\\\"");
-    paramString2 = str;
-    if (str.endsWith("\\")) {
-      paramString2 = str + "\\";
-    }
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue == null) {
-        this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue = new ArrayBlockingQueue(1000);
-      }
-      if (this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.size() == 1000) {
-        this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.poll();
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.add(new Pair(paramString1, paramString2));
-      if ((this.c) && (!this.b)) {
-        a();
-      }
-    }
-    catch (Throwable paramString1)
-    {
-      for (;;)
-      {
-        QMLog.e("[minigame] VConsoleLogManager", "injectLog error", paramString1);
-      }
-    }
-    finally {}
-  }
-  
-  public void d()
-  {
-    b();
   }
 }
 

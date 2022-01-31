@@ -1,14 +1,34 @@
-import android.widget.FrameLayout.LayoutParams;
+import java.lang.reflect.Method;
 
 public class bely
-  extends FrameLayout.LayoutParams
 {
-  public int a;
-  public int b;
-  
-  public bely(int paramInt1, int paramInt2, int paramInt3)
+  public static Class a(ClassLoader paramClassLoader, String paramString)
   {
-    super(paramInt1, paramInt2, paramInt3);
+    try
+    {
+      paramClassLoader = paramClassLoader.loadClass(paramString);
+      return paramClassLoader;
+    }
+    catch (ClassNotFoundException paramClassLoader)
+    {
+      paramClassLoader.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static Method a(Class paramClass, String paramString, Class[] paramArrayOfClass)
+  {
+    try
+    {
+      paramClass = paramClass.getDeclaredMethod(paramString, paramArrayOfClass);
+      paramClass.setAccessible(true);
+      return paramClass;
+    }
+    catch (NoSuchMethodException paramClass)
+    {
+      paramClass.printStackTrace();
+    }
+    return null;
   }
 }
 

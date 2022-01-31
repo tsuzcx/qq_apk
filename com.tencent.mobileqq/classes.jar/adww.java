@@ -1,15 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class adww
+class adww
   implements DialogInterface.OnClickListener
 {
-  public adww(TranslucentTRansferFragment paramTranslucentTRansferFragment, bdfq parambdfq) {}
+  adww(adws paramadws) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bdfq.dismiss();
+    this.a.b = true;
+    adws.b(this.a);
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

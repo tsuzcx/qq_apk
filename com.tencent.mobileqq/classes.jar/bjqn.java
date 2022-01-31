@@ -1,35 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FilenameFilter;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportReq;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportRsp;
+import NS_MOBILE_QBOSS_PROTO.tMobileQbossFeedBackInfo;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
-final class bjqn
-  implements FilenameFilter
+public class bjqn
+  extends QzoneExternalRequest
 {
-  bjqn(long paramLong1, long paramLong2) {}
+  private JceStruct a;
   
-  public boolean accept(File paramFile, String paramString)
+  public bjqn(ArrayList<tMobileQbossFeedBackInfo> paramArrayList)
   {
-    if (!paramString.endsWith(".trace")) {}
-    long l;
+    MobileQbossReportReq localMobileQbossReportReq = new MobileQbossReportReq();
+    localMobileQbossReportReq.vecMobileQbossFeedBackInfo = paramArrayList;
+    this.a = localMobileQbossReportReq;
+  }
+  
+  public static MobileQbossReportRsp a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
+    }
+    MobileQbossReportRsp localMobileQbossReportRsp;
     do
     {
-      File localFile;
-      do
-      {
-        return false;
-        localFile = new File(paramFile + File.separator + paramString);
-      } while ((localFile == null) || (!localFile.exists()));
-      l = localFile.lastModified();
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file dir: " + paramFile.getName());
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file name: " + paramString + " mStartTime: " + this.a + " mEndTime: " + this.b + " lastModifiedTime: " + l);
-      }
-    } while ((l < this.a) || (l > this.b));
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QZoneAppCtrlUploadFileLogic", 4, "find file name: " + paramString);
-    }
-    return true;
+      return paramArrayOfByte;
+      localMobileQbossReportRsp = (MobileQbossReportRsp)decode(paramArrayOfByte, "report");
+      paramArrayOfByte = localMobileQbossReportRsp;
+    } while (localMobileQbossReportRsp != null);
+    return null;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.mobileqboss.report";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "report";
   }
 }
 

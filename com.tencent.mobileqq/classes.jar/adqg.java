@@ -1,35 +1,41 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class adqg
-  extends WtloginObserver
+  extends BroadcastReceiver
 {
-  public adqg(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public adqg(QQIdentiferLegacy paramQQIdentiferLegacy) {}
   
-  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel())
+    paramContext = paramIntent.getAction();
+    if (("tencent.av.v2q.StartVideoChat".equals(paramContext)) || ("tencent.av.v2q.AvSwitch".equals(paramContext)))
     {
-      QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      i = paramIntent.getIntExtra("sessionType", 0);
+      QLog.d("QQIdentiferLegacy", 1, "received video chat broadcast: " + i);
+      if ((i == 2) || (i == 4))
+      {
+        paramContext = new Intent();
+        paramIntent = new Bundle();
+        paramIntent.putInt("ret", 204);
+        paramIntent.putString("errMsg", atho.a);
+        paramContext.putExtra("data", paramIntent);
+        QQIdentiferLegacy.a(this.a).setResult(2, paramContext);
+        QQIdentiferLegacy.a(this.a).finish();
       }
     }
-    if (paramInt2 == 0) {
+    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
+    {
+      int i;
       return;
     }
-    RegisterQQNumberActivity.a(this.a);
-    paramString = new Intent(this.a, LoginActivity.class);
-    paramString.putExtra("uin", RegisterQQNumberActivity.a(this.a));
-    paramString.putExtra("tab_index", MainFragment.b);
-    paramString.addFlags(131072);
-    this.a.startActivity(paramString);
-    this.a.finish();
+    QLog.d("QQIdentiferLegacy", 1, "received account kicked broadcast");
+    QQIdentiferLegacy.a(this.a).finish();
   }
 }
 

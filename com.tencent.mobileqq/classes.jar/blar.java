@@ -1,6 +1,8 @@
 public abstract interface blar
 {
-  public abstract void a(String paramString);
+  public abstract void a(blao paramblao, long paramLong1, long paramLong2);
+  
+  public abstract void a(blao paramblao, String paramString, boolean paramBoolean, int paramInt);
 }
 
 

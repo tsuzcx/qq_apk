@@ -1,8 +1,15 @@
-public abstract interface aynw
+public class aynw
 {
-  public abstract void a(long paramLong, String paramString);
+  public int a;
+  public String a;
   
-  public abstract void a(long paramLong, String paramString1, String paramString2);
+  public aynw() {}
+  
+  public aynw(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

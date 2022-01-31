@@ -25,7 +25,7 @@ public class RingAvatarView
   
   public void a()
   {
-    setBackgroundDrawable(getContext().getResources().getDrawable(2130848898));
+    setBackgroundDrawable(getContext().getResources().getDrawable(2130848971));
   }
   
   public void b()

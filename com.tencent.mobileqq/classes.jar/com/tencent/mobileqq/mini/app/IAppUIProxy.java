@@ -4,11 +4,11 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import anxw;
+import aocf;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public abstract interface IAppUIProxy
-  extends anxw
+  extends aocf
 {
   public abstract void completeLoading(BaseActivity paramBaseActivity);
   

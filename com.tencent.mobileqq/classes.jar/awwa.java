@@ -1,24 +1,26 @@
-import android.view.MotionEvent;
+import android.graphics.Matrix;
+import android.graphics.PointF;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout;
 
 public class awwa
-  implements View.OnTouchListener
+  implements bdoh<Float>
 {
-  public awwa(QCallDetailActivity paramQCallDetailActivity) {}
+  public awwa(ProfileTagView paramProfileTagView, View paramView, PointF paramPointF) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(bdob<Float> parambdob, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      QCallDetailActivity.a(this.a).setPressed(true);
-    }
-    while (1 != paramMotionEvent.getAction()) {
-      return false;
-    }
-    QCallDetailActivity.a(this.a).setPressed(false);
-    return false;
+    paramTransformation.getMatrix().setScale(paramFloat1.floatValue(), paramFloat1.floatValue(), this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
+    paramFloat = this.jdField_a_of_type_AndroidGraphicsPointF.x;
+    float f1 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b.x;
+    float f2 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.getWidth();
+    float f3 = this.jdField_a_of_type_AndroidGraphicsPointF.y;
+    float f4 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b.y;
+    float f5 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.getHeight();
+    paramTransformation.getMatrix().postTranslate((paramFloat - f1) * f2 * paramFloat1.floatValue(), (f3 - f4) * f5 * paramFloat1.floatValue());
+    paramTransformation.getMatrix().postRotate(paramFloat1.floatValue() * 120.0F - 120.0F, this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
   }
 }
 

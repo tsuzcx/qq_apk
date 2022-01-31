@@ -1,11 +1,28 @@
-import android.animation.Animator;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.data.MessageForPtt;
 
-public abstract interface aetf
+public class aetf
+  implements MediaPlayer.OnCompletionListener
 {
-  public abstract void a(Animator paramAnimator, int paramInt);
+  public aetf(MediaPlayerManager paramMediaPlayerManager) {}
   
-  public abstract void a(LottieDrawable paramLottieDrawable, int paramInt);
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
+    }
+    bdfi.a = null;
+    if ((MediaPlayerManager.a(this.a) != null) && ((MediaPlayerManager.a(this.a) instanceof MessageForPtt))) {
+      ((MessageForPtt)MediaPlayerManager.a(this.a)).playProgress = 0.0F;
+    }
+    if ((MediaPlayerManager.a(this.a) != null) && (MediaPlayerManager.a(this.a))) {
+      return;
+    }
+    MediaPlayerManager.a(this.a, null);
+    this.a.e();
+  }
 }
 
 

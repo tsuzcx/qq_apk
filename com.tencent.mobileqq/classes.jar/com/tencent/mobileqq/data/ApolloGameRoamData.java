@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
+import awge;
 import java.io.Serializable;
 
 public class ApolloGameRoamData
-  extends awbv
+  extends awge
   implements Serializable
 {
   public static final int TYPE_RECOMMEND = 1;

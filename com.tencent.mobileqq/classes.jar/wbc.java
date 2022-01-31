@@ -1,11 +1,24 @@
-public class wbc
-  extends ugz
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+class wbc
+  implements bhuk
 {
-  public int a;
+  wbc(wax paramwax, StoryVideoItem paramStoryVideoItem, AtomicBoolean paramAtomicBoolean, bhuf parambhuf) {}
   
-  public String toString()
+  public void OnClick(View paramView, int paramInt)
   {
-    return "ChangeVideoSortEvent " + super.toString();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      wax.a(this.jdField_a_of_type_Wax, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    }
   }
 }
 

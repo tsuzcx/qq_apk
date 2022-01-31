@@ -1,17 +1,10 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
 
-class afki
-  implements arnx
+public abstract interface afki
 {
-  afki(afjb paramafjb) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    arni.b((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-  }
+  public abstract void a(Bundle paramBundle);
 }
 
 

@@ -1,36 +1,29 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StGetWatermarkDictRsp;
-import NS_QQ_STORY_CLIENT.CLIENT.StWatermarkDict;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class bkuo
-  implements yvn<CLIENT.StGetWatermarkDictRsp>
+  implements Animation.AnimationListener
 {
-  bkuo(bkum parambkum) {}
+  bkuo(bkuh parambkuh, boolean paramBoolean, int paramInt, String paramString) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StGetWatermarkDictRsp paramStGetWatermarkDictRsp)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramBoolean)
-    {
-      blfg.b(bkum.a(), "[onReceive]:");
-      paramString = paramStGetWatermarkDictRsp.extInfo;
-      paramStGetWatermarkDictRsp = paramStGetWatermarkDictRsp.vecWatermarkDict.get();
-      paramString = new HashMap();
-      paramStGetWatermarkDictRsp = paramStGetWatermarkDictRsp.iterator();
-      while (paramStGetWatermarkDictRsp.hasNext())
-      {
-        CLIENT.StWatermarkDict localStWatermarkDict = (CLIENT.StWatermarkDict)paramStGetWatermarkDictRsp.next();
-        paramString.put(localStWatermarkDict.key.get(), localStWatermarkDict.value.get());
-      }
-      blfg.b(bkum.a(), "[onReceive] watermarkDict.size:" + paramString.size());
-      bkum.a(this.a, paramString);
-      return;
+    bkuh.a(this.jdField_a_of_type_Bkuh, false);
+    bkuh.b(this.jdField_a_of_type_Bkuh).setVisibility(8);
+    bkuh.a(this.jdField_a_of_type_Bkuh).setVisibility(8);
+    if ((this.jdField_a_of_type_Boolean) && (!bkuh.a(this.jdField_a_of_type_Bkuh).get())) {
+      bkuh.a(this.jdField_a_of_type_Bkuh, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
     }
-    blfg.d(bkum.a(), "retCode:" + paramLong + " errMSg:" + paramString);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    bkuh.a(this.jdField_a_of_type_Bkuh, true);
   }
 }
 

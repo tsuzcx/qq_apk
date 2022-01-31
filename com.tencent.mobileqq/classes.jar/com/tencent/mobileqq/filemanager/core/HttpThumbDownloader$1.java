@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqtm;
+import aqxv;
 
 public class HttpThumbDownloader$1
   implements Runnable
 {
-  public HttpThumbDownloader$1(aqtm paramaqtm) {}
+  public HttpThumbDownloader$1(aqxv paramaqxv) {}
   
   public void run()
   {
-    aqtm.a(this.this$0);
+    aqxv.a(this.this$0);
   }
 }
 

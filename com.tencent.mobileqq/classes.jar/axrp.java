@@ -1,69 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
+import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView.1.1;
 
 public class axrp
-  extends Handler
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  protected WeakReference<axrn> a;
+  public axrp(FollowCaptureView paramFollowCaptureView) {}
   
-  public axrp(axrn paramaxrn1, Looper paramLooper, axrn paramaxrn2)
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaxrn2);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.what;
-    axrn localaxrn = (axrn)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localaxrn == null) {
-      if (QLog.isColorLevel()) {
-        QLog.w("HWVideoRecorder", 2, "RecodeHandler.handleMessage: encoder is null");
-      }
+    FollowCaptureView.a(this.a, paramSurfaceTexture);
+    this.a.queueEvent(new FollowCaptureView.1.1(this, paramSurfaceTexture));
+    if (!FollowCaptureView.a(this.a)) {
+      FollowCaptureView.a(this.a, true);
     }
-    label187:
-    do
-    {
-      do
-      {
-        return;
-        switch (i)
-        {
-        default: 
-          throw new RuntimeException("Unhandled msg what=" + i);
-        case 0: 
-          if (paramMessage.obj != null)
-          {
-            axrn.a(localaxrn, (axrq)paramMessage.obj);
-            return;
-          }
-          throw new RuntimeException("bundle == null");
-        case 1: 
-          if ((axrn.a(this.jdField_a_of_type_Axrn)) || (axrn.a(this.jdField_a_of_type_Axrn) == null) || (!axrn.a(this.jdField_a_of_type_Axrn).a)) {
-            break label187;
-          }
-          sendEmptyMessageDelayed(1, 100L);
-        }
-      } while ((!QLog.isColorLevel()) || (!QLog.isColorLevel()));
-      QLog.d("HWVideoRecorder", 2, "Thumbnail is not ready. Wait 100ms and retry.");
-      return;
-      axrn.a(localaxrn);
-      return;
-      if (paramMessage.obj != null)
-      {
-        paramMessage = (Object[])paramMessage.obj;
-        if ((paramMessage == null) || (paramMessage.length != 5)) {
-          throw new IllegalArgumentException("args == null || args.length != 6");
-        }
-        localaxrn.b(((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
-        return;
-      }
-      throw new RuntimeException("bundle == null");
-    } while (axrn.a(this.jdField_a_of_type_Axrn) == null);
-    axrn.a(this.jdField_a_of_type_Axrn).a();
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.extendfriend.bean;
 
-import apyg;
+import aqcp;
 
 public class MiniAppRecommManager$1
   implements Runnable
 {
   public void run()
   {
-    apyg.a(this.this$0, this.a);
+    aqcp.a(this.this$0, this.a);
   }
 }
 

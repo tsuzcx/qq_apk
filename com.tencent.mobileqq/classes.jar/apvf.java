@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelFavHelper.5.1;
+import mqq.os.MqqHandler;
 
 public class apvf
-  implements ShareActionSheet.OnItemClickListener
+  extends alsc
 {
-  public apvf(AIOEmotionFragment paramAIOEmotionFragment) {}
+  apvf(apvd paramapvd) {}
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    this.a.a.dismiss();
-    int i = paramActionSheetItem.action;
-    this.a.a(i, paramActionSheetItem);
+    if (paramBoolean) {
+      this.a.j();
+    }
+    if ((paramObject != null) && ((paramObject instanceof Integer))) {
+      ThreadManager.getUIHandler().post(new EmoticonPanelFavHelper.5.1(this, paramObject));
+    }
   }
 }
 

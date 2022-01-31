@@ -1,18 +1,23 @@
 import android.annotation.TargetApi;
+import android.graphics.Outline;
+import android.graphics.Rect;
 import android.view.View;
-import android.view.View.AccessibilityDelegate;
+import android.view.ViewOutlineProvider;
 
-class bhvs
-  extends View.AccessibilityDelegate
+@TargetApi(21)
+public class bhvs
+  extends ViewOutlineProvider
 {
-  bhvs(bhvq parambhvq) {}
+  private float a;
   
-  @TargetApi(14)
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public bhvs(float paramFloat)
   {
-    if (paramInt != 32) {
-      super.sendAccessibilityEvent(paramView, paramInt);
-    }
+    this.a = paramFloat;
+  }
+  
+  public void getOutline(View paramView, Outline paramOutline)
+  {
+    paramOutline.setRoundRect(new Rect(0, 0, paramView.getWidth(), paramView.getHeight()), this.a);
   }
 }
 

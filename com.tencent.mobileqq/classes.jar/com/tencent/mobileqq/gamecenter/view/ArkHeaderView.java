@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import aekt;
-import afdt;
-import afdx;
+import aepi;
+import afii;
+import afim;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import anjs;
-import asjl;
+import anob;
+import asnu;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.ark.ArkViewImplement.ArkViewInterface;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -21,9 +21,9 @@ import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 
 public class ArkHeaderView
   extends ArkAppView
-  implements asjl
+  implements asnu
 {
-  private afdt jdField_a_of_type_Afdt;
+  private afii jdField_a_of_type_Afii;
   private String jdField_a_of_type_JavaLangString;
   
   public ArkHeaderView(Context paramContext, AttributeSet paramAttributeSet)
@@ -33,23 +33,23 @@ public class ArkHeaderView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Afdt != null) {
-      this.jdField_a_of_type_Afdt.doOnEvent(2);
+    if (this.jdField_a_of_type_Afii != null) {
+      this.jdField_a_of_type_Afii.doOnEvent(2);
     }
   }
   
   public void a(MessageRecord paramMessageRecord, Activity paramActivity)
   {
     paramMessageRecord = (MessageForArkApp)paramMessageRecord;
-    this.jdField_a_of_type_Afdt = new afdt();
+    this.jdField_a_of_type_Afii = new afii();
     SessionInfo localSessionInfo = new SessionInfo();
     localSessionInfo.jdField_a_of_type_JavaLangString = "2747277822";
-    this.jdField_a_of_type_Afdt.a(paramMessageRecord.ark_app_message.appName, paramMessageRecord.ark_app_message.appView, paramMessageRecord.ark_app_message.appMinVersion, paramMessageRecord.ark_app_message.metaList, paramActivity.getResources().getDisplayMetrics().scaledDensity, localSessionInfo);
-    int i = aekt.a(350.0F, paramActivity.getResources());
-    int j = anjs.d;
-    this.jdField_a_of_type_Afdt.setMaxSize(j, i);
+    this.jdField_a_of_type_Afii.a(paramMessageRecord.ark_app_message.appName, paramMessageRecord.ark_app_message.appView, paramMessageRecord.ark_app_message.appMinVersion, paramMessageRecord.ark_app_message.metaList, paramActivity.getResources().getDisplayMetrics().scaledDensity, localSessionInfo);
+    int i = aepi.a(350.0F, paramActivity.getResources());
+    int j = anob.d;
+    this.jdField_a_of_type_Afii.setMaxSize(j, i);
     setClipRadius(5.0F);
-    a(this.jdField_a_of_type_Afdt, null);
+    a(this.jdField_a_of_type_Afii, null);
     setVisibility(0);
     try
     {
@@ -64,16 +64,16 @@ public class ArkHeaderView
   
   public void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity, int paramInt)
   {
-    this.jdField_a_of_type_Afdt = new afdt();
+    this.jdField_a_of_type_Afii = new afii();
     SessionInfo localSessionInfo = new SessionInfo();
     localSessionInfo.jdField_a_of_type_JavaLangString = "2747277822";
-    this.jdField_a_of_type_Afdt.a(paramQQGameMsgInfo.arkAppName, paramQQGameMsgInfo.arkAppView, paramQQGameMsgInfo.arkAppMinVersion, paramQQGameMsgInfo.arkMetaList, paramActivity.getResources().getDisplayMetrics().scaledDensity, localSessionInfo);
-    paramInt = aekt.a(350.0F, paramActivity.getResources());
-    int i = anjs.d;
-    this.jdField_a_of_type_Afdt.setMaxSize(i, paramInt);
-    this.jdField_a_of_type_Afdt.setFixSize(i, paramInt);
+    this.jdField_a_of_type_Afii.a(paramQQGameMsgInfo.arkAppName, paramQQGameMsgInfo.arkAppView, paramQQGameMsgInfo.arkAppMinVersion, paramQQGameMsgInfo.arkMetaList, paramActivity.getResources().getDisplayMetrics().scaledDensity, localSessionInfo);
+    paramInt = aepi.a(350.0F, paramActivity.getResources());
+    int i = anob.d;
+    this.jdField_a_of_type_Afii.setMaxSize(i, paramInt);
+    this.jdField_a_of_type_Afii.setFixSize(i, paramInt);
     setClipRadius(5.0F);
-    a(this.jdField_a_of_type_Afdt, null);
+    a(this.jdField_a_of_type_Afii, null);
     setVisibility(0);
     try
     {

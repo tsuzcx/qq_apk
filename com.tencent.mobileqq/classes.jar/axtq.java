@@ -1,49 +1,43 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.1;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.2;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.3;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.4;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.5;
-
 public class axtq
-  extends agfx
 {
-  public axtq(AIOGalleryActivity paramAIOGalleryActivity) {}
+  public int a;
+  public long a;
+  public azjw a;
+  public String a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public long c;
   
-  public void a()
+  public axtq()
   {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.4(this));
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
+  public void a(axtq paramaxtq)
   {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.2(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean));
+    if (paramaxtq == null) {
+      throw new NullPointerException();
+    }
+    this.jdField_a_of_type_JavaLangString = paramaxtq.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Azjw = paramaxtq.jdField_a_of_type_Azjw;
+    this.jdField_a_of_type_Boolean = paramaxtq.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Int = paramaxtq.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Boolean = paramaxtq.jdField_b_of_type_Boolean;
+    this.jdField_a_of_type_Long = paramaxtq.jdField_a_of_type_Long;
+    this.jdField_b_of_type_Long = paramaxtq.jdField_b_of_type_Long;
+    this.c = paramaxtq.c;
   }
   
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  public String toString()
   {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.1(this, paramBoolean, paramLong, paramInt1, paramInt2, paramInt3, paramString));
+    return "AudioDecodeConfig=[audioFilePath:" + this.jdField_a_of_type_JavaLangString + " repeat:" + this.jdField_a_of_type_Boolean + " speedType:" + this.jdField_a_of_type_Int + " mMuteAudio:" + this.jdField_b_of_type_Boolean + " startTimeMs:" + this.jdField_a_of_type_Long + " endTimeMs:" + this.jdField_b_of_type_Long + " videoDuration:" + this.c + "]";
   }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.5(this, paramLong, paramInt1, paramInt2, paramString1, paramArrayOfString, paramString2, paramMessageForShortVideo, paramInt3));
-  }
-  
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.3(this, paramArrayOfAIORichMediaData, paramInt));
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axtq
  * JD-Core Version:    0.7.0.1
  */

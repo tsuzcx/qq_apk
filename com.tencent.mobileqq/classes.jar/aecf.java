@@ -1,35 +1,43 @@
-import android.os.Handler;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.AnimationEndClearListener.1;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aecf
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public int a;
-  public View a;
+  public aecf(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.postDelayed(new TroopMemberListActivity.AnimationEndClearListener.1(this), 0L);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
-    }
-    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
+    if (System.currentTimeMillis() - this.a.jdField_a_of_type_Long >= 1500L) {
+      try
+      {
+        this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+        switch (paramView.getId())
+        {
+        case 2131378336: 
+          TroopStoryMainActivity.a(this.a);
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick, url:http://qqweb.qq.com/m/qunfeeds/index.html?_wv=1031&_bid=200");
+          }
+          if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
+            this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          }
+          wxj.a("grp_help", "clk_video", 0, 0, new String[] { "", "", "", "" });
+          return;
+        }
+      }
+      catch (Exception paramView)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.e("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick:" + paramView.toString());
+          return;
+        }
+      }
     }
   }
 }

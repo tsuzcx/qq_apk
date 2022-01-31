@@ -1,6 +1,8 @@
-public abstract interface xoi<V>
+public class xoi
 {
-  public abstract V a();
+  private xoj jdField_a_of_type_Xoj;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
 }
 
 

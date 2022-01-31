@@ -1,7 +1,12 @@
+import android.graphics.drawable.Drawable;
+import java.util.List;
+
 public class uqv
-  extends ugz
 {
-  public boolean a;
+  public static Drawable a(List<String> paramList)
+  {
+    return ((wdt)uwa.a(24)).a(paramList);
+  }
 }
 
 

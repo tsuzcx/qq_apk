@@ -1,22 +1,16 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class ajrd
-  implements MediaPlayer.OnCompletionListener
+  implements DialogInterface.OnClickListener
 {
-  public ajrd(FixedSizeVideoView paramFixedSizeVideoView) {}
+  public ajrd(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null)
-    {
-      if (FixedSizeVideoView.a(this.a) != null) {
-        FixedSizeVideoView.a(this.a).removeMessages(0);
-      }
-      this.a.a.a(paramMediaPlayer);
-    }
+    wxj.a("video_shoot", "cancel_now", 0, 0, new String[0]);
+    paramDialogInterface.dismiss();
   }
 }
 

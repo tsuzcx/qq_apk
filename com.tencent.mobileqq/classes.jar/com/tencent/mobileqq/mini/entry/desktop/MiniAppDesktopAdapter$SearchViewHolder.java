@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import azib;
+import azmk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -33,8 +33,8 @@ class MiniAppDesktopAdapter$SearchViewHolder
   public MiniAppDesktopAdapter$SearchViewHolder(WeakReference<Activity> paramWeakReference, View paramView)
   {
     super(paramView);
-    this.keywordTv = ((TextView)paramView.findViewById(2131370523));
-    this.container = paramView.findViewById(2131370519);
+    this.keywordTv = ((TextView)paramView.findViewById(2131370542));
+    this.container = paramView.findViewById(2131370538);
     this.container.setPadding(0, 0, 0, 0);
     paramView.setOnClickListener(new MiniAppDesktopAdapter.SearchViewHolder.1(this, paramWeakReference));
   }
@@ -44,13 +44,13 @@ class MiniAppDesktopAdapter$SearchViewHolder
     Object localObject2 = MiniAppUtils.getAppInterface();
     if (localObject2 != null)
     {
-      if ((ThemeUtil.isDefaultTheme()) || (ThemeUtil.isGoldenTheme()) || (DisplayUtil.isWhiteModeTheme()) || (azib.b(ThemeUtil.getCurrentThemeId())))
+      if ((ThemeUtil.isDefaultTheme()) || (ThemeUtil.isGoldenTheme()) || (DisplayUtil.isWhiteModeTheme()) || (azmk.b(ThemeUtil.getCurrentThemeId())))
       {
-        this.container.setBackgroundResource(2130840760);
-        localObject1 = BaseApplicationImpl.getContext().getResources().getDrawable(2130849667);
+        this.container.setBackgroundResource(2130840761);
+        localObject1 = BaseApplicationImpl.getContext().getResources().getDrawable(2130849740);
         ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getMinimumWidth(), ((Drawable)localObject1).getMinimumHeight());
         this.keywordTv.setCompoundDrawables((Drawable)localObject1, null, null, null);
-        this.keywordTv.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131166992));
+        this.keywordTv.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131166994));
       }
     }
     else
@@ -73,7 +73,7 @@ class MiniAppDesktopAdapter$SearchViewHolder
     label289:
     label304:
     label319:
-    for (Object localObject1 = this.keywordTv.getText().toString();; localObject1 = alpo.a(2131707179))
+    for (Object localObject1 = this.keywordTv.getText().toString();; localObject1 = alud.a(2131707191))
     {
       if (localObject2 != null)
       {
@@ -86,11 +86,11 @@ class MiniAppDesktopAdapter$SearchViewHolder
         }
       }
       return;
-      this.container.setBackgroundResource(2130849671);
+      this.container.setBackgroundResource(2130849744);
       break;
-      this.keywordTv.setText(alpo.a(2131707171));
+      this.keywordTv.setText(alud.a(2131707183));
       break label167;
-      this.keywordTv.setText(alpo.a(2131707174));
+      this.keywordTv.setText(alud.a(2131707186));
       break label167;
     }
   }

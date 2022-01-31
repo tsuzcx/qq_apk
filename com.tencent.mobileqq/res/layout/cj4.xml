@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/b64" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik">
-        <View android:id="@id/icon" android:background="@drawable/qq_profilecard_item_qqcircle" style="@style/bw" />
-        <LinearLayout android:orientation="horizontal" style="@style/by">
-            <TextView android:textSize="@dimen/uj" android:textColor="@color/skin_black_theme_version2" android:ellipsize="middle" android:id="@id/jj7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wjc" android:singleLine="true" android:includeFontPadding="false" />
-        </LinearLayout>
-        <ImageView android:id="@id/dcv" style="@style/bv" />
+<RelativeLayout android:id="@id/ml9" android:background="#ffe3ebeb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="14.0dip" android:textColor="#ff03081a" android:id="@id/ml_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:text="@string/wgg" android:layout_centerVertical="true" />
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_alignParentRight="true">
+        <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/mlk" android:layout_width="47.0dip" android:layout_height="26.0dip" android:layout_marginRight="8.5dip" android:text="@string/wee" />
+        <com.tencent.biz.subscribe.widget.ShadowCardView android:id="@id/mlm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:layout_marginRight="12.0dip" app:shadowBlur="5.0dip" app:shadowBottomHeight="5.0dip" app:shadowCardColor="#ffecedf5" app:shadowCardOffsetY="0.0dip" app:shadowHeightColor="#99a6abbd" app:shadowLeftHeight="0.0dip" app:shadowRightHeight="3.0dip" app:shadowRound="1.0dip" app:shadowTopHeight="0.0dip">
+            <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:gravity="center" android:id="@id/mll" android:layout_width="54.0dip" android:layout_height="26.0dip" android:text="@string/weh" />
+        </com.tencent.biz.subscribe.widget.ShadowCardView>
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/mln" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/efh" />
     </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/ldf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a06" android:layout_marginRight="@dimen/a03" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/lfd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a03" android:layout_marginTop="10.0dip" android:layout_marginRight="@dimen/a03" />
-</LinearLayout>
+</RelativeLayout>

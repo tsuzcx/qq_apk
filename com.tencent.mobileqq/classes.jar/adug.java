@@ -1,25 +1,31 @@
-import android.content.Context;
-import android.net.Uri;
+import android.text.Editable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.view.View.OnFocusChangeListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class adug
-  implements View.OnClickListener
+  implements View.OnFocusChangeListener
 {
-  public adug(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public adug(RegisterByNicknameAndPwdActivity paramRegisterByNicknameAndPwdActivity) {}
   
-  public void onClick(View paramView)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.a.b(0);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230720);
-    if (this.a.a().booleanValue())
+    if (paramView == RegisterByNicknameAndPwdActivity.a(this.a))
     {
-      this.a.b();
-      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230720));
+      if (paramBoolean)
+      {
+        RegisterByNicknameAndPwdActivity.a(this.a).setSelection(RegisterByNicknameAndPwdActivity.a(this.a).getText().length());
+        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
+        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
+        RegisterByNicknameAndPwdActivity.b(this.a).setVisibility(0);
+      }
     }
+    else {
+      return;
+    }
+    RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(8);
   }
 }
 

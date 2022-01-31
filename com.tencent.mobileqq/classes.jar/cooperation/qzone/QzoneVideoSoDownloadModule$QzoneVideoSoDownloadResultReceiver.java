@@ -2,17 +2,17 @@ package cooperation.qzone;
 
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import bjci;
+import bjgp;
 
 public class QzoneVideoSoDownloadModule$QzoneVideoSoDownloadResultReceiver
   extends ResultReceiver
 {
-  private bjci a;
+  private bjgp a;
   
-  public QzoneVideoSoDownloadModule$QzoneVideoSoDownloadResultReceiver(bjci parambjci)
+  public QzoneVideoSoDownloadModule$QzoneVideoSoDownloadResultReceiver(bjgp parambjgp)
   {
     super(null);
-    this.a = parambjci;
+    this.a = parambjgp;
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)

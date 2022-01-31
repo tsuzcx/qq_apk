@@ -1,13 +1,30 @@
+import android.content.Context;
 import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
-class aqmg
-  implements bhrf
+public class aqmg
+  implements View.OnLongClickListener
 {
-  aqmg(aqmd paramaqmd, View paramView) {}
+  public aqmg(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    if (paramView == null) {
+      return false;
+    }
+    if (!this.a.b())
+    {
+      this.a.jdField_a_of_type_Arcc.a(null);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+      return false;
+    }
+    paramView.setSelected(true);
+    bdpi localbdpi = new bdpi();
+    localbdpi.a(2131365065, paramView.getContext().getString(2131691562));
+    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bdft.a(paramView, localbdpi, new aqmh(this, paramView), new aqmi(this, paramView));
+    return true;
   }
 }
 

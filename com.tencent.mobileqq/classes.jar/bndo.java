@@ -1,11 +1,27 @@
-import android.media.MediaPlayer;
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.util.Property;
 
-public abstract interface bndo
+class bndo
+  extends Property<bndn, Float>
 {
-  public abstract void a(MediaPlayer paramMediaPlayer);
+  bndo(bndn parambndn, Class paramClass, String paramString)
+  {
+    super(paramClass, paramString);
+  }
   
-  public abstract void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2);
+  public Float a(bndn parambndn)
+  {
+    if (parambndn != null) {
+      return Float.valueOf(bndn.a(parambndn));
+    }
+    return Float.valueOf(0.0F);
+  }
+  
+  public void a(bndn parambndn, Float paramFloat)
+  {
+    if (parambndn != null) {
+      bndn.a(parambndn, paramFloat.floatValue());
+    }
+  }
 }
 
 

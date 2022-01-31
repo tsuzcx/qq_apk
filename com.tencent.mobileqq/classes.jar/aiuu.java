@@ -1,40 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QwAdapter;
-import java.util.List;
-
-class aiuu
-  implements IRedPacket.OnGetSkinListener
+public class aiuu
 {
-  aiuu(aius paramaius) {}
+  public int a;
+  public long a;
+  public long b;
   
-  public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
+  public boolean equals(Object paramObject)
   {
-    aiup localaiup = aiur.a(aius.a(this.a), paramRedPacketInfoBase.skinId);
-    List localList;
-    if (localaiup != null)
+    if ((paramObject instanceof aiuu))
     {
-      localList = aius.a(this.a).getList();
-      QLog.d("HbSkinLogic", 2, "redl iscache = " + aiup.jdField_a_of_type_Boolean + " info.iscache = " + paramRedPacketInfoBase.isCache);
-      if ((aiup.jdField_a_of_type_Boolean == paramRedPacketInfoBase.isCache) && (!localList.contains(localaiup))) {
-        break label98;
+      paramObject = (aiuu)paramObject;
+      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_Long == this.jdField_a_of_type_Long)) {
+        return true;
       }
-      QLog.d("HbSkinLogic", 2, "no add in list...");
     }
-    label98:
-    while ((paramRedPacketInfoBase.background == null) && (paramRedPacketInfoBase.animInfo == null)) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramRedPacketInfoBase.title)) {
-      paramRedPacketInfoBase.title = aius.a();
-    }
-    localaiup.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = paramRedPacketInfoBase;
-    QLog.d("HbSkinLogic", 2, "redl add to list show!");
-    localList.add(localaiup);
-    aiup.a(localList);
-    aius.a(this.a).notifyDataSetChanged();
+    return false;
   }
 }
 

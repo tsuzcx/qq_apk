@@ -91,7 +91,7 @@ public class MiniAppSearchFragment
       TextView localTextView = new TextView(getActivity());
       localTextView.setText(str);
       localTextView.setTextColor(-16578534);
-      localTextView.setBackgroundResource(2130840764);
+      localTextView.setBackgroundResource(2130840765);
       localTextView.setOnClickListener(new MiniAppSearchFragment.4(this, localTextView, paramMiniAppSearchDataManager));
       this.mHistoryListViewGroup.addView(localTextView);
     }
@@ -110,14 +110,14 @@ public class MiniAppSearchFragment
     switch (paramView.getId())
     {
     default: 
-    case 2131370434: 
+    case 2131370453: 
       do
       {
         return;
       } while (getActivity() == null);
       getActivity().finish();
       return;
-    case 2131370518: 
+    case 2131370537: 
       this.mEditTextView.setText("");
       this.mSearchResultContainer.setVisibility(8);
       this.mHistoryAndRecommendContainer.setVisibility(0);
@@ -131,7 +131,7 @@ public class MiniAppSearchFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559316, null);
+    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559315, null);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       paramLayoutInflater.setFitsSystemWindows(true);
     }
@@ -178,10 +178,10 @@ public class MiniAppSearchFragment
         this.mNoSearchResultViewGroup.setVisibility(0);
         if (!ndk.a(BaseApplicationImpl.getContext()))
         {
-          this.mSearchResultExceptionText.setText(2131698450);
+          this.mSearchResultExceptionText.setText(2131698462);
           return;
         }
-        this.mSearchResultExceptionText.setText(2131694421);
+        this.mSearchResultExceptionText.setText(2131694423);
         return;
       }
       this.mNoSearchResultViewGroup.setVisibility(8);
@@ -214,31 +214,31 @@ public class MiniAppSearchFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.mHistoryAndRecommendContainer = ((ViewGroup)paramView.findViewById(2131370473));
-    this.mSearchResultContainer = ((ViewGroup)paramView.findViewById(2131370538));
-    this.mHistorySearchContainer = ((ViewGroup)paramView.findViewById(2131370521));
-    this.mHistoryListViewGroup = ((ViewGroup)paramView.findViewById(2131370520));
-    this.mNoSearchResultViewGroup = ((ViewGroup)paramView.findViewById(2131370525));
-    this.mEmptyBackground = ((ImageView)paramView.findViewById(2131370540));
-    this.mSearchResultExceptionText = ((TextView)paramView.findViewById(2131370541));
-    this.mHotSearchTitle = ((TextView)paramView.findViewById(2131370531));
-    this.mRecommendGridView = ((GridView)paramView.findViewById(2131370528));
+    this.mHistoryAndRecommendContainer = ((ViewGroup)paramView.findViewById(2131370492));
+    this.mSearchResultContainer = ((ViewGroup)paramView.findViewById(2131370557));
+    this.mHistorySearchContainer = ((ViewGroup)paramView.findViewById(2131370540));
+    this.mHistoryListViewGroup = ((ViewGroup)paramView.findViewById(2131370539));
+    this.mNoSearchResultViewGroup = ((ViewGroup)paramView.findViewById(2131370544));
+    this.mEmptyBackground = ((ImageView)paramView.findViewById(2131370559));
+    this.mSearchResultExceptionText = ((TextView)paramView.findViewById(2131370560));
+    this.mHotSearchTitle = ((TextView)paramView.findViewById(2131370550));
+    this.mRecommendGridView = ((GridView)paramView.findViewById(2131370547));
     paramBundle = (MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(360);
     this.mHotSearchAdapter = new HotSearchAdapter(getActivity(), this.mHotSearchTitle);
     paramBundle.setHotSearchDataChangedListener(this.mHotSearchAdapter);
     this.mRecommendGridView.setAdapter(this.mHotSearchAdapter);
-    this.mResultListView = ((ListView)paramView.findViewById(2131370543));
+    this.mResultListView = ((ListView)paramView.findViewById(2131370562));
     this.mResultAdapter = new SearchResultAdapter(getActivity());
     this.mResultAdapter.setDataChangedListener(this);
     paramBundle.setDataChangedListener(this.mResultAdapter);
     this.mResultListView.setAdapter(this.mResultAdapter);
-    this.mCancelButton = ((TextView)paramView.findViewById(2131370434));
+    this.mCancelButton = ((TextView)paramView.findViewById(2131370453));
     this.mCancelButton.setOnClickListener(this);
-    this.mClearInputTextButton = ((ImageButton)paramView.findViewById(2131370518));
+    this.mClearInputTextButton = ((ImageButton)paramView.findViewById(2131370537));
     this.mClearInputTextButton.setOnClickListener(this);
-    this.mClearHistoryButton = ((ImageView)paramView.findViewById(2131370517));
+    this.mClearHistoryButton = ((ImageView)paramView.findViewById(2131370536));
     this.mClearHistoryButton.setOnClickListener(this);
-    this.mEditTextView = ((EditText)paramView.findViewById(2131370516));
+    this.mEditTextView = ((EditText)paramView.findViewById(2131370535));
     this.mEditTextView.addTextChangedListener(new MiniAppSearchFragment.SearchEditTextWatcher(this));
     this.mEditTextView.postDelayed(new MiniAppSearchFragment.1(this), 300L);
     this.mResultListView.setOnScrollListener(new MiniAppSearchFragment.2(this));

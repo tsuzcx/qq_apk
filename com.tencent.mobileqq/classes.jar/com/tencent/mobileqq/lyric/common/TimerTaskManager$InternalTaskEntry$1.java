@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.lyric.common;
 
-import atsa;
+import atwj;
 
 public class TimerTaskManager$InternalTaskEntry$1
   implements Runnable
 {
-  public TimerTaskManager$InternalTaskEntry$1(atsa paramatsa) {}
+  public TimerTaskManager$InternalTaskEntry$1(atwj paramatwj) {}
   
   public void run()
   {
-    if (atsa.a(this.this$0) != null) {
-      atsa.a(this.this$0).run();
+    if (atwj.a(this.this$0) != null) {
+      atwj.a(this.this$0).run();
     }
   }
 }

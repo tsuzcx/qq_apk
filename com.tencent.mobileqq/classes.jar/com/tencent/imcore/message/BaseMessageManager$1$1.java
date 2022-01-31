@@ -1,6 +1,6 @@
 package com.tencent.imcore.message;
 
-import abnt;
+import absi;
 import java.util.Map;
 
 class BaseMessageManager$1$1

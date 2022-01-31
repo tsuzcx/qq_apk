@@ -1,27 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletFullWindowActivity.QWalletFullWindowFragment;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.widget.AbsListView;
 
 public class aiqt
-  extends BroadcastReceiver
+  implements bhtv
 {
-  public aiqt(QWalletFullWindowActivity.QWalletFullWindowFragment paramQWalletFullWindowFragment) {}
+  public aiqt(NewPhotoListActivity paramNewPhotoListActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramIntent == null) {}
-    do
+    if (paramInt == 0)
     {
+      abvl.a().a("list_photo", false);
       return;
-      if ("action_close_camera".equals(paramIntent.getAction()))
-      {
-        QWalletFullWindowActivity.QWalletFullWindowFragment.a(this.a).finish();
-        return;
-      }
-    } while ((!"cn.abel.action.broadcast".equals(paramIntent.getAction())) || (paramIntent.getBooleanExtra("isOpen", false)));
-    QWalletFullWindowActivity.QWalletFullWindowFragment.b(this.a).finish();
+    }
+    abvl.a().a("list_photo");
   }
 }
 

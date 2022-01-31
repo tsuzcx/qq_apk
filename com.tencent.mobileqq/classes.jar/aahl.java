@@ -1,60 +1,24 @@
-import com.tencent.ad.tangram.canvas.download.AdCanvasDownloadListenerAdapter;
-import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
-import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppDownloadManager;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
 
 public class aahl
-  implements AdCanvasDownloadListenerAdapter
+  extends FrameLayout
 {
-  private List<IAdDownloader.Callback> a = new CopyOnWriteArrayList();
-  
-  public IAdDownloader.Callback getDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
+  public aahl(GameCenterAPIJavaScript paramGameCenterAPIJavaScript, Context paramContext, CustomWebView paramCustomWebView)
   {
-    if ((this.a != null) && (this.a.size() > 0))
-    {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
-        if (((localCallback instanceof aahk)) && (((aahk)localCallback).a() == paramAdAppDownloadManager)) {
-          return localCallback;
-        }
-      }
-    }
-    return null;
+    super(paramContext);
   }
   
-  public void removeDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.a == null) || (paramAdAppDownloadManager == null)) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
-        if ((localCallback instanceof aahk))
-        {
-          AdAppDownloadManager localAdAppDownloadManager = ((aahk)localCallback).a();
-          if ((localAdAppDownloadManager != null) && (localAdAppDownloadManager == paramAdAppDownloadManager)) {
-            this.a.remove(localCallback);
-          }
-        }
-      }
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView instanceof View)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.dispatchTouchEvent(paramMotionEvent);
     }
-  }
-  
-  public void setDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
-  {
-    if ((this.a != null) && (paramAdAppDownloadManager != null))
-    {
-      aahk localaahk = new aahk();
-      localaahk.a(paramAdAppDownloadManager);
-      this.a.add(localaahk);
-    }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
 }
 

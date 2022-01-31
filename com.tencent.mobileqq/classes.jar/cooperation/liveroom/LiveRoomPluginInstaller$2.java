@@ -1,11 +1,11 @@
 package cooperation.liveroom;
 
-import bimg;
+import biqn;
 
 class LiveRoomPluginInstaller$2
   implements Runnable
 {
-  LiveRoomPluginInstaller$2(LiveRoomPluginInstaller paramLiveRoomPluginInstaller, bimg parambimg, String paramString) {}
+  LiveRoomPluginInstaller$2(LiveRoomPluginInstaller paramLiveRoomPluginInstaller, biqn parambiqn, String paramString) {}
   
   public void run()
   {

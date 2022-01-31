@@ -1,16 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-
 class bmhw
-  extends AnimatorListenerAdapter
+  implements xij
 {
-  bmhw(bmhv parambmhv) {}
+  bmhw(bmhu parambmhu) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a() {}
+  
+  public void b()
   {
-    bmhv.a(this.a).sendEmptyMessageDelayed(1, 1500L);
+    wxj.a("textEdit", "pasteText", bmhu.b(this.a), 0, new String[0]);
   }
+  
+  public void c() {}
 }
 
 

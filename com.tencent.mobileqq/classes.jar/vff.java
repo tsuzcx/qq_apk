@@ -1,15 +1,44 @@
-import java.util.HashMap;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBannerVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBannerVideoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-class vff
-  extends vem
+public class vff
+  extends urt<vhd>
 {
-  vff(vez paramvez, vgd paramvgd) {}
+  public static final String a = uqn.a("StorySvc.square_720_banner_vid_list");
+  public String b;
+  public String c;
   
-  public boolean b()
+  public String a()
   {
-    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
-    this.jdField_a_of_type_Vgd.a = ((String)localHashMap.get(this.jdField_a_of_type_Vgd.a));
-    return true;
+    return a;
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBannerVideoList localRspBannerVideoList = new qqstory_service.RspBannerVideoList();
+    try
+    {
+      localRspBannerVideoList.mergeFrom(paramArrayOfByte);
+      return new vhd(localRspBannerVideoList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBannerVideoList localReqBannerVideoList = new qqstory_service.ReqBannerVideoList();
+    localReqBannerVideoList.banner_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqBannerVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.c));
+    return localReqBannerVideoList.toByteArray();
   }
 }
 

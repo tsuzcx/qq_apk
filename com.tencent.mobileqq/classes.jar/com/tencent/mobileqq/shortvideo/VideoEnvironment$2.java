@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.shortvideo;
 
-import azaw;
+import azff;
 
 final class VideoEnvironment$2
   implements Runnable
 {
-  VideoEnvironment$2(azaw paramazaw, int paramInt) {}
+  VideoEnvironment$2(azff paramazff, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Azaw != null) {
-      this.jdField_a_of_type_Azaw.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Azff != null) {
+      this.jdField_a_of_type_Azff.a(this.jdField_a_of_type_Int);
     }
   }
 }

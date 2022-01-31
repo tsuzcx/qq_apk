@@ -1,79 +1,42 @@
-import com.tencent.mm.vfs.VFSFileInputStream;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import org.xml.sax.SAXException;
+import mqq.app.MainService;
 
 public class azse
 {
-  public static AbsStructMsg a(String paramString)
+  long a;
+  long b = 0L;
+  
+  public azse()
   {
-    paramString = new ByteArrayInputStream(paramString.getBytes());
-    azsb localazsb = new azsb();
-    SAXParserFactory localSAXParserFactory = SAXParserFactory.newInstance();
-    try
-    {
-      localSAXParserFactory.newSAXParser().parse(paramString, localazsb);
-      paramString.close();
-      paramString = localazsb.a();
-      return paramString;
-    }
-    catch (ParserConfigurationException paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-      }
-      return null;
-    }
-    catch (SAXException paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-        }
-      }
-    }
-    catch (IOException paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-        }
-      }
-    }
+    this.jdField_a_of_type_Long = 0L;
   }
   
-  public static String a(String paramString)
+  public void a()
   {
-    try
+    long l1 = MainService.sReceiverCpuTime;
+    long l2 = amof.jdField_a_of_type_Long;
+    if (this.jdField_a_of_type_Long == 0L)
     {
-      paramString = new VFSFileInputStream(paramString);
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      byte[] arrayOfByte = new byte[1024];
-      for (;;)
-      {
-        int i = paramString.read(arrayOfByte, 0, 1024);
-        if (i == -1) {
-          break;
-        }
-        localByteArrayOutputStream.write(arrayOfByte, 0, i);
-      }
-      paramString = new String(localByteArrayOutputStream.toByteArray(), "utf-8");
+      QLog.d("BatteryStats.BgCpu", 1, new Object[] { "bgPrintCpuStart msfrecv=", Long.valueOf(l1), "[", Integer.valueOf(MainService.sNativeTidOfReceiver), "], ", "  fts=", Long.valueOf(l2), "[", Integer.valueOf(amof.jdField_a_of_type_Int), "]" });
+      this.jdField_a_of_type_Long = l1;
+      this.b = l2;
+      return;
     }
-    catch (IOException paramString)
-    {
-      paramString.printStackTrace();
-      return "";
-    }
-    return paramString;
+    c();
+  }
+  
+  public void b()
+  {
+    c();
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+  }
+  
+  void c()
+  {
+    long l1 = MainService.sReceiverCpuTime;
+    long l2 = amof.jdField_a_of_type_Long;
+    QLog.d("BatteryStats.BgCpu", 1, new Object[] { "bgPrintCpuCostSofar msfrecv=", Long.valueOf(l1 - this.jdField_a_of_type_Long), "[", Integer.valueOf(MainService.sNativeTidOfReceiver), "], ", "  fts=", Long.valueOf(l2 - this.b), "[", Integer.valueOf(amof.jdField_a_of_type_Int), "]" });
   }
 }
 

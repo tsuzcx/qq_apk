@@ -1,135 +1,81 @@
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.open.agent.SwitchAccountActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bfhg
+class bfhg
+  extends GestureDetector.SimpleOnGestureListener
 {
-  protected static String a;
-  protected static boolean a;
+  bfhg(bfhf parambfhf) {}
   
-  static
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_a_of_type_JavaLangString += ".*[S|s][I|i][D|d].*";
-    jdField_a_of_type_JavaLangString += "|.*==.*";
-    jdField_a_of_type_JavaLangString += "|.*[U|u][I|i][N|n].*";
-    jdField_a_of_type_JavaLangString += "|.*%3d%3d.*";
-    jdField_a_of_type_JavaLangString += "|.*[V|v][K|k][E|e][Y|y]";
-  }
-  
-  protected static void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (jdField_a_of_type_Boolean) {
-      if (paramInt == 1)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (Math.abs(paramFloat1) > Math.abs(paramFloat2))
+    {
+      bool1 = bool2;
+      if (Math.abs(paramFloat1) > 20.0F)
       {
-        if (paramThrowable != null) {
-          break label187;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i(paramString1, 2, "" + "::" + paramString2);
+        bool1 = bool2;
+        if (!this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a)
+        {
+          this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = true;
+          if (this.a.jdField_a_of_type_AndroidViewView != null) {
+            this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
+          }
+          if ((paramFloat1 < -20.0F) && (this.a.jdField_a_of_type_JavaLangRefWeakReference != null))
+          {
+            paramMotionEvent1 = (View)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+            if (paramMotionEvent1 != null)
+            {
+              paramMotionEvent1 = paramMotionEvent1.findViewById(2131376551);
+              if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() == 0)) {
+                ((ShaderAnimLayout)paramMotionEvent1).e();
+              }
+            }
+            this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
+          }
+          if (paramFloat1 > 20.0F)
+          {
+            if ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+              break label245;
+            }
+            paramMotionEvent1 = (View)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+            if (paramMotionEvent1 != this.a.jdField_a_of_type_AndroidViewView)
+            {
+              paramMotionEvent1 = paramMotionEvent1.findViewById(2131376551);
+              if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() == 0)) {
+                ((ShaderAnimLayout)paramMotionEvent1).e();
+              }
+            }
+            this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
+          }
         }
       }
     }
-    label98:
-    do
+    for (;;)
     {
-      break label186;
-      if ((paramInt == 2) || (paramInt == 0))
+      bool1 = true;
+      return bool1;
+      label245:
+      if (this.a.jdField_a_of_type_AndroidViewView != null)
       {
-        if (paramThrowable != null) {
-          break label226;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(paramString1, 2, "" + "::" + paramString2);
-        }
-      }
-      if (paramInt == 3)
-      {
-        if (paramThrowable != null) {
-          break label265;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w(paramString1, 2, "" + "::" + paramString2);
-        }
-      }
-      for (;;)
-      {
-        if (paramInt == 4)
+        paramMotionEvent1 = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131376551);
+        if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() != 0))
         {
-          if (paramThrowable != null) {
-            break label304;
-          }
           if (QLog.isColorLevel()) {
-            QLog.e(paramString1, 2, "" + "::" + paramString2);
+            QLog.i("AccountManage", 2, "show current selectedAccountView");
           }
-        }
-        return;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-        break;
-        if (!QLog.isColorLevel()) {
-          break label98;
-        }
-        QLog.d(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-        break label98;
-        if (QLog.isColorLevel()) {
-          QLog.w(paramString1, 2, "" + "::" + paramString2, paramThrowable);
+          ((ShaderAnimLayout)paramMotionEvent1).a();
+          this.a.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.a.jdField_a_of_type_AndroidViewView);
+          this.a.jdField_a_of_type_AndroidViewView = null;
         }
       }
-    } while (!QLog.isColorLevel());
-    label186:
-    label187:
-    label226:
-    QLog.e(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-    label265:
-    label304:
-    return;
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    a(0, paramString1, paramString2, null);
-  }
-  
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(2, paramString1, paramString2, paramThrowable);
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    a(1, paramString1, paramString2, null);
-  }
-  
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(3, paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    a(2, paramString1, paramString2, null);
-  }
-  
-  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(4, paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    a(3, paramString1, paramString2, null);
-  }
-  
-  public static void e(String paramString1, String paramString2)
-  {
-    a(4, paramString1, paramString2, null);
+    }
   }
 }
 

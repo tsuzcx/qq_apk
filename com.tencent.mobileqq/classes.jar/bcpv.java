@@ -1,15 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troopAddFrd.TroopRecommendFriendFragment;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class bcpv
-  implements View.OnClickListener
+  extends bcqd
 {
-  public bcpv(TroopRecommendFriendFragment paramTroopRecommendFriendFragment, bcpp parambcpp) {}
-  
-  public void onClick(View paramView)
+  public void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList)
   {
-    TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopAddFrdTroopRecommendFriendFragment, TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopAddFrdTroopRecommendFriendFragment), this.jdField_a_of_type_Bcpp.a, TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopAddFrdTroopRecommendFriendFragment));
+    if ((this.a == null) || (this.a.getState() == Thread.State.TERMINATED) || (this.a.a()))
+    {
+      this.a = ((TroopUploadingThread)bcqc.a(paramClass));
+      this.a.a(paramArrayList, paramHashMap, paramList, this);
+      this.a.start();
+    }
   }
 }
 

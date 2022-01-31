@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.magicface.model;
 
-import atub;
-import atuc;
+import atyk;
+import atyl;
 
 public class MagicfaceDecoder$1
   implements Runnable
 {
-  public MagicfaceDecoder$1(atub paramatub) {}
+  public MagicfaceDecoder$1(atyk paramatyk) {}
   
   public void run()
   {
     int i = Thread.currentThread().getPriority();
     Thread.currentThread().setPriority(10);
     this.this$0.jdField_a_of_type_Boolean = true;
-    if (this.this$0.jdField_a_of_type_Atuc != null) {
-      this.this$0.jdField_a_of_type_Atuc.a();
+    if (this.this$0.jdField_a_of_type_Atyl != null) {
+      this.this$0.jdField_a_of_type_Atyl.a();
     }
     this.this$0.a();
     this.this$0.jdField_a_of_type_Boolean = false;
-    if (this.this$0.jdField_a_of_type_Atuc != null) {
-      this.this$0.jdField_a_of_type_Atuc.b();
+    if (this.this$0.jdField_a_of_type_Atyl != null) {
+      this.this$0.jdField_a_of_type_Atyl.b();
     }
     Thread.currentThread().setPriority(i);
   }

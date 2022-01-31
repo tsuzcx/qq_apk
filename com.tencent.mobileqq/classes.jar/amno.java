@@ -1,57 +1,24 @@
-import com.tencent.mobileqq.applets.data.AppletItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-public class amno
+public abstract class amno
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
+  public QQAppInterface a;
+  public ProxyManager a;
   
-  public amno a(int paramInt)
+  public amno(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramProxyManager;
   }
   
-  public amno a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
+  public abstract void a();
   
-  public amno a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public AppletItem a()
-  {
-    return new AppletItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, null);
-  }
-  
-  public void a(String paramString)
-  {
-    this.c = paramString;
-  }
-  
-  public amno b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public amno b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amno
  * JD-Core Version:    0.7.0.1
  */

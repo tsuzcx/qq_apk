@@ -1,38 +1,105 @@
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aonf
+  extends aokh<aong>
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c = 1;
-  public int d = -1;
+  public static boolean a;
+  private static boolean b;
   
-  public aonf()
+  public static boolean e()
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    if (b) {
+      return a;
+    }
+    b = true;
+    a = f();
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean isSwitchOpened = " + a);
+    }
+    return a;
   }
   
-  public static aonf a(JSONObject paramJSONObject)
+  private static boolean f()
   {
-    aonf localaonf = new aonf();
-    localaonf.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("show_c2c_chat_setting", false);
-    localaonf.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("show_group_chat_setting", false);
-    localaonf.jdField_a_of_type_Int = paramJSONObject.optInt("service_type", -1);
-    localaonf.jdField_b_of_type_Int = paramJSONObject.optInt("jumpType", -1);
-    localaonf.c = paramJSONObject.optInt("version", -1);
-    localaonf.d = paramJSONObject.optInt("appid", -1);
-    localaonf.jdField_a_of_type_JavaLangString = paramJSONObject.optString("jumpUrl", "");
-    return localaonf;
+    aong localaong2 = (aong)aoks.a().a(531);
+    aong localaong1 = localaong2;
+    if (localaong2 == null)
+    {
+      localaong2 = new aong();
+      localaong1 = localaong2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean = null, general new bean, so switch default");
+        localaong1 = localaong2;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean switch isOpened = " + localaong1);
+    }
+    return localaong1.a();
   }
   
-  public String toString()
+  public int a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("showC2CChatSetting=").append(this.jdField_a_of_type_Boolean).append(" showGroupChatSetting=").append(this.jdField_b_of_type_Boolean).append(" serviceType=").append(this.jdField_a_of_type_Int).append(" jumpType=").append(this.jdField_b_of_type_Int).append(" version=").append(this.c).append(" appId=").append(this.d).append(" jumpUrl=").append(this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    return 531;
+  }
+  
+  @NonNull
+  public aong a(int paramInt)
+  {
+    return new aong();
+  }
+  
+  @Nullable
+  public aong a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DarkModeConfigProcessor", 2, "onParsed : " + paramArrayOfaoko[0].a);
+      }
+      return aong.a(paramArrayOfaoko[0].a);
+    }
+    return new aong();
+  }
+  
+  public Class<aong> a()
+  {
+    return aong.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aong paramaong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeConfigProcessor", 2, "onUpdate : " + paramaong);
+    }
+    if (paramaong != null) {
+      a = paramaong.a();
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

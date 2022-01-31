@@ -1,56 +1,35 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.MessageQGameReceiver.1;
+import java.util.ArrayList;
 
 public class asoz
+  extends BroadcastReceiver
 {
-  public static float b;
-  public float a;
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public float c;
-  public int c;
-  public int d = 10;
-  public int e = 8;
-  public int f = 150;
-  public int g = 300;
-  public int h = 32;
-  public int i = 27;
-  public int j = 3000;
-  public int k;
-  public int l;
+  private asoz(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  static
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    jdField_b_of_type_Float = 1.0F;
-  }
-  
-  private asoz()
-  {
-    this.jdField_a_of_type_Int = 250;
-    this.jdField_c_of_type_Int = 20;
-    this.jdField_c_of_type_Float = 1.0F;
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public asoz(HeartLayout paramHeartLayout)
-  {
-    this.jdField_a_of_type_Int = 250;
-    this.jdField_c_of_type_Int = 20;
-    this.jdField_c_of_type_Float = 1.0F;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Float = paramHeartLayout.getContext().getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Int = ((int)((paramHeartLayout.getWidth() - this.jdField_a_of_type_Float * 32.0F) / 2.0F));
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 27.0F));
-    this.h = ((int)(this.jdField_a_of_type_Float * 32.0F));
-    this.i = ((int)(this.jdField_a_of_type_Float * 27.0F));
-    this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Float * 20.0F));
-    this.d = ((int)(this.jdField_a_of_type_Float * 10.0F));
-    this.f = ((int)(this.jdField_a_of_type_Float * 150.0F));
-    this.g = ((int)(this.jdField_a_of_type_Float * 300.0F));
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (!"action_qgame_tool_messgae".equals(paramContext));
+        paramContext = paramIntent.getExtras();
+      } while (paramContext == null);
+      paramContext = (ArrayList)paramContext.getSerializable("key_get_msg");
+    } while ((paramContext == null) || (paramContext.size() <= 0));
+    ThreadManagerV2.getUIHandlerV2().post(new QQGameFeedWebFragment.MessageQGameReceiver.1(this, paramContext));
   }
 }
 

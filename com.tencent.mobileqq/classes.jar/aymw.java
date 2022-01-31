@@ -1,96 +1,91 @@
-import android.view.LayoutInflater;
+import android.app.Activity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.List;
+import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
 public class aymw
-  implements aymg<ayjj, ayrt>
+  extends aynv
 {
-  private ayna jdField_a_of_type_Ayna;
-  private bcws jdField_a_of_type_Bcws;
-  boolean jdField_a_of_type_Boolean;
+  private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private String jdField_a_of_type_JavaLangString;
+  private CharSequence b;
   
-  public aymw(bcws parambcws, boolean paramBoolean)
+  public aymw(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_Bcws = parambcws;
-    this.jdField_a_of_type_Ayna = new ayna(parambcws, paramBoolean);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
   }
   
-  public void a(ayjj paramayjj, ayrt paramayrt)
+  public CharSequence a()
   {
-    ayjk localayjk = (ayjk)paramayjj;
-    aytf localaytf = (aytf)paramayrt;
-    int i = localayjk.a();
-    LinearLayout localLinearLayout = localaytf.a();
-    ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
-    if (localLinearLayout != null)
+    return this.jdField_a_of_type_JavaLangCharSequence;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(View paramView)
+  {
+    AddFriendActivity.a((Activity)paramView.getContext(), new SearchResultItem(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record), ((BaseActivity)paramView.getContext()).app, true, 1);
+    ayvm.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
+    ayvm.a(this.jdField_a_of_type_JavaLangString, 70, paramView, false);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public CharSequence b()
+  {
+    StringBuilder localStringBuilder;
+    if (this.b == null)
     {
-      List localList = localayjk.a();
-      if ((localList != null) && (!localList.isEmpty()))
-      {
-        localLinearLayout.removeAllViews();
-        int k = Math.min(localList.size(), i);
-        i = 0;
-        if (i < k)
-        {
-          ayjl localayjl = (ayjl)localList.get(i);
-          View localView;
-          label142:
-          int m;
-          int n;
-          if (this.jdField_a_of_type_Boolean)
-          {
-            localView = LayoutInflater.from(paramayrt.a().getContext()).inflate(2131562590, null);
-            paramayjj = new ayrq(localView);
-            localView.setTag(2131379913, localayjl);
-            localView.setTag(2131379918, paramayjj);
-            localView.setTag(2131379914, Integer.valueOf(i));
-            localView.setTag(2131379912, Integer.valueOf(localList.size()));
-            localView.setTag(2131379915, this.jdField_a_of_type_Ayna);
-            ayrg.a(localayjl, k, i);
-            m = localayjl.a();
-            n = localayjl.b();
-            if (!(localayjl instanceof ayjm)) {
-              break label334;
-            }
-          }
-          label334:
-          for (int j = ((ayjm)localayjl).r;; j = 0)
-          {
-            ayrg.a(m, n, localView, j);
-            localLinearLayout.addView(localView);
-            if (this.jdField_a_of_type_Ayna.a() != null) {
-              this.jdField_a_of_type_Ayna.a().a((ayjj)localList.get(i), paramayjj);
-            }
-            i += 1;
-            break;
-            localView = LayoutInflater.from(paramayrt.a().getContext()).inflate(2131562589, null);
-            paramayjj = new aytk(localView);
-            break label142;
-          }
-        }
+      localStringBuilder = new StringBuilder().append("(");
+      if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() == 0L) {
+        break label78;
       }
     }
-    paramayjj = localayjk.a();
-    if ((paramayjj == null) || (paramayjj.isEmpty()))
+    label78:
+    for (String str = String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());; str = this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.mobile.get())
     {
-      if (paramayrt.b() != null) {
-        paramayrt.b().setVisibility(8);
-      }
-      localaytf.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      localaytf.jdField_a_of_type_AndroidViewView.setTag(2131379914, Integer.valueOf(-1));
-      localaytf.jdField_a_of_type_AndroidWidgetTextView.setText(localayjk.b());
-      localaytf.b.setText(alpo.a(2131714028));
-      localaytf.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845548);
-      localaytf.jdField_a_of_type_AndroidViewView.setOnClickListener(new aymx(this, localayjk));
-      return;
+      this.b = ayvm.a(str + ")", this.jdField_a_of_type_JavaLangString);
+      return this.b;
     }
-    localaytf.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public String b()
+  {
+    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() != 0L) {
+      return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());
+    }
+    return this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.mobile.get();
+  }
+  
+  public int c()
+  {
+    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() != 0L) {
+      return 1;
+    }
+    return 11;
+  }
+  
+  public CharSequence c()
+  {
+    return alud.a(2131705740);
+  }
+  
+  public CharSequence d()
+  {
+    return null;
   }
 }
 

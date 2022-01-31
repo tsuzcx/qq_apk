@@ -1,21 +1,19 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.support.v4.app.FragmentActivity;
 
-public class agre
-  implements DialogInterface.OnClickListener
+class agre
+  extends BroadcastReceiver
 {
-  public agre(TroopChatPie paramTroopChatPie) {}
+  agre(agqq paramagqq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramDialogInterface = new Intent(this.a.jdField_a_of_type_AndroidContentContext, TroopLowCreditLevelNotifyActivity.class);
-    paramDialogInterface.putExtra("troopUin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    if (this.a.jdField_a_of_type_Auxp != null) {
+      this.a.jdField_a_of_type_Auxp.a(paramContext);
+    }
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
   }
 }
 

@@ -1,17 +1,14 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileFilter;
 
-final class bjjw
-  implements bjjy
+class bjjw
+  implements FileFilter
 {
-  public void a(boolean paramBoolean, Context paramContext, bjjz parambjjz)
+  bjjw(bjjs parambjjs) {}
+  
+  public boolean accept(File paramFile)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      bjjt.c(paramContext, parambjjz);
-    }
+    return paramFile.getName().endsWith(".ftf");
   }
 }
 

@@ -1,21 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.ocr.OCRPerformFragment;
-import com.tencent.qphone.base.util.QLog;
-
-public class avrc
-  extends BroadcastReceiver
+class avrc
+  implements avrs
 {
-  public avrc(OCRPerformFragment paramOCRPerformFragment) {}
+  avrc(avrb paramavrb, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
-    {
-      QLog.d("OCRPerformFragment", 4, "receive videochat");
-      this.a.getActivity().finish();
+    if (paramBoolean) {
+      this.jdField_a_of_type_Avrb.a(this.jdField_a_of_type_JavaLangString, paramInt);
     }
   }
 }

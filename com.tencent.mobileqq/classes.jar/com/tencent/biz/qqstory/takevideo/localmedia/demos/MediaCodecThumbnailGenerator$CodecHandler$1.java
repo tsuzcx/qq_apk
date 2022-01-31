@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.takevideo.localmedia.demos;
 
-import xfc;
-import xff;
-import xfg;
-import xfi;
-import xfj;
+import xjl;
+import xjo;
+import xjp;
+import xjr;
+import xjs;
 
 public class MediaCodecThumbnailGenerator$CodecHandler$1
   implements Runnable
 {
-  public MediaCodecThumbnailGenerator$CodecHandler$1(xff paramxff, xfj paramxfj, boolean paramBoolean, xfi paramxfi) {}
+  public MediaCodecThumbnailGenerator$CodecHandler$1(xjo paramxjo, xjs paramxjs, boolean paramBoolean, xjr paramxjr) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Xfj.a.b != null) {
-      this.jdField_a_of_type_Xfj.a.b.a(Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_Xfi);
+    if (this.jdField_a_of_type_Xjs.a.b != null) {
+      this.jdField_a_of_type_Xjs.a.b.a(Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_Xjr);
     }
   }
 }

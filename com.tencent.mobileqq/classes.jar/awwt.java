@@ -1,25 +1,26 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
-import com.tencent.mobileqq.videoplatform.util.LogUtil;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.profile.view.VipTagView;
 
-class awwt
-  implements azin
+public class awwt
+  implements Animation.AnimationListener
 {
-  awwt(awws paramawws, LoadSoCallback paramLoadSoCallback) {}
+  public awwt(VipTagView paramVipTagView) {}
   
-  public void a(int paramInt, LoadExtResult paramLoadExtResult)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "initSDKAsync, onLoadResult, resCode = " + paramInt);
+    if (VipTagView.a(this.a)) {
+      VipTagView.a(this.a).a();
     }
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_Awws.a = true;
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiLoadSoCallback.onLoad(true);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiLoadSoCallback.onLoad(false);
-    this.jdField_a_of_type_Awws.a = false;
+    VipTagView.a(this.a, false);
+    this.a.invalidate();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    VipTagView.a(this.a, 0.0F);
   }
 }
 

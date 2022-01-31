@@ -1,29 +1,57 @@
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
 
 class aqvg
-  extends aquk
+  implements bbxs
 {
-  public aqvg(aqug paramaqug)
-  {
-    super(paramaqug);
-  }
+  aqvg(aqvf paramaqvf) {}
   
-  protected String a()
+  public void a(UUID paramUUID, boolean paramBoolean, int paramInt, bbxr parambbxr)
   {
-    return "StateSaveToWeiYunByPCWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    if (aqvf.a(this.a))
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone but has been stopped WorkerId[" + aqvf.a(this.a) + "] filename " + aqvf.a(this.a));
       return;
     }
-    aqug.b(this.jdField_a_of_type_Aqug, 11, 7);
-    aqug.c(this.jdField_a_of_type_Aqug, 11, 7);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateSaveToWeiYunByPC)");
-    this.jdField_a_of_type_Aquk = new aqve(this.jdField_a_of_type_Aqug);
+    if (!paramBoolean)
+    {
+      paramBoolean = parambbxr.d();
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone failed canResume[" + paramBoolean + "] errCode[" + paramInt + "] WorkerId[" + aqvf.a(this.a) + "] filename " + aqvf.a(this.a));
+      aqvf.a(this.a).a(aque.a(aqvf.a(this.a), false), paramBoolean);
+      return;
+    }
+    paramUUID = parambbxr.c();
+    String str1 = parambbxr.d();
+    paramInt = parambbxr.a();
+    String str2 = parambbxr.a();
+    aqvf.a(this.a, parambbxr.b());
+    int i = parambbxr.b();
+    int j = parambbxr.c();
+    int k = parambbxr.d();
+    aqvf.a(this.a).putString("_m_ForwardMd5", paramUUID);
+    aqvf.a(this.a).putString("_m_ForwardSha", str1);
+    aqvf.a(this.a).putString("_m_ForwardBusType", String.valueOf(paramInt));
+    aqvf.a(this.a).putString("_m_ForwardUuid", str2);
+    aqvf.a(this.a).putString("_m_ForwardSize", String.valueOf(aqvf.a(this.a)));
+    if (i != 0) {
+      aqvf.a(this.a).putString("_m_ForwardImgWidth", String.valueOf(i));
+    }
+    if (j != 0) {
+      aqvf.a(this.a).putString("_m_ForwardImgHeight", String.valueOf(j));
+    }
+    if (k != 0) {
+      aqvf.a(this.a).putString("_m_ForwardDuration", String.valueOf(k));
+    }
+    aqvf.a(this.a).putString("_m_ForwardFileType", String.valueOf(3));
+    if (aque.a(this.a.a) == null)
+    {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone mApp is null WorkerId[" + aqvf.a(this.a) + "] filename " + aqvf.a(this.a));
+      aqvf.a(this.a).a(aque.a(aqvf.a(this.a), false), false);
+      return;
+    }
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone woll call sendFeeds WorkerId[" + aqvf.a(this.a) + "] filename " + aqvf.a(this.a));
+    aque.a(aque.a(this.a.a), aqvf.b(this.a), paramInt, str2, aqvf.a(this.a), 0, i, j, k, false, aqvf.a(this.a), aqvf.a(this.a));
   }
 }
 

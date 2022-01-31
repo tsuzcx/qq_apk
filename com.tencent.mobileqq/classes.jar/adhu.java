@@ -1,15 +1,19 @@
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class adhu
-  implements View.OnClickListener
+  extends ClickableSpan
 {
-  public adhu(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  private adhu(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(View paramView) {}
+  
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    bdkn.a(this.a.app, this.a, "setting");
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

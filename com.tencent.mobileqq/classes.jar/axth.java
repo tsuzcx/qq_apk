@@ -1,187 +1,64 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.HashMap;
 
 public class axth
+  extends axtf
 {
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private CopyOnWriteArrayList<Integer> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private final Object jdField_b_of_type_JavaLangObject = new Object();
-  private AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(10);
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public int i;
+  public int j = -1;
+  public int k = -1;
+  public int l = 1001;
+  public int m = -1;
   
-  public int a()
+  public axth()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Long = 0L;
   }
   
-  public void a()
+  public HashMap<String, String> a(String paramString)
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    if ("ShortVideo.Send".equals(paramString))
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(10);
-      return;
+      paramString = new HashMap();
+      paramString.put("param_DetailUrl", this.jdField_a_of_type_JavaLangString);
+      paramString.put("param_uinType", this.jdField_b_of_type_Int + "");
+      paramString.put("param_GroupMemberCount", this.c + "");
+      paramString.put("param_isForward", this.jdField_a_of_type_Boolean + "");
+      paramString.put("param_isExist", this.jdField_b_of_type_Boolean + "");
+      paramString.put("param_forwardSourceUinType", this.jdField_a_of_type_Int + "");
+      paramString.put("param_forwardSourceGroupMemberCount", this.i + "");
+      paramString.put("param_age", this.d + "");
+      paramString.put("param_gender", this.e + "");
+      paramString.put("param_userType", this.l + "");
+      paramString.put("param_shortVideoType", this.f + "");
+      paramString.put("param_shortVideoSourceType", this.j + "");
+      paramString.put("param_reportHour", this.g + "");
+      paramString.put("param_fileInterval", this.k + "");
+      paramString.put("param_netType", this.h + "");
+      paramString.put("param_md5", this.jdField_b_of_type_JavaLangString);
+      paramString.put("param_fileSize", this.jdField_a_of_type_Long + "");
+      paramString.put("param_duration", this.jdField_b_of_type_Long + "");
+      paramString.put("param_status", this.m + "");
+      return paramString;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
-      return;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-  }
-  
-  public void b(int paramInt)
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
-      return;
-    }
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1;
-  }
-  
-  public int c()
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()))
-    {
-      int i;
-      synchronized (this.jdField_b_of_type_JavaLangObject)
-      {
-        i = ((Integer)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(0)).intValue();
-        if (!QLog.isColorLevel()) {
-          break label160;
-        }
-        StringBuilder localStringBuilder = new StringBuilder();
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-        if (localIterator.hasNext())
-        {
-          int j = ((Integer)localIterator.next()).intValue();
-          localStringBuilder.append(j + ",");
-        }
-      }
-      QLog.d("PeakAudioTransHandler ChannelStateManager", 2, "getRecentTopEvent lastevent = " + i + "， eventlist = " + localObject2.toString());
-      label160:
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-      return i;
-    }
-    return -1;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(0, Integer.valueOf(paramInt));
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 12;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 11;
-  }
-  
-  public boolean f()
-  {
-    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 10;
-  }
-  
-  public boolean g()
-  {
-    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 13;
-  }
-  
-  public boolean h()
-  {
-    boolean bool3 = true;
-    boolean bool1 = true;
-    boolean bool2 = false;
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    int j = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    switch (i)
-    {
-    default: 
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      if ((!bool1) && (QLog.isColorLevel())) {
-        QLog.e("PeakAudioTransHandler ChannelStateManager", 2, "isLegalState , currentSessionState = " + i + " currentTCPState = " + j);
-      }
-      return bool1;
-      switch (j)
-      {
-      }
-      for (bool1 = false;; bool1 = false) {
-        break;
-      }
-      bool1 = bool2;
-      switch (j)
-      {
-      case 11: 
-      case 12: 
-      case 13: 
-      default: 
-        bool1 = bool2;
-        break;
-      case 10: 
-        bool1 = true;
-        continue;
-        bool1 = bool3;
-        switch (j)
-        {
-        default: 
-          bool1 = false;
-        }
-        continue;
-        bool1 = bool2;
-        switch (j)
-        {
-        case 11: 
-        case 12: 
-        case 13: 
-        default: 
-          bool1 = bool2;
-          break;
-        case 10: 
-          bool1 = true;
-        }
-        break;
-      }
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axth
  * JD-Core Version:    0.7.0.1
  */

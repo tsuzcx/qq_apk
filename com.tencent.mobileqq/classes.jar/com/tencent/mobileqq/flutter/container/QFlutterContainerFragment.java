@@ -6,15 +6,15 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import arsz;
-import arta;
+import arxi;
+import arxj;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 
 public class QFlutterContainerFragment
   extends PublicBaseFragment
-  implements arsz
+  implements arxi
 {
-  private arta a;
+  private arxj a;
   
   public Activity a()
   {
@@ -34,7 +34,7 @@ public class QFlutterContainerFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.a = new arta(this);
+    this.a = new arxj(this);
     this.a.a(paramBundle);
   }
   

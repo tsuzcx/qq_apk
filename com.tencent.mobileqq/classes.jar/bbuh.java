@@ -1,59 +1,29 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.ErrorInfo;
-import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.ReqCheckHomework;
-import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.YoutuPicInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class bbuh
-  extends unk
+class bbuh
+  implements View.OnTouchListener
 {
-  bbug jdField_a_of_type_Bbug;
-  String jdField_a_of_type_JavaLangString;
+  bbuh(bbuf parambbuf, String paramString, bbuo parambbuo) {}
   
-  public bbuh(bbug parambbug, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Bbug = parambbug;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String a()
-  {
-    return "HwSvc.check_homework";
-  }
-  
-  public unf a(byte[] paramArrayOfByte)
-  {
-    MathHWNetWorkPB.ErrorInfo localErrorInfo = new MathHWNetWorkPB.ErrorInfo();
-    try
+    if (paramMotionEvent.getAction() == 1)
     {
-      localErrorInfo.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = new unf(localErrorInfo.error_code.get(), localErrorInfo.error_desc.get().toStringUtf8());
-      return paramArrayOfByte;
+      paramView = new Intent(this.jdField_a_of_type_Bbuf.a.getContext(), QQBrowserActivity.class);
+      paramMotionEvent = bdtg.a("troopEnterEffect");
+      paramView.putExtra("url", paramMotionEvent + "&gc=" + this.jdField_a_of_type_Bbuf.b);
+      this.jdField_a_of_type_Bbuf.a.getContext().startActivity(paramView);
+      bbuq.a("Grp_AIO", "action_clk", new String[] { this.jdField_a_of_type_Bbuf.b });
+      VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_JavaLangString, "style", "0X8008E63", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_Bbuo.a), "");
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wsv.b("QQ.Troop.homework.SendArithHomeResultSegment", "decodeResponse", paramArrayOfByte);
-    }
-    return new unf(-99, "decodeResponse error:" + paramArrayOfByte);
-  }
-  
-  protected byte[] a()
-  {
-    MathHWNetWorkPB.ReqCheckHomework localReqCheckHomework = new MathHWNetWorkPB.ReqCheckHomework();
-    MathHWNetWorkPB.YoutuPicInfo localYoutuPicInfo = new MathHWNetWorkPB.YoutuPicInfo();
-    localYoutuPicInfo.old_url.set(this.jdField_a_of_type_Bbug.jdField_a_of_type_JavaLangString);
-    localYoutuPicInfo.new_url.set(this.jdField_a_of_type_JavaLangString);
-    localYoutuPicInfo.new_data.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Bbug.jdField_b_of_type_JavaLangString));
-    localReqCheckHomework.group_id.set(this.jdField_a_of_type_Bbug.jdField_a_of_type_Long);
-    localReqCheckHomework.hw_id.set(this.jdField_a_of_type_Bbug.jdField_b_of_type_Long);
-    localReqCheckHomework.uin.set(this.jdField_a_of_type_Bbug.c);
-    localReqCheckHomework.pics.add(localYoutuPicInfo);
-    return localReqCheckHomework.toByteArray();
+    return true;
   }
 }
 

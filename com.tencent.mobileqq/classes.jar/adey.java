@@ -1,90 +1,107 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.mobileqq.fragment.HotChatFragment;
-import com.tencent.mobileqq.fragment.NearbyBaseFragment;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.fragment.NearbyMsgFragment;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import java.util.ArrayList;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.JobSelectionActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.widget.InterestLabelTextView;
 
 public class adey
-  extends FragmentPagerAdapter
+  extends BaseAdapter
 {
-  public HotChatFragment a;
-  public NearbyHybridFragment a;
-  NearbyMsgFragment jdField_a_of_type_ComTencentMobileqqFragmentNearbyMsgFragment;
-  public NowLiveFragment a;
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private String[] b;
   
-  public adey(NearbyActivity paramNearbyActivity, FragmentManager paramFragmentManager)
+  private adey(JobSelectionActivity paramJobSelectionActivity)
   {
-    super(paramFragmentManager);
+    if (JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity))
+    {
+      paramJobSelectionActivity = alpy.d;
+      this.jdField_a_of_type_ArrayOfJavaLangString = paramJobSelectionActivity;
+      if (!JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) {
+        break label74;
+      }
+      paramJobSelectionActivity = alpy.e;
+      label42:
+      this.b = paramJobSelectionActivity;
+      if (!JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) {
+        break label81;
+      }
+    }
+    label74:
+    label81:
+    for (paramJobSelectionActivity = alpy.jdField_a_of_type_ArrayOfInt;; paramJobSelectionActivity = bdda.b)
+    {
+      this.jdField_a_of_type_ArrayOfInt = paramJobSelectionActivity;
+      return;
+      paramJobSelectionActivity = bdda.d;
+      break;
+      paramJobSelectionActivity = bdda.e;
+      break label42;
+    }
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a.size();
+    if (JobSelectionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) {
+      return this.jdField_a_of_type_ArrayOfJavaLangString.length - 2;
+    }
+    return this.jdField_a_of_type_ArrayOfJavaLangString.length - 1;
   }
   
-  public Fragment getItem(int paramInt)
+  public Object getItem(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a(paramInt);
-    Object localObject2 = localObject1;
-    NearbyActivity.TabInfo localTabInfo;
-    if (localObject1 == null)
+    paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity.a(paramInt);
+    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null)
     {
-      localTabInfo = (NearbyActivity.TabInfo)this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a.get(paramInt);
-      if (localTabInfo.tabType != 2) {
-        break label82;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment = new NowLiveFragment();
-      }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment;
+      localView = this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity.getLayoutInflater().inflate(2131560999, paramViewGroup, false);
+      paramView = new adez(null);
+      paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView = ((InterestLabelTextView)localView.findViewById(2131377403));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370977));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364251));
+      localView.setTag(paramView);
+    }
+    paramView = (adez)localView.getTag();
+    paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity.a(paramInt);
+    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity.getResources().getDrawable(this.jdField_a_of_type_ArrayOfInt[paramInt]);
+    ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity.app, paramViewGroup);
+    paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setText(this.b[paramInt]);
+    paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setBackgroundDrawable(paramViewGroup);
+    int i = aepi.a(4.0F, JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity).getResources());
+    paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setPadding(i, 0, i, 0);
+    if (paramInt < this.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
+      paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setVisibility(0);
     }
     for (;;)
     {
-      localObject2 = localObject1;
-      if (localObject1 != null)
-      {
-        ((NearbyBaseFragment)localObject1).a(localTabInfo);
-        localObject2 = localObject1;
+      if ((JobSelectionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) && (paramInt == 0)) {
+        paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setVisibility(4);
       }
-      return localObject2;
-      label82:
-      if (localTabInfo.tabType == 3)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment == null) {
-          this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment = new HotChatFragment();
-        }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment;
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+      if (JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity) != paramInt) {
+        break;
       }
-      else if (localTabInfo.tabType == 4)
-      {
-        localObject1 = new CommonTabFragment();
-      }
-      else if (localTabInfo.tabType == 5)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment == null) {
-          this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment = new NearbyHybridFragment();
-        }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment;
-      }
-      else if (localTabInfo.tabType == 6)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyMsgFragment == null) {
-          this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyMsgFragment = new NearbyMsgFragment();
-        }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyMsgFragment;
-      }
-      else if (localTabInfo.tabType == 7)
-      {
-        localObject1 = new CommonTabFragment();
-      }
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      return localView;
+      paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setVisibility(4);
     }
+    paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    return localView;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.runtime.widget.media.live;
 
-import bhhf;
+import bhlm;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 public class TXLivePusherJSAdapter$1
@@ -8,11 +8,11 @@ public class TXLivePusherJSAdapter$1
 {
   public void run()
   {
-    bhhf.a(this.this$0, this.a);
+    bhlm.a(this.this$0, this.a);
     if (QMLog.isColorLevel()) {
-      QMLog.d("TXLivePusherJSAdapter", "notifyOrientationChanged, angle:" + this.a + ", orientation:" + bhhf.a(this.this$0));
+      QMLog.d("TXLivePusherJSAdapter", "notifyOrientationChanged, angle:" + this.a + ", orientation:" + bhlm.a(this.this$0));
     }
-    bhhf.a(this.this$0, this.a, bhhf.a(this.this$0));
+    bhlm.a(this.this$0, this.a, bhlm.a(this.this$0));
   }
 }
 

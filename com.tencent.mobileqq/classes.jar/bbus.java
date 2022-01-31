@@ -1,24 +1,24 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
+import java.util.UUID;
 
-public class bbus
+class bbus
+  implements amnx
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
+  bbus(bbur parambbur, TroopFileTansferItemEntity paramTroopFileTansferItemEntity) {}
   
-  public bbus(HomeworkGuideFragment paramHomeworkGuideFragment) {}
-  
-  public void a(int paramInt, View paramView)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371925));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365101));
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(((HWGuideItem)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment.a.get(this.jdField_a_of_type_Int)).b);
+    bbvl.d("TroopFileDataBaseProxy", bbvl.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish. table:" + paramString);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    bbvl.d("TroopFileDataBaseProxy", bbvl.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[up]. table:" + paramString);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    bbvl.d("TroopFileDataBaseProxy", bbvl.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[del]. table:" + paramString);
   }
 }
 

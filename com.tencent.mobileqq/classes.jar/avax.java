@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView;
 
 public class avax
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public avax(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public avax(InterestTagItemView paramInterestTagItemView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if ((paramView == InterestTagItemView.a(this.a)) || (paramView == this.a))
+    {
+      InterestTagItemView.a(this.a).a(InterestTagItemView.a(this.a));
+      this.a.a();
     }
   }
 }

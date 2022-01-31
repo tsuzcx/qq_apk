@@ -1,27 +1,8 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-
-public class auxq
-  implements URLDrawable.URLDrawableListener
+public abstract interface auxq
 {
-  public auxq(StoryPlayController paramStoryPlayController, ImageView paramImageView, avby paramavby) {}
+  public abstract void bw();
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-    if (this.jdField_a_of_type_Avby != null) {
-      this.jdField_a_of_type_Avby.a(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight(), true);
-    }
-  }
+  public abstract void bx();
 }
 
 

@@ -1,25 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
-
-public class bktl
-  implements Animation.AnimationListener
+public abstract class bktl
 {
-  public bktl(AEMaterialPanel paramAEMaterialPanel) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public static bktl a(int paramInt)
   {
-    if (AEMaterialPanel.a(this.a) != null)
-    {
-      AEMaterialPanel.a(this.a).setAlpha(1.0F);
-      AEMaterialPanel.a(this.a).setVisibility(8);
+    if (paramInt > 0) {
+      return new bktm();
     }
+    return new bktn();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract int a(int paramInt);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract boolean a(int paramInt);
 }
 
 

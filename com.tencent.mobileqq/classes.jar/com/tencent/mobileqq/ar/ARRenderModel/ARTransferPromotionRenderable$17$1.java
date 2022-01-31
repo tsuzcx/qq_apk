@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amrb;
-import amrd;
-import azmj;
+import amvq;
+import amvs;
+import azqs;
 
 class ARTransferPromotionRenderable$17$1
   implements Runnable
@@ -11,7 +11,7 @@ class ARTransferPromotionRenderable$17$1
   
   public void run()
   {
-    azmj.b(null, "dc00898", "", "", "0X80098CF", "0X80098CF", 0, 0, amrb.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARTransferPromotionRenderable$17.this$0).a, Integer.toString((int)this.jdField_a_of_type_Float), "", "");
+    azqs.b(null, "dc00898", "", "", "0X80098CF", "0X80098CF", 0, 0, amvq.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARTransferPromotionRenderable$17.this$0).a, Integer.toString((int)this.jdField_a_of_type_Float), "", "");
   }
 }
 

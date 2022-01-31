@@ -1,12 +1,27 @@
-import android.view.View;
-import android.widget.ImageView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
 
-class bmgg
+public class bmgg
+  extends AnimatorListenerAdapter
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public bmgg(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
   
-  bmgg(bmgf parambmgf) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a.d = 5;
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation captureView 190ms all end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation captureView begin");
+    }
+  }
 }
 
 

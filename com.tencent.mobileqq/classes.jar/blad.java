@@ -1,52 +1,41 @@
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.data.AEMaterialMgr.1;
 import java.io.File;
-import java.util.List;
+import java.io.IOException;
+import java.util.Map;
 
 public class blad
-  extends bmag
+  implements baug
 {
-  private bmab<bkxw> a = new bmab();
-  private bmab<String> b = new bmab();
-  private bmab<blam> c = new bmab();
+  public blad(AEMaterialMgr.1 param1, String paramString) {}
   
-  public bmab<bkxw> a()
+  public void onResp(bavf parambavf)
   {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    this.a.a(new bkxw("#ccffffff", "#000000"));
-    this.b.a("");
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    this.b.a(paramString);
-    this.a.a(bkxv.a.get(paramInt));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    blam localblam = new blam();
-    String[] arrayOfString = new File(paramString2).list();
-    String str = paramString2 + File.separator + "snapshot.png";
-    if (arrayOfString.length != 0) {
-      bkkd.a(paramString2 + File.separator + arrayOfString[0], 320, 320, str);
+    if (QLog.isColorLevel()) {
+      QLog.i(blac.a(), 2, "onResp url: " + this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.packageUrl + " resultcode: " + parambavf.c);
     }
-    localblam.a = paramString2;
-    localblam.b = paramString1;
-    localblam.c = str;
-    this.c.a(localblam);
+    if (this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a)) {}
+    try
+    {
+      ndr.a(new File(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.id), bkoz.e + File.separator);
+      blac.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a);
+      blac.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0).remove(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.id);
+      return;
+    }
+    catch (IOException parambavf)
+    {
+      while (!QLog.isColorLevel()) {}
+      parambavf.printStackTrace();
+    }
   }
   
-  public bmab<String> b()
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
   {
-    return this.b;
-  }
-  
-  public bmab<blam> c()
-  {
-    return this.c;
+    blac.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a, (int)(paramLong1 / paramLong2 * 100L));
+    if (!blac.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0).containsKey(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.id)) {
+      blac.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0).put(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.id, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a);
+    }
   }
 }
 

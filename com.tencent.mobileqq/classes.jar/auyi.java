@@ -1,16 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+
 public class auyi
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
+  public auyi(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean) {}
   
-  public auyi() {}
-  
-  public auyi(String paramString, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    if (this.jdField_a_of_type_Boolean) {
+      GameRoomInviteActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity);
+    }
   }
 }
 

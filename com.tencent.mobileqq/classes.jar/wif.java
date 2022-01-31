@@ -1,16 +1,24 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
-import java.util.List;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
 
-public class wif
-  extends ugz
+class wif
+  extends ParallelJobSegment<wop, wic>
 {
-  public List<MomeriesYearNode> a;
-  public boolean a;
-  
-  public wif(wic paramwic, ErrorMessage paramErrorMessage)
+  public wif(wib paramwib)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this(paramwib, "RequestCommentListSegment");
+  }
+  
+  public wif(wib paramwib, String paramString)
+  {
+    super(paramString);
+  }
+  
+  protected void a(JobContext paramJobContext, wop paramwop)
+  {
+    vfh localvfh = new vfh();
+    localvfh.a = paramwop;
+    urp.a().a(localvfh, new wig(this, paramJobContext, paramwop));
   }
 }
 

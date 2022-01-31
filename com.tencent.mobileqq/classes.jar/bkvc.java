@@ -1,22 +1,31 @@
-import android.widget.DatePicker;
-import android.widget.EditText;
-import dov.com.qq.im.ae.camera.ui.watermark.WatermarkEditView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-public class bkvc
-  implements bkvb
+class bkvc
+  implements Animation.AnimationListener
 {
-  public bkvc(WatermarkEditView paramWatermarkEditView) {}
+  bkvc(bkuy parambkuy) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    WatermarkEditView.a(this.a).setVisibility(8);
+    if ((bkuy.a(this.a) != null) && (!bkuy.a(this.a)))
+    {
+      bkuy.a(this.a).setAlpha(1.0F);
+      bkuy.a(this.a).setVisibility(4);
+    }
+    if (bkuy.b(this.a) != null)
+    {
+      bkuy.c(this.a).a(327683, new Object[0]);
+      bkuy.d(this.a).a(196612, new Object[0]);
+    }
   }
   
-  public void a(int paramInt, String paramString, EditText paramEditText)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    paramString = paramString.split("-");
-    WatermarkEditView.a(this.a).init(Integer.parseInt(paramString[0]), Integer.parseInt(paramString[1]) - 1, Integer.parseInt(paramString[2]), WatermarkEditView.a(this.a));
-    WatermarkEditView.a(this.a).setVisibility(0);
+    bkuy.a(this.a).a().a(true, 150);
   }
 }
 

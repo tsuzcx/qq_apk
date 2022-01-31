@@ -1,13 +1,30 @@
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
+import com.tencent.qphone.base.util.QLog;
 
 class aqyu
-  implements aqze
+  extends aqyt
 {
-  aqyu(aqyt paramaqyt) {}
-  
-  public void a()
+  public aqyu(aqyp paramaqyp)
   {
-    FileSelectorSearchFragment.a(this.a.a).a();
+    super(paramaqyp);
+  }
+  
+  protected String a()
+  {
+    return "StateCancelUploadWhenChangeToOff";
+  }
+  
+  protected boolean a()
+  {
+    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
+    }
+    aqyp.b(this.jdField_a_of_type_Aqyp, 11, 9);
+    aqyp.c(this.jdField_a_of_type_Aqyp, 11, 9);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateCancelUploadWhenRecv)");
+    this.jdField_a_of_type_Aqyt = new aqyw(this.jdField_a_of_type_Aqyp);
+    return true;
   }
 }
 

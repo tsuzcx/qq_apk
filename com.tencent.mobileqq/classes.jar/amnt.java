@@ -1,12 +1,10 @@
-import android.view.MotionEvent;
-
 public abstract interface amnt
 {
-  public abstract void a(MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amnt
  * JD-Core Version:    0.7.0.1
  */

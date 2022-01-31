@@ -19,7 +19,7 @@ public class osx
       String str2 = (String)paramString.get(str1);
       QLog.d("AdFeedsProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
       if (TextUtils.equals(str1, "commercialAd_feeds")) {
-        bjxj.a("ad_feeds_proteus_offline_bid", str2);
+        bkbq.a("ad_feeds_proteus_offline_bid", str2);
       }
     }
     return true;
@@ -27,7 +27,7 @@ public class osx
   
   public void onWipeConfig(int paramInt)
   {
-    bjxj.a("ad_feeds_proteus_offline_bid", "0");
+    bkbq.a("ad_feeds_proteus_offline_bid", "0");
   }
 }
 

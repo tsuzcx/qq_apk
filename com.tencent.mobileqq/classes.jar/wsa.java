@@ -1,111 +1,65 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTodayStoryVidList;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Calendar;
 
 public class wsa
-  extends xrg
+  implements wsz
 {
-  public static final String KEY = "PlaceholderSegment";
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private wph jdField_a_of_type_Wph;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  protected wsc a;
+  protected wta a;
+  protected wtb a;
   
-  public wsa(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public Object a()
   {
-    super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void Z_()
-  {
-    aa_();
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public View a(int paramInt, wph paramwph, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (TextView)paramwph.a(2131373762);
-    ImageView localImageView = (ImageView)paramwph.a(2131373763);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      paramViewGroup.setText(alpo.a(2131708571) + ugx.jdField_a_of_type_JavaLangString + "\n拍摄一段小视频，分享眼前的世界");
-      QQStoryContext.a();
-      if (!ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
-        break label104;
-      }
-      localImageView.setImageResource(this.jdField_b_of_type_Int);
-    }
-    for (;;)
-    {
-      return paramwph.a();
-      paramViewGroup.setText(this.jdField_a_of_type_JavaLangString);
-      break;
-      label104:
-      localImageView.setImageResource(this.jdField_a_of_type_Int);
-    }
+    return this.jdField_a_of_type_Wsc;
   }
   
   public String a()
   {
-    return "PlaceholderSegment";
+    return getClass().getSimpleName();
   }
   
-  public wph a(int paramInt, ViewGroup paramViewGroup)
+  public void a()
   {
-    this.jdField_a_of_type_Wph = new wph(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561421, paramViewGroup, false));
-    return this.jdField_a_of_type_Wph;
+    wxe.c("GetMyStoryVideoListStep", "GetMyStoryVideoListStep");
+    d();
   }
   
-  protected void aa_()
+  public void a(Object paramObject) {}
+  
+  public void a(wta paramwta)
   {
-    xrg localxrg = a().a(this.jdField_b_of_type_JavaLangString);
-    if ((localxrg == null) || (localxrg.a() == 0))
-    {
-      e_(true);
-      return;
-    }
-    e_(false);
+    this.jdField_a_of_type_Wta = paramwta;
   }
   
-  protected void c()
+  public void a(wtb paramwtb)
   {
-    aa_();
+    this.jdField_a_of_type_Wtb = paramwtb;
   }
   
-  public void e()
+  public boolean a()
   {
-    super.e();
-    if (this.jdField_a_of_type_Wph == null) {}
-    ImageView localImageView;
-    do
-    {
-      return;
-      localImageView = (ImageView)this.jdField_a_of_type_Wph.a(2131373763);
-    } while (localImageView == null);
-    QQStoryContext.a();
-    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
-    {
-      localImageView.setImageResource(this.jdField_b_of_type_Int);
-      return;
-    }
-    localImageView.setImageResource(this.jdField_a_of_type_Int);
+    return false;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  protected void d()
+  {
+    String str = uqn.a("StorySvc.homepage_my_day_710");
+    qqstory_service.ReqTodayStoryVidList localReqTodayStoryVidList = new qqstory_service.ReqTodayStoryVidList();
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(l);
+    int i = localCalendar.get(1);
+    int j = localCalendar.get(2);
+    int k = localCalendar.get(5);
+    localReqTodayStoryVidList.date.set(i * 10000 + (j + 1) * 100 + k);
+    this.jdField_a_of_type_Wsc = new wsc();
+    urp.a().a(new vez(str, localReqTodayStoryVidList, null), new wsb(this, localReqTodayStoryVidList, str));
   }
 }
 

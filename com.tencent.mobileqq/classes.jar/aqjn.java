@@ -1,8 +1,17 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
 
-class aqjn
+public class aqjn
+  implements View.OnClickListener
 {
-  View[] a = new View[12];
+  public aqjn(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
+  
+  public void onClick(View paramView)
+  {
+    bddf.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_JavaLangString, 0);
+  }
 }
 
 

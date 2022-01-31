@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ark;
 
-import anku;
-import ankz;
+import anpd;
+import anpi;
 import java.lang.ref.WeakReference;
 
 public class ArkTipsManager$4
   implements Runnable
 {
-  public ArkTipsManager$4(anku paramanku, long paramLong) {}
+  public ArkTipsManager$4(anpd paramanpd, long paramLong) {}
   
   public void run()
   {
-    if ((anku.a(this.this$0) != null) && (this.a == anku.a(this.this$0).b))
+    if ((anpd.a(this.this$0) != null) && (this.a == anpd.a(this.this$0).b))
     {
-      anku.a(this.this$0, this.a);
-      anku.a(this.this$0, new WeakReference(anku.a(this.this$0).a));
+      anpd.a(this.this$0, this.a);
+      anpd.a(this.this$0, new WeakReference(anpd.a(this.this$0).a));
       this.this$0.b();
     }
   }

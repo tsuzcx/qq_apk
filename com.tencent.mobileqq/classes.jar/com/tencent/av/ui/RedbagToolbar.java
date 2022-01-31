@@ -2,7 +2,7 @@ package com.tencent.av.ui;
 
 import android.content.res.Resources;
 import android.text.TextUtils;
-import bdcs;
+import bdhb;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.opengl.GraphicRenderMgr;
@@ -58,7 +58,7 @@ public class RedbagToolbar
       if (!TextUtils.isEmpty(null)) {
         break label610;
       }
-      localObject1 = paramVideoAppInterface.getApp().getString(2131696261);
+      localObject1 = paramVideoAppInterface.getApp().getString(2131696263);
       i = 1;
     }
     for (;;)
@@ -72,7 +72,7 @@ public class RedbagToolbar
         localObject2 = localObject1;
         if (TextUtils.isEmpty((CharSequence)localObject1))
         {
-          localObject2 = paramVideoAppInterface.getApp().getString(2131696258);
+          localObject2 = paramVideoAppInterface.getApp().getString(2131696260);
           j = i;
         }
       }
@@ -88,7 +88,7 @@ public class RedbagToolbar
         localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2))
         {
-          localObject1 = paramVideoAppInterface.getApp().getString(2131696259);
+          localObject1 = paramVideoAppInterface.getApp().getString(2131696261);
           i = j;
         }
       case 1: 
@@ -101,7 +101,7 @@ public class RedbagToolbar
           localObject2 = localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1))
           {
-            localObject2 = paramVideoAppInterface.getApp().getString(2131696256);
+            localObject2 = paramVideoAppInterface.getApp().getString(2131696258);
             j = i;
           }
         }
@@ -120,7 +120,7 @@ public class RedbagToolbar
           localObject1 = localObject2;
           if (TextUtils.isEmpty((CharSequence)localObject2))
           {
-            localObject1 = paramVideoAppInterface.getApp().getString(2131696262);
+            localObject1 = paramVideoAppInterface.getApp().getString(2131696264);
             i = j;
           }
         }
@@ -133,7 +133,7 @@ public class RedbagToolbar
           localObject2 = localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1))
           {
-            localObject2 = paramVideoAppInterface.getApp().getString(2131696254);
+            localObject2 = paramVideoAppInterface.getApp().getString(2131696256);
             j = i;
           }
         }
@@ -158,7 +158,7 @@ public class RedbagToolbar
         if (!TextUtils.isEmpty((CharSequence)localObject2)) {
           break label204;
         }
-        localObject1 = paramVideoAppInterface.getApp().getString(2131696255);
+        localObject1 = paramVideoAppInterface.getApp().getString(2131696257);
         i = j;
         break label204;
         j |= 0x8;
@@ -167,7 +167,7 @@ public class RedbagToolbar
         if (!TextUtils.isEmpty((CharSequence)localObject2)) {
           break label204;
         }
-        localObject1 = paramVideoAppInterface.getApp().getString(2131696257);
+        localObject1 = paramVideoAppInterface.getApp().getString(2131696259);
         i = j;
         break label204;
       }
@@ -196,10 +196,10 @@ public class RedbagToolbar
     {
       this.mUIInfo = new mej();
       this.mUIInfo.d = 7;
-      this.mUIInfo.f = 2131559643;
-      this.mUIInfo.e = 2130841930;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131696386);
-      this.mUIInfo.c = 2130841931;
+      this.mUIInfo.f = 2131559642;
+      this.mUIInfo.e = 2130841943;
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131696388);
+      this.mUIInfo.c = 2130841944;
       this.mUIInfo.jdField_a_of_type_Int = 0;
     }
     return this.mUIInfo;
@@ -268,7 +268,7 @@ public class RedbagToolbar
       if (this.mDisableType == 0)
       {
         String str = msp.b();
-        paramBoolean = bdcs.b(str);
+        paramBoolean = bdhb.b(str);
         if ((paramBoolean) && (mse.a(this.mApp)))
         {
           localmrt.a(true);
@@ -305,7 +305,7 @@ public class RedbagToolbar
         mdd.a(this.mApp, 1042, this.mTips);
       }
       return paramBoolean;
-      this.mTips = localAVActivity.getResources().getString(2131696260);
+      this.mTips = localAVActivity.getResources().getString(2131696262);
       this.mDisableType = 67108864;
     }
   }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import aluw;
+import alzl;
 import mqq.util.WeakReference;
 import owy;
 import ssp;
@@ -10,21 +10,21 @@ class PublicAccountHandler$FolderRefreshRunnable
   implements Runnable
 {
   private final WeakReference<QQAppInterface> a;
-  private final WeakReference<aluw> b;
+  private final WeakReference<alzl> b;
   
-  public PublicAccountHandler$FolderRefreshRunnable(QQAppInterface paramQQAppInterface, aluw paramaluw)
+  public PublicAccountHandler$FolderRefreshRunnable(QQAppInterface paramQQAppInterface, alzl paramalzl)
   {
     this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramaluw);
+    this.b = new WeakReference(paramalzl);
   }
   
   public void run()
   {
     Object localObject = (QQAppInterface)this.a.get();
-    aluw localaluw = (aluw)this.b.get();
-    if ((localObject != null) && (localaluw != null))
+    alzl localalzl = (alzl)this.b.get();
+    if ((localObject != null) && (localalzl != null))
     {
-      suv.a().a((QQAppInterface)localObject, localaluw.a());
+      suv.a().a((QQAppInterface)localObject, localalzl.a());
       ssp.a().c((QQAppInterface)localObject);
       suv.a().g((QQAppInterface)localObject);
       localObject = owy.a();

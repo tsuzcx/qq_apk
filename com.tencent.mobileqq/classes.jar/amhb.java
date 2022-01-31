@@ -1,21 +1,26 @@
-import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.Comparator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import java.util.Map.Entry;
 
 class amhb
-  implements Comparator<structmsg.StructMsg>
+  implements Comparator<Map.Entry<String, awge>>
 {
   amhb(amha paramamha) {}
   
-  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
+  public int a(Map.Entry<String, awge> paramEntry1, Map.Entry<String, awge> paramEntry2)
   {
-    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
+    paramEntry1 = ((String)paramEntry1.getKey()).split("&")[1];
+    int i = Integer.parseInt(paramEntry1.split("-")[0]);
+    int j = Integer.parseInt(paramEntry1.split("-")[1]);
+    paramEntry1 = ((String)paramEntry2.getKey()).split("&")[1];
+    int k = Integer.parseInt(paramEntry1.split("-")[0]);
+    int m = Integer.parseInt(paramEntry1.split("-")[1]);
+    if (i > k) {
       return 1;
     }
-    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
-      return -1;
+    if (i == k) {
+      return j - m;
     }
-    return 0;
+    return -1;
   }
 }
 

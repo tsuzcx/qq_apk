@@ -1,17 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Rect;
-import com.tencent.mobileqq.ar.view.ViewfinderView;
-
 public class andv
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public andv(ViewfinderView paramViewfinderView, Rect paramRect) {}
+  public int a;
+  public long a;
+  public baub a;
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "";
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public andv()
   {
-    ViewfinderView.a(this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView.postInvalidate(this.jdField_a_of_type_AndroidGraphicsRect.left - 6, this.jdField_a_of_type_AndroidGraphicsRect.top - 6, this.jdField_a_of_type_AndroidGraphicsRect.right + 6, this.jdField_a_of_type_AndroidGraphicsRect.bottom + 6);
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", md5='").append(this.b).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

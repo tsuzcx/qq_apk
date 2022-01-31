@@ -1,16 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.os.Message;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
-public class axyu
-  implements View.OnClickListener
+class axyu
+  extends MqqHandler
 {
-  public axyu(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  axyu(axyt paramaxyt) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    azmj.b(null, "dc00898", "", "", "0X800A98A", "0X800A98A", 1, 0, "0", "0", "", "");
-    SignatureHistoryFragment.d(this.a, true);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      QQToast.a(this.a.a.mContext, 2131720109, 0).a();
+      return;
+    }
+    paramMessage = (String)paramMessage.obj;
+    bdhj.a(this.a.a.mContext, paramMessage);
+    QQToast.a(this.a.a.mContext, 2, alud.a(2131700410), 0).a();
   }
 }
 

@@ -1,16 +1,10 @@
-import android.content.Context;
+import javax.microedition.khronos.opengles.GL10;
 
 public abstract interface anho
 {
-  public abstract void attachArkView(ankh paramankh, ankl paramankl, int paramInt);
+  public abstract void a(GL10 paramGL10);
   
-  public abstract void clickTail(ankl paramankl, afeg paramafeg, Context paramContext);
-  
-  public abstract void destroyContainerByRemove();
-  
-  public abstract anho extendArkCardByOpen(afdt paramafdt, String paramString1, String paramString2);
-  
-  public abstract String[] getArkAppNameAndPath();
+  public abstract void a(GL10 paramGL10, int paramInt1, int paramInt2);
 }
 
 

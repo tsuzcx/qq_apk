@@ -16,11 +16,11 @@ import mqq.manager.Manager;
 import mqq.os.MqqHandler;
 
 public class lwp
-  implements Handler.Callback, anoq, Manager
+  implements Handler.Callback, ansz, Manager
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  public anon a;
+  public answ a;
   public AVRedPacketConfig a;
   public QQAppInterface a;
   public Object a;
@@ -38,8 +38,8 @@ public class lwp
     this.jdField_a_of_type_JavaLangObject = new Object();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_Anon = ((anon)paramQQAppInterface.getManager(191));
-    this.jdField_a_of_type_Anon.a(this);
+    this.jdField_a_of_type_Answ = ((answ)paramQQAppInterface.getManager(191));
+    this.jdField_a_of_type_Answ.a(this);
   }
   
   public int a()
@@ -221,9 +221,9 @@ public class lwp
       QLog.d("AVRedPacketConfigManger", 1, "downloadRes, redPacketConfig is null");
       return;
     }
-    Object localObject = (bavr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
-    ((bavr)localObject).a(this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL);
-    ((bavr)localObject).a(this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl);
+    Object localObject = (bbaa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
+    ((bbaa)localObject).a(this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL);
+    ((bbaa)localObject).a(this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl);
     localObject = a();
     if (localObject != null)
     {
@@ -297,7 +297,7 @@ public class lwp
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_Anon.b(this);
+    this.jdField_a_of_type_Answ.b(this);
     a("onDestroy");
   }
 }

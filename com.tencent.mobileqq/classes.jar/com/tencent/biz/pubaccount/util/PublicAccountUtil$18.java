@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.util;
 
-import aljq;
+import alof;
 import android.text.TextUtils;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,7 +15,7 @@ public final class PublicAccountUtil$18
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b(aljq.az, -3006);
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b(alof.az, -3006);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       localObject = this.b;

@@ -1,58 +1,35 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import java.io.File;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.lang.ref.WeakReference;
 
-public class aaqr
-  extends URLDrawableParams
+class aaqr
+  implements EIPCResultCallback
 {
-  Context a;
+  aaqr(aaqp paramaaqp, WeakReference paramWeakReference, aaqw paramaaqw) {}
   
-  public aaqr(Context paramContext, File paramFile)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    super(paramContext);
-    this.a = paramContext;
-    baul.a = paramFile;
-    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new banz(paramFile);
-  }
-  
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
-  {
-    boolean bool = true;
-    if (("http".equals(paramString)) || ("https".equals(paramString)))
+    aaqx localaaqx = new aaqx();
+    boolean bool;
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
     {
-      if (BaseApplicationImpl.sProcessId == 1) {}
-      for (;;)
-      {
-        return new bapk(bool, paramObject);
-        bool = false;
+      bool = true;
+      localaaqx.jdField_a_of_type_Boolean = bool;
+      if (paramEIPCResult == null) {
+        break label83;
       }
     }
-    return null;
-  }
-  
-  public String doGetLocalFilePath(String paramString)
-  {
-    return null;
-  }
-  
-  public ApngSoLoader getApngSoLoader()
-  {
-    return bdpr.a();
-  }
-  
-  public Drawable getDefaultLoadingDrawable()
-  {
-    return this.a.getResources().getDrawable(2130847294);
-  }
-  
-  public Drawable getDefualtFailedDrawable()
-  {
-    return this.a.getResources().getDrawable(2130847294);
+    label83:
+    for (paramEIPCResult = paramEIPCResult.data;; paramEIPCResult = null)
+    {
+      localaaqx.jdField_a_of_type_AndroidOsBundle = paramEIPCResult;
+      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+        ((aaqs)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Aaqw, localaaqx);
+      }
+      return;
+      bool = false;
+      break;
+    }
   }
 }
 

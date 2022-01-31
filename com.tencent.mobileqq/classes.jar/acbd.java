@@ -1,15 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class acbd
   implements View.OnClickListener
 {
-  public acbd(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  public acbd(AccountManageActivity paramAccountManageActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.onBackEvent();
+    this.a.i();
   }
 }
 

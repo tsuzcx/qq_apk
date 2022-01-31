@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class wow
-  implements DialogInterface.OnClickListener
+public abstract interface wow<T>
 {
-  wow(wou paramwou) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    wta.a("home_page", "guide_known", 0, 0, new String[0]);
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(T paramT);
 }
 
 

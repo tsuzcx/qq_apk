@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.audiorecorder;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -193,7 +193,7 @@ public class LameMp3Recorder
     }
     if (getTime() < 1)
     {
-      this.mMainHandler.sendMessage(generateRecordErrMsg(alpo.a(2131706364)));
+      this.mMainHandler.sendMessage(generateRecordErrMsg(alud.a(2131706376)));
       recordStop();
     }
     this.mPauseTime = System.currentTimeMillis();

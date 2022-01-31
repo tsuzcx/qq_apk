@@ -76,7 +76,7 @@ public class pdx
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() == 2131380232) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) && (this.jdField_a_of_type_Sro != null)) {
+    if ((paramView.getId() == 2131380290) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) && (this.jdField_a_of_type_Sro != null)) {
       this.jdField_a_of_type_Sro.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getWormholeId(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getWormholeData());
     }
   }

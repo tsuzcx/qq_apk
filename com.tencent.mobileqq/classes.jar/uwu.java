@@ -1,17 +1,24 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.model.filter.FilterItem;
+import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
 
 public class uwu
-  extends DataSetObserver
 {
-  uwu(uwn paramuwn) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void onChanged()
+  public FilterItem a()
   {
-    if (this.a.a == 0) {
-      ThreadManager.getUIHandler().post(new MsgTabStoryNodeListManager.7.1(this));
+    try
+    {
+      FilterItem localFilterItem = new FilterItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c, null);
+      return localFilterItem;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      throw new FilterItem.FilterItemIllegalException("create FilterItem instance failed", localIllegalArgumentException);
     }
   }
 }

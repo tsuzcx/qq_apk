@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import asuu;
+import aszd;
 import com.tencent.shadow.core.common.LoggerFactory;
 
 public class NowliveContainer
@@ -8,7 +8,7 @@ public class NowliveContainer
 {
   protected boolean doStep()
   {
-    LoggerFactory.setILoggerFactory(asuu.a());
+    LoggerFactory.setILoggerFactory(aszd.a());
     return true;
   }
 }

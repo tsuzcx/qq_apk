@@ -1,13 +1,14 @@
-import android.support.annotation.CallSuper;
+import android.support.annotation.NonNull;
 
-public class blyn
-  extends bmag
+class blyn
+  implements blxl
 {
-  @CallSuper
-  public void b()
+  blyn(blym paramblym) {}
+  
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    super.b();
-    blyo.a().a(this);
+    return bcnt.b(paramString);
   }
 }
 

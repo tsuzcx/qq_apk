@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap;
 
-import azmz;
+import azri;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 
@@ -14,7 +14,7 @@ public final class ArMapUtil$3
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("preloadFileCount", String.valueOf(i));
-      azmz.a(BaseApplicationImpl.getContext()).a("", "ARMAP_OFFLINE_ENTER", true, 0L, 0L, localHashMap, "", false);
+      azri.a(BaseApplicationImpl.getContext()).a("", "ARMAP_OFFLINE_ENTER", true, 0L, 0L, localHashMap, "", false);
       return;
     }
   }

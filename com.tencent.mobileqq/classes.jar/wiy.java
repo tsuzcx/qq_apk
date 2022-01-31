@@ -1,8 +1,22 @@
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
 
-public abstract interface wiy
+final class wiy
+  extends ClickableSpan
 {
-  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
+  wiy(wiz paramwiz, String paramString, int paramInt) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Wiz.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(paramTextPaint.getColor());
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 

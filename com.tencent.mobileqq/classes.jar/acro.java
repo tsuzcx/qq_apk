@@ -1,66 +1,33 @@
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class acro
-  extends LinkMovementMethod
+  implements View.OnTouchListener
 {
-  private acrq jdField_a_of_type_Acrq;
+  public acro(Conversation paramConversation) {}
   
-  private acro(EditInfoActivity paramEditInfoActivity) {}
-  
-  private acrq a(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = (int)paramMotionEvent.getX();
-    int j = (int)paramMotionEvent.getY();
-    int k = paramTextView.getTotalPaddingLeft();
-    int m = paramTextView.getTotalPaddingTop();
-    int n = paramTextView.getScrollX();
-    int i1 = paramTextView.getScrollY();
-    paramTextView = paramTextView.getLayout();
-    i = paramTextView.getOffsetForHorizontal(paramTextView.getLineForVertical(j - m + i1), i - k + n);
-    paramTextView = (acrq[])paramSpannable.getSpans(i, i, acrq.class);
-    if (paramTextView.length > 0) {
-      return paramTextView[0];
-    }
-    return null;
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_Acrq = a(paramTextView, paramSpannable, paramMotionEvent);
-      if (this.jdField_a_of_type_Acrq != null)
-      {
-        this.jdField_a_of_type_Acrq.a(true);
-        Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(this.jdField_a_of_type_Acrq), paramSpannable.getSpanEnd(this.jdField_a_of_type_Acrq));
+      paramView = new StringBuilder().append("statusTitle onTouch event :").append(paramMotionEvent.toString()).append(", mGestureDetector is null ");
+      if (this.a.a == null) {
+        break label81;
       }
     }
-    do
+    label81:
+    for (boolean bool = true;; bool = false)
     {
+      QLog.d("Q.recent", 2, bool);
+      if (this.a.a != null) {
+        this.a.a.onTouchEvent(paramMotionEvent);
+      }
       return true;
-      if (paramMotionEvent.getAction() != 2) {
-        break;
-      }
-      paramTextView = a(paramTextView, paramSpannable, paramMotionEvent);
-    } while ((this.jdField_a_of_type_Acrq == null) || (paramTextView == this.jdField_a_of_type_Acrq));
-    this.jdField_a_of_type_Acrq.a(false);
-    this.jdField_a_of_type_Acrq = null;
-    Selection.removeSelection(paramSpannable);
-    return true;
-    if (this.jdField_a_of_type_Acrq != null)
-    {
-      this.jdField_a_of_type_Acrq.a(false);
-      super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
     }
-    this.jdField_a_of_type_Acrq = null;
-    Selection.removeSelection(paramSpannable);
-    return true;
   }
 }
 

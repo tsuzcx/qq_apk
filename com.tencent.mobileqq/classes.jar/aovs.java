@@ -1,117 +1,70 @@
-import android.content.ContentProviderOperation;
-import android.content.ContentProviderOperation.Builder;
-import android.content.ContentValues;
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.provider.ContactsContract.Data;
-import android.provider.ContactsContract.RawContacts;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aovs
 {
-  private static String jdField_a_of_type_JavaLangString = aovr.jdField_a_of_type_JavaLangString;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private ContentValues jdField_a_of_type_AndroidContentContentValues;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<ContentProviderOperation> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  public int a = 2;
+  public int b = 1;
+  public int c = 1;
+  private int d = 1;
+  private int e = 1;
   
-  private aovs(QQAppInterface paramQQAppInterface, List<ContentProviderOperation> paramList)
+  @NonNull
+  public static aovs a()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContentValues = new ContentValues();
+    return new aovs();
   }
   
-  private aovs(QQAppInterface paramQQAppInterface, List<ContentProviderOperation> paramList, long paramLong)
+  @NonNull
+  public static aovs a(@Nullable String paramString)
   {
-    this(paramQQAppInterface, paramList);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private aovs(QQAppInterface paramQQAppInterface, List<ContentProviderOperation> paramList, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
-  {
-    this(paramQQAppInterface, paramList);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramList.size();
-    paramQQAppInterface = ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("caller_is_syncadapter", "true").build()).withValue("aggregation_mode", Integer.valueOf(0)).withValue("account_type", "com.tencent.mobileqq.account").withValue("account_name", paramString1).withValue("sourceid", paramString2).withValue("sync1", paramString3).withValue("sync2", paramString4).withValue("sync3", Integer.valueOf(paramInt1));
-    this.jdField_a_of_type_JavaUtilList.add(paramQQAppInterface.build());
-  }
-  
-  private static ContentProviderOperation.Builder a()
-  {
-    return ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI.buildUpon().appendQueryParameter("caller_is_syncadapter", jdField_a_of_type_JavaLangString).build()).withYieldAllowed(true);
-  }
-  
-  private static ContentProviderOperation.Builder a(Uri paramUri)
-  {
-    return ContentProviderOperation.newUpdate(paramUri.buildUpon().appendQueryParameter("caller_is_syncadapter", jdField_a_of_type_JavaLangString).build()).withYieldAllowed(true);
-  }
-  
-  public static aovs a(QQAppInterface paramQQAppInterface, List<ContentProviderOperation> paramList, long paramLong)
-  {
-    return new aovs(paramQQAppInterface, paramList, paramLong);
-  }
-  
-  public static aovs a(QQAppInterface paramQQAppInterface, List<ContentProviderOperation> paramList, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
-  {
-    return new aovs(paramQQAppInterface, paramList, paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2);
-  }
-  
-  private void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidContentContentValues.put("raw_contact_id", Long.valueOf(this.jdField_a_of_type_Long));
+    aovs localaovs = new aovs();
+    try
+    {
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramString = new JSONObject(paramString);
+        localaovs.a = paramString.optInt("kingcard", localaovs.a);
+        localaovs.d = paramString.optInt("gldrawable", localaovs.d);
+        localaovs.b = paramString.optInt("webso_preload", localaovs.b);
+        localaovs.c = paramString.optInt("webso_screenshot", localaovs.c);
+        localaovs.e = paramString.optInt("etcdrawable", localaovs.e);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("QVIP.SDK.ConfigProcessor", 1, " : " + localaovs.toString());
+      }
+      return localaovs;
     }
-    ContentProviderOperation.Builder localBuilder = a();
-    localBuilder.withValues(this.jdField_a_of_type_AndroidContentContentValues);
-    if (this.jdField_a_of_type_Boolean) {
-      localBuilder.withValueBackReference("raw_contact_id", this.jdField_a_of_type_Int);
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        QLog.e("QVIP.SDK.ConfigProcessor", 1, "json parse error:" + paramString);
+      }
     }
-    this.jdField_a_of_type_JavaUtilList.add(localBuilder.build());
   }
   
-  private void a(Uri paramUri)
+  public boolean a()
   {
-    paramUri = a(paramUri);
-    paramUri.withValues(this.jdField_a_of_type_AndroidContentContentValues);
-    this.jdField_a_of_type_JavaUtilList.add(paramUri.build());
+    return this.d > 0;
   }
   
-  public aovs a(String paramString)
+  public boolean b()
   {
-    this.jdField_a_of_type_AndroidContentContentValues.clear();
-    this.jdField_a_of_type_AndroidContentContentValues.put("mimetype", "vnd.android.cursor.item/name");
-    this.jdField_a_of_type_AndroidContentContentValues.put("data1", paramString);
-    a();
-    return this;
+    return this.e > 0;
   }
   
-  public aovs a(String paramString, Uri paramUri)
+  public String toString()
   {
-    this.jdField_a_of_type_AndroidContentContentValues.clear();
-    this.jdField_a_of_type_AndroidContentContentValues.put("data1", paramString);
-    a(paramUri);
-    return this;
-  }
-  
-  public aovs b(String paramString)
-  {
-    this.jdField_a_of_type_AndroidContentContentValues.clear();
-    this.jdField_a_of_type_AndroidContentContentValues.put("mimetype", "vnd.android.cursor.item/vnd.com.tencent.mobileqq.voicecall.profile");
-    this.jdField_a_of_type_AndroidContentContentValues.put("data1", paramString);
-    this.jdField_a_of_type_AndroidContentContentValues.put("data2", "QQ");
-    this.jdField_a_of_type_AndroidContentContentValues.put("data3", alpo.a(2131702894));
-    a();
-    return this;
+    return "QVipSDKConfig{kingCard=" + this.a + ", gldrawable=" + this.d + ", webso_preload=" + this.b + ", webso_screenshot=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aovs
  * JD-Core Version:    0.7.0.1
  */

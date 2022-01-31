@@ -1,133 +1,65 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.media.AudioManager;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.File;
+import mqq.app.MobileQQ;
 
 public class ajvm
-  extends almw
 {
-  public ajvm(SelectMemberActivity paramSelectMemberActivity) {}
+  public static long a;
+  public static Context a;
+  public static String a;
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
+  static
   {
-    if (!paramBoolean) {
-      SelectMemberActivity.jdField_b_of_type_Boolean = false;
-    }
-    if (this.a.jdField_a_of_type_Bepp != null)
-    {
-      this.a.jdField_a_of_type_Bepp.dismiss();
-      if (paramBoolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SelectMemberActivity", 2, "create discussion success: roomId: " + paramLong + ", mSubType: " + this.a.jdField_b_of_type_Int + ", mEntrance: " + this.a.d);
-        }
-        paramString = new ArrayList();
-        Iterator localIterator = this.a.e.iterator();
-        while (localIterator.hasNext())
-        {
-          ResultRecord localResultRecord = (ResultRecord)localIterator.next();
-          if (localResultRecord.jdField_a_of_type_Int == 5)
-          {
-            if (localResultRecord.jdField_a_of_type_JavaLangString.startsWith("pstn")) {
-              localResultRecord.jdField_a_of_type_JavaLangString = localResultRecord.jdField_a_of_type_JavaLangString.substring("pstn".length());
-            }
-            paramString.add(localResultRecord.jdField_a_of_type_JavaLangString);
-          }
-          else if ((localResultRecord.jdField_a_of_type_Int == 4) && (localResultRecord.jdField_a_of_type_JavaLangString.startsWith("+")))
-          {
-            paramString.add(localResultRecord.jdField_a_of_type_JavaLangString);
-          }
-        }
-        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", paramLong);
-        if (this.a.d == 12) {
-          this.a.jdField_a_of_type_AndroidContentIntent.putExtra("select_memeber_discussion_memeber_count", this.a.e.size() + 1);
-        }
-        this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set", this.a.e);
-        this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-        this.a.finish();
-      }
-    }
-    else
-    {
-      return;
-    }
-    QLog.d("SelectMemberActivity", 1, "create discussion fail, errCode=" + paramInt);
-    if (paramInt == 1000)
-    {
-      QQToast.a(this.a, this.a.getString(2131698049), 2000).b(this.a.jdField_c_of_type_AndroidViewView.getHeight());
-      azmj.b(this.a.app, "dc00899", "Grp_set", "", "Grp_data", "forbid_discuss", 0, 0, "", "", "", "");
-      return;
-    }
-    QQToast.a(this.a, this.a.getString(2131691870), 2000).b(this.a.jdField_c_of_type_AndroidViewView.getHeight());
+    jdField_a_of_type_AndroidContentContext = MobileQQ.getContext();
+    jdField_a_of_type_Long = -1L;
   }
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  public static void a()
   {
-    if (this.a.jdField_a_of_type_Bepp != null)
+    try
     {
-      this.a.jdField_a_of_type_Bepp.dismiss();
-      if (!paramBoolean) {
-        break label231;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "add discussion member success: roomId: " + paramLong);
-      }
-      paramArrayList = new ArrayList();
-      Iterator localIterator = this.a.e.iterator();
-      while (localIterator.hasNext())
-      {
-        ResultRecord localResultRecord = (ResultRecord)localIterator.next();
-        if (localResultRecord.jdField_a_of_type_Int == 5)
-        {
-          if (localResultRecord.jdField_a_of_type_JavaLangString.startsWith("pstn")) {
-            localResultRecord.jdField_a_of_type_JavaLangString = localResultRecord.jdField_a_of_type_JavaLangString.substring("pstn".length());
-          }
-          paramArrayList.add(localResultRecord.jdField_a_of_type_JavaLangString);
-        }
-      }
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", paramLong);
-      this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set", this.a.e);
-      if (!paramBoolean) {
-        break label213;
-      }
-      this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-    }
-    for (;;)
-    {
-      this.a.finish();
+      ((AudioManager)MobileQQ.getContext().getSystemService("audio")).requestAudioFocus(null, 3, 1);
       return;
-      label213:
-      this.a.setResult(1, this.a.jdField_a_of_type_AndroidContentIntent);
     }
-    label231:
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "add discussion member fail");
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
-    if (paramInt == 1000) {
-      azmj.b(this.a.app, "dc00899", "Grp_set", "", "Grp_data", "forbid_discuss", 0, 0, "", "", "", "");
-    }
-    QQToast.a(this.a, this.a.getString(2131691865), 2000).b(this.a.jdField_c_of_type_AndroidViewView.getHeight());
   }
   
-  protected void a(Object[] paramArrayOfObject)
+  public static boolean a(long paramLong)
   {
-    if (this.a.jdField_a_of_type_Bepp != null) {
-      this.a.jdField_a_of_type_Bepp.dismiss();
-    }
-    if (paramArrayOfObject == null) {}
-    String str;
+    if ((jdField_a_of_type_Long > 0L) && (jdField_a_of_type_Long == paramLong)) {}
+    Object localObject;
     do
     {
+      return true;
+      localObject = ajvn.a().a();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return false;
+      }
+      jdField_a_of_type_JavaLangString = (String)localObject + File.separator + "cover" + File.separator + paramLong;
+      localObject = new File(jdField_a_of_type_JavaLangString);
+    } while ((((File)localObject).mkdirs()) || (((File)localObject).isDirectory()));
+    QLog.e("GloableValue", 2, "make cover dir: " + jdField_a_of_type_JavaLangString + " failed.");
+    return false;
+  }
+  
+  public static void b()
+  {
+    try
+    {
+      ((AudioManager)MobileQQ.getContext().getSystemService("audio")).abandonAudioFocus(null);
       return;
-      str = (String)paramArrayOfObject[0];
-    } while (!this.a.jdField_c_of_type_JavaLangString.equals(str));
-    int i = ((Integer)paramArrayOfObject[1]).intValue();
-    QLog.d("SelectMemberActivity", 2, "add discussion member failed, error code: " + i);
-    QQToast.a(this.a, this.a.getString(2131691865), 0).b(this.a.getTitleBarHeight());
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

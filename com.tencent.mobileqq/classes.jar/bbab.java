@@ -1,52 +1,47 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class bbab
+  extends bazx
+  implements Handler.Callback
 {
-  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong, String paramString, int paramInt5, bbad parambbad)
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  
+  public bbab(QQAppInterface paramQQAppInterface, String paramString, Runnable paramRunnable, long paramLong)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("start", paramInt1);
-      localJSONObject.put("num", paramInt2);
-      localJSONObject.put("type", paramInt3);
-      if ((paramInt3 == 1) || (paramInt3 == 2)) {
-        localJSONObject.put("theme_id", paramInt4);
-      }
-      localJSONObject.put("from", 2);
-      localJSONObject.put("bid", paramLong);
-      localJSONObject.put("pid", paramString);
-      if (paramInt5 != -1) {
-        localJSONObject.put("recommend_by_bid", paramInt5);
-      }
+    super(paramQQAppInterface, paramString);
+    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 0) {
+      this.ctrl.a(this);
     }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        WebSsoBody.WebSsoRequestBody localWebSsoRequestBody;
-        paramString.printStackTrace();
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, localJSONObject.toString());
-    }
-    paramString = new NewIntent(BaseApplicationImpl.getApplication().getApplicationContext(), mzx.class);
-    paramString.putExtra("cmd", "MQUpdateSvc_com_qq_buluo.web.shortvideo_feeds");
-    localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
-    localWebSsoRequestBody.type.set(0);
-    localWebSsoRequestBody.data.set(localJSONObject.toString());
-    paramString.putExtra("data", localWebSsoRequestBody.toByteArray());
-    paramString.setObserver(new bbac(parambbad));
-    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramString);
+    return true;
+  }
+  
+  protected void realCancel()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  protected void realStart()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, this.jdField_a_of_type_Long);
+  }
+  
+  public String toString()
+  {
+    return super.toString() + "[" + this.jdField_a_of_type_JavaLangRunnable + ", " + this.jdField_a_of_type_Long + "]";
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.qqmini.nativePlugins;
 
 import android.content.Context;
-import bgho;
+import bglv;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 
 public class LaunchCameraPlugin
@@ -22,24 +22,24 @@ public class LaunchCameraPlugin
   private LaunchCameraPlugin.NativeBackBroadCast broadCast;
   
   /* Error */
-  public void checkinInvokeGYCamera(bgkd parambgkd)
+  public void checkinInvokeGYCamera(bgok parambgok)
   {
     // Byte code:
     //   0: new 68	org/json/JSONObject
     //   3: dup
     //   4: aload_1
-    //   5: getfield 73	bgkd:b	Ljava/lang/String;
+    //   5: getfield 73	bgok:b	Ljava/lang/String;
     //   8: invokespecial 76	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   11: astore_3
     //   12: aload_0
-    //   13: getfield 54	com/tencent/qqmini/nativePlugins/LaunchCameraPlugin:mMiniAppContext	Lbgho;
+    //   13: getfield 54	com/tencent/qqmini/nativePlugins/LaunchCameraPlugin:mMiniAppContext	Lbglv;
     //   16: invokeinterface 82 1 0
     //   21: ifnull +293 -> 314
     //   24: aload_0
     //   25: getfield 84	com/tencent/qqmini/nativePlugins/LaunchCameraPlugin:broadCast	Lcom/tencent/qqmini/nativePlugins/LaunchCameraPlugin$NativeBackBroadCast;
     //   28: ifnull +19 -> 47
     //   31: aload_0
-    //   32: getfield 54	com/tencent/qqmini/nativePlugins/LaunchCameraPlugin:mMiniAppContext	Lbgho;
+    //   32: getfield 54	com/tencent/qqmini/nativePlugins/LaunchCameraPlugin:mMiniAppContext	Lbglv;
     //   35: invokeinterface 82 1 0
     //   40: aload_0
     //   41: getfield 84	com/tencent/qqmini/nativePlugins/LaunchCameraPlugin:broadCast	Lcom/tencent/qqmini/nativePlugins/LaunchCameraPlugin$NativeBackBroadCast;
@@ -59,7 +59,7 @@ public class LaunchCameraPlugin
     //   72: ldc 99
     //   74: invokestatic 105	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   77: aload_1
-    //   78: invokevirtual 108	bgkd:b	()Ljava/lang/String;
+    //   78: invokevirtual 108	bgok:b	()Ljava/lang/String;
     //   81: pop
     //   82: return
     //   83: astore_1
@@ -82,8 +82,8 @@ public class LaunchCameraPlugin
     //   119: invokestatic 131	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   122: ldc 133
     //   124: astore_3
-    //   125: getstatic 138	bkwm:a	Lbkwm;
-    //   128: invokevirtual 141	bkwm:a	()I
+    //   125: getstatic 138	blat:a	Lblat;
+    //   128: invokevirtual 141	blat:a	()I
     //   131: istore_2
     //   132: ldc 133
     //   134: astore 4
@@ -102,8 +102,8 @@ public class LaunchCameraPlugin
     //   164: aload 6
     //   166: ldc 17
     //   168: invokevirtual 149	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   171: invokestatic 152	bkwm:a	(Ljava/lang/String;)Lbkwm;
-    //   174: invokevirtual 141	bkwm:a	()I
+    //   171: invokestatic 152	blat:a	(Ljava/lang/String;)Lblat;
+    //   174: invokevirtual 141	blat:a	()I
     //   177: istore_2
     //   178: aload 6
     //   180: ldc 154
@@ -122,7 +122,7 @@ public class LaunchCameraPlugin
     //   209: aload 4
     //   211: invokevirtual 163	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   214: aload_0
-    //   215: getfield 54	com/tencent/qqmini/nativePlugins/LaunchCameraPlugin:mMiniAppContext	Lbgho;
+    //   215: getfield 54	com/tencent/qqmini/nativePlugins/LaunchCameraPlugin:mMiniAppContext	Lbglv;
     //   218: invokeinterface 82 1 0
     //   223: ldc 32
     //   225: iconst_0
@@ -139,10 +139,10 @@ public class LaunchCameraPlugin
     //   256: aconst_null
     //   257: invokevirtual 193	com/tencent/mobileqq/qipc/QIPCClientHelper:callServer	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Leipc/EIPCResultCallback;)V
     //   260: aload_1
-    //   261: invokevirtual 195	bgkd:a	()Ljava/lang/String;
+    //   261: invokevirtual 195	bgok:a	()Ljava/lang/String;
     //   264: pop
     //   265: aload_0
-    //   266: getfield 54	com/tencent/qqmini/nativePlugins/LaunchCameraPlugin:mMiniAppContext	Lbgho;
+    //   266: getfield 54	com/tencent/qqmini/nativePlugins/LaunchCameraPlugin:mMiniAppContext	Lbglv;
     //   269: invokeinterface 82 1 0
     //   274: astore_1
     //   275: new 197	com/tencent/qqmini/nativePlugins/LaunchCameraPlugin$NativeBackBroadCast
@@ -176,7 +176,7 @@ public class LaunchCameraPlugin
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	327	0	this	LaunchCameraPlugin
-    //   0	327	1	parambgkd	bgkd
+    //   0	327	1	parambgok	bgok
     //   131	71	2	i	int
     //   11	281	3	localObject	java.lang.Object
     //   306	2	3	localJSONException	org.json.JSONException

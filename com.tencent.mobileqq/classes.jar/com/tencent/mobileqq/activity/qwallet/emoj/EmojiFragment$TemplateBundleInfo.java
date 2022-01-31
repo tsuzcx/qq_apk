@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import biyg;
+import bjcn;
 
 public class EmojiFragment$TemplateBundleInfo
-  extends biyg
+  extends bjcn
 {
   public String heartList;
   public String prefix;

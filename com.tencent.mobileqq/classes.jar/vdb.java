@@ -1,30 +1,14 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIPosters;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.POIPosterData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
 public class vdb
-  extends unf
+  extends uli
 {
-  public final ArrayList<usw> a = new ArrayList();
+  public List<wfv> a;
   
-  public vdb(qqstory_service.RspGetPOIPosters paramRspGetPOIPosters)
+  public vdb(ErrorMessage paramErrorMessage)
   {
-    a(paramRspGetPOIPosters);
-  }
-  
-  private void a(qqstory_service.RspGetPOIPosters paramRspGetPOIPosters)
-  {
-    int i = 0;
-    while (i < paramRspGetPOIPosters.poi_posters.size())
-    {
-      Object localObject = (qqstory_struct.POIPosterData)paramRspGetPOIPosters.poi_posters.get(i);
-      localObject = new usw(((qqstory_struct.POIPosterData)localObject).poster_name.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).name.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).thumb_url.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).poster_url.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).poster_json_layout_desc.get().toStringUtf8());
-      this.a.add(localObject);
-      i += 1;
-    }
+    this.a = paramErrorMessage;
   }
 }
 

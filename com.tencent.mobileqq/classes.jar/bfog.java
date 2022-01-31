@@ -1,129 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import cooperation.wadl.ipc.WadlParams;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
+import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bfog
+final class bfog
+  implements ITMAssistantExchangeURLListenner
 {
-  public static String a;
-  private static int jdField_b_of_type_Int;
-  private static String i = ;
-  private static String j;
-  public int a;
-  public long a;
-  public WadlParams a;
-  private boolean a;
-  private long jdField_b_of_type_Long;
-  public String b;
-  public String c;
-  public String d;
-  public String e = "";
-  public String f;
-  public String g;
-  public String h;
-  private String k;
-  private String l;
-  
-  static
+  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
   {
-    jdField_a_of_type_JavaLangString = bhoi.a("b84cf5");
-    j = bdcb.b();
-    try
+    bflp.b(bfod.jdField_a_of_type_JavaLangString, "onExchangedURLSucceed --- ");
+    if ((paramBoolean) && (??? != null) && (???.size() > 0))
     {
-      jdField_b_of_type_Int = bdcb.e();
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public static bfog a()
-  {
-    bfog localbfog = new bfog();
-    try
-    {
-      localbfog.jdField_a_of_type_Boolean = AppNetConnInfo.isWifiConn();
-      localbfog.jdField_b_of_type_Long = (bdcb.e() / 1048576L);
-      localbfog.k = String.valueOf(bdcb.b()[1]);
-      localbfog.jdField_b_of_type_JavaLangString = "";
-      localbfog.jdField_a_of_type_Int = 0;
-      return localbfog;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return localbfog;
-  }
-  
-  public bfog a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bfog a(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public String a()
-  {
-    return this.l;
-  }
-  
-  public void a(WadlParams paramWadlParams)
-  {
-    this.jdField_a_of_type_CooperationWadlIpcWadlParams = paramWadlParams;
-  }
-  
-  public void a(String paramString)
-  {
-    this.l = paramString;
-  }
-  
-  public String b()
-  {
-    for (;;)
-    {
-      try
+      ??? = ???.iterator();
+      while (???.hasNext())
       {
-        JSONObject localJSONObject = new JSONObject();
-        if (!TextUtils.isEmpty(i))
+        Object localObject1 = ???.next();
+        if ((localObject1 instanceof AppSimpleDetail))
         {
-          String str1 = i;
-          localJSONObject.put("androidId", str1);
-          if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-            break label161;
+          int i = ((AppSimpleDetail)localObject1).versionCode;
+          if (i > 0) {
+            bfod.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
           }
-          str1 = jdField_a_of_type_JavaLangString;
-          localJSONObject.put("imei", str1);
-          if (!TextUtils.isEmpty(j))
-          {
-            str1 = j;
-            localJSONObject.put("imsi", str1);
-            localJSONObject.put("mobileCarriers", jdField_b_of_type_Int);
-            localJSONObject.put("isWifiStatusOn", this.jdField_a_of_type_Boolean);
-            localJSONObject.put("leftMemorySize", this.jdField_b_of_type_Long);
-            localJSONObject.put("leftDiskSize", this.k);
-            localJSONObject.put("downloadRate", this.jdField_b_of_type_JavaLangString);
-            localJSONObject.put("pageUrl", this.f);
-            return localJSONObject.toString();
-          }
-          str1 = "";
-          continue;
         }
-        str2 = "";
       }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-        return "";
-      }
-      continue;
-      label161:
-      String str2 = "";
+    }
+    synchronized (bfod.jdField_a_of_type_JavaLangObject)
+    {
+      bfod.jdField_a_of_type_JavaLangObject.notify();
+      return;
     }
   }
 }

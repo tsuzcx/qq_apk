@@ -1,17 +1,12 @@
-import android.graphics.PointF;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import java.util.List;
+import android.content.Context;
 
 public class ajmj
-  implements aiqq
+  extends ajlx
 {
-  public ajmj(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List<List<PointF>> paramList)
+  public ajmj(Context paramContext)
   {
-    if ((this.a.E) && (paramInt1 > 0)) {
-      NewFlowCameraActivity.c = true;
-    }
+    this.a = paramContext.getString(2131698833);
+    this.b = this.a;
   }
 }
 

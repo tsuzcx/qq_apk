@@ -1,43 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
 
-class aivl
-  extends aiwg
+public class aivl
+  implements DialogInterface.OnClickListener
 {
-  aivl(aivk paramaivk, bdvu parambdvu)
-  {
-    super(parambdvu);
-  }
+  public aivl(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
   
-  public void onDoneFile(bdvv parambdvv)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l2 = -1L;
-    super.onDoneFile(parambdvv);
-    if ((parambdvv != null) && (parambdvv.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambdvv.jdField_a_of_type_JavaLangString)))
-    {
-      File localFile = (File)parambdvv.jdField_a_of_type_JavaUtilMap.get(parambdvv.jdField_a_of_type_JavaLangString);
-      if (localFile != null)
-      {
-        Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (localObject != null)
-        {
-          localObject = (bavr)((QQAppInterface)localObject).getManager(193);
-          String str = parambdvv.jdField_a_of_type_JavaLangString;
-          long l1 = l2;
-          if (parambdvv.jdField_a_of_type_Int == 0)
-          {
-            l1 = l2;
-            if (localFile.exists()) {
-              l1 = localFile.length();
-            }
-          }
-          ((bavr)localObject).a(str, l1);
-        }
-      }
-    }
+    this.a.getActivity().finish();
   }
 }
 

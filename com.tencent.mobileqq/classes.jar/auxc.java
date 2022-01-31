@@ -1,33 +1,15 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class auxc
-  extends auxe
+final class auxc
+  implements avtu
 {
-  auxc(auxa paramauxa) {}
+  auxc(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public Message a(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage == null) {
-      return null;
-    }
-    return this.a.b(paramMessage);
-  }
-  
-  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
-  {
-    if (paramBasicTypeDataParcel == null) {}
-    Object[] arrayOfObject;
-    do
-    {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
-      }
-      arrayOfObject = this.a.b(paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
-    } while (arrayOfObject == null);
-    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
+    auxb.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
   }
 }
 

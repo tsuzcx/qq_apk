@@ -1,50 +1,27 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.Handler;
-import android.os.IBinder;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
 class bjyf
-  implements ServiceConnection
+  implements bjjr
 {
-  bjyf(bjyd parambjyd) {}
+  bjyf(bjye parambjye) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    bjyd.a(this.a).removeMessages(1);
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_Bjya = bjyb.a(paramIBinder);
-    this.a.b();
-    QLog.d("SmartDeviceIPCHost", 1, "plugin service connected");
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      aabm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Net_Start_Service_Host", 0, 1, 0);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzonePersonalizeJsPlugin", 4, "FontInterface.TrueTypeResult font:" + paramInt + ", fontPath:" + paramString1);
     }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    try
+    if (TextUtils.isEmpty(paramString1))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unbindService(this.a.jdField_a_of_type_AndroidContentServiceConnection);
-      }
-      label30:
-      this.a.jdField_a_of_type_Bjya = null;
-      this.a.jdField_a_of_type_Boolean = false;
-      QLog.d("SmartDeviceIPCHost", 1, "plugin service disconnected");
+      bjye.a(this.a, paramString2, -2, "font download failed.");
       return;
     }
-    catch (Exception paramComponentName)
-    {
-      break label30;
-    }
+    bjye.a(this.a, paramString2, 0, "success");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjyf
  * JD-Core Version:    0.7.0.1
  */

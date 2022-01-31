@@ -1,44 +1,44 @@
-import android.graphics.Bitmap;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Pair;
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import io.flutter.embedding.android.SplashScreen;
+import io.flutter.embedding.engine.renderer.OnFirstFrameRenderedListener;
 
-class arxl
-  implements bcwt
+public class arxl
+  implements SplashScreen
 {
-  arxl(arxj paramarxj) {}
+  private OnFirstFrameRenderedListener a;
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public arxl(OnFirstFrameRenderedListener paramOnFirstFrameRenderedListener)
   {
-    QLog.i("Forward.Preview.Dialog", 1, "onDecodeTaskCompleted uin: " + paramString);
-    if (arxj.a(this.a) == null) {}
-    while (arxj.a(this.a).a()) {
-      return;
-    }
-    paramInt2 = arxj.a(this.a).findFirstVisibleItemPosition();
-    int i = arxj.a(this.a).getChildCount();
-    paramInt1 = 1;
-    label74:
-    if (paramInt1 < i) {
-      if (((String)((Pair)arxj.a(this.a).a.get(paramInt2 + paramInt1 - 1)).first).equals(paramString))
-      {
-        arxq localarxq = (arxq)arxj.a(this.a).getChildViewHolder(arxj.a(this.a).getChildAt(paramInt1));
-        if (!(localarxq instanceof arxp)) {
-          break label170;
-        }
-        ((arxp)localarxq).a.setImageBitmap(paramBitmap);
-      }
-    }
-    for (;;)
-    {
-      paramInt1 += 1;
-      break label74;
-      break;
-      label170:
-      QLog.e("Forward.Preview.Dialog", 2, "onDecodeTaskCompleted viewHolder in wrong instance ! ");
+    this.a = paramOnFirstFrameRenderedListener;
+  }
+  
+  @Nullable
+  public View createSplashView(@NonNull Context paramContext, @Nullable Bundle paramBundle)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131560708, null);
+  }
+  
+  public boolean doesSplashViewRememberItsTransition()
+  {
+    return false;
+  }
+  
+  @Nullable
+  public Bundle saveSplashScreenState()
+  {
+    return null;
+  }
+  
+  public void transitionToFlutter(@NonNull Runnable paramRunnable)
+  {
+    paramRunnable.run();
+    if (this.a != null) {
+      this.a.onFirstFrameRendered();
     }
   }
 }

@@ -1,12 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class avdl
-  implements DialogInterface.OnClickListener
+  extends nab
 {
-  avdl(avdi paramavdi) {}
+  avdl(avdj paramavdj, avdq paramavdq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    QLog.i("reportPlay", 1, " reportPlay code:" + paramInt);
+    if (this.jdField_a_of_type_Avdq != null) {
+      this.jdField_a_of_type_Avdq.a(paramInt, paramArrayOfByte, paramBundle);
+    }
+  }
 }
 
 

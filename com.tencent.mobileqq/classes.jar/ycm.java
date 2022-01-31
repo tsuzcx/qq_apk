@@ -1,18 +1,20 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
+import com.tencent.biz.subscribe.event.RecommendFeedbackEvent;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ycm
-  implements View.OnClickListener
+public class ycm
+  implements yls
 {
-  ycm(ych paramych, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  public ycm(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    ybx.b(this.jdField_a_of_type_Ych.a, ybx.a(this.jdField_a_of_type_Ych.a).a(ybx.a(this.jdField_a_of_type_Ych.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply));
-    ybx.c(this.jdField_a_of_type_Ych.a, true);
-    ybx.a(this.jdField_a_of_type_Ych.a).dismiss();
+    if (paramBoolean)
+    {
+      yiw.a().a(new RecommendFeedbackEvent(RecommendBannerFeedItemView.a(this.a)));
+      return;
+    }
+    QQToast.a(this.a.getContext(), 2131720502, 0).a();
   }
 }
 

@@ -10,7 +10,7 @@ class GameCenterVideoViewController$2
   
   public void run()
   {
-    QQToast.a(this.this$0.getContext(), 1, this.this$0.getContext().getString(2131718824), 0).b(0);
+    QQToast.a(this.this$0.getContext(), 1, this.this$0.getContext().getString(2131718836), 0).b(0);
   }
 }
 

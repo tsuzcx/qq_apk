@@ -1,66 +1,226 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/ModeSwitchManager$SwitchingStatus;", "", "isSwitching", "", "targetMode", "", "oldMode", "(ZII)V", "()Z", "getOldMode", "()I", "getTargetMode", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "toString", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class azwo
+public class azwo
+  extends azus
 {
-  private final int jdField_a_of_type_Int;
-  private final boolean jdField_a_of_type_Boolean;
-  private final int b;
+  public String S;
+  public String T;
+  public int k;
   
   public azwo()
   {
-    this(false, 0, 0, 7, null);
+    this.a = "head";
   }
   
-  public azwo(boolean paramBoolean, int paramInt1, int paramInt2)
+  public azwo(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this();
+    this.k = paramInt;
+    this.S = paramString1;
+    this.T = paramString2;
   }
   
-  public final int a()
+  public View a(Context paramContext, View paramView, int paramInt, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public final boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public final int b()
-  {
-    return this.b;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (this != paramObject)
+    Object localObject2 = paramContext.getResources();
+    LinearLayout localLinearLayout;
+    Object localObject1;
+    Object localObject3;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
-      if ((paramObject instanceof azwo))
+      localLinearLayout = (LinearLayout)paramView;
+      localObject1 = (ImageView)localLinearLayout.findViewById(2131378668);
+      paramBundle = (ImageView)localLinearLayout.findViewById(2131378671);
+      paramView = (TextView)localLinearLayout.findViewById(2131378669);
+      localObject3 = bdhj.a();
+      localObject2 = localObject3;
+      if ((paramContext instanceof BaseActivity)) {
+        localObject2 = bdbk.a(((BaseActivity)paramContext).app, 1, this.S, 3, (Drawable)localObject3, (Drawable)localObject3);
+      }
+      ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
+      if (paramBundle != null)
       {
-        paramObject = (azwo)paramObject;
-        if ((this.jdField_a_of_type_Boolean != paramObject.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {}
+        if (paramInt != 2) {
+          break label594;
+        }
+        paramBundle.setImageResource(2130849851);
       }
     }
-    else {
-      return true;
+    for (;;)
+    {
+      if (paramView != null)
+      {
+        paramView.setText(this.T);
+        paramView.setTextSize(2, 20.0F);
+        paramView.setTextColor(-1);
+        paramView.setSingleLine();
+        paramView.setEllipsize(TextUtils.TruncateAt.END);
+      }
+      return localLinearLayout;
+      localLinearLayout = new LinearLayout(paramContext);
+      localLinearLayout.setId(2131378670);
+      localLinearLayout.setOrientation(1);
+      if (this.k == 4)
+      {
+        i = 53;
+        label193:
+        if (this.k != 4) {
+          break label406;
+        }
+      }
+      label406:
+      for (int j = 53;; j = 135)
+      {
+        i = paramBundle.getInt("bundle_args_cover_width", aepi.a(i, (Resources)localObject2));
+        j = paramBundle.getInt("bundle_args_cover_height", aepi.a(j, (Resources)localObject2));
+        paramView = new FrameLayout(paramContext);
+        localObject1 = new LinearLayout.LayoutParams(i, j);
+        ((LinearLayout.LayoutParams)localObject1).gravity = 1;
+        paramView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        localLinearLayout.addView(paramView);
+        if (paramInt != 4) {
+          break label414;
+        }
+        i = paramBundle.getInt("bundle_args_avatar_width", aepi.a(50.0F, (Resources)localObject2));
+        j = paramBundle.getInt("bundle_args_avatar_height", aepi.a(50.0F, (Resources)localObject2));
+        localObject1 = new ImageView(paramContext);
+        ((ImageView)localObject1).setId(2131378668);
+        paramBundle = new FrameLayout.LayoutParams(i, j);
+        paramBundle.gravity = 17;
+        paramView.addView((View)localObject1, paramBundle);
+        paramBundle = new ImageView(paramContext);
+        paramBundle.setId(2131378671);
+        paramView.addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
+        paramView = null;
+        break;
+        i = 180;
+        break label193;
+      }
+      label414:
+      int i = paramBundle.getInt("bundle_args_avatar_width", aepi.a(80.0F, (Resources)localObject2));
+      j = paramBundle.getInt("bundle_args_avatar_height", aepi.a(80.0F, (Resources)localObject2));
+      localObject1 = new ImageView(paramContext);
+      ((ImageView)localObject1).setId(2131378668);
+      paramBundle = new FrameLayout.LayoutParams(i, j);
+      paramBundle.gravity = 17;
+      paramView.addView((View)localObject1, paramBundle);
+      paramBundle = new ImageView(paramContext);
+      paramBundle.setId(2131378671);
+      paramView.addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
+      paramView = new TextView(paramContext);
+      paramView.setId(2131378669);
+      localObject3 = new LinearLayout.LayoutParams(aepi.a(180.0F, (Resources)localObject2), -2);
+      ((LinearLayout.LayoutParams)localObject3).gravity = 1;
+      ((LinearLayout.LayoutParams)localObject3).topMargin = aepi.a(5.0F, (Resources)localObject2);
+      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+      paramView.setGravity(1);
+      localLinearLayout.addView(paramView);
+      break;
+      label594:
+      if (paramInt == 1) {
+        paramBundle.setImageResource(2130849853);
+      } else if (paramInt == 3) {
+        paramBundle.setImageResource(2130849852);
+      } else if (paramInt == 4) {
+        paramBundle.setImageResource(2130849850);
+      }
     }
-    return false;
   }
   
-  public int hashCode()
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    return a(paramContext, paramView, this.k, paramBundle);
   }
   
-  @NotNull
-  public String toString()
+  public String a()
   {
-    return "SwitchingStatus(isSwitching=" + this.jdField_a_of_type_Boolean + ", targetMode=" + this.jdField_a_of_type_Int + ", oldMode=" + this.b + ")";
+    return "Avatar";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.S = paramObjectInput.readUTF();
+    this.T = paramObjectInput.readUTF();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    if (this.S == null)
+    {
+      str = "";
+      paramObjectOutput.writeUTF(str);
+      if (this.T != null) {
+        break label48;
+      }
+    }
+    label48:
+    for (String str = "";; str = this.T)
+    {
+      paramObjectOutput.writeUTF(str);
+      return;
+      str = this.S;
+      break;
+    }
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "head");
+    if (this.S == null)
+    {
+      str = "";
+      paramXmlSerializer.attribute(null, "uin", str);
+      if (this.T != null) {
+        break label71;
+      }
+    }
+    label71:
+    for (String str = "";; str = this.T)
+    {
+      paramXmlSerializer.attribute(null, "nick", str);
+      paramXmlSerializer.endTag(null, "head");
+      return;
+      str = this.S;
+      break;
+    }
+  }
+  
+  public boolean a(azwj paramazwj)
+  {
+    if (paramazwj == null) {
+      return false;
+    }
+    String str2 = paramazwj.a("uin");
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    this.S = str1;
+    str1 = paramazwj.a("nick");
+    paramazwj = str1;
+    if (str1 == null) {
+      paramazwj = "";
+    }
+    this.T = paramazwj;
+    return true;
   }
 }
 

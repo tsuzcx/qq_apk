@@ -1,7 +1,7 @@
 package com.tencent.litetransfersdk;
 
 import android.content.res.Resources;
-import armz;
+import arri;
 import com.tencent.qphone.base.util.BaseApplication;
 
 class ProtocolHelper$1
@@ -11,7 +11,7 @@ class ProtocolHelper$1
   
   public void run()
   {
-    armz.a("'" + this.a + "'" + BaseApplication.getContext().getResources().getString(2131694020));
+    arri.a("'" + this.a + "'" + BaseApplication.getContext().getResources().getString(2131694022));
   }
 }
 

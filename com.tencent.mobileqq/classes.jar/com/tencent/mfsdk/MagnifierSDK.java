@@ -1,13 +1,13 @@
 package com.tencent.mfsdk;
 
-import abqq;
-import abrd;
-import abrm;
-import abrt;
+import abvf;
+import abvs;
+import abwb;
+import abwi;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import azpi;
+import aztr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mfsdk.LeakInspector.LeakInspector;
 import com.tencent.mfsdk.reporter.DFObserver;
@@ -19,8 +19,8 @@ public class MagnifierSDK
 {
   public static int a;
   public static long a;
-  public static abrd a;
-  private static abrm jdField_a_of_type_Abrm = new abrm();
+  public static abvs a;
+  private static abwb jdField_a_of_type_Abwb = new abwb();
   public static SharedPreferences.Editor a;
   public static SharedPreferences a;
   private static MagnifierSDK jdField_a_of_type_ComTencentMfsdkMagnifierSDK;
@@ -28,7 +28,7 @@ public class MagnifierSDK
   private static Boolean jdField_a_of_type_JavaLangBoolean;
   public static String a;
   public static MqqHandler a;
-  private abqq jdField_a_of_type_Abqq;
+  private abvf jdField_a_of_type_Abvf;
   
   static
   {
@@ -79,7 +79,7 @@ public class MagnifierSDK
   {
     jdField_a_of_type_Long = paramLong;
     if (a()) {
-      azpi.a().a(paramLong);
+      aztr.a().a(paramLong);
     }
   }
   
@@ -88,7 +88,7 @@ public class MagnifierSDK
     if (QLog.isColorLevel()) {
       QLog.i("MagnifierSDK_QAPM", 2, "beginSceneStage:" + paramString);
     }
-    abrt.a().a(paramString);
+    abwi.a().a(paramString);
   }
   
   public static boolean a()
@@ -104,23 +104,23 @@ public class MagnifierSDK
     if (QLog.isColorLevel()) {
       QLog.i("MagnifierSDK_QAPM", 2, "endSceneStage:" + paramString);
     }
-    abrt.a().b(paramString);
+    abwi.a().b(paramString);
   }
   
-  public void a(abqq paramabqq)
+  public void a(abvf paramabvf)
   {
-    this.jdField_a_of_type_Abqq = paramabqq;
+    this.jdField_a_of_type_Abvf = paramabvf;
   }
   
   public void a(Application paramApplication)
   {
     if (a()) {
-      azpi.a().b();
+      aztr.a().b();
     }
-    while ((this.jdField_a_of_type_Abqq == null) || (jdField_a_of_type_MqqOsMqqHandler == null)) {
+    while ((this.jdField_a_of_type_Abvf == null) || (jdField_a_of_type_MqqOsMqqHandler == null)) {
       return;
     }
-    LeakInspector.a(jdField_a_of_type_MqqOsMqqHandler, this.jdField_a_of_type_Abqq);
+    LeakInspector.a(jdField_a_of_type_MqqOsMqqHandler, this.jdField_a_of_type_Abvf);
   }
   
   public boolean a(Application paramApplication)

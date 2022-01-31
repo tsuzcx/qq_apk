@@ -1,19 +1,42 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class aexy
-  extends bbcq
+public class aexy
+  extends Handler
 {
-  aexy(aexx paramaexx, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, SessionInfo paramSessionInfo, String paramString)
+  public aexy(CommonRecordSoundPanel paramCommonRecordSoundPanel, Looper paramLooper)
   {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramSessionInfo, paramString);
+    super(paramLooper);
   }
   
-  public void a(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a(true);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 16711687: 
+      this.a.b(102);
+      return;
+    case 16711686: 
+      if (QLog.isColorLevel()) {
+        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
+      }
+      CommonRecordSoundPanel.a(this.a).c();
+      bdfi.b(2131230744, false);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(16711686);
+      bdfi.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
+      return;
+    }
+    this.a.b(1);
+    this.a.b();
+    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698860), 1).a();
   }
 }
 

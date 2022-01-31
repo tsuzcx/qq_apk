@@ -1,70 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.interact.RateWidgetRatingBar;
 
-class bmzf
-  implements Animator.AnimatorListener
+public class bmzf
+  implements View.OnClickListener
 {
-  bmzf(bmzb parambmzb) {}
+  public bmzf(RateWidgetRatingBar paramRateWidgetRatingBar) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (!bmzb.a(this.a)) {
-      return;
-    }
-    if (!bmzb.b(this.a))
+    if (RateWidgetRatingBar.a(this.a))
     {
-      bmzb.a(this.a, false);
-      if (bmzb.b(this.a) == 1)
-      {
-        bmzb.a(this.a, 3);
-        return;
+      this.a.setStar(this.a.indexOfChild(paramView) + 1.0F);
+      if (RateWidgetRatingBar.a(this.a) != null) {
+        RateWidgetRatingBar.a(this.a).b(this.a.indexOfChild(paramView) + 1.0F);
       }
-      bmzb.a(this.a, 0);
-      bmzb.a(this.a, "");
-      return;
     }
-    if (bmzb.b(this.a) == 1)
-    {
-      bmzb.a(this.a, 2);
-      bmzb.a(this.a, bmzb.b(this.a), 1000);
-      return;
-    }
-    bmzb.a(this.a, "");
-    bmzb.a(this.a, 0);
-    bmzb.a(this.a, false);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (!bmzb.a(this.a)) {
-      return;
-    }
-    if (!bmzb.b(this.a))
-    {
-      bmzb.a(this.a, false);
-      if (bmzb.b(this.a) == 1)
-      {
-        bmzb.a(this.a, 3);
-        return;
-      }
-      bmzb.a(this.a, 0);
-      bmzb.a(this.a, "");
-      return;
-    }
-    if (bmzb.b(this.a) == 1)
-    {
-      bmzb.a(this.a, 2);
-      bmzb.a(this.a, bmzb.b(this.a), 1000);
-      return;
-    }
-    bmzb.a(this.a, "");
-    bmzb.a(this.a, 0);
-    bmzb.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

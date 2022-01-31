@@ -1,229 +1,80 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.os.AsyncTask;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.fling.ScreenCapture;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 
 public class ahyb
-  implements View.OnClickListener
+  extends AsyncTask<String, Void, Boolean>
 {
-  public ahyb(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(View paramView)
+  public ahyb(View paramView)
   {
-    boolean bool3 = false;
-    boolean bool2 = false;
-    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof String))) {}
-    String str;
-    label93:
-    do
+    if (paramView != null)
     {
-      do
-      {
-        do
-        {
-          int j;
-          do
-          {
-            do
-            {
-              int i;
-              do
-              {
-                do
-                {
-                  return;
-                  if (QLog.isColorLevel()) {
-                    QLog.d("Q.history.BaseFragment", 2, "mOnKickOutBtnClickListener onclick");
-                  }
-                  j = paramView.getId();
-                  str = (String)paramView.getTag();
-                  bool1 = str.equals(this.a.jdField_f_of_type_JavaLangString);
-                  if ((this.a.jdField_g_of_type_JavaLangString != null) && (this.a.jdField_g_of_type_JavaLangString.contains(str)))
-                  {
-                    i = 1;
-                    boolean bool4 = this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.a.jdField_f_of_type_JavaLangString);
-                    if (((!bool4) || (str.equals(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) && ((bool4) || (bool1) || (i != 0))) {
-                      break label292;
-                    }
-                  }
-                  for (i = 1;; i = 0)
-                  {
-                    if (j != 2131365067) {
-                      break label551;
-                    }
-                    paramView = paramView.findViewById(2131365068);
-                    bool1 = bool2;
-                    if (paramView.getTag() != null)
-                    {
-                      bool1 = bool2;
-                      if ((paramView.getTag() instanceof Boolean)) {
-                        bool1 = ((Boolean)paramView.getTag()).booleanValue();
-                      }
-                    }
-                    paramView = this.a.a(str, bool1);
-                    if (this.a.jdField_d_of_type_Int != 20) {
-                      break label297;
-                    }
-                    if (paramView == null) {
-                      break;
-                    }
-                    paramView = paramView.a.getTag();
-                    if ((paramView == null) || (!(paramView instanceof Integer))) {
-                      break;
-                    }
-                    i = ((Integer)paramView).intValue();
-                    if (i < 0) {
-                      break;
-                    }
-                    paramView = (ahyq)this.a.jdField_a_of_type_Ahys.getItem(i);
-                    this.a.a(paramView);
-                    return;
-                    i = 0;
-                    break label93;
-                  }
-                  if (this.a.jdField_g_of_type_Boolean)
-                  {
-                    if (this.a.jdField_a_of_type_Ahys.jdField_b_of_type_JavaUtilList.contains(str)) {
-                      this.a.jdField_a_of_type_Ahys.jdField_b_of_type_JavaUtilList.remove(str);
-                    }
-                    for (;;)
-                    {
-                      ChatHistoryTroopMemberFragment.a(this.a);
-                      this.a.jdField_a_of_type_Ahys.notifyDataSetChanged();
-                      return;
-                      if (i != 0) {
-                        this.a.jdField_a_of_type_Ahys.jdField_b_of_type_JavaUtilList.add(str);
-                      }
-                    }
-                  }
-                  if (!bool1) {
-                    break;
-                  }
-                } while (this.a.v.equals(str));
-                if (paramView != null) {
-                  paramView.a.a(true);
-                }
-                if (!TextUtils.isEmpty(this.a.v))
-                {
-                  paramView = this.a.a(this.a.v, bool1);
-                  if (paramView != null) {
-                    paramView.a.b(true);
-                  }
-                }
-                this.a.v = str;
-                return;
-              } while (this.a.u.equals(str));
-              if (paramView != null) {
-                paramView.a.a(true);
-              }
-              if (!TextUtils.isEmpty(this.a.u))
-              {
-                paramView = this.a.a(this.a.u, bool1);
-                if (paramView != null) {
-                  paramView.a.b(true);
-                }
-              }
-              this.a.u = str;
-              return;
-              if (j != 2131376773) {
-                break;
-              }
-              paramView = paramView.findViewById(2131378828);
-              boolean bool1 = bool3;
-              if (paramView.getTag() != null)
-              {
-                bool1 = bool3;
-                if ((paramView.getTag() instanceof Boolean)) {
-                  bool1 = ((Boolean)paramView.getTag()).booleanValue();
-                }
-              }
-              if (this.a.jdField_g_of_type_Boolean)
-              {
-                if (!this.a.jdField_a_of_type_Ahys.jdField_b_of_type_JavaUtilList.contains(str)) {
-                  break label720;
-                }
-                this.a.jdField_a_of_type_Ahys.jdField_b_of_type_JavaUtilList.remove(str);
-              }
-              for (;;)
-              {
-                ChatHistoryTroopMemberFragment.a(this.a);
-                this.a.jdField_a_of_type_Ahys.notifyDataSetChanged();
-                if (!bool1) {
-                  break;
-                }
-                paramView = this.a.a(this.a.v, bool1);
-                if (paramView != null)
-                {
-                  paramView.a.b(true);
-                  this.a.v = "";
-                }
-                this.a.jdField_a_of_type_Ahyu.notifyDataSetChanged();
-                return;
-                if (i != 0) {
-                  this.a.jdField_a_of_type_Ahys.jdField_b_of_type_JavaUtilList.add(str);
-                }
-              }
-              paramView = this.a.a(this.a.u, bool1);
-            } while (paramView == null);
-            paramView.a.b(true);
-            this.a.u = "";
-            return;
-          } while ((j != 2131363616) || (!this.a.jdField_f_of_type_Boolean));
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.history.BaseFragment", 2, "delBtn onClick, uin=" + str);
-          }
-          if (bdee.d(BaseApplication.getContext())) {
-            break;
-          }
-        } while (!this.a.getActivity().isResume());
-        QQToast.a(this.a.getActivity(), this.a.getString(2131694766), 0).b(this.a.getActivity().getTitleBarHeight());
-        return;
-        if (this.a.jdField_d_of_type_Int == 1)
-        {
-          this.a.f(str);
-          return;
-        }
-        if (this.a.jdField_d_of_type_Int != 13) {
-          break;
-        }
-        paramView = this.a.a(str);
-        this.a.jdField_a_of_type_JavaUtilArrayList.add(str);
-        this.a.jdField_a_of_type_Ahys.a();
-      } while (!this.a.jdField_d_of_type_AndroidAppDialog.isShowing());
-      if (paramView != null) {
-        this.a.jdField_b_of_type_JavaUtilList.remove(paramView);
-      }
-      this.a.jdField_a_of_type_Ahyu.notifyDataSetChanged();
-      return;
-      if (this.a.jdField_d_of_type_Int != 21) {
-        break;
-      }
-      paramView = this.a.a(str);
-      this.a.jdField_a_of_type_JavaUtilArrayList.add(str);
-      this.a.jdField_a_of_type_Ahys.a();
-    } while (!this.a.jdField_d_of_type_AndroidAppDialog.isShowing());
-    label292:
-    label297:
-    label720:
-    if (paramView != null) {
-      this.a.jdField_b_of_type_JavaUtilList.remove(paramView);
+      Context localContext = paramView.getContext();
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+      paramView.setDrawingCacheEnabled(true);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramView.getDrawingCache();
+      ScreenCapture.setSnapFile(localContext, false);
     }
-    label551:
-    this.a.jdField_a_of_type_Ahyu.notifyDataSetChanged();
-    return;
-    paramView = new ArrayList();
-    paramView.add(Long.valueOf(Long.parseLong(str)));
-    ChatHistoryTroopMemberFragment.a(this.a, paramView);
   }
+  
+  protected Boolean a(String... paramVarArgs)
+  {
+    Boolean localBoolean = Boolean.FALSE;
+    if (isCancelled()) {}
+    while ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      return localBoolean;
+    }
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    paramVarArgs = new File(paramVarArgs[0]);
+    File localFile = paramVarArgs.getParentFile();
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    try
+    {
+      paramVarArgs = new FileOutputStream(paramVarArgs);
+      localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, paramVarArgs);
+      paramVarArgs.flush();
+      paramVarArgs.close();
+      paramVarArgs = Boolean.TRUE;
+      return paramVarArgs;
+    }
+    catch (IOException paramVarArgs)
+    {
+      paramVarArgs.printStackTrace();
+    }
+    return localBoolean;
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localView != null)
+      {
+        if (paramBoolean.booleanValue()) {
+          ScreenCapture.setSnapFile(localView.getContext(), true);
+        }
+        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+        localView.setDrawingCacheEnabled(false);
+        localView.destroyDrawingCache();
+      }
+    }
+  }
+  
+  protected void onCancelled() {}
 }
 
 

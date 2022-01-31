@@ -1,23 +1,10 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
 public class uwk
-  extends QQUIEventReceiver<uvz, uwj>
+  extends uli
 {
-  public uwk(@NonNull uvz paramuvz)
-  {
-    super(paramuvz);
-  }
-  
-  public void a(@NonNull uvz paramuvz, @NonNull uwj paramuwj)
-  {
-    uvz.a(paramuvz, paramuwj.jdField_a_of_type_Vld, paramuwj.jdField_a_of_type_JavaLangString);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uwj.class;
-  }
+  public String a;
+  public List<String> a;
 }
 
 

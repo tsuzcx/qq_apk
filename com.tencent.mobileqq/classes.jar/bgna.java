@@ -1,33 +1,42 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.view.View;
-import com.tencent.qqmini.sdk.log.QMLog;
+import java.io.Closeable;
+import java.io.InputStream;
 
-class bgna
+public final class bgna
+  implements Closeable
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
+  private final long jdField_a_of_type_Long;
+  private final String jdField_a_of_type_JavaLangString;
+  private final long[] jdField_a_of_type_ArrayOfLong;
+  private final InputStream[] jdField_a_of_type_ArrayOfJavaIoInputStream;
   
-  private void a()
+  private bgna(bgmu parambgmu, String paramString, long paramLong, InputStream[] paramArrayOfInputStream, long[] paramArrayOfLong)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Int != 0))
-    {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getBackground().mutate();
-      if ((localDrawable instanceof GradientDrawable)) {
-        ((GradientDrawable)localDrawable).setColor(this.jdField_a_of_type_Int);
-      }
-    }
-    else
-    {
-      return;
-    }
-    QMLog.w("BrandColorManager", "set band border-color fail");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ArrayOfJavaIoInputStream = paramArrayOfInputStream;
+    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
   }
   
-  void a(View paramView)
+  public InputStream a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a();
+    return this.jdField_a_of_type_ArrayOfJavaIoInputStream[paramInt];
+  }
+  
+  public String a(int paramInt)
+  {
+    return bgmu.a(a(paramInt));
+  }
+  
+  public void close()
+  {
+    InputStream[] arrayOfInputStream = this.jdField_a_of_type_ArrayOfJavaIoInputStream;
+    int j = arrayOfInputStream.length;
+    int i = 0;
+    while (i < j)
+    {
+      bgnb.a(arrayOfInputStream[i]);
+      i += 1;
+    }
   }
 }
 

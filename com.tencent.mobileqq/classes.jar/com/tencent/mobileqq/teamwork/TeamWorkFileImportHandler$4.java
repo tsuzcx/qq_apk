@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.teamwork;
 
-import bacn;
-import badd;
-import baej;
+import bagw;
+import bahm;
+import bais;
 import com.tencent.mobileqq.app.QQAppInterface;
 import org.json.JSONObject;
 
 public class TeamWorkFileImportHandler$4
   implements Runnable
 {
-  public TeamWorkFileImportHandler$4(bacn parambacn, JSONObject paramJSONObject, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  public TeamWorkFileImportHandler$4(bagw parambagw, JSONObject paramJSONObject, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
@@ -17,13 +17,13 @@ public class TeamWorkFileImportHandler$4
     do
     {
       return;
-      localObject = badd.a(this.jdField_a_of_type_OrgJsonJSONObject, this.this$0.app.getCurrentAccountUin());
+      localObject = bahm.a(this.jdField_a_of_type_OrgJsonJSONObject, this.this$0.app.getCurrentAccountUin());
     } while (localObject == null);
-    Object localObject = baej.a((JSONObject)localObject);
-    if ((localObject != null) && (((baej)localObject).jdField_a_of_type_JavaLangString != null) && (((baej)localObject).jdField_a_of_type_Boolean))
+    Object localObject = bais.a((JSONObject)localObject);
+    if ((localObject != null) && (((bais)localObject).jdField_a_of_type_JavaLangString != null) && (((bais)localObject).jdField_a_of_type_Boolean))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.l = ((baej)localObject).b;
-      this.this$0.notifyUI(6, true, new Object[] { ((baej)localObject).jdField_a_of_type_JavaLangString, ((baej)localObject).d, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo });
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.l = ((bais)localObject).b;
+      this.this$0.notifyUI(6, true, new Object[] { ((bais)localObject).jdField_a_of_type_JavaLangString, ((bais)localObject).d, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo });
       return;
     }
     this.this$0.notifyUI(7, false, new Object[] { this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo });

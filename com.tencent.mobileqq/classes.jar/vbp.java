@@ -1,52 +1,23 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.msgTabNode.view.viewholder.MsgNodeViewHolder.1.1;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class vbp
-  extends unk<vdf>
+  implements URLDrawable.URLDrawableListener
 {
-  private final String a;
-  public List<String> a;
+  vbp(vbo paramvbo) {}
   
-  public vbp()
-  {
-    this.jdField_a_of_type_JavaLangString = ume.a("StoryGroupSvc.datacard_batch_get_video_info");
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public unf a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspBatchGetVideoInfo localRspBatchGetVideoInfo = new qqstory_service.RspBatchGetVideoInfo();
-    try
-    {
-      localRspBatchGetVideoInfo.mergeFrom(paramArrayOfByte);
-      return new vdf(localRspBatchGetVideoInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wsv.b("Q.qqstory.shareGroup:GetShareGroupVideoInfoRequest", a(), paramArrayOfByte);
-    }
-    return null;
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  protected byte[] a()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    qqstory_service.ReqBatchGetVideoInfo localReqBatchGetVideoInfo = new qqstory_service.ReqBatchGetVideoInfo();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqBatchGetVideoInfo.story_id_list.add(ByteStringMicro.copyFromUtf8(str));
-    }
-    return localReqBatchGetVideoInfo.toByteArray();
+    ThreadManager.getUIHandler().postDelayed(new MsgNodeViewHolder.1.1(this), 1000L);
   }
 }
 

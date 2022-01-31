@@ -1,6 +1,16 @@
-public abstract interface xgm
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+
+public class xgm
+  implements xhe
 {
-  public abstract void a(xgl paramxgl);
+  public xgm(DoodleLayout paramDoodleLayout) {}
+  
+  public void a()
+  {
+    if (this.a.a != null) {
+      this.a.a.f();
+    }
+  }
 }
 
 

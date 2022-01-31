@@ -3,7 +3,7 @@ import com.dataline.activities.LiteActivity;
 import com.tencent.widget.XListView;
 
 public class bw
-  implements amje
+  implements amnt
 {
   public bw(LiteActivity paramLiteActivity) {}
   

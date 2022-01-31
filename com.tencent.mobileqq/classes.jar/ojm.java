@@ -19,13 +19,13 @@ import org.json.JSONObject;
 
 public class ojm
 {
-  private static final String a = alpo.a(2131702565);
+  private static final String a = alud.a(2131702577);
   private static final String b;
-  private static final String c = alpo.a(2131702564);
+  private static final String c = alud.a(2131702576);
   
   static
   {
-    jdField_b_of_type_JavaLangString = alpo.a(2131702566);
+    jdField_b_of_type_JavaLangString = alud.a(2131702578);
   }
   
   public static SubCommentData a(omt paramomt, int paramInt)
@@ -42,7 +42,7 @@ public class ojm
   
   public static TemplateBean a(VafContext paramVafContext, omt paramomt, int paramInt, boolean paramBoolean, omg paramomg)
   {
-    bhxr.a("CommentProteusUtil.getTemplateBean");
+    biby.a("CommentProteusUtil.getTemplateBean");
     sfq localsfq1;
     if (paramVafContext == null)
     {
@@ -64,7 +64,7 @@ public class ojm
         paramVafContext = localsfq1.getTemplateBean(a(paramomg, paramVafContext, paramomt, paramInt, paramBoolean));
         try
         {
-          bhxr.a();
+          biby.a();
           return paramVafContext;
         }
         catch (JSONException paramomt) {}
@@ -159,7 +159,7 @@ public class ojm
         ((JSONObject)localObject2).put("rij_comment_v", "rij_comment_v");
       }
       if (localBaseCommentData.isAuthorReply()) {
-        ((JSONObject)localObject2).put("author_header_flag_one", alpo.a(2131702575));
+        ((JSONObject)localObject2).put("author_header_flag_one", alud.a(2131702587));
       }
       if (!TextUtils.isEmpty(localBaseCommentData.userTitle)) {
         ((JSONObject)localObject2).put("comment_describe", localBaseCommentData.userTitle);
@@ -167,7 +167,7 @@ public class ojm
       String str = olt.a(localBaseCommentData.nickName, 10);
       localObject1 = str;
       if (str == null) {
-        localObject1 = alpo.a(2131709672);
+        localObject1 = alud.a(2131709684);
       }
       ((JSONObject)localObject2).put("nickname", localObject1);
       ((JSONObject)localObject2).put("commentModel", paramomt);
@@ -201,7 +201,7 @@ public class ojm
             localObject2 = (CommentData)localBaseCommentData;
             if (((CommentData)localObject2).subCommentNum > 0)
             {
-              ((JSONObject)localObject1).put("reply_count", bjxj.a(((CommentData)localObject2).subCommentNum, 99989500L, "9999万+", "0") + alpo.a(2131702569));
+              ((JSONObject)localObject1).put("reply_count", bkbq.a(((CommentData)localObject2).subCommentNum, 99989500L, "9999万+", "0") + alud.a(2131702581));
               ((JSONObject)localObject1).put("id_comment_tail_3_dot", new JSONObject());
               ((JSONObject)localObject1).put("reply_count_none", "");
               ((JSONObject)localObject1).put("id_comment_tail_center_dot", new JSONObject());
@@ -255,14 +255,14 @@ public class ojm
             return localObject1;
             ((JSONObject)localObject2).put("avator_url", localBaseCommentData.avatar);
             break;
-            ((JSONObject)localObject1).put("reply_count_none", alpo.a(2131702576));
+            ((JSONObject)localObject1).put("reply_count_none", alud.a(2131702588));
             ((JSONObject)localObject1).put("id_comment_tail_center_dot", new JSONObject());
             ((JSONObject)localObject1).put("id_comment_tail_3_dot", new JSONObject());
             ((JSONObject)localObject1).remove("reply_count");
             break label473;
             ((JSONObject)localObject1).put("id_comment_tail_3_dot", new JSONObject());
             break label473;
-            ((JSONObject)localObject1).put("reply_count_none", alpo.a(2131702573));
+            ((JSONObject)localObject1).put("reply_count_none", alud.a(2131702585));
             ((JSONObject)localObject1).put("id_comment_tail_center_dot", new JSONObject());
             ((JSONObject)localObject1).put("id_comment_tail_3_dot", new JSONObject());
             ((JSONObject)localObject1).remove("reply_count");
@@ -278,9 +278,9 @@ public class ojm
             break label708;
             paramVafContext = "";
             break label807;
-            paramVafContext = alpo.a(2131702563);
+            paramVafContext = alud.a(2131702575);
             continue;
-            paramVafContext = alpo.a(2131702570);
+            paramVafContext = alud.a(2131702582);
           }
         }
         catch (Exception localException)
@@ -433,7 +433,7 @@ public class ojm
     }
     try
     {
-      bhxr.a("CommentProteusUtil.bindData");
+      biby.a("CommentProteusUtil.bindData");
       opy.a(paramContainer, null, paramTemplateBean);
       if (paramTemplateBean.getViewBean() != null)
       {
@@ -444,7 +444,7 @@ public class ojm
           a(paramContainer, paramomg, (omt)paramomg.getItem(paramInt1));
         }
       }
-      bhxr.a();
+      biby.a();
       return;
     }
     catch (JSONException paramVafContext)
@@ -538,13 +538,13 @@ public class ojm
     if (paramomg == null) {
       return;
     }
-    bdfq localbdfq = bdcd.a(paramomg.a(), 230);
+    bdjz localbdjz = bdgm.a(paramomg.a(), 230);
     paramomg = new okd(paramomg, paramomt);
-    localbdfq.setMessage(okv.a());
-    localbdfq.setNegativeButton("取消", paramomg);
-    localbdfq.setPositiveButton("确定", paramomg);
-    localbdfq.setOnCancelListener(null);
-    localbdfq.show();
+    localbdjz.setMessage(okv.a());
+    localbdjz.setNegativeButton("取消", paramomg);
+    localbdjz.setPositiveButton("确定", paramomg);
+    localbdjz.setOnCancelListener(null);
+    localbdjz.show();
   }
 }
 

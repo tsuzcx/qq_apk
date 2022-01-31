@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ark.API;
 
 import android.support.v4.app.FragmentActivity;
-import angk;
+import ankt;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.music.QQPlayerService;
 
 public class ArkAppMusicModule$3
   implements Runnable
 {
-  public ArkAppMusicModule$3(angk paramangk) {}
+  public ArkAppMusicModule$3(ankt paramankt) {}
   
   public void run()
   {

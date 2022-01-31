@@ -22,7 +22,7 @@ public class otf
   
   public static float a()
   {
-    Float localFloat = (Float)bjxj.a("readinjoy_daily_mode_drag_threshold", Float.valueOf(1.0F));
+    Float localFloat = (Float)bkbq.a("readinjoy_daily_mode_drag_threshold", Float.valueOf(1.0F));
     QLog.d("DailyModeConfigHandler", 1, "[getJumpThreshold] " + localFloat);
     if ((localFloat.floatValue() > 0.001D) && (localFloat.floatValue() < 10.0F)) {
       return localFloat.floatValue();
@@ -37,7 +37,7 @@ public class otf
       QLog.d("DailyModeConfigHandler", 1, "[getMode] isDailyUnlimitChannel MODE_LOAD_MORE");
       return 2;
     }
-    Integer localInteger = (Integer)bjxj.a("readinjoy_daily_mode_plan_number", Integer.valueOf(-1));
+    Integer localInteger = (Integer)bkbq.a("readinjoy_daily_mode_plan_number", Integer.valueOf(-1));
     QLog.d("DailyModeConfigHandler", 1, "[getMode] " + localInteger);
     if (localInteger.intValue() == 2) {
       return 2;
@@ -53,14 +53,14 @@ public class otf
     if (jdField_b_of_type_JavaLangString != null) {
       return jdField_b_of_type_JavaLangString;
     }
-    jdField_b_of_type_JavaLangString = (String)bjxj.a("readinjoy_daily_mode_bottom_jump", "");
+    jdField_b_of_type_JavaLangString = (String)bkbq.a("readinjoy_daily_mode_bottom_jump", "");
     return jdField_b_of_type_JavaLangString;
   }
   
   public static JSONObject a()
   {
     if (TextUtils.isEmpty(d)) {
-      d = (String)bjxj.a("readinjoy_daily_mode_footer_pts", "");
+      d = (String)bkbq.a("readinjoy_daily_mode_footer_pts", "");
     }
     QLog.i("DailyModeConfigHandler", 1, "getFooterData pts = " + d);
     try
@@ -76,7 +76,7 @@ public class otf
       {
         localJSONObject2.put("style_ID", "ReadInjoy_daily_footer");
         localJSONObject2.put("title_EN", "TENCENT KANDIAN");
-        localJSONObject2.put("title_CN", alpo.a(2131703091));
+        localJSONObject2.put("title_CN", alud.a(2131703103));
         return localJSONObject2;
       }
       catch (JSONException localJSONException2)
@@ -110,17 +110,17 @@ public class otf
         c = paramString.optString("jump_src");
         d = paramString.optString("ReadInjoy_daily_footer_pts");
         if (jdField_a_of_type_JavaLangString != null) {
-          bjxj.a("readinjoy_daily_mode_bottom_text", jdField_a_of_type_JavaLangString);
+          bkbq.a("readinjoy_daily_mode_bottom_text", jdField_a_of_type_JavaLangString);
         }
         if (jdField_b_of_type_JavaLangString != null) {
-          bjxj.a("readinjoy_daily_mode_bottom_jump", jdField_b_of_type_JavaLangString);
+          bkbq.a("readinjoy_daily_mode_bottom_jump", jdField_b_of_type_JavaLangString);
         }
         if (c != null) {
-          bjxj.a("readinjoy_daily_mode_bottom_jump_src", c);
+          bkbq.a("readinjoy_daily_mode_bottom_jump_src", c);
         }
         if (d != null)
         {
-          bjxj.a("readinjoy_daily_mode_footer_pts", d);
+          bkbq.a("readinjoy_daily_mode_footer_pts", d);
           return;
         }
       }
@@ -154,17 +154,17 @@ public class otf
     if (c != null) {
       return c;
     }
-    c = (String)bjxj.a("readinjoy_daily_mode_bottom_jump_src", "0");
+    c = (String)bkbq.a("readinjoy_daily_mode_bottom_jump_src", "0");
     return c;
   }
   
   public static void b()
   {
-    if ("1".equals((String)bjxj.a("readinjoy_daily_mode_refresh_mode", "0"))) {}
+    if ("1".equals((String)bkbq.a("readinjoy_daily_mode_refresh_mode", "0"))) {}
     for (jdField_a_of_type_Boolean = true;; jdField_a_of_type_Boolean = false)
     {
-      jdField_a_of_type_Int = ((Integer)bjxj.a("readinjoy_daily_mode_channel_id", Integer.valueOf(41505))).intValue();
-      if (!bjxj.g())
+      jdField_a_of_type_Int = ((Integer)bkbq.a("readinjoy_daily_mode_channel_id", Integer.valueOf(41505))).intValue();
+      if (!bkbq.g())
       {
         QLog.i("DailyModeConfigHandler", 1, "非独立看点->进入无限流 refreshDailyConfig   " + jdField_a_of_type_Int);
         jdField_a_of_type_Int = 41697;
@@ -228,9 +228,9 @@ public class otf
       String str2 = (String)paramString.get(str1);
       QLog.d("DailyModeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
       if (TextUtils.equals(str1, "daily_plan_number")) {
-        bjxj.a("readinjoy_daily_mode_plan_number", Integer.valueOf(str2));
+        bkbq.a("readinjoy_daily_mode_plan_number", Integer.valueOf(str2));
       } else if (TextUtils.equals(str1, "daily_drag_threshold")) {
-        bjxj.a("readinjoy_daily_mode_drag_threshold", Float.valueOf(str2));
+        bkbq.a("readinjoy_daily_mode_drag_threshold", Float.valueOf(str2));
       }
     }
     return true;
@@ -239,7 +239,7 @@ public class otf
   public void onWipeConfig(int paramInt)
   {
     QLog.d("DailyModeConfigHandler", 1, "[onWipeConfig]");
-    bjxj.a("readinjoy_daily_mode_plan_number", Integer.valueOf(-1));
+    bkbq.a("readinjoy_daily_mode_plan_number", Integer.valueOf(-1));
   }
 }
 

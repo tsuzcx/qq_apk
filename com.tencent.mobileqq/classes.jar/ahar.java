@@ -1,6 +1,10 @@
 public abstract interface ahar
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public abstract void a(int paramInt, Object... paramVarArgs);
+  
+  public abstract int[] a();
+  
+  public abstract int b();
 }
 
 

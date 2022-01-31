@@ -1,67 +1,37 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.util.WeakReference;
+import java.util.List;
 
-class blsw
-  implements bapx
+public class blsw
+  implements Cloneable
 {
-  blsw(blsv paramblsv) {}
+  public int a;
+  public String a;
+  public List<PtvTemplateManager.PtvTemplateInfo> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
   
-  public void onResp(baqw arg1)
+  public blsw() {}
+  
+  public blsw(String paramString)
   {
-    blsu localblsu = (blsu)???.a.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("DText", 2, "onResp, url is: " + localblsu.jdField_a_of_type_JavaLangString + " http status: " + ???.c);
-    }
-    blsv.a(this.a, localblsu);
-    if ((blsv.a(this.a).b(localblsu)) && (blsv.a(this.a).a(localblsu))) {}
-    for (boolean bool = true;; bool = false) {
-      for (;;)
-      {
-        int i;
-        synchronized (blsv.a(this.a))
-        {
-          ArrayList localArrayList = (ArrayList)blsv.a(this.a).remove(localblsu.jdField_a_of_type_JavaLangString);
-          i = localArrayList.size() - 1;
-          if (i >= 0)
-          {
-            WeakReference localWeakReference = (WeakReference)localArrayList.get(i);
-            if (localWeakReference.get() != null) {
-              ((blsx)localWeakReference.get()).a(bool, localblsu.jdField_a_of_type_JavaLangString);
-            }
-          }
-          else
-          {
-            return;
-          }
-        }
-        i -= 1;
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onUpdateProgeress(baqv arg1, long paramLong1, long paramLong2)
+  public blsw a()
   {
-    blsu localblsu = (blsu)???.a();
-    synchronized (blsv.a(this.a))
-    {
-      Iterator localIterator = ((ArrayList)blsv.a(this.a).get(localblsu.jdField_a_of_type_JavaLangString)).iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference.get() != null) {
-          ((blsx)localWeakReference.get()).a((float)(100L * paramLong1 / paramLong2), localblsu.jdField_a_of_type_JavaLangString, localblsu.jdField_a_of_type_Int);
-        }
-      }
-    }
-    float f = (float)paramLong1 * 100.0F / (float)paramLong2;
-    localObject.b = ((int)f);
-    if (QLog.isColorLevel()) {
-      QLog.i("DText", 2, "onResDownloadProgressUpdate url: " + localObject.jdField_a_of_type_JavaLangString + " progress: " + f + " curOffset: " + paramLong1 + " totalLen: " + paramLong2);
-    }
+    blsw localblsw = new blsw();
+    localblsw.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localblsw.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localblsw.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    localblsw.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localblsw.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+    localblsw.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
+    localblsw.jdField_a_of_type_JavaUtilList = new ArrayList();
+    localblsw.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
+    return localblsw;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aiak;
-import alvf;
+import aiez;
+import alzu;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class MainFragment$1
@@ -16,7 +16,7 @@ public class MainFragment$1
     }
     if (MainFragment.a(this.this$0) != null)
     {
-      ((alvf)MainFragment.a(this.this$0).getManager(257)).a(MainFragment.a(this.this$0));
+      ((alzu)MainFragment.a(this.this$0).getManager(257)).a(MainFragment.a(this.this$0));
       MainFragment.a(this.this$0).registObserver(MainFragment.a(this.this$0));
       MainFragment.a(this.this$0).registObserver(MainFragment.a(this.this$0));
     }

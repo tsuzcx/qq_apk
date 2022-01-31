@@ -1,39 +1,67 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
-import java.util.List;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import tencent.im.troop.homework.ErrorInfo;
+import tencent.im.troop.homework.ReqSend1V1Msg;
+import tencent.im.troop.homework.RspSend1V1Msg;
 
-public abstract class bcjt
+public class bcjt
+  extends ameq
 {
-  public void a(int paramInt) {}
+  public bcjt(BulkSendMessageFragment paramBulkSendMessageFragment) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString, List<bcke> paramList) {}
-  
-  public void a(int paramInt, String paramString) {}
-  
-  public void a(int paramInt, oidb_0x962.RspBody paramRspBody) {}
-  
-  public void a(long paramLong) {}
-  
-  public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString) {}
-  
-  public void a(SparseArray<bckg> paramSparseArray) {}
-  
-  public void a(TroopGiftBagInfo paramTroopGiftBagInfo) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString1, int paramInt, String paramString2) {}
-  
-  public void a(List<bckf> paramList, yqx paramyqx) {}
-  
-  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3) {}
-  
-  public void b(int paramInt) {}
-  
-  public void b(int paramInt, String paramString) {}
-  
-  public void c(int paramInt) {}
+  protected void a(boolean paramBoolean, homework.RspSend1V1Msg paramRspSend1V1Msg, homework.ReqSend1V1Msg paramReqSend1V1Msg)
+  {
+    if (QLog.isColorLevel()) {
+      if (paramRspSend1V1Msg != null) {
+        break label97;
+      }
+    }
+    label97:
+    for (Object localObject = "null";; localObject = xrq.a(paramRspSend1V1Msg))
+    {
+      QLog.d(".troop.troop_app.BulkSendMessageFragment", 2, new Object[] { "Receive response succ=", Boolean.valueOf(paramBoolean), "resp: ", localObject });
+      if (this.a.jdField_a_of_type_Xsp != null)
+      {
+        this.a.jdField_a_of_type_Xsp.a();
+        this.a.jdField_a_of_type_Xsp = null;
+      }
+      localObject = this.a.getActivity();
+      if (localObject != null) {
+        break;
+      }
+      QLog.e(".troop.troop_app.BulkSendMessageFragment", 2, "onBulkSendMessage() Error: getActivity == null");
+      return;
+    }
+    if (paramRspSend1V1Msg == null)
+    {
+      QQToast.a((Context)localObject, 1, alud.a(2131701613), 1).a();
+      return;
+    }
+    if (paramRspSend1V1Msg.result.error_code.get() != 0)
+    {
+      QQToast.a((Context)localObject, 1, paramRspSend1V1Msg.result.error_desc.get().toStringUtf8(), 1).a();
+      return;
+    }
+    QQToast.a((Context)localObject, 2, alud.a(2131701609), 1).a();
+    ((FragmentActivity)localObject).finish();
+    ((FragmentActivity)localObject).overridePendingTransition(0, 2130772001);
+    paramRspSend1V1Msg = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+    if (paramRspSend1V1Msg != null) {
+      paramRspSend1V1Msg.sendEmptyMessage(1009);
+    }
+    paramRspSend1V1Msg = bdes.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString);
+    bdes.a("Grp_edu", "MassMessage", "CreateMessage_Send", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramRspSend1V1Msg, paramReqSend1V1Msg.text.get().toStringUtf8(), String.valueOf(paramReqSend1V1Msg.to_uins.size()) });
+  }
 }
 
 

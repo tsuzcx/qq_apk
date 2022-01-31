@@ -1,8 +1,22 @@
-public class aanx
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
+
+public final class aanx
+  extends aanf
 {
-  public static void a(String paramString)
+  public int a;
+  public GdtDwellTimeStatisticsAfterClick a;
+  public int b = -2147483648;
+  public int c = -2147483648;
+  
+  public aanx()
   {
-    aaob.a(paramString);
+    this.jdField_a_of_type_Int = -2147483648;
+  }
+  
+  public boolean a()
+  {
+    return (super.a()) && (this.jdField_a_of_type_Int != -2147483648) && (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.b()) && (this.b > 0) && (this.c > 0);
   }
 }
 

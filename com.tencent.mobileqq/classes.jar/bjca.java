@@ -1,17 +1,23 @@
-import com.tencent.component.network.downloader.DownloadRequest;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class bjca
+  implements View.OnClickListener
 {
-  DownloadRequest jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest;
-  Downloader.DownloadListener jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  Downloader.DownloadListener jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
+  bjca(bjbz parambjbz) {}
   
-  bjca(bjby parambjby) {}
+  public void onClick(View paramView)
+  {
+    if (bjbz.a(this.a))
+    {
+      if (bjbz.b(this.a)) {
+        this.a.dismiss();
+      }
+      if (bjbz.a(this.a) != null) {
+        bjbz.a(this.a).onClick(paramView);
+      }
+    }
+  }
 }
 
 

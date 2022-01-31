@@ -1,118 +1,18 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
-import java.util.LinkedList;
+import com.tencent.tavcut.TAVCut.Callback;
+import dov.com.qq.im.aeeditor.AEEditorActivity;
 import java.util.List;
 
 public class bljv
+  implements TAVCut.Callback
 {
-  public static final List<bljv> a;
-  public int a;
-  private VsMusicItemInfo a;
-  public boolean a;
-  public final boolean b;
+  public bljv(AEEditorActivity paramAEEditorActivity) {}
   
-  static
+  public void onDone(int paramInt)
   {
-    jdField_a_of_type_JavaUtilList = a();
-  }
-  
-  public bljv(@NonNull VsMusicItemInfo paramVsMusicItemInfo, boolean paramBoolean)
-  {
-    this(paramVsMusicItemInfo, paramBoolean, false);
-  }
-  
-  public bljv(@NonNull VsMusicItemInfo paramVsMusicItemInfo, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo = paramVsMusicItemInfo;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Int = 0;
-    this.b = paramBoolean2;
-  }
-  
-  @NonNull
-  private static List<bljv> a()
-  {
-    LinkedList localLinkedList = new LinkedList();
-    int i = 0;
-    while (i < 5)
-    {
-      VsMusicItemInfo localVsMusicItemInfo = new VsMusicItemInfo();
-      localVsMusicItemInfo.mSongMid = ("fakeMid" + (i + 1));
-      localVsMusicItemInfo.mMusicName = "";
-      localVsMusicItemInfo.mUrl = "";
-      localVsMusicItemInfo.mAlbumUrl = "";
-      localLinkedList.add(new bljv(localVsMusicItemInfo, false, true));
-      i += 1;
+    bljn.b(AEEditorActivity.a(), "TAVCut init ret code = " + paramInt);
+    if (paramInt != 0) {
+      AEEditorActivity.a(this.a).add(new bljw(this.a, -8));
     }
-    return localLinkedList;
-  }
-  
-  @NonNull
-  private String d()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
-    }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mMusicName == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mMusicName;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.musicDuration;
-  }
-  
-  @NonNull
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
-    }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mSongMid == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mSongMid;
-  }
-  
-  public boolean a()
-  {
-    return TextUtils.isEmpty(a());
-  }
-  
-  @NonNull
-  public String b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
-    }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mUrl == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mUrl;
-  }
-  
-  @NonNull
-  public String c()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
-    }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mAlbumUrl == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mAlbumUrl;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "{songMid:" + a() + ", songName:" + d() + ", songUrl:" + b() + ", selected:" + this.jdField_a_of_type_Boolean + ", downloadStatus:" + this.jdField_a_of_type_Int + "}";
   }
 }
 

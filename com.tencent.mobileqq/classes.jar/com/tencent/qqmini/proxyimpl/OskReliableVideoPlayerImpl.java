@@ -4,21 +4,21 @@ import android.content.Context;
 import android.net.Uri;
 import android.view.Surface;
 import android.view.SurfaceHolder;
-import bgnj;
-import bgnk;
-import bgnl;
-import bgnm;
-import bgnn;
-import bgno;
-import bgnp;
-import bgnq;
-import bgnr;
+import bgrq;
+import bgrr;
+import bgrs;
+import bgrt;
+import bgru;
+import bgrv;
+import bgrw;
+import bgrx;
+import bgry;
 import com.tencent.oskplayer.player.OskExoMediaPlayer;
 import java.io.FileDescriptor;
 import java.util.Map;
 
 public class OskReliableVideoPlayerImpl
-  implements bgnj
+  implements bgrq
 {
   private OskExoMediaPlayer player = new OskExoMediaPlayer();
   
@@ -152,51 +152,51 @@ public class OskReliableVideoPlayerImpl
     this.player.setLooping(paramBoolean);
   }
   
-  public void setNextMediaPlayer(bgnj parambgnj)
+  public void setNextMediaPlayer(bgrq parambgrq)
   {
-    if ((parambgnj instanceof OskReliableVideoPlayerImpl)) {
-      this.player.setNextMediaPlayer(((OskReliableVideoPlayerImpl)parambgnj).player);
+    if ((parambgrq instanceof OskReliableVideoPlayerImpl)) {
+      this.player.setNextMediaPlayer(((OskReliableVideoPlayerImpl)parambgrq).player);
     }
   }
   
-  public void setOnBufferingUpdateListener(bgnk parambgnk)
+  public void setOnBufferingUpdateListener(bgrr parambgrr)
   {
-    this.player.setOnBufferingUpdateListener(new OskReliableVideoPlayerImpl.4(this, parambgnk));
+    this.player.setOnBufferingUpdateListener(new OskReliableVideoPlayerImpl.4(this, parambgrr));
   }
   
-  public void setOnCompletionListener(bgnl parambgnl)
+  public void setOnCompletionListener(bgrs parambgrs)
   {
-    this.player.setOnCompletionListener(new OskReliableVideoPlayerImpl.3(this, parambgnl));
+    this.player.setOnCompletionListener(new OskReliableVideoPlayerImpl.3(this, parambgrs));
   }
   
-  public void setOnErrorListener(bgnm parambgnm)
+  public void setOnErrorListener(bgrt parambgrt)
   {
-    this.player.setOnErrorListener(new OskReliableVideoPlayerImpl.7(this, parambgnm));
+    this.player.setOnErrorListener(new OskReliableVideoPlayerImpl.7(this, parambgrt));
   }
   
-  public void setOnInfoListener(bgnn parambgnn)
+  public void setOnInfoListener(bgru parambgru)
   {
-    this.player.setOnInfoListener(new OskReliableVideoPlayerImpl.8(this, parambgnn));
+    this.player.setOnInfoListener(new OskReliableVideoPlayerImpl.8(this, parambgru));
   }
   
-  public void setOnLoopStartListener(bgno parambgno)
+  public void setOnLoopStartListener(bgrv parambgrv)
   {
-    this.player.setOnLoopStartListener(new OskReliableVideoPlayerImpl.1(this, parambgno));
+    this.player.setOnLoopStartListener(new OskReliableVideoPlayerImpl.1(this, parambgrv));
   }
   
-  public void setOnPreparedListener(bgnp parambgnp)
+  public void setOnPreparedListener(bgrw parambgrw)
   {
-    this.player.setOnPreparedListener(new OskReliableVideoPlayerImpl.2(this, parambgnp));
+    this.player.setOnPreparedListener(new OskReliableVideoPlayerImpl.2(this, parambgrw));
   }
   
-  public void setOnSeekCompleteListener(bgnq parambgnq)
+  public void setOnSeekCompleteListener(bgrx parambgrx)
   {
-    this.player.setOnSeekCompleteListener(new OskReliableVideoPlayerImpl.5(this, parambgnq));
+    this.player.setOnSeekCompleteListener(new OskReliableVideoPlayerImpl.5(this, parambgrx));
   }
   
-  public void setOnVideoSizeChangedListener(bgnr parambgnr)
+  public void setOnVideoSizeChangedListener(bgry parambgry)
   {
-    this.player.setOnVideoSizeChangedListener(new OskReliableVideoPlayerImpl.6(this, parambgnr));
+    this.player.setOnVideoSizeChangedListener(new OskReliableVideoPlayerImpl.6(this, parambgry));
   }
   
   public void setScreenOnWhilePlaying(boolean paramBoolean)

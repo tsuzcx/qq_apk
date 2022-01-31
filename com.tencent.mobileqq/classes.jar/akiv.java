@@ -1,124 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.adapter.ForwardRecentItemView;
 
 public class akiv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private static akiv jdField_a_of_type_Akiv;
-  private Map<Long, akiw> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Map<Long, Long> b = new HashMap();
+  public akiv(ForwardRecentItemView paramForwardRecentItemView, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  public static akiv a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (jdField_a_of_type_Akiv == null) {
-      jdField_a_of_type_Akiv = new akiv();
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.b);
+    if (AppSetting.c) {
+      this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_JavaLangString);
     }
-    return jdField_a_of_type_Akiv;
-  }
-  
-  public int a(long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
-    {
-      akiw localakiw = (akiw)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-      if (l - localakiw.jdField_a_of_type_Long < 3600000L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is true");
-        }
-        return localakiw.jdField_a_of_type_Int;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
-      }
-      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-      return 0;
-    }
-    if (this.b.containsKey(Long.valueOf(paramLong)))
-    {
-      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() < 43200000L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is false");
-        }
-        return 0;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
-      }
-      this.b.remove(Long.valueOf(paramLong));
-      return 0;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AntiFraud", 4, "use default value, false");
-    }
-    return 0;
-  }
-  
-  public void a(long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    if (this.b.size() > 500) {
-      this.b.clear();
-    }
-    this.b.put(Long.valueOf(paramLong), Long.valueOf(l));
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
-      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-    }
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    long l = System.currentTimeMillis();
-    akiw localakiw = new akiw(this);
-    localakiw.jdField_a_of_type_Int = paramInt;
-    localakiw.jdField_a_of_type_Long = l;
-    if (this.jdField_a_of_type_JavaUtilMap.size() > 500) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localakiw);
-    if (this.b.containsKey(Long.valueOf(paramLong))) {
-      this.b.remove(Long.valueOf(paramLong));
-    }
-  }
-  
-  public boolean a(long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
-    {
-      if (l - ((akiw)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Long > 3600000L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "FraudUin, Found from local cache, timestamp is out of data");
-        }
-        this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-        return true;
-      }
-      return false;
-    }
-    if (this.b.containsKey(Long.valueOf(paramLong)))
-    {
-      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() > 43200000L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "NonFraudUin, Found from local cache, timestamp is out of data");
-        }
-        this.b.remove(Long.valueOf(paramLong));
-        return true;
-      }
-      return false;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AntiFraud", 4, "Out of date, use default value, true!");
-    }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akiv
  * JD-Core Version:    0.7.0.1
  */

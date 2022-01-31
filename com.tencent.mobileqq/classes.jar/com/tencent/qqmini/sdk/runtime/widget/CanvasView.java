@@ -33,15 +33,15 @@ import android.os.Build;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import bgjm;
-import bgjw;
-import bgkk;
-import bgkx;
-import bgkz;
-import bglb;
-import bglo;
-import bhes;
-import bhet;
+import bgnt;
+import bgod;
+import bgor;
+import bgpe;
+import bgpg;
+import bgpi;
+import bgpv;
+import bhiz;
+import bhja;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
@@ -61,11 +61,11 @@ public class CanvasView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private bgjw jdField_a_of_type_Bgjw;
+  private bgod jdField_a_of_type_Bgod;
   private final NativeViewContainer jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer;
   Boolean jdField_a_of_type_JavaLangBoolean;
   private String jdField_a_of_type_JavaLangString;
-  private final LinkedBlockingQueue<bhes> jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue = new LinkedBlockingQueue();
+  private final LinkedBlockingQueue<bhiz> jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue = new LinkedBlockingQueue();
   private JSONArray jdField_a_of_type_OrgJsonJSONArray;
   float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -95,12 +95,12 @@ public class CanvasView
   private int k;
   private int l;
   
-  public CanvasView(Context paramContext, NativeViewContainer paramNativeViewContainer, bgjw parambgjw, String paramString, int paramInt, boolean paramBoolean1, Boolean paramBoolean, boolean paramBoolean2)
+  public CanvasView(Context paramContext, NativeViewContainer paramNativeViewContainer, bgod parambgod, String paramString, int paramInt, boolean paramBoolean1, Boolean paramBoolean, boolean paramBoolean2)
   {
     super(paramContext);
     this.jdField_c_of_type_Float = DisplayUtil.getDensity(paramContext);
     this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer = paramNativeViewContainer;
-    this.jdField_a_of_type_Bgjw = parambgjw;
+    this.jdField_a_of_type_Bgod = parambgod;
     this.jdField_b_of_type_Int = paramInt;
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
@@ -217,16 +217,16 @@ public class CanvasView
   {
     boolean bool = this.jdField_c_of_type_Boolean;
     Object localObject3 = this.jdField_a_of_type_OrgJsonJSONArray;
-    bhes localbhes = (bhes)this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.poll();
-    if (localbhes != null)
+    bhiz localbhiz = (bhiz)this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.poll();
+    if (localbhiz != null)
     {
       Object localObject2;
       label46:
       Object localObject1;
-      if (localbhes != null)
+      if (localbhiz != null)
       {
-        bool = localbhes.jdField_a_of_type_Boolean;
-        localObject2 = localbhes.jdField_a_of_type_OrgJsonJSONArray;
+        bool = localbhiz.jdField_a_of_type_Boolean;
+        localObject2 = localbhiz.jdField_a_of_type_OrgJsonJSONArray;
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = new JSONArray();
@@ -257,13 +257,13 @@ public class CanvasView
           QMLog.e("CanvasView", "process draw actions error! " + Log.getStackTraceString(localThrowable));
           continue;
         }
-        bool = localbhes.jdField_b_of_type_Boolean;
-        localbhes = (bhes)this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.poll();
+        bool = localbhiz.jdField_b_of_type_Boolean;
+        localbhiz = (bhiz)this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.poll();
         break;
         bool = false;
         localObject2 = this.jdField_a_of_type_OrgJsonJSONArray;
         break label46;
-        localObject2 = bgkz.a((JSONArray)localObject3, (JSONArray)localObject1);
+        localObject2 = bgpg.a((JSONArray)localObject3, (JSONArray)localObject1);
       }
     }
     this.jdField_a_of_type_OrgJsonJSONArray = ((JSONArray)localObject3);
@@ -283,7 +283,7 @@ public class CanvasView
         i2 = b(paramJSONObject.optInt("y"));
         i3 = b(paramJSONObject.optInt("width"));
         i4 = b(paramJSONObject.optInt("height"));
-        paramJSONObject = bglb.a(null, paramJSONObject, "data");
+        paramJSONObject = bgpi.a(null, paramJSONObject, "data");
         if (paramJSONObject == null) {
           break;
         }
@@ -372,13 +372,13 @@ public class CanvasView
       {
         localObject1 = ((JSONArray)localObject7).optString(0);
         localObject6 = localObject1;
-        if (!bglo.a((String)localObject1))
+        if (!bgpv.a((String)localObject1))
         {
           if (((String)localObject1).startsWith("wxfile")) {
-            localObject6 = bgjm.a().a((String)localObject1);
+            localObject6 = bgnt.a().a((String)localObject1);
           }
         }
-        else if (!bglo.a((String)localObject6))
+        else if (!bgpv.a((String)localObject6))
         {
           f7 = (float)((JSONArray)localObject7).optDouble(1, 0.0D);
           f8 = (float)((JSONArray)localObject7).optDouble(2, 0.0D);
@@ -389,7 +389,7 @@ public class CanvasView
           i2 = (int)((JSONArray)localObject7).optDouble(7, 0.0D);
           i3 = (int)((JSONArray)localObject7).optDouble(8, 0.0D);
           localObject7 = new BitmapFactory.Options();
-          i4 = bgkx.a((String)localObject6);
+          i4 = bgpe.a((String)localObject6);
           f1 = f4;
         }
         try
@@ -453,14 +453,14 @@ public class CanvasView
                 f3 = f6 * f9;
                 f4 = f5 * f9;
               }
-              if (bgkx.b((String)localObject6))
+              if (bgpe.b((String)localObject6))
               {
                 ((BitmapFactory.Options)localObject7).inPreferredConfig = Bitmap.Config.ARGB_4444;
                 f5 = (float)Math.sqrt(8985600.0F / f3 / f4 / 2.0F);
                 if (f5 >= 1.0F) {
                   break label1037;
                 }
-                ((BitmapFactory.Options)localObject7).inSampleSize = bgkx.a((BitmapFactory.Options)localObject7, f3 * f5, f4 * f5);
+                ((BitmapFactory.Options)localObject7).inSampleSize = bgpe.a((BitmapFactory.Options)localObject7, f3 * f5, f4 * f5);
               }
               for (;;)
               {
@@ -539,7 +539,7 @@ public class CanvasView
       {
         localObject6 = localObject1;
         if (i4 != 0) {
-          localObject6 = bgkx.a(i4, (Bitmap)localObject1);
+          localObject6 = bgpe.a(i4, (Bitmap)localObject1);
         }
         localObject1 = new RectF();
         ((RectF)localObject1).left = b(f7);
@@ -567,7 +567,7 @@ public class CanvasView
           {
             m += 1;
             break;
-            localObject6 = this.jdField_a_of_type_Bgjw.getChildFileAbsolutePath((String)localObject1);
+            localObject6 = this.jdField_a_of_type_Bgod.getChildFileAbsolutePath((String)localObject1);
             break label97;
             if ((i4 == 90) || (i4 == 270))
             {
@@ -647,12 +647,12 @@ public class CanvasView
         } while ((!"pattern".equals(localObject6)) || (((JSONArray)localObject7).length() != 3));
         localObject6 = ((JSONArray)localObject7).optString(1);
         localObject3 = localObject6;
-        if (!bglo.a((String)localObject6))
+        if (!bgpv.a((String)localObject6))
         {
           if (!((String)localObject6).startsWith("wxfile")) {
             break label1832;
           }
-          localObject3 = bgjm.a().a((String)localObject6);
+          localObject3 = bgnt.a().a((String)localObject6);
         }
         localObject6 = ((JSONArray)localObject7).optString(2);
         if (!"repeat".equals(localObject6)) {
@@ -660,10 +660,10 @@ public class CanvasView
         }
         this.jdField_d_of_type_Boolean = true;
         this.jdField_e_of_type_Boolean = true;
-        if (bglo.a((String)localObject3)) {
+        if (bgpv.a((String)localObject3)) {
           break label1882;
         }
-        localObject3 = bgkx.a((String)localObject3);
+        localObject3 = bgpe.a((String)localObject3);
         if (localObject3 != null)
         {
           this.jdField_f_of_type_Int = ((Bitmap)localObject3).getWidth();
@@ -693,7 +693,7 @@ public class CanvasView
         this.jdField_a_of_type_AndroidGraphicsPaint.setShader((Shader)localObject3);
         this.jdField_b_of_type_AndroidGraphicsPaint.setShader((Shader)localObject3);
         break;
-        localObject3 = this.jdField_a_of_type_Bgjw.getChildFileAbsolutePath((String)localObject6);
+        localObject3 = this.jdField_a_of_type_Bgod.getChildFileAbsolutePath((String)localObject6);
         break label1637;
         if ("repeat-x".equals(localObject6))
         {
@@ -1210,17 +1210,17 @@ public class CanvasView
         }
         if ("setShadow".equals(localObject4))
         {
-          localObject4 = new bhet(this);
+          localObject4 = new bhja(this);
           localObject6 = ((JSONArray)localObject7).optJSONArray(3);
           f1 = b(((JSONArray)localObject7).optDouble(2, 0.0D));
           f2 = b(((JSONArray)localObject7).optDouble(0, 0.0D));
           f3 = b(((JSONArray)localObject7).optDouble(1, 0.0D));
-          ((bhet)localObject4).jdField_a_of_type_Float = f1;
-          ((bhet)localObject4).jdField_b_of_type_Float = f2;
-          ((bhet)localObject4).jdField_c_of_type_Float = f3;
-          ((bhet)localObject4).jdField_a_of_type_Int = a((JSONArray)localObject6);
-          this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(((bhet)localObject4).jdField_a_of_type_Float, ((bhet)localObject4).jdField_b_of_type_Float, ((bhet)localObject4).jdField_c_of_type_Float, ((bhet)localObject4).jdField_a_of_type_Int);
-          this.jdField_b_of_type_AndroidGraphicsPaint.setShadowLayer(((bhet)localObject4).jdField_a_of_type_Float, ((bhet)localObject4).jdField_b_of_type_Float, ((bhet)localObject4).jdField_c_of_type_Float, ((bhet)localObject4).jdField_a_of_type_Int);
+          ((bhja)localObject4).jdField_a_of_type_Float = f1;
+          ((bhja)localObject4).jdField_b_of_type_Float = f2;
+          ((bhja)localObject4).jdField_c_of_type_Float = f3;
+          ((bhja)localObject4).jdField_a_of_type_Int = a((JSONArray)localObject6);
+          this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(((bhja)localObject4).jdField_a_of_type_Float, ((bhja)localObject4).jdField_b_of_type_Float, ((bhja)localObject4).jdField_c_of_type_Float, ((bhja)localObject4).jdField_a_of_type_Int);
+          this.jdField_b_of_type_AndroidGraphicsPaint.setShadowLayer(((bhja)localObject4).jdField_a_of_type_Float, ((bhja)localObject4).jdField_b_of_type_Float, ((bhja)localObject4).jdField_c_of_type_Float, ((bhja)localObject4).jdField_a_of_type_Int);
           break;
         }
         if ("setLineCap".equals(localObject4))
@@ -1376,12 +1376,12 @@ public class CanvasView
     return (int)(paramDouble / this.jdField_c_of_type_Float + 0.5D);
   }
   
-  public void a(bhes parambhes)
+  public void a(bhiz parambhiz)
   {
     long l1;
-    if ((this.jdField_h_of_type_Boolean) && (parambhes != null))
+    if ((this.jdField_h_of_type_Boolean) && (parambhiz != null))
     {
-      this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.offer(parambhes);
+      this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.offer(parambhiz);
       l1 = System.currentTimeMillis();
       if (this.jdField_a_of_type_Long != 0L) {
         break label47;
@@ -1427,7 +1427,7 @@ public class CanvasView
     label80:
     for (long l1 = 300L;; l1 = 0L)
     {
-      bgkk.a(new CanvasView.2(this, bool, paramNativeViewContainer, paramString, paramInt, paramJSONObject, paramContext), l1);
+      bgor.a(new CanvasView.2(this, bool, paramNativeViewContainer, paramString, paramInt, paramJSONObject, paramContext), l1);
       return;
       paramContext = paramJSONObject.optString("fileType");
       break;
@@ -1443,7 +1443,7 @@ public class CanvasView
   
   public void a(String paramString, JSONObject paramJSONObject, int paramInt)
   {
-    bgkk.a(new CanvasView.1(this, paramString, paramInt, paramJSONObject));
+    bgor.a(new CanvasView.1(this, paramString, paramInt, paramJSONObject));
   }
   
   float b(double paramDouble)

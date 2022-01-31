@@ -6,10 +6,10 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import apbu;
-import ayvc;
-import azmz;
-import bdcs;
+import apgd;
+import ayzl;
+import azri;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -140,7 +140,7 @@ public class DBFixManager
       paramContext.commit();
       QLog.d(o, 1, new Object[] { "onCorruptionInstant, start activity and write sp ", Integer.valueOf(i1), " onCorrupt: ", Boolean.valueOf(paramBoolean) });
       return;
-      new apbu(paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b();
+      new apgd(paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b();
     }
   }
   
@@ -207,7 +207,7 @@ public class DBFixManager
       localEditor.remove(str + jdField_e_of_type_JavaLangString);
       localEditor.commit();
     }
-    ayvc.j();
+    ayzl.j();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("acc_info" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit().putBoolean("isFriendlistok", false).commit();
     QLog.d(o, 1, "cleared friendlist flag");
   }
@@ -216,10 +216,10 @@ public class DBFixManager
   {
     Object localObject = this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + ".db");
     long l1 = ((File)localObject).length();
-    bdcs.d(((File)localObject).getPath());
-    bdcs.d(this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + ".db-journal").getPath());
-    bdcs.d(this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + "-wal").getPath());
-    bdcs.d(this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + "-shm").getPath());
+    bdhb.d(((File)localObject).getPath());
+    bdhb.d(this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + ".db-journal").getPath());
+    bdhb.d(this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + "-wal").getPath());
+    bdhb.d(this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + "-shm").getPath());
     if (!paramBoolean)
     {
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(jdField_b_of_type_JavaLangString, 0);
@@ -228,14 +228,14 @@ public class DBFixManager
       HashMap localHashMap = new HashMap();
       localHashMap.put("failReason", localObject);
       localHashMap.put("dblen", String.valueOf(l1));
-      azmz.a(BaseApplication.getContext()).a(null, i, true, -1L, 0L, localHashMap, null, false);
+      azri.a(BaseApplication.getContext()).a(null, i, true, -1L, 0L, localHashMap, null, false);
       QLog.d(o, 1, new Object[] { "onCorruptionInstant, deleteDbFile, isSuc: ", Boolean.valueOf(paramBoolean), " failReason: ", localObject });
     }
   }
   
   public boolean b()
   {
-    return apbu.a != null;
+    return apgd.a != null;
   }
   
   public void c()

@@ -1,37 +1,103 @@
-import android.content.Intent;
-import com.tencent.mobileqq.data.QzoneCommonIntent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.QzoneExternalRequest;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.os.HandlerThread;
 
 public class apbf
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private final apdc jdField_a_of_type_Apdc = new apdc();
+  
+  public int a()
   {
-    if (paramIntent == null) {}
-    while (!(paramIntent instanceof QzoneCommonIntent)) {
-      return;
-    }
-    paramIntent = (QzoneCommonIntent)paramIntent;
-    paramIntent.getProcessor().a(this, paramIntent, paramFromServiceMsg);
+    return this.jdField_a_of_type_Apdc.a();
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public Bitmap a(apbq paramapbq, apbz paramapbz)
   {
-    if ((paramIntent instanceof QzoneCommonIntent))
-    {
-      bizh localbizh = ((QzoneCommonIntent)paramIntent).getRequest();
-      byte[] arrayOfByte = localbizh.encode();
-      paramIntent = arrayOfByte;
-      if (arrayOfByte == null) {
-        paramIntent = new byte[4];
-      }
-      paramPacket.setTimeout(30000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + localbizh.uniKey());
-      paramPacket.putSendData(paramIntent);
+    if (paramapbq == null) {
+      throw new RuntimeException("fetchBitmapCache NullPointException, BaseDanmaku is null");
     }
+    try
+    {
+      if (paramapbq.f())
+      {
+        Object localObject2 = paramapbq.a();
+        Object localObject1;
+        if (localObject2 == null) {
+          localObject1 = this.jdField_a_of_type_Apdc.a((int)paramapbq.f(), (int)paramapbq.g());
+        }
+        for (;;)
+        {
+          paramapbq.a((Bitmap)localObject1);
+          if (localObject1 != null) {
+            break;
+          }
+          return null;
+          if (((Bitmap)localObject2).getWidth() >= (int)paramapbq.f())
+          {
+            localObject1 = localObject2;
+            if (((Bitmap)localObject2).getHeight() >= (int)paramapbq.g()) {}
+          }
+          else
+          {
+            this.jdField_a_of_type_Apdc.a((Bitmap)localObject2);
+            localObject1 = this.jdField_a_of_type_Apdc.a((int)paramapbq.f(), (int)paramapbq.g());
+          }
+        }
+        localObject2 = paramapbq.a();
+        if (localObject2 == null)
+        {
+          localObject2 = new Canvas((Bitmap)localObject1);
+          paramapbq.a((Canvas)localObject2);
+        }
+        for (;;)
+        {
+          ((Bitmap)localObject1).eraseColor(0);
+          paramapbq.c(false);
+          paramapbz.a(paramapbq).a((Canvas)localObject2, paramapbq, paramapbz, apbz.a().g(), apbz.a().c());
+          return localObject1;
+          ((Canvas)localObject2).setBitmap((Bitmap)localObject1);
+        }
+      }
+      paramapbq = paramapbq.a();
+    }
+    finally {}
+    return paramapbq;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {
+      return;
+    }
+    if (apdq.a())
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_Apdc.a(paramBitmap);
+  }
+  
+  public void a(apbq paramapbq, apbz paramapbz) {}
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Apdc.c();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Apdc.a();
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Apdc.b();
   }
 }
 

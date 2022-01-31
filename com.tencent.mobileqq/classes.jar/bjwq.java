@@ -1,383 +1,711 @@
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
-import android.os.Build.VERSION;
-import android.os.Handler;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.widget.QzoneGuideBubbleHelper.1;
-import cooperation.qzone.widget.TriangleView;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.vip.manager.MonitorManager;
+import java.net.URLEncoder;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bjwq
+  extends bjxz
 {
-  private static volatile bjwq jdField_a_of_type_Bjwq;
-  private int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private bjwn jdField_a_of_type_Bjwn;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new QzoneGuideBubbleHelper.1(this);
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  public static String a;
+  public static boolean a;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
   
-  private static Rect a(View paramView)
+  static
   {
-    if (paramView == null) {
-      return new Rect();
-    }
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt);
-    return new Rect(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getMeasuredWidth(), arrayOfInt[1] + paramView.getMeasuredHeight());
+    jdField_a_of_type_JavaLangString = "";
   }
   
-  public static ShapeDrawable a(float paramFloat1, float paramFloat2, int paramInt)
+  private void a(long paramLong, int paramInt)
   {
-    Object localObject = new float[8];
-    float[] arrayOfFloat = new float[8];
+    bjqu.a().a().a(paramLong, paramInt);
+  }
+  
+  private void a(Intent paramIntent)
+  {
     int i = 0;
-    while (i < 8)
+    boolean bool = paramIntent.getBooleanExtra("extraPrivateComment", false);
+    String str2 = paramIntent.getStringExtra("contentIntentKey");
+    for (;;)
     {
-      localObject[i] = (paramFloat1 + paramFloat2);
-      arrayOfFloat[i] = paramFloat1;
-      i += 1;
-    }
-    localObject = new ShapeDrawable(new RoundRectShape((float[])localObject, new RectF(paramFloat2, paramFloat2, paramFloat2, paramFloat2), arrayOfFloat));
-    ((ShapeDrawable)localObject).getPaint().setColor(paramInt);
-    return localObject;
-  }
-  
-  private static FrameLayout a(Context paramContext)
-  {
-    if ((paramContext == null) || (!(paramContext instanceof Activity))) {
-      return null;
-    }
-    paramContext = (ViewGroup)((Activity)paramContext).getWindow().getDecorView();
-    FrameLayout localFrameLayout = (FrameLayout)paramContext.findViewById(2131374675);
-    if (localFrameLayout == null) {
-      return (FrameLayout)paramContext.findViewById(16908290);
-    }
-    return localFrameLayout;
-  }
-  
-  public static bjwq a()
-  {
-    if (jdField_a_of_type_Bjwq == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bjwq == null) {
-        jdField_a_of_type_Bjwq = new bjwq();
-      }
-      return jdField_a_of_type_Bjwq;
-    }
-    finally {}
-  }
-  
-  private int[] a(View paramView, ViewGroup paramViewGroup, String paramString, float paramFloat, int paramInt1, double paramDouble1, double paramDouble2, int paramInt2, boolean paramBoolean, bjws parambjws, int paramInt3, int paramInt4)
-  {
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Bjwn == null) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-    {
-      this.jdField_a_of_type_Bjwn = new bjwn((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-      this.jdField_a_of_type_Bjwn.setWidth(-2);
-      this.jdField_a_of_type_Bjwn.setHeight(-2);
-      this.jdField_a_of_type_Bjwn.setTouchable(paramBoolean);
-      if (paramBoolean) {
-        paramViewGroup.setOnTouchListener(new bjwr(this));
-      }
-      this.jdField_a_of_type_Bjwn.setOutsideTouchable(true);
-      this.jdField_a_of_type_Bjwn.setBackgroundDrawable(new ColorDrawable(0));
-    }
-    paramView = a(paramViewGroup, paramView, paramString, paramFloat, paramInt1, paramInt2, parambjws, paramInt3, paramInt4);
-    if (paramView == null) {}
-    while (this.jdField_a_of_type_Bjwn == null) {
-      return paramView;
-    }
-    this.jdField_a_of_type_Bjwn.setContentView(paramViewGroup);
-    this.jdField_a_of_type_Bjwn.update();
-    return paramView;
-  }
-  
-  private int[] a(ViewGroup paramViewGroup, View paramView, String paramString, float paramFloat, int paramInt1, int paramInt2, bjws parambjws, int paramInt3, int paramInt4)
-  {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-      return null;
-    }
-    paramView = a(paramView);
-    if ((paramView.left <= 0) && (paramView.right <= 0) && (paramView.top <= 0) && (paramView.bottom <= 0)) {
-      return null;
-    }
-    TextView localTextView = new TextView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    localTextView.setId(2131374676);
-    localTextView.setTextColor(-1);
-    localTextView.setTextSize(paramFloat);
-    localTextView.setText(paramString);
-    int n = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298472);
-    if (parambjws != null)
-    {
-      paramString = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDrawable(parambjws.jdField_a_of_type_Int);
-      if (paramString != null)
+      try
       {
-        paramString.setBounds(0, 0, parambjws.b, parambjws.c);
-        localTextView.setCompoundDrawables(paramString, null, null, null);
-        localTextView.setCompoundDrawablePadding(parambjws.d);
+        if (this.jdField_b_of_type_Boolean)
+        {
+          str1 = URLEncoder.encode(str2, "utf-8");
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("content", str1);
+          if (bool) {
+            i = 1;
+          }
+          localJSONObject.put("privateComment", i);
+          localJSONObject.put("font_id", paramIntent.getIntExtra("extra_key_font_id", -1));
+          localJSONObject.put("font_type", paramIntent.getIntExtra("extra_key_font_format_type", -1));
+          localJSONObject.put("font_url", paramIntent.getStringExtra("extra_key_font_url"));
+          paramIntent = "window." + jdField_a_of_type_JavaLangString + "(" + localJSONObject.toString() + ");";
+          if (QLog.isColorLevel()) {
+            QLog.d("QZoneFeedActionJsPlugin", 2, "invoke callback js:" + paramIntent);
+          }
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().callJs(paramIntent);
+          return;
+        }
+      }
+      catch (Throwable paramIntent)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("QZoneFeedActionJsPlugin", 2, "content:" + str2, paramIntent);
+        return;
+      }
+      String str1 = str2;
+    }
+  }
+  
+  private void a(String paramString)
+  {
+    QLog.i("QzoneVip", 1, " notifyVipStatusChange result = " + paramString);
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if ((paramString.has("status")) && ("success".equalsIgnoreCase(paramString.getString("status"))))
+        {
+          paramString = paramString.optString("vipType", "");
+          if ((!TextUtils.isEmpty(paramString)) && ("NOBLE_VIP".equals(paramString)))
+          {
+            bjfh.a().a(2);
+            return;
+          }
+        }
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
       }
     }
-    int i = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298474);
-    int j = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298473);
-    localTextView.setPadding(j, i, j, i);
-    localTextView.setGravity(17);
-    if (paramInt4 > 0)
-    {
-      localTextView.setMaxLines(paramInt4);
-      localTextView.setEllipsize(TextUtils.TruncateAt.valueOf("END"));
+  }
+  
+  private void a(String... paramVarArgs)
+  {
+    if (LocalMultiProcConfig.getBool("FeedAction#isActive", false)) {
+      return;
     }
-    i = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298475);
-    a(localTextView, a(i, 0.0F, paramInt2));
-    paramString = new TriangleView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramInt1, paramInt2);
-    paramString.setId(2131374674);
-    parambjws = new RelativeLayout.LayoutParams(-2, -2);
-    int k = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298471);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(k, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298470));
-    int m;
-    if (paramInt1 == 0)
+    LocalMultiProcConfig.putBool("FeedAction#isActive", true);
+    String str2 = "";
+    String str3 = "";
+    int i2 = 0;
+    int i19 = 0;
+    int i3 = 0;
+    int i18 = 0;
+    int i4 = 0;
+    int i17 = 0;
+    int i5 = 0;
+    int i16 = 0;
+    int i6 = 0;
+    int i15 = 0;
+    String str1 = "";
+    int i7 = 0;
+    int i14 = 0;
+    int i8 = 0;
+    int i13 = 0;
+    boolean bool4 = false;
+    boolean bool12 = false;
+    boolean bool5 = false;
+    boolean bool11 = false;
+    boolean bool6 = false;
+    boolean bool10 = false;
+    boolean bool7 = false;
+    boolean bool9 = false;
+    int i12 = -1;
+    int i11 = i12;
+    boolean bool2 = bool7;
+    boolean bool1 = bool6;
+    boolean bool3 = bool5;
+    boolean bool8 = bool4;
+    Object localObject5 = str3;
+    Object localObject6 = str2;
+    int i10 = i6;
+    int i1 = i3;
+    int n = i2;
+    int m = i4;
+    int k = i5;
+    Object localObject4 = str1;
+    int j = i7;
+    int i = i8;
+    Object localObject1;
+    Object localObject2;
+    Object localObject3;
+    int i9;
+    if (paramVarArgs != null)
     {
-      parambjws.addRule(10);
-      localLayoutParams.addRule(3, 2131374676);
-      parambjws.addRule(14);
-      localLayoutParams.leftMargin = paramInt3;
-      paramViewGroup.addView(localTextView, parambjws);
-      paramViewGroup.addView(paramString, localLayoutParams);
-      paramInt2 = a(12.0F);
-      paramViewGroup.measure(View.MeasureSpec.makeMeasureSpec(a() - a(12.0F) * 2, -2147483648), View.MeasureSpec.makeMeasureSpec(0, 0));
-      m = paramViewGroup.getMeasuredWidth();
-      paramInt3 = paramViewGroup.getMeasuredHeight();
-      j = paramView.left + (paramView.right - paramView.left) / 2 - m / 2;
-      if (paramInt1 != 0) {
-        break label654;
+      i11 = i12;
+      bool2 = bool7;
+      bool1 = bool6;
+      bool3 = bool5;
+      bool8 = bool4;
+      localObject5 = str3;
+      localObject6 = str2;
+      i10 = i6;
+      i1 = i3;
+      n = i2;
+      m = i4;
+      k = i5;
+      localObject4 = str1;
+      j = i7;
+      i = i8;
+      if (paramVarArgs.length > 0)
+      {
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool11;
+        bool7 = bool12;
+        localObject1 = str3;
+        localObject2 = str2;
+        i3 = i15;
+        i4 = i18;
+        i5 = i19;
+        i6 = i17;
+        i7 = i16;
+        localObject3 = str1;
+        i8 = i14;
+        i9 = i13;
       }
-      paramInt4 = paramView.top - paramInt3 - n;
-      label553:
-      paramInt1 = a();
-      if (j >= paramInt2) {
-        break label669;
-      }
-      paramInt1 = paramInt2;
     }
     for (;;)
     {
-      label570:
-      j = paramView.left - paramInt1 + (paramView.right - paramView.left - k) / 2;
-      if (j < i) {
-        paramInt2 = i;
+      try
+      {
+        localObject6 = new JSONObject(paramVarArgs[0]);
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool11;
+        bool7 = bool12;
+        localObject1 = str3;
+        localObject2 = str2;
+        i3 = i15;
+        i4 = i18;
+        i5 = i19;
+        i6 = i17;
+        i7 = i16;
+        localObject3 = str1;
+        i8 = i14;
+        i9 = i13;
+        paramVarArgs = ((JSONObject)localObject6).optString("content");
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool11;
+        bool7 = bool12;
+        localObject1 = paramVarArgs;
+        localObject2 = str2;
+        i3 = i15;
+        i4 = i18;
+        i5 = i19;
+        i6 = i17;
+        i7 = i16;
+        localObject3 = str1;
+        i8 = i14;
+        i9 = i13;
+        localObject5 = ((JSONObject)localObject6).optString("placeholder");
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool11;
+        bool7 = bool12;
+        localObject1 = paramVarArgs;
+        localObject2 = localObject5;
+        i3 = i15;
+        i4 = i18;
+        i5 = i19;
+        i6 = i17;
+        i7 = i16;
+        localObject3 = str1;
+        i8 = i14;
+        i9 = i13;
+        i = ((JSONObject)localObject6).optInt("needEmoticonBtn");
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool11;
+        bool7 = bool12;
+        localObject1 = paramVarArgs;
+        localObject2 = localObject5;
+        i3 = i15;
+        i4 = i18;
+        i5 = i;
+        i6 = i17;
+        i7 = i16;
+        localObject3 = str1;
+        i8 = i14;
+        i9 = i13;
+        j = ((JSONObject)localObject6).optInt("needAtBtn");
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool11;
+        bool7 = bool12;
+        localObject1 = paramVarArgs;
+        localObject2 = localObject5;
+        i3 = i15;
+        i4 = j;
+        i5 = i;
+        i6 = i17;
+        i7 = i16;
+        localObject3 = str1;
+        i8 = i14;
+        i9 = i13;
+        m = ((JSONObject)localObject6).optInt("needPrivateBtn");
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool11;
+        bool7 = bool12;
+        localObject1 = paramVarArgs;
+        localObject2 = localObject5;
+        i3 = i15;
+        i4 = j;
+        i5 = i;
+        i6 = m;
+        i7 = i16;
+        localObject3 = str1;
+        i8 = i14;
+        i9 = i13;
+        i1 = ((JSONObject)localObject6).optInt("isReply");
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool11;
+        bool7 = bool12;
+        localObject1 = paramVarArgs;
+        localObject2 = localObject5;
+        i3 = i15;
+        i4 = j;
+        i5 = i;
+        i6 = m;
+        i7 = i1;
+        localObject3 = str1;
+        i8 = i14;
+        i9 = i13;
+        k = ((JSONObject)localObject6).optInt("privateCommentStatus");
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool11;
+        bool7 = bool12;
+        localObject1 = paramVarArgs;
+        localObject2 = localObject5;
+        i3 = k;
+        i4 = j;
+        i5 = i;
+        i6 = m;
+        i7 = i1;
+        localObject3 = str1;
+        i8 = i14;
+        i9 = i13;
+        jdField_a_of_type_JavaLangString = ((JSONObject)localObject6).optString("callback");
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool11;
+        bool7 = bool12;
+        localObject1 = paramVarArgs;
+        localObject2 = localObject5;
+        i3 = k;
+        i4 = j;
+        i5 = i;
+        i6 = m;
+        i7 = i1;
+        localObject3 = str1;
+        i8 = i14;
+        i9 = i13;
+        this.jdField_b_of_type_Boolean = ((JSONObject)localObject6).optBoolean("acceptEncoded");
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool11;
+        bool7 = bool12;
+        localObject1 = paramVarArgs;
+        localObject2 = localObject5;
+        i3 = k;
+        i4 = j;
+        i5 = i;
+        i6 = m;
+        i7 = i1;
+        localObject3 = str1;
+        i8 = i14;
+        i9 = i13;
+        jdField_a_of_type_Boolean = this.jdField_b_of_type_Boolean;
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool11;
+        bool7 = bool12;
+        localObject1 = paramVarArgs;
+        localObject2 = localObject5;
+        i3 = k;
+        i4 = j;
+        i5 = i;
+        i6 = m;
+        i7 = i1;
+        localObject3 = str1;
+        i8 = i14;
+        i9 = i13;
+        localObject4 = ((JSONObject)localObject6).optString("btntext");
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool11;
+        bool7 = bool12;
+        localObject1 = paramVarArgs;
+        localObject2 = localObject5;
+        i3 = k;
+        i4 = j;
+        i5 = i;
+        i6 = m;
+        i7 = i1;
+        localObject3 = localObject4;
+        i8 = i14;
+        i9 = i13;
+        i10 = ((JSONObject)localObject6).optInt("maxTextLength");
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool11;
+        bool7 = bool12;
+        localObject1 = paramVarArgs;
+        localObject2 = localObject5;
+        i3 = k;
+        i4 = j;
+        i5 = i;
+        i6 = m;
+        i7 = i1;
+        localObject3 = localObject4;
+        i8 = i10;
+        i9 = i13;
+        i11 = ((JSONObject)localObject6).optInt("groupdId");
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool11;
+        bool7 = bool12;
+        localObject1 = paramVarArgs;
+        localObject2 = localObject5;
+        i3 = k;
+        i4 = j;
+        i5 = i;
+        i6 = m;
+        i7 = i1;
+        localObject3 = localObject4;
+        i8 = i10;
+        i9 = i11;
+        bool3 = ((JSONObject)localObject6).optBoolean("disableAutoClose");
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool11;
+        bool7 = bool3;
+        localObject1 = paramVarArgs;
+        localObject2 = localObject5;
+        i3 = k;
+        i4 = j;
+        i5 = i;
+        i6 = m;
+        i7 = i1;
+        localObject3 = localObject4;
+        i8 = i10;
+        i9 = i11;
+        bool8 = ((JSONObject)localObject6).optBoolean("catchHeightChange");
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool10;
+        bool6 = bool8;
+        bool7 = bool3;
+        localObject1 = paramVarArgs;
+        localObject2 = localObject5;
+        i3 = k;
+        i4 = j;
+        i5 = i;
+        i6 = m;
+        i7 = i1;
+        localObject3 = localObject4;
+        i8 = i10;
+        i9 = i11;
+        bool2 = ((JSONObject)localObject6).optBoolean("catchClosePanel");
+        i2 = i12;
+        bool4 = bool9;
+        bool5 = bool2;
+        bool6 = bool8;
+        bool7 = bool3;
+        localObject1 = paramVarArgs;
+        localObject2 = localObject5;
+        i3 = k;
+        i4 = j;
+        i5 = i;
+        i6 = m;
+        i7 = i1;
+        localObject3 = localObject4;
+        i8 = i10;
+        i9 = i11;
+        if (((JSONObject)localObject6).optInt("isFromDIY") == 1)
+        {
+          bool1 = true;
+          i2 = i12;
+          bool4 = bool1;
+          bool5 = bool2;
+          bool6 = bool8;
+          bool7 = bool3;
+          localObject1 = paramVarArgs;
+          localObject2 = localObject5;
+          i3 = k;
+          i4 = j;
+          i5 = i;
+          i6 = m;
+          i7 = i1;
+          localObject3 = localObject4;
+          i8 = i10;
+          i9 = i11;
+          n = ((JSONObject)localObject6).optInt("curDIYSelectId", -1);
+          i2 = n;
+          bool4 = bool1;
+          bool5 = bool2;
+          bool6 = bool8;
+          bool7 = bool3;
+          localObject1 = paramVarArgs;
+          localObject2 = localObject5;
+          i3 = k;
+          i4 = j;
+          i5 = i;
+          i6 = m;
+          i7 = i1;
+          localObject3 = localObject4;
+          i8 = i10;
+          i9 = i11;
+          this.jdField_b_of_type_JavaLangString = ((JSONObject)localObject6).optString("switchFontCallback");
+          bool4 = bool8;
+          i4 = i10;
+          i3 = i1;
+          i2 = i;
+          i1 = j;
+          i10 = k;
+          bool8 = bool3;
+          bool3 = bool2;
+          bool2 = bool1;
+          i5 = n;
+          if (QLog.isDevelopLevel()) {
+            QLog.d("QZoneFeedActionJsPlugin", 4, new Object[] { "handleFeedActionPanel hint is: " + (String)localObject5 + "\t autofill:" + paramVarArgs + ",needEmoticonBtn: " + i2 + ",needAtBtn: " + i1 + ",needPrivateBtn: " + m + ",isReply: " + i3 + ",privateCommentStatus: " + i10 + ",maxLen: " + i4 + ",troopid: " + i11, "acceptEncoded:" + this.jdField_b_of_type_Boolean + " disableAutoClose:" + bool8 + " cachePanelHeight:" + bool4 + " cahcePanelClose:" + bool3 });
+          }
+          localObject1 = new Bundle();
+          ((Bundle)localObject1).putBoolean("disableAutoClose", bool8);
+          ((Bundle)localObject1).putBoolean("catchHeightChange", bool4);
+          ((Bundle)localObject1).putBoolean("catchClosePanel", bool3);
+          ((Bundle)localObject1).putBoolean("isFromDIY", bool2);
+          ((Bundle)localObject1).putInt("extra_key_font_id", i5);
+          i = bjxl.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, 2);
+          bjdt.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), bjea.a(), i, (String)localObject5, paramVarArgs, "", "", i10, false, i1, i2, 0, m, i3, (String)localObject4, i4, i11, false, "", false, (Bundle)localObject1);
+          return;
+        }
+        bool1 = false;
+        continue;
+        paramVarArgs = (String[])localObject5;
       }
+      catch (JSONException paramVarArgs)
+      {
+        i11 = i2;
+        bool2 = bool4;
+        bool1 = bool5;
+        bool3 = bool6;
+        bool8 = bool7;
+        localObject5 = localObject1;
+        localObject6 = localObject2;
+        i10 = i3;
+        i1 = i4;
+        n = i5;
+        m = i6;
+        k = i7;
+        localObject4 = localObject3;
+        j = i8;
+        i = i9;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QZoneFeedActionJsPlugin", 2, "handleFeedActionPanel: ", paramVarArgs);
+          i = i9;
+          j = i8;
+          localObject4 = localObject3;
+          k = i7;
+          m = i6;
+          n = i5;
+          i1 = i4;
+          i10 = i3;
+          localObject6 = localObject2;
+          localObject5 = localObject1;
+          bool8 = bool7;
+          bool3 = bool6;
+          bool1 = bool5;
+          bool2 = bool4;
+          i11 = i2;
+        }
+      }
+      bool4 = bool3;
+      i5 = i11;
+      bool3 = bool1;
+      localObject5 = localObject6;
+      i2 = n;
+      i3 = k;
+      i4 = j;
+      i11 = i;
+    }
+  }
+  
+  private void b(String paramString)
+  {
+    Intent localIntent = new Intent("action_h5pay_callback");
+    localIntent.putExtra("h5pay_callback_json", paramString);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().sendBroadcast(localIntent);
+  }
+  
+  private void c(String paramString)
+  {
+    Object localObject1 = new Intent("action_js2qzone");
+    Object localObject2 = new Bundle();
+    ((Bundle)localObject2).putString("cmd", "H5PayCallSucess");
+    ((Intent)localObject1).putExtras((Bundle)localObject2);
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneFeedActionJsPlugin", 2, "handleWriteBlog actionString: " + ((Intent)localObject1).getAction());
+    }
+    bjdt.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), bjea.a(), (Intent)localObject1);
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      localObject1 = new JSONObject();
+      localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("vipType", paramString);
+      ((JSONObject)localObject1).put("type", "YellowInfo");
+      ((JSONObject)localObject1).put("data", localObject2);
+      localObject2 = new JSONObject();
+      JSONArray localJSONArray = new JSONArray();
+      localJSONArray.put("*.qzone.qq.com");
+      ((JSONObject)localObject2).put("echo", true);
+      ((JSONObject)localObject2).put("broadcast", true);
+      ((JSONObject)localObject2).put("domains", localJSONArray);
+      a("openVipInfo", (JSONObject)localObject1, (JSONObject)localObject2);
+      if (("normalVip".equals(paramString)) || ("highVip".equals(paramString)))
+      {
+        paramString = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+        if (paramString != null) {
+          paramString.finish();
+        }
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
       for (;;)
       {
-        anvt.g(paramString, paramInt2);
-        return new int[] { paramInt1, paramInt4, paramInt2, paramInt3 };
-        if (paramInt1 != 1) {
-          break;
-        }
-        parambjws.addRule(3, 2131374674);
-        break;
-        label654:
-        paramInt4 = paramView.bottom + n;
-        paramInt3 = 0;
-        break label553;
-        label669:
-        if (j <= paramInt1 - m - paramInt2) {
-          break label725;
-        }
-        paramInt1 = paramInt1 - m - paramInt2;
-        break label570;
-        paramInt2 = j;
-        if (j + k > m - i) {
-          paramInt2 = m - i - k;
+        if (QLog.isColorLevel()) {
+          QLog.d("QZoneFeedActionJsPlugin", 2, "handleJsRequest: ", localException);
         }
       }
-      label725:
-      paramInt1 = j;
     }
-  }
-  
-  public float a()
-  {
-    float f = -1.0F;
-    if (-1.0F < 0.0F) {
-      f = BaseApplication.getContext().getResources().getDisplayMetrics().density;
-    }
-    return f;
-  }
-  
-  public int a()
-  {
-    int i;
-    int j;
-    if (BaseApplication.getContext().getResources().getConfiguration().orientation == 2)
-    {
-      i = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels;
-      j = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;
-      if (i <= j) {}
-    }
-    int k;
-    do
-    {
-      return i;
-      return j;
-      j = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels;
-      k = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;
-      i = j;
-    } while (k > j);
-    return k;
-  }
-  
-  public int a(float paramFloat)
-  {
-    return Math.round(a() * paramFloat);
   }
   
   public void a()
   {
-    switch (this.jdField_a_of_type_Int)
+    LocalMultiProcConfig.putBool("FeedAction#isActive", false);
+  }
+  
+  public void a(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    switch (paramByte)
     {
     }
-    FrameLayout localFrameLayout;
-    View localView;
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-          } while (this.jdField_a_of_type_Bjwn == null);
-          this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-          try
-          {
-            this.jdField_a_of_type_Bjwn.dismiss();
-            this.jdField_a_of_type_Bjwn = null;
-            return;
-          }
-          catch (Exception localException)
-          {
-            return;
-          }
-        } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
-        localFrameLayout = a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-      } while (localFrameLayout == null);
-      localView = localFrameLayout.findViewById(2131374677);
-    } while (localView == null);
-    localFrameLayout.removeViewInLayout(localView);
+      return;
+    } while (paramInt != -1);
+    a(paramIntent);
   }
   
-  public void a(Activity paramActivity, View paramView, String paramString, int paramInt1, float paramFloat, double paramDouble1, double paramDouble2, long paramLong, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, int paramInt3, bjws parambjws, int paramInt4)
+  public void a(WebViewPlugin paramWebViewPlugin)
   {
-    a(paramActivity, paramView, paramString, paramInt1, paramFloat, paramDouble1, paramDouble2, paramLong, paramInt2, paramBoolean1, paramBoolean2, paramInt3, parambjws, paramInt4, 0, 0);
+    super.a(paramWebViewPlugin);
   }
   
-  public void a(Activity paramActivity, View paramView, String paramString, int paramInt1, float paramFloat, double paramDouble1, double paramDouble2, long paramLong, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, int paramInt3, bjws parambjws, int paramInt4, int paramInt5, int paramInt6)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    this.jdField_a_of_type_Int = paramInt6;
-    a();
-    if ((paramActivity == null) || (paramView == null) || (paramInt1 < 0) || (paramInt1 > 1)) {}
-    label29:
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneFeedActionJsPlugin", 2, "handleJsRequest \n url: " + paramString1 + "\n pkgName:" + paramString2 + "\n method:" + paramString3);
+    }
+    if ("TopicComment".equalsIgnoreCase(paramString3))
     {
-      do
+      a(paramVarArgs);
+      return true;
+    }
+    if ("H5PayCallBack".equalsIgnoreCase(paramString3)) {
+      try
       {
-        return;
-      } while (TextUtils.isEmpty(paramString));
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-      paramActivity = new RelativeLayout(paramActivity);
-      switch (this.jdField_a_of_type_Int)
-      {
-      }
-      for (;;)
-      {
-        for (;;)
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        MonitorManager.a().a(1, 4, "js 通知native 黄钻支付结果", "" + paramVarArgs[0]);
+        b(paramVarArgs[0]);
+        a(paramVarArgs[0]);
+        if ((paramJsBridgeListener.has("status")) && ("success".equalsIgnoreCase(paramJsBridgeListener.getString("status"))))
         {
-          paramString = a(paramView, paramActivity, paramString, paramFloat, paramInt1, paramDouble1, paramDouble2, paramInt2, paramBoolean2, parambjws, paramInt4, paramInt5);
-          if (paramString == null) {
-            break;
-          }
-          paramInt4 = paramString[0] - paramInt4;
-          paramInt5 = paramString[1];
-          paramInt2 = paramInt3;
-          if (paramInt1 == 0) {
-            paramInt2 = -paramInt3;
-          }
-          paramInt1 = paramInt5 + paramInt2;
-          switch (this.jdField_a_of_type_Int)
-          {
-          default: 
-            return;
-          case 0: 
-            try
-            {
-              this.jdField_a_of_type_Bjwn.showAtLocation(paramView, 0, paramInt4, paramInt1);
-              paramActivity.setVisibility(0);
-              if (paramLong <= 0L) {
-                break label29;
-              }
-              this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramLong);
-              return;
-            }
-            catch (Exception paramActivity)
-            {
-              return;
-            }
-          }
+          c(paramJsBridgeListener.optString("vipType", null));
+          return true;
         }
-        paramActivity.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-        continue;
-        paramActivity.setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
       }
-      paramView = a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    } while (paramView == null);
-    paramActivity.setId(2131374677);
-    paramString = (FrameLayout.LayoutParams)paramActivity.getLayoutParams();
-    paramString.leftMargin = Math.max(paramInt4, bdkf.a(12.0F));
-    paramString.topMargin = paramInt1;
-    paramString.rightMargin = bdkf.a(12.0F);
-    paramView.addView(paramActivity);
-  }
-  
-  @TargetApi(16)
-  public void a(View paramView, Drawable paramDrawable)
-  {
-    if (paramView == null) {
-      return;
+      catch (Exception paramJsBridgeListener)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QZoneFeedActionJsPlugin", 2, "handleJsRequest: ", paramJsBridgeListener);
+        }
+      }
     }
-    if (Build.VERSION.SDK_INT < 16)
+    for (;;)
     {
-      paramView.setBackgroundDrawable(paramDrawable);
-      return;
+      return false;
+      if ("hasClickedWeiShiMedelSwitch".equalsIgnoreCase(paramString3))
+      {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          if ((!paramJsBridgeListener.has("uin")) || (!paramJsBridgeListener.has("ishide"))) {
+            continue;
+          }
+          a(paramJsBridgeListener.getLong("uin"), paramJsBridgeListener.getInt("ishide"));
+          return true;
+        }
+        catch (Exception paramJsBridgeListener) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("QZoneFeedActionJsPlugin", 2, "handleJsRequest: ", paramJsBridgeListener);
+        }
+      }
     }
-    paramView.setBackground(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjwq
  * JD-Core Version:    0.7.0.1
  */

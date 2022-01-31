@@ -1,20 +1,38 @@
-import android.os.CountDownTimer;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class bbxz
-  extends CountDownTimer
+class bbxz
 {
-  public bbxz(ReciteRecordLayout paramReciteRecordLayout, long paramLong1, long paramLong2)
+  private bigh jdField_a_of_type_Bigh = new bigh();
+  
+  public bbxz(bbxy parambbxy)
   {
-    super(paramLong1, paramLong2);
+    this.jdField_a_of_type_Bigh.a();
   }
   
-  public void onFinish()
+  public int a(long paramLong1, long paramLong2)
   {
-    ReciteRecordLayout.a(this.a);
+    int j = this.jdField_a_of_type_Bigh.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
+    int k = bigk.a(BaseApplication.getContext());
+    int i;
+    if (k != 1)
+    {
+      i = j;
+      if (k != 2) {}
+    }
+    else
+    {
+      i = j;
+      if (j > 16384) {
+        i = 16384;
+      }
+    }
+    return i;
   }
   
-  public void onTick(long paramLong) {}
+  public void a()
+  {
+    this.jdField_a_of_type_Bigh.b();
+  }
 }
 
 

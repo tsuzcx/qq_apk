@@ -1,18 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
-public class aihc
-  implements DialogInterface.OnClickListener
+class aihc
+  implements View.OnClickListener
 {
-  public aihc(BindNumberActivity paramBindNumberActivity) {}
+  aihc(aiha paramaiha) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.setText("");
-    }
+    this.a.a.setText("");
   }
 }
 

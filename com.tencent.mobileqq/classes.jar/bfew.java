@@ -1,54 +1,33 @@
-import com.tencent.open.appcommon.js.DownloadInterface;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.open.agent.OpenAuthorityAccountView;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfew
-  implements bfki
+  implements View.OnLayoutChangeListener
 {
-  public bfew(DownloadInterface paramDownloadInterface, String paramString) {}
+  public bfew(OpenAuthorityAccountView paramOpenAuthorityAccountView, RelativeLayout paramRelativeLayout) {}
   
-  public void a(int paramInt, String paramString)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    bfhg.e("DownloadInterface", "innerQueryDownloadInfoByViaInfo ERROR");
-  }
-  
-  public void a(List<DownloadInfo> paramList)
-  {
-    bfhg.c("DownloadInterface", "innerQueryDownloadInfoByVia onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
+    paramInt1 = paramView.getHeight();
+    paramInt2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenAuthorityAccountView", 2, paramInt1 + " /  / " + paramInt2);
+    }
+    paramView = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+    if (paramView == null) {
+      paramView = new RelativeLayout.LayoutParams(-1, -2);
+    }
     for (;;)
     {
-      if (i < j)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONObject.put("download_from", localDownloadInfo.h);
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-      }
+      paramView.addRule(12);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+      return;
+      paramView.height = -2;
     }
-    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadActionByVia',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
-    bfhg.c("DownloadInterface", "innerQueryDownloadInfoByVia querySucess : " + paramList);
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramList);
   }
 }
 

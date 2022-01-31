@@ -1,29 +1,14 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
+import android.widget.Button;
+import android.widget.TextView;
 
-public class aecz
-  extends alyo
+class aecz
+  extends akit
 {
-  public aecz(TroopRequestActivity paramTroopRequestActivity) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
-  {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131720208), 0).a();
-      this.a.c.setVisibility(8);
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131720205), 0).a();
-  }
+  private aecz(aecy paramaecy) {}
 }
 
 

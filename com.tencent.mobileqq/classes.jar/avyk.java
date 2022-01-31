@@ -1,23 +1,17 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import android.view.View.OnClickListener;
 
-public class avyk
-  implements bhwu
+class avyk
+  implements View.OnClickListener
 {
-  public avyk(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  avyk(avyj paramavyj) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    if (AccountOnlineStateActivity.a(this.a) != null) {
-      AccountOnlineStateActivity.a(this.a).setInterceptTouchFlag(false);
-    }
-  }
-  
-  public void b(View paramView)
-  {
-    if (AccountOnlineStateActivity.a(this.a) != null) {
-      AccountOnlineStateActivity.a(this.a).setInterceptTouchFlag(true);
+    if ((this.a.a != null) && ((paramView.getTag() instanceof avyl)))
+    {
+      paramView = (avyl)paramView.getTag();
+      this.a.a.a(paramView);
     }
   }
 }

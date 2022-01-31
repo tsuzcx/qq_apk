@@ -1,45 +1,36 @@
-import android.graphics.Bitmap;
-import android.os.Handler.Callback;
-import android.os.Message;
-import java.util.Arrays;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-class vzw
-  implements Handler.Callback
+public final class vzw
+  extends QQUIEventReceiver<vzl, vcp>
 {
-  private vzw(vzu paramvzu) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public vzw(@NonNull vzl paramvzl)
   {
-    int k = 0;
-    switch (paramMessage.what)
+    super(paramvzl);
+  }
+  
+  public void a(@NonNull vzl paramvzl, @NonNull vcp paramvcp)
+  {
+    if ((paramvcp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvcp.jdField_a_of_type_JavaUtilList != null) && (paramvzl.a != null))
     {
-    default: 
-      return false;
-    case 1: 
-      vzu.a(this.a, new Error((Throwable)paramMessage.obj));
-      return true;
-    }
-    paramMessage = (Bitmap[])paramMessage.obj;
-    int m = paramMessage.length;
-    int i = 0;
-    for (;;)
-    {
-      int j = k;
-      if (i < m)
+      paramvcp = paramvcp.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramvcp.hasNext())
       {
-        if (paramMessage[i] == null) {
-          j = 1;
+        uxd localuxd = (uxd)paramvcp.next();
+        if (TextUtils.equals(paramvzl.a.b, localuxd.a)) {
+          paramvzl.i();
         }
       }
-      else
-      {
-        if (j == 0) {
-          vzu.a(this.a, Arrays.asList(paramMessage));
-        }
-        return true;
-      }
-      i += 1;
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vcp.class;
   }
 }
 

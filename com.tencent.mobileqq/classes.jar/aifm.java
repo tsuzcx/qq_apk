@@ -1,18 +1,42 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
-public class aifm
-  extends aifb
+class aifm
+  extends ndm
 {
-  public aifm(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
-  }
+  aifm(aiez paramaiez) {}
   
-  protected void y()
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    this.a = "MiniPieForNearby";
+    if (QLog.isColorLevel()) {
+      QLog.i("MainAssistObserver", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString() + " mOpenId = " + this.a.jdField_b_of_type_JavaLangString);
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.isFinishing()) || (this.a.c)) {}
+    do
+    {
+      do
+      {
+        return;
+        if (this.a.jdField_a_of_type_Bety != null) {
+          this.a.jdField_a_of_type_Bety.hide();
+        }
+        if (this.a.jdField_b_of_type_AndroidOsHandler != null) {
+          this.a.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        }
+        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("MainAssistObserver", 2, "openIdObserver success");
+        }
+      } while ((TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) || (paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString)));
+      this.a.i();
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("MainAssistObserver", 2, "openIdObserver fail");
   }
 }
 

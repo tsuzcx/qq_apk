@@ -1,29 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
 
-public class wys
-  extends JobSegment<Bitmap, Bitmap>
+public final class wys
+  implements Parcelable.Creator<EditTakeGifSource>
 {
-  public final float a;
-  public final boolean a;
-  
-  public wys(float paramFloat, boolean paramBoolean)
+  public EditTakeGifSource a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return new EditTakeGifSource(paramParcel);
   }
   
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
+  public EditTakeGifSource[] a(int paramInt)
   {
-    paramJobContext = xmn.a(paramBitmap, this.jdField_a_of_type_Float, this.jdField_a_of_type_Boolean);
-    if (paramJobContext == null)
-    {
-      super.notifyError(new BitmapError("Q.qqstory.publish:ImageAdjustJobSegment", 5));
-      return;
-    }
-    super.notifyResult(paramJobContext);
+    return new EditTakeGifSource[paramInt];
   }
 }
 

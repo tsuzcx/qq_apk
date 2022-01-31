@@ -1,24 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class ugd
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
   ugd(ugc paramugc) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.b.setVisibility(8);
-    this.a.d.setVisibility(8);
-    this.a.g.setVisibility(8);
+    this.a.b();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

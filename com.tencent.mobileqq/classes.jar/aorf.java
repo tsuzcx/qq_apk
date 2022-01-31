@@ -1,6 +1,15 @@
 public class aorf
 {
-  public boolean a;
+  public String a = "";
+  public String b = "";
+  
+  public aorf() {}
+  
+  public aorf(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
 }
 
 

@@ -1,113 +1,68 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class aonw
+  extends aokh<aonv>
 {
-  public int a;
-  public String a;
-  public ArrayList<aonx> a;
-  
-  public aonw()
+  public int a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public static aonw a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    aonw localaonw = new aonw();
-    for (;;)
-    {
-      int i;
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        paramString = localJSONObject.optJSONArray("match");
-        if (paramString == null) {
-          break;
-        }
-        localaonw.jdField_a_of_type_Int = localJSONObject.optInt("switch");
-        localaonw.jdField_a_of_type_JavaLangString = localJSONObject.optString("blackList");
-        if (localaonw.jdField_a_of_type_JavaUtilArrayList == null)
-        {
-          localaonw.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-          a(localaonw);
-          i = 0;
-          if (i < paramString.length())
-          {
-            localJSONObject = paramString.getJSONObject(i);
-            if (localJSONObject == null) {
-              break label235;
-            }
-            aonx localaonx = new aonx();
-            localaonx.jdField_a_of_type_JavaLangString = localJSONObject.optString("key");
-            localaonx.b = localJSONObject.optString("resUrl");
-            localaonx.c = localJSONObject.optString("md5");
-            localaonw.jdField_a_of_type_JavaUtilArrayList.add(localaonx);
-            break label235;
-          }
-        }
-        else
-        {
-          localaonw.jdField_a_of_type_JavaUtilArrayList.clear();
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          break label233;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("VipARConfBean", 1, "parse content exception = " + paramString.getMessage());
-        paramString.printStackTrace();
-        return null;
-      }
-      QLog.i("VipARConfBean", 2, " parseSuccess data = " + localaonw.toString());
-      label233:
-      return localaonw;
-      label235:
-      i += 1;
-    }
-  }
-  
-  private static void a(aonw paramaonw)
-  {
-    if ((paramaonw == null) || (TextUtils.isEmpty(paramaonw.jdField_a_of_type_JavaLangString))) {
-      QLog.i("VipARConfBean", 1, "checkIsInBlackList return empty");
-    }
-    if (bkar.a(paramaonw.jdField_a_of_type_JavaLangString)) {
-      paramaonw.jdField_a_of_type_Int = 0;
-    }
+    return 414;
   }
   
   @NonNull
-  public String toString()
+  public aonv a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    return new aonv();
+  }
+  
+  @Nullable
+  public aonv a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
     {
-      StringBuilder localStringBuilder = new StringBuilder(" switch = " + this.jdField_a_of_type_Int);
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        aonx localaonx = (aonx)localIterator.next();
-        if (localaonx != null) {
-          localStringBuilder.append("\n " + localaonx.toString());
-        }
+      aonv localaonv = aonv.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("GlobalSearchConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
       }
-      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-        localStringBuilder.append(" config list = null");
-      }
-      return localStringBuilder.toString();
+      return localaonv;
     }
-    return " switch = " + this.jdField_a_of_type_Int + " list = null";
+    return null;
+  }
+  
+  public Class<aonv> a()
+  {
+    return aonv.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aonv paramaonv)
+  {
+    com.tencent.mobileqq.search.util.SearchConfigManager.needSeparate = paramaonv.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("GlobalSearchConfProcessor", 2, "onUpdate " + paramaonv.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

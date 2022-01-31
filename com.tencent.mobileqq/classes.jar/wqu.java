@@ -1,24 +1,23 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 
-public class wqu
+public abstract interface wqu
 {
-  public int a;
-  public final long a;
-  public final String a;
-  public boolean a;
-  public String b = "";
+  public abstract void a();
   
-  public wqu(String paramString)
-  {
-    this.jdField_a_of_type_Int = 1000;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public ErrorMessage a()
-  {
-    return new ErrorMessage(this.jdField_a_of_type_Int, this.b);
-  }
+  public abstract void a(@NonNull Activity paramActivity);
+  
+  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

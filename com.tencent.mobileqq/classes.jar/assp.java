@@ -1,82 +1,119 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hiboom.HiBoomPanelView;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import com.tencent.mobileqq.hiboom.SectorProgressView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Vector;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class assp
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  private static volatile assp jdField_a_of_type_Assp;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new assr(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new assq(this);
-  private ArrayList<asss> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  public int a;
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public HiBoomTextView a;
+  public SectorProgressView a;
+  public boolean a;
+  public ImageView b;
+  public ImageView c;
   
-  private assp(Context paramContext)
+  public assp(HiBoomPanelView paramHiBoomPanelView, View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    a(true);
-  }
-  
-  public static assp a(Context paramContext)
-  {
-    if (jdField_a_of_type_Assp == null) {}
-    try
-    {
-      if (jdField_a_of_type_Assp == null) {
-        jdField_a_of_type_Assp = new assp(paramContext);
-      }
-      return jdField_a_of_type_Assp;
-    }
-    finally {}
-  }
-  
-  public void a(asss paramasss)
-  {
-    if ((!this.jdField_a_of_type_JavaUtilArrayList.contains(paramasss)) && (paramasss != null)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramasss);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {
-      return;
-    }
+    super(paramView);
+    this.jdField_a_of_type_Boolean = paramBoolean;
     if (paramBoolean)
     {
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
-      localIntentFilter.addAction("tencent.av.v2q.StopVideoChat");
-      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      localIntentFilter.addAction("VolumeBtnDown");
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-      AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView = ((HiBoomTextView)paramView.findViewById(2131367649));
+      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setLoadingScale(0.6F);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367647));
+      this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView = ((SectorProgressView)paramView.findViewById(2131367648));
+      this.b = ((ImageView)paramView.findViewById(2131367644));
+      this.c = ((ImageView)paramView.findViewById(2131367645));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131367642));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367646));
+      paramView.setOnClickListener(this);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    int i;
+    if (this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.getVisibility() == 0) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.a())
+      {
+        this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.a();
+        this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.setProgress(0);
+        i = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_Asso.a(this.jdField_a_of_type_Int);
+        assg.a.a(i);
+      }
+    }
+    do
+    {
+      Object localObject;
+      do
+      {
+        return;
+        if (this.b.getVisibility() == 0)
+        {
+          switch (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_Asso.a(this.jdField_a_of_type_Int))
+          {
+          default: 
+            return;
+          }
+          localObject = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c();
+          if (this.c.getVisibility() == 0) {}
+          for (paramView = "0";; paramView = "1")
+          {
+            VasWebviewUtil.reportCommercialDrainage((String)localObject, "HighFont", "ClickPlus", "", 1, 0, 0, "", "", paramView);
+            this.c.setVisibility(8);
+            this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getPreferences().edit().putBoolean("hiboom_red_dot_show", true).commit();
+            paramView = bdtg.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext(), "font", "mvip.gexinghua.mobile.font.client_tab_store") + "&haibao=1";
+            if (QLog.isColorLevel()) {
+              QLog.d("HiBoomFont.HiBoomPanelView", 2, "enter hiboom mall url = " + paramView);
+            }
+            VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext(), paramView, 4096L, null, false, -1);
+            return;
+          }
+        }
+        if (this.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() != 0) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("HiBoomFont.HiBoomPanelView", 2, "dirty filter ");
       return;
-    }
-    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    while (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void b(asss paramasss)
-  {
-    if ((paramasss != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(paramasss))) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramasss);
-    }
+      if (assg.b.compareAndSet(false, true))
+      {
+        paramView = (amca)this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(13);
+        localObject = (assg)this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(219);
+        i = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_Asso.a(this.jdField_a_of_type_Int);
+        if (QLog.isColorLevel()) {
+          QLog.d("HiBoomFont.HiBoomPanelView", 2, "onClick hiboomid = " + i);
+        }
+        if (((assg)localObject).c.contains(Integer.valueOf(i))) {
+          paramView.a(i, true, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.a());
+        }
+        for (;;)
+        {
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "CliOper", "", "", "0X80094D7", "0X80094D7", 0, 0, "", "", "", "");
+          return;
+          paramView.a(i, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.a(), 2);
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("HiBoomFont.HiBoomPanelView", 2, "onClick is sending");
   }
 }
 

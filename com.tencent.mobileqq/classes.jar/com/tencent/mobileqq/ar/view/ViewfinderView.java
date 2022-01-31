@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.view;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -22,7 +22,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import andv;
+import anie;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 
@@ -58,7 +58,7 @@ public final class ViewfinderView
   public ViewfinderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130844418);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130844490);
     this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ViewfinderView);
     this.jdField_c_of_type_Int = paramAttributeSet.getDimensionPixelSize(4, a(paramContext, 3.0F));
@@ -72,7 +72,7 @@ public final class ViewfinderView
     this.jdField_a_of_type_Int = paramAttributeSet.getColor(5, Color.parseColor("#000000"));
     this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(7);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = alpo.a(2131716844);
+      this.jdField_a_of_type_JavaLangString = alud.a(2131716856);
     }
     this.i = paramAttributeSet.getColor(6, Color.parseColor("#FFFFFF"));
     this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(10, false);
@@ -129,7 +129,7 @@ public final class ViewfinderView
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new andv(this, paramRect));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new anie(this, paramRect));
       this.jdField_b_of_type_Boolean = true;
     }
     if (this.jdField_b_of_type_Boolean)
@@ -216,7 +216,7 @@ public final class ViewfinderView
     ((TextPaint)localObject).setColor(-65536);
     ((TextPaint)localObject).setStyle(Paint.Style.FILL);
     ((TextPaint)localObject).setStrokeWidth(2.0F);
-    ((TextPaint)localObject).setTextSize(aekt.a(12.0F, getResources()));
+    ((TextPaint)localObject).setTextSize(aepi.a(12.0F, getResources()));
     paramCanvas.drawText(this.jdField_b_of_type_JavaLangString, 90.0F, 90.0F, (Paint)localObject);
   }
   

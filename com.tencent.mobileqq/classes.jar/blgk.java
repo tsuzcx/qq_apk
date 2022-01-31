@@ -1,25 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.support.v4.view.ViewPager;
 
-public class blgk
-  implements Animator.AnimatorListener
+class blgk
+  implements bmbm
 {
-  public blgk(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  blgk(blgj paramblgj) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    AEEditorAILoadingView.a(this.a).setVisibility(8);
-    AEEditorAILoadingView.b(this.a).setVisibility(0);
-    AEEditorAILoadingView.b(this.a).playAnimation();
+    blgj.a(this.a).setCurrentItem(paramInt);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

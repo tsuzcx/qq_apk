@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import aisu;
+import aixj;
 import android.support.v7.widget.RecyclerView;
 
 public class TroopUnAccalimedRedPacketList$HbListAdapter$1
   implements Runnable
 {
-  public TroopUnAccalimedRedPacketList$HbListAdapter$1(aisu paramaisu) {}
+  public TroopUnAccalimedRedPacketList$HbListAdapter$1(aixj paramaixj) {}
   
   public void run()
   {

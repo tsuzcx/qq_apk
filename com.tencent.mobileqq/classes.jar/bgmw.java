@@ -1,26 +1,9 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.io.OutputStream;
 
-class bgmw
-  implements View.OnClickListener
+final class bgmw
+  extends OutputStream
 {
-  bgmw(bgmu parambgmu, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgmu, 0);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Bgmu.isShowing()) {
-        this.jdField_a_of_type_Bgmu.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
-  }
+  public void write(int paramInt) {}
 }
 
 

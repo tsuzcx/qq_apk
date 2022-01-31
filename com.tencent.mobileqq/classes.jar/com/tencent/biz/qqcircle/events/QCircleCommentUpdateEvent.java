@@ -19,6 +19,7 @@ public class QCircleCommentUpdateEvent
   public int commentTotalNum;
   public int eventStatus;
   public String feedId;
+  public String mFakeReplyId;
   public FeedCloudMeta.StReply reply;
   
   public QCircleCommentUpdateEvent(int paramInt1, String paramString, int paramInt2)

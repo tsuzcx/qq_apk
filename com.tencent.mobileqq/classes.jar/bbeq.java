@@ -1,110 +1,44 @@
-import android.text.Editable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import java.util.List;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bbeq
-  implements bbal
+  extends upy
 {
-  public bbeq(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public String a;
+  public upc a;
   
-  public void a(int paramInt1, int paramInt2)
+  public bbeq(String paramString)
   {
-    int m = 1;
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.getText().length();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.getText().length() <= 0) {
-      break label37;
-    }
-    label37:
-    while ((paramInt1 <= 0) && (paramInt2 <= 0)) {
-      return;
-    }
-    int j = this.a.jdField_a_of_type_Bbar.b.length();
-    int k = this.a.jdField_a_of_type_Bbar.a.length();
-    int n = this.a.jdField_a_of_type_Bbar.c.length() + (j + k);
-    if ((paramInt1 < this.a.J.length() + n) && (paramInt2 < this.a.J.length() + n))
+    this.jdField_a_of_type_Upc = new upc();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  private void c()
+  {
+    bayk localbayk = new bayk();
+    localbayk.jdField_a_of_type_Awkh = new bber(this);
+    localbayk.i = this.jdField_a_of_type_JavaLangString;
+    localbayk.jdField_a_of_type_Boolean = true;
+    localbayk.jdField_b_of_type_Int = 327681;
+    QQStoryContext.a();
+    localbayk.jdField_b_of_type_JavaLangString = QQStoryContext.a().c();
+    localbayk.c = "";
+    localbayk.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+    QQStoryContext.a();
+    QQStoryContext.a().a().a(localbayk);
+  }
+  
+  protected void a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!xrg.c(this.jdField_a_of_type_JavaLangString)))
     {
-      if (TroopBarPublishActivity.a(this.a).size() > 1)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.clearFocus();
-        bhoc.b(this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText);
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
+      wxe.d("tribe_publish_TribeVideoFileObject", "end composite success but file not exist:%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+      super.notifyResult(new ErrorMessage(940006, String.format("end composite success but file not exist:%s", new Object[] { this.jdField_a_of_type_JavaLangString })));
       return;
     }
-    if (paramInt1 < 0) {
-      if (paramInt2 > this.a.J.length() + n)
-      {
-        paramInt1 = paramInt2;
-        label203:
-        if (paramInt1 <= i) {
-          break label439;
-        }
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
-      return;
-      paramInt1 = this.a.J.length() + n;
-      break label203;
-      if (paramInt2 < 0) {
-        if (paramInt1 > this.a.J.length() + n) {
-          label258:
-          if (paramInt1 <= i) {
-            break label434;
-          }
-        }
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
-        return;
-        paramInt1 = this.a.J.length() + n;
-        break label258;
-        if (TextUtils.isEmpty(this.a.jdField_a_of_type_Bbar.b)) {
-          break;
-        }
-        k = 0;
-        j = paramInt1;
-        if (paramInt1 < this.a.J.length() + n)
-        {
-          j = n + this.a.J.length();
-          k = 1;
-        }
-        if (paramInt2 < this.a.J.length() + n)
-        {
-          paramInt1 = n + this.a.J.length();
-          k = 1;
-        }
-        for (;;)
-        {
-          paramInt2 = j;
-          if (j > i)
-          {
-            k = 1;
-            paramInt2 = i;
-          }
-          if (paramInt1 > i) {
-            k = m;
-          }
-          while (k != 0)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(paramInt2, i);
-            return;
-            i = paramInt1;
-          }
-          break;
-          paramInt1 = paramInt2;
-        }
-        label434:
-        i = paramInt1;
-      }
-      label439:
-      i = paramInt1;
-    }
+    c();
   }
 }
 

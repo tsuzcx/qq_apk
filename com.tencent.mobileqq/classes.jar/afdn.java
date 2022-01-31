@@ -1,44 +1,16 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
 public class afdn
-  extends ImageSpan
+  implements View.OnClickListener
 {
-  public afdn(Drawable paramDrawable)
-  {
-    super(paramDrawable);
-  }
+  public afdn(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public void onClick(View paramView)
   {
-    paramCharSequence = getDrawable();
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    paramCharSequence = getDrawable().getBounds();
-    if (paramFontMetricsInt != null)
-    {
-      paramPaint = paramPaint.getFontMetricsInt();
-      paramInt2 = paramPaint.bottom - paramPaint.top;
-      int i = paramCharSequence.bottom - paramCharSequence.top;
-      paramInt1 = i / 2 - paramInt2 / 4;
-      i /= 2;
-      paramInt2 = paramInt2 / 4 + i;
-      paramFontMetricsInt.ascent = (-paramInt2);
-      paramFontMetricsInt.top = (-paramInt2);
-      paramFontMetricsInt.bottom = paramInt1;
-      paramFontMetricsInt.descent = paramInt1;
-    }
-    return paramCharSequence.right;
+    AIOLongShotHelper.b(this.a, paramView);
+    AIOLongShotHelper.a("0X8009DE7");
   }
 }
 

@@ -1,34 +1,37 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.qqmini.sdk.core.widget.NavigationBar;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
+import com.tencent.qqmini.sdk.runtime.widget.InnerWebView.1.1;
 
-class bhjf
-  extends Handler
+public class bhjf
+  implements bgmc<Void>
 {
-  public bhjf(bhix parambhix, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bhjf(InnerWebView.1.1 param1) {}
   
-  public void handleMessage(Message paramMessage)
+  public Void a(bgls parambgls)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      bhix.a(this.a, bhix.a(this.a, paramMessage.obj));
-      return;
-    case 2: 
-      bhix.a(this.a, true);
-      bhix.a(this.a);
-      bhix.a(this.a, false);
-      return;
-    case 3: 
-      bhix.a(this.a, paramMessage.obj);
-      return;
+    parambgls = parambgls.a();
+    if (!(parambgls instanceof AppBrandPageContainer)) {
+      QMLog.d("Action", "Page is invalid");
     }
-    bhix.b(this.a, paramMessage.obj);
+    int i;
+    do
+    {
+      return null;
+      parambgls = (AppBrandPageContainer)parambgls;
+      i = parambgls.d();
+      bool = parambgls.c();
+      parambgls = parambgls.a();
+    } while ((parambgls == null) || (parambgls.a() == null));
+    parambgls = parambgls.a();
+    if ((!bool) && ((i > 1) || (this.a.jdField_a_of_type_Bhje.a.canGoBack()))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      parambgls.a(bool).c(this.a.jdField_a_of_type_JavaLangString);
+      return null;
+    }
   }
 }
 

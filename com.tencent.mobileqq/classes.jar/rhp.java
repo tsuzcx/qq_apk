@@ -1,11 +1,11 @@
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
 class rhp
-  implements bhqg
+  implements bhun
 {
   rhp(rhf paramrhf) {}
   
-  public void as_()
+  public void ap_()
   {
     if (rhf.b(this.a)) {
       rhf.a(this.a).c();

@@ -1,52 +1,64 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import com.tencent.qqmini.sdk.runtime.core.page.swipe.SwipeBackLayout;
+import NS_COMM.COMM.Entry;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONObject;
 
 public class bhca
-  extends bhce
 {
-  public bhca(SwipeBackLayout paramSwipeBackLayout) {}
-  
-  public int a(View paramView)
+  private static List<COMM.Entry> a(MiniAppInfo paramMiniAppInfo)
   {
-    return SwipeBackLayout.b(this.a);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(bhcg.a("platform", "Android"));
+    localArrayList.add(bhcg.a("uin", String.valueOf(bgxl.a().a())));
+    if (paramMiniAppInfo != null)
+    {
+      localArrayList.add(bhcg.a("appid", paramMiniAppInfo.appId));
+      localArrayList.add(bhcg.a("appname", paramMiniAppInfo.name));
+    }
+    return localArrayList;
   }
   
-  public int a(View paramView, int paramInt1, int paramInt2)
+  private static List<COMM.Entry> a(JSONObject paramJSONObject)
   {
-    if (paramInt1 < 0) {
-      return 0;
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONObject != null)
+    {
+      localArrayList.add(bhcg.a("pos_id", String.valueOf(paramJSONObject.optInt("pos_id"))));
+      localArrayList.add(bhcg.a("opt_type", String.valueOf(paramJSONObject.optInt("opt_type"))));
+      localArrayList.add(bhcg.a("activ_web", paramJSONObject.optString("activ_web")));
     }
-    return Math.min(paramInt1, SwipeBackLayout.b(this.a));
+    return localArrayList;
   }
   
-  public void a(View paramView, float paramFloat1, float paramFloat2)
+  public static void a(MiniAppInfo paramMiniAppInfo, JSONObject paramJSONObject)
   {
-    if (SwipeBackLayout.a(this.a) >= SwipeBackLayout.b(this.a) / 10)
+    StringBuilder localStringBuilder;
+    if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion())
     {
-      SwipeBackLayout.a(this.a, true);
-      SwipeBackLayout.a(this.a).a(SwipeBackLayout.b(this.a), paramView.getTop());
+      localStringBuilder = new StringBuilder().append("report mobile game ad with args: ");
+      if (paramJSONObject == null) {
+        break label111;
+      }
     }
-    for (;;)
+    label111:
+    for (Object localObject = paramJSONObject.toString();; localObject = "empty")
     {
-      this.a.invalidate();
+      QMLog.d("MiniProgramLpReportDC04682", (String)localObject);
+      localObject = new ArrayList();
+      ((List)localObject).addAll(a(paramMiniAppInfo));
+      ((List)localObject).addAll(a(paramJSONObject));
+      if (!QUAUtil.isQQApp()) {
+        ((List)localObject).addAll(bhcg.a());
+      }
+      paramMiniAppInfo = bhcg.a(7, (List)localObject, null);
+      bhch.a().a(paramMiniAppInfo);
       return;
-      SwipeBackLayout.a(this.a).a(0, paramView.getTop());
     }
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    SwipeBackLayout.a(this.a, Math.abs(paramInt1 / (this.a.a.getWidth() + SwipeBackLayout.a(this.a).getIntrinsicWidth())));
-    SwipeBackLayout.a(this.a, paramInt1);
-    if ((SwipeBackLayout.a(this.a)) && (SwipeBackLayout.a(this.a) == SwipeBackLayout.b(this.a)) && (SwipeBackLayout.a(this.a) != null)) {
-      SwipeBackLayout.a(this.a).a();
-    }
-  }
-  
-  public boolean a(View paramView, int paramInt)
-  {
-    return paramView == this.a.a;
   }
 }
 

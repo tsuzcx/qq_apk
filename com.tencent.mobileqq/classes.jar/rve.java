@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 public class rve
-  extends zcy<TabChannelCoverInfo>
+  extends zhn<TabChannelCoverInfo>
 {
   public static final String a;
   private Map<Integer, qkk> jdField_a_of_type_JavaUtilMap;
@@ -59,7 +59,7 @@ public class rve
   
   protected int a()
   {
-    return 2131560065;
+    return 2131560064;
   }
   
   public void a(Map<Integer, qkk> paramMap)
@@ -67,14 +67,14 @@ public class rve
     this.jdField_a_of_type_JavaUtilMap = paramMap;
   }
   
-  protected void a(zcz paramzcz, TabChannelCoverInfo paramTabChannelCoverInfo, int paramInt)
+  protected void a(zho paramzho, TabChannelCoverInfo paramTabChannelCoverInfo, int paramInt)
   {
-    TextView localTextView = (TextView)paramzcz.a(2131378985);
-    Object localObject2 = (ImageView)paramzcz.a(2131368794);
-    ImageView localImageView2 = (ImageView)paramzcz.a(2131368797);
-    Object localObject1 = (ImageView)paramzcz.a(2131371067);
+    TextView localTextView = (TextView)paramzho.a(2131379043);
+    Object localObject2 = (ImageView)paramzho.a(2131368809);
+    ImageView localImageView2 = (ImageView)paramzho.a(2131368812);
+    Object localObject1 = (ImageView)paramzho.a(2131371086);
     a(new View[] { localTextView, localObject2, localImageView2, localObject1 });
-    ImageView localImageView1 = (ImageView)paramzcz.a(2131368880);
+    ImageView localImageView1 = (ImageView)paramzho.a(2131368897);
     if (paramTabChannelCoverInfo != null)
     {
       if (!TextUtils.isEmpty(paramTabChannelCoverInfo.mChannelCoverPicUrl))
@@ -123,7 +123,7 @@ public class rve
           break label621;
         }
         localImageView1.setVisibility(0);
-        paramzcz.a().setOnClickListener(new rvf(this, paramInt, paramTabChannelCoverInfo, localImageView1));
+        paramzho.a().setOnClickListener(new rvf(this, paramInt, paramTabChannelCoverInfo, localImageView1));
         if (this.b != null)
         {
           i = this.b.getFirstVisiblePosition();
@@ -138,19 +138,19 @@ public class rve
         }
         if (this.jdField_a_of_type_Nwm != null)
         {
-          paramzcz = paramzcz.a(2131368519);
+          paramzho = paramzho.a(2131368530);
           if (paramInt != this.jdField_a_of_type_Nwm.c()) {
             break label784;
           }
-          localTextView.setTextColor(localTextView.getResources().getColor(2131166797));
+          localTextView.setTextColor(localTextView.getResources().getColor(2131166799));
           localTextView.setTypeface(Typeface.defaultFromStyle(1));
-          paramzcz.setVisibility(0);
+          paramzho.setVisibility(0);
           if (this.jdField_a_of_type_Nwm.a() == 0)
           {
-            paramTabChannelCoverInfo = (ViewGroup.MarginLayoutParams)paramzcz.getLayoutParams();
-            paramTabChannelCoverInfo.leftMargin = bdkf.b(0.0F);
-            paramTabChannelCoverInfo.rightMargin = bdkf.b(0.0F);
-            paramzcz.setLayoutParams(paramTabChannelCoverInfo);
+            paramTabChannelCoverInfo = (ViewGroup.MarginLayoutParams)paramzho.getLayoutParams();
+            paramTabChannelCoverInfo.leftMargin = bdoo.b(0.0F);
+            paramTabChannelCoverInfo.rightMargin = bdoo.b(0.0F);
+            paramzho.setLayoutParams(paramTabChannelCoverInfo);
           }
         }
         return;
@@ -200,9 +200,9 @@ public class rve
             localImageView1.setVisibility(8);
             ((ImageView)localObject1).setVisibility(8);
             continue;
-            localTextView.setTextColor(localTextView.getResources().getColor(2131166798));
+            localTextView.setTextColor(localTextView.getResources().getColor(2131166800));
             localTextView.setTypeface(Typeface.defaultFromStyle(0));
-            paramzcz.setVisibility(4);
+            paramzho.setVisibility(4);
           }
         }
       }

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import auqc;
-import bcyr;
-import bdee;
-import bdje;
+import auul;
+import bdda;
+import bdin;
+import bdnn;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
@@ -16,8 +16,8 @@ class NearbyPeopleProfileActivity$4
   
   public void run()
   {
-    Object localObject = (auqc)this.this$0.app.getManager(106);
-    this.this$0.k = ((auqc)localObject).b(NearbyPeopleProfileActivity.a(this.this$0));
+    Object localObject = (auul)this.this$0.app.getManager(106);
+    this.this$0.k = ((auul)localObject).b(NearbyPeopleProfileActivity.a(this.this$0));
     if (!this.this$0.k) {}
     long l;
     do
@@ -25,16 +25,16 @@ class NearbyPeopleProfileActivity$4
       do
       {
         return;
-      } while ((!bdee.d(BaseApplication.getContext())) && (this.this$0.k));
+      } while ((!bdin.d(BaseApplication.getContext())) && (this.this$0.k));
       localObject = NearbyPeopleProfileActivity.a(this.this$0).vSeed;
       l = NearbyPeopleProfileActivity.a(this.this$0).feedPreviewTime;
       if (this.this$0.jdField_a_of_type_Long > 0L)
       {
-        bcyr.a(this.this$0.jdField_a_of_type_Ausy, this.this$0.app, this.this$0.jdField_a_of_type_Long, null, this.this$0.d, (byte[])localObject, l, true, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
+        bdda.a(this.this$0.jdField_a_of_type_Auxh, this.this$0.app, this.this$0.jdField_a_of_type_Long, null, this.this$0.d, (byte[])localObject, l, true, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
         return;
       }
-    } while (bdje.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
-    bcyr.a(this.this$0.jdField_a_of_type_Ausy, this.this$0.app, 0L, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.this$0.d, (byte[])localObject, l, true, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
+    } while (bdnn.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
+    bdda.a(this.this$0.jdField_a_of_type_Auxh, this.this$0.app, 0L, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.this$0.d, (byte[])localObject, l, true, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
   }
 }
 

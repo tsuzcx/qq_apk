@@ -1,10 +1,4 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
-
-public class alvd
-{
-  public int a;
-  public PublicAccountInfo a;
-}
+public abstract interface alvd {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

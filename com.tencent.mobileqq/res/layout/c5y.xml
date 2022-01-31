@@ -15,7 +15,7 @@
         <ViewStub android:id="@id/l8h" android:layout="@layout/c5p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@id/aog" android:layout_alignTop="@id/aog" android:layout_alignRight="@id/aog" android:layout_alignBottom="@id/aog" />
         <ViewStub android:id="@id/l92" android:layout="@layout/iz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <ViewStub android:id="@id/ivz" android:layout="@layout/c64" android:layout_width="fill_parent" android:layout_height="60.0dip" />
-        <ViewStub android:id="@id/mp3" android:layout="@layout/e7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_below="@id/aog" android:layout_alignRight="@id/aog" />
+        <ViewStub android:id="@id/mql" android:layout="@layout/e7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_below="@id/aog" android:layout_alignRight="@id/aog" />
         <android.support.v7.widget.RecyclerView android:id="@id/l8y" android:paddingLeft="44.0dip" android:paddingRight="44.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="75.0dip" android:layout_marginTop="40.0dip" android:layout_below="@id/aog" />
         <ViewStub android:id="@id/isy" android:layout="@layout/a5i" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_above="@id/gmc" android:layout_alignWithParentIfMissing="true" />
         <ViewStub android:id="@id/ite" android:layout="@layout/a5k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/cey" />

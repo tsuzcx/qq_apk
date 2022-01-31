@@ -1,67 +1,51 @@
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.graphics.Color;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import java.util.List;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.SearchWordHistoryEntryModel.2.3;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class ayik
-  implements ayjk
+  implements View.OnClickListener
 {
-  private ahea jdField_a_of_type_Ahea;
-  private String jdField_a_of_type_JavaLangString;
-  private List<ayjl> jdField_a_of_type_JavaUtilList;
-  private String b;
+  ayik(ayii paramayii, Context paramContext, QQAppInterface paramQQAppInterface) {}
   
-  public ayik(ahea paramahea, List<ayjl> paramList, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Ahea = paramahea;
-    this.b = paramString2;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public String a()
-  {
-    return alpo.a(2131705730);
-  }
-  
-  public List<ayjl> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    ayrd.a(this.jdField_a_of_type_JavaLangString, 110, 0, paramView);
-    ayil localayil = (ayil)this.jdField_a_of_type_JavaUtilList.get(0);
-    if ((localayil != null) && (!TextUtils.isEmpty(this.b)))
+    besf localbesf = new besf(this.jdField_a_of_type_AndroidContentContext);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559660, null, false);
+    ImageView localImageView1 = (ImageView)localView.findViewById(2131363034);
+    ImageView localImageView2 = (ImageView)localView.findViewById(2131362842);
+    ImageView localImageView3 = (ImageView)localView.findViewById(2131362829);
+    TextView localTextView1 = (TextView)localView.findViewById(2131363909);
+    TextView localTextView2 = (TextView)localView.findViewById(2131365087);
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
-      Object localObject = new Intent(paramView.getContext(), PublicAccountBrowser.class);
-      ((Intent)localObject).putExtra("url", this.b);
-      paramView.getContext().startActivity((Intent)localObject);
-      if (localayil.a() != null)
-      {
-        localObject = localayil.a().hotword.get();
-        int i = localayil.a().hotword_type.get();
-        nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F28", "0X8006F28", 0, 0, localayil.a(), (String)localObject, String.valueOf(i), "2");
-      }
+      localImageView1.setBackgroundColor(Color.parseColor("#0b1d35"));
+      localImageView2.setImageResource(2130841979);
+      localImageView3.setImageResource(2130841979);
+      localTextView1.setBackgroundResource(2130845614);
     }
-    paramView.getContext();
-    nrt.a(null, "CliOper", "", "", "0X8006536", "0X8006536", 0, 0, "", "0", this.jdField_a_of_type_JavaLangString, "0");
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    for (;;)
+    {
+      localbesf.setContentView(localView);
+      localbesf.setHeight(xsm.a(this.jdField_a_of_type_AndroidContentContext, 96.0F));
+      localbesf.setWidth(xsm.a(this.jdField_a_of_type_AndroidContentContext, 224.0F));
+      localTextView1.setOnClickListener(new ayil(this, localbesf));
+      localTextView2.setOnClickListener(new ayim(this, localbesf));
+      localView.post(new SearchWordHistoryEntryModel.2.3(this, new int[2], localView, new int[2]));
+      localbesf.showAsDropDown(paramView, 0, 0);
+      return;
+      localImageView1.setImageResource(2130839093);
+      localImageView2.setImageResource(2130841980);
+      localImageView3.setImageResource(2130841980);
+      localTextView1.setBackgroundResource(2130841971);
+    }
   }
 }
 

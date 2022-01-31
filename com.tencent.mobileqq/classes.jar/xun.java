@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
 
 public class xun
-  implements DialogInterface.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public xun(QRDisplayActivity paramQRDisplayActivity) {}
+  public xun(NeoVideoRecordButton paramNeoVideoRecordButton) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
+    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
+    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
+    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
+    NeoVideoRecordButton.a(this.a);
+  }
 }
 
 

@@ -1,29 +1,13 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class adeb
-  implements bepu
+  implements DialogInterface.OnClickListener
 {
-  public adeb(MainFragment paramMainFragment) {}
+  public adeb(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void a()
-  {
-    int i = GesturePWDUtils.getGesturePWDState(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
-    int j = GesturePWDUtils.getGesturePWDMode(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
-    if ((i == 2) && (j == 20))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("mainactivity", 2, "gesturepwd manual move.");
-      }
-      ((SplashActivity)this.a.getActivity()).startUnlockActivity();
-      this.a.getActivity().overridePendingTransition(2130771997, 2130771990);
-      MainFragment.a(true);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

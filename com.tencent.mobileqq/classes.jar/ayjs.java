@@ -1,72 +1,62 @@
-import java.util.ArrayList;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import java.util.HashMap;
 import java.util.List;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
 
-public class ayjs
-  extends ayju
+class ayjs
+  implements bhxr
 {
-  public int a;
-  public ayjn a;
-  public CharSequence a;
-  public String a;
-  public List<ayjn> a;
-  public int b;
+  ayjs(ayjr paramayjr, HorizontalListView paramHorizontalListView) {}
   
-  public ayjs(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public void a()
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public ayjs(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    try
+    int i = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getCurrentX();
+    long l1 = bdgk.k();
+    long l2 = bdaq.a(this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getContext(), 13.5F);
+    float f = Math.round((float)(i + (l1 - l2)) / this.jdField_a_of_type_Ayjr.jdField_a_of_type_Float);
+    i = 0;
+    for (;;)
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaLangCharSequence = ayrd.a(paramString.optString("firstLineText"));
-      this.jdField_a_of_type_JavaLangString = paramString.optString("firstLineTextPostfix");
-      Object localObject1 = paramString.optJSONObject("leftImage");
-      if (localObject1 != null) {
-        this.jdField_a_of_type_Ayjn = new ayjn(((JSONObject)localObject1).optString("url"), ((JSONObject)localObject1).optInt("type"));
-      }
-      this.b = paramString.optInt("allHeight");
-      localObject1 = paramString.optJSONArray("imageList");
-      if (localObject1 != null)
+      if ((i < f) && (i < this.jdField_a_of_type_Ayjr.jdField_a_of_type_JavaUtilList.size()))
       {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList(((JSONArray)localObject1).length());
-        int i = 0;
-        while (i < ((JSONArray)localObject1).length())
+        ayol localayol = (ayol)this.jdField_a_of_type_Ayjr.jdField_a_of_type_JavaUtilList.get(i);
+        ayig localayig;
+        JSONObject localJSONObject;
+        if (ayif.b.containsKey(localayol))
         {
-          Object localObject2 = ((JSONArray)localObject1).optJSONObject(i);
-          localObject2 = new ayjn(((JSONObject)localObject2).optString("url"), ((JSONObject)localObject2).optInt("type"));
-          this.jdField_a_of_type_JavaUtilList.add(localObject2);
+          localayig = (ayig)ayif.b.get(localayol);
+          if (!localayig.jdField_a_of_type_Boolean)
+          {
+            localayig.jdField_a_of_type_Boolean = true;
+            localJSONObject = new JSONObject();
+          }
+        }
+        try
+        {
+          localJSONObject.put("project", aysc.a());
+          localJSONObject.put("event_src", "client");
+          localJSONObject.put("get_src", "web");
+          localJSONObject.put("obj_lct", localayig.jdField_a_of_type_Int);
+          localJSONObject.put("extra_info", localayol.b);
+          localJSONObject.put("tepl", localayol.f);
+          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+          aysc.a(localQQAppInterface, new ReportModelDC02528().module("all_result").action("exp_item").obj1(localayol.a + "").obj2(localayol.j).ver1(localayig.jdField_a_of_type_JavaLangString).ver2(aysc.a(this.jdField_a_of_type_Ayjr.jdField_a_of_type_Int)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + ayif.a));
           i += 1;
         }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            QLog.e(ayjr.jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
+          }
+        }
       }
-      this.jdField_a_of_type_Int = paramString.optInt("imageTotalCount");
-      return;
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public boolean b()
-  {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      bool = false;
-    }
-    return bool;
   }
 }
 

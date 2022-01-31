@@ -1,21 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.QQWalletTransferBubbleView;
 
-class afza
-  extends Handler
+public class afza
+  extends aeqi
 {
-  afza(afyz paramafyz, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public long a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public QQWalletTransferBubbleView a;
+  public TextView b;
+  public QQWalletTransferBubbleView b;
+  public TextView c;
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == afyz.a) {
-      this.a.b();
-    }
-  }
+  public afza(afyx paramafyx) {}
 }
 
 

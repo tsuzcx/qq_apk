@@ -1,13 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopUtils.4;
-
 public class bclq
-  implements DialogInterface.OnClickListener
 {
-  public bclq(TroopUtils.4 param4) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
+  {
+    new azqx(null).a("dc00899").b("Grp_tribe").c(paramString1).d(paramString2).a(paramInt1).b(paramInt2).a(paramVarArgs).a();
+  }
 }
 
 

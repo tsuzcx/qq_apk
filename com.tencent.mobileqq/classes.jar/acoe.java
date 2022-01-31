@@ -1,13 +1,24 @@
+import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.Conversation;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
 
 public class acoe
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public acoe(Conversation paramConversation) {}
+  public acoe(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    {
+      this.a.jdField_a_of_type_AndroidAppDialog.cancel();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask.a(false);
+      }
+    }
+  }
 }
 
 

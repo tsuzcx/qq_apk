@@ -1,56 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public class befy
+class befy
+  implements TouchWebView.OnScrollChangedListener
 {
-  private final beey a;
-  public String a;
+  int jdField_a_of_type_Int = 0;
   
-  public befy(beey parambeey)
-  {
-    this.jdField_a_of_type_Beey = parambeey;
-  }
+  befy(beft parambeft) {}
   
-  public void a(int paramInt)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    TouchWebView localTouchWebView = this.jdField_a_of_type_Beey.a();
-    JSONObject localJSONObject1;
-    JSONObject localJSONObject2;
-    if ((localTouchWebView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      localJSONObject1 = new JSONObject();
-      localJSONObject2 = new JSONObject();
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_SwiftIphoneTitleBarUI", 2, "-->onScrollChanged:" + paramInt1 + "," + paramInt2 + "," + paramInt3 + "," + paramInt4);
     }
-    try
+    if (ImmersiveUtils.isSupporImmersive() == 1) {}
+    for (paramInt1 = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());; paramInt1 = 0)
     {
-      localJSONObject1.put("code", 0);
-      localJSONObject1.put("message", "ok");
-      localJSONObject2.put("subIndex", paramInt);
-      localJSONObject1.put("data", localJSONObject2);
-      localTouchWebView.callJs(WebViewPlugin.toJsScript(this.jdField_a_of_type_JavaLangString, localJSONObject1, null));
+      paramInt1 = paramInt1 + bdaq.a(BaseApplicationImpl.getApplication(), 50.0F) + 180;
+      if (Math.abs(paramInt2 - this.jdField_a_of_type_Int) > 20) {
+        if (paramInt2 < paramInt1 / 3) {
+          this.jdField_a_of_type_Beft.a.v = true;
+        }
+      }
+      while (paramInt2 >= paramInt1 / 3) {
+        for (;;)
+        {
+          this.jdField_a_of_type_Int = paramInt2;
+          this.jdField_a_of_type_Beft.h();
+          return;
+          if (paramInt2 >= paramInt1) {
+            this.jdField_a_of_type_Beft.a.v = false;
+          }
+        }
+      }
+      this.jdField_a_of_type_Beft.a.v = true;
+      this.jdField_a_of_type_Int = paramInt2;
+      this.jdField_a_of_type_Beft.h();
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        this.jdField_a_of_type_JavaLangString = paramString;
-      }
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

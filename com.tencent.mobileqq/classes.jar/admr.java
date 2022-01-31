@@ -1,21 +1,25 @@
-import android.app.Dialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class admr
   implements View.OnClickListener
 {
-  public admr(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
+  public admr(PermisionPrivacyActivity paramPermisionPrivacyActivity, SharedPreferences paramSharedPreferences, boolean paramBoolean) {}
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
-    }
+    paramView = bdtg.a("gameIconSetupH5Url");
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), QQBrowserActivity.class);
+    localIntent.setFlags(268435456);
+    localIntent.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), paramView, -1L, localIntent, false, -1);
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app, "CliOper", "", "", "Setting_tab", "0X8009C07", 0, 0, "", "", "", "");
   }
 }
 

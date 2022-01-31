@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.richmedia.segment;
 
-import axtf;
-import axtg;
-import baqf;
+import axxo;
+import axxp;
+import bauo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class VideoSend$2
   implements Runnable
 {
-  public VideoSend$2(axtg paramaxtg, axtf paramaxtf) {}
+  public VideoSend$2(axxp paramaxxp, axxo paramaxxo) {}
   
   public void run()
   {

@@ -1,16 +1,13 @@
-public abstract interface amqj
+public class amqj
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public int a = -1;
+  public long a;
+  public String a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,15 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class bbjj
-  implements AdapterView.OnItemClickListener
+  implements DialogInterface.OnClickListener
 {
-  public bbjj(NewTroopContactView paramNewTroopContactView) {}
+  public bbjj(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramAdapterView = ((ResultRecord)paramView.getTag()).a;
-    if (this.a.a(paramAdapterView))
-    {
-      NewTroopContactView.a(this.a, paramAdapterView);
-      this.a.a.notifyDataSetChanged();
-      this.a.b(false);
-      NewTroopContactView.a(this.a);
-    }
+    this.a.finish();
   }
 }
 

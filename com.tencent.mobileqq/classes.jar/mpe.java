@@ -38,7 +38,7 @@ public class mpe
   public mpe(AVActivity paramAVActivity, VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvUiAVActivity = paramAVActivity;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372540));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372566));
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.jdField_a_of_type_Mpi = new mpi(this);
     this.jdField_a_of_type_Mph = new mph(this);
@@ -53,8 +53,8 @@ public class mpe
   {
     if (this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer == null)
     {
-      ((ViewStub)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372855)).inflate();
-      this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer = ((VideoChatRoomContainer)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372581));
+      ((ViewStub)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372881)).inflate();
+      this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer = ((VideoChatRoomContainer)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372607));
       this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     }
     return this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomContainer;

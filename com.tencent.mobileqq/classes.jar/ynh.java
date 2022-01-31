@@ -1,15 +1,37 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.os.Handler;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView.19.1;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView.19.2;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 
-class ynh
-  extends bdvu
+public class ynh
+  implements yoj
 {
-  ynh(ync paramync, Bundle paramBundle) {}
+  public ynh(VideoPlayerView paramVideoPlayerView) {}
   
-  public void onDone(bdvv parambdvv)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("down", true);
-    this.jdField_a_of_type_Ync.a.a(86, this.jdField_a_of_type_AndroidOsBundle);
+    VideoPlayerView.f(this.a, paramBoolean);
+    if (VideoPlayerView.j(this.a)) {
+      this.a.a().post(new VideoPlayerView.19.1(this));
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (VideoPlayerView.c(this.a))
+        {
+          this.a.a().post(new VideoPlayerView.19.2(this));
+          return;
+        }
+      } while (!VideoPlayerView.i(this.a));
+      if (VideoPlayerView.a(this.a) != null) {
+        VideoPlayerView.a(this.a).a(true);
+      }
+      this.a.f();
+    } while (VideoPlayerView.a(this.a) == null);
+    VideoPlayerView.a(this.a).onVideoStart((int)VideoPlayerView.a(this.a).b());
   }
 }
 

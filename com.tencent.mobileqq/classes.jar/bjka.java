@@ -1,17 +1,13 @@
-import android.os.IInterface;
+import java.lang.ref.WeakReference;
 
-public abstract interface bjka
-  extends IInterface
+class bjka
 {
-  public abstract void a();
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<bjjp> jdField_a_of_type_JavaLangRefWeakReference;
+  int b;
   
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  private bjka(bjjs parambjjs) {}
 }
 
 

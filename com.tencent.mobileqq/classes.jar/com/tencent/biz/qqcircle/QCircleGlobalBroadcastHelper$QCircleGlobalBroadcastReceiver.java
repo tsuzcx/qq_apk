@@ -4,16 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import axho;
 import com.tencent.biz.qqcircle.events.QCircleFollowUpdateEvent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
-import txt;
-import txu;
-import yej;
+import tyy;
+import tze;
+import yiw;
 
 public class QCircleGlobalBroadcastHelper$QCircleGlobalBroadcastReceiver
   extends BroadcastReceiver
@@ -27,9 +22,9 @@ public class QCircleGlobalBroadcastHelper$QCircleGlobalBroadcastReceiver
     paramContext = paramIntent.getAction();
     QLog.d(QCircleGlobalBroadcastHelper.a(), 1, "onReceive action" + paramContext);
     if (TextUtils.equals(paramContext, "action_clear_message_red_poiont")) {}
-    int i;
     do
     {
+      int i;
       do
       {
         do
@@ -38,9 +33,7 @@ public class QCircleGlobalBroadcastHelper$QCircleGlobalBroadcastReceiver
           {
             i = paramIntent.getIntExtra("createTime", 0);
             QLog.d(QCircleGlobalBroadcastHelper.a(), 1, "ACTION_CLEAR_MESSAGE_RED_POIONT createTime:" + i);
-            paramContext = (axho)BaseApplicationImpl.getApplication().getRuntime().getManager(36);
-            paramContext.a(paramContext.a("140000"), 9, "");
-            ThreadManager.getSubThreadHandler().postDelayed(new QCircleGlobalBroadcastHelper.QCircleGlobalBroadcastReceiver.1(this), 5000L);
+            this.a.c();
             return;
           }
           catch (Exception paramContext)
@@ -58,22 +51,25 @@ public class QCircleGlobalBroadcastHelper$QCircleGlobalBroadcastReceiver
         if (i == 1) {}
         for (;;)
         {
-          txt.a().a(paramContext, bool1);
-          yej.a().a(new QCircleFollowUpdateEvent(i, paramContext));
+          tyy.a().a(paramContext, bool1);
+          yiw.a().a(new QCircleFollowUpdateEvent(i, paramContext));
           return;
           bool1 = false;
         }
-      } while (!TextUtils.equals(paramContext, "action_update_native_tag_follow_state"));
-      paramContext = paramIntent.getStringExtra("tagId");
-      i = paramIntent.getIntExtra("type", -1);
-    } while ((TextUtils.isEmpty(paramContext)) || (i == -1));
-    QLog.d(QCircleGlobalBroadcastHelper.a(), 1, "updateTagFollowManager tagId:" + paramContext + " type:" + i);
-    if (i == 1) {}
-    for (bool1 = bool2;; bool1 = false)
-    {
-      txu.a().a(paramContext, bool1);
-      return;
-    }
+        if (!TextUtils.equals(paramContext, "action_update_native_tag_follow_state")) {
+          break;
+        }
+        paramContext = paramIntent.getStringExtra("tagId");
+        i = paramIntent.getIntExtra("type", -1);
+      } while ((TextUtils.isEmpty(paramContext)) || (i == -1));
+      QLog.d(QCircleGlobalBroadcastHelper.a(), 1, "updateTagFollowManager tagId:" + paramContext + " type:" + i);
+      if (i == 1) {}
+      for (bool1 = bool2;; bool1 = false)
+      {
+        tze.a().a(paramContext, bool1);
+        return;
+      }
+    } while (!TextUtils.equals(paramContext, "action_receive_message_push"));
   }
 }
 

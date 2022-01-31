@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgnf;
+import bgrm;
 
 class PayJsPlugin$2$1
   implements Runnable
@@ -9,7 +9,7 @@ class PayJsPlugin$2$1
   
   public void run()
   {
-    bgnf.a(this.this$1.this$0.mContext, this.val$errMsg, 0).a();
+    bgrm.a(this.this$1.this$0.mContext, this.val$errMsg, 0).a();
   }
 }
 

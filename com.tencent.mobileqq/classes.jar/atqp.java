@@ -1,137 +1,141 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.location.ui.HeadSetViewModule.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class atqp
+  implements View.OnClickListener
 {
-  private static final atlh jdField_a_of_type_Atlh = new atlh(-1, "-1");
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final List<atqq> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private atlh b = jdField_a_of_type_Atlh;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private atpq jdField_a_of_type_Atpq;
+  private atua jdField_a_of_type_Atua;
+  private PublicFragmentActivity jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity;
   
-  public atqp(QQAppInterface paramQQAppInterface)
+  public atqp(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public atlh a()
-  {
-    return this.b;
-  }
-  
-  public void a()
-  {
-    this.b = jdField_a_of_type_Atlh;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((atqq)localIterator.next()).a();
+    if ((paramContext instanceof PublicFragmentActivity)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity = ((PublicFragmentActivity)paramContext);
     }
+    a();
+    b();
   }
   
-  public void a(atlh paramatlh)
-  {
-    this.b = paramatlh;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((atqq)localIterator.next()).a(paramatlh);
-    }
-  }
+  private void a() {}
   
-  public void a(atqq paramatqq)
+  private void a(ArrayList<String> paramArrayList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    if (QLog.isColorLevel())
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramatqq)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramatqq);
+      Iterator localIterator = paramArrayList.iterator();
+      String str2;
+      for (String str1 = ""; localIterator.hasNext(); str1 = str1 + ", " + str2) {
+        str2 = (String)localIterator.next();
       }
+      QLog.d("HeadSetViewModule", 2, new Object[] { "refreshHeadSet: invoked. ", " uins: ", str1, " headAdapter.count: ", Integer.valueOf(this.jdField_a_of_type_Atua.getCount()) });
+    }
+    if (this.jdField_a_of_type_Atua == null) {
       return;
     }
+    if ((paramArrayList == null) || (paramArrayList.size() <= 0))
+    {
+      QLog.e("HeadSetViewModule", 1, "refreshHeadSet: failed. uins empty, maybe exit room");
+      return;
+    }
+    paramArrayList = new HeadSetViewModule.1(this, paramArrayList);
+    ThreadManager.getUIHandlerV2().post(paramArrayList);
   }
   
-  /* Error */
-  public void b()
+  private void b()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 33	atqp:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: monitorenter
-    //   9: aload_0
-    //   10: getfield 33	atqp:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   13: invokeinterface 70 1 0
-    //   18: aload_1
-    //   19: monitorexit
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: return
-    //   23: astore_2
-    //   24: aload_1
-    //   25: monitorexit
-    //   26: aload_2
-    //   27: athrow
-    //   28: astore_1
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_1
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	atqp
-    //   28	4	1	localObject1	Object
-    //   23	4	2	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   9	20	23	finally
-    //   24	26	23	finally
-    //   2	9	28	finally
-    //   26	28	28	finally
+    ImmersiveUtils.a(true, this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity.getWindow());
+    ImmersiveUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity.getWindow(), true);
   }
   
-  /* Error */
-  public void b(atqq paramatqq)
+  private void b(ArrayList<String> paramArrayList)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 33	atqp:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   6: astore_2
-    //   7: aload_2
-    //   8: monitorenter
-    //   9: aload_0
-    //   10: getfield 33	atqp:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   13: aload_1
-    //   14: invokeinterface 73 2 0
-    //   19: pop
-    //   20: aload_2
-    //   21: monitorexit
-    //   22: aload_0
-    //   23: monitorexit
-    //   24: return
-    //   25: astore_1
-    //   26: aload_2
-    //   27: monitorexit
-    //   28: aload_1
-    //   29: athrow
-    //   30: astore_1
-    //   31: aload_0
-    //   32: monitorexit
-    //   33: aload_1
-    //   34: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	35	0	this	atqp
-    //   0	35	1	paramatqq	atqq
-    // Exception table:
-    //   from	to	target	type
-    //   9	22	25	finally
-    //   26	28	25	finally
-    //   2	9	30	finally
-    //   28	30	30	finally
+    if (paramArrayList.size() == 1) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity.getResources().getString(2131694102));
+    }
+    for (;;)
+    {
+      attk.a(this.jdField_a_of_type_AndroidWidgetTextView, "" + this.jdField_a_of_type_AndroidWidgetTextView.getText());
+      return;
+      paramArrayList = paramArrayList.size() + this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity.getString(2131694126);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramArrayList);
+    }
+  }
+  
+  private void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HeadSetViewModule", 2, new Object[] { "onClickMinimizeShare: invoked. ", " textSharingCount: ", this.jdField_a_of_type_AndroidWidgetTextView });
+    }
+    if (atus.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity.app).a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity, this.jdField_a_of_type_Atpq)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity.finish();
+    }
+    azqs.b(null, "CliOper", "", "", "0X800A76F", "0X800A76F", 0, 0, "", "0", "0", "");
+  }
+  
+  private void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HeadSetViewModule", 2, "onClickCancelShare: invoked. ");
+    }
+    bhuf localbhuf = bhuf.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity);
+    localbhuf.a(2131692131, 3);
+    localbhuf.a(2131694761);
+    localbhuf.c(2131690648);
+    localbhuf.a(new atqq(this, localbhuf));
+    localbhuf.show();
+    azqs.b(null, "CliOper", "", "", "0X800A76D", "0X800A76D", 0, 0, "", "0", "0", "");
+  }
+  
+  public void a(TextView paramTextView)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+  }
+  
+  public void a(atpq paramatpq)
+  {
+    this.jdField_a_of_type_Atpq = paramatpq;
+  }
+  
+  public void a(atua paramatua)
+  {
+    this.jdField_a_of_type_Atua = paramatua;
+  }
+  
+  void a(List<atpo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(String.valueOf(((atpo)paramList.next()).a()));
+    }
+    a(localArrayList);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131363924: 
+      d();
+      return;
+    }
+    c();
   }
 }
 

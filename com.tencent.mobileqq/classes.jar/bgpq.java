@@ -1,29 +1,9 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qqmini.sdk.launcher.ipc.IAppMainService.Stub;
-import com.tencent.qqmini.sdk.log.QMLog;
+import android.content.Context;
+import android.content.Intent;
 
-class bgpq
-  implements ServiceConnection
+public abstract interface bgpq
 {
-  bgpq(bgpo parambgpo) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    bgpo.a(this.a, IAppMainService.Stub.asInterface(paramIBinder));
-    QMLog.w("minisdk-start_AppBrandProxy", "onServiceConnected:" + bgpo.a(this.a));
-    bgpo.a(this.a, false);
-    bgpo.a(this.a);
-    bgpo.b(this.a);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    bgpo.a(this.a, null);
-    QMLog.w("minisdk-start_AppBrandProxy", "onServiceDisconnected.");
-    bgpo.a(this.a, false);
-  }
+  public abstract void a(Context paramContext, Intent paramIntent);
 }
 
 

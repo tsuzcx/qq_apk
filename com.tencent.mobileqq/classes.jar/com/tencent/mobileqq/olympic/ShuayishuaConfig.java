@@ -3,14 +3,14 @@ package com.tencent.mobileqq.olympic;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import avwm;
+import awav;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ShuayishuaConfig
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<ShuayishuaConfig> CREATOR = new avwm();
+  public static final Parcelable.Creator<ShuayishuaConfig> CREATOR = new awav();
   public String LUIconImg;
   public String LUIconImgMd5;
   public String actTime;

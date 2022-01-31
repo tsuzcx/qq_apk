@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.search.fragment;
 
-import aygp;
+import ayky;
 
 public class PublicAcntSearchFragment$2$2
   implements Runnable
 {
-  public PublicAcntSearchFragment$2$2(aygp paramaygp) {}
+  public PublicAcntSearchFragment$2$2(ayky paramayky) {}
   
   public void run()
   {

@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.manager;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bgsd;
+import bgwk;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -13,7 +13,7 @@ import com.tencent.qqmini.sdk.utils.QUAUtil;
 public class EngineVersion
   implements Parcelable, Comparable<EngineVersion>
 {
-  public static final Parcelable.Creator<EngineVersion> CREATOR = new bgsd();
+  public static final Parcelable.Creator<EngineVersion> CREATOR = new bgwk();
   public String a;
   public String b;
   

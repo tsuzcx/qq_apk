@@ -1,18 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public final class auwt
-  implements Parcelable.Creator<BasicTypeDataParcel>
+public class auwt
+  extends bard
 {
-  public BasicTypeDataParcel a(Parcel paramParcel)
+  private NearbyAppInterface a;
+  
+  public auwt(NearbyAppInterface paramNearbyAppInterface)
   {
-    return new BasicTypeDataParcel(paramParcel);
+    super(paramNearbyAppInterface);
+    this.a = paramNearbyAppInterface;
   }
   
-  public BasicTypeDataParcel[] a(int paramInt)
+  public barf a(bayk parambayk)
   {
-    return new BasicTypeDataParcel[paramInt];
+    if (parambayk == null) {}
+    do
+    {
+      return null;
+      if ((parambayk.b == 8) || (parambayk.b == 64) || (parambayk.b == 21)) {
+        return new bavb(this, parambayk);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.richmedia.TransFileController", 2, parambayk.toString());
+    return null;
   }
 }
 

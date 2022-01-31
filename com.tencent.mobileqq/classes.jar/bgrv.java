@@ -1,14 +1,6 @@
-import android.text.TextUtils;
-import java.io.File;
-import java.io.FilenameFilter;
-
-final class bgrv
-  implements FilenameFilter
+public abstract interface bgrv
 {
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && ((paramString.endsWith(".so")) || (paramString.endsWith(".jar")));
-  }
+  public abstract void a(bgrq parambgrq);
 }
 
 

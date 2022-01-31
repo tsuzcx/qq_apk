@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
-import bhdt;
+import bhia;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -26,7 +26,7 @@ public class WebProcessReceiver
     {
       long l = System.currentTimeMillis();
       localObject = ((Context)localObject).getSharedPreferences(((Context)localObject).getPackageName() + "_preferences", 4);
-      QbSdk.setTbsListener(new bhdt(this, (SharedPreferences)localObject, l));
+      QbSdk.setTbsListener(new bhia(this, (SharedPreferences)localObject, l));
       QMLog.d("TBS_update", "tbs start download");
       localObject = ((SharedPreferences)localObject).edit();
       ((SharedPreferences.Editor)localObject).putBoolean("tbs_downloading", true);

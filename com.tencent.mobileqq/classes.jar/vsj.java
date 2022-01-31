@@ -1,36 +1,83 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class vsj
-  implements TVK_SDKMgr.OnLogListener
+  extends vsi
 {
-  public int d(String paramString1, String paramString2)
+  protected Map<String, vsi> a = new HashMap();
+  
+  public vsj(@NonNull ViewGroup paramViewGroup)
   {
-    wsv.b(paramString1, paramString2);
-    return 0;
+    super(paramViewGroup);
   }
   
-  public int e(String paramString1, String paramString2)
+  protected View a(ViewGroup paramViewGroup)
   {
-    wsv.e(paramString1, paramString2);
-    return 0;
+    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561598, paramViewGroup, false);
   }
   
-  public int i(String paramString1, String paramString2)
+  public void a(int paramInt, vpn paramvpn, @NonNull ArrayList<vtt> paramArrayList)
   {
-    wsv.c(paramString1, paramString2);
-    return 0;
+    super.a(paramInt, paramvpn, paramArrayList);
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext()) {
+      ((vsi)localIterator.next()).a(paramInt, paramvpn, paramArrayList);
+    }
   }
   
-  public int v(String paramString1, String paramString2)
+  public void a(@NonNull vsi paramvsi)
   {
-    wsv.b(paramString1, paramString2);
-    return 0;
+    this.a.put(paramvsi.getClass().getName(), paramvsi);
   }
   
-  public int w(String paramString1, String paramString2)
+  public void a(vsj paramvsj)
   {
-    wsv.d(paramString1, paramString2);
-    return 0;
+    super.a(paramvsj);
+    paramvsj = this.a.values().iterator();
+    while (paramvsj.hasNext()) {
+      ((vsi)paramvsj.next()).a(this);
+    }
+  }
+  
+  public void a(vth paramvth)
+  {
+    super.a(paramvth);
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext()) {
+      ((vsi)localIterator.next()).a(paramvth);
+    }
+  }
+  
+  @Nullable
+  public vsi b(Class<? extends vsi> paramClass)
+  {
+    return (vsi)this.a.get(paramClass.getName());
+  }
+  
+  protected void b()
+  {
+    super.b();
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext()) {
+      ((vsi)localIterator.next()).b();
+    }
+  }
+  
+  public void c()
+  {
+    super.c();
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext()) {
+      ((vsi)localIterator.next()).c();
+    }
   }
 }
 

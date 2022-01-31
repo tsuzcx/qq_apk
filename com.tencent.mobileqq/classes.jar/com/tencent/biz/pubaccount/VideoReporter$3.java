@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount;
 
-import abot;
-import azvm;
+import abti;
+import azzv;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import nrt;
@@ -21,8 +21,8 @@ public final class VideoReporter$3
     if ((this.a.msgtype == -2011) && (!this.a.isSend()))
     {
       l1 = System.currentTimeMillis();
-      localazvm = swn.a(this.a);
-      if (localazvm != null) {
+      localazzv = swn.a(this.a);
+      if (localazzv != null) {
         localObject1 = "";
       }
     }
@@ -31,9 +31,9 @@ public final class VideoReporter$3
       try
       {
         localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("vid", localazvm.U);
+        ((JSONObject)localObject2).put("vid", localazzv.U);
         ((JSONObject)localObject2).put("os", "1");
-        if (!abot.d(this.a.istroop)) {
+        if (!abti.d(this.a.istroop)) {
           continue;
         }
         ((JSONObject)localObject2).put("aiotype", i);
@@ -46,10 +46,10 @@ public final class VideoReporter$3
         long l2;
         localException.printStackTrace();
         continue;
-        String str = localazvm.Z;
+        String str = localazzv.Z;
         continue;
       }
-      if (localazvm.Z != null) {
+      if (localazzv.Z != null) {
         continue;
       }
       localObject2 = "0";

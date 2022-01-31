@@ -35,7 +35,7 @@ public class cf
     //   24: aaload
     //   25: checkcast 24	android/net/Uri
     //   28: astore 12
-    //   30: getstatic 30	aljq:bs	Ljava/lang/String;
+    //   30: getstatic 30	alof:bs	Ljava/lang/String;
     //   33: astore 10
     //   35: aload 11
     //   37: invokevirtual 34	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
@@ -63,7 +63,7 @@ public class cf
     //   80: aload_1
     //   81: invokeinterface 57 1 0
     //   86: aload 10
-    //   88: invokestatic 62	bdcs:a	(Ljava/lang/String;)Z
+    //   88: invokestatic 62	bdhb:a	(Ljava/lang/String;)Z
     //   91: ifne +16 -> 107
     //   94: new 64	com/tencent/mm/vfs/VFSFile
     //   97: dup

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ahap;
+import ahfe;
 import android.widget.TextView;
 
 public class AddContactFindTroopRTLW$2
   implements Runnable
 {
-  public AddContactFindTroopRTLW$2(ahap paramahap) {}
+  public AddContactFindTroopRTLW$2(ahfe paramahfe) {}
   
   public void run()
   {
-    ahap.a(this.this$0).setVisibility(0);
+    ahfe.a(this.this$0).setVisibility(0);
   }
 }
 

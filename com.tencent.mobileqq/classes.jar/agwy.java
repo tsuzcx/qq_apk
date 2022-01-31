@@ -1,6 +1,24 @@
-public abstract interface agwy
+import android.graphics.RectF;
+
+public class agwy
 {
-  public abstract void a(agxh paramagxh);
+  public int a;
+  public agwz a;
+  public agxa a;
+  public RectF a;
+  
+  public agwy()
+  {
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_a_of_type_Agxa = new agxa(0.0D, 0.0D);
+    this.jdField_a_of_type_Agwz = new agwz(0.0D, 0.0D);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public String toString()
+  {
+    return "ItemStatus{rect=" + this.jdField_a_of_type_AndroidGraphicsRectF + ", velocity=" + this.jdField_a_of_type_Agxa + ", acceleration=" + this.jdField_a_of_type_Agwz + '}';
+  }
 }
 
 

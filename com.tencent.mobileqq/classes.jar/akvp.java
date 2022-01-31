@@ -1,27 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
 class akvp
-  implements Animation.AnimationListener
 {
-  akvp(akvo paramakvo, View paramView) {}
+  public ImageView a;
+  public TextView a;
+  public CornerImageView a;
+  public CornerImageView b;
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    paramAnimation = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimation.leftMargin = this.jdField_a_of_type_Akvo.e;
-    paramAnimation.topMargin = this.jdField_a_of_type_Akvo.f;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Akvo.a = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  akvp(akvo paramakvo) {}
 }
 
 

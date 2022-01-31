@@ -1,18 +1,34 @@
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class vut
-  extends vox
+public class vut<T>
+  extends SimpleObserver<T>
 {
-  public vut(AbsVideoInfoWidget paramAbsVideoInfoWidget) {}
+  private vut(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void g()
+  public void onCancel()
   {
-    super.g();
-    if (this.a.jdField_b_of_type_Boolean)
-    {
-      AbsVideoInfoWidget.a(this.a);
-      wsv.b(this.a.jdField_b_of_type_JavaLangString, "destroy by activity");
-    }
+    super.onCancel();
+    wxe.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  CANCEL", new Object[] { this.b.b });
+    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
+    this.b.b = null;
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    wxe.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  ERROR", new Object[] { this.b.b });
+    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
+    this.b.b = null;
+  }
+  
+  public void onNext(T paramT)
+  {
+    super.onNext(paramT);
+    wxe.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s] DONE", new Object[] { this.b.b });
+    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
+    this.b.b = null;
   }
 }
 

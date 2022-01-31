@@ -1,112 +1,71 @@
+import android.app.Activity;
 import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StReply;
-import java.util.HashMap;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.component.ComponentBaseFragment;
 
 public class tyx
+  extends tvv
+  implements View.OnClickListener
 {
-  public static final String a;
-  private static tyx jdField_a_of_type_Tyx;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private tys jdField_a_of_type_Tys;
   
-  static
+  public tyx(tys paramtys)
   {
-    jdField_a_of_type_JavaLangString = tyx.class.getSimpleName();
+    this.jdField_a_of_type_Tys = paramtys;
   }
   
-  private String a(String paramString1, String paramString2, String paramString3)
+  public String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      localStringBuilder.append(paramString1);
-      if (TextUtils.isEmpty(paramString2)) {
-        break label78;
-      }
-      localStringBuilder.append("&&").append(paramString2);
-      label42:
-      if (TextUtils.isEmpty(paramString3)) {
-        break label94;
-      }
-      localStringBuilder.append("&&").append(paramString3);
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      localStringBuilder.append("0");
-      break;
-      label78:
-      localStringBuilder.append("&&").append("0");
-      break label42;
-      label94:
-      localStringBuilder.append("&&").append("0");
-    }
+    return "QCirclePublicTitleBarPart";
   }
   
-  public static tyx a()
+  protected void a(View paramView)
   {
-    if (jdField_a_of_type_Tyx == null) {}
-    try
+    TextView localTextView;
+    if (paramView != null)
     {
-      if (jdField_a_of_type_Tyx == null) {
-        jdField_a_of_type_Tyx = new tyx();
-      }
-      return jdField_a_of_type_Tyx;
-    }
-    finally {}
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "storeComment storeKey: " + paramString1 + " comment: " + paramString2);
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
-  }
-  
-  private String b(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply)
-  {
-    if (paramStFeed != null)
-    {
-      paramStFeed = paramStFeed.id.get();
-      if (paramStComment == null) {
-        break label50;
-      }
-      paramStComment = paramStComment.id.get();
-      label24:
-      if (paramStReply == null) {
-        break label56;
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366460));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368709));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379043));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+      if (this.jdField_a_of_type_Tys != null)
+      {
+        localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+        if (TextUtils.isEmpty(this.jdField_a_of_type_Tys.getTitle())) {
+          break label109;
+        }
       }
     }
-    label50:
-    label56:
-    for (paramStReply = paramStReply.id.get();; paramStReply = "")
+    label109:
+    for (paramView = this.jdField_a_of_type_Tys.getTitle();; paramView = "")
     {
-      return a(paramStFeed, paramStComment, paramStReply);
-      paramStFeed = "";
-      break;
-      paramStComment = "";
-      break label24;
+      localTextView.setText(paramView);
+      this.jdField_a_of_type_Tys.initTitleBar(this.jdField_a_of_type_AndroidWidgetFrameLayout);
+      return;
     }
   }
   
-  public String a(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply)
+  public void onClick(View paramView)
   {
-    paramStFeed = b(paramStFeed, paramStComment, paramStReply);
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramStFeed))
+    switch (paramView.getId())
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "getComment storeKey: " + paramStFeed + " preCommentText: " + (String)this.jdField_a_of_type_JavaUtilMap.get(paramStFeed));
-      return (String)this.jdField_a_of_type_JavaUtilMap.get(paramStFeed);
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "getComment storeKey: " + paramStFeed + " preCommentText doesn't exit");
-    return "";
-  }
-  
-  public void a(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply, String paramString)
-  {
-    a(b(paramStFeed, paramStComment, paramStReply), paramString);
+    do
+    {
+      return;
+      if ((!a().onBackEvent()) && (a() != null)) {
+        a().finish();
+      }
+    } while ((!yxv.a("QCirclePublicTitleBarPart")) || (this.jdField_a_of_type_Tys == null));
+    this.jdField_a_of_type_Tys.onDoubleClickTitle();
   }
 }
 

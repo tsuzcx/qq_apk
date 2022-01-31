@@ -1,62 +1,30 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+
 public class azee
 {
-  double a;
+  public int a;
+  baub jdField_a_of_type_Baub;
+  public String a;
+  public ArrayList<azef> a;
+  public int b = 0;
   
-  azee(double paramDouble)
+  public azee(ShortVideoResourceManager paramShortVideoResourceManager, baub parambaub)
   {
-    this.a = paramDouble;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+    this.jdField_a_of_type_Baub = parambaub;
+    this.b = 0;
   }
   
-  public boolean a(int[][] paramArrayOfInt)
+  public void a()
   {
-    double d2 = 0.0D;
-    int k = paramArrayOfInt.length;
-    int m = paramArrayOfInt[0].length;
-    double[] arrayOfDouble1 = new double[k];
-    double[] arrayOfDouble2 = new double[m];
-    double d1 = 0.0D;
-    int i = 0;
-    int j;
-    while (i < k)
-    {
-      j = 0;
-      while (j < m)
-      {
-        arrayOfDouble1[i] += paramArrayOfInt[i][j];
-        d1 += paramArrayOfInt[i][j];
-        j += 1;
-      }
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoResourceManager", 2, "HttpEngineTask[start]: " + this);
     }
-    i = 0;
-    while (i < m)
-    {
-      j = 0;
-      while (j < k)
-      {
-        arrayOfDouble2[i] += paramArrayOfInt[j][i];
-        j += 1;
-      }
-      i += 1;
-    }
-    i = 0;
-    while (i < k)
-    {
-      j = 0;
-      while (j < m)
-      {
-        double d4 = 1.0D * arrayOfDouble1[i] * arrayOfDouble2[j] / d1;
-        double d5 = paramArrayOfInt[i][j];
-        double d3 = d2;
-        if (d4 > 0.0D) {
-          d3 = d2 + (d4 - d5) * (d4 - d5) / d4;
-        }
-        j += 1;
-        d2 = d3;
-      }
-      i += 1;
-    }
-    return d2 > this.a + 1.0E-008D;
+    this.b = 1;
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager).getNetEngine(0).a(this.jdField_a_of_type_Baub);
   }
 }
 

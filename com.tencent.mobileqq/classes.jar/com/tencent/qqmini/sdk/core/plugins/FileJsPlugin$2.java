@@ -2,14 +2,14 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
-import bghn;
-import bgjm;
-import bgkd;
-import bgkv;
-import bgkz;
-import bgxw;
-import bgxy;
-import bgyd;
+import bglu;
+import bgnt;
+import bgok;
+import bgpc;
+import bgpg;
+import bhcd;
+import bhcf;
+import bhck;
 import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.io.File;
@@ -22,14 +22,14 @@ import org.json.JSONObject;
 class FileJsPlugin$2
   implements DownloaderProxy.DownloadListener
 {
-  FileJsPlugin$2(FileJsPlugin paramFileJsPlugin, String paramString1, bgkd parambgkd, long paramLong, String paramString2, String paramString3, JSONObject paramJSONObject, String paramString4) {}
+  FileJsPlugin$2(FileJsPlugin paramFileJsPlugin, String paramString1, bgok parambgok, long paramLong, String paramString2, String paramString3, JSONObject paramJSONObject, String paramString4) {}
   
   private void reportDownloadFileResult(long paramLong, int paramInt)
   {
     if (this.this$0.mIsMiniGame) {}
     for (String str = "1";; str = "0")
     {
-      bgyd.a(this.this$0.mMiniAppInfo, 640, null, null, null, paramInt, str, paramLong, null);
+      bhck.a(this.this$0.mMiniAppInfo, 640, null, null, null, paramInt, str, paramLong, null);
       return;
     }
   }
@@ -46,8 +46,8 @@ class FileJsPlugin$2
       localJSONObject.put("errMsg", "Download Failed." + paramString);
       this.val$req.a.a("onDownloadTaskStateChange", localJSONObject.toString(), 0);
       reportDownloadFileResult(System.currentTimeMillis() - this.val$startMS, paramInt);
-      bgxw.a(this.this$0.mMiniAppInfo, 0, System.currentTimeMillis() - this.val$startMS, true);
-      bgxy.a(this.this$0.mMiniAppInfo, this.val$reportUrl, System.currentTimeMillis() - this.val$startMS, paramInt, 0);
+      bhcd.a(this.this$0.mMiniAppInfo, 0, System.currentTimeMillis() - this.val$startMS, true);
+      bhcf.a(this.this$0.mMiniAppInfo, this.val$reportUrl, System.currentTimeMillis() - this.val$startMS, paramInt, 0);
       return;
     }
     catch (Exception paramString)
@@ -64,7 +64,7 @@ class FileJsPlugin$2
     new JSONObject();
     try
     {
-      paramMap = bgkz.a(paramMap);
+      paramMap = bgpg.a(paramMap);
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("downloadTaskId", this.val$downloadId);
       localJSONObject.put("statusCode", 200);
@@ -160,7 +160,7 @@ class FileJsPlugin$2
             if (((File)localObject3).length() > 0L)
             {
               QMLog.w("FileJsPlugin", "download Succeed but target file not exists, try copy from download tmp file:" + paramString + ", length:" + ((File)localObject3).length() + ", to:" + this.val$filePath);
-              localObject2 = bgkv.a(this.val$filePath);
+              localObject2 = bgpc.a(this.val$filePath);
               localObject1 = localObject2;
             }
           }
@@ -176,7 +176,7 @@ class FileJsPlugin$2
       }
       try
       {
-        if ((!bgkv.b((File)localObject3, (File)localObject1)) || (!((File)localObject1).exists()) || (((File)localObject1).length() != ((File)localObject3).length())) {
+        if ((!bgpc.b((File)localObject3, (File)localObject1)) || (!((File)localObject1).exists()) || (((File)localObject1).length() != ((File)localObject3).length())) {
           continue;
         }
         QMLog.i("FileJsPlugin", "copy from download tmp file:" + paramString + " success");
@@ -246,10 +246,10 @@ class FileJsPlugin$2
             break label1161;
           }
           paramString = (String)localObject2 + "." + paramString;
-          if (!bgkv.b(this.val$filePath, paramString)) {
+          if (!bgpc.b(this.val$filePath, paramString)) {
             break label1161;
           }
-          bgkv.a(this.val$filePath);
+          bgpc.a(this.val$filePath);
           localObject2 = paramString;
         }
         catch (Throwable paramString)
@@ -268,7 +268,7 @@ class FileJsPlugin$2
         paramString = new JSONObject();
         try
         {
-          paramMap = bgkz.a(paramMap);
+          paramMap = bgpg.a(paramMap);
           paramString = paramMap;
         }
         catch (Exception paramMap)
@@ -285,13 +285,13 @@ class FileJsPlugin$2
         if ((!this.val$reqParamObj.isNull("filePath")) && (!TextUtils.isEmpty(this.val$reqParamObj.optString("filePath")))) {
           break label1032;
         }
-        paramMap.put("tempFilePath", bgjm.a().e((String)localObject2));
+        paramMap.put("tempFilePath", bgnt.a().e((String)localObject2));
         paramMap.put("header", paramString);
         paramMap.put("state", "success");
         this.val$req.a.a("onDownloadTaskStateChange", paramMap.toString(), 0);
         reportDownloadFileResult(System.currentTimeMillis() - this.val$startMS, paramInt);
-        bgxw.a(this.this$0.mMiniAppInfo, 0, System.currentTimeMillis() - this.val$startMS, false);
-        bgxy.a(this.this$0.mMiniAppInfo, this.val$reportUrl, System.currentTimeMillis() - this.val$startMS, paramInt, 0);
+        bhcd.a(this.this$0.mMiniAppInfo, 0, System.currentTimeMillis() - this.val$startMS, false);
+        bhcf.a(this.this$0.mMiniAppInfo, this.val$reportUrl, System.currentTimeMillis() - this.val$startMS, paramInt, 0);
         return;
         localObject2 = localObject1;
         if (!((File)localObject1).exists()) {

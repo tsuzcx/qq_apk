@@ -1,15 +1,15 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import blib;
+import blmk;
 
 class AEEditorCommonEditFragment$4
   implements Runnable
 {
-  AEEditorCommonEditFragment$4(AEEditorCommonEditFragment paramAEEditorCommonEditFragment, String[] paramArrayOfString) {}
+  AEEditorCommonEditFragment$4(AEEditorCommonEditFragment paramAEEditorCommonEditFragment, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.this$0.a.a(this.a);
+    this.this$0.a.a(this.a, this.b);
   }
 }
 

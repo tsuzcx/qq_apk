@@ -1,12 +1,16 @@
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.1.1;
 
 public class uym
-  extends ugz
+  implements vdk
 {
-  public ShareGroupItem a;
-  public String a;
-  public List<ShareGroupItem> a;
+  uym(uyl paramuyl) {}
+  
+  public void a(vdl paramvdl)
+  {
+    wxe.a("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "Update UserItems %s", paramvdl);
+    this.a.a.post(new MsgTabNodeListLoader.1.1(this, paramvdl));
+  }
 }
 
 

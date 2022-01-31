@@ -1,60 +1,27 @@
-import android.support.annotation.NonNull;
+import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import cooperation.qzone.util.QZLog;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import feedcloud.FeedCloudMeta.StComment;
 import feedcloud.FeedCloudMeta.StFeed;
-import java.util.Map;
+import feedcloud.FeedCloudWrite.StDoTopRsp;
 
-public class tus
-  extends QQUIEventReceiver<tuk, ttq>
+class tus
+  implements zac<FeedCloudWrite.StDoTopRsp>
 {
-  public tus(@NonNull tuk paramtuk)
-  {
-    super(paramtuk);
-  }
+  tus(tuk paramtuk, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment) {}
   
-  public void a(@NonNull tuk paramtuk, @NonNull ttq paramttq)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoTopRsp paramStDoTopRsp)
   {
-    switch (paramttq.jdField_a_of_type_Int)
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoTopRsp == null))
     {
-    case 4: 
-    case 5: 
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-      FeedCloudMeta.StFeed localStFeed;
-      int i;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramtuk.g();
-            return;
-            paramtuk.h();
-            return;
-            tuk.a(paramtuk, false);
-            tuk.a(paramtuk, null);
-            tuk.a(paramtuk, null);
-          } while (!(paramttq.jdField_a_of_type_JavaLangObject instanceof Object[]));
-          paramttq = (Object[])paramttq.jdField_a_of_type_JavaLangObject;
-        } while ((paramttq.length < 2) || (!(paramttq[0] instanceof FeedCloudMeta.StFeed)) || (!(paramttq[1] instanceof Integer)));
-        localStFeed = (FeedCloudMeta.StFeed)paramttq[0];
-        i = ((Integer)paramttq[1]).intValue();
-      } while (!paramtuk.a(localStFeed));
-      tuk.c(paramtuk).put(Integer.valueOf(i), localStFeed);
-      QZLog.i(this.TAG, 1, "EVENT_SET_COMMENT_DATA, position:" + i + ", cellId:" + localStFeed.id.get());
+      QLog.e(tuk.a(), 1, "stickyFeedComment error:" + paramLong + "  errorMsg:" + paramString);
       return;
     }
-    tuk.a(paramtuk, (Object[])paramttq.jdField_a_of_type_JavaLangObject);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return ttq.class;
+    QLog.d(tuk.a(), 1, "sticky Success");
+    tuk.a(this.jdField_a_of_type_Tuk, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get());
+    yiw.a().a(new QCircleCommentUpdateEvent(6, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Tuk.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get())));
+    umc.a().dispatch(this.jdField_a_of_type_Tuk.a(new Object[] { Integer.valueOf(9), Long.valueOf(paramLong), paramString, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get(), Integer.valueOf(this.jdField_a_of_type_Tuk.hashCode()) }));
   }
 }
 

@@ -1,8 +1,12 @@
-public class avnw
-  extends avnx
+class avnw
+  implements bhum
 {
-  public String a;
-  public String b;
+  avnw(avnl paramavnl) {}
+  
+  public void onDismiss()
+  {
+    avnl.a(this.a, this.a.b, false);
+  }
 }
 
 

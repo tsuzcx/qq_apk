@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alpo;
+import alud;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -417,7 +417,7 @@ public class FileJsPlugin
         if (!this.jsPluginEngine.appBrandRuntime.getApkgInfo().isDomainValid(bool, (String)localObject5, 3))
         {
           QLog.w("[mini] FileJsPlugin", 1, "check upload DomainValid fail, callbackFail, event:" + paramString1 + ", callbackId:" + paramInt + ", url:" + (String)localObject5);
-          return ApiUtil.wrapCallbackFail(paramString1, null, alpo.a(2131704902)).toString();
+          return ApiUtil.wrapCallbackFail(paramString1, null, alud.a(2131704914)).toString();
         }
         if (TextUtils.isEmpty(str2))
         {

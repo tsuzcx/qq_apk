@@ -1,15 +1,35 @@
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+
 public class aiwz
+  implements TextWatcher
 {
-  public int a;
-  public long a;
-  public String a;
+  public aiwz(TransactionActivity paramTransactionActivity) {}
   
-  public aiwz(String paramString, long paramLong, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    if (TransactionActivity.b(this.a).getText().length() > 4) {
+      if (!TransactionActivity.b(this.a).isEnabled())
+      {
+        TransactionActivity.b(this.a).setEnabled(true);
+        TransactionActivity.b(this.a).setClickable(true);
+        this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.enable", "", "", TransactionActivity.b(this.a), "");
+      }
+    }
+    while (!TransactionActivity.b(this.a).isEnabled()) {
+      return;
+    }
+    TransactionActivity.b(this.a).setClickable(false);
+    TransactionActivity.b(this.a).setEnabled(false);
+    this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.disable", "", "", TransactionActivity.b(this.a), "");
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,40 +1,14 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajvb
-  extends awdn
+final class ajvb
+  implements ajvc
 {
-  public ajvb(PhoneContactTabView paramPhoneContactTabView) {}
+  ajvb(QQAppInterface paramQQAppInterface, int paramInt, String paramString) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    this.a.a.unRegistObserver(this);
-    switch (PhoneContactTabView.a(this.a).d())
-    {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    default: 
-      PhoneContactTabView.b(this.a);
-      return;
-    case 9: 
-      this.a.d();
-      return;
-    case 0: 
-    case 1: 
-    case 5: 
-    case 7: 
-      PhoneContactTabView.a(this.a);
-      return;
-    }
-    if (PhoneContactTabView.a(this.a).a().lastUsedFlag == 2L)
-    {
-      this.a.d();
-      return;
-    }
-    PhoneContactTabView.a(this.a);
+    ajva.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, paramString);
+    return true;
   }
 }
 

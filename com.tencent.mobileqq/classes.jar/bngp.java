@@ -1,6 +1,15 @@
-public abstract interface bngp
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bngp
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  bngp(bngl parambngl) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

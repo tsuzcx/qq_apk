@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.activity.Contacts;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class acmq
-  extends ambt
+  implements View.OnClickListener
 {
-  public acmq(Contacts paramContacts) {}
+  public acmq(ChatHistory paramChatHistory) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendVerification.manager", 2, "ui.onGetAddFriendBlockedRedPoint, success=" + paramBoolean1 + ",blockedUin=" + paramString);
+    long l = System.currentTimeMillis();
+    if (l - this.a.b > 1000L)
+    {
+      this.a.b = l;
+      this.a.b();
+      azqs.b(this.a.app, "CliOper", "", "", "0X800568D", "0X800568D", this.a.k, 0, "", "", "", "");
     }
-    ((altc)this.a.a.getManager(34)).c();
   }
 }
 

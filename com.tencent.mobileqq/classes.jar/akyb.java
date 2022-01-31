@@ -1,57 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-final class akyb
-  implements akxj
+public class akyb
+  implements TVK_SDKMgr.InstallListener
 {
-  akyb(CmShowRenderView paramCmShowRenderView) {}
+  public akyb(CmGameAppInterface paramCmGameAppInterface) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onInstallProgress(float paramFloat)
   {
-    QLog.i("CmShowTest", 1, "onViewReady w:" + paramInt1);
-    this.a.a("1669140032", "1174992642", 1.0F, 0, null);
-    akxz.a(this.a);
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstallProgress] v:" + paramFloat);
   }
   
-  public void a(int paramInt, String paramString)
+  public void onInstalledFailed(int paramInt)
   {
-    QLog.i("CmShowTest", 1, "onClick apolloId:" + paramString);
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledFailed], i:" + paramInt);
   }
   
-  public void a(String paramString)
+  public void onInstalledSuccessed()
   {
-    QLog.i("CmShowTest", 1, "onLongTouch name:" + paramString);
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledSuccessed]");
   }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    QLog.i("CmShowTest", 1, "onActionStart actionId:" + paramInt1);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle)
-  {
-    QLog.i("CmShowTest", 1, "onActionComplete actionId:" + paramInt1 + " actionSeqId:" + paramInt2 + " playFragment:" + paramInt3);
-    if (paramInt2 == 100)
-    {
-      akxz.b(this.a);
-      return;
-    }
-    if (paramInt2 == 101)
-    {
-      if (akxz.a() < 3)
-      {
-        akxz.b();
-        akxz.b(this.a);
-        return;
-      }
-      akxz.c(this.a);
-      return;
-    }
-    akxz.a(0);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt) {}
 }
 
 

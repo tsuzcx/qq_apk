@@ -1,28 +1,40 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.ChatHistoryViewBase.1;
 
-public class acoj
-  implements ajgx
+public abstract class acoj
 {
-  private final int jdField_a_of_type_Int = -2147483648;
+  public ChatHistoryFileActivity a;
+  public boolean i = true;
   
-  private acoj(Conversation paramConversation) {}
+  public abstract View a();
   
-  public void a(int paramInt, List<RecentBaseData> paramList) {}
+  public void a(int paramInt) {}
   
-  public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
+  public void a(long paramLong) {}
+  
+  public void b() {}
+  
+  public abstract boolean b();
+  
+  public void c() {}
+  
+  protected boolean c()
   {
-    if (paramDragFrameLayout.a() == -1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b.sendEmptyMessage(10);
-      FrameHelperActivity.c(true);
-      return;
-    }
-    FrameHelperActivity.c(false);
+    return this.i;
+  }
+  
+  public void d() {}
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  protected void k()
+  {
+    this.i = false;
+    new Handler().postDelayed(new ChatHistoryViewBase.1(this), 1500L);
   }
 }
 

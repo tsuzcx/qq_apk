@@ -1,18 +1,15 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
+import java.util.List;
 
-final class ajyh
-  implements DialogInterface.OnClickListener
+public class ajyh
+  extends banl
 {
-  ajyh(boolean paramBoolean, BaseActivity paramBaseActivity) {}
+  public ajyh(TextPreviewMenu paramTextPreviewMenu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, List<String> paramList)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-    }
+    TextPreviewMenu.b(this.a);
+    TextPreviewMenu.a(this.a, paramList);
   }
 }
 

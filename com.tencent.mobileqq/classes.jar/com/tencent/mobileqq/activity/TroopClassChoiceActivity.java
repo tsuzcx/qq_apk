@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import adxv;
-import adxw;
+import aeck;
+import aecl;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import bcru;
-import bcrv;
-import bexd;
-import bfjf;
-import bhqp;
+import bcwd;
+import bcwe;
+import bfbm;
+import bfno;
+import bhuw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.widget.AdapterView;
@@ -19,43 +19,43 @@ import java.util.ArrayList;
 
 public class TroopClassChoiceActivity
   extends IphoneTitleBarActivity
-  implements bhqp
+  implements bhuw
 {
-  private adxw jdField_a_of_type_Adxw;
-  public bcru a;
+  private aecl jdField_a_of_type_Aecl;
+  public bcwd a;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   String jdField_a_of_type_JavaLangString;
-  public ArrayList<bcru> a;
+  public ArrayList<bcwd> a;
   private String b;
   
   private void b()
   {
     Object localObject = getIntent();
     this.b = String.valueOf(((Intent)localObject).getStringExtra("troopGroupClassExt"));
-    bcru localbcru = bcrv.a(this).a();
-    if ((localbcru != null) && (this.b.equals(localbcru.b)))
+    bcwd localbcwd = bcwe.a(this).a();
+    if ((localbcwd != null) && (this.b.equals(localbcwd.b)))
     {
-      this.jdField_a_of_type_Bcru = localbcru;
+      this.jdField_a_of_type_Bcwd = localbcwd;
       this.jdField_a_of_type_JavaLangString = ((Intent)localObject).getStringExtra("id");
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         break label113;
       }
-      this.jdField_a_of_type_JavaUtilArrayList = bcrv.a(this).a();
+      this.jdField_a_of_type_JavaUtilArrayList = bcwe.a(this).a();
     }
     for (;;)
     {
-      bfjf.a(bexd.a().a());
+      bfno.a(bfbm.a().a());
       a();
       return;
-      this.jdField_a_of_type_Bcru = bcrv.a(this).a(this, this.b);
+      this.jdField_a_of_type_Bcwd = bcwe.a(this).a(this, this.b);
       break;
       label113:
-      this.jdField_a_of_type_JavaUtilArrayList = bcrv.a(this).a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilArrayList = bcwe.a(this).a(this.jdField_a_of_type_JavaLangString);
       if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
       {
-        localObject = (bcru)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        if (((bcru)localObject).jdField_a_of_type_Bcru != null) {
-          setTitle(((bcru)localObject).jdField_a_of_type_Bcru.jdField_a_of_type_JavaLangString);
+        localObject = (bcwd)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        if (((bcwd)localObject).jdField_a_of_type_Bcwd != null) {
+          setTitle(((bcwd)localObject).jdField_a_of_type_Bcwd.jdField_a_of_type_JavaLangString);
         }
       }
     }
@@ -63,16 +63,16 @@ public class TroopClassChoiceActivity
   
   private void c()
   {
-    setContentBackgroundResource(2130838591);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131378240));
+    setContentBackgroundResource(2130838592);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131378294));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Adxw = new adxw(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Adxw);
+    this.jdField_a_of_type_Aecl = new aecl(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aecl);
   }
   
   public void a()
   {
-    bcrv.a(BaseApplicationImpl.getContext()).a(this.b, new adxv(this));
+    bcwe.a(BaseApplicationImpl.getContext()).a(this.b, new aeck(this));
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -87,15 +87,15 @@ public class TroopClassChoiceActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131562733);
-    setTitle(2131720976);
+    super.setContentView(2131562751);
+    setTitle(2131720988);
     b();
     c();
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (bcru)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramAdapterView = (bcwd)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     if ((paramAdapterView.jdField_a_of_type_JavaUtilArrayList != null) && (paramAdapterView.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (!paramAdapterView.b.equals("10015")) && (!paramAdapterView.b.equals("10017")))
     {
       paramView = new Intent(this, TroopClassChoiceActivity.class);
@@ -104,7 +104,7 @@ public class TroopClassChoiceActivity
       startActivityForResult(paramView, 11);
       return;
     }
-    bcrv.a(this).a(paramAdapterView);
+    bcwe.a(this).a(paramAdapterView);
     paramView = new Intent();
     paramView.putExtra("id", paramAdapterView.b);
     setResult(-1, paramView);

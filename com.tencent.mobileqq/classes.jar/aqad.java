@@ -1,18 +1,47 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+import com.tencent.mobileqq.emotionintegrate.SearchEmoticonFragment;
+import com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class aqad
-  implements Parcelable.Creator<ExtendFriendProfileEditFragment.ExtendFriendInfo>
+public class aqad
+  extends WebViewPlugin
 {
-  public ExtendFriendProfileEditFragment.ExtendFriendInfo a(Parcel paramParcel)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    return new ExtendFriendProfileEditFragment.ExtendFriendInfo(paramParcel);
-  }
-  
-  public ExtendFriendProfileEditFragment.ExtendFriendInfo[] a(int paramInt)
-  {
-    return new ExtendFriendProfileEditFragment.ExtendFriendInfo[paramInt];
+    boolean bool = false;
+    if ((!"emoticon".equals(paramString2)) || (("showEmoticon".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))) {}
+    try
+    {
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+      paramString1 = new SearchEmoticonWebBean();
+      paramString1.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("emt_name", "");
+      paramString1.jdField_b_of_type_JavaLangString = paramJsBridgeListener.optString("emt_oriUrl", "");
+      paramString1.jdField_c_of_type_JavaLangString = paramJsBridgeListener.optString("emt_oriMd5", "");
+      paramString1.jdField_a_of_type_Int = paramJsBridgeListener.optInt("emt_oriFileSize", 0);
+      paramString1.jdField_b_of_type_Int = paramJsBridgeListener.optInt("emt_oriWidth", 0);
+      paramString1.jdField_c_of_type_Int = paramJsBridgeListener.optInt("emt_oriHeight", 0);
+      paramString1.jdField_d_of_type_Int = paramJsBridgeListener.optInt("emt_type", 0);
+      paramString1.jdField_d_of_type_JavaLangString = paramJsBridgeListener.optString("emt_packCoverUrl", "");
+      paramString1.e = paramJsBridgeListener.optString("emt_packId", "");
+      paramString1.f = paramJsBridgeListener.optString("emt_packName", "");
+      paramString1.g = paramJsBridgeListener.optString("emt_miniId", "");
+      paramString1.h = paramJsBridgeListener.optString("emt_miniName", "");
+      SearchEmoticonFragment.a(this.mRuntime.a(), paramString1);
+      bool = true;
+      return bool;
+    }
+    catch (JSONException paramJsBridgeListener)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("EmoticonPlugin", 2, "showEmoticon error : " + bhsw.a(paramJsBridgeListener));
+        }
+      }
+    }
   }
 }
 

@@ -1,37 +1,33 @@
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class asuz
-  extends WtloginListener
+public class asuz
+  extends MSFServlet
 {
-  asuz(asuy paramasuy, String paramString) {}
-  
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
-    if (QLog.isColorLevel()) {
-      QLog.i("XProxy", 2, "获取Now结合版A1票据返回异常，cmd = " + paramInt + " errmsg = " + paramErrMsg.getMessage());
+    AppRuntime localAppRuntime = getAppRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface))) {
+      asub.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
     }
-    asuy.a(this.jdField_a_of_type_Asuy, this.jdField_a_of_type_JavaLangString, false, paramInt);
   }
   
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (paramInt2 == 0)
+    if (paramIntent == null)
     {
-      this.jdField_a_of_type_Asuy.jdField_a_of_type_Asvb.a = this.jdField_a_of_type_Asuy.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
-      this.jdField_a_of_type_Asuy.jdField_a_of_type_Long = System.currentTimeMillis();
-      asuy.a(this.jdField_a_of_type_Asuy, this.jdField_a_of_type_JavaLangString, true, 0);
+      QLog.e("HotPicServlet", 1, "onSend : req is null");
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("XProxy", 2, "获取Now结合版A1票据返回失败，retCode = " + paramInt2);
-    }
-    asuy.a(this.jdField_a_of_type_Asuy, this.jdField_a_of_type_JavaLangString, false, paramInt2);
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
+    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
+    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
   }
 }
 

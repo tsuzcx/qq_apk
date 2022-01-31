@@ -1,16 +1,53 @@
-import com.tencent.mobileqq.richstatus.RichStatus;
-
-public abstract interface axxl
+public abstract class axxl
 {
-  public abstract void a(int paramInt, RichStatus paramRichStatus, Object paramObject);
+  public static final String a;
+  public long a;
+  private String b;
   
-  public abstract void a(int paramInt, boolean paramBoolean);
+  static
+  {
+    jdField_a_of_type_JavaLangString = axqt.jdField_a_of_type_JavaLangString;
+  }
   
-  public abstract void b(int paramInt, boolean paramBoolean);
+  public axxl(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  private void a()
+  {
+    if (this.b == null) {
+      this.b = (jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long + "/");
+    }
+  }
+  
+  public final String a()
+  {
+    a();
+    return this.b + "thumb.jpg";
+  }
+  
+  public final String b()
+  {
+    a();
+    return this.b + "combine.mp4";
+  }
+  
+  public final String c()
+  {
+    a();
+    return this.b + "audio.mp4";
+  }
+  
+  public String d()
+  {
+    a();
+    return this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axxl
  * JD-Core Version:    0.7.0.1
  */

@@ -8,24 +8,24 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import zpa;
-import zsn;
-import ztk;
+import ztp;
+import zxc;
+import zxz;
 
 public class DevLittleVideoItemBuilder$6
   implements Runnable
 {
-  public DevLittleVideoItemBuilder$6(zsn paramzsn, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
+  public DevLittleVideoItemBuilder$6(zxc paramzxc, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
   
   public void run()
   {
-    zpa localzpa = (zpa)this.this$0.a.a(51);
-    ztk localztk = (ztk)this.this$0.a.a(49);
+    ztp localztp = (ztp)this.this$0.a.a(51);
+    zxz localzxz = (zxz)this.this$0.a.a(49);
     for (;;)
     {
-      synchronized (localztk.b)
+      synchronized (localzxz.b)
       {
-        Iterator localIterator = localztk.b.entrySet().iterator();
+        Iterator localIterator = localzxz.b.entrySet().iterator();
         if (localIterator.hasNext())
         {
           if (((MessageRecord)((Map.Entry)localIterator.next()).getValue()).uniseq != this.a.uniseq) {
@@ -34,8 +34,8 @@ public class DevLittleVideoItemBuilder$6
           i = 1;
           if ((i == 0) && (!TextUtils.isEmpty(this.a.videoFileKey)))
           {
-            long l = localzpa.a(this.a.videoFileKey, this.a.fileKey2, 2201);
-            localztk.b.put(Long.valueOf(l), this.a);
+            long l = localztp.a(this.a.videoFileKey, this.a.fileKey2, 2201);
+            localzxz.b.put(Long.valueOf(l), this.a);
           }
           return;
         }

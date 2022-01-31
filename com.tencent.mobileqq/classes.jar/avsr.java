@@ -1,16 +1,9 @@
-public abstract interface avsr
+public class avsr
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
+  public int a;
+  public int b;
+  public int c;
+  public int d;
 }
 
 

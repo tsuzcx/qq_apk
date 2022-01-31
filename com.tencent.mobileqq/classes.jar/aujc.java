@@ -1,42 +1,66 @@
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardFragment.ReportRunnable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Map;
 
 public class aujc
-  implements auie
+  extends auix
 {
-  public aujc(MultiCardFragment paramMultiCardFragment) {}
+  public static String b = alof.aX + "ptt" + File.separator;
+  private static final String c = bbck.a(aujk.jdField_a_of_type_JavaLangString + "ptt" + File.separator);
+  private String d = (String)this.jdField_a_of_type_JavaUtilMap.get("md5");
+  private String e = (String)this.jdField_a_of_type_JavaUtilMap.get("uuid");
+  private String f = (String)this.jdField_a_of_type_JavaUtilMap.get("selfuin");
   
-  public void a(int paramInt)
+  public aujc(MsgBackupResEntity paramMsgBackupResEntity)
   {
+    super(paramMsgBackupResEntity);
+    if (this.d == null) {
+      this.d = "";
+    }
+    if (this.e == null) {
+      this.e = "";
+    }
+    if (this.f == null) {
+      this.f = "";
+    }
+    if ((TextUtils.isEmpty(this.d)) || (TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.f))) {
+      a("md5:" + this.d + " mUUID:" + this.e + " mSelfuin:" + this.f);
+    }
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    return bbck.a(b + paramString2 + File.separator + paramString1);
+  }
+  
+  public augw a()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
+    String str = a();
+    boolean bool = a(str);
     if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "Indicator onPageScrollStateChanged() called with: state = [" + paramInt + "]");
+      a("getResDownloadObject,entity:" + ((MsgBackupResEntity)localObject).toLogString() + " tempPath:" + str + " exist:" + bool);
     }
-    switch (paramInt)
+    localObject = new augw();
+    if (!bool) {}
+    for (bool = true;; bool = false)
     {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return;
-          MultiCardFragment.a(this.a);
-          MultiCardFragment.a(this.a, true);
-        } while ((MultiCardFragment.a(this.a) == null) || (MultiCardFragment.a(this.a).a() <= MultiCardFragment.a(this.a).a()));
-        MultiCardFragment.a(this.a).b(MultiCardFragment.a(this.a).a());
-        MultiCardFragment.a(this.a).a();
-        return;
-        MultiCardFragment.b(this.a, true);
-        MultiCardFragment.a(this.a, false);
-      } while (MultiCardFragment.a(this.a) == null);
-      MultiCardFragment.a(this.a, MultiCardFragment.a(this.a).a());
-      return;
+      ((augw)localObject).jdField_a_of_type_Boolean = bool;
+      ((augw)localObject).jdField_a_of_type_JavaLangString = str;
+      return localObject;
     }
-    MultiCardFragment.b(this.a, true);
-    MultiCardFragment.a(this.a, false);
+  }
+  
+  public String a()
+  {
+    return c + this.d + this.e + this.f;
+  }
+  
+  public String b()
+  {
+    return a(this.d, this.f);
   }
 }
 

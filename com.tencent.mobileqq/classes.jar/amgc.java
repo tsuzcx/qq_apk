@@ -1,45 +1,16 @@
-import IMMsgBodyPack.SlaveMasterMsg;
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
-import com.qq.taf.jce.JceInputStream;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class amgc
-  extends abnx
+class amgc
+  implements BusinessObserver
 {
-  public amgc(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
-  {
-    super(paramQQAppInterface, paramMessageHandler);
-  }
+  amgc(amgb paramamgb) {}
   
-  private boolean a(MsgInfo paramMsgInfo)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    JceInputStream localJceInputStream = new JceInputStream(paramMsgInfo.vMsg);
-    SlaveMasterMsg localSlaveMasterMsg = new SlaveMasterMsg();
-    localSlaveMasterMsg.readFrom(localJceInputStream);
-    if (((int)localSlaveMasterMsg.uMsgType == 529) && (4L == localSlaveMasterMsg.uCmd))
-    {
-      ayvu.a(this.a.a(), paramMsgInfo, localSlaveMasterMsg);
-      return true;
-    }
-    return false;
-  }
-  
-  public aboz a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
-  {
-    boolean bool = false;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return new aboz(null, bool);
-      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
-        bool = a(paramMsgInfo);
-      } else {
-        a(getClass().getName(), paramInt);
-      }
+    if ((paramInt == 2004) && (paramBoolean) && (QLog.isColorLevel())) {
+      QLog.d("ActivateFriends.Manager", 2, "acs msg succ");
     }
   }
 }

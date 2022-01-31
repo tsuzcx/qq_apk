@@ -1,24 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class adhj
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnDismissListener
 {
-  public adhj(NotifyPushSettingActivity paramNotifyPushSettingActivity, BubbleManager paramBubbleManager) {}
+  public adhj(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramBoolean);
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getCurrentAccountUin();
-    if (paramBoolean) {}
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage(str, "bubble_new", "change", "0", 0, 0, 0, "", "", paramCompoundButton, "", "", "", "", 0, 0, 0, 0);
-      return;
+    if (paramDialogInterface == LoginInfoActivity.a(this.a)) {
+      LoginInfoActivity.a(this.a, null);
     }
   }
 }

@@ -1,81 +1,138 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.support.annotation.RequiresApi;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class bcib
-  extends nac
+public class bcib
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static int a;
+  public static boolean a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private View jdField_a_of_type_AndroidViewView;
+  private bcic jdField_a_of_type_Bcic;
+  private int b = 1;
+  private int c;
+  
+  public bcib(Activity paramActivity)
   {
-    boolean bool2 = false;
-    Object localObject = null;
-    long l2 = 0L;
-    long l1;
-    boolean bool1;
-    if ((paramInt == 0) && (paramBundle != null))
-    {
-      l2 = paramBundle.getLong("uin");
-      l1 = l2;
-      if (paramArrayOfByte == null) {
-        break label199;
-      }
-      paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-      bool1 = bool2;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public static int a(Activity paramActivity)
+  {
+    paramActivity = paramActivity.getWindow().getDecorView();
+    int i = paramActivity.getHeight();
+    if (a(paramActivity) > i * 3 / 4) {
+      return 2;
+    }
+    return 1;
+  }
+  
+  public static int a(View paramView)
+  {
+    Rect localRect = new Rect();
+    paramView.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
+  }
+  
+  public static void a(Activity paramActivity)
+  {
+    jdField_a_of_type_Int = a(paramActivity.getWindow().getDecorView());
+    jdField_a_of_type_Boolean = a(paramActivity);
+  }
+  
+  public static boolean a(Activity paramActivity)
+  {
+    Rect localRect = new Rect();
+    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    if (QLog.isColorLevel()) {
+      QLog.d("AtPanelStatus", 2, "onGlobalLayout, top=" + localRect.top + " bottom=" + localRect.bottom);
+    }
+    return localRect.top == 0;
+  }
+  
+  @RequiresApi(api=16)
+  public void a()
+  {
+    if (Build.VERSION.SDK_INT < 16) {
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
     for (;;)
     {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        bool1 = bool2;
-        if (!((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) {
-          break label211;
-        }
-        bool1 = bool2;
-        if (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() != 0) {
-          break label211;
-        }
-        bool1 = true;
-        paramArrayOfByte = new AccountDetail(paramBundle);
-        bool1 = true;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        bool2 = bool1;
-        bool1 = bool2;
-        paramArrayOfByte = localObject;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("TroopBindPubAccountProtocol", 2, paramBundle.toString());
-        bool1 = bool2;
-        paramArrayOfByte = localObject;
-        continue;
-      }
-      a(bool1, l2, paramArrayOfByte);
+      this.b = 1;
+      this.jdField_a_of_type_Bcic = null;
+      this.c = 0;
       return;
-      l1 = l2;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("TroopBindPubAccountProtocol", 2, "get pubAccountInfo failed, errorCode=" + paramInt);
-        l1 = l2;
-      }
-      label199:
-      bool1 = false;
-      paramArrayOfByte = null;
-      l2 = l1;
-      continue;
-      label211:
-      paramArrayOfByte = null;
-      bool1 = false;
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
   }
   
-  protected abstract void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail);
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(bcic parambcic)
+  {
+    if (parambcic != null) {
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().addOnGlobalLayoutListener(this);
+    }
+    this.b = 1;
+    this.jdField_a_of_type_Bcic = parambcic;
+    this.c = 0;
+  }
+  
+  public void onGlobalLayout()
+  {
+    View localView = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
+    if (localView == null) {}
+    int i;
+    int j;
+    int k;
+    do
+    {
+      return;
+      i = localView.getHeight();
+      j = a(localView);
+      k = i - j;
+      if (this.jdField_a_of_type_AndroidViewView != null)
+      {
+        int m = this.jdField_a_of_type_AndroidViewView.getHeight();
+        if ((m != this.c) && (this.jdField_a_of_type_Bcic != null)) {
+          this.jdField_a_of_type_Bcic.b(this.b, j, this.c);
+        }
+        this.c = m;
+      }
+    } while (j == this.c);
+    if (k > i / 4)
+    {
+      this.b = 1;
+      if (this.jdField_a_of_type_Bcic != null) {
+        this.jdField_a_of_type_Bcic.a(this.b, j, k);
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AtPanelStatus", 2, "onGlobalLayout, screenHeight=" + i + " visibleHeight=" + j + " differHeight=" + k + " mode=" + this.b);
+      }
+      this.c = j;
+      return;
+      if (k < i * 3 / 4)
+      {
+        this.b = 2;
+        if (this.jdField_a_of_type_Bcic != null) {
+          this.jdField_a_of_type_Bcic.a(this.b, j, k);
+        }
+      }
+    }
+  }
 }
 
 

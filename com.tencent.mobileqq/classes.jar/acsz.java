@@ -1,34 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acsz
-  implements akek
+  implements Handler.Callback
 {
-  public acsz(ForwardRecentActivity paramForwardRecentActivity) {}
+  public acsz(Conversation paramConversation) {}
   
-  public void a(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    boolean bool = ForwardRecentActivity.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onItemViewClicked" + bool);
-    }
-    if (bool)
+    atzu.a().a(paramMessage.what);
+    if (paramMessage.what == 4)
     {
-      ForwardRecentActivity.a(this.a, paramView);
-      return;
+      this.a.a(1134013, 0L, false);
+      return true;
     }
-    this.a.a(paramView);
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    return ForwardRecentActivity.a(this.a, paramString, paramInt);
+    this.a.d(true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acsz
  * JD-Core Version:    0.7.0.1
  */

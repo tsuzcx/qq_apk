@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.activity;
 
-import alpo;
+import alud;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -32,7 +32,7 @@ class LoadingFragment$11
         QQToast.a(localBaseApplication, 1, str, 1).a();
         this.this$0.uiHandler.postDelayed(new LoadingFragment.11.1(this), 1000L);
         return;
-        str = alpo.a(2131706616);
+        str = alud.a(2131706628);
       }
       return;
     }

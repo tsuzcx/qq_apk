@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ajec;
+import ajir;
 import com.tencent.image.URLDrawable;
 
 public class QbossADBannerManager$2
   implements Runnable
 {
-  public QbossADBannerManager$2(ajec paramajec, URLDrawable paramURLDrawable) {}
+  public QbossADBannerManager$2(ajir paramajir, URLDrawable paramURLDrawable) {}
   
   public void run()
   {

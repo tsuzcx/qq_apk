@@ -11,7 +11,7 @@ public class QavVideoRecordUICtrl$8
   
   public void run()
   {
-    mdd.a(((AVActivity)mlf.a(this.this$0).get()).a, 1022, 2131696230);
+    mdd.a(((AVActivity)mlf.a(this.this$0).get()).a, 1022, 2131696232);
   }
 }
 

@@ -1,34 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.file.MoveFileActivity;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class yoz
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public yoz(MoveFileActivity paramMoveFileActivity) {}
+  public yoz(RelativeFeedItemView paramRelativeFeedItemView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = (zcc)paramDialogInterface;
-    this.a.jdField_a_of_type_JavaLangString = paramDialogInterface.getInputValue().trim();
-    if (this.a.jdField_a_of_type_JavaLangString.length() > bcjk.a)
-    {
-      paramDialogInterface.a(this.a.getString(2131697806), -65536);
-      azmj.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "over_num", 0, 0, this.a.jdField_a_of_type_Long + "", "", "", "");
-    }
+    paramView = (CertifiedAccountMeta.StFeed)this.a.a();
+    if (paramView == null) {}
+    ExtraTypeInfo localExtraTypeInfo;
     do
     {
-      return;
-      if (bcjk.a(this.a.jdField_a_of_type_JavaLangString))
+      do
       {
-        paramDialogInterface.a(this.a.getString(2131697807), -65536);
-        azmj.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "sensitive", 0, 0, this.a.jdField_a_of_type_Long + "", "0", "", "");
+        return;
+        ybt.a(this.a.getContext(), paramView, 0, ykt.a(this.a.a, paramView.cover.width.get(), paramView.cover.height.get()));
+        localExtraTypeInfo = this.a.a();
+      } while ((localExtraTypeInfo == null) || (paramView == null));
+      if (localExtraTypeInfo.pageType == 7003)
+      {
+        zaj.a(paramView.poster.id.get(), "auth_follow", "new_c_clk", 0, 0, new String[] { "", "", paramView.id.get(), paramView.title.get() });
         return;
       }
-      paramDialogInterface.dismiss();
-    } while (bcjk.a(this.a.app, this.a, this.a.jdField_a_of_type_Long) == 0);
-    ypf.a(this.a.app, this.a.jdField_a_of_type_Long, "/", this.a.jdField_a_of_type_JavaLangString, MoveFileActivity.a(this.a));
-    this.a.a(2131697735);
+    } while (localExtraTypeInfo.pageType != 7004);
+    zaj.a(paramView.poster.id.get(), "auth_discover", "clk_content", 0, 0, new String[] { "", "", paramView.id.get(), paramView.title.get() });
   }
 }
 

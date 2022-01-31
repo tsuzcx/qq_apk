@@ -1,16 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class xsh
-  implements View.OnTouchListener
+public class xsh
 {
-  xsh(xsg paramxsg) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static Throwable a(String paramString)
   {
-    xsg.a(this.a);
-    return true;
+    return new NullPointerException(paramString);
+  }
+  
+  public static Throwable a(String paramString, Throwable paramThrowable)
+  {
+    if (paramThrowable == null) {
+      return new IllegalStateException(paramString);
+    }
+    return new IllegalStateException(paramString, paramThrowable);
+  }
+  
+  public static Throwable b(String paramString, Throwable paramThrowable)
+  {
+    if (paramThrowable == null) {
+      return new Throwable(paramString);
+    }
+    return new Throwable(paramString, paramThrowable);
   }
 }
 

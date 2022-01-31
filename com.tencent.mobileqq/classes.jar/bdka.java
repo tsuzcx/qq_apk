@@ -1,100 +1,80 @@
-import android.app.Activity;
 import android.content.Context;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.mobileqq.widget.QQToast;
-import java.io.File;
-import mqq.app.MobileQQ;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 
-public class bdka
+class bdka
+  extends BaseAdapter
 {
-  public static Handler.Callback a;
-  public static Handler a;
-  public static final String a;
+  bdka(bdjz parambdjz) {}
   
-  static
+  public int getCount()
   {
-    jdField_a_of_type_JavaLangString = aljq.aX + ".VasResourceCheck/temp.json";
-    jdField_a_of_type_AndroidOsHandler$Callback = new bdkc();
+    if (this.a.items != null) {
+      return this.a.items.length;
+    }
+    return 0;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  public Object getItem(int paramInt)
   {
-    Object localObject = (BubbleManager)paramQQAppInterface.getManager(44);
-    if (localObject != null)
-    {
-      bdcs.a(((BubbleManager)localObject).a().getAbsolutePath(), false);
-      ((BubbleManager)localObject).a();
-    }
-    localObject = (fx)paramQQAppInterface.getManager(42);
-    if (localObject != null)
-    {
-      bdcs.a(((fx)localObject).a().getAbsolutePath(), false);
-      ((fx)localObject).a();
-    }
-    localObject = (AvatarPendantManager)paramQQAppInterface.getManager(46);
-    if (localObject != null)
-    {
-      bdcs.a(((AvatarPendantManager)localObject).a().getAbsolutePath(), false);
-      ((AvatarPendantManager)localObject).a();
-      bdcs.a(((AvatarPendantManager)localObject).b().getAbsolutePath(), false);
-      ((AvatarPendantManager)localObject).b();
-    }
-    localObject = new File(bduw.a(aljq.aX + ".emotionsm"));
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    bdcs.a(((File)localObject).getAbsolutePath(), false);
-    ((File)localObject).mkdirs();
-    paramQQAppInterface = new File(paramQQAppInterface.getApplication().getApplicationContext().getFilesDir().getParentFile(), "app_mobileqq_theme");
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    bdcs.a(paramQQAppInterface.getAbsolutePath(), false);
-    paramQQAppInterface.mkdirs();
-    paramQQAppInterface = new File(aljq.bW);
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    bdcs.a(paramQQAppInterface.getAbsolutePath(), false);
-    paramQQAppInterface.mkdirs();
-    paramQQAppInterface = new File(aljq.cd + "resource");
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    bdcs.a(paramQQAppInterface.getAbsolutePath(), false);
-    paramQQAppInterface.mkdirs();
-    paramQQAppInterface = new File(bdnu.jdField_a_of_type_JavaLangString);
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    bdcs.a(paramQQAppInterface.getAbsolutePath(), false);
-    paramQQAppInterface.mkdirs();
+    return null;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
+  public long getItemId(int paramInt)
   {
-    QQToast.a(paramActivity, alpo.a(2131716432), 0).a();
-    paramActivity.finish();
-    if (jdField_a_of_type_AndroidOsHandler == null) {
-      jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandler$Callback);
-    }
-    paramActivity = new bdvv(paramString, new File(jdField_a_of_type_JavaLangString));
-    ((bdvx)paramQQAppInterface.getManager(47)).a(1).a(paramActivity, new bdkb(paramQQAppInterface), null);
+    return 0L;
   }
   
-  public static boolean a(String paramString)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.startsWith("http://gxh.vip.qq.com")) && (paramString.endsWith("secret.json"));
+    if (this.a.inflater == null) {
+      this.a.inflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
+    }
+    paramViewGroup = paramView;
+    if (paramView == null)
+    {
+      paramViewGroup = this.a.inflater.inflate(this.a.getDialogListItemLayout(), null);
+      paramView = new bdkm(this.a, null);
+      paramView.a = ((TextView)paramViewGroup.findViewById(2131368575));
+      paramViewGroup.setTag(paramView);
+    }
+    paramView = (bdkm)paramViewGroup.getTag();
+    int i;
+    int j;
+    int k;
+    int m;
+    if (paramView.a != null)
+    {
+      paramView.a.setText(this.a.items[paramInt]);
+      paramView.a.setOnClickListener(new bdkl(this.a, paramInt));
+      i = paramView.a.getPaddingTop();
+      j = paramView.a.getPaddingLeft();
+      k = paramView.a.getPaddingRight();
+      m = paramView.a.getPaddingBottom();
+      if (this.a.items.length != 1) {
+        break label212;
+      }
+      paramView.a.setBackgroundResource(2130839360);
+    }
+    for (;;)
+    {
+      paramView.a.setPadding(j, i, k, m);
+      return paramViewGroup;
+      label212:
+      if (paramInt == 0) {
+        paramView.a.setBackgroundResource(2130839361);
+      } else if (paramInt == this.a.items.length - 1) {
+        paramView.a.setBackgroundResource(2130839359);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdka
  * JD-Core Version:    0.7.0.1
  */

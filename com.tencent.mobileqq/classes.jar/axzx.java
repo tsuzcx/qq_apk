@@ -1,18 +1,14 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class axzx
-  extends alye
+  implements DialogInterface.OnClickListener
 {
-  axzx(axzt paramaxzt) {}
+  axzx(axzv paramaxzv) {}
   
-  protected void g(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = ((Integer)paramObject).intValue();
-    paramObject = gh.a();
-    if (paramBoolean) {}
-    for (int i = 0;; i = -1)
-    {
-      paramObject.b(i, j);
-      return;
-    }
+    this.a.a.back();
   }
 }
 

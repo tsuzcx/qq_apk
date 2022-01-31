@@ -1,45 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 
-public class axty
-  implements IBrowserLog
+public abstract interface axty
 {
-  public void d(String paramString1, int paramInt, String paramString2)
-  {
-    if (isColorLevel()) {
-      QLog.d(paramString1, paramInt, paramString2);
-    }
-  }
+  public abstract void a();
   
-  public void e(String paramString1, int paramInt, String paramString2)
-  {
-    if (isColorLevel()) {
-      QLog.e(paramString1, paramInt, paramString2);
-    }
-  }
+  public abstract void a(int paramInt);
   
-  public void i(String paramString1, int paramInt, String paramString2)
-  {
-    if (isColorLevel()) {
-      QLog.i(paramString1, paramInt, paramString2);
-    }
-  }
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public boolean isColorLevel()
-  {
-    return QLog.isColorLevel();
-  }
+  public abstract void a(axtu paramaxtu, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, axtx paramaxtx);
   
-  public void w(String paramString1, int paramInt, String paramString2)
-  {
-    if (isColorLevel()) {
-      QLog.w(paramString1, paramInt, paramString2);
-    }
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axty
  * JD-Core Version:    0.7.0.1
  */

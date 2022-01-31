@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.manager;
 
-import bgse;
-import bgsf;
+import bgwl;
+import bgwm;
 
 public class GameGrowthGuardianManager$2$1
   implements Runnable
 {
-  public GameGrowthGuardianManager$2$1(bgsf parambgsf) {}
+  public GameGrowthGuardianManager$2$1(bgwm parambgwm) {}
   
   public void run()
   {
-    bgse.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 12);
+    bgwl.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 12);
   }
 }
 

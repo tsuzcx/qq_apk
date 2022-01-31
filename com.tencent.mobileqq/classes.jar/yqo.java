@@ -1,18 +1,16 @@
-import android.content.Context;
-import android.widget.GridView;
-import com.tencent.biz.troopgift.GridListViewPager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.tribe.TribeVideoPlugin;
 
 public class yqo
-  extends GridView
+  implements View.OnTouchListener
 {
-  public yqo(GridListViewPager paramGridListViewPager, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public yqo(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public void setOverScrollMode(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.setOverScrollMode(2);
+    return true;
   }
 }
 

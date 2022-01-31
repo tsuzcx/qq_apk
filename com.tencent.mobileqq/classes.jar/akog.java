@@ -1,101 +1,93 @@
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class akog
-  implements View.OnTouchListener
+class akog
+  extends bead
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
+  akog(aknx paramaknx) {}
   
-  public akog(CmGameDebugView paramCmGameDebugView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDone(beae parambeae)
   {
-    if (paramView == CmGameDebugView.a(this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView))
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloManager", 2, "download onDone");
+    }
+    if (parambeae.a() == 3) {
+      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "action_download_success", 0, 0, new String[0]);
+    }
+    if (this.a.jdField_a_of_type_Alkm != null) {
+      this.a.jdField_a_of_type_Alkm.b();
+    }
+  }
+  
+  public void onDoneFile(beae parambeae)
+  {
+    if (parambeae == null) {}
+    label314:
+    label320:
+    for (;;)
     {
-      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
-      this.b = ((int)paramMotionEvent.getRawY());
-      switch (paramMotionEvent.getAction())
+      return;
+      String str1 = parambeae.c;
+      parambeae = parambeae.a();
+      if (parambeae != null)
       {
-      default: 
-      case 0: 
-        for (;;)
+        parambeae = (ApolloActionData)parambeae.getSerializable(str1);
+        if (parambeae == null)
         {
-          return true;
-          this.c = this.jdField_a_of_type_Int;
-          this.d = this.b;
+          QLog.e("ApolloManager", 1, "action res onDoneFile but action data is null");
+          return;
         }
-      case 2: 
-        int i = this.jdField_a_of_type_Int - this.c;
-        int j = this.b - this.d;
-        this.e = (paramView.getLeft() + i);
-        this.f = (paramView.getTop() + j);
-        this.g = (i + paramView.getRight());
-        this.h = (paramView.getBottom() + j);
-        if (this.e < 0)
+        String str2 = ApolloUtil.a(parambeae, 4);
+        if (str1.equals(ApolloUtil.a(parambeae, 5)))
         {
-          this.e = 0;
-          this.g = (this.e + paramView.getWidth());
-          label173:
-          if (this.f >= 0) {
-            break label355;
-          }
-          this.f = 0;
-          this.h = (this.f + paramView.getHeight());
-        }
-        for (;;)
-        {
-          paramMotionEvent = (FrameLayout.LayoutParams)paramView.getLayoutParams();
-          paramMotionEvent.setMargins(this.e, this.f, 0, 0);
-          paramView.setLayoutParams(paramMotionEvent);
-          if ((!this.jdField_a_of_type_Boolean) && ((Math.abs(this.jdField_a_of_type_Int - this.c) > CmGameDebugView.a(this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView).density * 2.0F) || (Math.abs(this.b - this.d) > CmGameDebugView.a(this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView).density * 2.0F))) {
-            this.jdField_a_of_type_Boolean = true;
-          }
-          this.c = this.jdField_a_of_type_Int;
-          this.d = this.b;
-          break;
-          if (this.g <= this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.jdField_a_of_type_Int) {
-            break label173;
-          }
-          this.g = this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.jdField_a_of_type_Int;
-          this.e = (this.g - paramView.getWidth());
-          break label173;
-          label355:
-          if (this.h > this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.b)
+          try
           {
-            this.h = this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.b;
-            this.f = (this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.b - paramView.getHeight());
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloManager", 2, "action res zip done acitonid=" + parambeae.actionId + " action name =" + parambeae.actionName);
+            }
+            if (!ApolloUtil.a(parambeae.actionId, parambeae.personNum))
+            {
+              bdhb.a(str2, ApolloUtil.a(parambeae, 6), false);
+              bdhb.d(str2);
+              this.a.a(parambeae);
+            }
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.e("ApolloManager", 2, "uncompressZip fail zip file: " + str2, localException);
+              }
+            }
+          }
+          if (parambeae.compoundType <= 0) {
+            break label314;
           }
         }
-      }
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        if (CmGameDebugView.a(this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView).getVisibility() == 0) {
-          break label434;
+        for (boolean bool = ApolloUtil.a(parambeae.actionId, 1, parambeae.personNum, false);; bool = ApolloUtil.a(parambeae))
+        {
+          if ((!bool) || (this.a.jdField_a_of_type_Alkm == null)) {
+            break label320;
+          }
+          parambeae.status = 1;
+          if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+            ((aliw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).b(parambeae);
+          }
+          this.a.jdField_a_of_type_Alkm.a(parambeae);
+          return;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("ApolloManager", 2, "onDoneFile panelView actionId = " + parambeae.actionId + " action name =" + parambeae.actionName);
+          break;
         }
-        this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.az_();
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Boolean = false;
-        break;
-        label434:
-        this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.b();
       }
     }
-    return false;
   }
 }
 

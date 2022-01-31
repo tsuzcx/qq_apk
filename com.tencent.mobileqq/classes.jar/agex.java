@@ -1,29 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class agex
-  implements DialogInterface.OnClickListener
+  extends aget
 {
-  agex(aget paramaget, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agex(QQAppInterface paramQQAppInterface)
   {
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_Int != 0) {
-        break label47;
-      }
-      this.jdField_a_of_type_Aget.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(1) });
-    }
-    for (;;)
-    {
-      aget.b(this.jdField_a_of_type_Aget, null);
-      return;
-      label47:
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_Aget.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(2) });
-      }
-    }
+    super(paramQQAppInterface);
   }
 }
 

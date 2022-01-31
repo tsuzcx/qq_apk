@@ -1,17 +1,6 @@
-public class bcra
+public abstract interface bcra
 {
-  public float a;
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  public abstract void a(int paramInt);
 }
 
 

@@ -8,15 +8,15 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import azds;
-import bnig;
-import bnij;
-import bnik;
-import bnil;
-import bnim;
-import bnin;
-import bnio;
-import bnip;
+import azib;
+import bnms;
+import bnmv;
+import bnmw;
+import bnmx;
+import bnmy;
+import bnmz;
+import bnna;
+import bnnb;
 import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.filter.GLGestureProxy;
@@ -38,7 +38,7 @@ public class QIMCameraSegmentCaptureButtonLayout
   
   static
   {
-    jdField_b_of_type_Int = azds.e;
+    jdField_b_of_type_Int = azib.e;
   }
   
   public QIMCameraSegmentCaptureButtonLayout(Context paramContext)
@@ -76,12 +76,12 @@ public class QIMCameraSegmentCaptureButtonLayout
     for (;;)
     {
       this.jdField_a_of_type_Boolean = bool;
-      if (this.jdField_a_of_type_Bnig != null)
+      if (this.jdField_a_of_type_Bnms != null)
       {
         if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_Bnig.H();
+          this.jdField_a_of_type_Bnms.H();
         }
-        this.jdField_a_of_type_Bnig.k();
+        this.jdField_a_of_type_Bnms.k();
       }
       this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.a().add(Float.valueOf(this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.a()));
       if (QLog.isColorLevel()) {
@@ -116,12 +116,12 @@ public class QIMCameraSegmentCaptureButtonLayout
             return;
             g(true);
             return;
-          } while (this.jdField_a_of_type_Bnig == null);
-          this.jdField_a_of_type_Bnig.j();
+          } while (this.jdField_a_of_type_Bnms == null);
+          this.jdField_a_of_type_Bnms.j();
           return;
         } while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-        if (this.jdField_a_of_type_Bnig != null) {
-          this.jdField_a_of_type_Bnig.k();
+        if (this.jdField_a_of_type_Bnms != null) {
+          this.jdField_a_of_type_Bnms.k();
         }
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
         k();
@@ -130,8 +130,8 @@ public class QIMCameraSegmentCaptureButtonLayout
         return;
         g(false);
         return;
-        if (this.jdField_a_of_type_Bnig != null) {
-          this.jdField_a_of_type_Bnig.q();
+        if (this.jdField_a_of_type_Bnms != null) {
+          this.jdField_a_of_type_Bnms.q();
         }
         k();
         return;
@@ -141,8 +141,8 @@ public class QIMCameraSegmentCaptureButtonLayout
       return;
       l();
       return;
-    } while (this.jdField_a_of_type_Bnig == null);
-    this.jdField_a_of_type_Bnig.E();
+    } while (this.jdField_a_of_type_Bnms == null);
+    this.jdField_a_of_type_Bnms.E();
   }
   
   public boolean a()
@@ -174,7 +174,7 @@ public class QIMCameraSegmentCaptureButtonLayout
       if (this.jdField_b_of_type_Boolean) {
         return false;
       }
-      if ((this.jdField_a_of_type_Bnig == null) || (!this.jdField_a_of_type_Bnig.d()))
+      if ((this.jdField_a_of_type_Bnms == null) || (!this.jdField_a_of_type_Bnms.d()))
       {
         if (QLog.isColorLevel()) {
           QLog.i("CameraSegmentCaptureLayout", 2, "[segmentCapture] ignore down action, capture not ready");
@@ -255,15 +255,15 @@ public class QIMCameraSegmentCaptureButtonLayout
     }
     this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_c_of_type_Float, 1.0F });
     this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration((400.0F * (this.jdField_c_of_type_Float - 1.0F) / 0.45F));
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bnik(this));
+    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bnmw(this));
     float f1 = this.jdField_b_of_type_Float;
     if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.a().size() > 0)) {
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new bnil(this, paramBoolean, f1));
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new bnmx(this, paramBoolean, f1));
     }
     this.jdField_c_of_type_AndroidAnimationValueAnimator.start();
     this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.85F, 1.0F });
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bnim(this));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bnmy(this));
     this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
     this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.a(0);
   }
@@ -282,12 +282,12 @@ public class QIMCameraSegmentCaptureButtonLayout
     }
     this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_c_of_type_Float, 1.45F });
     this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration((400.0F * (1.45F - this.jdField_c_of_type_Float) / 0.45F));
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bnin(this));
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new bnio(this, paramBoolean));
+    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bnmz(this));
+    this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new bnna(this, paramBoolean));
     this.jdField_c_of_type_AndroidAnimationValueAnimator.start();
     this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.85F });
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bnip(this));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bnnb(this));
     this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
     this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.a(1);
     if (paramBoolean) {
@@ -337,7 +337,7 @@ public class QIMCameraSegmentCaptureButtonLayout
       }
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Bnig.H();
+        this.jdField_a_of_type_Bnms.H();
         r();
       }
       return;
@@ -406,8 +406,8 @@ public class QIMCameraSegmentCaptureButtonLayout
   
   protected void t()
   {
-    if (this.jdField_a_of_type_Bnig != null) {
-      this.jdField_a_of_type_Bnig.F();
+    if (this.jdField_a_of_type_Bnms != null) {
+      this.jdField_a_of_type_Bnms.F();
     }
     f(true);
   }
@@ -455,7 +455,7 @@ public class QIMCameraSegmentCaptureButtonLayout
     }
     this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_c_of_type_Float, 1.0F });
     this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration((400.0F * (this.jdField_c_of_type_Float - 1.0F) / 0.45F));
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bnij(this));
+    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bnmv(this));
     this.jdField_c_of_type_AndroidAnimationValueAnimator.start();
   }
 }

@@ -1,9 +1,20 @@
-import android.graphics.Bitmap;
-import java.util.ArrayList;
+import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public abstract interface bkpt
+class bkpt
+  implements CosFunHelper.CountDownListener
 {
-  public abstract void a(Bitmap paramBitmap, ArrayList<bkpu> paramArrayList, bkpv parambkpv);
+  bkpt(bkpl parambkpl) {}
+  
+  public void onCountDownEnd()
+  {
+    bkpl.d(this.a);
+  }
+  
+  public void onCountDownStart(VideoMaterial paramVideoMaterial)
+  {
+    bkpl.a(this.a, paramVideoMaterial.getTipsDrawable());
+  }
 }
 
 

@@ -1,6 +1,16 @@
-public abstract interface aqdv
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+
+public class aqdv
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString, int paramInt);
+  public aqdv(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

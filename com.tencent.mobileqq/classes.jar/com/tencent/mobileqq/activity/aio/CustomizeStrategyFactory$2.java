@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aitd;
-import ajaf;
+import aixs;
+import ajeu;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class CustomizeStrategyFactory$2
@@ -15,9 +15,9 @@ class CustomizeStrategyFactory$2
     {
       if (!CustomizeStrategyFactory.a(this.this$0))
       {
-        QQAppInterface localQQAppInterface = ajaf.a();
+        QQAppInterface localQQAppInterface = ajeu.a();
         if (localQQAppInterface != null) {
-          this.this$0.a = ((aitd)localQQAppInterface.getManager(245));
+          this.this$0.a = ((aixs)localQQAppInterface.getManager(245));
         }
         if (this.this$0.a != null) {
           this.this$0.a.c("redPack", this.this$0);

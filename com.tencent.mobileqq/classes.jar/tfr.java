@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import java.util.List;
 
 public class tfr
-  extends biac<stFeed>
+  extends biej<stFeed>
 {
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
@@ -17,7 +17,7 @@ public class tfr
   
   private tfr(ViewGroup paramViewGroup, tbb paramtbb)
   {
-    super(paramViewGroup, 2131560223);
+    super(paramViewGroup, 2131560222);
     this.jdField_a_of_type_Tbb = paramtbb;
     b();
   }
@@ -29,8 +29,8 @@ public class tfr
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)b(2131367289));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)b(2131375405));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)b(2131367299));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)b(2131375456));
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(a(), 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(true);

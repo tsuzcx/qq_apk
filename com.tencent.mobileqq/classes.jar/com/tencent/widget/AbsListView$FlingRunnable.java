@@ -4,19 +4,19 @@ import android.annotation.TargetApi;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.animation.Interpolator;
-import bhsi;
-import bhuz;
+import bhwp;
+import bhzg;
 
 class AbsListView$FlingRunnable
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  private final bhuz jdField_a_of_type_Bhuz;
+  private final bhzg jdField_a_of_type_Bhzg;
   private final Runnable jdField_a_of_type_JavaLangRunnable = new AbsListView.FlingRunnable.1(this);
   
   AbsListView$FlingRunnable(AbsListView paramAbsListView)
   {
-    this.jdField_a_of_type_Bhuz = new bhuz(paramAbsListView.getContext());
+    this.jdField_a_of_type_Bhzg = new bhzg(paramAbsListView.getContext());
   }
   
   void a()
@@ -26,7 +26,7 @@ class AbsListView$FlingRunnable
     this.this$0.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     this.this$0.reportScrollStateChange(0);
     AbsListView.access$2000(this.this$0);
-    this.jdField_a_of_type_Bhuz.a();
+    this.jdField_a_of_type_Bhzg.a();
     if (AbsListView.access$1600(this.this$0) != null) {
       AbsListView.access$1602(this.this$0, AbsListView.access$2100(this.this$0, AbsListView.access$1600(this.this$0)));
     }
@@ -39,7 +39,7 @@ class AbsListView$FlingRunnable
     {
       i = 2147483647;
       this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Bhuz.a(0, i, 0, paramInt, 0, 2147483647, 0, 2147483647);
+      this.jdField_a_of_type_Bhzg.a(0, i, 0, paramInt, 0, 2147483647, 0, 2147483647);
       this.this$0.mTouchMode = 4;
       if (Build.VERSION.SDK_INT < 16) {
         break label86;
@@ -61,8 +61,8 @@ class AbsListView$FlingRunnable
   
   void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Bhuz.b();
-    int i = this.jdField_a_of_type_Bhuz.b();
+    this.jdField_a_of_type_Bhzg.b();
+    int i = this.jdField_a_of_type_Bhzg.b();
     i = this.jdField_a_of_type_Int - i;
     if (i != 0)
     {
@@ -75,7 +75,7 @@ class AbsListView$FlingRunnable
     for (int j = 2147483647;; j = 0)
     {
       this.jdField_a_of_type_Int = j;
-      this.jdField_a_of_type_Bhuz.a(0, j + i, 0, paramInt1 - i, paramInt2);
+      this.jdField_a_of_type_Bhzg.a(0, j + i, 0, paramInt1 - i, paramInt2);
       this.this$0.mTouchMode = 4;
       this.this$0.invalidate();
       this.this$0.removeCallbacks(this);
@@ -84,7 +84,7 @@ class AbsListView$FlingRunnable
       }
       this.this$0.postOnAnimation(this);
       return;
-      Interpolator localInterpolator = this.jdField_a_of_type_Bhuz.a();
+      Interpolator localInterpolator = this.jdField_a_of_type_Bhzg.a();
       if (localInterpolator != null)
       {
         i = (int)localInterpolator.getInterpolation(16.0F / paramInt2) * paramInt1;
@@ -105,7 +105,7 @@ class AbsListView$FlingRunnable
   
   void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Bhuz.a(0, this.this$0.getScrollY(), paramInt, paramInt, paramInt, paramInt))
+    if (this.jdField_a_of_type_Bhzg.a(0, this.this$0.getScrollY(), paramInt, paramInt, paramInt, paramInt))
     {
       this.this$0.mTouchMode = 6;
       this.this$0.invalidate();
@@ -127,7 +127,7 @@ class AbsListView$FlingRunnable
     for (int i = 2147483647;; i = 0)
     {
       this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Bhuz.a(0, i, 0, paramInt1, paramInt2);
+      this.jdField_a_of_type_Bhzg.a(0, i, 0, paramInt1, paramInt2);
       this.this$0.mTouchMode = 4;
       if (Build.VERSION.SDK_INT < 16) {
         break;
@@ -145,18 +145,18 @@ class AbsListView$FlingRunnable
     if (this.this$0.mForHongBao) {
       i = this.this$0.getSpringbackOffset();
     }
-    bhuz localbhuz = this.jdField_a_of_type_Bhuz;
+    bhzg localbhzg = this.jdField_a_of_type_Bhzg;
     int j;
     if (paramInt > 0)
     {
       j = this.this$0.mTopOverflingDistance;
-      localbhuz.a(paramInt, i, j);
+      localbhzg.a(paramInt, i, j);
       i = this.this$0.getOverScrollMode();
       if ((i != 0) && ((i != 1) || (AbsListView.access$1800(this.this$0)))) {
         break label165;
       }
       this.this$0.mTouchMode = 6;
-      i = (int)this.jdField_a_of_type_Bhuz.a();
+      i = (int)this.jdField_a_of_type_Bhzg.a();
       if (this.this$0.mEdgeGlowTop != null)
       {
         if (paramInt <= 0) {
@@ -206,7 +206,7 @@ class AbsListView$FlingRunnable
       do
       {
         return;
-      } while (this.jdField_a_of_type_Bhuz.a());
+      } while (this.jdField_a_of_type_Bhzg.a());
     case 4: 
       AdapterView.traceBegin("AbsListView.FlingRunable.onfling");
       for (;;)
@@ -221,9 +221,9 @@ class AbsListView$FlingRunnable
             a();
             return;
           }
-          Object localObject1 = this.jdField_a_of_type_Bhuz;
-          boolean bool = ((bhuz)localObject1).b();
-          int m = ((bhuz)localObject1).b();
+          Object localObject1 = this.jdField_a_of_type_Bhzg;
+          boolean bool = ((bhzg)localObject1).b();
+          int m = ((bhzg)localObject1).b();
           i = this.jdField_a_of_type_Int - m;
           if (i > 0)
           {
@@ -250,7 +250,7 @@ class AbsListView$FlingRunnable
                   if (bool)
                   {
                     c(j);
-                    i = this.jdField_a_of_type_Bhuz.b();
+                    i = this.jdField_a_of_type_Bhzg.b();
                   }
                   this.this$0.overScrollBy(0, i, 0, this.this$0.getScrollY(), 0, 0, 0, this.this$0.mOverscrollDistance, false);
                 }
@@ -291,16 +291,16 @@ class AbsListView$FlingRunnable
     label657:
     for (;;)
     {
-      bhuz localbhuz;
+      bhzg localbhzg;
       label560:
       try
       {
-        localbhuz = this.jdField_a_of_type_Bhuz;
-        if (!localbhuz.b()) {
+        localbhzg = this.jdField_a_of_type_Bhzg;
+        if (!localbhzg.b()) {
           break label642;
         }
         j = this.this$0.getScrollY();
-        k = localbhuz.b();
+        k = localbhzg.b();
         if (!this.this$0.overScrollBy(0, k - j, 0, j, 0, 0, 0, this.this$0.mOverscrollDistance, false)) {
           break label608;
         }
@@ -311,12 +311,12 @@ class AbsListView$FlingRunnable
         break label657;
       }
       finally {}
-      k = (int)localbhuz.a();
+      k = (int)localbhzg.a();
       i = k;
       if (j != 0) {
         i = -k;
       }
-      localbhuz.a();
+      localbhzg.a();
       a(i);
       return;
       label592:

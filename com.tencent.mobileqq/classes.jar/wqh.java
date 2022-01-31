@@ -1,30 +1,25 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
 
-class wqh
-  extends SimpleJob<Void>
+public class wqh
+  extends umf<wpr, uvf>
 {
-  wqh(wps paramwps, String paramString, List paramList)
+  public wqh(wpr paramwpr)
   {
-    super(paramString);
+    super(paramwpr);
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(@NonNull wpr paramwpr, @NonNull uvf paramuvf)
   {
-    vjz.a();
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.toArray();
-    int j = paramJobContext.length;
-    int i = 0;
-    while (i < j)
-    {
-      vjz.a(paramJobContext[i].toString());
-      i += 1;
-    }
-    return null;
+    wxe.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramuvf);
+    wpr.a(paramwpr, paramuvf.a);
   }
+  
+  public Class acceptEventClass()
+  {
+    return uvf.class;
+  }
+  
+  public void b(@NonNull wpr paramwpr, @NonNull uvf paramuvf) {}
 }
 
 

@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-
 public class agyo
-  implements DialogInterface.OnClickListener
 {
-  public agyo(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    BlessSelectMemberActivity.a(this.a, null);
-  }
+  public static final String a = bdzf.a(alof.aX + ".sticker_recommended_pics/");
 }
 
 

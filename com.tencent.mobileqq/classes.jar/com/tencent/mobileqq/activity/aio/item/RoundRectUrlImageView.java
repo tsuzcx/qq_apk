@@ -10,7 +10,7 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import besu;
+import bexd;
 import com.tencent.image.URLImageView;
 
 public class RoundRectUrlImageView
@@ -133,10 +133,10 @@ public class RoundRectUrlImageView
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      besu.a(this);
+      bexd.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      besu.b(this);
+      bexd.b(this);
     }
   }
   

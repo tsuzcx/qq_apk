@@ -1,20 +1,72 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayfu
-  implements View.OnTouchListener
+  extends aokh<ayfv>
 {
-  public ayfu(ActiveEntitySearchFragment paramActiveEntitySearchFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a()
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return 485;
+  }
+  
+  @NonNull
+  public ayfv a(int paramInt)
+  {
+    return new ayfv();
+  }
+  
+  @Nullable
+  public ayfv a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ScreenShotConfigProcessor", 2, "onParsed : " + paramArrayOfaoko[0].a);
+      }
+      return ayfv.a(paramArrayOfaoko[0].a);
+    }
+    return new ayfv();
+  }
+  
+  public Class<ayfv> a()
+  {
+    return ayfv.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotConfigProcessor", 2, "onUpdate : " + paramInt);
+    }
+  }
+  
+  public void a(ayfv paramayfv)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotConfigProcessor", 2, "onUpdate : " + paramayfv);
+    }
+    aygf.a(paramayfv);
+  }
+  
+  public boolean a()
+  {
     return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

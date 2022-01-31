@@ -71,7 +71,7 @@ public class llg
   {
     if (jdField_c_of_type_Int != 1)
     {
-      if (azgk.a(BaseApplicationImpl.getContext())) {
+      if (azkt.a(BaseApplicationImpl.getContext())) {
         break label138;
       }
       long l1 = System.currentTimeMillis();

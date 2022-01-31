@@ -1,22 +1,22 @@
 package dov.com.qq.im.story.mode;
 
 import android.os.Handler;
-import bmdi;
+import bmhu;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class StoryEffectTextMode$19
   implements Runnable
 {
-  public StoryEffectTextMode$19(bmdi parambmdi) {}
+  public StoryEffectTextMode$19(bmhu parambmhu) {}
   
   public void run()
   {
-    if (bmdi.e(this.this$0) != 0) {
-      bmdi.a(this.this$0, bmdi.a(this.this$0), bmdi.a(this.this$0), bmdi.c(this.this$0), bmdi.d(this.this$0), bmdi.e(this.this$0), null);
+    if (bmhu.e(this.this$0) != 0) {
+      bmhu.a(this.this$0, bmhu.a(this.this$0), bmhu.a(this.this$0), bmhu.c(this.this$0), bmhu.d(this.this$0), bmhu.e(this.this$0), null);
     }
-    if (bmdi.c(this.this$0))
+    if (bmhu.c(this.this$0))
     {
-      bmdi.d(this.this$0, false);
+      bmhu.d(this.this$0, false);
       ThreadManagerV2.getUIHandlerV2().postDelayed(new StoryEffectTextMode.19.1(this), 600L);
     }
   }

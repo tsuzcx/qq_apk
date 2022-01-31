@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vip;
 
-import bdwm;
-import bdwn;
+import beav;
+import beaw;
 
 public class TMSManager$1
   implements Runnable
 {
-  public TMSManager$1(bdwm parambdwm, bdwn parambdwn) {}
+  public TMSManager$1(beav parambeav, beaw parambeaw) {}
   
   public void run()
   {

@@ -1,13 +1,13 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bgnm;
+import bgrt;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IMediaPlayer.OnErrorListener;
 
 class OskReliableVideoPlayerImpl$7
   implements IMediaPlayer.OnErrorListener
 {
-  OskReliableVideoPlayerImpl$7(OskReliableVideoPlayerImpl paramOskReliableVideoPlayerImpl, bgnm parambgnm) {}
+  OskReliableVideoPlayerImpl$7(OskReliableVideoPlayerImpl paramOskReliableVideoPlayerImpl, bgrt parambgrt) {}
   
   public boolean onError(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {

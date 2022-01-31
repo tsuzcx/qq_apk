@@ -1,10 +1,10 @@
-import java.util.List;
+import android.graphics.drawable.Drawable;
 
-public abstract interface apkl
+public class apkl
 {
-  public abstract void a(float paramFloat, List<Integer> paramList);
-  
-  public abstract void a(List<Integer> paramList);
+  public int a;
+  public Drawable a;
+  public int b;
 }
 
 

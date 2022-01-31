@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.richmedia.mediacodec.renderer;
 
-import axrv;
-import axrx;
-import axse;
+import axwe;
+import axwg;
+import axwn;
 
 public class GpuImagePartsFilterGroup$1
   implements Runnable
 {
-  public GpuImagePartsFilterGroup$1(axse paramaxse, int paramInt1, int paramInt2, int paramInt3) {}
+  public GpuImagePartsFilterGroup$1(axwn paramaxwn, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    axrx localaxrx1 = null;
-    axrx localaxrx2 = axse.a(this.this$0);
-    axse.a(this.this$0, null);
-    if ((axse.b(this.this$0) == null) || (axse.b(this.this$0).getFilterType() != this.a))
+    axwg localaxwg1 = null;
+    axwg localaxwg2 = axwn.a(this.this$0);
+    axwn.a(this.this$0, null);
+    if ((axwn.b(this.this$0) == null) || (axwn.b(this.this$0).getFilterType() != this.a))
     {
-      localaxrx1 = axse.b(this.this$0);
-      axse.b(this.this$0, (axrx)axrv.a(this.a));
-      axse.b(this.this$0).init();
-      axse.b(this.this$0).onOutputSizeChanged(this.b, this.c);
+      localaxwg1 = axwn.b(this.this$0);
+      axwn.b(this.this$0, (axwg)axwe.a(this.a));
+      axwn.b(this.this$0).init();
+      axwn.b(this.this$0).onOutputSizeChanged(this.b, this.c);
     }
-    axse.b(this.this$0).a(false, 0.0F);
-    axse.a(this.this$0, 0.0F);
-    if (localaxrx2 != null) {
-      localaxrx2.destroy();
+    axwn.b(this.this$0).a(false, 0.0F);
+    axwn.a(this.this$0, 0.0F);
+    if (localaxwg2 != null) {
+      localaxwg2.destroy();
     }
-    if (localaxrx1 != null) {
-      localaxrx1.destroy();
+    if (localaxwg1 != null) {
+      localaxwg1.destroy();
     }
   }
 }

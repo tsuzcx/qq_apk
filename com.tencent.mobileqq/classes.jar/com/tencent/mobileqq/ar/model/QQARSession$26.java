@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.model;
 
-import amxp;
-import anbo;
+import anby;
+import anfx;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public class QQARSession$26
   implements Runnable
 {
-  public QQARSession$26(anbo paramanbo, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject) {}
+  public QQARSession$26(anfx paramanfx, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class QQARSession$26
       switch (this.jdField_a_of_type_Int)
       {
       default: 
-        anbo.a(this.this$0).a(null, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject);
+        anfx.a(this.this$0).a(null, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject);
       }
     }
   }

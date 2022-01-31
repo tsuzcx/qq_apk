@@ -1,15 +1,18 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class aedg
   implements View.OnClickListener
 {
-  public aedg(TroopRequestActivity paramTroopRequestActivity) {}
+  public aedg(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog) {}
   
   public void onClick(View paramView)
   {
-    this.a.f();
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

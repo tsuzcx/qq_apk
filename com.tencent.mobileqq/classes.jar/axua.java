@@ -1,220 +1,156 @@
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.MQLruCache;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
-import java.io.File;
-import org.json.JSONObject;
+import android.opengl.GLES20;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class axua
-  extends BrowserBaseModel
 {
-  public Drawable a(AIOFilePictureData paramAIOFilePictureData)
+  private static final ConcurrentLinkedQueue<axua> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  public float[] a;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  
+  private axua()
   {
-    File localFile1 = a(paramAIOFilePictureData, 18);
-    File localFile2 = a(paramAIOFilePictureData, 20);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = baul.a;
-    localURLDrawableOptions.mFailedDrawable = baul.a;
-    if ((localFile1 != null) && (BaseApplicationImpl.sImageCache.get(a(paramAIOFilePictureData, 18)) != null)) {
-      if (baul.a(localFile1.getAbsolutePath()) == 0) {}
-    }
-    do
+    int i = axuq.a(1)[0];
+    if (i == 0)
     {
-      do
-      {
-        return null;
-        return URLDrawable.getDrawable(a(paramAIOFilePictureData, 18), localURLDrawableOptions);
-        if ((localFile2 == null) || (BaseApplicationImpl.sImageCache.get(a(paramAIOFilePictureData, 20)) == null)) {
-          break;
-        }
-      } while (baul.a(localFile2.getAbsolutePath()) != 0);
-      return URLDrawable.getDrawable(a(paramAIOFilePictureData, 20), localURLDrawableOptions);
-    } while (a(paramAIOFilePictureData, 16) == null);
-    return URLDrawable.getDrawable(a(paramAIOFilePictureData, 16), localURLDrawableOptions);
+      axuq.a("glGenTexture");
+      throw new Exception("Unable to generate new texture " + Integer.toHexString(GLES20.glGetError()));
+    }
+    this.jdField_a_of_type_Int = i;
   }
   
-  public File a(AIOFilePictureData paramAIOFilePictureData, int paramInt)
+  public static axua a()
   {
-    if (paramAIOFilePictureData == null) {
-      return null;
-    }
-    switch (paramInt)
+    synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue)
     {
-    case 17: 
-    case 19: 
-    default: 
-      paramAIOFilePictureData = null;
+      axua localaxua1 = (axua)jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      ??? = localaxua1;
+      if (localaxua1 != null) {}
     }
-    while ((paramAIOFilePictureData != null) && (!paramAIOFilePictureData.equals("I:N")))
-    {
-      paramAIOFilePictureData = new File(paramAIOFilePictureData);
-      if (!paramAIOFilePictureData.exists()) {
-        break;
-      }
-      return paramAIOFilePictureData;
-      paramAIOFilePictureData = paramAIOFilePictureData.b;
-      continue;
-      paramAIOFilePictureData = paramAIOFilePictureData.c;
-      continue;
-      paramAIOFilePictureData = paramAIOFilePictureData.jdField_d_of_type_JavaLangString;
-    }
+    return localaxua2;
   }
   
-  public String a(AIOFilePictureData paramAIOFilePictureData, int paramInt)
+  public static void a()
   {
-    if (paramAIOFilePictureData == null) {
-      return null;
-    }
-    switch (paramInt)
-    {
-    case 17: 
-    case 19: 
-    default: 
-      paramAIOFilePictureData = null;
-    }
-    while ((paramAIOFilePictureData != null) && (!paramAIOFilePictureData.equals("I:N")))
-    {
-      if (paramAIOFilePictureData.startsWith("/")) {
-        break label108;
-      }
-      return "file:/" + paramAIOFilePictureData;
-      paramAIOFilePictureData = paramAIOFilePictureData.b;
-      continue;
-      paramAIOFilePictureData = paramAIOFilePictureData.c;
-      continue;
-      paramAIOFilePictureData = paramAIOFilePictureData.jdField_d_of_type_JavaLangString;
-    }
-    label108:
-    if (paramAIOFilePictureData.startsWith("//")) {
-      return "file:" + paramAIOFilePictureData;
-    }
-    return "file:" + paramAIOFilePictureData;
-  }
-  
-  public void a(AIOFilePictureData paramAIOFilePictureData, int paramInt, String paramString)
-  {
-    if ((paramAIOFilePictureData == null) || (paramString == null)) {
-      return;
-    }
-    if ("I:E".equals(paramString))
-    {
-      switch (paramInt)
-      {
-      case 17: 
-      case 19: 
-      default: 
-        return;
-      case 16: 
-        paramAIOFilePictureData.f = true;
-        return;
-      case 18: 
-        paramAIOFilePictureData.jdField_d_of_type_Boolean = true;
-        return;
-      }
-      paramAIOFilePictureData.e = true;
-      return;
-    }
-    switch (paramInt)
-    {
-    case 17: 
-    case 19: 
-    default: 
-      return;
-    case 16: 
-      paramAIOFilePictureData.b = paramString;
-      return;
-    case 18: 
-      paramAIOFilePictureData.c = paramString;
-      return;
-    }
-    paramAIOFilePictureData.jdField_d_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a(AIOFilePictureData paramAIOFilePictureData, int paramInt)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if (paramAIOFilePictureData == null) {
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-        switch (paramInt)
-        {
-        case 20: 
-        case 17: 
-        case 19: 
-        default: 
-          return false;
-        case 16: 
-          bool1 = bool2;
-        }
-      } while (!paramAIOFilePictureData.b.equals("I:N"));
-      return false;
-      bool1 = bool2;
-    } while (!paramAIOFilePictureData.c.equals("I:N"));
-    return false;
-  }
-  
-  public void b(AIOFilePictureData paramAIOFilePictureData, int paramInt, String paramString)
-  {
-    String str2 = "";
-    j = 0;
-    i = j;
-    localObject = str2;
-    if (!TextUtils.isEmpty(paramString)) {
-      str1 = str2;
-    }
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      paramString = str2;
-      str1 = str2;
-      if (localJSONObject.has("errorType"))
+      wxe.c("FlowEdit_DecodedFrame", "releaseAll");
+      synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue)
       {
-        str1 = str2;
-        paramString = localJSONObject.getString("errorType");
-      }
-      i = j;
-      localObject = paramString;
-      str1 = paramString;
-      if (localJSONObject.has("errorCode"))
-      {
-        str1 = paramString;
-        i = localJSONObject.getInt("errorCode");
-        localObject = paramString;
+        if (!jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
+          ((axua)jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll()).c();
+        }
       }
     }
-    catch (Exception paramString)
+    finally {}
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a(int paramInt, long paramLong1, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Int == 0) {
+      throw new IllegalStateException("this is an invalid frame");
+    }
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public long b()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Int == 0) {
+      throw new IllegalStateException("this is an invalid frame, don't recycle please");
+    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+    synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue)
     {
-      for (;;)
-      {
-        i = j;
-        localObject = str1;
-      }
-    }
-    if (paramInt == 18) {
-      if ((localObject != null) && (((String)localObject).equals("thumb_download"))) {
-        paramAIOFilePictureData.g = i;
-      }
-    }
-    while ((paramInt != 16) || (localObject == null) || (!((String)localObject).equals("thumb_download"))) {
+      jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(this);
       return;
     }
-    paramAIOFilePictureData.g = i;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Int != 0)
+    {
+      axuq.b(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int = 0;
+      return;
+    }
+    wxe.d("FlowEdit_DecodedFrame", "release duplicate %d", new Object[] { Integer.valueOf(System.identityHashCode(this)) });
+  }
+  
+  /* Error */
+  protected void finalize()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 133	java/lang/Object:finalize	()V
+    //   4: aload_0
+    //   5: getfield 63	axua:jdField_a_of_type_Int	I
+    //   8: ifeq +10 -> 18
+    //   11: ldc 73
+    //   13: ldc 135
+    //   15: invokestatic 137	wxe:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   18: return
+    //   19: astore_1
+    //   20: aload_0
+    //   21: getfield 63	axua:jdField_a_of_type_Int	I
+    //   24: ifeq -6 -> 18
+    //   27: ldc 73
+    //   29: ldc 135
+    //   31: invokestatic 137	wxe:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   34: return
+    //   35: astore_1
+    //   36: aload_0
+    //   37: getfield 63	axua:jdField_a_of_type_Int	I
+    //   40: ifeq +10 -> 50
+    //   43: ldc 73
+    //   45: ldc 135
+    //   47: invokestatic 137	wxe:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   50: aload_1
+    //   51: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	52	0	this	axua
+    //   19	1	1	localThrowable	Throwable
+    //   35	16	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   0	4	19	java/lang/Throwable
+    //   0	4	35	finally
+  }
+  
+  public String toString()
+  {
+    return "DecodedFrame{textureId=" + this.jdField_a_of_type_Int + ", timeStampUs=" + this.jdField_a_of_type_Long + ", cycleCount=" + this.jdField_b_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axua
  * JD-Core Version:    0.7.0.1
  */

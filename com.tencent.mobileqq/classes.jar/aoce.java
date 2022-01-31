@@ -1,98 +1,31 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class aoce
-  extends aofy<aocf>
 {
-  private static boolean a;
-  
-  public static boolean e()
+  public static void a(ArrayList<ColorNote> paramArrayList)
   {
-    aocf localaocf = (aocf)aogj.a().a(576);
-    if ((localaocf != null) && (!TextUtils.isEmpty(localaocf.a))) {
-      a = "1".equals(localaocf.a);
-    }
-    return a;
-  }
-  
-  public int a()
-  {
-    return 576;
-  }
-  
-  @NonNull
-  public aocf a(int paramInt)
-  {
-    return new aocf();
-  }
-  
-  public aocf a(String paramString)
-  {
-    try
+    HashMap localHashMap = new HashMap();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
     {
-      paramString = new JSONObject(paramString).optString("IsDanmuEnable");
-      if (QLog.isColorLevel()) {
-        QLog.e("DanmuConfProcessor", 2, "parse conf, IsDanmuEnable:" + paramString);
+      ColorNote localColorNote = (ColorNote)paramArrayList.next();
+      Integer localInteger = Integer.valueOf(localColorNote.getServiceType());
+      if (localHashMap.containsKey(localInteger))
+      {
+        ((ArrayList)localHashMap.get(localInteger)).add(localColorNote);
       }
-      paramString = new aocf(paramString.trim());
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  @Nullable
-  public aocf a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
-    {
-      aocf localaocf = a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DanmuConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
-      }
-      return localaocf;
-    }
-    return new aocf();
-  }
-  
-  public Class<aocf> a()
-  {
-    return aocf.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aocf paramaocf)
-  {
-    if ((paramaocf != null) && (!TextUtils.isEmpty(paramaocf.a)))
-    {
-      a = "1".equals(paramaocf.a);
-      if (QLog.isColorLevel()) {
-        QLog.e("DanmuConfProcessor", 2, "onUpdate, isDanmuEnable:" + a);
+      else
+      {
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(localColorNote);
+        localHashMap.put(localInteger, localArrayList);
       }
     }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    sdn.a((List)localHashMap.get(Integer.valueOf(16908290)));
   }
 }
 

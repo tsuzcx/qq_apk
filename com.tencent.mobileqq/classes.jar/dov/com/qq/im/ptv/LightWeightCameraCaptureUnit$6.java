@@ -1,17 +1,17 @@
 package dov.com.qq.im.ptv;
 
-import axje;
-import bmba;
+import axnn;
+import bmfm;
 import com.tencent.qphone.base.util.QLog;
 
 public class LightWeightCameraCaptureUnit$6
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$6(bmba parambmba) {}
+  public LightWeightCameraCaptureUnit$6(bmfm parambmfm) {}
   
   public void run()
   {
-    boolean bool = bmba.a(this.this$0).a(250, -1, null);
+    boolean bool = bmfm.a(this.this$0).a(250, -1, null);
     QLog.i("LightWeightCameraCaptureUnit", 1, "(NEW)LaunchActivity to mClient.sendToService success: " + bool);
     if (!bool) {
       throw new RuntimeException("mClient.sendToService false");

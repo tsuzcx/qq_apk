@@ -1,18 +1,18 @@
 package dov.com.qq.im.story.mode;
 
-import bmdi;
-import bmds;
-import uqf;
+import bmhu;
+import bmie;
+import uuo;
 
 public class StoryEffectTextMode$6$1
   implements Runnable
 {
-  public StoryEffectTextMode$6$1(bmds parambmds) {}
+  public StoryEffectTextMode$6$1(bmie parambmie) {}
   
   public void run()
   {
-    if (bmdi.a(this.a.a, bmdi.a(this.a.a).d)) {
-      bmdi.b(this.a.a, bmdi.a(this.a.a));
+    if (bmhu.a(this.a.a, bmhu.a(this.a.a).d)) {
+      bmhu.b(this.a.a, bmhu.a(this.a.a));
     }
   }
 }

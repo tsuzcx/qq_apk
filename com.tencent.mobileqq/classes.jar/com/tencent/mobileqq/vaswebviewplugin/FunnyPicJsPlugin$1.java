@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import aphy;
-import apic;
+import apmh;
+import apml;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
 import com.tencent.qphone.base.util.QLog;
@@ -43,7 +43,7 @@ class FunnyPicJsPlugin$1
           this.this$0.mReqBundle.clear();
           this.this$0.mReqBundle.putString("jsonContent", this.val$json.toString());
           this.this$0.mReqBundle.putInt("action", this.val$action);
-          localObject = apic.a("ipc_funnypic_add", this.val$innerCallBackId, this.this$0.mOnRemoteResp.key, this.this$0.mReqBundle);
+          localObject = apml.a("ipc_funnypic_add", this.val$innerCallBackId, this.this$0.mOnRemoteResp.key, this.this$0.mReqBundle);
           FunnyPicJsPlugin.access$001(this.this$0, (Bundle)localObject, true, true);
           if (!QLog.isColorLevel()) {
             return;

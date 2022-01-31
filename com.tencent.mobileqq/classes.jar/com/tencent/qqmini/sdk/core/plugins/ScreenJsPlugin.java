@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.provider.Settings.System;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import bgho;
-import bgkd;
-import bgkk;
+import bglv;
+import bgok;
+import bgor;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
@@ -94,39 +94,39 @@ public class ScreenJsPlugin
     paramActivity.setAttributes(localLayoutParams);
   }
   
-  public String getScreenBrightness(bgkd parambgkd)
+  public String getScreenBrightness(bgok parambgok)
   {
     try
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("value", getScreenBrightness(this.mMiniAppContext.a()));
-      parambgkd.a(localJSONObject);
+      parambgok.a(localJSONObject);
       return "";
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
       for (;;)
       {
-        QMLog.e("ScreenJsPlugin", parambgkd.getMessage(), parambgkd);
+        QMLog.e("ScreenJsPlugin", parambgok.getMessage(), parambgok);
       }
     }
   }
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    super.onCreate(parambgho);
-    bgkk.a(new ScreenJsPlugin.1(this));
+    super.onCreate(parambglv);
+    bgor.a(new ScreenJsPlugin.1(this));
   }
   
-  public String setKeepScreenOn(bgkd parambgkd)
+  public String setKeepScreenOn(bgok parambgok)
   {
-    bgkk.a(new ScreenJsPlugin.3(this, parambgkd));
+    bgor.a(new ScreenJsPlugin.3(this, parambgok));
     return "";
   }
   
-  public String setScreenBrightness(bgkd parambgkd)
+  public String setScreenBrightness(bgok parambgok)
   {
-    bgkk.a(new ScreenJsPlugin.2(this, parambgkd));
+    bgor.a(new ScreenJsPlugin.2(this, parambgok));
     return "";
   }
 }

@@ -1,30 +1,65 @@
-import cooperation.qzone.statistic.access.concept.Key;
-import cooperation.qzone.statistic.access.concept.Statistic;
-import java.util.List;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
 
-final class bjoq
-  extends bjop
+public class bjoq
+  implements ServiceConnection
 {
-  public String a(List<Statistic> paramList)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection;
+  
+  public bjoq(bjop parambjop, ServiceConnection paramServiceConnection, Context paramContext, int paramInt)
   {
-    Key[] arrayOfKey = ((Statistic)paramList.get(0)).getKeys();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramList.size())
+    this.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
+  {
+    do
     {
-      Statistic localStatistic = (Statistic)paramList.get(i);
-      int k = arrayOfKey.length;
-      int j = 0;
-      while (j < k)
+      try
       {
-        Key localKey = arrayOfKey[j];
-        localStringBuilder.append(localKey).append("→").append(localStatistic.getValue(localKey)).append(",");
-        j += 1;
+        this.jdField_a_of_type_AndroidContentContext.getApplicationContext().unbindService(this);
+        if (QLog.isColorLevel()) {
+          QLog.i("QZonePluginManger", 2, "onServiceConnected, " + this);
+        }
+        this.jdField_a_of_type_AndroidContentServiceConnection.onServiceConnected(???, paramIBinder);
       }
-      localStringBuilder.append("\n");
-      i += 1;
+      catch (Exception localException)
+      {
+        synchronized (bjop.a(this.jdField_a_of_type_Bjop))
+        {
+          do
+          {
+            paramIBinder = (bjoq)bjop.a(this.jdField_a_of_type_Bjop).poll();
+            if (paramIBinder == null) {
+              break;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("QZonePluginManger", 2, "continue process");
+            }
+            bjop.a(this.jdField_a_of_type_Bjop, paramIBinder, 300);
+            return;
+            localException = localException;
+          } while (!QLog.isColorLevel());
+          QLog.i("QZonePluginManger", 2, "unbindService, " + this);
+        }
+      }
+      bjop.a(this.jdField_a_of_type_Bjop, false);
+    } while (!QLog.isColorLevel());
+    QLog.i("QZonePluginManger", 2, "queue empty");
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginManger", 2, "onServiceDisconnected, " + this);
     }
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_AndroidContentServiceConnection.onServiceDisconnected(paramComponentName);
   }
 }
 

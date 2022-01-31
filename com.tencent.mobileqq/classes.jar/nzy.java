@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class nzy
-  implements bhqf
+  implements bhum
 {
   public nzy(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   

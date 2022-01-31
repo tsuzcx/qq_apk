@@ -1,30 +1,24 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.network.DoLikeRequest;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
 import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.videostory.network.request.SubscribePersonalDetailRequest;
 
 public class ykk
-  implements View.OnClickListener
+  extends yka
 {
-  public ykk(RelativeFeedItemView paramRelativeFeedItemView, CertifiedAccountMeta.StFeed paramStFeed) {}
+  private String a;
   
-  public void onClick(View paramView)
+  public ykk(String paramString)
   {
-    if ((!RelativeFeedItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView)) || (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.a() == null) || (!xxl.a(((CertifiedAccountMeta.StFeed)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.a()).status.get()))) {
-      return;
-    }
-    if (!RelativeFeedItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView))
-    {
-      QQToast.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.getContext(), alpo.a(2131713748), 0).a();
-      return;
-    }
-    RelativeFeedItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView, false);
-    paramView = new DoLikeRequest(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-    VSNetworkHelper.a().a(paramView, new ykl(this));
+    this.a = paramString;
+  }
+  
+  public void a() {}
+  
+  public void a(ykg paramykg)
+  {
+    SubscribePersonalDetailRequest localSubscribePersonalDetailRequest = new SubscribePersonalDetailRequest(this.a, null);
+    paramykg = new ykl(this, paramykg);
+    localSubscribePersonalDetailRequest.setEnableCache(true);
+    VSNetworkHelper.a().a(localSubscribePersonalDetailRequest, paramykg);
   }
 }
 

@@ -1,22 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
 public class ajjn
-  implements DialogInterface.OnClickListener
+  extends ajjw
 {
-  public ajjn(LoginView paramLoginView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    azmj.a(this.a.a, "dc00898", "", "", "0X8006797", "0X8006797", 0, 0, "", "", "", "");
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
-  }
+  public ImageView a;
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public ImageView b;
+  public SingleLineTextView b;
 }
 
 

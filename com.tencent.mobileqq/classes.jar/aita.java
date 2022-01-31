@@ -1,89 +1,73 @@
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity.SendVideoInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class aita
+  extends aira
 {
-  public static int a(JSONObject paramJSONObject, int paramInt, String... paramVarArgs)
+  protected aita(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    int i = paramInt;
-    if (paramJSONObject != null) {
-      i = 0;
-    }
-    try
-    {
-      while (i < paramVarArgs.length - 1)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
-        i += 1;
-      }
-      i = paramJSONObject.getInt(paramVarArgs[(paramVarArgs.length - 1)]);
-      return i;
-    }
-    catch (Throwable paramJSONObject) {}
-    return paramInt;
+    super(paramNewPhotoListActivity);
   }
   
-  public static String a(JSONObject paramJSONObject, String paramString, String... paramVarArgs)
+  protected void a(Intent paramIntent, boolean paramBoolean, ArrayList<String> paramArrayList)
   {
-    String str = paramString;
-    int i;
-    if (paramJSONObject != null) {
-      i = 0;
-    }
-    try
+    int i2 = PhotoUtils.b(this.a.a);
+    paramIntent = new HashMap();
+    int i1 = 0;
+    int k = 0;
+    int j = 0;
+    int i = 0;
+    while (i1 < this.mPhotoCommonData.selectedPhotoList.size())
     {
-      while (i < paramVarArgs.length - 1)
+      paramArrayList = (String)this.mPhotoCommonData.selectedPhotoList.get(i1);
+      int m;
+      if (ImageManager.isNetworkUrl(paramArrayList))
       {
-        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
-        i += 1;
+        m = k;
+        k = i;
+        i = m;
+        i1 += 1;
+        m = k;
+        k = i;
+        i = m;
       }
-      str = paramJSONObject.getString(paramVarArgs[(paramVarArgs.length - 1)]);
-      return str;
-    }
-    catch (Throwable paramJSONObject) {}
-    return paramString;
-  }
-  
-  public static JSONArray a(JSONObject paramJSONObject, String... paramVarArgs)
-  {
-    JSONArray localJSONArray = null;
-    int i;
-    if (paramJSONObject != null) {
-      i = 0;
-    }
-    try
-    {
-      while (i < paramVarArgs.length - 1)
+      else
       {
-        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
-        i += 1;
+        int n;
+        if (((NewPhotoListActivity)this.mActivity).a(paramArrayList) == 1)
+        {
+          paramArrayList = ((NewPhotoListActivity)this.mActivity).a(paramArrayList);
+          n = j;
+          m = i;
+          if (paramArrayList != null)
+          {
+            SendVideoActivity.SendVideoInfo localSendVideoInfo = new SendVideoActivity.SendVideoInfo();
+            localSendVideoInfo.fileSize = paramArrayList.fileSize;
+            localSendVideoInfo.duration = paramArrayList.mDuration;
+            paramIntent.put(Integer.valueOf(k), localSendVideoInfo);
+            m = i + 1;
+            n = j;
+          }
+        }
+        for (;;)
+        {
+          i = k + 1;
+          j = n;
+          k = m;
+          break;
+          n = j + 1;
+          m = i;
+        }
       }
-      localJSONArray = paramJSONObject.getJSONArray(paramVarArgs[(paramVarArgs.length - 1)]);
-      return localJSONArray;
     }
-    catch (Throwable paramJSONObject) {}
-    return null;
-  }
-  
-  public static JSONObject a(JSONObject paramJSONObject, String... paramVarArgs)
-  {
-    JSONObject localJSONObject = null;
-    int i;
-    if (paramJSONObject != null) {
-      i = 0;
-    }
-    try
-    {
-      while (i < paramVarArgs.length - 1)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
-        i += 1;
-      }
-      localJSONObject = paramJSONObject.getJSONObject(paramVarArgs[(paramVarArgs.length - 1)]);
-      return localJSONObject;
-    }
-    catch (Throwable paramJSONObject) {}
-    return null;
+    azqs.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", i2, 0, String.valueOf(j), String.valueOf(i), "", "");
+    c();
   }
 }
 

@@ -50,14 +50,14 @@ public class mep
             str2 = "";
             i = -2;
             continue;
-            this.a.jdField_a_of_type_Almt.c(Long.parseLong(this.a.h));
+            this.a.jdField_a_of_type_Alri.c(Long.parseLong(this.a.h));
             this.a.a(1, 0);
             return;
           }
           QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "OnAfterCreateDiscussionAsyncTask, IsSucc[" + parammxf.a.jdField_a_of_type_Boolean + "], retcode[" + i + "], result_code[" + str1 + "], mDiscID[" + this.a.h + "]");
           if ((i == 0) && (str1.equals("0")))
           {
-            this.a.jdField_a_of_type_Almt.a(Long.parseLong(this.a.h), this.a.c);
+            this.a.jdField_a_of_type_Alri.a(Long.parseLong(this.a.h), this.a.c);
             this.a.a(this.a.h, this.a.c);
             this.a.finish();
             return;

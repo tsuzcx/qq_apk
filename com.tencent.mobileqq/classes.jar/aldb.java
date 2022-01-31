@@ -1,60 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+
 public class aldb
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private aldn jdField_a_of_type_Aldn;
-  private aldo jdField_a_of_type_Aldo;
-  private aldq jdField_a_of_type_Aldq;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
+  public aldb(ApolloGameActivity paramApolloGameActivity, Intent paramIntent, String paramString, Bitmap paramBitmap, alkd paramalkd, int paramInt) {}
   
-  private aldb(int paramInt1, String paramString, int paramInt2, aldq paramaldq, aldo paramaldo, aldn paramaldn)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Aldq = paramaldq;
-    this.jdField_a_of_type_Aldo = paramaldo;
-    this.jdField_a_of_type_Aldn = paramaldn;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public aldn a()
-  {
-    return this.jdField_a_of_type_Aldn;
-  }
-  
-  public aldo a()
-  {
-    return this.jdField_a_of_type_Aldo;
-  }
-  
-  public aldq a()
-  {
-    return this.jdField_a_of_type_Aldq;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String a(int paramInt)
-  {
-    return this.jdField_a_of_type_Aldn.a(paramInt);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return this.jdField_a_of_type_Aldn.a(paramInt);
-  }
-  
-  public int b()
-  {
-    return this.b;
+    ApolloGameUtil.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, new aldc(this));
+    paramDialogInterface.dismiss();
   }
 }
 

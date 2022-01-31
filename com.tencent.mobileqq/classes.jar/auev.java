@@ -1,99 +1,58 @@
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import tencent.im.msg.im_msg_body.RichText;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.opengl.GLES20;
+import android.opengl.GLES31;
+import android.util.Log;
+import java.nio.ByteBuffer;
 
 public class auev
-  extends aueu<MessageForShortVideo>
 {
-  public auev(MessageForShortVideo paramMessageForShortVideo)
+  @TargetApi(18)
+  public static int a(int paramInt1, int paramInt2)
   {
-    super(paramMessageForShortVideo);
+    int[] arrayOfInt = new int[1];
+    GLES31.glGenTextures(1, arrayOfInt, 0);
+    GLES31.glBindTexture(3553, arrayOfInt[0]);
+    GLES31.glTexStorage2D(3553, 1, 32856, paramInt1, paramInt2);
+    GLES31.glTexParameteri(3553, 10242, 33071);
+    GLES31.glTexParameteri(3553, 10243, 33071);
+    GLES31.glTexParameteri(3553, 10241, 9728);
+    GLES31.glTexParameteri(3553, 10240, 9728);
+    a("glTexParameter");
+    return arrayOfInt[0];
   }
   
-  protected int a()
+  public static Bitmap a(int paramInt1, int paramInt2, int paramInt3)
   {
-    return 2;
+    ByteBuffer localByteBuffer = a(paramInt1, paramInt2, paramInt3);
+    Bitmap localBitmap = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
+    localBitmap.copyPixelsFromBuffer(localByteBuffer);
+    return localBitmap;
   }
   
-  protected MsgBackupResEntity a(String paramString, int paramInt)
+  private static ByteBuffer a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!a(paramString)) {
-      return null;
-    }
-    MsgBackupResEntity localMsgBackupResEntity = a();
-    localMsgBackupResEntity.msgSubType = paramInt;
-    localMsgBackupResEntity.filePath = paramString;
-    a(paramString, localMsgBackupResEntity);
-    paramString = a(paramInt);
-    paramString.put("selfuin", ((MessageForShortVideo)this.a).selfuin);
-    paramString.put("md5", ((MessageForShortVideo)this.a).md5);
-    paramString.put("thumbMd5", ((MessageForShortVideo)this.a).thumbMD5);
-    localMsgBackupResEntity.extraDataStr = a(paramString);
-    return localMsgBackupResEntity;
+    int[] arrayOfInt1 = new int[1];
+    int[] arrayOfInt2 = new int[1];
+    GLES20.glGetIntegerv(36006, arrayOfInt2, 0);
+    GLES20.glGenFramebuffers(1, arrayOfInt1, 0);
+    GLES20.glBindFramebuffer(36160, arrayOfInt1[0]);
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramInt2 * paramInt3 * 4);
+    GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, localByteBuffer);
+    GLES20.glFinish();
+    GLES20.glBindFramebuffer(36160, arrayOfInt2[0]);
+    GLES20.glDeleteFramebuffers(1, arrayOfInt1, 0);
+    return localByteBuffer;
   }
   
-  public List<MsgBackupResEntity> a()
+  public static void a(String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject2 = ShortVideoUtils.a((MessageForShortVideo)this.a, "mp4");
-    Object localObject1 = ShortVideoUtils.a(((MessageForShortVideo)this.a).thumbMD5, "jpg");
-    int j;
-    int i;
-    if ((this.a instanceof MessageForLightVideo))
-    {
-      j = 6;
-      i = 9;
+    int i = GLES20.glGetError();
+    if (i != 0) {
+      Log.e("GlUtil", paramString + ": glError 0x" + Integer.toHexString(i));
     }
-    for (;;)
-    {
-      localObject2 = a((String)localObject2, j);
-      if (localObject2 != null) {
-        localArrayList.add(localObject2);
-      }
-      localObject1 = a((String)localObject1, i);
-      if (localObject1 != null) {
-        localArrayList.add(localObject1);
-      }
-      return localArrayList;
-      if ((((MessageForShortVideo)this.a).busiType == 0) || (((MessageForShortVideo)this.a).busiType == 1))
-      {
-        j = 4;
-        i = 7;
-      }
-      else
-      {
-        if (((MessageForShortVideo)this.a).subBusiType != 2) {
-          break;
-        }
-        j = 5;
-        i = 8;
-      }
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    im_msg_body.RichText localRichText = ((MessageForShortVideo)this.a).getRichText();
-    ((MessageForShortVideo)this.a).richText = localRichText;
-  }
-  
-  public void b()
-  {
-    if (((MessageForShortVideo)this.a).isSendFromLocal()) {
-      ((MessageForShortVideo)this.a).issend = 2;
-    }
-    if ((this.a instanceof MessageForLightVideo))
-    {
-      ((MessageForLightVideo)this.a).isLightVideoRead = true;
-      ((MessageForShortVideo)this.a).saveExtInfoToExtStr(ayvj.u, "1");
-    }
-    ((MessageForShortVideo)this.a).serial();
   }
 }
 

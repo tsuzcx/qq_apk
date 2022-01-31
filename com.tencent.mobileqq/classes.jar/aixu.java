@@ -1,16 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import Wallet.RspWalletConfig;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aixu
-  implements View.OnClickListener
+class aixu
+  implements BusinessObserver
 {
-  public aixu(ChooseItemView paramChooseItemView, View.OnClickListener paramOnClickListener) {}
+  aixu(aixs paramaixs) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    if (paramInt == 17)
+    {
+      if (!paramBoolean) {}
+      try
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("QWalletConfigManager", 2, "setConfigSession fail get rsp:");
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
+      paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QWalletConfigManager", 2, "setConfigSession RspWalletConfig|" + paramBundle);
+        return;
+      }
+    }
   }
 }
 

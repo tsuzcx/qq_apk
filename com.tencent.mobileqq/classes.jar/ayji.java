@@ -1,9 +1,16 @@
-public abstract interface ayji
-  extends ayjj
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+
+public class ayji
+  implements View.OnClickListener
 {
-  public abstract String b();
+  public ayji(UniteSearchActivity paramUniteSearchActivity) {}
   
-  public abstract int c();
+  public void onClick(View paramView)
+  {
+    this.a.e();
+  }
 }
 
 

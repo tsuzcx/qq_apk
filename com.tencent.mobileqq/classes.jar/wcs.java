@@ -1,14 +1,20 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.settings.QGSettingFragment;
 
 public class wcs
-  implements wyf
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public wcs(QQStoryMainController paramQQStoryMainController) {}
+  public wcs(QGSettingFragment paramQGSettingFragment) {}
   
-  public void a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    wta.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
-    this.a.a(false, true, 1, null);
+    if (paramBoolean)
+    {
+      QGSettingFragment.a(true);
+      return;
+    }
+    QGSettingFragment.a(false);
   }
 }
 

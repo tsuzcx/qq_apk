@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.activity;
 
-import awbw;
-import awbx;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Setting;
 
@@ -12,9 +12,9 @@ class TroopAvatarWallEditActivity$4
   
   public void run()
   {
-    awbw localawbw = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    Setting localSetting = (Setting)localawbw.a(Setting.class, "troop_" + this.this$0.a);
-    localawbw.a();
+    awgf localawgf = this.this$0.app.getEntityManagerFactory().createEntityManager();
+    Setting localSetting = (Setting)localawgf.a(Setting.class, "troop_" + this.this$0.a);
+    localawgf.a();
     this.this$0.runOnUiThread(new TroopAvatarWallEditActivity.4.1(this, localSetting));
   }
 }

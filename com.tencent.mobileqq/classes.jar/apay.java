@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.PrecoverConfig;
-
-public final class apay
-  implements Parcelable.Creator<PrecoverConfig>
+public abstract interface apay
 {
-  public PrecoverConfig a(Parcel paramParcel)
-  {
-    return new PrecoverConfig(paramParcel);
-  }
-  
-  public PrecoverConfig[] a(int paramInt)
-  {
-    return new PrecoverConfig[paramInt];
-  }
+  public abstract void a(int paramInt);
 }
 
 

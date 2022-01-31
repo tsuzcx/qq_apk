@@ -13,13 +13,13 @@ public class ouc
     QLog.d("VideoFloatWindowConfigHandler", 2, "[onReceiveConfig] " + paramString);
     paramString = osq.a(paramString);
     if ((String)paramString.get("readinjoy_tinyvideo_window_switch") != null) {
-      bjxj.b((String)paramString.get("readinjoy_tinyvideo_window_switch"));
+      bkbq.b((String)paramString.get("readinjoy_tinyvideo_window_switch"));
     }
     paramString = (String)paramString.get("readinjoy_tinyvideo_autoplay_nextvideo");
     if (paramString != null) {}
     try
     {
-      bjxj.d(Integer.parseInt(paramString));
+      bkbq.d(Integer.parseInt(paramString));
       return true;
     }
     catch (Exception paramString)
@@ -34,8 +34,8 @@ public class ouc
   public void onWipeConfig(int paramInt)
   {
     super.onWipeConfig(paramInt);
-    bjxj.b(null);
-    bjxj.d(0);
+    bkbq.b(null);
+    bkbq.d(0);
   }
 }
 

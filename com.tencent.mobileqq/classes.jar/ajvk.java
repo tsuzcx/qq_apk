@@ -1,32 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.richmedia.subtitles.WordingItem;
 
-public class ajvk
-  implements View.OnTouchListener
+public final class ajvk
+  implements Parcelable.Creator<WordingItem>
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
-  
-  public ajvk(SelectMemberActivity paramSelectMemberActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public WordingItem a(Parcel paramParcel)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
-    {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
-    }
-    for (;;)
-    {
-      return false;
-      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.b();
-      }
-    }
+    return new WordingItem(paramParcel);
+  }
+  
+  public WordingItem[] a(int paramInt)
+  {
+    return new WordingItem[paramInt];
   }
 }
 

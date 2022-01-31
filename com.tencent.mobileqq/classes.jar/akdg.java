@@ -1,17 +1,22 @@
-import android.widget.CheckBox;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.contact.SimpleTextView;
-import com.tencent.widget.SingleLineTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-public class akdg
+class akdg
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public CheckBox a;
-  public ProgressBar a;
-  public SimpleTextView a;
-  public SingleLineTextView a;
-  public StringBuilder a;
-  public SingleLineTextView b;
+  akdg(akdf paramakdf) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.a.a.jdField_b_of_type_JavaLangRefWeakReference.get() != null) {
+      ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.a.a.jdField_b_of_type_JavaLangString, (MqqHandler)this.a.a.jdField_b_of_type_JavaLangRefWeakReference.get(), this.a.a.g + ".mp4", true));
+    }
+  }
 }
 
 

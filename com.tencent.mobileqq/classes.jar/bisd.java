@@ -1,9 +1,44 @@
-import android.os.Bundle;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.RecvMsg;
 
-public class bisd
+public abstract class bisd
+  extends Binder
+  implements bisc
 {
-  public int a;
-  public Bundle a;
+  public static bisc a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IActionListener");
+    if ((localIInterface != null) && ((localIInterface instanceof bisc))) {
+      return (bisc)localIInterface;
+    }
+    return new bise(paramIBinder);
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qappcenter.remote.IActionListener");
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IActionListener");
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (RecvMsg)RecvMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramParcel1);
+      return true;
+    }
+  }
 }
 
 

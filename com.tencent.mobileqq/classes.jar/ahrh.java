@@ -1,6 +1,17 @@
-public abstract interface ahrh
+public class ahrh
 {
-  public abstract void c();
+  public int c;
+  public int d;
+  public String f;
+  
+  public ahrh() {}
+  
+  public ahrh(int paramInt1, int paramInt2, String paramString)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.f = paramString;
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import adky;
+import adpn;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
@@ -56,24 +56,24 @@ public class ReadInJoyVideoTagSelectionFragment
   
   private void b()
   {
-    this.c = this.mContentView.findViewById(2131377389);
+    this.c = this.mContentView.findViewById(2131377443);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131377741));
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131364795);
-    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131364792);
-    ReadInJoyFlowLayout localReadInJoyFlowLayout = (ReadInJoyFlowLayout)this.mContentView.findViewById(2131366585);
-    this.jdField_a_of_type_Qqs = new qqs(getActivity(), 2131560143);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131377795));
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131364796);
+    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131364793);
+    ReadInJoyFlowLayout localReadInJoyFlowLayout = (ReadInJoyFlowLayout)this.mContentView.findViewById(2131366591);
+    this.jdField_a_of_type_Qqs = new qqs(getActivity(), 2131560142);
     this.jdField_a_of_type_Qqs.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
     localReadInJoyFlowLayout.setAdapter(this.jdField_a_of_type_Qqs);
     localReadInJoyFlowLayout.setOnItemClickListener(new qqq(this));
-    localReadInJoyFlowLayout = (ReadInJoyFlowLayout)this.mContentView.findViewById(2131366586);
-    this.jdField_a_of_type_Qqt = new qqt(getActivity(), 2131560143);
+    localReadInJoyFlowLayout = (ReadInJoyFlowLayout)this.mContentView.findViewById(2131366592);
+    this.jdField_a_of_type_Qqt = new qqt(getActivity(), 2131560142);
     this.jdField_a_of_type_Qqt.registerDataSetObserver(this.jdField_b_of_type_AndroidDatabaseDataSetObserver);
     localReadInJoyFlowLayout.setAdapter(this.jdField_a_of_type_Qqt);
     this.jdField_a_of_type_Qqt.notifyDataSetChanged();
     localReadInJoyFlowLayout.setOnItemClickListener(new qqr(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getActivity(), 2131719043, 0);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getActivity(), 2131719042, 0);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getActivity(), 2131719055, 0);
+    this.jdField_b_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getActivity(), 2131719054, 0);
     c();
   }
   
@@ -122,10 +122,10 @@ public class ReadInJoyVideoTagSelectionFragment
   private void d()
   {
     this.vg.a(true);
-    setRightButton(2131691088, this);
+    setRightButton(2131691089, this);
     this.rightViewText.setTextColor(-16265040);
     this.rightViewText.setBackgroundResource(0);
-    setTitle(getString(2131719015));
+    setTitle(getString(2131719027));
     this.leftView.setText(2131690382);
     qqu.a(this);
   }
@@ -135,7 +135,7 @@ public class ReadInJoyVideoTagSelectionFragment
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("EXTRA_SELECTION_REACH_MAXIMUM_NUMBER", this.jdField_a_of_type_Qqs.a());
-    adky.a(getActivity(), localIntent, PublicTransFragmentActivity.class, ReadInJoyVideoSearchTagFragment.class, 1000);
+    adpn.a(getActivity(), localIntent, PublicTransFragmentActivity.class, ReadInJoyVideoSearchTagFragment.class, 1000);
   }
   
   private void f()
@@ -163,7 +163,7 @@ public class ReadInJoyVideoTagSelectionFragment
   
   public int getContentLayoutId()
   {
-    return 2131560142;
+    return 2131560141;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -189,7 +189,7 @@ public class ReadInJoyVideoTagSelectionFragment
     {
     default: 
       return;
-    case 2131377389: 
+    case 2131377443: 
       this.c.setVisibility(8);
       e();
       return;

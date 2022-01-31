@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.app;
 
-import akii;
-import alxl;
-import alxn;
+import akmx;
+import amca;
+import amcc;
 
 public class SVIPHandler$2
   implements Runnable
 {
-  public SVIPHandler$2(alxl paramalxl, String paramString) {}
+  public SVIPHandler$2(amca paramamca, String paramString) {}
   
   public void run()
   {
-    akii localakii = akii.a();
-    localakii.a(this.this$0.app, this.a, new alxn(this, localakii));
+    akmx localakmx = akmx.a();
+    localakmx.a(this.this$0.app, this.a, new amcc(this, localakmx));
   }
 }
 

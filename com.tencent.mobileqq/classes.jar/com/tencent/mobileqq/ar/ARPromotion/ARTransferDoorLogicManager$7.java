@@ -1,20 +1,17 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import amou;
-import amoy;
-import android.widget.RelativeLayout;
+import amtj;
+import amtn;
 
 public class ARTransferDoorLogicManager$7
   implements Runnable
 {
-  public ARTransferDoorLogicManager$7(amou paramamou) {}
+  public ARTransferDoorLogicManager$7(amtj paramamtj) {}
   
   public void run()
   {
-    if ((amou.a(this.this$0) != null) && (amou.a(this.this$0) != null))
-    {
-      amou.a(this.this$0).b(amou.a(this.this$0));
-      amou.a(this.this$0).setVisibility(8);
+    if ((amtj.a(this.this$0) != null) && (amtj.a(this.this$0) != null)) {
+      amtj.a(this.this$0).b(amtj.a(this.this$0));
     }
   }
 }

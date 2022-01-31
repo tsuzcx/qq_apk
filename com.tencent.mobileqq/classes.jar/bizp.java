@@ -1,11 +1,17 @@
-import android.content.DialogInterface;
-
-final class bizp
-  extends bdco
+class bizp
+  implements bizd
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bizp(bizo parambizo) {}
+  
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    if (bizo.a(this.a) != null) {
+      bizo.a(this.a);
+    }
+    while (bizo.a(this.a) == null) {
+      return;
+    }
+    bizo.a(this.a, bizo.a(this.a));
   }
 }
 

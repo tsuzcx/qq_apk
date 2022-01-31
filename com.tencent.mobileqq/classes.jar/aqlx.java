@@ -1,26 +1,12 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Comparator;
+import android.os.Bundle;
 
-public class aqlx
-  implements Comparator<FileManagerEntity>
+public abstract interface aqlx
 {
-  public aqlx(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
-  
-  public int a(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
-  {
-    if (paramFileManagerEntity2.srvTime > paramFileManagerEntity1.srvTime) {
-      return 1;
-    }
-    if (paramFileManagerEntity2.srvTime < paramFileManagerEntity1.srvTime) {
-      return -1;
-    }
-    return 0;
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3, String paramString4, String paramString5, String paramString6, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqlx
  * JD-Core Version:    0.7.0.1
  */

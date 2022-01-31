@@ -1,45 +1,24 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import android.view.View;
-import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
-import org.json.JSONObject;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.troop.widget.AddedRobotView;
+import com.tencent.qphone.base.util.QLog;
 
 public class bcqh
-  extends View
+  extends RecyclerView.OnScrollListener
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  public bcqh(AddedRobotView paramAddedRobotView) {}
   
-  public bcqh(TroopGiftActionButton paramTroopGiftActionButton, Context paramContext)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(TroopGiftActionButton.a(paramTroopGiftActionButton).optString("buttonColor")));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(bcwh.a(getContext(), 3.0F));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = (bcwh.a(getContext(), 3.0F) / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = (bcwh.a(getContext(), 3.0F) / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = (bcwh.a(getContext(), 68.0F) - bcwh.a(getContext(), 3.0F) / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (bcwh.a(getContext(), 68.0F) - bcwh.a(getContext(), 3.0F) / 2);
-    a(0);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    invalidate();
-  }
-  
-  protected void onDraw(Canvas paramCanvas)
-  {
-    super.onDraw(paramCanvas);
-    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, -(100 - this.jdField_a_of_type_Int) * 360 / 100, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+    QLog.i("AddedRobotView", 1, "onScrollStateChanged state: " + paramInt);
+    if (paramInt != 0) {
+      AddedRobotView.a(this.a).c();
+    }
+    while (!AddedRobotView.a(this.a).a()) {
+      return;
+    }
+    AddedRobotView.a(this.a).b();
+    AddedRobotView.a(this.a).notifyDataSetChanged();
   }
 }
 

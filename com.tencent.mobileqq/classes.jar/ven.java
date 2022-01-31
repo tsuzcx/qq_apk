@@ -1,44 +1,58 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ven
-  extends vfy
+  extends vcf
+  implements urr<vgr, via>
 {
-  private String a;
+  public static int a = 20;
+  private long c;
   
-  public ven()
+  public vgr a(int paramInt, ArrayList<uvr> paramArrayList)
   {
-    a(false, true);
-  }
-  
-  public void a()
-  {
-    QQStoryContext.a();
-    QQAppInterface localQQAppInterface = QQStoryContext.a();
-    batw localbatw = localQQAppInterface.a();
-    baub localbaub = new baub();
-    localbaub.jdField_a_of_type_Awfy = new veo(this);
-    localbaub.i = this.a;
-    localbaub.jdField_a_of_type_Boolean = true;
-    localbaub.jdField_b_of_type_Int = 196610;
-    localbaub.jdField_b_of_type_JavaLangString = localQQAppInterface.c();
-    localbaub.c = "";
-    localbaub.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    localbatw.a(localbaub);
-  }
-  
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UploadImageJob_in_image_file_path"))) {
-      this.a = ((String)a("UploadImageJob_in_image_file_path"));
+    if (paramArrayList.size() > a) {
+      wxe.d("Q.qqstory:WatchVideoBatchHandler", "too much data");
     }
+    vgr localvgr = new vgr();
+    localvgr.c = paramInt;
+    localvgr.a = paramArrayList;
+    urp.a().a(localvgr, this);
+    this.c = System.currentTimeMillis();
+    return localvgr;
   }
   
-  public boolean a()
+  public void a(@NonNull vgr paramvgr, @Nullable via paramvia, @NonNull ErrorMessage paramErrorMessage)
   {
-    return !TextUtils.isEmpty(this.a);
+    uvq localuvq = (uvq)uwa.a(13);
+    if ((paramvia == null) || (paramErrorMessage.isFail()))
+    {
+      wxe.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. errorInfo=%s", new Object[] { paramErrorMessage.toString() });
+      paramvia = paramvgr.a.iterator();
+    }
+    while (paramvia.hasNext())
+    {
+      localuvq.a((uvr)paramvia.next(), false);
+      continue;
+      localuvq.a(paramvia.a);
+      wxe.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. succList.size=%d. requestList.size=%d", new Object[] { Integer.valueOf(paramvia.a.size()), Integer.valueOf(paramvgr.a.size()) });
+      paramErrorMessage = paramvgr.a.iterator();
+      while (paramErrorMessage.hasNext())
+      {
+        uvr localuvr = (uvr)paramErrorMessage.next();
+        if (!paramvia.a.contains(localuvr)) {
+          localuvq.a(localuvr, false);
+        }
+      }
+      if (paramvgr.a.size() > paramvia.a.size()) {
+        wxj.b("home_page", "batch_watch_video", 0, paramvgr.a.size() - paramvia.a.size(), new String[] { "", String.valueOf(System.currentTimeMillis() - this.c), wxj.a(BaseApplication.getContext()) });
+      }
+    }
+    localuvq.a(paramvgr);
   }
 }
 

@@ -1,79 +1,8 @@
-import android.hardware.GeomagneticField;
-import android.hardware.Sensor;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-public abstract class anoz
-  implements SensorEventListener
+public abstract interface anoz
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  protected SensorManager a;
-  protected anos a;
-  protected List<Sensor> a;
-  private boolean jdField_a_of_type_Boolean;
-  protected float[] a;
-  private float b = -1.0F;
-  private float c = -1.0F;
-  
-  public anoz(SensorManager paramSensorManager, anos paramanos)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ArrayOfFloat = new float[3];
-    this.jdField_a_of_type_AndroidHardwareSensorManager = paramSensorManager;
-    this.jdField_a_of_type_Anos = paramanos;
-  }
-  
-  private GeomagneticField a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return new GeomagneticField(this.jdField_a_of_type_Float, this.b, this.c, System.currentTimeMillis());
-    }
-    return null;
-  }
-  
-  protected float a()
-  {
-    GeomagneticField localGeomagneticField = a();
-    if (localGeomagneticField != null) {
-      return localGeomagneticField.getDeclination();
-    }
-    return 0.0F;
-  }
-  
-  public void a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      Sensor localSensor = (Sensor)localIterator.next();
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      Sensor localSensor = (Sensor)localIterator.next();
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, 1);
-    }
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      Sensor localSensor = (Sensor)localIterator.next();
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this, localSensor);
-    }
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  public abstract void b(ArrayList<anoi> paramArrayList);
 }
 
 

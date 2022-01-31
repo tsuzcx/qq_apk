@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-public class admz
-  implements View.OnClickListener
+class admz
+  implements DialogInterface.OnCancelListener
 {
-  public admz(QQMapActivity paramQQMapActivity) {}
+  admz(admx paramadmx) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.u();
-    azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "sdk_locate", "click_send", 0, 0, "", "", "", "");
+    this.a.a.setResult(4003);
+    this.a.a.finish();
   }
 }
 

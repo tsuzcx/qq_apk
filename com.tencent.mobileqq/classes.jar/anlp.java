@@ -1,25 +1,25 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.7;
 
 public class anlp
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public anlp(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  public anlp(ArkAppYYBDownloadModule.7 param7) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
+    try
     {
-      this.a.b();
-      this.a.a("");
-      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is open", new Object[0]));
+      paramDialogInterface.dismiss();
+      label6:
+      bfkr.a().a(10, this.a.a);
       return;
     }
-    this.a.c();
-    this.a.a("close");
-    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is close", new Object[0]));
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
   }
 }
 

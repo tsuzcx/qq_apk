@@ -1,9 +1,11 @@
-import android.view.View.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public abstract interface beha
-  extends bebx
 {
-  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener);
+  public abstract int pluginStartActivityForResult(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte);
+  
+  public abstract int switchRequestCode(WebViewPlugin paramWebViewPlugin, byte paramByte);
 }
 
 

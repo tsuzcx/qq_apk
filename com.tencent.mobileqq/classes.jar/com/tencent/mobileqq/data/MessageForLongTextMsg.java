@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abot;
+import abti;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 
 public class MessageForLongTextMsg
@@ -24,7 +24,7 @@ public class MessageForLongTextMsg
   
   public boolean isSupportFTS()
   {
-    return abot.x(this.istroop);
+    return abti.x(this.istroop);
   }
   
   public boolean isSupportReply()

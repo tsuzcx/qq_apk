@@ -1,11 +1,18 @@
-class avcq
-  implements vue
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+
+public final class avcq
+  implements Parcelable.Creator<Comments.Comment>
 {
-  avcq(avcm paramavcm, avce paramavce) {}
-  
-  public void a_(vtz paramvtz)
+  public Comments.Comment a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Avce.a(this.jdField_a_of_type_Avcm);
+    return new Comments.Comment(paramParcel);
+  }
+  
+  public Comments.Comment[] a(int paramInt)
+  {
+    return new Comments.Comment[paramInt];
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agot;
-import agpq;
-import awbw;
-import awbx;
+import agti;
+import aguf;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.data.PublicAccountInfo;
@@ -12,17 +12,17 @@ import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
 public class PublicAccountChatPie$34$1
   implements Runnable
 {
-  public PublicAccountChatPie$34$1(agpq paramagpq, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse) {}
+  public PublicAccountChatPie$34$1(aguf paramaguf, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse) {}
   
   public void run()
   {
     AccountDetail localAccountDetail = new AccountDetail(this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
-    awbw localawbw = this.jdField_a_of_type_Agpq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory(this.jdField_a_of_type_Agpq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).createEntityManager();
-    if (localawbw != null) {
-      localawbw.b(localAccountDetail);
+    awgf localawgf = this.jdField_a_of_type_Aguf.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory(this.jdField_a_of_type_Aguf.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).createEntityManager();
+    if (localawgf != null) {
+      localawgf.b(localAccountDetail);
     }
-    this.jdField_a_of_type_Agpq.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount(localAccountDetail, 0L);
-    this.jdField_a_of_type_Agpq.a.a(this.jdField_a_of_type_Agpq.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+    this.jdField_a_of_type_Aguf.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount(localAccountDetail, 0L);
+    this.jdField_a_of_type_Aguf.a.a(this.jdField_a_of_type_Aguf.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
   }
 }
 

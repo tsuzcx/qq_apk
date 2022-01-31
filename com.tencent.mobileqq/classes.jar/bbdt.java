@@ -1,17 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2.1;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.TVKSDKInstallRunnable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class bbdt
-  implements bhqp
+  implements TVK_SDKMgr.InstallListener
 {
-  public bbdt(TroopAvatarWallPreviewActivity.2.1 param1) {}
+  public bbdt(TribeVideoListPlayerFragment.TVKSDKInstallRunnable paramTVKSDKInstallRunnable) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onInstallProgress(float paramFloat)
   {
-    this.a.a.this$0.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 1, String.format("plugin install %f", new Object[] { Float.valueOf(paramFloat) }));
+    }
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 1, "plugin fail errorCode = " + paramInt);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 1, "plugin success");
+    }
   }
 }
 

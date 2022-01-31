@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.contact.addcontact.face2face;
 
-import ahfc;
-import ahfj;
+import ahjr;
+import ahjy;
 import java.util.TimerTask;
 
 public class Face2FaceAddContactPresenter$1
   extends TimerTask
 {
-  public Face2FaceAddContactPresenter$1(ahfc paramahfc) {}
+  public Face2FaceAddContactPresenter$1(ahjr paramahjr) {}
   
   public void run()
   {
-    if (ahfc.a(this.this$0) != null) {
-      ahfc.a(this.this$0).h();
+    if (ahjr.a(this.this$0) != null) {
+      ahjr.a(this.this$0).h();
     }
   }
 }

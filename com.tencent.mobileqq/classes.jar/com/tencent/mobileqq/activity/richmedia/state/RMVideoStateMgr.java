@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ajli;
-import ajlj;
-import ajov;
-import ajow;
-import ajox;
-import ajoy;
-import ajoz;
-import ajpa;
-import ajpb;
-import ajpc;
-import ajpf;
-import ajpg;
-import ajpj;
-import alpo;
+import ajpx;
+import ajpy;
+import ajtk;
+import ajtl;
+import ajtm;
+import ajtn;
+import ajto;
+import ajtp;
+import ajtq;
+import ajtr;
+import ajtu;
+import ajtv;
+import ajty;
+import alud;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -26,31 +26,31 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
-import axqz;
-import axrl;
-import axrn;
-import azbo;
-import azbs;
-import azbt;
-import azbv;
-import azbw;
-import azcg;
-import azcu;
-import azcw;
-import azda;
-import azdf;
-import azdl;
-import azdo;
-import azds;
-import azdt;
-import azdx;
-import azfm;
-import azfz;
+import axvi;
+import axvu;
+import axvw;
+import azfx;
+import azgb;
+import azgc;
+import azge;
+import azgf;
+import azgp;
+import azhd;
 import azhf;
-import azhh;
-import azmz;
-import bdcs;
-import bjsb;
+import azhj;
+import azho;
+import azhu;
+import azhx;
+import azib;
+import azic;
+import azig;
+import azjv;
+import azki;
+import azlo;
+import azlq;
+import azri;
+import bdhb;
+import bjwi;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.maxvideo.common.MessageStruct;
@@ -70,7 +70,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import lnz;
 
 public class RMVideoStateMgr
-  implements azbt, azbw, azcu, azhh, AVCodec.AVCodecCallback
+  implements azgc, azgf, azhd, azlq, AVCodec.AVCodecCallback
 {
   private static RMVideoStateMgr jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr;
   public static boolean a;
@@ -79,28 +79,28 @@ public class RMVideoStateMgr
   public double a;
   public int a;
   public long a;
-  public ajov a;
-  public ajow a;
-  final ajox jdField_a_of_type_Ajox = new ajox();
-  final ajoy jdField_a_of_type_Ajoy = new ajoy();
-  final ajoz jdField_a_of_type_Ajoz = new ajoz();
-  final ajpa jdField_a_of_type_Ajpa = new ajpa();
-  public ajpc a;
-  public final ajpg a;
-  public ajpj a;
+  public ajtk a;
+  public ajtl a;
+  final ajtm jdField_a_of_type_Ajtm = new ajtm();
+  final ajtn jdField_a_of_type_Ajtn = new ajtn();
+  final ajto jdField_a_of_type_Ajto = new ajto();
+  final ajtp jdField_a_of_type_Ajtp = new ajtp();
+  public ajtr a;
+  public final ajtv a;
+  public ajty a;
   public Context a;
   public Handler a;
-  private axqz jdField_a_of_type_Axqz;
-  private axrn jdField_a_of_type_Axrn;
-  public azcu a;
-  public azdf a;
-  public azfm a;
+  private axvi jdField_a_of_type_Axvi;
+  private axvw jdField_a_of_type_Axvw;
+  public azhd a;
+  public azho a;
+  public azjv a;
   public final RMVideoSwitchCameraPicMgr a;
   public AudioCapture a;
   public PreviewContext a;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   public String a;
-  private WeakReference<axrl> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<axvu> jdField_a_of_type_JavaLangRefWeakReference;
   public AtomicBoolean a;
   public AtomicInteger a;
   public int b;
@@ -134,28 +134,28 @@ public class RMVideoStateMgr
   private RMVideoStateMgr()
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_Ajpg = new ajpg();
+    this.jdField_a_of_type_Ajtv = new ajtv();
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr = new RMVideoSwitchCameraPicMgr();
     this.jdField_f_of_type_Boolean = true;
     this.jdField_d_of_type_Int = 1;
     this.jdField_b_of_type_Int = 480;
-    this.jdField_a_of_type_Ajpc = new ajpc();
+    this.jdField_a_of_type_Ajtr = new ajtr();
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Ajow = new ajow();
+    this.jdField_a_of_type_Ajtl = new ajtl();
     this.jdField_b_of_type_ArrayOfInt = new int[8];
   }
   
   private int a(int[] paramArrayOfInt)
   {
-    int i2 = azbo.h.length;
+    int i2 = azfx.h.length;
     int i1 = 0;
     while (i1 < i2)
     {
-      if (paramArrayOfInt[1] == azbo.h[i1])
+      if (paramArrayOfInt[1] == azfx.h[i1])
       {
-        paramArrayOfInt[0] = azbo.g[i1];
+        paramArrayOfInt[0] = azfx.g[i1];
         return i1;
       }
       i1 += 1;
@@ -198,7 +198,7 @@ public class RMVideoStateMgr
           {
             String str = paramString1[i1].getName();
             if ((!TextUtils.isEmpty(str)) && (str.compareTo(paramString2) < 0)) {
-              bdcs.a(paramString1[i1].getAbsolutePath());
+              bdhb.a(paramString1[i1].getAbsolutePath());
             }
             i1 += 1;
           }
@@ -287,7 +287,7 @@ public class RMVideoStateMgr
     //   91: aload_1
     //   92: iload_3
     //   93: iload 4
-    //   95: invokestatic 284	azbo:a	(JLandroid/content/Context;II)Z
+    //   95: invokestatic 284	azfx:a	(JLandroid/content/Context;II)Z
     //   98: istore 9
     //   100: iload 9
     //   102: istore 8
@@ -343,7 +343,7 @@ public class RMVideoStateMgr
     //   223: aload_1
     //   224: iload_3
     //   225: iload 4
-    //   227: invokestatic 284	azbo:a	(JLandroid/content/Context;II)Z
+    //   227: invokestatic 284	azfx:a	(JLandroid/content/Context;II)Z
     //   230: istore 8
     //   232: iload 8
     //   234: istore 9
@@ -359,7 +359,7 @@ public class RMVideoStateMgr
     //   255: aload_2
     //   256: invokevirtual 308	java/lang/UnsatisfiedLinkError:printStackTrace	()V
     //   259: ldc2_w 271
-    //   262: putstatic 310	azbo:jdField_a_of_type_Long	J
+    //   262: putstatic 310	azfx:jdField_a_of_type_Long	J
     //   265: iconst_1
     //   266: istore 9
     //   268: goto -109 -> 159
@@ -414,16 +414,16 @@ public class RMVideoStateMgr
   
   public static boolean a(boolean paramBoolean)
   {
-    return (azcg.a()) || (paramBoolean);
+    return (azgp.a()) || (paramBoolean);
   }
   
   private int b(int[] paramArrayOfInt)
   {
-    int i2 = azbo.jdField_a_of_type_ArrayOfInt.length;
+    int i2 = azfx.jdField_a_of_type_ArrayOfInt.length;
     int i1 = 0;
     while (i1 < i2)
     {
-      if ((paramArrayOfInt[0] == azbo.jdField_a_of_type_ArrayOfInt[i1]) && (paramArrayOfInt[1] == azbo.jdField_b_of_type_ArrayOfInt[i1])) {
+      if ((paramArrayOfInt[0] == azfx.jdField_a_of_type_ArrayOfInt[i1]) && (paramArrayOfInt[1] == azfx.jdField_b_of_type_ArrayOfInt[i1])) {
         return i1;
       }
       i1 += 1;
@@ -433,12 +433,12 @@ public class RMVideoStateMgr
   
   private void b(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int i2 = azbo.jdField_c_of_type_ArrayOfInt.length / 2;
+    int i2 = azfx.jdField_c_of_type_ArrayOfInt.length / 2;
     int i1 = 0;
     if (i1 < i2)
     {
-      int i3 = a(azbo.jdField_c_of_type_ArrayOfInt[(i1 * 2 + 1)], paramBoolean);
-      if ((azbo.jdField_c_of_type_ArrayOfInt[(i1 * 2)] != paramInt1) || (i3 != paramInt2)) {}
+      int i3 = a(azfx.jdField_c_of_type_ArrayOfInt[(i1 * 2 + 1)], paramBoolean);
+      if ((azfx.jdField_c_of_type_ArrayOfInt[(i1 * 2)] != paramInt1) || (i3 != paramInt2)) {}
     }
     for (;;)
     {
@@ -457,7 +457,7 @@ public class RMVideoStateMgr
     if (QLog.isColorLevel()) {
       QLog.i("RMVideoStateMgr", 2, "clearVideoDataFile:" + paramString);
     }
-    String str = azbo.a();
+    String str = azfx.a();
     if ((str != null) && (!"".equals(str)) && (str.contains("/Android/data/com.tencent.mobileqq/qq/video"))) {
       a(str, paramString, false);
     }
@@ -482,24 +482,24 @@ public class RMVideoStateMgr
   
   private void d(int paramInt)
   {
-    if ((paramInt != -1) && (paramInt < azbo.h.length))
+    if ((paramInt != -1) && (paramInt < azfx.h.length))
     {
       paramInt *= 4;
-      azds.j = azbo.jdField_c_of_type_ArrayOfInt[paramInt];
-      azds.k = azbo.jdField_c_of_type_ArrayOfInt[(paramInt + 1)];
-      azds.l = azbo.jdField_c_of_type_ArrayOfInt[(paramInt + 2)];
-      azds.m = azbo.jdField_c_of_type_ArrayOfInt[(paramInt + 3)];
+      azib.j = azfx.jdField_c_of_type_ArrayOfInt[paramInt];
+      azib.k = azfx.jdField_c_of_type_ArrayOfInt[(paramInt + 1)];
+      azib.l = azfx.jdField_c_of_type_ArrayOfInt[(paramInt + 2)];
+      azib.m = azfx.jdField_c_of_type_ArrayOfInt[(paramInt + 3)];
       return;
     }
-    azds.j = azbo.jdField_d_of_type_Int;
-    azds.k = azbo.jdField_d_of_type_Int * 3 / 4;
-    azds.l = azds.j * azds.h / azds.i;
-    azds.m = azds.k * azds.h / azds.i;
+    azib.j = azfx.jdField_d_of_type_Int;
+    azib.k = azfx.jdField_d_of_type_Int * 3 / 4;
+    azib.l = azib.j * azib.h / azib.i;
+    azib.m = azib.k * azib.h / azib.i;
   }
   
   private void f(boolean paramBoolean)
   {
-    if ((azcw.e(azcw.u)) || (paramBoolean)) {
+    if ((azhf.e(azhf.u)) || (paramBoolean)) {
       PtvFilterUtils.b(false);
     }
   }
@@ -513,7 +513,7 @@ public class RMVideoStateMgr
     }
     for (int i1 = 1;; i1 = 0)
     {
-      if (!azfz.a())
+      if (!azki.a())
       {
         this.n = false;
         i1 = 2;
@@ -549,7 +549,7 @@ public class RMVideoStateMgr
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("param_FailCode", Integer.toString(i1));
-        azmz.a(BaseApplicationImpl.getContext()).a(null, "actMediaCodecSupport", this.n, 0L, 0L, localHashMap, "");
+        azri.a(BaseApplicationImpl.getContext()).a(null, "actMediaCodecSupport", this.n, 0L, 0L, localHashMap, "");
         if (QLog.isColorLevel()) {
           QLog.i("RMVideoStateMgr", 2, "mediacodec isMediaCodecSupport:" + this.n + ", code:" + i1);
         }
@@ -574,10 +574,10 @@ public class RMVideoStateMgr
   
   public float a()
   {
-    if ((this.jdField_a_of_type_Ajow.jdField_f_of_type_Int <= 0) || (this.jdField_a_of_type_Ajow.jdField_e_of_type_Int <= 0)) {
+    if ((this.jdField_a_of_type_Ajtl.jdField_f_of_type_Int <= 0) || (this.jdField_a_of_type_Ajtl.jdField_e_of_type_Int <= 0)) {
       return 1.333333F;
     }
-    return this.jdField_a_of_type_Ajow.jdField_e_of_type_Int * 1.0F / this.jdField_a_of_type_Ajow.jdField_f_of_type_Int;
+    return this.jdField_a_of_type_Ajtl.jdField_e_of_type_Int * 1.0F / this.jdField_a_of_type_Ajtl.jdField_f_of_type_Int;
   }
   
   public int a()
@@ -599,45 +599,45 @@ public class RMVideoStateMgr
     return i1;
   }
   
-  public int a(azbt paramazbt, boolean paramBoolean, int paramInt1, int paramInt2)
+  public int a(azgc paramazgc, boolean paramBoolean, int paramInt1, int paramInt2)
   {
     int i1 = -1;
-    if (paramazbt == this)
+    if (paramazgc == this)
     {
-      a().a(paramazbt, paramBoolean, paramInt1, paramInt2);
+      a().a(paramazgc, paramBoolean, paramInt1, paramInt2);
       i1 = 0;
     }
     return i1;
   }
   
-  public ajpb a()
+  public ajtq a()
   {
     int i1 = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    ajoy localajoy = this.jdField_a_of_type_Ajoy;
+    ajtn localajtn = this.jdField_a_of_type_Ajtn;
     switch (i1)
     {
     default: 
-      return localajoy;
+      return localajtn;
     case 2: 
-      return this.jdField_a_of_type_Ajox;
+      return this.jdField_a_of_type_Ajtm;
     case 3: 
-      return this.jdField_a_of_type_Ajpa;
+      return this.jdField_a_of_type_Ajtp;
     }
-    return this.jdField_a_of_type_Ajoz;
+    return this.jdField_a_of_type_Ajto;
   }
   
   public void a()
   {
     if (this.i) {
-      azbo.a();
+      azfx.a();
     }
-    azhf.a().a(this);
+    azlo.a().a(this);
     a().a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext != null) && (this.jdField_a_of_type_Azdf != null) && (!this.jdField_a_of_type_Azdf.jdField_a_of_type_Boolean)) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext != null) && (this.jdField_a_of_type_Azho != null) && (!this.jdField_a_of_type_Azho.jdField_a_of_type_Boolean)) {
       this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.notifyFirstFrame = true;
     }
-    this.jdField_a_of_type_Ajpc.b = false;
-    this.jdField_a_of_type_Ajpc.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Ajtr.b = false;
+    this.jdField_a_of_type_Ajtr.jdField_a_of_type_Boolean = false;
   }
   
   public void a(int paramInt)
@@ -659,48 +659,48 @@ public class RMVideoStateMgr
       i1 += 1;
     }
     this.jdField_a_of_type_Double = paramInt1;
-    azdx.a().a().b(paramInt1);
+    azig.a().a().b(paramInt1);
     if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndAdd(0) < 3) {
       j();
     }
   }
   
   @TargetApi(17)
-  public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong, azdt paramazdt)
+  public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong, azic paramazic)
   {
     if (!this.n) {
       throw new RuntimeException("HWRecorder is not supported.");
     }
-    if (this.jdField_a_of_type_Axrn == null) {
+    if (this.jdField_a_of_type_Axvw == null) {
       throw new RuntimeException("hwVideoRecorder == null");
     }
-    axrl localaxrl;
+    axvu localaxvu;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localaxrl = (axrl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localaxvu = (axvu)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    while ((this.l) && (this.jdField_a_of_type_Axqz != null)) {
+    while ((this.l) && (this.jdField_a_of_type_Axvi != null)) {
       switch (this.jdField_e_of_type_Int)
       {
       default: 
         throw new RuntimeException("unknown status " + this.jdField_e_of_type_Int);
-        localaxrl = null;
+        localaxvu = null;
         break;
       case 0: 
-        this.jdField_a_of_type_Axqz.a(EGL14.eglGetCurrentContext());
-        this.jdField_a_of_type_Axrn.a(this.jdField_a_of_type_Axqz, localaxrl);
+        this.jdField_a_of_type_Axvi.a(EGL14.eglGetCurrentContext());
+        this.jdField_a_of_type_Axvw.a(this.jdField_a_of_type_Axvi, localaxvu);
         this.jdField_e_of_type_Int = 1;
       case 1: 
-        this.jdField_a_of_type_Axrn.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong);
-        paramazdt.b();
+        this.jdField_a_of_type_Axvw.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong);
+        paramazic.b();
       }
     }
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.e("RMVideoStateMgr", 2, "frameAvailableForHwRecorder:: hwRecordingEnabled = " + this.l + " ; hwEncodeConfig = " + this.jdField_a_of_type_Axqz);
+    QLog.e("RMVideoStateMgr", 2, "frameAvailableForHwRecorder:: hwRecordingEnabled = " + this.l + " ; hwEncodeConfig = " + this.jdField_a_of_type_Axvi);
   }
   
-  public void a(int paramInt1, ajow paramajow, int paramInt2)
+  public void a(int paramInt1, ajtl paramajtl, int paramInt2)
   {
     switch (paramInt1)
     {
@@ -709,12 +709,12 @@ public class RMVideoStateMgr
       return;
     case 1: 
     case 2: 
-      paramajow.jdField_a_of_type_Int = paramInt2;
-      paramajow.jdField_b_of_type_Int = 0;
+      paramajtl.jdField_a_of_type_Int = paramInt2;
+      paramajtl.jdField_b_of_type_Int = 0;
       return;
     }
-    paramajow.jdField_a_of_type_Int = (paramajow.jdField_e_of_type_Int - paramajow.jdField_d_of_type_Int - paramInt2);
-    paramajow.jdField_b_of_type_Int = 0;
+    paramajtl.jdField_a_of_type_Int = (paramajtl.jdField_e_of_type_Int - paramajtl.jdField_d_of_type_Int - paramInt2);
+    paramajtl.jdField_b_of_type_Int = 0;
   }
   
   public void a(int paramInt, String paramString)
@@ -726,9 +726,9 @@ public class RMVideoStateMgr
       a().f();
       if (paramInt == 0)
       {
-        a(0, alpo.a(2131713860), false);
-        if (1 == ajlj.jdField_a_of_type_Int) {
-          bjsb.a(azbo.jdField_a_of_type_Long + "", "qzone_video_record", "1", null);
+        a(0, alud.a(2131713872), false);
+        if (1 == ajpy.jdField_a_of_type_Int) {
+          bjwi.a(azfx.jdField_a_of_type_Long + "", "qzone_video_record", "1", null);
         }
       }
       return;
@@ -741,8 +741,8 @@ public class RMVideoStateMgr
   
   public void a(int paramInt, String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Ajpj != null) {
-      this.jdField_a_of_type_Ajpj.a(paramInt, paramString, paramBoolean);
+    if (this.jdField_a_of_type_Ajty != null) {
+      this.jdField_a_of_type_Ajty.a(paramInt, paramString, paramBoolean);
     }
   }
   
@@ -762,61 +762,61 @@ public class RMVideoStateMgr
     }
   }
   
-  public void a(ajow paramajow, boolean paramBoolean)
+  public void a(ajtl paramajtl, boolean paramBoolean)
   {
     for (int i1 = 1;; i1 = 0)
     {
       try
       {
-        boolean bool1 = azcw.d(azcw.e);
-        boolean bool2 = azcw.b(azcw.f);
-        boolean bool3 = azcw.b(azcw.x);
-        if (((bool1) || (bool2) || (bool3)) && (ajli.jdField_a_of_type_Int == 1)) {
-          paramajow.jdField_b_of_type_Int = (-paramajow.jdField_b_of_type_Int);
+        boolean bool1 = azhf.d(azhf.e);
+        boolean bool2 = azhf.b(azhf.f);
+        boolean bool3 = azhf.b(azhf.x);
+        if (((bool1) || (bool2) || (bool3)) && (ajpx.jdField_a_of_type_Int == 1)) {
+          paramajtl.jdField_b_of_type_Int = (-paramajtl.jdField_b_of_type_Int);
         }
-        this.jdField_b_of_type_ArrayOfInt[0] = paramajow.jdField_a_of_type_Int;
-        this.jdField_b_of_type_ArrayOfInt[1] = paramajow.jdField_b_of_type_Int;
-        this.jdField_b_of_type_ArrayOfInt[2] = paramajow.jdField_c_of_type_Int;
-        this.jdField_b_of_type_ArrayOfInt[3] = paramajow.jdField_d_of_type_Int;
-        this.jdField_b_of_type_ArrayOfInt[4] = paramajow.jdField_e_of_type_Int;
-        this.jdField_b_of_type_ArrayOfInt[5] = paramajow.jdField_f_of_type_Int;
+        this.jdField_b_of_type_ArrayOfInt[0] = paramajtl.jdField_a_of_type_Int;
+        this.jdField_b_of_type_ArrayOfInt[1] = paramajtl.jdField_b_of_type_Int;
+        this.jdField_b_of_type_ArrayOfInt[2] = paramajtl.jdField_c_of_type_Int;
+        this.jdField_b_of_type_ArrayOfInt[3] = paramajtl.jdField_d_of_type_Int;
+        this.jdField_b_of_type_ArrayOfInt[4] = paramajtl.jdField_e_of_type_Int;
+        this.jdField_b_of_type_ArrayOfInt[5] = paramajtl.jdField_f_of_type_Int;
         int[] arrayOfInt = this.jdField_b_of_type_ArrayOfInt;
-        if (ajli.jdField_a_of_type_Int != 1) {
+        if (ajpx.jdField_a_of_type_Int != 1) {
           continue;
         }
         arrayOfInt[6] = i1;
         if (QLog.isColorLevel()) {
-          QLog.i("RMVideoStateMgr", 2, "setVideoClipSpecdst_width=" + paramajow.jdField_e_of_type_Int + "spec.dst_height=" + paramajow.jdField_f_of_type_Int + "xoffset=" + paramajow.jdField_a_of_type_Int + "y_offset=" + paramajow.jdField_b_of_type_Int + "clip_width=" + paramajow.jdField_c_of_type_Int + "clip_height" + paramajow.jdField_d_of_type_Int);
+          QLog.i("RMVideoStateMgr", 2, "setVideoClipSpecdst_width=" + paramajtl.jdField_e_of_type_Int + "spec.dst_height=" + paramajtl.jdField_f_of_type_Int + "xoffset=" + paramajtl.jdField_a_of_type_Int + "y_offset=" + paramajtl.jdField_b_of_type_Int + "clip_width=" + paramajtl.jdField_c_of_type_Int + "clip_height" + paramajtl.jdField_d_of_type_Int);
         }
         setVideoClipSpec(this.jdField_b_of_type_ArrayOfInt);
       }
-      catch (UnsatisfiedLinkError paramajow)
+      catch (UnsatisfiedLinkError paramajtl)
       {
         for (;;)
         {
-          paramajow.printStackTrace();
+          paramajtl.printStackTrace();
         }
       }
-      b(this.jdField_a_of_type_Ajow.jdField_e_of_type_Int, this.jdField_a_of_type_Ajow.jdField_f_of_type_Int, paramBoolean);
+      b(this.jdField_a_of_type_Ajtl.jdField_e_of_type_Int, this.jdField_a_of_type_Ajtl.jdField_f_of_type_Int, paramBoolean);
       return;
     }
   }
   
-  public void a(axqz paramaxqz)
+  public void a(axvi paramaxvi)
   {
-    this.jdField_a_of_type_Axqz = paramaxqz;
+    this.jdField_a_of_type_Axvi = paramaxvi;
   }
   
-  public void a(axrl paramaxrl)
+  public void a(axvu paramaxvu)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaxrl);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaxvu);
   }
   
-  public void a(azdf paramazdf)
+  public void a(azho paramazho)
   {
-    this.jdField_a_of_type_Azdf = paramazdf;
-    if (this.jdField_a_of_type_Azdf != null) {
-      paramazdf.a(this);
+    this.jdField_a_of_type_Azho = paramazho;
+    if (this.jdField_a_of_type_Azho != null) {
+      paramazho.a(this);
     }
   }
   
@@ -832,19 +832,19 @@ public class RMVideoStateMgr
       if (QLog.isColorLevel()) {
         QLog.d("FlowCameraActivity", 2, "initVideoParams(): ptvMaxTime=" + paramInt4);
       }
-      azds.x = 0;
-      azds.E = 0;
-      azds.a();
-      azds.jdField_c_of_type_Int = paramInt4 * 1000;
+      azib.x = 0;
+      azib.E = 0;
+      azib.a();
+      azib.jdField_c_of_type_Int = paramInt4 * 1000;
       VideoEnvironment.b();
-      paramBoolean = azcw.a(azcw.l);
+      paramBoolean = azhf.a(azhf.l);
       if (QLog.isColorLevel()) {
         QLog.e("RMVideoStateMgr", 2, "isFoundProductFeature:need640Black=" + paramBoolean);
       }
       if (paramBoolean)
       {
-        azbo.jdField_c_of_type_Int = 640;
-        azbo.jdField_d_of_type_Int = 480;
+        azfx.jdField_c_of_type_Int = 640;
+        azfx.jdField_d_of_type_Int = 480;
         if (QLog.isColorLevel()) {
           QLog.e("RMVideoStateMgr", 2, "isFoundProductFeature:true[640*480]");
         }
@@ -854,22 +854,22 @@ public class RMVideoStateMgr
         this.jdField_d_of_type_Int = 1;
         AudioCapture.jdField_a_of_type_Int = 4000;
         return;
-        paramBoolean = azcw.a(azcw.s);
+        paramBoolean = azhf.a(azhf.s);
         if (QLog.isColorLevel()) {
           QLog.e("RMVideoStateMgr", 2, "isFoundProductFeature:need1024Black=" + paramBoolean);
         }
         if (paramBoolean)
         {
-          azbo.jdField_c_of_type_Int = 1024;
-          azbo.jdField_d_of_type_Int = 768;
+          azfx.jdField_c_of_type_Int = 1024;
+          azfx.jdField_d_of_type_Int = 768;
           if (QLog.isColorLevel()) {
             QLog.e("RMVideoStateMgr", 2, "isFoundProductFeature:true[1024*768]");
           }
         }
         else
         {
-          azbo.jdField_c_of_type_Int = 320;
-          azbo.jdField_d_of_type_Int = 240;
+          azfx.jdField_c_of_type_Int = 320;
+          azfx.jdField_d_of_type_Int = 240;
         }
       }
     }
@@ -878,8 +878,8 @@ public class RMVideoStateMgr
       PtvFilterUtils.a(0);
       AudioCapture.jdField_a_of_type_Int = 4000;
       AudioCapture.jdField_b_of_type_Int = 1;
-      azds.E = 1;
-      azds.a();
+      azib.E = 1;
+      azib.a();
     }
     for (;;)
     {
@@ -892,8 +892,8 @@ public class RMVideoStateMgr
         if (a(paramAppInterface))
         {
           i1 = a(paramAppInterface);
-          azbo.jdField_c_of_type_Int = paramAppInterface[0];
-          azbo.jdField_d_of_type_Int = paramAppInterface[1];
+          azfx.jdField_c_of_type_Int = paramAppInterface[0];
+          azfx.jdField_d_of_type_Int = paramAppInterface[1];
           paramInt4 = paramAppInterface[2];
           paramInt1 = paramAppInterface[3];
           d(i1);
@@ -919,8 +919,8 @@ public class RMVideoStateMgr
       {
         paramAppInterface.printStackTrace();
         continue;
-        azbo.jdField_c_of_type_Int = azbo.g[1];
-        azbo.jdField_d_of_type_Int = azbo.h[1];
+        azfx.jdField_c_of_type_Int = azfx.g[1];
+        azfx.jdField_d_of_type_Int = azfx.h[1];
         paramInt4 = 450;
         paramInt1 = 750;
         i1 = 1;
@@ -936,9 +936,9 @@ public class RMVideoStateMgr
       if (paramInt1 == 2)
       {
         PtvFilterUtils.a(1);
-        azds.x = 0;
-        azds.E = 0;
-        azds.a();
+        azib.x = 0;
+        azib.E = 0;
+        azib.a();
       }
       for (;;)
       {
@@ -950,8 +950,8 @@ public class RMVideoStateMgr
           if (a(paramAppInterface))
           {
             i1 = b(paramAppInterface);
-            azbo.jdField_c_of_type_Int = paramAppInterface[0];
-            azbo.jdField_d_of_type_Int = paramAppInterface[1];
+            azfx.jdField_c_of_type_Int = paramAppInterface[0];
+            azfx.jdField_d_of_type_Int = paramAppInterface[1];
             paramInt4 = paramAppInterface[2];
             paramInt1 = paramAppInterface[3];
             d(i1);
@@ -1002,8 +1002,8 @@ public class RMVideoStateMgr
         {
           paramAppInterface.printStackTrace();
           continue;
-          azbo.jdField_c_of_type_Int = azbo.jdField_a_of_type_ArrayOfInt[0];
-          azbo.jdField_d_of_type_Int = azbo.jdField_b_of_type_ArrayOfInt[0];
+          azfx.jdField_c_of_type_Int = azfx.jdField_a_of_type_ArrayOfInt[0];
+          azfx.jdField_d_of_type_Int = azfx.jdField_b_of_type_ArrayOfInt[0];
           paramInt4 = 450;
           paramInt1 = 750;
           i1 = 0;
@@ -1019,9 +1019,9 @@ public class RMVideoStateMgr
         if (paramInt1 == 3)
         {
           PtvFilterUtils.a(1);
-          azds.x = 0;
-          azds.E = 0;
-          azds.a();
+          azib.x = 0;
+          azib.E = 0;
+          azib.a();
         }
         for (;;)
         {
@@ -1033,8 +1033,8 @@ public class RMVideoStateMgr
             if (a(paramAppInterface))
             {
               i2 = b(paramAppInterface);
-              azbo.jdField_c_of_type_Int = paramAppInterface[0];
-              azbo.jdField_d_of_type_Int = paramAppInterface[1];
+              azfx.jdField_c_of_type_Int = paramAppInterface[0];
+              azfx.jdField_d_of_type_Int = paramAppInterface[1];
               i1 = paramAppInterface[2];
               paramInt1 = paramAppInterface[3];
               d(i2);
@@ -1081,8 +1081,8 @@ public class RMVideoStateMgr
           {
             paramAppInterface.printStackTrace();
             continue;
-            azbo.jdField_c_of_type_Int = azbo.jdField_a_of_type_ArrayOfInt[1];
-            azbo.jdField_d_of_type_Int = azbo.jdField_b_of_type_ArrayOfInt[1];
+            azfx.jdField_c_of_type_Int = azfx.jdField_a_of_type_ArrayOfInt[1];
+            azfx.jdField_d_of_type_Int = azfx.jdField_b_of_type_ArrayOfInt[1];
             i1 = 450;
             paramInt1 = 750;
             int i2 = 1;
@@ -1101,20 +1101,20 @@ public class RMVideoStateMgr
             if (QLog.isColorLevel()) {
               QLog.d("FlowCameraActivity", 2, "initVideoParams(): ptvMaxTime=" + paramInt4);
             }
-            azds.x = 0;
-            azds.E = 0;
-            azds.a();
-            azds.jdField_c_of_type_Int = paramInt4 * 1000;
+            azib.x = 0;
+            azib.E = 0;
+            azib.a();
+            azib.jdField_c_of_type_Int = paramInt4 * 1000;
             VideoEnvironment.b();
-            azds.g = 18;
-            paramBoolean = azcw.a(azcw.l);
+            azib.g = 18;
+            paramBoolean = azhf.a(azhf.l);
             if (QLog.isColorLevel()) {
               QLog.i("RMVideoStateMgr", 2, "isFoundProductFeature:need640Black=" + paramBoolean);
             }
             if (paramBoolean)
             {
-              azbo.jdField_c_of_type_Int = 640;
-              azbo.jdField_d_of_type_Int = 480;
+              azfx.jdField_c_of_type_Int = 640;
+              azfx.jdField_d_of_type_Int = 480;
               if (QLog.isColorLevel()) {
                 QLog.i("RMVideoStateMgr", 2, "isFoundProductFeature:true[640*480]");
               }
@@ -1124,22 +1124,22 @@ public class RMVideoStateMgr
               this.jdField_d_of_type_Int = 4;
               AudioCapture.jdField_a_of_type_Int = 4000;
               return;
-              paramBoolean = azcw.a(azcw.s);
+              paramBoolean = azhf.a(azhf.s);
               if (QLog.isColorLevel()) {
                 QLog.i("RMVideoStateMgr", 2, "isFoundProductFeature:need1024Black=" + paramBoolean);
               }
               if (paramBoolean)
               {
-                azbo.jdField_c_of_type_Int = 1024;
-                azbo.jdField_d_of_type_Int = 768;
+                azfx.jdField_c_of_type_Int = 1024;
+                azfx.jdField_d_of_type_Int = 768;
                 if (QLog.isColorLevel()) {
                   QLog.i("RMVideoStateMgr", 2, "isFoundProductFeature:true[1024*768]");
                 }
               }
               else
               {
-                azbo.jdField_c_of_type_Int = 640;
-                azbo.jdField_d_of_type_Int = 480;
+                azfx.jdField_c_of_type_Int = 640;
+                azfx.jdField_d_of_type_Int = 480;
               }
             }
           }
@@ -1147,20 +1147,20 @@ public class RMVideoStateMgr
             break;
           }
           PtvFilterUtils.a(0);
-          azds.x = 0;
-          azds.E = 0;
-          azds.a();
-          azds.jdField_c_of_type_Int = paramInt4 * 1000;
+          azib.x = 0;
+          azib.E = 0;
+          azib.a();
+          azib.jdField_c_of_type_Int = paramInt4 * 1000;
           VideoEnvironment.b();
-          azds.g = 18;
-          paramBoolean = azcw.a(azcw.l);
+          azib.g = 18;
+          paramBoolean = azhf.a(azhf.l);
           if (QLog.isColorLevel()) {
             QLog.i("RMVideoStateMgr", 2, "isFoundProductFeature:need640Black=" + paramBoolean);
           }
           if (paramBoolean)
           {
-            azbo.jdField_c_of_type_Int = 640;
-            azbo.jdField_d_of_type_Int = 480;
+            azfx.jdField_c_of_type_Int = 640;
+            azfx.jdField_d_of_type_Int = 480;
             if (QLog.isColorLevel()) {
               QLog.i("RMVideoStateMgr", 2, "isFoundProductFeature:true[640*480]");
             }
@@ -1170,22 +1170,22 @@ public class RMVideoStateMgr
             this.jdField_d_of_type_Int = 5;
             AudioCapture.jdField_a_of_type_Int = 4000;
             return;
-            paramBoolean = azcw.a(azcw.s);
+            paramBoolean = azhf.a(azhf.s);
             if (QLog.isColorLevel()) {
               QLog.i("RMVideoStateMgr", 2, "isFoundProductFeature:need1024Black=" + paramBoolean);
             }
             if (paramBoolean)
             {
-              azbo.jdField_c_of_type_Int = 1024;
-              azbo.jdField_d_of_type_Int = 768;
+              azfx.jdField_c_of_type_Int = 1024;
+              azfx.jdField_d_of_type_Int = 768;
               if (QLog.isColorLevel()) {
                 QLog.i("RMVideoStateMgr", 2, "isFoundProductFeature:true[1024*768]");
               }
             }
             else
             {
-              azbo.jdField_c_of_type_Int = 1024;
-              azbo.jdField_d_of_type_Int = 768;
+              azfx.jdField_c_of_type_Int = 1024;
+              azfx.jdField_d_of_type_Int = 768;
             }
           }
           label1475:
@@ -1204,8 +1204,8 @@ public class RMVideoStateMgr
   
   public void a(PreviewContext paramPreviewContext)
   {
-    if (this.jdField_a_of_type_Azdf != null) {
-      this.jdField_a_of_type_Azdf.jdField_a_of_type_Int = this.jdField_d_of_type_Int;
+    if (this.jdField_a_of_type_Azho != null) {
+      this.jdField_a_of_type_Azho.jdField_a_of_type_Int = this.jdField_d_of_type_Int;
     }
     this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext = paramPreviewContext;
     this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.notifyFirstFrame = true;
@@ -1221,7 +1221,7 @@ public class RMVideoStateMgr
     do
     {
       return;
-    } while ((!azdl.class.isInstance(paramObject)) || (this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext == null));
+    } while ((!azhu.class.isInstance(paramObject)) || (this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext == null));
     this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.notifyFirstFrame = true;
   }
   
@@ -1237,7 +1237,7 @@ public class RMVideoStateMgr
       QLog.d("" + paramString, 2, "[@][deleteCacheFile] [RMFileEventNotify]stopWatching");
     }
     if (this.jdField_a_of_type_JavaLangString != null) {
-      bdcs.a(this.jdField_a_of_type_JavaLangString, false);
+      bdhb.a(this.jdField_a_of_type_JavaLangString, false);
     }
   }
   
@@ -1262,12 +1262,12 @@ public class RMVideoStateMgr
     return false;
   }
   
-  public boolean a(Context paramContext, String paramString, ajpj paramajpj)
+  public boolean a(Context paramContext, String paramString, ajty paramajty)
   {
     c(1);
     DisplayMetrics localDisplayMetrics = paramContext.getResources().getDisplayMetrics();
-    azbo.jdField_a_of_type_Int = localDisplayMetrics.widthPixels;
-    azbo.jdField_b_of_type_Int = localDisplayMetrics.heightPixels;
+    azfx.jdField_a_of_type_Int = localDisplayMetrics.widthPixels;
+    azfx.jdField_b_of_type_Int = localDisplayMetrics.heightPixels;
     this.j = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Double = 0.0D;
@@ -1276,42 +1276,42 @@ public class RMVideoStateMgr
     this.jdField_d_of_type_Boolean = false;
     this.jdField_e_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
-    this.jdField_a_of_type_Ajpj = paramajpj;
+    this.jdField_a_of_type_Ajty = paramajty;
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     this.p = true;
     if (QLog.isColorLevel()) {
-      QLog.i("RMVideoStateMgr", 2, "rmStateMgr onCreate viewST:" + this.jdField_a_of_type_Ajpj + "\n videoStateMgr:" + jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr);
+      QLog.i("RMVideoStateMgr", 2, "rmStateMgr onCreate viewST:" + this.jdField_a_of_type_Ajty + "\n videoStateMgr:" + jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr);
     }
-    if (!a(paramContext, paramString, azbo.jdField_c_of_type_ArrayOfInt[4], azbo.jdField_c_of_type_ArrayOfInt[5]))
+    if (!a(paramContext, paramString, azfx.jdField_c_of_type_ArrayOfInt[4], azfx.jdField_c_of_type_ArrayOfInt[5]))
     {
       if (QLog.isColorLevel()) {
         QLog.e("RMVideoStateMgr", 2, "initTMMEngine[failed]");
       }
-      if (1 == ajlj.jdField_a_of_type_Int) {
-        bjsb.a(paramString, "qzone_video_record", "0", null);
+      if (1 == ajpy.jdField_a_of_type_Int) {
+        bjwi.a(paramString, "qzone_video_record", "0", null);
       }
       return false;
     }
     try
     {
-      this.jdField_a_of_type_Azfm = new azfm(azbo.a());
+      this.jdField_a_of_type_Azjv = new azjv(azfx.a());
       b(1);
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr.a = ((ajpf)paramContext);
-        azdx.a().a().addCodecCallback(this);
-        azdx.a().a().a(this);
-        azhf.a();
-        if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() > 0) && (this.jdField_a_of_type_Ajpj != null))
+        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr.a = ((ajtu)paramContext);
+        azig.a().a().addCodecCallback(this);
+        azig.a().a().a(this);
+        azlo.a();
+        if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() > 0) && (this.jdField_a_of_type_Ajty != null))
         {
-          this.jdField_a_of_type_Ajpj.w();
-          azdx.a().a().b();
-          azdx.a().a();
+          this.jdField_a_of_type_Ajty.w();
+          azig.a().a().b();
+          azig.a().a();
         }
-        azdx.a().a().a(this);
-        azdx.a().a().a();
-        if ((this.n) && (this.jdField_a_of_type_Axrn == null)) {
-          this.jdField_a_of_type_Axrn = new axrn();
+        azig.a().a().a(this);
+        azig.a().a().a();
+        if ((this.n) && (this.jdField_a_of_type_Axvw == null)) {
+          this.jdField_a_of_type_Axvw = new axvw();
         }
         return true;
       }
@@ -1334,7 +1334,7 @@ public class RMVideoStateMgr
   
   public int b()
   {
-    int i3 = azds.jdField_c_of_type_Int;
+    int i3 = azib.jdField_c_of_type_Int;
     int i2 = i3 / 1000;
     int i1 = i2;
     if (i3 % 1000 >= 500) {
@@ -1345,10 +1345,10 @@ public class RMVideoStateMgr
   
   public void b()
   {
-    azbo.b();
+    azfx.b();
     a().f();
-    azhf.a().a(null);
-    this.jdField_a_of_type_Ajpc.jdField_a_of_type_Boolean = true;
+    azlo.a().a(null);
+    this.jdField_a_of_type_Ajtr.jdField_a_of_type_Boolean = true;
   }
   
   public void b(int paramInt)
@@ -1361,7 +1361,7 @@ public class RMVideoStateMgr
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError) {}
   }
   
-  public void b(int paramInt1, ajow paramajow, int paramInt2)
+  public void b(int paramInt1, ajtl paramajtl, int paramInt2)
   {
     switch (paramInt1)
     {
@@ -1369,24 +1369,24 @@ public class RMVideoStateMgr
     default: 
       return;
     case 1: 
-      paramajow.jdField_a_of_type_Int = paramInt2;
-      paramajow.jdField_b_of_type_Int = (paramajow.jdField_f_of_type_Int - paramajow.jdField_c_of_type_Int);
+      paramajtl.jdField_a_of_type_Int = paramInt2;
+      paramajtl.jdField_b_of_type_Int = (paramajtl.jdField_f_of_type_Int - paramajtl.jdField_c_of_type_Int);
       return;
     case 2: 
-      paramajow.jdField_a_of_type_Int = paramInt2;
-      paramajow.jdField_b_of_type_Int = 0;
+      paramajtl.jdField_a_of_type_Int = paramInt2;
+      paramajtl.jdField_b_of_type_Int = 0;
       return;
     case 4: 
-      paramajow.jdField_a_of_type_Int = (paramajow.jdField_e_of_type_Int - paramajow.jdField_d_of_type_Int - paramInt2);
-      paramajow.jdField_b_of_type_Int = (paramajow.jdField_f_of_type_Int - paramajow.jdField_c_of_type_Int);
+      paramajtl.jdField_a_of_type_Int = (paramajtl.jdField_e_of_type_Int - paramajtl.jdField_d_of_type_Int - paramInt2);
+      paramajtl.jdField_b_of_type_Int = (paramajtl.jdField_f_of_type_Int - paramajtl.jdField_c_of_type_Int);
       return;
     case 5: 
-      paramajow.jdField_a_of_type_Int = (paramajow.jdField_e_of_type_Int - paramajow.jdField_d_of_type_Int - paramInt2);
-      paramajow.jdField_b_of_type_Int = 0;
+      paramajtl.jdField_a_of_type_Int = (paramajtl.jdField_e_of_type_Int - paramajtl.jdField_d_of_type_Int - paramInt2);
+      paramajtl.jdField_b_of_type_Int = 0;
       return;
     }
-    paramajow.jdField_a_of_type_Int = 0;
-    paramajow.jdField_b_of_type_Int = (-(paramajow.jdField_f_of_type_Int - paramajow.jdField_c_of_type_Int) / 2);
+    paramajtl.jdField_a_of_type_Int = 0;
+    paramajtl.jdField_b_of_type_Int = (-(paramajtl.jdField_f_of_type_Int - paramajtl.jdField_c_of_type_Int) / 2);
   }
   
   public void b(int paramInt, String paramString, boolean paramBoolean)
@@ -1399,7 +1399,7 @@ public class RMVideoStateMgr
     c(1);
     a().a(paramBoolean);
     a().a();
-    if ((this.jdField_a_of_type_Ajpc.b) && (this.jdField_a_of_type_Ajpc.jdField_a_of_type_Boolean)) {
+    if ((this.jdField_a_of_type_Ajtr.b) && (this.jdField_a_of_type_Ajtr.jdField_a_of_type_Boolean)) {
       a().f();
     }
   }
@@ -1419,7 +1419,7 @@ public class RMVideoStateMgr
   
   public int c()
   {
-    return azds.jdField_c_of_type_Int * 10 / 1000;
+    return azib.jdField_c_of_type_Int * 10 / 1000;
   }
   
   public void c()
@@ -1433,28 +1433,28 @@ public class RMVideoStateMgr
       }
       this.jdField_a_of_type_AndroidContentContext = null;
       if (QLog.isColorLevel()) {
-        QLog.i("RMVideoStateMgr", 2, "rmStateMgr onDestroy viewST:" + this.jdField_a_of_type_Ajpj + "\n videoStateMgr:" + jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr);
+        QLog.i("RMVideoStateMgr", 2, "rmStateMgr onDestroy viewST:" + this.jdField_a_of_type_Ajty + "\n videoStateMgr:" + jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr);
       }
-      this.jdField_a_of_type_Ajpj.w();
-      this.jdField_a_of_type_Ajpj = null;
-      this.jdField_a_of_type_Ajoy.f();
-      this.jdField_a_of_type_Ajoy.g();
-      this.jdField_a_of_type_Ajox.f();
-      this.jdField_a_of_type_Ajox.g();
+      this.jdField_a_of_type_Ajty.w();
+      this.jdField_a_of_type_Ajty = null;
+      this.jdField_a_of_type_Ajtn.f();
+      this.jdField_a_of_type_Ajtn.g();
+      this.jdField_a_of_type_Ajtm.f();
+      this.jdField_a_of_type_Ajtm.g();
       this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
       k();
-      this.jdField_a_of_type_Ajov = null;
+      this.jdField_a_of_type_Ajtk = null;
       this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr.a = null;
-      this.jdField_a_of_type_Azcu = null;
+      this.jdField_a_of_type_Azhd = null;
       h();
       this.jdField_f_of_type_Int = 0;
       this.m = false;
       this.n = false;
     }
-    if (this.jdField_a_of_type_Azdf != null) {
-      this.jdField_a_of_type_Azdf.jdField_a_of_type_Azdd = null;
+    if (this.jdField_a_of_type_Azho != null) {
+      this.jdField_a_of_type_Azho.jdField_a_of_type_Azhm = null;
     }
-    this.jdField_a_of_type_Azdf = null;
+    this.jdField_a_of_type_Azho = null;
   }
   
   public void c(boolean paramBoolean)
@@ -1487,12 +1487,12 @@ public class RMVideoStateMgr
   public void d()
   {
     this.jdField_a_of_type_Double = 0.0D;
-    azdx.a().a().c();
-    if (azdx.a().a().a.getState() == Thread.State.TERMINATED)
+    azig.a().a().c();
+    if (azig.a().a().a.getState() == Thread.State.TERMINATED)
     {
-      azdx.a().a();
-      azdx.a().a().a(this);
-      azdx.a().a().a();
+      azig.a().a();
+      azig.a().a().a(this);
+      azig.a().a().a();
     }
   }
   
@@ -1503,14 +1503,14 @@ public class RMVideoStateMgr
   
   public boolean d()
   {
-    if (this.jdField_a_of_type_Azdf == null) {}
+    if (this.jdField_a_of_type_Azho == null) {}
     do
     {
       return true;
-      if ((this.jdField_a_of_type_Azdf.b.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_Azdf.c.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_Azdf.b.jdField_a_of_type_Azda.equals(this.jdField_a_of_type_Azdf.c.jdField_a_of_type_Azda))) {
+      if ((this.jdField_a_of_type_Azho.b.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_Azho.c.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_Azho.b.jdField_a_of_type_Azhj.equals(this.jdField_a_of_type_Azho.c.jdField_a_of_type_Azhj))) {
         return false;
       }
-    } while (!azcw.e(azcw.C));
+    } while (!azhf.e(azhf.C));
     return false;
   }
   
@@ -1526,7 +1526,7 @@ public class RMVideoStateMgr
   
   public void e(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Ajoy.jdField_f_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Ajtn.jdField_f_of_type_Boolean = paramBoolean;
   }
   
   public boolean e()
@@ -1546,7 +1546,7 @@ public class RMVideoStateMgr
         if (QLog.isColorLevel()) {
           QLog.e("RMVideoStateMgr", 2, "current = G_STATUS_IDLE ,so do not change state...");
         }
-        this.jdField_a_of_type_Ajpc.b = true;
+        this.jdField_a_of_type_Ajtr.b = true;
       }
     }
   }
@@ -1561,13 +1561,13 @@ public class RMVideoStateMgr
   
   boolean f()
   {
-    long l1 = azhf.a(azhf.a().b);
-    if (l1 <= azhf.jdField_a_of_type_Long)
+    long l1 = azlo.a(azlo.a().b);
+    if (l1 <= azlo.jdField_a_of_type_Long)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("RMVideoStateMgr", 2, "[@] checkDiskSpaceIsOK,freeSpace <= FREESPACE_LIMIT_EXIT freeSpace=" + l1 + "StorageManager.FREESPACE_LIMIT_EXIT=" + azhf.jdField_a_of_type_Long + " 手机剩余存储空间不足");
+        QLog.d("RMVideoStateMgr", 2, "[@] checkDiskSpaceIsOK,freeSpace <= FREESPACE_LIMIT_EXIT freeSpace=" + l1 + "StorageManager.FREESPACE_LIMIT_EXIT=" + azlo.jdField_a_of_type_Long + " 手机剩余存储空间不足");
       }
-      a(0, alpo.a(2131713859), false);
+      a(0, alud.a(2131713871), false);
       return false;
     }
     return true;
@@ -1579,8 +1579,8 @@ public class RMVideoStateMgr
       QLog.e("RMVideoStateMgr", 2, "stopHwRecorder");
     }
     this.l = false;
-    if (this.jdField_a_of_type_Axrn != null) {
-      this.jdField_a_of_type_Axrn.b();
+    if (this.jdField_a_of_type_Axvw != null) {
+      this.jdField_a_of_type_Axvw.b();
     }
     this.jdField_e_of_type_Int = 0;
   }
@@ -1613,16 +1613,16 @@ public class RMVideoStateMgr
     if (this.j) {
       return;
     }
-    azdx.a().a().b();
-    azdx.a().a().a(null);
-    azdx.a().a().removeCodecCallback(this);
-    azdx.a().a().recycle();
-    azdx.a().a().a();
-    azdx.a().a();
+    azig.a().a().b();
+    azig.a().a().a(null);
+    azig.a().a().removeCodecCallback(this);
+    azig.a().a().recycle();
+    azig.a().a().a();
+    azig.a().a();
     try
     {
-      azbo.c();
-      azhf.a().a();
+      azfx.c();
+      azlo.a().a();
       this.j = true;
       return;
     }
@@ -1657,15 +1657,15 @@ public class RMVideoStateMgr
   
   public void j()
   {
-    if ((this.jdField_a_of_type_Ajov != null) && (this.jdField_a_of_type_Double > 0.0D)) {
-      this.jdField_a_of_type_Ajov.startWatching();
+    if ((this.jdField_a_of_type_Ajtk != null) && (this.jdField_a_of_type_Double > 0.0D)) {
+      this.jdField_a_of_type_Ajtk.startWatching();
     }
   }
   
   public void k()
   {
-    if (this.jdField_a_of_type_Ajov != null) {
-      this.jdField_a_of_type_Ajov.stopWatching();
+    if (this.jdField_a_of_type_Ajtk != null) {
+      this.jdField_a_of_type_Ajtk.stopWatching();
     }
   }
   
@@ -1693,7 +1693,7 @@ public class RMVideoStateMgr
     if (this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.d();
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicReference.getAndSet(this.jdField_a_of_type_Azfm);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicReference.getAndSet(this.jdField_a_of_type_Azjv);
     }
     if (QLog.isColorLevel()) {
       QLog.d("RMVideoStateMgr", 2, "[@][openAudioRecord]");
@@ -1707,7 +1707,7 @@ public class RMVideoStateMgr
     }
     if (h())
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.b(this.jdField_a_of_type_Azcu);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.b(this.jdField_a_of_type_Azhd);
       this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.g();
       if (QLog.isColorLevel()) {
         QLog.d("RMVideoStateMgr", 2, "[@][closeAudioRecord]");

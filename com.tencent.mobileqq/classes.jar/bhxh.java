@@ -1,8 +1,8 @@
-import com.tencent.widget.TCWDatePicker;
-
 public abstract interface bhxh
 {
-  public abstract void a(TCWDatePicker paramTCWDatePicker, int paramInt1, int paramInt2, int paramInt3);
+  public abstract void a(int paramInt);
+  
+  public abstract void b(int paramInt);
 }
 
 

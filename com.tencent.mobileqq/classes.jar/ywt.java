@@ -1,24 +1,13 @@
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView.1.1;
+import com.tencent.biz.troopplugin.PluginJumpManager;
 
-public class ywt
-  implements ywr
+class ywt
+  implements nbt
 {
-  public ywt(SingleLyricView paramSingleLyricView) {}
+  ywt(yws paramyws) {}
   
-  public void a()
+  public void loaded(int paramInt, String paramString)
   {
-    SingleLyricView.a(this.a).b();
-  }
-  
-  public void a(long paramLong)
-  {
-    this.a.post(new SingleLyricView.1.1(this, paramLong));
-  }
-  
-  public void b()
-  {
-    SingleLyricView.a(this.a).c();
+    this.a.a.loadConfigFromFile();
   }
 }
 

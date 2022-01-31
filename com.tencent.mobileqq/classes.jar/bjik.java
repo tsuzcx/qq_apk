@@ -1,13 +1,40 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.view.ViewPager;
+import cooperation.qzone.contentbox.BaseMsgView;
+import java.lang.ref.WeakReference;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.METHOD})
-public @interface bjik
+public class bjik
+  extends Handler
 {
-  String a();
+  private WeakReference<BaseMsgView> a;
+  
+  public bjik(BaseMsgView paramBaseMsgView)
+  {
+    this.a = new WeakReference(paramBaseMsgView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    BaseMsgView localBaseMsgView = (BaseMsgView)this.a.get();
+    if (localBaseMsgView == null) {}
+    ViewPager localViewPager;
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        localBaseMsgView.a(paramMessage);
+        return;
+      }
+      localViewPager = (ViewPager)((WeakReference)paramMessage.obj).get();
+    } while (localViewPager == null);
+    int i = paramMessage.arg1;
+    localViewPager.setCurrentItem((localViewPager.getCurrentItem() + 1) % i, true);
+    localBaseMsgView.a();
+  }
 }
 
 

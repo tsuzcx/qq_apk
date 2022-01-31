@@ -1,52 +1,148 @@
-import com.tencent.component.network.module.base.inter.Log;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.GpsInfo4LocalImage;
+import cooperation.qzone.model.ImageTagInfo;
+import cooperation.qzone.model.PhotoInfo;
+import cooperation.qzone.model.VideoInfo;
+import java.util.ArrayList;
 
-public class bjla
-  implements Log
+public final class bjla
+  implements Parcelable.Creator<PhotoInfo>
 {
-  public void d(String paramString1, String paramString2)
+  public PhotoInfo a(Parcel paramParcel)
   {
-    QLog.d(paramString1, 1, paramString2);
+    boolean bool2 = true;
+    PhotoInfo localPhotoInfo = new PhotoInfo();
+    localPhotoInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localPhotoInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localPhotoInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localPhotoInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localPhotoInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localPhotoInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+    localPhotoInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localPhotoInfo.jdField_d_of_type_Int = paramParcel.readInt();
+    if (paramParcel.readInt() == 1)
+    {
+      bool1 = true;
+      localPhotoInfo.jdField_a_of_type_Boolean = bool1;
+      localPhotoInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
+      localPhotoInfo.jdField_h_of_type_JavaLangString = paramParcel.readString();
+      localPhotoInfo.jdField_i_of_type_JavaLangString = paramParcel.readString();
+      localPhotoInfo.jdField_j_of_type_JavaLangString = paramParcel.readString();
+      localPhotoInfo.jdField_a_of_type_JavaUtilMap = paramParcel.readHashMap(getClass().getClassLoader());
+      localPhotoInfo.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(getClass().getClassLoader());
+      localPhotoInfo.jdField_e_of_type_Int = paramParcel.readInt();
+      localPhotoInfo.jdField_f_of_type_Int = paramParcel.readInt();
+      localPhotoInfo.jdField_g_of_type_Int = paramParcel.readInt();
+      localPhotoInfo.jdField_h_of_type_Int = paramParcel.readInt();
+      localPhotoInfo.jdField_a_of_type_CooperationQzoneModelGpsInfo4LocalImage = ((GpsInfo4LocalImage)paramParcel.readParcelable(getClass().getClassLoader()));
+      if (paramParcel.readInt() != 1) {
+        break label697;
+      }
+      bool1 = true;
+      label232:
+      localPhotoInfo.jdField_b_of_type_Boolean = bool1;
+      localPhotoInfo.jdField_a_of_type_Long = paramParcel.readLong();
+      localPhotoInfo.jdField_b_of_type_Long = paramParcel.readLong();
+      localPhotoInfo.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+      paramParcel.readTypedList(localPhotoInfo.jdField_c_of_type_JavaUtilArrayList, ImageTagInfo.CREATOR);
+      if (paramParcel.readInt() != 1) {
+        break label702;
+      }
+      bool1 = true;
+      label290:
+      localPhotoInfo.jdField_h_of_type_Boolean = bool1;
+      localPhotoInfo.jdField_k_of_type_Int = paramParcel.readInt();
+      localPhotoInfo.jdField_i_of_type_Int = paramParcel.readInt();
+      localPhotoInfo.jdField_o_of_type_Int = paramParcel.readInt();
+      localPhotoInfo.jdField_p_of_type_Int = paramParcel.readInt();
+      localPhotoInfo.jdField_q_of_type_Int = paramParcel.readInt();
+      localPhotoInfo.jdField_a_of_type_CooperationQzoneModelVideoInfo = ((VideoInfo)paramParcel.readParcelable(VideoInfo.class.getClassLoader()));
+      localPhotoInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      localPhotoInfo.jdField_r_of_type_Int = paramParcel.readInt();
+      localPhotoInfo.jdField_s_of_type_Int = paramParcel.readInt();
+      localPhotoInfo.jdField_k_of_type_JavaLangString = paramParcel.readString();
+      localPhotoInfo.jdField_c_of_type_Long = paramParcel.readLong();
+      localPhotoInfo.jdField_t_of_type_Int = paramParcel.readInt();
+      localPhotoInfo.jdField_l_of_type_JavaLangString = paramParcel.readString();
+      localPhotoInfo.jdField_m_of_type_JavaLangString = paramParcel.readString();
+      localPhotoInfo.n = paramParcel.readString();
+      localPhotoInfo.jdField_u_of_type_Int = paramParcel.readInt();
+      localPhotoInfo.jdField_o_of_type_JavaLangString = paramParcel.readString();
+      localPhotoInfo.jdField_p_of_type_JavaLangString = paramParcel.readString();
+      localPhotoInfo.jdField_b_of_type_JavaUtilMap = paramParcel.readHashMap(getClass().getClassLoader());
+      if (paramParcel.readInt() != 1) {
+        break label707;
+      }
+      bool1 = true;
+      label492:
+      localPhotoInfo.jdField_i_of_type_Boolean = bool1;
+      localPhotoInfo.jdField_q_of_type_JavaLangString = paramParcel.readString();
+      localPhotoInfo.jdField_r_of_type_JavaLangString = paramParcel.readString();
+      localPhotoInfo.jdField_s_of_type_JavaLangString = paramParcel.readString();
+      localPhotoInfo.jdField_t_of_type_JavaLangString = paramParcel.readString();
+      localPhotoInfo.jdField_u_of_type_JavaLangString = paramParcel.readString();
+      localPhotoInfo.jdField_v_of_type_Int = paramParcel.readInt();
+      localPhotoInfo.jdField_w_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readInt() != 1) {
+        break label712;
+      }
+      bool1 = true;
+      label571:
+      localPhotoInfo.jdField_j_of_type_Boolean = bool1;
+      localPhotoInfo.jdField_d_of_type_JavaUtilArrayList = ((ArrayList)paramParcel.readSerializable());
+      if (paramParcel.readInt() != 1) {
+        break label717;
+      }
+      bool1 = true;
+      label599:
+      localPhotoInfo.jdField_k_of_type_Boolean = bool1;
+      localPhotoInfo.jdField_d_of_type_Long = paramParcel.readLong();
+      if (paramParcel.readInt() != 1) {
+        break label722;
+      }
+      bool1 = true;
+      label624:
+      localPhotoInfo.jdField_l_of_type_Boolean = bool1;
+      localPhotoInfo.jdField_v_of_type_JavaLangString = paramParcel.readString();
+      localPhotoInfo.jdField_w_of_type_JavaLangString = paramParcel.readString();
+      if (paramParcel.readInt() != 1) {
+        break label727;
+      }
+    }
+    label697:
+    label702:
+    label707:
+    label712:
+    label717:
+    label722:
+    label727:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localPhotoInfo.jdField_m_of_type_Boolean = bool1;
+      localPhotoInfo.jdField_b_of_type_JavaUtilArrayList = paramParcel.readArrayList(getClass().getClassLoader());
+      localPhotoInfo.jdField_b_of_type_Float = paramParcel.readFloat();
+      return localPhotoInfo;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label232;
+      bool1 = false;
+      break label290;
+      bool1 = false;
+      break label492;
+      bool1 = false;
+      break label571;
+      bool1 = false;
+      break label599;
+      bool1 = false;
+      break label624;
+    }
   }
   
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  public PhotoInfo[] a(int paramInt)
   {
-    QLog.d(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public int getLogLevel()
-  {
-    return 1;
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.i(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.w(paramString1, 1, paramString2, paramThrowable);
+    return new PhotoInfo[paramInt];
   }
 }
 

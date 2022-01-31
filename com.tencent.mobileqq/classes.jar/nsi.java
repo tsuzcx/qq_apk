@@ -12,7 +12,7 @@ import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.SubscribeVideoColumnReq;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class nsi
-  extends alko
+  extends alpd
 {
   public static final String a = nsi.class.getSimpleName();
   
@@ -34,7 +34,7 @@ public class nsi
     ThreadManager.excute(new VideoColumnSubscribeHandler.1(this, paramInt), 16, null, true);
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return null;
   }

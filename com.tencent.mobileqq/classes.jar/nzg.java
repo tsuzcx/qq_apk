@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
 
 public class nzg
-  implements bhyj
+  implements bicq
 {
   public nzg(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
   

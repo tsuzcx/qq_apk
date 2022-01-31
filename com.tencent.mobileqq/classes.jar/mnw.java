@@ -58,7 +58,7 @@ public class mnw
     long l = System.currentTimeMillis();
     if (l - this.jdField_a_of_type_Long > 100L)
     {
-      azmj.b(null, "CliOper", "", "", "0X8009F62", "0X8009F62", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8009F62", "0X8009F62", 0, 0, "", "", "", "");
       this.jdField_a_of_type_Long = l;
     }
     return true;
@@ -111,7 +111,7 @@ public class mnw
         if ((j != VideoLayerUI.f(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI) - 2) || (i == 0)) {
           break label276;
         }
-        azmj.b(null, "CliOper", "", "", "0X800A069", "0X800A069", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X800A069", "0X800A069", 0, 0, "", "", "", "");
         paramMotionEvent = (AVActivity)this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_AndroidContentContext;
         if ((!this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvVideoController.a().ab) && (!this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvVideoController.a().ac)) {
           break label270;
@@ -154,7 +154,7 @@ public class mnw
           if ((!bool1) || (!bool2)) {
             break label766;
           }
-          azmj.b(null, "CliOper", "", "", "0X8009F63", "0X8009F63", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X8009F63", "0X8009F63", 0, 0, "", "", "", "");
           str = paramMotionEvent.b();
           i = Integer.valueOf(paramMotionEvent.h()).intValue();
           long l = ((moa)localObject2).jdField_a_of_type_Long;
@@ -181,7 +181,7 @@ public class mnw
       }
       for (;;)
       {
-        azmj.b(null, "CliOper", "", "", "0X800A068", "0X800A068", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X800A068", "0X800A068", 0, 0, "", "", "", "");
         return true;
         bool2 = false;
         break;
@@ -221,7 +221,7 @@ public class mnw
       }
       if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_Mll.a())
       {
-        azmj.b(null, "CliOper", "", "", "0X8009F63", "0X8009F63", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8009F63", "0X8009F63", 0, 0, "", "", "", "");
         localObject1 = ((mgp)localObject2).b();
         j = Integer.valueOf(((mgp)localObject2).h()).intValue();
         localObject2 = paramMotionEvent.b();

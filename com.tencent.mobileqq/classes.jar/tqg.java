@@ -8,7 +8,6 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StUser;
-import feedcloud.FeedCloudRead.StGetMainPageRsp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,16 +20,16 @@ import qqcircle.QQCircleFeedBase.StPolyLike;
 public class tqg
 {
   private static volatile FeedCloudMeta.StUser jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
-  private static FeedCloudRead.StGetMainPageRsp jdField_a_of_type_FeedcloudFeedCloudRead$StGetMainPageRsp;
-  private static final String jdField_a_of_type_JavaLangString = tqg.class.getSimpleName();
+  private static String jdField_a_of_type_JavaLangString;
   private static volatile ArrayList<QQCircleBase.UserCircleInfo> jdField_a_of_type_JavaUtilArrayList;
   private static HashMap<String, FeedCloudMeta.StFeed> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private static List<QQCircleFeedBase.StPolyLike> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private static String jdField_b_of_type_JavaLangString = "";
   private static volatile ArrayList<QQCircleBase.UserCircleInfo> jdField_b_of_type_JavaUtilArrayList;
+  private static HashMap<String, Integer> jdField_b_of_type_JavaUtilHashMap = new HashMap();
   
   static
   {
+    jdField_a_of_type_JavaLangString = "";
     jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
@@ -60,6 +59,14 @@ public class tqg
     return jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
   }
   
+  public static Integer a(String paramString)
+  {
+    if (jdField_b_of_type_JavaUtilHashMap.containsKey(paramString)) {
+      return (Integer)jdField_b_of_type_JavaUtilHashMap.get(paramString);
+    }
+    return Integer.valueOf(-1);
+  }
+  
   public static String a()
   {
     return BaseApplicationImpl.getApplication().getRuntime().getAccount();
@@ -78,7 +85,7 @@ public class tqg
       while (localIterator.hasNext())
       {
         Object localObject = "qcircle_stpoly_" + (String)localIterator.next();
-        localObject = bczr.a(BaseApplicationImpl.getApplication(), (String)localObject);
+        localObject = bdea.a(BaseApplicationImpl.getApplication(), (String)localObject);
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
           try
           {
@@ -99,12 +106,10 @@ public class tqg
   {
     try
     {
-      jdField_a_of_type_FeedcloudFeedCloudMeta$StUser = null;
-      jdField_a_of_type_FeedcloudFeedCloudRead$StGetMainPageRsp = null;
-      txt.a().a();
-      txu.a().a();
+      tyy.a().a();
+      tze.a().a();
       tpz.a();
-      jdField_a_of_type_JavaUtilHashMap.clear();
+      b();
       return;
     }
     finally
@@ -116,13 +121,20 @@ public class tqg
   
   public static void a(String paramString)
   {
-    jdField_b_of_type_JavaLangString = paramString;
+    jdField_a_of_type_JavaLangString = paramString;
   }
   
   public static void a(String paramString, FeedCloudMeta.StFeed paramStFeed)
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramStFeed != null)) {
       jdField_a_of_type_JavaUtilHashMap.put(paramString, paramStFeed);
+    }
+  }
+  
+  public static void a(String paramString, Integer paramInteger)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("qcircle_fakeid_"))) {
+      jdField_b_of_type_JavaUtilHashMap.put(paramString, paramInteger);
     }
   }
   
@@ -136,9 +148,9 @@ public class tqg
       QQCircleFeedBase.StPolyLike localStPolyLike2 = tra.a(localStPolyLike1);
       jdField_a_of_type_JavaUtilList.add(localStPolyLike2);
       if (!TextUtils.isEmpty(localStPolyLike2.polySource.get())) {
-        tvt.a().a(localStPolyLike2.polySource.get(), null);
+        twe.a().a(localStPolyLike2.polySource.get(), null);
       }
-      bczr.a(BaseApplicationImpl.getApplication(), "qcircle_stpoly_" + localStPolyLike2.polyLikeID.get(), new String(localStPolyLike1.toByteArray()));
+      bdea.a(BaseApplicationImpl.getApplication(), "qcircle_stpoly_" + localStPolyLike2.polyLikeID.get(), new String(localStPolyLike1.toByteArray()));
     }
   }
   
@@ -161,7 +173,7 @@ public class tqg
   
   public static String b()
   {
-    return jdField_b_of_type_JavaLangString;
+    return jdField_a_of_type_JavaLangString;
   }
   
   public static ArrayList<QQCircleBase.UserCircleInfo> b()
@@ -170,6 +182,22 @@ public class tqg
   }
   
   public static void b()
+  {
+    try
+    {
+      jdField_a_of_type_FeedcloudFeedCloudMeta$StUser = null;
+      jdField_a_of_type_JavaUtilHashMap.clear();
+      jdField_b_of_type_JavaUtilHashMap.clear();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void c()
   {
     QCircleGetTabListRequest localQCircleGetTabListRequest = new QCircleGetTabListRequest(null);
     VSNetworkHelper.a().a(localQCircleGetTabListRequest, new tqi());

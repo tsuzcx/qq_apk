@@ -1,14 +1,30 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
+import java.util.HashMap;
 
-class anny
-  extends bhnr
+public class anny
 {
-  anny(annx paramannx) {}
+  private static HashMap<String, annz> a = new HashMap();
   
-  public void onAnimationStart(Animation paramAnimation)
+  public static Object a(int paramInt, String paramString, Object paramObject1, Object paramObject2)
   {
-    this.a.a.setVisibility(0);
+    paramString = (annz)a.get(paramString);
+    if (paramString != null) {
+      paramObject2 = paramString.a(paramInt, paramObject1);
+    }
+    return paramObject2;
+  }
+  
+  public static void a(String paramString)
+  {
+    if (paramString != null) {
+      a.remove(paramString);
+    }
+  }
+  
+  public static void a(String paramString, annz paramannz)
+  {
+    if (paramString != null) {
+      a.put(paramString, paramannz);
+    }
   }
 }
 

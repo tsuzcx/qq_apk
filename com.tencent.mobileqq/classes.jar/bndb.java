@@ -1,340 +1,673 @@
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.maxvideo.common.MessageStruct;
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.maxvideo.mediadevice.AVCodec.AVCodecCallback;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.animation.ValueAnimator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import android.util.Property;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.1;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.2;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.3;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.4;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.5;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.6;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.7;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
-import java.io.File;
-import java.util.Arrays;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import java.lang.ref.WeakReference;
 
 public class bndb
-  extends bnde
+  extends Drawable
+  implements Animatable
 {
-  public final Runnable a;
-  public boolean a;
-  public boolean b = false;
-  public boolean c = false;
-  public boolean d = false;
-  boolean e = true;
-  public boolean f = true;
-  public volatile boolean g;
+  private float jdField_a_of_type_Float = 16.0F;
+  private int jdField_a_of_type_Int;
+  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  Property<bndb, Float> jdField_a_of_type_AndroidUtilProperty = new bndc(this, Float.class, "backHeight");
+  private bndz jdField_a_of_type_Bndz = new bndz();
+  private bnef jdField_a_of_type_Bnef = new bnef();
+  private WeakReference<bndm> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float = 5.0F;
+  private int jdField_b_of_type_Int = 255;
+  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  Property<bndb, Integer> jdField_b_of_type_AndroidUtilProperty = new bnde(this, Integer.class, "backAlpha");
+  private boolean jdField_b_of_type_Boolean;
+  private float jdField_c_of_type_Float = 50.0F;
+  private int jdField_c_of_type_Int;
+  private RectF jdField_c_of_type_AndroidGraphicsRectF = new RectF();
+  Property<bndb, Integer> jdField_c_of_type_AndroidUtilProperty = new bndf(this, Integer.class, "speedAlpha");
+  private float jdField_d_of_type_Float = 50.0F;
+  private int jdField_d_of_type_Int = 179;
+  Property<bndb, Integer> jdField_d_of_type_AndroidUtilProperty = new bndg(this, Integer.class, "reverseAlpha");
+  private float jdField_e_of_type_Float = 30.0F;
+  private int jdField_e_of_type_Int;
+  Property<bndb, Float> jdField_e_of_type_AndroidUtilProperty = new bndh(this, Float.class, "foreSpeed");
+  private float jdField_f_of_type_Float = 22.0F;
+  private int jdField_f_of_type_Int = 179;
+  Property<bndb, Float> jdField_f_of_type_AndroidUtilProperty = new bndi(this, Float.class, "foreHeight");
+  private int jdField_g_of_type_Int = -1;
+  Property<bndb, Float> jdField_g_of_type_AndroidUtilProperty = new bndj(this, Float.class, "speedPos");
+  private int jdField_h_of_type_Int = 0;
+  Property<bndb, Integer> jdField_h_of_type_AndroidUtilProperty = new bndk(this, Integer.class, "markAlpha");
   
-  public bndb()
+  private float a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRunnable = new RMVideoInitState.3(this);
+    return this.jdField_b_of_type_AndroidGraphicsRectF.centerY();
+  }
+  
+  private void a(float paramFloat)
+  {
+    if (this.jdField_h_of_type_Int == 4)
+    {
+      float f1 = this.jdField_b_of_type_AndroidGraphicsRectF.centerY();
+      this.jdField_b_of_type_AndroidGraphicsRectF.offset(0.0F, paramFloat - f1);
+      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+      {
+        bndm localbndm = (bndm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localbndm != null) {
+          localbndm.a(this.jdField_h_of_type_Int, this.jdField_b_of_type_AndroidGraphicsRectF);
+        }
+      }
+    }
+  }
+  
+  private void a(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  {
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+    {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
+      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+    }
+    int i = getBounds().height();
+    PropertyValuesHolder localPropertyValuesHolder1;
+    PropertyValuesHolder localPropertyValuesHolder2;
+    PropertyValuesHolder localPropertyValuesHolder3;
+    if (paramInt1 == 1)
+    {
+      localPropertyValuesHolder1 = PropertyValuesHolder.ofFloat(this.jdField_a_of_type_AndroidUtilProperty, new float[] { this.jdField_a_of_type_AndroidGraphicsRectF.height(), i });
+      localPropertyValuesHolder2 = PropertyValuesHolder.ofFloat(this.jdField_f_of_type_AndroidUtilProperty, new float[] { this.jdField_c_of_type_AndroidGraphicsRectF.height(), i });
+      localPropertyValuesHolder3 = PropertyValuesHolder.ofInt(this.jdField_b_of_type_AndroidUtilProperty, new int[] { this.jdField_a_of_type_Int, 115 });
+      this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { localPropertyValuesHolder1, localPropertyValuesHolder2, PropertyValuesHolder.ofInt(this.jdField_c_of_type_AndroidUtilProperty, new int[] { this.jdField_b_of_type_Int, 0 }), PropertyValuesHolder.ofInt(this.jdField_d_of_type_AndroidUtilProperty, new int[] { this.jdField_e_of_type_Int, 255 }), localPropertyValuesHolder3, PropertyValuesHolder.ofInt(this.jdField_h_of_type_AndroidUtilProperty, new int[] { this.jdField_f_of_type_Int, 127 }) });
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+      {
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.setStartDelay(0L);
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bndl(this));
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bndd(this));
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+      }
+      return;
+      if (paramInt1 == 3)
+      {
+        localPropertyValuesHolder1 = PropertyValuesHolder.ofInt(this.jdField_b_of_type_AndroidUtilProperty, new int[] { this.jdField_a_of_type_Int, 0 });
+        localPropertyValuesHolder2 = PropertyValuesHolder.ofFloat(this.jdField_a_of_type_AndroidUtilProperty, new float[] { this.jdField_a_of_type_AndroidGraphicsRectF.height(), 0.0F });
+        localPropertyValuesHolder3 = PropertyValuesHolder.ofFloat(this.jdField_f_of_type_AndroidUtilProperty, new float[] { this.jdField_c_of_type_AndroidGraphicsRectF.height(), (int)(i * 0.9F) });
+        PropertyValuesHolder localPropertyValuesHolder4 = PropertyValuesHolder.ofFloat(this.jdField_e_of_type_AndroidUtilProperty, new float[] { this.jdField_b_of_type_AndroidGraphicsRectF.height(), (int)this.jdField_c_of_type_Float });
+        PropertyValuesHolder localPropertyValuesHolder5 = PropertyValuesHolder.ofInt(this.jdField_c_of_type_AndroidUtilProperty, new int[] { this.jdField_b_of_type_Int, 255 });
+        this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { localPropertyValuesHolder1, localPropertyValuesHolder3, localPropertyValuesHolder4, PropertyValuesHolder.ofInt(this.jdField_d_of_type_AndroidUtilProperty, new int[] { this.jdField_e_of_type_Int, 0 }), localPropertyValuesHolder2, localPropertyValuesHolder5, PropertyValuesHolder.ofInt(this.jdField_h_of_type_AndroidUtilProperty, new int[] { this.jdField_f_of_type_Int, 179 }) });
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
+      }
+      else if (paramInt1 == 4)
+      {
+        this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat(this.jdField_g_of_type_AndroidUtilProperty, new float[] { paramFloat1, paramFloat2 }) });
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
+      }
+    }
+  }
+  
+  private void a(Context paramContext)
+  {
+    this.jdField_c_of_type_Float = PickerContainer.a(paramContext, this.jdField_c_of_type_Float);
+    this.jdField_d_of_type_Float = PickerContainer.a(paramContext, this.jdField_d_of_type_Float);
+    this.jdField_e_of_type_Float = PickerContainer.a(paramContext, this.jdField_e_of_type_Float);
+    this.jdField_f_of_type_Float = PickerContainer.a(paramContext, this.jdField_f_of_type_Float);
+    this.jdField_b_of_type_Float = PickerContainer.a(paramContext, this.jdField_b_of_type_Float);
+    this.jdField_a_of_type_Float /= paramContext.getResources().getDisplayMetrics().density;
+  }
+  
+  private void a(Canvas paramCanvas)
+  {
+    RectF localRectF = this.jdField_a_of_type_Bnef.a(this.jdField_g_of_type_Int);
+    if (localRectF != null)
+    {
+      float f1 = localRectF.centerX();
+      float f2 = localRectF.centerY();
+      f1 -= this.jdField_b_of_type_AndroidGraphicsRectF.width() / 2.0F;
+      f2 -= this.jdField_b_of_type_AndroidGraphicsRectF.height() / 2.0F;
+      float f3 = this.jdField_b_of_type_AndroidGraphicsRectF.width();
+      float f4 = this.jdField_b_of_type_AndroidGraphicsRectF.height();
+      paramCanvas.save();
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds((int)f1, (int)f2, (int)(f3 + f1), (int)(f4 + f2));
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      }
+      paramCanvas.restore();
+    }
+  }
+  
+  private void a(Canvas paramCanvas, boolean paramBoolean)
+  {
+    RectF localRectF = this.jdField_a_of_type_Bnef.a(this.jdField_c_of_type_Int - 1);
+    if ((localRectF != null) && (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null))
+    {
+      float f1 = localRectF.centerX();
+      float f2 = localRectF.centerY();
+      f1 -= this.jdField_e_of_type_Float / 2.0F;
+      f2 -= this.jdField_f_of_type_Float / 2.0F;
+      float f3 = this.jdField_e_of_type_Float;
+      float f4 = this.jdField_f_of_type_Float;
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds((int)f1, (int)f2, (int)(f3 + f1), (int)(f4 + f2));
+      if (paramBoolean) {
+        break label119;
+      }
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_e_of_type_Int);
+    }
+    for (;;)
+    {
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      return;
+      label119:
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setAlpha(255);
+    }
+  }
+  
+  private void a(Rect paramRect)
+  {
+    if (paramRect == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (!this.jdField_b_of_type_Boolean) {
+              break;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.d("GroundDrawable", 2, "isrunning, cannot resetdata:" + this.jdField_h_of_type_Int);
+          return;
+          if ((this.jdField_h_of_type_Int != 0) && (this.jdField_h_of_type_Int != 1)) {
+            break;
+          }
+          a(this.jdField_a_of_type_AndroidGraphicsRectF, paramRect.height() * 0.4F);
+          if (this.jdField_a_of_type_Bndz != null) {
+            this.jdField_a_of_type_Bndz.a(this.jdField_a_of_type_AndroidGraphicsRectF);
+          }
+          a(this.jdField_c_of_type_AndroidGraphicsRectF, paramRect.height() * 0.9F);
+        } while (this.jdField_a_of_type_Bnef == null);
+        this.jdField_a_of_type_Bnef.a(this.jdField_c_of_type_AndroidGraphicsRectF);
+        return;
+      } while ((this.jdField_h_of_type_Int != 3) && (this.jdField_h_of_type_Int != 2));
+      a(this.jdField_a_of_type_AndroidGraphicsRectF, paramRect.height());
+      a(this.jdField_c_of_type_AndroidGraphicsRectF, paramRect.height());
+      if (this.jdField_a_of_type_Bndz != null) {
+        this.jdField_a_of_type_Bndz.a(this.jdField_a_of_type_AndroidGraphicsRectF);
+      }
+    } while (this.jdField_a_of_type_Bnef == null);
+    this.jdField_a_of_type_Bnef.a(this.jdField_c_of_type_AndroidGraphicsRectF);
+  }
+  
+  private void a(RectF paramRectF, float paramFloat)
+  {
+    if (paramRectF == null) {
+      return;
+    }
+    Rect localRect = getBounds();
+    float f1 = paramFloat;
+    if (localRect.height() < paramFloat) {
+      f1 = localRect.height();
+    }
+    float f2 = localRect.width() * 1.0F / localRect.height() * f1;
+    paramFloat = f2;
+    if (localRect.width() < f2) {
+      paramFloat = localRect.width();
+    }
+    f2 = (localRect.width() - paramFloat) / 2.0F;
+    float f3 = (localRect.height() - f1) / 2.0F;
+    paramRectF.set(f2, f3, paramFloat + f2, f3 + f1);
+  }
+  
+  private void a(Float paramFloat)
+  {
+    if (this.jdField_h_of_type_Int == 3)
+    {
+      this.jdField_b_of_type_AndroidGraphicsRectF.left = (this.jdField_b_of_type_AndroidGraphicsRectF.centerX() - paramFloat.floatValue() / 2.0F);
+      this.jdField_b_of_type_AndroidGraphicsRectF.right = (this.jdField_b_of_type_AndroidGraphicsRectF.centerX() + paramFloat.floatValue() / 2.0F);
+      this.jdField_b_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_AndroidGraphicsRectF.centerY() - paramFloat.floatValue() / 2.0F);
+      this.jdField_b_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_AndroidGraphicsRectF.centerY() + paramFloat.floatValue() / 2.0F);
+    }
+  }
+  
+  private float b()
+  {
+    return this.jdField_b_of_type_AndroidGraphicsRectF.height();
+  }
+  
+  private int b()
+  {
+    return this.jdField_f_of_type_Int;
+  }
+  
+  private void b(float paramFloat)
+  {
+    if ((this.jdField_h_of_type_Int == 1) || (this.jdField_h_of_type_Int == 3))
+    {
+      a(this.jdField_a_of_type_AndroidGraphicsRectF, paramFloat);
+      if (this.jdField_a_of_type_Bndz != null) {
+        this.jdField_a_of_type_Bndz.a(this.jdField_a_of_type_AndroidGraphicsRectF);
+      }
+    }
+  }
+  
+  private void b(int paramInt)
+  {
+    if ((this.jdField_h_of_type_Int == 3) || (this.jdField_h_of_type_Int == 1))
+    {
+      this.jdField_f_of_type_Int = paramInt;
+      return;
+    }
+    if (this.jdField_h_of_type_Int == 0)
+    {
+      this.jdField_f_of_type_Int = 179;
+      return;
+    }
+    this.jdField_f_of_type_Int = 127;
+  }
+  
+  private void b(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds((int)this.jdField_b_of_type_AndroidGraphicsRectF.left, (int)this.jdField_b_of_type_AndroidGraphicsRectF.top, (int)this.jdField_b_of_type_AndroidGraphicsRectF.right, (int)this.jdField_b_of_type_AndroidGraphicsRectF.bottom);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    }
+  }
+  
+  private float c()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRectF.height();
+  }
+  
+  private int c()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  private void c(float paramFloat)
+  {
+    if ((this.jdField_h_of_type_Int == 1) || (this.jdField_h_of_type_Int == 3))
+    {
+      a(this.jdField_c_of_type_AndroidGraphicsRectF, paramFloat);
+      if (this.jdField_a_of_type_Bnef != null)
+      {
+        this.jdField_a_of_type_Bnef.a(this.jdField_c_of_type_AndroidGraphicsRectF);
+        if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+        {
+          bndm localbndm = (bndm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (localbndm != null) {
+            localbndm.a(this.jdField_h_of_type_Int, a());
+          }
+        }
+      }
+    }
+  }
+  
+  private void c(int paramInt)
+  {
+    if ((this.jdField_h_of_type_Int == 3) || (this.jdField_h_of_type_Int == 1))
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+    }
+    this.jdField_a_of_type_Int = 115;
+  }
+  
+  private float d()
+  {
+    return this.jdField_c_of_type_AndroidGraphicsRectF.height();
+  }
+  
+  private int d()
+  {
+    return this.jdField_e_of_type_Int;
+  }
+  
+  private void d(int paramInt)
+  {
+    if ((this.jdField_h_of_type_Int == 1) || (this.jdField_h_of_type_Int == 3))
+    {
+      this.jdField_b_of_type_Int = paramInt;
+      return;
+    }
+    this.jdField_a_of_type_Int = 255;
+  }
+  
+  private int e()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  private void e(int paramInt)
+  {
+    if (this.jdField_h_of_type_Int == 1)
+    {
+      this.jdField_e_of_type_Int = paramInt;
+      this.jdField_d_of_type_Int = (255 - this.jdField_e_of_type_Int);
+    }
+    while (this.jdField_h_of_type_Int != 3) {
+      return;
+    }
+    this.jdField_e_of_type_Int = paramInt;
+    this.jdField_d_of_type_Int = ((int)((255 - this.jdField_e_of_type_Int) * 179 * 1.0F / 255.0F));
+  }
+  
+  private void f(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    bndm localbndm;
+    do
+    {
+      return;
+      localbndm = (bndm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localbndm == null);
+    localbndm.b(paramInt);
+  }
+  
+  private void g(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    bndm localbndm;
+    do
+    {
+      return;
+      localbndm = (bndm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localbndm == null);
+    localbndm.a(paramInt);
+  }
+  
+  private void h(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    bndm localbndm;
+    do
+    {
+      return;
+      localbndm = (bndm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localbndm == null);
+    localbndm.c(paramInt);
+  }
+  
+  public int a()
+  {
+    return this.jdField_h_of_type_Int;
+  }
+  
+  public int a(float paramFloat)
+  {
+    if (this.jdField_a_of_type_Bnef != null) {
+      return this.jdField_a_of_type_Bnef.a(paramFloat);
+    }
+    return 0;
+  }
+  
+  public RectF a()
+  {
+    if (this.jdField_a_of_type_Bnef != null) {
+      return this.jdField_a_of_type_Bnef.a(this.jdField_g_of_type_Int);
+    }
+    return null;
+  }
+  
+  public RectF a(float paramFloat)
+  {
+    int i = a(paramFloat);
+    if (this.jdField_a_of_type_Bnef != null) {
+      return this.jdField_a_of_type_Bnef.a(i);
+    }
+    return null;
+  }
+  
+  public RectF a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = this.jdField_g_of_type_Int;
+    this.jdField_g_of_type_Int = paramInt;
+    if (paramBoolean1) {
+      this.jdField_a_of_type_Boolean = paramBoolean1;
+    }
+    RectF localRectF;
+    Object localObject;
+    if (this.jdField_a_of_type_Bnef != null)
+    {
+      localRectF = this.jdField_a_of_type_Bnef.a(paramInt);
+      if (localRectF != null)
+      {
+        if (paramBoolean2) {
+          break label160;
+        }
+        this.jdField_b_of_type_AndroidGraphicsRectF.set(localRectF.centerX() - this.jdField_c_of_type_Float / 2.0F, localRectF.centerY() - this.jdField_d_of_type_Float / 2.0F, localRectF.centerX() + this.jdField_d_of_type_Float / 2.0F, localRectF.centerY() + this.jdField_d_of_type_Float / 2.0F);
+        if ((paramBoolean1) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+        {
+          localObject = (bndm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (localObject != null)
+          {
+            ((bndm)localObject).a(this.jdField_h_of_type_Int, this.jdField_g_of_type_Int, localRectF);
+            this.jdField_a_of_type_Boolean = false;
+          }
+        }
+        invalidateSelf();
+      }
+    }
+    for (;;)
+    {
+      return this.jdField_b_of_type_AndroidGraphicsRectF;
+      label160:
+      localObject = this.jdField_a_of_type_Bnef.a(i);
+      if (localObject != null)
+      {
+        this.jdField_b_of_type_AndroidGraphicsRectF.set(((RectF)localObject).centerX() - this.jdField_c_of_type_Float / 2.0F, ((RectF)localObject).centerY() - this.jdField_d_of_type_Float / 2.0F, ((RectF)localObject).centerX() + this.jdField_d_of_type_Float / 2.0F, ((RectF)localObject).centerY() + this.jdField_d_of_type_Float / 2.0F);
+        float f1 = Math.abs(((RectF)localObject).centerY() - localRectF.centerY());
+        float f2 = this.jdField_a_of_type_Float;
+        if (isRunning()) {
+          stop();
+        }
+        this.jdField_h_of_type_Int = 4;
+        this.jdField_b_of_type_Boolean = true;
+        a(this.jdField_h_of_type_Int, (int)(f1 * f2), ((RectF)localObject).centerY(), localRectF.centerY());
+      }
+    }
   }
   
   public void a()
   {
-    this.d = false;
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr != null)
+    this.jdField_a_of_type_Bnef.a();
+    this.jdField_a_of_type_Bndz.a();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.jdField_b_of_type_Boolean = false;
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
-      ThreadManager.post(new RMVideoInitState.1(this, localRMVideoStateMgr), 8, null, false);
-      if (localRMVideoStateMgr.jdField_a_of_type_Bndk != null) {
-        localRMVideoStateMgr.jdField_a_of_type_Bndk.a();
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
+      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_AndroidUtilProperty = null;
+    this.jdField_b_of_type_AndroidUtilProperty = null;
+    this.jdField_c_of_type_AndroidUtilProperty = null;
+    this.jdField_d_of_type_AndroidUtilProperty = null;
+    this.jdField_e_of_type_AndroidUtilProperty = null;
+    this.jdField_f_of_type_AndroidUtilProperty = null;
+    this.jdField_g_of_type_AndroidUtilProperty = null;
+    this.jdField_h_of_type_AndroidUtilProperty = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_h_of_type_Int = paramInt;
+    switch (this.jdField_h_of_type_Int)
+    {
+    }
+  }
+  
+  public boolean a(Context paramContext, int paramInt, float paramFloat1, float paramFloat2, bndm parambndm)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambndm);
+    if (paramInt > 0) {
+      this.jdField_a_of_type_Float /= paramInt;
+    }
+    a(paramContext);
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bnef.a(-1, paramInt, this.jdField_b_of_type_Float, paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Bndz.a(0, paramFloat1, paramFloat2);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841226);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841225);
+    return true;
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if (this.jdField_h_of_type_Int == 0)
+    {
+      this.jdField_a_of_type_Bnef.a(paramCanvas, this.jdField_d_of_type_Int, this.jdField_g_of_type_Int, (int)(this.jdField_e_of_type_Int * 1.0F * 179.0F / 255.0F), this.jdField_f_of_type_Int);
+      if ((this.jdField_g_of_type_Int >= 0) && (this.jdField_g_of_type_Int < this.jdField_c_of_type_Int)) {
+        a(paramCanvas);
       }
-      if (!localRMVideoStateMgr.c) {
-        this.c = false;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("RMVideoInitState", 2, "[@] initState " + this.c);
-      }
-      try
+    }
+    for (;;)
+    {
+      return;
+      if ((this.jdField_h_of_type_Int == 1) || (this.jdField_h_of_type_Int == 3) || (this.jdField_h_of_type_Int == 2))
       {
-        if ((!this.c) && (!this.g))
+        this.jdField_a_of_type_Bndz.a(paramCanvas, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Bnef.a(paramCanvas, this.jdField_d_of_type_Int, this.jdField_g_of_type_Int, (int)(this.jdField_e_of_type_Int * 1.0F * 127.0F / 255.0F), this.jdField_f_of_type_Int);
+        a(paramCanvas, false);
+        if ((this.jdField_h_of_type_Int == 3) || (this.jdField_h_of_type_Int == 1))
         {
-          this.g = true;
-          c();
+          if (this.jdField_g_of_type_Int == this.jdField_c_of_type_Int - 1)
+          {
+            a(paramCanvas, true);
+            return;
+          }
+          a(paramCanvas);
         }
-        for (;;)
+      }
+      else if (this.jdField_h_of_type_Int == 4)
+      {
+        RectF localRectF = a();
+        if (localRectF != null)
         {
+          if (Math.abs(localRectF.centerY() - this.jdField_b_of_type_AndroidGraphicsRectF.centerY()) >= this.jdField_b_of_type_AndroidGraphicsRectF.height() / 2.0F) {
+            break label292;
+          }
+          this.jdField_a_of_type_Bnef.a(paramCanvas, this.jdField_d_of_type_Int, this.jdField_g_of_type_Int, (int)(this.jdField_e_of_type_Int * 1.0F * 179.0F / 255.0F), this.jdField_f_of_type_Int);
+        }
+        while ((this.jdField_g_of_type_Int >= 0) && (this.jdField_g_of_type_Int < this.jdField_c_of_type_Int))
+        {
+          b(paramCanvas);
           return;
-          localRMVideoStateMgr.g();
-          b();
+          label292:
+          this.jdField_a_of_type_Bnef.a(paramCanvas, this.jdField_d_of_type_Int, -1, (int)(this.jdField_e_of_type_Int * 1.0F * 179.0F / 255.0F), this.jdField_f_of_type_Int);
         }
+      }
+    }
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public boolean isRunning()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    super.onBoundsChange(paramRect);
+    a(paramRect);
+    if (this.jdField_g_of_type_Int >= 0)
+    {
+      a(this.jdField_g_of_type_Int, false, false);
+      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+      {
+        paramRect = (bndm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (paramRect != null)
+        {
+          RectF localRectF = new RectF();
+          localRectF.set(this.jdField_b_of_type_AndroidGraphicsRectF);
+          paramRect.a(this.jdField_h_of_type_Int, this.jdField_g_of_type_Int, localRectF);
+          this.jdField_a_of_type_Boolean = false;
+        }
+      }
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
+  
+  public void start()
+  {
+    if (isRunning()) {
+      stop();
+    }
+    this.jdField_b_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("GroundDrawable", 2, "start :" + this.jdField_h_of_type_Int);
+    }
+    if ((this.jdField_h_of_type_Int == 1) || (this.jdField_h_of_type_Int == 0))
+    {
+      this.jdField_h_of_type_Int = 1;
+      a(this.jdField_h_of_type_Int, 300, -1.0F, -1.0F);
+    }
+    while ((this.jdField_h_of_type_Int != 3) && (this.jdField_h_of_type_Int != 2)) {
+      return;
+    }
+    this.jdField_h_of_type_Int = 3;
+    a(this.jdField_h_of_type_Int, 200, -1.0F, -1.0F);
+  }
+  
+  public void stop()
+  {
+    if (!this.jdField_b_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_b_of_type_Boolean = false;
+      if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+      {
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
+        this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      }
+      if (this.jdField_h_of_type_Int == 1)
+      {
+        this.jdField_h_of_type_Int = 2;
+        a(getBounds());
+        this.jdField_a_of_type_Int = 115;
         return;
       }
-      finally {}
-    }
-  }
-  
-  public void a(AVCodec.AVCodecCallback paramAVCodecCallback, MessageStruct paramMessageStruct)
-  {
-    paramAVCodecCallback = RMVideoStateMgr.a();
-    switch (paramMessageStruct.mId)
-    {
-    default: 
-      return;
-    }
-    paramAVCodecCallback.jdField_a_of_type_JavaLangString = ((String)paramMessageStruct.mObj0);
-    this.jdField_a_of_type_Boolean = true;
-    paramAVCodecCallback.jdField_a_of_type_Bncy = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] onAVCodecEvent[RMFileEventNotify] path=" + paramAVCodecCallback.jdField_a_of_type_JavaLangString + ",files : " + Arrays.toString(new File(paramAVCodecCallback.jdField_a_of_type_JavaLangString).list()));
-    }
-    paramAVCodecCallback.jdField_a_of_type_AndroidOsHandler.post(new RMVideoInitState.5(this));
-    d();
-  }
-  
-  public void a(Object paramObject, int paramInt, Object... paramVarArgs)
-  {
-    if ((paramObject instanceof azdl)) {
-      switch (paramInt)
-      {
-      }
-    }
-    Object localObject;
-    for (;;)
-    {
-      super.a(paramObject, paramInt, paramVarArgs);
-      return;
-      if (paramVarArgs != null) {
-        if ((paramVarArgs[0] instanceof Boolean))
-        {
-          this.b = true;
-          d();
-          if (QLog.isColorLevel()) {
-            QLog.d("RMVideoInitState", 2, "[@] EVENT_CREATE_CAMERA[success] obj= " + paramVarArgs[0]);
-          }
-          localObject = BaseApplicationImpl.sApplication.getQQProcessName();
-          if ((localObject != null) && (((String)localObject).endsWith(":story"))) {
-            wta.b("take_video", "camera_initial", 0, 0, new String[0]);
-          }
-          ThreadManager.post(new RMVideoInitState.6(this), 8, null, true);
-        }
-        else if ((paramVarArgs[0] instanceof String))
-        {
-          if (!this.d)
-          {
-            this.d = true;
-            RMVideoStateMgr.a().a(2002, alpo.a(2131713834), false);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("RMVideoInitState", 2, "[@] EVENT_CREATE_CAMERA, error = " + paramVarArgs[0]);
-          }
-          if (1 == bnaw.a) {
-            bjsb.a(bnlx.a + "", "qzone_video_record", "2", null);
-          }
-          localObject = BaseApplicationImpl.sApplication.getQQProcessName();
-          if ((localObject != null) && (((String)localObject).endsWith(":story")))
-          {
-            wta.b("take_video", "camera_initial", 0, -1, new String[0]);
-            continue;
-            if ((paramVarArgs != null) && ((paramVarArgs[0] instanceof String)))
-            {
-              if (!this.d)
-              {
-                this.d = true;
-                RMVideoStateMgr.a().a(2003, alpo.a(2131713845), false);
-              }
-              if (QLog.isColorLevel())
-              {
-                QLog.d("RMVideoInitState", 2, "[@] EVENT_SET_CAMERA_PARAM error, error = " + paramVarArgs[0]);
-                continue;
-                if (!this.d)
-                {
-                  this.d = true;
-                  RMVideoStateMgr.a().a(2002, alpo.a(2131713846), false);
-                }
-                if (QLog.isColorLevel()) {
-                  QLog.d("RMVideoInitState", 2, "[@] EVENT_CAMERA_DISABLED error");
-                }
-                if (1 == bnaw.a)
-                {
-                  bjsb.a(bnlx.a + "", "qzone_video_record", "4", null);
-                  continue;
-                  if ((paramObject instanceof AudioCapture))
-                  {
-                    localObject = RMVideoStateMgr.a();
-                    switch (paramInt)
-                    {
-                    case 4: 
-                    default: 
-                      break;
-                    case 3: 
-                      if ((paramVarArgs != null) && ((paramVarArgs[0] instanceof Boolean)) && (((Boolean)paramVarArgs[0]).booleanValue()))
-                      {
-                        if (QLog.isColorLevel()) {
-                          QLog.d("RMVideoInitState", 2, "[@] EVENT_INIT [OK]");
-                        }
-                      }
-                      else
-                      {
-                        if (QLog.isColorLevel())
-                        {
-                          QLog.d("RMVideoInitState", 2, "[@] EVENT_INIT [error]麦克风初始化参数失败...");
-                          QLog.d("RMVideoInitState", 2, "[@] EVENT_INIT [error]mAudioSampleRate=" + azds.q + " mAudioChannel=" + azds.o + " mAudioFormat=" + azds.p);
-                        }
-                        ((RMVideoStateMgr)localObject).jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
-                        ((RMVideoStateMgr)localObject).d = false;
-                        ((RMVideoStateMgr)localObject).b(false);
-                        if (((RMVideoStateMgr)localObject).jdField_a_of_type_AndroidOsHandler != null) {
-                          ((RMVideoStateMgr)localObject).jdField_a_of_type_AndroidOsHandler.post(new RMVideoInitState.7(this));
-                        }
-                        while (1 == bnaw.a)
-                        {
-                          bjsb.a(bnlx.a + "", "qzone_video_record", "5", null);
-                          break;
-                          if (QLog.isColorLevel()) {
-                            QLog.d("RMVideoInitState", 2, "[@] EVENT_INIT [Error]麦克风参数初始化失败 ,rmStateMgr.mHandler = null");
-                          }
-                        }
-                      }
-                      break;
-                    case 5: 
-                      if (QLog.isColorLevel()) {
-                        QLog.d("RMVideoInitState", 2, "[@] EVENT_OPEN_MIC [error]麦克风打开失败...");
-                      }
-                      ((RMVideoStateMgr)localObject).jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
-                      ((RMVideoStateMgr)localObject).d = false;
-                      if (RMVideoStateMgr.b)
-                      {
-                        ((RMVideoStateMgr)localObject).b(true);
-                        d();
-                      }
-                      for (;;)
-                      {
-                        if (!((RMVideoStateMgr)localObject).f)
-                        {
-                          RMVideoStateMgr.a().b(0, alpo.a(2131713837), false);
-                          ((RMVideoStateMgr)localObject).f = true;
-                        }
-                        if (1 != bnaw.a) {
-                          break;
-                        }
-                        bjsb.a(bnlx.a + "", "qzone_video_record", "6", null);
-                        break;
-                        ((RMVideoStateMgr)localObject).b(false);
-                      }
-                    case 6: 
-                      if ((paramVarArgs == null) || (!(paramVarArgs[0] instanceof Boolean)) || (!((Boolean)paramVarArgs[0]).booleanValue())) {
-                        break label892;
-                      }
-                      if (QLog.isColorLevel()) {
-                        QLog.d("RMVideoInitState", 2, "[@] EVENT_START_MIC [OK]");
-                      }
-                      ((RMVideoStateMgr)localObject).b(true);
-                      d();
-                      ((RMVideoStateMgr)localObject).d = true;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    label892:
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] EVENT_START_MIC [error]麦克风启动录制失败...");
-    }
-    ((RMVideoStateMgr)localObject).jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
-    ((RMVideoStateMgr)localObject).d = false;
-    if (RMVideoStateMgr.b)
-    {
-      ((RMVideoStateMgr)localObject).b(true);
-      d();
-    }
-    for (;;)
-    {
-      if (!((RMVideoStateMgr)localObject).f)
-      {
-        RMVideoStateMgr.a().b(0, alpo.a(2131713836), false);
-        ((RMVideoStateMgr)localObject).f = true;
-      }
-      if (1 != bnaw.a) {
-        break;
-      }
-      bjsb.a(bnlx.a + "", "qzone_video_record", "7", null);
-      break;
-      ((RMVideoStateMgr)localObject).b(false);
-    }
-  }
-  
-  boolean a()
-  {
-    return (RMVideoStateMgr.a().c) && (this.jdField_a_of_type_Boolean) && (this.b);
-  }
-  
-  void b()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] retake called");
-    }
-    if (localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture != null) {
-      localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.a();
-    }
-    for (;;)
-    {
-      try
-      {
-        localRMVideoStateMgr.e();
-        if (!this.e) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("RMVideoInitState", 2, "[@] retake call AVCodec.get().retake()");
-        }
-        AVCodec.get().retake();
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
-        continue;
-      }
-      if (localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext != null) {
-        localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext.reset();
-      }
-      bnmw.a().a().a(0);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("RMVideoInitState", 2, "[@] retake call AVCodec.get().init()");
-      }
-      AVCodec.get().init();
-      this.e = true;
-    }
-  }
-  
-  void c()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] delayInit called");
-    }
-    localRMVideoStateMgr.jdField_a_of_type_AndroidOsHandler.postDelayed(new RMVideoInitState.2(this), 50L);
-  }
-  
-  void d()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (a())
-    {
-      localRMVideoStateMgr.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      localRMVideoStateMgr.jdField_a_of_type_AndroidOsHandler.post(new RMVideoInitState.4(this));
-    }
-  }
-  
-  public void e()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    localRMVideoStateMgr.h();
-    localRMVideoStateMgr.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.c = false;
+    } while (this.jdField_h_of_type_Int != 3);
+    this.jdField_h_of_type_Int = 0;
+    a(getBounds());
+    this.jdField_a_of_type_Int = 115;
   }
 }
 

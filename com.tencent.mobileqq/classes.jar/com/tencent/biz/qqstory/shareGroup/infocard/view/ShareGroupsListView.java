@@ -2,14 +2,14 @@ package com.tencent.biz.qqstory.shareGroup.infocard.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import wbb;
-import wbl;
+import wfk;
+import wfu;
 
 public class ShareGroupsListView
   extends MyMemoriesListView
 {
-  public wbb a;
-  wbl a;
+  public wfk a;
+  wfu a;
   
   public ShareGroupsListView(Context paramContext)
   {
@@ -28,17 +28,17 @@ public class ShareGroupsListView
   
   protected void a() {}
   
-  public void setListAdapter(wbb paramwbb)
+  public void setListAdapter(wfk paramwfk)
   {
-    super.setListAdapter(paramwbb);
-    this.jdField_a_of_type_Wbb = paramwbb;
+    super.setListAdapter(paramwfk);
+    this.jdField_a_of_type_Wfk = paramwfk;
   }
   
-  public void setUIEventListener(wbl paramwbl)
+  public void setUIEventListener(wfu paramwfu)
   {
-    this.jdField_a_of_type_Wbl = paramwbl;
-    this.jdField_a_of_type_Wbb.a(paramwbl);
-    super.setListener(paramwbl, paramwbl);
+    this.jdField_a_of_type_Wfu = paramwfu;
+    this.jdField_a_of_type_Wfk.a(paramwfu);
+    super.setListener(paramwfu, paramwfu);
   }
 }
 

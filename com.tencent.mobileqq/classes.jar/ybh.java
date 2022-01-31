@@ -1,15 +1,8 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
-import NS_COMM.COMM.StCommonExt;
+import java.util.ArrayList;
 
-class ybh
-  implements yvn<CertifiedAccountRead.StGetFeedDetailRsp>
+public abstract interface ybh
 {
-  ybh(ybg paramybg, COMM.StCommonExt paramStCommonExt) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
-  {
-    ybg.a(this.jdField_a_of_type_Ybg, paramBoolean, paramLong, paramString, paramStGetFeedDetailRsp, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt);
-  }
+  public abstract void a(ArrayList<ybe> paramArrayList);
 }
 
 

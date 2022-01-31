@@ -1,11 +1,21 @@
+import com.tencent.ark.ark.VariantWrapper;
+
 class anij
-  implements anip
+  implements anju
 {
-  anij(anid paramanid, anip paramanip) {}
+  anij(anii paramanii, long paramLong) {}
   
-  public void a(boolean paramBoolean)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_Anip.a(paramBoolean);
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Anii.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    anif.a(this.jdField_a_of_type_Anii.a, this.jdField_a_of_type_Long, paramBoolean, "Motion", paramFloat1, paramFloat2, paramFloat3);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 class InternalJSPlugin$8$1

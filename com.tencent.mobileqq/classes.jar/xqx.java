@@ -1,15 +1,13 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.support.annotation.NonNull;
 
 public class xqx
-  implements Handler.Callback
 {
-  public xqx(SegmentList paramSegmentList) {}
+  public void a(byte[] paramArrayOfByte) {}
   
-  public boolean handleMessage(Message paramMessage)
+  @NonNull
+  public byte[] a(int paramInt)
   {
-    return SegmentList.a(this.a, paramMessage);
+    return new byte[paramInt];
   }
 }
 

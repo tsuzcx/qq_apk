@@ -8,7 +8,7 @@ public class oth
 {
   public static String a()
   {
-    return (String)bjxj.a("double_short_video_font_size", "14");
+    return (String)bkbq.a("double_short_video_font_size", "14");
   }
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
@@ -19,7 +19,7 @@ public class oth
     {
       paramString = (String)paramString.get("double_videocard_textsize");
       if (!TextUtils.isEmpty(paramString)) {
-        bjxj.a("double_short_video_font_size", paramString);
+        bkbq.a("double_short_video_font_size", paramString);
       }
       label55:
       return true;
@@ -32,7 +32,7 @@ public class oth
   
   public void onWipeConfig(int paramInt)
   {
-    bjxj.a("double_short_video_font_size", "14");
+    bkbq.a("double_short_video_font_size", "14");
     if (QLog.isColorLevel()) {
       QLog.d("DoubleShortVideoFontSize", 2, "font size: " + paramInt);
     }

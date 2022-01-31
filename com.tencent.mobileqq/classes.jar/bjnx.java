@@ -1,49 +1,56 @@
-import android.text.TextUtils;
+import NS_MOBILE_CLIENT_UPDATE.SQ_CLIENT_UPDATE_REQ;
+import NS_MOBILE_CLIENT_UPDATE.SQ_CLIENT_UPDATE_RSP;
+import NS_MOBILE_CLIENT_UPDATE.UPDATE_INFO;
+import android.os.Build.VERSION;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.common.config.AppSetting;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
 public class bjnx
+  extends QzoneExternalRequest
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
-  private String b = "";
+  public JceStruct a;
   
-  public String a()
+  public bjnx(long paramLong, ArrayList<UPDATE_INFO> paramArrayList1, ArrayList<UPDATE_INFO> paramArrayList2)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    SQ_CLIENT_UPDATE_REQ localSQ_CLIENT_UPDATE_REQ = new SQ_CLIENT_UPDATE_REQ();
+    localSQ_CLIENT_UPDATE_REQ.qua = bjdm.a();
+    localSQ_CLIENT_UPDATE_REQ.version = AppSetting.f();
+    localSQ_CLIENT_UPDATE_REQ.apiLevel = Build.VERSION.SDK_INT;
+    localSQ_CLIENT_UPDATE_REQ.triggerType = 1;
+    localSQ_CLIENT_UPDATE_REQ.vPlugin = paramArrayList1;
+    localSQ_CLIENT_UPDATE_REQ.vModule = paramArrayList2;
+    this.a = localSQ_CLIENT_UPDATE_REQ;
   }
   
-  public void a(String paramString)
+  public static SQ_CLIENT_UPDATE_RSP a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public void b(String paramString)
-  {
-    this.b = paramString;
-    if (!TextUtils.isEmpty(this.b))
-    {
-      this.b = this.b.replaceAll("\\+86", "");
-      this.b = this.b.replaceAll("\\D", "");
+    if (paramArrayOfByte == null) {
+      return null;
     }
+    paramArrayOfByte = decode(paramArrayOfByte, "mqBatchUpdate");
+    if ((paramArrayOfByte instanceof SQ_CLIENT_UPDATE_RSP)) {
+      return (SQ_CLIENT_UPDATE_RSP)paramArrayOfByte;
+    }
+    return null;
   }
   
-  public String toString()
+  public String getCmdString()
   {
-    return "SimInfo mIseDataTrafficSim=" + this.jdField_a_of_type_Boolean + ",mIMSI=" + this.jdField_a_of_type_JavaLangString + ",mPhoneNum=" + this.b;
+    return "QzoneNewService.update.mqBatchUpdate";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "mqBatchUpdate";
   }
 }
 

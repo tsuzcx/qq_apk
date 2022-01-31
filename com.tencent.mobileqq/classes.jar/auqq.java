@@ -1,13 +1,12 @@
-public class auqq
+import android.os.IInterface;
+import com.tencent.mobileqq.music.SongInfo;
+
+public abstract interface auqq
+  extends IInterface
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
+  public abstract void onPlaySongChanged(SongInfo paramSongInfo);
+  
+  public abstract void onPlayStateChanged(int paramInt);
 }
 
 

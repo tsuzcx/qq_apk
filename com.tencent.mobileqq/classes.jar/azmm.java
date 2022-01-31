@@ -1,34 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.statistics.ReportControllerImpl;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
 
-public class azmm
-  extends amiz
+class azmm
+  implements aznf
 {
-  public azmm(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
-  {
-    super(paramQQAppInterface, paramProxyManager);
-  }
+  azmm(azml paramazml) {}
   
-  protected void a()
+  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
   {
-    azmj localazmj = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if ((localazmj != null) && ((localazmj instanceof ReportControllerImpl))) {
-      ((ReportControllerImpl)localazmj).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager);
-    }
-  }
-  
-  protected void b()
-  {
-    azmj localazmj = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if ((localazmj != null) && ((localazmj instanceof ReportControllerImpl))) {
-      ((ReportControllerImpl)localazmj).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager);
+    azml.a(this.a, paramInt);
+    long l = azml.a(this.a).a;
+    StringBuilder localStringBuilder = new StringBuilder().append("is64bit=");
+    if (azmx.a()) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      VACDReportUtil.a(l, null, "load.item.getconfig.end", paramInt + "&v=" + azml.a() + "&f=" + azml.a(this.a).d, SoConfig.SoInfo.getReportCode(paramSoInfo), null);
+      azml.a(this.a, azml.a(this.a), paramSoInfo);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azmm
  * JD-Core Version:    0.7.0.1
  */

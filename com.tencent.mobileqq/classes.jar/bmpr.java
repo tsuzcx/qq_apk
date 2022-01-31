@@ -1,17 +1,8 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-
-class bmpr
-  implements bmqa
+public abstract interface bmpr
 {
-  bmpr(bmpq parambmpq, boolean paramBoolean) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void a()
-  {
-    if (DoodleLayout.a(this.jdField_a_of_type_Bmpq.a) != null) {
-      DoodleLayout.a(this.jdField_a_of_type_Bmpq.a).c(true);
-    }
-    this.jdField_a_of_type_Bmpq.a.a().b(this.jdField_a_of_type_Boolean);
-  }
+  public abstract void b();
 }
 
 

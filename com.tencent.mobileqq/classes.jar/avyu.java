@@ -1,35 +1,36 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.onlinestatus.AccountPanel.15.1;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.ocr.ui.SearchSougouResultItemBuilder.UrlDownloadListener.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import java.net.URL;
 
 public class avyu
-  implements Observer
+  implements URLDrawable.URLDrawableListener
 {
-  avyu(avyo paramavyo) {}
+  avyu(avyt paramavyt) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ((avyo.a(this.a) == null) || (avyo.a(this.a).isFinishing()) || (avyo.a(this.a) == null)) {
-      QLog.d("AccountPanel", 1, String.format("mObserver update return", new Object[0]));
-    }
+    if ((this.a.a == null) || (paramURLDrawable == null) || (paramURLDrawable.getURL() == null)) {}
     do
     {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("AccountPanel", 2, "update");
-        }
-      } while (!(paramObject instanceof String[]));
-      paramObservable = (String[])paramObject;
-    } while ((paramObservable.length != 2) || (!aljq.x.equals(paramObservable[0])));
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountPanel", 2, "update() -> before update");
-    }
-    avyo.a(this.a).runOnUiThread(new AccountPanel.15.1(this));
+      return;
+      paramThrowable = this.a.a.findViewWithTag(paramURLDrawable.getURL().toString());
+      if ((paramThrowable != null) && ((paramThrowable instanceof ImageView))) {
+        paramThrowable.post(new SearchSougouResultItemBuilder.UrlDownloadListener.1(this, paramThrowable));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, "UrlDownloadListener image fail," + paramURLDrawable.getURL());
   }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

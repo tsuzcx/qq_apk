@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import awmk;
+import awqt;
 
 class FriendProfileCardActivity$6
   implements Runnable

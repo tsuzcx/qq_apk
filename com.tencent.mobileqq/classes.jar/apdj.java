@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.1;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.2;
-
 public class apdj
-  extends alox
 {
-  public apdj(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
+  private long a;
   
-  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
+  public long a()
   {
-    if (!this.a.a) {
-      return;
-    }
-    this.a.runOnUiThread(new BaseMsgBoxActivity.1.2(this, paramBoolean, paramString1, paramString2));
+    return this.a;
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void a(long paramLong)
   {
-    if (!this.a.a) {
-      return;
-    }
-    this.a.runOnUiThread(new BaseMsgBoxActivity.1.1(this, paramBoolean, paramString));
+    this.a = paramLong;
   }
 }
 

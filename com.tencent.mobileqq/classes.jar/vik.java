@@ -1,17 +1,36 @@
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Map;
 
 public class vik
-  implements bhpo
+  extends vkh
 {
-  public vik(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  StoryVideoItem a;
+  public web a;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public vik(StoryVideoItem paramStoryVideoItem)
   {
-    this.a.b = paramInt1;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+    {
+      wxe.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
+      b(false);
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout() != null)
+    {
+      this.jdField_a_of_type_Web = new wdy();
+      this.jdField_a_of_type_Web.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new vil(this));
+      return;
+    }
+    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+    b(true);
+  }
+  
+  protected void a(Map<String, Object> paramMap) {}
 }
 
 

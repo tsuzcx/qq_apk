@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aepp;
-import afsw;
+import aeue;
+import afxl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class PokePanel$3$1
   implements Runnable
 {
-  public PokePanel$3$1(aepp paramaepp, QQAppInterface paramQQAppInterface) {}
+  public PokePanel$3$1(aeue paramaeue, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aepp.a.a(afsw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    this.jdField_a_of_type_Aeue.a.a(afxl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
   }
 }
 

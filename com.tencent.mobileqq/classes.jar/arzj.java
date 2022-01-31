@@ -1,17 +1,26 @@
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.os.ResultReceiver;
 
 class arzj
   implements DialogInterface.OnClickListener
 {
-  arzj(arzf paramarzf, bdfq parambdfq) {}
+  arzj(arzi paramarzi, int paramInt, Bundle paramBundle) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bdfq.dismiss();
-    this.jdField_a_of_type_Arzf.a.setResult(-1);
-    this.jdField_a_of_type_Arzf.a.finish();
+    if (this.jdField_a_of_type_Arzi.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      paramDialogInterface = this.jdField_a_of_type_Arzi.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_Arzi.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramDialogInterface);
+    }
+    if (this.jdField_a_of_type_Arzi.jdField_a_of_type_AndroidAppActivity != null)
+    {
+      this.jdField_a_of_type_Arzi.jdField_a_of_type_AndroidAppActivity.setResult(1);
+      this.jdField_a_of_type_Arzi.jdField_a_of_type_AndroidAppActivity.finish();
+    }
   }
 }
 

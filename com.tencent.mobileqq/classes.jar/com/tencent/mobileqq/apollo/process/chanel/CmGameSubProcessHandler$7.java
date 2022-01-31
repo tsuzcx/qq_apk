@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import akta;
-import alfa;
+import akxp;
+import aljp;
 
 public class CmGameSubProcessHandler$7
   implements Runnable
 {
-  public CmGameSubProcessHandler$7(akta paramakta, String paramString) {}
+  public CmGameSubProcessHandler$7(akxp paramakxp, String paramString) {}
   
   public void run()
   {
-    if (akta.a(this.this$0) != null) {
-      akta.a(this.this$0).a(this.a, akta.a(this.this$0));
+    if (akxp.a(this.this$0) != null) {
+      akxp.a(this.this$0).a(this.a, akxp.a(this.this$0));
     }
   }
 }

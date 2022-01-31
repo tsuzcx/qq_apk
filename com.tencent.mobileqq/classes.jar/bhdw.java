@@ -1,54 +1,110 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader;
-import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import NS_QWEB_PROTOCAL.PROTOCAL.StAuthInfo;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.json.JSONObject;
 
-@bghi(a="BaselibLoadAsyncTask")
-public class bhdw
-  extends bhhm
+public abstract class bhdw
 {
-  private BaselibLoader.BaselibContent a;
+  private static volatile AtomicInteger a;
+  public int a;
   
-  public bhdw(Context paramContext, bgqg parambgqg)
+  static
   {
-    super(paramContext, parambgqg);
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   }
   
-  public void a()
+  private String c()
   {
-    bgxl.a(204, "", a().getMiniAppInfoForReport());
-    if (a().getMiniAppInfoForReport() != null) {}
-    for (String str = a().getMiniAppInfoForReport().appId;; str = "")
+    String str = bgxl.a().a();
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
+    Random localRandom = new Random();
+    localRandom.setSeed(System.currentTimeMillis());
+    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
+    return localStringBuilder.toString();
+  }
+  
+  protected abstract String a();
+  
+  public abstract JSONObject a(byte[] paramArrayOfByte);
+  
+  protected abstract byte[] a();
+  
+  protected byte[] a(byte[] paramArrayOfByte)
+  {
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    try
     {
-      QMLog.d("BaseRuntimeLoader", "startLoadBaseLib. appid:" + str);
-      if (!a()) {
-        break;
-      }
-      c();
-      return;
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = localStQWebRsp.busiBuff.get().toByteArray();
+      return paramArrayOfByte;
     }
-    bgyd.a(bgxz.a(), 10, "0");
-    AppLoaderFactory.g().getMiniAppEnv().getBaselibLoader().loadBaselib(a(), new bhdx(this));
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("ProtoBufRequest", "decode fail.", paramArrayOfByte);
+    }
+    return null;
   }
   
-  public boolean a()
+  protected abstract String b();
+  
+  public byte[] b()
   {
-    return (this.a != null) && (this.a.isBaseLibInited());
+    Object localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
+    this.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    localStQWebReq.Seq.set(this.jdField_a_of_type_Int);
+    localStQWebReq.traceid.set(c());
+    if (QUAUtil.getQUA() != null) {
+      localStQWebReq.qua.set(QUAUtil.getQUA());
+    }
+    if (((ChannelProxy)localObject).getDeviceInfo() != null) {
+      localStQWebReq.deviceInfo.set(((ChannelProxy)localObject).getDeviceInfo());
+    }
+    localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(a()));
+    localStQWebReq.Module.set(a());
+    localStQWebReq.Cmdname.set(b());
+    localObject = new PROTOCAL.StAuthInfo();
+    if (bgxl.a().a() != null) {
+      ((PROTOCAL.StAuthInfo)localObject).uin.set(bgxl.a().a());
+    }
+    if (bgxl.a().a() != null) {
+      ((PROTOCAL.StAuthInfo)localObject).sig.set(ByteStringMicro.copyFrom(bgxl.a().a()));
+    }
+    ((PROTOCAL.StAuthInfo)localObject).type.set(bgxl.a().a());
+    if ((!QUAUtil.isQQApp()) && (bgxl.a().e() != null)) {
+      ((PROTOCAL.StAuthInfo)localObject).platform.set(bgxl.a().e());
+    }
+    if (bgxl.a().c() != null) {
+      ((PROTOCAL.StAuthInfo)localObject).openid.set(bgxl.a().c());
+    }
+    if (bgxl.a().f() != null) {
+      ((PROTOCAL.StAuthInfo)localObject).appid.set(bgxl.a().f());
+    }
+    if (bgxl.a().d() != null) {
+      ((PROTOCAL.StAuthInfo)localObject).sessionkey.set(ByteStringMicro.copyFrom(bgxl.a().d().getBytes()));
+    }
+    localStQWebReq.loginSig.set((MessageMicro)localObject);
+    return localStQWebReq.toByteArray();
   }
   
-  public void b()
+  public String toString()
   {
-    super.b();
-    this.a = null;
-  }
-  
-  public void c()
-  {
-    super.c();
-    bgxl.a(205, "", a().getMiniAppInfoForReport());
+    return "ProtoBufRequest{seqNo=" + this.jdField_a_of_type_Int + ",CmdName=" + b() + '}';
   }
 }
 

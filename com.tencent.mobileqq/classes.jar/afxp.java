@@ -1,34 +1,75 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
 
-public class afxp
-  implements DialogInterface.OnClickListener
+final class afxp
+  implements baug
 {
-  public afxp(StructingMsgItemBuilder paramStructingMsgItemBuilder, MessageForStructing paramMessageForStructing) {}
+  afxp(String paramString1, String paramString2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onResp(bavf parambavf)
   {
-    Bundle localBundle = new Bundle();
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.source_puin != null) && (!"".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.source_puin))) {
-      localBundle.putString("source_puin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.source_puin);
+    if (parambavf.jdField_a_of_type_Int == 3)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeEmo", 2, "pe res download repeating ");
+      }
+      return;
     }
-    localBundle.putInt("forward_type", -3);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.mCommentText = null;
-    localBundle.putInt("structmsg_service_id", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.mMsgServiceID);
-    localBundle.putByteArray("stuctmsg_bytes", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.getBytes());
-    localBundle.putLong("structmsg_uniseq", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq);
-    localBundle.putInt("accostType", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.sourceAccoutType);
-    Intent localIntent = new Intent();
-    localIntent.putExtras(localBundle);
-    arum.a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a, localIntent, 21);
-    paramDialogInterface.dismiss();
+    boolean bool;
+    if (parambavf.jdField_a_of_type_Int == 0)
+    {
+      parambavf = parambavf.jdField_a_of_type_Bave.c;
+      String str1 = bdhb.c(parambavf);
+      String str2 = this.a;
+      if ((str1 != null) && (str1.equalsIgnoreCase(this.b)))
+      {
+        try
+        {
+          bdhb.a(parambavf, str2, false);
+          bool = true;
+        }
+        catch (IOException localIOException)
+        {
+          for (;;)
+          {
+            label78:
+            if (QLog.isColorLevel()) {
+              QLog.d("PokeEmo", 2, "downloadRes.onResp download succ but unzip is failed");
+            }
+            bool = false;
+          }
+        }
+        bdhb.d(parambavf);
+        if (!bool) {
+          break label184;
+        }
+        bdne.a(true);
+        afxl.b = true;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeEmo", 2, "downloadRes.onResp download result = " + bool);
+      }
+      afxl.c = false;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeEmo", 2, "downloadRes.onResp download succ but md5 is mismatched");
+      }
+      bool = false;
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeEmo", 2, "downloadRes.onResp failed ");
+      }
+      bool = false;
+      break label78;
+      label184:
+      afxl.o += 1;
+    }
   }
+  
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

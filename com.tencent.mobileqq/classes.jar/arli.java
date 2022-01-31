@@ -1,14 +1,26 @@
-import java.util.List;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
 
 class arli
-  implements bevo
+  extends yud
 {
-  arli(arle paramarle, List paramList) {}
+  arli(arkz paramarkz) {}
   
-  public void a(int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
-    if (paramInt == 2) {
-      bcjk.a(arle.a(this.jdField_a_of_type_Arle), arle.a(this.jdField_a_of_type_Arle), this.jdField_a_of_type_JavaUtilList);
+    if (paramFileInfo != null)
+    {
+      String str = bdgc.h(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(this.a.jdField_a_of_type_Arhz.a().TroopUin), paramFileInfo.uint64_uploader_uin.get() + "");
+      paramFileInfo = new Date(paramFileInfo.uint32_upload_time.get() * 1000L);
+      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
+      paramFileInfo = " 于" + localSimpleDateFormat.format(paramFileInfo) + "上传";
+      if (this.a.jdField_a_of_type_Arkp != null) {
+        this.a.jdField_a_of_type_Arkp.b(str, paramFileInfo);
+      }
     }
   }
 }

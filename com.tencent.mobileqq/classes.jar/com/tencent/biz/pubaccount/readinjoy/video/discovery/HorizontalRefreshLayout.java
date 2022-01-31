@@ -9,7 +9,7 @@ import android.view.ViewParent;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bcwh;
+import bdaq;
 import rmk;
 import rml;
 import rmm;
@@ -28,7 +28,7 @@ public class HorizontalRefreshLayout
   private int c;
   private int d;
   private int e;
-  private int f = bcwh.a(getContext(), 25.0F);
+  private int f = bdaq.a(getContext(), 25.0F);
   
   public HorizontalRefreshLayout(Context paramContext)
   {

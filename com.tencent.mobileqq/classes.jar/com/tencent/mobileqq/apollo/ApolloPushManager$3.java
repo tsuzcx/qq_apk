@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo;
 
-import akkd;
-import albu;
-import aleh;
+import akos;
+import algj;
+import aliw;
 import android.text.TextUtils;
 import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -11,7 +11,7 @@ import com.tencent.mobileqq.data.ApolloActionPush;
 public class ApolloPushManager$3
   implements Runnable
 {
-  public ApolloPushManager$3(akkd paramakkd, ApolloActionPush paramApolloActionPush, SpriteTaskParam paramSpriteTaskParam) {}
+  public ApolloPushManager$3(akos paramakos, ApolloActionPush paramApolloActionPush, SpriteTaskParam paramSpriteTaskParam) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ApolloPushManager$3
     SpriteTaskParam localSpriteTaskParam;
     if ((this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam != null))
     {
-      localQQAppInterface = akkd.a(this.this$0);
+      localQQAppInterface = akos.a(this.this$0);
       localSpriteTaskParam = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam;
       if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush.mContent)) {
         break label99;
@@ -28,9 +28,9 @@ public class ApolloPushManager$3
     label99:
     for (boolean bool = true;; bool = false)
     {
-      albu.a(localQQAppInterface, localSpriteTaskParam, bool, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.b);
-      if ((akkd.a(this.this$0) != null) && (this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush != null)) {
-        ((aleh)akkd.a(this.this$0).getManager(155)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush.mId);
+      algj.a(localQQAppInterface, localSpriteTaskParam, bool, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.b);
+      if ((akos.a(this.this$0) != null) && (this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush != null)) {
+        ((aliw)akos.a(this.this$0).getManager(155)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush.mId);
       }
       return;
     }

@@ -1,33 +1,37 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.support.annotation.NonNull;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class bbyy
-  extends Handler
+  extends SimpleObserver<bbyr>
 {
-  public bbyy(bbyw parambbyw, Looper paramLooper)
+  public bbyy(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
+  
+  public void a(bbyr parambbyr)
   {
-    super(paramLooper);
+    super.onNext(parambbyr);
+    wxe.d("QQ.Troop.homework.CheckArithHWResultFragment", "requestSendHomeworkResult completed");
+    CheckArithHWResultFragment.a(this.a).setVisibility(8);
+    xqq.a(parambbyr.a);
+    xqq.a(parambbyr.b);
+    CheckArithHWResultFragment.a(this.a, parambbyr.a, parambbyr.b);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onCancel()
   {
-    for (;;)
-    {
-      try
-      {
-        switch (paramMessage.what)
-        {
-        case 2: 
-          return;
-        }
-      }
-      finally {}
-      paramMessage = paramMessage.getData();
-      this.a.b(paramMessage.getDouble("startTime"), paramMessage.getStringArray("pinyins"));
-      this.a.a(0);
-    }
+    super.onCancel();
+    CheckArithHWResultFragment.a(this.a).setVisibility(8);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    wxe.e("QQ.Troop.homework.CheckArithHWResultFragment", "send homework error:" + paramError);
+    QQToast.a(this.a.getActivity(), 1, alud.a(2131702149), 0).a();
+    CheckArithHWResultFragment.a(this.a).setVisibility(8);
+    CheckArithHWResultFragment.a(this.a, null, null);
   }
 }
 

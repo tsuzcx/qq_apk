@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amrb;
-import amvt;
+import amvq;
+import anag;
 
 public class ARTransferPromotionRenderable$8
   implements Runnable
 {
-  public ARTransferPromotionRenderable$8(amrb paramamrb) {}
+  public ARTransferPromotionRenderable$8(amvq paramamvq) {}
   
   public void run()
   {
-    amrb.a(this.this$0).a(amrb.b(this.this$0), amrb.c(this.this$0));
+    amvq.a(this.this$0).a(amvq.b(this.this$0), amvq.c(this.this$0));
   }
 }
 

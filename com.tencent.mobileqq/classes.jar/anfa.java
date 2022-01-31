@@ -1,49 +1,37 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.opengl.GLES20;
 
-class anfa
-  implements INetInfoHandler
+public class anfa
+  extends anfc
 {
-  anfa(aneq paramaneq) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void onNetMobile2None()
+  public anfa(int paramInt)
   {
-    QLog.e("ark.download.module", 1, "onNetMobile2None");
+    super(paramInt);
+    this.e = "uniform float u_threshold;\nuniform float u_clipBlack;\nuniform float u_clipWhite;\nfloat rgb2cb(float r, float g, float b){\n    return 0.5 + -0.168736*r - 0.331264*g + 0.5*b;\n}\nfloat rgb2cr(float r, float g, float b){\n    return 0.5 + 0.5*r - 0.418688*g - 0.081312*b;\n}\nfloat smoothclip(float low, float high, float x){\n    if (x <= low){\n        return 0.0;\n    }\n    if(x >= high){\n        return 1.0;\n    }\n    return (x-low)/(high-low);\n}\nvec4 greenscreen(vec4 color, float Cb_key,float Cr_key, float tola,float tolb, float clipBlack, float clipWhite){\n    float cb = rgb2cb(color.r,color.g,color.b);\n    float cr = rgb2cr(color.r,color.g,color.b);\n    float alpha = distance(vec2(cb, cr), vec2(Cb_key, Cr_key));\n    alpha = smoothclip(tola, tolb, alpha);\n    float r = max(gl_FragColor.r - (1.0-alpha)*u_screenColor.r, 0.0);\n    float g = max(gl_FragColor.g - (1.0-alpha)*u_screenColor.g, 0.0);\n    float b = max(gl_FragColor.b - (1.0-alpha)*u_screenColor.b, 0.0);\n    if(alpha < clipBlack){\n        alpha = r = g = b = 0.0;\n    }\n    if(alpha > clipWhite){\n        alpha = 1.0;\n    }\n    if(clipWhite < 1.0){\n        alpha = alpha/max(clipWhite, 0.9);\n    }\n    return vec4(r,g,b, alpha);\n}\n";
+    this.j = "    float tola = 0.0;\n    float tolb = u_threshold/2.0;\n    float cb_key = rgb2cb(u_screenColor.r, u_screenColor.g, u_screenColor.b);\n    float cr_key = rgb2cr(u_screenColor.r, u_screenColor.g, u_screenColor.b);\n    gl_FragColor = greenscreen(gl_FragColor, cb_key, cr_key, tola, tolb, u_clipBlack, u_clipWhite);\n";
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  protected void a()
   {
-    QLog.e("ark.download.module", 1, new Object[] { "onNetMobile2Wifi", paramString });
+    this.a = GLES20.glGetUniformLocation(this.d, "u_threshold");
+    anfg.a("glGetAttribLocation u_threshold");
+    this.b = GLES20.glGetUniformLocation(this.d, "u_clipBlack");
+    anfg.a("glGetAttribLocation u_clipBlack");
+    this.c = GLES20.glGetUniformLocation(this.d, "u_clipWhite");
+    anfg.a("glGetAttribLocation u_clipWhite");
   }
   
-  public void onNetNone2Mobile(String paramString)
+  protected void a(anff paramanff)
   {
-    QLog.e("ark.download.module", 1, new Object[] { "ark.dctrl.onNetNone2Mobile", paramString });
-    paramString = BaseActivity.sTopActivity;
-    if ((aneq.a(this.a)) && (!aneq.b(this.a)) && (paramString != null))
-    {
-      paramString = paramString.getString(2131690282);
-      if (aneq.a(this.a, paramString)) {
-        aneq.b(this.a, true);
-      }
+    if (paramanff == null) {
+      return;
     }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    QLog.e("ark.download.module", 1, new Object[] { "onNetNone2Wifi", paramString });
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    QLog.e("ark.download.module", 1, new Object[] { "onNetWifi2Mobile", paramString });
-  }
-  
-  public void onNetWifi2None()
-  {
-    QLog.e("ark.download.module", 1, "onNetWifi2None");
+    GLES20.glUniform1f(this.a, paramanff.f);
+    GLES20.glUniform1f(this.b, paramanff.g);
+    GLES20.glUniform1f(this.c, paramanff.h);
   }
 }
 

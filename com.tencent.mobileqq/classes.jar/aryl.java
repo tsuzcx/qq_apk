@@ -1,78 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-
-class aryl
-  implements BusinessObserver
+public abstract interface aryl
 {
-  aryl(aryh paramaryh) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    this.a.b("KEY_GET_APP_INFO", paramBoolean);
-    QLog.d("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "AppinfoObserver onReceive isSuccess = ", Boolean.valueOf(paramBoolean) });
-    Object localObject2 = null;
-    synchronized (aryh.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.l = false;
-      Object localObject1 = localObject2;
-      if (paramBoolean) {}
-      for (;;)
-      {
-        try
-        {
-          localObject1 = paramBundle.getByteArray("data");
-          if (localObject1 != null) {
-            paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-          }
-        }
-        catch (Exception localException1)
-        {
-          paramBundle = null;
-        }
-        try
-        {
-          paramBundle.mergeFrom((byte[])localObject1);
-          this.a.jdField_a_of_type_Arua = arua.a(paramBundle);
-          if ((this.a instanceof arys)) {
-            ((arzd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(350)).a().a(this.a.b, this.a.jdField_a_of_type_Arua);
-          }
-          QLog.d("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "get appinfo time=", Long.valueOf(System.currentTimeMillis() - this.a.c), ", ret=", Integer.valueOf(paramBundle.ret.get()) });
-          this.a.e();
-          localObject1 = paramBundle;
-          this.a.x();
-          if ((localObject1 == null) || (((GetAppInfoProto.GetAppinfoResponse)localObject1).ret.get() == 0) || (!(this.a instanceof arys))) {
-            break;
-          }
-          if (aoks.e()) {
-            this.a.a(((GetAppInfoProto.GetAppinfoResponse)localObject1).msg.get(), true);
-          }
-          aryh.jdField_a_of_type_JavaLangObject.notify();
-          return;
-        }
-        catch (Exception localException2)
-        {
-          Bundle localBundle;
-          break label288;
-        }
-        QLog.e("ForwardOption.ForwardSdkBaseOption", 1, "AppinfoObserver onReceive data=null");
-        localObject1 = localObject2;
-        continue;
-        label288:
-        QLog.e("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "AppinfoObserver.onReceive ", localException1.getMessage() });
-        localBundle = paramBundle;
-      }
-      QLog.d("ForwardOption.ForwardSdkBaseOption", 1, "AppinfoObserver onReceive success, go share");
-    }
-  }
+  public static final Integer a = Integer.valueOf(0);
+  public static final Integer b = Integer.valueOf(1);
+  public static final Integer c = Integer.valueOf(2);
+  public static final Integer d = Integer.valueOf(3);
+  public static final Integer e = Integer.valueOf(4);
+  public static final Integer f = Integer.valueOf(5);
+  public static final Integer g = Integer.valueOf(6);
+  public static final Integer h = Integer.valueOf(8);
+  public static final Integer i = Integer.valueOf(9);
+  public static final Integer j = Integer.valueOf(10);
+  public static final Integer k = Integer.valueOf(11);
+  public static final Integer l = Integer.valueOf(12);
+  public static final Integer m = Integer.valueOf(13);
+  public static final Integer n = Integer.valueOf(14);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aryl
  * JD-Core Version:    0.7.0.1
  */

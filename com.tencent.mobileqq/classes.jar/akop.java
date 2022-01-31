@@ -1,20 +1,20 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
 public class akop
-  extends RecyclerView.ViewHolder
+  implements Manager
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public static String a = "ApolloNativeSSOReqMgr";
   
-  public akop(akoo paramakoo, View paramView)
+  public akop(QQAppInterface paramQQAppInterface)
   {
-    super(paramView);
-    if (paramView == akoo.a(paramakoo)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "[ApolloNativeSSOReqMgr]");
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364381));
   }
+  
+  public void onDestroy() {}
 }
 
 

@@ -1,67 +1,29 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import android.opengl.GLSurfaceView.EGLContextFactory;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.manager.TicketManager;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class bkeq
-  extends QIPCModule
+class bkeq
+  implements GLSurfaceView.EGLContextFactory
 {
-  public static bkeq a;
+  private int jdField_a_of_type_Int = 12440;
   
-  private bkeq()
+  private bkeq(bkel parambkel) {}
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    super("WadlQIPCModule");
+    int i = this.jdField_a_of_type_Int;
+    bkel.a(this.jdField_a_of_type_Bkel, paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 }));
+    return bkel.a(this.jdField_a_of_type_Bkel);
   }
   
-  public static bkeq a()
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new bkeq();
-      }
-      return a;
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
+      QLog.e("VipARCameraController", 2, new Object[] { "DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext });
     }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WadlQIPCModule", 2, "action = " + paramString + ", params = " + paramBundle);
-    }
-    paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(paramBundle instanceof QQAppInterface)) {
-      return null;
-    }
-    paramBundle = (QQAppInterface)paramBundle;
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if ("action.getSkey".equals(paramString))
-    {
-      paramString = ((TicketManager)paramBundle.getManager(2)).getSkey(paramBundle.getCurrentAccountUin());
-      paramBundle = new Bundle();
-      if (paramString != null) {}
-      for (;;)
-      {
-        paramBundle.putString("skey", paramString);
-        return EIPCResult.createSuccessResult(paramBundle);
-        paramString = "";
-      }
-    }
-    if ("action.getUin".equals(paramString))
-    {
-      paramString = new Bundle();
-      paramString.putLong("uin", paramBundle.getLongAccountUin());
-      return EIPCResult.createSuccessResult(paramString);
-    }
-    return null;
   }
 }
 

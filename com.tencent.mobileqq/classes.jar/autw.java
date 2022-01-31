@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-
-public class autw
-  implements DialogInterface.OnClickListener
+class autw
 {
-  public autw(GameRoomInviteActivity paramGameRoomInviteActivity, bdfq parambdfq) {}
+  public int a;
+  public long a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public autw(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong)
   {
-    this.jdField_a_of_type_Bdfq.dismiss();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

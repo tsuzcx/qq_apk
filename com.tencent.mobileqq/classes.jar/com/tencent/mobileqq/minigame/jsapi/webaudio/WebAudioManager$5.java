@@ -2,7 +2,7 @@ package com.tencent.mobileqq.minigame.jsapi.webaudio;
 
 import android.os.Build.VERSION;
 import android.os.Environment;
-import bdcs;
+import bdhb;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import java.io.File;
@@ -24,9 +24,9 @@ class WebAudioManager$5
       return;
     }
     String str = Environment.getExternalStorageDirectory().getPath() + "/minigame/audio_" + System.currentTimeMillis();
-    bdcs.a(this.val$audioData, str);
+    bdhb.a(this.val$audioData, str);
     localAudioDecoder.decodeByPath(str, this.val$decodeId);
-    bdcs.d(str);
+    bdhb.d(str);
   }
 }
 

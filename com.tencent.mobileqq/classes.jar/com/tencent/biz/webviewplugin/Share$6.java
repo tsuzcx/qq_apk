@@ -3,12 +3,12 @@ package com.tencent.biz.webviewplugin;
 import android.app.Activity;
 import java.util.HashMap;
 import ndd;
-import zbj;
+import zfy;
 
 public class Share$6
   extends Thread
 {
-  public Share$6(zbj paramzbj, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  public Share$6(zfy paramzfy, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
   
   public void run()
   {

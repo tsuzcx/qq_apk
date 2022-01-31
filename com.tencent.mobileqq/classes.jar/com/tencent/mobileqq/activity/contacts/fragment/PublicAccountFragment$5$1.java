@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import ahox;
+import ahtm;
 
 public class PublicAccountFragment$5$1
   implements Runnable
 {
-  public PublicAccountFragment$5$1(ahox paramahox) {}
+  public PublicAccountFragment$5$1(ahtm paramahtm) {}
   
   public void run()
   {

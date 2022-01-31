@@ -1,11 +1,23 @@
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
 
 public class ainf
-  extends aimb
+  implements aimo
 {
-  protected ainf(AlbumListFragment paramAlbumListFragment)
+  public ainf(PhoneLaunchActivity paramPhoneLaunchActivity) {}
+  
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    super(paramAlbumListFragment);
+    PhoneLaunchActivity.a(this.a).setEnabled(true);
+    if ((!paramBoolean) && (paramContext != null))
+    {
+      Intent localIntent = new Intent(paramContext, GuideBindPhoneActivity.class);
+      localIntent.putExtra("fromKeyForContactBind", 2);
+      paramContext.startActivity(localIntent);
+    }
   }
 }
 

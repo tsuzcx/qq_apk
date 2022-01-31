@@ -2,7 +2,7 @@ import UserGrowth.stSimpleMetaFeed;
 
 public abstract interface tbz
 {
-  public abstract void a(biac<stSimpleMetaFeed> parambiac);
+  public abstract void a(biej<stSimpleMetaFeed> parambiej);
 }
 
 

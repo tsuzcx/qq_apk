@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
-import awms;
-import awnx;
+import awrb;
+import awsg;
 import com.tencent.mobileqq.hiboom.HiBoomTextView;
 import com.tencent.mobileqq.widget.ProfileCardScrollImageView;
 import com.tencent.qphone.base.util.QLog;
@@ -37,7 +37,7 @@ public class VipProfileCardPreviewActivity$StylePagerAdapter
       QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "destroyItem, pos = " + paramInt);
     }
     paramObject = (View)paramObject;
-    awnx localawnx = (awnx)paramObject.getTag();
+    awsg localawsg = (awsg)paramObject.getTag();
     paramViewGroup.removeView(paramObject);
   }
   
@@ -52,29 +52,29 @@ public class VipProfileCardPreviewActivity$StylePagerAdapter
     if (QLog.isColorLevel()) {
       QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "instantiateItem, pos = " + paramInt);
     }
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561821, paramViewGroup, false);
-    awnx localawnx = new awnx(this);
-    localawnx.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView = ((ProfileCardScrollImageView)localView.findViewById(2131367014));
-    localawnx.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView = ((HiBoomTextView)localView.findViewById(2131367642));
-    localView.setTag(localawnx);
-    localawnx.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    Object localObject = (RelativeLayout.LayoutParams)localawnx.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.getLayoutParams();
+    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561839, paramViewGroup, false);
+    awsg localawsg = new awsg(this);
+    localawsg.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView = ((ProfileCardScrollImageView)localView.findViewById(2131367024));
+    localawsg.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView = ((HiBoomTextView)localView.findViewById(2131367652));
+    localView.setTag(localawsg);
+    localawsg.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    Object localObject = (RelativeLayout.LayoutParams)localawsg.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).width = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.z;
     ((RelativeLayout.LayoutParams)localObject).height = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.y;
-    localawnx.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localawsg.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     if (Build.VERSION.SDK_INT >= 16) {
-      localawnx.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.setBackground(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      localawsg.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.setBackground(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
     for (;;)
     {
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846883);
-      localawnx.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.setImageDrawable((Drawable)localObject);
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846956);
+      localawsg.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.setImageDrawable((Drawable)localObject);
       localView.setId(paramInt);
-      localObject = (awms)this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_JavaUtilList.get(paramInt);
+      localObject = (awrb)this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_JavaUtilList.get(paramInt);
       paramViewGroup.addView(localView);
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(localawnx, (awms)localObject, paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(localawsg, (awrb)localObject, paramInt);
       return localView;
-      localawnx.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      localawsg.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
   }
   

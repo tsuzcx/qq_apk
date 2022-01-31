@@ -1,84 +1,100 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.TroopAbilityPreVerificationFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
+import android.content.Context;
+import android.os.Looper;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.open.agent.BindGroupAdapter.1;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp;
-import tencent.im.oidb.oidb_0xb60.RspBody;
+import mqq.os.MqqHandler;
 
 public class bfda
-  extends nac
+  extends akis
 {
-  public bfda(TroopAbilityPreVerificationFragment paramTroopAbilityPreVerificationFragment) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<TroopInfo> jdField_a_of_type_JavaUtilList;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public bfda(Context paramContext, QQAppInterface paramQQAppInterface, ListView paramListView, int paramInt, boolean paramBoolean)
   {
-    QLog.i("TroopAbility.PreVerification", 1, "onResult type=" + this.a.a + ", appid=" + this.a.c + ", code=" + paramInt);
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
-        break label441;
-      }
+    super(paramContext, paramQQAppInterface, paramListView, paramInt, paramBoolean);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  private void a(bfdb parambfdb, TroopInfo paramTroopInfo)
+  {
+    parambfdb.jdField_a_of_type_JavaLangString = paramTroopInfo.troopuin;
+    parambfdb.jdField_c_of_type_Int = 4;
+    parambfdb.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
+    parambfdb.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopInfo.getTroopName());
+    if (paramTroopInfo.isThirdAppBind())
+    {
+      parambfdb.b.setVisibility(0);
+      parambfdb.b.setText(alud.a(2131701508));
     }
     for (;;)
     {
-      try
-      {
-        paramBundle = ((oidb_0xb60.RspBody)new oidb_0xb60.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
-        localObject = new StringBuilder().append("req error code=").append(paramInt);
-        if (paramArrayOfByte == null)
-        {
-          paramArrayOfByte = ", data=null";
-          QLog.i("TroopAbility.PreVerification", 1, paramArrayOfByte);
-          this.a.c(alpo.a(2131715517));
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle = "";
-        continue;
-        paramArrayOfByte = ", msg=" + paramBundle;
-        continue;
-      }
-      paramBundle = new oidb_0xb60.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if ((!paramBundle.get_privilege_rsp.api_groups.has()) || (!paramBundle.get_privilege_rsp.next_req_duration.has()))
-        {
-          QLog.i("TroopAbility.PreVerification", 1, "rsp invalid");
-          this.a.c(alpo.a(2131715509));
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.i("TroopAbility.PreVerification", 1, "parse rsp error", paramArrayOfByte);
-        this.a.c(alpo.a(2131715514));
-        return;
-      }
-      TroopAbilityPreVerificationFragment.a(paramBundle);
-      QLog.d("TroopAbility.PreVerification", 1, "receive api_groups:" + paramBundle.get_privilege_rsp.api_groups.get() + ", api_names:" + paramBundle.get_privilege_rsp.api_names.get());
-      paramArrayOfByte = new HashSet();
-      Object localObject = paramBundle.get_privilege_rsp.api_groups.get().iterator();
-      while (((Iterator)localObject).hasNext()) {
-        paramArrayOfByte.add((Integer)((Iterator)localObject).next());
-      }
-      boolean bool = this.a.a(paramArrayOfByte);
-      QLog.i("TroopAbility.PreVerification", 1, "check permission result:" + bool);
-      this.a.a(bool);
-      TroopAbilityPreVerificationFragment.a(paramBundle.get_privilege_rsp.next_req_duration.get());
-      TroopAbilityPreVerificationFragment.b(NetConnInfoCenter.getServerTime());
+      parambfdb.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(4, paramTroopInfo.troopuin));
       return;
-      label441:
-      paramBundle = "";
+      parambfdb.b.setVisibility(8);
+    }
+  }
+  
+  public TroopInfo a(int paramInt)
+  {
+    return (TroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(List<TroopInfo> paramList)
+  {
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      if (paramList != null)
+      {
+        this.jdField_a_of_type_JavaUtilList.clear();
+        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+        notifyDataSetChanged();
+      }
+      return;
+    }
+    ThreadManager.getUIHandler().post(new BindGroupAdapter.1(this, paramList));
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559812, null);
+      paramView = new bfdb();
+      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368180));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379198));
+      paramView.b = ((TextView)localView.findViewById(2131379207));
+      localView.setTag(paramView);
+      paramViewGroup = paramView;
+    }
+    for (;;)
+    {
+      a(paramViewGroup, a(paramInt));
+      return localView;
+      paramViewGroup = (bfdb)paramView.getTag();
+      localView = paramView;
     }
   }
 }

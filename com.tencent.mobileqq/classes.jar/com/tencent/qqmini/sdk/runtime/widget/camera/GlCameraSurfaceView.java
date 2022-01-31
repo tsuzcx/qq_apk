@@ -9,7 +9,7 @@ import android.opengl.GLSurfaceView;
 import android.opengl.GLSurfaceView.Renderer;
 import android.util.AttributeSet;
 import android.util.Log;
-import bhfy;
+import bhkf;
 import java.nio.FloatBuffer;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -21,7 +21,7 @@ public class GlCameraSurfaceView
   private int jdField_a_of_type_Int;
   private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
   private Camera.Size jdField_a_of_type_AndroidHardwareCamera$Size;
-  private bhfy jdField_a_of_type_Bhfy;
+  private bhkf jdField_a_of_type_Bhkf;
   private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
   private boolean jdField_a_of_type_Boolean;
   private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
@@ -61,7 +61,7 @@ public class GlCameraSurfaceView
     this.jdField_a_of_type_Int = a();
     this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-    this.jdField_a_of_type_Bhfy = new bhfy();
+    this.jdField_a_of_type_Bhkf = new bhkf();
   }
   
   private void c()
@@ -161,8 +161,8 @@ public class GlCameraSurfaceView
   {
     Log.i("CameraSurfaceView", "onSurfaceCreated: ");
     b();
-    this.jdField_a_of_type_JavaNioFloatBuffer = this.jdField_a_of_type_Bhfy.a();
-    this.b = this.jdField_a_of_type_Bhfy.a();
+    this.jdField_a_of_type_JavaNioFloatBuffer = this.jdField_a_of_type_Bhkf.a();
+    this.b = this.jdField_a_of_type_Bhkf.a();
     GLES20.glGenFramebuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
     GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ArrayOfInt[0]);
     this.jdField_a_of_type_Boolean = true;

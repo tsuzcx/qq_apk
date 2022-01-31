@@ -1,21 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.image.URLImageView;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 
 class zar
-  implements Animation.AnimationListener
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  zar(zal paramzal, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  zar(zaq paramzaq) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    zaq.c(this.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

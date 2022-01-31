@@ -1,80 +1,182 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Notification;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-public abstract class aras
-  extends aqzw
+class aras
+  extends Handler
+  implements artx
 {
-  protected int a;
-  final String b = "ExcitingTransfer.UploadDataRP<FileAssistant>";
-  protected String c;
-  protected long d;
-  protected String d;
-  protected long e;
-  protected long f;
-  protected long g;
+  final int jdField_a_of_type_Int;
+  final long jdField_a_of_type_Long;
+  Notification jdField_a_of_type_AndroidAppNotification;
+  final Bundle jdField_a_of_type_AndroidOsBundle;
+  int b = 0;
+  int c = 0;
   
-  public aras(QQAppInterface paramQQAppInterface)
+  public aras(arar paramarar, Looper paramLooper, int paramInt, Bundle paramBundle, long paramLong)
   {
-    super(paramQQAppInterface);
+    super(paramLooper);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = ((Bundle)paramBundle.clone());
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_AndroidOsBundle.putInt("_notify_param_Id", this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_AndroidOsBundle != null)
+    {
+      this.jdField_a_of_type_AndroidAppNotification = paramarar.a(paramBundle);
+      return;
+    }
+    QLog.e(arar.a, 1, "[UniformDL][" + paramLong + "]. notify runable, param is null");
   }
   
-  protected abstract int a();
-  
-  protected HashMap<String, String> a()
+  public void a(int paramInt, Bundle paramBundle)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_ReportVer", String.valueOf(1));
-    localHashMap.put("param_TransferType", String.valueOf(a()));
-    localHashMap.put("param_Platform", String.valueOf(2));
-    localHashMap.put("param_AppType", String.valueOf(0));
-    localHashMap.put("param_Result", String.valueOf(this.a));
-    localHashMap.put("param_FileName", String.valueOf(this.c));
-    localHashMap.put("param_Suffix", String.valueOf(this.jdField_d_of_type_JavaLangString));
-    localHashMap.put("param_TargetUin", String.valueOf(this.e));
-    localHashMap.put("param_GroupCode", String.valueOf(this.f));
-    localHashMap.put("param_FileSize", String.valueOf(this.g));
-    return localHashMap;
+    QLog.i(arar.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadStart, NF");
+    paramBundle = Message.obtain();
+    paramBundle.what = 1;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("_FILE_PROGRESS_", paramInt);
+    localBundle.putInt("_START_WAITING_", 0);
+    paramBundle.setData(localBundle);
+    if (!sendMessage(paramBundle)) {
+      QLog.e(arar.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadStart, sendMessage failed, NF");
+    }
   }
   
-  public void a()
+  public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] reportNetError no implement. please check call");
+    QLog.i(arar.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadFailed, NF");
+    paramBundle = Message.obtain();
+    paramBundle.what = 5;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("_FILE_ERR_CODE_", paramInt);
+    localBundle.putString("_FILE_ERR_STRING_", paramString);
+    paramBundle.setData(localBundle);
+    if (!sendMessage(paramBundle)) {
+      QLog.e(arar.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadFailed, sendMessage failed, NF");
+    }
   }
   
-  public void a(int paramInt)
+  public void a(String paramString, long paramLong, Bundle paramBundle)
   {
-    this.a = paramInt;
+    int i = arar.a(this.jdField_a_of_type_Arar);
+    paramBundle = artp.a(paramString);
+    if (paramBundle != null) {
+      araj.a().a(new araq(paramBundle, i));
+    }
+    QLog.i(arar.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadSucess, NF");
+    Message localMessage = Message.obtain();
+    localMessage.what = 4;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_FILE_PATH_", paramString);
+    localBundle.putLong("_FILE_SIZE_", paramLong);
+    localBundle.putInt("_NEW_N_ID_", i);
+    if (paramBundle != null) {
+      localBundle.putString("_PKG_NAME_", paramBundle);
+    }
+    localMessage.setData(localBundle);
+    if (!sendMessage(localMessage)) {
+      QLog.e(arar.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadSucess, sendMessage failed, NF");
+    }
   }
   
-  public void a(long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3)
+  public void b(int paramInt, Bundle paramBundle)
   {
-    this.e = paramLong1;
-    this.f = paramLong2;
-    this.c = paramString1;
-    this.jdField_d_of_type_JavaLangString = paramString2;
-    this.g = paramLong3;
+    paramBundle = Message.obtain();
+    paramBundle.what = 2;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("_FILE_PROGRESS_", paramInt);
+    paramBundle.setData(localBundle);
+    if (!sendMessage(paramBundle)) {
+      QLog.e(arar.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadProgress, sendMessage failed, NF");
+    }
   }
   
-  protected boolean a()
+  public void c(int paramInt, Bundle paramBundle)
   {
-    return false;
+    QLog.i(arar.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadPause, NF");
+    paramBundle = Message.obtain();
+    paramBundle.what = 3;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("_FILE_PROGRESS_", paramInt);
+    paramBundle.setData(localBundle);
+    if (!sendMessage(paramBundle)) {
+      QLog.e(arar.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadPause, sendMessage failed, NF");
+    }
   }
   
-  protected HashMap<String, String> b()
+  public void d(int paramInt, Bundle paramBundle)
   {
-    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] getOldReportData no implement. please check call");
-    return null;
+    QLog.i(arar.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadResume progress=" + paramInt + ", NF ");
+    paramBundle = Message.obtain();
+    paramBundle.what = 7;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("_FILE_PROGRESS_", paramInt);
+    paramBundle.setData(localBundle);
+    if (!sendMessage(paramBundle)) {
+      QLog.e(arar.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadResume, sendMessage failed, NF");
+    }
   }
   
-  public void b()
+  public void handleMessage(Message paramMessage)
   {
-    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] reportUserCancel no implement. please check call");
-  }
-  
-  public void c(long paramLong)
-  {
-    this.jdField_d_of_type_Long = paramLong;
+    boolean bool = false;
+    super.handleMessage(paramMessage);
+    Object localObject = paramMessage.getData();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      this.b = paramMessage.what;
+      return;
+      QLog.i(arar.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_START, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.jdField_a_of_type_Arar.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
+      int i = ((Bundle)localObject).getInt("_START_WAITING_");
+      localObject = araj.a();
+      String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url");
+      String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename");
+      String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_ContentTitle", "");
+      long l = this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize");
+      Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle.getBundle("_notify_param_userdata");
+      int j = this.jdField_a_of_type_Int;
+      if (i == 1) {
+        bool = true;
+      }
+      ((araj)localObject).a(str1, str2, str3, l, localBundle, j, bool);
+      this.c = 1;
+      continue;
+      this.jdField_a_of_type_Arar.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
+      if (2 != this.c) {
+        araj.a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_ContentTitle", ""), this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize"), this.jdField_a_of_type_AndroidOsBundle.getBundle("_notify_param_userdata"), this.jdField_a_of_type_Int, false);
+      }
+      this.c = 2;
+      continue;
+      QLog.i(arar.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_PAUSE, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.jdField_a_of_type_Arar.c(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
+      araj.a().b(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.c = 3;
+      continue;
+      QLog.i(arar.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_SUC, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.jdField_a_of_type_Arar.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
+      araj.a().b(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.c = 4;
+      continue;
+      this.jdField_a_of_type_Arar.d(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
+      araj.a().b(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.c = 5;
+      continue;
+      QLog.i(arar.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_RESUME, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.jdField_a_of_type_Arar.e(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
+      araj.a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_ContentTitle", ""), this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize"), this.jdField_a_of_type_AndroidOsBundle.getBundle("_notify_param_userdata"), this.jdField_a_of_type_Int, true);
+      this.c = 7;
+      continue;
+      QLog.i(arar.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_CLR, NF. NId = " + this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Arar.a(this.jdField_a_of_type_Int);
+      araj.a().b(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+    }
   }
 }
 

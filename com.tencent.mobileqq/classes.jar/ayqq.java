@@ -1,45 +1,62 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.List;
 
-class ayqq
-  implements Comparator<ayjh>
+public class ayqq
+  extends ayrj
 {
-  ayqq(ayqp paramayqp) {}
-  
-  public int a(ayjh paramayjh1, ayjh paramayjh2)
+  public ayqq(bdbb parambdbb)
   {
-    int i = -1;
-    paramayjh1 = (aykv)paramayjh1;
-    paramayjh2 = (aykv)paramayjh2;
-    aloz localaloz = (aloz)this.a.a.getManager(51);
-    boolean bool1 = localaloz.b((String)paramayjh1.a());
-    boolean bool2 = localaloz.b((String)paramayjh2.a());
-    if ((!bool1) && (!bool2))
+    super(parambdbb);
+  }
+  
+  protected ayqo<aynu, aywd> a(bdbb parambdbb)
+  {
+    return new ayqr(parambdbb);
+  }
+  
+  public void a(ayns paramayns, aywc paramaywc)
+  {
+    Object localObject = (aynt)paramayns;
+    paramayns = ((aywf)paramaywc).a();
+    if (paramayns != null)
     {
-      bool1 = localaloz.d((String)paramayjh1.a());
-      bool2 = localaloz.d((String)paramayjh2.a());
-      if ((!bool1) && (!bool2)) {
-        return paramayjh2.f() - paramayjh1.f();
-      }
-      if (bool1 != bool2)
+      List localList = ((aynt)localObject).a();
+      if (localList != null)
       {
-        if (bool2) {
-          return -1;
+        paramayns.removeAllViews();
+        int k = Math.min(localList.size(), ((aynt)localObject).a());
+        int i = 0;
+        if (i < k)
+        {
+          localObject = (aynu)localList.get(i);
+          View localView = LayoutInflater.from(paramaywc.a().getContext()).inflate(2131562611, null);
+          aywg localaywg = new aywg(localView);
+          localView.setTag(2131379971, localObject);
+          localView.setTag(2131379976, localaywg);
+          localView.setTag(2131379972, Integer.valueOf(i));
+          localView.setTag(2131379970, Integer.valueOf(localList.size()));
+          localView.setTag(2131379973, this.a);
+          ayvp.a((aynu)localObject, k, i);
+          int m = ((aynu)localObject).a();
+          int n = ((aynu)localObject).b();
+          if ((localObject instanceof aynv)) {}
+          for (int j = ((aynv)localObject).r;; j = 0)
+          {
+            ayvp.a(m, n, localView, j);
+            paramayns.addView(localView);
+            this.a.a((ayns)localObject, localaywg);
+            i += 1;
+            break;
+          }
         }
-        return 1;
-      }
-      return paramayjh2.f() - paramayjh1.f();
-    }
-    if (bool1 != bool2)
-    {
-      if (bool2) {}
-      for (;;)
-      {
-        return i;
-        i = 1;
       }
     }
-    return paramayjh2.f() - paramayjh1.f();
+    if (paramaywc.b() != null) {
+      paramaywc.b().setVisibility(8);
+    }
   }
 }
 

@@ -1,36 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
-final class awvf
-  extends bavo
+public class awvf
+  implements View.OnClickListener
 {
-  awvf(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5)
-  {
-    super(paramQQAppInterface, paramString1);
-  }
+  public awvf(ProfileHeaderView paramProfileHeaderView, String paramString, int paramInt, View paramView) {}
   
-  protected void realCancel()
+  public void onClick(View paramView)
   {
-    QLog.i("QSplash@QbossSplashUtil", 1, "ctrl realCancel");
-  }
-  
-  protected void realStart()
-  {
-    QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes adid" + this.jdField_a_of_type_JavaLangString);
-    awvh.a(this.b + ".splashtemp");
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("qbossSplashresAppid", this.jdField_a_of_type_JavaLangString);
-    awve.a("qbossSplashrequest", (HashMap)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.i("QSplash@QbossSplashDownloadManager", 2, "qboss_ad_res_png realStart, key  " + this.jdField_a_of_type_JavaLangString + "_" + this.b);
+    if ((ayfm.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int >= 0))
+    {
+      paramView = new Bundle();
+      paramView.putString("key_sign_topic_name", this.jdField_a_of_type_JavaLangString);
+      paramView.putInt("key_sign_topic_id", this.jdField_a_of_type_Int);
+      paramView.putInt("from_type", 2);
+      if ((this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+        SignTextEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, null, paramView, -1);
+      }
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      awrn.a().c(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      azqs.b(null, "dc00898", "", "", "0X800A4D5", "0X800A4D5", 0, 0, "2", "0", "", "");
     }
-    localObject = new baps();
-    ((baps)localObject).jdField_a_of_type_Bapx = new awvg(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b + ".splashtemp", this.c, this.d);
-    ((baps)localObject).jdField_a_of_type_JavaLangString = this.d;
-    ((baps)localObject).jdField_a_of_type_Int = 0;
-    ((baps)localObject).c = (this.b + ".splashtemp");
-    ((baqy)this.app.getNetEngine(0)).a((baqv)localObject);
   }
 }
 

@@ -1,52 +1,24 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
-class aqek
-  implements Handler.Callback
+public class aqek
+  implements View.OnClickListener
 {
-  aqek(aqef paramaqef) {}
+  public aqek(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    if (this.a.getActivity() != null)
     {
-    default: 
-      return false;
-    case 1: 
-      if (this.a.b.size() == 0)
-      {
-        QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
-        return false;
+      paramView = "";
+      if (this.a.getActivity().app != null) {
+        paramView = ((aqbg)this.a.getActivity().app.getManager(264)).f();
       }
-      this.a.b();
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      }
-      paramMessage = (String)this.a.b.get(this.a.b.size() - 1);
-      Drawable localDrawable = bdda.a(true);
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface != null) {
-        bcxb.a(localQQAppInterface, 1, paramMessage, 4, localDrawable, localDrawable);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
-      return false;
+      aqgz.b(this.a.getActivity(), paramView);
     }
-    paramMessage = (ArrayList)paramMessage.obj;
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
-      return false;
-    }
-    aqef.a(this.a, paramMessage);
-    return false;
   }
 }
 

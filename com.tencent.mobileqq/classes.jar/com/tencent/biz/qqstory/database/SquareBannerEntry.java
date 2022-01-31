@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
+import awge;
 
 public class SquareBannerEntry
-  extends awbv
+  extends awge
 {
   public String bannerId;
   public String imageUrl;

@@ -13,7 +13,7 @@ public class mvh
   private static int jdField_a_of_type_Int = -1;
   private static long jdField_a_of_type_Long = 1000L;
   private static Boolean jdField_a_of_type_JavaLangBoolean;
-  private static final String jdField_a_of_type_JavaLangString = alpo.a(2131709282);
+  private static final String jdField_a_of_type_JavaLangString = alud.a(2131709294);
   private static int jdField_b_of_type_Int = -1;
   private static volatile Boolean jdField_b_of_type_JavaLangBoolean;
   private static String jdField_b_of_type_JavaLangString;

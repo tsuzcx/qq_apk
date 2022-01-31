@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.model;
 
-import aube;
-import awbw;
+import aufn;
+import awgf;
 import com.tencent.mobileqq.data.Emoticon;
 
 public class EmoticonManager$28
   implements Runnable
 {
-  public EmoticonManager$28(aube paramaube, Emoticon paramEmoticon) {}
+  public EmoticonManager$28(aufn paramaufn, Emoticon paramEmoticon) {}
   
   public void run()
   {

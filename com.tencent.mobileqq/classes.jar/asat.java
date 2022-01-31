@@ -1,189 +1,55 @@
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.applets.data.AppletItem;
-import com.tencent.mobileqq.fragment.AppletsSettingFragment;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
-public class asat
-  extends amng
+class asat
+  extends nac
 {
-  public asat(AppletsSettingFragment paramAppletsSettingFragment) {}
+  asat(asap paramasap) {}
   
-  protected void onGetAppletsSettingSwitch(boolean paramBoolean, List<amnp> paramList)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsSettingFragment", 2, "onGetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
-    }
-    if (paramBoolean)
+    QLog.d(asap.a(), 1, new Object[] { "notifyNormalSendMessage onResult errorCode=", Integer.valueOf(paramInt), ", isTimeOut=", Boolean.valueOf(asap.a(this.a)) });
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      HashSet localHashSet = new HashSet();
-      if ((paramList != null) && (paramBoolean) && (paramList.size() > 0))
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          Object localObject1 = (amnp)paramList.next();
-          Object localObject2;
-          if ((((amnp)localObject1).jdField_a_of_type_JavaUtilList != null) && (((amnp)localObject1).jdField_a_of_type_JavaUtilList.size() > 0) && (((amnp)localObject1).jdField_a_of_type_JavaUtilList.get(0) != null) && (((AppletItem)((amnp)localObject1).jdField_a_of_type_JavaUtilList.get(0)).a() == 1L))
-          {
-            AppletsSettingFragment.a(this.a, (AppletItem)((amnp)localObject1).jdField_a_of_type_JavaUtilList.get(0));
-            if (!TextUtils.isEmpty(AppletsSettingFragment.a(this.a).a()))
-            {
-              AppletsSettingFragment.a(this.a).setText(AppletsSettingFragment.a(this.a).a());
-              this.a.a.e(AppletsSettingFragment.a(this.a).a());
-            }
-            localObject2 = AppletsSettingFragment.a(this.a);
-            if (AppletsSettingFragment.a(this.a).b() == 1)
-            {
-              paramBoolean = true;
-              label247:
-              ((Switch)localObject2).setChecked(paramBoolean);
-              localObject2 = this.a.a;
-              if (AppletsSettingFragment.a(this.a).b() != 1) {
-                break label333;
-              }
-            }
-            label333:
-            for (paramBoolean = true;; paramBoolean = false)
-            {
-              ((ajbg)localObject2).a(paramBoolean);
-              if (TextUtils.isEmpty(((amnp)localObject1).jdField_a_of_type_JavaLangString)) {
-                break;
-              }
-              AppletsSettingFragment.b(this.a).setText(((amnp)localObject1).jdField_a_of_type_JavaLangString);
-              this.a.a.a(((amnp)localObject1).jdField_a_of_type_JavaLangString);
-              break;
-              paramBoolean = false;
-              break label247;
-            }
-          }
-          if (!TextUtils.isEmpty(((amnp)localObject1).jdField_a_of_type_JavaLangString))
-          {
-            AppletsSettingFragment.c(this.a).setText(((amnp)localObject1).jdField_a_of_type_JavaLangString);
-            this.a.a.b(((amnp)localObject1).jdField_a_of_type_JavaLangString);
-          }
-          if ((((amnp)localObject1).jdField_a_of_type_JavaUtilList != null) && (((amnp)localObject1).jdField_a_of_type_JavaUtilList.size() > 0))
-          {
-            AppletsSettingFragment.a(this.a).clear();
-            localObject1 = ((amnp)localObject1).jdField_a_of_type_JavaUtilList.iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              localObject2 = (AppletItem)((Iterator)localObject1).next();
-              AppletsSettingFragment.a(this.a).put(AppletsSettingFragment.a(this.a, (AppletItem)localObject2), localObject2);
-              if ((((AppletItem)localObject2).a() != 1L) && (((AppletItem)localObject2).b() != 1)) {
-                localHashSet.add(String.valueOf(((AppletItem)localObject2).a()));
-              }
-            }
-            AppletsSettingFragment.a(this.a, new ArrayList(AppletsSettingFragment.a(this.a).values()));
-          }
-        }
+      aseh.a("KEY_STAGE_2_NORMAL_DC2", bool);
+      if (!asap.a(this.a)) {
+        break;
       }
-      this.a.a.a(localHashSet);
       return;
     }
-    this.a.a(2131690203);
-  }
-  
-  protected void onSetAppletsSettingSwitch(boolean paramBoolean, List<AppletItem> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsSettingFragment", 2, "onSetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
-    }
-    if (paramList != null)
+    if (paramBundle != null)
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      long l = paramBundle.getLong("0xdc2_9_sendTime", -1L);
+      if (QLog.isColorLevel()) {
+        QLog.d(asap.a(), 2, new Object[] { "notifyNormalSendMessage currentRequestTime =", Long.valueOf(asap.a(this.a)), ", sendStamp = ", Long.valueOf(l) });
+      }
+      if ((l == -1L) || (l != asap.a(this.a)))
       {
-        Object localObject1 = (AppletItem)paramList.next();
-        this.a.a(false);
-        if (!paramBoolean) {
-          this.a.a(2131690204);
-        }
-        Object localObject2;
-        int i;
-        if (((AppletItem)localObject1).a() == 1L)
-        {
-          localObject2 = AppletsSettingFragment.a(this.a);
-          if (paramBoolean)
-          {
-            i = ((AppletItem)localObject1).b();
-            label112:
-            ((AppletItem)localObject2).a(i);
-            localObject1 = AppletsSettingFragment.a(this.a);
-            if (AppletsSettingFragment.a(this.a).b() != 1) {
-              break label216;
-            }
-            bool = true;
-            label144:
-            ((Switch)localObject1).setChecked(bool);
-            if (this.a.a == null) {
-              continue;
-            }
-            localObject1 = this.a.a;
-            if (AppletsSettingFragment.a(this.a).b() != 1) {
-              break label222;
-            }
-          }
-          label216:
-          label222:
-          for (boolean bool = true;; bool = false)
-          {
-            ((ajbg)localObject1).a(bool);
-            break;
-            if (((AppletItem)localObject1).b() == 1)
-            {
-              i = 0;
-              break label112;
-            }
-            i = 1;
-            break label112;
-            bool = false;
-            break label144;
-          }
-        }
-        else
-        {
-          localObject2 = AppletsSettingFragment.a(this.a, (AppletItem)localObject1);
-          localObject2 = (AppletItem)AppletsSettingFragment.a(this.a).get(localObject2);
-          if (localObject2 != null)
-          {
-            if (!paramBoolean) {
-              break label347;
-            }
-            i = ((AppletItem)localObject1).b();
-          }
-          for (;;)
-          {
-            ((AppletItem)localObject2).a(i);
-            AppletsSettingFragment.a(this.a);
-            AppletsSettingFragment.a(this.a, new ArrayList(AppletsSettingFragment.a(this.a).values()));
-            if (this.a.a == null) {
-              break;
-            }
-            if (((AppletItem)localObject2).b() != 0) {
-              break label366;
-            }
-            this.a.a.c(String.valueOf(((AppletItem)localObject2).a()));
-            break;
-            label347:
-            if (((AppletItem)localObject1).b() == 1) {
-              i = 0;
-            } else {
-              i = 1;
-            }
-          }
-          label366:
-          this.a.a.d(String.valueOf(((AppletItem)localObject2).a()));
-        }
+        asap.a(this.a);
+        return;
       }
     }
+    azqs.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, "" + paramInt, "", "", "");
+    paramArrayOfByte = ForwardUtils.a(paramArrayOfByte);
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      QLog.e(asap.a(), 1, new Object[] { "notifyNormalSendMessage sendOIDBRequest onResult errorCode != 0 || result == null, errorCode=", Integer.valueOf(paramInt) });
+      asap.a(this.a);
+      return;
+    }
+    asap.a(this.a, paramArrayOfByte);
+    ForwardUtils.a(asap.a(this.a), paramArrayOfByte, asap.a(this.a), asap.a(this.a).getString("share_comment_message_for_server"));
+  }
+  
+  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      QLog.e(asap.a(), 1, new Object[] { "notifyNormalSendMessage onError msg =", paramString });
+    }
+    return super.a(paramInt, paramString, paramBundle);
   }
 }
 

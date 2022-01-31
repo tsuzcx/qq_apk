@@ -1,67 +1,56 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.common.app.BaseApplicationImpl;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class anxl
-  extends aofy<anxk>
+  extends anxk
 {
-  public static anxk a()
+  public boolean b;
+  public Rect c;
+  public Rect d;
+  public int e;
+  public String e;
+  public String f = "";
+  
+  public anxl()
   {
-    return (anxk)aogj.a().a(549);
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_e_of_type_JavaLangString = "";
   }
   
-  public int a()
+  public void a(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    return 549;
-  }
-  
-  @NonNull
-  public anxk a(int paramInt)
-  {
-    return new anxk();
-  }
-  
-  @Nullable
-  public anxk a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    if (paramJSONObject != null)
     {
-      anxk localanxk = anxk.a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteConfigProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      super.a(paramInt, paramString, paramJSONObject);
+      paramString = BaseApplicationImpl.getContext();
+      this.jdField_e_of_type_Int = paramJSONObject.optInt("passive_type", -1);
+      this.b = paramJSONObject.optBoolean("passive_rotate", false);
+      this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("start_align", this.jdField_c_of_type_JavaLangString);
+      this.jdField_c_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
+      this.f = paramJSONObject.optString("end_align", "");
+      if (paramJSONObject.has("start_rect"))
+      {
+        JSONArray localJSONArray = paramJSONObject.getJSONArray("start_rect");
+        this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
+        this.jdField_c_of_type_AndroidGraphicsRect.left = aepi.a(localJSONArray.getInt(0) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.top = aepi.a(localJSONArray.getInt(1) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.right = aepi.a(localJSONArray.getInt(2) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.bottom = aepi.a(localJSONArray.getInt(3) / 2, paramString.getResources());
+        this.a = this.jdField_c_of_type_AndroidGraphicsRect;
       }
-      return localanxk;
+      if (paramJSONObject.has("end_rect"))
+      {
+        paramJSONObject = paramJSONObject.getJSONArray("end_rect");
+        this.d = new Rect();
+        this.d.left = aepi.a(paramJSONObject.getInt(0) / 2, paramString.getResources());
+        this.d.top = aepi.a(paramJSONObject.getInt(1) / 2, paramString.getResources());
+        this.d.right = aepi.a(paramJSONObject.getInt(2) / 2, paramString.getResources());
+        this.d.bottom = aepi.a(paramJSONObject.getInt(3) / 2, paramString.getResources());
+      }
     }
-    return null;
-  }
-  
-  public Class a()
-  {
-    return anxk.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteConfigProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(anxk paramanxk) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

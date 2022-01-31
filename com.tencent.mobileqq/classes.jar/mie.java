@@ -116,7 +116,7 @@ public class mie
             if (this.a.jdField_e_of_type_Int != 2) {
               break label622;
             }
-            azmj.b(null, "CliOper", "", "", "0X8004CFD", "0X8004CFD", 0, 0, "", "", "", "");
+            azqs.b(null, "CliOper", "", "", "0X8004CFD", "0X8004CFD", 0, 0, "", "", "", "");
             break;
             paramInt1 = 0;
             break label485;
@@ -135,13 +135,13 @@ public class mie
           if (MultiVideoCtrlLayerUIBase.a(this.a))
           {
             MultiVideoCtrlLayerUIBase.a(this.a, false);
-            mdd.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1033, this.a.jdField_a_of_type_AndroidContentResResources.getString(2131696179));
+            mdd.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1033, this.a.jdField_a_of_type_AndroidContentResResources.getString(2131696181));
           }
         }
         else if ((paramLong3 == 9L) && (MultiVideoCtrlLayerUIBase.a(this.a)))
         {
           MultiVideoCtrlLayerUIBase.a(this.a, false);
-          mdd.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1033, this.a.jdField_a_of_type_AndroidContentResResources.getString(2131696180));
+          mdd.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1033, this.a.jdField_a_of_type_AndroidContentResResources.getString(2131696182));
         }
       }
       this.a.u(paramLong3);
@@ -238,7 +238,7 @@ public class mie
         {
           localObject = String.valueOf(paramLong);
         }
-        str = this.a.jdField_a_of_type_AndroidContentResResources.getString(2131696020);
+        str = this.a.jdField_a_of_type_AndroidContentResResources.getString(2131696022);
         float f = mtw.a(str, this.a.jdField_d_of_type_AndroidWidgetTextView.getPaint());
         f = Math.min(this.a.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().widthPixels - f - this.a.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297786) * 2, this.a.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297038));
         mtw.b(localStringBuilder, (String)localObject, this.a.jdField_d_of_type_AndroidWidgetTextView.getPaint(), f);
@@ -258,7 +258,7 @@ public class mie
       if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a() == null) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().G == 0)) {
         break;
       }
-      localStringBuilder.append(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131696017));
+      localStringBuilder.append(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131696019));
       break;
     }
   }
@@ -289,8 +289,8 @@ public class mie
     }
     if ((paramInt == 1) && (((Long)paramArrayList.get(0)).longValue() == this.a.c))
     {
-      mdd.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1034, 2131696004);
-      mdd.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1035, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696344), new mif(this));
+      mdd.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1034, 2131696006);
+      mdd.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1035, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696346), new mif(this));
       return;
     }
     Object localObject;
@@ -315,8 +315,8 @@ public class mie
       if (paramInt != 1) {
         break label419;
       }
-      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696005));
-      mdd.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1035, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696345), new mig(this));
+      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696007));
+      mdd.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1035, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696347), new mig(this));
     }
     for (;;)
     {
@@ -326,9 +326,9 @@ public class mie
       l = this.a.jdField_a_of_type_ComTencentAvVideoController.c;
       break;
       label419:
-      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696006)).append(paramInt);
-      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696007));
-      mdd.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1035, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696346), new mih(this));
+      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696008)).append(paramInt);
+      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696009));
+      mdd.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1035, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696348), new mih(this));
     }
   }
   
@@ -408,9 +408,9 @@ public class mie
         localObject = String.valueOf(paramLong);
       }
       float f = this.a.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297038);
-      localStringBuilder.append(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131696023));
+      localStringBuilder.append(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131696025));
       mtw.b(localStringBuilder, (String)localObject, this.a.jdField_d_of_type_AndroidWidgetTextView.getPaint(), f);
-      localStringBuilder.append(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131696022));
+      localStringBuilder.append(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131696024));
       mdd.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1033, localStringBuilder.toString());
       localObject = this.a;
       if (paramInt != 1) {
@@ -425,7 +425,7 @@ public class mie
       if (paramInt != 0) {
         break;
       }
-      localStringBuilder.append(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131696024));
+      localStringBuilder.append(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131696026));
       break;
     }
   }

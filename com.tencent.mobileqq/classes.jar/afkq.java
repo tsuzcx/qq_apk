@@ -1,59 +1,86 @@
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.text.style.ClickableSpan;
+import android.os.Bundle;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import org.json.JSONObject;
 
 class afkq
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  public final String a;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private String jdField_b_of_type_JavaLangString;
-  private WeakReference<Context> jdField_b_of_type_JavaLangRefWeakReference;
+  private long jdField_a_of_type_Long;
   
-  afkq(afjb paramafjb, QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = "mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10003&from_type=0&uin=%s&mode=3";
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
+  afkq(afkp paramafkp) {}
   
   public void onClick(View paramView)
   {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject = (Context)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if ((paramView == null) || (localObject == null)) {}
-    long l;
+    Resources localResources = paramView.getContext().getResources();
+    long l = SystemClock.uptimeMillis();
+    if (l - this.jdField_a_of_type_Long >= 500L)
+    {
+      this.jdField_a_of_type_Long = l;
+      if ((paramView.getTag() != null) && ((paramView.getTag() instanceof JSONObject))) {
+        break label49;
+      }
+    }
+    label49:
+    String str;
+    Context localContext;
     do
     {
       do
       {
         return;
-      } while (!(localObject instanceof Activity));
-      if (!bdee.d((Context)localObject))
-      {
-        QQToast.a((Context)localObject, 2131692397, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131298914));
-        return;
-      }
-      l = System.currentTimeMillis();
-      if ((afjb.a(this.jdField_a_of_type_Afjb) == 0L) || (l <= afjb.a(this.jdField_a_of_type_Afjb)) || (l - afjb.a(this.jdField_a_of_type_Afjb) > 800L)) {
+        localObject2 = (JSONObject)paramView.getTag();
+        try
+        {
+          localObject1 = ((JSONObject)localObject2).getString("url");
+          str = ((JSONObject)localObject2).getString("name");
+          localContext = paramView.getContext();
+          if (this.jdField_a_of_type_Afkp.a != null) {
+            MediaPlayerManager.a(this.jdField_a_of_type_Afkp.a).a(true);
+          }
+          if (!QQPlayerService.a(this.jdField_a_of_type_Afkp)) {
+            break;
+          }
+          QQPlayerService.c(localContext);
+          paramView.setContentDescription(localResources.getString(2131690325));
+          return;
+        }
+        catch (Exception paramView) {}
+      } while (!QLog.isColorLevel());
+      QLog.i("CommonHobbyForAIOShowItemBuilder", 0, Log.getStackTraceString(paramView));
+      return;
+      if ((this.jdField_a_of_type_Afkp.a == null) || (!this.jdField_a_of_type_Afkp.a.c())) {
         break;
       }
     } while (!QLog.isColorLevel());
-    QLog.d("GrayTipsItemBuilder", 2, "click too often...ignore click envent");
+    QLog.i("CommonHobbyForAIOShowItemBuilder", 0, "Video Chatting is going on, don't play music.");
     return;
-    afjb.a(this.jdField_a_of_type_Afjb, l);
-    localObject = bdds.a(paramView, (Context)localObject, String.format("mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10003&from_type=0&uin=%s&mode=3", new Object[] { this.jdField_b_of_type_JavaLangString }));
-    if (localObject != null) {
-      ((bddb)localObject).c();
+    SongInfo localSongInfo = new SongInfo();
+    localSongInfo.jdField_b_of_type_JavaLangString = ((String)localObject1);
+    localSongInfo.jdField_b_of_type_Int = 4;
+    QQPlayerService.a(new Intent(localContext, MusicPlayerActivity.class));
+    Object localObject2 = QQPlayerService.a();
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = new Bundle();
+      QQPlayerService.a((Bundle)localObject1);
     }
-    azmj.b(paramView, "CliOper", "", "", "0X80055FD", "0X80055FD", 0, 0, avpv.a(paramView)[0], this.jdField_b_of_type_JavaLangString, "", "");
+    ((Bundle)localObject1).putString("KEY_SOURCE_NAME", str);
+    QQPlayerService.a(this.jdField_a_of_type_Afkp);
+    QQPlayerService.a(localContext, this.jdField_a_of_type_Afkp.getToken(), localSongInfo);
+    paramView.setContentDescription(localResources.getString(2131690323));
   }
 }
 

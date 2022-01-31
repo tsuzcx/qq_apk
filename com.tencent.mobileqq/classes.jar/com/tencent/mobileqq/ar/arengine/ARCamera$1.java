@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import amvz;
+import anai;
 
 public class ARCamera$1
   implements Runnable
 {
-  public ARCamera$1(amvz paramamvz, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public ARCamera$1(anai paramanai, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void run()
   {
-    amvz.a(this.this$0, this.a, this.b, this.c, this.d, amvz.f());
+    anai.a(this.this$0, this.a, this.b, this.c, this.d, anai.f());
   }
 }
 

@@ -1,15 +1,18 @@
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
+
 class afru
-  extends aekx
+  extends afuf
 {
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  int d;
+  afru(afpy paramafpy)
+  {
+    super(paramafpy, null);
+  }
   
-  afru(afrs paramafrs) {}
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afhn(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
 }
 
 

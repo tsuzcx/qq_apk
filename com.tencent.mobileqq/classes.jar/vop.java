@@ -1,16 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.support.annotation.NonNull;
 
-class vop
-  implements View.OnTouchListener
+public abstract interface vop
 {
-  private vop(vom paramvom) {}
+  public abstract void a(@NonNull voo paramvoo);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return vom.a(this.a).a(paramMotionEvent);
-  }
+  public abstract void a(@NonNull voo paramvoo, @NonNull Throwable paramThrowable);
+  
+  public abstract void b(@NonNull voo paramvoo);
+  
+  public abstract void c(@NonNull voo paramvoo);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import alpo;
+import alud;
 import com.tencent.component.network.downloader.DownloadReport;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Content;
@@ -23,7 +23,7 @@ class ApkgManager$6
   {
     if (this.val$listener != null)
     {
-      this.val$listener.onGetApkgInfo(null, 4, alpo.a(2131700661));
+      this.val$listener.onGetApkgInfo(null, 4, alud.a(2131700673));
       QLog.d("ApkgManager", 2, "onDownloadCanceled() called with: s = [" + paramString + "]");
     }
   }
@@ -79,7 +79,7 @@ class ApkgManager$6
       i = -99999;
       break;
     }
-    this.val$listener.onGetApkgInfo(null, 1, alpo.a(2131700662));
+    this.val$listener.onGetApkgInfo(null, 1, alud.a(2131700674));
     QLog.d("ApkgManager", 1, "onDownloadFailed() called with: s = [" + paramString + "], downloadResult = [" + paramDownloadResult + "]");
   }
   

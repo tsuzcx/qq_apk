@@ -1,45 +1,99 @@
+import android.util.Log;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class apxa
 {
-  public int a;
-  public String a;
-  public HashMap<String, apxb> a;
-  public List<String> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public List<String> b = new ArrayList();
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l = 2;
-  public String l;
-  public int m = 50;
-  public String m;
-  public int n = 1;
+  public static int a;
+  private static apxa jdField_a_of_type_Apxa;
+  private Map<Integer, ArrayList<View>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  public apxa()
+  public static apxa a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (jdField_a_of_type_Apxa == null) {}
+    try
+    {
+      if (jdField_a_of_type_Apxa == null) {
+        jdField_a_of_type_Apxa = new apxa();
+      }
+      return jdField_a_of_type_Apxa;
+    }
+    finally {}
+  }
+  
+  public View a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt))))
+    {
+      Object localObject = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+      {
+        localObject = (View)((ArrayList)localObject).remove(0);
+        if (QLog.isColorLevel()) {
+          Log.d("EmotionPanelViewPool", "getView from pool : paneyType = " + paramInt);
+        }
+        return localObject;
+      }
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionPanelViewPool", 2, "destory");
+    }
+    if ((this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.size() > 0))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        ArrayList localArrayList = (ArrayList)((Map.Entry)localIterator.next()).getValue();
+        if (localArrayList != null) {
+          localArrayList.clear();
+        }
+      }
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    if (paramView == null) {}
+    for (;;)
+    {
+      return;
+      ArrayList localArrayList;
+      if (this.jdField_a_of_type_JavaUtilMap == null)
+      {
+        this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+        localArrayList = new ArrayList();
+        localArrayList.add(paramView);
+        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localArrayList);
+        return;
+      }
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt)))
+      {
+        localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+        if ((localArrayList != null) && (!localArrayList.contains(paramView))) {
+          localArrayList.add(0, paramView);
+        }
+      }
+      while (QLog.isColorLevel())
+      {
+        Log.d("EmotionPanelViewPool", "relase view panelType = " + paramInt);
+        return;
+        localArrayList = new ArrayList();
+        localArrayList.add(0, paramView);
+        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localArrayList);
+      }
+    }
   }
 }
 

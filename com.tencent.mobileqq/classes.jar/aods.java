@@ -1,38 +1,39 @@
-import android.graphics.Bitmap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.widget.XListView;
+import android.view.ViewPropertyAnimator;
+import android.view.animation.DecelerateInterpolator;
 
-public class aods
-  implements axxi
+class aods
+  implements Animator.AnimatorListener
 {
-  public aods(SearchResultActivity paramSearchResultActivity) {}
+  aods(aodl paramaodl, boolean paramBoolean) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
-    for (;;)
+    aodl.b(this.jdField_a_of_type_Aodl).scrollTo(0, 0);
+    aodl.b(this.jdField_a_of_type_Aodl).setAlpha(1.0F);
+    aodl.b(this.jdField_a_of_type_Aodl).setBackgroundColor(aodl.a(this.jdField_a_of_type_Aodl).getResources().getColor(aodl.a()));
+    paramAnimator = this.jdField_a_of_type_Aodl.a;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (float f = -this.jdField_a_of_type_Aodl.a.getMeasuredWidth();; f = this.jdField_a_of_type_Aodl.a.getMeasuredWidth())
     {
+      paramAnimator.setX(f);
+      this.jdField_a_of_type_Aodl.a.setAlpha(0.0F);
+      this.jdField_a_of_type_Aodl.a.setVisibility(0);
+      this.jdField_a_of_type_Aodl.a.animate().setInterpolator(new DecelerateInterpolator()).alpha(1.0F).translationX(0.0F).setDuration(180L).start();
       return;
-      if (this.a.jdField_a_of_type_Int == 0)
-      {
-        int i = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          paramBitmap = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt2).getTag();
-          if ((paramBitmap != null) && ((paramBitmap instanceof aodu)))
-          {
-            paramBitmap = (aodu)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              SearchResultActivity.a(this.a, paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
-            }
-          }
-          paramInt2 += 1;
-        }
-      }
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

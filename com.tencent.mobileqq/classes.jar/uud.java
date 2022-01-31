@@ -1,16 +1,15 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.1.1;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.MessageMicro;
 
-public class uud
-  implements uzb
+public abstract interface uud
 {
-  uud(uuc paramuuc) {}
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public void a(uzc paramuzc)
-  {
-    wsv.a("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "Update UserItems %s", paramuzc);
-    this.a.a.post(new MsgTabNodeListLoader.1.1(this, paramuzc));
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(MessageMicro paramMessageMicro);
+  
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 

@@ -1,22 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
+import java.io.File;
+import java.io.FileFilter;
 
-public class aeoo
-  implements ValueAnimator.AnimatorUpdateListener
+class aeoo
+  implements FileFilter
 {
-  public aeoo(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
+  aeoo(aeom paramaeom) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean accept(File paramFile)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f < 0.5F)
-    {
-      this.a.c.setAlpha(1.0F - f * 2.0F);
-      return;
-    }
-    this.a.c.setAlpha(f * 2.0F - 1.0F);
+    return paramFile.getName().startsWith(aeom.a(this.a));
   }
 }
 

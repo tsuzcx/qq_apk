@@ -1,69 +1,27 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class bmwz
-  extends bmxd<bmwn, bmwn>
+class bmwz
+  implements URLDrawable.URLDrawableListener
 {
-  public WeakReference<bmei> a;
+  bmwz(bmwy parambmwy, String paramString1, bmwf parambmwf, ImageView paramImageView, String paramString2) {}
   
-  public bmwz(bmei parambmei)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.a = new WeakReference(parambmei);
+    wxe.b("NormalFaceAdapter", "applyNormalPaster onLoadFialed path:" + this.jdField_a_of_type_JavaLangString);
   }
   
-  protected void a(JobContext paramJobContext, bmwn parambmwn)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    paramJobContext = (bmei)this.a.get();
-    if (paramJobContext == null)
-    {
-      wsv.e("Q.qqstory.publish.editHWEncodeGenerateInteractPasterImageSegment", "EditVideoInteract is null, return directly.");
-      notifyResult(parambmwn);
-      return;
-    }
-    paramJobContext = paramJobContext.a();
-    if (paramJobContext == null)
-    {
-      wsv.e("Q.qqstory.publish.editHWEncodeGenerateInteractPasterImageSegment", "interact bitmap is null, return directly.");
-      notifyResult(parambmwn);
-      return;
-    }
-    int i = bmwy.a(parambmwn);
-    Object localObject;
-    if (i != 0)
-    {
-      localObject = xod.a(paramJobContext, i);
-      if (localObject != null)
-      {
-        paramJobContext.recycle();
-        paramJobContext = (JobContext)localObject;
-      }
-    }
-    for (;;)
-    {
-      localObject = bmxg.a(parambmwn.jdField_a_of_type_Int, parambmwn.b, ".png");
-      try
-      {
-        if (!xmn.a(paramJobContext, Bitmap.CompressFormat.PNG, 60, (String)localObject)) {
-          break;
-        }
-        parambmwn.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.putExtra("il_pic", localObject);
-        notifyResult(parambmwn);
-        return;
-      }
-      catch (Exception paramJobContext)
-      {
-        wsv.c("Q.qqstory.publish.editHWEncodeGenerateInteractPasterImageSegment", "compressToFile Exception :", paramJobContext);
-        super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
-        return;
-      }
-      wsv.e("Q.qqstory.publish.editHWEncodeGenerateInteractPasterImageSegment", "rotate vote bitmap failed. rotation=%s", new Object[] { Integer.valueOf(i) });
-    }
-    wsv.e("Q.qqstory.publish.editHWEncodeGenerateInteractPasterImageSegment", "compressToFile failed.");
-    super.notifyError(new ErrorMessage(-1, "compress interact bitmap failed !"));
+    wxe.b("NormalFaceAdapter", "applyNormalPaster onLoadSuccessed path:" + this.jdField_a_of_type_JavaLangString);
+    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
+    bmwy.a(this.jdField_a_of_type_Bmwy).a(this.jdField_a_of_type_JavaLangString, paramURLDrawable);
+    bmwy.a(this.jdField_a_of_type_Bmwy, this.jdField_a_of_type_Bmwf, paramURLDrawable, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString, this.b, 1);
   }
 }
 

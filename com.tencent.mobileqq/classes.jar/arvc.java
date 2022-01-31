@@ -1,23 +1,16 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
 public class arvc
-  extends arum
+  implements arrh
 {
-  public arvc(Intent paramIntent)
+  public arvc(QfileEditBottomBar paramQfileEditBottomBar) {}
+  
+  public void a()
   {
-    super(paramIntent);
+    QfileEditBottomBar.a(this.a);
   }
   
-  protected boolean c()
-  {
-    Intent localIntent = aekt.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
-    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    return false;
-  }
+  public void b() {}
 }
 
 

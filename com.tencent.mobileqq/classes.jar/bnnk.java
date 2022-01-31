@@ -1,24 +1,32 @@
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+
 public class bnnk
 {
-  public static String a;
-  public static boolean a;
-  private static long[] a;
-  private static boolean jdField_b_of_type_Boolean = true;
-  private static long[] jdField_b_of_type_ArrayOfLong;
-  private static long[] c;
-  private static long[] d;
-  private static long[] e;
-  private static long[] f;
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  static
+  private void a()
   {
-    jdField_a_of_type_ArrayOfLong = new long[20];
-    jdField_b_of_type_ArrayOfLong = new long[20];
-    c = new long[20];
-    d = new long[20];
-    e = new long[20];
-    f = new long[20];
-    jdField_a_of_type_JavaLangString = "";
+    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
+    }
+  }
+  
+  private void a(ViewGroup paramViewGroup)
+  {
+    if (paramViewGroup != null) {
+      paramViewGroup.removeAllViews();
+    }
+  }
+  
+  public void a(RelativeLayout paramRelativeLayout)
+  {
+    a(this.jdField_a_of_type_AndroidViewViewGroup);
+    a(paramRelativeLayout);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
+    a();
   }
 }
 

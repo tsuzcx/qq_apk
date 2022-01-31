@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import azqi;
-import azqo;
+import azur;
+import azux;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -11,24 +11,24 @@ public final class TroopHandler$8
 {
   public void toXml(ByteArrayOutputStream paramByteArrayOutputStream, String paramString)
   {
-    azqi localazqi = new azqi(this, new azqo());
+    azur localazur = new azur(this, new azux());
     try
     {
-      localazqi.setOutput(paramByteArrayOutputStream, paramString);
-      localazqi.startDocument(paramString, null);
-      localazqi.startTag(null, "msg");
-      localazqi.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
-      localazqi.attribute(null, "templateID", String.valueOf(this.mMsgTemplateID));
+      localazur.setOutput(paramByteArrayOutputStream, paramString);
+      localazur.startDocument(paramString, null);
+      localazur.startTag(null, "msg");
+      localazur.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
+      localazur.attribute(null, "templateID", String.valueOf(this.mMsgTemplateID));
       if (this.mMsgBrief == null) {}
       for (paramByteArrayOutputStream = "";; paramByteArrayOutputStream = this.mMsgBrief)
       {
-        localazqi.attribute(null, "brief", paramByteArrayOutputStream);
-        toContentXml(localazqi);
-        localazqi.startTag(null, "source");
-        localazqi.endTag(null, "source");
-        localazqi.endTag(null, "msg");
-        localazqi.endDocument();
-        localazqi.flush();
+        localazur.attribute(null, "brief", paramByteArrayOutputStream);
+        toContentXml(localazur);
+        localazur.startTag(null, "source");
+        localazur.endTag(null, "source");
+        localazur.endTag(null, "msg");
+        localazur.endDocument();
+        localazur.flush();
         return;
       }
       return;

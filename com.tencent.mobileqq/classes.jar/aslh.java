@@ -1,72 +1,39 @@
-public class aslh
+import android.os.Handler;
+import android.os.Message;
+
+class aslh
+  extends Handler
 {
-  asli a;
+  aslh(aslg paramaslg) {}
   
-  public aslh(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a = new asli(paramInt);
-  }
-  
-  public static String a(int paramInt)
-  {
-    switch (paramInt)
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-    default: 
-      return "";
-    case 1: 
-      return "graytip";
-    case 2: 
-      return "nor_text";
-    case 3: 
-      return "url";
-    case 4: 
-      return "qq";
     case 5: 
-      return "img";
-    case 6: 
-      return "dialog";
-    case 7: 
-      return "title";
-    case 8: 
-      return "alter";
-    case 9: 
-      return "btn";
-    }
-    return "item";
-  }
-  
-  public static String b(int paramInt)
-  {
-    switch (paramInt)
-    {
     default: 
-      return "";
+      return;
+    case 0: 
+      this.a.a();
+      return;
     case 1: 
-      return "align";
-    case 2: 
-      return "text";
-    case 3: 
-      return "size";
-    case 4: 
-      return "jump";
-    case 5: 
-      return "color";
+      aslg.a(this.a);
+      return;
     case 6: 
-      return "uin";
-    case 7: 
-      return "name";
+      aslg.b(this.a);
+      return;
+    case 2: 
+      aslg.c(this.a);
+      return;
+    case 3: 
+      aslg.d(this.a);
+      return;
+    case 4: 
+      aslg.e(this.a);
+      return;
     }
-    return "src";
-  }
-  
-  public asli a()
-  {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    return asli.a(this.a, 0);
+    aslg.f(this.a);
   }
 }
 

@@ -1,9 +1,6 @@
-import android.view.View;
-
-public class bhxb
+public abstract interface bhxb
 {
-  public bhxc[] a;
-  public View g;
+  public abstract boolean a(int paramInt);
 }
 
 

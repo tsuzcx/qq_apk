@@ -1,31 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment;
 
-class aiwi
-  implements EIPCOnGetConnectionListener
+public class aiwi
+  implements View.OnClickListener
 {
-  aiwi(aiwh paramaiwh) {}
+  public aiwi(RedPacketVoiceFragment paramRedPacketVoiceFragment) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public void onClick(View paramView)
   {
-    if (paramEIPCConnection != null) {
-      aiwh.a(this.a, paramEIPCConnection.procName);
-    }
-    aiwh.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "onConnectBind");
-    }
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      aiwh.a(this.a, paramEIPCConnection.procName);
-    }
-    aiwh.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "onConnectUnbind");
+    if ((!this.a.c()) && (RedPacketVoiceFragment.a(this.a) != null) && (paramView != null))
+    {
+      Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
+      localIntent.putExtras(RedPacketVoiceFragment.a(this.a));
+      localIntent.putExtra("pay_requestcode", 5);
+      paramView.getContext().startActivity(localIntent);
     }
   }
 }

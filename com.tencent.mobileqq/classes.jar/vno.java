@@ -1,21 +1,17 @@
-import android.content.Intent;
-import android.os.Bundle;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
+import com.tribe.async.dispatch.Dispatcher.Event;
 
-public abstract interface vno
+public class vno
+  implements Dispatcher.Event
 {
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  public final AnimationParam a;
+  public final String a;
   
-  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
+  public vno(AnimationParam paramAnimationParam, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam = paramAnimationParam;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

@@ -1,8 +1,15 @@
-public abstract interface bmlf
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+
+class bmlf
+  implements DialogInterface.OnShowListener
 {
-  public abstract void a(boolean paramBoolean);
+  bmlf(bmla parambmla) {}
   
-  public abstract void b();
+  public void onShow(DialogInterface paramDialogInterface)
+  {
+    this.a.a.a(46);
+  }
 }
 
 

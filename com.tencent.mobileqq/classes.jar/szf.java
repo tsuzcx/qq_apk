@@ -16,14 +16,14 @@ public class szf
     {
     case -1: 
     default: 
-      xxb.a(1, 2131720019);
+      ybk.a(1, 2131720031);
       bool = false;
     }
     while (this.a.a)
     {
       szc.a(this.a.this$0, "we_chat", bool);
       return;
-      xxb.a(2, 2131720038);
+      ybk.a(2, 2131720050);
       continue;
       bool = false;
     }

@@ -1,12 +1,43 @@
-public abstract interface aqdi
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
+
+public class aqdi
+  implements bjhk
 {
-  public abstract void a();
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public abstract void a(int paramInt);
+  public aqdi(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
   
-  public abstract void a(String paramString1, String paramString2);
+  private boolean a()
+  {
+    long l = System.nanoTime();
+    if (l - this.jdField_a_of_type_Long < 400000000L) {
+      return true;
+    }
+    this.jdField_a_of_type_Long = l;
+    return false;
+  }
   
-  public abstract void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2);
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Boolean) || (a())) {
+      return;
+    }
+    ExtendFriendCampusFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendCampusFragment).a();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = System.nanoTime();
+  }
+  
+  public void b()
+  {
+    if ((!this.jdField_a_of_type_Boolean) || (a())) {
+      return;
+    }
+    ExtendFriendCampusFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendCampusFragment).b();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = System.nanoTime();
+  }
 }
 
 

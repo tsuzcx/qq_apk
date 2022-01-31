@@ -2,12 +2,17 @@ public class ayvk
 {
   public int a;
   public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("-----MessageDecContent----");
-    localStringBuilder.append("msgType:").append(this.jdField_a_of_type_Int).append(" content:").append(bdal.a(this.jdField_a_of_type_JavaLangString));
-    return localStringBuilder.toString();
+    return "source = " + this.jdField_c_of_type_JavaLangString + " editDistance = " + this.d + " matchDegree = " + this.jdField_c_of_type_Int;
   }
 }
 

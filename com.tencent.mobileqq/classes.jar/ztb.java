@@ -1,25 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.device.msg.activities.DeviceTipActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.device.qfind.BluetoothLeService;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class ztb
-  implements View.OnClickListener
+class ztb
+  implements ServiceConnection
 {
-  public ztb(DeviceTipActivity paramDeviceTipActivity) {}
+  ztb(zsz paramzsz) {}
   
-  public void onClick(View paramView)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if (!bdee.g(this.a)) {
-      QQToast.a(this.a, alpo.a(2131703611), 2000).a();
+    zsz.a(this.a, ((zzi)paramIBinder).a());
+    if ((!zsz.a(this.a).a()) && (QLog.isColorLevel())) {
+      QLog.e("DeviceBLE2", 2, "Unable to initialize Bluetooth");
     }
-    DeviceTipActivity.a(this.a, 2);
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.i("DeviceBLE2", 2, "ServiceConnection onServiceConnected ");
+    }
+    if (!zsz.a(this.a).isEmpty())
+    {
+      this.a.a = ((zzn)zsz.a(this.a).get(0));
+      zsz.a(this.a).remove(0);
+      zsz.a(this.a).a(this.a.a.a, this.a.a.b);
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    zsz.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ztb
  * JD-Core Version:    0.7.0.1
  */

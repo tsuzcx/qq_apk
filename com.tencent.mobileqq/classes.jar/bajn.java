@@ -1,65 +1,50 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.LocalWtTicketPromise.1;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public abstract class bajn
-  extends Binder
-  implements bajm
+public class bajn
+  implements WtTicketPromise
 {
-  private static final String DESCRIPTOR = "com.tencent.mobileqq.theme.ISwitchCallback";
-  static final int TRANSACTION_beginSwitch = 1;
-  static final int TRANSACTION_doSwitch = 3;
-  static final int TRANSACTION_onProgress = 2;
-  static final int TRANSACTION_postSwitch = 4;
+  private aoxh jdField_a_of_type_Aoxh;
+  private WeakReference<bajm> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public bajn()
+  public bajn(bajm parambajm, aoxh paramaoxh)
   {
-    attachInterface(this, "com.tencent.mobileqq.theme.ISwitchCallback");
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambajm);
+    this.jdField_a_of_type_Aoxh = paramaoxh;
   }
   
-  public static bajm asInterface(IBinder paramIBinder)
+  public void Done(Ticket paramTicket)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof bajm))) {
-      return (bajm)localIInterface;
-    }
-    return new bajo(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    if ((paramTicket != null) && (paramTicket._pskey_map != null))
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.theme.ISwitchCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-      beginSwitch();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-      onProgress(paramParcel1.readLong(), paramParcel1.readLong());
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-      doSwitch(paramParcel1.readString(), paramParcel1.readString());
-      return true;
+      ThreadManager.excute(new ConfigSettingForDataLine.LocalWtTicketPromise.1(this), 128, null, false);
+      return;
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-    postSwitch(paramParcel1.readInt());
-    return true;
+    if (this.jdField_a_of_type_Aoxh != null) {
+      this.jdField_a_of_type_Aoxh.a(false);
+    }
+    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket is null");
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket failed");
+    if (this.jdField_a_of_type_Aoxh != null) {
+      this.jdField_a_of_type_Aoxh.a(false);
+    }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (this.jdField_a_of_type_Aoxh != null) {
+      this.jdField_a_of_type_Aoxh.a(false);
+    }
+    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket time oiut");
   }
 }
 

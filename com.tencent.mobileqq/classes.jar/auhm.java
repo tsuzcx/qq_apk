@@ -1,9 +1,19 @@
-import android.support.v4.view.PagerAdapter;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
-public abstract interface auhm
+public final class auhm
+  implements Parcelable.Creator<MsgBackupUserData>
 {
-  public abstract void a(MultiAIOBaseViewPager paramMultiAIOBaseViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
+  public MsgBackupUserData a(Parcel paramParcel)
+  {
+    return new MsgBackupUserData(paramParcel);
+  }
+  
+  public MsgBackupUserData[] a(int paramInt)
+  {
+    return new MsgBackupUserData[paramInt];
+  }
 }
 
 

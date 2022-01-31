@@ -1,7 +1,7 @@
 import com.tencent.av.gaudio.GaInviteDialogActivity;
 
 public class lqa
-  implements acgx
+  implements aclm
 {
   public lqa(GaInviteDialogActivity paramGaInviteDialogActivity) {}
   

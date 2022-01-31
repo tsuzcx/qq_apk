@@ -1,17 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-
-public class anuy
-  implements View.OnClickListener
+public abstract interface anuy
 {
-  public anuy(BusinessCardEditActivity paramBusinessCardEditActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = (anva)paramView.getTag();
-    this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.b, paramView.jdField_a_of_type_Boolean);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

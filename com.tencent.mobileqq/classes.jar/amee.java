@@ -1,27 +1,15 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateDiscuss;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.TroopManager;
 
-public class amee
-  extends almw
+public final class amee
+  implements DialogInterface.OnClickListener
 {
-  private amee(UpdateDiscuss paramUpdateDiscuss) {}
+  public amee(TroopManager paramTroopManager, String paramString) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateDiscussionList: " + paramBoolean);
-    }
-    if (!paramBoolean)
-    {
-      this.a.a(6);
-      return;
-    }
-    this.a.a.a.edit().putBoolean("isDiscussionlistok", true).commit();
-    this.a.a.notifyUI(3, true, Integer.valueOf(3));
-    this.a.a(7);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
   }
 }
 

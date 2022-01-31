@@ -1,14 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.TextView;
+import cooperation.groupvideo.GVideoPluginInstallerActivity;
 
 public class bipq
-  implements DialogInterface.OnDismissListener
+  extends Handler
 {
-  public bipq(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public bipq(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity, Looper paramLooper)
   {
+    super(paramLooper);
+  }
+  
+  public void dispatchMessage(Message paramMessage)
+  {
+    if (paramMessage == null) {}
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 1: 
+        GVideoPluginInstallerActivity.a(this.a);
+        return;
+      }
+    } while ((!(paramMessage.obj instanceof String)) || (this.a.a == null));
+    this.a.a.setText((String)paramMessage.obj);
+    return;
+    GVideoPluginInstallerActivity.b(this.a);
+    return;
     this.a.finish();
   }
 }

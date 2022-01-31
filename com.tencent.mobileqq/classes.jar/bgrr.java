@@ -1,19 +1,6 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-public class bgrr
-  extends Handler
+public abstract interface bgrr
 {
-  public bgrr(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-  }
+  public abstract void a(bgrq parambgrq, int paramInt);
 }
 
 

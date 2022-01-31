@@ -1,17 +1,16 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import org.json.JSONObject;
+import java.util.List;
 
-class aksd
-  implements MediaPlayer.OnCompletionListener
+public abstract interface aksd
 {
-  aksd(akry paramakry, aksy paramaksy, JSONObject paramJSONObject) {}
+  public abstract int a();
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    this.jdField_a_of_type_Aksy.a(this.jdField_a_of_type_OrgJsonJSONObject);
-    this.jdField_a_of_type_Akry.a(10);
-  }
+  public abstract akry a();
+  
+  public abstract void a(List<aksc> paramList, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract int b();
 }
 
 

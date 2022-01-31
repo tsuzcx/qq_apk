@@ -29,7 +29,7 @@ class sze
           if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
           {
             localAndroidInfo = paramBundle.androidInfo;
-            localObject = zbj.a(paramBundle.iconsURL, 16);
+            localObject = zfy.a(paramBundle.iconsURL, 16);
             Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
             if (localAndroidInfo.sourceUrl != null) {
               continue;
@@ -68,7 +68,7 @@ class sze
         this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
         szc.a(this.jdField_a_of_type_Szc).startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
       }
-      paramBundle = azqu.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+      paramBundle = azvd.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
       if (paramBundle != null) {
         continue;
       }

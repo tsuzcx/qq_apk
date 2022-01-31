@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.core;
 
-import azdf;
-import bkoi;
+import azho;
+import bksp;
 
 public class AECameraManager$11
   implements Runnable
 {
-  public AECameraManager$11(bkoi parambkoi) {}
+  public AECameraManager$11(bksp parambksp) {}
   
   public void run()
   {
-    bkoi.a().f();
+    bksp.a().f();
   }
 }
 

@@ -1,97 +1,123 @@
-public final class arrt
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+
+final class arrt
+  implements arss
 {
-  public String a;
-  public String b;
+  arrt(QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  /* Error */
-  public static arrt a(String paramString)
+  public long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong, int paramInt3)
   {
-    // Byte code:
-    //   0: new 2	arrt
-    //   3: dup
-    //   4: invokespecial 16	arrt:<init>	()V
-    //   7: astore_3
-    //   8: new 18	org/json/JSONObject
-    //   11: dup
-    //   12: aload_0
-    //   13: invokespecial 21	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   16: astore_0
-    //   17: aload_0
-    //   18: ldc 23
-    //   20: invokevirtual 27	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   23: astore 4
-    //   25: aload_3
-    //   26: aload_0
-    //   27: ldc 29
-    //   29: invokevirtual 33	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   32: putfield 35	arrt:a	Ljava/lang/String;
-    //   35: aload 4
-    //   37: ldc 37
-    //   39: invokevirtual 41	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   42: astore_0
-    //   43: iconst_0
-    //   44: istore_1
-    //   45: iload_1
-    //   46: aload_0
-    //   47: invokevirtual 47	org/json/JSONArray:length	()I
-    //   50: if_icmpge +52 -> 102
-    //   53: aload_0
-    //   54: iload_1
-    //   55: invokevirtual 50	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   58: astore 4
-    //   60: aload_3
-    //   61: aload 4
-    //   63: ldc 52
-    //   65: invokevirtual 33	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   68: putfield 54	arrt:b	Ljava/lang/String;
-    //   71: aload 4
-    //   73: ldc 56
-    //   75: invokevirtual 59	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   78: astore 4
-    //   80: aload 4
-    //   82: ifnull +22 -> 104
-    //   85: ldc 61
-    //   87: aload 4
-    //   89: ldc 63
-    //   91: invokevirtual 66	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   94: invokevirtual 72	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   97: istore_2
-    //   98: iload_2
-    //   99: ifeq +5 -> 104
-    //   102: aload_3
-    //   103: areturn
-    //   104: iload_1
-    //   105: iconst_1
-    //   106: iadd
-    //   107: istore_1
-    //   108: goto -63 -> 45
-    //   111: astore_0
-    //   112: aload_0
-    //   113: athrow
-    //   114: astore_0
-    //   115: aconst_null
-    //   116: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	117	0	paramString	String
-    //   44	64	1	i	int
-    //   97	2	2	bool	boolean
-    //   7	96	3	localarrt	arrt
-    //   23	65	4	localJSONObject	org.json.JSONObject
-    // Exception table:
-    //   from	to	target	type
-    //   0	43	111	finally
-    //   45	80	111	finally
-    //   85	98	111	finally
-    //   0	43	114	java/lang/Exception
-    //   45	80	114	java/lang/Exception
-    //   85	98	114	java/lang/Exception
+    return a(paramString1, paramInt1, paramString2, paramInt2, paramString3, paramString4, paramString5, paramLong, paramInt3, 0L, 0);
   }
   
-  public String toString()
+  public long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong1, int paramInt3, long paramLong2, int paramInt4)
   {
-    return "FlashPackCfg{version='" + this.a + '\'' + ", zipScid='" + this.b + '\'' + '}';
+    DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
+    localDataLineMsgRecord.fileUuid = paramString3;
+    if (paramString2 != null) {
+      localDataLineMsgRecord.uOwnerUin = Long.valueOf(paramString2).longValue();
+    }
+    localDataLineMsgRecord.selfuin = paramString1;
+    localDataLineMsgRecord.filename = paramString4;
+    if (paramString5 != null)
+    {
+      localDataLineMsgRecord.thumbPath = arso.a(arso.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()), arrr.a(paramString5));
+      bdhb.d(paramString5, localDataLineMsgRecord.thumbPath);
+    }
+    localDataLineMsgRecord.filesize = paramLong1;
+    localDataLineMsgRecord.busId = paramInt2;
+    localDataLineMsgRecord.forwardTroopFileEntrance = paramInt3;
+    if (paramInt1 == 0) {
+      localDataLineMsgRecord.fileFrom = 1;
+    }
+    for (localDataLineMsgRecord.nOpType = 29;; localDataLineMsgRecord.nOpType = 31)
+    {
+      localDataLineMsgRecord.istroop = paramInt1;
+      paramString1 = (alqo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
+      localDataLineMsgRecord.sessionid = paramString1.a(0, this.jdField_a_of_type_Int).longValue();
+      localDataLineMsgRecord.msg = "";
+      localDataLineMsgRecord.issend = 1;
+      localDataLineMsgRecord.isread = true;
+      localDataLineMsgRecord.issuc = false;
+      ((amca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(localDataLineMsgRecord);
+      localDataLineMsgRecord.time = ayzl.a();
+      localDataLineMsgRecord.progress = 0.2F;
+      localDataLineMsgRecord.fileMsgStatus = 0L;
+      localDataLineMsgRecord.msgtype = alqo.a(0);
+      localDataLineMsgRecord.bIsTransfering = true;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid)).a(localDataLineMsgRecord, true);
+      paramString1.a(7, true, new Object[] { Long.valueOf(0L), Long.valueOf(localDataLineMsgRecord.sessionid), localDataLineMsgRecord.path, Byte.valueOf((byte)alqo.b(localDataLineMsgRecord.msgtype)), Boolean.valueOf(false), Boolean.valueOf(false), Long.valueOf(localDataLineMsgRecord.filesize) });
+      return localDataLineMsgRecord.sessionid;
+      localDataLineMsgRecord.fileFrom = 2;
+    }
   }
+  
+  public String a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, long paramLong1, long paramLong2, long paramLong3, int paramInt3)
+  {
+    return null;
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FileManagerUtil<FileAssistant>", 1, "getDatalineProcessCallBack->onResult bSuccess[" + paramBoolean + "],nSessionId[" + paramLong + "],retCode[" + paramInt + "],retMsg[" + paramString1 + "],uuid[" + paramString2 + "],troopUin[" + paramString3 + "],strNewPath[" + paramString4 + "]");
+    }
+    if (paramInt != 0)
+    {
+      if (TextUtils.isEmpty(paramString1))
+      {
+        arri.c(BaseApplicationImpl.getContext().getString(2131692752));
+        paramBoolean = false;
+      }
+    }
+    else
+    {
+      paramString1 = (alqo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
+      if (paramBoolean) {
+        break label158;
+      }
+      paramString1.OnSessionComplete(paramLong, 41, paramInt);
+    }
+    label158:
+    do
+    {
+      do
+      {
+        return;
+        arri.c(paramString1);
+        break;
+        if (TextUtils.isEmpty(paramString4))
+        {
+          paramString1.OnSessionComplete(paramLong, 0, paramInt);
+          return;
+        }
+        paramInt = DataLineMsgRecord.getDevTypeBySeId(paramLong);
+        paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramInt).a(paramLong);
+      } while (paramString2 == null);
+      paramString2.serverPath = paramString4;
+      paramString2.nOpType = 1;
+      paramString2.bIsSended = true;
+      paramString2.bIsTransfering = false;
+      if (paramString2.entityID != 0L)
+      {
+        paramString3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString2.entityID);
+        if (paramString3 != null)
+        {
+          paramString3.status = 1;
+          paramString3.Uuid = paramString2.serverPath;
+        }
+      }
+    } while (!paramString1.a(paramString2));
+    paramString1.a(paramString2);
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, long paramLong, int paramInt, String paramString2, String paramString3, String paramString4) {}
 }
 
 

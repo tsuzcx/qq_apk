@@ -1,27 +1,39 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.AnimationView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import com.tencent.qphone.base.util.QLog;
 
-public class agia
-  extends aelt
+class agia
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public AnimationView a;
-  public RelativeLayout b;
-  public TextView b;
-  public AnimationView b;
-  public String b = "";
-  public RelativeLayout c;
-  public RelativeLayout d;
-  public RelativeLayout e;
-  public RelativeLayout f;
-  public RelativeLayout g;
+  agia(aghx paramaghx, int paramInt, Object paramObject, agkf paramagkf) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    case 2: 
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOGalleryScene", 2, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
+      }
+      break;
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOImageData));
+      aghx.a(this.jdField_a_of_type_Aghx, (AIOImageData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Agkf);
+      this.jdField_a_of_type_Aghx.u();
+      return;
+    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOShortVideoData));
+    aghx.a(this.jdField_a_of_type_Aghx, (AIOShortVideoData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Agkf);
+    this.jdField_a_of_type_Agkf.a.a = true;
+    this.jdField_a_of_type_Aghx.u();
+  }
 }
 
 

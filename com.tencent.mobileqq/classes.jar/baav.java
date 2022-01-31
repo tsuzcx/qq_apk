@@ -1,33 +1,21 @@
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class baav
-  extends azyx
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/ModeSwitchManager$OnModeChangeResultCallback;", "", "onIReqGetSimpleUISwitch", "", "isSuccess", "", "bSwitch", "sStudySwitch", "bPref", "", "uin", "", "onISwitchSimpleUICallback", "isSuc", "bChangeTheme", "bSwitchElsePref", "statusCode", "onModeChangeComplete", "targetType", "oldType", "message", "onModeChangeStart", "onModeSwitching", "onSelectModeRecover", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface baav
 {
-  protected azze a;
-  protected SpriteNativeView a;
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, @NotNull String paramString);
   
-  public baav()
-  {
-    this.jdField_a_of_type_Azze = new azze(0.0F, 0.0F);
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt);
   
-  public azzd<baav> a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView;
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, @Nullable String paramString);
   
-  public void b() {}
+  public abstract void b(int paramInt1, int paramInt2);
   
-  public void c() {}
+  public abstract void c(int paramInt1, int paramInt2);
   
-  public boolean c()
-  {
-    this.e = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getWidth();
-    this.f = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getHeight();
-    return b();
-  }
-  
-  public void d() {}
+  public abstract void d(int paramInt1, int paramInt2);
 }
 
 

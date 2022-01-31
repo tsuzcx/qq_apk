@@ -1,8 +1,12 @@
 public abstract interface bndy
 {
-  public abstract void a(float paramFloat);
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void d(int paramInt);
+  
+  public abstract void e(int paramInt);
+  
+  public abstract void f(int paramInt);
 }
 
 

@@ -1,75 +1,92 @@
 package com.tencent.biz.qqcircle.fragments;
 
-import alpo;
+import alud;
 import android.arch.lifecycle.MutableLiveData;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import com.tencent.biz.qqcircle.component.ComponentPageView;
+import android.view.ViewTreeObserver;
+import com.tencent.biz.qqcircle.component.QCircleComponentPageView;
 import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
 import com.tencent.biz.qqcircle.widgets.QCircleStatusView;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
 import java.util.ArrayList;
 import java.util.List;
-import trl;
-import trr;
-import trv;
-import tsv;
-import tuk;
-import tvg;
-import tvm;
-import tvz;
-import twa;
-import twb;
-import tzb;
-import tzm;
-import ydp;
-import yeb;
+import trq;
+import trw;
+import tsa;
+import ttl;
+import tuz;
+import tvv;
+import tvw;
+import two;
+import twp;
+import twq;
+import twr;
+import ubm;
+import ubz;
+import yhy;
+import yib;
+import yii;
+import yiq;
 
 public abstract class QCircleBaseTabFragment
   extends QCircleBaseFragment
 {
-  private static int jdField_a_of_type_Int;
-  public static String c = "QCircleBaseTabFragment";
-  public static String d = "TAB_TYPE_FOLLOW";
-  public static String e = "TAB_TYPE_SCHOOL";
-  public static String f = "TAB_TYPE_COMPANY";
-  public static String g = "TAB_TYPE_CITY";
-  public static String h = "TAB_TYPE_CIRCLE";
-  public static String i = "TAB_TYPE_RECOMMEND";
+  private static int a;
+  public static String b;
+  public static String c = "TAB_TYPE_FOLLOW";
+  public static String d = "TAB_TYPE_SCHOOL";
+  public static String e = "TAB_TYPE_COMPANY";
+  public static String f = "TAB_TYPE_CITY";
+  public static String g = "TAB_TYPE_CIRCLE";
+  public static String h = "TAB_TYPE_RECOMMEND";
   public QCirclePolymorphicAniView a;
   protected QCircleStatusView a;
-  private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
-  protected trl a;
-  public trv a;
-  public tsv a;
-  public tuk a;
-  protected tvm a;
-  protected tzb a;
+  protected trq a;
+  public tsa a;
+  public ttl a;
+  public tuz a;
+  public tvv a;
+  protected tvw a;
+  protected ubm a;
   protected boolean a;
-  private int b = jdField_a_of_type_Int;
-  protected String j = "";
+  private int b;
+  protected String i = "";
+  
+  static
+  {
+    jdField_b_of_type_JavaLangString = "QCircleBaseTabFragment";
+  }
   
   public QCircleBaseTabFragment()
   {
+    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
     jdField_a_of_type_Int += 1;
   }
   
-  private trr a()
+  private trw a()
   {
-    return new twa(this);
+    return new twp(this);
+  }
+  
+  private void a(int paramInt1, int paramInt2)
+  {
+    NestScrollRecyclerView localNestScrollRecyclerView = this.jdField_a_of_type_Tvw.a().a();
+    if (localNestScrollRecyclerView != null) {
+      localNestScrollRecyclerView.getViewTreeObserver().addOnPreDrawListener(new twr(this, localNestScrollRecyclerView, paramInt1, paramInt2));
+    }
   }
   
   public static void b()
@@ -79,50 +96,23 @@ public abstract class QCircleBaseTabFragment
   
   public int a()
   {
-    return 2131560551;
+    return 2131560553;
   }
   
-  protected TopGestureLayout a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout == null)
-    {
-      ViewGroup localViewGroup = (ViewGroup)getActivity().getWindow().getDecorView();
-      View localView = localViewGroup.getChildAt(0);
-      Object localObject = localViewGroup;
-      if (localView != null)
-      {
-        localObject = localViewGroup;
-        if ((localView instanceof DragFrameLayout)) {
-          localObject = (ViewGroup)localView;
-        }
-      }
-      localObject = ((ViewGroup)localObject).getChildAt(0);
-      if ((localObject instanceof TopGestureLayout)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = ((TopGestureLayout)localObject);
-      }
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
-  }
-  
-  public String a()
-  {
-    return b() + "_" + this.b;
-  }
-  
-  public List<tvg> a()
+  public List<tvv> a()
   {
     ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_Tvm = new tvm(2131364908, c(), 3, 1);
-    localArrayList.add(this.jdField_a_of_type_Tvm);
-    this.jdField_a_of_type_Tsv = new tsv();
-    localArrayList.add(this.jdField_a_of_type_Tsv);
+    this.jdField_a_of_type_Tvw = new tvw(2131364910, c(), 3, 1);
+    localArrayList.add(this.jdField_a_of_type_Tvw);
+    this.jdField_a_of_type_Ttl = new ttl();
+    localArrayList.add(this.jdField_a_of_type_Ttl);
     a(localArrayList);
     return localArrayList;
   }
   
-  public trv a()
+  public tsa a()
   {
-    return this.jdField_a_of_type_Trv;
+    return this.jdField_a_of_type_Tsa;
   }
   
   public void a(int paramInt)
@@ -134,153 +124,184 @@ public abstract class QCircleBaseTabFragment
       if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptScrollLRFlag(false);
       }
-      QLog.d(c, 1, "onPageSelected unique tabkey:" + a());
-      if (this.jdField_a_of_type_Trl != null) {
-        this.jdField_a_of_type_Trl.b(paramInt);
+      QLog.d(jdField_b_of_type_JavaLangString, 1, "onPageSelected unique tabkey:" + b());
+      if (this.jdField_a_of_type_Trq != null) {
+        this.jdField_a_of_type_Trq.b(paramInt);
       }
       return;
+    }
+  }
+  
+  public void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    QLog.d("QCircleFolderCacheHelper", 1, "scrollToPosWithOffset pos:" + paramInt1 + ",top:" + paramInt2 + "." + b());
+    try
+    {
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if ((paramRecyclerView instanceof yiq)) {
+        ((yiq)paramRecyclerView).scrollToPositionWithOffset(paramInt1, paramInt2);
+      }
+      return;
+    }
+    catch (Exception paramRecyclerView)
+    {
+      QLog.e(jdField_b_of_type_JavaLangString, 1, "scrollToPosWithOffset exception:" + paramRecyclerView.toString() + b());
     }
   }
   
   public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_Tvm.a().setEnableRefresh(true);
-    this.jdField_a_of_type_Tvm.a().setEnableLoadMore(true);
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView = this.jdField_a_of_type_Tvm.a();
+    this.jdField_a_of_type_Tvw.a().setEnableRefresh(true);
+    this.jdField_a_of_type_Tvw.a().setEnableLoadMore(true);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView = this.jdField_a_of_type_Tvw.a();
   }
   
-  protected void a(List<tvg> paramList) {}
+  protected void a(List<tvv> paramList) {}
   
-  public void a(trv paramtrv)
+  public void a(tsa paramtsa)
   {
-    this.jdField_a_of_type_Trv = paramtrv;
+    this.jdField_a_of_type_Tsa = paramtsa;
   }
   
-  public void a(tuk paramtuk, QCirclePolymorphicAniView paramQCirclePolymorphicAniView)
+  public void a(tuz paramtuz, QCirclePolymorphicAniView paramQCirclePolymorphicAniView)
   {
-    this.jdField_a_of_type_Tuk = paramtuk;
+    this.jdField_a_of_type_Tuz = paramtuz;
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicAniView = paramQCirclePolymorphicAniView;
   }
   
-  public void a(tzm<List<FeedCloudMeta.StFeed>> paramtzm)
+  public void a(tvv paramtvv)
   {
-    int m = 0;
-    if (paramtzm == null)
+    this.jdField_a_of_type_Tvv = paramtvv;
+  }
+  
+  public void a(ubz<List<FeedCloudMeta.StFeed>> paramubz)
+  {
+    int k = 0;
+    if (paramubz == null)
     {
-      QLog.e(c, 1, "handleFeedDataRsp() return unexpected data！");
+      QLog.e(jdField_b_of_type_JavaLangString, 1, "handleFeedDataRsp() return unexpected data！");
       return;
     }
-    boolean bool = paramtzm.a();
-    int k = m;
-    switch (paramtzm.a())
+    boolean bool = paramubz.a();
+    int j = k;
+    switch (paramubz.a())
     {
     default: 
-      k = m;
+      j = k;
     }
-    while ((k != 0) && (this.jdField_a_of_type_Trl != null))
+    while ((j != 0) && (this.jdField_a_of_type_Trq != null))
     {
-      this.jdField_a_of_type_Trl.a(true, bool);
+      this.jdField_a_of_type_Trq.a(true, bool);
       return;
-      QLog.e(c, 1, "handleFeedDataRsp() return empty");
-      if ((paramtzm.b()) && (this.jdField_a_of_type_Trl != null) && (this.jdField_a_of_type_Trl.getItemCount() > 0))
+      QLog.e(jdField_b_of_type_JavaLangString, 1, "handleFeedDataRsp() return empty");
+      if ((paramubz.b()) && (this.jdField_a_of_type_Trq != null) && (this.jdField_a_of_type_Trq.getItemCount() > 0))
       {
-        this.jdField_a_of_type_Trl.a().a(bool);
-        k = 1;
+        this.jdField_a_of_type_Trq.getLoadInfo().a(bool);
+        j = 1;
       }
       else
       {
-        if ((this.jdField_a_of_type_Trl != null) && (!this.jdField_a_of_type_Trl.a()))
+        if ((this.jdField_a_of_type_Trq != null) && (!this.jdField_a_of_type_Trq.a()))
         {
-          if (this.jdField_a_of_type_Trl.getItemCount() <= 0) {
-            break label187;
+          if (!c()) {
+            break label189;
           }
-          QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131720466), 1).a();
+          QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131720478), 1).a();
         }
         for (;;)
         {
-          k = 1;
+          j = 1;
           break;
-          label187:
+          label189:
           if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView != null) {
             this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView.d();
           }
         }
-        if (paramtzm.a() == null) {}
-        for (paramtzm = alpo.a(2131720466);; paramtzm = paramtzm.a())
+        if (paramubz.a() == null) {}
+        for (paramubz = alud.a(2131720478);; paramubz = paramubz.a())
         {
-          QLog.e(c, 1, "handleFeedDataRsp() return error！errMsg:" + paramtzm);
-          if ((this.jdField_a_of_type_Trl == null) || (this.jdField_a_of_type_Trl.getItemCount() <= 0)) {
-            break label287;
+          QLog.e(jdField_b_of_type_JavaLangString, 1, "handleFeedDataRsp() return error！errMsg:" + paramubz);
+          if ((this.jdField_a_of_type_Trq == null) || (this.jdField_a_of_type_Trq.a())) {
+            break label483;
           }
-          QQToast.a(BaseApplicationImpl.getContext(), 1, paramtzm, 1).a();
-          k = 1;
+          if (!c()) {
+            break label297;
+          }
+          QQToast.a(BaseApplicationImpl.getContext(), 1, paramubz, 1).a();
+          j = 1;
           break;
         }
-        label287:
+        label297:
         if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView != null)
         {
-          this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView.d(paramtzm);
-          k = 1;
+          this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView.d(paramubz);
+          j = 1;
           continue;
           if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView != null) {
             this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView.c();
           }
-          if (this.jdField_a_of_type_Trl != null)
+          if (this.jdField_a_of_type_Trq != null)
           {
-            if (paramtzm.b()) {
-              this.jdField_a_of_type_Trl.a((List)paramtzm.a());
+            if (paramubz.b()) {
+              this.jdField_a_of_type_Trq.addAll((List)paramubz.a());
             }
             for (;;)
             {
-              this.jdField_a_of_type_Trl.a().a(bool);
-              k = 1;
+              this.jdField_a_of_type_Trq.getLoadInfo().a(bool);
+              j = 1;
               break;
-              this.jdField_a_of_type_Trl.a((ArrayList)paramtzm.a());
-              if (d.equals(b())) {
-                this.jdField_a_of_type_Trl.Q_();
+              this.jdField_a_of_type_Trq.setDatas((ArrayList)paramubz.a());
+              if (c.equals(c())) {
+                this.jdField_a_of_type_Trq.a();
               }
+            }
+            if (this.jdField_a_of_type_Trq != null)
+            {
+              this.jdField_a_of_type_Trq.setDatas((ArrayList)paramubz.a());
+              if (c.equals(c())) {
+                this.jdField_a_of_type_Trq.a();
+              }
+              this.jdField_a_of_type_Trq.getLoadInfo().a(bool);
+              a(paramubz.b(), paramubz.c());
+              j = 1;
+              continue;
             }
           }
         }
-        k = 1;
+        label483:
+        j = 1;
       }
     }
   }
   
-  protected void a(boolean paramBoolean)
+  public String b()
   {
-    TopGestureLayout localTopGestureLayout = a();
-    if (localTopGestureLayout != null) {
-      localTopGestureLayout.setInterceptTouchFlag(paramBoolean);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(c, 2, "enableFlingRight->enable:" + paramBoolean);
-    }
+    return c() + "_" + this.jdField_b_of_type_Int;
   }
   
-  public abstract String b();
-  
-  protected List<ydp> b()
+  protected List<yhy> b()
   {
     return null;
   }
   
-  public void b(trv paramtrv)
+  public void b(tsa paramtsa)
   {
-    this.jdField_a_of_type_Trv = paramtrv;
-    if (this.jdField_a_of_type_Boolean) {
+    this.jdField_a_of_type_Tsa = paramtsa;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_Ubm != null) {
+        this.jdField_a_of_type_Ubm.a(this.jdField_a_of_type_Tsa);
+      }
       b(false);
     }
   }
   
   public void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Trv != null)
-    {
-      c(this.jdField_a_of_type_Trv);
-      this.jdField_a_of_type_Tzb.a(this.jdField_a_of_type_Trv);
-      this.jdField_a_of_type_Tzb.a(paramBoolean);
+    g();
+    if (this.jdField_a_of_type_Ubm != null) {
+      this.jdField_a_of_type_Ubm.a(paramBoolean);
     }
   }
   
@@ -289,80 +310,158 @@ public abstract class QCircleBaseTabFragment
     return false;
   }
   
-  protected List<ydp> c()
+  public abstract String c();
+  
+  protected List<yhy> c()
   {
     ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_Trl = new trl(new Bundle());
+    this.jdField_a_of_type_Trq = new trq(new Bundle());
     ExtraTypeInfo localExtraTypeInfo = new ExtraTypeInfo();
     if (a() != null)
     {
-      localExtraTypeInfo.pageType = a().c();
-      this.jdField_a_of_type_Trl.a(localExtraTypeInfo);
+      localExtraTypeInfo.pageType = a().b();
+      this.jdField_a_of_type_Trq.a(localExtraTypeInfo);
     }
-    this.jdField_a_of_type_Trl.a(a());
-    this.jdField_a_of_type_Trl.a(d.equals(b()));
-    this.jdField_a_of_type_Trl.a(new tvz(this));
+    this.jdField_a_of_type_Trq.setInteractor(a());
+    this.jdField_a_of_type_Trq.a(c.equals(c()));
+    this.jdField_a_of_type_Trq.setOnLoadDataDelegate(new two(this));
     if (b() != null) {
       localArrayList.addAll(b());
     }
-    localArrayList.add(this.jdField_a_of_type_Trl);
+    localArrayList.add(this.jdField_a_of_type_Trq);
     return localArrayList;
   }
   
   public void c()
   {
-    QLog.d(c, 1, "onPageUnSelected unique tabkey:" + a());
-    if (this.jdField_a_of_type_Trl != null) {
-      this.jdField_a_of_type_Trl.b();
+    QLog.d(jdField_b_of_type_JavaLangString, 1, "onPageUnSelected unique tabkey:" + b());
+    if (this.jdField_a_of_type_Trq != null) {
+      this.jdField_a_of_type_Trq.b();
     }
   }
   
-  protected void c(trv paramtrv) {}
+  protected boolean c()
+  {
+    return (this.jdField_a_of_type_Trq != null) && (this.jdField_a_of_type_Trq.getItemCount() > 0);
+  }
   
   protected void d()
   {
-    this.jdField_a_of_type_Tzb = ((tzb)a(a(), tzb.class));
-    this.jdField_a_of_type_Tzb.a(b());
-    this.jdField_a_of_type_Tzb.b().observe(this, new twb(this));
+    this.jdField_a_of_type_Ubm = ((ubm)a(b(), ubm.class));
+    this.jdField_a_of_type_Ubm.b(c());
+    this.jdField_a_of_type_Ubm.b().observe(this, new twq(this));
+    this.jdField_a_of_type_Ubm.a(this.jdField_a_of_type_Tsa);
   }
   
   protected void e()
   {
-    b(true);
+    if (!this.jdField_a_of_type_Ubm.a())
+    {
+      QLog.d("QCircleFolderCacheHelper", 1, "initViewData without page cache" + b());
+      b(true);
+      return;
+    }
+    g();
+    QLog.d("QCircleFolderCacheHelper", 1, "initViewData with page cache" + b());
   }
   
   public void f()
   {
-    this.jdField_a_of_type_Tzb.b();
+    if (this.jdField_a_of_type_Ubm != null) {
+      this.jdField_a_of_type_Ubm.b();
+    }
   }
   
-  public void g()
+  protected void g() {}
+  
+  public void h()
   {
-    this.jdField_a_of_type_Tvm.a().a().scrollToPosition(0);
+    QLog.d(jdField_b_of_type_JavaLangString, 1, "scrollToTop" + b());
+    try
+    {
+      this.jdField_a_of_type_Tvw.a().a().scrollToPosition(0);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d(jdField_b_of_type_JavaLangString, 1, "scrollToTop exception:" + localException.toString() + b());
+    }
+  }
+  
+  public void i()
+  {
+    QLog.d(jdField_b_of_type_JavaLangString, 1, "scrollToTopAndRefresh" + b());
+    try
+    {
+      this.jdField_a_of_type_Tvw.a().a().g();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d(jdField_b_of_type_JavaLangString, 1, "scrollToTopAndRefresh exception:" + localException.toString() + b());
+    }
   }
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
     if (getActivity() != null) {
-      this.j = getActivity().app.getAccount();
+      this.i = getActivity().app.getAccount();
+    }
+  }
+  
+  public void onDestroyView()
+  {
+    int k = 0;
+    QLog.d(jdField_b_of_type_JavaLangString, 1, "onDestroyView" + b());
+    super.onDestroyView();
+    for (;;)
+    {
+      try
+      {
+        if ((this.jdField_a_of_type_Ubm != null) && (this.jdField_a_of_type_Tvw.a() != null) && (this.jdField_a_of_type_Tvw.a().a() != null))
+        {
+          Object localObject1 = this.jdField_a_of_type_Tvw.a().a();
+          Object localObject2 = this.jdField_a_of_type_Tvw.a().a().getLayoutManager();
+          if ((localObject2 instanceof yiq))
+          {
+            localObject2 = (yiq)localObject2;
+            localObject1 = ((RecyclerView)localObject1).getChildAt(0);
+            if (localObject1 == null) {
+              break label159;
+            }
+            k = ((yiq)localObject2).getPosition((View)localObject1);
+            j = ((View)localObject1).getTop();
+            this.jdField_a_of_type_Ubm.a(this.jdField_a_of_type_Trq.a());
+            this.jdField_a_of_type_Ubm.a(k, j);
+          }
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      label159:
+      int j = 0;
     }
   }
   
   public void onDetach()
   {
     super.onDetach();
-    if (this.jdField_a_of_type_Tzb != null)
+    if (this.jdField_a_of_type_Ubm != null)
     {
-      this.jdField_a_of_type_Tzb.b().removeObservers(this);
-      this.jdField_a_of_type_Tzb = null;
+      this.jdField_a_of_type_Ubm.b().removeObservers(this);
+      this.jdField_a_of_type_Ubm = null;
     }
-    if (this.jdField_a_of_type_Tuk != null)
+    if (this.jdField_a_of_type_Tuz != null)
     {
-      this.jdField_a_of_type_Tuk.d();
-      this.jdField_a_of_type_Tuk = null;
+      this.jdField_a_of_type_Tuz.e();
+      this.jdField_a_of_type_Tuz = null;
     }
-    QLog.d(c, 1, "onDetach()" + a());
+    QLog.d(jdField_b_of_type_JavaLangString, 1, "onDetach()" + b());
   }
   
   public void setUserVisibleHint(boolean paramBoolean)
@@ -374,7 +473,7 @@ public abstract class QCircleBaseTabFragment
       d();
       e();
     }
-    QLog.d(c, 4, "setUserVisibleHint :" + getUserVisibleHint());
+    QLog.d(jdField_b_of_type_JavaLangString, 4, "setUserVisibleHint :" + getUserVisibleHint());
   }
 }
 

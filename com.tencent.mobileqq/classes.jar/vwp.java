@@ -1,42 +1,18 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.util.SparseArray;
 
-class vwp
-  implements View.OnLongClickListener
+final class vwp
+  extends SparseArray<String>
 {
-  vwp(vwo paramvwo) {}
-  
-  public boolean onLongClick(View paramView)
+  vwp()
   {
-    int i = 0;
-    paramView = (urk)urr.a(10);
-    boolean bool;
-    if (!((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue())
-    {
-      bool = true;
-      paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
-      paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
-      if (paramView != null)
-      {
-        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
-        if (paramView != null) {
-          if (!bool) {
-            break label90;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      paramView.a(i);
-      return true;
-      bool = false;
-      break;
-      label90:
-      i = 8;
-    }
+    put(31, "PLAYER_INFO_PLAYER_TYPE");
+    put(24, "PLAYER_INFO_SUCC_SET_DECODER_MODE");
+    put(33, "PLAYER_INFO_START_GET_VINFO");
+    put(21, alud.a(2131714942));
+    put(34, "PLAYER_INFO_END_GET_VINFO");
+    put(22, alud.a(2131714946));
+    put(23, "PLAYER_INFO_START_RENDERING");
+    put(39, "PLAYER_INFO_HW_DECODE_FAILED");
   }
 }
 

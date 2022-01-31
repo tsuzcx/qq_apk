@@ -1,14 +1,47 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
-public class amjb
-  extends amjd
+class amjb
+  implements Comparator<awge>
 {
-  public amjb(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  amjb(amja paramamja) {}
+  
+  public int a(awge paramawge1, awge paramawge2)
   {
-    super(paramQQAppInterface, paramProxyManager);
-    this.a = DataLineMsgRecord.tableName(1);
+    int j = -1;
+    paramawge1 = (RecentUser)paramawge1;
+    paramawge2 = (RecentUser)paramawge2;
+    long l1 = Math.max(paramawge1.lastmsgtime, paramawge1.lastmsgdrafttime);
+    long l2 = Math.max(paramawge2.lastmsgtime, paramawge2.lastmsgdrafttime);
+    int i;
+    if (l1 < l2)
+    {
+      i = 1;
+      if (paramawge1.getType() != paramawge2.getType()) {
+        break label80;
+      }
+    }
+    label80:
+    do
+    {
+      do
+      {
+        return i;
+        if (l1 == l2)
+        {
+          i = 0;
+          break;
+        }
+        i = -1;
+        break;
+        i = j;
+      } while (paramawge1.getType() == 0);
+      if (paramawge2.getType() == 0) {
+        return 1;
+      }
+      i = j;
+    } while (paramawge1.getType() - paramawge2.getType() > 0);
+    return 1;
   }
 }
 

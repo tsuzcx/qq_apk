@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.debug.activities;
 
-import uqi;
-import urp;
+import uur;
+import uvy;
 
 public class DebugPromoteTaskCode$1
   implements Runnable
 {
-  public DebugPromoteTaskCode$1(uqi paramuqi) {}
+  public DebugPromoteTaskCode$1(uur paramuur) {}
   
   public void run()
   {

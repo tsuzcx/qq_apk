@@ -1,181 +1,172 @@
-import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.LebaIconDownloader.1;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class adby
+  extends alpq
 {
-  /* Error */
-  public static Drawable a(Context paramContext, String paramString)
+  public adby(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ifnonnull +5 -> 6
-    //   4: aconst_null
-    //   5: areturn
-    //   6: new 10	java/io/File
-    //   9: dup
-    //   10: aload_0
-    //   11: invokevirtual 16	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   14: aload_1
-    //   15: invokespecial 20	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   18: astore_0
-    //   19: aload_0
-    //   20: ifnull +117 -> 137
-    //   23: aload_0
-    //   24: invokevirtual 24	java/io/File:exists	()Z
-    //   27: ifeq +110 -> 137
-    //   30: new 26	java/io/FileInputStream
-    //   33: dup
-    //   34: aload_0
-    //   35: invokespecial 29	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   38: astore_1
-    //   39: aload_1
-    //   40: astore_0
-    //   41: new 31	android/graphics/drawable/BitmapDrawable
-    //   44: dup
-    //   45: aload_1
-    //   46: invokespecial 34	android/graphics/drawable/BitmapDrawable:<init>	(Ljava/io/InputStream;)V
-    //   49: astore_2
-    //   50: aload_2
-    //   51: astore_0
-    //   52: aload_1
-    //   53: ifnull +9 -> 62
-    //   56: aload_1
-    //   57: invokevirtual 38	java/io/FileInputStream:close	()V
-    //   60: aload_2
-    //   61: astore_0
-    //   62: aload_0
-    //   63: areturn
-    //   64: astore_2
-    //   65: aconst_null
-    //   66: astore_1
-    //   67: aload_1
-    //   68: astore_0
-    //   69: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   72: ifeq +33 -> 105
-    //   75: aload_1
-    //   76: astore_0
-    //   77: ldc 45
-    //   79: iconst_2
-    //   80: new 47	java/lang/StringBuilder
-    //   83: dup
-    //   84: invokespecial 49	java/lang/StringBuilder:<init>	()V
-    //   87: ldc 51
-    //   89: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: aload_2
-    //   93: invokevirtual 59	java/lang/Exception:toString	()Ljava/lang/String;
-    //   96: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   99: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   102: invokestatic 64	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   105: aload_1
-    //   106: ifnull +7 -> 113
-    //   109: aload_1
-    //   110: invokevirtual 38	java/io/FileInputStream:close	()V
-    //   113: aconst_null
-    //   114: astore_0
-    //   115: goto -53 -> 62
-    //   118: astore_0
-    //   119: aconst_null
-    //   120: astore_0
-    //   121: goto -59 -> 62
-    //   124: astore_1
-    //   125: aconst_null
-    //   126: astore_0
-    //   127: aload_0
-    //   128: ifnull +7 -> 135
-    //   131: aload_0
-    //   132: invokevirtual 38	java/io/FileInputStream:close	()V
-    //   135: aload_1
-    //   136: athrow
-    //   137: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   140: ifeq -136 -> 4
-    //   143: ldc 45
-    //   145: iconst_2
-    //   146: new 47	java/lang/StringBuilder
-    //   149: dup
-    //   150: invokespecial 49	java/lang/StringBuilder:<init>	()V
-    //   153: ldc 66
-    //   155: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   158: aload_1
-    //   159: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   162: ldc 68
-    //   164: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   167: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   170: invokestatic 64	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   173: aconst_null
-    //   174: areturn
-    //   175: astore_0
-    //   176: aload_2
-    //   177: astore_0
-    //   178: goto -116 -> 62
-    //   181: astore_0
-    //   182: goto -47 -> 135
-    //   185: astore_1
-    //   186: goto -59 -> 127
-    //   189: astore_2
-    //   190: goto -123 -> 67
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	193	0	paramContext	Context
-    //   0	193	1	paramString	String
-    //   49	12	2	localBitmapDrawable	BitmapDrawable
-    //   64	113	2	localException1	java.lang.Exception
-    //   189	1	2	localException2	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   30	39	64	java/lang/Exception
-    //   109	113	118	java/lang/Exception
-    //   30	39	124	finally
-    //   56	60	175	java/lang/Exception
-    //   131	135	181	java/lang/Exception
-    //   41	50	185	finally
-    //   69	75	185	finally
-    //   77	105	185	finally
-    //   41	50	189	java/lang/Exception
+    if ((paramBoolean) && ((paramObject instanceof Card)) && (bdeu.a(this.a.app.getCurrentAccountUin(), ((Card)paramObject).uin)))
+    {
+      FriendProfileMoreInfoActivity.a(this.a, (Card)paramObject, true);
+      if (!this.a.i)
+      {
+        paramObject = (anys)this.a.app.getManager(112);
+        FriendProfileMoreInfoActivity.a(this.a, paramObject.a());
+      }
+    }
   }
   
-  public static Drawable a(String paramString)
+  protected void onGetDetailInfo(boolean paramBoolean, String paramString, Card paramCard)
   {
-    paramString = BaseApplicationImpl.sImageCache.get(paramString);
-    if (paramString == null) {
-      return null;
+    if ((paramBoolean) && (paramCard != null) && (bdeu.a(this.a.app.getCurrentAccountUin(), paramCard.uin))) {
+      FriendProfileMoreInfoActivity.a(this.a, paramCard, true);
     }
-    if (((paramString instanceof Drawable)) || ((paramString instanceof BitmapDrawable))) {
-      return (Drawable)paramString;
-    }
-    return null;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, bdcy parambdcy)
+  protected void onGetEducationList(boolean paramBoolean, long paramLong, ArrayList<awrl> paramArrayList)
   {
-    if (paramContext == null) {}
-    while ((paramString == null) || ("".equals(paramString)) || (paramQQAppInterface == null)) {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileMoreInfoActivity", 2, "onGetEducationList, success:" + paramBoolean + ", uin=" + paramLong);
+    }
+    if (paramBoolean) {
+      FriendProfileMoreInfoActivity.a(this.a, paramArrayList);
+    }
+  }
+  
+  protected void onGetLocationDescription(boolean paramBoolean, String paramString, Card paramCard)
+  {
+    if ((paramBoolean) && (paramCard != null) && (bdeu.a(this.a.app.getCurrentAccountUin(), paramCard.uin))) {
+      FriendProfileMoreInfoActivity.a(this.a, paramCard, true);
+    }
+  }
+  
+  protected void onGetQZonePhotoWall(boolean paramBoolean, String paramString1, mobile_sub_get_photo_wall_rsp parammobile_sub_get_photo_wall_rsp, String paramString2)
+  {
+    if ((paramBoolean) && (parammobile_sub_get_photo_wall_rsp != null))
+    {
+      paramString1 = new ArrayList();
+      this.a.a(parammobile_sub_get_photo_wall_rsp.total_pic, parammobile_sub_get_photo_wall_rsp.iHasMore, parammobile_sub_get_photo_wall_rsp.attachInfo, parammobile_sub_get_photo_wall_rsp.vecUrls, paramString1);
+      parammobile_sub_get_photo_wall_rsp = this.a.jdField_a_of_type_Bhtd.obtainMessage(1002);
+      parammobile_sub_get_photo_wall_rsp.obj = paramString1;
+      this.a.jdField_a_of_type_Bhtd.sendMessage(parammobile_sub_get_photo_wall_rsp);
+    }
+  }
+  
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileMoreInfoActivity", 2, String.format("onSetDetailInfo success=%s resultCode=%s mDelayRemoveCardObserver=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Boolean.valueOf(this.a.jdField_b_of_type_Boolean) }));
+    }
+    if (FriendProfileMoreInfoActivity.a(this.a))
+    {
+      FriendProfileMoreInfoActivity.a(this.a, paramBoolean, paramCard);
       return;
     }
-    ThreadManager.post(new LebaIconDownloader.1(paramContext, paramString, paramQQAppInterface, parambdcy), 5, null, true);
-  }
-  
-  public static void a(String paramString, Drawable paramDrawable)
-  {
-    BaseApplicationImpl.sImageCache.put(paramString, paramDrawable);
-  }
-  
-  public static Drawable b(Context paramContext, String paramString)
-  {
-    if (a(paramString) != null) {
-      return a(paramString);
-    }
-    if (a(paramContext, paramString) != null)
+    if (((paramBoolean) && (paramInt == 0)) || ((!paramBoolean) && (paramInt == 34)))
     {
-      a(paramString, a(paramContext, paramString));
-      return a(paramContext, paramString);
+      label86:
+      if (this.a.jdField_b_of_type_Boolean)
+      {
+        this.a.removeObserver(this.a.jdField_a_of_type_Alpq);
+        this.a.jdField_b_of_type_Boolean = false;
+      }
+      if ((!this.a.jdField_a_of_type_Boolean) || (this.a.jdField_b_of_type_Bety == null)) {
+        break label762;
+      }
+      if (paramBoolean)
+      {
+        azqs.b(this.a.app, "dc00898", "", "", "0X8007EC3", "0X8007EC3", 0, 0, "", "", "", "");
+        String str;
+        if (this.a.jdField_a_of_type_Adck.jdField_b_of_type_Boolean)
+        {
+          str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+          if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(str.trim()))) {
+            break label692;
+          }
+        }
+        label219:
+        if (this.a.jdField_c_of_type_Boolean) {
+          azqs.b(this.a.app, "dc00898", "", "", "0X8007EC8", "0X8007EC8", 0, 0, "", "", "", "");
+        }
+        if (this.a.jdField_d_of_type_Boolean) {
+          azqs.b(this.a.app, "dc00898", "", "", "0X8007EC9", "0X8007EC9", 0, 0, "", "", "", "");
+        }
+        if (this.a.e) {
+          azqs.b(this.a.app, "dc00898", "", "", "0X8007ECA", "0X8007ECA", 0, 0, "", "", "", "");
+        }
+        if (this.a.jdField_b_of_type_Adck.jdField_b_of_type_Boolean) {
+          azqs.b(this.a.app, "dc00898", "", "", "0X8007ECB", "0X8007ECB", 0, 0, "", "", "", "");
+        }
+        if (this.a.jdField_c_of_type_Adck.jdField_b_of_type_Boolean) {
+          azqs.b(this.a.app, "dc00898", "", "", "0X8007ECC", "0X8007ECC", 0, 0, "", "", "", "");
+        }
+        if (this.a.f) {
+          azqs.b(this.a.app, "dc00898", "", "", "0X8007ECD", "0X8007ECD", 0, 0, "", "", "", "");
+        }
+        if (this.a.g) {
+          azqs.b(this.a.app, "dc00898", "", "", "0X8007ECE", "0X8007ECE", 0, 0, "", "", "", "");
+        }
+        if (this.a.jdField_d_of_type_Adck.jdField_b_of_type_Boolean)
+        {
+          str = this.a.jdField_d_of_type_AndroidWidgetEditText.getText().toString();
+          Matcher localMatcher = SearchBaseActivity.a.matcher(str);
+          if ((TextUtils.isEmpty(str)) || (localMatcher.matches())) {
+            break label727;
+          }
+        }
+      }
     }
-    return null;
+    for (;;)
+    {
+      if (this.a.h) {
+        azqs.b(this.a.app, "dc00898", "", "", "0X8007ED0", "0X8007ED0", 0, 0, "", "", "", "");
+      }
+      if (this.a.jdField_a_of_type_AndroidOsBundle == null) {
+        this.a.jdField_a_of_type_AndroidOsBundle = new Bundle();
+      }
+      this.a.jdField_a_of_type_AndroidOsBundle.putShort("key_personality_label_switch", paramCard.switch_disable_personality_label);
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.jdField_b_of_type_Bety.dismiss();
+      if (this.a.isFinishing()) {
+        break;
+      }
+      this.a.finish();
+      return;
+      this.a.a(2131695607, 1);
+      break label86;
+      label692:
+      azqs.b(this.a.app, "dc00898", "", "", "0X8007EC7", "0X8007EC7", 0, 0, "", "", "", "");
+      break label219;
+      label727:
+      azqs.b(this.a.app, "dc00898", "", "", "0X8007ECF", "0X8007ECF", 0, 0, "", "", "", "");
+    }
+    label762:
+    FriendProfileMoreInfoActivity.a(this.a, paramCard, true);
+  }
+  
+  protected void onSetNick(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileMoreInfoActivity", 2, "onSetNick, success:" + paramBoolean + ", nick=" + paramString);
+    }
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.jdField_a_of_type_AndroidWidgetEditText != null) && (!paramString.equals(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString())))
+    {
+      this.a.a(paramString);
+      this.a.jdField_a_of_type_Adck.jdField_b_of_type_Boolean = true;
+    }
   }
 }
 

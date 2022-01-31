@@ -1,138 +1,27 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.util.AttributeSet;
-import android.view.LayoutInflater.Factory2;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
-import com.tencent.widget.AlphaClickableButton;
-import com.tencent.widget.AlphaClickableTextView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateTroop;
+import com.tencent.qphone.base.util.QLog;
 
 public class amix
-  implements LayoutInflater.Factory2
+  extends ameq
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16843087, 16843088, 16844078, 2131034532, 2131034821, 2131034958, 2131034956 };
-  private Activity jdField_a_of_type_AndroidAppActivity;
+  private amix(UpdateTroop paramUpdateTroop) {}
   
-  public amix(Activity paramActivity)
+  protected void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  private View a(String paramString, Context paramContext, AttributeSet paramAttributeSet)
-  {
-    TextView localTextView = null;
-    if (paramString.equals("TextView")) {
-      localTextView = new TextView(paramContext, paramAttributeSet);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
     }
-    do
+    if (!paramBoolean)
     {
-      return localTextView;
-      if (paramString.equals("Button")) {
-        return new Button(paramContext, paramAttributeSet);
-      }
-      if (paramString.endsWith("DragTextView")) {
-        return new DragTextView(paramContext, paramAttributeSet);
-      }
-      if (paramString.equals("com.tencent.mobileqq.widget.FormSwitchItem")) {
-        return new FormSwitchItem(paramContext, paramAttributeSet);
-      }
-      if (paramString.equals("com.tencent.mobileqq.widget.FormSimpleItem")) {
-        return new FormSimpleItem(paramContext, paramAttributeSet);
-      }
-      if (paramString.equals("com.tencent.mobileqq.widget.FormSwitchSimpleItem")) {
-        return new FormSwitchSimpleItem(paramContext, paramAttributeSet);
-      }
-      if (paramString.equals("com.tencent.mobileqq.widget.FormMultiLineSwitchItem")) {
-        return new FormMultiLineSwitchItem(paramContext, paramAttributeSet);
-      }
-      if (paramString.equals("com.tencent.widget.AlphaClickableTextView")) {
-        return new AlphaClickableTextView(paramContext, paramAttributeSet);
-      }
-    } while (!paramString.equals("com.tencent.widget.AlphaClickableButton"));
-    return new AlphaClickableButton(paramContext, paramAttributeSet);
-  }
-  
-  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
-  {
-    paramView = a(paramString, paramContext, paramAttributeSet);
-    if (paramView != null)
-    {
-      paramString = paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt);
-      int i = 0;
-      if (i < jdField_a_of_type_ArrayOfInt.length)
-      {
-        int j = paramString.getResourceId(i, 0);
-        if (j == 0) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          paramAttributeSet = paramContext.getString(j);
-          switch (jdField_a_of_type_ArrayOfInt[i])
-          {
-          default: 
-            break;
-          case 16843087: 
-            if ((paramView instanceof TextView)) {
-              ((TextView)paramView).setText(paramAttributeSet);
-            } else if ((paramView instanceof Button)) {
-              ((Button)paramView).setText(paramAttributeSet);
-            } else if ((paramView instanceof FormSwitchItem)) {
-              ((FormSwitchItem)paramView).setText(paramAttributeSet);
-            }
-            break;
-          case 16843088: 
-            if ((paramView instanceof TextView)) {
-              ((TextView)paramView).setHint(paramAttributeSet);
-            } else if ((paramView instanceof Button)) {
-              ((Button)paramView).setHint(paramAttributeSet);
-            }
-            break;
-          case 16844078: 
-            if ((paramView instanceof TextView)) {
-              ((TextView)paramView).setContentDescription(paramAttributeSet);
-            } else if ((paramView instanceof Button)) {
-              ((Button)paramView).setContentDescription(paramAttributeSet);
-            }
-            break;
-          case 2131034532: 
-            if ((paramView instanceof FormSimpleItem)) {
-              ((FormSimpleItem)paramView).setLeftText(paramAttributeSet);
-            }
-            break;
-          case 2131034821: 
-            if ((paramView instanceof FormSimpleItem)) {
-              ((FormSimpleItem)paramView).setRightText(paramAttributeSet);
-            }
-            break;
-          case 2131034958: 
-            if ((paramView instanceof FormSwitchItem)) {
-              ((FormSwitchItem)paramView).setText(paramAttributeSet);
-            }
-            break;
-          case 2131034956: 
-            if ((paramView instanceof FormMultiLineSwitchItem)) {
-              ((FormMultiLineSwitchItem)paramView).setSecendLineText(paramAttributeSet);
-            }
-            break;
-          }
-        }
-      }
-      paramString.recycle();
+      this.a.a(6);
+      return;
     }
-    return paramView;
-  }
-  
-  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
-  {
-    return null;
+    this.a.a.a.edit().putBoolean("isTrooplistok", true).commit();
+    this.a.a.notifyUI(3, true, Integer.valueOf(2));
+    this.a.a(7);
   }
 }
 

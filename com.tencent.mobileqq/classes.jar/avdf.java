@@ -1,43 +1,81 @@
-import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import mqq.manager.TicketManager;
+import tencent.im.oidb.cmd0xada.oidb_0xada.ReqBody;
 
-class avdf
-  implements auzh
+public class avdf
 {
-  avdf(avcw paramavcw) {}
+  public int a;
+  public avdh a;
+  public avdi a;
+  public AppInterface a;
+  public int b;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public avdf(AppInterface paramAppInterface)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new oidb_0xada.RspBody();
-    }
-    try
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+  }
+  
+  private boolean a(oidb_0xada.ReqBody paramReqBody)
+  {
+    paramReqBody.uid.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
+    paramReqBody.tinyid.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
+    Object localObject = (TicketManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2);
+    String str = ((TicketManager)localObject).getA2(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    localObject = ((TicketManager)localObject).getSkey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + avcw.c(this.a));
-      }
-      if (paramBundle.busi_buf.has())
-      {
-        paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + avcw.c(this.a));
-        }
-      }
-      return;
+      paramReqBody.a2.set(str);
+      paramReqBody.platform.set(1);
+      paramReqBody.version.set("8.3.5");
+      paramReqBody.original_id.set(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+      paramReqBody.original_key.set((String)localObject);
+      paramReqBody.original_id_type.set(1);
+      return true;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    return false;
+  }
+  
+  public avdf a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public avdf a(avdh paramavdh)
+  {
+    this.jdField_a_of_type_Avdh = paramavdh;
+    return this;
+  }
+  
+  public avdf a(avdi paramavdi)
+  {
+    this.jdField_a_of_type_Avdi = paramavdi;
+    return this;
+  }
+  
+  public avdf a(byte[] paramArrayOfByte)
+  {
+    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
+    if (a(localReqBody))
     {
-      paramArrayOfByte.printStackTrace();
+      localReqBody.cmd.set(this.jdField_a_of_type_Int);
+      localReqBody.subcmd.set(this.b);
+      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+      mzy.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new avdg(this), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
     }
+    return this;
+  }
+  
+  public avdf b(int paramInt)
+  {
+    this.b = paramInt;
+    return this;
   }
 }
 

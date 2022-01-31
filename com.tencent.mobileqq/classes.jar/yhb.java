@@ -1,34 +1,26 @@
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoTipOffRsp;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.subscribe.comment.EmoView;
 
-class yhb
-  implements yvn<CertifiedAccountWrite.StDoTipOffRsp>
+public class yhb
+  extends Handler
 {
-  yhb(yha paramyha) {}
+  public yhb(EmoView paramEmoView) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoTipOffRsp paramStDoTipOffRsp)
+  public void handleMessage(Message paramMessage)
   {
-    paramBoolean = true;
-    if (paramLong == 0L)
+    int i;
+    if (paramMessage.what == 0)
     {
-      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest success");
-      if (this.a.a != null)
-      {
-        paramString = this.a.a;
-        if (paramLong != 0L) {
-          break label78;
-        }
-      }
+      i = EmoView.a(this.a) + 1;
+      if ((i <= 4) && (EmoView.a(this.a)[EmoView.a(this.a)] == 0)) {}
     }
-    for (;;)
+    else
     {
-      paramString.a(paramBoolean);
       return;
-      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest failed retCode:" + paramLong);
-      break;
-      label78:
-      paramBoolean = false;
     }
+    EmoView.a(this.a, i);
+    EmoView.a(this.a)[EmoView.a(this.a)] = 1;
   }
 }
 

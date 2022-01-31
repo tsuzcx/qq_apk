@@ -1,33 +1,24 @@
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.portal.FormalView;
+import com.tencent.mobileqq.portal.StrokeTextView;
 
-class awmp
-  implements AdapterView.OnItemClickListener
+public class awmp
+  extends bhry
 {
-  awmp(awmn paramawmn) {}
+  public awmp(FormalView paramFormalView, View paramView) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (awmn.a(this.a).isShowing()) {
-      awmn.a(this.a).dismiss();
-    }
-    paramInt = -1;
-    switch ((int)paramLong)
-    {
-    }
-    for (;;)
-    {
-      if (awmn.a(this.a) != null) {
-        awmn.a(this.a).a(paramInt, awmn.a(this.a));
-      }
-      return;
-      awmn.a(this.a);
-      paramInt = 0;
-      continue;
-      awmn.b(this.a);
-      paramInt = 2;
+    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.c();
+    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a = true;
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView) != null) {
+      FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView).setVisibility(0);
     }
   }
 }

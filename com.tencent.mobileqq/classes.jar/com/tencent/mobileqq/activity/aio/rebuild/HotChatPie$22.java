@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agmy;
-import agno;
-import akes;
+import agrn;
+import agsd;
+import akjh;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
-import bdee;
-import bfib;
+import bdin;
+import bfmk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
@@ -18,13 +18,13 @@ import mqq.manager.TicketManager;
 public class HotChatPie$22
   implements Runnable
 {
-  public HotChatPie$22(agmy paramagmy, int paramInt1, int paramInt2) {}
+  public HotChatPie$22(agrn paramagrn, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     int j = 1;
-    if (!bdee.g(this.this$0.jdField_a_of_type_AndroidContentContext)) {
-      QQToast.a(this.this$0.jdField_a_of_type_AndroidContentContext, 1, this.this$0.jdField_a_of_type_AndroidContentContext.getString(2131694767), 0).a();
+    if (!bdin.g(this.this$0.jdField_a_of_type_AndroidContentContext)) {
+      QQToast.a(this.this$0.jdField_a_of_type_AndroidContentContext, 1, this.this$0.jdField_a_of_type_AndroidContentContext.getString(2131694769), 0).a();
     }
     while ((this.this$0.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo == null) || (!this.this$0.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isBuLuoHotChat())) {
       return;
@@ -48,8 +48,8 @@ public class HotChatPie$22
         localBundle.putString("Referer", String.format("https://buluo.qq.com/mobile/barindex.html?bid=%s&scene=detail_titleNav&_wv=1027", new Object[] { localObject3 }));
         localObject1 = this.this$0.jdField_a_of_type_AndroidContentContext;
         localObject2 = this.this$0.jdField_a_of_type_ComTencentWidgetXListView;
-        localObject3 = this.this$0.jdField_a_of_type_Akes;
-        localObject4 = agmy.a(this.this$0);
+        localObject3 = this.this$0.jdField_a_of_type_Akjh;
+        localObject4 = agrn.a(this.this$0);
         localTextView = this.this$0.n;
         if (this.b != 0) {
           break label357;
@@ -58,7 +58,7 @@ public class HotChatPie$22
       label357:
       for (int i = j;; i = 2)
       {
-        new bfib("https://buluo.qq.com/cgi-bin/bar/post/get_post_from_reliao", "GET", new agno((Context)localObject1, (XListView)localObject2, (akes)localObject3, (PullRefreshHeader)localObject4, localTextView, i)).a(localBundle);
+        new bfmk("https://buluo.qq.com/cgi-bin/bar/post/get_post_from_reliao", "GET", new agsd((Context)localObject1, (XListView)localObject2, (akjh)localObject3, (PullRefreshHeader)localObject4, localTextView, i)).a(localBundle);
         return;
         i = this.b;
         break;

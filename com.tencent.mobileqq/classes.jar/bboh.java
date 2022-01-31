@@ -1,23 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation.10.1;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-
-public class bboh
-  implements DialogInterface.OnClickListener
+class bboh
 {
-  public bboh(TroopFileItemOperation.10.1 param1) {}
+  final float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  float b = 0.0F;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bboh(bboe parambboe, float paramFloat)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (bboe.a(this.a.a.jdField_a_of_type_Bboe) == 0);
-    TroopFileTransferManager.a(this.a.a.jdField_a_of_type_Bboe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_Bboe.jdField_a_of_type_Long).b(this.a.a.jdField_a_of_type_Bbnr.a);
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Int * this.jdField_a_of_type_Float * 0.4F + this.b * 0.6F;
   }
 }
 

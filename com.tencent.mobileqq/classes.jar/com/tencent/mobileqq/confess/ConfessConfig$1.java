@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.confess;
 
-import aoeh;
+import aoiq;
 
 public class ConfessConfig$1
   implements Runnable
 {
-  public ConfessConfig$1(aoeh paramaoeh) {}
+  public ConfessConfig$1(aoiq paramaoiq) {}
   
   public void run()
   {

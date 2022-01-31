@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.widget.relativevideo;
 
-import ykv;
+import ypi;
 
 public class ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter$1
   implements Runnable
 {
-  public ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter$1(ykv paramykv) {}
+  public ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter$1(ypi paramypi) {}
   
   public void run()
   {

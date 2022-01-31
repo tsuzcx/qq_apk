@@ -1,29 +1,30 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bglv
-  extends Handler
+public abstract interface bglv
 {
-  public bglv(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract int a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    bglt localbglt = (bglt)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      AsyncTask.b(localbglt.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask, localbglt.jdField_a_of_type_ArrayOfJavaLangObject[0]);
-      return;
-    }
-    localbglt.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask.a(localbglt.jdField_a_of_type_ArrayOfJavaLangObject);
-  }
+  public abstract int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  
+  public abstract Activity a();
+  
+  public abstract Context a();
+  
+  public abstract MiniAppInfo a();
+  
+  public abstract <T> T a(bgmc<T> parambgmc);
+  
+  public abstract String a();
+  
+  public abstract boolean a();
+  
+  public abstract byte[] a(int paramInt);
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

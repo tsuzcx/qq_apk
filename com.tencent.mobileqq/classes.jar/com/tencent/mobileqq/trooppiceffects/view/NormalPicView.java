@@ -5,11 +5,11 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bcsx;
+import bcxg;
 
 public class NormalPicView
   extends ImageView
-  implements bcsx
+  implements bcxg
 {
   public NormalPicView(Context paramContext)
   {

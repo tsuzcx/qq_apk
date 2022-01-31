@@ -1,14 +1,19 @@
-public abstract interface bjti
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.statistic.serverip.WebAppIpRecord;
+
+public final class bjti
+  implements Parcelable.Creator<WebAppIpRecord>
 {
-  public abstract String a();
+  public WebAppIpRecord a(Parcel paramParcel)
+  {
+    return new WebAppIpRecord(paramParcel);
+  }
   
-  public abstract void a(int paramInt, String paramString1, String paramString2);
-  
-  public abstract void d(boolean paramBoolean);
-  
-  public abstract void j();
-  
-  public abstract void setBannerHeight(int paramInt);
+  public WebAppIpRecord[] a(int paramInt)
+  {
+    return new WebAppIpRecord[paramInt];
+  }
 }
 
 

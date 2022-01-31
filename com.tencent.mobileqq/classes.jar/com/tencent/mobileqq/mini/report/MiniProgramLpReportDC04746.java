@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.report;
 
 import android.os.Build.VERSION;
-import bexd;
-import bizf;
+import bfbm;
+import bjdm;
 import java.util.ArrayList;
 import java.util.List;
 import ndd;
@@ -21,12 +21,12 @@ public class MiniProgramLpReportDC04746
   public static void report(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(MiniProgramReportHelper.newEntry("uin", String.valueOf(bexd.a().a())));
+    localArrayList.add(MiniProgramReportHelper.newEntry("uin", String.valueOf(bfbm.a().a())));
     localArrayList.add(MiniProgramReportHelper.newEntry("touin", ""));
     localArrayList.add(MiniProgramReportHelper.newEntry("actiontype", String.valueOf(paramInt1)));
     localArrayList.add(MiniProgramReportHelper.newEntry("subactiontype", String.valueOf(paramInt2)));
     localArrayList.add(MiniProgramReportHelper.newEntry("action_source", "shanping"));
-    localArrayList.add(MiniProgramReportHelper.newEntry("qua", bizf.a()));
+    localArrayList.add(MiniProgramReportHelper.newEntry("qua", bjdm.a()));
     localArrayList.add(MiniProgramReportHelper.newEntry("platform", "android"));
     localArrayList.add(MiniProgramReportHelper.newEntry("os_version", Build.VERSION.RELEASE));
     localArrayList.add(MiniProgramReportHelper.newEntry("network_type", ndd.a()));

@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
-import wme;
-import wps;
-import wsv;
+import wqn;
+import wub;
+import wxe;
 
 public class FeedSegment$16
   implements Runnable
 {
-  public FeedSegment$16(wps paramwps, int paramInt, wme paramwme, String paramString) {}
+  public FeedSegment$16(wub paramwub, int paramInt, wqn paramwqn, String paramString) {}
   
   public void run()
   {
-    wsv.b("Q.qqstory.home:FeedSegment", "doScrollHorizal, findViewHolder, null, waiting done");
-    wps.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Wme, this.jdField_a_of_type_JavaLangString, true);
+    wxe.b("Q.qqstory.home:FeedSegment", "doScrollHorizal, findViewHolder, null, waiting done");
+    wub.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Wqn, this.jdField_a_of_type_JavaLangString, true);
   }
 }
 

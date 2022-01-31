@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Window;
-import bhib;
+import bhmi;
 import com.tencent.qqmini.sdk.utils.DisplayUtil;
 
 public class MiniTranslucentFragmentActivity
@@ -14,7 +14,7 @@ public class MiniTranslucentFragmentActivity
 {
   public static void a(Activity paramActivity, Intent paramIntent, Class<? extends MiniBaseFragment> paramClass, int paramInt)
   {
-    bhib.a(paramActivity, paramIntent, MiniTranslucentFragmentActivity.class, paramClass, paramInt);
+    bhmi.a(paramActivity, paramIntent, MiniTranslucentFragmentActivity.class, paramClass, paramInt);
   }
   
   public static void a(Context paramContext, Intent paramIntent, Class<? extends MiniBaseFragment> paramClass)

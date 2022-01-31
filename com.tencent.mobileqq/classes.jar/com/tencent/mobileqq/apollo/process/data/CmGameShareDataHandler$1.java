@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import akuk;
+import akyz;
 
 public class CmGameShareDataHandler$1
   implements Runnable
 {
-  public CmGameShareDataHandler$1(akuk paramakuk) {}
+  public CmGameShareDataHandler$1(akyz paramakyz) {}
   
   public void run()
   {
-    akuk.a(this.this$0);
+    akyz.a(this.this$0);
   }
 }
 

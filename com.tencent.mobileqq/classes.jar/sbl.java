@@ -27,19 +27,19 @@ public class sbl
   public sbl(View paramView, BaseData paramBaseData)
   {
     super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378985));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378587));
-    this.d = ((TextView)paramView.findViewById(2131378602));
-    this.c = ((TextView)paramView.findViewById(2131378601));
-    this.e = ((TextView)paramView.findViewById(2131378603));
-    this.f = ((TextView)paramView.findViewById(2131378747));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131368691));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131368794));
-    paramView.findViewById(2131375860).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379043));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378641));
+    this.d = ((TextView)paramView.findViewById(2131378656));
+    this.c = ((TextView)paramView.findViewById(2131378655));
+    this.e = ((TextView)paramView.findViewById(2131378657));
+    this.f = ((TextView)paramView.findViewById(2131378801));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131368703));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131368809));
+    paramView.findViewById(2131375913).setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setRound(true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369632));
-    paramBaseData = syo.a(null, aekt.a(12.0F, paramView.getResources()), Color.parseColor("#e9ebec"));
-    paramView = syo.a(null, aekt.a(12.0F, paramView.getResources()), Color.parseColor("#12B7F5"));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369649));
+    paramBaseData = syo.a(null, aepi.a(12.0F, paramView.getResources()), Color.parseColor("#e9ebec"));
+    paramView = syo.a(null, aepi.a(12.0F, paramView.getResources()), Color.parseColor("#12B7F5"));
     syo.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, paramView, paramBaseData);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
   }
@@ -70,12 +70,12 @@ public class sbl
     this.f.setOnClickListener(this);
     if (paramBoolean)
     {
-      this.f.setText(alpo.a(2131717267));
+      this.f.setText(alud.a(2131717279));
       this.f.setTextColor(-4473925);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setEnabled(false);
       return;
     }
-    this.f.setText(alpo.a(2131717268));
+    this.f.setText(alud.a(2131717280));
     this.f.setTextColor(-1);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setEnabled(true);
   }
@@ -116,8 +116,8 @@ public class sbl
     {
     default: 
       return;
-    case 2131369632: 
-    case 2131378747: 
+    case 2131369649: 
+    case 2131378801: 
       b();
       return;
     }

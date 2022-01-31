@@ -1,25 +1,18 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.Comparator;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tribe.async.dispatch.Dispatcher;
 
 public class wei
-  implements Comparator<CommentEntry>
+  extends wfx
 {
-  public wei(weh paramweh) {}
+  public wei(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
   
-  public int a(CommentEntry paramCommentEntry1, CommentEntry paramCommentEntry2)
+  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
   {
-    if ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status == 0)) {
-      if (paramCommentEntry1.replyTime >= paramCommentEntry2.replyTime) {}
-    }
-    while ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status != 0))
-    {
-      return -1;
-      if (paramCommentEntry1.replyTime > paramCommentEntry2.replyTime) {
-        return 1;
-      }
-      return 0;
-    }
-    return 1;
+    vem localvem = new vem();
+    localvem.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
+    localvem.jdField_a_of_type_JavaUtilList = paramVideoCollectionItem.collectionVideoUIItemList;
+    umc.a().dispatch(localvem);
   }
 }
 

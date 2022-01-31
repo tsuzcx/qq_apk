@@ -2,10 +2,10 @@ package com.tencent.widget;
 
 import android.view.View;
 import android.widget.ListAdapter;
-import bhto;
+import bhxv;
 
 class HorizontalListView$CheckForLongPress
-  extends bhto
+  extends bhxv
   implements Runnable
 {
   private HorizontalListView$CheckForLongPress(HorizontalListView paramHorizontalListView)

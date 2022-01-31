@@ -1,21 +1,75 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.qphone.base.util.QLog;
-
 public class asrc
-  implements View.OnClickListener
 {
-  public asrc(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
+  public final asre a = new asre();
   
-  public void onClick(View paramView)
+  public static asrc a()
   {
-    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
-    if (this.a.a == null) {
-      return;
-    }
-    this.a.a.a(3, paramView);
-    QLog.d("HotVideoRelativeLayout", 2, "click mute view");
+    return asrf.a();
+  }
+  
+  public String a()
+  {
+    return this.a.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.a.d.a();
+  }
+  
+  public String b()
+  {
+    return this.a.jdField_b_of_type_JavaLangString;
+  }
+  
+  public boolean b()
+  {
+    return this.a.c.a();
+  }
+  
+  public boolean c()
+  {
+    return this.a.jdField_a_of_type_Asrg.a();
+  }
+  
+  public boolean d()
+  {
+    return this.a.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean e()
+  {
+    return this.a.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean f()
+  {
+    return this.a.e.a();
+  }
+  
+  public boolean g()
+  {
+    return this.a.g.a();
+  }
+  
+  public boolean h()
+  {
+    return this.a.f.a();
+  }
+  
+  public boolean i()
+  {
+    return this.a.h.a();
+  }
+  
+  public boolean j()
+  {
+    return this.a.i.a();
+  }
+  
+  public boolean k()
+  {
+    return this.a.j.a();
   }
 }
 

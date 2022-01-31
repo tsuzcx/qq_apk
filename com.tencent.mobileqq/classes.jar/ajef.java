@@ -1,14 +1,8 @@
-import com.tencent.widget.XListView;
-
-class ajef
-  implements uzi
+public abstract interface ajef
 {
-  ajef(ajee paramajee) {}
+  public abstract void a(int paramInt);
   
-  public void a()
-  {
-    this.a.a.invalidateViews();
-  }
+  public abstract void b(int paramInt);
 }
 
 

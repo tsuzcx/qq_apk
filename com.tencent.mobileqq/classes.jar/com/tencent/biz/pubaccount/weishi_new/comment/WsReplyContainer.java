@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.weishi_new.comment;
 
 import NS_KING_SOCIALIZE_META.stMetaComment;
 import NS_KING_SOCIALIZE_META.stMetaReply;
-import alpo;
+import alud;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.tencent.biz.subscribe.comment.ReplyActionView;
 import java.util.ArrayList;
 import java.util.List;
-import yde;
+import yhn;
 
 public class WsReplyContainer
   extends LinearLayout
@@ -24,7 +24,7 @@ public class WsReplyContainer
   private int jdField_a_of_type_Int;
   private stMetaComment jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaComment;
   private ReplyActionView jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView;
-  private yde jdField_a_of_type_Yde;
+  private yhn jdField_a_of_type_Yhn;
   private int b;
   private int c;
   
@@ -71,7 +71,7 @@ public class WsReplyContainer
         stMetaReply localstMetaReply = (stMetaReply)localArrayList.get(i);
         WsReplyView localWsReplyView = new WsReplyView(getContext());
         localWsReplyView.setPosition(i);
-        localWsReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Yde);
+        localWsReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Yhn);
         localWsReplyView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
         localWsReplyView.setClickable(true);
         localWsReplyView.setFocusable(true);
@@ -103,7 +103,7 @@ public class WsReplyContainer
         setVisibility(0);
         return;
         label278:
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(alpo.a(2131713778));
+        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(alud.a(2131713790));
         this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
         this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(0);
         continue;
@@ -113,7 +113,7 @@ public class WsReplyContainer
           paramInt = j - paramInt;
           if (paramInt > 0)
           {
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(alpo.a(2131713776) + paramInt + alpo.a(2131713777));
+            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(alud.a(2131713788) + paramInt + alud.a(2131713789));
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
           }
@@ -137,13 +137,13 @@ public class WsReplyContainer
       do
       {
         return;
-      } while (this.jdField_a_of_type_Yde == null);
-      this.jdField_a_of_type_Yde.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaComment);
+      } while (this.jdField_a_of_type_Yhn == null);
+      this.jdField_a_of_type_Yhn.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaComment);
       return;
-    } while (this.jdField_a_of_type_Yde == null);
+    } while (this.jdField_a_of_type_Yhn == null);
     stMetaComment localstMetaComment = this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaComment;
     int i = getHeight() / this.c;
-    this.jdField_a_of_type_Yde.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localstMetaComment, Integer.valueOf(i) });
+    this.jdField_a_of_type_Yhn.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localstMetaComment, Integer.valueOf(i) });
   }
   
   public boolean onLongClick(View paramView)
@@ -156,9 +156,9 @@ public class WsReplyContainer
     this.b = paramInt;
   }
   
-  public void setOnCommentElementClickListener(yde paramyde)
+  public void setOnCommentElementClickListener(yhn paramyhn)
   {
-    this.jdField_a_of_type_Yde = paramyde;
+    this.jdField_a_of_type_Yhn = paramyhn;
   }
   
   public void setPosition(int paramInt)

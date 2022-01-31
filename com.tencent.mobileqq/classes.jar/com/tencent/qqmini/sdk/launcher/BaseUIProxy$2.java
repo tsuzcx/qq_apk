@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import bghl;
-import bgqj;
+import bgls;
+import bguq;
 
 public class BaseUIProxy$2
   implements Runnable
 {
-  public BaseUIProxy$2(bgqj parambgqj) {}
+  public BaseUIProxy$2(bguq parambguq) {}
   
   public void run()
   {

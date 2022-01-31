@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.search.fragment;
 
-import alpo;
+import alud;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import ayfe;
-import aygq;
-import aygr;
-import ayox;
-import aypx;
-import ayrd;
+import ayjn;
+import aykz;
+import ayla;
+import aytg;
+import ayug;
+import ayvm;
 import com.tencent.widget.ListView;
 
 public class SelectMemberContactSearchFragment
@@ -24,25 +24,25 @@ public class SelectMemberContactSearchFragment
     return 20;
   }
   
-  protected ayfe a()
+  protected ayjn a()
   {
-    return new aygr(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bcws);
+    return new ayla(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb);
   }
   
-  protected aypx a()
+  protected ayug a()
   {
-    return new ayox(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, this.jdField_a_of_type_Int, null);
+    return new aytg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, this.jdField_a_of_type_Int, null);
   }
   
   protected String a()
   {
-    return alpo.a(2131714112);
+    return alud.a(2131714124);
   }
   
   protected void a(String paramString, int paramInt)
   {
     super.a(paramString, paramInt);
-    if ((!ayrd.a(this.b)) && (this.jdField_a_of_type_AndroidViewView != null))
+    if ((!ayvm.a(this.b)) && (this.jdField_a_of_type_AndroidViewView != null))
     {
       if (TextUtils.isEmpty(paramString))
       {
@@ -54,12 +54,12 @@ public class SelectMemberContactSearchFragment
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838591);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838592);
   }
   
   protected boolean a()
   {
-    return ayrd.a(this.b);
+    return ayvm.a(this.b);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -76,11 +76,11 @@ public class SelectMemberContactSearchFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    if (!ayrd.a(this.b))
+    if (!ayvm.a(this.b))
     {
       this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131165409);
       this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new aygq(this));
+      this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new aykz(this));
     }
   }
 }

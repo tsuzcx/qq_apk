@@ -1,204 +1,95 @@
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
+import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_rsp;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.MobileQQ;
+import mqq.app.Packet;
 
 public class azcf
-  implements azck, azcq
+  extends MSFServlet
 {
-  private int jdField_a_of_type_Int = 0;
-  private azcp jdField_a_of_type_Azcp = new azcp();
-  private VideoSourceHelper jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper;
-  private final String jdField_a_of_type_JavaLangString = "HwEncodeHelper";
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private long[] jdField_a_of_type_ArrayOfLong = new long[1];
-  private azcp jdField_b_of_type_Azcp = new azcp();
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private String c;
-  
-  public azcf(String paramString1, String paramString2, String paramString3)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_b_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper = new VideoSourceHelper(paramString1, paramString2);
-  }
-  
-  private boolean a()
-  {
-    boolean bool = true;
-    int[] arrayOfInt = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getBufferSize();
-    if ((arrayOfInt == null) || (arrayOfInt.length < 2)) {
-      bool = false;
-    }
+    if (paramFromServiceMsg != null) {}
     for (;;)
     {
-      return bool;
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEncodeHelper", 4, "initMediaBuffer videosize=" + arrayOfInt[0] + ", audiosize=" + arrayOfInt[1]);
-      }
       try
       {
-        if (this.jdField_a_of_type_ArrayOfByte == null) {
-          this.jdField_a_of_type_ArrayOfByte = new byte[arrayOfInt[0]];
-        }
-        if (this.jdField_b_of_type_ArrayOfByte == null)
+        if (paramFromServiceMsg.getResultCode() == 1000)
         {
-          this.jdField_b_of_type_ArrayOfByte = new byte[arrayOfInt[1]];
-          return true;
+          paramFromServiceMsg = bjcx.a(paramFromServiceMsg.getWupBuffer(), new int[1]);
+          if (paramFromServiceMsg != null)
+          {
+            if ((getAppRuntime() != null) && (getAppRuntime().getApplication() != null))
+            {
+              MobileQQ localMobileQQ = getAppRuntime().getApplication();
+              if ((paramFromServiceMsg.map_ext == null) || (!"1".equals(paramFromServiceMsg.map_ext.get("show_feeds")))) {
+                break label260;
+              }
+              bool = true;
+              if (paramFromServiceMsg.map_ext == null)
+              {
+                paramIntent = null;
+                bjho.a(localMobileQQ, bool, paramIntent);
+              }
+            }
+            else
+            {
+              paramIntent = new Bundle();
+              paramIntent.putSerializable("data", paramFromServiceMsg);
+              notifyObserver(null, 1004, true, paramIntent, avvd.class);
+              return;
+            }
+            paramIntent = (String)paramFromServiceMsg.map_ext.get("title_name");
+            continue;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("QzonePublicMsgServlet", 2, "inform QzonePublicMsgServlet isSuccess false");
+          }
+          notifyObserver(null, 1004, false, new Bundle(), avvd.class);
+          return;
         }
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
+      catch (Throwable paramIntent)
       {
-        localOutOfMemoryError.printStackTrace();
+        QLog.e("QzonePublicMsgServlet", 1, paramIntent + "onReceive error");
+        notifyObserver(null, 1004, false, new Bundle(), avvd.class);
+        return;
       }
-    }
-    return false;
-  }
-  
-  public int a()
-  {
-    int j = 2;
-    if (!azcg.a()) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.initHelperParam() != 0)
-    {
       if (QLog.isColorLevel()) {
-        QLog.d("HwEncodeHelper", 4, "initHelperParam error");
+        QLog.d("QzonePublicMsgServlet", 2, "inform QzonePublicMsgServlet resultcode fail.");
       }
-      return -1;
+      notifyObserver(null, 1004, false, new Bundle(), avvd.class);
+      if (paramFromServiceMsg != null) {}
+      return;
+      label260:
+      boolean bool = false;
     }
-    if (!a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEncodeHelper", 4, "initMediaBuffer error");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.closeHelper();
-      return -1;
-    }
-    SVHwEncoder localSVHwEncoder = new SVHwEncoder();
-    int i;
-    if (azds.o == 16)
-    {
-      i = 1;
-      if (azds.p != 2) {
-        break label233;
-      }
-    }
-    for (;;)
-    {
-      int k = azds.q;
-      localSVHwEncoder.a(azds.q, i, k * i * j * 8, j);
-      int[] arrayOfInt = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getSourceVideoParam();
-      localSVHwEncoder.a(this.jdField_b_of_type_JavaLangString, arrayOfInt[0], arrayOfInt[1]);
-      boolean bool = localSVHwEncoder.a(azds.z, azds.y, this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.mOrientationDegree);
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEncodeHelper", 4, "startHwEncode mRecordFrames=" + azds.z + ", mRecordTime=" + azds.y + " successCode=" + bool);
-      }
-      if (bool) {
-        break label238;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.closeHelper();
-      return -1;
-      i = 2;
-      break;
-      label233:
-      j = 1;
-    }
-    label238:
-    localSVHwEncoder.b(this, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.closeHelper();
-    return this.jdField_a_of_type_Int;
   }
   
-  public azcp a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    boolean bool = false;
-    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper != null) && (!this.jdField_a_of_type_Boolean))
+    long l = paramIntent.getLongExtra("key_uin", 0L);
+    paramIntent = paramIntent.getStringExtra("has_photo");
+    Object localObject = new HashMap();
+    ((Map)localObject).put("has_photo", paramIntent);
+    bjcx localbjcx = new bjcx(l, (Map)localObject);
+    localObject = localbjcx.encode();
+    paramIntent = (Intent)localObject;
+    if (localObject == null)
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getNextAudioFrame(this.jdField_b_of_type_ArrayOfByte);
-      this.jdField_b_of_type_Azcp.jdField_a_of_type_ArrayOfByte = this.jdField_b_of_type_ArrayOfByte;
-      this.jdField_b_of_type_Azcp.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Azcp.jdField_b_of_type_Int = i;
-      this.jdField_b_of_type_Azcp.jdField_b_of_type_Boolean = false;
-      azcp localazcp = this.jdField_b_of_type_Azcp;
-      if (i > 0) {}
-      for (;;)
-      {
-        localazcp.jdField_a_of_type_Boolean = bool;
-        localazcp = this.jdField_b_of_type_Azcp;
-        this.jdField_b_of_type_Azcp.c = -1;
-        localazcp.jdField_a_of_type_Long = -1;
-        this.jdField_b_of_type_Azcp.jdField_a_of_type_Float = -1.0F;
-        if (QLog.isColorLevel()) {
-          QLog.d("HwEncodeHelper", 4, "getAudioFrame() bufferSize=" + this.jdField_b_of_type_ArrayOfByte.length + ", readSize=" + i);
-        }
-        this.jdField_a_of_type_Boolean = this.jdField_b_of_type_Azcp.jdField_a_of_type_Boolean;
-        return this.jdField_b_of_type_Azcp;
-        bool = true;
-      }
+      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localbjcx.uniKey());
+      paramIntent = new byte[4];
     }
-    return null;
+    paramPacket.setTimeout(30000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbjcx.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
-  
-  public azcp a(int paramInt)
-  {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper != null) && (!this.jdField_b_of_type_Boolean))
-    {
-      paramInt = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getNextVideoFrame(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfLong, paramInt);
-      this.jdField_a_of_type_Azcp.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-      this.jdField_a_of_type_Azcp.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Azcp.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_Azcp.jdField_b_of_type_Boolean = true;
-      azcp localazcp = this.jdField_a_of_type_Azcp;
-      if (paramInt > 0) {
-        bool = false;
-      }
-      localazcp.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Azcp.jdField_a_of_type_Long = this.jdField_a_of_type_ArrayOfLong[0];
-      this.jdField_a_of_type_Azcp.c = -1;
-      this.jdField_a_of_type_Azcp.jdField_a_of_type_Float = -1.0F;
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEncodeHelper", 4, "getVideoFrame() bufferSize=" + this.jdField_a_of_type_ArrayOfByte.length + ", readSize=" + paramInt + ", frametime=" + this.jdField_a_of_type_ArrayOfLong[0]);
-      }
-      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Azcp.jdField_a_of_type_Boolean;
-      return this.jdField_a_of_type_Azcp;
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.c;
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2) {}
-  
-  public void a(String paramString, int paramInt, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEncodeHelper", 4, "svMergeOK() path=" + paramString + ", totalTime=" + paramInt + " mergetime=" + paramLong + " us");
-    }
-    this.c = paramString;
-  }
-  
-  public void b() {}
-  
-  public void b(int paramInt) {}
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEncodeHelper", 4, "svErrorOcured() code=" + paramInt1 + ", subcode=" + paramInt2);
-    }
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void c() {}
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.share;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
-import bepp;
+import bety;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -21,7 +21,7 @@ final class MiniProgramOpenSdkUtil$2
       if ((this.val$outInfo.progressDialog != null) && (this.val$outInfo.progressDialog.isShowing())) {
         this.val$outInfo.progressDialog.dismiss();
       }
-      QQToast.a(this.val$context, alpo.a(2131692307), 0).b(this.val$context.getResources().getDimensionPixelSize(2131298914));
+      QQToast.a(this.val$context, alud.a(2131692308), 0).b(this.val$context.getResources().getDimensionPixelSize(2131298914));
       if (((this.val$context instanceof JumpActivity)) && (!((JumpActivity)this.val$context).isFinishing())) {
         MiniProgramOpenSdkUtil.access$100(this.val$context);
       }

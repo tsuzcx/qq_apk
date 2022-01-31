@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import bdee;
+import bdin;
 import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager;
 import com.tencent.common.app.BaseApplicationImpl;
 
@@ -9,7 +9,7 @@ public final class ReadinjoySPEventReport$4
 {
   public void run()
   {
-    int i = bdee.a(BaseApplicationImpl.getContext());
+    int i = bdin.a(BaseApplicationImpl.getContext());
     String str;
     if ((i == 2) || (i == 3) || (i == 4)) {
       str = "WWAN";

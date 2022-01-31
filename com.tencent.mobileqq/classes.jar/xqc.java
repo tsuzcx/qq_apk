@@ -1,19 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
-public class xqc
-  implements ValueAnimator.AnimatorUpdateListener
+class xqc
+  implements View.OnClickListener
 {
-  public xqc(NeoVideoRecordButton paramNeoVideoRecordButton) {}
+  xqc(xqb paramxqb) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
-    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
-    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
-    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
-    NeoVideoRecordButton.a(this.a);
+    if (this.a.a.a != null) {
+      this.a.a.a.a();
+    }
   }
 }
 

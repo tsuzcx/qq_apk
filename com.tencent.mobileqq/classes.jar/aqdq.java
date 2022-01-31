@@ -1,24 +1,44 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.os.Message;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-final class aqdq
-  implements View.OnClickListener
+public class aqdq
+  extends bayj
 {
-  aqdq(Context paramContext, Dialog paramDialog) {}
+  public aqdq(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://ti.qq.com/extend-friend/?_wv=536870912");
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    azmj.b(null, "dc00898", "", "", "kuolie", "0X80097DE", 0, 0, "", "", "", "");
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    bass localbass = (bass)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    case 1004: 
+    default: 
+      return;
+    case 1003: 
+      if (localbass.b == 23)
+      {
+        ExtendFriendEditFragment.a(this.a, ((bavb)localbass.a).o);
+        if (QLog.isColorLevel()) {
+          QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload success. url = " + ExtendFriendEditFragment.a(this.a));
+        }
+        if (this.a.a != null)
+        {
+          this.a.a.a(ExtendFriendEditFragment.a(this.a));
+          ExtendFriendEditFragment.a(this.a, this.a.a.a());
+        }
+      }
+      aqhg.a().d(true, 0);
+      return;
     }
+    if ((localbass.b == 23) && (QLog.isColorLevel())) {
+      QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload fail.");
+    }
+    ExtendFriendEditFragment.a(this.a).dismiss();
+    QQToast.a(ExtendFriendEditFragment.a(this.a), alud.a(2131704665), 0).a();
+    aqhg.a().d(false, 0);
   }
 }
 

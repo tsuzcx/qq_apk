@@ -14,7 +14,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class ngd
-  extends alko
+  extends alpd
 {
   public static String a;
   int jdField_a_of_type_Int;
@@ -152,7 +152,7 @@ public class ngd
     }
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return null;
   }

@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.presenter;
 
 import android.os.Handler;
-import wou;
-import xmx;
+import wtd;
+import xrg;
 
 public class StoryListPresenter$4
   implements Runnable
 {
-  public StoryListPresenter$4(wou paramwou) {}
+  public StoryListPresenter$4(wtd paramwtd) {}
   
   public void run()
   {
-    String str = xmx.a(this.this$0.jdField_a_of_type_AndroidAppActivity, "qqstory_upgrade_guide.mp4");
+    String str = xrg.a(this.this$0.jdField_a_of_type_AndroidAppActivity, "qqstory_upgrade_guide.mp4");
     if (str != null) {
       this.this$0.jdField_a_of_type_AndroidOsHandler.post(new StoryListPresenter.4.1(this, str));
     }

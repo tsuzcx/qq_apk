@@ -1,10 +1,21 @@
-import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.msgcache.MsgLruCache;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import mqq.app.AppRuntime;
 
 public class apgc
+  implements View.OnClickListener
 {
-  public int a;
-  public Drawable a;
-  public int b;
+  public apgc(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).a(0).a().a().printMsgLruCache();
+    }
+  }
 }
 
 

@@ -8,7 +8,7 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import bdcs;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.vas.LzmaUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -525,7 +525,7 @@ public class BidDownloader
             bool2 = ((File)localObject2).renameTo(new File((String)localObject1));
             bool1 = bool2;
             if (!bool2) {
-              bool1 = bdcs.b(str4, (String)localObject1);
+              bool1 = bdhb.b(str4, (String)localObject1);
             }
             if (!bool1)
             {

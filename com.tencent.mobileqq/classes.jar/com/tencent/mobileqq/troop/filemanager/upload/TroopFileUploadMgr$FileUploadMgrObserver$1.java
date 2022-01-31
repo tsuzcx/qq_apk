@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import bbth;
+import bbxq;
 
 public class TroopFileUploadMgr$FileUploadMgrObserver$1
   implements Runnable
 {
-  public TroopFileUploadMgr$FileUploadMgrObserver$1(bbth parambbth, Object paramObject) {}
+  public TroopFileUploadMgr$FileUploadMgrObserver$1(bbxq parambbxq, Object paramObject) {}
   
   public void run()
   {
-    bbth.a(this.this$0, this.a);
+    bbxq.a(this.this$0, this.a);
   }
 }
 

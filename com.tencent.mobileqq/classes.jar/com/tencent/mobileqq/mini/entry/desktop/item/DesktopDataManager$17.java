@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import android.util.Log;
-import awbw;
-import awbx;
+import awgf;
+import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
@@ -29,7 +29,7 @@ class DesktopDataManager$17
     try
     {
       localDeskTopAppEntity.setStatus(1001);
-      if (((awbw)localObject).a(localDeskTopAppEntity, "uniqueId=?", new String[] { localDeskTopAppEntity.uniqueId }))
+      if (((awgf)localObject).a(localDeskTopAppEntity, "uniqueId=?", new String[] { localDeskTopAppEntity.uniqueId }))
       {
         QLog.d("DesktopDataManager", 2, "deleteEntity, delete " + localDeskTopAppEntity.name + " success from db");
         return;

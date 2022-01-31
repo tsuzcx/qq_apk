@@ -1,19 +1,61 @@
-class blzs<K, V>
-  extends blzv<K, V>
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+
+public class blzs
+  implements SeekBar.OnSeekBarChangeListener
 {
-  blzs(blzt<K, V> paramblzt1, blzt<K, V> paramblzt2)
+  public blzs(AdvancedProviderView paramAdvancedProviderView, TextView paramTextView, View paramView1, View paramView2, QIMProviderContainerView paramQIMProviderContainerView, View paramView3) {}
+  
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    super(paramblzt1, paramblzt2);
+    if (this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.a != null)
+    {
+      this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.a.b(paramInt);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
+    }
   }
   
-  blzt<K, V> a(blzt<K, V> paramblzt)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    return paramblzt.b;
+    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ViewGroup))) {
+      ((ViewGroup)this.jdField_a_of_type_AndroidViewView).setMotionEventSplittingEnabled(false);
+    }
+    int j = 300;
+    int i = j;
+    if (AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) != null)
+    {
+      i = j;
+      if (!AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).hasEnded())
+      {
+        AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).cancel();
+        i = 0;
+      }
+    }
+    this.b.setAlpha(1.0F);
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView, this.c, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView), 0.0F));
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setDuration((AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) * AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)));
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setStartOffset(i);
+    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.startAnimation(AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView));
   }
   
-  blzt<K, V> b(blzt<K, V> paramblzt)
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    return paramblzt.a;
+    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ViewGroup))) {
+      ((ViewGroup)this.jdField_a_of_type_AndroidViewView).setMotionEventSplittingEnabled(true);
+    }
+    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.a(paramSeekBar.getProgress());
+    if ((AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) != null) && (!AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).hasEnded())) {
+      AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).cancel();
+    }
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView, this.c, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView), 1.0F));
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setDuration(((1.0F - AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)) * AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)));
+    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.startAnimation(AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView));
   }
 }
 

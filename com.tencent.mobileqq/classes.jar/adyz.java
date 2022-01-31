@@ -1,72 +1,144 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import tencent.im.oidb.cmd0x79a.oidb_0x79a.RspBody;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
+import android.content.res.Resources;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adyz
-  implements nfc
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adyz(TroopInfoActivity paramTroopInfoActivity) {}
+  public adyz(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.stopTitleProgress();
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwAppPrivilegeFlag & 0x4000) != 0L) {
-      TroopInfoActivity.h(this.a);
-    }
-  }
-  
-  public void a(oidb_0x79a.RspBody paramRspBody)
-  {
-    oidb_0x88d.GroupInfo localGroupInfo = paramRspBody.info;
-    this.a.stopTitleProgress();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus = paramRspBody.uint32_tribe_status.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.modifyCount = paramRspBody.uint32_modify_countdown.get();
-    int j = 0;
-    int i;
-    if (4 != this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt)
+    int k = SettingCloneUtil.readValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.b);
+    if (paramBoolean)
     {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setClickable(true);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(0);
+      SoundAndVibrateActivity.a(this.a).setVisibility(0);
+      VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "bell", "show", "", 1, 0, 0, "", "", "");
+      SoundAndVibrateActivity.b(this.a).setBackgroundResource(2130839270);
+      int j = 0;
+      paramCompoundButton = ThemeUtil.getUserCurrentThemeId(this.a.app);
       i = j;
-      if (3 != this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt) {}
-    }
-    else
-    {
-      i = j;
-      if (localGroupInfo != null) {
-        if (4 != localGroupInfo.uint32_group_type_flag.get())
+      if (!paramCompoundButton.equals("1000"))
+      {
+        paramCompoundButton = ThemeUtil.getThemeInfo(this.a, paramCompoundButton);
+        i = j;
+        if (paramCompoundButton != null)
         {
           i = j;
-          if (3 != localGroupInfo.uint32_group_type_flag.get()) {}
+          if (paramCompoundButton.isVoiceTheme) {
+            i = 1;
+          }
         }
-        else
+      }
+      if (i != 0)
+      {
+        SoundAndVibrateActivity.c(this.a).setBackgroundResource(2130839254);
+        SoundAndVibrateActivity.c(this.a).setVisibility(0);
+      }
+      if (k == 2131230720)
+      {
+        SoundAndVibrateActivity.b(this.a).setRightIcon(this.a.getResources().getDrawable(2130850085));
+        SoundAndVibrateActivity.c(this.a).setRightIcon(null);
+        SoundAndVibrateActivity.d(this.a).setRightIcon(null);
+        SoundAndVibrateActivity.e(this.a).setRightIcon(null);
+        SoundAndVibrateActivity.a(this.a, 0);
+        if (AppSetting.c)
         {
-          this.a.a(localGroupInfo);
-          i = 1;
+          SoundAndVibrateActivity.b(this.a).setContentDescription(this.a.getString(2131720250) + this.a.getString(2131690852));
+          SoundAndVibrateActivity.c(this.a).setContentDescription(this.a.getString(2131720251) + this.a.getString(2131721201));
+          SoundAndVibrateActivity.d(this.a).setContentDescription(this.a.getString(2131720252) + this.a.getString(2131721201));
+          SoundAndVibrateActivity.e(this.a).setContentDescription(this.a.getString(2131720253) + this.a.getString(2131721201));
+        }
+        if (this.a.app.a() != 0) {
+          break label1288;
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(false);
+        label460:
+        this.a.app.e(1);
+        SoundAndVibrateActivity.d(this.a).setChecked(true);
+        label482:
+        paramCompoundButton = this.a.app;
+        if (!paramBoolean) {
+          break label1388;
         }
       }
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 1) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 2) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 3))
+    label1288:
+    label1388:
+    for (int i = 1;; i = 0)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId = paramRspBody.uint64_tribe_id.get();
-      this.a.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId;
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeName = paramRspBody.str_tribe_name.get();
-      if (i == 0) {
-        this.a.a(localGroupInfo);
+      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_sound", 0, i, "", "", "", "");
+      return;
+      if (k == 2131230721)
+      {
+        SoundAndVibrateActivity.b(this.a).setRightIcon(null);
+        SoundAndVibrateActivity.c(this.a).setRightIcon(this.a.getResources().getDrawable(2130850085));
+        SoundAndVibrateActivity.d(this.a).setRightIcon(null);
+        SoundAndVibrateActivity.e(this.a).setRightIcon(null);
+        SoundAndVibrateActivity.a(this.a, 1);
+        if (!AppSetting.c) {
+          break;
+        }
+        SoundAndVibrateActivity.b(this.a).setContentDescription(this.a.getString(2131720250) + this.a.getString(2131721201));
+        SoundAndVibrateActivity.c(this.a).setContentDescription(this.a.getString(2131720251) + this.a.getString(2131690852));
+        SoundAndVibrateActivity.d(this.a).setContentDescription(this.a.getString(2131720252) + this.a.getString(2131721201));
+        SoundAndVibrateActivity.e(this.a).setContentDescription(this.a.getString(2131720253) + this.a.getString(2131721201));
+        break;
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(7);
-      return;
+      if (k == SoundAndVibrateActivity.jdField_a_of_type_Int)
+      {
+        SoundAndVibrateActivity.b(this.a).setRightIcon(null);
+        SoundAndVibrateActivity.c(this.a).setRightIcon(null);
+        SoundAndVibrateActivity.d(this.a).setRightIcon(this.a.getResources().getDrawable(2130850085));
+        SoundAndVibrateActivity.e(this.a).setRightIcon(null);
+        SoundAndVibrateActivity.a(this.a, 2);
+        if (!AppSetting.c) {
+          break;
+        }
+        SoundAndVibrateActivity.b(this.a).setContentDescription(this.a.getString(2131720250) + this.a.getString(2131721201));
+        SoundAndVibrateActivity.c(this.a).setContentDescription(this.a.getString(2131720251) + this.a.getString(2131721201));
+        SoundAndVibrateActivity.d(this.a).setContentDescription(this.a.getString(2131720252) + this.a.getString(2131690852));
+        SoundAndVibrateActivity.e(this.a).setContentDescription(this.a.getString(2131720253) + this.a.getString(2131721201));
+        break;
+      }
+      if (k != SoundAndVibrateActivity.b) {
+        break;
+      }
+      SoundAndVibrateActivity.b(this.a).setRightIcon(null);
+      SoundAndVibrateActivity.c(this.a).setRightIcon(null);
+      SoundAndVibrateActivity.d(this.a).setRightIcon(null);
+      SoundAndVibrateActivity.e(this.a).setRightIcon(this.a.getResources().getDrawable(2130850085));
+      SoundAndVibrateActivity.a(this.a, 3);
+      if (!AppSetting.c) {
+        break;
+      }
+      SoundAndVibrateActivity.b(this.a).setContentDescription(this.a.getString(2131720250) + this.a.getString(2131721201));
+      SoundAndVibrateActivity.c(this.a).setContentDescription(this.a.getString(2131720251) + this.a.getString(2131721201));
+      SoundAndVibrateActivity.d(this.a).setContentDescription(this.a.getString(2131720252) + this.a.getString(2131721201));
+      SoundAndVibrateActivity.e(this.a).setContentDescription(this.a.getString(2131720253) + this.a.getString(2131690852));
+      break;
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(true);
+      break label460;
+      SoundAndVibrateActivity.b(this.a).setBackgroundResource(2130839254);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
+      SoundAndVibrateActivity.a(this.a).setVisibility(8);
+      SoundAndVibrateActivity.c(this.a).setVisibility(8);
+      SoundAndVibrateActivity.c(this.a).setBackgroundResource(2130839254);
+      SoundAndVibrateActivity.c(this.a).setVisibility(8);
+      this.a.app.e(0);
+      break label482;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwAppPrivilegeFlag & 0x4000) != 0L)
-    {
-      TroopInfoActivity.h(this.a);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
   }
 }
 

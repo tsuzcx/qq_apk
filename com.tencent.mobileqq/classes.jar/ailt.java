@@ -1,130 +1,69 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ailt
-  extends ailq
+  extends awhw
 {
-  protected int a;
-  protected ailu a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final String jdField_a_of_type_JavaLangString = "VideoPlayControllerForAIO";
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private ImageView b;
+  public ailt(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public ailt()
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.b = null;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("BindVerifyActivity", 2, "onBindMobile [" + paramBoolean + ", " + paramBundle + "]");
     }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0) {
-      b(8);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+    this.a.b();
+    int i;
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
-      if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365826));
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    }
-  }
-  
-  public void a(ailu paramailu)
-  {
-    this.jdField_a_of_type_Ailu = paramailu;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372238));
-    this.b = ((ImageView)paramView.findViewById(2131372237));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131372239));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-    }
-    return false;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    if (this.b == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is null.");
+      i = paramBundle.getInt("k_result");
+      if ((i == 104) || (i == 0)) {
+        this.a.b();
       }
     }
-    do
+    for (;;)
     {
-      do
-      {
-        return false;
-        if (this.b.getVisibility() != 0) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, event.getRawX() = " + paramMotionEvent.getRawX() + " , event.getRawY() = " + paramMotionEvent.getRawY() + " , mCenterPlayBtn left = " + this.b.getLeft() + " , top = " + this.b.getTop() + " , right = " + this.b.getRight() + ", bottom = " + this.b.getBottom());
-        }
-      } while (!new Rect(this.b.getLeft(), this.b.getTop(), this.b.getRight(), this.b.getBottom()).contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()));
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, playbtn contains event");
-      }
-      return true;
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is not visible.");
-    return false;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.b != null)
-    {
-      if ((this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0)) {
-        this.b.setVisibility(8);
-      }
-    }
-    else {
+      this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
+      BindVerifyActivity.a(this.a, null);
       return;
+      if (i == 107)
+      {
+        this.a.a(paramBundle);
+      }
+      else if (i == 106)
+      {
+        this.a.a();
+        if (this.a.getIntent().getBooleanExtra("k_is_block", false)) {
+          azqs.b(this.a.app, "CliOper", "", "", "0X80053D5", "0X80053D5", 2, 0, "", "", "", "");
+        }
+      }
+      else
+      {
+        this.a.a(1, a(i));
+        continue;
+        this.a.a(1, this.a.getString(2131719233));
+      }
     }
-    this.b.setVisibility(paramInt);
   }
   
-  public void e(int paramInt)
+  protected void b(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("BindVerifyActivity", 2, "onRebindMobile [" + paramBoolean + ", " + paramBundle + "]");
+    }
+    this.a.b();
+    if (paramBoolean) {
+      this.a.b();
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
+      BindVerifyActivity.a(this.a, null);
+      return;
+      this.a.a(1, this.a.getString(2131719233));
+    }
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.open.downloadnew;
 
-import bfkb;
-import bfko;
+import bfok;
+import bfox;
 
 public class DownloadManager$1
   implements Runnable
 {
-  public DownloadManager$1(bfkb parambfkb) {}
+  public DownloadManager$1(bfok parambfok) {}
   
   public void run()
   {
     if (!this.this$0.a)
     {
-      if (!bfko.a().b()) {
+      if (!bfox.a().b()) {
         this.this$0.a(true);
       }
       this.this$0.a = true;

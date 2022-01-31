@@ -1,7 +1,34 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+
 public class aord
 {
-  public String a = "https://club.vip.qq.com/profile/music?_proxy=1";
-  public String b = "https://club.vip.qq.com/profile/music/player?_wv=131072&_fv=0&_proxy=1";
+  public void a(aoko[] paramArrayOfaoko)
+  {
+    QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[handleReadInJoyResetAllConfig] " + paramArrayOfaoko);
+    if (paramArrayOfaoko != null) {
+      try
+      {
+        if (paramArrayOfaoko.length > 0)
+        {
+          new otw();
+          int j = paramArrayOfaoko.length;
+          int i = 0;
+          while (i < j)
+          {
+            boolean bool = TextUtils.isEmpty(paramArrayOfaoko[i].a);
+            if (bool) {}
+            i += 1;
+          }
+        }
+        return;
+      }
+      catch (Exception paramArrayOfaoko)
+      {
+        QLog.e("ReadinjoyResetFunctionConfProcessor", 1, "[handleReadInJoyResetAllConfig] ", paramArrayOfaoko);
+      }
+    }
+  }
 }
 
 

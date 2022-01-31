@@ -1,27 +1,41 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class akaq
-  implements Animation.AnimationListener
+  extends BroadcastReceiver
 {
-  public akaq(SpecailCareListActivity paramSpecailCareListActivity, akbh paramakbh) {}
+  public akaq(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Akbh.a.clearAnimation();
-    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
-    paramAnimation.addRule(1, 2131367808);
-    paramAnimation.setMargins(0, (int)(24.0F * SpecailCareListActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, 0);
-    this.jdField_a_of_type_Akbh.a.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Akbh.a.setVisibility(4);
+    paramContext = paramIntent.getAction();
+    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.app.getApp().getPackageName()))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectMemberActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
+      }
+    }
+    int i;
+    int j;
+    do
+    {
+      do
+      {
+        return;
+      } while (!paramContext.equals("tencent.av.v2q.StopVideoChat"));
+      i = paramIntent.getIntExtra("stopReason", 0);
+      j = paramIntent.getIntExtra("stopReason3rd", -1);
+    } while (((i != 0) && (j != 1)) || ((this.a.d != 11) && (this.a.d != 36)));
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectMemberActivity", 2, "ACTION_STOP_VIDEO_CHAT");
+    }
+    this.a.finish();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

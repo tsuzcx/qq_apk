@@ -1,31 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class vgy
-  implements Parcelable.Creator
+public class vgy
+  extends uro
 {
-  public StoryPushMsg a(Parcel paramParcel)
-  {
-    int i = paramParcel.readInt();
-    Object localObject = paramParcel.readString();
-    String str1 = paramParcel.readString();
-    long l = paramParcel.readLong();
-    String str2 = paramParcel.readString();
-    String str3 = paramParcel.readString();
-    int j = paramParcel.readInt();
-    String str4 = paramParcel.readString();
-    String str5 = paramParcel.readString();
-    String str6 = paramParcel.readString();
-    paramParcel = paramParcel.readBundle();
-    localObject = new StoryPushMsg(i, (String)localObject, str1, l, str3, str4, j, str5, str6, str2);
-    ((StoryPushMsg)localObject).a = paramParcel;
-    return localObject;
-  }
+  public List<QQUserUIItem> a = new ArrayList();
   
-  public StoryPushMsg[] a(int paramInt)
+  public vgy(qqstory_service.RspConvertUinAndUnionId paramRspConvertUinAndUnionId)
   {
-    return new StoryPushMsg[paramInt];
+    super(paramRspConvertUinAndUnionId.result);
+    paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.user_list.get();
+    if (paramRspConvertUinAndUnionId != null)
+    {
+      paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.iterator();
+      while (paramRspConvertUinAndUnionId.hasNext())
+      {
+        qqstory_struct.UserInfo localUserInfo = (qqstory_struct.UserInfo)paramRspConvertUinAndUnionId.next();
+        QQUserUIItem localQQUserUIItem = new QQUserUIItem();
+        localQQUserUIItem.convertFrom(localUserInfo);
+        this.a.add(localQQUserUIItem);
+      }
+    }
   }
 }
 

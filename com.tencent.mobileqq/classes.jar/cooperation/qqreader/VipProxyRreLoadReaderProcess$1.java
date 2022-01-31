@@ -1,6 +1,6 @@
 package cooperation.qqreader;
 
-import bivn;
+import bizu;
 import com.tencent.common.app.BaseApplicationImpl;
 import nbv;
 
@@ -11,7 +11,7 @@ public class VipProxyRreLoadReaderProcess$1
   
   public void run()
   {
-    nbv.b("354", BaseApplicationImpl.getApplication().getRuntime(), true, new bivn(this));
+    nbv.b("354", BaseApplicationImpl.getApplication().getRuntime(), true, new bizu(this));
   }
 }
 

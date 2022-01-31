@@ -90,10 +90,10 @@ public class swt
     paramString = paramString + (String)localObject;
     if (3 == paramInt)
     {
-      if (((Boolean)bjxj.a(paramString, Boolean.valueOf(false))).booleanValue()) {
+      if (((Boolean)bkbq.a(paramString, Boolean.valueOf(false))).booleanValue()) {
         return;
       }
-      bjxj.a(paramString, Boolean.valueOf(true));
+      bkbq.a(paramString, Boolean.valueOf(true));
     }
     syb.a(200, localArrayList);
   }
@@ -106,7 +106,7 @@ public class swt
     Object localObject = ors.d(paramArticleInfo);
     try
     {
-      localObject = ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), paramInt, bdee.h(null), (String)localObject, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), 0, ors.d(), paramArticleInfo);
+      localObject = ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), paramInt, bdin.h(null), (String)localObject, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), 0, ors.d(), paramArticleInfo);
       if ((paramMap != null) && (paramMap.entrySet() != null))
       {
         paramMap = paramMap.entrySet().iterator();
@@ -121,7 +121,7 @@ public class swt
     }
     catch (Exception paramMap)
     {
-      aekt.a("ProteusReportUtil", "reportClickEvent", new IllegalArgumentException(paramMap));
+      aepi.a("ProteusReportUtil", "reportClickEvent", new IllegalArgumentException(paramMap));
       paramMap = null;
     }
     for (;;)
@@ -177,7 +177,7 @@ public class swt
     localHashMap.put("business_name", paramString2);
     localHashMap.put("style_id", paramString3);
     localHashMap.put("uin", ors.a());
-    azmz.a(BaseApplicationImpl.getApplication()).a(null, "actKandianProteusShowFail", false, 0L, 0L, localHashMap, null);
+    azri.a(BaseApplicationImpl.getApplication()).a(null, "actKandianProteusShowFail", false, 0L, 0L, localHashMap, null);
   }
   
   public static void a(Map<String, Object> paramMap)
@@ -234,7 +234,7 @@ public class swt
   
   private static boolean a()
   {
-    return bdem.a(BaseApplicationImpl.getContext(), "com.tencent.weishi");
+    return bdiv.a(BaseApplicationImpl.getContext(), "com.tencent.weishi");
   }
 }
 

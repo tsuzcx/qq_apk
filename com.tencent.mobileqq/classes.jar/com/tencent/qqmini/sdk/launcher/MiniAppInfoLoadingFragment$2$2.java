@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import bgqq;
+import bgux;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 public class MiniAppInfoLoadingFragment$2$2
   implements Runnable
 {
-  public MiniAppInfoLoadingFragment$2$2(bgqq parambgqq, JSONObject paramJSONObject) {}
+  public MiniAppInfoLoadingFragment$2$2(bgux parambgux, JSONObject paramJSONObject) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class MiniAppInfoLoadingFragment$2$2
       str = this.jdField_a_of_type_OrgJsonJSONObject.optString("errMsg");
     }
     QMLog.e("MiniAppInfoLoadingFragment", "GetAppInfoByLink failed. retCode=" + l + " errMsg=" + str);
-    MiniAppInfoLoadingFragment.a(this.jdField_a_of_type_Bgqq.a, str, l);
+    MiniAppInfoLoadingFragment.a(this.jdField_a_of_type_Bgux.a, str, l);
   }
 }
 

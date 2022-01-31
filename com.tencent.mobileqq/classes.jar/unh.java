@@ -1,32 +1,32 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.HashMap;
 
-class unh<Request extends unk, Respond extends unf>
-  implements unl<Respond>
+class unh
+  implements bauf
 {
-  protected final long a;
-  protected uni<Request, Respond> a;
-  public Request a;
+  unh(unf paramunf) {}
   
-  public unh(Request paramRequest)
+  public void a(bave parambave, bavf parambavf)
   {
-    this.jdField_a_of_type_Unk = paramRequest;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  private void b(int paramInt, String paramString, Respond paramRespond)
-  {
-    uni localuni = this.jdField_a_of_type_Uni;
-    if (localuni != null)
-    {
-      localuni.a(this.jdField_a_of_type_Unk, paramRespond, new ErrorMessage(paramInt, paramString));
+    if ((parambave == null) || (parambavf == null)) {}
+    while (!(parambave instanceof baub)) {
       return;
     }
-    wsv.d("Q.qqstory.net:CmdTaskManager", "cmd callback is null");
-  }
-  
-  public void a(int paramInt, String paramString, Respond paramRespond)
-  {
-    b(paramInt, paramString, paramRespond);
+    baub localbaub = (baub)parambave;
+    localbaub.jdField_a_of_type_Long += parambavf.c;
+    parambavf.c = 0L;
+    parambavf = "bytes=" + localbaub.jdField_a_of_type_Long + "-";
+    localbaub.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
+    String str1 = localbaub.jdField_a_of_type_JavaLangString;
+    if (str1.contains("range="))
+    {
+      String str2 = str1.substring(0, str1.lastIndexOf("range="));
+      localbaub.jdField_a_of_type_JavaLangString = (str2 + "range=" + localbaub.jdField_a_of_type_Long);
+    }
+    parambave = parambave.a();
+    if ((parambave != null) && ((parambave instanceof unj))) {
+      ((unj)parambave).b = true;
+    }
+    wxe.b("AsyncFileDownloader", String.format("breakDown , range = %s , url = %s", new Object[] { parambavf, str1 }));
   }
 }
 

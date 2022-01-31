@@ -1,23 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class afrb
-  implements atti
+  extends afuf
 {
-  afrb(afra paramafra) {}
-  
-  public void a(afrf paramafrf)
+  afrb(afpy paramafpy)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarketFaceItemBuilder", 2, "func downloadVideoDetails, 【callback】 try to download video details.");
-    }
-    afqr.a(this.a.jdField_a_of_type_Afqr, paramafrf);
+    super(paramafpy, null);
   }
   
-  public void a(boolean paramBoolean)
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (paramBoolean) {
-      afqr.a(this.a.jdField_a_of_type_Afqr, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.a.jdField_a_of_type_Afrf);
-    }
+    return new afwu(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

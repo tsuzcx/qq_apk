@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.entry;
 
-import awbw;
-import awbx;
+import awgf;
+import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -25,7 +25,7 @@ class MiniAppUserAppInfoListManager$7
       return;
       localObject1 = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
     } while (localObject1 == null);
-    Object localObject3 = ((awbw)localObject1).a(MiniAppEntity.class, MiniAppEntity.class.getSimpleName(), false, null, null, null, null, "position asc", null);
+    Object localObject3 = ((awgf)localObject1).a(MiniAppEntity.class, MiniAppEntity.class.getSimpleName(), false, null, null, null, null, "position asc", null);
     localObject1 = new StringBuilder();
     if (localObject3 != null)
     {

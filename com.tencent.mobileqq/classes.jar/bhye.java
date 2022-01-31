@@ -1,8 +1,15 @@
-import android.view.KeyEvent;
+import android.view.View;
 
-public abstract interface bhye
+class bhye
+  implements bhyc
 {
-  public abstract boolean a(KeyEvent paramKeyEvent);
+  bhye(bhyd parambhyd) {}
+  
+  public void a(View paramView)
+  {
+    this.a.c(paramView);
+    this.a.c();
+  }
 }
 
 

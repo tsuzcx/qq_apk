@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view;
 
 import com.tencent.mobileqq.widget.MessageProgressView;
-import wpo;
+import wtx;
 
 public class StoryUploadProgressView$1
   implements Runnable
 {
-  public StoryUploadProgressView$1(wpo paramwpo) {}
+  public StoryUploadProgressView$1(wtx paramwtx) {}
   
   public void run()
   {
-    this.this$0.a.b(wpo.a(this.this$0) + "_" + hashCode());
+    this.this$0.a.b(wtx.a(this.this$0) + "_" + hashCode());
   }
 }
 

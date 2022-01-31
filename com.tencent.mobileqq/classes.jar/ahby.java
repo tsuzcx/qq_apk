@@ -1,25 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.List;
 
 public class ahby
-  implements View.OnTouchListener
 {
-  public ahby(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  @bdcu(a=String.class)
+  List<String> jdField_a_of_type_JavaUtilList;
+  String b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public String toString()
   {
-    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
-    if (paramMotionEvent.isActive()) {
-      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    }
-    this.a.a.clearFocus();
-    paramView = this.a.a.getText().toString();
-    this.a.a.setSelection(paramView.length());
-    return false;
+    return "ZhituReportRequest{, type=" + this.jdField_a_of_type_Int + ", md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", text='" + bhqh.a(this.b) + '\'' + '}';
   }
 }
 

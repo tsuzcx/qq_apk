@@ -1,6 +1,6 @@
 package com.tencent.av;
 
-import bdee;
+import bdin;
 import com.tencent.av.app.VideoAppInterface;
 import lid;
 import mqq.app.MobileQQ;
@@ -14,7 +14,7 @@ class VideoController$21
   {
     this.this$0.j = null;
     this.this$0.a().a("startGAudioChat.1", 0);
-    boolean bool = bdee.g(this.this$0.a.getApplication().getApplicationContext());
+    boolean bool = bdin.g(this.this$0.a.getApplication().getApplicationContext());
     VideoController localVideoController = this.this$0;
     int j = this.jdField_a_of_type_Int;
     long l = this.jdField_a_of_type_Long;

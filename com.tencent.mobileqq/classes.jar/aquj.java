@@ -1,29 +1,54 @@
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
 class aquj
-  extends aquk
+  implements aqsa
 {
-  public aquj(aqug paramaqug)
-  {
-    super(paramaqug);
-  }
+  aquj(aqui paramaqui, String paramString, aqva paramaqva) {}
   
-  protected String a()
+  public void a(int paramInt, String paramString)
   {
-    return "StateAcceptByPCWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2DiscTaskExcuter faild");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
     }
-    aqug.b(this.jdField_a_of_type_Aqug, 11, 5);
-    aqug.c(this.jdField_a_of_type_Aqug, 11, 5);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateAcceptByPC)");
-    this.jdField_a_of_type_Aquk = new aquh(this.jdField_a_of_type_Aqug);
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqui.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter faild:" + paramInt);
+      }
+      this.jdField_a_of_type_Aqva.a(aque.a(this.jdField_a_of_type_Aqui.jdField_a_of_type_Long, bool2), bool1);
+      return;
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "2");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aqui.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aqui.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aqui.c);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aqui.d);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aqui.e);
+    localBundle.putString("_m_ForwardUuid", paramString);
+    if (QLog.isColorLevel()) {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqui.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter success");
+    }
+    this.jdField_a_of_type_Aqva.a(paramString, localBundle);
   }
 }
 

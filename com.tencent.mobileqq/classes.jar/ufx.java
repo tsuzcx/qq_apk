@@ -1,8 +1,17 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StTagInfo;
 
-public abstract interface ufx
+class ufx
+  implements View.OnClickListener
 {
-  public abstract void a(ArrayList<uer> paramArrayList);
+  ufx(ufw paramufw) {}
+  
+  public void onClick(View paramView)
+  {
+    tqs.a(this.a.a.tagId.get(), this.a.a.tagName.get());
+  }
 }
 
 

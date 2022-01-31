@@ -1,13 +1,13 @@
 public class atha
 {
+  public double a;
   public int a;
+  public String a;
+  public boolean a;
   public int b;
-  
-  public atha(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
+  public boolean b;
+  public boolean c;
+  public boolean d;
 }
 
 

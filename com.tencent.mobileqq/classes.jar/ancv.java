@@ -1,28 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.4.1;
-import com.tencent.qphone.base.util.QLog;
-
 public class ancv
-  implements avyi
 {
-  public ancv(ARScanEntryView paramARScanEntryView) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void a()
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onStart ");
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onEnd  needReportRedDot = " + ARScanEntryView.a(this.a));
-    }
-    if (ARScanEntryView.a(this.a) != null) {
-      ARScanEntryView.a(this.a).post(new ARScanEntryView.4.1(this));
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("skuId:").append(this.c).append(",skuName:").append(this.d).append(",skuPrice:").append(this.e).append(",imageUrl:").append(this.b).append(",detailUrl:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 

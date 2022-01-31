@@ -1,13 +1,13 @@
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
-public class xra
-  implements xrz
+final class xra
+  extends ThreadLocal<DateFormat>
 {
-  public xra(SegmentList paramSegmentList) {}
-  
-  public void a()
+  protected DateFormat a()
   {
-    this.a.a.a(false);
+    return new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
   }
 }
 

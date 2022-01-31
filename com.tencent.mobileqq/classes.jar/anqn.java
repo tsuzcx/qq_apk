@@ -1,10 +1,11 @@
-public abstract interface anqn
+import android.content.DialogInterface.OnClickListener;
+
+public class anqn
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public DialogInterface.OnClickListener a;
+  public String a;
+  public String b;
+  public String c;
 }
 
 

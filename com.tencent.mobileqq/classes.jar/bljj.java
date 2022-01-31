@@ -1,11 +1,11 @@
-import com.google.gson.reflect.TypeToken;
-import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
-import java.util.List;
+import android.support.annotation.IntRange;
+import android.support.annotation.Nullable;
 
-class bljj
-  extends TypeToken<List<AEEditorDownloadResBean>>
+public abstract interface bljj
 {
-  bljj(bljh parambljh) {}
+  public abstract void a(@IntRange(from=0L, to=100L) int paramInt);
+  
+  public abstract void a(@Nullable bavf parambavf);
 }
 
 

@@ -1,25 +1,70 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
 
-class bgmz
-  implements View.OnClickListener
+final class bgmz
 {
-  bgmz(bgmu parambgmu, DialogInterface.OnClickListener paramOnClickListener) {}
+  private long jdField_a_of_type_Long;
+  private bgmx jdField_a_of_type_Bgmx;
+  private final String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private final long[] jdField_a_of_type_ArrayOfLong;
   
-  public void onClick(View paramView)
+  private bgmz(bgmu parambgmu, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgmu, 1);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfLong = new long[bgmu.a(parambgmu)];
+  }
+  
+  private IOException a(String[] paramArrayOfString)
+  {
+    throw new IOException("unexpected journal line: " + Arrays.toString(paramArrayOfString));
+  }
+  
+  private void a(String[] paramArrayOfString)
+  {
+    if (paramArrayOfString.length != bgmu.a(this.jdField_a_of_type_Bgmu)) {
+      throw a(paramArrayOfString);
     }
+    int i = 0;
     try
     {
-      if (this.jdField_a_of_type_Bgmu.isShowing()) {
-        this.jdField_a_of_type_Bgmu.dismiss();
+      while (i < paramArrayOfString.length)
+      {
+        this.jdField_a_of_type_ArrayOfLong[i] = Long.parseLong(paramArrayOfString[i]);
+        i += 1;
       }
       return;
     }
-    catch (Exception paramView) {}
+    catch (NumberFormatException localNumberFormatException)
+    {
+      throw a(paramArrayOfString);
+    }
+  }
+  
+  public File a(int paramInt)
+  {
+    return new File(bgmu.a(this.jdField_a_of_type_Bgmu), this.jdField_a_of_type_JavaLangString + "." + paramInt);
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+    int j = arrayOfLong.length;
+    int i = 0;
+    while (i < j)
+    {
+      long l = arrayOfLong[i];
+      localStringBuilder.append(' ').append(l);
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public File b(int paramInt)
+  {
+    return new File(bgmu.a(this.jdField_a_of_type_Bgmu), this.jdField_a_of_type_JavaLangString + "." + paramInt + ".tmp");
   }
 }
 

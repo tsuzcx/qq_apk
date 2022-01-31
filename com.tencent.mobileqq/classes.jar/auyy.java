@@ -1,8 +1,18 @@
-import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-public abstract interface auyy
+public class auyy
 {
-  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
+  public int a;
+  public View a;
+  public ImageButton a;
+  public ImageView a;
+  public TextView a;
+  
+  private auyy(GameRoomInviteActivity paramGameRoomInviteActivity) {}
 }
 
 

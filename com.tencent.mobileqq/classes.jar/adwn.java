@@ -1,31 +1,22 @@
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class adwn
-  implements TextView.OnEditorActionListener
+  implements View.OnClickListener
 {
-  public adwn(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public adwn(SelectedAndSearchBar paramSelectedAndSearchBar, View.OnClickListener paramOnClickListener) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 6) && (TextPreviewTranslateActivity.a(this.a) != null))
-    {
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a).getText().toString());
-      TextPreviewTranslateActivity.a(this.a);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a));
-      TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.b(this.a));
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
-      return true;
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adwn
  * JD-Core Version:    0.7.0.1
  */

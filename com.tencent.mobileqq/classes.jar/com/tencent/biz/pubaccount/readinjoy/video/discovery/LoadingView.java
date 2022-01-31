@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video.discovery;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -11,7 +11,7 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import bdcb;
+import bdgk;
 
 public class LoadingView
   extends View
@@ -57,15 +57,15 @@ public class LoadingView
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#E8E8E7"));
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(aekt.a(2.0F, getResources()));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(aepi.a(2.0F, getResources()));
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#ffffff"));
-    this.jdField_a_of_type_Int = aekt.a(28.0F, getResources());
-    this.jdField_b_of_type_Int = aekt.a(100.0F, getResources());
-    this.c = aekt.a(15.0F, getResources());
-    this.e = ((int)(bdcb.i() * 0.29D));
+    this.jdField_a_of_type_Int = aepi.a(28.0F, getResources());
+    this.jdField_b_of_type_Int = aepi.a(100.0F, getResources());
+    this.c = aepi.a(15.0F, getResources());
+    this.e = ((int)(bdgk.i() * 0.29D));
     this.d = (this.e * 4 / 3);
-    this.f = aekt.a(9.0F, getResources());
-    this.g = aekt.a(18.0F, getResources());
+    this.f = aepi.a(9.0F, getResources());
+    this.g = aepi.a(18.0F, getResources());
   }
   
   private void a(Canvas paramCanvas)
@@ -90,7 +90,7 @@ public class LoadingView
   {
     this.jdField_b_of_type_AndroidGraphicsRect.left = (getLeft() + getPaddingLeft());
     this.jdField_b_of_type_AndroidGraphicsRect.top = (this.jdField_a_of_type_AndroidGraphicsRect.bottom + this.g);
-    this.jdField_b_of_type_AndroidGraphicsRect.right = (this.jdField_b_of_type_AndroidGraphicsRect.left + (int)bdcb.i());
+    this.jdField_b_of_type_AndroidGraphicsRect.right = (this.jdField_b_of_type_AndroidGraphicsRect.left + (int)bdgk.i());
     this.jdField_b_of_type_AndroidGraphicsRect.bottom = (this.jdField_b_of_type_AndroidGraphicsRect.top + this.d);
     paramCanvas.drawRect(this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
@@ -115,7 +115,7 @@ public class LoadingView
     paramInt1 = this.c;
     paramInt2 = this.g;
     int i = this.d;
-    setMeasuredDimension((int)bdcb.i(), paramInt1 + paramInt2 * 2 + i);
+    setMeasuredDimension((int)bdgk.i(), paramInt1 + paramInt2 * 2 + i);
   }
 }
 

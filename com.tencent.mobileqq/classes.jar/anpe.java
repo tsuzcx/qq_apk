@@ -1,73 +1,25 @@
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Iterator;
 import java.util.List;
 
-public class anpe
-  extends anpa
+class anpe
+  extends alwx
 {
-  private float a;
-  private float b = -1.0F;
-  private float c = -1.0F;
-  float[] d = new float[3];
-  private float[] e = new float[16];
+  anpe(anpd paramanpd) {}
   
-  public anpe(Context paramContext, int paramInt, SensorManager paramSensorManager, anos paramanos)
+  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
   {
-    super(paramContext, paramInt, paramSensorManager, paramanos);
-    this.jdField_a_of_type_Float = -1.0F;
-    if (paramSensorManager.getDefaultSensor(3) != null)
+    if ((anpd.a(this.a) != null) && (paramList != null))
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager.getDefaultSensor(3));
-      return;
-    }
-    throw new OrientationProviderNotFound(String.valueOf(3));
-  }
-  
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (this.jdField_a_of_type_Anos == null) {
-      return;
-    }
-    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
-    {
-      this.jdField_a_of_type_Float = paramFloat1;
-      this.jdField_a_of_type_Anos.updateAzimuth(paramFloat1);
-    }
-    if (Math.abs(paramFloat2 - this.b) > 1.0F)
-    {
-      this.b = paramFloat2;
-      this.jdField_a_of_type_Anos.updatePitch(paramFloat2);
-    }
-    if (Math.abs(paramFloat3 - this.c) > 1.0F)
-    {
-      this.c = paramFloat3;
-      this.jdField_a_of_type_Anos.updateRoll(paramFloat3);
-    }
-    this.jdField_a_of_type_Anos.updateSensor(paramFloat1, paramFloat2, paramFloat3);
-  }
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    if (paramSensorEvent.sensor.getType() == 3)
-    {
-      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
-      if (this.jdField_a_of_type_Int != 1)
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        this.d[0] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[0]));
-        this.d[1] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[1]));
-        this.d[2] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[2]));
-        anou.a(anou.a(this.d), this.e);
-        super.a(this.e);
+        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+        if ((localMessageRecord != null) && (localMessageRecord.uniseq == anpd.a(this.a).b)) {
+          this.a.a(localMessageRecord.uniseq);
+        }
       }
     }
-    else
-    {
-      return;
-    }
-    a(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2]);
   }
 }
 

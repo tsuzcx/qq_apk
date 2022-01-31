@@ -3,7 +3,7 @@ import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageVie
 import com.tencent.widget.AdapterView;
 
 public class pth
-  implements bhqp
+  implements bhuw
 {
   public pth(NativeGridImageView paramNativeGridImageView) {}
   

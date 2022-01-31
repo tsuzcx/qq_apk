@@ -1,7 +1,19 @@
-public abstract interface anfn
-  extends anfm
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArDefaultSetting;
+
+public final class anfn
+  implements Parcelable.Creator<ArDefaultSetting>
 {
-  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3);
+  public ArDefaultSetting a(Parcel paramParcel)
+  {
+    return new ArDefaultSetting(paramParcel);
+  }
+  
+  public ArDefaultSetting[] a(int paramInt)
+  {
+    return new ArDefaultSetting[paramInt];
+  }
 }
 
 

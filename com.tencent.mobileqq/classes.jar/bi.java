@@ -3,7 +3,7 @@ import com.dataline.activities.LiteActivity;
 import java.util.ArrayList;
 
 public class bi
-  implements army
+  implements arrh
 {
   public bi(LiteActivity paramLiteActivity, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   

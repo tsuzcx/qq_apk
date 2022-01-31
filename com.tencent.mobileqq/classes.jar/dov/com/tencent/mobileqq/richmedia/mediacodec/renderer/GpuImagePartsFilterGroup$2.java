@@ -1,55 +1,55 @@
 package dov.com.tencent.mobileqq.richmedia.mediacodec.renderer;
 
-import bnjk;
-import bnjm;
-import bnjv;
+import bnnw;
+import bnny;
+import bnoh;
 
 public class GpuImagePartsFilterGroup$2
   implements Runnable
 {
-  public GpuImagePartsFilterGroup$2(bnjv parambnjv, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat) {}
+  public GpuImagePartsFilterGroup$2(bnoh parambnoh, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat) {}
   
   public void run()
   {
-    bnjm localbnjm2 = null;
-    bnjm localbnjm1;
-    if ((bnjv.a(this.this$0) == null) || (bnjv.a(this.this$0).getFilterType() != this.jdField_a_of_type_Int))
+    bnny localbnny2 = null;
+    bnny localbnny1;
+    if ((bnoh.a(this.this$0) == null) || (bnoh.a(this.this$0).getFilterType() != this.jdField_a_of_type_Int))
     {
-      localbnjm1 = bnjv.a(this.this$0);
-      bnjv.a(this.this$0, (bnjm)bnjk.a(this.jdField_a_of_type_Int));
-      bnjv.a(this.this$0).init();
-      bnjv.a(this.this$0).onOutputSizeChanged(this.b, this.c);
+      localbnny1 = bnoh.a(this.this$0);
+      bnoh.a(this.this$0, (bnny)bnnw.a(this.jdField_a_of_type_Int));
+      bnoh.a(this.this$0).init();
+      bnoh.a(this.this$0).onOutputSizeChanged(this.b, this.c);
     }
     for (;;)
     {
-      if ((bnjv.b(this.this$0) == null) || (bnjv.b(this.this$0).getFilterType() != this.d))
+      if ((bnoh.b(this.this$0) == null) || (bnoh.b(this.this$0).getFilterType() != this.d))
       {
-        localbnjm2 = bnjv.b(this.this$0);
-        bnjv.b(this.this$0, (bnjm)bnjk.a(this.d));
-        bnjv.b(this.this$0).init();
-        bnjv.b(this.this$0).onOutputSizeChanged(this.b, this.c);
+        localbnny2 = bnoh.b(this.this$0);
+        bnoh.b(this.this$0, (bnny)bnnw.a(this.d));
+        bnoh.b(this.this$0).init();
+        bnoh.b(this.this$0).onOutputSizeChanged(this.b, this.c);
       }
       if ((this.e == 90) || (this.e == 270))
       {
-        bnjv.a(this.this$0).a(false);
-        bnjv.b(this.this$0).a(false);
+        bnoh.a(this.this$0).a(false);
+        bnoh.b(this.this$0).a(false);
       }
       for (;;)
       {
-        bnjv.a(this.this$0, this.jdField_a_of_type_Float);
-        bnjv.a(this.this$0).a(true, this.jdField_a_of_type_Float + 0.1F);
-        bnjv.b(this.this$0).a(false, this.jdField_a_of_type_Float - 0.1F);
-        if (localbnjm1 != null) {
-          localbnjm1.destroy();
+        bnoh.a(this.this$0, this.jdField_a_of_type_Float);
+        bnoh.a(this.this$0).a(true, this.jdField_a_of_type_Float + 0.1F);
+        bnoh.b(this.this$0).a(false, this.jdField_a_of_type_Float - 0.1F);
+        if (localbnny1 != null) {
+          localbnny1.destroy();
         }
-        if (localbnjm2 != null) {
-          localbnjm2.destroy();
+        if (localbnny2 != null) {
+          localbnny2.destroy();
         }
         return;
-        bnjv.a(this.this$0).a(true);
-        bnjv.b(this.this$0).a(true);
+        bnoh.a(this.this$0).a(true);
+        bnoh.b(this.this$0).a(true);
       }
-      localbnjm1 = null;
+      localbnny1 = null;
     }
   }
 }

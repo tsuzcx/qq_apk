@@ -1,43 +1,27 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class adrj
-  extends RecyclerView.Adapter<adrk>
+  implements View.OnClickListener
 {
-  adrh jdField_a_of_type_Adrh;
+  public adrj(QQMapActivity paramQQMapActivity) {}
   
-  public adrj(ScoreQAVFragment paramScoreQAVFragment) {}
-  
-  public adrk a(ViewGroup paramViewGroup, int paramInt)
+  public void onClick(View paramView)
   {
-    return new adrk(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2131559628, paramViewGroup, false), this.jdField_a_of_type_Adrh);
-  }
-  
-  public void a(adrh paramadrh)
-  {
-    this.jdField_a_of_type_Adrh = paramadrh;
-  }
-  
-  public void a(adrk paramadrk, int paramInt)
-  {
-    paramadrk.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt))
-    {
-      paramadrk.a.setSelected(true);
-      return;
+    if (!bdin.d(this.a)) {
+      this.a.x();
     }
-    paramadrk.a.setSelected(false);
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
+    for (;;)
+    {
+      zgv.a("see_streetview");
+      return;
+      if (bdin.a(this.a)) {
+        this.a.p();
+      } else {
+        bdgm.a(this.a, 230).setTitle(this.a.getString(2131690071)).setMessage(2131695059).setPositiveButton(2131691090, new adrl(this)).setNegativeButton(2131690648, new adrk(this)).show();
+      }
+    }
   }
 }
 

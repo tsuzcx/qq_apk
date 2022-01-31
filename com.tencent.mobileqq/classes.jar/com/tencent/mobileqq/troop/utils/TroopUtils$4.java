@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.content.Context;
-import bclq;
-import bdcd;
-import bdfq;
+import bcpz;
+import bdgm;
+import bdjz;
 
 public final class TroopUtils$4
   implements Runnable
@@ -12,7 +12,7 @@ public final class TroopUtils$4
   
   public void run()
   {
-    bdcd.a(this.a, 230, null, this.a.getString(2131692038), this.a.getString(2131694951), null, null, new bclq(this)).show();
+    bdgm.a(this.a, 230, null, this.a.getString(2131692039), this.a.getString(2131694953), null, null, new bcpz(this)).show();
   }
 }
 

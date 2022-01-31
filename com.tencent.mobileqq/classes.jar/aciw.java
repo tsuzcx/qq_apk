@@ -1,16 +1,19 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.BaseChatpieHelper;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class aciw
-  implements bhqd
+  implements View.OnClickListener
 {
-  public aciw(ChatHistoryFileActivity paramChatHistoryFileActivity, bhpy parambhpy) {}
+  public aciw(BaseChatPie paramBaseChatPie) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a(3, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.d)) || (this.jdField_a_of_type_Bhpy.isShowing())) {
-      this.jdField_a_of_type_Bhpy.dismiss();
-    }
+    aupg.a().a = 0;
+    this.a.a.a(this.a.a(), this.a.a().getIntent());
+    this.a.b(1);
   }
 }
 

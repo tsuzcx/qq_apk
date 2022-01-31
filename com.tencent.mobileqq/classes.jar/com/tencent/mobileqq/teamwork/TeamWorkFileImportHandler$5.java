@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.teamwork;
 
-import bacn;
-import badd;
+import bagw;
+import bahm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import org.json.JSONObject;
 
 public class TeamWorkFileImportHandler$5
   implements Runnable
 {
-  public TeamWorkFileImportHandler$5(bacn parambacn, JSONObject paramJSONObject, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  public TeamWorkFileImportHandler$5(bagw parambagw, JSONObject paramJSONObject, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
@@ -17,9 +17,9 @@ public class TeamWorkFileImportHandler$5
     do
     {
       return;
-      localJSONObject = badd.b(this.jdField_a_of_type_OrgJsonJSONObject, this.this$0.app.getCurrentAccountUin());
+      localJSONObject = bahm.b(this.jdField_a_of_type_OrgJsonJSONObject, this.this$0.app.getCurrentAccountUin());
     } while (localJSONObject == null);
-    bacn.a(this.this$0, localJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+    bagw.a(this.this$0, localJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
   }
 }
 

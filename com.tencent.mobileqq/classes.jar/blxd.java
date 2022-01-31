@@ -1,6 +1,32 @@
-public abstract class blxd
+import com.tencent.qphone.base.util.QLog;
+
+class blxd
+  implements blxj
 {
-  public abstract boolean a(int paramInt1, int paramInt2);
+  blxd(blxc paramblxc) {}
+  
+  public void a(float paramFloat, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QComboDText", 2, "CaptureComboText onUpdateProgress, progress is : " + paramFloat);
+    }
+    blxc.a(this.a, paramFloat);
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QComboDText", 2, "CaptureComboText onDownloadFinish, success: " + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      blxc.a(this.a, 3);
+      this.a.b();
+      return;
+    }
+    blxc.a(this.a, 2);
+    this.a.a(4);
+  }
 }
 
 

@@ -1,28 +1,78 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.ReentrantLock;
 
+@Deprecated
 public class algk
-  extends alhr
 {
-  public algk(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  private static algk jdField_a_of_type_Algk;
+  public int a;
+  public String a;
+  public AtomicInteger a;
+  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+  
+  public algk()
   {
-    super(paramContext, paramQQAppInterface, paramSessionInfo);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public alhk a(String paramString)
+  public static algk a()
   {
-    return new algj(paramString);
-  }
-  
-  public View a()
-  {
-    if (this.c == 0) {
-      return new ApolloLinearLayout(this.b, null, this.d, 4, 2);
+    try
+    {
+      if (jdField_a_of_type_Algk == null) {
+        jdField_a_of_type_Algk = new algk();
+      }
+      algk localalgk = jdField_a_of_type_Algk;
+      return localalgk;
     }
-    return super.a();
+    finally {}
+  }
+  
+  public algk a(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionManager", 2, "[setAppInterface] app:" + paramQQAppInterface);
+    }
+    return this;
+  }
+  
+  public ReentrantLock a()
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionManager", 2, "[getLock].");
+      }
+      if (this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloActionManager", 2, "create lock.");
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+      }
+      ReentrantLock localReentrantLock = this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+      return localReentrantLock;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionManager", 2, "[onDestroy]");
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

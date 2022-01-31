@@ -1,17 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.6.1;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wrt
-  implements woo
+public abstract interface wrt<T>
 {
-  wrt(wrh paramwrh) {}
+  public abstract void a(ErrorMessage paramErrorMessage);
   
-  public void a()
-  {
-    wsv.d("NewMyStorySegment", "finish get all data from server steps");
-    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.6.1(this));
-  }
+  public abstract void a(T paramT);
 }
 
 

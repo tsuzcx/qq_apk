@@ -1,19 +1,26 @@
-public class utd
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+
+class utd
+  extends vii
 {
-  @xnb(a="oa_task_id")
-  public int a;
-  @xnb(a="bg_url")
-  public String a;
-  @xnb(a="is_comp_able")
-  public boolean a;
-  @xnb(a="comp_vid")
-  public String b;
-  @xnb(a="icon_url")
-  public String c;
+  utd(uta paramuta) {}
   
-  public String toString()
+  public void a()
   {
-    return "CompInfoBase{, comparedVid='" + this.b + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.c + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
+    super.a();
+    usz.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    wxj.a("home_page", "suc_share", 1, paramInt, new String[] { wxj.b(this.a.a.a) + "", wxj.a(this.a.a.a) + "", this.a.a.a.feedId });
+  }
+  
+  public void b(int paramInt)
+  {
+    super.b(paramInt);
+    wxj.a("home_page", "share_chanel", 1, paramInt, new String[] { wxj.b(this.a.a.a) + "", wxj.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 

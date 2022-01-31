@@ -1,23 +1,15 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class advn
-  extends MqqHandler
+  implements DialogInterface.OnClickListener
 {
-  public advn(SubLoginActivity paramSubLoginActivity) {}
+  public advn(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1982: 
-      this.a.finish();
-      return;
-    }
-    this.a.e();
+    this.a.a(this.a.b);
   }
 }
 

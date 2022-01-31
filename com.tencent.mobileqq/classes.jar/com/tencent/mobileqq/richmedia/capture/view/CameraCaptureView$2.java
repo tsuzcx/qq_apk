@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import azbo;
+import azfx;
 
 class CameraCaptureView$2
   implements Runnable

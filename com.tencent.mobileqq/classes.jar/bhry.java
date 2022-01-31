@@ -1,22 +1,14 @@
-import android.view.ViewTreeObserver;
-import com.tencent.widget.DynamicGridView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 public class bhry
-  implements bhsh
+  implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public bhry(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
-  {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new bhrz(this, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView), paramInt1, paramInt2));
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,27 +1,27 @@
-import android.os.Handler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.25.1;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.25.2;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
-
 public class bazb
-  implements TVK_IMediaPlayer.OnInfoListener
 {
-  public bazb(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public String toString()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.25.1(this));
-      continue;
-      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.25.2(this));
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoSliceInfo\n");
+    localStringBuilder.append("mIndex=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",mVideoDuration=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",mEncodeFinish=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",mVideoPath(").append(this.jdField_c_of_type_Int + "*" + this.d).append(")=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",mVideoMd5=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",mSendClicked=").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(",mVideoSyncStory=").append(this.jdField_c_of_type_Boolean);
+    return localStringBuilder.toString();
   }
 }
 

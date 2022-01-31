@@ -1,88 +1,39 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import cooperation.weiyun.channel.pb.WeiyunPB.PwdVerifyMsgRsp;
+import mqq.app.MobileQQ;
 
-public class araz
+class araz
+  implements bkkj<WeiyunPB.PwdVerifyMsgRsp>
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<ExcitingTransferHostInfo> jdField_a_of_type_JavaUtilList;
-  private final boolean jdField_a_of_type_Boolean;
-  private final byte[] jdField_a_of_type_ArrayOfByte;
-  private final List<ExcitingTransferHostInfo> b;
+  araz(arau paramarau) {}
   
-  public araz(List<ExcitingTransferHostInfo> paramList1, List<ExcitingTransferHostInfo> paramList2, boolean paramBoolean, String paramString, byte[] paramArrayOfByte)
+  public void a(int paramInt, String paramString, WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList1;
-    this.b = paramList2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<ExcitingTransferHostInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangString == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ExcitingTransfer.SvrInfo<FileAssistant>", 2, "support https but mstrSSLName is null");
-      }
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onFailed. errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
     }
-    return true;
+    arau.a(this.a).a().a(false, 45, new Object[] { Integer.valueOf(paramInt), paramString, null });
   }
   
-  public byte[] a()
+  public void a(WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
   {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public List<ExcitingTransferHostInfo> b()
-  {
-    return this.b;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    ExcitingTransferHostInfo localExcitingTransferHostInfo;
-    for (Object localObject = "IPV4:"; localIterator.hasNext(); localObject = (String)localObject + "[" + localExcitingTransferHostInfo.mstrIp + ":" + localExcitingTransferHostInfo.mport + "] ") {
-      localExcitingTransferHostInfo = (ExcitingTransferHostInfo)localIterator.next();
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onSucceed");
     }
-    localObject = (String)localObject + " -- IPV6:";
-    localIterator = this.b.iterator();
-    while (localIterator.hasNext())
-    {
-      localExcitingTransferHostInfo = (ExcitingTransferHostInfo)localIterator.next();
-      localObject = (String)localObject + "[" + localExcitingTransferHostInfo.mstrIp + ":" + localExcitingTransferHostInfo.mport + "] ";
+    String str = bkmh.a(paramPwdVerifyMsgRsp.cs_sig.get());
+    if (!TextUtils.isEmpty(str)) {
+      bkkk.a(arau.a(this.a).getApplication().getApplicationContext(), str);
     }
-    localObject = new StringBuilder().append((String)localObject).append(" strSSLCName:").append(this.jdField_a_of_type_JavaLangString).append(" bSupportHttps:").append(this.jdField_a_of_type_Boolean).append(" busniEx len:");
-    if (this.jdField_a_of_type_ArrayOfByte != null) {}
-    for (int i = this.jdField_a_of_type_ArrayOfByte.length;; i = 0) {
-      return i;
-    }
+    bkkk.c(arau.a(this.a).getApplication().getApplicationContext(), true);
+    arau.a(this.a).a().a(true, 45, new Object[] { Integer.valueOf(0), null, paramPwdVerifyMsgRsp.cs_sig.get() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     araz
  * JD-Core Version:    0.7.0.1
  */

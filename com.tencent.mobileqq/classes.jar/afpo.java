@@ -1,17 +1,16 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
-class afpo
-  extends afpq
+public class afpo
+  implements View.OnTouchListener
 {
-  afpo(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  public afpo(HeartCombolEffectView paramHeartCombolEffectView) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new afld(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    return true;
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.rich;
 
-import aynz;
+import aysi;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkNodeContainer$1
   implements Runnable
 {
-  public ArkNodeContainer$1(aynz paramaynz, String paramString) {}
+  public ArkNodeContainer$1(aysi paramaysi, String paramString) {}
   
   public void run()
   {

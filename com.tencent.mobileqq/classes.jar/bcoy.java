@@ -1,100 +1,38 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopNameHelper.GenTroopNameTask;
 
 public class bcoy
+  implements Comparable<bcoy>
 {
-  private int a;
-  private int b;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  private int a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  public bcoy(TroopNameHelper.GenTroopNameTask paramGenTroopNameTask) {}
+  
+  public int a(@NonNull bcoy parambcoy)
   {
-    int i = bdbx.a(paramQQAppInterface.getCurrentAccountUin(), "troop_game_feed", paramSessionInfo.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSettingRedInfo", 2, "read game feed red dot, num=" + i);
+    int i = -1;
+    if ((this.f != null) && (parambcoy.f != null)) {
+      i = this.f.compareTo(parambcoy.f);
     }
-    if (i > 0) {
-      return 1;
-    }
-    i = bdbx.a(paramQQAppInterface.getCurrentAccountUin(), "troop_album_feed", paramSessionInfo.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSettingRedInfo", 2, "read album feed red dot, num=" + i);
-    }
-    if (i > 0) {
-      return 6;
-    }
-    boolean bool = bcgx.c(paramQQAppInterface, paramSessionInfo.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSettingRedInfo", 2, "needShowRobotRedDot:" + bool);
-    }
-    if (bool) {
-      return 2;
-    }
-    if (ball.a(paramQQAppInterface, "SP_KEY_WATCH_TOGETHER_TROOP_SETTING_RED_DOT_SHOW", true, false))
+    do
     {
-      Object localObject = (aono)aogj.a().a(535);
-      if ((localObject != null) && (((aono)localObject).a)) {
-        return 3;
-      }
-      localObject = ((aone)aogj.a().a(551)).a(4);
-      if ((localObject != null) && (((aonf)localObject).b)) {
-        return 4;
-      }
-    }
-    paramQQAppInterface = bdsn.a(paramQQAppInterface).a(paramSessionInfo.a);
-    if (paramQQAppInterface.a)
-    {
-      if (paramQQAppInterface.c == 2) {}
-      for (i = 1;; i = 2)
+      do
       {
-        this.b = i;
-        azmj.b(null, "dc00898", "", paramSessionInfo.a, "qq_vip", "0X800A8F4", this.b, 1, 0, "", "", "", "");
-        return 5;
-      }
-    }
+        return i;
+        if (this.f != null) {
+          break;
+        }
+      } while (parambcoy.f == null);
+      return 1;
+    } while (parambcoy.f == null);
     return 0;
-  }
-  
-  public static bcoy a(View paramView)
-  {
-    bcoy localbcoy2 = (bcoy)paramView.getTag();
-    bcoy localbcoy1 = localbcoy2;
-    if (localbcoy2 == null)
-    {
-      localbcoy1 = new bcoy();
-      paramView.setTag(localbcoy1);
-    }
-    return localbcoy1;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    this.a = a(paramQQAppInterface, paramSessionInfo);
-    switch (this.a)
-    {
-    default: 
-      return;
-    case 2: 
-      bcgx.c(paramQQAppInterface, false);
-      return;
-    case 3: 
-    case 4: 
-      ball.a(paramQQAppInterface, "SP_KEY_WATCH_TOGETHER_TROOP_SETTING_RED_DOT_SHOW", false, false);
-      return;
-    case 5: 
-      azmj.b(null, "dc00898", "", paramSessionInfo.a, "qq_vip", "0X800A8F5", this.b, 1, 0, "", "", "", "");
-    }
-    bdbx.a(paramQQAppInterface.getCurrentAccountUin(), "troop_album_feed", paramSessionInfo.b, 0);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    this.a = a(paramQQAppInterface, paramSessionInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSettingRedInfo", 2, "needShow: " + this.a);
-    }
-    return this.a != 0;
   }
 }
 

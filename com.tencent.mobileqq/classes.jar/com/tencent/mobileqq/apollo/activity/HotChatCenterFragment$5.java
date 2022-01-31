@@ -15,12 +15,12 @@ class HotChatCenterFragment$5
       String str1 = "" + this.jdField_a_of_type_Int;
       if (!HotChatCenterFragment.a(this.this$0))
       {
-        str1 = this.this$0.getString(2131720570) + "(" + this.jdField_a_of_type_Int + ")";
+        str1 = this.this$0.getString(2131720582) + "(" + this.jdField_a_of_type_Int + ")";
         if (this.jdField_a_of_type_Int > 99) {
-          str1 = this.this$0.getString(2131720570) + "(99+)";
+          str1 = this.this$0.getString(2131720582) + "(99+)";
         }
         if (this.jdField_a_of_type_Int <= 0) {
-          str1 = this.this$0.getString(2131720570);
+          str1 = this.this$0.getString(2131720582);
         }
       }
       String str2 = str1;

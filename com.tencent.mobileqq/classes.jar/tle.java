@@ -1,7 +1,7 @@
 import com.tencent.qphone.base.util.QLog;
 
 class tle
-  extends bjke
+  extends bjol
 {
   tle(tld paramtld) {}
   

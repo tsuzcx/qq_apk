@@ -1,6 +1,6 @@
 package com.tencent.gdtad.util;
 
-import aaov;
+import aatk;
 import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
 import lnz;
@@ -16,7 +16,7 @@ public class GdtSmartBlur
   
   public static GdtSmartBlur a()
   {
-    return aaov.a;
+    return aatk.a;
   }
   
   private void a()

@@ -69,12 +69,12 @@ public class pcz
           str1 = paramString.getQueryParameter("article_url");
           paramString = paramString.getQueryParameter("show_floating_window");
           str2 = URLDecoder.decode(str1, "utf-8");
-          if ((i == 0) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (TextUtils.equals("1", paramString)) && (bjxj.i()))
+          if ((i == 0) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (TextUtils.equals("1", paramString)) && (bkbq.i()))
           {
             b.remove(i);
             QLog.i("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], remove last rowKey.");
           }
-          if ((i != 0) || (bjxj.i())) {
+          if ((i != 0) || (bkbq.i())) {
             continue;
           }
           a.remove(i);

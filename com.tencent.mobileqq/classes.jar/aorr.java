@@ -1,42 +1,68 @@
 import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aorr
-  extends aopw<aorq>
+  extends aokh<aors>
 {
   public int a()
   {
-    return 359;
+    return 607;
   }
   
   @NonNull
-  public aorq a()
+  public aors a(int paramInt)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    fx.a();
-    bdiv.a(localQQAppInterface.getApp(), localQQAppInterface.c(), "vas_font_switch_config", "reset");
-    return new aorq();
+    return new aors();
   }
   
-  @NonNull
-  public aorq a(aogf[] paramArrayOfaogf)
+  @Nullable
+  public aors a(aoko[] paramArrayOfaoko)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    fx.a(paramArrayOfaogf[0].a);
-    bdiv.a(localQQAppInterface.getApp(), localQQAppInterface.c(), "vas_font_switch_config", paramArrayOfaogf[0].a);
-    return new aorq();
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null)) {
+      return aors.a(paramArrayOfaoko[0].a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SubAccountConfProcessor", 2, "onParsed is null");
+    }
+    return null;
   }
   
-  public Class<aorq> a()
+  public Class<aors> a()
   {
-    return aorq.class;
+    return aors.class;
   }
   
-  @NonNull
-  public aorq b()
+  public void a(int paramInt)
   {
-    return new aorq();
+    if (QLog.isColorLevel()) {
+      QLog.d("SubAccountConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void a(aors paramaors)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SubAccountConfProcessor", 2, "onUpdate " + paramaors.toString());
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SubAccountConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

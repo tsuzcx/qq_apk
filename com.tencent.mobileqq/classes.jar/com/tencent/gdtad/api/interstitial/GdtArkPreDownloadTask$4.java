@@ -1,23 +1,23 @@
 package com.tencent.gdtad.api.interstitial;
 
-import aaju;
-import aajw;
-import aanp;
+import aaoj;
+import aaol;
+import aase;
 import java.lang.ref.WeakReference;
 
 public class GdtArkPreDownloadTask$4
   implements Runnable
 {
-  public GdtArkPreDownloadTask$4(aaju paramaaju, int paramInt) {}
+  public GdtArkPreDownloadTask$4(aaoj paramaaoj, int paramInt) {}
   
   public void run()
   {
-    if ((aaju.a(this.this$0) != null) && (aaju.a(this.this$0).get() != null)) {}
+    if ((aaoj.a(this.this$0) != null) && (aaoj.a(this.this$0).get() != null)) {}
     for (boolean bool = true;; bool = false)
     {
-      aanp.b("GdtArkPreDownloadTask", String.format("notifyStatusChanged listener:%b status:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.a) }));
-      if ((aaju.a(this.this$0) != null) && (aaju.a(this.this$0).get() != null)) {
-        ((aajw)aaju.a(this.this$0).get()).a(aaju.a(this.this$0), this.a);
+      aase.b("GdtArkPreDownloadTask", String.format("notifyStatusChanged listener:%b status:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.a) }));
+      if ((aaoj.a(this.this$0) != null) && (aaoj.a(this.this$0).get() != null)) {
+        ((aaol)aaoj.a(this.this$0).get()).a(aaoj.a(this.this$0), this.a);
       }
       return;
     }

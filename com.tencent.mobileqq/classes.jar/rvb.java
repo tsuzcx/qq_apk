@@ -3,14 +3,14 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView.1.1;
 import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class rvb
-  implements azzy
+  implements baeh
 {
   public rvb(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView) {}
   
-  public void a(azzb paramazzb)
+  public void a(badk parambadk)
   {
-    ReadInJoySkinSlideDownView.a(this.a, paramazzb);
-    this.a.a.post(new ReadInJoySkinSlideDownView.1.1(this, paramazzb));
+    ReadInJoySkinSlideDownView.a(this.a, parambadk);
+    this.a.a.post(new ReadInJoySkinSlideDownView.1.1(this, parambadk));
   }
 }
 

@@ -1,6 +1,29 @@
-public abstract interface awvu
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+
+public class awvu
+  implements Animation.AnimationListener
 {
-  public abstract void a(String paramString);
+  public awvu(ProfileTagView paramProfileTagView, View paramView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView;
+    paramAnimation.i -= 1;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b = false;
+    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.i == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b();
+    }
+    ((FriendProfileCardActivity)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a).l();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

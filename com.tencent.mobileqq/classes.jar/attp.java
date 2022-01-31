@@ -1,181 +1,166 @@
-import android.os.Vibrator;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.magicface.magicfaceaction.Action.2;
+import android.graphics.Color;
+import com.google.gson.Gson;
+import com.tencent.lbssearch.httpresponse.HttpResponseListener;
+import com.tencent.lbssearch.object.result.DrivingResultObject;
+import com.tencent.lbssearch.object.result.DrivingResultObject.Result;
+import com.tencent.lbssearch.object.result.DrivingResultObject.Route;
+import com.tencent.lbssearch.object.result.TransitResultObject;
+import com.tencent.lbssearch.object.result.TransitResultObject.Line;
+import com.tencent.lbssearch.object.result.TransitResultObject.Result;
+import com.tencent.lbssearch.object.result.TransitResultObject.Route;
+import com.tencent.lbssearch.object.result.TransitResultObject.Segment;
+import com.tencent.lbssearch.object.result.TransitResultObject.Transit;
+import com.tencent.lbssearch.object.result.TransitResultObject.Walking;
+import com.tencent.lbssearch.object.result.WalkingResultObject;
+import com.tencent.lbssearch.object.result.WalkingResultObject.Result;
+import com.tencent.lbssearch.object.result.WalkingResultObject.Route;
+import com.tencent.mobileqq.location.ui.MapWidget;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.PolylineOptions;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.CountDownLatch;
 
 public class attp
+  implements HttpResponseListener
 {
-  public int a;
-  Vibrator jdField_a_of_type_AndroidOsVibrator;
-  public attr a;
-  public attt a;
-  atuc jdField_a_of_type_Atuc = new attq(this);
-  atuf jdField_a_of_type_Atuf;
-  public atur a;
-  public String a;
-  public List<atuf> a;
-  TimerTask jdField_a_of_type_JavaUtilTimerTask = new Action.2(this);
-  CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
-  public boolean a;
-  public int b;
-  public volatile boolean b;
-  int jdField_c_of_type_Int = 0;
-  volatile boolean jdField_c_of_type_Boolean = false;
-  public boolean d;
+  public attp(MapWidget paramMapWidget, int paramInt, attu paramattu) {}
   
-  public attp()
+  public void onFailure(int paramInt, String paramString, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 1;
-  }
-  
-  void a()
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (i == 1) {
-      this.jdField_a_of_type_Atuf = ((atuf)this.jdField_a_of_type_JavaUtilList.get(0));
+    if (QLog.isColorLevel())
+    {
+      if (paramThrowable != null) {
+        paramThrowable.printStackTrace();
+      }
+      QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onFailure invoked. error code: " + paramInt + " msg: " + paramString);
     }
-    atuf localatuf;
-    do
-    {
-      Iterator localIterator;
-      do
-      {
-        return;
-        while ((i <= 1) || (this.jdField_a_of_type_Attr.jdField_b_of_type_Int < 0)) {}
-        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      } while (!localIterator.hasNext());
-      localatuf = (atuf)localIterator.next();
-    } while ((localatuf.jdField_a_of_type_Int > this.jdField_a_of_type_Attr.jdField_b_of_type_Int) || (localatuf.jdField_b_of_type_Int <= this.jdField_a_of_type_Attr.jdField_b_of_type_Int));
-    this.jdField_a_of_type_Atuf = localatuf;
+    if (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null) {
+      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(false, this.jdField_a_of_type_Attu);
+    }
   }
   
-  public void a(int paramInt, atup paramatup)
+  public void onSuccess(int paramInt, Object paramObject)
   {
-    if (this.jdField_a_of_type_Attt == null) {}
-    do
+    Object localObject1 = new Gson().toJson(paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. routeType: " + this.jdField_a_of_type_Int + " result: " + (String)localObject1);
+    }
+    switch (this.jdField_a_of_type_Int)
     {
-      do
+    default: 
+      paramObject = null;
+    }
+    label90:
+    label739:
+    label744:
+    for (;;)
+    {
+      if (paramObject != null)
       {
-        do
+        if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline != null) {
+          this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.c(false);
+        }
+        if (bibv.a())
         {
-          int i;
-          do
+          paramInt = Color.parseColor("#0071FF");
+          label124:
+          this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addPolyline(new PolylineOptions().addAll(paramObject).color(paramInt).width(bdaq.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.getContext(), 5.0F)));
+          if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline != null)
           {
-            return;
-            int j = this.jdField_a_of_type_Attt.jdField_a_of_type_Int;
-            i = j;
-            if (this.jdField_a_of_type_Attt.jdField_a_of_type_Int > 0)
-            {
-              i = j;
-              if (this.jdField_a_of_type_Attt.jdField_a_of_type_Int < 40) {
-                i = this.jdField_a_of_type_Attt.jdField_a_of_type_Int * 2;
-              }
+            this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a();
+            if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_Int == 0) {
+              MapWidget.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
             }
-            if (QLog.isColorLevel()) {
-              QLog.i("Action", 2, "==stopValue=" + i);
-            }
-            if (!"end".equalsIgnoreCase(this.jdField_a_of_type_Attt.jdField_c_of_type_JavaLangString)) {
-              break;
-            }
-          } while (paramInt < i);
-          d();
-          return;
-          attt localattt = this.jdField_a_of_type_Attt;
-          if ((!"stop".equalsIgnoreCase(this.jdField_a_of_type_Attt.jdField_a_of_type_JavaLangString)) || (paramInt < i) || (!"mic".equalsIgnoreCase(this.jdField_a_of_type_Attt.jdField_b_of_type_JavaLangString))) {
-            break;
           }
-          d();
-        } while (paramatup == null);
-        paramatup.a();
-        return;
-        paramatup = this.jdField_a_of_type_Attt;
-      } while (!"record".equalsIgnoreCase(this.jdField_a_of_type_Attt.jdField_a_of_type_JavaLangString));
-      paramatup = this.jdField_a_of_type_Attr;
-      paramatup.jdField_b_of_type_Int += this.jdField_a_of_type_Attt.a(paramInt);
-    } while (this.jdField_a_of_type_Attr.jdField_a_of_type_Attv == null);
-    this.jdField_a_of_type_Attr.e = this.jdField_a_of_type_Attr.jdField_a_of_type_Attv.a(this.jdField_a_of_type_Attr.jdField_b_of_type_Int, this.jdField_a_of_type_Attr.jdField_a_of_type_Float);
-  }
-  
-  public boolean a()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    a();
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_Atuf.jdField_c_of_type_Int;
-    this.jdField_a_of_type_Atur.a(this.jdField_a_of_type_Atuf.g);
-    this.jdField_a_of_type_Atur.a(this.jdField_a_of_type_Atuc);
-    this.jdField_a_of_type_Atur.a(this.jdField_a_of_type_Atuf);
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.await();
-      label63:
-      if ((this.jdField_a_of_type_Atuf.jdField_c_of_type_JavaLangString != null) && (this.jdField_a_of_type_Atuf.jdField_c_of_type_JavaLangString.length() > 0)) {
-        this.jdField_a_of_type_Atur.a(this.jdField_a_of_type_Atuf.jdField_c_of_type_JavaLangString);
+          if (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null)
+          {
+            localObject1 = MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
+            if ((paramObject == null) || (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline == null)) {
+              break label739;
+            }
+          }
+        }
       }
-      if ((this.jdField_a_of_type_AndroidOsVibrator != null) && (this.jdField_a_of_type_Atuf.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_AndroidOsVibrator.cancel();
-      }
-      if ((this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
-        return false;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("Action", 2, "===Magicaction is stop====");
-      }
-      return true;
-    }
-    catch (Exception localException)
-    {
-      break label63;
-    }
-  }
-  
-  void b()
-  {
-    if (this.jdField_a_of_type_Int > 0) {
-      ThreadManager.getTimer().schedule(this.jdField_a_of_type_JavaUtilTimerTask, this.jdField_a_of_type_Int * 1000);
-    }
-  }
-  
-  public void b(int paramInt, atup paramatup)
-  {
-    if (this.jdField_a_of_type_Attt == null) {}
-    do
-    {
-      do
+      for (boolean bool = true;; bool = false)
       {
-        do
+        ((attt)localObject1).a(bool, this.jdField_a_of_type_Attu);
+        return;
+        paramObject = (DrivingResultObject)paramObject;
+        if ((paramObject.result == null) || (paramObject.result.routes == null) || (paramObject.result.routes.isEmpty()))
         {
-          return;
-          if (!"end".equalsIgnoreCase(this.jdField_a_of_type_Attt.jdField_c_of_type_JavaLangString)) {
+          if (!QLog.isColorLevel()) {
             break;
           }
-        } while (paramatup == null);
-        d();
-        return;
-        attt localattt = this.jdField_a_of_type_Attt;
-      } while ((!"stop".equalsIgnoreCase(this.jdField_a_of_type_Attt.jdField_a_of_type_JavaLangString)) || (!"touch".equalsIgnoreCase(this.jdField_a_of_type_Attt.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_Attt.jdField_b_of_type_Int != paramInt));
-      d();
-    } while (paramatup == null);
-    paramatup.a();
-  }
-  
-  public void c()
-  {
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void d()
-  {
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_Atur.b();
-    this.jdField_a_of_type_JavaUtilTimerTask.cancel();
+          QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error ROUTE_TYPE_DRIVE");
+          paramObject = null;
+          break label90;
+        }
+        paramObject = (DrivingResultObject.Route)paramObject.result.routes.get(0);
+        this.jdField_a_of_type_Attu.a = paramObject.duration;
+        this.jdField_a_of_type_Attu.b = paramObject.distance;
+        paramObject = paramObject.polyline;
+        break label90;
+        localObject1 = (TransitResultObject)paramObject;
+        if ((((TransitResultObject)localObject1).result == null) || (((TransitResultObject)localObject1).result.routes == null) || (((TransitResultObject)localObject1).result.routes.isEmpty()))
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error ROUTE_TYPE_BUS");
+          paramObject = null;
+          break label90;
+        }
+        paramObject = new ArrayList();
+        localObject1 = (TransitResultObject.Route)((TransitResultObject)localObject1).result.routes.get(0);
+        Iterator localIterator = ((TransitResultObject.Route)localObject1).steps.iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject2 = (TransitResultObject.Segment)localIterator.next();
+          if ((localObject2 instanceof TransitResultObject.Walking))
+          {
+            paramObject.addAll(((TransitResultObject.Walking)localObject2).polyline);
+          }
+          else if ((localObject2 instanceof TransitResultObject.Transit))
+          {
+            localObject2 = (TransitResultObject.Transit)localObject2;
+            if ((((TransitResultObject.Transit)localObject2).lines != null) && (!((TransitResultObject.Transit)localObject2).lines.isEmpty())) {
+              paramObject.addAll(((TransitResultObject.Line)((TransitResultObject.Transit)localObject2).lines.get(0)).polyline);
+            }
+          }
+        }
+        this.jdField_a_of_type_Attu.a = ((float)((TransitResultObject.Route)localObject1).duration);
+        this.jdField_a_of_type_Attu.b = ((TransitResultObject.Route)localObject1).distance;
+        if (!paramObject.isEmpty()) {
+          break label744;
+        }
+        paramObject = null;
+        break label90;
+        paramObject = (WalkingResultObject)paramObject;
+        if ((paramObject == null) || (paramObject.result == null) || (paramObject.result.routes == null) || (paramObject.result.routes.isEmpty()))
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error ROUTE_TYPE_WALK");
+          paramObject = null;
+          break label90;
+        }
+        paramObject = (WalkingResultObject.Route)paramObject.result.routes.get(0);
+        this.jdField_a_of_type_Attu.a = paramObject.duration;
+        this.jdField_a_of_type_Attu.b = paramObject.distance;
+        paramObject = paramObject.polyline;
+        break label90;
+        paramInt = Color.parseColor("#4D94FF");
+        break label124;
+        if (!QLog.isColorLevel()) {
+          break label206;
+        }
+        QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error polyline: null");
+        break label206;
+      }
+    }
   }
 }
 

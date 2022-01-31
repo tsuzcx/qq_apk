@@ -1,38 +1,18 @@
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import org.apache.http.entity.ByteArrayEntity;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 
-public class bkhn
-  extends ByteArrayEntity
+class bkhn
+  implements View.OnKeyListener
 {
-  protected final int a;
-  protected final int b;
+  bkhn(bkhk parambkhk) {}
   
-  public bkhn(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    super(paramArrayOfByte);
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public InputStream getContent()
-  {
-    return new ByteArrayInputStream(this.content, this.a, this.b);
-  }
-  
-  public long getContentLength()
-  {
-    return this.b;
-  }
-  
-  public void writeTo(OutputStream paramOutputStream)
-  {
-    if (paramOutputStream == null) {
-      throw new IllegalArgumentException("Output stream may not be null");
+    if ((paramKeyEvent.getAction() == 0) && (paramInt == 4)) {
+      this.a.d();
     }
-    paramOutputStream.write(this.content, this.a, this.b);
-    paramOutputStream.flush();
+    return false;
   }
 }
 

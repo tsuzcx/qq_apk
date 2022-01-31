@@ -1,101 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import android.content.Context;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
-class aeyg
-  extends aeye
+public class aeyg
+  extends AccessibilityDelegateCompat
 {
-  void a(long paramLong1, long paramLong2)
-  {
-    if (this.b == null)
-    {
-      this.b = new HashSet();
-      this.b.add(Long.valueOf(paramLong1));
-      if (this.jdField_a_of_type_JavaUtilSet != null) {
-        break label77;
-      }
-      this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(paramLong1));
-      return;
-      this.b.clear();
-      break;
-      label77:
-      this.jdField_a_of_type_JavaUtilSet.clear();
-    }
-  }
+  public aeyg(PressToSpeakPanel paramPressToSpeakPanel) {}
   
-  void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    if ((this.b != null) && (this.b.size() > 0) && (a(this.jdField_a_of_type_JavaUtilSet) == paramMessageRecord.uniseq) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if ((AppSetting.c) && (PressToSpeakPanel.a(this.a) > 0) && (!PressToSpeakPanel.a(this.a)) && (PressToSpeakPanel.a(this.a).a() == 1))
     {
-      paramQQAppInterface = acex.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_JavaLangString = "";
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 0)) {
-        this.jdField_a_of_type_Long = paramQQAppInterface[0];
-      }
+      PressToSpeakPanel.a(this.a, true);
+      PressToSpeakPanel.b(this.a);
+      bczz.a(this.a, this.a.getContext().getString(2131691155));
     }
-  }
-  
-  boolean a(long paramLong, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (Object localObject = this.b; (localObject != null) && (((Set)localObject).size() > 0); localObject = this.jdField_a_of_type_JavaUtilSet)
-    {
-      localObject = ((Set)localObject).iterator();
-      do
-      {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-      } while (((Long)((Iterator)localObject).next()).longValue() != paramLong);
-      return true;
-    }
-    return false;
-  }
-  
-  boolean a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_JavaUtilSet != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_JavaUtilSet.size() > 0)
-      {
-        bool1 = bool2;
-        if (a(this.jdField_a_of_type_JavaUtilSet) == paramLong)
-        {
-          bool1 = bool2;
-          if (a(this.jdField_a_of_type_JavaUtilSet) == paramLong)
-          {
-            bool1 = bool2;
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
-            {
-              bool1 = bool2;
-              if (this.jdField_a_of_type_Long > 0L)
-              {
-                MessageRecord localMessageRecord = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-                if (localMessageRecord != null) {
-                  paramQQAppInterface.a().b(localMessageRecord, null, false);
-                }
-                this.jdField_a_of_type_Long = 0L;
-                a();
-                bool1 = true;
-              }
-            }
-          }
-        }
-      }
-    }
-    return bool1;
   }
 }
 

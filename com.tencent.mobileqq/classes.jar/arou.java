@@ -1,14 +1,32 @@
-final class arou
-  implements bevo
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+
+public abstract interface arou
 {
-  arou(aroi paramaroi) {}
+  public abstract int a();
   
-  public void a(int paramInt)
-  {
-    if (paramInt == 2) {
-      this.a.a();
-    }
-  }
+  public abstract long a();
+  
+  public abstract arov a();
+  
+  public abstract BaseActivity a();
+  
+  public abstract FileManagerEntity a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract boolean a(Bitmap paramBitmap, int paramInt, String paramString);
+  
+  public abstract String b();
+  
+  public abstract void b();
+  
+  public abstract String c();
 }
 
 

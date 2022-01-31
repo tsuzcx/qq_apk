@@ -1,14 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.RestrictTo;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.animation.Transformation;
+import com.tencent.qphone.base.util.QLog;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public abstract class blzo
+final class blzo
+  implements bdoh<Float>
 {
-  public abstract void a(@NonNull Runnable paramRunnable);
+  blzo(View paramView) {}
   
-  public abstract boolean a();
-  
-  public abstract void b(@NonNull Runnable paramRunnable);
+  @TargetApi(11)
+  public void a(bdob<Float> parambdob, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
+    }
+    paramFloat = paramFloat1.floatValue();
+    if (this.a != null)
+    {
+      this.a.setAlpha(paramFloat);
+      this.a.invalidate();
+    }
+  }
 }
 
 

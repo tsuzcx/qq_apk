@@ -1,27 +1,63 @@
 public class bawq
-  extends bawz
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
+  public int a = 40000;
+  public int b = 30000;
+  public int c = 20000;
+  public int d = 20000;
+  public int e = 15000;
+  public int f = 10000;
+  private int g;
   
-  public String toString()
+  public bawq() {}
+  
+  private bawq(bawq parambawq)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" uuid:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" storageSource:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" isSelfSend:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" voiceType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" busiType:").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" downType:").append(this.d);
-    return localStringBuilder.toString();
+    this.a = parambawq.a;
+    this.b = parambawq.b;
+    this.c = parambawq.c;
+    this.d = parambawq.d;
+    this.e = parambawq.e;
+    this.f = parambawq.f;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return this.a;
+    case 1: 
+    case 4: 
+    case 5: 
+      return this.c;
+    }
+    return this.b;
+  }
+  
+  public bawq a()
+  {
+    return new bawq(this);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.g = (paramInt * 2000);
+  }
+  
+  public int b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return this.d + this.g;
+    case 1: 
+    case 4: 
+    case 5: 
+      return this.f + this.g;
+    }
+    return this.e + this.g;
   }
 }
 

@@ -1,18 +1,18 @@
 package dov.com.qq.im.lifecycle.livedata;
 
-import blzx;
+import bmej;
 
 public class LiveData$1
   implements Runnable
 {
-  public LiveData$1(blzx paramblzx) {}
+  public LiveData$1(bmej parambmej) {}
   
   public void run()
   {
-    synchronized (blzx.a(this.this$0))
+    synchronized (bmej.a(this.this$0))
     {
-      Object localObject2 = blzx.b(this.this$0);
-      blzx.a(this.this$0, blzx.b());
+      Object localObject2 = bmej.b(this.this$0);
+      bmej.a(this.this$0, bmej.b());
       this.this$0.b(localObject2);
       return;
     }

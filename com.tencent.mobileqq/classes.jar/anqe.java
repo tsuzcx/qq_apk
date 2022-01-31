@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import android.view.View;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
 class anqe
-  implements DialogInterface.OnClickListener
+  implements bhuk
 {
-  anqe(anqd paramanqd) {}
+  anqe(anqc paramanqc, bhuf parambhuf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a.finish();
+    this.jdField_a_of_type_Anqc.a.e();
+    this.jdField_a_of_type_Anqc.a.b(alud.a(2131701076));
+    this.jdField_a_of_type_Bhuf.dismiss();
   }
 }
 

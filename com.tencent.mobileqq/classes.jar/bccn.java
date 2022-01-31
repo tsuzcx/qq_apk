@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
-class bccn
-  implements bcgm
+public class bccn
+  implements DialogInterface.OnClickListener
 {
-  bccn(bccj parambccj, TroopChatPie paramTroopChatPie) {}
+  public bccn(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!bcgk.a(paramInt)) {
-      this.jdField_a_of_type_Bccj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie);
-    }
-    this.jdField_a_of_type_Bccj.e(bcgk.b(paramInt));
+    paramDialogInterface.dismiss();
   }
 }
 

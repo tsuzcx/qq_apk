@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.ark;
 
-import anid;
-import anim;
-import anio;
-import aniq;
-import anit;
+import anmm;
+import anmv;
+import anmx;
+import anmz;
+import annc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.WeakReference;
 
 public class ArkAiDictUpdateMgr$8
   implements Runnable
 {
-  public ArkAiDictUpdateMgr$8(anid paramanid, String paramString, aniq paramaniq, anio paramanio) {}
+  public ArkAiDictUpdateMgr$8(anmm paramanmm, String paramString, anmz paramanmz, anmx paramanmx) {}
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)anid.a(this.this$0).get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)anmm.a(this.this$0).get();
     if (localQQAppInterface == null)
     {
       ArkAppCenter.c("ArkApp.Dict.Update", "downloadDictFile, qq app interface is null, return from task");
       return;
     }
-    ((ArkAppCenter)localQQAppInterface.getManager(121)).a().a(this.jdField_a_of_type_JavaLangString, 0L, new anim(this));
+    ((ArkAppCenter)localQQAppInterface.getManager(121)).a().a(this.jdField_a_of_type_JavaLangString, 0L, new anmv(this));
   }
 }
 

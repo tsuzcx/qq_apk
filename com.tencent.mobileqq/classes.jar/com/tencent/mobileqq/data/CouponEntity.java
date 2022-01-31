@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import awbv;
-import awdg;
+import awge;
+import awhp;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="cid,bid,source_id")
 public class CouponEntity
-  extends awbv
+  extends awge
 {
   public static final int VERIFY_TYPE_BARCODE = 2;
   public static final int VERIFY_TYPE_DIGITAL_CODE = 1;
@@ -29,9 +29,9 @@ public class CouponEntity
   public long rcv_time;
   public String rebate;
   public String shids;
-  @awdg
+  @awhp
   public CharSequence shopData;
-  @awdg
+  @awhp
   private List<Integer> shopList;
   public int source_id;
   public long stime;
@@ -88,7 +88,7 @@ public class CouponEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.CouponEntity
  * JD-Core Version:    0.7.0.1
  */

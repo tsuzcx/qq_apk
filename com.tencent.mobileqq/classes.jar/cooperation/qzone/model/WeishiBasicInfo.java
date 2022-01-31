@@ -3,14 +3,14 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjhb;
+import bjli;
 import java.util.HashMap;
 import java.util.Map;
 
 public class WeishiBasicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiBasicInfo> CREATOR = new bjhb();
+  public static final Parcelable.Creator<WeishiBasicInfo> CREATOR = new bjli();
   public String cover_url;
   public Map<String, String> dc_report;
   public String nick_name;

@@ -1,14 +1,45 @@
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudRead.StGetCommentListRsp;
+import android.view.View;
+import android.view.ViewStub;
+import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
 
 class ttx
-  implements yvn<FeedCloudRead.StGetCommentListRsp>
+  extends trw
 {
-  ttx(ttv paramttv, FeedCloudMeta.StFeed paramStFeed) {}
+  ttx(ttr paramttr) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetCommentListRsp paramStGetCommentListRsp)
+  public QCircleInitBean a()
   {
-    ttv.a(this.jdField_a_of_type_Ttv, paramBoolean, paramLong, paramString, paramStGetCommentListRsp, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, false, true);
+    return ttr.a(this.a);
+  }
+  
+  public QCirclePolymorphicAniView a()
+  {
+    if (ttr.a(this.a) != null) {
+      return (QCirclePolymorphicAniView)ttr.a(this.a).findViewById(2131373208);
+    }
+    return null;
+  }
+  
+  public tuz a()
+  {
+    if ((ttr.a(this.a) == null) && (ttr.a(this.a) != null))
+    {
+      ViewStub localViewStub = (ViewStub)ttr.a(this.a).findViewById(2131373151);
+      ttr.a(this.a, new tuz(this.a.a()));
+      ttr.a(this.a).a(this.a.a(), localViewStub);
+    }
+    return ttr.a(this.a);
+  }
+  
+  public void a(Object paramObject)
+  {
+    this.a.b("share_action_show_share_sheet", paramObject);
+  }
+  
+  public void a(ttf paramttf)
+  {
+    this.a.a().a("poly_zan_list_show", paramttf);
   }
 }
 

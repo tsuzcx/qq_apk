@@ -65,7 +65,7 @@ public class tmo
   public static void a(Activity paramActivity, String paramString, int paramInt1, int paramInt2, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt3, Object paramObject)
   {
     paramstSimpleMetaFeed = new stReportItem();
-    if (xoo.a(paramActivity))
+    if (xsx.a(paramActivity))
     {
       paramstSimpleMetaFeed.optype = 114;
       if (paramInt1 == 8)
@@ -99,7 +99,7 @@ public class tmo
     if ((paramActivity != null) && (!TextUtils.isEmpty(paramString)) && (paramWSDownloadParams != null))
     {
       tlo.b("WSVerticalUtils", "downloadOrGoWeishiSchema:" + paramWSDownloadParams.toString());
-      if (xoo.a(paramActivity)) {
+      if (xsx.a(paramActivity)) {
         tlq.a(paramActivity, "biz_src_jc_gzh_weishi", paramString, paramWSDownloadParams.mScene, paramWSDownloadParams.mLinkStrategyType, paramWSDownloadParams.mEventId);
       }
     }

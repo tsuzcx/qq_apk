@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import java.util.List;
 
 public class bbyf
-  implements DialogInterface.OnClickListener
 {
-  public bbyf(ReciteRecordLayout paramReciteRecordLayout) {}
+  public int a;
+  public long a;
+  public String a;
+  public List<Long> a;
+  public boolean a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    paramDialogInterface.dismiss();
+    return "HomeworkInfo{content='" + this.jdField_b_of_type_JavaLangString + '\'' + ", group_id=" + this.jdField_a_of_type_Long + ", uin=" + this.jdField_b_of_type_Long + ", title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + ", need_feedback=" + this.jdField_a_of_type_Boolean + ", course_name=" + this.jdField_d_of_type_JavaLangString + ", syncgids=" + this.jdField_a_of_type_JavaUtilList + ", hw_id=" + this.jdField_d_of_type_Long + '}';
   }
 }
 

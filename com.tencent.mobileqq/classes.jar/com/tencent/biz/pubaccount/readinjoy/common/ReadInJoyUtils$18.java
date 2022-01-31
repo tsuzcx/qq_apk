@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import aljq;
+import alof;
 import android.text.TextUtils;
-import bjxj;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -42,7 +42,7 @@ public final class ReadInJoyUtils$18
       }
       str4 = this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$RedTypeInfo.red_content.get();
       localObject2 = "";
-      if (bjxj.j()) {
+      if (bkbq.j()) {
         break label824;
       }
       localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
@@ -65,7 +65,7 @@ public final class ReadInJoyUtils$18
       str4 = "0";
       break label26;
       label80:
-      localObject2 = ((QQMessageFacade)localObject1).b(aljq.aA, 7220);
+      localObject2 = ((QQMessageFacade)localObject1).b(alof.aA, 7220);
       if (localObject2 != null)
       {
         if ((ors.jdField_a_of_type_Qle.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (ors.jdField_a_of_type_Qle.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time >= ((MessageRecord)localObject2).time)) {
@@ -150,7 +150,7 @@ public final class ReadInJoyUtils$18
                 }
                 j = 1;
                 ((JSONObject)localObject4).put("message_status", j);
-                if (bjxj.I(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
+                if (bkbq.I(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
                   continue;
                 }
                 j = 1;
@@ -161,7 +161,7 @@ public final class ReadInJoyUtils$18
                   ((JSONObject)localObject4).put("reddot_num", str4);
                 }
                 nrt.a(null, "CliOper", "", (String)localObject2, "0X80091DC", "0X80091DC", 0, 0, "0", ors.g(ors.jdField_a_of_type_Qle.c), ors.jdField_a_of_type_Qle.b, ((JSONObject)localObject4).toString(), false);
-                if (bjxj.k()) {
+                if (bkbq.k()) {
                   ors.a(20, ors.g(ors.jdField_a_of_type_Qle.c), ors.jdField_a_of_type_Qle.b, ors.jdField_a_of_type_Qle.jdField_a_of_type_JavaLangString, (String)localObject2, ors.jdField_a_of_type_Qle.jdField_a_of_type_Int);
                 }
                 ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(162)).a();

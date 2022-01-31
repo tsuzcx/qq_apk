@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bdee;
+import bdin;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -15,7 +15,7 @@ class Conversation$24
     if (this.this$0.g)
     {
       Conversation.a(this.this$0, 800L);
-      boolean bool = bdee.d(BaseApplication.getContext());
+      boolean bool = bdin.d(BaseApplication.getContext());
       if (this.this$0.a != null)
       {
         localPullRefreshHeader = this.this$0.a;

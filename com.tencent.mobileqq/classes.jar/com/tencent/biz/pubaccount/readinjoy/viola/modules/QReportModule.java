@@ -6,8 +6,8 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import azmz;
-import bdcb;
+import azri;
+import bdgk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -42,8 +42,8 @@ public class QReportModule
       }
     }
     localHashMap.put("app", "qq");
-    localHashMap.put("av", "8.3.3");
-    localHashMap.put("imei", bdcb.a());
+    localHashMap.put("av", "8.3.5");
+    localHashMap.put("imei", bdgk.a());
     localHashMap.put("oper_time", Long.toString(System.currentTimeMillis()));
     localHashMap.put("domain", "1");
     localHashMap.put("md", Build.MODEL);
@@ -89,7 +89,7 @@ public class QReportModule
         if (QLog.isColorLevel()) {
           QLog.d("QReportModule", 2, "reportDTImpl JSONException  e: " + paramJSONObject.getMessage());
         }
-        azmz.a(paramContext).a(null, paramString, true, -1L, 0L, localHashMap, null);
+        azri.a(paramContext).a(null, paramString, true, -1L, 0L, localHashMap, null);
       }
       if (((localObject instanceof Number)) || ((localObject instanceof Long)) || ((localObject instanceof Integer)) || ((localObject instanceof Double)) || ((localObject instanceof Float))) {
         localObject = localObject.toString();

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import aekt;
+import aepi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import bjxj;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
@@ -83,7 +83,7 @@ public class ReadInJoyVideoChannelFragment
         paramActivity = (ViewGroup)this.jdField_a_of_type_Nwj.a();
         if (this.jdField_a_of_type_Int == 1002)
         {
-          int j = aekt.a(44.5F, getResources());
+          int j = aepi.a(44.5F, getResources());
           i = j;
           if (ImmersiveUtils.isSupporImmersive() == 1) {
             i = j + ImmersiveUtils.getStatusBarHeight(getActivity());
@@ -228,7 +228,7 @@ public class ReadInJoyVideoChannelFragment
           b();
         }
       }
-      if ((bjxj.i()) && (!(paramActivity instanceof ReadInJoyNewFeedsActivity))) {
+      if ((bkbq.i()) && (!(paramActivity instanceof ReadInJoyNewFeedsActivity))) {
         break label339;
       }
       paramBundle = ((ReadInJoyNewFeedsActivity)paramActivity).a();
@@ -240,10 +240,10 @@ public class ReadInJoyVideoChannelFragment
       if (this.jdField_a_of_type_Nwj != null) {
         this.jdField_a_of_type_Nwj.h();
       }
-      if (((!bjxj.i()) || ((paramActivity instanceof ReadInJoyNewFeedsActivity))) && (!this.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_Long > 0L) && (this.jdField_a_of_type_Nwj != null)) {
+      if (((!bkbq.i()) || ((paramActivity instanceof ReadInJoyNewFeedsActivity))) && (!this.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_Long > 0L) && (this.jdField_a_of_type_Nwj != null)) {
         this.jdField_a_of_type_Nwj.i();
       }
-      if ((!bjxj.j()) || (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.g()) || (this.jdField_a_of_type_Nwj == null) || (this.jdField_a_of_type_Int != 1001)) {
+      if ((!bkbq.j()) || (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.g()) || (this.jdField_a_of_type_Nwj == null) || (this.jdField_a_of_type_Int != 1001)) {
         break label350;
       }
       this.jdField_a_of_type_Nwj.a(true);
@@ -254,7 +254,7 @@ public class ReadInJoyVideoChannelFragment
     }
     label339:
     label350:
-    while ((!bjxj.j()) || (this.jdField_a_of_type_Nwj == null) || (!(getActivity() instanceof SplashActivity)))
+    while ((!bkbq.j()) || (this.jdField_a_of_type_Nwj == null) || (!(getActivity() instanceof SplashActivity)))
     {
       if (this.jdField_a_of_type_Obv != null) {
         this.jdField_a_of_type_Obv.a();
@@ -265,7 +265,7 @@ public class ReadInJoyVideoChannelFragment
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.d(1);
       break label194;
     }
-    long l = System.currentTimeMillis() - bjxj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity());
+    long l = System.currentTimeMillis() - bkbq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity());
     if ((l >= 900000L) && (!this.e)) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "videochannel tab auto refresh ! duration : " + l);
     }
@@ -331,8 +331,8 @@ public class ReadInJoyVideoChannelFragment
     c();
     a(false);
     this.jdField_a_of_type_Long = 0L;
-    if ((bjxj.j()) && ((getActivity() instanceof SplashActivity))) {
-      bjxj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, System.currentTimeMillis(), getActivity());
+    if ((bkbq.j()) && ((getActivity() instanceof SplashActivity))) {
+      bkbq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, System.currentTimeMillis(), getActivity());
     }
     rlb.a().a(false, "videoFeeds tab hiseSelf");
     if (this.jdField_a_of_type_Obv != null) {
@@ -507,7 +507,7 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onStart()");
     }
-    bjxj.a(getActivity().getAppRuntime());
+    bkbq.a(getActivity().getAppRuntime());
     if (this.jdField_a_of_type_Nwj != null) {
       this.jdField_a_of_type_Nwj.e();
     }

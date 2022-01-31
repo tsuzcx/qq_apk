@@ -1,6 +1,17 @@
-public abstract interface akuh
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
+
+class akuh
+  implements ValueCallback<String>
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  akuh(akug paramakug) {}
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloJSContext", 2, "[onReceiveValue] s " + paramString);
+    }
+  }
 }
 
 

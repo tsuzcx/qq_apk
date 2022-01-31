@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acex;
+import acjm;
 import android.app.Activity;
 import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -14,7 +14,7 @@ final class ForwardUtils$2
   
   public void run()
   {
-    acex.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.d, this.jdField_b_of_type_Int);
+    acjm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.d, this.jdField_b_of_type_Int);
     if (QLog.isColorLevel()) {
       QLog.d("ForwardUtils", 2, "[@]call instantUpdate start!");
     }

@@ -1,61 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.confess.data.TroopConfessMsg;
+import com.tencent.mobileqq.data.MessageForTroopConfess;
+import java.util.List;
 
-public class aojr
-  extends aofy<aojq>
+class aojr
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return 614;
-  }
+  aojr(aojq paramaojq, MessageForTroopConfess paramMessageForTroopConfess) {}
   
-  @NonNull
-  public aojq a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new aojq();
-  }
-  
-  @Nullable
-  public aojq a(aogf[] paramArrayOfaogf)
-  {
-    QLog.i("LebaQzoneStyleProcessor", 1, "[onParsed] config");
-    return aojq.a(paramArrayOfaogf);
-  }
-  
-  public Class<aojq> a()
-  {
-    return aojq.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.i("LebaQzoneStyleProcessor", 1, "[onReqFailed] failCode=" + paramInt);
-  }
-  
-  public void a(aojq paramaojq)
-  {
-    QLog.i("LebaQzoneStyleProcessor", 1, "[onUpdate]");
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items.isEmpty())) {
+      aojt.a(this.jdField_a_of_type_Aojq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aojq.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_Aojq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessTopicId(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.confessorUin), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessToUin()));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aojr
  * JD-Core Version:    0.7.0.1
  */

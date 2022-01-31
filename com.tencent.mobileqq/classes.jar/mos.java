@@ -1,7 +1,7 @@
 import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
 
 public class mos
-  implements ahqz
+  implements ahvo
 {
   public mos(QavBeautyMenuPanel paramQavBeautyMenuPanel) {}
   

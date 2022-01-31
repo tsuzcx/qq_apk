@@ -1,31 +1,69 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollection;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class vdq
-  extends unf
+  implements IEventReceiver
 {
-  public List<VideoCollectionItem> a = new ArrayList();
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private vdr jdField_a_of_type_Vdr;
+  private vds jdField_a_of_type_Vds;
+  private vdt jdField_a_of_type_Vdt;
   
-  public vdq(String paramString, qqstory_service.RspCollectionViewCount paramRspCollectionViewCount)
+  public vdq(QQAppInterface paramQQAppInterface)
   {
-    super(paramRspCollectionViewCount.result);
-    paramRspCollectionViewCount = paramRspCollectionViewCount.collection_list.get();
-    if (paramRspCollectionViewCount != null)
-    {
-      paramRspCollectionViewCount = paramRspCollectionViewCount.iterator();
-      while (paramRspCollectionViewCount.hasNext())
-      {
-        qqstory_struct.DateVideoCollection localDateVideoCollection = (qqstory_struct.DateVideoCollection)paramRspCollectionViewCount.next();
-        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
-        localVideoCollectionItem.convertFrom("Q.qqstory.net:UpdateCollectionViewCountResponse", paramString, localDateVideoCollection);
-        this.a.add(localVideoCollectionItem);
-      }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    b();
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Vds = new vds(this);
+    this.jdField_a_of_type_Vdt = new vdt(this);
+    umc.a().registerSubscriber(this.jdField_a_of_type_Vds);
+    umc.a().registerSubscriber(this.jdField_a_of_type_Vdt);
+  }
+  
+  private void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "invalidateHalo: invoked.  mCallback: " + this.jdField_a_of_type_Vdr);
     }
+    if (this.jdField_a_of_type_Vdr != null) {
+      this.jdField_a_of_type_Vdr.a();
+    }
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "destroy: invoked. ");
+    }
+    umc.a().unRegisterSubscriber(this.jdField_a_of_type_Vds);
+    umc.a().unRegisterSubscriber(this.jdField_a_of_type_Vdt);
+    this.jdField_a_of_type_Vdr = null;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public void a(vdr paramvdr)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "setCallback: invoked. Message: callback: " + paramvdr);
+    }
+    this.jdField_a_of_type_Vdr = paramvdr;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public boolean isValidate()
+  {
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 

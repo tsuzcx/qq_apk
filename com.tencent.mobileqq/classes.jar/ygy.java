@@ -1,43 +1,26 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.content.Context;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.biz.subscribe.comment.CommentView;
+import com.tencent.biz.subscribe.comment.ReplyContainer;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public class ygy
+  implements View.OnClickListener
 {
-  public static void a(Context paramContext, int paramInt, yhf paramyhf)
+  public ygy(CommentView paramCommentView) {}
+  
+  public void onClick(View paramView)
   {
-    bhpy localbhpy = bhpy.a(paramContext);
-    localbhpy.a(String.format(paramContext.getString(2131720492), new Object[] { Integer.valueOf(paramInt) }));
-    localbhpy.b(2131720491);
-    localbhpy.c(2131690648);
-    localbhpy.a(new yhc(paramyhf, localbhpy));
-    localbhpy.a(new yhd(paramyhf, localbhpy));
-    if (!localbhpy.isShowing()) {
-      localbhpy.show();
+    if ((CommentView.a(this.a) != null) && (CommentView.a(this.a).vecReply.size() > 0))
+    {
+      CommentView.a(this.a).a(paramView, 10, CommentView.a(this.a), CommentView.a(this.a));
+      this.a.jdField_a_of_type_Ygz.b.setVisibility(8);
+      this.a.jdField_a_of_type_Ygz.a.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentBizSubscribeCommentReplyContainer.setVisibility(0);
     }
-  }
-  
-  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, yhf paramyhf, yhe paramyhe)
-  {
-    a(paramContext, null, paramStFeed, paramyhf, paramyhe);
-  }
-  
-  private static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, yhf paramyhf, yhe paramyhe)
-  {
-    bhpy localbhpy = bhpy.a(paramContext);
-    localbhpy.a(paramContext.getString(2131720493));
-    localbhpy.a(2131720494, 3);
-    localbhpy.c(2131690648);
-    localbhpy.a(new ygz(localbhpy, paramyhe));
-    localbhpy.a(new yha(paramStUser, paramStFeed, paramyhf, paramyhe, localbhpy));
-    if (!localbhpy.isShowing()) {
-      localbhpy.show();
-    }
-  }
-  
-  public static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, yhf paramyhf, yhe paramyhe)
-  {
-    a(paramContext, paramStUser, null, paramyhf, paramyhe);
   }
 }
 

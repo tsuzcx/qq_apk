@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.teamwork;
 
-import badt;
-import badu;
+import baic;
+import baid;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.Iterator;
@@ -10,14 +10,14 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class TeamWorkUtils$ProcessTDFileScheduler$1
   implements Runnable
 {
-  public TeamWorkUtils$ProcessTDFileScheduler$1(badu parambadu, QQAppInterface paramQQAppInterface) {}
+  public TeamWorkUtils$ProcessTDFileScheduler$1(baid parambaid, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    Iterator localIterator = badu.a(this.this$0).iterator();
+    Iterator localIterator = baid.a(this.this$0).iterator();
     while (localIterator.hasNext())
     {
-      badt.a((MessageRecord)localIterator.next(), this.a);
+      baic.a((MessageRecord)localIterator.next(), this.a);
       localIterator.remove();
     }
   }

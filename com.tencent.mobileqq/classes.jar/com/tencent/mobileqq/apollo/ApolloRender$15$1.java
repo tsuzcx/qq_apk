@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo;
 
-import akkl;
+import akpa;
 
 public class ApolloRender$15$1
   extends IApolloRunnableTask
 {
-  public ApolloRender$15$1(akkl paramakkl) {}
+  public ApolloRender$15$1(akpa paramakpa) {}
   
   public String a()
   {

@@ -1,15 +1,16 @@
-import android.app.Activity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditScrollerView;
 
-public final class aeyv
-  implements bhqd
+public class aeyv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aeyv(Activity paramActivity, bhpy parambhpy, String paramString, aeza paramaeza) {}
+  public aeyv(VoiceTextEditScrollerView paramVoiceTextEditScrollerView, int paramInt1, int paramInt2, View paramView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    AIOLongShotHelper.a(this.jdField_a_of_type_AndroidAppActivity, paramView, paramInt, this.jdField_a_of_type_Bhpy, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aeza);
+    VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView, paramValueAnimator, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidViewView);
   }
 }
 

@@ -1,11 +1,18 @@
-import android.os.IInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
-public abstract interface bajj
-  extends IInterface
+public class bajj
+  extends bajg
 {
-  public abstract void onComplete(String paramString, int paramInt);
+  public bajj(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord, bajm parambajm)
+  {
+    super(paramQQAppInterface, paramDataLineMsgRecord, parambajm);
+  }
   
-  public abstract void onProgress(String paramString, long paramLong1, long paramLong2);
+  protected String a()
+  {
+    return this.a.filename;
+  }
 }
 
 

@@ -1,61 +1,46 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
-public class blvg
-  implements SeekBar.OnSeekBarChangeListener
+class blvg
+  implements bnpi
 {
-  public blvg(AdvancedProviderView paramAdvancedProviderView, TextView paramTextView, View paramView1, View paramView2, QIMProviderContainerView paramQIMProviderContainerView, View paramView3) {}
+  blvg(blvf paramblvf) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    if (this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.a != null)
+    synchronized (blvf.a(this.a))
     {
-      this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.a.b(paramInt);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
-    }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ViewGroup))) {
-      ((ViewGroup)this.jdField_a_of_type_AndroidViewView).setMotionEventSplittingEnabled(false);
-    }
-    int j = 300;
-    int i = j;
-    if (AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) != null)
-    {
-      i = j;
-      if (!AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).hasEnded())
+      if (paramPtvTemplateInfo.id.equals(blvf.a(this.a).id))
       {
-        AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).cancel();
-        i = 0;
+        blvf.a(this.a).downloading = true;
+        blvf.a(this.a, 1.0F * paramInt / 100.0F);
+        blvf.a(this.a, 1);
       }
+      return;
     }
-    this.b.setAlpha(1.0F);
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView, this.c, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView), 0.0F));
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setDuration((AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) * AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)));
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setStartOffset(i);
-    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.startAnimation(AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView));
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ViewGroup))) {
-      ((ViewGroup)this.jdField_a_of_type_AndroidViewView).setMotionEventSplittingEnabled(true);
+    synchronized (blvf.a(this.a))
+    {
+      if (paramPtvTemplateInfo.id.equals(blvf.a(this.a).id))
+      {
+        blvf.a(this.a).downloading = false;
+        blvf.a(this.a).usable = paramBoolean;
+      }
+      if (paramBoolean)
+      {
+        if (blvf.a(this.a).id.equals(paramPtvTemplateInfo.id))
+        {
+          blvf.a(this.a, 3);
+          blvf.a(this.a, 1.0F);
+          this.a.b();
+        }
+        return;
+      }
+      this.a.a(4);
+      blvf.a(this.a, 2);
     }
-    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.a(paramSeekBar.getProgress());
-    if ((AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) != null) && (!AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).hasEnded())) {
-      AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).cancel();
-    }
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView, this.c, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView), 1.0F));
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setDuration(((1.0F - AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)) * AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)));
-    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.startAnimation(AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView));
   }
 }
 

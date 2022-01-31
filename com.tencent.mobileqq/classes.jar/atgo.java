@@ -1,15 +1,31 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.net.Uri;
+import android.provider.ContactsContract.Data;
+import android.provider.ContactsContract.RawContacts;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import com.tencent.qphone.base.util.QLog;
 
-public class atgo
+final class atgo
+  implements HookMethodCallback
 {
-  public int a;
-  public long a;
-  public Context a;
-  public QQAppInterface a;
-  public RedTouch a;
-  public String a;
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  {
+    paramMethodHookParam = ((Uri)paramMethodHookParam.args[0]).toString();
+    if ((paramMethodHookParam.contains(ContactsContract.RawContacts.CONTENT_URI.toString())) || (paramMethodHookParam.contains(ContactsContract.Data.CONTENT_URI.toString())))
+    {
+      paramMethodHookParam = new StringBuilder(1000);
+      StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
+      int i = 0;
+      while (i < arrayOfStackTraceElement.length)
+      {
+        paramMethodHookParam.append(arrayOfStackTraceElement[i] + "-");
+        i += 1;
+      }
+      QLog.d("ContactDelete", 1, paramMethodHookParam.toString());
+    }
+  }
+  
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

@@ -1,16 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import java.util.ArrayList;
 
-public class blvz
-  implements DialogInterface.OnClickListener
+public abstract interface blvz
 {
-  public blvz(MusicProviderView paramMusicProviderView) {}
+  public abstract void a(int paramInt, String... paramVarArgs);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, ArrayList<TroopBarPOI> paramArrayList, TroopBarPOI paramTroopBarPOI);
 }
 
 

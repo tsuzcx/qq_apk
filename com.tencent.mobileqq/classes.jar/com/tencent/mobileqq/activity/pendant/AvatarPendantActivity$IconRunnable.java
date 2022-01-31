@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.pendant;
 
 import android.os.Bundle;
-import bdbg;
-import bdvu;
-import bdvv;
-import bdvx;
-import bdwa;
+import bdfp;
+import bead;
+import beae;
+import beag;
+import beaj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -14,12 +14,12 @@ import java.lang.ref.WeakReference;
 class AvatarPendantActivity$IconRunnable
   implements Runnable
 {
-  WeakReference<bdvu> a;
+  WeakReference<bead> a;
   WeakReference<QQAppInterface> b;
   
-  AvatarPendantActivity$IconRunnable(AvatarPendantActivity paramAvatarPendantActivity, bdvu parambdvu, QQAppInterface paramQQAppInterface)
+  AvatarPendantActivity$IconRunnable(AvatarPendantActivity paramAvatarPendantActivity, bead parambead, QQAppInterface paramQQAppInterface)
   {
-    this.a = new WeakReference(parambdvu);
+    this.a = new WeakReference(parambead);
     this.b = new WeakReference(paramQQAppInterface);
   }
   
@@ -30,14 +30,14 @@ class AvatarPendantActivity$IconRunnable
     }
     if ((this.b.get() != null) && (this.a.get() != null))
     {
-      bdwa localbdwa = ((bdvx)((QQAppInterface)this.b.get()).getManager(47)).a(1);
-      if (localbdwa.a(bdbg.a) == null)
+      beaj localbeaj = ((beag)((QQAppInterface)this.b.get()).getManager(47)).a(1);
+      if (localbeaj.a(bdfp.a) == null)
       {
-        Object localObject = new File(bdbg.b + "/icon.zip");
-        localObject = new bdvv(bdbg.a, (File)localObject);
-        ((bdvv)localObject).p = false;
+        Object localObject = new File(bdfp.b + "/icon.zip");
+        localObject = new beae(bdfp.a, (File)localObject);
+        ((beae)localObject).p = false;
         Bundle localBundle = new Bundle();
-        localbdwa.a((bdvv)localObject, (bdvu)this.a.get(), localBundle);
+        localbeaj.a((beae)localObject, (bead)this.a.get(), localBundle);
       }
     }
   }

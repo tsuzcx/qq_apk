@@ -1,55 +1,41 @@
-import android.graphics.Color;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.utils.JsonORM;
+import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class uxn
-  extends upy<utx>
 {
-  protected ImageView a;
-  protected TextView a;
-  protected RotateCircleImageView a;
-  protected ImageView b;
-  protected TextView b;
-  protected ImageView c = (ImageView)a(2131375453);
+  @xrk(a="gametype")
+  public int a;
+  @xrk(a="gameid")
+  public String a;
+  @xrk(a="name")
+  public String b;
+  @xrk(a="result")
+  public String c;
   
-  public uxn(ViewGroup paramViewGroup, int paramInt)
+  public static uxn a(String paramString)
   {
-    super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView = ((RotateCircleImageView)a(2131364275));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131367514));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131377281));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131377884));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131375454));
-  }
-  
-  protected void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderStyle(RotateCircleImageView.BorderStyle.STILL);
-    int[] arrayOfInt = new int[paramInt1];
-    int i = 0;
-    if (i < paramInt1)
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
     {
-      if (i < paramInt1 - paramInt2) {
-        arrayOfInt[i] = Color.parseColor("#DEDFE0");
-      }
+      paramString = (uxn)JsonORM.a(new JSONObject(paramString), uxn.class);
+      return paramString;
+    }
+    catch (JsonORM.JsonParseException paramString)
+    {
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (JSONException paramString)
+    {
       for (;;)
       {
-        i += 1;
-        break;
-        arrayOfInt[i] = Color.parseColor("#19D7FD");
+        paramString.printStackTrace();
       }
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderColors(arrayOfInt);
-  }
-  
-  public void a(utx paramutx)
-  {
-    if ((paramutx.a != null) && (!paramutx.a.isEmpty())) {
-      a(paramutx.a.size(), paramutx.b);
     }
   }
 }

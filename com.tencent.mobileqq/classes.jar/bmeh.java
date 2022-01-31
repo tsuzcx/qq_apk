@@ -1,35 +1,57 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.image.NativeGifImage;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.widget.FastAnimationDrawable;
-import dov.com.tencent.biz.qqstory.takevideo.EditGifImage;
+import android.support.annotation.NonNull;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
-class bmeh
-  implements SeekBar.OnSeekBarChangeListener
+abstract class bmeh<K, V>
+  implements bmei<K, V>, Iterator<Map.Entry<K, V>>
 {
-  bmeh(bmeg parambmeg) {}
+  bmef<K, V> a;
+  bmef<K, V> b;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  bmeh(bmef<K, V> parambmef1, bmef<K, V> parambmef2)
   {
-    if (paramBoolean)
+    this.a = parambmef2;
+    this.b = parambmef1;
+  }
+  
+  private bmef<K, V> a()
+  {
+    if ((this.b == this.a) || (this.a == null)) {
+      return null;
+    }
+    return a(this.b);
+  }
+  
+  abstract bmef<K, V> a(bmef<K, V> parambmef);
+  
+  public Map.Entry<K, V> a()
+  {
+    bmef localbmef = this.b;
+    this.b = a();
+    return localbmef;
+  }
+  
+  public void a(@NonNull bmef<K, V> parambmef)
+  {
+    if ((this.a == parambmef) && (parambmef == this.b))
     {
-      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
-      if (this.a.jdField_a_of_type_Bmix.a.a != null) {
-        this.a.jdField_a_of_type_Bmix.a.a.a(NativeGifImage.QZONE_DELAY);
-      }
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.e = NativeGifImage.QZONE_DELAY;
-      this.a.d = paramInt;
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
-      }
+      this.b = null;
+      this.a = null;
+    }
+    if (this.a == parambmef) {
+      this.a = b(this.a);
+    }
+    if (this.b == parambmef) {
+      this.b = a();
     }
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  abstract bmef<K, V> b(bmef<K, V> parambmef);
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
+  public boolean hasNext()
+  {
+    return this.b != null;
+  }
 }
 
 

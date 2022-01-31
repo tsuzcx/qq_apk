@@ -23,7 +23,7 @@ public class ReadInJoyListViewGroup$35$1
       if ((localObject instanceof ArticleInfo))
       {
         localObject = (ArticleInfo)localObject;
-        ((ArticleInfo)localObject).setSearchWordInfo(this.jdField_a_of_type_Rtm.a.getContext().getString(2131693816), this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField, this.jdField_a_of_type_ComTencentMobileqqPbPBStringField);
+        ((ArticleInfo)localObject).setSearchWordInfo(this.jdField_a_of_type_Rtm.a.getContext().getString(2131693818), this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField, this.jdField_a_of_type_ComTencentMobileqqPbPBStringField);
         ((ArticleInfo)localObject).invalidateProteusTemplateBean();
       }
     }

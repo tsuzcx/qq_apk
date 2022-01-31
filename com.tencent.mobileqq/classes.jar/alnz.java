@@ -1,18 +1,14 @@
-class alnz
-  implements azjq
+import android.graphics.Bitmap;
+
+public abstract interface alnz
 {
-  alnz(alny paramalny) {}
+  public abstract void a();
   
-  public void a()
-  {
-    this.a.m();
-  }
-  
-  public void b() {}
+  public abstract void a(int paramInt, Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alnz
  * JD-Core Version:    0.7.0.1
  */

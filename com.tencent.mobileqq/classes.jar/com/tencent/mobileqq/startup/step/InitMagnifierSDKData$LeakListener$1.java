@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.startup.step;
 
-import alpo;
-import azjv;
+import alud;
+import azoe;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class InitMagnifierSDKData$LeakListener$1
   implements Runnable
 {
-  public InitMagnifierSDKData$LeakListener$1(azjv paramazjv, String paramString) {}
+  public InitMagnifierSDKData$LeakListener$1(azoe paramazoe, String paramString) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.sApplication, this.a + alpo.a(2131706165), 2000).a();
+    QQToast.a(BaseApplicationImpl.sApplication, this.a + alud.a(2131706177), 2000).a();
   }
 }
 

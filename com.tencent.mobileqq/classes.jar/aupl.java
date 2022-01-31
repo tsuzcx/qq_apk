@@ -1,199 +1,128 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForRichText;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class aupl
+class aupl
+  implements awkh
 {
-  int jdField_a_of_type_Int = 1800;
-  WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
+  private int jdField_a_of_type_Int;
+  private aupg jdField_a_of_type_Aupg;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<MessageRecord> jdField_a_of_type_JavaUtilArrayList;
+  private int b;
   
-  public aupl(QQAppInterface paramQQAppInterface)
+  private aupl(MessageRecord paramMessageRecord, ArrayList<MessageRecord> paramArrayList, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, aupg paramaupg)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Aupg = paramaupg;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
   
-  public long a(String paramString, boolean paramBoolean)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localQQAppInterface == null) {
-      return 0L;
-    }
-    String str;
-    if (paramBoolean)
+    if (paramRichText != null)
     {
-      str = "issend<>0";
-      paramString = localQQAppInterface.a().b(paramString, 0, str);
-      if (paramString != null) {
-        break label59;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg_TAG", 2, "mPttUpCallBack attachRichText2Msg with " + paramRichText.toString());
+      }
+      if (((this.jdField_a_of_type_JavaUtilArrayList.get(0) instanceof MessageForRichText)) && (((MessageForRichText)this.jdField_a_of_type_JavaUtilArrayList.get(0)).richText == null)) {
+        if (QLog.isColorLevel()) {
+          break label185;
+        }
+      }
+      for (;;)
+      {
+        ((MessageForRichText)this.jdField_a_of_type_JavaUtilArrayList.get(0)).richText = paramRichText;
+        if (!(this.jdField_a_of_type_JavaUtilArrayList.get(0) instanceof MessageForPtt)) {
+          break label272;
+        }
+        if (((MessageForPtt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).fileSize >= 0L) {
+          break label211;
+        }
+        QLog.d("MultiMsg_TAG", 1, "PttUploadCallback attachRichText2Msg with fileSize < 0");
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("MultiMsg_TAG", 2, "start print stack trace ---------");
+        paramRichText = Thread.currentThread().getStackTrace();
+        int j = paramRichText.length;
+        int i = 0;
+        while (i < j)
+        {
+          QLog.d("MultiMsg_TAG", 2, new Object[] { paramRichText[i] });
+          i += 1;
+        }
+        label185:
+        QLog.d("MultiMsg_TAG", 2, "PttUploadCallback.attachRichText2Msg return but mr.richtext is null");
+      }
+      ((MessageForPtt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).fileSize = 1L;
+      for (;;)
+      {
+        label211:
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
+        aupg.a(this.jdField_a_of_type_Aupg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new HashMap(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_JavaUtilArrayList, true, this.b);
+        return null;
+        label272:
+        QLog.d("MultiMsg_TAG", 1, "PttUploadCallback attachRichText2Msg but not message for ptt");
       }
     }
-    label59:
-    for (long l = 0L;; l = paramString.time)
-    {
-      return 1000L * l;
-      str = "issend=0";
-      break;
+    QLog.d("MultiMsg_TAG", 1, "mPttUpCallBack attachRichText2Msg with null");
+    return null;
+  }
+  
+  public void a(awki paramawki)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiMsg_TAG", 2, "mPttUpCallBack updateMsg with " + paramawki.toString());
     }
   }
   
-  public void a(String paramString)
+  public void b(awki paramawki)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localQQAppInterface == null) {}
-    aloz localaloz;
-    ExtensionInfo localExtensionInfo;
-    boolean bool1;
-    int i;
-    int j;
-    long l1;
-    boolean bool2;
-    label144:
-    do
+    if (paramawki.jdField_a_of_type_Int != 0)
     {
-      do
-      {
-        return;
-        localaloz = (aloz)localQQAppInterface.getManager(51);
-        localExtensionInfo = localaloz.a(paramString, true);
-        bool1 = localaloz.a(false);
-      } while ((bool1) || (localExtensionInfo == null));
-      i = aupg.a(6, paramString, localExtensionInfo, bool1);
-      j = aupg.a(5, paramString, localExtensionInfo, bool1);
-      l1 = localExtensionInfo.lastFriendshipTime;
-      l2 = localExtensionInfo.lastChatTime;
-      int k = aupg.b();
-      bool1 = aupg.a(k, l2 * 1000L);
-      bool2 = aupg.a(k, l1 * 1000L);
-      if (((i <= 0) || (!bool2)) && ((j <= 0) || (!bool1))) {
-        break;
-      }
-      bool1 = true;
-      if (!bool1) {
-        break label499;
-      }
       if (QLog.isColorLevel()) {
-        QLog.i("FriendReactive.ReCheckInHelper", 2, String.format("startCheck bRemind=%b frdshipType=%d fire=%d uin=%s", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(i), Integer.valueOf(j), paramString }));
+        QLog.d("MultiMsg_TAG", 2, "mPttUpCallBack onSend fail with " + paramawki.toString());
       }
-      l2 = localExtensionInfo.lastHotReactiveReCheckInTs;
-      this.jdField_a_of_type_Int = BaseApplicationImpl.getContext().getSharedPreferences(localQQAppInterface.getCurrentAccountUin(), 0).getInt("hotreactive_recheckin_interval", 1800);
-      l1 = SystemClock.elapsedRealtime();
-    } while (l1 - l2 < this.jdField_a_of_type_Int * 1000);
-    long l2 = localExtensionInfo.localChatSendTs;
-    long l3 = localExtensionInfo.localChatRecTs;
-    if (bdjj.c(l2) == 2131720882)
-    {
-      bool1 = true;
-      label279:
-      if (bdjj.c(l3) != 2131720882) {
-        break label507;
-      }
-      bool2 = true;
-      label292:
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendReactive.ReCheckInHelper", 2, String.format("startCheck msg bSendToday=%b bRecToday=%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-      }
-      if (bool1) {
-        break label530;
-      }
-      l2 = a(paramString, true);
-      if (bdjj.c(l2) != 2131720882) {
-        break label513;
-      }
-      bool1 = true;
-      label355:
-      if (!bool1) {
-        break label525;
-      }
-      localExtensionInfo.localChatSendTs = l2;
-      i = 1;
-    }
-    for (;;)
-    {
-      j = i;
-      boolean bool3 = bool2;
-      if (!bool2)
+      if ((this.jdField_a_of_type_JavaUtilArrayList.get(0) instanceof MessageForPtt))
       {
-        l2 = a(paramString, false);
-        if (bdjj.c(l2) != 2131720882) {
-          break label519;
-        }
-      }
-      label513:
-      label519:
-      for (bool2 = true;; bool2 = false)
-      {
-        j = i;
-        bool3 = bool2;
-        if (bool2)
+        if (((MessageForPtt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).fileSize < 0L)
         {
-          localExtensionInfo.localChatRecTs = l2;
-          j = 1;
-          bool3 = bool2;
-        }
-        i = j;
-        if (bool3)
-        {
-          i = j;
-          if (bool1)
+          QLog.d("MultiMsg_TAG", 1, "PttUploadCallback onSend with fileSize < 0");
+          if (QLog.isColorLevel())
           {
-            i = j;
-            if (AppNetConnInfo.isNetSupport())
+            QLog.d("MultiMsg_TAG", 2, "start print stack trace ---------");
+            paramawki = Thread.currentThread().getStackTrace();
+            int j = paramawki.length;
+            int i = 0;
+            while (i < j)
             {
-              localExtensionInfo.lastHotReactiveReCheckInTs = l1;
-              i = 1;
-              if (QLog.isColorLevel()) {
-                QLog.i("FriendReactive.ReCheckInHelper", 2, "startCheck recheckin");
-              }
-              ((FriendListHandler)localQQAppInterface.a(1)).g(paramString);
+              QLog.d("MultiMsg_TAG", 2, new Object[] { paramawki[i] });
+              i += 1;
             }
           }
         }
-        if (i == 0) {
-          break;
-        }
-        localaloz.a(localExtensionInfo);
-        return;
-        bool1 = false;
-        break label144;
-        label499:
-        break;
-        bool1 = false;
-        break label279;
-        label507:
-        bool2 = false;
-        break label292;
-        bool1 = false;
-        break label355;
       }
-      label525:
-      i = 0;
-      continue;
-      label530:
-      i = 0;
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
-  {
-    if ((QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {}
-    do
-    {
+      else {
+        QLog.d("MultiMsg_TAG", 1, "PttUploadCallback onSend but no message for ptt");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
+      aupg.a(this.jdField_a_of_type_Aupg, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendReactive.ReCheckInHelper", 2, String.format("onRecheckInResp isSuc=%b selfUin=%s frdUin=%s interval=%d", new Object[] { Boolean.valueOf(paramBoolean), paramString1, paramString2, Integer.valueOf(paramInt) }));
-      }
-    } while ((!paramBoolean) || (paramInt <= 0) || (paramInt == this.jdField_a_of_type_Int));
-    BaseApplicationImpl.getContext().getSharedPreferences(paramString1, 0).edit().putInt("hotreactive_recheckin_interval", paramInt).apply();
+    }
+    QLog.d("MultiMsg_TAG", 1, "mPttUpCallBack onSend result ok");
   }
 }
 

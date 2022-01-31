@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.minigame.ui;
 
-import bgvn;
+import bgzu;
 
 public class GameRuntimeStateObserver$5
   implements Runnable
 {
-  public GameRuntimeStateObserver$5(bgvn parambgvn, String paramString, float paramFloat) {}
+  public GameRuntimeStateObserver$5(bgzu parambgzu, String paramString, float paramFloat) {}
   
   public void run()
   {
-    bgvn.a(this.this$0).setProgressTxt(this.jdField_a_of_type_JavaLangString);
-    bgvn.a(this.this$0).setProgressInt(this.jdField_a_of_type_Float);
+    bgzu.a(this.this$0).setProgressTxt(this.jdField_a_of_type_JavaLangString);
+    bgzu.a(this.this$0).setProgressInt(this.jdField_a_of_type_Float);
   }
 }
 

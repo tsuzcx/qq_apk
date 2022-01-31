@@ -1,27 +1,21 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qqfav.widget.QfavJumpActivity;
 
-public final class bixd
+public class bixd
+  implements DialogInterface.OnClickListener
 {
-  public static String a(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("SETTING", 0).getString("debug_h5_test_env", null);
-  }
+  public bixd(QfavJumpActivity paramQfavJumpActivity) {}
   
-  public static void a(Context paramContext, boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext.getSharedPreferences("SETTING", 0).edit().putBoolean("debug_h5_test_mode", paramBoolean).putString("debug_h5_test_env", paramString).apply();
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("SETTING", 0).getBoolean("debug_h5_test_mode", false);
+    QfavJumpActivity.a(this.a, false);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bixd
  * JD-Core Version:    0.7.0.1
  */

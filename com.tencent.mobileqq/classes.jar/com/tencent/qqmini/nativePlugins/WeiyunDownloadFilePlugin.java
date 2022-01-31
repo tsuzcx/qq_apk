@@ -1,7 +1,7 @@
 package com.tencent.qqmini.nativePlugins;
 
 import android.text.TextUtils;
-import bgkd;
+import bgok;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -17,27 +17,27 @@ public class WeiyunDownloadFilePlugin
   public static final String TAG = "[mini] WeiyunDownloadFilePlugin";
   private WeiyunNativeBusiness.WeiyunDownloadBussiness mWeiyunDownloadBussiness;
   
-  private JSONObject getParam(bgkd parambgkd)
+  private JSONObject getParam(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("[mini] WeiyunDownloadFilePlugin", "Failed to parse jsonParams=" + parambgkd.b);
+      QMLog.e("[mini] WeiyunDownloadFilePlugin", "Failed to parse jsonParams=" + parambgok.b);
     }
     return null;
   }
   
-  public void weiyunDownload(bgkd parambgkd)
+  public void weiyunDownload(bgok parambgok)
   {
     JSONObject localJSONObject;
     String str;
     try
     {
-      localJSONObject = new JSONObject(getParam(parambgkd).optString("data"));
+      localJSONObject = new JSONObject(getParam(parambgok).optString("data"));
       str = localJSONObject.getString("action");
       if ((TextUtils.isEmpty(str)) || ((!str.equals("createDownloadTask")) && (!str.equals("pauseDownloadTask")) && (!str.equals("cancelDownloadTask")))) {
         return;
@@ -51,29 +51,29 @@ public class WeiyunDownloadFilePlugin
       {
         if (this.mWeiyunDownloadBussiness.isLegal(localJSONObject))
         {
-          this.mWeiyunDownloadBussiness.doDownloadWeiyun(localJSONObject, localJSONObject.getString("file_id"), parambgkd);
-          parambgkd.a();
+          this.mWeiyunDownloadBussiness.doDownloadWeiyun(localJSONObject, localJSONObject.getString("file_id"), parambgok);
+          parambgok.a();
           return;
         }
-        parambgkd.a("download params illegal.");
+        parambgok.a("download params illegal.");
         return;
       }
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
-      parambgkd.printStackTrace();
+      parambgok.printStackTrace();
       return;
     }
     if (str.equals("pauseDownloadTask"))
     {
       QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "pause weiyun Download");
-      this.mWeiyunDownloadBussiness.pause(localJSONObject.getString("file_id"), parambgkd);
+      this.mWeiyunDownloadBussiness.pause(localJSONObject.getString("file_id"), parambgok);
       return;
     }
     if (str.equals("cancelDownloadTask"))
     {
       QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "cacel weiyun Download");
-      this.mWeiyunDownloadBussiness.cancel(localJSONObject.getString("file_id"), parambgkd);
+      this.mWeiyunDownloadBussiness.cancel(localJSONObject.getString("file_id"), parambgok);
     }
   }
 }

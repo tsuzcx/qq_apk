@@ -1,28 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 class bmma
-  extends AnimatorListenerAdapter
+  extends QQUIEventReceiver<bmlp, bmsd>
 {
-  bmma(bmly parambmly) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public bmma(@NonNull bmlp parambmlp)
   {
-    wsv.b(bmlu.a, "scaleAnimator cancel!");
+    super(parambmlp);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    wsv.b(bmlu.a, "scaleAnimator end!");
-    this.a.w = 1.0F;
-    this.a.j = false;
-    this.a.b.k();
-  }
+  public void a(@NonNull bmlp parambmlp, @NonNull bmsd parambmsd) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public Class acceptEventClass()
   {
-    wsv.b(bmlu.a, "scaleAnimator start!");
-    this.a.j = true;
+    return bmsd.class;
   }
 }
 

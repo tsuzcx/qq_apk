@@ -1,18 +1,10 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.ViewGroup;
+import java.util.List;
 
-class avwu
-  extends AnimatorListenerAdapter
+public class avwu
 {
-  avwu(avwn paramavwn) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (avwn.a(this.a) != null) {
-      avwn.a(this.a).setVisibility(0);
-    }
-  }
+  public List<avws> a;
+  public boolean a;
+  public List<avys> b;
 }
 
 

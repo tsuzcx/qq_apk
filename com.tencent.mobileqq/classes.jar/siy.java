@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class siy
-  extends bhnr
+  extends bhry
 {
   siy(six paramsix) {}
   
@@ -16,7 +16,7 @@ class siy
       paramAnimation = new ArrayList();
       paramAnimation.add(siw.a(this.a.a));
       siw.a(this.a.a).a(paramAnimation, siw.a(this.a.a));
-      QQToast.a(this.a.a.a, 2, 2131718883, 0).a();
+      QQToast.a(this.a.a.a, 2, 2131718895, 0).a();
     }
   }
 }

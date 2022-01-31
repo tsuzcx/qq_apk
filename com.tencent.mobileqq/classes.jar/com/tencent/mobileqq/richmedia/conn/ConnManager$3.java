@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.richmedia.conn;
 
-import axoh;
-import axth;
+import axsq;
+import axxq;
 
 public class ConnManager$3
   implements Runnable
 {
-  public ConnManager$3(axoh paramaxoh, long paramLong) {}
+  public ConnManager$3(axsq paramaxsq, long paramLong) {}
   
   public void run()
   {
-    axoh.a(this.this$0).b(10);
-    this.this$0.a(axoh.a(this.this$0), this.a);
+    axsq.a(this.this$0).b(10);
+    this.this$0.a(axsq.a(this.this$0), this.a);
   }
 }
 

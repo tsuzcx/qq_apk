@@ -1,153 +1,62 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
-final class bdmz
-  extends bdvu
+public class bdmz
 {
-  public void onDone(bdvv parambdvv)
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  
+  private void a()
   {
-    super.onDone(parambdvv);
-    Object localObject2 = parambdvv.a();
-    String str1 = ((Bundle)localObject2).getString("method");
-    if (str1 == null) {
-      str1 = "other";
+    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
     }
-    for (;;)
+  }
+  
+  private void a(View paramView)
+  {
+    if (paramView != null)
     {
-      String str2 = ((Bundle)localObject2).getString("ifromet");
-      if (str2 == null) {
-        str2 = "null";
-      }
-      for (;;)
-      {
-        boolean bool2 = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("ClubContentJsonTask", 2, "Club_jsonDownloadListener key = " + parambdvv.jdField_a_of_type_JavaLangString + ",satatus = " + parambdvv.a() + ",errCode = " + parambdvv.jdField_a_of_type_Int + ",errMsg = " + parambdvv.b);
-        }
-        Object localObject1 = BaseApplicationImpl.sApplication.getRuntime();
-        Object localObject3;
-        boolean bool1;
-        if ((localObject1 instanceof QQAppInterface))
-        {
-          localObject1 = (QQAppInterface)localObject1;
-          if ((parambdvv.a() != 3) || (parambdvv.jdField_a_of_type_Int != 0)) {
-            break label613;
-          }
-          localObject3 = ((Bundle)localObject2).getString("version_key");
-          if (localObject3 != null) {
-            bdmy.a(BaseApplicationImpl.sApplication.getApplicationContext(), (String)localObject3, ((Bundle)localObject2).getInt("version", 0));
-          }
-          if ((parambdvv.jdField_a_of_type_JavaLangString == null) || (localObject1 == null)) {
-            break label540;
-          }
-          if (!bdmy.c.jdField_a_of_type_JavaLangString.equals(parambdvv.jdField_a_of_type_JavaLangString)) {
-            break label384;
-          }
-          bdmy.c.jdField_a_of_type_OrgJsonJSONObject = null;
-          bdmy.c.a(((QQAppInterface)localObject1).getApplication());
-          bool1 = bool2;
-        }
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ClubContentJsonTask", 2, "jsonDownloadListener,ret=" + bool1 + ",file.name:" + parambdvv.jdField_a_of_type_JavaLangString + ",method:" + str1 + ",ifromet:" + str2);
-          }
-          if (localObject1 != null) {}
-          try
-          {
-            localObject2 = new HashMap();
-            ((HashMap)localObject2).put("param_jsonName", parambdvv.jdField_a_of_type_JavaLangString);
-            ((HashMap)localObject2).put("param_method", str1);
-            ((HashMap)localObject2).put("param_from", str2);
-            azmz.a(((QQAppInterface)localObject1).getApplication().getApplicationContext()).a(((QQAppInterface)localObject1).getAccount(), "ClubContentJsonLoaded", bool1, 1L, 0L, (HashMap)localObject2, "", false);
-            return;
-          }
-          catch (Exception parambdvv)
-          {
-            label384:
-            label540:
-            label561:
-            label608:
-            label613:
-            parambdvv.printStackTrace();
-            return;
-          }
-          localObject1 = null;
-          break;
-          if (parambdvv.jdField_a_of_type_JavaLangString.equals(bdmy.f.jdField_a_of_type_JavaLangString))
-          {
-            alpc.a((QQAppInterface)localObject1);
-            bool1 = bool2;
-          }
-          else
-          {
-            bool1 = bool2;
-            if (!parambdvv.jdField_a_of_type_JavaLangString.equals(bdmy.b.jdField_a_of_type_JavaLangString)) {
-              if (parambdvv.jdField_a_of_type_JavaLangString.equals(bdmy.h.jdField_a_of_type_JavaLangString))
-              {
-                ((bdpq)((QQAppInterface)localObject1).getManager(150)).a((QQAppInterface)localObject1);
-                bool1 = bool2;
-              }
-              else if (parambdvv.jdField_a_of_type_JavaLangString.equals(bdmy.d.jdField_a_of_type_JavaLangString))
-              {
-                bdmy.d.jdField_a_of_type_OrgJsonJSONObject = null;
-                bdmy.d.a(((QQAppInterface)localObject1).getApplication());
-                bool1 = bool2;
-              }
-              else
-              {
-                bool1 = bool2;
-                if (parambdvv.jdField_a_of_type_JavaLangString.equals(bdmy.i.jdField_a_of_type_JavaLangString))
-                {
-                  localObject2 = (fx)((QQAppInterface)localObject1).getManager(42);
-                  bool1 = bool2;
-                  continue;
-                  localObject2 = new StringBuilder().append("jsonDownloadListener, app == null:");
-                  if (localObject1 == null)
-                  {
-                    bool1 = true;
-                    localObject2 = ((StringBuilder)localObject2).append(bool1).append(",key == null:");
-                    if (parambdvv.jdField_a_of_type_JavaLangString != null) {
-                      break label608;
-                    }
-                  }
-                  for (bool1 = true;; bool1 = false)
-                  {
-                    QLog.e("ClubContentJsonTask", 2, bool1);
-                    bool1 = bool2;
-                    break;
-                    bool1 = false;
-                    break label561;
-                  }
-                  QLog.e("ClubContentJsonTask", 1, "ClubContentJsonTask jsondownfail task.key = " + parambdvv.jdField_a_of_type_JavaLangString);
-                  if ((parambdvv.jdField_a_of_type_JavaLangString != null) && (parambdvv.jdField_a_of_type_JavaLangString.equals(bdmy.g.jdField_a_of_type_JavaLangString)) && (localObject1 != null))
-                  {
-                    localObject3 = (alqr)((QQAppInterface)localObject1).getManager(131);
-                    localObject2 = "0";
-                    if (((alqr)localObject3).a()) {
-                      localObject2 = "1";
-                    }
-                    azmj.b((QQAppInterface)localObject1, "CliOper", "", "", "0X800612B", "0X800612B", 0, 0, (String)localObject2, "0", "", "");
-                  }
-                  bool1 = false;
-                }
-              }
-            }
-          }
-        }
+      paramView = paramView.getParent();
+      if ((paramView != null) && ((paramView instanceof ViewGroup))) {
+        a((ViewGroup)paramView);
       }
     }
   }
   
-  public void onProgress(bdvv parambdvv) {}
-  
-  public boolean onStart(bdvv parambdvv)
+  private void a(ViewGroup paramViewGroup)
   {
-    return super.onStart(parambdvv);
+    if (paramViewGroup != null) {
+      paramViewGroup.removeAllViews();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(paramInt);
+    }
+  }
+  
+  public void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
+  {
+    a(this.jdField_a_of_type_AndroidViewView);
+    a(paramView);
+    if (paramView != null) {
+      paramView.setLayoutParams(paramLayoutParams);
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a();
+  }
+  
+  public void a(RelativeLayout paramRelativeLayout)
+  {
+    a(this.jdField_a_of_type_AndroidViewViewGroup);
+    a(paramRelativeLayout);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
+    a();
   }
 }
 

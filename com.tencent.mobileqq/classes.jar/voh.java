@@ -1,27 +1,66 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.view.TextureView;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class voh
-  extends QQUIEventReceiver<vog, vol>
 {
-  public voh(@NonNull vog paramvog)
+  public static TextureView a(View paramView)
   {
-    super(paramvog);
-  }
-  
-  public void a(@NonNull vog paramvog, @NonNull vol paramvol)
-  {
-    if (paramvol.a.isSuccess())
+    if ((paramView instanceof ViewGroup))
     {
-      wsv.a("Q.qqstory.playernew.LoadingMoreWidget", "PlayVideoChangeReceiver. %s.", paramvol.toString());
-      paramvog.e();
+      paramView = (ViewGroup)paramView;
+      int i = 0;
+      while (i < paramView.getChildCount())
+      {
+        TextureView localTextureView = a(paramView.getChildAt(i));
+        if (localTextureView != null) {
+          return localTextureView;
+        }
+        i += 1;
+      }
     }
+    if ((paramView instanceof TextureView)) {
+      return (TextureView)paramView;
+    }
+    return null;
   }
   
-  public Class acceptEventClass()
+  public static boolean a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    return vol.class;
+    if (paramBitmap.getConfig() != Bitmap.Config.ARGB_8888)
+    {
+      xqq.a(false, "bitmap is not ARGB_8888");
+      return false;
+    }
+    int j = paramBitmap.getWidth();
+    int k = paramBitmap.getHeight();
+    int m = j / paramInt1;
+    int n = k / paramInt1;
+    paramInt1 = 0;
+    for (;;)
+    {
+      if (paramInt1 >= j) {
+        break label118;
+      }
+      int i = 0;
+      for (;;)
+      {
+        if (i >= k) {
+          break label110;
+        }
+        int i1 = paramBitmap.getPixel(paramInt1, i);
+        if (((i1 & 0xFF) > paramInt2) || ((i1 >> 8 & 0xFF) > paramInt2) || ((i1 >> 16 & 0xFF) > paramInt2)) {
+          break;
+        }
+        i += n;
+      }
+      label110:
+      paramInt1 += m;
+    }
+    label118:
+    return true;
   }
 }
 

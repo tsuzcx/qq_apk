@@ -1,25 +1,15 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class atrx
-  implements Drawable.Callback
+class atrx
+  implements DialogInterface.OnDismissListener
 {
-  public atrx(LoveZoneTabRedDotView paramLoveZoneTabRedDotView) {}
+  atrx(atrw paramatrw) {}
   
-  public void invalidateDrawable(Drawable paramDrawable)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.invalidate();
-  }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
-  {
-    this.a.scheduleDrawable(paramDrawable, paramRunnable, paramLong);
-  }
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
-  {
-    this.a.unscheduleDrawable(paramDrawable, paramRunnable);
+    this.a.a.finish();
   }
 }
 

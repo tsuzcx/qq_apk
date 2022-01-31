@@ -1,47 +1,72 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.open.agent.TroopAbilityUtils.1;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.widget.Toast;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.agent.BindGroupConfirmActivity;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class bfdc
-  implements DialogInterface.OnClickListener
+  implements bfml
 {
-  public bfdc(TroopAbilityUtils.1 param1) {}
+  public bfdc(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Exception paramException)
   {
-    if (!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      paramDialogInterface.dismiss();
+    if ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing())) {
+      this.a.jdField_a_of_type_Bety.dismiss();
     }
-    switch (paramInt)
-    {
-    default: 
-      return;
+    this.a.b(paramException);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing())) {
+      this.a.jdField_a_of_type_Bety.dismiss();
     }
-    for (;;)
+    try
     {
-      try
+      if (paramJSONObject.getInt("ret") == 0)
       {
-        paramDialogInterface = new Intent();
-        paramDialogInterface.addFlags(335544320);
-        if (this.a.jdField_a_of_type_Boolean)
+        if (this.a.jdField_a_of_type_Zhe == null)
         {
-          paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.jdField_a_of_type_JavaLangString), this.a.b })));
-          paramDialogInterface.setPackage(this.a.c);
-          this.a.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
+          this.a.jdField_a_of_type_Zhe = new zhe(this.a);
+          this.a.jdField_a_of_type_Zhe.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690532));
+          this.a.jdField_a_of_type_Zhe.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690531, new Object[] { this.a.e }), this.a);
+          this.a.jdField_a_of_type_Zhe.a(this.a);
+        }
+        if (this.a.jdField_a_of_type_Zhe.isShowing()) {
           return;
         }
-      }
-      catch (Exception paramDialogInterface)
-      {
-        QLog.e("TroopAbility.Utils", 1, "[startSdkCallback] startActivity failed, exception=", paramDialogInterface);
+        this.a.jdField_a_of_type_Zhe.show();
         return;
       }
-      paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=error", new Object[] { Long.valueOf(this.a.jdField_a_of_type_JavaLangString), this.a.b })));
+      if ((paramJSONObject.getInt("ret") == 10071) || (paramJSONObject.getInt("ret") == 10000))
+      {
+        if (this.a.jdField_a_of_type_Bdjz == null) {
+          this.a.jdField_a_of_type_Bdjz = bdgm.a(this.a, 230, this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690535), this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690536), 2131690885, 2131694953, this.a, null);
+        }
+        paramJSONObject = paramJSONObject.getString("msg");
+        if (!TextUtils.isEmpty(paramJSONObject)) {
+          this.a.jdField_a_of_type_Bdjz.setMessage(paramJSONObject);
+        }
+        if (this.a.jdField_a_of_type_Bdjz.isShowing()) {
+          return;
+        }
+        this.a.jdField_a_of_type_Bdjz.show();
+        return;
+      }
     }
+    catch (Exception paramJSONObject)
+    {
+      a(paramJSONObject);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BindGroupConfirmActivity", 2, "The JSONObject has error!");
+    }
+    paramJSONObject = paramJSONObject.getString("msg");
+    QQToast.a(bfbm.a().a(), paramJSONObject, 0).a(this.a.getTitleBarHeight()).show();
   }
 }
 

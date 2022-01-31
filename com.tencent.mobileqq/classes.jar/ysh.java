@@ -1,17 +1,25 @@
-import com.tencent.biz.troopplugin.PluginJumpManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class ysh
+class ysh
+  extends ysw
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  ysh(ysb paramysb, ysj paramysj, String paramString)
+  {
+    super(paramysb);
+  }
   
-  public ysh(PluginJumpManager paramPluginJumpManager) {}
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "mixAudio end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "mixAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Ysb.a));
+      this.jdField_a_of_type_Ysb.a = System.currentTimeMillis();
+    }
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Ysj.a(this.jdField_a_of_type_JavaLangString, false, "mixAudio done.");
+    }
+  }
 }
 
 

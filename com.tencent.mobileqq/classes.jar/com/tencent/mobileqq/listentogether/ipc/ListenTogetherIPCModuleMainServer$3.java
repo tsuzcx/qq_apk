@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.listentogether.ipc;
 
-import atjc;
-import awon;
+import atnl;
+import awsw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
@@ -9,13 +9,13 @@ import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 public class ListenTogetherIPCModuleMainServer$3
   implements Runnable
 {
-  public ListenTogetherIPCModuleMainServer$3(atjc paramatjc) {}
+  public ListenTogetherIPCModuleMainServer$3(atnl paramatnl) {}
   
   public void run()
   {
-    awon localawon = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
-    if (localawon != null) {
-      localawon.l();
+    awsw localawsw = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    if (localawsw != null) {
+      localawsw.l();
     }
   }
 }

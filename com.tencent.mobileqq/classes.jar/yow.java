@@ -1,23 +1,8 @@
-import android.text.TextUtils.EllipsizeCallback;
-import android.widget.TextView;
-import com.tencent.biz.troop.file.MoveFileActivity;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 
-public class yow
-  implements TextUtils.EllipsizeCallback
+public abstract interface yow
 {
-  public yow(MoveFileActivity paramMoveFileActivity, TextView paramTextView) {}
-  
-  public void ellipsized(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == paramInt2)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity));
-      return;
-    }
-    String str1 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(0, paramInt1);
-    String str2 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(paramInt2, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).length());
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + "..." + str2);
-  }
+  public abstract void b(CertifiedAccountMeta.StFeed paramStFeed);
 }
 
 

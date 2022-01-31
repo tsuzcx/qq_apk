@@ -2,7 +2,7 @@ package com.tencent.mobileqq.ptt.player;
 
 import android.app.Application;
 import android.media.AudioTrack;
-import bdic;
+import bdml;
 import com.tencent.mobileqq.utils.SilkCodecWrapper;
 import com.tencent.qphone.base.util.QLog;
 
@@ -19,9 +19,9 @@ class SilkPlayer$SilkPlayerThread
   
   public SilkPlayer$SilkPlayerThread(SilkPlayer paramSilkPlayer, Application paramApplication)
   {
-    this.jdField_b_of_type_Int = bdic.a(SilkPlayer.a(paramSilkPlayer));
+    this.jdField_b_of_type_Int = bdml.a(SilkPlayer.a(paramSilkPlayer));
     this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper = new SilkCodecWrapper(paramApplication, false);
-    this.jdField_a_of_type_Int = bdic.a(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Int = bdml.a(this.jdField_b_of_type_Int);
     this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
     this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
     if (QLog.isColorLevel()) {
@@ -50,7 +50,7 @@ class SilkPlayer$SilkPlayerThread
     //   27: invokestatic 111	com/tencent/mobileqq/ptt/player/SilkPlayer:a	(Lcom/tencent/mobileqq/ptt/player/SilkPlayer;)F
     //   30: invokestatic 116	com/tencent/mobileqq/activity/aio/MediaPlayerManager:a	(F)Z
     //   33: ifeq +1138 -> 1171
-    //   36: getstatic 121	aftg:c	Z
+    //   36: getstatic 121	afxv:c	Z
     //   39: ifeq +1132 -> 1171
     //   42: new 123	com/tencent/mobileqq/ptt/pttspeed/Sonic
     //   45: dup
@@ -69,11 +69,11 @@ class SilkPlayer$SilkPlayerThread
     //   73: astore 7
     //   75: aload_0
     //   76: getfield 17	com/tencent/mobileqq/ptt/player/SilkPlayer$SilkPlayerThread:this$0	Lcom/tencent/mobileqq/ptt/player/SilkPlayer;
-    //   79: invokestatic 132	com/tencent/mobileqq/ptt/player/SilkPlayer:a	(Lcom/tencent/mobileqq/ptt/player/SilkPlayer;)Lawtu;
+    //   79: invokestatic 132	com/tencent/mobileqq/ptt/player/SilkPlayer:a	(Lcom/tencent/mobileqq/ptt/player/SilkPlayer;)Lawyd;
     //   82: ifnull +15 -> 97
     //   85: aload_0
     //   86: getfield 17	com/tencent/mobileqq/ptt/player/SilkPlayer$SilkPlayerThread:this$0	Lcom/tencent/mobileqq/ptt/player/SilkPlayer;
-    //   89: invokestatic 132	com/tencent/mobileqq/ptt/player/SilkPlayer:a	(Lcom/tencent/mobileqq/ptt/player/SilkPlayer;)Lawtu;
+    //   89: invokestatic 132	com/tencent/mobileqq/ptt/player/SilkPlayer:a	(Lcom/tencent/mobileqq/ptt/player/SilkPlayer;)Lawyd;
     //   92: invokeinterface 136 1 0
     //   97: aload_0
     //   98: getfield 32	com/tencent/mobileqq/ptt/player/SilkPlayer$SilkPlayerThread:jdField_b_of_type_Int	I
@@ -280,7 +280,7 @@ class SilkPlayer$SilkPlayerThread
     //   515: astore 7
     //   517: goto -132 -> 385
     //   520: aload 11
-    //   522: invokestatic 219	bdic:a	([B)I
+    //   522: invokestatic 219	bdml:a	([B)I
     //   525: istore_3
     //   526: iload_3
     //   527: ifgt +51 -> 578
@@ -406,7 +406,7 @@ class SilkPlayer$SilkPlayerThread
     //   772: ifeq +257 -> 1029
     //   775: aload 7
     //   777: ifnull +252 -> 1029
-    //   780: getstatic 121	aftg:c	Z
+    //   780: getstatic 121	afxv:c	Z
     //   783: ifeq +246 -> 1029
     //   786: iload_3
     //   787: ifle +234 -> 1021
@@ -548,11 +548,11 @@ class SilkPlayer$SilkPlayerThread
     //   1051: istore_1
     //   1052: aload_0
     //   1053: getfield 17	com/tencent/mobileqq/ptt/player/SilkPlayer$SilkPlayerThread:this$0	Lcom/tencent/mobileqq/ptt/player/SilkPlayer;
-    //   1056: invokestatic 252	com/tencent/mobileqq/ptt/player/SilkPlayer:a	(Lcom/tencent/mobileqq/ptt/player/SilkPlayer;)Lawts;
+    //   1056: invokestatic 252	com/tencent/mobileqq/ptt/player/SilkPlayer:a	(Lcom/tencent/mobileqq/ptt/player/SilkPlayer;)Lawyb;
     //   1059: ifnull -201 -> 858
     //   1062: aload_0
     //   1063: getfield 17	com/tencent/mobileqq/ptt/player/SilkPlayer$SilkPlayerThread:this$0	Lcom/tencent/mobileqq/ptt/player/SilkPlayer;
-    //   1066: invokestatic 252	com/tencent/mobileqq/ptt/player/SilkPlayer:a	(Lcom/tencent/mobileqq/ptt/player/SilkPlayer;)Lawts;
+    //   1066: invokestatic 252	com/tencent/mobileqq/ptt/player/SilkPlayer:a	(Lcom/tencent/mobileqq/ptt/player/SilkPlayer;)Lawyb;
     //   1069: aload_0
     //   1070: getfield 48	com/tencent/mobileqq/ptt/player/SilkPlayer$SilkPlayerThread:jdField_b_of_type_ArrayOfByte	[B
     //   1073: invokeinterface 257 2 0

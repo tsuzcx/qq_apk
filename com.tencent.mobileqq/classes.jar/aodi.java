@@ -1,15 +1,26 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import java.util.List;
 
-public class aodi
+class aodi
   implements View.OnClickListener
 {
-  public aodi(LocationSelectActivity paramLocationSelectActivity) {}
+  aodg jdField_a_of_type_Aodg;
+  aodk jdField_a_of_type_Aodk;
+  
+  aodi(aodg paramaodg, aodk paramaodk)
+  {
+    this.jdField_a_of_type_Aodg = paramaodg;
+    this.jdField_a_of_type_Aodk = paramaodk;
+  }
   
   public void onClick(View paramView)
   {
-    this.a.onBackEvent();
+    aobw.a(paramView.getContext(), (ColorNote)aodg.a(this.jdField_a_of_type_Aodg).get(this.jdField_a_of_type_Aodk.getAdapterPosition()));
+    if (aodg.a(this.jdField_a_of_type_Aodg) != null) {
+      aodg.a(this.jdField_a_of_type_Aodg).a();
+    }
   }
 }
 

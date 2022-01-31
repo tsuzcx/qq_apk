@@ -1,53 +1,80 @@
-import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class aycm<T extends View>
+public class aycm
+  extends amct
 {
-  protected int a;
-  public long a;
+  private aycm(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public aycm(int paramInt)
+  protected void e(boolean paramBoolean, Object paramObject)
   {
-    this.a = paramInt;
-  }
-  
-  public static aycm a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    switch (paramInt1)
-    {
-    case 2: 
-    case 4: 
-    case 5: 
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseSearchEntryModel", 2, "createSearchEntryModel, modelType = " + paramInt1 + ", tabType = " + paramInt2);
-      }
-      return null;
-    case 0: 
-      return new aycv(paramInt2);
-    case 1: 
-      return new aydb(paramInt2, paramBoolean);
-    case 3: 
-      return new aycn(paramInt2, paramBoolean);
+    if (paramObject == null) {
+      SignTextEditFragment.a(this.a, 2);
     }
-    return new aydz(paramInt2);
+    for (;;)
+    {
+      return;
+      paramObject = (Bundle)paramObject;
+      int i = paramObject.getInt("param_searchResult", 0);
+      paramObject = (ArrayList)paramObject.getSerializable("param_topicInfoList");
+      if ((paramObject == null) || (paramObject.size() <= 0)) {
+        if (i == 0) {
+          SignTextEditFragment.a(this.a, 3);
+        }
+      }
+      while (this.a.jdField_a_of_type_Aklo.a(paramObject, true))
+      {
+        this.a.jdField_a_of_type_Aklo.notifyDataSetChanged();
+        return;
+        SignTextEditFragment.a(this.a, 2);
+        continue;
+        SignTextEditFragment.a(this.a, 4);
+      }
+    }
   }
   
-  public abstract T a(Context paramContext, QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, Bundle paramBundle);
-  
-  public void a() {}
-  
-  public void a(ayks paramayks) {}
-  
-  public void b() {}
-  
-  public void b(ayks paramayks) {}
-  
-  public void c() {}
+  protected void f(boolean paramBoolean, Object paramObject)
+  {
+    if (paramObject == null)
+    {
+      SignTextEditFragment.a(this.a, 2);
+      return;
+    }
+    Object localObject = (Bundle)paramObject;
+    int j = ((Bundle)localObject).getInt("param_atIndex");
+    int k = ((Bundle)localObject).getInt("param_atKeyLen");
+    paramObject = ((Bundle)localObject).getString("param_atKey");
+    long l = ((Bundle)localObject).getLong("param_reqTs");
+    localObject = (ArrayList)((Bundle)localObject).getSerializable("param_topicInfoList");
+    int i;
+    if (localObject == null)
+    {
+      i = 0;
+      if (QLog.isColorLevel()) {
+        QLog.i("SignTextEditFragment", 2, String.format("onGetTopicWithKey[%b,%d] key=[%s] [atIndex=%d, keyLen=%d],reqTs=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), paramObject, Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l) }));
+      }
+      if ((localObject != null) && (((List)localObject).size() > 0)) {
+        break label240;
+      }
+      SignTextEditFragment.a(this.a, 3);
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Aklo.a((List)localObject, false)) {
+        this.a.jdField_a_of_type_Aklo.notifyDataSetChanged();
+      }
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setTag(new Object[] { Integer.valueOf(j), Integer.valueOf(k), paramObject, Long.valueOf(l) });
+      return;
+      i = ((List)localObject).size();
+      break;
+      label240:
+      SignTextEditFragment.a(this.a, 4);
+    }
+  }
 }
 
 

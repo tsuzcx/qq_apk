@@ -1,20 +1,37 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import com.tencent.tavcut.bean.Size;
 
 class blot
-  implements DialogInterface.OnClickListener
+  implements blox
 {
-  blot(blor paramblor) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    this.a.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.b(false);
-    this.a.jdField_a_of_type_Bkil.d(false);
-    this.a.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().onBackPressed();
-    axlo.e();
-    axlc.f();
+    return 1920;
+  }
+  
+  public Size a(Size paramSize)
+  {
+    int i = ((Integer)blow.a(Integer.valueOf(960), Integer.valueOf(1280), Integer.valueOf(1920))).intValue();
+    Size localSize = new Size(0, 0);
+    double d = paramSize.getWidth() / paramSize.getHeight();
+    if (paramSize.getWidth() > paramSize.getHeight())
+    {
+      localSize.setWidth(Math.min(paramSize.getWidth(), i));
+      localSize.setHeight(blow.a(localSize.getWidth() / d));
+      return localSize;
+    }
+    localSize.setHeight(Math.min(paramSize.getHeight(), i));
+    localSize.setWidth(blow.a(d * localSize.getHeight()));
+    return localSize;
+  }
+  
+  public int b()
+  {
+    return ((Integer)blow.a(Integer.valueOf(3145728), Integer.valueOf(4194304), Integer.valueOf(5242880))).intValue();
+  }
+  
+  public int c()
+  {
+    return 30;
   }
 }
 

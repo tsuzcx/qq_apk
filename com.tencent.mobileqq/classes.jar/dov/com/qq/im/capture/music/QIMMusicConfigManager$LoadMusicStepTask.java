@@ -1,10 +1,10 @@
 package dov.com.qq.im.capture.music;
 
-import bapv;
-import bapx;
-import baqv;
-import baqw;
-import bhma;
+import baue;
+import baug;
+import bave;
+import bavf;
+import bhqh;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -15,9 +15,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 abstract class QIMMusicConfigManager$LoadMusicStepTask
-  implements bapx, Runnable
+  implements baug, Runnable
 {
-  final bapv jdField_a_of_type_Bapv;
+  final baue jdField_a_of_type_Baue;
   final AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   final QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager;
   final String b;
@@ -29,7 +29,7 @@ abstract class QIMMusicConfigManager$LoadMusicStepTask
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramQIMMusicConfigManager.a();
     this.b = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
     this.c = paramQIMMusicConfigManager.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Bapv = paramQIMMusicConfigManager.jdField_a_of_type_Bapv;
+    this.jdField_a_of_type_Baue = paramQIMMusicConfigManager.jdField_a_of_type_Baue;
   }
   
   String a(long paramLong)
@@ -37,7 +37,7 @@ abstract class QIMMusicConfigManager$LoadMusicStepTask
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("OpitrtqeGzopIlwxs").append("_").append("2000000025").append("_").append("SApgehUTVGxZKBQZTt").append("_").append("QmnkKmaTHNDozKdIUA").append("_").append(paramLong);
     localObject = ((StringBuilder)localObject).toString();
-    String str = bhma.a((String)localObject).toLowerCase();
+    String str = bhqh.a((String)localObject).toLowerCase();
     if (QLog.isColorLevel()) {
       QLog.d("QIMMusicConfigManager", 2, "generate the sign string, pre=" + (String)localObject + ", md5=" + str);
     }
@@ -89,9 +89,9 @@ abstract class QIMMusicConfigManager$LoadMusicStepTask
     ThreadManager.executeOnSubThread(this);
   }
   
-  public void onResp(baqw parambaqw) {}
+  public void onResp(bavf parambavf) {}
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

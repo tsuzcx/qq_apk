@@ -1,21 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.DeleteFaceFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
-public class asba
-  implements View.OnClickListener
+class asba
+  implements TextWatcher
 {
-  public asba(DeleteFaceFragment paramDeleteFaceFragment) {}
+  asba(asau paramasau, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeleteFaceFragment", 2, "user cancel delete");
-    }
-    if ((DeleteFaceFragment.a(this.a) != null) && (DeleteFaceFragment.a(this.a).isShowing())) {
-      DeleteFaceFragment.a(this.a).dismiss();
+    if ((asau.a(this.jdField_a_of_type_Asau).getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
+    {
+      asau.a(this.jdField_a_of_type_Asau).setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
+      asau.a(this.jdField_a_of_type_Asau).setSelection(this.jdField_a_of_type_Int - 1);
     }
   }
 }

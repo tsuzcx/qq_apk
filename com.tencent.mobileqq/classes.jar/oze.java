@@ -27,7 +27,7 @@ import org.json.JSONException;
 
 public class oze
   extends sik<TabChannelCoverInfo>
-  implements View.OnClickListener, bhqp, bhqq, siq, sir
+  implements View.OnClickListener, bhuw, bhux, siq, sir
 {
   public int a;
   private int[] a;
@@ -78,7 +78,7 @@ public class oze
     {
       localReadInJoyStaticGridView.a(localReadInJoyStaticGridView.a().getCount() - 1, 0, paramTabChannelCoverInfo);
       paramTabChannelCoverInfo = new ozf(this, localReadInJoyStaticGridView);
-      localReadInJoyStaticGridView.setTag(2131375225, paramTabChannelCoverInfo);
+      localReadInJoyStaticGridView.setTag(2131375276, paramTabChannelCoverInfo);
       localReadInJoyStaticGridView.getViewTreeObserver().addOnPreDrawListener(paramTabChannelCoverInfo);
       return;
     }
@@ -206,16 +206,16 @@ public class oze
     int i;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, 2131560068), null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, 2131560067), null);
       paramViewGroup = new ozg(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369472));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView = ((AutoFitTextView)paramView.findViewById(2131364114));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375500));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375516));
-      paramViewGroup.b = ((ImageView)paramView.findViewById(2131365087));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369490));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView = ((AutoFitTextView)paramView.findViewById(2131364116));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375551));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375567));
+      paramViewGroup.b = ((ImageView)paramView.findViewById(2131365089));
       paramViewGroup.b.setOnClickListener(this);
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView.setOnGetMaxWidthCallback(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)paramView.findViewById(2131368794));
+      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)paramView.findViewById(2131368809));
       if (paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView != null) {
         paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment));
       }
@@ -231,7 +231,7 @@ public class oze
       label223:
       localImageView.setVisibility(i);
       paramViewGroup.b.setTag(localObject);
-      paramViewGroup.b.setTag(2131375280, Integer.valueOf(paramInt));
+      paramViewGroup.b.setTag(2131375331, Integer.valueOf(paramInt));
       if ((paramInt < this.jdField_a_of_type_Int) && (ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment)))
       {
         paramView.setAlpha(0.5F);
@@ -287,7 +287,7 @@ public class oze
     default: 
       return;
     }
-    int i = ((Integer)paramView.getTag(2131375280)).intValue();
+    int i = ((Integer)paramView.getTag(2131375331)).intValue();
     paramView = (TabChannelCoverInfo)paramView.getTag();
     QLog.d("ReadInJoyChannelPanelFragment", 1, new Object[] { "onClick, delete button position = ", Integer.valueOf(i) });
     a(i, paramView);
@@ -302,7 +302,7 @@ public class oze
         ReadInJoyChannelPanelFragment.a("0X8009499", new orz().b().a(paramAdapterView.mChannelCoverId).m(ReadInJoyChannelPanelFragment.a(paramAdapterView)).n(ReadInJoyChannelPanelFragment.a(paramAdapterView)).c((int)paramAdapterView.sectionId).b("style", 1).a());
         ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, paramAdapterView, this);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity().finish();
-        if (bjxj.A())
+        if (bkbq.A())
         {
           owy.a().a(paramAdapterView.mChannelCoverId, 3, false, true);
           ors.b().post(new ReadInJoyChannelPanelFragment.DynamicGridViewAdapter.1(this, paramAdapterView));

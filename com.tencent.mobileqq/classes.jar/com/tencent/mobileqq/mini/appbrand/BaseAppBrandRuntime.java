@@ -7,8 +7,8 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
-import bdcb;
-import bepp;
+import bdgk;
+import bety;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.MiniAppInterface;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -39,7 +39,7 @@ public abstract class BaseAppBrandRuntime
   public MiniAppInterface appInterface;
   public boolean isGettingScreenShot;
   public List<IJsPlugin> pluginList;
-  private bepp shareScreenshotProgressDialog;
+  private bety shareScreenshotProgressDialog;
   
   public boolean canLaunchApp()
   {
@@ -55,7 +55,7 @@ public abstract class BaseAppBrandRuntime
       localObject = this.activity.getResources().getDisplayMetrics();
       j = ((DisplayMetrics)localObject).widthPixels;
     }
-    for (int i = (int)(((DisplayMetrics)localObject).widthPixels * 0.8D);; i = (int)(bdcb.l() * 0.8D))
+    for (int i = (int)(((DisplayMetrics)localObject).widthPixels * 0.8D);; i = (int)(bdgk.l() * 0.8D))
     {
       paramBitmap = ImageUtil.cutOutImg(Bitmap.createBitmap(paramBitmap), j, i);
       localObject = ImageUtil.compressImage(paramBitmap, 1044480);
@@ -68,7 +68,7 @@ public abstract class BaseAppBrandRuntime
         break;
       }
       return localFile.getAbsolutePath();
-      j = (int)bdcb.k();
+      j = (int)bdgk.k();
     }
     return null;
   }

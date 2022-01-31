@@ -1,10 +1,17 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
 
-class ahvf
+public class ahvf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public ahvf(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.invalidate();
+  }
 }
 
 

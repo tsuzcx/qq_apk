@@ -1,25 +1,18 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
 
 class bfvt
-  implements bhqd
+  extends BroadcastReceiver
 {
-  bfvt(bfvs parambfvs, Intent paramIntent, bhpy parambhpy) {}
+  bfvt(bfvs parambfvs) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      paramView = this.jdField_a_of_type_AndroidContentIntent.getExtras();
-      if ((paramView.containsKey("request_type")) && (paramView.containsKey("uin")) && (paramView.containsKey("sigt")) && (paramView.containsKey("nickname"))) {
-        bfvr.a(this.jdField_a_of_type_Bfvs.a, paramView);
-      }
+    boolean bool = "tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction());
+    bfvp.c("CallingStateMonitor", String.format("onVideoChattingStateChanged isChatting=%s", new Object[] { Boolean.valueOf(bool) }));
+    if (bfvs.a(this.a) != null) {
+      bfvs.a(this.a).c(bool);
     }
   }
 }

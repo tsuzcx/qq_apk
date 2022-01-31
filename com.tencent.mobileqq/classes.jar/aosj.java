@@ -1,79 +1,62 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
 
 public class aosj
-  extends aofy<aosg>
+  extends aokh<aosi>
 {
-  public static aosg a()
-  {
-    aosg localaosg = (aosg)aogj.a().a(529);
-    if (localaosg != null) {
-      return localaosg;
-    }
-    return new aosg();
-  }
-  
   public int a()
   {
-    return 529;
+    return 585;
   }
   
   @NonNull
-  public aosg a(int paramInt)
+  public aosi a(int paramInt)
   {
-    return new aosg();
+    return new aosi();
   }
   
   @Nullable
-  public aosg a(aogf[] paramArrayOfaogf)
+  public aosi a(aoko[] paramArrayOfaoko)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    String str;
-    if (paramArrayOfaogf != null)
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
     {
-      localObject1 = localObject2;
-      if (paramArrayOfaogf.length > 0)
-      {
-        str = paramArrayOfaogf[0].a;
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(str)) {
-          if (QLog.isColorLevel()) {
-            QLog.e("SigTopicConfProcessor", 1, "SigTopic.[onParsed] type=" + a() + ", content = " + str);
-          }
-        }
+      aosi localaosi = aosi.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
       }
+      return localaosi;
     }
-    try
-    {
-      paramArrayOfaogf = (aosh)aogt.a(str, aosh.class);
-      localObject1 = new aosg(str, paramArrayOfaogf);
-      return localObject1;
+    if (QLog.isColorLevel()) {
+      QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed is null");
     }
-    catch (QStorageInstantiateException paramArrayOfaogf)
-    {
-      for (;;)
-      {
-        QLog.e("SigTopicConfProcessor", 1, "readJsonOrXml failed", paramArrayOfaogf);
-        paramArrayOfaogf = null;
-      }
+    return null;
+  }
+  
+  public Class<aosi> a()
+  {
+    return aosi.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVPreloadPskeyConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
     }
   }
   
-  public Class<aosg> a()
+  public void a(aosi paramaosi)
   {
-    return aosg.class;
+    if (QLog.isColorLevel()) {
+      QLog.d("WVPreloadPskeyConfProcessor", 2, "onUpdate " + paramaosi.toString());
+    }
   }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aosg paramaosg) {}
   
   public int b()
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVPreloadPskeyConfProcessor", 2, "migrateOldVersion");
+    }
     return 0;
   }
   

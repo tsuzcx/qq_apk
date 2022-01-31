@@ -1,27 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
 
-public final class azma
+public class azma
+  extends azmd
 {
-  public boolean a;
-  
-  private void a(String paramString)
+  public azma(TCProgressBar paramTCProgressBar)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgReporterSwitchConfigProcessor", 2, "MsgReporterSwitch configText : " + paramString);
-      }
-    }
-    try
-    {
-      this.a = new JSONObject(paramString).optBoolean("MsgHopperUpload", false);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("MsgReporterSwitchConfigProcessor", 1, paramString, new Object[0]);
-    }
+    super(paramTCProgressBar);
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    this.a.b.left = this.f;
+    this.a.b.right = (this.f + this.g);
+    this.a.a.setColor(this.a.m);
+    paramCanvas.drawRect(this.a.b, this.a.a);
+    super.a(paramCanvas);
   }
 }
 

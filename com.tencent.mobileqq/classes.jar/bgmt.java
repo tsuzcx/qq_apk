@@ -1,8 +1,44 @@
-import com.tencent.qqmini.sdk.core.widget.NavigationBar;
+import com.tencent.qqmini.sdk.log.QMLog;
 
-public abstract interface bgmt
+public class bgmt
+  implements bgmc<Boolean>
 {
-  public abstract void a(NavigationBar paramNavigationBar);
+  private int a;
+  
+  private static bgmt a(int paramInt)
+  {
+    bgmt localbgmt = new bgmt();
+    localbgmt.a = paramInt;
+    return localbgmt;
+  }
+  
+  public static Boolean a(bglv parambglv)
+  {
+    return (Boolean)parambglv.a(a(2));
+  }
+  
+  public static Boolean b(bglv parambglv)
+  {
+    return (Boolean)parambglv.a(a(1));
+  }
+  
+  public Boolean a(bgls parambgls)
+  {
+    parambgls = parambgls.a();
+    if (parambgls == null)
+    {
+      QMLog.e("UpdateUIEvent", "Failed to perform " + this + ". page is null");
+      return Boolean.valueOf(false);
+    }
+    switch (this.a)
+    {
+    default: 
+      return Boolean.valueOf(false);
+    case 2: 
+      return Boolean.valueOf(parambgls.a());
+    }
+    return Boolean.valueOf(parambgls.b());
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import aaoo;
-import alpo;
+import aatd;
+import alud;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -50,47 +50,47 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import azmj;
-import baig;
-import baym;
-import bayn;
-import bayo;
-import bayp;
-import bayq;
-import bayr;
-import bays;
-import bayt;
-import bayu;
-import bayv;
-import bayw;
-import bayx;
-import bayy;
-import bayz;
-import baza;
-import bazb;
-import bazc;
-import bazd;
-import baze;
-import bazf;
-import bazg;
-import bazh;
-import bazi;
-import bazn;
-import bazr;
-import bazx;
-import bazy;
-import bazz;
-import bbaa;
-import bbab;
-import bcht;
-import bcwh;
-import bdcb;
-import bdcd;
-import bdfq;
-import bhpy;
-import bhql;
-import bjxj;
-import bngs;
+import azqs;
+import bamp;
+import bbcv;
+import bbcw;
+import bbcx;
+import bbcy;
+import bbcz;
+import bbda;
+import bbdb;
+import bbdc;
+import bbdd;
+import bbde;
+import bbdf;
+import bbdg;
+import bbdh;
+import bbdi;
+import bbdj;
+import bbdk;
+import bbdl;
+import bbdm;
+import bbdn;
+import bbdo;
+import bbdp;
+import bbdq;
+import bbdr;
+import bbdw;
+import bbea;
+import bbeg;
+import bbeh;
+import bbei;
+import bbej;
+import bbek;
+import bcmc;
+import bdaq;
+import bdgk;
+import bdgm;
+import bdjz;
+import bhuf;
+import bhus;
+import bkbq;
+import bnle;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 import com.tencent.biz.tribe.TribeVideoPlugin;
 import com.tencent.biz.ui.TouchWebView;
@@ -144,7 +144,7 @@ import tencent.gdt.qq_ad_get.QQAdGet.UserInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
-import xsn;
+import xww;
 
 public class TribeVideoListPlayerFragment
   extends PublicBaseFragment
@@ -162,11 +162,11 @@ public class TribeVideoListPlayerFragment
   protected ProgressBar a;
   public RelativeLayout a;
   protected TextView a;
-  public bazn a;
-  bdfq jdField_a_of_type_Bdfq;
+  public bbdw a;
+  bdjz jdField_a_of_type_Bdjz;
   public VideoFeedsRecyclerView a;
   protected GdtAppReceiver a;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new bayx(this);
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new bbdg(this);
   private TribeVideoListPlayerFragment.TribeWebViewFragment jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment;
   public TVK_IMediaPlayer a;
   protected TVK_IProxyFactory a;
@@ -175,7 +175,7 @@ public class TribeVideoListPlayerFragment
   public IVideoViewBase a;
   public Runnable a;
   private String jdField_a_of_type_JavaLangString = "https://buluo.qq.com/mobile/short_video_list.html?bid=%d&pid=%s";
-  public ArrayList<bazx> a;
+  public ArrayList<bbeg> a;
   protected Map<String, TVK_IMediaPlayer> a;
   public boolean a;
   protected int b;
@@ -211,13 +211,13 @@ public class TribeVideoListPlayerFragment
     this.jdField_f_of_type_Int = 0;
     this.jdField_g_of_type_Int = -1;
     this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
-    this.jdField_b_of_type_AndroidOsHandler = new bayy(this, Looper.getMainLooper());
+    this.jdField_b_of_type_AndroidOsHandler = new bbdh(this, Looper.getMainLooper());
     this.jdField_a_of_type_JavaLangRunnable = new TribeVideoListPlayerFragment.27(this);
   }
   
   private void a(ImageView paramImageView)
   {
-    paramImageView.setImageResource(2130843169);
+    paramImageView.setImageResource(2130843182);
     ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 1.4F, 1.0F, 1.4F, 1, 0.5F, 1, 0.0F);
     localScaleAnimation.setRepeatCount(2147483647);
     localScaleAnimation.setRepeatCount(1);
@@ -284,20 +284,20 @@ public class TribeVideoListPlayerFragment
     this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment = this;
     Object localObject1 = new Bundle();
     Intent localIntent = new Intent();
-    Object localObject2 = (bazx)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-    if ((localObject2 instanceof bbaa))
+    Object localObject2 = (bbeg)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+    if ((localObject2 instanceof bbej))
     {
-      localObject2 = (bbaa)localObject2;
-      long l2 = ((bbaa)localObject2).b;
+      localObject2 = (bbej)localObject2;
+      long l2 = ((bbej)localObject2).b;
       long l1 = l2;
-      if (((bbaa)localObject2).jdField_a_of_type_JavaUtilArrayList != null)
+      if (((bbej)localObject2).jdField_a_of_type_JavaUtilArrayList != null)
       {
         l1 = l2;
-        if (((bbaa)localObject2).jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-          l1 = ((bazy)((bbaa)localObject2).jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long;
+        if (((bbej)localObject2).jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+          l1 = ((bbeh)((bbej)localObject2).jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long;
         }
       }
-      localIntent.putExtra("url", String.format(this.jdField_a_of_type_JavaLangString, new Object[] { Long.valueOf(l1), ((bbaa)localObject2).d }));
+      localIntent.putExtra("url", String.format(this.jdField_a_of_type_JavaLangString, new Object[] { Long.valueOf(l1), ((bbej)localObject2).d }));
     }
     localIntent.putExtra("isTransparentTitleAndClickable", true);
     localIntent.putExtra("hide_left_button", true);
@@ -307,7 +307,7 @@ public class TribeVideoListPlayerFragment
     if (!this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment.isAdded())
     {
       localObject1 = getActivity().getSupportFragmentManager().beginTransaction();
-      ((FragmentTransaction)localObject1).add(2131364784, this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment, "TransparentWebviewFragment");
+      ((FragmentTransaction)localObject1).add(2131364785, this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment, "TransparentWebviewFragment");
       ((FragmentTransaction)localObject1).hide(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment).commitAllowingStateLoss();
     }
   }
@@ -331,37 +331,37 @@ public class TribeVideoListPlayerFragment
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
   }
   
-  public Spannable a(bbaa parambbaa)
+  public Spannable a(bbej parambbej)
   {
-    Object localObject = bcht.a(parambbaa.j.replaceAll("\024", ""));
-    if ((float)(bdcb.k() - bcwh.a(getActivity(), 24.0F)) == 0.0F) {
+    Object localObject = bcmc.a(parambbej.j.replaceAll("\024", ""));
+    if ((float)(bdgk.k() - bdaq.a(getActivity(), 24.0F)) == 0.0F) {
       return null;
     }
     Paint localPaint = new Paint();
     localPaint.setAntiAlias(true);
-    localPaint.setTextSize(bcwh.a(getActivity(), 14.0F));
+    localPaint.setTextSize(bdaq.a(getActivity(), 14.0F));
     int j = ((String)localObject).indexOf("{{");
     int i = ((String)localObject).indexOf("}}");
     if ((j >= 0) && (i > j)) {
-      localObject = ((String)localObject).substring(0, j) + alpo.a(2131715489) + ((String)localObject).substring(i + 2);
+      localObject = ((String)localObject).substring(0, j) + alud.a(2131715501) + ((String)localObject).substring(i + 2);
     }
     for (i = 1;; i = 0)
     {
-      if (!TextUtils.isEmpty(parambbaa.i))
+      if (!TextUtils.isEmpty(parambbej.i))
       {
-        localObject = new baig("# " + parambbaa.i + " " + (String)localObject, 2, 16);
-        ((baig)localObject).setSpan(new xsn(getActivity(), 2130843184), 0, 1, 33);
-        ((baig)localObject).setSpan(new xsn(getActivity(), 2130842527), 1, 2, 33);
-        ((baig)localObject).setSpan(new xsn(getActivity(), 2130845392), parambbaa.i.length() + 2, parambbaa.i.length() + 3, 33);
-        ((baig)localObject).setSpan(new ForegroundColorSpan(-18432), 2, parambbaa.i.length() + 2, 33);
-        ((baig)localObject).setSpan(new bayt(this, parambbaa), 2, parambbaa.i.length() + 2, 33);
+        localObject = new bamp("# " + parambbej.i + " " + (String)localObject, 2, 16);
+        ((bamp)localObject).setSpan(new xww(getActivity(), 2130843197), 0, 1, 33);
+        ((bamp)localObject).setSpan(new xww(getActivity(), 2130842540), 1, 2, 33);
+        ((bamp)localObject).setSpan(new xww(getActivity(), 2130845464), parambbej.i.length() + 2, parambbej.i.length() + 3, 33);
+        ((bamp)localObject).setSpan(new ForegroundColorSpan(-18432), 2, parambbej.i.length() + 2, 33);
+        ((bamp)localObject).setSpan(new bbdc(this, parambbej), 2, parambbej.i.length() + 2, 33);
       }
-      for (parambbaa = (bbaa)localObject;; parambbaa = new baig((CharSequence)localObject, 2, 16))
+      for (parambbej = (bbej)localObject;; parambbej = new bamp((CharSequence)localObject, 2, 16))
       {
         if (i != 0) {
-          parambbaa.setSpan(new xsn(getActivity(), 2130843176), j, j + 1, 33);
+          parambbej.setSpan(new xww(getActivity(), 2130843189), j, j + 1, 33);
         }
-        return parambbaa;
+        return parambbej;
       }
     }
   }
@@ -395,14 +395,14 @@ public class TribeVideoListPlayerFragment
       if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory != null) {
         break;
       }
-      localObject = Toast.makeText(getActivity(), alpo.a(2131715477), 1);
+      localObject = Toast.makeText(getActivity(), alud.a(2131715489), 1);
       ((Toast)localObject).setGravity(17, 0, 0);
       ((Toast)localObject).show();
       return null;
       ThreadManager.post(new TribeVideoListPlayerFragment.TVKSDKInstallRunnable(this), 5, null, true);
     }
     Object localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView_Scroll(getActivity());
-    ((IVideoViewBase)localObject).addViewCallBack(new bazc(this));
+    ((IVideoViewBase)localObject).addViewCallBack(new bbdl(this));
     return localObject;
   }
   
@@ -411,12 +411,12 @@ public class TribeVideoListPlayerFragment
     if (paramInt >= 10000)
     {
       DecimalFormat localDecimalFormat = new DecimalFormat("###.#");
-      return localDecimalFormat.format(paramInt / 10000.0D) + alpo.a(2131715496);
+      return localDecimalFormat.format(paramInt / 10000.0D) + alud.a(2131715508);
     }
     if (paramInt > 0) {
       return String.valueOf(paramInt);
     }
-    return alpo.a(2131715498);
+    return alud.a(2131715510);
   }
   
   public String a(int paramInt, String paramString)
@@ -429,11 +429,11 @@ public class TribeVideoListPlayerFragment
     int j;
     if (paramInt == 1)
     {
-      f1 = (float)(bdcb.k() - bcwh.a(getActivity(), 40.0F));
+      f1 = (float)(bdgk.k() - bdaq.a(getActivity(), 40.0F));
       localObject = new Paint();
       ((Paint)localObject).setAntiAlias(true);
-      ((Paint)localObject).setTextSize(bcwh.a(getActivity(), 12.0F));
-      str = alpo.a(2131715493);
+      ((Paint)localObject).setTextSize(bdaq.a(getActivity(), 12.0F));
+      str = alud.a(2131715505);
       float f2 = ((Paint)localObject).measureText(str);
       i = 0;
       paramInt = 0;
@@ -454,10 +454,10 @@ public class TribeVideoListPlayerFragment
       break label75;
       if (paramInt == 2)
       {
-        f1 = (float)((bdcb.k() - bcwh.a(getActivity(), 66.0F)) / 2L);
+        f1 = (float)((bdgk.k() - bdaq.a(getActivity(), 66.0F)) / 2L);
         break;
       }
-      f1 = (float)((bdcb.k() - bcwh.a(getActivity(), 92.0F)) / 3L);
+      f1 = (float)((bdgk.k() - bdaq.a(getActivity(), 92.0F)) / 3L);
       break;
       j = paramInt;
     } while (f3 < f1);
@@ -478,30 +478,30 @@ public class TribeVideoListPlayerFragment
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     localValueAnimator.setDuration(paramInt);
-    localValueAnimator.addUpdateListener(new bazd(this));
+    localValueAnimator.addUpdateListener(new bbdm(this));
     localValueAnimator.start();
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    bazr localbazr = (bazr)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag();
-    bbaa localbbaa = localbazr.jdField_a_of_type_Bbaa;
-    if (localbbaa == null) {}
+    bbea localbbea = (bbea)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag();
+    bbej localbbej = localbbea.jdField_a_of_type_Bbej;
+    if (localbbej == null) {}
     do
     {
       return;
       if (paramInt1 == 1)
       {
-        localbbaa.l += paramInt2;
-        a(localbazr.i);
-        localbazr.jdField_e_of_type_AndroidWidgetTextView.setText(a(localbbaa.l));
-        localbazr.jdField_e_of_type_AndroidWidgetTextView.setMaxLines(1);
+        localbbej.l += paramInt2;
+        a(localbbea.i);
+        localbbea.jdField_e_of_type_AndroidWidgetTextView.setText(a(localbbej.l));
+        localbbea.jdField_e_of_type_AndroidWidgetTextView.setMaxLines(1);
         return;
       }
     } while (paramInt1 != 0);
-    localbbaa.m += paramInt2;
-    localbazr.jdField_a_of_type_AndroidWidgetTextView.setText(a(localbbaa.m));
-    localbazr.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(1);
+    localbbej.m += paramInt2;
+    localbbea.jdField_a_of_type_AndroidWidgetTextView.setText(a(localbbej.m));
+    localbbea.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(1);
   }
   
   public void a(int paramInt, String paramString, BusinessObserver paramBusinessObserver)
@@ -509,7 +509,7 @@ public class TribeVideoListPlayerFragment
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("client_ver", "8.3.3");
+      localJSONObject.put("client_ver", "8.3.5");
       localJSONObject.put("from", "1");
       localJSONObject.put("targetuin", paramString);
       localJSONObject.put("operation", paramInt);
@@ -537,8 +537,8 @@ public class TribeVideoListPlayerFragment
     if (QLog.isColorLevel()) {
       QLog.d("TribeVideoListPlayerFragment", 2, new Object[] { "onLoadMore listSize:%d", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
     }
-    bbaa localbbaa = (bbaa)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    bbab.a(this.jdField_a_of_type_Bazn.getItemCount() + this.jdField_a_of_type_Int, 10, this.jdField_c_of_type_Int, localbbaa.jdField_h_of_type_Int, localbbaa.b, localbbaa.d, this.jdField_d_of_type_Int, new bazg(this, localbbaa));
+    bbej localbbej = (bbej)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    bbek.a(this.jdField_a_of_type_Bbdw.getItemCount() + this.jdField_a_of_type_Int, 10, this.jdField_c_of_type_Int, localbbej.jdField_h_of_type_Int, localbbej.b, localbbej.d, this.jdField_d_of_type_Int, new bbdp(this, localbbej));
     d(1);
   }
   
@@ -556,7 +556,7 @@ public class TribeVideoListPlayerFragment
       localWebSsoRequestBody.type.set(0);
       localWebSsoRequestBody.data.set(localJSONObject.toString());
       paramString.putExtra("data", localWebSsoRequestBody.toByteArray());
-      paramString.setObserver(new bayw(this));
+      paramString.setObserver(new bbdf(this));
       BaseApplicationImpl.getApplication().getRuntime().startServlet(paramString);
       return;
     }
@@ -592,7 +592,7 @@ public class TribeVideoListPlayerFragment
   
   public void a(Dialog paramDialog)
   {
-    if ((paramDialog instanceof bhpy)) {
+    if ((paramDialog instanceof bhuf)) {
       l();
     }
   }
@@ -601,17 +601,17 @@ public class TribeVideoListPlayerFragment
   {
     this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment.jdField_a_of_type_Int = -1;
     k();
-    if ((!(paramViewHolder instanceof bazi)) || (this.jdField_g_of_type_Int == ((bazi)paramViewHolder).jdField_a_of_type_Int)) {
+    if ((!(paramViewHolder instanceof bbdr)) || (this.jdField_g_of_type_Int == ((bbdr)paramViewHolder).jdField_a_of_type_Int)) {
       return;
     }
     Object localObject;
     boolean bool;
     label140:
-    bbaa localbbaa;
+    bbej localbbej;
     label206:
     label239:
     String str;
-    if ((((bazi)paramViewHolder).jdField_a_of_type_Int > this.jdField_g_of_type_Int) || (((bazi)paramViewHolder).jdField_a_of_type_Int != this.jdField_a_of_type_JavaUtilArrayList.size() - 1))
+    if ((((bbdr)paramViewHolder).jdField_a_of_type_Int > this.jdField_g_of_type_Int) || (((bbdr)paramViewHolder).jdField_a_of_type_Int != this.jdField_a_of_type_JavaUtilArrayList.size() - 1))
     {
       localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getParent();
       if (localObject != null)
@@ -622,64 +622,64 @@ public class TribeVideoListPlayerFragment
         }
         ((ViewGroup)localObject).removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
       }
-      if ((paramViewHolder instanceof bazr))
+      if ((paramViewHolder instanceof bbea))
       {
-        a((bazi)paramViewHolder);
-        a((bazr)paramViewHolder);
+        a((bbdr)paramViewHolder);
+        a((bbea)paramViewHolder);
         bool = false;
-        if ((paramViewHolder instanceof bazr))
+        if ((paramViewHolder instanceof bbea))
         {
-          localbbaa = (bbaa)this.jdField_a_of_type_JavaUtilArrayList.get(((bazr)paramViewHolder).jdField_a_of_type_Int);
-          localObject = (bazr)paramViewHolder;
-          if ((localbbaa.jdField_c_of_type_Long != BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()) && (!localbbaa.jdField_c_of_type_Boolean)) {
+          localbbej = (bbej)this.jdField_a_of_type_JavaUtilArrayList.get(((bbea)paramViewHolder).jdField_a_of_type_Int);
+          localObject = (bbea)paramViewHolder;
+          if ((localbbej.jdField_c_of_type_Long != BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()) && (!localbbej.jdField_c_of_type_Boolean)) {
             break label473;
           }
-          ((bazr)localObject).c.setVisibility(8);
-          if (localbbaa.jdField_h_of_type_Int == 0) {
+          ((bbea)localObject).c.setVisibility(8);
+          if (localbbej.jdField_h_of_type_Int == 0) {
             break label505;
           }
-          localObject = "" + localbbaa.jdField_h_of_type_Int;
-          if (localbbaa.jdField_c_of_type_Int != 31) {
+          localObject = "" + localbbej.jdField_h_of_type_Int;
+          if (localbbej.jdField_c_of_type_Int != 31) {
             break label512;
           }
           str = "1";
           label254:
-          if (((bazr)paramViewHolder).jdField_a_of_type_Int <= this.jdField_g_of_type_Int) {
+          if (((bbea)paramViewHolder).jdField_a_of_type_Int <= this.jdField_g_of_type_Int) {
             break label520;
           }
-          azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "slide_up", this.jdField_e_of_type_Int, 0, localbbaa.d, "" + localbbaa.b, (String)localObject, str);
+          azqs.b(null, "dc00899", "Grp_tribe", "", "video_player", "slide_up", this.jdField_e_of_type_Int, 0, localbbej.d, "" + localbbej.b, (String)localObject, str);
         }
       }
     }
     for (;;)
     {
-      a(((bazi)paramViewHolder).jdField_a_of_type_Int, bool);
-      this.jdField_g_of_type_Int = ((bazi)paramViewHolder).jdField_a_of_type_Int;
+      a(((bbdr)paramViewHolder).jdField_a_of_type_Int, bool);
+      this.jdField_g_of_type_Int = ((bbdr)paramViewHolder).jdField_a_of_type_Int;
       return;
-      if (!(paramViewHolder instanceof bazh)) {
+      if (!(paramViewHolder instanceof bbdq)) {
         break;
       }
-      a((bazi)paramViewHolder);
+      a((bbdr)paramViewHolder);
       localObject = new AlphaAnimation(0.0F, 1.0F);
       ((AlphaAnimation)localObject).setDuration(200L);
       ((AlphaAnimation)localObject).setStartOffset(3000L);
       ((AlphaAnimation)localObject).setFillAfter(true);
-      ((bazh)paramViewHolder).jdField_a_of_type_AndroidViewView.clearAnimation();
-      ((bazh)paramViewHolder).jdField_a_of_type_AndroidViewView.setVisibility(0);
-      ((bazh)paramViewHolder).jdField_a_of_type_AndroidViewView.startAnimation((Animation)localObject);
-      if (((bazh)paramViewHolder).jdField_a_of_type_Bazz.jdField_b_of_type_Boolean) {
+      ((bbdq)paramViewHolder).jdField_a_of_type_AndroidViewView.clearAnimation();
+      ((bbdq)paramViewHolder).jdField_a_of_type_AndroidViewView.setVisibility(0);
+      ((bbdq)paramViewHolder).jdField_a_of_type_AndroidViewView.startAnimation((Animation)localObject);
+      if (((bbdq)paramViewHolder).jdField_a_of_type_Bbei.jdField_b_of_type_Boolean) {
         break;
       }
-      ((bazh)paramViewHolder).jdField_a_of_type_Bazz.jdField_b_of_type_Boolean = true;
+      ((bbdq)paramViewHolder).jdField_a_of_type_Bbei.jdField_b_of_type_Boolean = true;
       ThreadManager.excute(new TribeVideoListPlayerFragment.8(this, paramViewHolder), 128, null, true);
       break;
       bool = true;
       break label140;
       label473:
-      ((bazr)localObject).c.setVisibility(0);
-      ((bazr)localObject).l.clearAnimation();
-      ((bazr)localObject).k.clearAnimation();
-      ((bazr)localObject).jdField_f_of_type_AndroidWidgetTextView.clearAnimation();
+      ((bbea)localObject).c.setVisibility(0);
+      ((bbea)localObject).l.clearAnimation();
+      ((bbea)localObject).k.clearAnimation();
+      ((bbea)localObject).jdField_f_of_type_AndroidWidgetTextView.clearAnimation();
       break label206;
       label505:
       localObject = "";
@@ -688,8 +688,8 @@ public class TribeVideoListPlayerFragment
       str = "2";
       break label254;
       label520:
-      if (((bazr)paramViewHolder).jdField_a_of_type_Int < this.jdField_g_of_type_Int) {
-        azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "slide_down", this.jdField_e_of_type_Int, 0, localbbaa.d, "" + localbbaa.b, (String)localObject, str);
+      if (((bbea)paramViewHolder).jdField_a_of_type_Int < this.jdField_g_of_type_Int) {
+        azqs.b(null, "dc00899", "Grp_tribe", "", "video_player", "slide_down", this.jdField_e_of_type_Int, 0, localbbej.d, "" + localbbej.b, (String)localObject, str);
       }
     }
   }
@@ -698,9 +698,9 @@ public class TribeVideoListPlayerFragment
   
   protected void a(FrameLayout paramFrameLayout)
   {
-    this.jdField_a_of_type_AndroidViewView = paramFrameLayout.findViewById(2131364338);
+    this.jdField_a_of_type_AndroidViewView = paramFrameLayout.findViewById(2131364340);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    paramFrameLayout.findViewById(2131370171).setOnClickListener(this);
+    paramFrameLayout.findViewById(2131370190).setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView = new VideoFeedsRecyclerView(getActivity());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setBackgroundColor(-16777216);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setClipChildren(false);
@@ -710,8 +710,8 @@ public class TribeVideoListPlayerFragment
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getActivity(), 1, false);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
     paramFrameLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView, 0, new FrameLayout.LayoutParams(-1, -1));
-    this.jdField_a_of_type_Bazn = new bazn(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setAdapter(this.jdField_a_of_type_Bazn);
+    this.jdField_a_of_type_Bbdw = new bbdw(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setAdapter(this.jdField_a_of_type_Bbdw);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.a(this);
     b();
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(getActivity());
@@ -728,9 +728,9 @@ public class TribeVideoListPlayerFragment
       this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(getActivity());
       this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundColor(1711276032);
       this.jdField_b_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842823);
-      this.jdField_b_of_type_AndroidWidgetImageView.setId(2131367091);
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new baym(this));
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842836);
+      this.jdField_b_of_type_AndroidWidgetImageView.setId(2131367101);
+      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new bbcv(this));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetImageView, -1, -1);
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(13);
@@ -740,75 +740,75 @@ public class TribeVideoListPlayerFragment
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(13);
       this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getActivity());
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(alpo.a(2131715485));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131715497));
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
       this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getActivity()).inflate(2131560390, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView, false));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369768));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369771));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getActivity()).inflate(2131560389, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView, false));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369787));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369790));
       d(0);
       int i = getResources().getDisplayMetrics().heightPixels;
-      this.jdField_a_of_type_JavaLangString += String.format("&x=%d&y=%d", new Object[] { Integer.valueOf(bcwh.a(getActivity(), 180.0F)), Integer.valueOf(i - bcwh.a(getActivity(), 30.0F)) });
-      bngs.a(getActivity());
-    } while ((!bngs.b()) || (bngs.jdField_d_of_type_Boolean) || (!bngs.c(getActivity())));
-    paramFrameLayout.findViewById(2131370188).setPadding(0, bngs.jdField_a_of_type_Int - bcwh.a(getActivity(), 10.0F), 0, 0);
+      this.jdField_a_of_type_JavaLangString += String.format("&x=%d&y=%d", new Object[] { Integer.valueOf(bdaq.a(getActivity(), 180.0F)), Integer.valueOf(i - bdaq.a(getActivity(), 30.0F)) });
+      bnle.a(getActivity());
+    } while ((!bnle.b()) || (bnle.jdField_d_of_type_Boolean) || (!bnle.c(getActivity())));
+    paramFrameLayout.findViewById(2131370207).setPadding(0, bnle.jdField_a_of_type_Int - bdaq.a(getActivity(), 10.0F), 0, 0);
   }
   
-  public void a(bazi parambazi)
+  public void a(bbdr parambbdr)
   {
     this.jdField_d_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_h_of_type_Int = 0;
-    Object localObject2 = (bazx)this.jdField_a_of_type_JavaUtilArrayList.get(parambazi.jdField_a_of_type_Int);
+    Object localObject2 = (bbeg)this.jdField_a_of_type_JavaUtilArrayList.get(parambbdr.jdField_a_of_type_Int);
     Object localObject1;
     label175:
     label193:
     long l;
     int i;
-    if (!TextUtils.isEmpty(((bazx)localObject2).jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(((bbeg)localObject2).jdField_a_of_type_JavaLangString))
     {
-      localObject1 = ((bazx)localObject2).jdField_a_of_type_JavaLangString;
+      localObject1 = ((bbeg)localObject2).jdField_a_of_type_JavaLangString;
       a((String)localObject1);
       a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new bayp(this, parambazi));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new bbcy(this, parambbdr));
       localObject1 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getParent();
       if (localObject1 != null) {
         ((ViewGroup)localObject1).removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
       }
-      parambazi.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, -1, -1);
-      parambazi.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(0);
+      parambbdr.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, -1, -1);
+      parambbdr.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(0);
       ((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).setAlpha(0.0F);
-      if (TextUtils.isEmpty(((bazx)localObject2).jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(((bbeg)localObject2).jdField_a_of_type_JavaLangString)) {
         break label402;
       }
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(getActivity(), ((bazx)localObject2).jdField_a_of_type_JavaLangString, 0L, 0L, null, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo);
-      if (!((bazx)localObject2).jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(getActivity(), ((bbeg)localObject2).jdField_a_of_type_JavaLangString, 0L, 0L, null, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo);
+      if (!((bbeg)localObject2).jdField_a_of_type_Boolean) {
         break label443;
       }
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setXYaxis(0);
       this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
-      ((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).setTag(parambazi);
+      ((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).setTag(parambbdr);
       this.jdField_a_of_type_Boolean = false;
       b(0);
       f();
       localObject1 = "";
       l = 0L;
-      if (!(localObject2 instanceof bbaa)) {
+      if (!(localObject2 instanceof bbej)) {
         break label463;
       }
-      localObject1 = (bbaa)localObject2;
-      i = ((bbaa)localObject1).jdField_h_of_type_Int;
-      if (((bbaa)localObject1).jdField_c_of_type_Int != 31) {
+      localObject1 = (bbej)localObject2;
+      i = ((bbej)localObject1).jdField_h_of_type_Int;
+      if (((bbej)localObject1).jdField_c_of_type_Int != 31) {
         break label456;
       }
-      parambazi = "1";
+      parambbdr = "1";
       label274:
-      l = ((bbaa)localObject1).b;
-      localObject2 = ((bbaa)localObject1).d;
-      localObject1 = parambazi;
-      parambazi = (bazi)localObject2;
+      l = ((bbej)localObject1).b;
+      localObject2 = ((bbej)localObject1).d;
+      localObject1 = parambbdr;
+      parambbdr = (bbdr)localObject2;
     }
     for (;;)
     {
@@ -827,38 +827,38 @@ public class TribeVideoListPlayerFragment
       {
         for (;;)
         {
-          azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "vv", j, 0, parambazi, (String)localObject2, str, (String)localObject1);
-          a(l, parambazi, i);
+          azqs.b(null, "dc00899", "Grp_tribe", "", "video_player", "vv", j, 0, parambbdr, (String)localObject2, str, (String)localObject1);
+          a(l, parambbdr, i);
           return;
-          localObject1 = ((bazx)localObject2).c;
+          localObject1 = ((bbeg)localObject2).c;
           break;
           label402:
-          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setVid(((bazx)localObject2).c);
+          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setVid(((bbeg)localObject2).c);
           this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayer(getActivity(), this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, "hd", 0L, 0L);
           break label175;
           label443:
           this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setXYaxis(2);
           break label193;
           label456:
-          parambazi = "2";
+          parambbdr = "2";
           break label274;
           label463:
-          if (!(localObject2 instanceof bazz)) {
+          if (!(localObject2 instanceof bbei)) {
             break label651;
           }
           try
           {
-            azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "ad_vv", this.jdField_e_of_type_Int, 0, "" + ((bazz)localObject2).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.trace_info.aid.get(), "" + (this.jdField_a_of_type_JavaUtilArrayList.indexOf(localObject2) + 1), "", "");
-            parambazi = "";
+            azqs.b(null, "dc00899", "Grp_tribe", "", "video_player", "ad_vv", this.jdField_e_of_type_Int, 0, "" + ((bbei)localObject2).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.trace_info.aid.get(), "" + (this.jdField_a_of_type_JavaUtilArrayList.indexOf(localObject2) + 1), "", "");
+            parambbdr = "";
             localObject1 = "100";
             i = 0;
           }
-          catch (Exception parambazi)
+          catch (Exception parambbdr)
           {
             if (QLog.isColorLevel()) {
-              QLog.e("TribeVideoListPlayerFragment", 2, "ad_vv: e= " + parambazi.toString());
+              QLog.e("TribeVideoListPlayerFragment", 2, "ad_vv: e= " + parambbdr.toString());
             }
-            parambazi = "";
+            parambbdr = "";
             localObject1 = "100";
             i = 0;
           }
@@ -868,32 +868,32 @@ public class TribeVideoListPlayerFragment
         break label329;
       }
       label651:
-      parambazi = "";
+      parambbdr = "";
       i = 0;
     }
   }
   
-  protected void a(bazr parambazr)
+  protected void a(bbea parambbea)
   {
-    bbaa localbbaa = parambazr.jdField_a_of_type_Bbaa;
+    bbej localbbej = parambbea.jdField_a_of_type_Bbej;
     if (this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
     {
       int[] arrayOfInt = new int[2];
-      parambazr.i.getLocationOnScreen(arrayOfInt);
-      long l2 = localbbaa.b;
+      parambbea.i.getLocationOnScreen(arrayOfInt);
+      long l2 = localbbej.b;
       long l1 = l2;
-      if (localbbaa.jdField_a_of_type_JavaUtilArrayList != null)
+      if (localbbej.jdField_a_of_type_JavaUtilArrayList != null)
       {
         l1 = l2;
-        if (localbbaa.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-          l1 = ((bazy)localbbaa.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long;
+        if (localbbej.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+          l1 = ((bbeh)localbbej.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long;
         }
       }
-      this.jdField_a_of_type_JavaLangString = String.format(this.jdField_a_of_type_JavaLangString, new Object[] { Long.valueOf(l1), localbbaa.d });
+      this.jdField_a_of_type_JavaLangString = String.format(this.jdField_a_of_type_JavaLangString, new Object[] { Long.valueOf(l1), localbbej.d });
       if (this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment.jdField_b_of_type_Boolean)
       {
-        parambazr = "javascript:mqq.dispatchEvent(\"updateVideo\",{\"bid\":" + l1 + ",\"pid\":\"" + localbbaa.d + "\"})";
-        this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.callJs(parambazr);
+        parambbea = "javascript:mqq.dispatchEvent(\"updateVideo\",{\"bid\":" + l1 + ",\"pid\":\"" + localbbej.d + "\"})";
+        this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.callJs(parambbea);
       }
     }
     else
@@ -903,12 +903,12 @@ public class TribeVideoListPlayerFragment
     this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
   }
   
-  public void a(bazz parambazz)
+  public void a(bbei parambbei)
   {
     GdtHandler.Params localParams = new GdtHandler.Params();
     localParams.jdField_c_of_type_Int = 7;
     localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(getActivity());
-    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(parambazz.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo);
+    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(parambbei.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo);
     localParams.jdField_a_of_type_Boolean = true;
     localParams.jdField_b_of_type_Boolean = true;
     localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver);
@@ -918,36 +918,36 @@ public class TribeVideoListPlayerFragment
     GdtHandler.a(localParams);
     try
     {
-      azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "ad_Clk", this.jdField_e_of_type_Int, 0, "" + parambazz.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.trace_info.aid.get(), "" + (this.jdField_a_of_type_JavaUtilArrayList.indexOf(parambazz) + 1), "", "");
+      azqs.b(null, "dc00899", "Grp_tribe", "", "video_player", "ad_Clk", this.jdField_e_of_type_Int, 0, "" + parambbei.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.trace_info.aid.get(), "" + (this.jdField_a_of_type_JavaUtilArrayList.indexOf(parambbei) + 1), "", "");
       this.jdField_f_of_type_Boolean = true;
       return;
     }
-    catch (Exception parambazz)
+    catch (Exception parambbei)
     {
       for (;;)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("TribeVideoListPlayerFragment", 2, "handleADClick report error: e= " + parambazz.toString());
+          QLog.e("TribeVideoListPlayerFragment", 2, "handleADClick report error: e= " + parambbei.toString());
         }
       }
     }
   }
   
-  public void a(bazz parambazz, long paramLong1, long paramLong2)
+  public void a(bbei parambbei, long paramLong1, long paramLong2)
   {
-    a(parambazz, paramLong1, paramLong2, false);
+    a(parambbei, paramLong1, paramLong2, false);
   }
   
-  protected void a(bazz parambazz, long paramLong1, long paramLong2, boolean paramBoolean)
+  protected void a(bbei parambbei, long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    ThreadManager.excute(new TribeVideoListPlayerFragment.7(this, paramBoolean, parambazz, paramLong2, paramLong1), 128, null, true);
+    ThreadManager.excute(new TribeVideoListPlayerFragment.7(this, paramBoolean, parambbei, paramLong2, paramLong1), 128, null, true);
   }
   
   protected void a(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    paramTVK_IMediaPlayer.setOnCompletionListener(new bayz(this));
-    paramTVK_IMediaPlayer.setOnErrorListener(new baza(this));
-    paramTVK_IMediaPlayer.setOnInfoListener(new bazb(this));
+    paramTVK_IMediaPlayer.setOnCompletionListener(new bbdi(this));
+    paramTVK_IMediaPlayer.setOnErrorListener(new bbdj(this));
+    paramTVK_IMediaPlayer.setOnInfoListener(new bbdk(this));
   }
   
   protected void a(String paramString)
@@ -969,21 +969,21 @@ public class TribeVideoListPlayerFragment
       return;
       Object localObject2;
       JSONObject localJSONObject;
-      if ((((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag() instanceof bazr))
+      if ((((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag() instanceof bbea))
       {
-        localObject1 = (bazr)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag();
-        localObject1 = (bazx)this.jdField_a_of_type_JavaUtilArrayList.get(((bazr)localObject1).jdField_a_of_type_Int);
-        if (!(localObject1 instanceof bbaa)) {
+        localObject1 = (bbea)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag();
+        localObject1 = (bbeg)this.jdField_a_of_type_JavaUtilArrayList.get(((bbea)localObject1).jdField_a_of_type_Int);
+        if (!(localObject1 instanceof bbej)) {
           continue;
         }
-        localObject2 = (bbaa)localObject1;
-        if (((bbaa)localObject2).jdField_h_of_type_Int != 0) {
-          localObject1 = "" + ((bbaa)localObject2).jdField_h_of_type_Int;
+        localObject2 = (bbej)localObject1;
+        if (((bbej)localObject2).jdField_h_of_type_Int != 0) {
+          localObject1 = "" + ((bbej)localObject2).jdField_h_of_type_Int;
         }
         for (;;)
         {
           int i;
-          if (((bbaa)localObject2).jdField_c_of_type_Int == 31)
+          if (((bbej)localObject2).jdField_c_of_type_Int == 31)
           {
             i = 1;
             localJSONObject = new JSONObject();
@@ -991,9 +991,9 @@ public class TribeVideoListPlayerFragment
           try
           {
             localJSONObject.put("timeofplayed", this.jdField_h_of_type_Int);
-            localJSONObject.put("totaltime", ((bbaa)localObject2).jdField_a_of_type_Long);
-            localJSONObject.put("report", ((bbaa)localObject2).jdField_a_of_type_OrgJsonJSONObject);
-            azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "vv_time", this.jdField_e_of_type_Int, i, ((bbaa)localObject2).d, "" + ((bbaa)localObject2).b, (String)localObject1, localJSONObject.toString());
+            localJSONObject.put("totaltime", ((bbej)localObject2).jdField_a_of_type_Long);
+            localJSONObject.put("report", ((bbej)localObject2).jdField_a_of_type_OrgJsonJSONObject);
+            azqs.b(null, "dc00899", "Grp_tribe", "", "video_player", "vv_time", this.jdField_e_of_type_Int, i, ((bbej)localObject2).d, "" + ((bbej)localObject2).b, (String)localObject1, localJSONObject.toString());
             return;
             localObject1 = "";
             continue;
@@ -1008,30 +1008,30 @@ public class TribeVideoListPlayerFragment
           }
         }
       }
-      if (!(((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag() instanceof bazh)) {
+      if (!(((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag() instanceof bbdq)) {
         continue;
       }
-      Object localObject1 = (bazx)this.jdField_a_of_type_JavaUtilArrayList.get(((bazh)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag()).jdField_a_of_type_Int);
-      if ((localObject1 instanceof bazz))
+      Object localObject1 = (bbeg)this.jdField_a_of_type_JavaUtilArrayList.get(((bbdq)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag()).jdField_a_of_type_Int);
+      if ((localObject1 instanceof bbei))
       {
-        localObject2 = (bazz)localObject1;
+        localObject2 = (bbei)localObject1;
         localJSONObject = new JSONObject();
       }
       try
       {
         localJSONObject.put("timeofplayed", this.jdField_h_of_type_Int);
-        localJSONObject.put("totaltime", ((bazz)localObject2).jdField_a_of_type_Long);
-        azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "vv_time", this.jdField_e_of_type_Int, 100, "", "", "", localJSONObject.toString());
+        localJSONObject.put("totaltime", ((bbei)localObject2).jdField_a_of_type_Long);
+        azqs.b(null, "dc00899", "Grp_tribe", "", "video_player", "vv_time", this.jdField_e_of_type_Int, 100, "", "", "", localJSONObject.toString());
       }
       catch (JSONException localJSONException2)
       {
         try
         {
-          azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "ad_vv_time", this.jdField_e_of_type_Int, 0, "" + ((bazz)localObject2).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.trace_info.aid.get(), "" + (this.jdField_a_of_type_JavaUtilArrayList.indexOf(localObject2) + 1), "" + ((bazz)localObject2).jdField_a_of_type_Long, "" + this.jdField_h_of_type_Int);
-          if ((!(localObject1 instanceof bazz)) || (this.jdField_c_of_type_Boolean)) {
+          azqs.b(null, "dc00899", "Grp_tribe", "", "video_player", "ad_vv_time", this.jdField_e_of_type_Int, 0, "" + ((bbei)localObject2).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.trace_info.aid.get(), "" + (this.jdField_a_of_type_JavaUtilArrayList.indexOf(localObject2) + 1), "" + ((bbei)localObject2).jdField_a_of_type_Long, "" + this.jdField_h_of_type_Int);
+          if ((!(localObject1 instanceof bbei)) || (this.jdField_c_of_type_Boolean)) {
             continue;
           }
-          a((bazz)localObject1, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion(), paramBoolean);
+          a((bbei)localObject1, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion(), paramBoolean);
           return;
           localJSONException2 = localJSONException2;
           localJSONException2.printStackTrace();
@@ -1054,12 +1054,12 @@ public class TribeVideoListPlayerFragment
     if (paramInt >= 10000)
     {
       DecimalFormat localDecimalFormat = new DecimalFormat("###.#");
-      return localDecimalFormat.format(paramInt / 10000.0D) + alpo.a(2131715486);
+      return localDecimalFormat.format(paramInt / 10000.0D) + alud.a(2131715498);
     }
     if (paramInt > 0) {
       return String.valueOf(paramInt);
     }
-    return alpo.a(2131715476);
+    return alud.a(2131715488);
   }
   
   protected void b()
@@ -1068,7 +1068,7 @@ public class TribeVideoListPlayerFragment
     if (QLog.isColorLevel())
     {
       TVK_SDKMgr.setDebugEnable(true);
-      TVK_SDKMgr.setOnLogListener(new bayv(this));
+      TVK_SDKMgr.setOnLogListener(new bbde(this));
     }
   }
   
@@ -1076,14 +1076,14 @@ public class TribeVideoListPlayerFragment
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
     localValueAnimator.setDuration(paramInt);
-    localValueAnimator.addUpdateListener(new baze(this));
+    localValueAnimator.addUpdateListener(new bbdn(this));
     localValueAnimator.start();
   }
   
-  public void b(bazi parambazi)
+  public void b(bbdr parambbdr)
   {
     Message localMessage = new Message();
-    localMessage.obj = parambazi;
+    localMessage.obj = parambbdr;
     this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     this.jdField_b_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 33L);
   }
@@ -1101,8 +1101,8 @@ public class TribeVideoListPlayerFragment
     try
     {
       localObject = new JSONArray(str);
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(bbaa.a((JSONArray)localObject));
-      this.jdField_a_of_type_Bazn.notifyDataSetChanged();
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(bbej.a((JSONArray)localObject));
+      this.jdField_a_of_type_Bbdw.notifyDataSetChanged();
       ThreadManager.executeOnSubThread(new TribeVideoListPlayerFragment.5(this));
       return;
     }
@@ -1126,7 +1126,7 @@ public class TribeVideoListPlayerFragment
   
   protected void d()
   {
-    Object localObject1 = new bazf(this);
+    Object localObject1 = new bbdo(this);
     qq_ad_get.QQAdGet localQQAdGet = new qq_ad_get.QQAdGet();
     localObject1 = new ldv((ldw)localObject1);
     Object localObject2 = new qq_ad_get.QQAdGet.UserInfo();
@@ -1145,7 +1145,7 @@ public class TribeVideoListPlayerFragment
     localPositionInfo.pos_ext.set((MessageMicro)localObject2, true);
     localQQAdGet.position_info.add(localPositionInfo);
     localQQAdGet.support_https.set(true, true);
-    localObject2 = aaoo.a(getActivity());
+    localObject2 = aatd.a(getActivity());
     if (localObject2 != null) {
       localQQAdGet.device_info.set((MessageMicro)localObject2);
     }
@@ -1163,7 +1163,7 @@ public class TribeVideoListPlayerFragment
     case 1: 
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131715475));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131715487));
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       return;
     case 2: 
@@ -1172,14 +1172,14 @@ public class TribeVideoListPlayerFragment
     case 3: 
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131715492));
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130843170, 0, 0, 0);
-      azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "exp_nomore", this.jdField_e_of_type_Int, 0, "", "", "", "");
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131715504));
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130843183, 0, 0, 0);
+      azqs.b(null, "dc00899", "Grp_tribe", "", "video_player", "exp_nomore", this.jdField_e_of_type_Int, 0, "", "", "", "");
       return;
     case 4: 
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131715497));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131715509));
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       return;
     }
@@ -1194,11 +1194,11 @@ public class TribeVideoListPlayerFragment
   public void e(int paramInt)
   {
     jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    bazr localbazr;
-    if ((((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag() instanceof bazr))
+    bbea localbbea;
+    if ((((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag() instanceof bbea))
     {
-      localbazr = (bazr)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag();
-      if (localbazr != null) {}
+      localbbea = (bbea)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag();
+      if (localbbea != null) {}
     }
     else
     {
@@ -1209,19 +1209,19 @@ public class TribeVideoListPlayerFragment
     default: 
       return;
     case 0: 
-      localbazr.j.setVisibility(8);
-      localbazr.i.setVisibility(0);
-      localbazr.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
+      localbbea.j.setVisibility(8);
+      localbbea.i.setVisibility(0);
+      localbbea.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     case 1: 
-      localbazr.jdField_f_of_type_AndroidWidgetImageView.setVisibility(8);
-      localbazr.jdField_e_of_type_AndroidWidgetImageView.setVisibility(0);
-      localbazr.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      localbbea.jdField_f_of_type_AndroidWidgetImageView.setVisibility(8);
+      localbbea.jdField_e_of_type_AndroidWidgetImageView.setVisibility(0);
+      localbbea.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }
-    localbazr.h.setVisibility(8);
-    localbazr.g.setVisibility(0);
-    localbazr.d.setVisibility(0);
+    localbbea.h.setVisibility(8);
+    localbbea.g.setVisibility(0);
+    localbbea.d.setVisibility(0);
   }
   
   protected void f()
@@ -1252,20 +1252,20 @@ public class TribeVideoListPlayerFragment
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     a(0);
     this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-    if (this.jdField_a_of_type_Bdfq == null)
+    if (this.jdField_a_of_type_Bdjz == null)
     {
-      this.jdField_a_of_type_Bdfq = bdcd.a(getActivity(), 230, null, alpo.a(2131715484), new bayq(this), null);
-      this.jdField_a_of_type_Bdfq.setOnDismissListener(new bayr(this));
+      this.jdField_a_of_type_Bdjz = bdgm.a(getActivity(), 230, null, alud.a(2131715496), new bbcz(this), null);
+      this.jdField_a_of_type_Bdjz.setOnDismissListener(new bbda(this));
     }
-    if (!this.jdField_a_of_type_Bdfq.isShowing()) {
-      this.jdField_a_of_type_Bdfq.show();
+    if (!this.jdField_a_of_type_Bdjz.isShowing()) {
+      this.jdField_a_of_type_Bdjz.show();
     }
   }
   
   protected void i()
   {
     Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject2 = bjxj.a((AppRuntime)localObject1, true, true);
+    Object localObject2 = bkbq.a((AppRuntime)localObject1, true, true);
     if (localObject2 == null) {
       QLog.d("TribeVideoListPlayerFragment", 1, "showGuideView() failed");
     }
@@ -1282,12 +1282,12 @@ public class TribeVideoListPlayerFragment
       return;
       localObject2 = ((SharedPreferences)localObject2).edit();
       ((SharedPreferences.Editor)localObject2).putBoolean("tribe_video_list_play_guide_view" + ((AppRuntime)localObject1).getAccount(), true);
-      bjxj.a((SharedPreferences.Editor)localObject2, true);
+      bkbq.a((SharedPreferences.Editor)localObject2, true);
       localObject1 = (FrameLayout)getActivity().getWindow().getDecorView();
-      localObject2 = LayoutInflater.from(getActivity()).inflate(2131560393, (ViewGroup)localObject1, false);
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject2).findViewById(2131379373));
-      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject2).findViewById(2131379374));
-      ((View)localObject2).setOnTouchListener(new bays(this, (FrameLayout)localObject1, (View)localObject2));
+      localObject2 = LayoutInflater.from(getActivity()).inflate(2131560392, (ViewGroup)localObject1, false);
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject2).findViewById(2131379431));
+      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject2).findViewById(2131379432));
+      ((View)localObject2).setOnTouchListener(new bbdb(this, (FrameLayout)localObject1, (View)localObject2));
       jdField_a_of_type_AndroidOsHandler.postDelayed(new TribeVideoListPlayerFragment.17(this, (FrameLayout)localObject1, (View)localObject2), 5000L);
       ((FrameLayout)localObject1).addView((View)localObject2);
       if (this.jdField_a_of_type_AndroidAnimationAnimatorSet == null) {
@@ -1296,7 +1296,7 @@ public class TribeVideoListPlayerFragment
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
     } while (!this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-    b((bazr)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag());
+    b((bbea)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag());
     this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
   }
   
@@ -1321,7 +1321,7 @@ public class TribeVideoListPlayerFragment
     localAlphaAnimation.setDuration(500L);
     localAlphaAnimation.setStartOffset(3000L);
     this.jdField_b_of_type_AndroidWidgetTextView.startAnimation(localAlphaAnimation);
-    localAlphaAnimation.setAnimationListener(new bayu(this));
+    localAlphaAnimation.setAnimationListener(new bbdd(this));
   }
   
   public void k()
@@ -1367,11 +1367,11 @@ public class TribeVideoListPlayerFragment
         this.jdField_h_of_type_Boolean = true;
         getActivity().finish();
         return;
-        paramView = (bazi)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag();
-        paramView = (bazx)this.jdField_a_of_type_JavaUtilArrayList.get(paramView.jdField_a_of_type_Int);
-        if ((paramView instanceof bbaa))
+        paramView = (bbdr)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag();
+        paramView = (bbeg)this.jdField_a_of_type_JavaUtilArrayList.get(paramView.jdField_a_of_type_Int);
+        if ((paramView instanceof bbej))
         {
-          localObject = (bbaa)paramView;
+          localObject = (bbej)paramView;
           this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment.jdField_a_of_type_Int = 3;
           if (this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment.jdField_b_of_type_Boolean)
           {
@@ -1379,13 +1379,13 @@ public class TribeVideoListPlayerFragment
               getActivity().getSupportFragmentManager().beginTransaction().show(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment).commitAllowingStateLoss();
             }
             c(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment.jdField_a_of_type_Int);
-            if (((bbaa)localObject).jdField_c_of_type_Int != 31) {
+            if (((bbej)localObject).jdField_c_of_type_Int != 31) {
               break label260;
             }
           }
           for (paramView = "1";; paramView = "2")
           {
-            azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "Clk_more", 0, 0, ((bbaa)localObject).d, ((bbaa)localObject).b + "", "", paramView);
+            azqs.b(null, "dc00899", "Grp_tribe", "", "video_player", "Clk_more", 0, 0, ((bbej)localObject).d, ((bbej)localObject).b + "", "", paramView);
             return;
             if ((!this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$TribeWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {
               break;
@@ -1394,18 +1394,18 @@ public class TribeVideoListPlayerFragment
             break;
           }
         }
-      } while (!(paramView instanceof bazz));
-      paramView = (bazz)paramView;
-      Object localObject = (bhpy)bhql.a(getActivity(), null);
-      ((bhpy)localObject).a(alpo.a(2131715480), 9, "#FFB800");
-      ((bhpy)localObject).c(2131690648);
-      ((bhpy)localObject).a(new bayn(this));
-      ((bhpy)localObject).a(new bayo(this, (bhpy)localObject, paramView));
-      ((bhpy)localObject).show();
+      } while (!(paramView instanceof bbei));
+      paramView = (bbei)paramView;
+      Object localObject = (bhuf)bhus.a(getActivity(), null);
+      ((bhuf)localObject).a(alud.a(2131715492), 9, "#FFB800");
+      ((bhuf)localObject).c(2131690648);
+      ((bhuf)localObject).a(new bbcw(this));
+      ((bhuf)localObject).a(new bbcx(this, (bhuf)localObject, paramView));
+      ((bhuf)localObject).show();
       this.jdField_e_of_type_Boolean = true;
       try
       {
-        azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "ad_Clk_dislike", this.jdField_e_of_type_Int, 0, "" + paramView.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.trace_info.aid.get(), "" + (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramView) + 1), "", "");
+        azqs.b(null, "dc00899", "Grp_tribe", "", "video_player", "ad_Clk_dislike", this.jdField_e_of_type_Int, 0, "" + paramView.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.trace_info.aid.get(), "" + (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramView) + 1), "", "");
         return;
       }
       catch (Exception paramView) {}
@@ -1415,12 +1415,12 @@ public class TribeVideoListPlayerFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = (FrameLayout)paramLayoutInflater.inflate(2131560391, paramViewGroup, false);
+    paramLayoutInflater = (FrameLayout)paramLayoutInflater.inflate(2131560390, paramViewGroup, false);
     a(paramLayoutInflater);
     c();
     m();
     i();
-    azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "in", this.jdField_e_of_type_Int, 0, "", "", "", "");
+    azqs.b(null, "dc00899", "Grp_tribe", "", "video_player", "in", this.jdField_e_of_type_Int, 0, "", "", "", "");
     AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
     this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(getActivity());
     return paramLayoutInflater;
@@ -1461,7 +1461,7 @@ public class TribeVideoListPlayerFragment
   public void onFinish()
   {
     super.onFinish();
-    getActivity().overridePendingTransition(0, 2130772322);
+    getActivity().overridePendingTransition(0, 2130772323);
   }
   
   public void onPause()
@@ -1469,9 +1469,9 @@ public class TribeVideoListPlayerFragment
     super.onPause();
     if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase != null) && (this.jdField_f_of_type_Boolean))
     {
-      bazi localbazi = (bazi)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag();
-      if (((localbazi instanceof bazh)) && (!this.jdField_c_of_type_Boolean)) {
-        a(((bazh)localbazi).jdField_a_of_type_Bazz, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion());
+      bbdr localbbdr = (bbdr)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag();
+      if (((localbbdr instanceof bbdq)) && (!this.jdField_c_of_type_Boolean)) {
+        a(((bbdq)localbbdr).jdField_a_of_type_Bbei, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion());
       }
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
     }
@@ -1484,7 +1484,7 @@ public class TribeVideoListPlayerFragment
     if ((this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (!this.jdField_c_of_type_Boolean))
     {
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-      b((bazi)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag());
+      b((bbdr)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag());
       this.jdField_f_of_type_Boolean = false;
       this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
     }
@@ -1502,7 +1502,7 @@ public class TribeVideoListPlayerFragment
     if ((this.jdField_a_of_type_Boolean) && (!this.jdField_c_of_type_Boolean) && (!this.jdField_f_of_type_Boolean))
     {
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-      b((bazi)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag());
+      b((bbdr)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag());
       this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
     }
     ((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).setKeepScreenOn(true);
@@ -1515,10 +1515,10 @@ public class TribeVideoListPlayerFragment
     {
       if (!this.jdField_f_of_type_Boolean)
       {
-        bazi localbazi = (bazi)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag();
-        if (((localbazi instanceof bazh)) && (!this.jdField_c_of_type_Boolean))
+        bbdr localbbdr = (bbdr)((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag();
+        if (((localbbdr instanceof bbdq)) && (!this.jdField_c_of_type_Boolean))
         {
-          a(((bazh)localbazi).jdField_a_of_type_Bazz, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion());
+          a(((bbdq)localbbdr).jdField_a_of_type_Bbei, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion());
           if (this.jdField_h_of_type_Boolean) {
             this.jdField_c_of_type_Boolean = true;
           }

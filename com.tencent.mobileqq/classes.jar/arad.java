@@ -1,270 +1,111 @@
-import com.tencent.common.config.AppSetting;
+import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.ExtfBaseFileDownloader.1;
-import com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.ExtfBaseFileDownloader.2;
-import com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.ExtfBaseFileDownloader.3;
-import com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.ExtfBaseFileDownloader.4;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadReqInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadSpeedInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferEngine;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.IExcitingTransferRecvListener;
+import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.1;
+import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.2;
+import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.3;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
-public abstract class arad
-  implements IExcitingTransferRecvListener
+public class arad
 {
-  protected final int a;
-  protected long a;
-  protected final arae a;
-  private arag a;
-  protected final QQAppInterface a;
-  protected ExcitingTransferDownloadCompletedInfo a;
-  public boolean a;
-  protected int b;
-  public long b;
-  protected final long c;
-  protected final long d;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private aqxw jdField_a_of_type_Aqxw = new arae(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private LinkedHashMap<String, araf> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  private List<araf> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<String> b = new ArrayList();
   
-  public arad(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, int paramInt, arae paramarae)
+  public arad(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 201;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.d = paramLong1;
-    this.jdField_a_of_type_Arae = paramarae;
-    this.c = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
   }
   
-  private void b(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
+  private void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_Long != 0L)
-    {
-      ExcitingTransferEngine.getInstance().cancelRecvFile(this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_Long = 0L;
-    }
-    ThreadManager.post(new ExtfBaseFileDownloader.3(this, paramInt, paramExcitingTransferDownloadCompletedInfo), 5, null, false);
+    this.jdField_a_of_type_AndroidOsHandler.post(new ThumbDownloadManager.3(this));
   }
   
-  public void OnOneSlotComplete(int paramInt, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
+  private void a(araf paramaraf)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder().append("Id[").append(this.d).append("] ^_^ OnOneSlotComplete:").append(paramInt).append(" RP:");
-    if (paramExcitingTransferOneSlotComplete != null) {}
-    for (String str = paramExcitingTransferOneSlotComplete.toString();; str = "")
-    {
-      QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, str);
-      if (this.jdField_a_of_type_Arag == null) {
-        break;
-      }
-      this.jdField_a_of_type_Arag.a(paramInt, paramExcitingTransferOneSlotComplete);
-      return;
-    }
-  }
-  
-  public void OnSpeed(ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    ThreadManager.post(new ExtfBaseFileDownloader.4(this, paramExcitingTransferDownloadSpeedInfo), 5, null, false);
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public ExcitingTransferDownloadCompletedInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
-  }
-  
-  protected abstract ExcitingTransferDownloadConfig a();
-  
-  protected ExcitingTransferDownloadReqInfo a()
-  {
-    ExcitingTransferDownloadReqInfo localExcitingTransferDownloadReqInfo = new ExcitingTransferDownloadReqInfo();
-    if (this.jdField_a_of_type_Arae != null)
-    {
-      localExcitingTransferDownloadReqInfo.fileSize = this.jdField_a_of_type_Arae.a();
-      localExcitingTransferDownloadReqInfo.md5 = this.jdField_a_of_type_Arae.a();
-      localExcitingTransferDownloadReqInfo.isSupportHttps = this.jdField_a_of_type_Arae.b();
-      localExcitingTransferDownloadReqInfo.sslCName = this.jdField_a_of_type_Arae.d();
-      localExcitingTransferDownloadReqInfo.strFileName = this.jdField_a_of_type_Arae.a();
-      if (this.jdField_a_of_type_Arae.a() != null) {
-        localExcitingTransferDownloadReqInfo.mHosts = ((ExcitingTransferHostInfo[])this.jdField_a_of_type_Arae.a().toArray(new ExcitingTransferHostInfo[this.jdField_a_of_type_Arae.a().size()]));
-      }
-      localExcitingTransferDownloadReqInfo.strFileName = this.jdField_a_of_type_Arae.a();
-      localExcitingTransferDownloadReqInfo.serverPath = this.jdField_a_of_type_Arae.b();
-    }
-    for (;;)
-    {
-      localExcitingTransferDownloadReqInfo.strCookie = c();
-      localExcitingTransferDownloadReqInfo.strTempFilePath = b();
-      localExcitingTransferDownloadReqInfo.strSaveFileDir = a();
-      a(localExcitingTransferDownloadReqInfo);
-      return localExcitingTransferDownloadReqInfo;
-      QLog.e("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] getDownloadInfo mFileInfo = null ^^^^");
-    }
-  }
-  
-  protected String a()
-  {
-    return armo.a().b();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {}
+    if (paramaraf == null) {}
     do
     {
       return;
-      QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] stopDownloadFile ^^^^");
-      this.jdField_a_of_type_Boolean = true;
-    } while (this.jdField_a_of_type_Long == 0L);
-    ExcitingTransferEngine.getInstance().cancelRecvFile(this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Long = 0L;
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramaraf.jdField_a_of_type_JavaLangString, paramaraf);
+    } while (!QLog.isColorLevel());
+    QLog.i("ThumbDownloadManager", 2, "addDownloadingTask : MapDowloadingTask currentSize[" + this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + "]");
   }
   
-  public void a(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
+  private void a(String paramString)
   {
-    QLog.e("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] *_* *_* onFailure errcode:" + paramInt);
-    if (this.jdField_a_of_type_Arag != null) {
-      this.jdField_a_of_type_Arag.a(paramInt, paramExcitingTransferDownloadCompletedInfo);
-    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new ThumbDownloadManager.2(this, paramString));
   }
   
-  public void a(long paramLong1, long paramLong2, long paramLong3)
+  private boolean a(long paramLong, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Arag != null) {
-      this.jdField_a_of_type_Arag.a(paramLong1, paramLong2, paramLong3);
-    }
-  }
-  
-  public void a(arag paramarag)
-  {
-    this.jdField_a_of_type_Arag = paramarag;
-  }
-  
-  public void a(ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
-  {
-    QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] ^_^ ^_^ onSuccess");
-    if (this.jdField_a_of_type_Arag != null) {
-      this.jdField_a_of_type_Arag.a(0, paramExcitingTransferDownloadCompletedInfo);
-    }
-  }
-  
-  protected void a(ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo) {}
-  
-  public boolean a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = null;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 201;
-    ExcitingTransferDownloadReqInfo localExcitingTransferDownloadReqInfo = a();
-    QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] startDownloadFile >>>>");
-    QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] reqInfo   = {" + localExcitingTransferDownloadReqInfo.toString() + "}");
-    long l = ExcitingTransferEngine.getInstance().recvFileEx(localExcitingTransferDownloadReqInfo, a(), this);
-    if (l == -1L)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      QLog.e("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] startDownloadFile fail");
+    paramString2 = arrr.g(paramString2);
+    if (!a(paramString1, paramString2)) {
       return false;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = l;
-    QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] startDownloadFile excitingId:" + this.jdField_a_of_type_Long);
+    araf localaraf = new araf();
+    localaraf.b = paramString1;
+    localaraf.jdField_a_of_type_JavaLangString = paramString2;
+    localaraf.jdField_a_of_type_Long = paramLong;
+    this.b.add(paramString2);
+    this.jdField_a_of_type_JavaUtilList.add(localaraf);
     return true;
   }
   
-  protected abstract String b();
-  
-  protected String c()
+  private boolean a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Arae != null) {
-      return "Cookie:t=0;v=" + AppSetting.a() + ";" + this.jdField_a_of_type_Arae.c() + ";\r\n";
+    if (this.b.contains(paramString2)) {}
+    while (arso.b(paramString1)) {
+      return false;
     }
-    return "";
+    return true;
   }
   
-  public void onRecvComplete(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
+  private void b(araf paramaraf)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (paramaraf == null) {
       return;
     }
-    boolean bool;
-    StringBuilder localStringBuilder;
-    if (paramInt == 0)
-    {
-      bool = true;
-      localStringBuilder = new StringBuilder().append("Id[").append(this.d).append("] onExcitingDownloadResult suc:").append(bool).append(" errcode:").append(paramInt).append(" RP:");
-      if (paramExcitingTransferDownloadCompletedInfo == null) {
-        break label147;
-      }
-    }
-    label147:
-    for (String str = paramExcitingTransferDownloadCompletedInfo.toString();; str = "")
-    {
-      QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, str);
-      if ((bool) && (this.jdField_a_of_type_Arae != null)) {
-        this.jdField_b_of_type_Long = this.jdField_a_of_type_Arae.a();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = paramExcitingTransferDownloadCompletedInfo;
-      this.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_Long = 0L;
-      if (!bool) {
-        break label154;
-      }
-      ThreadManager.post(new ExtfBaseFileDownloader.2(this, paramExcitingTransferDownloadCompletedInfo), 5, null, false);
-      return;
-      bool = false;
-      break;
-    }
-    label154:
-    b(paramInt, paramExcitingTransferDownloadCompletedInfo);
+    new aqxv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramaraf.jdField_a_of_type_Long, paramaraf.b, paramaraf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqxw);
   }
   
-  public void onRecvProgress(long paramLong1, long paramLong2, long paramLong3)
+  private void b(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("ThumbDownloadManager", 2, "removeDownloadingTask : MapDowloadingTask currentSize[" + this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + "]");
     }
-    this.jdField_b_of_type_Long = paramLong2;
-    ThreadManager.post(new ExtfBaseFileDownloader.1(this, paramLong1, paramLong3), 5, null, false);
   }
   
-  public void onRecvStart()
+  private void c(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (!this.b.remove(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ThumbDownloadManager", 2, "removeDownloadingList : ListDownloadTask remove task fail, thumbUrl[" + paramString + "]");
+      }
+    }
+    while (!QLog.isColorLevel()) {
       return;
-      QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] onExcitingSendStart.");
-    } while (this.jdField_a_of_type_Arag == null);
-    this.jdField_a_of_type_Arag.a();
+    }
+    QLog.i("ThumbDownloadManager", 2, "removeDownloadingList : ListDownloadTask currentSize[" + this.b.size() + "]");
+  }
+  
+  public void a(long paramLong, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new ThumbDownloadManager.1(this, paramLong, paramString1, paramString2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arad
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,30 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
 public class wci
-  implements Animation.AnimationListener
+  extends umf<wcg, vcz>
 {
-  public wci(QQStoryBaseActivity paramQQStoryBaseActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public wci(wcg paramwcg)
   {
-    if (this.a.c != null)
+    super(paramwcg);
+  }
+  
+  public void a(@NonNull wcg paramwcg, @NonNull vcz paramvcz)
+  {
+    if ((wcg.a(paramwcg) != null) && (paramvcz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvcz.jdField_a_of_type_JavaUtilList.contains(wcg.a(paramwcg).a)))
     {
-      this.a.c.clearAnimation();
-      ((ViewGroup)((ViewGroup)this.a.findViewById(16908290)).getChildAt(0)).removeView(this.a.c);
+      wxe.a("WeiShiFlowBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramvcz.b.toString());
+      paramwcg.a.i();
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public Class acceptEventClass()
+  {
+    return vcz.class;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void b(@NonNull wcg paramwcg, @NonNull vcz paramvcz) {}
 }
 
 

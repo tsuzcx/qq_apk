@@ -1,27 +1,32 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.music.humrecognition.view.BgmRecognitionProviderView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class blqh
-  extends blpg
 {
-  public blqh(BgmRecognitionProviderView paramBgmRecognitionProviderView) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public static AppInterface a()
   {
-    bfhq.a().a(alpo.a(2131701455) + this.a.a);
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && (this.a.a.getLocalPath().equals(paramString))) {
-      BgmRecognitionProviderView.a(this.a).sendEmptyMessage(1003);
+    try
+    {
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface)) {
+        return (QQAppInterface)localObject;
+      }
+      localObject = BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("peak");
+      if ((localObject instanceof PeakAppInterface))
+      {
+        localObject = (PeakAppInterface)localObject;
+        return localObject;
+      }
     }
+    catch (Exception localException)
+    {
+      QLog.e("CaptureContext", 1, "getAppRuntime fail, ", localException);
+    }
+    return null;
   }
 }
 

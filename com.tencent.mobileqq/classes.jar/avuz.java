@@ -1,53 +1,51 @@
-import android.graphics.Rect;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.now.enter.pb.NowPushMsgList.NowPushMsg;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
 public class avuz
+  implements Manager
 {
-  public int a;
-  public Rect a;
-  public int b;
-  public Rect b = new Rect();
-  public int c;
-  public Rect c;
-  public int d;
-  public int e;
-  public int f;
+  private QQAppInterface a;
   
-  public avuz()
+  public avuz(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
+    this.a = paramQQAppInterface;
   }
   
-  public String toString()
+  private boolean a(NowPushMsgList.NowPushMsg paramNowPushMsg)
   {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("currAlpha = ").append(this.e).append("\n").append("currRect = ");
-    if (this.jdField_c_of_type_AndroidGraphicsRect != null)
+    if ((paramNowPushMsg.uint32_version.get() == 0L) && (paramNowPushMsg.uint64_start_time.get() == 0L) && (paramNowPushMsg.uint64_end_time.get() == 0L))
     {
-      str = this.jdField_c_of_type_AndroidGraphicsRect.toShortString();
-      localStringBuilder2 = localStringBuilder2.append(str).append("\n").append("radomAreaIndex = ").append(this.f).append("\n").append("radomRect = ");
-      if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
-        break label182;
+      if (QLog.isColorLevel()) {
+        QLog.i("NowHongbaoPushManager", 2, "发送wns日志请求");
       }
-      str = this.jdField_a_of_type_AndroidGraphicsRect.toShortString();
-      label95:
-      localStringBuilder2 = localStringBuilder2.append(str).append("\n").append("gapDuration = ").append(this.jdField_c_of_type_Int).append("\n").append("startRect = ");
-      if (this.b == null) {
-        break label188;
-      }
+      ((atdh)this.a.getManager(306)).c();
+      return true;
     }
-    label182:
-    label188:
-    for (String str = this.b.toShortString();; str = "")
-    {
-      localStringBuilder2.append(str).append("\n").append("edageWidth = ").append(this.jdField_a_of_type_Int).append("\n");
-      return localStringBuilder1.toString();
-      str = "";
-      break;
-      str = "";
-      break label95;
-    }
+    return false;
   }
+  
+  private void c(NowPushMsgList.NowPushMsg paramNowPushMsg)
+  {
+    if (a(paramNowPushMsg)) {}
+  }
+  
+  public void a(NowPushMsgList.NowPushMsg paramNowPushMsg)
+  {
+    QLog.i("NowHongbaoPushManager", 1, "receiveOnLinePush ： type=" + paramNowPushMsg.uint32_type.get() + ", show=" + paramNowPushMsg.uint32_switch.get() + ", startTime=" + paramNowPushMsg.uint64_start_time.get() + ", endTime=" + paramNowPushMsg.uint64_end_time.get() + ",taskId =" + paramNowPushMsg.uint32_task_id.get() + ",version =" + paramNowPushMsg.uint32_version.get());
+    c(paramNowPushMsg);
+  }
+  
+  public void b(NowPushMsgList.NowPushMsg paramNowPushMsg)
+  {
+    QLog.i("NowHongbaoPushManager", 1, "receiveOfflinePush ： type=" + paramNowPushMsg.uint32_type.get() + ", show=" + paramNowPushMsg.uint32_switch.get() + ", startTime=" + paramNowPushMsg.uint64_start_time.get() + ", endTime=" + paramNowPushMsg.uint64_end_time.get() + ",taskId =" + paramNowPushMsg.uint32_task_id.get() + ",version =" + paramNowPushMsg.uint32_version.get());
+    c(paramNowPushMsg);
+  }
+  
+  public void onDestroy() {}
 }
 
 

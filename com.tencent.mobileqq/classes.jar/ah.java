@@ -12,14 +12,14 @@ public class ah
 {
   public ah(LiteActivity paramLiteActivity, ArrayList paramArrayList) {}
   
-  DataLineMsgRecord a(allz paramallz, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  DataLineMsgRecord a(alqo paramalqo, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
     int i = paramInt1;
     if (paramInt1 == 0) {
-      switch (arni.a(paramString))
+      switch (arrr.a(paramString))
       {
       default: 
         i = 0;
@@ -28,8 +28,8 @@ public class ah
     for (;;)
     {
       DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-      localDataLineMsgRecord.msgtype = allz.a(i);
-      localDataLineMsgRecord.sessionid = paramallz.a(0, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a).longValue();
+      localDataLineMsgRecord.msgtype = alqo.a(i);
+      localDataLineMsgRecord.sessionid = paramalqo.a(0, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a).longValue();
       localDataLineMsgRecord.path = paramString;
       localDataLineMsgRecord.thumbPath = null;
       localDataLineMsgRecord.groupId = paramInt2;
@@ -59,14 +59,14 @@ public class ah
   void a(List<String> paramList, int paramInt)
   {
     if (paramList == null) {}
-    allz localallz;
+    alqo localalqo;
     int j;
     int i;
     Object localObject;
     for (;;)
     {
       return;
-      localallz = (allz)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
+      localalqo = (alqo)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
       j = paramList.size();
       if (j > 3) {
         break;
@@ -74,9 +74,9 @@ public class ah
       i = 0;
       while (i < j)
       {
-        localObject = a(localallz, (String)paramList.get(i), paramInt, 0, 0, 0);
+        localObject = a(localalqo, (String)paramList.get(i), paramInt, 0, 0, 0);
         if (localObject != null) {
-          localallz.a((DataLineMsgRecord)localObject, false);
+          localalqo.a((DataLineMsgRecord)localObject, false);
         }
         i += 1;
       }
@@ -86,11 +86,11 @@ public class ah
     if ((j > 3) && (j < 50))
     {
       localObject = new ArrayList();
-      int k = localallz.a();
+      int k = localalqo.a();
       i = 0;
       if (i < j)
       {
-        localDataLineMsgRecord = a(localallz, (String)paramList.get(i), paramInt, k, j, i);
+        localDataLineMsgRecord = a(localalqo, (String)paramList.get(i), paramInt, k, j, i);
         if (localDataLineMsgRecord != null) {
           ((ArrayList)localObject).add(localDataLineMsgRecord);
         }
@@ -104,7 +104,7 @@ public class ah
           localDataLineMsgRecord.groupSize = 0;
         }
         if (((ArrayList)localObject).size() > 0) {
-          localallz.a((ArrayList)localObject, false);
+          localalqo.a((ArrayList)localObject, false);
         }
         localObject = new ArrayList();
       }
@@ -119,14 +119,14 @@ public class ah
       if (((ArrayList)localObject).size() <= 0) {
         break;
       }
-      localallz.a((ArrayList)localObject, false);
+      localalqo.a((ArrayList)localObject, false);
       return;
       localObject = new ArrayList();
-      j = localallz.a();
+      j = localalqo.a();
       i = 0;
       if (i < 50)
       {
-        localDataLineMsgRecord = a(localallz, (String)paramList.get(i), paramInt, j, 50, i);
+        localDataLineMsgRecord = a(localalqo, (String)paramList.get(i), paramInt, j, 50, i);
         if (localDataLineMsgRecord != null) {
           ((ArrayList)localObject).add(localDataLineMsgRecord);
         }
@@ -140,7 +140,7 @@ public class ah
           localDataLineMsgRecord.groupSize = 0;
         }
         if (((ArrayList)localObject).size() > 0) {
-          localallz.a((ArrayList)localObject, false);
+          localalqo.a((ArrayList)localObject, false);
         }
         localObject = new ArrayList();
       }
@@ -149,7 +149,7 @@ public class ah
         i += 1;
         break label259;
         if (((ArrayList)localObject).size() > 0) {
-          localallz.a((ArrayList)localObject, false);
+          localalqo.a((ArrayList)localObject, false);
         }
         i = 0;
         while (i < 50)

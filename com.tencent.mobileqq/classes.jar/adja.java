@@ -1,43 +1,27 @@
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import com.tencent.mobileqq.activity.PortraitImageview;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class adja
-  extends adjd
+  extends altm
 {
-  private adja(PortraitImageview paramPortraitImageview) {}
+  public adja(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
   {
-    if (this.a.a() > this.a.c()) {
-      this.a.a(this.a.c());
+    if (this.a.isFinishing()) {
+      return;
+    }
+    MoveToGroupActivity.a(this.a);
+    if (paramString == null) {
+      QQToast.a(this.a, this.a.getString(2131694483), 0).b(this.a.getTitleBarHeight());
     }
     for (;;)
     {
-      return true;
-      this.a.a(this.a.c() * 3.0F, paramMotionEvent.getX(), paramMotionEvent.getY(), 350.0F);
+      MoveToGroupActivity.b(this.a);
+      this.a.removeObserver(MoveToGroupActivity.a(this.a));
+      return;
+      QQToast.a(this.a, 2, this.a.getString(2131694485), 0).b(this.a.getTitleBarHeight());
     }
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (((paramMotionEvent1 != null) && (paramMotionEvent1.getPointerCount() > 1)) || ((paramMotionEvent2 != null) && (paramMotionEvent2.getPointerCount() > 1)) || ((this.a.jdField_a_of_type_AndroidViewScaleGestureDetector != null) && (this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.isInProgress()))) {
-      return false;
-    }
-    this.a.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.a(-paramFloat1, -paramFloat2);
-    this.a.setImageMatrix(this.a.a());
-    return true;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if (this.a.jdField_a_of_type_Adjb != null)
-    {
-      this.a.jdField_a_of_type_Adjb.a();
-      return false;
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

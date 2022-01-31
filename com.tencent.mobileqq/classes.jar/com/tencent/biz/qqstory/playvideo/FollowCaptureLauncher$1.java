@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import bnlc;
-import vib;
+import bnpo;
+import vmk;
 
 public class FollowCaptureLauncher$1
   implements Runnable
@@ -10,7 +10,7 @@ public class FollowCaptureLauncher$1
   
   public void run()
   {
-    bnlc.a(this.a, new vib(this));
+    bnpo.a(this.a, new vmk(this));
   }
 }
 

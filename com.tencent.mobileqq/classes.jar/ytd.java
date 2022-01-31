@@ -1,35 +1,26 @@
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.widget.ScrollView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class ytd
+class ytd
+  extends Handler
 {
-  private static final String jdField_a_of_type_JavaLangString = ytd.class.getSimpleName();
-  private float jdField_a_of_type_Float;
-  public int a;
-  public bhuz a;
-  private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
-  private ScrollView jdField_a_of_type_ComTencentWidgetScrollView;
-  public boolean a;
+  ytd(ytb paramytb) {}
   
-  public ytd(ScrollView paramScrollView, TouchWebView paramTouchWebView)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
-    this.jdField_a_of_type_ComTencentWidgetScrollView = paramScrollView;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if ((this.jdField_a_of_type_ComTencentWidgetScrollView == null) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {}
-    while ((this.jdField_a_of_type_Float <= 0.0F) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView.canScrollVertically(-1)) || (paramInt != 0) || (!this.jdField_a_of_type_ComTencentWidgetScrollView.canScrollVertically(-1))) {
+    switch (paramMessage.what)
+    {
+    default: 
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetScrollView.fling((int)-this.jdField_a_of_type_Float);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopTipsPopWindow", 2, "MSG_SHOW_WINDOW mTroopNotify = " + this.a.jdField_a_of_type_Bbry + ", mTroopNotifyAd = " + this.a.jdField_a_of_type_Bbrz);
+    }
+    if (this.a.jdField_a_of_type_Bbrz != null) {
+      this.a.a(this.a.jdField_a_of_type_Bbrz);
+    }
+    this.a.a();
   }
 }
 

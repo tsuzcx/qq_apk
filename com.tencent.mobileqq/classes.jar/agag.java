@@ -1,30 +1,12 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agag
-  extends afzx
+class agag
+  implements DialogInterface.OnClickListener
 {
-  public agag(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
-  {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
-  }
+  agag(agad paramagad) {}
   
-  public aelt a()
-  {
-    return new agai(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public View a(BaseChatItemLayout paramBaseChatItemLayout)
-  {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562737, paramBaseChatItemLayout, false);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

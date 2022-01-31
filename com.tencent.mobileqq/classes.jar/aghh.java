@@ -1,11 +1,6 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.troop.widget.RedDotImageView;
-
 public class aghh
 {
-  public int a;
-  public Drawable a;
-  public RedDotImageView a;
+  public static float a = 1.0F;
 }
 
 

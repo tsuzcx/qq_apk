@@ -1,17 +1,22 @@
-import android.os.Message;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
 
-class apel
-  implements awoj
+public class apel
+  implements View.OnClickListener
 {
-  apel(apek paramapek, int paramInt) {}
+  public apel(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface, Context paramContext) {}
   
-  public void a(int paramInt1, awoi paramawoi, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Apek.a.hasMessages(0))
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appId))
     {
-      this.jdField_a_of_type_Apek.a.removeMessages(0);
-      this.jdField_a_of_type_Apek.a.obtainMessage(0, this.jdField_a_of_type_Int, 0).sendToTarget();
+      MessageForArkApp.access$000(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext);
+      anoe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName, "AIOArkSdkTailClick", 1, 0, 0L, 0L, 0L, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appView, "");
     }
   }
 }

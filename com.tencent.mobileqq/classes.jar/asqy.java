@@ -1,6 +1,10 @@
+import android.net.Uri;
+
 public abstract interface asqy
 {
-  public abstract void a(asqz paramasqz);
+  public abstract void a(Uri paramUri);
+  
+  public abstract void a(String paramString1, String paramString2, long paramLong);
 }
 
 

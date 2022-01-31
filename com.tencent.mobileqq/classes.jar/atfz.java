@@ -1,165 +1,459 @@
-import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.jsp.X5ApiPlugin.1;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.WebView;
-import java.util.Collection;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Map;
+import java.util.Set;
+import mqq.manager.Manager;
 
 public class atfz
-  extends WebViewPlugin
+  implements Manager
 {
-  private ConcurrentHashMap<String, atga> a;
-  private ConcurrentHashMap<String, atga> b;
+  bapq jdField_a_of_type_Bapq = new atga(this);
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter;
+  String jdField_a_of_type_JavaLangString = "mqqapi://miniapp/open?_atype=0&_mappid=1109894538&_mvid=&_path=pages%2Findex%2Findex&_vt=3&_sig=71cba9e2ab0f0e779a62ecf6705e0f5cf65a4f764d755e8fc07b537e655c70ad";
+  HashMap<Integer, atfc> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  Map<String, NewTogetherRoomMessageData> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public atfz()
+  public atfz(QQAppInterface paramQQAppInterface)
   {
-    this.mPluginNameSpace = "x5";
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    a(2, (atad)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(236));
+    a(1, (atdh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(306));
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
   }
   
-  private int a(Context paramContext, String paramString)
+  private int a(String paramString)
   {
-    if (befr.b())
+    paramString = (NewTogetherRoomMessageData)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null) {
+      return paramString.jdField_a_of_type_Int;
+    }
+    return 0;
+  }
+  
+  private long a(String paramString)
+  {
+    paramString = (NewTogetherRoomMessageData)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null) {
+      return paramString.jdField_a_of_type_Long;
+    }
+    return 0L;
+  }
+  
+  private NewTogetherRoomMessageData a(WatchTogetherSession paramWatchTogetherSession)
+  {
+    if (paramWatchTogetherSession == null) {
+      return null;
+    }
+    NewTogetherRoomMessageData localNewTogetherRoomMessageData = new NewTogetherRoomMessageData();
+    localNewTogetherRoomMessageData.jdField_a_of_type_Int = paramWatchTogetherSession.jdField_a_of_type_Int;
+    localNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString = paramWatchTogetherSession.e;
+    localNewTogetherRoomMessageData.f = paramWatchTogetherSession.jdField_c_of_type_JavaLangString;
+    localNewTogetherRoomMessageData.e = paramWatchTogetherSession.jdField_a_of_type_JavaLangString;
+    localNewTogetherRoomMessageData.jdField_a_of_type_Long = paramWatchTogetherSession.jdField_a_of_type_Long;
+    localNewTogetherRoomMessageData.d = paramWatchTogetherSession.jdField_b_of_type_JavaLangString;
+    Object localObject = Uri.parse(paramWatchTogetherSession.jdField_a_of_type_JavaLangString);
+    paramWatchTogetherSession = ((Uri)localObject).getQueryParameter("roomid");
+    String str1 = ((Uri)localObject).getQueryParameter("room_show_number");
+    String str2 = ((Uri)localObject).getQueryParameter("fromid");
+    localObject = ((Uri)localObject).getQueryParameter("room_group_code");
+    if (!TextUtils.isEmpty(paramWatchTogetherSession)) {
+      localNewTogetherRoomMessageData.jdField_a_of_type_Long = Integer.parseInt(paramWatchTogetherSession);
+    }
+    if (!TextUtils.isEmpty(str1)) {
+      localNewTogetherRoomMessageData.jdField_b_of_type_Int = Integer.parseInt(str1);
+    }
+    localNewTogetherRoomMessageData.jdField_c_of_type_JavaLangString = ((String)localObject);
+    localNewTogetherRoomMessageData.g = str2;
+    return localNewTogetherRoomMessageData;
+  }
+  
+  private String a(Bundle paramBundle, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
     {
-      if ((!TextUtils.isEmpty(paramString)) && (befr.a(paramString)) && (!paramString.contains("asyncMode=3")) && (!paramString.contains("sonic=1")))
+      QLog.i("WatchTogetherManager", 1, "getTroopOwnerUin  troopUin is null");
+      return "";
+    }
+    Object localObject;
+    if (paramBundle != null)
+    {
+      localObject = paramBundle.getString("TOGETHER_BUNDLE_KEY_OWNER_UIN");
+      QLog.i("WatchTogetherManager", 1, "getTroopOwnerUin  from extrainfo ownerUin=" + (String)localObject);
+    }
+    for (;;)
+    {
+      QLog.i("WatchTogetherManager", 1, "getTroopOwnerUin  extraInfo = " + paramBundle + ";troopUin=" + paramString + ";ownerUin=" + (String)localObject);
+      return localObject;
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
       {
-        if ((paramContext != null) && (QbSdk.getTbsVersion(paramContext) >= 43810)) {
-          return 4;
+        localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(paramString);
+        if (localObject != null)
+        {
+          localObject = ((TroopInfo)localObject).troopowneruin;
+          continue;
         }
-        return 3;
       }
-      return 2;
+      localObject = "";
     }
-    return 1;
   }
   
-  private void a(Context paramContext, WebView paramWebView, atga paramatga)
+  private void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    int i = a(paramContext, paramatga.jdField_a_of_type_JavaLangString);
-    if (i == 4) {
-      a(paramWebView, paramatga);
-    }
-    b(i, paramatga.b);
-  }
-  
-  private void a(atga paramatga)
-  {
-    this.b.put(paramatga.jdField_a_of_type_JavaLangString, paramatga);
-    b(5, paramatga.b);
-  }
-  
-  private void a(WebView paramWebView, atga paramatga)
-  {
-    this.a.put(paramatga.jdField_a_of_type_JavaLangString, paramatga);
-    ThreadManager.post(new X5ApiPlugin.1(this, paramatga, paramWebView), 5, null, true);
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.b != null) && (this.a != null))
+    if ((paramNewTogetherRoomMessageData.jdField_c_of_type_Int == paramNewTogetherRoomMessageData.jdField_a_of_type_Int) || (paramNewTogetherRoomMessageData.jdField_c_of_type_Int == 0))
     {
-      Object localObject = this.b.values().iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        localObject = (atga)((Iterator)localObject).next();
-        this.b.remove(((atga)localObject).jdField_a_of_type_JavaLangString);
-        this.a.put(((atga)localObject).jdField_a_of_type_JavaLangString, localObject);
-        a(this.mRuntime.a(), (atga)localObject);
-        b(4, ((atga)localObject).b);
-      }
+      b(paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString, paramNewTogetherRoomMessageData);
+      c(paramNewTogetherRoomMessageData);
     }
-  }
-  
-  private boolean a()
-  {
-    Object localObject = this.mRuntime.a();
-    if (localObject != null)
+    Bundle localBundle;
+    atfc localatfc;
+    do
     {
-      localObject = (beep)((WebViewFragment)localObject).b().a(-2);
-      return (localObject != null) && (!((beep)localObject).k);
-    }
-    return false;
-  }
-  
-  private void b()
-  {
-    if (this.a == null) {
-      this.a = new ConcurrentHashMap();
-    }
-    if (this.b == null) {
-      this.b = new ConcurrentHashMap();
-    }
-  }
-  
-  private void b(int paramInt, String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("code", paramInt);
-      callJs(paramString, new String[] { localJSONObject.toString() });
       return;
-    }
-    catch (JSONException paramString)
+      b(paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString, paramNewTogetherRoomMessageData);
+      localBundle = new Bundle();
+      localBundle.putString("close_reason", "switch_room");
+      localBundle.putInt("old_room_type", paramNewTogetherRoomMessageData.jdField_c_of_type_Int);
+      localBundle.putInt("new_room_type", paramNewTogetherRoomMessageData.jdField_a_of_type_Int);
+      localatfc = (atfc)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramNewTogetherRoomMessageData.jdField_c_of_type_Int));
+    } while (localatfc == null);
+    localatfc.b(paramNewTogetherRoomMessageData, localBundle, new atgc(this));
+  }
+  
+  private void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      paramString.printStackTrace();
+      Object localObject = (Integer)localIterator.next();
+      localObject = (atfc)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      if (localObject != null)
+      {
+        localObject = ((atfc)localObject).a();
+        if (localObject != null) {
+          ((atff)localObject).b(paramNewTogetherRoomMessageData);
+        }
+      }
+    }
+  }
+  
+  private void d(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Integer)localIterator.next();
+      localObject = (atfc)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      if (localObject != null)
+      {
+        localObject = ((atfc)localObject).a();
+        if (localObject != null) {
+          ((atff)localObject).c(paramNewTogetherRoomMessageData);
+        }
+      }
+    }
+  }
+  
+  private void e(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    b(paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString, paramNewTogetherRoomMessageData);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Integer)localIterator.next();
+      atfc localatfc = (atfc)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      if (localatfc != null)
+      {
+        if (((Integer)localObject).intValue() == paramNewTogetherRoomMessageData.jdField_a_of_type_Int)
+        {
+          QLog.i("WatchTogetherManager", 1, "preload roomtype =  " + paramNewTogetherRoomMessageData.jdField_a_of_type_Int);
+          paramNewTogetherRoomMessageData.g = "101";
+          localatfc.a(paramNewTogetherRoomMessageData);
+        }
+        localObject = localatfc.a();
+        if (localObject != null) {
+          ((atff)localObject).a(paramNewTogetherRoomMessageData);
+        }
+      }
     }
   }
   
   public void a()
   {
-    a(true);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Bapq);
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(int paramInt)
   {
-    if (paramInt == 0)
+    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+  }
+  
+  public void a(int paramInt, atfc paramatfc)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramatfc);
+  }
+  
+  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    if (paramNewTogetherRoomMessageData == null) {
+      bflz.a().a("roomInfo is null!");
+    }
+    label277:
+    for (;;)
     {
-      if (this.a.containsKey(paramString)) {
-        b(0, ((atga)this.a.remove(paramString)).b);
+      return;
+      if ((TextUtils.isEmpty(paramNewTogetherRoomMessageData.jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString)))
+      {
+        bflz.a().a("group info is null!");
+        return;
       }
-      a(a());
+      if ((paramNewTogetherRoomMessageData.jdField_a_of_type_Int != 2) && (paramNewTogetherRoomMessageData.jdField_a_of_type_Int != 1))
+      {
+        bflz.a().a("invalid roomtype!");
+        return;
+      }
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramNewTogetherRoomMessageData.jdField_b_of_type_JavaLangString);
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("intervideo").opName("open_together_room_entry").opType(String.valueOf(paramNewTogetherRoomMessageData.jdField_a_of_type_Int)).d1(paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString).d2(paramNewTogetherRoomMessageData.jdField_b_of_type_JavaLangString).d3(paramNewTogetherRoomMessageData.g).d4(String.valueOf(paramNewTogetherRoomMessageData.jdField_a_of_type_Long));
+      int i;
+      if (Boolean.valueOf(bool).booleanValue())
+      {
+        i = 1;
+        ((IVPluginDataReporter)localObject).opIn(i).report();
+        QLog.i("WatchTogetherManager", 1, "openWatchTogetherRoom  roominfo = " + paramNewTogetherRoomMessageData.toString());
+        if (paramNewTogetherRoomMessageData.jdField_a_of_type_Int != 2) {
+          break label246;
+        }
+        localObject = (atfc)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2));
+      }
+      for (;;)
+      {
+        if (localObject == null) {
+          break label277;
+        }
+        ((atfc)localObject).a(paramNewTogetherRoomMessageData, null, new atgb(this));
+        return;
+        i = 0;
+        break;
+        label246:
+        if (paramNewTogetherRoomMessageData.jdField_a_of_type_Int == 1) {
+          localObject = (atfc)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(1));
+        } else {
+          localObject = null;
+        }
+      }
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void a(WatchTogetherSession paramWatchTogetherSession, int paramInt)
   {
-    if (!"x5".equals(paramString2)) {
-      return false;
+    QLog.i("WatchTogetherManager", 1, "openWatchTogetherRoom  pushActionType = " + paramInt);
+    NewTogetherRoomMessageData localNewTogetherRoomMessageData = new NewTogetherRoomMessageData();
+    localNewTogetherRoomMessageData.jdField_b_of_type_JavaLangString = paramWatchTogetherSession.f;
+    localNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString = paramWatchTogetherSession.e;
+    localNewTogetherRoomMessageData.jdField_a_of_type_Int = paramWatchTogetherSession.jdField_a_of_type_Int;
+    localNewTogetherRoomMessageData.jdField_a_of_type_Long = paramWatchTogetherSession.jdField_a_of_type_Long;
+    localNewTogetherRoomMessageData.jdField_c_of_type_Int = a(paramWatchTogetherSession.e);
+    localNewTogetherRoomMessageData.e = paramWatchTogetherSession.jdField_a_of_type_JavaLangString;
+    localNewTogetherRoomMessageData.d = paramWatchTogetherSession.jdField_b_of_type_JavaLangString;
+    localNewTogetherRoomMessageData.f = paramWatchTogetherSession.jdField_c_of_type_JavaLangString;
+    localNewTogetherRoomMessageData.jdField_b_of_type_Long = a(paramWatchTogetherSession.e);
+    QLog.i("WatchTogetherManager", 1, "openWatchTogetherRoom  pushContent = " + localNewTogetherRoomMessageData.toString());
+    switch (paramInt)
+    {
+    case 3: 
+    case 4: 
+    default: 
+      return;
+    case 1: 
+      e(localNewTogetherRoomMessageData);
+      return;
+    case 5: 
+      b(localNewTogetherRoomMessageData);
+      return;
     }
-    if (("preload".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    d(localNewTogetherRoomMessageData);
+  }
+  
+  public void a(WatchTogetherSession paramWatchTogetherSession, Bundle paramBundle)
+  {
+    if (paramWatchTogetherSession == null)
+    {
+      bflz.a().a("watchTogetherSession == null!");
+      return;
+    }
+    paramWatchTogetherSession = a(paramWatchTogetherSession);
+    paramWatchTogetherSession.jdField_b_of_type_JavaLangString = a(paramBundle, paramWatchTogetherSession.jdField_a_of_type_JavaLangString);
+    a(paramWatchTogetherSession);
+  }
+  
+  public void a(String paramString, int paramInt, WatchTogetherSession paramWatchTogetherSession)
+  {
+    atfc localatfc = (atfc)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localatfc == null)
+    {
+      QLog.i("WatchTogetherManager", 1, "preloadBizRoom  fail!  roomtype is not registered");
+      return;
+    }
+    NewTogetherRoomMessageData localNewTogetherRoomMessageData = a(paramWatchTogetherSession);
+    paramWatchTogetherSession = localNewTogetherRoomMessageData;
+    if (localNewTogetherRoomMessageData == null)
+    {
+      paramWatchTogetherSession = new NewTogetherRoomMessageData();
+      paramWatchTogetherSession.g = paramString;
+    }
+    paramWatchTogetherSession.jdField_b_of_type_JavaLangString = a(null, paramWatchTogetherSession.jdField_a_of_type_JavaLangString);
+    QLog.i("WatchTogetherManager", 1, "preloadRoom  roomtype = " + paramInt);
+    localatfc.a(paramWatchTogetherSession);
+  }
+  
+  public void a(String paramString, NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    boolean bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramNewTogetherRoomMessageData.jdField_b_of_type_JavaLangString);
+    boolean bool2 = bcpx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    a(paramString, paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString, paramNewTogetherRoomMessageData.jdField_b_of_type_JavaLangString, Boolean.valueOf(bool1).booleanValue(), Boolean.valueOf(bool2).booleanValue());
+  }
+  
+  public void a(String paramString, WatchTogetherSession paramWatchTogetherSession, Bundle paramBundle)
+  {
+    if (paramWatchTogetherSession == null) {
+      return;
+    }
+    boolean bool1;
+    boolean bool2;
+    if (paramBundle != null)
+    {
+      bool1 = paramBundle.getBoolean("TOGETHER_BUNDLE_KEY_IS_OWNER");
+      bool2 = paramBundle.getBoolean("TOGETHER_BUNDLE_KEY_IS_ADMIN");
+      paramBundle = a(paramBundle, paramWatchTogetherSession.e);
+      a(paramString, paramWatchTogetherSession.e, paramBundle, bool1, bool2);
+      paramString = this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("intervideo").opName("open_together_miniapp").opType(String.valueOf(paramWatchTogetherSession.jdField_a_of_type_Int)).d1(paramWatchTogetherSession.e).d2(paramBundle).d3(paramString);
+      if (!bool1) {
+        break label154;
+      }
+    }
+    label154:
+    for (int i = 1;; i = 0)
+    {
+      paramString.opIn(i).report();
+      return;
+      bool1 = bcpx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramWatchTogetherSession.e, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      bool2 = bcpx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramWatchTogetherSession.e, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      break;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int k = 0;
+    StringBuilder localStringBuilder;
+    if (TextUtils.isEmpty(paramString3)) {
+      if (paramBoolean1)
+      {
+        paramString3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+        localStringBuilder = new StringBuilder(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append("&group_uin=" + paramString2);
+        localStringBuilder.append("&user_uin=" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        localStringBuilder.append("&source_id=" + paramString1);
+        localStringBuilder.append("&owner_uin=" + paramString3);
+        localStringBuilder.append("&isowner=");
+        if (!paramBoolean1) {
+          break label279;
+        }
+        paramString1 = "1";
+        label164:
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append("&isadmain=");
+        if (!paramBoolean2) {
+          break label286;
+        }
+        paramString1 = "1";
+        label189:
+        localStringBuilder.append(paramString1);
+      }
+    }
+    for (;;)
     {
       try
       {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        paramString1 = new atga();
-        paramString1.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("url");
-        paramString1.b = paramJsBridgeListener.optString("callback");
-        paramString1.jdField_a_of_type_Boolean = paramJsBridgeListener.optBoolean("doWhenPageFinish", false);
-        b();
-        if (paramString1.jdField_a_of_type_Boolean) {
-          if (a()) {
-            a(this.mRuntime.a(), this.mRuntime.a(), paramString1);
-          } else {
-            a(paramString1);
-          }
+        if (TextUtils.isEmpty("8.3.5")) {
+          break label452;
         }
+        paramString1 = "8.3.5".split("\\.");
+        if (paramString1.length <= 0) {
+          break label452;
+        }
+        int j = 0;
+        i = j;
+        if (k < paramString1.length)
+        {
+          if (k == 0)
+          {
+            i = Integer.parseInt(paramString1[k]);
+            i = j + i * 100000;
+            k += 1;
+            j = i;
+            continue;
+            paramString3 = "0";
+            break;
+            label279:
+            paramString1 = "0";
+            break label164;
+            label286:
+            paramString1 = "0";
+            break label189;
+          }
+          if (k == 1)
+          {
+            i = j + Integer.parseInt(paramString1[k]) * 100;
+            continue;
+          }
+          i = j;
+          if (k != 2) {
+            continue;
+          }
+          i = j + Integer.parseInt(paramString1[k]);
+          continue;
+        }
+        localStringBuilder.append("&versioncode=" + i);
       }
-      catch (JSONException paramJsBridgeListener)
+      catch (Exception paramString1)
       {
-        paramJsBridgeListener.printStackTrace();
+        localStringBuilder.append("&versioncode=0");
+        continue;
       }
-      a(this.mRuntime.a(), this.mRuntime.a(), paramString1);
+      QLog.i("WatchTogetherManager", 1, "openMiniAPP  scheme = " + localStringBuilder.toString());
+      paramString1 = new Intent();
+      paramString1.setData(Uri.parse(localStringBuilder.toString()));
+      paramString1.setFlags(268435456);
+      BaseApplicationImpl.getContext().startActivity(paramString1);
+      return;
+      break;
+      label452:
+      int i = 0;
     }
-    return true;
+  }
+  
+  public void b(String paramString, NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramNewTogetherRoomMessageData);
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
   }
 }
 

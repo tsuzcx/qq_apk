@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bgho;
-import bgjw;
-import bgkd;
-import bgkk;
+import bglv;
+import bgod;
+import bgok;
+import bgor;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 class PayJsPlugin$2
   implements AsyncResult
 {
-  PayJsPlugin$2(PayJsPlugin paramPayJsPlugin, JSONObject paramJSONObject, bgkd parambgkd) {}
+  PayJsPlugin$2(PayJsPlugin paramPayJsPlugin, JSONObject paramJSONObject, bgok parambgok) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -79,7 +79,7 @@ class PayJsPlugin$2
         PayJsPlugin.access$200(this.this$0, this.val$req, null, "activity is null");
         return;
       }
-      bgkk.a(new PayJsPlugin.2.1(this, str1));
+      bgor.a(new PayJsPlugin.2.1(this, str1));
       QMLog.e("PayJsPlugin", "handleNativeRequest result = " + i);
       PayJsPlugin.access$200(this.this$0, this.val$req, null, str1);
       return;

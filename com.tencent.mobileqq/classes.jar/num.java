@@ -1,5 +1,5 @@
 public class num
-  implements alkr
+  implements alpg
 {
   public void a(Object paramObject) {}
   

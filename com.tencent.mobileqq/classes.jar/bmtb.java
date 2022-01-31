@@ -1,18 +1,15 @@
 import android.animation.ValueAnimator;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
 public class bmtb
-  extends bmop
+  implements bmta
 {
-  public bmtb(ElasticImageView paramElasticImageView) {}
+  public void a(ValueAnimator paramValueAnimator) {}
   
-  public void a(ValueAnimator paramValueAnimator)
-  {
-    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    ElasticImageView.a(this.a, this.a.d);
-    wsv.b("ElasticImageView", "updateAnimator:" + this.a.d);
-    ElasticImageView.a(this.a);
-  }
+  public void b(ValueAnimator paramValueAnimator) {}
+  
+  public void c(ValueAnimator paramValueAnimator) {}
+  
+  public void d(ValueAnimator paramValueAnimator) {}
 }
 
 

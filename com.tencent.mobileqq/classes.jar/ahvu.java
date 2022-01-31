@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
-
-public class ahvu
-  implements DialogInterface.OnClickListener
+public abstract interface ahvu
 {
-  public ahvu(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, acje paramacje) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Acje.a(true);
-  }
+  public abstract long a();
 }
 
 

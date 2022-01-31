@@ -1,98 +1,31 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import NS_USER_ACTION_REPORT.ActionInfo;
 
 class bjkf
-  implements bjkd
 {
-  private IBinder a;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private long b;
   
-  bjkf(IBinder paramIBinder)
+  public bjkf(long paramLong, int paramInt)
   {
-    this.a = paramIBinder;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(String paramString)
+  public bjkf(long paramLong1, int paramInt, long paramLong2)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      localParcel1.writeString(paramString);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong2;
   }
   
-  public void a(String paramString, float paramFloat, long paramLong)
+  public ActionInfo a()
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      localParcel1.writeString(paramString);
-      localParcel1.writeFloat(paramFloat);
-      localParcel1.writeLong(paramLong);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      localParcel1.writeString(paramString);
-      localParcel1.writeInt(paramInt);
-      this.a.transact(4, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      localParcel1.writeString(paramString);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    ActionInfo localActionInfo = new ActionInfo();
+    localActionInfo.oper_time = this.jdField_a_of_type_Long;
+    localActionInfo.action_id = this.jdField_a_of_type_Int;
+    localActionInfo.action_value = this.b;
+    return localActionInfo;
   }
 }
 

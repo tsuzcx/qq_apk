@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import alpo;
-import awbv;
-import awdg;
-import awdj;
+import alud;
+import awge;
+import awhp;
+import awhs;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
@@ -21,27 +21,27 @@ import npo;
 import org.json.JSONObject;
 
 public class AccountDetail
-  extends awbv
+  extends awge
 {
   public byte[] accountData;
   public int accountFlag;
   public long accountFlag2;
-  @awdg
+  @awhp
   public int cardStyle = 0;
   public String certifiedDescription = "";
-  @awdg
+  @awhp
   public String certifiedEnterprise = "";
   public int certifiedGrade;
-  @awdg
+  @awhp
   public String certifiedWeixin = "";
   public String configBackgroundColor = "3d7fe3";
-  @awdg
+  @awhp
   public String configBackgroundImg = "";
-  @awdg
+  @awhp
   public List<npn> customConfigAttrs;
   public String displayNumber = "";
   public int followType;
-  @awdg
+  @awhp
   public List<npn> fullscreenConfigAttrs;
   public int groupId;
   public List<mobileqq_mp.ConfigGroupInfo> groupInfoList;
@@ -55,16 +55,16 @@ public class AccountDetail
   public boolean isSyncLbsSelected;
   public String lastHistoryMsg;
   public int mShowMsgFlag = -1;
-  public String name = alpo.a(2131700109);
+  public String name = alud.a(2131700121);
   public List<mobileqq_mp.ConfigGroupInfo> newGroupInfoList;
-  @awdg
+  @awhp
   public List<npn> paConfigAttrs;
   public int seqno;
   public int showFlag;
-  public String summary = alpo.a(2131700112);
-  @awdj
+  public String summary = alud.a(2131700124);
+  @awhs
   public String uin;
-  @awdg
+  @awhp
   public String unifiedDesrpition;
   
   public AccountDetail() {}

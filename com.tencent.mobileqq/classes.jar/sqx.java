@@ -12,7 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class sqx
-  implements bfic
+  implements bfml
 {
   public sqx(ViolaBaseView paramViolaBaseView, boolean paramBoolean) {}
   
@@ -22,7 +22,7 @@ public class sqx
     String str1;
     if ((paramException instanceof ConnectTimeoutException))
     {
-      str2 = bfik.e;
+      str2 = bfmt.e;
       str1 = ViolaEnvironment.CHANGE_ERROR_CONNECT_TIMEOUT;
     }
     for (;;)
@@ -38,7 +38,7 @@ public class sqx
       return;
       if ((paramException instanceof SocketTimeoutException))
       {
-        str2 = bfik.f;
+        str2 = bfmt.f;
         str1 = ViolaEnvironment.CHANGE_ERROR_CONNECT_TIMEOUT;
       }
       else if ((paramException instanceof MalformedURLException))
@@ -53,22 +53,22 @@ public class sqx
       }
       else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
       {
-        str2 = bfik.g;
+        str2 = bfmt.g;
         str1 = ViolaEnvironment.CHANGE_ERROR_CONNECT_UNAVALIABLE;
       }
       else if ((paramException instanceof JSONException))
       {
-        str2 = bfik.b;
+        str2 = bfmt.b;
         str1 = ViolaEnvironment.CHANGE_ERROR_DATA;
       }
       else if ((paramException instanceof IOException))
       {
-        str2 = bfik.a;
+        str2 = bfmt.a;
         str1 = ViolaEnvironment.CHANGE_ERROR_IO;
       }
       else
       {
-        str2 = bfik.d;
+        str2 = bfmt.d;
         str1 = ViolaEnvironment.CHANGE_ERROR_UNKNOW;
       }
     }

@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
-import bdar;
+import bdfa;
 import com.tencent.mobileqq.activity.photo.ProGallery;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.microapp.R.dimen;
@@ -151,7 +151,7 @@ public class PhotoPreviewActivity
   
   void e()
   {
-    bdar.anim(this, true, false);
+    bdfa.anim(this, true, false);
     super.finish();
   }
   

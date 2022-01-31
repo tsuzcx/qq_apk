@@ -7,9 +7,9 @@ import android.os.Build.VERSION;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import bghn;
-import bgho;
-import bgkd;
+import bglu;
+import bglv;
+import bgok;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.lang.ref.WeakReference;
@@ -100,7 +100,7 @@ public class EmbeddedVideoJsPlugin
     return (EmbeddedWidgetClientFactory)this.mMiniAppContext.a(new EmbeddedVideoJsPlugin.5(this));
   }
   
-  public void getVolume(bgkd parambgkd)
+  public void getVolume(bgok parambgok)
   {
     try
     {
@@ -112,39 +112,39 @@ public class EmbeddedVideoJsPlugin
         localObject = new JSONObject();
         ((JSONObject)localObject).put("currentVolume", i);
         ((JSONObject)localObject).put("maxVolume", j);
-        parambgkd.a((JSONObject)localObject);
+        parambgok.a((JSONObject)localObject);
         return;
       }
-      parambgkd.a("AudioManager error");
+      parambgok.a("AudioManager error");
       return;
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("EmbeddedVideoJsPlugin", parambgkd.jdField_a_of_type_JavaLangString + " error.", localThrowable);
-      parambgkd.b();
+      QMLog.e("EmbeddedVideoJsPlugin", parambgok.jdField_a_of_type_JavaLangString + " error.", localThrowable);
+      parambgok.b();
     }
   }
   
-  public void hideNavigationBar(bgkd parambgkd)
+  public void hideNavigationBar(bgok parambgok)
   {
-    this.mMiniAppContext.a(new EmbeddedVideoJsPlugin.2(this, parambgkd));
+    this.mMiniAppContext.a(new EmbeddedVideoJsPlugin.2(this, parambgok));
   }
   
-  public void insertXwebVideo(bgkd parambgkd)
+  public void insertXwebVideo(bgok parambgok)
   {
     EmbeddedWidgetClientFactory localEmbeddedWidgetClientFactory = getFactory();
-    bghn localbghn = (bghn)this.mMiniAppContext.a(new EmbeddedVideoJsPlugin.1(this));
-    if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleInsertXWebVideo(parambgkd.b, parambgkd.jdField_a_of_type_Bghn, localbghn)))
+    bglu localbglu = (bglu)this.mMiniAppContext.a(new EmbeddedVideoJsPlugin.1(this));
+    if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleInsertXWebVideo(parambgok.b, parambgok.jdField_a_of_type_Bglu, localbglu)))
     {
-      parambgkd.a();
+      parambgok.a();
       return;
     }
-    parambgkd.b();
+    parambgok.b();
   }
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    super.onCreate(parambgho);
+    super.onCreate(parambglv);
   }
   
   public void onDestroy()
@@ -165,10 +165,10 @@ public class EmbeddedVideoJsPlugin
     }
   }
   
-  public boolean onInterceptJsEvent(bgkd parambgkd)
+  public boolean onInterceptJsEvent(bgok parambgok)
   {
-    QMLog.i("EmbeddedVideoJsPlugin", parambgkd.jdField_a_of_type_JavaLangString);
-    return super.onInterceptJsEvent(parambgkd);
+    QMLog.i("EmbeddedVideoJsPlugin", parambgok.jdField_a_of_type_JavaLangString);
+    return super.onInterceptJsEvent(parambgok);
   }
   
   public void onPause()
@@ -205,25 +205,25 @@ public class EmbeddedVideoJsPlugin
     }
   }
   
-  public void operateXwebVideo(bgkd parambgkd)
+  public void operateXwebVideo(bgok parambgok)
   {
     EmbeddedWidgetClientFactory localEmbeddedWidgetClientFactory = getFactory();
-    if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleOperateXWebVideo(parambgkd.b)))
+    if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleOperateXWebVideo(parambgok.b)))
     {
-      parambgkd.a();
+      parambgok.a();
       return;
     }
-    parambgkd.b();
+    parambgok.b();
   }
   
-  public void setDisplayOrientation(bgkd parambgkd)
+  public void setDisplayOrientation(bgok parambgok)
   {
     int i = 0;
     for (;;)
     {
       try
       {
-        int j = new JSONObject(parambgkd.b).optInt("orientation", 0);
+        int j = new JSONObject(parambgok.b).optInt("orientation", 0);
         if (j == 90)
         {
           if (i != this.mMiniAppContext.a().getRequestedOrientation())
@@ -231,7 +231,7 @@ public class EmbeddedVideoJsPlugin
             Log.i("EmbeddedVideoJsPlugin", "EVENT_SET_DISPLAY_ORIENTATION, setRequestedOrientation: " + j);
             this.mMiniAppContext.a().setRequestedOrientation(i);
           }
-          parambgkd.a();
+          parambgok.a();
           return;
         }
         if (j == -90) {
@@ -242,53 +242,53 @@ public class EmbeddedVideoJsPlugin
       }
       catch (Throwable localThrowable)
       {
-        parambgkd.b();
+        parambgok.b();
         return;
       }
     }
   }
   
-  public void setVolume(bgkd parambgkd)
+  public void setVolume(bgok parambgok)
   {
     try
     {
-      int i = new JSONObject(parambgkd.b).optInt("value");
+      int i = new JSONObject(parambgok.b).optInt("value");
       AudioManager localAudioManager = (AudioManager)this.mMiniAppContext.a().getSystemService("audio");
       if (localAudioManager != null)
       {
         if ((i <= localAudioManager.getStreamMaxVolume(3)) && (i >= 0))
         {
           localAudioManager.setStreamVolume(3, i, 4);
-          parambgkd.a();
+          parambgok.a();
           return;
         }
-        parambgkd.a("value error");
+        parambgok.a("value error");
         return;
       }
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("EmbeddedVideoJsPlugin", parambgkd.jdField_a_of_type_JavaLangString + " error.", localThrowable);
-      parambgkd.b();
+      QMLog.e("EmbeddedVideoJsPlugin", parambgok.jdField_a_of_type_JavaLangString + " error.", localThrowable);
+      parambgok.b();
       return;
     }
-    parambgkd.a("AudioManager error");
+    parambgok.a("AudioManager error");
   }
   
-  public void showNavigationBar(bgkd parambgkd)
+  public void showNavigationBar(bgok parambgok)
   {
-    this.mMiniAppContext.a(new EmbeddedVideoJsPlugin.3(this, parambgkd));
+    this.mMiniAppContext.a(new EmbeddedVideoJsPlugin.3(this, parambgok));
   }
   
-  public void updateXwebVideo(bgkd parambgkd)
+  public void updateXwebVideo(bgok parambgok)
   {
     EmbeddedWidgetClientFactory localEmbeddedWidgetClientFactory = getFactory();
-    if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleUpdateXWebVideo(parambgkd.b)))
+    if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleUpdateXWebVideo(parambgok.b)))
     {
-      parambgkd.a();
+      parambgok.a();
       return;
     }
-    parambgkd.b();
+    parambgok.b();
   }
 }
 

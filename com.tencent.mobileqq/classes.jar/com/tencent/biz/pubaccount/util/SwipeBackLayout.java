@@ -75,7 +75,7 @@ public class SwipeBackLayout
     this.jdField_e_of_type_Boolean = true;
     this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842294);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842307);
     this.jdField_f_of_type_Int = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
   }
   

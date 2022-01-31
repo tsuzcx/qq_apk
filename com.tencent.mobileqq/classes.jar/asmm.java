@@ -1,16 +1,17 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
 
-class asmm
-  implements DialogInterface.OnClickListener
+public class asmm
+  implements View.OnClickListener
 {
-  asmm(asmj paramasmj) {}
+  public asmm(QQGamePubAccountFragment paramQQGamePubAccountFragment, FrameLayout paramFrameLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a = false;
-    asmj.a(this.a).finish();
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(QQGamePubAccountFragment.b(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment));
+    QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment, null);
   }
 }
 

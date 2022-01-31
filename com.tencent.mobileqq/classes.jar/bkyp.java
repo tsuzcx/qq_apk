@@ -1,24 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
+import android.support.annotation.Nullable;
 
-public class bkyp
-  extends RecyclerView.ViewHolder
+class bkyp
+  implements bmeo<Boolean>
 {
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  ImageView b;
+  bkyp(bkyj parambkyj) {}
   
-  public bkyp(View paramView)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362185));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362182));
-    this.b = ((ImageView)paramView.findViewById(2131362187));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131362186));
+    if (paramBoolean == null) {
+      return;
+    }
+    bkyj localbkyj = this.a;
+    if (!paramBoolean.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bkyj.a(localbkyj, bool);
+      return;
+    }
   }
 }
 

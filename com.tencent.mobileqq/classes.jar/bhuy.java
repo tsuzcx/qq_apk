@@ -1,15 +1,11 @@
 import android.view.View;
-import com.tencent.widget.ListView;
+import com.tencent.widget.AdapterView;
 
 public abstract interface bhuy
 {
-  public abstract void a(int paramInt, View paramView, ListView paramListView);
+  public abstract void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
   
-  public abstract boolean a(int paramInt, View paramView, ListView paramListView);
-  
-  public abstract void b(int paramInt, View paramView, ListView paramListView);
-  
-  public abstract void c(int paramInt, View paramView, ListView paramListView);
+  public abstract void onNothingSelected(AdapterView<?> paramAdapterView);
 }
 
 

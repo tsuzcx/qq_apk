@@ -1,19 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
 
-public final class acfn
-  implements DialogInterface.OnClickListener
+public class acfn
+  implements bhuk
 {
-  public acfn(acgy paramacgy) {}
+  public acfn(AssociatedAccountActivity paramAssociatedAccountActivity, bhuf parambhuf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a != null) {
-      this.a.a();
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    this.jdField_a_of_type_Bhuf.cancel();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131690862));
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "dc00898", "", "", "0X800AC3E", "0X800AC3E", 0, 0, "", "", "", "");
   }
 }
 

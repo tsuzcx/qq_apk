@@ -1,17 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopSign;
+import android.app.Activity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-final class afoj
-  implements afpr
+class afoj
+  extends ClickableSpan
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  afoj(afnq paramafnq) {}
+  
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(((MessageForTroopSign)paramChatMessage).dynamicSource)) {
-      return 71;
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      paramView = bhuf.a(this.a.jdField_a_of_type_AndroidContentContext);
+      paramView.b(2131720924);
+      paramView.c(2131690648);
+      paramView.a(new afok(this));
+      paramView.a(new afol(this, paramView));
+      paramView.show();
+      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005975", "0X8005975", 0, 0, "", "", "", "");
     }
-    return 84;
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

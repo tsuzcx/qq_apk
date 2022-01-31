@@ -1,22 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public class ascm
-  implements CompoundButton.OnCheckedChangeListener
+class ascm
+  implements DialogInterface.OnClickListener
 {
-  public ascm(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
+  ascm(ascj paramascj) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131695480), "qqsetting_auto_receive_magic_face_key", paramBoolean);
-    paramCompoundButton = QQSettingAutoDownloadAndSaveFragment.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    if (paramInt == 1)
     {
-      azmj.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
-      return;
+      ascq.a(ascj.a(this.a), false, "shareToQQ", ascj.a(this.a));
+      ndq.a(ascj.a(this.a), 0, "", "");
+      if (ascj.a(this.a) != null) {
+        ascj.a(this.a).b(1);
+      }
+      ascj.a(this.a).moveTaskToBack(true);
     }
   }
 }

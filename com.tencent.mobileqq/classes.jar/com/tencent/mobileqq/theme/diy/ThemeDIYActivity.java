@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.theme.diy;
 
-import aemb;
-import aljq;
-import alpo;
-import alxl;
-import alyu;
+import aeqq;
+import alof;
+import alud;
+import amca;
+import amdj;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -26,26 +26,26 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
-import apgf;
-import azmj;
-import azmz;
-import bakg;
-import bakh;
-import bakp;
-import baks;
-import bcwc;
-import bcwh;
-import bdcd;
-import bdcq;
-import bdcs;
-import bdee;
-import bdfq;
-import bdvu;
-import bdvv;
-import bdvx;
-import bdwa;
-import bepp;
-import berl;
+import apko;
+import azqs;
+import azri;
+import baop;
+import baoq;
+import baoy;
+import bapb;
+import bdal;
+import bdaq;
+import bdgm;
+import bdgz;
+import bdhb;
+import bdin;
+import bdjz;
+import bead;
+import beae;
+import beag;
+import beaj;
+import bety;
+import bevu;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -74,7 +74,7 @@ import org.json.JSONObject;
 
 public class ThemeDIYActivity
   extends IphoneTitleBarActivity
-  implements DialogInterface.OnClickListener, View.OnClickListener, bakp
+  implements DialogInterface.OnClickListener, View.OnClickListener, baoy
 {
   static final int BG_DEFAULT_POSITION = 1;
   static final int BG_UPLOAD_POSITION = 0;
@@ -112,7 +112,7 @@ public class ThemeDIYActivity
   HorizontalListView bgResHListView;
   VasQuickUpdateManager.CallBacker callBacker = new ThemeDIYActivity.3(this);
   ThemeDIYActivity.DataLoading dataLoad;
-  bdfq exitDialog;
+  bdjz exitDialog;
   ResSuitData initStyleRSD;
   boolean isBigScreenType;
   boolean isDIYThemeBefore;
@@ -135,27 +135,27 @@ public class ThemeDIYActivity
   int mStyleSaveStatus;
   int mStyleSetStatus;
   ArrayList<ResSuitData> mStyleSuits = new ArrayList();
-  berl mTypeTabChangeListener = new ThemeDIYActivity.2(this);
+  bevu mTypeTabChangeListener = new ThemeDIYActivity.2(this);
   boolean mUpdateUIPicAfterSaved;
   ResSuitData.BgSuit mUploadBgRSD;
   String mUserThemeId;
   String mUserVersion;
   View mblurbgView;
   PageIndicator pageIndicator;
-  bepp progessDialog;
-  bdvu resDownloadListener = new ThemeDIYActivity.10(this);
+  bety progessDialog;
+  bead resDownloadListener = new ThemeDIYActivity.10(this);
   AdapterView.OnItemClickListener resItemClickListener = new ThemeDIYActivity.12(this);
-  baks saveStyleCallback = new ThemeDIYActivity.7(this);
+  bapb saveStyleCallback = new ThemeDIYActivity.7(this);
   final ThemeDIYData[] showData = getDiyData();
   HorizontalListView styleResHListView;
   ThemeDiyStyleLogic themeDiyStyleLogic;
-  bakh themeSwitchManager;
+  baoq themeSwitchManager;
   ResSuitData tryOnStyleRSD;
   ResSuitData usedStyleRSD;
   
   public static ThemeDIYData[] getDiyData()
   {
-    return new ThemeDIYData[] { new ThemeDIYData(2130845566, "theme_bg_setting_path", 2131166490, "theme_bg_setting_path_png", -50, 0), new ThemeDIYData(2130846930, "theme_bg_message_path", 2131166492, "theme_bg_message_path_png", 50, 1), new ThemeDIYData(2130849400, "theme_bg_aio_path", 0, "theme_bg_aio_path", 0, 2), new ThemeDIYData(2130846930, "theme_bg_friend_path", 2131166492, "theme_bg_friend_path_png", 50, 3), new ThemeDIYData(2130849400, "theme_bg_dynamic_path", 2131166492, "theme_bg_dynamic_path_png", 50, 4) };
+    return new ThemeDIYData[] { new ThemeDIYData(2130845638, "theme_bg_setting_path", 2131166492, "theme_bg_setting_path_png", -50, 0), new ThemeDIYData(2130847003, "theme_bg_message_path", 2131166494, "theme_bg_message_path_png", 50, 1), new ThemeDIYData(2130849473, "theme_bg_aio_path", 0, "theme_bg_aio_path", 0, 2), new ThemeDIYData(2130847003, "theme_bg_friend_path", 2131166494, "theme_bg_friend_path_png", 50, 3), new ThemeDIYData(2130849473, "theme_bg_dynamic_path", 2131166494, "theme_bg_dynamic_path_png", 50, 4) };
   }
   
   public static void setSpThemeBackground(Context paramContext, String paramString, ThemeDIYData paramThemeDIYData)
@@ -184,7 +184,7 @@ public class ThemeDIYActivity
           if (paramThemeDIYData.position != 2) {
             break;
           }
-          aemb.a(paramContext, paramString, null, "null");
+          aeqq.a(paramContext, paramString, null, "null");
           return;
         }
       }
@@ -198,7 +198,7 @@ public class ThemeDIYActivity
       }
       while (paramThemeDIYData.position == 2)
       {
-        aemb.a(paramContext, paramString, null, paramThemeDIYData.tryOnBgBigOrgRD.path);
+        aeqq.a(paramContext, paramString, null, paramThemeDIYData.tryOnBgBigOrgRD.path);
         return;
         label309:
         ThemeBackground.setThemeBackgroundPic(paramContext, paramThemeDIYData.dealSpkey, paramString, paramThemeDIYData.tryOnBgBigOrgRD.path, paramThemeDIYData.tryOnBgBigOrgRD.url, paramThemeDIYData.tryOnBgBigOrgRD.id, "", 1, null, true);
@@ -331,11 +331,11 @@ public class ThemeDIYActivity
                 ((Bundle)localObject2).putInt("index", i);
                 ((Bundle)localObject2).putInt("type", 115);
                 ((Bundle)localObject2).putInt("nextOperate", 10);
-                localObject3 = new bdvv(localThemeDIYData2.tryOnBgBigOrgRD.url, (File)localObject3);
-                ((bdvx)this.app.getManager(47)).a(1).a((bdvv)localObject3, this.resDownloadListener, (Bundle)localObject2);
+                localObject3 = new beae(localThemeDIYData2.tryOnBgBigOrgRD.url, (File)localObject3);
+                ((beag)this.app.getManager(47)).a(1).a((beae)localObject3, this.resDownloadListener, (Bundle)localObject2);
                 continue;
                 Bundle localBundle;
-                alyu localalyu;
+                amdj localamdj;
                 ThemeUtil.ThemeInfo localThemeInfo;
                 if ((this.tryOnStyleRSD != null) && (2 == this.mStyleSetStatus)) {
                   if (this.mStyleSaveStatus == 3)
@@ -344,7 +344,7 @@ public class ThemeDIYActivity
                     if (localObject2 == null)
                     {
                       QLog.e("ThemeDIYActivity", 1, "backgroundSave, themeInfo=null, oldThemeID:" + this.mUserThemeId + ", tryOnStyleRSD.id:" + this.tryOnStyleRSD.id);
-                      this.mHandler.sendMessage(Message.obtain(this.mHandler, 25, alpo.a(2131715282) + this.tryOnStyleRSD.id));
+                      this.mHandler.sendMessage(Message.obtain(this.mHandler, 25, alud.a(2131715294) + this.tryOnStyleRSD.id));
                       return;
                     }
                     if (QLog.isColorLevel())
@@ -358,7 +358,7 @@ public class ThemeDIYActivity
                     }
                     this.mStyleSaveStatus = 4;
                     if ((this.mUserThemeId == null) || (!this.mUserThemeId.equals(((ThemeUtil.ThemeInfo)localObject2).themeId))) {
-                      azmj.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_stylesuccess", 0, 0, "", ((ThemeUtil.ThemeInfo)localObject2).themeId, "", "");
+                      azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_stylesuccess", 0, 0, "", ((ThemeUtil.ThemeInfo)localObject2).themeId, "", "");
                     }
                   }
                   else
@@ -376,7 +376,7 @@ public class ThemeDIYActivity
                     localBundle = new Bundle();
                     localBundle.putInt("nowOperate", 16);
                     localBundle.putInt("nextOperate", 10);
-                    localalyu = (alyu)this.app.a(14);
+                    localamdj = (amdj)this.app.a(14);
                     localThemeInfo = ThemeDiyStyleLogic.getThemeInfoByDensity(this.mContext, (ResSuitData.StyleSuit)this.tryOnStyleRSD);
                     localObject1 = this.mUserThemeId;
                     localObject4 = this.mUserVersion;
@@ -414,7 +414,7 @@ public class ThemeDIYActivity
                   i += 1;
                   break label1163;
                   this.mStyleSaveStatus = 6;
-                  azmj.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_stylesuccess", 0, 0, "", ((ThemeUtil.ThemeInfo)localObject2).themeId, "", "");
+                  azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_stylesuccess", 0, 0, "", ((ThemeUtil.ThemeInfo)localObject2).themeId, "", "");
                   if (!QLog.isColorLevel()) {
                     break;
                   }
@@ -432,7 +432,7 @@ public class ThemeDIYActivity
                 if (QLog.isColorLevel()) {
                   QLog.d("ThemeDIYActivity", 2, "backgroundSave to save server2.");
                 }
-                localalyu.a((String)localObject2, (String)localObject3, null, localBundle, this.saveStyleCallback);
+                localamdj.a((String)localObject2, (String)localObject3, null, localBundle, this.saveStyleCallback);
                 break label2158;
                 label1435:
                 bool1 = bool2;
@@ -481,7 +481,7 @@ public class ThemeDIYActivity
     label2177:
     for (Object localObject1 = "diy_photosuccess";; str = "diy_yangtusuccess")
     {
-      azmj.b((QQAppInterface)localObject3, "CliOper", "", (String)localObject4, "theme_mall", (String)localObject1, 0, 0, String.valueOf(((ThemeDIYData)localObject2).position), String.valueOf(((ThemeDIYData)localObject2).tryOnBgRSD.id), String.valueOf(((ThemeDIYData)localObject2).tryOnBgRSD.from), "");
+      azqs.b((QQAppInterface)localObject3, "CliOper", "", (String)localObject4, "theme_mall", (String)localObject1, 0, 0, String.valueOf(((ThemeDIYData)localObject2).position), String.valueOf(((ThemeDIYData)localObject2).tryOnBgRSD.id), String.valueOf(((ThemeDIYData)localObject2).tryOnBgRSD.from), "");
       setSpThemeBackground(this.mContext, this.app.getAccount(), (ThemeDIYData)localObject2);
       ((ThemeDIYData)localObject2).usedBgRSD = ((ThemeDIYData)localObject2).tryOnBgRSD;
       ((ThemeDIYData)localObject2).mSetStatus = 0;
@@ -489,7 +489,7 @@ public class ThemeDIYActivity
       break label1595;
       this.mStyleSetStatus = 0;
       this.mHandler.removeMessages(24);
-      azmj.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_savesuccess", 0, 0, "", "", "", "");
+      azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_savesuccess", 0, 0, "", "", "", "");
       localObject2 = null;
       localObject1 = localObject2;
       if (this.tryOnStyleRSD != null)
@@ -642,7 +642,7 @@ public class ThemeDIYActivity
           i = paramInt1;
           if ((paramIntent != null) && (paramInt2 == 0) && (j == 0) && (i == 0))
           {
-            azmj.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "Join_nontop", 0, 1, "", "", "", "");
+            azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "Join_nontop", 0, 1, "", "", "", "");
             this.isVip = true;
             this.mHandler.removeMessages(22);
             this.mIsSaving.set(false);
@@ -671,14 +671,14 @@ public class ThemeDIYActivity
     this.themeDiyStyleLogic = new ThemeDiyStyleLogic(this.app, this);
     this.themeDiyStyleLogic.saveDealCallBack = this.saveStyleCallback;
     isBacked = false;
-    super.setContentViewNoTitle(2131562707);
+    super.setContentViewNoTitle(2131562725);
     this.mblurbgView = super.findViewById(2131363348);
-    paramBundle = (TextView)super.findViewById(2131368613);
-    Object localObject = (TextView)super.findViewById(2131368621);
+    paramBundle = (TextView)super.findViewById(2131368624);
+    Object localObject = (TextView)super.findViewById(2131368632);
     paramBundle.setOnClickListener(this);
     ((TextView)localObject).setOnClickListener(this);
-    azmj.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "enter_diy2", 0, 0, "", "", "", "");
-    this.themeSwitchManager = ((bakh)this.app.getManager(185));
+    azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "enter_diy2", 0, 0, "", "", "", "");
+    this.themeSwitchManager = ((baoq)this.app.getManager(185));
     this.themeSwitchManager.a = this.saveStyleCallback;
     int j = this.mContext.getResources().getDisplayMetrics().heightPixels;
     int k = this.mContext.getResources().getDisplayMetrics().widthPixels;
@@ -694,9 +694,9 @@ public class ThemeDIYActivity
       if (!paramBundle.exists()) {
         paramBundle.mkdirs();
       }
-      bdcs.c(ThemeDiyStyleLogic.getSdcardDIYDir() + ".nomedia");
+      bdhb.c(ThemeDiyStyleLogic.getSdcardDIYDir() + ".nomedia");
       this.isDIYThemeBefore = ThemeUtil.getIsDIYTheme(null);
-      if (((alxl)this.app.a(13)).g() < 1) {
+      if (((amca)this.app.a(13)).g() < 1) {
         break label498;
       }
     }
@@ -742,14 +742,14 @@ public class ThemeDIYActivity
       paramBundle.put("param_themeUid", ThemeUtil.getUserCurrentThemeId(this.app));
       paramBundle.put("param_themeid", this.mUserThemeId);
       paramBundle.put("param_isDiy", String.valueOf(this.isDIYThemeBefore));
-      azmz.a(this.mContext).a(this.app.getAccount(), "ThemeDIYActivityRun", true, 1L, 0L, paramBundle, "", false);
+      azri.a(this.mContext).a(this.app.getAccount(), "ThemeDIYActivityRun", true, 1L, 0L, paramBundle, "", false);
       label674:
       this.mScrollLayout = ((ScrollLayout)super.findViewById(2131361804));
       this.mScrollLayout.setOnScreenChangeListener(this);
       paramBundle = new ResSuitData.StyleSuit();
       this.mStyleSuits.add(paramBundle);
       paramBundle.id = "999";
-      paramBundle.name = alpo.a(2131715268);
+      paramBundle.name = alud.a(2131715280);
       paramBundle.thumbnail = "a.jpg";
       paramBundle.appStr = "theme";
       paramBundle.typeStr = "diytheme_new";
@@ -766,10 +766,10 @@ public class ThemeDIYActivity
       }
       this.mUploadBgRSD = new ResSuitData.BgSuit(null);
       this.mUploadBgRSD.id = "99";
-      this.mUploadBgRSD.resID = 2130845611;
-      this.mUploadBgRSD.name = alpo.a(2131715272);
+      this.mUploadBgRSD.resID = 2130845683;
+      this.mUploadBgRSD.name = alud.a(2131715284);
       ApngImage.playByTag(0);
-      int m = (int)(Math.max(j, k) - bdcq.a(this.mContext, 305));
+      int m = (int)(Math.max(j, k) - bdgz.a(this.mContext, 305));
       int n = m * 322 / 572;
       LayoutInflater localLayoutInflater = LayoutInflater.from(this.mContext);
       ResData localResData = new ResData();
@@ -777,7 +777,7 @@ public class ThemeDIYActivity
       i = 0;
       if (i < this.showData.length)
       {
-        PageView localPageView = (PageView)localLayoutInflater.inflate(2131562708, null);
+        PageView localPageView = (PageView)localLayoutInflater.inflate(2131562726, null);
         localPageView.init(this.showData[i], i, n, m, null);
         if (i == 0) {
           this.mPageView = localPageView;
@@ -785,7 +785,7 @@ public class ThemeDIYActivity
         paramBundle = new ResSuitData.BgSuit(null);
         paramBundle.id = "100";
         paramBundle.resID = this.showData[i].themeBgID;
-        paramBundle.name = alpo.a(2131715274);
+        paramBundle.name = alud.a(2131715286);
         this.showData[i].defaultBgRSD = paramBundle;
         k = 0;
         ThemeBackground localThemeBackground = new ThemeBackground();
@@ -806,7 +806,7 @@ public class ThemeDIYActivity
           }
           localBgSuit = new ResSuitData.BgSuit(null);
           localObject = localThemeBackground.path.substring(localThemeBackground.path.lastIndexOf(File.separator) + 1);
-          if (localThemeBackground.path.indexOf(aljq.cd) < 0) {
+          if (localThemeBackground.path.indexOf(alof.cd) < 0) {
             break label1663;
           }
           paramBundle = (ChatBackgroundManager)this.app.getManager(63);
@@ -841,7 +841,7 @@ public class ThemeDIYActivity
           localPageView.showPic(this.showData[i].usedBgRSD, null, false, localThemeBackground.img);
           paramBundle = new ThemeDIYActivity.ViewHolder();
           paramBundle.id = i;
-          paramBundle.scaleView = localPageView.findViewById(2131369261);
+          paramBundle.scaleView = localPageView.findViewById(2131369279);
           localPageView.setTag(paramBundle);
           if (i != 0) {
             break label1742;
@@ -897,26 +897,26 @@ public class ThemeDIYActivity
           }
         }
       }
-      this.pageIndicator = ((PageIndicator)super.findViewById(2131368219));
+      this.pageIndicator = ((PageIndicator)super.findViewById(2131368230));
       this.pageIndicator.bindScrollViewGroup(this.mScrollLayout);
       this.dataLoad = new ThemeDIYActivity.DataLoading(this);
       this.dataLoad.bindScrollViewGroup(this.mScrollLayout);
-      paramBundle = (TabBarView)super.findViewById(2131376974);
-      paramBundle.setUnderLineHeight(bcwh.a(this, 4.0F));
+      paramBundle = (TabBarView)super.findViewById(2131377028);
+      paramBundle.setUnderLineHeight(bdaq.a(this, 4.0F));
       paramBundle.setTabTextSize(16);
       paramBundle.setUnselectColor(-8882056);
       paramBundle.setSelectColor(super.getResources().getColor(2131165307));
       paramBundle.setUnselectColor(super.getResources().getColor(2131165307));
-      paramBundle.a.setColor(super.getResources().getColor(2131166493));
+      paramBundle.a.setColor(super.getResources().getColor(2131166495));
       paramBundle.a("");
-      paramBundle.a(alpo.a(2131715288));
+      paramBundle.a(alud.a(2131715300));
       paramBundle.a("");
-      paramBundle.a(alpo.a(2131715279));
+      paramBundle.a(alud.a(2131715291));
       paramBundle.a("");
       paramBundle.setSelectedTab(1, false);
       paramBundle.setOnTabChangeListener(this.mTypeTabChangeListener);
-      paramBundle.setBackgroundDrawable(super.getResources().getDrawable(2130846930));
-      this.mResHListView = ((HorizontalListView)super.findViewById(2131377749));
+      paramBundle.setBackgroundDrawable(super.getResources().getDrawable(2130847003));
+      this.mResHListView = ((HorizontalListView)super.findViewById(2131377803));
       this.mAdapter = new ThemeDiyBgAdapter(this);
       this.mAdapter.themeDIYData = this.mPageView.mData;
       this.mAdapter.isDIYThemeBefore = this.isDIYThemeBefore;
@@ -928,7 +928,7 @@ public class ThemeDIYActivity
       this.mAdapter.usedStyleRSD = this.usedStyleRSD;
       loadResJson(100, false);
       loadResJson(200, false);
-      bakg.a(this.app, "theme_detail", "201", 150, bdee.a(null), 1, this.mUserThemeId, ThemeUtil.getUserCurrentThemeVersion(this.app), "2", "");
+      baop.a(this.app, "theme_detail", "201", 150, bdin.a(null), 1, this.mUserThemeId, ThemeUtil.getUserCurrentThemeVersion(this.app), "2", "");
       this.mCompactBackup = this.mSystemBarComp;
       this.mSystemBarComp = null;
       new SystemBarCompact(this, true, -5986905).init();
@@ -978,9 +978,9 @@ public class ThemeDIYActivity
     File localFile = new File(paramString);
     if ((localFile.exists()) && (!ChatBackgroundManager.a(localFile)))
     {
-      paramString = bcwc.a(paramString, new BitmapFactory.Options());
+      paramString = bdal.a(paramString, new BitmapFactory.Options());
       if (paramString != null) {
-        return new apgf(this.mContext.getResources(), paramString);
+        return new apko(this.mContext.getResources(), paramString);
       }
     }
     return null;
@@ -1083,11 +1083,11 @@ public class ThemeDIYActivity
     }
     if (this.isNotifyBack)
     {
-      azmj.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_out", 0, 0, "", "", "", "");
+      azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_out", 0, 0, "", "", "", "");
       if (isNeedSave()) {
         try
         {
-          this.exitDialog = bdcd.a(this.mContext, 230, super.getResources().getString(2131720813), alpo.a(2131715287), 2131692277, 2131719298, new ThemeDIYActivity.8(this), new ThemeDIYActivity.9(this));
+          this.exitDialog = bdgm.a(this.mContext, 230, super.getResources().getString(2131720825), alud.a(2131715299), 2131692278, 2131719310, new ThemeDIYActivity.8(this), new ThemeDIYActivity.9(this));
           this.exitDialog.show();
           return true;
         }
@@ -1096,7 +1096,7 @@ public class ThemeDIYActivity
           QLog.e("ThemeDIYActivity", 1, localException.getMessage());
         }
       }
-      azmj.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_outsuccess", 0, 1, "0", "", "", "");
+      azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_outsuccess", 0, 1, "0", "", "", "");
     }
     super.onBackEvent();
     return false;
@@ -1131,7 +1131,7 @@ public class ThemeDIYActivity
       if (2 == j)
       {
         str = "CJCLUBT";
-        localObject = alpo.a(2131715283);
+        localObject = alud.a(2131715295);
         paramDialogInterface = "1450000516";
         paramInt = 2;
       }
@@ -1139,7 +1139,7 @@ public class ThemeDIYActivity
     }
     for (;;)
     {
-      azmj.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_save_tips", 0, 0, String.valueOf(paramInt), "", "", "");
+      azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_save_tips", 0, 0, String.valueOf(paramInt), "", "", "");
       return;
       if (5 == j)
       {
@@ -1148,7 +1148,7 @@ public class ThemeDIYActivity
         if (paramInt == 1) {}
         for (paramDialogInterface = "diy_check";; paramDialogInterface = "diy_check_no")
         {
-          azmj.b((QQAppInterface)localObject, "CliOper", "", str, "theme_mall", paramDialogInterface, 0, 1, "", "", "", "");
+          azqs.b((QQAppInterface)localObject, "CliOper", "", str, "theme_mall", paramDialogInterface, 0, 1, "", "", "", "");
           if (paramInt != 1) {
             break;
           }
@@ -1179,12 +1179,12 @@ public class ThemeDIYActivity
     {
     default: 
       return;
-    case 2131368613: 
+    case 2131368624: 
       onBackEvent();
       return;
     }
     saveOperate(true);
-    azmj.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_save", 0, 0, "", "", "", "");
+    azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_save", 0, 0, "", "", "", "");
   }
   
   public void onPostThemeChanged()
@@ -1212,7 +1212,7 @@ public class ThemeDIYActivity
     }
     if ((this.mNeedStatusTrans) && (this.mSystemBarComp != null))
     {
-      i = super.getResources().getColor(2131166957);
+      i = super.getResources().getColor(2131166959);
       this.mSystemBarComp.setStatusColor(i);
       this.mSystemBarComp.setStatusBarColor(i);
     }
@@ -1224,7 +1224,7 @@ public class ThemeDIYActivity
       QLog.d("ThemeDIYActivity", 2, "onPostThemeChanged mIsSaving=" + this.mIsSaving.get());
     }
     if (this.mIsSaving.get()) {
-      showTips(5, 0, null, alpo.a(2131715275), null, alpo.a(2131715269), null);
+      showTips(5, 0, null, alud.a(2131715287), null, alud.a(2131715281), null);
     }
     this.mIsSaving.set(false);
     this.isDIYThemeBefore = true;
@@ -1234,7 +1234,7 @@ public class ThemeDIYActivity
   
   public void onScreenChange(int paramInt)
   {
-    azmj.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "skim_page2", 0, 0, String.valueOf(paramInt), "", "", "");
+    azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "skim_page2", 0, 0, String.valueOf(paramInt), "", "", "");
     if (QLog.isColorLevel()) {
       QLog.d("ThemeDIYActivity", 2, "onScreenChange: pageIndex = " + String.valueOf(paramInt));
     }
@@ -1300,7 +1300,7 @@ public class ThemeDIYActivity
     default: 
       paramObject = localObject;
       if (TextUtils.isEmpty((CharSequence)localObject)) {
-        paramObject = alpo.a(2131715278);
+        paramObject = alud.a(2131715290);
       }
       paramObject = paramObject + j;
       i = 4;
@@ -1313,35 +1313,35 @@ public class ThemeDIYActivity
       setProgessDialog(false, 0);
       if (-404 == j)
       {
-        QQToast.a(this.mContext, 2131720760, 3000).b(this.mContext.getResources().getDimensionPixelSize(2131298914));
+        QQToast.a(this.mContext, 2131720772, 3000).b(this.mContext.getResources().getDimensionPixelSize(2131298914));
         return;
         i = 4;
         paramObject = localObject;
         localObject = str1;
         continue;
-        paramObject = alpo.a(2131715270);
+        paramObject = alud.a(2131715282);
         if (!TextUtils.isEmpty(str1)) {
           break label446;
         }
-        localObject = alpo.a(2131715281);
+        localObject = alud.a(2131715293);
         i = 1;
         continue;
         paramObject = localObject;
         if (TextUtils.isEmpty((CharSequence)localObject)) {
-          paramObject = alpo.a(2131715285);
+          paramObject = alud.a(2131715297);
         }
         if (TextUtils.isEmpty(str1))
         {
-          localObject = alpo.a(2131715267);
+          localObject = alud.a(2131715279);
           i = 2;
         }
       }
       else
       {
-        azmj.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_save_tips", 0, 0, "0", "", "", "");
+        azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_save_tips", 0, 0, "0", "", "", "");
         QLog.e("ThemeDIYActivity", 1, "saveOperate fail, ret=" + j + ", msg=" + paramObject);
         if ((!TextUtils.isEmpty(str2)) && (TextUtils.isEmpty((CharSequence)localObject))) {
-          localObject = alpo.a(2131715284);
+          localObject = alud.a(2131715296);
         }
         for (;;)
         {
@@ -1375,13 +1375,13 @@ public class ThemeDIYActivity
         }
         if ((this.isDIYThemeBefore) && (!isNeedSave()))
         {
-          this.mHandler.sendMessage(Message.obtain(this.mHandler, 27, alpo.a(2131715293)));
+          this.mHandler.sendMessage(Message.obtain(this.mHandler, 27, alud.a(2131715305)));
           return;
         }
       }
       finally {}
       this.mHandler.removeMessages(24);
-      int j = bdee.a(this.mContext);
+      int j = bdin.a(this.mContext);
       if (j == 1) {
         break label571;
       }
@@ -1404,7 +1404,7 @@ public class ThemeDIYActivity
       localThemeDIYData3.mSaveStatus = 3;
       localThemeDIYData2.mSaveStatus = 3;
       localThemeDIYData1.mSaveStatus = 3;
-      setProgessDialog(true, 2131720759);
+      setProgessDialog(true, 2131720771);
       ThreadManager.post(new ThemeDIYActivity.5(this), 8, null, true);
     }
     for (;;)
@@ -1501,7 +1501,7 @@ public class ThemeDIYActivity
     {
       if (this.progessDialog == null)
       {
-        this.progessDialog = new bepp(this.mContext, getTitleBarHeight());
+        this.progessDialog = new bety(this.mContext, getTitleBarHeight());
         this.progessDialog.setCancelable(true);
       }
       this.progessDialog.c(paramInt);
@@ -1530,29 +1530,29 @@ public class ThemeDIYActivity
     this.mDialogData.putString("url", paramString5);
     this.mDialogData.putInt("fcID", paramInt2);
     if (TextUtils.isEmpty(paramString1)) {
-      paramString1 = alpo.a(2131715273);
+      paramString1 = alud.a(2131715285);
     }
     for (;;)
     {
       if (TextUtils.isEmpty(paramString2)) {
-        paramString2 = alpo.a(2131715280);
+        paramString2 = alud.a(2131715292);
       }
       for (;;)
       {
         if (TextUtils.isEmpty(paramString3)) {
-          paramString3 = alpo.a(2131715286);
+          paramString3 = alud.a(2131715298);
         }
         for (;;)
         {
           if (TextUtils.isEmpty(paramString4)) {
-            paramString4 = alpo.a(2131715291);
+            paramString4 = alud.a(2131715303);
           }
           for (;;)
           {
             if (QLog.isColorLevel()) {
               QLog.d("ThemeDIYActivity", 1, "showTips content=" + paramString2 + ", title=" + paramString1);
             }
-            paramString1 = bdcd.a(this.mContext, 0, paramString1, paramString2, paramString3, paramString4, this, this);
+            paramString1 = bdgm.a(this.mContext, 0, paramString1, paramString2, paramString3, paramString4, this, this);
             if (paramString1 != null)
             {
               paramString1.show();

@@ -1,19 +1,27 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class adbc
-  implements View.OnClickListener
+  implements beei
 {
-  public adbc(LbsBaseActivity paramLbsBaseActivity) {}
+  private WeakReference<astc> a;
   
-  public void onClick(View paramView)
+  public adbc(astc paramastc)
   {
-    aush.a(this.a.getAppInterface().getAccount(), true);
-    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
-      this.a.a(LbsBaseActivity.a(this.a));
+    this.a = new WeakReference(paramastc);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      astc localastc = (astc)this.a.get();
+      if (localastc != null) {
+        localastc.a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendProfileCardActivity", 2, "check friend's profile and preload web-process!");
+      }
     }
   }
 }

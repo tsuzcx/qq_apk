@@ -1,8 +1,23 @@
-import android.util.Pair;
+import android.view.View;
+import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
 
-abstract interface bhjr
+class bhjr
+  implements bgsn
 {
-  public abstract Pair<String, String> a(String paramString);
+  bhjr(bhjq parambhjq, bgsi parambgsi, String paramString) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    this.jdField_a_of_type_Bgsi.dismiss();
+    paramView = this.jdField_a_of_type_Bgsi.a(paramInt);
+    if ("发送给朋友".equals(paramView)) {
+      InnerWebView.a(this.jdField_a_of_type_Bhjq.a, this.jdField_a_of_type_JavaLangString);
+    }
+    while (!"保存到手机".equals(paramView)) {
+      return;
+    }
+    InnerWebView.b(this.jdField_a_of_type_Bhjq.a, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

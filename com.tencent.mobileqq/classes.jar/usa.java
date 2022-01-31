@@ -1,33 +1,21 @@
-import com.tencent.biz.qqstory.model.TroopNickNameManager.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class usa
-  extends amab
+  extends SimpleJob<Void>
 {
-  usa(urz paramurz) {}
-  
-  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
+  public usa(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, urt paramurt)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onGetTroopMemberCardInfoResult suc=").append(paramBoolean).append(" size=");
-      if (paramArrayList != null) {
-        break label78;
-      }
-    }
-    label78:
-    for (int i = 0;; i = paramArrayList.size())
-    {
-      QLog.d("TroopNickNameManager", 2, i);
-      if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-        ThreadManager.executeOnSubThread(new TroopNickNameManager.1.1(this, paramArrayList));
-      }
-      return;
-    }
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a(this.jdField_a_of_type_Urt);
+    return null;
   }
 }
 

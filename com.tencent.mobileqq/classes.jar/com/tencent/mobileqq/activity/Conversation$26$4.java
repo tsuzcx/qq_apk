@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import acnb;
-import ajee;
+import acrq;
+import ajit;
 
 public class Conversation$26$4
   implements Runnable
 {
-  public Conversation$26$4(acnb paramacnb, String paramString) {}
+  public Conversation$26$4(acrq paramacrq, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Acnb.a.a != null) {
-      this.jdField_a_of_type_Acnb.a.a.a(this.jdField_a_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_Acrq.a.a != null) {
+      this.jdField_a_of_type_Acrq.a.a.a(this.jdField_a_of_type_JavaLangString, true);
     }
   }
 }

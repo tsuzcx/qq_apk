@@ -2,7 +2,7 @@ import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
 public class ntc
-  implements alkr
+  implements alpg
 {
   protected void a(boolean paramBoolean, Bundle paramBundle) {}
   

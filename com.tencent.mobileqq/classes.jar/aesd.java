@@ -1,21 +1,19 @@
-import android.support.annotation.IntRange;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
 
-public abstract interface aesd
+public final class aesd
+  implements Parcelable.Creator<ForwardUtils.SectionBase>
 {
-  @IntRange(from=0L, to=3L)
-  public abstract int a();
+  public ForwardUtils.SectionBase a(Parcel paramParcel)
+  {
+    return new ForwardUtils.SectionBase(paramParcel);
+  }
   
-  public abstract void a();
-  
-  public abstract void a(aese paramaese);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public ForwardUtils.SectionBase[] a(int paramInt)
+  {
+    return new ForwardUtils.SectionBase[paramInt];
+  }
 }
 
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.multicard;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.io.Serializable;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="troopUin,cardTypeID,uin")
 public class RecommendPerson
-  extends awbv
+  extends awge
   implements Serializable
 {
   public int addedIndex;

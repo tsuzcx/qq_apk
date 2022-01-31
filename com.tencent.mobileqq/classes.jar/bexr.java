@@ -1,28 +1,16 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.mini.util.DisplayUtil;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.widget.MaxHeightScrollView;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
-public class bexr
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public final class bexr
+  implements DialogInterface.OnClickListener
 {
-  public bexr(AuthorityActivity paramAuthorityActivity) {}
+  public bexr(Context paramContext) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((DisplayUtil.hasNavBar(this.a)) && (DisplayUtil.isNavigationBarExist(this.a)))
-    {
-      i = AuthorityActivity.a(this.a).a();
-      int j = DisplayUtil.getNavigationBarHeight(this.a);
-      AuthorityActivity.a(this.a).setMaxHeight(i - j);
-    }
-    int i = ((View)this.a.findViewById(2131375981).getParent()).getTop();
-    if (i > 0) {
-      AuthorityActivity.a(this.a).setMaxHeight(AuthorityActivity.a(this.a).a() - i);
-    }
-    AuthorityActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    FloatingScreenPermission.requestPermission(this.a);
   }
 }
 

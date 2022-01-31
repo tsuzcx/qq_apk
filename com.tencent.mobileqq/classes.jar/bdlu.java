@@ -1,37 +1,18 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bdlu
+class bdlu
+  implements View.OnClickListener
 {
-  public static boolean a()
-  {
-    return (a("meizu", null, null)) && (Build.VERSION.SDK_INT > 20);
-  }
+  bdlu(bdls parambdls, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public static boolean a(String paramString1, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    boolean bool1 = false;
-    if (!TextUtils.isEmpty(paramString1)) {
-      bool1 = paramString1.equalsIgnoreCase(Build.MANUFACTURER);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdls, 1);
     }
-    boolean bool2;
-    if (!bool1) {
-      bool2 = bool1;
-    }
-    do
-    {
-      do
-      {
-        return bool2;
-        if (!TextUtils.isEmpty(paramString2)) {
-          bool1 = paramString2.equalsIgnoreCase(Build.BRAND);
-        }
-        bool2 = bool1;
-      } while (!bool1);
-      bool2 = bool1;
-    } while (TextUtils.isEmpty(paramString3));
-    return paramString3.equalsIgnoreCase(Build.MODEL);
+    this.jdField_a_of_type_Bdls.dismiss();
   }
 }
 

@@ -1,15 +1,10 @@
-import android.app.Activity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Bitmap;
 
-class bjvm
-  implements bjay
+public abstract interface bjvm
 {
-  bjvm(bjvj parambjvj, int paramInt) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void onFail(Activity paramActivity, String paramString)
-  {
-    QQToast.a(paramActivity, paramString, 0).b(this.jdField_a_of_type_Int);
-  }
+  public abstract void a(int paramInt, String paramString, Bitmap paramBitmap);
 }
 
 

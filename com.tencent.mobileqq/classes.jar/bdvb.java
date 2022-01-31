@@ -1,38 +1,64 @@
-import android.view.SurfaceHolder;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import mqq.app.AppRuntime;
 
-public abstract interface bdvb
+public class bdvb
+  implements Handler.Callback
 {
-  public abstract int a();
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bdvc jdField_a_of_type_Bdvc;
+  private bdvd jdField_a_of_type_Bdvd;
+  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   
-  public abstract void a();
+  public bdvb(AppRuntime paramAppRuntime, int paramInt)
+  {
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Bdvd = new bdvd(paramInt, this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidOsHandler);
+  }
   
-  public abstract void a(int paramInt);
+  public bdvc a()
+  {
+    return this.jdField_a_of_type_Bdvc;
+  }
   
-  public abstract void a(SurfaceHolder paramSurfaceHolder);
+  public bdvd a()
+  {
+    return this.jdField_a_of_type_Bdvd;
+  }
   
-  public abstract void a(bdvc parambdvc);
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bdvc != null) {
+      this.jdField_a_of_type_Bdvc.c();
+    }
+  }
   
-  public abstract void a(bdvd parambdvd);
+  public void a(bdvc parambdvc)
+  {
+    this.jdField_a_of_type_Bdvc = parambdvc;
+    this.jdField_a_of_type_Bdvc.b();
+  }
   
-  public abstract void a(bdve parambdve);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(String paramString, int paramInt);
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract int d();
-  
-  public abstract int e();
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (this.jdField_a_of_type_Bdvc == null) {
+      return false;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.jdField_a_of_type_Bdvc.a(paramMessage.arg1, (Bundle)paramMessage.obj);
+      return true;
+      this.jdField_a_of_type_Bdvc.b();
+    }
+  }
 }
 
 

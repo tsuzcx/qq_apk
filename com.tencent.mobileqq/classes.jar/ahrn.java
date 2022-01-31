@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import java.lang.ref.WeakReference;
 
-public class ahrn
-  extends alxo
+class ahrn
+  implements View.OnLongClickListener
 {
-  public ahrn(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  private WeakReference<ahri> a;
   
-  public void a()
+  public ahrn(ahri paramahri)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonFromGroup_Fragment", 2, "vip status change in EmoticonGroupStoreFragment.");
+    this.a = new WeakReference(paramahri);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    ahri localahri = (ahri)this.a.get();
+    if (localahri != null) {
+      return localahri.onLongClick(paramView);
     }
-    apkf localapkf = (apkf)EmoticonGroupStoreFragment.a(this.a).getManager(103);
-    if (localapkf != null) {
-      localapkf.b();
-    }
+    return false;
   }
 }
 

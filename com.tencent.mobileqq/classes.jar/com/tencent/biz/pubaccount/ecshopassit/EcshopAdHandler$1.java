@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import aaos;
-import aaot;
+import aath;
+import aati;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
 import nud;
@@ -14,7 +14,7 @@ public class EcshopAdHandler$1
   public void run()
   {
     MiniLog.init();
-    aaos.a().a(BaseApplicationImpl.getApplication().getApplicationContext(), new aaot());
+    aath.a().a(BaseApplicationImpl.getApplication().getApplicationContext(), new aati());
   }
 }
 

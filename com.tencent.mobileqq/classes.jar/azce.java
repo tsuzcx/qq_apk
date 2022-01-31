@@ -1,157 +1,70 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
-import com.tencent.mobileqq.startup.step.UpdateAvSo;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class azce
+  extends MSFServlet
 {
-  public static int a(DownloadInfo paramDownloadInfo)
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramDownloadInfo == null) {}
-    label132:
-    label135:
-    for (;;)
+    if (paramFromServiceMsg != null) {}
+    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
     {
-      return 11;
-      if (TextUtils.isEmpty(paramDownloadInfo.MD5_so))
-      {
-        if (QLog.isDevelopLevel())
-        {
-          QLog.d("QavGesture", 4, String.format("getEnableFlag, %s", new Object[] { paramDownloadInfo }));
-          return 11;
-        }
+      paramIntent = new Bundle();
+      paramIntent.putString("msg", "servlet result code is " + i);
+      paramIntent.putString("requestType", this.jdField_a_of_type_JavaLangString);
+      paramIntent.putIntegerArrayList("appid", this.jdField_a_of_type_JavaUtilArrayList);
+      if (i != 1000) {
+        break label148;
       }
-      else
-      {
-        int i;
-        int j;
-        if (paramDownloadInfo.enable) {
-          if ((!d(paramDownloadInfo)) || (!c(paramDownloadInfo)))
-          {
-            i = 11;
-            if (!paramDownloadInfo.gameEnable) {
-              break label132;
-            }
-            if ((d(paramDownloadInfo)) && (b(paramDownloadInfo))) {
-              break label127;
-            }
-            j = 11;
-          }
-        }
-        for (;;)
-        {
-          if ((j == 11) || (i == 11)) {
-            break label135;
-          }
-          if ((j != 2) || (i != 2)) {
-            break label137;
-          }
-          return 2;
-          i = 1;
-          break;
-          i = 2;
-          break;
-          label127:
-          j = 1;
-          continue;
-          j = 2;
-        }
-      }
-    }
-    label137:
-    return 1;
-  }
-  
-  public static String a()
-  {
-    return b() + "model" + File.separator;
-  }
-  
-  public static boolean a(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo == null) {}
-    while ((TextUtils.isEmpty(paramDownloadInfo.url_zip_gamemodel)) || (TextUtils.isEmpty(paramDownloadInfo.MD5_zip_gamemodel)) || (TextUtils.isEmpty(paramDownloadInfo.gamemodel_fullname))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static String b()
-  {
-    return UpdateAvSo.a() + "so763" + File.separator;
-  }
-  
-  public static boolean b(DownloadInfo paramDownloadInfo)
-  {
-    String str1 = paramDownloadInfo.MD5_zip_gamemodel;
-    paramDownloadInfo = c() + paramDownloadInfo.gamemodel_fullname;
-    String str2 = DownloadInfo.getSP().getString("gamemodel_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGesture", 4, String.format("isGameModelReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
-      }
-    }
-    do
-    {
-      return false;
-      if (bdcs.a(paramDownloadInfo)) {
+      paramFromServiceMsg = bjqj.a(paramFromServiceMsg.getWupBuffer());
+      if (paramFromServiceMsg == null) {
         break;
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QavGesture", 4, String.format("isGameModelReady, file no exist,  fileName[%s]", new Object[] { paramDownloadInfo }));
-    return false;
-    return true;
-  }
-  
-  public static String c()
-  {
-    return b() + "gamemodel" + File.separator;
-  }
-  
-  public static boolean c(DownloadInfo paramDownloadInfo)
-  {
-    String str1 = paramDownloadInfo.MD5_zip_model;
-    paramDownloadInfo = a() + paramDownloadInfo.model_fullname;
-    String str2 = DownloadInfo.getSP().getString("model_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGesture", 4, String.format("isModelReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
-      }
+      paramIntent.putInt("ret", 0);
+      paramIntent.putSerializable("data", paramFromServiceMsg);
+      notifyObserver(null, 1007, true, paramIntent, avvd.class);
+      return;
     }
-    do
-    {
-      return false;
-      if (bdcs.a(paramDownloadInfo)) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QavGesture", 4, String.format("isModelReady, file no exist,  fileName[%s]", new Object[] { paramDownloadInfo }));
-    return false;
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneGetQbossServlet", 2, "QZONE_GET_QBOSS_DATA fail, decode result is null");
+    }
+    paramIntent.putInt("ret", -2);
+    notifyObserver(null, 1007, false, paramIntent, avvd.class);
+    return;
+    label148:
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneGetQbossServlet", 2, "QZONE_GET_QBOSS_DATA fail, resultCode=" + i);
+    }
+    paramIntent.putInt("ret", -3);
+    notifyObserver(null, 1007, false, paramIntent, avvd.class);
   }
   
-  public static boolean d(DownloadInfo paramDownloadInfo)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    String str1 = paramDownloadInfo.MD5_zip_so;
-    paramDownloadInfo = b() + paramDownloadInfo.so_fullname;
-    String str2 = DownloadInfo.getSP().getString("so_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGesture", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
-      }
-    }
-    do
+    long l = paramIntent.getLongExtra("selfuin", 0L);
+    Object localObject = paramIntent.getIntegerArrayListExtra("appid");
+    boolean bool = paramIntent.getBooleanExtra("needReport", false);
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("requestType");
+    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    bjqj localbjqj = new bjqj(Long.valueOf(l).longValue(), (ArrayList)localObject, bool);
+    localObject = localbjqj.encode();
+    paramIntent = (Intent)localObject;
+    if (localObject == null)
     {
-      return false;
-      if (bdcs.a(paramDownloadInfo)) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QavGesture", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramDownloadInfo }));
-    return false;
-    return true;
+      QLog.e("QzoneGetQbossServlet", 1, "onSend request encode result is null.cmd=" + localbjqj.uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbjqj.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

@@ -27,18 +27,18 @@ public class ovr
   
   public static ProteusItemView a(VafContext paramVafContext, int paramInt, String paramString)
   {
-    bhxr.a("ProteusSupportUtilDynamic.getView");
+    biby.a("ProteusSupportUtilDynamic.getView");
     Object localObject = null;
     paramString = a(paramVafContext, a(paramInt), paramString);
     Container localContainer = paramVafContext.getViewFactory().inflate(paramVafContext, paramString);
     paramString = localObject;
     if (localContainer != null)
     {
-      localContainer.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841380));
+      localContainer.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841381));
       paramString = new ProteusItemView(paramVafContext.getContext());
       paramString.a(localContainer);
     }
-    bhxr.a();
+    biby.a();
     return paramString;
   }
   
@@ -202,10 +202,10 @@ public class ovr
   
   public static void a(ProteusItemView paramProteusItemView, int paramInt1, BaseArticleInfo paramBaseArticleInfo, VafContext paramVafContext, int paramInt2, String paramString)
   {
-    bhxr.a("ProteusSupportUtilDynamic.bindData");
+    biby.a("ProteusSupportUtilDynamic.bindData");
     if ((paramProteusItemView == null) || (paramProteusItemView.a() == null))
     {
-      bhxr.a();
+      biby.a();
       if (QLog.isColorLevel()) {
         QLog.d("ProteusSupportUtilDynamic", 2, "bindData : " + paramBaseArticleInfo + " adapterViewType : " + paramInt1);
       }
@@ -218,21 +218,21 @@ public class ovr
       Container localContainer = paramVafContext.getViewFactory().inflate(paramVafContext, paramString);
       if (localContainer != null)
       {
-        localContainer.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841380));
+        localContainer.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841381));
         paramProteusItemView.d();
         paramProteusItemView.a(localContainer);
       }
       paramBaseArticleInfo.mProteusTemplateBean = paramString;
     }
     paramProteusItemView = paramProteusItemView.a();
-    paramProteusItemView.setTag(2131375288, paramString);
-    bhxr.a("ProteusSupportUtilDynamic.bindDataImpl");
+    paramProteusItemView.setTag(2131375339, paramString);
+    biby.a("ProteusSupportUtilDynamic.bindDataImpl");
     if (paramString != null) {
       opy.a(paramProteusItemView, localTemplateBean, paramString);
     }
-    bhxr.a();
+    biby.a();
     opy.a(paramProteusItemView, paramVafContext, paramString);
-    bhxr.a();
+    biby.a();
   }
   
   public static boolean a(int paramInt)

@@ -1,54 +1,46 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.ThemeUiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class bduu
-  extends Handler
+  extends QIPCModule
 {
-  public bduu() {}
+  private static bduu a;
   
-  public bduu(Looper paramLooper)
+  public bduu(String paramString)
   {
-    super(paramLooper);
+    super(paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public static bduu a()
   {
-    if (ThemeUiPlugin.reportHandler == null) {
-      ThemeUiPlugin.reportHandler = new bduu(BaseApplication.getContext().getMainLooper());
-    }
-    int i = paramMessage.what;
-    Object localObject = (Object[])paramMessage.obj;
-    if (i == 1)
+    if (a == null) {}
+    try
     {
-      if (ThemeUiPlugin.reportTimes < 3)
-      {
-        paramMessage = (String)localObject[0];
-        localObject = (QQAppInterface)localObject[1];
-        if (QLog.isColorLevel()) {
-          QLog.i("ThemeUiPlugin", 2, ThemeUiPlugin.initDownloadedThemeNumForReport + "," + ThemeUiPlugin.initCurrThemeNameForReport);
-        }
-        VasWebviewUtil.reportVasStatus("ThemeMall", "ThemeCount", "0", 0, 0, ThemeUiPlugin.initDownloadedThemeNumForReport, 0, "", "");
-        VasWebviewUtil.reportVasStatus("ThemeMall", "ThemeOn", "0", 0, 0, 0, 0, "theme_" + ThemeUiPlugin.initCurrThemeNameForReport, "");
-        ThemeUiPlugin.reportTimes += 1;
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeUiPlugin", 2, "reportTimes is:" + ThemeUiPlugin.reportTimes);
-        }
-        Message localMessage = ThemeUiPlugin.reportHandler.obtainMessage();
-        localMessage.what = 1;
-        localMessage.obj = new Object[] { paramMessage, localObject };
-        ThemeUiPlugin.reportHandler.sendMessageDelayed(localMessage, 120000L);
+      if (a == null) {
+        a = new bduu("VasMonitorIPCModule");
       }
+      return a;
     }
-    else {
-      return;
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VasMonitorIPCModule", 2, "action = " + paramString);
     }
-    ThemeUiPlugin.reportTimes = 0;
+    if (paramBundle == null) {
+      QLog.d("VasMonitorIPCModule", 2, "vasreport Err params=null, action=" + paramString);
+    }
+    while ((!"action_vas_monitor".equals(paramString)) || (BaseApplicationImpl.getApplication() == null) || (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) || ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime() == null)) {
+      return null;
+    }
+    bdut.a(null, paramBundle.getString("key_appid"), paramBundle.getString("key_err_code"), paramBundle.getString("key_log"), paramBundle.getString("key_key4"), paramBundle.getString("key_key5"), paramBundle.getString("key_key6"), paramBundle.getFloat("key_value2"), paramBundle.getFloat("key_value3"));
+    return null;
   }
 }
 

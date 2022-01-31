@@ -1,17 +1,9 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-
 public class akbz
-  implements View.OnClickListener
 {
-  public akbz(SessionClearFragment paramSessionClearFragment) {}
+  public int a;
+  public awge a;
   
-  public void onClick(View paramView)
-  {
-    SessionClearFragment.a(this.a).finish();
-  }
+  protected akbz(akbx paramakbx) {}
 }
 
 

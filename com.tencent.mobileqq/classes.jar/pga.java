@@ -19,15 +19,15 @@ public class pga
   private boolean jdField_a_of_type_Boolean = true;
   private boolean b;
   
-  public pga(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public pga(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
   }
   
   public static void a(String paramString)
   {
     int i;
-    switch (bdee.a(BaseApplicationImpl.getApplication().getApplicationContext()))
+    switch (bdin.a(BaseApplicationImpl.getApplication().getApplicationContext()))
     {
     default: 
       i = 2;
@@ -44,7 +44,7 @@ public class pga
   
   public static CharSequence b()
   {
-    Object localObject = alpo.a(2131705243);
+    Object localObject = alud.a(2131705255);
     int i = ((String)localObject).indexOf("领取1G流量");
     localObject = new SpannableString((CharSequence)localObject);
     ((SpannableString)localObject).setSpan(new pgb(), i, i + 6, 33);

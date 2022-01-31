@@ -1,8 +1,12 @@
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import android.os.Bundle;
+import android.os.IInterface;
 
 public abstract interface bkch
+  extends IInterface
 {
-  public abstract void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp);
+  public abstract Bundle a(String paramString, Bundle paramBundle);
+  
+  public abstract void a(String paramString, Bundle paramBundle);
 }
 
 

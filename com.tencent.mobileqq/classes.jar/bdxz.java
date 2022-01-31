@@ -1,17 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+import android.os.Handler;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin.7;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class bdxz
-  implements DialogInterface.OnDismissListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public bdxz(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
+  public bdxz(HealthBusinessPlugin.7 param7) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onInstallProgress(float paramFloat)
   {
-    if (!LiangHaoBuyFragment.a(this.a)) {
-      LiangHaoBuyFragment.b(this.a);
-    }
+    this.a.this$0.c = ((int)(100.0F * paramFloat));
+    this.a.this$0.b.sendEmptyMessage(2);
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    this.a.this$0.d = paramInt;
+    this.a.this$0.b.sendEmptyMessage(1);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    this.a.this$0.b.sendEmptyMessage(0);
   }
 }
 

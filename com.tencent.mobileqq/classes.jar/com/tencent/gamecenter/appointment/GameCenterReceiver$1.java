@@ -1,10 +1,10 @@
 package com.tencent.gamecenter.appointment;
 
-import aacs;
+import aahh;
 import android.text.TextUtils;
-import bfob;
-import bkel;
-import bkem;
+import bfsk;
+import bkis;
+import bkit;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.wadl.ipc.WadlParams;
@@ -19,12 +19,12 @@ class GameCenterReceiver$1
   
   public void run()
   {
-    Object localObject1 = bfob.a(this.a);
+    Object localObject1 = bfsk.a(this.a);
     Iterator localIterator;
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {
       try
       {
-        bkel.a();
+        bkis.a();
         if (TextUtils.equals(this.b, "android.intent.action.PACKAGE_REMOVED"))
         {
           synchronized (this.this$0.a)
@@ -35,7 +35,7 @@ class GameCenterReceiver$1
             if (!localIterator.hasNext()) {
               break label147;
             }
-            ((aacs)localIterator.next()).b((WadlResult)localObject1);
+            ((aahh)localIterator.next()).b((WadlResult)localObject1);
           }
           return;
         }
@@ -53,7 +53,7 @@ class GameCenterReceiver$1
       do
       {
         do {}while (BaseApplicationImpl.sProcessId != 1);
-        bkel.a().a("doUninstallAppCompleted", this.a);
+        bkis.a().a("doUninstallAppCompleted", this.a);
         return;
       } while (!TextUtils.equals(this.b, "android.intent.action.PACKAGE_ADDED"));
       synchronized (this.this$0.a)
@@ -62,11 +62,11 @@ class GameCenterReceiver$1
         localWadlResult.b = 9;
         localIterator = this.this$0.a.iterator();
         if (localIterator.hasNext()) {
-          ((aacs)localIterator.next()).a(localWadlResult);
+          ((aahh)localIterator.next()).a(localWadlResult);
         }
       }
     } while (BaseApplicationImpl.sProcessId != 1);
-    bkel.a().a("doInstallAppCompleted", this.a);
+    bkis.a().a("doInstallAppCompleted", this.a);
   }
 }
 

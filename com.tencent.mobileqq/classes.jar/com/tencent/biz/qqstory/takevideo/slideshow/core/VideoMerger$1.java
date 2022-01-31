@@ -2,31 +2,31 @@ package com.tencent.biz.qqstory.takevideo.slideshow.core;
 
 import android.app.Activity;
 import android.os.Bundle;
-import bmcn;
-import bngr;
+import bmgz;
+import bnld;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
 import com.tencent.qphone.base.util.QLog;
-import xir;
-import xjj;
-import xjk;
+import xna;
+import xns;
+import xnt;
 
 public class VideoMerger$1
   implements Runnable
 {
-  public VideoMerger$1(xjj paramxjj, xjk paramxjk, CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo, bmcn parambmcn, Bundle paramBundle1, Bundle paramBundle2) {}
+  public VideoMerger$1(xns paramxns, xnt paramxnt, CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo, bmgz parambmgz, Bundle paramBundle1, Bundle paramBundle2) {}
   
   public void run()
   {
-    bngr.a(this.jdField_a_of_type_Xjk.a, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, this.jdField_a_of_type_Bmcn, this.jdField_a_of_type_AndroidOsBundle, 7, this.b);
-    if ((xir.a().a() == 14) && ((this.jdField_a_of_type_Xjk.a instanceof NewPhotoListActivity)))
+    bnld.a(this.jdField_a_of_type_Xnt.a, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, this.jdField_a_of_type_Bmgz, this.jdField_a_of_type_AndroidOsBundle, 7, this.b);
+    if ((xna.a().a() == 14) && ((this.jdField_a_of_type_Xnt.a instanceof NewPhotoListActivity)))
     {
       QLog.d("VideoMerger", 2, "shuoshuo merge complete, jump to editVideoActivity and finish PhotoListActivity");
-      this.jdField_a_of_type_Xjk.a.finish();
+      this.jdField_a_of_type_Xnt.a.finish();
     }
     if (QLog.isColorLevel()) {
-      QLog.d("VideoMerger", 2, "merge complete, jump to editVideoActivity , context : " + this.jdField_a_of_type_Xjk.a.getClass().getSimpleName());
+      QLog.d("VideoMerger", 2, "merge complete, jump to editVideoActivity , context : " + this.jdField_a_of_type_Xnt.a.getClass().getSimpleName());
     }
   }
 }

@@ -1,8 +1,12 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-public abstract interface aemp
+public class aemp
 {
-  public abstract void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo);
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

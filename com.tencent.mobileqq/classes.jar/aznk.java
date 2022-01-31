@@ -1,76 +1,112 @@
-import com.tencent.common.config.AppSetting;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.splashad.SplashADUtil.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import java.util.Set;
 
-class aznk
+public class aznk
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k = "8.3.3.4515";
-  public String l = "AND";
+  public static long a;
+  private static boolean a;
+  private static long b;
   
-  public aznk()
+  public static int a(Context paramContext)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Long = AppSetting.a();
-    this.jdField_a_of_type_JavaLangString = bdcb.a();
-    this.jdField_b_of_type_JavaLangString = "";
+    paramContext = (WindowManager)paramContext.getSystemService("window");
+    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+    paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
+    return paramContext.getDefaultDisplay().getWidth();
   }
   
-  public String a()
+  public static long a(Context paramContext)
   {
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.f);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.g);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.h);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.i);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.j);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.k);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.l);
-    localStringBuilder.append('|');
-    return localStringBuilder.toString();
+    if (b == 0L) {
+      b = PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("splash_ad_uin_long", 0L);
+    }
+    return b;
+  }
+  
+  private static void a() {}
+  
+  public static void a(int paramInt, String paramString)
+  {
+    ThreadManager.excute(new SplashADUtil.1(paramInt, paramString), 128, null, false);
+  }
+  
+  public static void a(Context paramContext)
+  {
+    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().remove("splash_ad_uin_long").apply();
+    b = 0L;
+  }
+  
+  public static void a(Context paramContext, long paramLong)
+  {
+    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putLong("splash_ad_uin_long", paramLong).apply();
+    b = paramLong;
+  }
+  
+  public static boolean a(Activity paramActivity)
+  {
+    boolean bool2 = false;
+    Object localObject = paramActivity.getIntent();
+    paramActivity = ((Intent)localObject).getCategories();
+    localObject = ((Intent)localObject).getAction();
+    QLog.i("SplashAD", 1, "categories " + paramActivity + " action " + (String)localObject);
+    boolean bool1 = bool2;
+    if (paramActivity != null)
+    {
+      bool1 = bool2;
+      if (paramActivity.contains("android.intent.category.LAUNCHER"))
+      {
+        bool1 = bool2;
+        if (localObject != null)
+        {
+          bool1 = bool2;
+          if (((String)localObject).equals("android.intent.action.MAIN")) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    bool2 = bool1;
+    if (!bool1)
+    {
+      bool2 = bool1;
+      if (paramActivity == null)
+      {
+        bool2 = bool1;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          bool2 = true;
+        }
+      }
+    }
+    QLog.e("SplashAD", 1, "fromLaucher " + bool2);
+    return bool2;
+  }
+  
+  public static void b(Context paramContext)
+  {
+    if (!a)
+    {
+      TVK_SDKMgr.initSdk(paramContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+      a();
+      a = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aznk
  * JD-Core Version:    0.7.0.1
  */

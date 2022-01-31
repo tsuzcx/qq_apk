@@ -1,28 +1,19 @@
-import java.util.Comparator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class ayhh
-  implements Comparator<ayhj>
+  implements View.OnTouchListener
 {
   ayhh(ayhe paramayhe) {}
   
-  public int a(ayhj paramayhj1, ayhj paramayhj2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int j = Long.signum(paramayhj1.jdField_a_of_type_Int - paramayhj2.jdField_a_of_type_Int);
-    int i = j;
-    if (j == 0)
-    {
-      j = Long.signum(paramayhj1.b - paramayhj2.b);
-      i = j;
-      if (j == 0)
-      {
-        j = Long.signum(paramayhj1.c - paramayhj2.c);
-        i = j;
-        if (j == 0) {
-          i = Long.signum(-paramayhj1.jdField_a_of_type_Long + paramayhj2.jdField_a_of_type_Long);
-        }
-      }
-    }
-    return i;
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

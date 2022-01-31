@@ -1,19 +1,21 @@
-import android.os.Bundle;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class acac
   implements View.OnClickListener
 {
-  public acac(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public acac(AboutActivity paramAboutActivity) {}
   
   public void onClick(View paramView)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("start_from", 2);
-    ColorNoteSettingFragment.a(paramView.getContext(), ColorNoteSettingFragment.class, localBundle);
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    paramView.putExtra("uin", this.a.app.getCurrentAccountUin());
+    this.a.startActivity(paramView.putExtra("url", AboutActivity.a(this.a)));
+    azqs.b(this.a.app, "CliOper", "", "", "0X8005745", "0X8005745", 0, 0, "", "", "", "");
   }
 }
 

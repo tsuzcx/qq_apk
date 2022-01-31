@@ -25,7 +25,7 @@ public class sty
     {
       try
       {
-        paramObject = baul.a((String)paramObject, paramInt1, paramInt2);
+        paramObject = bayu.a((String)paramObject, paramInt1, paramInt2);
         if (paramObject != null) {
           break label74;
         }
@@ -41,12 +41,12 @@ public class sty
       }
       if ((paramObject != null) && ((paramObject instanceof URL)))
       {
-        paramObject = baul.a((URL)paramObject, paramInt1, paramInt2);
+        paramObject = bayu.a((URL)paramObject, paramInt1, paramInt2);
         continue;
         label74:
         if (paramObject.getStatus() != 1)
         {
-          paramImageView.setTag(2131377201, paramObject.getURL());
+          paramImageView.setTag(2131377255, paramObject.getURL());
           sua localsua = new sua(this, null);
           localsua.a = new WeakReference(paramImageView);
           localsua.b = new WeakReference(paramsub);
@@ -70,7 +70,7 @@ public class sty
     {
       try
       {
-        paramObject = baul.a((String)paramObject);
+        paramObject = bayu.a((String)paramObject);
         if (paramObject != null) {
           break label68;
         }
@@ -86,25 +86,25 @@ public class sty
       }
       if ((paramObject != null) && ((paramObject instanceof URL)))
       {
-        paramObject = baul.a((URL)paramObject);
+        paramObject = bayu.a((URL)paramObject);
         continue;
         label68:
         paramImageView.setScaleType(ImageView.ScaleType.FIT_XY);
         if (paramObject.getStatus() != 1)
         {
-          paramImageView.setTag(2131377201, paramObject.getURL());
-          paramImageView.setTag(2131377195, Boolean.TRUE);
-          paramImageView.setTag(2131377198, Integer.valueOf(paramInt1));
-          paramImageView.setTag(2131377196, Integer.valueOf(paramInt2));
-          paramImageView.setTag(2131377197, Integer.valueOf(paramInt3));
+          paramImageView.setTag(2131377255, paramObject.getURL());
+          paramImageView.setTag(2131377249, Boolean.TRUE);
+          paramImageView.setTag(2131377252, Integer.valueOf(paramInt1));
+          paramImageView.setTag(2131377250, Integer.valueOf(paramInt2));
+          paramImageView.setTag(2131377251, Integer.valueOf(paramInt3));
           sua localsua = new sua(this, null);
           localsua.a = new WeakReference(paramImageView);
           localsua.b = new WeakReference(paramsub);
           this.a.put(paramObject, localsua);
           paramObject.setURLDrawableListener(this);
         }
-        paramObject.setTag(bcuq.b(paramInt1, paramInt2, (int)(paramInt3 * bdcb.a())));
-        paramObject.setDecodeHandler(bcuq.i);
+        paramObject.setTag(bcyz.b(paramInt1, paramInt2, (int)(paramInt3 * bdgk.a())));
+        paramObject.setDecodeHandler(bcyz.i);
         paramImageView.setImageDrawable(null);
         paramImageView.setImageDrawable(paramObject);
       }
@@ -137,17 +137,17 @@ public class sty
         } while (localObject == null);
         this.a.remove(paramURLDrawable);
         localImageView = (ImageView)((sua)localObject).a.get();
-      } while ((localImageView == null) || (!paramURLDrawable.getURL().equals(localImageView.getTag(2131377201))));
+      } while ((localImageView == null) || (!paramURLDrawable.getURL().equals(localImageView.getTag(2131377255))));
       localObject = (sub)((sua)localObject).b.get();
     } while ((localObject != null) && (!((sub)localObject).a(localImageView)));
-    if ((localImageView.getTag(2131377195) != null) && (((Boolean)localImageView.getTag(2131377195)).booleanValue()))
+    if ((localImageView.getTag(2131377249) != null) && (((Boolean)localImageView.getTag(2131377249)).booleanValue()))
     {
-      paramURLDrawable.setTag(bcuq.b(((Integer)localImageView.getTag(2131377198)).intValue(), ((Integer)localImageView.getTag(2131377196)).intValue(), (int)(((Integer)localImageView.getTag(2131377197)).intValue() * bdcb.a())));
-      paramURLDrawable.setDecodeHandler(bcuq.i);
+      paramURLDrawable.setTag(bcyz.b(((Integer)localImageView.getTag(2131377252)).intValue(), ((Integer)localImageView.getTag(2131377250)).intValue(), (int)(((Integer)localImageView.getTag(2131377251)).intValue() * bdgk.a())));
+      paramURLDrawable.setDecodeHandler(bcyz.i);
     }
     localImageView.setImageDrawable(null);
     localImageView.setImageDrawable(paramURLDrawable);
-    localImageView.setTag(2131377201, null);
+    localImageView.setTag(2131377255, null);
   }
 }
 

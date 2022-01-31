@@ -1,8 +1,17 @@
-import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public abstract interface aihz
+class aihz
+  implements View.OnTouchListener
 {
-  public abstract void a(Context paramContext, boolean paramBoolean);
+  aihz(aihy paramaihy) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    aihy.a(this.a, paramView);
+    return false;
+  }
 }
 
 

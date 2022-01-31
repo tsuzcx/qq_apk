@@ -3,20 +3,20 @@ import android.view.View;
 import android.view.animation.Transformation;
 
 class befx
-  implements bdjy<Integer>
+  implements bdoh<Integer>
 {
-  befx(befv parambefv, int paramInt) {}
+  befx(beft parambeft, View paramView, int paramInt) {}
   
-  public void a(bdjs<Integer> parambdjs, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void a(bdob<Integer> parambdob, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    if (!this.jdField_a_of_type_Befv.jdField_a_of_type_Boolean) {}
+    if (!this.jdField_a_of_type_Beft.a.x) {}
     do
     {
       return;
-      this.jdField_a_of_type_Befv.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
-      this.jdField_a_of_type_Befv.jdField_a_of_type_Int = paramInteger.intValue();
-    } while (this.jdField_a_of_type_Befv.jdField_a_of_type_Int != this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Befv.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
+      this.jdField_a_of_type_Beft.a.d = paramInteger.intValue();
+    } while (this.jdField_a_of_type_Beft.a.d != this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Beft.a.x = false;
   }
 }
 

@@ -1,38 +1,115 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class bhnt
 {
-  public static void a(Object paramObject)
-  {
-    a((String)null, paramObject);
-  }
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = 3600L;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<bhoi> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<String> b = new ArrayList();
   
-  public static void a(String paramString)
+  public bhnt(JSONObject paramJSONObject)
   {
-    if (paramString == null) {
-      throw new AssertionError();
-    }
-    throw new AssertionError(paramString);
-  }
-  
-  public static void a(String paramString, Object paramObject)
-  {
-    if (paramObject != null) {}
-    for (boolean bool = true;; bool = false)
+    if (paramJSONObject != null) {}
+    for (;;)
     {
-      a(paramString, bool);
-      return;
+      int i;
+      try
+      {
+        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("type");
+        long l = paramJSONObject.getLong("interval");
+        if ((l > 0L) && (l < 604800L)) {
+          this.jdField_a_of_type_Long = l;
+        }
+        Object localObject = paramJSONObject.getJSONArray("filter");
+        if (localObject != null)
+        {
+          i = 0;
+          if (i < ((JSONArray)localObject).length())
+          {
+            JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
+            if (localJSONObject == null) {
+              break label248;
+            }
+            this.jdField_a_of_type_JavaUtilList.add(new bhoi(localJSONObject));
+            break label248;
+          }
+        }
+        if (paramJSONObject.has("rpt"))
+        {
+          paramJSONObject = paramJSONObject.getJSONObject("rpt");
+          if (paramJSONObject != null)
+          {
+            i = paramJSONObject.getInt("id");
+            if (i > 100000)
+            {
+              this.jdField_a_of_type_Int = i;
+              paramJSONObject = paramJSONObject.getJSONArray("fields");
+              if (paramJSONObject != null)
+              {
+                i = j;
+                if (i < paramJSONObject.length())
+                {
+                  localObject = paramJSONObject.getString(i);
+                  if ((localObject != null) && (!((String)localObject).isEmpty())) {
+                    this.b.add(localObject);
+                  }
+                  i += 1;
+                  continue;
+                }
+              }
+            }
+          }
+        }
+        return;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
+      label248:
+      i += 1;
     }
   }
   
-  public static void a(String paramString, boolean paramBoolean)
+  public int a()
   {
-    if (!paramBoolean) {
-      a(paramString);
-    }
+    return this.jdField_a_of_type_Int;
   }
   
-  public static void a(boolean paramBoolean)
+  public long a()
   {
-    a((String)null, paramBoolean);
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public List<String> a()
+  {
+    return this.b;
+  }
+  
+  public boolean a(Object paramObject)
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        bhoi localbhoi = (bhoi)localIterator.next();
+        if (!localbhoi.a()) {
+          return false;
+        }
+        if (!localbhoi.a(paramObject)) {
+          return false;
+        }
+      }
+      return true;
+    }
+    return false;
   }
 }
 

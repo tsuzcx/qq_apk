@@ -1,18 +1,8 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-final class bird
-  implements View.OnClickListener
+class bird
 {
-  bird(Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
-  }
+  private baub jdField_a_of_type_Baub;
+  private bazx jdField_a_of_type_Bazx;
+  private bire jdField_a_of_type_Bire;
 }
 
 

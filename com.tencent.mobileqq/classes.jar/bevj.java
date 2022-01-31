@@ -1,29 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
-final class bevj
-  implements DialogInterface.OnClickListener
+public abstract interface bevj
 {
-  bevj(bevo parambevo, int paramInt) {}
+  public abstract void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Bevo.a(3);
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Int == 1) {
-      bevd.a("0X80094FB");
-    }
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 5))
-      {
-        bevd.a("0X80094FA");
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 3);
-    bevd.a("0X80094FC");
-  }
+  public abstract void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt);
 }
 
 

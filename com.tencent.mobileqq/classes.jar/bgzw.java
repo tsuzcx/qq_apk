@@ -1,69 +1,29 @@
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StKVData;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StSetUserCloudStorageReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StSetUserCloudStorageRsp;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
 
 public class bgzw
-  extends bgzp
 {
-  private CloudStorage.StSetUserCloudStorageReq a = new CloudStorage.StSetUserCloudStorageReq();
+  private float jdField_a_of_type_Float = 0.0F;
+  private String jdField_a_of_type_JavaLangString = "";
   
-  public bgzw(HashMap<String, String> paramHashMap, String paramString)
+  public float a()
   {
-    paramHashMap = paramHashMap.entrySet().iterator();
-    while (paramHashMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramHashMap.next();
-      CloudStorage.StKVData localStKVData = new CloudStorage.StKVData();
-      localStKVData.key.set((String)localEntry.getKey());
-      localStKVData.value.set((String)localEntry.getValue());
-      this.a.KVDataList.add(localStKVData);
-    }
-    this.a.appid.set(paramString);
+    return this.jdField_a_of_type_Float;
   }
   
-  protected String a()
+  public String a()
   {
-    return "mini_app_cloudstorage";
+    return (int)(this.jdField_a_of_type_Float * 100.0F) + "%";
   }
   
-  public JSONObject a(byte[] paramArrayOfByte)
+  public boolean a()
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    CloudStorage.StSetUserCloudStorageRsp localStSetUserCloudStorageRsp = new CloudStorage.StSetUserCloudStorageRsp();
-    try
-    {
-      localStSetUserCloudStorageRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStSetUserCloudStorageRsp != null) {
-        return new JSONObject();
-      }
-      QMLog.d("SetCloudStorageRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("SetCloudStorageRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
+    return (this.jdField_a_of_type_Float > 0.0F) && (this.jdField_a_of_type_Float < 1.0F);
   }
   
-  protected byte[] a()
+  @NonNull
+  public String toString()
   {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "SetUserCloudStorage";
+    return "LoadingStatus {progress=" + this.jdField_a_of_type_Float + "} ";
   }
 }
 

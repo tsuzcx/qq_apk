@@ -1,24 +1,45 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
 
-class aurl
-  implements DialogInterface.OnClickListener
+public class aurl
+  extends BroadcastReceiver
 {
-  aurl(auri paramauri, Activity paramActivity) {}
+  public aurl(MusicGeneQQBrowserActivity paramMusicGeneQQBrowserActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramDialogInterface = this.jdField_a_of_type_Auri.a;
-    if ((paramDialogInterface != null) && (!TextUtils.isEmpty(paramDialogInterface.a)))
+    if (paramIntent == null) {}
+    do
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramDialogInterface.a);
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 1028);
-    }
+      return;
+      paramContext = paramIntent.getAction();
+      String str1;
+      String str2;
+      String str3;
+      if ("BROAD_CAST_SHARE_MUSIC_GENE".equals(paramContext))
+      {
+        paramContext = paramIntent.getStringExtra("BUNDLE_KEY_TITLE");
+        str1 = paramIntent.getStringExtra("BUNDLE_KEY_DESC");
+        str2 = paramIntent.getStringExtra("BUDNLE_KEY_IMG_URL");
+        str3 = paramIntent.getStringExtra("BUNDLE_KEY_SRC");
+        paramIntent = paramIntent.getStringExtra("BUNDLE_KEY_ICON_URL");
+        MusicGeneQQBrowserActivity.a(this.a, str2, str3, "", str1, paramContext, paramIntent, 1101244924L);
+        return;
+      }
+      if ("BROAD_CAST_SHARE_SONG".equals(paramContext))
+      {
+        paramContext = paramIntent.getStringExtra("BUNDLE_KEY_TITLE");
+        str1 = paramIntent.getStringExtra("BUNDLE_KEY_DESC");
+        str2 = paramIntent.getStringExtra("BUDNLE_KEY_IMG_URL");
+        str3 = paramIntent.getStringExtra("BUNDLE_KEY_SRC");
+        String str4 = paramIntent.getStringExtra("BUNDLE_KEY_AUDIO_URL");
+        paramIntent = paramIntent.getStringExtra("BUNDLE_KEY_ICON_URL");
+        MusicGeneQQBrowserActivity.a(this.a, str2, str3, str4, str1, paramContext, paramIntent, 1101244924L);
+        return;
+      }
+    } while (!"BROAD_CAST_UPDATE_TITLE".equals(paramContext));
   }
 }
 

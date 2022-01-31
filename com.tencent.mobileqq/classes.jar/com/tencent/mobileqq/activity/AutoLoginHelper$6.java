@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import accm;
-import bepp;
+import achb;
+import bety;
 
 public class AutoLoginHelper$6
   implements Runnable
 {
-  public AutoLoginHelper$6(accm paramaccm) {}
+  public AutoLoginHelper$6(achb paramachb) {}
   
   public void run()
   {
     try
     {
-      if ((accm.a(this.this$0) != null) && (accm.a(this.this$0).isShowing()))
+      if ((achb.a(this.this$0) != null) && (achb.a(this.this$0).isShowing()))
       {
-        accm.a(this.this$0).dismiss();
-        accm.a(this.this$0).cancel();
+        achb.a(this.this$0).dismiss();
+        achb.a(this.this$0).cancel();
       }
-      accm.a(this.this$0, null);
+      achb.a(this.this$0, null);
       return;
     }
     catch (Throwable localThrowable)

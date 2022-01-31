@@ -1,25 +1,14 @@
-import com.tencent.ad.tangram.analysis.AdAnalysisAdapter;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aahd
-  implements AdAnalysisAdapter
+  implements aahz
 {
-  public String getAppVersion()
-  {
-    return aans.a();
-  }
+  public aahd(GameCenterActivity.GameCenterFragment paramGameCenterFragment) {}
   
-  public String getUIN()
+  public void a(int paramInt, String paramString)
   {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject == null) {}
-    do
-    {
-      return null;
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-    } while (localObject == null);
-    return ((AppRuntime)localObject).getAccount();
+    QLog.i("GameCenterFragment", 1, "removeShotMask code=" + paramInt);
   }
 }
 

@@ -1,10 +1,17 @@
-class bkpx
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+
+public class bkpx
 {
-  public double a;
-  public boolean a;
-  public boolean b;
+  public static bmet a(@NonNull bmey parambmey)
+  {
+    return new bmet(parambmey, bmeu.a(BaseApplicationImpl.getApplication()));
+  }
   
-  bkpx(bkpw parambkpw) {}
+  public static bmet a(@NonNull bmey parambmey, bmev parambmev)
+  {
+    return new bmet(parambmey, parambmev);
+  }
 }
 
 

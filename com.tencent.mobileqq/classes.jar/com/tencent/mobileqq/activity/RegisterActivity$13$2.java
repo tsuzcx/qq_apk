@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import adpi;
-import alpo;
+import adtx;
+import alud;
 
 public class RegisterActivity$13$2
   implements Runnable
 {
-  public RegisterActivity$13$2(adpi paramadpi) {}
+  public RegisterActivity$13$2(adtx paramadtx) {}
   
   public void run()
   {
     RegisterActivity.d(this.a.a);
-    RegisterActivity.a(this.a.a, alpo.a(2131713740));
+    RegisterActivity.a(this.a.a, alud.a(2131713752));
   }
 }
 

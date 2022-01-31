@@ -1,9 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
+import android.net.Uri;
+import android.provider.ContactsContract.Data;
 
-public abstract interface apag
+class apag
 {
-  public abstract void a(View paramView, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct);
+  public static final Uri a;
+  public static final String[] a;
+  public static final String[] b = { "raw_contact_id", "data1" };
+  
+  static
+  {
+    jdField_a_of_type_AndroidNetUri = ContactsContract.Data.CONTENT_URI;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "_id", "mimetype", "data1" };
+  }
 }
 
 

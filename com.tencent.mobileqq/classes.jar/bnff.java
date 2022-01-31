@@ -1,22 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
-public class bnff
-  implements DialogInterface.OnClickListener
+public final class bnff
+  extends RecyclablePool.Recyclable
 {
-  public bnff(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public long a;
+  public String a;
+  public long[] a;
+  public long b;
+  public long c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bnff()
   {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    this.jdField_a_of_type_ArrayOfLong = new long[6];
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfLong.length)
     {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
-      }
-      this.a.a(this.a.c);
+      this.jdField_a_of_type_ArrayOfLong[i] = 0L;
+      i += 1;
     }
-    bnli.a = true;
+    this.c = 0L;
+  }
+  
+  public void recycle()
+  {
+    super.recycle();
+    a();
   }
 }
 

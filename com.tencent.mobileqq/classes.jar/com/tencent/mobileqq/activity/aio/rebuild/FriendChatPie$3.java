@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aely;
-import agld;
+import aeqn;
+import agps;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class FriendChatPie$3
   implements Runnable
 {
-  public FriendChatPie$3(agld paramagld) {}
+  public FriendChatPie$3(agps paramagps) {}
   
   public void run()
   {
-    ((aely)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0);
+    ((aeqn)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0);
   }
 }
 

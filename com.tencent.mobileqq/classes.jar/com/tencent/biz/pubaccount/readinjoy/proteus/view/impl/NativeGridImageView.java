@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.impl;
 
-import aekt;
+import aepi;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
-import bcch;
-import bdcb;
+import bcgq;
+import bdgk;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
@@ -94,13 +94,13 @@ public class NativeGridImageView
         if (QLog.isColorLevel()) {
           QLog.d("Proteus.NativeGridImageView", 2, new Object[] { "ReadInJoy grid image show content url and title, articleUrl: " + str1, " articleTitle: " + str2 });
         }
-        bcch.a((Activity)getContext(), paramInt, a(paramList), null, null, false, false, "4", 100, null, str1, str2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "");
+        bcgq.a((Activity)getContext(), paramInt, a(paramList), null, null, false, false, "4", 100, null, str1, str2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "");
       }
       while (paramList != null)
       {
         a(paramInt, paramList.size());
         return;
-        bcch.a((Activity)getContext(), paramInt, a(paramList), null, null, false, false, "4", 100, null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "");
+        bcgq.a((Activity)getContext(), paramInt, a(paramList), null, null, false, false, "4", 100, null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "");
       }
     }
   }
@@ -114,8 +114,8 @@ public class NativeGridImageView
   {
     setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     setNumColumns(3);
-    setVerticalSpacing(aekt.a(3.0F, paramContext.getResources()));
-    setHorizontalSpacing(aekt.a(3.0F, paramContext.getResources()));
+    setVerticalSpacing(aepi.a(3.0F, paramContext.getResources()));
+    setHorizontalSpacing(aepi.a(3.0F, paramContext.getResources()));
     setSelector(17170445);
     a();
   }
@@ -161,13 +161,13 @@ public class NativeGridImageView
       }
       if (localParams != null)
       {
-        i = (int)bdcb.m() - aekt.a(24.0F, getResources());
-        localParams.mLayoutWidth = ((i - aekt.a(6.0F, getResources())) * 2 / 3 + aekt.a(3.0F, getResources()));
+        i = (int)bdgk.m() - aepi.a(24.0F, getResources());
+        localParams.mLayoutWidth = ((i - aepi.a(6.0F, getResources())) * 2 / 3 + aepi.a(3.0F, getResources()));
         if (localParams.mLayoutWidth > 0) {
           parampqm.setComLayoutParams(localParams);
         }
         if (QLog.isColorLevel()) {
-          QLog.d("Proteus.NativeGridImageView", 2, new Object[] { "contentWidth: ", Integer.valueOf(i), ", layout.width: ", Integer.valueOf(localParams.mLayoutWidth), ", MinOfWidthAndHeight: ", Long.valueOf(bdcb.m()) });
+          QLog.d("Proteus.NativeGridImageView", 2, new Object[] { "contentWidth: ", Integer.valueOf(i), ", layout.width: ", Integer.valueOf(localParams.mLayoutWidth), ", MinOfWidthAndHeight: ", Long.valueOf(bdgk.m()) });
         }
       }
     }
@@ -185,13 +185,13 @@ public class NativeGridImageView
         setNumColumns(3);
         break;
       } while (localParams == null);
-      i = (int)bdcb.m() - aekt.a(24.0F, getResources());
+      i = (int)bdgk.m() - aepi.a(24.0F, getResources());
       localParams.mLayoutWidth = i;
       if (localParams.mLayoutWidth > 0) {
         parampqm.setComLayoutParams(localParams);
       }
     } while (!QLog.isColorLevel());
-    QLog.d("Proteus.NativeGridImageView", 2, new Object[] { "contentWidth: ", Integer.valueOf(i), ", layout.width: ", Integer.valueOf(localParams.mLayoutWidth), ", MinOfWidthAndHeight: ", Long.valueOf(bdcb.m()) });
+    QLog.d("Proteus.NativeGridImageView", 2, new Object[] { "contentWidth: ", Integer.valueOf(i), ", layout.width: ", Integer.valueOf(localParams.mLayoutWidth), ", MinOfWidthAndHeight: ", Long.valueOf(bdgk.m()) });
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)

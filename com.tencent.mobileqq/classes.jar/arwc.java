@@ -1,119 +1,96 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Set;
-
-public class arwc
-  extends arum
+public final class arwc
 {
-  private ImageView a;
-  private boolean i;
+  public String a;
+  public String b;
   
-  public arwc(Intent paramIntent)
+  /* Error */
+  public static arwc a(String paramString)
   {
-    super(paramIntent);
-    this.i = paramIntent.getBooleanExtra("direct_send_emoji", false);
-    this.jdField_b_of_type_Int = 4;
+    // Byte code:
+    //   0: new 2	arwc
+    //   3: dup
+    //   4: invokespecial 16	arwc:<init>	()V
+    //   7: astore_3
+    //   8: new 18	org/json/JSONObject
+    //   11: dup
+    //   12: aload_0
+    //   13: invokespecial 21	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   16: astore_0
+    //   17: aload_0
+    //   18: ldc 23
+    //   20: invokevirtual 27	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   23: astore 4
+    //   25: aload_3
+    //   26: aload_0
+    //   27: ldc 29
+    //   29: invokevirtual 33	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   32: putfield 35	arwc:a	Ljava/lang/String;
+    //   35: aload 4
+    //   37: ldc 37
+    //   39: invokevirtual 41	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   42: astore_0
+    //   43: iconst_0
+    //   44: istore_1
+    //   45: iload_1
+    //   46: aload_0
+    //   47: invokevirtual 47	org/json/JSONArray:length	()I
+    //   50: if_icmpge +52 -> 102
+    //   53: aload_0
+    //   54: iload_1
+    //   55: invokevirtual 50	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   58: astore 4
+    //   60: aload_3
+    //   61: aload 4
+    //   63: ldc 52
+    //   65: invokevirtual 33	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   68: putfield 54	arwc:b	Ljava/lang/String;
+    //   71: aload 4
+    //   73: ldc 56
+    //   75: invokevirtual 59	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   78: astore 4
+    //   80: aload 4
+    //   82: ifnull +22 -> 104
+    //   85: ldc 61
+    //   87: aload 4
+    //   89: ldc 63
+    //   91: invokevirtual 66	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   94: invokevirtual 72	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   97: istore_2
+    //   98: iload_2
+    //   99: ifeq +5 -> 104
+    //   102: aload_3
+    //   103: areturn
+    //   104: iload_1
+    //   105: iconst_1
+    //   106: iadd
+    //   107: istore_1
+    //   108: goto -63 -> 45
+    //   111: astore_0
+    //   112: aload_0
+    //   113: athrow
+    //   114: astore_0
+    //   115: aconst_null
+    //   116: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	117	0	paramString	String
+    //   44	64	1	i	int
+    //   97	2	2	bool	boolean
+    //   7	96	3	localarwc	arwc
+    //   23	65	4	localJSONObject	org.json.JSONObject
+    // Exception table:
+    //   from	to	target	type
+    //   0	43	111	finally
+    //   45	80	111	finally
+    //   85	98	111	finally
+    //   0	43	114	java/lang/Exception
+    //   45	80	114	java/lang/Exception
+    //   85	98	114	java/lang/Exception
   }
   
-  protected View a()
+  public String toString()
   {
-    FrameLayout localFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
-    localFrameLayout.setMinimumHeight(bdkf.a(85.0F));
-    int j = bdkf.a(15.0F);
-    localFrameLayout.setPadding(0, j, 0, j);
-    ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
-    localImageView.setAdjustViewBounds(true);
-    localImageView.setMaxWidth(bdkf.a(120.0F));
-    localImageView.setMaxHeight(bdkf.a(120.0F));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    localFrameLayout.addView(localImageView, new FrameLayout.LayoutParams(-2, -2, 17));
-    this.jdField_a_of_type_AndroidWidgetImageView = localImageView;
-    e();
-    return localFrameLayout;
-  }
-  
-  protected void a()
-  {
-    if (k()) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-    if (l()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (m()) {
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
-    }
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    if (this.i)
-    {
-      if (paramInt >= 0) {
-        this.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", paramInt);
-      }
-      if (paramBundle != null) {
-        this.jdField_a_of_type_AndroidOsBundle.putAll(paramBundle);
-      }
-      d();
-      return;
-    }
-    super.a(paramInt, paramBundle);
-  }
-  
-  protected boolean c()
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    return false;
-  }
-  
-  protected void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardMarketFaceOption", 2, "setPreviewImage");
-    }
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_emotion_from_preview", false)) {}
-    for (Object localObject = AIOEmotionFragment.a; localObject == null; localObject = afqr.a) {
-      return;
-    }
-    localObject = ((aptm)localObject).a("fromAIO", false);
-    ((URLDrawable)localObject).setBounds(bdda.a((Drawable)localObject, 36, 100, this.jdField_a_of_type_Float));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    ((URLDrawable)localObject).setURLDrawableListener(new arwd(this));
-  }
-  
-  protected boolean h()
-  {
-    return true;
-  }
-  
-  public void j()
-  {
-    super.j();
-    AbstractGifImage.pauseAll();
-  }
-  
-  public void k()
-  {
-    super.k();
-    AbstractGifImage.resumeAll();
+    return "FlashPackCfg{version='" + this.a + '\'' + ", zipScid='" + this.b + '\'' + '}';
   }
 }
 

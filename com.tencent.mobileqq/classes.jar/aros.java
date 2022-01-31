@@ -1,31 +1,61 @@
-import android.content.Context;
-import android.graphics.Rect;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.app.Activity;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-final class aros
-  implements aqte
+class aros
+  implements bhvx
 {
-  aros(QQAppInterface paramQQAppInterface, Context paramContext, FileManagerEntity paramFileManagerEntity, int paramInt1, SessionInfo paramSessionInfo, ChatMessage paramChatMessage, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, Rect paramRect) {}
+  aros(aron paramaron) {}
   
-  public void a() {}
-  
-  public void b()
+  public void F()
   {
-    Object localObject = new arhh(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_Int);
-    new Bundle();
-    ((arhh)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    ((arhh)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    ((arhh)localObject).a(this.jdField_a_of_type_Boolean);
-    ((arhh)localObject).b(this.jdField_b_of_type_Boolean);
-    localObject = new arhj(this.jdField_a_of_type_AndroidContentContext, (arhm)localObject);
-    ((arhj)localObject).a(this.jdField_b_of_type_Int);
-    ((arhj)localObject).a(this.jdField_a_of_type_AndroidGraphicsRect);
-    ((arhj)localObject).a(true);
-    ((arhj)localObject).a();
+    aron.a(this.a, false);
+    this.a.jdField_a_of_type_Aroe.o();
+    this.a.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
+  }
+  
+  public void G()
+  {
+    aron.a(this.a, false);
+    if (aron.a(this.a)) {
+      this.a.f(true);
+    }
+    if (aron.b(this.a)) {
+      this.a.g(true);
+    }
+    if (aron.c(this.a)) {
+      this.a.b(true);
+    }
+  }
+  
+  public void H() {}
+  
+  public void a(float paramFloat)
+  {
+    aron.a(this.a, true);
+    Drawable localDrawable;
+    if (aron.a(this.a) != null)
+    {
+      localDrawable = aron.a(this.a).getBackground();
+      if (localDrawable != null) {
+        localDrawable.mutate().setAlpha(0);
+      }
+    }
+    if (aron.b(this.a) != null)
+    {
+      localDrawable = aron.b(this.a).getBackground();
+      if (localDrawable != null) {
+        localDrawable.mutate().setAlpha((int)(255.0F * paramFloat));
+      }
+    }
+    if (paramFloat < 0.8F)
+    {
+      aron.a(this.a).setVisibility(8);
+      aron.c(this.a).setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    }
   }
 }
 

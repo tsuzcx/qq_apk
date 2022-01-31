@@ -1,28 +1,54 @@
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+
 public class avvy
+  implements View.OnTouchListener
 {
-  public int a = 0;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e = 1;
+  public avvy(OCRResultActivity paramOCRResultActivity) {}
   
-  public avvy()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_c_of_type_Int = 1000;
-    this.jdField_d_of_type_Int = 1;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append("allUseInSimple_2=").append(this.jdField_b_of_type_Boolean).append(", bgUseInSimple_2=").append(this.jdField_c_of_type_Boolean).append(", cfgUse_argb8888=").append(this.jdField_d_of_type_Boolean).append(", networkControl=").append(this.a).append(", dailyRetryTimes=").append(this.jdField_b_of_type_Int).append(", countRetryTimes=").append(this.jdField_c_of_type_Int).append(", entranceControl=").append(this.jdField_d_of_type_Int).append(", autoPreDownload=").append(this.e);
-    return localStringBuilder.toString();
+    paramView = (EditText)paramView;
+    int j = paramMotionEvent.getAction();
+    if (j == 1)
+    {
+      Object localObject = paramView.getText();
+      int m = (int)paramMotionEvent.getX();
+      i = (int)paramMotionEvent.getY();
+      int n = paramView.getTotalPaddingLeft();
+      int k = paramView.getTotalPaddingTop();
+      m = m - n + paramView.getScrollX();
+      n = paramView.getScrollY();
+      Layout localLayout = paramView.getLayout();
+      i = localLayout.getLineForVertical(i - k + n);
+      float f = localLayout.getLineWidth(i);
+      if (m <= f)
+      {
+        i = localLayout.getOffsetForHorizontal(i, m);
+        localObject = (ClickableSpan[])((Spannable)localObject).getSpans(i, i, ClickableSpan.class);
+        if ((localObject.length != 0) && (j == 1))
+        {
+          localObject[0].onClick(paramView);
+          azqs.b(null, "dc00898", "", "", "0X80082E3", "0X80082E3", 0, 0, "", "", "", "");
+        }
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        return true;
+      }
+      if ((j == 1) && (!paramView.isFocused())) {
+        azqs.b(null, "dc00898", "", "", "0X80082E2", "0X80082E2", 0, 0, "", "", "", "");
+      }
+      return paramView.onTouchEvent(paramMotionEvent);
+    }
   }
 }
 

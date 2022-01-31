@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 
-public class aiey
-  implements DialogInterface.OnCancelListener
+public abstract interface aiey
 {
-  public aiey(MiniMsgTabFragment paramMiniMsgTabFragment) {}
+  public abstract void a();
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    MiniMsgTabFragment.a(this.a, -1, null);
-  }
+  public abstract void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo);
 }
 
 

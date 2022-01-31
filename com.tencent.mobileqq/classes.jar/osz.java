@@ -23,7 +23,7 @@ public class osz
         if (TextUtils.equals(str2, "fast_biu")) {}
         for (paramInt1 = 1;; paramInt1 = 0)
         {
-          bjxj.a("sp_key_biu_button_click_behaviour", Integer.valueOf(paramInt1));
+          bkbq.a("sp_key_biu_button_click_behaviour", Integer.valueOf(paramInt1));
           break;
         }
       }
@@ -32,7 +32,7 @@ public class osz
         if (TextUtils.equals(str2, "fast_biu")) {}
         for (paramInt1 = 1;; paramInt1 = 0)
         {
-          bjxj.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(paramInt1));
+          bkbq.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(paramInt1));
           break;
         }
       }
@@ -42,8 +42,8 @@ public class osz
   
   public void onWipeConfig(int paramInt)
   {
-    bjxj.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0));
-    bjxj.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1));
+    bkbq.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0));
+    bkbq.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1));
   }
 }
 

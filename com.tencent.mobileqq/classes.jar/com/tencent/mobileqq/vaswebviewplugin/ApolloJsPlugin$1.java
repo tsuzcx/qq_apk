@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import albm;
+import algb;
 
 class ApolloJsPlugin$1
   implements Runnable
@@ -9,7 +9,7 @@ class ApolloJsPlugin$1
   
   public void run()
   {
-    this.this$0.mInterceptor = albm.a(false, this.val$innerUrl);
+    this.this$0.mInterceptor = algb.a(false, this.val$innerUrl);
     ApolloJsPlugin.access$002(this.this$0, false);
   }
 }

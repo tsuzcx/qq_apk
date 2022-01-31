@@ -30,9 +30,9 @@ public class pfd
 {
   private final ConcurrentHashMap<Integer, TopBannerInfo> a;
   
-  public pfd(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler, pew parampew)
+  public pfd(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler, pew parampew)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     if (parampew != null) {
       parampew.a(new pfe(this));
@@ -183,7 +183,7 @@ public class pfd
   
   public void c(int paramInt)
   {
-    List localList = this.jdField_a_of_type_Awbw.a(TopBannerInfo.class, true, "mChannelId IS NOT NULL AND mChannelId == ?", new String[] { "" + paramInt }, null, null, null, "1");
+    List localList = this.jdField_a_of_type_Awgf.a(TopBannerInfo.class, true, "mChannelId IS NOT NULL AND mChannelId == ?", new String[] { "" + paramInt }, null, null, null, "1");
     if ((localList == null) || (localList.isEmpty()))
     {
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramInt), new TopBannerInfo());
@@ -201,14 +201,14 @@ public class pfd
     Object localObject = new qnh(1);
     ((qnh)localObject).jdField_c_of_type_JavaLangString = "http://qqpublic.qpic.cn/qq_public_cover/0/0-10000-7437E5B1B0F2403FBD6DDA952CE80AC1_vsmcut_160_90/0?busiType=3";
     ((qnh)localObject).f = "https://post.mp.qq.com/kan/article/2713129639-168010414.html?_wv=2147483777&sig=a039548d942f9b78b9dfab5c79284783&article_id=168010414&time=1534413057&_pflag=1&x5PreFetch=1";
-    ((qnh)localObject).jdField_b_of_type_JavaLangString = alpo.a(2131701276);
-    ((qnh)localObject).jdField_d_of_type_JavaLangString = (alpo.a(2131701283) + l);
+    ((qnh)localObject).jdField_b_of_type_JavaLangString = alud.a(2131701288);
+    ((qnh)localObject).jdField_d_of_type_JavaLangString = (alud.a(2131701295) + l);
     localTopBannerInfo.addItem((qnf)localObject);
     localObject = new qnh(3);
     ((qnh)localObject).jdField_c_of_type_JavaLangString = "http://gpic.qpic.cn/gbar_pic/aDJbaZH6aeQ9iaKenQ8IqHdg7M9kzbfsJZ3JAm4e1ICSlcpxOfcN5KQ/0";
     ((qnh)localObject).f = "https://post.mp.qq.com/kan/article/2713129639-168010414.html?_wv=2147483777&sig=a039548d942f9b78b9dfab5c79284783&article_id=168010414&time=1534413057&_pflag=1&x5PreFetch=1";
     ((qnh)localObject).a = "#F05F4C";
-    ((qnh)localObject).jdField_b_of_type_JavaLangString = (alpo.a(2131701279) + l);
+    ((qnh)localObject).jdField_b_of_type_JavaLangString = (alud.a(2131701291) + l);
     localTopBannerInfo.addItem((qnf)localObject);
     localObject = new qnh(4);
     ((qnh)localObject).jdField_c_of_type_JavaLangString = "http://qqpublic.qpic.cn/qq_public_cover/0/0-1533397936-401F1461EE42E7A5036F2F9AADA7E93E_open_280_280/320";
@@ -217,8 +217,8 @@ public class pfd
     localObject = new qnj();
     ((qnj)localObject).jdField_c_of_type_JavaLangString = "http://qqpublic.qpic.cn/qq_public/0/0-3041074878-6A663B38A6407A5DDFC7A5DF6D258047/900";
     ((qnj)localObject).a = "#F05F4C";
-    ((qnj)localObject).jdField_b_of_type_JavaLangString = alpo.a(2131701281);
-    ((qnj)localObject).jdField_d_of_type_JavaLangString = (alpo.a(2131701280) + l);
+    ((qnj)localObject).jdField_b_of_type_JavaLangString = alud.a(2131701293);
+    ((qnj)localObject).jdField_d_of_type_JavaLangString = (alud.a(2131701292) + l);
     ((qnj)localObject).jdField_e_of_type_Int = 2;
     ((qnj)localObject).jdField_e_of_type_JavaLangString = "1135b6d7402114aj";
     ((qnj)localObject).jdField_d_of_type_Int = 720;

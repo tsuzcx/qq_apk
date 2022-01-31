@@ -1,24 +1,22 @@
-import android.os.Handler;
+import com.tencent.mobileqq.remind.widget.WheelView;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+import com.tencent.widget.VerticalGallery;
 
-class bctr
-  implements bctp
+public class bctr
+  implements bicf
 {
-  bctr(bctq parambctq) {}
+  private int jdField_a_of_type_Int;
   
-  public void a()
+  public bctr(WheelPickerLayout paramWheelPickerLayout, int paramInt)
   {
-    bctq.a(this.a).sendEmptyMessage(1);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void b()
+  public void a(VerticalGallery paramVerticalGallery)
   {
-    bctq.a(this.a).sendEmptyMessage(0);
-  }
-  
-  public void c()
-  {
-    if (bctq.a(this.a) != null) {
-      bctq.a(this.a).b();
+    int i = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout)[this.jdField_a_of_type_Int].getSelectedItemPosition();
+    if (WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout) != null) {
+      WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.jdField_a_of_type_Int, i);
     }
   }
 }

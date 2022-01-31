@@ -1,16 +1,16 @@
 package com.tencent.open.downloadnew;
 
-import bfip;
-import bfko;
+import bfmy;
+import bfox;
 
 public class MyAppApi$5
   implements Runnable
 {
-  public MyAppApi$5(bfko parambfko, String paramString1, String paramString2) {}
+  public MyAppApi$5(bfox parambfox, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bfip.a("202", bfip.a(this.a, "NEWYYB"), this.b);
+    bfmy.a("202", bfmy.a(this.a, "NEWYYB"), this.b);
   }
 }
 

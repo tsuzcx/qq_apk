@@ -1,8 +1,19 @@
-import android.net.Uri;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
 
-public abstract interface avxy
+public final class avxy
+  implements Parcelable.Creator<TranslateResult>
 {
-  public abstract void a(Uri paramUri);
+  public TranslateResult a(Parcel paramParcel)
+  {
+    return new TranslateResult(paramParcel);
+  }
+  
+  public TranslateResult[] a(int paramInt)
+  {
+    return new TranslateResult[paramInt];
+  }
 }
 
 

@@ -1,38 +1,22 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class auzz
+  extends ampt
 {
-  private static auzz jdField_a_of_type_Auzz = new auzz();
-  private static SharedPreferencesProxyManager jdField_a_of_type_ComTencentMqqShared_file_accessorSharedPreferencesProxyManager = SharedPreferencesProxyManager.getInstance();
-  static boolean jdField_a_of_type_Boolean;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  
-  public static void a(Context paramContext, String paramString)
+  public auzz(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    jdField_a_of_type_ComTencentMqqShared_file_accessorSharedPreferencesProxyManager.init(paramContext);
-    jdField_a_of_type_Auzz.jdField_a_of_type_AndroidContentSharedPreferences = jdField_a_of_type_ComTencentMqqShared_file_accessorSharedPreferencesProxyManager.getProxy(paramString, 0);
-    jdField_a_of_type_Boolean = true;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public static void a(String paramString, boolean paramBoolean)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    SharedPreferences.Editor localEditor = jdField_a_of_type_Auzz.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    localEditor.putBoolean(paramString, paramBoolean);
-    localEditor.commit();
-  }
-  
-  public static boolean a(String paramString, boolean paramBoolean)
-  {
-    try
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      boolean bool = jdField_a_of_type_Auzz.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(paramString, paramBoolean);
-      return bool;
+      auzw.jdField_a_of_type_ArrayOfLong[0] = ((paramSosoLbsInfo.a.b * 1000000.0D));
+      auzw.jdField_a_of_type_ArrayOfLong[1] = ((paramSosoLbsInfo.a.a * 1000000.0D));
+      auzw.jdField_a_of_type_Long = System.currentTimeMillis();
     }
-    catch (ClassCastException paramString) {}
-    return paramBoolean;
   }
 }
 

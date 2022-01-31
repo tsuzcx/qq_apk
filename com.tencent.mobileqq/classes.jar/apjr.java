@@ -1,6 +1,28 @@
-public abstract interface apjr
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+
+class apjr
+  extends Handler
 {
-  public abstract void a(int paramInt, String paramString);
+  apjr(apjp paramapjp, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (apjp.c(this.a));
+    QLog.e("VoiceInputHelper", 1, "checkPermission uncertain");
+    this.a.onGetError(1830002);
+  }
 }
 
 

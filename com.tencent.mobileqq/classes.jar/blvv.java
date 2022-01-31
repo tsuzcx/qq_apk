@@ -1,13 +1,14 @@
-import dov.com.qq.im.capture.view.MusicProviderView;
-
 public class blvv
-  extends blpe
 {
-  public blvv(MusicProviderView paramMusicProviderView) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void b()
+  public blvv(String paramString1, String paramString2, String paramString3)
   {
-    this.a.a(false);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

@@ -1,75 +1,17 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
 
 public class bnmy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public long a;
-  public String a;
+  public bnmy(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
   
-  public static String a(List<bnmy> paramList)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localStringBuilder.append(((bnmy)paramList.next()).a()).append(";");
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static List<bnmy> a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramString = paramString.split(";");
-    if ((paramString == null) || (paramString.length == 0)) {
-      return localArrayList;
-    }
-    int j = paramString.length;
-    int i = 0;
-    label31:
-    CharSequence localCharSequence;
-    if (i < j)
-    {
-      localCharSequence = paramString[i];
-      if (!TextUtils.isEmpty(localCharSequence)) {
-        break label56;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label31;
-      break;
-      label56:
-      bnmy localbnmy = new bnmy();
-      localbnmy.a(localCharSequence);
-      localArrayList.add(localbnmy);
-    }
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("_").append(this.jdField_a_of_type_Int).append("_").append(this.jdField_a_of_type_Long);
-    return localStringBuilder.toString();
-  }
-  
-  public void a(String paramString)
-  {
-    String[] arrayOfString = paramString.split("_");
-    if (arrayOfString.length != 3) {
-      throw new IllegalArgumentException(paramString + " illegal MessageBaseData!");
-    }
-    this.jdField_a_of_type_JavaLangString = arrayOfString[0];
-    this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[1]).intValue();
-    this.jdField_a_of_type_Long = Long.valueOf(arrayOfString[2]).longValue();
-  }
-  
-  public boolean a(String paramString, int paramInt, long paramLong)
-  {
-    return (this.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.jdField_a_of_type_Int == paramInt) && (this.jdField_a_of_type_Long == paramLong);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a.setCenterScaleValue(f);
   }
 }
 

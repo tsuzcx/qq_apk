@@ -1,220 +1,103 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebBackForwardList;
-import com.tencent.smtt.sdk.WebView;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.security.KeyFactory;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.crypto.Cipher;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
 
-public class aiqg
+class aiqg
+  extends Handler
 {
-  private static volatile aiqg jdField_a_of_type_Aiqg;
-  private List<aiqh> jdField_a_of_type_JavaUtilList;
+  private aiqg(aiqf paramaiqf) {}
   
-  private aiqg()
+  public void handleMessage(Message paramMessage)
   {
-    a(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin() + "");
-  }
-  
-  public static aiqg a()
-  {
-    if (jdField_a_of_type_Aiqg == null) {}
-    try
+    switch (paramMessage.what)
     {
-      if (jdField_a_of_type_Aiqg == null) {
-        jdField_a_of_type_Aiqg = new aiqg();
-      }
-      return jdField_a_of_type_Aiqg;
     }
-    finally {}
-  }
-  
-  private String a(String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject3 = BaseApplicationImpl.getApplication();
-    Object localObject1 = localObject2;
-    if (localObject3 != null)
-    {
-      localObject3 = ((BaseApplicationImpl)localObject3).getSharedPreferences("qwallet_intercept", 4);
-      localObject1 = localObject2;
-      if (localObject3 != null) {
-        localObject1 = ((SharedPreferences)localObject3).getString("InterceptAppOpenConfig" + paramString, null);
-      }
-    }
-    return localObject1;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-      try
-      {
-        paramString2 = new X509EncodedKeySpec(Base64.decode(paramString2, 0));
-        paramString2 = KeyFactory.getInstance("RSA").generatePublic(paramString2);
-        paramString1 = Base64.decode(paramString1, 0);
-        Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-        localCipher.init(2, paramString2);
-        paramString1 = new String(localCipher.doFinal(paramString1));
-        return paramString1;
-      }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-      }
-    }
-    return null;
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject != null)
-    {
-      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("qwallet_intercept", 4);
-      if (localObject != null) {
-        ((SharedPreferences)localObject).edit().putString("InterceptAppOpenConfig" + paramString2, paramString1).commit();
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    paramString = a(paramString);
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_JavaUtilList = aiqh.a(paramString);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PayInterceptHelper", 2, "loadConfigFromSP|" + this.jdField_a_of_type_JavaUtilList);
-    }
-  }
-  
-  public void a(JSONArray paramJSONArray, String paramString)
-  {
-    if (paramJSONArray != null) {
-      a(paramJSONArray.toString(), paramString);
-    }
-    a(paramString);
-  }
-  
-  public boolean a(String paramString, WebViewFragment paramWebViewFragment)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (TextUtils.isEmpty(paramString)) || (paramWebViewFragment == null)) {}
-    CustomWebView localCustomWebView;
-    aiqh localaiqh;
     do
     {
       do
       {
-        while (!((Iterator)localObject1).hasNext())
+        do
         {
           do
           {
             do
             {
-              return false;
-              if (QLog.isColorLevel()) {
-                QLog.d("PayInterceptHelper", 2, "handleIntercept:" + paramString);
-              }
-              localCustomWebView = paramWebViewFragment.getWebView();
-            } while (localCustomWebView == null);
-            localObject1 = localCustomWebView.copyBackForwardList();
-          } while ((localObject1 == null) || (((WebBackForwardList)localObject1).getCurrentIndex() != ((WebBackForwardList)localObject1).getSize() - 1));
-          localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-        }
-        localaiqh = (aiqh)((Iterator)localObject1).next();
-      } while (TextUtils.isEmpty(localaiqh.jdField_b_of_type_JavaLangString));
-      if (localaiqh.jdField_a_of_type_JavaUtilRegexPattern == null) {
-        localaiqh.jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile(localaiqh.jdField_b_of_type_JavaLangString);
-      }
-    } while (!localaiqh.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString).matches());
-    Object localObject1 = "";
-    Object localObject2 = paramWebViewFragment.a;
-    paramWebViewFragment = (WebViewFragment)localObject1;
-    if (localObject2 != null)
-    {
-      localObject2 = ((beep)localObject2).jdField_a_of_type_JavaUtilList;
-      paramWebViewFragment = (WebViewFragment)localObject1;
-      if (localObject2 != null)
-      {
-        paramWebViewFragment = (WebViewFragment)localObject1;
-        if (((List)localObject2).size() > 0) {
-          paramWebViewFragment = (String)((List)localObject2).get(0);
-        }
-      }
-    }
-    boolean bool;
-    if (TextUtils.isEmpty(localaiqh.jdField_a_of_type_JavaLangString)) {
-      bool = true;
-    }
-    while (bool)
-    {
-      if (localaiqh.jdField_a_of_type_Boolean) {
-        VACDReportUtil.a("originURL=" + paramWebViewFragment + "|interceptURL=" + paramString, "qqwallet", "InterceptOpenOtherApp", null, null, 0, null);
-      }
-      if (!localaiqh.jdField_b_of_type_Boolean) {
-        break;
-      }
-      if (!TextUtils.isEmpty(localaiqh.c))
-      {
-        if (TextUtils.isEmpty(localaiqh.d)) {
-          localaiqh.d = a(localaiqh.c, "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsE3WI7sDFUi6QWV/oK8qozDvS\nTlxmu1a3NSFxeOrjlVEVtOx8yIMVFYIixq/Fv1XgUlyvL7bGJbaLLKaqlYruGd2z\nNbaIz90Zm4H0pMFHx4vCYhsRP1HXbVMo2ZDiHEDbnSm/99uzFPPiXqLi8jE9t4if\n0GuYdSZfe5o+SIKT5QIDAQAB");
-        }
-        paramWebViewFragment = localaiqh.d;
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    return;
+                    if (QLog.isColorLevel()) {
+                      QLog.d("carverW VideoPlayController", 2, "MEDIA_PREPAREING ");
+                    }
+                    aiqf.a(this.a, 2);
+                    return;
+                    if (QLog.isColorLevel()) {
+                      QLog.d("carverW VideoPlayController", 2, "onPrepared  getAutoPlayFlag=" + this.a.a());
+                    }
+                    if (this.a.jdField_a_of_type_Aiqh != null) {
+                      this.a.jdField_a_of_type_Aiqh.a(this.a.jdField_a_of_type_Aiqo, this.a.b());
+                    }
+                    if (this.a.a())
+                    {
+                      this.a.m();
+                      this.a.a(false);
+                      return;
+                    }
+                    aiqf.a(this.a, 3);
+                    return;
+                    if (QLog.isColorLevel()) {
+                      QLog.d("carverW VideoPlayController", 2, "onSeekComplete");
+                    }
+                  } while (this.a.jdField_a_of_type_Aiqh == null);
+                  this.a.jdField_a_of_type_Aiqh.v();
+                  return;
+                  if (QLog.isColorLevel()) {
+                    QLog.d("carverW VideoPlayController", 2, "onPlaybackComplete");
+                  }
+                  aiqf.a(this.a, true);
+                  this.a.a(0);
+                  this.a.b(0);
+                  if (this.a.jdField_a_of_type_Aiqh != null) {
+                    this.a.jdField_a_of_type_Aiqh.c(this.a.jdField_a_of_type_Aiqo);
+                  }
+                  aiqf.a(this.a, 0);
+                  return;
+                } while (!QLog.isColorLevel());
+                QLog.d("carverW VideoPlayController", 2, "onVideoSizeChanged");
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d("carverW VideoPlayController", 2, "MEDIA_INSTALL_SUCCESS");
+                }
+              } while ((this.a.jdField_a_of_type_Aiob == null) || (this.a.jdField_a_of_type_AndroidAppActivity == null));
+              this.a.jdField_a_of_type_AndroidViewView = this.a.jdField_a_of_type_Aiob.a(this.a.jdField_a_of_type_AndroidAppActivity);
+            } while ((this.a.jdField_a_of_type_AndroidViewView == null) || (this.a.jdField_a_of_type_AndroidAppActivity == null));
+            aiqf.a(this.a, this.a.jdField_a_of_type_AndroidAppActivity);
+            return;
+            if (QLog.isColorLevel()) {
+              QLog.d("carverW VideoPlayController", 2, "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
+            }
+            this.a.a(paramMessage.arg1, paramMessage.arg2);
+            return;
+          } while (this.a.jdField_a_of_type_Aiqh == null);
+          if (paramMessage.arg1 == 929)
+          {
+            this.a.jdField_a_of_type_Aiqh.d(this.a.jdField_a_of_type_Aiqo);
+            this.a.b(8);
+            return;
+          }
+        } while (paramMessage.arg1 != 92);
+        this.a.jdField_a_of_type_Aiqh.a(this.a.jdField_a_of_type_Aiqo, paramMessage.arg2);
+        return;
         if (QLog.isColorLevel()) {
-          QLog.d("PayInterceptHelper", 2, "jumpUrl:" + paramWebViewFragment);
+          QLog.d("carverW VideoPlayController", 2, "onDownloading isClickToStart=" + aiqf.a(this.a));
         }
-        if (TextUtils.isEmpty(paramWebViewFragment)) {
-          break;
-        }
-        if (!paramWebViewFragment.contains("?")) {
-          break label515;
-        }
-        paramWebViewFragment = paramWebViewFragment + "&j=";
-      }
-      try
-      {
-        for (;;)
-        {
-          paramString = paramWebViewFragment + URLEncoder.encode(paramString, "UTF-8");
-          if (QLog.isColorLevel()) {
-            QLog.d("PayInterceptHelper", 2, "jumpUrl with params:" + paramString);
-          }
-          localCustomWebView.loadUrl(paramString);
-          return true;
-          if (localaiqh.jdField_b_of_type_JavaUtilRegexPattern == null) {
-            localaiqh.jdField_b_of_type_JavaUtilRegexPattern = Pattern.compile(localaiqh.jdField_a_of_type_JavaLangString);
-          }
-          bool = localaiqh.jdField_b_of_type_JavaUtilRegexPattern.matcher(paramWebViewFragment).matches();
-          break;
-          label515:
-          paramWebViewFragment = paramWebViewFragment + "?j=";
-        }
-      }
-      catch (UnsupportedEncodingException paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-          paramString = paramWebViewFragment;
-        }
-      }
-    }
+      } while ((this.a.jdField_a_of_type_Aiqh == null) || (!aiqf.a(this.a)));
+      this.a.jdField_a_of_type_Aiqh.b(this.a.jdField_a_of_type_Aiqo, paramMessage.arg1);
+    } while (aiqf.a(this.a) == 4);
+    this.a.b(8);
   }
 }
 

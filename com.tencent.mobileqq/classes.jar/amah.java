@@ -1,25 +1,47 @@
-import android.view.View;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
-class amah
+public class amah
+  extends DefaultHandler
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<amag> b;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public amah(amad paramamad, View paramView, amag paramamag)
+  public amah(QQAppInterface paramQQAppInterface) {}
+  
+  public HashMap<String, String> a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramamag);
+    return this.jdField_a_of_type_JavaUtilHashMap;
   }
   
-  public amag a()
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    return (amag)this.b.get();
+    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, paramArrayOfChar);
+    }
   }
   
-  public View a()
+  public void endDocument()
   {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    super.endDocument();
+  }
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_JavaLangString = null;
+  }
+  
+  public void startDocument()
+  {
+    super.startDocument();
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString2;
   }
 }
 

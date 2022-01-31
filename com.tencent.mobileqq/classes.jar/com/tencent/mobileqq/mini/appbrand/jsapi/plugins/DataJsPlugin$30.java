@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alpo;
+import alud;
 import android.content.Context;
-import bepp;
+import bety;
 import com.tencent.mobileqq.app.ThreadManager;
 
 class DataJsPlugin$30
@@ -12,10 +12,10 @@ class DataJsPlugin$30
   
   public void run()
   {
-    bepp localbepp = new bepp(this.val$context);
-    localbepp.a(alpo.a(2131703114));
-    localbepp.show();
-    ThreadManager.excute(new DataJsPlugin.30.1(this, localbepp), 128, null, true);
+    bety localbety = new bety(this.val$context);
+    localbety.a(alud.a(2131703126));
+    localbety.show();
+    ThreadManager.excute(new DataJsPlugin.30.1(this, localbety), 128, null, true);
   }
 }
 

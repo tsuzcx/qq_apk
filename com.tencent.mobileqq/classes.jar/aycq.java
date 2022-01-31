@@ -1,75 +1,17 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SearchHistory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class aycq
-  extends aydi
+  implements DialogInterface.OnClickListener
 {
-  private SearchHistory a;
+  public aycq(SignatureEditFragment paramSignatureEditFragment) {}
   
-  public aycq(QQAppInterface paramQQAppInterface, SearchHistory paramSearchHistory)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramSearchHistory;
-  }
-  
-  public Drawable a()
-  {
-    return null;
-  }
-  
-  public SearchHistory a()
-  {
-    return this.a;
-  }
-  
-  public String a()
-  {
-    return this.a.extralInfo;
-  }
-  
-  public void a(String paramString) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public int c()
-  {
-    switch (this.a.type)
-    {
-    default: 
-    case 3000: 
-    case 1: 
-    case 1006: 
-    case 56938: 
-    case 1008: 
-      do
-      {
-        return 1;
-        return 101;
-        return 4;
-        return 11;
-      } while (!TextUtils.equals(this.a.uin, aljq.az));
-      return 110;
-    }
-    return 111;
-  }
-  
-  public String c()
-  {
-    return this.a.displayName;
-  }
-  
-  public String d()
-  {
-    return this.a.uin;
+    paramDialogInterface.dismiss();
+    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_choose", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

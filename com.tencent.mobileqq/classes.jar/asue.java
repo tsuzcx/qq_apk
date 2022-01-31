@@ -1,59 +1,74 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.hotpic.HotPicData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class asue
-  extends aofy<asuf>
+  extends astt
 {
-  public int a()
+  public static URL b(String paramString)
   {
-    return 445;
-  }
-  
-  @NonNull
-  public asuf a(int paramInt)
-  {
-    return new asuf();
-  }
-  
-  @Nullable
-  public asuf a(aogf[] paramArrayOfaogf)
-  {
-    asuf localasuf = new asuf();
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null)) {
-      asuf.a(localasuf, paramArrayOfaogf[0].a);
+    try
+    {
+      paramString = new URL("hot_pic_origin", "", paramString);
+      return paramString;
     }
-    return localasuf;
+    catch (MalformedURLException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
-  public Class<asuf> a()
+  protected String a(HotPicData paramHotPicData)
   {
-    return asuf.class;
+    return paramHotPicData.originalUrl;
   }
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(asuf paramasuf) {}
-  
-  public boolean a()
+  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    paramDownloadParams = (HotPicData)paramDownloadParams.mExtraInfo;
+    String str = a(paramDownloadParams);
+    File localFile = a(str);
+    if (localFile.exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "loadImageFile file exist:" + localFile.getAbsolutePath());
+      }
+      return localFile;
+    }
+    localFile.getParentFile().mkdirs();
+    if ((bdeu.a()) && (bdeu.b() < 20971520L)) {
+      throw new IOException("SD card free space is " + bdeu.b());
+    }
+    Object localObject = new File(a);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdir();
+    }
+    int i = a(str, localFile);
+    if (i == 0)
+    {
+      localObject = awni.a(localFile.getAbsolutePath());
+      if (!paramDownloadParams.originalMD5.equalsIgnoreCase((String)localObject))
+      {
+        localFile.delete();
+        paramURLDrawableHandler.onFileDownloadFailed(0);
+        return null;
+      }
+      paramURLDrawableHandler.onFileDownloadSucceed(localFile.length());
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->0");
+      }
+      return localFile;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->" + i);
+    }
+    return null;
   }
 }
 

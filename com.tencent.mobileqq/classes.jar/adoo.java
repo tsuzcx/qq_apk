@@ -1,16 +1,9 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.widget.TextView;
 
 public class adoo
-  extends alls
 {
-  public adoo(QQSettingSettingActivity paramQQSettingSettingActivity) {}
-  
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
-  {
-    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
-    QQSettingSettingActivity.c(this.a);
-  }
+  public int a;
+  public TextView a;
 }
 
 

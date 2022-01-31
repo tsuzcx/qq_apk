@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import aphq;
+import aplz;
 
 public abstract class XmlDataV7aVersion
   extends XmlData
 {
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public int VideoVersion;
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public String v7a_MD5;
 }
 

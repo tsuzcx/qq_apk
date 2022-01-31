@@ -1,123 +1,82 @@
-import android.os.Message;
-import android.util.SparseArray;
-import android.view.View;
-import cooperation.qzone.util.QZLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.lang.ref.WeakReference;
 
 public class bnbm
-  extends bmiv
+  extends bnbp<bnaz, bnaz>
 {
-  private static final SparseArray<bnbi> a;
+  private final int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private final WeakReference<bmnt> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  public bnbm()
   {
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    jdField_a_of_type_AndroidUtilSparseArray.put(3000, bnbi.a(98, 1, 0, bnbm.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3005, bnbi.a(98, 12, 0, bnbm.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3006, bnbi.a(98, 2, 0, bnbm.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(5, bnbi.a(98, 5, 0, bmhd.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(7, bnbi.a(98, 3, 0, bmhd.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(6, bnbi.a(98, 6, 0, bmhd.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(11, bnbi.a(98, 4, 0, bmex.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(12, bnbi.a(98, 7, 0, EditVideoArtFilter.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(19, bnbi.a(98, 9, 0, bmfc.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3001, bnbi.a(98, 10, 0, bnbj.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3002, bnbi.a(98, 8, 1, bnbp.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3003, bnbi.a(98, 8, 2, bnbp.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3004, bnbi.a(98, 11, 0, bnbj.class));
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_Int = -1;
   }
   
-  private <T> T a(Class<T> paramClass)
+  public bnbm(String paramString, bmnt parambmnt, int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_Bmix.a().iterator();
-    while (localIterator.hasNext())
-    {
-      bmiv localbmiv = (bmiv)localIterator.next();
-      if (paramClass.isInstance(localbmiv)) {
-        return localbmiv;
-      }
-    }
-    return null;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambmnt);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private Set<Integer> a()
+  protected void a(JobContext paramJobContext, bnaz parambnaz)
   {
-    HashSet localHashSet = new HashSet();
-    Object localObject = (bmhd)a(bmhd.class);
-    if ((localObject != null) && (!((bmhd)localObject).c()))
+    wxe.a("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "start generate thumb ... mVideoIndex = %d", Integer.valueOf(this.jdField_a_of_type_Int));
+    bnbh localbnbh = parambnaz.jdField_a_of_type_Bnbh;
+    int i = localbnbh.c;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      paramJobContext = (bmnt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    }
+    while (paramJobContext != null)
     {
-      if (!((bmhd)localObject).a().a().a()) {
-        localHashSet.add(Integer.valueOf(1));
-      }
-      if (!((bmhd)localObject).a().a().a()) {
-        localHashSet.add(Integer.valueOf(3));
-      }
-      if (!((bmhd)localObject).a().a().a()) {
-        localHashSet.add(Integer.valueOf(4));
-      }
-    }
-    localObject = (EditVideoArtFilter)a(EditVideoArtFilter.class);
-    if ((localObject != null) && (((EditVideoArtFilter)localObject).b())) {
-      localHashSet.add(Integer.valueOf(5));
-    }
-    localObject = (bmex)a(bmex.class);
-    if ((localObject != null) && (((bmex)localObject).b())) {
-      localHashSet.add(Integer.valueOf(2));
-    }
-    return localHashSet;
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    if ((paramMessage.what == 1) && ((paramMessage.obj instanceof Object[])))
-    {
-      long l = ((Long)((Object[])(Object[])paramMessage.obj)[0]).longValue();
-      View localView = (View)((Object[])(Object[])paramMessage.obj)[1];
-      QZLog.d("QzoneEditPicturePartRep", 2, "handleEditVideoMessage " + l + " " + localView);
-    }
-    return super.a(paramMessage);
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    super.a_(paramInt, paramObject);
-    paramObject = (bnbi)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (paramObject != null)
-    {
-      if (paramInt == 3005) {
-        paramObject.a(a());
-      }
-      paramObject.a();
-      paramObject = (bmiv)a(paramObject.a());
-      if ((paramObject instanceof bmhd))
+      Bitmap localBitmap = paramJobContext.a(this.jdField_a_of_type_Int);
+      if (localBitmap != null)
       {
-        QZLog.d("QzoneEditPicturePartRep", 2, "editVideoStateChanged doodle report");
+        try
+        {
+          String str2 = this.jdField_a_of_type_JavaLangString;
+          String str1 = str2;
+          if (str2 == null) {
+            str1 = bnbs.a(parambnaz.jdField_a_of_type_Int, parambnaz.b, ".jpg");
+          }
+          i = new bnbj(localBitmap, str1, localbnbh.jdField_a_of_type_Int, localbnbh.jdField_b_of_type_Int, i, localbnbh.jdField_a_of_type_Float, localbnbh.jdField_a_of_type_Double, localbnbh.jdField_b_of_type_Double, parambnaz.jdField_a_of_type_Int).a(new Void[0]).intValue();
+          paramJobContext.a(localBitmap);
+          if (i != 0) {
+            break label217;
+          }
+          parambnaz.jdField_a_of_type_JavaLangString = str1;
+          parambnaz.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = str1;
+          wxe.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb success ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+          super.notifyResult(parambnaz);
+          return;
+        }
+        finally
+        {
+          paramJobContext.a(localBitmap);
+        }
+        paramJobContext = null;
+        continue;
+        label217:
+        wxe.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+        super.notifyError(new ErrorMessage(-1, alud.a(2131706077) + this.jdField_a_of_type_Int));
+      }
+      else
+      {
+        wxe.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... EditVideoPlayerExport generateVideoFrameBitmap return null", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+        super.notifyError(new ErrorMessage(-1, alud.a(2131706078) + this.jdField_a_of_type_Int));
         return;
       }
-      if ((paramObject instanceof bmex))
-      {
-        QZLog.d("QzoneEditPicturePartRep", 2, "editVideoStateChanged crop report");
-        return;
-      }
-      if ((paramObject instanceof bmfc))
-      {
-        QZLog.d("QzoneEditPicturePartRep", 2, "editVideoStateChanged save report");
-        return;
-      }
-      if ((paramObject instanceof EditVideoArtFilter))
-      {
-        QZLog.d("QzoneEditPicturePartRep", 2, "editVideoStateChanged art filter report");
-        return;
-      }
-      QZLog.d("QzoneEditPicturePartRep", 2, "editVideoStateChanged unsupported report");
-      return;
     }
-    QZLog.w("QzoneEditPicturePartRep", 2, new Object[] { "editVideoStateChanged we are not interested at this edit state for reporting" });
+    wxe.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... can not find EditVideoPlayerExport", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    super.notifyError(new ErrorMessage(-1, alud.a(2131706069) + this.jdField_a_of_type_Int));
   }
 }
 

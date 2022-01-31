@@ -1,25 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.NinePatch;
+import android.graphics.Paint;
+import android.graphics.Rect;
 
 public class aevs
-  implements DialogInterface.OnClickListener
 {
-  public aevs(DoodlePanel paramDoodlePanel) {}
+  public Bitmap a;
+  public NinePatch a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    switch (paramInt)
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-    default: 
-      return;
-    case 0: 
-      azmj.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      paramBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap.getNinePatchChunk();
+      if ((paramBitmap != null) && (NinePatch.isNinePatchChunk(paramBitmap))) {
+        this.jdField_a_of_type_AndroidGraphicsNinePatch = new NinePatch(this.jdField_a_of_type_AndroidGraphicsBitmap, paramBitmap, null);
+      }
+    }
+    else
+    {
       return;
     }
-    azmj.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
-    DoodlePanel.a(this.a).b(1);
+    this.jdField_a_of_type_AndroidGraphicsNinePatch = null;
+  }
+  
+  public void a(Canvas paramCanvas, Rect paramRect1, Rect paramRect2, Paint paramPaint)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsNinePatch != null) {
+      if (paramPaint != null) {
+        this.jdField_a_of_type_AndroidGraphicsNinePatch.draw(paramCanvas, paramRect2, paramPaint);
+      }
+    }
+    while ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (paramPaint == null)) {
+      return;
+    }
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramRect1, paramRect2, paramPaint);
   }
 }
 

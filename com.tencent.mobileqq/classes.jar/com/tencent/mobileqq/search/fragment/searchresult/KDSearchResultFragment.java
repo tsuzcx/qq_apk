@@ -13,10 +13,10 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageButton;
-import aygs;
-import aygt;
-import beav;
-import besa;
+import aylb;
+import aylc;
+import befe;
+import bewj;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -34,7 +34,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import mqq.app.AppRuntime;
 import nur;
-import xmh;
+import xqq;
 
 public class KDSearchResultFragment
   extends PublicBaseFragment
@@ -42,8 +42,8 @@ public class KDSearchResultFragment
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private aygt jdField_a_of_type_Aygt;
-  private besa jdField_a_of_type_Besa;
+  private aylc jdField_a_of_type_Aylc;
+  private bewj jdField_a_of_type_Bewj;
   private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
   private QuickPinyinEditText jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText;
   public WebViewProgressBar a;
@@ -71,7 +71,7 @@ public class KDSearchResultFragment
   {
     try
     {
-      paramView.setBackgroundResource(2130838592);
+      paramView.setBackgroundResource(2130838593);
       return;
     }
     catch (Exception localException)
@@ -79,7 +79,7 @@ public class KDSearchResultFragment
       QLog.e("KDSearchResultFragment", 1, "doOnCreate, e = " + QLog.getStackTraceString(localException));
       try
       {
-        paramView.setBackgroundResource(2130849388);
+        paramView.setBackgroundResource(2130849461);
         return;
       }
       catch (Error paramView)
@@ -104,13 +104,13 @@ public class KDSearchResultFragment
   
   private void c()
   {
-    this.jdField_a_of_type_Besa = new besa();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setController(this.jdField_a_of_type_Besa);
-    this.jdField_a_of_type_Besa.a(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar);
+    this.jdField_a_of_type_Bewj = new bewj();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setController(this.jdField_a_of_type_Bewj);
+    this.jdField_a_of_type_Bewj.a(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar);
     this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setVisibility(8);
-    this.jdField_a_of_type_Aygt = new aygs(this, getActivity(), getActivity(), a(), this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    this.jdField_a_of_type_Aygt.setmTimeBeforeLoadUrl(System.currentTimeMillis());
-    new beav(this.jdField_a_of_type_Aygt).a(null, nur.a(), null);
+    this.jdField_a_of_type_Aylc = new aylb(this, getActivity(), getActivity(), a(), this.jdField_a_of_type_ComTencentBizUiTouchWebView);
+    this.jdField_a_of_type_Aylc.setmTimeBeforeLoadUrl(System.currentTimeMillis());
+    new befe(this.jdField_a_of_type_Aylc).a(null, nur.a(), null);
     this.jdField_a_of_type_ComTencentBizUiTouchWebView.setWillNotCacheDrawing(false);
     this.jdField_a_of_type_ComTencentBizUiTouchWebView.setDrawingCacheEnabled(true);
   }
@@ -144,11 +144,11 @@ public class KDSearchResultFragment
     {
     default: 
       return;
-    case 2131367807: 
+    case 2131367817: 
       UniteSearchActivity.a(getActivity(), "", 26);
       getActivity().finish();
       return;
-    case 2131363520: 
+    case 2131363522: 
       ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getWindowToken(), 0);
       getActivity().finish();
       return;
@@ -166,21 +166,21 @@ public class KDSearchResultFragment
     if (i == 15453) {
       bool = true;
     }
-    xmh.a(bool, "you must use the function:CheckArithHWResultFragment.open() to open this page!!!! :" + i);
+    xqq.a(bool, "you must use the function:CheckArithHWResultFragment.open() to open this page!!!! :" + i);
     this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("url");
     this.b = paramBundle.getStringExtra("keyword");
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561245, paramViewGroup, false);
-    paramViewGroup = paramLayoutInflater.findViewById(2131375981);
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = ((TouchWebView)paramLayoutInflater.findViewById(2131380084));
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText = ((QuickPinyinEditText)paramLayoutInflater.findViewById(2131365849));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramLayoutInflater.findViewById(2131367807));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLayoutInflater.findViewById(2131363520));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = ((WebViewProgressBar)paramLayoutInflater.findViewById(2131371645));
-    paramBundle = paramLayoutInflater.findViewById(2131379875);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561263, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.findViewById(2131376034);
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView = ((TouchWebView)paramLayoutInflater.findViewById(2131380142));
+    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText = ((QuickPinyinEditText)paramLayoutInflater.findViewById(2131365851));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramLayoutInflater.findViewById(2131367817));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLayoutInflater.findViewById(2131363522));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = ((WebViewProgressBar)paramLayoutInflater.findViewById(2131371664));
+    paramBundle = paramLayoutInflater.findViewById(2131379933);
     paramBundle.setBackgroundColor(1996488704);
     if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
       paramBundle.setVisibility(0);
@@ -195,9 +195,9 @@ public class KDSearchResultFragment
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
         getActivity().getWindow().addFlags(67108864);
-        int i = getResources().getColor(2131166957);
+        int i = getResources().getColor(2131166959);
         paramBundle = new SystemBarCompact(getActivity(), true, i);
-        paramBundle.setStatusDrawable(getResources().getDrawable(2130845674));
+        paramBundle.setStatusDrawable(getResources().getDrawable(2130845746));
         paramBundle.init();
         paramViewGroup.setFitsSystemWindows(true);
         paramViewGroup.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
@@ -211,24 +211,24 @@ public class KDSearchResultFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Aygt != null) {
-      this.jdField_a_of_type_Aygt.c();
+    if (this.jdField_a_of_type_Aylc != null) {
+      this.jdField_a_of_type_Aylc.c();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Aygt != null) {
-      this.jdField_a_of_type_Aygt.b();
+    if (this.jdField_a_of_type_Aylc != null) {
+      this.jdField_a_of_type_Aylc.b();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Aygt != null) {
-      this.jdField_a_of_type_Aygt.a();
+    if (this.jdField_a_of_type_Aylc != null) {
+      this.jdField_a_of_type_Aylc.a();
     }
   }
 }

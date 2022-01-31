@@ -59,34 +59,34 @@ public class oev
     super(paramContext, 2131755332);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     requestWindowFeature(1);
-    if (!bhou.e()) {
+    if (!bhtb.e()) {
       getWindow().setBackgroundDrawable(new ColorDrawable());
     }
     for (;;)
     {
-      setContentView(2131560042);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378938));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378599));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378923));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378910));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363543));
-      this.e = ((TextView)findViewById(2131378985));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368728));
+      setContentView(2131560041);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378996));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378653));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378981));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378968));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363545));
+      this.e = ((TextView)findViewById(2131379043));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368742));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369890));
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369896));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369909));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369915));
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-      syo.a(this.jdField_a_of_type_AndroidWidgetButton, aekt.a(6.0F, paramContext.getResources()), Color.parseColor("#EBEDF5"));
-      syo.a(this.jdField_a_of_type_AndroidWidgetTextView, aekt.a(4.0F, paramContext.getResources()), Color.parseColor("#F2F3F7"));
-      syo.a(this.jdField_b_of_type_AndroidWidgetTextView, aekt.a(4.0F, paramContext.getResources()), Color.parseColor("#F2F3F7"));
-      syo.a(this.jdField_c_of_type_AndroidWidgetTextView, aekt.a(4.0F, paramContext.getResources()), Color.parseColor("#F2F3F7"));
-      syo.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, aekt.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
+      syo.a(this.jdField_a_of_type_AndroidWidgetButton, aepi.a(6.0F, paramContext.getResources()), Color.parseColor("#EBEDF5"));
+      syo.a(this.jdField_a_of_type_AndroidWidgetTextView, aepi.a(4.0F, paramContext.getResources()), Color.parseColor("#F2F3F7"));
+      syo.a(this.jdField_b_of_type_AndroidWidgetTextView, aepi.a(4.0F, paramContext.getResources()), Color.parseColor("#F2F3F7"));
+      syo.a(this.jdField_c_of_type_AndroidWidgetTextView, aepi.a(4.0F, paramContext.getResources()), Color.parseColor("#F2F3F7"));
+      syo.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, aepi.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
       return;
       getWindow().setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(2131165654)));
     }
@@ -96,11 +96,11 @@ public class oev
   {
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataGiftServiceBean != null) && (this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdDataGiftServiceBean != null) && (this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdDataGiftServiceBean != null))
     {
-      syo.a(this.jdField_a_of_type_AndroidWidgetButton, aekt.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), Color.parseColor("#00CAFC"));
+      syo.a(this.jdField_a_of_type_AndroidWidgetButton, aepi.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), Color.parseColor("#00CAFC"));
       this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
       return;
     }
-    syo.a(this.jdField_a_of_type_AndroidWidgetButton, aekt.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), Color.parseColor("#EBEDF5"));
+    syo.a(this.jdField_a_of_type_AndroidWidgetButton, aepi.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), Color.parseColor("#EBEDF5"));
     this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
   }
   
@@ -145,7 +145,7 @@ public class oev
     {
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdDataGiftServiceBean = new GiftServiceBean();
-      this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdDataGiftServiceBean.t = alpo.a(2131705650);
+      this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdDataGiftServiceBean.t = alud.a(2131705662);
       this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdDataGiftServiceBean.v = "0";
     }
   }

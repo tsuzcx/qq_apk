@@ -1,14 +1,34 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adml
+  extends asyt
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  TextView b;
-  TextView c;
+  public adml(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = 1;
+    if (!paramBoolean1)
+    {
+      this.a.a(2131719884, 1);
+      return;
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean2) {
+      i = 2;
+    }
+    azqs.b(localQQAppInterface, "dc00898", "", "", "0X8009D11", "0X8009D11", 0, 0, String.valueOf(i), "", "", "");
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
+    }
+  }
 }
 
 

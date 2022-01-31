@@ -1,6 +1,7 @@
-public abstract interface bhrp
+public class bhrp
 {
-  public abstract int[] a();
+  public bhrq a;
+  public boolean a;
 }
 
 

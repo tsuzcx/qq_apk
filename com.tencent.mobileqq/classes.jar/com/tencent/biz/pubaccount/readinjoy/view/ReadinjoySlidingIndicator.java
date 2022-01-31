@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -201,10 +201,10 @@ public class ReadinjoySlidingIndicator
     {
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
       d();
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848922);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(aekt.a(7.0F, getResources()), aekt.a(7.0F, getResources()));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848995);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(aepi.a(7.0F, getResources()), aepi.a(7.0F, getResources()));
       localLayoutParams.gravity = 16;
-      localLayoutParams.leftMargin = (-aekt.a(11.0F, getResources()));
+      localLayoutParams.leftMargin = (-aepi.a(11.0F, getResources()));
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     }
     return this.jdField_a_of_type_AndroidWidgetImageView;
@@ -298,10 +298,10 @@ public class ReadinjoySlidingIndicator
         View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(k);
         if (localView != null)
         {
-          String str2 = this.jdField_a_of_type_ArrayOfJavaLangString[k] + alpo.a(2131713354);
+          String str2 = this.jdField_a_of_type_ArrayOfJavaLangString[k] + alud.a(2131713366);
           String str1 = str2;
           if (k == this.jdField_b_of_type_Int) {
-            str1 = str2 + alpo.a(2131713500);
+            str1 = str2 + alud.a(2131713512);
           }
           localView.setContentDescription(str1);
         }

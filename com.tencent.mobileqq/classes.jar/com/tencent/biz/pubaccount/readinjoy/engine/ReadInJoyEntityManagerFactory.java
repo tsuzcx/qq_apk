@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import alxk;
+import ambz;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
-import awbw;
-import awcj;
-import awcw;
+import awgf;
+import awgs;
+import awhf;
 import com.tencent.biz.pubaccount.readinjoy.redpacket.RedPacketTaskData;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleExposureInfo;
@@ -51,12 +51,12 @@ public class ReadInJoyEntityManagerFactory
           if (!"sqlite_sequence".equals(str)) {
             try
             {
-              paramSQLiteDatabase.a(awcw.a(str));
+              paramSQLiteDatabase.a(awhf.a(str));
             }
             catch (SQLiteException localSQLiteException)
             {
               QLog.e(this.TAG, 1, "[DB] dropAllTable " + str, localSQLiteException);
-              alxk.a(localSQLiteException);
+              ambz.a(localSQLiteException);
             }
           }
         }
@@ -83,7 +83,7 @@ public class ReadInJoyEntityManagerFactory
                 continue;
               }
               localObject = ArticleInfo.class;
-              awcj.a(localArrayList, str, localCursor2, (Class)localObject);
+              awgs.a(localArrayList, str, localCursor2, (Class)localObject);
             }
             catch (ClassNotFoundException localClassNotFoundException)
             {
@@ -203,7 +203,7 @@ public class ReadInJoyEntityManagerFactory
     //   123: aload 4
     //   125: astore 5
     //   127: aload 6
-    //   129: invokestatic 68	alxk:a	(Ljava/lang/Exception;)V
+    //   129: invokestatic 68	ambz:a	(Ljava/lang/Exception;)V
     //   132: aload_1
     //   133: astore 5
     //   135: aload 4
@@ -274,24 +274,24 @@ public class ReadInJoyEntityManagerFactory
     a(this.dbHelper.a());
   }
   
-  public alxk build(String paramString)
+  public ambz build(String paramString)
   {
     if (this.dbHelper == null)
     {
       this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "readinjoy_message_node_" + paramString + ".db", null, 91);
-      this.dbHelper = new alxk(this.mInnerDbHelper);
+      this.dbHelper = new ambz(this.mInnerDbHelper);
     }
     return this.dbHelper;
   }
   
   public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
   {
-    paramSQLiteDatabase.execSQL(awcw.a(new ArticleInfo()));
-    paramSQLiteDatabase.execSQL(awcw.a(new ArticleReadInfo()));
-    paramSQLiteDatabase.execSQL(awcw.a(new AdvertisementInfo()));
-    paramSQLiteDatabase.execSQL(awcw.a(new WeiShiVideoArticleInfo()));
-    paramSQLiteDatabase.execSQL(awcw.a(new ArticleExposureInfo()));
-    paramSQLiteDatabase.execSQL(awcw.a(new RedPacketTaskData()));
+    paramSQLiteDatabase.execSQL(awhf.a(new ArticleInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new ArticleReadInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new AdvertisementInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new WeiShiVideoArticleInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new ArticleExposureInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new RedPacketTaskData()));
     paramSQLiteDatabase.execSQL("create trigger if not exists readinjoy_readinfo_delete_trigger after delete on " + ArticleInfo.TABLE_NAME + " for each row begin  delete from " + ArticleReadInfo.TABLE_NAME + " where mArticleID = old.mArticleID; end ");
   }
   
@@ -318,7 +318,7 @@ public class ReadInJoyEntityManagerFactory
       }
     }
     if (paramInt1 == 0) {
-      paramSQLiteDatabase.execSQL(awcw.a(new ArticleReadInfo()));
+      paramSQLiteDatabase.execSQL(awhf.a(new ArticleReadInfo()));
     }
     paramSQLiteDatabase.execSQL("create trigger if not exists readinjoy_readinfo_delete_trigger after delete on " + ArticleInfo.TABLE_NAME + " for each row begin  delete from " + ArticleReadInfo.TABLE_NAME + " where mArticleID = old.mArticleID; end ");
   }
@@ -329,13 +329,13 @@ public class ReadInJoyEntityManagerFactory
     {
       if (this.name.matches("^[0-9]*$"))
       {
-        awbw localawbw = createEntityManager();
-        ReadInJoyEntityManagerFactory.VerifyEntity localVerifyEntity = (ReadInJoyEntityManagerFactory.VerifyEntity)localawbw.a(ReadInJoyEntityManagerFactory.VerifyEntity.class, "flags=?", new String[] { "readinjoy_message_node_verify_entity" });
+        awgf localawgf = createEntityManager();
+        ReadInJoyEntityManagerFactory.VerifyEntity localVerifyEntity = (ReadInJoyEntityManagerFactory.VerifyEntity)localawgf.a(ReadInJoyEntityManagerFactory.VerifyEntity.class, "flags=?", new String[] { "readinjoy_message_node_verify_entity" });
         if (localVerifyEntity == null)
         {
           localVerifyEntity = new ReadInJoyEntityManagerFactory.VerifyEntity();
           localVerifyEntity.name = this.name;
-          localawbw.b(localVerifyEntity);
+          localawgf.b(localVerifyEntity);
           return true;
         }
         if ((!localVerifyEntity.flags.equals("readinjoy_message_node_verify_entity")) || (!localVerifyEntity.name.equals(this.name)))
@@ -343,7 +343,7 @@ public class ReadInJoyEntityManagerFactory
           this.mInnerDbHelper.dropAllTable();
           localVerifyEntity = new ReadInJoyEntityManagerFactory.VerifyEntity();
           localVerifyEntity.name = this.name;
-          localawbw.b(localVerifyEntity);
+          localawgf.b(localVerifyEntity);
           return false;
         }
       }

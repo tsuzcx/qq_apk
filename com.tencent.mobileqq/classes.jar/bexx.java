@@ -1,17 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
-
-class bexx
-  implements DialogInterface.OnClickListener
+public abstract interface bexx
 {
-  bexx(bexw parambexw) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.a.b(110405, "", "", "");
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

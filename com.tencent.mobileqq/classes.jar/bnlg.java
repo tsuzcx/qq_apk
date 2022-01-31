@@ -1,62 +1,52 @@
-public abstract class bnlg
-  extends bnlm
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCountTimeLayout;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+public class bnlg
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public bnlg(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
   
-  public bnlg()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
+    }
   }
   
-  public String a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", mActionUpAnimator:" + this.a.b.get());
+    }
+    if (!this.a.b.get())
+    {
+      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+      this.a.d();
+      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+    }
+    for (;;)
+    {
+      this.a.b.set(false);
+      this.a.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCountTimeLayout.setVisibility(0);
+      return;
+      this.a.e();
+      this.a.a(1.0F);
+    }
   }
   
-  public boolean a()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Int == -1)
-    {
-      a("ShortVideoBaseInfo.check", "reqBusiType invalid, reqBusiType:" + this.jdField_a_of_type_Int);
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
     }
-    if (this.jdField_b_of_type_Int == -1)
-    {
-      a("ShortVideoBaseInfo.check", "uinType invalid,uinType:" + this.jdField_b_of_type_Int);
-      return false;
-    }
-    if (this.c == null)
-    {
-      a("ShortVideoBaseInfo.check", "peerUin invalid,peerUin:" + this.c);
-      return false;
-    }
-    return true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nShortVideoBaseInfo");
-    localStringBuilder.append("\n |-").append("localUUID:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("uniseq:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n |-").append("reqBusiType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\n |-").append("selfUin:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("peerUin:").append(this.c);
-    localStringBuilder.append("\n |-").append("secondId:").append(this.d);
-    localStringBuilder.append("\n |-").append("md5:").append(this.e);
-    localStringBuilder.append("\n |-").append("thumbMD5:").append(this.g);
-    localStringBuilder.append("\n |-").append("errInfo:").append(this.jdField_a_of_type_Awey);
-    return localStringBuilder.toString();
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
   }
 }
 

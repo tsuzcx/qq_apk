@@ -58,7 +58,7 @@ public class ola
     this.jdField_a_of_type_Okf = new okf();
     this.jdField_a_of_type_Okf.a(a());
     this.jdField_a_of_type_Okx = new okx(paramReadInJoyCommentListView, this.jdField_a_of_type_JavaUtilList, this);
-    paramReadInJoyCommentListView.setOnScrollListener(this.jdField_a_of_type_Bhpo);
+    paramReadInJoyCommentListView.setOnScrollListener(this.jdField_a_of_type_Bhtv);
   }
   
   public ola(FastWebActivity paramFastWebActivity, ReadInJoyCommentListView paramReadInJoyCommentListView, int paramInt)
@@ -73,7 +73,7 @@ public class ola
     this.jdField_a_of_type_Okf = new okf();
     this.jdField_a_of_type_Okf.a(a());
     this.jdField_a_of_type_Okx = new okx(paramReadInJoyCommentListView, this.jdField_a_of_type_JavaUtilList, this);
-    paramReadInJoyCommentListView.setOnScrollListener(this.jdField_a_of_type_Bhpo);
+    paramReadInJoyCommentListView.setOnScrollListener(this.jdField_a_of_type_Bhtv);
   }
   
   private void a(int paramInt)
@@ -414,9 +414,9 @@ public class ola
       paramViewGroup = ojm.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, a(paramInt), i, true, this);
       if (paramView == null)
       {
-        bhxr.a("ReadInJoyCommentAdapter.create convertView");
+        biby.a("ReadInJoyCommentAdapter.create convertView");
         paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramViewGroup);
-        bhxr.a();
+        biby.a();
       }
       for (;;)
       {
@@ -441,8 +441,8 @@ public class ola
     }
     ListAdapter localListAdapter = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.getAdapter();
     Object localObject = localListAdapter;
-    if ((localListAdapter instanceof bhtf)) {
-      localObject = ((bhtf)localListAdapter).getWrappedAdapter();
+    if ((localListAdapter instanceof bhxm)) {
+      localObject = ((bhxm)localListAdapter).getWrappedAdapter();
     }
     if ((localObject instanceof rzr))
     {
@@ -484,9 +484,9 @@ public class ola
       if (!paramBoolean) {
         break;
       }
-      int i = 2131718789;
+      int i = 2131718801;
       if (oij.a()) {
-        i = 2131718734;
+        i = 2131718746;
       }
       QQToast.a(BaseApplication.getContext(), 2, i, 0).a();
       a(4);
@@ -513,7 +513,7 @@ public class ola
     }
     oxb.a().a(true, localBaseCommentData.rowKey, localBaseCommentData.commentId, localBaseCommentData.commentContent, localBaseCommentData.level, "onCommentSend", paramList.getInt("seq"), paramomt);
     return;
-    QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131713167), 0).a();
+    QQToast.a(BaseApplication.getContext(), 1, alud.a(2131713179), 0).a();
   }
   
   public void onCommentCreate(boolean paramBoolean1, omt paramomt, boolean paramBoolean2, List<omt> paramList, int paramInt)
@@ -668,7 +668,7 @@ public class ola
       if (!paramBoolean) {
         break;
       }
-      QQToast.a(BaseApplication.getContext(), 2, alpo.a(2131713504), 0).a();
+      QQToast.a(BaseApplication.getContext(), 2, alud.a(2131713516), 0).a();
       if (this.jdField_a_of_type_JavaUtilList != null)
       {
         int i = 0;
@@ -699,7 +699,7 @@ public class ola
     }
     oxb.a().a(true, localBaseCommentData.rowKey, localBaseCommentData.commentId, localBaseCommentData.commentContent, localBaseCommentData.level, "onCommentSend", ((Bundle)localObject).getInt("seq"), paramomt);
     return;
-    QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131713267), 0).a();
+    QQToast.a(BaseApplication.getContext(), 1, alud.a(2131713279), 0).a();
   }
   
   public void onCommentStateError(int paramInt)
@@ -710,7 +710,7 @@ public class ola
     while (paramInt != 1001) {
       return;
     }
-    xxb.a(1, 2131718775);
+    ybk.a(1, 2131718787);
   }
 }
 

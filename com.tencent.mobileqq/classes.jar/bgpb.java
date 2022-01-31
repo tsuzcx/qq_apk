@@ -1,24 +1,17 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.qqmini.sdk.core.widget.media.VideoGestureRelativeLayout;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import java.io.File;
 
 public class bgpb
-  implements View.OnTouchListener
 {
-  public bgpb(VideoGestureRelativeLayout paramVideoGestureRelativeLayout) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static Uri a(Context paramContext, File paramFile)
   {
-    if ((paramMotionEvent.getAction() == 1) && (VideoGestureRelativeLayout.a(this.a)))
-    {
-      if (VideoGestureRelativeLayout.a(this.a) != null) {
-        VideoGestureRelativeLayout.a(this.a).d(paramMotionEvent);
-      }
-      VideoGestureRelativeLayout.a(this.a, false);
-    }
-    return VideoGestureRelativeLayout.a(this.a).onTouchEvent(paramMotionEvent);
+    Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+    paramFile = Uri.fromFile(paramFile);
+    localIntent.setData(paramFile);
+    paramContext.sendBroadcast(localIntent);
+    return paramFile;
   }
 }
 

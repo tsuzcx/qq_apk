@@ -1,18 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
 public class adyr
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adyr(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog) {}
+  public adyr(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    SoundAndVibrateActivity.a(this.a, paramBoolean);
   }
 }
 

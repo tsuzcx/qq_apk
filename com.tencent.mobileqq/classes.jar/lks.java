@@ -33,12 +33,12 @@ public class lks
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_Boolean = paramContext.getSharedPreferences("effects_face_file", 4).getBoolean("key_frist_use_Face" + VideoController.a().a().getCurrentAccountUin(), false);
     this.jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.MOUTH_OPEN.value, 2131695938);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.EYEBROWS_RAISE.value, 2131695936);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.BLINK.value, 2131695935);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.HEAD_SHAKE.value, 2131695939);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.KISS.value, 2131695937);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(jdField_a_of_type_Int, 2131695926);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.MOUTH_OPEN.value, 2131695940);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.EYEBROWS_RAISE.value, 2131695938);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.BLINK.value, 2131695937);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.HEAD_SHAKE.value, 2131695941);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.KISS.value, 2131695939);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(jdField_a_of_type_Int, 2131695928);
   }
   
   public String a(Context paramContext, int paramInt)

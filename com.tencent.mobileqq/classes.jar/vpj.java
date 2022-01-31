@@ -1,35 +1,26 @@
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import java.util.LinkedList;
+import android.support.annotation.Nullable;
+import android.support.annotation.UiThread;
 
-public class vpj
+public abstract interface vpj
 {
-  private final SparseArray<LinkedList<Object>> a = new SparseArray();
+  public abstract vpk a(@Nullable vpm paramvpm, int paramInt);
   
-  public <CLASS> CLASS a(@NonNull Class<CLASS> paramClass)
-  {
-    paramClass = (LinkedList)this.a.get(paramClass.hashCode());
-    if (paramClass != null)
-    {
-      paramClass = paramClass.poll();
-      if (paramClass != null) {}
-      return paramClass;
-    }
-    return null;
-  }
+  @UiThread
+  public abstract vpp a();
   
-  public void a(@NonNull Object paramObject)
-  {
-    int i = paramObject.getClass().hashCode();
-    LinkedList localLinkedList2 = (LinkedList)this.a.get(i);
-    LinkedList localLinkedList1 = localLinkedList2;
-    if (localLinkedList2 == null)
-    {
-      localLinkedList1 = new LinkedList();
-      this.a.put(i, localLinkedList1);
-    }
-    localLinkedList1.offer(paramObject);
-  }
+  public abstract void a();
+  
+  @UiThread
+  public abstract void a(@Nullable vpm paramvpm, int paramInt1, int paramInt2, String paramString);
+  
+  @UiThread
+  public abstract void a(@Nullable vpm paramvpm, String paramString);
+  
+  public abstract void a(vpo paramvpo);
+  
+  public abstract void b();
+  
+  public abstract void b(vpo paramvpo);
 }
 
 

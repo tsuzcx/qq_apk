@@ -15,7 +15,7 @@ public class qvl
     if (paramEditable.length() > 0)
     {
       if (!ReadInJoySelectMemberFragment.a(this.a).isVisible()) {
-        this.a.getChildFragmentManager().beginTransaction().add(2131366789, ReadInJoySelectMemberFragment.a(this.a)).addToBackStack(null).commit();
+        this.a.getChildFragmentManager().beginTransaction().add(2131366799, ReadInJoySelectMemberFragment.a(this.a)).addToBackStack(null).commit();
       }
       ReadInJoySelectMemberFragment.a(this.a).a(paramEditable.toString());
     }

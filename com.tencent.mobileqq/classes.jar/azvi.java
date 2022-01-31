@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
-class azvi
-  implements azvz
+public class azvi
+  implements View.OnLongClickListener
 {
-  azvi(azvh paramazvh, CountdownTextView paramCountdownTextView) {}
+  public azvi(StructMsgForGeneralShare paramStructMsgForGeneralShare, aetk paramaetk) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_Azvh.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_Azvh.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(azvh.a(this.jdField_a_of_type_Azvh, 0L));
-  }
-  
-  public void a(long paramLong)
-  {
-    paramLong /= 1000L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(azvh.a(this.jdField_a_of_type_Azvh, paramLong));
-    this.jdField_a_of_type_Azvh.jdField_d_of_type_Long = paramLong;
+    StructMsgForGeneralShare.clickedItemIndex = 0;
+    azus localazus = (azus)paramView.getTag();
+    if (!TextUtils.isEmpty(localazus.Q)) {
+      StructMsgForGeneralShare.clickedItemIndex = Integer.valueOf(localazus.Q).intValue();
+    }
+    return this.jdField_a_of_type_Aetk.onLongClick(paramView);
   }
 }
 

@@ -1,37 +1,21 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.ui.MoreFragment;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bhic
-  implements Animation.AnimationListener
+class bhic
+  implements bgnr
 {
-  public bhic(MoreFragment paramMoreFragment, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  bhic(bhib parambhib, MiniAppInfo paramMiniAppInfo) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(bgod parambgod, int paramInt, String paramString)
   {
-    paramAnimation = MoreFragment.a(this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment);
-    if (paramAnimation != null)
+    if ((paramInt == 0) && (parambgod != null))
     {
-      paramAnimation.putExtra("miniAppID", MoreFragment.a(this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment));
-      paramAnimation.putExtra("more_item_id", this.jdField_a_of_type_Int);
-      paramAnimation.putExtra("share_in_mini_process", this.jdField_a_of_type_Boolean);
-      if (this.jdField_a_of_type_AndroidOsBundle != null) {
-        paramAnimation.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-      }
-      if (this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment.getActivity() != null)
-      {
-        this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment.getActivity().setResult(-1, paramAnimation);
-        this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment.getActivity().finish();
-      }
+      bhib.a(this.jdField_a_of_type_Bhib, parambgod);
+      bhib.a(this.jdField_a_of_type_Bhib, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+      this.jdField_a_of_type_Bhib.c();
+      return;
     }
+    this.jdField_a_of_type_Bhib.a(paramInt, paramString);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

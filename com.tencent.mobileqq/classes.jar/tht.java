@@ -25,7 +25,7 @@ public class tht
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("version", "8.3.3");
+      localJSONObject.put("version", "8.3.5");
       localJSONObject.put("error_code", paramInt);
       if (this.a != null) {
         this.a.sendEmptyMessage(1);
@@ -46,7 +46,7 @@ public class tht
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("version", "8.3.3");
+      localJSONObject.put("version", "8.3.5");
       if (this.a != null) {
         this.a.sendEmptyMessage(0);
       }

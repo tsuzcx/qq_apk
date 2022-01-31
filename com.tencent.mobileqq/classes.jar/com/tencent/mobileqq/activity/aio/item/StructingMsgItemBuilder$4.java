@@ -5,17 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import arum;
-import azmj;
-import azqj;
-import azqk;
-import azqu;
-import azsm;
-import aztz;
-import azua;
+import aryv;
+import azqs;
 import azus;
-import azux;
+import azut;
 import azvd;
+import azwv;
+import azyi;
+import azyj;
+import azzb;
+import azzg;
+import azzm;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForStructing;
@@ -51,7 +51,7 @@ class StructingMsgItemBuilder$4
         if ((!(localAbsShareMsg instanceof StructMsgForGeneralShare)) || (!((StructMsgForGeneralShare)localAbsShareMsg).mIsPAVideoStructMsg)) {
           break label272;
         }
-        localObject1 = (StructMsgForGeneralShare)azqu.a(localAbsShareMsg.getBytes());
+        localObject1 = (StructMsgForGeneralShare)azvd.a(localAbsShareMsg.getBytes());
         swn.a((StructMsgForGeneralShare)localObject1);
         ((StructMsgForGeneralShare)localObject1).mSourceAction = "web";
         localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
@@ -66,7 +66,7 @@ class StructingMsgItemBuilder$4
         ((Bundle)localObject2).putByteArray("stuctmsg_bytes", ((StructMsgForGeneralShare)localObject1).getBytes());
         localObject1 = new Intent();
         ((Intent)localObject1).putExtras((Bundle)localObject2);
-        arum.a((Activity)this.this$0.jdField_a_of_type_AndroidContentContext, (Intent)localObject1, 21);
+        aryv.a((Activity)this.this$0.jdField_a_of_type_AndroidContentContext, (Intent)localObject1, 21);
       }
     }
     return;
@@ -98,7 +98,7 @@ class StructingMsgItemBuilder$4
         if (i < localAbsShareMsg.getItemCount())
         {
           localObject1 = localAbsShareMsg.getItemByIndex(i);
-          if ((TextUtils.isEmpty(((azqj)localObject1).Q)) || (Integer.valueOf(((azqj)localObject1).Q).intValue() != StructingMsgItemBuilder.c) || ((!(localObject1 instanceof aztz)) && (!(localObject1 instanceof azua)))) {}
+          if ((TextUtils.isEmpty(((azus)localObject1).Q)) || (Integer.valueOf(((azus)localObject1).Q).intValue() != StructingMsgItemBuilder.c) || ((!(localObject1 instanceof azyi)) && (!(localObject1 instanceof azyj)))) {}
         }
       }
     }
@@ -106,23 +106,23 @@ class StructingMsgItemBuilder$4
     {
       if (localObject1 != null)
       {
-        if (!(localObject1 instanceof azqk)) {
+        if (!(localObject1 instanceof azut)) {
           break label1801;
         }
-        localObject1 = (azqk)localObject1;
-        localObject9 = ((azqk)localObject1).a;
-        localObject6 = ((azqk)localObject1).c;
-        localObject8 = ((azqk)localObject1).b;
-        localObject11 = ((azqk)localObject1).d;
-        localObject10 = ((azqk)localObject1).e;
-        localObject7 = ((azqk)localObject1).f;
-        localObject5 = ((azqk)localObject1).g;
+        localObject1 = (azut)localObject1;
+        localObject9 = ((azut)localObject1).a;
+        localObject6 = ((azut)localObject1).c;
+        localObject8 = ((azut)localObject1).b;
+        localObject11 = ((azut)localObject1).d;
+        localObject10 = ((azut)localObject1).e;
+        localObject7 = ((azut)localObject1).f;
+        localObject5 = ((azut)localObject1).g;
         i = 0;
         localObject1 = localObject12;
         label529:
         if (i < ((ArrayList)localObject9).size())
         {
-          localObject4 = (azqj)((ArrayList)localObject9).get(i);
+          localObject4 = (azus)((ArrayList)localObject9).get(i);
           if ((localObject4 instanceof StructMsgItemTitle))
           {
             localObject4 = ((StructMsgItemTitle)localObject4).b();
@@ -142,19 +142,19 @@ class StructingMsgItemBuilder$4
             break label529;
             i += 1;
             break;
-            if ((localObject4 instanceof azvd))
+            if ((localObject4 instanceof azzm))
             {
-              localObject4 = ((azvd)localObject4).b();
+              localObject4 = ((azzm)localObject4).b();
               localObject3 = localObject1;
               localObject1 = localObject2;
               localObject2 = localObject4;
             }
             else
             {
-              if (!(localObject4 instanceof azsm)) {
+              if (!(localObject4 instanceof azwv)) {
                 break label1782;
               }
-              localObject4 = ((azsm)localObject4).S;
+              localObject4 = ((azwv)localObject4).S;
               localObject2 = localObject3;
               localObject3 = localObject1;
               localObject1 = localObject4;
@@ -173,13 +173,13 @@ class StructingMsgItemBuilder$4
       {
         localObject10 = localMessageForStructing.senderuin;
         localObject11 = Long.toString(localAbsShareMsg.msgId);
-        azmj.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, (String)localObject10, (String)localObject1, (String)localObject11, "");
+        azqs.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, (String)localObject10, (String)localObject1, (String)localObject11, "");
         if ((str1 == null) || ("".equals(str1)))
         {
           localObject10 = "http://url.cn/JS8oE7";
           label785:
           this.this$0.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (String)localObject9, (String)localObject8, (String)localObject7, str2, (String)localObject1, (String)localObject10, (String)localObject6, (String)localObject2, localObject3, (String)localObject4, (String)localObject5, l, str3);
-          azmj.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, str3, "" + l, "" + StructingMsgItemBuilder.c, "android");
+          azqs.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, str3, "" + l, "" + StructingMsgItemBuilder.c, "android");
           return;
           i = 0;
           localObject1 = localObject13;
@@ -190,20 +190,20 @@ class StructingMsgItemBuilder$4
             break label1665;
           }
           localObject10 = localAbsShareMsg.getItemByIndex(i);
-          if ((localObject10 instanceof azqk))
+          if ((localObject10 instanceof azut))
           {
-            localObject12 = (azqk)localObject10;
-            localObject11 = ((azqk)localObject12).a;
-            if ((((azqk)localObject12).c == null) || ("".equals(((azqk)localObject12).c)) || ((localObject9 != null) && (!"".equals(localObject9)))) {
+            localObject12 = (azut)localObject10;
+            localObject11 = ((azut)localObject12).a;
+            if ((((azut)localObject12).c == null) || ("".equals(((azut)localObject12).c)) || ((localObject9 != null) && (!"".equals(localObject9)))) {
               break label1662;
             }
-            localObject9 = ((azqk)localObject12).c;
+            localObject9 = ((azut)localObject12).c;
             label1005:
             localObject10 = localObject4;
-            if (((azqk)localObject12).b != null)
+            if (((azut)localObject12).b != null)
             {
               localObject10 = localObject4;
-              if (!"".equals(((azqk)localObject12).b)) {
+              if (!"".equals(((azut)localObject12).b)) {
                 if (localObject4 != null)
                 {
                   localObject10 = localObject4;
@@ -211,36 +211,36 @@ class StructingMsgItemBuilder$4
                 }
                 else
                 {
-                  localObject10 = ((azqk)localObject12).b;
+                  localObject10 = ((azut)localObject12).b;
                 }
               }
             }
-            if ((((azqk)localObject12).d == null) || ("".equals(((azqk)localObject12).d)) || ((localObject7 != null) && (!"".equals(localObject7)))) {
+            if ((((azut)localObject12).d == null) || ("".equals(((azut)localObject12).d)) || ((localObject7 != null) && (!"".equals(localObject7)))) {
               break label1655;
             }
-            localObject4 = ((azqk)localObject12).d;
+            localObject4 = ((azut)localObject12).d;
             label1107:
-            if ((((azqk)localObject12).e == null) || (!"".equals(((azqk)localObject12).e)) || ((localObject6 != null) && (!"".equals(localObject6)))) {
+            if ((((azut)localObject12).e == null) || (!"".equals(((azut)localObject12).e)) || ((localObject6 != null) && (!"".equals(localObject6)))) {
               break label1652;
             }
-            localObject6 = ((azqk)localObject12).e;
+            localObject6 = ((azut)localObject12).e;
             label1152:
-            if ((((azqk)localObject12).f == null) || (!"".equals(((azqk)localObject12).f)) || ((localObject5 != null) && (!"".equals(localObject5)))) {
+            if ((((azut)localObject12).f == null) || (!"".equals(((azut)localObject12).f)) || ((localObject5 != null) && (!"".equals(localObject5)))) {
               break label1649;
             }
-            localObject5 = ((azqk)localObject12).f;
+            localObject5 = ((azut)localObject12).f;
             label1197:
-            if ((((azqk)localObject12).g == null) || (!"".equals(((azqk)localObject12).g)) || ((localObject8 != null) && (!"".equals(localObject8)))) {
+            if ((((azut)localObject12).g == null) || (!"".equals(((azut)localObject12).g)) || ((localObject8 != null) && (!"".equals(localObject8)))) {
               break label1642;
             }
-            localObject7 = ((azqk)localObject12).g;
+            localObject7 = ((azut)localObject12).g;
             label1242:
             int j = 0;
             if (j >= ((ArrayList)localObject11).size()) {
               break label1735;
             }
-            localObject8 = (azqj)((ArrayList)localObject11).get(j);
-            if (("title".equals(((azqj)localObject8).a)) && (localObject1 == null))
+            localObject8 = (azus)((ArrayList)localObject11).get(j);
+            if (("title".equals(((azus)localObject8).a)) && (localObject1 == null))
             {
               if (!(localObject8 instanceof StructMsgItemTitle)) {
                 break label1720;
@@ -257,40 +257,40 @@ class StructingMsgItemBuilder$4
               localObject3 = localObject1;
               localObject1 = localObject8;
               break;
-              if (("summary".equals(((azqj)localObject8).a)) && (localObject2 == null))
+              if (("summary".equals(((azus)localObject8).a)) && (localObject2 == null))
               {
-                if (!(localObject8 instanceof azvd)) {
+                if (!(localObject8 instanceof azzm)) {
                   break label1720;
                 }
-                localObject2 = ((azvd)localObject8).b();
+                localObject2 = ((azzm)localObject8).b();
                 localObject8 = localObject1;
                 localObject1 = localObject3;
                 localObject3 = localObject8;
               }
-              else if (("picture".equals(((azqj)localObject8).a)) && (localObject3 == null))
+              else if (("picture".equals(((azus)localObject8).a)) && (localObject3 == null))
               {
-                if (!(localObject8 instanceof azsm)) {
+                if (!(localObject8 instanceof azwv)) {
                   break label1720;
                 }
-                localObject8 = ((azsm)localObject8).S;
+                localObject8 = ((azwv)localObject8).S;
                 localObject3 = localObject1;
                 localObject1 = localObject8;
               }
-              else if (("pavideo".equals(((azqj)localObject8).a)) && (localObject3 == null))
+              else if (("pavideo".equals(((azus)localObject8).a)) && (localObject3 == null))
               {
-                if (!(localObject8 instanceof azux)) {
+                if (!(localObject8 instanceof azzg)) {
                   break label1720;
                 }
-                localObject8 = ((azux)localObject8).S;
+                localObject8 = ((azzg)localObject8).S;
                 localObject3 = localObject1;
                 localObject1 = localObject8;
               }
               else
               {
-                if ((!"paaudio".equals(((azqj)localObject8).a)) || (localObject3 != null) || (!(localObject8 instanceof azus))) {
+                if ((!"paaudio".equals(((azus)localObject8).a)) || (localObject3 != null) || (!(localObject8 instanceof azzb))) {
                   break label1720;
                 }
-                localObject8 = ((azus)localObject8).S;
+                localObject8 = ((azzb)localObject8).S;
                 localObject3 = localObject1;
                 localObject1 = localObject8;
               }

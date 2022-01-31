@@ -1,9 +1,12 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
+import java.util.ArrayList;
 
-public abstract interface bcye
+public class bcye
 {
-  public abstract void a(View paramView, Drawable paramDrawable);
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<String> a;
+  public int b;
 }
 
 

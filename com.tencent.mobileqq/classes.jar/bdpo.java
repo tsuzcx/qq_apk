@@ -1,12 +1,12 @@
-public class bdpo
+public abstract interface bdpo
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  public abstract bdpp a(float paramFloat1, float paramFloat2);
   
-  public bdpo(bdpm parambdpm) {}
+  public abstract void a(bdpp parambdpp, float paramFloat1, float paramFloat2);
+  
+  public abstract void a(bdpq parambdpq, bdpp parambdpp, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean a(bdpp parambdpp, float paramFloat1, float paramFloat2);
 }
 
 

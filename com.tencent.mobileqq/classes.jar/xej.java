@@ -1,30 +1,17 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
-public abstract class xej
+public class xej
+  implements xek
 {
-  public final int a;
-  public final String a;
-  public final int b;
-  public String b;
-  
-  public xej(int paramInt1, String paramString, int paramInt2)
+  public void a(List<xeh> paramList, DoodleView paramDoodleView)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-  }
-  
-  @NonNull
-  public abstract Class<? extends xek> a();
-  
-  @NonNull
-  public abstract xek a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  public boolean a()
-  {
-    return false;
+    xdn localxdn = new xdn(paramDoodleView);
+    xdx localxdx = new xdx(paramDoodleView);
+    paramDoodleView = new xeb(paramDoodleView);
+    paramList.add(localxdn);
+    paramList.add(localxdx);
+    paramList.add(paramDoodleView);
   }
 }
 

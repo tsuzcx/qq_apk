@@ -1,18 +1,16 @@
-import android.os.Bundle;
-import eipc.EIPCResult;
+import android.os.Message;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
 
-class akrh
-  implements oir
+public class akrh
+  extends bayj
 {
-  akrh(akrg paramakrg, int paramInt) {}
+  public akrh(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  public void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    akrg.b = false;
-    if (paramInt == 1)
-    {
-      EIPCResult localEIPCResult = EIPCResult.createResult(0, new Bundle());
-      this.jdField_a_of_type_Akrg.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+    int i = paramMessage.what;
+    if ((i == 1003) || (i == 2003)) {
+      this.a.b();
     }
   }
 }

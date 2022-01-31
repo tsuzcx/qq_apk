@@ -1,13 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.ColorNickTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
 
 public class aibm
+  implements DialogInterface.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public ColorNickTextView a;
-  public TextView b;
+  public aibm(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.getActivity().setResult(8001);
+  }
 }
 
 

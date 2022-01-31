@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgkd;
+import bgok;
 import org.json.JSONObject;
 
 class AudioJsPlugin$BgMusicData
 {
   public final JSONObject jsonObject;
-  public final bgkd req;
+  public final bgok req;
   
-  private AudioJsPlugin$BgMusicData(JSONObject paramJSONObject, bgkd parambgkd)
+  private AudioJsPlugin$BgMusicData(JSONObject paramJSONObject, bgok parambgok)
   {
     this.jsonObject = paramJSONObject;
-    this.req = parambgkd;
+    this.req = parambgok;
   }
 }
 

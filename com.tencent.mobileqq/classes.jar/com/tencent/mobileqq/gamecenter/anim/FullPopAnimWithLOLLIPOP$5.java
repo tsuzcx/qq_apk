@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.gamecenter.anim;
 
-import asgx;
+import aslg;
 
 public class FullPopAnimWithLOLLIPOP$5
   implements Runnable
 {
-  public FullPopAnimWithLOLLIPOP$5(asgx paramasgx) {}
+  public FullPopAnimWithLOLLIPOP$5(aslg paramaslg) {}
   
   public void run()
   {
-    asgx.e(this.this$0);
+    aslg.e(this.this$0);
   }
 }
 

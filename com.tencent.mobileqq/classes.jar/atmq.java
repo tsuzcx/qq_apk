@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.16;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
 
-public class atmq
-  implements DialogInterface.OnClickListener
+public final class atmq
+  implements Parcelable.Creator<ListenTogetherSession>
 {
-  public atmq(LocationDialogUtil.16 param16) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ListenTogetherSession a(Parcel paramParcel)
   {
-    paramDialogInterface = atqj.a(this.a.a.app);
-    paramDialogInterface.a(3);
-    paramDialogInterface.a = false;
+    return new ListenTogetherSession(paramParcel, null);
+  }
+  
+  public ListenTogetherSession[] a(int paramInt)
+  {
+    return new ListenTogetherSession[paramInt];
   }
 }
 

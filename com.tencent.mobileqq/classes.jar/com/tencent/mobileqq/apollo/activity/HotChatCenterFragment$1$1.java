@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo.activity;
 
-import akmr;
+import akrg;
 
 public class HotChatCenterFragment$1$1
   implements Runnable
 {
-  public HotChatCenterFragment$1$1(akmr paramakmr, String paramString) {}
+  public HotChatCenterFragment$1$1(akrg paramakrg, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Akmr.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Akrg.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

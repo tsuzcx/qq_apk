@@ -1,31 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ahfi
+class ahfi
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
+  ahfi(ahfh paramahfh, int paramInt) {}
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_Int != 1;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if ((paramObject instanceof ahfi))
-    {
-      paramObject = (ahfi)paramObject;
-      return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Ahfh.a != null) {
+      this.jdField_a_of_type_Ahfh.a.a(paramView, this.jdField_a_of_type_Int);
     }
-    return super.equals(paramObject);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "Face2FaceFriendInfo uin:" + this.jdField_a_of_type_JavaLangString + " nick:" + this.b + " type:" + this.jdField_a_of_type_Int;
   }
 }
 

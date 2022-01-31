@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aebf;
+import aefu;
 
 public class TroopMemberListActivity$28$1
   implements Runnable
 {
-  public TroopMemberListActivity$28$1(aebf paramaebf) {}
+  public TroopMemberListActivity$28$1(aefu paramaefu) {}
   
   public void run()
   {

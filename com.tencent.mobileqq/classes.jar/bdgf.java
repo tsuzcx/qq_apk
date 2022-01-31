@@ -1,80 +1,42 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-class bdgf
-  extends BaseAdapter
+public class bdgf
+  extends MqqHandler
 {
-  bdgf(bdge parambdge) {}
+  private final WeakReference<Handler.Callback> a;
   
-  public int getCount()
+  public bdgf(Handler.Callback paramCallback)
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
-    }
-    return 0;
+    this.a = new WeakReference(paramCallback);
   }
   
-  public Object getItem(int paramInt)
+  public bdgf(Looper paramLooper, Handler.Callback paramCallback)
   {
-    return null;
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
   }
   
-  public long getItemId(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return 0L;
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
+    }
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public String toString()
   {
-    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
-    }
-    paramViewGroup = paramView;
-    if (paramView == null)
-    {
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558931, null);
-      paramView = new bdgk(this.a, null);
-      paramView.a = ((TextView)paramViewGroup.findViewById(2131368564));
-      paramViewGroup.setTag(paramView);
-    }
-    paramView = (bdgk)paramViewGroup.getTag();
-    int i;
-    int j;
-    int k;
-    int m;
-    if (paramView.a != null)
-    {
-      paramView.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-      paramView.a.setOnClickListener(new bdgj(this.a, paramInt));
-      i = paramView.a.getPaddingTop();
-      j = paramView.a.getPaddingLeft();
-      k = paramView.a.getPaddingRight();
-      m = paramView.a.getPaddingBottom();
-      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
-        break label207;
-      }
-      paramView.a.setBackgroundResource(2130839359);
-    }
-    for (;;)
-    {
-      paramView.a.setPadding(j, i, k, m);
-      return paramViewGroup;
-      label207:
-      if (paramInt == 0) {
-        paramView.a.setBackgroundResource(2130839360);
-      } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
-        paramView.a.setBackgroundResource(2130839358);
-      }
-    }
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    return super.toString() + " " + localCallback;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdgf
  * JD-Core Version:    0.7.0.1
  */

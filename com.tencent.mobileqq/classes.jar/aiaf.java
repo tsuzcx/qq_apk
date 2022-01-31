@@ -1,6 +1,16 @@
-public abstract interface aiaf
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+
+class aiaf
+  implements aupv
 {
-  public abstract void c();
+  aiaf(aiae paramaiae) {}
+  
+  public void a()
+  {
+    this.a.jdField_a_of_type_Auqc.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Auqc.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.u();
+  }
 }
 
 

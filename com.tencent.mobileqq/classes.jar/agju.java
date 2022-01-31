@@ -1,14 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
 
-class agju
-  implements View.OnClickListener
+public class agju
+  extends azer
 {
-  agju(agjp paramagjp) {}
+  public agju(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.a.v(true);
+    agkl localagkl = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (localagkl != null) {
+      localagkl.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramInt, 0L, true);
+    }
+  }
+  
+  public void a(int paramInt, azej paramazej)
+  {
+    agkl localagkl = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (paramazej.jdField_a_of_type_Int == 0)
+    {
+      paramazej = (awir)paramazej.jdField_a_of_type_JavaLangObject;
+      if (localagkl != null) {
+        localagkl.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 1, paramazej.b, false);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramazej.b);
+      return;
+    }
+    if (localagkl != null) {
+      localagkl.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 2, "step:" + paramazej.jdField_a_of_type_Awjh.a + ", desc:" + paramazej.jdField_a_of_type_Awjh.b, false);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E");
   }
 }
 

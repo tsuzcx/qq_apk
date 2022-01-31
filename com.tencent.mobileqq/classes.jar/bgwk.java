@@ -1,32 +1,21 @@
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.manager.EngineVersion;
 
-public class bgwk
+public final class bgwk
+  implements Parcelable.Creator<EngineVersion>
 {
-  private static bgwk jdField_a_of_type_Bgwk;
-  private HashMap<Integer, bgwh> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  public static bgwk a()
+  public EngineVersion a(Parcel paramParcel)
   {
-    if (jdField_a_of_type_Bgwk == null) {
-      jdField_a_of_type_Bgwk = new bgwk();
-    }
-    return jdField_a_of_type_Bgwk;
+    EngineVersion localEngineVersion = new EngineVersion();
+    localEngineVersion.a = paramParcel.readString();
+    localEngineVersion.b = paramParcel.readString();
+    return localEngineVersion;
   }
   
-  public bgwh a(int paramInt)
+  public EngineVersion[] a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.size() == 0)) {
-      return null;
-    }
-    return (bgwh)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-  }
-  
-  public void a(int paramInt, bgwh parambgwh)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), parambgwh);
+    return new EngineVersion[paramInt];
   }
 }
 

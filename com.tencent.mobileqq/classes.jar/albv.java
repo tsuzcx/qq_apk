@@ -1,78 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.ReentrantLock;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-@Deprecated
-public class albv
+public final class albv
+  implements EIPCResultCallback
 {
-  private static albv jdField_a_of_type_Albv;
-  public int a;
-  public String a;
-  public AtomicInteger a;
-  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+  public albv(String paramString1, String paramString2, alca paramalca) {}
   
-  public albv()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public static albv a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Albv == null) {
-        jdField_a_of_type_Albv = new albv();
-      }
-      albv localalbv = jdField_a_of_type_Albv;
-      return localalbv;
+    CmShowRenderView.a(true);
+    paramEIPCResult = paramEIPCResult.data;
+    int i = paramEIPCResult.getInt("selfUinStatus");
+    int j = paramEIPCResult.getInt("friendUinStatus");
+    albt.a(this.jdField_a_of_type_JavaLangString, i);
+    albt.a(this.b, j);
+    if (this.jdField_a_of_type_Alca != null) {
+      this.jdField_a_of_type_Alca.a(true);
     }
-    finally {}
-  }
-  
-  public albv a(QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionManager", 2, "[setAppInterface] app:" + paramQQAppInterface);
-    }
-    return this;
-  }
-  
-  public ReentrantLock a()
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionManager", 2, "[getLock].");
-      }
-      if (this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloActionManager", 2, "create lock.");
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-      }
-      ReentrantLock localReentrantLock = this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
-      return localReentrantLock;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionManager", 2, "[onDestroy]");
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    QLog.i("CmShow_CmShowRenderView", 1, "initCmShowData selfUinStatus:" + i + " friendUinStatus:" + j);
   }
 }
 

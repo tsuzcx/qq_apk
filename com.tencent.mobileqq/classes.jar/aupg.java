@@ -1,8885 +1,1393 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.os.Environment;
-import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Xml;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForLongMsg;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForQQStoryComment;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.multimsg.MultiMsgManager.1;
+import com.tencent.mobileqq.multimsg.MultiMsgManager.2;
+import com.tencent.mobileqq.multimsg.MultiMsgManager.5;
+import com.tencent.mobileqq.multimsg.MultiMsgNick;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.xmlpull.v1.XmlPullParser;
-import tencent.im.s2c.msgtype0x210.submsgtype0xc7.submsgtype0xc7.FriendShipFlagNotify;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.manager.ServerConfigManager.ConfigType;
 
 public class aupg
+  implements Comparator<ChatMessage>
 {
-  static String jdField_a_of_type_JavaLangString = "HotReactiveHelper";
-  private static final HashSet<ExtensionInfo> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private static boolean jdField_a_of_type_Boolean;
-  static String jdField_b_of_type_JavaLangString = Environment.getExternalStorageDirectory().getAbsolutePath();
-  private static boolean jdField_b_of_type_Boolean;
-  static String c = jdField_b_of_type_JavaLangString + "/Tencent/MobileQQ/";
-  static String d = c + "hotimage/";
-  static String e = "friendshipres/";
-  static String f = "friendshipres2/";
-  static String g = "poke/";
+  private static long jdField_a_of_type_Long;
+  private static aupg jdField_a_of_type_Aupg;
+  public static final String a;
+  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  public int a;
+  private bhsk<Integer> jdField_a_of_type_Bhsk;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  public ArrayList<ChatMessage> a;
+  public HashMap<ChatMessage, Boolean> a;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int b;
+  public HashMap<String, String> b;
+  private int jdField_c_of_type_Int = 100;
+  private HashMap<Long, List<MultiMsgNick>> jdField_c_of_type_JavaUtilHashMap = new HashMap();
+  private int d = 20;
+  private int e;
+  private int f = 100;
+  private int g = 10;
+  private int h;
+  private int i;
+  private int j;
   
-  public static int a()
+  static
   {
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    int i = bdjj.a(l);
-    int k = bdjj.b(l);
-    int j = ((23 - i) * 60 + (60 - k)) * 60;
-    k = (60 - k + (17 - i) * 60) * 60;
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendReactive", 2, "contact resume  offlast=" + j + "off18last=" + k);
-    }
-    if (i >= 18) {
-      return j;
-    }
-    return k;
+    jdField_a_of_type_JavaLangString = alof.aX + "fight/pic_expire.png";
   }
   
-  public static int a(int paramInt, String paramString, ExtensionInfo paramExtensionInfo, boolean paramBoolean)
+  private aupg()
   {
-    switch (paramInt)
-    {
-    }
-    label437:
-    do
-    {
-      do
-      {
-        boolean bool;
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return 0;
-                } while ((paramBoolean) || (paramExtensionInfo == null) || (paramExtensionInfo.chatHotLevel == 0));
-                if (QLog.isColorLevel()) {
-                  QLog.d("HotFriend_" + jdField_a_of_type_JavaLangString, 2, "getInteractionType|uin=" + paramString + ",level=" + paramExtensionInfo.chatHotLevel + ",days=" + paramExtensionInfo.chatDays);
-                }
-                return paramExtensionInfo.chatHotLevel;
-              } while (paramBoolean);
-              if (!b()) {
-                break;
-              }
-            } while ((paramExtensionInfo == null) || (paramExtensionInfo.newBestIntimacyType == 0));
-            if (QLog.isColorLevel()) {
-              QLog.d("HotFriend_" + jdField_a_of_type_JavaLangString, 2, "getNewBestIntimacyType|uin=" + paramString + ",type=" + paramExtensionInfo.newBestIntimacyType);
-            }
-            return paramExtensionInfo.newBestIntimacyType;
-          } while ((paramExtensionInfo == null) || (paramExtensionInfo.bestIntimacyType == 0));
-          if (QLog.isColorLevel()) {
-            QLog.d("HotFriend_" + jdField_a_of_type_JavaLangString, 2, "getBestIntimacyType|uin=" + paramString + ",type=" + paramExtensionInfo.bestIntimacyType);
-          }
-          return paramExtensionInfo.bestIntimacyType;
-          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          if ((localQQAppInterface != null) && (a(localQQAppInterface.c()))) {}
-          for (bool = true;; bool = false)
-          {
-            if ((paramBoolean) || (!bool)) {
-              break label437;
-            }
-            if ((paramExtensionInfo == null) || (paramExtensionInfo.friendshipLevel == 0)) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("HotFriend_" + jdField_a_of_type_JavaLangString, 2, "getFrdshipType|uin=" + paramString + ",level=" + paramExtensionInfo.friendshipLevel + ",days=" + paramExtensionInfo.friendshipChatDays);
-            }
-            return paramExtensionInfo.friendshipLevel;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i(jdField_a_of_type_JavaLangString, 2, String.format("getFrdshipType return disable_support=%b_%b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) }));
-        return 0;
-      } while ((paramBoolean) || (paramExtensionInfo == null) || (paramExtensionInfo.loverChatLevel == 0));
-      if (QLog.isColorLevel()) {
-        QLog.d("HotFriend_" + jdField_a_of_type_JavaLangString, 2, "getLoverInteractionType|uin=" + paramString + ",level=" + paramExtensionInfo.loverChatLevel + ",days=" + paramExtensionInfo.loverChatDays);
-      }
-      return paramExtensionInfo.loverChatLevel;
-    } while ((paramBoolean) || (paramExtensionInfo == null) || (paramExtensionInfo.praiseHotLevel == 0));
-    if (QLog.isColorLevel()) {
-      QLog.d("HotFriend_" + jdField_a_of_type_JavaLangString, 2, "getmLikeType|uin=" + paramString + ",level=" + paramExtensionInfo.praiseHotLevel + ",days=" + paramExtensionInfo.praiseDays);
-    }
-    return paramExtensionInfo.praiseHotLevel;
+    this.jdField_e_of_type_Int = 10;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public static String a()
+  private int a(int paramInt)
   {
-    return bduw.a(d);
-  }
-  
-  public static String a(Context paramContext, int paramInt)
-  {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(paramContext);
-    String str2 = "";
-    String str1 = str2;
     switch (paramInt)
     {
     default: 
-      str1 = str2;
+      return 0;
+    case 1: 
+    case 2: 
+      return 1;
+    case 3: 
+      return 2;
     }
-    for (;;)
+    return 3;
+  }
+  
+  public static long a()
+  {
+    File localFile = new File(jdField_a_of_type_JavaLangString);
+    if (localFile.exists()) {
+      return localFile.length();
+    }
+    return 0L;
+  }
+  
+  public static aupg a()
+  {
+    if (jdField_a_of_type_Aupg == null) {}
+    synchronized (jdField_a_of_type_ArrayOfByte)
+    {
+      if (jdField_a_of_type_Aupg == null) {
+        jdField_a_of_type_Aupg = new aupg();
+      }
+      return jdField_a_of_type_Aupg;
+    }
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface)
+  {
+    if (!new File(jdField_a_of_type_JavaLangString).exists())
+    {
+      bdhb.a(paramQQAppInterface.getApp(), 2130841176, jdField_a_of_type_JavaLangString);
+      paramQQAppInterface = bdhb.c(jdField_a_of_type_JavaLangString);
+      paramQQAppInterface = baqn.d("chatthumb:" + paramQQAppInterface);
+      bdhb.d(jdField_a_of_type_JavaLangString, paramQQAppInterface);
+    }
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  /* Error */
+  private void a(long paramLong, int paramInt)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5: ifeq +37 -> 42
+    //   8: ldc 144
+    //   10: iconst_2
+    //   11: new 36	java/lang/StringBuilder
+    //   14: dup
+    //   15: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   18: ldc 146
+    //   20: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: lload_1
+    //   24: invokevirtual 149	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   27: ldc 151
+    //   29: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: iload_3
+    //   33: invokevirtual 154	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   36: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   39: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   42: aload_0
+    //   43: getfield 159	aupg:jdField_a_of_type_Bhsk	Lbhsk;
+    //   46: ifnull +40 -> 86
+    //   49: aload_0
+    //   50: getfield 159	aupg:jdField_a_of_type_Bhsk	Lbhsk;
+    //   53: lload_1
+    //   54: iconst_0
+    //   55: invokestatic 165	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   58: invokevirtual 170	bhsk:a	(JLjava/lang/Object;)Ljava/lang/Object;
+    //   61: checkcast 161	java/lang/Integer
+    //   64: invokevirtual 174	java/lang/Integer:intValue	()I
+    //   67: iload_3
+    //   68: ixor
+    //   69: istore_3
+    //   70: iload_3
+    //   71: ifeq +18 -> 89
+    //   74: aload_0
+    //   75: getfield 159	aupg:jdField_a_of_type_Bhsk	Lbhsk;
+    //   78: lload_1
+    //   79: iload_3
+    //   80: invokestatic 165	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   83: invokevirtual 177	bhsk:a	(JLjava/lang/Object;)V
+    //   86: aload_0
+    //   87: monitorexit
+    //   88: return
+    //   89: aload_0
+    //   90: getfield 159	aupg:jdField_a_of_type_Bhsk	Lbhsk;
+    //   93: lload_1
+    //   94: invokevirtual 180	bhsk:b	(J)V
+    //   97: goto -11 -> 86
+    //   100: astore 4
+    //   102: aload_0
+    //   103: monitorexit
+    //   104: aload 4
+    //   106: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	107	0	this	aupg
+    //   0	107	1	paramLong	long
+    //   0	107	3	paramInt	int
+    //   100	5	4	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	42	100	finally
+    //   42	70	100	finally
+    //   74	86	100	finally
+    //   89	97	100	finally
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, MessageRecord paramMessageRecord, ArrayList<MessageRecord> paramArrayList, int paramInt2, @Nullable Bundle paramBundle)
+  {
+    MessageForPtt localMessageForPtt = (MessageForPtt)paramArrayList.get(0);
+    bayk localbayk = new bayk();
+    localbayk.jdField_b_of_type_JavaLangString = paramQQAppInterface.getAccount();
+    localbayk.c = paramString;
+    localbayk.jdField_a_of_type_Int = paramInt1;
+    localbayk.jdField_b_of_type_Int = 2;
+    localbayk.jdField_a_of_type_Long = ((MessageRecord)paramArrayList.get(0)).uniseq;
+    localbayk.jdField_a_of_type_Boolean = true;
+    String str;
+    boolean bool;
+    if (paramBundle != null)
+    {
+      str = paramBundle.getString("ReceiptMsgManager.EXTRA_KEY_PTT_PATH");
+      localbayk.i = str;
+      localbayk.jdField_e_of_type_Int = 1002;
+      if ((paramBundle != null) && (!paramBundle.getBoolean("ReceiptMsgManager.EXTRA_KEY_PTT_COMPRESS_FINISHED"))) {
+        break label222;
+      }
+      bool = true;
+      label117:
+      localbayk.jdField_l_of_type_Boolean = bool;
+      if (paramBundle == null) {
+        break label228;
+      }
+    }
+    label222:
+    label228:
+    for (int k = a(paramBundle.getInt("ReceiptMsgManager.EXTRA_KEY_PTT_SEND_SOURCE"));; k = 0)
+    {
+      localbayk.n = k;
+      localbayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)paramArrayList.get(0));
+      localMessageForPtt.mInputContent = "";
+      localbayk.jdField_a_of_type_Awkh = new aupl(paramMessageRecord, paramArrayList, paramQQAppInterface, paramString, paramInt1, paramInt2, this, null);
+      localbayk.jdField_e_of_type_Boolean = false;
+      paramQQAppInterface.a().a(localbayk);
+      return;
+      str = localMessageForPtt.fullLocalPath;
+      break;
+      bool = false;
+      break label117;
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, HashMap<String, String> paramHashMap, MessageRecord paramMessageRecord, alwx paramalwx, ArrayList<MessageRecord> paramArrayList, boolean paramBoolean, int paramInt2)
+  {
+    if (QLog.isDevelopLevel())
+    {
+      QLog.d("MultiMsg_TAG", 4, "pack multi msg start.............................");
+      QLog.d("MultiMsg_TAG", 4, paramArrayList.toString());
+    }
+    paramalwx = paramQQAppInterface.a().a().a(paramArrayList, paramHashMap, paramBoolean);
+    if (paramalwx == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("HotFriend_GET_LOCAL_CONFIG", 2, "type=" + paramInt + "getHotSmallChatConfig=" + str1);
+        QLog.d("MultiMsg_TAG", 2, "pack multi msg failed.............................");
       }
-      return str1;
-      str1 = localSharedPreferences.getString("hot_friend_chat_num_des", paramContext.getString(2131691121));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_chat_up", paramContext.getString(2131693258));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_priase_up", paramContext.getString(2131693272));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_close_up", paramContext.getString(2131693241));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_chat_up2", paramContext.getString(2131693259));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_priase_up2", paramContext.getString(2131693273));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_close_up2", paramContext.getString(2131693242));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_chat_down", paramContext.getString(2131693254));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_priase_down", paramContext.getString(2131693268));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_close_down", paramContext.getString(2131693239));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_chat_dis", paramContext.getString(2131693256));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_priase_dis", paramContext.getString(2131693270));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_close_dis", paramContext.getString(2131693240));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_priase_down_remind", paramContext.getString(2131693269));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_praise_dis_remind", paramContext.getString(2131693271));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_chat_down_remind", paramContext.getString(2131693255));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_chat_dis_remind", paramContext.getString(2131693257));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_qozne_down_remind", paramContext.getString(2131693274));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_qzone_dis_remind", paramContext.getString(2131693275));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_praiseandchat_dis_remind", paramContext.getString(2131693252));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_praiseandqone_dis_remind", paramContext.getString(2131693267));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_chatandqzone_dis_remind", paramContext.getString(2131693253));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_pcqall_dis_remind", paramContext.getString(2131693266));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_lover_up", paramContext.getString(2131693284));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_lover_down", paramContext.getString(2131693278));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_lover_dis", paramContext.getString(2131693279));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_lover_up2", paramContext.getString(2131693285));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_lover_close", paramContext.getString(2131693276));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_lover_close2", paramContext.getString(2131693277));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_lover_open", paramContext.getString(2131693280));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_lover_open2", paramContext.getString(2131693281));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_lover_update", paramContext.getString(2131693282));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_graytip_lover_update2", paramContext.getString(2131693283));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_new_boat_graytip_close_up", paramContext.getString(2131693263));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_new_boat_graytip_close_up2", paramContext.getString(2131693264));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_new_boat_graytip_close_up3", paramContext.getString(2131693265));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_new_boat_graytip_close_down", paramContext.getString(2131693260));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_new_boat_graytip_close_down2", paramContext.getString(2131693261));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_new_boat_graytip_close_down3", paramContext.getString(2131693262));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_new_boat_small_close_setting", paramContext.getString(2131719874));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_new_boat_big_close_setting", paramContext.getString(2131719873));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_new_boat_graytip_upcoming_upgrade", paramContext.getString(2131693236));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_new_boat_graytip_upcoming_upgrade2", paramContext.getString(2131693237));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_new_boat_graytip_upcoming_upgrade3", paramContext.getString(2131693238));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_new_boat_graytip_upcoming_downgrade", paramContext.getString(2131693234));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friend_new_boat_graytip_upcoming_downgrade2", paramContext.getString(2131693235));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friendship_1_upgrade", paramContext.getString(2131693244));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friendship_graytips_1_will_downgrade", paramContext.getString(2131693245));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friendship_graytips_1_downgrade", paramContext.getString(2131693243));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friendship_graytips_2_upgrade", paramContext.getString(2131693247));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friendship_graytips_2_will_downgrade", paramContext.getString(2131693248));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friendship_graytips_2_downgrade", paramContext.getString(2131693246));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friendship_graytips_3_upgrade", paramContext.getString(2131693250));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friendship_graytips_3_will_downgrade", paramContext.getString(2131693251));
-      continue;
-      str1 = localSharedPreferences.getString("hot_friendship_graytips_3_downgrade", paramContext.getString(2131693249));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_Lover1Upgrade", paramContext.getString(2131693445));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_Lover2Upgrade", paramContext.getString(2131693447));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_Lover2Downgrade", paramContext.getString(2131693446));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_Lover3Downgrade", paramContext.getString(2131693448));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_Buddy1Upgrade", paramContext.getString(2131693437));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_Buddy2Upgrade", paramContext.getString(2131693439));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_Buddy2Downgrade", paramContext.getString(2131693438));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_Buddy3Downgrade", paramContext.getString(2131693440));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_LadyBro1Upgrade", paramContext.getString(2131693441));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_LadyBro2Upgrade", paramContext.getString(2131693443));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_LadyBro2Downgrade", paramContext.getString(2131693442));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_LadyBro3Downgrade", paramContext.getString(2131693444));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_BindTip", paramContext.getString(2131693436));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_UnBind1Tip", paramContext.getString(2131693449));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_UnBind2Tip", paramContext.getString(2131693450));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_UnBind3Tip", paramContext.getString(2131693451));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_BecomeGrayTip", paramContext.getString(2131693434));
-      continue;
-      str1 = localSharedPreferences.getString("hot_intimate_BecomeLightTip", paramContext.getString(2131693435));
-      continue;
-      str1 = localSharedPreferences.getString("show_hot_friend_reactive_will_downgrade_push_tip", paramContext.getString(2131693433));
+      if (paramInt2 == 2) {
+        ((MessageHandler)paramQQAppInterface.a(0)).notifyUI(8031, false, Integer.valueOf(4));
+      }
     }
-  }
-  
-  public static HashSet<ExtensionInfo> a()
-  {
-    return jdField_a_of_type_JavaUtilHashSet;
-  }
-  
-  public static List<auph> a(Context paramContext, String paramString)
-  {
-    paramContext = new ArrayList();
-    int i = 0;
-    int j = 0;
-    for (;;)
+    do
     {
-      if (i >= 0)
+      return;
+      paramMessageRecord.extraflag = 32768;
+      paramQQAppInterface.a().a(paramString, paramInt1, paramMessageRecord.uniseq);
+      long l = paramMessageRecord.uniseq;
+      ((MessageHandler)paramQQAppInterface.a(0)).notifyUI(MessageHandler.a(paramInt1), false, new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg_TAG", 2, "pack multi msg done.............................");
+      }
+      if (paramInt2 == 0) {
+        paramHashMap = new aupk(paramQQAppInterface, paramMessageRecord, paramString, paramInt1);
+      }
+      for (;;)
       {
-        i = paramString.indexOf("(", j);
-        if (i >= 0) {
-          break label53;
+        if (a(paramQQAppInterface, paramalwx, paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, paramInt1, paramMessageRecord.uniseq, 1035, paramHashMap))
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("MultiMsg_TAG", 2, "sendMultiMsg successful, upload multi msg pack start.......................");
+          return;
+          if (paramInt2 == 2)
+          {
+            paramHashMap = new aupj(paramQQAppInterface, paramMessageRecord, paramString, paramInt1, paramArrayList, paramHashMap);
+          }
+          else if (paramInt2 == 5)
+          {
+            paramHashMap = new axll(paramQQAppInterface, paramMessageRecord, paramString, paramInt1);
+          }
+          else
+          {
+            QLog.e("MultiMsg_TAG", 1, "not support forwardMode:" + paramInt2);
+            return;
+          }
         }
       }
-      label53:
-      int k;
-      do
-      {
-        do
-        {
-          localauph = new auph();
-          localauph.jdField_a_of_type_JavaLangString = paramString;
-          paramContext.add(0, localauph);
-          return paramContext;
-          j = paramString.indexOf(")[", i);
-        } while (j < 0);
-        k = paramString.indexOf("]", j);
-      } while (k < 0);
-      auph localauph = new auph();
-      localauph.jdField_a_of_type_JavaLangString = paramString.substring(i + 1, j);
-      localauph.jdField_a_of_type_Int = i;
-      localauph.jdField_b_of_type_JavaLangString = paramString.substring(j + 2, k);
-      paramString = paramString.replace(paramString.substring(i, k + 1), localauph.jdField_a_of_type_JavaLangString);
-      j = localauph.jdField_a_of_type_JavaLangString.length() + k;
-      paramContext.add(localauph);
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("MultiMsg_TAG", 2, "sendMultiMsg failed.......................");
   }
   
-  public static List<String> a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, HashMap<String, String> paramHashMap, MessageRecord paramMessageRecord, ArrayList<MessageRecord> paramArrayList, ArrayList<awjf> paramArrayList1, int paramInt2)
   {
-    ArrayList localArrayList = new ArrayList();
-    String str1 = paramString1;
-    String str2;
-    if (paramString1.contains("#likepic1"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 6L, 1L);
-      str1 = paramString1.replace("#likepic1", str2);
-      localArrayList.add(str2);
-    }
-    paramString1 = str1;
-    if (str1.contains("#praisepic1"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 6L, 1L);
-      paramString1 = str1.replace("#praisepic1", str2);
-      localArrayList.add(str2);
-    }
-    str1 = paramString1;
-    if (paramString1.contains("#likepic2"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 6L, 2L);
-      str1 = paramString1.replace("#likepic2", str2);
-      localArrayList.add(str2);
-    }
-    paramString1 = str1;
-    if (str1.contains("#praisepic2"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 6L, 2L);
-      paramString1 = str1.replace("#praisepic2", str2);
-      localArrayList.add(str2);
-    }
-    str1 = paramString1;
-    if (paramString1.contains("#chatpic1"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 5L, 1L);
-      str1 = paramString1.replace("#chatpic1", str2);
-      localArrayList.add(str2);
-    }
-    paramString1 = str1;
-    if (str1.contains("#chatpic2"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 5L, 2L);
-      paramString1 = str1.replace("#chatpic2", str2);
-      localArrayList.add(str2);
-    }
-    str1 = paramString1;
-    if (paramString1.contains("#oftenchatpic1"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 12L, 1L);
-      str1 = paramString1.replace("#oftenchatpic1", str2);
-      localArrayList.add(str2);
-    }
-    paramString1 = str1;
-    if (str1.contains("#oftenchatpic2"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 12L, 2L);
-      paramString1 = str1.replace("#oftenchatpic2", str2);
-      localArrayList.add(str2);
-    }
-    str1 = paramString1;
-    if (paramString1.contains("#loverchatpic1"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 7L, 1L);
-      str1 = paramString1.replace("#loverchatpic1", str2);
-      localArrayList.add(str2);
-    }
-    paramString1 = str1;
-    if (str1.contains("#loverchatpic2"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 7L, 2L);
-      paramString1 = str1.replace("#loverchatpic2", str2);
-      localArrayList.add(str2);
-    }
-    str1 = paramString1;
-    if (paramString1.contains("#qzonechatpic1"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 8L, 1L);
-      str1 = paramString1.replace("#qzonechatpic1", str2);
-      localArrayList.add(str2);
-    }
-    paramString1 = str1;
-    if (str1.contains("#qzonepic1"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 8L, 1L);
-      paramString1 = str1.replace("#qzonepic1", str2);
-      localArrayList.add(str2);
-    }
-    str1 = paramString1;
-    if (paramString1.contains("#qzonechatpic2"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 8L, 2L);
-      str1 = paramString1.replace("#qzonechatpic2", str2);
-      localArrayList.add(str2);
-    }
-    paramString1 = str1;
-    if (str1.contains("#qzonepic2"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 8L, 2L);
-      paramString1 = str1.replace("#qzonepic2", str2);
-      localArrayList.add(str2);
-    }
-    str1 = paramString1;
-    if (paramString1.contains("#friendshipicon1"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 4L, 1L);
-      str1 = paramString1.replace("#friendshipicon1", str2);
-      localArrayList.add(str2);
-    }
-    paramString1 = str1;
-    if (str1.contains("#friendshipicon2"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 4L, 2L);
-      paramString1 = str1.replace("#friendshipicon2", str2);
-      localArrayList.add(str2);
-    }
-    str1 = paramString1;
-    if (paramString1.contains("#friendshipicon3"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 4L, 3L);
-      str1 = paramString1.replace("#friendshipicon3", str2);
-      localArrayList.add(str2);
-    }
-    paramString1 = str1;
-    if (str1.contains("#loverpic1"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 1L, 0L);
-      paramString1 = str1.replace("#loverpic1", str2);
-      localArrayList.add(str2);
-    }
-    str1 = paramString1;
-    if (paramString1.contains("#loverpic2"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 1L, 1L);
-      str1 = paramString1.replace("#loverpic2", str2);
-      localArrayList.add(str2);
-    }
-    paramString1 = str1;
-    if (str1.contains("#loverpic3"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 1L, 2L);
-      paramString1 = str1.replace("#loverpic3", str2);
-      localArrayList.add(str2);
-    }
-    str1 = paramString1;
-    if (paramString1.contains("#sisterpic1"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 2L, 0L);
-      str1 = paramString1.replace("#sisterpic1", str2);
-      localArrayList.add(str2);
-    }
-    paramString1 = str1;
-    if (str1.contains("#sisterpic2"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 2L, 1L);
-      paramString1 = str1.replace("#sisterpic2", str2);
-      localArrayList.add(str2);
-    }
-    str1 = paramString1;
-    if (paramString1.contains("#sisterpic3"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 2L, 2L);
-      str1 = paramString1.replace("#sisterpic3", str2);
-      localArrayList.add(str2);
-    }
-    paramString1 = str1;
-    if (str1.contains("#brotherpic1"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 3L, 0L);
-      paramString1 = str1.replace("#brotherpic1", str2);
-      localArrayList.add(str2);
-    }
-    str1 = paramString1;
-    if (paramString1.contains("#brotherpic2"))
-    {
-      str2 = auny.a(paramQQAppInterface, paramString2, 3L, 1L);
-      str1 = paramString1.replace("#brotherpic2", str2);
-      localArrayList.add(str2);
-    }
-    paramString1 = str1;
-    if (str1.contains("#brotherpic3"))
-    {
-      paramQQAppInterface = auny.a(paramQQAppInterface, paramString2, 3L, 2L);
-      paramString1 = str1.replace("#brotherpic3", paramQQAppInterface);
-      localArrayList.add(paramQQAppInterface);
-    }
-    localArrayList.add(0, paramString1);
-    return localArrayList;
+    awjl localawjl = awjb.a(8, 7);
+    localawjl.a(paramArrayList1);
+    localawjl.a(new auph(this, paramInt2, paramMessageRecord, paramArrayList, paramQQAppInterface, paramString, paramInt1, paramHashMap));
+    awjb.a(localawjl, paramQQAppInterface);
   }
   
-  public static List<String> a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, aloz paramaloz)
+  private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, HashMap<String, String> paramHashMap, MessageRecord paramMessageRecord, ArrayList<MessageRecord> paramArrayList, ArrayList<azdi> paramArrayList1, azdx paramazdx, int paramInt2)
   {
-    ArrayList localArrayList = new ArrayList();
-    String str = paramString1;
-    if (paramString1.contains("#likelevel1")) {
-      str = paramString1.replace("#likelevel1", "" + paramaloz.e);
+    azdx localazdx = paramazdx;
+    if (paramazdx == null) {
+      localazdx = azdd.a(5, 5);
     }
-    paramString1 = str;
-    if (str.contains("#likelevel2")) {
-      paramString1 = str.replace("#likelevel2", "" + paramaloz.f);
-    }
-    str = paramString1;
-    if (paramString1.contains("#chatlevel1")) {
-      str = paramString1.replace("#chatlevel1", "" + paramaloz.jdField_a_of_type_Int);
-    }
-    paramString1 = str;
-    if (str.contains("#chatlevel2")) {
-      paramString1 = str.replace("#chatlevel2", "" + paramaloz.b);
-    }
-    str = paramString1;
-    if (paramString1.contains("#oftenchat1")) {
-      str = paramString1.replace("#oftenchat1", "" + paramaloz.g);
-    }
-    paramString1 = str;
-    if (str.contains("#oftenchat2")) {
-      paramString1 = str.replace("#oftenchat2", "" + paramaloz.h);
-    }
-    str = paramString1;
-    if (paramString1.contains("#loveroftenchat1")) {
-      str = paramString1.replace("#loveroftenchat1", "" + paramaloz.c);
-    }
-    paramString1 = str;
-    if (str.contains("#loveroftenchat2")) {
-      paramString1 = str.replace("#loveroftenchat2", "" + paramaloz.d);
-    }
-    str = paramString1;
-    if (paramString1.contains("#qzonelevel1")) {
-      str = paramString1.replace("#qzonelevel1", "" + paramaloz.i);
-    }
-    paramString1 = str;
-    if (str.contains("#qzonelevel2")) {
-      paramString1 = str.replace("#qzonelevel2", "" + paramaloz.j);
-    }
-    str = paramString1;
-    if (paramString1.contains("#friendshipday1")) {
-      str = paramString1.replace("#friendshipday1", "" + paramaloz.l);
-    }
-    paramString1 = str;
-    if (str.contains("#friendshipday2")) {
-      paramString1 = str.replace("#friendshipday2", "" + paramaloz.m);
-    }
-    paramaloz = paramString1;
-    if (paramString1.contains("#likename1"))
-    {
-      str = auny.a(paramQQAppInterface, 6L, 1L);
-      paramaloz = paramString1.replace("#likename1", str);
-      localArrayList.add(str);
-    }
-    paramString1 = paramaloz;
-    if (paramaloz.contains("#praisename1"))
-    {
-      str = auny.a(paramQQAppInterface, 6L, 1L);
-      paramString1 = paramaloz.replace("#praisename1", str);
-      localArrayList.add(str);
-    }
-    paramaloz = paramString1;
-    if (paramString1.contains("#likename2"))
-    {
-      str = auny.a(paramQQAppInterface, 6L, 2L);
-      paramaloz = paramString1.replace("#likename2", str);
-      localArrayList.add(str);
-    }
-    paramString1 = paramaloz;
-    if (paramaloz.contains("#praisename2"))
-    {
-      str = auny.a(paramQQAppInterface, 6L, 2L);
-      paramString1 = paramaloz.replace("#praisename2", str);
-      localArrayList.add(str);
-    }
-    paramaloz = paramString1;
-    if (paramString1.contains("#chatname1"))
-    {
-      str = auny.a(paramQQAppInterface, 5L, 1L);
-      paramaloz = paramString1.replace("#chatname1", str);
-      localArrayList.add(str);
-    }
-    paramString1 = paramaloz;
-    if (paramaloz.contains("#chatname2"))
-    {
-      str = auny.a(paramQQAppInterface, 5L, 2L);
-      paramString1 = paramaloz.replace("#chatname2", str);
-      localArrayList.add(str);
-    }
-    paramaloz = paramString1;
-    if (paramString1.contains("#oftenchatname1"))
-    {
-      str = auny.a(paramQQAppInterface, 12L, 1L);
-      paramaloz = paramString1.replace("#oftenchatname1", str);
-      localArrayList.add(str);
-    }
-    paramString1 = paramaloz;
-    if (paramaloz.contains("#oftenchatname2"))
-    {
-      str = auny.a(paramQQAppInterface, 12L, 2L);
-      paramString1 = paramaloz.replace("#oftenchatname2", str);
-      localArrayList.add(str);
-    }
-    paramaloz = paramString1;
-    if (paramString1.contains("#loverchatname1"))
-    {
-      str = auny.a(paramQQAppInterface, 7L, 1L);
-      paramaloz = paramString1.replace("#loverchatname1", str);
-      localArrayList.add(str);
-    }
-    paramString1 = paramaloz;
-    if (paramaloz.contains("#loverchatname2"))
-    {
-      str = auny.a(paramQQAppInterface, 7L, 2L);
-      paramString1 = paramaloz.replace("#loverchatname2", str);
-      localArrayList.add(str);
-    }
-    paramaloz = paramString1;
-    if (paramString1.contains("#qzonename1"))
-    {
-      str = auny.a(paramQQAppInterface, 8L, 1L);
-      paramaloz = paramString1.replace("#qzonename1", str);
-      localArrayList.add(str);
-    }
-    paramString1 = paramaloz;
-    if (paramaloz.contains("#qzonename2"))
-    {
-      str = auny.a(paramQQAppInterface, 8L, 2L);
-      paramString1 = paramaloz.replace("#qzonename2", str);
-      localArrayList.add(str);
-    }
-    paramaloz = paramString1;
-    if (paramString1.contains("#friendshipname1"))
-    {
-      str = auny.a(paramQQAppInterface, 4L, 1L);
-      paramaloz = paramString1.replace("#friendshipname1", str);
-      localArrayList.add(str);
-    }
-    paramString1 = paramaloz;
-    if (paramaloz.contains("#friendshipname2"))
-    {
-      str = auny.a(paramQQAppInterface, 4L, 2L);
-      paramString1 = paramaloz.replace("#friendshipname2", str);
-      localArrayList.add(str);
-    }
-    paramaloz = paramString1;
-    if (paramString1.contains("#friendshipname3"))
-    {
-      str = auny.a(paramQQAppInterface, 4L, 3L);
-      paramaloz = paramString1.replace("#friendshipname3", str);
-      localArrayList.add(str);
-    }
-    paramString1 = paramaloz;
-    if (paramaloz.contains("#lovername1"))
-    {
-      str = auny.a(paramQQAppInterface, 1L, 0L);
-      paramString1 = paramaloz.replace("#lovername1", str);
-      localArrayList.add(str);
-    }
-    paramaloz = paramString1;
-    if (paramString1.contains("#lovername2"))
-    {
-      str = auny.a(paramQQAppInterface, 1L, 1L);
-      paramaloz = paramString1.replace("#lovername2", str);
-      localArrayList.add(str);
-    }
-    paramString1 = paramaloz;
-    if (paramaloz.contains("#lovername3"))
-    {
-      str = auny.a(paramQQAppInterface, 1L, 2L);
-      paramString1 = paramaloz.replace("#lovername3", str);
-      localArrayList.add(str);
-    }
-    paramaloz = paramString1;
-    if (paramString1.contains("#sistername1"))
-    {
-      str = auny.a(paramQQAppInterface, 2L, 0L);
-      paramaloz = paramString1.replace("#sistername1", str);
-      localArrayList.add(str);
-    }
-    paramString1 = paramaloz;
-    if (paramaloz.contains("#sistername2"))
-    {
-      str = auny.a(paramQQAppInterface, 2L, 1L);
-      paramString1 = paramaloz.replace("#sistername2", str);
-      localArrayList.add(str);
-    }
-    paramaloz = paramString1;
-    if (paramString1.contains("#sistername3"))
-    {
-      str = auny.a(paramQQAppInterface, 2L, 2L);
-      paramaloz = paramString1.replace("#sistername3", str);
-      localArrayList.add(str);
-    }
-    paramString1 = paramaloz;
-    if (paramaloz.contains("#brothername1"))
-    {
-      str = auny.a(paramQQAppInterface, 3L, 0L);
-      paramString1 = paramaloz.replace("#brothername1", str);
-      localArrayList.add(str);
-    }
-    paramaloz = paramString1;
-    if (paramString1.contains("#brothername2"))
-    {
-      str = auny.a(paramQQAppInterface, 3L, 1L);
-      paramaloz = paramString1.replace("#brothername2", str);
-      localArrayList.add(str);
-    }
-    paramString1 = paramaloz;
-    if (paramaloz.contains("#brothername3"))
-    {
-      paramQQAppInterface = auny.a(paramQQAppInterface, 3L, 2L);
-      paramString1 = paramaloz.replace("#brothername3", paramQQAppInterface);
-      localArrayList.add(paramQQAppInterface);
-    }
-    localArrayList.add(0, paramString1.replace(alpo.a(2131705989), paramString2));
-    return localArrayList;
+    localazdx.a(paramArrayList1);
+    localazdx.a(new aupi(this, paramArrayList, paramMessageRecord, paramQQAppInterface, paramString, paramInt1, paramHashMap, paramInt2));
+    azdd.a(localazdx, paramQQAppInterface);
   }
   
-  public static Map<String, String> a()
+  private void a(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    Object localObject = QzoneConfig.getInstance().getConfig("H5Url", "aio_qzone_love_gray_tips", "{'情侣空间':'https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=qqfrd&qzUseTransparentNavBar=1&_proxy=1'}");
-    HashMap localHashMap = new HashMap();
+    paramMessageRecord.extraflag = 32768;
+    paramQQAppInterface.a().a(paramString, paramInt, paramMessageRecord.uniseq);
+    paramQQAppInterface.a().a(paramString, paramInt, paramMessageRecord.uniseq, 32768, -1);
+    long l = paramMessageRecord.uniseq;
+    ((MessageHandler)paramQQAppInterface.a(0)).notifyUI(MessageHandler.a(paramInt), false, new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+  }
+  
+  private boolean a(long paramLong)
+  {
     for (;;)
     {
-      String str;
       try
       {
-        localObject = new JSONObject((String)localObject);
-        Iterator localIterator = ((JSONObject)localObject).keys();
-        if (localIterator.hasNext())
+        boolean bool2;
+        if (this.jdField_a_of_type_Bhsk == null)
         {
-          str = (String)localIterator.next();
-          if ((TextUtils.isEmpty(str)) || (!(((JSONObject)localObject).get(str) instanceof String))) {
-            continue;
+          if (QLog.isColorLevel()) {
+            QLog.d("MultiMsg_TAG", 2, "isReceiptMessageFinished map null and res: false");
           }
-          if ("情侣空间".equals(str)) {
-            localHashMap.put(str, "mqzone://arouse/lovermainpage");
+          bool2 = false;
+          return bool2;
+        }
+        boolean bool1;
+        if (((Integer)this.jdField_a_of_type_Bhsk.a(paramLong, Integer.valueOf(0))).intValue() == 0)
+        {
+          bool1 = true;
+          bool2 = bool1;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("MultiMsg_TAG", 2, "isReceiptMessageFinished res: " + bool1);
+            bool2 = bool1;
           }
         }
         else
         {
-          return localHashMap;
+          bool1 = false;
         }
       }
-      catch (JSONException localJSONException)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "getQzoneLoveGrayTips error ", localJSONException);
-      }
-      localHashMap.put(str, localJSONException.getString(str));
+      finally {}
     }
   }
   
-  public static void a(Context paramContext, aloz paramaloz, int paramInt1, int paramInt2, int paramInt3, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  private boolean a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, String paramString1, String paramString2, String paramString3, int paramInt1, long paramLong, int paramInt2, awkh paramawkh)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "updateIntimateRelationshipConfig begin  keys.length" + paramArrayOfString1.length + " values.length" + paramArrayOfString2.length);
+      QLog.d("MultiMsg_TAG", 2, "[sendMultiMsg]data.length = " + paramArrayOfByte.length);
     }
-    paramaloz.n = paramInt1;
-    paramaloz.o = paramInt2;
-    paramaloz.p = paramInt3;
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    if (paramInt1 > 0) {
-      paramContext.putInt("hot_intimate_min_days", paramInt1);
-    }
-    if (paramInt2 > 0) {
-      paramContext.putInt("hot_intimate_max_days", paramInt2);
-    }
-    if (paramInt3 > 0) {
-      paramContext.putInt("hot_intimate_day_msg_count", paramInt3);
-    }
-    if (paramArrayOfString1.length != paramArrayOfString2.length) {
-      throw new RuntimeException("updateIntimateRelationshipConfig keys.length != values.length");
-    }
-    paramInt2 = paramArrayOfString1.length;
-    paramInt1 = 0;
-    while (paramInt1 < paramInt2)
+    bayk localbayk = new bayk();
+    localbayk.jdField_a_of_type_Boolean = true;
+    localbayk.jdField_b_of_type_Int = 131078;
+    localbayk.h = 0;
+    localbayk.jdField_b_of_type_ArrayOfByte = paramArrayOfByte;
+    localbayk.jdField_b_of_type_JavaLangString = paramString1;
+    localbayk.c = paramString2;
+    localbayk.d = paramString3;
+    localbayk.jdField_a_of_type_Int = paramInt1;
+    localbayk.jdField_a_of_type_Long = paramLong;
+    localbayk.jdField_e_of_type_Int = paramInt2;
+    localbayk.jdField_a_of_type_Awkh = paramawkh;
+    paramQQAppInterface.a().a(localbayk);
+    return true;
+  }
+  
+  private void b()
+  {
+    try
     {
-      if (!TextUtils.isEmpty(paramArrayOfString2[paramInt1])) {
-        paramContext.putString(paramArrayOfString1[paramInt1], paramArrayOfString2[paramInt1]);
+      if (this.jdField_a_of_type_Bhsk == null) {
+        this.jdField_a_of_type_Bhsk = new bhsk();
       }
-      paramInt1 += 1;
-    }
-    paramContext.commit();
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "updateIntimateRelationshipConfig end");
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-      paramContext.putString("show_hot_friend_reactive_will_downgrade_push_tip", paramString);
-      paramContext.commit();
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_new_boat_graytip_close_up", paramString1);
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramContext.putString("hot_friend_new_boat_graytip_close_up2", paramString2);
-    }
-    if (!TextUtils.isEmpty(paramString3)) {
-      paramContext.putString("hot_friend_new_boat_graytip_close_up3", paramString3);
-    }
-    if (!TextUtils.isEmpty(paramString4)) {
-      paramContext.putString("hot_friend_new_boat_graytip_close_down", paramString4);
-    }
-    if (!TextUtils.isEmpty(paramString5)) {
-      paramContext.putString("hot_friend_new_boat_graytip_close_down2", paramString5);
-    }
-    if (!TextUtils.isEmpty(paramString6)) {
-      paramContext.putString("hot_friend_new_boat_graytip_close_down3", paramString6);
-    }
-    if (!TextUtils.isEmpty(paramString7)) {
-      paramContext.putString("hot_friend_new_boat_graytip_upcoming_upgrade", paramString7);
-    }
-    if (!TextUtils.isEmpty(paramString8)) {
-      paramContext.putString("hot_friend_new_boat_graytip_upcoming_upgrade2", paramString8);
-    }
-    if (!TextUtils.isEmpty(paramString9)) {
-      paramContext.putString("hot_friend_new_boat_graytip_upcoming_upgrade3", paramString9);
-    }
-    if (!TextUtils.isEmpty(paramString10)) {
-      paramContext.putString("hot_friend_new_boat_graytip_upcoming_downgrade", paramString10);
-    }
-    if (!TextUtils.isEmpty(paramString11)) {
-      paramContext.putString("hot_friend_new_boat_graytip_upcoming_downgrade2", paramString11);
-    }
-    paramContext.commit();
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_graytip_priase_down_remind", paramString1);
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramContext.putString("hot_friend_graytip_praise_dis_remind", paramString2);
-    }
-    if (!TextUtils.isEmpty(paramString3)) {
-      paramContext.putString("hot_friend_graytip_chat_down_remind", paramString3);
-    }
-    if (!TextUtils.isEmpty(paramString4)) {
-      paramContext.putString("hot_friend_graytip_chat_dis_remind", paramString4);
-    }
-    if (!TextUtils.isEmpty(paramString5)) {
-      paramContext.putString("hot_friend_graytip_qozne_down_remind", paramString5);
-    }
-    if (!TextUtils.isEmpty(paramString6)) {
-      paramContext.putString("hot_friend_graytip_qzone_dis_remind", paramString6);
-    }
-    if (!TextUtils.isEmpty(paramString7)) {
-      paramContext.putString("hot_friend_graytip_praiseandchat_dis_remind", paramString7);
-    }
-    if (!TextUtils.isEmpty(paramString8)) {
-      paramContext.putString("hot_friend_graytip_chatandqzone_dis_remind", paramString8);
-    }
-    if (!TextUtils.isEmpty(paramString9)) {
-      paramContext.putString("hot_friend_graytip_praiseandqone_dis_remind", paramString9);
-    }
-    if (!TextUtils.isEmpty(paramString10)) {
-      paramContext.putString("hot_friend_graytip_pcqall_dis_remind", paramString10);
-    }
-    if (!TextUtils.isEmpty(paramString11)) {
-      paramContext.putString("hot_friendship_graytips_1_will_downgrade", paramString11);
-    }
-    if (!TextUtils.isEmpty(paramString12)) {
-      paramContext.putString("hot_friendship_graytips_2_will_downgrade", paramString12);
-    }
-    if (!TextUtils.isEmpty(paramString13)) {
-      paramContext.putString("hot_friendship_graytips_3_will_downgrade", paramString13);
-    }
-    paramContext.commit();
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18, String paramString19, String paramString20, String paramString21, String paramString22)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_small_chat_svip_key", paramString1);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_small_chat_unionvip_key", paramString2);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_big_chat_svip_setting", paramString3);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_big_chat_unionvip_setting", paramString4);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_small_close_svip_key", paramString5);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_small_close_unionvip_key", paramString6);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_big_close_svip_key", paramString7);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_big_close_unionvip_key", paramString8);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_small_chat_svip_setting", paramString9);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_small_chat_unionvip_setting", paramString10);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_big_chat_svip_setting", paramString11);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_big_chat_unionvip_setting", paramString12);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_small_close_svip_setting", paramString13);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_small_close_svip_setting", paramString14);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_big_close_svip_setting", paramString15);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_big_close_unionvip_setting", paramString16);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_intimate_lover_1_vip_type", paramString17);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_intimate_lover_2_vip_type", paramString18);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_intimate_lover_3_vip_type", paramString19);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_intimate_lover_1_vip_setting", paramString20);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_intimate_lover_2_vip_setting", paramString21);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_intimate_lover_3_vip_setting", paramString22);
-    }
-    paramContext.commit();
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18, String paramString19, String paramString20, String paramString21, String paramString22, String paramString23, String paramString24, String paramString25, String paramString26, String paramString27, String paramString28, String paramString29, String paramString30, String paramString31, String paramString32)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    if (!TextUtils.isEmpty(paramString1)) {
-      paramContext.putString("hot_friend_graytip_chat_up", paramString1);
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramContext.putString("hot_friend_graytip_priase_up", paramString2);
-    }
-    if (!TextUtils.isEmpty(paramString3)) {
-      paramContext.putString("hot_friend_graytip_close_up", paramString3);
-    }
-    if (!TextUtils.isEmpty(paramString4)) {
-      paramContext.putString("hot_friend_graytip_lover_up", paramString4);
-    }
-    if (!TextUtils.isEmpty(paramString5)) {
-      paramContext.putString("hot_friend_graytip_qzone_up", paramString5);
-    }
-    if (!TextUtils.isEmpty(paramString6)) {
-      paramContext.putString("hot_friend_graytip_chat_up2", paramString6);
-    }
-    if (!TextUtils.isEmpty(paramString7)) {
-      paramContext.putString("hot_friend_graytip_priase_up2", paramString7);
-    }
-    if (!TextUtils.isEmpty(paramString8)) {
-      paramContext.putString("hot_friend_graytip_close_up2", paramString8);
-    }
-    if (!TextUtils.isEmpty(paramString9)) {
-      paramContext.putString("hot_friend_graytip_lover_up2", paramString9);
-    }
-    if (!TextUtils.isEmpty(paramString21)) {
-      paramContext.putString("hot_friend_graytip_lover_close", paramString21);
-    }
-    if (!TextUtils.isEmpty(paramString22)) {
-      paramContext.putString("hot_friend_graytip_lover_close2", paramString22);
-    }
-    if (!TextUtils.isEmpty(paramString23)) {
-      paramContext.putString("hot_friend_graytip_lover_open", paramString23);
-    }
-    if (!TextUtils.isEmpty(paramString24)) {
-      paramContext.putString("hot_friend_graytip_lover_open2", paramString24);
-    }
-    if (!TextUtils.isEmpty(paramString25)) {
-      paramContext.putString("hot_friend_graytip_lover_update", paramString25);
-    }
-    if (!TextUtils.isEmpty(paramString26)) {
-      paramContext.putString("hot_friend_graytip_lover_update2", paramString26);
-    }
-    if (!TextUtils.isEmpty(paramString10)) {
-      paramContext.putString("hot_friend_graytip_qzone_up2", paramString10);
-    }
-    if (!TextUtils.isEmpty(paramString11)) {
-      paramContext.putString("hot_friend_graytip_chat_down", paramString11);
-    }
-    if (!TextUtils.isEmpty(paramString12)) {
-      paramContext.putString("hot_friend_graytip_priase_down", paramString12);
-    }
-    if (!TextUtils.isEmpty(paramString13)) {
-      paramContext.putString("hot_friend_graytip_close_down", paramString13);
-    }
-    if (!TextUtils.isEmpty(paramString14)) {
-      paramContext.putString("hot_friend_graytip_lover_down", paramString14);
-    }
-    if (!TextUtils.isEmpty(paramString15)) {
-      paramContext.putString("hot_friend_graytip_qzone_down", paramString15);
-    }
-    if (!TextUtils.isEmpty(paramString16)) {
-      paramContext.putString("hot_friend_graytip_chat_dis", paramString16);
-    }
-    if (!TextUtils.isEmpty(paramString17)) {
-      paramContext.putString("hot_friend_graytip_priase_dis", paramString17);
-    }
-    if (!TextUtils.isEmpty(paramString18)) {
-      paramContext.putString("hot_friend_graytip_close_dis", paramString18);
-    }
-    if (!TextUtils.isEmpty(paramString19)) {
-      paramContext.putString("hot_friend_graytip_lover_dis", paramString19);
-    }
-    if (!TextUtils.isEmpty(paramString20)) {
-      paramContext.putString("hot_friend_graytip_qzone_dis", paramString20);
-    }
-    if (!TextUtils.isEmpty(paramString27)) {
-      paramContext.putString("hot_friendship_1_upgrade", paramString27);
-    }
-    if (!TextUtils.isEmpty(paramString28)) {
-      paramContext.putString("hot_friendship_graytips_1_downgrade", paramString28);
-    }
-    if (!TextUtils.isEmpty(paramString29)) {
-      paramContext.putString("hot_friendship_graytips_2_upgrade", paramString29);
-    }
-    if (!TextUtils.isEmpty(paramString30)) {
-      paramContext.putString("hot_friendship_graytips_2_downgrade", paramString30);
-    }
-    if (!TextUtils.isEmpty(paramString31)) {
-      paramContext.putString("hot_friendship_graytips_3_upgrade", paramString31);
-    }
-    if (!TextUtils.isEmpty(paramString32)) {
-      paramContext.putString("hot_friendship_graytips_3_downgrade", paramString32);
-    }
-    paramContext.commit();
-  }
-  
-  public static void a(Context paramContext, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    jdField_a_of_type_Boolean = paramBoolean;
-    jdField_b_of_type_Boolean = true;
-    paramContext.putBoolean("hot_friend_new_boat_big_use_new", jdField_a_of_type_Boolean);
-    paramContext.putString("hot_friend_new_boat_small_close_setting", paramString1);
-    paramContext.putString("hot_friend_new_boat_big_close_setting", paramString2);
-    paramContext.putString("hot_friend_new_boat_small_close_key", paramString3);
-    paramContext.putString("hot_friend_new_boat_big_close_key", paramString4);
-    paramContext.commit();
-  }
-  
-  public static void a(SharedPreferences paramSharedPreferences, aloz paramaloz)
-  {
-    int i = paramSharedPreferences.getInt("hot_intimate_min_days", paramaloz.n);
-    if (i > 0) {
-      paramaloz.n = i;
-    }
-    i = paramSharedPreferences.getInt("hot_intimate_max_days", paramaloz.o);
-    if (i > 0) {
-      paramaloz.o = i;
-    }
-    i = paramSharedPreferences.getInt("hot_intimate_day_msg_count", paramaloz.p);
-    if (i > 0) {
-      paramaloz.p = i;
-    }
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, long paramLong, int paramInt5, int paramInt6)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "insertFriendshipGrayTips: { type=" + paramInt1 + ", level=" + paramInt2 + ", lastLevel=" + paramInt3 + ", flag=" + paramInt4 + ", pushTime=" + paramLong + ", chatDays=" + paramInt5 + ", seq=" + paramInt6 + " }");
-    }
-    if (paramInt1 != 7) {
       return;
     }
-    Object localObject2 = (aloz)paramQQAppInterface.getManager(51);
-    Object localObject3 = bdbt.m(paramQQAppInterface, paramString);
-    int i = 2097153;
-    paramInt1 = 13;
-    Object localObject1 = "";
-    switch (paramInt4)
+    finally
     {
-    default: 
-      switch (paramInt2)
-      {
-      }
-      break;
+      localObject = finally;
+      throw localObject;
     }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label616;
-      }
-      QLog.i(jdField_a_of_type_JavaLangString, 1, String.format("insertFriendshipGrayTips invalid respond, i1 = %s, i2 = %s, i3 = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) }));
-      return;
-      i = 2097155;
-      break;
-      i = 2097153;
-      break;
-      i = 2097154;
-      break;
-      i = 2097155;
-      break;
-      paramInt1 = 11;
-      if (paramInt4 == 2) {
-        switch (paramInt3)
-        {
-        default: 
-          paramInt1 = 11;
-          break;
-        case 1: 
-          localObject1 = a(paramQQAppInterface.getApp(), 100);
-          paramInt1 = 11;
-          break;
-        case 2: 
-          localObject1 = a(paramQQAppInterface.getApp(), 104);
-          paramInt1 = 11;
-          break;
-        case 3: 
-          localObject1 = a(paramQQAppInterface.getApp(), 107);
-          paramInt1 = 11;
-          continue;
-          switch (paramInt4)
-          {
-          case 2: 
-          default: 
-            paramInt1 = 11;
-            break;
-          case 1: 
-            localObject1 = a(paramQQAppInterface.getApp(), 97);
-            paramInt1 = 11;
-            break;
-          case 3: 
-            localObject1 = String.format(a(paramQQAppInterface.getApp(), 99), new Object[] { Integer.valueOf(paramInt5) });
-            paramInt1 = 11;
-            continue;
-            switch (paramInt4)
-            {
-            case 2: 
-            default: 
-              paramInt1 = 12;
-              break;
-            case 1: 
-              localObject1 = a(paramQQAppInterface.getApp(), 101);
-              paramInt1 = 12;
-              break;
-            case 3: 
-              localObject1 = String.format(a(paramQQAppInterface.getApp(), 103), new Object[] { Integer.valueOf(paramInt5) });
-              paramInt1 = 12;
-              continue;
-              switch (paramInt4)
-              {
-              case 2: 
-              default: 
-                paramInt1 = 13;
-                break;
-              case 1: 
-                localObject1 = a(paramQQAppInterface.getApp(), 105);
-                paramInt1 = 13;
-                break;
-              case 3: 
-                localObject1 = a(paramQQAppInterface.getApp(), 106);
-                paramInt1 = 13;
-              }
-              break;
-            }
-            break;
-          }
-          break;
-        }
-      }
-    }
-    label616:
-    localObject1 = a(paramQQAppInterface, (String)localObject1, (String)localObject3, (aloz)localObject2);
-    Object localObject4 = a(paramQQAppInterface, (String)((List)localObject1).get(0), paramString);
-    localObject2 = (String)((List)localObject4).get(0);
-    ((List)localObject4).remove(0);
-    ((List)localObject1).remove(0);
-    localObject3 = new aslp(paramString, paramString, (String)localObject2, 0, -5040, i, ayvc.a());
-    MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
-    localMessageForUniteGrayTip.hasRead = 0;
-    localMessageForUniteGrayTip.subType = paramInt1;
-    localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, (aslp)localObject3);
-    localMessageForUniteGrayTip.tipParam.d = (paramString + "_friendship_" + String.valueOf(paramInt6) + "_" + String.valueOf(paramLong));
-    if (((List)localObject4).size() > 0)
-    {
-      paramInt1 = 0;
-      while (paramInt1 < ((List)localObject4).size())
-      {
-        paramString = new Bundle();
-        String str = (String)((List)localObject4).get(paramInt1);
-        if (!TextUtils.isEmpty(str))
-        {
-          paramString.putString("image_resource", str);
-          paramInt2 = 0;
-          do
-          {
-            paramInt3 = ((String)localObject2).indexOf(str, paramInt2);
-            paramInt2 = str.length() + paramInt3;
-            if (paramInt3 >= 0)
-            {
-              ((aslp)localObject3).a(paramInt3, paramInt2, paramString);
-              if (QLog.isColorLevel()) {
-                QLog.d(jdField_a_of_type_JavaLangString, 2, "iconPos=" + paramInt3 + " fromIndex=" + paramInt2);
-              }
-            }
-          } while (paramInt3 >= 0);
-        }
-        paramInt1 += 1;
-      }
-    }
-    if (((List)localObject1).size() > 0)
-    {
-      paramInt1 = 0;
-      while (paramInt1 < ((List)localObject1).size())
-      {
-        paramString = new Bundle();
-        localObject4 = (String)((List)localObject1).get(paramInt1);
-        if (!TextUtils.isEmpty((CharSequence)localObject4))
-        {
-          paramString.putInt("key_action", 11);
-          paramString.putString("key_action_DATA", (String)localObject4);
-          paramInt2 = 0;
-          do
-          {
-            paramInt3 = ((String)localObject2).indexOf((String)localObject4, paramInt2);
-            paramInt2 = ((String)localObject4).length() + paramInt3;
-            if (paramInt3 >= 0)
-            {
-              ((aslp)localObject3).a(paramInt3, paramInt2, paramString);
-              if (QLog.isColorLevel()) {
-                QLog.d(jdField_a_of_type_JavaLangString, 2, "spanPos=" + paramInt3 + " fromIndex=" + paramInt2);
-              }
-            }
-          } while (paramInt3 >= 0);
-        }
-        paramInt1 += 1;
-      }
-    }
-    aslq.a(paramQQAppInterface, localMessageForUniteGrayTip);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, amgu paramamgu, submsgtype0xc7.FriendShipFlagNotify paramFriendShipFlagNotify)
+  private void b(int paramInt)
   {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "handle friendShipFlagNotify");
-    aloz localaloz = (aloz)paramQQAppInterface.getManager(51);
-    if (localaloz == null) {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "friendShipFlagNotify return due to fm null");
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiMsg_TAG", 2, "updateFinishMask mask: " + paramInt);
+    }
+    this.jdField_b_of_type_Int ^= paramInt;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Int != 7) {
+      return this.jdField_c_of_type_Int;
+    }
+    return 50;
+  }
+  
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
+  {
+    if ((paramChatMessage1.istroop == 1) || (paramChatMessage1.istroop == 3000)) {
+      if (paramChatMessage1.shmsgseq == paramChatMessage2.shmsgseq) {
+        if (paramChatMessage1.getId() <= paramChatMessage2.getId()) {}
+      }
     }
     do
     {
-      return;
-      if ((!paramFriendShipFlagNotify.uint64_dst_uin.has()) || (!paramFriendShipFlagNotify.uint32_level_1.has()) || (!paramFriendShipFlagNotify.uint32_level_2.has()) || (!paramFriendShipFlagNotify.uint32_continuity_days.has()) || (!paramFriendShipFlagNotify.uint32_chat_flag.has()) || (!paramFriendShipFlagNotify.uint64_last_chat_time.has()) || (!paramFriendShipFlagNotify.uint64_notify_time.has()))
+      do
       {
-        QLog.i(jdField_a_of_type_JavaLangString, 1, "friendShipFlagNotify has empty field, ignored");
-        return;
-      }
-    } while ((!a(paramQQAppInterface)) || (!a(paramQQAppInterface.c())));
-    long l1 = paramFriendShipFlagNotify.uint64_dst_uin.get();
-    if (l1 <= 0L)
-    {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "friendShipFlagNotify return due to valid uin");
-      return;
-    }
-    String str = String.valueOf(l1);
-    int i = paramFriendShipFlagNotify.uint32_level_1.get();
-    int j = paramFriendShipFlagNotify.uint32_level_2.get();
-    int k = paramFriendShipFlagNotify.uint32_continuity_days.get();
-    int m = paramFriendShipFlagNotify.uint32_chat_flag.get();
-    l1 = paramFriendShipFlagNotify.uint64_last_chat_time.get();
-    long l2 = paramFriendShipFlagNotify.uint64_notify_time.get();
-    int n = paramFriendShipFlagNotify.uint32_seq.get();
-    boolean bool3 = true;
-    paramFriendShipFlagNotify = new ArrayList();
-    paramamgu = localaloz.a(str);
-    if (paramamgu == null)
-    {
-      paramamgu = new ExtensionInfo();
-      paramamgu.uin = str;
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      paramamgu.friendshipLevel = j;
-      paramamgu.friendshipChatDays = k;
-      if (l2 >= paramQQAppInterface.getPreferences().getLong("inccheckupdatetimeStamp9", 0L)) {
-        bool1 = true;
-      }
-      for (;;)
-      {
-        long l3 = paramamgu.lastFriendshipGrayPushTime;
-        boolean bool2 = bool3;
-        if (paramamgu.lastFriendshipGrayPushTime == l2)
+        do
         {
-          bool2 = bool3;
-          if (l2 != -1L) {
-            bool2 = false;
+          return 1;
+          if (paramChatMessage1.getId() < paramChatMessage2.getId()) {
+            return -1;
           }
-        }
-        paramamgu.lastFriendshipGrayPushTime = l2;
-        paramamgu.lastFriendshipTime = (86400L * l1 - 28800L);
-        if (bool2) {
-          a(paramQQAppInterface, 7, str, j, i, m, l2, k, n);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, String.format("handleFriendShipFlagNotify FriendReactive: { prevLevel=%s, curLevel=%s, chatDays=%s, flag=%s, lastChatTime=%s, oldNotifyTime = %s, notifyTime=%s, seq=%s, needUpdateExt=%s, needGray=%s, lastTimeDays=%s, lastTime=%s }", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l2), Integer.valueOf(n), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Long.valueOf(l1), Long.valueOf(paramamgu.lastFriendshipTime) }));
-        }
-        if (!bool1) {
+          return 0;
+        } while (paramChatMessage1.shmsgseq > paramChatMessage2.shmsgseq);
+        return -1;
+        if (paramChatMessage1.time != paramChatMessage2.time) {
           break;
         }
-        localaloz.a(paramamgu);
-        paramFriendShipFlagNotify.add(str);
-        paramQQAppInterface.a(1).notifyUI(107, true, paramFriendShipFlagNotify);
-        return;
+      } while (paramChatMessage1.getId() > paramChatMessage2.getId());
+      if (paramChatMessage1.getId() < paramChatMessage2.getId()) {
+        return -1;
       }
-    }
+      return 0;
+    } while (paramChatMessage1.time > paramChatMessage2.time);
+    return -1;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  public int a(Collection<ChatMessage> paramCollection)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "parsNewBoatConfig:" + paramString);
+    paramCollection = paramCollection.iterator();
+    int k = 0;
+    Object localObject1;
+    if (paramCollection.hasNext())
+    {
+      localObject1 = (ChatMessage)paramCollection.next();
+      if ((localObject1 instanceof MessageForPic)) {
+        k += 1;
+      }
     }
     for (;;)
     {
-      try
+      break;
+      if ((localObject1 instanceof MessageForMixedMsg))
       {
-        paramString = new JSONObject(paramString);
-        int i = paramString.optInt("useBoat", 1);
-        String str1 = paramString.optString("boatSSetting", "");
-        String str2 = paramString.optString("boatBSetting", "");
-        String str3 = paramString.optString("boatSName", "");
-        String str4 = paramString.optString("boatBName", "");
-        Object localObject = paramQQAppInterface.getApp();
-        if (i == 1)
-        {
-          a((Context)localObject, bool, str1, str2, str3, str4);
-          str1 = paramString.optString("grayBoatUp", "");
-          str2 = paramString.optString("grayBoat2Up", "");
-          str3 = paramString.optString("grayBoat3Up", "");
-          str4 = paramString.optString("grayBoatDeg", "");
-          localObject = paramString.optString("grayBoat2Deg", "");
-          String str5 = paramString.optString("grayBoat3Deg", "");
-          String str6 = paramString.optString("grayComingUp", "");
-          String str7 = paramString.optString("grayComing2Up", "");
-          String str8 = paramString.optString("grayComing3Up", "");
-          String str9 = paramString.optString("grayComingDeg", "");
-          paramString = paramString.optString("grayComing2Deg", "");
-          a(paramQQAppInterface.getApp(), str1, str2, str3, str4, (String)localObject, str5, str6, str7, str8, str9, paramString);
-          return;
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "parsNewBoatConfig:error->" + paramQQAppInterface.toString());
-      }
-      bool = false;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "parsXMLConfig: {\n" + paramString + "\n}");
-    }
-    XmlPullParser localXmlPullParser = Xml.newPullParser();
-    for (;;)
-    {
-      try
-      {
-        new HashMap();
-        localHashMap2 = new HashMap();
-        localHashMap1 = new HashMap();
-        localObject30 = "";
-        localObject31 = "";
-        i10 = 7;
-        i11 = 30;
-        i12 = 6;
-        localObject32 = "";
-        localObject33 = "";
-        localObject34 = "";
-        localObject35 = "";
-        localObject36 = "";
-        localObject37 = "";
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i24 = localXmlPullParser.getEventType();
-        bool2 = false;
-        i8 = 7;
-        localObject18 = "";
-        i9 = 3;
-        localObject19 = "";
-        localObject20 = "";
-        localObject21 = "";
-        localObject22 = "";
-        localObject23 = "";
-        localObject24 = "";
-        localObject25 = "";
-        localObject26 = "";
-        localObject27 = "";
-        localObject28 = "";
-        localObject29 = "";
-        localObject17 = "";
-        i5 = 30;
-        localObject13 = "";
-        localObject14 = "";
-        bool1 = false;
-        i6 = 30;
-        localObject12 = "";
-        i = 30;
-        localObject6 = "";
-        m = 3;
-        localObject5 = "";
-        i2 = 3;
-        i3 = 0;
-        localObject10 = "";
-        i4 = 3;
-        localObject11 = "";
-        localObject9 = "";
-        localObject7 = "";
-        i1 = 30;
-        localObject8 = "";
-        n = 5;
-        localObject3 = "";
-        k = 30;
-        localObject4 = "";
-        j = 7;
-        localObject15 = "";
-        i7 = 30;
-        localObject16 = "";
-        localObject1 = "";
-        localObject2 = "";
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        HashMap localHashMap2;
-        HashMap localHashMap1;
-        Object localObject30;
-        Object localObject31;
-        int i10;
-        int i11;
-        int i12;
-        Object localObject32;
-        Object localObject33;
-        Object localObject34;
-        Object localObject35;
-        Object localObject36;
-        Object localObject37;
-        boolean bool2;
-        boolean bool1;
-        Object localObject51;
-        Object localObject44;
-        Object localObject45;
-        Object localObject46;
-        Object localObject47;
-        Object localObject48;
-        Object localObject49;
-        Object localObject50;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e(jdField_a_of_type_JavaLangString, 2, paramString, paramQQAppInterface);
-        return;
-      }
-      int i24 = localXmlPullParser.next();
-      int i13 = k;
-      int i14 = i5;
-      Object localObject38 = localObject14;
-      localObject51 = localObject17;
-      Object localObject14 = localObject18;
-      Object localObject17 = localObject19;
-      Object localObject41 = localObject20;
-      Object localObject42 = localObject21;
-      Object localObject43 = localObject22;
-      localObject44 = localObject23;
-      localObject45 = localObject24;
-      localObject46 = localObject25;
-      localObject47 = localObject26;
-      localObject48 = localObject1;
-      int i5 = i6;
-      Object localObject39 = localObject27;
-      localObject49 = localObject2;
-      int i6 = j;
-      Object localObject18 = localObject6;
-      Object localObject6 = localObject9;
-      int j = i3;
-      Object localObject19 = localObject12;
-      int i3 = i;
-      Object localObject40 = localObject28;
-      localObject50 = localObject8;
-      int i = i4;
-      Object localObject8 = localObject13;
-      int i15 = m;
-      Object localObject12 = localObject4;
-      int k = i8;
-      Object localObject4 = localObject29;
-      int i8 = i1;
-      Object localObject13 = localObject10;
-      int i16 = i2;
-      Object localObject1 = localObject16;
-      Object localObject2 = localObject15;
-      int i2 = i9;
-      int i4 = i7;
-      int i9 = i14;
-      int i1 = i;
-      int m = j;
-      int i7 = i16;
-      j = i8;
-      i = n;
-      int n = i15;
-      Object localObject20 = localObject51;
-      Object localObject21 = localObject14;
-      Object localObject22 = localObject17;
-      Object localObject23 = localObject41;
-      Object localObject24 = localObject42;
-      Object localObject25 = localObject43;
-      Object localObject26 = localObject44;
-      Object localObject27 = localObject45;
-      Object localObject28 = localObject46;
-      Object localObject29 = localObject47;
-      localObject17 = localObject48;
-      localObject14 = localObject49;
-      Object localObject9 = localObject3;
-      Object localObject3 = localObject12;
-      Object localObject10 = localObject5;
-      localObject12 = localObject18;
-      localObject18 = localObject7;
-      Object localObject7 = localObject50;
-      Object localObject15 = localObject13;
-      Object localObject16 = localObject11;
-      Object localObject5 = localObject19;
-      localObject19 = localObject38;
-      localObject13 = localObject39;
-      Object localObject11 = localObject40;
-      i8 = i13;
-      break label28829;
-      localObject38 = localXmlPullParser.getName();
-      if (((String)localObject38).equalsIgnoreCase("ShowInContact"))
-      {
-        if (Integer.valueOf(localXmlPullParser.nextText()).intValue() == 1) {
-          bool2 = true;
+        localObject1 = ((MessageForMixedMsg)localObject1).msgElemList.iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          if (((MessageRecord)((Iterator)localObject1).next() instanceof MessageForPic)) {
+            k += 1;
+          }
         }
       }
       else
       {
-        if (((String)localObject38).equalsIgnoreCase("ShowInChat"))
+        int m = k;
+        if (((ChatMessage)localObject1).msgtype == -1036)
         {
-          if (Integer.valueOf(localXmlPullParser.nextText()).intValue() != 1) {
-            break label29639;
-          }
-          bool1 = true;
-          break label29639;
-        }
-        int i17;
-        int i18;
-        int i19;
-        int i23;
-        int i21;
-        int i20;
-        int i22;
-        if (((String)localObject38).equalsIgnoreCase("minInteractiveDays"))
-        {
-          i2 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-          i17 = i2;
-          i13 = k;
-          i18 = i4;
-          i19 = i5;
-          i23 = i9;
-          i16 = i1;
-          i14 = m;
-          i21 = i7;
-          i15 = n;
-          i20 = i6;
-          i22 = i8;
-          if (i2 <= 0)
+          localObject1 = ((MessageForLongMsg)localObject1).longMsgFragmentList.iterator();
+          do
           {
-            i13 = i8;
-            localObject41 = localObject17;
-            i2 = j;
-            i8 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i15 = 3;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i14 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i13;
-            m = n;
-            n = i1;
-            i1 = i2;
-            i2 = i8;
-            i5 = i9;
-            i8 = i14;
-            i9 = i15;
-          }
-        }
-        else if (((String)localObject38).equalsIgnoreCase("maxInteractiveDays"))
-        {
-          k = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-          i17 = i2;
-          i13 = k;
-          i18 = i4;
-          i19 = i5;
-          i23 = i9;
-          i16 = i1;
-          i14 = m;
-          i21 = i7;
-          i15 = n;
-          i20 = i6;
-          i22 = i8;
-          if (k <= 0)
+            m = k;
+            if (!((Iterator)localObject1).hasNext()) {
+              break;
+            }
+            localObject2 = (MessageRecord)((Iterator)localObject1).next();
+          } while (!(localObject2 instanceof MessageForMixedMsg));
+          Object localObject2 = ((MessageForMixedMsg)localObject2).msgElemList.iterator();
+          m = k;
+          for (;;)
           {
-            k = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i15 = 30;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i15;
-            i9 = i13;
-          }
-        }
-        else if (((String)localObject38).equalsIgnoreCase("minLoverInteractiveDays"))
-        {
-          i8 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-          i17 = i2;
-          i13 = k;
-          i18 = i4;
-          i19 = i5;
-          i23 = i9;
-          i16 = i1;
-          i14 = m;
-          i21 = i7;
-          i15 = n;
-          i20 = i6;
-          i22 = i8;
-          if (i8 <= 0)
-          {
-            i16 = 3;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i15 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i16;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i15;
-            i9 = i13;
-          }
-        }
-        else if (((String)localObject38).equalsIgnoreCase("maxLoverInteractiveDays"))
-        {
-          i6 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-          i17 = i2;
-          i13 = k;
-          i18 = i4;
-          i19 = i5;
-          i23 = i9;
-          i16 = i1;
-          i14 = m;
-          i21 = i7;
-          i15 = n;
-          i20 = i6;
-          i22 = i8;
-          if (i6 <= 0)
-          {
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            i17 = 30;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            j = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = j;
-            j = i17;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-          }
-        }
-        else if (((String)localObject38).equalsIgnoreCase("minLinkDays"))
-        {
-          i4 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-          i17 = i2;
-          i13 = k;
-          i18 = i4;
-          i19 = i5;
-          i23 = i9;
-          i16 = i1;
-          i14 = m;
-          i21 = i7;
-          i15 = n;
-          i20 = i6;
-          i22 = i8;
-          if (i4 <= 0)
-          {
-            localObject41 = localObject17;
-            i4 = j;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i16 = 3;
-            i15 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i5 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i14 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i15;
-            k = i8;
-            m = n;
-            n = i1;
-            i1 = i4;
-            i2 = i7;
-            i4 = i5;
-            i5 = i9;
-            i7 = i16;
-            i8 = i14;
-            i9 = i13;
-          }
-        }
-        else if (((String)localObject38).equalsIgnoreCase("maxLinkDays"))
-        {
-          i5 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-          i17 = i2;
-          i13 = k;
-          i18 = i4;
-          i19 = i5;
-          i23 = i9;
-          i16 = i1;
-          i14 = m;
-          i21 = i7;
-          i15 = n;
-          i20 = i6;
-          i22 = i8;
-          if (i5 <= 0)
-          {
-            i5 = i9;
-            i14 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i13 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i16 = 30;
-            localObject39 = localObject11;
-            i7 = i4;
-            i6 = i3;
-            i9 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i15 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i6;
-            k = i14;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i13;
-            i6 = i16;
-            i8 = i15;
-          }
-        }
-        else if (((String)localObject38).equalsIgnoreCase("minIntimacyDays"))
-        {
-          i9 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-          i17 = i2;
-          i13 = k;
-          i18 = i4;
-          i19 = i5;
-          i23 = i9;
-          i16 = i1;
-          i14 = m;
-          i21 = i7;
-          i15 = n;
-          i20 = i6;
-          i22 = i8;
-          if (i9 <= 0)
-          {
-            i16 = 3;
-            i14 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i13 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i9 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i15 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i14;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i13;
-            i5 = i16;
-            i8 = i15;
-          }
-        }
-        else if (((String)localObject38).equalsIgnoreCase("maxIntimacyDays"))
-        {
-          i1 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-          i17 = i2;
-          i13 = k;
-          i18 = i4;
-          i19 = i5;
-          i23 = i9;
-          i16 = i1;
-          i14 = m;
-          i21 = i7;
-          i15 = n;
-          i20 = i6;
-          i22 = i8;
-          if (i1 <= 0)
-          {
-            i14 = i8;
-            localObject41 = localObject17;
-            i1 = j;
-            i8 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i4 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i5 = 30;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i2 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i15 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i4;
-            k = i14;
-            m = n;
-            n = i2;
-            i2 = i8;
-            i4 = i5;
-            i5 = i9;
-            i8 = i15;
-            i9 = i13;
-          }
-        }
-        else if (((String)localObject38).equalsIgnoreCase("minQzoneVisitDays"))
-        {
-          m = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-          i17 = i2;
-          i13 = k;
-          i18 = i4;
-          i19 = i5;
-          i23 = i9;
-          i16 = i1;
-          i14 = m;
-          i21 = i7;
-          i15 = n;
-          i20 = i6;
-          i22 = i8;
-          if (m <= 0)
-          {
-            m = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i5 = 3;
-            localObject40 = localObject4;
-            i15 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i3;
             k = m;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i3 = i5;
-            i5 = i9;
-            i8 = i15;
-            i9 = i13;
-          }
-        }
-        else if (((String)localObject38).equalsIgnoreCase("maxQzoneVisitDays"))
-        {
-          i7 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-          i17 = i2;
-          i13 = k;
-          i18 = i4;
-          i19 = i5;
-          i23 = i9;
-          i16 = i1;
-          i14 = m;
-          i21 = i7;
-          i15 = n;
-          i20 = i6;
-          i22 = i8;
-          if (i7 <= 0)
-          {
-            i14 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i16 = 30;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i15 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i14;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i16;
-            i5 = i9;
-            i8 = i15;
-            i9 = i13;
-          }
-        }
-        else if (((String)localObject38).equalsIgnoreCase("maxRemindTimes"))
-        {
-          n = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-          i17 = i2;
-          i13 = k;
-          i18 = i4;
-          i19 = i5;
-          i23 = i9;
-          i16 = i1;
-          i14 = m;
-          i21 = i7;
-          i15 = n;
-          i20 = i6;
-          i22 = i8;
-          if (n <= 0)
-          {
-            n = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            i2 = 5;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i15 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = n;
-            m = i2;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i15;
-            i9 = i13;
-          }
-        }
-        else
-        {
-          if (((String)localObject38).equalsIgnoreCase("fireNumDescription"))
-          {
-            localObject41 = localXmlPullParser.nextText();
-            i15 = i8;
-            localObject2 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject42 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject17 = localObject1;
-            localObject1 = localObject2;
-            localObject2 = localObject42;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject41;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayPraiseUpgrade"))
-          {
-            localHashMap2.put("grayPraiseUp", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayChatUpgrade"))
-          {
-            localHashMap2.put("grayChatUp", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayColseUpgrade"))
-          {
-            localHashMap2.put("grayCloseUp", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayLoverUpgrade"))
-          {
-            localHashMap2.put("grayQzoneLoverUp", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayQzoneVisitUpgrade"))
-          {
-            localHashMap2.put("grayQzoneVisitUp", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayPraise2Upgrade"))
-          {
-            localHashMap2.put("grayPraiseUp2", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayChat2Upgrade"))
-          {
-            localHashMap2.put("grayChatUp2", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayColse2Upgrade"))
-          {
-            localHashMap2.put("grayCloseUp2", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayLover2Upgrade"))
-          {
-            localHashMap2.put("grayQzoneLoverUp2", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayQzoneVisit2Upgrade"))
-          {
-            localHashMap2.put("grayQzoneVisitUp2", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayPraiseDegrade"))
-          {
-            localHashMap2.put("grayPriaseDown", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayChatDegrade"))
-          {
-            localHashMap2.put("grayChatDown", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayColseDegrade"))
-          {
-            localHashMap2.put("grayCloseDown", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayLoverDegrade"))
-          {
-            localHashMap2.put("grayQzoneLoverDown", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayLoverOpen"))
-          {
-            localHashMap2.put("grayQzoneLoverOpen", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayLoverOpen2"))
-          {
-            localHashMap2.put("grayQzoneLoverOpen2", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayLoverUpdate"))
-          {
-            localHashMap2.put("grayQzoneLoverUpdate", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayLoverUpdate2"))
-          {
-            localHashMap2.put("grayQzoneLoverUpdate2", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayLoverClose"))
-          {
-            localHashMap2.put("grayQzoneLoverClose", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayLoverClose2"))
-          {
-            localHashMap2.put("grayQzoneLoverClose2", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayQzoneVisitDegrade"))
-          {
-            localHashMap2.put("grayQzoneVisitDown", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayPraiseDis"))
-          {
-            localHashMap2.put("grayPriaseDis", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayChatDis"))
-          {
-            localHashMap2.put("grayChatDis", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayColseDis"))
-          {
-            localHashMap2.put("grayCloseDis", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayLoverDis"))
-          {
-            localHashMap2.put("grayQzoneLoverDis", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayQzoneVisitDis"))
-          {
-            localHashMap2.put("grayQzoneVisitDis", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayPraiseDegradeRemind"))
-          {
-            localObject38 = localXmlPullParser.nextText();
-            localObject19 = localObject22;
-            localObject22 = localObject38;
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject22;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayPraiseDisRemind"))
-          {
-            localObject40 = localXmlPullParser.nextText();
-            i15 = i8;
-            localObject8 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject42 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject43 = localObject9;
-            localObject13 = localObject40;
-            i4 = i1;
-            localObject9 = localObject7;
-            localObject11 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject41 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject8;
-            localObject2 = localObject42;
-            localObject3 = localObject43;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject8 = localObject9;
-            localObject9 = localObject11;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject41;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayChatDegradeRemind"))
-          {
-            localObject40 = localXmlPullParser.nextText();
-            i15 = i8;
-            localObject5 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject42 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject40;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject41 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject5;
-            localObject2 = localObject42;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject41;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayChatDisRemind"))
-          {
-            localObject16 = localXmlPullParser.nextText();
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayQzoneDegradeRemind"))
-          {
-            localObject15 = localXmlPullParser.nextText();
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayQzoneDisRemind"))
-          {
-            localObject40 = localXmlPullParser.nextText();
-            i15 = i8;
-            localObject6 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject42 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject40;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject41 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject6;
-            localObject2 = localObject42;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject41;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayChatAndPraiseRemind"))
-          {
-            localObject40 = localXmlPullParser.nextText();
-            localObject7 = localObject18;
-            i15 = i8;
-            localObject18 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject42 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject40;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject41 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject18;
-            localObject2 = localObject42;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject41;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayChatAnQzoneRemind"))
-          {
-            localObject38 = localXmlPullParser.nextText();
-            localObject18 = localObject21;
-            localObject21 = localObject38;
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject21;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayPraiseAndQzoneRemind"))
-          {
-            localObject39 = localXmlPullParser.nextText();
-            i15 = i8;
-            localObject12 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject14 = localObject39;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject41 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject12;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject14;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject41;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("grayPCQallRemind"))
-          {
-            localObject40 = localXmlPullParser.nextText();
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            localObject10 = localObject15;
-            j = i6;
-            localObject42 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            localObject11 = localObject40;
-            i5 = i3;
-            i13 = i2;
-            localObject43 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject15 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject42;
-            localObject3 = localObject43;
-            localObject5 = localObject11;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("graytipFriendship1Upgrade"))
-          {
-            localHashMap2.put("graytipFriendship1Upgrade", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("graytipFriendship1WillDowngrade"))
-          {
-            localObject41 = localXmlPullParser.nextText();
-            i15 = i8;
-            localObject3 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject42 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject41;
-            localObject41 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject3;
-            localObject2 = localObject42;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject41;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("graytipFriendship1Downgrade"))
-          {
-            localHashMap2.put("graytipFriendship1Downgrade", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("graytipFriendship2Upgrade"))
-          {
-            localHashMap2.put("graytipFriendship2Upgrade", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("graytipFriendship2WillDowngrade"))
-          {
-            localObject43 = localXmlPullParser.nextText();
-            i15 = i8;
-            localObject9 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject42 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject11 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject41 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject9;
-            localObject2 = localObject42;
-            localObject3 = localObject43;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject9 = localObject11;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject41;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("graytipFriendship2Downgrade"))
-          {
-            localHashMap2.put("graytipFriendship2Downgrade", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("graytipFriendship3Upgrade"))
-          {
-            localHashMap2.put("graytipFriendship3Upgrade", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("graytipFriendship3WillDowngrade"))
-          {
-            localObject43 = localXmlPullParser.nextText();
-            localObject14 = localObject19;
-            i15 = i8;
-            localObject19 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject41 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject19;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject41;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("graytipFriendship3Downgrade"))
-          {
-            localHashMap2.put("graytipFriendship3Downgrade", localXmlPullParser.nextText());
-            i15 = i8;
-            localObject41 = localObject17;
-            i8 = j;
-            i14 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i5 = i3;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i3 = m;
-            localObject40 = localObject4;
-            i16 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i5;
-            k = i15;
-            m = n;
-            n = i1;
-            i1 = i8;
-            i2 = i14;
-            i5 = i9;
-            i8 = i16;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("friendshipMinDays"))
-          {
-            i13 = Integer.parseInt(localXmlPullParser.nextText());
-            if (i13 <= 0) {
-              break label29876;
+            if (!((Iterator)localObject2).hasNext()) {
+              break;
             }
-            j = i13;
-            break label29876;
-          }
-          if (((String)localObject38).equalsIgnoreCase("friendshipMaxDays"))
-          {
-            i13 = Integer.parseInt(localXmlPullParser.nextText());
-            if (i13 <= 0) {
-              break label30113;
+            if (((MessageRecord)((Iterator)localObject2).next() instanceof MessageForPic)) {
+              m += 1;
             }
-            i = i13;
-            break label30113;
           }
-          if (((String)localObject38).equalsIgnoreCase("friendship"))
+          return k;
+        }
+        k = m;
+      }
+    }
+  }
+  
+  public SessionInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  }
+  
+  public MessageForStructing a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, AbsStructMsg paramAbsStructMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiMsg_TAG", 2, " favorMultiMsg start: ");
+    }
+    paramString2 = paramQQAppInterface.getCurrentAccountUin();
+    paramQQAppInterface = azaf.a(paramQQAppInterface, paramString2, paramString1, paramString2, paramInt, 0L, paramAbsStructMsg);
+    paramQQAppInterface.isReMultiMsg = true;
+    return (MessageForStructing)paramQQAppInterface;
+  }
+  
+  public String a(String paramString, long paramLong, QQAppInterface paramQQAppInterface)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramLong == 0L)) {}
+    Object localObject;
+    do
+    {
+      while (!paramQQAppInterface.hasNext())
+      {
+        do
+        {
+          return null;
+          if (this.jdField_c_of_type_JavaUtilHashMap.size() > 0)
           {
-            i16 = Integer.parseInt(localXmlPullParser.nextText());
-            i14 = i8;
-            localObject41 = localObject17;
-            i3 = j;
-            i8 = i7;
-            j = i6;
-            localObject43 = localObject14;
-            localObject38 = localObject13;
-            i6 = i5;
-            localObject39 = localObject11;
-            i7 = i4;
-            i13 = i2;
-            localObject11 = localObject9;
-            localObject13 = localObject8;
-            i4 = i1;
-            localObject8 = localObject7;
-            localObject9 = localObject6;
-            i1 = i;
-            localObject14 = localObject5;
-            i5 = m;
-            localObject40 = localObject4;
-            i15 = k;
-            localObject4 = localObject3;
-            localObject42 = localObject2;
-            localObject17 = localObject1;
-            localObject1 = localObject41;
-            localObject2 = localObject43;
-            localObject3 = localObject11;
-            localObject5 = localObject10;
-            localObject6 = localObject12;
-            localObject7 = localObject18;
-            localObject10 = localObject15;
-            localObject11 = localObject16;
-            localObject12 = localObject14;
-            localObject14 = localObject19;
-            localObject15 = localObject42;
-            localObject16 = localObject17;
-            localObject17 = localObject20;
-            localObject18 = localObject21;
-            localObject19 = localObject22;
-            localObject20 = localObject23;
-            localObject21 = localObject24;
-            localObject22 = localObject25;
-            localObject23 = localObject26;
-            localObject24 = localObject27;
-            localObject25 = localObject28;
-            localObject26 = localObject29;
-            localObject27 = localObject38;
-            localObject28 = localObject39;
-            localObject29 = localObject40;
-            i = i16;
-            k = i14;
-            m = n;
-            n = i1;
-            i1 = i3;
-            i2 = i8;
-            i3 = i5;
-            i5 = i9;
-            i8 = i15;
-            i9 = i13;
-            continue;
-          }
-          if (((String)localObject38).equalsIgnoreCase("intimateMinDays"))
-          {
-            i13 = Integer.parseInt(localXmlPullParser.nextText());
-            if (i13 > 0)
+            localObject = (List)this.jdField_c_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+            if ((localObject != null) && (((List)localObject).size() > 0))
             {
-              i10 = i13;
-              break label30350;
-            }
-          }
-          else
-          {
-            if (((String)localObject38).equalsIgnoreCase("intimateMaxDays"))
-            {
-              i13 = Integer.parseInt(localXmlPullParser.nextText());
-              if (i13 > 0)
+              localObject = ((List)localObject).iterator();
+              while (((Iterator)localObject).hasNext())
               {
-                i11 = i13;
-                break label30587;
+                MultiMsgNick localMultiMsgNick = (MultiMsgNick)((Iterator)localObject).next();
+                if ((localMultiMsgNick != null) && (paramString.equals(localMultiMsgNick.uin)) && (paramLong == localMultiMsgNick.uniseq)) {
+                  return localMultiMsgNick.nick;
+                }
               }
             }
-            else
+          }
+          this.jdField_c_of_type_JavaUtilHashMap.clear();
+          paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager().a(MultiMsgNick.class, new MultiMsgNick().getTableName(), false, "uniseq = ?", new String[] { String.valueOf(paramLong) }, null, null, null, null);
+        } while ((paramQQAppInterface == null) || (paramQQAppInterface.size() <= 0));
+        this.jdField_c_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), paramQQAppInterface);
+        paramQQAppInterface = paramQQAppInterface.iterator();
+      }
+      localObject = (MultiMsgNick)paramQQAppInterface.next();
+    } while ((localObject == null) || (!paramString.equals(((MultiMsgNick)localObject).uin)) || (paramLong != ((MultiMsgNick)localObject).uniseq));
+    return ((MultiMsgNick)localObject).nick;
+  }
+  
+  public List<ChatMessage> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (((Boolean)localEntry.getValue()).booleanValue()) {
+        localArrayList.add(localEntry.getKey());
+      }
+    }
+    return localArrayList;
+  }
+  
+  public List<ChatMessage> a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    return a(paramQQAppInterface, paramLong, null, 0);
+  }
+  
+  public List<ChatMessage> a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, int paramInt)
+  {
+    Object localObject = paramQQAppInterface.a().a().a(paramLong);
+    if (paramString != null) {
+      abti.a(paramString, paramInt, (List)localObject, paramQQAppInterface);
+    }
+    paramQQAppInterface = new ArrayList();
+    paramString = ((List)localObject).iterator();
+    while (paramString.hasNext())
+    {
+      localObject = (MessageRecord)paramString.next();
+      if ((localObject instanceof MessageForStructing))
+      {
+        MessageForStructing localMessageForStructing = (MessageForStructing)localObject;
+        if (localMessageForStructing.structingMsg == null) {
+          localMessageForStructing.structingMsg = azvd.a(((MessageRecord)localObject).msgData);
+        }
+      }
+      if ((localObject instanceof MessageForQQStoryComment)) {
+        ((MessageForQQStoryComment)localObject).displayType = 1;
+      }
+      paramQQAppInterface.add((ChatMessage)localObject);
+      if ((QLog.isColorLevel()) && ((localObject instanceof MessageForPic)))
+      {
+        localObject = (MessageForPic)localObject;
+        QLog.d("MultiMsg_TAG", 2, "[chatPie.getMultiMsgList] = " + ((MessageForPic)localObject).toLogString() + " mr = " + ((MessageForPic)localObject).toString());
+      }
+    }
+    return paramQQAppInterface;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.j = paramInt;
+  }
+  
+  public void a(SessionInfo paramSessionInfo)
+  {
+    if (paramSessionInfo != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = ((SessionInfo)paramSessionInfo.clone());
+      return;
+    }
+    catch (CloneNotSupportedException paramSessionInfo) {}
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+    return;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    String str2;
+    Object localObject;
+    int k;
+    if (paramQQAppInterface != null)
+    {
+      String str1 = paramQQAppInterface.a(ServerConfigManager.ConfigType.user, "MMF_enable");
+      paramQQAppInterface.a(ServerConfigManager.ConfigType.user, "MMF_maxMsgNum");
+      str2 = paramQQAppInterface.a(ServerConfigManager.ConfigType.user, "MMF_maxPicNum");
+      localObject = paramQQAppInterface.a(ServerConfigManager.ConfigType.user, "MMF_maxVideoNum");
+      k = bdne.a(paramQQAppInterface.c(), "multimsg_config");
+      if (k > 0) {
+        this.jdField_c_of_type_Int = k;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg_TAG", 2, "initLimitCount enable = " + str1 + " maxMsgNum = " + k + " maxPicNum " + str2);
+      }
+      if (TextUtils.isEmpty(str2)) {}
+    }
+    try
+    {
+      this.d = Integer.parseInt(str2);
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    }
+    catch (NumberFormatException paramQQAppInterface)
+    {
+      try
+      {
+        this.jdField_e_of_type_Int = Integer.parseInt((String)localObject);
+        paramQQAppInterface = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.MultiMsgConfig.name(), "100|10|0|0");
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiMsg_TAG", 2, "initLimitCount delayConfi = " + paramQQAppInterface);
+        }
+        if (!TextUtils.isEmpty(paramQQAppInterface))
+        {
+          localObject = new Integer[4];
+          Arrays.fill((Object[])localObject, Integer.valueOf(0));
+          if (DeviceProfileManager.a(paramQQAppInterface, (Object[])localObject, new alrg()) >= localObject.length)
+          {
+            if (localObject[0].intValue() >= 0)
             {
-              if (((String)localObject38).equalsIgnoreCase("intimateDayMsgCount"))
+              this.f = localObject[0].intValue();
+              if (localObject[1].intValue() <= 0) {
+                break label349;
+              }
+              k = localObject[1].intValue();
+              this.g = k;
+            }
+            if (localObject[2].intValue() < 0) {
+              break label357;
+            }
+            k = localObject[2].intValue();
+            this.h = k;
+            if (localObject[3].intValue() < 0) {
+              break label365;
+            }
+            k = localObject[3].intValue();
+            this.i = k;
+          }
+        }
+        this.jdField_a_of_type_Boolean = true;
+        return;
+        paramQQAppInterface = paramQQAppInterface;
+        this.d = 20;
+      }
+      catch (NumberFormatException paramQQAppInterface)
+      {
+        for (;;)
+        {
+          this.jdField_e_of_type_Int = 10;
+          continue;
+          label349:
+          k = this.g;
+          continue;
+          label357:
+          k = this.h;
+          continue;
+          label365:
+          k = this.i;
+        }
+      }
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ArrayList<ChatMessage> paramArrayList)
+  {
+    a(paramQQAppInterface, paramSessionInfo, paramArrayList, 0);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ArrayList<ChatMessage> paramArrayList, int paramInt)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList(paramArrayList);
+    ((axwx)paramQQAppInterface.getManager(326)).a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramArrayList);
+    paramQQAppInterface.a(new MultiMsgManager.1(this, localArrayList, paramQQAppInterface, paramSessionInfo, paramInt));
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean)
+  {
+    paramQQAppInterface.a(new MultiMsgManager.5(this, paramQQAppInterface, paramString, paramInt, paramLong, paramBoolean));
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt1, String paramString2, AbsStructMsg paramAbsStructMsg, long paramLong, boolean paramBoolean, int paramInt2)
+  {
+    a(paramQQAppInterface, paramString1, paramInt1, paramString2, paramAbsStructMsg, paramLong, paramBoolean, paramInt2, -1);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt1, String paramString2, AbsStructMsg paramAbsStructMsg, long paramLong, boolean paramBoolean, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiMsg_TAG", 4, " sendMultiMsg start uniseq =  " + paramLong);
+    }
+    Object localObject1;
+    int k;
+    Object localObject2;
+    if (paramLong == 0L)
+    {
+      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      k = 1;
+      if (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (ChatMessage)((Iterator)localObject1).next();
+        if (((localObject2 instanceof MessageForText)) || ((localObject2 instanceof MessageForLongMsg))) {
+          break label804;
+        }
+        k = 0;
+      }
+    }
+    label531:
+    label795:
+    label804:
+    for (;;)
+    {
+      break;
+      if (k != 0) {
+        azqs.b(paramQQAppInterface, "CliOper", "", "", "0X800662C", "0X800662C", 0, 1, 0, "", "", "", "");
+      }
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+      localObject2 = new HashMap();
+      ((HashMap)localObject2).putAll(this.jdField_b_of_type_JavaUtilHashMap);
+      if (paramInt2 == 1)
+      {
+        paramAbsStructMsg = new SessionInfo();
+        paramAbsStructMsg.jdField_a_of_type_Int = paramInt1;
+        paramAbsStructMsg.jdField_a_of_type_JavaLangString = paramString1;
+        paramAbsStructMsg.jdField_b_of_type_JavaLangString = paramString2;
+        a(paramQQAppInterface, paramAbsStructMsg, localArrayList, paramInt3);
+        return;
+      }
+      if (paramInt2 == 2)
+      {
+        localObject1 = paramQQAppInterface.getCurrentAccountUin();
+        k = ayxz.jdField_a_of_type_Int;
+        ayxz.jdField_a_of_type_Int = k + 1;
+        localObject1 = azaf.a(paramQQAppInterface, (String)localObject1, paramString1, (String)localObject1, 1040, k, paramAbsStructMsg);
+        ((MessageRecord)localObject1).msg = acjm.a(localArrayList, (Map)localObject2);
+      }
+      for (;;)
+      {
+        Object localObject3 = localObject1;
+        if (localObject1 == null)
+        {
+          paramAbsStructMsg.forwardID = paramInt3;
+          localObject3 = bdna.a(paramQQAppInterface, paramString1, paramInt1, paramAbsStructMsg);
+        }
+        if (localObject3 == null) {
+          break;
+        }
+        ((MessageRecord)localObject3).isReMultiMsg = true;
+        afcu.a().a(((MessageRecord)localObject3).uniseq, 0L, paramInt3);
+        if (paramBoolean) {
+          paramQQAppInterface.a().b(paramString1, paramInt1, paramLong);
+        }
+        Object localObject4;
+        if ((paramInt2 == 0) || (paramInt2 == 2))
+        {
+          localObject1 = new aupm();
+          localObject4 = new SessionInfo();
+          ((SessionInfo)localObject4).jdField_a_of_type_JavaLangString = paramString1;
+          ((SessionInfo)localObject4).jdField_a_of_type_Int = paramInt1;
+          if (paramInt2 == 2)
+          {
+            ((SessionInfo)localObject4).jdField_a_of_type_Int = 1040;
+            ((SessionInfo)localObject4).g = paramInt1;
+          }
+          ((SessionInfo)localObject4).jdField_b_of_type_JavaLangString = paramString2;
+          ((aupm)localObject1).jdField_a_of_type_Int = 0;
+          ((aupm)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = ((SessionInfo)localObject4);
+          ((aupm)localObject1).jdField_a_of_type_JavaUtilList = localArrayList;
+          ((aupm)localObject1).jdField_a_of_type_JavaUtilMap = ((Map)localObject2);
+          ((aupm)localObject1).jdField_b_of_type_Int = paramInt2;
+          ((aupm)localObject1).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = paramAbsStructMsg;
+          ((aupm)localObject1).jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = ((MessageForStructing)localObject3);
+          paramQQAppInterface.a().e((aupm)localObject1);
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("MultiMsg_TAG", 2, String.format("step.sendRequest:msglistSize = %d", new Object[] { Integer.valueOf(localArrayList.size()) }));
+          return;
+          localArrayList = new ArrayList();
+          localObject1 = paramQQAppInterface.a().a().a(paramLong).iterator();
+          k = 1;
+          if (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (MessageRecord)((Iterator)localObject1).next();
+            if ((localObject2 instanceof ChatMessage)) {
+              localArrayList.add((ChatMessage)localObject2);
+            }
+            if (((localObject2 instanceof MessageForText)) || ((localObject2 instanceof MessageForLongMsg))) {
+              break label795;
+            }
+            k = 0;
+          }
+        }
+        for (;;)
+        {
+          break label531;
+          if (k != 0) {
+            azqs.b(paramQQAppInterface, "CliOper", "", "", "0X800662C", "0X800662C", 0, 1, 0, "", "", "", "");
+          }
+          localObject3 = new HashMap();
+          localObject4 = localArrayList.iterator();
+          while (((Iterator)localObject4).hasNext())
+          {
+            MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject4).next();
+            if (!((HashMap)localObject3).containsKey(localMessageRecord.senderuin))
+            {
+              localObject2 = localMessageRecord.getExtInfoFromExtStr("self_nickname");
+              localObject1 = localObject2;
+              if (TextUtils.isEmpty((CharSequence)localObject2)) {
+                localObject1 = a(localMessageRecord.senderuin, localMessageRecord.msgseq, paramQQAppInterface);
+              }
+              if (localObject1 != null)
               {
-                i13 = Integer.parseInt(localXmlPullParser.nextText());
-                if (i13 > 0)
-                {
-                  i12 = i13;
-                  break label30824;
-                }
+                localObject2 = localObject1;
+                if (((String)localObject1).trim().length() != 0) {}
               }
               else
               {
-                if (((String)localObject38).equalsIgnoreCase("graytipLover1Upgrade"))
-                {
-                  localHashMap1.put("graytipLover1Upgrade", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipLover2Upgrade"))
-                {
-                  localHashMap1.put("graytipLover2Upgrade", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipLover2Downgrade"))
-                {
-                  localHashMap1.put("graytipLover2Downgrade", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipLover3Downgrade"))
-                {
-                  localHashMap1.put("graytipLover3Downgrade", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipBuddy1Upgrade"))
-                {
-                  localHashMap1.put("graytipBuddy1Upgrade", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipBuddy2Upgrade"))
-                {
-                  localHashMap1.put("graytipBuddy2Upgrade", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipBuddy2Downgrade"))
-                {
-                  localHashMap1.put("graytipBuddy2Downgrade", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipBuddy3Downgrade"))
-                {
-                  localHashMap1.put("graytipBuddy3Downgrade", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipLadyBro1Upgrade"))
-                {
-                  localHashMap1.put("graytipLadyBro1Upgrade", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipLadyBro2Upgrade"))
-                {
-                  localHashMap1.put("graytipLadyBro2Upgrade", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipLadyBro2Downgrade"))
-                {
-                  localHashMap1.put("graytipLadyBro2Downgrade", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipLadyBro3Downgrade"))
-                {
-                  localHashMap1.put("graytipLadyBro3Downgrade", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipIntimateshipBindTip"))
-                {
-                  localHashMap1.put("graytipIntimateshipBindTip", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipIntimateshipUnBind1Tip"))
-                {
-                  localHashMap1.put("graytipIntimateshipUnBind1Tip", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipIntimateshipUnBind2Tip"))
-                {
-                  localHashMap1.put("graytipIntimateshipUnBind2Tip", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipIntimateshipUnBind3Tip"))
-                {
-                  localHashMap1.put("graytipIntimateshipUnBind3Tip", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipIntimateshipBecomeGrayTip"))
-                {
-                  localHashMap1.put("graytipIntimateshipBecomeGrayTip", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipIntimateshipBecomeLightTip"))
-                {
-                  localHashMap1.put("graytipIntimateshipBecomeLightTip", localXmlPullParser.nextText());
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("graytipWillDowngradeWording"))
-                {
-                  localObject41 = localXmlPullParser.nextText();
-                  localObject17 = localObject20;
-                  i15 = i8;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject20 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("smallChatSVipKey"))
-                {
-                  localObject40 = localXmlPullParser.nextText();
-                  i15 = i8;
-                  localObject4 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject42 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  i16 = k;
-                  localObject5 = localObject3;
-                  localObject41 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject4;
-                  localObject2 = localObject42;
-                  localObject3 = localObject11;
-                  localObject4 = localObject5;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject41;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("smallChatUnionVipKey"))
-                {
-                  localObject39 = localXmlPullParser.nextText();
-                  i15 = i8;
-                  i8 = j;
-                  localObject11 = localObject16;
-                  i14 = i7;
-                  j = i6;
-                  localObject42 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject43 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject41 = localObject2;
-                  localObject16 = localObject1;
-                  localObject1 = localObject17;
-                  localObject2 = localObject42;
-                  localObject3 = localObject43;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject41;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("bigChatSVipKey"))
-                {
-                  localObject38 = localXmlPullParser.nextText();
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("bigChatUnionVipKey"))
-                {
-                  localObject43 = localXmlPullParser.nextText();
-                  i15 = i8;
-                  localObject40 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject42 = localObject14;
-                  localObject29 = localObject13;
-                  i6 = i5;
-                  localObject38 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject39 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject41 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject40;
-                  localObject2 = localObject42;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject41;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject43;
-                  localObject27 = localObject29;
-                  localObject28 = localObject38;
-                  localObject29 = localObject39;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("smallCloseSvipKey"))
-                {
-                  localObject28 = localXmlPullParser.nextText();
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("smallCloseUnionVipKey"))
-                {
-                  localObject27 = localXmlPullParser.nextText();
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("bigCloseSVipKey"))
-                {
-                  localObject38 = localXmlPullParser.nextText();
-                  localObject26 = localObject29;
-                  localObject29 = localObject38;
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject29;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("bigCloseUnionVipKey"))
-                {
-                  localObject38 = localXmlPullParser.nextText();
-                  localObject25 = localObject28;
-                  localObject28 = localObject38;
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject28;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("intimateLover1VipKey"))
-                {
-                  localObject43 = localXmlPullParser.nextText();
-                  i15 = i8;
-                  localObject32 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject42 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject41 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject32;
-                  localObject2 = localObject42;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject41;
-                  localObject32 = localObject43;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("intimateLover2VipKey"))
-                {
-                  localObject43 = localXmlPullParser.nextText();
-                  i15 = i8;
-                  localObject33 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject42 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject41 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject33;
-                  localObject2 = localObject42;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject41;
-                  localObject33 = localObject43;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("intimateLover3VipKey"))
-                {
-                  localObject43 = localXmlPullParser.nextText();
-                  i15 = i8;
-                  localObject34 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject42 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject41 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject34;
-                  localObject2 = localObject42;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject41;
-                  localObject34 = localObject43;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("intimateLover1VipSetting"))
-                {
-                  localObject43 = localXmlPullParser.nextText();
-                  i15 = i8;
-                  localObject35 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject42 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject41 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject35;
-                  localObject2 = localObject42;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject41;
-                  localObject35 = localObject43;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("intimateLover2VipSetting"))
-                {
-                  localObject43 = localXmlPullParser.nextText();
-                  i15 = i8;
-                  localObject36 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject42 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject41 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject36;
-                  localObject2 = localObject42;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject41;
-                  localObject36 = localObject43;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("intimateLover3VipSetting"))
-                {
-                  localObject43 = localXmlPullParser.nextText();
-                  i15 = i8;
-                  localObject37 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject42 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject41 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject37;
-                  localObject2 = localObject42;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject41;
-                  localObject37 = localObject43;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("smallChatSVipSetting"))
-                {
-                  localObject38 = localXmlPullParser.nextText();
-                  localObject24 = localObject27;
-                  localObject27 = localObject38;
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject27;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("smallChatUnionVipSetting"))
-                {
-                  localObject38 = localXmlPullParser.nextText();
-                  localObject23 = localObject26;
-                  localObject26 = localObject38;
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject26;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("bigChatSVipSetting"))
-                {
-                  localObject38 = localXmlPullParser.nextText();
-                  localObject22 = localObject25;
-                  localObject25 = localObject38;
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject25;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("bigChatUnionVipSetting"))
-                {
-                  localObject38 = localXmlPullParser.nextText();
-                  localObject21 = localObject24;
-                  localObject24 = localObject38;
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject24;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("smallCloseSVipSetting"))
-                {
-                  localObject38 = localXmlPullParser.nextText();
-                  localObject20 = localObject23;
-                  localObject23 = localObject38;
-                  i15 = i8;
-                  localObject41 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject43 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject42 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject41;
-                  localObject2 = localObject43;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject42;
-                  localObject16 = localObject17;
-                  localObject17 = localObject23;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("smallCloseUnionSetting"))
-                {
-                  localObject43 = localXmlPullParser.nextText();
-                  i15 = i8;
-                  localObject1 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject42 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject41 = localObject2;
-                  localObject17 = localObject43;
-                  localObject2 = localObject42;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject41;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                if (((String)localObject38).equalsIgnoreCase("bigCloseSVipSetting"))
-                {
-                  localObject43 = localXmlPullParser.nextText();
-                  i15 = i8;
-                  localObject30 = localObject17;
-                  i8 = j;
-                  i14 = i7;
-                  j = i6;
-                  localObject42 = localObject14;
-                  localObject38 = localObject13;
-                  i6 = i5;
-                  localObject39 = localObject11;
-                  i7 = i4;
-                  i5 = i3;
-                  i13 = i2;
-                  localObject11 = localObject9;
-                  localObject13 = localObject8;
-                  i4 = i1;
-                  localObject8 = localObject7;
-                  localObject9 = localObject6;
-                  i1 = i;
-                  localObject14 = localObject5;
-                  i3 = m;
-                  localObject40 = localObject4;
-                  i16 = k;
-                  localObject4 = localObject3;
-                  localObject41 = localObject2;
-                  localObject17 = localObject1;
-                  localObject1 = localObject30;
-                  localObject2 = localObject42;
-                  localObject3 = localObject11;
-                  localObject5 = localObject10;
-                  localObject6 = localObject12;
-                  localObject7 = localObject18;
-                  localObject10 = localObject15;
-                  localObject11 = localObject16;
-                  localObject12 = localObject14;
-                  localObject14 = localObject19;
-                  localObject15 = localObject41;
-                  localObject30 = localObject43;
-                  localObject16 = localObject17;
-                  localObject17 = localObject20;
-                  localObject18 = localObject21;
-                  localObject19 = localObject22;
-                  localObject20 = localObject23;
-                  localObject21 = localObject24;
-                  localObject22 = localObject25;
-                  localObject23 = localObject26;
-                  localObject24 = localObject27;
-                  localObject25 = localObject28;
-                  localObject26 = localObject29;
-                  localObject27 = localObject38;
-                  localObject28 = localObject39;
-                  localObject29 = localObject40;
-                  i = i5;
-                  k = i15;
-                  m = n;
-                  n = i1;
-                  i1 = i8;
-                  i2 = i14;
-                  i5 = i9;
-                  i8 = i16;
-                  i9 = i13;
-                  continue;
-                }
-                i17 = i2;
-                i13 = k;
-                i18 = i4;
-                i19 = i5;
-                i23 = i9;
-                i16 = i1;
-                i14 = m;
-                i21 = i7;
-                i15 = n;
-                i20 = i6;
-                i22 = i8;
-                if (!((String)localObject38).equalsIgnoreCase("bigCloseUnionSetting")) {
-                  break label28952;
-                }
-                localObject43 = localXmlPullParser.nextText();
-                i15 = i8;
-                localObject31 = localObject17;
-                i8 = j;
-                i14 = i7;
-                j = i6;
-                localObject42 = localObject14;
-                localObject38 = localObject13;
-                i6 = i5;
-                localObject39 = localObject11;
-                i7 = i4;
-                i5 = i3;
-                i13 = i2;
-                localObject11 = localObject9;
-                localObject13 = localObject8;
-                i4 = i1;
-                localObject8 = localObject7;
-                localObject9 = localObject6;
-                i1 = i;
-                localObject14 = localObject5;
-                i3 = m;
-                localObject40 = localObject4;
-                i16 = k;
-                localObject4 = localObject3;
-                localObject41 = localObject2;
-                localObject17 = localObject1;
-                localObject1 = localObject31;
-                localObject2 = localObject42;
-                localObject3 = localObject11;
-                localObject5 = localObject10;
-                localObject6 = localObject12;
-                localObject7 = localObject18;
-                localObject10 = localObject15;
-                localObject11 = localObject16;
-                localObject12 = localObject14;
-                localObject14 = localObject19;
-                localObject15 = localObject41;
-                localObject31 = localObject43;
-                localObject16 = localObject17;
-                localObject17 = localObject20;
-                localObject18 = localObject21;
-                localObject19 = localObject22;
-                localObject20 = localObject23;
-                localObject21 = localObject24;
-                localObject22 = localObject25;
-                localObject23 = localObject26;
-                localObject24 = localObject27;
-                localObject25 = localObject28;
-                localObject26 = localObject29;
-                localObject27 = localObject38;
-                localObject28 = localObject39;
-                localObject29 = localObject40;
-                i = i5;
-                k = i15;
-                m = n;
-                n = i1;
-                i1 = i8;
-                i2 = i14;
-                i5 = i9;
-                i8 = i16;
-                i9 = i13;
-                continue;
-                localObject38 = i2 + "|" + k + "|" + i4 + "|" + i5 + "|" + i9 + "|" + i1 + "|" + m + "|" + i7 + "|" + n + "|" + i8 + "|" + i6 + "|" + j + "|" + i;
-                if (QLog.isColorLevel()) {
-                  QLog.d(jdField_a_of_type_JavaLangString, 2, "handleRespGetHotDaysConfig success：showInContact|ShowInChat|settingdays=" + bool2 + "|" + bool1 + "|" + (String)localObject38 + "version=" + paramInt + "maxRemindTimes=" + n);
-                }
-                bdiv.r(paramQQAppInterface.getApp(), paramInt, paramQQAppInterface.getCurrentAccountUin());
-                bdiv.a(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), bool2, bool1, (String)localObject38);
-                bdiv.t(paramQQAppInterface.getApp(), paramQQAppInterface.c(), i3);
-                localObject38 = (aloz)paramQQAppInterface.getManager(51);
-                ((aloz)localObject38).a(bool2, bool1, i2, k, i4, i5, i9, i1, m, i7, j, i, n);
-                a(paramQQAppInterface.getApp(), (String)localObject4, (String)localObject11, (String)localObject13, (String)localObject29, (String)localObject28, (String)localObject27, (String)localObject26, (String)localObject25, (String)localObject24, (String)localObject23, (String)localObject22, (String)localObject21, (String)localObject20, (String)localObject1, (String)localObject30, (String)localObject31, (String)localObject32, (String)localObject33, (String)localObject34, (String)localObject35, (String)localObject36, (String)localObject37);
-                b(paramQQAppInterface.getApp(), (String)localObject2);
-                a(paramQQAppInterface.getApp(), (String)localHashMap2.get("grayChatUp"), (String)localHashMap2.get("grayPraiseUp"), (String)localHashMap2.get("grayCloseUp"), (String)localHashMap2.get("grayQzoneLoverUp"), (String)localHashMap2.get("grayQzoneVisitUp"), (String)localHashMap2.get("grayChatUp2"), (String)localHashMap2.get("grayPraiseUp2"), (String)localHashMap2.get("grayCloseUp2"), (String)localHashMap2.get("grayQzoneLoverUp2"), (String)localHashMap2.get("grayQzoneVisitUp2"), (String)localHashMap2.get("grayChatDown"), (String)localHashMap2.get("grayPriaseDown"), (String)localHashMap2.get("grayCloseDown"), (String)localHashMap2.get("grayQzoneLoverDown"), (String)localHashMap2.get("grayQzoneVisitDown"), (String)localHashMap2.get("grayChatDis"), (String)localHashMap2.get("grayPriaseDis"), (String)localHashMap2.get("grayCloseDis"), (String)localHashMap2.get("grayQzoneLoverDis"), (String)localHashMap2.get("grayQzoneVisitDis"), (String)localHashMap2.get("grayQzoneLoverClose"), (String)localHashMap2.get("grayQzoneLoverClose2"), (String)localHashMap2.get("grayQzoneLoverOpen"), (String)localHashMap2.get("grayQzoneLoverOpen2"), (String)localHashMap2.get("grayQzoneLoverUpdate"), (String)localHashMap2.get("grayQzoneLoverUpdate2"), (String)localHashMap2.get("graytipFriendship1Upgrade"), (String)localHashMap2.get("graytipFriendship1Downgrade"), (String)localHashMap2.get("graytipFriendship2Upgrade"), (String)localHashMap2.get("graytipFriendship2Downgrade"), (String)localHashMap2.get("graytipFriendship3Upgrade"), (String)localHashMap2.get("graytipFriendship3Downgrade"));
-                a(paramQQAppInterface.getApp(), (String)localObject19, (String)localObject8, (String)localObject5, (String)localObject16, (String)localObject15, (String)localObject6, (String)localObject7, (String)localObject18, (String)localObject12, (String)localObject10, (String)localObject3, (String)localObject9, (String)localObject14);
-                localObject1 = paramQQAppInterface.getApp();
-                localObject2 = (String)localHashMap1.get("graytipLover1Upgrade");
-                localObject3 = (String)localHashMap1.get("graytipLover2Upgrade");
-                localObject4 = (String)localHashMap1.get("graytipLover2Downgrade");
-                localObject5 = (String)localHashMap1.get("graytipLover3Downgrade");
-                localObject6 = (String)localHashMap1.get("graytipBuddy1Upgrade");
-                localObject7 = (String)localHashMap1.get("graytipBuddy2Upgrade");
-                localObject8 = (String)localHashMap1.get("graytipBuddy2Downgrade");
-                localObject9 = (String)localHashMap1.get("graytipBuddy3Downgrade");
-                localObject10 = (String)localHashMap1.get("graytipLadyBro1Upgrade");
-                localObject11 = (String)localHashMap1.get("graytipLadyBro2Upgrade");
-                localObject12 = (String)localHashMap1.get("graytipLadyBro2Downgrade");
-                localObject13 = (String)localHashMap1.get("graytipLadyBro3Downgrade");
-                localObject14 = (String)localHashMap1.get("graytipIntimateshipBindTip");
-                localObject15 = (String)localHashMap1.get("graytipIntimateshipUnBind1Tip");
-                localObject16 = (String)localHashMap1.get("graytipIntimateshipUnBind2Tip");
-                localObject18 = (String)localHashMap1.get("graytipIntimateshipUnBind3Tip");
-                localObject19 = (String)localHashMap1.get("graytipIntimateshipBecomeGrayTip");
-                localObject20 = (String)localHashMap1.get("graytipIntimateshipBecomeLightTip");
-                a((Context)localObject1, (aloz)localObject38, i10, i11, i12, new String[] { "hot_intimate_Lover1Upgrade", "hot_intimate_Lover2Upgrade", "hot_intimate_Lover2Downgrade", "hot_intimate_Lover3Downgrade", "hot_intimate_Buddy1Upgrade", "hot_intimate_Buddy2Upgrade", "hot_intimate_Buddy2Downgrade", "hot_intimate_Buddy3Downgrade", "hot_intimate_LadyBro1Upgrade", "hot_intimate_LadyBro2Upgrade", "hot_intimate_LadyBro2Downgrade", "hot_intimate_LadyBro3Downgrade", "hot_intimate_BindTip", "hot_intimate_UnBind1Tip", "hot_intimate_UnBind2Tip", "hot_intimate_UnBind3Tip", "hot_intimate_BecomeGrayTip", "hot_intimate_BecomeLightTip" }, new String[] { localObject2, localObject3, localObject4, localObject5, localObject6, localObject7, localObject8, localObject9, localObject10, localObject11, localObject12, localObject13, localObject14, localObject15, localObject16, localObject18, localObject19, localObject20 });
-                a(paramQQAppInterface.getApp(), (String)localObject17);
-                return;
+                localObject2 = aupn.a(localMessageRecord.senderuin);
               }
-              break label30824;
+              ((HashMap)localObject3).put(localMessageRecord.senderuin, localObject2);
             }
-            break label30587;
           }
-          break label30350;
-          label28829:
-          if (i24 == 1) {
-            continue;
-          }
-          i17 = i2;
-          i13 = k;
-          i18 = i4;
-          i19 = i5;
-          i23 = i9;
-          i16 = i1;
-          i14 = m;
-          i21 = i7;
-          i15 = n;
-          i20 = i6;
-          i22 = i8;
-        }
-        switch (i24)
-        {
-        case 2: 
-        default: 
-          i22 = i8;
-          i20 = i6;
-          i15 = n;
-          i21 = i7;
-          i14 = m;
-          i16 = i1;
-          i23 = i9;
-          i19 = i5;
-          i18 = i4;
-          i13 = k;
-          i17 = i2;
-        case 3: 
-          i5 = i23;
-          k = i22;
-          localObject41 = localObject17;
-          i1 = j;
-          i2 = i21;
-          j = i20;
-          localObject43 = localObject14;
-          localObject38 = localObject13;
-          i6 = i19;
-          localObject39 = localObject11;
-          i7 = i18;
-          m = i3;
-          i9 = i17;
-          localObject11 = localObject9;
-          localObject13 = localObject8;
-          i4 = i16;
-          localObject8 = localObject7;
-          localObject9 = localObject6;
-          n = i;
-          localObject14 = localObject5;
-          i3 = i14;
-          localObject40 = localObject4;
-          i8 = i13;
-          localObject4 = localObject3;
-          localObject42 = localObject2;
-          localObject17 = localObject1;
-          localObject1 = localObject41;
-          localObject2 = localObject43;
-          localObject3 = localObject11;
-          localObject5 = localObject10;
-          localObject6 = localObject12;
-          localObject7 = localObject18;
-          localObject10 = localObject15;
-          localObject11 = localObject16;
-          localObject12 = localObject14;
-          localObject14 = localObject19;
-          localObject15 = localObject42;
-          localObject16 = localObject17;
-          localObject17 = localObject20;
-          localObject18 = localObject21;
-          localObject19 = localObject22;
-          localObject20 = localObject23;
-          localObject21 = localObject24;
-          localObject22 = localObject25;
-          localObject23 = localObject26;
-          localObject24 = localObject27;
-          localObject25 = localObject28;
-          localObject26 = localObject29;
-          localObject27 = localObject38;
-          localObject28 = localObject39;
-          localObject29 = localObject40;
-          i = m;
-          m = i15;
+          localObject1 = null;
+          localObject2 = localObject3;
           break;
-        case 4: 
-          label28952:
-          i15 = i8;
-          localObject41 = localObject17;
-          i8 = j;
-          i14 = i7;
-          j = i6;
-          localObject43 = localObject14;
-          localObject38 = localObject13;
-          i6 = i5;
-          localObject39 = localObject11;
-          i7 = i4;
-          i5 = i3;
-          i13 = i2;
-          localObject11 = localObject9;
-          localObject13 = localObject8;
-          i4 = i1;
-          localObject8 = localObject7;
-          localObject9 = localObject6;
-          i1 = i;
-          localObject14 = localObject5;
-          i3 = m;
-          localObject40 = localObject4;
-          i16 = k;
-          localObject4 = localObject3;
-          localObject42 = localObject2;
-          localObject17 = localObject1;
-          localObject1 = localObject41;
-          localObject2 = localObject43;
-          localObject3 = localObject11;
-          localObject5 = localObject10;
-          localObject6 = localObject12;
-          localObject7 = localObject18;
-          localObject10 = localObject15;
-          localObject11 = localObject16;
-          localObject12 = localObject14;
-          localObject14 = localObject19;
-          localObject15 = localObject42;
-          localObject16 = localObject17;
-          localObject17 = localObject20;
-          localObject18 = localObject21;
-          localObject19 = localObject22;
-          localObject20 = localObject23;
-          localObject21 = localObject24;
-          localObject22 = localObject25;
-          localObject23 = localObject26;
-          localObject24 = localObject27;
-          localObject25 = localObject28;
-          localObject26 = localObject29;
-          localObject27 = localObject38;
-          localObject28 = localObject39;
-          localObject29 = localObject40;
-          i = i5;
-          k = i15;
-          m = n;
-          n = i1;
-          i1 = i8;
-          i2 = i14;
-          i5 = i9;
-          i8 = i16;
-          i9 = i13;
-          break;
+          a(paramQQAppInterface, paramString1, paramInt1, localArrayList, (HashMap)localObject2, (MessageRecord)localObject3, paramInt2);
+          return;
         }
+        localObject1 = null;
       }
-      i15 = i8;
-      localObject41 = localObject17;
-      i8 = j;
-      i14 = i7;
-      j = i6;
-      localObject43 = localObject14;
-      localObject38 = localObject13;
-      i6 = i5;
-      localObject39 = localObject11;
-      i7 = i4;
-      i5 = i3;
-      i13 = i2;
-      localObject11 = localObject9;
-      localObject13 = localObject8;
-      i4 = i1;
-      localObject8 = localObject7;
-      localObject9 = localObject6;
-      i1 = i;
-      localObject14 = localObject5;
-      i3 = m;
-      localObject40 = localObject4;
-      i16 = k;
-      localObject4 = localObject3;
-      localObject42 = localObject2;
-      localObject17 = localObject1;
-      localObject1 = localObject41;
-      localObject2 = localObject43;
-      localObject3 = localObject11;
-      localObject5 = localObject10;
-      localObject6 = localObject12;
-      localObject7 = localObject18;
-      localObject10 = localObject15;
-      localObject11 = localObject16;
-      localObject12 = localObject14;
-      localObject14 = localObject19;
-      localObject15 = localObject42;
-      localObject16 = localObject17;
-      localObject17 = localObject20;
-      localObject18 = localObject21;
-      localObject19 = localObject22;
-      localObject20 = localObject23;
-      localObject21 = localObject24;
-      localObject22 = localObject25;
-      localObject23 = localObject26;
-      localObject24 = localObject27;
-      localObject25 = localObject28;
-      localObject26 = localObject29;
-      localObject27 = localObject38;
-      localObject28 = localObject39;
-      localObject29 = localObject40;
-      i = i5;
-      k = i15;
-      m = n;
-      n = i1;
-      i1 = i8;
-      i2 = i14;
-      i5 = i9;
-      i8 = i16;
-      i9 = i13;
-      continue;
-      label29639:
-      i15 = i8;
-      localObject41 = localObject17;
-      i8 = j;
-      i14 = i7;
-      j = i6;
-      localObject43 = localObject14;
-      localObject38 = localObject13;
-      i6 = i5;
-      localObject39 = localObject11;
-      i7 = i4;
-      i5 = i3;
-      i13 = i2;
-      localObject11 = localObject9;
-      localObject13 = localObject8;
-      i4 = i1;
-      localObject8 = localObject7;
-      localObject9 = localObject6;
-      i1 = i;
-      localObject14 = localObject5;
-      i3 = m;
-      localObject40 = localObject4;
-      i16 = k;
-      localObject4 = localObject3;
-      localObject42 = localObject2;
-      localObject17 = localObject1;
-      localObject1 = localObject41;
-      localObject2 = localObject43;
-      localObject3 = localObject11;
-      localObject5 = localObject10;
-      localObject6 = localObject12;
-      localObject7 = localObject18;
-      localObject10 = localObject15;
-      localObject11 = localObject16;
-      localObject12 = localObject14;
-      localObject14 = localObject19;
-      localObject15 = localObject42;
-      localObject16 = localObject17;
-      localObject17 = localObject20;
-      localObject18 = localObject21;
-      localObject19 = localObject22;
-      localObject20 = localObject23;
-      localObject21 = localObject24;
-      localObject22 = localObject25;
-      localObject23 = localObject26;
-      localObject24 = localObject27;
-      localObject25 = localObject28;
-      localObject26 = localObject29;
-      localObject27 = localObject38;
-      localObject28 = localObject39;
-      localObject29 = localObject40;
-      i = i5;
-      k = i15;
-      m = n;
-      n = i1;
-      i1 = i8;
-      i2 = i14;
-      i5 = i9;
-      i8 = i16;
-      i9 = i13;
-      continue;
-      label29876:
-      i15 = i8;
-      localObject41 = localObject17;
-      i8 = j;
-      i14 = i7;
-      j = i6;
-      localObject43 = localObject14;
-      localObject38 = localObject13;
-      i6 = i5;
-      localObject39 = localObject11;
-      i7 = i4;
-      i5 = i3;
-      i13 = i2;
-      localObject11 = localObject9;
-      localObject13 = localObject8;
-      i4 = i1;
-      localObject8 = localObject7;
-      localObject9 = localObject6;
-      i1 = i;
-      localObject14 = localObject5;
-      i3 = m;
-      localObject40 = localObject4;
-      i16 = k;
-      localObject4 = localObject3;
-      localObject42 = localObject2;
-      localObject17 = localObject1;
-      localObject1 = localObject41;
-      localObject2 = localObject43;
-      localObject3 = localObject11;
-      localObject5 = localObject10;
-      localObject6 = localObject12;
-      localObject7 = localObject18;
-      localObject10 = localObject15;
-      localObject11 = localObject16;
-      localObject12 = localObject14;
-      localObject14 = localObject19;
-      localObject15 = localObject42;
-      localObject16 = localObject17;
-      localObject17 = localObject20;
-      localObject18 = localObject21;
-      localObject19 = localObject22;
-      localObject20 = localObject23;
-      localObject21 = localObject24;
-      localObject22 = localObject25;
-      localObject23 = localObject26;
-      localObject24 = localObject27;
-      localObject25 = localObject28;
-      localObject26 = localObject29;
-      localObject27 = localObject38;
-      localObject28 = localObject39;
-      localObject29 = localObject40;
-      i = i5;
-      k = i15;
-      m = n;
-      n = i1;
-      i1 = i8;
-      i2 = i14;
-      i5 = i9;
-      i8 = i16;
-      i9 = i13;
-      continue;
-      label30113:
-      i15 = i8;
-      localObject41 = localObject17;
-      i8 = j;
-      i14 = i7;
-      j = i6;
-      localObject43 = localObject14;
-      localObject38 = localObject13;
-      i6 = i5;
-      localObject39 = localObject11;
-      i7 = i4;
-      i5 = i3;
-      i13 = i2;
-      localObject11 = localObject9;
-      localObject13 = localObject8;
-      i4 = i1;
-      localObject8 = localObject7;
-      localObject9 = localObject6;
-      i1 = i;
-      localObject14 = localObject5;
-      i3 = m;
-      localObject40 = localObject4;
-      i16 = k;
-      localObject4 = localObject3;
-      localObject42 = localObject2;
-      localObject17 = localObject1;
-      localObject1 = localObject41;
-      localObject2 = localObject43;
-      localObject3 = localObject11;
-      localObject5 = localObject10;
-      localObject6 = localObject12;
-      localObject7 = localObject18;
-      localObject10 = localObject15;
-      localObject11 = localObject16;
-      localObject12 = localObject14;
-      localObject14 = localObject19;
-      localObject15 = localObject42;
-      localObject16 = localObject17;
-      localObject17 = localObject20;
-      localObject18 = localObject21;
-      localObject19 = localObject22;
-      localObject20 = localObject23;
-      localObject21 = localObject24;
-      localObject22 = localObject25;
-      localObject23 = localObject26;
-      localObject24 = localObject27;
-      localObject25 = localObject28;
-      localObject26 = localObject29;
-      localObject27 = localObject38;
-      localObject28 = localObject39;
-      localObject29 = localObject40;
-      i = i5;
-      k = i15;
-      m = n;
-      n = i1;
-      i1 = i8;
-      i2 = i14;
-      i5 = i9;
-      i8 = i16;
-      i9 = i13;
-      continue;
-      label30350:
-      i15 = i8;
-      localObject41 = localObject17;
-      i8 = j;
-      i14 = i7;
-      j = i6;
-      localObject43 = localObject14;
-      localObject38 = localObject13;
-      i6 = i5;
-      localObject39 = localObject11;
-      i7 = i4;
-      i5 = i3;
-      i13 = i2;
-      localObject11 = localObject9;
-      localObject13 = localObject8;
-      i4 = i1;
-      localObject8 = localObject7;
-      localObject9 = localObject6;
-      i1 = i;
-      localObject14 = localObject5;
-      i3 = m;
-      localObject40 = localObject4;
-      i16 = k;
-      localObject4 = localObject3;
-      localObject42 = localObject2;
-      localObject17 = localObject1;
-      localObject1 = localObject41;
-      localObject2 = localObject43;
-      localObject3 = localObject11;
-      localObject5 = localObject10;
-      localObject6 = localObject12;
-      localObject7 = localObject18;
-      localObject10 = localObject15;
-      localObject11 = localObject16;
-      localObject12 = localObject14;
-      localObject14 = localObject19;
-      localObject15 = localObject42;
-      localObject16 = localObject17;
-      localObject17 = localObject20;
-      localObject18 = localObject21;
-      localObject19 = localObject22;
-      localObject20 = localObject23;
-      localObject21 = localObject24;
-      localObject22 = localObject25;
-      localObject23 = localObject26;
-      localObject24 = localObject27;
-      localObject25 = localObject28;
-      localObject26 = localObject29;
-      localObject27 = localObject38;
-      localObject28 = localObject39;
-      localObject29 = localObject40;
-      i = i5;
-      k = i15;
-      m = n;
-      n = i1;
-      i1 = i8;
-      i2 = i14;
-      i5 = i9;
-      i8 = i16;
-      i9 = i13;
-      continue;
-      label30587:
-      i15 = i8;
-      localObject41 = localObject17;
-      i8 = j;
-      i14 = i7;
-      j = i6;
-      localObject43 = localObject14;
-      localObject38 = localObject13;
-      i6 = i5;
-      localObject39 = localObject11;
-      i7 = i4;
-      i5 = i3;
-      i13 = i2;
-      localObject11 = localObject9;
-      localObject13 = localObject8;
-      i4 = i1;
-      localObject8 = localObject7;
-      localObject9 = localObject6;
-      i1 = i;
-      localObject14 = localObject5;
-      i3 = m;
-      localObject40 = localObject4;
-      i16 = k;
-      localObject4 = localObject3;
-      localObject42 = localObject2;
-      localObject17 = localObject1;
-      localObject1 = localObject41;
-      localObject2 = localObject43;
-      localObject3 = localObject11;
-      localObject5 = localObject10;
-      localObject6 = localObject12;
-      localObject7 = localObject18;
-      localObject10 = localObject15;
-      localObject11 = localObject16;
-      localObject12 = localObject14;
-      localObject14 = localObject19;
-      localObject15 = localObject42;
-      localObject16 = localObject17;
-      localObject17 = localObject20;
-      localObject18 = localObject21;
-      localObject19 = localObject22;
-      localObject20 = localObject23;
-      localObject21 = localObject24;
-      localObject22 = localObject25;
-      localObject23 = localObject26;
-      localObject24 = localObject27;
-      localObject25 = localObject28;
-      localObject26 = localObject29;
-      localObject27 = localObject38;
-      localObject28 = localObject39;
-      localObject29 = localObject40;
-      i = i5;
-      k = i15;
-      m = n;
-      n = i1;
-      i1 = i8;
-      i2 = i14;
-      i5 = i9;
-      i8 = i16;
-      i9 = i13;
-      continue;
-      label30824:
-      i15 = i8;
-      localObject41 = localObject17;
-      i8 = j;
-      i14 = i7;
-      j = i6;
-      localObject43 = localObject14;
-      localObject38 = localObject13;
-      i6 = i5;
-      localObject39 = localObject11;
-      i7 = i4;
-      i5 = i3;
-      i13 = i2;
-      localObject11 = localObject9;
-      localObject13 = localObject8;
-      i4 = i1;
-      localObject8 = localObject7;
-      localObject9 = localObject6;
-      i1 = i;
-      localObject14 = localObject5;
-      i3 = m;
-      localObject40 = localObject4;
-      i16 = k;
-      localObject4 = localObject3;
-      localObject42 = localObject2;
-      localObject17 = localObject1;
-      localObject1 = localObject41;
-      localObject2 = localObject43;
-      localObject3 = localObject11;
-      localObject5 = localObject10;
-      localObject6 = localObject12;
-      localObject7 = localObject18;
-      localObject10 = localObject15;
-      localObject11 = localObject16;
-      localObject12 = localObject14;
-      localObject14 = localObject19;
-      localObject15 = localObject42;
-      localObject16 = localObject17;
-      localObject17 = localObject20;
-      localObject18 = localObject21;
-      localObject19 = localObject22;
-      localObject20 = localObject23;
-      localObject21 = localObject24;
-      localObject22 = localObject25;
-      localObject23 = localObject26;
-      localObject24 = localObject27;
-      localObject25 = localObject28;
-      localObject26 = localObject29;
-      localObject27 = localObject38;
-      localObject28 = localObject39;
-      localObject29 = localObject40;
-      i = i5;
-      k = i15;
-      m = n;
-      n = i1;
-      i1 = i8;
-      i2 = i14;
-      i5 = i9;
-      i8 = i16;
-      i9 = i13;
     }
   }
   
-  public static void a(ExtensionInfo paramExtensionInfo)
+  public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, ArrayList<ChatMessage> paramArrayList, HashMap<String, String> paramHashMap, MessageRecord paramMessageRecord, int paramInt2)
   {
-    if (paramExtensionInfo != null) {
-      jdField_a_of_type_JavaUtilHashSet.add(paramExtensionInfo);
-    }
+    a(paramQQAppInterface, paramString, paramInt1, paramArrayList, paramHashMap, paramMessageRecord, paramInt2, null);
   }
   
-  public static boolean a()
+  public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, ArrayList<ChatMessage> paramArrayList, HashMap<String, String> paramHashMap, MessageRecord paramMessageRecord, int paramInt2, @Nullable Bundle paramBundle)
   {
-    boolean bool2 = false;
-    int i = bdjj.a(NetConnInfoCenter.getServerTimeMillis());
-    boolean bool1 = bool2;
-    if (i > 0)
+    if (paramMessageRecord == null) {}
+    while ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+      return;
+    }
+    paramQQAppInterface.a(new MultiMsgManager.2(this, paramArrayList, paramInt2, paramHashMap, paramMessageRecord, paramQQAppInterface, paramString, paramInt1, paramBundle));
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, List<ChatMessage> paramList, boolean paramBoolean)
+  {
+    HashMap localHashMap = new HashMap();
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramBoolean) {}
+    for (int k = 0;; k = 1)
     {
-      bool1 = bool2;
-      if (i < 18) {
-        bool1 = true;
+      localHashMap.put("result", k + "");
+      if (paramList == null) {
+        break;
       }
+      k = paramList.size();
+      int m = a().a(paramList);
+      localHashMap.put("msgCount", k + "");
+      localHashMap.put("picCount", m + "");
+      azri.a(BaseApplication.getContext()).a(paramQQAppInterface.getCurrentAccountUin(), "multiMsgReceive", paramBoolean, 0L, 0L, localHashMap, "");
+      return;
     }
-    return bool1;
+    azri.a(BaseApplication.getContext()).a(paramQQAppInterface.getCurrentAccountUin(), "multiMsgReceive", paramBoolean, 0L, 0L, localHashMap, "");
   }
   
-  public static boolean a(int paramInt, long paramLong)
+  public void a(ChatMessage paramChatMessage, boolean paramBoolean)
   {
-    if (paramLong <= 0L) {}
-    while ((paramInt < 18) || (paramInt >= 24) || (bdjj.c(paramLong) == 2131720882)) {
+    if (paramChatMessage == null) {
+      return;
+    }
+    if ((paramChatMessage != null) && ((paramChatMessage instanceof MessageForLongMsg)))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        ChatMessage localChatMessage = (ChatMessage)localIterator.next();
+        if (paramChatMessage.uniseq == localChatMessage.uniseq)
+        {
+          this.jdField_a_of_type_JavaUtilHashMap.put(localChatMessage, Boolean.valueOf(paramBoolean));
+          return;
+        }
+      }
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramChatMessage, Boolean.valueOf(paramBoolean));
+  }
+  
+  public void a(MessageForStructing paramMessageForStructing, QQAppInterface paramQQAppInterface)
+  {
+    if (this.i != 0) {}
+    String str1;
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.h != 0) && (awji.a(paramQQAppInterface, paramMessageForStructing.istroop, paramMessageForStructing.frienduin) == 1));
+      str1 = ((StructMsgForGeneralShare)paramMessageForStructing.structingMsg).mResid;
+      if (!TextUtils.isEmpty(str1)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("MultiMsg_TAG", 2, "preDownloadRes failed by empty resid!");
+    return;
+    String str2 = paramMessageForStructing.frienduin;
+    int k = paramMessageForStructing.istroop;
+    long l = paramMessageForStructing.uniseq;
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiMsg_TAG", 2, "preDownloadRes begin! touin:" + str2 + ",touinType:" + k + ",uniseq:" + l + ",fileKey:" + str1);
+    }
+    a().a(paramQQAppInterface, str1, paramQQAppInterface.getCurrentAccountUin(), str2, str2, k, l, 1035, null);
+  }
+  
+  /* Error */
+  public void a(HashMap<String, String> paramHashMap, long paramLong, QQAppInterface paramQQAppInterface)
+  {
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnull +184 -> 185
+    //   4: aload_1
+    //   5: invokevirtual 528	java/util/HashMap:size	()I
+    //   8: ifle +177 -> 185
+    //   11: new 81	java/util/ArrayList
+    //   14: dup
+    //   15: invokespecial 82	java/util/ArrayList:<init>	()V
+    //   18: astore 5
+    //   20: aload_1
+    //   21: invokevirtual 583	java/util/HashMap:entrySet	()Ljava/util/Set;
+    //   24: invokeinterface 586 1 0
+    //   29: astore_1
+    //   30: aload_1
+    //   31: invokeinterface 478 1 0
+    //   36: ifeq +78 -> 114
+    //   39: aload_1
+    //   40: invokeinterface 482 1 0
+    //   45: checkcast 588	java/util/Map$Entry
+    //   48: astore 7
+    //   50: aload 7
+    //   52: invokeinterface 599 1 0
+    //   57: checkcast 539	java/lang/String
+    //   60: astore 6
+    //   62: aload 7
+    //   64: invokeinterface 591 1 0
+    //   69: checkcast 539	java/lang/String
+    //   72: astore 7
+    //   74: new 534	com/tencent/mobileqq/multimsg/MultiMsgNick
+    //   77: dup
+    //   78: invokespecial 561	com/tencent/mobileqq/multimsg/MultiMsgNick:<init>	()V
+    //   81: astore 8
+    //   83: aload 8
+    //   85: aload 6
+    //   87: putfield 537	com/tencent/mobileqq/multimsg/MultiMsgNick:uin	Ljava/lang/String;
+    //   90: aload 8
+    //   92: lload_2
+    //   93: putfield 544	com/tencent/mobileqq/multimsg/MultiMsgNick:uniseq	J
+    //   96: aload 8
+    //   98: aload 7
+    //   100: putfield 547	com/tencent/mobileqq/multimsg/MultiMsgNick:nick	Ljava/lang/String;
+    //   103: aload 5
+    //   105: aload 8
+    //   107: invokevirtual 853	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   110: pop
+    //   111: goto -81 -> 30
+    //   114: aload 4
+    //   116: invokevirtual 554	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lawgg;
+    //   119: invokevirtual 560	awgg:createEntityManager	()Lawgf;
+    //   122: astore 4
+    //   124: aload 4
+    //   126: invokevirtual 961	awgf:a	()Lawgh;
+    //   129: astore_1
+    //   130: aload_1
+    //   131: invokevirtual 965	awgh:a	()V
+    //   134: aload 5
+    //   136: invokevirtual 767	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   139: astore 5
+    //   141: aload 5
+    //   143: invokeinterface 478 1 0
+    //   148: ifeq +38 -> 186
+    //   151: aload 4
+    //   153: aload 5
+    //   155: invokeinterface 482 1 0
+    //   160: checkcast 534	com/tencent/mobileqq/multimsg/MultiMsgNick
+    //   163: invokevirtual 968	awgf:b	(Lawge;)V
+    //   166: goto -25 -> 141
+    //   169: astore 5
+    //   171: aload 5
+    //   173: invokevirtual 971	java/lang/Exception:printStackTrace	()V
+    //   176: aload_1
+    //   177: invokevirtual 972	awgh:b	()V
+    //   180: aload 4
+    //   182: invokevirtual 973	awgf:a	()V
+    //   185: return
+    //   186: aload_1
+    //   187: invokevirtual 975	awgh:c	()V
+    //   190: aload_1
+    //   191: invokevirtual 972	awgh:b	()V
+    //   194: goto -14 -> 180
+    //   197: astore 4
+    //   199: aload_1
+    //   200: invokevirtual 972	awgh:b	()V
+    //   203: aload 4
+    //   205: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	206	0	this	aupg
+    //   0	206	1	paramHashMap	HashMap<String, String>
+    //   0	206	2	paramLong	long
+    //   0	206	4	paramQQAppInterface	QQAppInterface
+    //   18	136	5	localObject1	Object
+    //   169	3	5	localException	java.lang.Exception
+    //   60	26	6	str	String
+    //   48	51	7	localObject2	Object
+    //   81	25	8	localMultiMsgNick	MultiMsgNick
+    // Exception table:
+    //   from	to	target	type
+    //   130	141	169	java/lang/Exception
+    //   141	166	169	java/lang/Exception
+    //   186	190	169	java/lang/Exception
+    //   130	141	197	finally
+    //   141	166	197	finally
+    //   171	176	197	finally
+    //   186	190	197	finally
+  }
+  
+  public void a(List<ChatMessage> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    for (;;)
+    {
+      return;
+      if (((ChatMessage)paramList.get(0)).isLongMsg()) {
+        break;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        localObject = (ChatMessage)paramList.next();
+        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject)) {
+          this.jdField_a_of_type_JavaUtilHashMap.remove(localObject);
+        }
+      }
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      ChatMessage localChatMessage1 = (ChatMessage)((Map.Entry)((Iterator)localObject).next()).getKey();
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        ChatMessage localChatMessage2 = (ChatMessage)localIterator.next();
+        if ((localChatMessage2.shmsgseq == localChatMessage1.shmsgseq) && (localChatMessage2.msgUid == localChatMessage1.msgUid)) {
+          ((Iterator)localObject).remove();
+        }
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    azqs.b(paramQQAppInterface, "CliOper", "", "", "0X8006628", "0X8006628", 0, 1, 0, "", "", "", "");
+    return a(paramQQAppInterface, paramLong).size() > 0;
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, long paramLong, int paramInt2, awiq paramawiq)
+  {
+    if (TextUtils.isEmpty(paramString1))
+    {
+      if (QLog.isColorLevel()) {}
       return false;
     }
+    bayk localbayk = new bayk();
+    localbayk.jdField_a_of_type_Boolean = false;
+    localbayk.jdField_b_of_type_Int = 131078;
+    localbayk.jdField_l_of_type_JavaLangString = paramString1;
+    localbayk.jdField_b_of_type_JavaLangString = paramString2;
+    localbayk.c = paramString3;
+    localbayk.d = paramString4;
+    localbayk.jdField_a_of_type_Int = paramInt1;
+    localbayk.jdField_a_of_type_Long = paramLong;
+    localbayk.jdField_e_of_type_Int = paramInt2;
+    localbayk.jdField_a_of_type_Awiq = paramawiq;
+    paramQQAppInterface.a().a(localbayk);
     return true;
   }
   
-  public static boolean a(int paramInt, long paramLong, boolean paramBoolean)
+  public boolean a(ChatMessage paramChatMessage)
   {
-    return paramBoolean;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("hotDisableInteractive", 0) != 1;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool = bdiv.c(BaseApplicationImpl.getContext(), paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "isSupportFriendShip sp: " + bool);
+    Object localObject;
+    ChatMessage localChatMessage;
+    if ((paramChatMessage instanceof MessageForLongMsg))
+    {
+      localObject = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        localChatMessage = (ChatMessage)((Iterator)localObject).next();
+        if ((localChatMessage != null) && (paramChatMessage.uniseq == localChatMessage.uniseq) && (this.jdField_a_of_type_JavaUtilHashMap.get(localChatMessage) != null)) {
+          return ((Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(localChatMessage)).booleanValue();
+        }
+      }
+      return false;
     }
-    return bool;
-  }
-  
-  public static int b()
-  {
-    return bdjj.a(NetConnInfoCenter.getServerTimeMillis());
-  }
-  
-  public static String b()
-  {
-    String str = a();
-    return str + e;
-  }
-  
-  public static void b(Context paramContext, String paramString)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    if (!TextUtils.isEmpty(paramString)) {
-      paramContext.putString("hot_friend_chat_num_des", paramString);
+    if (paramChatMessage != null)
+    {
+      localObject = this.jdField_a_of_type_JavaUtilHashMap.keySet();
+      if (((Set)localObject).contains(paramChatMessage)) {
+        return ((Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(paramChatMessage)).booleanValue();
+      }
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        localChatMessage = (ChatMessage)((Iterator)localObject).next();
+        if (paramChatMessage.uniseq == localChatMessage.uniseq)
+        {
+          boolean bool = ((Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(localChatMessage)).booleanValue();
+          this.jdField_a_of_type_JavaUtilHashMap.remove(localChatMessage);
+          this.jdField_a_of_type_JavaUtilHashMap.put(paramChatMessage, Boolean.valueOf(bool));
+          return bool;
+        }
+      }
     }
-    paramContext.commit();
+    return false;
   }
   
-  public static boolean b()
+  public boolean a(ChatMessage paramChatMessage, int paramInt)
   {
-    if (jdField_b_of_type_Boolean) {
-      return jdField_a_of_type_Boolean;
+    int m = c();
+    int k;
+    int n;
+    if (this.jdField_a_of_type_Int == 7)
+    {
+      k = 1;
+      n = m + k;
+      if (n <= paramInt) {
+        break label88;
+      }
     }
-    jdField_a_of_type_Boolean = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).getBoolean("hot_friend_new_boat_big_use_new", false);
-    jdField_b_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "isNewVersionBoat local:" + jdField_a_of_type_Boolean);
+    label88:
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg_TAG", 2, String.format("isWillBeyondTotalLimit: hasCount = %d,willCheckCount = %d,willTotalCount = %d", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(n) }));
+      }
+      return bool;
+      k = aupn.a(paramChatMessage);
+      break;
     }
-    return jdField_a_of_type_Boolean;
   }
   
-  public static String c()
+  public int b()
   {
-    String str = a();
-    return str + f;
+    return this.j;
+  }
+  
+  public void b(ChatMessage paramChatMessage, boolean paramBoolean)
+  {
+    if (paramChatMessage == null) {}
+    for (;;)
+    {
+      return;
+      Object localObject = this.jdField_a_of_type_JavaUtilHashMap.keySet();
+      if (((Set)localObject).contains(paramChatMessage))
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramChatMessage, Boolean.valueOf(paramBoolean));
+        return;
+      }
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        ChatMessage localChatMessage = (ChatMessage)((Iterator)localObject).next();
+        if (paramChatMessage.uniseq == localChatMessage.uniseq) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(localChatMessage, Boolean.valueOf(paramBoolean));
+        }
+      }
+      for (int k = 1; k == 0; k = 0)
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramChatMessage, Boolean.valueOf(paramBoolean));
+        return;
+      }
+    }
+  }
+  
+  public void b(List<ChatMessage> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0)) {
+      Collections.sort(paramList, jdField_a_of_type_Aupg);
+    }
+  }
+  
+  public boolean b(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    paramQQAppInterface = a(paramQQAppInterface, paramLong);
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
+    {
+      Iterator localIterator1 = paramQQAppInterface.iterator();
+      if (localIterator1.hasNext())
+      {
+        paramQQAppInterface = (ChatMessage)localIterator1.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiMsg_TAG", 4, " isContainedNotExistPic ChatMessage = " + paramQQAppInterface.getClass().getName());
+        }
+        if ((paramQQAppInterface instanceof MessageForPic)) {
+          paramQQAppInterface = (MessageForPic)paramQQAppInterface;
+        }
+        label99:
+        Iterator localIterator2;
+        Object localObject;
+        for (;;)
+        {
+          if ((paramQQAppInterface != null) && (!bayu.a(null, paramQQAppInterface, 65537)))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("MultiMsg_TAG", 4, " isContainedNotExistPic is = true ");
+            }
+            return true;
+            if ((paramQQAppInterface instanceof MessageForMixedMsg))
+            {
+              localIterator2 = ((MessageForMixedMsg)paramQQAppInterface).msgElemList.iterator();
+              localObject = null;
+              label155:
+              paramQQAppInterface = (QQAppInterface)localObject;
+              if (!localIterator2.hasNext()) {
+                continue;
+              }
+              paramQQAppInterface = (MessageRecord)localIterator2.next();
+              if (!(paramQQAppInterface instanceof MessageForPic)) {
+                break label406;
+              }
+            }
+          }
+        }
+        label272:
+        label403:
+        label404:
+        label406:
+        for (paramQQAppInterface = (MessageForPic)paramQQAppInterface;; paramQQAppInterface = (QQAppInterface)localObject)
+        {
+          localObject = paramQQAppInterface;
+          break label155;
+          if (paramQQAppInterface.msgtype == -1036)
+          {
+            localIterator2 = ((MessageForLongMsg)paramQQAppInterface).longMsgFragmentList.iterator();
+            localObject = null;
+            Iterator localIterator3;
+            do
+            {
+              do
+              {
+                paramQQAppInterface = (QQAppInterface)localObject;
+                if (!localIterator2.hasNext()) {
+                  break;
+                }
+                paramQQAppInterface = (MessageRecord)localIterator2.next();
+              } while (!(paramQQAppInterface instanceof MessageForMixedMsg));
+              localIterator3 = ((MessageForMixedMsg)paramQQAppInterface).msgElemList.iterator();
+              paramQQAppInterface = (QQAppInterface)localObject;
+              localObject = paramQQAppInterface;
+            } while (!localIterator3.hasNext());
+            localObject = (MessageRecord)localIterator3.next();
+            if (!(localObject instanceof MessageForPic)) {
+              break label403;
+            }
+            paramQQAppInterface = (MessageForPic)localObject;
+          }
+          for (;;)
+          {
+            break label272;
+            if (!(paramQQAppInterface instanceof MessageForStructing)) {
+              break label404;
+            }
+            paramQQAppInterface = ((MessageForStructing)paramQQAppInterface).structingMsg;
+            if ((paramQQAppInterface != null) && ((paramQQAppInterface instanceof StructMsgForImageShare)))
+            {
+              localObject = ((StructMsgForImageShare)paramQQAppInterface).getFirstImageElement();
+              if ((localObject != null) && (((azwy)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic == null))
+              {
+                if (((azwy)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null) {
+                  ((azwy)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare = ((StructMsgForImageShare)paramQQAppInterface);
+                }
+                ((azwy)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic = ((azwy)localObject).a();
+                paramQQAppInterface = ((azwy)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+                break label99;
+              }
+            }
+            paramQQAppInterface = null;
+            break label99;
+            break;
+          }
+          break;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public int c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    int k = 0;
+    ChatMessage localChatMessage;
+    int m;
+    if (localIterator.hasNext())
+    {
+      localChatMessage = (ChatMessage)localIterator.next();
+      if (!((Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(localChatMessage)).booleanValue()) {
+        break label112;
+      }
+      if (this.jdField_a_of_type_Int == 7)
+      {
+        m = 1;
+        label64:
+        k = m + k;
+      }
+    }
+    label112:
+    for (;;)
+    {
+      break;
+      m = aupn.a(localChatMessage);
+      break label64;
+      aupn.b("checkMap.size = %d,count= %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()), Integer.valueOf(k) });
+      return k;
+    }
   }
 }
 

@@ -1,60 +1,42 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.music.SongInfo;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aumi
-  extends Binder
-  implements aumh
+public class aumi
+  implements View.OnClickListener
 {
-  private static final String DESCRIPTOR = "com.tencent.mobileqq.music.IQQPlayerCallback";
-  static final int TRANSACTION_onPlaySongChanged = 2;
-  static final int TRANSACTION_onPlayStateChanged = 1;
+  public aumi(TabPageIndicator paramTabPageIndicator) {}
   
-  public aumi()
+  public void onClick(View paramView)
   {
-    attachInterface(this, "com.tencent.mobileqq.music.IQQPlayerCallback");
-  }
-  
-  public static aumh asInterface(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof aumh))) {
-      return (aumh)localIInterface;
-    }
-    return new aumj(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    TabPageIndicator.a(this.a, SystemClock.uptimeMillis());
+    paramView = paramView.getTag();
+    if ((paramView instanceof auml)) {}
+    for (paramView = (auml)paramView;; paramView = null)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.music.IQQPlayerCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
-      onPlayStateChanged(paramParcel1.readInt());
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (SongInfo)SongInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      onPlaySongChanged(paramParcel1);
-      return true;
+      if (paramView == null) {}
+      int j;
+      do
+      {
+        return;
+        int i = TabPageIndicator.a(this.a).a();
+        j = paramView.jdField_a_of_type_Int;
+        this.a.setCurrentItem(j);
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        TabPageIndicator.a(this.a).setCurrentItem(j);
+        if ((i == j) && (TabPageIndicator.a(this.a) != null)) {
+          TabPageIndicator.a(this.a).a(j);
+        }
+      } while (TabPageIndicator.a(this.a) == null);
+      TabPageIndicator.a(this.a).a(j);
+      return;
     }
   }
 }

@@ -1,14 +1,28 @@
-import feedcloud.FeedCloudRead.StGetMainPageRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
 
-class txy
-  implements yvn<FeedCloudRead.StGetMainPageRsp>
+public class txy
+  implements View.OnClickListener
 {
-  txy(txx paramtxx, yft paramyft) {}
+  public txy(QCircleContentOperationView paramQCircleContentOperationView) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Yft != null) {
-      this.jdField_a_of_type_Yft.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetMainPageRsp });
+    TextView localTextView;
+    if (QCircleContentOperationView.a(this.a) != null)
+    {
+      localTextView = QCircleContentOperationView.a(this.a);
+      if (QCircleContentOperationView.a(this.a).a() != 1) {
+        break label46;
+      }
+    }
+    label46:
+    for (paramView = QCircleContentOperationView.a(this.a);; paramView = QCircleContentOperationView.b(this.a))
+    {
+      localTextView.setText(paramView);
+      return;
     }
   }
 }

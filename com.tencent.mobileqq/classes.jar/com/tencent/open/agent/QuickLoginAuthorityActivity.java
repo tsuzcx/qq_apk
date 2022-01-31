@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,27 +23,27 @@ import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import azmj;
-import bdcv;
-import bdee;
-import bepp;
-import bexb;
-import bexd;
-import bfci;
-import bfcj;
-import bfck;
-import bfcl;
-import bfcm;
-import bfcn;
-import bfco;
-import bfcp;
-import bfdq;
-import bfdz;
-import bfen;
-import bfhs;
-import bfie;
-import bfjq;
+import azqs;
+import bdhe;
+import bdin;
+import bety;
+import bfbk;
+import bfbm;
+import bfgr;
+import bfgs;
+import bfgt;
+import bfgu;
+import bfgv;
+import bfgw;
+import bfgx;
+import bfgy;
+import bfhz;
+import bfii;
+import bfiw;
+import bfmb;
 import bfmn;
+import bfnz;
+import bfqw;
 import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
@@ -79,7 +79,7 @@ import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
 
 public class QuickLoginAuthorityActivity
   extends BaseActivity
-  implements View.OnClickListener, bfie
+  implements View.OnClickListener, bfmn
 {
   protected static final String[] a;
   protected float a;
@@ -91,7 +91,7 @@ public class QuickLoginAuthorityActivity
   protected Button a;
   protected RelativeLayout a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected bepp a;
+  protected bety a;
   public CardContainer a;
   private MaxHeightScrollView jdField_a_of_type_ComTencentOpenWidgetMaxHeightScrollView;
   public OpenSDKAppInterface a;
@@ -100,14 +100,14 @@ public class QuickLoginAuthorityActivity
   protected List<String> a;
   public WtloginManager a;
   protected SSOAccountObserver a;
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new bfck(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new bfgt(this);
   protected boolean a;
   public byte[] a;
   public Handler b;
   protected View b;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   public String b;
-  private WtloginObserver jdField_b_of_type_MqqObserverWtloginObserver = new bfcl(this);
+  private WtloginObserver jdField_b_of_type_MqqObserverWtloginObserver = new bfgu(this);
   private boolean jdField_b_of_type_Boolean;
   private byte[] jdField_b_of_type_ArrayOfByte;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
@@ -124,9 +124,9 @@ public class QuickLoginAuthorityActivity
   
   public QuickLoginAuthorityActivity()
   {
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new bfci(this);
-    this.jdField_a_of_type_AndroidOsHandler = new bfco(this, ThreadManager.getSubThreadLooper());
-    this.jdField_b_of_type_AndroidOsHandler = new bfcp(this, Looper.getMainLooper());
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new bfgr(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bfgx(this, ThreadManager.getSubThreadLooper());
+    this.jdField_b_of_type_AndroidOsHandler = new bfgy(this, Looper.getMainLooper());
   }
   
   private int a()
@@ -184,13 +184,13 @@ public class QuickLoginAuthorityActivity
   
   private void i()
   {
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131377976));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131368613));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131368659));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131368644));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131378030));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131368624));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131368670));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131368655));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131695043);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131695045);
     this.jdField_c_of_type_AndroidWidgetTextView.setText(2131690648);
     this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.a(0);
   }
@@ -221,7 +221,7 @@ public class QuickLoginAuthorityActivity
     if (this.jdField_b_of_type_Boolean) {}
     try
     {
-      paramString1 = bfdq.a();
+      paramString1 = bfhz.a();
       paramString2 = this.jdField_a_of_type_JavaLangString;
       if (paramInt != 0) {
         break label206;
@@ -235,7 +235,7 @@ public class QuickLoginAuthorityActivity
         if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount())) || (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount()))) {
           break label205;
         }
-        paramString1 = bfdq.a();
+        paramString1 = bfhz.a();
         paramString2 = this.jdField_a_of_type_JavaLangString;
         if (paramInt != 0) {
           break label227;
@@ -270,19 +270,19 @@ public class QuickLoginAuthorityActivity
     for (paramString = "";; paramString = Build.VERSION.RELEASE)
     {
       localGetAppinfoRequest.os.set(paramString);
-      localGetAppinfoRequest.qqv.set(bexd.a().d());
+      localGetAppinfoRequest.qqv.set(bfbm.a().d());
       localGetAppinfoRequest.setHasFlag(true);
-      paramString = bfdz.a(this);
+      paramString = bfii.a(this);
       if (!TextUtils.isEmpty(paramString)) {
         localGetAppinfoRequest.appUniqueIdentifier.set(paramString);
       }
       localGetAppinfoRequest.referer.set(1);
-      paramString = new NewIntent(BaseApplicationImpl.getContext(), bfen.class);
+      paramString = new NewIntent(BaseApplicationImpl.getContext(), bfiw.class);
       paramString.setWithouLogin(true);
       paramString.putExtra("uin", this.jdField_a_of_type_JavaLangString);
       paramString.putExtra("data", localGetAppinfoRequest.toByteArray());
       paramString.putExtra("cmd", "ConnAuthSvr.get_app_info");
-      paramString.setObserver(new bfcj(this));
+      paramString.setObserver(new bfgs(this));
       super.getAppRuntime().startServlet(paramString);
       return;
     }
@@ -304,7 +304,7 @@ public class QuickLoginAuthorityActivity
   
   public void a(String paramString)
   {
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->showLoginActivity--uin = *" + bfdz.a(paramString) + ",mIsPtloginAction=" + this.jdField_a_of_type_Boolean);
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->showLoginActivity--uin = *" + bfii.a(paramString) + ",mIsPtloginAction=" + this.jdField_a_of_type_Boolean);
     Intent localIntent = new Intent(this, Login.class);
     if (paramString != null) {
       localIntent.putExtra("param_uin", paramString);
@@ -478,7 +478,7 @@ public class QuickLoginAuthorityActivity
     }
     QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "updateViews()");
     String str = ((TicketManager)this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getManager(2)).getSkey(this.jdField_a_of_type_JavaLangString);
-    bfhs.a().a(this, this.jdField_a_of_type_JavaLangString, str, this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.b(this.jdField_a_of_type_JavaLangString), this);
+    bfmb.a().a(this, this.jdField_a_of_type_JavaLangString, str, this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.b(this.jdField_a_of_type_JavaLangString), this);
   }
   
   /* Error */
@@ -1078,7 +1078,7 @@ public class QuickLoginAuthorityActivity
         bool = this.jdField_a_of_type_MqqManagerWtloginManager.IsUserHaveA1(this.jdField_a_of_type_JavaLangString, 16L);
       }
       c();
-      QQToast.a(BaseApplicationImpl.getContext(), 2131695068, 0).b(getResources().getDimensionPixelSize(2131298914));
+      QQToast.a(BaseApplicationImpl.getContext(), 2131695070, 0).b(getResources().getDimensionPixelSize(2131298914));
       return;
     }
     c();
@@ -1086,7 +1086,7 @@ public class QuickLoginAuthorityActivity
   
   protected void d(String paramString)
   {
-    bfjq.a(paramString);
+    bfnz.a(paramString);
     WloginSimpleInfo localWloginSimpleInfo = new WloginSimpleInfo();
     this.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(paramString, localWloginSimpleInfo);
     paramString = "" + this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.jdField_a_of_type_MqqManagerWtloginManager, paramString);
@@ -1155,7 +1155,7 @@ public class QuickLoginAuthorityActivity
     if (this.jdField_b_of_type_Boolean) {}
     try
     {
-      bfdq.a().a(this.jdField_a_of_type_JavaLangString, "", "", "1", "9", "0", true);
+      bfhz.a().a(this.jdField_a_of_type_JavaLangString, "", "", "1", "9", "0", true);
     }
     catch (Exception localException1)
     {
@@ -1164,7 +1164,7 @@ public class QuickLoginAuthorityActivity
         for (;;)
         {
           if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount())) && (!this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount()))) {
-            bfdq.a().a(this.jdField_a_of_type_JavaLangString, "", "", "1", "10", "0", true);
+            bfhz.a().a(this.jdField_a_of_type_JavaLangString, "", "", "1", "10", "0", true);
           }
           new QuickLoginAuthorityActivity.9(this).start();
           QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "setPtloginSdkResult:");
@@ -1185,7 +1185,7 @@ public class QuickLoginAuthorityActivity
   
   protected void e(String paramString)
   {
-    bfjq.a(paramString);
+    bfnz.a(paramString);
     WloginSimpleInfo localWloginSimpleInfo = new WloginSimpleInfo();
     this.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(paramString, localWloginSimpleInfo);
     paramString = "" + this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.jdField_a_of_type_MqqManagerWtloginManager, paramString);
@@ -1222,10 +1222,10 @@ public class QuickLoginAuthorityActivity
   
   public void f()
   {
-    if ((!super.isFinishing()) && (this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {}
+    if ((!super.isFinishing()) && (this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bepp.dismiss();
+      this.jdField_a_of_type_Bety.dismiss();
       return;
     }
     catch (Exception localException)
@@ -1236,9 +1236,9 @@ public class QuickLoginAuthorityActivity
   
   protected void g()
   {
-    this.jdField_a_of_type_Bepp.a(super.getString(2131695060));
-    if (!this.jdField_a_of_type_Bepp.isShowing()) {
-      this.jdField_a_of_type_Bepp.show();
+    this.jdField_a_of_type_Bety.a(super.getString(2131695062));
+    if (!this.jdField_a_of_type_Bety.isShowing()) {
+      this.jdField_a_of_type_Bety.show();
     }
     QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 2, "-->doAuthorize()");
     if (this.jdField_a_of_type_Boolean)
@@ -1265,7 +1265,7 @@ public class QuickLoginAuthorityActivity
     if (QLog.isColorLevel())
     {
       QLog.d("Q.quicklogin.QuickLoginAuthorityActivity", 2, "mSrcPackageName: " + this.jdField_d_of_type_JavaLangString);
-      String str = bdcv.a(arrayOfByte2);
+      String str = bdhe.a(arrayOfByte2);
       QLog.d("Q.quicklogin.QuickLoginAuthorityActivity", 2, "dstAppSign: " + str);
     }
     this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.ssoGetA1WithA1(this.jdField_a_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString.getBytes(), l1, l3, l2, arrayOfByte1, arrayOfByte2, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
@@ -1273,7 +1273,7 @@ public class QuickLoginAuthorityActivity
   
   public void h()
   {
-    int i = getResources().getColor(2131167192);
+    int i = getResources().getColor(2131167194);
     ColorStateList localColorStateList = getResources().getColorStateList(2131165865);
     if (this.jdField_b_of_type_AndroidWidgetTextView != null)
     {
@@ -1366,7 +1366,7 @@ public class QuickLoginAuthorityActivity
     QLog.d("Q.quicklogin.QuickLoginAuthorityActivity", 1, "onBackPressed mIsPtloginAction=" + this.jdField_a_of_type_Boolean);
     a(null);
     if (this.jdField_a_of_type_Boolean) {
-      bexb.a();
+      bfbk.a();
     }
   }
   
@@ -1386,7 +1386,7 @@ public class QuickLoginAuthorityActivity
         QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "onClick cancel mIsPtloginAction=" + this.jdField_a_of_type_Boolean);
         a(null);
       } while (!this.jdField_a_of_type_Boolean);
-      bexb.a();
+      bfbk.a();
       return;
       if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
       {
@@ -1408,13 +1408,13 @@ public class QuickLoginAuthorityActivity
               str2 = "1";
             }
           }
-          azmj.b(null, "dc00898", "", "", "0X800A7BE", "0X800A7BE", this.jdField_a_of_type_Int, 0, str2, paramView, str1, "");
+          azqs.b(null, "dc00898", "", "", "0X800A7BE", "0X800A7BE", this.jdField_a_of_type_Int, 0, str2, paramView, str1, "");
           QLog.d("Q.quicklogin.QuickLoginAuthorityActivity", 1, new Object[] { "report-dc00898-0X800A7BE-fromType=", Integer.valueOf(this.jdField_a_of_type_Int), ",changeaccount=", str2, ", hasGetName=", paramView, ", hasGetIcon=", str1 });
-          if (bdee.g(this)) {
+          if (bdin.g(this)) {
             break label274;
           }
           f();
-          this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this, getResources().getString(2131695063));
+          this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this, getResources().getString(2131695065));
           return;
           paramView = "2";
           break;
@@ -1438,7 +1438,7 @@ public class QuickLoginAuthorityActivity
           bool = this.jdField_a_of_type_MqqManagerWtloginManager.IsUserHaveA1(this.jdField_a_of_type_JavaLangString, 16L);
         }
         c();
-        QQToast.a(BaseApplicationImpl.getContext(), 2131695068, 0).b(super.getResources().getDimensionPixelSize(2131298914));
+        QQToast.a(BaseApplicationImpl.getContext(), 2131695070, 0).b(super.getResources().getDimensionPixelSize(2131298914));
         return;
       }
       switch (paramView.getId())
@@ -1468,7 +1468,7 @@ public class QuickLoginAuthorityActivity
       return;
       if (!a())
       {
-        QQToast.a(BaseApplicationImpl.getContext(), alpo.a(2131711619), 0).a();
+        QQToast.a(BaseApplicationImpl.getContext(), alud.a(2131711631), 0).a();
         a(null);
         return;
       }
@@ -1480,22 +1480,22 @@ public class QuickLoginAuthorityActivity
       StringBuilder localStringBuilder = new StringBuilder("onCreate()=> mFromSdkLoginAuthority=");
       localStringBuilder.append(this.jdField_b_of_type_Boolean).append("\n schemacallback=").append(str1).append("\n packageName=").append(str2).append("\n action=").append(paramBundle).append("\n urlPraram=").append(str3);
       QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, localStringBuilder.toString());
-      super.setContentView(2131559533);
-      this.jdField_a_of_type_ComTencentOpenAgentCardContainer = ((CardContainer)super.findViewById(2131364009));
+      super.setContentView(2131559532);
+      this.jdField_a_of_type_ComTencentOpenAgentCardContainer = ((CardContainer)super.findViewById(2131364011));
       i();
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131375981);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131363550);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131371381));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131376034);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131363552);
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131371400));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362904));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
-      this.jdField_a_of_type_ComTencentOpenWidgetMaxHeightScrollView = ((MaxHeightScrollView)findViewById(2131364010));
-      this.jdField_a_of_type_ComTencentOpenWidgetMaxHeightScrollView.getViewTreeObserver().addOnGlobalLayoutListener(new bfcm(this));
+      this.jdField_a_of_type_ComTencentOpenWidgetMaxHeightScrollView = ((MaxHeightScrollView)findViewById(2131364012));
+      this.jdField_a_of_type_ComTencentOpenWidgetMaxHeightScrollView.getViewTreeObserver().addOnGlobalLayoutListener(new bfgv(this));
       if (this.jdField_b_of_type_Boolean)
       {
-        this.jdField_a_of_type_Bepp = new bepp(this, 0, 2131561221, 17);
-        this.jdField_a_of_type_Bepp.a(-1);
+        this.jdField_a_of_type_Bety = new bety(this, 0, 2131561239, 17);
+        this.jdField_a_of_type_Bety.a(-1);
         this.jdField_a_of_type_Int = 1;
         if (TextUtils.isEmpty(str2)) {
           break label688;
@@ -1504,12 +1504,12 @@ public class QuickLoginAuthorityActivity
       for (this.jdField_a_of_type_Int = 3;; this.jdField_a_of_type_Int = 2) {
         do
         {
-          azmj.b(null, "dc00898", "", "", "0X800A7BC", "0X800A7BC", this.jdField_a_of_type_Int, 0, "", "", "", "");
+          azqs.b(null, "dc00898", "", "", "0X800A7BC", "0X800A7BC", this.jdField_a_of_type_Int, 0, "", "", "", "");
           QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "report-dc00898-0X800A7BC-fromType=" + this.jdField_a_of_type_Int);
-          this.jdField_a_of_type_ComTencentOpenAgentCardContainer.setChangeAccountListener(new bfcn(this));
-          this.jdField_a_of_type_Bepp.setCanceledOnTouchOutside(false);
-          bfmn.a().a();
-          this.jdField_a_of_type_JavaUtilList = bfjq.a();
+          this.jdField_a_of_type_ComTencentOpenAgentCardContainer.setChangeAccountListener(new bfgw(this));
+          this.jdField_a_of_type_Bety.setCanceledOnTouchOutside(false);
+          bfqw.a().a();
+          this.jdField_a_of_type_JavaUtilList = bfnz.a();
           if (this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.isLogin()) {
             this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount();
           }
@@ -1533,7 +1533,7 @@ public class QuickLoginAuthorityActivity
           if (isChild()) {}
           for (paramBundle = getParent();; paramBundle = this)
           {
-            this.jdField_a_of_type_Bepp = new bepp(paramBundle, super.getTitleBarHeight());
+            this.jdField_a_of_type_Bety = new bety(paramBundle, super.getTitleBarHeight());
             break;
           }
         } while ((TextUtils.isEmpty(str1)) || (!str1.contains("weixin://")));

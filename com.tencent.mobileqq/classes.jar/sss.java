@@ -1,19 +1,19 @@
 import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
 
 public class sss
-  implements ydr<xzz>
+  implements yia<yei>
 {
   public sss(FolderFollowTabFragment paramFolderFollowTabFragment) {}
   
-  public void a(yeb paramyeb, xzz paramxzz)
+  public void a(yii paramyii, yei paramyei)
   {
-    if (paramyeb.e()) {
-      FolderFollowTabFragment.a(this.a, paramxzz);
+    if (paramyii.e()) {
+      FolderFollowTabFragment.a(this.a, paramyei);
     }
-    while ((!paramyeb.d()) && (!paramyeb.c())) {
+    while ((!paramyii.d()) && (!paramyii.c())) {
       return;
     }
-    FolderFollowTabFragment.b(this.a, paramxzz);
+    FolderFollowTabFragment.b(this.a, paramyei);
   }
 }
 

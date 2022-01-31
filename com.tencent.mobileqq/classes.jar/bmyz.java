@@ -1,14 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bmyz
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  bmyz(bmyp parambmyp) {}
+  bmyz(bmyx parambmyx) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.invalidateSelf();
+    paramDialogInterface.dismiss();
   }
 }
 

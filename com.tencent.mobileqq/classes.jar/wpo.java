@@ -1,57 +1,45 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryUploadProgressView.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import mqq.os.MqqHandler;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 public class wpo
-  implements ukr
+  extends wos<wpn>
 {
-  public MessageProgressView a;
-  private String a;
-  
-  public wpo(MessageProgressView paramMessageProgressView)
+  public wpo(@Nullable wow paramwow)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = paramMessageProgressView;
+    super(paramwow);
   }
   
-  private void b(String paramString, int paramInt)
+  protected JobSegment<wov, wpn> a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramInt, this.jdField_a_of_type_JavaLangString + "_" + hashCode());
+    return new wpi();
   }
   
-  public void a()
+  protected JobSegment<Integer, wov> a(wou paramwou)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(xod.a(this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getContext(), 8.0F), false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
+    return new wpp(paramwou, this.a);
   }
   
-  public void a(int paramInt)
+  protected wpn a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(paramInt);
+    woy localwoy = (woy)uwa.a(11);
+    List localList = localwoy.a();
+    wpn localwpn = new wpn(new ErrorMessage());
+    localwpn.jdField_b_of_type_JavaUtilList = localwoy.b(localList);
+    localwpn.jdField_b_of_type_Boolean = true;
+    localwpn.a = localwpn.jdField_b_of_type_JavaUtilList.isEmpty();
+    return localwpn;
   }
   
-  public void a(bemn parambemn)
+  protected wpn a(ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(parambemn);
+    return new wpn(paramErrorMessage);
   }
   
-  public void a(String paramString)
+  protected void a(List<String> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    b(paramString, paramInt);
-    if (paramInt >= 100) {
-      ThreadManager.getUIHandler().postDelayed(new StoryUploadProgressView.1(this), 500L);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(this.jdField_a_of_type_JavaLangString + "_" + hashCode());
+    ((woy)uwa.a(11)).a(paramList, paramBoolean);
   }
 }
 

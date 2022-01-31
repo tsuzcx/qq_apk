@@ -1,21 +1,21 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bhge;
-import bhgh;
+import bhkl;
+import bhko;
 
 class AudioJsPlugin$InnerAudioManager$1
-  implements bhgh
+  implements bhko
 {
   AudioJsPlugin$InnerAudioManager$1(AudioJsPlugin.InnerAudioManager paramInnerAudioManager, boolean paramBoolean1, boolean paramBoolean2, double paramDouble) {}
   
   public void onPrepared()
   {
-    bhge localbhge;
+    bhkl localbhkl;
     if ((this.val$autoPlay) && (AudioJsPlugin.InnerAudioManager.access$2100(this.this$1) != null))
     {
       AudioJsPlugin.InnerAudioManager.access$2100(this.this$1).b(this.val$loop);
       AudioJsPlugin.InnerAudioManager.access$2100(this.this$1).a((float)this.val$volume);
-      localbhge = AudioJsPlugin.InnerAudioManager.access$2100(this.this$1);
+      localbhkl = AudioJsPlugin.InnerAudioManager.access$2100(this.this$1);
       if (AudioJsPlugin.access$2200()) {
         break label78;
       }
@@ -23,7 +23,7 @@ class AudioJsPlugin$InnerAudioManager$1
     label78:
     for (boolean bool = true;; bool = false)
     {
-      localbhge.a(bool);
+      localbhkl.a(bool);
       AudioJsPlugin.InnerAudioManager.access$2100(this.this$1).d();
       return;
     }

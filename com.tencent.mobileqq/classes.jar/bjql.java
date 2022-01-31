@@ -1,61 +1,60 @@
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionReq;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionRsp;
+import NS_MOBILE_QBOSS_PROTO.ReportExceptionInfo;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
+
 public class bjql
+  extends QzoneExternalRequest
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static bjql b;
-  private bjql jdField_a_of_type_Bjql;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(128);
+  private JceStruct a;
   
-  public static bjql a()
+  public bjql(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (b != null)
-      {
-        bjql localbjql = b;
-        b = localbjql.jdField_a_of_type_Bjql;
-        localbjql.jdField_a_of_type_Bjql = null;
-        jdField_a_of_type_Int -= 1;
-        return localbjql;
-      }
-      return new bjql();
+    ArrayList localArrayList = new ArrayList(1);
+    ReportExceptionInfo localReportExceptionInfo = new ReportExceptionInfo();
+    localReportExceptionInfo.iCode = paramInt3;
+    localReportExceptionInfo.iAppid = paramInt1;
+    localReportExceptionInfo.iTaskId = paramInt2;
+    localReportExceptionInfo.strMsg = paramString;
+    localArrayList.add(localReportExceptionInfo);
+    this.a = new MobileQbossReportExceptionReq(paramLong, localArrayList);
+  }
+  
+  public static MobileQbossReportExceptionRsp a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
     }
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
-  }
-  
-  public bjql a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangStringBuilder.append(paramObject);
-    return this;
-  }
-  
-  public void a()
-  {
-    b();
-    synchronized (jdField_a_of_type_JavaLangObject)
+    MobileQbossReportExceptionRsp localMobileQbossReportExceptionRsp;
+    do
     {
-      if (jdField_a_of_type_Int < 50)
-      {
-        this.jdField_a_of_type_Bjql = b;
-        b = this;
-        jdField_a_of_type_Int += 1;
-      }
-      return;
-    }
+      return paramArrayOfByte;
+      localMobileQbossReportExceptionRsp = (MobileQbossReportExceptionRsp)decode(paramArrayOfByte, "reportException");
+      paramArrayOfByte = localMobileQbossReportExceptionRsp;
+    } while (localMobileQbossReportExceptionRsp != null);
+    return null;
   }
   
-  public String toString()
+  public String getCmdString()
   {
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
+    return "QzoneNewService.mobileqboss.reportException";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "reportException";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjql
  * JD-Core Version:    0.7.0.1
  */

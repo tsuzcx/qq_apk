@@ -1,9 +1,9 @@
 import android.view.View;
 
 class omi
-  implements bhqd
+  implements bhuk
 {
-  omi(omg paramomg, omt paramomt, bhpy parambhpy) {}
+  omi(omg paramomg, omt paramomt, bhuf parambhuf) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -12,7 +12,7 @@ class omi
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhpy.dismiss();
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
       this.jdField_a_of_type_Omg.a().a(this.jdField_a_of_type_Omt, this.jdField_a_of_type_Omg.c);
       this.jdField_a_of_type_Omg.notifyDataSetChanged();

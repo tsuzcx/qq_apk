@@ -1,17 +1,24 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.mobileqq.widget.MyGridView;
-import com.tencent.widget.SingleLineTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ajgp
-  extends ajfh
+class ajgp
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public DragTextView a;
-  public MyGridView a;
-  public SingleLineTextView a;
+  ajgp(ajgb paramajgb) {}
+  
+  public void onClick(View paramView)
+  {
+    if (ajgb.a(this.a) != null) {}
+    for (paramView = ajgb.a(this.a).app;; paramView = null)
+    {
+      if (paramView != null) {
+        anpd.a().a(ajgb.a(this.a), paramView);
+      }
+      anpd.a().a();
+      return;
+    }
+  }
 }
 
 

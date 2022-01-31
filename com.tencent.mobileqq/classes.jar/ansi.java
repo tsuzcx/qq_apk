@@ -1,27 +1,11 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Pair;
+import android.view.animation.Animation;
 
 class ansi
-  extends Handler
+  extends bhry
 {
-  ansi(ansh paramansh, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  ansi(ansg paramansg) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    paramMessage = (Pair)paramMessage.obj;
-    this.a.b(((Long)paramMessage.first).longValue(), ((Long)paramMessage.second).longValue());
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
 }
 
 

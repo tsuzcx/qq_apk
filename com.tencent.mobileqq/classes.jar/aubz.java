@@ -1,8 +1,6 @@
-public abstract interface aubz
+class aubz
 {
-  public abstract void a(int paramInt, aucl paramaucl, Object paramObject);
-  
-  public abstract void a(aucl paramaucl, Object paramObject);
+  private static final aubw a = new aubw();
 }
 
 

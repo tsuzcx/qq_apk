@@ -1,70 +1,92 @@
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.widget.EditText;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.SparseArray;
+import com.tencent.mfsdk.MagnifierSDK;
 
 public class abvg
-  implements absf
 {
-  EditText a;
+  public static int a;
+  private static long a;
+  public static SparseArray<abvh> a;
   
-  public abvg() {}
-  
-  public abvg(EditText paramEditText)
+  static
   {
-    this.a = paramEditText;
+    jdField_a_of_type_Long = Math.round((float)(System.currentTimeMillis() / 86400000L));
+    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(18);
+    jdField_a_of_type_AndroidUtilSparseArray.put(1, new abvh(0L, 0));
+    jdField_a_of_type_AndroidUtilSparseArray.put(4, new abvh(0L, 0));
+    jdField_a_of_type_AndroidUtilSparseArray.put(6, new abvh(0L, 0));
+    jdField_a_of_type_AndroidUtilSparseArray.put(7, new abvh(0L, 0));
+    jdField_a_of_type_AndroidUtilSparseArray.put(14, new abvh(0L, 0));
+    jdField_a_of_type_AndroidUtilSparseArray.put(9, new abvh(0L, 0));
+    jdField_a_of_type_AndroidUtilSparseArray.put(16, new abvh(0L, 0));
   }
   
-  private void a(String paramString)
+  public static void a()
   {
-    if (this.a == null) {}
-    for (boolean bool = true;; bool = false)
+    long l;
+    if (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences != null) {
+      l = MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences.getLong("last_start_date", 0L);
+    }
+    int[] arrayOfInt;
+    int j;
+    int i;
+    int k;
+    for (;;)
     {
-      a(paramString, bool);
+      if ((jdField_a_of_type_Long - l > 0L) && (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor != null))
+      {
+        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("last_start_date", jdField_a_of_type_Long);
+        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_today_reported", 0);
+        arrayOfInt = abuz.jdField_a_of_type_ArrayOfInt;
+        j = arrayOfInt.length;
+        i = 0;
+        for (;;)
+        {
+          if (i < j)
+          {
+            k = arrayOfInt[i];
+            MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_plugin_" + String.valueOf(k), 0);
+            jdField_a_of_type_AndroidUtilSparseArray.put(k, new abvh(0L, 0));
+            i += 1;
+            continue;
+            l = jdField_a_of_type_Long;
+            break;
+          }
+        }
+        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences != null)
+      {
+        jdField_a_of_type_Int = MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences.getInt("count_today_reported", 0);
+        if (jdField_a_of_type_Int >= abuz.jdField_a_of_type_Int) {
+          break;
+        }
+        arrayOfInt = abuz.jdField_a_of_type_ArrayOfInt;
+        j = arrayOfInt.length;
+        i = 0;
+        while (i < j)
+        {
+          k = arrayOfInt[i];
+          int m = MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences.getInt("count_plugin_" + String.valueOf(k), 0);
+          jdField_a_of_type_AndroidUtilSparseArray.put(k, new abvh(0L, m));
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public static void a(int paramInt)
+  {
+    abvh localabvh = (abvh)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localabvh == null) {
       return;
     }
-  }
-  
-  private void a(String paramString, boolean paramBoolean)
-  {
-    QLog.d("DoraemonOpenAPI.test", 2, paramString);
-    if (this.a != null) {
-      this.a.append(paramString);
-    }
-    if (paramBoolean) {
-      QQToast.a(BaseApplicationImpl.getApplication(), paramString, 0).a();
-    }
-  }
-  
-  public void onComplete()
-  {
-    a("onComplete\n");
-  }
-  
-  public void onFailure(int paramInt, String paramString)
-  {
-    a("onFailure code=" + paramInt + " msg=" + paramString + "\n");
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    a("onPermission " + paramInt + "\n", true);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    a("onSuccess " + paramJSONObject + "\n", true);
-    if (this.a != null) {
-      new AlertDialog.Builder(this.a.getContext()).setTitle("onSuccess").setMessage(paramJSONObject.toString()).setNegativeButton(alpo.a(2131715229), null).create().show();
-    }
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject)
-  {
-    a("onTrigger\n");
+    localabvh.jdField_a_of_type_Int += 1;
   }
 }
 

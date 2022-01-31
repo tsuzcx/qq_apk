@@ -1,70 +1,88 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class alnp
 {
-  public static void a(MessageRecord paramMessageRecord)
+  public SessionInfo a;
+  public List<allz> a;
+  public Context b;
+  public int c = 0;
+  public int d;
+  public int e;
+  protected int f = -1;
+  
+  public int a()
   {
-    if (paramMessageRecord != null) {
-      paramMessageRecord.saveExtInfoToExtStr("commen_flash_pic", "true");
-    }
+    return 0;
   }
   
-  public static void a(MessageRecord paramMessageRecord, boolean paramBoolean)
+  public int a(int paramInt)
   {
-    if (paramMessageRecord.msgtype == -2000) {
-      paramMessageRecord.saveExtInfoToExtStr("commen_flash_pic", paramBoolean + "");
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FlashPicHelper", 4, "setFlashPicFlag,troopUin:" + paramMessageRecord.frienduin + ",isReaded:" + paramBoolean + ",msgType:" + paramMessageRecord.msgtype);
-    }
+    return 0;
   }
   
-  public static boolean a(int paramInt, HotChatManager paramHotChatManager, String paramString)
+  public allz a(String paramString)
   {
-    return ((paramInt == 0) || (paramInt == 1) || (paramInt == 3000)) && (!paramHotChatManager.b(paramString));
+    return null;
   }
   
-  public static boolean a(MessageRecord paramMessageRecord)
+  public View a()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramMessageRecord != null) {
-      if (paramMessageRecord.msgtype != -2000)
-      {
-        bool1 = bool2;
-        if (paramMessageRecord.msgtype != -2006) {}
-      }
-      else
-      {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("commen_flash_pic"))) {
-          bool1 = true;
-        }
-      }
+    return null;
+  }
+  
+  public View a(int paramInt)
+  {
+    View localView = a();
+    a(localView, paramInt);
+    return localView;
+  }
+  
+  public ArrayList<allz> a(int paramInt)
+  {
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(View paramView, int paramInt) {}
+  
+  public void b(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void c(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloViewBinder", 2, new Object[] { "[setHighlightItemIndex] highlightItemIndex=", Integer.valueOf(paramInt) });
     }
-    return bool1;
-  }
-  
-  public static boolean b(MessageRecord paramMessageRecord)
-  {
-    try
+    if ((this.a == null) || (this.a.size() == 0)) {
+      QLog.e("ApolloViewBinder", 1, "[setHighlightItemIndex] no panel data, set failed");
+    }
+    do
     {
-      boolean bool = Boolean.valueOf(paramMessageRecord.getExtInfoFromExtStr("commen_flash_pic")).booleanValue();
-      return bool;
-    }
-    catch (Exception paramMessageRecord)
-    {
-      paramMessageRecord.printStackTrace();
-    }
-    return false;
+      do
+      {
+        return;
+      } while ((paramInt < 0) || (paramInt >= this.a.size()));
+      this.f = paramInt;
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloViewBinder", 2, new Object[] { "[setHighlightItemIndex] set success, highlightItemIndex=", Integer.valueOf(paramInt) });
+  }
+  
+  public void c_(List<allz> paramList)
+  {
+    this.a = paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alnp
  * JD-Core Version:    0.7.0.1
  */

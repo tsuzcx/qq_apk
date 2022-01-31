@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.doutu;
 
-import aloz;
-import apfo;
-import apfp;
-import apfx;
+import alto;
+import apjx;
+import apjy;
+import apkg;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
@@ -13,18 +13,18 @@ import mqq.app.NewIntent;
 public class DoutuManager$4
   implements Runnable
 {
-  public DoutuManager$4(apfp paramapfp, apfo paramapfo, long paramLong, SessionInfo paramSessionInfo) {}
+  public DoutuManager$4(apjy paramapjy, apjx paramapjx, long paramLong, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
     int i = 1;
     if (QLog.isColorLevel()) {
-      QLog.i("DoutuManager", 2, "postGetRecommendPicList item:" + this.jdField_a_of_type_Apfo.toString() + ", timeKey:" + this.jdField_a_of_type_Long + ", sessionType:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int + ", friendUin:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      QLog.i("DoutuManager", 2, "postGetRecommendPicList item:" + this.jdField_a_of_type_Apjx.toString() + ", timeKey:" + this.jdField_a_of_type_Long + ", sessionType:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int + ", friendUin:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
     }
-    NewIntent localNewIntent = new NewIntent(apfp.a(this.this$0).getApp(), apfx.class);
+    NewIntent localNewIntent = new NewIntent(apjy.a(this.this$0).getApp(), apkg.class);
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0)
     {
-      localNewIntent.putExtra("KEY_SRC_UIN", Long.valueOf(apfp.a(this.this$0).getCurrentAccountUin()).longValue());
+      localNewIntent.putExtra("KEY_SRC_UIN", Long.valueOf(apjy.a(this.this$0).getCurrentAccountUin()).longValue());
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) {
         break label351;
       }
@@ -32,28 +32,28 @@ public class DoutuManager$4
     for (;;)
     {
       localNewIntent.putExtra("KEY_SESSION_TYPE", i);
-      localNewIntent.putExtra("KEY_TO_UIN", Long.valueOf(this.jdField_a_of_type_Apfo.d));
-      localNewIntent.putExtra("KEY_MD5", this.jdField_a_of_type_Apfo.b);
-      localNewIntent.putExtra("key_url", this.jdField_a_of_type_Apfo.c);
+      localNewIntent.putExtra("KEY_TO_UIN", Long.valueOf(this.jdField_a_of_type_Apjx.d));
+      localNewIntent.putExtra("KEY_MD5", this.jdField_a_of_type_Apjx.b);
+      localNewIntent.putExtra("key_url", this.jdField_a_of_type_Apjx.c);
       localNewIntent.putExtra("KEY_CMD", 6);
       localNewIntent.putExtra("key_sequence", this.jdField_a_of_type_Long);
-      if (apfp.a(this.this$0) == null)
+      if (apjy.a(this.this$0) == null)
       {
-        Object localObject = (aloz)apfp.a(this.this$0).getManager(51);
+        Object localObject = (alto)apjy.a(this.this$0).getManager(51);
         if (localObject != null)
         {
-          localObject = ((aloz)localObject).b(apfp.a(this.this$0).getCurrentAccountUin());
+          localObject = ((alto)localObject).b(apjy.a(this.this$0).getCurrentAccountUin());
           if (localObject != null) {
-            apfp.a(this.this$0, (Card)localObject);
+            apjy.a(this.this$0, (Card)localObject);
           }
         }
       }
-      if (apfp.a(this.this$0) != null)
+      if (apjy.a(this.this$0) != null)
       {
-        localNewIntent.putExtra("key_gender", apfp.a(this.this$0).shGender);
-        localNewIntent.putExtra("KEY_AGE", apfp.a(this.this$0).age);
+        localNewIntent.putExtra("key_gender", apjy.a(this.this$0).shGender);
+        localNewIntent.putExtra("KEY_AGE", apjy.a(this.this$0).age);
       }
-      apfp.a(this.this$0).startServlet(localNewIntent);
+      apjy.a(this.this$0).startServlet(localNewIntent);
       return;
       localNewIntent.putExtra("KEY_SRC_UIN", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString));
       break;

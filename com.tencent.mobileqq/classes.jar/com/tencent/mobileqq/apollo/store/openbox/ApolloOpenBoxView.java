@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
-import alak;
+import alez;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -15,7 +15,7 @@ public class ApolloOpenBoxView
 {
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
-  private alak jdField_a_of_type_Alak;
+  private alez jdField_a_of_type_Alez;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private int jdField_b_of_type_Int;
@@ -37,11 +37,11 @@ public class ApolloOpenBoxView
   private int p;
   private int q;
   
-  public ApolloOpenBoxView(Context paramContext, alak paramalak)
+  public ApolloOpenBoxView(Context paramContext, alez paramalez)
   {
     super(paramContext);
     c();
-    this.jdField_a_of_type_Alak = paramalak;
+    this.jdField_a_of_type_Alez = paramalez;
   }
   
   public ApolloOpenBoxView(Context paramContext, AttributeSet paramAttributeSet)
@@ -52,9 +52,9 @@ public class ApolloOpenBoxView
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838341);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838340);
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838339);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838342);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838341);
+    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838340);
     int i1 = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth() >> 1;
     int i2 = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight() >> 1;
     this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setBounds(-i1, -i2, i1, i2);
@@ -74,14 +74,14 @@ public class ApolloOpenBoxView
     this.jdField_a_of_type_Int = 4;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     super.invalidate();
-    if (this.jdField_a_of_type_Alak != null) {
-      this.jdField_a_of_type_Alak.a(this.jdField_a_of_type_Int, this.j, this.k);
+    if (this.jdField_a_of_type_Alez != null) {
+      this.jdField_a_of_type_Alez.a(this.jdField_a_of_type_Int, this.j, this.k);
     }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Alak = null;
+    this.jdField_a_of_type_Alez = null;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -150,9 +150,9 @@ public class ApolloOpenBoxView
             this.jdField_a_of_type_Int = 4;
             this.jdField_a_of_type_Long = l1;
             f2 = f1;
-            if (this.jdField_a_of_type_Alak != null)
+            if (this.jdField_a_of_type_Alez != null)
             {
-              this.jdField_a_of_type_Alak.a(this.jdField_a_of_type_Int, this.j, this.k);
+              this.jdField_a_of_type_Alez.a(this.jdField_a_of_type_Int, this.j, this.k);
               f2 = f1;
             }
           }

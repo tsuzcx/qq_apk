@@ -2,8 +2,8 @@ package com.tencent.mobileqq.data;
 
 import android.graphics.Color;
 import android.text.TextUtils;
-import awbv;
-import awdg;
+import awge;
+import awhp;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.CodedInputStreamMicro;
 import com.tencent.mobileqq.pb.CodedOutputStreamMicro;
@@ -31,7 +31,7 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x111.SubMsgType0x111.Label;
 import tencent.im.s2c.msgtype0x210.submsgtype0x111.SubMsgType0x111.MayKnowPerson;
 
 public class MayKnowRecommend
-  extends awbv
+  extends awge
   implements Serializable
 {
   public static final int INVALID_ADDFRIEND_SOURCE = -1;
@@ -44,7 +44,7 @@ public class MayKnowRecommend
   public byte[] additive;
   public short age;
   public byte[] algBuffer;
-  @awdg
+  @awhp
   public boolean bHighLight;
   public long cardDisplayTimestamp;
   public String category;
@@ -54,7 +54,7 @@ public class MayKnowRecommend
   public short gender = 255;
   public boolean hasQZoneUpdate;
   public String mobile_name;
-  @awdg
+  @awhp
   public List<MayKnowRecommend.MayKnowRecommendLabel> msgLabel;
   public byte[] msgLabelByte;
   public String nick;
@@ -64,7 +64,7 @@ public class MayKnowRecommend
   @Deprecated
   public String richBuffer;
   public byte[] richSingature;
-  @awdg
+  @awhp
   public RichStatus richStatus;
   public int sourceId;
   public int tabID = 23;
@@ -678,7 +678,7 @@ public class MayKnowRecommend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MayKnowRecommend
  * JD-Core Version:    0.7.0.1
  */

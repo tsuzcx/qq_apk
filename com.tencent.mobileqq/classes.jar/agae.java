@@ -1,49 +1,44 @@
+import android.os.SystemClock;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder.TroopGiftMsgHolder.1;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForTroopGift;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import java.util.Observable;
-import java.util.Observer;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class agae
-  extends aelt
-  implements Observer
+class agae
+  implements View.OnClickListener
 {
-  public ViewGroup a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  private QQAppInterface a;
-  public MessageForTroopGift a;
-  public BubbleImageView a;
-  public ViewGroup b;
-  public Button b;
-  public TextView b;
-  public View c;
-  public ViewGroup c;
-  public Button c;
-  public View d;
-  public Button d;
-  public Button e;
+  agae(agad paramagad) {}
   
-  public agae(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    paramObservable = (bcgd)paramObject;
-    if ((paramObservable.a.equals(bckh.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift))) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.isLoading)) {
-      this.d.post(new TroopGiftMsgItemBuilder.TroopGiftMsgHolder.1(this, paramObservable));
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.shakemsg", 2, "shake msg onClick() is called");
     }
+    aepi.n = true;
+    if (this.a.a()) {
+      return;
+    }
+    if (SystemClock.uptimeMillis() - agad.a(this.a) < 3000L)
+    {
+      QLog.d("Q.msg.shakemsg", 2, "shake return cause:too much click in a very short time!");
+      return;
+    }
+    paramView = (MessageForShakeWindow)aepi.a(paramView);
+    if (((this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity)) || ((this.a.jdField_a_of_type_AndroidContentContext instanceof SplashActivity)))
+    {
+      FragmentActivity localFragmentActivity = (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext;
+      agad.a(this.a, SystemClock.uptimeMillis());
+      localFragmentActivity.getChatFragment().a().at();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramView.frienduin, false);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramView.frienduin, false);
   }
 }
 

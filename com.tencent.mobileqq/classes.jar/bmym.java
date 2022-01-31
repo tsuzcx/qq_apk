@@ -1,26 +1,39 @@
-import android.util.Property;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
 
-class bmym
-  extends Property<bmyl, Integer>
+public abstract class bmym<T extends bmyl>
 {
-  bmym(bmyl parambmyl, Class paramClass, String paramString)
+  protected int a;
+  public final View a;
+  public T a;
+  
+  protected bmym(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    super(paramClass, paramString);
+    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      throw new NullPointerException("onCreateView can not return null");
+    }
   }
   
-  public Integer a(bmyl parambmyl)
+  protected abstract View a(@NonNull Context paramContext, ViewGroup paramViewGroup);
+  
+  public void a()
   {
-    if (parambmyl != null) {
-      return Integer.valueOf(bmyl.a(parambmyl));
-    }
-    return Integer.valueOf(0);
+    this.jdField_a_of_type_Bmyl = null;
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void a(bmyl parambmyl, Integer paramInteger)
+  public void a(T paramT, int paramInt)
   {
-    if (parambmyl != null) {
-      bmyl.a(parambmyl, paramInteger.intValue());
-    }
+    this.jdField_a_of_type_Bmyl = paramT;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Bmyl != null) && (this.jdField_a_of_type_Bmyl.a());
   }
 }
 

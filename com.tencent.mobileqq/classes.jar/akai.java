@@ -1,25 +1,15 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class akai
-  extends alwq
+  implements View.OnClickListener
 {
-  public akai(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
+  public akai(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void a(Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
-    }
-    if (paramObject != null) {
-      this.a.stopTitleProgress();
-    }
-    switch (((Integer)paramObject).intValue())
-    {
-    default: 
-      return;
-    }
-    QQSpecialFriendSettingActivity.a(this.a);
+    this.a.finish();
   }
 }
 

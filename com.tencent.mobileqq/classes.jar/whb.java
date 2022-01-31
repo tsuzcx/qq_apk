@@ -1,44 +1,14 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.NearbyCardInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.NormalCardInfo;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
 
 public class whb
+  implements xco
 {
-  private qqstory_struct.NearbyCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo;
-  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
+  public whb(QQStoryMainController paramQQStoryMainController) {}
   
-  public whb(qqstory_struct.NearbyCardInfo paramNearbyCardInfo)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo = paramNearbyCardInfo;
-  }
-  
-  public whb(byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo = new qqstory_struct.NearbyCardInfo();
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.mergeFrom(paramArrayOfByte);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wsv.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
-    }
-  }
-  
-  public CardItem.CardVideoInfo a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.card_info.story_video_info.size() == 0) {
-        return null;
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.card_info.story_video_info.get(0));
-    }
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
+    wxj.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
+    this.a.a(false, true, 1, null);
   }
 }
 

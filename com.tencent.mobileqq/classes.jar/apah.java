@@ -1,7 +1,16 @@
-public final class apah
+import android.net.Uri;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+
+class apah
 {
-  public String a;
-  public String b;
+  public static final Uri a;
+  public static final String[] a;
+  
+  static
+  {
+    jdField_a_of_type_AndroidNetUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "data1", "display_name", "contact_id", "raw_contact_id" };
+  }
 }
 
 

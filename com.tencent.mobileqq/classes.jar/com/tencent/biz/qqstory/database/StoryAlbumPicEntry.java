@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
+import awge;
 
 public class StoryAlbumPicEntry
-  extends awbv
+  extends awge
 {
   public static final int PIC_STATE_BLACK_POI = 4;
   public static final int PIC_STATE_DEFAULT = 1;

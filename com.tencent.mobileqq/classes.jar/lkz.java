@@ -242,7 +242,7 @@ public class lkz
       ActivityManager localActivityManager = (ActivityManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getSystemService("activity");
       ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
       localActivityManager.getMemoryInfo(localMemoryInfo);
-      long l1 = bdcb.a(Process.myPid()) / 1024L / 1024L;
+      long l1 = bdgk.a(Process.myPid()) / 1024L / 1024L;
       long l2 = localMemoryInfo.availMem / 1024L / 1024L;
       long l3 = localMemoryInfo.threshold / 1024L / 1024L;
       boolean bool = localMemoryInfo.lowMemory;

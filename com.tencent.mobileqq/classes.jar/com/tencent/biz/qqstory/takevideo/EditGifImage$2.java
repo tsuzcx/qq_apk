@@ -2,8 +2,8 @@ package com.tencent.biz.qqstory.takevideo;
 
 import com.tencent.image.URLImageView;
 import cooperation.qzone.widget.FastAnimationDrawable;
-import wuq;
-import wwe;
+import wyz;
+import xan;
 
 class EditGifImage$2
   implements Runnable
@@ -19,7 +19,7 @@ class EditGifImage$2
     this.this$0.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
     this.this$0.b = localFastAnimationDrawable;
     this.this$0.d = true;
-    this.this$0.jdField_a_of_type_Wwe.a.a(true, true);
+    this.this$0.jdField_a_of_type_Xan.a.a(true, true);
   }
 }
 

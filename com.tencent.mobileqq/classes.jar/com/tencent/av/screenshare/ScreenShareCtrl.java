@@ -120,11 +120,11 @@ public class ScreenShareCtrl
         QQToast.a(localBaseApplication, -1, (CharSequence)localObject, 0).a();
       }
       return;
-      localObject = localResources.getString(2131696313);
-      continue;
-      localObject = localResources.getString(2131696312);
+      localObject = localResources.getString(2131696315);
       continue;
       localObject = localResources.getString(2131696314);
+      continue;
+      localObject = localResources.getString(2131696316);
     }
   }
   

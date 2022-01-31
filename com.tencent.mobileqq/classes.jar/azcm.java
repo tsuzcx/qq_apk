@@ -1,157 +1,93 @@
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Environment;
+import android.preference.PreferenceManager;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import java.io.File;
 
 public class azcm
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  long[] jdField_a_of_type_ArrayOfLong = new long[3];
-  int jdField_b_of_type_Int = 0;
-  public long b;
-  long[] jdField_b_of_type_ArrayOfLong = new long[3];
-  int c;
-  public long c;
-  int d;
-  public long d;
-  long e;
-  public long f;
-  public long g;
-  public long h;
-  public long i;
-  long j;
-  public long k;
-  public long l;
-  public long m;
-  public long n;
-  public long o;
-  public long p;
-  long q = 9223372036854775807L;
-  long r = 0L;
-  long s = 9223372036854775807L;
-  long t = 0L;
+  public static long a;
+  public static final String a;
+  public static long b;
+  public static long c;
+  public static long d;
+  public static long e;
+  public static long f;
+  public static long g;
+  public static long h;
+  public static long i;
+  public static long j;
+  public static long k;
+  public static long l;
+  public static long m;
   
-  public azcm(SVHwEncoder.HwEncode paramHwEncode)
+  static
   {
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
+    jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory() + "/Tencent/com/tencent/mobileqq/debugDecodeShortVideo";
   }
   
-  public long a()
+  public static int a(int paramInt)
   {
-    return System.currentTimeMillis() - this.jdField_a_of_type_Long;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.jdField_a_of_type_Int < 3))
+    switch (paramInt)
     {
-      arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
-      i1 = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i1 + 1);
-      arrayOfLong[i1] = System.currentTimeMillis();
+    case 0: 
+    default: 
+      return 11;
+    case 1: 
+      return 9;
     }
-    while (this.jdField_b_of_type_Int >= 3) {
-      return;
-    }
-    long[] arrayOfLong = this.jdField_b_of_type_ArrayOfLong;
-    int i1 = this.jdField_b_of_type_Int;
-    this.jdField_b_of_type_Int = (i1 + 1);
-    arrayOfLong[i1] = System.currentTimeMillis();
+    return 10;
   }
   
-  public long b()
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Intent paramIntent, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
-    if (this.jdField_c_of_type_Int < 3) {
-      return 0L;
-    }
-    return this.jdField_a_of_type_ArrayOfLong[0];
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.jdField_c_of_type_Int < 3))
+    if (paramInt2 == 1)
     {
-      this.jdField_a_of_type_ArrayOfLong[this.jdField_c_of_type_Int] = (System.currentTimeMillis() - this.jdField_a_of_type_ArrayOfLong[this.jdField_c_of_type_Int]);
-      this.jdField_c_of_type_Int += 1;
-      if (this.jdField_c_of_type_Int == 3)
+      String str = PreferenceManager.getDefaultSharedPreferences(paramActivity).getString("camera_photo_path", "");
+      if ("".equals(str))
       {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("hw_video_time_used_msg", "videoEncodeTime:cnt20=" + this.jdField_a_of_type_ArrayOfLong[0] + " cnt1=" + this.jdField_a_of_type_ArrayOfLong[1] + " cnt2" + this.jdField_a_of_type_ArrayOfLong[2]);
-        this.jdField_a_of_type_ArrayOfLong[0] = ((this.jdField_a_of_type_ArrayOfLong[0] + this.jdField_a_of_type_ArrayOfLong[1] + this.jdField_a_of_type_ArrayOfLong[2]) / 3L * 1000L / 2L);
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("hw_video_time_used_msg", "videoEncodeTime:timeout=" + this.jdField_a_of_type_ArrayOfLong[0]);
-      }
-    }
-    do
-    {
-      do
-      {
+        QLog.d("AIOShortVideoUtil", 1, "camera result null");
         return;
-      } while (this.jdField_d_of_type_Int >= 3);
-      this.jdField_b_of_type_ArrayOfLong[this.jdField_d_of_type_Int] = (System.currentTimeMillis() - this.jdField_b_of_type_ArrayOfLong[this.jdField_d_of_type_Int]);
-      this.jdField_d_of_type_Int += 1;
-    } while (this.jdField_d_of_type_Int != 3);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("hw_video_time_used_msg", "audioEncodeTime:cnt20=" + this.jdField_b_of_type_ArrayOfLong[0] + " cnt1=" + this.jdField_b_of_type_ArrayOfLong[1] + " cnt2" + this.jdField_b_of_type_ArrayOfLong[2]);
-    this.jdField_b_of_type_ArrayOfLong[0] = ((this.jdField_b_of_type_ArrayOfLong[0] + this.jdField_b_of_type_ArrayOfLong[1] + this.jdField_b_of_type_ArrayOfLong[2]) / 3L * 1000L / 2L);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("hw_video_time_used_msg", "audioEncodeTime:timeout=" + this.jdField_b_of_type_ArrayOfLong[0]);
-  }
-  
-  public long c()
-  {
-    if (this.jdField_d_of_type_Int < 3) {
-      return 0L;
-    }
-    return this.jdField_b_of_type_ArrayOfLong[0];
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    long l1 = a();
-    if (paramBoolean)
-    {
-      if (l1 > this.r) {
-        this.r = l1;
       }
-      if (l1 < this.q) {
-        this.q = l1;
+      if (paramSessionInfo.jdField_a_of_type_Int == 9501)
+      {
+        ChatActivityUtils.a(paramQQAppInterface, paramActivity, paramSessionInfo, 1, paramIntent, 1);
+        return;
       }
-    }
-    do
-    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOShortVideoUtil", 2, "on camera result " + paramInt1);
+      }
+      paramActivity.getIntent().removeExtra("PhotoConst.PHOTO_SELECT_ACTIVITY_CLASS_NAME");
+      paramIntent = EditPicActivity.a(paramActivity, str, true, true, true, true, false, 2, 99, 1);
+      paramIntent.putExtra("qq_sub_business_id", 109);
+      aepi.a(paramIntent, null);
+      paramIntent.putExtra("camera_type", paramInt1);
+      if (bdeu.b(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
+        paramIntent.putExtra("babyq_ability", ((alok)paramQQAppInterface.a(53)).a());
+      }
+      paramIntent.putExtra("key_activity_code", ChatActivityUtils.a(paramActivity));
+      paramIntent.putExtra("editpic_cameratype", 3);
+      paramActivity.startActivity(paramIntent);
       return;
-      if (l1 > this.t) {
-        this.t = l1;
-      }
-    } while (l1 >= this.s);
-    this.s = l1;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mThumbGen=").append(this.l).append(" ");
-    localStringBuilder.append("mThumbGenFunc=").append(this.m).append(" ");
-    localStringBuilder.append("mMuxerCreate=").append(this.n).append(" ");
-    localStringBuilder.append("mMuxerAdd=").append(this.o).append(" ");
-    localStringBuilder.append("mMuxerStart=").append(this.p).append(" ");
-    localStringBuilder.append("mWriteVideoMax=").append(this.r).append(" ");
-    localStringBuilder.append("mWriteVideoMIn=").append(this.q).append(" ");
-    localStringBuilder.append("mWriteAudioMax=").append(this.t).append(" ");
-    localStringBuilder.append("mWriteAudioMIn=").append(this.s).append(" ");
-    localStringBuilder.append("vConfig=").append(this.jdField_b_of_type_Long).append(" ");
-    localStringBuilder.append("vInit=").append(this.jdField_c_of_type_Long).append(" ");
-    localStringBuilder.append("vStart=").append(this.jdField_d_of_type_Long).append(" ");
-    localStringBuilder.append("vStop=").append(this.e).append(" ");
-    localStringBuilder.append("vRelease=").append(this.f).append(" ");
-    localStringBuilder.append("aConfig=").append(this.g).append(" ");
-    localStringBuilder.append("aInit=").append(this.h).append(" ");
-    localStringBuilder.append("aStart=").append(this.i).append(" ");
-    localStringBuilder.append("aStop=").append(this.j).append(" ");
-    localStringBuilder.append("aRelease=").append(this.k).append(" ");
-    return localStringBuilder.toString();
+    }
+    paramQQAppInterface = new Intent(paramActivity, SendVideoActivity.class);
+    paramIntent = PreferenceManager.getDefaultSharedPreferences(paramActivity).getString("camera_photo_path", "");
+    paramQQAppInterface.putExtra("file_send_path", paramIntent);
+    paramQQAppInterface.putExtra("file_send_size", new File(paramIntent).length());
+    paramQQAppInterface.putExtra("file_send_duration", ShortVideoUtils.a(paramIntent));
+    paramQQAppInterface.putExtra("uin", paramSessionInfo.jdField_a_of_type_JavaLangString);
+    paramQQAppInterface.putExtra("uintype", paramSessionInfo.jdField_a_of_type_Int);
+    paramQQAppInterface.putExtra("file_source", "camera");
+    paramQQAppInterface.putExtra("start_init_activity_after_sended", false);
+    paramActivity.startActivity(paramQQAppInterface);
   }
 }
 

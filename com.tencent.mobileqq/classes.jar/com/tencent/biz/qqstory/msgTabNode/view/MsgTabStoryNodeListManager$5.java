@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.msgTabNode.view;
 
 import android.widget.TextView;
-import uwn;
-import wsv;
-import xnv;
+import vaw;
+import wxe;
+import xse;
 
 public class MsgTabStoryNodeListManager$5
   implements Runnable
 {
-  public MsgTabStoryNodeListManager$5(uwn paramuwn) {}
+  public MsgTabStoryNodeListManager$5(vaw paramvaw) {}
   
   public void run()
   {
-    int i = xnv.a(52);
+    int i = xse.a(52);
     String str = this.this$0.a.a.getText().toString();
-    wsv.a(uwn.b(), "redpoint update, update count = %s->%d", str, Integer.valueOf(i));
+    wxe.a(vaw.b(), "redpoint update, update count = %s->%d", str, Integer.valueOf(i));
     this.this$0.a.a(i);
   }
 }

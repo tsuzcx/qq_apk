@@ -16,18 +16,26 @@ class ARScanEntryView$9
     {
       i = 0;
       ((RelativeLayout)localObject).setVisibility(i);
+      if ((!this.a) || (ARScanEntryView.c(this.this$0)) || (ARScanEntryView.d(this.this$0))) {
+        break label79;
+      }
+      i = 1;
+      label53:
       localObject = this.this$0.d;
-      if (!this.a) {
-        break label53;
+      if (i == 0) {
+        break label84;
       }
     }
-    label53:
+    label79:
+    label84:
     for (int i = j;; i = 8)
     {
       ((TextView)localObject).setVisibility(i);
       return;
       i = 8;
       break;
+      i = 0;
+      break label53;
     }
   }
 }

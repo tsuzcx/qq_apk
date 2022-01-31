@@ -1,6 +1,16 @@
-public abstract interface bmwg
+import java.io.File;
+import java.io.FileFilter;
+
+class bmwg
+  implements FileFilter
 {
-  public abstract void a(bmwf parambmwf);
+  bmwg(bmwf parambmwf) {}
+  
+  public boolean accept(File paramFile)
+  {
+    paramFile = paramFile.getName();
+    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp")) || (paramFile.endsWith(".apng")) || (paramFile.endsWith(".gif"));
+  }
 }
 
 

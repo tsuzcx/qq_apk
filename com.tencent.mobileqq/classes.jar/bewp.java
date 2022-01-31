@@ -1,8 +1,8 @@
 public abstract interface bewp
 {
-  public abstract Object decode(Object paramObject);
+  public abstract void a(int paramInt);
   
-  public abstract Object encode(Object paramObject);
+  public abstract void b(int paramInt);
 }
 
 

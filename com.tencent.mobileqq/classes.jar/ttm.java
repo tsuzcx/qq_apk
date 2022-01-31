@@ -1,14 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
 class ttm
-  implements View.OnClickListener
+  implements ShareActionSheet.OnItemClickListener
 {
   ttm(ttl paramttl) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    this.a.b();
+    ttl.a(this.a, paramActionSheetItem);
   }
 }
 

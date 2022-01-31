@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class RecTroopBusinessItem
-  extends awbv
+  extends awge
 {
   public String btnText;
   public String des;
   public long endTime;
   public String iconUrl;
-  @awdj
+  @awhs
   public String id;
   public String jumpParam;
   public int jumpType;

@@ -1,26 +1,51 @@
+import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
 
-class aezg
-  implements bhqd
+public class aezg
+  extends bejh
 {
-  aezg(aezb paramaezb, ChatMessage paramChatMessage, bhpy parambhpy) {}
+  aezg(ConfessHalfScreenActivity.ConfessBrowserFragment paramConfessBrowserFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    switch (paramInt)
+    WebView localWebView;
+    if (this.jdField_a_of_type_Behr.a() != null)
     {
+      localWebView = this.jdField_a_of_type_Behr.a();
+      localWebView.setId(2131380175);
+      if (this.b != -1) {
+        localWebView.setBackgroundColor(this.b);
+      }
+      Object localObject = (Activity)localWebView.getContext();
+      if ((localObject instanceof ConfessHalfScreenActivity))
+      {
+        localObject = (ConfessHalfScreenActivity)localObject;
+        ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment, ConfessHalfScreenActivity.a((ConfessHalfScreenActivity)localObject));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("SwiftBrowserUIStyleHandler", 2, "initWebViewInContentView height=" + ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment));
+      }
+      if (!(this.c instanceof RelativeLayout)) {
+        break label171;
+      }
+      localObject = new RelativeLayout.LayoutParams(-1, ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment));
+      ((RelativeLayout.LayoutParams)localObject).addRule(12);
+      this.c.addView(localWebView, 0, (ViewGroup.LayoutParams)localObject);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhpy.dismiss();
+      this.c.setOnClickListener(new aezh(this));
       return;
-      aezb.a(this.jdField_a_of_type_Aezb, (MessageForTroopFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      azmj.b(aezb.a(this.jdField_a_of_type_Aezb), "dc00899", "Grp_chatRecord", "", "remove_file", "tips_det", 0, 0, aezb.a(this.jdField_a_of_type_Aezb).a, "", "", "");
-      continue;
-      azmj.b(aezb.a(this.jdField_a_of_type_Aezb), "dc00899", "Grp_chatRecord", "", "remove_file", "Clk_cel", 0, 0, aezb.a(this.jdField_a_of_type_Aezb).a, "", "", "");
+      label171:
+      this.c.addView(localWebView, 0, new ViewGroup.LayoutParams(-1, ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment)));
     }
   }
 }

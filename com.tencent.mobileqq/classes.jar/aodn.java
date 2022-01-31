@@ -1,24 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.service.LBSInfo;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public class aodn
-  extends alqy
+class aodn
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public aodn(LocationSelectActivity paramLocationSelectActivity) {}
+  aodn(aodl paramaodl) {}
   
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if (paramLBSInfo != null) {}
-    for (paramLBSInfo = paramLBSInfo.a(); Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L; paramLBSInfo = null)
-    {
-      this.a.a(paramBoolean, paramLBSInfo);
-      return;
-    }
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
-    localMessage.obj = new Object[] { Boolean.valueOf(paramBoolean), paramLBSInfo };
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1200L);
+    aodl.a(this.a);
+    return true;
   }
 }
 

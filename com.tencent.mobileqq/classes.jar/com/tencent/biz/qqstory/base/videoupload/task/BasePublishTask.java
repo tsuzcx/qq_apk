@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import ulp;
-import uls;
-import ulu;
-import ulv;
-import wsv;
+import upy;
+import uqb;
+import uqd;
+import uqe;
+import wxe;
 
-public abstract class BasePublishTask<T extends ulu>
+public abstract class BasePublishTask<T extends uqd>
   implements Runnable
 {
   public static final Boolean a;
@@ -22,7 +22,7 @@ public abstract class BasePublishTask<T extends ulu>
   public ArrayList<ErrorMessage> a;
   public AtomicBoolean a;
   public T a;
-  public ulv a;
+  public uqe a;
   public ArrayList<Stream> b = new ArrayList();
   
   static
@@ -35,33 +35,33 @@ public abstract class BasePublishTask<T extends ulu>
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_a_of_type_Int = 7;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Ulu = paramT;
+    this.jdField_a_of_type_Uqd = paramT;
   }
   
   private void d()
   {
     if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      wsv.d("Q.qqstory.publish.upload:BasePublishTask", "stop task in send rich data:" + this);
+      wxe.d("Q.qqstory.publish.upload:BasePublishTask", "stop task in send rich data:" + this);
       a(this.jdField_a_of_type_Int, new ErrorMessage());
       return;
     }
     a(1, new ErrorMessage());
-    if (this.jdField_a_of_type_Ulu.jdField_a_of_type_JavaUtilList.size() == 0)
+    if (this.jdField_a_of_type_Uqd.jdField_a_of_type_JavaUtilList.size() == 0)
     {
       e();
       return;
     }
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_Ulu.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.jdField_a_of_type_Uqd.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        Object localObject2 = (ulp)localIterator.next();
+        Object localObject2 = (upy)localIterator.next();
         localObject2 = Stream.of(new ErrorMessage()).map(new ThreadOffFunction("Q.qqstory.publish.upload:BasePublishTask", 4)).map((StreamFunction)localObject2);
-        ((Stream)localObject2).subscribe(new uls(this, null));
+        ((Stream)localObject2).subscribe(new uqb(this, null));
         this.b.add(localObject2);
-        wsv.c("Q.qqstory.publish.upload:BasePublishTask", "add task finish");
+        wxe.c("Q.qqstory.publish.upload:BasePublishTask", "add task finish");
       }
     }
     finally {}
@@ -81,12 +81,12 @@ public abstract class BasePublishTask<T extends ulu>
   
   public T a()
   {
-    return this.jdField_a_of_type_Ulu;
+    return this.jdField_a_of_type_Uqd;
   }
   
   public void a()
   {
-    wsv.d("Q.qqstory.publish.upload:BasePublishTask", "user try to stop task" + this);
+    wxe.d("Q.qqstory.publish.upload:BasePublishTask", "user try to stop task" + this);
     this.jdField_a_of_type_Int = 7;
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     try
@@ -102,23 +102,23 @@ public abstract class BasePublishTask<T extends ulu>
   
   public void a(int paramInt, ErrorMessage paramErrorMessage)
   {
-    wsv.c("Q.qqstory.publish.upload:BasePublishTask", "mTaskInfo:" + this.jdField_a_of_type_Ulu);
+    wxe.c("Q.qqstory.publish.upload:BasePublishTask", "mTaskInfo:" + this.jdField_a_of_type_Uqd);
     if (paramErrorMessage.isFail()) {
-      wsv.d("Q.qqstory.publish.upload:BasePublishTask", "mTaskInfo:%s with fail result: %s", new Object[] { this.jdField_a_of_type_Ulu, paramErrorMessage });
+      wxe.d("Q.qqstory.publish.upload:BasePublishTask", "mTaskInfo:%s with fail result: %s", new Object[] { this.jdField_a_of_type_Uqd, paramErrorMessage });
     }
     if (a()) {
       paramInt = this.jdField_a_of_type_Int;
     }
-    this.jdField_a_of_type_Ulu.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Ulv != null) {
-      this.jdField_a_of_type_Ulv.a(this, paramErrorMessage);
+    this.jdField_a_of_type_Uqd.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Uqe != null) {
+      this.jdField_a_of_type_Uqe.a(this, paramErrorMessage);
     }
   }
   
   public void a(ErrorMessage paramErrorMessage)
   {
     this.jdField_a_of_type_JavaUtilArrayList.add(paramErrorMessage);
-    wsv.d("Q.qqstory.publish.upload:BasePublishTask", "not finish file count:%d, one file finish with result:%s", new Object[] { Integer.valueOf(this.b.size() - this.jdField_a_of_type_JavaUtilArrayList.size()), paramErrorMessage });
+    wxe.d("Q.qqstory.publish.upload:BasePublishTask", "not finish file count:%d, one file finish with result:%s", new Object[] { Integer.valueOf(this.b.size() - this.jdField_a_of_type_JavaUtilArrayList.size()), paramErrorMessage });
     if (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.b.size())
     {
       paramErrorMessage = new ErrorMessage();
@@ -149,9 +149,9 @@ public abstract class BasePublishTask<T extends ulu>
     }
   }
   
-  public void a(ulv paramulv)
+  public void a(uqe paramuqe)
   {
-    this.jdField_a_of_type_Ulv = paramulv;
+    this.jdField_a_of_type_Uqe = paramuqe;
   }
   
   public boolean a()
@@ -161,7 +161,7 @@ public abstract class BasePublishTask<T extends ulu>
   
   public void b()
   {
-    wsv.d("Q.qqstory.publish.upload:BasePublishTask", "user try to force stop task" + this);
+    wxe.d("Q.qqstory.publish.upload:BasePublishTask", "user try to force stop task" + this);
     this.jdField_a_of_type_Int = 3;
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     try
@@ -184,7 +184,7 @@ public abstract class BasePublishTask<T extends ulu>
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("BasePublishTask{");
-    localStringBuilder.append("mTaskInfo=").append(this.jdField_a_of_type_Ulu);
+    localStringBuilder.append("mTaskInfo=").append(this.jdField_a_of_type_Uqd);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

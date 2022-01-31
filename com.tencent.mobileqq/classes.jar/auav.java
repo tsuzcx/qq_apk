@@ -1,30 +1,40 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.matchchat.MatchChatSettingFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class auav
-  extends alsi
+public class auav
+  extends aqbl
 {
-  auav(auat paramauat, QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, String paramString, int paramInt) {}
+  public auav(MatchChatSettingFragment paramMatchChatSettingFragment) {}
   
-  public void a(boolean paramBoolean, long paramLong, alsj paramalsj)
+  protected void a(boolean paramBoolean1, ArrayList<aqda> paramArrayList, boolean paramBoolean2, int paramInt, ArrayList<String> paramArrayList1)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(6003, true, new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq + "" });
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData);
-    if (paramBoolean)
-    {
-      auat.a(this.jdField_a_of_type_Auat, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("MatchChatSettingFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean1 + " chatSwitchOpen:" + paramBoolean2);
     }
-    auat localauat = this.jdField_a_of_type_Auat;
-    MessageForMixedMsg localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
-    StringBuilder localStringBuilder = new StringBuilder().append("sendStructLongMsg fail : errCode = ");
-    if (paramalsj != null) {}
-    for (paramalsj = Integer.valueOf(paramalsj.b);; paramalsj = "")
+    if (paramBoolean1) {
+      MatchChatSettingFragment.a(this.a, paramBoolean2);
+    }
+  }
+  
+  protected void f(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MatchChatSettingFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean);
+    }
+    MatchChatSettingFragment localMatchChatSettingFragment;
+    if (!paramBoolean)
     {
-      auat.a(localauat, localMessageForMixedMsg, true, paramalsj);
+      localMatchChatSettingFragment = this.a;
+      if (MatchChatSettingFragment.a(this.a).a()) {
+        break label61;
+      }
+    }
+    label61:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      MatchChatSettingFragment.a(localMatchChatSettingFragment, paramBoolean);
       return;
     }
   }

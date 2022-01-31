@@ -1,50 +1,29 @@
-import android.media.MediaMetadataRetriever;
-import android.os.Build.VERSION;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.maxvideo.trim.TrimNative;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajra
+  implements yrb
 {
-  public static int a(String paramString)
+  public ajra(NewFlowCameraActivity paramNewFlowCameraActivity, String paramString1, String paramString2) {}
+  
+  public void callback(Bundle paramBundle)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever;
-    if (Build.VERSION.SDK_INT >= 14)
+    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getIntent();
+    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")) && (paramBundle.getInt("head_id") >= 0) && (!TextUtils.isEmpty(paramBundle.getString("video_id"))))
     {
-      localMediaMetadataRetriever = new MediaMetadataRetriever();
-      try
-      {
-        localMediaMetadataRetriever.setDataSource(paramString);
-        paramString = localMediaMetadataRetriever.extractMetadata(12);
-        QLog.i("FormatDetector", 1, "detectFormatSupport: mimeType=" + paramString);
-        if ((TextUtils.isEmpty(paramString)) || (!paramString.startsWith("video/")))
-        {
-          QLog.e("FormatDetector", 1, "detectFormatSupport: wrong mimeType=" + paramString);
-          return -1;
-        }
-        paramString = localMediaMetadataRetriever.extractMetadata(17);
-        QLog.i("FormatDetector", 1, "detectFormatSupport: hasVideo=" + paramString);
-        if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase("yes")))
-        {
-          QLog.e("FormatDetector", 1, "detectFormatSupport: no video content!");
-          return -1;
-        }
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          QLog.e("FormatDetector", 1, "detectFormatSupport:", paramString);
-          localMediaMetadataRetriever.release();
-        }
-      }
-      finally
-      {
-        localMediaMetadataRetriever.release();
-      }
-      return 0;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c();
+      localIntent.putExtras(paramBundle);
+      localIntent.putExtra("video_path", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("photo_path", this.b);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.setResult(-1, localIntent);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.finish();
+      return;
     }
-    return TrimNative.detect(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c();
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, 1, alud.a(2131707854), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getTitleBarHeight());
   }
 }
 

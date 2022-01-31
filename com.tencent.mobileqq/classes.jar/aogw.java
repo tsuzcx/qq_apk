@@ -1,74 +1,83 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.comment.DanmuItemBean;
 
 public class aogw
-  extends aofy<aogx>
 {
-  public static aogx a()
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
+  
+  public aogw(DanmuItemBean paramDanmuItemBean)
   {
-    return (aogx)aogj.a().a(457);
+    this.jdField_a_of_type_Long = paramDanmuItemBean.jdField_b_of_type_Long;
+    this.jdField_a_of_type_JavaLangString = String.valueOf(paramDanmuItemBean.jdField_a_of_type_Long);
+    this.jdField_b_of_type_JavaLangString = paramDanmuItemBean.jdField_b_of_type_JavaLangString;
+    this.jdField_c_of_type_JavaLangString = paramDanmuItemBean.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_Long = paramDanmuItemBean.d;
+    this.jdField_c_of_type_Long = paramDanmuItemBean.jdField_c_of_type_Long;
+    this.jdField_a_of_type_Boolean = paramDanmuItemBean.jdField_a_of_type_Boolean;
+    this.d = paramDanmuItemBean.jdField_c_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramDanmuItemBean.jdField_a_of_type_Int;
   }
   
-  public int a()
+  public String a()
   {
-    return 457;
-  }
-  
-  @NonNull
-  public aogx a(int paramInt)
-  {
-    return new aogx();
-  }
-  
-  @Nullable
-  public aogx a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length == 0)) {
-      return null;
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = this.d;; str = this.jdField_b_of_type_JavaLangString) {
+      return str + " : " + this.jdField_c_of_type_JavaLangString;
     }
-    paramArrayOfaogf = paramArrayOfaogf[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopConfigProcessor", 2, "RecommendTroopConfigProcessor onParsed, content:" + paramArrayOfaogf);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof aogw))
+    {
+      paramObject = (aogw)paramObject;
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long)
+      {
+        bool1 = bool2;
+        if (this.jdField_b_of_type_Long == paramObject.jdField_b_of_type_Long)
+        {
+          bool1 = bool2;
+          if (this.jdField_c_of_type_Long == paramObject.jdField_c_of_type_Long)
+          {
+            bool1 = bool2;
+            if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+            {
+              bool1 = bool2;
+              if (!TextUtils.isEmpty(paramObject.jdField_a_of_type_JavaLangString))
+              {
+                bool1 = bool2;
+                if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+                  bool1 = true;
+                }
+              }
+            }
+          }
+        }
+      }
     }
-    return aogx.a(paramArrayOfaogf);
+    return bool1;
   }
   
-  public Class<aogx> a()
+  public int hashCode()
   {
-    return aogx.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aogx paramaogx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopConfigProcessor", 2, "RecommendTroopConfigProcessor update.");
-    }
-    ((alro)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(159)).a();
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return String.valueOf(this.jdField_a_of_type_Long).hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aogw
  * JD-Core Version:    0.7.0.1
  */

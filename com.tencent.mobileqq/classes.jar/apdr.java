@@ -1,231 +1,83 @@
-import android.text.TextUtils;
-import appoint.define.appoint_define.StrangerInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.text.TextPaint;
+import android.util.DisplayMetrics;
+import java.util.HashMap;
+import java.util.Map;
 
 public class apdr
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public int e;
-  public int f;
+  private static int jdField_a_of_type_Int;
+  public static Paint a;
+  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private static final TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+  private static final Map<Float, Float> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public static Paint b;
+  private static final Map<Float, Float> b;
+  private static final Map<Float, Float> c;
   
-  public apdr()
+  static
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
+    jdField_b_of_type_JavaUtilMap = new HashMap();
+    c = new HashMap();
+    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
   }
   
-  public static apdr a(appoint_define.StrangerInfo paramStrangerInfo)
+  public static float a(float paramFloat)
   {
-    Object localObject;
-    if ((paramStrangerInfo == null) || (paramStrangerInfo.uint64_tinyid.get() == 0L)) {
-      localObject = null;
-    }
-    apdr localapdr;
-    do
+    jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
+    Float localFloat = (Float)jdField_a_of_type_JavaUtilMap.get(Float.valueOf(paramFloat));
+    Object localObject = localFloat;
+    if (localFloat == null)
     {
-      return localObject;
-      localapdr = new apdr();
-      if (paramStrangerInfo.uint64_tinyid.has()) {
-        localapdr.jdField_a_of_type_Long = paramStrangerInfo.uint64_tinyid.get();
-      }
-      if (paramStrangerInfo.uint32_age.has()) {
-        localapdr.jdField_a_of_type_Int = paramStrangerInfo.uint32_age.get();
-      }
-      if (paramStrangerInfo.uint32_gender.has()) {
-        localapdr.jdField_b_of_type_Int = paramStrangerInfo.uint32_gender.get();
-      }
-      if (paramStrangerInfo.bytes_nickname.has()) {
-        localapdr.jdField_a_of_type_JavaLangString = paramStrangerInfo.bytes_nickname.get().toStringUtf8();
-      }
-      if (paramStrangerInfo.uint32_dating.has()) {
-        localapdr.jdField_c_of_type_Int = paramStrangerInfo.uint32_dating.get();
-      }
-      if (paramStrangerInfo.uint32_list_idx.has()) {
-        localapdr.f = paramStrangerInfo.uint32_list_idx.get();
-      }
-      if (paramStrangerInfo.str_constellation.has()) {
-        localapdr.jdField_b_of_type_JavaLangString = paramStrangerInfo.str_constellation.get();
-      }
-      if (paramStrangerInfo.uint32_profession.has()) {
-        localapdr.d = paramStrangerInfo.uint32_profession.get();
-      }
-      if (paramStrangerInfo.uint32_marriage.has()) {
-        localapdr.e = paramStrangerInfo.uint32_marriage.get();
-      }
-      localObject = localapdr;
-    } while (!paramStrangerInfo.str_vipinfo.has());
-    localapdr.jdField_c_of_type_JavaLangString = paramStrangerInfo.str_vipinfo.get();
-    return localapdr;
+      localObject = jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+      float f1 = ((Paint.FontMetrics)localObject).descent;
+      float f2 = ((Paint.FontMetrics)localObject).ascent;
+      localObject = Float.valueOf(((Paint.FontMetrics)localObject).leading + (f1 - f2));
+      jdField_a_of_type_JavaUtilMap.put(Float.valueOf(paramFloat), localObject);
+    }
+    return ((Float)localObject).floatValue();
   }
   
-  public static apdr a(JSONObject paramJSONObject)
+  public static float a(float paramFloat, String paramString)
   {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    localapdr = new apdr();
-    for (;;)
-    {
-      try
-      {
-        localapdr.jdField_a_of_type_Long = paramJSONObject.getLong("open_id");
-        localapdr.jdField_a_of_type_JavaLangString = paramJSONObject.getString("nickname");
-        localapdr.jdField_a_of_type_Int = paramJSONObject.getInt("age");
-        localapdr.jdField_b_of_type_Int = paramJSONObject.getInt("gender");
-        localapdr.jdField_c_of_type_Int = paramJSONObject.getInt("state");
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        paramJSONObject = null;
-        continue;
-      }
-      try
-      {
-        localapdr.jdField_b_of_type_JavaLangString = paramJSONObject.getString("constellation");
-        localapdr.d = paramJSONObject.getInt("profession");
-        localapdr.e = paramJSONObject.getInt("emotion");
-        localapdr.f = paramJSONObject.getInt("listIdx");
-        localapdr.jdField_c_of_type_JavaLangString = paramJSONObject.getString("vip");
-        paramJSONObject = localapdr;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        paramJSONObject = localapdr;
-      }
-    }
-    return paramJSONObject;
+    jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
+    return a(jdField_a_of_type_AndroidTextTextPaint, paramString);
   }
   
-  public static String a(List<apdr> paramList)
+  public static float a(Paint paramPaint, String paramString)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return "";
-    }
-    JSONArray localJSONArray = new JSONArray();
-    paramList = paramList.iterator();
-    int i = 0;
-    if (paramList.hasNext())
-    {
-      JSONObject localJSONObject = a((apdr)paramList.next());
-      if (localJSONObject == null) {
-        break label83;
-      }
-      localJSONArray.put(localJSONObject);
-      i += 1;
-    }
-    label83:
-    for (;;)
-    {
-      if (i >= 20) {
-        return localJSONArray.toString();
-      }
-      break;
-    }
+    return paramPaint.measureText(paramString);
   }
   
-  public static JSONObject a(apdr paramapdr)
+  public static float a(apcp paramapcp)
   {
-    if (paramapdr == null) {
-      return null;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("open_id", paramapdr.jdField_a_of_type_Long);
-      localJSONObject.put("nickname", paramapdr.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("age", paramapdr.jdField_a_of_type_Int);
-      localJSONObject.put("gender", paramapdr.jdField_b_of_type_Int);
-      localJSONObject.put("state", paramapdr.jdField_c_of_type_Int);
-      localJSONObject.put("constellation", paramapdr.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("profession", paramapdr.d);
-      localJSONObject.put("emotion", paramapdr.e);
-      localJSONObject.put("listIdx", paramapdr.f);
-      localJSONObject.put("vip", paramapdr.jdField_c_of_type_JavaLangString);
-      return localJSONObject;
-    }
-    catch (JSONException paramapdr)
-    {
-      paramapdr.printStackTrace();
-    }
-    return localJSONObject;
+    return a(paramapcp.c()) + apbz.a().c() * 2 + paramapcp.d() * 2.0F + paramapcp.e() * 2.0F;
   }
   
-  public static void a(List<apdr> paramList, String paramString)
+  public static void a(Canvas paramCanvas)
   {
-    if ((paramList == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
+    paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+  }
+  
+  public static void a(Canvas paramCanvas, String paramString)
+  {
+    if (jdField_b_of_type_AndroidGraphicsPaint == null)
     {
-      return;
-      try
-      {
-        paramString = new JSONArray(paramString);
-        int j = paramString.length();
-        int i = 0;
-        while (i < j)
-        {
-          apdr localapdr = a(paramString.getJSONObject(i));
-          if (localapdr != null) {
-            paramList.add(localapdr);
-          }
-          i += 1;
-        }
-        return;
-      }
-      catch (JSONException paramList)
-      {
-        paramList.printStackTrace();
-      }
+      jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+      jdField_b_of_type_AndroidGraphicsPaint.setColor(-256);
+      Object localObject = apaz.a().a().a().getDisplayMetrics();
+      jdField_b_of_type_AndroidGraphicsPaint.setTextSize(((DisplayMetrics)localObject).density * 12.5F);
+      localObject = jdField_b_of_type_AndroidGraphicsPaint.getFontMetrics();
+      jdField_a_of_type_Int = (int)Math.ceil(((Paint.FontMetrics)localObject).descent - ((Paint.FontMetrics)localObject).ascent);
     }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool = true;
-    if (paramObject == null) {}
-    do
-    {
-      return false;
-      if (paramObject == this) {
-        return true;
-      }
-    } while (paramObject.getClass() != getClass());
-    if (((apdr)paramObject).jdField_a_of_type_Long == this.jdField_a_of_type_Long) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public int hashCode()
-  {
-    return Long.valueOf(this.jdField_a_of_type_Long).hashCode();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[").append(this.jdField_a_of_type_Long).append(",").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_Int).append(",").append(this.jdField_b_of_type_Int).append(",").append(this.jdField_c_of_type_Int).append(",").append(this.jdField_b_of_type_JavaLangString).append(",").append(this.d).append(",").append(this.e).append(",").append(this.f).append(",").append(this.jdField_c_of_type_JavaLangString).append("]");
-    return localStringBuilder.toString();
+    paramCanvas.drawText(paramString, 10.0F, paramCanvas.getHeight() - jdField_a_of_type_Int, jdField_b_of_type_AndroidGraphicsPaint);
   }
 }
 

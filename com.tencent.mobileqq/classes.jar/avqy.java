@@ -1,31 +1,32 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ocr.OCRHandler.BaseOCRReqBigDataListener.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
 
 public class avqy
-  implements bapx
+  implements URLDrawable.URLDrawableListener
 {
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private String jdField_a_of_type_JavaLangString;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  public avqy(NearbyMomentFragment paramNearbyMomentFragment) {}
   
-  public avqy(avqx paramavqx, Intent paramIntent, byte[] paramArrayOfByte, String paramString)
-  {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void onResp(baqw parambaqw)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.ocr.OCRHandler", 2, "BaseOCRReqBigListener.onResp()");
+    if (NearbyMomentFragment.a(this.a) == 2) {
+      NearbyMomentFragment.a(this.a).setVisibility(8);
     }
-    ThreadManager.post(new OCRHandler.BaseOCRReqBigDataListener.1(this, parambaqw), 8, null, true);
   }
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (NearbyMomentFragment.a(this.a) == 2)
+    {
+      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
+      NearbyMomentFragment.a(this.a).setVisibility(0);
+    }
+  }
 }
 
 

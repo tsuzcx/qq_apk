@@ -1,21 +1,51 @@
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+
 public class uth
+  extends uub
 {
-  @xnb(a="unionID")
-  public String a;
-  @xnb(a="feedID")
-  public String b;
-  @xnb(a="vid")
-  public String c;
-  @xnb(a="fwReason")
-  public String d;
-  @xnb(a="isNewFw")
-  public String e;
-  public String f;
-  public String g;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
   
-  public boolean a()
+  public uth(utg paramutg, String paramString, boolean paramBoolean)
   {
-    return "1".equals(this.e);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String a()
+  {
+    return utg.jdField_a_of_type_JavaLangString;
+  }
+  
+  public uuc a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
+    try
+    {
+      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
+      return new uti(this.jdField_a_of_type_Utg, localRspFeedLikeList, this.jdField_a_of_type_Boolean);
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      wxe.d("Q.qqstory:FeedLikeDataProvider", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
+    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 2;; i = 1)
+    {
+      localReqFeedLikeList.source.set(i);
+      return localReqFeedLikeList.toByteArray();
+    }
   }
 }
 

@@ -1,17 +1,30 @@
-import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class bdkh
-  implements DialogInterface.OnClickListener
+class bdkh
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bdkh(bdjz parambdjz, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean) {}
+  
+  public void onClick(View paramView)
   {
-    azmj.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdjz, 1);
+    }
+    try
+    {
+      if ((this.jdField_a_of_type_Bdjz.isShowing()) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Bdjz.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdkh
  * JD-Core Version:    0.7.0.1
  */

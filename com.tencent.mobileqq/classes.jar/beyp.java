@@ -1,51 +1,15 @@
-import android.graphics.Bitmap;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.open.agent.BindGroupActivity;
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
 
 public class beyp
-  extends bfdg
+  implements MediaPlayer.OnErrorListener
 {
-  public beyp(BindGroupActivity paramBindGroupActivity) {}
+  public beyp(VideoTextureView paramVideoTextureView) {}
   
-  public int getCount()
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if ((paramView != null) && (paramView.getTag() != null))
-    {
-      localObject = (beyq)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = (View)localObject;
-    }
-    for (;;)
-    {
-      localObject = (beyo)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((beyo)localObject).b);
-      paramView.jdField_a_of_type_JavaLangString = ((beyo)localObject).c;
-      Bitmap localBitmap = bfdm.a().a(((beyo)localObject).c);
-      if (localBitmap == null) {
-        break;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
-      return paramViewGroup;
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562610, paramViewGroup, false);
-      paramView = new beyq();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131365910));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131378414));
-      paramViewGroup.setTag(paramView);
-    }
-    paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840312);
-    bfdm.a().a(((beyo)localObject).c, this.a);
-    return paramViewGroup;
+    return true;
   }
 }
 

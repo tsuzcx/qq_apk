@@ -1,34 +1,24 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.List;
 
-class wim
-  extends QQUIEventReceiver<wij, uzc>
+public class wim
+  extends JobSegment<String, wiq>
 {
-  public wim(@NonNull wij paramwij)
+  private vex jdField_a_of_type_Vex = new vex();
+  
+  public wim(wil paramwil, @NonNull String paramString)
   {
-    super(paramwij);
+    this.jdField_a_of_type_Vex.a = new ArrayList();
+    paramwil = new woq(paramString, 0, "", "");
+    this.jdField_a_of_type_Vex.a.add(paramwil);
   }
   
-  public void a(@NonNull wij paramwij, @NonNull uzc paramuzc)
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    if ((paramuzc.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramuzc.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramuzc.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramwij.jdField_a_of_type_JavaLangString)))
-    {
-      wsv.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramuzc);
-      paramwij.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramuzc.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-      wij.a(paramwij).e();
-      wij.a(paramwij).c();
-      wij.a(paramwij).d();
-      wij.a(paramwij).a();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uzc.class;
+    urp.a().a(this.jdField_a_of_type_Vex, new win(this, paramJobContext));
   }
 }
 

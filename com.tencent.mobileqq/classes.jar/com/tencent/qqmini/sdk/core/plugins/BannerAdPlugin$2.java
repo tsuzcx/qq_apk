@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.HashMap;
 import org.json.JSONException;
@@ -9,7 +9,7 @@ import org.json.JSONObject;
 class BannerAdPlugin$2
   implements Runnable
 {
-  BannerAdPlugin$2(BannerAdPlugin paramBannerAdPlugin, bgkd parambgkd) {}
+  BannerAdPlugin$2(BannerAdPlugin paramBannerAdPlugin, bgok parambgok) {}
   
   public void run()
   {

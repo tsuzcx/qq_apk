@@ -1,34 +1,30 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.BannerFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class wjy
-  extends wjz<BannerFeedItem>
+class wjy
+  extends uss
 {
-  public wjy(@NonNull BannerFeedItem paramBannerFeedItem)
+  wjy(wjw paramwjw) {}
+  
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    super(paramBannerFeedItem);
+    wxe.a("Q.qqstory.detail.StoryDetailPresenter", "post comment result is %s.", Boolean.valueOf(paramBoolean));
+    if (!wjw.a(this.a).get()) {
+      wjw.a(this.a).c();
+    }
   }
   
-  public List<StoryVideoItem> a()
+  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
   {
-    return new ArrayList(0);
-  }
-  
-  public void a() {}
-  
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
-  {
-    qqstory_struct.BannerFeed localBannerFeed = (qqstory_struct.BannerFeed)paramStoryFeed.banner_feed.get();
-    ((BannerFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), localBannerFeed);
-    ((BannerFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    uux localuux = (uux)uwa.a(17);
+    localuux.a(paramCommentEntry.commentId);
+    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
+    paramCommentEntry.status = 0;
+    localuux.a(paramCommentEntry);
     return true;
   }
 }

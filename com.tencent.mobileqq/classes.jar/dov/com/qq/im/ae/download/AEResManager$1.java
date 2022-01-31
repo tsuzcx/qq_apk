@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.download;
 
-import bkwh;
-import bkwi;
-import bkwk;
+import blao;
+import blap;
+import blar;
 
 public class AEResManager$1
   implements Runnable
 {
-  public AEResManager$1(bkwi parambkwi, bkwh parambkwh, bkwk parambkwk, boolean paramBoolean) {}
+  public AEResManager$1(blap paramblap, blao paramblao, blar paramblar, boolean paramBoolean) {}
   
   public void run()
   {
-    bkwi.a(this.this$0, this.jdField_a_of_type_Bkwh, this.jdField_a_of_type_Bkwk, this.jdField_a_of_type_Boolean);
+    blap.a(this.this$0, this.jdField_a_of_type_Blao, this.jdField_a_of_type_Blar, this.jdField_a_of_type_Boolean);
   }
 }
 

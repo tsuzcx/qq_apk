@@ -1,157 +1,32 @@
-import android.support.annotation.Nullable;
-import java.io.File;
+import android.graphics.Point;
 
-public class bkvu
+abstract interface bkvu
 {
-  public static bkvu a;
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c = 0;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public boolean e;
-  public int f = 0;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n;
+  public abstract float a(Point paramPoint, int paramInt1, int paramInt2);
   
-  static
-  {
-    jdField_a_of_type_Bkvu = a();
-  }
+  public abstract int a(int paramInt);
   
-  public bkvu()
-  {
-    this.jdField_d_of_type_Int = 0;
-  }
+  public abstract int a(int paramInt1, int paramInt2);
   
-  private static bkvu a()
-  {
-    bkvu localbkvu = new bkvu();
-    localbkvu.jdField_a_of_type_JavaLangString = "0";
-    localbkvu.jdField_a_of_type_Int = 0;
-    return localbkvu;
-  }
+  public abstract void a(int paramInt, yyq paramyyq);
   
-  public static boolean a(bkvu parambkvu)
-  {
-    if (parambkvu == null) {}
-    while ((parambkvu.jdField_a_of_type_JavaLangString != null) && (!parambkvu.jdField_a_of_type_JavaLangString.equals("0"))) {
-      return false;
-    }
-    return true;
-  }
+  public abstract void a(Point paramPoint1, int paramInt, Point paramPoint2);
   
-  public static boolean b(@Nullable bkvu parambkvu)
-  {
-    return (parambkvu != null) && ((parambkvu.f == 0) || (parambkvu.f == 4) || (parambkvu.f == 5) || (parambkvu.f == 6) || (parambkvu.f == 7));
-  }
+  public abstract void a(bktl parambktl, int paramInt, Point paramPoint);
   
-  public int a()
-  {
-    switch (this.jdField_d_of_type_Int)
-    {
-    default: 
-      return -1;
-    case 1: 
-      return 2130844110;
-    case 2: 
-      return 2130844111;
-    case 3: 
-      return 2130844113;
-    }
-    return 2130844112;
-  }
+  public abstract boolean a();
   
-  public String a()
-  {
-    File localFile = new File(bkks.e);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return new File(localFile.getPath(), this.jdField_a_of_type_JavaLangString).getPath() + File.separator;
-  }
+  public abstract boolean a(Point paramPoint, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public void a(bkvu parambkvu)
-  {
-    if (!equals(jdField_a_of_type_Bkvu))
-    {
-      this.jdField_d_of_type_Boolean = parambkvu.jdField_d_of_type_Boolean;
-      this.e = parambkvu.e;
-      this.jdField_a_of_type_Boolean = parambkvu.jdField_a_of_type_Boolean;
-    }
-  }
+  public abstract boolean a(bkvk parambkvk);
   
-  public boolean a()
-  {
-    return this.c == 12;
-  }
+  public abstract int b(int paramInt);
   
-  public String b()
-  {
-    File localFile = new File(bkks.e);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return localFile.getPath() + File.separator;
-  }
+  public abstract int b(int paramInt1, int paramInt2);
   
-  public boolean b()
-  {
-    return this.jdField_d_of_type_Int != 0;
-  }
+  public abstract boolean b();
   
-  public String c()
-  {
-    return new File(bkvr.b(), this.jdField_a_of_type_JavaLangString).getPath();
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.equals("0"));
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof bkvu));
-      paramObject = (bkvu)paramObject;
-      if ((paramObject.jdField_a_of_type_JavaLangString == null) && (this.jdField_a_of_type_JavaLangString == null)) {
-        return true;
-      }
-    } while (((paramObject.jdField_a_of_type_JavaLangString == null) && (this.jdField_a_of_type_JavaLangString != null)) || ((paramObject.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString == null)));
-    return paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public int hashCode()
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (int i1 = 0;; i1 = this.jdField_a_of_type_JavaLangString.hashCode()) {
-      return i1 + 31;
-    }
-  }
+  public abstract int c(int paramInt1, int paramInt2);
 }
 
 

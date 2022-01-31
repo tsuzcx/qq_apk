@@ -1,6 +1,6 @@
 public abstract interface qwg
 {
-  public abstract void a(ayjl paramayjl);
+  public abstract void a(aynu paramaynu);
 }
 
 

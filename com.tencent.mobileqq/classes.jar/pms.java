@@ -56,7 +56,7 @@ public class pms
   {
     try
     {
-      new awdq(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getPackageName()).a();
+      new awhz(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getPackageName()).a();
       mww.a(paramActivity);
       return;
     }
@@ -104,7 +104,7 @@ public class pms
     }
     return;
     label51:
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, this.jdField_a_of_type_AndroidContentContext.getString(2131719054), 0).a();
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, this.jdField_a_of_type_AndroidContentContext.getString(2131719066), 0).a();
   }
   
   public TemplateBean a(int paramInt, JSONObject paramJSONObject)
@@ -144,7 +144,7 @@ public class pms
           }
           if ((paramInt == 0) && (pid.a() == 1))
           {
-            localJSONObject.put("tips_text", ((Context)localObject).getString(2131718955));
+            localJSONObject.put("tips_text", ((Context)localObject).getString(2131718967));
             localJSONObject.put("icon_image_url", localqlx.e);
             localJSONObject.put("bg_image_url", localqlx.c);
             localJSONObject.put("animation_url", localqlx.f);
@@ -169,7 +169,7 @@ public class pms
       for (paramInt = 1;; paramInt = 1)
       {
         if ((paramInt == 0) && (pid.a() == 1)) {}
-        for (paramBaseArticleInfo = localqlx.h.replace("#$%", paramBaseArticleInfo.getString(2131718954));; paramBaseArticleInfo = localqlx.h.replace("#$%", pid.b()))
+        for (paramBaseArticleInfo = localqlx.h.replace("#$%", paramBaseArticleInfo.getString(2131718966));; paramBaseArticleInfo = localqlx.h.replace("#$%", pid.b()))
         {
           localJSONObject.put("sub_title_rich", paramBaseArticleInfo);
           localJSONObject.put("bg_image_url", localqlx.i);

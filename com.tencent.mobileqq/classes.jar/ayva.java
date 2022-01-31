@@ -1,49 +1,29 @@
-import android.util.SparseArray;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class ayva
-  extends ayvz
 {
-  public int a;
-  public long a;
-  private SparseArray<Object> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public long c;
-  public boolean c;
-  public long d;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g = true;
-  public boolean h;
-  public boolean i;
+  public static final String a = alud.a(2131703189);
+  public static final String b = alud.a(2131703216);
+  public static final String c = alud.a(2131703188);
+  public static final String d = alud.a(2131703187);
   
-  public ayva(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public static String a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.e = paramLong2;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
-    this.d = paramBoolean4;
-  }
-  
-  public Object a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
-      return this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    long l = System.currentTimeMillis() / 1000L - paramLong;
+    if ((l >= 0L) && (l < 60L)) {
+      return a;
     }
-    return null;
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    if ((l >= 60L) && (l < 3600L)) {
+      return l / 60L + b;
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramObject);
+    if ((l >= 3600L) && (l < 86400L)) {
+      return l / 3600L + c;
+    }
+    if ((l >= 86400L) && (l < 432000L)) {
+      return l / 86400L + d;
+    }
+    return new SimpleDateFormat("yyyy-MM-dd").format(Long.valueOf(paramLong * 1000L));
   }
 }
 

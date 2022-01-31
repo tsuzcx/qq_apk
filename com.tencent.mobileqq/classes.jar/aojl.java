@@ -1,95 +1,37 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.graphics.Rect;
+import java.util.ArrayList;
+import java.util.Comparator;
 
-public class aojl
-  extends aofy<aojk>
+class aojl
+  implements Comparator<Rect>
 {
-  public static final String a = asiv.a + "GameCenterMsgConfigProcessor";
+  aojl(aojk paramaojk) {}
   
-  public static aojk a()
+  public int a(Rect paramRect1, Rect paramRect2)
   {
-    return (aojk)aogj.a().a(608);
-  }
-  
-  public int a()
-  {
-    return 608;
-  }
-  
-  @NonNull
-  public aojk a(int paramInt)
-  {
-    return new aojk();
-  }
-  
-  @Nullable
-  public aojk a(aogf[] paramArrayOfaogf)
-  {
-    Object localObject2 = null;
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, "[onParsed]");
-    }
-    Object localObject1 = localObject2;
-    if (paramArrayOfaogf != null)
+    if (this.a.g.contains(paramRect1)) {}
+    do
     {
-      localObject1 = localObject2;
-      if (paramArrayOfaogf.length > 0)
+      do
       {
-        localObject1 = aojk.a(paramArrayOfaogf);
-        paramArrayOfaogf = MobileQQ.sMobileQQ.waitAppRuntime(null);
-        if ((paramArrayOfaogf != null) && (localObject1 != null)) {
-          ((asil)paramArrayOfaogf.getManager(358)).a((aojk)localObject1);
+        return 1;
+        if (this.a.g.contains(paramRect2)) {
+          return -1;
         }
+        if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {
+          return -1;
+        }
+      } while (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width());
+      if (paramRect1.width() > paramRect2.width()) {
+        return -1;
       }
-    }
-    return localObject1;
-  }
-  
-  public Class<aojk> a()
-  {
-    return aojk.class;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "onReqNoReceive: type=" + a());
-    }
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aojk paramaojk)
-  {
-    QLog.i(a, 1, "[onUpdate]");
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
+    } while (paramRect1.width() < paramRect2.width());
     return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aojl
  * JD-Core Version:    0.7.0.1
  */

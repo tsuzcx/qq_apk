@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import bdlr;
+import bdqa;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -64,11 +64,11 @@ public class MessageForText$AtTroopMemberInfo
     if ((paramArrayOfByte == null) || (paramInt < 0) || (paramArrayOfByte.length < paramInt + 11)) {
       return false;
     }
-    this.startPos = bdlr.a(paramArrayOfByte, paramInt + 0);
-    this.textLen = bdlr.a(paramArrayOfByte, paramInt + 2);
+    this.startPos = bdqa.a(paramArrayOfByte, paramInt + 0);
+    this.textLen = bdqa.a(paramArrayOfByte, paramInt + 2);
     this.flag = paramArrayOfByte[(paramInt + 4)];
-    this.uin = bdlr.a(paramArrayOfByte, paramInt + 5);
-    this.wExtBufLen = bdlr.a(paramArrayOfByte, paramInt + 9);
+    this.uin = bdqa.a(paramArrayOfByte, paramInt + 5);
+    this.wExtBufLen = bdqa.a(paramArrayOfByte, paramInt + 9);
     return true;
   }
   
@@ -92,11 +92,11 @@ public class MessageForText$AtTroopMemberInfo
     if ((paramArrayOfByte == null) || (paramInt < 0) || (paramArrayOfByte.length < paramInt + 11)) {
       return false;
     }
-    bdlr.a(paramArrayOfByte, paramInt + 0, this.startPos);
-    bdlr.a(paramArrayOfByte, paramInt + 2, this.textLen);
+    bdqa.a(paramArrayOfByte, paramInt + 0, this.startPos);
+    bdqa.a(paramArrayOfByte, paramInt + 2, this.textLen);
     paramArrayOfByte[(paramInt + 4)] = this.flag;
-    bdlr.a(paramArrayOfByte, paramInt + 5, this.uin);
-    bdlr.a(paramArrayOfByte, paramInt + 9, (short)0);
+    bdqa.a(paramArrayOfByte, paramInt + 5, this.uin);
+    bdqa.a(paramArrayOfByte, paramInt + 9, (short)0);
     return true;
   }
 }

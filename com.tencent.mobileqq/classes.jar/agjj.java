@@ -1,66 +1,83 @@
-import android.os.Bundle;
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.os.IBinder;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneClickReport;
+import java.util.ArrayList;
 
 class agjj
-  implements BusinessObserver
+  implements bhuk
 {
-  agjj(agiy paramagiy) {}
+  agjj(agji paramagji, bhuf parambhuf) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
+    if (paramView != null)
+    {
+      paramView = this.jdField_a_of_type_Bhuf.a(paramInt);
+      if (paramView == null) {
+        return;
+      }
+      if (!TextUtils.isEmpty(paramView))
+      {
+        if (!paramView.equals(agji.c(this.jdField_a_of_type_Agji).getResources().getString(2131689983))) {
+          break label195;
+        }
+        paramInt = this.jdField_a_of_type_Agji.a();
+        if (paramInt != 1) {
+          break label94;
+        }
+        this.jdField_a_of_type_Agji.q();
+        this.jdField_a_of_type_Agji.a("Multi_Forward_Contacts", this.jdField_a_of_type_Agji.jdField_a_of_type_JavaUtilArrayList.size());
+      }
     }
-    if (!paramBoolean) {
-      this.a.A(2131695727);
-    }
+    label195:
     for (;;)
     {
-      ChatActivityUtils.b();
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
-      try
+      label94:
+      if ((paramInt == 2) && (!this.jdField_a_of_type_Agji.jdField_a_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_a_of_type_Agji.jdField_a_of_type_Agki.asBinder().pingBinder()))
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
+        paramView = (AIOShortVideoData)((agkf)this.jdField_a_of_type_Agji.jdField_a_of_type_JavaUtilArrayList.get(0)).a;
+        paramView = this.jdField_a_of_type_Agji.jdField_a_of_type_Agki.a(paramView.jdField_f_of_type_Long, paramView.jdField_f_of_type_Int, this.jdField_a_of_type_Agji.c);
+        aryv.a(agji.d(this.jdField_a_of_type_Agji), paramView);
+        continue;
+        if (paramView.equals(agji.e(this.jdField_a_of_type_Agji).getResources().getString(2131693488)))
         {
-          mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
-          localFollowResponse.mergeFrom(paramBundle);
-          paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-          if (paramInt == 0)
+          if (LocalMultiProcConfig.getInt4Uin(this.jdField_a_of_type_Agji.jdField_a_of_type_JavaLangString + "__qzone_pic_permission__" + this.jdField_a_of_type_Agji.b, -1, Long.valueOf(this.jdField_a_of_type_Agji.jdField_a_of_type_JavaLangString).longValue()) == 0)
           {
-            ((FriendListHandler)this.a.a.a(1)).a(true, false);
-            paramBundle = (alnc)this.a.a.a(21);
-            if (paramBundle != null) {
-              paramBundle.a(SystemClock.uptimeMillis());
-            }
+            paramView = new bdjz(agji.f(this.jdField_a_of_type_Agji), 2131755801);
+            paramView.setContentView(2131558942);
+            paramView.setTitle(agji.g(this.jdField_a_of_type_Agji).getString(2131698099));
+            paramView.setMessage(agji.h(this.jdField_a_of_type_Agji).getString(2131698097));
+            paramView.setNegativeButton(agji.i(this.jdField_a_of_type_Agji).getString(2131698098), new agjk(this));
+            paramView.setCanceledOnTouchOutside(false);
+            paramView.setCancelable(false);
+            paramView.show();
+            QZoneClickReport.startReportImediately(this.jdField_a_of_type_Agji.jdField_a_of_type_JavaLangString, "40", "1");
           }
-          else if (paramInt == 58)
+          else if (this.jdField_a_of_type_Agji.jdField_a_of_type_JavaUtilArrayList.size() > 20)
           {
-            this.a.A(2131695724);
-          }
-          else if (paramInt == 65)
-          {
-            this.a.A(2131695697);
-          }
-          else if (paramInt == 20)
-          {
-            this.a.A(2131695698);
+            QQToast.a(agji.k(this.jdField_a_of_type_Agji), 2131692851, 0).a();
           }
           else
           {
-            this.a.A(2131695727);
+            this.jdField_a_of_type_Agji.r();
+          }
+        }
+        else if (paramView.equals(agji.l(this.jdField_a_of_type_Agji).getResources().getString(2131693500))) {
+          if (this.jdField_a_of_type_Agji.jdField_a_of_type_JavaUtilArrayList.size() > 20) {
+            QQToast.a(agji.m(this.jdField_a_of_type_Agji), 2131692851, 0).a();
+          } else {
+            this.jdField_a_of_type_Agji.u();
           }
         }
       }
-      catch (Exception paramBundle) {}
     }
   }
 }

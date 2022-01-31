@@ -1,32 +1,11 @@
-import dov.com.qq.im.ae.view.NoScrollViewPager;
+import com.tencent.weiyun.utils.Singleton;
 
-class bkkf
-  implements blfm
+final class bkkf
+  extends Singleton<bkke, Void>
 {
-  bkkf(bkke parambkke) {}
-  
-  public void a(int paramInt)
+  protected bkke a(Void paramVoid)
   {
-    if (paramInt == 0)
-    {
-      bkke.a(this.a).setCurrentItem(0, true);
-      bkke.a(this.a).d();
-      bkke.a(this.a).t();
-      blen.a().L();
-      return;
-    }
-    if (bkke.a(this.a))
-    {
-      bkke.a(this.a);
-      blen.a().M();
-      return;
-    }
-    bkke.b(this.a);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return (paramInt != 1) || (bkke.a(this.a));
+    return new bkke(null);
   }
 }
 

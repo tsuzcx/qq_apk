@@ -1,16 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Conversation.43.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class acnr
-  extends adov
+  implements DialogInterface.OnClickListener
 {
-  public acnr(Conversation paramConversation) {}
+  public acnr(ChatHistoryFileActivity paramChatHistoryFileActivity, acnt paramacnt) {}
   
-  protected void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManagerV2.getUIHandlerV2().post(new Conversation.43.1(this));
+    this.jdField_a_of_type_Acnt.a(true);
   }
 }
 

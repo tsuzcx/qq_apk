@@ -1,28 +1,22 @@
-import android.os.Handler;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin.7;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class bdtq
-  implements TVK_SDKMgr.InstallListener
+public final class bdtq
+  implements EIPCResultCallback
 {
-  public bdtq(HealthBusinessPlugin.7 param7) {}
+  public bdtq(bdtn parambdtn) {}
   
-  public void onInstallProgress(float paramFloat)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a.this$0.c = ((int)(100.0F * paramFloat));
-    this.a.this$0.b.sendEmptyMessage(2);
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    this.a.this$0.d = paramInt;
-    this.a.this$0.b.sendEmptyMessage(1);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    this.a.this$0.b.sendEmptyMessage(0);
+    if (paramEIPCResult.code != 0)
+    {
+      this.a.a(2, "", "");
+      return;
+    }
+    paramEIPCResult = (QuickUpdateIPCModule.Params)paramEIPCResult.data.getSerializable("params");
+    this.a.a(paramEIPCResult.intVal, paramEIPCResult.strVal1, paramEIPCResult.strVal2);
   }
 }
 

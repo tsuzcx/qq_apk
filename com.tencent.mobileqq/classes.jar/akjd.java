@@ -1,9 +1,10 @@
-public class akjd
+import android.view.View;
+
+public abstract interface akjd
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  public abstract void a(View paramView);
+  
+  public abstract boolean a(String paramString, int paramInt);
 }
 
 

@@ -1,56 +1,39 @@
-import android.content.Context;
-import android.content.Intent;
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-class aics
-  implements bhqp
+public class aics
+  implements View.OnClickListener
 {
-  aics(aicl paramaicl) {}
+  public aics(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, List paramList, CheckBox paramCheckBox, boolean paramBoolean, Dialog paramDialog) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
-    }
-    if ((this.a.jdField_a_of_type_Ahzr.getCount() <= 0) || (paramInt <= 0)) {}
-    do
+    paramView = (amdu)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.b.a(20);
+    String str;
+    if (paramView != null)
     {
+      paramView.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_c_of_type_JavaLangString), this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked(), this.jdField_a_of_type_Boolean);
+      str = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.o;
+      if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label145;
+      }
+    }
+    label145:
+    for (paramView = "0";; paramView = "1")
+    {
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.b, "P_CliOper", "Grp_manage", "", "del_mber", "Clk_del", 1, 0, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_c_of_type_JavaLangString, str, paramView, "");
+      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.w();
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_c_of_type_AndroidAppDialog.show();
       return;
-      paramAdapterView = (aicu)this.a.jdField_a_of_type_Ahzr.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
     }
-    try
-    {
-      paramAdapterView = bbig.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
-      if (paramAdapterView == null) {
-        break label214;
-      }
-      paramAdapterView = (TroopLinkElement)paramAdapterView;
-    }
-    catch (Exception paramAdapterView)
-    {
-      for (;;)
-      {
-        paramAdapterView = null;
-        continue;
-        paramAdapterView = null;
-      }
-    }
-    if (paramAdapterView != null)
-    {
-      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", paramAdapterView.url);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    }
-    this.a.a(true);
   }
 }
 

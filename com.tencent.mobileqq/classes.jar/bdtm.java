@@ -1,31 +1,22 @@
-import android.os.Handler;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.graphics.Bitmap;
+import com.tencent.commonsdk.cache.Sizeable;
+import com.tencent.image.Utils;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class bdtm
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements Sizeable
 {
-  public bdtm(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  public int a;
+  public HashMap<Integer, Bitmap> a = new HashMap();
+  public int b;
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public int getByteSize()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "onVideoPrepared video");
-    }
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      paramTVK_IMediaPlayer.pause();
-      this.a.jdField_a_of_type_AndroidOsHandler.post(this.a.b);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
-      return;
-      paramTVK_IMediaPlayer.start();
-    }
+    Iterator localIterator = this.a.values().iterator();
+    for (int i = 0; localIterator.hasNext(); i = Utils.getBitmapSize((Bitmap)localIterator.next()) + i) {}
+    return i;
   }
 }
 

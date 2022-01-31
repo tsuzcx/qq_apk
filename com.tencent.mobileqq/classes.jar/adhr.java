@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import mqq.os.MqqHandler;
 
 public class adhr
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public adhr(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
+  public adhr(LoginInfoActivity paramLoginInfoActivity, FrameLayout paramFrameLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
-    this.a.finish();
+    LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).removeMessages(20200313);
   }
 }
 

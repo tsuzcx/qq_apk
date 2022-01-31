@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app.soso;
 
-import aaoo;
-import aaop;
-import aaoq;
-import aaos;
-import aaot;
+import aatd;
+import aate;
+import aatf;
+import aath;
+import aati;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -19,12 +19,12 @@ final class SosoInterface$7
 {
   public void run()
   {
-    aaos.a().a(BaseApplication.getContext(), new aaot());
-    Object localObject = new aaop();
-    ((aaop)localObject).a = "8b5c3a";
-    localObject = aaoo.a(BaseApplication.getContext(), (aaop)localObject);
+    aath.a().a(BaseApplication.getContext(), new aati());
+    Object localObject = new aate();
+    ((aate)localObject).a = "8b5c3a";
+    localObject = aatd.a(BaseApplication.getContext(), (aate)localObject);
     if (localObject != null) {
-      localObject = ((aaoq)localObject).a;
+      localObject = ((aatf)localObject).a;
     }
     for (;;)
     {

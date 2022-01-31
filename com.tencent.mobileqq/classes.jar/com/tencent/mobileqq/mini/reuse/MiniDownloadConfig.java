@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.reuse;
 
 import android.text.TextUtils;
-import bdcb;
-import bjcv;
+import bdgk;
+import bjhc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.module.base.inter.IDownloadConfig;
 import common.config.service.QzoneConfig;
@@ -68,7 +68,7 @@ class MiniDownloadConfig
   
   public int getNetworkStackType()
   {
-    return bjcv.a(1);
+    return bjhc.a(1);
   }
   
   public int getOperator()
@@ -103,7 +103,7 @@ class MiniDownloadConfig
   
   public String getVersion()
   {
-    return bdcb.c();
+    return bdgk.c();
   }
   
   public boolean isFromQzoneAlbum(String paramString)

@@ -1,6 +1,17 @@
-public abstract interface bjwd
+import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import cooperation.qzone.video.QzoneLiveVideoGpuProxyActivity;
+import cooperation.qzone.video.QzoneLiveVideoPluginProxyActivity;
+import cooperation.qzone.video.QzoneLiveVideoTransparentActivity;
+
+public class bjwd
 {
-  public abstract void a();
+  public static Class<? extends PluginProxyActivity> a(String paramString)
+  {
+    if (QzoneLiveVideoPluginProxyActivity.a(QzoneLiveVideoPluginProxyActivity.a(), paramString)) {
+      return QzoneLiveVideoTransparentActivity.class;
+    }
+    return QzoneLiveVideoGpuProxyActivity.class;
+  }
 }
 
 

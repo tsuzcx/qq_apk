@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aiiy;
-import ailh;
-import bcln;
+import ainn;
+import aipw;
+import bcpw;
 
 public class TroopPhotoController$1
   implements Runnable
 {
-  public TroopPhotoController$1(ailh paramailh, aiiy paramaiiy, bcln parambcln) {}
+  public TroopPhotoController$1(aipw paramaipw, ainn paramainn, bcpw parambcpw) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Aiiy, this.jdField_a_of_type_Bcln);
+    this.this$0.a(this.jdField_a_of_type_Ainn, this.jdField_a_of_type_Bcpw);
   }
 }
 

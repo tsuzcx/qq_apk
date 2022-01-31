@@ -1,355 +1,184 @@
-import ConfigPush.FileStoragePushFSSvcList;
-import ConfigPush.FileStorageServerListInfo;
-import ConfigPush.PushReq;
-import KQQ.CheckUpdateResp;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.qq.jce.wup.UniPacket;
-import com.qq.taf.jce.JceInputStream;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.highway.config.ConfigManager;
-import com.tencent.msf.service.protocol.push.SvcRespRegister;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import mqq.app.AppRuntime.Status;
-import mqq.app.Constants.Key;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class ayxk
-  extends MSFServlet
+  extends ayxt
 {
-  public static boolean a;
+  public View a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
   
-  private static void a(FileStoragePushFSSvcList paramFileStoragePushFSSvcList)
+  public ayxk(ViewGroup paramViewGroup, int paramInt)
   {
-    new birk().a(paramFileStoragePushFSSvcList);
+    super(paramViewGroup, paramInt);
   }
   
-  public static void a(FileStoragePushFSSvcList paramFileStoragePushFSSvcList, QQAppInterface paramQQAppInterface)
+  public static int a(Context paramContext, View... paramVarArgs)
   {
-    paramFileStoragePushFSSvcList.pttlist = baoc.a().a(paramFileStoragePushFSSvcList.pttlist);
-    baoc.a().a(paramFileStoragePushFSSvcList);
-    b(paramFileStoragePushFSSvcList, paramQQAppInterface);
-    a(paramFileStoragePushFSSvcList);
-    a(paramQQAppInterface);
-    aoge.a(paramFileStoragePushFSSvcList, paramQQAppInterface);
-    if ((paramFileStoragePushFSSvcList.vGPicDownLoadList == null) && (QLog.isColorLevel())) {
-      QLog.d("FMT_ADDR", 2, "RECEIVED PUSH: vGPicDownLoadList ==null");
-    }
-    awtw.a(paramQQAppInterface).a(true, false);
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface.getApp();
-    BaseApplication localBaseApplication = BaseApplication.getContext();
-    Map localMap = baoc.a().a();
-    ConfigManager.getInstance(localBaseApplication, paramQQAppInterface.getHwEngine()).onSrvAddrPush(localBaseApplication, paramQQAppInterface, localMap);
-  }
-  
-  private void a(byte[] paramArrayOfByte)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FMT_ADDR", 2, "RECEIVED PUSH: FMT SERVER ADDR LIST");
-    }
-    ??? = new JceInputStream(paramArrayOfByte);
-    paramArrayOfByte = new FileStoragePushFSSvcList();
-    paramArrayOfByte.readFrom((JceInputStream)???);
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    synchronized (baoc.a().a)
+    int j = paramContext.getResources().getDisplayMetrics().widthPixels;
+    int k = paramVarArgs.length;
+    int i = 0;
+    while (i < k)
     {
-      if (!localQQAppInterface.a.d())
+      paramContext = paramVarArgs[i];
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramContext.getLayoutParams();
+      paramContext.measure(0, 0);
+      j = j - paramContext.getMeasuredWidth() - localLayoutParams.leftMargin - localLayoutParams.rightMargin;
+      i += 1;
+    }
+    return j;
+  }
+  
+  private void b(aypd paramaypd)
+  {
+    if (a() != null) {
+      a().setText(paramaypd.a());
+    }
+    if (b() != null) {
+      b().setText(paramaypd.b());
+    }
+    if ((this.jdField_c_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(paramaypd.f)))
+    {
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(paramaypd.f);
+      b().setMaxWidth(a(this.jdField_b_of_type_AndroidViewView.getContext(), new View[] { a(), this.jdField_c_of_type_AndroidWidgetTextView, this.f }) - aepi.a(75.0F, b().getResources()));
+    }
+    ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
+    Object localObject;
+    if (b() != null)
+    {
+      if (paramaypd.b != 0)
       {
-        baoc.a().b(paramArrayOfByte);
+        b().setImageResource(paramaypd.b);
+        b().setVisibility(0);
+      }
+    }
+    else if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      localObject = a().getTag(2131379972);
+      if (!(localObject instanceof Integer)) {
+        break label545;
+      }
+    }
+    label523:
+    label535:
+    label545:
+    for (int i = ((Integer)localObject).intValue();; i = -1)
+    {
+      if (i > 0)
+      {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        label212:
+        if ((c() != null) && (!TextUtils.isEmpty(paramaypd.c())))
+        {
+          c().setText(paramaypd.c());
+          c().setVisibility(0);
+        }
+        if (a() != null)
+        {
+          if (!paramaypd.a()) {
+            break label523;
+          }
+          a().setVisibility(0);
+        }
+      }
+      for (;;)
+      {
+        if (TextUtils.isEmpty(paramaypd.h)) {
+          break label535;
+        }
+        i = a().getResources().getDimensionPixelSize(2131298147);
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
+        ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "rightIcon";
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
+        paramaypd = URLDrawable.getDrawable(paramaypd.h, (URLDrawable.URLDrawableOptions)localObject);
+        if ((paramaypd.getStatus() != 1) && (paramaypd.getStatus() != 0)) {
+          paramaypd.restartDownload();
+        }
+        a().setImageDrawable(paramaypd);
+        a().setVisibility(0);
         return;
-      }
-      a(paramArrayOfByte, localQQAppInterface);
-    }
-  }
-  
-  private static void b(FileStoragePushFSSvcList paramFileStoragePushFSSvcList, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramFileStoragePushFSSvcList != null) && (paramFileStoragePushFSSvcList.vUrlEncodeServiceList != null))
-    {
-      paramQQAppInterface = paramFileStoragePushFSSvcList.vUrlEncodeServiceList.iterator();
-      while (paramQQAppInterface.hasNext())
-      {
-        FileStorageServerListInfo localFileStorageServerListInfo = (FileStorageServerListInfo)paramQQAppInterface.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("PushServlet", 2, "info.sip=" + localFileStorageServerListInfo.sIP + ",info.port=" + localFileStorageServerListInfo.iPort);
-        }
-      }
-      batm.a().a(paramFileStoragePushFSSvcList.vUrlEncodeServiceList);
-    }
-  }
-  
-  public String[] getPreferSSOCommands()
-  {
-    return new String[] { "cmd_connOpened", "RegPrxySvc.PullGroupMsgSeq", "RegPrxySvc.PullDisMsgSeq", "RegPrxySvc.infoNew", "RegPrxySvc.PullDisMsgProxy", "RegPrxySvc.PullGroupMsgProxy", "RegPrxySvc.GetMsgV2", "RegPrxySvc.PbGetMsg", "RegPrxySvc.PbSyncMsg", "RegPrxySvc.PbGetGroupMsg", "RegPrxySvc.PbGetDiscussMsg", "RegPrxySvc.PullDisGroupSeq", "RegPrxySvc.NoticeEnd", "cmd_connClosed", "ConfigPushSvc.PushReq", "StatSvc.register", "cmd_connAllFailed", "cmd_recvFirstResp", "cmd_connWeakNet", "cmd_connWeakNet_New", "MultiVideo.s2c", "MultiVideo.c2sack", "ProfileService.CheckUpdateReq", "cmd_netNeedSignon", "qqwifi.notifyAvail", "RegPrxySvc.QueryIpwdStat", "ConfigPushSvc.PushDomain" };
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    String str = paramFromServiceMsg.getServiceCmd();
-    if ("cmd_connOpened".equals(str))
-    {
-      paramIntent = (String)paramFromServiceMsg.getAttribute("resp_connopen_serverAdd");
-      if (QLog.isColorLevel()) {
-        QLog.d("PushServlet", 2, "onReceive: cmd=" + str + "," + "resp_connopen_serverAdd" + "=" + paramIntent);
-      }
-      if (!TextUtils.isEmpty(paramIntent)) {
-        a = paramIntent.contains("183.61.46.145");
-      }
-      localQQAppInterface.c();
-    }
-    label761:
-    label767:
-    do
-    {
-      do
-      {
-        for (;;)
+        if (!TextUtils.isEmpty(paramaypd.c))
         {
-          return;
-          if ("cmd_connClosed".equals(str))
-          {
-            localQQAppInterface.f();
-            return;
+          i = a().getResources().getDimensionPixelSize(2131297310);
+          localObject = URLDrawable.URLDrawableOptions.obtain();
+          ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
+          ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
+          ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "isAvatar";
+          ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
+          ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
+          localObject = URLDrawable.getDrawable(paramaypd.c, (URLDrawable.URLDrawableOptions)localObject);
+          ((URLDrawable)localObject).setDecodeHandler(bcyz.a);
+          if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
+            ((URLDrawable)localObject).restartDownload();
           }
-          if ("cmd_connWeakNet".equals(str))
-          {
-            localQQAppInterface.e();
-            return;
-          }
-          if ("cmd_connWeakNet_New".equals(str))
-          {
-            localQQAppInterface.b(paramFromServiceMsg.getBusinessFailMsg());
-            return;
-          }
-          if ("cmd_netNeedSignon".equals(str))
-          {
-            localQQAppInterface.c((String)paramFromServiceMsg.getAttribute("signonurl"));
-            return;
-          }
-          boolean bool1;
-          if ("qqwifi.notifyAvail".equals(str))
-          {
-            bool1 = ((Boolean)paramFromServiceMsg.getAttribute("has_avail_qqwifi", Boolean.valueOf(false))).booleanValue();
-            if (QLog.isColorLevel()) {
-              QLog.i("PushServlet", 2, "QQWiFi : recv broadcast -" + str + "hasAvailWiFi = " + bool1);
-            }
-            paramIntent = localQQAppInterface.getHandler(Conversation.class);
-            if (paramIntent != null)
-            {
-              if (bool1) {}
-              for (int i = 1032;; i = 1033)
-              {
-                paramIntent.sendEmptyMessage(i);
-                if (!bool1) {
-                  break;
-                }
-                azmj.b(localQQAppInterface, "CliOper", "", "", "QQWIFI", "show_buleNotify", 0, 0, "", "", "", "");
-                return;
-              }
-            }
-          }
-          else
-          {
-            if ("cmd_recvFirstResp".equals(str))
-            {
-              localQQAppInterface.g();
-              return;
-            }
-            if ("cmd_connAllFailed".equals(str))
-            {
-              localQQAppInterface.h();
-              return;
-            }
-            if ("ConfigPushSvc.PushReq".equals(str))
-            {
-              paramIntent = new UniPacket(true);
-              paramIntent.setEncodeName("utf-8");
-              paramIntent.decode(paramFromServiceMsg.getWupBuffer());
-              paramIntent = (PushReq)paramIntent.getByClass("PushReq", new PushReq());
-              if ((paramIntent != null) && (paramIntent.type == 2)) {
-                a(paramIntent.jcebuf);
-              }
-            }
-            else
-            {
-              if ("ConfigPushSvc.PushDomain".equals(str))
-              {
-                bavf.a().a(paramFromServiceMsg);
-                return;
-              }
-              if ("StatSvc.register".equals(paramFromServiceMsg.getServiceCmd()))
-              {
-                paramIntent = (SvcRespRegister)decodePacket(paramFromServiceMsg.getWupBuffer(), "SvcRespRegister", new SvcRespRegister());
-                if ((paramIntent != null) && (paramIntent.cReplyCode == 0))
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("Q.contacts.", 2, "PushServlet.onReceive " + paramIntent.timeStamp + ", bUpdateFlag: " + paramIntent.bUpdateFlag + ", bLargeSeqUpdate: " + paramIntent.bLargeSeqUpdate + ", iStatus: " + paramIntent.iStatus);
-                  }
-                  long l = paramIntent.timeStamp;
-                  if (paramIntent.timeStamp == 0L) {
-                    l = localQQAppInterface.getPreferences().getLong(Constants.Key.SvcRegister_timeStamp.toString(), 0L);
-                  }
-                  if ((l == 0L) || (paramIntent.bUpdateFlag == 1) || (paramIntent.bLargeSeqUpdate == 1))
-                  {
-                    paramFromServiceMsg = localQQAppInterface.a;
-                    if ((l != 0L) && (paramIntent.bUpdateFlag != 1)) {
-                      break label761;
-                    }
-                    bool1 = true;
-                    l = paramIntent.timeStamp;
-                    if (paramIntent.bLargeSeqUpdate != 1) {
-                      break label767;
-                    }
-                  }
-                  for (boolean bool2 = true;; bool2 = false)
-                  {
-                    paramFromServiceMsg.a(bool1, l, bool2);
-                    paramFromServiceMsg = AppRuntime.Status.build(paramIntent.iStatus);
-                    l = paramIntent.uExtOnlineStatus;
-                    if (paramFromServiceMsg == null) {
-                      break label773;
-                    }
-                    localQQAppInterface.setOnlineStatus(paramFromServiceMsg);
-                    localQQAppInterface.setExtOnlineStatus(l);
-                    paramIntent = new Bundle();
-                    paramIntent.putSerializable("onlineStatus", paramFromServiceMsg);
-                    paramIntent.putLong("extOnlineStatus", l);
-                    localQQAppInterface.notifyObservers(AccountObserver.class, 2211, true, paramIntent);
-                    return;
-                    bool1 = false;
-                    break;
-                  }
-                  QLog.d("Q.contacts.", 1, "PushServlet.onReceive onlineStatus is null!");
-                }
-              }
-              else
-              {
-                if ((!"RegPrxySvc.PbGetMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.GetMsgV2".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.PullDisMsgSeq".equals(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.NoticeEnd".equals(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.PullDisGroupSeq".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.PullGroupMsgSeq".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.PbGetDiscussMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.PbGetGroupMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.infoLogin".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.getOffMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.infoSync".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.PbSyncMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))) {
-                  break label1330;
-                }
-                if (paramIntent == null) {
-                  break label1194;
-                }
-                paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-                paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-                if ((!"RegPrxySvc.infoLogin".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.getOffMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))) {
-                  try
-                  {
-                    if (localQQAppInterface.a().a != 0L)
-                    {
-                      if (paramFromServiceMsg.getAttributes().containsKey("_attr_regprxy_random_code")) {
-                        break label1216;
-                      }
-                      if (!QLog.isColorLevel()) {
-                        continue;
-                      }
-                      QLog.d("Q.msg.register_proxy", 2, "[ReSendProxy]cmd=" + paramFromServiceMsg.getServiceCmd() + " app seq:" + paramFromServiceMsg.getAppSeq() + " No Random!");
-                    }
-                  }
-                  catch (Exception localException)
-                  {
-                    if (QLog.isColorLevel()) {
-                      QLog.w("Q.msg.register_proxy", 2, "[ReSendProxy] PushServletException", localException);
-                    }
-                  }
-                }
-              }
-            }
-          }
+          b().setImageDrawable((Drawable)localObject);
+          b().setVisibility(0);
+          break;
         }
-        if (("RegPrxySvc.PbGetMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) || ("RegPrxySvc.PbGetDiscussMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) || ("RegPrxySvc.PbGetGroupMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) || ("RegPrxySvc.PbSyncMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))) {
-          paramIntent.extraData.putBoolean("req_pb_protocol_flag", true);
+        b().setVisibility(8);
+        break;
+        if (i != 0) {
+          break label212;
         }
-        if ("RegPrxySvc.PbSyncMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-          paramIntent.extraData.putBoolean("used_new_register_proxy", true);
-        }
-        for (;;)
-        {
-          localQQAppInterface.a.d();
-          ((QQAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
-          return;
-          paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-          break label963;
-          if (((Long)paramFromServiceMsg.getAttributes().get("_attr_regprxy_random_code")).longValue() == localQQAppInterface.a().a) {
-            break label1091;
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("Q.msg.register_proxy", 2, "[ReSendProxy]cmd=" + paramFromServiceMsg.getServiceCmd() + " app seq:" + paramFromServiceMsg.getAppSeq() + " Diff Random=" + (Long)paramFromServiceMsg.getAttributes().get("_attr_regprxy_random_code"));
-          return;
-          paramIntent.extraData.putBoolean("used_register_proxy", true);
-        }
-        if (("MultiVideo.s2c".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) || ("MultiVideo.c2sack".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("dimontang", 2, String.format("RECEIVED PUSH: MULTI VIDEO S2C, SsoSeq[%s], AppSeq[%s]", new Object[] { Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()), Integer.valueOf(paramFromServiceMsg.getAppSeq()) }));
-          }
-          if (paramIntent != null)
-          {
-            paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-            paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-          }
-          for (;;)
-          {
-            ((QQAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
-            return;
-            paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-          }
-        }
-      } while (!"ProfileService.CheckUpdateReq".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()));
-      if (QLog.isColorLevel()) {
-        QLog.d("MSFServlet", 2, "push command:" + paramFromServiceMsg.getServiceCmd() + " ssoseq:" + paramFromServiceMsg.getRequestSsoSeq());
+        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        break label212;
+        a().setVisibility(8);
       }
-    } while (paramFromServiceMsg.getRequestSsoSeq() > 0);
-    label773:
-    label963:
-    paramIntent = new UniPacket(true);
-    try
-    {
-      label1091:
-      paramIntent.setEncodeName("utf-8");
-      label1194:
-      label1216:
-      paramIntent.decode(paramFromServiceMsg.getWupBuffer());
-      label1330:
-      paramIntent = (CheckUpdateResp)paramIntent.getByClass("CheckUpdateResp", new CheckUpdateResp());
-      label1556:
-      ((FriendListHandler)localQQAppInterface.a(1)).a(paramIntent);
+      a().setVisibility(8);
       return;
     }
-    catch (Exception paramFromServiceMsg)
-    {
-      break label1556;
-    }
-    catch (RuntimeException paramFromServiceMsg)
-    {
-      break label1556;
-    }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket) {}
+  protected void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131365369);
+    switch (this.jdField_c_of_type_Int)
+    {
+    default: 
+    case 2131559665: 
+      do
+      {
+        return;
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377607));
+        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377609));
+        a().setMaxWidth(a(this.jdField_b_of_type_AndroidViewView.getContext(), new View[] { this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView, this.f }));
+        a().setTextColor(ayvm.b());
+      } while (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null));
+      return;
+    }
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370764));
+  }
+  
+  public void a(aypd paramaypd)
+  {
+    b();
+    switch (paramaypd.a)
+    {
+    case -2: 
+    default: 
+      return;
+    }
+    b(paramaypd);
+  }
 }
 
 

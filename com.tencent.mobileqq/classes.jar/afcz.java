@@ -1,77 +1,44 @@
-import android.content.Context;
-import android.graphics.Paint;
-import android.text.SpannableString;
-import android.text.TextPaint;
-import android.text.style.ForegroundColorSpan;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 class afcz
-  implements ViewTreeObserver.OnPreDrawListener
+  extends alwx
 {
-  afcz(afcy paramafcy, TextView paramTextView, String paramString) {}
+  private WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  private String a(String paramString)
+  private afcz(afcw paramafcw, BaseActivity paramBaseActivity)
   {
-    paramString = paramString.toCharArray();
-    int i = 0;
-    if (i < paramString.length)
-    {
-      if (paramString[i] == '　') {
-        paramString[i] = 32;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
-          paramString[i] = ((char)(paramString[i] - 65248));
-        }
-      }
-    }
-    return new String(paramString);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
   }
   
-  public boolean onPreDraw()
+  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
   {
-    int j = 0;
-    int k = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() * 2;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetTextView.getPaint();
-    String str2 = a(this.jdField_a_of_type_Afcy.a.getString(2131697650) + ">");
-    String str3 = a(this.jdField_a_of_type_JavaLangString);
-    String str1 = "  " + str2;
-    Object localObject = str3 + str1;
-    if (localTextPaint.measureText((String)localObject + "      ") < k) {}
-    label329:
-    for (;;)
+    super.a(paramBoolean1, paramList, paramBoolean2);
+    if ((afcw.a(this.jdField_a_of_type_Afcw, paramList)) && (paramBoolean1)) {}
+    for (paramBoolean2 = true;; paramBoolean2 = false)
     {
-      k = ((String)localObject).length();
-      int i = j;
-      if (k > str2.length()) {
-        i = k - str2.length();
+      paramList = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("MergeForwardRevokeHelper", 2, "onMsgRevokeNotice  hasMsgRevoked:" + paramBoolean2 + "; isSuccess:" + paramBoolean1);
       }
-      localObject = new SpannableString((CharSequence)localObject);
-      ((SpannableString)localObject).setSpan(new ForegroundColorSpan(-12541697), i, k, 33);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      return true;
-      String str4 = "..." + str1;
-      int m = str3.length();
-      i = 0;
-      for (;;)
+      if ((paramBoolean2) && (paramList != null))
       {
-        if (i >= m) {
-          break label329;
-        }
-        str1 = str3.substring(0, m - i) + str4;
-        localObject = str1;
-        if (localTextPaint.measureText(str1 + "      ") < k) {
+        if (!this.jdField_a_of_type_Afcw.a) {
           break;
         }
-        i += 1;
-        localObject = str1;
+        paramList.finish();
       }
+      return;
     }
+    if (afcw.a() == paramList)
+    {
+      afcw.a(this.jdField_a_of_type_Afcw, paramList);
+      return;
+    }
+    paramList.finish();
   }
 }
 

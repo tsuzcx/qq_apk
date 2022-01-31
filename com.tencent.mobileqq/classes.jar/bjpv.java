@@ -1,30 +1,32 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.util.concurrent.CountDownLatch;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bjpv
-  implements Downloader.DownloadListener
+class bjpv
+  extends Handler
 {
-  public bjpv(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
-  
-  public void onDownloadCanceled(String paramString)
+  bjpv(bjpu parambjpu, Looper paramLooper)
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    super(paramLooper);
   }
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePluginPreInstaller", 2, "handleMessage, retryInstallNum=" + bjpu.a());
+    }
+    if (paramMessage.what == 1) {}
+    try
+    {
+      paramMessage = (String)paramMessage.obj;
+      bjpu.a(this.a).a(paramMessage, this.a, 2);
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      QLog.e("QZonePluginPreInstaller", 1, paramMessage, new Object[0]);
+    }
   }
 }
 

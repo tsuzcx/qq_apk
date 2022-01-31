@@ -1,30 +1,42 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import mqq.util.WeakReference;
 
 public class addi
-  implements ActionMode.Callback
+  implements DialogInterface.OnDismissListener
 {
-  public addi(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  WeakReference<GeneralSettingActivity> a;
+  WeakReference<CompoundButton> b;
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public addi(GeneralSettingActivity paramGeneralSettingActivity, CompoundButton paramCompoundButton)
   {
-    return false;
+    this.a = new WeakReference(paramGeneralSettingActivity);
+    this.b = new WeakReference(paramCompoundButton);
   }
   
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramMenu.clear();
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    CompoundButton localCompoundButton = null;
+    if (this.a == null)
+    {
+      paramDialogInterface = null;
+      if (this.b != null) {
+        break label47;
+      }
+    }
+    for (;;)
+    {
+      if ((paramDialogInterface != null) && (localCompoundButton != null)) {
+        paramDialogInterface.a(localCompoundButton, false);
+      }
+      return;
+      paramDialogInterface = (GeneralSettingActivity)this.a.get();
+      break;
+      label47:
+      localCompoundButton = (CompoundButton)this.b.get();
+    }
   }
 }
 

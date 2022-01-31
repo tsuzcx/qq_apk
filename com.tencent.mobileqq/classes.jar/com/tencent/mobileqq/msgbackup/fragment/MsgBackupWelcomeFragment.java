@@ -3,8 +3,8 @@ package com.tencent.mobileqq.msgbackup.fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.LinearLayout;
-import aubu;
-import auff;
+import augd;
+import aujo;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.widget.FormSimpleItem;
@@ -44,13 +44,13 @@ public class MsgBackupWelcomeFragment
     {
     default: 
       return;
-    case 2131375461: 
-      auff.a("0X800A22E");
+    case 2131375512: 
+      aujo.a("0X800A22E");
       PublicFragmentActivity.a(getActivity(), MsgBackupMigrateFragment.class, 1000);
       return;
     }
-    auff.a("0X800A268");
-    aubu.a().a(1);
+    aujo.a("0X800A268");
+    augd.a().a(1);
     PublicFragmentActivity.a(getActivity(), MsgBackupPCAuthFragment.class, 1000);
   }
 }

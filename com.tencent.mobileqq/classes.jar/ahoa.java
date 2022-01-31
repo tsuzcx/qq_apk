@@ -1,56 +1,17 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
 
 class ahoa
-  extends alox
+  extends akit
 {
-  ahoa(ahnt paramahnt) {}
-  
-  public void onConversationRecommendTypeChange(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager.ContactsViewController", 2, "onConversationRecommendTypeChange newType is: " + paramInt);
-    }
-    ahnt.c(this.a, paramInt);
-  }
-  
-  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactsViewController", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean) {
-      ahnt.a(this.a, false, false);
-    }
-  }
-  
-  public void onRecommendTroopJoinedOrDeleted(String paramString)
-  {
-    if ((ahnt.a(this.a) instanceof ahqf)) {
-      ((ahqf)ahnt.a(this.a)).a(paramString);
-    }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ContactsViewController", 2, "onUpdateFriendList. mOccurSwitchAccountChangeTab:" + ahnt.b(this.a));
-    }
-    if (ahnt.b(this.a))
-    {
-      int i = ahnt.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.i("ContactsViewController", 2, "onUpdateFriendList. mCurrentTabPos:" + ahnt.b(this.a) + "  defaultPos:" + i);
-      }
-      if (ahnt.b(this.a) != i)
-      {
-        ahnt.c(this.a, true);
-        ahnt.b(this.a, i);
-        ahnt.c(this.a, false);
-      }
-      ahnt.b(this.a, false);
-    }
-  }
+  public TextView a;
+  public MayKnowRecommend a;
+  public TroopLabelLayout a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

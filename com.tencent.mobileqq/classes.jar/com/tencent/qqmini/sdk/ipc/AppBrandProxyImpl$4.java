@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.ResultReceiver;
-import bgpo;
+import bgtv;
 import com.tencent.qqmini.sdk.launcher.ipc.IAppMainService;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -13,13 +13,13 @@ import com.tencent.qqmini.sdk.log.QMLog;
 public class AppBrandProxyImpl$4
   implements Runnable
 {
-  public AppBrandProxyImpl$4(bgpo parambgpo, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver, Activity paramActivity) {}
+  public AppBrandProxyImpl$4(bgtv parambgtv, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver, Activity paramActivity) {}
   
   public void run()
   {
     try
     {
-      bgpo.a(this.this$0).startMiniApp(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.jdField_a_of_type_AndroidOsBundle, new AppBrandProxyImpl.4.1(this, new Handler(Looper.getMainLooper())));
+      bgtv.a(this.this$0).startMiniApp(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.jdField_a_of_type_AndroidOsBundle, new AppBrandProxyImpl.4.1(this, new Handler(Looper.getMainLooper())));
       return;
     }
     catch (Throwable localThrowable)

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import ahna;
+import ahrp;
 import com.tencent.widget.XListView;
 
 class DeviceFragment$1
@@ -10,10 +10,10 @@ class DeviceFragment$1
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Ahna != null) && (this.this$0.jdField_a_of_type_Ahna.getCount() > 0))
+    if ((this.this$0.jdField_a_of_type_Ahrp != null) && (this.this$0.jdField_a_of_type_Ahrp.getCount() > 0))
     {
-      int i = this.this$0.jdField_a_of_type_Ahna.a();
-      if ((i >= 0) && (i < this.this$0.jdField_a_of_type_Ahna.getCount())) {
+      int i = this.this$0.jdField_a_of_type_Ahrp.a();
+      if ((i >= 0) && (i < this.this$0.jdField_a_of_type_Ahrp.getCount())) {
         this.this$0.jdField_a_of_type_ComTencentWidgetXListView.setSelection(i);
       }
     }

@@ -1,27 +1,42 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.qzone.widget.FastAnimationDrawable;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class bjwm
-  extends Handler
+  extends bjxz
 {
-  private final WeakReference<Drawable> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public bjwm(FastAnimationDrawable paramFastAnimationDrawable, Drawable paramDrawable)
+  private boolean a(String paramString)
   {
-    super(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDrawable);
+    try
+    {
+      paramString = new JSONObject(paramString);
+      int i = paramString.optInt("categoryType");
+      paramString = paramString.optString("categoryId");
+      Activity localActivity = this.a.mRuntime.a();
+      if (localActivity != null)
+      {
+        bjdt.a(localActivity, this.a.mRuntime.a().getCurrentAccountUin(), i, paramString, -1);
+        return true;
+      }
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("QZoneCategoryAlbumPlugin", 1, paramString.getMessage());
+      return false;
+    }
+    return false;
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    paramMessage = (Drawable)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramMessage != null) {
-      paramMessage.invalidateSelf();
+    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
+    while ((!paramString3.equalsIgnoreCase("jumpCategoryAlbum")) || (paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+      return false;
     }
+    return a(paramVarArgs[0]);
   }
 }
 

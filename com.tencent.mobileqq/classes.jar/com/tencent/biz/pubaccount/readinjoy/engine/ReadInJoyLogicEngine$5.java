@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import awbw;
-import awbx;
-import bjxj;
+import awgf;
+import awgg;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -23,9 +23,9 @@ public class ReadInJoyLogicEngine$5
   
   public void run()
   {
-    Pair localPair = bjxj.a(owy.a(this.this$0));
+    Pair localPair = bkbq.a(owy.a(this.this$0));
     if (this.a == 40677) {
-      localPair = bjxj.b(owy.a(this.this$0));
+      localPair = bkbq.b(owy.a(this.this$0));
     }
     for (;;)
     {
@@ -37,7 +37,7 @@ public class ReadInJoyLogicEngine$5
       if (localObject2 == null) {
         localObject1 = Long.valueOf(0L);
       }
-      if (((BaseActivity.sTopActivity instanceof ReadInJoyNewFeedsActivity)) || ((bjxj.k()) && (ors.c())) || (l1 - ((Long)localObject1).longValue() < ((Long)localPair.first).longValue()) || (l1 - l3 < ore.a / 1000) || (l1 - l3 < ((Long)localPair.first).longValue())) {
+      if (((BaseActivity.sTopActivity instanceof ReadInJoyNewFeedsActivity)) || ((bkbq.k()) && (ors.c())) || (l1 - ((Long)localObject1).longValue() < ((Long)localPair.first).longValue()) || (l1 - l3 < ore.a / 1000) || (l1 - l3 < ((Long)localPair.first).longValue())) {
         return;
       }
       if (owy.a(this.this$0) != null) {
@@ -45,7 +45,7 @@ public class ReadInJoyLogicEngine$5
       }
       localObject1 = this.this$0.a().createEntityManager();
       localObject2 = String.format(Locale.CHINA, "delete from %s where mRecommendSeq not in ( select mRecommendSeq from %s where mChannelID = %d order by mRecommendSeq desc limit %d ) and mRecommendTime < %d  and mChannelID = %d ", new Object[] { ArticleInfo.TABLE_NAME, ArticleInfo.TABLE_NAME, Integer.valueOf(this.a), localPair.second, Long.valueOf(l2), Integer.valueOf(this.a) });
-      if (!((awbw)localObject1).b((String)localObject2)) {
+      if (!((awgf)localObject1).b((String)localObject2)) {
         QLog.d("ArticleInfoModule", 2, "delete main outdated article fail !");
       }
       for (;;)

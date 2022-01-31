@@ -1,27 +1,18 @@
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
 
-public class blsu
+public final class blsu
+  implements Parcelable.Creator<QIMFilterCategoryItem>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  
-  public static blsu a(JSONObject paramJSONObject)
+  public QIMFilterCategoryItem a(Parcel paramParcel)
   {
-    blsu localblsu = new blsu();
-    localblsu.jdField_a_of_type_JavaLangString = paramJSONObject.optString("resurl");
-    localblsu.jdField_b_of_type_JavaLangString = paramJSONObject.optString("md5");
-    localblsu.c = paramJSONObject.optString("name");
-    localblsu.jdField_a_of_type_Int = paramJSONObject.optInt("text_id");
-    localblsu.jdField_b_of_type_Int = paramJSONObject.optInt("progress");
-    return localblsu;
+    return new QIMFilterCategoryItem(paramParcel);
   }
   
-  public String a()
+  public QIMFilterCategoryItem[] a(int paramInt)
   {
-    return this.c + "_" + this.jdField_b_of_type_JavaLangString;
+    return new QIMFilterCategoryItem[paramInt];
   }
 }
 

@@ -1,31 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.widget.MultiImageTextView;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class aodo
-  implements DialogInterface.OnDismissListener
+class aodo
+  implements View.OnTouchListener
 {
-  public aodo(LocationSelectActivity paramLocationSelectActivity) {}
+  aodo(aodl paramaodl) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    LocationSelectActivity.a(this.a).setRightTextColor(2);
-    if (AppSetting.c)
-    {
-      LocationSelectActivity.b(this.a).setContentDescription(alpo.a(2131706681) + LocationSelectActivity.a(this.a).name);
-      LocationSelectActivity.a(this.a).setContentDescription(alpo.a(2131706679) + LocationSelectActivity.a(this.a).a().getText());
-    }
-    paramDialogInterface = LocationSelectActivity.a(this.a);
-    if (LocationSelectActivity.a(this.a) == 0)
-    {
-      azmj.b(this.a.app, "CliOper", "", "", "0X8004248", "0X8004248", 0, 0, paramDialogInterface[0], paramDialogInterface[1], paramDialogInterface[2], "");
-      return;
-    }
-    azmj.b(this.a.app, "CliOper", "", "", "0X800424A", "0X800424A", 0, 0, paramDialogInterface[0], paramDialogInterface[1], paramDialogInterface[2], "");
+    return aodl.a(this.a).onTouchEvent(paramMotionEvent);
   }
 }
 

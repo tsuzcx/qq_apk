@@ -1,24 +1,26 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
 
-public class yzm
-  implements aoed
+class yzm
+  implements Animation.AnimationListener
 {
-  public yzm(NewerGuidePlugin paramNewerGuidePlugin, String[] paramArrayOfString) {}
+  yzm(yzj paramyzj) {}
   
-  public int a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return 1;
+    if (yzj.a(this.a) != null) {
+      yzj.a(this.a).setVisibility(4);
+    }
+    if (yzj.a(this.a) != null) {
+      yzj.a(this.a).setAlpha(1.0F);
+    }
   }
   
-  public int a(int paramInt)
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString.length;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public String a(int paramInt1, int paramInt2)
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt2];
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

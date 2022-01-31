@@ -1,19 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class adxx
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adxx(TroopDisbandActivity paramTroopDisbandActivity, Dialog paramDialog) {}
+  public adxx(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    TroopDisbandActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

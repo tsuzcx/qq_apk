@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjgq;
+import bjkx;
 
 public class KingCardInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<KingCardInfo> CREATOR = new bjgq();
+  public static final Parcelable.Creator<KingCardInfo> CREATOR = new bjkx();
   public String a;
   public boolean a;
   public String b;

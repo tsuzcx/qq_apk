@@ -55,7 +55,7 @@ public class pwo
   public void requestFeeds(long paramLong1, long paramLong2, boolean paramBoolean, long paramLong3, long paramLong4)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)ors.a();
-    KandianRedDotInfo localKandianRedDotInfo = KandianRedDotInfo.createRedDotFromMessageRecord(localQQAppInterface.a().b(aljq.aS, 1008), "kandian_daily_red_pnt");
+    KandianRedDotInfo localKandianRedDotInfo = KandianRedDotInfo.createRedDotFromMessageRecord(localQQAppInterface.a().b(alof.aS, 1008), "kandian_daily_red_pnt");
     Object localObject3 = null;
     long l1 = 0L;
     long l2 = 0L;

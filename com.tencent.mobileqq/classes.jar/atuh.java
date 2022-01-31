@@ -1,93 +1,93 @@
-import com.tencent.mobileqq.magicface.DecoderUtil;
-import com.tencent.mobileqq.magicface.model.MagicfaceXBigDecoder.1;
-import com.tencent.mobileqq.magicface.model.MagicfaceXBigDecoder.2;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.location.window.CanBackFrameLayout;
+import com.tencent.mobileqq.location.window.GlobalFloatDialogEventReceiver;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class atuh
-  extends atue
 {
-  public Object a;
-  Runnable a;
-  public Object b;
-  Runnable b;
-  public volatile boolean b;
+  private final View jdField_a_of_type_AndroidViewView = View.inflate(BaseApplicationImpl.context, 2131558925, null);
+  private WindowManager jdField_a_of_type_AndroidViewWindowManager = (WindowManager)BaseApplicationImpl.context.getSystemService("window");
+  private final TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365222);
+  private CanBackFrameLayout jdField_a_of_type_ComTencentMobileqqLocationWindowCanBackFrameLayout = (CanBackFrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365257);
+  private GlobalFloatDialogEventReceiver jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver;
+  private final TextView b;
+  private final TextView c;
   
   public atuh()
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_b_of_type_JavaLangObject = new Object();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRunnable = new MagicfaceXBigDecoder.1(this);
-    this.jdField_b_of_type_JavaLangRunnable = new MagicfaceXBigDecoder.2(this);
-    if (QLog.isColorLevel()) {
-      QLog.i("MagicfaceXBigDecoder", 2, "==MagicfaceXBigDecoder init=");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = new DecoderUtil();
-    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createVideoDecoder() == 0) || (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createAlphaDecoder() != 0)) {}
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new atui(this));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365228));
+    this.b.setOnClickListener(new atuj(this));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365237));
+    this.c.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver = new GlobalFloatDialogEventReceiver();
   }
   
   public void a()
   {
-    try
+    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
+    if (Build.VERSION.SDK_INT >= 26) {}
+    for (localLayoutParams.type = 2038;; localLayoutParams.type = 2002)
     {
-      this.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_Atua.b;
-      if (this.jdField_a_of_type_ArrayOfByte == null) {
-        return;
-      }
-      this.d = this.jdField_a_of_type_Atua.jdField_a_of_type_ArrayOfByte;
-      if (this.d != null)
-      {
-        b();
-        if ((this.c != null) && (this.f != null))
-        {
-          new Thread(this.jdField_b_of_type_JavaLangRunnable).start();
-          this.jdField_a_of_type_JavaLangRunnable.run();
-          return;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.i("MagicfaceXBigDecoder", 2, "Exception=" + localException.toString());
-      }
+      localLayoutParams.format = -3;
+      localLayoutParams.height = bdoo.b();
+      localLayoutParams.width = bdoo.a();
+      this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
+      this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver.a(this);
+      return;
     }
   }
   
-  void b()
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    try
-    {
-      this.c = new byte[921600];
-      this.f = new byte[921600];
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      localOutOfMemoryError.printStackTrace();
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new atuk(this, paramOnClickListener));
+  }
+  
+  public void a(String paramString)
+  {
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365233)).setText(paramString);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver.a();
+  }
+  
+  public void b(View.OnClickListener paramOnClickListener)
+  {
+    this.b.setOnClickListener(new atul(this, paramOnClickListener));
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
   }
   
   public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MagicfaceXBigDecoder", 2, "==MagicfaceXBigDecoder release=");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
-      label37:
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = null;
-      super.c();
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      break label37;
-    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void c(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowCanBackFrameLayout.setBackKeyListener(new atum(this, paramOnClickListener));
+  }
+  
+  public void c(String paramString)
+  {
+    this.b.setText(paramString);
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

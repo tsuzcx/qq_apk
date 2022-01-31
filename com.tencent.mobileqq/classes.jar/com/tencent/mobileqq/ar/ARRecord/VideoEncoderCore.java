@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import amqj;
-import amqk;
+import amuy;
+import amuz;
 import android.annotation.TargetApi;
 import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
@@ -12,8 +12,8 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.os.SystemClock;
 import android.view.Surface;
-import axqz;
-import bdcs;
+import axvi;
+import bdhb;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -25,7 +25,7 @@ public class VideoEncoderCore
   private static final Object jdField_b_of_type_JavaLangObject = new Object();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private amqj jdField_a_of_type_Amqj;
+  private amuy jdField_a_of_type_Amuy;
   private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
   private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
   private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
@@ -93,8 +93,8 @@ public class VideoEncoderCore
               {
                 this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
                 this.jdField_d_of_type_Boolean = true;
-                if (this.jdField_a_of_type_Amqj != null) {
-                  this.jdField_a_of_type_Amqj.b();
+                if (this.jdField_a_of_type_Amuy != null) {
+                  this.jdField_a_of_type_Amuy.b();
                 }
               }
             }
@@ -213,8 +213,8 @@ public class VideoEncoderCore
             {
               this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
               this.jdField_d_of_type_Boolean = true;
-              if (this.jdField_a_of_type_Amqj != null) {
-                this.jdField_a_of_type_Amqj.b();
+              if (this.jdField_a_of_type_Amuy != null) {
+                this.jdField_a_of_type_Amuy.b();
               }
             }
           }
@@ -346,14 +346,14 @@ public class VideoEncoderCore
     }
   }
   
-  public void a(axqz paramaxqz, amqj paramamqj)
+  public void a(axvi paramaxvi, amuy paramamuy)
   {
-    this.jdField_a_of_type_Amqj = paramamqj;
-    this.jdField_a_of_type_AndroidMediaMediaFormat = MediaFormat.createVideoFormat("video/avc", paramaxqz.jdField_a_of_type_Int, paramaxqz.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Amuy = paramamuy;
+    this.jdField_a_of_type_AndroidMediaMediaFormat = MediaFormat.createVideoFormat("video/avc", paramaxvi.jdField_a_of_type_Int, paramaxvi.jdField_b_of_type_Int);
     this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("color-format", 2130708361);
-    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("bitrate", paramaxqz.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("frame-rate", paramaxqz.d);
-    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("i-frame-interval", paramaxqz.e);
+    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("bitrate", paramaxvi.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("frame-rate", paramaxvi.d);
+    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("i-frame-interval", paramaxvi.e);
     this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createEncoderByType("video/avc");
     this.jdField_a_of_type_AndroidMediaMediaCodec.configure(this.jdField_a_of_type_AndroidMediaMediaFormat, null, null, 1);
     this.jdField_a_of_type_AndroidViewSurface = this.jdField_a_of_type_AndroidMediaMediaCodec.createInputSurface();
@@ -370,13 +370,13 @@ public class VideoEncoderCore
     this.jdField_b_of_type_AndroidMediaMediaCodec.start();
     this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("VideoEncodeThread");
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new amqk(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-    paramamqj = new File(paramaxqz.jdField_a_of_type_JavaLangString);
-    if (!paramamqj.exists()) {
-      bdcs.c(paramamqj.getAbsolutePath());
+    this.jdField_a_of_type_AndroidOsHandler = new amuz(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    paramamuy = new File(paramaxvi.jdField_a_of_type_JavaLangString);
+    if (!paramamuy.exists()) {
+      bdhb.c(paramamuy.getAbsolutePath());
     }
-    this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(paramaxqz.jdField_a_of_type_JavaLangString, 0);
-    this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(paramaxqz.g);
+    this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(paramaxvi.jdField_a_of_type_JavaLangString, 0);
+    this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(paramaxvi.g);
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = -1;
     this.jdField_b_of_type_Boolean = false;

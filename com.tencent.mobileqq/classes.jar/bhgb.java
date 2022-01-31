@@ -1,18 +1,16 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnErrorListener;
-import android.util.Log;
-import com.tencent.qqmini.sdk.runtime.widget.camera.MiniAppCamera;
+import android.view.View;
+import android.view.ViewTreeObserver.OnScrollChangedListener;
+import com.tencent.qqmini.sdk.runtime.core.page.PageWebview;
+import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
 
 public class bhgb
-  implements MediaRecorder.OnErrorListener
+  implements ViewTreeObserver.OnScrollChangedListener
 {
-  public bhgb(MiniAppCamera paramMiniAppCamera, bgkd parambgkd) {}
+  public bhgb(PageWebviewContainer paramPageWebviewContainer) {}
   
-  public void onError(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public void onScrollChanged()
   {
-    Log.i("MiniAppCamera", "onError: " + paramInt1);
-    this.jdField_a_of_type_Bgkd.b();
-    MiniAppCamera.a(this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera);
+    PageWebviewContainer.a(this.a).a().getView().scrollTo(0, 0);
   }
 }
 

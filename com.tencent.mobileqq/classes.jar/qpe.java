@@ -10,7 +10,7 @@ public class qpe
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    arys.a(this.a.this$0, true, "shareToQQ", ReadInJoyDeliverVideoActivity.a(this.a.this$0));
+    asdb.a(this.a.this$0, true, "shareToQQ", ReadInJoyDeliverVideoActivity.a(this.a.this$0));
     this.a.this$0.moveTaskToBack(true);
     this.a.this$0.finish();
   }

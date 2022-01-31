@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import bjxj;
+import bkbq;
 import ors;
 import osm;
 import rom;
@@ -12,7 +12,7 @@ public final class WeishiReportUtil$4
   public void run()
   {
     boolean bool = osm.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing);
-    ron localron = new ron(null, null, null, null).a("folder_status", osm.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing)).a("EnterType", osm.c(this.jdField_a_of_type_Int)).a("is_jump_to_video_content", Integer.valueOf(bjxj.L(ors.a())));
+    ron localron = new ron(null, null, null, null).a("folder_status", osm.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing)).a("EnterType", osm.c(this.jdField_a_of_type_Int)).a("is_jump_to_video_content", Integer.valueOf(bkbq.L(ors.a())));
     if ((bool) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData != null)) {
       localron.a("reddot_style", osm.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData)).a("algorithm_id", osm.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing));
     }

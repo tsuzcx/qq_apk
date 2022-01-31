@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class EcShopData
-  extends awbv
+  extends awge
 {
   public static final String TABLE_NAME = "EcShopData";
   public long bindUin;
@@ -12,7 +12,7 @@ public class EcShopData
   public String mImgInfo = "";
   public long mLastDraftTime;
   public long mLastMsgTime;
-  @awdj
+  @awhs
   public String mUin;
   public String msgId;
 }

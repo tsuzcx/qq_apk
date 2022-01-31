@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.CreateVirtualResult;
-
-public final class bfmp
-  implements Parcelable.Creator<CreateVirtualResult>
+public abstract interface bfmp
 {
-  public CreateVirtualResult a(Parcel paramParcel)
-  {
-    return new CreateVirtualResult(paramParcel);
-  }
+  public abstract void a(String paramString1, String paramString2, String paramString3);
   
-  public CreateVirtualResult[] a(int paramInt)
-  {
-    return new CreateVirtualResult[paramInt];
-  }
+  public abstract void b(String paramString1, String paramString2, String paramString3);
 }
 
 

@@ -1,19 +1,21 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-class avki
-  implements TextWatcher
+public class avki
+  implements alqc
 {
-  avki(avkg paramavkg) {}
+  public avki(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    ausq.a(this.a.f, 90);
+    this.a.a();
+    if (!paramBoolean) {
+      this.a.b(this.a.getString(2131691082));
+    }
+    while ((this.a.e != 1) || (paramInt != 2)) {
+      return;
+    }
+    NearbyPeopleProfileActivity.a(this.a).c();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

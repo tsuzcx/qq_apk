@@ -1,164 +1,36 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import android.graphics.Point;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Set;
-import mqq.util.WeakReference;
+import java.lang.ref.WeakReference;
 
-public class anyk
+class anyk
+  implements bhuk
 {
-  private static anyk jdField_a_of_type_Anyk;
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private static final byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new anyl(this);
-  private Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private WeakReference<anxq> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
-  private WeakReference<aobe> jdField_b_of_type_MqqUtilWeakReference;
-  private boolean jdField_b_of_type_Boolean = true;
+  anyk(anyj paramanyj, Context paramContext, bhuf parambhuf) {}
   
-  public static anyk a()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (jdField_a_of_type_Anyk == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    switch (paramInt)
     {
-      if (jdField_a_of_type_Anyk == null) {
-        jdField_a_of_type_Anyk = new anyk();
-      }
-      return jdField_a_of_type_Anyk;
     }
-  }
-  
-  public Point a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPoint;
-  }
-  
-  public void a()
-  {
-    IntentFilter localIntentFilter = new IntentFilter("key_float_window_position");
-    localIntentFilter.addAction("key_delete_item_call");
-    localIntentFilter.addAction("key_after_sync_msg");
-    try
+    for (;;)
     {
-      BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteQIPCModule", 1, "register broadcast");
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      this.jdField_a_of_type_Bhuf.dismiss();
+      do
       {
-        QLog.e("ColorNoteQIPCModule", 2, "register failed", localException);
+        return;
+        paramView = this.jdField_a_of_type_Anyj.b + this.jdField_a_of_type_Anyj.jdField_a_of_type_JavaLangString;
+      } while ((TextUtils.isEmpty(paramView)) || ((!paramView.startsWith("http://")) && (!paramView.startsWith("https://"))));
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      if ((this.jdField_a_of_type_Anyj.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Anyj.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+        azqs.b((QQAppInterface)this.jdField_a_of_type_Anyj.jdField_a_of_type_JavaLangRefWeakReference.get(), "P_CliOper", "aio_search", "", "aio_hotword", "search_hotword", 0, 0, "", "", this.jdField_a_of_type_Anyj.jdField_a_of_type_JavaLangString, "");
       }
     }
-  }
-  
-  public void a(int paramInt, String paramString, boolean paramBoolean)
-  {
-    a(paramInt, paramString, paramBoolean, 0);
-  }
-  
-  public void a(int paramInt1, String paramString, boolean paramBoolean, int paramInt2)
-  {
-    if (paramInt2 == 2) {
-      return;
-    }
-    paramString = paramInt1 + paramString + paramInt2;
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(paramString);
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilSet.remove(paramString);
-  }
-  
-  public void a(Point paramPoint)
-  {
-    if ((paramPoint != null) && (paramPoint.x != 0) && (paramPoint.y != 0)) {
-      this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-    }
-  }
-  
-  public void a(anxq paramanxq)
-  {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramanxq);
-  }
-  
-  public void a(aobe paramaobe)
-  {
-    this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramaobe);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    anxu.a(paramBoolean);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    anxu.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return anxu.a();
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    return a(paramInt, paramString, 0);
-  }
-  
-  public boolean a(int paramInt1, String paramString, int paramInt2)
-  {
-    return (paramInt2 != 2) && (this.jdField_a_of_type_JavaUtilSet.contains(paramInt1 + paramString + paramInt2));
-  }
-  
-  public void b()
-  {
-    try
-    {
-      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteQIPCModule", 1, "unregister broadcast");
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("ColorNoteQIPCModule", 2, "unregister failed", localException);
-      }
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 

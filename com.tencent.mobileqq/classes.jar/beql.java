@@ -1,42 +1,88 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class beql
-  extends Animation
+public class beql
+  extends bdjz
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private View jdField_a_of_type_AndroidViewView;
-  private int b;
+  Context jdField_a_of_type_AndroidContentContext;
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  String jdField_b_of_type_JavaLangString;
   
-  public beql(View paramView)
+  public beql(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    super(paramContext, 2131755801);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    a();
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void a()
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    this.jdField_a_of_type_AndroidGraphicsCamera.save();
-    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(90.0F * paramFloat);
-    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
-    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int / 2, -this.b / 2);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int / 2, this.b / 2);
-    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560994, null);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377989);
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377997));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364800));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364337));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131698059));
+    setContentView(this.jdField_a_of_type_AndroidViewView);
+    setCancelable(true);
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.width = ((int)(((DisplayMetrics)localObject).widthPixels - bdgz.a(this.jdField_a_of_type_AndroidContentContext, 30.0F)));
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    localObject = getWindow().getAttributes();
+    ((WindowManager.LayoutParams)localObject).gravity = 48;
+    ((WindowManager.LayoutParams)localObject).y = ((int)bdgz.a(this.jdField_a_of_type_AndroidContentContext, 10.0F) + aepi.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
   }
   
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onClick(View paramView)
   {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131364337: 
+      dismiss();
+      return;
+    }
+    paramView = bdib.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString);
+    if (paramView != null)
+    {
+      paramView.c();
+      return;
+    }
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
   }
 }
 

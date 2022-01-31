@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.os.Build.VERSION;
-import azmz;
-import bdcb;
+import azri;
+import bdgk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
@@ -25,15 +25,15 @@ class ReadInJoyWebProcessManager$InitWebProcessRunnable
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-      localHashMap.put("param_totalMem", String.valueOf(bdcb.d()));
-      localHashMap.put("param_availableMem", String.valueOf(bdcb.e()));
-      localHashMap.put("param_cpuNum", String.valueOf(bdcb.b()));
-      localHashMap.put("param_cpuFreq", String.valueOf(bdcb.a()));
+      localHashMap.put("param_totalMem", String.valueOf(bdgk.d()));
+      localHashMap.put("param_availableMem", String.valueOf(bdgk.e()));
+      localHashMap.put("param_cpuNum", String.valueOf(bdgk.b()));
+      localHashMap.put("param_cpuFreq", String.valueOf(bdgk.a()));
       localHashMap.put("param_preloadLevel", String.valueOf(paramInt));
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.ReadInJoyWebProcessManager", 2, "preloadToolProcessReport:" + localHashMap.toString());
       }
-      azmz.a(this.a.getApp()).a(this.a.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
+      azri.a(this.a.getApp()).a(this.a.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
       return;
     }
     catch (Exception localException)

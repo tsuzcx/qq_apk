@@ -1,24 +1,26 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.5.1;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import mqq.app.AppActivity;
 
 public class bbee
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public bbee(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public bbee(TribeVideoPreviewFragment paramTribeVideoPreviewFragment, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (this.a.b == null) {
-      return;
+    paramView = this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity();
+    if (paramView.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.jdField_a_of_type_JavaLangString);
     }
-    this.a.b.post(new TroopAvatarWallPreviewActivity.5.1(this));
+    for (;;)
+    {
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().app, "dc00899", "Grp_tribe", "", "post", "save_video", 0, 0, "", "", "", "");
+      return;
+      paramView.requestPermissions(new bbef(this), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+    }
   }
 }
 

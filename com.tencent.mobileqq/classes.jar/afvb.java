@@ -1,18 +1,51 @@
-import com.tencent.mobileqq.data.MessageForPic;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForLongMsg;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class afvb
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
+  afvb(afuw paramafuw) {}
   
-  public afvb(MessageForPic paramMessageForPic, String paramString, int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.a.a()) {}
+    BaseChatPie localBaseChatPie;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramView = aepi.a(paramView);
+          if ((paramView instanceof MessageForLongMsg)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForLongMsg");
+        return;
+        paramView = (MessageForLongMsg)paramView;
+      } while ((paramView.mSourceMsgInfo == null) || (!(this.a.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)));
+      if (QLog.isColorLevel()) {
+        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: isReplyMsg = true");
+      }
+      localBaseChatPie = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 0) && ((localBaseChatPie instanceof agps)))
+      {
+        ((agps)localBaseChatPie).a(22, paramView.mSourceMsgInfo.origUid, paramView.mSourceMsgInfo.mSourceMsgTime, null);
+        return;
+      }
+    } while (!localBaseChatPie.j());
+    localBaseChatPie.a(22, paramView.mSourceMsgInfo.mSourceMsgSeq, (int)(paramView.shmsgseq - paramView.mSourceMsgInfo.mSourceMsgSeq), paramView);
+    MessageForReplyText.reportReplyMsg(null, "replyMsg_bubble", "clk_original", paramView.frienduin, paramView);
   }
 }
 

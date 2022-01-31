@@ -8,14 +8,14 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.v4.util.MQLruCache;
 import android.util.AttributeSet;
-import bcwc;
-import bhtp;
+import bdal;
+import bhxw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class FixSizeImageView
   extends ThemeImageView
-  implements bhtp
+  implements bhxw
 {
   protected float a;
   protected long a;
@@ -61,7 +61,7 @@ public class FixSizeImageView
     Object localObject = "";
     if (paramLong == 1L)
     {
-      i = 2130849770;
+      i = 2130849843;
       localObject = "StatusIcon_TroopPermanentBlockStatusBigIconKey";
       if (i >= 0) {
         break label58;
@@ -75,7 +75,7 @@ public class FixSizeImageView
       if (paramLong != 2L) {
         break;
       }
-      i = 2130849772;
+      i = 2130849845;
       localObject = "StatusIcon_TroopTmpBlockStatusBigIcon";
       break;
       if (BaseApplicationImpl.sImageCache != null) {
@@ -84,7 +84,7 @@ public class FixSizeImageView
       localBitmap1 = localBitmap2;
       if (localBitmap2 == null)
       {
-        localBitmap2 = bcwc.b(BaseApplicationImpl.getApplication().getResources(), i);
+        localBitmap2 = bdal.b(BaseApplicationImpl.getApplication().getResources(), i);
         localBitmap1 = localBitmap2;
         if (localBitmap2 != null)
         {
@@ -104,7 +104,7 @@ public class FixSizeImageView
   
   protected void a()
   {
-    this.jdField_a_of_type_Bhxo = null;
+    this.jdField_a_of_type_Bibv = null;
   }
   
   public void a(long paramLong)

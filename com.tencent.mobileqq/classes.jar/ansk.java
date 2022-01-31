@@ -1,44 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 
 class ansk
-  extends AnimatorListenerAdapter
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ansk(ansh paramansh, ObjectAnimator paramObjectAnimator, anso paramanso) {}
+  ansk(ansg paramansg, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
   
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "animHolder.animView.startAnimation!");
-    }
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-    }
-    if ((this.jdField_a_of_type_Anso != null) && (this.jdField_a_of_type_Anso.a != null))
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
+    do
     {
-      paramAnimator = "";
-      if (this.jdField_a_of_type_Anso.a.istroop != 0) {
-        break label98;
-      }
-      paramAnimator = "1";
-    }
-    for (;;)
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "Bubble", "Active_dync", paramAnimator, 1, 0, 0, "", String.valueOf(alxl.a(this.jdField_a_of_type_Anso.a.vipBubbleID)), "");
       return;
-      label98:
-      if (this.jdField_a_of_type_Anso.a.istroop == 1) {
-        paramAnimator = "2";
-      } else if (this.jdField_a_of_type_Anso.a.istroop == 3000) {
-        paramAnimator = "3";
-      }
-    }
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-this.jdField_a_of_type_Ansg.a * (1.0F - f));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_Ansg.e);
+    this.b.setAlpha(f);
   }
 }
 

@@ -1,30 +1,28 @@
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 public class ayxb
+  extends aywk
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public boolean c;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public TextView b;
   
-  public ayxb(aywz paramaywz)
+  public ayxb(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    super(paramViewGroup, paramInt);
   }
   
-  public String toString()
+  protected void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("mUnread=" + this.jdField_a_of_type_Long);
-    localStringBuilder.append(",mNewMsg=" + this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("mText=" + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",mIconPath=" + this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("mRedPoint=" + this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(",mTab=" + this.c);
-    localStringBuilder.append(",mType=" + this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131376282));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369384));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131375835));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131368482));
   }
 }
 

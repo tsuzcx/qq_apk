@@ -1,34 +1,59 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
+import android.view.LayoutInflater.Factory2;
+import android.view.View;
 
-final class xph
-  extends xos
+public class xph
+  implements LayoutInflater.Factory2
 {
-  xph(xos paramxos, PublishVideoEntry paramPublishVideoEntry) {}
+  private final LayoutInflater.Factory2 jdField_a_of_type_AndroidViewLayoutInflater$Factory2;
+  private final LayoutInflater.Factory jdField_a_of_type_AndroidViewLayoutInflater$Factory;
+  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  public void onFailure(String paramString)
+  public xph(@NonNull LayoutInflater paramLayoutInflater)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
-    }
-    this.jdField_a_of_type_Xos.onFailure(paramString);
-    if ((this.jdField_a_of_type_Xos instanceof ukz)) {
-      ((ukz)this.jdField_a_of_type_Xos).a(941005);
-    }
-    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio failed message：" + paramString);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
+    this.jdField_a_of_type_AndroidViewLayoutInflater$Factory = paramLayoutInflater.getFactory();
+    this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2 = paramLayoutInflater.getFactory2();
   }
   
-  public void onStart()
+  protected View a(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio start");
+    xpi.a("LayoutModifier", "onCreateViewPrivate " + paramString);
+    return null;
   }
   
-  public void onSuccess(String paramString)
+  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.b;
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio success cost：" + String.valueOf(l1 - l2) + "ms\n");
+    View localView2 = a(paramView, paramString, paramContext, paramAttributeSet);
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = localView2;
+      if (this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2 != null) {
+        localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
+      }
+    }
+    xpi.a("LayoutModifier", "onCreateView " + localView1);
+    return localView1;
+  }
+  
+  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    View localView2 = a(null, paramString, paramContext, paramAttributeSet);
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = localView2;
+      if (this.jdField_a_of_type_AndroidViewLayoutInflater$Factory != null) {
+        localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater$Factory.onCreateView(paramString, paramContext, paramAttributeSet);
+      }
+    }
+    xpi.a("LayoutModifier", "onCreateView " + localView1);
+    return localView1;
   }
 }
 

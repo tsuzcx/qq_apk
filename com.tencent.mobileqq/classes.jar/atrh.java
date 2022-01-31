@@ -1,26 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.8;
 
 public class atrh
-  extends alvc
+  implements DialogInterface.OnClickListener
 {
-  public atrh(LoginWelcomeManager paramLoginWelcomeManager, Bundle paramBundle) {}
+  public atrh(LocationDialogUtil.8 param8) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
-    }
-    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localBundle.putInt("result", i);
-      this.jdField_a_of_type_AndroidOsBundle.putString("uin", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeManager.b();
-      return;
-    }
+    this.a.a.finish();
   }
 }
 

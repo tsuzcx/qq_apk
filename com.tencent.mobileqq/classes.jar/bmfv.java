@@ -1,18 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonCornerLayout;
+import dov.com.qq.im.ptv.LightWeightProgress;
 
-public final class bmfv
-  implements Parcelable.Creator<EditRecordVideoSource>
+public class bmfv
+  extends AnimatorListenerAdapter
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
+  public bmfv(LightWeightCaptureButtonCornerLayout paramLightWeightCaptureButtonCornerLayout) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new EditRecordVideoSource(paramParcel);
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner mProgressView 50ms delay=90ms end");
+    }
   }
   
-  public EditRecordVideoSource[] a(int paramInt)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return new EditRecordVideoSource[paramInt];
+    this.a.a.setStatus(false);
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner mProgressView begin");
+    }
   }
 }
 

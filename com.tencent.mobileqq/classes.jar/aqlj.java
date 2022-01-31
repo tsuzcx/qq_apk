@@ -1,41 +1,35 @@
-import android.content.Intent;
-import android.net.Uri;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.io.File;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-class aqlj
-  implements bhqd
+public class aqlj
+  implements View.OnClickListener
 {
-  aqlj(aqli paramaqli, FileInfo paramFileInfo, bhpy parambhpy) {}
+  public aqlj(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((!arof.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())) || (arof.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())))
-    {
-      arni.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c());
-      this.jdField_a_of_type_Aqli.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
-    }
-    try
-    {
-      paramView = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      paramView.setData(Uri.fromFile(new File(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())));
-      this.jdField_a_of_type_Aqli.a.a.a.sendBroadcast(paramView);
-      label104:
-      this.jdField_a_of_type_Aqli.a.a.f();
-      if (this.jdField_a_of_type_Bhpy.isShowing()) {
-        this.jdField_a_of_type_Bhpy.dismiss();
+    if (!this.a.a()) {
+      if (QLog.isColorLevel()) {
+        QLog.i(FMLocalFileActivity.g, 2, "click too fast , wait a minute.");
       }
-      return;
-      armz.a(2131692486);
-      return;
     }
-    catch (Exception paramView)
+    do
     {
-      break label104;
-    }
+      return;
+      this.a.e();
+      paramView = (arbv)paramView.getTag();
+    } while (paramView.a == 0);
+    int i = paramView.a;
+    paramView = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
+    paramView.putBoolean("last_select_All", true);
+    paramView.commit();
+    FMLocalFileActivity.a(this.a, i);
   }
 }
 

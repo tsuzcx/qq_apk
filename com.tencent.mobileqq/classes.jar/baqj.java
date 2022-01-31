@@ -1,15 +1,10 @@
-class baqj
+public abstract interface baqj
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  axtf jdField_a_of_type_Axtf;
-  String jdField_a_of_type_JavaLangString;
-  byte[] jdField_a_of_type_ArrayOfByte;
-  byte[] b;
-  byte[] c;
-  byte[] d;
+  public abstract void a();
   
-  baqj(baqf parambaqf) {}
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

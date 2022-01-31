@@ -1,37 +1,18 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity;
+import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity.1;
+import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity.1.1.1;
 
 public class bnft
-  implements SurfaceHolder.Callback
+  implements bnhe
 {
-  public bnft(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public bnft(QzoneEditPictureActivity.1 param1) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void l(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.h + ",mSavedPlayState : " + this.a.a(this.a.i));
-    }
-    if ((this.a.i == 1) && (this.a.h > 0))
-    {
-      this.a.a(this.a.h);
-      this.a.h = 0;
-      this.a.i = 0;
-    }
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
-    }
-    this.a.b();
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    if (QzoneEditPictureActivity.a(this.a.this$0).a != null) {
+      QzoneHandlerThreadFactory.getMainHandler().post(new QzoneEditPictureActivity.1.1.1(this));
     }
   }
 }

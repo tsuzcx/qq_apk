@@ -1,39 +1,18 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem.AudioUploadCallback.1;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem.AudioUploadCallback.2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.homework.recite.ui.PinyinTextView;
 
-public final class bcbl
-  implements bjyt
+public class bcbl
 {
-  public bbzr a;
+  public float a;
+  public int a;
+  public float b;
   
-  public bcbl(HWReciteItem paramHWReciteItem, bbzr parambbzr)
-  {
-    this.jdField_a_of_type_Bbzr = parambbzr;
-  }
+  public bcbl(PinyinTextView paramPinyinTextView) {}
   
-  public void a(int paramInt)
+  private void a()
   {
-    HWReciteItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).post(new HWReciteItem.AudioUploadCallback.1(this));
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HWReciteItem", 2, "upload onComplete " + this.jdField_a_of_type_Bbzr.b);
-    }
-    this.jdField_a_of_type_Bbzr.b(paramString);
-    this.jdField_a_of_type_Bbzr.g = 3;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("HWReciteItem", 2, "onError errorCode = " + paramInt);
-    }
-    this.jdField_a_of_type_Bbzr.g = 2;
-    HWReciteItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).post(new HWReciteItem.AudioUploadCallback.2(this));
+    this.jdField_a_of_type_Float = 0.0F;
+    this.b = 0.0F;
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

@@ -1,36 +1,27 @@
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 
-public class alan
-  extends Animation
+class alan
+  implements View.OnClickListener
 {
-  private final int a;
-  private final int b;
-  private final int c;
-  private final int d;
-  private final int e;
-  private final int f;
+  alan(alaj paramalaj) {}
   
-  public alan(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public void onClick(View paramView)
   {
-    this.e = paramInt1;
-    this.f = paramInt2;
-    this.d = paramInt5;
-    this.c = paramInt6;
-    this.a = paramInt3;
-    this.b = paramInt4;
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    float f1 = this.e;
-    float f2 = this.a;
-    float f3 = this.d;
-    float f4 = this.f;
-    float f5 = this.b;
-    float f6 = this.c;
-    paramTransformation.getMatrix().preTranslate((1.0F - paramFloat) * (1.0F - paramFloat) * f1 + 2.0F * paramFloat * (1.0F - paramFloat) * f2 + paramFloat * paramFloat * f3, (1.0F - paramFloat) * (1.0F - paramFloat) * f4 + 2.0F * paramFloat * (1.0F - paramFloat) * f5 + paramFloat * paramFloat * f6);
+    if ((alaj.a(this.a).d()) || (alaj.b(this.a)))
+    {
+      alaj.b(this.a, false);
+      alaj.a(this.a).a();
+      alaj.c(this.a).setVisibility(8);
+      alaj.b(this.a).setVisibility(8);
+    }
+    while (!alaj.a(this.a).c()) {
+      return;
+    }
+    alaj.b(this.a, true);
+    alaj.a(this.a).b();
+    alaj.b(this.a).setVisibility(0);
   }
 }
 

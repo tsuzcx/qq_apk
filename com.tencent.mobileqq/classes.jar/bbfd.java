@@ -1,20 +1,25 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.6;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
 public class bbfd
-  extends AnimatorListenerAdapter
+  implements bhuk
 {
-  public bbfd(TroopBarPublishActivity.6 param6) {}
+  public bbfd(AbsPublishActivity paramAbsPublishActivity, bhuf parambhuf) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.a) {
-      this.a.this$0.s();
+    switch (paramInt)
+    {
     }
-    this.a.this$0.b.requestFocus();
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.e();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_AndroidNetUri = TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new bbfe(this));
+      continue;
+      TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.c);
+    }
   }
 }
 

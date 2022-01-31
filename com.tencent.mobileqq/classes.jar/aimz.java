@@ -1,96 +1,128 @@
-class aimz
-  implements bhqp
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class aimz
+  extends BaseAdapter
 {
-  aimz(aimu paramaimu) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private ArrayList<bdjc> jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.jdField_a_of_type_JavaUtilArrayList;
   
-  /* Error */
-  @android.annotation.TargetApi(11)
-  public void onItemClick(com.tencent.widget.AdapterView<?> paramAdapterView, android.view.View paramView, int paramInt, long paramLong)
+  private aimz(NewStyleCountryActivity paramNewStyleCountryActivity) {}
+  
+  private int a(bdjc parambdjc)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: invokevirtual 29	com/tencent/widget/AdapterView:getAdapter	()Landroid/widget/Adapter;
-    //   4: iload_3
-    //   5: invokeinterface 35 2 0
-    //   10: checkcast 37	java/lang/String
-    //   13: astore_2
-    //   14: aload_0
-    //   15: getfield 12	aimz:a	Laimu;
-    //   18: getfield 43	aimu:mActivity	Lcom/tencent/mobileqq/activity/photo/album/AbstractPhotoPreviewActivity;
-    //   21: checkcast 45	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity
-    //   24: aload_2
-    //   25: invokevirtual 49	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity:getMediaType	(Ljava/lang/String;)I
-    //   28: iconst_1
-    //   29: if_icmpne +87 -> 116
-    //   32: aload_0
-    //   33: getfield 12	aimz:a	Laimu;
-    //   36: getfield 53	aimu:mPhotoCommonData	Laimj;
-    //   39: invokevirtual 58	aimj:a	()Z
-    //   42: ifeq +41 -> 83
-    //   45: new 60	android/media/MediaMetadataRetriever
-    //   48: dup
-    //   49: invokespecial 61	android/media/MediaMetadataRetriever:<init>	()V
-    //   52: astore_1
-    //   53: aload_1
-    //   54: aload_2
-    //   55: invokevirtual 65	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
-    //   58: aload_1
-    //   59: bipush 9
-    //   61: invokevirtual 69	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
-    //   64: pop
-    //   65: aload_1
-    //   66: invokevirtual 72	android/media/MediaMetadataRetriever:release	()V
-    //   69: return
-    //   70: astore_2
-    //   71: aload_1
-    //   72: invokevirtual 72	android/media/MediaMetadataRetriever:release	()V
-    //   75: return
-    //   76: astore_2
-    //   77: aload_1
-    //   78: invokevirtual 72	android/media/MediaMetadataRetriever:release	()V
-    //   81: aload_2
-    //   82: athrow
-    //   83: aload_0
-    //   84: getfield 12	aimz:a	Laimu;
-    //   87: getfield 43	aimu:mActivity	Lcom/tencent/mobileqq/activity/photo/album/AbstractPhotoPreviewActivity;
-    //   90: checkcast 45	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity
-    //   93: getfield 76	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity:mVideoPlayController	Lailq;
-    //   96: ifnull -27 -> 69
-    //   99: aload_0
-    //   100: getfield 12	aimz:a	Laimu;
-    //   103: getfield 43	aimu:mActivity	Lcom/tencent/mobileqq/activity/photo/album/AbstractPhotoPreviewActivity;
-    //   106: checkcast 45	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity
-    //   109: getfield 76	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity:mVideoPlayController	Lailq;
-    //   112: invokevirtual 81	ailq:f	()V
-    //   115: return
-    //   116: aload_0
-    //   117: getfield 12	aimz:a	Laimu;
-    //   120: getfield 84	aimu:a	Laimr;
-    //   123: getfield 90	aimr:showBar	Z
-    //   126: ifeq +17 -> 143
-    //   129: aload_0
-    //   130: getfield 12	aimz:a	Laimu;
-    //   133: getfield 43	aimu:mActivity	Lcom/tencent/mobileqq/activity/photo/album/AbstractPhotoPreviewActivity;
-    //   136: checkcast 45	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity
-    //   139: invokevirtual 93	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity:hideMenuBar	()V
-    //   142: return
-    //   143: aload_0
-    //   144: getfield 12	aimz:a	Laimu;
-    //   147: getfield 43	aimu:mActivity	Lcom/tencent/mobileqq/activity/photo/album/AbstractPhotoPreviewActivity;
-    //   150: checkcast 45	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity
-    //   153: invokevirtual 96	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity:showMenuBar	()V
-    //   156: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	157	0	this	aimz
-    //   0	157	1	paramAdapterView	com.tencent.widget.AdapterView<?>
-    //   0	157	2	paramView	android.view.View
-    //   0	157	3	paramInt	int
-    //   0	157	4	paramLong	long
-    // Exception table:
-    //   from	to	target	type
-    //   53	65	70	java/lang/Exception
-    //   53	65	76	finally
+    if (parambdjc.a) {
+      return 0;
+    }
+    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.equals(""))) {
+      return 0;
+    }
+    String str2 = parambdjc.c;
+    String str3 = parambdjc.b;
+    String str1 = parambdjc.d;
+    parambdjc = str1;
+    if (str1 != null) {
+      parambdjc = str1.toLowerCase();
+    }
+    str1 = ChnToSpell.a(str3, 1);
+    String str4 = ChnToSpell.a(str3, 2);
+    if ((str2.equals(this.jdField_a_of_type_JavaLangString)) || (str3.equals(this.jdField_a_of_type_JavaLangString)) || (str1.equals(this.jdField_a_of_type_JavaLangString)) || (str4.equals(this.jdField_a_of_type_JavaLangString)) || ((parambdjc != null) && (parambdjc.equals(this.jdField_a_of_type_JavaLangString)))) {
+      return 3;
+    }
+    if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str3.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str1.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str4.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || ((parambdjc != null) && (parambdjc.indexOf(this.jdField_a_of_type_JavaLangString) == 0))) {
+      return 2;
+    }
+    if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str3.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str1.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str4.indexOf(this.jdField_a_of_type_JavaLangString) > 0)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public void a(String paramString)
+  {
+    int j = 0;
+    Object localObject = paramString.toLowerCase();
+    paramString = (String)localObject;
+    if (((String)localObject).equals("hk")) {
+      paramString = "xianggang";
+    }
+    localObject = paramString;
+    if (paramString.equals("uk")) {
+      localObject = "united kingdom";
+    }
+    int i;
+    label81:
+    bdjc localbdjc;
+    int k;
+    if (((String)localObject).startsWith(this.jdField_a_of_type_JavaLangString))
+    {
+      paramString = this.jdField_a_of_type_JavaUtilArrayList;
+      this.jdField_a_of_type_JavaLangString = ((String)localObject);
+      localObject = new ArrayList(8);
+      paramString = paramString.iterator();
+      i = 0;
+      if (!paramString.hasNext()) {
+        break label181;
+      }
+      localbdjc = (bdjc)paramString.next();
+      k = a(localbdjc);
+      if (k != 3) {
+        break label141;
+      }
+      ((ArrayList)localObject).add(j, localbdjc);
+      j += 1;
+    }
+    for (;;)
+    {
+      break label81;
+      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.jdField_a_of_type_JavaUtilArrayList;
+      break;
+      label141:
+      if (k == 2)
+      {
+        ((ArrayList)localObject).add(i + j, localbdjc);
+        i += 1;
+      }
+      else if (k == 1)
+      {
+        ((ArrayList)localObject).add(localbdjc);
+      }
+    }
+    label181:
+    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null)
+    {
+      localView = NewStyleCountryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity, paramViewGroup, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.getLayoutInflater(), true);
+      localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.a(localView, (bdjc)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+    return localView;
   }
 }
 

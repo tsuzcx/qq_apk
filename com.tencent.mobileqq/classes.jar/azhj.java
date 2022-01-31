@@ -1,104 +1,35 @@
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.view.Surface;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
-
-@TargetApi(14)
 public class azhj
-  implements SurfaceTexture.OnFrameAvailableListener
 {
-  SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  public Surface a;
-  azhk jdField_a_of_type_Azhk;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-  EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-  EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
-  boolean jdField_a_of_type_Boolean;
+  private double a;
+  public int a;
+  public int b;
   
-  public azhj()
+  public azhj() {}
+  
+  public azhj(int paramInt1, int paramInt2)
   {
-    a();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Double = (paramInt1 / paramInt2);
   }
   
-  void a()
+  public boolean equals(Object paramObject)
   {
-    this.jdField_a_of_type_Azhk = new azhk();
-    this.jdField_a_of_type_Azhk.a();
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Azhk.a());
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 != null)
+    if (this == paramObject) {}
+    do
     {
-      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext().equals(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+      return true;
+      if (!(paramObject instanceof azhj)) {
+        return false;
       }
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
-    }
-    this.jdField_a_of_type_AndroidViewSurface.release();
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = null;
-    this.jdField_a_of_type_Azhk = null;
-    this.jdField_a_of_type_AndroidViewSurface = null;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+      paramObject = (azhj)paramObject;
+    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b));
+    return false;
   }
   
-  @SuppressLint({"NewApi"})
-  public void c()
+  public String toString()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      for (;;)
-      {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (!bool) {
-          try
-          {
-            this.jdField_a_of_type_JavaLangObject.wait(5000L);
-            if (!this.jdField_a_of_type_Boolean) {
-              throw new RuntimeException("Surface frame wait timed out");
-            }
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            Thread.currentThread().interrupt();
-          }
-        }
-      }
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Azhk.a("before updateTexImage");
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Azhk.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-  }
-  
-  public void onFrameAvailable(SurfaceTexture arg1)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
-      }
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangObject.notifyAll();
+    return "CustomSize[width=" + this.jdField_a_of_type_Int + ", height=" + this.b + ", scaleWH='" + this.jdField_a_of_type_Double + ']';
   }
 }
 

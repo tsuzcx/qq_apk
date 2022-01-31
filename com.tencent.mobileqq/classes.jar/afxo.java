@@ -1,16 +1,38 @@
-import android.content.Context;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class afxo
-  extends StructingMsgItemBuilder
+final class afxo
+  implements DialogInterface.OnClickListener
 {
-  public afxo(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  afxo(QQAppInterface paramQQAppInterface, int paramInt1, Activity paramActivity, int paramInt2) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    if (true == afxl.a) {
+      afxl.a = false;
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      QLog.d("vaspoke", 4, "dialogInterfaceOnClick mApp is null.");
+    }
+    while (((2 != this.jdField_a_of_type_Int) && (4 != this.jdField_a_of_type_Int)) || (paramInt != 1)) {
+      return;
+    }
+    if (2 == this.jdField_a_of_type_Int)
+    {
+      bdun.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000515", "LTMCLUB", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695593), "");
+      VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "vip", "", "", "", "", 0, 0, 0, 0);
+      return;
+    }
+    bdun.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131720522), "");
+    VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "svip", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

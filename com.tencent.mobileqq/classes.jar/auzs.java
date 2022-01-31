@@ -1,30 +1,10 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.view.View;
 
-class auzs
-  implements bevy
+public abstract interface auzs
 {
-  auzs(auzr paramauzr) {}
+  public abstract void a(View paramView);
   
-  public void a(BaseResp paramBaseResp)
-  {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label59;
-      }
-      if (this.a.jdField_a_of_type_Auzu != null) {
-        this.a.jdField_a_of_type_Auzu.a(true);
-      }
-    }
-    label59:
-    while (this.a.jdField_a_of_type_Auzu == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Auzu.a(false);
-  }
+  public abstract void a(View paramView, auzv paramauzv);
 }
 
 

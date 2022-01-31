@@ -1,12 +1,12 @@
 package com.tencent.open.downloadnew;
 
 import android.app.Activity;
-import bfko;
+import bfox;
 
 public class MyAppApi$3
   implements Runnable
 {
-  public MyAppApi$3(bfko parambfko, Activity paramActivity) {}
+  public MyAppApi$3(bfox parambfox, Activity paramActivity) {}
   
   public void run()
   {

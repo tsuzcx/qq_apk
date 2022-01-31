@@ -1,32 +1,22 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
-class alrs
-  implements aubn
+public class alrs
+  implements alpg
 {
-  alrs(alro paramalro) {}
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public void a(int paramInt)
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    boolean bool1 = alro.b(this.a);
-    alro.a(this.a, false);
-    boolean bool2 = this.a.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "onBindStateChanged last:" + bool1 + "  now:" + bool2);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
     }
-    if (bool1 != bool2) {
-      ((FriendListHandler)alro.a(this.a).a(1)).notifyUI(92, true, null);
-    }
+    b(paramBoolean, paramObject);
   }
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt) {}
 }
 
 

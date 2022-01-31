@@ -1,18 +1,89 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiOperationInfo;
+import android.app.Activity;
+import android.content.IntentFilter;
+import android.view.KeyEvent;
+import cooperation.qzone.util.QZLog;
 
-public final class bjhg
-  implements Parcelable.Creator<WeishiOperationInfo>
+public class bjhg
 {
-  public WeishiOperationInfo a(Parcel paramParcel)
+  public static String a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  public bjhi a;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
+  private boolean d;
+  
+  static
   {
-    return new WeishiOperationInfo(paramParcel);
+    jdField_a_of_type_JavaLangString = "WatchActivityManager";
   }
   
-  public WeishiOperationInfo[] a(int paramInt)
+  public bjhg()
   {
-    return new WeishiOperationInfo[paramInt];
+    this.jdField_a_of_type_Bjhi = new bjhi(this, null);
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.c = false;
+    this.d = false;
+  }
+  
+  private void e()
+  {
+    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    {
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_Bjhi, localIntentFilter);
+    }
+  }
+  
+  private void f()
+  {
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_Bjhi);
+    }
+  }
+  
+  public void a()
+  {
+    d();
+  }
+  
+  public void a(int paramInt, KeyEvent paramKeyEvent)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.c = true;
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    e();
+  }
+  
+  public boolean a()
+  {
+    QZLog.i(jdField_a_of_type_JavaLangString, 4, "ljh, mActivityStopped = " + this.d + ", mPressScreenOff = " + this.jdField_a_of_type_Boolean + ", mPressMenuKey = " + this.c + ", mPressHomeKey = " + this.b);
+    return (this.d) && (!this.jdField_a_of_type_Boolean) && (!this.c) && (!this.b);
+  }
+  
+  public void b()
+  {
+    this.d = true;
+  }
+  
+  public void c()
+  {
+    f();
   }
 }
 

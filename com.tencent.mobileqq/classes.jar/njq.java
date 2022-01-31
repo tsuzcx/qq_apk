@@ -11,7 +11,7 @@ class njq
   
   public void onClick(View paramView)
   {
-    yqb.a((BaseActivity)this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangRefWeakReference.get(), new yqd(this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nin.a(this.jdField_a_of_type_Nin), this.jdField_a_of_type_Int);
+    yuq.a((BaseActivity)this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangRefWeakReference.get(), new yus(this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nin.a(this.jdField_a_of_type_Nin), this.jdField_a_of_type_Int);
     nin.a(this.jdField_a_of_type_Nin, this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString);
   }
 }

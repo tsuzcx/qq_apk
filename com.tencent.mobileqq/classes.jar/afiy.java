@@ -1,35 +1,20 @@
+import android.graphics.Bitmap;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
 class afiy
-  implements agbp
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  afiy(afiw paramafiw, afiv paramafiv, MessageForPoke paramMessageForPoke) {}
+  afiy(afix paramafix) {}
   
-  public void a()
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("placeholder", 2, "HIDE_PLACEHOLDER Unlimited 3");
-    }
-    afss.a().a(20);
-    this.jdField_a_of_type_Afiv.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_Afiv.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Afiv.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-    this.jdField_a_of_type_Afiv.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Afiv.b == afij.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Afiw.a.a instanceof ChatHistoryActivity)) && (!afij.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Afiv.c.setVisibility(0);
-    }
-    for (;;)
+    if (paramBitmap != null)
     {
-      this.jdField_a_of_type_Afiv.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Afiv.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-      return;
-      this.jdField_a_of_type_Afiv.c.setVisibility(8);
+      this.a.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
     }
   }
 }

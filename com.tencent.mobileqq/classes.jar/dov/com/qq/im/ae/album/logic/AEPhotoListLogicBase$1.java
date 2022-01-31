@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.album.logic;
 
 import android.support.v7.widget.GridLayoutManager;
-import bkme;
-import bkna;
+import bkql;
+import bkrh;
 import mqq.util.WeakReference;
 
 public class AEPhotoListLogicBase$1
   implements Runnable
 {
-  public AEPhotoListLogicBase$1(bkna parambkna, int paramInt) {}
+  public AEPhotoListLogicBase$1(bkrh parambkrh, int paramInt) {}
   
   public void run()
   {
-    ((bkme)this.this$0.a.get()).a.scrollToPositionWithOffset(this.a, 0);
+    ((bkql)this.this$0.a.get()).a.scrollToPositionWithOffset(this.a, 0);
   }
 }
 

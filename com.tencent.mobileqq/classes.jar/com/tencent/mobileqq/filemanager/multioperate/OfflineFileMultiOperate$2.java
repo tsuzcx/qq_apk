@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.multioperate;
 
-import aqns;
-import arky;
-import arld;
+import aqsb;
+import arph;
+import arpm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import java.util.List;
 public class OfflineFileMultiOperate$2
   implements Runnable
 {
-  public OfflineFileMultiOperate$2(arky paramarky, List paramList, arld paramarld) {}
+  public OfflineFileMultiOperate$2(arph paramarph, List paramList, arpm paramarpm) {}
   
   public void run()
   {
@@ -27,11 +27,11 @@ public class OfflineFileMultiOperate$2
         if (QLog.isDevelopLevel()) {
           QLog.d("OfflineFileMultiOperate", 1, "ChatHistory entity[" + localFileManagerEntity.getId() + "] del File:" + localFileManagerEntity.nSessionId);
         }
-        arky.a(this.this$0).a().b(localFileManagerEntity.nSessionId);
+        arph.a(this.this$0).a().b(localFileManagerEntity.nSessionId);
       }
     }
-    if (this.jdField_a_of_type_Arld != null) {
-      this.jdField_a_of_type_Arld.a(3, 0);
+    if (this.jdField_a_of_type_Arpm != null) {
+      this.jdField_a_of_type_Arpm.a(3, 0);
     }
   }
 }

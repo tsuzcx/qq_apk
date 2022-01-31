@@ -1,22 +1,18 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.List;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.triton.sdk.callback.DialogCallback;
 
 class bgyc
-  implements AsyncResult
+  implements DialogInterface.OnClickListener
 {
-  bgyc(bgya parambgya, List paramList) {}
+  bgyc(bgya parambgya, DialogCallback paramDialogCallback) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      QMLog.d("MiniProgramReporter", "performDataReportViaSSO  onDcReport() called with: isSuc = [true], ret = [" + paramJSONObject + "]");
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqTritonSdkCallbackDialogCallback.onConfirm();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    QMLog.e("MiniProgramReporter", "performDataReportViaSSO onDcReport: sso command failed, try again");
-    this.jdField_a_of_type_Bgya.b(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

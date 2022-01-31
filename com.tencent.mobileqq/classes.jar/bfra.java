@@ -1,8 +1,19 @@
-public abstract interface bfra
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.model.VirtualInfo;
+
+public final class bfra
+  implements Parcelable.Creator<VirtualInfo>
 {
-  public abstract boolean isMultiVideoMsgSupport(int paramInt);
+  public VirtualInfo a(Parcel paramParcel)
+  {
+    return new VirtualInfo(paramParcel);
+  }
   
-  public abstract boolean isSharpVideoMsgSupport(int paramInt);
+  public VirtualInfo[] a(int paramInt)
+  {
+    return new VirtualInfo[paramInt];
+  }
 }
 
 

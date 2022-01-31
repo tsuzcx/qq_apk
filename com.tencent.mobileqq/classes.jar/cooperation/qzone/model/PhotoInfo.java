@@ -6,19 +6,19 @@ import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjgt;
-import bjqf;
+import bjla;
+import bjum;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.util.WeakReference;
-import zeo;
+import zjd;
 
 public class PhotoInfo
-  extends zeo
+  extends zjd
   implements Parcelable
 {
-  public static final Parcelable.Creator<PhotoInfo> CREATOR = new bjgt();
+  public static final Parcelable.Creator<PhotoInfo> CREATOR = new bjla();
   public static int l;
   public static int m;
   public static int n;
@@ -180,7 +180,7 @@ public class PhotoInfo
   
   public boolean b()
   {
-    if (!bjqf.a().b()) {}
+    if (!bjum.a().b()) {}
     while ((this.jdField_i_of_type_Int != 32) && (this.jdField_i_of_type_Int != 16)) {
       return false;
     }

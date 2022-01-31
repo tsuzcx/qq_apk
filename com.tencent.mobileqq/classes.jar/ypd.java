@@ -1,98 +1,33 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import java.util.List;
 
 public class ypd
-  extends BaseAdapter
-  implements bhpo
+  extends FragmentPagerAdapter
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  
-  private ypd(MoveFileActivity paramMoveFileActivity) {}
+  public ypd(RelativePersonalBottomView paramRelativePersonalBottomView, FragmentManager paramFragmentManager)
+  {
+    super(paramFragmentManager);
+  }
   
   public int getCount()
   {
-    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).size();
+    return RelativePersonalBottomView.a(this.a).size();
   }
   
-  public Object getItem(int paramInt)
+  public Fragment getItem(int paramInt)
   {
-    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null)
-    {
-      paramViewGroup = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getLayoutInflater().inflate(2131560443, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity), false);
-      paramView = new ype(null);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131366616));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131366615));
-      paramView.b = ((TextView)paramViewGroup.findViewById(2131364244));
-      paramViewGroup.setTag(paramView);
+    if (paramInt < RelativePersonalBottomView.a(this.a).size()) {
+      return (Fragment)RelativePersonalBottomView.a(this.a).get(paramInt);
     }
-    paramView = (ype)paramViewGroup.getTag();
-    bbnr localbbnr = (bbnr)MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
-    if (localbbnr != null)
-    {
-      if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, paramInt)) {
-        break label162;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localbbnr.c);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843300);
-    }
-    while (paramInt == MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity))
-    {
-      paramView.b.setVisibility(0);
-      return paramViewGroup;
-      label162:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131707278));
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843302);
-    }
-    paramView.b.setVisibility(4);
-    return paramViewGroup;
+    return null;
   }
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public int getItemPosition(Object paramObject)
   {
-    this.b = paramInt3;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      QLog.e("IphoneTitleBarActivity", 4, "onScrollStateChanged=SCROLL_STATE_IDLE");
-      if (this.jdField_a_of_type_Int == this.b - 2)
-      {
-        if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity)) {
-          break label44;
-        }
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(true);
-      }
-    }
-    label44:
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(false);
-    } while (bcjk.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a) == 0);
-    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a();
+    return -2;
   }
 }
 

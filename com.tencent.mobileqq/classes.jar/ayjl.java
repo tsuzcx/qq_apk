@@ -1,27 +1,22 @@
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
-public abstract interface ayjl
-  extends ayji
+public class ayjl
+  extends ClickableSpan
 {
-  public abstract int a();
+  public ayjl(UniteSearchActivity paramUniteSearchActivity) {}
   
-  public abstract CharSequence a();
+  public void onClick(View paramView)
+  {
+    this.a.openContextMenu(this.a.a);
+  }
   
-  public abstract String a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(View paramView);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract CharSequence b();
-  
-  public abstract CharSequence c();
-  
-  public abstract CharSequence d();
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 

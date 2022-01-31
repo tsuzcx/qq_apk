@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import acna;
-import amnr;
+import acrp;
+import amsg;
 
 public class Conversation$18$1
   implements Runnable
 {
-  public Conversation$18$1(acna paramacna) {}
+  public Conversation$18$1(acrp paramacrp) {}
   
   public void run()
   {
-    amnr.a().a(this.a.a.a);
+    amsg.a().a(this.a.a.a);
   }
 }
 

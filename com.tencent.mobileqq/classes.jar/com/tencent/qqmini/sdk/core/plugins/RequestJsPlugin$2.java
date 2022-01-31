@@ -3,10 +3,10 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import bghn;
-import bgkd;
-import bgkz;
-import bgyd;
+import bglu;
+import bgok;
+import bgpg;
+import bhck;
 import com.tencent.qqmini.sdk.core.proxy.WebSocketProxy.WebSocketListener;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.List;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 class RequestJsPlugin$2
   implements WebSocketProxy.WebSocketListener
 {
-  RequestJsPlugin$2(RequestJsPlugin paramRequestJsPlugin, bgkd parambgkd, RequestJsPlugin.WebsocketRequestTask paramWebsocketRequestTask) {}
+  RequestJsPlugin$2(RequestJsPlugin paramRequestJsPlugin, bgok parambgok, RequestJsPlugin.WebsocketRequestTask paramWebsocketRequestTask) {}
   
   public void onClose(int paramInt1, int paramInt2, String paramString)
   {
@@ -41,7 +41,7 @@ class RequestJsPlugin$2
           paramString.put("state", "close");
           paramString.put("statusCode", paramInt2);
           this.val$req.a.a("onSocketTaskStateChange", paramString.toString(), 0);
-          bgyd.a(this.this$0.mMiniAppInfo, 634, null, null, null, 0, bgyd.a(this.this$0.mMiniAppInfo), 0L, RequestJsPlugin.access$100(this.val$websocketRequestTask.mUrl));
+          bhck.a(this.this$0.mMiniAppInfo, 634, null, null, null, 0, bhck.a(this.this$0.mMiniAppInfo), 0L, RequestJsPlugin.access$100(this.val$websocketRequestTask.mUrl));
           return;
         }
         JSONObject localJSONObject = new JSONObject();
@@ -126,15 +126,15 @@ class RequestJsPlugin$2
     //   55: ifeq +40 -> 95
     //   58: aload_0
     //   59: getfield 16	com/tencent/qqmini/sdk/core/plugins/RequestJsPlugin$2:this$0	Lcom/tencent/qqmini/sdk/core/plugins/RequestJsPlugin;
-    //   62: getfield 205	com/tencent/qqmini/sdk/core/plugins/RequestJsPlugin:mMiniAppContext	Lbgho;
+    //   62: getfield 205	com/tencent/qqmini/sdk/core/plugins/RequestJsPlugin:mMiniAppContext	Lbglv;
     //   65: aload_2
-    //   66: getstatic 209	bglb:a	I
+    //   66: getstatic 209	bgpi:a	I
     //   69: ldc 192
     //   71: aload_3
-    //   72: invokestatic 212	bglb:a	(Lbgho;[BILjava/lang/String;Lorg/json/JSONObject;)V
+    //   72: invokestatic 212	bgpi:a	(Lbglv;[BILjava/lang/String;Lorg/json/JSONObject;)V
     //   75: aload_0
-    //   76: getfield 18	com/tencent/qqmini/sdk/core/plugins/RequestJsPlugin$2:val$req	Lbgkd;
-    //   79: getfield 110	bgkd:a	Lbghn;
+    //   76: getfield 18	com/tencent/qqmini/sdk/core/plugins/RequestJsPlugin$2:val$req	Lbgok;
+    //   79: getfield 110	bgok:a	Lbglu;
     //   82: ldc 112
     //   84: aload_3
     //   85: invokevirtual 113	org/json/JSONObject:toString	()Ljava/lang/String;
@@ -143,12 +143,12 @@ class RequestJsPlugin$2
     //   94: return
     //   95: aload_0
     //   96: getfield 16	com/tencent/qqmini/sdk/core/plugins/RequestJsPlugin$2:this$0	Lcom/tencent/qqmini/sdk/core/plugins/RequestJsPlugin;
-    //   99: getfield 205	com/tencent/qqmini/sdk/core/plugins/RequestJsPlugin:mMiniAppContext	Lbgho;
+    //   99: getfield 205	com/tencent/qqmini/sdk/core/plugins/RequestJsPlugin:mMiniAppContext	Lbglv;
     //   102: aload_2
-    //   103: getstatic 215	bglb:b	I
+    //   103: getstatic 215	bgpi:b	I
     //   106: ldc 192
     //   108: aload_3
-    //   109: invokestatic 212	bglb:a	(Lbgho;[BILjava/lang/String;Lorg/json/JSONObject;)V
+    //   109: invokestatic 212	bgpi:a	(Lbglv;[BILjava/lang/String;Lorg/json/JSONObject;)V
     //   112: goto -37 -> 75
     //   115: astore_2
     //   116: ldc 28
@@ -184,9 +184,9 @@ class RequestJsPlugin$2
       localJSONObject.put("socketTaskId", this.val$websocketRequestTask.mTaskId);
       localJSONObject.put("state", "open");
       localJSONObject.put("statusCode", paramInt2);
-      localJSONObject.put("header", bgkz.a(paramMap));
+      localJSONObject.put("header", bgpg.a(paramMap));
       this.val$req.a.a("onSocketTaskStateChange", localJSONObject.toString(), 0);
-      bgyd.a(this.this$0.mMiniAppInfo, 632, null, null, null, 0, bgyd.a(this.this$0.mMiniAppInfo), 0L, RequestJsPlugin.access$100(this.val$websocketRequestTask.mUrl));
+      bhck.a(this.this$0.mMiniAppInfo, 632, null, null, null, 0, bhck.a(this.this$0.mMiniAppInfo), 0L, RequestJsPlugin.access$100(this.val$websocketRequestTask.mUrl));
       return;
     }
     catch (JSONException paramMap)

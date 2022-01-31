@@ -1,26 +1,39 @@
-import com.tencent.mobileqq.qipc.QIPCModule;
+import android.hardware.Camera.PreviewCallback;
+import android.media.Image;
+import android.media.Image.Plane;
+import android.media.ImageReader;
+import android.media.ImageReader.OnImageAvailableListener;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import java.nio.ByteBuffer;
 
 public class azfk
+  implements ImageReader.OnImageAvailableListener
 {
-  private static volatile azfk jdField_a_of_type_Azfk;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new azfl(this, "Module_VideoPlayIPCServer");
+  public azfk(Camera2Control paramCamera2Control) {}
   
-  public static azfk a()
+  public void onImageAvailable(ImageReader paramImageReader)
   {
-    if (jdField_a_of_type_Azfk == null) {}
     try
     {
-      if (jdField_a_of_type_Azfk == null) {
-        jdField_a_of_type_Azfk = new azfk();
+      paramImageReader = paramImageReader.acquireNextImage();
+      if (paramImageReader != null)
+      {
+        Camera.PreviewCallback localPreviewCallback = Camera2Control.a(this.a);
+        if (localPreviewCallback != null)
+        {
+          ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
+          byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
+          localByteBuffer.get(arrayOfByte);
+          localPreviewCallback.onPreviewFrame(arrayOfByte, null);
+        }
+        paramImageReader.close();
       }
-      return jdField_a_of_type_Azfk;
+      return;
     }
-    finally {}
-  }
-  
-  public QIPCModule a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
+    catch (Exception paramImageReader)
+    {
+      azfu.a(1, "[Camera2] onImageAvailable mPreviewReader exception:" + paramImageReader);
+    }
   }
 }
 

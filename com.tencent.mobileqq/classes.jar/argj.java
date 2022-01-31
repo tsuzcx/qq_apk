@@ -1,21 +1,140 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.TbsReaderView;
+import java.io.File;
 
-class argj
-  implements INetEventHandler
+public class argj
 {
-  argj(argh paramargh) {}
+  private static argj jdField_a_of_type_Argj;
+  private int jdField_a_of_type_Int = -1;
+  private TbsReaderView jdField_a_of_type_ComTencentSmttSdkTbsReaderView;
+  private TbsReaderView b;
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public static argj a()
   {
-    if (AppNetConnInfo.isWifiConn())
+    if (jdField_a_of_type_Argj == null) {
+      jdField_a_of_type_Argj = new argj();
+    }
+    return jdField_a_of_type_Argj;
+  }
+  
+  public TbsReaderView a(Activity paramActivity, String paramString, argp paramargp)
+  {
+    if ((this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView != null) && (paramActivity.hashCode() == this.jdField_a_of_type_Int)) {
+      return this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView;
+    }
+    if (!arso.b(paramString)) {
+      return null;
+    }
+    if (this.b != null)
+    {
+      this.b.onStop();
+      this.b = null;
+    }
+    if (this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView != null)
+    {
+      this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView.onStop();
+      this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView = null;
+    }
+    QLog.w("LocalTbsViewManager<FileAssistant>", 4, "initVarView: new TbsReaderView");
+    this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView = new TbsReaderView(paramActivity, new argk(this, paramActivity, paramargp, paramString));
+    QLog.w("LocalTbsViewManager<FileAssistant>", 4, "initVarView: TbsReaderView openFile");
+    this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView.setBackgroundColor(-1);
+    Object localObject = arso.a(paramString);
+    paramargp = (argp)localObject;
+    if (((String)localObject).startsWith(".")) {
+      paramargp = ((String)localObject).replaceFirst(".", "");
+    }
+    if (this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView.preOpen(paramargp, false))
+    {
+      paramargp = new Bundle();
+      paramargp.putString("filePath", paramString);
+      paramString = arqx.a().b();
+      localObject = new File(paramString);
+      if (!((File)localObject).exists()) {
+        ((File)localObject).mkdirs();
+      }
+      paramargp.putString("tempPath", paramString);
+      this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView.openFile(paramargp);
+      this.jdField_a_of_type_Int = paramActivity.hashCode();
+      return this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView;
+    }
+    this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView.onStop();
+    this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView = null;
+    return null;
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    int i = paramActivity.hashCode();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LocalTbsViewManager<FileAssistant>", 4, "LocalTbsViewManager destroy hashCode[" + this.jdField_a_of_type_Int + "],activity[" + i + "]");
+    }
+    if (this.jdField_a_of_type_Int != i) {}
+    do
+    {
+      return;
+      if (this.b != null)
+      {
+        this.b.onStop();
+        this.b = null;
+      }
+    } while (this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView == null);
+    this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView.onStop();
+    this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView = null;
+  }
+  
+  public boolean a(Activity paramActivity, String paramString, argp paramargp, boolean paramBoolean)
+  {
+    if (this.b != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "网络切换到Wifi网络");
+        QLog.d("zivonchen", 2, "canOpenFile return 2-------");
       }
-      QQToast.a(this.a.a, 2131694494, 0).a();
+      this.b.onStop();
+      this.b = null;
+    }
+    if (TextUtils.isEmpty(paramString))
+    {
+      if (paramargp != null) {
+        paramargp.b(false);
+      }
+      return false;
+    }
+    TbsReaderView localTbsReaderView = new TbsReaderView(paramActivity, new argo(this, paramargp));
+    paramActivity = arso.a(paramString);
+    if (paramActivity.startsWith(".")) {
+      paramActivity = paramActivity.replaceFirst(".", "");
+    }
+    for (;;)
+    {
+      if (!paramBoolean) {}
+      for (boolean bool = true;; bool = false)
+      {
+        if (localTbsReaderView.preOpen(paramActivity, bool)) {
+          break label152;
+        }
+        localTbsReaderView.onStop();
+        if (paramargp != null) {
+          paramargp.b(false);
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i("LocalTbsViewManager<FileAssistant>", 1, "pre open file false!");
+        return false;
+      }
+      label152:
+      if ((paramBoolean) && (paramargp != null)) {
+        paramargp.b(true);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("LocalTbsViewManager<FileAssistant>", 1, "pre open file true! wait callback!");
+      }
+      this.b = localTbsReaderView;
+      return true;
     }
   }
 }

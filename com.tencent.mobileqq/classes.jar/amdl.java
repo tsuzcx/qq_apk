@@ -1,27 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.GetConfig;
-import com.tencent.mobileqq.config.ResourcePluginListener;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class amdl
-  extends ResourcePluginListener
+class amdl
+  implements bdtn
 {
-  private amdl(GetConfig paramGetConfig) {}
+  amdl(amdj paramamdj, baoo parambaoo, Context paramContext, Bundle paramBundle) {}
   
-  public void a(byte paramByte)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (this.a.b == 44)
+    QLog.e("Theme.ThemeHandler", 1, "onQueryItemVer: " + paramInt + "," + paramString1 + "," + paramString2);
+    if (paramInt == 0)
     {
-      if ((paramByte != 2) && (paramByte == 3)) {}
-      this.a.a.app.c(GetConfig.a(this.a));
-      this.a.a(7);
+      this.jdField_a_of_type_Baoo.a(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2);
+      this.jdField_a_of_type_AndroidOsBundle.putString("themePath", this.jdField_a_of_type_Baoo.d());
+      amdj.a(this.jdField_a_of_type_Amdj, this.jdField_a_of_type_AndroidOsBundle);
+      return;
     }
-  }
-  
-  public void b(byte paramByte)
-  {
-    if ((paramByte != 2) && (paramByte == 3)) {}
-    this.a.a.app.d(this);
+    this.jdField_a_of_type_AndroidOsBundle.putString("themeId", "1000");
+    this.jdField_a_of_type_AndroidOsBundle.remove("themePath");
+    amdj.a(this.jdField_a_of_type_Amdj, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

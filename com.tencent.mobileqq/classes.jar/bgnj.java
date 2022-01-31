@@ -1,45 +1,30 @@
-import android.os.Build.VERSION;
-import android.view.Surface;
+import java.io.ByteArrayOutputStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 
-public abstract interface bgnj
+class bgnj
+  extends ByteArrayOutputStream
 {
-  public static final boolean a;
-  
-  static
+  bgnj(bgni parambgni, int paramInt)
   {
-    if ((Build.VERSION.SDK_INT >= 16) && (Build.VERSION.SDK_INT < 23)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a = bool;
-      return;
-    }
+    super(paramInt);
   }
   
-  public abstract void pause();
-  
-  public abstract void prepareAsync();
-  
-  public abstract void reset();
-  
-  public abstract void seekTo(long paramLong);
-  
-  public abstract void setDataSource(String paramString);
-  
-  public abstract void setLooping(boolean paramBoolean);
-  
-  public abstract void setOnBufferingUpdateListener(bgnk parambgnk);
-  
-  public abstract void setOnCompletionListener(bgnl parambgnl);
-  
-  public abstract void setOnErrorListener(bgnm parambgnm);
-  
-  public abstract void setOnPreparedListener(bgnp parambgnp);
-  
-  public abstract void setSurface(Surface paramSurface);
-  
-  public abstract void start();
-  
-  public abstract void stop();
+  public String toString()
+  {
+    if ((this.count > 0) && (this.buf[(this.count - 1)] == 13)) {}
+    for (int i = this.count - 1;; i = this.count) {
+      try
+      {
+        String str = new String(this.buf, 0, i, bgni.a(this.a).name());
+        return str;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        throw new AssertionError(localUnsupportedEncodingException);
+      }
+    }
+  }
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.jsp;
 
-import atfs;
-import bczk;
-import becq;
+import atkb;
+import bddt;
+import begz;
 import org.json.JSONObject;
 
 public class UiApiPlugin$8
@@ -13,7 +13,7 @@ public class UiApiPlugin$8
   public void run()
   {
     this.this$0.i = this.a.optString("callback");
-    bczk.a(this.this$0.mRuntime.a(), new atfs(this));
+    bddt.a(this.this$0.mRuntime.a(), new atkb(this));
   }
 }
 

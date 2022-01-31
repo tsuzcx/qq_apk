@@ -2,8 +2,8 @@ package com.tencent.mobileqq.intervideo.huiyin;
 
 import android.net.Uri;
 import android.util.Log;
-import asxe;
-import asxf;
+import atbn;
+import atbo;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,24 +11,24 @@ import java.util.Map;
 public final class FileUploadUtil$1
   implements Runnable
 {
-  public FileUploadUtil$1(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, asxf paramasxf) {}
+  public FileUploadUtil$1(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, atbo paramatbo) {}
   
   public void run()
   {
-    asxe.a(asxe.a());
+    atbn.a(atbn.a());
     HashMap localHashMap = new HashMap();
-    asxe.b("sex=" + this.jdField_a_of_type_JavaLangString + ";user_name=" + this.b + ";ilive_tinyid=" + this.c + ";ilive_a2=" + this.d + ";ilive_login_type=0;ilive_uin=" + this.e + ";");
+    atbn.b("sex=" + this.jdField_a_of_type_JavaLangString + ";user_name=" + this.b + ";ilive_tinyid=" + this.c + ";ilive_a2=" + this.d + ";ilive_login_type=0;ilive_uin=" + this.e + ";");
     localHashMap.put("sex", this.jdField_a_of_type_JavaLangString);
     localHashMap.put("voice_word", Uri.encode(this.f));
     try
     {
-      asxe.a(this.g, localHashMap, new File(this.h), this.jdField_a_of_type_Asxf);
+      atbn.a(this.g, localHashMap, new File(this.h), this.jdField_a_of_type_Atbo);
       return;
     }
     catch (Exception localException)
     {
       Log.e("HuiyinFileUpload", localException.getLocalizedMessage());
-      this.jdField_a_of_type_Asxf.a(1, localException.getLocalizedMessage());
+      this.jdField_a_of_type_Atbo.a(1, localException.getLocalizedMessage());
     }
   }
 }

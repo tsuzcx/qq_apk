@@ -1,20 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-public class vrb
-  implements ValueAnimator.AnimatorUpdateListener
+class vrb
+  extends uss
 {
-  public vrb(XViewPager paramXViewPager) {}
+  vrb(vqz paramvqz) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.scrollTo(i, 0);
-    XViewPager.a(this.a, i);
-    if (XViewPager.a(this.a) != null) {
-      XViewPager.a(this.a).b(2);
+    wxe.a("Q.qqstory.player.CommentFloatDialog", "post comment result is %s.", Boolean.valueOf(paramBoolean));
+    if (!vqu.b(this.a.a)) {
+      vqu.a(this.a.a).p();
     }
+  }
+  
+  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
+  {
+    uux localuux = (uux)uwa.a(17);
+    localuux.a(paramCommentEntry.commentId);
+    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
+    paramCommentEntry.status = 0;
+    localuux.a(paramCommentEntry);
+    return true;
   }
 }
 

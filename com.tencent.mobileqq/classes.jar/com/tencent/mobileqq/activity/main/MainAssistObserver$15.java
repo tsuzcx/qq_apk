@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.main;
 
-import aiak;
-import awwg;
+import aiez;
+import axap;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -9,11 +9,11 @@ import com.tencent.qphone.base.util.QLog;
 public class MainAssistObserver$15
   implements Runnable
 {
-  public MainAssistObserver$15(aiak paramaiak, QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade) {}
+  public MainAssistObserver$15(aiez paramaiez, QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade) {}
   
   public void run()
   {
-    int i = awwg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) + this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b();
+    int i = axap.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) + this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b();
     if (QLog.isColorLevel()) {
       QLog.d("MainAssistObserver", 2, "updateTab = " + i);
     }

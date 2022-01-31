@@ -1,25 +1,10 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.HashMap;
+import java.util.Map;
 
 public class uwf
-  extends QQUIEventReceiver<uvz, vol>
+  extends uli
 {
-  public uwf(@NonNull uvz paramuvz)
-  {
-    super(paramuvz);
-  }
-  
-  public void a(@NonNull uvz paramuvz, @NonNull vol paramvol)
-  {
-    if ((paramuvz.a.a().equals(paramvol.jdField_a_of_type_JavaLangString)) && ((paramvol.jdField_a_of_type_Vld instanceof vlr))) {
-      paramuvz.a(((vlr)paramvol.jdField_a_of_type_Vld).a(), paramvol.b);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vol.class;
-  }
+  public Map<String, vfl> a = new HashMap();
 }
 
 

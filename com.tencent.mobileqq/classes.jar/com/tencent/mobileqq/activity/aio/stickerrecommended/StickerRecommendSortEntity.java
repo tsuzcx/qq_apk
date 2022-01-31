@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import awbv;
-import awdg;
+import awge;
+import awhp;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.ArrayList;
@@ -9,16 +9,16 @@ import java.util.List;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="usrMessage")
 public class StickerRecommendSortEntity
-  extends awbv
+  extends awge
 {
   public String clicked;
-  @awdg
+  @awhp
   public List<Integer> clickedList = new ArrayList();
   public String exposed;
-  @awdg
+  @awhp
   public List<Integer> exposedList = new ArrayList();
   public String noExpose;
-  @awdg
+  @awhp
   public List<Integer> noExposeList = new ArrayList();
   public String usrMessage;
   

@@ -1,24 +1,42 @@
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.widget.AbsListView;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.photo.MediaPlayHelper.2;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import java.util.HashMap;
 
-class aioc
-  implements bhpo
+public class aioc
+  implements TVK_SDKMgr.InstallListener
 {
-  aioc(aiob paramaiob) {}
+  public aioc(MediaPlayHelper.2 param2) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onInstallProgress(float paramFloat) {}
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onInstalledFailed(int paramInt)
   {
-    if ((aiob.a(this.a)) && (paramInt == 0) && (((NewPhotoListActivity)this.a.mActivity).mGridView != null) && (((NewPhotoListActivity)this.a.mActivity).photoListAdapter != null) && (aiob.a(this.a).selectedMediaInfoHashMap != null)) {
-      aiob.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d(aiob.a(this.a.this$0), 2, "onInstalledFailed:" + paramInt);
     }
-    if (paramInt == 0)
-    {
-      abqw.a().a("list_photo", false);
-      return;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "MediaPlayHelper");
+    localHashMap.put("param_erroCode", String.valueOf(paramInt));
+    localHashMap.put("param_result", "0");
+    azri.a(BaseApplication.getContext()).a(null, "actInstallTVK", false, 0L, 0L, localHashMap, "");
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(aiob.a(this.a.this$0), 2, "onInstalledSuccessed");
     }
-    abqw.a().a("list_photo");
+    if ((this.a.this$0.b != null) && (this.a.this$0.a != null)) {
+      this.a.this$0.a.sendEmptyMessage(6);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "MediaPlayHelper");
+    localHashMap.put("param_erroCode", "0");
+    localHashMap.put("param_result", "1");
+    azri.a(BaseApplication.getContext()).a(null, "actInstallTVK", true, 0L, 0L, localHashMap, "");
   }
 }
 

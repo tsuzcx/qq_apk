@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.applets;
 
-import amnk;
+import amrz;
 import android.text.TextUtils;
-import bkci;
-import bkcj;
+import bkgp;
+import bkgq;
 
 public final class PublicAccountEventReport$3
   implements Runnable
@@ -12,7 +12,7 @@ public final class PublicAccountEventReport$3
   
   public void run()
   {
-    Object localObject = amnk.a(this.jdField_a_of_type_JavaLangString);
+    Object localObject = amrz.a(this.jdField_a_of_type_JavaLangString);
     int j;
     String str;
     int k;
@@ -28,10 +28,10 @@ public final class PublicAccountEventReport$3
     label117:
     for (int i = 6;; i = 1)
     {
-      localObject = new bkcj(str, 1, k, i, "vab_push", "vab_push", (String)localObject, "vab_push", j);
-      ((bkcj)localObject).l = this.jdField_a_of_type_JavaLangString;
-      ((bkcj)localObject).f = "vab_push";
-      bkci.a().a((bkcj)localObject);
+      localObject = new bkgq(str, 1, k, i, "vab_push", "vab_push", (String)localObject, "vab_push", j);
+      ((bkgq)localObject).l = this.jdField_a_of_type_JavaLangString;
+      ((bkgq)localObject).f = "vab_push";
+      bkgp.a().a((bkgq)localObject);
       return;
     }
   }

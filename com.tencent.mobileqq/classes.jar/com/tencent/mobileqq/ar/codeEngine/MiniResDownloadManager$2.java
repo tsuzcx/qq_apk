@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import anag;
+import anep;
 
 public final class MiniResDownloadManager$2
   implements Runnable
 {
-  public MiniResDownloadManager$2(anag paramanag, int paramInt, boolean paramBoolean) {}
+  public MiniResDownloadManager$2(anep paramanep, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Anag != null) {
-      this.jdField_a_of_type_Anag.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    if (this.jdField_a_of_type_Anep != null) {
+      this.jdField_a_of_type_Anep.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
     }
   }
 }

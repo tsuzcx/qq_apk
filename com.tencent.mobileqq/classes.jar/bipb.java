@@ -1,145 +1,80 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QlinkReliableReport.1;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import java.util.Map;
 
-public class bipb
+class bipb
+  implements bipg
 {
-  private static bipb jdField_a_of_type_Bipb;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private List<bipc> jdField_a_of_type_JavaUtilList;
+  bipb(biov parambiov) {}
   
-  public static bipb a()
+  public void a()
   {
-    if (jdField_a_of_type_Bipb == null) {}
-    try
+    QLog.e("AVEngineWalper", 1, "onExitRoomComplete");
+    if (this.a.jdField_a_of_type_Bgkw != null) {
+      this.a.jdField_a_of_type_Bgkw.a();
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    QLog.e("AVEngineWalper", 1, "onRoomDisconnect   result=" + paramInt + ", errinfo=" + paramString);
+    if (this.a.jdField_a_of_type_Bgkw != null) {
+      this.a.jdField_a_of_type_Bgkw.c(paramInt, paramString);
+    }
+  }
+  
+  public void a(int paramInt, String[] paramArrayOfString)
+  {
+    int k = paramArrayOfString.length;
+    int j = 0;
+    String str;
+    if (j < k)
     {
-      if (jdField_a_of_type_Bipb == null) {
-        jdField_a_of_type_Bipb = new bipb();
-      }
-      return jdField_a_of_type_Bipb;
-    }
-    finally {}
-  }
-  
-  public static void a()
-  {
-    bipb localbipb = a();
-    if (localbipb != null) {
-      localbipb.e();
-    }
-  }
-  
-  private void a(bipc parambipc)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QlinkReliableReport", 2, "addPerformanceReporting:" + parambipc);
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      }
-      this.jdField_a_of_type_JavaUtilList.add(parambipc);
-      return;
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QlinkReliableReport", 2, "collectPerformance:tagName[" + paramString2 + "]");
-    }
-    bipb localbipb = a();
-    if (localbipb != null) {
-      localbipb.a(new bipc(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap));
-    }
-  }
-  
-  public static void b()
-  {
-    bipb localbipb = a();
-    if (localbipb != null) {
-      localbipb.f();
-    }
-  }
-  
-  private static void h()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QlinkReliableReport", 2, "start:");
-    }
-    bipb localbipb = a();
-    if (localbipb != null) {
-      localbipb.i();
-    }
-  }
-  
-  private void i()
-  {
-    if (!bdee.d(BaseApplication.getContext())) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QlinkReliableReport", 2, "doReportPerformance: network is not surpport");
+      str = paramArrayOfString[j];
+      QLog.i("AVEngineWalper", 1, String.format("onEndpointsUpdateInfo|eventid=%d, id=%s", new Object[] { Integer.valueOf(paramInt), str }));
+      if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+        break label237;
       }
     }
-    for (;;)
+    label237:
+    for (int i = ((Integer)this.a.jdField_a_of_type_JavaUtilMap.get(str)).intValue();; i = 0)
     {
-      return;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      switch (paramInt)
       {
-        List localList = this.jdField_a_of_type_JavaUtilList;
-        this.jdField_a_of_type_JavaUtilList = null;
-        if ((localList != null) && (localList.size() != 0))
-        {
-          ??? = azmz.a(BaseApplication.getContext());
-          Iterator localIterator = localList.iterator();
-          if (localIterator.hasNext())
-          {
-            bipc localbipc = (bipc)localIterator.next();
-            ((azmz)???).a(localbipc.a(), localbipc.b(), localbipc.a(), localbipc.a(), localbipc.b(), localbipc.a(), null);
-          }
+      default: 
+        label116:
+        if (i != 0) {
+          this.a.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
+        }
+        break;
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        i |= 0x20;
+        break label116;
+        i &= 0xFFFFFFDF;
+        break label116;
+        i |= 0x1;
+        break label116;
+        i &= 0xFFFFFFFE;
+        break label116;
+        if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+          this.a.jdField_a_of_type_JavaUtilMap.remove(str);
         }
       }
-    }
-    localObject1.clear();
-  }
-  
-  protected void c() {}
-  
-  protected void d()
-  {
-    f();
-    try
-    {
-      jdField_a_of_type_Bipb = null;
+      if (this.a.jdField_a_of_type_Bgkw != null) {
+        this.a.jdField_a_of_type_Bgkw.a(paramInt, paramArrayOfString);
+      }
       return;
     }
-    finally {}
   }
   
-  public void e()
+  public void a(String[] paramArrayOfString)
   {
-    QLog.d("QlinkReliableReport", 2, "doStartReportTimer");
-    if (this.jdField_a_of_type_JavaLangRunnable == null)
-    {
-      this.jdField_a_of_type_JavaLangRunnable = new QlinkReliableReport.1(this);
-      ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 60000L);
-    }
-  }
-  
-  public void f()
-  {
-    QLog.d("QlinkReliableReport", 2, "doStopReportTimer");
-    if (this.jdField_a_of_type_JavaLangRunnable != null)
-    {
-      ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_JavaLangRunnable = null;
+    QLog.e("AVEngineWalper", 1, "onSemiAutoRecvCameraVideo");
+    if (this.a.jdField_a_of_type_Bgkw != null) {
+      this.a.jdField_a_of_type_Bgkw.a(paramArrayOfString);
     }
   }
 }

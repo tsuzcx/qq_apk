@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.managers;
 
-import atwd;
+import auam;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import java.util.List;
@@ -11,7 +11,7 @@ import tencent.im.oidb.cmd0x72d.cmd0x72d.ReqBody;
 public class TroopAssistantManager$2
   implements Runnable
 {
-  public TroopAssistantManager$2(atwd paramatwd, QQAppInterface paramQQAppInterface, nac paramnac) {}
+  public TroopAssistantManager$2(auam paramauam, QQAppInterface paramQQAppInterface, nac paramnac) {}
   
   public void run()
   {

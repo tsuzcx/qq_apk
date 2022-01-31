@@ -1,21 +1,54 @@
-import android.text.TextUtils;
-
 public class awje
+  extends awjd
 {
-  public String a;
-  public String b;
-  
-  public boolean a()
+  public awjd a()
   {
-    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
+    return this;
   }
   
-  public String toString()
+  public void a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder("PrecoverBusinessInfo:");
-    localStringBuilder.append("businessId=").append(this.a);
-    localStringBuilder.append(", name=").append(this.b);
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_c_of_type_Long = paramLong;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_f_of_type_Int = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.g = paramString;
+  }
+  
+  public void d(String paramString)
+  {
+    this.jdField_f_of_type_JavaLangString = paramString;
   }
 }
 

@@ -1,26 +1,43 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qq.effect.IQEffect;
+import com.tencent.qq.effect.IQEffectLoad;
+import com.tencent.qq.effect.engine.QEffectData;
 
-class bapd
-  extends alsi
+public class bapd
+  implements IQEffectLoad
 {
-  bapd(bapa parambapa) {}
-  
-  public void a(boolean paramBoolean, long paramLong, alsj paramalsj)
+  public void load(Context paramContext, IQEffect paramIQEffect, QEffectData paramQEffectData)
   {
-    if ((this.a.a.a == 1026) && (QLog.isColorLevel())) {
-      QLog.i("PttShow", 2, "onNotifyResultAfterSendRich, UIN_TYPE_HOTCHAT_TOPIC  " + paramBoolean);
-    }
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramalsj);
-    if (paramBoolean)
+    switch (paramQEffectData.resType)
     {
-      this.a.e();
+    case 2: 
+    default: 
+      return;
+    case 1: 
+      loadFromFile(paramContext, paramIQEffect, paramQEffectData.src);
       return;
     }
-    if (paramalsj != null) {
-      this.a.v = paramalsj.d;
+    loadFromResource(paramContext, paramIQEffect, paramQEffectData.resId);
+  }
+  
+  public void loadFromAsset(Context paramContext, IQEffect paramIQEffect, String paramString) {}
+  
+  public void loadFromFile(Context paramContext, IQEffect paramIQEffect, String paramString)
+  {
+    paramContext = URLDrawable.URLDrawableOptions.obtain();
+    paramContext.mLoadingDrawable = bayu.a;
+    paramContext.mFailedDrawable = bayu.a;
+    paramIQEffect.complete(URLDrawable.getFileDrawable(paramString, paramContext));
+  }
+  
+  public void loadFromResource(Context paramContext, IQEffect paramIQEffect, int paramInt)
+  {
+    if (paramContext != null) {
+      paramIQEffect.complete(paramContext.getResources().getDrawable(paramInt));
     }
-    this.a.d();
   }
 }
 

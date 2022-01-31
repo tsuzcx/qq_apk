@@ -1,23 +1,27 @@
-import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
-final class bail
-  implements bhor<Integer>
+class bail
+  extends WebViewClient
 {
-  bail(Context paramContext, String paramString, bhpy parambhpy) {}
+  bail(baij parambaij) {}
   
-  public void a(Integer paramInteger)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    switch (paramInteger.intValue())
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      baig.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      continue;
-      baig.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    }
+    QLog.i("TenDocWebViewPool", 1, "tendocpreload onPageFinished = " + paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    QLog.i("TenDocWebViewPool", 1, "tendocpreload onPageStarted = " + paramString);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    return super.shouldOverrideUrlLoading(paramWebView, paramWebResourceRequest);
   }
 }
 

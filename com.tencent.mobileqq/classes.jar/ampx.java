@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.1;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-public class ampx
-  implements DialogInterface.OnClickListener
+public final class ampx
+  implements Parcelable.Creator<SosoInterface.SosoLocation>
 {
-  public ampx(ARRecordUtils.1 param1) {}
+  public SosoInterface.SosoLocation a(Parcel paramParcel)
+  {
+    return new SosoInterface.SosoLocation(paramParcel);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public SosoInterface.SosoLocation[] a(int paramInt)
+  {
+    return new SosoInterface.SosoLocation[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampx
  * JD-Core Version:    0.7.0.1
  */

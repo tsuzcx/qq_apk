@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.theme;
 
-import bajd;
+import banm;
 
 public final class DarkModeManager$3
   implements Runnable
@@ -9,7 +9,7 @@ public final class DarkModeManager$3
   
   public void run()
   {
-    bajd.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    banm.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
   }
 }
 

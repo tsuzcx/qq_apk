@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
-import bdcs;
+import bdhb;
 import tcq;
 
 public class WeiShiCacheManager$3
@@ -10,7 +10,7 @@ public class WeiShiCacheManager$3
   
   public void run()
   {
-    bdcs.a(tcq.a(this.this$0), false);
+    bdhb.a(tcq.a(this.this$0), false);
   }
 }
 

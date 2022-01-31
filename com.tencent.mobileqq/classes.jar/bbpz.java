@@ -1,19 +1,11 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3.1.1;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
 
-public class bbpz
-  implements azzy
+public abstract class bbpz
 {
-  public bbpz(TroopEnterEffectController.3 param3) {}
+  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo) {}
   
-  public void a(azzb paramazzb)
-  {
-    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
-      return;
-    }
-    this.a.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.3.1.1(this, paramazzb));
-  }
+  public void a(String paramString, Integer paramInteger) {}
 }
 
 

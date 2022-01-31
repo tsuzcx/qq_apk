@@ -1,16 +1,14 @@
-import android.graphics.Bitmap;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
 
-class akgp
-  extends amab
+public class akgp
+  implements beua
 {
-  akgp(akgo paramakgo) {}
+  public akgp(SessionClearFragment paramSessionClearFragment) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void a()
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString);
-    if (localBitmap != null) {
-      this.a.a(paramString, localBitmap);
-    }
+    SessionClearFragment.a(this.a).onBackPressed();
   }
 }
 

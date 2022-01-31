@@ -1,26 +1,15 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import java.util.Comparator;
 
-public abstract class bchp
-  extends nac
+final class bchp
+  implements Comparator
 {
-  public bchp()
-  {
-    super(false);
-  }
+  bchp(Editable paramEditable) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    QLog.i(".troop.troop_app", 2, "clickReport errorCode = " + paramInt);
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool);
-      return;
-    }
+    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
   }
-  
-  protected abstract void a(boolean paramBoolean);
 }
 
 

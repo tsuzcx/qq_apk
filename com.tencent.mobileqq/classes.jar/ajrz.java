@@ -1,21 +1,25 @@
-public class ajrz
+import android.os.Handler.Callback;
+import android.os.Message;
+
+class ajrz
+  implements Handler.Callback
 {
-  public int a;
-  public boolean a;
+  ajrz(ajry paramajry) {}
   
-  public static int a(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    switch (paramInt)
+    switch (paramMessage.what)
     {
-    case 90: 
-    default: 
-      return 0;
-    case 0: 
-      return 270;
-    case 180: 
-      return 90;
     }
-    return 180;
+    for (;;)
+    {
+      return false;
+      this.a.a(null);
+      continue;
+      if (ajry.a(this.a) != null) {
+        ajry.a(this.a).j();
+      }
+    }
   }
 }
 

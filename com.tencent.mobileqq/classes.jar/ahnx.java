@@ -1,35 +1,14 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.Comparator;
 
 class ahnx
-  extends ViewPager.SimpleOnPageChangeListener
+  implements Comparator<MayKnowRecommend>
 {
-  ahnx(ahnt paramahnt) {}
+  ahnx(ahns paramahns) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
   {
-    if (paramInt == 1) {
-      ahnt.a(this.a, ahnt.a(this.a).getCurrentItem());
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ContactsViewController", 2, "mViewPager onPageScrollStateChanged mOccurSwitchAccountChangeTab:" + ahnt.b(this.a) + "  mPageChangedByIndicator:" + ahnt.a(this.a));
-    }
-    if (ahnt.a(this.a)) {
-      ahnt.b(this.a, false);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    ahnt.a(this.a, paramInt);
-    if (!ahnt.a(this.a)) {
-      azmj.b(this.a.a, "dc00898", "", "", "0X8008059", "0X8008059", 0, 0, "", "", "", "");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ContactsViewController", 2, "mViewPager onPageSelected mOccurSwitchAccountChangeTab:" + ahnt.b(this.a) + " mPageChangedByIndicator:" + ahnt.a(this.a));
-    }
-    ahnt.a(this.a, false);
+    return paramMayKnowRecommend2.timestamp - paramMayKnowRecommend1.timestamp;
   }
 }
 

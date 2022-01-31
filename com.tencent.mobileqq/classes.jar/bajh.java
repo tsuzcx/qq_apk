@@ -1,18 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.List;
 
-final class bajh
-  implements DialogInterface.OnClickListener
+public abstract interface bajh
 {
-  bajh(baji parambaji) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bajd.a("0X800A5CA");
-    if (this.a != null) {
-      this.a.onCancel();
-    }
-  }
+  public abstract void a(List<String> paramList);
 }
 
 

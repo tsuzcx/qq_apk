@@ -1,18 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.wadl.WadlJsBridgeCallBack.2;
-
-public class bfnx
-  implements DialogInterface.OnClickListener
+class bfnx
+  implements bfnv
 {
-  public bfnx(WadlJsBridgeCallBack.2 param2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.a.g = 1;
-    bkel.a().a(this.a.a);
-  }
+  bfnx(bfnw parambfnw) {}
 }
 
 

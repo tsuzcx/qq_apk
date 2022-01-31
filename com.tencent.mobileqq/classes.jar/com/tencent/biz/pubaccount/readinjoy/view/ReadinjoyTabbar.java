@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -15,9 +15,9 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcwh;
-import bcxb;
-import bdda;
+import bdaq;
+import bdbk;
+import bdhj;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
@@ -94,8 +94,8 @@ public class ReadinjoyTabbar
     setUnselectColor(-8947849);
     setTabTextSize(17);
     setBackgroundDrawable(new ColorDrawable(0));
-    setTabHeight(aekt.a(65.0F, getResources()));
-    setUnderLineHeight(aekt.a(6.0F, getResources()));
+    setTabHeight(aepi.a(65.0F, getResources()));
+    setUnderLineHeight(aepi.a(6.0F, getResources()));
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)ors.a());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager = ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(162));
     setSelectColor(((qja)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(261)).a(8).a());
@@ -127,11 +127,11 @@ public class ReadinjoyTabbar
     Context localContext = paramView.getContext();
     RelativeLayout localRelativeLayout = new RelativeLayout(localContext);
     TextView localTextView = new TextView(localContext);
-    localTextView.setText(alpo.a(2131713137));
+    localTextView.setText(alud.a(2131713149));
     localTextView.setTextColor(-1);
     localTextView.setTextSize(1, 16.0F);
     localTextView.setGravity(17);
-    int i = bcwh.a(localContext, 10.0F);
+    int i = bdaq.a(localContext, 10.0F);
     localTextView.setPadding(i, 0, i, 0);
     localRelativeLayout.addView(localTextView, new RelativeLayout.LayoutParams(-2, -2));
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = a(paramView, localRelativeLayout);
@@ -172,21 +172,21 @@ public class ReadinjoyTabbar
       localContext = paramView.getContext();
       localRelativeLayout = new RelativeLayout(localContext);
       localTextView = new TextView(localContext);
-      localTextView.setId(2131375232);
+      localTextView.setId(2131375283);
       localTextView.setTextColor(-1);
       localTextView.setTextSize(1, 16.0F);
       localTextView.setGravity(17);
-      i = bcwh.a(localContext, 10.0F);
+      i = bdaq.a(localContext, 10.0F);
       localTextView.setPadding(i, 0, i, 0);
       l = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.c();
       i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.b(3);
     } while (i <= 0);
-    localTextView.setText(" " + Integer.toString(i) + alpo.a(2131713243));
-    Object localObject = bdda.a();
+    localTextView.setText(" " + Integer.toString(i) + alud.a(2131713255));
+    Object localObject = bdhj.a();
     if (l != -1L) {}
-    for (localObject = bcxb.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 1, Long.toString(l), 3, (Drawable)localObject, (Drawable)localObject);; localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.getApplicationContext().getResources().getDrawable(2130842600))
+    for (localObject = bdbk.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 1, Long.toString(l), 3, (Drawable)localObject, (Drawable)localObject);; localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.getApplicationContext().getResources().getDrawable(2130842613))
     {
-      ((Drawable)localObject).setBounds(0, 0, bcwh.a(localContext, 25.0F), bcwh.a(localContext, 25.0F));
+      ((Drawable)localObject).setBounds(0, 0, bdaq.a(localContext, 25.0F), bdaq.a(localContext, 25.0F));
       localTextView.setCompoundDrawables((Drawable)localObject, null, null, null);
       localRelativeLayout.addView(localTextView, new RelativeLayout.LayoutParams(-2, -2));
       localRelativeLayout.setOnClickListener(new rxh(this));
@@ -298,7 +298,7 @@ public class ReadinjoyTabbar
         paramFragmentManager = paramFragmentManager.beginTransaction();
         if (paramInt1 < paramInt2)
         {
-          paramFragmentManager.setCustomAnimations(2130772307, 2130772310);
+          paramFragmentManager.setCustomAnimations(2130772308, 2130772311);
           if ((paramIntent != null) && (paramIntent.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment != null) && (paramIntent.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a()))
           {
             paramFragmentManager.hide(paramIntent.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment);
@@ -315,7 +315,7 @@ public class ReadinjoyTabbar
             }
           }
           if (!localrxi.jdField_a_of_type_Boolean) {
-            paramFragmentManager.add(2131364779, localrxi.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment, String.valueOf(paramInt1));
+            paramFragmentManager.add(2131364780, localrxi.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment, String.valueOf(paramInt1));
           }
           paramFragmentManager.show(localrxi.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment);
           paramFragmentManager.commitAllowingStateLoss();
@@ -355,9 +355,9 @@ public class ReadinjoyTabbar
       }
       finally {}
       if ((paramBundle != null) && (paramBundle.getBoolean("READINJOY_VIDEO_FORCE_INSERT_SET_SELECTION", false))) {
-        paramFragmentManager.setCustomAnimations(2130772315, 2130772316);
+        paramFragmentManager.setCustomAnimations(2130772316, 2130772317);
       } else {
-        paramFragmentManager.setCustomAnimations(2130772309, 2130772311);
+        paramFragmentManager.setCustomAnimations(2130772310, 2130772312);
       }
     }
     paramFragmentManager = localrxi.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment;

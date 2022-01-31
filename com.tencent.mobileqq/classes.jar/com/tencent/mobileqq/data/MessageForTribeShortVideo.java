@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import alpo;
+import alud;
 import android.graphics.Color;
 import android.text.TextUtils;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
@@ -38,7 +38,7 @@ public class MessageForTribeShortVideo
   
   public static String buildCompatibleText()
   {
-    return alpo.a(2131706954) + "QQ" + alpo.a(2131706982);
+    return alud.a(2131706966) + "QQ" + alud.a(2131706994);
   }
   
   public void doParse()
@@ -86,12 +86,12 @@ public class MessageForTribeShortVideo
   public String getSummaryMsg()
   {
     if (!TextUtils.isEmpty(this.themeName)) {
-      return alpo.a(2131706973) + this.themeName;
+      return alud.a(2131706985) + this.themeName;
     }
     if (!TextUtils.isEmpty(this.brief)) {
-      return alpo.a(2131706948) + this.brief;
+      return alud.a(2131706960) + this.brief;
     }
-    return alpo.a(2131706990);
+    return alud.a(2131707002);
   }
   
   public boolean isSupportReply()

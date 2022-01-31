@@ -1,64 +1,25 @@
-import android.content.Context;
-import org.json.JSONException;
-import org.json.JSONObject;
+import MWIFI.SCGet3rdCloudCheck;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class ajho
-  extends ajhc
+class ajho
+  implements View.OnClickListener
 {
-  public ajho(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131697848);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
+  ajho(ajgb paramajgb, SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Bbkv == null) {
-        this.jdField_a_of_type_Bbkv = new bbkv();
-      }
-      this.jdField_a_of_type_Bbkv.a(paramArrayOfByte.getString("messageNavInfo"));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "updateWiFiSecurityBanner, onClick");
     }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Bbkv != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbkv.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    bezm.a(ajgb.a(this.jdField_a_of_type_Ajgb), this.jdField_a_of_type_MWIFISCGet3rdCloudCheck);
+    ajgb.a(this.jdField_a_of_type_Ajgb).removeMessages(202);
+    ajgb.a(this.jdField_a_of_type_Ajgb).obtainMessage(202).sendToTarget();
+    azqs.a(ajgb.a(this.jdField_a_of_type_Ajgb).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 6, 0, "", "", "", "");
   }
 }
 

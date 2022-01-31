@@ -1,54 +1,117 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.QzoneCommonIntent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager.DanmakuComparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class apbg
-  implements apbh
+public class apbg
 {
-  public void a(MSFServlet paramMSFServlet, QzoneCommonIntent paramQzoneCommonIntent, FromServiceMsg paramFromServiceMsg)
+  private volatile long jdField_a_of_type_Long = -1L;
+  private final apdj jdField_a_of_type_Apdj;
+  private final apdk<apbq> jdField_a_of_type_Apdk;
+  private final List<apbq> jdField_a_of_type_JavaUtilList;
+  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+  
+  public apbg(apdj paramapdj, DanmakuManager.DanmakuComparator paramDanmakuComparator)
   {
-    bizh localbizh = paramQzoneCommonIntent.getRequest();
-    Object localObject2 = localbizh.uniKey();
-    int i = localbizh.a();
-    int[] arrayOfInt = new int[1];
-    String[] arrayOfString = new String[1];
-    Object localObject1 = null;
-    if (!paramFromServiceMsg.isSuccess())
+    this.jdField_a_of_type_Apdj = paramapdj;
+    this.jdField_a_of_type_Apdk = new apdk(paramDanmakuComparator, new apbh(this));
+    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  }
+  
+  private void a(List<apbq> paramList)
+  {
+    int i = paramList.size() - 1;
+    while (i >= 0)
     {
-      arrayOfInt[0] = (paramFromServiceMsg.getResultCode() + 300000);
-      arrayOfString[0] = paramFromServiceMsg.getBusinessFailMsg();
-      paramFromServiceMsg = (FromServiceMsg)localObject1;
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneCommonIntent", 2, String.format("cmd :%s, success:%b,code:%d, msg:%s", new Object[] { localbizh.getCmdString(), Boolean.valueOf(QzoneCommonIntent.succeeded(arrayOfInt[0])), Integer.valueOf(arrayOfInt[0]), arrayOfString[0] }));
+      apbq localapbq = (apbq)paramList.get(i);
+      if (localapbq.d() <= this.jdField_a_of_type_Long) {
+        localapbq.a();
       }
-      localObject2 = paramQzoneCommonIntent.getExtras();
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new Bundle();
-      }
-      ((Bundle)localObject1).putSerializable("key_response", paramFromServiceMsg);
-      ((Bundle)localObject1).putInt("key_response_code", arrayOfInt[0]);
-      ((Bundle)localObject1).putString("key_response_msg", arrayOfString[0]);
-      if (paramQzoneCommonIntent.getObserver() == null) {
-        QLog.e("QzoneCommonIntent", 1, "observer ==null,无法回调，请检查是否有调用setObserver");
-      }
-      if ((paramFromServiceMsg == null) || (!QzoneCommonIntent.succeeded(arrayOfInt[0]))) {
-        break label260;
-      }
+      i -= 1;
     }
-    label260:
-    for (boolean bool = true;; bool = false)
+  }
+  
+  private void c()
+  {
+    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
     {
-      paramMSFServlet.notifyObserver(paramQzoneCommonIntent, i, bool, (Bundle)localObject1, null);
-      if (arrayOfInt[0] != 1000006) {
-        QzoneCommonIntent.access$000(localbizh, arrayOfInt[0], arrayOfString[0]);
-      }
+      apds.b("DanmakuDataSource", "lock is blocked");
+      Thread.yield();
+    }
+  }
+  
+  private void d()
+  {
+    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
+    {
+      apds.e("DanmakuDataSource", "update end is blocked! this can not happend!");
+      Thread.yield();
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Apdk.a();
+  }
+  
+  public apbq a()
+  {
+    return (apbq)this.jdField_a_of_type_Apdk.a();
+  }
+  
+  public List<apbq> a()
+  {
+    c();
+    this.jdField_a_of_type_Apdk.a(this.jdField_a_of_type_Apdj.a(), this.jdField_a_of_type_JavaUtilList, 3);
+    a(this.jdField_a_of_type_JavaUtilList);
+    d();
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a()
+  {
+    apds.a("DanmakuDataSource", "clear danmaku queue");
+    c();
+    this.jdField_a_of_type_Apdk.a();
+    d();
+  }
+  
+  public void a(apbq paramapbq)
+  {
+    c();
+    apds.c("DanmakuDataSource", "addNow: danmaku = " + paramapbq);
+    this.jdField_a_of_type_Apdk.b(paramapbq);
+    d();
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {}
+    while ((this.jdField_a_of_type_Apdk != null) && (this.jdField_a_of_type_Apdk.a() > 0)) {
+      return true;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    c();
+    apbq localapbq = (apbq)this.jdField_a_of_type_Apdk.b();
+    if (localapbq == null) {}
+    for (this.jdField_a_of_type_Long = -1L;; this.jdField_a_of_type_Long = localapbq.d())
+    {
+      d();
       return;
-      paramFromServiceMsg = bjqk.a(paramFromServiceMsg.getWupBuffer(), (String)localObject2, arrayOfInt, arrayOfString);
-      break;
     }
+  }
+  
+  public void b(apbq paramapbq)
+  {
+    c();
+    apds.c("DanmakuDataSource", "addLast: danmaku = " + paramapbq);
+    this.jdField_a_of_type_Apdk.a(paramapbq);
+    d();
   }
 }
 

@@ -1,86 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class acjy
-  extends alxx
+public final class acjy
+  implements DialogInterface.OnCancelListener
 {
-  public acjy(ChatSettingActivity paramChatSettingActivity) {}
+  public acjy(aclo paramaclo, int paramInt, acln paramacln) {}
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (!ChatSettingActivity.c(this.a))
+    if (this.jdField_a_of_type_Aclo.a)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, mShieldByThis=" + ChatSettingActivity.c(this.a));
+      if (this.jdField_a_of_type_Int != 2) {
+        break label59;
       }
-      return;
+      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
     }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.g(this.a);
-    paramList = this.a;
-    ChatSettingActivity localChatSettingActivity = this.a;
-    if (paramBoolean) {}
-    for (int i = 2131720075;; i = 2131720063)
+    for (;;)
     {
-      QQToast.a(paramList, 2, localChatSettingActivity.getString(i), 0).b(this.a.getTitleBarHeight());
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, isSuccess=" + paramBoolean + ", mShieldByThis=" + ChatSettingActivity.c(this.a) + ", mShieldUin=" + ChatSettingActivity.d(this.a) + ", mIsShield=" + ChatSettingActivity.a(this.a));
+      if (this.jdField_a_of_type_Acln != null) {
+        this.jdField_a_of_type_Acln.a();
       }
-      if (!paramBoolean) {
-        break;
-      }
-      paramList = (atvt)this.a.app.getManager(16);
-      if ((paramList != null) && (!TextUtils.isEmpty(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, paramList.a(ChatSettingActivity.d(this.a)));
-      }
-      ChatSettingActivity.b(this.a);
-      if (ChatSettingActivity.a(this.a))
-      {
-        this.a.jdField_a_of_type_Boolean = false;
-        ChatSettingActivity.a(this.a);
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, mIsShield=" + ChatSettingActivity.a(this.a) + ", mIsFollowed=" + this.a.jdField_a_of_type_Boolean);
       return;
+      label59:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        azqs.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "3", "", "", "");
+      }
     }
-  }
-  
-  protected void b(boolean paramBoolean, List<Long> paramList)
-  {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.g(this.a);
-    paramList = this.a;
-    ChatSettingActivity localChatSettingActivity = this.a;
-    if (paramBoolean) {}
-    for (int i = 2131720062;; i = 2131720061)
-    {
-      QQToast.a(paramList, 2, localChatSettingActivity.getString(i), 0).b(this.a.getTitleBarHeight());
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDeleteShieldList, isSuccess=" + paramBoolean);
-      }
-      if (!paramBoolean) {
-        break;
-      }
-      paramList = (atvt)this.a.app.getManager(16);
-      if ((paramList != null) && (!TextUtils.isEmpty(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, paramList.a(ChatSettingActivity.d(this.a)));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDeleteShieldList, mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      ChatSettingActivity.b(this.a);
-      return;
-    }
-    ChatSettingActivity.a(this.a, 2131720061, 1);
   }
 }
 

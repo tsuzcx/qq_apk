@@ -1,23 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.support.v4.util.ArraySet;
 
-public class atiq
-  implements DialogInterface.OnDismissListener
+class atiq
+  implements anvo
 {
-  public atiq(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, atjn paramatjn) {}
+  atiq(atip paramatip, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Atjn.b(false);
-    this.jdField_a_of_type_Atjn.d = false;
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    if (atip.a(this.jdField_a_of_type_Atip) != null) {
+      atip.a(this.jdField_a_of_type_Atip).remove(Integer.valueOf(paramInt1));
     }
-    if (this.jdField_a_of_type_Atjn.e) {
-      this.jdField_a_of_type_Atjn.f();
-    }
+    anwc.a().a(paramInt1);
+    this.jdField_a_of_type_Atip.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"openresult\":" + paramInt2 + "}" });
   }
 }
 

@@ -1,125 +1,176 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.os.Bundle;
+import android.content.Intent;
+import android.os.Looper;
 import android.text.TextUtils;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity.7.1;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity.7.2;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import java.util.List;
 
 public class adog
-  implements akcg
+  extends altm
 {
-  public adog(QQSettingMe paramQQSettingMe) {}
+  public adog(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
   {
-    if (this.a.jdField_c_of_type_Boolean)
+    if (!paramBoolean)
     {
-      if (!paramBoolean) {
-        break label387;
-      }
-      paramInt = paramBundle.getInt("show_flag");
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "onWeatherUpdateResult show_flag:" + paramInt);
-      }
-      if (paramInt != 0) {
-        break label91;
-      }
-      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.setClickable(false);
-      this.a.g.setVisibility(4);
+      this.a.a(2131719822, 1);
+      this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
+      this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(true);
+      this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.a);
     }
-    label90:
-    label91:
-    do
+  }
+  
+  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList)
+  {
+    if (!paramBoolean)
     {
-      int i;
-      do
+      this.a.a(2131719822, 1);
+      this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
+      this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(false);
+      this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.a);
+    }
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  {
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(paramString1)) || (!ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.a.d = paramString2;
+      this.a.b(paramString2);
+      if ((this.a.jdField_a_of_type_Int & 0x1) == 1)
       {
-        String str1;
-        String str2;
-        Object localObject;
-        do
-        {
-          break label90;
-          do
-          {
-            return;
-          } while (paramInt != 1);
-          str1 = paramBundle.getString("KEY_TEMPER");
-          str2 = paramBundle.getString("o_wea_code");
-          localObject = paramBundle.getString("area_info");
-          paramInt = paramBundle.getInt("adcode");
-          if (QLog.isColorLevel()) {
-            QLog.d("QQSettingRedesign", 2, "onWeatherUpdateResult temp:" + str1 + " o_wea_code:" + str2 + " area_name:" + (String)localObject + "adcode:" + paramInt);
-          }
-        } while ((str1 == null) || (str1.equals("")) || (TextUtils.isEmpty((CharSequence)localObject)));
-        this.a.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        this.a.g.setVisibility(0);
-        this.a.jdField_c_of_type_AndroidWidgetLinearLayout.setClickable(true);
-        this.a.d.setText(str1);
-        paramBundle = ((String)localObject).split("-");
-        TextView localTextView = this.a.g;
-        if (paramBundle.length == 2) {
-          paramBundle = paramBundle[1];
+        paramString1 = this.a;
+        if (!paramBoolean) {
+          break label189;
         }
-        for (;;)
-        {
-          localTextView.setText(paramBundle);
-          try
-          {
-            paramBundle = URLEncoder.encode((String)localObject, "utf-8");
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("&city=").append(paramBundle).append("&adcode=").append(paramInt);
-            this.a.g.setTag(((StringBuilder)localObject).toString());
-            this.a.f.setText("o");
-            QQSettingMe.a(this.a, str1);
-            QQSettingMe.b(this.a, str2);
-            return;
-            paramBundle = paramBundle[0];
-          }
-          catch (Exception paramBundle)
-          {
-            for (;;)
-            {
-              paramBundle = (Bundle)localObject;
-            }
-          }
+        paramByte = 2131693629;
+        label77:
+        if (!paramBoolean) {
+          break label196;
         }
-        i = paramBundle.getInt("uint32_result");
-        if (QLog.isColorLevel()) {
-          QLog.d("QQSettingRedesign", 2, "onWeatherUpdateResult resultCode:" + i);
-        }
-      } while ((paramInt != 6666) || (i != 191005));
-      if (Build.VERSION.SDK_INT < 23) {
-        break label602;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) {
-        break label594;
-      }
-      paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSharedPreferences("apollo_sp" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
-      long l = paramBundle.getLong("sp_key_request_permission", 0L);
-      if (NetConnInfoCenter.getServerTime() - l >= 86400L) {
+    }
+    label187:
+    label189:
+    label196:
+    for (int i = 2;; i = 1)
+    {
+      paramString1.a(paramByte, i);
+      this.a.jdField_a_of_type_Int &= 0xFFFFFFFE;
+      return;
+      paramString1 = (alto)this.a.app.getManager(51);
+      if (paramString1 == null) {}
+      for (paramString1 = null;; paramString1 = paramString1.e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
+      {
+        if (paramString1 == null) {
+          break label187;
+        }
+        if (paramString1.remark != null) {
+          this.a.d = paramString1.remark;
+        }
+        this.a.b(this.a.d);
         break;
       }
-    } while (!QLog.isColorLevel());
-    label387:
-    QLog.e("QQSettingRedesign", 2, "User requestPermissions but has requested in 24 h");
-    return;
-    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.requestPermissions(new adoh(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
-    paramBundle.edit().putLong("sp_key_request_permission", NetConnInfoCenter.getServerTime()).commit();
-    return;
-    label594:
-    this.a.g();
-    return;
-    label602:
-    this.a.g();
+      break;
+      paramByte = 2131693628;
+      break label77;
+    }
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(String.valueOf(paramObject))))
+    {
+      this.a.a(2131691544, 2);
+      if (this.a.jdField_a_of_type_AndroidContentIntent == null) {
+        this.a.jdField_a_of_type_AndroidContentIntent = new Intent();
+      }
+      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("finchat", true);
+      this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
+      this.a.finish();
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    Object localObject2;
+    if ((paramBoolean1) && (paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a != null) && (ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))
+    {
+      localObject2 = (alto)this.a.app.getManager(51);
+      if (localObject2 != null) {
+        break label171;
+      }
+      localObject1 = null;
+      if (localObject1 != null)
+      {
+        if (((Friends)localObject1).remark != null) {
+          this.a.d = ((Friends)localObject1).remark;
+        }
+        this.a.b(this.a.d);
+        localObject1 = ((alto)localObject2).a(String.valueOf(((Friends)localObject1).groupid));
+        if ((localObject1 != null) && (!bdeu.a(this.a.jdField_c_of_type_JavaLangString, ((Groups)localObject1).group_name)))
+        {
+          this.a.jdField_c_of_type_JavaLangString = ((Groups)localObject1).group_name;
+          localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+          if (!TextUtils.isEmpty(this.a.jdField_c_of_type_JavaLangString)) {
+            break label190;
+          }
+        }
+      }
+    }
+    label171:
+    label190:
+    for (Object localObject1 = "";; localObject1 = this.a.jdField_c_of_type_JavaLangString)
+    {
+      ((FormSimpleItem)localObject2).setRightText((CharSequence)localObject1);
+      return;
+      localObject1 = ((alto)localObject2).e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+      break;
+    }
+  }
+  
+  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  {
+    if (!String.valueOf(paramLong).equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)) {}
+    do
+    {
+      return;
+      if (!paramBoolean1) {}
+      for (paramBoolean1 = true; Thread.currentThread() == Looper.getMainLooper().getThread(); paramBoolean1 = false)
+      {
+        this.a.a(paramBoolean2, paramBoolean1);
+        return;
+      }
+    } while (this.a.b == null);
+    this.a.b.post(new ProfileCardMoreActivity.7.2(this, paramBoolean2, paramBoolean1));
+  }
+  
+  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)) || (!bdeu.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, paramString))) {}
+    for (;;)
+    {
+      return;
+      paramString = (alto)this.a.app.getManager(51);
+      if (paramString == null) {}
+      for (paramString = null; (paramString != null) && (!bdeu.a(this.a.jdField_c_of_type_JavaLangString, paramString.group_name)); paramString = paramString.a(String.valueOf(paramByte1)))
+      {
+        this.a.jdField_c_of_type_JavaLangString = paramString.group_name;
+        this.a.runOnUiThread(new ProfileCardMoreActivity.7.1(this));
+        return;
+      }
+    }
   }
 }
 

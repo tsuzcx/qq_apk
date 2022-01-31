@@ -1,19 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.MainFragment;
 
 public class adiu
-  implements bhqd
+  implements DialogInterface.OnDismissListener
 {
-  public adiu(PhoneUnityChangeActivity paramPhoneUnityChangeActivity) {}
+  public adiu(MainFragment paramMainFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.jdField_a_of_type_Bhpy.cancel();
-    if (this.a.jdField_a_of_type_Bdfq == null) {
-      this.a.jdField_a_of_type_Bdfq = bdcd.a(this.a, 230, alpo.a(2131708422), alpo.a(2131708412), alpo.a(2131708400), alpo.a(2131708403), new adiv(this), new adiw(this));
-    }
-    if ((this.a.jdField_a_of_type_Bdfq != null) && (!this.a.jdField_a_of_type_Bdfq.isShowing()) && (!this.a.isFinishing())) {
-      this.a.jdField_a_of_type_Bdfq.show();
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
   }
 }

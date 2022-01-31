@@ -1,21 +1,43 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
-public class und
+class und
+  implements uni
 {
-  public static boolean a(StoryVideoItem paramStoryVideoItem)
+  private und(una paramuna) {}
+  
+  public void a(unj paramunj)
   {
-    return false;
+    QQStoryContext.a();
+    QQAppInterface localQQAppInterface = QQStoryContext.a();
+    azdx localazdx = azdd.a(2, 2);
+    MessageForShortVideo localMessageForShortVideo = paramunj.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+    azdg localazdg = localMessageForShortVideo.getDownloadInfo(localazdx.b);
+    if (paramunj.jdField_a_of_type_Int == 2)
+    {
+      localazdg.i = ShortVideoUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
+      localazdg.a(localMessageForShortVideo.istroop, 1);
+    }
+    for (;;)
+    {
+      localazdx.a(localazdg);
+      localazdx.a(new une(this, paramunj.jdField_a_of_type_JavaLangString));
+      azdd.a(localazdx, localQQAppInterface);
+      wxe.b("AsyncFileDownloader", String.format("start download with shortvideo downloader, task = %s", new Object[] { paramunj }));
+      return;
+      localazdg.h = ShortVideoUtils.a(localMessageForShortVideo, "mp4");
+      localazdg.a(localMessageForShortVideo.istroop, 0);
+    }
   }
   
-  public static boolean a(String paramString)
+  public boolean a()
   {
-    return false;
+    return true;
   }
   
-  public static boolean a(String paramString, boolean paramBoolean)
-  {
-    return false;
-  }
+  public void b(unj paramunj) {}
 }
 
 

@@ -222,7 +222,7 @@ public class pgq
       do
       {
         return false;
-      } while ((this.jdField_a_of_type_Int == 41403) || (otf.a(this.jdField_a_of_type_Int)) || (bjxj.a(this.jdField_a_of_type_Int)));
+      } while ((this.jdField_a_of_type_Int == 41403) || (otf.a(this.jdField_a_of_type_Int)) || (bkbq.a(this.jdField_a_of_type_Int)));
       localBaseArticleInfo = this.jdField_a_of_type_Rqj.a(this.jdField_a_of_type_Int);
     } while ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (localBaseArticleInfo == null) || (this.jdField_b_of_type_Int <= 0));
     if (ors.j(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
@@ -243,7 +243,7 @@ public class pgq
   public boolean h()
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {}
-    while ((!bjxj.a(this.d)) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mGroupId == -1L) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mGroupCount <= 0L) || ((c() != 1) && (c() != 2))) && (!qfg.b(a()))) {
+    while ((!bkbq.a(this.d)) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mGroupId == -1L) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mGroupCount <= 0L) || ((c() != 1) && (c() != 2))) && (!qfg.b(a()))) {
       return false;
     }
     return true;

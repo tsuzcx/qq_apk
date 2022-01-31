@@ -1,11 +1,21 @@
-public class atgz
+public final class atgz
+  implements baug
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b = 0;
-  public int c = 0;
-  public int d = 0;
+  public atgz(baug parambaug) {}
+  
+  public void onResp(bavf parambavf)
+  {
+    if (this.a != null) {
+      this.a.onResp(parambavf);
+    }
+  }
+  
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
+  {
+    if (this.a != null) {
+      this.a.onUpdateProgeress(parambave, paramLong1, paramLong2);
+    }
+  }
 }
 
 

@@ -257,7 +257,7 @@ class ofi
     }
     this.jdField_a_of_type_Rjn = new rjn(this.jdField_a_of_type_AndroidAppActivity);
     this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_Rjn.b();
-    this.jdField_c_of_type_AndroidViewView.setId(2131368953);
+    this.jdField_c_of_type_AndroidViewView.setId(2131368971);
     if (this.jdField_c_of_type_AndroidViewView != null) {
       a(this.jdField_a_of_type_AndroidViewViewGroup);
     }
@@ -272,18 +272,18 @@ class ofi
   
   private void e()
   {
-    LayoutInflater.from(getContext()).inflate(2131560051, this, true);
-    setId(2131369000);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131371661));
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView = ((VPNGImageView)findViewById(2131368950));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371656));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368802));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368799));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368800));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131371662);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131371669);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368985));
-    ((ImmersiveTitleBar2)findViewById(2131378120)).a(0);
+    LayoutInflater.from(getContext()).inflate(2131560050, this, true);
+    setId(2131369018);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131371681));
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView = ((VPNGImageView)findViewById(2131368968));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371676));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368817));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368814));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368815));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131371682);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131371689);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369003));
+    ((ImmersiveTitleBar2)findViewById(2131378174)).a(0);
     setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this);
@@ -302,7 +302,7 @@ class ofi
       if (!this.jdField_c_of_type_Boolean) {
         break label142;
       }
-      this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130848912));
+      this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130848985));
       if ((this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.getVPNGRenderer() != null) && (this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.getVPNGRenderer().a != null) && (this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.getVPNGRenderer().a.isPlaying()))
       {
         if (!this.jdField_c_of_type_Boolean) {
@@ -327,7 +327,7 @@ class ofi
       return;
       bool1 = false;
       break;
-      this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130848911));
+      this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130848984));
       break label43;
       this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.getVPNGRenderer().a.setVolume(0.0F, 0.0F);
       break label104;
@@ -349,7 +349,7 @@ class ofi
     }
     Object localObject3 = a();
     Object localObject1 = this.jdField_a_of_type_AndroidAppActivity.findViewById(16908307);
-    Object localObject2 = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131379430);
+    Object localObject2 = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131379488);
     int i;
     int j;
     if (localObject3 != null)
@@ -480,9 +480,9 @@ class ofi
     if (this.jdField_a_of_type_ComTencentWidgetListView != null)
     {
       localObject = this.jdField_a_of_type_ComTencentWidgetListView.getAdapter();
-      if ((localObject instanceof bhtf))
+      if ((localObject instanceof bhxm))
       {
-        localObject = ((bhtf)localObject).getWrappedAdapter();
+        localObject = ((bhxm)localObject).getWrappedAdapter();
         if ((localObject instanceof rqj)) {
           ((rqj)localObject).a(this.jdField_a_of_type_ComTencentWidgetListView, 0);
         }
@@ -521,7 +521,7 @@ class ofi
   
   public void a(int paramInt)
   {
-    if (this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131369000) == null)
+    if (this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131369018) == null)
     {
       b(paramInt);
       this.jdField_b_of_type_AndroidViewViewGroup.addView(this);
@@ -547,19 +547,19 @@ class ofi
     localLayoutParams.addRule(13, -1);
     paramViewGroup.addView(this.jdField_c_of_type_AndroidViewView, localLayoutParams);
     localLayoutParams = new RelativeLayout.LayoutParams(1, 1);
-    localLayoutParams.height = bcwh.a(this.jdField_a_of_type_AndroidAppActivity, 27.0F);
-    localLayoutParams.width = bcwh.a(this.jdField_a_of_type_AndroidAppActivity, 72.0F);
-    localLayoutParams.rightMargin = bcwh.a(this.jdField_a_of_type_AndroidAppActivity, 20.0F);
-    localLayoutParams.topMargin = bcwh.a(this.jdField_a_of_type_AndroidAppActivity, 60.0F);
+    localLayoutParams.height = bdaq.a(this.jdField_a_of_type_AndroidAppActivity, 27.0F);
+    localLayoutParams.width = bdaq.a(this.jdField_a_of_type_AndroidAppActivity, 72.0F);
+    localLayoutParams.rightMargin = bdaq.a(this.jdField_a_of_type_AndroidAppActivity, 20.0F);
+    localLayoutParams.topMargin = bdaq.a(this.jdField_a_of_type_AndroidAppActivity, 60.0F);
     localLayoutParams.addRule(11, -1);
     paramViewGroup.addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
     localLayoutParams = new RelativeLayout.LayoutParams(1, 1);
-    localLayoutParams.height = bcwh.a(this.jdField_a_of_type_AndroidAppActivity, 26.0F);
-    localLayoutParams.width = bcwh.a(this.jdField_a_of_type_AndroidAppActivity, 26.0F);
-    localLayoutParams.rightMargin = bcwh.a(this.jdField_a_of_type_AndroidAppActivity, 2.0F);
-    localLayoutParams.addRule(6, 2131368985);
-    localLayoutParams.addRule(8, 2131368985);
-    localLayoutParams.addRule(0, 2131368985);
+    localLayoutParams.height = bdaq.a(this.jdField_a_of_type_AndroidAppActivity, 26.0F);
+    localLayoutParams.width = bdaq.a(this.jdField_a_of_type_AndroidAppActivity, 26.0F);
+    localLayoutParams.rightMargin = bdaq.a(this.jdField_a_of_type_AndroidAppActivity, 2.0F);
+    localLayoutParams.addRule(6, 2131369003);
+    localLayoutParams.addRule(8, 2131369003);
+    localLayoutParams.addRule(0, 2131369003);
     paramViewGroup.addView(this.jdField_d_of_type_AndroidWidgetImageView, localLayoutParams);
   }
   
@@ -638,17 +638,17 @@ class ofi
     {
     default: 
       return;
-    case 2131369000: 
+    case 2131369018: 
       oek.a().b(1);
       obl localobl = oek.a().a.mAdvertisementExtInfo;
       if (this.jdField_c_of_type_Boolean)
       {
         paramView = "1";
         localobl.f = paramView;
-        if ((this.jdField_a_of_type_ComTencentWidgetListView == null) || (this.jdField_a_of_type_ComTencentWidgetListView.getAdapter() == null) || (!(this.jdField_a_of_type_ComTencentWidgetListView.getAdapter() instanceof bhtf))) {
+        if ((this.jdField_a_of_type_ComTencentWidgetListView == null) || (this.jdField_a_of_type_ComTencentWidgetListView.getAdapter() == null) || (!(this.jdField_a_of_type_ComTencentWidgetListView.getAdapter() instanceof bhxm))) {
           break label349;
         }
-        paramView = (bhtf)this.jdField_a_of_type_ComTencentWidgetListView.getAdapter();
+        paramView = (bhxm)this.jdField_a_of_type_ComTencentWidgetListView.getAdapter();
         if ((paramView.getWrappedAdapter() == null) || (!(paramView.getWrappedAdapter() instanceof rqi))) {
           break label349;
         }

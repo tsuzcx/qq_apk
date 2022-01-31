@@ -1,17 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.open.agent.OpenCardContainer;
-
 public class bfbj
-  implements View.OnClickListener
 {
-  public bfbj(OpenCardContainer paramOpenCardContainer) {}
+  private static bfbj a;
   
-  public void onClick(View paramView)
+  public static bfbj a()
   {
-    this.a.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(true);
-    this.a.jdField_a_of_type_Bfbr.a();
+    try
+    {
+      if (a == null) {
+        a = new bfbj();
+      }
+      bfbj localbfbj = a;
+      return localbfbj;
+    }
+    finally {}
+  }
+  
+  public void a(String paramString)
+  {
+    bfnz.a(paramString);
+  }
+  
+  public void b(String paramString)
+  {
+    bfnz.b(paramString);
   }
 }
 

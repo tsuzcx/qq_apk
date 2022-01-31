@@ -1,17 +1,4 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.app.BaseActivity;
-
-class atno
-  implements DialogInterface.OnDismissListener
-{
-  atno(atnn paramatnn) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a.finish();
-  }
-}
+class atno {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

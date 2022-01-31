@@ -3,7 +3,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 final class raf
-  implements bdwn
+  implements beaw
 {
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {

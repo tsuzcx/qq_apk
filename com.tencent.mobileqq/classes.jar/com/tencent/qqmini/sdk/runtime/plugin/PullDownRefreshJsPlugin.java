@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgho;
-import bgid;
-import bgkd;
+import bglv;
+import bgmk;
+import bgok;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 
 public class PullDownRefreshJsPlugin
@@ -12,9 +12,9 @@ public class PullDownRefreshJsPlugin
   public static final String EVENT_START_PULLDOWN_REFRESH = "startPullDownRefresh";
   public static final String EVENT_STOP_PULLDOWN_REFRESH = "stopPullDownRefresh";
   
-  public void doInterceptJsEvent(bgkd parambgkd)
+  public void doInterceptJsEvent(bgok parambgok)
   {
-    this.mMiniAppContext.a(bgid.a(parambgkd, 1));
+    this.mMiniAppContext.a(bgmk.a(parambgok, 1));
   }
 }
 

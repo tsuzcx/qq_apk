@@ -1,33 +1,19 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.12.1;
 
 public class acvo
-  extends alxo
+  extends altm
 {
-  public acvo(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public acvo(EditInfoActivity paramEditInfoActivity) {}
   
-  public void a()
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "onVipStatusChanged: ");
+    if (!this.a.f.equals(paramString1)) {}
+    while (!this.a.j) {
+      return;
     }
-    if ((this.a.app != null) && (VipUtils.b(this.a.app)))
-    {
-      this.a.a(0L, null, null, false);
-      if (FriendProfileCardActivity.b(this.a).compareAndSet(true, false))
-      {
-        if (FriendProfileCardActivity.a(this.a).get())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("FriendProfileCardActivity", 2, "onVipStatusChanged: showDialog");
-          }
-          bdcd.a(this.a, 232, null, alpo.a(2131705270), null, alpo.a(2131705278), new acvp(this), null).show();
-        }
-        this.a.removeObserver(FriendProfileCardActivity.a(this.a));
-      }
-    }
+    this.a.j = false;
+    this.a.runOnUiThread(new EditInfoActivity.12.1(this, paramBoolean, paramString2));
   }
 }
 

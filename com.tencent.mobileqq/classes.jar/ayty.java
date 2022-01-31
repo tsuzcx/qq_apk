@@ -1,40 +1,34 @@
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
-public class ayty
+public final class ayty
+  extends ThreadPoolExecutor
 {
-  private Long jdField_a_of_type_JavaLangLong;
-  private HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private Long b;
-  
-  public ayty(Long paramLong1, Long paramLong2)
+  public ayty(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
   {
-    this.jdField_a_of_type_JavaLangLong = paramLong1;
-    this.b = paramLong2;
+    super(paramInt1, paramInt2, paramLong, paramTimeUnit, paramBlockingQueue, paramThreadFactory);
   }
   
-  public String a()
+  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
   {
-    String str = new String();
-    if (!a()) {
-      return str;
-    }
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilHashMap.size())
+    if ((paramRunnable instanceof FutureTask)) {}
+    try
     {
-      str = str + (String)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
-      i += 1;
+      ((FutureTask)paramRunnable).get();
+      return;
     }
-    return str;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramString);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap.size() == this.jdField_a_of_type_JavaLangLong.longValue();
+    catch (ExecutionException paramRunnable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("GroupSearchEngine", 2, "Exception happened", paramRunnable);
+      return;
+    }
+    catch (Error paramRunnable) {}catch (Exception paramRunnable) {}
   }
 }
 

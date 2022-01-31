@@ -1,21 +1,40 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class acyk
-  implements View.OnClickListener
+  extends alpa
 {
-  public acyk(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public acyk(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    paramView = new Intent();
-    paramView.putExtra("set_display_type", 1);
-    PublicFragmentActivity.a(this.a.getActivity(), paramView, QQSettingChatOperationFragment.class);
-    azmj.b(null, "CliOper", "", "", "0X800A22C", "0X800A22C", 0, 0, "", "", "", "");
+    if (paramInt2 == 0)
+    {
+      this.a.a();
+      if (this.a.isResumed()) {
+        if (paramInt1 != 0) {
+          break label47;
+        }
+      }
+    }
+    label47:
+    while (!this.a.isResumed())
+    {
+      QQToast.a(this.a.getActivity(), 2, alud.a(2131705233), 0).a();
+      do
+      {
+        return;
+      } while (paramInt1 != 1);
+      QQToast.a(this.a.getActivity(), 2, alud.a(2131705232), 0).a();
+      return;
+    }
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = this.a.getResources().getString(2131695087);
+    }
+    QQToast.a(this.a.getActivity(), 1, paramString1, 0).a();
   }
 }
 

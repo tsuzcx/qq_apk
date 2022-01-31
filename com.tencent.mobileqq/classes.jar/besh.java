@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.widget.Workspace.SavedState;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
-public final class besh
-  implements Parcelable.Creator<Workspace.SavedState>
+class besh
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public Workspace.SavedState a(Parcel paramParcel)
-  {
-    return new Workspace.SavedState(paramParcel, null);
-  }
+  besh(besf parambesf) {}
   
-  public Workspace.SavedState[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new Workspace.SavedState[paramInt];
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    besf.a(this.a).setAlpha(f);
   }
 }
 

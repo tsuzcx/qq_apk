@@ -31,14 +31,14 @@ import android.os.Build;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import bgjm;
-import bgjw;
-import bgkx;
-import bgkz;
-import bglo;
-import bgmo;
-import bgmp;
-import bgms;
+import bgnt;
+import bgod;
+import bgpe;
+import bgpg;
+import bgpv;
+import bgqv;
+import bgqw;
+import bgqz;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.utils.DisplayUtil;
 import java.lang.reflect.Field;
@@ -59,10 +59,10 @@ public class CanvasView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private bgjw jdField_a_of_type_Bgjw;
-  private bgms jdField_a_of_type_Bgms;
+  private bgod jdField_a_of_type_Bgod;
+  private bgqz jdField_a_of_type_Bgqz;
   Boolean jdField_a_of_type_JavaLangBoolean;
-  private final LinkedBlockingQueue<bgmo> jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue;
+  private final LinkedBlockingQueue<bgqv> jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue;
   private JSONArray jdField_a_of_type_OrgJsonJSONArray;
   float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -216,16 +216,16 @@ public class CanvasView
   {
     boolean bool = this.jdField_c_of_type_Boolean;
     Object localObject3 = this.jdField_a_of_type_OrgJsonJSONArray;
-    bgmo localbgmo = (bgmo)this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.poll();
-    if (localbgmo != null)
+    bgqv localbgqv = (bgqv)this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.poll();
+    if (localbgqv != null)
     {
       Object localObject2;
       label46:
       Object localObject1;
-      if (localbgmo != null)
+      if (localbgqv != null)
       {
-        bool = localbgmo.jdField_a_of_type_Boolean;
-        localObject2 = localbgmo.jdField_a_of_type_OrgJsonJSONArray;
+        bool = localbgqv.jdField_a_of_type_Boolean;
+        localObject2 = localbgqv.jdField_a_of_type_OrgJsonJSONArray;
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = new JSONArray();
@@ -256,13 +256,13 @@ public class CanvasView
           QMLog.e(jdField_a_of_type_JavaLangString, "process draw actions error! " + Log.getStackTraceString(localThrowable));
           continue;
         }
-        bool = localbgmo.jdField_b_of_type_Boolean;
-        localbgmo = (bgmo)this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.poll();
+        bool = localbgqv.jdField_b_of_type_Boolean;
+        localbgqv = (bgqv)this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.poll();
         break;
         bool = false;
         localObject2 = this.jdField_a_of_type_OrgJsonJSONArray;
         break label46;
-        localObject2 = bgkz.a((JSONArray)localObject3, (JSONArray)localObject1);
+        localObject2 = bgpg.a((JSONArray)localObject3, (JSONArray)localObject1);
       }
     }
     this.jdField_a_of_type_OrgJsonJSONArray = ((JSONArray)localObject3);
@@ -297,13 +297,13 @@ public class CanvasView
         int i1;
         int i2;
         int i3;
-        if (!bglo.a((String)localObject4))
+        if (!bgpv.a((String)localObject4))
         {
           if (((String)localObject4).startsWith("wxfile")) {
-            localObject1 = bgjm.a().a((String)localObject4);
+            localObject1 = bgnt.a().a((String)localObject4);
           }
         }
-        else if (!bglo.a((String)localObject1))
+        else if (!bgpv.a((String)localObject1))
         {
           f5 = b(((JSONArray)localObject5).optDouble(1, 0.0D));
           f6 = b(((JSONArray)localObject5).optDouble(2, 0.0D));
@@ -381,7 +381,7 @@ public class CanvasView
           }
           m += 1;
           break;
-          localObject1 = this.jdField_a_of_type_Bgjw.getChildFileAbsolutePath((String)localObject4);
+          localObject1 = this.jdField_a_of_type_Bgod.getChildFileAbsolutePath((String)localObject4);
           break label93;
           f1 = f4;
           f2 = this.jdField_c_of_type_Float;
@@ -402,9 +402,9 @@ public class CanvasView
     label3207:
     for (;;)
     {
-      ((BitmapFactory.Options)localObject4).inSampleSize = bgkx.a((BitmapFactory.Options)localObject4, f4, f3);
+      ((BitmapFactory.Options)localObject4).inSampleSize = bgpe.a((BitmapFactory.Options)localObject4, f4, f3);
       ((BitmapFactory.Options)localObject4).inJustDecodeBounds = false;
-      localObject1 = bgkx.a((String)localObject1, (BitmapFactory.Options)localObject4);
+      localObject1 = bgpe.a((String)localObject1, (BitmapFactory.Options)localObject4);
       break;
       Object localObject6;
       if (("setStrokeStyle".equals(localObject1)) || ("setFillStyle".equals(localObject1)))
@@ -475,10 +475,10 @@ public class CanvasView
         }
         localObject4 = ((JSONArray)localObject6).optString(1);
         localObject1 = localObject4;
-        if (!bglo.a((String)localObject4))
+        if (!bgpv.a((String)localObject4))
         {
           if (((String)localObject4).startsWith("wxfile")) {
-            localObject1 = bgjm.a().a((String)localObject4);
+            localObject1 = bgnt.a().a((String)localObject4);
           }
         }
         else
@@ -491,10 +491,10 @@ public class CanvasView
           this.jdField_d_of_type_Boolean = true;
           this.jdField_e_of_type_Boolean = true;
           label1234:
-          if (bglo.a((String)localObject1)) {
+          if (bgpv.a((String)localObject1)) {
             break label1450;
           }
-          localObject1 = bgkx.a((String)localObject1);
+          localObject1 = bgpe.a((String)localObject1);
           if (localObject1 != null)
           {
             this.jdField_e_of_type_Int = ((Bitmap)localObject1).getWidth();
@@ -526,7 +526,7 @@ public class CanvasView
           this.jdField_a_of_type_AndroidGraphicsPaint.setShader((Shader)localObject1);
           this.jdField_b_of_type_AndroidGraphicsPaint.setShader((Shader)localObject1);
           break;
-          localObject1 = this.jdField_a_of_type_Bgjw.getChildFileAbsolutePath((String)localObject4);
+          localObject1 = this.jdField_a_of_type_Bgod.getChildFileAbsolutePath((String)localObject4);
           break label1205;
           if ("repeat-x".equals(localObject4))
           {
@@ -1042,17 +1042,17 @@ public class CanvasView
         }
         if ("setShadow".equals(localObject2))
         {
-          localObject2 = new bgmp(this);
+          localObject2 = new bgqw(this);
           localObject4 = ((JSONArray)localObject6).optJSONArray(3);
           f1 = b(((JSONArray)localObject6).optDouble(2, 0.0D));
           f2 = b(((JSONArray)localObject6).optDouble(0, 0.0D));
           f3 = b(((JSONArray)localObject6).optDouble(1, 0.0D));
-          ((bgmp)localObject2).jdField_a_of_type_Float = f1;
-          ((bgmp)localObject2).jdField_b_of_type_Float = f2;
-          ((bgmp)localObject2).jdField_c_of_type_Float = f3;
-          ((bgmp)localObject2).jdField_a_of_type_Int = a((JSONArray)localObject4);
-          this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(((bgmp)localObject2).jdField_a_of_type_Float, ((bgmp)localObject2).jdField_b_of_type_Float, ((bgmp)localObject2).jdField_c_of_type_Float, ((bgmp)localObject2).jdField_a_of_type_Int);
-          this.jdField_b_of_type_AndroidGraphicsPaint.setShadowLayer(((bgmp)localObject2).jdField_a_of_type_Float, ((bgmp)localObject2).jdField_b_of_type_Float, ((bgmp)localObject2).jdField_c_of_type_Float, ((bgmp)localObject2).jdField_a_of_type_Int);
+          ((bgqw)localObject2).jdField_a_of_type_Float = f1;
+          ((bgqw)localObject2).jdField_b_of_type_Float = f2;
+          ((bgqw)localObject2).jdField_c_of_type_Float = f3;
+          ((bgqw)localObject2).jdField_a_of_type_Int = a((JSONArray)localObject4);
+          this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(((bgqw)localObject2).jdField_a_of_type_Float, ((bgqw)localObject2).jdField_b_of_type_Float, ((bgqw)localObject2).jdField_c_of_type_Float, ((bgqw)localObject2).jdField_a_of_type_Int);
+          this.jdField_b_of_type_AndroidGraphicsPaint.setShadowLayer(((bgqw)localObject2).jdField_a_of_type_Float, ((bgqw)localObject2).jdField_b_of_type_Float, ((bgqw)localObject2).jdField_c_of_type_Float, ((bgqw)localObject2).jdField_a_of_type_Int);
           break;
         }
         if ("setLineCap".equals(localObject2))
@@ -1314,7 +1314,7 @@ public class CanvasView
           ((JSONObject)localObject).put("id", paramMotionEvent.getPointerId(0));
           localJSONObject1.put("data", this.jdField_b_of_type_JavaLangString);
           localJSONObject1.put("touch", localObject);
-          this.jdField_a_of_type_Bgms.a("onTouchStart", localJSONObject1.toString());
+          this.jdField_a_of_type_Bgqz.a("onTouchStart", localJSONObject1.toString());
         }
         catch (JSONException localJSONException1)
         {
@@ -1331,7 +1331,7 @@ public class CanvasView
           ((JSONObject)localObject).put("id", paramMotionEvent.getPointerId(m));
           localJSONException1.put("data", this.jdField_b_of_type_JavaLangString);
           localJSONException1.put("touch", localObject);
-          this.jdField_a_of_type_Bgms.a("onTouchStart", localJSONException1.toString());
+          this.jdField_a_of_type_Bgqz.a("onTouchStart", localJSONException1.toString());
         }
         catch (JSONException localJSONException2)
         {
@@ -1379,7 +1379,7 @@ public class CanvasView
             }
             localJSONException3.put("data", this.jdField_b_of_type_JavaLangString);
             localJSONException3.put("touches", localObject);
-            this.jdField_a_of_type_Bgms.a("onTouchMove", localJSONException3.toString());
+            this.jdField_a_of_type_Bgqz.a("onTouchMove", localJSONException3.toString());
             break;
             QMLog.d(jdField_a_of_type_JavaLangString, "--ACTION_UP--");
             try
@@ -1390,7 +1390,7 @@ public class CanvasView
               ((JSONObject)localObject).put("id", paramMotionEvent.getPointerId(0));
               localJSONException3.put("data", this.jdField_b_of_type_JavaLangString);
               localJSONException3.put("touch", localObject);
-              this.jdField_a_of_type_Bgms.a("onTouchEnd", localJSONException3.toString());
+              this.jdField_a_of_type_Bgqz.a("onTouchEnd", localJSONException3.toString());
             }
             catch (JSONException localJSONException4)
             {
@@ -1408,7 +1408,7 @@ public class CanvasView
             ((JSONObject)localObject).put("id", paramMotionEvent.getPointerId(m));
             localJSONException4.put("data", this.jdField_b_of_type_JavaLangString);
             localJSONException4.put("touch", localObject);
-            this.jdField_a_of_type_Bgms.a("onTouchEnd", localJSONException4.toString());
+            this.jdField_a_of_type_Bgqz.a("onTouchEnd", localJSONException4.toString());
           }
           catch (Exception localException)
           {
@@ -1427,7 +1427,7 @@ public class CanvasView
           ((JSONArray)localObject).put(localJSONObject2);
           localException.put("data", this.jdField_b_of_type_JavaLangString);
           localException.put("touches", localObject);
-          this.jdField_a_of_type_Bgms.a("onTouchCancel", localException.toString());
+          this.jdField_a_of_type_Bgqz.a("onTouchCancel", localException.toString());
         }
         catch (JSONException localJSONException5)
         {

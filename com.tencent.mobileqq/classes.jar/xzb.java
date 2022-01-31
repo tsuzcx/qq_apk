@@ -1,19 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 
 public class xzb
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public xzb(BaseWidgetView paramBaseWidgetView) {}
+  public xzb(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((this.a.a() != null) && (!this.a.a(paramView)))
-    {
-      this.a.b(this.a.a());
-      this.a.a().onClick(paramView);
+    if (this.a.f) {
+      return;
     }
+    this.a.h = -1;
+    this.a.f = true;
+    QRDisplayActivity.a(this.a).dismiss();
   }
 }
 

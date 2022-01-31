@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import arin;
-import ario;
+import armw;
+import armx;
 import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
 
 class SimpleFilePresenter$1$1$1

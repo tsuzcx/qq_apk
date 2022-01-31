@@ -1,16 +1,12 @@
-import android.support.annotation.Nullable;
-
 class bkpq
-  implements bmac<bktt>
+  implements bkso
 {
-  bkpq(bkpi parambkpi) {}
+  bkpq(bkpl parambkpl) {}
   
-  public void a(@Nullable bktt parambktt)
+  public void a()
   {
-    bkpi.a(this.a, parambktt);
-    if (bkpi.a(this.a) != null) {
-      bkpi.a(this.a).a(bkpi.a(this.a).a(), bkpi.a(this.a));
-    }
+    blfv.a().a("onFirstFrameDone");
+    bkpl.c(this.a);
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.app.readinjoy;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bjxj;
+import bkbq;
 import java.util.List;
 
 class ReadInJoyManager$2
@@ -37,7 +37,7 @@ class ReadInJoyManager$2
       Object localObject = ReadInJoyManager.a(this.this$0).edit();
       ((SharedPreferences.Editor)localObject).putString("config_new_channel_id_list", str);
       ((SharedPreferences.Editor)localObject).putInt("config_new_channel_notify_flag", 1);
-      bjxj.a((SharedPreferences.Editor)localObject, true);
+      bkbq.a((SharedPreferences.Editor)localObject, true);
       ReadInJoyManager.b(this.this$0);
       return;
     }

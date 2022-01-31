@@ -1,114 +1,91 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.qav.observer.FilterableObservable.1;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bfrn
+class bfrn
+  extends bfrw
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private final List<bfro> jdField_a_of_type_JavaUtilList = new Vector();
-  private Handler jdField_b_of_type_AndroidOsHandler;
-  private final List<bfro> jdField_b_of_type_JavaUtilList = new Vector();
+  bfrn(bfrj parambfrj, bfqv parambfqv, bfrs parambfrs, String paramString, JSONObject paramJSONObject) {}
   
-  bfrn()
+  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    bool2 = false;
+    boolean bool3 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenSdkVirtualManager", 2, new Object[] { "OpenVirtual.uploadAvatarImage.result:", bfru.a(paramString1, this.jdField_a_of_type_Bfqv.jdField_a_of_type_JavaLangString) });
     }
-    if (this.jdField_b_of_type_AndroidOsHandler == null)
-    {
-      HandlerThread localHandlerThread = new HandlerThread("FilterableObservable-bg-thread");
-      localHandlerThread.start();
-      this.jdField_b_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
-    }
-  }
-  
-  private void a(bfro parambfro, Handler paramHandler, int paramInt, Object... paramVarArgs)
-  {
-    paramHandler.post(new FilterableObservable.1(this, parambfro, paramInt, paramVarArgs));
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_b_of_type_JavaUtilList.clear();
-      if (this.jdField_b_of_type_AndroidOsHandler != null) {
-        this.jdField_b_of_type_AndroidOsHandler.getLooper().quit();
-      }
-      this.jdField_a_of_type_AndroidOsHandler = null;
-      this.jdField_b_of_type_AndroidOsHandler = null;
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(bfro parambfro)
-  {
-    if (parambfro != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(parambfro);
-      this.jdField_b_of_type_JavaUtilList.remove(parambfro);
-      return;
-    }
-    finally
-    {
-      parambfro = finally;
-      throw parambfro;
-    }
-  }
-  
-  public void a(bfro parambfro, boolean paramBoolean)
-  {
+    localObject = null;
+    bool1 = bool2;
+    paramString2 = localObject;
+    i = paramInt;
     if (paramBoolean) {}
+    try
+    {
+      paramString1 = new JSONObject(paramString1);
+      i = paramString1.optInt("ErrorCode");
+      if (i != 0) {}
+    }
+    catch (JSONException paramString1)
+    {
+      label102:
+      do
+      {
+        for (;;)
+        {
+          QLog.d("OpenSdkVirtualManager", 1, "OpenVirtual.uploadAvatarImage.e:", paramString1);
+          bool1 = bool2;
+          paramString2 = localObject;
+          i = paramInt;
+        }
+        bfrj.a(this.jdField_a_of_type_Bfrj);
+        if (bfrj.b(this.jdField_a_of_type_Bfrj) < 2) {
+          break;
+        }
+      } while ((this.jdField_a_of_type_Bfrs == null) || (this.jdField_a_of_type_Bfrs == null));
+      this.jdField_a_of_type_Bfrs.a(bool1, this.jdField_a_of_type_JavaLangString, paramString2, i);
+      return;
+      bfrj.a(this.jdField_a_of_type_Bfrj, this.jdField_a_of_type_Bfqv, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Bfrs);
+      return;
+    }
+    try
+    {
+      paramString1 = paramString1.optJSONObject("msg_img_data");
+      if (paramString1 == null) {
+        break label273;
+      }
+      paramString1 = paramString1.optString("str_file_name");
+      paramBoolean = bool3;
+    }
+    catch (JSONException paramString1)
+    {
+      paramInt = i;
+      break label168;
+      paramBoolean = false;
+      paramString1 = null;
+      break label102;
+    }
+    paramInt = i;
     for (;;)
     {
-      try
-      {
-        this.jdField_b_of_type_JavaUtilList.add(parambfro);
-        return;
+      i = paramInt;
+      paramString2 = paramString1;
+      bool1 = paramBoolean;
+      if (!bool1) {
+        break;
       }
-      finally {}
-      this.jdField_a_of_type_JavaUtilList.add(parambfro);
-    }
-  }
-  
-  public void a(Class<? extends bfro> paramClass, int paramInt, Object... paramVarArgs)
-  {
-    Iterator localIterator;
-    bfro localbfro;
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        localbfro = (bfro)localIterator.next();
-        if ((paramClass != null) && (localbfro != null) && (paramClass.isAssignableFrom(localbfro.getClass()))) {
-          a(localbfro, this.jdField_a_of_type_AndroidOsHandler, paramInt, paramVarArgs);
-        }
+      if ((this.jdField_a_of_type_Bfrs != null) && (this.jdField_a_of_type_Bfrs != null)) {
+        this.jdField_a_of_type_Bfrs.a(bool1, this.jdField_a_of_type_JavaLangString, paramString2, i);
       }
-    }
-    synchronized (this.jdField_b_of_type_JavaUtilList)
-    {
-      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        localbfro = (bfro)localIterator.next();
-        if ((paramClass != null) && (localbfro != null) && (paramClass.isAssignableFrom(localbfro.getClass()))) {
-          a(localbfro, this.jdField_b_of_type_AndroidOsHandler, paramInt, paramVarArgs);
-        }
-      }
+      return;
+      paramInt = paramString1.optInt("uint32_ret_to_http", i);
+      paramString1 = null;
+      paramBoolean = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfrn
  * JD-Core Version:    0.7.0.1
  */

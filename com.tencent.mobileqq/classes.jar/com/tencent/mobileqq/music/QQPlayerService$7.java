@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.music;
 
-import aumt;
+import aurc;
 
 class QQPlayerService$7
   implements Runnable
 {
-  QQPlayerService$7(QQPlayerService paramQQPlayerService, aumt paramaumt, int paramInt) {}
+  QQPlayerService$7(QQPlayerService paramQQPlayerService, aurc paramaurc, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aumt.onPlayStateChanged(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Aurc.onPlayStateChanged(this.jdField_a_of_type_Int);
   }
 }
 

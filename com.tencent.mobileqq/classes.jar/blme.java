@@ -1,12 +1,13 @@
-class blme
-  implements blrs
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.coremedia.CMTimeRange;
+
+public abstract interface blme
 {
-  blme(blly paramblly) {}
+  public abstract void a(CMTime paramCMTime);
   
-  public void bb_()
-  {
-    blly.a(this.a).e();
-  }
+  public abstract void a(CMTimeRange paramCMTimeRange);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

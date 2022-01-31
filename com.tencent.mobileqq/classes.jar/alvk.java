@@ -1,32 +1,66 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.app.IndividualRedPacketManager.VIPHBStrategy.1;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.securemodule.impl.AppInfo;
-import com.tencent.securemodule.service.CloudScanListener;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class alvk
-  implements CloudScanListener
+  implements aerd
 {
-  public alvk(QQAppInterface paramQQAppInterface) {}
+  private QQAppInterface a;
   
-  public void onFinish(int paramInt)
+  public alvk(QQAppInterface paramQQAppInterface)
   {
-    if (paramInt == 0) {
-      PreferenceManager.getDefaultSharedPreferences(QQAppInterface.f(this.a)).edit().putLong("security_scan_last_time", System.currentTimeMillis()).putBoolean("security_scan_last_result", false).commit();
-    }
+    this.a = paramQQAppInterface;
   }
   
-  public void onRiskFoud(List<AppInfo> paramList) {}
+  public void a() {}
   
-  public void onRiskFound()
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("security_scan", 2, "Find Risk");
+    if ((paramRedPacketInfo == null) || (TextUtils.isEmpty(paramRedPacketInfo.templateId))) {
+      return;
     }
-    PreferenceManager.getDefaultSharedPreferences(QQAppInterface.e(this.a)).edit().putBoolean("security_scan_last_result", true).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d(alvg.b(), 2, "VIPHBStrategy.get Id = " + paramRedPacketInfo.templateId + "content = " + paramRedPacketInfo.jdField_a_of_type_JavaLangString);
+    }
+    Object localObject = (alvg)this.a.getManager(131);
+    if ((localObject == null) || (!((alvg)localObject).c()) || (((alvg)localObject).c.get()))
+    {
+      String str;
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        str = alvg.b();
+        localStringBuilder = new StringBuilder().append("VIPHBStrategy get fail! Redpacket Disable or no TemplateInfo! ");
+        if (localObject != null) {
+          break label150;
+        }
+      }
+      label150:
+      for (localObject = "redPacketManager == null";; localObject = "isShowRedpacket:" + ((alvg)localObject).a().jdField_a_of_type_Boolean + ", PacketEnable:" + ((alvg)localObject).b() + ", mIsSDCardError:" + ((alvg)localObject).c.get())
+      {
+        QLog.d(str, 2, (String)localObject);
+        CustomizeStrategyFactory.a().a(paramRedPacketInfo);
+        return;
+      }
+    }
+    ThreadManager.post(new IndividualRedPacketManager.VIPHBStrategy.1(this, (alvg)localObject, paramRedPacketInfo), 8, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, agmy paramagmy)
+  {
+    if ((paramRedPacketInfo != null) && ((paramagmy instanceof agne)))
+    {
+      paramagmy = (agne)paramagmy;
+      paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap = paramagmy.jdField_a_of_type_AndroidGraphicsBitmap;
+      paramRedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramagmy.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+      paramRedPacketInfo.jdField_a_of_type_Aerc = paramagmy.jdField_a_of_type_Aerc;
+      paramRedPacketInfo.b = paramagmy.jdField_a_of_type_Boolean;
+    }
   }
 }
 

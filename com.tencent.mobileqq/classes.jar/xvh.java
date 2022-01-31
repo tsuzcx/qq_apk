@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
+import android.view.View;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class xvh
-  implements DialogInterface.OnCancelListener
+  implements bibd
 {
-  public xvh(QRLoginAuthActivity paramQRLoginAuthActivity) {}
+  public xvh(SegmentList paramSegmentList) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a_(View paramView) {}
+  
+  public void e() {}
+  
+  public void e(boolean paramBoolean)
   {
-    this.a.finish();
+    this.a.requestDisallowInterceptTouchEvent(paramBoolean);
   }
 }
 

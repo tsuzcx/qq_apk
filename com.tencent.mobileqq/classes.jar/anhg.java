@@ -1,25 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.7;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.qphone.base.util.QLog;
 
 public class anhg
-  implements DialogInterface.OnClickListener
+  implements angb
 {
-  public anhg(ArkAppYYBDownloadModule.7 param7) {}
+  public anhg(ARScanEntryView paramARScanEntryView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      label6:
-      bfgi.a().a(10, this.a.a);
+    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResDownloadComplete ;" + this.a.m);
+    if (!this.a.m) {
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
+    ARScanEntryView.a(this.a, 100);
+    ARScanEntryView.a(this.a).removeMessages(324);
+    ARScanEntryView.a(this.a).sendEmptyMessage(324);
+    this.a.k();
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResUpdateProgress " + paramInt + ";" + this.a.m);
+    if (!this.a.m) {
+      return;
     }
+    ARScanEntryView.a(this.a, paramInt);
+    ARScanEntryView.a(this.a);
+  }
+  
+  public void b()
+  {
+    this.a.k();
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acwk;
-import acwl;
-import acwm;
+import adaz;
+import adba;
+import adbb;
 import android.os.Bundle;
-import arsi;
-import bdqg;
+import arwr;
+import bdup;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.mobileqq.dinifly.LottieComposition;
@@ -16,10 +16,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class FriendProfileCardActivity$ColorScreenLoader
-  implements bdqg<arsi>, Runnable
+  implements bdup<arwr>, Runnable
 {
   public int a;
-  public arsi a;
+  public arwr a;
   public LottieComposition a;
   
   public FriendProfileCardActivity$ColorScreenLoader(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
@@ -27,29 +27,29 @@ public class FriendProfileCardActivity$ColorScreenLoader
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(arsi paramarsi, Object paramObject)
+  public void a(arwr paramarwr, Object paramObject)
   {
-    if ((paramarsi == null) || (!this.this$0.isValidate()))
+    if ((paramarwr == null) || (!this.this$0.isValidate()))
     {
-      QLog.e("ColorScreenManager", 1, "early return, config is " + paramarsi);
+      QLog.e("ColorScreenManager", 1, "early return, config is " + paramarwr);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("ColorScreenManager", 2, "onComplete, anim file is " + paramarsi.jdField_a_of_type_JavaLangString);
+      QLog.d("ColorScreenManager", 2, "onComplete, anim file is " + paramarwr.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_Arsi = paramarsi;
+    this.jdField_a_of_type_Arwr = paramarwr;
     try
     {
-      paramarsi = new FileInputStream(paramarsi.jdField_a_of_type_JavaLangString);
+      paramarwr = new FileInputStream(paramarwr.jdField_a_of_type_JavaLangString);
       paramObject = new Bundle();
       paramObject.putString("key", "lottie_colorscreen_" + String.valueOf(this.jdField_a_of_type_Int) + "unzip");
       paramObject.putString("path", this.this$0.getFilesDir().getAbsolutePath() + "/" + "color_screen" + "/" + this.jdField_a_of_type_Int + "/" + "unzip" + "/images/");
-      LottieComposition.Factory.fromInputStreamWithCacheBitmap(this.this$0, paramarsi, this.this$0.a.getLottieDrawable(), new acwk(this), paramObject, BaseApplicationImpl.sImageCache);
+      LottieComposition.Factory.fromInputStreamWithCacheBitmap(this.this$0, paramarwr, this.this$0.a.getLottieDrawable(), new adaz(this), paramObject, BaseApplicationImpl.sImageCache);
       return;
     }
-    catch (FileNotFoundException paramarsi)
+    catch (FileNotFoundException paramarwr)
     {
-      QLog.e("ColorScreenManager", 1, "colorScreen", paramarsi);
+      QLog.e("ColorScreenManager", 1, "colorScreen", paramarwr);
     }
   }
   
@@ -67,15 +67,15 @@ public class FriendProfileCardActivity$ColorScreenLoader
           QLog.d("ColorScreenManager", 2, "play : " + this.jdField_a_of_type_Int);
         }
         this.this$0.a.cancelAnimation();
-        this.this$0.a.setImageAssetDelegate(new acwl(this));
+        this.this$0.a.setImageAssetDelegate(new adba(this));
         try
         {
-          acwm localacwm = new acwm(this, this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition.getDuration());
+          adbb localadbb = new adbb(this, this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition.getDuration());
           this.this$0.a.setComposition(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition);
           this.this$0.a.setProgress(0.0F);
-          this.this$0.a.setRepeatCount(this.jdField_a_of_type_Arsi.jdField_a_of_type_Int);
-          this.this$0.a.addAnimatorListener(localacwm);
-          this.this$0.a.addAnimatorUpdateListener(localacwm);
+          this.this$0.a.setRepeatCount(this.jdField_a_of_type_Arwr.jdField_a_of_type_Int);
+          this.this$0.a.addAnimatorListener(localadbb);
+          this.this$0.a.addAnimatorUpdateListener(localadbb);
           this.this$0.a.setVisibility(0);
           this.this$0.a.playAnimation();
           return;

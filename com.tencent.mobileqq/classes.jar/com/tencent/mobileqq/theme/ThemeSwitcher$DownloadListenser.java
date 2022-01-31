@@ -2,11 +2,11 @@ package com.tencent.mobileqq.theme;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import azmz;
-import bakf;
-import bakg;
-import bakk;
-import bdqk;
+import azri;
+import baoo;
+import baop;
+import baot;
+import bdut;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -119,7 +119,7 @@ class ThemeSwitcher$DownloadListenser
       }
     } while (!paramString1.startsWith("theme.android."));
     a(localQQAppInterface, paramString1, paramString2, 0);
-    bakg.a(null, "theme_detail", ThemeSwitcher.a(this.this$0), 153, 1, 35, str, "20000000", bakg.jdField_a_of_type_JavaLangString, "");
+    baop.a(null, "theme_detail", ThemeSwitcher.a(this.this$0), 153, 1, 35, str, "20000000", baop.jdField_a_of_type_JavaLangString, "");
   }
   
   public void run()
@@ -135,10 +135,10 @@ class ThemeSwitcher$DownloadListenser
       return;
     }
     QLog.e("ThemeSwitcher", 1, "downloadTheme timeout");
-    bdqk.a(null, "individual_v2_theme_download_fail", this.jdField_a_of_type_JavaLangString, this.this$0.toString(), ThemeSwitcher.a(this.this$0).a(), ThemeSwitcher.a(this.this$0), "", 0.0F, 0.0F);
+    bdut.a(null, "individual_v2_theme_download_fail", this.jdField_a_of_type_JavaLangString, this.this$0.toString(), ThemeSwitcher.a(this.this$0).a(), ThemeSwitcher.a(this.this$0), "", 0.0F, 0.0F);
     HashMap localHashMap = new HashMap();
     localHashMap.put("reportKey", this.jdField_a_of_type_JavaLangString);
-    azmz.a(BaseApplication.getContext()).a("", "individual_v2_theme_download_fail", false, 0L, -1L, localHashMap, "", true);
+    azri.a(BaseApplication.getContext()).a("", "individual_v2_theme_download_fail", false, 0L, -1L, localHashMap, "", true);
     a(localQQAppInterface, null, null, 2);
   }
 }

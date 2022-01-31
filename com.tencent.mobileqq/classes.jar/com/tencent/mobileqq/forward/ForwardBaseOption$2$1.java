@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.forward;
 
-import arum;
-import aruq;
+import aryv;
+import aryz;
 
 public class ForwardBaseOption$2$1
   implements Runnable
 {
-  public ForwardBaseOption$2$1(aruq paramaruq) {}
+  public ForwardBaseOption$2$1(aryz paramaryz) {}
   
   public void run()
   {
-    arum.a(this.a.a);
+    aryv.a(this.a.a);
   }
 }
 

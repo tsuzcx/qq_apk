@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aleb;
+import aliq;
 import com.tencent.qphone.base.util.QLog;
 
 public final class ApolloConfigDataReport$4
@@ -11,7 +11,7 @@ public final class ApolloConfigDataReport$4
     if (QLog.isColorLevel()) {
       QLog.d("ApolloConfigDataReport", 2, "interceptReport other app init opNameSet");
     }
-    aleb.c(aleb.a(aleb.a()));
+    aliq.c(aliq.a(aliq.a()));
   }
 }
 

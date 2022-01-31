@@ -1,36 +1,21 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 
-public class wle
-  extends wkk
+class wle
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public List<wme> b = new ArrayList();
-  public boolean e;
+  wle(wlc paramwlc, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
   
-  public wle(ErrorMessage paramErrorMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramErrorMessage);
-  }
-  
-  public String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
+    try
     {
-      wme localwme = (wme)localIterator.next();
-      localStringBuilder.append("feedId:").append(localwme.a().feedId);
-      localStringBuilder.append("unionId:").append(localwme.a().getOwner().getUnionId());
+      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.scrollTo((int)(300.0F - f * 300.0F), 0);
+      return;
     }
-    return localStringBuilder.toString();
-  }
-  
-  public String toString()
-  {
-    return "FeedData{" + super.toString() + "mFeedItems=" + this.b + '}';
+    catch (Exception paramValueAnimator) {}
   }
 }
 

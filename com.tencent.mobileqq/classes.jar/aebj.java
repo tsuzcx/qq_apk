@@ -1,35 +1,37 @@
-import android.app.Dialog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.ThemeNoviceGuideActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aebj
-  implements Animation.AnimationListener
+  extends Handler
 {
-  public aebj(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public aebj(ThemeNoviceGuideActivity paramThemeNoviceGuideActivity, Looper paramLooper)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidAppDialog.show();
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.setVisibility(8);
-    }
-    while (paramAnimation != this.b) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.requestLayout();
+    super(paramLooper);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void handleMessage(Message paramMessage)
+  {
+    paramMessage = this.a.findViewById(2131377807);
+    if (paramMessage != null) {}
+    try
+    {
+      paramMessage.setBackgroundResource(2130849977);
+      azqs.b(this.a.app, "CliOper", "", this.a.app.getCurrentAccountUin(), "theme_mall", "theme_popup", 0, 0, "", "", "", "");
+      return;
+    }
+    catch (OutOfMemoryError paramMessage)
+    {
+      for (;;)
+      {
+        QLog.e("ThemeNoviceGuideActivity", 1, "handleMessage oom e = " + paramMessage);
+      }
+    }
+  }
 }
 
 

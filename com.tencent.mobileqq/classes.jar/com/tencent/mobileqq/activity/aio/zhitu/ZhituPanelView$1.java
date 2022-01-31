@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import agwq;
-import agxh;
+import ahbf;
+import ahbw;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import azmj;
-import bdcs;
+import azqs;
+import bdhb;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.photo.SendPhotoTask;
@@ -18,14 +18,14 @@ import java.util.ArrayList;
 class ZhituPanelView$1
   implements Runnable
 {
-  ZhituPanelView$1(ZhituPanelView paramZhituPanelView, agxh paramagxh) {}
+  ZhituPanelView$1(ZhituPanelView paramZhituPanelView, ahbw paramahbw) {}
   
   public void run()
   {
     Object localObject3;
     if (!this.a.jdField_b_of_type_Boolean)
     {
-      localObject3 = agwq.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
+      localObject3 = ahbf.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
       if (!(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof BitmapDrawable)) {
         break label496;
       }
@@ -49,17 +49,17 @@ class ZhituPanelView$1
               ((File)localObject3).getParentFile().mkdirs();
               ((File)localObject3).createNewFile();
             }
-            boolean bool = bdcs.a((Bitmap)localObject1, ((File)localObject3).getAbsolutePath());
+            boolean bool = bdhb.a((Bitmap)localObject1, ((File)localObject3).getAbsolutePath());
             if (!bool) {
               break;
             }
             localObject1 = localObject3;
-            if (agwq.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a() != 7220) {
+            if (ahbf.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a() != 7220) {
               break label340;
             }
             this.a.jdField_b_of_type_JavaLangString = ((File)localObject1).getAbsolutePath();
-            agwq.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).f(this.a);
-            azmj.b(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008C72", "0X8008C72", agwq.a(agwq.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a()), 0, "", "", "", "");
+            ahbf.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).f(this.a);
+            azqs.b(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008C72", "0X8008C72", ahbf.a(ahbf.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a()), 0, "", "", "", "");
             return;
           }
           catch (IOException localIOException)
@@ -69,13 +69,13 @@ class ZhituPanelView$1
           }
           catch (OutOfMemoryError localOutOfMemoryError1)
           {
-            agwq.a(localOutOfMemoryError1);
+            ahbf.a(localOutOfMemoryError1);
             return;
           }
           if (this.a.jdField_b_of_type_JavaLangString == null) {
             try
             {
-              Object localObject2 = agwq.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a);
+              Object localObject2 = ahbf.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a);
               if (localObject2 == null) {
                 break;
               }
@@ -86,14 +86,14 @@ class ZhituPanelView$1
               for (;;)
               {
                 QLog.e(ZhituPanelView.b(), 1, "oom when save bitmap");
-                agwq.a(localOutOfMemoryError2);
+                ahbf.a(localOutOfMemoryError2);
                 localFile = null;
               }
             }
           }
         }
-        localFile = agwq.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
-        bdcs.d(this.a.jdField_b_of_type_JavaLangString, localFile.getAbsolutePath());
+        localFile = ahbf.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
+        bdhb.d(this.a.jdField_b_of_type_JavaLangString, localFile.getAbsolutePath());
         continue;
         localObject3 = new Intent();
         ArrayList localArrayList = new ArrayList();

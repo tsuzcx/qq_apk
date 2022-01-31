@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.utils;
 
-import bddb;
+import bdhk;
 
 public class JumpAction$5
   implements Runnable
 {
-  public JumpAction$5(bddb parambddb) {}
+  public JumpAction$5(bdhk parambdhk) {}
   
   public void run()
   {
-    bddb.b(this.this$0);
+    bdhk.b(this.this$0);
   }
 }
 

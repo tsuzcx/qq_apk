@@ -1,16 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
+import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment.2.1;
+import mqq.os.MqqHandler;
 
 public class blgq
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bkzv
 {
-  public blgq(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  public blgq(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void b(boolean paramBoolean, int paramInt)
   {
-    AEEditorAILoadingView.a(this.a).setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    AETakeFacePhotoPreviewFragment.a(this.a).removeObserver(this);
+    ThreadManager.getUIHandler().post(new AETakeFacePhotoPreviewFragment.2.1(this, paramBoolean, paramInt));
   }
 }
 

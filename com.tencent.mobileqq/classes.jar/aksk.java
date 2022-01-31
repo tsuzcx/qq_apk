@@ -1,22 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
 
-class aksk
-  extends alox
+public abstract interface aksk
 {
-  aksk(aksj paramaksj) {}
+  public abstract void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, aksj paramaksj, long paramLong);
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("qwe", 2, "onUpdateFriendInfo:" + paramString);
-    }
-    if ((aksj.a(this.a) != null) && (aksj.a(this.a).get(paramString + "nick") != null))
-    {
-      int i = ((Integer)aksj.a(this.a).remove(paramString + "nick")).intValue();
-      this.a.a(i, paramString, 1);
-    }
-  }
+  public abstract void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt);
+  
+  public abstract void onDownloadGameResStart(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onGameCheckFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams);
+  
+  public abstract void onGameCheckRetry(int paramInt);
+  
+  public abstract void onGameCheckStart(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong);
+  
+  public abstract void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onSsoCmdRuleRsp(CmGameStartChecker.StartCheckParam paramStartCheckParam, String paramString);
+  
+  public abstract void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams);
 }
 
 

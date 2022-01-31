@@ -45,7 +45,7 @@ public class qrq
   
   private void a(Bitmap paramBitmap, int paramInt)
   {
-    this.jdField_b_of_type_JavaLangString = (baul.a + File.separator + bame.c(new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("-").append(paramInt).toString()));
+    this.jdField_b_of_type_JavaLangString = (bayu.a + File.separator + baqn.c(new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("-").append(paramInt).toString()));
     new qwm(paramBitmap, this.jdField_b_of_type_JavaLangString).a();
   }
   

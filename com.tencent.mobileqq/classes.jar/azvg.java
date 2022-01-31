@@ -1,15 +1,22 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
-class azvg
+public class azvg
+  implements View.OnLongClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  ImageView b = null;
+  public azvg(StructMsgForGeneralShare paramStructMsgForGeneralShare, aetk paramaetk) {}
   
-  azvg(azvf paramazvf) {}
+  public boolean onLongClick(View paramView)
+  {
+    StructMsgForGeneralShare.clickedItemIndex = 0;
+    azus localazus = (azus)paramView.getTag();
+    if (!TextUtils.isEmpty(localazus.Q)) {
+      StructMsgForGeneralShare.clickedItemIndex = Integer.valueOf(localazus.Q).intValue();
+    }
+    return this.jdField_a_of_type_Aetk.onLongClick(paramView);
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.model;
 
 import android.util.SparseArray;
-import aube;
+import aufn;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.pb.emosm.EmosmPb.SubCmd0x5RspBQRecommend;
@@ -11,7 +11,7 @@ import java.util.List;
 public class EmoticonManager$25
   implements Runnable
 {
-  public EmoticonManager$25(aube paramaube, EmosmPb.SubCmd0x5RspBQRecommend paramSubCmd0x5RspBQRecommend, int paramInt) {}
+  public EmoticonManager$25(aufn paramaufn, EmosmPb.SubCmd0x5RspBQRecommend paramSubCmd0x5RspBQRecommend, int paramInt) {}
   
   public void run()
   {
@@ -25,16 +25,16 @@ public class EmoticonManager$25
     this.this$0.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend);
     int i = this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend.int32_exposure_num.get();
     if (i > 0) {
-      aube.jdField_a_of_type_Int = i;
+      aufn.jdField_a_of_type_Int = i;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("EmoticonManager", 2, "saveAndUpdateRecommendEmosInfo maxexposenum = " + aube.jdField_a_of_type_Int);
+      QLog.d("EmoticonManager", 2, "saveAndUpdateRecommendEmosInfo maxexposenum = " + aufn.jdField_a_of_type_Int);
     }
     List localList = this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend.st_new_tab_info.get();
     if ((localList != null) && (QLog.isColorLevel())) {
       QLog.d("EmoticonManager", 2, "saveAndUpdateRecommendEmosInfo recommend emotion num = " + localList.size());
     }
-    aube.b(this.this$0);
+    aufn.b(this.this$0);
   }
 }
 

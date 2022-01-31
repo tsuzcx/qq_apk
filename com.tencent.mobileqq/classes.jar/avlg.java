@@ -1,15 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public class avlg
+class avlg
   implements DialogInterface.OnClickListener
 {
-  public avlg(NearbyProfileFragment paramNearbyProfileFragment) {}
+  avlg(avkt paramavkt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    auwz.a(this.a.a, 1032);
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.bindphone", 2, "openBindPhonePage");
+    }
   }
 }
 

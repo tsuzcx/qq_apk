@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import akuk;
-import akum;
-import alao;
-import alef;
+import akyz;
+import akzb;
+import alfd;
+import aliu;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class CmGameShareDataHandler$3
   implements Runnable
 {
-  public CmGameShareDataHandler$3(akuk paramakuk) {}
+  public CmGameShareDataHandler$3(akyz paramakyz) {}
   
   public void run()
   {
@@ -23,37 +23,37 @@ public class CmGameShareDataHandler$3
       int i;
       try
       {
-        Object localObject = new File(alef.s + "gameShareResult.txt");
+        Object localObject = new File(aliu.s + "gameShareResult.txt");
         if (((File)localObject).exists()) {
           ((File)localObject).delete();
         }
-        int j = akuk.a(this.this$0).size();
+        int j = akyz.a(this.this$0).size();
         if (j == 0) {
           return;
         }
         localObject = new JSONArray();
-        akuk.a(this.this$0).clear();
+        akyz.a(this.this$0).clear();
         i = 0;
         if (i < j)
         {
-          akum localakum = (akum)akuk.a(this.this$0).get(i);
-          if (localakum != null)
+          akzb localakzb = (akzb)akyz.a(this.this$0).get(i);
+          if (localakzb != null)
           {
             JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("shareTo", localakum.d);
-            localJSONObject.put("activity", localakum.b);
-            localJSONObject.put("aioType", localakum.c);
-            localJSONObject.put("gameId", localakum.jdField_a_of_type_Int);
-            localJSONObject.put("uin", localakum.jdField_a_of_type_JavaLangString);
-            localJSONObject.put("shareTS", localakum.jdField_a_of_type_Long);
-            localJSONObject.put("shareRet", localakum.e);
+            localJSONObject.put("shareTo", localakzb.d);
+            localJSONObject.put("activity", localakzb.b);
+            localJSONObject.put("aioType", localakzb.c);
+            localJSONObject.put("gameId", localakzb.jdField_a_of_type_Int);
+            localJSONObject.put("uin", localakzb.jdField_a_of_type_JavaLangString);
+            localJSONObject.put("shareTS", localakzb.jdField_a_of_type_Long);
+            localJSONObject.put("shareRet", localakzb.e);
             ((JSONArray)localObject).put(localJSONObject);
-            akuk.a(this.this$0).put(localakum.a(), Boolean.TRUE);
+            akyz.a(this.this$0).put(localakzb.a(), Boolean.TRUE);
           }
         }
         else
         {
-          alao.a(alef.s + "gameShareResult.txt", ((JSONArray)localObject).toString());
+          alfd.a(aliu.s + "gameShareResult.txt", ((JSONArray)localObject).toString());
           QLog.d("cmgame_process.CmGameShareDataHandler", 1, "saveShareResult finish");
           return;
         }

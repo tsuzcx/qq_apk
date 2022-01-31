@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.facetoface;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import aqgj;
+import aqks;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.HashMap;
 
@@ -25,13 +25,13 @@ public class Face2FaceFriendDetailView
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366894);
-    this.b = findViewById(2131366945);
-    this.e = findViewById(2131366888);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366904);
+    this.b = findViewById(2131366955);
+    this.e = findViewById(2131366898);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
-      this.e.setPadding(aekt.a(10.0F, this.e.getResources()), aekt.a(15.0F, this.e.getResources()) + ImmersiveUtils.getStatusBarHeight(this.e.getContext()), aekt.a(10.0F, this.e.getResources()), aekt.a(15.0F, this.e.getResources()));
+      this.e.setPadding(aepi.a(10.0F, this.e.getResources()), aepi.a(15.0F, this.e.getResources()) + ImmersiveUtils.getStatusBarHeight(this.e.getContext()), aepi.a(10.0F, this.e.getResources()), aepi.a(15.0F, this.e.getResources()));
     }
-    this.e.setOnClickListener(new aqgj(this));
+    this.e.setOnClickListener(new aqks(this));
   }
   
   public void a(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, View paramView, Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, String paramString, HashMap<String, String> paramHashMap, View.OnClickListener paramOnClickListener)
@@ -52,7 +52,7 @@ public class Face2FaceFriendDetailView
   public void d()
   {
     c();
-    EditText localEditText = (EditText)findViewById(2131366893);
+    EditText localEditText = (EditText)findViewById(2131366903);
     this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, localEditText.getText().toString());
     ((InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getSystemService("input_method")).hideSoftInputFromWindow(getWindowToken(), 0);
     this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.g();

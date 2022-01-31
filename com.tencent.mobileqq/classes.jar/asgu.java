@@ -1,19 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
-class asgu
-  implements Animation.AnimationListener
+public class asgu
+  implements CompoundButton.OnCheckedChangeListener
 {
-  asgu(asgq paramasgq) {}
+  public asgu(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a.setVisibility(0);
+    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131695482), "qqsetting_auto_receive_pic_key", paramBoolean);
+    paramCompoundButton = QQSettingAutoDownloadAndSaveFragment.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
+      return;
+    }
   }
 }
 

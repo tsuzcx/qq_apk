@@ -1,8 +1,24 @@
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScanTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface bbsz
+class bbsz
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(long paramLong, boolean paramBoolean, int paramInt, TroopFileScanTask paramTroopFileScanTask);
+  bbsz(bbsn parambbsn, bbsa parambbsa) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    }
+    if (bbsn.a(this.jdField_a_of_type_Bbsn) != 0) {
+      bcmu.a(this.jdField_a_of_type_Bbsn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bbsn.jdField_a_of_type_Long).b(this.jdField_a_of_type_Bbsa);
+    }
+    azqs.b(this.jdField_a_of_type_Bbsn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Cancel_pause_upload", 0, 0, "", this.jdField_a_of_type_Bbsn.jdField_a_of_type_Long + "", "", "");
+  }
 }
 
 

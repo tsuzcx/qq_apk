@@ -43,7 +43,7 @@ public class tcq
         str = c();
       }
     }
-    return a(paramT, bdcs.a(str));
+    return a(paramT, bdhb.a(str));
   }
   
   private String a()
@@ -65,7 +65,7 @@ public class tcq
       return false;
       arrayOfByte = a(paramJceStruct);
     } while ((arrayOfByte == null) || (arrayOfByte.length <= 0));
-    boolean bool = bdcs.a(arrayOfByte, paramString, false);
+    boolean bool = bdhb.a(arrayOfByte, paramString, false);
     paramString = new StringBuilder().append("write cache to ").append(paramString);
     if (bool) {}
     for (paramJceStruct = " succeed";; paramJceStruct = " failed")

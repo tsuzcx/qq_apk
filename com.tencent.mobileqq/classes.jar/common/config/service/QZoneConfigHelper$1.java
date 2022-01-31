@@ -1,11 +1,11 @@
 package common.config.service;
 
-import bihf;
+import bilm;
 
 public final class QZoneConfigHelper$1
   implements Runnable
 {
-  public QZoneConfigHelper$1(bihf parambihf) {}
+  public QZoneConfigHelper$1(bilm parambilm) {}
   
   public void run()
   {

@@ -1,17 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
 
-final class akth
-  implements EIPCResultCallback
+public class akth
+  implements CompoundButton.OnCheckedChangeListener
 {
-  akth(long paramLong) {}
+  public akth(CmGameDebugToolFragment paramCmGameDebugToolFragment) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramEIPCResult = paramEIPCResult.data.getString("respData");
-    akro.a().callbackFromRequest(this.a, 0, "cs.check_pubAccount_state.local", paramEIPCResult);
+    CmGameDebugToolFragment.a(this.a).edit().putBoolean("game_storage_switch", paramBoolean).commit();
   }
 }
 

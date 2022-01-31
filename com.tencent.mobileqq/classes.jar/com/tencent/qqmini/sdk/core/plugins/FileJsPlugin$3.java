@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bghn;
-import bgkd;
-import bgla;
-import bgyd;
+import bglu;
+import bgok;
+import bgph;
+import bhck;
 import com.tencent.qqmini.sdk.core.proxy.UploaderProxy.UploadListener;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.io.File;
@@ -16,14 +16,14 @@ import org.json.JSONObject;
 class FileJsPlugin$3
   implements UploaderProxy.UploadListener
 {
-  FileJsPlugin$3(FileJsPlugin paramFileJsPlugin, int paramInt, bgkd parambgkd, long paramLong, File paramFile) {}
+  FileJsPlugin$3(FileJsPlugin paramFileJsPlugin, int paramInt, bgok parambgok, long paramLong, File paramFile) {}
   
   private void reportUploadResult(long paramLong, int paramInt)
   {
     if (this.this$0.mIsMiniGame) {}
     for (String str = "1";; str = "0")
     {
-      bgyd.a(this.this$0.mMiniAppInfo, 641, null, null, null, paramInt, str, paramLong, null);
+      bhck.a(this.this$0.mMiniAppInfo, 641, null, null, null, paramInt, str, paramLong, null);
       return;
     }
   }
@@ -44,7 +44,7 @@ class FileJsPlugin$3
         reportUploadResult(System.currentTimeMillis() - this.val$startMS, paramInt);
         this.val$req.a.a("onUploadTaskStateChange", localJSONObject.toString(), 0);
         return;
-        bgla.a("uploadFile", localJSONObject, paramInt);
+        bgph.a("uploadFile", localJSONObject, paramInt);
       }
     }
     catch (JSONException paramString)

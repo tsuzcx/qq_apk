@@ -1,64 +1,182 @@
 import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView;
-import com.tencent.qphone.base.util.QLog;
+import android.media.MediaRecorder;
+import android.util.Log;
+import java.io.File;
+import java.io.IOException;
 
 class atbl
-  implements betn
 {
-  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private MediaRecorder jdField_a_of_type_AndroidMediaMediaRecorder;
+  private atbm jdField_a_of_type_Atbm;
+  private File jdField_a_of_type_JavaIoFile;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  atbl(atbj paramatbj, Context paramContext) {}
+  public atbl(atbj paramatbj, Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a(int paramInt, String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaRecorder != null)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.reset();
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.release();
+      this.jdField_a_of_type_AndroidMediaMediaRecorder = null;
+      Log.d("Recorder", "release Recorder");
+    }
+    if (this.jdField_a_of_type_Atbm != null) {
+      this.jdField_a_of_type_Atbm.a(paramInt, paramString);
+    }
+  }
+  
+  private boolean b()
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaRecorder = new MediaRecorder();
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.setAudioSource(1);
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.setOutputFormat(2);
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.setAudioEncoder(3);
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.setAudioChannels(1);
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.setAudioSamplingRate(16000);
+      this.jdField_a_of_type_JavaIoFile = new File(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.setOutputFile(this.jdField_a_of_type_JavaIoFile.getPath());
+      return false;
+    }
+    catch (Exception localException)
+    {
+      try
+      {
+        this.jdField_a_of_type_AndroidMediaMediaRecorder.prepare();
+        return true;
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        Log.d("MediaRecorder", "IllegalStateException preparing MediaRecorder: " + localIllegalStateException.getMessage());
+        a(3, "prepare recorder exception=" + localIllegalStateException.getMessage());
+        return false;
+      }
+      catch (IOException localIOException)
+      {
+        Log.d("MediaRecorder", "IOException preparing MediaRecorder: " + localIOException.getMessage());
+        a(4, "  recorder io exception=" + localIOException.getMessage());
+      }
+      localException = localException;
+      localException.printStackTrace();
+      Log.d("MediaRecorder", "Exception prepareRecord: ");
+      a(2, "init recorder   exception=" + localException.getMessage());
+      return false;
+    }
+  }
+  
+  private void c()
+  {
+    if (b()) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.start();
+      this.jdField_a_of_type_Boolean = true;
+      Log.d("Recorder", "Start Record");
+      return;
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      a(5, "recorder RuntimeException r=" + localRuntimeException.getMessage());
+      Log.d("Recorder", "RuntimeException: start() is called immediately after stop()");
+    }
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_AndroidMediaMediaRecorder.getMaxAmplitude() * 100 / 32768;
+    }
+    return 0;
+  }
+  
+  public void a()
+  {
+    Log.d("Recorder", "stopRecordSave");
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Boolean = false;
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.stop();
+      Log.d("Recorder", this.jdField_a_of_type_JavaIoFile.getPath());
+      return;
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      Log.d("Recorder", "RuntimeException: stop() is called immediately after start()");
+      return;
+    }
+    finally
+    {
+      a(0, this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void a(String paramString, atbm paramatbm)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Atbm = paramatbm;
+    if (this.jdField_a_of_type_Boolean) {
+      try
+      {
+        this.jdField_a_of_type_AndroidMediaMediaRecorder.stop();
+        a(1, "status is exception!");
+        this.jdField_a_of_type_Boolean = false;
+        return;
+      }
+      catch (RuntimeException paramString)
+      {
+        for (;;)
+        {
+          Log.d("PttRecorder", "RuntimeException: stop() is called immediately after start()");
+          a();
+        }
+      }
+    }
+    c();
+  }
   
   public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WatchFloatingWindowController", 2, "onCloseClick");
+    if ((this.jdField_a_of_type_JavaIoFile != null) && (this.jdField_a_of_type_JavaIoFile.exists())) {
+      return this.jdField_a_of_type_JavaIoFile.delete();
     }
-    if (atbj.a(this.jdField_a_of_type_Atbj) == null) {
-      return true;
-    }
-    if (atbj.a(this.jdField_a_of_type_Atbj).isIsAdm())
-    {
-      atbd.a(this.jdField_a_of_type_AndroidContentContext, 5, atbj.a(this.jdField_a_of_type_Atbj).getCurUin());
-      return true;
-    }
-    azmj.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_quit_member", 0, 0, atbj.a(this.jdField_a_of_type_Atbj).getCurUin(), "", "", "");
-    this.jdField_a_of_type_Atbj.b();
-    return true;
+    return false;
   }
   
-  public boolean a(int paramInt1, int paramInt2)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WatchFloatingWindowController", 2, new Object[] { "onEnterClick: invoked. ", " centerX: ", Integer.valueOf(paramInt1), " centerY: ", Integer.valueOf(paramInt2) });
+    Log.d("Recorder", "stopRecordUnSave");
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Boolean = false;
     }
-    if ((atbj.a(this.jdField_a_of_type_Atbj) == null) || (atbj.a(this.jdField_a_of_type_Atbj) == null)) {
-      return false;
-    }
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L)
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WatchFloatingWindowController", 2, "click button too frequently pastTime=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-      }
-      return true;
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.stop();
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    paramInt1 = atbj.a(this.jdField_a_of_type_Atbj).a();
-    if (paramInt1 == 1)
+    catch (RuntimeException localRuntimeException)
     {
-      ball.a(this.jdField_a_of_type_AndroidContentContext, 1, atbj.a(this.jdField_a_of_type_Atbj).getBigUrl(), null, new Bundle(), atbj.a(this.jdField_a_of_type_Atbj).getCurType());
-      this.jdField_a_of_type_Atbj.a(atbj.a(this.jdField_a_of_type_Atbj).getCurUin(), atbj.a(this.jdField_a_of_type_Atbj).getCurType(), false);
-    }
-    for (;;)
-    {
-      return true;
-      if (paramInt1 == 2)
+      for (;;)
       {
-        atbj.a(this.jdField_a_of_type_Atbj).a(atbj.a(this.jdField_a_of_type_Atbj).getSmallUrl());
-        azmj.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_refresh", 0, 0, atbj.a(this.jdField_a_of_type_Atbj).getCurUin(), "", "", "");
+        Log.d("Recorder", "RuntimeException: stop() is called immediately after start()");
+        a();
+        a(-1, "");
       }
+    }
+    finally
+    {
+      a(-1, "");
+    }
+    if (this.jdField_a_of_type_JavaIoFile.exists()) {
+      this.jdField_a_of_type_JavaIoFile.delete();
     }
   }
 }

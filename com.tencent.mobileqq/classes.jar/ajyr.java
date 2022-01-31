@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
 
-class ajyr
-  implements DialogInterface.OnClickListener
+public class ajyr
+  implements View.OnClickListener
 {
-  ajyr(ajyq paramajyq) {}
+  public ajyr(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.a.jdField_b_of_type_JavaLangRefWeakReference.get() != null) {
-      ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.a.a.jdField_b_of_type_JavaLangString, (MqqHandler)this.a.a.jdField_b_of_type_JavaLangRefWeakReference.get(), this.a.a.g + ".mp4", true));
+    if (this.a.c) {
+      azqs.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      azqs.b(this.a.app, "dc00899", "Grp_create_new", "", "suc_create", "clk_cancel", 0, 0, "", "" + this.a.h, "", "");
+      this.a.finish();
+      return;
+      azqs.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
     }
   }
 }

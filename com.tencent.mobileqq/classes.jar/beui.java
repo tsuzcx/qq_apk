@@ -1,26 +1,93 @@
-import android.view.View;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.BlockingQueue;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/widget/qus/QUSDragFloatController;", "", "createContentView", "Landroid/view/View;", "defaultHeight", "", "onShowDefault", "", "onShowMin", "onShowTotal", "showMode", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface beui
+public class beui
+  extends Handler
 {
-  public abstract int a();
+  private long a = 0L;
   
-  @Nullable
-  public abstract View a();
+  private beui(Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a();
+  private void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQToast", 2, "scheduleNextToast to " + paramLong);
+    }
+    removeMessages(1);
+    sendEmptyMessageDelayed(1, paramLong);
+  }
   
-  public abstract int b();
+  private void a(beuh parambeuh)
+  {
+    long l2 = 0L;
+    parambeuh = parambeuh.a();
+    long l1;
+    int i;
+    if (parambeuh != null)
+    {
+      parambeuh.a();
+      if (QQToast.a(parambeuh) == 0)
+      {
+        l1 = 2000L;
+        this.a = (System.currentTimeMillis() + l1);
+        i = 1;
+      }
+    }
+    for (;;)
+    {
+      if (!QQToast.a().isEmpty())
+      {
+        if (i != 0) {
+          l2 = 100L + l1;
+        }
+        a(l2);
+      }
+      return;
+      l1 = 3500L;
+      break;
+      i = 0;
+      l1 = 0L;
+    }
+  }
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    long l;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQToast", 2, "MSG_SHOW_TOAST received");
+      }
+      l = System.currentTimeMillis();
+      if (l <= this.a + 100L) {
+        break;
+      }
+      paramMessage = (beuh)QQToast.a().poll();
+      if (paramMessage != null)
+      {
+        a(paramMessage);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("QQToast", 2, "MSG_SHOW_TOAST but no message to show");
+    return;
+    a(this.a - l + 100L);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     beui
  * JD-Core Version:    0.7.0.1
  */

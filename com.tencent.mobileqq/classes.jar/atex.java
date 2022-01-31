@@ -1,18 +1,19 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class atex
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  public atex(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
+    a(paramBoolean, paramBundle.getInt("appId"), paramBundle.getLong("uin", 0L), paramBundle.getString("openId"), paramBundle.getString("error_msg"));
   }
 }
 

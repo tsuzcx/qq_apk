@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.model;
 
-import aube;
+import aufn;
 
 public class EmoticonManager$2
   implements Runnable
 {
-  public EmoticonManager$2(aube paramaube) {}
+  public EmoticonManager$2(aufn paramaufn) {}
   
   public void run()
   {
-    aube.a(this.this$0);
+    aufn.a(this.this$0);
   }
 }
 

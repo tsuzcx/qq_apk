@@ -1,32 +1,43 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.RunnableUpdateThumb;
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Rect;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.qphone.base.util.QLog;
+import java.io.InputStream;
 
 public class ajne
-  implements Animator.AnimatorListener
+  implements ImageAssetDelegate
 {
-  public ajne(NewFlowCameraActivity.RunnableUpdateThumb paramRunnableUpdateThumb) {}
+  private Context a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public ajne(Context paramContext)
   {
-    if ((NewFlowCameraActivity.a(this.a.this$0) != null) && (NewFlowCameraActivity.b(this.a.this$0) != null) && (NewFlowCameraActivity.a(this.a.this$0) != null))
-    {
-      NewFlowCameraActivity.a(this.a.this$0).setVisibility(8);
-      NewFlowCameraActivity.b(this.a.this$0).setImageBitmap(this.a.b);
-      NewFlowCameraActivity.b(this.a.this$0).setVisibility(0);
-      NewFlowCameraActivity.a(this.a.this$0).setText(NewFlowCameraActivity.c(this.a.this$0) + "");
-      NewFlowCameraActivity.a(this.a.this$0).setVisibility(0);
-    }
+    this.a = paramContext;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  @Nullable
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  {
+    try
+    {
+      paramLottieImageAsset = this.a.getAssets().open("login_btn_lottie_images/" + paramLottieImageAsset.getFileName());
+      Object localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inScaled = false;
+      localObject = BitmapFactory.decodeStream(paramLottieImageAsset, (Rect)null, (BitmapFactory.Options)localObject);
+      paramLottieImageAsset.close();
+      return localObject;
+    }
+    catch (Throwable paramLottieImageAsset)
+    {
+      QLog.i("LoginBtnImageAssetDelegate", 2, "fetchBitmap error " + paramLottieImageAsset.getMessage());
+    }
+    return null;
+  }
 }
 
 

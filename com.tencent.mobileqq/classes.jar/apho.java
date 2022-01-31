@@ -1,116 +1,44 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.ViolaLibData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-public class apho
-  extends apgu
+class apho
+  extends DataReportViewer
 {
-  public static final String[] a = (String[])new String[] { "libgnustl_shared.so", "libjsc.so" };
-  
-  public apho(QQAppInterface paramQQAppInterface)
+  apho(aphn paramaphn, Context paramContext1, Context paramContext2)
   {
-    super("android.qq.readinjoy.viola_795", paramQQAppInterface);
+    super(paramContext1);
   }
   
-  public static void a()
+  public void d()
   {
-    if (i()) {}
-    do
+    int j = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
+    if (Build.VERSION.SDK_INT >= 26) {}
+    for (int i = 2038;; i = 2003)
     {
+      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(j, -2, i, 776, -2);
+      localLayoutParams.gravity = 51;
+      localLayoutParams.x = 0;
+      localLayoutParams.y = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
+      aphn.a(this.jdField_a_of_type_Aphn).updateViewLayout(aphn.a(this.jdField_a_of_type_Aphn), localLayoutParams);
       return;
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface))
-      {
-        localObject = (apgj)((QQAppInterface)localObject).getManager(77);
-        if (localObject != null)
-        {
-          localObject = (apho)((apgj)localObject).a("android.qq.readinjoy.viola_795");
-          if (localObject != null)
-          {
-            ((apho)localObject).a(true);
-            QLog.i("viola.ViolaLibHandler", 1, "restartDownloadLib");
-          }
-        }
-      }
-    } while (aphn.i());
-    aphn.a();
-  }
-  
-  public static boolean i()
-  {
-    String str = oxo.a();
-    int i = 0;
-    while (i < a.length)
-    {
-      File localFile = new File(str, a[i]);
-      if ((localFile == null) || (!localFile.exists()) || (!localFile.isFile())) {
-        return false;
-      }
-      i += 1;
     }
-    return true;
   }
   
-  public int a()
+  public void e()
   {
-    return 10071;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return ViolaLibData.class;
-  }
-  
-  public String a()
-  {
-    return "viola.ViolaLibHandler";
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("viola.ViolaLibHandler", 1, "[doOnDownloadSuccess]:" + paramString);
-    XmlData localXmlData = a();
-    if (localXmlData != null) {
-      QLog.i("viola.ViolaLibHandler", 1, "version:" + localXmlData.Version);
-    }
-    if (new File(paramString).exists())
+    if (Build.VERSION.SDK_INT >= 26) {}
+    for (int i = 2038;; i = 2003)
     {
-      if (oxo.a(paramString)) {
-        break label124;
-      }
-      if (localXmlData != null)
-      {
-        localXmlData.loadState = 0;
-        localXmlData.Version = 0;
-        apgi.a(localXmlData, new String[] { "loadState", "Version" });
-      }
-      QLog.e("viola.ViolaLibHandler", 1, "[doOnDownloadSuccess],unzip readinjoy_viola lib failed!");
-    }
-    label124:
-    do
-    {
+      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -2, i, 776, -2);
+      localLayoutParams.gravity = 51;
+      localLayoutParams.x = 0;
+      localLayoutParams.y = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
+      aphn.a(this.jdField_a_of_type_Aphn).updateViewLayout(aphn.a(this.jdField_a_of_type_Aphn), localLayoutParams);
       return;
-      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
-      if (paramString != null) {
-        paramString.edit().putString("res_name", "android.qq.readinjoy.viola_795").commit();
-      }
-    } while (!aphn.i());
-    oxi.a("jsc doOnDownloadSuccess");
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
+    }
   }
 }
 

@@ -1,8 +1,13 @@
-import android.support.annotation.IntRange;
+import java.util.ArrayList;
 
-public abstract interface bbbq
+public class bbbq
+  extends bbbz
 {
-  public abstract void a(String paramString, @IntRange(from=1L, to=4L) int paramInt);
+  public int a;
+  public String a;
+  public ArrayList<bawy> a = new ArrayList();
+  public boolean a;
+  public String b;
 }
 
 

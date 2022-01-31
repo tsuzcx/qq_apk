@@ -1,40 +1,16 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qidian.proto.mobileqq_qidian.CompanyShowCaseInfo;
-
-public class bfvl
+public abstract interface bfvl
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
+  public abstract int a(bfvb parambfvb);
   
-  public bfvl() {}
+  public abstract void a();
   
-  public bfvl(mobileqq_qidian.CompanyShowCaseInfo paramCompanyShowCaseInfo)
-  {
-    a(paramCompanyShowCaseInfo);
-  }
+  public abstract void a(int paramInt);
   
-  public mobileqq_qidian.CompanyShowCaseInfo a()
-  {
-    mobileqq_qidian.CompanyShowCaseInfo localCompanyShowCaseInfo = new mobileqq_qidian.CompanyShowCaseInfo();
-    localCompanyShowCaseInfo.string_show_case_title.set(this.a);
-    localCompanyShowCaseInfo.string_show_case_link.set(this.b);
-    localCompanyShowCaseInfo.string_show_case_image.set(this.c);
-    return localCompanyShowCaseInfo;
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public void a(mobileqq_qidian.CompanyShowCaseInfo paramCompanyShowCaseInfo)
-  {
-    if (paramCompanyShowCaseInfo.string_show_case_title.has()) {
-      this.a = paramCompanyShowCaseInfo.string_show_case_title.get();
-    }
-    if (paramCompanyShowCaseInfo.string_show_case_link.has()) {
-      this.b = paramCompanyShowCaseInfo.string_show_case_link.get();
-    }
-    if (paramCompanyShowCaseInfo.string_show_case_image.has()) {
-      this.c = paramCompanyShowCaseInfo.string_show_case_image.get();
-    }
-  }
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

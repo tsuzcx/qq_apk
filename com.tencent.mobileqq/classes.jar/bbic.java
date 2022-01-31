@@ -1,67 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.troop.aioapp.FullListGroupAppsDbHelper.1;
-import com.tencent.mobileqq.troop.aioapp.data.FullListGroupAppEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2.1;
+import com.tencent.widget.AdapterView;
 
 public class bbic
+  implements bhuw
 {
-  private final QQAppInterface a;
+  public bbic(TroopAvatarWallPreviewActivity.2.1 param1) {}
   
-  bbic(QQAppInterface paramQQAppInterface)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  private void b(FullListGroupAppEntity paramFullListGroupAppEntity)
-  {
-    if ((paramFullListGroupAppEntity == null) || (bbig.a(paramFullListGroupAppEntity.troopAIOAppInfos)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FullListGroupAppsDbHelper", 2, "saveToDb: invoked. empty full list, no need to persist");
-      }
-      return;
-    }
-    awbw localawbw = this.a.getEntityManagerFactory().createEntityManager();
-    paramFullListGroupAppEntity.setStatus(1000);
-    localawbw.a(FullListGroupAppEntity.class.getSimpleName(), null, null);
-    localawbw.b(paramFullListGroupAppEntity);
-    localawbw.a();
-  }
-  
-  public void a()
-  {
-    awbw localawbw = this.a.getEntityManagerFactory().createEntityManager();
-    bbib localbbib = bbib.a(this.a);
-    Object localObject = localawbw.a(FullListGroupAppEntity.class);
-    if (!bbig.a((Collection)localObject))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        FullListGroupAppEntity localFullListGroupAppEntity = (FullListGroupAppEntity)((Iterator)localObject).next();
-        if (!bbig.a(localFullListGroupAppEntity.troopAIOAppInfos))
-        {
-          localbbib.a = localFullListGroupAppEntity.troopAIOAppInfos;
-          QLog.i("FullListGroupAppsDbHelper", 1, "buildFullListFromDb: invoked. " + localbbib.a);
-          return;
-        }
-      }
-    }
-    localawbw.a();
-  }
-  
-  void a(FullListGroupAppEntity paramFullListGroupAppEntity)
-  {
-    ThreadManagerV2.excute(new FullListGroupAppsDbHelper.1(this, paramFullListGroupAppEntity), 32, null, false);
-  }
-  
-  void b()
-  {
-    this.a.getEntityManagerFactory().createEntityManager().a(FullListGroupAppEntity.class.getSimpleName(), null, null);
+    this.a.a.this$0.a();
   }
 }
 

@@ -1,28 +1,30 @@
-import android.content.res.Resources;
 import android.view.View;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.GridView;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ahrk
+class ahrk
+  implements bhuk
 {
-  private BaseActivity a;
+  ahrk(ahri paramahri, boolean paramBoolean, Friends paramFriends, bhuf parambhuf) {}
   
-  public ahrk(BaseActivity paramBaseActivity)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = paramBaseActivity;
-  }
-  
-  public bhpy a(AdapterView.OnItemClickListener paramOnItemClickListener)
-  {
-    bhpy localbhpy = (bhpy)bhql.a(this.a, null);
-    GridView localGridView = (GridView)View.inflate(this.a, 2131562775, null);
-    localGridView.setBackgroundDrawable(this.a.getResources().getDrawable(2130837562));
-    localGridView.setAdapter(new ahrm(this, null));
-    localGridView.setOnItemClickListener(paramOnItemClickListener);
-    localbhpy.a(localGridView);
-    localbhpy.c(2131690648);
-    return localbhpy;
+    if (!bdin.g(ahri.a(this.jdField_a_of_type_Ahri))) {
+      QQToast.a(ahri.a(this.jdField_a_of_type_Ahri), 1, 2131692398, 0).a();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.e();
+      return;
+      paramView = (FriendListHandler)ahri.a(this.jdField_a_of_type_Ahri).a(1);
+      if (this.jdField_a_of_type_Boolean) {
+        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
+      } else {
+        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
+      }
+    }
   }
 }
 

@@ -20,7 +20,7 @@ public class peh
     do
     {
       return -1L;
-      localObject = bjxj.a((AppRuntime)localObject, true, true);
+      localObject = bkbq.a((AppRuntime)localObject, true, true);
     } while (localObject == null);
     return ((SharedPreferences)localObject).getLong("event_simple_g_info_" + pei.a(paramString), -1L);
   }
@@ -30,7 +30,7 @@ public class peh
     if (paramString == null) {
       return "";
     }
-    return bhma.a(paramString);
+    return bhqh.a(paramString);
   }
   
   private void a(String paramString, long paramLong)
@@ -40,11 +40,11 @@ public class peh
     do
     {
       return;
-      localObject = bjxj.a((AppRuntime)localObject, true, true);
+      localObject = bkbq.a((AppRuntime)localObject, true, true);
     } while (localObject == null);
     localObject = ((SharedPreferences)localObject).edit();
     ((SharedPreferences.Editor)localObject).putLong("event_simple_g_info_" + pei.a(paramString), paramLong);
-    bjxj.a((SharedPreferences.Editor)localObject, true);
+    bkbq.a((SharedPreferences.Editor)localObject, true);
   }
   
   private void a(String paramString, TroopInfo paramTroopInfo)
@@ -66,7 +66,7 @@ public class peh
     localHashMap.put(b("g_class"), b(paramTroopInfo.mGroupClassExtText));
     localHashMap.put(b("g_grade"), b(paramTroopInfo.nTroopGrade + ""));
     localHashMap.put(b("g_type"), b(paramTroopInfo.troopTypeExt + ""));
-    azmz.a(null).a(paramString, "event_simple_g_info", false, 1000L, 1000L, localHashMap, null);
+    azri.a(null).a(paramString, "event_simple_g_info", false, 1000L, 1000L, localHashMap, null);
     a(paramTroopInfo.troopuin, paramTroopInfo.timeSec);
   }
   

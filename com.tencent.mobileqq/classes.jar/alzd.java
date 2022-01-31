@@ -1,26 +1,18 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class alzd
-  extends MqqHandler
+final class alzd
+  implements DialogInterface.OnClickListener
 {
-  public alzd(ThreadRegulator paramThreadRegulator, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  alzd(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramMessage = (alze)paramMessage.obj;
-    if (paramMessage != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ThreadManager.Regulaotr", 2, paramMessage.jdField_a_of_type_Int + " cost " + (paramMessage.b - paramMessage.jdField_a_of_type_Long) + ", paused " + paramMessage.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
-      }
-      paramMessage.recycle();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, paramInt);
     }
   }
 }

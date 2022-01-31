@@ -1,224 +1,164 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.res.Resources.NotFoundException;
-import android.graphics.drawable.ColorDrawable;
-import android.view.ContextThemeWrapper;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.DatePicker;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.NumberPicker;
-import android.widget.TextView;
-import com.tencent.qqmini.sdk.utils.ColorUtils;
-import java.lang.reflect.Field;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.runtime.audiorecorder.LameMp3EncodeThread;
+import java.lang.ref.WeakReference;
 
-public class bheu
-  extends Dialog
-  implements DialogInterface.OnCancelListener, View.OnClickListener
+class bheu
+  extends Handler
 {
-  private int jdField_a_of_type_Int;
-  private DatePicker jdField_a_of_type_AndroidWidgetDatePicker;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bhew jdField_a_of_type_Bhew;
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int c;
+  int jdField_a_of_type_Int = 1;
+  private final WeakReference<bher> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public bheu(Context paramContext)
+  public bheu(bher parambher)
   {
-    super(paramContext, 2131755367);
-    a(paramContext);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambher);
   }
   
-  private void a(Context paramContext)
+  public void handleMessage(Message paramMessage)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559343, null);
-    setContentView(paramContext);
-    Object localObject = getWindow();
-    if (localObject != null)
+    boolean bool = true;
+    bher localbher;
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
     {
-      ((Window)localObject).getDecorView().setPadding(0, 0, 0, 0);
-      WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
-      localLayoutParams.width = -1;
-      localLayoutParams.height = -2;
-      ((Window)localObject).setAttributes(localLayoutParams);
-      ((Window)localObject).setGravity(80);
-    }
-    localObject = (FrameLayout)paramContext.findViewById(2131371972);
-    this.jdField_a_of_type_AndroidWidgetDatePicker = new DatePicker(new ContextThemeWrapper(getContext(), 16973934));
-    this.jdField_a_of_type_AndroidWidgetDatePicker.setCalendarViewShown(false);
-    ((FrameLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetDatePicker);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378632));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378667));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    a(this.jdField_a_of_type_AndroidWidgetDatePicker);
-    setOnCancelListener(this);
-  }
-  
-  private void a(DatePicker paramDatePicker)
-  {
-    paramDatePicker = (LinearLayout)((LinearLayout)paramDatePicker.getChildAt(0)).getChildAt(0);
-    int i = 0;
-    if (i < paramDatePicker.getChildCount())
-    {
-      NumberPicker localNumberPicker = (NumberPicker)paramDatePicker.getChildAt(i);
-      Field[] arrayOfField = NumberPicker.class.getDeclaredFields();
-      int k = arrayOfField.length;
-      int j = 0;
-      for (;;)
+      localbher = (bher)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      switch (paramMessage.what)
       {
-        for (;;)
+      }
+    }
+    do
+    {
+      do
+      {
+        do
         {
-          Field localField;
-          if (j < k)
+          do
           {
-            localField = arrayOfField[j];
-            if (localField.getName().equals("mSelectionDivider")) {
-              localField.setAccessible(true);
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          return;
+                          paramMessage = (String)paramMessage.obj;
+                          if ((!TextUtils.isEmpty(paramMessage)) && (bher.a(localbher) != null)) {
+                            bher.a(localbher).onErrorInfo(paramMessage);
+                          }
+                        } while (!hasMessages(4));
+                        removeMessages(4);
+                        return;
+                        paramMessage = (String)paramMessage.obj;
+                        if ((!TextUtils.isEmpty(paramMessage)) && (bher.a(localbher) != null)) {
+                          bher.a(localbher).onErrorInfo(paramMessage);
+                        }
+                        if (hasMessages(104)) {
+                          removeMessages(104);
+                        }
+                        if ((!TextUtils.isEmpty(paramMessage)) && (bher.a(localbher) != null)) {
+                          bher.a(localbher).onErrorInfo(paramMessage);
+                        }
+                      } while (!hasMessages(104));
+                      removeMessages(104);
+                      return;
+                      if (bher.a(localbher) != null) {
+                        bher.a(localbher).onRecordStart();
+                      }
+                    } while (hasMessages(4));
+                    sendEmptyMessage(4);
+                    return;
+                    if (bher.a(localbher) != null) {
+                      bher.a(localbher).onRecordPause();
+                    }
+                  } while (!hasMessages(4));
+                  removeMessages(4);
+                  return;
+                  if (bher.a(localbher) != null) {
+                    bher.a(localbher).onRecordResume();
+                  }
+                } while (bher.a(localbher).hasMessages(4));
+                bher.a(localbher).sendEmptyMessage(4);
+                return;
+                if (bher.a(localbher) != null) {
+                  bher.a(localbher).onRecordStop(localbher.a(), localbher.a(), localbher.b());
+                }
+              } while (!hasMessages(4));
+              removeMessages(4);
+              return;
+            } while (bher.a(localbher) == null);
+            byte[] arrayOfByte = (byte[])paramMessage.obj;
+            if (paramMessage.arg1 == 1) {}
+            for (;;)
+            {
+              bher.a(localbher).onRecordFrame(arrayOfByte, bool);
+              return;
+              bool = false;
             }
+            if (hasMessages(4)) {
+              removeMessages(4);
+            }
+            int i = localbher.c();
+            int j = localbher.b();
+            if (bher.a(localbher) != null) {
+              bher.a(localbher).onRecordUpdate(j, i);
+            }
+            if (i == bher.a(localbher))
+            {
+              bher.a(localbher).c();
+              return;
+            }
+            sendEmptyMessageDelayed(4, localbher.a());
+            return;
+            if (hasMessages(104)) {
+              removeMessages(104);
+            }
+            i = (int)(System.currentTimeMillis() - bher.a(localbher));
+            this.jdField_a_of_type_Int += 1;
+            if (this.jdField_a_of_type_Int > 5) {
+              this.jdField_a_of_type_Int = 1;
+            }
+            if (bher.a(localbher) != null) {
+              bher.a(localbher).onPlayUpdate(this.jdField_a_of_type_Int, i / 1000);
+            }
+            sendEmptyMessageDelayed(104, localbher.a());
+            return;
+            if (bher.a(localbher) != null) {
+              bher.a(localbher).onPlayStart();
+            }
+            bher.a(localbher, System.currentTimeMillis());
+            sendEmptyMessageDelayed(104, localbher.a());
+            return;
+            if (bher.a(localbher) != null) {
+              bher.a(localbher).onPlayPause();
+            }
+          } while (!hasMessages(104));
+          removeMessages(104);
+          return;
+          if (bher.a(localbher) != null) {
+            bher.a(localbher).onPlayResume();
           }
-          else
-          {
-            try
-            {
-              localField.set(localNumberPicker, new ColorDrawable(ColorUtils.parseColor("#3CB371")));
-              i += 1;
-            }
-            catch (IllegalArgumentException localIllegalArgumentException)
-            {
-              for (;;)
-              {
-                localIllegalArgumentException.printStackTrace();
-              }
-            }
-            catch (Resources.NotFoundException localNotFoundException)
-            {
-              for (;;)
-              {
-                localNotFoundException.printStackTrace();
-              }
-            }
-            catch (IllegalAccessException localIllegalAccessException)
-            {
-              for (;;)
-              {
-                localIllegalAccessException.printStackTrace();
-              }
-            }
-          }
+        } while (hasMessages(104));
+        sendEmptyMessage(104);
+        return;
+        if (bher.a(localbher) != null) {
+          bher.a(localbher).onPlayStop();
         }
-        j += 1;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (isShowing()) {
-        dismiss();
-      }
+      } while (!hasMessages(104));
+      removeMessages(104);
       return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetDatePicker != null) {
-      ((ViewGroup)((ViewGroup)this.jdField_a_of_type_AndroidWidgetDatePicker.getChildAt(0)).getChildAt(0)).getChildAt(0).setVisibility(paramInt);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_AndroidWidgetDatePicker.updateDate(paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, bhew parambhew)
-  {
-    this.jdField_a_of_type_AndroidWidgetDatePicker.init(paramInt1, paramInt2, paramInt3, new bhev(this));
-    this.jdField_a_of_type_Bhew = parambhew;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_AndroidWidgetDatePicker.setMinDate(paramLong);
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetDatePicker != null) {
-      ((ViewGroup)((ViewGroup)this.jdField_a_of_type_AndroidWidgetDatePicker.getChildAt(0)).getChildAt(0)).getChildAt(1).setVisibility(paramInt);
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_a_of_type_AndroidWidgetDatePicker.setMaxDate(paramLong);
-  }
-  
-  public void c(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetDatePicker != null) {
-      ((ViewGroup)((ViewGroup)this.jdField_a_of_type_AndroidWidgetDatePicker.getChildAt(0)).getChildAt(0)).getChildAt(2).setVisibility(paramInt);
-    }
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_Bhew != null) {
-      this.jdField_a_of_type_Bhew.onDateCancel();
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131378632)
-    {
-      if (this.jdField_a_of_type_Bhew != null) {
-        this.jdField_a_of_type_Bhew.onDateCancel();
+      if (bher.a(localbher) != null) {
+        bher.a(localbher).onPlayFinish();
       }
-      a();
-    }
-    while (paramView.getId() != 2131378667) {
-      return;
-    }
-    int i;
-    if (this.jdField_a_of_type_Bhew != null)
-    {
-      i = this.jdField_b_of_type_Int + 1;
-      if (i >= 10) {
-        break label133;
-      }
-      paramView = "0" + i;
-      i = this.c;
-      if (i >= 10) {
-        break label141;
-      }
-    }
-    label133:
-    label141:
-    for (String str = "0" + i;; str = String.valueOf(i))
-    {
-      this.jdField_a_of_type_Bhew.onDateConfirm(String.valueOf(this.jdField_a_of_type_Int), paramView, str);
-      a();
-      return;
-      paramView = String.valueOf(i);
-      break;
-    }
+    } while (!hasMessages(104));
+    removeMessages(104);
   }
 }
 

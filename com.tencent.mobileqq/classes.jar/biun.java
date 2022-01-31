@@ -1,30 +1,29 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqdataline.DatalineBridgeActivity;
 
-public final class biun
-  extends WtloginObserver
+public class biun
 {
-  public biun(Handler.Callback paramCallback) {}
-  
-  public void OnException(String paramString, int paramInt)
+  public static void a(Context paramContext, Bundle paramBundle, String paramString)
   {
-    paramString = Message.obtain();
-    paramString.what = 1001;
-    if (this.a != null) {
-      this.a.handleMessage(paramString);
+    if (paramContext == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QQProxyForQlink", 2, "[QLINK] QQ - startQlink failed context=null!");
+      }
+      Toast.makeText(BaseApplication.getContext(), alud.a(2131711090), 0).show();
+      return;
     }
-  }
-  
-  public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
-  {
-    paramString = Message.obtain();
-    paramString.what = 1000;
-    if (this.a != null) {
-      this.a.handleMessage(paramString);
+    Intent localIntent = new Intent(paramContext, DatalineBridgeActivity.class);
+    localIntent.putExtra("componetname", paramString);
+    if (paramBundle != null) {
+      localIntent.putExtra("_param_", paramBundle);
     }
+    paramContext.startActivity(localIntent);
   }
 }
 

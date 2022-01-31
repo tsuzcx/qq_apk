@@ -1,44 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
-public class ahfv
-  extends Handler
+class ahfv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public WeakReference<GroupSearchRecommendView> a;
+  ahfv(ahfu paramahfu) {}
   
-  public ahfv(GroupSearchRecommendView paramGroupSearchRecommendView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a = new WeakReference(paramGroupSearchRecommendView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    GroupSearchRecommendView localGroupSearchRecommendView = (GroupSearchRecommendView)this.a.get();
-    if (localGroupSearchRecommendView == null) {
-      return;
-    }
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      GroupSearchRecommendView.a(localGroupSearchRecommendView);
-      return;
-    case 2: 
-      if (QLog.isColorLevel()) {
-        QLog.i("GroupSearchRecommendView", 2, "fetch data successfully");
-      }
-      GroupSearchRecommendView.a(localGroupSearchRecommendView, false);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("GroupSearchRecommendView", 2, "fetch data failed");
-    }
-    GroupSearchRecommendView.a(localGroupSearchRecommendView, true);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (FrameLayout.LayoutParams)this.a.a.a.getLayoutParams();
+    paramValueAnimator.topMargin = i;
+    this.a.a.a.setLayoutParams(paramValueAnimator);
   }
 }
 

@@ -1,45 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-class asvp
-  extends BroadcastReceiver
+public abstract interface asvp
 {
-  asvp(asvn paramasvn) {}
+  public abstract void a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    int j = paramIntent.getIntExtra("key_state", -1);
-    int k;
-    int i;
-    if (paramContext.equals(aswm.a("com.tencent.od")))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("GroupVideoManager.GVideoWebPlugin", 2, "state:" + j);
-      }
-      paramContext = aswd.a;
-      k = paramContext.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      if ((i >= k) || ((j == paramContext[i]) && (asvn.a(this.a).isShowing()))) {}
-      try
-      {
-        asvn.a(this.a).dismiss();
-        label105:
-        i += 1;
-        continue;
-        return;
-      }
-      catch (Throwable paramIntent)
-      {
-        break label105;
-      }
-    }
-  }
+  public abstract void a(int paramInt, View paramView);
+  
+  public abstract void a(View paramView);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
 }
 
 

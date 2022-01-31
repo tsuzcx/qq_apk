@@ -1,59 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 
 public class aarl
-  extends aark
+  implements aaru
 {
-  private int b;
-  
-  public aarl(JSONObject paramJSONObject)
+  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
   {
-    a(paramJSONObject);
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String a()
-  {
-    String str = super.a();
-    try
+    Object localObject = null;
+    yqz localyqz = yqz.a();
+    localyqz.a();
+    localyqz.j(new aarm(this, paramaarb, paramString, paramVarArgs, localyqz));
+    if (paramaarb != null) {}
+    for (paramString = paramaarb.a();; paramString = null)
     {
-      Object localObject = new JSONObject(str);
-      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("patch7zUrl", this.jdField_b_of_type_JavaLangString);
-      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("patch7zSize", this.jdField_b_of_type_Int);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+      paramVarArgs = localObject;
+      if (paramaarb != null) {
+        paramVarArgs = paramaarb.a();
+      }
+      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getUserInfo", paramVarArgs);
+      return true;
     }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigArtGeN writeToJsonString", localJSONException);
-    }
-    return str;
-  }
-  
-  protected void a(JSONObject paramJSONObject)
-  {
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("patch7zUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("patch7zSize", 0);
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    return super.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aarl
  * JD-Core Version:    0.7.0.1
  */

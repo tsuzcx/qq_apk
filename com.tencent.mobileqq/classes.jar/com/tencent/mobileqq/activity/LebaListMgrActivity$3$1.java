@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import adcc;
-import akev;
+import adgr;
+import akjk;
 import java.util.List;
 
 public class LebaListMgrActivity$3$1
   implements Runnable
 {
-  public LebaListMgrActivity$3$1(adcc paramadcc, List paramList) {}
+  public LebaListMgrActivity$3$1(adgr paramadgr, List paramList) {}
   
   public void run()
   {
-    if (LebaListMgrActivity.a(this.jdField_a_of_type_Adcc.a) != null) {
-      LebaListMgrActivity.a(this.jdField_a_of_type_Adcc.a).a(this.jdField_a_of_type_JavaUtilList);
+    if (LebaListMgrActivity.a(this.jdField_a_of_type_Adgr.a) != null) {
+      LebaListMgrActivity.a(this.jdField_a_of_type_Adgr.a).a(this.jdField_a_of_type_JavaUtilList);
     }
   }
 }

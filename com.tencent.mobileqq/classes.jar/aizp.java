@@ -1,41 +1,13 @@
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.qwallet.redpacket.widget.ViewPagerTabLayout;
+import android.text.InputFilter;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class aizp
-  implements View.OnClickListener
+public abstract interface aizp
 {
-  public aizp(ViewPagerTabLayout paramViewPagerTabLayout) {}
+  public abstract String a(CopyOnWriteArrayList<String> paramCopyOnWriteArrayList, boolean paramBoolean);
   
-  public void onClick(View paramView)
-  {
-    int i = ViewPagerTabLayout.a(this.a).indexOfChild(paramView);
-    if (i != -1)
-    {
-      if (ViewPagerTabLayout.a(this.a).getCurrentItem() == i) {
-        break label85;
-      }
-      if (ViewPagerTabLayout.a(this.a)) {
-        break label74;
-      }
-      this.a.setCurrentTab(i, false);
-      if (ViewPagerTabLayout.a(this.a) != null) {
-        ViewPagerTabLayout.a(this.a).a(i);
-      }
-    }
-    label74:
-    label85:
-    while (ViewPagerTabLayout.a(this.a) == null) {
-      for (;;)
-      {
-        return;
-        this.a.setCurrentTab(i);
-      }
-    }
-    ViewPagerTabLayout.a(this.a).b(i);
-  }
+  public abstract boolean a(String paramString);
+  
+  public abstract InputFilter[] a(int paramInt);
 }
 
 

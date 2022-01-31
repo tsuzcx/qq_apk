@@ -1,142 +1,94 @@
-import android.content.Context;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.io.IOException;
+import java.net.URLEncoder;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class upv<M, VH extends upy<M>>
-  extends upz<M, VH>
+public class upv
+  extends upy
 {
-  private List<M> a;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public upv(Context paramContext)
+  public upv(String paramString)
   {
-    super(paramContext);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public abstract int a(int paramInt);
-  
-  public int a(M paramM)
+  private ErrorMessage a()
   {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
-    if (i < 0) {
-      return i;
-    }
-    this.jdField_a_of_type_JavaUtilList.set(i, paramM);
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    Object localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { QQStoryContext.a().a(), URLEncoder.encode(this.jdField_a_of_type_JavaLangString) });
+    long l = System.currentTimeMillis();
+    localObject = ndd.a(QQStoryContext.a().a(), (String)localObject, null, "GET", null, null, 5000, 5000);
+    if ((localObject != null) && (((HttpResponse)localObject).getStatusLine().getStatusCode() == 200))
     {
-      notifyItemChanged(i);
-      return i;
+      localObject = ndd.a((HttpResponse)localObject);
+      wxe.a("Q.qqstory.publish.upload.LinkRichObject", "http resp %s", localObject);
+      localObject = new JSONObject((String)localObject);
+      this.jdField_a_of_type_Int = Integer.parseInt(((JSONObject)localObject).getString("ret"));
+      if (this.jdField_a_of_type_Int != 0) {
+        return new ErrorMessage(96000002, "server error code:" + this.jdField_a_of_type_Int);
+      }
     }
-    notifyItemChanged(i + 1);
-    return i;
-  }
-  
-  public M a(int paramInt)
-  {
-    if (((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size() + b())) {
-      return null;
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
-  }
-  
-  public List<M> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    notifyDataSetChanged();
-  }
-  
-  public void a(M paramM)
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
-    if (i < 0) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.remove(i);
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    else
     {
-      notifyItemRemoved(i);
-      return;
+      wxe.d("Q.qqstory.publish.upload.LinkRichObject", "");
+      if (localObject != null) {}
+      for (localObject = "http code:" + ((HttpResponse)localObject).getStatusLine();; localObject = "response is null") {
+        return new ErrorMessage(96000003, (String)localObject);
+      }
     }
-    notifyItemRemoved(i + 1);
+    String str = ((JSONObject)localObject).getString("title");
+    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.b))) {
+      this.b = str;
+    }
+    str = ((JSONObject)localObject).getString("abstract");
+    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.c))) {
+      this.c = str;
+    }
+    localObject = ((JSONObject)localObject).getString("thumbUrl");
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (TextUtils.isEmpty(this.d))) {
+      this.d = ((String)localObject);
+    }
+    wxe.d("Q.qqstory.publish.upload.LinkRichObject", "request take time %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    return new ErrorMessage();
   }
   
-  public void a(M paramM, int paramInt)
+  protected void a()
   {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
-    if (i != -1) {
-      this.jdField_a_of_type_JavaUtilList.remove(i);
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramInt, paramM);
-    if (i != -1)
+    try
     {
-      if (this.jdField_a_of_type_AndroidViewView == null)
+      if (a().isSuccess())
       {
-        notifyItemMoved(i, paramInt);
-        notifyItemChanged(paramInt);
+        b();
+        notifyResult(new ErrorMessage());
         return;
       }
-      notifyItemMoved(i + 1, paramInt + 1);
-      notifyItemChanged(paramInt + 1);
+    }
+    catch (JSONException localJSONException)
+    {
+      wxe.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localJSONException);
+      new ErrorMessage(96000001, localJSONException.getMessage());
+      b();
+      notifyResult(new ErrorMessage());
       return;
     }
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    catch (IOException localIOException)
     {
-      notifyItemInserted(paramInt);
-      return;
-    }
-    notifyItemInserted(paramInt + 1);
-  }
-  
-  public boolean a(List<M> paramList)
-  {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {}
-    for (int i = 1;; i = 0)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      boolean bool = i | this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      if (bool) {
-        notifyDataSetChanged();
+      for (;;)
+      {
+        wxe.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localIOException);
+        new ErrorMessage(96000000, localIOException.getMessage());
       }
-      return bool;
     }
-  }
-  
-  public boolean b(List<M> paramList)
-  {
-    boolean bool = this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    if (bool) {
-      notifyDataSetChanged();
-    }
-    return bool;
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size() + a();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final int getItemViewType(int paramInt)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) {
-      return 1024;
-    }
-    if ((this.b != null) && (paramInt == this.jdField_a_of_type_JavaUtilList.size() + b())) {
-      return 1025;
-    }
-    return a(paramInt);
   }
 }
 

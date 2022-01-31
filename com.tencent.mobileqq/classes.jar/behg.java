@@ -1,13 +1,20 @@
-import android.os.Bundle;
+import android.net.Uri;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-public abstract interface behg
-  extends bebx
+class behg
+  extends behj
 {
-  public abstract zbj a();
+  behg(behe parambehe)
+  {
+    super(parambehe);
+  }
   
-  public abstract boolean a(String paramString);
-  
-  public abstract boolean a(String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle);
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    return a(paramWebView, paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.isForMainFrame());
+  }
 }
 
 

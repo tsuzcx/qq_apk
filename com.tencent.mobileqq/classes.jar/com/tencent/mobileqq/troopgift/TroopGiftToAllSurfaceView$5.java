@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troopgift;
 
-import azzf;
-import azzh;
-import baaf;
-import bcqz;
-import bcra;
+import bado;
+import badq;
+import baeo;
+import bcvi;
+import bcvj;
 
 public class TroopGiftToAllSurfaceView$5
   implements Runnable
@@ -13,13 +13,13 @@ public class TroopGiftToAllSurfaceView$5
   
   public void run()
   {
-    TroopGiftToAllSurfaceView.a(this.this$0, new baaf(this.this$0, this.this$0.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b));
+    TroopGiftToAllSurfaceView.a(this.this$0, new baeo(this.this$0, this.this$0.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b));
     TroopGiftToAllSurfaceView.a(this.this$0).a(TroopGiftToAllSurfaceView.a(this.this$0).jdField_a_of_type_Int / 2, TroopGiftToAllSurfaceView.a(this.this$0).b * TroopGiftToAllSurfaceView.a(this.this$0).f / 100);
     this.this$0.a(TroopGiftToAllSurfaceView.a(this.this$0));
     TroopGiftToAllSurfaceView.a(this.this$0).jdField_a_of_type_Int = 0;
-    azzh localazzh = new azzh(500);
-    localazzh.a(new bcqz(this));
-    TroopGiftToAllSurfaceView.a(this.this$0).a(new azzf[] { localazzh });
+    badq localbadq = new badq(500);
+    localbadq.a(new bcvi(this));
+    TroopGiftToAllSurfaceView.a(this.this$0).a(new bado[] { localbadq });
   }
 }
 

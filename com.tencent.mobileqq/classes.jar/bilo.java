@@ -1,88 +1,20 @@
-import android.os.RemoteException;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.groupvideo.GVideoProxyService;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import common.config.service.QzoneConfig;
+import common.config.service.QzoneConfig.2.1;
 
 public class bilo
+  extends ContentObserver
 {
-  bilp jdField_a_of_type_Bilp = null;
-  bilq jdField_a_of_type_Bilq = new bilq(this);
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  lqr jdField_a_of_type_Lqr = null;
-  
-  public bilo(AppInterface paramAppInterface)
+  public bilo(QzoneConfig paramQzoneConfig, Handler paramHandler)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    super(paramHandler);
   }
   
-  public int a(long paramLong, int paramInt)
+  public void onChange(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Lqr == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null");
-      }
-    }
-    do
-    {
-      return 0;
-      try
-      {
-        paramInt = this.jdField_a_of_type_Lqr.a(paramLong, paramInt);
-        return paramInt;
-      }
-      catch (RemoteException localRemoteException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("GroupVideoRemoteManager", 2, "RemoteException", localRemoteException);
-    return 0;
-  }
-  
-  public void a()
-  {
-    biln.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Bilq);
-    this.jdField_a_of_type_Lqr = null;
-    this.jdField_a_of_type_Bilp = null;
-  }
-  
-  public void a(bilp parambilp)
-  {
-    this.jdField_a_of_type_Bilp = parambilp;
-    if (this.jdField_a_of_type_Lqr == null) {
-      biln.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, GVideoProxyService.class, this.jdField_a_of_type_Bilq, "com.gvideo.com.tencent.av.service.GVServiceForQQ");
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Lqr == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null");
-      }
-    }
-    do
-    {
-      return;
-      try
-      {
-        this.jdField_a_of_type_Lqr.a(paramArrayOfByte);
-        return;
-      }
-      catch (RemoteException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("GroupVideoRemoteManager", 2, "RemoteException", paramArrayOfByte);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Lqr != null) {}
-    try
-    {
-      this.jdField_a_of_type_Lqr.a();
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      localRemoteException.printStackTrace();
-    }
+    ThreadManager.post(new QzoneConfig.2.1(this, paramBoolean), 5, null, false);
   }
 }
 

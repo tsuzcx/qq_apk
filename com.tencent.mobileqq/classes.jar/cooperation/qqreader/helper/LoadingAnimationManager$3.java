@@ -1,15 +1,15 @@
 package cooperation.qqreader.helper;
 
-import bivp;
+import bizw;
 
 public class LoadingAnimationManager$3
   implements Runnable
 {
-  public LoadingAnimationManager$3(bivp parambivp) {}
+  public LoadingAnimationManager$3(bizw parambizw) {}
   
   public void run()
   {
-    bivp.a(this.this$0);
+    bizw.a(this.this$0);
   }
 }
 

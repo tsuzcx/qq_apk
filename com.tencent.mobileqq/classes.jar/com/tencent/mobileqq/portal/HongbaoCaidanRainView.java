@@ -6,7 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
 import android.view.View;
-import awim;
+import awmv;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -18,13 +18,13 @@ public class HongbaoCaidanRainView
   private int jdField_a_of_type_Int = 1000;
   private long jdField_a_of_type_Long;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private List<awim> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<awmv> jdField_a_of_type_JavaUtilList = new ArrayList();
   private Random jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
-  private List<awim> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private List<awmv> jdField_b_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_b_of_type_Boolean;
   private float jdField_c_of_type_Float = 10.0F;
   private int jdField_c_of_type_Int;
@@ -55,14 +55,14 @@ public class HongbaoCaidanRainView
     }
     int i = 0;
     label16:
-    awim localawim;
+    awmv localawmv;
     float f1;
     float f2;
     if (i < paramInt)
     {
-      localawim = new awim(null);
-      localawim.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_Int);
-      localawim.jdField_a_of_type_Float = this.jdField_a_of_type_JavaUtilRandom.nextInt(360);
+      localawmv = new awmv(null);
+      localawmv.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_Int);
+      localawmv.jdField_a_of_type_Float = this.jdField_a_of_type_JavaUtilRandom.nextInt(360);
       f1 = this.jdField_a_of_type_JavaUtilRandom.nextFloat();
       f2 = this.jdField_b_of_type_Float;
       if (this.jdField_a_of_type_JavaUtilRandom.nextFloat() <= 0.5D) {
@@ -70,10 +70,10 @@ public class HongbaoCaidanRainView
       }
       j = 1;
       label95:
-      localawim.d = (j * (f2 * f1));
-      localawim.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)this.jdField_c_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_c_of_type_JavaUtilList.size())));
-      localawim.e = (this.jdField_b_of_type_Int * 1.0F / localawim.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.jdField_a_of_type_Float + 1.0F));
-      localawim.jdField_c_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.e + this.jdField_c_of_type_Float);
+      localawmv.d = (j * (f2 * f1));
+      localawmv.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)this.jdField_c_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_c_of_type_JavaUtilList.size())));
+      localawmv.e = (this.jdField_b_of_type_Int * 1.0F / localawmv.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.jdField_a_of_type_Float + 1.0F));
+      localawmv.jdField_c_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.e + this.jdField_c_of_type_Float);
       f1 = this.jdField_a_of_type_JavaUtilRandom.nextFloat();
       f2 = this.d;
       if (this.jdField_a_of_type_JavaUtilRandom.nextFloat() <= 0.5D) {
@@ -84,9 +84,9 @@ public class HongbaoCaidanRainView
     label291:
     for (int j = 1;; j = -1)
     {
-      localawim.jdField_b_of_type_Float = (j * (f2 * f1));
-      localawim.jdField_b_of_type_Int = ((int)(-localawim.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * localawim.e));
-      this.jdField_a_of_type_JavaUtilList.add(localawim);
+      localawmv.jdField_b_of_type_Float = (j * (f2 * f1));
+      localawmv.jdField_b_of_type_Int = ((int)(-localawmv.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * localawmv.e));
+      this.jdField_a_of_type_JavaUtilList.add(localawmv);
       i += 1;
       break label16;
       break;
@@ -112,20 +112,20 @@ public class HongbaoCaidanRainView
     this.jdField_c_of_type_Long = l;
     int k = this.jdField_a_of_type_JavaUtilList.size();
     int i = 0;
-    awim localawim;
+    awmv localawmv;
     if (i < k)
     {
-      localawim = (awim)this.jdField_a_of_type_JavaUtilList.get(i);
-      localawim.jdField_b_of_type_Int = ((int)(localawim.jdField_b_of_type_Int + localawim.jdField_c_of_type_Float * f));
-      if (localawim.jdField_b_of_type_Int > this.jdField_c_of_type_Int) {
-        this.jdField_b_of_type_JavaUtilList.add(localawim);
+      localawmv = (awmv)this.jdField_a_of_type_JavaUtilList.get(i);
+      localawmv.jdField_b_of_type_Int = ((int)(localawmv.jdField_b_of_type_Int + localawmv.jdField_c_of_type_Float * f));
+      if (localawmv.jdField_b_of_type_Int > this.jdField_c_of_type_Int) {
+        this.jdField_b_of_type_JavaUtilList.add(localawmv);
       }
       for (;;)
       {
         i += 1;
         break;
-        localawim.jdField_a_of_type_Int = ((int)(localawim.jdField_a_of_type_Int + localawim.jdField_b_of_type_Float * f));
-        localawim.jdField_a_of_type_Float += localawim.d * f;
+        localawmv.jdField_a_of_type_Int = ((int)(localawmv.jdField_a_of_type_Int + localawmv.jdField_b_of_type_Float * f));
+        localawmv.jdField_a_of_type_Float += localawmv.d * f;
       }
     }
     this.jdField_a_of_type_JavaUtilList.removeAll(this.jdField_b_of_type_JavaUtilList);
@@ -139,13 +139,13 @@ public class HongbaoCaidanRainView
     }
     while (i < k)
     {
-      localawim = (awim)this.jdField_a_of_type_JavaUtilList.get(i);
+      localawmv = (awmv)this.jdField_a_of_type_JavaUtilList.get(i);
       this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localawim.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, -localawim.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localawim.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(localawim.e, localawim.e);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localawim.jdField_a_of_type_Int, localawim.jdField_b_of_type_Int);
-      paramCanvas.drawBitmap(localawim.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localawmv.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, -localawmv.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localawmv.jdField_a_of_type_Float);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(localawmv.e, localawmv.e);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localawmv.jdField_a_of_type_Int, localawmv.jdField_b_of_type_Int);
+      paramCanvas.drawBitmap(localawmv.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
       i += 1;
     }
     invalidate();

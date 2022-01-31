@@ -1,25 +1,17 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class acpp
-  implements bevy
+  implements DialogInterface.OnClickListener
 {
-  public acpp(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public acpp(ChatSettingForTroop paramChatSettingForTroop, boolean paramBoolean) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
-      return;
+    if (this.jdField_a_of_type_Boolean) {
+      azqs.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
     }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      xxb.a(1, 2131720019);
-      return;
-    }
-    xxb.a(2, 2131720038);
   }
 }
 

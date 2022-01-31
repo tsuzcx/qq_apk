@@ -1,133 +1,230 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.text.Spannable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.widget.ColorNickTextView;
-import com.tencent.mobileqq.widget.datepicker.CalendarDay;
-import java.util.LinkedList;
-import java.util.List;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class agzz
-  extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<agzy> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private static agzz a;
+  public static final String a;
+  public static final String b = jdField_a_of_type_JavaLangString + File.separator + "aio_lightalk_tips_config";
+  public static final String c = jdField_a_of_type_JavaLangString + File.separator + "aio_lightalk_tips_icon";
+  public String d;
+  public String e;
   
-  public agzz(TroopMemberHistoryFragment paramTroopMemberHistoryFragment, Context paramContext)
+  static
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    jdField_a_of_type_JavaLangString = BaseApplicationImpl.getContext().getFilesDir() + File.separator + "lightalkfiles";
   }
   
-  boolean a(long paramLong1, long paramLong2)
+  public static agzz a()
   {
-    CalendarDay localCalendarDay1 = new CalendarDay(paramLong1 * 1000L);
-    CalendarDay localCalendarDay2 = new CalendarDay(paramLong2 * 1000L);
-    return (localCalendarDay1.year == localCalendarDay2.year) && (localCalendarDay1.month == localCalendarDay2.month) && (localCalendarDay1.day == localCalendarDay2.day);
-  }
-  
-  boolean a(List<agzy> paramList)
-  {
-    int j = paramList.size();
-    int i = 0;
-    long l2;
-    for (long l1 = 0L; i < j; l1 = l2)
+    long l1 = SystemClock.uptimeMillis();
+    a();
+    long l2 = SystemClock.uptimeMillis();
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      agzy localagzy = (agzy)paramList.get(i);
-      l2 = localagzy.jdField_a_of_type_Long;
-      if ((l1 == 0L) || (!a(l1, l2))) {
-        localagzy.jdField_a_of_type_Boolean = true;
+      localStringBuilder = new StringBuilder().append("read config cost ").append(l2 - l1).append(" , result is ");
+      if (jdField_a_of_type_Agzz != null) {
+        break label71;
       }
-      this.jdField_a_of_type_JavaUtilList.add(localagzy);
-      i += 1;
     }
-    return true;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    agzy localagzy;
-    Object localObject;
-    RelativeLayout.LayoutParams localLayoutParams;
-    int i;
-    if (paramView == null)
+    label71:
+    for (boolean bool = true;; bool = false)
     {
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559260, null);
-      paramViewGroup = new agzx();
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131377553));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377555));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367808));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131369115));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369513);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131378386));
-      paramView.setTag(paramViewGroup);
-      localagzy = (agzy)getItem(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localagzy.jdField_a_of_type_JavaLangCharSequence);
-      paramViewGroup.b.setText(localagzy.a());
-      localObject = new bahs(bdbt.h(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.b, localagzy.jdField_a_of_type_JavaLangString), 16).a();
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText((CharSequence)localObject);
-      bdnm.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView, (Spannable)localObject);
-      localObject = bcxb.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, localagzy.jdField_a_of_type_JavaLangString);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      localObject = (RelativeLayout.LayoutParams)paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      localLayoutParams = (RelativeLayout.LayoutParams)paramViewGroup.b.getLayoutParams();
-      if (!localagzy.jdField_a_of_type_Boolean) {
-        break label420;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      if (paramInt != 0) {
-        break label400;
-      }
-      i = bdkf.a(3.0F);
-      label284:
-      ((RelativeLayout.LayoutParams)localObject).topMargin = i;
-      if (paramInt != 0) {
-        break label410;
-      }
-      i = bdkf.a(3.0F);
+      QLog.d("LightalkBlueTipsBar", 2, bool);
+      return jdField_a_of_type_Agzz;
     }
-    label302:
-    for (localLayoutParams.topMargin = i;; localLayoutParams.topMargin = 0)
-    {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      paramViewGroup.b.setLayoutParams(localLayoutParams);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(paramInt));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramView.setContentDescription(localagzy.jdField_a_of_type_JavaLangCharSequence + " " + localagzy.a());
-      return paramView;
-      paramViewGroup = (agzx)paramView.getTag();
-      break;
-      i = bdkf.a(9.0F);
-      break label284;
-      i = bdkf.a(9.0F);
-      break label302;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      ((RelativeLayout.LayoutParams)localObject).topMargin = 0;
-    }
+  }
+  
+  /* Error */
+  private static void a()
+  {
+    // Byte code:
+    //   0: getstatic 84	agzz:jdField_a_of_type_Agzz	Lagzz;
+    //   3: ifnull +4 -> 7
+    //   6: return
+    //   7: new 36	java/io/File
+    //   10: dup
+    //   11: getstatic 54	agzz:b	Ljava/lang/String;
+    //   14: invokespecial 99	java/io/File:<init>	(Ljava/lang/String;)V
+    //   17: astore_0
+    //   18: new 36	java/io/File
+    //   21: dup
+    //   22: getstatic 58	agzz:c	Ljava/lang/String;
+    //   25: invokespecial 99	java/io/File:<init>	(Ljava/lang/String;)V
+    //   28: astore_1
+    //   29: aload_0
+    //   30: invokevirtual 102	java/io/File:exists	()Z
+    //   33: ifeq +204 -> 237
+    //   36: aload_0
+    //   37: invokevirtual 105	java/io/File:length	()J
+    //   40: lconst_0
+    //   41: lcmp
+    //   42: ifle +195 -> 237
+    //   45: aload_1
+    //   46: invokevirtual 102	java/io/File:exists	()Z
+    //   49: ifeq +188 -> 237
+    //   52: new 107	java/io/FileInputStream
+    //   55: dup
+    //   56: aload_0
+    //   57: invokespecial 110	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   60: astore_1
+    //   61: aload_1
+    //   62: astore_0
+    //   63: aload_1
+    //   64: invokevirtual 114	java/io/FileInputStream:available	()I
+    //   67: newarray byte
+    //   69: astore_2
+    //   70: aload_1
+    //   71: astore_0
+    //   72: aload_1
+    //   73: aload_2
+    //   74: invokevirtual 118	java/io/FileInputStream:read	([B)I
+    //   77: pop
+    //   78: aload_1
+    //   79: astore_0
+    //   80: new 120	java/lang/String
+    //   83: dup
+    //   84: aload_2
+    //   85: ldc 122
+    //   87: invokespecial 125	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   90: ldc 127
+    //   92: invokevirtual 131	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   95: astore_2
+    //   96: aload_1
+    //   97: astore_0
+    //   98: aload_2
+    //   99: arraylength
+    //   100: iconst_2
+    //   101: if_icmpne +37 -> 138
+    //   104: aload_1
+    //   105: astore_0
+    //   106: new 2	agzz
+    //   109: dup
+    //   110: invokespecial 132	agzz:<init>	()V
+    //   113: putstatic 84	agzz:jdField_a_of_type_Agzz	Lagzz;
+    //   116: aload_1
+    //   117: astore_0
+    //   118: getstatic 84	agzz:jdField_a_of_type_Agzz	Lagzz;
+    //   121: aload_2
+    //   122: iconst_0
+    //   123: aaload
+    //   124: putfield 134	agzz:d	Ljava/lang/String;
+    //   127: aload_1
+    //   128: astore_0
+    //   129: getstatic 84	agzz:jdField_a_of_type_Agzz	Lagzz;
+    //   132: aload_2
+    //   133: iconst_1
+    //   134: aaload
+    //   135: putfield 136	agzz:e	Ljava/lang/String;
+    //   138: aload_1
+    //   139: ifnull -133 -> 6
+    //   142: aload_1
+    //   143: invokevirtual 139	java/io/FileInputStream:close	()V
+    //   146: return
+    //   147: astore_0
+    //   148: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   151: ifeq -145 -> 6
+    //   154: ldc 86
+    //   156: iconst_2
+    //   157: ldc 141
+    //   159: aload_0
+    //   160: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   163: return
+    //   164: astore_2
+    //   165: aconst_null
+    //   166: astore_1
+    //   167: aload_1
+    //   168: astore_0
+    //   169: aload_2
+    //   170: invokevirtual 147	java/lang/Exception:printStackTrace	()V
+    //   173: aload_1
+    //   174: astore_0
+    //   175: aconst_null
+    //   176: putstatic 84	agzz:jdField_a_of_type_Agzz	Lagzz;
+    //   179: aload_1
+    //   180: ifnull -174 -> 6
+    //   183: aload_1
+    //   184: invokevirtual 139	java/io/FileInputStream:close	()V
+    //   187: return
+    //   188: astore_0
+    //   189: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   192: ifeq -186 -> 6
+    //   195: ldc 86
+    //   197: iconst_2
+    //   198: ldc 141
+    //   200: aload_0
+    //   201: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   204: return
+    //   205: astore_1
+    //   206: aconst_null
+    //   207: astore_0
+    //   208: aload_0
+    //   209: ifnull +7 -> 216
+    //   212: aload_0
+    //   213: invokevirtual 139	java/io/FileInputStream:close	()V
+    //   216: aload_1
+    //   217: athrow
+    //   218: astore_0
+    //   219: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   222: ifeq -6 -> 216
+    //   225: ldc 86
+    //   227: iconst_2
+    //   228: ldc 141
+    //   230: aload_0
+    //   231: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   234: goto -18 -> 216
+    //   237: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   240: ifeq -234 -> 6
+    //   243: ldc 86
+    //   245: iconst_2
+    //   246: ldc 149
+    //   248: invokestatic 92	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   251: return
+    //   252: astore_1
+    //   253: goto -45 -> 208
+    //   256: astore_2
+    //   257: goto -90 -> 167
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   17	112	0	localObject1	Object
+    //   147	13	0	localIOException1	java.io.IOException
+    //   168	7	0	localObject2	Object
+    //   188	13	0	localIOException2	java.io.IOException
+    //   207	6	0	localObject3	Object
+    //   218	13	0	localIOException3	java.io.IOException
+    //   28	156	1	localObject4	Object
+    //   205	12	1	localObject5	Object
+    //   252	1	1	localObject6	Object
+    //   69	64	2	localObject7	Object
+    //   164	6	2	localException1	java.lang.Exception
+    //   256	1	2	localException2	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   142	146	147	java/io/IOException
+    //   52	61	164	java/lang/Exception
+    //   183	187	188	java/io/IOException
+    //   52	61	205	finally
+    //   212	216	218	java/io/IOException
+    //   63	70	252	finally
+    //   72	78	252	finally
+    //   80	96	252	finally
+    //   98	104	252	finally
+    //   106	116	252	finally
+    //   118	127	252	finally
+    //   129	138	252	finally
+    //   169	173	252	finally
+    //   175	179	252	finally
+    //   63	70	256	java/lang/Exception
+    //   72	78	256	java/lang/Exception
+    //   80	96	256	java/lang/Exception
+    //   98	104	256	java/lang/Exception
+    //   106	116	256	java/lang/Exception
+    //   118	127	256	java/lang/Exception
+    //   129	138	256	java/lang/Exception
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.share;
 
 import android.os.Bundle;
-import arzy;
+import aseh;
 import com.tencent.mobileqq.mini.launch.CmdCallback.Stub;
 import com.tencent.mobileqq.mini.share.opensdk.OpenSdkShareModel;
 import com.tencent.qphone.base.util.QLog;
@@ -15,7 +15,7 @@ class MiniProgramOpenSdkUtil$3$1
   public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
   {
     QLog.d("MiniProgramOpenSdkUtil", 2, "onCmdResult() called with: succ = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
-    arzy.a("KEY_STAGE_1_UPLOAD_IMAGE", paramBoolean);
+    aseh.a("KEY_STAGE_1_UPLOAD_IMAGE", paramBoolean);
     if ((paramBoolean) && (paramBundle != null))
     {
       paramBundle = paramBundle.getString("imageUrl", "").replaceFirst("https*://", "");

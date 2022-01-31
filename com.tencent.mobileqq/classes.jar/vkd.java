@@ -1,23 +1,15 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-
-final class vkd
-  extends SimpleJob<Object>
+class vkd
+  extends viy
 {
-  vkd(String paramString)
+  vkd(vji paramvji, String paramString)
   {
     super(paramString);
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public boolean b()
   {
-    paramJobContext = vjz.a();
-    if (paramJobContext != null) {
-      vjz.b(paramJobContext);
-    }
-    return null;
+    a("WeChatImageJob_in_drawable", a("UrlDrawableDownloadJob_dra"));
+    return true;
   }
 }
 

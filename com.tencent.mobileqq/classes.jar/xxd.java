@@ -1,76 +1,34 @@
-import android.content.res.Resources;
-import android.support.v4.util.MQLruCache;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import mqq.util.WeakReference;
-import org.jetbrains.annotations.NotNull;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.biz.qqstory.view.xrecyclerview.XRecyclerView;
 
 public class xxd
+  extends RecyclerView.OnScrollListener
 {
-  @NotNull
-  public static URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView)
+  public xxd(XRecyclerView paramXRecyclerView) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846089);
-    if (paramURLImageView.getLayoutParams() != null)
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    paramInt = paramRecyclerView.getChildCount();
+    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
     {
-      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
+      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
+      int i = paramRecyclerView.getItemCount();
+      int[] arrayOfInt = paramRecyclerView.findFirstVisibleItemPositions(null);
+      if (i - paramInt > paramRecyclerView.getSpanCount() * 3 + arrayOfInt[0]) {
+        break label76;
+      }
     }
-    return localURLDrawableOptions;
-  }
-  
-  public static void a()
-  {
-    if (BaseApplicationImpl.sProcessId == 1)
+    label76:
+    for (paramInt = 1;; paramInt = 0)
     {
-      BaseApplicationImpl.sImageCache.evict(0);
-      return;
-    }
-    BaseApplicationImpl.sImageCache.evictAll();
-  }
-  
-  public static void a(String paramString, URLImageView paramURLImageView)
-  {
-    a(paramString, paramURLImageView, null, false);
-  }
-  
-  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean)
-  {
-    WeakReference localWeakReference = new WeakReference(paramURLImageView);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = paramURLDrawableOptions;
-    if (paramURLDrawableOptions == null) {}
-    try
-    {
-      localURLDrawableOptions = a(paramURLImageView);
-      if (paramBoolean) {}
-      for (paramString = URLDrawable.getFileDrawable(paramString, localURLDrawableOptions); (paramString != null) && (localWeakReference.get() != null); paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions))
-      {
-        ((ImageView)localWeakReference.get()).setImageDrawable(paramString);
-        return;
+      if (paramInt != 0) {
+        XRecyclerView.a(this.a).b(false);
       }
       return;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public static URLDrawable.URLDrawableOptions b(URLImageView paramURLImageView)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841308);
-    if ((paramURLImageView != null) && (paramURLImageView.getLayoutParams() != null))
-    {
-      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
-    }
-    return localURLDrawableOptions;
   }
 }
 

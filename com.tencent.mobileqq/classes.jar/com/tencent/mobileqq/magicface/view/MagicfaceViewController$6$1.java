@@ -2,29 +2,29 @@ package com.tencent.mobileqq.magicface.view;
 
 import android.widget.ImageView;
 import android.widget.TextView;
-import atva;
-import atvc;
+import atzj;
+import atzl;
 
 public class MagicfaceViewController$6$1
   implements Runnable
 {
-  public MagicfaceViewController$6$1(atvc paramatvc, String paramString) {}
+  public MagicfaceViewController$6$1(atzl paramatzl, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Atvc.jdField_a_of_type_Int == 1)
+    if (this.jdField_a_of_type_Atzl.jdField_a_of_type_Int == 1)
     {
       if (this.jdField_a_of_type_JavaLangString != null) {
         break label48;
       }
-      this.jdField_a_of_type_Atvc.jdField_a_of_type_Atva.a.setVisibility(8);
+      this.jdField_a_of_type_Atzl.jdField_a_of_type_Atzj.a.setVisibility(8);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Atvc.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Atzl.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
       return;
       label48:
-      this.jdField_a_of_type_Atvc.jdField_a_of_type_Atva.a.setVisibility(0);
+      this.jdField_a_of_type_Atzl.jdField_a_of_type_Atzj.a.setVisibility(0);
     }
   }
 }

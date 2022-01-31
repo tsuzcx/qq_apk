@@ -16,13 +16,13 @@ public class ozw
   ozw(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
   {
     super(paramReadInJoyPicWaterFallFragment, paramView);
-    this.b = ((URLImageView)paramView.findViewById(2131364864));
+    this.b = ((URLImageView)paramView.findViewById(2131364866));
     this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
     this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362551));
     this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new ColorDrawable(Color.parseColor("#7f000000")));
-    aekt.a(3.0F, paramReadInJoyPicWaterFallFragment.getResources());
+    aepi.a(3.0F, paramReadInJoyPicWaterFallFragment.getResources());
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361947));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377884));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377938));
     paramView.setOnClickListener(new ozx(this, paramReadInJoyPicWaterFallFragment));
   }
 }

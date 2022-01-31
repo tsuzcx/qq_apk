@@ -1,7 +1,13 @@
-public abstract interface xyp
-  extends xxn
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
+
+public class xyp
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public xyp(QRCardActivity paramQRCardActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

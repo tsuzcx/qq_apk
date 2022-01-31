@@ -1,24 +1,9 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.2;
-import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.2.2.1;
 
-public class ajij
-  implements Animator.AnimatorListener
+public abstract interface ajij
 {
-  public ajij(CareNotificationBar.2 param2) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a.post(new CareNotificationBar.2.2.1(this));
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract boolean interceptDrawer(View paramView, MotionEvent paramMotionEvent);
 }
 
 

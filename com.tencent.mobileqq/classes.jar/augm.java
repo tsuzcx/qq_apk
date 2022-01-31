@@ -1,21 +1,15 @@
-import android.support.v4.app.Fragment;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class augm
-  extends GestureDetector.SimpleOnGestureListener
+class augm
+  implements Handler.Callback
 {
-  public augm(MultiAIOItemFragment paramMultiAIOItemFragment) {}
+  augm(augl paramaugl) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public boolean handleMessage(Message paramMessage)
   {
-    Fragment localFragment = this.a.getParentFragment();
-    if ((localFragment != null) && ((localFragment instanceof MultiAIOFragment))) {
-      ((MultiAIOFragment)localFragment).a(this.a.getView(), paramMotionEvent);
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    augl.a(this.a, paramMessage);
+    return true;
   }
 }
 

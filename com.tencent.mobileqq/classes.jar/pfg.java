@@ -84,9 +84,9 @@ public class pfg
   private LinkedHashMap<Integer, ChannelCoverInfo> jdField_c_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   private int d;
   
-  public pfg(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public pfg(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
     this.jdField_a_of_type_JavaLangString = "UPDATE_CHANNEL_LIST_KEY_0xbbc";
     this.jdField_a_of_type_Int = 3;
     if (QLog.isColorLevel()) {
@@ -371,13 +371,13 @@ public class pfg
       return true;
     }
     this.d = 0;
-    bjxj.a("UPDATE_CHANNEL_LIST_KEY_0xbbc", Boolean.valueOf(false));
+    bkbq.a("UPDATE_CHANNEL_LIST_KEY_0xbbc", Boolean.valueOf(false));
     return false;
   }
   
   public static boolean a(int paramInt)
   {
-    if (!((Boolean)bjxj.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(false))).booleanValue())
+    if (!((Boolean)bkbq.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(false))).booleanValue())
     {
       QLog.d("ChannelCoverInfoModule", 1, "isSupportChannelDynamicOrder, switch is off.");
       return false;
@@ -649,7 +649,7 @@ public class pfg
         }
       }
       label275:
-      for (paramList = a();; paramList = alpo.a(2131701885))
+      for (paramList = a();; paramList = alud.a(2131701897))
       {
         if (!bool2) {
           ((List)localObject2).remove(localObject4);
@@ -658,7 +658,7 @@ public class pfg
         if (!bool1) {
           ((List)localObject2).remove(localObject3);
         }
-        ((List)localObject2).add(0, new TabChannelCoverInfo(70, alpo.a(2131701908), 4, "https://p.qpic.cn/kandianac/0/993c416b9d2b9.png/0"));
+        ((List)localObject2).add(0, new TabChannelCoverInfo(70, alud.a(2131701920), 4, "https://p.qpic.cn/kandianac/0/993c416b9d2b9.png/0"));
         QLog.d("ChannelCoverInfoModule", 1, new Object[] { "forceInsertChannelList insertRecommendChannel = ", Boolean.valueOf(bool2), ", insertFollowChannel = ", Boolean.valueOf(bool1) });
         return localObject2;
         i = 0;
@@ -674,7 +674,7 @@ public class pfg
     if (QLog.isColorLevel()) {
       QLog.d("ChannelCoverInfoModule", 2, "loadFromDb with selection=" + "mChannelID = ?" + ", channelId=" + paramInt);
     }
-    return this.jdField_a_of_type_Awbw.a(ChannelCoverInfo.class, true, "mChannelID = ?", new String[] { String.valueOf(paramInt) }, null, null, null, null);
+    return this.jdField_a_of_type_Awgf.a(ChannelCoverInfo.class, true, "mChannelID = ?", new String[] { String.valueOf(paramInt) }, null, null, null, null);
   }
   
   private void f()
@@ -688,7 +688,7 @@ public class pfg
         str = ors.f();
         if (!TextUtils.isEmpty(str))
         {
-          str = bfhi.d(str.toLowerCase()).toLowerCase();
+          str = bflr.d(str.toLowerCase()).toLowerCase();
           localPhoneInfo.bytes_muid.set(ByteStringMicro.copyFromUtf8(str));
           localPhoneInfo.uint32_muid_type.set(1);
           i = nmh.a();
@@ -708,7 +708,7 @@ public class pfg
       }
       try
       {
-        j = bdcb.e();
+        j = bdgk.e();
         i = j;
       }
       catch (Exception localException)
@@ -716,9 +716,9 @@ public class pfg
         continue;
       }
       localPhoneInfo.uint32_carrier.set(i);
-      str = bdcb.e();
+      str = bdgk.e();
       localPhoneInfo.bytes_os_ver.set(ByteStringMicro.copyFromUtf8(str));
-      str = bdcb.c();
+      str = bdgk.c();
       localPhoneInfo.bytes_qq_ver.set(ByteStringMicro.copyFromUtf8(str));
       i = AppSetting.a();
       localPhoneInfo.bytes_appid.set(ByteStringMicro.copyFromUtf8(String.valueOf(i)));
@@ -731,10 +731,10 @@ public class pfg
       }
       a(pvb.a("OidbSvc.0xbe6", 3046, 1, localReqBody.toByteArray()));
       return;
-      str = bdcb.c(BaseApplication.getContext());
+      str = bdgk.c(BaseApplication.getContext());
       if (!TextUtils.isEmpty(str))
       {
-        str = bfhi.d(str.replaceAll(":", "").toUpperCase()).toLowerCase();
+        str = bflr.d(str.replaceAll(":", "").toUpperCase()).toLowerCase();
         localPhoneInfo.bytes_muid.set(ByteStringMicro.copyFromUtf8(str));
         localPhoneInfo.uint32_muid_type.set(3);
       }
@@ -829,16 +829,16 @@ public class pfg
   private List<TabChannelCoverInfo> k()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new TabChannelCoverInfo(51, alpo.a(2131701914)));
-    localArrayList.add(new TabChannelCoverInfo(58, alpo.a(2131701901)));
-    localArrayList.add(new TabChannelCoverInfo(59, alpo.a(2131701900)));
-    localArrayList.add(new TabChannelCoverInfo(10, alpo.a(2131701903)));
-    localArrayList.add(new TabChannelCoverInfo(52, alpo.a(2131701916)));
-    localArrayList.add(new TabChannelCoverInfo(53, alpo.a(2131701897)));
-    localArrayList.add(new TabChannelCoverInfo(9, alpo.a(2131701907)));
-    localArrayList.add(new TabChannelCoverInfo(54, alpo.a(2131701892)));
-    localArrayList.add(new TabChannelCoverInfo(55, alpo.a(2131701894)));
-    localArrayList.add(new TabChannelCoverInfo(40007, alpo.a(2131701896)));
+    localArrayList.add(new TabChannelCoverInfo(51, alud.a(2131701926)));
+    localArrayList.add(new TabChannelCoverInfo(58, alud.a(2131701913)));
+    localArrayList.add(new TabChannelCoverInfo(59, alud.a(2131701912)));
+    localArrayList.add(new TabChannelCoverInfo(10, alud.a(2131701915)));
+    localArrayList.add(new TabChannelCoverInfo(52, alud.a(2131701928)));
+    localArrayList.add(new TabChannelCoverInfo(53, alud.a(2131701909)));
+    localArrayList.add(new TabChannelCoverInfo(9, alud.a(2131701919)));
+    localArrayList.add(new TabChannelCoverInfo(54, alud.a(2131701904)));
+    localArrayList.add(new TabChannelCoverInfo(55, alud.a(2131701906)));
+    localArrayList.add(new TabChannelCoverInfo(40007, alud.a(2131701908)));
     return localArrayList;
   }
   
@@ -847,7 +847,7 @@ public class pfg
     if (QLog.isColorLevel()) {
       QLog.d("ChannelCoverInfoModule", 2, "loadFromDb");
     }
-    return this.jdField_a_of_type_Awbw.a(TabChannelCoverInfo.class);
+    return this.jdField_a_of_type_Awgf.a(TabChannelCoverInfo.class);
   }
   
   public String a(QQAppInterface paramQQAppInterface)
@@ -1092,7 +1092,7 @@ public class pfg
     localObject2 = ors.f();
     if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
-      localObject2 = bfhi.d(((String)localObject2).toLowerCase()).toLowerCase();
+      localObject2 = bflr.d(((String)localObject2).toLowerCase()).toLowerCase();
       paramList.bytes_muid.set(ByteStringMicro.copyFromUtf8((String)localObject2));
       paramList.uint32_muid_type.set(1);
     }
@@ -1103,7 +1103,7 @@ public class pfg
       i = 0;
       try
       {
-        int j = bdcb.e();
+        int j = bdgk.e();
         i = j;
       }
       catch (Exception localException)
@@ -1112,9 +1112,9 @@ public class pfg
         break label449;
       }
       paramList.uint32_carrier.set(i);
-      localObject2 = bdcb.e();
+      localObject2 = bdgk.e();
       paramList.bytes_os_ver.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-      localObject2 = bdcb.c();
+      localObject2 = bdgk.c();
       paramList.bytes_qq_ver.set(ByteStringMicro.copyFromUtf8((String)localObject2));
       i = AppSetting.a();
       paramList.bytes_appid.set(ByteStringMicro.copyFromUtf8(String.valueOf(i)));
@@ -1124,12 +1124,12 @@ public class pfg
       ((oidb_cmd0xbbc.ReqBody)localObject1).msg_phone_type.set(paramList, true);
       ((oidb_cmd0xbbc.ReqBody)localObject1).uint32_set_type.set(paramInt);
       a(pvb.a("OidbSvc.0xbbc", 3004, 1, ((oidb_cmd0xbbc.ReqBody)localObject1).toByteArray()));
-      bjxj.a("UPDATE_CHANNEL_LIST_KEY_0xbbc", Boolean.valueOf(true));
+      bkbq.a("UPDATE_CHANNEL_LIST_KEY_0xbbc", Boolean.valueOf(true));
       return;
-      localObject2 = bdcb.c(BaseApplication.getContext());
+      localObject2 = bdgk.c(BaseApplication.getContext());
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        localObject2 = bfhi.d(((String)localObject2).replaceAll(":", "").toUpperCase()).toLowerCase();
+        localObject2 = bflr.d(((String)localObject2).replaceAll(":", "").toUpperCase()).toLowerCase();
         paramList.bytes_muid.set(ByteStringMicro.copyFromUtf8((String)localObject2));
         paramList.uint32_muid_type.set(3);
       }
@@ -1177,23 +1177,23 @@ public class pfg
   public List<TabChannelCoverInfo> b()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new TabChannelCoverInfo(70, alpo.a(2131701899), 4, "https://p.qpic.cn/kandianac/0/993c416b9d2b9.png/0"));
-    localArrayList.add(new TabChannelCoverInfo(0, alpo.a(2131701898), 4, "https://p.qpic.cn/kandianac/0/9558fc75932c5.png/0"));
-    TabChannelCoverInfo localTabChannelCoverInfo = new TabChannelCoverInfo(56, alpo.a(2131701909));
+    localArrayList.add(new TabChannelCoverInfo(70, alud.a(2131701911), 4, "https://p.qpic.cn/kandianac/0/993c416b9d2b9.png/0"));
+    localArrayList.add(new TabChannelCoverInfo(0, alud.a(2131701910), 4, "https://p.qpic.cn/kandianac/0/9558fc75932c5.png/0"));
+    TabChannelCoverInfo localTabChannelCoverInfo = new TabChannelCoverInfo(56, alud.a(2131701921));
     localTabChannelCoverInfo.reason = 4;
     localTabChannelCoverInfo.mChannelType = 3;
     localArrayList.add(localTabChannelCoverInfo);
-    localArrayList.add(new TabChannelCoverInfo(40531, alpo.a(2131701911)));
-    localArrayList.add(new TabChannelCoverInfo(14, alpo.a(2131701895)));
-    localArrayList.add(new TabChannelCoverInfo(8, alpo.a(2131701913)));
-    localArrayList.add(new TabChannelCoverInfo(1, alpo.a(2131701902)));
-    localArrayList.add(new TabChannelCoverInfo(13, alpo.a(2131701888)));
-    localArrayList.add(new TabChannelCoverInfo(5, alpo.a(2131701918)));
-    localArrayList.add(new TabChannelCoverInfo(11, alpo.a(2131701887)));
-    localArrayList.add(new TabChannelCoverInfo(40466, alpo.a(2131701912)));
-    localArrayList.add(new TabChannelCoverInfo(40013, alpo.a(2131701910)));
-    localArrayList.add(new TabChannelCoverInfo(16, alpo.a(2131701905)));
-    localArrayList.add(new TabChannelCoverInfo(15, alpo.a(2131701891)));
+    localArrayList.add(new TabChannelCoverInfo(40531, alud.a(2131701923)));
+    localArrayList.add(new TabChannelCoverInfo(14, alud.a(2131701907)));
+    localArrayList.add(new TabChannelCoverInfo(8, alud.a(2131701925)));
+    localArrayList.add(new TabChannelCoverInfo(1, alud.a(2131701914)));
+    localArrayList.add(new TabChannelCoverInfo(13, alud.a(2131701900)));
+    localArrayList.add(new TabChannelCoverInfo(5, alud.a(2131701930)));
+    localArrayList.add(new TabChannelCoverInfo(11, alud.a(2131701899)));
+    localArrayList.add(new TabChannelCoverInfo(40466, alud.a(2131701924)));
+    localArrayList.add(new TabChannelCoverInfo(40013, alud.a(2131701922)));
+    localArrayList.add(new TabChannelCoverInfo(16, alud.a(2131701917)));
+    localArrayList.add(new TabChannelCoverInfo(15, alud.a(2131701903)));
     return localArrayList;
   }
   
@@ -1229,7 +1229,7 @@ public class pfg
     //   15: ldc 48
     //   17: iconst_0
     //   18: invokestatic 317	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   21: invokestatic 328	bjxj:a	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   21: invokestatic 328	bkbq:a	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
     //   24: checkcast 314	java/lang/Boolean
     //   27: invokevirtual 331	java/lang/Boolean:booleanValue	()Z
     //   30: ifeq +29 -> 59
@@ -1266,24 +1266,24 @@ public class pfg
     //   97: astore_2
     //   98: aload_2
     //   99: getfield 977	tencent/im/oidb/cmd0xbbb/oidb_cmd0xbbb$ReqBody:bytes_city	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   102: invokestatic 980	amkv:a	()Ljava/lang/String;
+    //   102: invokestatic 980	ampk:a	()Ljava/lang/String;
     //   105: invokestatic 554	com/tencent/mobileqq/pb/ByteStringMicro:copyFromUtf8	(Ljava/lang/String;)Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   108: invokevirtual 559	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
     //   111: aload_2
     //   112: getfield 983	tencent/im/oidb/cmd0xbbb/oidb_cmd0xbbb$ReqBody:str_city	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   115: invokestatic 985	amkv:b	()Ljava/lang/String;
+    //   115: invokestatic 985	ampk:b	()Ljava/lang/String;
     //   118: invokevirtual 633	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
     //   121: aload_0
     //   122: getfield 621	pfg:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
     //   125: checkcast 106	com/tencent/mobileqq/app/QQAppInterface
     //   128: bipush 51
     //   130: invokevirtual 342	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   133: checkcast 987	aloz
+    //   133: checkcast 987	alto
     //   136: aload_0
     //   137: getfield 621	pfg:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
     //   140: checkcast 106	com/tencent/mobileqq/app/QQAppInterface
     //   143: invokevirtual 988	com/tencent/mobileqq/app/QQAppInterface:c	()Ljava/lang/String;
-    //   146: invokevirtual 991	aloz:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
+    //   146: invokevirtual 991	alto:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
     //   149: astore_3
     //   150: aload_3
     //   151: ifnull +25 -> 176
@@ -1310,7 +1310,7 @@ public class pfg
     //   199: invokevirtual 539	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   202: astore 4
     //   204: aload 4
-    //   206: invokestatic 544	bfhi:d	(Ljava/lang/String;)Ljava/lang/String;
+    //   206: invokestatic 544	bflr:d	(Ljava/lang/String;)Ljava/lang/String;
     //   209: invokevirtual 539	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   212: astore 4
     //   214: aload_3
@@ -1328,20 +1328,20 @@ public class pfg
     //   239: getfield 1012	tencent/im/oidb/cmd0xbbb/oidb_cmd0xbbb$PhoneInfo:uint32_conn	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   242: iload_1
     //   243: invokevirtual 568	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   246: invokestatic 578	bdcb:e	()I
+    //   246: invokestatic 578	bdgk:e	()I
     //   249: istore_1
     //   250: aload_3
     //   251: getfield 1013	tencent/im/oidb/cmd0xbbb/oidb_cmd0xbbb$PhoneInfo:uint32_carrier	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   254: iload_1
     //   255: invokevirtual 568	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   258: invokestatic 583	bdcb:e	()Ljava/lang/String;
+    //   258: invokestatic 583	bdgk:e	()Ljava/lang/String;
     //   261: astore 4
     //   263: aload_3
     //   264: getfield 1014	tencent/im/oidb/cmd0xbbb/oidb_cmd0xbbb$PhoneInfo:bytes_os_ver	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   267: aload 4
     //   269: invokestatic 554	com/tencent/mobileqq/pb/ByteStringMicro:copyFromUtf8	(Ljava/lang/String;)Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   272: invokevirtual 559	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
-    //   275: invokestatic 588	bdcb:c	()Ljava/lang/String;
+    //   275: invokestatic 588	bdgk:c	()Ljava/lang/String;
     //   278: astore 4
     //   280: aload_3
     //   281: getfield 1015	tencent/im/oidb/cmd0xbbb/oidb_cmd0xbbb$PhoneInfo:bytes_qq_ver	Lcom/tencent/mobileqq/pb/PBBytesField;
@@ -1449,7 +1449,7 @@ public class pfg
     //   517: invokevirtual 559	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
     //   520: goto -294 -> 226
     //   523: invokestatic 653	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   526: invokestatic 656	bdcb:c	(Landroid/content/Context;)Ljava/lang/String;
+    //   526: invokestatic 656	bdgk:c	(Landroid/content/Context;)Ljava/lang/String;
     //   529: astore 4
     //   531: aload 4
     //   533: invokestatic 485	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -1459,7 +1459,7 @@ public class pfg
     //   544: ldc 181
     //   546: invokevirtual 661	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   549: invokevirtual 664	java/lang/String:toUpperCase	()Ljava/lang/String;
-    //   552: invokestatic 544	bfhi:d	(Ljava/lang/String;)Ljava/lang/String;
+    //   552: invokestatic 544	bflr:d	(Ljava/lang/String;)Ljava/lang/String;
     //   555: invokevirtual 539	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   558: astore 4
     //   560: aload_3
@@ -1628,7 +1628,7 @@ public class pfg
     try
     {
       ArrayList localArrayList = new ArrayList();
-      Object localObject2 = bdcs.a(new File(BaseApplicationImpl.getApplication().getDir("readinjoy", 0).getAbsolutePath() + "/channel_section_data"));
+      Object localObject2 = bdhb.a(new File(BaseApplicationImpl.getApplication().getDir("readinjoy", 0).getAbsolutePath() + "/channel_section_data"));
       if (localObject2 != null) {
         try
         {
@@ -1659,8 +1659,8 @@ public class pfg
       if (this.jdField_a_of_type_JavaUtilList == null)
       {
         this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        this.jdField_a_of_type_JavaUtilList.add(new qkm(TabChannelCoverInfo.TYPE_CHANNEL_MY_CONFIG, alpo.a(2131701886), alpo.a(2131701890)));
-        this.jdField_a_of_type_JavaUtilList.add(new qkm(TabChannelCoverInfo.TYPE_CHANNEL_RECOMMEND_CONFIG, alpo.a(2131701893), alpo.a(2131701904)));
+        this.jdField_a_of_type_JavaUtilList.add(new qkm(TabChannelCoverInfo.TYPE_CHANNEL_MY_CONFIG, alud.a(2131701898), alud.a(2131701902)));
+        this.jdField_a_of_type_JavaUtilList.add(new qkm(TabChannelCoverInfo.TYPE_CHANNEL_RECOMMEND_CONFIG, alud.a(2131701905), alud.a(2131701916)));
       }
       this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ChannelCoverInfoModule.4(this));
       return;
@@ -1679,7 +1679,7 @@ public class pfg
     QLog.d("ChannelCoverInfoModule", 1, new Object[] { "handleOxbbcUpChannelList, result = ", Integer.valueOf(i) });
     if (i == 0)
     {
-      bjxj.a("UPDATE_CHANNEL_LIST_KEY_0xbbc", Boolean.valueOf(false));
+      bkbq.a("UPDATE_CHANNEL_LIST_KEY_0xbbc", Boolean.valueOf(false));
       return;
     }
     QLog.d("ChannelCoverInfoModule", 1, "0xbbcUpChannelList failed.");

@@ -1,11 +1,25 @@
-import java.util.List;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ayje
-  extends ayii
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ayje(String paramString1, long paramLong1, String paramString2, List<ayjl> paramList, long paramLong2, String paramString3, String paramString4, List<String> paramList1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString5, String paramString6)
+  public ayje(MixSearchWebFragment paramMixSearchWebFragment) {}
+  
+  public void onGlobalLayout()
   {
-    super(paramString1, paramLong1, paramString2, paramList, paramLong2, paramString3, paramString4, paramList1, paramBoolean1, paramBoolean2, paramBoolean3, paramString5, paramString6);
+    InputMethodManager localInputMethodManager = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    if (localInputMethodManager != null)
+    {
+      this.a.a.requestFocus();
+      localInputMethodManager.showSoftInput(this.a.a, 0);
+    }
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

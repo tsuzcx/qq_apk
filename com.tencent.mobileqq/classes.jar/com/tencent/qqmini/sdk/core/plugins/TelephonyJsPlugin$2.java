@@ -1,21 +1,21 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgho;
-import bgkd;
-import bgob;
+import bglv;
+import bgok;
+import bgsi;
 
 class TelephonyJsPlugin$2
   implements Runnable
 {
-  TelephonyJsPlugin$2(TelephonyJsPlugin paramTelephonyJsPlugin, bgkd parambgkd) {}
+  TelephonyJsPlugin$2(TelephonyJsPlugin paramTelephonyJsPlugin, bgok parambgok) {}
   
   public void run()
   {
-    bgob localbgob = bgob.a(this.this$0.mMiniAppContext.a());
-    localbgob.a("创建新联系人", 7);
-    localbgob.a("添加到现有联系人", 7);
-    localbgob.a(new TelephonyJsPlugin.2.1(this, localbgob));
-    localbgob.show();
+    bgsi localbgsi = bgsi.a(this.this$0.mMiniAppContext.a());
+    localbgsi.a("创建新联系人", 7);
+    localbgsi.a("添加到现有联系人", 7);
+    localbgsi.a(new TelephonyJsPlugin.2.1(this, localbgsi));
+    localbgsi.show();
   }
 }
 

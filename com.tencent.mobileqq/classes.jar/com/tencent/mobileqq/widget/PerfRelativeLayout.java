@@ -4,13 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import asar;
+import asfa;
 import com.tencent.qphone.base.util.QLog;
 
 public class PerfRelativeLayout
   extends RelativeLayout
 {
-  private asar a;
+  private asfa a;
   
   public PerfRelativeLayout(Context paramContext)
   {
@@ -49,9 +49,9 @@ public class PerfRelativeLayout
     }
   }
   
-  public void setOnDrawCompleteListener(asar paramasar)
+  public void setOnDrawCompleteListener(asfa paramasfa)
   {
-    this.a = paramasar;
+    this.a = paramasfa;
   }
 }
 

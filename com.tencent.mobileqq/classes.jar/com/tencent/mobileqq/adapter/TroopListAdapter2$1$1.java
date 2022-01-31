@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.adapter;
 
-import akhc;
-import akhd;
+import aklr;
+import akls;
 
 public class TroopListAdapter2$1$1
   implements Runnable
 {
-  public TroopListAdapter2$1$1(akhd paramakhd) {}
+  public TroopListAdapter2$1$1(akls paramakls) {}
   
   public void run()
   {

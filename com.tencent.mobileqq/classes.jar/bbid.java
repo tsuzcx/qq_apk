@@ -1,70 +1,77 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.troop.aioapp.GrayGroupAppsDbHelper.1;
-import com.tencent.mobileqq.troop.aioapp.data.GrayGroupAppEntity;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PublicAccountShowPictureReport;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2.1;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
 public class bbid
+  implements bhuy
 {
-  private final QQAppInterface a;
+  public bbid(TroopAvatarWallPreviewActivity.2.1 param1) {}
   
-  bbid(QQAppInterface paramQQAppInterface)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    awbw localawbw = this.a.getEntityManagerFactory().createEntityManager();
-    bbib localbbib = bbib.a(this.a);
-    Object localObject = localawbw.a(GrayGroupAppEntity.class);
-    if (!bbig.a((Collection)localObject))
+    if (paramView == null) {
+      return;
+    }
+    if (TroopAvatarWallPreviewActivity.a(this.a.a.this$0).isReport)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      TroopAvatarWallPreviewActivity.a(this.a.a.this$0).addPicIndex(paramInt);
+      paramAdapterView = TroopAvatarWallPreviewActivity.a(this.a.a.this$0);
+      paramAdapterView.slide_number += 1;
+    }
+    this.a.a.this$0.jdField_a_of_type_Int = paramInt;
+    paramAdapterView = this.a.a.this$0.jdField_a_of_type_Int + 1 + "/" + this.a.a.this$0.jdField_b_of_type_Int;
+    this.a.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdapterView);
+    boolean bool1;
+    if (this.a.a.this$0.c)
+    {
+      azqs.b(this.a.a.this$0.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.a.this$0.jdField_a_of_type_JavaLangString, "0", "", "");
+      if (this.a.a.this$0.jdField_b_of_type_Boolean) {
+        TroopAvatarWallPreviewActivity.a(this.a.a.this$0, this.a.a.this$0.jdField_a_of_type_Int);
+      }
+      boolean bool2 = this.a.a.this$0.f;
+      if ((TroopAvatarWallPreviewActivity.a(this.a.a.this$0) != null) && (TroopAvatarWallPreviewActivity.a(this.a.a.this$0).getBoolean("from_personality_label", false)))
       {
-        GrayGroupAppEntity localGrayGroupAppEntity = (GrayGroupAppEntity)((Iterator)localObject).next();
-        if (paramBoolean)
-        {
-          localGrayGroupAppEntity.updatedTimestamp = 0L;
-          b(localGrayGroupAppEntity);
+        paramAdapterView = this.a.a.this$0;
+        if (Long.valueOf((String)this.a.a.this$0.jdField_b_of_type_JavaUtilArrayList.get(this.a.a.this$0.jdField_a_of_type_Int)).longValue() == -1L) {
+          break label530;
         }
-        localbbib.a.put(Long.valueOf(localGrayGroupAppEntity.groupUin), localGrayGroupAppEntity);
+        bool1 = true;
+        label363:
+        paramAdapterView.f = bool1;
+      }
+      if (bool2 != this.a.a.this$0.f)
+      {
+        paramAdapterView = this.a.a.this$0.jdField_a_of_type_AndroidWidgetImageView;
+        if (!this.a.a.this$0.f) {
+          break label536;
+        }
       }
     }
-    localawbw.a();
+    label530:
+    label536:
+    for (paramInt = 0;; paramInt = 8)
+    {
+      paramAdapterView.setVisibility(paramInt);
+      if (this.a.a.this$0.j) {
+        TroopAvatarWallPreviewActivity.b(this.a.a.this$0);
+      }
+      TroopAvatarWallPreviewActivity.b(this.a.a.this$0, this.a.a.this$0.jdField_a_of_type_Int);
+      return;
+      azqs.b(this.a.a.this$0.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.a.this$0.jdField_a_of_type_JavaLangString, "1", "", "");
+      break;
+      bool1 = false;
+      break label363;
+    }
   }
   
-  private void b(GrayGroupAppEntity paramGrayGroupAppEntity)
-  {
-    awbw localawbw = this.a.getEntityManagerFactory().createEntityManager();
-    paramGrayGroupAppEntity.setStatus(1000);
-    localawbw.b(paramGrayGroupAppEntity);
-    localawbw.a();
-  }
-  
-  public void a()
-  {
-    a(false);
-  }
-  
-  void a(GrayGroupAppEntity paramGrayGroupAppEntity)
-  {
-    ThreadManagerV2.excute(new GrayGroupAppsDbHelper.1(this, paramGrayGroupAppEntity), 32, null, false);
-  }
-  
-  public void b()
-  {
-    a(true);
-  }
-  
-  void c()
-  {
-    this.a.getEntityManagerFactory().createEntityManager().a(GrayGroupAppEntity.class.getSimpleName(), null, null);
-  }
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

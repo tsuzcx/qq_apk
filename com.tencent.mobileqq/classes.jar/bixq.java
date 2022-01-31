@@ -1,18 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.os.Bundle;
+import android.os.IInterface;
 
-class bixq
-  implements View.OnClickListener
+public abstract interface bixq
+  extends IInterface
 {
-  bixq(bixp parambixp) {}
-  
-  public void onClick(View paramView)
-  {
-    bixh.a(bixp.a(this.a), bixp.b(this.a), "5", "27", "", "3", "", "", "");
-    this.a.a.a.a.loadUrl("jsbridge://JSTittlebarAction/managerBtnSingleClick");
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
 }
 
 

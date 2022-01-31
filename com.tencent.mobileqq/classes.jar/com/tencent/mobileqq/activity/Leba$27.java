@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import avod;
-import azmj;
+import avsm;
+import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class Leba$27
@@ -11,11 +11,11 @@ class Leba$27
   
   public void run()
   {
-    avod localavod = (avod)this.this$0.a.getManager(160);
-    if (localavod.a(localavod.a(10013))) {
-      localavod.a(10013);
+    avsm localavsm = (avsm)this.this$0.a.getManager(160);
+    if (localavsm.a(localavsm.a(10013))) {
+      localavsm.a(10013);
     }
-    azmj.b(this.this$0.a, "dc00898", "", "", "0X8008823", "0X8008823", 0, 0, "", "", "", "");
+    azqs.b(this.this$0.a, "dc00898", "", "", "0X8008823", "0X8008823", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.apollo.utils.ApolloConfigDataReport.1;
-import com.tencent.qphone.base.util.QLog;
-
 public class alec
-  implements akjy
 {
-  public alec(ApolloConfigDataReport.1 param1) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void a(int paramInt1, int paramInt2)
+  public alec(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloConfigDataReport", 2, new Object[] { "checkReportConfigJson errorCode:", Integer.valueOf(paramInt1), ", httpCode:", Integer.valueOf(paramInt2) });
-    }
-    if ((paramInt1 == 0) && (paramInt2 == 200)) {
-      aleb.b();
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

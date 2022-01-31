@@ -1,26 +1,106 @@
-import android.os.Bundle;
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import java.util.ArrayList;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.widget.RelativeLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bmky
-  implements yvz
+  implements bmrj<bmqa>
 {
-  public bmky(LocalVideoSelectActivity paramLocalVideoSelectActivity, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
+  private final float jdField_a_of_type_Float = 1.5F;
+  private final int jdField_a_of_type_Int = aepi.a(40.0F, bmkv.a(this.jdField_a_of_type_Bmkv).getResources());
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private final int jdField_b_of_type_Int = 5;
+  private float c;
   
-  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
+  public bmky(bmkv parambmkv) {}
+  
+  public boolean a(bmqa parambmqa, MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity.isFinishing())
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    switch (paramMotionEvent.getAction())
     {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity.b();
-      Bundle localBundle = new Bundle();
-      if (paramArrayList != null)
+    default: 
+    case 0: 
+    case 2: 
+      label97:
+      do
       {
-        localBundle.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", paramArrayList);
-        localBundle.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", paramLong);
-      }
-      bnbf.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity, LocalVideoSelectActivity.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), LocalVideoSelectActivity.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), this.jdField_a_of_type_Int, this.b, this.c, this.d, 0, "", "", false, LocalVideoSelectActivity.c(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), this.e, localBundle);
+        return false;
+        this.c = f1;
+        this.jdField_b_of_type_Float = f2;
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        return false;
+        float f3 = Math.abs(f2 - this.jdField_b_of_type_Float);
+        float f4 = Math.abs(f1 - this.c);
+        int i;
+        if (f3 > 5.0F)
+        {
+          i = 1;
+          if (f4 <= 5.0F) {
+            break label324;
+          }
+        }
+        for (int j = 1; (j | i) != 0; j = 0)
+        {
+          this.c = f1;
+          this.jdField_b_of_type_Float = f2;
+          if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true))
+          {
+            bmkv.a(this.jdField_a_of_type_Bmkv).setVisibility(0);
+            this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+            bmkv.a(this.jdField_a_of_type_Bmkv).getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
+            parambmqa = this.jdField_a_of_type_AndroidGraphicsRect;
+            parambmqa.left -= this.jdField_a_of_type_Int;
+            parambmqa = this.jdField_a_of_type_AndroidGraphicsRect;
+            parambmqa.top -= this.jdField_a_of_type_Int;
+            parambmqa = this.jdField_a_of_type_AndroidGraphicsRect;
+            parambmqa.right += this.jdField_a_of_type_Int;
+            parambmqa = this.jdField_a_of_type_AndroidGraphicsRect;
+            parambmqa.bottom += this.jdField_a_of_type_Int;
+            bmkv.a(this.jdField_a_of_type_Bmkv, 9);
+          }
+          if (!this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f2)) {
+            break label330;
+          }
+          wxe.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "the at label enter rubbish area.");
+          this.jdField_a_of_type_Boolean = true;
+          bmkv.a(this.jdField_a_of_type_Bmkv).a(1.5F);
+          bmkv.a(this.jdField_a_of_type_Bmkv).getDrawable().setColorFilter(Color.parseColor("#F31919"), PorterDuff.Mode.MULTIPLY);
+          return false;
+          i = 0;
+          break label97;
+        }
+      } while (!this.jdField_a_of_type_Boolean);
+      label324:
+      label330:
+      wxe.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "the face leave rubbish area.");
+      this.jdField_a_of_type_Boolean = false;
+      bmkv.a(this.jdField_a_of_type_Bmkv).a(1.0F);
+      bmkv.a(this.jdField_a_of_type_Bmkv).getDrawable().clearColorFilter();
+      return false;
     }
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f2)))
+      {
+        wxe.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "remove at label.");
+        bmkv.a(this.jdField_a_of_type_Bmkv).a(1.0F);
+        bmkv.a(this.jdField_a_of_type_Bmkv).getDrawable().clearColorFilter();
+        bmkv.a(this.jdField_a_of_type_Bmkv).aZ_();
+      }
+      bmkv.a(this.jdField_a_of_type_Bmkv, 0);
+    }
+    bmkv.a(this.jdField_a_of_type_Bmkv).setVisibility(4);
+    return false;
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.gdtad.aditem;
 
-import aano;
-import aanp;
-import aaos;
-import aaot;
+import aasd;
+import aase;
+import aath;
+import aati;
 import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -45,7 +45,7 @@ public class GdtHandler
     localParams.extrasForIntent.putString("big_brother_source_key", "biz_src_ads");
     if (paramParams.jdField_a_of_type_AndroidOsBundle != null)
     {
-      aanp.b("GdtHandler", "toParams pass refId " + paramParams.jdField_a_of_type_AndroidOsBundle);
+      aase.b("GdtHandler", "toParams pass refId " + paramParams.jdField_a_of_type_AndroidOsBundle);
       localParams.extrasForIntent.putAll(paramParams.jdField_a_of_type_AndroidOsBundle);
     }
     for (;;)
@@ -53,19 +53,19 @@ public class GdtHandler
       localParams.videoPlayForced = paramParams.f;
       localParams.antiSpamParams = paramParams.jdField_a_of_type_JavaLangString;
       return localParams;
-      aanp.b("GdtHandler", "toParams not pass refId \n" + QLog.getStackTraceString(new IllegalArgumentException()));
+      aase.b("GdtHandler", "toParams not pass refId \n" + QLog.getStackTraceString(new IllegalArgumentException()));
     }
   }
   
   public static void a(GdtHandler.Params paramParams)
   {
-    aanp.b("GdtHandler", "handle");
+    aase.b("GdtHandler", "handle");
     ThreadManager.getSubThreadHandler().post(new GdtHandler.1(paramParams));
-    aaos localaaos = aaos.a();
+    aath localaath = aath.a();
     if ((paramParams != null) && (paramParams.a())) {}
     for (Activity localActivity = (Activity)paramParams.jdField_a_of_type_JavaLangRefWeakReference.get();; localActivity = null)
     {
-      localaaos.a(localActivity, new aaot());
+      localaath.a(localActivity, new aati());
       b(paramParams);
       return;
     }
@@ -79,7 +79,7 @@ public class GdtHandler
     try
     {
       JSONObject localJSONObject1 = new JSONObject(paramString);
-      aanp.b("GdtHandler", String.format("fromJSON %s", new Object[] { paramString }));
+      aase.b("GdtHandler", String.format("fromJSON %s", new Object[] { paramString }));
       paramString = localJSONObject1.getJSONObject("options");
       boolean bool1 = paramString.getBoolean("reportForClick");
       boolean bool2 = paramString.getBoolean("appAutoDownload");
@@ -107,13 +107,13 @@ public class GdtHandler
       paramOptions.jdField_a_of_type_AndroidGraphicsRect = localRect;
       paramOptions.f = paramString.optBoolean("videoPlayForced");
       if (localJSONObject1.has("adInfo")) {
-        paramOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject1.getJSONObject("adInfo"))));
+        paramOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject1.getJSONObject("adInfo"))));
       }
       return true;
     }
     catch (Throwable paramOptions)
     {
-      aanp.d("GdtHandler", "handleJsCallRequest error", paramOptions);
+      aase.d("GdtHandler", "handleJsCallRequest error", paramOptions);
     }
     return false;
   }
@@ -129,7 +129,7 @@ public class GdtHandler
     if (paramParams != null) {
       i = paramParams.getErrorCode();
     }
-    aanp.b("GdtHandler", String.format("handle errorCode:%d", new Object[] { Integer.valueOf(i) }));
+    aase.b("GdtHandler", String.format("handle errorCode:%d", new Object[] { Integer.valueOf(i) }));
   }
 }
 

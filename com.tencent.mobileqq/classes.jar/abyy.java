@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
-
-public class abyy
-  extends allb
+class abyy
+  implements abxt
 {
-  public abyy(AddRequestActivity paramAddRequestActivity) {}
+  abyy(abyx paramabyx) {}
   
-  protected void onImpeach(boolean paramBoolean, String paramString)
+  public void a(auef paramauef, int paramInt)
   {
-    if (!this.a.a.equals(paramString)) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.a.a(2130839404, this.a.getString(2131690676));
-      return;
-    }
-    this.a.a(2130839391, this.a.getString(2131690674));
+    abyx.a(this.a, paramauef);
+    abyx.a(this.a, paramInt);
   }
 }
 

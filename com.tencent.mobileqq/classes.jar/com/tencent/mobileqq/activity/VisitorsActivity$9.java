@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import alkv;
+import alpk;
 import android.os.Handler;
 import android.os.Message;
-import awsp;
+import awwy;
 import java.util.ArrayList;
 
 class VisitorsActivity$9
@@ -13,11 +13,11 @@ class VisitorsActivity$9
   
   public void run()
   {
-    ArrayList localArrayList1 = this.this$0.jdField_a_of_type_Alkv.a(2, 7);
-    ArrayList localArrayList2 = this.this$0.jdField_a_of_type_Alkv.a(3, 7);
+    ArrayList localArrayList1 = this.this$0.jdField_a_of_type_Alpk.a(2, 7);
+    ArrayList localArrayList2 = this.this$0.jdField_a_of_type_Alpk.a(3, 7);
     if (!this.this$0.isFinishing())
     {
-      this.this$0.jdField_a_of_type_Awsp.a();
+      this.this$0.jdField_a_of_type_Awwy.a();
       this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(5, 0, 0, new Object[] { localArrayList1, localArrayList2 }).sendToTarget();
     }
   }

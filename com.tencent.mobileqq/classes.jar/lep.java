@@ -27,7 +27,7 @@ public class lep
   
   public static les a(int paramInt)
   {
-    leq localleq = (leq)aogj.a().a(431);
+    leq localleq = (leq)aoks.a().a(431);
     if (localleq.jdField_a_of_type_JavaUtilHashMap == null) {
       return null;
     }
@@ -205,21 +205,21 @@ public class lep
   }
   
   @Nullable
-  protected leq a(aogf[] paramArrayOfaogf)
+  protected leq a(aoko[] paramArrayOfaoko)
   {
     leq localleq = new leq();
-    int j = paramArrayOfaogf.length;
+    int j = paramArrayOfaoko.length;
     int i = 0;
     while (i < j)
     {
-      aogf localaogf = paramArrayOfaogf[i];
-      Object localObject = let.a(localaogf.jdField_a_of_type_JavaLangString);
+      aoko localaoko = paramArrayOfaoko[i];
+      Object localObject = let.a(localaoko.jdField_a_of_type_JavaLangString);
       boolean bool;
       if ((localObject != null) && (((let)localObject).jdField_a_of_type_JavaUtilList != null))
       {
         bool = true;
         if (AudioHelper.e()) {
-          QLog.w("QAVConfig_431", 1, "parsed, taskId[" + localaogf.jdField_a_of_type_Int + "], suc[" + bool + "], oldVersion[" + c() + "]");
+          QLog.w("QAVConfig_431", 1, "parsed, taskId[" + localaoko.jdField_a_of_type_Int + "], suc[" + bool + "], oldVersion[" + c() + "]");
         }
         if (bool) {
           localObject = ((let)localObject).jdField_a_of_type_JavaUtilList.iterator();
@@ -247,12 +247,12 @@ public class lep
           if (localleq.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(localleu.jdField_a_of_type_Int)))
           {
             les localles2 = (les)localleq.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(localleu.jdField_a_of_type_Int));
-            QLog.w("QAVConfig_431", 1, "parsed, 数据已存在, codec[" + localleu.jdField_a_of_type_Int + "], _taskId[" + localles2.jdField_a_of_type_Int + "], _test_ver[" + localles2.e + "], taskId[" + localaogf.jdField_a_of_type_Int + "], test_ver[" + localles1.e + "]");
+            QLog.w("QAVConfig_431", 1, "parsed, 数据已存在, codec[" + localleu.jdField_a_of_type_Int + "], _taskId[" + localles2.jdField_a_of_type_Int + "], _test_ver[" + localles2.e + "], taskId[" + localaoko.jdField_a_of_type_Int + "], test_ver[" + localles1.e + "]");
             if (localles1.e <= localles2.e) {}
           }
           else
           {
-            localles1.jdField_a_of_type_Int = localaogf.jdField_a_of_type_Int;
+            localles1.jdField_a_of_type_Int = localaoko.jdField_a_of_type_Int;
             localleq.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localleu.jdField_a_of_type_Int), localles1);
           }
         }
@@ -266,7 +266,7 @@ public class lep
   public void a(leq paramleq)
   {
     super.a(paramleq);
-    int i = aogj.a().a(431, "");
+    int i = aoks.a().a(431, "");
     Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject1 instanceof QQAppInterface))
     {

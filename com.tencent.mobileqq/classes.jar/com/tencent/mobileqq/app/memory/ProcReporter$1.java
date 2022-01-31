@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.memory;
 
-import amfp;
-import amfq;
+import amke;
+import amkf;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.text.TextUtils;
-import azmz;
+import azri;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -38,15 +38,15 @@ public class ProcReporter$1
             i = 0;
             if (((Iterator)localObject3).hasNext())
             {
-              Object localObject4 = (amfq)((Iterator)localObject3).next();
-              if ((j != ((amfq)localObject4).jdField_a_of_type_Int) || (!TextUtils.equals(str, ((amfq)localObject4).jdField_a_of_type_JavaLangString))) {
+              Object localObject4 = (amkf)((Iterator)localObject3).next();
+              if ((j != ((amkf)localObject4).jdField_a_of_type_Int) || (!TextUtils.equals(str, ((amkf)localObject4).jdField_a_of_type_JavaLangString))) {
                 break label234;
               }
               this.this$0.a.add(str);
               localObject4 = new HashMap();
               ((HashMap)localObject4).put("param_FailCode", str);
               ((HashMap)localObject4).put("processname", str);
-              azmz.a(BaseApplicationImpl.getApplication()).a(null, "ProcKillFailed", true, 0L, 0L, (HashMap)localObject4, null);
+              azri.a(BaseApplicationImpl.getApplication()).a(null, "ProcKillFailed", true, 0L, 0L, (HashMap)localObject4, null);
               if (QLog.isColorLevel()) {
                 QLog.d("GuardManager", 2, "kill reporting " + str);
               }

@@ -15,7 +15,7 @@ public class ldu
   private byte[] a(byte[] paramArrayOfByte)
   {
     byte[] arrayOfByte = new byte[paramArrayOfByte.length + 4];
-    bdlr.a(arrayOfByte, 0, paramArrayOfByte.length + 4);
+    bdqa.a(arrayOfByte, 0, paramArrayOfByte.length + 4);
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 4, paramArrayOfByte.length);
     return arrayOfByte;
   }
@@ -39,7 +39,7 @@ public class ldu
         byte[] arrayOfByte = new byte[paramFromServiceMsg.getInt() - 4];
         paramFromServiceMsg.get(arrayOfByte);
         ((qq_ad_get.QQAdGetRsp)localObject).mergeFrom(arrayOfByte);
-        paramFromServiceMsg = aano.a((PBField)localObject);
+        paramFromServiceMsg = aasd.a((PBField)localObject);
         if ((paramFromServiceMsg != null) && (paramFromServiceMsg != JSONObject.NULL))
         {
           paramFromServiceMsg = paramFromServiceMsg.toString();

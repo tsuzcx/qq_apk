@@ -1,8 +1,27 @@
-public abstract interface wsh
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
+
+public class wsh
+  implements urr<wsj, wsk>
 {
-  public abstract void X_();
+  private WeakReference<wsg> a;
   
-  public abstract void Y_();
+  public wsh(wsg paramwsg)
+  {
+    this.a = new WeakReference(paramwsg);
+  }
+  
+  public void a(@NonNull wsj paramwsj, @Nullable wsk paramwsk, @NonNull ErrorMessage paramErrorMessage)
+  {
+    wxe.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
+    wsg localwsg = (wsg)this.a.get();
+    if (localwsg == null) {
+      return;
+    }
+    localwsg.a(paramwsj, paramwsk, paramErrorMessage);
+  }
 }
 
 

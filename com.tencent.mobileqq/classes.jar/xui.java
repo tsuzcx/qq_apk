@@ -1,34 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class xui
-  implements View.OnClickListener
+public final class xui
+  implements nbs
 {
-  public xui(QRCardActivity paramQRCardActivity) {}
-  
-  public void onClick(View paramView)
+  public void loaded(String paramString, int paramInt)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof Integer)) {
-      if (((Integer)localObject).intValue() != 0) {
-        break label101;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("PngQuantUtils", 2, "checkUpByBusinessId loaded,code=" + paramInt);
     }
-    label101:
-    for (String str = (String)((TextView)paramView.findViewById(2131364770)).getText();; str = null)
-    {
-      if (((Integer)localObject).intValue() == 1)
-      {
-        this.a.a((String)this.a.a.d.get(this.a.h));
-        return;
-      }
-      QRCardActivity.a(this.a, paramView.getContext(), ((Integer)localObject).intValue(), null, str);
-      return;
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("url"))) {
+      PngQuantUtils.a.set(false);
     }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

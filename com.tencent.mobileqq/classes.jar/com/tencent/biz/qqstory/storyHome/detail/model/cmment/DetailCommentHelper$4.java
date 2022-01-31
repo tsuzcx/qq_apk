@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.storyHome.detail.model.cmment;
 
 import com.tencent.biz.qqstory.database.CommentEntry;
-import wew;
+import wjf;
 
 public class DetailCommentHelper$4
   implements Runnable
 {
-  public DetailCommentHelper$4(wew paramwew, CommentEntry paramCommentEntry, int paramInt) {}
+  public DetailCommentHelper$4(wjf paramwjf, CommentEntry paramCommentEntry, int paramInt) {}
   
   public void run()
   {
-    wew.a(this.this$0, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int);
+    wjf.a(this.this$0, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int);
   }
 }
 

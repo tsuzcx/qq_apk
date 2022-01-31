@@ -3,15 +3,15 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 final class mvt
-  implements bapx
+  implements baug
 {
   mvt(mvv parammvv) {}
   
-  public void onResp(baqw parambaqw)
+  public void onResp(bavf parambavf)
   {
-    if (parambaqw.jdField_a_of_type_Int == 3) {
+    if (parambavf.jdField_a_of_type_Int == 3) {
       if (QLog.isColorLevel()) {
-        QLog.i("ScoreManager", 1, "Download init. url = " + ((baps)parambaqw.jdField_a_of_type_Baqv).a);
+        QLog.i("ScoreManager", 1, "Download init. url = " + ((baub)parambavf.jdField_a_of_type_Bave).a);
       }
     }
     do
@@ -19,24 +19,24 @@ final class mvt
       for (;;)
       {
         return;
-        if (parambaqw.jdField_a_of_type_Int == 0)
+        if (parambavf.jdField_a_of_type_Int == 0)
         {
-          File localFile = new File(((baps)parambaqw.jdField_a_of_type_Baqv).c);
-          String str = awiz.a(localFile.getAbsolutePath());
+          File localFile = new File(((baub)parambavf.jdField_a_of_type_Bave).c);
+          String str = awni.a(localFile.getAbsolutePath());
           if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.a.b)))
           {
             if (!QLog.isColorLevel()) {
               break;
             }
-            QLog.i("ScoreManager", 1, "Download end. MD5 check error. url = " + ((baps)parambaqw.jdField_a_of_type_Baqv).a + ", fileName = " + localFile.getAbsolutePath() + ", fileMD5 = " + str);
+            QLog.i("ScoreManager", 1, "Download end. MD5 check error. url = " + ((baub)parambavf.jdField_a_of_type_Bave).a + ", fileName = " + localFile.getAbsolutePath() + ", fileMD5 = " + str);
             return;
           }
           try
           {
-            parambaqw = new File(this.a.c);
-            amzr.a(this.a.c, parambaqw.getParentFile().getAbsolutePath() + File.separator);
+            parambavf = new File(this.a.c);
+            anea.a(this.a.c, parambavf.getParentFile().getAbsolutePath() + File.separator);
             if (QLog.isColorLevel()) {
-              QLog.i("ScoreManager", 1, "onDownloadComplete  path : " + parambaqw.getParentFile().getAbsolutePath());
+              QLog.i("ScoreManager", 1, "onDownloadComplete  path : " + parambavf.getParentFile().getAbsolutePath());
             }
             if (QLog.isColorLevel())
             {
@@ -44,7 +44,7 @@ final class mvt
               return;
             }
           }
-          catch (Exception parambaqw)
+          catch (Exception parambavf)
           {
             new File(this.a.c).delete();
           }
@@ -54,10 +54,10 @@ final class mvt
     QLog.i("ScoreManager", 1, "Download end. uncompressZip error.");
   }
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2)
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ScoreManager", 2, "onUpdateProgeress. url = " + ((baps)parambaqv).a + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
+      QLog.d("ScoreManager", 2, "onUpdateProgeress. url = " + ((baub)parambave).a + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
     }
   }
 }

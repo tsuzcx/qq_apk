@@ -1,23 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
 class bkqt
-  implements Animation.AnimationListener
+  extends RecyclerView.OnScrollListener
 {
-  bkqt(bkqr parambkqr) {}
+  bkqt(bkqs parambkqs) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if ((bkqr.a(this.a) != null) && (bkqr.b(this.a)))
+    if (paramInt == 0)
     {
-      bkqr.a(this.a).setAlpha(1.0F);
-      bkqr.a(this.a).setVisibility(0);
+      abvl.a().a("list_photo", false);
+      return;
     }
+    abvl.a().a("list_photo");
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

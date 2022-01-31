@@ -1,9 +1,27 @@
-import java.util.ArrayList;
+import android.util.Property;
 
-public class bndj
+class bndj
+  extends Property<bndb, Float>
 {
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  ArrayList<Object> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  bndj(bndb parambndb, Class paramClass, String paramString)
+  {
+    super(paramClass, paramString);
+  }
+  
+  public Float a(bndb parambndb)
+  {
+    if (parambndb != null) {
+      return Float.valueOf(bndb.d(parambndb));
+    }
+    return Float.valueOf(0.0F);
+  }
+  
+  public void a(bndb parambndb, Float paramFloat)
+  {
+    if (parambndb != null) {
+      bndb.c(parambndb, paramFloat.floatValue());
+    }
+  }
 }
 
 

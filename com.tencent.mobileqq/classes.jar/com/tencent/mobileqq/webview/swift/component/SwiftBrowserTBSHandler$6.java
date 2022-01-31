@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import beet;
+import bejc;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 
 public class SwiftBrowserTBSHandler$6
   implements Runnable
 {
-  public SwiftBrowserTBSHandler$6(beet parambeet) {}
+  public SwiftBrowserTBSHandler$6(bejc parambejc) {}
   
   public void run()
   {

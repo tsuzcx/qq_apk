@@ -1,74 +1,20 @@
-import android.content.Intent;
-import android.os.Build;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.activity.registerGuideLogin.RegisterGuideView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Context;
+import android.graphics.Color;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 
 public class ajil
+  extends ajjk
 {
-  public static final String[] a = { "H60-L02", "H60-L01" };
-  
-  private static int a(Intent paramIntent)
+  public View a(int paramInt, Object paramObject, ajjp paramajjp, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajlm paramajlm)
   {
-    boolean bool1 = paramIntent.getBooleanExtra("from_register_guide", false);
-    boolean bool2 = paramIntent.getBooleanExtra("isActionSend", false);
-    boolean bool3 = paramIntent.getBooleanExtra("from_register_choose", false);
-    if ((!bool1) && (!bool2) && (!bool3))
-    {
-      paramIntent = BaseApplicationImpl.sApplication.getAllAccounts();
-      if ((paramIntent == null) || (paramIntent.isEmpty())) {
-        return 101;
-      }
-    }
-    return 102;
-  }
-  
-  public static GuideBaseFragment a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface)
-  {
-    switch (a(paramBaseActivity.getIntent()))
-    {
-    default: 
-      return new LoginView(paramQQAppInterface);
-    case 102: 
-      return new LoginView(paramQQAppInterface);
-    }
-    return new RegisterGuideView(paramQQAppInterface);
-  }
-  
-  public static boolean a(String[] paramArrayOfString)
-  {
-    boolean bool2 = false;
-    String str = Build.MODEL;
-    if (QLog.isColorLevel()) {
-      QLog.d("GuideHandler", 2, "isKeyBoardBlackList model=" + str);
-    }
-    boolean bool1 = bool2;
-    int j;
-    int i;
-    if (str != null)
-    {
-      j = paramArrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
-      {
-        if (str.equals(paramArrayOfString[i])) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
+    paramObject = new View(paramContext);
+    paramObject.setBackgroundColor(Color.parseColor("#f2f2f2"));
+    paramObject.setMinimumHeight(bdaq.a(paramContext, 20.0F));
+    paramObject.setMinimumWidth((int)bdgk.g());
+    return paramObject;
   }
 }
 

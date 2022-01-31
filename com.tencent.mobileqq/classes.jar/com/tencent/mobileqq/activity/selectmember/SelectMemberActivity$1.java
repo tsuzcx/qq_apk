@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import alzf;
+import amdu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,12 +11,12 @@ class SelectMemberActivity$1
   
   public void run()
   {
-    alzf localalzf = (alzf)this.this$0.app.a(20);
-    if (localalzf != null) {}
+    amdu localamdu = (amdu)this.this$0.app.a(20);
+    if (localamdu != null) {}
     try
     {
-      localalzf.b(Long.valueOf(this.this$0.c));
-      localalzf.a(Long.valueOf(this.this$0.c));
+      localamdu.b(Long.valueOf(this.this$0.c));
+      localamdu.a(Long.valueOf(this.this$0.c));
       return;
     }
     catch (NumberFormatException localNumberFormatException)

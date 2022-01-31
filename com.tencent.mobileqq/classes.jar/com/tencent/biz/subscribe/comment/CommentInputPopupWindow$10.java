@@ -1,17 +1,17 @@
 package com.tencent.biz.subscribe.comment;
 
 import android.widget.ImageButton;
-import ybu;
+import ygd;
 
 public class CommentInputPopupWindow$10
   implements Runnable
 {
   public void run()
   {
-    ybu.a(this.this$0).setVisibility(8);
-    ybu.b(this.this$0).setVisibility(0);
-    ybu.a(this.this$0, true);
-    ybu.a(this.this$0).requestFocus();
+    ygd.a(this.this$0).setVisibility(8);
+    ygd.b(this.this$0).setVisibility(0);
+    ygd.a(this.this$0, true);
+    ygd.a(this.this$0).requestFocus();
   }
 }
 

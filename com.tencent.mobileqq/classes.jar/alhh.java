@@ -1,131 +1,22 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.ISessionHandler.1;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.ISessionHandler.2;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.ISessionHandler.3;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.TMG.channel.AVAppChannel.CsCmdCallback;
+import com.tencent.TMG.sdk.AVContext.StartParam;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-public class alhh
-  extends akqv
+class alhh
+  implements bgky
 {
-  public int a;
-  private WeakReference<algy> a;
+  alhh(alhg paramalhg, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback) {}
   
-  public alhh(algy paramalgy)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramalgy);
+    QLog.e(alhg.jdField_a_of_type_JavaLangString, 2, "ACTION_NOTICE_SERVICE_REQUEST_SSOCHANNEL:onError  identifier=" + this.jdField_a_of_type_Alhg.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier + ", nAppid=" + this.jdField_a_of_type_Alhg.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId + ", nGameID=" + ((algs)this.jdField_a_of_type_Alhg.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int + ", lGameRoomID=" + ((algs)this.jdField_a_of_type_Alhg.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long + ", UserRequestData.length" + this.jdField_a_of_type_ArrayOfByte.length + ", s info=" + paramString);
+    this.jdField_a_of_type_ComTencentTMGChannelAVAppChannel$CsCmdCallback.onError(paramInt, paramString);
   }
   
-  public void a(int paramInt1, String paramString1, long paramLong, String paramString2, int paramInt2)
+  public void a(byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameViewBinder", 2, new Object[] { "[onQueryVirtualRoomInfo] errCode=", Long.valueOf(paramLong), ", gameId=", Integer.valueOf(paramInt1), ", resultStr=", paramString2 });
-    }
-    if (this.jdField_a_of_type_Int != paramInt2)
-    {
-      QLog.e("ApolloGameViewBinder", 1, "[onQueryVirtualRoomInfo] mCreateRoomReqCode != reqCode");
-      return;
-    }
-    algy localalgy = (algy)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localalgy == null)
-    {
-      QLog.e("ApolloGameViewBinder", 1, "[onQueryVirtualRoomInfo] viewBinder null");
-      return;
-    }
-    if (algy.a(localalgy) == null)
-    {
-      QLog.e("ApolloGameViewBinder", 1, "[onQueryVirtualRoomInfo] viewBinder app null");
-      return;
-    }
-    ApolloGameData localApolloGameData = ((aleh)algy.a(localalgy).getManager(155)).a(paramInt1);
-    if (localApolloGameData == null)
-    {
-      QLog.e("ApolloGameViewBinder", 1, "[onQueryVirtualRoomInfo] gameData null");
-      return;
-    }
-    if (paramLong == 0L)
-    {
-      akqq.a(algy.a(localalgy), paramString1, paramString2);
-      return;
-    }
-    if (paramLong == -300404L)
-    {
-      algy.a(localalgy).post(new ApolloGameViewBinder.ISessionHandler.1(this, localalgy, localApolloGameData));
-      return;
-    }
-    if (paramLong == -300405L)
-    {
-      algy.a(localalgy).post(new ApolloGameViewBinder.ISessionHandler.2(this, localalgy, localApolloGameData));
-      return;
-    }
-    QLog.e("ApolloGameViewBinder", 1, new Object[] { "[onQueryVirtualRoomInfo] errCode=", Long.valueOf(paramLong) });
-    algy.a(localalgy).post(new ApolloGameViewBinder.ISessionHandler.3(this, localalgy));
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, long paramLong, int paramInt2)
-  {
-    algy localalgy = (algy)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localalgy == null) {
-      break label17;
-    }
-    label17:
-    while (algy.a(localalgy) == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_Int != paramInt2)
-    {
-      QLog.e("ApolloGameViewBinder", 1, "onCreateRoomId mCreateRoomReqCode != reqCode");
-      return;
-    }
-    if (!paramBoolean)
-    {
-      QLog.e("ApolloGameViewBinder", 1, "onCreateRoomId createSuccess:false");
-      return;
-    }
-    super.a(paramBoolean, paramInt1, paramLong, paramInt2);
-    aliq localaliq = new aliq();
-    Object localObject = (aleh)algy.a(localalgy).getManager(155);
-    String str = alpo.a(2131700716);
-    ApolloGameData localApolloGameData = ((aleh)localObject).a(paramInt1);
-    if ((localApolloGameData != null) && (!TextUtils.isEmpty(localApolloGameData.name)))
-    {
-      localObject = ((aleh)localObject).a(localApolloGameData.actionId);
-      if (localObject == null) {
-        break label296;
-      }
-      str = ((ApolloActionData)localObject).actionName;
-    }
-    label296:
-    for (;;)
-    {
-      paramInt2 = localApolloGameData.actionId;
-      localaliq.jdField_b_of_type_JavaLangString = localApolloGameData.name;
-      for (;;)
-      {
-        localaliq.jdField_a_of_type_JavaLangString = str;
-        localaliq.jdField_b_of_type_Int = paramInt2;
-        localaliq.jdField_a_of_type_Long = paramLong;
-        localaliq.jdField_a_of_type_Int = paramInt1;
-        localaliq.d = 3;
-        localaliq.e = 0;
-        if ((algy.a(localalgy) == null) || (algy.a(localalgy) == null)) {
-          break;
-        }
-        akqq.a(algy.a(localalgy), algy.a(localalgy).jdField_a_of_type_JavaLangString, localaliq);
-        if (!akrd.a(algy.a(localalgy).jdField_a_of_type_JavaLangString)) {
-          break;
-        }
-        ((akji)algy.a(localalgy).getManager(153)).a().b(algy.a(localalgy).jdField_a_of_type_JavaLangString, paramInt1, paramLong);
-        return;
-        localaliq.jdField_b_of_type_JavaLangString = alpo.a(2131700756);
-        paramInt2 = 0;
-      }
-    }
+    QLog.e(alhg.jdField_a_of_type_JavaLangString, 2, "ACTION_NOTICE_SERVICE_REQUEST_SSOCHANNEL:onSuccess  startParam_.identifier=" + this.jdField_a_of_type_Alhg.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier + ", nAppid=" + this.jdField_a_of_type_Alhg.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId + ", nGameID=" + ((algs)this.jdField_a_of_type_Alhg.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int + ", lGameRoomID=" + ((algs)this.jdField_a_of_type_Alhg.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long + ", UserRequestData.length" + paramArrayOfByte.length + ", bytes.length=" + this.jdField_a_of_type_ArrayOfByte.length);
+    this.jdField_a_of_type_ComTencentTMGChannelAVAppChannel$CsCmdCallback.onSuccess(paramArrayOfByte);
   }
 }
 

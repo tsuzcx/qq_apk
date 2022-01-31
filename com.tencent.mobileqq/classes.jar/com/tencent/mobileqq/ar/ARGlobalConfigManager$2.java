@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import amnv;
+import amsk;
 
 public class ARGlobalConfigManager$2
   implements Runnable
 {
-  public ARGlobalConfigManager$2(amnv paramamnv) {}
+  public ARGlobalConfigManager$2(amsk paramamsk) {}
   
   public void run()
   {

@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.widget.XPanelContainer;
-import mqq.app.QQPermissionCallback;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
+import java.util.ArrayList;
 
 public class acen
-  implements QQPermissionCallback
+  implements View.OnClickListener
 {
-  public acen(BaseChatPie paramBaseChatPie) {}
+  public acen(AssistantSettingActivity paramAssistantSettingActivity, ArrayList paramArrayList) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    bdcd.b(this.a.a());
-    ((afbm)this.a.a(29)).b(2);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    aetb.a().a(this.a.jdField_a_of_type_AndroidContentContext);
-    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(2);
-    agci.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8005CAC", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity, ArkAppListActivity.class);
+    paramView.putExtra("intent_extra_authority_app_list", (String[])this.jdField_a_of_type_JavaUtilArrayList.toArray(new String[this.jdField_a_of_type_JavaUtilArrayList.size()]));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.startActivity(paramView);
   }
 }
 

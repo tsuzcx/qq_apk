@@ -1,87 +1,48 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.gif.video.GIFCreator.1;
-import dov.com.qq.im.video.GifEncoder;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class blah
+  extends blab
 {
-  private static String jdField_a_of_type_JavaLangString = blah.class.getSimpleName();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private blaj jdField_a_of_type_Blaj;
-  private GifEncoder jdField_a_of_type_DovComQqImVideoGifEncoder = new GifEncoder();
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private String b = bkkv.b;
-  private String c;
-  private String d;
-  private String e;
+  public String o;
+  public String p;
   
-  public blah(String paramString)
+  public String a()
   {
-    this.e = paramString;
-    this.jdField_a_of_type_JavaUtilList = a(paramString);
-    this.c = (this.b + System.currentTimeMillis() + ".gif");
-    this.d = (this.b + System.currentTimeMillis() + "_compressed.gif");
-    try
-    {
-      paramString = new File(this.b);
-      if (!paramString.isDirectory())
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, this.b + " is not a directory");
-        boolean bool = paramString.mkdirs();
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "mkdirs return " + bool);
-      }
-      paramString = new HandlerThread("GIFCreatorHT" + System.currentTimeMillis());
-      paramString.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(paramString.getLooper());
-      return;
+    File localFile = new File(this.p);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
     }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "check dir exception, msg = " + paramString.getMessage());
-      }
-    }
+    return this.p + File.separator + this.f;
   }
   
-  private List<String> a(String paramString)
+  public String b()
   {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = new File(paramString);
-    if (((File)localObject).isDirectory())
-    {
-      localObject = ((File)localObject).list(new blai(this));
-      if (localObject != null)
-      {
-        Arrays.sort((Object[])localObject);
-        int j = localObject.length;
-        int i = 0;
-        while (i < j)
-        {
-          String str = localObject[i];
-          localArrayList.add(paramString + File.separator + str);
-          i += 1;
-        }
-      }
+    File localFile = new File(this.p);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
     }
-    return localArrayList;
+    return this.p + File.separator;
   }
   
-  public void a()
+  public String c()
   {
-    bdcs.a(this.e);
+    File localFile = new File(this.o);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return this.o + File.separator + this.f;
   }
   
-  public void a(blaj paramblaj)
+  public boolean d()
   {
-    this.jdField_a_of_type_Blaj = paramblaj;
-    QLog.d(jdField_a_of_type_JavaLangString, 4, new Object[] { "start create gif, gif path = ", this.c });
-    this.jdField_a_of_type_AndroidOsHandler.post(new GIFCreator.1(this, paramblaj));
+    Object localObject = new File(a());
+    if (!((File)localObject).exists()) {}
+    do
+    {
+      return false;
+      localObject = ((File)localObject).list();
+    } while ((localObject == null) || (localObject.length <= 0));
+    return true;
   }
 }
 

@@ -1,9 +1,23 @@
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import java.lang.ref.WeakReference;
+
 class afjy
-  implements bhqf
+  implements afjs
 {
-  afjy(afjx paramafjx) {}
+  afjy(afjw paramafjw, MessageForArkFlashChat paramMessageForArkFlashChat) {}
   
-  public void onDismiss() {}
+  public void a()
+  {
+    AutoStartProgressBar localAutoStartProgressBar = (AutoStartProgressBar)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.mSendingProgress.get();
+    if ((localAutoStartProgressBar.getTag() == this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat) && (localAutoStartProgressBar != null))
+    {
+      localAutoStartProgressBar.b();
+      localAutoStartProgressBar.setVisibility(8);
+    }
+  }
+  
+  public void b() {}
 }
 
 

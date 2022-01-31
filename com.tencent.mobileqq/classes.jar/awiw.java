@@ -1,153 +1,90 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.mobileqq.portal.RedPacketServlet;
+import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class awiw
-  extends BroadcastReceiver
 {
-  private awiw(PortalManager paramPortalManager) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static String a(int paramInt1, int paramInt2, int paramInt3)
   {
-    int j = 1;
-    int i = 1;
-    int k = paramIntent.getIntExtra("portal_type_key", -1);
-    int m = paramIntent.getIntExtra("bc_seq", -1);
-    paramContext = paramIntent.getStringExtra("portal_agrs");
-    if (QLog.isColorLevel()) {
-      QLog.i("PortalManager", 2, "PortalSwictherReceiver, " + paramIntent.getExtras());
-    }
-    Object localObject;
-    int n;
-    switch (k)
+    String str = baws.a(paramInt2);
+    return baws.a(baws.b(paramInt1), baws.c(paramInt3), str, "L");
+  }
+  
+  public static void a(Object paramObject, String paramString1, String paramString2)
+  {
+    if ((paramObject instanceof awiz))
     {
-    default: 
-    case 1010: 
-    case 1011: 
-      do
-      {
-        return;
-        try
-        {
-          paramContext = new JSONObject();
-          paramIntent = paramContext.put("errorCode", 0);
-          if (this.a.a() != -1)
-          {
-            paramIntent.put("result", i);
-            PortalManager.a(this.a, k, paramContext.toString(), m);
-            return;
-          }
-        }
-        catch (JSONException paramContext)
-        {
-          for (;;)
-          {
-            paramContext.printStackTrace();
-            try
-            {
-              paramContext = new JSONObject();
-              paramContext.put("errorCode", -1);
-              PortalManager.a(this.a, k, paramContext.toString(), m);
-              return;
-            }
-            catch (JSONException paramContext)
-            {
-              paramContext.printStackTrace();
-              return;
-            }
-            i = 0;
-          }
-          if (!TextUtils.isEmpty(paramContext)) {
-            break;
-          }
-          PortalManager.a(this.a, k, m, null, -1, "params is null");
-          return;
-        }
-        catch (Exception paramContext) {}
-      } while (!QLog.isColorLevel());
-      QLog.e("PortalManager", 2, "", paramContext);
+      paramObject = (awiz)paramObject;
+      baws.c(paramObject.b, true, 1, paramObject.a, paramString1, paramString2);
       return;
-      paramContext = new JSONObject(paramContext);
-      paramIntent = paramContext.getString("key");
-      localObject = awiz.b(paramIntent);
-      localObject = bdbt.l(PortalManager.a(this.a), (String)localObject);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        paramContext.put("errorCode", 0).put("result", localObject).put("key", paramIntent);
-      }
-      for (;;)
-      {
-        PortalManager.a(this.a, k, paramContext.toString(), m);
-        return;
-        paramContext.put("errorCode", -1).put("key", paramIntent);
-      }
-    case 1008: 
-      if (TextUtils.isEmpty(paramContext))
-      {
-        PortalManager.a(this.a, k, m, null, -1, "params is null");
-        return;
-      }
-      paramContext = new JSONObject(paramContext);
-      int i1 = paramContext.getInt("type");
-      n = paramContext.getInt("count");
-      i = j;
-      switch (i1)
-      {
-      }
-      break;
     }
-    for (;;)
+    if ((paramObject instanceof MessageForPic))
     {
-      RedPacketServlet.a(PortalManager.a(this.a), i, n, k, m);
+      paramObject = (MessageForPic)paramObject;
+      baws.c(paramObject.istroop, true, 1, paramObject.localUUID, paramString1, paramString2);
       return;
-      if (TextUtils.isEmpty(paramContext))
-      {
-        PortalManager.a(this.a, k, m, null, -1, "params is null");
-        return;
-      }
-      paramContext = new JSONObject(paramContext).getString("key");
-      if (!TextUtils.isEmpty(paramContext))
-      {
-        paramIntent = awiz.b(paramContext);
-        localObject = PortalManager.a(this.a).a(paramIntent, false);
-        if (localObject != null)
-        {
-          paramIntent = awiz.a((Bitmap)localObject);
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("errorCode", 0);
-          ((JSONObject)localObject).put("key", paramContext);
-          ((JSONObject)localObject).put("result", paramIntent);
-          PortalManager.a(this.a, k, ((JSONObject)localObject).toString(), m);
-          return;
-        }
-        localObject = new awiv();
-        ((awiv)localObject).jdField_a_of_type_JavaLangString = paramContext;
-        ((awiv)localObject).b = k;
-        ((awiv)localObject).jdField_a_of_type_Int = m;
-        this.a.a.put(paramIntent, localObject);
-        if ((PortalManager.a(this.a).a(paramIntent, true) != null) || (!QLog.isColorLevel())) {
-          break;
-        }
-        paramIntent = bdbt.j(PortalManager.a(this.a), String.valueOf(paramIntent));
-        QLog.d("PortalManager", 2, "昵称为" + paramIntent + "，本地不存在头像，key = " + paramContext);
-        return;
-      }
-      PortalManager.a(this.a, k, m, null, -1, "key is null");
-      return;
-      i = j;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("step:").append(paramString1);
+    localStringBuilder.append("    \tcontent:").append(paramString2);
+    QLog.d("Q.richmedia.L." + paramObject, 2, localStringBuilder.toString());
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    a(paramString1, paramString2, paramString3, paramString4, 1);
+  }
+  
+  private static void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    if (paramInt == 1) {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("id:");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append(" \tstep:");
+        localStringBuilder.append(paramString3);
+        localStringBuilder.append(" \tcont:");
+        localStringBuilder.append(paramString4);
+        QLog.d(paramString1, 2, localStringBuilder.toString());
+      }
+    }
+    while (paramInt != 2) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id:");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" \tstep:");
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append(" \tcont:");
+    localStringBuilder.append(paramString4);
+    QLog.e(paramString1, 1, localStringBuilder.toString());
+  }
+  
+  public static void b(Object paramObject, String paramString1, String paramString2)
+  {
+    if ((paramObject instanceof awiz))
+    {
+      paramObject = (awiz)paramObject;
+      baws.b(paramObject.b, true, 1, paramObject.a, paramString1, paramString2, null);
+      return;
+    }
+    if ((paramObject instanceof MessageForPic))
+    {
+      paramObject = (MessageForPic)paramObject;
+      baws.b(paramObject.istroop, true, 1, paramObject.localUUID, paramString1, paramString2, null);
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("step:").append(paramString1);
+    localStringBuilder.append("    \tcontent:").append(paramString2);
+    QLog.e("Q.richmedia.L." + paramObject, 2, localStringBuilder.toString());
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    a(paramString1, paramString2, paramString3, paramString4, 2);
   }
 }
 

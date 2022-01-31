@@ -1,28 +1,37 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.BindGroupConfirmActivity;
+import com.tencent.open.agent.BindGroupConfirmActivity.8;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfdg
-  extends BaseAdapter
+  implements DialogInterface.OnClickListener
 {
-  public int getCount()
-  {
-    return 0;
-  }
+  public bfdg(BindGroupConfirmActivity.8 param8) {}
   
-  public Object getItem(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return null;
+    if (paramInt == 1)
+    {
+      this.a.this$0.a.cancel();
+      this.a.this$0.finish();
+      return;
+    }
+    try
+    {
+      asdb.a(this.a.this$0, true, "action_game_bind_group", Long.valueOf(this.a.this$0.c).longValue(), -1, this.a.a);
+      this.a.this$0.a.cancel();
+      BindGroupConfirmActivity.a(this.a.this$0, -1);
+      BindGroupConfirmActivity.a(this.a.this$0);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        QLog.e("BindGroupConfirmActivity", 1, "showAlertDlg error = " + paramDialogInterface);
+      }
+    }
   }
 }
 

@@ -1,29 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import mqq.app.QQPermissionCallback;
 
-public class bbef
-  implements View.OnClickListener
+class bbef
+  implements QQPermissionCallback
 {
-  public bbef(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  bbef(bbee parambbee) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131371421: 
-      TroopAvatarWallPreviewActivity.e(this.a);
-      return;
-    case 2131371418: 
-      TroopAvatarWallPreviewActivity.f(this.a);
-      return;
-    case 2131371419: 
-      TroopAvatarWallPreviewActivity.g(this.a);
-      return;
-    }
-    TroopAvatarWallPreviewActivity.h(this.a);
+    TribeVideoPreviewFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment, false);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

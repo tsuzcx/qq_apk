@@ -1,55 +1,34 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class agwv
-  extends Handler
+  extends WtloginObserver
 {
-  agwv(agwq paramagwq, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  agwv(agwt paramagwt, long paramLong, int[] paramArrayOfInt, DevlockInfo[] paramArrayOfDevlockInfo) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    switch (paramMessage.what)
+    long l;
+    if (QLog.isColorLevel())
     {
-    }
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramMessage = (agxh)paramMessage.obj;
-          if (QLog.isColorLevel()) {
-            QLog.d("ZhituManager", 2, agwq.a(paramMessage.d, "main handler", paramMessage.a, "all img process is finished, now is in main thread"));
-          }
-          this.a.e(paramMessage);
-          return;
-          paramMessage = (String)paramMessage.obj;
-          if (QLog.isColorLevel()) {
-            QLog.d("ZhituManager", 2, "response is empty, errorMsg is " + paramMessage);
-          }
-        } while (this.a.jdField_a_of_type_Agxc == null);
-        this.a.jdField_a_of_type_Agxc.a(paramMessage);
-        return;
-        i = paramMessage.arg1;
-        paramMessage = (String)paramMessage.obj;
-        if (paramMessage.equals(this.a.a())) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ZhituManager", 2, agwq.a(paramMessage, "main handler", "reqKey is outdated, skip"));
-      return;
-      if (this.a.jdField_a_of_type_Agxf != null) {
-        this.a.jdField_a_of_type_Agxf.a(i, paramMessage);
+      l = System.currentTimeMillis();
+      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
+      if (paramDevlockInfo != null) {
+        break label100;
       }
-    } while (this.a.jdField_a_of_type_Agxc == null);
-    this.a.jdField_a_of_type_Agxc.a(i, paramMessage);
+    }
+    label100:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("C2CMsgRoamProxy", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
+      this.jdField_a_of_type_ArrayOfInt[0] = paramInt;
+      this.jdField_a_of_type_ArrayOfOicqWlogin_sdkDevicelockDevlockInfo[0] = paramDevlockInfo;
+      agwt.b(this.jdField_a_of_type_Agwt).b();
+      return;
+    }
   }
 }
 

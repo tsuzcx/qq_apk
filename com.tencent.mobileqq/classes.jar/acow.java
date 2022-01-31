@@ -1,10 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class acow
-  extends Handler
+  extends ambf
 {
-  public acow(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
+  public acow(ChatSettingActivity paramChatSettingActivity) {}
+  
+  public void a(Object paramObject)
+  {
+    if (paramObject != null) {
+      ((Integer)paramObject).intValue();
+    }
+  }
 }
 
 

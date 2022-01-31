@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aelz;
-import ajtc;
+import aeqo;
+import ajxr;
 
 class BaseChatPie$39
   implements Runnable
 {
-  BaseChatPie$39(BaseChatPie paramBaseChatPie, ajtc paramajtc) {}
+  BaseChatPie$39(BaseChatPie paramBaseChatPie, ajxr paramajxr) {}
   
   public void run()
   {

@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity.2;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adpx
-  implements DialogInterface.OnClickListener
+  implements aofw
 {
-  public adpx(RegisterNewBaseActivity.2 param2) {}
+  public adpx(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeClose");
+  }
+  
+  public void b()
+  {
+    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeNotClose");
   }
 }
 

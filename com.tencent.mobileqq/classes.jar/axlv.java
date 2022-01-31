@@ -1,16 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
 public class axlv
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public axlv(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  public axlv(RedTouch paramRedTouch, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onGlobalLayout()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    CameraCaptureButtonLayout.a(this.a, f);
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    RedTouch.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,20 +1,57 @@
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.util.Pair;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class afej
-  implements ArkAppCacheMgr.OnGetAppIcon
+  implements URLDrawable.URLDrawableListener
 {
-  afej(afei paramafei) {}
+  afej(afee paramafee) {}
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramBitmap != null)
+    if ((paramURLDrawable.getCurrDrawable() instanceof RegionDrawable))
     {
-      this.a.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+      paramThrowable = this.a.a.iterator();
+      while (paramThrowable.hasNext())
+      {
+        Pair localPair = (Pair)paramThrowable.next();
+        if ((((URLDrawable)localPair.first).getURL().equals(paramURLDrawable.getURL())) && (localPair.second != null) && (afee.a(this.a) != null)) {
+          ((URLImageView)localPair.second).setImageDrawable(afee.a(this.a).a.getResources().getDrawable(2130843303));
+        }
+      }
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    Drawable localDrawable = paramURLDrawable.getCurrDrawable();
+    if ((localDrawable instanceof RegionDrawable))
+    {
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext())
+      {
+        Pair localPair = (Pair)localIterator.next();
+        if ((((URLDrawable)localPair.first).getURL().equals(paramURLDrawable.getURL())) && (localPair.second != null))
+        {
+          Bitmap localBitmap = ((RegionDrawable)localDrawable).getBitmap();
+          ((URLImageView)localPair.second).setImageBitmap(localBitmap);
+          ((URLImageView)localPair.second).setVisibility(0);
+        }
+      }
     }
   }
 }

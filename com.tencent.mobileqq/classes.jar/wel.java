@@ -1,28 +1,32 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.LikeEntry;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wel
-  extends ugz
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vck>
 {
-  public int a;
-  public String a;
-  public List<LikeEntry> a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  
-  public wel(ErrorMessage paramErrorMessage, String paramString)
+  public wel(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public String toString()
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vck paramvck)
   {
-    return "GetLikeListEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isForDetail=" + this.jdField_a_of_type_Boolean + ", mType=" + this.jdField_a_of_type_Int + ", mLikeCount=" + this.b + ", mHasLike=" + this.c + ", mLikeEntryList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramvck.jdField_a_of_type_JavaLangString)) {}
+    while ((paramvck.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramvck.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramvck.toString());
+    }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramvck);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vck.class;
   }
 }
 

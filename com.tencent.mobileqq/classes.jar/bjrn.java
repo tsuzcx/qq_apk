@@ -1,35 +1,21 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.XMPCoreUtil.2;
+import com.tencent.mobileqq.data.OpenID;
+import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bjrn
-  implements ModuleDownloadListener
+  implements alpg
 {
-  public bjrn(XMPCoreUtil.2 param2) {}
+  public bjrn(QZoneShareActivity paramQZoneShareActivity, String paramString, QZoneShareData paramQZoneShareData) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadCanceled ", paramString });
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadFailed ", paramString });
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("xmpcore.jar")) {
-      return;
+    if ((paramInt == 1) && ((paramObject instanceof OpenID)))
+    {
+      paramObject = (OpenID)paramObject;
+      if ((paramObject.openID != null) && (!paramObject.openID.equals(this.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_CooperationQzoneQZoneShareData);
+      }
     }
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "url = ", bjrl.a(), " onDownloadSucceed = ", bjrl.b() });
-    LocalMultiProcConfig.putString("xmp_core_file_md5", bjrl.b());
   }
 }
 

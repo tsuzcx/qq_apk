@@ -1,14 +1,11 @@
-public class bmgx
+import android.content.DialogInterface;
+
+final class bmgx
+  extends bdgx
 {
-  public final int a;
-  public final long a;
-  public final CharSequence a;
-  
-  public bmgx(long paramLong, int paramInt, CharSequence paramCharSequence)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    paramDialogInterface.dismiss();
   }
 }
 

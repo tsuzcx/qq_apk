@@ -1,57 +1,24 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.39.1;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.widget.ExpandableListAdapter;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.widget.ExpandableListView;
 
 public class aebr
-  extends almw
+  implements bhww
 {
-  public aebr(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aebr(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  protected void a(boolean paramBoolean, Long paramLong)
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong)
   {
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (((akmb)paramExpandableListView.a()).getChildType(paramInt1, paramInt2) == 1) {
+      return true;
     }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
-  {
-    if (paramBoolean)
-    {
-      azmj.b(this.a.app, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
-      this.a.a(paramLong2 + "");
-      if (this.a.jdField_a_of_type_Aecg != null) {
-        this.a.jdField_a_of_type_Aecg.a();
-      }
-      if (this.a.h)
-      {
-        this.a.b(paramLong2 + "");
-        if (this.a.jdField_a_of_type_Aeci != null) {
-          this.a.jdField_a_of_type_Aeci.notifyDataSetChanged();
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-      return;
-      QQToast.a(this.a, 1, this.a.getString(2131693827), 0).b(this.a.getTitleBarHeight());
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
-  {
-    this.a.runOnUiThread(new TroopMemberListActivity.39.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
-  }
-  
-  protected void b(boolean paramBoolean, Long paramLong)
-  {
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    azrr.b(this.a.getActivity(), this.a.app.getCurrentAccountUin());
+    paramExpandableListView = (TroopInfo)paramExpandableListView.a().getChild(paramInt1, paramInt2);
+    this.a.a(paramExpandableListView);
+    return true;
   }
 }
 

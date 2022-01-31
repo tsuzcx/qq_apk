@@ -1,76 +1,55 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Handler;
-import android.support.v4.util.LruCache;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class xhu
+  extends xhr
 {
-  public int a;
-  protected Context a;
-  public Handler a;
-  public LruCache<String, xqi> a;
-  public int b;
+  public List<xhv> a;
+  public boolean a;
   
-  protected Bitmap a(Bitmap paramBitmap)
+  public xhu(@NonNull String paramString)
   {
-    wsv.c("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap start.");
-    float f2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    int i = paramBitmap.getWidth();
-    float f1 = f2;
-    if (i > 0)
-    {
-      f1 = f2;
-      if (i < this.jdField_a_of_type_Int * f2) {
-        f1 = i / this.jdField_a_of_type_Int;
-      }
-    }
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int * f1));
-    this.b = ((int)(f1 * this.b));
-    i = this.jdField_a_of_type_Int;
-    wsv.c("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap end.");
-    return bdda.a(paramBitmap, i, this.jdField_a_of_type_Int, this.b);
+    super(paramString);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public Bitmap a(String paramString)
+  public String a()
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      wsv.e("Q.qqstory.record.StoryFaceDrawableFactory", "localPath = null!");
-      return null;
+    return "LocationFacePackage";
+  }
+  
+  public String a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return ((xhv)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
     }
-    wsv.b("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath start. localPath:%s.", paramString);
-    try
-    {
-      paramString = BitmapFactory.decodeFile(paramString);
-      if (paramString == null)
-      {
-        wsv.e("Q.qqstory.record.StoryFaceDrawableFactory", "BitmapFactory.decodeFile return null!");
-        return null;
-      }
+    throw new IndexOutOfBoundsException("getThumbUri with illegal index : " + paramInt + ", the item size is : " + this.jdField_a_of_type_JavaUtilList.size());
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public String b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return ((xhv)this.jdField_a_of_type_JavaUtilList.get(paramInt)).b;
     }
-    catch (OutOfMemoryError paramString)
-    {
-      for (;;)
-      {
-        wsv.c("Q.qqstory.record.StoryFaceDrawableFactory", "BitmapFactory.decodeFile error : %s.", paramString);
-        paramString = null;
-      }
-      Bitmap localBitmap = a(paramString);
-      if (localBitmap == null)
-      {
-        wsv.e("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap return null!");
-        return null;
-      }
-      if ((paramString != null) && (!paramString.isRecycled())) {
-        paramString.recycle();
-      }
-      wsv.c("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath end.");
-      return localBitmap;
-    }
+    throw new IndexOutOfBoundsException("getCategory with illegal index : " + paramInt + ", the item size is : " + this.jdField_a_of_type_JavaUtilList.size());
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("LocationFacePackage{");
+    localStringBuffer.append("id='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append("logoUrl='").append(this.c).append('\'');
+    localStringBuffer.append("logoDrawable='").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).append('\'');
+    localStringBuffer.append("items=").append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append(", isLocating=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

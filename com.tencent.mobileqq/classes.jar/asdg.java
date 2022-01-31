@@ -1,17 +1,29 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption.2;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class asdg
-  implements CompoundButton.OnCheckedChangeListener
+  implements awkh
 {
-  public asdg(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  public asdg(ForwardSdkShareOption.2 param2) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    ((atvu)this.a.a.getManager(303)).a((short)-23312, paramBoolean, true);
-    azmj.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 2, 2, "", "", "", "");
+    return null;
+  }
+  
+  public void a(awki paramawki)
+  {
+    if ((paramawki != null) && (QLog.isColorLevel())) {
+      QLog.d("ForwardOption.ForwardSdkShareOption", 2, new Object[] { "upCallBack updateMsg info =", paramawki.toString() });
+    }
+  }
+  
+  public void b(awki paramawki)
+  {
+    aseh.b("KEY_STAGE_2_UPLOAD_IMAGE");
+    asdb.a(this.a.this$0, this.a.this$0.a, paramawki, this.a.b, this.a.c, this.a.d);
   }
 }
 

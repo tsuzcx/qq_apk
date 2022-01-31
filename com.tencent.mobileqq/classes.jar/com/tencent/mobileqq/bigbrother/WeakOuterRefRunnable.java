@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.bigbrother;
 
-import anrt;
-import azmj;
+import anwc;
+import azqs;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
@@ -113,7 +113,7 @@ public class WeakOuterRefRunnable
     if ((this.jdField_a_of_type_JavaLangRunnable != null) && (a()))
     {
       this.jdField_a_of_type_JavaLangRunnable.run();
-      anrt.a().a(this.jdField_a_of_type_Int, this.b);
+      anwc.a().a(this.jdField_a_of_type_Int, this.b);
       i = 1;
       if (this.jdField_a_of_type_Boolean)
       {
@@ -136,9 +136,9 @@ public class WeakOuterRefRunnable
     label123:
     for (String str3 = "";; str3 = this.jdField_a_of_type_JavaLangString)
     {
-      azmj.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, str1, str2, str3, "");
+      azqs.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, str1, str2, str3, "");
       return;
-      anrt.a().a(this.jdField_a_of_type_Int, -3);
+      anwc.a().a(this.jdField_a_of_type_Int, -3);
       i = 0;
       break;
       str1 = "";

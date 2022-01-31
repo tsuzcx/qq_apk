@@ -1,29 +1,58 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
 public class bbge
-  extends amle
+  extends AsyncTask<Void, Void, Bundle>
 {
-  public bbge(TroopBarReplyActivity paramTroopBarReplyActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, BaseActivity paramBaseActivity, bcgo parambcgo)
+  public bbge(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  
+  protected Bundle a(Void... paramVarArgs)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("forward_type", 1);
+    paramVarArgs = new File(alof.bY);
+    if (!paramVarArgs.exists()) {
+      paramVarArgs.mkdirs();
+    }
+    String str = alof.bY + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    paramVarArgs = str;
+    if (!new File(str).exists()) {}
+    try
+    {
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
+      localBundle.putBoolean("forward_urldrawable", true);
+      localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
+      localBundle.putString("forward_filepath", paramVarArgs);
+      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+      localBundle.putString("forward_extra", paramVarArgs);
+      return localBundle;
+    }
+    catch (IOException paramVarArgs)
+    {
+      QLog.e("foward", 2, "IOException", paramVarArgs);
+    }
+    return null;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected void a(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "onLocationFinish() errCode=" + paramInt);
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    if (paramBundle == null)
     {
-      double d1 = paramSosoLbsInfo.a.a;
-      double d2 = paramSosoLbsInfo.a.b;
-      TroopBarPublishLocationSelectActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (int)(d1 * 1000000.0D), (int)(d2 * 1000000.0D), 0, true, this.jdField_a_of_type_Bcgo);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, alud.a(2131706910), 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
+      return;
     }
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramBundle);
+    aryv.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, localIntent, 21);
   }
 }
 

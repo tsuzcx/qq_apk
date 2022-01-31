@@ -1,7 +1,7 @@
 import com.tencent.qphone.base.util.QLog;
 
 class ton
-  extends amni
+  extends amrx
 {
   ton(toi paramtoi) {}
   
@@ -23,7 +23,7 @@ class ton
   
   public void b(Object paramObject)
   {
-    toi.a(this.a, 2131695727);
+    toi.a(this.a, 2131695729);
   }
   
   public void b(boolean paramBoolean, Object paramObject) {}

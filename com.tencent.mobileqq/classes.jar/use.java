@@ -1,39 +1,42 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class use
-  implements uni<var, vcp>
+public final class use
+  extends MSFServlet
 {
-  use(usd paramusd, usy paramusy, boolean paramBoolean, long paramLong) {}
-  
-  public void a(var arg1, vcp paramvcp, ErrorMessage paramErrorMessage)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    long l = System.currentTimeMillis();
-    if (paramErrorMessage.isSuccess())
-    {
-      ??? = paramvcp.a;
-      if (???.size() > 0)
-      {
-        ??? = (QQUserUIItem)???.get(0);
-        ??? = this.jdField_a_of_type_Usd.a(???);
-        this.jdField_a_of_type_Usy.a = ???.qq;
-        this.jdField_a_of_type_Usy.b = ???.uid;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          ??? = (urk)urr.a(10);
-          ???.b("qqstory_my_uin", this.jdField_a_of_type_Usy.a);
-          ???.b("qqstory_my_union_id", this.jdField_a_of_type_Usy.b);
-        }
-      }
-      wsv.d("Q.qqstory.user.UserManager", "get server inf success ,%s , time :%d", new Object[] { this.jdField_a_of_type_Usy, Long.valueOf(l - this.jdField_a_of_type_Long) });
-    }
-    synchronized (this.jdField_a_of_type_Usy)
-    {
-      this.jdField_a_of_type_Usy.notifyAll();
+    if (paramIntent == null) {
       return;
-      wsv.d("Q.qqstory.user.UserManager", "get server info fail , %s, time :%d", new Object[] { paramErrorMessage, Long.valueOf(l - this.jdField_a_of_type_Long) });
     }
+    Bundle localBundle = paramIntent.getExtras();
+    paramIntent = null;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      paramIntent = bdpd.b(paramFromServiceMsg.getWupBuffer());
+      localBundle.putInt("data_error_code", 0);
+    }
+    for (;;)
+    {
+      QQStoryContext.a().a().a(localBundle, paramIntent);
+      return;
+      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
+      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bdpd.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    paramPacket.autoResend = paramIntent.getBooleanExtra("support_retry", false);
   }
 }
 

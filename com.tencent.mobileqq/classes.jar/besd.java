@@ -1,30 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
-import com.tencent.mobileqq.widget.WorkSpaceView;
+import android.widget.BaseAdapter;
 
-public class besd
-  extends Handler
+public abstract class besd
+  extends BaseAdapter
 {
-  public besd(WorkSpaceView paramWorkSpaceView) {}
+  public abstract int a();
   
-  public void handleMessage(Message paramMessage)
+  public abstract void a(View paramView, int paramInt);
+  
+  public abstract boolean a(int paramInt);
+  
+  public boolean a(View paramView, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      int i = ((azqd)this.a.getChildAt(this.a.a).getTag()).a;
-      if ((this.a.getChildCount() > 1) && (this.a.getWidth() > 0)) {
-        this.a.a(this.a.a() + 1);
-      }
-      WorkSpaceView.a(this.a).sendEmptyMessageDelayed(0, i * 1000);
-      continue;
-      WorkSpaceView.a(this.a).removeMessages(0);
-    }
+    return false;
   }
 }
 

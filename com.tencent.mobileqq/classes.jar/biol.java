@@ -1,24 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.comic.utils.QQComicRedTouchManager.PluginRedTouchObserver.1;
+import java.util.Observable;
+import java.util.Observer;
+import mqq.os.MqqHandler;
 
-class biol
-  extends BroadcastReceiver
+public abstract class biol
+  implements Observer
 {
-  biol(bioj parambioj) {}
+  public abstract void a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public final void update(Observable paramObservable, Object paramObject)
   {
-    if (("com.tencent.qlink.finishworkingdlg".equalsIgnoreCase(paramIntent.getAction())) && (bioj.a(this.a) != null))
-    {
-      bioj.a(this.a).dismiss();
-      bioj.a(this.a, null);
-    }
+    ThreadManager.getUIHandler().post(new QQComicRedTouchManager.PluginRedTouchObserver.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biol
  * JD-Core Version:    0.7.0.1
  */

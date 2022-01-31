@@ -11,7 +11,7 @@ public class mhg
   {
     this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, "onClickCancel", true, null, -1);
     this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b("onClickCancel");
-    bdfc.a(false);
+    bdjl.a(false);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.data;
 
-import awbv;
+import awge;
 
 public class ApolloActionRecentData
-  extends awbv
+  extends awge
 {
   public int actionId;
   public int orderId;

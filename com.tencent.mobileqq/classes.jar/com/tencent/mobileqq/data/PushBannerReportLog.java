@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
+import awge;
 
 public class PushBannerReportLog
-  extends awbv
+  extends awge
 {
   public String log = "";
   

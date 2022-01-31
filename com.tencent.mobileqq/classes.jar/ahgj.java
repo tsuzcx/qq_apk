@@ -1,6 +1,14 @@
-public abstract interface ahgj
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+
+public class ahgj
+  implements alqd
 {
-  public abstract void a();
+  public ahgj(AddContactsView paramAddContactsView) {}
+  
+  public void a()
+  {
+    this.a.c = false;
+  }
 }
 
 

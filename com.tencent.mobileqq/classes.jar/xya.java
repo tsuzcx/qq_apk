@@ -1,12 +1,14 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-
-public class xya
-  extends RecyclerView.ViewHolder
+final class xya
 {
-  public xya(xxz paramxxz, View paramView)
+  public float a;
+  public float b;
+  public float c;
+  
+  public xya(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    super(paramView);
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
   }
 }
 

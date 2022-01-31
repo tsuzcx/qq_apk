@@ -1,13 +1,13 @@
-import java.io.File;
-import java.io.FilenameFilter;
-
-class bimv
-  implements FilenameFilter
+public class bimv
 {
-  public boolean accept(File paramFile, String paramString)
-  {
-    return paramString.endsWith(this.a);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d = "";
+  public String e;
 }
 
 

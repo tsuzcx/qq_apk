@@ -1,76 +1,42 @@
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class aoon
 {
-  private ArrayList<aooo> a = new ArrayList(3);
+  public int a = 1;
   
-  public static aoon a(aogf paramaogf)
+  public static aoon a(aoko[] paramArrayOfaoko)
   {
     aoon localaoon = new aoon();
-    if (paramaogf != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ExtendFriendBannerConfBean", 2, "parse taskid->" + paramaogf.jdField_a_of_type_Int + " content->" + paramaogf.jdField_a_of_type_JavaLangString);
-      }
-    }
     for (;;)
     {
       int i;
       try
       {
-        paramaogf = new JSONObject(paramaogf.jdField_a_of_type_JavaLangString).optJSONArray("appList");
-        if (paramaogf != null)
+        int j = paramArrayOfaoko.length;
+        i = 0;
+        if (i < j)
         {
-          ArrayList localArrayList = new ArrayList(2);
-          i = 0;
-          int j = paramaogf.length();
-          if (i < j)
-          {
-            JSONObject localJSONObject = paramaogf.optJSONObject(i);
-            if (localJSONObject == null) {
-              break label298;
-            }
-            aooo localaooo = new aooo();
-            localaooo.jdField_a_of_type_Long = localJSONObject.optLong("appID");
-            localaooo.f = localJSONObject.optString("type");
-            localaooo.jdField_a_of_type_JavaLangString = localJSONObject.optString("bgBeginColor");
-            localaooo.b = localJSONObject.optString("bgEndColor");
-            localaooo.c = localJSONObject.optString("title");
-            localaooo.d = localJSONObject.optString("subTitle");
-            localaooo.b = localJSONObject.optString("bgEndColor");
-            localaooo.e = localJSONObject.optString("icon");
-            localaooo.g = localJSONObject.optString("schemeOrUrl");
-            localaooo.jdField_a_of_type_OrgJsonJSONObject = localJSONObject.optJSONObject("extra");
-            localArrayList.add(localaooo);
-            break label298;
+          JSONObject localJSONObject = new JSONObject(paramArrayOfaoko[i].a);
+          if (localJSONObject.has("cameraSwitchOnMessageTab")) {
+            localaoon.a = Integer.valueOf(localJSONObject.optString("cameraSwitchOnMessageTab")).intValue();
           }
-          localaoon.a(localArrayList);
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MsgTabCameraConfBean", 2, "onParsed switch= " + localaoon.a);
+          }
+          return localaoon;
         }
       }
-      catch (Exception paramaogf)
+      catch (Throwable paramArrayOfaoko)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ExtendFriendBannerConfBean", 2, "parse error->" + paramaogf.toString());
+        QLog.e("MsgTabCameraConfBean", 1, "MsgTabCameraConfBean parse error, ", paramArrayOfaoko);
         return localaoon;
       }
-      return localaoon;
-      label298:
       i += 1;
     }
-  }
-  
-  private void a(ArrayList<aooo> paramArrayList)
-  {
-    this.a = paramArrayList;
-  }
-  
-  public ArrayList<aooo> a()
-  {
-    return this.a;
   }
 }
 

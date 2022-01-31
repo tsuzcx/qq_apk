@@ -1,27 +1,27 @@
 package com.tencent.biz.qqstory.playvideo.preload;
 
-import vye;
-import vyg;
-import wsv;
+import wcn;
+import wcp;
+import wxe;
 
 public class PlayerDataPreLoader$1
   implements Runnable
 {
-  public PlayerDataPreLoader$1(vye paramvye) {}
+  public PlayerDataPreLoader$1(wcn paramwcn) {}
   
   public void run()
   {
-    vyg localvyg = vye.a(this.this$0, vye.a(this.this$0), vye.a(this.this$0), vye.a(this.this$0), 5, 5, 5, 20);
-    vye.a(this.this$0, localvyg.a);
-    vye.b(this.this$0, localvyg.b);
+    wcp localwcp = wcn.a(this.this$0, wcn.a(this.this$0), wcn.a(this.this$0), wcn.a(this.this$0), 5, 5, 5, 20);
+    wcn.a(this.this$0, localwcp.a);
+    wcn.b(this.this$0, localwcp.b);
     try
     {
-      vye.a(this.this$0);
+      wcn.a(this.this$0);
       return;
     }
     catch (Exception localException)
     {
-      wsv.c("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info error:%s", localException);
+      wxe.c("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info error:%s", localException);
     }
   }
 }

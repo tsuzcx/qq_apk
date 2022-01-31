@@ -1,25 +1,17 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.album.view.AlbumImageView;
+import java.util.ArrayList;
+import java.util.List;
 
 class ugh
-  implements Animation.AnimationListener
+  implements ufg
 {
-  ugh(ugg paramugg) {}
+  ugh(uge paramuge) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt)
   {
-    if (ugc.a(this.a.a) == 1)
-    {
-      this.a.a.b.setVisibility(8);
-      ugc.a(this.a.a).sendEmptyMessage(1);
-    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(tzy.a("ext2", String.valueOf(paramInt)));
+    tzs.a(34, 2, this.a.a, localArrayList);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

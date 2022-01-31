@@ -1,120 +1,63 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StSetUserAvatarReq;
+import NS_MINI_INTERFACE.INTERFACE.StSetUserAvatarRsp;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.task.ServiceCreateTask.2;
-import com.tencent.smtt.sdk.JsVirtualMachine;
-import com.tencent.smtt.sdk.QbSdk;
+import org.json.JSONObject;
 
-@bghi(a="ServiceCreateTask")
 public class bhec
-  extends bhhm
+  extends bhdw
 {
-  private long jdField_a_of_type_Long;
-  bhar jdField_a_of_type_Bhar;
-  private bhcv jdField_a_of_type_Bhcv;
-  JsVirtualMachine jdField_a_of_type_ComTencentSmttSdkJsVirtualMachine;
-  private long b;
+  private INTERFACE.StSetUserAvatarReq a = new INTERFACE.StSetUserAvatarReq();
   
-  public bhec(Context paramContext, bgqg parambgqg)
+  public bhec(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
-    super(paramContext, parambgqg);
+    this.a.appid.set(paramString1);
+    this.a.uin.set(paramString2);
+    this.a.set_type.set(paramInt);
+    this.a.item_id.set(paramString3);
+    this.a.busi_info.set(paramString4);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
   }
   
-  private void d()
+  protected String a()
   {
+    return "mini_app_userapp";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    INTERFACE.StSetUserAvatarRsp localStSetUserAvatarRsp = new INTERFACE.StSetUserAvatarRsp();
     try
     {
-      QMLog.i("ServiceCreateTask", "AppBrandWebviewService create start");
-      a(new bhda(this.jdField_a_of_type_Bhar, null));
-      return;
+      localStSetUserAvatarRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStSetUserAvatarRsp != null) {
+        return new JSONObject();
+      }
+      QMLog.d("SetAvatarRequest", "onResponse fail.rsp = null");
+      return null;
     }
-    catch (Throwable localThrowable)
+    catch (Exception paramArrayOfByte)
     {
-      QMLog.e("ServiceCreateTask", "AppBrandWebviewService execute exception!", localThrowable);
-      e();
+      QMLog.d("SetAvatarRequest", "onResponse fail." + paramArrayOfByte);
     }
+    return null;
   }
   
-  public long a()
+  protected byte[] a()
   {
-    return this.b - this.jdField_a_of_type_Long;
+    return this.a.toByteArray();
   }
   
-  public bhcv a()
+  protected String b()
   {
-    return this.jdField_a_of_type_Bhcv;
-  }
-  
-  public void a()
-  {
-    Object localObject2 = null;
-    if (this.jdField_a_of_type_Bhar != null) {}
-    for (Object localObject1 = this.jdField_a_of_type_Bhar.a();; localObject1 = null)
-    {
-      bgyd.a((MiniAppInfo)localObject1, 100, "0");
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      bhea localbhea = (bhea)a().getTask(bhea.class);
-      localObject1 = localObject2;
-      if (localbhea != null) {
-        localObject1 = localbhea.a();
-      }
-      this.jdField_a_of_type_Bhar = ((bhar)localObject1);
-      int i = QbSdk.getTbsVersion(a());
-      int j = QbSdk.getTmpDirTbsVersion(a());
-      if (((i <= 0) && (j <= 0)) || (a(a()))) {
-        break;
-      }
-      try
-      {
-        QMLog.i("ServiceCreateTask", "AppBrandService create start");
-        localObject1 = new bhcw(this.jdField_a_of_type_Bhar, null);
-        ((bhcw)localObject1).a(a(), new bhed(this, (bhcw)localObject1));
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        QMLog.e("ServiceCreateTask", "ServiceCreateTask JsCore execute exception!", localThrowable);
-        return;
-      }
-    }
-    new Handler(Looper.getMainLooper()).post(new ServiceCreateTask.2(this));
-  }
-  
-  protected void a(bhcv parambhcv)
-  {
-    try
-    {
-      QMLog.i("ServiceCreateTask", "onServiceCreateSucc service:" + parambhcv);
-      if ((this.jdField_a_of_type_Bhcv == null) && (parambhcv != null))
-      {
-        this.jdField_a_of_type_Bhcv = parambhcv;
-        this.b = System.currentTimeMillis();
-        c();
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    if (this.jdField_a_of_type_ComTencentSmttSdkJsVirtualMachine == null) {
-      this.jdField_a_of_type_ComTencentSmttSdkJsVirtualMachine = new JsVirtualMachine(paramContext);
-    }
-    return this.jdField_a_of_type_ComTencentSmttSdkJsVirtualMachine.isFallback();
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_a_of_type_Bhar != null) {}
-    for (MiniAppInfo localMiniAppInfo = this.jdField_a_of_type_Bhar.a();; localMiniAppInfo = null)
-    {
-      bgyd.a(localMiniAppInfo, 101, "0");
-      return;
-    }
+    return "SetUserAvatar";
   }
 }
 

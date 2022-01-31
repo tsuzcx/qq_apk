@@ -1,60 +1,31 @@
-import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
-import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
-import com.tencent.mobileqq.shortvideo.resource.BeautyResource;
-import com.tencent.mobileqq.shortvideo.resource.GestureGameResource;
-import com.tencent.mobileqq.shortvideo.resource.GestureResource;
-import com.tencent.mobileqq.shortvideo.resource.LowLightResource;
-import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
-import com.tencent.mobileqq.shortvideo.resource.Resources;
-import com.tencent.mobileqq.shortvideo.resource.SensorResource;
-import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
+import com.tencent.ims.QSecCloudAVEngineMsg.QSecCloudRespBody;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
-public class bhnf
-  implements Resources
+class bhnf
+  implements bhpm
 {
-  public SpecialAVFilterResource getAVFilterResource()
-  {
-    return new bhnh();
-  }
+  bhnf(bhne parambhne) {}
   
-  public ArtFilterResource getArtFilterResource()
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    return new bhmw();
-  }
-  
-  public AVFilterResource getAvFilterResource()
-  {
-    return new bhmv();
-  }
-  
-  public BeautyResource getBeautyResource()
-  {
-    return new bhmx();
-  }
-  
-  public GestureResource getGestureResource()
-  {
-    return new bhna();
-  }
-  
-  public LowLightResource getLowLightResource()
-  {
-    return new bhnc();
-  }
-  
-  public PtuFilterResource getPtuFilterResource()
-  {
-    return new bhnd();
-  }
-  
-  public SensorResource getSensorResource()
-  {
-    return new bhng();
-  }
-  
-  public GestureGameResource geteGestureGameResource()
-  {
-    return new bhmz();
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null) && (paramObject != null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, "server reply packet");
+      }
+    }
+    try
+    {
+      paramToServiceMsg = new QSecCloudAVEngineMsg.QSecCloudRespBody();
+      paramToServiceMsg.mergeFrom((byte[])paramObject);
+      bhne.a(this.a).sendMessage(bhne.a(this.a).obtainMessage(4, paramToServiceMsg));
+      return;
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      paramToServiceMsg.printStackTrace();
+    }
   }
 }
 

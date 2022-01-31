@@ -5,12 +5,12 @@ import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import java.io.File;
-import wuk;
+import wyt;
 
 public class EditTakePhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditTakePhotoSource> CREATOR = new wuk();
+  public static final Parcelable.Creator<EditTakePhotoSource> CREATOR = new wyt();
   public final double a;
   public final int a;
   @NonNull

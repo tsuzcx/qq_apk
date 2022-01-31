@@ -1,12 +1,8 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import com.tencent.shadow.dynamic.host.PluginManager;
-
 public abstract interface asux
-  extends PluginManager
 {
-  public abstract void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback);
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

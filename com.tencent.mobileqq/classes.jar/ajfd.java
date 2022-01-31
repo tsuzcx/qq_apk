@@ -1,20 +1,10 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-final class ajfd
-  implements Animation.AnimationListener
+public abstract interface ajfd
 {
-  ajfd(View paramView, Animation paramAnimation) {}
+  public abstract void l();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-  }
+  public abstract void m();
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void n();
 }
 
 

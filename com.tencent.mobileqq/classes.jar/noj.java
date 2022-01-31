@@ -43,8 +43,8 @@ public class noj
   public View a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, nnw paramnnw, boolean paramBoolean)
   {
     super.a(paramContext, paramString1, paramString2, paramString3, paramInt, paramnnw, paramBoolean);
-    paramString1 = LayoutInflater.from(paramContext).inflate(2131560072, null);
-    paramString2 = (ResizeURLImageView)paramString1.findViewById(2131371948);
+    paramString1 = LayoutInflater.from(paramContext).inflate(2131560071, null);
+    paramString2 = (ResizeURLImageView)paramString1.findViewById(2131371968);
     if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {}
     try
     {
@@ -60,7 +60,7 @@ public class noj
         this.jdField_a_of_type_Int = 1;
         this.jdField_a_of_type_Tpv = new nok(this, paramString1, paramString2);
         paramString2.setPublicAccountImageDownListener(this.jdField_a_of_type_Tpv);
-        paramString1.findViewById(2131369751).setVisibility(0);
+        paramString1.findViewById(2131369770).setVisibility(0);
       }
     }
     catch (Exception paramString2)
@@ -100,12 +100,12 @@ public class noj
   public void d()
   {
     this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131369751).setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131365978).setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131369770).setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131365980).setVisibility(8);
     try
     {
       URL localURL = new URL(this.jdField_d_of_type_JavaLangString);
-      ((ResizeURLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371948)).a(localURL);
+      ((ResizeURLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371968)).a(localURL);
       return;
     }
     catch (Exception localException)

@@ -1,51 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 
-public final class amlw
-  implements Parcelable.Creator<UpgradeTIMWrapper>
+class amlw
+  implements bavp
 {
-  public UpgradeTIMWrapper a(Parcel paramParcel)
-  {
-    Object localObject = null;
-    String str2 = paramParcel.readString();
-    String str3 = paramParcel.readString();
-    String str4 = paramParcel.readString();
-    String str5 = paramParcel.readString();
-    String str6 = paramParcel.readString();
-    int j = 0;
-    for (;;)
-    {
-      try
-      {
-        int i = paramParcel.readInt();
-        j = i;
-        String str1 = paramParcel.readString();
-        paramParcel.printStackTrace();
-      }
-      catch (Exception paramParcel)
-      {
-        try
-        {
-          paramParcel = paramParcel.readString();
-          return new UpgradeTIMWrapper(str2, str3, str4, str5, str6, i, str1, paramParcel);
-        }
-        catch (Exception paramParcel)
-        {
-          break label81;
-        }
-        paramParcel = paramParcel;
-        str1 = null;
-        i = j;
-      }
-      label81:
-      paramParcel = localObject;
-    }
-  }
+  amlw(amlp paramamlp, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public UpgradeTIMWrapper[] a(int paramInt)
+  public void a(bavr parambavr, bavq parambavq)
   {
-    return null;
+    try
+    {
+      parambavr = parambavr.a.getWupBuffer();
+      parambavq = new structmsg.RspSystemMsgRead();
+      parambavq.mergeFrom(parambavr);
+      int i = parambavq.head.result.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.", 2, "sendGroupSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
+      }
+      return;
+    }
+    catch (Exception parambavr)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", parambavr);
+    }
   }
 }
 

@@ -1,28 +1,30 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import dov.com.qq.im.QIMCameraCaptureUnit.10;
 import mqq.app.AppRuntime;
 
-class bkmt
-  extends avqu
+public class bkmt
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  bkmt(bkms parambkms) {}
+  public bkmt(QIMCameraCaptureUnit.10 param10) {}
   
-  protected void c(boolean paramBoolean, Bundle paramBundle)
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp)))
+    if (!paramBoolean)
     {
-      long l = ((get_albumlist_num_rsp)paramBundle).album_num;
-      this.a.jdField_a_of_type_Aimj.a = l;
-      paramBundle = this.a.a();
-      if (paramBundle != null)
-      {
-        paramBundle.a(this.a.jdField_a_of_type_Aimj.a);
-        paramBundle.b();
-      }
+      this.a.this$0.a(101);
+      return;
     }
-    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.jdField_a_of_type_Aima.a);
+    bkms.a(this.a.this$0, false);
+    if (!BaseApplicationImpl.getApplication().getRuntime().isBackground_Pause)
+    {
+      this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, paramLocalMediaInfo);
+      return;
+    }
+    this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
+    this.a.this$0.b = this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult;
+    this.a.this$0.e = true;
   }
 }
 

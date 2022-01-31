@@ -1,6 +1,11 @@
-public abstract interface amvm
+public abstract class amvm
 {
-  public abstract void a(int paramInt, String paramString, amxd paramamxd);
+  public int b;
+  
+  public amvm(int paramInt)
+  {
+    this.b = paramInt;
+  }
 }
 
 

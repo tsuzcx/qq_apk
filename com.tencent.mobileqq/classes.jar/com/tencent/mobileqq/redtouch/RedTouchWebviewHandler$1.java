@@ -2,8 +2,8 @@ package com.tencent.mobileqq.redtouch;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import axho;
-import becq;
+import axlx;
+import begz;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -177,11 +177,11 @@ class RedTouchWebviewHandler$1
         if ((this.this$0.mRuntime == null) || (this.this$0.mRuntime.a() == null)) {
           break label1789;
         }
-        localObject1 = new axho(this.this$0.mRuntime.a());
+        localObject1 = new axlx(this.this$0.mRuntime.a());
         if (localObject1 == null) {
           break label1789;
         }
-        localObject1 = ((axho)localObject1).a();
+        localObject1 = ((axlx)localObject1).a();
         if ((TextUtils.isEmpty(localObject7)) || (!localObject7.equals(localObject1))) {
           break label1789;
         }

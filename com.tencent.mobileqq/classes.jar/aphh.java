@@ -1,79 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavGAudioSoundData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
 public class aphh
-  extends apgu
+  implements Animation.AnimationListener
 {
-  public aphh(QQAppInterface paramQQAppInterface)
+  public aphh(DataReportViewer paramDataReportViewer) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super("qq.android.qav.muteaudio", paramQQAppInterface);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
   }
   
-  public int a()
-  {
-    return 10046;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public Class<? extends XmlData> a()
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return QavGAudioSoundData.class;
-  }
-  
-  public String a()
-  {
-    return "qavDownloadGAudioSoundDuration";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavGAudioSoundHandler", 2, "download success: " + paramString);
-    }
-    try
-    {
-      bdcs.a(paramString, mty.a(), false);
-      super.a(paramString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)a();
-    if ((localQavGAudioSoundData != null) && (!localQavGAudioSoundData.autoDownload))
-    {
-      localQavGAudioSoundData.autoDownload = true;
-      apgi.a(localQavGAudioSoundData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)a();
-    if (localQavGAudioSoundData == null) {
-      return super.h();
-    }
-    return localQavGAudioSoundData.autoDownload;
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.a.e();
   }
 }
 

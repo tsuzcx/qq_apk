@@ -1,42 +1,99 @@
+import android.content.Context;
 import android.os.Handler;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.open.agent.BindGroupActivity;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class beyl
-  extends ndm
+  extends Handler
 {
-  public beyl(BindGroupActivity paramBindGroupActivity) {}
+  private beyl(beyi parambeyi) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindGroupActivity", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString());
+    if (QLog.isDevelopLevel()) {
+      QLog.d("TVKVideoController", 4, new Object[] { "PlayerStatusHandler msg:", Integer.valueOf(paramMessage.what), " ,arg:", Integer.valueOf(paramMessage.arg1) });
     }
-    if ((this.a.isFinishing()) || (this.a.jdField_c_of_type_Boolean)) {}
+    switch (paramMessage.what)
+    {
+    }
     do
     {
-      return;
-      this.a.jdField_b_of_type_Bepp.hide();
-      if (this.a.a != null) {
-        this.a.a.removeCallbacksAndMessages(null);
-      }
-      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("BindGroupActivity", 2, "openIdObserver success");
-        }
-        this.a.jdField_c_of_type_JavaLangString = paramOpenID.openID;
-        if (!paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString))
+        do
         {
-          this.a.b();
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d("TVKVideoController", 2, new Object[] { "MEDIA_PREPAREING viewW:", Integer.valueOf(beyi.a(this.a).getWidth()), " ,viewH:", Integer.valueOf(beyi.a(this.a).getHeight()), " ,videoW:", Integer.valueOf(beyi.a(this.a)), " ,videoH:", Integer.valueOf(beyi.b(this.a)) });
+                }
+                if (beyi.a(this.a) != null)
+                {
+                  beyi.a(this.a).onSetVideoCover(beyi.a(this.a));
+                  beyi.a(this.a).onVideoSize(beyi.a(this.a), beyi.b(this.a));
+                }
+                this.a.a(beyi.a(this.a), beyi.b(this.a));
+                beyi.a(this.a, 2);
+                return;
+                if (beyi.a(this.a).get())
+                {
+                  if (beyi.a(this.a) != null) {
+                    beyi.a(this.a).onVideoStart((int)beyi.a(this.a).c());
+                  }
+                  beyi.c(this.a);
+                  beyi.a(this.a).set(false);
+                  return;
+                }
+                beyi.a(this.a, 3);
+                return;
+              } while (!QLog.isColorLevel());
+              QLog.d("TVKVideoController", 2, "onSeekComplete");
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d("TVKVideoController", 2, "onPlaybackComplete");
+              }
+              beyi.a(this.a, true);
+              beyi.a(this.a, 0);
+              beyi.a(this.a).removeCallbacks(this.a.a);
+              if (beyi.a(this.a) != null) {
+                beyi.a(this.a).e = 0L;
+              }
+              beyi.d(this.a);
+            } while (beyi.a(this.a) == null);
+            beyi.a(this.a).onVideoComplete(true);
+            beyi.a(this.a).onVideoProgressUpdate(0);
+            return;
+          } while (!QLog.isColorLevel());
+          QLog.d("TVKVideoController", 2, "onVideoSizeChanged");
           return;
+          if (QLog.isColorLevel()) {
+            QLog.d("TVKVideoController", 2, "MEDIA_INSTALL_SUCCESS");
+          }
+        } while ((beyi.a(this.a) == null) || (beyi.a(this.a) == null));
+        beyi.a(this.a, beyi.a(this.a).a((Context)beyi.a(this.a).get()));
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("TVKVideoController", 2, "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
         }
-        this.a.a();
+        beyi.a(this.a, paramMessage.arg1, paramMessage.arg2);
+        return;
+      } while (beyi.a(this.a) == null);
+      if (paramMessage.arg1 == 929)
+      {
+        beyi.a(this.a).onVideoBuffering();
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("BindGroupActivity", 2, "openIdObserver fail");
+    } while (paramMessage.arg1 != 92);
+    beyi.a(this.a).onVideoStart((int)beyi.a(this.a).c());
   }
 }
 

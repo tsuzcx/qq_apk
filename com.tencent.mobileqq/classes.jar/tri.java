@@ -1,50 +1,51 @@
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.widgets.QCirclePersonInfoAndStatusWidget;
+import com.tencent.biz.qqcircle.widgets.QCircleMessageNoticeView;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class tri
-  extends yei
+  extends yiu
 {
-  private static final String jdField_a_of_type_JavaLangString = tri.class.getSimpleName();
-  private QCirclePersonInfoAndStatusWidget jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget;
-  private ubm jdField_a_of_type_Ubm;
+  private QCircleMessageNoticeView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView;
+  private try jdField_a_of_type_Try;
   
   public tri(Bundle paramBundle)
   {
     super(paramBundle);
   }
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, ydp paramydp)
+  protected BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget = new QCirclePersonInfoAndStatusWidget(a());
-    return this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget;
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView = new QCircleMessageNoticeView(getContext());
+    return this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView;
   }
   
-  public void a(Bundle paramBundle) {}
-  
-  public void a(yeb paramyeb) {}
+  public void loadData(yii paramyii) {}
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    QLog.d("QCircleMessage_QCircleMessageNoticeBubbleAdapter", 1, "onBindViewHolder");
+    if ((this.mDataList != null) && (this.mDataList.size() > 0))
     {
-      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget != null)
+      this.jdField_a_of_type_Try = ((try)this.mDataList.get(paramInt));
+      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView != null)
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "mHeadPersonalDetailInfoView setData");
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget.setInteractor(this.jdField_a_of_type_Xzc);
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget.setData(this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget.setHeaderClickListener(this.jdField_a_of_type_Ubm);
+        QLog.d("QCircleMessage_QCircleMessageNoticeBubbleAdapter", 1, "mMessageNoticeView not null");
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView.setData(this.jdField_a_of_type_Try);
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView.setAdapterListener(new trj(this));
       }
     }
-    else {
+    else
+    {
       return;
     }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "mHeadPersonalDetailInfoView isnull");
+    QLog.d("QCircleMessage_QCircleMessageNoticeBubbleAdapter", 1, "mMessageNoticeView is null");
   }
+  
+  public void onPrepareParams(Bundle paramBundle) {}
 }
 
 

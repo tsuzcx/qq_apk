@@ -1,20 +1,20 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bkqk;
-import bkvr;
-import bkvu;
+import bkur;
+import bkzy;
+import blab;
 import com.tencent.qphone.base.util.QLog;
 
 public class AEBottomListAdapter$5
   implements Runnable
 {
-  public AEBottomListAdapter$5(bkqk parambkqk, bkvu parambkvu) {}
+  public AEBottomListAdapter$5(bkur parambkur, blab paramblab) {}
   
   public void run()
   {
-    if (bkqk.a(this.this$0).getVisibility() == 0)
+    if (bkur.a(this.this$0).getVisibility() == 0)
     {
-      bkqk.a(this.this$0).a(this.a, true);
+      bkur.a(this.this$0).a(this.a, true);
       QLog.d("AEBottomListAdapter", 4, "### [bottom list] select material " + this.a.a);
     }
   }

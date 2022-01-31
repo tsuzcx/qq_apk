@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
-import aokd;
+import aoom;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
@@ -453,7 +453,7 @@ public class MiniAppLauncher
   
   private static boolean verifyAppid_Scence_Fakeurl_Model(String paramString1, int paramInt, String paramString2)
   {
-    String str1 = aokd.a("mini_app_outsite_black_list", "");
+    String str1 = aoom.a("mini_app_outsite_black_list", "");
     for (;;)
     {
       int i;

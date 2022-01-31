@@ -1,18 +1,18 @@
 package dov.com.qq.im.capture.paster;
 
-import blqw;
-import bmnt;
+import blvi;
+import bmsf;
 import java.util.Collections;
 
 public class PasterDataManager$1
   implements Runnable
 {
-  public PasterDataManager$1(blqw paramblqw) {}
+  public PasterDataManager$1(blvi paramblvi) {}
   
   public void run()
   {
     if (!this.this$0.jdField_a_of_type_Boolean) {
-      this.this$0.jdField_a_of_type_Bmnt.a(1, Collections.EMPTY_LIST);
+      this.this$0.jdField_a_of_type_Bmsf.a(1, Collections.EMPTY_LIST);
     }
   }
 }

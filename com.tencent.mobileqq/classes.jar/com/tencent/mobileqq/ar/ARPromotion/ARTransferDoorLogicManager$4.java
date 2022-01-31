@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import amou;
+import amtj;
 import com.tencent.av.avgesture.AVGestureWrapper;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARTransferDoorLogicManager$4
   implements Runnable
 {
-  public ARTransferDoorLogicManager$4(amou paramamou) {}
+  public ARTransferDoorLogicManager$4(amtj paramamtj) {}
   
   public void run()
   {
@@ -21,14 +21,14 @@ public class ARTransferDoorLogicManager$4
     {
       for (;;)
       {
-        QLog.i(amou.a, 2, "AVGestureWrapper.clearCache failed. UnsatisfiedLinkError. err = " + localUnsatisfiedLinkError.getMessage());
+        QLog.i(amtj.a, 2, "AVGestureWrapper.clearCache failed. UnsatisfiedLinkError. err = " + localUnsatisfiedLinkError.getMessage());
       }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        QLog.i(amou.a, 2, "AVGestureWrapper.clearCache failed. err = " + localException.getMessage());
+        QLog.i(amtj.a, 2, "AVGestureWrapper.clearCache failed. err = " + localException.getMessage());
       }
     }
   }

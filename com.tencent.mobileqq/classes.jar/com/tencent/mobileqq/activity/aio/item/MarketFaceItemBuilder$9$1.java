@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afrd;
-import afrf;
+import afvs;
+import afvu;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 public class MarketFaceItemBuilder$9$1
   implements Runnable
 {
-  public MarketFaceItemBuilder$9$1(afrd paramafrd, afrf paramafrf) {}
+  public MarketFaceItemBuilder$9$1(afvs paramafvs, afvu paramafvu) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Afrf.a.setVisibility(8);
-    this.jdField_a_of_type_Afrf.f.setVisibility(8);
+    this.jdField_a_of_type_Afvu.a.setVisibility(8);
+    this.jdField_a_of_type_Afvu.f.setVisibility(8);
   }
 }
 

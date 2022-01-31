@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.onlinestatus.music;
 
-import awas;
+import awfb;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class OnlineStatusHandler$1
   implements Runnable
 {
-  public OnlineStatusHandler$1(awas paramawas, String paramString) {}
+  public OnlineStatusHandler$1(awfb paramawfb, String paramString) {}
   
   public void run()
   {

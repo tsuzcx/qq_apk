@@ -1,20 +1,14 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class vad
-  extends ugz
+  implements beqw
 {
-  public String a;
-  public List<wiu> a;
+  public vad(StoryMsgNodeFrameLayout paramStoryMsgNodeFrameLayout) {}
   
-  public vad()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    return super.toString() + " collectionId=" + this.jdField_a_of_type_JavaLangString + "mSimpleInfoList.size=" + this.jdField_a_of_type_JavaUtilList.size() + "mSimpleInfoList=" + this.jdField_a_of_type_JavaUtilList;
+    this.a.a.setVisibility(4);
   }
 }
 

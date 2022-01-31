@@ -1,61 +1,42 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListReq;
-import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListRsp;
-import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.mini.servlet.ProtoBufRequest;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class yvo
-  extends ProtoBufRequest
 {
-  private final CLIENT.StGetStoryFeedListReq a = new CLIENT.StGetStoryFeedListReq();
+  public String a;
+  public ArrayList<Integer> a;
+  public ArrayList<Object> b;
   
-  public yvo(int paramInt, CLIENT.StUinTime paramStUinTime)
+  public yvo(JSONObject paramJSONObject)
   {
-    this.a.listType.set(paramInt);
-    this.a.uinTime.set(paramStUinTime);
-    this.a.listNum.set(10);
-  }
-  
-  @Nullable
-  public static CLIENT.StGetStoryFeedListRsp a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null)
-    {
-      a("data is null");
-      return null;
-    }
-    paramArrayOfByte = decode(paramArrayOfByte);
-    if (paramArrayOfByte == null)
-    {
-      a("storyData is null");
-      return null;
-    }
-    CLIENT.StGetStoryFeedListRsp localStGetStoryFeedListRsp = new CLIENT.StGetStoryFeedListRsp();
     try
     {
-      localStGetStoryFeedListRsp.mergeFrom(paramArrayOfByte);
-      return localStGetStoryFeedListRsp;
+      if (paramJSONObject.has("name")) {
+        this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
+      }
+      if (paramJSONObject.has("packageIDs"))
+      {
+        paramJSONObject = paramJSONObject.optJSONArray("packageIDs");
+        int j = paramJSONObject.length();
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        this.b = new ArrayList();
+        int i = 0;
+        while (i < j)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramJSONObject.getInt(i)));
+          i += 1;
+        }
+      }
+      return;
     }
-    catch (Exception paramArrayOfByte)
+    catch (Exception paramJSONObject)
     {
-      a("onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopGiftAioPanelData", 2, "PersonalTabItemInfo json:", paramJSONObject);
+      }
     }
-    return null;
-  }
-  
-  private static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("GetMineStoryFeedListRequest", 2, paramString);
-    }
-  }
-  
-  public byte[] getBusiBuf()
-  {
-    return this.a.toByteArray();
   }
 }
 

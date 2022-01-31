@@ -1,24 +1,17 @@
-import android.database.DataSetObserver;
-import android.support.v4.view.PagerAdapter;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import android.view.View;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 
-public class xqa
-  extends DataSetObserver
+public abstract interface xqa
 {
-  public xqa(EmptySupportViewPager paramEmptySupportViewPager) {}
+  public abstract void a();
   
-  public void onChanged()
-  {
-    PagerAdapter localPagerAdapter = this.a.getAdapter();
-    if ((localPagerAdapter != null) && (localPagerAdapter.getCount() > 0))
-    {
-      this.a.a(8);
-      EmptySupportViewPager.a(this.a, 0);
-      return;
-    }
-    this.a.a(0);
-    EmptySupportViewPager.b(this.a, 8);
-  }
+  public abstract void a(int paramInt, View paramView);
+  
+  public abstract void a(View paramView, int paramInt1, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt2);
+  
+  public abstract void a(View paramView, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt);
+  
+  public abstract boolean a(View paramView, int paramInt);
 }
 
 

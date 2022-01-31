@@ -10,8 +10,8 @@ public class tph
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = (ImageView)this.a.findViewById(2131379373);
-    ImageView localImageView = (ImageView)this.a.findViewById(2131379374);
+    paramAnimation = (ImageView)this.a.findViewById(2131379431);
+    ImageView localImageView = (ImageView)this.a.findViewById(2131379432);
     PublicAccountImageCollectionMainActivity.a(this.a, localImageView, paramAnimation, 100L, 240L);
   }
   

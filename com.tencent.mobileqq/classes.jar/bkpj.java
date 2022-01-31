@@ -1,32 +1,8 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import java.io.File;
 
-class bkpj
-  implements Animator.AnimatorListener
+public class bkpj
 {
-  bkpj(bkpi parambkpi) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoStoryPiecesPart", 2, "ptv panel down");
-    }
-    if (bkpi.a(this.a) != null)
-    {
-      bkpi.a(this.a).setAlpha(1.0F);
-      bkpi.a(this.a).setVisibility(4);
-      bkpi.a(this.a).b().a(Boolean.valueOf(false));
-    }
-    bkpi.c(this.a);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public static final String a = bkpi.b + File.separator + "tmp";
 }
 
 

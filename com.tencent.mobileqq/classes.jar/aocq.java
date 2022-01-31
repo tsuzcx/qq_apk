@@ -1,36 +1,56 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.widget.RoundImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class aocq
-  implements URLDrawable.URLDrawableListener
+public class aocq
+  extends aokh<aocp>
 {
-  aocq(aoco paramaoco, RoundImageView paramRoundImageView, aoxp paramaoxp, String paramString) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public static aocp a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentDanmakuRender", 2, "onLoadCanceled : " + this.jdField_a_of_type_JavaLangString);
-    }
+    return (aocp)aoks.a().a(586);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentDanmakuRender", 2, "onLoadFailed : " + this.jdField_a_of_type_JavaLangString);
-    }
+    return 586;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  @NonNull
+  public aocp a(int paramInt)
   {
-    if (paramURLDrawable != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(paramURLDrawable);
-      this.jdField_a_of_type_Aoxp.c(true);
+    return new aocp();
+  }
+  
+  @Nullable
+  public aocp a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aocp.a(paramArrayOfaoko[0].a);
     }
+    return null;
+  }
+  
+  public Class<aocp> a()
+  {
+    return aocp.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aocp paramaocp) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

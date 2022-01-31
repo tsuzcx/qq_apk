@@ -1,4 +1,7 @@
-public class bgmc {}
+public abstract interface bgmc<T>
+{
+  public abstract T perform(bgls parambgls);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

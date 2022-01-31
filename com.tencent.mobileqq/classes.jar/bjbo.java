@@ -1,39 +1,151 @@
-import android.os.Bundle;
-import com.tencent.biz.qqcircle.events.QCircleFakeFeed;
-import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StImage;
-import feedcloud.FeedCloudMeta.StUser;
-import feedcloud.FeedCloudMeta.StVideo;
-import feedcloud.FeedCloudWrite.StPublishFeedRsp;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.mobileqq.app.QQAppInterface;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bjbo
-  implements yvn<FeedCloudWrite.StPublishFeedRsp>
+public final class bjbo
 {
-  bjbo(bjbk parambjbk, String paramString, int paramInt) {}
+  public static String a = "VIP_QQREADER";
+  @Deprecated
+  public static String b = "qqreader_1.0." + "8.3.5".replace(".", "") + ".0001_android_qqplugin";
+  private static String c = "0x0";
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StPublishFeedRsp paramStPublishFeedRsp)
+  private static String a(Context paramContext)
   {
-    QLog.d("[QzoneIPCModule_upload2]QCircle", 1, "ACTION_QCIRCLE_PULISH_FEED onReceive isSuccess:" + paramBoolean + " retCode:" + paramLong + " errMsg:" + paramString);
-    if ((paramBoolean) && (paramLong == 0L) && (paramStPublishFeedRsp != null) && (paramStPublishFeedRsp.feed != null) && (paramStPublishFeedRsp.feed.id != null))
+    if (("0x0".equals(c)) && ((paramContext instanceof Activity))) {
+      c = bjbq.a((Activity)paramContext);
+    }
+    return c;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      localObject = new tvx().a(paramStPublishFeedRsp.feed.id.get()).b(this.jdField_a_of_type_JavaLangString).a(paramStPublishFeedRsp.feed.createTime.get()).f(paramStPublishFeedRsp.feed.poster.id.get()).a(paramStPublishFeedRsp.feed.feedType.get()).g(paramStPublishFeedRsp.feed.video.playUrl.get()).e(paramStPublishFeedRsp.feed.cover.picUrl.get()).b(paramStPublishFeedRsp.feed.cover.width.get()).c(paramStPublishFeedRsp.feed.cover.height.get()).d(paramStPublishFeedRsp.feed.video.duration.get()).a();
-      QLog.d("[QzoneIPCModule_upload2]QCircle", 1, new Object[] { "ACTION_QCIRCLE_PULISH_FEED onReceive feed id:", paramStPublishFeedRsp.feed.id.get(), " clientKey:", this.jdField_a_of_type_JavaLangString });
-      yej.a().a(new QCircleFeedEvent((QCircleFakeFeed)localObject, 2));
+      localJSONObject.put("message", paramString);
+      paramString = localJSONObject.toString();
+      return paramString;
     }
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putLong("key_return_code", paramLong);
-    ((Bundle)localObject).putString("key_error_msg", paramString);
-    if ((paramStPublishFeedRsp != null) && (paramStPublishFeedRsp.feed != null) && (paramStPublishFeedRsp.feed.id != null)) {
-      ((Bundle)localObject).putString("key_stfeed_id", paramStPublishFeedRsp.feed.id.get());
+    catch (JSONException paramString)
+    {
+      Log.e("ReportUtils", "[wrapperException] json error", paramString);
     }
-    ((Bundle)localObject).putString("key_clientkey", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Bjbk.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, (Bundle)localObject));
+    return "";
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString)
+  {
+    a(paramContext, paramInt, paramString, null);
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString1, String paramString2)
+  {
+    a(null, "dc05135", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.3.5.4555", "", "", bdgk.a(paramContext).a, "ReaderShadowPlugin_5", a(paramContext), "2", "/plugin/ReaderHost", String.valueOf(paramInt), paramString1, "", "0", a(paramString2) });
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    a(null, "dc05133", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.3.5.4555", "", "", bdgk.a(paramContext).a, "5", a(paramContext), "11", "", "", "", "", "", "", paramString, "", "", "", "", "", "", "", "", "", "" });
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    a(null, "dc05133", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.3.5.4555", "", "", bdgk.a(paramContext).a, "5", a(paramContext), "10", "", "", "", "", paramString1, "", "", "", "", "", "", "", "", "", "", "", paramString2 });
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, String... paramVarArgs)
+  {
+    String str2 = "";
+    String str1 = str2;
+    if (paramVarArgs != null)
+    {
+      int j = paramVarArgs.length;
+      int i = 0;
+      for (;;)
+      {
+        str1 = str2;
+        if (i >= j) {
+          break;
+        }
+        str1 = paramVarArgs[i];
+        str2 = str2 + str1 + "|";
+        i += 1;
+      }
+    }
+    paramVarArgs = str1;
+    if (str1.length() > 0) {
+      paramVarArgs = str1.substring(0, str1.length() - 1);
+    }
+    Log.d("ReportUtils", "dcId=" + paramString + ";detail=" + paramVarArgs);
+    azps.a(paramQQAppInterface, paramString, paramVarArgs, false);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, float paramFloat, int paramInt2, long paramLong, int paramInt3, String paramString4)
+  {
+    a(null, "dc05133", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.3.5.4555", "", "", paramString1, b, bjbq.b(), paramString2, paramString3, String.valueOf(paramInt1), String.valueOf(paramFloat), String.valueOf(paramInt2), String.valueOf(paramLong), paramString4, "", "", "", "", "", "", "", "", "", "", String.valueOf(paramInt3) });
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, float paramFloat, int paramInt2, long paramLong, String paramString4)
+  {
+    a(paramString1, paramString2, paramString3, paramInt1, paramFloat, paramInt2, paramLong, 0, paramString4);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    a(paramString1, paramString2, "52", paramString3, paramString4, paramString5, "", paramString6, "", "");
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  {
+    a(paramString1, paramString2, "66", paramString3, paramString4, paramString5, "", paramString6, paramString7);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
+  {
+    a("109", Build.VERSION.RELEASE, "mobile qq", "8.3.5", "", "", "android", paramString1, "", "", b, paramString2, paramString3, paramString4, "", paramString5, "", paramString6, paramString7, "", "", "", paramString8, paramString9, "", "");
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
+  {
+    a("109", Build.VERSION.RELEASE, "mobile qq", "8.3.5", "", "", "android", paramString1, "", "", b, paramString2, paramString3, paramString4, "", paramString5, "", paramString6, paramString7, paramString8, paramString9, paramString10, "", "", "", "");
+  }
+  
+  private static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18, String paramString19, String paramString20, String paramString21, String paramString22, String paramString23, String paramString24, String paramString25, String paramString26)
+  {
+    String str1;
+    if ("1".equals(paramString18))
+    {
+      str1 = "1";
+      if (!bizv.a()) {
+        break label254;
+      }
+    }
+    label254:
+    for (String str2 = "1";; str2 = "0")
+    {
+      a(null, "dc00547", new String[] { paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13, paramString14, paramString15, paramString16, paramString17, str1, paramString18, "0", paramString19, paramString20, paramString21, paramString22, paramString23, paramString24, paramString26, "", "", "", "", "", str2, paramString25 });
+      return;
+      if ("2".equals(paramString18))
+      {
+        str1 = "2";
+        break;
+      }
+      str1 = "3";
+      break;
+    }
+  }
+  
+  public static void b(Context paramContext, int paramInt, String paramString)
+  {
+    a(null, "dc05135", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.3.5.4555", "", "", bdgk.a(paramContext).a, "", a(paramContext), "2", "/h5/BlankScreen", String.valueOf(paramInt), paramString, "", "0", "" });
   }
 }
 

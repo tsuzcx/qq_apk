@@ -1,386 +1,158 @@
-import android.text.TextUtils;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.HashMap;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.media.MediaPlayer;
+import android.opengl.GLES20;
+import android.opengl.GLSurfaceView;
+import android.opengl.GLSurfaceView.Renderer;
+import android.util.Log;
+import android.view.Surface;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+import com.tencent.filter.SurfaceTextureFilter;
+import com.tencent.ttpic.openapi.filter.SpaceFilter;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public class blen
+  implements SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer
 {
-  private final int a = 10;
+  private static final String jdField_a_of_type_JavaLangString = blen.class.getSimpleName();
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
+  private final GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
+  private blel jdField_a_of_type_Blel = new blel();
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new SurfaceTextureFilter();
+  private SpaceFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter = new SpaceFilter();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private final float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  private float jdField_b_of_type_Float;
+  private Frame jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
   
-  private blen()
+  public blen(GLSurfaceView paramGLSurfaceView)
   {
-    UserAction.initUserAction(BaseApplicationImpl.getContext());
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
   }
   
-  public static blen a()
+  private void a(Frame paramFrame)
   {
-    return blep.a();
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glClearColor(0.92F, 0.93F, 0.96F, 1.0F);
+    GLES20.glClear(16384);
+    GLES20.glEnable(3042);
+    GLES20.glBlendFunc(770, 771);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.RenderProcess(paramFrame.getTextureId(), (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, 0, 0.0D, this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame);
+    GLES20.glDisable(3042);
   }
   
-  private void a(String paramString, HashMap<String, String> paramHashMap)
+  private void b()
   {
-    a(paramString, paramHashMap, false);
+    Object localObject = new int[1];
+    GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
+    this.jdField_a_of_type_Int = localObject[0];
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+    localObject = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.setSurface((Surface)localObject);
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
   }
   
-  private void a(String paramString, HashMap<String, String> paramHashMap, boolean paramBoolean)
+  private void c()
   {
-    if (paramHashMap == null)
-    {
-      b(paramString, bler.a().a(), paramBoolean);
-      return;
-    }
-    b(paramString, bleq.a(bler.a().a(), paramHashMap), paramBoolean);
+    int[] arrayOfInt = new int[1];
+    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
   }
   
-  private void b(String paramString, HashMap<String, String> paramHashMap, boolean paramBoolean)
+  private void d()
   {
-    if ((bler.a().a()) || (paramBoolean)) {
-      UserAction.onUserAction(paramString, true, -1L, -1L, paramHashMap, true, false);
-    }
-  }
-  
-  public void A()
-  {
-    a("click#shoot_view#banner_icon", bler.a().e());
-  }
-  
-  public void B()
-  {
-    a("expose#shoot_view#banner_icon", bler.a().e());
-  }
-  
-  public void C()
-  {
-    a("click#shoot_view#play_switch", null);
-  }
-  
-  public void D()
-  {
-    a("click#shoot_view#next_btn", bler.a().c());
-  }
-  
-  public void E()
-  {
-    a("click#shoot_view#face_outbtn", null);
-  }
-  
-  public void F()
-  {
-    a("click#shoot_view#done_btn", bler.a().d());
-  }
-  
-  public void G()
-  {
-    a("click#shoot_view#rephoto_btn", bler.a().d());
-  }
-  
-  public void H()
-  {
-    a("click#transmit_view#cancel_btn", bler.a().k());
-  }
-  
-  public void I()
-  {
-    if (bler.a().c())
-    {
-      a("performance#camera_app#launch", bler.a().l());
-      bler.a().e();
-    }
-  }
-  
-  public void J()
-  {
-    a("expose#camera_app#view", null);
-  }
-  
-  public void K()
-  {
-    a("performance#camera_app#shader", bler.a().m());
-  }
-  
-  public void L()
-  {
-    a("expose#basics_view#pic_view", null);
-  }
-  
-  public void M()
-  {
-    a("expose#basics_view#photo_view", null);
-  }
-  
-  public void N()
-  {
-    a("click#emoticon_view#photo_btn", bler.a().o());
-  }
-  
-  public void O()
-  {
-    a("click#emoticon_view#emoticon_item", bler.a().p());
-  }
-  
-  public void P()
-  {
-    a("enter#emoticon_edit#view", bler.a().n());
-  }
-  
-  public void Q()
-  {
-    a("click#emoticon_edit#save_btn", bler.a().q());
-  }
-  
-  public void R()
-  {
-    a("click#emoticon_edit#send_btn", bler.a().q());
-  }
-  
-  public void S()
-  {
-    a("click#emoticon_edit#save_btn", bler.a().r());
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.apply();
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.setRotationAndFlip(0, 0, 1);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.apply();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.setRotationAndFlip(0, 0, 1);
+    this.jdField_a_of_type_Blel.a();
   }
   
   public void a()
   {
-    a("expose#shoot_edit#view", null);
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.ClearGLSL();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.ClearGLSL();
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    c();
+    this.jdField_a_of_type_Blel.b();
   }
   
-  public void a(int paramInt)
+  public void a(MediaPlayer paramMediaPlayer)
   {
-    a("click#shoot_edit#pick_done", bler.a().b(paramInt));
+    this.jdField_a_of_type_AndroidMediaMediaPlayer = paramMediaPlayer;
   }
   
-  public void a(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public void a(blem paramblem)
   {
-    a("performance#camera_app#server", bler.a().a(paramInt1, paramString1, paramString2, paramInt2));
-  }
-  
-  public void a(long paramLong)
-  {
-    a("enter#shoot_view#view", bler.a().a(paramLong));
-  }
-  
-  public void a(Long paramLong)
-  {
-    a("click#transmit_view#receiver", bler.a().a(paramLong));
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    if (this.jdField_a_of_type_Blel != null) {
+      this.jdField_a_of_type_Blel.a(paramblem);
     }
-    a("click#shoot_edit#post_btn", bler.a().e(paramString));
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    a("click#shoot_edit#post_btn", bler.a().a(paramString, paramInt));
-  }
-  
-  public void a(String paramString1, int paramInt, long paramLong1, long paramLong2, String paramString2)
-  {
-    a("performance#camera_app#material_zip_download", bler.a().a(paramString1, paramInt, paramLong1, paramLong2, paramString2));
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    a("performance#camera_app#material2screen", bler.a().a(paramString, paramLong));
-  }
-  
-  public void a(String paramString1, boolean paramBoolean, float paramFloat, double paramDouble1, double paramDouble2, String paramString2)
-  {
-    a("performance#camera_app#video", bler.a().a(paramString1, paramBoolean, paramFloat, paramDouble1, paramDouble2, paramString2));
   }
   
   public void a(boolean paramBoolean)
   {
-    if (bleq.a())
-    {
-      a("performance#camera_app#res_ready", bler.a().a(paramBoolean));
-      bleq.a();
+    if (this.jdField_a_of_type_Blel != null) {
+      this.jdField_a_of_type_Blel.a(paramBoolean);
     }
   }
   
-  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
+  public void onDrawFrame(GL10 paramGL10)
   {
-    a("performance#camera_app#res_download", bler.a().a(paramBoolean, paramInt, paramString1, paramString2, paramLong1, paramLong2), true);
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
+    {
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
+      this.jdField_a_of_type_ComTencentFilterBaseFilter.updateMatrix(this.jdField_a_of_type_ArrayOfFloat);
+      this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(this.jdField_a_of_type_Int, (int)(2.0F * this.jdField_a_of_type_Float), (int)this.jdField_b_of_type_Float, -1, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+    }
+    if (GLES20.glIsTexture(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId()))
+    {
+      a(this.jdField_a_of_type_Blel.a(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float));
+      return;
+    }
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glClearColor(1.0F, 1.0F, 1.0F, 1.0F);
+    GLES20.glClear(16384);
   }
   
-  public void b()
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    a("enter#shoot_edit#view", bler.a().f());
+    try
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.requestRender();
+      return;
+    }
+    finally
+    {
+      paramSurfaceTexture = finally;
+      throw paramSurfaceTexture;
+    }
   }
   
-  public void b(int paramInt)
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    a("click#shoot_edit#edit_done", bler.a().a(paramInt));
+    Log.d(jdField_a_of_type_JavaLangString, "onSurfaceChanged width = " + paramInt1 + "  height = " + paramInt2);
+    this.jdField_a_of_type_Float = paramInt1;
+    this.jdField_b_of_type_Float = paramInt2;
+    this.jdField_a_of_type_Blel.a(paramInt1, paramInt2);
   }
   
-  public void b(long paramLong)
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    a("click#shoot_view#photo_btn", bler.a().b(paramLong));
-  }
-  
-  public void b(String paramString)
-  {
-    a("click#shoot_edit#filter_item", bler.a().f(paramString));
-  }
-  
-  public void c()
-  {
-    a("click#shoot_edit#post_btn", bler.a().g());
-  }
-  
-  public void c(String paramString)
-  {
-    a("click#shoot_view#face_item", bler.a().a(paramString));
-  }
-  
-  public void d()
-  {
-    a("click#shoot_edit#rephoto_btn", null);
-  }
-  
-  public void d(String paramString)
-  {
-    a("click#shoot_view#filter_ai", bler.a().b(paramString));
-  }
-  
-  public void e()
-  {
-    a("click#shoot_edit#video_edit", bler.a().b());
-  }
-  
-  public void e(String paramString)
-  {
-    a("click#shoot_view#filter_item", bler.a().c(paramString));
-  }
-  
-  public void f()
-  {
-    a("click#shoot_edit#text_edit", bler.a().b());
-  }
-  
-  public void f(String paramString)
-  {
-    a("expose#shoot_view#face_item", bler.a().d(paramString));
-  }
-  
-  public void g()
-  {
-    a("click#shoot_edit#preview_btn", bler.a().b());
-  }
-  
-  public void g(String paramString)
-  {
-    a("click#emoticon_edit#text_ai", bler.a().i(paramString));
-  }
-  
-  public void h()
-  {
-    a("click#shoot_edit#pic_switch", bler.a().b());
-  }
-  
-  public void h(String paramString)
-  {
-    a("expose#emoticon_edit#emoticon_item", bler.a().g(paramString));
-  }
-  
-  public void i()
-  {
-    a("click#shoot_edit#edit_done", bler.a().h());
-  }
-  
-  public void i(String paramString)
-  {
-    a("click#emoticon_view#filter_item", bler.a().h(paramString));
-  }
-  
-  public void j()
-  {
-    a("click#shoot_edit#text_btn", bler.a().i());
-  }
-  
-  public void k()
-  {
-    a("click#shoot_edit#music_btn", null);
-  }
-  
-  public void l()
-  {
-    a("click#shoot_edit#cut_btn", null);
-  }
-  
-  public void m()
-  {
-    a("click#shoot_edit#apply_btn", null);
-  }
-  
-  public void n()
-  {
-    a("click#shoot_edit#music_item", bler.a().j());
-  }
-  
-  public void o()
-  {
-    a("expose#shoot_view#view", null);
-  }
-  
-  public void p()
-  {
-    a("click#shoot_view#cancel_btn", null);
-  }
-  
-  public void q()
-  {
-    a("click#shoot_view#local_btn", null);
-  }
-  
-  public void r()
-  {
-    a("click#shoot_view#flash_btn", null);
-  }
-  
-  public void s()
-  {
-    a("click#shoot_view#switch_btn", null);
-  }
-  
-  public void t()
-  {
-    a("click#shoot_view#face_btn", null);
-  }
-  
-  public void u()
-  {
-    a("click#shoot_view#photo_switch", null);
-  }
-  
-  public void v()
-  {
-    a("click#shoot_view#emoticon_switch", null);
-  }
-  
-  public void w()
-  {
-    a("click#shoot_view#module_btn", null);
-  }
-  
-  public void x()
-  {
-    a("click#shoot_view#make_btn", bler.a().b());
-  }
-  
-  public void y()
-  {
-    a("click#shoot_view#photo_make", bler.a().b());
-  }
-  
-  public void z()
-  {
-    a("click#shoot_view#now_make", bler.a().b());
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    b();
+    d();
   }
 }
 

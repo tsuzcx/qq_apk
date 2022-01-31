@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.weishi_new.download;
 
-import bfgi;
+import bfkr;
 import com.tencent.open.downloadnew.DownloadInfo;
 import tlo;
 
@@ -12,7 +12,7 @@ public final class WeishiDownloadUtil$3
   public void run()
   {
     tlo.d("WeishiDownloadUtil", "执行下载重试!!!,downloadUrl: " + this.a.d);
-    bfgi.a().b(this.a);
+    bfkr.a().b(this.a);
   }
 }
 

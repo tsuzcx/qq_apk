@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agae;
+import aget;
 import android.view.View;
-import bcfr;
-import bcgd;
+import bcka;
+import bckm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForTroopGift;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopGiftMsgItemBuilder$TroopGiftMsgHolder$1
   implements Runnable
 {
-  public TroopGiftMsgItemBuilder$TroopGiftMsgHolder$1(agae paramagae, bcgd parambcgd) {}
+  public TroopGiftMsgItemBuilder$TroopGiftMsgHolder$1(aget paramaget, bckm parambckm) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class TroopGiftMsgItemBuilder$TroopGiftMsgHolder$1
       if (QLog.isColorLevel()) {
         QLog.d("ChatItemBuilder", 2, "GONE uniseq = " + this.this$0.a.uniseq);
       }
-      ((bcfr)agae.a(this.this$0).getManager(223)).b(this.this$0);
+      ((bcka)aget.a(this.this$0).getManager(223)).b(this.this$0);
       this.this$0.d.setVisibility(8);
       return;
     }

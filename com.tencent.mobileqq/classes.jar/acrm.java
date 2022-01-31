@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acrm
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public acrm(EditInfoActivity paramEditInfoActivity) {}
+  public acrm(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847355);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alpo.a(2131704009));
-    this.a.jdField_a_of_type_Boolean = false;
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
+    }
   }
 }
 

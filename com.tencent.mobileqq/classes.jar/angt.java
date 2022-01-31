@@ -1,22 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 import com.tencent.qphone.base.util.QLog;
 
-class angt
-  extends anjb
+public class angt
+  implements MessageQueue.IdleHandler
 {
-  angt(angs paramangs, String paramString1, String paramString2) {}
+  public angt(ARScanEntryView paramARScanEntryView) {}
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject)
+  public boolean queueIdle()
   {
-    if (!paramBoolean)
-    {
-      QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler.get packagename failed.");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "queueIdle called ");
     }
-    angs.a((angs)paramObject, paramString2, this.jdField_a_of_type_JavaLangString, this.b, paramString1);
-    BaseApplication.getContext().getSharedPreferences("arkappid2pkname_entry", 4).edit().putString(paramString2, paramString1).commit();
+    if ((ARScanEntryView.a(this.a) != null) && (this.a.m)) {
+      ARScanEntryView.a(this.a).c();
+    }
+    return false;
   }
 }
 

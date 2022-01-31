@@ -1,179 +1,71 @@
-import android.text.TextUtils;
-import com.tencent.image.JpegExifReader;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URL;
+import java.util.HashMap;
 
 public class arel
-  implements argc
 {
-  protected int a;
-  protected ardq a;
-  protected String a;
-  protected int b;
-  protected String b;
-  protected int c;
+  protected long a;
+  protected areg a;
+  protected final QQAppInterface a;
+  protected ExcitingTransferOneSlotComplete a;
   
-  public arel(ardq paramardq)
+  public arel(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Ardq = paramardq;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.c = -1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public int a()
+  protected String a()
   {
-    return this.jdField_a_of_type_Int;
+    return "actGroupPDSlot";
   }
   
-  public ardq a()
+  public void a()
   {
-    return this.jdField_a_of_type_Ardq;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public URL a()
-  {
-    String str = this.jdField_a_of_type_Ardq.f();
-    if (TextUtils.isEmpty(str))
+    boolean bool = true;
+    if ((this.jdField_a_of_type_Areg == null) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete == null))
     {
-      str = this.jdField_a_of_type_Ardq.h();
-      if (str == null)
-      {
-        a(1);
-        return null;
-      }
-      this.jdField_a_of_type_Int = 2;
-    }
-    while (arof.b(str)) {
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        return AsyncImageView.a(str);
-        this.jdField_a_of_type_Int = 1;
-      }
-      else
-      {
-        return AsyncImageView.a(str, -1, -1, new File(str), false, false, false);
-      }
-    }
-    a(1);
-    return null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_Ardq.a(paramString);
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (this.jdField_a_of_type_Ardq == null) {}
-    FileManagerEntity localFileManagerEntity;
-    do
-    {
-      return false;
-      localFileManagerEntity = this.jdField_a_of_type_Ardq.a();
-    } while (localFileManagerEntity == null);
-    if (localFileManagerEntity.isZipInnerFile)
-    {
-      if (localFileManagerEntity.status == 2) {}
-      for (;;)
-      {
-        return bool1;
-        bool1 = false;
-      }
-    }
-    if (this.jdField_b_of_type_Int == 1) {}
-    for (bool1 = bool2;; bool1 = false) {
-      return bool1;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if ((this.jdField_a_of_type_Ardq.a() != null) && (this.jdField_a_of_type_Ardq.a().isZipInnerFile)) {
-      return paramString.equalsIgnoreCase(String.valueOf(this.jdField_a_of_type_Ardq.a()));
-    }
-    return (paramString.equalsIgnoreCase(this.jdField_a_of_type_Ardq.c())) || (paramString.equalsIgnoreCase(this.jdField_a_of_type_Ardq.e()));
-  }
-  
-  public int b()
-  {
-    if (this.c == -1) {}
-    try
-    {
-      String str = this.jdField_a_of_type_Ardq.f();
-      if (arof.b(str))
-      {
-        this.c = JpegExifReader.readOrientation(str);
-        return this.c;
-      }
-      return 1;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        this.c = 0;
-      }
-    }
-  }
-  
-  public String b()
-  {
-    String str2 = this.jdField_a_of_type_Ardq.f();
-    String str1;
-    if (str2 != null)
-    {
-      str1 = str2;
-      if (!str2.equals("")) {}
-    }
-    else
-    {
-      str1 = this.jdField_a_of_type_Ardq.h();
-      if (str1 != null) {
-        break label44;
-      }
-      str1 = "";
-    }
-    return str1;
-    label44:
-    this.jdField_a_of_type_Int = 2;
-    return str1;
-  }
-  
-  public void b(String paramString)
-  {
-    if (arof.b(paramString)) {
-      this.jdField_b_of_type_JavaLangString = paramString;
-    }
-    while (!QLog.isColorLevel()) {
+      QLog.e("ExtfGroupDownloaderDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] GroupDownloaderDataReport err. param err");
       return;
     }
-    QLog.i("DefaultImageInfo", 2, "setImageOriginPath error  : can not find origin file [path] =  " + paramString);
+    HashMap localHashMap = this.jdField_a_of_type_Areg.a();
+    localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete.getReportData());
+    QLog.i("ExtfGroupDownloaderDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] >>> GroupDownloaderDataReport:act=" + a() + localHashMap.toString());
+    azri localazri = azri.a(BaseApplication.getContext());
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    String str2 = a();
+    if (this.jdField_a_of_type_Areg.jdField_b_of_type_Long == 0L) {}
+    for (;;)
+    {
+      localazri.a(str1, str2, bool, 0L, 0L, localHashMap, "");
+      this.jdField_a_of_type_Areg = null;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete = null;
+      return;
+      bool = false;
+    }
   }
   
-  public boolean b()
+  public void a(int paramInt, long paramLong1, String paramString, long paramLong2, long paramLong3)
   {
-    return this.jdField_a_of_type_Ardq.b() < aqxg.c();
+    this.jdField_a_of_type_Areg = new areg();
+    this.jdField_a_of_type_Areg.jdField_a_of_type_Long = paramInt;
+    this.jdField_a_of_type_Areg.jdField_b_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Areg.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Areg.d = paramLong2;
+    this.jdField_a_of_type_Areg.c = paramLong3;
+    this.jdField_a_of_type_Areg.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Areg.jdField_b_of_type_Int = 1;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete = paramExcitingTransferOneSlotComplete;
   }
 }
 

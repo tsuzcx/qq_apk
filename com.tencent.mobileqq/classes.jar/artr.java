@@ -1,6 +1,13 @@
-public abstract interface artr
+public class artr
 {
-  public abstract void a(arts paramarts);
+  public long a;
+  public String a;
+  
+  public artr(String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+  }
 }
 
 

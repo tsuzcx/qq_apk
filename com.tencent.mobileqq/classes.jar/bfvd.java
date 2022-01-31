@@ -1,233 +1,159 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.MessageMicro<*>;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.Cryptor;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import tencent.im.msg.im_msg_head.Head;
-import tencent.im.msg.im_msg_head.HttpConnHead;
-import tencent.im.msg.im_msg_head.LoginSig;
+import android.content.Context;
 
-public abstract class bfvd
-  extends alko
+public class bfvd
 {
-  private bapv jdField_a_of_type_Bapv;
-  private bfvc jdField_a_of_type_Bfvc;
-  public bfvh a;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private List<bfvg> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+  private static volatile bfvd jdField_a_of_type_Bfvd;
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bfvh jdField_a_of_type_Bfvh;
+  private bfvk jdField_a_of_type_Bfvk;
+  private boolean jdField_a_of_type_Boolean;
   
-  protected bfvd(QQAppInterface paramQQAppInterface)
+  public static bfvd a()
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Bfvh = new bfve(this);
-    this.jdField_a_of_type_Bfvc = ((bfvc)paramQQAppInterface.a(104));
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Bfvh);
-    this.jdField_a_of_type_Bapv = paramQQAppInterface.getNetEngine(0);
-  }
-  
-  private int a(int paramInt1, MessageMicro<?> paramMessageMicro, boolean paramBoolean, int paramInt2, Object paramObject)
-  {
-    int i = 1;
-    String str = this.jdField_a_of_type_Bfvc.a();
-    if (this.jdField_a_of_type_Bfvc.a() == null) {
-      if (paramBoolean) {
-        i = 2;
-      }
-    }
-    do
+    if (jdField_a_of_type_Bfvd == null) {}
+    try
     {
-      do
-      {
-        do
-        {
-          return i;
-        } while (this.jdField_a_of_type_Bfvc.a(paramInt1, paramMessageMicro, paramInt2, paramObject));
-        return 3;
-        if (this.jdField_a_of_type_Bfvc.b() != null) {
-          break;
-        }
-        if (paramBoolean) {
-          return 4;
-        }
-      } while (this.jdField_a_of_type_Bfvc.a(paramInt1, paramMessageMicro, paramInt2, paramObject));
-      return 5;
-      if ((str != null) && (str.length() != 0)) {
-        break;
+      if (jdField_a_of_type_Bfvd == null) {
+        jdField_a_of_type_Bfvd = new bfvd();
       }
-      if (paramBoolean) {
-        return 6;
-      }
-    } while (this.jdField_a_of_type_Bfvc.a(paramInt1, paramMessageMicro, paramInt2, paramObject));
-    return 7;
-    return 0;
+      return jdField_a_of_type_Bfvd;
+    }
+    finally {}
   }
   
-  private void a()
+  public bfvl a()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    bfvl localbfvl = null;
+    if (this.jdField_a_of_type_Bfvk != null) {
+      localbfvl = this.jdField_a_of_type_Bfvk.a();
+    }
+    return localbfvl;
+  }
+  
+  public void a()
+  {
+    try
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      bfvy.a().a();
+      if (this.jdField_a_of_type_Bfvk != null)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (localIterator.hasNext())
-        {
-          bfvg localbfvg = (bfvg)localIterator.next();
-          a(localbfvg.a(), localbfvg.a(), true, localbfvg.b(), localbfvg.a());
-        }
+        this.jdField_a_of_type_Bfvk.a();
+        this.jdField_a_of_type_Bfvk = null;
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_AndroidContentContext = null;
+      this.jdField_a_of_type_Long = 0L;
+      this.jdField_a_of_type_Bfvh = null;
+      this.jdField_a_of_type_Boolean = false;
+      return;
     }
+    finally {}
   }
   
-  private void a(int paramInt1, MessageMicro<?> paramMessageMicro, boolean paramBoolean, int paramInt2, Object paramObject)
+  /* Error */
+  public void a(Context paramContext, long paramLong, bfvh parambfvh)
   {
-    int i = a(paramInt1, paramMessageMicro, paramBoolean, paramInt2, paramObject);
-    if (i == 1)
-    {
-      QLog.d("BigDataHandler", 1, "We will wait getIPList call back to do bigData Req" + paramInt1);
-      if (!paramBoolean) {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
-        {
-          this.jdField_a_of_type_JavaUtilList.add(new bfvg(paramInt1, paramMessageMicro, paramInt2, paramObject));
-          return;
-        }
-      }
-    }
-    else
-    {
-      if (i != 0)
-      {
-        QLog.d("BigDataHandler", 1, "USER command get key error status: " + i);
-        a(paramInt1, false, null, paramInt2, paramObject);
-        return;
-      }
-      long l;
-      Object localObject2;
-      try
-      {
-        l = Long.parseLong(this.app.getCurrentAccountUin());
-        localObject2 = new Cryptor().encrypt(paramMessageMicro.toByteArray(), this.jdField_a_of_type_Bfvc.a());
-        paramMessageMicro = new String();
-        i = 0;
-        while (i < "8.3.3".length())
-        {
-          ??? = paramMessageMicro;
-          if ("8.3.3".charAt(i) != '.') {
-            ??? = paramMessageMicro.concat(Character.toString("8.3.3".charAt(i)));
-          }
-          i += 1;
-          paramMessageMicro = (MessageMicro<?>)???;
-        }
-        ??? = new im_msg_head.LoginSig();
-      }
-      catch (Exception paramMessageMicro)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataHandler", 2, paramInt1 + " uin case long fail");
-        }
-        a(paramInt1, false, null, paramInt2, paramObject);
-        return;
-      }
-      ((im_msg_head.LoginSig)???).uint32_type.set(22);
-      ((im_msg_head.LoginSig)???).bytes_sig.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Bfvc.b()));
-      Object localObject3 = new im_msg_head.HttpConnHead();
-      ((im_msg_head.HttpConnHead)localObject3).uint64_uin.set(l);
-      ((im_msg_head.HttpConnHead)localObject3).uint32_command.set(1791);
-      ((im_msg_head.HttpConnHead)localObject3).uint32_sub_command.set(paramInt2);
-      ((im_msg_head.HttpConnHead)localObject3).uint32_seq.set(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet());
-      ((im_msg_head.HttpConnHead)localObject3).uint32_version.set(Integer.parseInt(paramMessageMicro));
-      ((im_msg_head.HttpConnHead)localObject3).uint32_flag.set(1);
-      ((im_msg_head.HttpConnHead)localObject3).uint32_compress_type.set(0);
-      ((im_msg_head.HttpConnHead)localObject3).uint32_error_code.set(0);
-      paramMessageMicro = new im_msg_head.Head();
-      paramMessageMicro.uint32_head_type.set(4);
-      paramMessageMicro.msg_login_sig.set((MessageMicro)???);
-      paramMessageMicro.msg_httpconn_head.set((MessageMicro)localObject3);
-      ??? = paramMessageMicro.toByteArray();
-      paramMessageMicro = new ByteArrayOutputStream();
-      try
-      {
-        localObject3 = new DataOutputStream(paramMessageMicro);
-        ((DataOutputStream)localObject3).write(40);
-        ((DataOutputStream)localObject3).writeInt(???.length);
-        ((DataOutputStream)localObject3).writeInt(localObject2.length);
-        ((DataOutputStream)localObject3).write((byte[])???);
-        ((DataOutputStream)localObject3).write((byte[])localObject2);
-        ((DataOutputStream)localObject3).write(41);
-        ((DataOutputStream)localObject3).flush();
-        ??? = this.jdField_a_of_type_Bfvc.a();
-        ??? = (String)??? + "cgi-bin/httpconn";
-        paramMessageMicro = paramMessageMicro.toByteArray();
-        localObject2 = new baps();
-        ((baps)localObject2).a(paramObject);
-        ((baps)localObject2).jdField_a_of_type_ArrayOfByte = paramMessageMicro;
-        ((baps)localObject2).jdField_a_of_type_Bapx = new bfvf(paramInt1, this, this.jdField_a_of_type_Bfvc.a(), paramInt2, paramObject);
-        ((baps)localObject2).jdField_a_of_type_JavaLangString = ((String)???);
-        ((baps)localObject2).jdField_a_of_type_Int = 1;
-        ((baps)localObject2).jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
-        if (this.jdField_a_of_type_Bapv != null)
-        {
-          this.jdField_a_of_type_Bapv.a((baqv)localObject2);
-          return;
-        }
-      }
-      catch (Exception paramMessageMicro)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataHandler", 2, paramMessageMicro.getMessage());
-        }
-        a(paramInt1, false, null, paramInt2, paramObject);
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 48
+    //   4: ldc 50
+    //   6: iconst_3
+    //   7: anewarray 4	java/lang/Object
+    //   10: dup
+    //   11: iconst_0
+    //   12: aload_1
+    //   13: aastore
+    //   14: dup
+    //   15: iconst_1
+    //   16: lload_2
+    //   17: invokestatic 56	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   20: aastore
+    //   21: dup
+    //   22: iconst_2
+    //   23: aload 4
+    //   25: aastore
+    //   26: invokestatic 62	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   29: invokestatic 68	bfvp:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   32: aload_0
+    //   33: getfield 43	bfvd:jdField_a_of_type_Boolean	Z
+    //   36: ifeq +13 -> 49
+    //   39: ldc 48
+    //   41: ldc 70
+    //   43: invokestatic 73	bfvp:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   46: aload_0
+    //   47: monitorexit
+    //   48: return
+    //   49: aload_0
+    //   50: aload_1
+    //   51: invokevirtual 79	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   54: putfield 37	bfvd:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   57: aload_0
+    //   58: lload_2
+    //   59: putfield 39	bfvd:jdField_a_of_type_Long	J
+    //   62: aload_0
+    //   63: aload 4
+    //   65: putfield 41	bfvd:jdField_a_of_type_Bfvh	Lbfvh;
+    //   68: aload_0
+    //   69: getfield 23	bfvd:jdField_a_of_type_Bfvk	Lbfvk;
+    //   72: ifnonnull +26 -> 98
+    //   75: aload_0
+    //   76: new 25	bfvk
+    //   79: dup
+    //   80: aload_0
+    //   81: getfield 37	bfvd:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   84: aload_0
+    //   85: getfield 39	bfvd:jdField_a_of_type_Long	J
+    //   88: aload_0
+    //   89: getfield 41	bfvd:jdField_a_of_type_Bfvh	Lbfvh;
+    //   92: invokespecial 81	bfvk:<init>	(Landroid/content/Context;JLbfvh;)V
+    //   95: putfield 23	bfvd:jdField_a_of_type_Bfvk	Lbfvk;
+    //   98: aload_0
+    //   99: iconst_1
+    //   100: putfield 43	bfvd:jdField_a_of_type_Boolean	Z
+    //   103: goto -57 -> 46
+    //   106: astore_1
+    //   107: ldc 48
+    //   109: ldc 83
+    //   111: aload_1
+    //   112: invokestatic 86	bfvp:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   115: aload_0
+    //   116: aconst_null
+    //   117: putfield 23	bfvd:jdField_a_of_type_Bfvk	Lbfvk;
+    //   120: aload_0
+    //   121: iconst_0
+    //   122: putfield 43	bfvd:jdField_a_of_type_Boolean	Z
+    //   125: goto -79 -> 46
+    //   128: astore_1
+    //   129: aload_0
+    //   130: monitorexit
+    //   131: aload_1
+    //   132: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	133	0	this	bfvd
+    //   0	133	1	paramContext	Context
+    //   0	133	2	paramLong	long
+    //   0	133	4	parambfvh	bfvh
+    // Exception table:
+    //   from	to	target	type
+    //   49	98	106	java/lang/Throwable
+    //   98	103	106	java/lang/Throwable
+    //   2	46	128	finally
+    //   49	98	128	finally
+    //   98	103	128	finally
+    //   107	125	128	finally
   }
   
-  private void b()
+  public void a(bfvx parambfvx)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (localIterator.hasNext())
-        {
-          bfvg localbfvg = (bfvg)localIterator.next();
-          a(localbfvg.a(), false, null, localbfvg.b(), localbfvg.a());
-        }
-      }
-      this.jdField_a_of_type_JavaUtilList.clear();
-    }
+    bfvy.a().a(parambfvx, true);
   }
   
-  public void a(int paramInt1, MessageMicro<?> paramMessageMicro, int paramInt2, Object paramObject)
+  public void b(bfvx parambfvx)
   {
-    a(paramInt1, paramMessageMicro, false, paramInt2, paramObject);
+    bfvy.a().a(parambfvx);
   }
-  
-  protected abstract void a(int paramInt1, boolean paramBoolean, byte[] paramArrayOfByte, int paramInt2, Object paramObject);
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    if (this.app != null) {
-      this.app.removeObserver(this.jdField_a_of_type_Bfvh);
-    }
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

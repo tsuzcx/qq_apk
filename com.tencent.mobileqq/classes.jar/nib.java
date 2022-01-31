@@ -6,7 +6,7 @@ import mqq.observer.BusinessObserver;
 final class nib
   implements BusinessObserver
 {
-  nib(QQAppInterface paramQQAppInterface, boolean paramBoolean, alvc paramalvc) {}
+  nib(QQAppInterface paramQQAppInterface, boolean paramBoolean, alzr paramalzr) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
@@ -17,8 +17,8 @@ final class nib
     if ((paramBoolean) && (paramBundle != null)) {}
     for (paramInt = nia.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);; paramInt = 1)
     {
-      if (this.jdField_a_of_type_Alvc != null) {
-        this.jdField_a_of_type_Alvc.a(paramBoolean, paramInt);
+      if (this.jdField_a_of_type_Alzr != null) {
+        this.jdField_a_of_type_Alzr.a(paramBoolean, paramInt);
       }
       if (QLog.isColorLevel()) {
         QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList onReceiveerrCode:" + paramInt);

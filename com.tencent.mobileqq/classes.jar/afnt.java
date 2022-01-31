@@ -1,17 +1,18 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
 
 class afnt
-  extends afpq
+  implements arsg
 {
-  afnt(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  afnt(afnq paramafnq) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new afvo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    paramView = bdgm.a(this.a.a, 230);
+    paramView.setTitle(2131691611);
+    paramView.setMessage(2131691612);
+    paramView.setNegativeButton(2131690648, new afnu(this, paramView));
+    paramView.setPositiveButton(2131694953, new afnv(this));
+    paramView.show();
   }
 }
 

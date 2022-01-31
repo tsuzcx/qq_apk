@@ -1,56 +1,34 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
-public class vif
-  extends Handler
+class vif
+  implements vkw
 {
-  WeakReference<FollowCaptureLauncher> a;
+  vif(vic paramvic) {}
   
-  public vif(FollowCaptureLauncher paramFollowCaptureLauncher)
+  public void a()
   {
-    this.a = new WeakReference(paramFollowCaptureLauncher);
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).c();
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    int i = 0;
-    FollowCaptureLauncher localFollowCaptureLauncher = (FollowCaptureLauncher)this.a.get();
-    if (localFollowCaptureLauncher == null) {}
-    for (;;)
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      }
-      while (i != 0)
-      {
-        FollowCaptureLauncher.f(localFollowCaptureLauncher);
-        return;
-        FollowCaptureLauncher.b(localFollowCaptureLauncher);
-        continue;
-        FollowCaptureLauncher.a(localFollowCaptureLauncher, (String)paramMessage.obj);
-        i = 1;
-        continue;
-        FollowCaptureLauncher.c(localFollowCaptureLauncher);
-        i = 1;
-        continue;
-        FollowCaptureLauncher.d(localFollowCaptureLauncher);
-        i = 1;
-        continue;
-        FollowCaptureLauncher.b(localFollowCaptureLauncher, (String)paramMessage.obj);
-        i = 1;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("FollowCaptureLauncher", 2, new Object[] { "showFollowCaptureError, ", Integer.valueOf(paramMessage.what) });
-        }
-        wta.a("FollowLaunchEvent", false, System.currentTimeMillis() - FollowCaptureLauncher.a(localFollowCaptureLauncher), new String[] { String.valueOf(paramMessage.what) });
-        FollowCaptureLauncher.e(localFollowCaptureLauncher);
-        continue;
-        localFollowCaptureLauncher.a();
-      }
+    vic.a(this.a).a(paramInt);
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).b(paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).d();
+    }
+  }
+  
+  public void c()
+  {
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).d(-1);
     }
   }
 }

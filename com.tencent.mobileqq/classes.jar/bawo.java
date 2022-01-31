@@ -1,36 +1,55 @@
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
 
 public class bawo
 {
-  public int a;
-  barh jdField_a_of_type_Barh;
-  baxd jdField_a_of_type_Baxd = new baxd();
-  public baxv a;
-  public ProtoReqManager a;
-  public String a;
-  public List<bawz> a;
-  public byte[] a;
+  public static boolean a;
+  private bawq a;
   
   public bawo()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Bawq = new bawq();
+    a(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HttpTimeoutParam.name()));
+    a();
   }
   
-  public String toString()
+  private void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    DeviceProfileManager.a(new bawp(this));
+  }
+  
+  public bawq a()
+  {
+    return this.jdField_a_of_type_Bawq.a();
+  }
+  
+  public void a(String paramString)
+  {
+    if ((paramString == null) || ("".equals(paramString))) {}
+    do
     {
-      localStringBuilder.append("index:");
-      localStringBuilder.append(i);
-      localStringBuilder.append(" ");
-      localStringBuilder.append(((bawz)this.jdField_a_of_type_JavaUtilList.get(i)).toString());
-      i += 1;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("RichMediaStrategy", 2, "OldEngine Timeout Params : " + paramString);
+      }
+      paramString = paramString.split("\\|");
+    } while ((paramString == null) || (paramString.length != 6));
+    try
+    {
+      this.jdField_a_of_type_Bawq.d = (Integer.valueOf(paramString[0]).intValue() * 1000);
+      this.jdField_a_of_type_Bawq.e = (Integer.valueOf(paramString[1]).intValue() * 1000);
+      this.jdField_a_of_type_Bawq.f = (Integer.valueOf(paramString[2]).intValue() * 1000);
+      this.jdField_a_of_type_Bawq.a = (Integer.valueOf(paramString[3]).intValue() * 1000);
+      this.jdField_a_of_type_Bawq.b = (Integer.valueOf(paramString[4]).intValue() * 1000);
+      this.jdField_a_of_type_Bawq.c = (Integer.valueOf(paramString[5]).intValue() * 1000);
+      jdField_a_of_type_Boolean = true;
+      return;
     }
-    return localStringBuilder.toString();
+    catch (NumberFormatException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

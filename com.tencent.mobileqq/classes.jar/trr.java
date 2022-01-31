@@ -1,39 +1,25 @@
-import com.tencent.biz.qqcircle.QCircleInitBean;
-import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 
-public abstract class trr
-  implements xzc
+class trr
+  extends RecyclerView.ViewHolder
 {
-  public int a()
+  public trr(BaseWidgetView paramBaseWidgetView)
   {
-    return 1;
+    super(paramBaseWidgetView);
   }
   
-  public QCircleInitBean a()
+  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo, trw paramtrw)
   {
-    return null;
-  }
-  
-  public QCirclePolymorphicAniView a()
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return "";
-  }
-  
-  public tuk a()
-  {
-    return null;
-  }
-  
-  public void a(Object paramObject) {}
-  
-  public boolean a()
-  {
-    return false;
+    if ((this.itemView instanceof BaseWidgetView))
+    {
+      this.itemView.setTag(this);
+      ((BaseWidgetView)this.itemView).setInteractor(paramtrw);
+      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
+      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
+    }
   }
 }
 

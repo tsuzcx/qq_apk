@@ -1,92 +1,22 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.comment.CommentEditText;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import com.tencent.biz.qqcircle.report.QCircleLpReportDc05503.1;
 
-class tzu
-  implements appt
+public class tzu
 {
-  tzu(tzr paramtzr) {}
-  
-  public void a(appw paramappw)
+  public static void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
   {
-    int i;
-    int j;
-    if ((paramappw instanceof apuw))
-    {
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
-    }
-    apur localapur;
-    int k;
-    int m;
-    do
-    {
-      this.a.a.getEditableText().replace(i, j, baiy.c(((apuw)paramappw).a));
-      do
-      {
-        return;
-      } while (!(paramappw instanceof apur));
-      localapur = (apur)paramappw;
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
-      k = localapur.a;
-      m = localapur.b;
-      if ((i < 0) || (j < 0) || (j < i)) {
-        break;
-      }
-    } while ((k == 2) && (m == -1));
-    if (k == 1) {}
-    for (paramappw = baiy.c(m);; paramappw = baiy.a(m))
-    {
-      this.a.a.getEditableText().replace(i, j, paramappw);
-      this.a.a.requestFocus();
-      localapur.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
-      return;
-    }
+    a(paramLong1, paramLong2, paramLong3, "", "", "", "", "", "", paramInt);
   }
   
-  public void a(appw paramappw1, appw paramappw2, Drawable paramDrawable) {}
-  
-  public boolean a(appw paramappw)
+  public static void a(long paramLong1, long paramLong2, long paramLong3, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt)
   {
-    return true;
+    uab.a().a().post(new QCircleLpReportDc05503.1(paramLong1, paramLong2, paramLong3, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramInt));
   }
   
-  public void b()
+  private static int b()
   {
-    if (this.a.a.getSelectionStart() == 0) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Editable localEditable = this.a.a.getText();
-        int i = this.a.a.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.a.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
+    return 5503;
   }
-  
-  public void b(appw paramappw) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

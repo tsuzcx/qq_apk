@@ -1,10 +1,19 @@
-public class yol
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.subscribe.widget.comment.component.richtext.element.ContentElement;
+
+public final class yol
+  implements Parcelable.Creator<ContentElement>
 {
-  public yol(ynm paramynm) {}
+  public ContentElement a(Parcel paramParcel)
+  {
+    return new ContentElement();
+  }
   
-  public void a(yok paramyok) {}
-  
-  public void b(yok paramyok) {}
+  public ContentElement[] a(int paramInt)
+  {
+    return new ContentElement[paramInt];
+  }
 }
 
 

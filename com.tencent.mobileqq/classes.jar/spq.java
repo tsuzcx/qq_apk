@@ -1,7 +1,7 @@
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 class spq
-  implements bevy
+  implements bfah
 {
   spq(spp paramspp) {}
   
@@ -15,10 +15,10 @@ class spq
     case -2: 
     case -1: 
     default: 
-      xxb.a(1, 2131720019);
+      ybk.a(1, 2131720031);
       return;
     }
-    xxb.a(2, 2131720038);
+    ybk.a(2, 2131720050);
   }
 }
 

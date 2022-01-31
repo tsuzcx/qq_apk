@@ -1,50 +1,52 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.jsp.WebRecordApiPlugin;
-import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import mqq.util.WeakReference;
 
-class atfw
-  extends Handler
+public class atfw
+  implements auca
 {
-  atfw(atfv paramatfv, Looper paramLooper)
+  private WeakReference<IVideoOuterStatusListener> a;
+  
+  public atfw(WeakReference<IVideoOuterStatusListener> paramWeakReference)
   {
-    super(paramLooper);
+    this.a = paramWeakReference;
   }
   
-  public void handleMessage(Message paramMessage)
+  private void a(boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 16711687: 
-      this.a.b(0);
-      return;
-    case 16711686: 
-      if (QLog.isColorLevel()) {
-        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
-      }
-      atfv.a(this.a).c();
-      bdaz.b(2131230744, false);
-      bdaz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
-      return;
-    case 1: 
-      this.a.b(1);
-      return;
-    case 16711689: 
-      localObject = (JSONObject)paramMessage.obj;
-      paramMessage = ((JSONObject)localObject).optString("msg", "");
-      localObject = ((JSONObject)localObject).optString("path", "");
-      this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':0,'recordID':'" + (String)localObject + "','result':" + paramMessage + "}" });
+    if ((this.a == null) || (this.a.get() == null)) {
       return;
     }
-    Object localObject = (JSONObject)paramMessage.obj;
-    paramMessage = ((JSONObject)localObject).optString("msg", "");
-    localObject = ((JSONObject)localObject).optString("path", "");
-    this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':1,'recordID':'" + (String)localObject + "','msg':'" + paramMessage + "'}" });
+    IVideoOuterStatusListener localIVideoOuterStatusListener = (IVideoOuterStatusListener)this.a.get();
+    if (paramBoolean)
+    {
+      localIVideoOuterStatusListener.onVideoStop();
+      return;
+    }
+    localIVideoOuterStatusListener.onVideoStart(-1);
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_GAIN");
+      atfs.a().a(false);
+      a(false);
+      return;
+    }
+    QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_LOSS");
+    atfs.a().a(true);
+    a(true);
+  }
+  
+  public void a(WeakReference<IVideoOuterStatusListener> paramWeakReference)
+  {
+    this.a = paramWeakReference;
   }
 }
 

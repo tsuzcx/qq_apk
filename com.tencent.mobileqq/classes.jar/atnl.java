@@ -1,83 +1,236 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.widget.ImageView;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.1;
+import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.2;
+import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.3;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.Iterator;
-import java.util.List;
+import cooperation.qzone.music.QzoneMusicHelper;
+import eipc.EIPCResult;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class atnl
-  implements atpk
+public class atnl
+  extends QIPCModule
 {
-  private long jdField_a_of_type_Long;
-  
-  atnl(atnf paramatnf, Activity paramActivity) {}
-  
-  public void a(LocationRoom.Venue paramVenue) {}
-  
-  public void a(LatLng paramLatLng)
+  private atnl()
   {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L) {
-      return;
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, "onMapStable onClick: invoked. center: " + paramLatLng);
-    }
-    atnf.a(this.jdField_a_of_type_Atnf, paramLatLng);
-    atnf.a(this.jdField_a_of_type_Atnf).a(atnf.a(this.jdField_a_of_type_Atnf), atnf.a(this.jdField_a_of_type_Atnf).getMap(), paramLatLng, "");
-    azmj.b(null, "CliOper", "", "", "0X800A95D", "0X800A95D", 0, 0, "", "0", "0", "");
+    super("ListenTogetherIPCModuleMainServer");
   }
   
-  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
+  public static atnl a()
   {
-    if (paramList != null)
+    return atnm.a();
+  }
+  
+  private EIPCResult a(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ((!"action_status_changed".equals(paramString)) || (paramBundle == null)) {}
+    for (;;)
     {
-      paramLatLng = paramList.iterator();
-      while (paramLatLng.hasNext())
+      return null;
+      paramBundle = paramBundle.getString("data");
+      try
       {
-        paramList = (String)paramLatLng.next();
-        Bitmap localBitmap = this.jdField_a_of_type_Atnf.a(paramList);
-        if (localBitmap != null)
+        paramBundle = new JSONObject(paramBundle);
+        if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
         {
-          localBitmap = bdda.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
-          atnf.a(this.jdField_a_of_type_Atnf).a(paramList, localBitmap);
+          localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+          if (QLog.isColorLevel()) {
+            QLog.d("ListenTogetherIPCModuleMainServer", 2, "statusChanged action:" + paramString + " data=" + paramBundle + " app:" + localQQAppInterface);
+          }
+          if ((localQQAppInterface == null) || (paramBundle == null)) {
+            continue;
+          }
+          ((ListenTogetherManager)localQQAppInterface.getManager(331)).a(paramBundle);
+          paramString = new EIPCResult();
+          paramString.code = 0;
+          return paramString;
+        }
+      }
+      catch (JSONException paramBundle)
+      {
+        for (;;)
+        {
+          QLog.i("ListenTogetherIPCModuleMainServer", 1, "statusChanged error:" + paramBundle.getMessage());
+          paramBundle = null;
+          continue;
+          QQAppInterface localQQAppInterface = null;
         }
       }
     }
   }
   
-  public void a(boolean paramBoolean, Point paramPoint)
+  public static void a(JSONObject paramJSONObject)
   {
-    if (paramBoolean)
-    {
-      atnf.a(this.jdField_a_of_type_Atnf).setClickable(false);
-      if (bhxo.a()) {
-        atnf.a(this.jdField_a_of_type_Atnf).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840354));
-      }
+    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogetherIPCModuleMainServer", 2, "callWebClientStatusChanged data:" + paramJSONObject + "  isToolRunning:" + bool);
     }
-    Rect localRect;
-    do
+    if (bool)
     {
-      return;
-      atnf.a(this.jdField_a_of_type_Atnf).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840353));
-      return;
-      if (paramPoint == null) {
-        break;
-      }
-      localRect = new Rect();
-      atnf.a(this.jdField_a_of_type_Atnf).getGlobalVisibleRect(localRect);
-    } while (localRect.contains(paramPoint.x, paramPoint.y));
-    atnf.a(this.jdField_a_of_type_Atnf).setClickable(true);
-    atnf.a(this.jdField_a_of_type_Atnf).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840355));
+      Bundle localBundle = new Bundle();
+      localBundle.putString("data", paramJSONObject.toString());
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "ListenTogetherIPCModuleWebClient", "action_status_changed", localBundle, null);
+    }
   }
   
-  public void a(boolean paramBoolean, atpl paramatpl) {}
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    boolean bool2 = false;
+    int i = 0;
+    boolean bool1 = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogetherIPCModuleMainServer", 2, "onCall, params=" + paramBundle + ", action=" + paramString + ", callBackId=" + paramInt);
+    }
+    if (paramBundle == null) {
+      QLog.d("ListenTogetherIPCModuleMainServer", 1, "onCall, param is null, action=" + paramString + ", callBackId=" + paramInt);
+    }
+    for (;;)
+    {
+      return null;
+      if ("action_status_changed".equals(paramString)) {
+        return a(paramString, paramBundle, paramInt);
+      }
+      if ("isOpener".equals(paramString))
+      {
+        paramString = new Bundle();
+        paramString.putBoolean("result", banz.a().a());
+        paramString = EIPCResult.createResult(0, paramString);
+        if (paramInt > 0)
+        {
+          callbackResult(paramInt, paramString);
+          return null;
+        }
+      }
+      else if ("isShowAtmosphere".equals(paramString))
+      {
+        try
+        {
+          paramString = new JSONObject(paramBundle.getString("data")).optString("uin");
+          paramBundle = new Bundle();
+          if ((banz.a().a()) || (banz.a().a(paramString))) {
+            break label609;
+          }
+          label220:
+          paramBundle.putBoolean("result", bool1);
+          paramString = EIPCResult.createResult(0, paramBundle);
+          if (paramInt > 0)
+          {
+            callbackResult(paramInt, paramString);
+            return null;
+          }
+        }
+        catch (JSONException paramString)
+        {
+          QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_IS_SHOW_ATMOSPHERE: ", paramString);
+          return null;
+        }
+      }
+    }
+    if ("setPlayerId".equals(paramString)) {
+      try
+      {
+        paramInt = new JSONObject(paramBundle.getString("data")).optInt("id");
+        baoc.a().a(paramInt);
+        return null;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_SET_PLAYERID: ", paramString);
+        return null;
+      }
+    }
+    if ("setThemeEnabled".equals(paramString)) {
+      try
+      {
+        paramBundle = new JSONObject(paramBundle.getString("data"));
+        paramString = paramBundle.optString("uin");
+        paramInt = paramBundle.optInt("id");
+        paramBundle = banz.a();
+        bool1 = bool2;
+        if (paramInt == 1) {
+          bool1 = true;
+        }
+        paramBundle.a(paramString, bool1);
+        return null;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_SET_THEME_ENABLED: ", paramString);
+        return null;
+      }
+    }
+    if ("showFloatView".equals(paramString)) {
+      try
+      {
+        paramBundle = new JSONObject(paramBundle.getString("data"));
+        paramString = paramBundle.optString("uin");
+        paramBundle = paramBundle.optString("coverUrl");
+        ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.1(this, paramString, paramBundle));
+        return null;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
+    }
+    if ("pauseFloatView".equals(paramString))
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.2(this));
+      return null;
+    }
+    if ("changeMusicList".equals(paramString)) {}
+    for (;;)
+    {
+      SongInfo localSongInfo;
+      try
+      {
+        paramString = new JSONObject(paramBundle.getString("data"));
+        int j = paramString.optInt("playType");
+        int k = paramString.optInt("index");
+        paramString = paramString.getJSONArray("songList");
+        paramBundle = new SongInfo[paramString.length()];
+        paramInt = i;
+        if (paramInt < paramString.length())
+        {
+          localSongInfo = QzoneMusicHelper.convertSongInfo(paramString.getJSONObject(paramInt));
+          if (localSongInfo.a != 0L) {
+            break label615;
+          }
+          localSongInfo.a = paramInt;
+          break label615;
+        }
+        QQPlayerService.a(paramBundle, j, k);
+        return null;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
+      if (!"stopMusicBox".equals(paramString)) {
+        break;
+      }
+      ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.3(this));
+      return null;
+      label609:
+      bool1 = true;
+      break label220;
+      label615:
+      paramBundle[paramInt] = localSongInfo;
+      paramInt += 1;
+    }
+  }
 }
 
 

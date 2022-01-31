@@ -1,6 +1,15 @@
-public abstract interface yvn<T>
+import org.json.JSONObject;
+
+public class yvn
 {
-  public abstract void a(boolean paramBoolean, long paramLong, String paramString, T paramT);
+  public String a;
+  public String b;
+  
+  public yvn(JSONObject paramJSONObject)
+  {
+    this.a = paramJSONObject.optString("icon");
+    this.b = paramJSONObject.optString("jumpUrl");
+  }
 }
 
 

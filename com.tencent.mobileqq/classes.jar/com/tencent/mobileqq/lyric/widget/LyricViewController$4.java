@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import atsv;
+import atxe;
 
 public class LyricViewController$4
   implements Runnable
 {
-  public LyricViewController$4(atsv paramatsv) {}
+  public LyricViewController$4(atxe paramatxe) {}
   
   public void run()
   {

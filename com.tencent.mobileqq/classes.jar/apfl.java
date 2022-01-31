@@ -1,44 +1,45 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.doutu.DoutuData;
-import java.util.HashMap;
+import android.database.sqlite.SQLiteCursor;
+import android.database.sqlite.SQLiteCursorDriver;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQuery;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.utils.SecurityUtile;
 
 class apfl
-  implements URLDrawableDownListener
+  extends SQLiteCursor
 {
-  apfl(apfk paramapfk) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  apfl(apfk paramapfk, SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof apfm)))
-    {
-      paramView = (apfm)paramView;
-      if (paramView.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-      }
-      if (this.a.a == null) {
-        this.a.a = new HashMap();
-      }
-      if ((paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_md5 != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_down_url != null)) {
-        this.a.a.put(paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_md5, paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_down_url);
-      }
+    super(paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
+  }
+  
+  public byte[] getBlob(int paramInt)
+  {
+    byte[] arrayOfByte2 = super.getBlob(paramInt);
+    byte[] arrayOfByte1 = arrayOfByte2;
+    if (this.a.a.isNeedEncry()) {
+      arrayOfByte1 = SecurityUtile.a(arrayOfByte2);
     }
+    return arrayOfByte1;
+  }
+  
+  public String getString(int paramInt)
+  {
+    String str2 = super.getString(paramInt);
+    String str1 = str2;
+    if (this.a.a.isNeedEncry()) {}
+    try
+    {
+      str1 = SecurityUtile.b(str2);
+      return str1;
+    }
+    catch (Exception localException) {}
+    return str2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apfl
  * JD-Core Version:    0.7.0.1
  */

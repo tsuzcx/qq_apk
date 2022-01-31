@@ -1,28 +1,34 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.flashchat.FlashChatPanel;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.smtt.sdk.ValueCallback;
+import java.lang.ref.WeakReference;
 
-public class arrz
-  implements aeov
+final class arrz
+  implements ValueCallback<String>
 {
-  public arrz(FlashChatPanel paramFlashChatPanel) {}
+  arrz(WeakReference paramWeakReference, Activity paramActivity) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(String paramString)
   {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-    return true;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((paramView instanceof ArkAppView)) {
-      ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localActivity != null) && (paramString != null) && (paramString.startsWith("http")))
+    {
+      if (araj.a().a() == null)
+      {
+        paramString = new Bundle();
+        paramString.putString("_filename_from_dlg", this.jdField_a_of_type_AndroidAppActivity.getString(2131694945));
+        paramString.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_jc_file");
+        Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
+        localIntent.putExtra("param", paramString);
+        localIntent.putExtra("url", "http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
+        localActivity.sendBroadcast(localIntent);
+      }
     }
-    return true;
+    else {
+      return;
+    }
+    arrr.b(localActivity, "http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
   }
 }
 

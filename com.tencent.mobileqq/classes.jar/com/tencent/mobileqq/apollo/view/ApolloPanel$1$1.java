@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.view;
 
-import alhu;
+import almj;
 import android.widget.ImageView;
 
 public class ApolloPanel$1$1
   implements Runnable
 {
-  public ApolloPanel$1$1(alhu paramalhu) {}
+  public ApolloPanel$1$1(almj paramalmj) {}
   
   public void run()
   {

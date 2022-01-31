@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.TroopAdmin;
 
-class aidn
-  implements View.OnClickListener
+public final class aidn
+  implements Parcelable.Creator<ChatHistoryTroopMemberFragment.TroopAdmin>
 {
-  aidn(aidj paramaidj) {}
-  
-  public void onClick(View paramView)
+  public ChatHistoryTroopMemberFragment.TroopAdmin a(Parcel paramParcel)
   {
-    aidj.a(this.a).setText("");
+    return new ChatHistoryTroopMemberFragment.TroopAdmin(paramParcel, null);
+  }
+  
+  public ChatHistoryTroopMemberFragment.TroopAdmin[] a(int paramInt)
+  {
+    return new ChatHistoryTroopMemberFragment.TroopAdmin[paramInt];
   }
 }
 

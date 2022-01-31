@@ -3,7 +3,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class sea
-  implements bhtl
+  implements bhxs
 {
   public sea(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
   

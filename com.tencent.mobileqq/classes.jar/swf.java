@@ -8,25 +8,25 @@ import java.util.Iterator;
 import java.util.List;
 
 public class swf
-  implements bapx
+  implements baug
 {
-  private bapv jdField_a_of_type_Bapv;
-  baua jdField_a_of_type_Baua = new swg(this);
+  private baue jdField_a_of_type_Baue;
+  bayj jdField_a_of_type_Bayj = new swg(this);
   TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString;
-  private ArrayList<baub> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<bayk> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   HashMap<Long, Bundle> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private ArrayList<baps> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<baub> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   HashMap<Long, Bundle> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  private ArrayList<baub> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<bayk> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
   HashMap<String, Bundle> jdField_c_of_type_JavaUtilHashMap = new HashMap();
   
   public swf(TroopMemberApiService paramTroopMemberApiService, QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
-    this.jdField_a_of_type_Bapv = paramQQAppInterface.getNetEngine(0);
+    this.jdField_a_of_type_Baue = paramQQAppInterface.getNetEngine(0);
   }
   
   private void a(String paramString)
@@ -35,9 +35,9 @@ public class swf
     Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      baps localbaps = (baps)localIterator.next();
-      if (localbaps.jdField_a_of_type_JavaLangString.equals(paramString)) {
-        localArrayList.add(localbaps);
+      baub localbaub = (baub)localIterator.next();
+      if (localbaub.jdField_a_of_type_JavaLangString.equals(paramString)) {
+        localArrayList.add(localbaub);
       }
     }
     this.jdField_b_of_type_JavaUtilArrayList.removeAll(localArrayList);
@@ -46,30 +46,30 @@ public class swf
   public void a()
   {
     Object localObject2;
-    if (this.jdField_a_of_type_Bapv != null)
+    if (this.jdField_a_of_type_Baue != null)
     {
       localObject1 = this.jdField_b_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (baps)((Iterator)localObject1).next();
-        this.jdField_a_of_type_Bapv.b((baqv)localObject2);
+        localObject2 = (baub)((Iterator)localObject1).next();
+        this.jdField_a_of_type_Baue.b((bave)localObject2);
       }
     }
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
     if (localObject1 != null)
     {
       localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      baub localbaub;
+      bayk localbayk;
       while (((Iterator)localObject2).hasNext())
       {
-        localbaub = (baub)((Iterator)localObject2).next();
-        ((batw)localObject1).a(localbaub.jdField_c_of_type_JavaLangString, localbaub.jdField_a_of_type_Long);
+        localbayk = (bayk)((Iterator)localObject2).next();
+        ((bayf)localObject1).a(localbayk.jdField_c_of_type_JavaLangString, localbayk.jdField_a_of_type_Long);
       }
       localObject2 = this.jdField_c_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        localbaub = (baub)((Iterator)localObject2).next();
-        ((batw)localObject1).b(localbaub.jdField_c_of_type_JavaLangString, localbaub.jdField_a_of_type_Long);
+        localbayk = (bayk)((Iterator)localObject2).next();
+        ((bayf)localObject1).b(localbayk.jdField_c_of_type_JavaLangString, localbayk.jdField_a_of_type_Long);
       }
     }
     this.jdField_a_of_type_JavaUtilHashMap.clear();
@@ -85,9 +85,9 @@ public class swf
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      baub localbaub = (baub)localIterator.next();
-      if (localbaub.jdField_a_of_type_Long == paramLong) {
-        localArrayList.add(localbaub);
+      bayk localbayk = (bayk)localIterator.next();
+      if (localbayk.jdField_a_of_type_Long == paramLong) {
+        localArrayList.add(localbayk);
       }
     }
     this.jdField_a_of_type_JavaUtilArrayList.removeAll(localArrayList);
@@ -104,21 +104,21 @@ public class swf
     }
     String str = paramBundle.getString("pic_local_path");
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("pic_puin");
-    batw localbatw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    this.jdField_a_of_type_Baua.addFilter(new Class[] { bamp.class });
-    localbatw.a(this.jdField_a_of_type_Baua);
-    baub localbaub = new baub();
-    localbaub.jdField_a_of_type_Boolean = true;
-    localbaub.jdField_c_of_type_Int = 10;
-    localbaub.i = str;
-    localbaub.jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
-    localbaub.jdField_c_of_type_JavaLangString = "0";
-    localbaub.jdField_b_of_type_Int = 24;
-    localbaub.jdField_a_of_type_JavaLangString = "PAJSSDKPicUploadProcess";
-    localbatw.a(localbaub);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localbaub.jdField_a_of_type_Long), paramBundle);
-    this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(localbaub.jdField_a_of_type_Long), paramBundle);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localbaub);
+    bayf localbayf = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    this.jdField_a_of_type_Bayj.addFilter(new Class[] { baqy.class });
+    localbayf.a(this.jdField_a_of_type_Bayj);
+    bayk localbayk = new bayk();
+    localbayk.jdField_a_of_type_Boolean = true;
+    localbayk.jdField_c_of_type_Int = 10;
+    localbayk.i = str;
+    localbayk.jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
+    localbayk.jdField_c_of_type_JavaLangString = "0";
+    localbayk.jdField_b_of_type_Int = 24;
+    localbayk.jdField_a_of_type_JavaLangString = "PAJSSDKPicUploadProcess";
+    localbayf.a(localbayk);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localbayk.jdField_a_of_type_Long), paramBundle);
+    this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(localbayk.jdField_a_of_type_Long), paramBundle);
+    this.jdField_a_of_type_JavaUtilArrayList.add(localbayk);
   }
   
   void b(long paramLong)
@@ -127,9 +127,9 @@ public class swf
     Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      baub localbaub = (baub)localIterator.next();
-      if (localbaub.jdField_a_of_type_Long == paramLong) {
-        localArrayList.add(localbaub);
+      bayk localbayk = (bayk)localIterator.next();
+      if (localbayk.jdField_a_of_type_Long == paramLong) {
+        localArrayList.add(localbayk);
       }
     }
     this.jdField_c_of_type_JavaUtilArrayList.removeAll(localArrayList);
@@ -148,20 +148,20 @@ public class swf
       return;
       String str = paramBundle.getString("pic_server_id");
       paramBundle.putInt("seq", paramBundle.getInt("seq", -1));
-      baps localbaps = new baps();
-      localbaps.jdField_a_of_type_Bapx = this;
-      localbaps.jdField_a_of_type_JavaLangString = str;
-      localbaps.jdField_c_of_type_Long = 180000L;
-      if (localbaps.jdField_a_of_type_JavaLangString == null) {
+      baub localbaub = new baub();
+      localbaub.jdField_a_of_type_Baug = this;
+      localbaub.jdField_a_of_type_JavaLangString = str;
+      localbaub.jdField_c_of_type_Long = 180000L;
+      if (localbaub.jdField_a_of_type_JavaLangString == null) {
         break;
       }
-      Object localObject1 = localbaps.jdField_a_of_type_JavaLangString.split("/");
+      Object localObject1 = localbaub.jdField_a_of_type_JavaLangString.split("/");
       if (localObject1.length < 2) {
         break;
       }
       localObject1 = localObject1[(localObject1.length - 2)];
-      localbaps.jdField_c_of_type_JavaLangString = (aljq.aX + "c2bPIC/" + (String)localObject1 + ".png");
-      Object localObject2 = new File(aljq.aX + "c2bPIC/");
+      localbaub.jdField_c_of_type_JavaLangString = (alof.aX + "c2bPIC/" + (String)localObject1 + ".png");
+      Object localObject2 = new File(alof.aX + "c2bPIC/");
       ArrayList localArrayList = new ArrayList();
       localObject2 = ((File)localObject2).listFiles();
       if (localObject2 != null)
@@ -201,12 +201,12 @@ public class swf
           i += 1;
         }
       }
-      if (this.jdField_a_of_type_Bapv == null) {
+      if (this.jdField_a_of_type_Baue == null) {
         break;
       }
-      this.jdField_a_of_type_Bapv.a(localbaps);
+      this.jdField_a_of_type_Baue.a(localbaub);
       this.jdField_c_of_type_JavaUtilHashMap.put(str, paramBundle);
-      this.jdField_b_of_type_JavaUtilArrayList.add(localbaps);
+      this.jdField_b_of_type_JavaUtilArrayList.add(localbaub);
     } while (paramBundle.getInt("is_showProgress_tips") != 1);
     this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(25, paramBundle);
     return;
@@ -218,22 +218,22 @@ public class swf
   {
     String str = paramBundle.getString("pic_local_path");
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    this.jdField_a_of_type_Baua.addFilter(new Class[] { baqc.class });
-    ((batw)localObject).a(this.jdField_a_of_type_Baua);
-    localObject = new baub();
-    ((baub)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    ((baub)localObject).jdField_c_of_type_JavaLangString = "255";
-    ((baub)localObject).jdField_a_of_type_Int = 9999;
-    ((baub)localObject).jdField_b_of_type_Int = 32;
-    ((baub)localObject).jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
-    ((baub)localObject).jdField_a_of_type_Boolean = true;
-    ((baub)localObject).i = str;
-    ((baub)localObject).jdField_e_of_type_Int = 102;
-    ((baub)localObject).l = true;
-    ((baub)localObject).n = 2;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((baub)localObject);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(((baub)localObject).jdField_a_of_type_Long), paramBundle);
-    this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(((baub)localObject).jdField_a_of_type_Long), paramBundle);
+    this.jdField_a_of_type_Bayj.addFilter(new Class[] { baul.class });
+    ((bayf)localObject).a(this.jdField_a_of_type_Bayj);
+    localObject = new bayk();
+    ((bayk)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+    ((bayk)localObject).jdField_c_of_type_JavaLangString = "255";
+    ((bayk)localObject).jdField_a_of_type_Int = 9999;
+    ((bayk)localObject).jdField_b_of_type_Int = 32;
+    ((bayk)localObject).jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
+    ((bayk)localObject).jdField_a_of_type_Boolean = true;
+    ((bayk)localObject).i = str;
+    ((bayk)localObject).jdField_e_of_type_Int = 102;
+    ((bayk)localObject).l = true;
+    ((bayk)localObject).n = 2;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((bayk)localObject);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(((bayk)localObject).jdField_a_of_type_Long), paramBundle);
+    this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(((bayk)localObject).jdField_a_of_type_Long), paramBundle);
     this.jdField_c_of_type_JavaUtilArrayList.add(localObject);
   }
   
@@ -241,58 +241,58 @@ public class swf
   {
     String str = paramBundle.getString("pic_server_id");
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    this.jdField_a_of_type_Baua.addFilter(new Class[] { baqb.class });
-    ((batw)localObject).a(this.jdField_a_of_type_Baua);
-    localObject = new baub();
-    ((baub)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    ((baub)localObject).jdField_c_of_type_JavaLangString = "255";
-    ((baub)localObject).jdField_a_of_type_Int = 9999;
-    ((baub)localObject).jdField_b_of_type_Int = 32;
-    ((baub)localObject).jdField_a_of_type_Long = ((Math.random() * 1000.0D));
-    ((baub)localObject).jdField_a_of_type_Boolean = false;
-    ((baub)localObject).jdField_e_of_type_JavaLangString = str;
-    ((baub)localObject).h = (aljq.aX + "c2bPTT/" + str + ".amr");
-    if (new File(((baub)localObject).h).exists())
+    this.jdField_a_of_type_Bayj.addFilter(new Class[] { bauk.class });
+    ((bayf)localObject).a(this.jdField_a_of_type_Bayj);
+    localObject = new bayk();
+    ((bayk)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+    ((bayk)localObject).jdField_c_of_type_JavaLangString = "255";
+    ((bayk)localObject).jdField_a_of_type_Int = 9999;
+    ((bayk)localObject).jdField_b_of_type_Int = 32;
+    ((bayk)localObject).jdField_a_of_type_Long = ((Math.random() * 1000.0D));
+    ((bayk)localObject).jdField_a_of_type_Boolean = false;
+    ((bayk)localObject).jdField_e_of_type_JavaLangString = str;
+    ((bayk)localObject).h = (alof.aX + "c2bPTT/" + str + ".amr");
+    if (new File(((bayk)localObject).h).exists())
     {
-      paramBundle.putString("pic_local_id", new sxb().a(((baub)localObject).h));
+      paramBundle.putString("pic_local_id", new sxb().a(((bayk)localObject).h));
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(26, paramBundle);
       return;
     }
-    ((baub)localObject).jdField_b_of_type_Boolean = true;
-    ((baub)localObject).d = 5;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((baub)localObject);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(((baub)localObject).jdField_a_of_type_Long), paramBundle);
-    this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(((baub)localObject).jdField_a_of_type_Long), paramBundle);
+    ((bayk)localObject).jdField_b_of_type_Boolean = true;
+    ((bayk)localObject).d = 5;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((bayk)localObject);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(((bayk)localObject).jdField_a_of_type_Long), paramBundle);
+    this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(((bayk)localObject).jdField_a_of_type_Long), paramBundle);
     this.jdField_c_of_type_JavaUtilArrayList.add(localObject);
   }
   
-  public void onResp(baqw parambaqw)
+  public void onResp(bavf parambavf)
   {
     Object localObject;
     Bundle localBundle;
-    if ((parambaqw != null) && ((parambaqw.jdField_a_of_type_Baqv instanceof baps)))
+    if ((parambavf != null) && ((parambavf.jdField_a_of_type_Bave instanceof baub)))
     {
-      localObject = (baps)parambaqw.jdField_a_of_type_Baqv;
-      if ((parambaqw.jdField_a_of_type_Int == 0) || (parambaqw.jdField_a_of_type_Int == 1))
+      localObject = (baub)parambavf.jdField_a_of_type_Bave;
+      if ((parambavf.jdField_a_of_type_Int == 0) || (parambavf.jdField_a_of_type_Int == 1))
       {
-        localBundle = (Bundle)this.jdField_c_of_type_JavaUtilHashMap.remove(((baps)localObject).jdField_a_of_type_JavaLangString);
-        a(((baps)localObject).jdField_a_of_type_JavaLangString);
+        localBundle = (Bundle)this.jdField_c_of_type_JavaUtilHashMap.remove(((baub)localObject).jdField_a_of_type_JavaLangString);
+        a(((baub)localObject).jdField_a_of_type_JavaLangString);
         if (localBundle != null)
         {
-          if ((((baps)localObject).jdField_a_of_type_JavaLangString == null) || (parambaqw.jdField_a_of_type_Int != 0)) {
+          if ((((baub)localObject).jdField_a_of_type_JavaLangString == null) || (parambavf.jdField_a_of_type_Int != 0)) {
             break label293;
           }
-          parambaqw = ((baps)localObject).jdField_a_of_type_JavaLangString.split("/");
-          if (parambaqw.length < 2) {
+          parambavf = ((baub)localObject).jdField_a_of_type_JavaLangString.split("/");
+          if (parambavf.length < 2) {
             break label293;
           }
-          localBundle.putString("pic_local_id", parambaqw[(parambaqw.length - 2)]);
-          localObject = ((baps)localObject).jdField_c_of_type_JavaLangString;
+          localBundle.putString("pic_local_id", parambavf[(parambavf.length - 2)]);
+          localObject = ((baub)localObject).jdField_c_of_type_JavaLangString;
           if ((localObject == null) || ("".equals(localObject))) {
             break label293;
           }
-          parambaqw = new File((String)localObject);
-          if (!parambaqw.exists()) {
+          parambavf = new File((String)localObject);
+          if (!parambavf.exists()) {
             break label293;
           }
           localBundle.putString("pic_local_path", (String)localObject);
@@ -301,7 +301,7 @@ public class swf
     }
     try
     {
-      String str1 = bdcs.b((String)localObject);
+      String str1 = bdhb.b((String)localObject);
       int i = ((String)localObject).lastIndexOf(".");
       if (i != -1)
       {
@@ -309,7 +309,7 @@ public class swf
         if ((str1 != null) && (!str1.equals(str2)))
         {
           localObject = ((String)localObject).substring(0, i) + "." + str1;
-          if (parambaqw.renameTo(new File((String)localObject))) {
+          if (parambavf.renameTo(new File((String)localObject))) {
             localBundle.putString("pic_local_path", (String)localObject);
           }
         }
@@ -317,7 +317,7 @@ public class swf
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(26, localBundle);
       return;
     }
-    catch (Exception parambaqw)
+    catch (Exception parambavf)
     {
       localBundle.putString("pic_local_id", "-1");
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(26, localBundle);
@@ -328,7 +328,7 @@ public class swf
     this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(26, localBundle);
   }
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

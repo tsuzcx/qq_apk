@@ -1,17 +1,9 @@
-public class uqe
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+
+public abstract interface uqe
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  
-  public uqe(int paramInt, String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
+  public abstract void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage);
 }
 
 

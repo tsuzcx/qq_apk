@@ -1,14 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 
-class addo
+public class addo
   implements DialogInterface.OnClickListener
 {
-  addo(addn paramaddn) {}
+  public addo(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 1) && (this.a.a(addn.a(this.a)))) {}
+    paramDialogInterface.dismiss();
   }
 }
 

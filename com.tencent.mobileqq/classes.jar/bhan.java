@@ -1,164 +1,55 @@
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.qqmini.sdk.runtime.audiorecorder.LameMp3EncodeThread;
-import java.lang.ref.WeakReference;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
-class bhan
-  extends Handler
+public class bhan
 {
-  int jdField_a_of_type_Int = 1;
-  private final WeakReference<bhak> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public bhan(bhak parambhak)
+  public static JSONObject a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambhak);
+    int i = 0;
+    localJSONObject = new JSONObject();
+    try
+    {
+      if (!TextUtils.isEmpty(paramString))
+      {
+        int j = paramString.indexOf("?");
+        String str = paramString;
+        if (j > -1)
+        {
+          str = paramString;
+          if (paramString.length() > j + 1) {
+            str = paramString.substring(j + 1);
+          }
+        }
+        paramString = str.split("&");
+        if ((paramString != null) && (paramString.length > 0))
+        {
+          j = paramString.length;
+          while (i < j)
+          {
+            str = paramString[i];
+            if (!TextUtils.isEmpty(str))
+            {
+              int k = str.indexOf("=");
+              if (k >= 0) {
+                localJSONObject.put(str.substring(0, k), str.substring(k + 1));
+              }
+            }
+            i += 1;
+          }
+        }
+      }
+      return localJSONObject;
+    }
+    catch (Throwable paramString)
+    {
+      QMLog.e("PathUtil", "getJSONQueryString exception " + paramString);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public static boolean a(String paramString)
   {
-    boolean bool = true;
-    bhak localbhak;
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-    {
-      localbhak = (bhak)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      switch (paramMessage.what)
-      {
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          return;
-                          paramMessage = (String)paramMessage.obj;
-                          if ((!TextUtils.isEmpty(paramMessage)) && (bhak.a(localbhak) != null)) {
-                            bhak.a(localbhak).onErrorInfo(paramMessage);
-                          }
-                        } while (!hasMessages(4));
-                        removeMessages(4);
-                        return;
-                        paramMessage = (String)paramMessage.obj;
-                        if ((!TextUtils.isEmpty(paramMessage)) && (bhak.a(localbhak) != null)) {
-                          bhak.a(localbhak).onErrorInfo(paramMessage);
-                        }
-                        if (hasMessages(104)) {
-                          removeMessages(104);
-                        }
-                        if ((!TextUtils.isEmpty(paramMessage)) && (bhak.a(localbhak) != null)) {
-                          bhak.a(localbhak).onErrorInfo(paramMessage);
-                        }
-                      } while (!hasMessages(104));
-                      removeMessages(104);
-                      return;
-                      if (bhak.a(localbhak) != null) {
-                        bhak.a(localbhak).onRecordStart();
-                      }
-                    } while (hasMessages(4));
-                    sendEmptyMessage(4);
-                    return;
-                    if (bhak.a(localbhak) != null) {
-                      bhak.a(localbhak).onRecordPause();
-                    }
-                  } while (!hasMessages(4));
-                  removeMessages(4);
-                  return;
-                  if (bhak.a(localbhak) != null) {
-                    bhak.a(localbhak).onRecordResume();
-                  }
-                } while (bhak.a(localbhak).hasMessages(4));
-                bhak.a(localbhak).sendEmptyMessage(4);
-                return;
-                if (bhak.a(localbhak) != null) {
-                  bhak.a(localbhak).onRecordStop(localbhak.a(), localbhak.a(), localbhak.b());
-                }
-              } while (!hasMessages(4));
-              removeMessages(4);
-              return;
-            } while (bhak.a(localbhak) == null);
-            byte[] arrayOfByte = (byte[])paramMessage.obj;
-            if (paramMessage.arg1 == 1) {}
-            for (;;)
-            {
-              bhak.a(localbhak).onRecordFrame(arrayOfByte, bool);
-              return;
-              bool = false;
-            }
-            if (hasMessages(4)) {
-              removeMessages(4);
-            }
-            int i = localbhak.c();
-            int j = localbhak.b();
-            if (bhak.a(localbhak) != null) {
-              bhak.a(localbhak).onRecordUpdate(j, i);
-            }
-            if (i == bhak.a(localbhak))
-            {
-              bhak.a(localbhak).c();
-              return;
-            }
-            sendEmptyMessageDelayed(4, localbhak.a());
-            return;
-            if (hasMessages(104)) {
-              removeMessages(104);
-            }
-            i = (int)(System.currentTimeMillis() - bhak.a(localbhak));
-            this.jdField_a_of_type_Int += 1;
-            if (this.jdField_a_of_type_Int > 5) {
-              this.jdField_a_of_type_Int = 1;
-            }
-            if (bhak.a(localbhak) != null) {
-              bhak.a(localbhak).onPlayUpdate(this.jdField_a_of_type_Int, i / 1000);
-            }
-            sendEmptyMessageDelayed(104, localbhak.a());
-            return;
-            if (bhak.a(localbhak) != null) {
-              bhak.a(localbhak).onPlayStart();
-            }
-            bhak.a(localbhak, System.currentTimeMillis());
-            sendEmptyMessageDelayed(104, localbhak.a());
-            return;
-            if (bhak.a(localbhak) != null) {
-              bhak.a(localbhak).onPlayPause();
-            }
-          } while (!hasMessages(104));
-          removeMessages(104);
-          return;
-          if (bhak.a(localbhak) != null) {
-            bhak.a(localbhak).onPlayResume();
-          }
-        } while (hasMessages(104));
-        sendEmptyMessage(104);
-        return;
-        if (bhak.a(localbhak) != null) {
-          bhak.a(localbhak).onPlayStop();
-        }
-      } while (!hasMessages(104));
-      removeMessages(104);
-      return;
-      if (bhak.a(localbhak) != null) {
-        bhak.a(localbhak).onPlayFinish();
-      }
-    } while (!hasMessages(104));
-    removeMessages(104);
+    return (!TextUtils.isEmpty(paramString)) && (paramString.startsWith("https://"));
   }
 }
 

@@ -1,14 +1,12 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class avmt
-  implements avnj
+  implements DialogInterface.OnClickListener
 {
-  avmt(avms paramavms, String paramString) {}
+  avmt(avmf paramavmf) {}
   
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean) {
-      this.jdField_a_of_type_Avms.a(this.jdField_a_of_type_JavaLangString, paramInt);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

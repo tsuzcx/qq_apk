@@ -1,46 +1,117 @@
+import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.UploadServerInfoCallback;
-import com.tencent.weiyun.transmission.upload.UploadFile;
-import com.tencent.weiyun.utils.Utils;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskPicBackupRsp;
+import com.tencent.component.network.DownloaderFactory;
+import com.tencent.component.network.downloader.Downloader;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.util.QZLog;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import cooperation.vip.ar.util.VipQGLoaderManager.1;
+import java.util.HashMap;
 
-class bkfe
-  implements bkgc<WeiyunPB.DiskPicBackupRsp>
+public class bkfe
+  implements bkek
 {
-  bkfe(bkfd parambkfd, WeiyunTransmissionGlobal.UploadServerInfoCallback paramUploadServerInfoCallback, UploadFile paramUploadFile) {}
+  private static final int jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("QZoneSetting", "vipARLevelValue", 20);
+  private static bkfe jdField_a_of_type_Bkfe;
+  private aosf jdField_a_of_type_Aosf;
+  private Downloader jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(BaseApplicationImpl.getContext()).getCommonDownloader();
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void a(int paramInt, String paramString, WeiyunPB.DiskPicBackupRsp paramDiskPicBackupRsp)
+  public static bkfe a()
   {
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, paramInt, paramString);
+    if (jdField_a_of_type_Bkfe == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bkfe == null) {
+        jdField_a_of_type_Bkfe = new bkfe();
+      }
+      return jdField_a_of_type_Bkfe;
+    }
+    finally {}
   }
   
-  public void a(WeiyunPB.DiskPicBackupRsp paramDiskPicBackupRsp)
+  public void a(aosf paramaosf)
   {
-    if (paramDiskPicBackupRsp == null)
+    if (paramaosf != null)
     {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, 1828004, alpo.a(2131715455));
+      this.jdField_a_of_type_Aosf = paramaosf;
+      QLog.i("VipARQGLoaderManager", 1, "onConfigLoadSuccess bean != null  switch = " + paramaosf.jdField_a_of_type_Int);
+    }
+  }
+  
+  public void a(aosg paramaosg, bkej parambkej)
+  {
+    if ((paramaosg == null) || (TextUtils.isEmpty(paramaosg.b))) {}
+    String str1;
+    do
+    {
+      return;
+      str1 = paramaosg.b;
+      if (this.jdField_a_of_type_JavaUtilHashMap.get(str1) == null) {
+        break;
+      }
+      QZLog.i("VipARQGLoaderManager", 1, "getQGModelData map exist");
+    } while (parambkej == null);
+    parambkej.a((String)this.jdField_a_of_type_JavaUtilHashMap.get(str1));
+    return;
+    String str2 = QzoneZipCacheHelper.getBasePath("vip_qg", String.valueOf(str1.hashCode()));
+    if (TextUtils.isEmpty(str2))
+    {
+      QZLog.i("VipARQGLoaderManager", 1, "getQGModelData pathDir = null");
       return;
     }
-    ByteStringMicro localByteStringMicro1 = paramDiskPicBackupRsp.pdir_key.get();
-    ByteStringMicro localByteStringMicro2 = paramDiskPicBackupRsp.ppdir_key.get();
-    if (localByteStringMicro1 != null) {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey = bkia.a(localByteStringMicro1);
+    ThreadManager.executeOnFileThread(new VipQGLoaderManager.1(this, str2, str1, parambkej, paramaosg));
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.e("VipARQGLoaderManager", 1, "onConfigLoadFail error = " + paramString);
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Aosf != null) && (this.jdField_a_of_type_Aosf.jdField_a_of_type_Int != 0) && (!bkey.a(this.jdField_a_of_type_Aosf.jdField_a_of_type_JavaLangString)) && (Build.VERSION.SDK_INT > jdField_a_of_type_Int);
+  }
+  
+  public void b(aosf paramaosf)
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("setVipARConfig vipARConfig == null  ");
+    if (paramaosf == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("VipARQGLoaderManager", 1, bool);
+      this.jdField_a_of_type_Aosf = paramaosf;
+      return;
     }
-    if (localByteStringMicro2 != null) {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey = bkia.a(localByteStringMicro2);
+  }
+  
+  public void b(aosg paramaosg, bkej parambkej)
+  {
+    if ((paramaosg == null) || (TextUtils.isEmpty(paramaosg.b)) || (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader == null))
+    {
+      if (parambkej != null)
+      {
+        localObject = new StringBuilder().append("downloadQGModelData zipUrl = null or Download = null , config == null ");
+        if (paramaosg != null) {
+          break label61;
+        }
+      }
+      label61:
+      for (boolean bool = true;; bool = false)
+      {
+        parambkej.b(bool);
+        return;
+      }
     }
-    if (!TextUtils.isEmpty(paramDiskPicBackupRsp.backup_path.get())) {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirName = paramDiskPicBackupRsp.backup_path.get();
+    Object localObject = paramaosg.b;
+    String str = QzoneZipCacheHelper.getBasePath("vip_qg", String.valueOf(((String)localObject).hashCode())) + ".zip";
+    if (QZLog.isColorLevel()) {
+      QZLog.i("VipARQGLoaderManager", 2, "download qg js file zipUrl = " + (String)localObject + " tempPath = " + str);
     }
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.setServerInfo(paramDiskPicBackupRsp.file_exist.get(), paramDiskPicBackupRsp.file_id.get(), paramDiskPicBackupRsp.server_name.get(), paramDiskPicBackupRsp.inside_upload_ip.get(), paramDiskPicBackupRsp.server_port.get(), Utils.bytes2HexStr(paramDiskPicBackupRsp.check_key.get().toByteArray()).toLowerCase(), paramDiskPicBackupRsp.channel_count.get(), Integer.toString(paramDiskPicBackupRsp.file_version.get()));
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, true, 0, null);
-    bkhv.a(BaseApplicationImpl.getApplication().getApplicationContext(), String.valueOf(this.jdField_a_of_type_Bkfd.getCurrentUin()), "upload_coupon_count", String.valueOf(paramDiskPicBackupRsp.coupon_count.get()));
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download((String)localObject, str, false, new bkff(this, parambkej, (String)localObject, str, paramaosg));
   }
 }
 

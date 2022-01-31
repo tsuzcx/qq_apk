@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
-import bglg;
+import bgpn;
 import com.tencent.qqmini.sdk.core.plugins.IJsPlugin;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.ArrayList;
@@ -102,7 +102,7 @@ public class JsPluginList
       return null;
     }
     String str = "EVENT_HANDLERS_" + paramIJsPlugin.getClass().getSimpleName();
-    paramIJsPlugin = bglg.a((String)sPluginScope.get(paramIJsPlugin.getClass().getName()), str);
+    paramIJsPlugin = bgpn.a((String)sPluginScope.get(paramIJsPlugin.getClass().getName()), str);
     if ((paramIJsPlugin instanceof Map))
     {
       paramIJsPlugin = ((Map)paramIJsPlugin).get(paramString);
@@ -115,7 +115,7 @@ public class JsPluginList
   
   private static Map<String, Map> getPluginEventsByScope(String paramString)
   {
-    paramString = bglg.a(paramString, "PLUGIN_EVENTS");
+    paramString = bgpn.a(paramString, "PLUGIN_EVENTS");
     if ((paramString instanceof Map)) {
       return (Map)paramString;
     }
@@ -137,7 +137,7 @@ public class JsPluginList
   
   private static List<String> getPreloadPluginsByScope(String paramString)
   {
-    paramString = bglg.a(paramString, "PRELOAD_PLUGINS");
+    paramString = bgpn.a(paramString, "PRELOAD_PLUGINS");
     if ((paramString instanceof List)) {
       return (List)paramString;
     }
@@ -160,7 +160,7 @@ public class JsPluginList
   
   private static Map<String, Map> getSecondaryPluginEventsByScope(String paramString)
   {
-    paramString = bglg.a(paramString, "SECONDARY_PLUGIN_EVENTS");
+    paramString = bgpn.a(paramString, "SECONDARY_PLUGIN_EVENTS");
     if ((paramString instanceof Map)) {
       return (Map)paramString;
     }
@@ -170,7 +170,7 @@ public class JsPluginList
   public static Map<String, String> getServiceInjectors(IJsPlugin paramIJsPlugin)
   {
     String str = "SERVICE_INJECTORS_" + paramIJsPlugin.getClass().getSimpleName();
-    paramIJsPlugin = bglg.a((String)sPluginScope.get(paramIJsPlugin.getClass().getName()), str);
+    paramIJsPlugin = bgpn.a((String)sPluginScope.get(paramIJsPlugin.getClass().getName()), str);
     if ((paramIJsPlugin instanceof Map)) {
       return (Map)paramIJsPlugin;
     }

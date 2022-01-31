@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acud;
+import acys;
 
 public class ForwardTroopListFragment$MyTroopObserver$1
   implements Runnable
 {
-  public ForwardTroopListFragment$MyTroopObserver$1(acud paramacud) {}
+  public ForwardTroopListFragment$MyTroopObserver$1(acys paramacys) {}
   
   public void run()
   {

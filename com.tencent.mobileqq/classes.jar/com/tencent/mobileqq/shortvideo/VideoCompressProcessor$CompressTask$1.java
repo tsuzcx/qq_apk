@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.shortvideo;
 
-import azap;
-import azas;
+import azey;
+import azfb;
 
 public class VideoCompressProcessor$CompressTask$1
   implements Runnable
 {
-  public VideoCompressProcessor$CompressTask$1(azap paramazap, boolean paramBoolean) {}
+  public VideoCompressProcessor$CompressTask$1(azey paramazey, boolean paramBoolean) {}
   
   public void run()
   {
-    azap.a(this.this$0).a(this.this$0.a, this.a);
+    azey.a(this.this$0).a(this.this$0.a, this.a);
   }
 }
 

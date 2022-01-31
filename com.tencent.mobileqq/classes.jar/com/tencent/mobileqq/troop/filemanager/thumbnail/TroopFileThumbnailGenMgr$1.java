@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
-import bbsu;
+import bbxd;
 
 public class TroopFileThumbnailGenMgr$1
   implements Runnable
 {
-  public TroopFileThumbnailGenMgr$1(bbsu parambbsu, String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask) {}
+  public TroopFileThumbnailGenMgr$1(bbxd parambbxd, String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask) {}
   
   public void run()
   {

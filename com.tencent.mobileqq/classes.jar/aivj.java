@@ -1,22 +1,17 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import mqq.observer.BusinessObserver;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
 
 public class aivj
-  implements BusinessObserver
+  implements ajez
 {
-  public void a(int paramInt, String paramString, Bundle paramBundle) {}
+  public aivj(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(String paramString)
   {
-    if ((paramInt == 1) && (paramBundle != null))
-    {
-      paramInt = paramBundle.getInt("btype");
-      String str = paramBundle.getString("bid");
-      if ((aivh.a(paramInt)) && (!TextUtils.isEmpty(str))) {
-        a(paramInt, str, paramBundle);
-      }
-    }
+    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", paramString);
+    this.a.startActivity(localIntent);
   }
 }
 

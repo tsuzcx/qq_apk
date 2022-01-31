@@ -9,13 +9,13 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.Surface;
-import bghn;
-import bgjm;
-import bhax;
-import bhay;
-import bhaz;
-import bhba;
-import bhbi;
+import bglu;
+import bgnt;
+import bhfe;
+import bhff;
+import bhfg;
+import bhfh;
+import bhfp;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer;
@@ -33,8 +33,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class VideoEmbeddedWidgetClient
-  extends bhax
-  implements Handler.Callback, bhay, IEmbeddedWidgetClient
+  extends bhfe
+  implements Handler.Callback, bhff, IEmbeddedWidgetClient
 {
   private static final int DEFAULT_INTERVAL_TIME = 400;
   private static final int EVENT_INIT_SUCC = 1;
@@ -49,9 +49,9 @@ public class VideoEmbeddedWidgetClient
   private boolean autoPauseIfNavigate = true;
   private boolean autoPauseIfOpenNative = true;
   private boolean autoplay;
-  private bghn callBackWebview;
+  private bglu callBackWebview;
   private String cueFilePath = "";
-  private bghn curAppBrandRuntime;
+  private bglu curAppBrandRuntime;
   private int curPageWebviewId;
   private String data = "";
   private String filePath = "";
@@ -79,11 +79,11 @@ public class VideoEmbeddedWidgetClient
   private boolean pauseByNavigate;
   private boolean pauseByOpenNative;
   private VideoTextureRenderer renderer;
-  private bhaz stateCanPlay = new bhaz(this, Integer.valueOf(5));
-  private bhaz stateInited = new bhaz(this, Integer.valueOf(2));
-  private bhaz stateInitial = new bhaz(this, Integer.valueOf(1));
-  private bhaz stateVideoSurfaceCreated = new bhaz(this, Integer.valueOf(4));
-  private bhaz stateX5SurfaceCreated = new bhaz(this, Integer.valueOf(3));
+  private bhfg stateCanPlay = new bhfg(this, Integer.valueOf(5));
+  private bhfg stateInited = new bhfg(this, Integer.valueOf(2));
+  private bhfg stateInitial = new bhfg(this, Integer.valueOf(1));
+  private bhfg stateVideoSurfaceCreated = new bhfg(this, Integer.valueOf(4));
+  private bhfg stateX5SurfaceCreated = new bhfg(this, Integer.valueOf(3));
   private int videoHeight = -1;
   private SurfaceTexture videoTexture;
   private int videoWidth = -1;
@@ -116,10 +116,10 @@ public class VideoEmbeddedWidgetClient
   
   private void initStateConfig()
   {
-    addStateTransfer(new bhba(this).a(this.stateInitial).b(this.stateInited).a(Integer.valueOf(1)));
-    addStateTransfer(new bhba(this).a(this.stateInited).b(this.stateX5SurfaceCreated).a(Integer.valueOf(2)));
-    addStateTransfer(new bhba(this).a(this.stateX5SurfaceCreated).b(this.stateVideoSurfaceCreated).a(Integer.valueOf(3)));
-    addStateTransfer(new bhba(this).a(this.stateVideoSurfaceCreated).b(this.stateCanPlay).a(Integer.valueOf(5)));
+    addStateTransfer(new bhfh(this).a(this.stateInitial).b(this.stateInited).a(Integer.valueOf(1)));
+    addStateTransfer(new bhfh(this).a(this.stateInited).b(this.stateX5SurfaceCreated).a(Integer.valueOf(2)));
+    addStateTransfer(new bhfh(this).a(this.stateX5SurfaceCreated).b(this.stateVideoSurfaceCreated).a(Integer.valueOf(3)));
+    addStateTransfer(new bhfh(this).a(this.stateVideoSurfaceCreated).b(this.stateCanPlay).a(Integer.valueOf(5)));
     setCurrState(this.stateInitial);
   }
   
@@ -154,12 +154,12 @@ public class VideoEmbeddedWidgetClient
     }
   }
   
-  public void handleInsertXWebVideo(JSONObject paramJSONObject, bghn parambghn1, bghn parambghn2)
+  public void handleInsertXWebVideo(JSONObject paramJSONObject, bglu parambglu1, bglu parambglu2)
   {
-    this.callBackWebview = parambghn1;
-    this.curAppBrandRuntime = parambghn2;
-    if ((parambghn1 instanceof bhbi)) {
-      this.curPageWebviewId = ((bhbi)parambghn1).a();
+    this.callBackWebview = parambglu1;
+    this.curAppBrandRuntime = parambglu2;
+    if ((parambglu1 instanceof bhfp)) {
+      this.curPageWebviewId = ((bhfp)parambglu1).a();
     }
     for (;;)
     {
@@ -168,10 +168,10 @@ public class VideoEmbeddedWidgetClient
         QMLog.d("miniapp-embedded", "handleInsertXWebVideo : " + paramJSONObject.toString());
         if (paramJSONObject.has("position"))
         {
-          parambghn1 = paramJSONObject.optJSONObject("position");
-          this.width = ((int)(DisplayUtil.getDensity(AppLoaderFactory.g().getContext()) * parambghn1.optInt("width", -1) + 0.5F));
+          parambglu1 = paramJSONObject.optJSONObject("position");
+          this.width = ((int)(DisplayUtil.getDensity(AppLoaderFactory.g().getContext()) * parambglu1.optInt("width", -1) + 0.5F));
           float f = DisplayUtil.getDensity(AppLoaderFactory.g().getContext());
-          this.height = ((int)(parambghn1.optInt("height", -1) * f + 0.5F));
+          this.height = ((int)(parambglu1.optInt("height", -1) * f + 0.5F));
         }
         this.viewId = paramJSONObject.optInt("viewId", -1);
         this.needEvent = paramJSONObject.optBoolean("needEvent", true);
@@ -189,7 +189,7 @@ public class VideoEmbeddedWidgetClient
         this.renderer.a(this.width, this.height);
       }
       return;
-      QMLog.e("miniapp-embedded", "cant get webviewId from " + parambghn1);
+      QMLog.e("miniapp-embedded", "cant get webviewId from " + parambglu1);
     }
   }
   
@@ -285,7 +285,7 @@ public class VideoEmbeddedWidgetClient
       if ((!this.filePath.startsWith("http")) && (!this.filePath.startsWith("https"))) {
         break label405;
       }
-      paramJSONObject = this.mMediaPlayerUtil.getUrl(bgjm.a().a(this.filePath));
+      paramJSONObject = this.mMediaPlayerUtil.getUrl(bgnt.a().a(this.filePath));
       QMLog.d("miniapp-embedded", "handleOperateXWebVideo playUrl : " + paramJSONObject);
       this.mMediaPlayer.setDataSource(paramJSONObject);
       this.handler.sendEmptyMessage(1003);
@@ -341,7 +341,7 @@ public class VideoEmbeddedWidgetClient
           QMLog.e("miniapp-embedded", "VIDEO_EVENT_PLAY error.", paramJSONObject);
           return;
         }
-        paramJSONObject = bgjm.a().a(this.filePath);
+        paramJSONObject = bgnt.a().a(this.filePath);
         break;
         this.hasPlayClicked = true;
         try
@@ -507,7 +507,7 @@ public class VideoEmbeddedWidgetClient
           if ((!this.filePath.startsWith("http")) && (!this.filePath.startsWith("https"))) {
             continue;
           }
-          str = this.mMediaPlayerUtil.getUrl(bgjm.a().a(this.filePath));
+          str = this.mMediaPlayerUtil.getUrl(bgnt.a().a(this.filePath));
           QMLog.d("miniapp-embedded", "handleUpdateXWebVideo playUrl : " + str);
           this.mMediaPlayer.setDataSource(str);
           this.handler.sendEmptyMessage(1003);
@@ -546,7 +546,7 @@ public class VideoEmbeddedWidgetClient
         this.mMediaPlayer.setLooping(this.loop);
       }
       return;
-      str = bgjm.a().a(this.filePath);
+      str = bgnt.a().a(this.filePath);
     }
   }
   

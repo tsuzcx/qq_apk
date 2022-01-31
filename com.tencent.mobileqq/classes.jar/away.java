@@ -1,17 +1,21 @@
-public final class away
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class away
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public long d;
+  away(awaw paramawaw, awbl paramawbl) {}
+  
+  public void onClick(View paramView)
+  {
+    awaw.a(this.jdField_a_of_type_Awaw).removeMessages(101);
+    awaw.a(this.jdField_a_of_type_Awaw).obtainMessage(101).sendToTarget();
+    if (this.jdField_a_of_type_Awbl.a != null) {
+      this.jdField_a_of_type_Awbl.a.a();
+    }
+  }
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.activity.delDownloadFile;
 
 import android.content.Context;
-import aqiz;
-import aqjd;
-import aqlr;
-import aqxj;
-import arqz;
-import azmj;
+import aqni;
+import aqnm;
+import aqqa;
+import arbs;
+import arvi;
+import azqs;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
@@ -23,7 +23,7 @@ import java.util.Set;
 
 public class QfileLocalFileDelFileTabView
   extends QfileLocalFileDocTabView
-  implements aqjd
+  implements aqnm
 {
   int jdField_a_of_type_Int = -1;
   Pair<String, Integer> jdField_a_of_type_ComTencentUtilPair;
@@ -37,7 +37,7 @@ public class QfileLocalFileDelFileTabView
   final int jdField_c_of_type_Int = 1000;
   List<FileInfo> jdField_c_of_type_JavaUtilList = new ArrayList();
   
-  public QfileLocalFileDelFileTabView(Context paramContext, List<arqz> paramList, Pair<String, Integer> paramPair)
+  public QfileLocalFileDelFileTabView(Context paramContext, List<arvi> paramList, Pair<String, Integer> paramPair)
   {
     super(paramContext, paramList, false);
     this.jdField_d_of_type_Int = 1;
@@ -137,11 +137,11 @@ public class QfileLocalFileDelFileTabView
     }
   }
   
-  public aqiz a()
+  public aqni a()
   {
-    aqlr localaqlr = new aqlr(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_d_of_type_AndroidViewView$OnClickListener);
-    localaqlr.a(this);
-    return localaqlr;
+    aqqa localaqqa = new aqqa(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_d_of_type_AndroidViewView$OnClickListener);
+    localaqqa.a(this);
+    return localaqqa;
   }
   
   public String a(FileInfo paramFileInfo)
@@ -217,7 +217,7 @@ public class QfileLocalFileDelFileTabView
       this.jdField_c_of_type_JavaUtilList.clear();
       i();
       l2 /= 1048576L;
-      azmj.b(null, "dc00898", "", "", "0X800A0CC", "0X800A0CC", c(), 0, "" + l1, "" + l2, "", "");
+      azqs.b(null, "dc00898", "", "", "0X800A0CC", "0X800A0CC", c(), 0, "" + l1, "" + l2, "", "");
       return;
     }
   }
@@ -240,8 +240,8 @@ public class QfileLocalFileDelFileTabView
   {
     this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
     this.jdField_c_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    long l = aqxj.d() / 1048576L;
-    azmj.b(null, "dc00898", "", "", "0X800A0CB", "0X800A0CB", c(), 0, "" + this.jdField_b_of_type_Int, "" + l, "", "");
+    long l = arbs.d() / 1048576L;
+    azqs.b(null, "dc00898", "", "", "0X800A0CB", "0X800A0CB", c(), 0, "" + this.jdField_b_of_type_Int, "" + l, "", "");
     super.d();
   }
   
@@ -289,15 +289,15 @@ public class QfileLocalFileDelFileTabView
       i();
       setSelect(0);
       return;
-      azmj.b(null, "dc00898", "", "", "0X800A0C8", "0X800A0C8", c(), 0, "", "", "", "");
+      azqs.b(null, "dc00898", "", "", "0X800A0C8", "0X800A0C8", c(), 0, "", "", "", "");
       if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
         this.jdField_c_of_type_JavaUtilLinkedHashMap.put(this.jdField_a_of_type_ComTencentUtilPair.first, this.jdField_a_of_type_JavaUtilList);
         continue;
-        azmj.b(null, "dc00898", "", "", "0X800A0C9", "0X800A0C9", c(), 0, "", "", "", "");
+        azqs.b(null, "dc00898", "", "", "0X800A0C9", "0X800A0C9", c(), 0, "", "", "", "");
         this.jdField_c_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
         continue;
-        azmj.b(null, "dc00898", "", "", "0X800A0CA", "0X800A0CA", c(), 0, "", "", "", "");
+        azqs.b(null, "dc00898", "", "", "0X800A0CA", "0X800A0CA", c(), 0, "", "", "", "");
         this.jdField_c_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_b_of_type_JavaUtilLinkedHashMap);
       }
     }

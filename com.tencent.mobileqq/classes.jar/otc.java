@@ -30,7 +30,7 @@ public class otc
           str1 = (String)((Iterator)localObject).next();
           str2 = (String)paramString.get(str1);
           if (TextUtils.equals(str1, "rij_comment_family_entrance_switch")) {
-            bjxj.n(Integer.parseInt(str2));
+            bkbq.n(Integer.parseInt(str2));
           }
         }
         else
@@ -43,7 +43,7 @@ public class otc
         paramString.printStackTrace();
       }
       if (TextUtils.equals(str1, "rij_small_zhitiao_entrance_switch")) {
-        bjxj.a("readinjjoy_notes_config", Integer.valueOf(Integer.parseInt(str2)));
+        bkbq.a("readinjjoy_notes_config", Integer.valueOf(Integer.parseInt(str2)));
       }
     }
   }
@@ -51,7 +51,7 @@ public class otc
   public void onWipeConfig(int paramInt)
   {
     super.onWipeConfig(paramInt);
-    bjxj.n(0);
+    bkbq.n(0);
   }
 }
 

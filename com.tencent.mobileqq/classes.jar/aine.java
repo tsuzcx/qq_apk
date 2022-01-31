@@ -1,38 +1,44 @@
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import com.tencent.mobileqq.data.QQAlbumInfo;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity.1;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aine
-  extends aimb
+  extends awhw
 {
-  protected aine(AlbumListFragment paramAlbumListFragment)
-  {
-    super(paramAlbumListFragment);
-  }
+  public aine(PhoneLaunchActivity.1 param1) {}
   
-  public void initData(Intent paramIntent)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    super.initData(paramIntent);
-    this.a.filter.setSupportWebp(true);
-  }
-  
-  public boolean onItemClick(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
-  {
-    int i;
-    if (paramQQAlbumInfo._id.equals("$RecentAlbumId")) {
-      i = 1;
-    }
-    for (;;)
+    PhoneLaunchActivity.a(this.a.this$0).setEnabled(true);
+    if (this.a.this$0.a != null)
     {
-      azmj.b(null, "CliOper", "", this.mPhotoCommonData.myUin, "0X800A917", "0X800A917", i, 0, "", "", "", "");
-      return super.onItemClick(paramQQAlbumInfo, paramInt, paramIntent);
-      if (paramQQAlbumInfo._id.equals("qzone_album")) {
-        i = 2;
-      } else {
-        i = 3;
-      }
+      this.a.this$0.app.unRegistObserver(this.a.this$0.a);
+      this.a.this$0.a = null;
     }
+    this.a.this$0.b();
+    if (paramBoolean)
+    {
+      Object localObject = this.a.this$0;
+      if ((PhoneLaunchActivity.a(this.a.this$0)) || (PhoneLaunchActivity.b(this.a.this$0)))
+      {
+        this.a.this$0.setResult(-1);
+        this.a.this$0.finish();
+        return;
+      }
+      localObject = new Intent((Context)localObject, SettingActivity2.class);
+      if (PhoneLaunchActivity.c(this.a.this$0)) {
+        ((Intent)localObject).putExtra("kSrouce", 7);
+      }
+      this.a.this$0.startActivityForResult((Intent)localObject, 2);
+      this.a.this$0.setResult(-1);
+      this.a.this$0.finish();
+      return;
+    }
+    this.a.this$0.a(alud.a(2131708404));
   }
 }
 

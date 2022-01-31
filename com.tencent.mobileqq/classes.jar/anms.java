@@ -1,18 +1,11 @@
-import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-
-final class anms
-  implements ArkEnvironmentManager.LibraryLoader
+class anms
+  implements anmy
 {
-  public boolean Load()
-  {
-    ArkAppCenter.f();
-    return ArkAppCenter.b;
-  }
+  anms(anmm paramanmm, anmy paramanmy) {}
   
-  public boolean isLibraryLoad()
+  public void a(boolean paramBoolean)
   {
-    return ArkAppCenter.b;
+    this.jdField_a_of_type_Anmy.a(paramBoolean);
   }
 }
 

@@ -1,45 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity.4.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class adgs
-  implements CompoundButton.OnCheckedChangeListener
+  extends ambl
 {
-  public adgs(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adgs(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
-    {
-      bhnv.a();
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label81;
-      }
-      paramCompoundButton = "0X8004BE7";
-      label23:
-      if (!paramBoolean) {
-        break label87;
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
     }
-    label81:
-    label87:
-    for (String str = "0X8004BE7";; str = "0X8004BE6")
-    {
-      azmj.b(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "1", "", "", "");
-      if (AppSetting.c) {
-        NotifyPushSettingActivity.d(this.a).setContentDescription(alpo.a(2131708022));
-      }
+    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
       return;
-      bhnv.b();
-      break;
-      paramCompoundButton = "0X8004BE6";
-      break label23;
     }
+    paramObject = aieq.a().a();
+    this.a.runOnUiThread(new LebaListMgrActivity.4.1(this, paramObject));
   }
 }
 

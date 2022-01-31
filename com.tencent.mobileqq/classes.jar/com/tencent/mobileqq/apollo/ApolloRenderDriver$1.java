@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import akmn;
-import albu;
+import akrc;
+import algj;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -23,14 +23,14 @@ class ApolloRenderDriver$1
     if (QLog.isColorLevel()) {
       QLog.d("ApolloRenderDriver", 2, "start run.");
     }
-    String[] arrayOfString = albu.a(ApolloUtil.f(1), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_ArrayOfJavaLangString[1]);
+    String[] arrayOfString = algj.a(ApolloUtil.f(1), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_ArrayOfJavaLangString[1]);
     Object localObject3 = null;
     Object localObject1 = localObject3;
     if (this.jdField_b_of_type_ArrayOfJavaLangString != null)
     {
       localObject1 = localObject3;
       if (this.jdField_b_of_type_ArrayOfJavaLangString.length == 2) {
-        localObject1 = albu.a(ApolloUtil.f(2), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_b_of_type_ArrayOfJavaLangString[1]);
+        localObject1 = algj.a(ApolloUtil.f(2), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_b_of_type_ArrayOfJavaLangString[1]);
       }
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
@@ -51,8 +51,8 @@ class ApolloRenderDriver$1
               i += 1;
             }
             this.this$0.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-            if ((!this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.this$0.jdField_a_of_type_Akmn != null)) {
-              this.this$0.jdField_a_of_type_Akmn.onRender();
+            if ((!this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.this$0.jdField_a_of_type_Akrc != null)) {
+              this.this$0.jdField_a_of_type_Akrc.onRender();
             }
             return;
           }

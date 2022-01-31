@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.identification;
 
-import astc;
+import asxl;
 import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 public class IdentificationActivityHelper$1
   implements Runnable
 {
-  public IdentificationActivityHelper$1(astc paramastc) {}
+  public IdentificationActivityHelper$1(asxl paramasxl) {}
   
   public void run()
   {
-    astc.a(this.this$0).a(false, 215);
+    asxl.a(this.this$0).a(false, 215);
   }
 }
 

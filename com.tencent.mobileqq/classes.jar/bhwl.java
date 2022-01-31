@@ -1,9 +1,4 @@
-import com.tencent.widget.ScrollView;
-
-public abstract interface bhwl
-{
-  public abstract void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean);
-}
+public abstract interface bhwl {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

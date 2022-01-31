@@ -31,7 +31,7 @@ public class shh
     {
       return;
       QLog.d("UserSpan", 1, new Object[] { "openPersonUrl, uin = ", Long.valueOf(paramLong) });
-      ors.a(paramContext, oqu.g + bdbi.encodeToString(String.valueOf(paramLong).getBytes(), 2));
+      ors.a(paramContext, oqu.g + bdfr.encodeToString(String.valueOf(paramLong).getBytes(), 2));
       localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
       ors.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = localArticleInfo;
       str = ors.a(this.b, localArticleInfo, paramLong);

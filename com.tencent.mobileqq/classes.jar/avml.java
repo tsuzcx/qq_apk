@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.14.1;
 
 public class avml
-  implements avmy
+  extends auua
 {
-  public avml(NearbyMomentFragment paramNearbyMomentFragment, avmr paramavmr) {}
+  avml(avmf paramavmf) {}
   
-  public void a(boolean paramBoolean1, List<avnx> paramList, boolean paramBoolean2, int paramInt)
+  public void a(auub paramauub)
   {
-    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).clear();
-    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).addAll(paramList);
-    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, paramList);
-    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, paramBoolean1, paramBoolean2, paramInt, paramList, this.jdField_a_of_type_Avmr);
+    ThreadManager.post(new NearbyProfileDisplayTribePanel.14.1(this, paramauub), 8, null, false);
+    this.a.a = paramauub;
   }
 }
 

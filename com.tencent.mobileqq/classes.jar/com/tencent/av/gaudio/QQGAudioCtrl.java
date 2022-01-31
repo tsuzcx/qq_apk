@@ -980,7 +980,7 @@ public class QQGAudioCtrl
   
   public void init(Context paramContext, long paramLong, int paramInt)
   {
-    init(paramContext, paramLong, paramInt, "8.3.3");
+    init(paramContext, paramLong, paramInt, "8.3.5");
   }
   
   public native void init(Context paramContext, long paramLong, int paramInt, String paramString);

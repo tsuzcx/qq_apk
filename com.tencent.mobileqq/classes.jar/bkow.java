@@ -1,14 +1,13 @@
-import com.tencent.ttpic.openapi.filter.MaterialLoadFinishListener;
+import java.io.File;
 
-class bkow
-  implements MaterialLoadFinishListener
+public class bkow
 {
-  bkow(bkov parambkov) {}
-  
-  public void onLoadFinish(long paramLong)
-  {
-    blen.a().a(bkov.a(this.a), paramLong);
-  }
+  public static final String a = bkpi.a + File.separator + "aiscene";
+  public static final String b = a + File.separator + "res";
+  public static final String c = a + File.separator + "res_zip_download";
+  public static final String d = b + File.separator + "AISceneGuide";
+  public static final String e = b + File.separator + "AISceneLoading";
+  public static final String f = b + File.separator + "AutoAISceneAni";
 }
 
 

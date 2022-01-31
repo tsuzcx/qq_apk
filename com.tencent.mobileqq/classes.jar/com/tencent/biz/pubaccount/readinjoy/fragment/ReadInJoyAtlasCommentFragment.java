@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import adky;
+import adpn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -39,7 +39,7 @@ import oyv;
 import oyw;
 import oyx;
 import qmr;
-import xod;
+import xsm;
 
 public class ReadInJoyAtlasCommentFragment
   extends PublicBaseFragment
@@ -112,7 +112,7 @@ public class ReadInJoyAtlasCommentFragment
             paramString1.putExtra("bundle", paramBundle);
           }
           QLog.d(jdField_a_of_type_JavaLangString, 1, "readToStartComment");
-          adky.a((Activity)paramContext, paramString1, PublicTransFragmentActivity.class, ReadInJoyAtlasCommentFragment.class, 6003);
+          adpn.a((Activity)paramContext, paramString1, PublicTransFragmentActivity.class, ReadInJoyAtlasCommentFragment.class, 6003);
           return;
           j = 0;
         }
@@ -138,9 +138,9 @@ public class ReadInJoyAtlasCommentFragment
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment = new ReadInJoyCommentListFragment();
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataCommonCommentData);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a((Bundle)localObject, new oyx(this), (ViewGroup)getView().findViewById(2131375246));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a((Bundle)localObject, new oyx(this), (ViewGroup)getView().findViewById(2131375297));
       localObject = getActivity().getSupportFragmentManager().beginTransaction();
-      ((FragmentTransaction)localObject).add(2131375246, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment);
+      ((FragmentTransaction)localObject).add(2131375297, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment);
       ((FragmentTransaction)localObject).commitAllowingStateLoss();
     }
   }
@@ -150,7 +150,7 @@ public class ReadInJoyAtlasCommentFragment
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment != null)
     {
       AnchorData localAnchorData = (AnchorData)getActivity().getIntent().getParcelableExtra("anchorData");
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.c(2131375246);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.c(2131375297);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a(paramArticleInfo, localAnchorData, this.jdField_a_of_type_Int);
     }
   }
@@ -197,13 +197,13 @@ public class ReadInJoyAtlasCommentFragment
       paramViewGroup.setOnClickListener(new oyu(this));
       paramLayoutInflater.post(new ReadInJoyAtlasCommentFragment.2(this));
       paramViewGroup = new FrameLayout(getActivity());
-      paramViewGroup.setId(2131375246);
+      paramViewGroup.setId(2131375297);
       if (!this.jdField_a_of_type_Boolean) {
         break label328;
       }
       paramBundle = ors.a(getActivity());
       i = (int)(paramBundle[1] - paramBundle[0] / 16.0F * 9.0F);
-      paramBundle = new FrameLayout.LayoutParams(xod.a(getActivity()), i);
+      paramBundle = new FrameLayout.LayoutParams(xsm.a(getActivity()), i);
       paramBundle.gravity = 80;
       paramLayoutInflater.addView(paramViewGroup, paramBundle);
     }
@@ -217,9 +217,9 @@ public class ReadInJoyAtlasCommentFragment
       getActivity().mSystemBarComp.setStatusColor(0);
       break;
       label328:
-      i = xod.c(getActivity());
-      int j = xod.e(getActivity());
-      paramBundle = new FrameLayout.LayoutParams(xod.a(getActivity()), i - j);
+      i = xsm.c(getActivity());
+      int j = xsm.e(getActivity());
+      paramBundle = new FrameLayout.LayoutParams(xsm.a(getActivity()), i - j);
       paramBundle.gravity = 80;
       paramLayoutInflater.addView(paramViewGroup, paramBundle);
     }

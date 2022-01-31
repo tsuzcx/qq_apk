@@ -9,10 +9,10 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.webkit.URLUtil;
-import arum;
-import arzy;
-import bdbi;
-import bdfk;
+import aryv;
+import aseh;
+import bdfr;
+import bdjt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -131,7 +131,7 @@ public class MiniProgramOpenSdkUtil
     paramHashMap = buildShareInfoRequest((MiniArkShareModel)localObject);
     paramContext = new MiniProgramOpenSdkUtil.3(local2, local1, localTimeOutInfo, str2, str3, str4, str7, ((MiniArkShareModel)localObject).getAppidRich(), str5, str6, paramBundle, paramContext, paramIntent, str1);
     QLog.d("MiniProgramOpenSdkUtil", 1, "forwardShare");
-    arzy.a("KEY_STAGE_1_GET_SHARE_INFO");
+    aseh.a("KEY_STAGE_1_GET_SHARE_INFO");
     MiniAppCmdUtil.getInstance().getShareInfo(paramHashMap, paramContext);
   }
   
@@ -218,8 +218,8 @@ public class MiniProgramOpenSdkUtil
       com.tencent.mobileqq.app.PhoneContactManagerImp.f = true;
       paramIntent.putExtra("KEY_MINI_PROGRAM_SHARE_OBJ", paramOpenSdkShareModel);
       paramIntent.putExtra("forward_ark_app_meta", str3);
-      paramIntent.putExtras(bdfk.a(str1, str2, "0.0.0.1", str3, BaseApplicationImpl.context.getResources().getDisplayMetrics().scaledDensity, null, null));
-      arum.a(paramContext, paramIntent);
+      paramIntent.putExtras(bdjt.a(str1, str2, "0.0.0.1", str3, BaseApplicationImpl.context.getResources().getDisplayMetrics().scaledDensity, null, null));
+      aryv.a(paramContext, paramIntent);
       finishJumpActivity(paramContext);
       return;
     }
@@ -234,7 +234,7 @@ public class MiniProgramOpenSdkUtil
     }
     try
     {
-      paramString = new String(bdbi.decode(paramString, 0));
+      paramString = new String(bdfr.decode(paramString, 0));
       return paramString;
     }
     catch (Exception paramString) {}

@@ -1,16 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
-
-public class ajsr
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface ajsr
 {
-  public ajsr(RotationSeekBar paramRotationSeekBar) {}
+  public abstract void b(int paramInt);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    RotationSeekBar.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-  }
+  public abstract void c(String paramString);
+  
+  public abstract void i();
 }
 
 

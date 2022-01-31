@@ -1,16 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.nearby.widget.GradientAnimTextView;
 
-final class avtn
-  implements almm
+public class avtn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void a(boolean paramBoolean)
+  public avtn(GradientAnimTextView paramGradientAnimTextView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramBoolean) {
-      avtm.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.ocr.dpc", 2, "onDpcPullFinished, hasChanged=" + paramBoolean);
-    }
+    GradientAnimTextView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 

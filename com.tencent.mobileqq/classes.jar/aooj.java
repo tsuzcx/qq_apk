@@ -1,46 +1,59 @@
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.json.JSONArray;
 
 public class aooj
 {
-  private int jdField_a_of_type_Int = -1;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString = "";
-  private int jdField_c_of_type_Int = -1;
-  private String jdField_c_of_type_JavaLangString = "";
-  private int jdField_d_of_type_Int = -1;
-  private String jdField_d_of_type_JavaLangString = "";
-  private String e = "";
+  private List<String> a = new ArrayList(Arrays.asList(new String[] { "requestPayment", "updateHTMLWebView", "insertHTMLWebView", "removeHTMLWebView", "insertMap", "wnsRequest", "getQua", "openUrl", "notifyNative", "launchApplication", "getUserInfoExtra", "updateShareMenu", "showShareMenu", "hideShareMenu", "getShareInfo", "shareAppMessage" }));
   
-  public static aooj a(aogf[] paramArrayOfaogf)
+  public static aooj a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
-      return null;
-    }
     aooj localaooj = new aooj();
-    try
+    int i = 0;
+    Object localObject;
+    for (;;)
     {
-      paramArrayOfaogf = new JSONObject(paramArrayOfaogf[0].jdField_a_of_type_JavaLangString);
-      localaooj.jdField_a_of_type_Int = paramArrayOfaogf.getInt("check_day");
-      localaooj.jdField_b_of_type_Int = paramArrayOfaogf.getInt("check_time");
-      localaooj.jdField_c_of_type_Int = paramArrayOfaogf.getInt("album_days");
-      localaooj.jdField_d_of_type_Int = paramArrayOfaogf.getInt("photos_limit");
-      localaooj.jdField_a_of_type_JavaLangString = paramArrayOfaogf.getString("tips");
-      localaooj.jdField_b_of_type_JavaLangString = paramArrayOfaogf.getString("jump_text");
-      localaooj.jdField_c_of_type_JavaLangString = paramArrayOfaogf.getString("t_show");
-      localaooj.jdField_d_of_type_JavaLangString = paramArrayOfaogf.getString("t_click");
-      localaooj.e = paramArrayOfaogf.getString("t_close");
-      localaooj.jdField_a_of_type_Boolean = true;
-      return localaooj;
+      localObject = localaooj;
+      try
+      {
+        if (i < paramArrayOfaoko.length)
+        {
+          localaooj.a.clear();
+          localObject = paramArrayOfaoko[i].a;
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            localObject = new JSONArray((String)localObject);
+            int j = 0;
+            while (j < ((JSONArray)localObject).length())
+            {
+              localaooj.a.add(((JSONArray)localObject).getString(j));
+              j += 1;
+            }
+          }
+          i += 1;
+        }
+      }
+      catch (Throwable paramArrayOfaoko)
+      {
+        QLog.d("MiniAppApiReportProcessor", 2, "parse, failed!", paramArrayOfaoko);
+        localObject = null;
+      }
     }
-    catch (JSONException paramArrayOfaogf)
-    {
-      QLog.e("WeiyunCheckAlbumConfigBean", 1, "wy check album config parse failed", paramArrayOfaogf);
-    }
-    return localaooj;
+    return localObject;
+  }
+  
+  public List<String> a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    new StringBuilder().append("getApiReportList:").append(TextUtils.join(",", a()));
+    return super.toString();
   }
 }
 

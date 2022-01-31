@@ -1,9 +1,9 @@
-public class bmrl
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
+
+public abstract interface bmrl
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public abstract void a(List<bmri> paramList, DoodleView paramDoodleView);
 }
 
 

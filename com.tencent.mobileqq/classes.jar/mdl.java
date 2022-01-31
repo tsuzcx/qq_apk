@@ -5,7 +5,7 @@ import com.tencent.av.ui.AVActivity.10.1;
 import com.tencent.av.ui.AVActivity.10.2;
 
 public class mdl
-  extends bdyo
+  extends becx
 {
   public mdl(AVActivity paramAVActivity) {}
   

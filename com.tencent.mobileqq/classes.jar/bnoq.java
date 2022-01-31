@@ -1,19 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.ShortVideoTravellerManager.TravellerVideoItem;
+import android.graphics.Bitmap;
 
-public final class bnoq
-  implements Parcelable.Creator<ShortVideoTravellerManager.TravellerVideoItem>
+public class bnoq
 {
-  public ShortVideoTravellerManager.TravellerVideoItem a(Parcel paramParcel)
-  {
-    return new ShortVideoTravellerManager.TravellerVideoItem(paramParcel);
-  }
-  
-  public ShortVideoTravellerManager.TravellerVideoItem[] a(int paramInt)
-  {
-    return new ShortVideoTravellerManager.TravellerVideoItem[paramInt];
-  }
+  public long a;
+  public Bitmap a;
 }
 
 

@@ -1,21 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
+import mqq.os.MqqHandler;
 
 public class acib
-  implements View.OnClickListener
+  implements apwj
 {
-  public acib(ChatHistory paramChatHistory) {}
+  public acib(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.a.b > 1000L)
+    switch (paramInt)
     {
-      this.a.b = l;
-      this.a.b();
-      azmj.b(this.a.app, "CliOper", "", "", "0X800568D", "0X800568D", this.a.k, 0, "", "", "", "");
+    case 2: 
+    default: 
+      return;
+    case 0: 
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(67);
+      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "slide", 0, 0, "", "", "", this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
+      return;
     }
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(67, 6000L);
   }
 }
 

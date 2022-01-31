@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.NativeAd.view;
 
-import aapa;
+import aatp;
 import android.os.Handler;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -21,8 +21,8 @@ class ReadInJoyNativeAdAppVideoView$4
       ReadInJoyNativeAdAppVideoView.a(this.this$0, ReadInJoyNativeAdAppVideoView.a(this.this$0).getDuration());
       int i = (int)((float)l * 1.0F * ReadInJoyNativeAdAppVideoView.b(this.this$0) / (float)ReadInJoyNativeAdAppVideoView.a(this.this$0) + 0.5D);
       ReadInJoyNativeAdAppVideoView.a(this.this$0).setProgress(i);
-      ReadInJoyNativeAdAppVideoView.a(this.this$0).setText(aapa.a(l));
-      ReadInJoyNativeAdAppVideoView.b(this.this$0).setText(aapa.a(ReadInJoyNativeAdAppVideoView.a(this.this$0)));
+      ReadInJoyNativeAdAppVideoView.a(this.this$0).setText(aatp.a(l));
+      ReadInJoyNativeAdAppVideoView.b(this.this$0).setText(aatp.a(ReadInJoyNativeAdAppVideoView.a(this.this$0)));
       if (ReadInJoyNativeAdAppVideoView.a(this.this$0) - l >= 50L) {
         break label350;
       }

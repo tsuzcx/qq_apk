@@ -1,47 +1,37 @@
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.webview.swift.SwiftFragmentTabBar;
+import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
+import cooperation.comic.ui.QQComicTabBarView;
+import cooperation.qqreader.view.ReaderTabBarView;
+import java.util.List;
 
-public abstract interface behm
-  extends bebx
+public class behm
 {
-  public abstract long getDetect302Time();
-  
-  public abstract boolean getIsReloadUrl();
-  
-  public abstract long getOpenUrlAfterCheckOfflineTime();
-  
-  public abstract long getReadIndexFromOfflineTime();
-  
-  public abstract JSONObject getX5Performance();
-  
-  public abstract long getgetWebViewTime();
-  
-  public abstract long getinitBrowserTime();
-  
-  public abstract long getinitTBSTime();
-  
-  public abstract long getinitTime();
-  
-  public abstract boolean getisWebViewCache();
-  
-  public abstract long getmClickTime();
-  
-  public abstract long getmOnCreateMilliTimeStamp();
-  
-  public abstract boolean getmPerfFirstLoadTag();
-  
-  public abstract long getmStartLoadUrlMilliTimeStamp();
-  
-  public abstract long getmTimeBeforeLoadUrl();
-  
-  public abstract long getonCreateTime();
-  
-  public abstract long getpluginFinished();
-  
-  public abstract long getviewInflateTime();
-  
-  public abstract boolean isMainPageUseLocalFile();
-  
-  public abstract void setX5Performance(JSONObject paramJSONObject);
+  public static View a(Context paramContext, Intent paramIntent, List<WebViewTabBarData> paramList, bevu parambevu)
+  {
+    int i = 0;
+    if (paramIntent != null) {
+      i = paramIntent.getIntExtra("tabBarStyle", 0);
+    }
+    bjbl.d("WebviewFragmentTabBarBuilder", "tab bar style =" + i);
+    if (i == 1)
+    {
+      paramContext = new QQComicTabBarView(paramContext);
+      paramContext.a(paramIntent, paramList, parambevu);
+      return paramContext;
+    }
+    if (i == 2)
+    {
+      paramContext = new ReaderTabBarView(paramContext);
+      paramContext.a(paramIntent, paramList, parambevu);
+      return paramContext;
+    }
+    paramContext = new SwiftFragmentTabBar(paramContext);
+    paramContext.a(paramList, parambevu);
+    return paramContext;
+  }
 }
 
 

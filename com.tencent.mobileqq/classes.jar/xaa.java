@@ -1,17 +1,21 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import android.graphics.Bitmap;
 
-public class xaa
-  implements xab
+class xaa
+  extends xcs
 {
-  public void a(List<wzy> paramList, DoodleView paramDoodleView)
+  public Bitmap a;
+  public Bitmap b;
+  
+  public xaa(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
   {
-    wze localwze = new wze(paramDoodleView);
-    wzo localwzo = new wzo(paramDoodleView);
-    paramDoodleView = new wzs(paramDoodleView);
-    paramList.add(localwze);
-    paramList.add(localwzo);
-    paramList.add(paramDoodleView);
+    super(paramInt, paramBitmap1);
+    this.b = paramBitmap2;
+    this.a = paramBitmap3;
+  }
+  
+  public xaa(xcs paramxcs, Bitmap paramBitmap1, Bitmap paramBitmap2)
+  {
+    this(paramxcs.jdField_c_of_type_Int, paramxcs.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
   }
 }
 

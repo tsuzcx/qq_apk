@@ -5,7 +5,7 @@ import NS_MINI_INTERFACE.INTERFACE.StApiUserInfo;
 import NS_MINI_INTERFACE.INTERFACE.StGetProfileRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdku;
+import bdpd;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
@@ -60,7 +60,7 @@ public class MiniAppGetProfileServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_user_info.GetProfile");
-    paramPacket.putSendData(bdku.a((byte[])localObject));
+    paramPacket.putSendData(bdpd.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

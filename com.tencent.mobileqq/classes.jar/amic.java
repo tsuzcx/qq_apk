@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager;
-import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager.ScanSpaceTask;
+import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
 
 public class amic
-  implements adnj
+  extends altm
 {
-  public amic(ScanSpaceManager.ScanSpaceTask paramScanSpaceTask) {}
+  private amic(GetGeneralSettings paramGetGeneralSettings) {}
   
-  public void a(int paramInt)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    ScanSpaceManager.a(this.a.this$0, paramInt);
+    if ((paramBoolean1) && (paramBoolean2))
+    {
+      this.a.a.a = 3;
+      this.a.a(7);
+      return;
+    }
+    this.a.a(6);
   }
 }
 

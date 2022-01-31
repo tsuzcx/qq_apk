@@ -3,8 +3,8 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bfgm;
-import bfjy;
+import bfkv;
+import bfoh;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -46,20 +46,20 @@ class ADVideoAppDownloadManager$2
       QLog.d("ADVideoAppDownloadManager", 2, "downloadUrl null");
       return;
       localObject2 = new Bundle();
-      ((Bundle)localObject2).putString(bfjy.f, (String)localObject1);
-      ((Bundle)localObject2).putString(bfjy.b, str1);
-      ((Bundle)localObject2).putString(bfjy.j, str3);
-      ((Bundle)localObject2).putString(bfjy.l, str2);
-      ((Bundle)localObject2).putInt(bfjy.k, 2);
-      ((Bundle)localObject2).putInt(bfjy.E, 0);
-      ((Bundle)localObject2).putBoolean(bfjy.x, false);
-      ((Bundle)localObject2).putInt(bfjy.H, 0);
-      ((Bundle)localObject2).putBoolean(bfjy.y, true);
-      ((Bundle)localObject2).putBoolean(bfjy.h, true);
-      ((Bundle)localObject2).putBoolean(bfjy.r, false);
-      ((Bundle)localObject2).putBoolean(bfjy.J, false);
+      ((Bundle)localObject2).putString(bfoh.f, (String)localObject1);
+      ((Bundle)localObject2).putString(bfoh.b, str1);
+      ((Bundle)localObject2).putString(bfoh.j, str3);
+      ((Bundle)localObject2).putString(bfoh.l, str2);
+      ((Bundle)localObject2).putInt(bfoh.k, 2);
+      ((Bundle)localObject2).putInt(bfoh.E, 0);
+      ((Bundle)localObject2).putBoolean(bfoh.x, false);
+      ((Bundle)localObject2).putInt(bfoh.H, 0);
+      ((Bundle)localObject2).putBoolean(bfoh.y, true);
+      ((Bundle)localObject2).putBoolean(bfoh.h, true);
+      ((Bundle)localObject2).putBoolean(bfoh.r, false);
+      ((Bundle)localObject2).putBoolean(bfoh.J, false);
       if (!TextUtils.isEmpty(this.jdField_a_of_type_Qyj.f)) {
-        ((Bundle)localObject2).putString(bfjy.i, this.jdField_a_of_type_Qyj.f);
+        ((Bundle)localObject2).putString(bfoh.i, this.jdField_a_of_type_Qyj.f);
       }
       ((Bundle)localObject2).putString("big_brother_ref_source_key", "biz_src_feeds_kandian");
       if (QLog.isColorLevel()) {
@@ -76,7 +76,7 @@ class ADVideoAppDownloadManager$2
     } while (!QLog.isColorLevel());
     QLog.d("ADVideoAppDownloadManager", 2, "ac=null");
     return;
-    bfgm.a().a((Activity)localObject1, (Bundle)localObject2, "biz_src_feeds_kandianads", null, 0);
+    bfkv.a().a((Activity)localObject1, (Bundle)localObject2, "biz_src_feeds_kandianads", null, 0);
   }
 }
 

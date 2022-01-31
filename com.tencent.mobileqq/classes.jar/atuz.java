@@ -1,6 +1,8 @@
-public abstract interface atuz
+public abstract class atuz
 {
   public abstract void a();
+  
+  public abstract void a(atpq paramatpq);
 }
 
 

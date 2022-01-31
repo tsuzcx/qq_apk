@@ -1,21 +1,10 @@
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import android.view.View;
 
-class acyh
-  implements baji
+public abstract interface acyh
 {
-  acyh(acyg paramacyg, CompoundButton paramCompoundButton, boolean paramBoolean, int paramInt) {}
+  public abstract void a(View paramView);
   
-  public void onCancel()
-  {
-    this.jdField_a_of_type_Acyg.a.a(this.jdField_a_of_type_AndroidWidgetCompoundButton, false);
-  }
-  
-  public void onConfirm()
-  {
-    this.jdField_a_of_type_Acyg.a.b();
-    GeneralSettingActivity.a(this.jdField_a_of_type_Acyg.a, this.jdField_a_of_type_AndroidWidgetCompoundButton, true, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
-  }
+  public abstract boolean a(String paramString, int paramInt);
 }
 
 

@@ -1,12 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bmha;
+import bmlm;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class EditVideoDTextFace$2
   implements Runnable
 {
-  public EditVideoDTextFace$2(bmha parambmha, DoodleLayout paramDoodleLayout) {}
+  public EditVideoDTextFace$2(bmlm parambmlm, DoodleLayout paramDoodleLayout) {}
   
   public void run()
   {

@@ -1,27 +1,33 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
 public class bbfl
-  extends amle
+  extends BroadcastReceiver
 {
-  public bbfl(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public bbfl(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(TroopBarPublishLocationSelectActivity.a(this.a), 2, "onLocationFinish() errCode=" + paramInt);
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    paramContext = paramIntent.getAction();
+    if ("key_photo_delete_action".equals(paramContext))
     {
-      double d1 = paramSosoLbsInfo.a.a;
-      double d2 = paramSosoLbsInfo.a.b;
-      TroopBarPublishLocationSelectActivity.a(this.a, (int)(d1 * 1000000.0D), (int)(d2 * 1000000.0D), 0, true, this.a);
+      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
+      this.a.a(i, 9);
     }
+    do
+    {
+      return;
+      if ("key_audio_delete_action".equals(paramContext))
+      {
+        this.a.a(0);
+        this.a.a = null;
+        bcmc.a(this.a.o, this.a.p, "del_record", this.a.q, this.a.b, "", "");
+        return;
+      }
+    } while (!"key_audio_play_action".equals(paramContext));
+    bcmc.a(this.a.o, this.a.p, "preview_record", this.a.q, this.a.b, "", "");
   }
 }
 

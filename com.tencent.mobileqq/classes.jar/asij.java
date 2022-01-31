@@ -1,10 +1,11 @@
-public abstract interface asij
+class asij
+  implements baug
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  asij(asii paramasii) {}
   
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public void onResp(bavf parambavf) {}
   
-  public abstract void b(boolean paramBoolean, int paramInt);
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

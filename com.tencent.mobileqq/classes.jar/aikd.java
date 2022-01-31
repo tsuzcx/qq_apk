@@ -1,22 +1,39 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
-import com.tencent.widget.AdapterView;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aikd
-  implements bhqp
+  extends aijq
 {
-  public aikd(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public aikd(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    if (QzonePhotoPreviewActivity.a(this.a))
-    {
-      this.a.getActivity().finish();
-      bdar.anim(this.a.getActivity(), true, false);
-      return;
-    }
-    this.a.a();
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
+  }
+  
+  protected boolean b()
+  {
+    return true;
+  }
+  
+  protected void g()
+  {
+    this.e = true;
+    super.g();
+  }
+  
+  protected void u()
+  {
+    super.u();
+  }
+  
+  protected void v()
+  {
+    super.v();
+  }
+  
+  protected void y()
+  {
+    this.a = "MiniPieForTroop";
   }
 }
 

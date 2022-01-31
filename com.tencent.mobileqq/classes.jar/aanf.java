@@ -1,6 +1,15 @@
-abstract interface aanf
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import tencent.gdt.qq_ad_get.QQAdGet;
+
+public abstract class aanf
 {
-  public abstract boolean a(aamm paramaamm, String paramString, String... paramVarArgs);
+  public GdtHandler.Params a;
+  public qq_ad_get.QQAdGet a;
+  
+  public boolean a()
+  {
+    return this.a != null;
+  }
 }
 
 

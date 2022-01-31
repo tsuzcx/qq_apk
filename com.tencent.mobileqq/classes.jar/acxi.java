@@ -1,12 +1,25 @@
+import android.view.View;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+
 public class acxi
+  implements akjd
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  public acxi(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  
+  public void a(View paramView)
+  {
+    if (ForwardFriendListActivity.a(this.a))
+    {
+      ForwardFriendListActivity.b(this.a, paramView);
+      return;
+    }
+    ForwardFriendListActivity.c(this.a, paramView);
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    return ForwardFriendListActivity.a(this.a, paramString, paramInt);
+  }
 }
 
 

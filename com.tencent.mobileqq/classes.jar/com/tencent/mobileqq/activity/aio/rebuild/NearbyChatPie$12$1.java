@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agoj;
-import agom;
+import agsy;
+import agtb;
 
 public class NearbyChatPie$12$1
   implements Runnable
 {
-  public NearbyChatPie$12$1(agom paramagom) {}
+  public NearbyChatPie$12$1(agtb paramagtb) {}
   
   public void run()
   {

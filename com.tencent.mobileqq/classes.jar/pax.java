@@ -10,7 +10,7 @@ import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class pax
-  implements bejd
+  implements benm
 {
   public pax(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
@@ -30,7 +30,7 @@ public class pax
         for (float f = 1.0F;; f = paramInt1 * 0.33F / ReadInJoySelfFragment.a(this.a))
         {
           ReadInJoySelfFragment.a(this.a).setAlpha(f);
-          ReadInJoySelfFragment.a(this.a).setBackgroundResource(2130842591);
+          ReadInJoySelfFragment.a(this.a).setBackgroundResource(2130842604);
           ReadInJoySelfFragment.a(this.a).setVisibility(0);
           if ((this.a.getActivity() == null) || (!(this.a.getActivity() instanceof ReadInJoySelfActivity))) {
             break;
@@ -40,7 +40,7 @@ public class pax
         }
       }
       ReadInJoySelfFragment.a(this.a).setBackgroundColor(Color.parseColor("#00FFFFFF"));
-      ReadInJoySelfFragment.a(this.a).setBackgroundResource(2130842592);
+      ReadInJoySelfFragment.a(this.a).setBackgroundResource(2130842605);
       ReadInJoySelfFragment.a(this.a).setVisibility(8);
     } while ((this.a.getActivity() == null) || (!(this.a.getActivity() instanceof ReadInJoySelfActivity)));
     ImmersiveUtils.a(false, this.a.getActivity().getWindow());

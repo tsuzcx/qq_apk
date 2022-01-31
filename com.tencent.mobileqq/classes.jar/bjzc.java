@@ -1,25 +1,20 @@
-import android.app.Activity;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import mqq.app.QQPermissionCallback;
-
-public class bjzc
-  implements QQPermissionCallback
+class bjzc
 {
-  public bjzc(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, Activity paramActivity) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bjzc(bjzb parambjzb, int paramInt)
   {
-    bdcd.b(this.jdField_a_of_type_AndroidAppActivity);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.d(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjzc
  * JD-Core Version:    0.7.0.1
  */

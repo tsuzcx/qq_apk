@@ -1,64 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
-public abstract class aqzw
+class aqzw
+  extends aqzb
 {
-  protected final QQAppInterface a;
-  
-  public aqzw(QQAppInterface paramQQAppInterface)
+  public aqzw(aqyp paramaqyp)
   {
-    this.a = paramQQAppInterface;
+    super(paramaqyp);
   }
   
-  protected abstract String a(boolean paramBoolean);
-  
-  protected abstract HashMap<String, String> a();
-  
-  public abstract void a();
-  
-  public void a(aqzx paramaqzx, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
+  protected String a()
   {
-    paramaqzx = paramaqzx.a();
-    paramaqzx.putAll(paramExcitingTransferOneSlotComplete.getReportData());
-    azmz localazmz = azmz.a(BaseApplication.getContext());
-    String str = this.a.getCurrentAccountUin();
-    if (paramExcitingTransferOneSlotComplete.m_SubReason == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localazmz.a(str, "actPDSlot", bool, 0L, 0L, paramaqzx, "");
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (a()) {
-      b(paramBoolean);
-    }
-    HashMap localHashMap = a();
-    if (localHashMap != null) {
-      QLog.i("DataReport", 1, ">>> report: act=" + a(false) + localHashMap.toString());
-    }
-    azmz.a(BaseApplication.getContext()).a(this.a.getCurrentAccountUin(), a(false), paramBoolean, 0L, 0L, localHashMap, "");
-  }
-  
-  protected abstract boolean a();
-  
-  protected abstract HashMap<String, String> b();
-  
-  public abstract void b();
-  
-  public void b(boolean paramBoolean)
-  {
-    HashMap localHashMap = b();
-    if (localHashMap != null)
-    {
-      QLog.i("OldDataReport", 1, ">>> reportOld: act=" + a(true) + localHashMap.toString());
-      azmz.a(BaseApplication.getContext()).a(this.a.getCurrentAccountUin(), a(true), paramBoolean, 0L, 0L, localHashMap, "");
-    }
+    return "StateUploadoneWhenChangeToOff";
   }
 }
 

@@ -1,72 +1,15 @@
-import com.tencent.mobileqq.magicface.model.MagicfaceDecoder.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract class atub
+class atub
+  implements View.OnClickListener
 {
-  public int a;
-  atua a;
-  public atuc a;
-  public atud a;
-  public volatile boolean a;
-  public int b = 1000 / this.jdField_a_of_type_Int;
+  atub(atua paramatua, String paramString) {}
   
-  public atub()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 8;
-    g();
-  }
-  
-  public abstract void a();
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = (1000 / paramInt);
-  }
-  
-  public void a(atua paramatua)
-  {
-    this.jdField_a_of_type_Atua = paramatua;
-  }
-  
-  public void a(atuc paramatuc)
-  {
-    this.jdField_a_of_type_Atuc = paramatuc;
-  }
-  
-  public void a(atud paramatud)
-  {
-    this.jdField_a_of_type_Atud = paramatud;
-  }
-  
-  public void c() {}
-  
-  public void d()
-  {
-    f();
-    if (!this.jdField_a_of_type_Boolean) {}
-    try
-    {
-      new Thread(new MagicfaceDecoder.1(this)).start();
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MagicfaceDecoder", 2, "startDecoder err:" + localOutOfMemoryError.getMessage());
-    }
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  protected void f() {}
-  
-  protected void g()
-  {
-    this.jdField_a_of_type_Boolean = false;
+    atua.a(this.jdField_a_of_type_Atua).a(this.jdField_a_of_type_JavaLangString);
+    azqs.b(null, "CliOper", "", "", "0X800A770", "0X800A770", 0, 0, "", "0", "0", "");
   }
 }
 

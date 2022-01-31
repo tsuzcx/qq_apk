@@ -1,29 +1,29 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgho;
-import bgkd;
-import bgkz;
-import bhfr;
+import bglv;
+import bgok;
+import bgpg;
+import bhjy;
 import org.json.JSONArray;
 
 class PickerJsPlugin$1
   implements Runnable
 {
-  PickerJsPlugin$1(PickerJsPlugin paramPickerJsPlugin, JSONArray paramJSONArray, int paramInt, bgkd parambgkd) {}
+  PickerJsPlugin$1(PickerJsPlugin paramPickerJsPlugin, JSONArray paramJSONArray, int paramInt, bgok parambgok) {}
   
   public void run()
   {
-    bhfr localbhfr = new bhfr(PickerJsPlugin.access$000(this.this$0).a());
-    String[] arrayOfString = bgkz.a(this.val$array);
+    bhjy localbhjy = new bhjy(PickerJsPlugin.access$000(this.this$0).a());
+    String[] arrayOfString = bgpg.a(this.val$array);
     if ((arrayOfString != null) && (arrayOfString.length > 0))
     {
-      localbhfr.a(arrayOfString);
-      localbhfr.b(0);
-      localbhfr.a(arrayOfString.length - 1);
-      localbhfr.c(this.val$currentIndex);
-      localbhfr.a(this.val$currentIndex, new PickerJsPlugin.1.1(this));
+      localbhjy.a(arrayOfString);
+      localbhjy.b(0);
+      localbhjy.a(arrayOfString.length - 1);
+      localbhjy.c(this.val$currentIndex);
+      localbhjy.a(this.val$currentIndex, new PickerJsPlugin.1.1(this));
     }
-    localbhfr.show();
+    localbhjy.show();
   }
 }
 

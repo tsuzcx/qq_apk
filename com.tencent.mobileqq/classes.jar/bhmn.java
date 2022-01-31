@@ -1,16 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
-
 public class bhmn
-  extends Handler
 {
-  public bhmn(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.a(paramMessage);
-  }
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
 }
 
 

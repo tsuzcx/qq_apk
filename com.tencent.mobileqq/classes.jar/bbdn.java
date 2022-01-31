@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
 public class bbdn
-  implements DialogInterface.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bbdn(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public bbdn(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.setAlpha(f);
   }
 }
 

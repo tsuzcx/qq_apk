@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.view.View;
-import bjxj;
+import bkbq;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -71,7 +71,7 @@ public final class ReadinjoySPEventReport$14
           localObject1 = String.valueOf(1);
           localPBStringField.set((String)localObject1);
           localArrayList.add(localAttributeList);
-          if (bjxj.k())
+          if (bkbq.k())
           {
             localObject1 = ((MainFragment)localObject2).a(MainFragment.d);
             if (localObject1 != null)

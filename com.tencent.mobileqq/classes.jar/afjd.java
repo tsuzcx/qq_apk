@@ -1,36 +1,20 @@
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
 class afjd
-  extends ClickableSpan
+  implements QQPermissionCallback
 {
-  afjd(afjb paramafjb, String paramString) {}
+  afjd(afjb paramafjb, BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    azmj.b(this.jdField_a_of_type_Afjb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Afjb.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X800491B", "0X800491B", 0, 0, "", "", "", "");
-    try
-    {
-      this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      return;
-    }
-    catch (ActivityNotFoundException paramView)
-    {
-      paramView.printStackTrace();
-    }
+    bdgm.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
+    this.jdField_a_of_type_Afjb.denied();
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramTextPaint.setColor(-16732929);
-    paramTextPaint.setUnderlineText(false);
+    this.jdField_a_of_type_Afjb.grant();
   }
 }
 

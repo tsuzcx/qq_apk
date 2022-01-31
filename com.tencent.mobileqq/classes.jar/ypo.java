@@ -1,60 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.cs.group_file_common.group_file_common.FileInfo;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileInfoRspBody;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
+import android.content.res.ColorStateList;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public abstract class ypo
-  extends nac
+public class ypo
+  extends ClickableSpan
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private int jdField_a_of_type_Int;
+  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private String jdField_a_of_type_JavaLangString;
+  private ypp jdField_a_of_type_Ypp;
+  
+  public void onClick(View paramView)
   {
-    if (paramInt != 0) {
-      a(false, paramInt, null);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Ypp != null)) {
+      this.jdField_a_of_type_Ypp.a(this.jdField_a_of_type_JavaLangString);
     }
-    label103:
-    do
-    {
-      for (;;)
-      {
-        return;
-        paramBundle = new oidb_0x6d8.RspBody();
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          paramArrayOfByte = (oidb_0x6d8.GetFileInfoRspBody)paramBundle.file_info_rsp.get();
-          if (!paramArrayOfByte.int32_ret_code.has()) {
-            break label103;
-          }
-          if (paramArrayOfByte.int32_ret_code.get() == 0)
-          {
-            paramArrayOfByte = (group_file_common.FileInfo)paramArrayOfByte.file_info.get();
-            if (paramArrayOfByte == null) {
-              continue;
-            }
-            a(true, 0, paramArrayOfByte);
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          a(false, -1, null);
-          return;
-        }
-      }
-      a(false, paramArrayOfByte.int32_ret_code.get(), null);
-      return;
-      if (!paramArrayOfByte.file_info.has()) {
-        break;
-      }
-      paramArrayOfByte = (group_file_common.FileInfo)paramArrayOfByte.file_info.get();
-    } while (paramArrayOfByte == null);
-    a(true, 0, paramArrayOfByte);
-    return;
-    a(false, -1, null);
   }
   
-  protected abstract void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo);
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
+      paramTextPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(paramTextPaint.drawableState, 0));
+    }
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 

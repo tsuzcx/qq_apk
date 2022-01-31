@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.config;
 
-import aofu;
+import aokd;
 import java.util.TimerTask;
 
 public class ConfigManager$1
@@ -10,7 +10,7 @@ public class ConfigManager$1
   
   public void run()
   {
-    synchronized (aofu.a(this.this$0))
+    synchronized (aokd.a(this.this$0))
     {
       this.a += 1;
       if (this.a > 30)

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aiqx;
+import aivm;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Intent;
@@ -15,7 +15,7 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.provider.Settings.System;
 import android.view.Window;
-import azmz;
+import azri;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -115,7 +115,7 @@ public class QQLSUnlockActivity
         QQNotificationManager.getInstance().cancel("QQLSActivity", 238);
         paramBundle = BaseApplicationImpl.getApplication().getRuntime();
         if ((paramBundle instanceof QQAppInterface)) {
-          aiqx.a((QQAppInterface)paramBundle, false);
+          aivm.a((QQAppInterface)paramBundle, false);
         }
       }
       return;
@@ -136,13 +136,13 @@ public class QQLSUnlockActivity
   protected void onPause()
   {
     super.onPause();
-    azmz.a(this).c(this);
+    azri.a(this).c(this);
   }
   
   protected void onResume()
   {
     super.onResume();
-    azmz.a(this).b(this);
+    azri.a(this).b(this);
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)

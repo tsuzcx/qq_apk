@@ -1,31 +1,6 @@
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.widget.AbsListView;
-
-public class beqz
-  implements bhpo
+public abstract interface beqz
 {
-  public beqz(SlideDetectListView paramSlideDetectListView) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
-    if (SlideDetectListView.b(this.a) != null) {
-      SlideDetectListView.b(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    this.a.c = paramInt;
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
-    }
-    if (SlideDetectListView.b(this.a) != null) {
-      SlideDetectListView.b(this.a).onScrollStateChanged(paramAbsListView, paramInt);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

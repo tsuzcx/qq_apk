@@ -7,12 +7,12 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import atpm;
-import atpn;
-import atpo;
-import atpp;
-import atpq;
-import bmxq;
+import attv;
+import attw;
+import attx;
+import atty;
+import attz;
+import bncc;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
 
@@ -57,13 +57,13 @@ public class PoiSlideBottomPanel
       ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { localView.getY(), this.jdField_b_of_type_Int - this.i }).setDuration(this.jdField_c_of_type_Int);
       localValueAnimator.setTarget(localView);
       localValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      localValueAnimator.addUpdateListener(new atpn(this, localView, f1, f2 - f3));
-      localValueAnimator.addListener(new atpo(this));
+      localValueAnimator.addUpdateListener(new attw(this, localView, f1, f2 - f3));
+      localValueAnimator.addListener(new attx(this));
       localValueAnimator.start();
       this.jdField_b_of_type_Boolean = true;
       this.jdField_e_of_type_Boolean = false;
-    } while (this.jdField_a_of_type_Bmxq == null);
-    this.jdField_a_of_type_Bmxq.displayPanel();
+    } while (this.jdField_a_of_type_Bncc == null);
+    this.jdField_a_of_type_Bncc.displayPanel();
   }
   
   public void a(MotionEvent paramMotionEvent)
@@ -82,7 +82,7 @@ public class PoiSlideBottomPanel
         {
           this.jdField_c_of_type_Boolean = true;
           this.jdField_g_of_type_Float = paramMotionEvent.getY();
-          this.jdField_b_of_type_AndroidViewView.addOnLayoutChangeListener(new atpm(this));
+          this.jdField_b_of_type_AndroidViewView.addOnLayoutChangeListener(new attv(this));
         }
         if (QLog.isColorLevel()) {
           QLog.d("PoiSlideBottomPanel", 2, "[panel] handleActionDown: invoked. isDragging: " + this.jdField_c_of_type_Boolean + " Math.abs(event.getY() - firstDownY): " + Math.abs(paramMotionEvent.getY() - this.jdField_f_of_type_Float) + " mTouchSlop: " + this.jdField_d_of_type_Float);
@@ -91,12 +91,12 @@ public class PoiSlideBottomPanel
       this.h = (paramMotionEvent.getY() - this.jdField_g_of_type_Float);
       this.jdField_g_of_type_Float = paramMotionEvent.getY();
       float f = this.jdField_b_of_type_AndroidViewView.getY();
-      if ((this.jdField_a_of_type_Bmxq != null) && (f > this.jdField_b_of_type_Int - this.i) && (f < this.jdField_b_of_type_Int - this.j))
+      if ((this.jdField_a_of_type_Bncc != null) && (f > this.jdField_b_of_type_Int - this.i) && (f < this.jdField_b_of_type_Int - this.j))
       {
         if (QLog.isColorLevel()) {
           QLog.d("PoiSlideBottomPanel", 2, "[panel] fadeBackground: invoked. touchingViewY: " + f + " mMeasureHeight: " + this.jdField_b_of_type_Int + " mPanelHeight: " + this.i + " mTitleHeightNoDisplay: " + this.j + " mMeasureHeight - mPanelHeight: " + (this.jdField_b_of_type_Int - this.i) + " mMeasureHeight - mTitleHeightNoDisplay: " + (this.jdField_b_of_type_Int - this.j));
         }
-        this.jdField_a_of_type_Bmxq.fadeBackground(1.0F - f / (this.jdField_b_of_type_Int - this.j));
+        this.jdField_a_of_type_Bncc.fadeBackground(1.0F - f / (this.jdField_b_of_type_Int - this.j));
       }
       if (this.h + f <= this.jdField_b_of_type_Int - this.i)
       {
@@ -165,11 +165,11 @@ public class PoiSlideBottomPanel
       localValueAnimator.setInterpolator(this.jdField_b_of_type_AndroidViewAnimationInterpolator);
       localValueAnimator.setTarget(localView);
       localValueAnimator.setDuration(500L);
-      localValueAnimator.addUpdateListener(new atpp(this, localView, f, i));
-      localValueAnimator.addListener(new atpq(this));
+      localValueAnimator.addUpdateListener(new atty(this, localView, f, i));
+      localValueAnimator.addListener(new attz(this));
       localValueAnimator.start();
-    } while (this.jdField_a_of_type_Bmxq == null);
-    this.jdField_a_of_type_Bmxq.hidePanel();
+    } while (this.jdField_a_of_type_Bncc == null);
+    this.jdField_a_of_type_Bncc.hidePanel();
   }
   
   public void b(MotionEvent paramMotionEvent)

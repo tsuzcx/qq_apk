@@ -1,24 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class acza
-  implements DialogInterface.OnDismissListener
+  extends awhw
 {
-  public acza(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public acza(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(boolean paramBoolean)
   {
-    if (!GesturePWDUnlockActivity.a(this.a))
-    {
-      GesturePWDUnlockActivity.a(this.a, true);
+    this.a.A();
+    if (paramBoolean) {
       return;
     }
-    this.a.e();
-    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
-    azmz.a(this.a.getBaseContext()).a(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
+    QQToast.a(this.a, 1, alud.a(2131705314), 1000).a();
+  }
+  
+  protected void b(boolean paramBoolean, int paramInt)
+  {
+    super.b(paramBoolean, paramInt);
+    if ((this.a.n) && (paramBoolean)) {
+      this.a.a(0L, null, null, false);
+    }
+    this.a.n = false;
   }
 }
 

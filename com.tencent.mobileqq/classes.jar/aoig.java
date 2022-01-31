@@ -1,51 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
 public class aoig
-  implements aoga<String>
+  implements View.OnClickListener
 {
-  public boolean a = true;
-  public boolean b = true;
+  public aoig(IphonePickerView paramIphonePickerView) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("ark_app_manage_panel_disable", 1) != 0)
-      {
-        bool = true;
-        this.a = bool;
-        anhp.a = this.a;
-        if (paramString.optInt("ark_download_by_yyb_disable", 1) == 0) {
-          break label115;
-        }
-      }
-      label115:
-      for (boolean bool = true;; bool = false)
-      {
-        this.b = bool;
-        anhp.f = this.b;
-        QLog.i("ArkMsgAIDisableConfig", 1, "onParse " + ", ark_app_manage_panel_disable=" + this.a + ", ark_download_by_yyb_disable =" + this.b);
-        return;
-        bool = false;
-        break;
-      }
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("ArkMsgAIDisableConfig", 1, "handleArkMsgAIDisableConfig parse config_content exception=" + paramString);
+    if (IphonePickerView.a(this.a) != null) {
+      IphonePickerView.a(this.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoig
  * JD-Core Version:    0.7.0.1
  */

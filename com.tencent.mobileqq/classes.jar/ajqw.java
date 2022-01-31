@@ -1,77 +1,127 @@
-import java.nio.ByteBuffer;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.22.1;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
+import com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ajqw
+  extends BroadcastReceiver
 {
-  private static void a(int paramInt1, short[] paramArrayOfShort, int paramInt2, int paramInt3, ByteBuffer paramByteBuffer)
-  {
-    int i = paramInt3 * 16000 / paramInt1;
-    long l1 = 0L;
-    long l2 = (paramInt3 - 2 << 16) / (i - 2);
-    paramInt1 = 0;
-    while (paramInt1 < i - 1)
-    {
-      long l3 = 0xFFFF & l1;
-      int j = paramArrayOfShort[((int)(l1 >> 16) + paramInt2)];
-      int k = paramArrayOfShort[((int)(l1 >> 16) + 1 + paramInt2)];
-      long l4 = j;
-      j = (int)(l3 * k + l4 * (65536L - l3) >> 16);
-      paramByteBuffer.put((byte)(j & 0xFF));
-      paramByteBuffer.put((byte)((j & 0xFF00) >> 8));
-      l1 += l2;
-      paramInt1 += 1;
-    }
-    paramByteBuffer.put((byte)(paramArrayOfShort[(paramInt3 - 1 + paramInt2)] & 0xFF));
-    paramByteBuffer.put((byte)((paramArrayOfShort[(paramInt3 - 1 + paramInt2)] & 0xFF00) >> 8));
-  }
+  public ajqw(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public static void a(int paramInt1, short[] paramArrayOfShort, int paramInt2, ByteBuffer paramByteBuffer)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = 0;
-    int j = paramInt1 * 5 / 100;
-    if (paramInt2 <= j) {
-      a(paramInt1, paramArrayOfShort, 0, paramInt2, paramByteBuffer);
-    }
-    int k;
-    do
-    {
+    if ((NewFlowCameraActivity.b(this.a)) && ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))) {
       return;
-      k = paramInt2 / j;
-      while (i < k)
+    }
+    paramContext = paramIntent.getAction();
+    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PTV.NewFlowCameraActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
+      }
+      paramContext = BaseActivity2.$(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366501);
+      if (paramContext != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
+      }
+      this.a.m();
+      return;
+    }
+    String str;
+    int i;
+    if ("tencent.video.q2v.startUploadPTV".equals(paramContext))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PTV.NewFlowCameraActivity", 2, "receive ACTION_BLESS_UPLOAD_PTV.");
+      }
+      switch (paramIntent.getIntExtra("broadcastType", 1))
       {
-        a(paramInt1, paramArrayOfShort, i * j, j, paramByteBuffer);
-        i += 1;
+      default: 
+        return;
+      case 1: 
+        if (!TextUtils.isEmpty(NewFlowCameraActivity.a(this.a)))
+        {
+          str = "";
+          if (this.a.jdField_a_of_type_Ajry != null) {
+            str = this.a.jdField_a_of_type_Ajry.a();
+          }
+          i = paramIntent.getIntExtra("recordType", 0);
+          if (i != 3) {
+            break label315;
+          }
+          paramContext = "0X8008382";
+        }
+        break;
       }
-    } while (paramInt2 - k * j <= 0);
-    a(paramInt1, paramArrayOfShort, k * j, paramInt2 - j * k, paramByteBuffer);
-  }
-  
-  public static void a(short[] paramArrayOfShort, int paramInt1, int paramInt2)
-  {
-    if ((paramArrayOfShort == null) || (paramInt2 <= 0)) {
-      return;
-    }
-    int i = 0;
-    label11:
-    int j;
-    if (i < paramInt2)
-    {
-      j = paramArrayOfShort[(paramInt1 + i)] * 10;
-      if (j < 32767.0F) {
-        break label50;
-      }
-      paramArrayOfShort[(paramInt1 + i)] = 32767;
     }
     for (;;)
     {
-      i += 1;
-      break label11;
-      break;
-      label50:
-      if (j <= -32768.0F) {
-        paramArrayOfShort[(paramInt1 + i)] = -32768;
-      } else {
-        paramArrayOfShort[(paramInt1 + i)] = ((short)j);
+      if (!TextUtils.isEmpty(paramContext))
+      {
+        ajpy.a("", paramContext, str, "", NewFlowCameraActivity.a(this.a), "");
+        if (QLog.isColorLevel()) {
+          QLog.d("PTV.NewFlowCameraActivity", 2, String.format("subAction[%s], activityId[%s], templateId[%s]", new Object[] { paramContext, NewFlowCameraActivity.a(this.a), str }));
+        }
       }
+      NewFlowCameraActivity.a(this.a, null);
+      this.a.finish();
+      return;
+      label315:
+      if (i == 2)
+      {
+        paramContext = "0X8008383";
+        continue;
+        this.a.onPause();
+        return;
+        if (!"tencent.video.q2v.nightMode".equals(paramContext)) {
+          break;
+        }
+        boolean bool = paramIntent.getBooleanExtra("dark_mode_value", true);
+        if (QLog.isColorLevel()) {
+          QLog.d("PTV.NewFlowCameraActivity", 2, "receive ACTION_NIGHT_MODE." + bool);
+        }
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() == 3) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() == 4))
+        {
+          GLVideoClipUtil.c();
+          return;
+        }
+        if (bool)
+        {
+          NewFlowCameraActivity.c(this.a, true);
+          NewFlowCameraActivity.a(this.a).setVisibility(0);
+          NewFlowCameraActivity.d(this.a, true);
+          GLVideoClipUtil.a(true);
+          NewFlowCameraActivity.c(this.a);
+          azqs.b(null, "dc00898", "", "", "0X8007BB6", "0X8007BB6", 0, 0, "", "", "", "");
+          if (!NewFlowCameraActivity.c(this.a)) {
+            break;
+          }
+          NewFlowCameraActivity.e(this.a, false);
+          NewFlowCameraActivity.a(this.a).setVisibility(0);
+          this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new NewFlowCameraActivity.22.1(this), 3000L);
+          return;
+        }
+        NewFlowCameraActivity.a(this.a).setVisibility(8);
+        NewFlowCameraActivity.c(this.a, false);
+        NewFlowCameraActivity.d(this.a, false);
+        GLVideoClipUtil.b();
+        return;
+      }
+      paramContext = null;
     }
   }
 }

@@ -1,11 +1,11 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 
 public class adth
   implements DialogInterface.OnDismissListener
 {
-  public adth(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  public adth(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {

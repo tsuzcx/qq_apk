@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acxw;
+import adcl;
 
 public class FriendProfilePhotoHelper$2
   implements Runnable
 {
-  public FriendProfilePhotoHelper$2(acxw paramacxw) {}
+  public FriendProfilePhotoHelper$2(adcl paramadcl) {}
   
   public void run()
   {

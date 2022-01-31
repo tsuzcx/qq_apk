@@ -1,31 +1,67 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.gamecenter.data.FullPopData;
+import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
 
-class askx
-  extends Handler
+public abstract class askx
+  implements asll
 {
-  askx(askw paramaskw, Looper paramLooper)
+  public Context a;
+  public FrameLayout a;
+  public ImageView a;
+  public RelativeLayout a;
+  public FullPopData a;
+  public FullPopVideoView a;
+  private String a;
+  public boolean a;
+  public ImageView b;
+  private String b;
+  public boolean b;
+  public ImageView c;
+  private boolean c;
+  public ImageView d;
+  
+  public askx(Context paramContext, FullPopData paramFullPopData, String paramString1, String paramString2, boolean paramBoolean)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData = paramFullPopData;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_Boolean = paramBoolean;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)askw.a(this.a).get();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    if (!this.jdField_a_of_type_Boolean) {}
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (String str = "205929";; str = "205927")
     {
-    default: 
+      asnh.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, str, this.jdField_c_of_type_Boolean);
       return;
     }
-    paramMessage = "https://openmobile.qq.com/gameteam/get_team_context?uin=" + localQQAppInterface.getCurrentAccountUin();
-    this.a.a(paramMessage, null);
-    this.a.b();
+  }
+  
+  public void a(View... paramVarArgs)
+  {
+    if ((paramVarArgs == null) || (paramVarArgs.length < 6)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramVarArgs[0]);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramVarArgs[1]);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[2]);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[3]);
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[4]);
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView = ((FullPopVideoView)paramVarArgs[5]);
+    this.d = ((ImageView)paramVarArgs[6]);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setOnClickListener(new asky(this));
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.entry;
 
 import NS_COMM.COMM.StCommonExt;
-import aokc;
-import aokd;
-import awbv;
-import awbw;
-import awbx;
+import aool;
+import aoom;
+import awge;
+import awgf;
+import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -42,31 +42,31 @@ public class MiniAppLocalSearchManager
     return null;
   }
   
-  private boolean updateEntity(awbw paramawbw, awbv paramawbv)
+  private boolean updateEntity(awgf paramawgf, awge paramawge)
   {
     boolean bool2 = false;
     boolean bool1 = false;
-    if (paramawbw.a()) {
-      if (paramawbv.getStatus() == 1000)
+    if (paramawgf.a()) {
+      if (paramawge.getStatus() == 1000)
       {
-        paramawbw.b(paramawbv);
-        if (paramawbv.getStatus() == 1001) {
+        paramawgf.b(paramawge);
+        if (paramawge.getStatus() == 1001) {
           bool1 = true;
         }
-        paramawbw.a();
+        paramawgf.a();
       }
     }
     do
     {
       return bool1;
-      if ((paramawbv.getStatus() != 1001) && (paramawbv.getStatus() != 1002)) {
+      if ((paramawge.getStatus() != 1001) && (paramawge.getStatus() != 1002)) {
         break;
       }
-      bool1 = paramawbw.a(paramawbv);
+      bool1 = paramawgf.a(paramawge);
       break;
       bool1 = bool2;
     } while (!QLog.isColorLevel());
-    QLog.d("MiniAppLocalSearchManager", 2, "updateEntity em closed e=" + paramawbv.getTableName());
+    QLog.d("MiniAppLocalSearchManager", 2, "updateEntity em closed e=" + paramawge.getTableName());
     return false;
   }
   
@@ -79,9 +79,9 @@ public class MiniAppLocalSearchManager
       return null;
     }
     localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    aokc localaokc = aokd.a();
-    if (localaokc != null) {}
-    for (boolean bool = localaokc.b();; bool = false)
+    aool localaool = aoom.a();
+    if (localaool != null) {}
+    for (boolean bool = localaool.b();; bool = false)
     {
       if (!bool)
       {
@@ -94,7 +94,7 @@ public class MiniAppLocalSearchManager
       if (localObject == null) {
         break;
       }
-      return ((awbw)localObject).a(MiniAppLocalSearchEntity.class, MiniAppLocalSearchEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+      return ((awgf)localObject).a(MiniAppLocalSearchEntity.class, MiniAppLocalSearchEntity.class.getSimpleName(), false, null, null, null, null, null, null);
     }
   }
   

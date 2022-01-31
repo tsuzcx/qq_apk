@@ -1,59 +1,63 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.content.Intent;
+import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.manager.FeatureManager;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class azgm
+class azgm
+  extends BroadcastReceiver
 {
-  public static int a;
-  public static int[] a;
-  public static final String[] a;
+  azgm(azgl paramazgl) {}
   
-  static
+  public void onReceive(Context arg1, Intent paramIntent)
   {
-    jdField_a_of_type_Int = -4;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "libgnustl_shared.so", "libSNPE.so", "libQMCF_snpe.so" };
-    jdField_a_of_type_ArrayOfInt = new int[] { -4, -4, -4 };
-  }
-  
-  public static boolean a()
-  {
-    return FeatureManager.isBasicFeaturesFunctionReady();
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    paramContext = azgk.c(paramContext);
-    if (paramContext == null)
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    for (;;)
     {
-      VideoEnvironment.a("PtvFilterSoLoad", "isFilterSoExist:getSVFilterSoPath soRootPath=null", null);
-      return false;
-    }
-    if (!new File(paramContext).exists())
-    {
-      VideoEnvironment.a("PtvFilterSoLoad", "isFilterSoExist:getSVFilterSoPath soRootPath=" + paramContext + ",exists=false", null);
-      return false;
-    }
-    return a(paramContext);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return FeatureManager.isBasicFeaturesReadyInDir(paramString);
-  }
-  
-  public static boolean b(Context arg0)
-  {
-    String str = azgk.d(???);
-    synchronized (azgk.a())
-    {
-      boolean bool1 = bdcs.a(str + "libQMCF.so");
-      boolean bool2 = bdcs.a(str + jdField_a_of_type_ArrayOfJavaLangString[2]);
-      if (QLog.isColorLevel()) {
-        QLog.i("SVAF_SoLoad", 2, String.format("isArtFilterSoExist, qmcfso[%s], snpeso[%s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      return;
+      if (!"tencent.video.gesturemgr.notify".equals(paramIntent.getAction())) {
+        continue;
       }
-      return bool1;
+      int i = paramIntent.getIntExtra("Event_Progress", 0);
+      if ((i == 100) || (i < 0))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+        int j = this.a.jdField_a_of_type_Int;
+        this.a.jdField_a_of_type_Int = azgn.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
+        boolean bool;
+        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11))
+        {
+          bool = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("QavGesture", 2, String.format("receive notify, lastStatus[%s], progress[%s], mStatusGesture[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo }));
+          }
+          paramIntent = new ArrayList();
+        }
+        synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+        {
+          paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+          ??? = paramIntent.iterator();
+          while (???.hasNext()) {
+            ((azgh)???.next()).a(bool, this.a.b(), this.a.jdField_a_of_type_Int);
+          }
+          bool = false;
+        }
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavGesture", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
+      }
+      paramIntent = new ArrayList();
+      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+      {
+        paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+        ??? = paramIntent.iterator();
+        if (!???.hasNext()) {
+          continue;
+        }
+        ((azgh)???.next()).a(i);
+      }
     }
   }
 }

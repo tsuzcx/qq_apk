@@ -10,15 +10,15 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.HashMap;
 
 class rkz
-  extends baua
+  extends bayj
 {
   rkz(rky paramrky) {}
   
   public void handleMessage(Message paramMessage)
   {
-    Object localObject = (baoj)paramMessage.obj;
-    if ((localObject == null) || ((((baoj)localObject).jdField_b_of_type_Int != 24) && (((baoj)localObject).jdField_b_of_type_Int != 32))) {}
-    while ((((baoj)localObject).jdField_b_of_type_Int == 24) && (((baoj)localObject).c != 54)) {
+    Object localObject = (bass)paramMessage.obj;
+    if ((localObject == null) || ((((bass)localObject).jdField_b_of_type_Int != 24) && (((bass)localObject).jdField_b_of_type_Int != 32))) {}
+    while ((((bass)localObject).jdField_b_of_type_Int == 24) && (((bass)localObject).c != 54)) {
       return;
     }
     switch (paramMessage.what)
@@ -32,13 +32,13 @@ class rkz
     default: 
       return;
     }
-    paramMessage = (Bundle)this.a.b.remove(Long.valueOf(((baoj)localObject).jdField_b_of_type_Long));
-    paramMessage.putLong("uniseq", ((baoj)localObject).jdField_b_of_type_Long);
-    paramMessage.putString("pic_server_id", ((baoj)localObject).i);
+    paramMessage = (Bundle)this.a.b.remove(Long.valueOf(((bass)localObject).jdField_b_of_type_Long));
+    paramMessage.putLong("uniseq", ((bass)localObject).jdField_b_of_type_Long);
+    paramMessage.putString("pic_server_id", ((bass)localObject).i);
     qqstory_bhd_upload_pic.RspStoryVideo localRspStoryVideo = new qqstory_bhd_upload_pic.RspStoryVideo();
     try
     {
-      localRspStoryVideo.mergeFrom(((baoj)localObject).a);
+      localRspStoryVideo.mergeFrom(((bass)localObject).a);
       if (localRspStoryVideo.retcode.get() == 0)
       {
         localObject = localRspStoryVideo.cdn_url.get().toStringUtf8();

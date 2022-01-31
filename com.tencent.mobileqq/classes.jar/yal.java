@@ -1,21 +1,11 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
-import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
-
-class yal
-  extends RecyclerView.ViewHolder
+final class yal
+  extends yaj
 {
-  public yal(yaj paramyaj, View paramView)
-  {
-    super(paramView);
-  }
+  yal(yas paramyas) {}
   
-  public void a(SubscribeDraftBean paramSubscribeDraftBean)
+  public void a()
   {
-    if ((this.itemView instanceof SubScribeDraftItemView)) {
-      ((SubScribeDraftItemView)this.itemView).setData(paramSubscribeDraftBean);
-    }
+    this.a.a();
   }
 }
 

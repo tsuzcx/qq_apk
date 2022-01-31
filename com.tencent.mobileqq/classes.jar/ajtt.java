@@ -1,24 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
 
 public class ajtt
-  implements DialogInterface.OnCancelListener
 {
-  private final WeakReference<Activity> a;
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public ajtt(Activity paramActivity)
+  private ajtt(RMVideoSwitchCameraPicMgr paramRMVideoSwitchCameraPicMgr)
   {
-    this.a = new WeakReference(paramActivity);
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    Activity localActivity = (Activity)this.a.get();
-    if ((localActivity != null) && (!localActivity.isFinishing())) {
-      paramDialogInterface.dismiss();
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = true;
   }
 }
 

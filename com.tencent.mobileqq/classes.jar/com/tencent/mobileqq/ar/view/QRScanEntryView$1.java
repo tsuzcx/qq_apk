@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.view;
 
-import anbk;
-import anbw;
+import anft;
+import angf;
 
 class QRScanEntryView$1
   implements Runnable
@@ -10,7 +10,7 @@ class QRScanEntryView$1
   
   public void run()
   {
-    anbk.a().a(QRScanEntryView.a(this.this$0), QRScanEntryView.b(this.this$0), anbw.a, anbw.b);
+    anft.a().a(QRScanEntryView.a(this.this$0), QRScanEntryView.b(this.this$0), angf.a, angf.b);
   }
 }
 

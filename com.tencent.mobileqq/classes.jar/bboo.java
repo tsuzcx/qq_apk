@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
 
 class bboo
-  implements DialogInterface.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bboo(bboe parambboe, FileManagerEntity paramFileManagerEntity) {}
+  bboo(bbon parambbon, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt == 1) {
-      bboe.a(this.jdField_a_of_type_Bboe, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    }
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
   }
 }
 

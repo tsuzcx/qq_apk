@@ -1,17 +1,18 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.Stream;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class vzn
-  implements vzh<Bitmap>
+  implements DialogInterface.OnDismissListener
 {
-  vzn(vzk paramvzk, List paramList, String paramString) {}
+  vzn(vzl paramvzl, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  @NonNull
-  public Stream<Bitmap> a(vzd paramvzd)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return vzk.a(this.jdField_a_of_type_Vzk, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    }
+    vzl.a(this.jdField_a_of_type_Vzl).a = vzl.a(this.jdField_a_of_type_Vzl).a();
   }
 }
 

@@ -1,37 +1,27 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
 
-class agjv
-  implements Handler.Callback
+public class agjv
+  implements aqxm
 {
-  agjv(agjp paramagjp) {}
+  public agjv(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt1, int paramInt2, arit paramarit) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "[handleMessage] handle message mStoped = " + agjp.a(this.a));
-    }
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      Object localObject = (akji)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
-      paramMessage = (String)paramMessage.obj;
-      if (!agjp.a(this.a)) {
-        ((akji)localObject).a().e(paramMessage);
-      }
-      localObject = Message.obtain();
-      ((Message)localObject).what = 1;
-      ((Message)localObject).obj = paramMessage;
-      agjp.a(this.a).removeMessages(1);
-      agjp.a(this.a).sendMessageDelayed((Message)localObject, 30000L);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E", new String[] { String.valueOf(paramInt), paramString }, null, null, -1);
     }
   }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Arit.b(), new String[] { paramString1 }, paramString2, null, -1);
+    }
+  }
+  
+  public void aG_() {}
+  
+  public void aH_() {}
 }
 
 

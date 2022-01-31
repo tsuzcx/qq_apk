@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.model;
 
-import aube;
-import awbw;
-import awby;
+import aufn;
+import awgf;
+import awgh;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -11,22 +11,22 @@ import java.util.List;
 public class EmoticonManager$7
   implements Runnable
 {
-  public EmoticonManager$7(aube paramaube, List paramList) {}
+  public EmoticonManager$7(aufn paramaufn, List paramList) {}
   
   public void run()
   {
-    awby localawby = this.this$0.a.a();
-    localawby.a();
+    awgh localawgh = this.this$0.a.a();
+    localawgh.a();
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       EmoticonPackage localEmoticonPackage = (EmoticonPackage)localIterator.next();
-      if ((localEmoticonPackage != null) && (!aube.a(this.this$0, localEmoticonPackage))) {
+      if ((localEmoticonPackage != null) && (!aufn.a(this.this$0, localEmoticonPackage))) {
         QLog.e("EmoticonManager", 1, "saveEmoticonPackages fail epId = " + localEmoticonPackage.epId);
       }
     }
-    localawby.c();
-    localawby.b();
+    localawgh.c();
+    localawgh.b();
   }
 }
 

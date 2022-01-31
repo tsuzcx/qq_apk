@@ -1,38 +1,24 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
+import com.tencent.qphone.base.util.QLog;
 
-class akbn
-  implements akam
+public class akbn
+  extends alog
 {
-  akbn(akbl paramakbl, String paramString) {}
+  public akbn(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  public void a(boolean paramBoolean)
+  protected void a(int paramInt)
   {
-    if (paramBoolean) {}
-    try
+    switch (paramInt)
     {
-      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Akbl.mRuntime.a().getCurrentAccountUin();
-      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
-      akbl.a(this.jdField_a_of_type_Akbl, this.jdField_a_of_type_JavaLangString, (List)localObject);
+    }
+    do
+    {
       return;
-    }
-    catch (Exception localException1)
-    {
-      localException1.printStackTrace();
-      try
-      {
-        akbl.a(this.jdField_a_of_type_Akbl, this.jdField_a_of_type_JavaLangString, null);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopDiscussionTroop", 2, "onCacheInited " + paramInt);
       }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
-    }
-    akbl.a(this.jdField_a_of_type_Akbl, this.jdField_a_of_type_JavaLangString, null);
-    return;
+    } while (TroopDiscussionTroop.a(this.a) == null);
+    TroopDiscussionTroop.a(this.a).c();
   }
 }
 

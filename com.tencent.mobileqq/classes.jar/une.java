@@ -1,26 +1,52 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Map;
 
-public class une
-  extends unf
+class une
+  implements azeq
 {
-  public String a;
-  public boolean a;
+  une(und paramund, String paramString) {}
   
-  public une(qqstory_struct.ErrorInfo paramErrorInfo, PBUInt32Field paramPBUInt32Field, PBBytesField paramPBBytesField)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, azej paramazej)
   {
-    super(paramErrorInfo);
-    if (paramPBUInt32Field.get() == 1) {}
-    for (;;)
+    unj localunj;
+    if (paramazej.jdField_a_of_type_Int == 0)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = paramPBBytesField.get().toStringUtf8();
-      return;
-      bool = false;
+      paramazej = (awir)paramazej.jdField_a_of_type_JavaLangObject;
+      localunj = (unj)this.jdField_a_of_type_Und.a.a.remove(this.jdField_a_of_type_JavaLangString);
+      if (localunj != null)
+      {
+        if (!new File(paramazej.b).exists()) {
+          break label99;
+        }
+        localunj.b = (System.currentTimeMillis() - localunj.jdField_a_of_type_Long);
+        if (localunj.jdField_a_of_type_Unc != null) {
+          localunj.jdField_a_of_type_Unc.a(localunj, new ErrorMessage(0, "onDownload"));
+        }
+      }
     }
+    label99:
+    do
+    {
+      do
+      {
+        return;
+        wxe.d("AsyncFileDownloader", "preload success , why file not exist , key : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+        return;
+        wxe.d("AsyncFileDownloader", "onPreLoadFailed,key=%s,errorCode=%s", new Object[] { this.jdField_a_of_type_JavaLangString, String.valueOf(paramazej.jdField_a_of_type_Int) });
+        localunj = (unj)this.jdField_a_of_type_Und.a.a.remove(this.jdField_a_of_type_JavaLangString);
+      } while (localunj == null);
+      localunj.b = (System.currentTimeMillis() - localunj.jdField_a_of_type_Long);
+    } while (localunj.jdField_a_of_type_Unc == null);
+    localunj.jdField_a_of_type_Unc.a(localunj, new ErrorMessage(paramazej.jdField_a_of_type_Int, "onFailed"));
   }
+  
+  public void a(int paramInt, ArrayList<azej> paramArrayList) {}
+  
+  public void b(int paramInt, azej paramazej) {}
 }
 
 

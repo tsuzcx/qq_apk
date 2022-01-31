@@ -1,26 +1,18 @@
-import android.text.TextUtils;
-
-public class apkc
+class apkc
 {
-  public static int a = 300;
-  public static int b = 300;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
   
-  public static String a(String paramString)
+  public apkc(apjy paramapjy, long paramLong1, long paramLong2, String paramString, int paramInt1, int paramInt2)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return aljq.bi + ammj.a(paramString);
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("https://p.qpic.cn/");
-    localStringBuilder.append(paramString2).append("/").append(paramString3).append("/").append(paramString1).append("/0");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 

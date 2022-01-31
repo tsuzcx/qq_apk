@@ -1,109 +1,64 @@
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
+import AccostSvc.ReqGetBlackList;
+import AccostSvc.ReqHeader;
+import AccostSvc.RespGetBlackList;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.videoplatform.VideoPlaySDKManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISPlayerPreLoader;
-import com.tencent.superplayer.api.SuperPlayerFactory;
-import java.util.ArrayList;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
 public class ayzk
-  implements aenl
+  implements azal
 {
-  public View a;
-  private ayzo jdField_a_of_type_Ayzo;
-  private String jdField_a_of_type_JavaLangString;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  public static String a;
+  private final QQAppInterface a;
   
-  public ayzk(ayzh paramayzh, ayzo paramayzo)
+  static
   {
-    this.jdField_a_of_type_Ayzo = paramayzo;
-    this.jdField_a_of_type_AndroidViewView = new View(BaseApplicationImpl.getApplication());
+    jdField_a_of_type_JavaLangString = "GetBlackListItem";
   }
   
-  private void a()
+  public ayzk(QQAppInterface paramQQAppInterface)
   {
-    if (!VideoPlaySDKManager.getInstance().isSDKReady()) {
-      VideoPlaySDKManager.getInstance().initSDKAsync(this.jdField_a_of_type_Ayzh.a.getApplication(), new ayzl(this));
-    }
-    b();
-    BaseShortVideoOprerator.a(this.jdField_a_of_type_Ayzh.a, this.jdField_a_of_type_Ayzo);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  private void b()
+  public int a()
   {
-    ISPlayerPreLoader localISPlayerPreLoader = SuperPlayerFactory.createPreLoader(BaseApplicationImpl.getContext(), 101);
-    String str1 = ShortVideoUtils.a(this.jdField_a_of_type_Ayzo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
-    String str2 = this.jdField_a_of_type_Ayzo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.getMd5() + this.jdField_a_of_type_Ayzo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq;
-    localISPlayerPreLoader.startPreDownload(SuperPlayerFactory.createVideoInfoForUrl(this.jdField_a_of_type_ArrayOfJavaLangString, 101, str2, str1), this.jdField_a_of_type_Ayzo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileTime * 1000L, this.jdField_a_of_type_Ayzo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileSize, ShortVideoUtils.a() * 1000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreDownloader", 2, "pre-download handle short video:" + str1);
-    }
-    this.jdField_a_of_type_Ayzo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.setBitValue(0, (byte)1);
-    this.jdField_a_of_type_Ayzo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.serial();
-    this.jdField_a_of_type_Ayzh.a.a().a(this.jdField_a_of_type_Ayzo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_Ayzo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.istroop, this.jdField_a_of_type_Ayzo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq, this.jdField_a_of_type_Ayzo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.msgData);
-    awjr.a(1000, 100);
+    return 1;
   }
   
-  public void a(View paramView, baoj parambaoj, int paramInt1, int paramInt2)
+  public ReqItem a(int paramInt)
   {
-    if (parambaoj.jdField_b_of_type_Long != this.jdField_a_of_type_Ayzo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq) {}
-    while ((parambaoj.jdField_b_of_type_Int != 6) && (parambaoj.jdField_b_of_type_Int != 17) && (parambaoj.jdField_b_of_type_Int != 9) && (parambaoj.jdField_b_of_type_Int != 20)) {
-      return;
-    }
-    switch (parambaoj.d)
+    ReqItem localReqItem = new ReqItem();
+    localReqItem.eServiceID = 116;
+    Object localObject = new ReqHeader();
+    ((ReqHeader)localObject).shVersion = 0;
+    ((ReqHeader)localObject).lMID = ayzy.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()));
+    ((ReqHeader)localObject).iAppID = AppSetting.a();
+    localObject = new ReqGetBlackList((ReqHeader)localObject, 0L, 1, 0);
+    UniPacket localUniPacket = new UniPacket();
+    localUniPacket.setServantName("AccostObj");
+    localUniPacket.setFuncName("CMD_GET_BlackList");
+    localUniPacket.put("ReqGetBlackList", localObject);
+    localReqItem.vecParam = localUniPacket.encode();
+    return localReqItem;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if ((paramRespItem.eServiceID == 116) && (paramRespItem.cResult == 2))
     {
-    default: 
-      return;
-    case 2002: 
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreDownloader", 2, "STATUS_RECV_PROCESS: get url finished");
-      }
-      if (parambaoj.c != null)
-      {
-        this.jdField_a_of_type_ArrayOfJavaLangString = parambaoj.c;
-        this.jdField_a_of_type_JavaLangString = parambaoj.u;
-        paramInt1 = 0;
-      }
-      break;
-    case 2004: 
-    case 2005: 
-    case 5001: 
-    case 5002: 
-      while (paramInt1 < 1)
-      {
-        if (!bdje.a(this.jdField_a_of_type_JavaLangString))
-        {
-          paramView = new StringBuilder();
-          parambaoj = this.jdField_a_of_type_ArrayOfJavaLangString;
-          parambaoj[paramInt1] = (parambaoj[paramInt1] + "&txhost=" + this.jdField_a_of_type_JavaLangString);
-        }
-        paramInt1 += 1;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPreDownloader", 2, "STATUS_RECV_FAILED");
-        }
-        if (this.jdField_a_of_type_Ayzo.jdField_a_of_type_Ayzm != null) {
-          this.jdField_a_of_type_Ayzo.jdField_a_of_type_Ayzm.a(parambaoj.d);
-        }
-        ayzh.a(this.jdField_a_of_type_Ayzh).remove(this);
-        return;
-      }
-      this.jdField_a_of_type_Ayzo.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_ArrayOfJavaLangString;
-      if (this.jdField_a_of_type_Ayzo.jdField_a_of_type_Boolean) {
-        ayzh.a(this.jdField_a_of_type_Ayzh, this.jdField_a_of_type_Ayzo);
-      }
-      break;
-    }
-    for (;;)
-    {
-      ayzh.a(this.jdField_a_of_type_Ayzh).remove(this);
-      return;
-      a();
+      Object localObject = new UniPacket();
+      ((UniPacket)localObject).setEncodeName("utf-8");
+      ((UniPacket)localObject).decode(paramRespItem.vecUpdate);
+      paramRespItem = (RespGetBlackList)((UniPacket)localObject).getByClass("RespGetBlackList", new RespGetBlackList());
+      localObject = (MessageHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(0);
+      FromServiceMsg localFromServiceMsg = new FromServiceMsg();
+      localFromServiceMsg.setMsgSuccess();
+      ((MessageHandler)localObject).a(null, localFromServiceMsg, paramRespItem);
     }
   }
 }

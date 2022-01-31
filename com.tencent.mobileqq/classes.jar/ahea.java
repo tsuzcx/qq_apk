@@ -1,20 +1,48 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import java.util.List;
+import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ahea
+  extends BaseAdapter
 {
-  public int a;
-  public AccountSearchPb.hotwordrecord a;
-  public String a;
-  public List<String> a;
-  public boolean a;
-  public int b;
-  public List<AccountSearchPb.record> b;
-  public boolean b;
-  public int c;
-  public List<AccountSearchPb.ResultItem> c;
+  public Handler a;
+  public QQAppInterface a;
+  public String[] a;
+  
+  public String a(int paramInt)
+  {
+    return this.a[paramInt];
+  }
+  
+  public int getCount()
+  {
+    if (this.a == null) {
+      return 0;
+    }
+    return this.a.length;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    String str = a(paramInt);
+    if (paramView == null) {
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559256, paramViewGroup, false);
+    }
+    for (paramViewGroup = new aheb(paramView);; paramViewGroup = (aheb)paramView.getTag())
+    {
+      paramViewGroup.a.setText(str);
+      return paramView;
+    }
+  }
 }
 
 

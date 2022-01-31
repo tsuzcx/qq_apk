@@ -28,15 +28,15 @@ public class net
         localToServiceMsg.setNeedCallback(false);
         UniPacket localUniPacket = new UniPacket(true);
         localUniPacket.setEncodeName("utf-8");
-        int i = aytq.a;
-        aytq.a = i + 1;
+        int i = ayxz.a;
+        ayxz.a = i + 1;
         localUniPacket.setRequestId(i);
         localUniPacket.setServantName("OnlinePush");
         localUniPacket.setFuncName("SvcRespPushMsg");
         localUniPacket.setRequestId(paramInt);
         localUniPacket.put("resp", paramSvcRespPushMsg);
         localToServiceMsg.putWupBuffer(localUniPacket.encode());
-        paramSvcRespPushMsg = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), aocv.class);
+        paramSvcRespPushMsg = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), aohe.class);
         paramSvcRespPushMsg.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
         localAppInterface.startServlet(paramSvcRespPushMsg);
         if (QLog.isColorLevel()) {

@@ -1,42 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.ClassLoaderCreator;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.SavedState;
 
-class aulz
-  implements aweh
+public final class aulz
+  implements Parcelable.ClassLoaderCreator<MultiAIOBaseViewPager.SavedState>
 {
-  aulz(ault paramault, aulo paramaulo) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel)
   {
-    ault.a(this.jdField_a_of_type_Ault, this.jdField_a_of_type_Aulo, paramInt);
+    return new MultiAIOBaseViewPager.SavedState(paramParcel, null);
   }
   
-  public void a(awei paramawei)
+  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
   {
-    int j;
-    int i;
-    if (paramawei != null)
-    {
-      j = paramawei.jdField_a_of_type_Int;
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiRichMediaSaveManager", 2, "isFilePreDownload picReq result = " + j);
-      }
-      if (paramawei.jdField_a_of_type_Awey != null)
-      {
-        i = paramawei.jdField_a_of_type_Awey.jdField_a_of_type_Int;
-        paramawei = paramawei.jdField_a_of_type_Awey.b;
-      }
-    }
-    for (;;)
-    {
-      ault.a(this.jdField_a_of_type_Ault, this.jdField_a_of_type_Aulo, j, i, paramawei);
-      return;
-      i = 0;
-      paramawei = "";
-      continue;
-      j = 0;
-      i = 0;
-      paramawei = "";
-    }
+    return new MultiAIOBaseViewPager.SavedState(paramParcel, paramClassLoader);
+  }
+  
+  public MultiAIOBaseViewPager.SavedState[] a(int paramInt)
+  {
+    return new MultiAIOBaseViewPager.SavedState[paramInt];
   }
 }
 

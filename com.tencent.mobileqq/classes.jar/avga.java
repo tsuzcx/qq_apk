@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class avga
-  implements alln
+class avga
+  implements avgj
 {
-  public avga(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  avga(avfx paramavfx) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(avgi paramavgi)
   {
-    if ((paramBoolean) && (paramInt == 2))
-    {
-      if ((NearbyPeopleProfileActivity.a(this.a) == null) || (this.a.e != 1)) {
-        break label41;
-      }
-      NearbyPeopleProfileActivity.a(this.a).d();
+    if (this.a.jdField_a_of_type_Avgg != null) {
+      this.a.jdField_a_of_type_Avgg.a();
     }
-    label41:
-    while (NearbyPeopleProfileActivity.a(this.a) == null) {
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
+    paramavgi = avfx.a(this.a).a;
+    if (this.a.c()) {}
+    for (int i = 1;; i = 2)
+    {
+      aveh.a(paramavgi, i);
       return;
     }
   }

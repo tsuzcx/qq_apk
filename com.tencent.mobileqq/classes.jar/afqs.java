@@ -1,23 +1,16 @@
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class afqs
-  implements aubp<EmoticonPackage>
+final class afqs
+  implements afug
 {
-  afqs(afqr paramafqr, afrf paramafrf, bepp parambepp) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    azmj.b(this.jdField_a_of_type_Afqr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Afqr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ep_mall", "Clk_button_follow", 0, 0, "", "", this.jdField_a_of_type_Afrf.a.a.eId, "");
-    if (paramEmoticonPackage == null)
-    {
-      this.jdField_a_of_type_Afqr.jdField_a_of_type_Afre.a(107, this.jdField_a_of_type_Afqr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afqr.b, this.jdField_a_of_type_Afrf.a, this.jdField_a_of_type_Afqr.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, afqr.a(this.jdField_a_of_type_Afqr));
-      apne.a().a(this.jdField_a_of_type_Afqr.jdField_a_of_type_Afre);
-      this.jdField_a_of_type_Afqr.jdField_a_of_type_Apnf.a(this.jdField_a_of_type_Afrf.a.a.epId, apnf.c);
-      return;
+    if (ApolloGameUtil.a(paramChatMessage, paramQQAppInterface) == ApolloGameUtil.c) {
+      return 88;
     }
-    afqr.a(107, this.jdField_a_of_type_Afqr.b, this.jdField_a_of_type_Afqr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Afrf.a, this.jdField_a_of_type_Afqr.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bepp);
+    return 56;
   }
 }
 

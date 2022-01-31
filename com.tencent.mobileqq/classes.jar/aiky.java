@@ -1,19 +1,15 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.9.1;
 
-final class aiky
-  implements DialogInterface.OnClickListener
+public class aiky
+  extends amfb
 {
-  aiky(Activity paramActivity, String paramString1, String paramString2) {}
+  public aiky(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramInt == 0)
-    {
-      aikt.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    }
+    this.a.runOnUiThread(new AvatarPendantActivity.9.1(this));
   }
 }
 

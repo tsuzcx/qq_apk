@@ -5,13 +5,13 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import java.util.ArrayList;
 import java.util.List;
-import xec;
-import xed;
+import xil;
+import xim;
 
 public class FaceViewPager
   extends ViewPager
 {
-  private List<xed> a;
+  private List<xim> a;
   
   public FaceViewPager(Context paramContext)
   {
@@ -28,13 +28,13 @@ public class FaceViewPager
   private void a()
   {
     this.a = new ArrayList();
-    setOnPageChangeListener(new xec(this));
+    setOnPageChangeListener(new xil(this));
   }
   
-  public void a(xed paramxed)
+  public void a(xim paramxim)
   {
-    if (!this.a.contains(paramxed)) {
-      this.a.add(paramxed);
+    if (!this.a.contains(paramxim)) {
+      this.a.add(paramxim);
     }
   }
 }

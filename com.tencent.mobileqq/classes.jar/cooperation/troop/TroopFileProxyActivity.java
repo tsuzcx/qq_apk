@@ -1,11 +1,11 @@
 package cooperation.troop;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import bimg;
-import bimp;
+import biqn;
+import biqw;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import java.util.ArrayList;
@@ -29,20 +29,20 @@ public class TroopFileProxyActivity
   
   public static void a(Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString1, String paramString2, int paramInt)
   {
-    bimp localbimp = new bimp(0);
-    localbimp.jdField_b_of_type_JavaLangString = "troop_plugin.apk";
-    localbimp.d = alpo.a(2131715713);
-    localbimp.jdField_a_of_type_JavaLangString = paramString2;
-    localbimp.e = paramString1;
-    localbimp.jdField_a_of_type_JavaLangClass = TroopFileProxyActivity.class;
-    localbimp.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbimp.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    biqw localbiqw = new biqw(0);
+    localbiqw.jdField_b_of_type_JavaLangString = "troop_plugin.apk";
+    localbiqw.d = alud.a(2131715725);
+    localbiqw.jdField_a_of_type_JavaLangString = paramString2;
+    localbiqw.e = paramString1;
+    localbiqw.jdField_a_of_type_JavaLangClass = TroopFileProxyActivity.class;
+    localbiqw.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbiqw.jdField_a_of_type_AndroidAppDialog = paramDialog;
     paramIntent.putExtra("userQqResources", 1);
     paramIntent.putExtra("param_plugin_gesturelock", true);
-    localbimp.jdField_b_of_type_Int = paramInt;
-    localbimp.c = 10000;
-    localbimp.f = null;
-    bimg.a(paramActivity, localbimp);
+    localbiqw.jdField_b_of_type_Int = paramInt;
+    localbiqw.c = 10000;
+    localbiqw.f = null;
+    biqn.a(paramActivity, localbiqw);
   }
   
   public static void a(Activity paramActivity, Intent paramIntent, String paramString)

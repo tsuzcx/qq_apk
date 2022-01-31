@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
-import aajy;
-import aano;
+import aaon;
+import aasd;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -36,7 +36,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
   private static final String COMP_ID = "compId";
   private static final String OPERATION_TYPE = "type";
   private static final String TAG = "[minigame] MiniInterstitialAd";
-  private aajy adInterstitial;
+  private aaon adInterstitial;
   private String adUnitId;
   private int appInterstitialId;
   private BaseJsPluginEngine jsPluginEngine;
@@ -183,7 +183,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
   
   private GdtHandler.Options getClickOption(JSONObject paramJSONObject)
   {
-    Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject));
+    Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject));
     paramJSONObject = new GdtHandler.Options();
     paramJSONObject.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject);
     paramJSONObject.jdField_a_of_type_Boolean = true;

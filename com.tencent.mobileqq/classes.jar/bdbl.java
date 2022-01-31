@@ -1,21 +1,6 @@
-import android.content.Context;
-import android.widget.TextView;
-import com.tencent.widget.BubblePopupWindow;
-
-final class bdbl
-  extends TextView
+public abstract interface bdbl
 {
-  bdbl(Context paramContext, BubblePopupWindow paramBubblePopupWindow)
-  {
-    super(paramContext);
-  }
-  
-  public boolean performClick()
-  {
-    boolean bool = super.performClick();
-    this.a.b();
-    return bool;
-  }
+  public abstract void onLoadingStateChanged(int paramInt1, int paramInt2);
 }
 
 

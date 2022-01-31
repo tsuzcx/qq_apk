@@ -1,8 +1,15 @@
-import android.graphics.Bitmap;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public abstract interface babm
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/StudyModeSwitchDialogConfigProcessor$Companion;", "", "()V", "CONFIG_ID", "", "shouldShowStudyModeSwitchDialog", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class babm
 {
-  public abstract void a(Bitmap paramBitmap);
+  public final boolean a()
+  {
+    Object localObject = aoks.a().a(619);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
+    return ((babn)localObject).a();
+  }
 }
 
 

@@ -1,14 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.ocr.TranslateFragment;
+import mqq.util.WeakReference;
 
-class avwq
-  implements View.OnClickListener
+public class avwq
+  implements bers
 {
-  avwq(avwn paramavwn, avxc paramavxc) {}
+  public avwq(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_Avxc.a.b();
+    OCRResultFragmentNew.a(this.a, 0);
+  }
+  
+  public void a(String paramString)
+  {
+    banj.a(paramString, "OCR_Participle_copy");
+  }
+  
+  public void b(String paramString)
+  {
+    avvq.a(OCRResultFragmentNew.a(this.a), paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    banj.a(OCRResultFragmentNew.a(this.a), (QQAppInterface)OCRResultFragmentNew.a(this.a).get(), paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    TranslateFragment.a(OCRResultFragmentNew.a(this.a), paramString);
   }
 }
 

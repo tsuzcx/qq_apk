@@ -1,43 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
 class akir
-  extends Handler
 {
-  akir(akiq paramakiq, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == akiq.a(this.a))
-    {
-      QLog.d(akiq.a(this.a), 4, "Receive Message!");
-      this.a.a();
-    }
-    for (;;)
-    {
-      try
-      {
-        azmj.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 1, "", "", "", "");
-        return;
-      }
-      catch (Exception paramMessage) {}
-      if (paramMessage.what == akiq.b(this.a))
-      {
-        QLog.d(akiq.a(this.a), 4, "Receive Message!");
-        try
-        {
-          azmj.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
-          return;
-        }
-        catch (Exception paramMessage) {}
-      }
-    }
-  }
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
+  public String a;
+  public ImageView b;
+  public TextView b;
 }
 
 

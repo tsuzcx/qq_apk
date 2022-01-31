@@ -34,14 +34,14 @@ public class ntd
   
   static
   {
-    jdField_a_of_type_JavaLangString = "8.3.3".replace(".", "");
+    jdField_a_of_type_JavaLangString = "8.3.5".replace(".", "");
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
   public static int a()
   {
-    boolean bool1 = bjxj.i();
-    boolean bool2 = bjxj.j();
+    boolean bool1 = bkbq.i();
+    boolean bool2 = bkbq.j();
     if (!bool1) {
       return 0;
     }
@@ -92,7 +92,7 @@ public class ntd
     if (paramArticleInfo.videoJumpChannelID > 0) {
       return paramArticleInfo.videoJumpChannelID;
     }
-    if (bjxj.d(BaseApplicationImpl.getApplication().getRuntime()) == 1) {
+    if (bkbq.d(BaseApplicationImpl.getApplication().getRuntime()) == 1) {
       return 56;
     }
     return 409409;
@@ -123,7 +123,7 @@ public class ntd
           return i;
           i = j;
         } while (paramInt != 3000);
-        paramQQAppInterface = (almv)paramQQAppInterface.getManager(53);
+        paramQQAppInterface = (alrk)paramQQAppInterface.getManager(53);
         i = j;
       } while (paramQQAppInterface == null);
       return paramQQAppInterface.a(paramString);
@@ -178,7 +178,7 @@ public class ntd
   
   public static String a()
   {
-    int i = bdee.a(BaseApplicationImpl.getApplication().getApplicationContext());
+    int i = bdin.a(BaseApplicationImpl.getApplication().getApplicationContext());
     if (i == 1) {
       return "0";
     }
@@ -360,7 +360,7 @@ public class ntd
             }
             localJSONObject.put("imei", ors.f());
             localJSONObject.put("imsi", ors.g());
-            localJSONObject.put("androidid", bdcb.f());
+            localJSONObject.put("androidid", bdgk.f());
             return localJSONObject;
           }
         }
@@ -515,7 +515,7 @@ public class ntd
         paramJSONObject.put("network_type", a());
         paramJSONObject.put("os", "1");
         if (jdField_a_of_type_JavaLangString == null) {
-          jdField_a_of_type_JavaLangString = "8.3.3".replace(".", "");
+          jdField_a_of_type_JavaLangString = "8.3.5".replace(".", "");
         }
         paramJSONObject.put("version", jdField_a_of_type_JavaLangString);
         paramJSONObject.put("imei", ors.f());
@@ -523,7 +523,7 @@ public class ntd
         paramJSONObject.put("kandian_mode_new", a());
         paramJSONObject.put("kandian_mode", ors.e());
         paramJSONObject.put("report_timestamp", System.currentTimeMillis());
-        if (bdvr.a() != 1) {
+        if (beaa.a() != 1) {
           continue;
         }
         paramString1 = "1";
@@ -556,9 +556,9 @@ public class ntd
     if ((ors.a() instanceof QQAppInterface))
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)ors.a();
-      return bfhi.d(localQQAppInterface.c() + "_" + System.currentTimeMillis());
+      return bflr.d(localQQAppInterface.c() + "_" + System.currentTimeMillis());
     }
-    return bfhi.d("_" + System.currentTimeMillis());
+    return bflr.d("_" + System.currentTimeMillis());
   }
   
   public static void b(VideoInfo paramVideoInfo, int paramInt1, int paramInt2, int paramInt3, qlw paramqlw, String paramString)

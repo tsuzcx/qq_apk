@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public final class amuq
-  implements Parcelable.Creator<ArEffectConfig>
+class amuq
+  implements QQPermissionCallback
 {
-  public ArEffectConfig a(Parcel paramParcel)
+  amuq(amup paramamup) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new ArEffectConfig(paramParcel);
+    bdgm.a(amup.a(this.a), paramArrayOfString, paramArrayOfInt);
+    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION deny");
   }
   
-  public ArEffectConfig[] a(int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new ArEffectConfig[paramInt];
+    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION allow restart it");
   }
 }
 

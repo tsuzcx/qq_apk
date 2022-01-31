@@ -1,19 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class adrt
-  implements bhwu
+  implements DialogInterface.OnDismissListener
 {
-  public adrt(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public adrt(QQMapActivity paramQQMapActivity) {}
   
-  public void a(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    SearchMightKnowFragment.a(this.a, false);
-  }
-  
-  public void b(View paramView)
-  {
-    SearchMightKnowFragment.a(this.a, true);
+    if ((this.a.l) && (!this.a.m) && (!this.a.k)) {
+      this.a.finish();
+    }
+    this.a.m = false;
   }
 }
 

@@ -1,19 +1,33 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.io.File;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.POI;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetPOIList;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract interface uje
+public class uje
+  extends uro
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2, uja paramuja);
+  List<AddressItem> a = new ArrayList();
   
-  public abstract void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, uja paramuja);
-  
-  public abstract void a(String paramString, int paramInt1, File paramFile, int paramInt2, uja paramuja);
-  
-  public abstract void a(String paramString, int paramInt, uja paramuja);
-  
-  public abstract void b(String paramString, int paramInt1, File paramFile, int paramInt2, uja paramuja);
-  
-  public abstract void b(String paramString, int paramInt, uja paramuja);
+  public uje(qqstory_service.RspBatchGetPOIList paramRspBatchGetPOIList)
+  {
+    super(paramRspBatchGetPOIList.result);
+    paramRspBatchGetPOIList = paramRspBatchGetPOIList.poi_list.get();
+    if (paramRspBatchGetPOIList != null)
+    {
+      paramRspBatchGetPOIList = paramRspBatchGetPOIList.iterator();
+      while (paramRspBatchGetPOIList.hasNext())
+      {
+        qqstory_service.POI localPOI = (qqstory_service.POI)paramRspBatchGetPOIList.next();
+        AddressItem localAddressItem = AddressItem.getAddressFromProtoObject(localPOI.address);
+        localAddressItem.poiType = localPOI.poi_type.get();
+        this.a.add(localAddressItem);
+      }
+    }
+  }
 }
 
 

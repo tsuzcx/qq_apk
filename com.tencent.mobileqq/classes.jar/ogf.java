@@ -31,7 +31,7 @@ public class ogf
       if (ReadInJoyArticleBottomVideoView.a(this.a).D != null)
       {
         localObject = ReadInJoyArticleBottomVideoView.a(this.a).D;
-        bool1 = bdem.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), (String)localObject);
+        bool1 = bdiv.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), (String)localObject);
         long l = ReadInJoyArticleBottomVideoView.a(this.a).c;
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
           bool2 = noq.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), (String)localObject);

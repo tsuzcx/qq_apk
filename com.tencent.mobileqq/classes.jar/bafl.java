@@ -1,64 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
-class bafl
-  extends bhxd
+public class bafl
 {
-  bafl(bafj parambafj, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4, List paramList, int[] paramArrayOfInt5)
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  
+  public boolean equals(Object paramObject)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    return this.b.equals(((bafl)paramObject).b);
   }
   
-  public View a(int paramInt, Object paramObject, bhxc parambhxc, View.OnClickListener paramOnClickListener)
+  public int hashCode()
   {
-    parambhxc = super.a(paramInt, paramObject, parambhxc, paramOnClickListener);
-    if (parambhxc != null) {
-      parambhxc.setTag(-10, paramObject);
-    }
-    return parambhxc;
-  }
-  
-  public void a(int paramInt, Object paramObject, bhxc[] paramArrayOfbhxc)
-  {
-    paramInt = 0;
-    Object localObject = this.jdField_a_of_type_Bafj.a((bagp)paramObject);
-    int i = ((List)localObject).size();
-    paramObject = localObject;
-    if (i > 3)
-    {
-      paramObject = ((List)localObject).subList(i - 2, i);
-      paramObject.add(0, bafj.a);
-    }
-    i = Math.min(paramObject.size(), 3);
-    if (paramInt < paramArrayOfbhxc.length)
-    {
-      int j;
-      if (paramInt < i)
-      {
-        localObject = (bagq)paramObject.get(paramInt);
-        j = this.jdField_a_of_type_JavaUtilList.indexOf(localObject);
-        if (j < 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i(this.jdField_a_of_type_JavaLangString, 1, "getRightMenuItemInfo error, can not find the menu， menuId[" + ((bagq)localObject).b() + "]");
-          }
-          paramArrayOfbhxc[paramInt].b = -1;
-          paramArrayOfbhxc[paramInt].a = -1;
-        }
-      }
-      for (;;)
-      {
-        paramInt += 1;
-        break;
-        paramArrayOfbhxc[paramInt].b = j;
-        paramArrayOfbhxc[paramInt].a = this.jdField_a_of_type_ArrayOfInt[j];
-        continue;
-        paramArrayOfbhxc[paramInt].b = -1;
-        paramArrayOfbhxc[paramInt].a = -1;
-      }
-    }
+    return super.hashCode();
   }
 }
 

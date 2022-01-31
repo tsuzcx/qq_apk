@@ -1,25 +1,61 @@
-import android.graphics.Canvas;
-import android.view.View.OnTouchListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public abstract interface aoyn
+public class aoyn
+  extends aokh<aoym>
 {
-  public abstract float a();
+  public static aoym a()
+  {
+    return (aoym)aoks.a().a(348);
+  }
   
-  public abstract Canvas a();
+  public int a()
+  {
+    return 348;
+  }
   
-  public abstract void a();
+  @NonNull
+  public aoym a(int paramInt)
+  {
+    return new aoym();
+  }
   
-  public abstract void a(Canvas paramCanvas);
+  @Nullable
+  public aoym a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aoym.a(paramArrayOfaoko);
+    }
+    return null;
+  }
   
-  public abstract void a(View.OnTouchListener paramOnTouchListener);
+  public Class<aoym> a()
+  {
+    return aoym.class;
+  }
   
-  public abstract void a(aoyo paramaoyo);
+  public void a(int paramInt) {}
   
-  public abstract void b();
+  public void a(aoym paramaoym) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoyn
  * JD-Core Version:    0.7.0.1
  */

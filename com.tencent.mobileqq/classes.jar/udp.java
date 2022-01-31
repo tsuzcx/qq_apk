@@ -1,56 +1,66 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewStub;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import feedcloud.FeedCloudMeta.StFeed;
+import com.tencent.biz.qqcircle.events.QCircleTopTagEvent;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowTagListItemView;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
 import feedcloud.FeedCloudMeta.StTagInfo;
-import java.util.List;
+import qqcircle.QQCircleWrite.DoFollowTagRsp;
 
 public class udp
-  extends ucz
+  implements zac<QQCircleWrite.DoFollowTagRsp>
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private List<FeedCloudMeta.StTagInfo> jdField_a_of_type_JavaUtilList;
-  private udr jdField_a_of_type_Udr;
+  public udp(QCircleFollowTagListItemView paramQCircleFollowTagListItemView, boolean paramBoolean) {}
   
-  public void a(ViewStub paramViewStub)
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleWrite.DoFollowTagRsp paramDoFollowTagRsp)
   {
-    if (paramViewStub != null)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramViewStub.inflate();
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373149));
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
-      paramViewStub = new LinearLayoutManager(this.jdField_a_of_type_AndroidViewView.getContext());
-      paramViewStub.setOrientation(0);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramViewStub);
-      this.jdField_a_of_type_Udr = new udr(this, null);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Udr);
+    int j = 3;
+    if ((paramBoolean) && (paramLong == 0L)) {
+      return;
     }
-  }
-  
-  public void a(Object paramObject, int paramInt)
-  {
-    if ((paramObject instanceof FeedCloudMeta.StFeed))
+    if (paramLong == 110002L)
     {
-      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mDataPosition = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mFeed = ((FeedCloudMeta.StFeed)paramObject);
-      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mPlayScene = 1;
-      this.jdField_a_of_type_JavaLangObject = paramObject;
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_JavaUtilList = ((FeedCloudMeta.StFeed)paramObject).tagInfos.get();
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-        break label100;
+      QQToast.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagListItemView.getContext(), 2131698326, 0).a();
+      if (QCircleFollowTagListItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagListItemView) != null)
+      {
+        paramString = ((FeedCloudMeta.StTagInfo)QCircleFollowTagListItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagListItemView).get()).followState;
+        if (!this.jdField_a_of_type_Boolean) {
+          break label203;
+        }
+        i = 3;
+        label77:
+        paramString.set(i);
+        paramString = ((FeedCloudMeta.StTagInfo)QCircleFollowTagListItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagListItemView).get()).isTop;
+        if (!this.jdField_a_of_type_Boolean) {
+          break label209;
+        }
+        i = 0;
+        label112:
+        paramString.set(i);
       }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      if (this.jdField_a_of_type_Udr != null) {
-        this.jdField_a_of_type_Udr.a(this.jdField_a_of_type_JavaUtilList);
+      paramString = yiw.a();
+      paramDoFollowTagRsp = QCircleFollowTagListItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagListItemView);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label215;
       }
     }
-    return;
-    label100:
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    label203:
+    label209:
+    label215:
+    for (int i = j;; i = 2)
+    {
+      paramString.a(new QCircleTopTagEvent(paramDoFollowTagRsp, i));
+      return;
+      paramString = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagListItemView.getContext();
+      if (this.jdField_a_of_type_Boolean) {}
+      for (i = 2131698387;; i = 2131698278)
+      {
+        QQToast.a(paramString, i, 0).a();
+        break;
+      }
+      i = 2;
+      break label77;
+      i = 1;
+      break label112;
+    }
   }
 }
 

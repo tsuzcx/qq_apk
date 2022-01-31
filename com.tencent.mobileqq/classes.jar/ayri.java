@@ -1,8 +1,15 @@
-public abstract interface ayri
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class ayri
+  implements View.OnClickListener
 {
-  public abstract void onSoftKeyboardClosed();
+  ayri(ayrh paramayrh, aynt paramaynt) {}
   
-  public abstract void onSoftKeyboardOpened(int paramInt);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Aynt.a(paramView);
+  }
 }
 
 

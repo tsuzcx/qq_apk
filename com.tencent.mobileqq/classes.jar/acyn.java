@@ -1,22 +1,50 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
 public class acyn
-  implements CompoundButton.OnCheckedChangeListener
+  implements adwr
 {
-  public acyn(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public acyn(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(Editable paramEditable)
   {
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      ForwardTroopListFragment.a(this.a).setVisibility(8);
+    }
+    for (;;)
     {
-      azmj.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Enter_sendmsg", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131695435), "qqsetting_enter_sendmsg_key", paramBoolean);
+      if (ForwardTroopListFragment.a(this.a) != null) {
+        ForwardTroopListFragment.a(this.a).a(paramEditable);
+      }
       return;
+      ForwardTroopListFragment.a(this.a).setVisibility(0);
+    }
+  }
+  
+  public void a(ResultRecord paramResultRecord)
+  {
+    if (paramResultRecord != null) {
+      ForwardTroopListFragment.a(this.a, paramResultRecord.a, paramResultRecord.a());
+    }
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (ForwardTroopListFragment.a(this.a) == null))
+    {
+      ForwardTroopListFragment.a(this.a, ContactSearchFragment.a(8, 2097176, null, null, ForwardTroopListFragment.a(this.a)));
+      FragmentTransaction localFragmentTransaction = this.a.getActivity().getSupportFragmentManager().beginTransaction();
+      localFragmentTransaction.add(2131375722, ForwardTroopListFragment.a(this.a));
+      localFragmentTransaction.commitAllowingStateLoss();
     }
   }
 }

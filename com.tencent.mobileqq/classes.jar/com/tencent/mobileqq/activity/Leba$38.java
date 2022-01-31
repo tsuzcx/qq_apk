@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import adce;
+import adgt;
 import android.content.Context;
 import android.widget.TextView;
-import atgm;
-import bhro;
+import atkv;
+import bhvv;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,13 +26,13 @@ class Leba$38
       if (Leba.d(this.this$0) != null) {
         Leba.d(this.this$0).setVisibility(0);
       }
-      bhro.a(Leba.d(this.this$0), 9, this.jdField_a_of_type_Int, 0);
+      bhvv.a(Leba.d(this.this$0), 9, this.jdField_a_of_type_Int, 0);
       localObject = this.this$0.a();
       localTextView = Leba.c(this.this$0);
       if (Leba.a(this.this$0).b() == 1)
       {
         bool1 = true;
-        bhro.a((Context)localObject, localTextView, 9, bool1);
+        bhvv.a((Context)localObject, localTextView, 9, bool1);
       }
     }
     for (;;)
@@ -44,14 +44,14 @@ class Leba$38
           if (Leba.e(this.this$0) != null)
           {
             Leba.e(this.this$0).setVisibility(0);
-            bhro.a(Leba.e(this.this$0), 8, this.jdField_a_of_type_Int, 0);
+            bhvv.a(Leba.e(this.this$0), 8, this.jdField_a_of_type_Int, 0);
             localObject = this.this$0.a();
             localTextView = Leba.e(this.this$0);
             bool1 = bool2;
             if (Leba.a(this.this$0).b() == 1) {
               bool1 = true;
             }
-            bhro.a((Context)localObject, localTextView, 8, bool1);
+            bhvv.a((Context)localObject, localTextView, 8, bool1);
           }
           localObject = new ArrayList();
           if (this.jdField_a_of_type_JavaUtilList != null) {
@@ -76,14 +76,14 @@ class Leba$38
             continue;
           }
           Leba.e(this.this$0).setVisibility(0);
-          bhro.a(Leba.e(this.this$0), 8, this.jdField_a_of_type_Int, 0);
+          bhvv.a(Leba.e(this.this$0), 8, this.jdField_a_of_type_Int, 0);
           localObject = this.this$0.a();
           localTextView = Leba.e(this.this$0);
           bool1 = bool3;
           if (Leba.a(this.this$0).b() == 1) {
             bool1 = true;
           }
-          bhro.a((Context)localObject, localTextView, 10, bool1);
+          bhvv.a((Context)localObject, localTextView, 10, bool1);
           continue;
         }
         if (Leba.e(this.this$0) == null) {

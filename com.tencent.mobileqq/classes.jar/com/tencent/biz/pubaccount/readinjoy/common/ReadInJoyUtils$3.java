@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import bdee;
-import bjxj;
+import bdin;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
@@ -19,21 +19,21 @@ public final class ReadInJoyUtils$3
     if ((this.a == null) || (!this.a.isLogin())) {
       return;
     }
-    if (bdee.a(this.a.getApp()))
+    if (bdin.a(this.a.getApp()))
     {
       ors.e(this.a);
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyUtils", 2, "handConversationToShow is wifi");
       }
     }
-    if (!bjxj.C(this.a))
+    if (!bkbq.C(this.a))
     {
       ors.b(this.a);
-      bjxj.f(this.a);
+      bkbq.f(this.a);
     }
-    if (bjxj.x(this.a))
+    if (bkbq.x(this.a))
     {
-      bjxj.m(this.a, false);
+      bkbq.m(this.a, false);
       ((KandianMergeManager)this.a.getManager(162)).j();
     }
     for (;;)

@@ -1,58 +1,91 @@
 import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class aore
-  extends aopw<aord>
+  extends aokh<aorf>
 {
-  public static aord a()
-  {
-    return (aord)aogj.a().a(563);
-  }
-  
   public int a()
   {
-    return 563;
+    return 252;
   }
   
   @NonNull
-  public aord a(@NonNull aogf[] paramArrayOfaogf)
+  public aorf a(int paramInt)
   {
-    aord localaord = new aord();
-    paramArrayOfaogf = paramArrayOfaogf[0].a;
-    if (paramArrayOfaogf != null) {}
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    String str = bdne.n(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin());
+    return new aorf(bdne.o(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin()), str);
+  }
+  
+  @Nullable
+  public aorf a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length == 0)) {
+      return null;
+    }
+    paramArrayOfaoko = paramArrayOfaoko[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onParsed, content:" + paramArrayOfaoko);
+    }
     try
     {
-      if (!"".equals(paramArrayOfaogf))
+      paramArrayOfaoko = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramArrayOfaoko.getBytes("utf-8")));
+      NodeList localNodeList = paramArrayOfaoko.getElementsByTagName("video_redbag_config");
+      if ((localNodeList != null) && (localNodeList.getLength() > 0))
       {
-        paramArrayOfaogf = new JSONObject(paramArrayOfaogf);
-        localaord.a = paramArrayOfaogf.getString("musicBoxUrl");
-        localaord.b = paramArrayOfaogf.getString("playerUrl");
+        paramArrayOfaoko = new aorf(paramArrayOfaoko.getElementsByTagName("resUrl").item(0).getFirstChild().getNodeValue(), paramArrayOfaoko.getElementsByTagName("resMd5").item(0).getFirstChild().getNodeValue());
+        return paramArrayOfaoko;
       }
-      return localaord;
     }
-    catch (JSONException paramArrayOfaogf)
+    catch (Exception paramArrayOfaoko)
     {
-      paramArrayOfaogf.printStackTrace();
+      QLog.e("RedBagVideoResProcessor", 1, "handleVideoRedbagConfig failed" + paramArrayOfaoko);
     }
-    return localaord;
+    return null;
   }
   
-  public Class<aord> a()
+  public Class<aorf> a()
   {
-    return aord.class;
+    return aorf.class;
   }
   
-  @NonNull
-  public aord b()
+  public void a(int paramInt)
   {
-    return new aord();
+    if (QLog.isColorLevel()) {
+      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onReqFailed");
+    }
   }
   
-  @NonNull
-  public aord c()
+  public void a(aorf paramaorf)
   {
-    return new aord();
+    if (QLog.isColorLevel()) {
+      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onUpdate");
+    }
+  }
+  
+  public int b()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    return bdne.an(localQQAppInterface.getApp(), localQQAppInterface.c());
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

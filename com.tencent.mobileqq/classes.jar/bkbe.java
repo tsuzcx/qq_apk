@@ -1,26 +1,8 @@
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import cooperation.vip.pb.vac_adv_get.DropList;
-
-public class bkbe
+public abstract interface bkbe
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  public abstract void onAnimationFinished();
   
-  public static bkbe a(vac_adv_get.DropList paramDropList)
-  {
-    if (paramDropList == null) {
-      return null;
-    }
-    bkbe localbkbe = new bkbe();
-    localbkbe.jdField_a_of_type_Int = paramDropList.action_type.get();
-    localbkbe.b = paramDropList.optext.get();
-    localbkbe.jdField_a_of_type_JavaLangString = paramDropList.iconurl.get();
-    localbkbe.c = paramDropList.jumpurl.get();
-    return localbkbe;
-  }
+  public abstract void onDrawableLoaded();
 }
 
 

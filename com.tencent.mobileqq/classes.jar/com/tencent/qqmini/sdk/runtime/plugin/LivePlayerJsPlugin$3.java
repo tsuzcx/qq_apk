@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgkd;
-import bhab;
+import bgok;
+import bhei;
 
 class LivePlayerJsPlugin$3
   implements Runnable
 {
-  LivePlayerJsPlugin$3(LivePlayerJsPlugin paramLivePlayerJsPlugin, int paramInt, bgkd parambgkd) {}
+  LivePlayerJsPlugin$3(LivePlayerJsPlugin paramLivePlayerJsPlugin, int paramInt, bgok parambgok) {}
   
   public void run()
   {
-    bhab.a(LivePlayerJsPlugin.access$900(this.this$0)).a(this.val$livePlayerId);
+    bhei.a(LivePlayerJsPlugin.access$900(this.this$0)).a(this.val$livePlayerId);
     this.val$req.a();
   }
 }

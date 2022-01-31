@@ -4,13 +4,13 @@ import android.content.Context;
 import android.view.View.OnLayoutChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bdkf;
+import bdoo;
 import ptk;
 
 public class NativeMiddleBodyView$RadiusView
   extends RelativeLayout
 {
-  final int jdField_a_of_type_Int = bdkf.a(8.0F);
+  final int jdField_a_of_type_Int = bdoo.a(8.0F);
   String jdField_a_of_type_JavaLangString = null;
   String b = null;
   String c = null;

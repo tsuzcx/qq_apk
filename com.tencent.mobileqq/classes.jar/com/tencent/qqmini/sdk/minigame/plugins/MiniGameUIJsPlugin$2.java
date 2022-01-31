@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import bgkd;
-import bgnf;
-import bgnw;
+import bgok;
+import bgrm;
+import bgsd;
 
 class MiniGameUIJsPlugin$2
   implements Runnable
 {
-  MiniGameUIJsPlugin$2(MiniGameUIJsPlugin paramMiniGameUIJsPlugin, bgkd parambgkd) {}
+  MiniGameUIJsPlugin$2(MiniGameUIJsPlugin paramMiniGameUIJsPlugin, bgok parambgok) {}
   
   public void run()
   {

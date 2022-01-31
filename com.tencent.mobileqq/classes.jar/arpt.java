@@ -1,87 +1,29 @@
-import android.os.Handler;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.1;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.2;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.3;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.4;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class arpt
-  implements ITMAssistantDownloadClientListener
+  extends arpx
 {
-  arpt(arps paramarps) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public arpt(FileManagerEntity paramFileManagerEntity)
   {
-    arps.b(this.a);
-    if (!arps.a(this.a).post(new UniformDownloaderAppBabySdk.4.1(this, paramString, paramLong1, paramLong2))) {
-      QLog.e(arps.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
-    }
+    this.jdField_a_of_type_Long = paramFileManagerEntity.nSessionId;
+    this.jdField_a_of_type_Int = paramFileManagerEntity.peerType;
+    this.jdField_a_of_type_JavaLangString = paramFileManagerEntity.peerUin;
   }
   
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public String a()
   {
-    int i = 0;
-    int j = 0;
-    Object localObject2 = null;
-    QLog.i(arps.a, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  state:[" + paramInt1 + "] errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
-    String str = "";
-    Object localObject1;
-    if ((paramTMAssistantDownloadClient != null) && (4 == paramInt1))
+    if ((this.jdField_a_of_type_Long == 0L) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
     {
-      try
-      {
-        localObject1 = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
-        i = 0;
-        paramTMAssistantDownloadClient = str;
-      }
-      catch (Exception paramTMAssistantDownloadClient)
-      {
-        do
-        {
-          for (;;)
-          {
-            paramTMAssistantDownloadClient.printStackTrace();
-            paramTMAssistantDownloadClient = arpl.a(22);
-            localObject1 = null;
-            j = 22;
-            i = 1;
-            continue;
-            localObject1 = ((TMAssistantDownloadTaskInfo)localObject1).mSavePath;
-          }
-        } while ((arps.a(this.a) == null) || (arps.a(this.a).post(new UniformDownloaderAppBabySdk.4.3(this, paramString1, paramInt1, paramInt2, paramString2, (String)localObject1))));
-        QLog.e(arps.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
-        return;
-      }
-      if (localObject1 == null) {
-        localObject1 = localObject2;
-      }
+      QLog.e("OfflineFileControlReq<QFile>", 1, "key params is null");
+      return "";
     }
-    for (;;)
-    {
-      arps.b(this.a);
-      if (i != 0)
-      {
-        if (!arps.a(this.a).post(new UniformDownloaderAppBabySdk.4.2(this, paramString1, j, paramTMAssistantDownloadClient))) {
-          QLog.e(arps.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. haveErr and thread error!!");
-        }
-        return;
-      }
-      localObject1 = null;
-      paramTMAssistantDownloadClient = "";
-      j = 0;
-    }
-  }
-  
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
-  {
-    QLog.e(arps.a, 1, "[UniformDL] ABSdkdownload service invalid ");
-    arps.b(this.a);
-    if (!arps.a(this.a).post(new UniformDownloaderAppBabySdk.4.4(this))) {
-      QLog.e(arps.a, 1, "[UniformDL] OnDwonloadSDKServiceInvalid. thread error!!");
-    }
+    return a(this.jdField_a_of_type_Int + "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long + "");
   }
 }
 

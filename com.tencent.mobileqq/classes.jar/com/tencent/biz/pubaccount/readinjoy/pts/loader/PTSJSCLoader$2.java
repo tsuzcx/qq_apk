@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
 import android.os.Handler;
-import bdcs;
+import bdhb;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import pwa;
@@ -28,7 +28,7 @@ public class PTSJSCLoader$2
       QLog.i("PTSJSCLoader", 1, "[loadPTSJSC], jscSoFullPath = " + str);
       try
       {
-        if (bdcs.a(str))
+        if (bdhb.a(str))
         {
           System.load(str);
           pwa.a(this.this$0, true);

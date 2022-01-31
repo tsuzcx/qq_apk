@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.vas.quickupdate;
 
-import bdrz;
-import bdsc;
-import bdsd;
-import bdse;
-import bdsf;
-import bdsg;
-import bdsh;
-import bdsk;
+import bdwi;
+import bdwl;
+import bdwm;
+import bdwn;
+import bdwo;
+import bdwp;
+import bdwq;
+import bdwt;
 import java.util.HashMap;
 
 public final class UpdateCallbackSelector$1
-  extends HashMap<Long, bdrz>
+  extends HashMap<Long, bdwi>
 {
   public UpdateCallbackSelector$1()
   {
-    bdrz[] arrayOfbdrz = new bdrz[7];
-    arrayOfbdrz[0] = bdsh.a;
-    arrayOfbdrz[1] = bdsg.a;
-    arrayOfbdrz[2] = bdse.a;
-    arrayOfbdrz[3] = bdsc.a;
-    arrayOfbdrz[4] = bdsd.a;
-    arrayOfbdrz[5] = bdsf.a;
-    arrayOfbdrz[6] = bdsk.a;
-    int j = arrayOfbdrz.length;
+    bdwi[] arrayOfbdwi = new bdwi[7];
+    arrayOfbdwi[0] = bdwq.a;
+    arrayOfbdwi[1] = bdwp.a;
+    arrayOfbdwi[2] = bdwn.a;
+    arrayOfbdwi[3] = bdwl.a;
+    arrayOfbdwi[4] = bdwm.a;
+    arrayOfbdwi[5] = bdwo.a;
+    arrayOfbdwi[6] = bdwt.a;
+    int j = arrayOfbdwi.length;
     while (i < j)
     {
-      bdrz localbdrz = arrayOfbdrz[i];
-      put(Long.valueOf(localbdrz.getBID()), localbdrz);
+      bdwi localbdwi = arrayOfbdwi[i];
+      put(Long.valueOf(localbdwi.getBID()), localbdwi);
       i += 1;
     }
   }

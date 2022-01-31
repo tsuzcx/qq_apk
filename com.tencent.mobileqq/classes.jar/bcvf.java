@@ -1,35 +1,23 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
 
-final class bcvf
-  implements DownloadParams.DecodeHandler
+public class bcvf
+  implements badp
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public bcvf(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  
+  public void a()
   {
-    try
-    {
-      int i = paramBitmap.getHeight();
-      int j = paramBitmap.getWidth();
-      int k = paramDownloadParams.reqWidth;
-      int m = paramDownloadParams.reqHeight;
-      float f = k * 1.0F / j;
-      paramDownloadParams = new Matrix();
-      paramDownloadParams.setScale(f, f);
-      if (i * f > m) {}
-      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, (int)(m / f), paramDownloadParams, true); QLog.isColorLevel(); paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, i, paramDownloadParams, true))
-      {
-        QLog.d(bcuq.a(), 2, String.format("ALIGN_TOP_DECODER srcHeight = %s, srcWidth = %s, reqWidth = %s, reqHeight = %s, scale = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Float.valueOf(f) }));
-        break;
-      }
-      return paramDownloadParams;
+    if (TroopGiftToAllSurfaceView.a(this.a).d == 0) {
+      this.a.a(1, TroopGiftToAllSurfaceView.a(this.a));
     }
-    catch (Exception paramDownloadParams)
+    for (;;)
     {
-      paramDownloadParams.printStackTrace();
-      return paramBitmap;
+      if ((TroopGiftToAllSurfaceView.a(this.a) instanceof VideoSprite)) {
+        ((VideoSprite)TroopGiftToAllSurfaceView.a(this.a)).c(TroopGiftToAllSurfaceView.a(this.a));
+      }
+      return;
+      this.a.a(0, TroopGiftToAllSurfaceView.a(this.a));
     }
   }
 }

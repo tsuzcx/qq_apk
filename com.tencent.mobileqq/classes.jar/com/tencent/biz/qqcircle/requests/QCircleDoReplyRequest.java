@@ -16,7 +16,7 @@ import feedcloud.FeedCloudWrite.StDoReplyRsp;
 import java.util.ArrayList;
 import java.util.List;
 import tra;
-import tym;
+import tzy;
 
 public class QCircleDoReplyRequest
   extends QCircleBaseRequest
@@ -44,7 +44,7 @@ public class QCircleDoReplyRequest
     }
     paramStFeed = new FeedCloudCommon.Entry();
     paramStFeed.key.set("ext_source");
-    if (((tym.a().c(61)) && (tym.a().d(57))) || (tym.a().c(57))) {
+    if (((tzy.a().c(61)) && (tzy.a().d(57))) || (tzy.a().c(57))) {
       paramStFeed.value.set("2");
     }
     for (;;)

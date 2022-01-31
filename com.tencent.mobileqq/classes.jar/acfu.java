@@ -1,22 +1,23 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
 
-public final class acfu
-  implements DialogInterface.OnClickListener
+public class acfu
+  implements View.OnClickListener
 {
-  public acfu(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, String paramString, int paramInt3) {}
+  public acfu(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
-    azmj.b(null, "dc00899", "Grp_video", "", "video_jump", "Clk_jump", 0, 0, this.jdField_a_of_type_JavaLangString + "", this.c + "", "0", "");
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    paramView = (View)paramView.getParent();
+    if ((paramView == null) || (paramView.getTag() == null)) {}
+    do
+    {
+      return;
+      azqs.b(this.a.app, "CliOper", "", "", "0X8007146", "0X8007146", 0, 0, "", "", "", "");
+    } while (!(paramView.getTag() instanceof SubAccountInfo));
+    this.a.a((SubAccountInfo)paramView.getTag());
   }
 }
 

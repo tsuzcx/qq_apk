@@ -1,23 +1,11 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.qqcircle.component.ComponentPageView;
-
-public class tvk
-  extends RecyclerView.OnScrollListener
+class tvk
+  implements bhvm
 {
-  public tvk(ComponentPageView paramComponentPageView) {}
+  tvk(tvj paramtvj) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a()
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if (paramInt2 > 0) {
-      ComponentPageView.a(this.a);
-    }
+    tuz.a(this.a.a, 63);
   }
 }
 

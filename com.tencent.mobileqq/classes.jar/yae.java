@@ -1,61 +1,44 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeAdFeedItemView;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
 public class yae
-  extends RecyclerView.ViewHolder
+  implements zha
 {
-  public yae(xzz paramxzz, View paramView)
-  {
-    super(paramView);
-  }
+  public yae(ScannerActivity paramScannerActivity) {}
   
-  private boolean a(CertifiedAccountMeta.StFeed paramStFeed)
+  public void a(int paramInt)
   {
-    if ((this.itemView instanceof BaseWidgetView))
-    {
-      CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)((BaseWidgetView)this.itemView).a();
-      if ((localStFeed != null) && (paramStFeed != null) && (!TextUtils.isEmpty(localStFeed.id.get())) && (!TextUtils.isEmpty(localStFeed.id.get()))) {
-        return (localStFeed.id.get().equals(paramStFeed.id.get())) && (localStFeed.likeInfo.count.get() == paramStFeed.likeInfo.count.get());
-      }
-    }
-    return false;
-  }
-  
-  public void a(CertifiedAccountMeta.StFeed paramStFeed, ExtraTypeInfo paramExtraTypeInfo)
-  {
-    if (a(paramStFeed)) {
+    if (this.a.isFinishing()) {
       return;
     }
-    if ((this.itemView instanceof RelativeFeedItemView))
-    {
-      ((RelativeFeedItemView)this.itemView).setIsInNightMode(xzz.a(this.a));
-      ((RelativeFeedItemView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-      ((RelativeFeedItemView)this.itemView).setData(paramStFeed);
-      ((RelativeFeedItemView)this.itemView).setDataPosInList(getAdapterPosition());
+    this.a.a.d = false;
+    ScannerActivity.a(this.a).setVisibility(8);
+    bdjz localbdjz = bdgm.a(this.a, 230);
+    if (paramInt == 2) {
+      localbdjz.setMessage(2131719395);
     }
     for (;;)
     {
-      if (xzz.a(this.a) != null) {
-        this.itemView.setOnClickListener(new yaf(this, paramStFeed));
-      }
-      this.itemView.setOnLongClickListener(new yag(this, paramExtraTypeInfo, paramStFeed));
+      yaf localyaf = new yaf(this);
+      localbdjz.setPositiveButton(2131694953, localyaf);
+      localbdjz.setOnCancelListener(localyaf);
+      localbdjz.show();
       return;
-      if ((this.itemView instanceof RelativeAdFeedItemView))
-      {
-        ((RelativeAdFeedItemView)this.itemView).setIsInNightMode(xzz.a(this.a));
-        ((RelativeAdFeedItemView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-        ((RelativeAdFeedItemView)this.itemView).setData(paramStFeed);
-      }
+      localbdjz.setMessage(2131719404);
     }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.a.d = false;
+    String str = "QR_CODE";
+    if (ScannerActivity.a(this.a) != null) {
+      str = ScannerActivity.a(this.a).a();
+    }
+    ScannerActivity.a(this.a, paramInt1, str, paramString, paramInt2);
   }
 }
 

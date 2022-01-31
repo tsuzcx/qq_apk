@@ -1,15 +1,28 @@
-import android.view.View;
-import java.io.File;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class apub
+  extends apuf
 {
+  public static int b = 165;
   public int a;
-  View jdField_a_of_type_AndroidViewView;
-  public bdnb a;
-  public File a;
-  boolean jdField_a_of_type_Boolean;
   
-  apub(aptw paramaptw) {}
+  public Drawable a(Context paramContext, float paramFloat)
+  {
+    return apsi.a(this.a);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  {
+    int i = paramEditText.getSelectionStart();
+    int j = paramEditText.getSelectionEnd();
+    paramEditText.getEditableText().replace(i, j, banh.a(this.a));
+    paramEditText.requestFocus();
+  }
 }
 
 

@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.Handler;
-import bdda;
+import bdhj;
 import com.tencent.qphone.base.util.QLog;
 
 class PhoneContactStatusCheckView$1
@@ -17,13 +17,13 @@ class PhoneContactStatusCheckView$1
     Object localObject2 = this.this$0.getResources();
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inJustDecodeBounds = true;
-    BitmapFactory.decodeResource(this.this$0.getResources(), 2130844540, localOptions);
-    localOptions.inSampleSize = bdda.a(localOptions, ((Resources)localObject2).getDimensionPixelSize(2131297062), ((Resources)localObject2).getDimensionPixelSize(2131297060));
+    BitmapFactory.decodeResource(this.this$0.getResources(), 2130844612, localOptions);
+    localOptions.inSampleSize = bdhj.a(localOptions, ((Resources)localObject2).getDimensionPixelSize(2131297062), ((Resources)localObject2).getDimensionPixelSize(2131297060));
     localOptions.inJustDecodeBounds = false;
     Object localObject1 = null;
     try
     {
-      localObject2 = BitmapFactory.decodeResource((Resources)localObject2, 2130844540, localOptions);
+      localObject2 = BitmapFactory.decodeResource((Resources)localObject2, 2130844612, localOptions);
       localObject1 = localObject2;
     }
     catch (OutOfMemoryError localOutOfMemoryError)

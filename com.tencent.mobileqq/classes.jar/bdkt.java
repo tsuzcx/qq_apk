@@ -1,14 +1,14 @@
-public abstract interface bdkt
+import android.widget.TextView;
+
+class bdkt
 {
-  public abstract void a(int paramInt1, String paramString, int paramInt2);
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void b(String paramString, int paramInt1, int paramInt2);
+  private bdkt(bdkn parambdkn) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdkt
  * JD-Core Version:    0.7.0.1
  */

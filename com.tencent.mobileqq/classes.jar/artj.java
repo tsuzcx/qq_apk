@@ -1,45 +1,18 @@
-import com.tencent.qflutter.utils.FLog.Log;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class artj
-  implements FLog.Log
+final class artj
+  implements View.OnClickListener
 {
-  public void d(String paramString1, String paramString2)
+  artj(QQAppInterface paramQQAppInterface, String paramString, artl paramartl, aoxm paramaoxm) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d(paramString1, 4, paramString2);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
     }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-  }
-  
-  public void v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
+    this.jdField_a_of_type_Artl.a(this.jdField_a_of_type_Aoxm.b());
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.mobileqq.webview.swift;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import bebx;
-import becp;
-import becq;
-import becr;
-import bedf;
-import bedl;
+import begg;
+import begy;
+import begz;
+import beha;
+import beho;
+import behu;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -44,7 +44,7 @@ public class WebViewPlugin
   public boolean isDestroy;
   public HashMap<String, JsBridgeListener> mOpenApiListeners;
   public String mPluginNameSpace = "";
-  public becq mRuntime;
+  public begz mRuntime;
   public long pluginEventFlag;
   
   public static JSONObject getJsonFromJSBridge(String paramString)
@@ -187,8 +187,8 @@ public class WebViewPlugin
       if (localWebViewFragment != null) {
         return localWebViewFragment.b().a(paramInt);
       }
-      if ((this.mRuntime.a() instanceof bedl)) {
-        return ((bedl)this.mRuntime.a()).b().a(paramInt);
+      if ((this.mRuntime.a() instanceof behu)) {
+        return ((behu)this.mRuntime.a()).b().a(paramInt);
       }
     }
     return null;
@@ -197,8 +197,8 @@ public class WebViewPlugin
   public int getRequestCode(byte paramByte)
   {
     if (this.mRuntime != null) {}
-    for (bebx localbebx = this.mRuntime.a(this.mRuntime.a()); (localbebx instanceof becr); localbebx = null) {
-      return ((becr)localbebx).switchRequestCode(this, paramByte);
+    for (begg localbegg = this.mRuntime.a(this.mRuntime.a()); (localbegg instanceof beha); localbegg = null) {
+      return ((beha)localbegg).switchRequestCode(this, paramByte);
     }
     if (QLog.isDevelopLevel()) {
       QLog.d(this.TAG, 4, "startActivityForResult not called, activity need implement Interface WebViewPluginContainer");
@@ -229,7 +229,7 @@ public class WebViewPlugin
   final void initRuntime(Activity paramActivity, AppInterface paramAppInterface)
   {
     if (this.inited.compareAndSet(false, true)) {
-      this.mRuntime = new becq(paramActivity, paramAppInterface);
+      this.mRuntime = new begz(paramActivity, paramAppInterface);
     }
   }
   
@@ -260,7 +260,7 @@ public class WebViewPlugin
   
   public void postPluginAsyncTask(Runnable paramRunnable)
   {
-    ThreadManager.post(paramRunnable, 5, new becp(this), false);
+    ThreadManager.post(paramRunnable, 5, new begy(this), false);
   }
   
   public WebViewPlugin setHandler(Handler paramHandler)
@@ -268,37 +268,37 @@ public class WebViewPlugin
     return this;
   }
   
-  public void setWebUiInterface(bebx parambebx)
+  public void setWebUiInterface(begg parambegg)
   {
-    if (parambebx != null) {
-      this.mRuntime.a(parambebx);
+    if (parambegg != null) {
+      this.mRuntime.a(parambegg);
     }
   }
   
   public void startActivityForResult(Intent paramIntent, byte paramByte)
   {
     Activity localActivity = null;
-    bebx localbebx;
+    begg localbegg;
     if (this.mRuntime != null)
     {
-      localbebx = this.mRuntime.a(this.mRuntime.a());
+      localbegg = this.mRuntime.a(this.mRuntime.a());
       if (this.mRuntime != null) {
         localActivity = this.mRuntime.a();
       }
-      if (!(localbebx instanceof becr)) {
+      if (!(localbegg instanceof beha)) {
         break label67;
       }
-      ((becr)localbebx).pluginStartActivityForResult(this, paramIntent, paramByte);
+      ((beha)localbegg).pluginStartActivityForResult(this, paramIntent, paramByte);
     }
     label67:
     do
     {
       return;
-      localbebx = null;
+      localbegg = null;
       break;
-      if ((localActivity instanceof becr))
+      if ((localActivity instanceof beha))
       {
-        ((becr)localActivity).pluginStartActivityForResult(this, paramIntent, paramByte);
+        ((beha)localActivity).pluginStartActivityForResult(this, paramIntent, paramByte);
         return;
       }
     } while (!QLog.isDevelopLevel());

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import aepx;
-import alpo;
-import aluw;
+import aeum;
+import alud;
+import alzl;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import azqj;
-import azqk;
-import bdec;
+import azus;
+import azut;
+import bdil;
 import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -48,8 +48,8 @@ public class RecentItemTroopBarAssitant
     if ((this.mUnreadNum > 0) && (!suk.e((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))) {
       if (this.mUnreadNum <= 99)
       {
-        this.mMsgExtroInfo = String.format(paramContext.getString(2131696911), new Object[] { Integer.valueOf(this.mUnreadNum) });
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167006);
+        this.mMsgExtroInfo = String.format(paramContext.getString(2131696913), new Object[] { Integer.valueOf(this.mUnreadNum) });
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131167008);
       }
     }
     for (;;)
@@ -58,7 +58,7 @@ public class RecentItemTroopBarAssitant
         this.mShowTime = "";
       }
       return;
-      this.mMsgExtroInfo = paramContext.getString(2131696906);
+      this.mMsgExtroInfo = paramContext.getString(2131696908);
       break;
       this.mMsgExtroInfo = "";
     }
@@ -99,7 +99,7 @@ public class RecentItemTroopBarAssitant
       ((suv)localObject5).a = this.mUnreadNum;
       localObject1 = suk.b(paramQQAppInterface);
       if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-      for (localMsgSummary.strContent = paramContext.getString(2131698242);; localMsgSummary.strContent = ((CharSequence)localObject1))
+      for (localMsgSummary.strContent = paramContext.getString(2131698244);; localMsgSummary.strContent = ((CharSequence)localObject1))
       {
         this.mDisplayTime = ((suv)localObject5).a(paramQQAppInterface);
         a(paramQQAppInterface);
@@ -111,7 +111,7 @@ public class RecentItemTroopBarAssitant
           if (this.mUnreadNum != 0) {
             break label948;
           }
-          localObject2 = paramContext.getString(2131696910);
+          localObject2 = paramContext.getString(2131696912);
           if (this.mLastMsg != null) {
             break;
           }
@@ -150,14 +150,14 @@ public class RecentItemTroopBarAssitant
       this.mDisplayTime = ((QQMessageFacade.Message)localObject1).time;
       if (TextUtils.isEmpty(((suv)localObject5).a(((QQMessageFacade.Message)localObject1).frienduin)))
       {
-        localObject2 = (aluw)paramQQAppInterface.getManager(56);
+        localObject2 = (alzl)paramQQAppInterface.getManager(56);
         if (localObject2 != null)
         {
-          localObject5 = ((aluw)localObject2).b(((QQMessageFacade.Message)localObject1).frienduin);
+          localObject5 = ((alzl)localObject2).b(((QQMessageFacade.Message)localObject1).frienduin);
           if (localObject5 != null) {
             break label629;
           }
-          localObject2 = ((aluw)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin);
+          localObject2 = ((alzl)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin);
           if (localObject2 == null) {
             break label619;
           }
@@ -166,13 +166,13 @@ public class RecentItemTroopBarAssitant
       }
       if (localObject1 != null)
       {
-        bdec.a(paramContext, paramQQAppInterface, (QQMessageFacade.Message)localObject1, this.mUser.getType(), localMsgSummary, "", true, false);
+        bdil.a(paramContext, paramQQAppInterface, (QQMessageFacade.Message)localObject1, this.mUser.getType(), localMsgSummary, "", true, false);
         i = ((QQMessageFacade.Message)localObject1).msgtype;
         if ((i == -3006) || (i == -5004))
         {
           localMsgSummary.suffix = "";
           localMsgSummary.strContent = "";
-          localObject5 = aepx.a((MessageRecord)localObject1);
+          localObject5 = aeum.a((MessageRecord)localObject1);
           if ((localObject5 != null) && (((PAMessage)localObject5).items != null) && (((PAMessage)localObject5).items.size() != 0)) {
             break label639;
           }
@@ -201,7 +201,7 @@ public class RecentItemTroopBarAssitant
       if ((localObject1 == null) && (TextUtils.isEmpty(localMsgSummary.strContent)) && (TextUtils.isEmpty(localMsgSummary.suffix)))
       {
         localMsgSummary.strPrefix = null;
-        localMsgSummary.strContent = (alpo.a(2131713540) + swy.a(paramQQAppInterface, paramContext) + alpo.a(2131713556));
+        localMsgSummary.strContent = (alud.a(2131713552) + swy.a(paramQQAppInterface, paramContext) + alud.a(2131713568));
         break label91;
         this.mUnreadNum = ((suv)localObject5).a(paramQQAppInterface, false);
         break label207;
@@ -237,14 +237,14 @@ public class RecentItemTroopBarAssitant
         i = 0;
         if (((Iterator)localObject2).hasNext())
         {
-          localObject3 = (azqj)((Iterator)localObject2).next();
-          if (!(localObject3 instanceof azqk)) {
+          localObject3 = (azus)((Iterator)localObject2).next();
+          if (!(localObject3 instanceof azut)) {
             break label1098;
           }
-          localObject3 = ((azqk)localObject3).a.iterator();
+          localObject3 = ((azut)localObject3).a.iterator();
           while (((Iterator)localObject3).hasNext())
           {
-            localObject4 = (azqj)((Iterator)localObject3).next();
+            localObject4 = (azus)((Iterator)localObject3).next();
             if ((localObject4 instanceof StructMsgItemTitle))
             {
               localMsgSummary.strContent = ((StructMsgItemTitle)localObject4).b();
@@ -268,18 +268,18 @@ public class RecentItemTroopBarAssitant
         break label148;
         if (this.mUnreadNum == 1)
         {
-          this.mContentDesc = String.format(paramContext.getString(2131696909), new Object[] { localObject1, alpo.a(2131713557), this.mShowTime });
+          this.mContentDesc = String.format(paramContext.getString(2131696911), new Object[] { localObject1, alud.a(2131713569), this.mShowTime });
           break label177;
         }
         if (this.mUnreadNum == 2)
         {
-          this.mContentDesc = String.format(paramContext.getString(2131696909), new Object[] { localObject1, alpo.a(2131713570), this.mShowTime });
+          this.mContentDesc = String.format(paramContext.getString(2131696911), new Object[] { localObject1, alud.a(2131713582), this.mShowTime });
           break label177;
         }
         if (this.mUnreadNum <= 0) {
           break label177;
         }
-        this.mContentDesc = String.format(paramContext.getString(2131696909), new Object[] { localObject1, Integer.toString(this.mUnreadNum), this.mShowTime });
+        this.mContentDesc = String.format(paramContext.getString(2131696911), new Object[] { localObject1, Integer.toString(this.mUnreadNum), this.mShowTime });
         break label177;
       }
     }

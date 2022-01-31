@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.richmedia.p2veffect.main;
 
 import android.graphics.Bitmap;
 import android.opengl.GLSurfaceView;
-import bjpx;
+import bjue;
 import com.tencent.mobileqq.activity.richmedia.p2veffect.listener.IControllerFilterProvider;
 import com.tencent.mobileqq.activity.richmedia.p2veffect.listener.IControllerPrepareListener;
 import com.tencent.mobileqq.activity.richmedia.p2veffect.listener.IFastRenderCallback;
@@ -18,7 +18,7 @@ public class P2VEffectConvertor
   
   public P2VEffectConvertor(GLSurfaceView paramGLSurfaceView, IControllerPrepareListener paramIControllerPrepareListener)
   {
-    this.p2vEffectController = bjpx.a("com.tencent.mobileqq.activity.richmedia.p2veffect.P2VEffectsController", getParamsClass(new Class[] { GLSurfaceView.class, IControllerPrepareListener.class }), new Object[] { paramGLSurfaceView, paramIControllerPrepareListener });
+    this.p2vEffectController = bjue.a("com.tencent.mobileqq.activity.richmedia.p2veffect.P2VEffectsController", getParamsClass(new Class[] { GLSurfaceView.class, IControllerPrepareListener.class }), new Object[] { paramGLSurfaceView, paramIControllerPrepareListener });
   }
   
   private Class[] getParamsClass(Class... paramVarArgs)
@@ -35,77 +35,77 @@ public class P2VEffectConvertor
   
   public void addPlayerCallback(IP2VEnginePlayerCallback paramIP2VEnginePlayerCallback)
   {
-    bjpx.a(this.p2vEffectController, "addPlayerCallback", false, getParamsClass(new Class[] { IP2VEnginePlayerCallback.class }), new Object[] { paramIP2VEnginePlayerCallback });
+    bjue.a(this.p2vEffectController, "addPlayerCallback", false, getParamsClass(new Class[] { IP2VEnginePlayerCallback.class }), new Object[] { paramIP2VEnginePlayerCallback });
   }
   
   public void cancelSave(IOnStopCompleteListener paramIOnStopCompleteListener)
   {
-    bjpx.a(this.p2vEffectController, "cancelSave", false, getParamsClass(new Class[] { IOnStopCompleteListener.class }), new Object[] { paramIOnStopCompleteListener });
+    bjue.a(this.p2vEffectController, "cancelSave", false, getParamsClass(new Class[] { IOnStopCompleteListener.class }), new Object[] { paramIOnStopCompleteListener });
   }
   
   public void onDestroy()
   {
-    bjpx.a(this.p2vEffectController, "onDestroy", false, null, null);
+    bjue.a(this.p2vEffectController, "onDestroy", false, null, null);
   }
   
   public void pausePlay()
   {
-    bjpx.a(this.p2vEffectController, "pausePlay", false, null, null);
+    bjue.a(this.p2vEffectController, "pausePlay", false, null, null);
   }
   
   public void prepare()
   {
-    bjpx.a(this.p2vEffectController, "prepare", false, null, null);
+    bjue.a(this.p2vEffectController, "prepare", false, null, null);
   }
   
   public void requestDraw()
   {
-    bjpx.a(this.p2vEffectController, "requestDraw", false, null, null);
+    bjue.a(this.p2vEffectController, "requestDraw", false, null, null);
   }
   
   public void resetVideoIndex()
   {
-    bjpx.a(this.p2vEffectController, "resetVideoIndex", false, null, null);
+    bjue.a(this.p2vEffectController, "resetVideoIndex", false, null, null);
   }
   
   public void save(String paramString, IFastRenderCallback paramIFastRenderCallback)
   {
-    bjpx.a(this.p2vEffectController, "save", false, getParamsClass(new Class[] { String.class, IFastRenderCallback.class }), new Object[] { paramString, paramIFastRenderCallback });
+    bjue.a(this.p2vEffectController, "save", false, getParamsClass(new Class[] { String.class, IFastRenderCallback.class }), new Object[] { paramString, paramIFastRenderCallback });
   }
   
   public void setFilterProvider(IControllerFilterProvider paramIControllerFilterProvider)
   {
-    bjpx.a(this.p2vEffectController, "setFilterProvider", false, getParamsClass(new Class[] { IControllerFilterProvider.class }), new Object[] { paramIControllerFilterProvider });
+    bjue.a(this.p2vEffectController, "setFilterProvider", false, getParamsClass(new Class[] { IControllerFilterProvider.class }), new Object[] { paramIControllerFilterProvider });
   }
   
   public void setMediaItems(ArrayList<MediaItem> paramArrayList)
   {
-    bjpx.a(this.p2vEffectController, "setMediaItems", false, getParamsClass(new Class[] { ArrayList.class }), new Object[] { paramArrayList });
+    bjue.a(this.p2vEffectController, "setMediaItems", false, getParamsClass(new Class[] { ArrayList.class }), new Object[] { paramArrayList });
   }
   
   public void setSquareTypeAndColor(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    bjpx.a(this.p2vEffectController, "setSquareTypeAndColor", false, getParamsClass(new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    bjue.a(this.p2vEffectController, "setSquareTypeAndColor", false, getParamsClass(new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
   }
   
   public void setWaterMarkerBitmap(Bitmap paramBitmap)
   {
-    bjpx.a(this.p2vEffectController, "setWaterMarkerBitmap", false, getParamsClass(new Class[] { Bitmap.class }), new Object[] { paramBitmap });
+    bjue.a(this.p2vEffectController, "setWaterMarkerBitmap", false, getParamsClass(new Class[] { Bitmap.class }), new Object[] { paramBitmap });
   }
   
   public void setWaterMarkerEnable(boolean paramBoolean)
   {
-    bjpx.a(this.p2vEffectController, "setWaterMarkerEnable", false, getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
+    bjue.a(this.p2vEffectController, "setWaterMarkerEnable", false, getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   public void startPlay(boolean paramBoolean)
   {
-    bjpx.a(this.p2vEffectController, "startPlay", false, getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
+    bjue.a(this.p2vEffectController, "startPlay", false, getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   public void stopPlay()
   {
-    bjpx.a(this.p2vEffectController, "stopPlay", false, null, null);
+    bjue.a(this.p2vEffectController, "stopPlay", false, null, null);
   }
 }
 

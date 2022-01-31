@@ -1,99 +1,25 @@
-import android.text.Editable.Factory;
-import android.text.SpannableStringBuilder;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bahw
-  extends SpannableStringBuilder
+class bahw
+  implements View.OnClickListener
 {
-  public static Editable.Factory a;
-  private int a;
+  bahw(bahu parambahu, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_AndroidTextEditable$Factory = new bahx();
-  }
-  
-  public bahw(CharSequence paramCharSequence, int paramInt)
-  {
-    super(a(paramCharSequence, paramInt));
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private static CharSequence a(CharSequence paramCharSequence, int paramInt)
-  {
-    if ((paramCharSequence instanceof bahs)) {
-      return ((bahs)paramCharSequence).a();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bahu, 0);
     }
-    return new bahs(paramCharSequence, paramInt).a();
-  }
-  
-  public SpannableStringBuilder replace(int paramInt1, int paramInt2, CharSequence paramCharSequence, int paramInt3, int paramInt4)
-  {
-    if (paramInt1 < 0) {
-      j = 0;
-    }
-    for (;;)
+    try
     {
-      try
-      {
-        k = length();
-        if (paramInt2 > k)
-        {
-          paramInt1 = k;
-          paramInt2 = paramInt1;
-          if (paramInt1 < 0) {
-            i = paramInt1;
-          }
-        }
+      if (this.jdField_a_of_type_Bahu.isShowing()) {
+        this.jdField_a_of_type_Bahu.dismiss();
       }
-      catch (Throwable localThrowable1)
-      {
-        int k;
-        Object localObject;
-        QLog.e("ColorNick.EmoticonBuilder", 1, "QQTextBuilder.replace caused crash..text:" + toString() + ", replace text:" + paramCharSequence + " , " + j + "-" + paramInt2 + " , " + paramInt3 + "-" + paramInt4, localThrowable1);
-        return new SpannableStringBuilder();
-      }
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          break label255;
-        }
-        i = paramInt1;
-        QLog.w("ColorNick.EmoticonBuilder", 2, "selection error, start = " + j + " end = " + paramInt1 + " length = " + k);
-      }
-      catch (Throwable localThrowable2)
-      {
-        paramInt2 = i;
-        continue;
-        continue;
-        paramInt2 = 0;
-        continue;
-      }
-      i = paramInt2;
-      if (paramCharSequence.length() <= 0) {
-        break label252;
-      }
-      i = paramInt2;
-      localObject = new bahs(paramCharSequence, this.jdField_a_of_type_Int).a();
-      paramCharSequence = (CharSequence)localObject;
-      try
-      {
-        localObject = super.replace(j, paramInt2, paramCharSequence, paramInt3, paramInt4);
-        return localObject;
-      }
-      catch (Throwable localThrowable3)
-      {
-        continue;
-      }
-      j = paramInt1;
-      continue;
-      paramInt1 = paramInt2;
+      return;
     }
-  }
-  
-  public CharSequence subSequence(int paramInt1, int paramInt2)
-  {
-    return super.subSequence(paramInt1, paramInt2);
+    catch (Exception paramView) {}
   }
 }
 

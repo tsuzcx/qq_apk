@@ -1,17 +1,6 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
-
-public class uva
-  extends unf
+public abstract interface uva<DATA>
 {
-  public uva(qqstory_service.RspMsgTabNodeWatched paramRspMsgTabNodeWatched)
-  {
-    super(paramRspMsgTabNodeWatched.result);
-  }
-  
-  public String toString()
-  {
-    return "MsgTabNodeWatchedResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
-  }
+  public abstract void a(boolean paramBoolean, DATA paramDATA);
 }
 
 

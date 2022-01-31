@@ -1,28 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.widget.AbsListView;
 
-final class bevi
-  implements DialogInterface.OnClickListener
+public class bevi
+  implements bhtv
 {
-  bevi(bevo parambevo, int paramInt) {}
+  public bevi(SlideDetectListView paramSlideDetectListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Bevo.a(2);
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Int == 1) {
-      bevd.a("0X80094F8");
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 5))
-      {
-        bevd.a("0X80094F7");
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 3);
-    bevd.a("0X80094F9");
+    if (SlideDetectListView.b(this.a) != null) {
+      SlideDetectListView.b(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    this.a.c = paramInt;
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
+    }
+    if (SlideDetectListView.b(this.a) != null) {
+      SlideDetectListView.b(this.a).onScrollStateChanged(paramAbsListView, paramInt);
+    }
   }
 }
 

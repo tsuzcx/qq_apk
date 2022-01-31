@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afam;
+import affb;
 
 public class IceBreakHelper$3
   implements Runnable
 {
-  public IceBreakHelper$3(afam paramafam) {}
+  public IceBreakHelper$3(affb paramaffb) {}
   
   public void run()
   {

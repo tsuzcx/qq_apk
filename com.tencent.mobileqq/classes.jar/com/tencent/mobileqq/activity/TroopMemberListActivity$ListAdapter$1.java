@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aecg;
+import aegv;
 
 public class TroopMemberListActivity$ListAdapter$1
   implements Runnable
 {
-  public TroopMemberListActivity$ListAdapter$1(aecg paramaecg) {}
+  public TroopMemberListActivity$ListAdapter$1(aegv paramaegv) {}
   
   public void run()
   {

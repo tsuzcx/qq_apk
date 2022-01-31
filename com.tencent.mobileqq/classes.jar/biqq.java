@@ -1,75 +1,43 @@
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.content.Context;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class biqq
-  extends Binder
-  implements biqp
+final class biqq
+  extends OnPluginInstallListener.Stub
 {
-  public biqq()
-  {
-    attachInterface(this, "cooperation.qqdataline.ipc.IDatalineService");
-  }
+  biqq(biqu parambiqu, biqw parambiqw, Context paramContext) {}
   
-  public static biqp a(IBinder paramIBinder)
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    if (paramIBinder == null) {
-      return null;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("plugin_tag", 4, "doHandleOtherProcess onInstallError");
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqdataline.ipc.IDatalineService");
-    if ((localIInterface != null) && ((localIInterface instanceof biqp))) {
-      return (biqp)localIInterface;
+    if (this.jdField_a_of_type_Biqu != null) {
+      this.jdField_a_of_type_Biqu.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Biqw);
     }
-    return new biqr(paramIBinder);
   }
   
-  public IBinder asBinder()
+  public void onInstallFinish(String paramString)
   {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    String str1 = null;
-    Object localObject = null;
-    switch (paramInt1)
+    if (QLog.isDevelopLevel()) {
+      QLog.i("plugin_tag", 4, "doHandleOtherProcess onInstallFinish");
+    }
+    if (this.jdField_a_of_type_Biqu != null)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qqdataline.ipc.IDatalineService");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("cooperation.qqdataline.ipc.IDatalineService");
-      str1 = paramParcel1.readString();
-      if (paramParcel1.readInt() != 0) {
-        localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
-      }
-      paramParcel1 = a(str1, (Bundle)localObject);
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
+      paramString = biqn.a().queryPlugin(this.jdField_a_of_type_Biqw.b);
+      if (paramString != null)
       {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
+        this.jdField_a_of_type_Biqw.c = paramString.mInstalledPath;
+        this.jdField_a_of_type_Biqw.a(paramString);
       }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
-      }
+      this.jdField_a_of_type_Biqu.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Biqw);
     }
-    paramParcel1.enforceInterface("cooperation.qqdataline.ipc.IDatalineService");
-    String str2 = paramParcel1.readString();
-    localObject = str1;
-    if (paramParcel1.readInt() != 0) {
-      localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
-    }
-    a(str2, (Bundle)localObject);
-    paramParcel2.writeNoException();
-    return true;
   }
 }
 

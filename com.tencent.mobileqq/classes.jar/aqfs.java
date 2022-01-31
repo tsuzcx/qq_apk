@@ -1,14 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
 
-class aqfs
-  implements DialogInterface.OnClickListener
+public class aqfs
+  extends AnimatorListenerAdapter
 {
-  aqfs(aqfq paramaqfq) {}
+  public aqfs(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment, MatchingView paramMatchingView, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    aqfq.a(this.a).dismiss();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    ExtendFriendLimitChatMatchFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendLimitchatExtendFriendLimitChatMatchFragment, this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.a();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.setVisibility(0);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
 
 class TribeVideoPreviewFragment$3
@@ -12,10 +12,10 @@ class TribeVideoPreviewFragment$3
   {
     if (this.a)
     {
-      QQToast.a(this.this$0.getActivity(), 2, alpo.a(2131715479), 0).a();
+      QQToast.a(this.this$0.getActivity(), 2, alud.a(2131715491), 0).a();
       return;
     }
-    QQToast.a(this.this$0.getActivity(), 1, alpo.a(2131715500), 0).a();
+    QQToast.a(this.this$0.getActivity(), 1, alud.a(2131715512), 0).a();
   }
 }
 

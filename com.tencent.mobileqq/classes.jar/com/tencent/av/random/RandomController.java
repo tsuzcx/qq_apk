@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.text.TextUtils;
-import azmj;
+import azqs;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.utils.PopupDialog;
@@ -184,7 +184,7 @@ public class RandomController
   
   private String a(int paramInt)
   {
-    String str2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696193);
+    String str2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696195);
     int n = paramInt / 86400;
     int i1 = paramInt % 86400 / 3600;
     int m = paramInt % 3600 / 60;
@@ -308,7 +308,7 @@ public class RandomController
           this.jdField_a_of_type_ComTencentAvVideoController.b(221);
         }
         if ((this.jdField_h_of_type_JavaLangString != null) && (!TextUtils.isEmpty(this.jdField_h_of_type_JavaLangString))) {
-          this.jdField_a_of_type_Lid.jdField_a_of_type_Lie.jdField_e_of_type_JavaLangString = (this.jdField_a_of_type_ComTencentAvVideoController.a().getString(2131696209) + this.jdField_h_of_type_JavaLangString);
+          this.jdField_a_of_type_Lid.jdField_a_of_type_Lie.jdField_e_of_type_JavaLangString = (this.jdField_a_of_type_ComTencentAvVideoController.a().getString(2131696211) + this.jdField_h_of_type_JavaLangString);
         }
         if (this.jdField_f_of_type_Int != 1) {
           break label984;
@@ -493,7 +493,7 @@ public class RandomController
     }
     PopupDialog.a();
     if (this.jdField_f_of_type_Int == 2) {
-      azmj.b(null, "CliOper", "", "", "0X8005728", "0X8005728", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8005728", "0X8005728", 0, 0, "", "", "", "");
     }
     for (;;)
     {
@@ -503,12 +503,12 @@ public class RandomController
         ((lvg)((Iterator)localObject).next()).a();
       }
       if (this.jdField_f_of_type_Int == 1) {
-        azmj.b(null, "CliOper", "", "", "0X8005726", "0X8005726", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8005726", "0X8005726", 0, 0, "", "", "", "");
       }
     }
     Object localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getApplicationContext();
     this.jdField_i_of_type_Int = paramlvn.jdField_e_of_type_Int;
-    PopupDialog.b((Context)localObject, 230, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696194), a(this.jdField_i_of_type_Int), 2131721323, 0, null, new lve(this));
+    PopupDialog.b((Context)localObject, 230, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696196), a(this.jdField_i_of_type_Int), 2131721336, 0, null, new lve(this));
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_d_of_type_JavaLangRunnable, 60000L);
     this.jdField_i_of_type_Int -= 60;
   }
@@ -541,16 +541,16 @@ public class RandomController
     {
       return;
       if (this.jdField_f_of_type_Int == 1) {
-        azmj.b(null, "CliOper", "", "", "0X80053B3", "0X80053B3", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X80053B3", "0X80053B3", 0, 0, "", "", "", "");
       }
       while (!this.jdField_a_of_type_Lid.k())
       {
         Context localContext = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getApplicationContext();
-        PopupDialog.b(localContext, 230, null, localContext.getString(2131696196), 2131721276, 2131696302, new lvf(this), new lvb(this));
+        PopupDialog.b(localContext, 230, null, localContext.getString(2131696198), 2131721289, 2131696304, new lvf(this), new lvb(this));
         this.jdField_i_of_type_Boolean = true;
         return;
         if (this.jdField_f_of_type_Int == 2) {
-          azmj.b(null, "CliOper", "", "", "0X80053BF", "0X80053BF", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X80053BF", "0X80053BF", 0, 0, "", "", "", "");
         }
       }
     }

@@ -1,35 +1,98 @@
-import java.util.Random;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class bjom
-  extends bjow
+class bjom
+  implements bjok
 {
-  protected int a;
-  protected Random a;
+  private IBinder a;
   
-  public bjom(int paramInt)
+  bjom(IBinder paramIBinder)
   {
-    this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
-    this.jdField_a_of_type_Int = 1;
-    a(paramInt);
+    this.a = paramIBinder;
   }
   
-  public int a()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt < 1) {
-      i = 1;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
+      localParcel1.writeString(paramString);
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    this.jdField_a_of_type_Int = i;
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
   
-  public boolean a()
+  public void a(String paramString, float paramFloat, long paramLong)
   {
-    return this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_Int) < 1;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
+      localParcel1.writeString(paramString);
+      localParcel1.writeFloat(paramFloat);
+      localParcel1.writeLong(paramLong);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
+      localParcel1.writeString(paramString);
+      localParcel1.writeInt(paramInt);
+      this.a.transact(4, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
+      localParcel1.writeString(paramString);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 

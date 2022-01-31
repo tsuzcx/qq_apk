@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bgho;
-import bgil;
-import bglq;
-import bhbb;
-import bhbi;
-import bhbs;
+import bglv;
+import bgms;
+import bgpx;
+import bhfi;
+import bhfp;
+import bhfz;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.model.ShareState;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -25,20 +25,20 @@ public class PageWebview
   extends BasePageWebview
 {
   private static final boolean b;
-  private bgho jdField_a_of_type_Bgho;
-  private bhbb jdField_a_of_type_Bhbb;
-  private bhbi jdField_a_of_type_Bhbi;
+  private bglv jdField_a_of_type_Bglv;
+  private bhfi jdField_a_of_type_Bhfi;
+  private bhfp jdField_a_of_type_Bhfp;
   private ShareState jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareState;
   private AppBrandPageContainer jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAppBrandPageContainer;
   protected EmbeddedWidgetClientFactory a;
-  public ArrayList<bhbs> a;
+  public ArrayList<bhfz> a;
   private boolean jdField_a_of_type_Boolean;
   public int c;
   
   static
   {
     boolean bool = true;
-    if (bglq.a("qqminiapp", "enable_embedded_video", 1) == 1) {}
+    if (bgpx.a("qqminiapp", "enable_embedded_video", 1) == 1) {}
     for (;;)
     {
       jdField_b_of_type_Boolean = bool;
@@ -47,20 +47,20 @@ public class PageWebview
     }
   }
   
-  public PageWebview(bgho parambgho, AppBrandPageContainer paramAppBrandPageContainer, bhbi parambhbi)
+  public PageWebview(bglv parambglv, AppBrandPageContainer paramAppBrandPageContainer, bhfp parambhfp)
   {
-    super(parambgho.a(), paramAppBrandPageContainer);
-    this.jdField_a_of_type_Bgho = parambgho;
+    super(parambglv.a(), paramAppBrandPageContainer);
+    this.jdField_a_of_type_Bglv = parambglv;
     this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAppBrandPageContainer = paramAppBrandPageContainer;
-    this.jdField_a_of_type_Bhbi = parambhbi;
+    this.jdField_a_of_type_Bhfp = parambhfp;
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareState = new ShareState();
-    this.jdField_a_of_type_Bhbb = new bhbb();
+    this.jdField_a_of_type_Bhfi = new bhfi();
     a();
   }
   
-  public bhbb a()
+  public bhfi a()
   {
-    return this.jdField_a_of_type_Bhbb;
+    return this.jdField_a_of_type_Bhfi;
   }
   
   public ShareState a()
@@ -90,7 +90,7 @@ public class PageWebview
         boolean bool = localIX5WebViewExtension.registerEmbeddedWidget(new String[] { "video" }, localEmbeddedWidgetClientFactory);
         QMLog.d("miniapp-embedded", "registerEmbeddedWidget : " + bool + "; " + (System.currentTimeMillis() - l));
         if ((bool) && (jdField_b_of_type_Boolean)) {}
-        this.jdField_a_of_type_Bhbb.a(true);
+        this.jdField_a_of_type_Bhfi.a(true);
       }
       return;
     }
@@ -100,10 +100,10 @@ public class PageWebview
     }
   }
   
-  public void a(bhbs parambhbs)
+  public void a(bhfz parambhfz)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(parambhbs))) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(parambhbs);
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(parambhfz))) {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(parambhfz);
     }
   }
   
@@ -111,19 +111,19 @@ public class PageWebview
   {
     super.onResume();
     QMLog.d("PageWebview", "pagewebview onResume, id is " + this.jdField_b_of_type_Int);
-    if ((this.jdField_a_of_type_Bhbi != null) && (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAppBrandPageContainer != null) && (this.jdField_a_of_type_Bgho != null)) {
-      if (this.jdField_a_of_type_Bgho.a() == null) {
+    if ((this.jdField_a_of_type_Bhfp != null) && (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAppBrandPageContainer != null) && (this.jdField_a_of_type_Bglv != null)) {
+      if (this.jdField_a_of_type_Bglv.a() == null) {
         break label242;
       }
     }
     label242:
-    for (Object localObject1 = this.jdField_a_of_type_Bgho.a().appId;; localObject1 = null)
+    for (Object localObject1 = this.jdField_a_of_type_Bglv.a().appId;; localObject1 = null)
     {
       if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAppBrandPageContainer.a() != null) {}
       for (Object localObject2 = this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAppBrandPageContainer.a().a();; localObject2 = null)
       {
         localObject1 = "\"" + (String)localObject1 + ":" + (String)localObject2 + ":VISIBLE\"";
-        this.jdField_a_of_type_Bhbi.a("document.title=" + (String)localObject1, null);
+        this.jdField_a_of_type_Bhfp.a("document.title=" + (String)localObject1, null);
         if ((paramBoolean) && (this.jdField_a_of_type_ComTencentQqminiSdkRuntimePluginEmbeddedWidgetClientFactory != null) && (this.jdField_a_of_type_ComTencentQqminiSdkRuntimePluginEmbeddedWidgetClientFactory.getVideoEmbeddedWidgetClientMap() != null))
         {
           localObject1 = this.jdField_a_of_type_ComTencentQqminiSdkRuntimePluginEmbeddedWidgetClientFactory.getVideoEmbeddedWidgetClientMap().entrySet().iterator();
@@ -161,8 +161,8 @@ public class PageWebview
   {
     super.onPause();
     QMLog.d("PageWebview", "pagewebview onPause, id is  " + this.jdField_b_of_type_Int);
-    if (this.jdField_a_of_type_Bhbi != null) {
-      this.jdField_a_of_type_Bhbi.a("document.title=\"\"", null);
+    if (this.jdField_a_of_type_Bhfp != null) {
+      this.jdField_a_of_type_Bhfp.a("document.title=\"\"", null);
     }
     if ((this.jdField_a_of_type_ComTencentQqminiSdkRuntimePluginEmbeddedWidgetClientFactory != null) && (this.jdField_a_of_type_ComTencentQqminiSdkRuntimePluginEmbeddedWidgetClientFactory.getVideoEmbeddedWidgetClientMap() != null))
     {
@@ -184,7 +184,7 @@ public class PageWebview
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext()) {
-        ((bhbs)localIterator.next()).a(paramInt2);
+        ((bhfz)localIterator.next()).a(paramInt2);
       }
     }
     this.c = paramInt2;
@@ -200,10 +200,10 @@ public class PageWebview
       localJSONObject2.put("windowWidth", (int)(paramInt1 / DisplayUtil.getDensity(getContext())));
       localJSONObject2.put("windowHeight", (int)(paramInt2 / DisplayUtil.getDensity(getContext())));
       localJSONObject1.put("size", localJSONObject2);
-      this.jdField_a_of_type_Bgho.a(bgil.a("onViewDidResize", localJSONObject1.toString(), b()));
+      this.jdField_a_of_type_Bglv.a(bgms.a("onViewDidResize", localJSONObject1.toString(), b()));
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Bhbi.a("onViewDidResize", localJSONObject1.toString(), b());
+        this.jdField_a_of_type_Bhfp.a("onViewDidResize", localJSONObject1.toString(), b());
         return;
       }
     }
@@ -217,12 +217,12 @@ public class PageWebview
     }
   }
   
-  public void setOnWebviewScrollListener(bhbs parambhbs)
+  public void setOnWebviewScrollListener(bhfz parambhfz)
   {
     if (this.jdField_a_of_type_JavaUtilArrayList == null) {
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambhbs);
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambhfz);
   }
   
   public void setPageJsLoadSucc(boolean paramBoolean)

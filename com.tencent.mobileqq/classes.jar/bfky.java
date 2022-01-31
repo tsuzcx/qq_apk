@@ -1,86 +1,16 @@
-import android.app.Activity;
-import android.content.Context;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 
-public class bfky
-  extends bflm
+class bfky
+  implements DialogInterface.OnClickListener
 {
-  bfkz jdField_a_of_type_Bfkz;
+  bfky(bfkv parambfkv, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  public bfky(bfko parambfko, Activity paramActivity, bfkz parambfkz)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_Bfkz = parambfkz;
-  }
-  
-  protected void a(Boolean paramBoolean)
-  {
-    a();
-    if (paramBoolean.booleanValue())
-    {
-      if (bfll.a())
-      {
-        this.jdField_a_of_type_Bfko.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Bfko.jdField_b_of_type_Boolean = false;
-        long l = -1L;
-        switch (this.jdField_a_of_type_Bfkz.jdField_a_of_type_Int)
-        {
-        case 1: 
-        default: 
-          l = this.jdField_a_of_type_Bfko.a(this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bfkz.jdField_a_of_type_Boolean, this.jdField_a_of_type_Bfkz.jdField_b_of_type_Boolean);
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_Bfko.jdField_a_of_type_Long = l;
-          this.jdField_a_of_type_Bfko.jdField_b_of_type_Long = System.currentTimeMillis();
-          if ((paramBoolean.booleanValue()) && (this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidOsBundle != null))
-          {
-            paramBoolean = bfip.a(this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidOsBundle.getString(bfjy.i), "NEWYYB");
-            bfip.a("311", paramBoolean, this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidOsBundle.getString(bfjy.b));
-            Context localContext = bexd.a().a();
-            if (localContext != null) {
-              bfip.a(localContext, "312", paramBoolean, this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidOsBundle.getString(bfjy.b));
-            }
-          }
-          if ((this.jdField_a_of_type_Bfko.jdField_a_of_type_Bflc != null) && (this.jdField_a_of_type_Bfko.jdField_a_of_type_Bflc.isShowing())) {
-            this.jdField_a_of_type_Bfko.jdField_a_of_type_Bflc.dismiss();
-          }
-          return;
-          this.jdField_a_of_type_Bfko.e = true;
-          if (this.jdField_a_of_type_Bfko.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null)
-          {
-            l = this.jdField_a_of_type_Bfko.a().addDownloadTaskFromAuthorize(this.jdField_a_of_type_Bfko.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
-          }
-          else
-          {
-            bfhg.e("MyAppApi", "CopyAndInstallTask->onPostExecute mLastAuthorizeParam = null");
-            continue;
-            l = this.jdField_a_of_type_Bfko.b(this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bfkz.jdField_a_of_type_Boolean, this.jdField_a_of_type_Bfkz.jdField_b_of_type_Boolean);
-            continue;
-            l = this.jdField_a_of_type_Bfko.b(this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidOsBundle);
-          }
-        }
-      }
-      if (this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-        this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-      }
-      this.jdField_a_of_type_Bfko.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-      return;
-    }
-    if (this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-    }
-    this.jdField_a_of_type_Bfko.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-  }
-  
-  protected void onCancelled()
-  {
-    super.onCancelled();
-    if (this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-    }
+    bfkv.a(this.jdField_a_of_type_Bfkv, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
   }
 }
 

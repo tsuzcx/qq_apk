@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import axkd;
+import axom;
 import com.tencent.qphone.base.util.QLog;
 
 public class CaptureVideoFilterManager$1
   implements Runnable
 {
-  public CaptureVideoFilterManager$1(axkd paramaxkd) {}
+  public CaptureVideoFilterManager$1(axom paramaxom) {}
   
   public void run()
   {

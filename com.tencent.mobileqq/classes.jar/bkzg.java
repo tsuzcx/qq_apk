@@ -1,15 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
 
 class bkzg
-  implements View.OnClickListener
+  implements ActionMode.Callback
 {
-  bkzg(bkzd parambkzd) {}
+  bkzg(bkyz parambkyz) {}
   
-  public void onClick(View paramView)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    blen.a().Q();
-    bkzd.a(this.a, true);
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

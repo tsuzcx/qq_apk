@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.jsp;
 
-import alpo;
+import alud;
 import android.app.ProgressDialog;
-import atff;
-import becq;
+import atjo;
+import begz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class UiApiPlugin$27$2
   implements Runnable
 {
-  public UiApiPlugin$27$2(atff paramatff) {}
+  public UiApiPlugin$27$2(atjo paramatjo) {}
   
   public void run()
   {
     this.a.a.b.dismiss();
-    QQToast.a(this.a.a.mRuntime.a().getApplication(), 1, alpo.a(2131716228), 0).a();
+    QQToast.a(this.a.a.mRuntime.a().getApplication(), 1, alud.a(2131716240), 0).a();
   }
 }
 

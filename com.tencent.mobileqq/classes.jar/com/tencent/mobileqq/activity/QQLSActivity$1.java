@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bdhq;
+import bdlz;
 
 public class QQLSActivity$1
   implements Runnable
@@ -9,7 +9,7 @@ public class QQLSActivity$1
   
   public void run()
   {
-    this.this$0.a = new bdhq(this.this$0.getApplicationContext(), this.this$0);
+    this.this$0.a = new bdlz(this.this$0.getApplicationContext(), this.this$0);
     this.this$0.a.a();
   }
 }

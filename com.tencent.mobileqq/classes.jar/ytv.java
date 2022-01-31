@@ -1,136 +1,134 @@
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ValueAnimator;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.animation.Interpolator;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import java.util.List;
+import java.util.UUID;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class ytv
+final class ytv
+  implements bckx
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 3000L;
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private View jdField_a_of_type_AndroidViewView;
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private List<ytl> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private ytq jdField_a_of_type_Ytq;
-  private ytr jdField_a_of_type_Ytr;
-  private yts jdField_a_of_type_Yts;
-  private ytt jdField_a_of_type_Ytt;
-  private ytv jdField_a_of_type_Ytv;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 1;
-  private long jdField_b_of_type_Long;
-  private ytv jdField_b_of_type_Ytv;
+  ytv(List paramList, String paramString, FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface, int paramInt, yuf paramyuf) {}
   
-  public static ytl a(View... paramVarArgs)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    return new ytv().b(paramVarArgs);
-  }
-  
-  protected AnimatorSet a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    Object localObject2;
-    while (((Iterator)localObject1).hasNext())
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (paramJSONObject != null) {}
+    for (;;)
     {
-      localObject2 = (ytl)((Iterator)localObject1).next();
-      List localList = ((ytl)localObject2).a();
-      if (((ytl)localObject2).a() != null)
+      arnw localarnw;
+      UUID localUUID;
+      try
       {
-        Iterator localIterator = localList.iterator();
-        while (localIterator.hasNext()) {
-          ((Animator)localIterator.next()).setInterpolator(((ytl)localObject2).a());
-        }
-      }
-      localArrayList.addAll(localList);
-    }
-    localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (ytl)((Iterator)localObject1).next();
-      if (((ytl)localObject2).a()) {
-        this.jdField_a_of_type_AndroidViewView = ((ytl)localObject2).a();
-      }
-    }
-    localObject1 = localArrayList.iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (Animator)((Iterator)localObject1).next();
-      if ((localObject2 instanceof ValueAnimator))
-      {
-        localObject2 = (ValueAnimator)localObject2;
-        ((ValueAnimator)localObject2).setRepeatCount(this.jdField_a_of_type_Int);
-        ((ValueAnimator)localObject2).setRepeatMode(this.jdField_b_of_type_Int);
-        if (!this.jdField_a_of_type_Boolean)
+        Object localObject;
+        if (!paramJSONObject.isNull("dirs"))
         {
-          ((ValueAnimator)localObject2).addListener(new ytw(this));
-          this.jdField_a_of_type_Boolean = true;
+          paramBundle = paramJSONObject.getJSONArray("dirs");
+          paramInt = 0;
+          if (paramInt < paramBundle.length())
+          {
+            localObject = new arnw();
+            ((arnw)localObject).jdField_a_of_type_Boolean = true;
+            ((arnw)localObject).jdField_a_of_type_JavaLangString = paramBundle.getString(paramInt);
+            this.jdField_a_of_type_JavaUtilList.add(localObject);
+            paramInt += 1;
+            continue;
+          }
         }
+        if ((paramJSONObject != null) && (!paramJSONObject.isNull("files")))
+        {
+          JSONArray localJSONArray = paramJSONObject.getJSONArray("files");
+          paramInt = 0;
+          if (paramInt < localJSONArray.length())
+          {
+            localarnw = new arnw();
+            paramJSONObject = localJSONArray.getJSONObject(paramInt);
+            localarnw.jdField_a_of_type_JavaLangString = paramJSONObject.getString("filename");
+            localarnw.jdField_a_of_type_Long = paramJSONObject.getLong("size");
+            if (this.jdField_a_of_type_JavaLangString.equals("/"))
+            {
+              paramJSONObject = "/" + localarnw.jdField_a_of_type_JavaLangString;
+              localUUID = UUID.nameUUIDFromBytes((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath + this.jdField_a_of_type_JavaLangString + localarnw.jdField_a_of_type_JavaLangString).getBytes());
+              localObject = bbvj.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath);
+              if (localObject == null) {
+                break label690;
+              }
+              paramBundle = (Bundle)localObject;
+              if (((String)localObject).length() == 0) {
+                break label690;
+              }
+              paramBundle = UUID.nameUUIDFromBytes((paramBundle + this.jdField_a_of_type_JavaLangString + localarnw.jdField_a_of_type_JavaLangString).getBytes());
+              localObject = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin);
+              bbtn localbbtn = ((TroopFileTransferManager)localObject).a(localUUID);
+              if (localbbtn != null)
+              {
+                paramBundle = arrr.a(localbbtn);
+                paramBundle.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
+                paramBundle.zipInnerPath = paramJSONObject;
+                paramBundle.isZipInnerFile = true;
+                paramBundle.zipType = this.jdField_a_of_type_Int;
+                paramBundle.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
+                paramJSONObject = paramBundle;
+                paramJSONObject.isZipInnerFile = true;
+                localarnw.b = paramJSONObject.nSessionId;
+                this.jdField_a_of_type_JavaUtilList.add(localarnw);
+                paramInt += 1;
+              }
+            }
+            else
+            {
+              paramJSONObject = this.jdField_a_of_type_JavaLangString + "/" + localarnw.jdField_a_of_type_JavaLangString;
+              continue;
+            }
+            paramBundle = ((TroopFileTransferManager)localObject).a(paramBundle);
+            if (paramBundle == null) {
+              break label531;
+            }
+            paramBundle = arrr.a(paramBundle);
+            paramBundle.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
+            paramBundle.zipInnerPath = paramJSONObject;
+            paramBundle.isZipInnerFile = true;
+            paramBundle.zipType = this.jdField_a_of_type_Int;
+            paramBundle.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
+            paramJSONObject = paramBundle;
+            continue;
+          }
+        }
+        paramBundle = new FileManagerEntity();
       }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        if (this.jdField_a_of_type_Yuf != null) {
+          this.jdField_a_of_type_Yuf.a(this.jdField_a_of_type_JavaUtilList);
+        }
+        return;
+      }
+      label531:
+      paramBundle.fileName = localarnw.jdField_a_of_type_JavaLangString;
+      paramBundle.fileSize = localarnw.jdField_a_of_type_Long;
+      paramBundle.nSessionId = arrr.a().longValue();
+      paramBundle.strTroopFilePath = localUUID.toString();
+      paramBundle.strTroopFileID = localUUID.toString();
+      paramBundle.zipInnerPath = paramJSONObject;
+      paramBundle.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
+      paramBundle.peerUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
+      paramBundle.peerType = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType;
+      paramBundle.busId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId;
+      paramBundle.cloudType = 4;
+      paramBundle.isZipInnerFile = true;
+      paramBundle.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
+      paramBundle.zipType = this.jdField_a_of_type_Int;
+      paramBundle.TroopUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramBundle);
+      paramJSONObject = paramBundle;
+      continue;
+      label690:
+      paramBundle = "0";
     }
-    localObject1 = new AnimatorSet();
-    ((AnimatorSet)localObject1).playTogether(localArrayList);
-    ((AnimatorSet)localObject1).setDuration(this.jdField_a_of_type_Long);
-    ((AnimatorSet)localObject1).setStartDelay(this.jdField_b_of_type_Long);
-    if (this.jdField_a_of_type_AndroidViewAnimationInterpolator != null) {
-      ((AnimatorSet)localObject1).setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-    }
-    ((AnimatorSet)localObject1).addListener(new ytx(this));
-    return localObject1;
-  }
-  
-  public ytv a()
-  {
-    if (this.jdField_a_of_type_Ytv != null)
-    {
-      this.jdField_a_of_type_Ytv.a();
-      return this;
-    }
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = a();
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnPreDrawListener(new yty(this));
-      return this;
-    }
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
-    return this;
-  }
-  
-  public ytv a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public ytv a(Interpolator paramInterpolator)
-  {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
-    return this;
-  }
-  
-  public ytv a(yts paramyts)
-  {
-    this.jdField_a_of_type_Yts = paramyts;
-    return this;
-  }
-  
-  public ytv a(ytt paramytt)
-  {
-    this.jdField_a_of_type_Ytt = paramytt;
-    return this;
-  }
-  
-  public ytl b(View... paramVarArgs)
-  {
-    paramVarArgs = new ytl(this, paramVarArgs);
-    this.jdField_a_of_type_JavaUtilList.add(paramVarArgs);
-    return paramVarArgs;
   }
 }
 

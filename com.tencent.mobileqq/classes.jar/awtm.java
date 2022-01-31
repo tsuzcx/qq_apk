@@ -1,117 +1,42 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.widget.ScrollView;
+import com.tencent.widget.XEditTextEx;
 
 public class awtm
+  implements View.OnTouchListener
 {
-  private static int jdField_a_of_type_Int = 5;
-  private static long jdField_a_of_type_Long;
-  private static String jdField_a_of_type_JavaLangString = awtm.class.getSimpleName();
-  private static ArrayList<awtn> jdField_a_of_type_JavaUtilArrayList;
+  public awtm(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  static
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    jdField_a_of_type_Long = 60000L;
-  }
-  
-  public static bica a()
-  {
-    try
+    if (StickyNotePublishFragment.a(this.a))
     {
-      if (jdField_a_of_type_JavaUtilArrayList == null) {
-        jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      Object localObject3 = b();
-      Object localObject1 = localObject3;
-      if (localObject3 == null)
-      {
-        localObject3 = new awtl();
-        ((bica)localObject3).a();
-        jdField_a_of_type_JavaUtilArrayList.add(new awtn((bica)localObject3));
-        localObject1 = localObject3;
-        if (QLog.isColorLevel())
-        {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "can't find sscm object, add new one, size= " + jdField_a_of_type_JavaUtilArrayList.size());
-          localObject1 = localObject3;
-        }
-      }
-      return localObject1;
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      bhsj.b(StickyNotePublishFragment.a(this.a));
+      return false;
     }
-    finally {}
-  }
-  
-  public static void a()
-  {
-    try
+    if (StickyNotePublishFragment.a(this.a) == 0)
     {
-      jdField_a_of_type_JavaUtilArrayList = null;
-      return;
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(0);
+      StickyNotePublishFragment.a(this.a).requestFocus();
+      bhsj.a(StickyNotePublishFragment.a(this.a));
+      return false;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void a(bica parambica)
-  {
-    for (;;)
-    {
-      awtn localawtn;
-      try
-      {
-        Object localObject = jdField_a_of_type_JavaUtilArrayList;
-        if (localObject == null) {}else {
-          localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
-        }
-        if (!((Iterator)localObject).hasNext()) {
-          continue;
-        }
-        localawtn = (awtn)((Iterator)localObject).next();
-        if (parambica != localawtn.jdField_a_of_type_Bica) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "return sscm, current size=" + jdField_a_of_type_JavaUtilArrayList.size());
-        }
-        if (jdField_a_of_type_JavaUtilArrayList.size() > jdField_a_of_type_Int)
-        {
-          ((Iterator)localObject).remove();
-          continue;
-        }
-        localawtn.jdField_a_of_type_Boolean = false;
-      }
-      finally {}
-      localawtn.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    }
-  }
-  
-  private static bica b()
-  {
-    if (jdField_a_of_type_JavaUtilArrayList == null) {
-      return null;
-    }
-    Object localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      awtn localawtn = (awtn)((Iterator)localObject).next();
-      if (!localawtn.jdField_a_of_type_Boolean)
-      {
-        localObject = localawtn.jdField_a_of_type_Bica;
-        localawtn.jdField_a_of_type_Boolean = true;
-        long l = SystemClock.elapsedRealtime();
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "query for sscm, get one expired:" + (l - localawtn.jdField_a_of_type_Long));
-        }
-        if (l - localawtn.jdField_a_of_type_Long > jdField_a_of_type_Long) {
-          localawtn.jdField_a_of_type_Bica.a();
-        }
-        return localObject;
-      }
-    }
-    return null;
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a, 0);
+    this.a.a(false);
+    this.a.b(false);
+    this.a.c(true);
+    this.a.c(0, 0);
+    return false;
   }
 }
 

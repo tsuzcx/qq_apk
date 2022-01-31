@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.1;
+import java.io.File;
+import java.io.FilenameFilter;
 
 public class bcne
-  implements bclf
+  implements FilenameFilter
 {
-  public bcne(RobotPanelLayoutBase paramRobotPanelLayoutBase, bcnh parambcnh) {}
+  public bcne(TroopFileTransferManager.1 param1) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public boolean accept(File paramFile, String paramString)
   {
-    if (paramInt == 0) {}
+    if (paramString == null) {
+      return false;
+    }
+    return paramString.startsWith("[Thumb]");
   }
 }
 

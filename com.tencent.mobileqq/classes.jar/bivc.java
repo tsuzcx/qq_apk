@@ -1,336 +1,437 @@
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Message;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.os.RemoteException;
+import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.Window;
+import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import cooperation.qqfav.QfavHelper.2;
+import cooperation.qqfav.QfavHelper.4;
+import cooperation.qqfav.QfavPluginProxyActivity;
+import cooperation.qqfav.QfavPluginProxyReceiver;
+import java.lang.reflect.Constructor;
 import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public class bivc
-  extends RemoteCommand
+public final class bivc
 {
-  public bivc()
-  {
-    super("qqreader_plugin_cmd");
-  }
+  private static SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private static final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
-  private QQAppInterface a()
+  public static SharedPreferences a(Context paramContext)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface, Activity paramActivity, FileManagerEntity paramFileManagerEntity)
-  {
-    if ((paramQQAppInterface == null) || (paramActivity == null)) {}
-    while (paramFileManagerEntity == null) {
-      return;
-    }
-    FileManagerEntity localFileManagerEntity = new FileManagerEntity();
-    localFileManagerEntity.copyFrom(paramFileManagerEntity);
-    localFileManagerEntity.nSessionId = arni.a().longValue();
-    paramQQAppInterface.a().d(localFileManagerEntity);
-    int i = arvo.a(paramFileManagerEntity);
-    paramFileManagerEntity = arvo.a(localFileManagerEntity);
-    paramFileManagerEntity.b(i);
-    paramQQAppInterface = new Bundle();
-    paramQQAppInterface.putInt("forward_type", 0);
-    paramQQAppInterface.putParcelable("fileinfo", paramFileManagerEntity);
-    paramQQAppInterface.putBoolean("not_forward", true);
-    paramFileManagerEntity = new Intent();
-    paramFileManagerEntity.putExtras(paramQQAppInterface);
-    paramFileManagerEntity.putExtra("destroy_last_activity", false);
-    paramFileManagerEntity.putExtra("forward_type", 0);
-    paramFileManagerEntity.putExtra("forward_filepath", localFileManagerEntity.getFilePath());
-    paramFileManagerEntity.putExtra("forward_text", alpo.a(2131710094) + arni.d(localFileManagerEntity.fileName) + alpo.a(2131710106) + arof.a(localFileManagerEntity.fileSize) + "。");
-    paramFileManagerEntity.putExtra("k_favorites", arni.c(localFileManagerEntity));
-    if ((!arof.b(localFileManagerEntity.getFilePath())) && ((localFileManagerEntity.getCloudType() == 6) || (localFileManagerEntity.getCloudType() == 7)) && (localFileManagerEntity.nFileType == 0)) {
-      paramFileManagerEntity.putExtra("forward_type", 0);
-    }
-    if ((localFileManagerEntity.getCloudType() == 8) && (localFileManagerEntity.nFileType == 0)) {
-      paramFileManagerEntity.putExtra("forward_type", 1);
-    }
-    if (!bdee.d(BaseApplication.getContext()))
-    {
-      armz.a(2131692745);
-      return;
-    }
-    if (armf.a(localFileManagerEntity).a(false))
-    {
-      armv.a(paramActivity, 2131692752, 2131692757, new bivd(this, paramActivity, paramFileManagerEntity));
-      return;
-    }
-    arum.a(paramActivity, paramFileManagerEntity, 103);
-  }
-  
-  private void a(String paramString)
-  {
-    QQAppInterface localQQAppInterface = a();
     try
     {
-      int i = BaseApplicationImpl.getApplication().appActivities.size();
-      if (i > 0)
+      if (jdField_a_of_type_AndroidContentSharedPreferences == null) {
+        jdField_a_of_type_AndroidContentSharedPreferences = paramContext.getSharedPreferences("shared_prefs_qfav", 4);
+      }
+      paramContext = jdField_a_of_type_AndroidContentSharedPreferences;
+      return paramContext;
+    }
+    finally {}
+  }
+  
+  public static ClassLoader a()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getApplicationContext();
+    try
+    {
+      localObject = PluginStatic.getOrCreateClassLoader((Context)localObject, "qqfav.apk");
+      QLog.i("qqfavQfavHelper#getClassLoader", 1, "Exception =" + QLog.getStackTraceString(localException1));
+    }
+    catch (Exception localException1)
+    {
+      try
       {
-        Activity localActivity = (Activity)((WeakReference)BaseApplicationImpl.getApplication().appActivities.get(i - 1)).get();
-        if (localActivity != null)
-        {
-          a(localQQAppInterface, localActivity, arni.a(new FileInfo(paramString)));
-          return;
+        BasicClassTypeUtil.setClassLoader(true, (ClassLoader)localObject);
+        return localObject;
+      }
+      catch (Exception localException2)
+      {
+        break label24;
+      }
+      localException1 = localException1;
+      localObject = null;
+    }
+    label24:
+    return localObject;
+  }
+  
+  public static Object a(String paramString, Class<?>[] paramArrayOfClass, Object[] paramArrayOfObject)
+  {
+    for (;;)
+    {
+      try
+      {
+        Class localClass = Class.forName(paramString);
+        if (localClass == null) {
+          QLog.i("qqfavQfavHelper#createInstance", 1, "className =" + paramString + ",cls == null");
         }
-        bixe.a("QRRemoteCommond", "No Activity to use to forward file");
+        paramArrayOfClass = localClass.getDeclaredConstructor(paramArrayOfClass).newInstance(paramArrayOfObject);
+        if (paramArrayOfClass != null) {
+          break;
+        }
+        QLog.i("qqfavQfavHelper#createInstance", 4, "className =" + paramString + ",retObj == null");
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        localObject = a();
+        if (localObject != null)
+        {
+          localObject = ((ClassLoader)localObject).loadClass(paramString);
+          continue;
+        }
+      }
+      catch (Exception paramString)
+      {
+        QLog.i("qqfavQfavHelper#createInstance", 1, "Exception =" + QLog.getStackTraceString(paramString));
+        return null;
+      }
+      Object localObject = null;
+    }
+    return paramArrayOfClass;
+  }
+  
+  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl)
+  {
+    return (AppRuntime)a("com.qqfav.QfavAppInterface", new Class[] { BaseApplicationImpl.class, String.class }, new Object[] { paramBaseApplicationImpl, "qqfav" });
+  }
+  
+  public static void a(Context paramContext, OnPluginInstallListener paramOnPluginInstallListener)
+  {
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = BaseApplicationImpl.getApplication();
+    }
+    try
+    {
+      new QfavHelper.4((Context)localObject, paramOnPluginInstallListener).start();
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      do
+      {
+        paramContext.printStackTrace();
+      } while (paramOnPluginInstallListener == null);
+      try
+      {
+        paramOnPluginInstallListener.onInstallError("qqfav.apk", -1);
         return;
       }
-    }
-    catch (FileNotFoundException paramString)
-    {
-      bixe.a("QRRemoteCommond", "file not found", paramString);
+      catch (RemoteException paramContext)
+      {
+        paramContext.printStackTrace();
+      }
     }
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public static void a(Context paramContext, String paramString1, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
   {
-    paramOnInvokeFinishLinstener = null;
-    Object localObject2 = new Bundle();
-    Object localObject1 = (aluw)a().getManager(56);
-    switch (paramBundle.getInt("CommondType"))
-    {
-    default: 
-    case 13: 
-      for (;;)
-      {
-        return null;
-        a(paramBundle.getString("KEY_FILE_PATH"));
-      }
-    case 1: 
-      if (paramBundle == null) {
-        break;
-      }
+    a(paramContext, paramString1, paramBoolean1, paramString2, paramBoolean2, 2131692402);
+  }
+  
+  @TargetApi(9)
+  public static void a(Context paramContext, String paramString1, boolean paramBoolean1, String paramString2, boolean paramBoolean2, int paramInt)
+  {
+    if (paramContext == null) {
+      return;
     }
-    for (paramBundle = paramBundle.getString("uin"); localObject1 != null; paramBundle = null)
+    QQToast localQQToast = new QQToast(paramContext);
+    localQQToast.d(2000);
+    String str = paramString1;
+    if (TextUtils.isEmpty(paramString1)) {
+      str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    }
+    if (paramBoolean1)
     {
-      for (;;)
+      localQQToast.b(2);
+      localQQToast.a(QQToast.a(2));
+      localQQToast.c(paramInt);
+      if (!a(paramContext).getBoolean("pref_first_collection_" + str, true)) {}
+    }
+    for (;;)
+    {
+      try
       {
-        if (((aluw)localObject1).b(paramBundle) != null) {
-          ((Bundle)localObject2).putBoolean("get_publicaccountinfo", true);
+        paramString2 = paramContext.getString(2131692443);
+        if (!paramBoolean2) {
+          continue;
         }
-        for (;;)
+        paramString1 = paramContext.getString(2131692438);
+        paramString1 = bdgm.a(paramContext, 230, paramString2, paramString1, 2131690648, 2131692441, new bivd(), null);
+        if (paramContext != BaseApplicationImpl.getContext()) {
+          break label636;
+        }
+        if (Build.VERSION.SDK_INT < 19) {
+          continue;
+        }
+        if (Build.VERSION.SDK_INT < 26) {
+          continue;
+        }
+        paramString1.getWindow().setType(2038);
+        paramInt = 1;
+        int j = 1;
+        int i = j;
+        if (paramInt != 0)
         {
-          return localObject2;
-          ((Bundle)localObject2).putBoolean("get_publicaccountinfo", false);
-        }
-        ((Bundle)localObject2).putInt("qq_vip_level", bive.a(a(), null));
-        return localObject2;
-        ((Bundle)localObject2).putShort("qq_vip_info", bive.a(a(), null));
-        return localObject2;
-        if (a() == null) {
-          break;
-        }
-        paramBundle = paramBundle.getString("publicaccount_uin");
-        ((Bundle)localObject2).putBoolean("publicaccount_is_follow", syb.a(a(), paramBundle));
-        return localObject2;
-        if (a() == null) {
-          break;
-        }
-        localObject1 = paramBundle.getString("publicaccount_uin");
-        Object localObject3 = (aluw)a().getManager(56);
-        paramBundle = paramOnInvokeFinishLinstener;
-        if (localObject3 != null) {
-          paramBundle = ((aluw)localObject3).b((String)localObject1);
-        }
-        if (paramBundle != null)
-        {
-          ((Bundle)localObject2).putBoolean("isFollow", true);
-          ((Bundle)localObject2).putString("paName", paramBundle.name);
-        }
-        for (;;)
-        {
-          return localObject2;
-          ((Bundle)localObject2).putBoolean("isFollow", false);
-        }
-        int i = paramBundle.getInt("sharetype");
-        paramOnInvokeFinishLinstener = paramBundle.getString("url");
-        localObject3 = (Bitmap)paramBundle.getParcelable("cover");
-        Object localObject5 = paramBundle.getString("title");
-        localObject1 = paramBundle.getString("detail");
-        Object localObject4 = paramBundle.getString("imgUrl");
-        switch (i)
-        {
-        default: 
-        case 1: 
-        case 2: 
-          for (;;)
+          i = j;
+          if (Build.VERSION.SDK_INT >= 23)
           {
-            return localObject2;
-            paramBundle = new Bundle();
-            paramBundle.putString("title", (String)localObject5);
-            paramBundle.putString("desc", (String)localObject1);
-            paramBundle.putString("detail_url", paramOnInvokeFinishLinstener);
-            paramOnInvokeFinishLinstener = new ArrayList(1);
-            paramOnInvokeFinishLinstener.add(localObject4);
-            paramBundle.putStringArrayList("image_url", paramOnInvokeFinishLinstener);
-            bjao.a(a(), a().getApplication().getApplicationContext(), paramBundle, null);
+            i = j;
+            if (!Settings.canDrawOverlays(paramContext)) {
+              i = 0;
+            }
+          }
+        }
+        if ((paramInt == 0) || (i != 0)) {
+          continue;
+        }
+        paramString1 = new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION");
+        paramString1.addFlags(268435456);
+        BaseApplicationImpl.getApplication().startActivity(paramString1);
+      }
+      catch (Throwable paramString1)
+      {
+        QLog.e("qqfav", 1, "First collection guide error. Uin=" + str + ", flag=" + a(paramContext).getBoolean(new StringBuilder().append("pref_first_collection_").append(str).toString(), true));
+        continue;
+        a(paramContext).edit().putBoolean("pref_first_collection_" + str, false).apply();
+        continue;
+      }
+      localQQToast.b(paramContext.getResources().getDimensionPixelSize(2131298914) - (int)(5.0F * paramContext.getResources().getDisplayMetrics().density));
+      return;
+      paramString1 = paramContext.getString(2131692442);
+      continue;
+      if (Build.VERSION.SDK_INT > 24)
+      {
+        paramString1.getWindow().setType(2003);
+        paramInt = 1;
+      }
+      else
+      {
+        paramString1.getWindow().setType(2005);
+        paramInt = 0;
+        continue;
+        paramString1.getWindow().setType(2003);
+        paramInt = 1;
+        continue;
+        paramString1.setMessageCount(null).show();
+        if (9 > Build.VERSION.SDK_INT)
+        {
+          a(paramContext).edit().putBoolean("pref_first_collection_" + str, false).commit();
+          if (QLog.isColorLevel()) {
+            QLog.d("qqfav", 2, "First collection guide shown. Uin=" + str + ", flag=" + a(paramContext).getBoolean(new StringBuilder().append("pref_first_collection_").append(str).toString(), true));
+          }
+        }
+        else
+        {
+          localQQToast.b(1);
+          localQQToast.a(QQToast.a(1));
+          if (paramString2 == null)
+          {
+            localQQToast.c(2131692403);
+          }
+          else
+          {
+            localQQToast.a(paramString2);
             continue;
-            localObject4 = WXShareHelper.a();
-            l = System.currentTimeMillis();
-            if (TextUtils.isEmpty(paramBundle.getString("detail"))) {
-              localObject1 = paramOnInvokeFinishLinstener;
-            }
-            ((WXShareHelper)localObject4).d(String.valueOf(l), (String)localObject5, (Bitmap)localObject3, (String)localObject1, paramOnInvokeFinishLinstener);
+            label636:
+            paramInt = 0;
           }
-        }
-        localObject4 = WXShareHelper.a();
-        long l = System.currentTimeMillis();
-        localObject5 = new StringBuilder().append((String)localObject5).append(":");
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-        for (paramBundle = paramOnInvokeFinishLinstener;; paramBundle = (Bundle)localObject1)
-        {
-          localObject5 = paramBundle;
-          paramBundle = (Bundle)localObject1;
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            paramBundle = paramOnInvokeFinishLinstener;
-          }
-          ((WXShareHelper)localObject4).c(String.valueOf(l), (String)localObject5, (Bitmap)localObject3, paramBundle, paramOnInvokeFinishLinstener);
-          break;
-        }
-        if ((WXShareHelper.a().a()) && (WXShareHelper.a().b())) {
-          ((Bundle)localObject2).putBoolean("is_wx_supported", true);
-        }
-        for (;;)
-        {
-          return localObject2;
-          ((Bundle)localObject2).putBoolean("is_wx_supported", false);
-        }
-        paramBundle = paramBundle.getString("url");
-        paramBundle = new Intent(a().getApplication().getApplicationContext(), QQBrowserActivity.class).putExtra("url", paramBundle);
-        paramBundle.putExtra("uin", a().getCurrentAccountUin());
-        paramBundle.putExtra("vkey", a().a());
-        paramBundle.setFlags(268435456);
-        a().getApplication().getApplicationContext().startActivity(paramBundle);
-        break;
-        paramOnInvokeFinishLinstener = a();
-        if (paramOnInvokeFinishLinstener != null)
-        {
-          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
-          if (paramOnInvokeFinishLinstener == null) {
-            break;
-          }
-          localObject1 = paramOnInvokeFinishLinstener.obtainMessage(1134027);
-          localObject2 = paramBundle.getString("bookName");
-          l = paramBundle.getLong("bookId");
-          paramBundle = paramBundle.getString("chapterId");
-          paramBundle = (String)localObject2 + "@#" + l + "@#" + paramBundle;
-          if (QLog.isColorLevel()) {
-            QLog.e("QRRemoteCommond", 2, "bookInfo : " + paramBundle);
-          }
-          ((Message)localObject1).obj = paramBundle;
-          paramOnInvokeFinishLinstener.sendMessage((Message)localObject1);
-          break;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("QRRemoteCommond", 2, "showReaderBar app = null");
-        break;
-        paramOnInvokeFinishLinstener = a();
-        if (paramOnInvokeFinishLinstener != null)
-        {
-          paramOnInvokeFinishLinstener = (axho)paramOnInvokeFinishLinstener.getManager(36);
-          if (paramOnInvokeFinishLinstener != null)
-          {
-            paramBundle = paramOnInvokeFinishLinstener.a(paramBundle.getString("path"));
-            if (paramBundle != null) {
-              ((Bundle)localObject2).putParcelable("redTouchInfo", axht.a(paramBundle));
-            }
-          }
-        }
-        for (;;)
-        {
-          return localObject2;
-          if (QLog.isColorLevel()) {
-            QLog.e("QRRemoteCommond", 2, "getRedTouch app = null");
-          }
-        }
-        paramOnInvokeFinishLinstener = a();
-        if (paramOnInvokeFinishLinstener == null) {
-          break label1079;
-        }
-        paramOnInvokeFinishLinstener = (axho)paramOnInvokeFinishLinstener.getManager(36);
-        if (paramOnInvokeFinishLinstener == null) {
-          break;
-        }
-        paramBundle = paramBundle.getString("path");
-        paramOnInvokeFinishLinstener.b(paramBundle);
-        try
-        {
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("service_type", 2);
-          ((JSONObject)localObject1).put("act_id", 1002);
-          paramOnInvokeFinishLinstener.c(paramOnInvokeFinishLinstener.a(paramBundle), ((JSONObject)localObject1).toString());
-        }
-        catch (Exception paramBundle)
-        {
-          paramBundle.printStackTrace();
         }
       }
-      break;
-      label1079:
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("QRRemoteCommond", 2, "clickRedTouch app = null");
-      break;
-      paramOnInvokeFinishLinstener = a();
-      if (paramOnInvokeFinishLinstener == null) {
-        break;
-      }
-      paramOnInvokeFinishLinstener = (axho)paramOnInvokeFinishLinstener.getManager(36);
-      localObject1 = paramBundle.getStringArrayList("pathList");
-      if ((paramOnInvokeFinishLinstener == null) || (localObject1 == null)) {
-        break;
-      }
-      paramBundle = new ArrayList();
-      localObject1 = ((ArrayList)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = paramOnInvokeFinishLinstener.a((String)((Iterator)localObject1).next());
-        if (localObject2 != null) {
-          paramBundle.add(axht.a((BusinessInfoCheckUpdate.AppInfo)localObject2));
-        }
-      }
-      paramOnInvokeFinishLinstener = new Bundle();
-      paramOnInvokeFinishLinstener.putParcelableArrayList("redTouchInfoList", paramBundle);
-      return paramOnInvokeFinishLinstener;
     }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime)
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    int i;
+    if (Build.VERSION.SDK_INT > 10)
+    {
+      i = 4;
+      if (!((BaseApplicationImpl)localObject).getSharedPreferences("QfavNeedReupload", i).getBoolean(paramAppRuntime.getAccount() + "QfavNeedReupload", false)) {
+        break label111;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("qqfav", 2, "reuploadQfavItems: flag=true");
+      }
+      localObject = new Intent("com.tencent.mobileqq.ACTION_QFAVIPC_BROADCAST");
+      ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
+      ((Intent)localObject).putExtra("nOperation", 5);
+      QfavPluginProxyReceiver.a(paramAppRuntime, (Intent)localObject);
+    }
+    label111:
+    while (!QLog.isColorLevel())
+    {
+      return;
+      i = 0;
+      break;
+    }
+    QLog.i("qqfav", 2, "reuploadQfavItems: flag=false");
+  }
+  
+  public static boolean a(Activity paramActivity, String paramString)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("nOperation", 3);
+    return QfavPluginProxyActivity.a(paramActivity, paramString, localIntent, -1);
+  }
+  
+  public static boolean a(Activity paramActivity, String paramString, long paramLong)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("nOperation", 7);
+    return QfavPluginProxyActivity.a(paramActivity, paramString, localIntent, -1);
+  }
+  
+  public static boolean a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
+  {
+    paramIntent.setFlags(paramIntent.getFlags() & 0xFBFFFFFF & 0xDFFFFFFF);
+    return QfavPluginProxyActivity.a(paramActivity, paramString, paramIntent, paramInt);
+  }
+  
+  public static boolean a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, boolean paramBoolean)
+  {
+    if (paramIntent == null) {}
+    for (paramIntent = new Intent();; paramIntent = new Intent(paramIntent))
+    {
+      paramIntent.putExtra("nOperation", 2);
+      paramIntent.putExtra("bShowProgress", paramBoolean);
+      paramIntent.putExtra("begin", System.currentTimeMillis());
+      bivs.a(paramString);
+      if (!bivp.a().a())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqfav", 2, "openPluginActivityForResult need pending data." + paramIntent.toString());
+        }
+        byte[] arrayOfByte = bivp.a().a();
+        if ((arrayOfByte == null) && (QLog.isColorLevel())) {
+          QLog.d("qqfav", 2, "openPluginActivityForResult pending data error.");
+        }
+        paramIntent.putExtra("pendingData", arrayOfByte);
+      }
+      return QfavPluginProxyActivity.a(paramActivity, paramString, paramIntent, paramInt);
+    }
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+    if (paramContext != null)
+    {
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext())
+      {
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+        if ((localRunningAppProcessInfo.processName != null) && (localRunningAppProcessInfo.processName.endsWith(":qqfav"))) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public static boolean a(Context paramContext, String paramString, long paramLong)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("nOperation", 6);
+    localIntent.putExtra("lId", paramLong);
+    return QfavPluginProxyActivity.a(paramContext, paramString, localIntent, -1);
+  }
+  
+  public static boolean a(Context paramContext, String paramString, long paramLong, byte[] paramArrayOfByte)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("nOperation", 6);
+    localIntent.putExtra("lId", paramLong);
+    localIntent.putExtra("backUpFavData", paramArrayOfByte);
+    return QfavPluginProxyActivity.a(paramContext, paramString, localIntent, -1);
+  }
+  
+  public static boolean a(ChatMessage paramChatMessage)
+  {
+    paramChatMessage = (MessageForArkApp)paramChatMessage;
+    return (paramChatMessage != null) && ((aolb.c.equals(paramChatMessage.ark_app_message.appName)) || ("com.tencent.structmsg".equals(paramChatMessage.ark_app_message.appName)));
+  }
+  
+  public static boolean a(boolean paramBoolean)
+  {
+    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      return true;
+    }
+    Object localObject2 = new QfavHelper.2();
+    if (paramBoolean) {}
+    synchronized (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
+    {
+      PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getApplication(), new bive((Runnable)localObject2));
+      localObject2 = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+      if (??? == localObject2) {}
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("qqfav", 2, "wait(sPluginInstalled) qqfav.apk");
+        }
+        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.wait(5000L);
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          localInterruptedException.printStackTrace();
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("qqfav", 2, "qqfav.apk, sPluginInstalled = " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+      }
+      return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+      ??? = localObject2;
+    }
+  }
+  
+  public static byte[] a(boolean paramBoolean)
+  {
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("bPublicAccount", paramBoolean);
+      localObject = ((JSONObject)localObject).toString().getBytes();
+      return localObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.i("qqfav", 2, "publicAccountLinkBizData: JSONException error");
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bivc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewModel;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.app.icebreaking.AIOIceBreakShow;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class affc
-  implements View.OnClickListener
+class affc
+  implements amjw
 {
-  public affc(ArkAppView paramArkAppView, ArkViewModel paramArkViewModel) {}
+  affc(affb paramaffb) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, List<agxz> paramList)
   {
-    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
-      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
+    StringBuilder localStringBuilder = new StringBuilder().append("onGetIceBreakHotPic, success: ").append(paramBoolean).append(" hotPiceList size: ");
+    int i;
+    if (paramList == null)
+    {
+      i = 0;
+      QLog.i("IceBreak.HotPic", 1, i);
+      if (paramBoolean) {
+        break label59;
+      }
     }
+    label59:
+    while (this.a.a == null)
+    {
+      return;
+      i = paramList.size();
+      break;
+    }
+    this.a.a.a(paramList);
   }
 }
 

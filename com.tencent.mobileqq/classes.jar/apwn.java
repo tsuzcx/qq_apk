@@ -1,9 +1,6 @@
-public class apwn
+public abstract interface apwn
 {
-  public String a;
-  public String b;
-  
-  apwn(apwl paramapwl) {}
+  public abstract void a(int paramInt);
 }
 
 

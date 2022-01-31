@@ -33,14 +33,14 @@ import org.json.JSONObject;
 public class ovz
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private awbw jdField_a_of_type_Awbw;
+  private awgf jdField_a_of_type_Awgf;
   private ConcurrentHashMap<Integer, ConcurrentHashMap<String, DynamicChannelDataModel>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   private ConcurrentHashMap<Integer, ovi> b = new ConcurrentHashMap();
   
-  public ovz(awbw paramawbw, Handler paramHandler)
+  public ovz(awgf paramawgf, Handler paramHandler)
   {
-    this.jdField_a_of_type_Awbw = paramawbw;
+    this.jdField_a_of_type_Awgf = paramawgf;
     this.jdField_a_of_type_JavaUtilConcurrentExecutorService = MonitorTimeExecutor.a();
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
   }
@@ -117,7 +117,7 @@ public class ovz
     for (boolean bool = true;; bool = false)
     {
       if (!TextUtils.isEmpty(paramJSONObject)) {
-        bjxj.a("readinjoy_dynamic_channel_cookie_" + paramInt, paramJSONObject);
+        bkbq.a("readinjoy_dynamic_channel_cookie_" + paramInt, paramJSONObject);
       }
       if (i == 0) {
         break;
@@ -187,7 +187,7 @@ public class ovz
         }
         localJSONObject.put("imei", localObject1);
         localJSONObject.put("platform", "Android");
-        localJSONObject.put("qqVersionID", "8.3.3");
+        localJSONObject.put("qqVersionID", "8.3.5");
         localObject2 = (QQAppInterface)ors.a();
         localObject1 = ((QQAppInterface)localObject2).getAccount();
         localObject2 = ((TicketManager)((QQAppInterface)localObject2).getManager(2)).getSkey((String)localObject1);
@@ -197,7 +197,7 @@ public class ovz
         }
         localObject1 = "";
         localJSONObject.put("token", localObject1);
-        localJSONObject.put("cookieString", bjxj.a("readinjoy_dynamic_channel_cookie_" + paramInt1, ""));
+        localJSONObject.put("cookieString", bkbq.a("readinjoy_dynamic_channel_cookie_" + paramInt1, ""));
         if (paramInt2 == 2) {
           break label318;
         }
@@ -325,21 +325,21 @@ public class ovz
     QLog.d("DynamicChannelDataModule", 2, new Object[] { "saveDataModel failed, dataModel = ", paramDynamicChannelDataModel });
   }
   
-  private void a(awbv paramawbv)
+  private void a(awge paramawge)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if ((paramawbv instanceof DynamicChannelDataModel))
+    if ((paramawge instanceof DynamicChannelDataModel))
     {
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_Awbw.d(DynamicChannelDataModel.class.getSimpleName()))
+      if (this.jdField_a_of_type_Awgf.d(DynamicChannelDataModel.class.getSimpleName()))
       {
-        paramawbv = (DynamicChannelDataModel)paramawbv;
-        localObject1 = this.jdField_a_of_type_Awbw.a(DynamicChannelDataModel.class, "uniqueID = ? and channelID = ?", new String[] { paramawbv.uniqueID, String.valueOf(paramawbv.channelID) });
+        paramawge = (DynamicChannelDataModel)paramawge;
+        localObject1 = this.jdField_a_of_type_Awgf.a(DynamicChannelDataModel.class, "uniqueID = ? and channelID = ?", new String[] { paramawge.uniqueID, String.valueOf(paramawge.channelID) });
       }
     }
     if (localObject1 != null) {
-      this.jdField_a_of_type_Awbw.b((awbv)localObject1);
+      this.jdField_a_of_type_Awgf.b((awge)localObject1);
     }
     QLog.d("DynamicChannelDataModule", 2, new Object[] { "removeEntityIfExistsInDB entity = ", localObject1 });
   }
@@ -485,7 +485,7 @@ public class ovz
     for (paramInt2 = 1;; paramInt2 = 0)
     {
       localBundle.putInt("isPullDownRefresh", paramInt2);
-      new bcgp(JSONUtils.a((JSONObject)localObject, str), "POST", new owb(this, paramInt1), 1000, localBundle).a(localHashMap);
+      new bcky(JSONUtils.a((JSONObject)localObject, str), "POST", new owb(this, paramInt1), 1000, localBundle).a(localHashMap);
       return;
     }
   }
@@ -600,7 +600,7 @@ public class ovz
   }
   
   /* Error */
-  public boolean a(awbv paramawbv)
+  public boolean a(awge paramawge)
   {
     // Byte code:
     //   0: iconst_0
@@ -608,18 +608,18 @@ public class ovz
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_1
-    //   5: invokevirtual 611	awbv:getStatus	()I
+    //   5: invokevirtual 611	awge:getStatus	()I
     //   8: sipush 1000
     //   11: if_icmpne +34 -> 45
     //   14: aload_0
     //   15: aload_1
-    //   16: invokespecial 613	ovz:a	(Lawbv;)V
+    //   16: invokespecial 613	ovz:a	(Lawge;)V
     //   19: aload_0
-    //   20: getfield 26	ovz:jdField_a_of_type_Awbw	Lawbw;
+    //   20: getfield 26	ovz:jdField_a_of_type_Awgf	Lawgf;
     //   23: aload_1
-    //   24: invokevirtual 615	awbw:b	(Lawbv;)V
+    //   24: invokevirtual 615	awgf:b	(Lawge;)V
     //   27: aload_1
-    //   28: invokevirtual 611	awbv:getStatus	()I
+    //   28: invokevirtual 611	awge:getStatus	()I
     //   31: istore_2
     //   32: iload_2
     //   33: sipush 1001
@@ -631,17 +631,17 @@ public class ovz
     //   43: iload_3
     //   44: ireturn
     //   45: aload_1
-    //   46: invokevirtual 611	awbv:getStatus	()I
+    //   46: invokevirtual 611	awge:getStatus	()I
     //   49: sipush 1001
     //   52: if_icmpeq +13 -> 65
     //   55: aload_1
-    //   56: invokevirtual 611	awbv:getStatus	()I
+    //   56: invokevirtual 611	awge:getStatus	()I
     //   59: sipush 1002
     //   62: if_icmpne -21 -> 41
     //   65: aload_0
-    //   66: getfield 26	ovz:jdField_a_of_type_Awbw	Lawbw;
+    //   66: getfield 26	ovz:jdField_a_of_type_Awgf	Lawgf;
     //   69: aload_1
-    //   70: invokevirtual 617	awbw:a	(Lawbv;)Z
+    //   70: invokevirtual 617	awgf:a	(Lawge;)Z
     //   73: istore_3
     //   74: goto -33 -> 41
     //   77: astore_1
@@ -652,7 +652,7 @@ public class ovz
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	82	0	this	ovz
-    //   0	82	1	paramawbv	awbv
+    //   0	82	1	paramawge	awge
     //   31	6	2	i	int
     //   1	73	3	bool	boolean
     // Exception table:

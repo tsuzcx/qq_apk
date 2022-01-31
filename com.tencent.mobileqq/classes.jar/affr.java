@@ -1,197 +1,131 @@
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForBirthdayNotice;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.theme.effect.QEffectApngImageView;
+import com.tencent.qapmsdk.QAPM;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.report.lp.LpReportManager;
-import cooperation.vip.manager.MonitorManager;
+import com.tencent.qq.effect.QEffectView;
 
 public class affr
-  extends aekw
-  implements View.OnClickListener
+  implements affa
 {
-  private static final String jdField_a_of_type_JavaLangString = alpo.a(2131701520);
   private long jdField_a_of_type_Long;
-  private ForegroundColorSpan jdField_a_of_type_AndroidTextStyleForegroundColorSpan = new ForegroundColorSpan(Color.parseColor("#883353"));
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private QEffectView jdField_a_of_type_ComTencentQqEffectQEffectView;
   
-  public affr(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  public affr(BaseChatPie paramBaseChatPie)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  private View a(View paramView, affs paramaffs)
+  public void a()
   {
-    View localView = paramView;
-    if (paramView == null)
+    if (this.jdField_a_of_type_ComTencentQqEffectQEffectView != null) {
+      this.jdField_a_of_type_ComTencentQqEffectQEffectView.pause();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558765, null);
-      paramaffs.jdField_b_of_type_AndroidViewView = paramView;
-      paramaffs.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131362254);
-      paramaffs.d = paramView.findViewById(2131362253);
-      paramaffs.a = ((URLImageView)paramView.findViewById(2131362256));
-      paramaffs.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362257));
-      paramaffs.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362255));
-      localView = paramView;
-      if (e)
+    case 2: 
+    default: 
+    case 11: 
+      do
       {
-        paramaffs.jdField_b_of_type_JavaLangStringBuilder = new StringBuilder();
-        localView = paramView;
-      }
-    }
-    if (e)
-    {
-      localView.setContentDescription(null);
-      paramaffs.jdField_b_of_type_JavaLangStringBuilder.replace(0, paramaffs.jdField_b_of_type_JavaLangStringBuilder.length(), "");
-    }
-    return localView;
-  }
-  
-  private void a(MessageRecord paramMessageRecord)
-  {
-    long l1;
-    if ((paramMessageRecord != null) && (!bdan.a().a(paramMessageRecord, "aio_msg|birthday_notice")))
-    {
-      bdan.a().a(paramMessageRecord, "aio_msg|birthday_notice");
-      l1 = 0L;
-    }
-    try
-    {
-      long l2 = Long.parseLong(paramMessageRecord.frienduin);
-      l1 = l2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+        return;
+      } while (this.jdField_a_of_type_ComTencentQqEffectQEffectView == null);
+      StringBuilder localStringBuilder = new StringBuilder().append("destroy qeffect, duration:");
+      if (this.jdField_a_of_type_Long == 0L) {}
+      for (long l = this.jdField_a_of_type_Long;; l = System.currentTimeMillis() - this.jdField_a_of_type_Long)
       {
-        QLog.e("BirthDayNoticeItemBuilder", 1, "error parse friend uin " + paramMessageRecord);
-        MonitorManager.a().a(19, 10, " error parse friend uin " + paramMessageRecord, false);
-      }
-    }
-    paramMessageRecord = new LpReportInfo_pf00064();
-    paramMessageRecord.actionType = 91;
-    paramMessageRecord.subactionType = 22;
-    paramMessageRecord.reserves = 1;
-    paramMessageRecord.toUin = l1;
-    LpReportManager.getInstance().reportToPF00064(paramMessageRecord, false, false);
-  }
-  
-  protected aekx a()
-  {
-    return new affs(this);
-  }
-  
-  protected View a(MessageRecord paramMessageRecord, aekx paramaekx, View paramView, LinearLayout paramLinearLayout, aeov paramaeov)
-  {
-    paramMessageRecord = (MessageForBirthdayNotice)paramMessageRecord;
-    paramaekx = (affs)paramaekx;
-    paramView = a(paramView, paramaekx);
-    try
-    {
-      paramaekx.a.setBackgroundURL(paramMessageRecord.icon);
-      paramaekx.d.setBackgroundColor(Color.parseColor(paramMessageRecord.background));
-      paramaekx.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageRecord.birthday);
-      int i = paramMessageRecord.blessing.indexOf(jdField_a_of_type_JavaLangString);
-      if (i >= 0)
-      {
-        paramLinearLayout = new SpannableString(paramMessageRecord.blessing);
-        paramLinearLayout.setSpan(this.jdField_a_of_type_AndroidTextStyleForegroundColorSpan, i, jdField_a_of_type_JavaLangString.length() + i, 33);
-        paramaekx.jdField_c_of_type_AndroidWidgetTextView.setText(paramLinearLayout);
-        paramaekx.jdField_c_of_type_AndroidViewView.setTag(paramMessageRecord);
-        paramaekx.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-        a(paramMessageRecord);
-        if (e)
-        {
-          paramaekx.jdField_b_of_type_JavaLangStringBuilder.append("生日");
-          paramaekx.jdField_b_of_type_JavaLangStringBuilder.append(paramMessageRecord.birthday);
-          paramaekx.jdField_b_of_type_JavaLangStringBuilder.append(paramMessageRecord.blessing);
-          paramaekx.jdField_b_of_type_AndroidViewView.setContentDescription(paramaekx.jdField_b_of_type_JavaLangStringBuilder.toString());
+        QLog.i("QEffectBgProvider", 1, l);
+        if (this.jdField_a_of_type_ComTencentQqEffectQEffectView.getQEffectImpl() != null) {
+          ((View)this.jdField_a_of_type_ComTencentQqEffectQEffectView.getQEffectImpl()).destroyDrawingCache();
         }
-        return paramView;
+        this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
+        return;
       }
-    }
-    catch (Exception paramLinearLayout)
-    {
-      for (;;)
-      {
-        QLog.e("BirthDayNoticeItemBuilder", 1, "set resource error " + paramLinearLayout);
-        MonitorManager.a().a(19, 2, "set data error " + paramLinearLayout, false);
-        continue;
-        paramaekx.jdField_c_of_type_AndroidWidgetTextView.setText(paramMessageRecord.blessing);
-      }
-    }
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
-  
-  public boolean a()
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long > 500L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Long = l;
-      return bool;
-    }
-  }
-  
-  public bdlb[] a(View paramView)
-  {
-    return null;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (a())
-    {
-      paramView = paramView.getTag();
-      if ((paramView instanceof MessageForBirthdayNotice))
-      {
-        paramView = (MessageForBirthdayNotice)paramView;
-        if (!TextUtils.isEmpty(paramView.doufu_link)) {
-          break label80;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("BirthDayNoticeItemBuilder", 2, "jumpToH5Page with url empty");
-        }
-        MonitorManager.a().a(19, 2, " parse data with empty url " + paramView, false);
-      }
-    }
-    return;
-    label80:
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramView.doufu_link);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    try
-    {
-      long l = Long.parseLong(paramView.frienduin);
-      paramView = new LpReportInfo_pf00064();
-      paramView.actionType = 91;
-      paramView.subactionType = 22;
-      paramView.reserves = 2;
-      paramView.toUin = l;
-      LpReportManager.getInstance().reportToPF00064(paramView, false, false);
+    case 12: 
+      a();
       return;
     }
-    catch (Exception localException)
+    b();
+  }
+  
+  public void a(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    String str1;
+    if ((paramSessionInfo != null) && (paramSessionInfo.jdField_a_of_type_Aeqq != null))
     {
-      QLog.e("BirthDayNoticeItemBuilder", 1, "error parse friend uin " + paramView);
-      MonitorManager.a().a(19, 10, " error parse friend uin " + paramView, false);
+      str1 = paramSessionInfo.jdField_a_of_type_JavaLangString;
+      if (this.jdField_a_of_type_ComTencentQqEffectQEffectView == null)
+      {
+        this.jdField_a_of_type_ComTencentQqEffectQEffectView = new QEffectView(paramContext);
+        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d.addView(this.jdField_a_of_type_ComTencentQqEffectQEffectView, 0, new ViewGroup.LayoutParams(-1, -1));
+      }
+      if (paramSessionInfo.jdField_a_of_type_Aeqq.a == null) {
+        break label335;
+      }
+      if ((paramSessionInfo.jdField_a_of_type_Aeqq.a instanceof apko)) {
+        paramSessionInfo = "aio-bg-static";
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentQqEffectQEffectView.setExtOptions(2, QEffectApngImageView.a(new int[] { 0 }, "-chatBg-"));
+      String str2 = paramQQAppInterface.c();
+      int i = ChatBackgroundManager.a(paramContext, str2, str1);
+      if ((i > 0) && (ChatBackgroundManager.a()))
+      {
+        ((bduj)paramQQAppInterface.getManager(235)).a.a(i, new affs(this, i));
+        paramSessionInfo = paramSessionInfo + "-effect";
+        label181:
+        QAPM.setABFactor("AIO背景", paramSessionInfo, abvi.class);
+      }
+      do
+      {
+        return;
+        if (!(paramSessionInfo.jdField_a_of_type_Aeqq.a instanceof URLDrawable)) {
+          break label335;
+        }
+        paramSessionInfo = "aio-bg-dynamic";
+        break;
+        if ((ChatBackgroundManager.a(paramContext, str2, str1)) && (ChatBackgroundManager.a()))
+        {
+          paramContext = aeqq.a(paramContext, str2, str1);
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          this.jdField_a_of_type_ComTencentQqEffectQEffectView.setSrc(paramContext.replace("aioImage", ""), "zip");
+          QLog.i("QEffectBgProvider", 1, "set qeffect for custom background aioImageID:" + ChatBackgroundManager.d(paramContext));
+          paramSessionInfo = paramSessionInfo + "-3d";
+          break label181;
+        }
+        this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
+        break label181;
+      } while (this.jdField_a_of_type_ComTencentQqEffectQEffectView == null);
+      this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
+      return;
+      label335:
+      paramSessionInfo = "aio-bg-default";
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 2, 11, 12, 13, 14 };
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentQqEffectQEffectView != null) {
+      this.jdField_a_of_type_ComTencentQqEffectQEffectView.resume();
     }
   }
 }

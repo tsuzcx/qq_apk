@@ -1,15 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-
 class wzg
-  implements ValueAnimator.AnimatorUpdateListener
+  implements xhq
 {
-  wzg(wzf paramwzf) {}
+  wzg(wzb paramwzb) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.g();
+    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击重新拉取地理贴纸");
+    wzb.a(this.a);
+  }
+  
+  public void a(String paramString)
+  {
+    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载：" + paramString);
+    xan localxan = this.a.a;
+    if (this.a.a.a()) {}
+    for (String str = "2";; str = "1")
+    {
+      localxan.a("download_face", 0, 0, new String[] { str, paramString });
+      wxk.b("0X80075DD");
+      if (!((xet)uwa.a(8)).a(paramString, true)) {
+        wxe.d("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载启动失败");
+      }
+      return;
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载取消：" + paramString);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aimj;
+import aiqy;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.data.QQAlbumInfo;
@@ -11,12 +11,12 @@ public abstract class AlbumListLogic<K extends AbstractAlbumListFragment>
   protected AlbumListLogic.IalbumListAdapterCallBack mAlbumListAdapterCallBack = null;
   protected AlbumListBaseData mAlbumListData;
   public K mFragment;
-  public aimj mPhotoCommonData;
+  public aiqy mPhotoCommonData;
   
   protected AlbumListLogic(K paramK)
   {
     this.mFragment = paramK;
-    this.mPhotoCommonData = aimj.getInstance(paramK.getActivity().getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true));
+    this.mPhotoCommonData = aiqy.getInstance(paramK.getActivity().getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true));
     paramK.getActivity().getIntent().putExtra("NEED_NEW_PHOTO_COMMON_DATA", false);
     this.mPhotoCommonData.addHoldNember();
     this.mAlbumListData = new AlbumListBaseData();

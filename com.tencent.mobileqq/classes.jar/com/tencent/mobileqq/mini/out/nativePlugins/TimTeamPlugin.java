@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
-import aljq;
+import alof;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
@@ -32,7 +32,7 @@ public class TimTeamPlugin
       {
         paramJSONObject = paramJSContext.getActivity();
         paramJSContext = new Intent(paramJSONObject, AccountDetailActivity.class);
-        paramJSContext.putExtra("uin", aljq.aV);
+        paramJSContext.putExtra("uin", alof.aV);
         paramJSONObject.startActivity(paramJSContext);
       }
       return;

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.app;
 
-import alzf;
-import bblc;
-import bbln;
+import amdu;
+import bbpl;
+import bbpw;
 import com.tencent.mobileqq.troop.org.pb.oidb_0x496.AioKeyword;
 
 public class TroopHandler$4
   implements Runnable
 {
-  public TroopHandler$4(alzf paramalzf, oidb_0x496.AioKeyword paramAioKeyword) {}
+  public TroopHandler$4(amdu paramamdu, oidb_0x496.AioKeyword paramAioKeyword) {}
   
   public void run()
   {
-    ((bbln)this.this$0.app.getManager(225)).a(bblc.a(this.a), bblc.b(this.a));
-    bblc.a(this.this$0.app, this.a);
+    ((bbpw)this.this$0.app.getManager(225)).a(bbpl.a(this.a), bbpl.b(this.a));
+    bbpl.a(this.this$0.app, this.a);
   }
 }
 

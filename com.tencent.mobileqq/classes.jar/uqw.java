@@ -1,27 +1,11 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.app.Activity;
+import android.os.Bundle;
 
-public class uqw
-  extends ugz
+public abstract interface uqw<T extends Activity>
 {
-  public long a;
-  public final String a;
-  public final boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
+  public abstract void a(T paramT);
   
-  public uqw(ErrorMessage paramErrorMessage, String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "DeleteStoryVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", groupId='" + this.c + '\'' + ", feedId='" + this.d + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", localDelete=" + this.jdField_a_of_type_Boolean + ", isRemoveMember=" + this.jdField_b_of_type_Boolean + '}';
-  }
+  public abstract void a(T paramT, Bundle paramBundle);
 }
 
 

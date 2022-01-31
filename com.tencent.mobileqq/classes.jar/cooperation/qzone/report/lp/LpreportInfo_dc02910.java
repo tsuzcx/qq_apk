@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import bizf;
+import bjdm;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +21,7 @@ public class LpreportInfo_dc02910
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("qua", bizf.a());
+    localHashMap.put("qua", bjdm.a());
     localHashMap.put("uin", String.valueOf(this.uin));
     localHashMap.put("traceinfo", String.valueOf(this.traceInfo));
     localHashMap.put("idx", String.valueOf(this.index));

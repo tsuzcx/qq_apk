@@ -1,20 +1,59 @@
-import com.tencent.widget.HongBaoListView;
+import com.tencent.qqprotect.qsec.IQSecRuntime;
+import com.tencent.qqprotect.qsec.IRuntimeInterface;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
-public abstract interface bhpg
+public class bhpg
+  implements IQSecRuntime
 {
-  public abstract void a();
+  public static IQSecRuntime a;
+  private HashMap<String, IRuntimeInterface> a;
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public bhpg()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_ComTencentQqprotectQsecIQSecRuntime = this;
+  }
   
-  public abstract void a(HongBaoListView paramHongBaoListView);
+  public void a(IRuntimeInterface paramIRuntimeInterface)
+  {
+    String str = paramIRuntimeInterface.getInterfaceName();
+    if ((str != null) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))) {
+      this.jdField_a_of_type_JavaUtilHashMap.put(str, paramIRuntimeInterface);
+    }
+  }
   
-  public abstract void a(HongBaoListView paramHongBaoListView, boolean paramBoolean);
+  public Object getApplicationContext()
+  {
+    return MobileQQ.sMobileQQ;
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public Object getQQAppInterface()
+  {
+    return MobileQQ.sMobileQQ.waitAppRuntime(null);
+  }
   
-  public abstract void b(HongBaoListView paramHongBaoListView);
+  public int getRuntimeVersion()
+  {
+    return 1;
+  }
   
-  public abstract void b(boolean paramBoolean);
+  public IRuntimeInterface queryRuntimeInterface(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    IRuntimeInterface localIRuntimeInterface2 = (IRuntimeInterface)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    IRuntimeInterface localIRuntimeInterface1 = localIRuntimeInterface2;
+    if (localIRuntimeInterface2 != null)
+    {
+      localIRuntimeInterface1 = localIRuntimeInterface2;
+      if (!paramString.equals(localIRuntimeInterface2.getInterfaceName())) {
+        localIRuntimeInterface1 = null;
+      }
+    }
+    return localIRuntimeInterface1;
+  }
 }
 
 

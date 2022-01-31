@@ -1,15 +1,15 @@
 package cooperation.qzone.plugin;
 
-import bjku;
+import bjpb;
 
 public class QZonePluginDownloadPortConfig$1
   implements Runnable
 {
-  public QZonePluginDownloadPortConfig$1(bjku parambjku) {}
+  public QZonePluginDownloadPortConfig$1(bjpb parambjpb) {}
   
   public void run()
   {
-    bjku.a(this.this$0);
+    bjpb.a(this.this$0);
   }
 }
 

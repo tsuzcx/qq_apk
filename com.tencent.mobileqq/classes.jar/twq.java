@@ -1,29 +1,21 @@
-import android.text.TextUtils;
-import android.widget.FrameLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
+import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StTagInfo;
+import java.util.List;
 
-class twq
+public class twq
+  implements Observer<ubz<List<FeedCloudMeta.StFeed>>>
 {
-  public TextView a;
+  public twq(QCircleBaseTabFragment paramQCircleBaseTabFragment) {}
   
-  public twq(FrameLayout paramFrameLayout)
+  public void a(@Nullable ubz<List<FeedCloudMeta.StFeed>> paramubz)
   {
-    this.a = ((TextView)paramFrameLayout.getChildAt(0));
-  }
-  
-  public void a(FeedCloudMeta.StTagInfo paramStTagInfo, FeedCloudMeta.StFeed paramStFeed)
-  {
-    if (TextUtils.isEmpty(paramStTagInfo.tagName.get()))
-    {
-      this.a.setVisibility(8);
-      return;
+    if (paramubz != null) {
+      QLog.d(QCircleBaseTabFragment.b, 4, "initViewData:getFeedListRequestRsp_" + this.a.b() + ",state:" + paramubz.a());
     }
-    this.a.setVisibility(0);
-    this.a.setText(twp.a(paramStTagInfo));
-    this.a.setOnClickListener(new twr(this, paramStFeed, paramStTagInfo));
+    this.a.a(paramubz);
   }
 }
 

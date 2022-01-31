@@ -1,36 +1,23 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
 import java.util.List;
 
 public class vza
-  extends JobSegment<List<Bitmap>, Bitmap>
+  extends vvw
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString = "story.icon.BitmapListToIconSegment";
+  public vza(AbsVideoInfoWidget paramAbsVideoInfoWidget, StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
   
-  public vza(Context paramContext, String paramString, int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "[" + paramString + "]");
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void a(JobContext paramJobContext, List<Bitmap> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty()))
+    super.a(paramInt);
+    paramInt = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.b;
+    if ((paramInt >= this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.size()) || (paramInt < 0))
     {
-      notifyError(new ErrorMessage(-1, "bitmap list should not be empty"));
+      wxe.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b, "Position error , get data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.size()) });
       return;
     }
-    paramJobContext = (Bitmap[])paramList.toArray(new Bitmap[paramList.size()]);
-    paramList = bcyy.a(this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888, paramJobContext);
-    vzb.b(this.jdField_a_of_type_JavaLangString, "result bitmap = %s, child count = %d", paramList, Integer.valueOf(paramJobContext.length));
-    notifyResult(paramList);
+    vtt localvtt = (vtt)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.get(paramInt);
+    AbsVideoInfoWidget.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget, localvtt);
   }
 }
 

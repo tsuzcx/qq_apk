@@ -1,12 +1,24 @@
-public abstract interface ajar
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.qphone.base.util.QLog;
+
+public class ajar
+  implements nbs
 {
-  public abstract void a();
+  public ajar(PreloadModule paramPreloadModule) {}
   
-  public abstract void b();
+  public void loaded(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadModule", 2, "checkUpByBusinessId loaded, code:" + paramInt);
+    }
+  }
   
-  public abstract void d();
-  
-  public abstract void e();
+  public void progress(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadModule", 2, "checkUpByBusinessId progress:" + paramInt);
+    }
+  }
 }
 
 

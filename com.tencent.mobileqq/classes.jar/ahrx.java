@@ -1,29 +1,45 @@
-import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
-public class ahrx
-  implements View.OnClickListener
+class ahrx
+  implements bhuk
 {
-  public ahrx(ImgPreviewAdapter paramImgPreviewAdapter) {}
+  ahrx(ahrs paramahrs, alri paramalri, DiscussionInfo paramDiscussionInfo, boolean paramBoolean, bhuf parambhuf) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    EmoticonFromGroupEntity localEmoticonFromGroupEntity = this.a.a(ImgPreviewAdapter.a(this.a).getCurrentItem());
-    if (localEmoticonFromGroupEntity != null)
+    paramView = this.jdField_a_of_type_Alri;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo;
+    boolean bool;
+    if (!this.jdField_a_of_type_Boolean)
     {
-      if (localEmoticonFromGroupEntity.msg != null)
-      {
-        ImgPreviewAdapter.a(this.a).a(ImgPreviewAdapter.a(this.a), localEmoticonFromGroupEntity.msg, paramView);
-        return;
+      bool = true;
+      paramView.a((DiscussionInfo)localObject, bool);
+      this.jdField_a_of_type_Bhuf.e();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label154;
       }
-      QLog.e("ImgPreviewAdapter.msgnull", 1, "img click msg is null.");
-      return;
+      paramInt = 1;
+      label43:
+      paramView = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.uin;
+      ((aloz)this.jdField_a_of_type_Ahrs.a.a(22)).notifyUI(18, true, new Object[] { paramView, Integer.valueOf(paramInt), Integer.valueOf(0), null });
+      localObject = new azqx(this.jdField_a_of_type_Ahrs.a).a("dc00899").b("Grp_Dis_set").c("Grp_contactlist");
+      if (!this.jdField_a_of_type_Boolean) {
+        break label159;
+      }
     }
-    QLog.e("ImgPreviewAdapter.emonull", 1, "img click emo is null.");
+    label154:
+    label159:
+    for (paramView = "Clk_unstick";; paramView = "Clk_stick")
+    {
+      ((azqx)localObject).d(paramView).a();
+      return;
+      bool = false;
+      break;
+      paramInt = 0;
+      break label43;
+    }
   }
 }
 

@@ -1,21 +1,24 @@
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqcircle.widgets.QCircleRockeyPopupView;
+import com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView;
 
-public class ucu
+class ucu
   implements Animation.AnimationListener
 {
-  public ucu(QCircleRockeyPopupView paramQCircleRockeyPopupView, View paramView) {}
+  ucu(uct paramuct) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    this.a.a.clearAnimation();
+    this.a.a.c = false;
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.c = true;
+  }
 }
 
 

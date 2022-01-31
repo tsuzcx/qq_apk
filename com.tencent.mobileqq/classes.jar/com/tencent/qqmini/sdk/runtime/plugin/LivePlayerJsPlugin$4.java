@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgkd;
-import bhab;
+import bgok;
+import bhei;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import com.tencent.qqmini.sdk.runtime.widget.media.CoverLiveView;
 import org.json.JSONObject;
@@ -9,11 +9,11 @@ import org.json.JSONObject;
 class LivePlayerJsPlugin$4
   implements Runnable
 {
-  LivePlayerJsPlugin$4(LivePlayerJsPlugin paramLivePlayerJsPlugin, int paramInt, String paramString, bgkd parambgkd, JSONObject paramJSONObject) {}
+  LivePlayerJsPlugin$4(LivePlayerJsPlugin paramLivePlayerJsPlugin, int paramInt, String paramString, bgok parambgok, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    CoverView localCoverView = bhab.a(LivePlayerJsPlugin.access$1000(this.this$0)).a(this.val$livePlayerId);
+    CoverView localCoverView = bhei.a(LivePlayerJsPlugin.access$1000(this.this$0)).a(this.val$livePlayerId);
     if (!(localCoverView instanceof CoverLiveView)) {
       return;
     }

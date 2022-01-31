@@ -13,7 +13,7 @@ public class otb
   
   static
   {
-    if (((Integer)bjxj.a("readinjoy_channel_mode", Integer.valueOf(-1))).intValue() == 2) {}
+    if (((Integer)bkbq.a("readinjoy_channel_mode", Integer.valueOf(-1))).intValue() == 2) {}
     for (boolean bool = true;; bool = false)
     {
       a = bool;
@@ -43,7 +43,7 @@ public class otb
       String str2 = (String)paramString.get(str1);
       QLog.d("ChannelModeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
       if (TextUtils.equals(str1, "channel_mode")) {
-        bjxj.a("readinjoy_channel_mode", Integer.valueOf(Integer.valueOf(str2).intValue()));
+        bkbq.a("readinjoy_channel_mode", Integer.valueOf(Integer.valueOf(str2).intValue()));
       }
     }
     return true;
@@ -52,7 +52,7 @@ public class otb
   public void onWipeConfig(int paramInt)
   {
     QLog.d("ChannelModeConfigHandler", 1, "[onWipeConfig]");
-    bjxj.a("readinjoy_channel_mode", Integer.valueOf(-1));
+    bkbq.a("readinjoy_channel_mode", Integer.valueOf(-1));
   }
 }
 

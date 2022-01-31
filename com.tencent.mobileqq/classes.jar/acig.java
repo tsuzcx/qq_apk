@@ -1,36 +1,26 @@
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.widget.XEditTextEx;
 
-class acig
-  extends ClickableSpan
+public class acig
+  implements agle
 {
-  acig(acid paramacid, String paramString1, String paramString2) {}
+  public acig(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  public boolean a(PhotoListPanel paramPhotoListPanel)
   {
-    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    azmj.b(this.jdField_a_of_type_Acid.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app, "CliOper", "", this.b, "0X8004937", "0X8004937", 0, 0, "", "", "", "");
-    try
-    {
-      this.jdField_a_of_type_Acid.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      return;
-    }
-    catch (ActivityNotFoundException paramView)
-    {
-      paramView.printStackTrace();
-    }
+    return false;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public boolean b(PhotoListPanel paramPhotoListPanel)
   {
-    paramTextPaint.setColor(-16732929);
-    paramTextPaint.setUnderlineText(false);
+    if (this.a.K) {}
+    while ((this.a.o()) || (this.a.a == null) || (this.a.a.getText() == null) || (this.a.a.getText().length() <= 0)) {
+      return false;
+    }
+    this.a.as();
+    return true;
   }
 }
 

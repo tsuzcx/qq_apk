@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class wjp
-  implements View.OnClickListener
+public abstract interface wjp
 {
-  public wjp(StoryMessageListActivity paramStoryMessageListActivity, int paramInt) {}
+  public abstract boolean a();
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_Int);
-    wta.a("play_video", "del_notice", 0, 0, new String[] { "", "", "", "" });
-  }
+  public abstract boolean a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
+  
+  public abstract boolean b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
 }
 
 

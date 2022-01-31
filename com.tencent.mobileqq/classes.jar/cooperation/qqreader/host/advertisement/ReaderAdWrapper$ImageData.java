@@ -1,6 +1,6 @@
 package cooperation.qqreader.host.advertisement;
 
-import aaik;
+import aamz;
 import android.text.TextUtils;
 
 public class ReaderAdWrapper$ImageData
@@ -9,11 +9,11 @@ public class ReaderAdWrapper$ImageData
   public String url;
   public int width;
   
-  ReaderAdWrapper$ImageData(aaik paramaaik)
+  ReaderAdWrapper$ImageData(aamz paramaamz)
   {
-    this.url = paramaaik.jdField_a_of_type_JavaLangString;
-    this.width = paramaaik.jdField_a_of_type_Int;
-    this.height = paramaaik.b;
+    this.url = paramaamz.jdField_a_of_type_JavaLangString;
+    this.width = paramaamz.jdField_a_of_type_Int;
+    this.height = paramaamz.b;
   }
   
   public boolean isValid()

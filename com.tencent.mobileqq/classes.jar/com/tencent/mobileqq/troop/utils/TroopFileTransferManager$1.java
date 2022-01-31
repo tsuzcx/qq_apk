@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aljq;
-import bciv;
+import alof;
+import bcne;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,7 +18,7 @@ public final class TroopFileTransferManager$1
       try
       {
         Thread.sleep(3000L);
-        File localFile = new File(aljq.bp);
+        File localFile = new File(alof.bp);
         if (!localFile.isDirectory()) {
           return;
         }
@@ -28,7 +28,7 @@ public final class TroopFileTransferManager$1
         localInterruptedException.printStackTrace();
         return;
       }
-      arrayOfFile = localInterruptedException.listFiles(new bciv(this));
+      arrayOfFile = localInterruptedException.listFiles(new bcne(this));
     } while ((arrayOfFile == null) || (arrayOfFile.length < 100));
     Object localObject = new ArrayList(arrayOfFile.length);
     int j = arrayOfFile.length;

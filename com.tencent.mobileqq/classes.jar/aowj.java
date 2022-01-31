@@ -1,32 +1,89 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aowj
-  implements View.OnClickListener
+public class aowj
+  extends aokh<aowh>
 {
-  aowj(aowg paramaowg, String paramString) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    aowg.a(this.jdField_a_of_type_Aowg).removeCallbacks(aowg.a(this.jdField_a_of_type_Aowg));
-    aowg.a(this.jdField_a_of_type_Aowg).run();
-    int i = aowg.a(this.jdField_a_of_type_Aowg).a.getSelectionStart();
-    paramView = aowg.a(this.jdField_a_of_type_Aowg).a.getEditableText();
-    if ((i < 0) || (i >= paramView.length()))
+    return 432;
+  }
+  
+  @NonNull
+  public aowh a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchRichConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new aowh();
+  }
+  
+  @Nullable
+  public aowh a(aoko[] paramArrayOfaoko)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchRichConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      paramView.append(this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchRichConfProcessor", 2, "onParsed " + paramArrayOfaoko.length);
+      }
+      return aowh.a(paramArrayOfaoko[0]);
+    }
+    return null;
+  }
+  
+  public Class<aowh> a()
+  {
+    return aowh.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchRichConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(aowh paramaowh)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramaowh == null) {
+        break label49;
+      }
+    }
+    label49:
+    for (paramaowh = paramaowh.toString();; paramaowh = " empty")
+    {
+      QLog.d("SearchRichConfProcessor", 2, paramaowh);
+      aysy.a().a();
       return;
     }
-    paramView.insert(i, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aowj
  * JD-Core Version:    0.7.0.1
  */

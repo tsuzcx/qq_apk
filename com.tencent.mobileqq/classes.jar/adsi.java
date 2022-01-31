@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
-class adsi
-  implements DialogInterface.OnClickListener
+public class adsi
+  implements aybr
 {
-  adsi(adsd paramadsd) {}
+  public adsi(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a.a.show();
-    this.a.b = false;
-    adsd.c(this.a);
+    if ((this.a.c) && (paramBitmap != null) && (QQSettingMe.a(this.a).a().actionId == paramInt1) && (paramInt2 == 200)) {
+      this.a.z();
+    }
   }
 }
 

@@ -20,7 +20,7 @@ class nmg
         if (paramString2.exists()) {
           paramString2.renameTo(new File(nmb.a(paramString1)));
         }
-        azmj.a(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", nmb.a(this.a).mVideoVid, String.valueOf(nmb.a(this.a).mSource));
+        azqs.a(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", nmb.a(this.a).mVideoVid, String.valueOf(nmb.a(this.a).mSource));
         paramString2 = (QQAppInterface)nmb.a(this.a).get();
         if (paramString2 != null)
         {

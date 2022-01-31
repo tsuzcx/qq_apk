@@ -25,7 +25,7 @@ public class mbn
   {
     super.a();
     if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696325);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696327);
     }
     String str = this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaLangString;
     int i = this.jdField_a_of_type_ComTencentAvVideoController.b(str);
@@ -83,7 +83,7 @@ public class mbn
     if (QLog.isDevelopLevel()) {
       QLog.d("IVR_TS_SmallScreenDoubleVideoControlUI", 4, "<<<setInvitingState(), resId =" + paramInt);
     }
-    if ((this.jdField_a_of_type_ComTencentAvVideoController.a().i == 1011) && (paramInt != 2131696325) && (paramInt != 2131721291) && (!this.jdField_a_of_type_ComTencentAvVideoController.f)) {}
+    if ((this.jdField_a_of_type_ComTencentAvVideoController.a().i == 1011) && (paramInt != 2131696327) && (paramInt != 2131721304) && (!this.jdField_a_of_type_ComTencentAvVideoController.f)) {}
     while ((this.jdField_a_of_type_AndroidWidgetTextView == null) || (paramInt <= 0)) {
       return;
     }
@@ -109,7 +109,7 @@ public class mbn
     }
     if (TextUtils.isEmpty(paramString2))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696439);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696441);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString2);
@@ -137,8 +137,8 @@ public class mbn
   
   public void a(boolean paramBoolean)
   {
-    int i = 2131696439;
-    int j = 2131696325;
+    int i = 2131696441;
+    int j = 2131696327;
     super.a(paramBoolean);
     lid locallid = this.jdField_a_of_type_ComTencentAvVideoController.a();
     long l = AudioHelper.b();
@@ -146,21 +146,21 @@ public class mbn
       QLog.w("SmallScreenDoubleVideoControlUI", 1, "onCreate, matchStatus[" + locallid.a.b + "], seq[" + l + "]");
     }
     if (this.jdField_a_of_type_ComTencentAvVideoController.f) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696324);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696326);
     }
     do
     {
       return;
       if ((locallid.a.b > 0) && (locallid.a.b != 5))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696334);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696336);
         return;
       }
     } while (locallid.k());
     if (locallid.j())
     {
       if (locallid.R) {}
-      for (i = 2131695974;; i = 2131721361)
+      for (i = 2131695976;; i = 2131721374)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setText(i);
         return;
@@ -169,7 +169,7 @@ public class mbn
     if (locallid.g())
     {
       if (locallid.ah) {
-        i = 2131696325;
+        i = 2131696327;
       }
       if (locallid.i != 1011) {
         break label340;
@@ -193,7 +193,7 @@ public class mbn
             }
           }
         }
-        for (j = i;; j = 2131696162)
+        for (j = i;; j = 2131696164)
         {
           this.jdField_a_of_type_AndroidWidgetTextView.setText(j);
           return;
@@ -203,7 +203,7 @@ public class mbn
         break;
       }
       if (locallid.i == 1011) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696341);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696343);
       }
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new SmallScreenDoubleVideoControlUI.1(this, l), 150L);
       return;
@@ -242,7 +242,7 @@ public class mbn
       if (this.jdField_a_of_type_ComTencentAvVideoController.a().i != 1011) {
         break label167;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696325);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696327);
     }
     for (;;)
     {
@@ -254,7 +254,7 @@ public class mbn
       }
       return;
       label167:
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696439);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696441);
     }
   }
   

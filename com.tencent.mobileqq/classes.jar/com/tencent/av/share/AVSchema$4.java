@@ -3,7 +3,7 @@ package com.tencent.av.share;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
-import bdfq;
+import bdjz;
 import com.tencent.qphone.base.util.QLog;
 
 class AVSchema$4
@@ -14,11 +14,11 @@ class AVSchema$4
   public void run()
   {
     QLog.w(this.this$0.jdField_a_of_type_JavaLangString, 1, "handleResult_I_Known, msg[" + this.this$0.isResumed() + "], seq[" + this.a + "]");
-    if (this.this$0.jdField_a_of_type_Bdfq != null) {}
+    if (this.this$0.jdField_a_of_type_Bdjz != null) {}
     try
     {
-      this.this$0.jdField_a_of_type_Bdfq.show();
-      this.this$0.jdField_a_of_type_Bdfq.getWindow().getDecorView().requestLayout();
+      this.this$0.jdField_a_of_type_Bdjz.show();
+      this.this$0.jdField_a_of_type_Bdjz.getWindow().getDecorView().requestLayout();
       this.this$0.getActivity().getWindow().getDecorView().requestLayout();
       this.this$0.getActivity().getWindow().getDecorView().invalidate();
       return;

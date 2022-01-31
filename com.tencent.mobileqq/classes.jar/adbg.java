@@ -1,21 +1,25 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.activity.Leba;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class adbg
-  implements ViewSwitcher.ViewFactory
+  implements Animation.AnimationListener
 {
-  public adbg(Leba paramLeba) {}
+  public adbg(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
   
-  public View makeView()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.f) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
   }
 }
 

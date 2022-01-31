@@ -1,16 +1,16 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.forward.ForwardPhotoOption;
 
 public class asbg
-  implements bhqd
+  implements View.OnTouchListener
 {
-  public asbg(LangSettingFragment paramLangSettingFragment, int paramInt) {}
+  public asbg(ForwardPhotoOption paramForwardPhotoOption) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt == 0) {
-      LangSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, this.jdField_a_of_type_Int);
-    }
+    return true;
   }
 }
 

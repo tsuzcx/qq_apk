@@ -12,7 +12,7 @@ final class syf
   {
     if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
     {
-      arys.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
+      asdb.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
       this.jdField_a_of_type_AndroidAppActivity.setResult(0);
       this.jdField_a_of_type_AndroidAppActivity.finish();
     }

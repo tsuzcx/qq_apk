@@ -1,18 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
-
 public final class awls
-  implements Parcelable.Creator<PersonalityLabelPhoto>
+  extends awky
 {
-  public PersonalityLabelPhoto a(Parcel paramParcel)
+  protected int c()
   {
-    return new PersonalityLabelPhoto(paramParcel);
-  }
-  
-  public PersonalityLabelPhoto[] a(int paramInt)
-  {
-    return new PersonalityLabelPhoto[paramInt];
+    return 517;
   }
 }
 

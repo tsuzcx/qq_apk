@@ -1,8 +1,16 @@
-public abstract interface bknp
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class bknp
+  implements View.OnTouchListener
 {
-  public abstract void a();
+  bknp(bknm parambknm) {}
   
-  public abstract void b();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

@@ -1,8 +1,30 @@
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import com.tencent.image.URLDrawable;
+import java.net.URL;
 
-public abstract interface aanw
+class aanw
+  implements aaum
 {
-  public abstract void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo);
+  aanw(aanv paramaanv) {}
+  
+  public void a(URLDrawable paramURLDrawable)
+  {
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
+    {
+      aase.b("GdtBannerImageView", String.format("onLoadSuccessful %s", new Object[] { paramURLDrawable }));
+      return;
+    }
+  }
+  
+  public void b(URLDrawable paramURLDrawable)
+  {
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
+    {
+      aase.b("GdtBannerImageView", String.format("onLoadFailed %s", new Object[] { paramURLDrawable }));
+      return;
+    }
+  }
 }
 
 

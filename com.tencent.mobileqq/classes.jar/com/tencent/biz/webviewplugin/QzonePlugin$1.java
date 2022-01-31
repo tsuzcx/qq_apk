@@ -1,17 +1,17 @@
 package com.tencent.biz.webviewplugin;
 
 import com.tencent.smtt.sdk.WebView;
-import zax;
+import zfm;
 
 public class QzonePlugin$1
   implements Runnable
 {
-  public QzonePlugin$1(zax paramzax, byte[] paramArrayOfByte) {}
+  public QzonePlugin$1(zfm paramzfm, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    if (zax.a(this.this$0) != null) {
-      zax.a(this.this$0).postUrl(zax.a(this.this$0), this.a);
+    if (zfm.a(this.this$0) != null) {
+      zfm.a(this.this$0).postUrl(zfm.a(this.this$0), this.a);
     }
   }
 }

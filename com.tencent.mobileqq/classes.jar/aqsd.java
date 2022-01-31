@@ -1,22 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aqsd
-  extends BroadcastReceiver
+class aqsd
+  implements DialogInterface.OnClickListener
 {
-  public aqsd(FileManagerDataCenter.1 param1) {}
+  aqsd(aqsb paramaqsb) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    if ((paramContext != null) && (paramContext.equalsIgnoreCase("com.opensdk.downloadmanager.renameFilename")))
-    {
-      paramContext = paramIntent.getBundleExtra("extraBundle");
-      aqsc.a(this.a.this$0, paramContext);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

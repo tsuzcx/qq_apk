@@ -1,56 +1,151 @@
-import android.text.TextUtils;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSUnlockActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import com.tencent.widget.XEditTextEx;
 
 public class adql
-  extends AccountObserver
+  extends Handler
 {
-  public adql(RegisterSendUpSms paramRegisterSendUpSms) {}
-  
-  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4)
+  public adql(QQLSActivity paramQQLSActivity, Looper paramLooper)
   {
-    RegisterSendUpSms.c(this.a, paramInt1);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterSendUpSms", 2, "onRegisterQuerySmsStatResp isSuccess=" + paramBoolean + ", code=" + paramInt1 + ", uin=" + paramString1 + ", nick=" + paramString2 + ", faceUrl=" + paramString3 + ", errmsg=" + paramString4);
-    }
-    if (paramInt1 == 4) {}
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      RegisterSendUpSms.a(this.a, 0);
-      return;
-      RegisterSendUpSms.a(this.a).setEnabled(true);
-      if (paramInt1 == 0)
+    default: 
+    case 5: 
+    case 6: 
+    case 4: 
+    case 3: 
+    case 1: 
+    case 2: 
+    case 16: 
+    case 7: 
+    case 8: 
+    case 9: 
+    case 10: 
+    case 11: 
+    case 12: 
+      do
       {
-        RegisterSendUpSms.a(this.a).setText(alpo.a(2131713745));
-        RegisterSendUpSms.a(this.a, paramString1);
-        RegisterSendUpSms.b(this.a, paramString2);
-        RegisterSendUpSms.c(this.a, paramString3);
-        RegisterSendUpSms.a(this.a);
-        continue;
-      }
-      paramString1 = paramString4;
-      if (paramInt1 == -1) {}
-      try
-      {
-        paramString1 = new String(paramArrayOfByte, "utf-8");
-        paramArrayOfByte = paramString1;
-        if (TextUtils.isEmpty(paramString1)) {
-          paramArrayOfByte = this.a.getString(2131717524);
-        }
-        QQToast.a(this.a, paramArrayOfByte.trim(), 0).b(this.a.getTitleBarHeight());
-      }
-      catch (Throwable paramArrayOfByte)
-      {
-        for (;;)
+        boolean bool;
+        do
         {
-          paramArrayOfByte.printStackTrace();
-          paramString1 = paramString4;
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return;
+                } while (QQLSActivity.b(this.a));
+                if (hasMessages(5)) {
+                  removeMessages(5);
+                }
+                QQLSActivity.b(this.a);
+                if (QQLSActivity.a(this.a) != null) {
+                  ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.a(this.a).getWindowToken(), 0);
+                }
+                QQLSActivity.b(this.a).setVisibility(0);
+                paramMessage = obtainMessage(3);
+                if (hasMessages(3)) {
+                  removeMessages(3);
+                }
+                sendMessageDelayed(paramMessage, 1200L);
+                return;
+              } while (QQLSActivity.b(this.a));
+              if (hasMessages(6)) {
+                removeMessages(6);
+              }
+              QQLSActivity.b(this.a);
+              if (QQLSActivity.a(this.a) != null) {
+                ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.a(this.a).getWindowToken(), 0);
+              }
+              QQLSActivity.a(this.a).setVisibility(0);
+              paramMessage = obtainMessage(4);
+              if (hasMessages(4)) {
+                removeMessages(4);
+              }
+              sendMessageDelayed(paramMessage, 1200L);
+              return;
+              QQLSActivity.a(this.a).setVisibility(4);
+              return;
+              QQLSActivity.b(this.a).setVisibility(4);
+              return;
+              this.a.c();
+              if (QLog.isColorLevel()) {
+                QLog.d("QQLSActivity", 2, "message send finish");
+              }
+              QQLSActivity.a(this.a);
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d("QQLSActivity", 2, "message finish activity finish");
+              }
+              this.a.finish();
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d("QQLSActivity", 2, "message finish activity finish, enter aio");
+              }
+              this.a.finish();
+              return;
+            } while ((QQLSActivity.c(this.a)) || (!QQLSActivity.d(this.a)));
+            if (QLog.isColorLevel()) {
+              QLog.d("QQLSActivity", 2, "sensor don't callback 1000ms later");
+            }
+            QQLSActivity.c(this.a);
+            return;
+            this.a.a();
+            return;
+          } while (QQLSActivity.a(this.a));
+          azqs.b(QQLSActivity.a(this.a), "CliOper", "", "", "0X800444B", "0X800444B", 0, 0, "", "", "", "");
+          paramMessage = new Intent(this.a, QQLSUnlockActivity.class);
+          this.a.startActivity(paramMessage);
+          return;
+          paramMessage = new Intent(this.a, QQLSActivity.class);
+          paramMessage.addFlags(131072);
+          this.a.startActivity(paramMessage);
+          return;
+          bool = QQLSActivity.e(this.a);
+          if (QLog.isColorLevel()) {
+            QLog.d("QQLSActivity", 2, "LS MSG_CHECKISLOCK" + bool);
+          }
+        } while (bool);
+        this.a.finish();
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("QQLSActivity", 2, "check sensor HasCallBack ====" + QQLSActivity.c(this.a));
         }
-      }
+        if (QQLSActivity.c(this.a))
+        {
+          QQLSActivity.d(this.a);
+          return;
+        }
+      } while (!QQLSActivity.d(this.a));
+      QQLSActivity.c(this.a);
+      return;
+    case 13: 
+      QQLSActivity.e(this.a);
+      return;
+    case 14: 
+      QQLSActivity.a(this.a, false);
+      return;
+    case 15: 
+      QQLSActivity.f(this.a);
+      return;
     }
+    this.a.a.a(QQLSActivity.a(this.a), (String)paramMessage.obj, 1008, false, -1, false);
+    this.a.b();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.proxy;
 
-import amjd;
+import amns;
 import android.content.ContentValues;
 import android.text.TextUtils;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.data.DataLineMsgRecord;
 public class DataLineMsgProxy$9
   implements Runnable
 {
-  public DataLineMsgProxy$9(amjd paramamjd, long paramLong, String paramString, byte[] paramArrayOfByte) {}
+  public DataLineMsgProxy$9(amns paramamns, long paramLong, String paramString, byte[] paramArrayOfByte) {}
   
   public void run()
   {

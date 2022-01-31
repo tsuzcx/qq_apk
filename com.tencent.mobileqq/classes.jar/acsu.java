@@ -1,17 +1,14 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acsu
-  implements View.OnClickListener
+  extends aqbl
 {
-  public acsu(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public acsu(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean)
   {
-    if (!this.a.isFinishing()) {
-      ForwardFriendListActivity.a(this.a).dismiss();
+    if (this.a.a != null) {
+      this.a.a.b();
     }
   }
 }

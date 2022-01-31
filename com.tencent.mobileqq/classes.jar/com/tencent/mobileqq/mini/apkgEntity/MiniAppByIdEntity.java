@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.apkgEntity;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.Arrays;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="appId,entryPath")
 public class MiniAppByIdEntity
-  extends awbv
+  extends awge
 {
   public String appId;
   public String entryPath;

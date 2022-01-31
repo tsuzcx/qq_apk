@@ -1,56 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState.WebSo3;
+import com.tencent.biz.videostory.widget.view.smartmusicview.EditVideoSmartMusicPart.1;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
 
-class zbz
+public class zbz
+  implements baug
 {
-  private WebSoService.WebSoState.WebSo3 jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3;
-  private String jdField_a_of_type_JavaLangString;
+  public zbz(EditVideoSmartMusicPart.1 param1) {}
   
-  private void a(zbx paramzbx, String paramString, WebSoService.WebSoState.WebSo3 paramWebSo3)
+  public void onResp(bavf parambavf)
   {
-    if ((paramWebSo3 != null) && (!TextUtils.isEmpty(paramString))) {
-      begt.a("callJs");
+    QLog.i("EditVideoSmartMusicPart", 1, "download smart anim onResp url:  resultcode: " + parambavf.c);
+    if (zby.a(this.a.this$0) == null) {
+      return;
     }
     try
     {
-      paramzbx.callJs(paramString, new String[] { this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.a() });
-      this.jdField_a_of_type_JavaLangString = null;
+      QLog.i("EditVideoSmartMusicPart", 1, "start unzip smart anim");
+      ndr.a(zby.a(this.a.this$0), "/storage/emulated/0/Tencent/MobileQQ/video_story/");
       return;
     }
-    catch (Exception paramzbx)
+    catch (IOException parambavf)
     {
-      for (;;)
-      {
-        paramzbx.printStackTrace();
-      }
+      QLog.i("EditVideoSmartMusicPart", 1, "unzip smart anim failed" + parambavf);
     }
   }
   
-  public WebSoService.WebSoState.WebSo3 a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3;
-  }
-  
-  public void a()
-  {
-    begt.a("clearJsCallback");
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3 = null;
-  }
-  
-  public void a(zbx paramzbx, WebSoService.WebSoState.WebSo3 paramWebSo3)
-  {
-    begt.a("setUpWebso3");
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3 = paramWebSo3;
-    a(paramzbx, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3);
-  }
-  
-  public void a(zbx paramzbx, String paramString)
-  {
-    begt.a("registerGetData");
-    this.jdField_a_of_type_JavaLangString = paramString;
-    a(paramzbx, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3);
-  }
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

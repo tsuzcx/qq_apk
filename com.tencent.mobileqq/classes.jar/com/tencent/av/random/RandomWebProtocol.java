@@ -315,7 +315,7 @@ public class RandomWebProtocol
     //   150: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   153: astore 5
     //   155: aload 5
-    //   157: invokestatic 289	arof:a	(Ljava/lang/String;)Z
+    //   157: invokestatic 289	arso:a	(Ljava/lang/String;)Z
     //   160: ifeq +107 -> 267
     //   163: invokestatic 194	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   166: ifeq +40 -> 206
@@ -335,7 +335,7 @@ public class RandomWebProtocol
     //   200: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   203: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   206: aload 5
-    //   208: invokestatic 289	arof:a	(Ljava/lang/String;)Z
+    //   208: invokestatic 289	arso:a	(Ljava/lang/String;)Z
     //   211: istore_3
     //   212: aload 4
     //   214: astore_2

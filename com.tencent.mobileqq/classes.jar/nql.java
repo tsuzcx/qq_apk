@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
 
 public class nql
-  implements bedj
+  implements behs
 {
   public nql(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
   

@@ -16,12 +16,12 @@ public class sbi
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_Scx = new scx();
     if (sbh.a()) {
-      paramView.findViewById(2131378776).setVisibility(0);
+      paramView.findViewById(2131378831).setVisibility(0);
     }
-    paramView.findViewById(2131368858).setOnClickListener(this);
-    paramView.findViewById(2131368861).setOnClickListener(this);
-    paramView.findViewById(2131368959).setOnClickListener(this);
-    paramView.findViewById(2131368958).setOnClickListener(this);
+    paramView.findViewById(2131368876).setOnClickListener(this);
+    paramView.findViewById(2131368879).setOnClickListener(this);
+    paramView.findViewById(2131368977).setOnClickListener(this);
+    paramView.findViewById(2131368976).setOnClickListener(this);
   }
   
   private void a(ArticleInfo paramArticleInfo, int paramInt)
@@ -64,7 +64,7 @@ public class sbi
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131378776).setVisibility(8);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131378831).setVisibility(8);
       localObject = new orz();
       ((orz)localObject).b("sourceFrom", paramView);
       a("0X80095F0", (orz)localObject);

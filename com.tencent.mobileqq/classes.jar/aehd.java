@@ -1,43 +1,35 @@
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity.HiBoomTemplateView;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aehd
-  extends VasQuickUpdateManager.CallBacker
+  extends Handler
 {
-  public aehd(VipProfileCardDiyActivity.HiBoomTemplateView paramHiBoomTemplateView, VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public aehd(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void handleMessage(Message paramMessage)
   {
-    if (VipProfileCardDiyActivity.a(paramLong, paramString1, this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_a_of_type_Int))
+    switch (paramMessage.what)
     {
-      if (paramInt1 != 0) {
-        break label87;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_b_of_type_Int = 2;
-      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager.removeCallBacker(this);
-    }
-    for (;;)
-    {
-      paramString1 = this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.jdField_a_of_type_Bhow.obtainMessage(5, paramInt1, 0);
-      paramString1.obj = this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_b_of_type_AndroidViewView;
-      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.jdField_a_of_type_Bhow.sendMessage(paramString1);
+    default: 
       return;
-      label87:
-      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_b_of_type_Int = 0;
+    case 0: 
+      this.a.i();
+      QQToast.a(this.a, this.a.getString(2131719768), 0).b(this.a.getTitleBarHeight());
+      this.a.finish();
+      return;
+    case 1: 
+      this.a.a(true);
+      this.a.i();
+      QQToast.a(this.a, this.a.getString(2131719755), 0).b(this.a.getTitleBarHeight());
+      return;
     }
-  }
-  
-  public void onProgress(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
-  {
-    if (VipProfileCardDiyActivity.a(paramLong1, paramString1, this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_a_of_type_Int))
-    {
-      paramString1 = this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.jdField_a_of_type_Bhow.obtainMessage(4);
-      paramString1.arg1 = ((int)(paramLong2 / paramLong3 * this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.getHeight()));
-      paramString1.obj = this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_b_of_type_AndroidViewView;
-      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.jdField_a_of_type_Bhow.sendMessage(paramString1);
-    }
+    paramMessage = (String)paramMessage.obj;
+    this.a.o.setText(paramMessage + "");
+    this.a.o.setContentDescription(paramMessage + "");
+    this.a.o.setVisibility(0);
   }
 }
 

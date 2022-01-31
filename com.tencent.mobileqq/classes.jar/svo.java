@@ -24,16 +24,16 @@ class svo
     if (paramBoolean)
     {
       paramString2.a(QQToast.a(2));
-      paramString2.c(2131692401);
-      paramString2.b(svl.a(this.a).getResources().getDimensionPixelSize(2131298914) - (int)bdcq.a(svl.a(this.a), 5.0F));
+      paramString2.c(2131692402);
+      paramString2.b(svl.a(this.a).getResources().getDimensionPixelSize(2131298914) - (int)bdgz.a(svl.a(this.a), 5.0F));
     }
     for (;;)
     {
       svl.a(this.a).remove(paramString1);
       return;
       paramString2.a(QQToast.a(1));
-      paramString2.c(2131692402);
-      paramString2.b(svl.a(this.a).getResources().getDimensionPixelSize(2131298914) - (int)bdcq.a(svl.a(this.a), 5.0F));
+      paramString2.c(2131692403);
+      paramString2.b(svl.a(this.a).getResources().getDimensionPixelSize(2131298914) - (int)bdgz.a(svl.a(this.a), 5.0F));
     }
   }
 }

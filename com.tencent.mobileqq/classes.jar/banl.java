@@ -1,18 +1,32 @@
-class banl
-  extends alsi
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+
+public class banl
+  implements alpg
 {
-  banl(bank parambank) {}
+  protected void a(boolean paramBoolean, List<String> paramList) {}
   
-  public void a(boolean paramBoolean, long paramLong, alsj paramalsj)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramalsj);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
+    if (paramInt == 1) {
+      try
+      {
+        if ((paramObject instanceof List))
+        {
+          a(paramBoolean, (List)paramObject);
+          return;
+        }
+        if (!paramBoolean)
+        {
+          a(false, null);
+          return;
+        }
+      }
+      catch (Exception paramObject)
+      {
+        QLog.e("ParticipleObserver", 1, paramObject, new Object[0]);
+      }
     }
-    this.a.d();
   }
 }
 

@@ -20,14 +20,14 @@ class omy
   private TextPaint a(Paint paramPaint)
   {
     paramPaint = new TextPaint(paramPaint);
-    paramPaint.setTextSize(bdkf.d(9.0F));
+    paramPaint.setTextSize(bdoo.d(9.0F));
     return paramPaint;
   }
   
   public void draw(@NotNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NotNull Paint paramPaint)
   {
     paramPaint.setColor(Color.parseColor("#376099"));
-    paramPaint.setTextSize(bdkf.b(9.0F));
+    paramPaint.setTextSize(bdoo.b(9.0F));
     Paint.FontMetricsInt localFontMetricsInt = paramPaint.getFontMetricsInt();
     int i = localFontMetricsInt.bottom - localFontMetricsInt.top;
     Math.abs(localFontMetricsInt.leading);
@@ -41,7 +41,7 @@ class omy
     localRectF.bottom = (paramInt5 - j);
     localRectF.right = (localRectF.left + (int)paramPaint.measureText(paramCharSequence, paramInt1, paramInt2));
     paramCanvas.drawText(paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt4 - localFontMetricsInt.descent, paramPaint);
-    omt.a(paramCanvas, paramPaint, (int)a(paramPaint, paramCharSequence, paramInt1, paramInt2), i, bdkf.b(1.0F), bdkf.b(1.0F), bdkf.b(1.0F), bdkf.b(1.0F), bdkf.b(1.0F), paramFloat, paramInt4 - i);
+    omt.a(paramCanvas, paramPaint, (int)a(paramPaint, paramCharSequence, paramInt1, paramInt2), i, bdoo.b(1.0F), bdoo.b(1.0F), bdoo.b(1.0F), bdoo.b(1.0F), bdoo.b(1.0F), paramFloat, paramInt4 - i);
   }
   
   public int getSize(@NotNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)

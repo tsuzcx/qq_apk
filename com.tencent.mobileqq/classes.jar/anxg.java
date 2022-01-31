@@ -1,15 +1,24 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.view.View;
-import android.view.View.OnClickListener;
 
 class anxg
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  anxg(anxf paramanxf, ajbm paramajbm) {}
+  anxg(anxd paramanxd, ObjectAnimator paramObjectAnimator) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Anxf.a(this.jdField_a_of_type_Ajbm);
-    this.jdField_a_of_type_Anxf.a();
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Anxd.c != null) {
+      this.jdField_a_of_type_Anxd.c.setVisibility(0);
+    }
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
 }
 

@@ -1,23 +1,22 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.util.Observable;
 
-final class bgue
-  implements bgum
+public class bgue
+  extends Observable
 {
-  bgue(MiniAppInfo paramMiniAppInfo, bgum parambgum) {}
-  
-  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
+  public void a(Object paramObject)
   {
-    if (this.jdField_a_of_type_Bgum != null) {
-      this.jdField_a_of_type_Bgum.onDownloadGpkgProgress(paramMiniAppInfo, paramFloat, paramLong);
+    if (paramObject == null) {
+      return;
     }
-  }
-  
-  public void onInitGpkgInfo(int paramInt, bgun parambgun, String paramString)
-  {
-    bgtx.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-    if (this.jdField_a_of_type_Bgum != null) {
-      this.jdField_a_of_type_Bgum.onInitGpkgInfo(paramInt, parambgun, paramString);
+    QMLog.d("minisdk-start_AppStateManager", "notifyChange msg=" + paramObject);
+    setChanged();
+    if (paramObject != null)
+    {
+      notifyObservers(paramObject);
+      return;
     }
+    notifyObservers();
   }
 }
 

@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardUinInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
+import com.tencent.mobileqq.haoliyou.JefsClass;
 
-public final class anvr
-  implements Parcelable.Creator<CardUinInfo>
+public class anvr
+  implements DialogInterface.OnDismissListener
 {
-  public CardUinInfo a(Parcel paramParcel)
-  {
-    return new CardUinInfo(paramParcel);
-  }
+  public anvr(JumpConfirmFragment paramJumpConfirmFragment) {}
   
-  public CardUinInfo[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new CardUinInfo[paramInt];
+    JefsClass.getInstance().b(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
   }
 }
 

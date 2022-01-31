@@ -1,47 +1,45 @@
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class anyw
-  implements anyn
+  implements bhuk
 {
-  private Bundle a;
+  public anyw(BusinessCardEditActivity paramBusinessCardEditActivity, String paramString, bhuf parambhuf) {}
   
-  public anyw() {}
-  
-  public anyw(Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = paramBundle;
-  }
-  
-  public void a(Context paramContext, ColorNote paramColorNote)
-  {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("big_brother_source_key", "biz_src_jc_floatwin");
-    localIntent.putExtra("url", paramColorNote.getSubType());
-    if (paramColorNote.getReserve() != null) {}
-    try
+    switch (paramInt)
     {
-      localIntent.putExtra("key_scroll_y", new JSONObject(new String(paramColorNote.getReserve())).getInt("key_scroll_y"));
-      localIntent.putExtra("subType", paramColorNote.mSubType);
-      localIntent.addFlags(268435456);
-      if (this.a != null) {
-        localIntent.putExtra("isFromFavourite", this.a.getBoolean("isFromFavourite", false));
-      }
-      paramContext.startActivity(localIntent);
-      sdn.b(paramColorNote);
-      return;
     }
-    catch (JSONException localJSONException)
+    for (;;)
     {
-      for (;;)
+      this.jdField_a_of_type_Bhuf.e();
+      return;
+      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
       {
-        QLog.e("WebLauncher", 1, localJSONException, new Object[0]);
+        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
+        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app.a().b(this.jdField_a_of_type_JavaLangString);
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131693563, 1);
+        continue;
+        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
+        {
+          paramView = new Intent();
+          paramView.setAction("android.intent.action.SENDTO");
+          paramView.setData(Uri.parse("smsto:" + this.jdField_a_of_type_JavaLangString));
+          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131693563, 1);
+        }
       }
     }
   }

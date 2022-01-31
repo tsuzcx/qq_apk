@@ -1,10 +1,12 @@
-public abstract interface vea
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
+
+public class vea
+  extends uro
 {
-  public abstract void a(vge paramvge);
-  
-  public abstract void b(vge paramvge);
-  
-  public abstract void c(vge paramvge);
+  public vea(vdy paramvdy, qqstory_service.RspForbidVideo paramRspForbidVideo)
+  {
+    super(paramRspForbidVideo.result);
+  }
 }
 
 

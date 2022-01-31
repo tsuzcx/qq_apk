@@ -1,6 +1,22 @@
-public abstract interface weu
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+
+class weu
+  extends vii
 {
-  public abstract void a(wev paramwev);
+  weu(wet paramwet) {}
+  
+  public void a()
+  {
+    super.a();
+    wet.a(this.a).jdField_a_of_type_Vic = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    wxj.a("share_story", "day_suc", 0, paramInt, new String[] { wet.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
+  }
 }
 
 

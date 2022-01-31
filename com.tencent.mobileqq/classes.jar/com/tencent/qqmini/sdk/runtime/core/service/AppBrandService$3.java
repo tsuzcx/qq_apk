@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.runtime.core.service;
 
 import android.webkit.ValueCallback;
-import bhcw;
+import bhhd;
 import com.tencent.smtt.sdk.JsContext;
 
 public class AppBrandService$3
   implements Runnable
 {
-  public AppBrandService$3(bhcw parambhcw, String paramString, ValueCallback paramValueCallback) {}
+  public AppBrandService$3(bhhd parambhhd, String paramString, ValueCallback paramValueCallback) {}
   
   public void run()
   {

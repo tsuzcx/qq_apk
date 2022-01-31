@@ -1,10 +1,35 @@
-import javax.microedition.khronos.opengles.GL10;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public abstract interface andf
+class andf
+  implements andz
 {
-  public abstract void a(GL10 paramGL10);
+  andf(andc paramandc, andg paramandg, ArCloudConfigInfo paramArCloudConfigInfo) {}
   
-  public abstract void a(GL10 paramGL10, int paramInt1, int paramInt2);
+  public void a()
+  {
+    if (this.jdField_a_of_type_Andg != null) {
+      this.jdField_a_of_type_Andg.f();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Andg != null) {
+      this.jdField_a_of_type_Andg.c(paramInt);
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Andg != null) {}
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Andg != null) {
+      this.jdField_a_of_type_Andg.c(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    }
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.view.View;
-import bhoc;
+import bhsj;
 
 class ForwardFriendListActivity$5
   implements Runnable
@@ -10,7 +10,7 @@ class ForwardFriendListActivity$5
   
   public void run()
   {
-    bhoc.b(this.a);
+    bhsj.b(this.a);
   }
 }
 

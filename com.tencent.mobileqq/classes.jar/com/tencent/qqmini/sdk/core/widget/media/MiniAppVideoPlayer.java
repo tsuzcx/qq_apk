@@ -36,24 +36,24 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import bghn;
-import bgho;
-import bglh;
-import bglo;
-import bglq;
-import bgol;
-import bgoo;
-import bgop;
-import bgor;
-import bgos;
-import bgot;
-import bgou;
-import bgov;
-import bgow;
-import bgox;
-import bgoy;
-import bgoz;
-import bgpf;
+import bglu;
+import bglv;
+import bgpo;
+import bgpv;
+import bgpx;
+import bgss;
+import bgsv;
+import bgsw;
+import bgsy;
+import bgsz;
+import bgta;
+import bgtb;
+import bgtc;
+import bgtd;
+import bgte;
+import bgtf;
+import bgtg;
+import bgtm;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -74,7 +74,7 @@ public class MiniAppVideoPlayer
   extends FrameLayout
   implements MediaPlayer.OnPreparedListener, Handler.Callback, View.OnClickListener
 {
-  private static final String jdField_h_of_type_JavaLangString = bglq.a("QZoneSetting", "MiniProgramVideoContentType", "application/octet-stream; charset=utf-8");
+  private static final String jdField_h_of_type_JavaLangString = bgpx.a("QZoneSetting", "MiniProgramVideoContentType", "application/octet-stream; charset=utf-8");
   public boolean A;
   public boolean B;
   boolean C = false;
@@ -101,15 +101,15 @@ public class MiniAppVideoPlayer
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bghn a;
-  public bgoz a;
+  public bglu a;
+  public bgtg a;
   private VideoPlayerProxy jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy;
   private VideoGestureLayout jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureLayout;
   private VideoGestureRelativeLayout jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureRelativeLayout;
   private BarrageView jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaDanmuBarrageView;
   public String a;
   public WeakReference<Activity> a;
-  public List<bgpf> a;
+  public List<bgtm> a;
   public boolean a;
   public int b;
   long jdField_b_of_type_Long = -1L;
@@ -117,7 +117,7 @@ public class MiniAppVideoPlayer
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   public String b;
-  public WeakReference<bgho> b;
+  public WeakReference<bglv> b;
   public boolean b;
   public int c;
   private long jdField_c_of_type_Long;
@@ -235,7 +235,7 @@ public class MiniAppVideoPlayer
     catch (Exception paramMediaExtractor) {}
   }
   
-  private List<bgpf> a(JSONArray paramJSONArray)
+  private List<bgtm> a(JSONArray paramJSONArray)
   {
     if (paramJSONArray == null) {
       return this.jdField_a_of_type_JavaUtilList;
@@ -253,7 +253,7 @@ public class MiniAppVideoPlayer
         if (i1 < i2) {
           try
           {
-            this.jdField_a_of_type_JavaUtilList.add(bgpf.a(paramJSONArray.getJSONObject(i1)));
+            this.jdField_a_of_type_JavaUtilList.add(bgtm.a(paramJSONArray.getJSONObject(i1)));
             i1 += 1;
             break label38;
             this.jdField_a_of_type_JavaUtilList.clear();
@@ -314,7 +314,7 @@ public class MiniAppVideoPlayer
         localJSONObject.put("position", this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.getCurrentPostion() / 1000.0D);
         localJSONObject.put("duration", this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.getDuration() / 1000.0D);
       }
-      this.jdField_a_of_type_Bghn.a("onVideoStateChange", localJSONObject.toString(), this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bglu.a("onVideoStateChange", localJSONObject.toString(), this.jdField_a_of_type_Int);
       return;
     }
     catch (Throwable paramString)
@@ -350,28 +350,28 @@ public class MiniAppVideoPlayer
     this.G = true;
     setTag("MiniAppVideoPlayer");
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559358, null);
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureRelativeLayout = ((VideoGestureRelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369288));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559357, null);
+    this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureRelativeLayout = ((VideoGestureRelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369306));
     this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureRelativeLayout.setContentDescription("video_container");
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379741));
-    this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379672));
-    this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372074));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379799));
+    this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379730));
+    this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372094));
     this.jdField_h_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379736);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379738));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379739));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379731));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379732));
-    this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379728);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379734));
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131379727));
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379694);
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379730));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379737));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379729));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379740));
-    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379733));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379549));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379794);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379796));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379797));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379789));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379790));
+    this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379786);
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379792));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131379785));
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379752);
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379788));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379795));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379787));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379798));
+    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379791));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379607));
     paramContext = this.jdField_d_of_type_AndroidWidgetImageView;
     if (this.jdField_h_of_type_Boolean) {}
     for (int i1 = 0;; i1 = 4)
@@ -386,11 +386,11 @@ public class MiniAppVideoPlayer
       this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_e_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_f_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_a_of_type_Bgoz = new bgoz(this);
+      this.jdField_a_of_type_Bgtg = new bgtg(this);
       this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureLayout = new VideoGestureLayout(this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureLayout.setContentDescription("VideoGestureLayout");
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureRelativeLayout.setVideoGestureListener(new bgos(this));
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new bgot(this));
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureRelativeLayout.setVideoGestureListener(new bgsz(this));
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new bgta(this));
       addView(this.jdField_a_of_type_AndroidViewView);
       return;
     }
@@ -400,12 +400,12 @@ public class MiniAppVideoPlayer
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840928);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840928);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840929);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840929);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840930);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840930);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840931);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840931);
   }
   
   private static String c(long paramLong)
@@ -442,7 +442,7 @@ public class MiniAppVideoPlayer
     this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.setXYaxis(0);
     if (!this.jdField_k_of_type_Boolean)
     {
-      if (bglo.a(this.jdField_b_of_type_JavaLangString)) {
+      if (bgpv.a(this.jdField_b_of_type_JavaLangString)) {
         break label491;
       }
       j();
@@ -478,13 +478,13 @@ public class MiniAppVideoPlayer
         i1 = 1;
         continue;
       }
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.setOnControllerClickListener(new bgov(this));
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.setOnVideoPreparedListener(new bgow(this));
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.setOnCompletionListener(new bgox(this));
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.setOnControllerClickListener(new bgtc(this));
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.setOnVideoPreparedListener(new bgtd(this));
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.setOnCompletionListener(new bgte(this));
       this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.setLoopback(this.jdField_n_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.setOnErrorListener(new bgoy(this));
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.setOnInfoListener(new bgoo(this));
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.setOnSeekCompleteListener(new bgop(this));
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.setOnErrorListener(new bgtf(this));
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.setOnInfoListener(new bgsv(this));
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.setOnSeekCompleteListener(new bgsw(this));
       if (!this.u) {
         continue;
       }
@@ -512,8 +512,8 @@ public class MiniAppVideoPlayer
       }
       paramContext.setXYaxis(i1);
       return;
-      if (!bglo.a(this.jdField_d_of_type_JavaLangString)) {
-        bgol.a(this.jdField_d_of_type_JavaLangString, new bgou(this));
+      if (!bgpv.a(this.jdField_d_of_type_JavaLangString)) {
+        bgss.a(this.jdField_d_of_type_JavaLangString, new bgtb(this));
       }
     }
   }
@@ -540,7 +540,7 @@ public class MiniAppVideoPlayer
     }
     ImageView localImageView = this.jdField_f_of_type_AndroidWidgetImageView;
     if (this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.getOutputMute()) {}
-    for (int i1 = 2130840999;; i1 = 2130840969)
+    for (int i1 = 2130841000;; i1 = 2130840970)
     {
       localImageView.setImageResource(i1);
       this.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -571,7 +571,7 @@ public class MiniAppVideoPlayer
   {
     ImageView localImageView = this.jdField_c_of_type_AndroidWidgetImageView;
     if (this.jdField_c_of_type_Boolean) {}
-    for (int i1 = 2130840932;; i1 = 2130840933)
+    for (int i1 = 2130840933;; i1 = 2130840934)
     {
       localImageView.setImageResource(i1);
       return;
@@ -582,7 +582,7 @@ public class MiniAppVideoPlayer
   {
     ImageView localImageView = this.jdField_d_of_type_AndroidWidgetImageView;
     if (this.jdField_d_of_type_Boolean) {}
-    for (int i1 = 2130840927;; i1 = 2130840926)
+    for (int i1 = 2130840928;; i1 = 2130840927)
     {
       localImageView.setImageResource(i1);
       return;
@@ -652,7 +652,7 @@ public class MiniAppVideoPlayer
     v();
     this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.pause();
     this.I = true;
-    if (!this.jdField_a_of_type_Bghn.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService"))
+    if (!this.jdField_a_of_type_Bglu.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService"))
     {
       a("pause");
       return;
@@ -662,7 +662,7 @@ public class MiniAppVideoPlayer
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("videoId", this.jdField_a_of_type_Long);
       localJSONObject.put("data", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Bghn.a("onVideoPause", localJSONObject.toString(), this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bglu.a("onVideoPause", localJSONObject.toString(), this.jdField_a_of_type_Int);
       return;
     }
     catch (JSONException localJSONException)
@@ -732,7 +732,7 @@ public class MiniAppVideoPlayer
       localJSONObject.put("data", this.jdField_a_of_type_JavaLangString);
       localJSONObject.put("videoId", this.jdField_a_of_type_Long);
       localJSONObject.put("fullScreen", this.jdField_c_of_type_Boolean);
-      this.jdField_a_of_type_Bghn.a("onVideoFullScreenChange", localJSONObject.toString(), this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bglu.a("onVideoFullScreenChange", localJSONObject.toString(), this.jdField_a_of_type_Int);
       return;
     }
     catch (JSONException localJSONException)
@@ -761,7 +761,7 @@ public class MiniAppVideoPlayer
     {
       return;
       Log.i("MiniAppVideoPlayer", "play: " + paramLong + " /" + this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.getDuration(), new Throwable());
-    } while (bglo.a(this.jdField_d_of_type_JavaLangString));
+    } while (bgpv.a(this.jdField_d_of_type_JavaLangString));
     this.J = true;
     c(false);
     u();
@@ -773,7 +773,7 @@ public class MiniAppVideoPlayer
     }
     this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.openMediaPlayerByUrl(getContext(), this.jdField_d_of_type_JavaLangString, paramLong);
     this.jdField_h_of_type_AndroidWidgetImageView.setVisibility(8);
-    if (!this.jdField_a_of_type_Bghn.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService"))
+    if (!this.jdField_a_of_type_Bglu.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService"))
     {
       a("play");
       return;
@@ -782,7 +782,7 @@ public class MiniAppVideoPlayer
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("data", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Bghn.a("onVideoPlay", localJSONObject.toString(), this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bglu.a("onVideoPlay", localJSONObject.toString(), this.jdField_a_of_type_Int);
       QMLog.d("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoPlay = " + localJSONObject.toString());
       return;
     }
@@ -841,7 +841,7 @@ public class MiniAppVideoPlayer
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.setOnCaptureImageListener(new bgor(this, paramOnCaptureImageListener));
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.setOnCaptureImageListener(new bgsy(this, paramOnCaptureImageListener));
       try
       {
         this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.captureImageInTime(i2, i1);
@@ -859,7 +859,7 @@ public class MiniAppVideoPlayer
   public void a(String paramString, int paramInt)
   {
     if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy != null) && (this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaDanmuBarrageView != null)) {
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaDanmuBarrageView.a(new bgpf(paramString, paramInt, 0L));
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaDanmuBarrageView.a(new bgtm(paramString, paramInt, 0L));
     }
   }
   
@@ -927,7 +927,7 @@ public class MiniAppVideoPlayer
         this.jdField_f_of_type_Int = ((JSONObject)localObject).optInt("top", this.jdField_f_of_type_Int);
         this.jdField_g_of_type_Int = ((JSONObject)localObject).optInt("width", this.jdField_g_of_type_Int);
         this.jdField_h_of_type_Int = ((JSONObject)localObject).optInt("height", this.jdField_h_of_type_Int);
-        if (bglo.a(this.jdField_b_of_type_JavaLangString)) {
+        if (bgpv.a(this.jdField_b_of_type_JavaLangString)) {
           this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("poster", this.jdField_b_of_type_JavaLangString);
         }
         if (this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy != null)
@@ -1060,7 +1060,7 @@ public class MiniAppVideoPlayer
     }
     this.jdField_b_of_type_Boolean = false;
     p();
-    if (!this.jdField_a_of_type_Bghn.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
+    if (!this.jdField_a_of_type_Bglu.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
       a("play");
     }
     for (;;)
@@ -1072,7 +1072,7 @@ public class MiniAppVideoPlayer
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("videoId", this.jdField_a_of_type_Long);
         localJSONObject.put("data", this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Bghn.a("onVideoPlay", localJSONObject.toString(), this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Bglu.a("onVideoPlay", localJSONObject.toString(), this.jdField_a_of_type_Int);
         QMLog.d("MiniAppVideoPlayer", "operate start evaluateSubcribeJS onVideoPlay = " + localJSONObject.toString());
       }
       catch (JSONException localJSONException)
@@ -1128,7 +1128,7 @@ public class MiniAppVideoPlayer
       this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.release();
     }
     ThreadManager.c().post(new MiniAppVideoPlayer.13(this));
-    bglh.a().a();
+    bgpo.a().a();
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(2002);
   }
   
@@ -1166,7 +1166,7 @@ public class MiniAppVideoPlayer
         if (!this.E) {
           s();
         }
-        if (this.jdField_a_of_type_Bghn.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
+        if (this.jdField_a_of_type_Bglu.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
           break label137;
         }
         a("timeUpdate");
@@ -1183,7 +1183,7 @@ public class MiniAppVideoPlayer
           paramMessage.put("position", this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.getCurrentPostion() / 1000.0D);
           paramMessage.put("duration", this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy.getDuration() / 1000.0D);
           paramMessage.put("videoId", this.jdField_a_of_type_Long);
-          this.jdField_a_of_type_Bghn.a("onVideoTimeUpdate", paramMessage.toString(), this.jdField_a_of_type_Int);
+          this.jdField_a_of_type_Bglu.a("onVideoTimeUpdate", paramMessage.toString(), this.jdField_a_of_type_Int);
           QMLog.d("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoTimeUpdate = " + paramMessage.toString());
         }
         catch (JSONException paramMessage)
@@ -1205,7 +1205,7 @@ public class MiniAppVideoPlayer
       do
       {
         return;
-        if (paramView.getId() != 2131372074) {
+        if (paramView.getId() != 2131372094) {
           break;
         }
       } while (this.jdField_h_of_type_AndroidWidgetImageView.getVisibility() != 0);
@@ -1342,9 +1342,9 @@ public class MiniAppVideoPlayer
     //   73: invokevirtual 235	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   76: ifeq +187 -> 263
     //   79: aload_0
-    //   80: invokestatic 1353	bgjm:a	()Lbgjm;
+    //   80: invokestatic 1353	bgnt:a	()Lbgnt;
     //   83: aload_1
-    //   84: invokevirtual 1355	bgjm:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   84: invokevirtual 1355	bgnt:a	(Ljava/lang/String;)Ljava/lang/String;
     //   87: putfield 766	com/tencent/qqmini/sdk/core/widget/media/MiniAppVideoPlayer:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   90: aload_0
     //   91: getfield 143	com/tencent/qqmini/sdk/core/widget/media/MiniAppVideoPlayer:C	Z

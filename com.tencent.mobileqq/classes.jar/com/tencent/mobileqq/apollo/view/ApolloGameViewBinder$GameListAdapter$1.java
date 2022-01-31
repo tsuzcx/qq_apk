@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.apollo.view;
 
-import alef;
-import algy;
-import alhd;
+import aliu;
+import alln;
+import alls;
 import android.graphics.Color;
 import android.widget.ImageView;
-import bhyv;
-import bhyw;
-import bhyx;
+import bidc;
+import bidd;
+import bide;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -15,31 +15,31 @@ import java.lang.ref.WeakReference;
 public class ApolloGameViewBinder$GameListAdapter$1
   implements Runnable
 {
-  public ApolloGameViewBinder$GameListAdapter$1(alhd paramalhd, ImageView paramImageView) {}
+  public ApolloGameViewBinder$GameListAdapter$1(alls paramalls, ImageView paramImageView) {}
   
   public void run()
   {
-    if ((alhd.a(this.this$0) == null) && (alhd.a(this.this$0) != null) && (alhd.a(this.this$0).get() != null))
+    if ((alls.a(this.this$0) == null) && (alls.a(this.this$0) != null) && (alls.a(this.this$0).get() != null))
     {
-      Object localObject = (algy)alhd.a(this.this$0).get();
-      if ((algy.a((algy)localObject) != null) && (algy.a((algy)localObject).a != null))
+      Object localObject = (alln)alls.a(this.this$0).get();
+      if ((alln.a((alln)localObject) != null) && (alln.a((alln)localObject).a != null))
       {
-        localObject = bhyv.a(algy.a((algy)alhd.a(this.this$0).get()).a).b(8).a(alef.aH).a(16.0F).a(-1);
-        ((bhyw)localObject).c(50);
-        localObject = new bhyx((bhyw)localObject).b(Color.argb(255, 0, 0, 0)).a(5).a();
+        localObject = bidc.a(alln.a((alln)alls.a(this.this$0).get()).a).b(8).a(aliu.aH).a(16.0F).a(-1);
+        ((bidd)localObject).c(50);
+        localObject = new bide((bidd)localObject).b(Color.argb(255, 0, 0, 0)).a(5).a();
         if (localObject != null) {
-          alhd.a(this.this$0, ((bhyw)localObject).a());
+          alls.a(this.this$0, ((bidd)localObject).a());
         }
       }
     }
-    if (alhd.a(this.this$0) != null)
+    if (alls.a(this.this$0) != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("GameListAdapter", 2, "show guide window inner " + this.a.getX() + " " + this.a.getY());
       }
-      alhd.a(this.this$0).a(83);
-      alhd.a(this.this$0).c(2);
-      alhd.a(this.this$0).b(this.a, 0, 0);
+      alls.a(this.this$0).a(83);
+      alls.a(this.this$0).c(2);
+      alls.a(this.this$0).b(this.a, 0, 0);
     }
   }
 }

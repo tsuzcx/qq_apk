@@ -1,14 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
-class agnf
-  implements DialogInterface.OnClickListener
+public class agnf
+  extends agmy
 {
-  agnf(agmy paramagmy, bdfq parambdfq) {}
+  public Bitmap a;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agnf(String paramString)
   {
-    this.jdField_a_of_type_Bdfq.dismiss();
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
+    {
+      this.a = paramRedPacketInfo.icon;
+      this.b = paramRedPacketInfo.resPath;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) && (!TextUtils.isEmpty(this.b));
   }
 }
 

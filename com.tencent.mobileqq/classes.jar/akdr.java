@@ -1,22 +1,18 @@
-import java.util.Comparator;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
-final class akdr
-  implements Comparator<String>
+public class akdr
+  implements View.OnClickListener
 {
-  public int a(String paramString1, String paramString2)
+  public akdr(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  
+  public void onClick(View paramView)
   {
-    if ("★".equals(paramString2)) {}
-    do
-    {
-      return 1;
-      if ("★".equals(paramString1)) {
-        return -1;
-      }
-      if ("#".equals(paramString2)) {
-        return -1;
-      }
-    } while ("#".equals(paramString1));
-    return paramString1.compareTo(paramString2);
+    paramView = new Intent(this.a, QQBrowserActivity.class).putExtra("url", ShortVideoPlayActivity.a(this.a));
+    this.a.startActivity(paramView);
   }
 }
 

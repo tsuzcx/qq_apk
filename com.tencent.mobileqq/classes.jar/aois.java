@@ -1,85 +1,88 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class aois
-  extends aofy<aoit>
+  extends ajju
 {
-  public int a()
-  {
-    return 567;
-  }
+  int a;
   
-  @NonNull
-  public aoit a(int paramInt)
+  public View a(int paramInt, Object paramObject, ajjp paramajjp, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajlm paramajlm)
   {
-    return new aoit();
-  }
-  
-  @Nullable
-  public aoit a(aogf[] paramArrayOfaogf)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BroadcastConfProcessor", 2, "onParsed");
-    }
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    paramOnClickListener = paramContext.getResources();
+    if (paramView == null)
     {
-      paramArrayOfaogf = paramArrayOfaogf[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("BroadcastConfProcessor", 2, "onParsed, content:" + paramArrayOfaogf);
+      paramajjp = null;
+      if ((paramView == null) || (!(paramView.getTag() instanceof aoit))) {
+        break label179;
       }
-      aoit localaoit = aoit.a(paramArrayOfaogf);
-      if (!TextUtils.isEmpty(paramArrayOfaogf))
+      paramajjp = (aoit)paramajjp;
+      label35:
+      paramInt = paramViewGroup.getMeasuredHeight() - this.a;
+      if (paramInt >= 0) {
+        break label348;
+      }
+      paramInt = (int)(this.a * 1.5F);
+    }
+    label81:
+    label348:
+    for (;;)
+    {
+      if ((paramView.getLayoutParams() instanceof AbsListView.LayoutParams))
       {
-        BaseApplicationImpl.getApplication().getSharedPreferences("broadcast_white_pref", 4).edit().putString("white_list", paramArrayOfaogf).apply();
-        MobileQQ.addBroadcastWhitList(localaoit.a);
+        paramViewGroup = (AbsListView.LayoutParams)paramView.getLayoutParams();
+        paramViewGroup.width = -1;
+        paramViewGroup.height = paramInt;
+        paramView.setLayoutParams(paramViewGroup);
+        if ((paramObject instanceof Integer))
+        {
+          paramInt = ((Integer)paramObject).intValue();
+          if (paramInt != 16) {
+            break label294;
+          }
+          paramajjp.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839229);
+          if ((paramajjp.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
+            ((Animatable)paramajjp.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
+          }
+          paramajjp.jdField_a_of_type_AndroidWidgetTextView.setText(2131699014);
+        }
       }
+      while (paramInt != 17)
+      {
+        return paramView;
+        paramajjp = paramView.getTag();
+        break;
+        paramView = LayoutInflater.from(paramContext).inflate(2131560892, null);
+        paramajjp = new aoit();
+        paramajjp.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131369147));
+        paramajjp.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367819));
+        paramajjp.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379107));
+        paramView.setTag(paramajjp);
+        this.a = (paramOnClickListener.getDimensionPixelSize(2131297979) + paramOnClickListener.getDimensionPixelSize(2131297981) + paramOnClickListener.getDimensionPixelSize(2131297980) * 2);
+        break label35;
+        paramViewGroup = new AbsListView.LayoutParams(-1, paramInt);
+        break label81;
+      }
+      if ((paramajjp.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
+        ((Animatable)paramajjp.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
+      }
+      paramajjp.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      paramajjp.jdField_a_of_type_AndroidWidgetTextView.setText(2131699013);
+      return paramView;
     }
-    return new aoit();
-  }
-  
-  public Class<aoit> a()
-  {
-    return aoit.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aoit paramaoit)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BroadcastConfProcessor", 2, "onUpdate");
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aois
  * JD-Core Version:    0.7.0.1
  */

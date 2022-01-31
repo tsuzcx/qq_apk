@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import alpo;
-import awbv;
-import awdg;
-import awdj;
+import alud;
+import awge;
+import awhp;
+import awhs;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.EqqAccountInfo;
@@ -20,12 +20,12 @@ import java.util.List;
 import ndv;
 
 public class EqqDetail
-  extends awbv
+  extends awge
 {
   public byte[] accountData;
   public String address = "";
-  @awdg
-  public String certifiedDescription = alpo.a(2131704569);
+  @awhp
+  public String certifiedDescription = alud.a(2131704581);
   public int certifiedGrade;
   public String displayNumber = "";
   public long eqqAccountFlag;
@@ -39,12 +39,12 @@ public class EqqDetail
   public boolean mIsSyncLbs;
   public boolean mIsSyncLbsSelected;
   public int mShowMsgFlag = -1;
-  public String name = alpo.a(2131704570);
+  public String name = alud.a(2131704582);
   public String phoneNumber = "";
   public String realSummary = "";
   public int seqno;
-  public String summary = alpo.a(2131704568);
-  @awdj
+  public String summary = alud.a(2131704580);
+  @awhs
   public String uin;
   
   public EqqDetail() {}
@@ -238,7 +238,7 @@ public class EqqDetail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.EqqDetail
  * JD-Core Version:    0.7.0.1
  */

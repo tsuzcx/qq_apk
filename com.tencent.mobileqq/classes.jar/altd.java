@@ -1,19 +1,14 @@
-import java.util.Comparator;
+import mqq.app.AppRuntime.Status;
 
-class altd
-  implements Comparator<avqe>
+public final class altd
 {
-  altd(altc paramaltc) {}
+  private final long jdField_a_of_type_Long;
+  private final AppRuntime.Status jdField_a_of_type_MqqAppAppRuntime$Status;
   
-  public int a(avqe paramavqe1, avqe paramavqe2)
+  private altd(AppRuntime.Status paramStatus, long paramLong)
   {
-    if ((!paramavqe1.a()) && (paramavqe2.a())) {
-      return -1;
-    }
-    if ((paramavqe1.a()) && (!paramavqe2.a())) {
-      return 1;
-    }
-    return (int)(paramavqe2.a - paramavqe1.a);
+    this.jdField_a_of_type_MqqAppAppRuntime$Status = paramStatus;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

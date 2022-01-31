@@ -1,89 +1,29 @@
-import android.app.Activity;
-import android.content.IntentFilter;
-import android.view.KeyEvent;
-import cooperation.qzone.util.QZLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.CellInfo;
 
-public class bjcz
+public final class bjcz
+  implements Parcelable.Creator<LbsDataV2.CellInfo>
 {
-  public static String a;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  public bjdb a;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
-  private boolean d;
-  
-  static
+  public LbsDataV2.CellInfo a(Parcel paramParcel)
   {
-    jdField_a_of_type_JavaLangString = "WatchActivityManager";
-  }
-  
-  public bjcz()
-  {
-    this.jdField_a_of_type_Bjdb = new bjdb(this, null);
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.c = false;
-    this.d = false;
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    LbsDataV2.CellInfo localCellInfo = new LbsDataV2.CellInfo();
+    if (paramParcel != null)
     {
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_Bjdb, localIntentFilter);
+      localCellInfo.mcc = paramParcel.readInt();
+      localCellInfo.mnc = paramParcel.readInt();
+      localCellInfo.lac = paramParcel.readInt();
+      localCellInfo.cellId = paramParcel.readInt();
+      localCellInfo.rssi = paramParcel.readInt();
+      localCellInfo.stationLat = paramParcel.readDouble();
+      localCellInfo.stationLon = paramParcel.readDouble();
     }
+    return localCellInfo;
   }
   
-  private void f()
+  public LbsDataV2.CellInfo[] a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity != null) {
-      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_Bjdb);
-    }
-  }
-  
-  public void a()
-  {
-    d();
-  }
-  
-  public void a(int paramInt, KeyEvent paramKeyEvent)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.c = true;
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    e();
-  }
-  
-  public boolean a()
-  {
-    QZLog.i(jdField_a_of_type_JavaLangString, 4, "ljh, mActivityStopped = " + this.d + ", mPressScreenOff = " + this.jdField_a_of_type_Boolean + ", mPressMenuKey = " + this.c + ", mPressHomeKey = " + this.b);
-    return (this.d) && (!this.jdField_a_of_type_Boolean) && (!this.c) && (!this.b);
-  }
-  
-  public void b()
-  {
-    this.d = true;
-  }
-  
-  public void c()
-  {
-    f();
+    return null;
   }
 }
 

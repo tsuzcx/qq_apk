@@ -1,166 +1,179 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Environment;
-import android.telephony.TelephonyManager;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.PlatformInfor.1;
-import cooperation.qzone.util.NetworkState;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqreader.VipProxyRreLoadReaderProcess;
+import java.util.Calendar;
+import mqq.manager.Manager;
 
 public class bize
+  implements Manager
 {
-  private static bize jdField_a_of_type_Bize;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static String e = "";
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
-  private TelephonyManager jdField_a_of_type_AndroidTelephonyTelephonyManager = (TelephonyManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("phone");
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  private String d;
+  public long a;
+  public bimg a;
+  public bimh a;
+  public bizf a;
+  public bizg a;
+  protected QQAppInterface a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  private bize()
+  public bize(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Long = (bdgk.d() / 1048576L);
+    c();
+  }
+  
+  private void a(bimd parambimd, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QRProcessManager", 2, "run startQQReaderProcess");
+    }
+    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), VipProxyRreLoadReaderProcess.class);
+    localIntent.setPackage(BaseApplicationImpl.getContext().getPackageName());
+    localIntent.putExtra("userQqResources", 2);
+    localIntent.putExtra("useSkinEngine", false);
+    localIntent.putExtra("params_remote_connect_at_launch", true);
+    localIntent.putExtra("params_uin_for_reader", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localIntent.putExtra("is_preload_reader_plugin", true);
+    biqw localbiqw = new biqw(0);
+    localbiqw.b = "qqreaderplugin.apk";
+    localbiqw.d = "qqreader";
+    localbiqw.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    localbiqw.e = "com.qqreader.ReaderPreloadReaderProcess";
+    localbiqw.jdField_a_of_type_AndroidContentIntent = localIntent;
+    if (parambimd != null)
+    {
+      localbiqw.jdField_a_of_type_Asta = parambimd.jdField_a_of_type_Asta;
+      parambimd.a(2, paramString, paramInt);
+    }
+    biqn.b(BaseApplicationImpl.getContext(), localbiqw);
+  }
+  
+  private boolean a()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      c();
+      if (QLog.isColorLevel()) {
+        QLog.d("QRProcessManager", 2, "pluginType:1  preload:fail:dpc");
+      }
+    }
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  private void c()
+  {
+    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.qr_process_config.name(), "0|24");
+    if (localObject != null)
+    {
+      localObject = ((String)localObject).split("\\|");
+      if (localObject.length >= 1) {
+        this.jdField_a_of_type_Boolean = "1".equals(localObject[0]);
+      }
+    }
+  }
+  
+  private void d()
   {
     try
     {
-      e = this.jdField_a_of_type_AndroidContentContext.getPackageManager().getPackageInfo(this.jdField_a_of_type_AndroidContentContext.getPackageName(), 0).versionName;
+      if (this.b) {
+        return;
+      }
+      this.jdField_a_of_type_Bimh = new bimh(769, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      if (this.jdField_a_of_type_Bimh.jdField_a_of_type_Int != -1) {
+        this.b = true;
+      }
+      this.c = this.jdField_a_of_type_Bimh.jdField_a_of_type_Boolean;
+      this.jdField_a_of_type_Bimg = bimg.a(this.jdField_a_of_type_Bimh.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Bimg == null) {
+        this.jdField_a_of_type_Bimg = new bimg();
+      }
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    finally {}
   }
   
-  private int a(Context paramContext)
+  public int a(String paramString)
   {
-    if (this.jdField_a_of_type_Int == -1)
-    {
-      ThreadManager.executeOnSubThread(new PlatformInfor.1(this, paramContext));
-      return 0;
-    }
-    return this.jdField_a_of_type_Int;
+    return BaseApplicationImpl.getApplication().getSharedPreferences("qr_process_preload_profile", bdmt.a()).getInt("usedTimes" + paramString, 0);
   }
   
-  public static bize a()
+  public long a(String paramString)
   {
-    if (jdField_a_of_type_Bize == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    return BaseApplicationImpl.getApplication().getSharedPreferences("qr_process_preload_profile", bdmt.a()).getLong(paramString, -1L);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QRProcessManager", 2, "firstTimeLoadApk");
+    }
+    a(null, "", 0);
+  }
+  
+  public void a(int paramInt)
+  {
+    Object localObject = null;
+    switch (paramInt)
     {
-      if (jdField_a_of_type_Bize == null) {
-        jdField_a_of_type_Bize = new bize();
+    }
+    for (;;)
+    {
+      if (localObject != null) {
+        bimi.a((bime)localObject, 500L);
       }
-      return jdField_a_of_type_Bize;
+      return;
+      if (this.jdField_a_of_type_Bizg == null) {
+        this.jdField_a_of_type_Bizg = new bizg(this, 6);
+      }
+      localObject = this.jdField_a_of_type_Bizg;
+      continue;
+      if (this.jdField_a_of_type_Bizf == null) {
+        this.jdField_a_of_type_Bizf = new bizf(this, 9999, "qqreader_qqbrowser_preload");
+      }
+      localObject = this.jdField_a_of_type_Bizf;
     }
   }
   
-  public String a()
+  public void a(String paramString, long paramLong)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = bhoi.a("52b7f2");
-    }
-    return this.jdField_a_of_type_JavaLangString;
+    BaseApplicationImpl.getApplication().getSharedPreferences("qr_process_preload_profile", bdmt.a()).edit().putLong(paramString, paramLong).commit();
   }
   
-  public String b()
+  public int[] a(String paramString)
   {
-    if (TextUtils.isEmpty(this.b)) {
-      this.b = bhoi.b("52b7f2");
-    }
-    return this.b;
-  }
-  
-  public String c()
-  {
-    if ((this.d != null) && (this.d.length() > 0))
+    int[] arrayOfInt = new int[24];
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qr_process_preload_profile", bdmt.a());
+    int i = 0;
+    while (i < 24)
     {
-      localObject1 = new StringBuilder(this.d);
-      ((StringBuilder)localObject1).append("sharpP=").append(a(this.jdField_a_of_type_AndroidContentContext)).append('&');
-      ((StringBuilder)localObject1).append("n=").append(d());
-      return ((StringBuilder)localObject1).toString();
+      arrayOfInt[i] = localSharedPreferences.getInt("usedTimesInHour" + i + ":" + paramString, 0);
+      i += 1;
     }
-    Object localObject2 = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
-    Object localObject1 = new DisplayMetrics();
-    ((WindowManager)localObject2).getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("i=").append(a()).append('&');
-    ((StringBuilder)localObject2).append("imsi=").append(b()).append('&');
-    ((StringBuilder)localObject2).append("mac=").append(e()).append('&');
-    ((StringBuilder)localObject2).append("m=").append(Build.MODEL).append('&');
-    ((StringBuilder)localObject2).append("o=").append(Build.VERSION.RELEASE).append('&');
-    ((StringBuilder)localObject2).append("a=").append(Build.VERSION.SDK_INT).append('&');
-    StringBuilder localStringBuilder = ((StringBuilder)localObject2).append("sc=");
-    if (Environment.getExternalStorageState().equals("mounted")) {}
-    for (int i = 1;; i = 0)
-    {
-      localStringBuilder.append(i).append('&');
-      ((StringBuilder)localObject2).append("sd=").append("0").append('&');
-      ((StringBuilder)localObject2).append("p=").append(((DisplayMetrics)localObject1).widthPixels).append('*').append(((DisplayMetrics)localObject1).heightPixels).append('&');
-      ((StringBuilder)localObject2).append("f=").append(Build.MANUFACTURER).append('&');
-      ((StringBuilder)localObject2).append("mm=").append(bdcb.d() / 1048576L).append('&');
-      ((StringBuilder)localObject2).append("cf=").append(bdcb.a()).append('&');
-      ((StringBuilder)localObject2).append("cc=").append(bdcb.b()).append('&');
-      ((StringBuilder)localObject2).append("aid=").append(bdcb.f()).append('&');
-      ((StringBuilder)localObject2).append("qimei=").append(UserAction.getQIMEI()).append('&');
-      this.d = ((StringBuilder)localObject2).toString();
-      ((StringBuilder)localObject2).append("sharpP=").append(a(this.jdField_a_of_type_AndroidContentContext)).append('&');
-      ((StringBuilder)localObject2).append("n=").append(d());
-      return ((StringBuilder)localObject2).toString();
-    }
+    return arrayOfInt;
   }
   
-  public String d()
+  public void b()
   {
-    switch ()
-    {
-    default: 
-      return "wan";
-    case 1: 
-      return "wifi";
-    case 3: 
-      return "3g";
-    case 2: 
-      return "2g";
-    case 4: 
-      return "4g";
-    }
-    return "5g";
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qr_process_preload_profile", bdmt.a());
+    int i = a(str);
+    localSharedPreferences.edit().putInt("usedTimes" + str, i + 1).commit();
+    i = Calendar.getInstance().get(11);
+    int j = localSharedPreferences.getInt("usedTimesInHour" + i + ":" + str, 0);
+    localSharedPreferences.edit().putInt("usedTimesInHour" + i + ":" + str, j + 1).commit();
   }
   
-  public String e()
-  {
-    if (TextUtils.isEmpty(this.c)) {
-      this.c = bhoi.c("52b7f2");
-    }
-    return this.c;
-  }
-  
-  public String f()
-  {
-    Object localObject = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    ((WindowManager)localObject).getDefaultDisplay().getMetrics(localDisplayMetrics);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("m=").append(Build.MODEL).append('&');
-    ((StringBuilder)localObject).append("o=").append(Build.VERSION.RELEASE).append('&');
-    ((StringBuilder)localObject).append("a=").append(Build.VERSION.SDK_INT).append('&');
-    ((StringBuilder)localObject).append("p=").append(localDisplayMetrics.widthPixels).append('*').append(localDisplayMetrics.heightPixels).append('&');
-    ((StringBuilder)localObject).append("f=").append(Build.MANUFACTURER).append('&');
-    ((StringBuilder)localObject).append("mm=").append(bdcb.d() / 1048576L).append('&');
-    ((StringBuilder)localObject).append("cf=").append(bdcb.a()).append('&');
-    ((StringBuilder)localObject).append("cc=").append(bdcb.b()).append('&');
-    ((StringBuilder)localObject).append("qqversion=").append("8.3.3");
-    return ((StringBuilder)localObject).toString();
-  }
+  public void onDestroy() {}
 }
 
 

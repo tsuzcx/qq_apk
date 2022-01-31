@@ -1,58 +1,38 @@
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import qqcircle.QQCircleFeedBase.StTabInfo;
+import java.util.ArrayList;
+import qqcircle.TaskCenterReader.TaskListRsp;
 
-public class trv
+class trv
+  implements zac<TaskCenterReader.TaskListRsp>
 {
-  public QQCircleFeedBase.StTabInfo a;
+  trv(trt paramtrt) {}
   
-  public trv(QQCircleFeedBase.StTabInfo paramStTabInfo)
+  public void a(boolean paramBoolean, long paramLong, String paramString, TaskCenterReader.TaskListRsp paramTaskListRsp)
   {
-    this.a = paramStTabInfo;
-  }
-  
-  public static trv a(QQCircleFeedBase.StTabInfo paramStTabInfo)
-  {
-    return new trv(paramStTabInfo);
-  }
-  
-  public int a()
-  {
-    return this.a.tabType.get();
-  }
-  
-  public String a()
-  {
-    return this.a.tabName.get();
-  }
-  
-  public int b()
-  {
-    return this.a.status.get();
-  }
-  
-  public String b()
-  {
-    return this.a.attachInfo.get();
-  }
-  
-  public int c()
-  {
-    switch (a())
+    if (paramTaskListRsp != null)
     {
-    case 5: 
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 4;
-    case 3: 
-      return 6;
-    case 4: 
-      return 5;
+      this.a.setDatas((ArrayList)paramTaskListRsp.taskRecords.get());
+      if ((this.a.a != null) && (trt.b(this.a) != null))
+      {
+        this.a.a.removeAllViews();
+        paramString = String.valueOf(paramTaskListRsp.myFuel.get()).toCharArray();
+        int j = paramString.length;
+        int i = 0;
+        while (i < j)
+        {
+          char c = paramString[i];
+          ImageView localImageView = new ImageView(trt.c(this.a));
+          localImageView.setImageResource(trt.a(this.a)[java.lang.Character.getNumericValue(c)]);
+          this.a.a.addView(localImageView);
+          i += 1;
+        }
+      }
+      trt.a(this.a, paramTaskListRsp.taskEntranceUrl.get());
     }
-    return 10;
   }
 }
 

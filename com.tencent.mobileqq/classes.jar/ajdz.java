@@ -1,25 +1,33 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.QZLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyGiftView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
 
 public class ajdz
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
+  public ajdz(SpecifyGiftView paramSpecifyGiftView, baej parambaej, View.OnClickListener paramOnClickListener) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QZLog.isColorLevel()) {
-      QZLog.i("QbossADBannerConfigInfo", 2, " qboss resources down response resUrl = " + this.a + " isSuccess = " + paramBoolean);
+    SpecifyGiftView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView).a();
+    if (this.jdField_a_of_type_Baej != null) {
+      this.jdField_a_of_type_Baej.a();
     }
-  }
-  
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.c)) {
-      return false;
+    QQAppInterface localQQAppInterface = ajeu.a();
+    if (localQQAppInterface != null)
+    {
+      bcka localbcka = (bcka)localQQAppInterface.getManager(223);
+      if (localbcka != null) {
+        localbcka.a(SpecifyGiftView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView).frienduin);
+      }
     }
-    return arof.a(this.c);
+    ajeu.a(localQQAppInterface, "212", "only.animation.close");
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
   }
 }
 

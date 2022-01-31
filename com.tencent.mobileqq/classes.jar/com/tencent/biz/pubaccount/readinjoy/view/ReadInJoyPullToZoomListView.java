@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Animatable;
@@ -14,7 +14,7 @@ import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import bcwh;
+import bdaq;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.LayoutParams;
@@ -98,12 +98,12 @@ public class ReadInJoyPullToZoomListView
     {
       TextView localTextView = new TextView(getContext());
       localTextView.setTextColor(-1);
-      localTextView.setText(alpo.a(2131713497));
+      localTextView.setText(alud.a(2131713509));
       localTextView.setGravity(17);
       localTextView.setVisibility(8);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 49;
-      localLayoutParams.topMargin = bcwh.a(getContext(), 52.0F);
+      localLayoutParams.topMargin = bdaq.a(getContext(), 52.0F);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localTextView, localLayoutParams);
       this.jdField_b_of_type_AndroidWidgetTextView = localTextView;
     }
@@ -120,7 +120,7 @@ public class ReadInJoyPullToZoomListView
       localTextView.setVisibility(8);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 49;
-      localLayoutParams.topMargin = bcwh.a(getContext(), 58.0F);
+      localLayoutParams.topMargin = bdaq.a(getContext(), 58.0F);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localTextView, localLayoutParams);
       this.jdField_c_of_type_AndroidWidgetTextView = localTextView;
     }
@@ -164,7 +164,7 @@ public class ReadInJoyPullToZoomListView
     if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 8))
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      Drawable localDrawable = getResources().getDrawable(2130839226);
+      Drawable localDrawable = getResources().getDrawable(2130839227);
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
       ((Animatable)localDrawable).start();

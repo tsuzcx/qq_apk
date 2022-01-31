@@ -1,30 +1,15 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class abyk
-  implements aubp<bdpd>
+class abyk
+  implements View.OnClickListener
 {
-  public abyk(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  abyk(abyi paramabyi) {}
   
-  public void a(bdpd parambdpd)
+  public void onClick(View paramView)
   {
-    if (parambdpd.jdField_a_of_type_Int == AddFriendVerifyActivity.a(this.a).a())
-    {
-      Object localObject = (Bitmap)parambdpd.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2131379485));
-      AddFriendVerifyActivity.b(this.a).setVisibility(0);
-      AddFriendVerifyActivity.b(this.a).setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), (Bitmap)localObject));
-      localObject = (Bitmap)parambdpd.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2131379480));
-      localObject = bdse.a(this.a.getResources(), (Bitmap)localObject);
-      AddFriendVerifyActivity.a(this.a).setBackgroundDrawable((Drawable)localObject);
-      AddFriendVerifyActivity.b(this.a).setTextColor(parambdpd.b);
-      AddFriendVerifyActivity.a(this.a).setTextColor(parambdpd.b);
-    }
+    this.a.a.d();
+    abyi.a(this.a);
   }
 }
 

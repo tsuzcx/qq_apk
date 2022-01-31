@@ -1,6 +1,6 @@
 package com.tencent.biz.videostory.widget.easylyric;
 
-import ywp;
+import zbe;
 
 class SingleLyricView$7
   implements Runnable
@@ -9,7 +9,7 @@ class SingleLyricView$7
   
   public void run()
   {
-    SingleLyricView.a(this.this$0, ywp.a().a(this.a, this.b));
+    SingleLyricView.a(this.this$0, zbe.a().a(this.a, this.b));
   }
 }
 

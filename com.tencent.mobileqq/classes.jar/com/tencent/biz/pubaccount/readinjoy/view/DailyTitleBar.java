@@ -31,11 +31,11 @@ public class DailyTitleBar
   {
     super(paramContext, paramAttributeSet);
     a(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369889);
-    this.b = findViewById(2131369897);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378995));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131368926));
-    this.c = findViewById(2131377986);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369908);
+    this.b = findViewById(2131369916);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379053));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131368944));
+    this.c = findViewById(2131378040);
   }
   
   private void a(Context paramContext)
@@ -45,7 +45,7 @@ public class DailyTitleBar
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    View.inflate(paramContext, 2131559996, this);
+    View.inflate(paramContext, 2131559995, this);
     paramAttributeSet = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.DailyTitleBar, 0, 0);
     for (;;)
     {
@@ -54,17 +54,17 @@ public class DailyTitleBar
       {
         String str = paramAttributeSet.getString(3);
         i = paramAttributeSet.getColor(4, -16777216);
-        int j = paramAttributeSet.getResourceId(0, 2131167192);
-        k = paramAttributeSet.getResourceId(2, 2130842591);
-        m = paramAttributeSet.getResourceId(1, 2130842788);
+        int j = paramAttributeSet.getResourceId(0, 2131167194);
+        k = paramAttributeSet.getResourceId(2, 2130842604);
+        m = paramAttributeSet.getResourceId(1, 2130842801);
         setBackgroundResource(j);
-        localTextView = (TextView)findViewById(2131378995);
+        localTextView = (TextView)findViewById(2131379053);
         localTextView.setText(str);
         localTextView.setTextColor(i);
         if ((i != -1) && (i != 16777215)) {
           break label175;
         }
-        findViewById(2131368926).setVisibility(8);
+        findViewById(2131368944).setVisibility(8);
       }
       finally
       {
@@ -74,8 +74,8 @@ public class DailyTitleBar
         paramAttributeSet.recycle();
       }
       localTextView.setVisibility(8);
-      findViewById(2131368697).setBackgroundResource(k);
-      findViewById(2131368891).setBackgroundResource(m);
+      findViewById(2131368709).setBackgroundResource(k);
+      findViewById(2131368908).setBackgroundResource(m);
       paramAttributeSet.recycle();
       setClickable(true);
       a(paramContext);
@@ -90,7 +90,7 @@ public class DailyTitleBar
   
   private void b(Context paramContext)
   {
-    KandianUrlImageView localKandianUrlImageView = (KandianUrlImageView)findViewById(2131368926);
+    KandianUrlImageView localKandianUrlImageView = (KandianUrlImageView)findViewById(2131368944);
     Object localObject;
     if (localKandianUrlImageView != null)
     {

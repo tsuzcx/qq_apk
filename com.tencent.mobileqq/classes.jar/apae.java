@@ -1,9 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public abstract interface apae
+class apae
+  extends Handler
 {
-  public abstract void a(View paramView, MessageForDeviceFile paramMessageForDeviceFile);
+  apae(apac paramapac, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      apac.a(this.a);
+      return;
+    }
+    apac.b(this.a);
+  }
 }
 
 

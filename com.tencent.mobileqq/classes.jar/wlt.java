@@ -1,54 +1,31 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
 
-public class wlt
-  extends uhw<wli, urw>
+class wlt
+  implements urr<vfr, vfs>
 {
-  public wlt(wli paramwli)
-  {
-    super(paramwli);
-  }
+  wlt(wls paramwls, JobContext paramJobContext, Integer paramInteger) {}
   
-  public void a(@NonNull wli paramwli, @NonNull urw paramurw)
+  public void a(@NonNull vfr paramvfr, @Nullable vfs paramvfs, @NonNull ErrorMessage paramErrorMessage)
   {
-    Object localObject = wli.a(paramwli);
-    paramurw = paramurw.a;
-    uru localuru = (uru)urr.a(27);
-    localObject = ((ArrayList)localObject).iterator();
-    int i = 0;
-    while (((Iterator)localObject).hasNext())
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      wme localwme = (wme)((Iterator)localObject).next();
-      if ((localwme instanceof wmg))
-      {
-        vbc localvbc = (vbc)paramurw.get(localwme.a().feedId);
-        if (localvbc == null) {
-          break label129;
-        }
-        ((wmg)localwme).d = localuru.a(((wmg)localwme).a(), localvbc.a);
-        i = 1;
-      }
-    }
-    label129:
-    for (;;)
-    {
-      break;
-      if (i != 0) {
-        wli.a(paramwli).f();
-      }
+      wxe.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
       return;
     }
+    if ((paramErrorMessage.isFail()) || (paramvfs == null))
+    {
+      wxe.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
+      wls.a(this.jdField_a_of_type_Wls, paramErrorMessage);
+      return;
+    }
+    wls.a(this.jdField_a_of_type_Wls).a(paramvfs.jdField_a_of_type_JavaUtilList, paramvfs.jdField_a_of_type_JavaLangString, paramvfs.jdField_a_of_type_Boolean);
+    ((woy)uwa.a(11)).a(paramvfs.jdField_a_of_type_JavaUtilList);
+    paramvfr = wls.a(this.jdField_a_of_type_Wls).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+    wls.a(this.jdField_a_of_type_Wls, paramvfr);
   }
-  
-  public Class acceptEventClass()
-  {
-    return urw.class;
-  }
-  
-  public void b(@NonNull wli paramwli, @NonNull urw paramurw) {}
 }
 
 

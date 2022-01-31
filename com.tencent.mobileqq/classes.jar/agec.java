@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import java.io.File;
-import java.util.Locale;
-import mqq.os.MqqHandler;
-
-class agec
-  implements DialogInterface.OnClickListener
+public class agec
 {
-  agec(ageb paramageb, File paramFile) {}
+  public int a;
+  public String a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agec(int paramInt1, String paramString, int paramInt2)
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaIoFile.getParentFile().getName().toLowerCase(Locale.US) + ".mp4";
-    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Ageb.a.a, paramDialogInterface, true));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
   }
 }
 

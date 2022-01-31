@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import aact;
-import akro;
-import asib;
+import aahi;
+import akwd;
+import asmk;
 
 public class QQGamePubAccountFragment$13$1
   implements Runnable
 {
-  public QQGamePubAccountFragment$13$1(asib paramasib) {}
+  public QQGamePubAccountFragment$13$1(asmk paramasmk) {}
   
   public void run()
   {
     this.a.a.a(this.a.a.getActivity());
-    aact.a(akro.a(), "769", "205036", "", "76901", "1", "160", new String[] { "", "", "20" });
+    aahi.a(akwd.a(), "769", "205036", "", "76901", "1", "160", new String[] { "", "", "20" });
   }
 }
 

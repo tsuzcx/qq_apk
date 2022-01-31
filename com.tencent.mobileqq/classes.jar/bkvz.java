@@ -1,14 +1,15 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.10.1;
 
 public class bkvz
+  implements bkwk
 {
-  public int a;
-  public MetaMaterial a;
-  public String a;
+  bkvz(bkvx parambkvx) {}
   
-  public String toString()
+  public void a(int paramInt1, int paramInt2)
   {
-    return "AEMaterialWrapper{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", state=" + this.jdField_a_of_type_Int + '}';
+    bkvx.a(this.a).setOnSurfaceChangedListener(null);
+    bkvx.a(this.a).setOnFrameDraw(new VideoStoryCapturePart.10.1(this));
   }
 }
 

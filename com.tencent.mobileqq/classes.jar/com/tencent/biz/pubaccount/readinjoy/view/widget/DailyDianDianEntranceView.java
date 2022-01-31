@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import bjxj;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.view.ClipDianDianTouchAreaLayout;
 import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
@@ -49,22 +49,22 @@ public class DailyDianDianEntranceView
   
   private void b()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562497, this, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton = ((ReadInJoyColorBandEntranceButton)localView.findViewById(2131365800));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout = ((ClipDianDianTouchAreaLayout)localView.findViewById(2131365803));
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562515, this, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton = ((ReadInJoyColorBandEntranceButton)localView.findViewById(2131365802));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout = ((ClipDianDianTouchAreaLayout)localView.findViewById(2131365805));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout.setTouchWidget(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton, 0);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.setOnVideoCoverClickListener(this);
     int j = rpk.a().a();
     RecommendFeedsDiandianEntranceManager.a().b(j);
     QLog.d("DailyDianDianEntranceView", 1, "init | DailyFeedsDiandianEntranceManager daily feeds entryMode : " + j);
-    int i = 2130848808;
+    int i = 2130848881;
     if (j == 1) {
-      switch (bjxj.e())
+      switch (bkbq.e())
       {
       default: 
         this.jdField_a_of_type_Rcd = new rcd(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton, getContext());
         this.jdField_a_of_type_Rcd.a(1);
-        i = 2130842705;
+        i = 2130842718;
         switch (j)
         {
         }
@@ -74,16 +74,16 @@ public class DailyDianDianEntranceView
     do
     {
       return;
-      i = 2130848838;
+      i = 2130848911;
       break;
-      i = 2130848809;
+      i = 2130848882;
       break;
       if (j != 3) {
         break;
       }
-      i = 2130848807;
+      i = 2130848880;
       break;
-    } while (!bjxj.i());
+    } while (!bkbq.i());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.setClickAnimMode(1);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotReadInJoyColorBandEntranceButton.setDefaultIconBigMode(80, 80);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout.setVisibility(0);

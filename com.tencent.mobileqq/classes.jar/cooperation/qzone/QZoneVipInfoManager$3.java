@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import bizm;
+import bjdt;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class QZoneVipInfoManager$3
@@ -10,7 +10,7 @@ public final class QZoneVipInfoManager$3
   
   public void run()
   {
-    bizm.a(this.a, "h5");
+    bjdt.a(this.a, "h5");
   }
 }
 

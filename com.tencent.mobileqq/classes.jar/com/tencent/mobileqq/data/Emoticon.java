@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import awbv;
-import awdg;
+import awge;
+import awhp;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="eId,epId")
 public class Emoticon
-  extends awbv
+  extends awge
   implements Serializable
 {
   public static final int JOB_H5_MAGIC = 4;
@@ -46,7 +46,7 @@ public class Emoticon
   public String name;
   public boolean value;
   public String voicePrint;
-  @awdg
+  @awhp
   public List<Integer> voicePrintItems;
   public String volumeColor;
   public int width;
@@ -148,7 +148,7 @@ public class Emoticon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.Emoticon
  * JD-Core Version:    0.7.0.1
  */

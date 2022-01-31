@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
-import aphy;
-import apic;
-import atfx;
-import bdee;
-import becq;
+import apmh;
+import apml;
+import atkg;
+import bdin;
+import begz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.FavEmosmManageActivity;
 import com.tencent.mobileqq.pb.PBInt64Field;
@@ -78,7 +78,7 @@ public class FunnyPicJsPlugin
         paramJsBridgeListener = paramString1;
         this.mReqBundle.putString("jsonContent", paramVarArgs.toString());
         paramJsBridgeListener = paramString1;
-        super.sendRemoteReq(apic.a("ipc_funnypic_query_info", paramString1, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+        super.sendRemoteReq(apml.a("ipc_funnypic_query_info", paramString1, this.mOnRemoteResp.key, this.mReqBundle), false, true);
       }
       else
       {
@@ -90,7 +90,7 @@ public class FunnyPicJsPlugin
           if (paramString2 != null)
           {
             paramJsBridgeListener = paramString1;
-            if (!bdee.g(paramString2))
+            if (!bdin.g(paramString2))
             {
               paramJsBridgeListener = paramString1;
               paramString2 = new JSONObject();
@@ -105,7 +105,7 @@ public class FunnyPicJsPlugin
           if (!"mounted".equals(Environment.getExternalStorageState()))
           {
             paramJsBridgeListener = paramString1;
-            QQToast.a(paramString2, alpo.a(2131705374), 0).a();
+            QQToast.a(paramString2, alud.a(2131705386), 0).a();
             paramJsBridgeListener = paramString1;
             paramString2 = new JSONObject();
             paramJsBridgeListener = paramString1;
@@ -133,7 +133,7 @@ public class FunnyPicJsPlugin
           paramJsBridgeListener = paramString1;
           paramString3.osver.set(Build.VERSION.RELEASE);
           paramJsBridgeListener = paramString1;
-          paramString3.mqqver.set("8.3.3");
+          paramString3.mqqver.set("8.3.5");
           paramJsBridgeListener = paramString1;
           paramString2 = new WebSSOAgent.UniSsoServerReq();
           paramJsBridgeListener = paramString1;
@@ -165,7 +165,7 @@ public class FunnyPicJsPlugin
           if (paramVarArgs != null)
           {
             paramJsBridgeListener = paramString1;
-            localObject = new NewIntent(this.mRuntime.a().getApp(), atfx.class);
+            localObject = new NewIntent(this.mRuntime.a().getApp(), atkg.class);
             paramJsBridgeListener = paramString1;
             ((NewIntent)localObject).putExtra("extra_cmd", "AuthProxy.check");
             paramJsBridgeListener = paramString1;

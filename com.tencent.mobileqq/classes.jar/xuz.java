@@ -1,16 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.app.Activity;
+import android.content.Context;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class xuz
-  implements DialogInterface.OnDismissListener
+class xuz
+  implements Animation.AnimationListener
 {
-  public xuz(QRDisplayActivity paramQRDisplayActivity) {}
+  xuz(xux paramxux, Context paramContext) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.f = false;
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      if (!((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing()) {
+        this.jdField_a_of_type_Xux.dismiss();
+      }
+      return;
+    }
+    this.jdField_a_of_type_Xux.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

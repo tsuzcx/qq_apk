@@ -1,117 +1,33 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.widget.QfavJumpActivity;
+import java.io.InputStream;
 
-public final class bixc
+public class bixc
+  implements DialogInterface.OnClickListener
 {
-  public static int a(Context paramContext)
-  {
-    return bixb.a(paramContext).getInt("GRAY_UPDATE_GRAY_LEVEL", 0);
-  }
+  public bixc(QfavJumpActivity paramQfavJumpActivity, String paramString, InputStream paramInputStream, long paramLong) {}
   
-  public static long a(Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return bixb.a(paramContext).getLong("LAST_EXIT_BOOKSTORE_POP_WINDOW_TIME_", 0L);
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    bixb.a(paramContext).edit().putInt("GRAY_UPDATE_GRAY_LEVEL", paramInt).apply();
-  }
-  
-  public static void a(Context paramContext, long paramLong)
-  {
-    bixb.a(paramContext).edit().putLong("LAST_EXIT_BOOKSTORE_POP_WINDOW_TIME_", paramLong).apply();
-  }
-  
-  public static void a(Context paramContext, boolean paramBoolean)
-  {
-    bixb.a(paramContext).edit().putBoolean("is_frist_enter_home_page_from_leba", paramBoolean).apply();
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return bixb.a(paramContext).getBoolean("is_frist_enter_home_page_from_leba", true);
-  }
-  
-  public static int b(Context paramContext)
-  {
-    return bixb.a(paramContext).getInt("GRAY_UPDATE_UPDATE_STATUS", 0);
-  }
-  
-  public static void b(Context paramContext, int paramInt)
-  {
-    bixb.a(paramContext).edit().putInt("GRAY_UPDATE_UPDATE_STATUS", paramInt).apply();
-  }
-  
-  public static void b(Context paramContext, boolean paramBoolean)
-  {
-    bixb.a(paramContext).edit().putBoolean("GRAY_UPDATE_IS_UPDATE_TO_QQ_BOOKSTORE", paramBoolean).apply();
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    return bixb.a(paramContext).getBoolean("HOME_PAGE_NEXT_BOTTOM_ITEM_IS_SHELF", false);
-  }
-  
-  public static int c(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("SETTING", 0).getInt("NUM_OF_RED_POINT", 0);
-  }
-  
-  public static void c(Context paramContext, int paramInt)
-  {
-    bixb.a(paramContext).edit().putInt("GRAY_UPDATING_NEXT_REQ_TIME_INTERVAL", paramInt).apply();
-  }
-  
-  public static void c(Context paramContext, boolean paramBoolean)
-  {
-    bixb.a(paramContext).edit().putBoolean("HOME_PAGE_NEXT_BOTTOM_ITEM_IS_SHELF", paramBoolean).apply();
-  }
-  
-  public static boolean c(Context paramContext)
-  {
-    return bixb.a(paramContext).getBoolean("GRAY_UPDATE_IS_UPDATE_TO_QQ_BOOKSTORE", false);
-  }
-  
-  public static void d(Context paramContext, int paramInt)
-  {
-    bixb.a(paramContext).edit().putInt("GRAY_UPDATING_REMAIN_MAX_TIME", paramInt).apply();
-  }
-  
-  public static void d(Context paramContext, boolean paramBoolean)
-  {
-    bixb.a(paramContext).edit().putBoolean("GRAY_UPDATE_IS_HAS_TAB_CONFIG_DATA", paramBoolean).apply();
-  }
-  
-  public static boolean d(Context paramContext)
-  {
-    return bixb.a(paramContext).getBoolean("GRAY_UPDATE_IS_HAS_TAB_CONFIG_DATA", false);
-  }
-  
-  public static void e(Context paramContext, boolean paramBoolean)
-  {
-    bixb.a(paramContext).edit().putBoolean("new_user_in_act", paramBoolean).apply();
-  }
-  
-  public static boolean e(Context paramContext)
-  {
-    return bixb.a(paramContext).getBoolean("new_user_in_act", false);
-  }
-  
-  public static void f(Context paramContext, boolean paramBoolean)
-  {
-    paramContext.getSharedPreferences("SETTING", 0).edit().putBoolean("is_new_user", paramBoolean).apply();
-  }
-  
-  public static boolean f(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("SETTING", 0).getBoolean("is_new_user", true);
+    try
+    {
+      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("qqfav|QfavJumpActivity", 2, "copy file error", paramDialogInterface);
+      }
+      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bixc
  * JD-Core Version:    0.7.0.1
  */

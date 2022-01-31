@@ -16,11 +16,11 @@ public class oti
       String str1 = (String)localIterator.next();
       String str2 = (String)paramString.get(str1);
       if (TextUtils.equals("readinjoyClickChannelView", str1)) {
-        bjxj.a("sp_key_readinjoy_click_channel_view", Boolean.valueOf(TextUtils.equals(str2, "1")));
+        bkbq.a("sp_key_readinjoy_click_channel_view", Boolean.valueOf(TextUtils.equals(str2, "1")));
       } else if (TextUtils.equals("readinjoySlideChannelView", str1)) {
-        bjxj.a("sp_key_readinjoy_slide_channel_view", Boolean.valueOf(TextUtils.equals(str2, "1")));
+        bkbq.a("sp_key_readinjoy_slide_channel_view", Boolean.valueOf(TextUtils.equals(str2, "1")));
       } else if (TextUtils.equals("readinjoyClickDiversionCard", str1)) {
-        bjxj.a("sp_key_readinjoy_click_diversion_card", Boolean.valueOf(TextUtils.equals(str2, "1")));
+        bkbq.a("sp_key_readinjoy_click_diversion_card", Boolean.valueOf(TextUtils.equals(str2, "1")));
       }
     }
     return true;
@@ -28,9 +28,9 @@ public class oti
   
   public void onWipeConfig(int paramInt)
   {
-    bjxj.a("sp_key_readinjoy_click_channel_view", Boolean.valueOf(false));
-    bjxj.a("sp_key_readinjoy_slide_channel_view", Boolean.valueOf(false));
-    bjxj.a("sp_key_readinjoy_click_diversion_card", Boolean.valueOf(false));
+    bkbq.a("sp_key_readinjoy_click_channel_view", Boolean.valueOf(false));
+    bkbq.a("sp_key_readinjoy_slide_channel_view", Boolean.valueOf(false));
+    bkbq.a("sp_key_readinjoy_click_diversion_card", Boolean.valueOf(false));
   }
 }
 

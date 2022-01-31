@@ -1,55 +1,44 @@
-import android.app.Application;
-import android.support.annotation.NonNull;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+import android.os.SystemClock;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class bmai
-  extends bmak
+  extends blts
 {
-  private static bmai jdField_a_of_type_Bmai;
-  private Application jdField_a_of_type_AndroidAppApplication;
+  public bmai(MusicProviderView paramMusicProviderView) {}
   
-  public bmai(@NonNull Application paramApplication)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppApplication = paramApplication;
+    long l = SystemClock.uptimeMillis();
+    if ((this.a.jdField_a_of_type_Long == 0L) || (l - this.a.jdField_a_of_type_Long > 16L))
+    {
+      this.a.jdField_a_of_type_Bhtd.sendEmptyMessage(2);
+      this.a.jdField_a_of_type_Long = l;
+    }
   }
   
-  @NonNull
-  public static bmai a(@NonNull Application paramApplication)
+  public void a(String paramString, boolean paramBoolean)
   {
-    if (jdField_a_of_type_Bmai == null) {
-      jdField_a_of_type_Bmai = new bmai(paramApplication);
-    }
-    return jdField_a_of_type_Bmai;
+    this.a.jdField_a_of_type_Bhtd.sendEmptyMessage(2);
   }
   
-  @NonNull
-  public <T extends bmag> T a(@NonNull Class<T> paramClass)
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    if (bmaf.class.isAssignableFrom(paramClass)) {
-      try
-      {
-        bmag localbmag = (bmag)paramClass.getConstructor(new Class[] { Application.class }).newInstance(new Object[] { this.jdField_a_of_type_AndroidAppApplication });
-        return localbmag;
-      }
-      catch (NoSuchMethodException localNoSuchMethodException)
-      {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localNoSuchMethodException);
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localIllegalAccessException);
-      }
-      catch (InstantiationException localInstantiationException)
-      {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localInstantiationException);
-      }
-      catch (InvocationTargetException localInvocationTargetException)
-      {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localInvocationTargetException);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("MusicProviderView", 2, new Object[] { "onFinish, succ:", Boolean.valueOf(paramBoolean), ", failcode:", Integer.valueOf(paramInt) });
     }
-    return super.a(paramClass);
+    this.a.jdField_a_of_type_Bhtd.sendEmptyMessage(2);
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath().equals(paramString))) {
+      this.a.jdField_a_of_type_Bhtd.sendEmptyMessage(1);
+    }
+    if ((!paramBoolean) && (paramInt == -104)) {
+      this.a.jdField_a_of_type_Bhtd.sendEmptyMessage(5);
+    }
   }
 }
 

@@ -1,13 +1,8 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Bundle;
 
-public class akgv
+public abstract interface akgv
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
+  public abstract void a(int paramInt, boolean paramBoolean, Bundle paramBundle);
 }
 
 

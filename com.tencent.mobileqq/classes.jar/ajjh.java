@@ -1,18 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class ajjh
-  extends BroadcastReceiver
+class ajjh
+  implements View.OnTouchListener
 {
-  public ajjh(LoginView paramLoginView) {}
+  ajjh(ajjg paramajjg) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.d("LoginActivity.LoginView", 1, "AutoLoginReceiver onReceive");
-    LoginView.a(this.a, true);
+    if (paramMotionEvent.getAction() == 0) {
+      paramView.setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+        paramView.setAlpha(1.0F);
+      }
+    }
   }
 }
 

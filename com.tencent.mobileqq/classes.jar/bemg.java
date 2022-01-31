@@ -1,8 +1,26 @@
-import android.graphics.Bitmap;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public abstract interface bemg
+class bemg
+  extends BroadcastReceiver
 {
-  public abstract void a(Bitmap paramBitmap);
+  bemg(bema parambema) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    long l1 = paramIntent.getLongExtra("groupId", 0L);
+    paramContext = paramIntent.getLongArrayExtra("uinList");
+    boolean bool = paramIntent.getBooleanExtra("isSpeaking", false);
+    int j = paramContext.length;
+    int i = 0;
+    while (i < j)
+    {
+      long l2 = paramContext[i];
+      this.a.notifyUI(2, true, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Boolean.valueOf(bool) });
+      i += 1;
+    }
+  }
 }
 
 

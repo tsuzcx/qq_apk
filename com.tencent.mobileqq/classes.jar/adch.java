@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class adch
-  extends VasQuickUpdateManager.CallBacker
+  implements DialogInterface.OnClickListener
 {
-  public adch(LikeRankingListActivity paramLikeRankingListActivity) {}
+  public adch(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (paramInt1 == 0) && (this.a.a != null)) {
-      this.a.b(this.a.a);
+    azqs.b(this.a.app, "dc00898", "", "", "0X800A0D9", "0X800A0D9", 0, 0, "", "", "", "");
+    if (bdin.d(this.a)) {
+      FriendProfileMoreInfoActivity.b(this.a);
     }
+    FriendProfileMoreInfoActivity.a(this.a, "https://ti.qq.com/hybrid-h5/school_relation/chooseschool?_wv=67108994");
   }
 }
 

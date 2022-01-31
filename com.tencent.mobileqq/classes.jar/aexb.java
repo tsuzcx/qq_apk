@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-public class aexb
-  implements aexg
+class aexb
+  implements badp
 {
-  public aexb(ColorPicker paramColorPicker, aexe paramaexe) {}
+  aexb(aewx paramaewx) {}
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.onClick(this.jdField_a_of_type_Aexe.a);
+    badv localbadv = new badv(3000, 360, 0);
+    localbadv.a = true;
+    this.a.a.g.a(new bado[] { localbadv });
   }
 }
 

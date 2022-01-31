@@ -1,85 +1,122 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
-import mqq.observer.BusinessObserver;
 
 public class bexu
-  implements BusinessObserver
 {
-  public bexu(AuthorityActivity paramAuthorityActivity, boolean paramBoolean) {}
+  private static int a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  @Deprecated
+  public static void a(Context paramContext)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("AuthorityActivity", 2, "getAppInfo observer onReceive isSuccess = " + paramBoolean);
+      QLog.d("FloatingScreenUtils", 2, "sendWindowClosedBroadcast");
     }
-    arzy.a("KEY_GET_APP_INFO_REQUEST", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bfmm, paramBoolean);
-    AuthorityActivity.c(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long = (System.currentTimeMillis() - AuthorityActivity.c(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long);
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (!this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bfmm.jdField_a_of_type_JavaLangString.equals(localObject)) {
-      QLog.e("AuthorityActivity", 1, "mAccount.uin != ssoAccount");
+    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
+    localIntent.setPackage(paramContext.getPackageName());
+    localIntent.putExtra("param_curr_window_status", 104);
+    paramContext.sendBroadcast(localIntent);
+  }
+  
+  public static void a(Context paramContext, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenUtils", 2, "sendWindowClosedBroadcast");
     }
-    do
+    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
+    localIntent.setPackage(paramContext.getPackageName());
+    localIntent.putExtra("param_curr_window_status", 104);
+    localIntent.putExtra("param_busitype", paramInt);
+    paramContext.sendBroadcast(localIntent);
+  }
+  
+  public static void a(Context paramContext, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenUtils", 2, "sendWindowClosedBroadcast");
+    }
+    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
+    localIntent.setPackage(paramContext.getPackageName());
+    localIntent.putExtra("param_concern_floating_type", paramInt2);
+    localIntent.putExtra("param_curr_window_status", 104);
+    localIntent.putExtra("param_busitype", paramInt1);
+    paramContext.sendBroadcast(localIntent);
+  }
+  
+  @Deprecated
+  public static void a(Context paramContext, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenUtils", 2, new Object[] { "sendWindowVisibleBroadcast:", Boolean.valueOf(paramBoolean) });
+    }
+    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
+    localIntent.setPackage(paramContext.getPackageName());
+    if (paramBoolean) {}
+    for (int i = 103;; i = 102)
     {
+      localIntent.putExtra("param_curr_window_status", i);
+      paramContext.sendBroadcast(localIntent);
       return;
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_JavaLangRunnable);
-    } while (!paramBoolean);
-    GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
-    for (;;)
-    {
-      try
-      {
-        byte[] arrayOfByte = paramBundle.getByteArray("data");
-        localObject = arrayOfByte;
-        if (!this.jdField_a_of_type_Boolean) {
-          localObject = bfnl.b(arrayOfByte, this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bfmm);
-        }
-        if (localObject == null) {
-          break;
-        }
-        localGetAppinfoResponse.mergeFrom((byte[])localObject);
-        if (!localGetAppinfoResponse.has()) {
-          break;
-        }
-        paramInt = localGetAppinfoResponse.ret.get();
-        if (paramInt == 0)
-        {
-          localObject = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-          ((Message)localObject).what = 3;
-          ((Message)localObject).obj = localGetAppinfoResponse;
-          this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject);
-        }
-        localObject = new Bundle();
-        ((Bundle)localObject).putString("report_type", "103");
-        ((Bundle)localObject).putString("act_type", "12");
-        if (paramBundle.getBoolean("isShort", false))
-        {
-          paramBundle = "2";
-          ((Bundle)localObject).putString("intext_3", paramBundle);
-          ((Bundle)localObject).putString("stringext_1", AuthorityActivity.c(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_JavaLangString);
-          ((Bundle)localObject).putString("intext_2", "" + paramInt);
-          ((Bundle)localObject).putString("intext_5", "" + AuthorityActivity.c(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long);
-          bfdq.a().a((Bundle)localObject, AuthorityActivity.e, this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_JavaLangString, false);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.e("AuthorityActivity", 1, "getAppInfoResponse deal exception : " + paramBundle.getMessage());
-        paramBundle.printStackTrace();
-        return;
-      }
-      paramBundle = "1";
     }
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenUtils", 2, new Object[] { "sendWindowVisibleBroadcast:", Boolean.valueOf(paramBoolean), " ,busiType:", Integer.valueOf(paramInt) });
+    }
+    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
+    localIntent.setPackage(paramContext.getPackageName());
+    if (paramBoolean) {}
+    for (int i = 103;; i = 102)
+    {
+      localIntent.putExtra("param_curr_window_status", i);
+      localIntent.putExtra("param_busitype", paramInt);
+      paramContext.sendBroadcast(localIntent);
+      return;
+    }
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenUtils", 2, new Object[] { "sendWindowVisibleBroadcast:", Boolean.valueOf(paramBoolean), " ,busiType:", Integer.valueOf(paramInt1) });
+    }
+    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
+    localIntent.setPackage(paramContext.getPackageName());
+    localIntent.putExtra("param_concern_floating_type", paramInt2);
+    if (paramBoolean) {}
+    for (paramInt2 = 103;; paramInt2 = 102)
+    {
+      localIntent.putExtra("param_curr_window_status", paramInt2);
+      localIntent.putExtra("param_busitype", paramInt1);
+      paramContext.sendBroadcast(localIntent);
+      return;
+    }
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if (a == 0)
+    {
+      if ((Build.VERSION.SDK_INT < 26) || (Build.VERSION.SDK_INT >= 28) || (!bnle.b(paramContext))) {
+        break label56;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FloatingScreenUtils", 2, "AndroidO With Notch in Screen.");
+      }
+    }
+    label56:
+    for (a = 1; a == 1; a = 2) {
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bexu
  * JD-Core Version:    0.7.0.1
  */

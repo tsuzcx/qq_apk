@@ -1,17 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
 
-class bbyc
+public class bbyc
   implements DialogInterface.OnClickListener
 {
-  bbyc(bbyb parambbyb) {}
+  public bbyc(TroopMoreDetailFragment paramTroopMoreDetailFragment, boolean paramBoolean) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a(this.a.a.a);
-    if (ReciteRecordLayout.a(this.a.a) != null) {
-      ReciteRecordLayout.a(this.a.a).f();
+    if (this.jdField_a_of_type_Boolean) {
+      azqs.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
     }
   }
 }

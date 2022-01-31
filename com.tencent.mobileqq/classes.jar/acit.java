@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class acit
-  implements aulm
+  implements DialogInterface.OnClickListener
 {
-  acit(acis paramacis) {}
+  acit(acir paramacir) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_Ault.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
-    this.a.jdField_a_of_type_Ault.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
+    paramDialogInterface.dismiss();
   }
 }
 

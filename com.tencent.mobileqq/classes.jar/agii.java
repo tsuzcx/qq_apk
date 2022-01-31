@@ -1,55 +1,53 @@
-import android.widget.RelativeLayout;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.21.1;
 
 public class agii
-  extends aghi
+  implements aghr
 {
-  aipw a;
+  agii(aghx paramaghx) {}
   
-  public agii(QQAppInterface paramQQAppInterface, agia paramagia, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, aemp paramaemp)
+  public void a(int paramInt)
   {
-    super(paramQQAppInterface, paramagia, paramQQWalletTransferMsgElem, paramInt, paramaemp);
-    this.jdField_a_of_type_Aipw = ((aipw)paramQQAppInterface.getManager(125));
-    if (a(this.jdField_a_of_type_Aipw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId))) {}
-    for (this.i = 0;; this.i = paramQQWalletTransferMsgElem.effectsId)
+    View localView;
+    if (paramInt == 0)
     {
-      this.j = 2130846706;
+      localView = this.a.a().findViewById(2131367030);
+      if (localView != null) {}
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localView.setVisibility(0);
+          AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+          localAlphaAnimation.setDuration(300L);
+          localView.startAnimation(localAlphaAnimation);
+          localView.postDelayed(new AIOGalleryScene.21.1(this, localView), 8000L);
+          return;
+          if (1 != paramInt) {
+            break;
+          }
+        } while ((this.a.jdField_a_of_type_Azjh == null) || (((aghx.ai(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)aghx.aj(this.a)).b)) || (this.a.c));
+        this.a.c(null);
+        return;
+        if (2 != paramInt) {
+          break;
+        }
+        this.a.a(null);
+      } while ((this.a.jdField_a_of_type_Azjh == null) || (((aghx.ak(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)aghx.al(this.a)).b)) || (this.a.c));
+      this.a.jdField_a_of_type_Azjh.b(this.a.jdField_a_of_type_Agjh.a().jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData);
       return;
-    }
-  }
-  
-  public boolean b()
-  {
-    boolean bool = super.b();
-    if (bool) {
-      return bool;
-    }
-    this.jdField_a_of_type_Agia.b.setVisibility(0);
-    this.jdField_a_of_type_Agia.b.setTextColor(-8947849);
-    this.jdField_a_of_type_Agia.b.setText("QQ语音口令红包");
-    return true;
-  }
-  
-  public void i()
-  {
-    QQWalletRedPacketMsg localQQWalletRedPacketMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg;
-    aipv localaipv2 = this.jdField_a_of_type_Aipw.a(localQQWalletRedPacketMsg.redPacketId);
-    aipv localaipv1 = localaipv2;
-    if (localaipv2 == null)
-    {
-      localaipv1 = new aipv(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, false, false, false, 1);
-      this.jdField_a_of_type_Aipw.a(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, String.valueOf(this.jdField_a_of_type_Aipw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop)), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, localQQWalletRedPacketMsg.authkey, false, false, 1);
-    }
-    if (!a(localaipv1))
-    {
-      this.jdField_a_of_type_Agia.d.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_Agia.d.setVisibility(0);
+    } while (3 != paramInt);
+    this.a.jdField_a_of_type_Agjh.a().jdField_a_of_type_Agkg.i = true;
+    this.a.e.setText("");
+    this.a.u();
   }
 }
 

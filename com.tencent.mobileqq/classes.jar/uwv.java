@@ -1,27 +1,18 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.widget.ARMapHongBaoListView;
-
-class uwv
-  implements View.OnLayoutChangeListener
+public class uwv
 {
-  uwv(uwn paramuwn, urk paramurk) {}
+  @xrk(a="id")
+  public int a;
+  @xrk(a="name")
+  public String a;
+  @xrk(a="items")
+  public uwx[] a;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public String toString()
   {
-    wsv.b(uwn.b(), "onLayoutChange");
-    if ((paramInt4 - paramInt2 > 0) && (paramInt3 - paramInt1 > 0) && ((this.jdField_a_of_type_Uwn.d) || (this.jdField_a_of_type_Uwn.e)) && (!this.jdField_a_of_type_Uwn.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.mForStory))
-    {
-      wsv.b(uwn.b(), "first show node, showStoryNode");
-      if (this.jdField_a_of_type_Uwn.d)
-      {
-        this.jdField_a_of_type_Uwn.d = false;
-        this.jdField_a_of_type_Urk.b("first_show_node", Boolean.valueOf(false));
-      }
-      this.jdField_a_of_type_Uwn.e = false;
-      if (this.jdField_a_of_type_Uwn.a()) {
-        this.jdField_a_of_type_Uwn.jdField_a_of_type_Uvz.a("exp_story", 4);
-      }
+    StringBuilder localStringBuilder = new StringBuilder().append("FilterConfig{id=").append(this.jdField_a_of_type_Int).append(", name='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", items-size=");
+    if (this.jdField_a_of_type_ArrayOfUwx != null) {}
+    for (int i = this.jdField_a_of_type_ArrayOfUwx.length;; i = 0) {
+      return i + '}';
     }
   }
 }

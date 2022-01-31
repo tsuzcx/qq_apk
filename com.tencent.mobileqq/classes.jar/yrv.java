@@ -1,29 +1,13 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-
 class yrv
-  implements ActionMode.Callback
+  implements bkcu
 {
-  yrv(yru paramyru, TroopGiftPanel paramTroopGiftPanel) {}
+  yrv(yrr paramyrr, amdu paramamdu, String paramString1, int paramInt, String paramString2) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void a(int paramInt)
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    if ((paramInt == 0) && (this.jdField_a_of_type_Amdu != null)) {
+      this.jdField_a_of_type_Amdu.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 510, 0, this.jdField_a_of_type_Int, this.b);
+    }
   }
 }
 

@@ -1,18 +1,118 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.IBinder;
+import com.tencent.richmediabrowser.presenter.IProvider;
 
 public class axyg
-  implements DialogInterface.OnClickListener
+  implements IProvider
 {
-  public axyg(SignatureEditFragment paramSignatureEditFragment) {}
+  public agki a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(agki paramagki)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.locationText = "";
-    this.a.a(0, 0, 0, 0, null, 1);
-    SignatureEditFragment.a(this.a);
+    this.a = paramagki;
+  }
+  
+  public void cancelDownloadMedia(long paramLong, int paramInt1, int paramInt2)
+  {
+    if (this.a != null) {
+      this.a.b(paramLong, paramInt1, paramInt2);
+    }
+  }
+  
+  public void downloadMedia(long paramLong, int paramInt1, int paramInt2)
+  {
+    if (this.a != null) {
+      this.a.a(paramLong, paramInt1, paramInt2);
+    }
+  }
+  
+  public void favorite(long paramLong)
+  {
+    if (this.a != null) {
+      this.a.e(paramLong);
+    }
+  }
+  
+  public Intent getFavorateParams(long paramLong, int paramInt)
+  {
+    if (this.a != null) {
+      return this.a.a(paramLong, paramInt);
+    }
+    return null;
+  }
+  
+  public Intent getForwardData(long paramLong, int paramInt1, int paramInt2)
+  {
+    if (this.a != null) {
+      return this.a.a(paramLong, paramInt1, paramInt2);
+    }
+    return null;
+  }
+  
+  public int getSaveFileProgress(long paramLong, int paramInt)
+  {
+    if (this.a != null) {
+      return this.a.a(paramLong, paramInt);
+    }
+    return 0;
+  }
+  
+  public boolean isPingBinder()
+  {
+    if (this.a != null) {
+      return this.a.asBinder().pingBinder();
+    }
+    return false;
+  }
+  
+  public void loadMedias(int paramInt)
+  {
+    if (this.a != null) {
+      this.a.a(paramInt);
+    }
+  }
+  
+  public void onFileVideoStatusChange(long paramLong, int paramInt, Bundle paramBundle)
+  {
+    if (this.a != null) {
+      this.a.a(paramLong, paramInt, paramBundle);
+    }
+  }
+  
+  public void payFlow(long paramLong, int paramInt)
+  {
+    if (this.a != null) {
+      this.a.a(paramLong, paramInt);
+    }
+  }
+  
+  public void reportData(String paramString, int paramInt)
+  {
+    if (this.a != null) {
+      this.a.a(paramString, paramInt);
+    }
+  }
+  
+  public void safetyReport(int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    if (this.a != null) {
+      this.a.a(paramInt, paramBoolean, paramString1, paramString2, paramString3, paramString4);
+    }
+  }
+  
+  public void saveToWeiyun(long paramLong)
+  {
+    if (this.a != null) {
+      this.a.c(paramLong);
+    }
+  }
+  
+  public void sendFileToPC(long paramLong)
+  {
+    if (this.a != null) {
+      this.a.d(paramLong);
+    }
   }
 }
 

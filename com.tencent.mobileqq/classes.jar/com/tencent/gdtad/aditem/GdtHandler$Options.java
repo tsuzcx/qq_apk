@@ -1,7 +1,7 @@
 package com.tencent.gdtad.aditem;
 
-import aaij;
-import aanp;
+import aamy;
+import aase;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcel;
@@ -12,7 +12,7 @@ import android.text.TextUtils;
 public class GdtHandler$Options
   implements Parcelable
 {
-  public static final Parcelable.Creator<Options> CREATOR = new aaij();
+  public static final Parcelable.Creator<Options> CREATOR = new aamy();
   public int a;
   public long a;
   public Rect a;
@@ -42,7 +42,7 @@ public class GdtHandler$Options
     this.jdField_b_of_type_Int = -2147483648;
     if (paramParcel == null)
     {
-      aanp.d("GdtHandler", "Options(Parcel in) error");
+      aase.d("GdtHandler", "Options(Parcel in) error");
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)paramParcel.readParcelable(GdtAd.class.getClassLoader()));
@@ -130,7 +130,7 @@ public class GdtHandler$Options
     int j = 1;
     if (paramParcel == null)
     {
-      aanp.d("GdtHandler", "writeToParcel error");
+      aase.d("GdtHandler", "writeToParcel error");
       return;
     }
     paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramInt);

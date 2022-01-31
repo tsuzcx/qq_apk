@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import acms;
-import ajbm;
+import acrh;
+import ajgb;
 import android.os.Message;
-import azmj;
+import azqs;
 import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
 import mqq.os.MqqHandler;
 
@@ -16,9 +16,9 @@ class Conversation$1$6$1
   {
     Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityConversation$1$6.a.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage();
     localMessage.obj = this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper;
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversation$1$6.a.a.jdField_a_of_type_Ajbm.a(26, 2);
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversation$1$6.a.a.jdField_a_of_type_Ajbm.a(26, localMessage);
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation$1$6.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8008658", "0X8008658", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation$1$6.a.a.jdField_a_of_type_Ajgb.a(26, 2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation$1$6.a.a.jdField_a_of_type_Ajgb.a(26, localMessage);
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation$1$6.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8008658", "0X8008658", 0, 0, "", "", "", "");
   }
 }
 

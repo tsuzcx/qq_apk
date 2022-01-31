@@ -3,9 +3,9 @@ import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivit
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ngq
-  implements bhqd
+  implements bhuk
 {
-  public ngq(EqqAccountDetailActivity paramEqqAccountDetailActivity, npo paramnpo, bhpy parambhpy, int paramInt) {}
+  public ngq(EqqAccountDetailActivity paramEqqAccountDetailActivity, npo paramnpo, bhuf parambhuf, int paramInt) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -15,7 +15,7 @@ public class ngq
       return;
       this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b = true;
       this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b(this.jdField_a_of_type_Npo, paramInt + 1);
-      this.jdField_a_of_type_Bhpy.dismiss();
+      this.jdField_a_of_type_Bhuf.dismiss();
     } while ((!((ntw)EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).getManager(88)).a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity))) || (this.jdField_a_of_type_Int == paramInt));
     ((nup)EqqAccountDetailActivity.p(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).a(88)).a(134243867, EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), null, null, null, paramInt + 1, false);
   }

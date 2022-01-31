@@ -1,19 +1,18 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class acvw
-  implements amaa
+  implements InputFilter
 {
-  public acvw(FriendProfileCardActivity paramFriendProfileCardActivity, Intent paramIntent) {}
+  public acvw(EditInfoActivity paramEditInfoActivity) {}
   
-  public void a(Object paramObject)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if ((paramObject instanceof String))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+    if (paramCharSequence.toString().contains("\n")) {
+      return paramCharSequence.toString().replace("\n", "");
     }
+    return null;
   }
 }
 

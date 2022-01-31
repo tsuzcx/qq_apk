@@ -1,26 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.CardUinInfo;
 
-public class aoaa
-  implements CompoundButton.OnCheckedChangeListener
+public final class aoaa
+  implements Parcelable.Creator<CardUinInfo>
 {
-  public aoaa(ColorNoteSettingFragment paramColorNoteSettingFragment, QQAppInterface paramQQAppInterface) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public CardUinInfo a(Parcel paramParcel)
   {
-    anxn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
-    if (!paramBoolean) {
-      new anxo().c(null);
-    }
-    ((anyd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(168)).a(paramBoolean);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      azmj.b(null, "dc00898", "", "", "0X800A8B0", "0X800A8B0", i, 0, "", "", "", "");
-      return;
-    }
+    return new CardUinInfo(paramParcel);
+  }
+  
+  public CardUinInfo[] a(int paramInt)
+  {
+    return new CardUinInfo[paramInt];
   }
 }
 

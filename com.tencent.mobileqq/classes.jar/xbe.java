@@ -1,21 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 class xbe
-  implements View.OnClickListener
+  extends uxx
 {
-  xbe(xay paramxay) {}
-  
-  public void onClick(View paramView)
+  xbe(xbd paramxbd, String paramString)
   {
-    this.a.dismiss();
-    if ((this.a.a != null) && (this.a.a.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 3, 4);
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    super.onLocationFinish(paramInt, paramSosoLbsInfo);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      this.a.jdField_a_of_type_Xba.a = paramSosoLbsInfo.a.a;
+      this.a.jdField_a_of_type_Xba.b = paramSosoLbsInfo.a.b;
+      wxe.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() latitude=" + this.a.jdField_a_of_type_Xba.a + " longitude=" + this.a.jdField_a_of_type_Xba.b);
+      if (this.a.jdField_a_of_type_Boolean) {
+        this.a.jdField_a_of_type_Xba.f();
+      }
+      return;
     }
-    wtb.a("0X80076C6");
-    wtb.b("0X80075DA");
+    this.a.jdField_a_of_type_Xba.a = 0.0D;
+    this.a.jdField_a_of_type_Xba.b = 0.0D;
+    wxe.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() error");
   }
 }
 

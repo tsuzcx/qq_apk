@@ -1,14 +1,11 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import android.graphics.drawable.Drawable;
 
-class bapc
-  implements ITransCallbackForReport
+public class bapc
 {
-  bapc(bapa parambapa) {}
-  
-  public void onFailed(int paramInt, String paramString1, String paramString2)
-  {
-    this.a.a(false, paramInt, paramString1, paramString2);
-  }
+  public Drawable a;
+  public String a;
+  public int[] a;
+  public String b;
 }
 
 

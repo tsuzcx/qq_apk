@@ -1,15 +1,16 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 
 public class bmpj
-  implements bmqh
+  implements vyl
 {
-  public bmpj(DoodleLayout paramDoodleLayout) {}
+  public bmpj(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public void a()
+  public boolean a(vyi paramvyi, int paramInt1, int paramInt2)
   {
-    if (this.a.a != null) {
-      this.a.a.r();
-    }
+    LocalVideoSelectActivity.a(this.a).a();
+    LocalVideoSelectActivity.a(this.a).a(true);
+    return true;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.recentfile;
 
-import aroy;
+import arth;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -13,7 +13,7 @@ class QfileRecentAppFileTabView$2
   
   public void run()
   {
-    Object localObject = aroy.a(this.a.srvTime);
+    Object localObject = arth.a(this.a.srvTime);
     if (!this.this$0.a.containsKey(localObject)) {
       this.this$0.a.put(localObject, new ArrayList());
     }

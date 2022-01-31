@@ -1,7 +1,7 @@
 import com.tencent.widget.AbsListView;
 
 class rqw
-  implements bhpo
+  implements bhtv
 {
   rqw(rqj paramrqj) {}
   

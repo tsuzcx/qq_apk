@@ -1,11 +1,22 @@
 public class bfnr
 {
-  public String a;
-  public String b;
+  protected String a;
+  protected String b;
   
-  public void a(String paramString)
+  public bfnr(String paramString1, String paramString2)
   {
-    this.b = paramString;
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

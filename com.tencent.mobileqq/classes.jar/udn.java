@@ -1,18 +1,27 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresent;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedWidget;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class udn
-  implements ViewPager.OnPageChangeListener
+  extends alpq
 {
-  public udn(QCircleFeedItemPicPresent paramQCircleFeedItemPicPresent) {}
+  public udn(QCircleFeedWidget paramQCircleFeedWidget) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
   {
-    QCircleFeedItemPicPresent.a(this.a, paramInt);
+    if (paramBoolean)
+    {
+      String str = paramCard.strNick;
+      if (QCircleFeedWidget.a(this.a) != null) {
+        QCircleFeedWidget.a(this.a).a(paramCard.strNick, paramCard.uin);
+      }
+      if (tra.a(paramCard.uin))
+      {
+        tqg.a().nick.set(str);
+        tqg.a(str);
+      }
+    }
   }
 }
 

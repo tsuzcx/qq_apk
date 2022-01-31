@@ -1,17 +1,17 @@
 package com.tencent.device.msg.data;
 
-import alpo;
+import alud;
 import android.os.Parcelable.Creator;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.qphone.base.util.BaseApplication;
-import ztq;
+import zyf;
 
 public class MessageForDevShortVideo
   extends MessageForShortVideo
 {
-  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new ztq();
+  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new zyf();
   public long fileSessionId;
   
   public String getSummary()
@@ -25,13 +25,13 @@ public class MessageForDevShortVideo
     default: 
       return null;
     case 2003: 
-      return alpo.a(2131706974);
+      return alud.a(2131706986);
     case 1003: 
-      return ((QQAppInterface)localObject).getApp().getString(2131691353);
+      return ((QQAppInterface)localObject).getApp().getString(2131691354);
     case 1005: 
-      return ((QQAppInterface)localObject).getApp().getString(2131691353);
+      return ((QQAppInterface)localObject).getApp().getString(2131691354);
     }
-    return alpo.a(2131706969);
+    return alud.a(2131706981);
   }
 }
 

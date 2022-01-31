@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import avms;
-import avmz;
+import avrb;
+import avri;
 import java.util.Iterator;
 import java.util.List;
 
 public class NearbyMomentManager$6
   implements Runnable
 {
-  public NearbyMomentManager$6(avms paramavms, String paramString) {}
+  public NearbyMomentManager$6(avrb paramavrb, String paramString) {}
   
   public void run()
   {
-    Iterator localIterator = avms.a(this.this$0).iterator();
+    Iterator localIterator = avrb.a(this.this$0).iterator();
     while (localIterator.hasNext()) {
-      ((avmz)localIterator.next()).b(this.a);
+      ((avri)localIterator.next()).b(this.a);
     }
   }
 }

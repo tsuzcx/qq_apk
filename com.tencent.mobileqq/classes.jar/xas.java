@@ -1,12 +1,20 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-final class xas
-  implements FilenameFilter
+class xas
+  extends SimpleJob<Object>
 {
-  public boolean accept(File paramFile, String paramString)
+  xas(xan paramxan, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
   {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp"));
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    wxj.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
   }
 }
 

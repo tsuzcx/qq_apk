@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.Leba;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
 
 public class adbm
-  extends avqs
+  implements bhuw
 {
-  public adbm(Leba paramLeba) {}
+  public adbm(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  protected void a(Object paramObject)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Leba.c(this.a);
+    this.a.b();
   }
 }
 

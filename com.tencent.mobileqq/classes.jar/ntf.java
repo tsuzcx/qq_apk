@@ -3,7 +3,7 @@ import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 final class ntf
-  implements bevy
+  implements bfah
 {
   ntf(String paramString, syx paramsyx) {}
   
@@ -18,7 +18,7 @@ final class ntf
     {
     case -1: 
     default: 
-      xxb.b(1, 2131720019);
+      ybk.b(1, 2131720031);
       bool = false;
     }
     for (;;)
@@ -29,7 +29,7 @@ final class ntf
       }
       this.jdField_a_of_type_Syx.a(bool);
       return;
-      xxb.b(2, 2131720038);
+      ybk.b(2, 2131720050);
       continue;
       bool = false;
     }

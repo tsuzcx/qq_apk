@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="userUin,friendUin")
 public class UinPair
-  extends awbv
+  extends awge
 {
   public String friendUin;
   public String userUin;

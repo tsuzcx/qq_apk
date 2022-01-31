@@ -1,131 +1,100 @@
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import java.util.Arrays;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class uxk
-  extends uxf
 {
-  private boolean a;
+  public final int a;
+  private final String a;
+  public final String[] a;
+  public final int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public final int i;
   
-  public uxk(ViewGroup paramViewGroup)
+  private uxk(JSONObject paramJSONObject)
   {
-    super(paramViewGroup, 2131561491);
-  }
-  
-  private void a(utx paramutx, int paramInt)
-  {
-    switch (paramInt)
+    int k;
+    try
     {
-    }
-    for (;;)
-    {
-      c(paramutx);
-      return;
-      super.b(paramutx);
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b();
-      continue;
-      super.b(paramutx);
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a();
-      continue;
-      super.b(paramutx);
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b();
-    }
-  }
-  
-  private void c(utx paramutx)
-  {
-    if ((paramutx.jdField_b_of_type_Boolean) || (paramutx.d > 0))
-    {
-      b(paramutx.h);
-      if ((!paramutx.jdField_b_of_type_Boolean) && (paramutx.d > 0)) {
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setDisplayState(1);
-      }
-      for (;;)
-      {
-        wsv.b("VASH", "bindCoverImage: %s", paramutx.h);
-        return;
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setDisplayState(0);
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
+      this.jdField_a_of_type_Int = paramJSONObject.getInt("v");
+      this.b = paramJSONObject.getInt("id");
+      this.i = paramJSONObject.getJSONObject("a").getInt("r");
+      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
+      this.c = localJSONArray.getInt(0);
+      this.d = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
+      this.e = localJSONArray.getInt(0);
+      this.f = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
+      this.g = localJSONArray.getInt(0);
+      this.h = localJSONArray.getInt(1);
+      paramJSONObject = paramJSONObject.getJSONObject("a").getJSONArray("c");
+      k = paramJSONObject.length();
+      if (k < 1) {
+        throw new IllegalArgumentException("content length should more than 1");
       }
     }
-    b(xoa.b(paramutx.g));
-    wsv.b("VASH", "bindCoverImage: %s", paramutx.g);
-  }
-  
-  public void a(utx paramutx)
-  {
-    super.a(paramutx);
-    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject3;
-    Object localObject2;
-    boolean bool;
-    if ((localObject1 instanceof QQAppInterface))
+    catch (JSONException paramJSONObject)
     {
-      localObject3 = (QQAppInterface)localObject1;
-      localObject2 = String.valueOf(paramutx.jdField_b_of_type_Long);
-      localObject1 = localObject2;
-      if ("0".equals(localObject2)) {
-        localObject1 = ((QQAppInterface)localObject3).getCurrentAccountUin();
-      }
-      localObject3 = (usd)urr.a(2);
-      localObject2 = QQStoryContext.a().b();
-      localObject3 = ((usd)localObject3).b((String)localObject2);
-      if (localObject3 == null)
-      {
-        if (!"0_1000".equals(localObject2)) {
-          break label223;
-        }
-        localObject2 = new usy(String.valueOf(localObject1), "");
-        new uza().a(0, (usy)localObject2, String.valueOf(localObject1));
-      }
-      if ((localObject3 == null) || (!((QQUserUIItem)localObject3).isVip())) {
-        break label252;
-      }
-      bool = true;
-      label141:
-      this.jdField_a_of_type_Boolean = bool;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label257;
-      }
+      throw new IllegalArgumentException(paramJSONObject);
     }
-    label257:
-    for (localObject1 = ((QQUserUIItem)localObject3).nickName;; localObject1 = alpo.a(2131714161))
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[k];
+    while (j < k)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName((String)localObject1, this.jdField_a_of_type_Boolean);
-      c(paramutx);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("SelfNodeViewHolder", 2, new Object[] { "update self view, isUploading:", Boolean.valueOf(paramutx.jdField_b_of_type_Boolean), ", unUploadVideoCount: ", Integer.valueOf(paramutx.d) });
-      }
-      return;
-      label223:
-      localObject1 = new usy("", (String)localObject2);
-      new uza().a(1, (usy)localObject1, (String)localObject2);
-      break;
-      label252:
-      bool = false;
-      break label141;
+      this.jdField_a_of_type_ArrayOfJavaLangString[j] = paramJSONObject.optString(j, "(NULL)");
+      j += 1;
     }
   }
   
-  protected void b(utx paramutx)
+  public static uxk a(@Nullable String paramString)
   {
-    wsv.b("VASH", "My bindImage of data: %s", String.valueOf(paramutx));
-    if (paramutx.jdField_b_of_type_Boolean) {
-      a(paramutx, 1);
-    }
-    for (;;)
+    try
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(paramutx);
-      return;
-      if (paramutx.d > 0) {
-        a(paramutx, 2);
-      } else {
-        a(paramutx, 0);
-      }
+      paramString = a(new JSONObject(paramString));
+      return paramString;
     }
+    catch (JSONException paramString)
+    {
+      wxe.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+      return null;
+    }
+    catch (NullPointerException paramString)
+    {
+      wxe.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+    }
+    return null;
+  }
+  
+  public static uxk a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      paramJSONObject = new uxk(paramJSONObject);
+      return paramJSONObject;
+    }
+    catch (IllegalArgumentException paramJSONObject)
+    {
+      wxe.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    return "PollLayout{version=" + this.jdField_a_of_type_Int + ", id=" + this.b + ", screenWidth=" + this.c + ", screenHeight=" + this.d + ", layoutWidth=" + this.e + ", layoutHeight=" + this.f + ", layoutCenterX=" + this.g + ", layoutCenterY=" + this.h + ", rotation=" + this.i + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
   }
 }
 

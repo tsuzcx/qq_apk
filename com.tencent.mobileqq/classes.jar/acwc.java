@@ -1,30 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class acwc
-  implements DialogInterface.OnClickListener
+  implements InputFilter
 {
-  public acwc(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[🀀-🏿]|[🐀-🟿]|[☀-⟿]", 66);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public acwc(EditInfoActivity paramEditInfoActivity) {}
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (this.a.d == 1) {
-      VipUtils.a(this.a, 1, bcyw.a(3));
+    if (this.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramCharSequence).find()) {
+      return "";
     }
-    for (;;)
-    {
-      this.a.C();
-      return;
-      if (this.a.d == 2) {
-        VipUtils.b(this.a, 1, bcyw.a(6));
-      } else if (this.a.d == 3) {
-        VipUtils.a(this.a, true, 12, false, bcyw.a(6));
-      } else if (this.a.d == 4) {
-        bdqe.a(this.a, bcyw.a(6), "SVHHZLH", 0, false, false);
-      }
-    }
+    return null;
   }
 }
 

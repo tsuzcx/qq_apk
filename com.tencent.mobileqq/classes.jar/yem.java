@@ -1,20 +1,9 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import NS_COMM.COMM.StCommonExt;
-import java.util.List;
+import android.view.View;
 
-public class yem
+public abstract interface yem
 {
-  public CertifiedAccountMeta.StFeed a;
-  public CertifiedAccountMeta.StUser a;
-  public CertifiedAccountRead.StGetMainPageRsp a;
-  public COMM.StCommonExt a;
-  public String a;
-  public List<CertifiedAccountMeta.StFeed> a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  public abstract void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed);
 }
 
 

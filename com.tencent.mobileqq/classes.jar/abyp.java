@@ -1,59 +1,96 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class abyp
-  implements View.OnClickListener
+class abyp
+  implements DialogInterface.OnCancelListener, bhuk, bhum
 {
-  public abyp(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  abwu jdField_a_of_type_Abwu;
+  bhuf jdField_a_of_type_Bhuf;
   
-  public void onClick(View paramView)
+  public abyp(bhuf parambhuf, abwu paramabwu)
   {
-    if (this.a.a != null)
+    this.jdField_a_of_type_Bhuf = parambhuf;
+    this.jdField_a_of_type_Abwu = paramabwu;
+  }
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    this.jdField_a_of_type_Bhuf.dismiss();
+    paramView = new JSONObject();
+    try
     {
-      this.a.getWindow().setSoftInputMode(2);
-      this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-      AddFriendVerifyActivity.a(this.a).clearFocus();
+      paramView.put("cancel", false);
+      paramView.put("tapIndex", paramInt);
+      acab.a(this.jdField_a_of_type_Abwu, paramView);
+      return;
     }
-    paramView = AddFriendVerifyActivity.a(this.a).getText().toString().trim();
-    if (TextUtils.isEmpty(paramView))
+    catch (JSONException paramView)
     {
-      if (!this.a.isFinishing())
-      {
-        paramView = new nba(this.a);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131700241));
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849766);
-        paramView.a();
+      String str = paramView.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("DoraemonOpenAPI.widget", 2, str, paramView);
       }
-      return;
+      abwu localabwu = this.jdField_a_of_type_Abwu;
+      paramView = str;
+      if (str == null) {
+        paramView = "";
+      }
+      acab.a(localabwu, -2, paramView);
     }
-    if (paramView.length() > 90)
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    paramDialogInterface = new JSONObject();
+    try
     {
-      paramView = new Dialog(this.a, 2131755801);
-      paramView.setContentView(2131562559);
-      ((TextView)paramView.findViewById(2131365231)).setText(this.a.getString(2131691148));
-      ((ProgressBar)paramView.findViewById(2131366685)).setVisibility(8);
-      ((ImageView)paramView.findViewById(2131379296)).setImageResource(2130839406);
-      paramView.show();
+      paramDialogInterface.put("cancel", true);
+      paramDialogInterface.put("tapIndex", -1);
+      acab.a(this.jdField_a_of_type_Abwu, paramDialogInterface);
       return;
     }
-    this.a.a(paramView, true);
-    if (bdee.d(this.a))
+    catch (JSONException paramDialogInterface)
     {
-      AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), paramView, this.a.getIntent().getIntExtra("stat_option", 0), 2000);
+      String str = paramDialogInterface.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
+      }
+      abwu localabwu = this.jdField_a_of_type_Abwu;
+      paramDialogInterface = str;
+      if (str == null) {
+        paramDialogInterface = "";
+      }
+      acab.a(localabwu, -2, paramDialogInterface);
+    }
+  }
+  
+  public void onDismiss()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("cancel", true);
+      localJSONObject.put("tapIndex", -1);
+      acab.a(this.jdField_a_of_type_Abwu, localJSONObject);
       return;
     }
-    QQToast.a(this.a, 1, 2131694766, 0).b(this.a.getTitleBarHeight());
+    catch (JSONException localJSONException)
+    {
+      String str = localJSONException.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("DoraemonOpenAPI.widget", 2, str, localJSONException);
+      }
+      abwu localabwu = this.jdField_a_of_type_Abwu;
+      Object localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      acab.a(localabwu, -2, (String)localObject);
+    }
   }
 }
 

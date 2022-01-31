@@ -1,12 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-public final class bjai
-  implements DialogInterface.OnClickListener
+class bjai
+  implements bizd
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bjai(bjah parambjah) {}
+  
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    bjah.a(this.a);
   }
 }
 

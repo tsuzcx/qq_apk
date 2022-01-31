@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aerh;
+import aevw;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class XBubbleAnimation$3
   implements Runnable
 {
-  public XBubbleAnimation$3(aerh paramaerh, Object[] paramArrayOfObject) {}
+  public XBubbleAnimation$3(aevw paramaevw, Object[] paramArrayOfObject) {}
   
   public void run()
   {

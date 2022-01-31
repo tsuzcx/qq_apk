@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.base;
 
-import uhn;
-import uho;
+import ulw;
+import ulx;
 
 public class QQStoryObserver$1$1
   implements Runnable
 {
-  public QQStoryObserver$1$1(uho paramuho) {}
+  public QQStoryObserver$1$1(ulx paramulx) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Uhn.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_JavaLangBoolean.booleanValue(), this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
+    this.a.jdField_a_of_type_Ulw.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_JavaLangBoolean.booleanValue(), this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

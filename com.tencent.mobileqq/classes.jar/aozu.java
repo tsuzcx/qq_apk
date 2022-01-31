@@ -1,38 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Game;
-import com.tencent.mobileqq.data.IPSiteModel.GameRich;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.util.Comparator;
 
-public final class aozu
-  implements Parcelable.Creator
+class aozu
+  implements Comparator<File>
 {
-  public IPSiteModel.Game a(Parcel paramParcel)
-  {
-    IPSiteModel.Game localGame = new IPSiteModel.Game();
-    localGame.cover = paramParcel.readString();
-    localGame.desc = paramParcel.readString();
-    localGame.id = paramParcel.readString();
-    localGame.jumpUrl = paramParcel.readString();
-    localGame.name = paramParcel.readString();
-    localGame.recommDesc = paramParcel.readString();
-    if (localGame.gameRiches == null) {
-      localGame.gameRiches = new ArrayList();
-    }
-    localGame.gameRiches.clear();
-    paramParcel.readList(localGame.gameRiches, IPSiteModel.GameRich.class.getClassLoader());
-    return localGame;
-  }
+  aozu(aozt paramaozt) {}
   
-  public IPSiteModel.Game[] a(int paramInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    return new IPSiteModel.Game[paramInt];
+    if (paramFile2.lastModified() > paramFile1.lastModified()) {
+      return 1;
+    }
+    if (paramFile2.lastModified() < paramFile1.lastModified()) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aozu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,27 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.9.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class arjg
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+class arjg
+  implements arip
 {
-  arjg(aris paramaris) {}
+  arjg(arje paramarje) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a()
   {
-    long l1 = 0L;
-    this.a.jdField_a_of_type_Arke.h(false);
-    long l2 = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileBrowserPresenter<FileAssistant>", 4, "Video Total Time:" + l2);
-    }
-    paramTVK_IMediaPlayer = this.a;
-    if (l2 < 0L) {}
-    for (;;)
+    this.a.a(false, arqo.a(this.a.a.a()), this.a.c(), new arjh(this));
+  }
+  
+  public void b()
+  {
+    this.a.d();
+    int i = this.a.d();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (i == 0)
     {
-      aris.a(paramTVK_IMediaPlayer, l1);
-      this.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new VideoFilePresenter.9.1(this));
+      localQQAppInterface.a().a(this.a.d());
       return;
-      l1 = l2;
     }
+    localQQAppInterface.a().a(this.a.a.a());
   }
 }
 

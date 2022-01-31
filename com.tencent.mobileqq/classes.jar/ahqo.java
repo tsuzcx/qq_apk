@@ -1,6 +1,29 @@
-public abstract interface ahqo
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import java.util.Map;
+
+public class ahqo
+  extends altm
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public ahqo(TroopView paramTroopView) {}
+  
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      this.a.j();
+    }
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    this.a.j();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.j();
+    }
+  }
 }
 
 

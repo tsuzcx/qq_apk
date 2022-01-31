@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
-public class agrj
-  extends bbie
+class agrj
+  implements bemh<oidb_0x8ed.RspBody>
 {
-  public agrj(TroopChatPie paramTroopChatPie) {}
+  agrj(agqq paramagqq) {}
   
-  protected void a(long paramLong)
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    if (!String.valueOf(paramLong).equals(this.a.c())) {}
-    while (TroopChatPie.l(this.a) == null) {
-      return;
+    if ((paramInt == 0) && (this.a.ac))
+    {
+      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, alud.a(2131705511), 0).a();
+      bdne.f(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+      this.a.jdField_a_of_type_Auxp.a(this.a.jdField_a_of_type_AndroidContentContext);
     }
-    TroopChatPie.m(this.a).a();
   }
 }
 

@@ -1,26 +1,21 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import com.tencent.widget.DynamicGridView;
 
 public class bhwn
+  implements bhwo
 {
-  public int a;
-  public final Rect a;
-  public Drawable a;
-  public int[] a;
-  public int b;
-  public Drawable b;
-  public int[] b = new int[2];
-  public int c;
-  public Drawable c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  private bhwn()
+  public bhwn(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_ArrayOfInt = new int[2];
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.jdField_a_of_type_Int);
+    DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.b);
   }
 }
 

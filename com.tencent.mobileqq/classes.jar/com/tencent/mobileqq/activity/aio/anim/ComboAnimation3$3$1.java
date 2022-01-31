@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aeql;
-import aeqo;
+import aeva;
+import aevd;
 
 public class ComboAnimation3$3$1
   implements Runnable
 {
-  public ComboAnimation3$3$1(aeqo paramaeqo) {}
+  public ComboAnimation3$3$1(aevd paramaevd) {}
   
   public void run()
   {

@@ -1,17 +1,13 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aosl
-  extends aofy<aosk>
+  extends aokh<aosk>
 {
-  public static aosk a()
-  {
-    return (aosk)aogj.a().a(486);
-  }
-  
   public int a()
   {
-    return 486;
+    return 158;
   }
   
   @NonNull
@@ -21,10 +17,15 @@ public class aosl
   }
   
   @Nullable
-  public aosk a(aogf[] paramArrayOfaogf)
+  public aosk a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return aosk.a(paramArrayOfaogf);
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
+    {
+      aosk localaosk = aosk.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVSecurityConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      }
+      return localaosk;
     }
     return null;
   }
@@ -36,7 +37,17 @@ public class aosl
   
   public void a(int paramInt) {}
   
-  public void a(aosk paramaosk) {}
+  public void a(aosk paramaosk)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVSecurityConfProcessor", 2, "onUpdate " + paramaosk.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
   
   public int b()
   {

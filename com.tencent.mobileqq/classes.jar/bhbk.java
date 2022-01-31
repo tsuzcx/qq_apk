@@ -1,33 +1,19 @@
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage.MessageLevel;
-import com.tencent.smtt.sdk.WebChromeClient;
-
-class bhbk
-  extends WebChromeClient
+public class bhbk
 {
-  bhbk(bhbi parambhbi) {}
+  private bhbk a;
+  public boolean a;
   
-  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  public bhbk a()
   {
-    if (paramConsoleMessage != null)
-    {
-      if (paramConsoleMessage.messageLevel() != ConsoleMessage.MessageLevel.ERROR) {
-        break label135;
-      }
-      QMLog.e("TAG_CHROMIUM", "PageWebView: " + paramConsoleMessage.message() + " line:" + paramConsoleMessage.lineNumber() + "  page:" + bhbi.a(this.a));
-      bgyd.a(paramConsoleMessage.lineNumber() + ": " + paramConsoleMessage.message(), bhbi.a(this.a).a(), bhbi.a(this.a));
+    return this.jdField_a_of_type_Bhbk;
+  }
+  
+  public void a(bhbk parambhbk, boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (paramBoolean)) {
+      throw new RuntimeException("WTF");
     }
-    for (;;)
-    {
-      return super.onConsoleMessage(paramConsoleMessage);
-      label135:
-      if (paramConsoleMessage.messageLevel() == ConsoleMessage.MessageLevel.WARNING) {
-        QMLog.w("TAG_CHROMIUM", "PageWebView: " + paramConsoleMessage.message() + " line:" + paramConsoleMessage.lineNumber() + "  page:" + bhbi.a(this.a));
-      } else {
-        QMLog.i("TAG_CHROMIUM", "PageWebView: " + paramConsoleMessage.message());
-      }
-    }
+    this.jdField_a_of_type_Bhbk = parambhbk;
   }
 }
 

@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
 import com.tencent.widget.pull2refresh.XRecyclerView;
 
 public class tcc
-  implements bibd
+  implements bifk
 {
   public tcc(WSRecommendFragment paramWSRecommendFragment) {}
   

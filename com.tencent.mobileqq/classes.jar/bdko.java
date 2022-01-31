@@ -1,57 +1,80 @@
-public class bdko
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+class bdko
+  extends BaseAdapter
 {
-  static final bdko jdField_a_of_type_Bdko = new bdko(0);
-  static final bdko b = new bdko(1);
-  static final bdko c = new bdko(257);
-  static final bdko d = new bdko(2);
-  static final bdko e = new bdko(258);
-  static final bdko f = new bdko(3);
-  static final bdko g = new bdko(259);
-  final int jdField_a_of_type_Int;
+  bdko(bdkn parambdkn) {}
   
-  public bdko(int paramInt)
+  public int getCount()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static bdko a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return jdField_a_of_type_Bdko;
-    case 1: 
-      return b;
-    case 2: 
-      return d;
-    case 3: 
-      return f;
-    case 257: 
-      return c;
-    case 258: 
-      return e;
+    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
+      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
     }
-    return g;
+    return 0;
   }
   
-  public boolean a()
+  public Object getItem(int paramInt)
   {
-    return (this.jdField_a_of_type_Int & 0xF) == 1;
+    return null;
   }
   
-  public boolean b()
+  public long getItemId(int paramInt)
   {
-    return (this.jdField_a_of_type_Int & 0xF) == 3;
+    return 0L;
   }
   
-  public boolean c()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return this.jdField_a_of_type_Int > 15;
+    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
+    }
+    paramViewGroup = paramView;
+    if (paramView == null)
+    {
+      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558930, null);
+      paramView = new bdkt(this.a, null);
+      paramView.a = ((TextView)paramViewGroup.findViewById(2131368575));
+      paramViewGroup.setTag(paramView);
+    }
+    paramView = (bdkt)paramViewGroup.getTag();
+    int i;
+    int j;
+    int k;
+    int m;
+    if (paramView.a != null)
+    {
+      paramView.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+      paramView.a.setOnClickListener(new bdks(this.a, paramInt));
+      i = paramView.a.getPaddingTop();
+      j = paramView.a.getPaddingLeft();
+      k = paramView.a.getPaddingRight();
+      m = paramView.a.getPaddingBottom();
+      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
+        break label207;
+      }
+      paramView.a.setBackgroundResource(2130839360);
+    }
+    for (;;)
+    {
+      paramView.a.setPadding(j, i, k, m);
+      return paramViewGroup;
+      label207:
+      if (paramInt == 0) {
+        paramView.a.setBackgroundResource(2130839361);
+      } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
+        paramView.a.setBackgroundResource(2130839359);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdko
  * JD-Core Version:    0.7.0.1
  */

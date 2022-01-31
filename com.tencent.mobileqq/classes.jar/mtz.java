@@ -15,8 +15,8 @@ public class mtz
   private static mtz jdField_a_of_type_Mtz = new mtz();
   public int a;
   private long jdField_a_of_type_Long;
-  private amab jdField_a_of_type_Amab = new mua(this);
-  private bhod<muf> jdField_a_of_type_Bhod = new bhod();
+  private ameq jdField_a_of_type_Ameq = new mua(this);
+  private bhsk<muf> jdField_a_of_type_Bhsk = new bhsk();
   private Map<String, muh> jdField_a_of_type_JavaUtilMap = new HashMap();
   private mug jdField_a_of_type_Mug;
   
@@ -32,7 +32,7 @@ public class mtz
   
   public static void a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    bdcd.a(paramContext, 230, paramString1, paramString2, 2131696081, 2131696083, new mub(paramContext), paramOnClickListener).show();
+    bdgm.a(paramContext, 230, paramString1, paramString2, 2131696083, 2131696085, new mub(paramContext), paramOnClickListener).show();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, int paramInt)
@@ -68,12 +68,12 @@ public class mtz
     do
     {
       return;
-      localObject = (alzf)paramAppInterface.getBusinessHandler(20);
+      localObject = (amdu)paramAppInterface.getBusinessHandler(20);
       if (localObject != null)
       {
-        paramAppInterface.addObserver(this.jdField_a_of_type_Amab);
-        long l = ((alzf)localObject).a(mwu.b(paramAppInterface, paramAppInterface.getCurrentAccountUin(), paramString), Long.parseLong(paramString));
-        this.jdField_a_of_type_Bhod.a(l, parammuf);
+        paramAppInterface.addObserver(this.jdField_a_of_type_Ameq);
+        long l = ((amdu)localObject).a(mwu.b(paramAppInterface, paramAppInterface.getCurrentAccountUin(), paramString), Long.parseLong(paramString));
+        this.jdField_a_of_type_Bhsk.a(l, parammuf);
         return;
       }
       parammuf.a(-1, null, -1);
@@ -90,16 +90,16 @@ public class mtz
     do
     {
       return;
-      parammug = (alzf)paramAppInterface.getBusinessHandler(20);
+      parammug = (amdu)paramAppInterface.getBusinessHandler(20);
     } while (parammug == null);
-    paramAppInterface.addObserver(this.jdField_a_of_type_Amab);
+    paramAppInterface.addObserver(this.jdField_a_of_type_Ameq);
     parammug.a(mwu.b(paramAppInterface, paramAppInterface.getCurrentAccountUin(), paramString), Long.parseLong(paramString));
   }
   
   public void b()
   {
     this.jdField_a_of_type_Mug = null;
-    this.jdField_a_of_type_Bhod.a();
+    this.jdField_a_of_type_Bhsk.a();
   }
 }
 

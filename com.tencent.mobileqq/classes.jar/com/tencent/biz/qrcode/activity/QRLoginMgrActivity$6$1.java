@@ -2,36 +2,36 @@ package com.tencent.biz.qrcode.activity;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import xvr;
-import xwp;
-import xwv;
+import yaa;
+import yay;
+import ybe;
 
 public class QRLoginMgrActivity$6$1
   implements Runnable
 {
-  public QRLoginMgrActivity$6$1(xvr paramxvr, ArrayList paramArrayList) {}
+  public QRLoginMgrActivity$6$1(yaa paramyaa, ArrayList paramArrayList) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      this.jdField_a_of_type_Xvr.a.finish();
+      this.jdField_a_of_type_Yaa.a.finish();
     }
     do
     {
       return;
-      if (QRLoginMgrActivity.a(this.jdField_a_of_type_Xvr.a) != -1L)
+      if (QRLoginMgrActivity.a(this.jdField_a_of_type_Yaa.a) != -1L)
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext())
         {
-          xwv localxwv = (xwv)localIterator.next();
-          if (localxwv.a == QRLoginMgrActivity.a(this.jdField_a_of_type_Xvr.a)) {
-            localxwv.c = QRLoginMgrActivity.a(this.jdField_a_of_type_Xvr.a);
+          ybe localybe = (ybe)localIterator.next();
+          if (localybe.a == QRLoginMgrActivity.a(this.jdField_a_of_type_Yaa.a)) {
+            localybe.c = QRLoginMgrActivity.a(this.jdField_a_of_type_Yaa.a);
           }
         }
       }
-    } while (QRLoginMgrActivity.a(this.jdField_a_of_type_Xvr.a) == null);
-    QRLoginMgrActivity.a(this.jdField_a_of_type_Xvr.a).a(this.jdField_a_of_type_JavaUtilArrayList);
+    } while (QRLoginMgrActivity.a(this.jdField_a_of_type_Yaa.a) == null);
+    QRLoginMgrActivity.a(this.jdField_a_of_type_Yaa.a).a(this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

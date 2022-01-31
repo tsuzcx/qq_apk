@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 class arvq
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  arvq(arvo paramarvo) {}
+  arvq(arvp paramarvp) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.D();
-    arvo.a(this.a);
+    SendBottomBar.a(this.a.a);
   }
 }
 

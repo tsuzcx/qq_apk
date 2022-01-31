@@ -1,12 +1,9 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
-
-public class ajuq
-  extends aecn
+class ajuq
 {
-  public CheckBox a;
-  
-  private ajuq(FriendListInnerFrame paramFriendListInnerFrame) {}
+  long jdField_a_of_type_Long;
+  ajus jdField_a_of_type_Ajus;
+  long jdField_b_of_type_Long;
+  ajus jdField_b_of_type_Ajus;
 }
 
 

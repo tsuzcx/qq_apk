@@ -1,150 +1,252 @@
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.Style;
+import android.graphics.PointF;
+import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.support.annotation.Nullable;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.text.InputFilter;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.MotionEvent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+import java.util.List;
 
-class blyp
+public class blyp
+  extends DynamicTextItem
 {
-  static blyp jdField_a_of_type_Blyp = new blyp();
-  private final Map<Class, blyq> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private final Map<Class, Boolean> b = new HashMap();
+  public static final int b;
+  public static final int c;
+  public static final int d;
+  private float jdField_a_of_type_Float;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private InputFilter jdField_a_of_type_AndroidTextInputFilter;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  blyw jdField_a_of_type_Blyw;
+  private String jdField_a_of_type_JavaLangString = "jenny";
+  private float jdField_b_of_type_Float;
+  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+  private TextPaint jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
+  blyw jdField_b_of_type_Blyw;
+  private String jdField_b_of_type_JavaLangString = "05/09";
+  blyw jdField_c_of_type_Blyw;
+  private String jdField_c_of_type_JavaLangString = "by";
+  int e = 0;
+  private int f;
+  private int g;
+  private int h;
+  private int i;
+  private int j;
+  private int k;
+  private int l;
+  private int m;
   
-  private blyq a(Class paramClass, @Nullable Method[] paramArrayOfMethod)
+  static
   {
-    Object localObject1 = paramClass.getSuperclass();
-    HashMap localHashMap = new HashMap();
-    if (localObject1 != null)
+    Resources localResources = BaseApplicationImpl.getContext().getResources();
+    jdField_b_of_type_Int = aepi.a(18.0F, localResources);
+    d = aepi.a(6.0F, localResources);
+    int n = bmyg.a();
+    jdField_c_of_type_Int = localResources.getDisplayMetrics().widthPixels - bmqw.a - n * 2;
+  }
+  
+  public blyp(int paramInt, List<String> paramList, Typeface paramTypeface)
+  {
+    super(paramInt, paramList);
+    this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
+    this.jdField_b_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
+    if (paramTypeface == null)
     {
-      localObject1 = a((Class)localObject1);
-      if (localObject1 != null) {
-        localHashMap.putAll(((blyq)localObject1).b);
+      this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
+      this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
+      this.jdField_b_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.jdField_b_of_type_AndroidTextTextPaint.setTextSkewX(-0.15F);
+      this.k = aepi.a(41.0F, BaseApplicationImpl.getContext().getResources());
+      this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(this.k);
+      this.jdField_b_of_type_AndroidTextTextPaint.setColor(-1);
+      this.jdField_b_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
+      this.g = aepi.a(34.0F, BaseApplicationImpl.getContext().getResources());
+      this.h = aepi.a(45.0F, BaseApplicationImpl.getContext().getResources());
+      this.l = aepi.a(4.0F, BaseApplicationImpl.getContext().getResources());
+      this.m = aepi.a(3.0F, BaseApplicationImpl.getContext().getResources());
+      this.jdField_c_of_type_Blyw = new blyw(0);
+      this.jdField_c_of_type_Blyw.a(new blyh(-1, this.l, this.m));
+      this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSkewX(-0.15F);
+      if (paramTypeface != null) {
+        this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+      }
+      this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
+      this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.j = aepi.a(19.0F, BaseApplicationImpl.getContext().getResources());
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.j);
+      this.jdField_a_of_type_AndroidTextTextPaint.setColor(-16777216);
+      TextPaint localTextPaint = new TextPaint();
+      if (paramTypeface != null) {
+        localTextPaint.setTypeface(paramTypeface);
+      }
+      this.jdField_b_of_type_JavaLangString = blzg.a();
+      localTextPaint.setAntiAlias(true);
+      localTextPaint.setTextSkewX(-0.15F);
+      localTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.i = aepi.a(23.0F, BaseApplicationImpl.getContext().getResources());
+      localTextPaint.setTextSize(this.i);
+      localTextPaint.setColor(-1);
+      this.jdField_b_of_type_Blyw = new blyw(0);
+      this.jdField_b_of_type_Blyw.a(new blyh(-16777216, this.l, this.m));
+      this.jdField_b_of_type_Blyw.a(this.jdField_b_of_type_JavaLangString, jdField_c_of_type_Int, this.i, localTextPaint);
+      if (paramList != null) {
+        break label541;
       }
     }
-    localObject1 = paramClass.getInterfaces();
-    int j = localObject1.length;
-    int i = 0;
-    Object localObject2;
-    while (i < j)
+    label541:
+    for (paramInt = 0;; paramInt = paramList.size())
     {
-      localObject2 = a(localObject1[i]).b.entrySet().iterator();
-      while (((Iterator)localObject2).hasNext())
+      int n = 0;
+      while (n < paramInt)
       {
-        localObject3 = (Map.Entry)((Iterator)localObject2).next();
-        a(localHashMap, (blyr)((Map.Entry)localObject3).getKey(), (blyy)((Map.Entry)localObject3).getValue(), paramClass);
+        a(n, (String)paramList.get(n));
+        n += 1;
       }
-      i += 1;
-    }
-    if (paramArrayOfMethod != null) {}
-    boolean bool;
-    for (;;)
-    {
-      int k = paramArrayOfMethod.length;
-      j = 0;
-      bool = false;
-      for (;;)
-      {
-        if (j >= k) {
-          break label347;
-        }
-        localObject1 = paramArrayOfMethod[j];
-        localObject2 = (blze)((Method)localObject1).getAnnotation(blze.class);
-        if (localObject2 != null) {
-          break;
-        }
-        j += 1;
-      }
-      paramArrayOfMethod = a(paramClass);
-    }
-    Object localObject3 = ((Method)localObject1).getParameterTypes();
-    if (localObject3.length > 0) {
-      if (!localObject3[0].isAssignableFrom(blzb.class)) {
-        throw new IllegalArgumentException("invalid parameter type. Must be one and instanceof LifecycleOwner");
-      }
-    }
-    for (i = 1;; i = 0)
-    {
-      int m = ((blze)localObject2).a();
-      if (localObject3.length > 1)
-      {
-        if (!localObject3[1].isAssignableFrom(blyy.class)) {
-          throw new IllegalArgumentException("invalid parameter type. second arg must be an event");
-        }
-        if (m != 6) {
-          throw new IllegalArgumentException("Second arg is supported only for ON_ANY value");
-        }
-        i = 2;
-      }
-      if (localObject3.length > 2) {
-        throw new IllegalArgumentException("cannot have more than 2 params");
-      }
-      a(localHashMap, new blyr(i, (Method)localObject1), blyy.a(m), paramClass);
-      bool = true;
+      this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
       break;
-      label347:
-      paramArrayOfMethod = new blyq(localHashMap);
-      this.jdField_a_of_type_JavaUtilMap.put(paramClass, paramArrayOfMethod);
-      this.b.put(paramClass, Boolean.valueOf(bool));
-      return paramArrayOfMethod;
     }
   }
   
-  private void a(Map<blyr, blyy> paramMap, blyr paramblyr, blyy paramblyy, Class paramClass)
+  private boolean a(float paramFloat1, float paramFloat2, RectF paramRectF, PointF paramPointF)
   {
-    blyy localblyy = (blyy)paramMap.get(paramblyr);
-    if ((localblyy != null) && (paramblyy != localblyy))
+    if ((paramRectF == null) || (paramPointF == null)) {}
+    do
     {
-      paramMap = paramblyr.a;
-      throw new IllegalArgumentException("Method " + paramMap.getName() + " in " + paramClass.getName() + " already declared with different @OnLifecycleEvent value: previous value " + localblyy + ", new value " + paramblyy);
+      return false;
+      paramRectF = new RectF(paramRectF.left + paramPointF.x, paramRectF.top + paramPointF.y, paramRectF.right + paramPointF.x, paramRectF.bottom + paramPointF.y);
+    } while ((paramFloat1 <= paramRectF.left) || (paramFloat1 >= paramRectF.right) || (paramFloat2 <= paramRectF.top) || (paramFloat2 >= paramRectF.bottom));
+    return true;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public int a()
+  {
+    return 2;
+  }
+  
+  public int a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    float f1 = paramFloat1 / a();
+    RectF localRectF1 = new RectF(this.jdField_b_of_type_AndroidGraphicsRectF.left * f1, this.jdField_b_of_type_AndroidGraphicsRectF.top * f1, this.jdField_b_of_type_AndroidGraphicsRectF.right * f1, this.jdField_b_of_type_AndroidGraphicsRectF.bottom * f1);
+    RectF localRectF2 = new RectF(this.jdField_a_of_type_AndroidGraphicsRectF.left * f1, this.jdField_a_of_type_AndroidGraphicsRectF.top * f1, this.jdField_a_of_type_AndroidGraphicsRectF.right * f1, f1 * this.jdField_a_of_type_AndroidGraphicsRectF.bottom);
+    PointF localPointF = new PointF(-paramFloat1 / 2.0F, -paramFloat2 / 2.0F);
+    if (a(paramFloat3, paramFloat4, localRectF1, localPointF)) {
+      return 1;
     }
-    if (localblyy == null) {
-      paramMap.put(paramblyr, paramblyy);
+    if (a(paramFloat3, paramFloat4, localRectF2, localPointF)) {
+      return 0;
+    }
+    return -1;
+  }
+  
+  public int a(MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2, @Nullable bmqz parambmqz, bmyi parambmyi)
+  {
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    if (parambmqz != null) {
+      return parambmyi.a(parambmqz, f1, f2);
+    }
+    paramMotionEvent = new PointF((paramFloat1 - a()) / 2.0F, (paramFloat2 - b()) / 2.0F);
+    if (a(f1, f2, this.jdField_b_of_type_AndroidGraphicsRectF, paramMotionEvent)) {
+      return 1;
+    }
+    if (a(f1, f2, this.jdField_a_of_type_AndroidGraphicsRectF, paramMotionEvent)) {
+      return 0;
+    }
+    return -1;
+  }
+  
+  public InputFilter a()
+  {
+    if (this.jdField_a_of_type_AndroidTextInputFilter == null) {
+      this.jdField_a_of_type_AndroidTextInputFilter = new blyq(this, 20);
+    }
+    return this.jdField_a_of_type_AndroidTextInputFilter;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if ((paramInt < 0) || (paramInt >= a())) {
+      return;
+    }
+    super.a(paramInt, paramString);
+    String str = super.b(paramInt);
+    paramString = str;
+    if (TextUtils.isEmpty(str)) {
+      paramString = "　　";
+    }
+    this.f = aepi.a(18.0F, BaseApplicationImpl.getContext().getResources());
+    if (paramInt == 0)
+    {
+      paramString = " " + paramString;
+      this.jdField_a_of_type_Blyw = new blyw(0);
+      this.jdField_a_of_type_Blyw.a(new blyh(-16777216, this.l, this.m));
+      this.jdField_a_of_type_Blyw.a(paramString, jdField_c_of_type_Int, this.k, this.jdField_b_of_type_AndroidTextTextPaint);
+      this.jdField_a_of_type_Float = Math.max(this.jdField_a_of_type_Blyw.a(), this.jdField_b_of_type_Blyw.a());
+      this.jdField_a_of_type_Float = Math.max(this.jdField_c_of_type_Blyw.a(), this.jdField_a_of_type_Float);
+      this.jdField_b_of_type_Float = (this.jdField_a_of_type_Blyw.b() + this.g + this.jdField_b_of_type_Blyw.b() + this.h + this.jdField_c_of_type_Blyw.b());
+      return;
+    }
+    if (paramString.length() > 18) {}
+    for (this.jdField_a_of_type_JavaLangString = paramString.substring(0, 18);; this.jdField_a_of_type_JavaLangString = paramString)
+    {
+      this.jdField_c_of_type_Blyw.a(this.jdField_c_of_type_JavaLangString + "\n" + this.jdField_a_of_type_JavaLangString, jdField_c_of_type_Int, this.j, this.jdField_a_of_type_AndroidTextTextPaint);
+      return;
     }
   }
   
-  private Method[] a(Class paramClass)
+  public void a(Canvas paramCanvas)
   {
-    try
+    this.e = 0;
+    this.jdField_a_of_type_Blyw.a(paramCanvas, 0, this.e);
+    this.e = ((int)(this.e + this.jdField_a_of_type_Blyw.b()));
+    this.e += this.g;
+    this.jdField_b_of_type_Blyw.a(paramCanvas, 0, this.e);
+    this.e = ((int)(this.e + this.jdField_b_of_type_Blyw.b()));
+    this.e += this.h;
+    this.jdField_c_of_type_Blyw.a(paramCanvas, 0, this.e);
+    if (super.b(1))
     {
-      paramClass = paramClass.getDeclaredMethods();
-      return paramClass;
+      this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_Blyw.a(2, this.jdField_c_of_type_Blyw.a()));
+      RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+      localRectF.top += this.e;
+      localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+      localRectF.bottom += this.e;
+      paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
     }
-    catch (NoClassDefFoundError paramClass)
+    this.e = ((int)(this.e + this.jdField_c_of_type_Blyw.b()));
+    if (super.b(0))
     {
-      throw new IllegalArgumentException("The observer class has some methods that use newer APIs which are not available in the current OS version. Lifecycles cannot access even other methods so you should make sure that your observer classes only access framework classes that are available in your min API level OR use lifecycle:compiler annotation processor.", paramClass);
+      this.jdField_b_of_type_AndroidGraphicsRectF.left = 0.0F;
+      this.jdField_a_of_type_AndroidGraphicsRectF.top = 0.0F;
+      this.jdField_a_of_type_AndroidGraphicsRectF.right = this.jdField_a_of_type_Blyw.a();
+      this.jdField_a_of_type_AndroidGraphicsRectF.bottom = this.jdField_a_of_type_Blyw.b();
+      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
     }
   }
   
-  blyq a(Class paramClass)
+  public boolean a()
   {
-    blyq localblyq = (blyq)this.jdField_a_of_type_JavaUtilMap.get(paramClass);
-    if (localblyq != null) {
-      return localblyq;
-    }
-    return a(paramClass, null);
+    return true;
   }
   
-  boolean a(Class paramClass)
+  public float b()
   {
-    if (this.b.containsKey(paramClass)) {
-      return ((Boolean)this.b.get(paramClass)).booleanValue();
-    }
-    Method[] arrayOfMethod = a(paramClass);
-    int j = arrayOfMethod.length;
-    int i = 0;
-    while (i < j)
-    {
-      if ((blze)arrayOfMethod[i].getAnnotation(blze.class) != null)
-      {
-        a(paramClass, arrayOfMethod);
-        return true;
-      }
-      i += 1;
-    }
-    this.b.put(paramClass, Boolean.valueOf(false));
-    return false;
+    return this.jdField_b_of_type_Float;
   }
 }
 

@@ -1,10 +1,15 @@
-import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 
-public abstract interface bldq
+class bldq
+  implements MediaPlayer.OnPreparedListener
 {
-  public abstract void b(NodeItem paramNodeItem);
+  bldq(bldk parambldk) {}
   
-  public abstract void c(NodeItem paramNodeItem);
+  public void onPrepared(MediaPlayer paramMediaPlayer)
+  {
+    paramMediaPlayer.start();
+  }
 }
 
 

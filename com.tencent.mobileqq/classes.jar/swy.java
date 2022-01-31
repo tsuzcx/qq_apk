@@ -99,11 +99,11 @@ public class swy
     switch (paramInt)
     {
     default: 
-      return paramContext.getResources().getDrawable(2130840084);
+      return paramContext.getResources().getDrawable(2130840085);
     case 1: 
-      return paramContext.getResources().getDrawable(2130840175);
+      return paramContext.getResources().getDrawable(2130840176);
     }
-    return paramContext.getResources().getDrawable(2130840180);
+    return paramContext.getResources().getDrawable(2130840181);
   }
   
   public static final String a()
@@ -111,7 +111,7 @@ public class swy
     if (b()) {
       return c();
     }
-    return alpo.a(2131717249);
+    return alud.a(2131717261);
   }
   
   public static String a(QQAppInterface paramQQAppInterface)
@@ -180,7 +180,7 @@ public class swy
       n = localSharedPreferences.getBoolean("readInJoy_loading_img", false);
       jdField_c_of_type_Boolean = localSharedPreferences.getBoolean("service_account_folder_redspots_delete", false);
       o = localSharedPreferences.getBoolean("big_data_share_channel", false);
-      localSet = bdiw.a(localSharedPreferences, "big_data_share_channel_urls", null);
+      localSet = bdnf.a(localSharedPreferences, "big_data_share_channel_urls", null);
       if (localSet != null) {
         jdField_a_of_type_JavaUtilArrayList = new ArrayList(localSet);
       }
@@ -222,16 +222,16 @@ public class swy
     if (jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap == null) {
       jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap = new PublicAccountConfigUtil.2(2011, 0, 1000);
     }
-    if (!a(paramQQAppInterface, paramContext, bdiv.e(paramContext)))
+    if (!a(paramQQAppInterface, paramContext, bdne.e(paramContext)))
     {
-      localObject = new swz(paramQQAppInterface, paramContext, 1, 2131696905, 2130840175);
+      localObject = new swz(paramQQAppInterface, paramContext, 1, 2131696907, 2130840176);
       jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(Integer.valueOf(1), localObject);
     }
-    Object localObject = bdiv.h(paramContext);
-    String str = bdiv.i(paramContext);
+    Object localObject = bdne.h(paramContext);
+    String str = bdne.i(paramContext);
     if ((TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(str)))
     {
-      paramQQAppInterface = new swz(paramQQAppInterface, paramContext, 2, 2131695738, 2130840180);
+      paramQQAppInterface = new swz(paramQQAppInterface, paramContext, 2, 2131695740, 2130840181);
       jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(Integer.valueOf(2), paramQQAppInterface);
     }
     for (;;)
@@ -601,13 +601,13 @@ public class swy
             break label3077;
           }
           bool = true;
-          bdiv.b((Context)localObject1, bool);
+          bdne.b((Context)localObject1, bool);
         }
         localObject1 = paramString.getElementsByTagName("channel_version");
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          i2 = bjxj.b(paramQQAppInterface);
+          i2 = bkbq.b(paramQQAppInterface);
           if (i1 <= i2) {
             break label2992;
           }
@@ -617,7 +617,7 @@ public class swy
           i3 = Integer.valueOf(((Element)localObject2).getFirstChild().getNodeValue()).intValue();
           localObject2 = String.valueOf(localElement.getFirstChild().getNodeValue());
           int i4 = Integer.valueOf(((Element)localObject1).getFirstChild().getNodeValue()).intValue();
-          bjxj.a(paramQQAppInterface, i3, (String)localObject2, i4);
+          bkbq.a(paramQQAppInterface, i3, (String)localObject2, i4);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "update channelInfo config. preversion -> version " + i2 + "->" + i1 + " channelID : " + i3 + " channelName: " + (String)localObject2 + " channelType: " + i4);
           }
@@ -631,7 +631,7 @@ public class swy
             break label3027;
           }
           bool = true;
-          bdiv.c((Context)localObject1, bool);
+          bdne.c((Context)localObject1, bool);
           localObject1 = rlb.a();
           if (i1 != 0) {
             break label3033;
@@ -650,7 +650,7 @@ public class swy
             break label3039;
           }
           bool = true;
-          bjxj.b(paramQQAppInterface, bool);
+          bkbq.b(paramQQAppInterface, bool);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "updateSupportMultiVideoSwitch， supportEnable = " + i1);
           }
@@ -664,7 +664,7 @@ public class swy
             break label3045;
           }
           bool = true;
-          bdiv.a((Context)localObject1, bool, paramQQAppInterface.c());
+          bdne.a((Context)localObject1, bool, paramQQAppInterface.c());
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "get interesrLableRn config " + i1);
           }
@@ -676,7 +676,7 @@ public class swy
             break label3051;
           }
           bool = true;
-          bjxj.d(paramQQAppInterface, bool);
+          bkbq.d(paramQQAppInterface, bool);
         }
         localObject1 = paramString.getElementsByTagName("video_social_switch");
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
@@ -688,7 +688,7 @@ public class swy
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "parse kandian video social switch = " + bool);
           }
-          bjxj.h(paramQQAppInterface, bool);
+          bkbq.h(paramQQAppInterface, bool);
         }
         localObject1 = paramString.getElementsByTagName("videochannel_video_autoplay");
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
@@ -697,7 +697,7 @@ public class swy
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "video channel auto play switch default value = " + i1);
           }
-          bjxj.b(paramQQAppInterface, i1);
+          bkbq.b(paramQQAppInterface, i1);
         }
         localObject1 = paramString.getElementsByTagName("video_jump_to");
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
@@ -706,13 +706,13 @@ public class swy
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "video jump default value = " + i1);
           }
-          bjxj.d(paramQQAppInterface, i1);
+          bkbq.d(paramQQAppInterface, i1);
         }
         localObject1 = paramString.getElementsByTagName("defaultBitRate");
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           localObject1 = (Element)((NodeList)localObject1).item(0);
-          bjxj.w(paramQQAppInterface, ((Element)localObject1).getFirstChild().getNodeValue());
+          bkbq.w(paramQQAppInterface, ((Element)localObject1).getFirstChild().getNodeValue());
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "defaultBitRate value = " + ((Element)localObject1).getFirstChild().getNodeValue());
           }
@@ -721,7 +721,7 @@ public class swy
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bjxj.e(paramQQAppInterface, i1);
+          bkbq.e(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "CUKingCardDlg value = " + i1);
           }
@@ -730,7 +730,7 @@ public class swy
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bjxj.m(paramQQAppInterface, i1);
+          bkbq.m(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "video_channel_style value = " + i1);
           }
@@ -739,7 +739,7 @@ public class swy
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bjxj.n(paramQQAppInterface, i1);
+          bkbq.n(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "video_dynamic_recommend_strategyid value = " + i1);
           }
@@ -748,7 +748,7 @@ public class swy
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bjxj.o(paramQQAppInterface, i1);
+          bkbq.o(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "video_dynamic_recommend_duration_limit value = " + i1);
           }
@@ -757,7 +757,7 @@ public class swy
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           float f1 = Float.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).floatValue();
-          bjxj.a(paramQQAppInterface, f1);
+          bkbq.a(paramQQAppInterface, f1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "video_dynamic_recommend_duration_percent value = " + f1);
           }
@@ -766,7 +766,7 @@ public class swy
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bjxj.p(paramQQAppInterface, i1);
+          bkbq.p(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "video_dynamic_recommend_operator value = " + i1);
           }
@@ -775,7 +775,7 @@ public class swy
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bjxj.q(paramQQAppInterface, i1);
+          bkbq.q(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "web_viola_render_switch value = " + i1);
           }
@@ -784,7 +784,7 @@ public class swy
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bjxj.r(paramQQAppInterface, i1);
+          bkbq.r(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "web_viola_render_mode value = " + i1);
           }
@@ -796,7 +796,7 @@ public class swy
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "video flow video channel auto play switch default value = " + i1);
           }
-          bjxj.c(paramQQAppInterface, i1);
+          bkbq.c(paramQQAppInterface, i1);
         }
         localObject1 = paramString.getElementsByTagName("click_videocard_jump_comment");
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
@@ -805,13 +805,13 @@ public class swy
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "video channel feeds click switch default value = " + i1);
           }
-          bjxj.a(paramQQAppInterface, i1);
+          bkbq.a(paramQQAppInterface, i1);
         }
         localObject1 = paramString.getElementsByTagName("viola_dynamic_switch");
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bjxj.s(paramQQAppInterface, i1);
+          bkbq.s(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "viola dynamic default value = " + i1);
           }
@@ -820,7 +820,7 @@ public class swy
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bjxj.t(paramQQAppInterface, i1);
+          bkbq.t(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "viola dynamic weishi default value = " + i1);
           }
@@ -829,7 +829,7 @@ public class swy
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bjxj.u(paramQQAppInterface, i1);
+          bkbq.u(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "viola dynamic discover default value = " + i1);
           }
@@ -839,7 +839,7 @@ public class swy
           break label3063;
         }
         i1 = Integer.valueOf(((Element)paramString.item(0)).getFirstChild().getNodeValue()).intValue();
-        bjxj.v(paramQQAppInterface, i1);
+        bkbq.v(paramQQAppInterface, i1);
         if (!QLog.isColorLevel()) {
           break label3063;
         }
@@ -927,7 +927,7 @@ public class swy
     if (b()) {
       return c();
     }
-    return alpo.a(2131717249);
+    return alud.a(2131717261);
   }
   
   public static String b(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -942,9 +942,9 @@ public class swy
     default: 
       return null;
     case 1: 
-      return paramContext.getString(2131696905);
+      return paramContext.getString(2131696907);
     }
-    return paramContext.getString(2131695738);
+    return paramContext.getString(2131695740);
   }
   
   public static void b(QQAppInterface paramQQAppInterface)
@@ -954,7 +954,7 @@ public class swy
   
   public static boolean b()
   {
-    return "1".equals((String)yuh.a().a("subscribe_entrance_enable", "0"));
+    return "1".equals((String)yyw.a().a("subscribe_entrance_enable", "0"));
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
@@ -977,16 +977,16 @@ public class swy
           if ((localObject != null) && (((NodeList)localObject).getLength() > 0))
           {
             i1 = Integer.valueOf(((Element)((NodeList)localObject).item(0)).getFirstChild().getNodeValue()).intValue();
-            if (i1 > bdiv.y(paramQQAppInterface.getApp()))
+            if (i1 > bdne.y(paramQQAppInterface.getApp()))
             {
               localObject = (Element)paramString.getElementsByTagName("name").item(0);
               paramString = (Element)paramString.getElementsByTagName("icon").item(0);
               localObject = ((Element)localObject).getFirstChild().getNodeValue();
               paramString = paramString.getFirstChild().getNodeValue();
               if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramString))) {
-                bdiv.a(paramQQAppInterface.getApp(), (String)localObject, paramString);
+                bdne.a(paramQQAppInterface.getApp(), (String)localObject, paramString);
               }
-              bdiv.p(paramQQAppInterface.getApp(), i1);
+              bdne.p(paramQQAppInterface.getApp(), i1);
               return false;
             }
           }
@@ -1030,7 +1030,7 @@ public class swy
   
   private static final String c()
   {
-    return (String)yuh.a().a("subscribe_account_title", yuh.jdField_c_of_type_JavaLangString);
+    return (String)yyw.a().a("subscribe_account_title", yyw.jdField_c_of_type_JavaLangString);
   }
   
   public static String c(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -1065,8 +1065,8 @@ public class swy
   
   public static boolean c()
   {
-    String str1 = (String)yuh.a().a("subscribe_entrance_enable", "0");
-    String str2 = (String)yuh.a().a("newfollowlist", "1");
+    String str1 = (String)yyw.a().a("subscribe_entrance_enable", "0");
+    String str2 = (String)yyw.a().a("newfollowlist", "1");
     return ("1".equals(str1)) || ("1".equals(str2));
   }
 }

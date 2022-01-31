@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
-public final class bbfo
-  implements QQPermissionCallback
+public class bbfo
+  implements InputFilter
 {
-  public bbfo(BaseActivity paramBaseActivity) {}
+  public bbfo(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (!this.a.isFinishing()) {
-      bdcd.b(this.a);
+    if (paramCharSequence != null)
+    {
+      paramCharSequence = paramCharSequence.toString();
+      if (bcmc.a(paramCharSequence, '\n') + bcmc.a(paramSpanned.toString(), '\n') > 100) {
+        return paramCharSequence.replaceAll("\n", "");
+      }
     }
+    return null;
   }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

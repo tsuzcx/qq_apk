@@ -1,68 +1,23 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.widget.Scroller;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-class ajrj
-  implements GestureDetector.OnGestureListener
+public class ajrj
+  implements Animation.AnimationListener
 {
-  ajrj(ajri paramajri) {}
+  public ajrj(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ajri.a(this.a).forceFinished(true);
-    return true;
-  }
-  
-  public boolean onFling(MotionEvent arg1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    synchronized (this.a)
-    {
-      ajri.a(this.a).fling((int)ajri.a(this.a), 0, (int)-paramFloat1, 0, (int)ajri.b(this.a), (int)ajri.c(this.a), 0, 0);
-      ajri.b(this.a);
-      return true;
+    if (NewFlowCameraActivity.b(this.a) != null) {
+      NewFlowCameraActivity.b(this.a).setVisibility(4);
     }
   }
   
-  public void onLongPress(MotionEvent paramMotionEvent) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public boolean onScroll(MotionEvent arg1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    do
-    {
-      synchronized (this.a)
-      {
-        ajri.a(this.a, ajri.a(this.a) + paramFloat1);
-        if (ajri.a(this.a) < ajri.b(this.a)) {
-          ajri.a(this.a, ajri.b(this.a));
-        }
-        if (ajri.a(this.a) > ajri.c(this.a)) {
-          ajri.a(this.a, ajri.c(this.a));
-        }
-        paramFloat1 = ajri.a(this.a);
-        paramFloat2 = ajri.d(this.a);
-        ajri.b(this.a, ajri.a(this.a));
-        if (ajri.a(this.a, paramFloat1 - paramFloat2, 0.0F)) {
-          return true;
-        }
-      }
-      ajri.a(this.a);
-      if (ajri.a(this.a) != null) {
-        ajri.a(this.a).a(ajri.a(this.a), ajri.b(this.a));
-      }
-      if (ajri.a(this.a) != null) {
-        ajri.a(this.a).invalidate();
-      }
-    } while (ajri.a(this.a) == null);
-    ajri.a(this.a).a(ajri.a(this.a), -ajri.a(this.a), ajri.e(this.a) - ajri.a(this.a));
-    return true;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

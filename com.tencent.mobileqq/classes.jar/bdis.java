@@ -1,24 +1,38 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class bdis
-  extends alsi
+class bdis
+  implements View.OnClickListener
 {
-  public void a(boolean paramBoolean, long paramLong, alsj paramalsj)
+  bdis(bdio parambdio) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramalsj != null)
+    switch (bdio.a(this.a))
     {
-      StringBuilder localStringBuilder = new StringBuilder(256);
-      localStringBuilder.append("StatictisInfo[ ");
-      localStringBuilder.append("appSeq: " + paramalsj.jdField_a_of_type_Int);
-      localStringBuilder.append("errCode: " + paramalsj.b);
-      localStringBuilder.append("retryCount: " + paramalsj.c);
-      localStringBuilder.append("detailErrorReason: " + paramalsj.jdField_a_of_type_Long);
-      localStringBuilder.append("timeoutReason: " + paramalsj.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(" ]");
-      QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + "," + localStringBuilder.toString());
+    default: 
+      return;
+    case 1: 
+      bflp.c("NewUpgradeDialog", "onclick right btn  state = STATE_INIT");
+      bdio.a(this.a);
+      return;
+    case 4: 
+      bdio.b(this.a);
+      bflp.c("NewUpgradeDialog", "onclick right btn  state = STATE_COMPLETE");
+      return;
+    case 10: 
+      bflp.c("NewUpgradeDialog", "onclick right btn  state = STATE_CANCEL");
+      return;
+    case 3: 
+      bdio.c(this.a);
+      bflp.c("NewUpgradeDialog", "onclick right btn  state = STATE_PAUSE");
+      return;
+    case 2: 
+      this.a.c();
+      bflp.c("NewUpgradeDialog", "onclick right btn  state = STATE_DOWNLOADING");
       return;
     }
-    QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + ",statictisInfo == null");
+    bflp.c("NewUpgradeDialog", "onclick right btn  state = STATE_WAIT");
   }
 }
 

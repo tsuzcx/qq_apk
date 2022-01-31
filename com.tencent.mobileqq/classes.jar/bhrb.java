@@ -1,60 +1,53 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.widget.AutoVerticalScrollTextView;
-
 public class bhrb
-  extends Animation
 {
-  private float jdField_a_of_type_Float;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private final boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private final boolean jdField_b_of_type_Boolean;
+  public static boolean a;
+  private static volatile boolean b;
   
-  public bhrb(AutoVerticalScrollTextView paramAutoVerticalScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
+  /* Error */
+  public static void a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.jdField_b_of_type_Float;
-    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
-    int i;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      i = 1;
-      paramTransformation = paramTransformation.getMatrix();
-      localCamera.save();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label99;
-      }
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
-    }
-    for (;;)
-    {
-      localCamera.getMatrix(paramTransformation);
-      localCamera.restore();
-      paramTransformation.preTranslate(-f1, -f2);
-      paramTransformation.postTranslate(f1, f2);
-      return;
-      i = -1;
-      break;
-      label99:
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
-    }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.getHeight();
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.getWidth();
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 10	bhrb:b	Z
+    //   6: istore_0
+    //   7: iload_0
+    //   8: ifeq +7 -> 15
+    //   11: ldc 2
+    //   13: monitorexit
+    //   14: return
+    //   15: invokestatic 16	com/tencent/sveffects/SdkContext:getInstance	()Lcom/tencent/sveffects/SdkContext;
+    //   18: ldc 18
+    //   20: invokestatic 24	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   23: new 26	bhrf
+    //   26: dup
+    //   27: invokespecial 29	bhrf:<init>	()V
+    //   30: new 31	bhrm
+    //   33: dup
+    //   34: invokespecial 32	bhrm:<init>	()V
+    //   37: new 34	bhri
+    //   40: dup
+    //   41: invokespecial 35	bhri:<init>	()V
+    //   44: new 37	bhrl
+    //   47: dup
+    //   48: invokespecial 38	bhrl:<init>	()V
+    //   51: invokevirtual 42	com/tencent/sveffects/SdkContext:init	(Ljava/lang/String;Landroid/app/Application;Lcom/tencent/sveffects/DpcSwitcher;Lcom/tencent/mobileqq/shortvideo/resource/Resources;Lcom/tencent/sveffects/Logger;Lcom/tencent/sveffects/Reporter;)V
+    //   54: iconst_1
+    //   55: putstatic 10	bhrb:b	Z
+    //   58: goto -47 -> 11
+    //   61: astore_1
+    //   62: ldc 2
+    //   64: monitorexit
+    //   65: aload_1
+    //   66: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   6	2	0	bool	boolean
+    //   61	5	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	7	61	finally
+    //   15	58	61	finally
   }
 }
 

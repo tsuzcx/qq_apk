@@ -1,10 +1,8 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public abstract interface aljk
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt, Bitmap paramBitmap);
+  public abstract void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3);
 }
 
 

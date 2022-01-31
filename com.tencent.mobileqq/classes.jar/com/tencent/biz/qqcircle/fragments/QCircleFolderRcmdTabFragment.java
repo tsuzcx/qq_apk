@@ -1,35 +1,42 @@
 package com.tencent.biz.qqcircle.fragments;
 
-import alpo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.component.ComponentPageView;
-import com.tencent.biz.qqcircle.widgets.QCircleStatusView;
+import com.tencent.biz.qqcircle.component.QCircleComponentPageView;
+import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
 import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
 import java.util.ArrayList;
 import java.util.List;
-import trj;
-import trl;
-import tvm;
-import twf;
-import tyj;
-import tym;
-import tzm;
-import ydp;
-import yeb;
+import tro;
+import trq;
+import tvw;
+import tww;
+import tzv;
+import tzy;
+import ubm;
+import yhy;
+import yiw;
+import yiy;
 
 public class QCircleFolderRcmdTabFragment
   extends QCircleBaseTabFragment
+  implements yiy
 {
-  public static String k = "QCircleFolderRcmdTabFragment";
-  private trj a;
+  public static String j = "QCircleFolderRcmdTabFragment";
+  private tro a;
+  
+  public String a()
+  {
+    return j;
+  }
   
   public void a(int paramInt)
   {
@@ -39,109 +46,21 @@ public class QCircleFolderRcmdTabFragment
   public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_Tvm.a().a().addOnScrollListener(new twf(this));
+    this.jdField_a_of_type_Tvw.a().a().addOnScrollListener(new tww(this));
+    yiw.a().a(this);
   }
   
-  protected void a(tzm<List<FeedCloudMeta.StFeed>> paramtzm)
-  {
-    int j = 0;
-    if (paramtzm == null)
-    {
-      QLog.e(k, 1, "handleFeedDataRsp() return unexpected data！");
-      return;
-    }
-    boolean bool = paramtzm.a();
-    int i = j;
-    switch (paramtzm.a())
-    {
-    default: 
-      i = j;
-    }
-    while ((i != 0) && (this.jdField_a_of_type_Trl != null))
-    {
-      this.jdField_a_of_type_Trl.a(true, bool);
-      return;
-      QLog.e(k, 1, "handleFeedDataRsp() return empty");
-      if ((paramtzm.b()) && (this.jdField_a_of_type_Trl != null) && (this.jdField_a_of_type_Trl.getItemCount() > 0))
-      {
-        this.jdField_a_of_type_Trl.a().a(bool);
-        i = 1;
-      }
-      else
-      {
-        if ((this.jdField_a_of_type_Trl != null) && (!this.jdField_a_of_type_Trl.a()))
-        {
-          if ((this.jdField_a_of_type_Trl.getItemCount() <= 0) && (this.jdField_a_of_type_Trj.getItemCount() <= 0)) {
-            break label197;
-          }
-          QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131720466), 1).a();
-        }
-        for (;;)
-        {
-          i = 1;
-          break;
-          label197:
-          if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView != null) {
-            this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView.d();
-          }
-        }
-        if (paramtzm.a() == null) {}
-        for (paramtzm = alpo.a(2131720466);; paramtzm = paramtzm.a())
-        {
-          QLog.e(k, 1, "handleFeedDataRsp() return error！errMsg:" + paramtzm);
-          if ((this.jdField_a_of_type_Trl == null) || (this.jdField_a_of_type_Trl.a())) {
-            break label432;
-          }
-          if ((this.jdField_a_of_type_Trl.getItemCount() <= 0) && (this.jdField_a_of_type_Trj.getItemCount() <= 0)) {
-            break label316;
-          }
-          QQToast.a(BaseApplicationImpl.getContext(), 1, paramtzm, 1).a();
-          i = 1;
-          break;
-        }
-        label316:
-        if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView != null)
-        {
-          this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView.d(paramtzm);
-          i = 1;
-          continue;
-          if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView != null) {
-            this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView.c();
-          }
-          if (this.jdField_a_of_type_Trl != null)
-          {
-            if (paramtzm.b()) {
-              this.jdField_a_of_type_Trl.a((List)paramtzm.a());
-            }
-            for (;;)
-            {
-              this.jdField_a_of_type_Trl.a().a(bool);
-              i = 1;
-              break;
-              this.jdField_a_of_type_Trl.a((ArrayList)paramtzm.a());
-              if (d.equals(b())) {
-                this.jdField_a_of_type_Trl.Q_();
-              }
-            }
-          }
-        }
-        label432:
-        i = 1;
-      }
-    }
-  }
-  
-  public String b()
-  {
-    return i;
-  }
-  
-  protected List<ydp> b()
+  protected List<yhy> b()
   {
     ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_Trj = new trj(null);
-    localArrayList.add(this.jdField_a_of_type_Trj);
+    this.jdField_a_of_type_Tro = new tro(null);
+    localArrayList.add(this.jdField_a_of_type_Tro);
     return localArrayList;
+  }
+  
+  public String c()
+  {
+    return h;
   }
   
   public void c()
@@ -149,30 +68,102 @@ public class QCircleFolderRcmdTabFragment
     super.c();
   }
   
+  protected boolean c()
+  {
+    return ((this.jdField_a_of_type_Trq != null) && (this.jdField_a_of_type_Trq.getItemCount() > 0)) || ((this.jdField_a_of_type_Tro != null) && (this.jdField_a_of_type_Tro.getItemCount() > 0));
+  }
+  
   protected void d()
   {
     super.d();
-    this.jdField_a_of_type_Trj.a(this.jdField_a_of_type_Tzb, this);
+    this.jdField_a_of_type_Tro.a(this.jdField_a_of_type_Ubm, this);
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(QCircleFeedEvent.class);
+    return localArrayList;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    yiw.a().b(this);
   }
   
   public void onDetach()
   {
+    QLog.d(j, 1, "QCircleFolderRcmdTabFragment->onDetach");
     super.onDetach();
-    tym.a().a(3);
+    tzy.a().a(3);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if (((paramSimpleBaseEvent instanceof QCircleFeedEvent)) && (((QCircleFeedEvent)paramSimpleBaseEvent).mState == 3))
+    {
+      paramSimpleBaseEvent = ((QCircleFeedEvent)paramSimpleBaseEvent).mTargetId;
+      if (!TextUtils.isEmpty(paramSimpleBaseEvent)) {
+        break label34;
+      }
+    }
+    label148:
+    for (;;)
+    {
+      return;
+      label34:
+      if (this.jdField_a_of_type_Ubm != null) {
+        this.jdField_a_of_type_Ubm.c(paramSimpleBaseEvent);
+      }
+      if (this.jdField_a_of_type_Trq != null)
+      {
+        ArrayList localArrayList = this.jdField_a_of_type_Trq.getDataList();
+        if (localArrayList != null)
+        {
+          int i = 0;
+          int k = localArrayList.size();
+          if (i < k) {
+            if (!paramSimpleBaseEvent.equals(((FeedCloudMeta.StFeed)localArrayList.get(i)).id.get())) {}
+          }
+          for (;;)
+          {
+            if (i < 0) {
+              break label148;
+            }
+            try
+            {
+              this.jdField_a_of_type_Trq.delete(i);
+              this.jdField_a_of_type_Trq.notifyItemRemoved(i);
+              return;
+            }
+            catch (Throwable paramSimpleBaseEvent)
+            {
+              QLog.e(j, 1, "onReceiveEvent() delete local feed error!", paramSimpleBaseEvent);
+              return;
+            }
+            i += 1;
+            break;
+            i = -1;
+          }
+        }
+      }
+    }
   }
   
   public void setUserVisibleHint(boolean paramBoolean)
   {
+    QLog.d(j, 1, "QCircleFolderRcmdTabFragment->setUserVisibleHint:" + paramBoolean);
     super.setUserVisibleHint(paramBoolean);
     if (paramBoolean)
     {
-      if (tym.a().b(3)) {
-        tym.a().a(getActivity().getIntent());
+      if (tzy.a().b(3)) {
+        tzy.a().a(getActivity().getIntent());
       }
-      tyj.a("", 23, 1L);
+      tzv.a("", 23, 1L);
       return;
     }
-    tym.a().a(3);
+    tzy.a().a(3);
   }
 }
 

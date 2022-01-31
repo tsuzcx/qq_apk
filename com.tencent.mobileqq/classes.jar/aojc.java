@@ -1,92 +1,37 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.confess.ConfessPlugin;
+import com.tencent.mobileqq.confess.ConfessPlugin.5;
+import com.tencent.mobileqq.confess.ConfessPlugin.5.1;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class aojc
-  extends aofy<aojd>
+  implements bfah
 {
-  public static int a = 16777216;
-  public static int b = 10240;
+  public aojc(ConfessPlugin.5.1 param1) {}
   
-  public int a()
+  public void a(BaseResp paramBaseResp)
   {
-    return 561;
-  }
-  
-  @NonNull
-  public aojd a(int paramInt)
-  {
-    aojd localaojd = new aojd();
-    localaojd.a = a;
-    localaojd.b = b;
-    return localaojd;
-  }
-  
-  @Nullable
-  public aojd a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length == 0)) {
-      return new aojd();
-    }
-    paramArrayOfaogf = paramArrayOfaogf[0].a;
     if (QLog.isColorLevel()) {
-      QLog.d("FavLocalEmoticonsProcessor", 2, "onParsed, content:" + paramArrayOfaogf);
+      QLog.d("ConfessPlugin", 2, "onWXShareResp resp.errCode=" + paramBaseResp.errCode);
     }
-    aojd localaojd = new aojd();
-    try
+    switch (paramBaseResp.errCode)
     {
-      JSONObject localJSONObject = new JSONObject(paramArrayOfaogf);
-      localaojd.a = Integer.valueOf(localJSONObject.getString("maxPicSize")).intValue();
-      localaojd.b = Integer.valueOf(localJSONObject.getString("maxLongSideLen")).intValue();
-      return localaojd;
+    case -1: 
+    default: 
+      ConfessPlugin.a(this.a.a.this$0, false);
+      ConfessPlugin.a(this.a.a.this$0, 1, 2131720031);
+      return;
+    case 0: 
+      ConfessPlugin.a(this.a.a.this$0, true);
+      ConfessPlugin.a(this.a.a.this$0, 2, 2131720050);
+      return;
     }
-    catch (Exception localException)
-    {
-      QLog.d("FavLocalEmoticonsProcessor", 1, "onParsed error, content:" + paramArrayOfaogf);
-      localaojd.a = a;
-      localaojd.b = b;
-    }
-    return localaojd;
-  }
-  
-  public Class a()
-  {
-    return aojd.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FavLocalEmoticonsProcessor", 2, "onReqFailed");
-    }
-  }
-  
-  public void a(aojd paramaojd)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FavLocalEmoticonsProcessor", 2, "onUpdate");
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    ConfessPlugin.a(this.a.a.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aojc
  * JD-Core Version:    0.7.0.1
  */

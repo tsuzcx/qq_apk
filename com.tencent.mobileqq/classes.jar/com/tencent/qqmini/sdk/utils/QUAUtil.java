@@ -10,8 +10,8 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import android.webkit.WebSettings;
-import bgkn;
-import bgte;
+import bgou;
+import bgxl;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
@@ -39,7 +39,7 @@ public class QUAUtil
   
   public static String getLoginType()
   {
-    int i = bgte.a().a();
+    int i = bgxl.a().a();
     return sLoginTypeList[i];
   }
   
@@ -79,9 +79,9 @@ public class QUAUtil
     ((StringBuilder)localObject).append("a=").append(Build.VERSION.SDK_INT).append('&');
     ((StringBuilder)localObject).append("p=").append(paramContext.widthPixels).append('*').append(paramContext.heightPixels).append('&');
     ((StringBuilder)localObject).append("f=").append(Build.MANUFACTURER).append('&');
-    ((StringBuilder)localObject).append("mm=").append(bgkn.b() / 1048576L).append('&');
-    ((StringBuilder)localObject).append("cf=").append(bgkn.c()).append('&');
-    ((StringBuilder)localObject).append("cc=").append(bgkn.b()).append('&');
+    ((StringBuilder)localObject).append("mm=").append(bgou.b() / 1048576L).append('&');
+    ((StringBuilder)localObject).append("cf=").append(bgou.c()).append('&');
+    ((StringBuilder)localObject).append("cc=").append(bgou.b()).append('&');
     ((StringBuilder)localObject).append("qqversion=").append(localMiniAppProxy.getAppVersion());
     return ((StringBuilder)localObject).toString();
   }

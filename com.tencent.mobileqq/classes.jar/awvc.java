@@ -1,76 +1,63 @@
-import android.text.TextUtils;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import android.widget.ImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
+import com.tencent.mobileqq.vas.PendantInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.SoftReference;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class awvc
-  implements bapx
+  implements Handler.Callback
 {
-  String jdField_a_of_type_JavaLangString;
-  SoftReference<QQAppInterface> jdField_a_of_type_JavaLangRefSoftReference;
-  String b;
-  String c;
-  String d;
+  public awvc(ProfileHeaderView paramProfileHeaderView) {}
   
-  public awvc(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString3;
-    this.c = paramString2;
-    this.d = paramString4;
-  }
-  
-  public void onResp(baqw parambaqw)
-  {
-    try
+    if (QLog.isDevelopLevel()) {
+      QLog.i(ProfileHeaderView.jdField_a_of_type_JavaLangString, 4, String.format(Locale.getDefault(), "mUICallback [%d]", new Object[] { Integer.valueOf(paramMessage.what) }));
+    }
+    if (ProfileHeaderView.jdField_b_of_type_Int == paramMessage.what)
     {
-      if (parambaqw.a == 0)
-      {
-        QLog.i("QbossPreDownloadManager", 1, "ResFile has download!");
-        if (TextUtils.isEmpty(this.c)) {
-          return;
-        }
-        if (arof.b(this.c))
-        {
-          parambaqw = new File(this.c);
-          File localFile = new File(this.c.substring(0, this.c.lastIndexOf(".")));
-          if (!parambaqw.renameTo(localFile)) {
-            return;
-          }
-          long l = localFile.length();
-          parambaqw = (QQAppInterface)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-          if (parambaqw != null)
-          {
-            parambaqw = (bavr)parambaqw.getManager(193);
-            if (parambaqw.a())
-            {
-              QLog.i("QbossPreDownloadManager", 1, "preDownloadSuccess");
-              parambaqw.a(this.b, l);
-            }
-          }
-          bjmf.a().c(this.d, null);
-          return;
-        }
-        awva.a(this.b, this.jdField_a_of_type_JavaLangRefSoftReference, this.jdField_a_of_type_JavaLangString, "2");
-        QLog.i("QbossPreDownloadManager", 1, "ResFile check not exist");
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView handleMessage msg what is check tips time=" + this.a.jdField_a_of_type_Int);
+      }
+      if ((this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
+        this.a.k(this.a.jdField_a_of_type_Awqt);
       }
     }
-    catch (Exception parambaqw)
+    do
     {
-      QLog.e("QbossPreDownloadManager", 1, parambaqw, new Object[0]);
-      return;
-    }
-    if (parambaqw.a == 1)
+      do
+      {
+        return true;
+      } while (ProfileHeaderView.c != paramMessage.what);
+      localObject = (View)this.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_avatar_pendant");
+    } while (!(localObject instanceof ImageView));
+    Object localObject = (ImageView)localObject;
+    paramMessage = (ExtensionInfo)paramMessage.obj;
+    if ((paramMessage != null) && (paramMessage.isPendantValid()))
     {
-      awva.a(this.b, this.jdField_a_of_type_JavaLangRefSoftReference, this.jdField_a_of_type_JavaLangString, "1");
-      QLog.i("QbossPreDownloadManager", 1, "ResFile dowload faield");
+      this.a.jdField_a_of_type_Long = paramMessage.pendantId;
+      AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
+      ((ImageView)localObject).setVisibility(0);
+      if (bdfp.a(this.a.jdField_a_of_type_Long))
+      {
+        localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 2, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
+        return true;
+      }
+      localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 1, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
+      return true;
     }
+    ((ImageView)localObject).setVisibility(4);
+    this.a.jdField_a_of_type_Long = 0L;
+    return true;
   }
-  
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 

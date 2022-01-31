@@ -1,11 +1,6 @@
-import java.io.File;
-
-public class blfx
+class blfx
 {
-  public static final String a = bklb.a + File.separator + "ae_editor";
-  public static final String b = a + File.separator + "resources";
-  public static final String c = a + File.separator + "generated_images";
-  public static final String d = a + File.separator + "generated_videos";
+  private static final blfv a = new blfv(null);
 }
 
 

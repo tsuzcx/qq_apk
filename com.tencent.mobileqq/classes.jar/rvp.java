@@ -51,7 +51,7 @@ public class rvp
     ((ViewGroup.LayoutParams)localObject).width = this.jdField_a_of_type_Int;
     paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     rvr.a(localrvr).setText(parampha.jdField_a_of_type_JavaLangString);
-    rvr.b(localrvr).setText(bjxj.a(parampha.jdField_c_of_type_Int));
+    rvr.b(localrvr).setText(bkbq.a(parampha.jdField_c_of_type_Int));
     paramView = URLDrawable.URLDrawableOptions.obtain();
     localObject = new ColorDrawable(0);
     paramView.mFailedDrawable = ((Drawable)localObject);
@@ -67,7 +67,7 @@ public class rvp
     paramList = BaseApplicationImpl.getApplication().getResources();
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 2))
     {
-      this.jdField_a_of_type_Int = ((int)((paramList.getDisplayMetrics().widthPixels - aekt.a(11.0F, paramList) - aekt.a(24, paramList)) * 0.5F));
+      this.jdField_a_of_type_Int = ((int)((paramList.getDisplayMetrics().widthPixels - aepi.a(11.0F, paramList) - aepi.a(24, paramList)) * 0.5F));
       this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
     }
     for (;;)
@@ -76,12 +76,12 @@ public class rvp
       return;
       if (this.jdField_a_of_type_JavaUtilList.size() == 3)
       {
-        this.jdField_a_of_type_Int = ((int)((paramList.getDisplayMetrics().widthPixels - aekt.a(15.0F, paramList) - aekt.a(24, paramList)) / 3.0F));
+        this.jdField_a_of_type_Int = ((int)((paramList.getDisplayMetrics().widthPixels - aepi.a(15.0F, paramList) - aepi.a(24, paramList)) / 3.0F));
         this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
       }
       else
       {
-        this.jdField_a_of_type_Int = ((int)((paramList.getDisplayMetrics().widthPixels - aekt.a(15.0F, paramList) - aekt.a(12, paramList)) / 2.5F));
+        this.jdField_a_of_type_Int = ((int)((paramList.getDisplayMetrics().widthPixels - aepi.a(15.0F, paramList) - aepi.a(12, paramList)) / 2.5F));
         this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(1);
       }
     }
@@ -115,11 +115,11 @@ public class rvp
       paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
       if (this.jdField_a_of_type_Boolean)
       {
-        paramView = paramView.inflate(2131560115, paramViewGroup, false);
+        paramView = paramView.inflate(2131560114, paramViewGroup, false);
         paramViewGroup = new rvr(this, null);
-        rvr.a(paramViewGroup, (ImageView)paramView.findViewById(2131363792));
-        rvr.a(paramViewGroup, (TextView)paramView.findViewById(2131363793));
-        rvr.b(paramViewGroup, (TextView)paramView.findViewById(2131363783));
+        rvr.a(paramViewGroup, (ImageView)paramView.findViewById(2131363794));
+        rvr.a(paramViewGroup, (TextView)paramView.findViewById(2131363795));
+        rvr.b(paramViewGroup, (TextView)paramView.findViewById(2131363785));
         paramView.setTag(paramViewGroup);
       }
     }
@@ -130,7 +130,7 @@ public class rvp
         a(paramViewGroup, paramView);
       }
       return paramView;
-      paramView = paramView.inflate(2131561382, paramViewGroup, false);
+      paramView = paramView.inflate(2131561400, paramViewGroup, false);
       break;
     }
   }

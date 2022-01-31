@@ -1,16 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import dov.com.qq.im.aeeditor.module.clip.image.AEEditorImageClipFragment;
+import android.widget.EditText;
 
 class blhr
   implements View.OnClickListener
 {
-  blhr(blhq paramblhq, int paramInt) {}
+  blhr(blhn paramblhn) {}
   
   public void onClick(View paramView)
   {
-    AEEditorImageClipFragment.a(this.jdField_a_of_type_Blhq.a, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Blhq.notifyDataSetChanged();
+    blhn.a(this.a).setText("");
   }
 }
 

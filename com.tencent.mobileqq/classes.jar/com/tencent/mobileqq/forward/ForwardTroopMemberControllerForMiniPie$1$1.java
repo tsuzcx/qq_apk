@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.forward;
 
-import asag;
-import asak;
+import asep;
+import aset;
 import java.util.List;
 
 class ForwardTroopMemberControllerForMiniPie$1$1
@@ -11,10 +11,10 @@ class ForwardTroopMemberControllerForMiniPie$1$1
   
   public void run()
   {
-    if (asag.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardTroopMemberControllerForMiniPie$1.this$0) != null)
+    if (asep.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardTroopMemberControllerForMiniPie$1.this$0) != null)
     {
-      asag.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardTroopMemberControllerForMiniPie$1.this$0);
-      asag.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardTroopMemberControllerForMiniPie$1.this$0).a(this.jdField_a_of_type_JavaUtilList);
+      asep.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardTroopMemberControllerForMiniPie$1.this$0);
+      asep.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardTroopMemberControllerForMiniPie$1.this$0).a(this.jdField_a_of_type_JavaUtilList);
     }
   }
 }

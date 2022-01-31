@@ -63,7 +63,7 @@ public class rcz
   public rcz(QQAppInterface paramQQAppInterface, Activity paramActivity, raw paramraw, VideoFeedsRecyclerView paramVideoFeedsRecyclerView)
   {
     this.jdField_a_of_type_Rcy = new rcy(paramQQAppInterface);
-    this.jdField_a_of_type_Int = bcwh.a(paramActivity, 3.0F);
+    this.jdField_a_of_type_Int = bdaq.a(paramActivity, 3.0F);
     this.jdField_a_of_type_Raw = paramraw;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_Nos = new nos(paramActivity, true, paramVideoFeedsRecyclerView);
@@ -83,12 +83,12 @@ public class rcz
     this.jdField_c_of_type_Boolean = false;
     if ((paramrbt.r == null) && ((paramrbt instanceof rbs)))
     {
-      paramrbt.r = ((ViewGroup)((ViewStub)paramrbt.p.findViewById(2131379654)).inflate());
-      paramrbt.f = ((URLImageView)paramrbt.r.findViewById(2131367024));
-      paramrbt.H = ((TextView)paramrbt.r.findViewById(2131367027));
-      paramrbt.I = ((TextView)paramrbt.r.findViewById(2131367026));
-      paramrbt.J = ((TextView)paramrbt.r.findViewById(2131367025));
-      paramrbt.K = ((TextView)paramrbt.r.findViewById(2131367023));
+      paramrbt.r = ((ViewGroup)((ViewStub)paramrbt.p.findViewById(2131379712)).inflate());
+      paramrbt.f = ((URLImageView)paramrbt.r.findViewById(2131367034));
+      paramrbt.H = ((TextView)paramrbt.r.findViewById(2131367037));
+      paramrbt.I = ((TextView)paramrbt.r.findViewById(2131367036));
+      paramrbt.J = ((TextView)paramrbt.r.findViewById(2131367035));
+      paramrbt.K = ((TextView)paramrbt.r.findViewById(2131367033));
     }
     if (paramrbt.r != null)
     {
@@ -99,8 +99,8 @@ public class rcz
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       URLDrawable localURLDrawable = URLDrawable.getDrawable(paramGameAdComData.j, localURLDrawableOptions);
-      localURLDrawable.setTag(bcuq.b(localURLDrawableOptions.mRequestWidth, localURLDrawableOptions.mRequestHeight, this.jdField_a_of_type_Int));
-      localURLDrawable.setDecodeHandler(bcuq.j);
+      localURLDrawable.setTag(bcyz.b(localURLDrawableOptions.mRequestWidth, localURLDrawableOptions.mRequestHeight, this.jdField_a_of_type_Int));
+      localURLDrawable.setDecodeHandler(bcyz.j);
       paramrbt.f.setImageDrawable(localURLDrawable);
       paramrbt.H.setText(paramGameAdComData.jdField_c_of_type_JavaLangString);
       paramrbt.I.setText(paramGameAdComData.i);
@@ -113,7 +113,7 @@ public class rcz
       paramrbt.r.setOnClickListener(this);
       paramrbt.J.setOnClickListener(this);
       paramrbt.K.setOnClickListener(this);
-      paramrbt.r.setTag(2131379913, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData);
+      paramrbt.r.setTag(2131379971, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData);
       i();
       b(paramrbt);
       rdm.a(paramrbt.r, 200);
@@ -132,7 +132,7 @@ public class rcz
   
   private boolean a(int paramInt, HashMap<String, Object> paramHashMap, boolean paramBoolean)
   {
-    if (bdem.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Qyj.d))
+    if (bdiv.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Qyj.d))
     {
       g();
       this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.jdField_b_of_type_Int = 1;
@@ -156,8 +156,8 @@ public class rcz
         if (!noq.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Qyj)) {
           break;
         }
-        DownloadInfo localDownloadInfo = bfgi.a().c(this.jdField_a_of_type_Qyj.d);
-        bfgi.a().a(localDownloadInfo);
+        DownloadInfo localDownloadInfo = bfkr.a().c(this.jdField_a_of_type_Qyj.d);
+        bfkr.a().a(localDownloadInfo);
         this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.jdField_b_of_type_Int = 5;
         if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.r.equals("2"))
         {
@@ -220,7 +220,7 @@ public class rcz
   
   private void b(rbt paramrbt)
   {
-    Object localObject = alpo.a(2131716633);
+    Object localObject = alud.a(2131716645);
     if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData == null) {
       return;
     }
@@ -242,7 +242,7 @@ public class rcz
     if (i == 1) {
       if (b())
       {
-        str = BaseApplicationImpl.getContext().getResources().getString(2131718895);
+        str = BaseApplicationImpl.getContext().getResources().getString(2131718907);
         paramrbt.J.setTextColor(Color.parseColor("#262626"));
         localObject = str;
         if (bool)
@@ -258,7 +258,7 @@ public class rcz
       paramrbt.J.setText((CharSequence)localObject);
       return;
       if (bool) {}
-      for (localObject = "预约";; localObject = alpo.a(2131716566))
+      for (localObject = "预约";; localObject = alud.a(2131716578))
       {
         if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.u)) {
           localObject = this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.u;
@@ -274,7 +274,7 @@ public class rcz
         if (noy.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.d))
         {
           if (bool) {}
-          for (localObject = "打开";; localObject = alpo.a(2131716596))
+          for (localObject = "打开";; localObject = alud.a(2131716608))
           {
             paramrbt.J.setTextColor(-1);
             paramrbt.J.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
@@ -293,7 +293,7 @@ public class rcz
           if (bool) {
             break label387;
           }
-          localObject = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842502);
+          localObject = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842515);
           paramrbt.J.setCompoundDrawablesWithIntrinsicBounds(null, null, (Drawable)localObject, null);
         }
         for (;;)
@@ -310,7 +310,7 @@ public class rcz
           this.jdField_c_of_type_Boolean = true;
           b();
           return;
-          str = alpo.a(2131716564);
+          str = alud.a(2131716576);
           break label273;
           label387:
           paramrbt.J.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
@@ -319,7 +319,7 @@ public class rcz
       if (!c()) {
         break label469;
       }
-      str = alpo.a(2131716563);
+      str = alud.a(2131716575);
       paramrbt.J.setTextColor(Color.parseColor("#262626"));
       localObject = str;
       if (bool)
@@ -331,7 +331,7 @@ public class rcz
     }
     label469:
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.u)) {}
-    for (localObject = this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.u;; localObject = alpo.a(2131716538))
+    for (localObject = this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.u;; localObject = alud.a(2131716550))
     {
       paramrbt.J.setTextColor(-1);
       break;
@@ -358,7 +358,7 @@ public class rcz
         String str = this.jdField_a_of_type_Qyj.d;
         if (!TextUtils.isEmpty(str))
         {
-          DownloadInfo localDownloadInfo = bfgi.a().c(str);
+          DownloadInfo localDownloadInfo = bfkr.a().c(str);
           if ((noq.a(this.jdField_a_of_type_AndroidAppActivity, str)) && (localDownloadInfo != null) && (localDownloadInfo.a() == 4))
           {
             h();
@@ -382,7 +382,7 @@ public class rcz
     int i = noy.ad;
     i = noy.jdField_a_of_type_Int;
     HashMap localHashMap = new HashMap();
-    if (bdem.a(BaseApplicationImpl.getContext(), (String)localObject))
+    if (bdiv.a(BaseApplicationImpl.getContext(), (String)localObject))
     {
       g();
       this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.jdField_b_of_type_Int = 1;
@@ -397,8 +397,8 @@ public class rcz
     }
     if (noq.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Qyj))
     {
-      localObject = bfgi.a().c(this.jdField_a_of_type_Qyj.d);
-      bfgi.a().a((DownloadInfo)localObject);
+      localObject = bfkr.a().c(this.jdField_a_of_type_Qyj.d);
+      bfkr.a().a((DownloadInfo)localObject);
       this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.jdField_b_of_type_Int = 5;
       if ("2".equals(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.r))
       {
@@ -432,7 +432,7 @@ public class rcz
         if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.jdField_b_of_type_Int == 5)
         {
           localObject = this.jdField_a_of_type_Qyj.d;
-          if (bdem.a(BaseApplicationImpl.getContext(), (String)localObject))
+          if (bdiv.a(BaseApplicationImpl.getContext(), (String)localObject))
           {
             this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.jdField_b_of_type_Int = 1;
             a(1, d());
@@ -475,7 +475,7 @@ public class rcz
     this.jdField_a_of_type_Rbt.K.setVisibility(0);
     if (!oed.a())
     {
-      this.jdField_a_of_type_Rbt.K.setText(alpo.a(2131716599) + this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.jdField_c_of_type_Int + "%");
+      this.jdField_a_of_type_Rbt.K.setText(alud.a(2131716611) + this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.jdField_c_of_type_Int + "%");
       this.jdField_a_of_type_Rbt.K.setTextColor(Color.parseColor("#262626"));
       return;
     }
@@ -607,7 +607,7 @@ public class rcz
         this.jdField_a_of_type_Rbt.K.setTextColor(Color.parseColor("#80000000"));
         return;
         this.jdField_a_of_type_Rbt.J.setVisibility(0);
-        this.jdField_a_of_type_Rbt.J.setText(alpo.a(2131716550));
+        this.jdField_a_of_type_Rbt.J.setText(alud.a(2131716562));
         if (oed.a()) {
           this.jdField_a_of_type_Rbt.J.setText("安装");
         }
@@ -617,7 +617,7 @@ public class rcz
         a(paramInt1);
         return;
         this.jdField_a_of_type_Rbt.J.setVisibility(0);
-        this.jdField_a_of_type_Rbt.J.setText(alpo.a(2131716528));
+        this.jdField_a_of_type_Rbt.J.setText(alud.a(2131716540));
         if (oed.a()) {
           this.jdField_a_of_type_Rbt.J.setText("打开");
         }
@@ -627,7 +627,7 @@ public class rcz
         return;
         this.jdField_a_of_type_Rbt.J.setVisibility(8);
         this.jdField_a_of_type_Rbt.K.setVisibility(0);
-        this.jdField_a_of_type_Rbt.K.setText(alpo.a(2131716619));
+        this.jdField_a_of_type_Rbt.K.setText(alud.a(2131716631));
         this.jdField_a_of_type_Rbt.K.setTextColor(-1);
       } while (!oed.a());
       this.jdField_a_of_type_Rbt.K.setText("继续");
@@ -636,7 +636,7 @@ public class rcz
     case 6: 
       this.jdField_a_of_type_Rbt.J.setVisibility(0);
       this.jdField_a_of_type_Rbt.K.setVisibility(8);
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, alpo.a(2131716609), 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, alud.a(2131716621), 0).a();
       return;
     }
     l();
@@ -879,7 +879,7 @@ public class rcz
     {
       if (this.jdField_a_of_type_Qyj != null)
       {
-        bool1 = bdem.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Qyj.d);
+        bool1 = bdiv.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Qyj.d);
         boolean bool2 = e();
         if ((bool1) || (bool2) || ((e() != 4) && (e() != 3)) || (d() < 0) || (d() >= 100)) {
           break label118;
@@ -960,7 +960,7 @@ public class rcz
         break;
       } while (this.jdField_a_of_type_Qyj == null);
       if (!a(j, (HashMap)localObject, false)) {
-        if (aaon.a())
+        if (aatc.a())
         {
           if (i == 2) {
             b();

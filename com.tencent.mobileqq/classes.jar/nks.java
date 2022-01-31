@@ -10,7 +10,7 @@ import org.json.JSONObject;
 import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
 public class nks
-  extends amni
+  extends amrx
 {
   public nks(AccountDetailActivity paramAccountDetailActivity) {}
   
@@ -37,11 +37,11 @@ public class nks
       localArrayList.add("find.mp.qq.com");
       localArrayList.add("post.mp.qq.com");
       localArrayList.add("article.mp.qq.com");
-      atda.a("unFollow", paramObject, localArrayList, null);
+      athj.a("unFollow", paramObject, localArrayList, null);
       this.a.h();
       nrt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.d, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
       StructLongMessageDownloadProcessor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.d);
-      ((bcic)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+      ((bcml)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
       return;
     }
     catch (JSONException paramObject)
@@ -57,7 +57,7 @@ public class nks
   
   public void b(Object paramObject)
   {
-    this.a.d(2131695727);
+    this.a.d(2131695729);
   }
   
   public void b(boolean paramBoolean, Object paramObject)

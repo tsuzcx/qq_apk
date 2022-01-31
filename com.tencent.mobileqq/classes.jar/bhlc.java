@@ -1,20 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
-class bhlc
-  implements bhkm
+public class bhlc
+  implements InvocationHandler
 {
-  bhlc(bhlb parambhlb) {}
+  public bhlc(bhky parambhky) {}
   
-  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    if ((paramObject1 != null) && ((paramObject1 instanceof String)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.Rpt", 2, String.format("Op: %d, Rid: %d, val: %s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), (String)paramObject1 }));
+    QMLog.e("TXLivePlayerJSAdapter", "InnerAudioVolumeEvaluationListenerImpl invoke:" + paramMethod.getName());
+    if (Object.class.equals(paramMethod.getDeclaringClass())) {
+      try
+      {
+        paramObject = paramMethod.invoke(this, paramArrayOfObject);
+        return paramObject;
       }
-      this.a.a((int)paramLong1, (int)paramLong2, (String)paramObject1);
+      catch (Throwable paramObject)
+      {
+        paramObject.printStackTrace();
+        return null;
+      }
     }
-    return 0;
+    if (("onAudioVolumeEvaluationNotify".equals(paramMethod.getName())) && (paramArrayOfObject.length == 1) && ((paramArrayOfObject[0] instanceof Integer)))
+    {
+      int i = ((Integer)paramArrayOfObject[0]).intValue();
+      if (bhky.a(this.a) != null) {
+        bhky.a(this.a).a(i);
+      }
+    }
+    return null;
   }
 }
 

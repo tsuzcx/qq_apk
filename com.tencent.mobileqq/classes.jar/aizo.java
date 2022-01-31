@@ -1,16 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyRedPacketAnimMsg.3.1;
-
-public class aizo
-  implements View.OnClickListener
+public abstract interface aizo
 {
-  public aizo(SpecifyRedPacketAnimMsg.3.1 param1) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.a.a();
-  }
+  public abstract void a(aize paramaize);
 }
 
 

@@ -1,39 +1,62 @@
-import com.qflutter.log.qflutter_log.QflutterLogPlugin;
-import com.qflutter.native_resources.QFlutterSkinEnginePlugin;
-import com.qflutter.resource_loader.QFlutterResourceLoaderPlugin;
-import com.qflutter.video.QflutterVideoViewSource;
-import com.qflutter.video.QflutterVideoviewPlugin;
-import io.flutter.plugin.common.PluginRegistry;
-import io.flutter.plugins.GeneratedPluginRegistrant;
-import io.flutter.plugins.packageinfo.PackageInfoPlugin;
-import io.flutter.plugins.pathprovider.PathProviderPlugin;
-import io.flutter.plugins.webviewflutter.WebViewFlutterPlugin;
+import NS_MINI_APP_MISC.MISC.StTrans4RoomidReq;
+import NS_MINI_APP_MISC.MISC.StTrans4RoomidRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
-public final class bhdn
+public class bhdn
+  extends bhdw
 {
-  public static void a(PluginRegistry paramPluginRegistry)
+  private MISC.StTrans4RoomidReq a = new MISC.StTrans4RoomidReq();
+  
+  public bhdn(String paramString1, String paramString2)
   {
-    if (!a(paramPluginRegistry))
-    {
-      PackageInfoPlugin.registerWith(paramPluginRegistry.registrarFor("io.flutter.plugins.packageinfo.PackageInfoPlugin"));
-      PathProviderPlugin.registerWith(paramPluginRegistry.registrarFor("io.flutter.plugins.pathprovider.PathProviderPlugin"));
-      QflutterLogPlugin.registerWith(paramPluginRegistry.registrarFor("com.qflutter.log.qflutter_log.QflutterLogPlugin"));
-      WebViewFlutterPlugin.registerWith(paramPluginRegistry.registrarFor("io.flutter.plugins.webviewflutter.WebViewFlutterPlugin"));
-      QFlutterSkinEnginePlugin.registerWith(paramPluginRegistry.registrarFor("com.qflutter.native_resources.QFlutterSkinEnginePlugin"));
-      QFlutterResourceLoaderPlugin.registerWith(paramPluginRegistry.registrarFor("com.qflutter.resource_loader.QFlutterResourceLoaderPlugin"));
-      QflutterVideoviewPlugin.registerWith(paramPluginRegistry.registrarFor("com.qflutter.video.QflutterVideoviewPlugin"));
-      QflutterVideoViewSource.setProvider(new bhds());
-    }
+    this.a.appid.set(paramString1);
+    this.a.groupid.set(paramString2);
   }
   
-  private static boolean a(PluginRegistry paramPluginRegistry)
+  protected String a()
   {
-    String str = GeneratedPluginRegistrant.class.getCanonicalName();
-    if (paramPluginRegistry.hasPlugin(str)) {
-      return true;
+    return "mini_app_misc";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    paramPluginRegistry.registrarFor(str);
-    return false;
+    MISC.StTrans4RoomidRsp localStTrans4RoomidRsp = new MISC.StTrans4RoomidRsp();
+    try
+    {
+      localStTrans4RoomidRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStTrans4RoomidRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("openId", localStTrans4RoomidRsp.openid.get());
+        paramArrayOfByte.put("tinyId", localStTrans4RoomidRsp.tinyid.get());
+        paramArrayOfByte.put("roomId", localStTrans4RoomidRsp.roomid.get());
+        return paramArrayOfByte;
+      }
+      QMLog.d("GetTransRoomIdRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("GetTransRoomIdRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  public byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "Trans4Roomid";
   }
 }
 

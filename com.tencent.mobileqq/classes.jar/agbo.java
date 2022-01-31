@@ -1,24 +1,16 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class agbo
-  implements afgh
+public class agbo
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  agbo(agbn paramagbn) {}
+  public agbo(SixCombolEffectView paramSixCombolEffectView, agbz paramagbz) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    UnlimitedBladeWorks.a(this.a.a).b = true;
-    UnlimitedBladeWorks.a(this.a.a).a = false;
-    if (UnlimitedBladeWorks.a(this.a.a) != null)
-    {
-      UnlimitedBladeWorks.a(this.a.a).a();
-      if (UnlimitedBladeWorks.b(this.a.a))
-      {
-        HapticManager.a().c(UnlimitedBladeWorks.a(this.a.a));
-        UnlimitedBladeWorks.a(this.a.a, 0);
-      }
-    }
+    this.jdField_a_of_type_Agbz.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
   }
 }
 

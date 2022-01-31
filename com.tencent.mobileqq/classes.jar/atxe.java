@@ -1,283 +1,242 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.util.Log;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
+import com.tencent.mobileqq.lyric.widget.LyricView;
+import com.tencent.mobileqq.lyric.widget.LyricViewController.10;
+import com.tencent.mobileqq.lyric.widget.LyricViewController.2;
+import com.tencent.mobileqq.lyric.widget.LyricViewController.3;
+import com.tencent.mobileqq.lyric.widget.LyricViewController.4;
+import com.tencent.mobileqq.lyric.widget.LyricViewController.5;
+import com.tencent.mobileqq.lyric.widget.LyricViewController.9;
+import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
+import com.tencent.mobileqq.lyric.widget.LyricViewScroll;
 import java.util.ArrayList;
-import java.util.List;
+import mqq.os.MqqHandler;
 
 public class atxe
 {
-  public static final String g = alpo.a(2131714324);
-  Context jdField_a_of_type_AndroidContentContext;
-  public Bitmap a;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  ShareActionSheetBuilder jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = null;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f = "";
+  public int a;
+  public long a;
+  public atwl a;
+  protected atxb a;
+  private atxh jdField_a_of_type_Atxh = new atxf(this);
+  protected TimerTaskManager.TimerTaskRunnable a;
+  protected TimerTaskManager a;
+  public LyricViewInternal a;
+  private LyricViewScroll jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll;
+  protected final String a;
+  protected volatile boolean a;
+  public int b;
+  public volatile boolean b;
+  private volatile int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
+  private boolean d;
   
-  public atxe(Context paramContext, QQAppInterface paramQQAppInterface)
+  public atxe(LyricView paramLyricView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public static Bitmap a(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    Object localObject3;
-    if (paramDrawable == null)
-    {
-      localObject3 = null;
-      return localObject3;
-    }
-    Object localObject1;
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      localObject1 = (BitmapDrawable)paramDrawable;
-      if (((BitmapDrawable)localObject1).getBitmap() != null) {
-        return ((BitmapDrawable)localObject1).getBitmap();
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        if ((paramDrawable.getIntrinsicWidth() > 0) && (paramDrawable.getIntrinsicHeight() > 0)) {
-          continue;
-        }
-        localObject1 = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        Rect localRect;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("ShareHelper", 2, localOutOfMemoryError.getMessage(), localOutOfMemoryError);
-        Object localObject2 = null;
-        continue;
-      }
-      localObject3 = localObject1;
-      if (localObject1 == null) {
-        break;
-      }
-      localObject3 = new Canvas((Bitmap)localObject1);
-      localRect = paramDrawable.copyBounds();
-      paramDrawable.setBounds(0, 0, ((Canvas)localObject3).getWidth(), ((Canvas)localObject3).getHeight());
-      paramDrawable.draw((Canvas)localObject3);
-      paramDrawable.setBounds(localRect);
-      return localObject1;
-      localObject1 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-    }
-  }
-  
-  public static String a(Long paramLong)
-  {
-    if (paramLong == null) {
-      return null;
-    }
-    return new SimpleDateFormat("yyyyMMdd").format(paramLong);
-  }
-  
-  private static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(Base64.encodeToString(paramString.getBytes(), 3).replace("=", ""));
-    char c1 = localStringBuilder.charAt(0);
-    localStringBuilder.deleteCharAt(0);
-    localStringBuilder.append(c1);
-    if (QLog.isColorLevel()) {
-      QLog.i("ShareHelper", 4, "encodeOne src:" + Base64.encodeToString(paramString.getBytes(), 0) + " dst:" + localStringBuilder.toString());
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(String[] paramArrayOfString)
-  {
-    int i = 0;
-    while (i < paramArrayOfString.length)
-    {
-      paramArrayOfString[i] = a(paramArrayOfString[i]);
-      i += 1;
-    }
-    return b(paramArrayOfString);
-  }
-  
-  private void a()
-  {
-    AbsShareMsg localAbsShareMsg = new azqg(StructMsgForGeneralShare.class).c(114).a(this.b).e(this.jdField_a_of_type_JavaLangString).a();
-    localAbsShareMsg.mSourceName = this.e;
-    localAbsShareMsg.mSourceAction = "web";
-    localAbsShareMsg.mSourceUrl = this.f;
-    Object localObject = azqt.a(2);
-    ((azqk)localObject).a(this.d, this.b, this.c);
-    localAbsShareMsg.addItem((azqj)localObject);
-    localObject = new Intent();
-    ((Intent)localObject).putExtra("forward_type", -3);
-    ((Intent)localObject).putExtra("stuctmsg_bytes", localAbsShareMsg.getBytes());
-    ((Intent)localObject).putExtra("forwardDirect", true);
-    arum.a((Activity)this.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
-  }
-  
-  private boolean a()
-  {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.e));
-  }
-  
-  private List<ShareActionSheetBuilder.ActionSheetItem>[] a(Context paramContext)
-  {
-    ArrayList localArrayList = new ArrayList();
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696871);
-    localActionSheetItem.icon = 2130838916;
-    localActionSheetItem.iconNeedBg = true;
-    localActionSheetItem.action = 2;
-    localActionSheetItem.argus = "";
-    localArrayList.add(localActionSheetItem);
-    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696884);
-    localActionSheetItem.icon = 2130838917;
-    localActionSheetItem.iconNeedBg = true;
-    localActionSheetItem.action = 3;
-    localActionSheetItem.argus = "";
-    localArrayList.add(localActionSheetItem);
-    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696891);
-    localActionSheetItem.icon = 2130838920;
-    localActionSheetItem.action = 9;
-    localActionSheetItem.argus = "";
-    localArrayList.add(localActionSheetItem);
-    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696874);
-    localActionSheetItem.icon = 2130838914;
-    localActionSheetItem.action = 10;
-    localActionSheetItem.argus = "";
-    localArrayList.add(localActionSheetItem);
-    return (List[])new ArrayList[] { localArrayList };
-  }
-  
-  private static String b(String[] paramArrayOfString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int j = 0;
-    int k;
-    for (int i = 0; j < paramArrayOfString.length; i = k)
-    {
-      k = i;
-      if (paramArrayOfString[j].length() > i) {
-        k = paramArrayOfString[j].length();
-      }
-      j += 1;
-    }
-    j = 0;
-    while (j < i)
-    {
-      k = 0;
-      while (k < paramArrayOfString.length)
-      {
-        if (paramArrayOfString[k].length() > j) {
-          localStringBuilder.append(paramArrayOfString[k].charAt(j));
-        }
-        k += 1;
-      }
-      j += 1;
-    }
-    return a(localStringBuilder.toString());
-  }
-  
-  private void b()
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (!TextUtils.isEmpty(this.d)) {
-      localArrayList.add(this.d);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("title", this.b);
-    localBundle.putString("desc", this.c);
-    localBundle.putLong("req_share_id", 0L);
-    localBundle.putString("detail_url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putStringArrayList("image_url", localArrayList);
-    bjao.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, localBundle, null);
-  }
-  
-  private void c()
-  {
-    long l = System.currentTimeMillis();
-    WXShareHelper.a().d(String.valueOf(l), this.b, this.jdField_a_of_type_AndroidGraphicsBitmap, this.c, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaLangString = ("task_name_lyric_draw_" + System.currentTimeMillis());
+    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager = atwq.a();
+    this.jdField_a_of_type_Atxb = new atxb();
+    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable = new LyricViewController.2(this);
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll = paramLyricView.a();
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal = paramLyricView.a();
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.setScrollListener(this.jdField_a_of_type_Atxh);
   }
   
   private void d()
   {
-    long l = System.currentTimeMillis();
-    WXShareHelper.a().c(String.valueOf(l), this.b, this.jdField_a_of_type_AndroidGraphicsBitmap, this.c, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Atwl = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.a();
+    atwl localatwl = this.jdField_a_of_type_Atwl;
+    if ((localatwl == null) || (localatwl.a()) || (this.jdField_a_of_type_Boolean))
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        Log.d("ModuleController", "onRefresh -> is scrolling");
+      }
+      return;
+    }
+    int j = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
+    int i = j;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      i = j;
+      if (j >= this.jdField_b_of_type_Int) {
+        i = this.jdField_b_of_type_Int;
+      }
+    }
+    this.jdField_c_of_type_Int = i;
+    a(localatwl.a(i), i);
   }
   
-  public void a(DialogInterface.OnDismissListener paramOnDismissListener)
+  public void a()
   {
-    if (!a()) {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, alpo.a(2131714325), 0).a();
+    Log.d("ModuleController", "start");
+    atwq.a().post(new LyricViewController.4(this));
+    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager.a(this.jdField_a_of_type_JavaLangString, 100L, 100L, this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable);
+    this.jdField_c_of_type_Boolean = true;
+  }
+  
+  public void a(int paramInt)
+  {
+    Log.d("ModuleController", "seek " + paramInt);
+    atwq.a().post(new LyricViewController.5(this, paramInt));
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal != null) && (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.getWindowToken() != null)) {
+      ThreadManager.getUIHandler().post(new LyricViewController.9(this, paramInt1, paramInt2));
     }
-    do
+    if ((this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll != null) && (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.getWindowToken() != null)) {
+      ThreadManager.getUIHandler().post(new LyricViewController.10(this));
+    }
+  }
+  
+  public void a(atwl paramatwl1, atwl paramatwl2, atwl paramatwl3)
+  {
+    Log.v("ModuleController", "setLyric begin");
+    atwq.a().post(new LyricViewController.3(this, paramatwl3, paramatwl1, paramatwl2));
+  }
+  
+  public void a(LyricView paramLyricView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll = paramLyricView.a();
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal = paramLyricView.a();
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.setScrollListener(this.jdField_a_of_type_Atxh);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    Log.d("ModuleController", "stop");
+    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_c_of_type_Boolean = false;
+  }
+  
+  protected void b(int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if ((this.jdField_a_of_type_Atwl != null) || (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal != null))
     {
+      paramInt = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.b(paramInt);
+      if ((this.jdField_a_of_type_Atwl == null) || (this.jdField_a_of_type_Atwl.a())) {
+        Log.w("ModuleController", "onScrollStop -> scroll without measured lyric");
+      }
+    }
+    else
+    {
+      return;
+    }
+    Log.d("ModuleController", "onScrollStop -> scroll to lineNo：" + paramInt);
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_Atwl.a.size()))
+    {
+      if (this.jdField_a_of_type_Atwl.a.get(paramInt) == null)
+      {
+        Log.w("ModuleController", "onScrollStop -> current sentence is null");
+        return;
+      }
+      long l2 = ((atwn)this.jdField_a_of_type_Atwl.a.get(paramInt)).jdField_a_of_type_Long;
+      Log.d("ModuleController", "onScrollStop -> start time of current sentence：" + l2);
+      long l1 = l2;
+      if (this.jdField_b_of_type_Boolean)
+      {
+        if ((this.jdField_a_of_type_Int < 0) || (l2 >= this.jdField_a_of_type_Int)) {
+          break label303;
+        }
+        l1 = this.jdField_a_of_type_Int;
+      }
       for (;;)
       {
-        return;
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
-        {
-          atxf localatxf = new atxf(this);
-          paramOnDismissListener = new atxg(this, paramOnDismissListener);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder((Activity)this.jdField_a_of_type_AndroidContentContext);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131720040));
-          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a(this.jdField_a_of_type_AndroidContentContext));
-          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(localatxf);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setOnDismissListener(paramOnDismissListener);
+        Log.d("ModuleController", "onScrollStop -> correct start time：" + l1);
+        l2 = l1;
+        if (l1 < 0L) {
+          l2 = 0L;
         }
-        try
+        l1 = (l2 / 10L + 1L) * 10L;
+        Log.d("ModuleController", "onScrollStop -> output time：" + l1);
+        this.jdField_a_of_type_Atxb.a(l1);
+        if ((this.jdField_c_of_type_Boolean) || (!this.d)) {
+          break;
+        }
+        a((int)l1);
+        return;
+        label303:
+        l1 = l2;
+        if (this.jdField_b_of_type_Int >= 0)
         {
-          if (!this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().isShowing())
-          {
-            this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
-            return;
+          l1 = l2;
+          if (l2 > this.jdField_b_of_type_Int) {
+            l1 = this.jdField_b_of_type_Int;
           }
         }
-        catch (Exception paramOnDismissListener) {}
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ShareActionSheet", 2, "actionSheet.show exception=" + paramOnDismissListener);
+    }
+    Log.w("ModuleController", "onScrollStop -> scroll out of lyric scope");
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, Bitmap paramBitmap)
+  public void c()
   {
-    this.jdField_a_of_type_JavaLangString = paramString3;
-    this.b = paramString1;
-    this.c = paramString2;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_c_of_type_Boolean = false;
+  }
+  
+  protected void c(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Atwl != null) || (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal != null))
+    {
+      paramInt = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.a(paramInt);
+      if ((this.jdField_a_of_type_Atwl == null) || (this.jdField_a_of_type_Atwl.a())) {
+        Log.w("ModuleController", "onScrolling -> scroll without measured lyric");
+      }
+    }
+    else
+    {
+      return;
+    }
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_Atwl.a.size()))
+    {
+      if (this.jdField_a_of_type_Atwl.a.get(paramInt) == null)
+      {
+        Log.w("ModuleController", "onScrollStop -> current sentence is null");
+        return;
+      }
+      long l2 = ((atwn)this.jdField_a_of_type_Atwl.a.get(paramInt)).jdField_a_of_type_Long;
+      long l1 = l2;
+      if (this.jdField_b_of_type_Boolean)
+      {
+        if ((this.jdField_a_of_type_Int < 0) || (l2 >= this.jdField_a_of_type_Int)) {
+          break label178;
+        }
+        l1 = this.jdField_a_of_type_Int;
+      }
+      for (;;)
+      {
+        l2 = l1;
+        if (l1 < 0L) {
+          l2 = 0L;
+        }
+        l1 = l2 / 10L;
+        this.jdField_a_of_type_Atxb.b((l1 + 1L) * 10L);
+        return;
+        label178:
+        l1 = l2;
+        if (this.jdField_b_of_type_Int >= 0)
+        {
+          l1 = l2;
+          if (l2 > this.jdField_b_of_type_Int) {
+            l1 = this.jdField_b_of_type_Int;
+          }
+        }
+      }
+    }
+    Log.w("ModuleController", "onScrollStop -> scroll out of lyric scope");
   }
 }
 

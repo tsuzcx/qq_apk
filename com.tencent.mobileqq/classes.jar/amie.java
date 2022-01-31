@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.app.msgcache.MsgLruCache;
-import java.util.Comparator;
-import java.util.Map.Entry;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListStep;
 
 public class amie
-  implements Comparator<Map.Entry<String, Integer>>
+  extends aluu
 {
-  public amie(MsgLruCache paramMsgLruCache) {}
+  private amie(GetJoinedHotChatListStep paramGetJoinedHotChatListStep) {}
   
-  public int a(Map.Entry<String, Integer> paramEntry1, Map.Entry<String, Integer> paramEntry2)
+  protected void a(int paramInt)
   {
-    if (((Integer)paramEntry1.getValue()).intValue() < ((Integer)paramEntry2.getValue()).intValue()) {
-      return 1;
+    if (GetJoinedHotChatListStep.a(this.a) != null)
+    {
+      this.a.a.app.removeObserver(GetJoinedHotChatListStep.a(this.a));
+      GetJoinedHotChatListStep.a(this.a, null);
     }
-    if (paramEntry1.getValue() == paramEntry2.getValue()) {
-      return 0;
+    if (paramInt == 0)
+    {
+      this.a.a(7);
+      return;
     }
-    return -1;
+    this.a.a(6);
   }
 }
 

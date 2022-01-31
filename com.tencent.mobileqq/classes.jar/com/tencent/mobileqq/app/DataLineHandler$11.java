@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import allz;
+import alqo;
 import com.tencent.litetransfersdk.FTNInfo;
 import com.tencent.litetransfersdk.NFCInfo;
 import com.tencent.litetransfersdk.Session;
@@ -8,11 +8,11 @@ import com.tencent.litetransfersdk.Session;
 public class DataLineHandler$11
   implements Runnable
 {
-  public DataLineHandler$11(allz paramallz, Session paramSession, NFCInfo paramNFCInfo, FTNInfo paramFTNInfo) {}
+  public DataLineHandler$11(alqo paramalqo, Session paramSession, NFCInfo paramNFCInfo, FTNInfo paramFTNInfo) {}
   
   public void run()
   {
-    allz.a(this.this$0, this.jdField_a_of_type_ComTencentLitetransfersdkSession, this.jdField_a_of_type_ComTencentLitetransfersdkNFCInfo, this.jdField_a_of_type_ComTencentLitetransfersdkFTNInfo, false);
+    alqo.a(this.this$0, this.jdField_a_of_type_ComTencentLitetransfersdkSession, this.jdField_a_of_type_ComTencentLitetransfersdkNFCInfo, this.jdField_a_of_type_ComTencentLitetransfersdkFTNInfo, false);
   }
 }
 

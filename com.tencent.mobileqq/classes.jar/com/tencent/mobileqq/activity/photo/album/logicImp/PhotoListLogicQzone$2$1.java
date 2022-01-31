@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album.logicImp;
 
-import aiob;
+import aisq;
 import com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.PhotoListAdapter;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 

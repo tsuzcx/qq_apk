@@ -1,16 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
 
-public class xtm
-  implements ValueAnimator.AnimatorUpdateListener
+final class xtm
+  extends xtb
 {
-  public xtm(RotateCircleImageView paramRotateCircleImageView) {}
+  xtm(xtb paramxtb, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onFailure(String paramString)
   {
-    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 1, paramString);
+    this.jdField_a_of_type_Xtb.onFailure(paramString);
+    wxj.a("music_composite", "music_clip", 0, 1, new String[0]);
+    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio failed  msg：" + paramString);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio start");
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    paramString = String.valueOf(System.currentTimeMillis() - this.b);
+    wxj.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio end cost：" + paramString);
   }
 }
 

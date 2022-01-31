@@ -1,131 +1,92 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahcz
-  extends BaseAdapter
-  implements View.OnClickListener
+  extends alwx
 {
-  public ahda a;
-  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  List<ReadInJoySearchHistoryEntity> jdField_a_of_type_JavaUtilList;
+  public ahcz(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public ahcz(Context paramContext, List<ReadInJoySearchHistoryEntity> paramList, ahda paramahda)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    b(paramList);
-    this.jdField_a_of_type_Ahda = paramahda;
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessManager", 2, "onBlessDirtyTextCheck " + paramBoolean + " ,code=" + paramInt);
+    }
+    if (paramBoolean) {}
+    while ((i != 0) && (!BlessSelectMemberActivity.b()))
+    {
+      BlessSelectMemberActivity.a(this.a, BlessSelectMemberActivity.a(this.a));
+      return;
+      if (paramInt != 0) {
+        if (paramInt == 1)
+        {
+          BlessSelectMemberActivity.a(this.a, 2131690552, true);
+          i = 0;
+        }
+        else
+        {
+          if (paramInt == 8) {
+            BlessSelectMemberActivity.a(this.a, 2131690587, true);
+          }
+          i = 0;
+        }
+      }
+    }
+    this.a.e();
   }
   
-  private void b(List<ReadInJoySearchHistoryEntity> paramList)
+  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
   {
-    if ((paramList == null) || (paramList.size() == 0))
-    {
-      this.jdField_a_of_type_JavaUtilList = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessManager", 2, "onSendBlessMsgResp " + paramBoolean1 + " ,replyCode=" + paramInt + " waitTime=" + paramLong + " ,entrance=" + BlessSelectMemberActivity.a(this.a));
+    }
+    if (!this.a.a) {
       return;
     }
-    if (paramList.size() < 6)
+    this.a.a = false;
+    if (paramInt == 67L)
     {
-      this.jdField_a_of_type_JavaUtilList = paramList;
+      BlessSelectMemberActivity.a(System.currentTimeMillis());
+      this.a.a(paramLong);
+      this.a.e();
+      BlessSelectMemberActivity.a(this.a, 2131690572, true);
       return;
     }
-    this.jdField_a_of_type_JavaUtilList = paramList.subList(0, 5);
-  }
-  
-  public void a(List<ReadInJoySearchHistoryEntity> paramList)
-  {
-    b(paramList);
-    super.notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return 0;
+    if (BlessSelectMemberActivity.b(this.a) == 15)
+    {
+      this.a.a(paramBoolean1);
+      return;
     }
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    this.a.a(paramBoolean1, paramBoolean2);
   }
   
-  public Object getItem(int paramInt)
+  protected void c(boolean paramBoolean, String paramString)
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return (ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessSelectMemberActivity", 2, "onUpdateMsgContent, isSuc:" + paramBoolean + " ,type:" + BlessSelectMemberActivity.c(this.a));
     }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    View localView;
-    if (paramViewGroup == null) {
-      localView = null;
+    if (BlessSelectMemberActivity.c(this.a) == 3) {
+      if (paramBoolean) {
+        BlessSelectMemberActivity.a(this.a);
+      }
     }
     do
     {
-      return localView;
-      if (paramView == null)
+      do
       {
-        paramView = LayoutInflater.from(paramViewGroup).inflate(2131559665, null);
-        paramViewGroup = new ahdb(this);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367662));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369071));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131364305));
-        paramView.setTag(paramViewGroup);
-        paramView.setOnClickListener(this);
-      }
-      for (;;)
+        return;
+        this.a.e();
+        BlessSelectMemberActivity.a(this.a, 2131690571, false);
+        return;
+      } while (BlessSelectMemberActivity.c(this.a) != 2);
+      if ((BlessSelectMemberActivity.a(this.a).a() == null) || (!paramBoolean))
       {
-        paramViewGroup.jdField_a_of_type_Int = paramInt;
-        if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {
-          break;
-        }
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt)).keyWord);
-        return paramView;
-        paramViewGroup = (ahdb)paramView.getTag();
+        this.a.e();
+        BlessSelectMemberActivity.a(this.a, 2131690588, false);
+        return;
       }
-      localView = paramView;
-    } while (paramInt != this.jdField_a_of_type_JavaUtilList.size());
-    paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    return paramView;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((paramView.getTag() instanceof ahdb))
-    {
-      paramView = (ahdb)paramView.getTag();
-      if (paramView.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) {
-        break label69;
-      }
-      if (this.jdField_a_of_type_Ahda != null)
-      {
-        paramView = (ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramView.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Ahda.a(paramView);
-      }
-    }
-    label69:
-    while ((paramView.jdField_a_of_type_Int != this.jdField_a_of_type_JavaUtilList.size()) || (this.jdField_a_of_type_Ahda == null)) {
-      return;
-    }
-    this.jdField_a_of_type_Ahda.a();
+    } while (BlessSelectMemberActivity.b());
+    BlessSelectMemberActivity.b(this.a);
   }
 }
 

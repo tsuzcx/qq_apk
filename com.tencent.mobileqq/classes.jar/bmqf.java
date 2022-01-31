@@ -1,20 +1,50 @@
-import org.json.JSONObject;
+import android.graphics.Canvas;
+import android.view.MotionEvent;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-public class bmqf
+public final class bmqf
+  extends bmri
 {
-  public int a;
+  public static final String a = bmqf.class.getSimpleName();
   
-  public bmqf(int paramInt)
+  public bmqf(DoodleView paramDoodleView)
   {
-    this.a = paramInt;
+    super(paramDoodleView);
   }
   
-  public JSONObject a()
+  public String a()
   {
-    return null;
+    return a;
   }
   
   public void a() {}
+  
+  protected void a(Canvas paramCanvas) {}
+  
+  public void a(Canvas paramCanvas, float paramFloat) {}
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    return true;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public void b(Canvas paramCanvas) {}
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    wxe.b(a, "EmptyLayer handle touch event.");
+    return false;
+  }
 }
 
 

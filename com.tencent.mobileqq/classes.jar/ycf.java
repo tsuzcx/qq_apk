@@ -1,8 +1,17 @@
-public abstract interface ycf
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+
+public class ycf
+  extends AnimatorListenerAdapter
 {
-  public abstract void h();
+  public ycf(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
   
-  public abstract void i();
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.clearAnimation();
+    this.a.setVisibility(8);
+  }
 }
 
 

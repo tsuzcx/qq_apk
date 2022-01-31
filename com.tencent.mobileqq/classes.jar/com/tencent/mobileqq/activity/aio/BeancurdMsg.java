@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="busiid,frienduin")
 public class BeancurdMsg
-  extends awbv
+  extends awge
 {
   public String buffer;
   public int busiid;

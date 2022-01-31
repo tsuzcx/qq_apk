@@ -1,31 +1,6 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class wry
-  extends QQUIEventReceiver<wrh, uzc>
+public abstract interface wry
 {
-  public wry(@NonNull wrh paramwrh)
-  {
-    super(paramwrh);
-  }
-  
-  public void a(@NonNull wrh paramwrh, @NonNull uzc paramuzc)
-  {
-    if ((paramuzc == null) || (paramuzc.a == null) || (TextUtils.isEmpty(paramuzc.a.headUrl))) {
-      wsv.c(this.TAG, "GetUserInfoHandler return headUrl is null!", new IllegalStateException());
-    }
-    while (!paramuzc.a.isMe()) {
-      return;
-    }
-    wrh.b(paramwrh);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uzc.class;
-  }
+  public abstract void a(wrd paramwrd);
 }
 
 

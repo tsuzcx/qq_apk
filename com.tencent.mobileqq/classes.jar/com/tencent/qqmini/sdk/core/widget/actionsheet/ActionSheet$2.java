@@ -2,25 +2,25 @@ package com.tencent.qqmini.sdk.core.widget.actionsheet;
 
 import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
-import bgob;
-import bgok;
+import bgsi;
+import bgsr;
 
 public class ActionSheet$2
   implements Runnable
 {
-  public ActionSheet$2(bgob parambgob) {}
+  public ActionSheet$2(bgsi parambgsi) {}
   
   public void run()
   {
-    if (bgob.a(this.this$0) != null) {
-      bgob.a(this.this$0).a();
+    if (bgsi.a(this.this$0) != null) {
+      bgsi.a(this.this$0).a();
     }
-    bgob.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, bgob.a(this.this$0).getHeight(), 0.0F));
-    bgob.a(this.this$0).setFillEnabled(true);
-    bgob.a(this.this$0).setStartTime(300L);
-    bgob.a(this.this$0).setDuration(bgob.a(this.this$0));
-    bgob.a(this.this$0, true);
-    bgob.a(this.this$0).startAnimation(bgob.a(this.this$0));
+    bgsi.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, bgsi.a(this.this$0).getHeight(), 0.0F));
+    bgsi.a(this.this$0).setFillEnabled(true);
+    bgsi.a(this.this$0).setStartTime(300L);
+    bgsi.a(this.this$0).setDuration(bgsi.a(this.this$0));
+    bgsi.a(this.this$0, true);
+    bgsi.a(this.this$0).startAnimation(bgsi.a(this.this$0));
   }
 }
 

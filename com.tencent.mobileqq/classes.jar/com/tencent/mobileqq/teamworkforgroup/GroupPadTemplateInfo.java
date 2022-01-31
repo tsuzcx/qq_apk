@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import awbv;
+import awge;
 
 public class GroupPadTemplateInfo
-  extends awbv
+  extends awge
 {
   public static final int TEMPLATE_TYPE_COLLECT = 3;
   public static final int TEMPLATE_TYPE_DOC = 1;

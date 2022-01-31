@@ -1,17 +1,14 @@
 import android.view.View;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.3;
-import com.tencent.shadow.dynamic.host.EnterCallback;
+import android.view.View.OnTouchListener;
 
-public class asvx
-  implements EnterCallback
+public abstract interface asvx
+  extends View.OnTouchListener
 {
-  public asvx(GroupVideoManager.3 param3) {}
+  public abstract void a(View paramView, int paramInt);
   
-  public void onCloseLoadingView() {}
+  public abstract void b(View paramView, int paramInt);
   
-  public void onEnterComplete() {}
-  
-  public void onShowLoadingView(View paramView) {}
+  public abstract void c(asuq paramasuq, int paramInt);
 }
 
 

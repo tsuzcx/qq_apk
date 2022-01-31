@@ -1,90 +1,47 @@
-public class bcfj
+import android.text.Editable;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+
+class bcfj
+  implements TextView.OnEditorActionListener
 {
-  public static void a(int paramInt, Object paramObject)
+  bcfj(bcfg parambcfg, bcfm parambcfm) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    String str;
-    switch (paramInt)
+    boolean bool2 = false;
+    boolean bool1;
+    if ((paramInt != 4) && (paramInt != 6))
     {
-    default: 
-      return;
-    case 1: 
-      try
+      bool1 = bool2;
+      if (paramKeyEvent != null)
       {
-        azmj.b(null, "dc00898", "", "", "qq_vip", "0X8009E37", 2, 0, "", "", "", "");
-        return;
-      }
-      catch (ClassCastException paramObject)
-      {
-        paramObject.printStackTrace();
-        return;
-      }
-    case 2: 
-      azmj.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
-      return;
-    case 3: 
-      paramObject = (Object[])paramObject;
-      str = (String)paramObject[0];
-      if (((Boolean)paramObject[1]).booleanValue()) {
-        paramObject = "0";
-      }
-      break;
-    }
-    for (;;)
-    {
-      azmj.b(null, "dc00899", "Grp_set_new", "", "grpData_admin", "clk_image", 0, 0, str, "0", paramObject, "");
-      return;
-      if (((Boolean)paramObject[2]).booleanValue())
-      {
-        paramObject = "1";
-        continue;
-        azmj.b(null, "P_CliOper", "Grp_set", "", "Grp_Admin_data", "nonmber_Clk_head", 0, 0, (String)paramObject, "", "", "");
-        return;
-        paramObject = (Object[])paramObject;
-        azmj.b(null, "dc00898", "", "", "0X800A526", "0X800A526", ((Integer)paramObject[0]).intValue(), 0, (String)paramObject[1], "", "", "");
-        return;
-        azmj.b(null, "P_CliOper", "Grp_discuss", "", "discuss_AIO", "Clk_grpaio", 0, 0, (String)paramObject, "", "", "");
-        return;
-        azmj.b(null, "P_CliOper", "Grp_payjoin", "", "join_grp", "Clk_data", 0, 0, (String)paramObject, "", "", "");
-        return;
-        azmj.b(null, "CliOper", "", "", "0x80084B4", "0x80084B4", 0, 0, "", "", "", "");
-        return;
-        azmj.b(null, "CliOper", "", "", "0x80084B5", "0x80084B5", 0, 0, "", "", "", "");
-        return;
-        paramObject = (Object[])paramObject;
-        azmj.b(null, "dc00898", "", "", "0X800A527", "0X800A527", ((Integer)paramObject[0]).intValue(), 0, (String)paramObject[1], "", "", "");
-        return;
-        azmj.b(null, "dc00898", "", "", "kuolie", "0X80097DC", 0, 0, "", "", "", "");
-        return;
-        azmj.b(null, "dc00898", "", "", "0X80092D7", "0X80092D7", 0, 0, "", "", "", "");
-        return;
-        paramObject = (Object[])paramObject;
-        bdaj.a("Grp_set_new", "grpData_visitor", "clk_join", 0, 0, new String[] { (String)paramObject[0], (String)paramObject[1] });
-        return;
-        azmj.b(null, "dc00898", "", "", "0X8007246", "0X8007246", 0, 0, "", "", "", "");
-        return;
-        paramObject = (Object[])paramObject;
-        azmj.b(null, "dc00899", "Grp_recom", "", "set_page", "page_exp", 0, 0, (String)paramObject[0], "", (String)paramObject[1], "");
-        return;
-        paramObject = (Object[])paramObject;
-        azmj.b(null, "dc00899", "Grp_recom", "", "set_page", "recom_exp", 0, 0, (String)paramObject[0], "", (String)paramObject[1], "");
-        return;
-        paramObject = (Object[])paramObject;
-        azmj.b(null, "P_CliOper", "Grp_set", "", "Grp_Visdata", "Clk_data", 0, 0, (String)paramObject[0], (String)paramObject[1], "", "");
-        return;
-        azmj.b(null, "P_CliOper", "Grp_discuss", "", "discuss_AIO", "Clk_objgrp", 0, 0, (String)paramObject, "", "", "");
-        return;
-        paramObject = (Object[])paramObject;
-        azmj.b(null, "dc00898", "", "", "0X800A525", "0X800A525", ((Integer)paramObject[0]).intValue(), 0, (String)paramObject[1], "", "", "");
-        return;
-        azmj.b(null, "P_CliOper", "Grp_rank", "", "Grp_data", "Clk_grprank", 0, 0, (String)paramObject, "", "", "");
-        return;
-        azmj.b(null, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
-      }
-      else
-      {
-        paramObject = "2";
+        bool1 = bool2;
+        if (66 == paramKeyEvent.getKeyCode())
+        {
+          bool1 = bool2;
+          if (paramKeyEvent.getAction() != 0) {}
+        }
       }
     }
+    else
+    {
+      paramTextView = this.jdField_a_of_type_Bcfm.a.getEditableText().toString();
+      paramInt = this.jdField_a_of_type_Bcfm.a.getSelectionStart();
+      paramTextView = paramTextView.substring(0, paramInt);
+      paramTextView = this.jdField_a_of_type_Bcfg.a(paramTextView);
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramTextView))
+      {
+        this.jdField_a_of_type_Bcfm.a.getEditableText().replace(paramInt, paramInt, "\n" + paramTextView);
+        this.jdField_a_of_type_Bcfm.a.setSelection(paramTextView.length() + paramInt + 1);
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 

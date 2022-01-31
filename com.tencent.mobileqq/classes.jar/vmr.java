@@ -1,35 +1,19 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
 class vmr
-  implements upu
+  implements ViewPager.OnPageChangeListener
 {
-  vmr(vmq paramvmq, CommentEntry paramCommentEntry, boolean paramBoolean) {}
+  vmr(vmp paramvmp) {}
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    a(-1, alpo.a(2131702552));
+    this.a.a.setSelectedTab(paramInt, true);
   }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131702549), 0).a();
-    wsv.e("Q.qqstory.player.CommentFloatDialog", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
-  }
-  
-  public void a(MessageMicro paramMessageMicro)
-  {
-    if (!vml.b(this.jdField_a_of_type_Vmq.a)) {
-      vml.a(this.jdField_a_of_type_Vmq.a).a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
-    }
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

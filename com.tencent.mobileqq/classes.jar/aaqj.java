@@ -1,10 +1,38 @@
-public abstract interface aaqj
+import android.content.Context;
+import android.content.IntentFilter;
+
+public class aaqj
 {
-  public abstract void a(int paramInt);
+  private aaql jdField_a_of_type_Aaql;
+  private aaqm jdField_a_of_type_Aaqm;
+  private Context jdField_a_of_type_AndroidContentContext;
   
-  public abstract void b(int paramInt);
+  public aaqj(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
   
-  public abstract void c(int paramInt);
+  public void a()
+  {
+    this.jdField_a_of_type_Aaql = new aaql(this, null);
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Aaql, localIntentFilter);
+  }
+  
+  public void a(aaqm paramaaqm)
+  {
+    this.jdField_a_of_type_Aaqm = paramaaqm;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Aaql != null) && (this.jdField_a_of_type_AndroidContentContext != null))
+    {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Aaql);
+      this.jdField_a_of_type_Aaqm = null;
+    }
+  }
 }
 
 

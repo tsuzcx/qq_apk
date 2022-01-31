@@ -1,28 +1,14 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import java.util.List;
 
-public class bmby
-  extends AnimatorListenerAdapter
+public abstract interface bmby
 {
-  public bmby(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim  170ms end");
-    }
-    this.a.c.setImageResource(2130843983);
-  }
+  public abstract void a(long paramLong);
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim start");
-    }
-  }
+  public abstract void a(long paramLong, boolean paramBoolean);
+  
+  public abstract void a(List<Long> paramList);
 }
 
 

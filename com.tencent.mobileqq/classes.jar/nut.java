@@ -64,9 +64,9 @@ public class nut
     this.jdField_a_of_type_Sty = new sty();
     this.jdField_a_of_type_ComTencentWidgetSwipListView = paramSwipListView;
     this.jdField_a_of_type_Nun = paramnun;
-    paramContext = View.inflate(paramContext, 2131561677, null);
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131365753);
-    paramContext.findViewById(2131363575).setOnClickListener(new nuu(this, paramString));
+    paramContext = View.inflate(paramContext, 2131561695, null);
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131365755);
+    paramContext.findViewById(2131363577).setOnClickListener(new nuu(this, paramString));
     this.jdField_a_of_type_ComTencentWidgetSwipListView.addFooterView(paramContext);
   }
   
@@ -135,12 +135,12 @@ public class nut
       }
     }
     label399:
-    for (localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694685) + ((BigDecimal)localObject).setScale(1, 4).floatValue() + "km";; localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131694685) + i + "m")
+    for (localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694687) + ((BigDecimal)localObject).setScale(1, 4).floatValue() + "km";; localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131694687) + i + "m")
     {
       localIntent.putExtra("pub_account_type", "type_ecshop_account");
       localIntent.putExtra("ecshop_distance_tip", (String)localObject);
       this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      azmj.b(null, "P_CliOper", "Shop_lifeservice", "", "Shop_helper", "Clk_shopItem", 0, 0, str, "", paramRecentShopParcel.jdField_b_of_type_JavaLangString, "");
+      azqs.b(null, "P_CliOper", "Shop_lifeservice", "", "Shop_helper", "Clk_shopItem", 0, 0, str, "", paramRecentShopParcel.jdField_b_of_type_JavaLangString, "");
       return;
       bool = false;
       break;
@@ -207,7 +207,7 @@ public class nut
     if ((this.jdField_a_of_type_ComTencentWidgetSwipListView == null) || (paramImageView == null)) {
       return false;
     }
-    int i = ((Integer)paramImageView.getTag(2131373956)).intValue();
+    int i = ((Integer)paramImageView.getTag(2131374007)).intValue();
     int j = this.jdField_a_of_type_ComTencentWidgetSwipListView.getFirstVisiblePosition();
     int k = this.jdField_a_of_type_ComTencentWidgetSwipListView.getLastVisiblePosition();
     return (i >= j) && (i <= k);
@@ -241,27 +241,27 @@ public class nut
     if (paramView == null)
     {
       paramViewGroup = new nuv(this);
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561680, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367808));
-      paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { (ImageView)localView.findViewById(2131368043), (ImageView)localView.findViewById(2131368044), (ImageView)localView.findViewById(2131368045) };
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131370958));
-      paramViewGroup.b = ((SingleLineTextView)localView.findViewById(2131370758));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131379267));
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561698, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367819));
+      paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { (ImageView)localView.findViewById(2131368054), (ImageView)localView.findViewById(2131368055), (ImageView)localView.findViewById(2131368056) };
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131370977));
+      paramViewGroup.b = ((SingleLineTextView)localView.findViewById(2131370777));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131379325));
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, localView);
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131370180));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = localView.findViewById(2131365529);
-      paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131166989);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131370199));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = localView.findViewById(2131365531);
+      paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131166991);
       paramViewGroup.b.setExtendTextColor(paramView, 0);
       paramViewGroup.b.setExtendTextSize(12.0F, 0);
-      f = bdcb.a();
+      f = bdgk.a();
       paramViewGroup.b.setExtendTextPadding((int)(f * 5.0F), 2);
       localView.setTag(paramViewGroup);
       if ((this.jdField_a_of_type_Nun != null) && (this.jdField_a_of_type_Nun.jdField_a_of_type_Boolean))
       {
-        localView.findViewById(2131365353).setVisibility(0);
+        localView.findViewById(2131365355).setVisibility(0);
         paramView = new ColorStateList(new int[][] { new int[0] }, new int[] { -8947849 });
-        localView.findViewById(2131365529).setBackgroundResource(2130846572);
+        localView.findViewById(2131365531).setBackgroundResource(2130846645);
         paramViewGroup.b.setExtendTextColor(paramView, 0);
         paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(Color.parseColor("#FF777777"));
         paramViewGroup.b.setTextColor(Color.parseColor("#FF000000"));
@@ -289,8 +289,8 @@ public class nut
         break label1304;
       }
       paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(((RecentShopParcel)localObject1).jdField_a_of_type_Int);
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding(aekt.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      paramView.setBounds(0, 0, aekt.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding(aepi.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      paramView.setBounds(0, 0, aepi.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, paramView);
       paramView = (String)this.jdField_a_of_type_Nun.d.get(((RecentShopParcel)localObject1).jdField_a_of_type_JavaLangString);
       if ((TextUtils.isEmpty(paramView)) || (!this.jdField_a_of_type_Nun.a(paramView))) {
@@ -311,8 +311,8 @@ public class nut
       }
       j = 3;
       label636:
-      bhro.a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, j, ((RecentShopParcel)localObject1).jdField_b_of_type_Int, 2130849732, 99, null);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131373955, localObject1);
+      bhvv.a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, j, ((RecentShopParcel)localObject1).jdField_b_of_type_Int, 2130849805, 99, null);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131374006, localObject1);
       paramView = this.jdField_a_of_type_Nun.a(((RecentShopParcel)localObject1).jdField_a_of_type_JavaLangString);
       if (paramView == null) {
         break label1344;
@@ -321,7 +321,7 @@ public class nut
       label693:
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setTag(-1, Integer.valueOf(paramInt));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setTag(2131373955, localObject1);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setTag(2131374006, localObject1);
       if ((this.jdField_a_of_type_Nun.c != null) && (!this.jdField_a_of_type_Nun.c.isEmpty()) && (this.jdField_a_of_type_Nun.c.get(((RecentShopParcel)localObject1).jdField_a_of_type_JavaLangString) != null)) {
         break label1363;
       }
@@ -334,12 +334,12 @@ public class nut
         break label1391;
       }
       paramView = new BigDecimal(j / 1000.0F);
-      paramView = "[" + this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694685) + paramView.setScale(1, 4).floatValue() + "km]";
+      paramView = "[" + this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694687) + paramView.setScale(1, 4).floatValue() + "km]";
     }
     for (;;)
     {
       label852:
-      Object localObject2 = new baig(String.valueOf(((RecentShopParcel)localObject1).d).replaceFirst("^\\s+", ""), 3, 20);
+      Object localObject2 = new bamp(String.valueOf(((RecentShopParcel)localObject1).d).replaceFirst("^\\s+", ""), 3, 20);
       Object localObject3;
       if (!TextUtils.isEmpty(paramView))
       {
@@ -353,17 +353,17 @@ public class nut
         if (i == 0) {
           break label1449;
         }
-        paramViewGroup.b.setCompoundDrawablesWithIntrinsicBounds(2130839352, 0);
+        paramViewGroup.b.setCompoundDrawablesWithIntrinsicBounds(2130839353, 0);
         label975:
-        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(2131373955, localObject1);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(2131374006, localObject1);
         paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-        f = aekt.a(65.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        f = aepi.a(65.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
         if ((!TextUtils.isEmpty(((RecentShopParcel)localObject1).e)) && (i == 0)) {
           break label1461;
         }
-        localView.findViewById(2131368164).setVisibility(8);
+        localView.findViewById(2131368175).setVisibility(8);
         label1040:
-        paramViewGroup.jdField_a_of_type_AndroidViewView.setTag(2131373955, localObject1);
+        paramViewGroup.jdField_a_of_type_AndroidViewView.setTag(2131374006, localObject1);
         paramViewGroup.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
         localView.setTag(-3, Integer.valueOf((int)f));
         paramView = (LinearLayout.LayoutParams)paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getLayoutParams();
@@ -372,15 +372,15 @@ public class nut
         }
         paramViewGroup.b.setExtendText("", 0);
         paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-        localObject2 = (ImageButton)localView.findViewById(2131363542);
+        localObject2 = (ImageButton)localView.findViewById(2131363544);
         ((ImageButton)localObject2).setVisibility(0);
-        ((ImageButton)localObject2).setTag(2131373955, localObject1);
+        ((ImageButton)localObject2).setTag(2131374006, localObject1);
         ((ImageButton)localObject2).setOnClickListener(this);
         localObject2 = ((EcshopWebActivity)this.jdField_a_of_type_AndroidContentContext).jdField_a_of_type_JavaLangString;
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           localObject1 = (URLImageView)localView.findViewById(2131362032);
-          localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839326);
+          localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839327);
         }
       }
       label1304:
@@ -411,7 +411,7 @@ public class nut
         label1391:
         break label1254;
       }
-      for (paramView.rightMargin = aekt.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());; paramView.rightMargin = aekt.a(45.0F, this.jdField_a_of_type_AndroidContentContext.getResources()))
+      for (paramView.rightMargin = aepi.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());; paramView.rightMargin = aepi.a(45.0F, this.jdField_a_of_type_AndroidContentContext.getResources()))
       {
         paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setLayoutParams(paramView);
         localView.setOnClickListener(this);
@@ -431,7 +431,7 @@ public class nut
         break label693;
         j = ((Integer)this.jdField_a_of_type_Nun.c.get(((RecentShopParcel)localObject1).jdField_a_of_type_JavaLangString)).intValue();
         break label773;
-        paramView = "[" + this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694685) + j + "m]";
+        paramView = "[" + this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694687) + j + "m]";
         break label852;
         paramViewGroup.b.setText((CharSequence)localObject2);
         break label959;
@@ -443,7 +443,7 @@ public class nut
         i = 0;
         while (i < 3)
         {
-          paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setTag(2131373956, Integer.valueOf(paramInt));
+          paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setTag(2131374007, Integer.valueOf(paramInt));
           localObject2 = paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].getLayoutParams();
           j = this.jdField_a_of_type_Int;
           ((ViewGroup.LayoutParams)localObject2).width = j;
@@ -455,9 +455,9 @@ public class nut
           this.jdField_a_of_type_Sty.a(swu.a((String)paramView.get(i), 1), paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i], ((ViewGroup.LayoutParams)localObject2).width, ((ViewGroup.LayoutParams)localObject2).height, this);
           i += 1;
         }
-        localView.findViewById(2131368164).setVisibility(0);
+        localView.findViewById(2131368175).setVisibility(0);
         break label1040;
-        localView.findViewById(2131363542).setVisibility(8);
+        localView.findViewById(2131363544).setVisibility(8);
         localView.findViewById(2131362032).setVisibility(8);
       }
       label1689:
@@ -468,14 +468,14 @@ public class nut
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    paramView = (RecentShopParcel)paramView.getTag(2131373955);
-    if (i == 2131365529) {
+    paramView = (RecentShopParcel)paramView.getTag(2131374006);
+    if (i == 2131365531) {
       a(paramView);
     }
     do
     {
       return;
-      if ((i == 2131370180) || (i == 2131363542))
+      if ((i == 2131370199) || (i == 2131363544))
       {
         i = paramView.jdField_b_of_type_Int;
         this.jdField_a_of_type_JavaUtilList.remove(paramView);
@@ -490,14 +490,14 @@ public class nut
         this.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
         return;
       }
-    } while (i != 2131367808);
+    } while (i != 2131367819);
     Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, AccountDetailActivity.class);
     localIntent.putExtra("uin", paramView.jdField_a_of_type_JavaLangString);
     localIntent.putExtra("report_src_param_type", "");
     localIntent.putExtra("report_src_param_name", "");
     localIntent.setFlags(67108864);
     this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    azmj.b(null, "P_CliOper", "Shop_lifeservice", "", "Shop_helperhead", "Clk_shopItemhead", 0, 0, paramView.jdField_a_of_type_JavaLangString, "", paramView.jdField_b_of_type_JavaLangString, "");
+    azqs.b(null, "P_CliOper", "Shop_lifeservice", "", "Shop_helperhead", "Clk_shopItemhead", 0, 0, paramView.jdField_a_of_type_JavaLangString, "", paramView.jdField_b_of_type_JavaLangString, "");
   }
 }
 

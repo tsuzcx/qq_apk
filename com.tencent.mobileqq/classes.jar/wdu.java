@@ -1,19 +1,18 @@
-import com.tencent.biz.qqstory.database.LikeEntry;
-import java.util.List;
+import android.util.LruCache;
 
-public class wdu
+class wdu
+  extends LruCache<String, wdm>
 {
-  public int a;
-  public List<LikeEntry> a;
-  public boolean a;
-  public int b;
-  
-  public wdu(boolean paramBoolean, List<LikeEntry> paramList, int paramInt1, int paramInt2)
+  wdu(wdt paramwdt, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    super(paramInt);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, wdm paramwdm1, wdm paramwdm2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramwdm1, paramwdm2);
+    wdk.a("story.icon.ShareGroupIconManager", "entryRemoved key = %s" + paramString);
+    paramwdm1.a();
   }
 }
 

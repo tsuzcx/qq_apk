@@ -1,30 +1,23 @@
-import java.nio.ByteBuffer;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
 public class vto
+  implements vvs
 {
-  int jdField_a_of_type_Int;
-  public long a;
-  ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  public boolean a;
-  public boolean b;
+  public vto(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
   
-  public vto()
+  public void a(@NonNull View paramView, int paramInt)
   {
-    a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaNioByteBuffer = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-  }
-  
-  public String toString()
-  {
-    return "FrameInfo{buffer=" + this.jdField_a_of_type_Int + ", data=" + this.jdField_a_of_type_JavaNioByteBuffer + ", presentationTimeUs=" + this.jdField_a_of_type_Long + ", endOfStream=" + this.jdField_a_of_type_Boolean + ", representationChanged=" + this.b + '}';
+    if (bnle.a)
+    {
+      paramInt = StoryPlayerGroupHolder.a(this.a);
+      paramView = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+      paramView.bottomMargin = paramInt;
+      this.a.a.setLayoutParams(paramView);
+    }
   }
 }
 

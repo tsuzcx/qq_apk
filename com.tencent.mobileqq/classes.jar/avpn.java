@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
 
-class avpn
-  implements View.OnClickListener
+public class avpn
+  extends bcoc
 {
-  avpn(avpm paramavpm) {}
+  public avpn(NearbyProfileFragment paramNearbyProfileFragment) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong)
   {
-    if (((paramView.getTag() instanceof avpo)) && (this.a.a != null))
+    if (paramLong > 0L)
     {
-      avpo localavpo = (avpo)paramView.getTag();
-      this.a.a.a(this.a, paramView, localavpo);
+      NearbyProfileFragment.a(this.a).setText(String.format(alud.a(2131707715), new Object[] { Long.valueOf(paramLong) }));
+      return;
     }
+    NearbyProfileFragment.a(this.a).setText(alud.a(2131707677));
   }
 }
 

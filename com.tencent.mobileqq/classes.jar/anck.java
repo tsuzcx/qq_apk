@@ -1,22 +1,14 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
-import com.tencent.qphone.base.util.QLog;
-
 public class anck
-  implements MessageQueue.IdleHandler
 {
-  public anck(ARScanEntryView paramARScanEntryView) {}
+  public float a;
+  public boolean a;
+  public float b = 0.0F;
+  public float c = 0.0F;
   
-  public boolean queueIdle()
+  public anck()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "queueIdle called ");
-    }
-    if ((ARScanEntryView.a(this.a) != null) && (this.a.m)) {
-      ARScanEntryView.a(this.a).c();
-    }
-    return false;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

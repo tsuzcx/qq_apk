@@ -1,14 +1,46 @@
-import android.content.Context;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aopr
-  implements aooy
+public class aopr
 {
-  aopr(aopq paramaopq) {}
+  private int a;
+  private int b;
+  private int c;
   
-  public void a(Context paramContext)
+  public static aopr a(String paramString)
   {
-    VasWebviewUtil.openQQBrowserWithoutAD(paramContext, aopq.a(this.a), -1L, null, false, 0);
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        aopr localaopr = new aopr();
+        paramString = new JSONObject(paramString);
+        localaopr.a = paramString.optInt("showVoiceToTextSwitch", -1);
+        localaopr.b = paramString.optInt("grayTipShowPerThousand", -1);
+        localaopr.c = paramString.optInt("mainSwitch", -1);
+        return localaopr;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PttAutoChangeProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public int a()
+  {
+    return this.b;
+  }
+  
+  public boolean a()
+  {
+    return this.a == 1;
+  }
+  
+  public String toString()
+  {
+    return "open:" + this.a;
   }
 }
 

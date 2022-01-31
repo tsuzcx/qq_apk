@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.view;
 
-import akji;
-import alhr;
-import arof;
+import aknx;
+import almg;
+import arso;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -18,7 +18,7 @@ class ApolloPanel$2
     if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
       return;
     }
-    ApolloBaseInfo localApolloBaseInfo = ((akji)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+    ApolloBaseInfo localApolloBaseInfo = ((aknx)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
     if (localApolloBaseInfo != null) {}
     for (int i = localApolloBaseInfo.apolloStatus;; i = 0)
     {
@@ -27,28 +27,28 @@ class ApolloPanel$2
         if (i != 0) {
           break label269;
         }
-        this.this$0.jdField_a_of_type_Alhr = new alhr(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-        this.this$0.jdField_a_of_type_Alhr.b(1);
-        this.this$0.jdField_a_of_type_Alhr.a(this.this$0);
-        this.this$0.jdField_a_of_type_Alhr.a(true);
+        this.this$0.jdField_a_of_type_Almg = new almg(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+        this.this$0.jdField_a_of_type_Almg.b(1);
+        this.this$0.jdField_a_of_type_Almg.a(this.this$0);
+        this.this$0.jdField_a_of_type_Almg.a(true);
         this.this$0.j();
       }
       while ((i == 1) || (this.jdField_a_of_type_Boolean))
       {
-        if ((arof.a(ApolloUtil.jdField_a_of_type_JavaLangString)) || (this.this$0.jdField_a_of_type_Alhr == null)) {
+        if ((arso.a(ApolloUtil.jdField_a_of_type_JavaLangString)) || (this.this$0.jdField_a_of_type_Almg == null)) {
           break label350;
         }
-        this.this$0.jdField_a_of_type_Alhr = new alhr(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-        this.this$0.jdField_a_of_type_Alhr.b(3);
-        this.this$0.jdField_a_of_type_Alhr.a(this.this$0);
+        this.this$0.jdField_a_of_type_Almg = new almg(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+        this.this$0.jdField_a_of_type_Almg.b(3);
+        this.this$0.jdField_a_of_type_Almg.a(this.this$0);
         this.this$0.j();
         return;
         label269:
         if (i == 2)
         {
-          this.this$0.jdField_a_of_type_Alhr = new alhr(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-          this.this$0.jdField_a_of_type_Alhr.b(1);
-          this.this$0.jdField_a_of_type_Alhr.a(this.this$0);
+          this.this$0.jdField_a_of_type_Almg = new almg(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+          this.this$0.jdField_a_of_type_Almg.b(1);
+          this.this$0.jdField_a_of_type_Almg.a(this.this$0);
           this.this$0.j();
         }
       }

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bepp;
+import bety;
 
 class DataJsPlugin$30$1
   implements Runnable
 {
-  DataJsPlugin$30$1(DataJsPlugin.30 param30, bepp parambepp) {}
+  DataJsPlugin$30$1(DataJsPlugin.30 param30, bety parambety) {}
   
   public void run()
   {

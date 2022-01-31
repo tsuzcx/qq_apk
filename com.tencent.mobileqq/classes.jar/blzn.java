@@ -1,18 +1,21 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Color;
+import android.view.View;
 
-class blzn
-  implements ThreadFactory
+final class blzn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  final int jdField_a_of_type_Int = Color.red(this.d);
+  final int b = Color.green(this.d);
+  final int c = Color.blue(this.d);
   
-  blzn(blzm paramblzm) {}
+  blzn(int paramInt, View paramView) {}
   
-  public Thread newThread(Runnable paramRunnable)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramRunnable = new Thread(paramRunnable);
-    paramRunnable.setName(String.format("arch_disk_io_%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement()) }));
-    return paramRunnable;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
   }
 }
 

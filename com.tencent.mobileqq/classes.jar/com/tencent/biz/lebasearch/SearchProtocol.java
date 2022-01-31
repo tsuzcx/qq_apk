@@ -41,7 +41,7 @@ public class SearchProtocol
     mobileqq_dynamic_search.RootSearcherRequest localRootSearcherRequest = new mobileqq_dynamic_search.RootSearcherRequest();
     localRootSearcherRequest.business.set(128);
     localRequestBody.search_request.set(localRootSearcherRequest);
-    localRequestBody.version.set(ByteStringMicro.copyFromUtf8("8.3.3"));
+    localRequestBody.version.set(ByteStringMicro.copyFromUtf8("8.3.5"));
     paramnfu.putExtra("data", localRequestBody.toByteArray());
     paramnfu.setObserver(new nft(paramContext));
     paramAppInterface.startServlet(paramnfu);

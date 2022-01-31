@@ -1,78 +1,16 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class wam
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, uzc>
+class wam
+  implements bhum
 {
-  public wam(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  wam(wah paramwah, AtomicBoolean paramAtomicBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull uzc paramuzc)
+  public void onDismiss()
   {
-    if ((paramuzc.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramuzc.jdField_a_of_type_JavaUtilList != null) && (!paramuzc.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
-    {
-      if (!paramQQStoryShareGroupProfileActivity.g) {
-        break label54;
-      }
-      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView.a.notifyDataSetChanged();
+    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
-    label54:
-    int j;
-    do
-    {
-      return;
-      j = 0;
-      int i = j;
-      Object localObject;
-      if (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList != null)
-      {
-        i = j;
-        if (!paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.isEmpty())
-        {
-          localObject = paramuzc.jdField_a_of_type_JavaUtilList.iterator();
-          QQUserUIItem localQQUserUIItem;
-          do
-          {
-            i = j;
-            if (!((Iterator)localObject).hasNext()) {
-              break;
-            }
-            localQQUserUIItem = (QQUserUIItem)((Iterator)localObject).next();
-          } while (!paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.contains(localQQUserUIItem.uid));
-          i = 1;
-        }
-      }
-      j = i;
-      if (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.d))
-      {
-        paramuzc = paramuzc.jdField_a_of_type_JavaUtilList.iterator();
-        do
-        {
-          j = i;
-          if (!paramuzc.hasNext()) {
-            break;
-          }
-          localObject = (QQUserUIItem)paramuzc.next();
-        } while (!paramQQStoryShareGroupProfileActivity.d.equals(((QQUserUIItem)localObject).uid));
-        j = 1;
-      }
-    } while (j == 0);
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uzc.class;
   }
 }
 

@@ -7,7 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
-import azgq;
+import azkz;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class ContactsViewPager
@@ -92,7 +92,7 @@ public class ContactsViewPager
       if ((!this.jdField_a_of_type_Boolean) || (k <= m)) {
         break label259;
       }
-      if ((k * 0.5F <= i) || (this.jdField_a_of_type_Int <= (int)(azgq.jdField_a_of_type_Int * 0.1F))) {
+      if ((k * 0.5F <= i) || (this.jdField_a_of_type_Int <= (int)(azkz.jdField_a_of_type_Int * 0.1F))) {
         break label254;
       }
       j = 1;

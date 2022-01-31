@@ -1,15 +1,27 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.AudioDecoder.BgmAudioPlayRunnable;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.widget.RelativeLayout;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class bnjd
-  implements MediaPlayer.OnPreparedListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bnjd(AudioDecoder.BgmAudioPlayRunnable paramBgmAudioPlayRunnable) {}
+  public bnjd(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.e();
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
+      if ((this.a.a.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
+        this.a.a.setAlpha(f);
+      }
+      if ((this.a.c.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
+        this.a.c.setAlpha(Float.valueOf(f).floatValue());
+      }
+    }
   }
 }
 

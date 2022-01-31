@@ -1,28 +1,34 @@
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class bdfg
-  extends PipedInputStream
+public final class bdfg
+  extends BroadcastReceiver
 {
-  private int a = 1024;
+  public bdfg(BaseApplicationImpl paramBaseApplicationImpl) {}
   
-  public bdfg(PipedOutputStream paramPipedOutputStream, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramPipedOutputStream);
-    this.a = paramInt;
-  }
-  
-  protected void receive(int paramInt)
-  {
-    try
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    int i;
+    do
     {
-      if (this.buffer.length != this.a) {
-        this.buffer = new byte[this.a];
+      do
+      {
+        return;
+      } while (!"tencent.video.q2v.debug".equals(paramIntent.getAction()));
+      i = paramIntent.getIntExtra("_debug_Event_index", -1);
+      int j = paramIntent.getIntExtra("_debug_Event_value", -1);
+      if ((i >= 0) && (i < 35))
+      {
+        AudioHelper.a[i] = j;
+        QLog.w("AudioHelper", 1, "ReceiverDebugValue, [" + i + "]=[" + j + "]");
       }
-      super.receive(paramInt);
-      return;
-    }
-    finally {}
+    } while (i != 2);
+    AudioHelper.a(this.a.getApplicationContext());
   }
 }
 

@@ -1,31 +1,17 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acru
-  implements aplb
+  extends amey
 {
-  public acru(EmosmActivity paramEmosmActivity) {}
+  public acru(Conversation paramConversation) {}
   
-  public void a_(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    if (paramInt1 != paramInt2)
-    {
-      EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.a.getItem(paramInt1);
-      this.a.a.a(localEmoticonPackage);
-      this.a.a.b(true);
-      this.a.a.a(localEmoticonPackage, paramInt2);
-      apne.a().a(localEmoticonPackage, paramInt1, paramInt2);
-      this.a.d = true;
-      azmj.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpMove", 0, 0, "", "", "", "");
-      if (this.a.b == 1) {
-        azmj.b(this.a.app, "dc00898", "", "", "0X800AB10", "0X800AB10", 0, 0, "", "", "", "");
-      }
-    }
-    else
-    {
+    if (!(paramObject instanceof String)) {
       return;
     }
-    azmj.b(this.a.app, "dc00898", "", "", "0X800AB18", "0X800AB18", 0, 0, "", "", "", "");
+    paramObject = (String)paramObject;
+    this.a.a(8, paramObject, -2147483648);
   }
 }
 

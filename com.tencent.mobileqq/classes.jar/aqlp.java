@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 
 public class aqlp
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aqlp(QfileLocalFileAppTabView.1.1 param1) {}
+  public aqlp(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    this.a.setResult(0, new Intent());
+    this.a.finish();
+    this.a.overridePendingTransition(2130771977, 2130771978);
   }
 }
 

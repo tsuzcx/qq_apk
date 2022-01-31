@@ -29,7 +29,7 @@ public class nly
     HashMap localHashMap = new HashMap();
     localHashMap.put("videoId", paramString2);
     localHashMap.put("uin", paramString1);
-    azmz.a(BaseApplicationImpl.getContext()).a("", "IMAX_Ad_VIDEO_PRELOADED_RATE", true, 0L, 0L, localHashMap, "", false);
+    azri.a(BaseApplicationImpl.getContext()).a("", "IMAX_Ad_VIDEO_PRELOADED_RATE", true, 0L, 0L, localHashMap, "", false);
     if (QLog.isColorLevel()) {
       QLog.i("AdvertisementStatistics", 2, "reportImaxVideoCoverRate:" + paramString2);
     }
@@ -80,7 +80,7 @@ public class nly
     if (QLog.isColorLevel()) {
       QLog.i("AdvertisementStatistics", 2, this.jdField_a_of_type_Nma.toString());
     }
-    azmz.a(BaseApplicationImpl.getContext()).a("", "IMAX_Ad_videoLoadErr", true, l1 - l2, 0L, localHashMap, "", false);
+    azri.a(BaseApplicationImpl.getContext()).a("", "IMAX_Ad_videoLoadErr", true, l1 - l2, 0L, localHashMap, "", false);
   }
   
   public void a(String paramString1, String paramString2, boolean paramBoolean)
@@ -96,7 +96,7 @@ public class nly
     if (QLog.isColorLevel()) {
       QLog.i("AdvertisementStatistics", 2, this.jdField_a_of_type_Nma.toString() + " ok " + paramBoolean);
     }
-    azmz.a(BaseApplicationImpl.getContext()).a("", this.jdField_a_of_type_Nma.jdField_a_of_type_JavaLangString, paramBoolean, this.jdField_a_of_type_Nma.jdField_c_of_type_Long, 0L, paramString1, "", false);
+    azri.a(BaseApplicationImpl.getContext()).a("", this.jdField_a_of_type_Nma.jdField_a_of_type_JavaLangString, paramBoolean, this.jdField_a_of_type_Nma.jdField_c_of_type_Long, 0L, paramString1, "", false);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -127,7 +127,7 @@ public class nly
     if (paramBoolean) {}
     for (this.jdField_a_of_type_Nma.jdField_a_of_type_JavaLangString = "IMAX_Ad_StartCost_ByUsr";; this.jdField_a_of_type_Nma.jdField_a_of_type_JavaLangString = "IMAX_Ad_StartCost")
     {
-      azmz.a(BaseApplicationImpl.getContext()).a("", this.jdField_a_of_type_Nma.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_Nma.d, 0L, localHashMap, "", false);
+      azri.a(BaseApplicationImpl.getContext()).a("", this.jdField_a_of_type_Nma.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_Nma.d, 0L, localHashMap, "", false);
       if (!QLog.isColorLevel()) {
         break;
       }

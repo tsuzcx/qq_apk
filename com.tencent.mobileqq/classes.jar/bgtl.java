@@ -1,40 +1,17 @@
-import android.app.ActivityManager;
-import android.content.ComponentCallbacks2;
 import android.content.Context;
-import android.content.res.Configuration;
-import android.os.Debug.MemoryInfo;
-import android.os.Process;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
 
-class bgtl
-  implements ComponentCallbacks2
+public class bgtl
 {
-  bgtl(bgtj parambgtj) {}
-  
-  public void onConfigurationChanged(Configuration paramConfiguration) {}
-  
-  public void onLowMemory()
+  public static Animation a(Context paramContext, int paramInt1, int paramInt2)
   {
-    Debug.MemoryInfo[] arrayOfMemoryInfo = ((ActivityManager)this.a.a().getSystemService("activity")).getProcessMemoryInfo(new int[] { Process.myPid() });
-    QMLog.e("GameRuntime", "onLowMemory!!!!!! Meminfo:dalvikPss[" + arrayOfMemoryInfo[0].dalvikPss + "],nativePss[" + arrayOfMemoryInfo[0].nativePss + "],otherPss[" + arrayOfMemoryInfo[0].otherPss + "],total[" + arrayOfMemoryInfo[0].getTotalPss() + "]");
-  }
-  
-  public void onTrimMemory(int paramInt)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("level", paramInt);
-      if (this.a.a(1) != null) {
-        this.a.a(1).a("onMemoryWarning", localJSONObject.toString(), -1);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QMLog.e("GameRuntime", "Failed to registerComponentCallback", localException);
-    }
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(paramInt1, paramInt2, 0.0F, 0.0F);
+    localTranslateAnimation.setDuration((Math.abs(paramInt2 - paramInt1) * 1.0F / DisplayUtil.getScreenWidth(paramContext) * 3000.0F));
+    localTranslateAnimation.setInterpolator(new bgtq());
+    localTranslateAnimation.setFillAfter(true);
+    return localTranslateAnimation;
   }
 }
 

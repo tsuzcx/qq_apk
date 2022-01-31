@@ -1,11 +1,28 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
+import java.util.Iterator;
+import java.util.List;
 
-class ajfe
-  extends ajey
+public class ajfe
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public RelativeLayout a;
-  public ImageView c;
+  public ajfe(RecordMicView paramRecordMicView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = paramValueAnimator.getAnimatedFraction();
+    paramValueAnimator = RecordMicView.a(this.a).iterator();
+    while (paramValueAnimator.hasNext())
+    {
+      ajff localajff = (ajff)paramValueAnimator.next();
+      localajff.jdField_c_of_type_Float = (localajff.f + (localajff.g - localajff.f) * f);
+      localajff.d = (localajff.h + (localajff.i - localajff.h) * f);
+      localajff.e = (localajff.j + (localajff.k - localajff.j) * f);
+      localajff.a = (localajff.b + (int)((localajff.jdField_c_of_type_Int - localajff.b) * f));
+    }
+    this.a.invalidate();
+  }
 }
 
 

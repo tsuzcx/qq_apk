@@ -1,99 +1,338 @@
-import android.content.Context;
-import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.rebuild.CmGameChatPie.ChatPieMsgListener.1;
+import com.tencent.mobileqq.activity.aio.rebuild.CmGameChatPie.ChatPieMsgListener.10;
+import com.tencent.mobileqq.activity.aio.rebuild.CmGameChatPie.ChatPieMsgListener.11;
+import com.tencent.mobileqq.activity.aio.rebuild.CmGameChatPie.ChatPieMsgListener.12;
+import com.tencent.mobileqq.activity.aio.rebuild.CmGameChatPie.ChatPieMsgListener.2;
+import com.tencent.mobileqq.activity.aio.rebuild.CmGameChatPie.ChatPieMsgListener.3;
+import com.tencent.mobileqq.activity.aio.rebuild.CmGameChatPie.ChatPieMsgListener.4;
+import com.tencent.mobileqq.activity.aio.rebuild.CmGameChatPie.ChatPieMsgListener.5;
+import com.tencent.mobileqq.activity.aio.rebuild.CmGameChatPie.ChatPieMsgListener.6;
+import com.tencent.mobileqq.activity.aio.rebuild.CmGameChatPie.ChatPieMsgListener.7;
+import com.tencent.mobileqq.activity.aio.rebuild.CmGameChatPie.ChatPieMsgListener.8;
+import com.tencent.mobileqq.activity.aio.rebuild.CmGameChatPie.ChatPieMsgListener.9;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.data.MessageForApollo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class agoq
-  implements BusinessObserver
+public class agoq
+  extends akvk
 {
-  agoq(agop paramagop) {}
+  private WeakReference<agoe> a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  agoq(agoe paramagoe)
   {
-    if (paramBoolean) {}
-    for (;;)
+    this.a = new WeakReference(paramagoe);
+  }
+  
+  public void a(String paramString)
+  {
+    super.a(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameTemp_CmGameChatPie", 2, "[onPushPlaymateExitAio] friendUin:" + paramString);
+    }
+    if (TextUtils.isEmpty(paramString)) {}
+    agoe localagoe;
+    do
     {
-      try
+      return;
+      localagoe = (agoe)this.a.get();
+    } while ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (!paramString.equals(localagoe.a())));
+    localagoe.a(paramString, localagoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "", 3);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    super.a(paramString, paramInt);
+    agoe localagoe = (agoe)this.a.get();
+    if ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
+    while ((TextUtils.isEmpty(paramString)) || (!paramString.equals(localagoe.a()))) {
+      return;
+    }
+    if (paramInt == 0) {}
+    for (boolean bool = false;; bool = true)
+    {
+      localagoe.u(bool);
+      return;
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameTemp_CmGameChatPie", 2, "[onQueryUserStatus] friendUin:" + paramString + ",status:" + paramInt1 + ",lastTs:" + paramInt2);
+    }
+    super.a(paramString, paramInt1, paramInt2);
+    agoe localagoe = (agoe)this.a.get();
+    if ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
+    while (!localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new CmGameChatPie.ChatPieMsgListener.11(this, localagoe, paramString, paramInt1, paramInt2));
+  }
+  
+  public void a(String paramString, int paramInt, long paramLong)
+  {
+    agoe localagoe = (agoe)this.a.get();
+    if ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
+    while ((TextUtils.isEmpty(paramString)) || (!paramString.equals(localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new CmGameChatPie.ChatPieMsgListener.9(this, localagoe, paramInt, paramLong));
+  }
+  
+  public void a(String paramString, int paramInt, List<MessageForApollo> paramList)
+  {
+    super.a(paramString, paramInt, paramList);
+    agoe localagoe = (agoe)this.a.get();
+    if ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      do
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label500;
+        return;
+        if (agoe.a(localagoe) != null) {
+          agoe.a(localagoe).dismiss();
         }
-        localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (paramInt != 0)
+      } while ((TextUtils.isEmpty(paramString)) || (!paramString.equals(localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
+      localQQAppInterface = localagoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    } while (localQQAppInterface == null);
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      QLog.e("CmGameChatPie", 1, "onAcceptMyInvite msgs == null || msgs.isEmpty()");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameChatPie", 2, new Object[] { "onAcceptMyInvite friendUin:", paramString, " msgs.size:", Integer.valueOf(paramList.size()) });
+    }
+    if (agoe.a(localagoe))
+    {
+      QLog.e("CmGameChatPie", 1, "onAcceptMyInvite chatPie.mStoped");
+      return;
+    }
+    paramString = (MessageForApollo)paramList.get(0);
+    paramString = new CmGameStartChecker.StartCheckParam(paramString.gameId, paramString.isSend(), "message", paramString.roomId, 1, 0, localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, ApolloGameUtil.a(localQQAppInterface, localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString), localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, agoe.c(localagoe), paramString.gameName);
+    paramString.mTempAIOUin = localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    paramString.mTempAIONickName = localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d;
+    paramString.disableMinGame = true;
+    ApolloGameUtil.a(localagoe.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString);
+    agoe.U = true;
+  }
+  
+  public void a(String paramString, agor paramagor)
+  {
+    agoe localagoe = (agoe)this.a.get();
+    if ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
+    while ((TextUtils.isEmpty(paramString)) || (!paramString.equals(localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new CmGameChatPie.ChatPieMsgListener.1(this, localagoe, paramString, paramagor));
+  }
+  
+  public void a(String paramString, akvn paramakvn)
+  {
+    agoe localagoe = (agoe)this.a.get();
+    if ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
+    while ((TextUtils.isEmpty(paramString)) || (!paramString.equals(localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    localagoe.a(paramakvn);
+  }
+  
+  public void a(String paramString, List<ApolloGameData> paramList)
+  {
+    super.a(paramString, paramList);
+    agoe localagoe = (agoe)this.a.get();
+    if ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((TextUtils.isEmpty(paramString)) || (!paramString.equals(localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
+      localagoe.b(paramList);
+    } while (localagoe.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel == null);
+    localagoe.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.m();
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    super.a(paramString, paramBoolean);
+    paramString = (agoe)this.a.get();
+    if ((paramString == null) || (paramString.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {
+      return;
+    }
+    paramString.u(paramBoolean);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, long paramLong, int paramInt2)
+  {
+    super.a(paramBoolean, paramInt1, paramLong, paramInt2);
+    agoe localagoe = (agoe)this.a.get();
+    if ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
+    do
+    {
+      do
+      {
+        return;
+        if (!paramBoolean)
         {
-          paramBundle = paramBundle.optString("msg");
-          if (!TextUtils.isEmpty(paramBundle))
-          {
-            QQToast.a(this.a.a.jdField_a_of_type_AndroidContentContext, 1, paramBundle, 0).b(this.a.a.a());
-            QLog.d(this.a.a.jdField_a_of_type_JavaLangString + "Q.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + ", op:" + "1" + ", errMsg:" + paramBundle);
-            return;
-          }
-          paramBoolean = false;
-          if (!paramBoolean) {
-            QQToast.a(this.a.a.jdField_a_of_type_AndroidContentContext, 1, this.a.a.jdField_a_of_type_AndroidContentContext.getString(2131694690), 0).b(this.a.a.a());
-          }
-          if (this.a.a.Z == paramBoolean) {
-            continue;
-          }
-          this.a.a.Z = paramBoolean;
-          this.a.a.m();
+          QLog.e("CmGameTemp_CmGameChatPie", 1, "onCreateRoomId createSuccess:false");
+          ThreadManager.getUIHandler().post(new CmGameChatPie.ChatPieMsgListener.7(this, localagoe));
           return;
         }
-        localObject = paramBundle.getJSONObject("result");
-        paramInt = paramBundle.optInt("retcode");
-        if (paramInt != 0) {
-          continue;
-        }
+      } while (localagoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
+      if (agoe.a(localagoe) != paramInt2) {
+        break label216;
       }
-      catch (Exception paramBundle)
-      {
-        Object localObject;
-        boolean bool = false;
-        continue;
-        bool = false;
-        continue;
+      if (!akvs.a(localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+        break;
       }
-      try
-      {
-        QQToast.a(this.a.a.jdField_a_of_type_AndroidContentContext, 2, this.a.a.jdField_a_of_type_AndroidContentContext.getString(2131694691), 0).b(this.a.a.a());
-        bool = true;
-        paramBoolean = bool;
-        try
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d(this.a.a.jdField_a_of_type_JavaLangString + "Q.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + "result:" + ((JSONObject)localObject).toString());
-          paramBoolean = bool;
-        }
-        catch (Exception paramBundle) {}
-      }
-      catch (Exception paramBundle)
-      {
-        bool = true;
-        continue;
-      }
-      paramBoolean = bool;
-      if (QLog.isColorLevel())
-      {
-        QLog.d(this.a.a.jdField_a_of_type_JavaLangString + "Q.nearby.follow", 2, "sendOperateFollowUser Exception");
-        paramBoolean = bool;
-        continue;
-        label500:
-        paramBoolean = false;
-      }
+    } while (agoe.a(localagoe) == null);
+    String str = agoe.a(localagoe).a();
+    if (agoe.d(localagoe) == paramInt2)
+    {
+      akvf.a(localagoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str, paramLong, paramInt1);
+      localagoe.c(paramLong);
+      return;
     }
+    localagoe.a(paramInt1, paramLong);
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new CmGameChatPie.ChatPieMsgListener.8(this, localagoe, paramInt1, paramLong, str), 1500L);
+    return;
+    ((aknx)localagoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramInt1, paramLong);
+    return;
+    label216:
+    QLog.e("CmGameTemp_CmGameChatPie", 1, "onCreateRoomId chatPie.mCreateRoomReqCode != reqCode, reqCode:" + paramInt2);
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt, long paramLong)
+  {
+    super.a(paramBoolean, paramString, paramInt, paramLong);
+    agoe localagoe = (agoe)this.a.get();
+    if ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
+    while ((TextUtils.isEmpty(paramString)) || (!paramString.equals(localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    if (paramBoolean) {
+      localagoe.a(paramInt, paramLong);
+    }
+    ThreadManager.getUIHandler().post(new CmGameChatPie.ChatPieMsgListener.2(this, localagoe, paramBoolean));
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, int paramInt, long paramLong, String paramString2)
+  {
+    super.a(paramBoolean, paramString1, paramInt, paramLong, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameTemp_CmGameChatPie", 2, "[onCheckRobotModeRsp] friendUin:" + paramString1 + ",gameId:" + paramInt + ",roomId:" + paramLong);
+    }
+    agoe localagoe = (agoe)this.a.get();
+    if ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
+    while ((TextUtils.isEmpty(paramString1)) || (!paramString1.equals(localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (!paramBoolean)) {
+      return;
+    }
+    long l = System.currentTimeMillis() - akvf.jdField_a_of_type_Long;
+    if (l > 1500L)
+    {
+      localagoe.a(paramInt, paramLong, paramString2);
+      return;
+    }
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new CmGameChatPie.ChatPieMsgListener.12(this, localagoe, paramInt, paramLong, paramString2), 1500L - l);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt, long paramLong)
+  {
+    super.a(paramBoolean1, paramBoolean2, paramString, paramInt, paramLong);
+    agoe localagoe = (agoe)this.a.get();
+    if ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((TextUtils.isEmpty(paramString)) || (!paramString.equals(localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (!paramBoolean1));
+      if (agoe.a(localagoe))
+      {
+        QLog.e("CmGameTemp_CmGameChatPie", 1, "onOneMoreGameRspFinish chatPie.mStoped");
+        return;
+      }
+    } while ((!paramBoolean2) || (localagoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (agoe.a(localagoe) == null));
+    paramString = new CmGameStartChecker.StartCheckParam(agoe.a(localagoe).jdField_a_of_type_Int, true, "message", agoe.a(localagoe).jdField_a_of_type_Long, 1, 0, localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, ApolloGameUtil.a(localagoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString), localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, agoe.c(localagoe), null);
+    paramString.mTempAIOUin = localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    paramString.mTempAIONickName = localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d;
+    paramString.disableMinGame = true;
+    ApolloGameUtil.a(localagoe.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString);
+    agoe.U = true;
+    akvf.b(localagoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramInt, paramLong);
+  }
+  
+  public void b(String paramString)
+  {
+    agoe localagoe = (agoe)this.a.get();
+    if ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
+    while ((TextUtils.isEmpty(paramString)) || (!paramString.equals(localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new CmGameChatPie.ChatPieMsgListener.3(this, localagoe, paramString));
+  }
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt, long paramLong)
+  {
+    agoe localagoe = (agoe)this.a.get();
+    if ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
+    while ((TextUtils.isEmpty(paramString)) || (!paramString.equals(localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    if (!paramBoolean) {
+      akvf.a(localagoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramInt, paramLong);
+    }
+    if (agoe.a(localagoe))
+    {
+      QLog.e("CmGameTemp_CmGameChatPie", 1, "onPushOneMoreGameMsgRsp chatPie.mStoped");
+      return;
+    }
+    ThreadManager.getUIHandler().post(new CmGameChatPie.ChatPieMsgListener.10(this, paramBoolean, localagoe, paramInt, paramLong));
+  }
+  
+  public void c(String paramString)
+  {
+    agoe localagoe = (agoe)this.a.get();
+    if ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
+    while ((TextUtils.isEmpty(paramString)) || (!paramString.equals(localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new CmGameChatPie.ChatPieMsgListener.4(this, localagoe, paramString));
+  }
+  
+  public void d(String paramString)
+  {
+    agoe localagoe = (agoe)this.a.get();
+    if ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
+    while ((TextUtils.isEmpty(paramString)) || (!paramString.equals(localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new CmGameChatPie.ChatPieMsgListener.5(this, localagoe, paramString));
+  }
+  
+  public void e(String paramString)
+  {
+    agoe localagoe = (agoe)this.a.get();
+    if ((localagoe == null) || (localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
+    while ((TextUtils.isEmpty(paramString)) || (!paramString.equals(localagoe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new CmGameChatPie.ChatPieMsgListener.6(this, localagoe, paramString));
   }
 }
 

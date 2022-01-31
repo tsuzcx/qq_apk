@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aerh;
-import aeri;
-import ansg;
+import aevw;
+import aevx;
+import anwp;
 
 public class XBubbleAnimation$4$2
   implements Runnable
 {
-  public XBubbleAnimation$4$2(aeri paramaeri) {}
+  public XBubbleAnimation$4$2(aevx paramaevx) {}
   
   public void run()
   {

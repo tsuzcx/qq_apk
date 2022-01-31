@@ -1,11 +1,31 @@
-import dov.com.qq.im.capture.mode.CaptureModeController;
-
 public class bloy
-  extends blon
+  extends blpo
 {
-  public bloy(CaptureModeController paramCaptureModeController)
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
+  private String d;
+  private String e;
+  
+  public bloy(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5)
   {
-    super(paramCaptureModeController);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramString5;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

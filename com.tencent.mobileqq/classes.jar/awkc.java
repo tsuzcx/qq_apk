@@ -1,20 +1,28 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
-import mqq.app.QQPermissionCallback;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.pic.ReportInfo;
 
-public class awkc
-  implements QQPermissionCallback
+public final class awkc
+  implements Parcelable.Creator<ReportInfo>
 {
-  public awkc(CustomCoverFragment paramCustomCoverFragment, FragmentActivity paramFragmentActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public ReportInfo a(Parcel paramParcel)
   {
-    bdcd.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramArrayOfString, paramArrayOfInt);
+    ReportInfo localReportInfo = new ReportInfo();
+    localReportInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localReportInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localReportInfo.jdField_c_of_type_Int = paramParcel.readInt();
+    localReportInfo.f = paramParcel.readInt();
+    localReportInfo.d = paramParcel.readInt();
+    localReportInfo.e = paramParcel.readInt();
+    localReportInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localReportInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localReportInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    return localReportInfo;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public ReportInfo[] a(int paramInt)
   {
-    CustomCoverFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileCustomCoverFragment, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+    return new ReportInfo[paramInt];
   }
 }
 

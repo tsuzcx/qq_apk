@@ -1,55 +1,85 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
-import java.io.IOException;
-import java.util.ArrayList;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
-class xox
-  extends xos
+public class xox
+  extends BaseAdapter
 {
-  xox(xot paramxot, xpb paramxpb, String[] paramArrayOfString, ArrayList paramArrayList) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private xoz jdField_a_of_type_Xoz;
+  private int b;
+  private int c;
   
-  public void onFailure(String paramString)
+  public xox(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    wsv.e("Q.qqstory.ffmpeg.FFmpegCmd", paramString);
-    this.jdField_a_of_type_Xpb.onFailure(paramString);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
   
-  public void onFinish(boolean paramBoolean)
+  public Bitmap a(int paramInt)
   {
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      this.jdField_a_of_type_Xpb.onFinish(paramBoolean);
-    }
-    if (paramBoolean) {}
-    try
-    {
-      this.jdField_a_of_type_Xot.a(this.jdField_a_of_type_JavaUtilArrayList);
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Xoz = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+  }
+  
+  public void a(LocalMediaInfo paramLocalMediaInfo)
+  {
+    if (this.jdField_a_of_type_Xoz == null) {
       return;
     }
-    catch (FFmpegCommandAlreadyRunningException localFFmpegCommandAlreadyRunningException)
+    this.jdField_a_of_type_Xoz.a(paramLocalMediaInfo);
+  }
+  
+  public void a(xoz paramxoz)
+  {
+    this.jdField_a_of_type_Xoz = paramxoz;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      this.jdField_a_of_type_Xpb.onFailure(localFFmpegCommandAlreadyRunningException.getMessage());
-      wsv.e("Q.qqstory.ffmpeg.FFmpegCmd", localFFmpegCommandAlreadyRunningException.getMessage());
-      return;
+      paramView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      int i = (int)(xcp.a(this.jdField_a_of_type_AndroidContentContext.getResources()) * this.b);
+      paramViewGroup = new ViewGroup.LayoutParams(this.b, i);
+      paramView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      paramView.setLayoutParams(paramViewGroup);
+      paramViewGroup = new xoy();
+      paramViewGroup.a = paramView;
+      paramViewGroup.a.setImageDrawable(new ColorDrawable(-12303292));
+      paramView.setTag(paramViewGroup);
     }
-    catch (IOException localIOException)
+    for (;;)
     {
-      this.jdField_a_of_type_Xpb.onFailure(localIOException.getMessage());
-      wsv.e("Q.qqstory.ffmpeg.FFmpegCmd", localIOException.getMessage());
+      this.jdField_a_of_type_Xoz.a(paramViewGroup.a, Integer.valueOf(paramInt));
+      return paramView;
+      paramViewGroup = (xoy)paramView.getTag();
     }
-  }
-  
-  public void onProgress(String paramString)
-  {
-    this.jdField_a_of_type_Xpb.onProgress(paramString);
-  }
-  
-  public void onStart()
-  {
-    this.jdField_a_of_type_Xpb.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    this.jdField_a_of_type_Xpb.onSuccess(paramString);
   }
 }
 

@@ -136,7 +136,7 @@ public class pcs
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
     {
       content_vidurl_svr.GetVid2UrlsReq localGetVid2UrlsReq = new content_vidurl_svr.GetVid2UrlsReq();
-      Object localObject = bdcb.c();
+      Object localObject = bdgk.c();
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         localGetVid2UrlsReq.app_version.set((String)localObject);
       }
@@ -150,7 +150,7 @@ public class pcs
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         localGetVid2UrlsReq.imei.set((String)localObject);
       }
-      localGetVid2UrlsReq.net_type.set(bewy.a(null));
+      localGetVid2UrlsReq.net_type.set(bfbh.a(null));
       localGetVid2UrlsReq.system.set(1);
       localGetVid2UrlsReq.timestamp.set(System.currentTimeMillis() / 1000L + "");
       if (ors.a() != null) {}

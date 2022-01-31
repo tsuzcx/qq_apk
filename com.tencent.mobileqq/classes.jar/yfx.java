@@ -1,24 +1,14 @@
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.biz.videostory.network.request.SubscribePersonalDetailRequest;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class yfx
-  extends yfn
+class yfx
+  implements zac<CertifiedAccountWrite.StDoLikeRsp>
 {
-  private String a;
+  yfx(yfp paramyfp) {}
   
-  public yfx(String paramString)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
   {
-    this.a = paramString;
-  }
-  
-  public void a() {}
-  
-  public void a(yft paramyft)
-  {
-    SubscribePersonalDetailRequest localSubscribePersonalDetailRequest = new SubscribePersonalDetailRequest(this.a, null);
-    paramyft = new yfy(this, paramyft);
-    localSubscribePersonalDetailRequest.setEnableCache(true);
-    VSNetworkHelper.a().a(localSubscribePersonalDetailRequest, paramyft);
+    umc.a().dispatch(this.a.a(new Object[] { Integer.valueOf(7), Long.valueOf(paramLong), paramString, paramStDoLikeRsp }));
   }
 }
 

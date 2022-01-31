@@ -29,7 +29,7 @@ import com.tencent.biz.subscribe.comment.WorkSpaceView;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class tdf
-  extends ydh
+  extends yhq
   implements DialogInterface.OnDismissListener, View.OnClickListener
 {
   private int jdField_a_of_type_Int;
@@ -45,8 +45,8 @@ public class tdf
   private CommentEditText jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText;
   private EmoView jdField_a_of_type_ComTencentBizSubscribeCommentEmoView;
   private tdm jdField_a_of_type_Tdm;
-  private ybf jdField_a_of_type_Ybf;
-  private ydi jdField_a_of_type_Ydi;
+  private yfo jdField_a_of_type_Yfo;
+  private yhr jdField_a_of_type_Yhr;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
   private View jdField_b_of_type_AndroidViewView;
@@ -61,7 +61,7 @@ public class tdf
   {
     super(paramActivity, 2131755395);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559854, null);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559853, null);
     b();
     setCancelable(true);
     setContentView(this.jdField_a_of_type_AndroidViewView);
@@ -105,26 +105,26 @@ public class tdf
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364869));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363574));
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText = ((CommentEditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131377631));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364871));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363576));
+    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText = ((CommentEditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131377685));
     this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setOnInputBackListener(new tdg(this));
-    this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363615));
-    this.jdField_c_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363606));
+    this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363617));
+    this.jdField_c_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363608));
     this.jdField_c_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.d = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363587));
+    this.d = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363589));
     this.d.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363656));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363658));
     this.jdField_a_of_type_AndroidContentSharedPreferences = getContext().getSharedPreferences("weishi_comment_prefs_version", 0);
     this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("GroupSoftKeyboardHeight", aekt.a(250.0F, getContext().getResources()));
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("GroupSoftKeyboardHeight", aepi.a(250.0F, getContext().getResources()));
     tlo.b("CommentInputPopupWindow", 1, "mEmojiPanel initView() step1 :" + this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int == 0)
     {
-      this.jdField_a_of_type_Int = azgq.a(250.0F);
+      this.jdField_a_of_type_Int = azkz.a(250.0F);
       tlo.b("CommentInputPopupWindow", 1, "mEmojiPanel initView() step2 :" + this.jdField_a_of_type_Int);
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView = ((EmoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365646));
+    this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView = ((EmoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365648));
     this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView.a(this.jdField_a_of_type_AndroidAppActivity, getContext(), this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText, null);
     this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363335);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(new tdh(this));
@@ -167,8 +167,8 @@ public class tdf
   
   private void f()
   {
-    this.jdField_a_of_type_Ydi = new ydi(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_Ydi.a(new tdi(this));
+    this.jdField_a_of_type_Yhr = new yhr(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_Yhr.a(new tdi(this));
     this.jdField_a_of_type_AndroidViewView.getViewTreeObserver();
   }
   
@@ -280,9 +280,9 @@ public class tdf
     this.jdField_a_of_type_Tdm = paramtdm;
   }
   
-  public void a(ybf paramybf)
+  public void a(yfo paramyfo)
   {
-    this.jdField_a_of_type_Ybf = paramybf;
+    this.jdField_a_of_type_Yfo = paramyfo;
   }
   
   public void b(View paramView)
@@ -311,21 +311,21 @@ public class tdf
     switch (paramView.getId())
     {
     default: 
-    case 2131363606: 
-    case 2131363587: 
-    case 2131363574: 
-    case 2131377631: 
-    case 2131363656: 
+    case 2131363608: 
+    case 2131363589: 
+    case 2131363576: 
+    case 2131377685: 
+    case 2131363658: 
       do
       {
         return;
         if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.length() > this.jdField_c_of_type_Int) {
-          QQToast.a(getContext(), alpo.a(2131702555) + this.jdField_c_of_type_Int + alpo.a(2131702556), 0).a();
+          QQToast.a(getContext(), alud.a(2131702567) + this.jdField_c_of_type_Int + alud.a(2131702568), 0).a();
         }
         this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.append("[em]e166[/em]");
         return;
         if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.length() > this.jdField_c_of_type_Int) {
-          QQToast.a(getContext(), alpo.a(2131702555) + this.jdField_c_of_type_Int + alpo.a(2131702556), 0).a();
+          QQToast.a(getContext(), alud.a(2131702567) + this.jdField_c_of_type_Int + alud.a(2131702568), 0).a();
         }
         this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.append("[em]e163[/em]");
         return;
@@ -343,8 +343,8 @@ public class tdf
         this.d.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
         return;
-      } while (this.jdField_a_of_type_Ybf == null);
-      this.jdField_a_of_type_Ybf.a();
+      } while (this.jdField_a_of_type_Yfo == null);
+      this.jdField_a_of_type_Yfo.a();
       return;
     }
     tlo.b("CommentInputPopupWindow", 1, "btn_keyboard");
@@ -355,8 +355,8 @@ public class tdf
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Ydi.a();
-    this.jdField_a_of_type_Ydi = null;
+    this.jdField_a_of_type_Yhr.a();
+    this.jdField_a_of_type_Yhr = null;
     this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(0);
     this.jdField_b_of_type_Boolean = false;

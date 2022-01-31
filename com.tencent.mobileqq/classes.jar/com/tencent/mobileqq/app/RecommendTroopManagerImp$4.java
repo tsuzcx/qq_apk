@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import awbv;
-import awbw;
-import awbx;
+import awge;
+import awgf;
+import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.troop.data.NotificationRecommendTroopItem;
 
@@ -13,30 +13,30 @@ public final class RecommendTroopManagerImp$4
   
   public void run()
   {
-    awbw localawbw;
+    awgf localawgf;
     if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof BrowserAppInterface)) {
-      localawbw = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory(null).createEntityManager();
+      localawgf = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory(null).createEntityManager();
     }
     for (;;)
     {
-      if (localawbw == null) {}
+      if (localawgf == null) {}
       for (;;)
       {
         return;
         if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
           break label89;
         }
-        localawbw = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getEntityManagerFactory().createEntityManager();
+        localawgf = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getEntityManagerFactory().createEntityManager();
         break;
         if (this.jdField_a_of_type_Int == 2) {}
-        for (awbv localawbv = localawbw.a(NotificationRecommendTroopItem.class, this.jdField_a_of_type_JavaLangString); localawbv != null; localawbv = null)
+        for (awge localawge = localawgf.a(NotificationRecommendTroopItem.class, this.jdField_a_of_type_JavaLangString); localawge != null; localawge = null)
         {
-          localawbw.b(localawbv);
+          localawgf.b(localawge);
           return;
         }
       }
       label89:
-      localawbw = null;
+      localawgf = null;
     }
   }
 }

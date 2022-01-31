@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgnf;
+import bgrm;
 
 class RewardedVideoAdPlugin$1$1$2
   implements Runnable
@@ -9,7 +9,7 @@ class RewardedVideoAdPlugin$1$1$2
   
   public void run()
   {
-    bgnf.a(this.this$2.this$1.this$0.mContext, "当前版本暂不支持观看广告", 0).a();
+    bgrm.a(this.this$2.this$1.this$0.mContext, "当前版本暂不支持观看广告", 0).a();
   }
 }
 

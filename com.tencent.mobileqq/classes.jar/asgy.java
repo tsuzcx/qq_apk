@@ -1,39 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
+import mqq.app.AppRuntime;
 
-class asgy
-  extends Handler
+public class asgy
+  implements CompoundButton.OnCheckedChangeListener
 {
-  asgy(asgx paramasgx) {}
+  public asgy(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    bhsb.a(false, paramBoolean);
+    paramCompoundButton = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-    case 5: 
-    default: 
-      return;
-    case 0: 
-      this.a.a();
-      return;
-    case 1: 
-      asgx.a(this.a);
-      return;
-    case 6: 
-      asgx.b(this.a);
-      return;
-    case 2: 
-      asgx.c(this.a);
-      return;
-    case 3: 
-      asgx.d(this.a);
-      return;
-    case 4: 
-      asgx.e(this.a);
+      azqs.b(null, "CliOper", "", paramCompoundButton, "0X800A6E4", "0X800A6E4", 0, i, "", "", "", "");
       return;
     }
-    asgx.f(this.a);
   }
 }
 

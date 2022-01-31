@@ -1,16 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
 public class xxv
-  extends AnimatorListenerAdapter
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public xxv(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  public xxv(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    FollowedRecommendBannerView.a(this.a).notifyDataSetChanged();
-    this.a.clearAnimation();
+    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 

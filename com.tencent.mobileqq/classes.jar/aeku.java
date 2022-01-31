@@ -1,9 +1,15 @@
-final class aeku
-  extends ThreadLocal<char[]>
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+
+public class aeku
+  implements DialogInterface.OnDismissListener
 {
-  protected char[] a()
+  public aeku(UpgradeActivity paramUpgradeActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new char[1024];
+    this.a.finish();
   }
 }
 

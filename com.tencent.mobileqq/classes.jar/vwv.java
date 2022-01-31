@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-class vwv
-  implements DialogInterface.OnDismissListener
+public class vwv
+  implements vyk
 {
-  vwv(vwo paramvwo, Boolean[] paramArrayOfBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public vwv(TextureVideoView paramTextureVideoView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(vyi paramvyi)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.jdField_a_of_type_Vwo.b, 2, "[az]isResumeVideoPlaySelf === >" + this.jdField_a_of_type_ArrayOfJavaLangBoolean);
+    this.a.jdField_a_of_type_Int = 5;
+    this.a.b = 5;
+    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
     }
-    if ((!this.jdField_a_of_type_ArrayOfJavaLangBoolean[0].booleanValue()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    if (this.a.jdField_a_of_type_Vyk != null) {
+      this.a.jdField_a_of_type_Vyk.a(this.a.jdField_a_of_type_Vyi);
     }
   }
 }

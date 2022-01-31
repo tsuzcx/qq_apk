@@ -1,27 +1,26 @@
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.onlinestatus.AccountPanel.18.1;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
+import mqq.os.MqqHandler;
 
 public class awdf
+  extends AccountObserver
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String[] a;
-  public int b = -1;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
+  awdf(awcx paramawcx) {}
   
-  public awdf(String paramString, Class<? extends FTSEntity> paramClass, String[] paramArrayOfString, boolean paramBoolean, int paramInt)
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramClass.getName().replace('.', '/');
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
+    if ((paramBoolean1) && (awcx.a(this.a) != null)) {
+      awcx.a(this.a).a(paramStatus);
+    }
+    if (!paramBoolean2) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new AccountPanel.18.1(this, paramBoolean1, paramStatus));
   }
+  
+  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong) {}
 }
 
 

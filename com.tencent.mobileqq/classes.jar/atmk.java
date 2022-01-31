@@ -1,19 +1,25 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.10;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
 public class atmk
-  implements DialogInterface.OnClickListener
+  implements atoi
 {
-  public atmk(LocationDialogUtil.10 param10) {}
+  public Object a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private atmk(ListenTogetherManager paramListenTogetherManager)
   {
-    if (atmi.a(this.a.a))
+    this.jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangObject == null) {}
+    while (paramInt == 0) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      this.a.a.finish();
-      atmi.a("");
+      this.jdField_a_of_type_JavaLangObject.notifyAll();
+      return;
     }
   }
 }

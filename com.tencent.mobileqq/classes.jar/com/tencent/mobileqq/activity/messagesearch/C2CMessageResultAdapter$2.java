@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import aiby;
-import aicu;
+import aign;
+import aihj;
 import android.os.Message;
-import bhoe;
+import bhsl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -17,7 +17,7 @@ import java.util.Set;
 public class C2CMessageResultAdapter$2
   implements Runnable
 {
-  public C2CMessageResultAdapter$2(aiby paramaiby, String paramString, long paramLong) {}
+  public C2CMessageResultAdapter$2(aign paramaign, String paramString, long paramLong) {}
   
   public void run()
   {
@@ -33,7 +33,7 @@ public class C2CMessageResultAdapter$2
         localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
         if (this.this$0.a(localMessageRecord))
         {
-          this.this$0.jdField_a_of_type_JavaUtilList.add(new aicu(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
+          this.this$0.jdField_a_of_type_JavaUtilList.add(new aihj(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
           this.this$0.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(localMessageRecord.shmsgseq));
         }
         i += 1;
@@ -50,7 +50,7 @@ public class C2CMessageResultAdapter$2
           localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
           if (this.this$0.a(localMessageRecord))
           {
-            this.this$0.jdField_a_of_type_JavaUtilList.add(new aicu(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
+            this.this$0.jdField_a_of_type_JavaUtilList.add(new aihj(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
             this.this$0.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(localMessageRecord.shmsgseq));
           }
           i += 1;
@@ -63,7 +63,7 @@ public class C2CMessageResultAdapter$2
     localObject = new HashMap();
     ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
     ((HashMap)localObject).put("sequence", Long.valueOf(this.jdField_a_of_type_Long));
-    this.this$0.jdField_a_of_type_Bhoe.obtainMessage(8, localObject).sendToTarget();
+    this.this$0.jdField_a_of_type_Bhsl.obtainMessage(8, localObject).sendToTarget();
   }
 }
 

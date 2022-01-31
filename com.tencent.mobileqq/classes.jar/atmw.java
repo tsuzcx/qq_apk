@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
 public class atmw
-  implements DialogInterface.OnClickListener
+  implements bhum
 {
-  public atmw(LocationDialogUtil.6 param6) {}
+  public atmw(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, atnw paramatnw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss()
   {
-    atmi.a(this.a.b, "0X800A76A");
+    this.jdField_a_of_type_Atnw.b(false);
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    }
   }
 }
 

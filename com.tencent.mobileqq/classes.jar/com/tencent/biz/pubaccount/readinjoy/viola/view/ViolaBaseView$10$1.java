@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import bcwk;
+import bdat;
 import com.tencent.qphone.base.util.QLog;
 import sqv;
 import sqw;
@@ -15,7 +15,7 @@ public class ViolaBaseView$10$1
     try
     {
       ViolaBaseView.a(this.a.a, new sqw(this));
-      bcwk.a().a(ViolaBaseView.a(this.a.a));
+      bdat.a().a(ViolaBaseView.a(this.a.a));
       return;
     }
     catch (Exception localException)

@@ -1,12 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.TMG.sdk.AVContext.StartParam;
 
-class algs
-  implements View.OnClickListener
+public class algs
+  extends AVContext.StartParam
 {
-  algs(algr paramalgr) {}
-  
-  public void onClick(View paramView) {}
+  public int a;
+  public long a;
 }
 
 

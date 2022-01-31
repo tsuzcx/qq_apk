@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.BaseButton;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
 
-public final class bmfy
-  implements Parcelable.Creator<EditTakeGifSource>
+public class bmfy
+  extends AnimatorListenerAdapter
 {
-  public EditTakeGifSource a(Parcel paramParcel)
+  public bmfy(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new EditTakeGifSource(paramParcel);
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive deleteView 190ms all end ScaleX:" + this.a.b.getScaleX() + " ScaleY:" + this.a.b.getScaleY());
+    }
   }
   
-  public EditTakeGifSource[] a(int paramInt)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return new EditTakeGifSource[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive deleteView begin");
+    }
   }
 }
 

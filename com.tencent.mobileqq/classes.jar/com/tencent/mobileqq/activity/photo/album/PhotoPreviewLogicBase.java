@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import ailq;
-import aily;
-import ailz;
-import aimj;
+import aiqf;
+import aiqn;
+import aiqo;
+import aiqy;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import baul;
+import bayu;
 import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -106,10 +106,10 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity>
       if (i == 0) {
         break label181;
       }
-      localView = this.mActivity.getLayoutInflater().inflate(2131561137, null);
+      localView = this.mActivity.getLayoutInflater().inflate(2131561155, null);
       localView.setTag(2131296400, Boolean.valueOf(true));
       localView.setLayoutParams(new Gallery.LayoutParams(-1, -1));
-      localObject1 = (ImageView)localView.findViewById(2131372238);
+      localObject1 = (ImageView)localView.findViewById(2131372258);
       label111:
       Object localObject4 = new File((String)localObject3);
       localObject4 = this.mActivity.getFileUrl((File)localObject4);
@@ -168,7 +168,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity>
           localObject3 = URLDrawable.URLDrawableOptions.obtain();
           ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = paramViewGroup.getWidth();
           ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = paramViewGroup.getHeight();
-          ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = baul.a;
+          ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = bayu.a;
           ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = true;
           paramViewGroup = this.mActivity.getFileUrl(paramView);
           paramView = localObject2;
@@ -204,7 +204,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity>
   protected void initData(Intent paramIntent)
   {
     com.tencent.mobileqq.activity.photo.FlowThumbDecoder.sFlowItemHeight = this.mActivity.getResources().getDimension(2131296978);
-    this.mActivity.mVideoPlayController = new aily();
+    this.mActivity.mVideoPlayController = new aiqn();
     this.mPhotoPreviewData.from = paramIntent.getStringExtra("FROM_WHERE");
     paramIntent.removeExtra("FROM_WHERE");
     this.mPhotoPreviewData.isSingleMode = paramIntent.getBooleanExtra("PhotoConst.IS_SINGLE_MODE", false);
@@ -388,14 +388,14 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity>
     {
       if (this.mActivity.mVideoPlayController != null)
       {
-        ailz localailz = new ailz();
-        localailz.jdField_a_of_type_Boolean = false;
-        localailz.jdField_a_of_type_JavaLangString = str;
-        this.mActivity.mVideoPlayController.a(paramAdapterView, localailz);
+        aiqo localaiqo = new aiqo();
+        localaiqo.jdField_a_of_type_Boolean = false;
+        localaiqo.jdField_a_of_type_JavaLangString = str;
+        this.mActivity.mVideoPlayController.a(paramAdapterView, localaiqo);
       }
       if (paramView != null)
       {
-        this.mActivity.mCenterVideoPlayBtn = ((ImageView)paramView.findViewById(2131372237));
+        this.mActivity.mCenterVideoPlayBtn = ((ImageView)paramView.findViewById(2131372257));
         this.mActivity.mCenterVideoPlayBtn.setVisibility(0);
       }
       if (!this.mPhotoCommonData.selectedIndex.contains(Integer.valueOf(paramInt))) {
@@ -433,7 +433,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity>
       this.mActivity.selectedBox.setChecked(false);
       break label134;
       label291:
-      this.mActivity.titleView.setText(this.mActivity.getResources().getString(2131695495));
+      this.mActivity.titleView.setText(this.mActivity.getResources().getString(2131695497));
     }
   }
   
@@ -510,7 +510,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity>
       }
       this.mActivity.selectedBox.setActivated(true);
       return;
-      localObject = ((Resources)localObject).getString(2131695243);
+      localObject = ((Resources)localObject).getString(2131695245);
       break;
       label153:
       i = 0;

@@ -1,142 +1,210 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.events.QCircleFollowUpdateEvent;
+import com.tencent.biz.qqcircle.widgets.QCircleRecommendWidget;
+import com.tencent.biz.qqcircle.widgets.QCircleRecommendWidget.QCircleRecommendAdapter.1;
+import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StDittoFeed;
+import feedcloud.FeedCloudMeta.StFeed;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.List<Luer;>;
+import qqcircle.QQCircleDitto.StItemContainer;
+import qqcircle.QQCircleDitto.StItemInfo;
 
 public class ufj
-  extends uff<ufn>
+  extends RecyclerView.Adapter<ufk>
+  implements yiy
 {
-  static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-  private int jdField_a_of_type_Int = 1;
-  private ufe jdField_a_of_type_Ufe;
+  private int jdField_a_of_type_Int;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
+  private List<QQCircleDitto.StItemInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  tzn jdField_a_of_type_Tzn;
+  private QCircleRecommendWidget b;
   
-  private int a(List<uer> paramList)
+  public ufj(QCircleRecommendWidget paramQCircleRecommendWidget) {}
+  
+  private void a()
   {
-    int i = 1;
-    new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    long l2 = -1L;
-    int m = 0;
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
+    {
+      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.isComputingLayout()) {
+        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.postDelayed(new QCircleRecommendWidget.QCircleRecommendAdapter.1(this), 500L);
+      }
+    }
+    else {
+      return;
+    }
+    notifyDataSetChanged();
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null)
+    {
+      FeedCloudMeta.StDittoFeed localStDittoFeed = new FeedCloudMeta.StDittoFeed();
+      localStDittoFeed.dittoId.set(1);
+      QCircleRecommendWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRecommendWidget).items.set(this.jdField_a_of_type_JavaUtilList);
+      localStDittoFeed.dittoData.set(ByteStringMicro.copyFrom(tra.a(QCircleRecommendWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRecommendWidget)).toByteArray()));
+      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.dittoFeed.set(localStDittoFeed);
+    }
+  }
+  
+  public ufk a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new ufk(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560589, paramViewGroup, false));
+  }
+  
+  public void a(RecyclerView paramRecyclerView)
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+  }
+  
+  public void a(QCircleRecommendWidget paramQCircleRecommendWidget)
+  {
+    this.b = paramQCircleRecommendWidget;
+  }
+  
+  public void a(FeedCloudMeta.StFeed paramStFeed, int paramInt, List<QQCircleDitto.StItemInfo> paramList)
+  {
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
+    this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Tzn != null) {
+      this.jdField_a_of_type_Tzn.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      paramStFeed = this.b;
+      if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+        break label89;
+      }
+    }
+    label89:
+    for (paramInt = 8;; paramInt = 0)
+    {
+      paramStFeed.setVisibility(paramInt);
+      a();
+      return;
+    }
+  }
+  
+  public void a(Object paramObject)
+  {
+    int i;
+    if ((paramObject instanceof QQCircleDitto.StItemInfo))
+    {
+      paramObject = ((QQCircleDitto.StItemInfo)paramObject).id.get();
+      i = 0;
+      if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+        break label146;
+      }
+      Object localObject = this.jdField_a_of_type_JavaUtilList.get(i);
+      if ((!(localObject instanceof QQCircleDitto.StItemInfo)) || (!((QQCircleDitto.StItemInfo)localObject).id.get().equals(paramObject))) {
+        break label139;
+      }
+    }
     for (;;)
     {
-      int j;
-      long l1;
-      int k;
-      if (m < paramList.size())
+      if (i >= 0)
       {
-        if (l2 < 0L) {
-          j = i;
-        }
-        try
-        {
-          l1 = a(((uer)paramList.get(m)).b);
-          k = i;
-        }
-        catch (ParseException localParseException)
-        {
-          localParseException.printStackTrace();
-          xmh.a("we found the error time pic:" + paramList.get(m), new Object[0]);
-          k = j;
-          l1 = l2;
-        }
-        j = i;
-        k = i;
-        l1 = l2;
-        if (((uer)paramList.get(m)).b - l2 > 86400L)
-        {
-          k = i + 1;
-          j = k;
-          l1 = a(((uer)paramList.get(m)).b);
+        QLog.d("QCircleRecommendWidget", 4, "remove index: " + i);
+        this.jdField_a_of_type_JavaUtilList.remove(i);
+        notifyItemRemoved(i);
+        b();
+        if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
+          this.b.setVisibility(8);
         }
       }
-      else
-      {
-        wsv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.KMeansSplitStrategy", "caculatePictureDistribution=" + i);
-        return i;
-      }
-      m += 1;
-      i = k;
-      l2 = l1;
-    }
-  }
-  
-  private long a(long paramLong)
-  {
-    return jdField_a_of_type_JavaTextSimpleDateFormat.parse(jdField_a_of_type_JavaTextSimpleDateFormat.format(Long.valueOf(paramLong * 1000L))).getTime() / 1000L;
-  }
-  
-  protected List<ueq> a(@NonNull List<uer> paramList)
-  {
-    Object localObject1 = new uga();
-    paramList = new ArrayList(paramList);
-    uef.b(paramList);
-    int i = a(paramList) / this.jdField_a_of_type_Int;
-    String[] arrayOfString = new String[1];
-    ((uga)localObject1).a(i + 1);
-    paramList = ((uga)localObject1).a(paramList, arrayOfString);
-    ArrayList localArrayList = new ArrayList();
-    i = 0;
-    while (i < paramList.size())
-    {
-      localObject1 = (List)paramList.get(i);
-      Collections.sort((List)localObject1, new ufk(this));
-      localObject2 = new ueq(this.jdField_a_of_type_Ueq.jdField_a_of_type_Int, (List)localObject1);
-      ((ueq)localObject2).a(((uer)((List)localObject1).get(0)).b, ((uer)((List)localObject1).get(((List)localObject1).size() - 1)).b);
-      localArrayList.add(localObject2);
-      i += 1;
-    }
-    paramList = "k means split : k=" + localArrayList.size();
-    Collections.sort(localArrayList, new ufl(this));
-    localObject1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    Object localObject2 = localArrayList.iterator();
-    Object localObject3;
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (ueq)((Iterator)localObject2).next();
-      paramList = paramList + "[ s=" + ((SimpleDateFormat)localObject1).format(Long.valueOf(((ueq)localObject3).f() * 1000L)) + " e=" + ((SimpleDateFormat)localObject1).format(Long.valueOf(((ueq)localObject3).g() * 1000L)) + " c=" + ((ueq)localObject3).b() + "]";
-    }
-    wsv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.KMeansSplitStrategy", paramList);
-    localObject2 = "(k=" + localArrayList.size() + " " + paramList + ");";
-    paramList = (String)((urk)urr.a(10)).b("key_album_debug_k", "");
-    if (!TextUtils.isEmpty(paramList))
-    {
-      localObject3 = paramList.split(";");
-      paramList = "";
-      i = 0;
-      localObject1 = paramList;
-      if (i < localObject3.length)
-      {
-        paramList = localObject3[i] + paramList;
-        if (i != 8) {
-          break label500;
-        }
-        localObject1 = paramList;
-      }
-    }
-    for (paramList = (String)localObject2 + (String)localObject1;; paramList = (List<uer>)localObject2)
-    {
-      this.jdField_a_of_type_Ufe.a = paramList;
-      this.jdField_a_of_type_Ufe.b = arrayOfString[0];
-      return localArrayList;
-      label500:
+      return;
+      label139:
       i += 1;
       break;
+      label146:
+      i = -1;
     }
   }
   
-  public void a(int paramInt)
+  public void a(ufk paramufk)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    super.onViewAttachedToWindow(paramufk);
+    if (this.jdField_a_of_type_Tzn != null) {
+      this.jdField_a_of_type_Tzn.a(paramufk);
+    }
+    yiw.a().a(this);
   }
   
-  public void a(ufe paramufe)
+  public void a(ufk paramufk, int paramInt)
   {
-    this.jdField_a_of_type_Ufe = paramufe;
+    if (this.jdField_a_of_type_JavaUtilList.size() > paramInt)
+    {
+      paramufk.a(this);
+      paramufk.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed);
+      paramufk.a(this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
+      paramufk.a(this.jdField_a_of_type_Int);
+      RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramufk.itemView.getLayoutParams();
+      if ((paramInt > 0) && (paramInt <= this.jdField_a_of_type_JavaUtilList.size() - 1)) {
+        localLayoutParams.setMargins(azkz.a(-10.0F), 0, 0, 0);
+      }
+      paramufk.itemView.setLayoutParams(localLayoutParams);
+    }
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(QCircleFollowUpdateEvent.class);
+    return localArrayList;
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onAttachedToRecyclerView(paramRecyclerView);
+    this.jdField_a_of_type_Tzn = new tzn();
+    paramRecyclerView.addOnScrollListener(this.jdField_a_of_type_Tzn);
+    yiw.a().b(this);
+  }
+  
+  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onDetachedFromRecyclerView(paramRecyclerView);
+    if (this.jdField_a_of_type_Tzn != null)
+    {
+      paramRecyclerView.removeOnScrollListener(this.jdField_a_of_type_Tzn);
+      this.jdField_a_of_type_Tzn.a();
+    }
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if ((paramSimpleBaseEvent instanceof QCircleFollowUpdateEvent))
+    {
+      paramSimpleBaseEvent = (QCircleFollowUpdateEvent)paramSimpleBaseEvent;
+      if (paramSimpleBaseEvent.mFollowStatus == 1)
+      {
+        QLog.d("QCircleRecommendWidget", 4, "remove from recevive: ");
+        paramSimpleBaseEvent = paramSimpleBaseEvent.mUserId;
+        QQCircleDitto.StItemInfo localStItemInfo = new QQCircleDitto.StItemInfo();
+        localStItemInfo.id.set(paramSimpleBaseEvent);
+        a(localStItemInfo);
+      }
+    }
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import aenj;
+import aery;
 import android.text.TextUtils;
 import android.view.View;
-import ayyu;
-import ayzo;
+import azdd;
+import azdx;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.MessageForShortVideo;
@@ -109,19 +109,19 @@ public class VideoFeedsPlayManager$PlayStartVideoRunnable
                 return;
               }
             } while (VideoFeedsPlayManager.a(this.this$0) == null);
-            localObject2 = aenj.a(VideoFeedsPlayManager.a(this.this$0));
+            localObject2 = aery.a(VideoFeedsPlayManager.a(this.this$0));
             if (localObject2 != null)
             {
               if (VideoFeedsPlayManager.a(this.this$0) == null) {
                 VideoFeedsPlayManager.a(this.this$0, new View(BaseApplicationImpl.getContext()));
               }
               VideoFeedsPlayManager.a(this.this$0, new rfq(this, (MessageForShortVideo)localObject1));
-              ((aenj)localObject2).a(VideoFeedsPlayManager.a(this.this$0), VideoFeedsPlayManager.a(this.this$0));
+              ((aery)localObject2).a(VideoFeedsPlayManager.a(this.this$0), VideoFeedsPlayManager.a(this.this$0));
             }
             ((MessageForShortVideo)localObject1).busiType = 0;
-            localObject1 = ayyu.a(VideoFeedsPlayManager.a(this.this$0), (MessageForShortVideo)localObject1, 1);
+            localObject1 = azdd.a(VideoFeedsPlayManager.a(this.this$0), (MessageForShortVideo)localObject1, 1);
           } while (localObject1 == null);
-          ayyu.a((ayzo)localObject1, VideoFeedsPlayManager.a(this.this$0));
+          azdd.a((azdx)localObject1, VideoFeedsPlayManager.a(this.this$0));
           return;
           if ((this.jdField_a_of_type_Rfs.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Rfs.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Rfs.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int == 7))
           {

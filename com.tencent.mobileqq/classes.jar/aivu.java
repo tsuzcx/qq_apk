@@ -1,33 +1,31 @@
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 
 public class aivu
+  implements ajal
 {
-  int jdField_a_of_type_Int = 0;
-  aivx jdField_a_of_type_Aivx;
-  HashMap<String, PreloadManager.PathResult> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  List<DownloadParam> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
+  public aivu(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public aivu(List<DownloadParam> paramList, aivx paramaivx)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.jdField_a_of_type_JavaUtilList = paramaivx;
-    Object localObject;
-    this.jdField_a_of_type_Aivx = localObject;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
     {
-      DownloadParam localDownloadParam = (DownloadParam)localIterator.next();
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.a(localDownloadParam, new aivv(this));
+      aiwe localaiwe = new aiwe();
+      localaiwe.a = (paramPathResult.folderPath + "/" + "original.mp3");
+      localaiwe.b = (paramPathResult.folderPath + "/" + "accompany.mp3");
+      localaiwe.c = (paramPathResult.folderPath + "/" + "lyrics.qrc");
+      localaiwe.d = (paramPathResult.folderPath + "/" + "config.cfg");
+      RedPacketKSongFragment.a(this.a, localaiwe);
+      if (this.a.c()) {
+        return;
+      }
+      this.a.getActivity().runOnUiThread(new RedPacketKSongFragment.10.1(this));
+      return;
     }
+    this.a.g();
   }
 }
 

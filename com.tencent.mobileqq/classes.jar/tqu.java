@@ -1,20 +1,22 @@
+import android.app.Activity;
+import android.content.Context;
 import android.os.CountDownTimer;
 import android.widget.PopupWindow;
 
 class tqu
   extends CountDownTimer
 {
-  tqu(tqt paramtqt, long paramLong1, long paramLong2)
+  tqu(tqt paramtqt, long paramLong1, long paramLong2, Context paramContext)
   {
     super(paramLong1, paramLong2);
   }
   
   public void onFinish()
   {
-    if (tqt.a(this.a) != null)
+    if ((tqt.a(this.jdField_a_of_type_Tqt) != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (!((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing()))
     {
-      tqt.a(this.a).dismiss();
-      tqt.a(this.a, null);
+      tqt.a(this.jdField_a_of_type_Tqt).dismiss();
+      tqt.a(this.jdField_a_of_type_Tqt, null);
     }
   }
   

@@ -1,24 +1,25 @@
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import com.dataline.activities.PrinterActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.ArrayList;
 
-public final class alyy
-  extends MqqHandler
+class alyy
+  implements arrh
 {
-  public alyy(Looper paramLooper)
+  alyy(alyw paramalyw, BaseActivity paramBaseActivity, String paramString) {}
+  
+  public void a()
   {
-    super(paramLooper);
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, PrinterActivity.class);
+    localIntent.putExtra(bdez.h, 55);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.jdField_a_of_type_JavaLangString);
+    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
+    azqs.b(this.jdField_a_of_type_Alyw.a, "CliOper", "", "", "0X8004059", "0X8004059", 0, 0, "", "", "", "");
   }
   
-  public void removeCallbacksAndMessages(Object paramObject)
-  {
-    if (paramObject == null)
-    {
-      QLog.e("ThreadManager", 1, "global SubHandler cannot excute removeCallbacksAndMessages");
-      return;
-    }
-    super.removeCallbacksAndMessages(paramObject);
-  }
+  public void b() {}
 }
 
 

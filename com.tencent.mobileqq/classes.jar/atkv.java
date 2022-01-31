@@ -1,34 +1,134 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import java.util.List;
 
-class atkv
-  implements atik
+public class atkv
 {
-  atkv(atkt paramatkt) {}
+  private atku jdField_a_of_type_Atku;
+  private atkw jdField_a_of_type_Atkw;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<aozs> jdField_a_of_type_JavaUtilList;
   
-  public void a() {}
+  private boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    alvp localalvp;
+    do
+    {
+      return false;
+      localalvp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
+    return localalvp.a();
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Atku != null) {
+      return this.jdField_a_of_type_Atku.a();
+    }
+    return -1;
+  }
+  
+  public void a()
+  {
+    QLog.i("Q.lebatab.LebaController", 1, "onResume");
+    if (this.jdField_a_of_type_Atku != null)
+    {
+      a(true);
+      this.jdField_a_of_type_Atku.a();
+    }
+  }
+  
+  public void a(int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    QLog.i("Q.lebatab.LebaController", 1, "onPause" + paramInt1 + "|" + paramBoolean + paramInt2);
+    if (this.jdField_a_of_type_Atku != null) {
+      this.jdField_a_of_type_Atku.a(paramInt1, paramBoolean, paramInt2);
+    }
+  }
+  
+  public void a(atkw paramatkw)
+  {
+    this.jdField_a_of_type_Atkw = paramatkw;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramatkw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.jdField_a_of_type_JavaUtilList = paramatkw.jdField_a_of_type_JavaUtilList;
+    QLog.i("Q.lebatab.LebaController", 1, "initLebaView" + aozs.a(this.jdField_a_of_type_JavaUtilList));
+    Object localObject;
+    if (this.jdField_a_of_type_Atku == null)
+    {
+      boolean bool = a();
+      if (bool)
+      {
+        localObject = new atlc();
+        this.jdField_a_of_type_Atku = ((atku)localObject);
+        QLog.i("Q.lebatab.LebaController", 1, String.format("init puginLogin modle = %b", new Object[] { Boolean.valueOf(bool) }));
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Atku.a(paramatkw);
+      return;
+      localObject = new atkz();
+      break;
+      a(false);
+    }
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
+  {
+    if (this.jdField_a_of_type_Atku != null) {
+      this.jdField_a_of_type_Atku.a(paramAbsListView, paramInt);
+    }
+  }
   
   public void a(boolean paramBoolean)
   {
-    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a).a(this.a.jdField_a_of_type_Atkz.jdField_a_of_type_Int, this.a.jdField_a_of_type_Atkz.jdField_a_of_type_JavaLangString, paramBoolean);
-    azmj.b(null, "dc00899", this.a.jdField_a_of_type_Atky.jdField_a_of_type_JavaLangString, "", "music_tab", "clk_quit", 0, 0, this.a.jdField_a_of_type_Atky.b, "", this.a.jdField_a_of_type_Atky.jdField_a_of_type_Int + "", "");
-    String str2;
-    String str3;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin().equalsIgnoreCase(this.a.jdField_a_of_type_Atkz.c))
+    if (this.jdField_a_of_type_Atku != null)
     {
-      str2 = this.a.jdField_a_of_type_Atky.jdField_a_of_type_JavaLangString;
-      str3 = this.a.jdField_a_of_type_Atky.b;
-      if (!paramBoolean) {
-        break label185;
+      boolean bool1 = a();
+      boolean bool2 = this.jdField_a_of_type_Atku instanceof atlc;
+      if (bool1 != bool2)
+      {
+        QLog.i("Q.lebatab.LebaController", 1, String.format("checkAndSwtichModel old: %b new %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) }));
+        this.jdField_a_of_type_Atku.d();
+        if (!bool1) {
+          break label100;
+        }
       }
     }
-    label185:
-    for (String str1 = "1";; str1 = "0")
+    label100:
+    for (Object localObject = new atlc();; localObject = new atkz())
     {
-      azmj.b(null, "dc00899", str2, "", "music_tab", "clk_quit_opener", 0, 0, str3, "", str1, "");
+      this.jdField_a_of_type_Atku = ((atku)localObject);
+      if (paramBoolean) {
+        this.jdField_a_of_type_Atku.a(this.jdField_a_of_type_Atkw);
+      }
       return;
+    }
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_Atku != null) {
+      return this.jdField_a_of_type_Atku.b();
+    }
+    return 0;
+  }
+  
+  public void b()
+  {
+    QLog.i("Q.lebatab.LebaController", 1, "notifyDataSetChanged" + aozs.a(this.jdField_a_of_type_JavaUtilList));
+    if (this.jdField_a_of_type_Atku != null) {
+      this.jdField_a_of_type_Atku.c();
+    }
+  }
+  
+  public void c()
+  {
+    QLog.i("Q.lebatab.LebaController", 1, "onPostThemeChanged");
+    if (this.jdField_a_of_type_Atku != null) {
+      this.jdField_a_of_type_Atku.b();
     }
   }
 }

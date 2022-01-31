@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgho;
-import bgid;
-import bgkd;
+import bglv;
+import bgmk;
+import bgok;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 
 public class TabBarJsPlugin
@@ -18,9 +18,9 @@ public class TabBarJsPlugin
   public static final String API_SHOW_TABBAR = "showTabBar";
   public static final String TAG = "TabBarJsPlugin";
   
-  public void doInterceptJsEvent(bgkd parambgkd)
+  public void doInterceptJsEvent(bgok parambgok)
   {
-    this.mMiniAppContext.a(bgid.a(parambgkd, 0));
+    this.mMiniAppContext.a(bgmk.a(parambgok, 0));
   }
 }
 

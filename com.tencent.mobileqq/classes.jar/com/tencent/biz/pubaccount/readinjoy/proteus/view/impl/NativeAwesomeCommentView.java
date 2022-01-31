@@ -14,9 +14,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import ayvy;
-import baig;
-import bjxj;
+import azah;
+import bamp;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -26,7 +26,7 @@ import ptb;
 import ptc;
 import ptd;
 import qki;
-import ysi;
+import ywx;
 
 public class NativeAwesomeCommentView
   extends FrameLayout
@@ -41,7 +41,7 @@ public class NativeAwesomeCommentView
   
   static
   {
-    jdField_a_of_type_Int = ((Integer)bjxj.a(qki.i, Integer.valueOf(1))).intValue();
+    jdField_a_of_type_Int = ((Integer)bkbq.a(qki.i, Integer.valueOf(1))).intValue();
   }
   
   public NativeAwesomeCommentView(@NonNull Context paramContext)
@@ -64,7 +64,7 @@ public class NativeAwesomeCommentView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)inflate(getContext(), 2131559921, this).findViewById(2131378618));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)inflate(getContext(), 2131559920, this).findViewById(2131378672));
   }
   
   public static void setMaxLines(int paramInt)
@@ -121,25 +121,25 @@ public class NativeAwesomeCommentView
     QLog.d("ReadInJoyAwesomeCommentView", 2, "setAwesomeCommentInfo: " + paramqki);
     this.jdField_a_of_type_Qki = paramqki;
     Object localObject1 = paramqki.jdField_b_of_type_JavaLangString;
-    String str = ayvy.b(paramqki.d);
-    Object localObject2 = ayvy.b(paramqki.g);
+    String str = azah.b(paramqki.d);
+    Object localObject2 = azah.b(paramqki.g);
     localObject2 = new SpannableString("  " + str + ": " + (String)localObject2);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
-    localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130842359);
+    localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130842372);
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
       localObject1 = URLDrawable.getDrawable((String)localObject1, localURLDrawableOptions);
       ((URLDrawable)localObject1).setBounds(0, 0, paramqki.jdField_a_of_type_Int * 2, paramqki.jdField_b_of_type_Int * 2);
       ((URLDrawable)localObject1).setCallback(new ptb(this, (SpannableString)localObject2));
       ((URLDrawable)localObject1).setDownloadListener(new ptc(this, (SpannableString)localObject2));
-      ((SpannableString)localObject2).setSpan(new ysi((Drawable)localObject1), 0, 1, 17);
+      ((SpannableString)localObject2).setSpan(new ywx((Drawable)localObject1), 0, 1, 17);
     }
     if (!TextUtils.isEmpty(str)) {
       i = str.length() + 1;
     }
     ((SpannableString)localObject2).setSpan(this.jdField_a_of_type_AndroidTextStyleClickableSpan, 2, i + 1, 17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(new baig((CharSequence)localObject2, 7, 16));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(new bamp((CharSequence)localObject2, 7, 16));
     if (jdField_a_of_type_Int != 0) {
       this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(jdField_a_of_type_Int);
     }

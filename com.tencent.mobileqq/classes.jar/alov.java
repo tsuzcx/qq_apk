@@ -1,23 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
+import android.os.Message;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BaseActivity.MyShakeListener.1;
+import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public final class alov
-  implements Parcelable.Creator<FriendListHandler.QQHeadDetails>
+public class alov
+  extends amck
 {
-  public FriendListHandler.QQHeadDetails a(Parcel paramParcel)
+  public void a()
   {
-    FriendListHandler.QQHeadDetails localQQHeadDetails = new FriendListHandler.QQHeadDetails(null);
-    localQQHeadDetails.jdField_a_of_type_Int = paramParcel.readInt();
-    localQQHeadDetails.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQQHeadDetails.jdField_a_of_type_Long = paramParcel.readLong();
-    localQQHeadDetails.jdField_a_of_type_Byte = paramParcel.readByte();
-    return localQQHeadDetails;
-  }
-  
-  public FriendListHandler.QQHeadDetails[] a(int paramInt)
-  {
-    return new FriendListHandler.QQHeadDetails[paramInt];
+    Object localObject = BaseActivity.sTopActivity;
+    if (localObject == null) {
+      ScreenShot.a("MyShakeListener - top activity is null");
+    }
+    do
+    {
+      return;
+      if (!((BaseActivity)localObject).mCurrentActivityShakeFlag)
+      {
+        ScreenShot.a("MyShakeListener - shake flag is false");
+        return;
+      }
+    } while (ThreadManager.getSubThreadHandler().hasMessages(1001));
+    localObject = ThreadManager.getSubThreadHandler().obtainMessage(1001, new BaseActivity.MyShakeListener.1(this, (BaseActivity)localObject));
+    ThreadManager.getSubThreadHandler().sendMessage((Message)localObject);
   }
 }
 

@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
-
 public class bcnp
-  implements bclf
 {
-  public bcnp(TroopAIORobotLayout paramTroopAIORobotLayout) {}
-  
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
-  {
-    if (paramInt == 0) {}
-  }
+  public int a;
+  public String a;
+  public short a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 

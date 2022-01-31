@@ -1,24 +1,20 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import dov.com.qq.im.BaseVMPeakActivity;
+import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.1.1;
+import java.util.List;
 
 public class bldb
-  extends RecyclerView.ItemDecoration
+  implements blew
 {
-  private int jdField_a_of_type_Int;
+  bldb(blda paramblda) {}
   
-  public bldb(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
-  {
-    super.getItemOffsets(paramRect, paramInt, paramRecyclerView);
     if (paramInt == 0) {
-      paramRect.left = this.jdField_a_of_type_Int;
+      blda.a(this.a, paramString);
     }
+    ((blca)blda.a(this.a).get(paramInt)).c = paramString;
+    ((blca)blda.a(this.a).get(paramInt)).a = 13;
+    blda.a(this.a).runOnUiThread(new AEGIFChunkPreviewFragment.1.1(this, paramInt));
   }
 }
 

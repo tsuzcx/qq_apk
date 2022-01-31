@@ -1,41 +1,62 @@
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.widget.SeekBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.PhoneContact;
 
-public class ajzs
-  implements bdve
+class ajzs
+  implements View.OnClickListener
 {
-  public ajzs(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  ajzs(ajzr paramajzr) {}
   
-  public void a(bdvb parambdvb)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onPrepared: mDuration=" + this.a.b);
-    }
-    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid())) {
-      armz.a(2131691371);
-    }
+    if (paramView.getId() == 2131365304) {}
+    ajzy localajzy;
+    PhoneContact localPhoneContact;
     do
     {
       do
       {
         return;
-        bczz.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.e, this.a.f, this.a.jdField_a_of_type_Bdvb.d(), this.a.jdField_a_of_type_Bdvb.e());
-      } while (this.a.j != 10);
-      parambdvb.a(localSurfaceHolder);
-      this.a.jdField_a_of_type_Int = parambdvb.c();
-    } while (this.a.jdField_a_of_type_Int <= 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "此时的时长为" + ShortVideoUtils.a(this.a.jdField_a_of_type_Int));
+        localajzy = (ajzy)paramView.getTag();
+      } while ((localajzy == null) || (localajzy.jdField_a_of_type_AndroidWidgetCheckBox == null) || (localajzy.jdField_a_of_type_ComTencentMobileqqDataPhoneContact == null));
+      localPhoneContact = localajzy.jdField_a_of_type_ComTencentMobileqqDataPhoneContact;
+    } while (!localajzy.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled());
+    if (localajzy.jdField_a_of_type_JavaLangString.startsWith("+")) {}
+    for (boolean bool = this.a.a.a.a(localajzy.jdField_a_of_type_JavaLangString, localPhoneContact.name, 4, "-1", localPhoneContact.mobileNo);; bool = this.a.a.a.a(localajzy.jdField_a_of_type_JavaLangString, localPhoneContact.name, 0, "-1", localPhoneContact.mobileNo))
+    {
+      localajzy.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+      if (!AppSetting.c) {
+        break;
+      }
+      if (!localajzy.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label255;
+      }
+      if (!localajzy.jdField_a_of_type_Boolean) {
+        break label216;
+      }
+      paramView.setContentDescription(localajzy.b.getText() + this.a.a.a.getString(2131719729));
+      return;
     }
-    this.a.d.setText(ShortVideoUtils.a(this.a.jdField_a_of_type_Int));
-    this.a.jdField_a_of_type_AndroidWidgetSeekBar.setMax(this.a.jdField_a_of_type_Int);
+    label216:
+    paramView.setContentDescription(localajzy.b.getText().toString() + alud.a(2131708390));
+    return;
+    label255:
+    if (localajzy.jdField_a_of_type_Boolean) {}
+    for (int i = this.a.a.a.a(localajzy.jdField_a_of_type_JavaLangString);; i = 0)
+    {
+      if ((localajzy.jdField_a_of_type_Boolean) && (i != 0))
+      {
+        paramView.setContentDescription(localajzy.b.getText() + this.a.a.a.getString(i));
+        return;
+      }
+      paramView.setContentDescription(localajzy.b.getText().toString() + alud.a(2131708387));
+      return;
+    }
   }
 }
 

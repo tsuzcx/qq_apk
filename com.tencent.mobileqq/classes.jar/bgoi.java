@@ -1,7 +1,4 @@
-public abstract interface bgoi
-{
-  public abstract void onDismiss();
-}
+public class bgoi {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

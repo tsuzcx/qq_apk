@@ -1,101 +1,54 @@
-import android.support.annotation.VisibleForTesting;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.highway.ipv6.Ipv6Config;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
-import java.util.ArrayList;
+import android.animation.AnimatorSet;
+import android.graphics.drawable.Drawable;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-public class baqa
+class baqa
+  implements Animation.AnimationListener
 {
-  public static boolean a = true;
+  baqa(bapx parambapx, AnimatorSet paramAnimatorSet) {}
   
-  public static ArrayList<basp> a(ArrayList<basp> paramArrayList1, ArrayList<basp> paramArrayList2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return a(paramArrayList1, paramArrayList2, NetConnInfoCenter.getActiveNetIpFamily(true), false);
-  }
-  
-  @VisibleForTesting
-  public static ArrayList<basp> a(ArrayList<basp> paramArrayList1, ArrayList<basp> paramArrayList2, int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Ipv6Strategy", 0, "getActiveNetIpFamily type = " + paramInt);
-    }
-    if (paramInt == 2) {
-      return paramArrayList1;
-    }
-    if (paramInt == 3) {
-      return a(paramArrayList1, paramArrayList2, paramBoolean);
-    }
-    return paramArrayList2;
-  }
-  
-  private static ArrayList<basp> a(ArrayList<basp> paramArrayList1, ArrayList<basp> paramArrayList2, boolean paramBoolean)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (a(paramBoolean))
+    int i = 0;
+    while (i < 3)
     {
-      if ((paramArrayList1 != null) && (paramArrayList1.size() > 0)) {
-        localArrayList.add(paramArrayList1.get(0));
-      }
-      if ((paramArrayList2 != null) && (paramArrayList2.size() > 0)) {
-        localArrayList.addAll(paramArrayList2);
-      }
-    }
-    do
-    {
-      return localArrayList;
-      if ((paramArrayList2 != null) && (paramArrayList2.size() > 0)) {
-        localArrayList.addAll(paramArrayList2);
-      }
-    } while ((paramArrayList1 == null) || (paramArrayList1.size() <= 0));
-    localArrayList.add(paramArrayList1.get(0));
-    return localArrayList;
-  }
-  
-  public static boolean a()
-  {
-    int i = NetConnInfoCenter.getActiveNetIpFamily(true);
-    return (i == 2) || (i == 3);
-  }
-  
-  private static boolean a(boolean paramBoolean)
-  {
-    boolean bool1 = true;
-    boolean bool2 = false;
-    if (paramBoolean) {
-      paramBoolean = a;
-    }
-    do
-    {
-      do
+      paramAnimation = (ImageView)this.jdField_a_of_type_Bapx.a.get(i);
+      paramAnimation.clearAnimation();
+      Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject1 != null) && (i < this.jdField_a_of_type_Bapx.b.size()))
       {
-        return paramBoolean;
-        if (b()) {
-          break;
+        Object localObject2 = (String)this.jdField_a_of_type_Bapx.b.get(i);
+        Drawable localDrawable = bdhj.a(true);
+        localObject1 = bdbk.a((AppInterface)localObject1, 1, (String)localObject2, 4, localDrawable, localDrawable);
+        localObject2 = paramAnimation.getDrawable();
+        if ((localObject2 != null) && (localObject2 != localObject1) && ((localObject2 instanceof bdbk))) {
+          ((bdbk)localObject2).a();
         }
-        paramBoolean = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.d("Ipv6Strategy", 0, "isIpv6DownFirst, getRichmediaIpv6Switch is false");
-      return false;
-      if (Ipv6Config.sRMDownStrategy == 2) {
-        return true;
+        paramAnimation.setImageDrawable((Drawable)localObject1);
       }
-      paramBoolean = bool2;
-    } while (Ipv6Config.sRMDownStrategy != 3);
-    if (MsfServiceSdk.get().getConnectedIPFamily() == 2) {}
-    for (paramBoolean = bool1;; paramBoolean = false) {
-      return paramBoolean;
+      i += 1;
     }
+    this.jdField_a_of_type_Bapx.d.clearAnimation();
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+    this.jdField_a_of_type_Bapx.c.setTranslationX(0.0F);
+    this.jdField_a_of_type_Bapx.c.setAlpha(1.0F);
+    paramAnimation = new AlphaAnimation(1.0F, 0.0F);
+    paramAnimation.setFillAfter(true);
+    paramAnimation.setDuration(200L);
+    paramAnimation.setAnimationListener(new baqb(this));
+    this.jdField_a_of_type_Bapx.d.startAnimation(paramAnimation);
   }
   
-  private static boolean b()
-  {
-    aonc localaonc = (aonc)aogj.a().a(538);
-    if (localaonc != null) {
-      return localaonc.c;
-    }
-    return false;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

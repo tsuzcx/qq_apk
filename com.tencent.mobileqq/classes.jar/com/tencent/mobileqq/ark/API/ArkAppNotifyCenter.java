@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ark.API;
 
-import aelz;
+import aeqo;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.graphics.Rect;
 import android.media.AudioManager;
 import android.view.View;
-import angm;
-import ango;
-import angp;
-import angq;
-import bdje;
-import bhtf;
+import ankv;
+import ankx;
+import anky;
+import ankz;
+import bdnn;
+import bhxm;
 import com.tencent.ark.ark;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -35,16 +35,16 @@ public class ArkAppNotifyCenter
   public static final String TAG = "ark.ArkAppNotifyCenter";
   public static ArkAppNotifyCenter.ArkClickListener arkClickListener;
   private static int callbackId;
-  private static HashMap<String, ango> notifyRegs = new HashMap();
-  private static angq receiver;
+  private static HashMap<String, ankx> notifyRegs = new HashMap();
+  private static ankz receiver;
   
   static
   {
     callbackId = -1;
-    Object localObject = new angp();
+    Object localObject = new anky();
     notifyRegs.put("com.tencent.troopapp", localObject);
     notifyRegs.put("com.tencent.test.troopapp", localObject);
-    localObject = new angm();
+    localObject = new ankv();
     notifyRegs.put("com.tencent.yundong", localObject);
     notifyRegs.put("com.tencent.gdt.gouwu", localObject);
     notifyRegs.put("com.tencent.gdt.label", localObject);
@@ -94,7 +94,7 @@ public class ArkAppNotifyCenter
   private static ChatMessage getAdArkItemIndexInAIO(List<ChatMessage> paramList, String paramString)
   {
     ChatMessage localChatMessage;
-    if ((paramList == null) || (paramList.isEmpty()) || (bdje.a(paramString)))
+    if ((paramList == null) || (paramList.isEmpty()) || (bdnn.a(paramString)))
     {
       localChatMessage = null;
       return localChatMessage;
@@ -115,7 +115,7 @@ public class ArkAppNotifyCenter
           if (localObject != null)
           {
             localObject = ((ArkAppMessage)localObject).metaList;
-            if (bdje.a((String)localObject)) {}
+            if (bdnn.a((String)localObject)) {}
           }
         }
         try
@@ -150,7 +150,7 @@ public class ArkAppNotifyCenter
   
   private static View getViewByPosition(ChatMessage paramChatMessage, ChatXListView paramChatXListView)
   {
-    int i = ((aelz)((bhtf)paramChatXListView.getAdapter()).getWrappedAdapter()).a(paramChatMessage) + paramChatXListView.getHeaderViewsCount();
+    int i = ((aeqo)((bhxm)paramChatXListView.getAdapter()).getWrappedAdapter()).a(paramChatMessage) + paramChatXListView.getHeaderViewsCount();
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.delmsg", 2, "pos is:" + i);
     }
@@ -169,10 +169,10 @@ public class ArkAppNotifyCenter
   
   public static boolean notify(String paramString1, String paramString2, String paramString3)
   {
-    ango localango = (ango)notifyRegs.get(paramString1);
-    if (localango != null)
+    ankx localankx = (ankx)notifyRegs.get(paramString1);
+    if (localankx != null)
     {
-      ThreadManager.getSubThreadHandler().post(new ArkAppNotifyCenter.1(localango, paramString1, paramString2, paramString3));
+      ThreadManager.getSubThreadHandler().post(new ArkAppNotifyCenter.1(localankx, paramString1, paramString2, paramString3));
       return true;
     }
     return false;
@@ -181,7 +181,7 @@ public class ArkAppNotifyCenter
   public static void registVolumnReceiver()
   {
     if (receiver == null) {
-      receiver = new angq(null);
+      receiver = new ankz(null);
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
@@ -191,7 +191,7 @@ public class ArkAppNotifyCenter
     BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(receiver, localIntentFilter);
   }
   
-  public static void setNotify(String paramString, WeakReference<ango> paramWeakReference)
+  public static void setNotify(String paramString, WeakReference<ankx> paramWeakReference)
   {
     if ((paramWeakReference != null) && (paramWeakReference.get() != null))
     {

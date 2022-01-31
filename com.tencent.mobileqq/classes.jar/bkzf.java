@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
+import com.tencent.ttpic.openapi.model.WMElement;
 
 class bkzf
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  bkzf(bkzd parambkzd) {}
+  bkzf(bkyz parambkyz, bkzh parambkzh, WMElement paramWMElement) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    blen.a().R();
-    bkzd.a(this.a, false);
+    this.jdField_a_of_type_Bkzh.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Bkzh.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMElement.getCheckInResetString());
   }
 }
 

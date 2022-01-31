@@ -1,13 +1,4 @@
-class bnnc
-  implements bnna
-{
-  bnnc(bnnb parambnnb) {}
-  
-  public boolean a(double paramDouble)
-  {
-    return bnnb.a(this.a);
-  }
-}
+public class bnnc {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

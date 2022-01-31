@@ -1,30 +1,37 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
 class arjp
-  implements View.OnClickListener
+  implements arrh
 {
   arjp(arjo paramarjo) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (!arjo.a(this.a)) {
-      return;
+    int i = this.a.a.g();
+    if (this.a.a.f() == 6000) {
+      if (i == 0) {
+        if (this.a.a.h() == 2) {
+          arjk.c(this.a.a);
+        }
+      }
     }
-    if ((arni.a()) && (aqxj.c() > aqxg.a()))
+    for (;;)
     {
-      armv.a(SplashActivity.sTopActivity, 2131692752, 2131692757, new arjq(this));
+      if (this.a.a.a != null) {
+        this.a.a.a.d();
+      }
       return;
+      arjk.a(this.a.a);
+      continue;
+      arjk.c(this.a.a);
+      continue;
+      if (QLog.isColorLevel()) {
+        QLog.i("DatalineFileModel<FileAssistant>", 2, "DatalineFileModel doStartDownload : error, this file is not from dataline");
+      }
     }
-    paramView = new ArrayList();
-    paramView.addAll(aqxj.a());
-    Intent localIntent = new Intent();
-    localIntent.putParcelableArrayListExtra("sFilesSelected", paramView);
-    arjo.b(this.a, localIntent);
   }
+  
+  public void b() {}
 }
 
 

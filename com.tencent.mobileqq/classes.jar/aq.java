@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class aq
-  implements bhqd
+  implements bhuk
 {
-  public aq(LiteActivity paramLiteActivity, DataLineMsgSet paramDataLineMsgSet, ef paramef, bhpy parambhpy) {}
+  public aq(LiteActivity paramLiteActivity, DataLineMsgSet paramDataLineMsgSet, ef paramef, bhuf parambhuf) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -17,7 +17,7 @@ public class aq
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhpy.cancel();
+      this.jdField_a_of_type_Bhuf.cancel();
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -1000)
       {

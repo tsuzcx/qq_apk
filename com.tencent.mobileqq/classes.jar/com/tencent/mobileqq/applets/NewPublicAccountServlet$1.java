@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.applets;
 
-import amnh;
-import amnj;
+import amrw;
+import amry;
 
 public class NewPublicAccountServlet$1
   implements Runnable
 {
-  public NewPublicAccountServlet$1(amnj paramamnj, amnh paramamnh, byte[] paramArrayOfByte) {}
+  public NewPublicAccountServlet$1(amry paramamry, amrw paramamrw, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Amnh.onUpdate(4, true, this.jdField_a_of_type_ArrayOfByte);
+    this.jdField_a_of_type_Amrw.onUpdate(4, true, this.jdField_a_of_type_ArrayOfByte);
   }
 }
 

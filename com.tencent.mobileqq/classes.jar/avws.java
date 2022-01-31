@@ -1,19 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.ArrayList;
+import java.util.List;
 
-class avws
-  implements View.OnClickListener
+public class avws
 {
-  avws(avwn paramavwn, avxc paramavxc) {}
-  
-  public void onClick(View paramView)
-  {
-    avwn.a(this.jdField_a_of_type_Avwn).removeMessages(101);
-    avwn.a(this.jdField_a_of_type_Avwn).obtainMessage(101).sendToTarget();
-    this.jdField_a_of_type_Avxc.a.b();
-  }
+  public int a;
+  public String a;
+  public List<avwt> a = new ArrayList();
+  public String b;
+  public String c;
 }
 
 

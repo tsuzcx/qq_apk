@@ -1,52 +1,22 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mobileqq.servlet.LoginVerifyServlet.3;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
-class azbq<K, V>
+public class azbq
+  implements HostnameVerifier
 {
-  private HashMap<K, ArrayList<V>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public azbq(LoginVerifyServlet.3 param3, URL paramURL) {}
   
-  public azbq(azbp paramazbp) {}
-  
-  public ArrayList<V> a(K paramK)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    return (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
-  }
-  
-  public void a(V paramV)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      ArrayList localArrayList = (ArrayList)localEntry.getValue();
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        Object localObject = localArrayList.get(i);
-        if ((localObject == paramV) || ((localObject != null) && (localObject.equals(paramV)))) {
-          ((ArrayList)localEntry.getValue()).remove(paramV);
-        } else {
-          i += 1;
-        }
-      }
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaNetURL.getHost(), paramSSLSession);
+    if (!bool) {
+      QLog.d("LoginVerifyServlet", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.jdField_a_of_type_JavaNetURL.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
     }
-  }
-  
-  public void a(K paramK, V paramV)
-  {
-    ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
-    ArrayList localArrayList1 = localArrayList2;
-    if (localArrayList2 == null)
-    {
-      localArrayList1 = new ArrayList();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramK, localArrayList1);
-    }
-    if (!localArrayList1.contains(paramV)) {
-      localArrayList1.add(paramV);
-    }
+    return bool;
   }
 }
 

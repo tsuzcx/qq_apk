@@ -10,28 +10,28 @@ import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
-import bkpa;
-import bkti;
-import bktj;
-import bktk;
-import bktl;
-import bktm;
-import bkwm;
-import blbm;
-import blfg;
-import blva;
+import bkth;
+import bkxp;
+import bkxq;
+import bkxr;
+import bkxs;
+import bkxt;
+import blat;
+import blft;
+import bljn;
+import blzm;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import xod;
+import xsm;
 
 public class AEMaterialPanel
   extends FrameLayout
 {
   public int a;
-  private bkpa jdField_a_of_type_Bkpa;
-  private bktm jdField_a_of_type_Bktm;
-  private blbm jdField_a_of_type_Blbm;
+  private bkth jdField_a_of_type_Bkth;
+  private bkxt jdField_a_of_type_Bkxt;
+  private blft jdField_a_of_type_Blft;
   private AEMaterialProviderView jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialProviderView;
   private Runnable jdField_a_of_type_JavaLangRunnable;
   private boolean jdField_a_of_type_Boolean;
@@ -57,7 +57,7 @@ public class AEMaterialPanel
   
   private int a()
   {
-    return xod.a(getContext(), 242.0F);
+    return xsm.a(getContext(), 242.0F);
   }
   
   private void a(Runnable paramRunnable)
@@ -79,27 +79,27 @@ public class AEMaterialPanel
     }
     Object localObject = new AnimatorSet();
     ((AnimatorSet)localObject).play(ObjectAnimator.ofFloat(this, "translationY", new float[] { this.jdField_a_of_type_Int, 0.0F }));
-    ((AnimatorSet)localObject).addListener(new bkti(this));
+    ((AnimatorSet)localObject).addListener(new bkxp(this));
     ((AnimatorSet)localObject).setDuration(300L).start();
-    localObject = blva.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialProviderView, 0.0F, 1.0F);
+    localObject = blzm.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialProviderView, 0.0F, 1.0F);
     ((Animation)localObject).setStartOffset(200L);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new bktj(this, paramRunnable));
+    ((Animation)localObject).setAnimationListener(new bkxq(this, paramRunnable));
     startAnimation((Animation)localObject);
   }
   
   private void c(Runnable paramRunnable)
   {
-    blfg.a("AEMaterialPanel", "in close panel animation.");
+    bljn.a("AEMaterialPanel", "in close panel animation.");
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "translationY", new float[] { 0.0F, this.jdField_a_of_type_Int });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.play(localObjectAnimator);
-    localAnimatorSet.addListener(new bktk(this, paramRunnable));
+    localAnimatorSet.addListener(new bkxr(this, paramRunnable));
     localAnimatorSet.setDuration(300L).start();
-    paramRunnable = blva.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialProviderView, 1.0F, 0.0F);
+    paramRunnable = blzm.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialProviderView, 1.0F, 0.0F);
     paramRunnable.setStartOffset(0L);
     paramRunnable.setDuration(100L);
-    paramRunnable.setAnimationListener(new bktl(this));
+    paramRunnable.setAnimationListener(new bkxs(this));
     startAnimation(paramRunnable);
   }
   
@@ -111,15 +111,15 @@ public class AEMaterialPanel
   
   private void e()
   {
-    if (this.jdField_a_of_type_Bkpa != null) {
-      this.jdField_a_of_type_Bkpa.a(false, 150);
+    if (this.jdField_a_of_type_Bkth != null) {
+      this.jdField_a_of_type_Bkth.a(false, 150);
     }
   }
   
   private void f()
   {
-    if (this.jdField_a_of_type_Blbm != null) {
-      this.jdField_a_of_type_Blbm.a(131075, new Object[0]);
+    if (this.jdField_a_of_type_Blft != null) {
+      this.jdField_a_of_type_Blft.a(131075, new Object[0]);
     }
   }
   
@@ -129,7 +129,7 @@ public class AEMaterialPanel
     ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
     localLayoutParams.height = a();
     setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialProviderView = new AEMaterialProviderView(getContext(), this.jdField_a_of_type_Bktm);
+    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialProviderView = new AEMaterialProviderView(getContext(), this.jdField_a_of_type_Bkxt);
     if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialProviderView != null) {
       addView(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialProviderView);
     }
@@ -150,7 +150,7 @@ public class AEMaterialPanel
     if ((getContext() instanceof Activity))
     {
       Object localObject = (Activity)getContext();
-      if (bkwm.i(((Activity)localObject).getIntent()))
+      if (blat.i(((Activity)localObject).getIntent()))
       {
         MqqHandler localMqqHandler = ThreadManager.getUIHandler();
         localObject = new AEMaterialPanel.1(this, (Activity)localObject);
@@ -171,8 +171,8 @@ public class AEMaterialPanel
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Blbm != null) {
-        this.jdField_a_of_type_Blbm.a(196613, new Object[0]);
+      if (this.jdField_a_of_type_Blft != null) {
+        this.jdField_a_of_type_Blft.a(196613, new Object[0]);
       }
       if (!QLog.isColorLevel()) {
         break;
@@ -214,19 +214,19 @@ public class AEMaterialPanel
     }
   }
   
-  public void setAECaptureController(bkpa parambkpa)
+  public void setAECaptureController(bkth parambkth)
   {
-    this.jdField_a_of_type_Bkpa = parambkpa;
+    this.jdField_a_of_type_Bkth = parambkth;
   }
   
-  public void setMaterialPanelListener(bktm parambktm)
+  public void setMaterialPanelListener(bkxt parambkxt)
   {
-    this.jdField_a_of_type_Bktm = parambktm;
+    this.jdField_a_of_type_Bkxt = parambkxt;
   }
   
-  public void setPartManager(blbm paramblbm)
+  public void setPartManager(blft paramblft)
   {
-    this.jdField_a_of_type_Blbm = paramblbm;
+    this.jdField_a_of_type_Blft = paramblft;
   }
 }
 

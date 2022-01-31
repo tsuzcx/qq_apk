@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgjd;
-import bgjf;
+import bgnk;
+import bgnm;
 
 class WifiJsPlugin$3
-  implements bgjf
+  implements bgnm
 {
   WifiJsPlugin$3(WifiJsPlugin paramWifiJsPlugin, WifiJsPlugin.LocationPermissionListener paramLocationPermissionListener) {}
   
@@ -15,7 +15,7 @@ class WifiJsPlugin$3
     do
     {
       return false;
-      bgjd.a().b(this);
+      bgnk.a().b(this);
     } while ((paramArrayOfString == null) || (paramArrayOfString.length == 0));
     if ("android.permission.ACCESS_FINE_LOCATION".equals(paramArrayOfString[0]))
     {

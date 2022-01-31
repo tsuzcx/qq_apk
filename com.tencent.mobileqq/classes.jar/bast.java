@@ -1,60 +1,102 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-
-class bast
-  implements bapw
+public class bast
 {
-  bast(bass parambass) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public int c;
+  public long c;
+  public int d;
   
-  public void a(baqv parambaqv, baqw parambaqw)
+  public bast()
   {
-    if ((parambaqv == null) || (parambaqw == null)) {}
-    label8:
-    baps localbaps;
-    do
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 9001;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_c_of_type_Long = 9223372036854775807L;
+  }
+  
+  public long a()
+  {
+    long l = 0L;
+    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Long != 0L)) {
+      l = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
+    }
+    while ((this.jdField_a_of_type_Long == 0L) && (this.jdField_b_of_type_Long == 0L)) {
+      return l;
+    }
+    return 612345L;
+  }
+  
+  public String a()
+  {
+    if (a())
     {
-      do
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("{");
+      localStringBuilder.append("elapsed:" + a());
+      localStringBuilder.append(",tryCount:" + this.jdField_b_of_type_Int);
+      localStringBuilder.append("}");
+      return localStringBuilder.toString();
+    }
+    return "{}";
+  }
+  
+  public String a(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_");
+    if (this.jdField_a_of_type_Boolean) {
+      if (this.jdField_a_of_type_Long > 0L)
       {
-        do
-        {
-          break label8;
-          do
-          {
-            return;
-          } while (!(parambaqv instanceof baps));
-          localbaps = (baps)parambaqv;
-          if (bass.a(this.a))
-          {
-            File localFile = new File(parambaqv.d);
-            if (parambaqw.c == localFile.length())
-            {
-              parambaqw.c = 0L;
-              if (QLog.isColorLevel()) {
-                QLog.e("ShortVideoDownloadProcessor", 2, "fixProgressiveRange, mStartDownOffset = " + parambaqv.jdField_a_of_type_Long);
-              }
-            }
-          }
-          localbaps.jdField_a_of_type_Long += parambaqw.c;
-          if (0L != localbaps.b) {
-            break;
-          }
-          parambaqw.c = 0L;
-          parambaqv = "bytes=" + localbaps.jdField_a_of_type_Long + "-";
-          localbaps.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqv);
-          parambaqv = localbaps.jdField_a_of_type_JavaLangString;
-        } while (!parambaqv.contains("range="));
-        parambaqv = parambaqv.substring(0, parambaqv.lastIndexOf("range="));
-        localbaps.jdField_a_of_type_JavaLangString = (parambaqv + "range=" + localbaps.jdField_a_of_type_Long);
-        return;
-      } while ((localbaps.jdField_a_of_type_Long <= 0L) || (localbaps.b <= 0L) || (localbaps.jdField_a_of_type_Long >= localbaps.b));
-      parambaqw.c = 0L;
-      parambaqv = "bytes=" + localbaps.jdField_a_of_type_Long + "-" + localbaps.b;
-      localbaps.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqv);
-      parambaqv = localbaps.jdField_a_of_type_JavaLangString;
-    } while (!parambaqv.contains("range="));
-    parambaqv = parambaqv.substring(0, parambaqv.lastIndexOf("range="));
-    localbaps.jdField_a_of_type_JavaLangString = (parambaqv + "range=" + localbaps.jdField_a_of_type_Long + "-" + localbaps.b);
+        localStringBuilder.append("1");
+        localStringBuilder.append("_");
+      }
+    }
+    for (;;)
+    {
+      if ((!(this instanceof basu)) && (!this.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Int > 0))
+      {
+        this.d += this.jdField_c_of_type_Int;
+        this.jdField_c_of_type_Int = 0;
+      }
+      localStringBuilder.append(this.jdField_c_of_type_Int).append("_");
+      localStringBuilder.append(this.d).append("_");
+      localStringBuilder.append(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long);
+      return localStringBuilder.toString();
+      localStringBuilder.append("-1");
+      break;
+      localStringBuilder.append("0").append("_");
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 9001;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_c_of_type_Int = 0;
+    this.d = 0;
+    this.jdField_c_of_type_Long = 9223372036854775807L;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Long != 0L) || (this.jdField_b_of_type_Long != 0L);
+  }
+  
+  public String toString()
+  {
+    return "result:" + this.jdField_a_of_type_Boolean + " startTime:" + this.jdField_a_of_type_Long + " finishTime:" + this.jdField_b_of_type_Long + " errCode:" + this.jdField_a_of_type_Int;
   }
 }
 

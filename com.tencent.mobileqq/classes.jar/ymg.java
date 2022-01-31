@@ -1,59 +1,81 @@
+import android.content.Context;
 import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class ymg
-  implements TextWatcher
 {
-  public ymg(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  private static boolean a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public static void a(Context paramContext, String paramString1, String paramString2, ymm paramymm)
   {
-    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    int i;
-    if (str.equals(""))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      i = str.length();
-      ThemeUtil.getCurrentThemeInfo().getString("themeId");
-      if (i <= 6) {
-        break label215;
-      }
-      EditUniqueTitleActivity.a(this.a, false);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        this.a.rightViewText.setAlpha(0.5F);
-      }
-    }
-    for (paramEditable = this.a.getResources().getColorStateList(2131167035);; paramEditable = this.a.getResources().getColorStateList(2131166981))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramEditable);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str.length() + "/" + 6);
-      int j = 6 - str.length();
-      i = j;
-      if (j < 0) {
-        i = 0;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(String.format(this.a.getString(2131696617), new Object[] { Integer.valueOf(i) }));
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      break;
-      label215:
-      EditUniqueTitleActivity.b(this.a, true);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        this.a.rightViewText.setAlpha(1.0F);
-      }
-    }
+    a(paramContext, paramString1, true, paramString2, 2131696919, paramymm);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public static void a(Context paramContext, String paramString, ymm paramymm)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("SubscribeFollowUserUtil", 2, "follow user failed! user is null");
+    }
+    do
+    {
+      return;
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface))
+      {
+        syb.a((QQAppInterface)localAppRuntime, paramContext, paramString, new ymk(paramymm), false, 0, true);
+        return;
+      }
+    } while (paramymm == null);
+    paramymm.a(false, paramString, false);
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public static void a(Context paramContext, String paramString1, boolean paramBoolean, String paramString2, int paramInt, ymm paramymm)
+  {
+    if (paramContext == null) {}
+    bhuf localbhuf;
+    do
+    {
+      return;
+      localbhuf = bhuf.a(paramContext);
+      if (paramBoolean) {
+        localbhuf.a(String.format(paramContext.getResources().getString(2131695779), new Object[] { paramString2 }));
+      }
+      localbhuf.a(paramInt, 3);
+      localbhuf.c(2131690648);
+      localbhuf.setOnDismissListener(new ymh());
+      localbhuf.a(new ymi(paramymm, paramString1, localbhuf));
+      localbhuf.a(new ymj(paramContext, paramString1, paramymm, localbhuf));
+    } while (localbhuf.isShowing());
+    a = false;
+    localbhuf.show();
+  }
+  
+  public static void b(Context paramContext, String paramString, ymm paramymm)
+  {
+    a(paramContext, paramString, false, "", 2131695777, paramymm);
+  }
+  
+  public static void c(Context paramContext, String paramString, ymm paramymm)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("SubscribeFollowUserUtil", 2, "unfollow user failed! user is null");
+    }
+    do
+    {
+      return;
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface))
+      {
+        syb.a((QQAppInterface)localAppRuntime, paramContext, paramString, false, new yml(paramymm), true);
+        return;
+      }
+    } while (paramymm == null);
+    paramymm.a(false, paramString, false);
+  }
 }
 
 

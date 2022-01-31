@@ -1,133 +1,254 @@
-import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
-import com.tencent.mobileqq.apollo.game.ApolloJSContext.1;
-import com.tencent.mobileqq.apollo.game.ApolloJSContext.2;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.ToolAppRuntime;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.apollo.ApolloStoreStabilityReportManager.1;
+import com.tencent.mobileqq.apollo.ApolloStoreStabilityReportManager.2;
+import com.tencent.mobileqq.apollo.ApolloStoreStabilityReportManager.3;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.ValueCallback;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
+import mqq.observer.BusinessObserver;
 
 public class akpr
+  implements BusinessObserver
 {
-  private akpx jdField_a_of_type_Akpx;
-  private CustomWebView jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
-  public String a;
+  private static akpr jdField_a_of_type_Akpr;
+  private long jdField_a_of_type_Long;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ApolloStoreStabilityReportManager.3(this);
+  private ArrayList<HashMap> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public akpr(String paramString)
+  public static akpr a()
   {
-    this.jdField_a_of_type_Akpx = new ApolloGameInterfaceProxy(this, paramString);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private void c()
-  {
-    a("var newFun=Function;Function=function(){console.error(\"Function is disabled.\")};Function.prototype=newFun.prototype;newFun=undefined;", null);
-    a("if(document&&document.createElement&&document.createElementNS){const _bk_createElement=document.createElement;const _bk_createElementNS=document.createElementNS;var bk_custom_proxy={};const bk_document_proxy=Object.freeze({createElement:function(){var result=null;if(bk_document_proxy.preCall(\"createElement\",arguments)){result=_bk_createElement.apply(document,arguments)}else{console.error(\"iframe is disabled\")}bk_document_proxy.postCall(\"createElement\",arguments);return result},createElementNS:function(){var result=null;if(bk_document_proxy.preCall(\"createElementNS\",arguments)){result=_bk_createElementNS.apply(document,arguments)}else{console.error(\"iframe is disabled\")}bk_document_proxy.postCall(\"createElementNS\",arguments);return result},preCall:function(fName,args){if(bk_custom_proxy&&bk_custom_proxy.preCall&&((typeof bk_custom_proxy.preCall)===\"function\")){bk_custom_proxy.preCall(fName,args)}if(fName){if(args&&args[0]){var itemName=args[0];if(typeof itemName===\"string\"){return itemName.indexOf(\"iframe\")===-1}}}return true},postCall:function(fName,args){if(bk_custom_proxy&&bk_custom_proxy.postCall&&((typeof bk_custom_proxy.postCall)===\"function\")){bk_custom_proxy.postCall(fName,args)}}});document.createElement=bk_document_proxy.createElement;document.createElementNS=bk_document_proxy.createElementNS};", null);
-  }
-  
-  private void d()
-  {
-    a("(function(){var iframes=document.querySelectorAll(\"iframe\");for(var i=0;i<iframes.length;i++){var item=iframes[i];if(item.parentNode){item.parentNode.removeChild(item)}}})();", null);
-  }
-  
-  public void a()
-  {
-    ThreadManagerV2.getUIHandlerV2().post(new ApolloJSContext.1(this));
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    if (akpq.a(this.jdField_a_of_type_JavaLangString))
+    try
     {
-      paramString2 = akpq.b(paramString2);
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloJSContext", 1, "[notifyJSEVent] " + paramString1 + " " + paramString2);
+      if (jdField_a_of_type_Akpr == null) {
+        jdField_a_of_type_Akpr = new akpr();
       }
-      a(String.format("if(window.__dispatchEvent){window.__dispatchEvent(%s,'%s','%s')}", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 }), new akps(this));
-      return;
+      akpr localakpr = jdField_a_of_type_Akpr;
+      return localakpr;
     }
-    QLog.e("ApolloJSContext", 1, "[notifyJSEVent] game not running " + paramString1 + " " + paramString2);
+    finally {}
   }
   
-  public void a(CustomWebView paramCustomWebView)
+  public static AppInterface a()
   {
-    if ((paramCustomWebView != null) && (this.jdField_a_of_type_Akpx != null))
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloJSContext", 2, "register success");
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = paramCustomWebView;
-      if (Build.VERSION.SDK_INT > 17)
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+      if ((localObject instanceof ToolAppRuntime))
       {
-        paramCustomWebView.addJavascriptInterface(this.jdField_a_of_type_Akpx, "__browserMsg");
-        return;
-      }
-      paramCustomWebView.evaluateJavascript("window.__browserMsg =new function(){};window.__browserMsg.send=function(data,cmd){window.location='jsbridge://apolloGame/send?p='+JSON.stringify({dataStr:data,cmd:cmd});}\n", null);
-      return;
-    }
-    QLog.e("ApolloJSContext", 1, "[registeJSContext] failed");
-  }
-  
-  public void a(String paramString, ValueCallback<String> paramValueCallback)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      ThreadManagerV2.getUIHandlerV2().post(new ApolloJSContext.2(this, paramString, paramValueCallback));
-      return;
-    }
-    QLog.e("ApolloJSContext", 1, "[execScript] context is null");
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if ((this.jdField_a_of_type_Akpx != null) && ((this.jdField_a_of_type_Akpx instanceof ApolloGameInterfaceProxy))) {
-      ((ApolloGameInterfaceProxy)this.jdField_a_of_type_Akpx).send(paramString2, paramString1);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((!paramBoolean) && (a())) {
-      c();
-    }
-  }
-  
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!"Android.H5".equals(this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = null;
-    if ((this.jdField_a_of_type_Akpx != null) && ((this.jdField_a_of_type_Akpx instanceof ApolloGameInterfaceProxy))) {
-      ((ApolloGameInterfaceProxy)this.jdField_a_of_type_Akpx).h();
-    }
-    this.jdField_a_of_type_Akpx = null;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Akpx != null)
-    {
-      if (a())
-      {
-        if (!paramBoolean) {
-          break label36;
+        localObject = ((AppRuntime)localObject).getAppRuntime("modular_web");
+        if ((localObject instanceof AppInterface)) {
+          return (AppInterface)localObject;
         }
-        a("if(window&&window.mqq&&window.mqq.ui&&!window.BK_SHARE){window.mqq.ui.shareArkMessageQzone=window.mqq.ui.shareArkMessage;window.mqq.ui.shareMessageQzone=window.mqq.ui.shareMessage;window.mqq.ui.shareArkMessage=shareToBK;window.mqq.ui.shareMessage=shareToBK}function shareToBK(shareObj,callback){window.__dispatchEvent=function(code,cmd,data){if(cmd===\"sc.share_game_to_friend_result.local\"){var tmpObj=JSON.parse(data);var result={retCode:(tmpObj.ret===0)?0:4};if(callback&&(typeof callback===\"function\")){callback(result);console.log(\"share success in bk\")}}};if(shareObj){var title=shareObj.title;var share_type=shareObj.share_type;var image_url=shareObj.image_url;var desc=shareObj.desc;var bg_url=shareObj.bg_url;var bk_url=shareObj.bk_url;var share_url=shareObj.share_url;if(share_url){share_url=share_url.substring(share_url.indexOf(\"?\")+1)}if(image_url&&!image_url.startsWith(\"http://\")&&!image_url.startsWith(\"https://\")){image_url=\"http://\"+image_url}if(bg_url&&!bg_url.startsWith(\"http://\")&&!bg_url.startsWith(\"https://\")){bg_url=\"http://\"+bg_url}if(!share_type){share_type=0}var share_ul=bk_url;if(!share_ul){share_url=bg_url}if(!share_ul){share_ul=image_url}var bkShare={inner:1,roomId:0,summary:desc,picUrl:share_ul,isSelectFriend:share_type===0?1:0,extendInfo:{bk_share_url:share_url},title:title};var command=\"cs.share_game_in_ark.local\";switch(share_type){case 0:break;default:command=\"cs.game_shell_share_callback.local\";break}window.__browserMsg.send(JSON.stringify(bkShare),command);return}};", null);
+      }
+    }
+    return null;
+  }
+  
+  private void a()
+  {
+    ThreadManagerV2.excute(new ApolloStoreStabilityReportManager.1(this), 64, null, true);
+  }
+  
+  private void a(HashMap paramHashMap)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramHashMap);
+      return;
+    }
+    finally
+    {
+      paramHashMap = finally;
+      throw paramHashMap;
+    }
+  }
+  
+  private void b()
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (paramInt == 1000) {}
+    for (int i = 1;; i = 0)
+    {
+      int j;
+      if (paramInt == -1001)
+      {
+        j = 3001;
+        i = 1;
       }
       for (;;)
       {
-        this.jdField_a_of_type_Akpx.a(this);
+        if (paramInt == -1002)
+        {
+          j = 3000;
+          i = 1;
+        }
+        if (i != 0)
+        {
+          alhp.a(40);
+          alhp.a(40, 1, j, new Object[] { paramString });
+          alhp.b(40);
+        }
         return;
-        label36:
-        d();
+        j = 0;
       }
     }
-    QLog.e("ApolloJSContext", 1, "[onLoadFinish] interface null ");
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errcode", Integer.valueOf(paramInt1));
+    if (!TextUtils.isEmpty(paramString1)) {
+      localHashMap.put("cmd", paramString1);
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      localHashMap.put("url", paramString2);
+    }
+    localHashMap.put("cost", Integer.valueOf(paramInt2));
+    a(localHashMap);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue. add one task. count:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+    }
+    a(paramString1, paramInt1);
+    if (!bdin.g(null)) {
+      QLog.e("ApolloStoreStabilityReportManager_apollo_store_stability_", 1, "reportApolloStoreStabilityData. network not available. cmd:" + paramString1);
+    }
+    while (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new ApolloStoreStabilityReportManager.2(this), 10000L);
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      HashSet localHashSet = aliq.a();
+      if (localHashSet != null)
+      {
+        if (localHashSet.contains(paramString)) {
+          break label103;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue. filter one cmd:" + paramString + " cmdSet:" + localHashSet.toString());
+        }
+      }
+      do
+      {
+        return false;
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue.  cmdSet is null. filter all reporting cmd");
+        }
+      } while (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 30000L);
+      a();
+      return false;
+    }
+    label103:
+    return true;
+  }
+  
+  public boolean b(String paramString)
+  {
+    HashSet localHashSet;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localHashSet = aliq.b();
+      if (localHashSet != null)
+      {
+        Iterator localIterator = localHashSet.iterator();
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+        } while (!paramString.contains((String)localIterator.next()));
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue. filter one url:" + paramString + " urlSet:" + localHashSet.toString());
+        }
+        return false;
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue.  urlSet is null. filter all reporting url");
+        }
+        if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 30000L) {
+          a();
+        }
+        return false;
+      }
+      return true;
+    }
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBoolean) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          Object localObject = new WebSsoBody.WebSsoResponseBody();
+          ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
+          paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
+          paramBundle = ((WebSsoBody.WebSsoResponseBody)localObject).data.get();
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onReceive upload success retcode:");
+          ((StringBuilder)localObject).append(paramInt);
+          ((StringBuilder)localObject).append(" retJson:");
+          ((StringBuilder)localObject).append(paramBundle);
+          QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, ((StringBuilder)localObject).toString());
+          return;
+        }
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "onReceive upload success. data is null");
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        QLog.e("ApolloStoreStabilityReportManager_apollo_store_stability_", 1, "onReceive upload success. parse response failed.", paramBundle);
+        return;
+      }
+    } else {
+      QLog.e("ApolloStoreStabilityReportManager_apollo_store_stability_", 1, "onReceive upload failed.");
+    }
   }
 }
 

@@ -1,127 +1,71 @@
+import android.app.Activity;
+import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
-import java.util.List;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
 public class ayna
-  implements aymg<ayjj, ayrt>
+  extends aynv
 {
-  protected aymf a;
-  private bcws a;
+  private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private String jdField_a_of_type_JavaLangString;
   
-  public ayna(bcws parambcws)
+  public ayna(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_Bcws = parambcws;
-    this.jdField_a_of_type_Aymf = a(parambcws);
+    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
   }
   
-  public ayna(bcws parambcws, int paramInt)
+  public CharSequence a()
   {
-    this.jdField_a_of_type_Bcws = parambcws;
-    this.jdField_a_of_type_Aymf = a(parambcws, paramInt);
+    return this.jdField_a_of_type_JavaLangCharSequence;
   }
   
-  public ayna(bcws parambcws, boolean paramBoolean)
+  public String a()
   {
-    this.jdField_a_of_type_Bcws = parambcws;
-    this.jdField_a_of_type_Aymf = a(parambcws, paramBoolean);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public aymf a()
+  public void a(View paramView)
   {
-    return this.jdField_a_of_type_Aymf;
+    Bundle localBundle = TroopInfoActivity.a(String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get()), 2);
+    localBundle.putInt("exposureSource", 3);
+    bcpx.a((Activity)paramView.getContext(), localBundle, 2);
+    ayvm.a(this.jdField_a_of_type_JavaLangString, 80, 0, paramView);
+    ayvm.a(this.jdField_a_of_type_JavaLangString, 80, paramView, false);
   }
   
-  protected aymf<ayjl, ayru> a(bcws parambcws)
+  public boolean a()
   {
-    return new aynd(parambcws);
+    return false;
   }
   
-  protected aymf<ayjl, ayru> a(bcws parambcws, int paramInt)
+  public CharSequence b()
   {
-    return new aylm(parambcws, paramInt);
+    return null;
   }
   
-  protected aymf<ayjl, ayru> a(bcws parambcws, boolean paramBoolean)
+  public String b()
   {
-    if (!paramBoolean) {
-      return a(parambcws);
-    }
-    return new aymd(parambcws);
+    return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get());
   }
   
-  public void a(ayjj paramayjj, ayrt paramayrt)
+  public int c()
   {
-    int i = 0;
-    Object localObject = (ayjk)paramayjj;
-    a(paramayrt, (ayjk)localObject);
-    int n = ((ayjk)localObject).a();
-    paramayjj = paramayrt.a();
-    if ((paramayjj != null) && (paramayjj != null))
-    {
-      localObject = ((ayjk)localObject).a();
-      if (localObject != null)
-      {
-        i = 0;
-        int j;
-        label68:
-        int k;
-        if (i < paramayjj.size())
-        {
-          j = 1;
-          if (i >= ((List)localObject).size()) {
-            break label296;
-          }
-          k = 1;
-          label82:
-          if (i >= n) {
-            break label302;
-          }
-        }
-        label296:
-        label302:
-        for (int m = 1;; m = 0)
-        {
-          if ((m & k & j) == 0) {
-            break label308;
-          }
-          ((ayru)paramayjj.get(i)).a().setVisibility(0);
-          ((ayru)paramayjj.get(i)).a().setTag(2131379913, ((List)localObject).get(i));
-          ((ayru)paramayjj.get(i)).a().setTag(2131379918, paramayjj.get(i));
-          ((ayru)paramayjj.get(i)).a().setTag(2131379914, Integer.valueOf(i));
-          ((ayru)paramayjj.get(i)).a().setTag(2131379912, Integer.valueOf(paramayjj.size()));
-          ((ayru)paramayjj.get(i)).a().setTag(2131379915, this.jdField_a_of_type_Aymf);
-          this.jdField_a_of_type_Aymf.a((ayjj)((List)localObject).get(i), (ayrv)paramayjj.get(i));
-          i += 1;
-          break;
-          j = 0;
-          break label68;
-          k = 0;
-          break label82;
-        }
-        label308:
-        i = Math.min(((List)localObject).size(), n);
-        while (i < paramayjj.size())
-        {
-          ((ayru)paramayjj.get(i)).a().setVisibility(8);
-          i += 1;
-        }
-      }
-      while (i < paramayjj.size())
-      {
-        ((ayru)paramayjj.get(i)).a().setVisibility(8);
-        i += 1;
-      }
-    }
-    if (paramayrt.b() != null) {
-      paramayrt.b().setVisibility(8);
-    }
+    return 4;
   }
   
-  protected void a(ayrt paramayrt, ayjk paramayjk)
+  public CharSequence c()
   {
-    if (paramayrt.a() != null) {
-      paramayrt.a().setText(paramayjk.a());
-    }
+    return alud.a(2131705735);
+  }
+  
+  public CharSequence d()
+  {
+    return null;
   }
 }
 

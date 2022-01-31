@@ -1,15 +1,31 @@
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class acno
-  extends avqr
+  implements bezx
 {
-  public acno(Conversation paramConversation) {}
+  public acno(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aqsb paramaqsb) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void a(int paramInt)
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt);
-    if ((paramBoolean1) && (paramInt != 2) && (Conversation.b(this.a))) {
-      axhu.a(this.a);
+    if (paramInt == 2)
+    {
+      arri.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131692914));
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+          if (bdhb.b(localFileManagerEntity.getFilePath())) {
+            this.jdField_a_of_type_Aqsb.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
+          } else {
+            this.jdField_a_of_type_Aqsb.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+          }
+        }
+      }
     }
   }
 }

@@ -1,17 +1,21 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import cooperation.qzone.QzoneTranslucentBrowserFragment;
 
-public class bjcb
+class bjcb
   implements View.OnClickListener
 {
-  public bjcb(QzoneTranslucentBrowserFragment paramQzoneTranslucentBrowserFragment) {}
+  bjcb(bjbz parambjbz) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a() != null) {
-      this.a.a().finish();
+    if (bjbz.a(this.a))
+    {
+      if (bjbz.b(this.a)) {
+        this.a.dismiss();
+      }
+      if (bjbz.b(this.a) != null) {
+        bjbz.b(this.a).onClick(paramView);
+      }
     }
   }
 }

@@ -3,7 +3,7 @@ import android.view.View;
 import android.widget.TextView;
 
 class tjp
-  implements bhqd
+  implements bhuk
 {
   tjp(tjo paramtjo) {}
   
@@ -11,7 +11,7 @@ class tjp
   {
     if (!ndk.a(tjo.a(this.a)))
     {
-      bfhq.a().a(2131721476);
+      bflz.a().a(2131721489);
       return;
     }
     tjo.a(this.a).b(tjo.a(this.a).id, 2);

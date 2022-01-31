@@ -1,9 +1,21 @@
-public abstract class won
-  extends woj
-  implements wor, wos
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.List;
+
+class won
+  extends JobSegment<wop, whz>
 {
-  public woo a;
-  protected wop a;
+  private int jdField_a_of_type_Int;
+  private List<CommentEntry> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private whw jdField_a_of_type_Whw;
+  
+  protected void a(JobContext paramJobContext, wop paramwop)
+  {
+    this.jdField_a_of_type_Whw = new whw(paramwop, new woo(this, paramJobContext, paramwop));
+    this.jdField_a_of_type_Whw.c();
+  }
 }
 
 

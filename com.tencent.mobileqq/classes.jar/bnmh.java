@@ -1,19 +1,32 @@
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
-import java.nio.ByteBuffer;
-
 public class bnmh
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public MediaFormat a;
-  public ByteBuffer a;
+  public static final int a;
+  public static final int b = bnsm.a(2.0F);
+  public static final int c = bnsm.a(4.0F);
+  public static final int d = bnsm.a(8.0F);
+  public float a;
   public boolean a;
+  public float b;
+  public boolean b;
+  public float c;
+  public boolean c;
+  public float d;
+  public boolean d;
+  public float e;
+  public int e = 0;
+  public float f;
+  public float g;
+  public float h;
+  public float i;
   
-  public bnmh(bnmg parambnmg)
+  static
   {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-    this.jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_Int = bnsm.a(20.0F);
+  }
+  
+  public bnmh()
+  {
+    this.jdField_a_of_type_Float = jdField_a_of_type_Int;
   }
 }
 

@@ -1,18 +1,21 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.graphics.RectF;
 
-final class blye
-  implements EIPCResultCallback
+public class blye
+  extends blwt
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  private int a;
+  
+  public blye(int paramInt)
   {
-    if (paramEIPCResult != null)
-    {
-      boolean bool = paramEIPCResult.data.getBoolean("key_result");
-      QLog.d("PeakIpcController", 2, "sendVideo result:" + bool);
-    }
+    this.a = paramInt;
+  }
+  
+  void a(int paramInt, blwu paramblwu)
+  {
+    RectF localRectF = paramblwu.a;
+    localRectF.top += this.a * paramInt;
+    paramblwu = paramblwu.a;
+    paramblwu.bottom += this.a * paramInt;
   }
 }
 

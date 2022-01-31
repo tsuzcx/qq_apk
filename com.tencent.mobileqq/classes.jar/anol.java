@@ -1,66 +1,34 @@
+import com.tencent.ark.ArkAppPreloader.PreloadAppCallback;
+import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-public class anol
-  implements anom
+class anol
+  implements ArkAppPreloader.PreloadAppCallback
 {
-  public final String a = anok.a + "." + getClass().getSimpleName();
+  anol(anoj paramanoj) {}
   
-  public static final String a(String paramString1, String paramString2)
+  public void beginAppload(String paramString, int paramInt)
   {
-    return anpm.a() + File.separator + "_res/" + paramString1;
+    if (paramInt == 1) {
+      anod.a(paramString);
+    }
   }
   
-  public String a(anop paramanop)
+  public void onAppLoaded(boolean paramBoolean, String paramString, int paramInt)
   {
-    return anpm.a() + File.separator + "_res/" + paramanop.b + File.separator;
-  }
-  
-  public boolean a(anop paramanop)
-  {
-    String str = b(paramanop);
-    try
+    if (paramInt == 1)
     {
-      boolean bool = new File(str).exists();
+      anod.b(paramString);
       if (QLog.isColorLevel()) {
-        QLog.d(this.a, 2, "needDownload.file exist|" + bool + "|" + paramanop + "|" + str);
-      }
-      if (!bool) {
-        return true;
+        QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preload app appname=", paramString, ",success=", Boolean.valueOf(paramBoolean) });
       }
     }
-    catch (Throwable paramanop)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.a, 2, "isNeedDownload.exception happen.e=" + paramanop.getMessage());
-      }
-      paramanop.printStackTrace();
-    }
-    return false;
   }
   
-  public boolean a(anop paramanop, boolean paramBoolean)
+  public void onReleaseAndReload(String paramString, int paramInt)
   {
-    return true;
-  }
-  
-  public String b(anop paramanop)
-  {
-    return a(paramanop.b, paramanop.c);
-  }
-  
-  public boolean b(anop paramanop)
-  {
-    boolean bool = true;
-    String str = awiz.a(b(paramanop));
-    if (!paramanop.b.equalsIgnoreCase(str))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.a, 1, "checkDownloadFile.verify failed|" + str + "|" + paramanop);
-      }
-      bool = false;
-    }
-    return bool;
+    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload begin app = " + paramString);
+    ArkAppMgr.getInstance().getAppPathByName(paramString, "", "0.0.0.1", null, new anom(this, paramString));
   }
 }
 

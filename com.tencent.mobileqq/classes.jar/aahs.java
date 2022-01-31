@@ -1,72 +1,165 @@
 import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.process.AdProcessManager;
-import com.tencent.ad.tangram.process.AdProcessManagerAdapter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.ToolAppRuntime;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class aahs
-  implements AdProcessManagerAdapter
 {
-  public Boolean isOnMainProcess()
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private String b;
+  private String c;
+  
+  public aahs(AppInterface paramAppInterface)
   {
-    if (BaseApplicationImpl.getApplication() == null) {}
-    while (BaseApplicationImpl.getApplication().getRuntime() == null) {
-      return null;
-    }
-    return Boolean.valueOf(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
-  public Boolean isOnWebProcess()
+  public aahs a(int paramInt, String paramString)
   {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject == null) {}
-    do
+    if ((paramInt >= 1) && (paramInt <= 40))
     {
-      return null;
-      localObject = AdProcessManager.INSTANCE.getCurrentProcessName((Context)localObject);
-    } while (TextUtils.isEmpty((CharSequence)localObject));
-    return Boolean.valueOf(TextUtils.equals((CharSequence)localObject, "com.tencent.mobileqq:tool"));
+      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(String.valueOf(paramInt), paramString);
+    }
+    return this;
   }
   
-  public Boolean isWebProcessRunning()
+  public aahs a(String paramString)
   {
-    Object localObject = isWebProcessRunningForPreloading();
-    if ((localObject != null) && (((Boolean)localObject).booleanValue())) {
-      return Boolean.valueOf(true);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public boolean a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.b)) && (TextUtils.isEmpty(this.c)) && ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.size() == 0))) {
+      return false;
     }
-    localObject = BaseApplicationImpl.getApplication();
-    if (localObject == null) {}
     for (;;)
     {
-      return null;
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-      if ((localObject != null) && ((localObject instanceof QQAppInterface))) {
-        try
-        {
-          boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
-          return Boolean.valueOf(bool);
+      try
+      {
+        if (this.jdField_a_of_type_JavaUtilList == null) {
+          this.jdField_a_of_type_JavaUtilList = new ArrayList();
         }
-        catch (Throwable localThrowable)
+        this.jdField_a_of_type_JavaUtilList.clear();
+        long l = NetConnInfoCenter.getServerTime();
+        this.jdField_a_of_type_JavaUtilList.add(String.valueOf(l));
+        this.jdField_a_of_type_JavaUtilList.add("1");
+        this.jdField_a_of_type_JavaUtilList.add("8.3.5");
+        this.jdField_a_of_type_JavaUtilList.add("");
+        this.jdField_a_of_type_JavaUtilList.add("2");
+        this.jdField_a_of_type_JavaUtilList.add(Build.BRAND);
+        int j = ndd.a();
+        if (j >= 0)
         {
-          aanp.d("GdtProcessManagerAdapter", "isWebProcessRunning", localThrowable);
+          i = j;
+          if (j < alof.c.length)
+          {
+            this.jdField_a_of_type_JavaUtilList.add(alof.c[i]);
+            Object localObject2 = "";
+            Object localObject1 = localObject2;
+            if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+            {
+              BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();
+              localObject1 = localObject2;
+              if (localBaseApplication != null)
+              {
+                localObject1 = localBaseApplication.getResources().getDisplayMetrics();
+                localObject1 = ((DisplayMetrics)localObject1).widthPixels + "*" + ((DisplayMetrics)localObject1).heightPixels;
+              }
+            }
+            this.jdField_a_of_type_JavaUtilList.add(localObject1);
+            this.jdField_a_of_type_JavaUtilList.add("0");
+            this.jdField_a_of_type_JavaUtilList.add("0");
+            this.jdField_a_of_type_JavaUtilList.add("1");
+            this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaLangString);
+            this.jdField_a_of_type_JavaUtilList.add(this.b);
+            this.jdField_a_of_type_JavaUtilList.add("0");
+            this.jdField_a_of_type_JavaUtilList.add(this.c);
+            a(14, Build.MODEL);
+            a(15, Build.VERSION.RELEASE);
+            if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.size() > 0))
+            {
+              i = 1;
+              if (i <= 40)
+              {
+                localObject1 = String.valueOf(i);
+                localObject2 = this.jdField_a_of_type_JavaUtilList;
+                if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject1)) {
+                  break label495;
+                }
+                localObject1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
+                ((List)localObject2).add(localObject1);
+                i += 1;
+                continue;
+              }
+            }
+            binc.a(null, "dc00087", this.jdField_a_of_type_JavaUtilList);
+            return true;
+          }
         }
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return false;
+      }
+      int i = 0;
+      continue;
+      label495:
+      String str = "";
     }
   }
   
-  public Boolean isWebProcessRunningForPreloading()
+  public aahs b(String paramString)
   {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject == null) {}
-    do
-    {
-      return null;
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-    } while ((localObject == null) || (!(localObject instanceof ToolAppRuntime)));
-    return Boolean.valueOf(beep.s);
+    this.b = paramString;
+    return this;
+  }
+  
+  public aahs c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public aahs d(String paramString)
+  {
+    return a(4, paramString);
+  }
+  
+  public aahs e(String paramString)
+  {
+    return a(1, paramString);
+  }
+  
+  public aahs f(String paramString)
+  {
+    return a(11, paramString);
+  }
+  
+  public aahs g(String paramString)
+  {
+    return a(12, paramString);
+  }
+  
+  public aahs h(String paramString)
+  {
+    return a(35, paramString);
   }
 }
 

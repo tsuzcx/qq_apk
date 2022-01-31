@@ -1,9 +1,18 @@
-import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
-import java.util.List;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
-public abstract interface awus
+public class awus
+  implements bdoh<Rect>
 {
-  public abstract void a(List<PushDialogTemplate> paramList);
+  public awus(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  
+  public void a(bdob<Rect> parambdob, float paramFloat, Rect paramRect, Transformation paramTransformation)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate(paramRect);
+  }
 }
 
 

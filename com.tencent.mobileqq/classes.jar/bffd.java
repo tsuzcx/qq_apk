@@ -1,59 +1,59 @@
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.agent.OpenAuthorityFragment.13.1;
+import com.tencent.open.model.GetVirtualListResult;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.util.HandlerPlus;
 
 public class bffd
+  extends bfrs
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public bffd(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public bffd(String paramString1, String paramString2, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    QLog.d("OpenAuthorityFragment", 1, new Object[] { "-->onDeleteVirtual isSuccess=", Boolean.valueOf(paramBoolean), ", code=", Integer.valueOf(paramInt) });
+    if (paramBoolean) {
+      return;
+    }
+    this.a.m();
+    OpenAuthorityFragment.a(this.a, alud.a(2131708245) + paramInt, false);
   }
   
-  public boolean a(String paramString1, String paramString2, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramString1))
+    QLog.d("OpenAuthorityFragment", 1, new Object[] { "-->onDoAuthorize isSuccess=", Boolean.valueOf(paramBoolean), ", code=", Integer.valueOf(paramInt) });
+    aseh.a("KEY_AUTHORIZE_REQUEST", this.a.jdField_a_of_type_Bfqv, paramBoolean);
+    if ((paramBoolean) && (paramAuthorizeResponse != null))
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break label58;
-      }
-      bool1 = bool2;
+      Message localMessage = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+      localMessage.what = 1;
+      localMessage.obj = paramAuthorizeResponse;
+      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(localMessage);
+      return;
     }
-    for (;;)
+    if ((paramAuthorizeResponse != null) && (!TextUtils.isEmpty(paramAuthorizeResponse.msg.get())))
     {
-      if (!bool1)
-      {
-        this.jdField_a_of_type_JavaLangString = paramString1;
-        this.b = paramString2;
-        this.jdField_a_of_type_Int = paramInt;
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-      }
-      return bool1;
-      label58:
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Int == paramInt)
-      {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_JavaLangString.equals(paramString1))
-        {
-          bool1 = bool2;
-          if (this.b.equals(paramString2))
-          {
-            bool1 = bool2;
-            if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L) {
-              bool1 = true;
-            }
-          }
-        }
-      }
+      OpenAuthorityFragment.a(this.a, paramAuthorizeResponse.msg.get() + alud.a(2131708242) + paramInt, false);
+      return;
     }
+    OpenAuthorityFragment.a(this.a, alud.a(2131708244) + paramInt, false);
+  }
+  
+  public void a(boolean paramBoolean, GetVirtualListResult paramGetVirtualListResult)
+  {
+    QLog.d("OpenAuthorityFragment", 1, new Object[] { "-->onGetVirtualList isSuccess=", Boolean.valueOf(paramBoolean) });
+    if (OpenAuthorityFragment.a(this.a))
+    {
+      QLog.e("OpenAuthorityFragment", 1, " activity is isInvalid");
+      return;
+    }
+    aseh.a("KEY_GET_VIRTUAL_LIST_D24", this.a.jdField_a_of_type_Bfqv, paramBoolean);
+    this.a.getActivity().runOnUiThread(new OpenAuthorityFragment.13.1(this, paramBoolean, paramGetVirtualListResult));
   }
 }
 

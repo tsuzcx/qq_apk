@@ -1,21 +1,8 @@
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
 
-public class adgp
-  extends allb
+public abstract interface adgp
 {
-  public adgp(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
-  
-  protected void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
-  {
-    if (paramBoolean1)
-    {
-      SettingCloneUtil.writeValue(this.a.app.getApp(), paramString2, null, "qqsetting_pcactive_key", true);
-      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
-    }
-  }
+  public abstract void a(int paramInt, String paramString, Drawable paramDrawable, Object... paramVarArgs);
 }
 
 

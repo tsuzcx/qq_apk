@@ -1,46 +1,6 @@
-import android.os.Bundle;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.share.QZoneShareActivity;
-import mqq.observer.BusinessObserver;
-
-public class bjni
-  implements BusinessObserver
+public abstract interface bjni
 {
-  public bjni(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    synchronized (QZoneShareActivity.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.h = false;
-      if (paramBoolean) {}
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
-          localGetAppinfoResponse.mergeFrom(paramBundle);
-          this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse = localGetAppinfoResponse;
-          if (QLog.isColorLevel()) {
-            QLog.d("QZoneShare", 2, "get appinfo time = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
-          }
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QZoneShare", 2, paramBundle.getMessage());
-          }
-        }
-      }
-      QZoneShareActivity.jdField_a_of_type_JavaLangObject.notify();
-      return;
-    }
-  }
+  public abstract void a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 

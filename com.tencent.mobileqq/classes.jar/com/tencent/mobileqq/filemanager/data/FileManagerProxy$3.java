@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.data;
 
 import android.content.ContentValues;
-import aqxp;
+import arby;
 
 public class FileManagerProxy$3
   implements Runnable
 {
-  public FileManagerProxy$3(aqxp paramaqxp, ContentValues paramContentValues, long paramLong) {}
+  public FileManagerProxy$3(arby paramarby, ContentValues paramContentValues, long paramLong) {}
   
   public void run()
   {

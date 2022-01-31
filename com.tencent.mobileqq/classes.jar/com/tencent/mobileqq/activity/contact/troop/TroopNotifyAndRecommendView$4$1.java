@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import abol;
-import ahke;
-import ahlg;
-import aljq;
-import baba;
+import abta;
+import ahot;
+import ahpv;
+import alof;
+import bafj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class TroopNotifyAndRecommendView$4$1
   implements Runnable
 {
-  public TroopNotifyAndRecommendView$4$1(ahlg paramahlg) {}
+  public TroopNotifyAndRecommendView$4$1(ahpv paramahpv) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_Ahke.a(this.a.a.jdField_a_of_type_JavaUtilList);
-    this.a.a.jdField_a_of_type_Ahke.a = baba.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.a.a.jdField_a_of_type_Ahke.notifyDataSetChanged();
-    this.a.a.jdField_a_of_type_Alws.c = baba.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.a.a.jdField_a_of_type_Ahot.a(this.a.a.jdField_a_of_type_JavaUtilList);
+    this.a.a.jdField_a_of_type_Ahot.a = bafj.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.a.a.jdField_a_of_type_Ahot.notifyDataSetChanged();
+    this.a.a.jdField_a_of_type_Ambh.c = bafj.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (this.a.a.b) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(aljq.W, 9000, 0 - baba.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+      this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(alof.W, 9000, 0 - bafj.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
     }
   }
 }

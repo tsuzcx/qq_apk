@@ -1,60 +1,18 @@
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.BlockingQueue;
+import com.tencent.mobileqq.widget.GifAnimationDrawable;
+import java.lang.ref.WeakReference;
 
 public class bepz
   extends Handler
 {
-  private long a = 0L;
+  private final WeakReference<GifAnimationDrawable> a;
   
-  private bepz(Looper paramLooper)
+  public bepz(GifAnimationDrawable paramGifAnimationDrawable)
   {
-    super(paramLooper);
-  }
-  
-  private void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQToast", 2, "scheduleNextToast to " + paramLong);
-    }
-    removeMessages(1);
-    sendEmptyMessageDelayed(1, paramLong);
-  }
-  
-  private void a(bepy parambepy)
-  {
-    long l2 = 0L;
-    parambepy = parambepy.a();
-    long l1;
-    int i;
-    if (parambepy != null)
-    {
-      parambepy.a();
-      if (QQToast.a(parambepy) == 0)
-      {
-        l1 = 2000L;
-        this.a = (System.currentTimeMillis() + l1);
-        i = 1;
-      }
-    }
-    for (;;)
-    {
-      if (!QQToast.a().isEmpty())
-      {
-        if (i != 0) {
-          l2 = 100L + l1;
-        }
-        a(l2);
-      }
-      return;
-      l1 = 3500L;
-      break;
-      i = 0;
-      l1 = 0L;
-    }
+    super(Looper.getMainLooper());
+    this.a = new WeakReference(paramGifAnimationDrawable);
   }
   
   public void handleMessage(Message paramMessage)
@@ -62,32 +20,18 @@ public class bepz
     switch (paramMessage.what)
     {
     }
-    long l;
+    GifAnimationDrawable localGifAnimationDrawable;
     do
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQToast", 2, "MSG_SHOW_TOAST received");
-      }
-      l = System.currentTimeMillis();
-      if (l <= this.a + 100L) {
-        break;
-      }
-      paramMessage = (bepy)QQToast.a().poll();
-      if (paramMessage != null)
-      {
-        a(paramMessage);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QQToast", 2, "MSG_SHOW_TOAST but no message to show");
-    return;
-    a(this.a - l + 100L);
+      localGifAnimationDrawable = (GifAnimationDrawable)this.a.get();
+    } while (localGifAnimationDrawable == null);
+    GifAnimationDrawable.a(localGifAnimationDrawable, (bepy)paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bepz
  * JD-Core Version:    0.7.0.1
  */

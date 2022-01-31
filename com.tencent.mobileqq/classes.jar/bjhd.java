@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiFeedCommInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.upload.common.UploadConfiguration.NetworkStateObserver;
 
-public final class bjhd
-  implements Parcelable.Creator<WeishiFeedCommInfo>
+class bjhd
+  implements bjul
 {
-  public WeishiFeedCommInfo a(Parcel paramParcel)
-  {
-    return new WeishiFeedCommInfo(paramParcel);
-  }
+  bjhd(bjhc parambjhc, UploadConfiguration.NetworkStateObserver paramNetworkStateObserver) {}
   
-  public WeishiFeedCommInfo[] a(int paramInt)
+  public void onNetworkConnect(boolean paramBoolean)
   {
-    return new WeishiFeedCommInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadEnv", 2, "upload2: onNetworkConnect registerNetworkStateObserver|onNetworkConnect：" + paramBoolean);
+    }
+    bjhc.a(this.jdField_a_of_type_Bjhc, paramBoolean);
+    this.jdField_a_of_type_ComTencentUploadCommonUploadConfiguration$NetworkStateObserver.onStateChanged(paramBoolean);
   }
 }
 

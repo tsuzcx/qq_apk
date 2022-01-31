@@ -8,9 +8,9 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import bdkf;
+import bdoo;
 import dov.com.qq.im.capture.view.QIMCircleProgress;
-import xod;
+import xsm;
 
 public class AnimationQIMCircleProgress
   extends QIMCircleProgress
@@ -43,9 +43,9 @@ public class AnimationQIMCircleProgress
     this.jdField_e_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_e_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    setBackgroundResource(2130843987);
-    this.o = bdkf.a(30.0F);
-    this.p = bdkf.a(6.0F);
+    setBackgroundResource(2130844059);
+    this.o = bdoo.a(30.0F);
+    this.p = bdoo.a(6.0F);
     this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
   }
   
@@ -59,11 +59,11 @@ public class AnimationQIMCircleProgress
       super.a(paramInt);
       return;
       if (this.jdField_e_of_type_Boolean) {
-        setBackgroundResource(2130837692);
+        setBackgroundResource(2130837693);
       } else if ((paramInt != 1) && (this.d)) {
         setBackgroundDrawable(null);
       } else {
-        setBackgroundResource(2130843987);
+        setBackgroundResource(2130844059);
       }
     }
   }
@@ -99,14 +99,14 @@ public class AnimationQIMCircleProgress
     this.jdField_e_of_type_Boolean = paramBoolean;
     if (this.jdField_e_of_type_Boolean)
     {
-      setBackgroundResource(2130837692);
-      setCenterCircleColor(getResources().getColor(2131166202));
+      setBackgroundResource(2130837693);
+      setCenterCircleColor(getResources().getColor(2131166204));
     }
     for (;;)
     {
       invalidate();
       return;
-      setBackgroundResource(2130843987);
+      setBackgroundResource(2130844059);
       setCenterCircleColor(-1);
     }
   }
@@ -132,7 +132,7 @@ public class AnimationQIMCircleProgress
     {
       invalidate();
       return;
-      setBackgroundResource(2130843987);
+      setBackgroundResource(2130844059);
       setCenterCircleColor(-1);
     }
   }
@@ -144,7 +144,7 @@ public class AnimationQIMCircleProgress
   
   protected void d(Canvas paramCanvas)
   {
-    int i = xod.a(getContext(), 3.0F);
+    int i = xsm.a(getContext(), 3.0F);
     Color.parseColor("#33000000");
     float f1 = this.i / 2;
     float f2 = this.i / 2;
@@ -158,8 +158,8 @@ public class AnimationQIMCircleProgress
   public void setCenterView()
   {
     super.setCenterView();
-    this.m = bdkf.a(3.0F);
-    this.n = (bdkf.a(53.0F) / 2);
+    this.m = bdoo.a(3.0F);
+    this.n = (bdoo.a(53.0F) / 2);
   }
   
   public void setDrawCenterCircle(boolean paramBoolean)
@@ -181,7 +181,7 @@ public class AnimationQIMCircleProgress
     {
       invalidate();
       return;
-      setBackgroundResource(2130843987);
+      setBackgroundResource(2130844059);
     }
   }
 }

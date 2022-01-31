@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import arkd;
+import arom;
 
 public class SimpleFileViewer$GestureRelativeLayout
   extends RelativeLayout
@@ -20,7 +20,7 @@ public class SimpleFileViewer$GestureRelativeLayout
   public SimpleFileViewer$GestureRelativeLayout(SimpleFileViewer paramSimpleFileViewer, Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new arkd(this, null));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new arom(this, null));
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)

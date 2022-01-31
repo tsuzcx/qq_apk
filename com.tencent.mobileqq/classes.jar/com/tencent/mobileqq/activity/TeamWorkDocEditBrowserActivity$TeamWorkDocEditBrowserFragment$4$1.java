@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import advz;
+import aeao;
 
 public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$4$1
   implements Runnable
 {
-  public TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$4$1(advz paramadvz) {}
+  public TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$4$1(aeao paramaeao) {}
   
   public void run()
   {

@@ -1,21 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.ExpandableListView;
-
-class aqja
-  implements View.OnClickListener
+public abstract interface aqja
 {
-  aqja(aqiz paramaqiz, int paramInt) {}
-  
-  public void onClick(View paramView)
-  {
-    if (aqiz.a(this.jdField_a_of_type_Aqiz).c(this.jdField_a_of_type_Int))
-    {
-      aqiz.a(this.jdField_a_of_type_Aqiz).b(this.jdField_a_of_type_Int);
-      return;
-    }
-    aqiz.a(this.jdField_a_of_type_Aqiz).a(this.jdField_a_of_type_Int);
-  }
+  public abstract void a(aqda paramaqda);
 }
 
 

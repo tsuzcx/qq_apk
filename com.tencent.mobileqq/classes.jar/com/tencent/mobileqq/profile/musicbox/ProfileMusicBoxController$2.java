@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.profile.musicbox;
 
-import awon;
-import awop;
+import awsw;
+import awsy;
 
 public class ProfileMusicBoxController$2
   implements Runnable
 {
-  public ProfileMusicBoxController$2(awon paramawon) {}
+  public ProfileMusicBoxController$2(awsw paramawsw) {}
   
   public void run()
   {
-    if (awon.a(this.this$0) != null) {
-      awon.a(this.this$0).a(2);
+    if (awsw.a(this.this$0) != null) {
+      awsw.a(this.this$0).a(2);
     }
     this.this$0.j();
   }

@@ -7,22 +7,22 @@ import com.tencent.common.app.BaseApplicationImpl;
 import java.io.IOException;
 import java.util.Map;
 import ndd;
-import xzf;
-import yjq;
+import ydo;
+import yod;
 
 public class SubscribeShareHelper$4
   implements Runnable
 {
-  public SubscribeShareHelper$4(yjq paramyjq, Map paramMap, Runnable paramRunnable) {}
+  public SubscribeShareHelper$4(yod paramyod, Map paramMap, Runnable paramRunnable) {}
   
   public void run()
   {
     try
     {
-      if (yjq.a(this.this$0) == null) {
+      if (yod.a(this.this$0) == null) {
         return;
       }
-      localObject = ndd.a(BaseApplicationImpl.getContext(), yjq.a(this.this$0).e(), "GET", null, null);
+      localObject = ndd.a(BaseApplicationImpl.getContext(), yod.a(this.this$0).e(), "GET", null, null);
       if (localObject == null) {
         break label132;
       }

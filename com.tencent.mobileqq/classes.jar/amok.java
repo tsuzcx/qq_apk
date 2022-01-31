@@ -1,37 +1,17 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-class amok
-  implements MediaPlayer.OnPreparedListener
+final class amok
+  implements DialogInterface.OnDismissListener
 {
-  amok(amof paramamof) {}
-  
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMusicController", 2, "load bg music success. : " + amof.b(this.a));
-      }
-      this.a.a.seekTo(0);
-      amof.b(this.a, true);
-      if (amof.b(this.a))
-      {
-        this.a.a.start();
-        amof.c(this.a, false);
-      }
-      return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      paramMediaPlayer.printStackTrace();
-    }
+    amoj.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amok
  * JD-Core Version:    0.7.0.1
  */

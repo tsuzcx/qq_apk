@@ -1,27 +1,14 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aujx
-  implements bhsx
+class aujx
+  implements DialogInterface.OnClickListener
 {
-  public aujx(MultiCardRootLayout paramMultiCardRootLayout) {}
+  aujx(aujr paramaujr) {}
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramMotionEvent.getActionMasked();
-    if (MultiCardRootLayout.a(this.a) != null)
-    {
-      aujz localaujz = (aujz)MultiCardRootLayout.a(this.a).get();
-      if ((localaujz != null) && (localaujz.a(i))) {
-        return true;
-      }
-    }
-    if (MultiCardRootLayout.a(this.a) != null) {
-      MultiCardRootLayout.a(this.a).onTouchEvent(paramMotionEvent);
-    }
-    return false;
+    paramDialogInterface.dismiss();
   }
 }
 

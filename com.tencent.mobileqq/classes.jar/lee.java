@@ -10,7 +10,7 @@ public class lee
   extends WebViewPlugin
   implements lec
 {
-  private beat jdField_a_of_type_Beat;
+  private befc jdField_a_of_type_Befc;
   private boolean jdField_a_of_type_Boolean;
   
   public lee()
@@ -27,24 +27,24 @@ public class lee
       if (QLog.isColorLevel()) {
         QLog.d("AioShareMusic.AioShareMusicPlugin", 2, "onEvent（） actionType =" + paramString + " data = " + paramJSONObject.toString());
       }
-      if (this.jdField_a_of_type_Beat == null) {
-        this.jdField_a_of_type_Beat = new beat(this.mRuntime.a());
+      if (this.jdField_a_of_type_Befc == null) {
+        this.jdField_a_of_type_Befc = new befc(this.mRuntime.a());
       }
       if ("checkAioShareMusic".equals(paramString))
       {
-        this.jdField_a_of_type_Beat.a(paramJSONObject);
+        this.jdField_a_of_type_Befc.a(paramJSONObject);
         return;
       }
       if ("startListenAioShareMusic".equals(paramString))
       {
-        this.jdField_a_of_type_Beat.b(paramJSONObject);
+        this.jdField_a_of_type_Befc.b(paramJSONObject);
         return;
       }
       if ("updateSongIdToAioShareMusic".equals(paramString)) {
         try
         {
           paramString = paramJSONObject.getString("current_song_id");
-          this.jdField_a_of_type_Beat.a = paramString;
+          this.jdField_a_of_type_Befc.a = paramString;
           if (QLog.isColorLevel())
           {
             QLog.d("AioShareMusicAioShareMusic.AioShareMusicPlugin", 2, "updateSongId() newSongId = " + paramString);
@@ -64,8 +64,8 @@ public class lee
     if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a() == null)) {
       return true;
     }
-    if (this.jdField_a_of_type_Beat == null) {
-      this.jdField_a_of_type_Beat = new beat(this.mRuntime.a());
+    if (this.jdField_a_of_type_Befc == null) {
+      this.jdField_a_of_type_Befc = new befc(this.mRuntime.a());
     }
     if (QLog.isColorLevel()) {
       QLog.d("AioShareMusicAioShareMusic.AioShareMusicPlugin", 2, "handleEvent() type = " + paramLong);
@@ -75,7 +75,7 @@ public class lee
       if (!this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Beat.a(this.mRuntime.a().getIntent());
+        this.jdField_a_of_type_Befc.a(this.mRuntime.a().getIntent());
         return true;
       }
     }
@@ -85,7 +85,7 @@ public class lee
       if ((localObject != null) && ((localObject instanceof Intent)))
       {
         paramString = (Intent)localObject;
-        this.jdField_a_of_type_Beat.b(paramString);
+        this.jdField_a_of_type_Befc.b(paramString);
         return true;
       }
     }
@@ -101,10 +101,10 @@ public class lee
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Beat != null)
+    if (this.jdField_a_of_type_Befc != null)
     {
-      this.jdField_a_of_type_Beat.a();
-      this.jdField_a_of_type_Beat = null;
+      this.jdField_a_of_type_Befc.a();
+      this.jdField_a_of_type_Befc = null;
     }
     lea.a().a();
   }

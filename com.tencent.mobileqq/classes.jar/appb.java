@@ -1,22 +1,35 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.IPSiteModel.Game;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
 class appb
-  implements View.OnClickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  appb(apox paramapox, IPSiteModel.Game paramGame, String paramString1, String paramString2) {}
+  appb(appa paramappa) {}
   
-  public void onClick(View paramView)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    paramView = new Intent(this.jdField_a_of_type_Apox.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Apox.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Game.jumpUrl, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Apox.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_gameclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) && (this.a.d != -1)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setTapPos(this.a.d);
+    }
+    return false;
+  }
+  
+  public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) || (Math.abs(paramFloat1) <= Math.abs(paramFloat2)) || (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c()) || (this.a.c) || (Math.abs(paramFloat1) <= this.a.jdField_a_of_type_Float) || ((paramFloat1 < 0.0F) && (this.a.jdField_a_of_type_Int == 2))) {}
+    while ((paramFloat1 > 0.0F) && (this.a.jdField_a_of_type_Int == 1)) {
+      return false;
+    }
+    int i = this.a.d;
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setSrcPos(i);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c();
+    return false;
   }
 }
 

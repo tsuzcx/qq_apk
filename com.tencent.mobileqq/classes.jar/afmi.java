@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import com.tencent.mobileqq.data.MessageForFile;
 
-final class afmi
-  implements afpr
+class afmi
+  implements bezx
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  afmi(afmf paramafmf, MessageForFile paramMessageForFile, Context paramContext) {}
+  
+  public void a(int paramInt)
   {
-    if (asnx.a(paramQQAppInterface).a()) {
-      return 78;
-    }
-    return 0;
+    arrr.a(this.jdField_a_of_type_Afmf.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

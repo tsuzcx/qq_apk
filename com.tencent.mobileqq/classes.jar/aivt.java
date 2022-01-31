@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 
 public class aivt
+  implements View.OnClickListener
 {
-  public bdvu a;
-  public PreloadModule a;
-  public PreloadResource a;
+  public aivt(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public aivt(PreloadResource paramPreloadResource, PreloadModule paramPreloadModule, bdvu parambdvu)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource = paramPreloadResource;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule = paramPreloadModule;
-    this.jdField_a_of_type_Bdvu = parambdvu;
+    this.a.b.setVisibility(8);
+    this.a.a.setVisibility(8);
+    RedPacketKSongFragment.a(this.a);
   }
 }
 

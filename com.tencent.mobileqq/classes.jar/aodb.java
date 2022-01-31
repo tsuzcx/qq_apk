@@ -1,31 +1,68 @@
-import SummaryCard.CondFitUser;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aodb
-  implements allp
+  implements aocw
 {
-  public aodb(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
-  
-  public void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
+  public void a(Context paramContext, ColorNote paramColorNote)
   {
-    this.a.a();
-    if (paramInt != 1) {
-      return;
-    }
-    if (!paramBoolean1)
+    Object localObject1 = paramColorNote.getSubType();
+    if (((String)localObject1).startsWith("qzone_detail")) {}
+    do
     {
-      QQToast.a(this.a, 2131691069, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if ((paramList == null) || (paramList.isEmpty()))
+      try
+      {
+        Object localObject2 = new JSONObject(new String(paramColorNote.getReserve()));
+        int i = ((JSONObject)localObject2).getInt("appid");
+        paramColorNote = ((JSONObject)localObject2).getString("cellid");
+        localObject1 = ((JSONObject)localObject2).getString("subid");
+        long l = ((JSONObject)localObject2).getLong("uin");
+        ((JSONObject)localObject2).getString("source");
+        boolean bool = ((JSONObject)localObject2).getBoolean("mIsFromKuolie");
+        String str = ((JSONObject)localObject2).getString("mainTitle");
+        localObject2 = ((JSONObject)localObject2).getString("subType");
+        Bundle localBundle = new Bundle();
+        localBundle.putBoolean("req_from_kuolie", bool);
+        localBundle.putString("mainTitle", str);
+        localBundle.putString("subType", (String)localObject2);
+        bjdt.a(paramContext, bjea.a(), Long.valueOf(l).toString(), i + "", paramColorNote, (String)localObject1, 0, localBundle, true, true);
+        return;
+      }
+      catch (JSONException paramContext)
+      {
+        QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
+        return;
+      }
+      if (((String)localObject1).startsWith("qzone_userhome")) {
+        try
+        {
+          paramColorNote = new JSONObject(new String(paramColorNote.getReserve())).getString("visitUin");
+          bjdt.a(paramContext, bjea.a(), paramColorNote, 0, 0, 0, null, null, true);
+          return;
+        }
+        catch (JSONException paramContext)
+        {
+          QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
+          return;
+        }
+      }
+    } while (!((String)localObject1).startsWith("qzone_famous_userhome"));
+    try
     {
-      QQToast.a(this.a, 2131691072, 0).b(this.a.getTitleBarHeight());
+      localObject1 = new JSONObject(new String(paramColorNote.getReserve()));
+      paramColorNote = ((JSONObject)localObject1).getString("visitUin");
+      localObject1 = ((JSONObject)localObject1).getString("webviewUrl");
+      bjdt.a(paramContext, bjea.a(), paramColorNote, 0, 0, null, (String)localObject1, true);
       return;
     }
-    SearchResultActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Allj.b(), this.a.jdField_a_of_type_Allj.c(), this.a.e, this.a.d, paramList, paramBoolean2);
+    catch (JSONException paramContext)
+    {
+      QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
+    }
   }
 }
 

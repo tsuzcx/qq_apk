@@ -1,235 +1,121 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.LinearGradient;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.Shader.TileMode;
 import java.util.ArrayList;
 
 public class atwp
-  implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private atwq jdField_a_of_type_Atwq;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Switch jdField_a_of_type_ComTencentWidgetSwitch;
-  private ArrayList<Button> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private Button b;
-  private Button c;
-  private Button d;
-  private Button e;
+  public final int a;
+  public atwo a;
+  public final String a;
+  public final ArrayList<atwk> a;
+  public final int b;
+  public atwo b;
+  public final int c;
+  private final int d;
   
-  public atwp(Context paramContext, QQAppInterface paramQQAppInterface, atwq paramatwq)
+  public atwp(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ArrayList<atwk> paramArrayList)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Atwq = paramatwq;
-    d();
+    this.jdField_a_of_type_Atwo = new atwo();
+    this.jdField_b_of_type_Atwo = new atwo();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.jdField_b_of_type_Int = paramInt3;
+    this.c = paramInt4;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
   
-  private void a(int paramInt)
+  public atwp(String paramString, int paramInt1, int paramInt2, ArrayList<atwk> paramArrayList)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    this.jdField_a_of_type_Atwo = new atwo();
+    this.jdField_b_of_type_Atwo = new atwo();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.jdField_b_of_type_Int = 0;
+    this.c = 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public long a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      return ((atwk)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long;
+    }
+    return 0L;
+  }
+  
+  public void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint1, Paint paramPaint2)
+  {
+    a(paramCanvas, paramInt1, paramInt2, paramPaint1, paramPaint2, null, null, 1);
+  }
+  
+  public void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint1, Paint paramPaint2, Bitmap paramBitmap1, Bitmap paramBitmap2, int paramInt3)
+  {
+    paramInt1 = this.jdField_a_of_type_Int + paramInt1;
+    if ((this.jdField_a_of_type_Atwo != null) && (this.jdField_a_of_type_Atwo.a != null) && (!this.jdField_a_of_type_Atwo.a.isRecycled()))
     {
-      int i = 0;
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      paramBitmap1 = new Rect(paramInt1 - this.jdField_a_of_type_Atwo.c - this.jdField_a_of_type_Atwo.a.getWidth(), (int)(paramInt2 - paramPaint1.getTextSize()), paramInt1 - this.jdField_a_of_type_Atwo.c, (int)(this.jdField_a_of_type_Atwo.a.getHeight() + paramInt2 - paramPaint1.getTextSize()));
+      paramCanvas.drawBitmap(this.jdField_a_of_type_Atwo.a, null, paramBitmap1, null);
+    }
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 - paramInt3, paramInt2 - paramInt3, paramPaint2);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1, paramInt2 - paramInt3, paramPaint2);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 + paramInt3, paramInt2 - paramInt3, paramPaint2);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 + paramInt3, paramInt2, paramPaint2);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 + paramInt3, paramInt2 + paramInt3, paramPaint2);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1, paramInt2 + paramInt3, paramPaint2);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 - paramInt3, paramInt2 + paramInt3, paramPaint2);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 - paramInt3, paramInt2, paramPaint2);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1, paramInt2, paramPaint1);
+  }
+  
+  public void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint1, Paint paramPaint2, Paint paramPaint3, int paramInt3, float paramFloat1, float paramFloat2, int[] paramArrayOfInt, float[] paramArrayOfFloat)
+  {
+    int i = this.d;
+    paramFloat2 += this.d;
+    paramPaint3.setShader(new LinearGradient(paramFloat2, paramInt2, paramFloat2 + paramFloat1, paramInt2, paramArrayOfInt, paramArrayOfFloat, Shader.TileMode.CLAMP));
+    if (paramInt3 > 0)
+    {
+      paramArrayOfInt = (atwk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt3 - 1);
+      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString.substring(0, paramArrayOfInt.jdField_b_of_type_Int), paramInt1 + i, paramInt2, paramPaint2);
+    }
+    paramPaint2 = (atwk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt3);
+    if (paramInt3 == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {}
+    for (paramPaint2 = this.jdField_a_of_type_JavaLangString.substring(paramPaint2.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString.length());; paramPaint2 = this.jdField_a_of_type_JavaLangString.substring(paramPaint2.jdField_a_of_type_Int, paramPaint2.jdField_b_of_type_Int))
+    {
+      paramCanvas.drawText(paramPaint2, paramFloat2, paramInt2, paramPaint3);
+      if (paramInt3 < this.jdField_a_of_type_JavaUtilArrayList.size() - 1)
       {
-        Button localButton = (Button)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if (localButton != null)
-        {
-          if ((localButton.getTag() == null) || (!(localButton.getTag() instanceof Integer)) || (paramInt != ((Integer)localButton.getTag()).intValue())) {
-            break label85;
-          }
-          a(true, localButton);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          label85:
-          a(false, localButton);
-        }
+        paramPaint2 = (atwk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt3 + 1);
+        paramCanvas.drawText(this.jdField_a_of_type_JavaLangString.substring(paramPaint2.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString.length()), paramFloat2 + paramFloat1, paramInt2, paramPaint1);
       }
+      return;
     }
   }
   
-  private void d()
+  public void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560930, null);
-    View localView;
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if (paramBoolean) {}
+    for (int i = this.d;; i = this.jdField_a_of_type_Int)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366351));
-      localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365354);
-      if (!ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-        break label313;
-      }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844664);
-      localView.setBackgroundColor(-14540254);
+      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, i + paramInt1, paramInt2, paramPaint);
+      return;
     }
-    for (;;)
+  }
+  
+  public long b()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364018));
-      this.jdField_a_of_type_AndroidWidgetButton.setTag(Integer.valueOf(0));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidWidgetButton);
-      this.c = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363443));
-      this.c.setTag(Integer.valueOf(1));
-      this.c.setOnClickListener(this);
-      this.jdField_a_of_type_JavaUtilArrayList.add(this.c);
-      this.b = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131367225));
-      this.b.setTag(Integer.valueOf(2));
-      this.b.setOnClickListener(this);
-      this.jdField_a_of_type_JavaUtilArrayList.add(this.b);
-      this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)this.jdField_a_of_type_AndroidViewView.findViewById(2131377262));
-      this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this);
-      this.d = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363907));
-      this.d.setOnClickListener(this);
-      this.e = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131377229));
-      this.e.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131368555).setOnClickListener(this);
-      a();
-      return;
-      label313:
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844663);
-      localView.setBackgroundColor(-1315339);
+      atwk localatwk = (atwk)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+      long l = localatwk.jdField_a_of_type_Long;
+      return localatwk.jdField_b_of_type_Long + l;
     }
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
-    {
-      QLog.e("MatchChatFilterFragment", 2, "Save Seting but bull mApp");
-      return;
-    }
-    aqbb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int);
-    boolean bool = aqbb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).booleanValue();
-    if (this.jdField_a_of_type_Boolean != bool) {
-      if (this.jdField_a_of_type_Boolean) {
-        break label142;
-      }
-    }
-    label142:
-    for (int i = 1;; i = 0)
-    {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A690", "0X800A690", i, 0, "", "", "", "");
-      apwv localapwv = (apwv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127);
-      if (localapwv == null) {
-        break;
-      }
-      localapwv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_a_of_type_Boolean);
-      return;
-      QLog.i("MatchChatFilterFragment", 2, "saveSetting getMatchSwitchOpenFromSp unchanged " + bool);
-      return;
-    }
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a()
-  {
-    boolean bool = aqbb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).booleanValue();
-    int i = aqbb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    a(bool);
-    a(i);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_ComTencentWidgetSwitch != null) {
-      this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(paramBoolean);
-    }
-  }
-  
-  public void a(boolean paramBoolean, Button paramButton)
-  {
-    if (paramBoolean)
-    {
-      paramButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837723));
-      paramButton.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167192));
-      return;
-    }
-    paramButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839141));
-    paramButton.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166934));
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if ((paramInt == 0) || (paramInt == 2) || (paramInt == 1))
-    {
-      a(paramInt);
-      return true;
-    }
-    QLog.e("MatchChatFilterFragment", 2, "unknown sextype" + paramInt);
-    return false;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Atwq != null) {
-      this.jdField_a_of_type_Atwq.g();
-    }
-  }
-  
-  public void c()
-  {
-    QLog.d("TAG", 2, "filterContentView onDestroy");
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  }
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131363443: 
-    case 2131364018: 
-    case 2131367225: 
-      Object localObject = paramView.getTag();
-      if ((localObject != null) && ((localObject instanceof Integer)))
-      {
-        a(((Integer)localObject).intValue());
-        return;
-      }
-      QLog.e("MatchChatFilterFragment", 2, "click unknown sex type tag button :" + paramView.getId());
-      return;
-    case 2131377229: 
-      e();
-      b();
-      return;
-    case 2131363907: 
-    case 2131368555: 
-      QLog.d("MatchChatFilterFragment", 2, "cancel filter");
-      b();
-      return;
-    }
-    QLog.d("MatchChatFilterFragment", 2, "filter_content click");
+    return 0L;
   }
 }
 

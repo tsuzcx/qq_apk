@@ -1,19 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aduq
-  implements DialogInterface.OnKeyListener
+  extends MqqHandler
 {
-  public aduq(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  public aduq(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 4) {
-      this.a.finish();
+    switch (paramMessage.what)
+    {
     }
-    return false;
+    do
+    {
+      return;
+      this.a.finish();
+      return;
+      paramMessage = (String)paramMessage.obj;
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        RegisterPhoneNumActivity.a(this.a).a(paramMessage);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
   }
 }
 

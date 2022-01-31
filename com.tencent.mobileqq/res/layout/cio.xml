@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.subscribe.widget.ShadowCardView android:id="@id/idg" android:layout_width="wrap_content" android:layout_height="wrap_content" app:shadowBlur="16.0dip" app:shadowBottomHeight="5.0dip" app:shadowCardColor="#ffebecf0" app:shadowCardOffsetX="5.0dip" app:shadowCardOffsetY="5.0dip" app:shadowHeightColor="#99a6abbd" app:shadowRightHeight="5.0dip" app:shadowRound="5.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView android:id="@id/lnn" android:layout_width="fill_parent" android:layout_height="126.0dip" android:layout_marginBottom="6.0dip" android:scaleType="centerCrop" app:round_radius="5.0dip" />
-        <TextView android:textSize="10.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center" android:id="@id/mr6" android:background="@drawable/bjn" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="wrap_content" android:layout_height="15.0dip" android:layout_marginLeft="6.0dip" android:layout_marginBottom="6.0dip" android:text="咖啡店外" android:maxLines="1" android:layout_alignBottom="@id/lnn" />
-        <com.tencent.biz.subscribe.widget.textview.AsyncRichTextView android:textSize="12.0dip" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/mck" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginRight="7.0dip" android:maxLines="2" android:layout_below="@id/lnn" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="7.0dip" android:layout_below="@id/mck">
-            <com.tencent.mobileqq.widget.SquareImageView android:id="@id/ln7" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/com" android:scaleType="fitXY" app:round_radius="24.0dip" />
-            <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/mbu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:maxWidth="80.0dip" android:maxLines="1" />
-            <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
-            <com.tencent.biz.qqcircle.widgets.QCirclePraiseImageView android:id="@id/loa" android:layout_width="37.0dip" android:layout_height="37.0dip" />
-            <com.tencent.biz.qqcircle.widgets.QCirclePraiseTextView android:textSize="12.0dip" android:textColor="@color/bp" android:id="@id/mch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-        </LinearLayout>
-    </RelativeLayout>
-</com.tencent.biz.subscribe.widget.ShadowCardView>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0sp" android:textColor="#ff989eb4" android:gravity="center" android:id="@id/mh8" android:background="@drawable/bk4" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="5.0dip" android:drawableLeft="@drawable/eb7" android:drawablePadding="1.0dip" />
+</FrameLayout>

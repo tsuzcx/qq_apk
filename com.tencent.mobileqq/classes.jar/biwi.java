@@ -1,37 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqreader.net.BaseCgiTask;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.RemoteException;
+import cooperation.qqfav.ipc.QfavRemoteProxyForQQ.1;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class biwi
 {
-  private BaseCgiTask jdField_a_of_type_CooperationQqreaderNetBaseCgiTask;
-  private String jdField_a_of_type_JavaLangString;
+  protected biwf a;
+  public ConcurrentLinkedQueue<biwk> a;
+  protected boolean a;
   
-  public biwi(BaseCgiTask paramBaseCgiTask, String paramString)
+  private void a(biwk parambiwk)
   {
-    this.jdField_a_of_type_CooperationQqreaderNetBaseCgiTask = paramBaseCgiTask;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public JSONObject a()
-  {
-    JSONObject localJSONObject1 = new JSONObject();
+    if ((this.a != null) && (parambiwk != null))
+    {
+      Looper localLooper = Looper.getMainLooper();
+      if (Thread.currentThread() != localLooper.getThread()) {
+        new Handler(localLooper).post(new QfavRemoteProxyForQQ.1(this, parambiwk));
+      }
+    }
+    else
+    {
+      return;
+    }
     try
     {
-      JSONObject localJSONObject2 = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      return localJSONObject2;
+      this.a.a(parambiwk.jdField_a_of_type_Int, parambiwk.jdField_a_of_type_AndroidOsBundle);
+      return;
     }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("ReaderCgiResponse", 2, "json format error", localJSONException);
-    }
-    return localJSONObject1;
+    catch (RemoteException parambiwk) {}
   }
 }
 

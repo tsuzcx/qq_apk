@@ -1,17 +1,9 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.view.View;
+import java.util.List;
 
 public abstract interface ajlk
 {
-  public abstract String a();
-  
-  public abstract void a(Activity paramActivity);
-  
-  public abstract void a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(Activity paramActivity, Intent paramIntent);
-  
-  public abstract void d_(String paramString);
+  public abstract List<View> a();
 }
 
 

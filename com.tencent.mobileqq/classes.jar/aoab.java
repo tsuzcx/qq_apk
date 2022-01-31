@@ -1,81 +1,249 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import java.lang.ref.WeakReference;
+import java.util.WeakHashMap;
 
-public class aoab
+public final class aoab
+  extends Animation
 {
-  private int a(ColorNote paramColorNote)
+  static final WeakHashMap<View, aoab> jdField_a_of_type_JavaUtilWeakHashMap;
+  public static final boolean a;
+  float jdField_a_of_type_Float = 1.0F;
+  final Camera jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+  final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  float jdField_b_of_type_Float;
+  final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+  boolean jdField_b_of_type_Boolean;
+  float c;
+  float d;
+  float e;
+  float f;
+  float g = 1.0F;
+  float h = 1.0F;
+  float i;
+  float j;
+  
+  static
   {
-    switch (anyi.a(paramColorNote.getServiceType()) & 0xFFFF0000)
+    if (Integer.valueOf(Build.VERSION.SDK_INT).intValue() < 11) {}
+    for (boolean bool = true;; bool = false)
     {
-    default: 
-      return 2130843909;
-    case 16973824: 
-      return 2130843854;
-    case 17039360: 
-      return 2130839044;
-    case 16842752: 
-      return 2130839045;
-    case 16908288: 
-      return 2130839046;
+      jdField_a_of_type_Boolean = bool;
+      jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
+      return;
     }
-    return 2130843691;
   }
   
-  private Drawable a(Context paramContext, ColorNote paramColorNote)
+  private aoab(View paramView)
   {
-    paramContext = paramContext.getResources();
-    int i = a(paramColorNote);
-    try
+    setDuration(0L);
+    setFillAfter(true);
+    paramView.setAnimation(this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+  }
+  
+  public static aoab a(View paramView)
+  {
+    aoab localaoab2 = (aoab)jdField_a_of_type_JavaUtilWeakHashMap.get(paramView);
+    aoab localaoab1;
+    if (localaoab2 != null)
     {
-      paramColorNote = new URL(paramColorNote.getPicUrl());
-      boolean bool = "resdrawable".equals(paramColorNote.getProtocol());
-      if (bool) {
-        try
-        {
-          paramColorNote = paramContext.getDrawable(Integer.parseInt(paramColorNote.getHost()));
-          return paramColorNote;
-        }
-        catch (NumberFormatException paramColorNote)
-        {
-          return paramContext.getDrawable(i);
-        }
+      localaoab1 = localaoab2;
+      if (localaoab2 == paramView.getAnimation()) {}
+    }
+    else
+    {
+      localaoab1 = new aoab(paramView);
+      jdField_a_of_type_JavaUtilWeakHashMap.put(paramView, localaoab1);
+    }
+    return localaoab1;
+  }
+  
+  private void a()
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localView != null) {
+      a(this.jdField_a_of_type_AndroidGraphicsRectF, localView);
+    }
+  }
+  
+  private void a(Matrix paramMatrix, View paramView)
+  {
+    float f3 = paramView.getWidth();
+    float f4 = paramView.getHeight();
+    boolean bool = this.jdField_b_of_type_Boolean;
+    float f1;
+    if (bool)
+    {
+      f1 = this.jdField_b_of_type_Float;
+      if (!bool) {
+        break label226;
       }
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = aekt.a(40.0F, paramContext);
-      localURLDrawableOptions.mRequestHeight = aekt.a(40.0F, paramContext);
-      localURLDrawableOptions.mLoadingDrawable = paramContext.getDrawable(i);
-      localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
-      paramColorNote = URLDrawable.getDrawable(paramColorNote, localURLDrawableOptions);
-      return paramColorNote;
     }
-    catch (MalformedURLException paramColorNote)
+    label226:
+    for (float f2 = this.c;; f2 = f4 / 2.0F)
     {
-      paramContext = paramContext.getDrawable(i);
-      QLog.e("DefaultFormItemBuilder", 1, paramColorNote, new Object[0]);
-      return paramContext;
+      float f5 = this.d;
+      float f6 = this.e;
+      float f7 = this.f;
+      if ((f5 != 0.0F) || (f6 != 0.0F) || (f7 != 0.0F))
+      {
+        paramView = this.jdField_a_of_type_AndroidGraphicsCamera;
+        paramView.save();
+        paramView.rotateX(f5);
+        paramView.rotateY(f6);
+        paramView.rotateZ(-f7);
+        paramView.getMatrix(paramMatrix);
+        paramView.restore();
+        paramMatrix.preTranslate(-f1, -f2);
+        paramMatrix.postTranslate(f1, f2);
+      }
+      f5 = this.g;
+      f6 = this.h;
+      if ((f5 != 1.0F) || (f6 != 1.0F))
+      {
+        paramMatrix.postScale(f5, f6);
+        paramMatrix.postTranslate(-(f1 / f3) * (f5 * f3 - f3), -(f2 / f4) * (f6 * f4 - f4));
+      }
+      paramMatrix.postTranslate(this.i, this.j);
+      return;
+      f1 = f3 / 2.0F;
+      break;
     }
-    catch (NullPointerException paramColorNote)
-    {
-      paramContext = paramContext.getDrawable(i);
-      QLog.e("DefaultFormItemBuilder", 1, paramColorNote, new Object[0]);
-    }
-    return paramContext;
   }
   
-  public HistoryFormItem a(Context paramContext, ColorNote paramColorNote)
+  private void b()
   {
-    HistoryFormItem localHistoryFormItem = new HistoryFormItem(paramContext);
-    localHistoryFormItem.setLeftText(paramColorNote.getMainTitle());
-    localHistoryFormItem.setLeftIcon(a(paramContext, paramColorNote), paramContext.getResources().getDimensionPixelSize(2131298700), paramContext.getResources().getDimensionPixelSize(2131298699));
-    return localHistoryFormItem;
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localView == null) || (localView.getParent() == null)) {
+      return;
+    }
+    RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+    a(localRectF, localView);
+    localRectF.union(this.jdField_a_of_type_AndroidGraphicsRectF);
+    ((View)localView.getParent()).invalidate((int)Math.floor(localRectF.left), (int)Math.floor(localRectF.top), (int)Math.ceil(localRectF.right), (int)Math.ceil(localRectF.bottom));
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (this.jdField_a_of_type_Float != paramFloat)
+    {
+      this.jdField_a_of_type_Float = paramFloat;
+      View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localView != null) {
+        localView.invalidate();
+      }
+    }
+  }
+  
+  public void a(RectF paramRectF, View paramView)
+  {
+    paramRectF.set(0.0F, 0.0F, paramView.getWidth(), paramView.getHeight());
+    Matrix localMatrix = this.jdField_a_of_type_AndroidGraphicsMatrix;
+    localMatrix.reset();
+    a(localMatrix, paramView);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(paramRectF);
+    paramRectF.offset(paramView.getLeft(), paramView.getTop());
+    float f1;
+    if (paramRectF.right < paramRectF.left)
+    {
+      f1 = paramRectF.right;
+      paramRectF.right = paramRectF.left;
+      paramRectF.left = f1;
+    }
+    if (paramRectF.bottom < paramRectF.top)
+    {
+      f1 = paramRectF.top;
+      paramRectF.top = paramRectF.bottom;
+      paramRectF.bottom = f1;
+    }
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localView != null)
+    {
+      paramTransformation.setAlpha(this.jdField_a_of_type_Float);
+      a(paramTransformation.getMatrix(), localView);
+    }
+  }
+  
+  public void b(float paramFloat)
+  {
+    if ((!this.jdField_b_of_type_Boolean) || (this.jdField_b_of_type_Float != paramFloat))
+    {
+      a();
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_b_of_type_Float = paramFloat;
+      b();
+    }
+  }
+  
+  public void c(float paramFloat)
+  {
+    if ((!this.jdField_b_of_type_Boolean) || (this.c != paramFloat))
+    {
+      a();
+      this.jdField_b_of_type_Boolean = true;
+      this.c = paramFloat;
+      b();
+    }
+  }
+  
+  public void d(float paramFloat)
+  {
+    if (this.g != paramFloat)
+    {
+      a();
+      this.g = paramFloat;
+      b();
+    }
+  }
+  
+  public void e(float paramFloat)
+  {
+    if (this.h != paramFloat)
+    {
+      a();
+      this.h = paramFloat;
+      b();
+    }
+  }
+  
+  public void f(float paramFloat)
+  {
+    if (this.i != paramFloat)
+    {
+      a();
+      this.i = paramFloat;
+      b();
+    }
+  }
+  
+  public void g(float paramFloat)
+  {
+    if (this.j != paramFloat)
+    {
+      a();
+      this.j = paramFloat;
+      b();
+    }
+  }
+  
+  public void h(float paramFloat)
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localView != null) {
+      f(paramFloat - localView.getLeft());
+    }
   }
 }
 

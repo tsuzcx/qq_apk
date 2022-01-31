@@ -1,61 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity.16.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class acxn
-  extends BroadcastReceiver
+  extends alog
 {
-  public acxn(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public acxn(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    String str1 = paramIntent.getStringExtra("event");
-    if ((TroopInfo.isHomeworkTroop(this.a.app, this.a.a)) && ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) && ("onHomeworkTroopIdentityChanged".equals(str1)))
+    switch (paramInt)
     {
-      paramContext = paramIntent.getStringExtra("data");
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label67;
-      }
     }
     for (;;)
     {
-      return;
       try
       {
-        label67:
-        paramContext = new JSONObject(paramContext);
-        paramIntent = paramContext.optString("groupCode");
-        if (TextUtils.equals(this.a.a, paramIntent))
-        {
-          paramContext.optString("content");
-          paramIntent = paramContext.optString("source");
-          int i = paramContext.optInt("rankId", 333);
-          str1 = paramContext.optString("nickName");
-          String str2 = paramContext.optString("uin");
-          String str3 = paramContext.optString("course");
-          paramContext = paramContext.optString("name");
-          if ("qqProfile".equals(paramIntent))
-          {
-            ThreadManager.post(new FriendProfileMoreInfoActivity.16.1(this, str2, str1, i, str3, paramContext), 8, null, false);
-            return;
-          }
-        }
+        ForwardRecentActivity.g(this.a);
+        return;
       }
-      catch (JSONException paramContext) {}
+      catch (Exception localException)
+      {
+        QLog.e("ForwardOption.ForwardEntranceActivity", 1, "mInitObserver", localException);
+      }
+      this.a.a.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acxn
  * JD-Core Version:    0.7.0.1
  */

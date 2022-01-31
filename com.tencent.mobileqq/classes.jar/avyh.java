@@ -1,28 +1,30 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 
 public class avyh
-  implements Animator.AnimatorListener
+  extends FlingGestureHandler
 {
-  public avyh(ScanIconAnimateView paramScanIconAnimateView) {}
+  boolean a = true;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public avyh(Activity paramActivity)
   {
-    ScanIconAnimateView.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
+    super(paramActivity);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    this.a = paramBoolean;
+    if (!b()) {
+      a();
+    }
+    this.mTopLayout.setInterceptTouchFlag(paramBoolean);
+  }
+  
+  public void flingLToR()
+  {
+    if (this.a) {
+      super.flingLToR();
     }
   }
 }

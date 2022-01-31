@@ -1,34 +1,6 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.theme.diy.ResData;
-import java.lang.ref.WeakReference;
-
-class apmr
-  implements baks
+public class apmr
 {
-  apmr(aply paramaply) {}
-  
-  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
-  {
-    paramResData = (MessengerService)this.a.a.get();
-    Bundle localBundle;
-    if (paramResData != null)
-    {
-      localBundle = new Bundle();
-      localBundle.putString("themeId", paramBundle.getString("themeId"));
-      if (paramInt2 != 4) {
-        break label73;
-      }
-    }
-    label73:
-    for (paramInt1 = 0;; paramInt1 = -2)
-    {
-      localBundle.putInt("themeStatus", paramInt1);
-      paramBundle.putBundle("response", localBundle);
-      paramResData.a(paramBundle);
-      return 1;
-    }
-  }
+  public static final String a = alof.aW + "/Tencent/QQ_Images/";
 }
 
 

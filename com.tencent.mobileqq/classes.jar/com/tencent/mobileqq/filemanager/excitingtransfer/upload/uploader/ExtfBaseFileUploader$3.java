@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.upload.uploader;
 
-import arat;
+import arfc;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
 
 public class ExtfBaseFileUploader$3
   implements Runnable
 {
-  public ExtfBaseFileUploader$3(arat paramarat, int paramInt, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp) {}
+  public ExtfBaseFileUploader$3(arfc paramarfc, int paramInt, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp) {}
   
   public void run()
   {

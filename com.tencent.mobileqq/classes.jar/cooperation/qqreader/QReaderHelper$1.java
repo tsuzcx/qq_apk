@@ -1,6 +1,6 @@
 package cooperation.qqreader;
 
-import bivg;
+import bizn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import nbv;
 
@@ -11,7 +11,7 @@ public final class QReaderHelper$1
   
   public void run()
   {
-    nbv.b("2036", this.a, true, new bivg(this));
+    nbv.b("2036", this.a, true, new bizn(this));
   }
 }
 

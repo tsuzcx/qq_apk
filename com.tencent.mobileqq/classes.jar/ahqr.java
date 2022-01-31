@@ -1,35 +1,42 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 
 public class ahqr
-  implements Handler.Callback
+  extends RecyclerView.OnScrollListener
 {
-  public ahqr(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
+  public ahqr(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (paramMessage.what == SimpleCheckableSlidingIndicator.d)
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 0)
     {
-      if (this.a.getScrollX() == SimpleCheckableSlidingIndicator.a(this.a))
-      {
-        SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.a);
-        if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
-          SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
-        }
-        SimpleCheckableSlidingIndicator.a(this.a).removeMessages(SimpleCheckableSlidingIndicator.d);
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if ((paramRecyclerView instanceof LinearLayoutManager)) {
+        ((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition();
       }
     }
-    else {
-      return false;
+    if (this.a.jdField_a_of_type_Bdbb != null)
+    {
+      if (paramInt == 0) {
+        break label73;
+      }
+      this.a.jdField_a_of_type_Bdbb.a();
+      this.a.jdField_a_of_type_Bdbb.c();
     }
-    SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.c);
-    if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
-      SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
+    label73:
+    while (!this.a.jdField_a_of_type_Bdbb.a()) {
+      return;
     }
-    SimpleCheckableSlidingIndicator.b(this.a, this.a.getScrollX());
-    SimpleCheckableSlidingIndicator.a(this.a).sendEmptyMessageDelayed(SimpleCheckableSlidingIndicator.d, 50L);
-    return false;
+    this.a.jdField_a_of_type_Bdbb.b();
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

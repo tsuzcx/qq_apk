@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.weather;
 
-import adkz;
-import agft;
-import agfu;
-import akbr;
-import akbs;
-import akbt;
-import akbu;
-import akbv;
-import akbw;
-import akbz;
-import akca;
-import akcc;
-import alpo;
-import amhq;
-import amhy;
+import adpo;
+import agki;
+import agkj;
+import akgg;
+import akgh;
+import akgi;
+import akgj;
+import akgk;
+import akgl;
+import akgo;
+import akgp;
+import akgr;
+import alud;
+import ammf;
+import ammn;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -37,12 +37,12 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anoe;
-import apgg;
-import bdcs;
-import bdda;
-import bepp;
-import bllv;
+import ansn;
+import apkp;
+import bdhb;
+import bdhj;
+import bety;
+import blqh;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -57,12 +57,12 @@ import java.util.List;
 
 public class SessionClearFragment
   extends PublicBaseFragment
-  implements adkz
+  implements adpo
 {
   private int jdField_a_of_type_Int = 0;
-  private agft jdField_a_of_type_Agft;
-  private akcc jdField_a_of_type_Akcc;
-  private amhy jdField_a_of_type_Amhy;
+  private agki jdField_a_of_type_Agki;
+  private akgr jdField_a_of_type_Akgr;
+  private ammn jdField_a_of_type_Ammn;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
@@ -73,23 +73,23 @@ public class SessionClearFragment
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private anoe jdField_a_of_type_Anoe;
-  private bepp jdField_a_of_type_Bepp;
+  private ansn jdField_a_of_type_Ansn;
+  private bety jdField_a_of_type_Bety;
   private PeakAppInterface jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface;
-  List<amhq> jdField_a_of_type_JavaUtilList;
+  List<ammf> jdField_a_of_type_JavaUtilList;
   private int jdField_b_of_type_Int;
   private Button jdField_b_of_type_AndroidWidgetButton;
-  private anoe jdField_b_of_type_Anoe;
+  private ansn jdField_b_of_type_Ansn;
   private int jdField_c_of_type_Int;
-  private anoe jdField_c_of_type_Anoe;
+  private ansn jdField_c_of_type_Ansn;
   
   public static Drawable a(String paramString, int paramInt1, int paramInt2)
   {
-    apgg localapgg = new apgg(Color.rgb(214, 214, 214), paramInt1, paramInt2);
+    apkp localapkp = new apkp(Color.rgb(214, 214, 214), paramInt1, paramInt2);
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localapgg, localapgg);
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localapkp, localapkp);
         if (localURLDrawable.getStatus() != 1) {
           localURLDrawable.downloadImediatly();
         }
@@ -102,19 +102,19 @@ public class SessionClearFragment
         }
       }
     }
-    return localapgg;
+    return localapkp;
   }
   
   private void a(int paramInt)
   {
     if (paramInt == 1) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131714234));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131714246));
     }
     for (;;)
     {
       this.jdField_a_of_type_Int = paramInt;
       return;
-      this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131714222));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131714234));
     }
   }
   
@@ -135,25 +135,25 @@ public class SessionClearFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376418));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131376286));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376472));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131376340));
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376847));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131365080));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376901));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131365082));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363414));
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getActivity());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131365722));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131365724));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Akcc = new akcc(this, new ArrayList());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Akcc);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new akbv(this));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new akbw(this));
-    paramView.findViewById(2131364335).setOnClickListener(new akbz(this));
+    this.jdField_a_of_type_Akgr = new akgr(this, new ArrayList());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Akgr);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new akgk(this));
+    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new akgl(this));
+    paramView.findViewById(2131364337).setOnClickListener(new akgo(this));
   }
   
   private void a(String paramString, int paramInt1, int paramInt2, ImageView paramImageView, int paramInt3)
   {
-    if (bdcs.b(paramString))
+    if (bdhb.b(paramString))
     {
       paramString = ShortVideoUtils.a(paramString);
       if (paramString != null)
@@ -177,21 +177,21 @@ public class SessionClearFragment
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     int i = 0;
-    if (i < this.jdField_a_of_type_Akcc.getItemCount())
+    if (i < this.jdField_a_of_type_Akgr.getItemCount())
     {
-      if (this.jdField_a_of_type_Akcc.a(i).a) {
-        localArrayList1.add(this.jdField_a_of_type_Akcc.a(i));
+      if (this.jdField_a_of_type_Akgr.a(i).a) {
+        localArrayList1.add(this.jdField_a_of_type_Akgr.a(i));
       }
       for (;;)
       {
         i += 1;
         break;
-        localArrayList2.add(this.jdField_a_of_type_Akcc.a(i));
+        localArrayList2.add(this.jdField_a_of_type_Akgr.a(i));
       }
     }
     if (localArrayList1.size() > 0)
     {
-      this.jdField_a_of_type_Amhy.a(localArrayList1);
+      this.jdField_a_of_type_Ammn.a(localArrayList1);
       if ((localArrayList2 != null) && (localArrayList2.size() != 0)) {
         break label149;
       }
@@ -199,10 +199,10 @@ public class SessionClearFragment
     }
     for (;;)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, 2131691569, 0).b(getResources().getDimensionPixelSize(2131298914));
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, 2131691570, 0).b(getResources().getDimensionPixelSize(2131298914));
       return;
       label149:
-      this.jdField_a_of_type_Akcc.a(localArrayList2);
+      this.jdField_a_of_type_Akgr.a(localArrayList2);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       a(0);
     }
@@ -210,25 +210,25 @@ public class SessionClearFragment
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bepp == null) {
-      this.jdField_a_of_type_Bepp = new bepp(this.jdField_a_of_type_AndroidAppActivity, getResources().getDimensionPixelSize(2131298914));
+    if (this.jdField_a_of_type_Bety == null) {
+      this.jdField_a_of_type_Bety = new bety(this.jdField_a_of_type_AndroidAppActivity, getResources().getDimensionPixelSize(2131298914));
     }
-    this.jdField_a_of_type_Bepp.setCancelable(false);
-    this.jdField_a_of_type_Bepp.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Bepp.a(alpo.a(2131714229));
-    this.jdField_a_of_type_Bepp.show();
-    this.jdField_a_of_type_Bepp.a(new akca(this));
+    this.jdField_a_of_type_Bety.setCancelable(false);
+    this.jdField_a_of_type_Bety.setCanceledOnTouchOutside(false);
+    this.jdField_a_of_type_Bety.a(alud.a(2131714241));
+    this.jdField_a_of_type_Bety.show();
+    this.jdField_a_of_type_Bety.a(new akgp(this));
   }
   
-  public void a(List<amhq> paramList)
+  public void a(List<ammf> paramList)
   {
-    this.jdField_a_of_type_Akcc.a(paramList);
+    this.jdField_a_of_type_Akgr.a(paramList);
   }
   
   protected void b()
   {
-    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
-      this.jdField_a_of_type_Bepp.dismiss();
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+      this.jdField_a_of_type_Bety.dismiss();
     }
   }
   
@@ -259,33 +259,33 @@ public class SessionClearFragment
       }
       this.jdField_a_of_type_AndroidViewView.setSystemUiVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)bllv.a());
-    if (this.jdField_a_of_type_Agft == null)
+    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)blqh.a());
+    if (this.jdField_a_of_type_Agki == null)
     {
       paramBundle = (BinderWarpper)this.jdField_a_of_type_AndroidAppActivity.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
       if (paramBundle == null) {
         break label336;
       }
-      this.jdField_a_of_type_Agft = agfu.a(paramBundle.a);
+      this.jdField_a_of_type_Agki = agkj.a(paramBundle.a);
       if (QLog.isColorLevel()) {
-        QLog.d("SessionClearFragment", 2, "IAIOImageProvider is " + this.jdField_a_of_type_Agft);
+        QLog.d("SessionClearFragment", 2, "IAIOImageProvider is " + this.jdField_a_of_type_Agki);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)bllv.a());
-    this.jdField_a_of_type_Amhy = ((amhy)this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface.getManager(4));
-    this.jdField_a_of_type_Amhy.a(new akbr(this));
-    this.jdField_a_of_type_Amhy.a(this.jdField_a_of_type_Agft);
-    this.jdField_a_of_type_Anoe = new anoe(this.jdField_a_of_type_AndroidAppActivity, 1);
-    this.jdField_a_of_type_Anoe.a();
-    this.jdField_a_of_type_Anoe.a(new akbs(this));
-    this.jdField_b_of_type_Anoe = new anoe(this.jdField_a_of_type_AndroidAppActivity, 4);
-    this.jdField_b_of_type_Anoe.a();
-    this.jdField_b_of_type_Anoe.a(new akbt(this));
-    this.jdField_c_of_type_Anoe = new anoe(this.jdField_a_of_type_AndroidAppActivity, 101);
-    this.jdField_c_of_type_Anoe.a();
-    this.jdField_c_of_type_Anoe.a(new akbu(this));
-    this.jdField_a_of_type_Amhy.b();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = bdda.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)blqh.a());
+    this.jdField_a_of_type_Ammn = ((ammn)this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface.getManager(4));
+    this.jdField_a_of_type_Ammn.a(new akgg(this));
+    this.jdField_a_of_type_Ammn.a(this.jdField_a_of_type_Agki);
+    this.jdField_a_of_type_Ansn = new ansn(this.jdField_a_of_type_AndroidAppActivity, 1);
+    this.jdField_a_of_type_Ansn.a();
+    this.jdField_a_of_type_Ansn.a(new akgh(this));
+    this.jdField_b_of_type_Ansn = new ansn(this.jdField_a_of_type_AndroidAppActivity, 4);
+    this.jdField_b_of_type_Ansn.a();
+    this.jdField_b_of_type_Ansn.a(new akgi(this));
+    this.jdField_c_of_type_Ansn = new ansn(this.jdField_a_of_type_AndroidAppActivity, 101);
+    this.jdField_c_of_type_Ansn.a();
+    this.jdField_c_of_type_Ansn.a(new akgj(this));
+    this.jdField_a_of_type_Ammn.b();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = bdhj.a();
     return;
     label336:
     throw new IllegalArgumentException("can't find Binder in Intent..");
@@ -293,7 +293,7 @@ public class SessionClearFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131562625, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131562643, paramViewGroup, false);
     a(paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -301,12 +301,12 @@ public class SessionClearFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Amhy.onDestroy();
-    this.jdField_a_of_type_Anoe.b();
-    this.jdField_b_of_type_Anoe.b();
-    this.jdField_c_of_type_Anoe.b();
-    if (this.jdField_a_of_type_Bepp != null) {
-      this.jdField_a_of_type_Bepp.dismiss();
+    this.jdField_a_of_type_Ammn.onDestroy();
+    this.jdField_a_of_type_Ansn.b();
+    this.jdField_b_of_type_Ansn.b();
+    this.jdField_c_of_type_Ansn.b();
+    if (this.jdField_a_of_type_Bety != null) {
+      this.jdField_a_of_type_Bety.dismiss();
     }
     this.jdField_a_of_type_AndroidAppActivity = null;
   }

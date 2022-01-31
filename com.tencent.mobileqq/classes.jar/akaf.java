@@ -1,37 +1,17 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import java.util.ArrayList;
 
 public class akaf
-  implements akam
+  implements DialogInterface.OnClickListener
 {
-  public akaf(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
+  public akaf(SelectMemberActivity paramSelectMemberActivity, ArrayList paramArrayList) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        QQSpecialFriendSettingActivity.a(this.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        this.a.stopTitleProgress();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig fail.");
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(this.jdField_a_of_type_JavaUtilArrayList);
+    paramDialogInterface.dismiss();
   }
 }
 

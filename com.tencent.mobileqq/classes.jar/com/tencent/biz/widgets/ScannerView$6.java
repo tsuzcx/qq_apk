@@ -1,6 +1,6 @@
 package com.tencent.biz.widgets;
 
-import zda;
+import zhp;
 
 class ScannerView$6
   implements Runnable

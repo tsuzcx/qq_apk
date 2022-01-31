@@ -1,8 +1,8 @@
 public abstract interface ygo
 {
-  public abstract int a();
+  public abstract void k();
   
-  public abstract int[] a(int paramInt1, int paramInt2);
+  public abstract void l();
 }
 
 

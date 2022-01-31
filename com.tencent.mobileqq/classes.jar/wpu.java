@@ -1,38 +1,35 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
 
 class wpu
-  implements INetInfoHandler
+  extends ulw
 {
-  wpu(wps paramwps) {}
+  wpu(wpr paramwpr) {}
   
-  public void onNetMobile2None()
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    wps.b(this.a, wps.a(3));
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    wps.b(this.a, wps.a(1));
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    wps.b(this.a, wps.a(2));
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    wps.b(this.a, wps.a(1));
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    wps.b(this.a, wps.a(2));
-  }
-  
-  public void onNetWifi2None()
-  {
-    wps.b(this.a, wps.a(3));
+    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
+    {
+      wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new comment push: %s", new Object[] { paramStoryPushMsg });
+      this.a.a(paramStoryPushMsg.d);
+    }
+    do
+    {
+      return;
+      if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 18))
+      {
+        wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new like push: %s", new Object[] { paramStoryPushMsg });
+        this.a.b(paramStoryPushMsg.d);
+        return;
+      }
+      if (paramStoryPushMsg.a == 17)
+      {
+        wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete comment push: %s", new Object[] { paramStoryPushMsg });
+        ((uux)uwa.a(17)).a(paramStoryPushMsg.d, paramStoryPushMsg.c);
+        return;
+      }
+    } while (paramStoryPushMsg.a != 16);
+    wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete like push: %s", new Object[] { paramStoryPushMsg });
+    this.a.b(paramStoryPushMsg.d);
   }
 }
 

@@ -1,16 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.List;
 
-class try
-  implements View.OnClickListener
+public class try
 {
-  try(trx paramtrx) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private List<String> jdField_a_of_type_JavaUtilList;
   
-  public void onClick(View paramView)
+  public try(List<String> paramList, int paramInt)
   {
-    if (trx.a(this.a)) {
-      trx.a(this.a);
-    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public List<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int > 0) || ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0));
   }
 }
 

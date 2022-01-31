@@ -1,22 +1,16 @@
+import android.text.Editable;
+import com.tencent.open.agent.SendStoryActivity;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.Comparator;
+
 public class bfgz
-  extends bfha
+  implements Comparator<Friend>
 {
-  private String n;
+  public bfgz(SendStoryActivity paramSendStoryActivity, Editable paramEditable) {}
   
-  public static bfgz a()
+  public int a(Friend paramFriend1, Friend paramFriend2)
   {
-    return new bfgz();
-  }
-  
-  public bfgz a(String paramString)
-  {
-    this.n = paramString;
-    return this;
-  }
-  
-  public String a()
-  {
-    return b() + "|" + c() + "|" + this.n;
+    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2);
   }
 }
 

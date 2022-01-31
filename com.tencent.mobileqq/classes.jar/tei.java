@@ -3,7 +3,7 @@ import android.support.annotation.Nullable;
 import com.tencent.TMG.utils.QLog;
 
 public class tei
-  extends aofy<teh>
+  extends aokh<teh>
 {
   public int a()
   {
@@ -22,15 +22,15 @@ public class tei
   }
   
   @Nullable
-  public teh a(aogf[] paramArrayOfaogf)
+  public teh a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      tlo.d("WeSeeConfigProcessor", "onParsed:" + paramArrayOfaogf[0].a);
+      tlo.d("WeSeeConfigProcessor", "onParsed:" + paramArrayOfaoko[0].a);
       teh localteh = new teh();
-      localteh.a(paramArrayOfaogf[0].a);
+      localteh.a(paramArrayOfaoko[0].a);
       if (QLog.isColorLevel()) {
-        QLog.d("WeSeeConfigProcessor", 0, "onParsed " + paramArrayOfaogf[0].a);
+        QLog.d("WeSeeConfigProcessor", 0, "onParsed " + paramArrayOfaoko[0].a);
       }
       return localteh;
     }

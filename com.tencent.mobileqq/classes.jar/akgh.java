@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class akgh
-  implements DialogInterface.OnClickListener
+public class akgh
+  implements ansr
 {
-  akgh(akgg paramakgg) {}
+  public akgh(SessionClearFragment paramSessionClearFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForUser onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    }
+    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
   }
 }
 

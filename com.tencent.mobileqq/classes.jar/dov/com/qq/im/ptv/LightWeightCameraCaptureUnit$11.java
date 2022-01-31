@@ -1,11 +1,11 @@
 package dov.com.qq.im.ptv;
 
-import bmba;
+import bmfm;
 
 public class LightWeightCameraCaptureUnit$11
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$11(bmba parambmba, LWMotionEvent paramLWMotionEvent) {}
+  public LightWeightCameraCaptureUnit$11(bmfm parambmfm, LWMotionEvent paramLWMotionEvent) {}
   
   public void run()
   {

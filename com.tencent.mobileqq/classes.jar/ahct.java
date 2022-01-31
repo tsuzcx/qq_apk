@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.Properties;
 
 public class ahct
-  extends amle
 {
-  public ahct(PublicView paramPublicView, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public static void a(String paramString, Properties paramProperties)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    azqh.a(VideoEnvironment.a()).reportKVEvent(paramString, paramProperties);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public static void a(String paramString, Properties paramProperties, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicView", 2, "onLocationFinish() errCode=" + paramInt);
-    }
-    PublicView.a(this.a, true);
-    PublicView.a(this.a, paramSosoLbsInfo);
+    azqh.a(VideoEnvironment.a()).reportTimeKVEvent(paramString, paramProperties, paramInt);
   }
 }
 

@@ -1,25 +1,39 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.Arrays;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 public class xcn
-  implements xab
+  implements View.OnClickListener
 {
-  @NonNull
-  private final wzy[] a;
+  protected long a;
+  protected View a;
+  public xco a;
   
-  public xcn(wzy... paramVarArgs)
+  public xcn(xco paramxco, View paramView)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      throw new IllegalArgumentException("layers should not be null or empty");
-    }
-    this.a = paramVarArgs;
+    this.jdField_a_of_type_Xco = paramxco;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    paramView.setOnClickListener(this);
   }
   
-  public void a(List<wzy> paramList, DoodleView paramDoodleView)
+  private boolean a()
   {
-    paramList.addAll(Arrays.asList(this.a));
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    if ((l2 > 0L) && (l2 < 2000L)) {
+      return true;
+    }
+    this.jdField_a_of_type_Long = l1;
+    return false;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (!a())
+    {
+      wxj.a("home_page", "clk_shoot", 0, 0, new String[0]);
+      this.jdField_a_of_type_Xco.a();
+    }
+    baxx.g();
   }
 }
 

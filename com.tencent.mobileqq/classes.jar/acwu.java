@@ -1,21 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
 public class acwu
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public acwu(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public acwu(FontSettingActivity paramFontSettingActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.f = false;
+    if (alsf.a(this.a, FontSettingActivity.a(this.a), true)) {
+      alsf.a();
+    }
     this.a.finish();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

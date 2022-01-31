@@ -1,98 +1,143 @@
-import android.graphics.Typeface;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.ttpic.openapi.manager.FeatureManager;
-import com.tencent.ttpic.openapi.watermark.LogicDataManager;
-import java.io.File;
-import java.util.HashMap;
+import android.app.Activity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class bkwr
+  extends blfs
 {
-  private static boolean jdField_a_of_type_Boolean;
-  private final int jdField_a_of_type_Int = 0;
-  private final String jdField_a_of_type_JavaLangString = "AEFontManager";
-  private HashMap<String, Typeface> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final int[] jdField_a_of_type_ArrayOfInt = { 0, 1 };
-  private final int b = 1;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bkpl jdField_a_of_type_Bkpl;
+  private bkwz jdField_a_of_type_Bkwz;
+  private RecyclerView jdField_b_of_type_AndroidSupportV7WidgetRecyclerView;
+  private CheckBox jdField_b_of_type_AndroidWidgetCheckBox;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private bkwz jdField_b_of_type_Bkwz;
+  private RecyclerView jdField_c_of_type_AndroidSupportV7WidgetRecyclerView;
+  private CheckBox jdField_c_of_type_AndroidWidgetCheckBox;
+  private bkwz jdField_c_of_type_Bkwz;
+  private RecyclerView jdField_d_of_type_AndroidSupportV7WidgetRecyclerView;
+  private CheckBox jdField_d_of_type_AndroidWidgetCheckBox;
+  private bkwz jdField_d_of_type_Bkwz;
   
-  public static bkwr a()
+  public bkwr(Activity paramActivity, View paramView, blft paramblft)
   {
-    if (!jdField_a_of_type_Boolean)
-    {
-      bkwt.a().a();
-      jdField_a_of_type_Boolean = true;
-    }
-    return bkwt.a();
+    super(paramActivity, paramView, paramblft);
+    this.jdField_a_of_type_Bkpl = ((bkpl)paramblft.a(65537, new Object[0]));
   }
   
-  private void b(@NonNull String paramString, @NonNull Typeface paramTypeface)
+  private void d()
   {
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    int j = arrayOfInt.length;
-    int i = 0;
-    if (i < j)
+    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new bkwt(this));
+    this.jdField_b_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new bkwu(this));
+    this.jdField_c_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new bkwv(this));
+    this.jdField_d_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new bkww(this));
+  }
+  
+  private void e()
+  {
+    this.jdField_a_of_type_Bkwz = new bkwz(this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_b_of_type_Bkwz = new bkwz(this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_c_of_type_Bkwz = new bkwz(this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_d_of_type_Bkwz = new bkwz(this.jdField_a_of_type_AndroidAppActivity);
+    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity, 1, false);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bkwz);
+    localLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity, 1, false);
+    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
+    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_b_of_type_Bkwz);
+    localLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity, 1, false);
+    this.jdField_c_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
+    this.jdField_c_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_c_of_type_Bkwz);
+    localLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity, 1, false);
+    this.jdField_d_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
+    this.jdField_d_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_d_of_type_Bkwz);
+  }
+  
+  private void f()
+  {
+    QIPCClientHelper.getInstance().callServer("AECameraGetInfoServer", "ACTION_GET_ENV_INFO", null, new bkwx(this));
+  }
+  
+  private void k()
+  {
+    bkwl.a().a(this.jdField_a_of_type_Bkpl, new bkwy(this));
+  }
+  
+  protected void a()
+  {
+    View localView = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131362161)).inflate();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362166));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362167));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131362164));
+    this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131362169));
+    this.jdField_c_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131362172));
+    this.jdField_d_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131362171));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131362163));
+    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131362168));
+    this.jdField_c_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131362162));
+    this.jdField_d_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131362170));
+    d();
+    e();
+    f();
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new bkws(this));
+    k();
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    Object localObject2;
+    Object localObject3;
+    if (paramInt == 720897)
     {
-      switch (arrayOfInt[i])
+      localObject2 = (List)paramVarArgs[0];
+      localObject1 = (List)paramVarArgs[1];
+      paramVarArgs = new LinkedList();
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
+        localObject3 = (bkwo)((Iterator)localObject2).next();
+        localbkxb = new bkxb(null);
+        localbkxb.a = bkxd.a((bkwo)localObject3);
+        paramVarArgs.add(localbkxb);
       }
-      for (;;)
+      localObject2 = new LinkedList();
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        i += 1;
-        break;
-        LogicDataManager.getInstance().putTypeface(paramString, paramTypeface);
+        localObject3 = (bkwn)((Iterator)localObject1).next();
+        localbkxb = new bkxb(null);
+        localbkxb.a = ((bkwn)localObject3).toString();
+        ((List)localObject2).add(localbkxb);
       }
+      this.jdField_a_of_type_Bkwz.a(paramVarArgs);
+      this.jdField_c_of_type_Bkwz.a((List)localObject2);
     }
-  }
-  
-  @NonNull
-  public Typeface a(@Nullable String paramString)
-  {
-    if (paramString != null)
+    while ((paramInt != 720898) || (this.jdField_d_of_type_Bkwz == null))
     {
-      if (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) == null) {
-        return Typeface.DEFAULT;
-      }
-      return (Typeface)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    }
-    return Typeface.DEFAULT;
-  }
-  
-  public void a()
-  {
-    a("jianqiaohei.ttf", FeatureManager.getResourceDir());
-  }
-  
-  public void a(@Nullable String paramString, @Nullable Typeface paramTypeface)
-  {
-    if ((paramString == null) || (paramTypeface == null)) {
+      bkxb localbkxb;
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramTypeface);
-    b(paramString, paramTypeface);
-  }
-  
-  public void a(@Nullable String paramString1, @Nullable String paramString2)
-  {
-    Object localObject = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      localObject = FeatureManager.getResourceDir();
+    Object localObject1 = bkwl.a.a();
+    paramVarArgs = new LinkedList();
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (String)((Iterator)localObject1).next();
+      localObject3 = new bkxb(null);
+      ((bkxb)localObject3).a = ((CharSequence)localObject2);
+      paramVarArgs.add(localObject3);
     }
-    paramString2 = new File((String)localObject, paramString1);
-    localObject = Typeface.DEFAULT;
-    if (paramString2.exists()) {
-      try
-      {
-        a(paramString1, Typeface.createFromFile(paramString2));
-        return;
-      }
-      catch (RuntimeException paramString1)
-      {
-        blfg.d("AEFontManager", "【ERROR】Typeface.createFromFile");
-        return;
-      }
-    }
-    blfg.a("AEFontManager", "文件不存在" + paramString2.getAbsolutePath());
+    this.jdField_d_of_type_Bkwz.a(paramVarArgs);
   }
 }
 

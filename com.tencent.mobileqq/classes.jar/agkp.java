@@ -1,17 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import java.util.ArrayList;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-class agkp
-  implements DialogInterface.OnClickListener
+public abstract class agkp
+  extends Binder
+  implements agko
 {
-  agkp(agkk paramagkk, ArrayList paramArrayList, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agkp()
   {
-    paramDialogInterface.dismiss();
-    agkk.a(this.jdField_a_of_type_Agkk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agkk.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString);
+    attachInterface(this, "com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+  }
+  
+  public static agko a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+    if ((localIInterface != null) && ((localIInterface instanceof agko))) {
+      return (agko)localIInterface;
+    }
+    return new agkq(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      a((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      b((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+    c((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+    return true;
   }
 }
 

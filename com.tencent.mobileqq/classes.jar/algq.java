@@ -1,18 +1,6 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
-
-public class algq
-  implements best
+public abstract interface algq
 {
-  public algq(ApolloGameInfoFragment paramApolloGameInfoFragment) {}
-  
-  public void a(View paramView, int paramInt)
-  {
-    if (paramInt == 1) {
-      this.a.getActivity().finish();
-    }
-  }
+  public abstract void a(long paramLong, String paramString);
 }
 
 

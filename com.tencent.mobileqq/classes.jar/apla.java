@@ -1,207 +1,160 @@
-import android.os.Environment;
-import android.view.View;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.ArNativeSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.IOException;
+import java.util.HashMap;
 
 public class apla
+  extends apld
 {
-  private int jdField_a_of_type_Int;
-  File jdField_a_of_type_JavaIoFile = new File(Environment.getExternalStorageDirectory(), "dslv_state.txt");
-  StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  
-  public apla(DragSortListView paramDragSortListView)
+  public apla(QQAppInterface paramQQAppInterface)
   {
-    if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
+    super("qq.android.ar.native.so_v8.3.6", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10024;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return ArNativeSoData.class;
+  }
+  
+  public String a()
+  {
+    return "ArConfig_NativeSoDownloadHandler";
+  }
+  
+  public void a(XmlData paramXmlData)
+  {
+    int i = 0;
     try
     {
-      this.jdField_a_of_type_JavaIoFile.createNewFile();
+      Object localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("ArNativeSoDownloadHandler", 4);
+      if (((SharedPreferences)localObject1).getBoolean("qq.android.ar.native.so_v8.3.6", true))
+      {
+        ((SharedPreferences)localObject1).edit().putBoolean("qq.android.ar.native.so_v8.3.6", false).commit();
+        localObject1 = new File(amxd.a() + File.separator).listFiles();
+        int j = localObject1.length;
+        while (i < j)
+        {
+          Object localObject2 = localObject1[i];
+          if (QLog.isColorLevel()) {
+            QLog.d("ArConfig_NativeSoDownloadHandler", 2, "File name=" + localObject2.getAbsolutePath());
+          }
+          if ((localObject2.isFile()) && (localObject2.getName().startsWith("libArMapEngine")) && (!localObject2.getName().contains("ArMapEngine836")))
+          {
+            localObject2.delete();
+            if (QLog.isColorLevel()) {
+              QLog.d("ArConfig_NativeSoDownloadHandler", 2, "delete f=" + localObject2.getName());
+            }
+          }
+          i += 1;
+        }
+      }
       return;
     }
-    catch (IOException paramDragSortListView) {}
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ArConfig_NativeSoDownloadHandler", 2, "exception =" + localException.getMessage());
+        localException.printStackTrace();
+      }
+      super.a(paramXmlData);
+    }
   }
   
-  public void a()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangStringBuilder.append("<DSLVStates>\n");
-    this.b = 0;
-    this.jdField_a_of_type_Boolean = true;
+    int i = amxd.b(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_NativeSoDownloadHandler", 2, "download success: " + paramString + ",result=" + i);
+    }
+    if (i == 0) {
+      BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit().putInt("ar_native_so_version", b()).commit();
+    }
+    for (;;)
+    {
+      try
+      {
+        str = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).getString("ar_native_ArMapEngine836", "");
+        if (!TextUtils.isEmpty(str))
+        {
+          QQAppInterface localQQAppInterface = this.a;
+          i = a().Version;
+          if (!TextUtils.isEmpty(str)) {
+            continue;
+          }
+          localObject = "0";
+          azqs.b(localQQAppInterface, "dc01440", "", "", "0X8007A3D", "0X8007A3D", 0, 0, "", String.valueOf(i), (String)localObject, "qq.android.ar.native.so_v8.3.6");
+          localObject = new HashMap();
+          ((HashMap)localObject).put("config_version", String.valueOf(a().Version));
+          ((HashMap)localObject).put("md5", str);
+          ((HashMap)localObject).put("res_name", "qq.android.ar.native.so_v8.3.6");
+          azri.a(BaseApplicationImpl.getContext()).a(this.a.getCurrentAccountUin(), "armap_so_update_rate", true, 0L, 0L, (HashMap)localObject, "", false);
+        }
+      }
+      catch (Exception localException)
+      {
+        String str;
+        Object localObject;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        localException.printStackTrace();
+        continue;
+      }
+      super.a(paramString);
+      return;
+      a().loadState = 0;
+      a().Version = 0;
+      apkr.a(a(), new String[0]);
+      continue;
+      localObject = str;
+    }
   }
   
-  public void b()
+  public void a(boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
+    a(false, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_NativeSoDownloadHandler", 2, "restartDownload " + paramBoolean);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      super.a(paramBoolean2);
+    }
     do
     {
       return;
-      this.jdField_a_of_type_JavaLangStringBuilder.append("<DSLVState>\n");
-      int j = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildCount();
-      int k = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getFirstVisiblePosition();
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <Positions>");
-      int i = 0;
-      while (i < j)
-      {
-        this.jdField_a_of_type_JavaLangStringBuilder.append(k + i).append(",");
-        i += 1;
+      if ((a() == null) || (a().loadState != 2)) {
+        break;
       }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("</Positions>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <Tops>");
-      i = 0;
-      while (i < j)
-      {
-        this.jdField_a_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildAt(i).getTop()).append(",");
-        i += 1;
-      }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("</Tops>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <Bottoms>");
-      i = 0;
-      while (i < j)
-      {
-        this.jdField_a_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildAt(i).getBottom()).append(",");
-        i += 1;
-      }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("</Bottoms>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <FirstExpPos>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c).append("</FirstExpPos>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <FirstExpBlankHeight>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c) - this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c)).append("</FirstExpBlankHeight>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <SecondExpPos>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.d).append("</SecondExpPos>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <SecondExpBlankHeight>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.d) - this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.d)).append("</SecondExpBlankHeight>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <SrcPos>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.e).append("</SrcPos>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <SrcHeight>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.i + this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getDividerHeight()).append("</SrcHeight>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <ViewHeight>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeight()).append("</ViewHeight>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <LastY>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.l).append("</LastY>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <FloatY>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.jdField_a_of_type_Int).append("</FloatY>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <ShuffleEdges>");
-      i = 0;
-      while (i < j)
-      {
-        this.jdField_a_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a(k + i, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildAt(i).getTop())).append(",");
-        i += 1;
-      }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("</ShuffleEdges>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("</DSLVState>\n");
-      this.jdField_a_of_type_Int += 1;
-    } while (this.jdField_a_of_type_Int <= 1000);
-    c();
-    this.jdField_a_of_type_Int = 0;
+    } while (!QLog.isColorLevel());
+    QLog.d("ArConfig_NativeSoDownloadHandler", 2, "restartDownloadForce is in downloading");
+    return;
+    super.a(paramBoolean2);
   }
   
-  /* Error */
-  public void c()
+  public boolean a()
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_1
-    //   2: aload_0
-    //   3: getfield 58	apla:jdField_a_of_type_Boolean	Z
-    //   6: ifne +4 -> 10
-    //   9: return
-    //   10: aload_0
-    //   11: getfield 56	apla:b	I
-    //   14: ifne +119 -> 133
-    //   17: new 176	java/io/FileWriter
-    //   20: dup
-    //   21: aload_0
-    //   22: getfield 40	apla:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   25: iload_1
-    //   26: invokespecial 179	java/io/FileWriter:<init>	(Ljava/io/File;Z)V
-    //   29: astore_2
-    //   30: aload_2
-    //   31: aload_0
-    //   32: getfield 25	apla:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
-    //   35: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   38: invokevirtual 187	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   41: aload_0
-    //   42: getfield 25	apla:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
-    //   45: iconst_0
-    //   46: aload_0
-    //   47: getfield 25	apla:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
-    //   50: invokevirtual 190	java/lang/StringBuilder:length	()I
-    //   53: invokevirtual 194	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
-    //   56: pop
-    //   57: aload_2
-    //   58: invokevirtual 197	java/io/FileWriter:flush	()V
-    //   61: aload_0
-    //   62: aload_0
-    //   63: getfield 56	apla:b	I
-    //   66: iconst_1
-    //   67: iadd
-    //   68: putfield 56	apla:b	I
-    //   71: aload_2
-    //   72: ifnull -63 -> 9
-    //   75: aload_2
-    //   76: invokevirtual 200	java/io/FileWriter:close	()V
-    //   79: return
-    //   80: astore_2
-    //   81: aload_2
-    //   82: invokevirtual 203	java/io/IOException:printStackTrace	()V
-    //   85: return
-    //   86: astore_2
-    //   87: aconst_null
-    //   88: astore_2
-    //   89: aload_2
-    //   90: ifnull -81 -> 9
-    //   93: aload_2
-    //   94: invokevirtual 200	java/io/FileWriter:close	()V
-    //   97: return
-    //   98: astore_2
-    //   99: aload_2
-    //   100: invokevirtual 203	java/io/IOException:printStackTrace	()V
-    //   103: return
-    //   104: astore_3
-    //   105: aconst_null
-    //   106: astore_2
-    //   107: aload_2
-    //   108: ifnull +7 -> 115
-    //   111: aload_2
-    //   112: invokevirtual 200	java/io/FileWriter:close	()V
-    //   115: aload_3
-    //   116: athrow
-    //   117: astore_2
-    //   118: aload_2
-    //   119: invokevirtual 203	java/io/IOException:printStackTrace	()V
-    //   122: goto -7 -> 115
-    //   125: astore_3
-    //   126: goto -19 -> 107
-    //   129: astore_3
-    //   130: goto -41 -> 89
-    //   133: iconst_1
-    //   134: istore_1
-    //   135: goto -118 -> 17
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	138	0	this	apla
-    //   1	134	1	bool	boolean
-    //   29	47	2	localFileWriter	java.io.FileWriter
-    //   80	2	2	localIOException1	IOException
-    //   86	1	2	localIOException2	IOException
-    //   88	6	2	localObject1	Object
-    //   98	2	2	localIOException3	IOException
-    //   106	6	2	localObject2	Object
-    //   117	2	2	localIOException4	IOException
-    //   104	12	3	localObject3	Object
-    //   125	1	3	localObject4	Object
-    //   129	1	3	localIOException5	IOException
-    // Exception table:
-    //   from	to	target	type
-    //   75	79	80	java/io/IOException
-    //   17	30	86	java/io/IOException
-    //   93	97	98	java/io/IOException
-    //   17	30	104	finally
-    //   111	115	117	java/io/IOException
-    //   30	71	125	finally
-    //   30	71	129	java/io/IOException
+    return true;
   }
   
-  public void d()
+  public String b()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_JavaLangStringBuilder.append("</DSLVStates>\n");
-      c();
-      this.jdField_a_of_type_Boolean = false;
-    }
+    return "prd";
   }
 }
 

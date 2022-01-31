@@ -1,11 +1,28 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
+import java.util.Map;
 
-public class unb
+class unb
+  extends Job<Object, Object, Object>
 {
-  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
+  unb(una paramuna, String paramString, unj paramunj)
   {
-    return false;
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  {
+    this.jdField_a_of_type_Unj.jdField_a_of_type_Uni.a(this.jdField_a_of_type_Unj);
+    this.jdField_a_of_type_Una.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Unj.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Una.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_Unj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Unj);
+    return null;
+  }
+  
+  public int getJobType()
+  {
+    return 16;
   }
 }
 

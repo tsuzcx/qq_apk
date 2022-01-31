@@ -4,7 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.support.v4.view.ViewCompat;
-import bddz;
+import bdii;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import com.tencent.mobileqq.widget.MessageProgressView.RefreshProgressRunnable;
 
@@ -85,12 +85,12 @@ public class VideoProgressView
       this.a = bool;
       if (this.d == 1)
       {
-        localRefreshProgressRunnable = bddz.a().a(paramString);
+        localRefreshProgressRunnable = bdii.a().a(paramString);
         if (localRefreshProgressRunnable != null) {
           break;
         }
         localRefreshProgressRunnable = new MessageProgressView.RefreshProgressRunnable(this, paramString);
-        bddz.a().a(paramString, localRefreshProgressRunnable);
+        bdii.a().a(paramString, localRefreshProgressRunnable);
         ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
       }
       return;

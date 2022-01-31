@@ -1,17 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.open.agent.BindGroupFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import com.tencent.qphone.base.util.QLog;
 
 public class beyz
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public beyz(BindGroupFragment paramBindGroupFragment) {}
+  public beyz(ShareActionSheetV2 paramShareActionSheetV2) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    BindGroupFragment.a(this.a, alpo.a(2131701493));
-    ((alzf)BindGroupFragment.a(this.a).a(20)).a(Integer.valueOf(BindGroupFragment.a(this.a)).intValue(), Integer.valueOf(BindGroupFragment.b(this.a)).intValue());
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareActionSheetV2", 2, "onDismiss() called with: dialog = [" + paramDialogInterface + "] #this = " + Integer.toHexString(System.identityHashCode(this)));
+    }
+    ShareActionSheetV2.b(this.a);
+    if (ShareActionSheetV2.a(this.a) != null) {
+      ShareActionSheetV2.a(this.a).onDismiss(paramDialogInterface);
+    }
   }
 }
 

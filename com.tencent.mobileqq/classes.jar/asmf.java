@@ -1,35 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.haoliyou.JefsClass;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class asmf
-  extends BroadcastReceiver
+  implements ArkViewImplement.LoadCallback
 {
-  private asmf(JefsClass paramJefsClass) {}
+  public asmf(QQGamePadFaceFragment paramQQGamePadFaceFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    if (!BaseApplicationImpl.processName.equals(paramIntent.getStringExtra("key_process_id"))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TeleScreen|JefsClass", 2, "is not current process");
-      }
+    onLoadState(paramInt1);
+  }
+  
+  public void onLoadState(int paramInt)
+  {
+    if ((QLog.isColorLevel()) || (paramInt == -1)) {
+      QLog.d("QQGamePadFaceFragment", 2, new Object[] { "onLoadFinish, ret=", Integer.valueOf(paramInt), ", ", QQGamePadFaceFragment.a(this.a) });
     }
-    do
-    {
+    if (paramInt == 1) {
+      QQGamePadFaceFragment.a(this.a).a(QQGamePadFaceFragment.a(this.a).padFaceId);
+    }
+    while (paramInt != -1) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TeleScreen|JefsClass", 2, "start");
-      }
-      if ("com.tencent.mobileqq.telescreen.action_run".equals(paramIntent.getAction()))
-      {
-        JefsClass.a(this.a, paramIntent.getIntExtra("key_id", 0), paramIntent.getIntExtra("key_callback_id", 0));
-        return;
-      }
-    } while (!"com.tencent.mobileqq.telescreen.action_remove".equals(paramIntent.getAction()));
-    JefsClass.b(this.a, paramIntent.getIntExtra("key_id", 0), paramIntent.getIntExtra("key_callback_id", 0));
+    }
+    QQGamePadFaceFragment.a(this.a).a(QQGamePadFaceFragment.a(this.a).padFaceId);
+    QQGamePadFaceFragment.b(this.a);
   }
 }
 

@@ -1,25 +1,20 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import com.tencent.biz.subscribe.network.GetSubscribeFeedDetailRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoReplyRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class yfv
-  extends yfn
+class yfv
+  implements zac<CertifiedAccountWrite.StDoReplyRsp>
 {
-  private CertifiedAccountMeta.StFeed a;
+  yfv(yfp paramyfp, CertifiedAccountMeta.StReply paramStReply, CertifiedAccountMeta.StComment paramStComment) {}
   
-  public yfv(CertifiedAccountMeta.StFeed paramStFeed)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoReplyRsp paramStDoReplyRsp)
   {
-    this.a = paramStFeed;
-  }
-  
-  public void a() {}
-  
-  public void a(yft paramyft)
-  {
-    GetSubscribeFeedDetailRequest localGetSubscribeFeedDetailRequest = new GetSubscribeFeedDetailRequest(this.a, null);
-    paramyft = new yfw(this, paramyft);
-    localGetSubscribeFeedDetailRequest.setEnableCache(false);
-    VSNetworkHelper.a().a(localGetSubscribeFeedDetailRequest, paramyft);
+    if ((paramStDoReplyRsp != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply != null)) {
+      paramStDoReplyRsp.reply.id.set(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.id.get());
+    }
+    umc.a().dispatch(this.jdField_a_of_type_Yfp.a(new Object[] { Integer.valueOf(6), Long.valueOf(paramLong), paramString, paramStDoReplyRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, Integer.valueOf(this.jdField_a_of_type_Yfp.hashCode()) }));
   }
 }
 

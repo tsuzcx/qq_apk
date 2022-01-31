@@ -1,15 +1,25 @@
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.open.agent.AuthorityControlFragment;
 
 public class bfcn
-  implements bexn
+  implements View.OnTouchListener
 {
-  public bfcn(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  public bfcn(AuthorityControlFragment paramAuthorityControlFragment) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    azmj.b(null, "dc00898", "", "", "0X800A7BD", "0X800A7BD", QuickLoginAuthorityActivity.b(this.a), 0, "", "", "", "");
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "report-dc00898-0X800A7BD-fromType=" + QuickLoginAuthorityActivity.b(this.a));
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

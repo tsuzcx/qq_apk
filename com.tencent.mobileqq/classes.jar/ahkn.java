@@ -1,27 +1,6 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
-import com.tencent.widget.XListView;
-
-public class ahkn
-  extends Handler
+public abstract interface ahkn
 {
-  public ahkn(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.a.springBackOverScrollHeaderView();
-      continue;
-      this.a.a.springBackOverScrollHeaderView();
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

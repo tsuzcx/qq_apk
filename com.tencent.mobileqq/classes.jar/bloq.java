@@ -1,11 +1,24 @@
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.aeeditor.module.music.AEEditorMusicPanelDialog.1.1;
 
 public class bloq
-  extends blon
+  implements Animation.AnimationListener
 {
-  public bloq(CaptureModeController paramCaptureModeController)
+  bloq(blop paramblop) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramCaptureModeController);
+    blop.a(this.a, false);
+    blop.a(this.a).post(new AEEditorMusicPanelDialog.1.1(this));
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    blop.a(this.a, true);
   }
 }
 

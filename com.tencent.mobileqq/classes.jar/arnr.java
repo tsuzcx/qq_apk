@@ -1,10 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class arnr
-  implements DialogInterface.OnClickListener
+class arnr
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  arnr(arnq paramarnq) {}
+  
+  public void onClick(View paramView)
+  {
+    arrr.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Arki.d());
+  }
 }
 
 

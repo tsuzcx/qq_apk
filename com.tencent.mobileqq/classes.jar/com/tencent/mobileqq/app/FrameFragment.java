@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import alny;
-import aloa;
+import alsn;
+import alsp;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -15,9 +15,9 @@ import android.view.ViewGroup;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
-import asar;
-import azmz;
-import bdhy;
+import asfa;
+import azri;
+import bdmh;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 import com.tencent.mobileqq.activity.Contacts;
 import com.tencent.mobileqq.activity.Conversation;
@@ -36,14 +36,14 @@ import mqq.app.Constants.LogoutReason;
 
 public class FrameFragment
   extends Fragment
-  implements TabHost.OnTabChangeListener, TabHost.TabContentFactory, asar
+  implements TabHost.OnTabChangeListener, TabHost.TabContentFactory, asfa
 {
   long jdField_a_of_type_Long = -1L;
-  private alny jdField_a_of_type_Alny;
+  private alsn jdField_a_of_type_Alsn;
   protected View a;
   public QQTabHost a;
   private HashMap<String, TabHost.TabSpec> jdField_a_of_type_JavaUtilHashMap;
-  private final Map<String, alny> jdField_a_of_type_JavaUtilMap = new HashMap(4);
+  private final Map<String, alsn> jdField_a_of_type_JavaUtilMap = new HashMap(4);
   String f = null;
   protected boolean g;
   
@@ -52,25 +52,25 @@ public class FrameFragment
     return this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getCurrentTab();
   }
   
-  protected alny a()
+  protected alsn a()
   {
-    return this.jdField_a_of_type_Alny;
+    return this.jdField_a_of_type_Alsn;
   }
   
-  public alny a(Class<? extends alny> paramClass)
+  public alsn a(Class<? extends alsn> paramClass)
   {
-    alny localalny = null;
+    alsn localalsn = null;
     if (this.jdField_a_of_type_JavaUtilMap != null) {
-      localalny = (alny)this.jdField_a_of_type_JavaUtilMap.get(paramClass.getName());
+      localalsn = (alsn)this.jdField_a_of_type_JavaUtilMap.get(paramClass.getName());
     }
-    return localalny;
+    return localalsn;
   }
   
   protected String a()
   {
-    alny localalny = b();
-    if (localalny != null) {
-      return localalny.a();
+    alsn localalsn = b();
+    if (localalsn != null) {
+      return localalsn.a();
     }
     return null;
   }
@@ -82,25 +82,25 @@ public class FrameFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.PerfTrace", 2, this.f + "TabSwitch, cost=" + l);
     }
-    azmz.a(BaseApplication.getContext()).a(bdhy.a(), "actSwitch" + this.f, true, l, 0L, null, null);
+    azri.a(BaseApplication.getContext()).a(bdmh.a(), "actSwitch" + this.f, true, l, 0L, null, null);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    alny localalny = b();
-    if (localalny != null) {
-      localalny.a(paramInt1, paramInt2, paramIntent);
+    alsn localalsn = b();
+    if (localalsn != null) {
+      localalsn.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
-  protected void a(View paramView1, Class<? extends alny> paramClass, View paramView2)
+  protected void a(View paramView1, Class<? extends alsn> paramClass, View paramView2)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost = ((QQTabHost)paramView1.findViewById(16908306));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setup();
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setOnTabChangedListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setOnTabSelectionListener(new aloa(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setOnTabSelectionListener(new alsp(this));
       this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
     }
     String str = paramClass.getName();
@@ -114,13 +114,13 @@ public class FrameFragment
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.addTab(paramView1);
   }
   
-  protected void a(Class<? extends alny> paramClass)
+  protected void a(Class<? extends alsn> paramClass)
   {
     if (this.jdField_a_of_type_JavaUtilMap != null)
     {
-      alny localalny = a(paramClass);
-      if (localalny != null) {
-        localalny.k();
+      alsn localalsn = a(paramClass);
+      if (localalsn != null) {
+        localalsn.k();
       }
       paramClass = paramClass.getName();
       this.jdField_a_of_type_JavaUtilMap.remove(paramClass);
@@ -134,11 +134,11 @@ public class FrameFragment
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((alny)localIterator.next()).a(paramLogoutReason);
+      ((alsn)localIterator.next()).a(paramLogoutReason);
     }
   }
   
-  public alny b()
+  public alsn b()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost == null)
     {
@@ -147,7 +147,7 @@ public class FrameFragment
       }
       return null;
     }
-    return (alny)this.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getCurrentTabTag());
+    return (alsn)this.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getCurrentTabTag());
   }
   
   protected void b()
@@ -157,7 +157,7 @@ public class FrameFragment
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((alny)localIterator.next()).a();
+      ((alsn)localIterator.next()).a();
     }
   }
   
@@ -176,10 +176,10 @@ public class FrameFragment
     }
     for (;;)
     {
-      ((alny)localObject).a(getActivity());
-      View localView = ((alny)localObject).a(getActivity().getLayoutInflater());
-      ((alny)localObject).c(localView);
-      ((alny)localObject).e();
+      ((alsn)localObject).a(getActivity());
+      View localView = ((alsn)localObject).a(getActivity().getLayoutInflater());
+      ((alsn)localObject).c(localView);
+      ((alsn)localObject).e();
       this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
       return localView;
       if (paramString.equals(Contacts.class.getName())) {
@@ -200,13 +200,13 @@ public class FrameFragment
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((alny)localIterator.next()).a(paramConfiguration);
+      ((alsn)localIterator.next()).a(paramConfiguration);
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2131559246, null);
+    return paramLayoutInflater.inflate(2131559245, null);
   }
   
   public void onDestroy()
@@ -214,7 +214,7 @@ public class FrameFragment
     super.onDestroy();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((alny)localIterator.next()).k();
+      ((alsn)localIterator.next()).k();
     }
   }
   
@@ -222,52 +222,52 @@ public class FrameFragment
   {
     super.onPause();
     if ((SplashActivity.a != 1) && (!this.g)) {}
-    alny localalny;
+    alsn localalsn;
     do
     {
       return;
-      localalny = b();
-    } while (localalny == null);
-    localalny.g();
+      localalsn = b();
+    } while (localalsn == null);
+    localalsn.g();
   }
   
   public void onResume()
   {
     super.onResume();
     if (SplashActivity.a != 1) {}
-    alny localalny;
+    alsn localalsn;
     do
     {
       return;
-      localalny = b();
-    } while ((localalny == null) || (!localalny.b()));
-    localalny.e(false);
+      localalsn = b();
+    } while ((localalsn == null) || (!localalsn.b()));
+    localalsn.e(false);
   }
   
   public void onStart()
   {
     super.onStart();
     if (SplashActivity.a != 1) {}
-    alny localalny;
+    alsn localalsn;
     do
     {
       return;
-      localalny = b();
-    } while (localalny == null);
-    localalny.f();
+      localalsn = b();
+    } while (localalsn == null);
+    localalsn.f();
   }
   
   public void onStop()
   {
     super.onStop();
     if ((SplashActivity.a != 1) && (!this.g)) {}
-    alny localalny;
+    alsn localalsn;
     do
     {
       return;
-      localalny = b();
-    } while (localalny == null);
-    localalny.h();
+      localalsn = b();
+    } while (localalsn == null);
+    localalsn.h();
   }
   
   public void onTabChanged(String paramString)
@@ -284,14 +284,14 @@ public class FrameFragment
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setFirstDrawTrue();
       }
     }
-    if (this.jdField_a_of_type_Alny != null)
+    if (this.jdField_a_of_type_Alsn != null)
     {
-      this.jdField_a_of_type_Alny.g();
-      this.jdField_a_of_type_Alny.B();
+      this.jdField_a_of_type_Alsn.g();
+      this.jdField_a_of_type_Alsn.B();
     }
-    this.jdField_a_of_type_Alny = b();
-    if ((this.jdField_a_of_type_Alny != null) && (this.jdField_a_of_type_Alny.b())) {
-      this.jdField_a_of_type_Alny.e(true);
+    this.jdField_a_of_type_Alsn = b();
+    if ((this.jdField_a_of_type_Alsn != null) && (this.jdField_a_of_type_Alsn.b())) {
+      this.jdField_a_of_type_Alsn.e(true);
     }
   }
 }

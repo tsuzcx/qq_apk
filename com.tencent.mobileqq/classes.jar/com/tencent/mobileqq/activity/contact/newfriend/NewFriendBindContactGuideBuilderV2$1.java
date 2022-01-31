@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import ahhd;
+import ahls;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class NewFriendBindContactGuideBuilderV2$1
   implements Runnable
 {
-  public NewFriendBindContactGuideBuilderV2$1(ahhd paramahhd) {}
+  public NewFriendBindContactGuideBuilderV2$1(ahls paramahls) {}
   
   public void run()
   {

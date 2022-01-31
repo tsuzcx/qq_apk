@@ -3,17 +3,17 @@ package com.tencent.mobileqq.hotpic;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aspj;
-import awbv;
+import asts;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="url,tag,picIndex")
 public class HotPicData
-  extends awbv
+  extends awge
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<HotPicData> CREATOR = new aspj();
+  public static final Parcelable.Creator<HotPicData> CREATOR = new asts();
   public static final int DATA_GIF = 1;
   public static final int DATA_VIDEO = 2;
   public static final String HOT_PIC_HAS_EXTRA = "HOT_PIC_HAS_EXTRA";

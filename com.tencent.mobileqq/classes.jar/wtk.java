@@ -1,13 +1,13 @@
-import android.graphics.Canvas;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
 
-public abstract interface wtk
-  extends wwd
+public class wtk
+  implements DialogInterface.OnDismissListener
 {
-  public abstract int a(int paramInt);
+  public wtk(StoryListPresenter.4.1 param1) {}
   
-  public abstract boolean a(int paramInt);
-  
-  public abstract boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3);
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

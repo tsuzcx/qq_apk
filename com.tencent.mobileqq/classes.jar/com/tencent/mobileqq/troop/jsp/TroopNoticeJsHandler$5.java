@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.jsp;
 
-import bcch;
+import bcgq;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 public class TroopNoticeJsHandler$5
   implements Runnable
 {
-  public TroopNoticeJsHandler$5(bcch parambcch, String paramString) {}
+  public TroopNoticeJsHandler$5(bcgq parambcgq, String paramString) {}
   
   public void run()
   {

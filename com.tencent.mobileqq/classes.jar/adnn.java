@@ -1,49 +1,57 @@
-import MQQ.PayRuleCfg;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class adnn
-  extends Handler
+  extends amcj
 {
-  public adnn(QQSettingMe paramQQSettingMe, Looper paramLooper)
+  public adnn(PhoneUnityPhoneLoginActivity paramPhoneUnityPhoneLoginActivity) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    super(paramLooper);
+    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
+    {
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
+      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(true);
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
+      return;
+    }
+    if (paramInt == 39)
+    {
+      azqs.b(this.a.app, "CliOper", "", "", "0X8005BFD", "0X8005BFD", 0, 0, "", "", "", "");
+      bdgm.a(this.a, 230, this.a.getString(2131695166), this.a.getString(2131695165), null, this.a.getString(2131692210), new adno(this), null).show();
+      return;
+    }
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = this.a.getString(2131695164);
+    }
+    QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
   }
   
-  public void handleMessage(Message paramMessage)
+  public void b(int paramInt, String paramString)
   {
-    switch (paramMessage.what)
+    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
     {
-    default: 
-      return;
-    case 0: 
-      this.a.j();
-      return;
-    case 1: 
-      QQSettingMe.a(this.a);
-      return;
-    case 2: 
-      this.a.u();
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
+      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(false);
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
       return;
     }
-    int i = ((Bundle)paramMessage.obj).getInt("type");
-    QLog.e("QQSettingRedesign", 1, "VipInfoHandler paySuccess " + i);
-    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).payHide == 1))
-    {
-      QQSettingMe.a(this.a).enable = 0;
-      QLog.e("QQSettingRedesign", 1, "VipInfoHandler paySuccess clear bubble");
-      ambd.a(this.a.a.c(), QQSettingMe.a(this.a));
-      sendEmptyMessage(2);
+    String str;
+    if (paramInt == 36) {
+      str = this.a.getString(2131695170);
     }
-    bdwk.a(this.a.a, "last_pull_pay_rule", 0L);
-    paramMessage = ((TicketManager)this.a.a.getManager(2)).getSkey(this.a.a.getCurrentAccountUin());
-    ((ambd)this.a.a.a(27)).a(paramMessage, this.a.a.c());
+    for (;;)
+    {
+      QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+      return;
+      str = paramString;
+      if (TextUtils.isEmpty(paramString)) {
+        str = this.a.getString(2131695169);
+      }
+    }
   }
 }
 

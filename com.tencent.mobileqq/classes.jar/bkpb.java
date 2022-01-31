@@ -1,14 +1,8 @@
-import android.support.annotation.Nullable;
+import java.io.File;
 
-class bkpb
-  implements bmac<bktt>
+public class bkpb
 {
-  bkpb(bkpa parambkpa) {}
-  
-  public void a(@Nullable bktt parambktt)
-  {
-    bkpa.a(this.a, parambktt);
-  }
+  public static final String a = bkpd.f + File.separator + "camera_emo_default_template.json";
 }
 
 

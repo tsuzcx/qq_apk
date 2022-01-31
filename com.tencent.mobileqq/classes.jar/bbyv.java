@@ -1,67 +1,60 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Collections;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
 
 public class bbyv
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public static String a(List<Integer> paramList)
+  private bbyv(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    int j = 0;
-    int k = paramList.size();
-    Collections.sort(paramList);
-    if (k == 1) {
-      return String.format(alpo.a(2131706068), new Object[] { Integer.valueOf(((Integer)paramList.get(0)).intValue() + 1) });
-    }
-    int i = 0;
-    if (i < k - 1) {
-      if (((Integer)paramList.get(i)).intValue() + 1 == ((Integer)paramList.get(i + 1)).intValue()) {}
-    }
-    for (i = 0;; i = 1)
+    float f2 = 0.0F;
+    BaseScaleAndMoveBitmapView.a(this.a, false);
+    float f3 = this.a.jdField_a_of_type_Float - paramFloat1 / this.a.c;
+    float f4 = this.a.b;
+    float f5 = paramFloat2 / this.a.c;
+    float f1;
+    if ((paramFloat1 < 0.0F) && (this.a.a(0.0F) >= 0.0F))
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("第");
-      if (i != 0) {
-        localStringBuilder.append(((Integer)paramList.get(0)).intValue() + 1).append("-").append(((Integer)paramList.get(k - 1)).intValue() + 1).append("段");
+      f1 = 0.0F;
+      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c > this.a.getHeight()) {
+        break label247;
       }
-      for (;;)
-      {
-        return localStringBuilder.toString();
-        i += 1;
+      paramFloat1 = (this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c;
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Float = f1;
+      this.a.b = paramFloat1;
+      this.a.invalidate();
+      return true;
+      f1 = f3;
+      if (paramFloat1 <= 0.0F) {
         break;
-        while ((j < k) && (j < 3))
-        {
-          localStringBuilder.append(((Integer)paramList.get(j)).intValue() + 1);
-          if ((j + 1 < k) && (j + 1 < 3)) {
-            localStringBuilder.append("、");
-          }
-          j += 1;
-        }
-        if (k > 3) {
-          localStringBuilder.append("等").append(k).append("段");
-        } else {
-          localStringBuilder.append("段");
-        }
+      }
+      f1 = f3;
+      if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) > this.a.getWidth()) {
+        break;
+      }
+      f1 = this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      break;
+      label247:
+      if (paramFloat2 < 0.0F)
+      {
+        paramFloat1 = f2;
+        if (this.a.b(0.0F) >= 0.0F) {}
+      }
+      else if ((paramFloat2 > 0.0F) && (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) <= this.a.getHeight()))
+      {
+        paramFloat1 = this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      }
+      else
+      {
+        paramFloat1 = f4 - f5;
       }
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    paramQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + paramQQAppInterface.c(), 0).edit().putBoolean("ReciteGuideTipShow", paramBoolean).commit();
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    return paramQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + paramQQAppInterface.c(), 0).getBoolean("ReciteGuideTipShow", false);
   }
 }
 

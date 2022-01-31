@@ -12,8 +12,8 @@ public class mmi
   
   public mmi(View paramView)
   {
-    this.a = paramView.findViewById(2131372851);
-    this.b = paramView.getRootView().findViewById(2131372852);
+    this.a = paramView.findViewById(2131372877);
+    this.b = paramView.getRootView().findViewById(2131372878);
   }
   
   static void a(View paramView, int paramInt)

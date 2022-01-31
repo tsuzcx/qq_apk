@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import aqen;
-import bcxb;
+import aqiw;
+import bdbk;
 import com.nineoldandroids.animation.AnimatorInflater;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.tencent.common.app.AppInterface;
@@ -48,10 +48,10 @@ public class MatchingView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131560935, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView = ((RoundImageView)findViewById(2131370089));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370090));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370094);
+    LayoutInflater.from(paramContext).inflate(2131560953, this, true);
+    this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView = ((RoundImageView)findViewById(2131370108));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370109));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370113);
     this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView.setBorderColor(-1);
     this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView.setBorderWidth(6);
     c();
@@ -62,8 +62,8 @@ public class MatchingView
   {
     Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
     String str = ((QQAppInterface)localObject).getCurrentAccountUin();
-    Drawable localDrawable = bcxb.a(1, 4);
-    localObject = bcxb.a((AppInterface)localObject, 1, str, 3, localDrawable, localDrawable, null);
+    Drawable localDrawable = bdbk.a(1, 4);
+    localObject = bdbk.a((AppInterface)localObject, 1, str, 3, localDrawable, localDrawable, null);
     this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView.setImageDrawable((Drawable)localObject);
   }
   
@@ -79,7 +79,7 @@ public class MatchingView
       this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet = ((AnimatorSet)AnimatorInflater.loadAnimator(getContext(), 2130903040));
       this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.setTarget(this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView);
       this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.setStartDelay(1000L);
-      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.addListener(new aqen(this));
+      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.addListener(new aqiw(this));
     }
     if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) {
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();

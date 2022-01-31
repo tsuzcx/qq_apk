@@ -1,94 +1,109 @@
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import android.graphics.Path;
+import android.view.View;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class auxf
-  implements auxd
+public class auxf
+  extends astg
 {
-  private IBinder a;
-  
-  auxf(IBinder paramIBinder)
+  public auxf(HeartLayout paramHeartLayout)
   {
-    this.a = paramIBinder;
+    super(paramHeartLayout);
   }
   
-  public Message a(Message paramMessage)
+  public Path a(int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger, View paramView)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
-    {
-      try
+    Random localRandom = this.jdField_a_of_type_JavaUtilRandom;
+    Path localPath = new Path();
+    label95:
+    label107:
+    int i;
+    int j;
+    int k;
+    int m;
+    if (!this.jdField_a_of_type_Asti.jdField_a_of_type_Boolean) {
+      if ((paramInt1 < 0) || (paramInt1 > paramView.getWidth()))
       {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-        if (paramMessage != null)
-        {
-          localParcel1.writeInt(1);
-          paramMessage.writeToParcel(localParcel1, 0);
-          this.a.transact(2, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramMessage = (Message)Message.CREATOR.createFromParcel(localParcel2);
-            return paramMessage;
-          }
+        this.jdField_a_of_type_Asti.jdField_a_of_type_Int = ((paramView.getWidth() - (int)(20.0F * this.jdField_a_of_type_Asti.jdField_a_of_type_Float)) / 2);
+        if ((paramInt2 >= 0) && (paramInt2 <= paramView.getHeight())) {
+          break label415;
         }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
+        this.jdField_a_of_type_Asti.b = ((int)(20.0F * this.jdField_a_of_type_Asti.jdField_a_of_type_Float));
+        if (!this.jdField_a_of_type_JavaUtilRandom.nextBoolean()) {
+          break label447;
         }
-        paramMessage = null;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
+        paramInt1 = 1;
+        i = paramInt1 * (localRandom.nextInt(this.jdField_a_of_type_Asti.c) + this.jdField_a_of_type_Asti.d);
+        j = paramInt1 * (localRandom.nextInt(this.jdField_a_of_type_Asti.c) + this.jdField_a_of_type_Asti.d);
+        k = paramView.getHeight() - this.jdField_a_of_type_Asti.b;
+        paramInt1 = (int)(paramAtomicInteger.intValue() * 4 * this.jdField_a_of_type_Asti.jdField_a_of_type_Float);
+        paramInt2 = this.jdField_a_of_type_Asti.g;
+        paramInt2 = localRandom.nextInt(this.jdField_a_of_type_Asti.f) + (paramInt1 + paramInt2);
+        m = paramInt2 / this.jdField_a_of_type_Asti.e;
+        paramInt1 = k - paramInt2;
+        if (paramInt1 >= 0) {
+          break label666;
+        }
+        paramInt1 = 0;
       }
     }
-  }
-  
-  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
+    label653:
+    label666:
     for (;;)
     {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-        if (paramBasicTypeDataParcel != null)
-        {
-          localParcel1.writeInt(1);
-          paramBasicTypeDataParcel.writeToParcel(localParcel1, 0);
-          this.a.transact(1, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramBasicTypeDataParcel = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(localParcel2);
-            return paramBasicTypeDataParcel;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramBasicTypeDataParcel = null;
+      paramInt2 = k - paramInt2 / 2;
+      if (paramInt2 < 0) {
+        paramInt2 = 0;
       }
-      finally
+      for (;;)
       {
-        localParcel2.recycle();
-        localParcel1.recycle();
+        localPath.moveTo(this.jdField_a_of_type_Asti.jdField_a_of_type_Int, k);
+        localPath.cubicTo(this.jdField_a_of_type_Asti.jdField_a_of_type_Int, k - m, this.jdField_a_of_type_Asti.jdField_a_of_type_Int + i, paramInt2 + m, this.jdField_a_of_type_Asti.jdField_a_of_type_Int + i, paramInt2);
+        localPath.moveTo(this.jdField_a_of_type_Asti.jdField_a_of_type_Int + i, paramInt2);
+        if (paramInt2 - m >= 0) {
+          localPath.cubicTo(this.jdField_a_of_type_Asti.jdField_a_of_type_Int + i, paramInt2 - m, this.jdField_a_of_type_Asti.jdField_a_of_type_Int + j, paramInt1 + m, this.jdField_a_of_type_Asti.jdField_a_of_type_Int + j, paramInt1);
+        }
+        return localPath;
+        this.jdField_a_of_type_Asti.jdField_a_of_type_Int = (paramInt1 - (int)(20.0F * this.jdField_a_of_type_Asti.jdField_a_of_type_Float / 3.0F));
+        break;
+        label415:
+        this.jdField_a_of_type_Asti.b = (paramView.getHeight() - paramInt2 + (int)(20.0F * this.jdField_a_of_type_Asti.jdField_a_of_type_Float / 3.0F));
+        break label95;
+        label447:
+        paramInt1 = -1;
+        break label107;
+        k = this.jdField_a_of_type_Asti.l;
+        m = this.jdField_a_of_type_Asti.k;
+        int n = this.jdField_a_of_type_Asti.h / 2;
+        int i1;
+        int i2;
+        int i3;
+        int i4;
+        if (this.jdField_a_of_type_JavaUtilRandom.nextBoolean())
+        {
+          i = 1;
+          i1 = localRandom.nextInt(this.jdField_a_of_type_Asti.c);
+          i2 = this.jdField_a_of_type_Asti.d;
+          i3 = localRandom.nextInt(this.jdField_a_of_type_Asti.c);
+          i4 = this.jdField_a_of_type_Asti.d;
+          j = Math.abs(k - paramInt2) / (this.jdField_a_of_type_JavaUtilRandom.nextInt(3) + 2);
+          if (k <= paramInt2) {
+            break label653;
+          }
+          j = k - j;
+        }
+        for (;;)
+        {
+          localPath.moveTo(paramInt1 - this.jdField_a_of_type_Asti.h / 2, paramInt2 - this.jdField_a_of_type_Asti.i / 2);
+          localPath.cubicTo(i * (i1 + i2) + paramInt1, j, paramInt1 - i * (i3 + i4), j, m - n, k);
+          return localPath;
+          i = -1;
+          break;
+          j += k;
+        }
       }
     }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
   }
 }
 

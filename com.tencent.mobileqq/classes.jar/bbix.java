@@ -1,81 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter.2.1;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.mobileqq.troop.createNewTroop.RelationTroopEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.tribe.view.TEditText;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class bbix
-  implements View.OnClickListener
+  implements bbeu
 {
-  bbix(bbiv parambbiv) {}
+  public bbix(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    QLog.d("createNewTroop.ContactListAdapter", 2, "----->onBuddyListClick");
-    bbjd localbbjd = (bbjd)paramView.getTag();
-    String str;
-    boolean bool;
-    if ((localbbjd != null) && (localbbjd.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localbbjd.jdField_a_of_type_JavaLangObject != null))
-    {
-      str = "";
-      if (!(localbbjd.jdField_a_of_type_JavaLangObject instanceof Friends)) {
-        break label256;
-      }
-      str = ((Friends)localbbjd.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
-      if (localbbjd.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
-      {
-        if (!localbbjd.jdField_a_of_type_JavaLangString.startsWith("+")) {
-          break label320;
-        }
-        bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(localbbjd.jdField_a_of_type_JavaLangString, str, 4, "-1");
-        label108:
-        if (QLog.isDevelopLevel()) {
-          QLog.d("createNewTroop.ContactListAdapter", 2, "----->onBuddyListClick = " + bool);
-        }
-        if (localbbjd.jdField_a_of_type_Long == 1007L) {
-          this.a.jdField_a_of_type_Bbjz.b();
-        }
-        localbbjd.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-        if (AppSetting.c)
-        {
-          if (!localbbjd.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-            break label343;
-          }
-          paramView.setContentDescription(localbbjd.d.getText().toString() + alpo.a(2131702880));
-        }
-      }
-    }
+    int k = 1;
+    if (this.a.b.getText().length() <= 0) {}
     for (;;)
     {
-      this.a.a();
-      if (AppSetting.c) {
-        paramView.postDelayed(new ContactListAdapter.2.1(this, paramView), 2000L);
-      }
       return;
-      label256:
-      if ((localbbjd.jdField_a_of_type_JavaLangObject instanceof PhoneContact))
+      if (paramInt1 < 0)
       {
-        str = ((PhoneContact)localbbjd.jdField_a_of_type_JavaLangObject).name;
-        break;
+        if (paramInt2 > this.a.G.length() + 1) {}
+        for (;;)
+        {
+          this.a.b.setSelection(paramInt2);
+          return;
+          paramInt2 = this.a.G.length() + 1;
+        }
       }
-      if (!(localbbjd.jdField_a_of_type_JavaLangObject instanceof RelationTroopEntity)) {
-        break;
+      if (paramInt2 < 0)
+      {
+        if (paramInt1 > this.a.G.length() + 1) {}
+        for (;;)
+        {
+          this.a.b.setSelection(paramInt1);
+          return;
+          paramInt1 = this.a.G.length() + 1;
+        }
       }
-      paramView = (RelationTroopEntity)localbbjd.jdField_a_of_type_JavaLangObject;
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(paramView.troopInfo.troopuin);
-      return;
-      label320:
-      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(localbbjd.jdField_a_of_type_JavaLangString, str, 0, "-1");
-      break label108;
-      label343:
-      paramView.setContentDescription(localbbjd.d.getText().toString() + alpo.a(2131702879));
+      if (!TextUtils.isEmpty(this.a.G))
+      {
+        int i = 0;
+        int j = paramInt1;
+        if (paramInt1 < this.a.G.length() + 1)
+        {
+          j = this.a.G.length() + 1;
+          i = 1;
+        }
+        if (paramInt2 < this.a.G.length() + 1) {
+          paramInt2 = this.a.G.length() + 1;
+        }
+        for (paramInt1 = k; paramInt1 != 0; paramInt1 = i)
+        {
+          this.a.b.setSelection(j, paramInt2);
+          return;
+        }
+      }
     }
   }
 }

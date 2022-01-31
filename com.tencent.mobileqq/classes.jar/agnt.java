@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
 
 class agnt
-  implements DialogInterface.OnClickListener
+  extends alwx
 {
-  agnt(agnp paramagnp) {}
+  agnt(agnn paramagnn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void f(boolean paramBoolean)
   {
-    aekt.n = true;
-    aepf.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, null);
-    azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ADC9", "0X800ADC9", 0, 0, "", "", "", "");
+    super.f(paramBoolean);
+    this.a.a.sendEmptyMessage(0);
   }
 }
 

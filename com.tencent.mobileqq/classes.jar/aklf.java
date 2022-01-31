@@ -1,26 +1,24 @@
-import android.view.SurfaceHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aklf
+class aklf
+  implements View.OnClickListener
 {
-  public int a;
-  public SurfaceHolder a;
-  public int b;
-  public int c;
+  aklf(akld paramakld) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    StringBuffer localStringBuffer = new StringBuffer("SurfaceCallBackData{");
-    localStringBuffer.append("holder=").append(this.jdField_a_of_type_AndroidViewSurfaceHolder);
-    localStringBuffer.append(", format=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", w=").append(this.b);
-    localStringBuffer.append(", h=").append(this.c);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    paramView = paramView.getTag();
+    if (!(paramView instanceof bbph)) {
+      return;
+    }
+    paramView = (bbph)paramView;
+    this.a.a.a(paramView.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aklf
  * JD-Core Version:    0.7.0.1
  */

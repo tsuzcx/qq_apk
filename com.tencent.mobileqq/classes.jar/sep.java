@@ -14,7 +14,7 @@ class sep
     if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
       this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
     }
-    bjxj.a(seo.a(this.jdField_a_of_type_Seo).mChannelCoverId, true);
+    bkbq.a(seo.a(this.jdField_a_of_type_Seo).mChannelCoverId, true);
     seo.a(this.jdField_a_of_type_Seo);
   }
 }

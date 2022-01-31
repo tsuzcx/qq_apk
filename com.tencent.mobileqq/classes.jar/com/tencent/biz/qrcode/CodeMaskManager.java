@@ -1,6 +1,6 @@
 package com.tencent.biz.qrcode;
 
-import aljq;
+import alof;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Display;
 import android.view.WindowManager;
-import bdag;
+import bdep;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
@@ -22,7 +22,7 @@ import java.util.Vector;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xtu;
+import xyd;
 
 public class CodeMaskManager
 {
@@ -39,9 +39,9 @@ public class CodeMaskManager
   
   static
   {
-    if (bdag.a())
+    if (bdep.a())
     {
-      jdField_a_of_type_JavaLangString = aljq.aX + "qbiz/qrcode/";
+      jdField_a_of_type_JavaLangString = alof.aX + "qbiz/qrcode/";
       return;
     }
   }
@@ -148,7 +148,7 @@ public class CodeMaskManager
     //   48: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   51: astore 6
     //   53: aload 6
-    //   55: invokestatic 182	bame:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   55: invokestatic 182	baqn:c	(Ljava/lang/String;)Ljava/lang/String;
     //   58: astore 7
     //   60: new 184	java/io/FileInputStream
     //   63: dup
@@ -216,7 +216,7 @@ public class CodeMaskManager
     //   176: new 160	java/io/IOException
     //   179: dup
     //   180: ldc 219
-    //   182: invokestatic 224	alpo:a	(I)Ljava/lang/String;
+    //   182: invokestatic 224	alud:a	(I)Ljava/lang/String;
     //   185: invokespecial 225	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   188: athrow
     //   189: astore 5
@@ -382,7 +382,7 @@ public class CodeMaskManager
     Bundle localBundle = new Bundle();
     if (paramInt == 1)
     {
-      localBundle.putInt("qrbkgRes", 2130842834);
+      localBundle.putInt("qrbkgRes", 2130842847);
       localBundle.putInt("bkgRes", 0);
       localBundle.putInt("nameClr", -16777216);
       localBundle.putInt("tipsClr", -8947849);
@@ -670,7 +670,7 @@ public class CodeMaskManager
     this.jdField_a_of_type_JavaUtilList.clear();
   }
   
-  public void a(xtu paramxtu, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void a(xyd paramxyd, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     if (this.jdField_a_of_type_Boolean) {
       return;
@@ -693,7 +693,7 @@ public class CodeMaskManager
       for (;;)
       {
         this.jdField_a_of_type_AndroidOsBundle.putInt("type", 1);
-        paramxtu.a(a(this.jdField_a_of_type_AndroidOsBundle));
+        paramxyd.a(a(this.jdField_a_of_type_AndroidOsBundle));
         return;
         label150:
         if (paramInt == 1) {
@@ -714,12 +714,12 @@ public class CodeMaskManager
     Object localObject = (Bundle)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     if (((Bundle)localObject).getInt("type") == 1)
     {
-      paramxtu.a(a((Bundle)localObject));
+      paramxyd.a(a((Bundle)localObject));
       b();
       return;
     }
-    localObject = new CodeMaskManager.PrepareBundleTask(this, paramxtu, (Bundle)localObject);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new CodeMaskManager.2(this, (CodeMaskManager.PrepareBundleTask)localObject, paramxtu), 10000L);
+    localObject = new CodeMaskManager.PrepareBundleTask(this, paramxyd, (Bundle)localObject);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new CodeMaskManager.2(this, (CodeMaskManager.PrepareBundleTask)localObject, paramxyd), 10000L);
     ((CodeMaskManager.PrepareBundleTask)localObject).start();
   }
 }

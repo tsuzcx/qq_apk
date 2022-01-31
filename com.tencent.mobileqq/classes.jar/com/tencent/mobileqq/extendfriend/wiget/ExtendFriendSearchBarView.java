@@ -15,13 +15,13 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aqdt;
-import aqdu;
-import aqdx;
-import aqdy;
-import aqdz;
-import aqea;
-import aqeb;
+import aqic;
+import aqid;
+import aqig;
+import aqih;
+import aqii;
+import aqij;
+import aqik;
 import com.nineoldandroids.animation.Animator.AnimatorListener;
 import com.nineoldandroids.animation.ValueAnimator;
 import com.tencent.qphone.base.util.QLog;
@@ -30,13 +30,13 @@ import mww;
 
 public class ExtendFriendSearchBarView
   extends FrameLayout
-  implements View.OnClickListener, aqdt
+  implements View.OnClickListener, aqic
 {
   private int jdField_a_of_type_Int = -1;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new LinearInterpolator();
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private aqeb jdField_a_of_type_Aqeb;
+  private aqik jdField_a_of_type_Aqik;
   private Animator.AnimatorListener jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener;
   private ValueAnimator jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator;
   private ExtendFriendHorizontalTagsView jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView;
@@ -59,7 +59,7 @@ public class ExtendFriendSearchBarView
   public ExtendFriendSearchBarView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    inflate(paramContext, 2131560940, this);
+    inflate(paramContext, 2131560958, this);
     d();
   }
   
@@ -83,8 +83,8 @@ public class ExtendFriendSearchBarView
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(200L);
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new aqdx(this, localLayoutParams, paramView));
-      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new aqdy(this);
+      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new aqig(this, localLayoutParams, paramView));
+      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new aqih(this);
     }
     if ((this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator != null) && (this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.isRunning()))
     {
@@ -111,8 +111,8 @@ public class ExtendFriendSearchBarView
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(200L);
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new aqdz(this, localLayoutParams, paramView));
-      this.jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new aqea(this, paramView);
+      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new aqii(this, localLayoutParams, paramView));
+      this.jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new aqij(this, paramView);
     }
     if ((this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator != null) && (this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.isRunning()))
     {
@@ -127,10 +127,10 @@ public class ExtendFriendSearchBarView
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376169));
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetInterceptHorizontalScrollView = ((InterceptHorizontalScrollView)findViewById(2131376230));
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView = ((ExtendFriendHorizontalTagsView)findViewById(2131376226));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376188));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376223));
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetInterceptHorizontalScrollView = ((InterceptHorizontalScrollView)findViewById(2131376284));
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView = ((ExtendFriendHorizontalTagsView)findViewById(2131376280));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376242));
     if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView != null) {
       this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView.setOnItemClickListener(this);
     }
@@ -196,7 +196,7 @@ public class ExtendFriendSearchBarView
       if (i < this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView.getChildCount())
       {
         localObject1 = (TextView)this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView.getChildAt(i);
-        if ((!(((TextView)localObject1).getTag() instanceof aqdu)) || (!paramString.equals(((aqdu)((TextView)localObject1).getTag()).a))) {}
+        if ((!(((TextView)localObject1).getTag() instanceof aqid)) || (!paramString.equals(((aqid)((TextView)localObject1).getTag()).a))) {}
       }
     }
     for (int i = ((TextView)localObject1).getRight();; i = 0)
@@ -213,8 +213,8 @@ public class ExtendFriendSearchBarView
   
   public void a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Aqeb != null) {
-      this.jdField_a_of_type_Aqeb.a(paramString, paramInt);
+    if (this.jdField_a_of_type_Aqik != null) {
+      this.jdField_a_of_type_Aqik.a(paramString, paramInt);
     }
   }
   
@@ -236,14 +236,14 @@ public class ExtendFriendSearchBarView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Aqeb != null) {
-      this.jdField_a_of_type_Aqeb.b();
+    if (this.jdField_a_of_type_Aqik != null) {
+      this.jdField_a_of_type_Aqik.b();
     }
   }
   
-  public void setItemClickListener(aqeb paramaqeb)
+  public void setItemClickListener(aqik paramaqik)
   {
-    this.jdField_a_of_type_Aqeb = paramaqeb;
+    this.jdField_a_of_type_Aqik = paramaqik;
   }
   
   public void setSearchButtonEnable(boolean paramBoolean)

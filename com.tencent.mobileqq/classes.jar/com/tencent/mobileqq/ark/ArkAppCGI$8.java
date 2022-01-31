@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ark;
 
-import anit;
-import anjf;
-import baps;
-import bapv;
+import annc;
+import anno;
+import baub;
+import baue;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
 import ndk;
@@ -11,17 +11,17 @@ import ndk;
 public class ArkAppCGI$8
   implements Runnable
 {
-  public ArkAppCGI$8(anit paramanit, QQAppInterface paramQQAppInterface, anjf paramanjf, baps parambaps) {}
+  public ArkAppCGI$8(annc paramannc, QQAppInterface paramQQAppInterface, anno paramanno, baub parambaub) {}
   
   public void run()
   {
-    if ((anit.a(this.this$0) == null) || (!ndk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())))
+    if ((annc.a(this.this$0) == null) || (!ndk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())))
     {
       ArkAppCenter.c("ArkApp.ArkAppCGI", "runTask_retry, network not available");
-      anit.a(this.this$0, this.jdField_a_of_type_Anjf, false, null);
+      annc.a(this.this$0, this.jdField_a_of_type_Anno, false, null);
       return;
     }
-    anit.a(this.this$0).a(this.jdField_a_of_type_Baps);
+    annc.a(this.this$0).a(this.jdField_a_of_type_Baub);
   }
 }
 

@@ -1,31 +1,24 @@
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.WeiyunSaveTipsFactory.1;
 
-class bkjz
-  extends BroadcastReceiver
+public class bkjz
+  implements View.OnTouchListener
 {
-  bkjz(bkjy parambkjy) {}
+  public bkjz(WeiyunSaveTipsFactory.1 param1) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ("tencent.video.q2v.startUploadPTV".equals(paramIntent.getAction()))
+    if (paramMotionEvent.getAction() == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMWebEffectCameraCaptureUnit", 2, "receive ACTION_BLESS_UPLOAD_PTV.");
-      }
-      switch (paramIntent.getIntExtra("broadcastType", 1))
-      {
-      }
+      QLog.d("hehe", 2, new Object[] { "", "toast touch event" });
+      bkjy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext());
+      return true;
     }
-    do
-    {
-      return;
-      paramContext = this.a.a.a();
-    } while ((paramContext == null) || (paramContext.isFinishing()));
-    paramContext.finish();
+    return false;
   }
 }
 

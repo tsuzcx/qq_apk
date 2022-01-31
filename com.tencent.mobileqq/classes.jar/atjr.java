@@ -1,34 +1,16 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
-import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
-class atjr
-  implements Animator.AnimatorListener
+public class atjr
+  implements DialogInterface.OnCancelListener
 {
-  atjr(atjn paramatjn, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public atjr(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Atjn.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_Atjn.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
-    this.jdField_a_of_type_Atjn.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
-    this.jdField_a_of_type_Atjn.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
-    this.jdField_a_of_type_Atjn.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: -1})");
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Atjn.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_Atjn.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
-    this.jdField_a_of_type_Atjn.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
-    this.jdField_a_of_type_Atjn.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
-    this.jdField_a_of_type_Atjn.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

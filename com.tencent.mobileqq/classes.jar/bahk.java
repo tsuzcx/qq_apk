@@ -1,16 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.content.Intent;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare.2;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare.2.1;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
-class bahk
-  implements View.OnClickListener
+public class bahk
+  implements bfah
 {
-  bahk(bahd parambahd) {}
+  public bahk(TeamWorkForceShare.2.1 param1) {}
   
-  public void onClick(View paramView)
+  public void a(BaseResp paramBaseResp)
   {
-    this.a.a.setText("");
-    this.a.c();
+    if ((TeamWorkForceShare.b(this.a.a.this$0) == null) || (!TeamWorkForceShare.b(this.a.a.this$0).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    QLog.d(TeamWorkForceShare.a(), 1, "wx rsp = " + paramBaseResp.errCode);
+    if (this.a.a.a) {}
+    for (byte b = 86;; b = 120)
+    {
+      TeamWorkForceShare.a(this.a.a.this$0).onActivityResult(new Intent(), b, paramBaseResp.errCode);
+      WXShareHelper.a().b(this);
+      return;
+    }
   }
 }
 

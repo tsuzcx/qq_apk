@@ -1,14 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class ahsn
-  implements DialogInterface.OnClickListener
+  implements ahvu
 {
-  ahsn(ahsh paramahsh, int paramInt) {}
+  ahsn(ahsi paramahsi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public long a()
   {
-    ahsh.a(this.jdField_a_of_type_Ahsh, this.jdField_a_of_type_Int);
+    return ahsi.a(this.a);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.script;
 
-import akwl;
+import alba;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.apollo.view.ApolloPanel;
@@ -19,7 +19,7 @@ class SpriteUIHandler$4
       if (SpriteUIHandler.a(this.this$0).a() == null) {
         return;
       }
-      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.this$0).a().a().findViewById(2131375981);
+      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.this$0).a().a().findViewById(2131376034);
       if (1 == this.a)
       {
         if (localXPanelContainer.a() != 21) {

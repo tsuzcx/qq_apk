@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aeqd;
+import aeus;
 import android.graphics.drawable.Drawable;
 
 public class AioAnimationDetector$1
   implements Runnable
 {
-  public AioAnimationDetector$1(aeqd paramaeqd, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt) {}
+  public AioAnimationDetector$1(aeus paramaeus, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt) {}
   
   public void run()
   {

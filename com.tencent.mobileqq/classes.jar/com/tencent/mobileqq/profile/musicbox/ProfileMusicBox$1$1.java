@@ -2,8 +2,8 @@ package com.tencent.mobileqq.profile.musicbox;
 
 import android.view.View;
 import android.widget.TextView;
-import awom;
-import bdkf;
+import awsv;
+import bdoo;
 
 class ProfileMusicBox$1$1
   implements Runnable
@@ -12,15 +12,15 @@ class ProfileMusicBox$1$1
   
   public void run()
   {
-    TextView localTextView = (TextView)awom.a(this.a.this$0).findViewById(2131377706);
+    TextView localTextView = (TextView)awsv.a(this.a.this$0).findViewById(2131377760);
     if (localTextView != null)
     {
-      if (!awom.a(this.a.this$0)) {
+      if (!awsv.a(this.a.this$0)) {
         break label79;
       }
-      localTextView.setCompoundDrawablePadding(bdkf.b(3.0F));
-      localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130841879, 0);
-      if (awom.b(this.a.this$0)) {
+      localTextView.setCompoundDrawablePadding(bdoo.b(3.0F));
+      localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130841892, 0);
+      if (awsv.b(this.a.this$0)) {
         this.a.this$0.a(true);
       }
     }

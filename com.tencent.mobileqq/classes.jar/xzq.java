@@ -1,23 +1,16 @@
-import android.app.Activity;
-import android.graphics.drawable.AnimationDrawable;
-import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.3.1;
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
 
 public class xzq
-  implements ygu
+  implements DialogInterface.OnCancelListener
 {
-  xzq(xzn paramxzn) {}
+  public xzq(QRLoginAuthActivity paramQRLoginAuthActivity) {}
   
-  public void a() {}
-  
-  public void a(AnimationDrawable paramAnimationDrawable)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (xzn.a(this.a) != null) {
-      xzn.f(this.a).runOnUiThread(new DetailBaseAdapter.3.1(this, paramAnimationDrawable));
-    }
+    this.a.finish();
   }
-  
-  public void a(QQAnimationDrawable paramQQAnimationDrawable) {}
 }
 
 

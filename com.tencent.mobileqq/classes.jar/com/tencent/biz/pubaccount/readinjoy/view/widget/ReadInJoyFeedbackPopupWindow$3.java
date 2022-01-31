@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.view.widget;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
-import bfhi;
+import bflr;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -44,7 +44,7 @@ public class ReadInJoyFeedbackPopupWindow$3
         if (i != 0)
         {
           String str5 = String.valueOf(NetConnInfoCenter.getServerTime());
-          String str2 = bfhi.b(str1 + 200 + str5 + "jubao@article@123");
+          String str2 = bflr.b(str1 + 200 + str5 + "jubao@article@123");
           localObject2 = str2;
           if (str2 != null)
           {

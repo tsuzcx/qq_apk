@@ -1,36 +1,11 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.MemoriesFeedPlayInfo;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.ArrayList;
 
-class vln
-  extends QQUIEventReceiver<vlm, uyb>
+public abstract interface vln
 {
-  public vln(@NonNull vlm paramvlm)
-  {
-    super(paramvlm);
-  }
+  public abstract void a();
   
-  public void a(@NonNull vlm paramvlm, @NonNull uyb paramuyb)
-  {
-    if ((!TextUtils.equals(vlm.a(paramvlm).mContext, paramuyb.jdField_a_of_type_JavaLangString)) || (vlm.a(paramvlm) == null)) {
-      return;
-    }
-    if (paramuyb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
-    {
-      wsv.a(this.TAG, "pull feedId list fail %s", paramuyb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg);
-      vlm.a(paramvlm).a(new ErrorMessage(paramuyb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, paramuyb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg), null, false);
-      return;
-    }
-    vlm.a(paramvlm).mIsEnd = paramuyb.jdField_a_of_type_Boolean;
-    vlm.a(paramvlm).b(new ErrorMessage(), vlm.b(paramuyb.jdField_a_of_type_JavaUtilList), paramuyb.jdField_a_of_type_Boolean);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uyb.class;
-  }
+  public abstract void a(ArrayList<StoryVideoItem> paramArrayList);
 }
 
 

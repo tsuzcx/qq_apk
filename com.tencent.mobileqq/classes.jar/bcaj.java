@@ -1,30 +1,17 @@
-import android.app.Activity;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioUploadCallback.1;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioUploadCallback.2;
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
 
 public class bcaj
-  implements bjyt
+  implements bcds
 {
-  public bbzo a;
+  public bcaj(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public bcaj(bcag parambcag, bbzo parambbzo)
+  public void a(View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bbzo = parambbzo;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Bbzo.g = 3;
-    this.jdField_a_of_type_Bbzo.c(paramString);
-    ((Activity)bcag.a(this.jdField_a_of_type_Bcag)).runOnUiThread(new AudioItem.AudioUploadCallback.1(this));
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Bbzo.g = 2;
-    ((Activity)bcag.a(this.jdField_a_of_type_Bcag)).runOnUiThread(new AudioItem.AudioUploadCallback.2(this));
+    if (paramBoolean) {
+      this.a.a(this.a.a.a());
+    }
   }
 }
 

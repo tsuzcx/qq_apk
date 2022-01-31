@@ -1,35 +1,23 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.2.1;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.2.2;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime;
 
-public class bdfj
-  implements ArkViewImplement.LoadCallback
+final class bdfj
+  implements auca
 {
-  bdfj(bdfh parambdfh) {}
-  
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    onLoadState(paramInt1);
-  }
-  
-  public void onLoadState(int paramInt)
-  {
-    WeakReference localWeakReference = new WeakReference(this.a);
-    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.1(this, localWeakReference, paramInt));
-    if (paramInt == 0) {}
+    switch (paramInt)
+    {
+    }
+    AppRuntime localAppRuntime;
     do
     {
       return;
-      bdfh.a(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQCustomArkDialog", 2, new Object[] { "arkView init finish,load state = ", Integer.valueOf(paramInt), ";outsideShowDialog = ", Boolean.valueOf(bdfh.a(this.a)), ";alreadyShowDialog:", Boolean.valueOf(bdfh.b(this.a)) });
-      }
-    } while (!bdfh.a(this.a));
-    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.2(this));
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(localAppRuntime instanceof QQAppInterface));
+    MediaPlayerManager.a((QQAppInterface)localAppRuntime).a(false);
   }
 }
 

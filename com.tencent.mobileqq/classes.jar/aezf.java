@@ -1,28 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
 
-class aezf
-  implements bhqd
+public class aezf
+  implements behs
 {
-  aezf(aezb paramaezb, ChatMessage paramChatMessage, bhpy parambhpy) {}
+  public aezf(ConfessHalfScreenActivity.ConfessBrowserFragment paramConfessBrowserFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public Object a(int paramInt)
   {
-    if (paramInt == 0)
+    switch (paramInt)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 3000) {
-        break label41;
-      }
-      arng.a("0X8005E4F");
+    default: 
+      return null;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aezb.e(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      label41:
-      arng.a("0X8005E4D");
-    }
+    return new aezg(this.a);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdRsp;
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import aail;
+import aana;
 import android.text.TextUtils;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -64,7 +64,7 @@ class RewardedVideoAdPlugin$4
           if ((!RewardedVideoAdPlugin.access$900(this.this$0).isValid()) || (TextUtils.isEmpty(paramJSONObject))) {
             break label431;
           }
-          aail.a().a(RewardedVideoAdPlugin.access$900(this.this$0));
+          aana.a().a(RewardedVideoAdPlugin.access$900(this.this$0));
           localObject = this.this$0;
           GdtAd localGdtAd = RewardedVideoAdPlugin.access$900(this.this$0);
           if (RewardedVideoAdPlugin.access$1100(this.this$0))

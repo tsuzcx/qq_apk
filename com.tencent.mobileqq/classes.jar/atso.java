@@ -1,477 +1,414 @@
-import android.util.Log;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.LocationShareController.4;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class atso
+  implements bdbc
 {
-  private static final atsq jdField_a_of_type_Atsq = new atsq(null);
-  private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("(?<=\\[).*?(?=\\])");
-  private static final Pattern b = Pattern.compile("(?<=\\()-?[0-9]*,-?[0-9]*(?=\\))");
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private ArrayList<atse> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private altm jdField_a_of_type_Altm;
+  private ameq jdField_a_of_type_Ameq;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private atpq jdField_a_of_type_Atpq;
+  private atpv jdField_a_of_type_Atpv = new atsp(this);
+  private atpw jdField_a_of_type_Atpw;
+  private atqp jdField_a_of_type_Atqp;
+  private atsy jdField_a_of_type_Atsy;
+  private atte jdField_a_of_type_Atte;
+  private bdbb jdField_a_of_type_Bdbb;
+  private bdbc jdField_a_of_type_Bdbc;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MapWidget jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget;
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler;
+  private HashMap<String, atsx> jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
+  private View b;
+  private View c;
   
-  public atso(String paramString)
+  public atso(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Atpw = atpw.a(paramQQAppInterface);
   }
   
-  private int a(String paramString)
+  private String a(String paramString)
   {
-    int j = 0;
-    paramString = paramString.split("\\:");
-    int i = j;
-    try
-    {
-      if (paramString.length == 2)
-      {
-        i = j;
-        if ("offset".equalsIgnoreCase(paramString[0])) {
-          i = Integer.parseInt(paramString[1].trim());
-        }
-      }
-      return i;
+    if (Long.parseLong(paramString) <= 0L) {
+      return paramString;
     }
-    catch (Exception paramString)
-    {
-      Log.e("ParsingQrc", paramString.toString());
+    String str = bdgc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, paramString, 0);
+    if (this.jdField_a_of_type_Atpq.a() == 0) {
+      str = ((alto)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(51)).e(paramString).getFriendNickWithAlias();
     }
-    return 0;
-  }
-  
-  private long a(String paramString, atse paramatse)
-  {
-    String[] arrayOfString = paramString.split("\\,");
-    if (arrayOfString.length < 2)
-    {
-      paramString = paramString.split("\\:");
-      if ((this.jdField_a_of_type_Int == 0) && (paramString[0].equalsIgnoreCase("offset"))) {
-        this.jdField_a_of_type_Int = Integer.parseInt(paramString[1]);
-      }
-    }
-    while (arrayOfString.length != 2) {
-      return -1L;
-    }
-    try
-    {
-      long l1 = Long.parseLong(arrayOfString[1]);
-      long l2 = Long.parseLong(arrayOfString[0]);
-      paramatse.jdField_b_of_type_Long = l1;
-      paramatse.jdField_a_of_type_Long = l2;
-      return l2;
-    }
-    catch (Exception paramString) {}
-    return -1L;
-  }
-  
-  private atsb a(String paramString, int paramInt1, int paramInt2, atsb paramatsb)
-  {
-    long l2 = 0L;
-    paramString = paramString.split("\\,");
-    if (paramString.length < 2) {}
-    while (paramString.length != 2) {
-      return null;
-    }
-    long l4 = Long.parseLong(paramString[1]);
-    long l3 = Long.parseLong(paramString[0]);
-    long l1 = l4;
-    if (l4 < 0L) {
-      l1 = 0L;
-    }
-    if (l3 < 0L) {}
     for (;;)
     {
-      return new atsb(l2, l1, paramInt1, paramInt2);
-      l2 = l3;
+      return str;
+      if (this.jdField_a_of_type_Atpq.a() == 1) {
+        str = bdgc.h(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_Atpq.a(), paramString);
+      }
     }
   }
   
-  private void a(String paramString)
+  private void a(Activity paramActivity)
   {
-    if ((paramString == null) || (paramString.equals(""))) {
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new atss(this, paramActivity));
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.setListener(new atst(this, paramActivity));
+    this.jdField_a_of_type_Bdbb = new bdbb(paramActivity, (AppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    this.jdField_a_of_type_Bdbb.a(this);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    a(paramQQAppInterface, paramInt, paramString, -1);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, new Object[] { "stopOnErrorSituationByReason: invoked. ", " uin: ", paramString, " reason: ", Integer.valueOf(paramInt2) });
+    }
+    atpq localatpq = new atpq(paramInt1, paramString);
+    atpw localatpw = atpw.a(paramQQAppInterface);
+    localatpw.a(localatpq, false);
+    localatpw.a.b();
+    ThreadManager.excute(new LocationShareController.4(paramQQAppInterface, paramInt1, paramString), 32, null, false);
+    atud.a(paramQQAppInterface, paramInt1, paramString, false);
+    localatpw.b(localatpq, paramInt2);
+    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+    {
+      paramQQAppInterface = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      if (paramQQAppInterface != null)
+      {
+        paramQQAppInterface = paramQQAppInterface.a();
+        if ((paramQQAppInterface == null) || (paramQQAppInterface.g() < 2)) {}
+      }
+    }
+    try
+    {
+      paramQQAppInterface.e(131072);
+      azqs.b(null, "CliOper", "", "", "0X800A8BC", "0X800A8BC", 0, 0, "", "0", "0", "");
       return;
     }
-    Object localObject3 = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString);
-    Object localObject2 = new ArrayList();
-    int i = -1;
-    int j = -1;
-    label36:
-    Object localObject1;
-    if (((Matcher)localObject3).find())
-    {
-      localObject1 = ((Matcher)localObject3).group();
-      if (localObject1 != null) {
-        break label396;
-      }
-      localObject1 = "";
-    }
-    label396:
-    for (;;)
+    catch (Throwable paramQQAppInterface)
     {
       for (;;)
       {
-        int k = paramString.indexOf("[" + (String)localObject1 + "]");
-        if ((j != -1) && (k - j > i + 2))
-        {
-          String str1 = paramString.substring(i + j + 2, k);
-          Iterator localIterator = ((ArrayList)localObject2).iterator();
-          while (localIterator.hasNext())
-          {
-            String str2 = (String)localIterator.next();
-            atse localatse = new atse();
-            if (a(str2, localatse) != -1L)
-            {
-              a(str1, localatse);
-              this.jdField_a_of_type_JavaUtilArrayList.add(localatse);
-            }
-          }
-          ((ArrayList)localObject2).clear();
-        }
-        ((ArrayList)localObject2).add(localObject1);
-        i = ((String)localObject1).length();
-        j = k;
-        break label36;
-        if (((ArrayList)localObject2).isEmpty()) {
-          break;
-        }
-        j = i + 2 + j;
-        i = j;
-        try
-        {
-          if (j > paramString.length()) {
-            i = paramString.length();
-          }
-          paramString = paramString.substring(i).trim();
-          if ((paramString.length() == 0) && (this.jdField_a_of_type_Int == 0))
-          {
-            paramString = ((ArrayList)localObject2).iterator();
-            do
-            {
-              if (!paramString.hasNext()) {
-                break;
-              }
-              i = a((String)paramString.next());
-            } while (i == 2147483647);
-            this.jdField_a_of_type_Int = i;
-            return;
-          }
-        }
-        catch (Exception paramString)
-        {
-          Log.e("ParsingQrc", paramString.toString());
-          return;
-        }
+        paramQQAppInterface.printStackTrace();
       }
-      localObject1 = ((ArrayList)localObject2).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (String)((Iterator)localObject1).next();
-        localObject3 = new atse();
-        if (a((String)localObject2, (atse)localObject3) != -1L)
-        {
-          a(paramString, (atse)localObject3);
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject3);
-        }
-      }
-      break;
     }
   }
   
-  private void a(String paramString, atse paramatse)
+  private void a(Integer paramInteger)
   {
-    label244:
+    if (!bdin.a())
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131694129, 0).a();
+      return;
+    }
+    int i;
+    Integer localInteger;
+    if (paramInteger == null)
+    {
+      i = 0;
+      localInteger = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(i);
+      if ((paramInteger == null) && (localInteger != null))
+      {
+        if (localInteger.intValue() != 3) {
+          break label141;
+        }
+        azqs.b(null, "CliOper", "", "", "0X800A96C", "0X800A96C", 1, 0, "", "0", "0", "");
+      }
+    }
     for (;;)
     {
-      ArrayList localArrayList;
-      try
-      {
-        paramatse.jdField_a_of_type_JavaLangString = "";
-        if (paramString == null) {
-          break;
-        }
-        if (paramString.equals("")) {
-          return;
-        }
-        Matcher localMatcher = b.matcher(paramString);
-        localArrayList = new ArrayList();
-        Object localObject1 = "";
-        if (localMatcher.find())
-        {
-          Object localObject2 = localMatcher.group();
-          if (localObject2 != null) {
-            break label244;
-          }
-          localObject2 = "";
-          int i = paramString.indexOf("(" + (String)localObject2 + ")");
-          int j = ((String)localObject1).length();
-          String str1 = (String)localObject1 + paramString.substring(0, i);
-          String str2 = paramString.substring(i + ((String)localObject2).length() + 2, paramString.length());
-          paramString = null;
-          if (localArrayList.size() > 0) {
-            paramString = (atsb)localArrayList.get(localArrayList.size() - 1);
-          }
-          localObject2 = a((String)localObject2, j, str1.length(), paramString);
-          localObject1 = str1;
-          paramString = str2;
-          if (localObject2 == null) {
-            continue;
-          }
-          localArrayList.add(localObject2);
-          localObject1 = str1;
-          paramString = str2;
-          continue;
-        }
-        paramatse.jdField_a_of_type_JavaLangString = ((String)localObject1);
+      if (localInteger == null) {
+        break label185;
       }
-      catch (Exception paramString)
-      {
-        Log.e("ParsingQrc", "", paramString);
-        return;
+      this.c.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Atsy.a(localInteger.intValue());
+      this.jdField_a_of_type_Atte.b();
+      this.jdField_a_of_type_Atsy.a();
+      return;
+      i = paramInteger.intValue();
+      break;
+      label141:
+      if (localInteger.intValue() == 1) {
+        azqs.b(null, "CliOper", "", "", "0X800A96C", "0X800A96C", 2, 0, "", "0", "0", "");
       }
-      paramatse.jdField_b_of_type_JavaUtilArrayList = localArrayList;
+    }
+    label185:
+    paramInteger = new attu();
+    paramInteger.a = Integer.valueOf(i);
+    a(false, paramInteger);
+  }
+  
+  private void a(boolean paramBoolean, attu paramattu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "[venue] finishRoute: called. success: " + paramBoolean + " routeType: " + paramattu.a);
+    }
+    LocationRoom.Venue localVenue = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a();
+    if (localVenue == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("LocationShareController", 2, "[venue] finishRoute: called. venue null");
+      }
+      e();
+      return;
+    }
+    if (paramattu.a != null) {
+      if (paramBoolean) {
+        this.jdField_a_of_type_Atsy.a(paramattu, localVenue);
+      }
+    }
+    for (;;)
+    {
+      this.c.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Atte.b();
+      this.jdField_a_of_type_Atsy.a();
+      return;
+      this.jdField_a_of_type_Atsy.a(paramattu);
+      continue;
+      this.jdField_a_of_type_Atsy.a(paramattu);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, "路径规划失败，请稍后重试", 1).a();
+    }
+  }
+  
+  private void b(LocationRoom.Venue paramVenue)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "[venue] showVenue: called.");
+    }
+    this.c.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_Atte.a(paramVenue);
+    this.jdField_a_of_type_Atsy.b();
+    this.jdField_a_of_type_Atte.a();
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_Altm = new atsq(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Altm);
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_Ameq = new atsr(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ameq);
+  }
+  
+  private void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "[venue] hideVenueAndRoute: called.");
+    }
+    this.c.setVisibility(4);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_Atte.b();
+    this.jdField_a_of_type_Atsy.b();
+  }
+  
+  private void f()
+  {
+    b(null);
+  }
+  
+  private void g()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new atsw(this);
+    AppNetConnInfo.registerConnectionChangeReceiver(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+  }
+  
+  private void h()
+  {
+    if (this.jdField_a_of_type_Atpq != null)
+    {
+      atqr.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Atpw.a(), this.jdField_a_of_type_Atpq.a(), this.jdField_a_of_type_Atpq.a());
+      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Atpq.a(), this.jdField_a_of_type_Atpq.a(), 2);
+    }
+  }
+  
+  public Bitmap a(String paramString)
+  {
+    Object localObject2 = (atsx)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    long l = System.currentTimeMillis();
+    Object localObject1;
+    if (localObject2 != null)
+    {
+      if ((l - ((atsx)localObject2).jdField_a_of_type_Long < 4000L) && (((atsx)localObject2).jdField_a_of_type_AndroidGraphicsBitmap != null)) {
+        return ((atsx)localObject2).jdField_a_of_type_AndroidGraphicsBitmap;
+      }
+      localObject1 = localObject2;
+      if (l - ((atsx)localObject2).b < 2000L) {
+        return null;
+      }
+    }
+    else
+    {
+      localObject1 = new atsx(null);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject1);
+    }
+    ((atsx)localObject1).b = l;
+    localObject2 = this.jdField_a_of_type_Bdbb.a(1, paramString);
+    if (localObject2 == null) {
+      this.jdField_a_of_type_Bdbb.a(paramString, 200, false, 1, true, (byte)0, 4);
+    }
+    for (;;)
+    {
+      return localObject2;
+      ((atsx)localObject1).jdField_a_of_type_Long = l;
+      ((atsx)localObject1).jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject2);
+    }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+      this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ameq);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Altm);
+      if (this.jdField_a_of_type_Bdbb != null) {
+        this.jdField_a_of_type_Bdbb.d();
+      }
+      this.jdField_a_of_type_Atpw.b(this.jdField_a_of_type_Atpv);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("LocationShareController", 1, "onFragmentDestroy: failed. ", localException);
+      }
+    }
+  }
+  
+  public void a(bdbc parambdbc)
+  {
+    this.jdField_a_of_type_Bdbc = parambdbc;
+  }
+  
+  public void a(BaseActivity paramBaseActivity, atpq paramatpq, MapWidget paramMapWidget, atqp paramatqp, ImageView paramImageView, View paramView1, View paramView2, View paramView3)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget = paramMapWidget;
+    this.jdField_a_of_type_Atqp = paramatqp;
+    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    this.jdField_a_of_type_Atpq = paramatpq;
+    this.jdField_a_of_type_AndroidViewView = paramView2;
+    this.b = paramView1;
+    this.c = paramView3;
+    this.jdField_a_of_type_Atte = new atte(this, paramView3);
+    this.jdField_a_of_type_Atsy = new atsy(this, paramView3);
+    this.b.setVisibility(8);
+    bnle.a(paramBaseActivity);
+    if (bnle.jdField_a_of_type_Boolean) {}
+    for (int i = bdaq.a(paramBaseActivity, 112.0F) + bnle.jdField_a_of_type_Int;; i = bdaq.a(paramBaseActivity, 112.0F))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(paramBaseActivity, this.jdField_a_of_type_Atpw.a(this.jdField_a_of_type_Atpq), null, i, paramView3);
+      a(paramBaseActivity);
+      this.jdField_a_of_type_Atpw.a(this.jdField_a_of_type_Atpv);
+      g();
+      d();
+      c();
+      if (bibv.a())
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130840350);
+        paramView3.setBackgroundResource(2130838592);
+      }
       return;
     }
   }
   
-  /* Error */
-  public atsc a()
+  public void a(LocationRoom.Venue paramVenue)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 47	atso:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   4: astore_2
-    //   5: aload_2
-    //   6: ifnull +64 -> 70
-    //   9: aload_2
-    //   10: ldc 210
-    //   12: invokevirtual 214	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   15: ifeq +57 -> 72
-    //   18: aload_2
-    //   19: ldc 210
-    //   21: invokevirtual 144	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   24: istore_1
-    //   25: iload_1
-    //   26: iconst_m1
-    //   27: if_icmpeq +43 -> 70
-    //   30: aload_2
-    //   31: invokevirtual 177	java/lang/String:length	()I
-    //   34: ldc 210
-    //   36: invokevirtual 177	java/lang/String:length	()I
-    //   39: iload_1
-    //   40: iadd
-    //   41: iconst_1
-    //   42: iadd
-    //   43: if_icmple +27 -> 70
-    //   46: aload_2
-    //   47: iload_1
-    //   48: ldc 210
-    //   50: invokevirtual 177	java/lang/String:length	()I
-    //   53: iadd
-    //   54: invokevirtual 183	java/lang/String:substring	(I)Ljava/lang/String;
-    //   57: astore_2
-    //   58: aload_2
-    //   59: invokevirtual 68	java/lang/String:trim	()Ljava/lang/String;
-    //   62: ldc 216
-    //   64: invokevirtual 219	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   67: ifne +10 -> 77
-    //   70: aconst_null
-    //   71: areturn
-    //   72: iconst_m1
-    //   73: istore_1
-    //   74: goto -49 -> 25
-    //   77: aload_2
-    //   78: aload_2
-    //   79: ldc 216
-    //   81: invokevirtual 144	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   84: ldc 216
-    //   86: invokevirtual 177	java/lang/String:length	()I
-    //   89: iadd
-    //   90: invokevirtual 183	java/lang/String:substring	(I)Ljava/lang/String;
-    //   93: astore_2
-    //   94: aload_2
-    //   95: invokevirtual 68	java/lang/String:trim	()Ljava/lang/String;
-    //   98: ldc 221
-    //   100: invokevirtual 219	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   103: ifeq -33 -> 70
-    //   106: aload_2
-    //   107: aload_2
-    //   108: ldc 221
-    //   110: invokevirtual 144	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   113: ldc 221
-    //   115: invokevirtual 177	java/lang/String:length	()I
-    //   118: iadd
-    //   119: invokevirtual 183	java/lang/String:substring	(I)Ljava/lang/String;
-    //   122: astore_2
-    //   123: aload_2
-    //   124: ldc 223
-    //   126: invokevirtual 214	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   129: ifeq +131 -> 260
-    //   132: aload_2
-    //   133: ldc 223
-    //   135: invokevirtual 226	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
-    //   138: istore_1
-    //   139: iload_1
-    //   140: iconst_m1
-    //   141: if_icmpeq -71 -> 70
-    //   144: aload_2
-    //   145: iconst_0
-    //   146: iload_1
-    //   147: invokevirtual 148	java/lang/String:substring	(II)Ljava/lang/String;
-    //   150: astore_2
-    //   151: aload_2
-    //   152: ldc 221
-    //   154: invokevirtual 214	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   157: ifeq +108 -> 265
-    //   160: aload_2
-    //   161: ldc 221
-    //   163: invokevirtual 226	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
-    //   166: istore_1
-    //   167: iload_1
-    //   168: iconst_m1
-    //   169: if_icmpeq -99 -> 70
-    //   172: aload_2
-    //   173: iconst_0
-    //   174: iload_1
-    //   175: invokevirtual 148	java/lang/String:substring	(II)Ljava/lang/String;
-    //   178: astore_2
-    //   179: new 228	java/io/BufferedReader
-    //   182: dup
-    //   183: new 230	java/io/StringReader
-    //   186: dup
-    //   187: aload_2
-    //   188: invokespecial 232	java/io/StringReader:<init>	(Ljava/lang/String;)V
-    //   191: invokespecial 235	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   194: astore_3
-    //   195: aload_3
-    //   196: astore_2
-    //   197: aload_3
-    //   198: invokevirtual 238	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   201: astore 4
-    //   203: aload 4
-    //   205: ifnull +65 -> 270
-    //   208: aload_3
-    //   209: astore_2
-    //   210: aload_0
-    //   211: aload 4
-    //   213: invokevirtual 68	java/lang/String:trim	()Ljava/lang/String;
-    //   216: invokespecial 240	atso:a	(Ljava/lang/String;)V
-    //   219: goto -24 -> 195
-    //   222: astore 4
-    //   224: aload_3
-    //   225: astore_2
-    //   226: ldc 75
-    //   228: aload 4
-    //   230: invokevirtual 78	java/lang/Exception:toString	()Ljava/lang/String;
-    //   233: invokestatic 84	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   236: pop
-    //   237: aload_3
-    //   238: ifnull -168 -> 70
-    //   241: aload_3
-    //   242: invokevirtual 243	java/io/BufferedReader:close	()V
-    //   245: aconst_null
-    //   246: areturn
-    //   247: astore_2
-    //   248: ldc 75
-    //   250: aload_2
-    //   251: invokevirtual 244	java/io/IOException:toString	()Ljava/lang/String;
-    //   254: invokestatic 84	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   257: pop
-    //   258: aconst_null
-    //   259: areturn
-    //   260: iconst_m1
-    //   261: istore_1
-    //   262: goto -123 -> 139
-    //   265: iconst_m1
-    //   266: istore_1
-    //   267: goto -100 -> 167
-    //   270: aload_3
-    //   271: astore_2
-    //   272: aload_0
-    //   273: getfield 45	atso:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   276: getstatic 36	atso:jdField_a_of_type_Atsq	Latsq;
-    //   279: invokestatic 250	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
-    //   282: aload_3
-    //   283: astore_2
-    //   284: new 252	atsc
-    //   287: dup
-    //   288: iconst_2
-    //   289: aload_0
-    //   290: getfield 89	atso:jdField_a_of_type_Int	I
-    //   293: aload_0
-    //   294: getfield 45	atso:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   297: invokespecial 255	atsc:<init>	(IILjava/util/ArrayList;)V
-    //   300: astore 4
-    //   302: aload_3
-    //   303: ifnull +7 -> 310
-    //   306: aload_3
-    //   307: invokevirtual 243	java/io/BufferedReader:close	()V
-    //   310: aload 4
-    //   312: areturn
-    //   313: astore_2
-    //   314: ldc 75
-    //   316: aload_2
-    //   317: invokevirtual 244	java/io/IOException:toString	()Ljava/lang/String;
-    //   320: invokestatic 84	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   323: pop
-    //   324: goto -14 -> 310
-    //   327: astore_3
-    //   328: aconst_null
-    //   329: astore_2
-    //   330: aload_2
-    //   331: ifnull +7 -> 338
-    //   334: aload_2
-    //   335: invokevirtual 243	java/io/BufferedReader:close	()V
-    //   338: aload_3
-    //   339: athrow
-    //   340: astore_2
-    //   341: ldc 75
-    //   343: aload_2
-    //   344: invokevirtual 244	java/io/IOException:toString	()Ljava/lang/String;
-    //   347: invokestatic 84	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   350: pop
-    //   351: goto -13 -> 338
-    //   354: astore_3
-    //   355: goto -25 -> 330
-    //   358: astore 4
-    //   360: aconst_null
-    //   361: astore_3
-    //   362: goto -138 -> 224
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	365	0	this	atso
-    //   24	243	1	i	int
-    //   4	222	2	localObject1	Object
-    //   247	4	2	localIOException1	java.io.IOException
-    //   271	13	2	localObject2	Object
-    //   313	4	2	localIOException2	java.io.IOException
-    //   329	6	2	localObject3	Object
-    //   340	4	2	localIOException3	java.io.IOException
-    //   194	113	3	localBufferedReader	java.io.BufferedReader
-    //   327	12	3	localObject4	Object
-    //   354	1	3	localObject5	Object
-    //   361	1	3	localObject6	Object
-    //   201	11	4	str	String
-    //   222	7	4	localException1	Exception
-    //   300	11	4	localatsc	atsc
-    //   358	1	4	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   197	203	222	java/lang/Exception
-    //   210	219	222	java/lang/Exception
-    //   272	282	222	java/lang/Exception
-    //   284	302	222	java/lang/Exception
-    //   241	245	247	java/io/IOException
-    //   306	310	313	java/io/IOException
-    //   179	195	327	finally
-    //   334	338	340	java/io/IOException
-    //   197	203	354	finally
-    //   210	219	354	finally
-    //   226	237	354	finally
-    //   272	282	354	finally
-    //   284	302	354	finally
-    //   179	195	358	java/lang/Exception
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "[venue] setVenue: invoked. location: " + paramVenue);
+    }
+    if (!bdin.a()) {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131694129, 0).a();
+    }
+    while (paramVenue == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.setVenueOprating(true);
+    b(paramVenue);
+    this.b.setVisibility(0);
+    this.jdField_a_of_type_Atpw.a(this.jdField_a_of_type_Atpq, paramVenue, new atsu(this, paramVenue));
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(paramString, true);
+  }
+  
+  boolean a()
+  {
+    return this.b.getVisibility() == 0;
+  }
+  
+  void b()
+  {
+    if (!bdin.a())
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131694129, 0).a();
+      return;
+    }
+    LocationRoom.Venue localVenue = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a();
+    if (localVenue == null)
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, "移除失败，请稍后重试", 0).a();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.setVenueOprating(true);
+    this.b.setVisibility(0);
+    this.jdField_a_of_type_Atpw.b(this.jdField_a_of_type_Atpq, localVenue, new atsv(this, localVenue));
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, new Object[] { "[location] onDecodeTaskCompleted invoked. ", "remainingTasks = [" + paramInt1 + "], uin = [" + paramString + "], avatar = [" + paramBitmap + "]" });
+    }
+    Bitmap localBitmap = bdhj.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+    atsx localatsx = (atsx)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    long l = System.currentTimeMillis();
+    paramBitmap = localatsx;
+    if (localatsx == null)
+    {
+      paramBitmap = new atsx(null);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramBitmap);
+    }
+    paramBitmap.jdField_a_of_type_Long = l;
+    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(paramString, localBitmap);
+    if (this.jdField_a_of_type_Bdbc != null) {
+      this.jdField_a_of_type_Bdbc.onDecodeTaskCompleted(paramInt1, paramInt2, paramString, localBitmap);
+    }
   }
 }
 

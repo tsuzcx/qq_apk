@@ -1,14 +1,17 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.qqshare.CustomizedShareForQQ;
+import java.io.File;
+import java.util.concurrent.Callable;
 
 class aszb
-  implements CustomizedShareForQQ
+  implements Callable<Boolean>
 {
-  aszb(asyy paramasyy) {}
+  aszb(asyz paramasyz, File paramFile) {}
   
-  public void shareToQQ(Bundle paramBundle)
+  public Boolean a()
   {
-    aszx.a().c(paramBundle);
+    if ((asyz.a(this.jdField_a_of_type_Asyz).exists()) && (this.jdField_a_of_type_JavaIoFile == asyz.a(this.jdField_a_of_type_Asyz))) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
+    }
   }
 }
 

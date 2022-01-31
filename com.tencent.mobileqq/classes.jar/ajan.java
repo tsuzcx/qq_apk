@@ -1,36 +1,160 @@
-public class ajan
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.MD5;
+import java.io.File;
+import mqq.app.AppRuntime;
+
+public abstract class ajan
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
-  public float j;
-  public float k;
+  public static boolean b = TextUtils.isEmpty(c());
+  public AppRuntime a;
   
-  public ajan(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2)
+  public ajan(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.f = paramFloat3;
-    this.d = paramFloat5;
-    this.h = paramFloat5;
-    this.e = paramFloat7;
-    this.j = paramFloat7;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.g = paramFloat4;
-    this.i = paramFloat6;
-    this.k = paramFloat8;
-    this.jdField_c_of_type_Int = paramInt2;
+    this.a = paramAppRuntime;
+  }
+  
+  private int a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return 0;
+      if (paramString.equalsIgnoreCase("WiFi")) {
+        return 1;
+      }
+      if (paramString.equalsIgnoreCase("4G")) {
+        return 4;
+      }
+      if (paramString.equalsIgnoreCase("3G")) {
+        return 3;
+      }
+      if (paramString.equalsIgnoreCase("2G")) {
+        return 2;
+      }
+    } while (!paramString.equalsIgnoreCase("5G"));
+    return 6;
+  }
+  
+  public static String a()
+  {
+    return a(0);
+  }
+  
+  public static String a(int paramInt)
+  {
+    if (paramInt == 1) {
+      return b();
+    }
+    String str = c();
+    if (!TextUtils.isEmpty(str))
+    {
+      b = false;
+      return str;
+    }
+    b = true;
+    return b();
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      String str = b(paramString, paramInt);
+      if ((!TextUtils.isEmpty(str)) && (new File(str).exists()))
+      {
+        ajbn.a(paramString, paramInt, NetConnInfoCenter.getServerTimeMillis());
+        return str;
+      }
+    }
+    return null;
+  }
+  
+  public static String a(AppRuntime paramAppRuntime)
+  {
+    return ajfa.c + paramAppRuntime.getAccount() + "/" + ".preloaduni" + "/";
+  }
+  
+  public static String a(AppRuntime paramAppRuntime, String paramString)
+  {
+    return a(paramAppRuntime) + paramString;
+  }
+  
+  public static String b()
+  {
+    return ajfa.c + ".preloaduni" + "/";
+  }
+  
+  public static String b(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    paramString = MD5.toMD5(paramString);
+    return a(paramInt) + paramString;
+  }
+  
+  public static String c()
+  {
+    String str1 = null;
+    try
+    {
+      String str2 = ajfa.a;
+      if (!TextUtils.isEmpty(str2)) {
+        str1 = str2 + ".preloaduni" + "/";
+      }
+      return str1;
+    }
+    catch (Throwable localThrowable) {}
+    return null;
+  }
+  
+  public static String e(String paramString)
+  {
+    return a(paramString, 0);
+  }
+  
+  public static String f(String paramString)
+  {
+    return b(paramString, 0);
+  }
+  
+  public abstract void a(DownloadParam paramDownloadParam, ajal paramajal);
+  
+  public boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return true;
+    }
+    paramString = paramString.split("\\|");
+    int j = bdin.a(this.a.getApplication());
+    int k = paramString.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i >= k) {
+        break label57;
+      }
+      if (a(paramString[i]) == j) {
+        break;
+      }
+      i += 1;
+    }
+    label57:
+    return false;
+  }
+  
+  public void c(String paramString, ajal paramajal)
+  {
+    DownloadParam localDownloadParam = new DownloadParam();
+    localDownloadParam.url = paramString;
+    a(localDownloadParam, paramajal);
+  }
+  
+  public String d(String paramString)
+  {
+    return null;
   }
 }
 

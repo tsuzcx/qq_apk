@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import aqns;
-import arqq;
+import aqsb;
+import aruz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
@@ -9,7 +9,7 @@ import mqq.os.MqqHandler;
 public class QfileEditBottomBar$1$1
   implements Runnable
 {
-  public QfileEditBottomBar$1$1(arqq paramarqq) {}
+  public QfileEditBottomBar$1$1(aruz paramaruz) {}
   
   public void run()
   {

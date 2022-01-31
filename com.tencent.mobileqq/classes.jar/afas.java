@@ -1,26 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import java.util.Comparator;
 
-class afas
-  implements DialogInterface.OnClickListener
+public class afas
+  implements Comparator
 {
-  afas(afar paramafar, List paramList, BaseChatPie paramBaseChatPie) {}
+  public afas(LoadDataJob paramLoadDataJob) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      paramDialogInterface = aule.a(afar.a(this.jdField_a_of_type_Afar), (ArrayList)this.jdField_a_of_type_JavaUtilList);
-    } while ((paramDialogInterface == null) || (paramDialogInterface.size() == 0));
-    afar.a(this.jdField_a_of_type_Afar, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(false, null, false);
+    paramObject1 = (afbe)paramObject1;
+    paramObject2 = (afbe)paramObject2;
+    return paramObject1.a - paramObject2.a;
   }
 }
 

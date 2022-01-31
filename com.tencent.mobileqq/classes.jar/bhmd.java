@@ -1,46 +1,19 @@
-public final class bhmd
-  implements Cloneable
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.ui.MainPageFragment;
+import org.json.JSONObject;
+
+public class bhmd
+  implements AsyncResult
 {
-  private int a;
+  public bhmd(MainPageFragment paramMainPageFragment) {}
   
-  public bhmd(int paramInt)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.a = paramInt;
-  }
-  
-  public bhmd(byte[] paramArrayOfByte)
-  {
-    this(paramArrayOfByte, 0);
-  }
-  
-  public bhmd(byte[] paramArrayOfByte, int paramInt)
-  {
-    this.a = (paramArrayOfByte[(paramInt + 1)] << 8 & 0xFF00);
-    this.a += (paramArrayOfByte[paramInt] & 0xFF);
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public byte[] a()
-  {
-    return new byte[] { (byte)(this.a & 0xFF), (byte)((this.a & 0xFF00) >> 8) };
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof bhmd))) {}
-    while (this.a != ((bhmd)paramObject).a()) {
-      return false;
+    if ((paramBoolean) && (paramJSONObject != null))
+    {
+      paramJSONObject = paramJSONObject.optString("token");
+      MainPageFragment.a(this.a, paramJSONObject);
     }
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    return this.a;
   }
 }
 

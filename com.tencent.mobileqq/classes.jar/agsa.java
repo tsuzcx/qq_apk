@@ -1,22 +1,11 @@
-public class agsa
-  implements bcij
+class agsa
+  implements nbt
 {
-  public String a;
+  agsa(agrn paramagrn) {}
   
-  public agsa(String paramString)
+  public void loaded(int paramInt, String paramString)
   {
-    this.a = paramString;
-  }
-  
-  public long a()
-  {
-    try
-    {
-      long l = Long.parseLong(this.a);
-      return l;
-    }
-    catch (Exception localException) {}
-    return 0L;
+    agrn.a(this.a, 0, 10);
   }
 }
 

@@ -1,44 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.quickat.ui.AllMemberItemViewWrapper.3.1;
 
 public class bchg
+  extends ameq
 {
-  public static List<TroopFileTansferItemEntity> a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    TroopFileTansferItemEntity localTroopFileTansferItemEntity = new TroopFileTansferItemEntity();
-    localTroopFileTansferItemEntity.troopuin = paramLong;
-    return paramQQAppInterface.a(TroopFileTansferItemEntity.class, "select * from " + localTroopFileTansferItemEntity.getTableName() + " where troopuin = ?", new String[] { "" + paramLong });
-  }
+  bchg(bchd parambchd) {}
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Map<UUID, ? extends awbv> paramMap, long paramLong)
+  protected void a(boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, boolean paramBoolean3)
   {
-    if (paramMap == null) {
-      QLog.e("SerializableManager", 4, "bad Entity Param");
-    }
-    Object localObject;
-    do
-    {
-      return false;
-      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localObject = new TroopFileTansferItemEntity();
-      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
-    } while (!paramQQAppInterface.a(((TroopFileTansferItemEntity)localObject).getTableName()));
-    paramMap = paramMap.values().iterator();
-    while (paramMap.hasNext())
-    {
-      localObject = (awbv)paramMap.next();
-      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
-      ((awbv)localObject).setStatus(1000);
-      paramQQAppInterface.a((awbv)localObject);
-    }
-    return true;
+    ThreadManager.getUIHandlerV2().post(new AllMemberItemViewWrapper.3.1(this, paramBoolean1, paramString1, paramBoolean2, paramString2, paramString3, paramBoolean3));
   }
 }
 

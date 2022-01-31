@@ -1,21 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController;
+import android.widget.TextView;
 
-class bcda
-  implements View.OnTouchListener
+public class bcda
 {
-  bcda(bccy parambccy, View paramView1, View paramView2) {}
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {}
-    for (int i = 1; (paramMotionEvent.getAction() == 4) && (AtPanelTouchController.a(this.b, paramMotionEvent)) && ((i == 0) || ((i != 0) && (!AtPanelTouchController.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)))); i = 0) {
-      return true;
-    }
-    return false;
-  }
+  protected bcda(bccz parambccz) {}
 }
 
 

@@ -8,11 +8,11 @@ import org.json.JSONObject;
 
 public class mvs
 {
-  protected static bapw a;
+  protected static bauf a;
   
   static
   {
-    jdField_a_of_type_Bapw = new mvu();
+    jdField_a_of_type_Bauf = new mvu();
   }
   
   public static long a(String paramString)
@@ -74,15 +74,15 @@ public class mvs
       return false;
     }
     mvt localmvt = new mvt(parammvv);
-    baps localbaps = new baps();
-    localbaps.jdField_a_of_type_Bapx = localmvt;
-    localbaps.jdField_a_of_type_JavaLangString = parammvv.jdField_a_of_type_JavaLangString;
-    localbaps.jdField_a_of_type_Int = 0;
-    localbaps.c = parammvv.c;
-    localbaps.e = 1;
-    localbaps.jdField_a_of_type_Bapw = jdField_a_of_type_Bapw;
-    paramQQAppInterface.a(localbaps);
-    parammvv.jdField_a_of_type_Baps = localbaps;
+    baub localbaub = new baub();
+    localbaub.jdField_a_of_type_Baug = localmvt;
+    localbaub.jdField_a_of_type_JavaLangString = parammvv.jdField_a_of_type_JavaLangString;
+    localbaub.jdField_a_of_type_Int = 0;
+    localbaub.c = parammvv.c;
+    localbaub.e = 1;
+    localbaub.jdField_a_of_type_Bauf = jdField_a_of_type_Bauf;
+    paramQQAppInterface.a(localbaub);
+    parammvv.jdField_a_of_type_Baub = localbaub;
     if (QLog.isColorLevel()) {
       QLog.i("ScoreManager", 1, "submitDownloadTask. url = " + parammvv.jdField_a_of_type_JavaLangString);
     }
@@ -94,7 +94,7 @@ public class mvs
     if (!TextUtils.isEmpty(paramString1))
     {
       lek.c("ScoreManager", "parse config: " + paramString1 + ", curUin : " + paramString2);
-      paramString2 = bdiv.e(paramString2);
+      paramString2 = bdne.e(paramString2);
     }
     for (;;)
     {

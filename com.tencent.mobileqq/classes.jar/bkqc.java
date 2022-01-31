@@ -1,20 +1,6 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-
-class bkqc
-  implements Animation.AnimationListener
+public abstract interface bkqc
 {
-  bkqc(bkqa parambkqa) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    bkqa.b(this.a).setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a();
 }
 
 

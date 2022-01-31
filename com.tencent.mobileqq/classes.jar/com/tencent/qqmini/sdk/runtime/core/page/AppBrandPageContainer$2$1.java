@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bhbf;
+import bhfm;
 
 public class AppBrandPageContainer$2$1
   implements Runnable
 {
-  public AppBrandPageContainer$2$1(bhbf parambhbf) {}
+  public AppBrandPageContainer$2$1(bhfm parambhfm) {}
   
   public void run()
   {

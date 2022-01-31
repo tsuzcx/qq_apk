@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.Leba.31.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
 
 public class adbo
-  extends amks
+  implements bhux
 {
-  public adbo(Leba paramLeba) {}
+  public adbo(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, "onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
-    }
-    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
-      this.a.a(new Leba.31.1(this));
-    }
+    FriendProfileImageActivity.a(this.a);
+    return true;
   }
 }
 

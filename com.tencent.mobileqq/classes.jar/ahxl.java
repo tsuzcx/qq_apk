@@ -1,38 +1,21 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class ahxl
-  implements View.OnClickListener
+class ahxl
+  implements QQPermissionCallback
 {
-  public ahxl(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ahxl(ahww paramahww) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("troop_uin", this.a.c);
-    List localList = (List)this.a.jdField_a_of_type_Ahys.a.get(ChatHistoryTroopMemberFragment.a(this.a));
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < localList.size())
-    {
-      localArrayList.add(((ahyq)localList.get(i)).a);
-      i += 1;
-    }
-    localIntent.putExtra("members_uin", localArrayList);
-    PublicFragmentActivity.a(paramView.getContext(), localIntent, TroopMemberHistoryFragment.class);
-    paramView = ((TroopManager)this.a.getActivity().app.getManager(52)).b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b.getCurrentAccountUin());
-    bdaj.a("Grp_edu", "teachermsg", "showall", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bdaj.a(paramView) });
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion denied sd grant");
+    bdgm.a(ahww.a(this.a), new ahxm(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion user grant");
+    ahww.a(this.a, ahww.b(this.a));
   }
 }
 

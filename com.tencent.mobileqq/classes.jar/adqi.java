@@ -1,56 +1,40 @@
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity.4.1;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.observer.AccountObserver;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class adqi
-  extends AccountObserver
+  implements EIPCResultCallback
 {
-  public adqi(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public adqi(QQIdentiferLegacy paramQQIdentiferLegacy, boolean paramBoolean) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte, paramInt2);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("RegisterQQNumberActivity", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt1), RegisterQQNumberActivity.a(this.a), paramString2, paramString1 }));
+    QLog.d("QQIdentiferLegacy", 1, "callServer ACTION_APP_CONF error_code:" + paramEIPCResult.code);
+    switch (paramEIPCResult.code)
+    {
+    default: 
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
     }
-    RegisterQQNumberActivity.a(this.a);
-    paramString1 = new Intent(this.a, LoginActivity.class);
-    paramString1.putExtra("uin", RegisterQQNumberActivity.a(this.a));
-    paramString1.putExtra("tab_index", MainFragment.b);
-    paramString1.addFlags(131072);
-    this.a.startActivity(paramString1);
-    this.a.finish();
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    super.onLoginSuccess(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginSuccess ");
-    }
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    super.onLoginTimeout(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginTimeout ");
-    }
-    RegisterQQNumberActivity.a(this.a);
-    this.a.a.post(new RegisterQQNumberActivity.4.1(this));
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    super.onUserCancel(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onUserCancel ");
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        QQIdentiferLegacy.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy);
+      }
+      return;
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
+      continue;
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
+      if (paramEIPCResult.data != null) {
+        QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, (FaceDetectForThirdPartyManager.AppConf)paramEIPCResult.data.getSerializable("FaceRecognition.AppConf"));
+      }
+      QLog.d("QQIdentiferLegacy", 1, "callServer ACTION_APP_CONF success conf :" + QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy));
+      continue;
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, true);
     }
   }
 }

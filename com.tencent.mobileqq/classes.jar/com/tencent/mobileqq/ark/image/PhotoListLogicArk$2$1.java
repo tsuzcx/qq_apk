@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark.image;
 
-import anml;
+import anqu;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 class PhotoListLogicArk$2$1

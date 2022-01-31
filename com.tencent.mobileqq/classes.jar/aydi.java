@@ -1,211 +1,40 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract class aydi
-  implements aydj
+public class aydi
+  implements TextWatcher
 {
-  public static long A = SearchConfigManager.typeDiscussionConversationMatchTitle << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long B = SearchConfigManager.typeDiscussionConversation << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long C = SearchConfigManager.typeTroopConversation << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long D = SearchConfigManager.typeFriendSpecialCare << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long E = SearchConfigManager.typeFriend << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long F = SearchConfigManager.typeFriendNotOftenContact << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long G = SearchConfigManager.typeNewTroopMember << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long H = SearchConfigManager.typeDiscussionMember << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long I = SearchConfigManager.typePhoneContact << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long J = SearchConfigManager.typeDiscussionConversationMatchMember << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long K = SearchConfigManager.typeNewTroop << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long L = SearchConfigManager.typeDiscussion << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long M = SearchConfigManager.typeTroop << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long N = SearchConfigManager.typeTool << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long O = SearchConfigManager.typePublicAccountConversation << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long P = SearchConfigManager.typePublicAccount << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long Q = SearchConfigManager.typeUnbindPhoneContact << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long R = SearchConfigManager.typeCircleContact << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long S = SearchConfigManager.typeTroopMember << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long T = SearchConfigManager.typeGlobalTroop << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long U = SearchConfigManager.typeGlobalTroopConversation << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long V = SearchConfigManager.typeGlobalTroopMember << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long W = SearchConfigManager.typeQidianMaster << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long a = SearchConfigManager.fieldPublicAccountName << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long b = SearchConfigManager.fieldPublicAccountMark << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long c = SearchConfigManager.fieldPublicAccountSummary << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long d = SearchConfigManager.fieldPublicAccountDisplayName << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long e = SearchConfigManager.filedDiscussionName << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long f = SearchConfigManager.fieldTroopName << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long g = SearchConfigManager.fieldRemark << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long h = SearchConfigManager.fieldNewTroopNickName << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long i = SearchConfigManager.fieldNewTroopCard << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long j = SearchConfigManager.fieldDiscussionMemberRemark << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long k = SearchConfigManager.fieldInteRemark << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long l = SearchConfigManager.fieldNickName << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long m = SearchConfigManager.fieldPhoneContactName << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long n = SearchConfigManager.fieldAlias << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long o = SearchConfigManager.fieldUin << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long p = SearchConfigManager.fieldMobileNo << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long q = SearchConfigManager.fieldTroopCard << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long r = SearchConfigManager.stringOrigin << SearchConfigManager.contactSearchPinyinBaseBit;
-  public static long s = SearchConfigManager.stringPinyin << SearchConfigManager.contactSearchPinyinBaseBit;
-  public static long t = SearchConfigManager.recentTrue << SearchConfigManager.contactSearchRecentBaseBit;
-  public static long u = SearchConfigManager.indexEqual << SearchConfigManager.contactSearchIndexBaseBit;
-  public static long v = SearchConfigManager.indexStart << SearchConfigManager.contactSearchIndexBaseBit;
-  public static long w = SearchConfigManager.indexMiddle << SearchConfigManager.contactSearchIndexBaseBit;
-  public static long x = 72057594037927936L;
-  public static long y = SearchConfigManager.typeDiscussionMatchMemberFull << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long z = SearchConfigManager.typeFriendConversation << SearchConfigManager.contactSearchTypeBaseBit;
-  protected long X;
-  protected long Y = -1L;
-  protected long Z;
-  protected long aa;
+  private int jdField_a_of_type_Int;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private int b;
   
-  public static void a()
+  public aydi(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    a = SearchConfigManager.fieldPublicAccountName << SearchConfigManager.contactSearchFieldBaseBit;
-    b = SearchConfigManager.fieldPublicAccountMark << SearchConfigManager.contactSearchFieldBaseBit;
-    c = SearchConfigManager.fieldPublicAccountSummary << SearchConfigManager.contactSearchFieldBaseBit;
-    d = SearchConfigManager.fieldPublicAccountDisplayName << SearchConfigManager.contactSearchFieldBaseBit;
-    e = SearchConfigManager.filedDiscussionName << SearchConfigManager.contactSearchFieldBaseBit;
-    f = SearchConfigManager.fieldTroopName << SearchConfigManager.contactSearchFieldBaseBit;
-    g = SearchConfigManager.fieldRemark << SearchConfigManager.contactSearchFieldBaseBit;
-    h = SearchConfigManager.fieldNewTroopNickName << SearchConfigManager.contactSearchFieldBaseBit;
-    i = SearchConfigManager.fieldNewTroopCard << SearchConfigManager.contactSearchFieldBaseBit;
-    j = SearchConfigManager.fieldDiscussionMemberRemark << SearchConfigManager.contactSearchFieldBaseBit;
-    k = SearchConfigManager.fieldInteRemark << SearchConfigManager.contactSearchFieldBaseBit;
-    l = SearchConfigManager.fieldNickName << SearchConfigManager.contactSearchFieldBaseBit;
-    m = SearchConfigManager.fieldPhoneContactName << SearchConfigManager.contactSearchFieldBaseBit;
-    n = SearchConfigManager.fieldAlias << SearchConfigManager.contactSearchFieldBaseBit;
-    o = SearchConfigManager.fieldUin << SearchConfigManager.contactSearchFieldBaseBit;
-    p = SearchConfigManager.fieldMobileNo << SearchConfigManager.contactSearchFieldBaseBit;
-    q = SearchConfigManager.fieldTroopCard << SearchConfigManager.contactSearchFieldBaseBit;
-    r = SearchConfigManager.stringOrigin << SearchConfigManager.contactSearchPinyinBaseBit;
-    s = SearchConfigManager.stringPinyin << SearchConfigManager.contactSearchPinyinBaseBit;
-    t = SearchConfigManager.recentTrue << SearchConfigManager.contactSearchRecentBaseBit;
-    u = SearchConfigManager.indexEqual << SearchConfigManager.contactSearchIndexBaseBit;
-    v = SearchConfigManager.indexStart << SearchConfigManager.contactSearchIndexBaseBit;
-    w = SearchConfigManager.indexMiddle << SearchConfigManager.contactSearchIndexBaseBit;
-    x = 72057594037927936L;
-    y = SearchConfigManager.typeDiscussionMatchMemberFull << SearchConfigManager.contactSearchTypeBaseBit;
-    z = SearchConfigManager.typeFriendConversation << SearchConfigManager.contactSearchTypeBaseBit;
-    A = SearchConfigManager.typeDiscussionConversationMatchTitle << SearchConfigManager.contactSearchTypeBaseBit;
-    B = SearchConfigManager.typeDiscussionConversation << SearchConfigManager.contactSearchTypeBaseBit;
-    C = SearchConfigManager.typeTroopConversation << SearchConfigManager.contactSearchTypeBaseBit;
-    D = SearchConfigManager.typeFriendSpecialCare << SearchConfigManager.contactSearchTypeBaseBit;
-    E = SearchConfigManager.typeFriend << SearchConfigManager.contactSearchTypeBaseBit;
-    F = SearchConfigManager.typeFriendNotOftenContact << SearchConfigManager.contactSearchTypeBaseBit;
-    G = SearchConfigManager.typeNewTroopMember << SearchConfigManager.contactSearchTypeBaseBit;
-    H = SearchConfigManager.typeDiscussionMember << SearchConfigManager.contactSearchTypeBaseBit;
-    I = SearchConfigManager.typePhoneContact << SearchConfigManager.contactSearchTypeBaseBit;
-    J = SearchConfigManager.typeDiscussionConversationMatchMember << SearchConfigManager.contactSearchTypeBaseBit;
-    K = SearchConfigManager.typeNewTroop << SearchConfigManager.contactSearchTypeBaseBit;
-    L = SearchConfigManager.typeDiscussion << SearchConfigManager.contactSearchTypeBaseBit;
-    M = SearchConfigManager.typeTroop << SearchConfigManager.contactSearchTypeBaseBit;
-    N = SearchConfigManager.typeTool << SearchConfigManager.contactSearchTypeBaseBit;
-    O = SearchConfigManager.typePublicAccountConversation << SearchConfigManager.contactSearchTypeBaseBit;
-    P = SearchConfigManager.typePublicAccount << SearchConfigManager.contactSearchTypeBaseBit;
-    Q = SearchConfigManager.typeUnbindPhoneContact << SearchConfigManager.contactSearchTypeBaseBit;
-    R = SearchConfigManager.typeCircleContact << SearchConfigManager.contactSearchTypeBaseBit;
-    S = SearchConfigManager.typeTroopMember << SearchConfigManager.contactSearchTypeBaseBit;
-    T = SearchConfigManager.typeGlobalTroop << SearchConfigManager.contactSearchTypeBaseBit;
-    U = SearchConfigManager.typeGlobalTroopConversation << SearchConfigManager.contactSearchTypeBaseBit;
-    V = SearchConfigManager.typeGlobalTroopMember << SearchConfigManager.contactSearchTypeBaseBit;
-    W = SearchConfigManager.typeQidianMaster << SearchConfigManager.contactSearchTypeBaseBit;
-  }
-  
-  protected long a()
-  {
-    return 0L;
-  }
-  
-  public abstract Drawable a();
-  
-  public abstract Object a();
-  
-  public abstract String a();
-  
-  public void a(long paramLong)
-  {
-    this.Z = paramLong;
-  }
-  
-  public abstract int b();
-  
-  public long b()
-  {
-    return d();
-  }
-  
-  public abstract String b();
-  
-  protected void b()
-  {
-    for (;;)
+    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (banh.a(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 50))
     {
-      int i1;
-      try
-      {
-        String str = d();
-        StringBuilder localStringBuilder = new StringBuilder();
-        i1 = 0;
-        if (i1 < str.length())
-        {
-          char c1 = str.charAt(i1);
-          if ((c1 >= '0') && (c1 <= '9')) {
-            localStringBuilder.append(c1);
-          }
-        }
-        else
-        {
-          str = localStringBuilder.toString();
-          if (!TextUtils.isEmpty(str))
-          {
-            this.X = Long.parseLong(str);
-            return;
-          }
-          this.X = hashCode();
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          localException.printStackTrace();
-        }
-        this.X = hashCode();
-        return;
-      }
-      i1 += 1;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), 1, 2131690363, 0).a();
+      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
     }
-  }
-  
-  public abstract int c();
-  
-  public long c()
-  {
-    return this.Z;
-  }
-  
-  public abstract String c();
-  
-  public long d()
-  {
-    if (this.Y == -1L) {
-      this.Y = a();
+    if ((paramEditable == null) || (paramEditable.length() == 0))
+    {
+      SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(false);
+      return;
     }
-    return this.Y;
+    SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(true);
   }
   
-  public abstract String d();
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public boolean equals(Object paramObject)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    return this.X == ((aydi)paramObject).X;
-  }
-  
-  public int hashCode()
-  {
-    return super.hashCode();
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = (paramInt1 + paramInt3);
   }
 }
 

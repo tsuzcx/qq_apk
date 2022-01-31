@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import ahpq;
-import ahpx;
-import bdbr;
+import ahuf;
+import ahum;
+import bdga;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -13,11 +13,11 @@ import org.json.JSONArray;
 public class CTEntryMng$3
   implements Runnable
 {
-  public CTEntryMng$3(ahpq paramahpq) {}
+  public CTEntryMng$3(ahuf paramahuf) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList(ahpq.a(this.this$0));
+    ArrayList localArrayList = new ArrayList(ahuf.a(this.this$0));
     for (;;)
     {
       JSONArray localJSONArray;
@@ -32,16 +32,16 @@ public class CTEntryMng$3
           if (i >= localArrayList.size()) {
             break label211;
           }
-          Object localObject = (ahpx)localArrayList.get(i);
-          if ((((ahpx)localObject).a > 4) && (!ahpq.b(this.this$0).contains(Integer.valueOf(((ahpx)localObject).a))))
+          Object localObject = (ahum)localArrayList.get(i);
+          if ((((ahum)localObject).a > 4) && (!ahuf.b(this.this$0).contains(Integer.valueOf(((ahum)localObject).a))))
           {
             if (QLog.isColorLevel()) {
-              QLog.i("CTEntryMng", 2, "saveUserSetting not save id: " + ((ahpx)localObject).a);
+              QLog.i("CTEntryMng", 2, "saveUserSetting not save id: " + ((ahum)localObject).a);
             }
           }
           else
           {
-            localObject = ((ahpx)localObject).a();
+            localObject = ((ahum)localObject).a();
             if (localObject != null) {
               localJSONArray.put(localObject);
             }
@@ -58,7 +58,7 @@ public class CTEntryMng$3
         if (QLog.isColorLevel()) {
           QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "saveUserSetting value: %s", new Object[] { str }));
         }
-        bdbr.a(ahpq.a(this.this$0).getApp(), ahpq.a(this.this$0).c(), "ct_entry_user_setting", str);
+        bdga.a(ahuf.a(this.this$0).getApp(), ahuf.a(this.this$0).c(), "ct_entry_user_setting", str);
         return;
         label211:
         str = localJSONArray.toString();

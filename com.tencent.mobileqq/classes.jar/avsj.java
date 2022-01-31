@@ -1,13 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class avsj
+  extends avsi
 {
   public int a;
   public String a;
-  public List<avsk> a = new ArrayList();
-  public String b;
-  public String c;
+  public int b;
+  public long b;
 }
 
 

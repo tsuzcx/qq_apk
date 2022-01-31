@@ -1,11 +1,8 @@
-import java.util.ArrayList;
-
-public abstract class azai
-  implements azah
+public class azai
 {
-  public void a(int paramInt, ArrayList<azaa> paramArrayList) {}
-  
-  public void b(int paramInt, azaa paramazaa) {}
+  public int c;
+  public int d;
+  public long e;
 }
 
 

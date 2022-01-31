@@ -58,14 +58,14 @@ public class tjr
       localstReportItem.os = ("android" + DeviceUtils.getOSVersion() + " - " + DeviceUtils.getMachineInfo());
       localstReportItem.city = a();
       localstReportItem.ip = DeviceUtils.getLocalIpAddress();
-      localstReportItem.qua = bizf.a();
-      localstReportItem.vendor = bdcb.h();
+      localstReportItem.qua = bjdm.a();
+      localstReportItem.vendor = bdgk.h();
       localObject = new stDevice();
       ((stDevice)localObject).encrypted_deviceid = tee.a().e();
       ((stDevice)localObject).imei = a(BaseApplicationImpl.getContext());
       ((stDevice)localObject).qimei = b(BaseApplicationImpl.getContext());
       localstReportItem.device = ((stDevice)localObject);
-      if (!xoo.a(BaseApplicationImpl.getContext())) {
+      if (!xsx.a(BaseApplicationImpl.getContext())) {
         break label200;
       }
     }
@@ -74,7 +74,7 @@ public class tjr
     {
       localstReportItem.exist_weishi = i;
       return localstReportItem;
-      l = xng.a((String)localObject, 0L);
+      l = xrp.a((String)localObject, 0L);
       break;
     }
   }
@@ -128,9 +128,9 @@ public class tjr
   private static String a()
   {
     if (TextUtils.isEmpty(c)) {
-      c = amkv.a();
+      c = ampk.a();
     }
-    if ((c.endsWith(alpo.a(2131716356))) && (c.length() > 1)) {
+    if ((c.endsWith(alud.a(2131716368))) && (c.length() > 1)) {
       c = c.substring(0, c.length() - 1);
     }
     return c;
@@ -148,103 +148,103 @@ public class tjr
       {
       default: 
         return str;
-        str = alpo.a(2131716352);
+        str = alud.a(2131716364);
         continue;
-        str = alpo.a(2131716329);
+        str = alud.a(2131716341);
         continue;
-        str = alpo.a(2131716339);
+        str = alud.a(2131716351);
         continue;
-        str = alpo.a(2131716346);
+        str = alud.a(2131716358);
         continue;
-        str = alpo.a(2131716336);
+        str = alud.a(2131716348);
         continue;
-        str = alpo.a(2131716340);
+        str = alud.a(2131716352);
         continue;
-        str = alpo.a(2131716355);
+        str = alud.a(2131716367);
         continue;
-        str = alpo.a(2131716323);
+        str = alud.a(2131716335);
         continue;
-        str = alpo.a(2131716326);
+        str = alud.a(2131716338);
         continue;
-        str = alpo.a(2131716331);
+        str = alud.a(2131716343);
         continue;
-        str = alpo.a(2131716353);
+        str = alud.a(2131716365);
         continue;
-        str = alpo.a(2131716348);
+        str = alud.a(2131716360);
         continue;
-        str = alpo.a(2131716342);
+        str = alud.a(2131716354);
         switch (paramInt2)
         {
         default: 
           break;
         case 12: 
-          str = alpo.a(2131716318);
+          str = alud.a(2131716330);
           continue;
-          str = alpo.a(2131716350);
+          str = alud.a(2131716362);
           continue;
-          str = alpo.a(2131716357);
+          str = alud.a(2131716369);
           continue;
-          str = alpo.a(2131716330);
+          str = alud.a(2131716342);
           continue;
-          str = alpo.a(2131716351);
+          str = alud.a(2131716363);
           continue;
-          str = alpo.a(2131716325);
+          str = alud.a(2131716337);
           continue;
-          str = alpo.a(2131716321);
+          str = alud.a(2131716333);
           continue;
-          str = alpo.a(2131716341);
+          str = alud.a(2131716353);
           continue;
-          str = alpo.a(2131716319);
+          str = alud.a(2131716331);
           continue;
-          str = alpo.a(2131716345);
+          str = alud.a(2131716357);
           switch (paramInt2)
           {
           default: 
             break;
           case 12: 
-            str = alpo.a(2131716333);
+            str = alud.a(2131716345);
             continue;
-            str = alpo.a(2131716327);
+            str = alud.a(2131716339);
             switch (paramInt2)
             {
             default: 
               break;
             case 12: 
-              str = alpo.a(2131716335);
+              str = alud.a(2131716347);
               continue;
-              str = alpo.a(2131716322);
+              str = alud.a(2131716334);
               continue;
-              str = alpo.a(2131716332);
+              str = alud.a(2131716344);
               continue;
-              str = alpo.a(2131716337);
+              str = alud.a(2131716349);
               switch (paramInt2)
               {
               default: 
                 break;
               case 2: 
-                str = alpo.a(2131716354);
+                str = alud.a(2131716366);
                 break;
               case 6: 
-                str = alpo.a(2131716343);
+                str = alud.a(2131716355);
                 continue;
-                str = alpo.a(2131716344);
+                str = alud.a(2131716356);
                 switch (paramInt2)
                 {
                 default: 
                   break;
                 case 2: 
-                  str = alpo.a(2131716347);
+                  str = alud.a(2131716359);
                   break;
                 case 14: 
-                  str = alpo.a(2131716324);
+                  str = alud.a(2131716336);
                   break;
                 case 12: 
-                  str = alpo.a(2131716320);
+                  str = alud.a(2131716332);
                   break;
                 case 6: 
-                  str = alpo.a(2131716328);
+                  str = alud.a(2131716340);
                   continue;
-                  str = alpo.a(2131716334);
+                  str = alud.a(2131716346);
                   switch (paramInt2)
                   {
                   case 10: 
@@ -255,7 +255,7 @@ public class tjr
                     str = "进入H5";
                     break;
                   case 12: 
-                    str = alpo.a(2131716349);
+                    str = alud.a(2131716361);
                   }
                   break;
                 }
@@ -270,7 +270,7 @@ public class tjr
         break;
       }
     }
-    return alpo.a(2131716338);
+    return alud.a(2131716350);
   }
   
   public static String a(Context paramContext)
@@ -281,7 +281,7 @@ public class tjr
     if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {}
     try
     {
-      jdField_a_of_type_JavaLangString = bhoi.a("1d76c6");
+      jdField_a_of_type_JavaLangString = bhsp.a("1d76c6");
       return jdField_a_of_type_JavaLangString;
     }
     catch (Throwable paramContext)

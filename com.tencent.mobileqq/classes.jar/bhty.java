@@ -1,18 +1,23 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.AbsListView.SavedState;
 
-class bhty
-  implements PopupWindow.OnDismissListener
+public final class bhty
+  implements Parcelable.Creator<AbsListView.SavedState>
 {
-  bhty(bhtw parambhtw) {}
-  
-  public void onDismiss()
+  public AbsListView.SavedState a(Parcel paramParcel)
   {
-    this.a.a(1.0F);
+    return new AbsListView.SavedState(paramParcel, null);
+  }
+  
+  public AbsListView.SavedState[] a(int paramInt)
+  {
+    return new AbsListView.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhty
  * JD-Core Version:    0.7.0.1
  */

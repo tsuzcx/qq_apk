@@ -1,19 +1,23 @@
-import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
+import com.tencent.widget.ListView;
 
 public class aykq
+  extends ayjo<aynu, aywd>
 {
-  public String a;
-  public String b;
-  
-  public aykq(String paramString1, String paramString2)
+  public aykq(FunctionSearchFragment paramFunctionSearchFragment, ListView paramListView, bdbb parambdbb)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    super(paramListView, parambdbb);
   }
   
-  public boolean a()
+  protected ayqp<aynu, aywd> a(int paramInt)
   {
-    return !TextUtils.isEmpty(this.a);
+    return new aypv(this.jdField_a_of_type_Bdbb, 268435456);
+  }
+  
+  protected aywe a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new ayxl(paramViewGroup, 268435456);
   }
 }
 

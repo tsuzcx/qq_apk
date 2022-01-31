@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class SystemMsgOldData
-  extends awbv
+  extends awge
 {
   public long msgtime;
-  @awdj
+  @awhs
   public long uin;
 }
 

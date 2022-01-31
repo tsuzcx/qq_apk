@@ -1,27 +1,15 @@
-import android.graphics.drawable.Drawable;
-import cooperation.qzone.webviewwrapper.LiveVideoFeedVipIconListner;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.share.QZoneShareActivity;
 
-public final class bjrv
-  implements InvocationHandler
+public class bjrv
+  implements View.OnClickListener
 {
-  public bjrv(LiveVideoFeedVipIconListner paramLiveVideoFeedVipIconListner) {}
+  public bjrv(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public void onClick(View paramView)
   {
-    if (paramMethod.getName().equals("onFailed")) {
-      if (this.a != null) {
-        this.a.onFailed();
-      }
-    }
-    for (;;)
-    {
-      return null;
-      if ((paramMethod.getName().equals("onLoaded")) && (this.a != null)) {
-        this.a.onLoaded((Drawable)paramArrayOfObject[0]);
-      }
-    }
+    QZoneShareActivity.f(this.a);
   }
 }
 

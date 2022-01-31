@@ -1,32 +1,20 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import mqq.app.QQPermissionCallback;
 
 public class acja
-  implements army
+  implements QQPermissionCallback
 {
-  public acja(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aqns paramaqns) {}
+  public acja(BaseChatPie paramBaseChatPie) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    armz.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131692912));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        if (bdcs.b(localFileManagerEntity.getFilePath())) {
-          this.jdField_a_of_type_Aqns.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
-        } else {
-          this.jdField_a_of_type_Aqns.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
-        }
-      }
-    }
+    bdgm.b(this.a.a());
   }
   
-  public void b() {}
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.aQ();
+  }
 }
 
 

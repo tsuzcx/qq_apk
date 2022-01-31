@@ -1,43 +1,11 @@
-import android.app.Activity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-
 class arml
-  implements aqte
+  implements arhr
 {
-  arml(armf paramarmf, Activity paramActivity, int paramInt) {}
+  arml(armi paramarmi) {}
   
-  public void a() {}
-  
-  public void b()
+  public void a(int paramInt)
   {
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface == null)
-      {
-        QLog.e("FileModel<FileAssistant>", 1, "Start VideoActivity is not in QQ!");
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      Object localObject;
-      for (;;)
-      {
-        localObject = null;
-      }
-      if (((armf.a(this.jdField_a_of_type_Armf).status == 0) || (armf.a(this.jdField_a_of_type_Armf).status == 3)) && (((this.jdField_a_of_type_AndroidAppActivity instanceof ChatActivity)) || ((this.jdField_a_of_type_AndroidAppActivity instanceof SplashActivity))) && (!armf.a(this.jdField_a_of_type_Armf).bSend))
-      {
-        localObject.a().a(armf.a(this.jdField_a_of_type_Armf).nSessionId);
-        return;
-      }
-      armf.a(this.jdField_a_of_type_Armf, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, 10004);
-    }
+    this.a.a(paramInt);
   }
 }
 

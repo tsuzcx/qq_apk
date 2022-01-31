@@ -1,24 +1,14 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.troopAddFrd.TroopRecommendFriendFragment;
+import tencent.im.oidb.cmd0x857.TroopTips0x857.RedGrayTipsInfo;
 
-public class bcpu
-  implements ahgi
+class bcpu
 {
-  public bcpu(TroopRecommendFriendFragment paramTroopRecommendFriendFragment) {}
+  String jdField_a_of_type_JavaLangString;
+  TroopTips0x857.RedGrayTipsInfo jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo;
   
-  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public bcpu(bcpt parambcpt, String paramString, TroopTips0x857.RedGrayTipsInfo paramRedGrayTipsInfo)
   {
-    if (!(paramViewHolder instanceof bcpo)) {
-      return;
-    }
-    paramView = ((bcpo)paramViewHolder).a;
-    bclo.a(TroopRecommendFriendFragment.a(this.a), TroopRecommendFriendFragment.a(this.a), paramView.a, TroopRecommendFriendFragment.a(this.a), TroopRecommendFriendFragment.a(this.a));
-  }
-  
-  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    return false;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo = paramRedGrayTipsInfo;
   }
 }
 

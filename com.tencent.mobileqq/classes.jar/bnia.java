@@ -1,23 +1,11 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.media.MediaPlayer;
+import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-public class bnia
-  implements Animator.AnimatorListener
+public abstract interface bnia
 {
-  public bnia(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
+  public abstract void a(MediaPlayer paramMediaPlayer);
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    QIMCameraCaptureButtonLayout.a(this.a).setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2);
 }
 
 

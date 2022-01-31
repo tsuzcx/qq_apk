@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.1;
 
-public final class amum
-  implements Parcelable.Creator<ARScanStarFaceConfigInfo>
+public class amum
+  implements DialogInterface.OnClickListener
 {
-  public ARScanStarFaceConfigInfo a(Parcel paramParcel)
-  {
-    return new ARScanStarFaceConfigInfo(paramParcel);
-  }
+  public amum(ARRecordUtils.1 param1) {}
   
-  public ARScanStarFaceConfigInfo[] a(int paramInt)
-  {
-    return new ARScanStarFaceConfigInfo[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

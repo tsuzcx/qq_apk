@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import bdox;
+import bdtg;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class IndividuationUrlHelper$1
@@ -8,7 +8,7 @@ public final class IndividuationUrlHelper$1
 {
   public void run()
   {
-    bdox.a(BaseApplicationImpl.sApplication.getRuntime());
+    bdtg.a(BaseApplicationImpl.sApplication.getRuntime());
   }
 }
 

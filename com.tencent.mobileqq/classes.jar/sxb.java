@@ -16,7 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class sxb
-  implements bdhu
+  implements bdmd
 {
   private static double jdField_a_of_type_Double;
   private static int jdField_a_of_type_Int;
@@ -27,9 +27,9 @@ public class sxb
   private static String g = "";
   public Activity a;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  bdks jdField_a_of_type_Bdks;
-  private bdkt jdField_a_of_type_Bdkt = new sxc(this);
-  becq jdField_a_of_type_Becq;
+  bdpb jdField_a_of_type_Bdpb;
+  private bdpc jdField_a_of_type_Bdpc = new sxc(this);
+  begz jdField_a_of_type_Begz;
   private QQRecorder jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder;
   private File jdField_a_of_type_JavaIoFile;
   private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
@@ -39,9 +39,9 @@ public class sxb
   
   public sxb() {}
   
-  public sxb(Activity paramActivity, String paramString, becq parambecq)
+  public sxb(Activity paramActivity, String paramString, begz parambegz)
   {
-    this.jdField_a_of_type_Becq = parambecq;
+    this.jdField_a_of_type_Begz = parambegz;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_b_of_type_JavaLangString = paramString;
   }
@@ -86,8 +86,8 @@ public class sxb
   
   private void j()
   {
-    SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_AndroidAppActivity.getString(2131698850));
-    bdcd.a(this.jdField_a_of_type_AndroidAppActivity, alpo.a(2131709182), localSpannableString, 0, 2131720960, null, null, new sxd(this)).show();
+    SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_AndroidAppActivity.getString(2131698862));
+    bdgm.a(this.jdField_a_of_type_AndroidAppActivity, alud.a(2131709194), localSpannableString, 0, 2131720972, null, null, new sxd(this)).show();
   }
   
   public int a()
@@ -97,10 +97,10 @@ public class sxb
     {
       localJSONObject.put("retCode", 0);
       localJSONObject.put("msg", "startRecord");
-      if (this.jdField_a_of_type_Becq.a() != null) {
-        this.jdField_a_of_type_Becq.a().callJs(sxe.c, new String[] { localJSONObject.toString() });
+      if (this.jdField_a_of_type_Begz.a() != null) {
+        this.jdField_a_of_type_Begz.a().callJs(sxe.c, new String[] { localJSONObject.toString() });
       }
-      azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, 0, "1", "", "", "");
+      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, 0, "1", "", "", "");
       i();
       return 0;
     }
@@ -139,12 +139,12 @@ public class sxb
   
   public void a(String paramString)
   {
-    azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+    azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
   }
   
   public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
   {
-    if (a(aljq.aX + "c2bPTT/"))
+    if (a(alof.aX + "c2bPTT/"))
     {
       this.jdField_a_of_type_JavaIoFile = new File(paramString);
       if (this.jdField_a_of_type_JavaIoFile.exists()) {
@@ -173,10 +173,10 @@ public class sxb
     {
       paramString.put("retCode", -1);
       paramString.put("msg", "no sdCard");
-      if (this.jdField_a_of_type_Becq.a() != null) {
-        this.jdField_a_of_type_Becq.a().callJs(sxe.c, new String[] { paramString.toString() });
+      if (this.jdField_a_of_type_Begz.a() != null) {
+        this.jdField_a_of_type_Begz.a().callJs(sxe.c, new String[] { paramString.toString() });
       }
-      azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
       return;
     }
     catch (JSONException paramRecorderParam)
@@ -199,24 +199,24 @@ public class sxb
         if (jdField_a_of_type_Double == this.jdField_b_of_type_Int)
         {
           paramString.put("retCode", 0);
-          paramString.put("msg", alpo.a(2131709162));
+          paramString.put("msg", alud.a(2131709174));
           paramString.put("localId", d());
-          if (this.jdField_a_of_type_Becq.a() != null) {
-            this.jdField_a_of_type_Becq.a().callJs(sxe.g, new String[] { paramString.toString() });
+          if (this.jdField_a_of_type_Begz.a() != null) {
+            this.jdField_a_of_type_Begz.a().callJs(sxe.g, new String[] { paramString.toString() });
           }
-          azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2B", "0X8005D2B", 0, 0, "1", "", "", "");
+          azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2B", "0X8005D2B", 0, 0, "1", "", "", "");
           return;
         }
         if (this.jdField_a_of_type_JavaIoFile.exists())
         {
           paramString.put("retCode", 0);
-          paramString.put("msg", alpo.a(2131709128) + d());
+          paramString.put("msg", alud.a(2131709140) + d());
           paramString.put("localId", d());
-          azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2A", "0X8005D2A", 0, 0, "1", "", "", "");
-          if (this.jdField_a_of_type_Becq.a() == null) {
+          azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2A", "0X8005D2A", 0, 0, "1", "", "", "");
+          if (this.jdField_a_of_type_Begz.a() == null) {
             break;
           }
-          this.jdField_a_of_type_Becq.a().callJs(sxe.d, new String[] { paramString.toString() });
+          this.jdField_a_of_type_Begz.a().callJs(sxe.d, new String[] { paramString.toString() });
           return;
         }
       }
@@ -226,9 +226,9 @@ public class sxb
         return;
       }
       paramString.put("retCode", -1);
-      paramString.put("msg", alpo.a(2131709188));
+      paramString.put("msg", alud.a(2131709200));
       paramString.put("localId", d());
-      azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2A", "0X8005D2A", 0, -1, "1", "", "", "");
+      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2A", "0X8005D2A", 0, -1, "1", "", "", "");
     }
   }
   
@@ -239,10 +239,10 @@ public class sxb
     {
       paramString1.put("retCode", -1);
       paramString1.put("msg", "onRecorderError");
-      if (this.jdField_a_of_type_Becq.a() != null) {
-        this.jdField_a_of_type_Becq.a().callJs(sxe.c, new String[] { paramString1.toString() });
+      if (this.jdField_a_of_type_Begz.a() != null) {
+        this.jdField_a_of_type_Begz.a().callJs(sxe.c, new String[] { paramString1.toString() });
       }
-      azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
       return;
     }
     catch (JSONException paramRecorderParam)
@@ -279,7 +279,7 @@ public class sxb
   
   public String b(String paramString)
   {
-    return aljq.aX + "c2bPTT/" + paramString + ".amr";
+    return alof.aX + "c2bPTT/" + paramString + ".amr";
   }
   
   public void b()
@@ -287,8 +287,8 @@ public class sxb
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder == null) {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = new QQRecorder(this.jdField_a_of_type_AndroidAppActivity);
     }
-    f = aljq.aX + "c2bPTT/" + baoj.a() + ".amr";
-    bdaz.a(this.jdField_a_of_type_AndroidAppActivity, true);
+    f = alof.aX + "c2bPTT/" + bass.a() + ".amr";
+    bdfi.a(this.jdField_a_of_type_AndroidAppActivity, true);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(this);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.b(f);
   }
@@ -299,21 +299,21 @@ public class sxb
     do
     {
       return;
-      if ((this.jdField_a_of_type_Bdks == null) || (this.jdField_a_of_type_AndroidOsHandler == null) || ((this.jdField_a_of_type_Bdks != null) && (this.jdField_a_of_type_Bdks.a() != 3)))
+      if ((this.jdField_a_of_type_Bdpb == null) || (this.jdField_a_of_type_AndroidOsHandler == null) || ((this.jdField_a_of_type_Bdpb != null) && (this.jdField_a_of_type_Bdpb.a() != 3)))
       {
         this.jdField_a_of_type_AndroidOsHandler = new Handler();
-        this.jdField_a_of_type_Bdks = new bdks(paramString, this.jdField_a_of_type_AndroidOsHandler);
+        this.jdField_a_of_type_Bdpb = new bdpb(paramString, this.jdField_a_of_type_AndroidOsHandler);
       }
-      this.jdField_a_of_type_Bdks.a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_Bdks.b();
-      this.jdField_a_of_type_Bdks.a(this.jdField_a_of_type_Bdkt);
-      if (this.jdField_a_of_type_Bdks.a() == 1)
+      this.jdField_a_of_type_Bdpb.a(this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_a_of_type_Bdpb.b();
+      this.jdField_a_of_type_Bdpb.a(this.jdField_a_of_type_Bdpc);
+      if (this.jdField_a_of_type_Bdpb.a() == 1)
       {
-        this.jdField_a_of_type_Bdks.c();
+        this.jdField_a_of_type_Bdpb.c();
         return;
       }
-    } while (this.jdField_a_of_type_Bdks.a() != 3);
-    this.jdField_a_of_type_Bdks.d();
+    } while (this.jdField_a_of_type_Bdpb.a() != 3);
+    this.jdField_a_of_type_Bdpb.d();
   }
   
   public void b(String paramString, QQRecorder.RecorderParam paramRecorderParam)
@@ -324,10 +324,10 @@ public class sxb
     {
       paramString.put("retCode", -1);
       paramString.put("msg", "onRecorderAbnormal");
-      if (this.jdField_a_of_type_Becq.a() != null) {
-        this.jdField_a_of_type_Becq.a().callJs(sxe.c, new String[] { paramString.toString() });
+      if (this.jdField_a_of_type_Begz.a() != null) {
+        this.jdField_a_of_type_Begz.a().callJs(sxe.c, new String[] { paramString.toString() });
       }
-      azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
       return;
     }
     catch (JSONException paramRecorderParam)
@@ -341,7 +341,7 @@ public class sxb
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_Bdks != null) && (this.jdField_a_of_type_Bdks.a() == 2);
+    return (this.jdField_a_of_type_Bdpb != null) && (this.jdField_a_of_type_Bdpb.a() == 2);
   }
   
   public void c()
@@ -352,7 +352,7 @@ public class sxb
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = null;
     }
     d();
-    bdaz.a(this.jdField_a_of_type_AndroidAppActivity, false);
+    bdfi.a(this.jdField_a_of_type_AndroidAppActivity, false);
   }
   
   public void c(String paramString, QQRecorder.RecorderParam paramRecorderParam)
@@ -363,10 +363,10 @@ public class sxb
     {
       paramString.put("retCode", -1);
       paramString.put("msg", "onInitFailed");
-      if (this.jdField_a_of_type_Becq.a() != null) {
-        this.jdField_a_of_type_Becq.a().callJs(sxe.c, new String[] { paramString.toString() });
+      if (this.jdField_a_of_type_Begz.a() != null) {
+        this.jdField_a_of_type_Begz.a().callJs(sxe.c, new String[] { paramString.toString() });
       }
-      azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
       return;
     }
     catch (JSONException paramRecorderParam)
@@ -414,20 +414,20 @@ public class sxb
   public void e()
   {
     JSONObject localJSONObject;
-    if (this.jdField_a_of_type_Bdks != null)
+    if (this.jdField_a_of_type_Bdpb != null)
     {
-      this.jdField_a_of_type_Bdks.f();
-      this.jdField_a_of_type_Bdks = null;
+      this.jdField_a_of_type_Bdpb.f();
+      this.jdField_a_of_type_Bdpb = null;
       this.jdField_a_of_type_AndroidOsHandler = null;
       localJSONObject = new JSONObject();
     }
     try
     {
       localJSONObject.put("retCode", 0);
-      localJSONObject.put("msg", alpo.a(2131709131) + d() + alpo.a(2131709199));
+      localJSONObject.put("msg", alud.a(2131709143) + d() + alud.a(2131709211));
       localJSONObject.put("localId", d());
-      if (this.jdField_a_of_type_Becq.a() != null) {
-        this.jdField_a_of_type_Becq.a().callJs(sxe.f, new String[] { localJSONObject.toString() });
+      if (this.jdField_a_of_type_Begz.a() != null) {
+        this.jdField_a_of_type_Begz.a().callJs(sxe.f, new String[] { localJSONObject.toString() });
       }
       return;
     }
@@ -450,8 +450,8 @@ public class sxb
   
   public void g()
   {
-    if ((this.jdField_a_of_type_Bdks != null) && (this.jdField_a_of_type_Bdks.a() == 2)) {
-      this.jdField_a_of_type_Bdks.e();
+    if ((this.jdField_a_of_type_Bdpb != null) && (this.jdField_a_of_type_Bdpb.a() == 2)) {
+      this.jdField_a_of_type_Bdpb.e();
     }
   }
   
@@ -462,7 +462,7 @@ public class sxb
       File localFile = new File(f);
       if (localFile.exists())
       {
-        d = bhli.a(localFile);
+        d = bhpp.a(localFile);
         jdField_a_of_type_Int = (int)localFile.length();
         e = d;
       }

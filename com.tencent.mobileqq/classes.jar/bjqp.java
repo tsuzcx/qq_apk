@@ -1,38 +1,70 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.os.IBinder;
+import cooperation.qzone.remote.IActionListener;
 
-final class bjqp
-  implements FilenameFilter
+public class bjqp
+  implements IActionListener
 {
-  bjqp(long paramLong1, long paramLong2) {}
+  private IBinder a;
   
-  public boolean accept(File paramFile, String paramString)
+  public bjqp(IBinder paramIBinder)
   {
-    if ((!paramString.startsWith("QAVSDK")) && (!paramString.startsWith("qavsdk"))) {}
-    long l;
-    do
-    {
-      File localFile;
-      do
-      {
-        do
-        {
-          return false;
-        } while (paramString.split("_").length == 2);
-        localFile = new File(paramFile + File.separator + paramString);
-      } while ((localFile == null) || (!localFile.exists()));
-      l = localFile.lastModified();
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file dir: " + paramFile.getName());
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file name: " + paramString + " mStartTime: " + this.a + " mEndTime: " + this.b + " lastModifiedTime: " + l);
-      }
-    } while ((l < this.a) || (l > this.b));
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QZoneAppCtrlUploadFileLogic", 4, "find file name: " + paramString);
-    }
-    return true;
+    this.a = paramIBinder;
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  /* Error */
+  public void onRecvFromMsg(cooperation.qzone.remote.RecvMsg paramRecvMsg)
+  {
+    // Byte code:
+    //   0: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: aload_2
+    //   5: ldc 28
+    //   7: invokevirtual 32	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_1
+    //   11: ifnull +33 -> 44
+    //   14: aload_2
+    //   15: iconst_1
+    //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   19: aload_1
+    //   20: aload_2
+    //   21: iconst_0
+    //   22: invokevirtual 42	cooperation/qzone/remote/RecvMsg:writeToParcel	(Landroid/os/Parcel;I)V
+    //   25: aload_0
+    //   26: getfield 15	bjqp:a	Landroid/os/IBinder;
+    //   29: iconst_1
+    //   30: aload_2
+    //   31: aconst_null
+    //   32: iconst_1
+    //   33: invokeinterface 48 5 0
+    //   38: pop
+    //   39: aload_2
+    //   40: invokevirtual 51	android/os/Parcel:recycle	()V
+    //   43: return
+    //   44: aload_2
+    //   45: iconst_0
+    //   46: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   49: goto -24 -> 25
+    //   52: astore_1
+    //   53: aload_2
+    //   54: invokevirtual 51	android/os/Parcel:recycle	()V
+    //   57: aload_1
+    //   58: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	59	0	this	bjqp
+    //   0	59	1	paramRecvMsg	cooperation.qzone.remote.RecvMsg
+    //   3	51	2	localParcel	android.os.Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   4	10	52	finally
+    //   14	25	52	finally
+    //   25	39	52	finally
+    //   44	49	52	finally
   }
 }
 

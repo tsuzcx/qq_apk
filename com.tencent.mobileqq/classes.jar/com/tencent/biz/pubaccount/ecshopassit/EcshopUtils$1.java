@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import ajee;
+import ajit;
 import com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountChatMsgData;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.fpsreport.FPSSwipListView;
@@ -23,7 +23,7 @@ public final class EcshopUtils$1
         return;
       }
       FPSSwipListView localFPSSwipListView = (FPSSwipListView)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      localObject = (ajee)this.b.get();
+      localObject = (ajit)this.b.get();
       if ((localFPSSwipListView == null) || (localObject == null))
       {
         QLog.i("EcshopUtils", 2, "【reportQQShopPA】 chatListView or recentAdapter is null");
@@ -37,7 +37,7 @@ public final class EcshopUtils$1
     }
     int i = localThrowable.getFirstVisiblePosition();
     int j = localThrowable.getLastVisiblePosition();
-    List localList = ((ajee)localObject).b();
+    List localList = ((ajit)localObject).b();
     if ((localList != null) && (!localList.isEmpty()))
     {
       j = Math.min(j, localList.size());

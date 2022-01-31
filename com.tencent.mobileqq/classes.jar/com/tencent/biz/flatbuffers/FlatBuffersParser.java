@@ -6,8 +6,8 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Looper;
 import android.text.TextUtils;
-import bdcb;
-import bdcs;
+import bdgk;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -188,7 +188,7 @@ public class FlatBuffersParser
     if (!bool2)
     {
       QLog.d("FlatBuffersParser", 1, "os.arch: " + System.getProperty("os.arch"));
-      QLog.d("FlatBuffersParser", 1, "DeviceInfoUtil#getCpuType: " + bdcb.g());
+      QLog.d("FlatBuffersParser", 1, "DeviceInfoUtil#getCpuType: " + bdgk.g());
       QLog.d("FlatBuffersParser", 1, "Build.CPU_ABI: " + Build.CPU_ABI);
       QLog.d("FlatBuffersParser", 1, "Build.CPU_ABI2: " + Build.CPU_ABI2);
       QLog.d("FlatBuffersParser", 1, "isX86: " + bool2);
@@ -223,7 +223,7 @@ public class FlatBuffersParser
       QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip real start");
       try
       {
-        bdcs.a(str3, (String)localObject, false);
+        bdhb.a(str3, (String)localObject, false);
         QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip success");
         localObject = new File((String)localObject + "libFlatBuffersParser.so");
         if (((File)localObject).exists()) {

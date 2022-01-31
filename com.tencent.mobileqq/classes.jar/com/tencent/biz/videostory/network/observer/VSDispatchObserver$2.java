@@ -2,17 +2,17 @@ package com.tencent.biz.videostory.network.observer;
 
 import com.tencent.biz.videostory.network.request.VSBaseRequest;
 import com.tencent.qphone.base.util.QLog;
-import yvm;
-import yvn;
+import zab;
+import zac;
 
 public class VSDispatchObserver$2
   implements Runnable
 {
-  public VSDispatchObserver$2(yvm paramyvm, yvn paramyvn, long paramLong1, String paramString, VSBaseRequest paramVSBaseRequest, long paramLong2) {}
+  public VSDispatchObserver$2(zab paramzab, zac paramzac, long paramLong1, String paramString, VSBaseRequest paramVSBaseRequest, long paramLong2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Yvn.a(false, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, null);
+    this.jdField_a_of_type_Zac.a(false, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, null);
     QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: dispatch Success CmdName:" + this.jdField_a_of_type_ComTencentBizVideostoryNetworkRequestVSBaseRequest.getCmdName() + " | TraceId:" + this.jdField_a_of_type_ComTencentBizVideostoryNetworkRequestVSBaseRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizVideostoryNetworkRequestVSBaseRequest.getCurrentSeq() + " | final dispatch costTime:" + (System.currentTimeMillis() - this.b) + " | errorMsg: inform VSBaseRequest finalRsp is empty.");
   }
 }

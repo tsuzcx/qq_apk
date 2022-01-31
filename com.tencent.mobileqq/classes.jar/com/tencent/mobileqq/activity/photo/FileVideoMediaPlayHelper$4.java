@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aiji;
-import aijj;
+import ainx;
+import ainy;
 
 public class FileVideoMediaPlayHelper$4
   implements Runnable
 {
-  public FileVideoMediaPlayHelper$4(aiji paramaiji) {}
+  public FileVideoMediaPlayHelper$4(ainx paramainx) {}
   
   public void run()
   {
-    if (aiji.a(this.this$0) != null) {
-      aiji.a(this.this$0).a(false, "");
+    if (ainx.a(this.this$0) != null) {
+      ainx.a(this.this$0).a(false, "");
     }
   }
 }

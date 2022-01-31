@@ -3,7 +3,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView
 import com.tencent.widget.AdapterView;
 
 public class sid
-  implements bhqp
+  implements bhuw
 {
   public sid(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
   

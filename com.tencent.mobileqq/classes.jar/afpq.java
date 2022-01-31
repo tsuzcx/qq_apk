@@ -1,28 +1,18 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
-abstract class afpq<T extends aemj>
+public class afpq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private T a;
+  public afpq(HeartCombolEffectView paramHeartCombolEffectView, afpr paramafpr) {}
   
-  private afpq(aflj paramaflj) {}
-  
-  protected abstract T a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter);
-  
-  protected boolean a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return true;
-  }
-  
-  protected T b(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    if (this.a == null) {
-      this.a = a(paramChatMessage, paramBaseAdapter);
+    this.jdField_a_of_type_Afpr.jdField_b_of_type_Float = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.jdField_a_of_type_Afpr.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Afpr.jdField_b_of_type_Float > 0.0F)) {
+      this.jdField_a_of_type_Afpr.jdField_b_of_type_Boolean = true;
     }
-    if (a()) {
-      this.b.a(this.a, paramBaseAdapter);
-    }
-    return this.a;
   }
 }
 

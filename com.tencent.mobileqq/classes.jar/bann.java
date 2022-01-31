@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-class bann
-  implements ITransCallbackForReport
+final class bann
+  implements DialogInterface.OnClickListener
 {
-  bann(bank parambank) {}
+  bann(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bank localbank = this.a;
-    String str2 = this.a.c;
-    if (this.a.f == null) {}
-    for (String str1 = this.a.l;; str1 = this.a.f)
-    {
-      localbank.a("actRichMediaNetMonitor_pttUp", false, paramInt, paramString1, paramString2, str2, str1, null);
-      return;
+    banm.a("0X800A5B5");
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeManager", 2, "showDarkModeTips systemDarMode  = " + this.a);
     }
+    banm.a(true);
+    banm.a(this.a, this.b, null);
   }
 }
 

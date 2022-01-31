@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.vip.lianghao.view.LiangHaoDialogView;
 
-final class beco
-  extends WebAccelerateHelper.CommonJsPluginFactory
+public class beco
+  implements bdgy
 {
-  public List<WebViewPlugin> getCommonJsPlugin()
+  private Dialog a;
+  
+  public Dialog a(Context paramContext, becg parambecg, View.OnClickListener paramOnClickListener)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new beaq());
-    localArrayList.add(new atda());
-    localArrayList.add(new UiApiPlugin());
-    localArrayList.add(new atax());
-    return localArrayList;
+    this.a = bdgm.a(paramContext, 2131693887, this, parambecg, 2131690648, 2131693885, new becp(this), paramOnClickListener, false, false);
+    return this.a;
+  }
+  
+  public View a(Context paramContext, Object paramObject)
+  {
+    paramContext = new LiangHaoDialogView(paramContext);
+    paramContext.a((becg)paramObject);
+    return paramContext;
   }
 }
 

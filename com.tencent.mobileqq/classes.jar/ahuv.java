@@ -1,13 +1,23 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ahuv
-  implements bhss
+class ahuv
+  implements ahus
 {
-  public ahuv(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
+  ahuv(ahuu paramahuu) {}
   
-  public void a(int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    azmj.b(this.a.a, "dc00898", "", "", "0X800AC87", "0X800AC87", 3, 0, "1", "2", "", "");
+    ((alwd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159)).c(paramString);
+    if (paramInt == 0)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      return;
+    }
+    if (this.a.jdField_a_of_type_Ahud != null) {
+      this.a.jdField_a_of_type_Ahud.a();
+    }
+    ahuu.a(this.a);
   }
 }
 

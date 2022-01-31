@@ -1,26 +1,18 @@
-public abstract interface bbsx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+
+class bbsx
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  bbsx(bbsn parambbsn, FileManagerEntity paramFileManagerEntity) {}
   
-  public abstract long a();
-  
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(bbsy parambbsy);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract String b();
-  
-  public abstract boolean c();
-  
-  public abstract boolean d();
-  
-  public abstract int g();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1) {
+      bbsn.a(this.jdField_a_of_type_Bbsn, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    }
+  }
 }
 
 

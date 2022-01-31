@@ -1,7 +1,12 @@
 public class awjm
 {
-  public long a = -1L;
-  public long b = -1L;
+  public int a = -2;
+  public awjh a;
+  public awjl a;
+  public Object a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
 }
 
 

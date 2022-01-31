@@ -4,51 +4,43 @@ import org.json.JSONObject;
 
 public class aoss
 {
-  private int jdField_a_of_type_Int = 1;
+  private int jdField_a_of_type_Int = -1;
+  private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = -1;
+  private String jdField_b_of_type_JavaLangString = "";
+  private int jdField_c_of_type_Int = -1;
+  private String jdField_c_of_type_JavaLangString = "";
+  private int jdField_d_of_type_Int = -1;
+  private String jdField_d_of_type_JavaLangString = "";
+  private String e = "";
   
-  public static aoss a(aogf[] paramArrayOfaogf)
+  public static aoss a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0)) {
       return null;
     }
     aoss localaoss = new aoss();
     try
     {
-      a(localaoss, new JSONObject(paramArrayOfaogf[0].a));
+      paramArrayOfaoko = new JSONObject(paramArrayOfaoko[0].jdField_a_of_type_JavaLangString);
+      localaoss.jdField_a_of_type_Int = paramArrayOfaoko.getInt("check_day");
+      localaoss.jdField_b_of_type_Int = paramArrayOfaoko.getInt("check_time");
+      localaoss.jdField_c_of_type_Int = paramArrayOfaoko.getInt("album_days");
+      localaoss.jdField_d_of_type_Int = paramArrayOfaoko.getInt("photos_limit");
+      localaoss.jdField_a_of_type_JavaLangString = paramArrayOfaoko.getString("tips");
+      localaoss.jdField_b_of_type_JavaLangString = paramArrayOfaoko.getString("jump_text");
+      localaoss.jdField_c_of_type_JavaLangString = paramArrayOfaoko.getString("t_show");
+      localaoss.jdField_d_of_type_JavaLangString = paramArrayOfaoko.getString("t_click");
+      localaoss.e = paramArrayOfaoko.getString("t_close");
+      localaoss.jdField_a_of_type_Boolean = true;
       return localaoss;
     }
-    catch (JSONException paramArrayOfaogf)
+    catch (JSONException paramArrayOfaoko)
     {
-      paramArrayOfaogf.printStackTrace();
+      QLog.e("WeiyunCheckAlbumConfigBean", 1, "wy check album config parse failed", paramArrayOfaoko);
     }
     return localaoss;
-  }
-  
-  public static void a(aoss paramaoss, JSONObject paramJSONObject)
-  {
-    if ((paramJSONObject == null) || (paramaoss == null)) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TencentDocAIOShowGuideDialogBean", 2, "handleTencentDocUniversalEntry call after " + paramJSONObject.toString());
-      }
-      if (paramJSONObject.has("aioGuiderDialogEnable")) {
-        paramaoss.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("aioGuiderDialogEnable");
-      }
-    } while (!paramJSONObject.has("dialogShowMaxTimes"));
-    paramaoss.jdField_a_of_type_Int = paramJSONObject.optInt("dialogShowMaxTimes");
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 

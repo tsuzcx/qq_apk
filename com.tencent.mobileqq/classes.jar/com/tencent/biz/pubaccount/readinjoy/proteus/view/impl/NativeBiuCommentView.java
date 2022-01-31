@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.impl;
 
-import alpo;
+import alud;
 import android.content.Context;
-import baig;
+import bamp;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -24,7 +24,7 @@ public class NativeBiuCommentView
   public NativeBiuCommentView(Context paramContext)
   {
     super(paramContext);
-    setSpannableFactory(baig.a);
+    setSpannableFactory(bamp.a);
     setShouldCallClick(false);
   }
   
@@ -34,7 +34,7 @@ public class NativeBiuCommentView
     {
       ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_Slx.a();
       setMaxLines(a(localArticleInfo));
-      setSpanText(alpo.a(2131707450));
+      setSpanText(alud.a(2131707462));
       setMoreSpan(new pte(this, localArticleInfo, -3355444));
       this.jdField_a_of_type_Sly = this.jdField_a_of_type_Slx.c();
       this.jdField_a_of_type_Sly.a(this);

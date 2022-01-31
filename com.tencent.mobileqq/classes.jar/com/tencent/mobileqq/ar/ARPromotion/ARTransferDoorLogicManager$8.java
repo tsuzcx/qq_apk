@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import alpo;
-import amou;
+import alud;
+import amtj;
 import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class ARTransferDoorLogicManager$8
   implements Runnable
 {
-  public ARTransferDoorLogicManager$8(amou paramamou) {}
+  public ARTransferDoorLogicManager$8(amtj paramamtj) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class ARTransferDoorLogicManager$8
       this.this$0.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.b(1);
       return;
     }
-    this.this$0.a(true, alpo.a(2131701129));
+    this.this$0.a(true, alud.a(2131701141));
   }
 }
 

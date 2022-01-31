@@ -1,14 +1,27 @@
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
 
 public class yqa
+  implements bhuk
 {
-  public View a;
-  public TextView a;
-  public arjn a;
-  public AsyncImageView a;
-  public TextView b;
+  public yqa(FollowTextView paramFollowTextView, bhuf parambhuf) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (!FollowTextView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView)) {
+      return;
+    }
+    FollowTextView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView, false);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.a(false);
+    }
+  }
 }
 
 

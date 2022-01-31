@@ -1,74 +1,18 @@
-import android.app.PendingIntent;
-import android.app.PendingIntent.CanceledException;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
 
-class ajdm
-  implements ajdh
+public class ajdm
+  implements DialogInterface.OnClickListener
 {
-  @Nullable
-  private ajdj jdField_a_of_type_Ajdj;
-  @NonNull
-  private final PendingIntent jdField_a_of_type_AndroidAppPendingIntent;
-  @NonNull
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  public ajdm(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public ajdm(@NonNull PendingIntent paramPendingIntent, @NonNull QQAppInterface paramQQAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-  }
-  
-  public void a(@Nullable ajdj paramajdj)
-  {
-    this.jdField_a_of_type_Ajdj = paramajdj;
-  }
-  
-  public boolean isNeedAutoCloseWhenAccountChange()
-  {
-    return true;
-  }
-  
-  public void onClose()
-  {
-    if (this.jdField_a_of_type_Ajdj == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    ajbm.a(localQQAppInterface, this.jdField_a_of_type_Ajdj);
-  }
-  
-  public void onEnter()
-  {
-    if (this.jdField_a_of_type_Ajdj == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    try
-    {
-      this.jdField_a_of_type_AndroidAppPendingIntent.send();
-      ajbm.a(localQQAppInterface, this.jdField_a_of_type_Ajdj);
-      return;
-    }
-    catch (PendingIntent.CanceledException localCanceledException)
-    {
-      for (;;)
-      {
-        QLog.e("Q.recent.banner", 1, "send pending intent fail with " + this.jdField_a_of_type_AndroidAppPendingIntent + "\r\n" + localCanceledException);
-      }
+    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).isShowing())) {
+      DrawRedpacketPannelPreviewFragment.a(this.a).dismiss();
     }
   }
-  
-  public void onOverride() {}
 }
 
 

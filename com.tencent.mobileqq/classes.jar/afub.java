@@ -1,13 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afub
-  implements DialogInterface.OnClickListener
+class afub
+  extends afuf
 {
-  public afub(QQStoryItemBuilder paramQQStoryItemBuilder) {}
+  afub(afpy paramafpy)
+  {
+    super(paramafpy, null);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agfj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, (TroopChatPie)afpy.a(this.a));
+  }
 }
 
 

@@ -1,17 +1,28 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class bbju
+public class bbju
+  extends ampt
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
-  String jdField_a_of_type_JavaLangString;
+  public bbju(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  {
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
   
-  bbju(bbjs parambbjs) {}
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(TroopBarPublishLocationSelectActivity.a(this.a), 2, "onLocationFinish() errCode=" + paramInt);
+    }
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      double d1 = paramSosoLbsInfo.a.a;
+      double d2 = paramSosoLbsInfo.a.b;
+      TroopBarPublishLocationSelectActivity.a(this.a, (int)(d1 * 1000000.0D), (int)(d2 * 1000000.0D), 0, true, this.a);
+    }
+  }
 }
 
 

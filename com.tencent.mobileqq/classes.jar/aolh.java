@@ -1,74 +1,67 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class aolh
-  extends aofy<aolg>
+  extends aokh<aoli>
 {
   public int a()
   {
-    return 68;
+    return 574;
   }
   
   @NonNull
-  public aolg a(int paramInt)
+  public aoli a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "[migrateOldOrDefaultContent]");
-    }
-    return new aolg();
+    return new aoli();
   }
   
   @Nullable
-  public aolg a(aogf[] paramArrayOfaogf)
+  public aoli a(aoko[] paramArrayOfaoko)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "[onParsed]");
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      aoli localaoli = aoli.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("AEPituCameraConfigProcessor", 2, "onParsed:" + paramArrayOfaoko[0].a);
+      }
+      return localaoli;
     }
-    aolg localaolg = new aolg();
-    localaolg.a = paramArrayOfaogf;
-    return localaolg;
+    return null;
   }
   
-  public Class<aolg> a()
+  public Class<aoli> a()
   {
-    return aolg.class;
+    return aoli.class;
   }
   
-  public void a()
+  public void a(int paramInt) {}
+  
+  public void a(aoli paramaoli)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "onReqNoReceive: type=" + a());
+      QLog.d("AEPituCameraConfigProcessor", 2, "onUpdate: " + paramaoli.a());
     }
+    ShortVideoUtils.a(paramaoli.a());
   }
   
-  public void a(int paramInt)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "[onReqNoReceive] failCode=" + paramInt);
-    }
-  }
-  
-  public void a(aolg paramaolg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "[onUpdate]");
-    }
-    PreloadManager localPreloadManager = (PreloadManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(151);
-    localPreloadManager.a(paramaolg);
-    localPreloadManager.b();
-    localPreloadManager.b(true);
+    return false;
   }
   
   public int b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "[get migrateOldVersion]");
-    }
     return 0;
+  }
+  
+  public int b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AEPituCameraConfigProcessor", 2, "onSend: " + paramInt + ", isOpen:" + ShortVideoUtils.g());
+    }
+    return super.b(paramInt);
   }
   
   public boolean b()
@@ -78,7 +71,7 @@ public class aolh
   
   public boolean c()
   {
-    return false;
+    return true;
   }
 }
 

@@ -1,24 +1,14 @@
-import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 
 public class ahyz
-  extends ahvn
+  implements aieo
 {
-  public static final int[] a = { 2131690782, 2131690787, 2131690784, 2131690785, 2131690789, 2131690786, 2131690783, 2131690788 };
-  public static final int[] b = { 2131364154, 2131364159, 2131364156, 2131364157, 2131364161, 2131364158, 2131364155, 2131364160 };
+  public ahyz(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public ahyz(FragmentActivity paramFragmentActivity)
+  public void a(MotionEvent paramMotionEvent)
   {
-    super(paramFragmentActivity);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return a;
+    this.a.a.a(paramMotionEvent);
   }
 }
 

@@ -1,40 +1,187 @@
-import com.tencent.gamecenter.appointment.GameCenterReceiver;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.open.wadl.WadlConfigCenter.1;
-import java.util.HashMap;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import com.tencent.open.component.cache.database.AbstractDbCacheManager;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bfnt
+  extends AbstractDbCacheManager
 {
-  static bfnt jdField_a_of_type_Bfnt;
-  static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private HashMap<String, bfnr> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  protected Cursor a;
+  protected bfnv a;
+  protected String b;
+  protected final ArrayList<WeakReference<bfnu>> b;
+  protected String c;
   
-  private bfnt()
+  protected bfnt(Context paramContext, Class<? extends bfnp> paramClass, long paramLong, String paramString)
   {
-    a();
-    GameCenterReceiver.a();
+    super(paramContext, paramClass, paramLong, paramString);
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    d();
   }
   
-  public static bfnt a()
+  public int a()
   {
-    if (jdField_a_of_type_Bfnt == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    for (;;)
     {
-      if (jdField_a_of_type_Bfnt == null) {
-        jdField_a_of_type_Bfnt = new bfnt();
+      try
+      {
+        if (this.jdField_a_of_type_AndroidDatabaseCursor != null)
+        {
+          i = this.jdField_a_of_type_AndroidDatabaseCursor.getCount();
+          return i;
+        }
       }
-      return jdField_a_of_type_Bfnt;
+      finally {}
+      int i = 0;
     }
   }
   
-  public <T> T a(String paramString)
+  public bfnp a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    try
+    {
+      bfnp localbfnp = a(this.jdField_a_of_type_AndroidDatabaseCursor, paramInt);
+      return localbfnp;
+    }
+    finally {}
+  }
+  
+  protected List<bfnu> a()
+  {
+    ArrayList localArrayList1;
+    Object localObject2;
+    for (;;)
+    {
+      synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+      {
+        if (this.jdField_b_of_type_JavaUtilArrayList.size() <= 0) {
+          break;
+        }
+        localArrayList1 = new ArrayList();
+        Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+        if (!localIterator.hasNext()) {
+          break label99;
+        }
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if (localWeakReference == null)
+        {
+          localWeakReference = null;
+          if (localWeakReference == null) {
+            continue;
+          }
+          localArrayList1.add(localWeakReference);
+        }
+      }
+      localObject2 = (bfnu)localObject1.get();
+    }
+    for (;;)
+    {
+      return localObject2;
+      localObject2 = null;
+      continue;
+      label99:
+      localObject2 = localArrayList1;
+    }
   }
   
   public void a()
   {
-    ThreadManagerV2.executeOnFileThread(new WadlConfigCenter.1(this));
+    try
+    {
+      if (this.jdField_a_of_type_AndroidDatabaseCursor != null) {
+        this.jdField_a_of_type_AndroidDatabaseCursor.close();
+      }
+      d();
+      b();
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(SQLiteDatabase paramSQLiteDatabase, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      super.a(paramSQLiteDatabase, paramInt);
+      return;
+    }
+    a(paramSQLiteDatabase, this.jdField_b_of_type_JavaLangString);
+  }
+  
+  public void a(bfnp parambfnp, int paramInt)
+  {
+    try
+    {
+      a(paramInt, new bfnp[] { parambfnp });
+      return;
+    }
+    finally {}
+  }
+  
+  void a(bfnv parambfnv)
+  {
+    this.jdField_a_of_type_Bfnv = parambfnv;
+  }
+  
+  public void a(bfnp[] paramArrayOfbfnp, int paramInt)
+  {
+    try
+    {
+      a(paramInt, paramArrayOfbfnp);
+      return;
+    }
+    finally {}
+  }
+  
+  public void b()
+  {
+    Object localObject = a();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        bfnu localbfnu = (bfnu)((Iterator)localObject).next();
+        if (localbfnu != null) {
+          localbfnu.a(this);
+        }
+      }
+    }
+  }
+  
+  public void b(bfnp parambfnp, String paramString)
+  {
+    try
+    {
+      a(parambfnp, paramString);
+      return;
+    }
+    finally {}
+  }
+  
+  public void b(String paramString)
+  {
+    try
+    {
+      a(paramString);
+      return;
+    }
+    finally {}
+  }
+  
+  protected void d()
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidDatabaseCursor = a(this.jdField_b_of_type_JavaLangString, this.c);
+      return;
+    }
+    finally {}
   }
 }
 

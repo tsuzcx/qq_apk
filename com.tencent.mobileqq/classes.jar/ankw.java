@@ -1,17 +1,16 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.3;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.3.1.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-class ankw
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class ankw
+  implements aamu
 {
-  ankw(anku paramanku, Context paramContext) {}
+  public ankw(ArkAppNotifyCenter.GdtNotify.3 param3) {}
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public void onResponse(aamt paramaamt)
   {
-    if (paramBitmap != null) {
-      anku.a(this.jdField_a_of_type_Anku, paramBitmap, this.jdField_a_of_type_AndroidContentContext);
-    }
+    ArkAppCenter.a().postToArkThread(new ArkAppNotifyCenter.GdtNotify.3.1.1(this, paramaamt));
   }
 }
 

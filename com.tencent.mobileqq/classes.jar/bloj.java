@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.TemplateData;
+import android.support.annotation.Nullable;
 
-public final class bloj
-  implements Parcelable.Creator<TemplateData>
+public abstract interface bloj
 {
-  public TemplateData a(Parcel paramParcel)
-  {
-    return new TemplateData(paramParcel);
-  }
-  
-  public TemplateData[] a(int paramInt)
-  {
-    return new TemplateData[paramInt];
-  }
+  public abstract void a(@Nullable bloh parambloh, int paramInt, boolean paramBoolean);
 }
 
 

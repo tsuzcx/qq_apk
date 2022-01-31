@@ -2,12 +2,12 @@ package com.tencent.open.downloadnew;
 
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
-import bfko;
+import bfox;
 
 public class MyAppApi$14
   implements Runnable
 {
-  public MyAppApi$14(bfko parambfko, String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity) {}
+  public MyAppApi$14(bfox parambfox, String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity) {}
   
   public void run()
   {

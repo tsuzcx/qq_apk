@@ -1,28 +1,42 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
 
-public class bkiw
-  implements Animation.AnimationListener
+class bkiw
+  implements EIPClientConnectListener
 {
-  public bkiw(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  bkiw(bkiu parambkiu, long paramLong) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void connectFailed()
   {
-    if (QIMEffectCameraCaptureUnit.e(this.a) != null)
+    bkiu.a(this.jdField_a_of_type_Bkiu, false);
+    bkiu.b(this.jdField_a_of_type_Bkiu, false);
+    synchronized (bkiu.a(this.jdField_a_of_type_Bkiu))
     {
-      QIMEffectCameraCaptureUnit.e(this.a).clearAnimation();
-      QIMEffectCameraCaptureUnit.e(this.a).setVisibility(8);
+      bkiu.a(this.jdField_a_of_type_Bkiu).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("WadlQIPCConnector", 2, "connectFailed:" + bkiu.a(this.jdField_a_of_type_Bkiu));
+      }
+      return;
     }
-    this.a.v = false;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void connectSuccess(EIPCConnection arg1)
   {
-    this.a.v = true;
+    long l = System.currentTimeMillis();
+    if (??? != null) {
+      bkiu.a(this.jdField_a_of_type_Bkiu, ???.procName);
+    }
+    bkiu.a(this.jdField_a_of_type_Bkiu, true);
+    bkiu.b(this.jdField_a_of_type_Bkiu, false);
+    synchronized (bkiu.a(this.jdField_a_of_type_Bkiu))
+    {
+      bkiu.a(this.jdField_a_of_type_Bkiu).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("WadlQIPCConnector", 2, "connectSuccess:" + bkiu.a(this.jdField_a_of_type_Bkiu) + "|" + (l - this.jdField_a_of_type_Long));
+      }
+      return;
+    }
   }
 }
 

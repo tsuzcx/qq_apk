@@ -1,17 +1,12 @@
 class vjm
-  implements vlf
+  extends viw
 {
-  vjm(vjl paramvjl) {}
+  vjm(vji paramvji, vkp paramvkp) {}
   
-  public void a()
+  public boolean b()
   {
-    vjl.a(this.a);
-  }
-  
-  public void a(vld paramvld, String paramString, boolean paramBoolean)
-  {
-    wsv.d("Q.qqstory.playernew.StoryPlayerImpl", "onGroupDataDelete, groupId=%s, vid=%s", new Object[] { paramvld.a, paramString });
-    vjl.a(this.a).a(paramvld, paramString, paramBoolean);
+    this.jdField_a_of_type_Vkp.a = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 

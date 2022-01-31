@@ -10,18 +10,18 @@ public class ct
   
   public void a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_Allz.a != null)
+    if (this.a.jdField_a_of_type_Alqo.a != null)
     {
-      List localList = this.a.jdField_a_of_type_Allz.a.a();
+      List localList = this.a.jdField_a_of_type_Alqo.a.a();
       if ((localList == null) || (localList.size() > 0)) {
         break label79;
       }
-      this.a.findViewById(2131365743).setVisibility(0);
+      this.a.findViewById(2131365745).setVisibility(0);
       this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Allz.a.a();
+      this.a.jdField_a_of_type_Alqo.a.a();
       return;
       label79:
       PrinterSubOptionActivity.a(this.a);

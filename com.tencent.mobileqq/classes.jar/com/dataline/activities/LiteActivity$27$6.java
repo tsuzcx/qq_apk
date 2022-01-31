@@ -1,6 +1,6 @@
 package com.dataline.activities;
 
-import amfy;
+import amkn;
 import at;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;

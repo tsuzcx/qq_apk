@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.danmaku.inject;
 
-import aoxq;
-import aoxx;
+import apbz;
+import apcg;
 
 public class DanmakuContext$2
   implements Runnable
 {
   public void run()
   {
-    aoxq.a(this.this$0).a(this.jdField_a_of_type_Aoyy, this.jdField_a_of_type_Aoxw);
+    apbz.a(this.this$0).a(this.jdField_a_of_type_Apdh, this.jdField_a_of_type_Apcf);
   }
 }
 

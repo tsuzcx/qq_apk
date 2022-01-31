@@ -1,20 +1,47 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import android.content.res.XmlResourceParser;
+import org.xmlpull.v1.XmlPullParser;
 
 public class bazu
-  implements View.OnTouchListener
 {
-  public bazu(TribeVideoPreviewFragment paramTribeVideoPreviewFragment) {}
+  private bazv jdField_a_of_type_Bazv;
+  private XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private void a()
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.getActivity().finish();
+    String str1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "extension");
+    String str2 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "mimetype");
+    this.jdField_a_of_type_Bazv.a(str1, str2);
+  }
+  
+  public bazv a()
+  {
+    this.jdField_a_of_type_Bazv = new bazv();
+    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
+    if (i != 1)
+    {
+      String str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
+      if (i == 2) {
+        if (!str.equals("MimeTypes")) {}
+      }
+      for (;;)
+      {
+        i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.next();
+        break;
+        if (str.equals("type"))
+        {
+          a();
+          continue;
+          if ((i != 3) || (!str.equals("MimeTypes"))) {}
+        }
+      }
     }
-    return true;
+    return this.jdField_a_of_type_Bazv;
+  }
+  
+  public bazv a(XmlResourceParser paramXmlResourceParser)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlResourceParser;
+    return a();
   }
 }
 

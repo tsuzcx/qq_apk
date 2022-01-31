@@ -1,91 +1,70 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_SHARE.MiniProgramShare.StGetGroupShareInfoReq;
+import NS_MINI_SHARE.MiniProgramShare.StGetGroupShareInfoRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.receiver.WebProcessReceiver;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.TbsListener;
-import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONObject;
 
 public class bhdt
-  implements TbsListener
+  extends bhdw
 {
-  public bhdt(WebProcessReceiver paramWebProcessReceiver, SharedPreferences paramSharedPreferences, long paramLong) {}
+  private MiniProgramShare.StGetGroupShareInfoReq a = new MiniProgramShare.StGetGroupShareInfoReq();
   
-  public void onDownloadFinish(int paramInt)
+  public bhdt(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2)
   {
-    QMLog.d("TBS_update", "tbs download finish result=" + paramInt);
-    if ((paramInt != 100) && (paramInt != 120) && (paramInt != 122))
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
+    this.a.appid.set(paramString1);
+    this.a.shareTicket.set(paramString2);
+  }
+  
+  protected String a()
+  {
+    return "mini_app_share";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    MiniProgramShare.StGetGroupShareInfoRsp localStGetGroupShareInfoRsp = new MiniProgramShare.StGetGroupShareInfoRsp();
+    try
     {
-      if (WebProcessReceiver.a.compareAndSet(true, false))
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      localStGetGroupShareInfoRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      if (localStGetGroupShareInfoRsp != null)
       {
-        QbSdk.setTbsListener(null);
-        int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("tbs_download_count", 0);
-        long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("tbs_download_cost", 0L);
-        long l2 = System.currentTimeMillis();
-        long l3 = this.jdField_a_of_type_Long;
-        localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-        localEditor.putInt("tbs_download_count", i + 1);
-        localEditor.putLong("tbs_download_cost", l1 + (l2 - l3));
-        localEditor.commit();
-        if (QMLog.isColorLevel()) {
-          QMLog.d("TBS_update", "tbs download aborted:" + paramInt);
-        }
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("response", localStGetGroupShareInfoRsp);
+        paramArrayOfByte.put("resultCode", localStQWebRsp.retCode.get());
+        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+        return paramArrayOfByte;
       }
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      localEditor.putInt("tbs_download_complete", paramInt);
-      localEditor.remove("tbs_downloading");
-      localEditor.remove("tbs_download_progress");
-      localEditor.commit();
+      QMLog.d("MiniAppGetGroupShareInfoRequest", "onResponse fail.rsp = null");
+      return null;
     }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("MiniAppGetGroupShareInfoRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public void onDownloadProgress(int paramInt)
+  protected byte[] a()
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("TBS_update", "tbs download progress " + paramInt);
-    }
+    return this.a.toByteArray();
   }
   
-  public void onInstallFinish(int paramInt)
+  protected String b()
   {
-    QMLog.d("TBS_update", "tbs download install finish result=" + paramInt);
-    if (paramInt == 200) {}
-    while (!WebProcessReceiver.a.compareAndSet(true, false)) {
-      return;
-    }
-    QbSdk.setTbsListener(null);
-    long l1;
-    SharedPreferences.Editor localEditor;
-    if ((paramInt != 232) && (paramInt != 220))
-    {
-      int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("tbs_download_count", 0);
-      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("tbs_download_cost", 0L);
-      long l2 = System.currentTimeMillis();
-      long l3 = this.jdField_a_of_type_Long;
-      localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      localEditor.putInt("tbs_download_count", i + 1);
-      localEditor.putLong("tbs_download_cost", l1 + (l2 - l3));
-      localEditor.commit();
-      QMLog.d("TBS_update", "tbs install error:" + paramInt);
-    }
-    for (;;)
-    {
-      localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      localEditor.putInt("tbs_download_complete", paramInt);
-      localEditor.remove("tbs_downloading");
-      localEditor.remove("tbs_download_progress");
-      localEditor.commit();
-      return;
-      this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("tbs_download_count", 0);
-      this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("tbs_download_cost", 0L);
-      System.currentTimeMillis();
-      l1 = this.jdField_a_of_type_Long;
-      localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      localEditor.remove("tbs_download_count");
-      localEditor.remove("tbs_download_cost");
-      localEditor.commit();
-      QMLog.d("TBS_update", "tbs install finished:" + paramInt);
-    }
+    return "GetGroupShareInfo";
   }
 }
 

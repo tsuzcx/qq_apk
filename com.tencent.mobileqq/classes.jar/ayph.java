@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
+import java.util.Comparator;
 
-public class ayph
-  extends aypw
+final class ayph
+  implements Comparator<aypj>
 {
-  public ayph(GroupSearchEngine paramGroupSearchEngine, aypx paramaypx, String paramString, int paramInt)
+  public int a(aypj paramaypj1, aypj paramaypj2)
   {
-    super(paramGroupSearchEngine, paramaypx, paramString, paramInt);
-  }
-  
-  public ayjk a(List<ayjl> paramList, String paramString)
-  {
-    return new ayiu(paramList, paramString, GroupSearchEngine.a(this.a));
+    int j = Long.signum(paramaypj2.jdField_a_of_type_Int - paramaypj1.jdField_a_of_type_Int);
+    int i = j;
+    if (j == 0) {
+      i = Long.signum(paramaypj2.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.timeStamp - paramaypj1.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.timeStamp);
+    }
+    return i;
   }
 }
 

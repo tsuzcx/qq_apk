@@ -1,73 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Vector;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
 
-public class bbpq
+class bbpq
+  implements Animation.AnimationListener
 {
-  public bbps a;
-  private Comparator<bbpu> a;
-  public Vector<bbpu> a;
-  public AtomicBoolean a;
-  public boolean a;
+  bbpq(bbpo parambbpo) {}
   
-  public bbpq()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_JavaUtilVector = new Vector();
-    this.jdField_a_of_type_JavaUtilComparator = new bbpr(this);
-  }
-  
-  public void a(String paramString)
-  {
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        Object localObject = paramString.optJSONArray("effectSwitch");
-        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-        {
-          if (((JSONArray)localObject).getJSONObject(0).optInt("androidSwitch") == 1)
-          {
-            bool = true;
-            this.jdField_a_of_type_Boolean = bool;
-          }
-        }
-        else
-        {
-          paramString = paramString.optJSONArray("grayMsgList");
-          if ((paramString != null) && (paramString.length() > 0))
-          {
-            if (i < paramString.length())
-            {
-              localObject = paramString.getJSONObject(i);
-              bbpu localbbpu = new bbpu();
-              localbbpu.a((JSONObject)localObject);
-              this.jdField_a_of_type_JavaUtilVector.add(localbbpu);
-              i += 1;
-              continue;
-            }
-            Collections.sort(this.jdField_a_of_type_JavaUtilVector, this.jdField_a_of_type_JavaUtilComparator);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopEnterEffect.Config", 2, "config mergeFromJSON enable = " + this.jdField_a_of_type_Boolean + " graytips: " + this.jdField_a_of_type_JavaUtilVector.size());
-          }
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("TroopEnterEffect.Config", 1, "mergeFromJSON error: " + paramString.getMessage());
-        return;
-      }
-      boolean bool = false;
+    if (bbpo.a(this.a) != null) {
+      bbpo.a(this.a).a.clearAnimation();
+    }
+    bbpo.a(this.a);
+    if ((bbpo.a(this.a) != null) && (!bbpo.a(this.a).isSend())) {
+      ((bbpw)this.a.a.getManager(225)).a(this.a.a.getCurrentAccountUin(), bbpo.a(this.a).getExtInfoFromExtStr("key_aio_keyword"), Integer.valueOf(bbpo.a(this.a).ruleId));
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

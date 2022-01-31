@@ -1,29 +1,33 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.4.1;
+import java.util.List;
 
-class bbpy
-  implements View.OnTouchListener
+public class bbpy
+  extends amdy
 {
-  bbpy(bbpw parambbpw, String paramString, bbqf parambbqf) {}
+  bbpy(bbpw parambbpw, MessageRecord paramMessageRecord, bbpz parambbpz) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
   {
-    if (paramMotionEvent.getAction() == 1)
+    if (paramBoolean)
     {
-      paramView = new Intent(this.jdField_a_of_type_Bbpw.a.getContext(), QQBrowserActivity.class);
-      paramMotionEvent = bdox.a("troopEnterEffect");
-      paramView.putExtra("url", paramMotionEvent + "&gc=" + this.jdField_a_of_type_Bbpw.b);
-      this.jdField_a_of_type_Bbpw.a.getContext().startActivity(paramView);
-      bbqh.a("Grp_AIO", "action_clk", new String[] { this.jdField_a_of_type_Bbpw.b });
-      VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_JavaLangString, "style", "0X8008E63", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_Bbqf.a), "");
+      if ((paramList != null) && (paramList.size() > 0))
+      {
+        bbpw.a(this.jdField_a_of_type_Bbpw, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (TroopAioKeywordTipInfo)paramList.get(0), this.jdField_a_of_type_Bbpz);
+        synchronized (this.jdField_a_of_type_Bbpw.b)
+        {
+          this.jdField_a_of_type_Bbpw.b.put(((TroopAioKeywordTipInfo)paramList.get(0)).ruleId, paramList.get(0));
+          ThreadManager.post(new TroopAioKeywordTipManager.4.1(this, paramList), 2, null, true);
+          return;
+        }
+      }
+      bbpw.a(this.jdField_a_of_type_Bbpw, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Bbpz);
+      return;
     }
-    return true;
+    bbpw.a(this.jdField_a_of_type_Bbpw, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Bbpz);
   }
 }
 

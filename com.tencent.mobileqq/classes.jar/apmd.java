@@ -1,37 +1,15 @@
-import android.os.IBinder;
-import android.os.IBinder.DeathRecipient;
-import android.os.Messenger;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.List;
 
 class apmd
-  implements IBinder.DeathRecipient
+  implements apmj
 {
-  apmd(aply paramaply) {}
+  apmd(apmb paramapmb, apmj paramapmj) {}
   
-  public void binderDied()
+  public void a(List<apuf> paramList)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("MessengerService$IncomingHandler", 2, "-->binder died");
-      MessengerService.a((MessengerService)this.a.a.get());
-      MessengerService.b((MessengerService)this.a.a.get());
-    }
-    MessengerService localMessengerService;
-    if (this.a.a != null)
-    {
-      localMessengerService = (MessengerService)this.a.a.get();
-      if ((localMessengerService == null) || (localMessengerService.a == null)) {}
-    }
-    try
-    {
-      localMessengerService.a.getBinder().unlinkToDeath(aply.a(this.a), 0);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("MessengerService$IncomingHandler", 1, "-->binder died unlink to death error=" + localException.toString());
+    this.jdField_a_of_type_Apmb.a(paramList);
+    if (this.jdField_a_of_type_Apmj != null) {
+      this.jdField_a_of_type_Apmj.a(paramList);
     }
   }
 }

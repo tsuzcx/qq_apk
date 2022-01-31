@@ -1,61 +1,58 @@
-import android.view.MotionEvent;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.8.1;
 
 public class bmty
+  implements bmqn
 {
-  public static float a(float paramFloat1, float paramFloat2)
+  public bmty(DoodleLayout paramDoodleLayout) {}
+  
+  public void a(int paramInt)
   {
-    paramFloat1 = (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
-    if (!Float.isNaN(paramFloat1)) {
-      return paramFloat1;
+    if (this.a.jdField_a_of_type_Bmub != null) {
+      this.a.jdField_a_of_type_Bmub.a(1, paramInt);
     }
-    return 1.0F;
   }
   
-  public static float a(MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
   {
-    if (paramMotionEvent.getPointerCount() > 1) {
-      return a(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1));
+    if (DoodleLayout.b(this.a)) {
+      return;
     }
-    return 1.0F;
+    this.a.a(paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5);
   }
   
-  public static float[] a(MotionEvent paramMotionEvent)
+  public boolean a(bmqk parambmqk)
   {
-    float[] arrayOfFloat = new float[2];
-    if (paramMotionEvent.getPointerCount() > 1)
-    {
-      arrayOfFloat[0] = ((paramMotionEvent.getX(0) + paramMotionEvent.getX(1)) / 2.0F);
-      arrayOfFloat[1] = ((paramMotionEvent.getY(0) + paramMotionEvent.getY(1)) / 2.0F);
-    }
-    return arrayOfFloat;
-  }
-  
-  public static float b(float paramFloat1, float paramFloat2)
-  {
-    float f = (float)Math.toDegrees(Math.asin(paramFloat2 / a(paramFloat1, paramFloat2)));
-    if (!Float.isNaN(f))
-    {
-      if ((paramFloat2 >= 0.0F) && (paramFloat1 >= 0.0F)) {}
-      do
-      {
-        return f;
-        if ((paramFloat2 >= 0.0F) && (paramFloat1 <= 0.0F)) {
-          return 180.0F - f;
-        }
-      } while ((paramFloat2 <= 0.0F) && (paramFloat1 >= 0.0F));
-      if ((paramFloat2 <= 0.0F) && (paramFloat1 <= 0.0F)) {
-        return -180.0F - f;
+    boolean bool = false;
+    if (DoodleLayout.a(this.a)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("DoodleLayout", 2, "onEditFaceItem mIsRecording");
       }
     }
-    return 0.0F;
-  }
-  
-  public static float b(MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getPointerCount() > 1) {
-      return b(paramMotionEvent.getX(1) - paramMotionEvent.getX(0), paramMotionEvent.getY(1) - paramMotionEvent.getY(0));
+    while (((DoodleLayout.b(this.a)) && (!DoodleLayout.c(this.a))) || (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView == null)) {
+      return false;
     }
-    return 0.0F;
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setVisibility(0);
+    DoodleLayout.b(this.a);
+    if (parambmqk.h == 3) {
+      this.a.post(new DoodleLayout.8.1(this));
+    }
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(parambmqk);
+    parambmqk.k = true;
+    SegmentKeeper localSegmentKeeper = parambmqk.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper;
+    if (!this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a()) {
+      bool = true;
+    }
+    localSegmentKeeper.lockData(bool);
+    if ((parambmqk.h == 1) || (parambmqk.h == 3)) {
+      parambmqk.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView);
+    }
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.requestLayout();
+    return true;
   }
 }
 

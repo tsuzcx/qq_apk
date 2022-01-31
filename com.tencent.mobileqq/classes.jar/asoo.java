@@ -1,48 +1,25 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import com.tencent.mobileqq.hiboom.RichTextPanel;
-import com.tencent.mobileqq.hiboom.RichTextPanelView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.1.1;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class asoo
-  extends PagerAdapter
+  implements EIPCResultCallback
 {
-  public asoo(RichTextPanel paramRichTextPanel) {}
+  public asoo(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramViewGroup.removeView((View)paramObject);
-  }
-  
-  public int getCount()
-  {
-    return RichTextPanel.a(this.a).size();
-  }
-  
-  public int getItemPosition(Object paramObject)
-  {
-    return -2;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichTextPanel", 2, "instantiateItem position = " + paramInt);
+    this.a.k = (System.currentTimeMillis() - this.a.a);
+    if (paramEIPCResult.code == 0)
+    {
+      paramEIPCResult = paramEIPCResult.data;
+      if (paramEIPCResult != null) {
+        ThreadManagerV2.getUIHandlerV2().post(new QQGameFeedWebFragment.1.1(this, paramEIPCResult));
+      }
     }
-    ViewParent localViewParent = ((RichTextPanelView)RichTextPanel.a(this.a).get(paramInt)).getParent();
-    if (localViewParent != null) {
-      ((ViewGroup)localViewParent).removeView((View)RichTextPanel.a(this.a).get(paramInt));
-    }
-    paramViewGroup.addView((View)RichTextPanel.a(this.a).get(paramInt));
-    return RichTextPanel.a(this.a).get(paramInt);
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
   }
 }
 

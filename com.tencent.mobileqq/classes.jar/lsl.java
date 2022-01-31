@@ -45,12 +45,12 @@ public class lsl
   {
     if (AudioHelper.a(12) == 1)
     {
-      AudioHelper.a(alpo.a(2131706776));
+      AudioHelper.a(alud.a(2131706788));
       return true;
     }
     if (AudioHelper.a(12) == 0)
     {
-      AudioHelper.a(alpo.a(2131706778));
+      AudioHelper.a(alud.a(2131706790));
       return true;
     }
     if (jdField_a_of_type_Int == -1) {}
@@ -113,12 +113,12 @@ public class lsl
   {
     if (AudioHelper.a(12) == 1)
     {
-      AudioHelper.a(alpo.a(2131706775));
+      AudioHelper.a(alud.a(2131706787));
       return true;
     }
     if (AudioHelper.a(12) == 0)
     {
-      AudioHelper.a(alpo.a(2131706777));
+      AudioHelper.a(alud.a(2131706789));
       return true;
     }
     if (b == -1) {}

@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae;
 
-import bkle;
-import bmcu;
+import bkpl;
+import bmhg;
 
 class AEPituCameraUnit$11$1
   implements Runnable
@@ -10,7 +10,7 @@ class AEPituCameraUnit$11$1
   
   public void run()
   {
-    bkle.a(this.a.this$0).a(2);
+    bkpl.a(this.a.this$0).a(2);
   }
 }
 

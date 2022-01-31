@@ -1,16 +1,16 @@
-import android.os.Handler;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-class wuv
-  implements axll
+public abstract interface wuv
 {
-  wuv(wus paramwus) {}
+  public abstract void a(String paramString, CommentEntry paramCommentEntry);
   
-  public void a()
-  {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 10000L);
-    ((xak)urr.a(8)).a(xnd.a(this.a.jdField_a_of_type_Wwe.a), this.a.jdField_a_of_type_Xax);
-  }
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

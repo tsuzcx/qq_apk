@@ -1,64 +1,17 @@
-import android.media.MediaMetadataRetriever;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.FutureListener.SimpleFutureListener;
+import com.tribe.async.async.JobController.DoneEvent;
+import com.tribe.async.async.Worker;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class ulz
-  implements ulq
+class ulz
+  extends FutureListener.SimpleFutureListener<Progress, Result>
 {
-  public ulz(StoryVideoUploadTask paramStoryVideoUploadTask) {}
+  ulz(uly paramuly, Worker paramWorker) {}
   
-  public void a(ulp paramulp)
+  public void onFutureDone(@Nullable Result paramResult)
   {
-    uln localuln = (uln)paramulp;
-    ((ulw)this.a.a).g = localuln.a.a;
-    ((ulw)this.a.a).h = localuln.a.c;
-    ((ulw)this.a.a).a = localuln.b;
-    localMediaMetadataRetriever = new MediaMetadataRetriever();
-    for (;;)
-    {
-      try
-      {
-        localMediaMetadataRetriever.setDataSource(localuln.b);
-        String str = localMediaMetadataRetriever.extractMetadata(24);
-        paramulp = str;
-        if (str == null) {
-          paramulp = "0";
-        }
-        int i = Integer.valueOf(paramulp).intValue();
-        j = Integer.valueOf(localMediaMetadataRetriever.extractMetadata(18)).intValue();
-        k = Integer.valueOf(localMediaMetadataRetriever.extractMetadata(19)).intValue();
-        if (i % 180 <= 0) {
-          continue;
-        }
-        ((ulw)this.a.a).d = k;
-        ((ulw)this.a.a).e = j;
-      }
-      catch (Exception paramulp)
-      {
-        int j;
-        int k;
-        long l;
-        wsv.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "format fail", paramulp);
-        localMediaMetadataRetriever.release();
-        continue;
-      }
-      finally
-      {
-        localMediaMetadataRetriever.release();
-      }
-      l = StoryVideoUploadTask.a(localuln.b);
-      if (l > 0L)
-      {
-        wsv.a("Q.qqstory.publish.upload:StoryVideoUploadTask", "video old duration=%d, new duration=%d", Long.valueOf(((ulw)this.a.a).b), Long.valueOf(l));
-        ((ulw)this.a.a).b = l;
-        wsv.a("Q.qqstory.publish.upload:StoryVideoUploadTask", "generate vid=%s, duration=%d mp4=%s", ((ulw)this.a.a).a(), Long.valueOf(((ulw)this.a.a).b), ((ulw)this.a.a).a);
-      }
-      ((ulw)this.a.a).c = xmx.a(localuln.b);
-      this.a.a(1, new ErrorMessage());
-      return;
-      ((ulw)this.a.a).d = j;
-      ((ulw)this.a.a).e = k;
-    }
+    umc.a().dispatch(new JobController.DoneEvent(this.jdField_a_of_type_ComTribeAsyncAsyncWorker));
   }
 }
 

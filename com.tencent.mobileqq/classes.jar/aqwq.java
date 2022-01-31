@@ -1,34 +1,43 @@
-import android.text.TextUtils;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.PwdVerifyMsgRsp;
-import mqq.app.MobileQQ;
 
 class aqwq
-  implements bkgc<WeiyunPB.PwdVerifyMsgRsp>
+  extends aqru
 {
-  aqwq(aqwl paramaqwl) {}
+  aqwq(aqwp paramaqwp) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onFailed. errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
+      QLog.d("FileManagerRSCenter<FileAssistant>", 2, "recive TransferEnd, rmove task[" + String.valueOf(paramLong2) + "]!");
     }
-    aqwl.a(this.a).a().a(false, 45, new Object[] { Integer.valueOf(paramInt), paramString, null });
-  }
-  
-  public void a(WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onSucceed");
+    bkmm.a(null, paramInt2);
+    paramString1 = this.a.a.a().a(paramLong2);
+    Bundle localBundle;
+    if ((paramString1 != null) && (paramString1.nOpType == 50))
+    {
+      localBundle = new Bundle();
+      localBundle.putString("taskId", paramString1.miniAppDownloadId);
+      if (!paramBoolean) {
+        break label163;
+      }
     }
-    String str = bkia.a(paramPwdVerifyMsgRsp.cs_sig.get());
-    if (!TextUtils.isEmpty(str)) {
-      bkgd.a(aqwl.a(this.a).getApplication().getApplicationContext(), str);
+    label163:
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      localBundle.putInt("retCode", paramInt1);
+      paramString1 = paramString2;
+      if (paramString2 == null) {
+        paramString1 = "";
+      }
+      localBundle.putString("retMsg", paramString1);
+      QIPCServerHelper.getInstance().callClient(arbl.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Complete", localBundle, null);
+      this.a.a(paramLong2);
+      return;
     }
-    bkgd.c(aqwl.a(this.a).getApplication().getApplicationContext(), true);
-    aqwl.a(this.a).a().a(true, 45, new Object[] { Integer.valueOf(0), null, paramPwdVerifyMsgRsp.cs_sig.get() });
   }
 }
 

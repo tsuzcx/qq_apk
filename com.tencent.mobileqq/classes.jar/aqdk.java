@@ -1,14 +1,28 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
 
-class aqdk
-  implements AudioManager.OnAudioFocusChangeListener
+public class aqdk
+  implements View.OnTouchListener
 {
-  aqdk(aqdj paramaqdj) {}
+  public aqdk(ExtendFriendCampusFragment paramExtendFriendCampusFragment, View paramView) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((aqdj.a(this.a) != null) && (paramInt == -1) && (aqdj.a(this.a) != null)) {
-      aqdj.a(this.a).c(false);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.5F);
+      this.jdField_a_of_type_AndroidViewView.postInvalidate();
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      {
+        this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+        this.jdField_a_of_type_AndroidViewView.postInvalidate();
+      }
     }
   }
 }

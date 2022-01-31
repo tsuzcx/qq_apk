@@ -1,21 +1,18 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
 
-class bmiy
-  implements bhqd
+public final class bmiy
+  implements Parcelable.Creator<EditLocalGifSource>
 {
-  bmiy(bmix parambmix, bhpy parambhpy) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public EditLocalGifSource a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      this.jdField_a_of_type_Bmix.c();
-    }
+    return new EditLocalGifSource(paramParcel);
+  }
+  
+  public EditLocalGifSource[] a(int paramInt)
+  {
+    return new EditLocalGifSource[paramInt];
   }
 }
 

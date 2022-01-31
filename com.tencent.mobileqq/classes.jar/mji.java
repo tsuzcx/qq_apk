@@ -20,7 +20,7 @@ public class mji
   
   Bitmap a()
   {
-    return ((BitmapDrawable)MultiVideoMembersListviewAvtivity.d(this.a).getDrawable(2130840084)).getBitmap();
+    return ((BitmapDrawable)MultiVideoMembersListviewAvtivity.d(this.a).getDrawable(2130840085)).getBitmap();
   }
   
   public Bitmap a(String paramString)
@@ -97,14 +97,14 @@ public class mji
     if (paramView == null) {
       if (this.a.jdField_a_of_type_Boolean)
       {
-        paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559579, null);
+        paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559578, null);
         paramViewGroup = new mjj(this);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368511));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368524));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368576));
-        paramViewGroup.c = ((ImageView)paramView.findViewById(2131368580));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368522));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368535));
+        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368587));
+        paramViewGroup.c = ((ImageView)paramView.findViewById(2131368591));
         if (this.a.jdField_a_of_type_Boolean) {
-          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368518));
+          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368529));
         }
         paramView.setTag(paramViewGroup);
         locallfu = (lfu)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
@@ -146,7 +146,7 @@ public class mji
       {
       default: 
         return paramView;
-        paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559587, null);
+        paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559586, null);
         break label28;
         paramViewGroup = (mjj)paramView.getTag();
         break label117;

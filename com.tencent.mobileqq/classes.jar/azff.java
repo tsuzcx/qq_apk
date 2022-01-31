@@ -1,12 +1,8 @@
-class azff
-  implements afgh
+public abstract interface azff
 {
-  azff(azey paramazey) {}
+  public abstract void a(int paramInt);
   
-  public void a()
-  {
-    azey.e(this.a);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

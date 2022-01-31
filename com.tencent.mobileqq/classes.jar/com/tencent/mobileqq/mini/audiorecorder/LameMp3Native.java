@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.audiorecorder;
 
-import auaj;
+import aues;
 import com.tencent.qphone.base.util.QLog;
 
 public class LameMp3Native
 {
   public static final int ERR_NATIVE_LOAD = -99999;
-  public static volatile boolean mNativeLoaded = auaj.a().c();
+  public static volatile boolean mNativeLoaded = aues.a().c();
   
   static
   {
@@ -14,7 +14,7 @@ public class LameMp3Native
     if (!mNativeLoaded) {}
     try
     {
-      mNativeLoaded = auaj.a().b();
+      mNativeLoaded = aues.a().b();
       if (mNativeLoaded) {}
     }
     catch (Throwable localThrowable1)

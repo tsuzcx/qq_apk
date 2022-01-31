@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo;
 
-import alfq;
-import alft;
+import alkf;
+import alki;
 
 final class ApolloRender$8
   implements Runnable
 {
-  ApolloRender$8(String paramString1, String paramString2, byte[] paramArrayOfByte, String[] paramArrayOfString, alfq paramalfq) {}
+  ApolloRender$8(String paramString1, String paramString2, byte[] paramArrayOfByte, String[] paramArrayOfString, alkf paramalkf) {}
   
   public void run()
   {
-    alft.a(this.jdField_a_of_type_JavaLangString.toUpperCase(), this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Alfq);
+    alki.a(this.jdField_a_of_type_JavaLangString.toUpperCase(), this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Alkf);
   }
 }
 

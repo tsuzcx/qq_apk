@@ -1,78 +1,120 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 
 public class auzw
 {
-  private static auzw a = new auzw();
+  public static long a;
+  private static final String jdField_a_of_type_JavaLangString = auzw.class.getName() + "Q.nearby.video_chat.gift";
+  public static long[] a;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private TroopGiftPanel jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private boolean jdField_a_of_type_Boolean;
   
-  public static auzw a()
+  static
   {
-    return a;
+    jdField_a_of_type_ArrayOfLong = new long[2];
   }
   
-  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, int paramInt1, int paramInt2, URLDrawable.URLDrawableListener paramURLDrawableListener, boolean paramBoolean)
+  public auzw(AppInterface paramAppInterface, Context paramContext, SessionInfo paramSessionInfo, TroopGiftPanel paramTroopGiftPanel, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel = paramTroopGiftPanel;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Int = 3;
+    b();
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setIsShow(true);
+    yvk localyvk = yvk.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
+    if (localyvk != null)
     {
-      wsv.e("ImageLoader", "ImageView or uri is null.");
+      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setGiftData(localyvk, true);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageLoader", 2, "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
-    }
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if ((paramInt1 > 0) && (paramInt2 > 0))
+    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidViewViewGroup.findViewWithTag("mTroopGiftPanel") != null)
     {
-      localURLDrawableOptions.mRequestWidth = paramInt1;
-      localURLDrawableOptions.mRequestHeight = paramInt2;
+      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel);
+      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setIsShow(false);
     }
-    Drawable localDrawable = paramDrawable1;
-    if (paramDrawable1 == null) {
-      localDrawable = baul.a;
-    }
-    localURLDrawableOptions.mFailedDrawable = localDrawable;
-    paramDrawable1 = paramDrawable2;
-    if (paramDrawable2 == null) {
-      paramDrawable1 = baul.a;
-    }
-    localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
-    localURLDrawableOptions.mMemoryCacheKeySuffix = "now";
-    localURLDrawableOptions.mUseAutoScaleParams = false;
-    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    if (paramBoolean) {
-      paramString.setDecodeHandler(bcuq.a);
-    }
-    if (paramURLDrawableListener != null)
+  }
+  
+  public void a(int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    long l = System.currentTimeMillis();
+    bcka localbcka = (bcka)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(223);
+    bcod localbcod = (bcod)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(113);
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    if (paramBoolean) {}
+    for (int i = 4;; i = 3)
     {
-      if (paramString.getStatus() != 1) {
-        break label208;
+      localbcod.a("OidbSvc.0x7f8", 2040, paramInt2, str, 2, i, 0, new auzx(this, localbcod, l, localbcka, paramInt1));
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel != null)
+    {
+      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setIsShow(true);
+      Object localObject;
+      if (paramBoolean1)
+      {
+        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(TroopGiftPanel.e);
+        localObject = yvk.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
+        if (localObject == null) {
+          break label172;
+        }
+        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setGiftData((yvk)localObject, true);
+        a(0, paramBoolean2, paramInt);
       }
-      wsv.b("ImageLoader", "URLDrawable's status is SUCCESSED.");
-      paramURLDrawableListener.onLoadSuccessed(paramString);
+      if (this.jdField_a_of_type_AndroidViewViewGroup.findViewWithTag("mTroopGiftPanel") == null)
+      {
+        localObject = new RelativeLayout.LayoutParams(-2, -2);
+        ((RelativeLayout.LayoutParams)localObject).addRule(8);
+        ((RelativeLayout.LayoutParams)localObject).addRule(12);
+        this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, (ViewGroup.LayoutParams)localObject);
+        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setTag("mTroopGiftPanel");
+      }
     }
-    for (;;)
+    if ((Build.VERSION.SDK_INT >= 23) && (this.jdField_a_of_type_AndroidContentContext.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)) {}
+    for (paramInt = 1;; paramInt = 0)
     {
-      paramString.setURLDrawableListener(paramURLDrawableListener);
-      paramImageView.setImageDrawable(paramString);
+      if (paramInt == 0) {
+        SosoInterface.a(new auzz(3, true, true, 60000L, true, false, "NearbyTroopsView"));
+      }
       return;
-      label208:
-      wsv.b("ImageLoader", "start load URLDrawable.");
+      label172:
+      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d();
+      break;
     }
   }
   
-  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, URLDrawable.URLDrawableListener paramURLDrawableListener)
+  public boolean a()
   {
-    a(paramImageView, paramString, paramDrawable1, paramDrawable2, 0, 0, paramURLDrawableListener, false);
-  }
-  
-  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, URLDrawable.URLDrawableListener paramURLDrawableListener, boolean paramBoolean)
-  {
-    a(paramImageView, paramString, paramDrawable1, paramDrawable2, 0, 0, paramURLDrawableListener, paramBoolean);
+    return this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a();
   }
 }
 

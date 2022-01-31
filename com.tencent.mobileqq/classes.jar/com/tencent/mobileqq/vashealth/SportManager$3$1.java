@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vashealth;
 
-import bdug;
-import bdul;
+import bdyp;
+import bdyu;
 
 public class SportManager$3$1
   implements Runnable
 {
-  public SportManager$3$1(bdul parambdul, String paramString) {}
+  public SportManager$3$1(bdyu parambdyu, String paramString) {}
   
   public void run()
   {
-    bdug.a(this.jdField_a_of_type_JavaLangString);
+    bdyp.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

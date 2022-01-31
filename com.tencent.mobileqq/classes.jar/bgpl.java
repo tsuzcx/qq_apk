@@ -1,6 +1,24 @@
-public abstract interface bgpl
+import com.tencent.qqmini.sdk.core.utils.QZipIOException;
+import java.io.File;
+import java.io.InputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+
+public class bgpl
+  extends ZipFile
 {
-  public abstract void a();
+  public bgpl(File paramFile)
+  {
+    super(paramFile);
+  }
+  
+  public InputStream getInputStream(ZipEntry paramZipEntry)
+  {
+    if (QZipIOException.isInvalidEntry(paramZipEntry)) {
+      throw new QZipIOException();
+    }
+    return super.getInputStream(paramZipEntry);
+  }
 }
 
 

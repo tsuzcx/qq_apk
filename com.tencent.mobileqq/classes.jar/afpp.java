@@ -1,18 +1,22 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
-class afpp
-  extends afpq
+public class afpp
+  extends AnimatorListenerAdapter
 {
-  afpp(aflj paramaflj)
+  public afpp(HeartCombolEffectView paramHeartCombolEffectView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramaflj, null);
+    super.onAnimationCancel(paramAnimator);
+    this.a.setVisibility(8);
   }
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new ScribbleItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    super.onAnimationEnd(paramAnimator);
+    this.a.setVisibility(8);
   }
 }
 

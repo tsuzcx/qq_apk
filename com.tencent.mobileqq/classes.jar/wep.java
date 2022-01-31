@@ -1,21 +1,26 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-final class wep
-  extends ClickableSpan
+public class wep
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vct>
 {
-  wep(weq paramweq, String paramString, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public wep(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    this.jdField_a_of_type_Weq.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vct paramvct)
   {
-    paramTextPaint.setColor(paramTextPaint.getColor());
-    paramTextPaint.setUnderlineText(false);
+    if (!paramQQStoryShareGroupProfileActivity.g) {
+      return;
+    }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramvct);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vct.class;
   }
 }
 

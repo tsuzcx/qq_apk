@@ -1,16 +1,38 @@
-public abstract interface aeum
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.PAMessage;
+
+public class aeum
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public static LruCache<String, PAMessage> a = new LruCache(50);
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public static PAMessage a(MessageRecord paramMessageRecord)
+  {
+    return a(paramMessageRecord.frienduin, paramMessageRecord.shmsgseq, paramMessageRecord.msgUid, paramMessageRecord.msgData);
+  }
   
-  public abstract void b(int paramInt);
+  public static PAMessage a(String paramString, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
+  {
+    String str = a(paramString, paramLong1, paramLong2);
+    PAMessage localPAMessage = (PAMessage)a.get(str);
+    paramString = localPAMessage;
+    if (localPAMessage == null)
+    {
+      paramArrayOfByte = swh.a(paramArrayOfByte);
+      paramString = paramArrayOfByte;
+      if (paramArrayOfByte != null)
+      {
+        a.put(str, paramArrayOfByte);
+        paramString = paramArrayOfByte;
+      }
+    }
+    return paramString;
+  }
   
-  public abstract void i();
-  
-  public abstract void j();
-  
-  public abstract void k();
+  private static String a(String paramString, long paramLong1, long paramLong2)
+  {
+    return paramString + "&" + paramLong1 + "&" + paramLong2;
+  }
 }
 
 

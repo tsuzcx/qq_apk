@@ -11,8 +11,8 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bcuq;
-import bdkf;
+import bcyz;
+import bdoo;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
@@ -65,16 +65,16 @@ public class AuthDialog
   
   private void initView(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559292, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559291, null);
     setContentView(paramContext);
-    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131370474));
-    this.mMiniAppName = ((TextView)paramContext.findViewById(2131370487));
+    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131370493));
+    this.mMiniAppName = ((TextView)paramContext.findViewById(2131370506));
     this.mAuthTitle = ((TextView)paramContext.findViewById(2131362916));
-    this.mUserIcon = ((ImageView)paramContext.findViewById(2131379381));
-    this.mUserName = ((TextView)paramContext.findViewById(2131379409));
+    this.mUserIcon = ((ImageView)paramContext.findViewById(2131379439));
+    this.mUserName = ((TextView)paramContext.findViewById(2131379467));
     this.mAuthDesc = ((TextView)paramContext.findViewById(2131362906));
-    this.mLeftBtn = ((TextView)paramContext.findViewById(2131369338));
-    this.mRightBtn = ((TextView)paramContext.findViewById(2131375754));
+    this.mLeftBtn = ((TextView)paramContext.findViewById(2131369356));
+    this.mRightBtn = ((TextView)paramContext.findViewById(2131375805));
     setCanceledOnTouchOutside(true);
     paramContext = getWindow();
     if (paramContext != null) {
@@ -116,12 +116,12 @@ public class AuthDialog
   {
     this.mIsConfirm = false;
     this.mIsRefuse = false;
-    int i = bdkf.b(26.0F);
+    int i = bdoo.b(26.0F);
     paramString1 = getUrlDrawable(paramString1, i);
     if (paramString1 != null)
     {
-      paramString1.setTag(bcuq.b(i, i, bdkf.b(5.0F)));
-      paramString1.setDecodeHandler(bcuq.i);
+      paramString1.setTag(bcyz.b(i, i, bdoo.b(5.0F)));
+      paramString1.setDecodeHandler(bcyz.i);
       this.mMiniAppIcon.setImageDrawable(paramString1);
     }
     this.mMiniAppName.setText(paramString2);
@@ -153,11 +153,11 @@ public class AuthDialog
     {
       show();
       return;
-      paramString1 = getUrlDrawable(paramString4, bdkf.b(40.0F));
+      paramString1 = getUrlDrawable(paramString4, bdoo.b(40.0F));
       if (paramString1 != null)
       {
-        paramString1.setTag(bcuq.a(i, i));
-        paramString1.setDecodeHandler(bcuq.a);
+        paramString1.setTag(bcyz.a(i, i));
+        paramString1.setDecodeHandler(bcyz.a);
         this.mUserIcon.setImageDrawable(paramString1);
       }
       this.mUserIcon.setVisibility(0);

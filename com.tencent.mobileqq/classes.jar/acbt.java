@@ -1,80 +1,142 @@
-import QQService.DeviceItemDes;
-import QQService.SvcDevLoginInfo;
 import android.content.Intent;
-import android.view.View;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.activity.AddAccountActivity.4.1;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import mqq.observer.AccountObserver;
 
 public class acbt
-  implements bhqd
+  extends AccountObserver
 {
-  public acbt(AuthDevActivity paramAuthDevActivity, String paramString1, long paramLong, String paramString2, int paramInt, boolean paramBoolean1, ArrayList paramArrayList, boolean paramBoolean2, boolean paramBoolean3) {}
+  public acbt(AddAccountActivity paramAddAccountActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCheckQuickRegisterAccount(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte)
   {
-    switch (paramInt)
-    {
+    super.onCheckQuickRegisterAccount(paramBoolean, paramInt, paramArrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_AddAccountActivity", 2, "onCheckQuickRegisterAccount|isSuccess= " + paramBoolean + ",code=" + paramInt);
     }
-    for (;;)
+    if (!this.a.isFinishing()) {}
+    try
     {
-      if ((AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity) != null) && (AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.isFinishing()))
+      this.a.dismissDialog(1);
+      if ((paramBoolean) && (paramInt == 0))
       {
-        AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).dismiss();
-        AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).cancel();
-        AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, null);
+        paramArrayOfByte = new Intent(this.a, RegisterByNicknameAndPwdActivity.class);
+        paramArrayOfByte.putExtra("key_register_binduin", this.a.app.getCurrentAccountUin());
+        paramArrayOfByte.putExtra("key_register_from_quick_register", true);
+        paramArrayOfByte.putExtra("key_register_is_phone_num_registered", true);
+        paramArrayOfByte.putExtra("not_need_verify_sms", true);
+        this.a.startActivity(paramArrayOfByte);
+        return;
       }
-      return;
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, AuthDevRenameActivity.class);
-      paramView.putExtra(AuthDevRenameActivity.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-      paramView.putExtra(AuthDevRenameActivity.c, this.jdField_a_of_type_Long);
-      paramView.putExtra(AuthDevRenameActivity.d, AppSetting.a());
-      paramView.putExtra(AuthDevRenameActivity.e, NetConnInfoCenter.GUID);
-      paramView.putExtra(AuthDevRenameActivity.f, this.jdField_b_of_type_JavaLangString);
-      paramView.putExtra(AuthDevRenameActivity.g, ((SvcDevLoginInfo)AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).get(this.jdField_a_of_type_Int)).strDeviceTypeInfo);
-      paramView.putExtra(AuthDevRenameActivity.h, ((SvcDevLoginInfo)AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).get(this.jdField_a_of_type_Int)).stDeviceItemDes.vecItemDes);
-      paramView.putExtra(AuthDevRenameActivity.i, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.startActivity(paramView);
-      continue;
-      if (AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity)) {
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+      paramArrayOfByte = new Intent(this.a, RegisterPhoneNumActivity.class);
+      paramArrayOfByte.putExtra("key_register_from", 1);
+      this.a.startActivity(paramArrayOfByte);
+    }
+  }
+  
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  {
+    QLog.d("AddAccountActivity", 1, "onLoginFailed ret=" + paramInt1);
+    if (!this.a.isFinishing()) {}
+    try
+    {
+      this.a.dismissDialog(0);
+      this.a.runOnUiThread(new AddAccountActivity.4.1(this));
+      if (QLog.isColorLevel()) {
+        QLog.d("AddAccountActivity", 2, "onLoginFailed errorMsg = " + paramString2 + " ret=" + paramInt1);
+      }
+      if ((paramString2 == null) || (paramString2.equals("")))
+      {
+        QQToast.a(this.a, 2131694766, 0).a();
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+      if (!TextUtils.isEmpty(paramString3))
+      {
+        Intent localIntent = new Intent(this.a, NotificationActivity.class);
+        localIntent.putExtra("type", 8);
+        if (paramInt1 == 40)
+        {
+          localIntent.putExtra("msg", paramString2);
+          localIntent.putExtra("errorver", paramInt2);
+        }
         for (;;)
         {
-          try
-          {
-            if (!this.jdField_a_of_type_Boolean) {
-              break label352;
-            }
-            paramView = "0X800AC56";
-            azmj.b(null, "dc00898", "", "", paramView, paramView, 0, 0, "", "", "", "");
-            AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.c, this.jdField_a_of_type_Long);
-          }
-          catch (Throwable paramView)
-          {
-            QLog.e("Q.devlock.AuthDevActivity", 1, new Object[] { "showDelDevActionSheet error : ", paramView.getMessage() });
-          }
-          break;
-          label352:
-          paramView = "0X800AC58";
+          localIntent.putExtra("loginalias", paramString1);
+          localIntent.putExtra("loginret", paramInt1);
+          localIntent.putExtra("errorUrl", paramString3);
+          localIntent.putExtra("expiredSig", paramArrayOfByte);
+          this.a.startActivity(localIntent);
+          return;
+          localIntent.putExtra("msg", paramString2 + " " + paramString3);
         }
       }
-      if (!bdee.d(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity))
+      if (paramInt1 == 2008)
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.getString(2131692397), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.getTitleBarHeight());
+        bdgm.a(this.a, 230, alud.a(2131700202), alud.a(2131700203), "OK", null, new acbu(this), null).show();
+        QQToast.a(this.a, 2131693233, 0).a();
+        return;
       }
-      else
+      bdgm.a(this.a, 230, alud.a(2131700206), paramString2, new acbv(this), null).show();
+    }
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    QLog.d("AddAccountActivity", 1, "onLoginSuccess");
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    QLog.d("AddAccountActivity", 1, "onLoginTimeout");
+    if (!this.a.isFinishing()) {}
+    try
+    {
+      this.a.dismissDialog(0);
+      QQToast.a(this.a, 2131694766, 0).a();
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
       {
-        QLog.d("Q.devlock.AuthDevActivity", 1, "OnClick.begin to del recent dev");
-        if (apwu.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int)) {
-          AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
-        } else {
-          QLog.d("Q.devlock.AuthDevActivity", 1, "OnClick del recent dev fail");
-        }
+        paramString.printStackTrace();
       }
+    }
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    if (!this.a.isFinishing()) {}
+    try
+    {
+      this.a.dismissDialog(0);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

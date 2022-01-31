@@ -7,7 +7,7 @@ import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.IMMRReq;
 import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.ReqBody;
 
 public class hn
-  extends alko
+  extends alpd
 {
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private hm jdField_a_of_type_Hm;
@@ -35,7 +35,7 @@ public class hn
     mzy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ho(false, this.jdField_a_of_type_Hm), paramString.toByteArray(), "OidbSvc.0xa4d", 2637, 1, null);
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return null;
   }

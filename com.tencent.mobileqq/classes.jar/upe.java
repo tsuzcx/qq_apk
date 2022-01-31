@@ -1,15 +1,22 @@
-public class upe
-  extends ugz
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+
+class upe
+  implements zam
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  upe(upd paramupd, zan paramzan, PublishVideoEntry paramPublishVideoEntry) {}
+  
+  public void a(zan paramzan)
+  {
+    this.jdField_a_of_type_Zan.a(0);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd = 60000;
+    upd.a(this.jdField_a_of_type_Upd, "convertImageToVideo ");
+  }
+  
+  public void b(zan paramzan)
+  {
+    this.jdField_a_of_type_Zan.a(paramzan.a());
+    upd.a(this.jdField_a_of_type_Upd, "convertImageToVideo ");
+  }
 }
 
 

@@ -1,48 +1,13 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-public class aqqp
+class aqqp
+  implements bhvm
 {
-  int jdField_a_of_type_Int;
-  public aqqr a;
-  aqqt jdField_a_of_type_Aqqt;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString;
+  aqqp(aqqm paramaqqm, View paramView) {}
   
-  aqqp(aqpv paramaqpv, String paramString1, String paramString2, int paramInt, MessageRecord paramMessageRecord)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_Aqqr = new aqqq(this, paramaqpv, paramMessageRecord);
-  }
-  
-  void a()
-  {
-    if ((this.jdField_a_of_type_Aqqt != null) && (this.jdField_b_of_type_Int == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task suc. status[" + this.jdField_b_of_type_Int + "]");
-      }
-      this.jdField_b_of_type_Int = 1;
-      this.jdField_a_of_type_Aqqt.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Aqqr);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task fail. status[" + this.jdField_b_of_type_Int + "]");
-  }
-  
-  void b()
-  {
-    if ((this.jdField_a_of_type_Aqqt != null) && ((this.jdField_b_of_type_Int == 1) || (this.jdField_b_of_type_Int == 0)))
-    {
-      this.jdField_a_of_type_Aqqt.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      this.jdField_b_of_type_Int = 4;
-    }
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

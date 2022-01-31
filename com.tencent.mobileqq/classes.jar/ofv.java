@@ -43,9 +43,9 @@ public class ofv
   {
     if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
     {
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getSystemService("layout_inflater")).inflate(2131559885, null);
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131365852));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378955));
+      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getSystemService("layout_inflater")).inflate(2131559884, null);
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131365854));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379013));
       this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this);
       this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -118,7 +118,7 @@ public class ofv
     {
       if (bool)
       {
-        QQToast.a(paramView.getContext(), -1, alpo.a(2131713286), 0).b(((BaseActivity)paramView.getContext()).getTitleBarHeight());
+        QQToast.a(paramView.getContext(), -1, alud.a(2131713298), 0).b(((BaseActivity)paramView.getContext()).getTitleBarHeight());
         if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.a == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.a.jdField_a_of_type_OrgJsonJSONObject == null)) {
           break;
         }
@@ -132,7 +132,7 @@ public class ofv
           return;
         }
       }
-      str = alpo.a(2131713312);
+      str = alud.a(2131713324);
       QQToast.a(paramView.getContext(), 1, str, 0).b(((BaseActivity)paramView.getContext()).getTitleBarHeight());
       return;
     }

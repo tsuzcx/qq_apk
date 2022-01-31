@@ -1,68 +1,44 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.widget.Button;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
-import com.tencent.mobileqq.widget.navbar.NavBarCommon;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
 
-public class audw
-  implements Handler.Callback
+class audw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public audw(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
+  audw(audv paramaudv, NotifyPushSettingActivity paramNotifyPushSettingActivity, FormSwitchItem paramFormSwitchItem) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramMessage.what == 1)
-    {
-      if (this.a.getActivity() == null) {
-        return true;
-      }
-      if (MsgBackupPCAuthFragment.a(this.a) > 0)
-      {
-        if (MsgBackupPCAuthFragment.a(this.a) == 60)
-        {
-          MsgBackupPCAuthFragment.a(this.a, 1);
-          MsgBackupPCAuthFragment.a(this.a).setLeftBackVisible(0);
-          MsgBackupPCAuthFragment.b(this.a).setRightViewTextVisible(8);
-        }
-        MsgBackupPCAuthFragment.b(this.a);
-        this.a.b.setText(this.a.getString(2131690485, new Object[] { Integer.valueOf(MsgBackupPCAuthFragment.a(this.a)) }));
-        if (AppSetting.c) {
-          this.a.b.setContentDescription(this.a.getString(2131690485));
-        }
-        MsgBackupPCAuthFragment.a(this.a).sendEmptyMessageDelayed(1, 1000L);
-        return true;
-      }
-      MsgBackupPCAuthFragment.a(this.a).removeCallbacksAndMessages(null);
-      MsgBackupPCAuthFragment.a(this.a, 60);
-      MsgBackupPCAuthFragment.a(this.a, false);
-      if (bdee.a(this.a.getActivity()) == 1)
-      {
-        i = 1;
-        label205:
-        paramMessage = this.a;
-        if (i == 0) {
-          break label288;
-        }
-      }
-      label288:
-      for (int i = 0;; i = 2)
-      {
-        MsgBackupPCAuthFragment.a(paramMessage, i);
-        MsgBackupPCAuthFragment.c(this.a).setLeftBackVisible(0);
-        MsgBackupPCAuthFragment.d(this.a).setRightViewTextVisible(8);
-        this.a.b.setText(2131690473);
-        if (!AppSetting.c) {
-          break;
-        }
-        this.a.b.setContentDescription(this.a.getString(2131690473));
-        return true;
-        i = 0;
-        break label205;
-      }
+    int i = 1;
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("NewMsgNotificationManager", 2, new Object[] { "NEW_MSG_NOTIFICATION_KEY::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
     }
-    return false;
+    if (!this.jdField_a_of_type_Audv.b())
+    {
+      this.jdField_a_of_type_Audv.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
+      paramCompoundButton = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+      paramBoolean = bool;
+      if (!this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) {
+        paramBoolean = true;
+      }
+      paramCompoundButton.setChecked(paramBoolean);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_Audv.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+      return;
+    }
+    SettingCloneUtil.writeValue(this.jdField_a_of_type_Audv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_Audv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), null, "new_msg_notification_key", paramBoolean);
+    if (paramBoolean) {}
+    for (;;)
+    {
+      azqs.b(null, "dc00898", "", "", "0X800A511", "0X800A511", i, 0, "", "", "", "");
+      return;
+      i = 2;
+    }
   }
 }
 

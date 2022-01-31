@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.forward;
 
 import android.content.res.Resources;
-import arum;
-import aruq;
-import bdee;
+import aryv;
+import aryz;
+import bdin;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -11,12 +11,12 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class ForwardBaseOption$2$3
   implements Runnable
 {
-  public ForwardBaseOption$2$3(aruq paramaruq) {}
+  public ForwardBaseOption$2$3(aryz paramaryz) {}
   
   public void run()
   {
-    if (bdee.a(BaseApplication.getContext()) != 0) {
-      QQToast.a(this.a.a.a.getApp(), 2, 2131692838, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
+    if (bdin.a(BaseApplication.getContext()) != 0) {
+      QQToast.a(this.a.a.a.getApp(), 2, 2131692840, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
     }
   }
 }

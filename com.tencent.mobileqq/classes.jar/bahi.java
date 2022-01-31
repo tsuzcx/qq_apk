@@ -1,21 +1,21 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-class bahi
-  implements TextView.OnEditorActionListener
+public class bahi
+  extends bagz
 {
-  bahi(bahd parambahd) {}
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public bahi(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
     {
-      bhoc.b(this.a.a);
-      this.a.d();
-      return true;
+      this.jdField_a_of_type_Bagw.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      this.jdField_a_of_type_Bagw.h(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
     }
-    return false;
   }
 }
 

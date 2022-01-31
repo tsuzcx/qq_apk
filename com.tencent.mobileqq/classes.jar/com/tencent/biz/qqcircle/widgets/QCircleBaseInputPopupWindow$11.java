@@ -1,20 +1,18 @@
 package com.tencent.biz.qqcircle.widgets;
 
 import android.widget.ImageButton;
-import com.tencent.biz.subscribe.comment.CommentEditText;
-import tzr;
+import uce;
 
 public class QCircleBaseInputPopupWindow$11
   implements Runnable
 {
-  public QCircleBaseInputPopupWindow$11(tzr paramtzr) {}
+  public QCircleBaseInputPopupWindow$11(uce paramuce) {}
   
   public void run()
   {
-    tzr.a(this.this$0).setVisibility(8);
-    tzr.b(this.this$0).setVisibility(0);
-    tzr.a(this.this$0, true);
-    this.this$0.a.requestFocus();
+    uce.b(this.this$0);
+    uce.a(this.this$0).setVisibility(0);
+    uce.b(this.this$0).setVisibility(8);
   }
 }
 

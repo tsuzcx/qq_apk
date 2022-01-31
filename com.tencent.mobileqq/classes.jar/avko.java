@@ -1,19 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-class avko
-  implements DialogInterface.OnClickListener
+public class avko
+  implements View.OnClickListener
 {
-  avko(avkm paramavkm, bdfq parambdfq) {}
+  public avko(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bdfq.dismiss();
-    this.jdField_a_of_type_Avkm.a.a.c();
-    paramInt = ((Integer)aush.a(this.jdField_a_of_type_Avkm.a.a.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
-    azmj.b(this.jdField_a_of_type_Avkm.a.a.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, ausq.a(this.jdField_a_of_type_Avkm.a.a.j), paramInt + "", "", "");
+    if ((this.a.a != null) && (!this.a.isFinishing()))
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
   }
 }
 

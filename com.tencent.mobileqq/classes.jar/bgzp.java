@@ -1,110 +1,93 @@
-import NS_QWEB_PROTOCAL.PROTOCAL.StAuthInfo;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.Context;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.utils.QUAUtil;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.minigame.task.MiniAppInfoLoadTask.1;
 
-public abstract class bgzp
+@bglp(a="MiniAppInfoLoadTask")
+public class bgzp
+  extends bhlt
 {
-  private static volatile AtomicInteger a;
-  public int a;
+  private MiniAppInfo a;
   
-  static
+  public bgzp(Context paramContext, bgun parambgun)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    super(paramContext, parambgun);
   }
   
-  private String c()
+  private void d()
   {
-    String str = bgte.a().a();
-    StringBuilder localStringBuilder = new StringBuilder(50);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
-    Random localRandom = new Random();
-    localRandom.setSeed(System.currentTimeMillis());
-    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
-    return localStringBuilder.toString();
-  }
-  
-  protected abstract String a();
-  
-  public abstract JSONObject a(byte[] paramArrayOfByte);
-  
-  protected abstract byte[] a();
-  
-  protected byte[] a(byte[] paramArrayOfByte)
-  {
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    try
+    QMLog.i("MiniAppInfoLoadTask", "start executing");
+    if (this.a == null)
     {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = localStQWebRsp.busiBuff.get().toByteArray();
-      return paramArrayOfByte;
+      QMLog.e("MiniAppInfoLoadTask", "MiniAppInfo must not be null");
+      e();
+      return;
     }
-    catch (Exception paramArrayOfByte)
+    if (this.a.isShortcutFakeApp())
     {
-      QMLog.d("ProtoBufRequest", "decode fail.", paramArrayOfByte);
+      QMLog.i("MiniAppInfoLoadTask", "Start from shortcut, download MiniAppInfo ");
+      h();
+      return;
     }
-    return null;
+    if (this.a.isFakeAppInfo())
+    {
+      if (this.a.link != null)
+      {
+        i();
+        return;
+      }
+      h();
+      return;
+    }
+    c();
   }
   
-  protected abstract String b();
-  
-  public byte[] b()
+  private void h()
   {
-    Object localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
-    this.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-    localStQWebReq.Seq.set(this.jdField_a_of_type_Int);
-    localStQWebReq.traceid.set(c());
-    if (QUAUtil.getQUA() != null) {
-      localStQWebReq.qua.set(QUAUtil.getQUA());
+    String str1;
+    if (this.a.launchParam.entryPath == null)
+    {
+      str1 = "";
+      if (this.a.launchParam.envVersion != null) {
+        break label77;
+      }
     }
-    if (((ChannelProxy)localObject).getDeviceInfo() != null) {
-      localStQWebReq.deviceInfo.set(((ChannelProxy)localObject).getDeviceInfo());
+    label77:
+    for (String str2 = "";; str2 = this.a.launchParam.envVersion)
+    {
+      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(this.a.appId, str1, str2, new bgzq(this));
+      return;
+      str1 = this.a.launchParam.entryPath;
+      break;
     }
-    localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(a()));
-    localStQWebReq.Module.set(a());
-    localStQWebReq.Cmdname.set(b());
-    localObject = new PROTOCAL.StAuthInfo();
-    if (bgte.a().a() != null) {
-      ((PROTOCAL.StAuthInfo)localObject).uin.set(bgte.a().a());
-    }
-    if (bgte.a().a() != null) {
-      ((PROTOCAL.StAuthInfo)localObject).sig.set(ByteStringMicro.copyFrom(bgte.a().a()));
-    }
-    ((PROTOCAL.StAuthInfo)localObject).type.set(bgte.a().a());
-    if ((!QUAUtil.isQQApp()) && (bgte.a().e() != null)) {
-      ((PROTOCAL.StAuthInfo)localObject).platform.set(bgte.a().e());
-    }
-    if (bgte.a().c() != null) {
-      ((PROTOCAL.StAuthInfo)localObject).openid.set(bgte.a().c());
-    }
-    if (bgte.a().f() != null) {
-      ((PROTOCAL.StAuthInfo)localObject).appid.set(bgte.a().f());
-    }
-    if (bgte.a().d() != null) {
-      ((PROTOCAL.StAuthInfo)localObject).sessionkey.set(ByteStringMicro.copyFrom(bgte.a().d().getBytes()));
-    }
-    localStQWebReq.loginSig.set((MessageMicro)localObject);
-    return localStQWebReq.toByteArray();
   }
   
-  public String toString()
+  private void i()
   {
-    return "ProtoBufRequest{seqNo=" + this.jdField_a_of_type_Int + ",CmdName=" + b() + '}';
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(this.a.link, this.a.linkType, new bgzr(this));
+  }
+  
+  public MiniAppInfo a()
+  {
+    return this.a;
+  }
+  
+  public void a() {}
+  
+  public void a(MiniAppInfo paramMiniAppInfo)
+  {
+    this.a = paramMiniAppInfo;
+    if (!b())
+    {
+      d();
+      return;
+    }
+    ThreadManager.a().post(new MiniAppInfoLoadTask.1(this));
   }
 }
 

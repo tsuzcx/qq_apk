@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agjp;
+import agoe;
 import com.tencent.mobileqq.apollo.view.FrameGifView;
 
 public class CmGameChatPie$14
   implements Runnable
 {
-  public CmGameChatPie$14(agjp paramagjp, boolean paramBoolean) {}
+  public CmGameChatPie$14(agoe paramagoe, boolean paramBoolean) {}
   
   public void run()
   {
     if (this.a)
     {
-      if (agjp.a(this.this$0).b() == 3)
+      if (agoe.a(this.this$0).b() == 3)
       {
-        agjp.a(this.this$0).b();
+        agoe.a(this.this$0).b();
         return;
       }
-      agjp.a(this.this$0).setImageResource(2130839036);
+      agoe.a(this.this$0).setImageResource(2130839037);
       return;
     }
-    agjp.a(this.this$0).c();
-    agjp.a(this.this$0).setImageResource(2130839034);
+    agoe.a(this.this$0).c();
+    agoe.a(this.this$0).setImageResource(2130839035);
   }
 }
 

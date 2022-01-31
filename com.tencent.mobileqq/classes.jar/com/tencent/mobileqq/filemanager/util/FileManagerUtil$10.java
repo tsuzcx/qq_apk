@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.util;
 
 import android.graphics.Bitmap;
-import arof;
+import arso;
 import com.tencent.qphone.base.util.QLog;
 import fa;
 import java.io.FileNotFoundException;
@@ -14,7 +14,7 @@ public final class FileManagerUtil$10
   
   public void run()
   {
-    if (arof.b(this.jdField_a_of_type_JavaLangString)) {}
+    if (arso.b(this.jdField_a_of_type_JavaLangString)) {}
     Bitmap localBitmap;
     do
     {
@@ -23,7 +23,7 @@ public final class FileManagerUtil$10
     } while (localBitmap == null);
     try
     {
-      arof.a(localBitmap, this.jdField_a_of_type_JavaLangString);
+      arso.a(localBitmap, this.jdField_a_of_type_JavaLangString);
       localBitmap.recycle();
       int i = fa.a(this.jdField_b_of_type_JavaLangString);
       fa.a(this.jdField_a_of_type_JavaLangString, i);

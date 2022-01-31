@@ -1,6 +1,23 @@
-class axlu
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.redtouch.RedDisplayInfo;
+import com.tencent.mobileqq.redtouch.RedTypeInfo;
+
+public final class axlu
+  implements Parcelable.Creator<RedDisplayInfo>
 {
-  private static axlq a = new axlq(null);
+  public RedDisplayInfo a(Parcel paramParcel)
+  {
+    RedDisplayInfo localRedDisplayInfo = new RedDisplayInfo();
+    localRedDisplayInfo.a = paramParcel.readArrayList(RedTypeInfo.class.getClassLoader());
+    RedDisplayInfo.a(localRedDisplayInfo, (RedTypeInfo)paramParcel.readSerializable());
+    return localRedDisplayInfo;
+  }
+  
+  public RedDisplayInfo[] a(int paramInt)
+  {
+    return new RedDisplayInfo[paramInt];
+  }
 }
 
 

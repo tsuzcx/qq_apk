@@ -1,42 +1,141 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
 
 public class xks
+  extends BaseAdapter
+  implements AdapterView.OnItemClickListener, xkv
 {
-  public int a;
-  public long a;
-  private Map<Integer, Long> a;
-  public int b = -1;
+  private int jdField_a_of_type_Int;
+  private List<xku> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public xks()
+  public xks(@NonNull List<xku> paramList)
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    if (paramList.isEmpty()) {
+      wxe.d("Q.qqstory.publish.editPermissionListAdapter", "part list is empty.");
+    }
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    a();
+    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramList.hasNext()) {
+      ((xku)paramList.next()).a(this);
+    }
   }
   
-  public void a(int paramInt, long paramLong)
+  @NonNull
+  private xkt a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
-    if (this.jdField_a_of_type_Long < paramLong)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int j;
+    for (int i = 0; localIterator.hasNext(); i = j)
     {
-      this.jdField_a_of_type_Long = paramLong;
-      this.b = paramInt;
+      xku localxku = (xku)localIterator.next();
+      j = localxku.a() + i;
+      if (paramInt <= j - 1) {
+        return new xkt(localxku, paramInt - i);
+      }
     }
+    throw new IllegalStateException("unable find PermissionPart, position:" + paramInt);
   }
   
-  public String toString()
+  private void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    for (long l = 0L; localIterator.hasNext(); l = ((Long)((Map.Entry)localIterator.next()).getValue()).longValue() + l) {}
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
-      return "there_is_no_frame";
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    for (int i = 0; localIterator.hasNext(); i = ((xku)localIterator.next()).a() + i) {}
+    this.jdField_a_of_type_Int = i;
+  }
+  
+  @Nullable
+  public xku a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      xku localxku = (xku)localIterator.next();
+      if (localxku.a) {
+        return localxku;
+      }
     }
-    this.jdField_a_of_type_Int = ((int)l / this.jdField_a_of_type_JavaUtilMap.size());
-    localStringBuilder.append("avg:").append(this.jdField_a_of_type_Int).append("|max:").append(this.jdField_a_of_type_Long).append("|maxId:").append(this.b);
-    return localStringBuilder.toString();
+    return null;
+  }
+  
+  public void a(xku paramxku)
+  {
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    xkt localxkt = a(paramInt);
+    return localxkt.jdField_a_of_type_Xku.a(localxkt.jdField_a_of_type_Int);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = a(paramInt);
+    xku localxku = ((xkt)localObject).jdField_a_of_type_Xku;
+    paramInt = ((xkt)localObject).jdField_a_of_type_Int;
+    localObject = paramView;
+    if (paramView == null) {
+      localObject = localxku.a(paramInt, paramViewGroup);
+    }
+    localxku.a(paramInt, (View)localObject);
+    return localObject;
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 5;
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    a();
+    super.notifyDataSetChanged();
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramView = a(paramInt);
+    paramAdapterView = paramView.jdField_a_of_type_Xku;
+    paramAdapterView.a(paramView.jdField_a_of_type_Int);
+    if ((paramAdapterView instanceof xkr)) {
+      return;
+    }
+    paramAdapterView.b(true);
+    paramView = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramView.hasNext())
+    {
+      xku localxku = (xku)paramView.next();
+      if (localxku != paramAdapterView)
+      {
+        localxku.b(false);
+        localxku.a(false);
+      }
+    }
+    notifyDataSetChanged();
   }
 }
 

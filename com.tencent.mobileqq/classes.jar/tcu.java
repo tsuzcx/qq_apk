@@ -226,7 +226,7 @@ public class tcu
   {
     if ((paramstMetaComment == null) || (paramstMetaComment.id.startsWith("fake_id")))
     {
-      uht.a().dispatch(a(new Object[] { Integer.valueOf(5), Integer.valueOf(-1), alpo.a(2131702547), null }));
+      umc.a().dispatch(a(new Object[] { Integer.valueOf(5), Integer.valueOf(-1), alud.a(2131702559), null }));
       return "";
     }
     paramstSimpleMetaFeed = new tkd(paramstSimpleMetaFeed.id, paramstMetaComment);
@@ -238,7 +238,7 @@ public class tcu
   {
     if ((paramstMetaReply == null) || (paramstMetaReply.id.startsWith("fake_id")))
     {
-      uht.a().dispatch(a(new Object[] { Integer.valueOf(6), Integer.valueOf(-1), alpo.a(2131702545), null }));
+      umc.a().dispatch(a(new Object[] { Integer.valueOf(6), Integer.valueOf(-1), alud.a(2131702557), null }));
       return "";
     }
     paramstSimpleMetaFeed = new tkd(paramstSimpleMetaFeed.id, paramstMetaComment);
@@ -266,9 +266,9 @@ public class tcu
     return (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(paramString);
   }
   
-  public ybt a(Object... paramVarArgs)
+  public ygc a(Object... paramVarArgs)
   {
-    return new ybt(6, paramVarArgs);
+    return new ygc(6, paramVarArgs);
   }
   
   public void a(stSimpleMetaFeed paramstSimpleMetaFeed, stMetaComment paramstMetaComment)

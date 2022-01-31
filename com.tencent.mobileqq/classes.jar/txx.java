@@ -1,24 +1,34 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
 
 public class txx
-  extends yfn
+  implements ucw
 {
-  private String a;
+  public txx(QCircleContentOperationView paramQCircleContentOperationView, View.OnClickListener paramOnClickListener) {}
   
-  public txx(String paramString)
+  public void a(boolean paramBoolean)
   {
-    this.a = paramString;
-  }
-  
-  public void a() {}
-  
-  public void a(yft paramyft)
-  {
-    QCircleGetMainPageRequest localQCircleGetMainPageRequest = new QCircleGetMainPageRequest(this.a, null);
-    paramyft = new txy(this, paramyft);
-    localQCircleGetMainPageRequest.setEnableCache(true);
-    VSNetworkHelper.a().a(localQCircleGetMainPageRequest, paramyft);
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
+    int i;
+    QCircleContentOperationView localQCircleContentOperationView;
+    if (paramBoolean)
+    {
+      i = 2130843648;
+      ((QCircleContentOperationView)localObject).setBackgroundResource(i);
+      localQCircleContentOperationView = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
+      if (!paramBoolean) {
+        break label52;
+      }
+    }
+    label52:
+    for (localObject = this.jdField_a_of_type_AndroidViewView$OnClickListener;; localObject = null)
+    {
+      localQCircleContentOperationView.setOnClickListener((View.OnClickListener)localObject);
+      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.setClickable(paramBoolean);
+      return;
+      i = 0;
+      break;
+    }
   }
 }
 

@@ -1,33 +1,50 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public abstract interface bjdm
+public class bjdm
 {
-  public abstract void attachQQContext(Activity paramActivity, QQAppInterface paramQQAppInterface);
+  private static String a;
+  private static String b;
   
-  public abstract void clearCache();
+  public static String a()
+  {
+    return "V1_AND_SQ_8.3.5_1392_YYB_D";
+  }
   
-  public abstract void forceRefresh();
+  public static String b()
+  {
+    if (a == null) {
+      a = d();
+    }
+    return a;
+  }
   
-  public abstract void onSwitchOutofQzone();
+  public static String c()
+  {
+    if (b == null) {
+      b = d();
+    }
+    return b;
+  }
   
-  public abstract void resetReportFlag();
-  
-  public abstract void setQzoneSwitchlistener(aiae paramaiae);
-  
-  public abstract void setRightButtonType(int paramInt);
-  
-  public abstract int setTitleAlphaAndGetLastValue(int paramInt);
-  
-  public abstract void setTitleView(ViewGroup paramViewGroup);
-  
-  public abstract void updatePublishBox(Intent paramIntent);
+  private static String d()
+  {
+    int i = "V1_AND_SQ_8.3.5_1392_YYB_D".indexOf("_");
+    int k = "V1_AND_SQ_8.3.5_1392_YYB_D".lastIndexOf("_");
+    if (i < 0) {
+      i = 0;
+    }
+    for (;;)
+    {
+      int j = k;
+      if (k < 0) {
+        j = "V1_AND_SQ_8.3.5_1392_YYB_D".length();
+      }
+      return "V1_AND_SQ_8.3.5_1392_YYB_D".substring(i, j);
+      i += 1;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjdm
  * JD-Core Version:    0.7.0.1
  */

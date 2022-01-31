@@ -26,9 +26,9 @@ public class mes
   private void a(View paramView)
   {
     Object localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    ((Activity)localObject).findViewById(2131372589).setVisibility(0);
-    paramView = (TextView)((Activity)localObject).findViewById(2131372591);
-    localObject = (TextView)((Activity)localObject).findViewById(2131372590);
+    ((Activity)localObject).findViewById(2131372615).setVisibility(0);
+    paramView = (TextView)((Activity)localObject).findViewById(2131372617);
+    localObject = (TextView)((Activity)localObject).findViewById(2131372616);
     int i = ConfigInfo.getSharpConfigVersionFromFile(this.jdField_a_of_type_AndroidContentContext);
     String str2 = a(ConfigInfo.getSharpConfigPayloadFromFile(this.jdField_a_of_type_AndroidContentContext));
     String str1 = lno.a(this.jdField_a_of_type_AndroidContentContext);
@@ -85,17 +85,17 @@ public class mes
   public void a()
   {
     Object localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    View localView = ((Activity)localObject).findViewById(2131372588);
+    View localView = ((Activity)localObject).findViewById(2131372614);
     if (localView != null)
     {
       localView.setOnClickListener(this);
       localView.setVisibility(0);
     }
-    localView = ((Activity)localObject).findViewById(2131372590);
+    localView = ((Activity)localObject).findViewById(2131372616);
     if (localView != null) {
       localView.setOnClickListener(this);
     }
-    localObject = ((Activity)localObject).findViewById(2131372589);
+    localObject = ((Activity)localObject).findViewById(2131372615);
     if (localObject != null) {
       ((View)localObject).setOnClickListener(this);
     }
@@ -115,7 +115,7 @@ public class mes
     switch (paramView.getId())
     {
     default: 
-    case 2131372588: 
+    case 2131372614: 
       do
       {
         return;
@@ -125,7 +125,7 @@ public class mes
       a(paramView);
       return;
     }
-    ((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131372589).setVisibility(8);
+    ((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131372615).setVisibility(8);
   }
 }
 

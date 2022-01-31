@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.ark.image;
 
-import aimj;
+import aiqy;
 import android.os.Bundle;
-import anmg;
-import anmn;
-import anmo;
+import anqp;
+import anqw;
+import anqx;
 import com.tencent.qphone.base.util.QLog;
 
 public class PhotoPreviewLogicArk$1$1
   implements Runnable
 {
-  public PhotoPreviewLogicArk$1$1(anmo paramanmo) {}
+  public PhotoPreviewLogicArk$1$1(anqx paramanqx) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewLogicArk", 2, "ArkApp copy file to res: " + anmn.a(this.a.a));
+      QLog.d("PhotoPreviewLogicArk", 2, "ArkApp copy file to res: " + anqw.a(this.a.a));
     }
-    String str = anmg.a(anmn.e(this.a.a).selectedPhotoList, anmn.a(this.a.a), anmn.a(this.a.a), anmn.b(this.a.a));
+    String str = anqp.a(anqw.e(this.a.a).selectedPhotoList, anqw.a(this.a.a), anqw.a(this.a.a), anqw.b(this.a.a));
     Bundle localBundle = new Bundle();
     localBundle.putString("bundle_key_info", str);
-    anmg.a().a("callbackArk", localBundle, null);
+    anqp.a().a("callbackArk", localBundle, null);
   }
 }
 

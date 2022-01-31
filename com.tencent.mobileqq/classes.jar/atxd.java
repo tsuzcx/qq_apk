@@ -1,57 +1,40 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.content.res.TypedArray;
 
 public class atxd
-  extends Animation
 {
-  private final float jdField_a_of_type_Float;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private final boolean jdField_a_of_type_Boolean;
-  private final float b;
-  private final float c;
-  private final float d;
-  private final float e;
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
   
-  public atxd(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
+  public void a(TypedArray paramTypedArray)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-    this.e = paramFloat5;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.b;
-    float f3 = this.c;
-    float f4 = this.d;
-    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
-    paramTransformation = paramTransformation.getMatrix();
-    localCamera.save();
-    if (this.jdField_a_of_type_Boolean) {
-      localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
-    }
-    for (;;)
-    {
-      localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
-      localCamera.getMatrix(paramTransformation);
-      localCamera.restore();
-      paramTransformation.preTranslate(-f3, -f4);
-      paramTransformation.postTranslate(f3, f4);
-      return;
-      localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
-    }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_a_of_type_Int = paramTypedArray.getDimensionPixelSize(19, 16);
+    this.jdField_b_of_type_Int = paramTypedArray.getInt(18, 255);
+    this.jdField_c_of_type_Int = paramTypedArray.getInt(20, 255);
+    this.d = paramTypedArray.getDimensionPixelSize(8, 20);
+    this.i = paramTypedArray.getDimensionPixelSize(9, 20);
+    this.j = paramTypedArray.getDimensionPixelSize(0, 15);
+    this.e = paramTypedArray.getDimensionPixelSize(4, 20);
+    this.f = paramTypedArray.getInt(2, 255);
+    this.g = paramTypedArray.getInt(5, 255);
+    this.h = paramTypedArray.getDimensionPixelSize(3, 20);
+    this.k = paramTypedArray.getDimensionPixelSize(12, 20);
+    this.jdField_a_of_type_Boolean = paramTypedArray.getBoolean(11, false);
+    this.l = paramTypedArray.getDimensionPixelSize(7, 10);
+    this.jdField_c_of_type_Boolean = paramTypedArray.getBoolean(6, false);
+    this.jdField_b_of_type_Boolean = paramTypedArray.getBoolean(1, true);
   }
 }
 

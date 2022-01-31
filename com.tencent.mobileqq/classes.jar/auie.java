@@ -1,6 +1,21 @@
-public abstract interface auie
+import android.view.View;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupMigrateFragment;
+
+public class auie
+  implements bexc
 {
-  public abstract void a(int paramInt);
+  public auie(MsgBackupMigrateFragment paramMsgBackupMigrateFragment) {}
+  
+  public void a(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    aujo.a("0X800A242", 1);
+    this.a.onBackEvent();
+  }
 }
 
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.managers;
 
-import atvt;
+import auac;
 
 public class ShieldMsgManger$1
   implements Runnable
 {
-  public ShieldMsgManger$1(atvt paramatvt) {}
+  public ShieldMsgManger$1(auac paramauac) {}
   
   public void run()
   {
-    atvt.a(this.this$0);
+    auac.a(this.this$0);
   }
 }
 

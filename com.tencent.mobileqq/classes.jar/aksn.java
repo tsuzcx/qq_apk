@@ -1,12 +1,34 @@
-import com.tencent.TMG.sdk.AVCallback;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.11;
+import java.util.ArrayList;
 
 public class aksn
-  implements AVCallback
+  implements Cloneable
 {
-  public aksn(CmGameAvHandler.11 param11) {}
+  public int a;
+  public long a;
+  public ArrayList<String> a;
+  public int b;
+  public int c;
   
-  public void onComplete(int paramInt, String paramString) {}
+  protected Object clone()
+  {
+    Object localObject = null;
+    try
+    {
+      aksn localaksn = (aksn)super.clone();
+      localObject = localaksn;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      for (;;)
+      {
+        localCloneNotSupportedException.printStackTrace();
+      }
+    }
+    if (this.a != null) {
+      localObject.a = ((ArrayList)this.a.clone());
+    }
+    return localObject;
+  }
 }
 
 

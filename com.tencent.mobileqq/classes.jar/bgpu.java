@@ -1,35 +1,8 @@
-import com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager;
-import com.tencent.qqmini.sdk.log.QMLog;
-
-public class bgpu
-  implements bgrp
+public abstract interface bgpu
 {
-  public bgpu(AppBrandLaunchManager paramAppBrandLaunchManager) {}
+  public abstract void onSoftKeyboardClosed();
   
-  public void a(int paramInt)
-  {
-    QMLog.w("minisdk-start_AppBrandLaunchManager", "updateBaseLib ret=" + paramInt);
-    if (paramInt == 0) {
-      return;
-    }
-    if (paramInt == 1)
-    {
-      QMLog.w("minisdk-start_AppBrandLaunchManager", "基础库无更新.");
-      return;
-    }
-    String str = "基础库更新失败.";
-    if (paramInt == 1100) {
-      str = "础库更新请求失败.";
-    }
-    for (;;)
-    {
-      QMLog.w("minisdk-start_AppBrandLaunchManager", str);
-      return;
-      if (paramInt == 1101) {
-        str = "基础库下载失败.";
-      }
-    }
-  }
+  public abstract void onSoftKeyboardOpened(int paramInt);
 }
 
 

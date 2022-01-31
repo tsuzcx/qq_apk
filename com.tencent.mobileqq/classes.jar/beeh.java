@@ -1,22 +1,47 @@
-import java.util.Hashtable;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class beeh
-  extends bedh
+  extends alop
 {
-  Hashtable<String, Boolean> a = new Hashtable();
+  public beeh(WebProcessManager paramWebProcessManager) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    this.a.put(paramString, Boolean.valueOf(paramBoolean));
-  }
-  
-  public boolean a(String paramString, boolean paramBoolean)
-  {
-    paramString = (Boolean)this.a.get(paramString);
-    if (paramString == null) {
-      return paramBoolean;
+    int j = -1;
+    int i = j;
+    if (paramObject != null)
+    {
+      i = j;
+      if ((paramObject instanceof Bundle))
+      {
+        paramObject = (Bundle)paramObject;
+        i = paramObject.getInt("ad_bbq_code", -1);
+        if (i == 0)
+        {
+          paramObject = paramObject.getString("ad_bbq_message");
+          Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+          if ((localObject instanceof QQAppInterface))
+          {
+            localObject = (alok)((QQAppInterface)localObject).a(53);
+            if (localObject != null) {
+              ((alok)localObject).b(paramObject);
+            }
+          }
+        }
+      }
     }
-    return paramString.booleanValue();
+    paramObject = new Intent("com.tencent.mobileqq.babyq.added");
+    paramObject.setPackage(BaseApplicationImpl.getApplication().getPackageName());
+    paramObject.putExtra("result", i);
+    BaseApplicationImpl.getApplication().sendBroadcast(paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebProcessManager", 2, "babyq observer return result=" + i);
+    }
   }
 }
 

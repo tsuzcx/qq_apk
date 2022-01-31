@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.inputstatus;
 
-import asuh;
+import asyq;
 
 public class InputStatusHelper$2
   implements Runnable
 {
-  public InputStatusHelper$2(asuh paramasuh) {}
+  public InputStatusHelper$2(asyq paramasyq) {}
   
   public void run()
   {
-    asuh.a(this.this$0, 3);
+    asyq.a(this.this$0, 3);
   }
 }
 

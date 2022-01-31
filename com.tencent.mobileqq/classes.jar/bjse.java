@@ -1,114 +1,49 @@
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.text.TextUtils;
 
 public class bjse
 {
-  public static String a(Map<Integer, Long> paramMap)
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean = false;
+  private String b = "";
+  
+  public String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramMap.keySet().iterator();
-    if (localIterator.hasNext())
-    {
-      Object localObject = (Integer)localIterator.next();
-      if (localStringBuilder.length() > 0) {
-        localStringBuilder.append("&");
-      }
-      Long localLong = (Long)paramMap.get(localObject);
-      if (localObject != null) {}
-      for (;;)
-      {
-        try
-        {
-          localObject = URLEncoder.encode(localObject + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-          localStringBuilder.append("=");
-          if (localLong == null) {
-            break label165;
-          }
-          localObject = URLEncoder.encode(localLong + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-        }
-        catch (UnsupportedEncodingException paramMap)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramMap);
-        }
-        localObject = "";
-        continue;
-        label165:
-        localObject = "";
-      }
-    }
-    return localStringBuilder.toString();
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public static Map<Integer, Long> a(String paramString)
+  public void a(String paramString)
   {
-    int i = 0;
-    HashMap localHashMap = new HashMap();
-    paramString = paramString.split("&");
-    int j = paramString.length;
-    if (i < j)
-    {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length != 2) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        try
-        {
-          localHashMap.put(Integer.valueOf(URLDecoder.decode(arrayOfString[0], "UTF-8")), Long.valueOf(URLDecoder.decode(arrayOfString[1], "UTF-8")));
-        }
-        catch (UnsupportedEncodingException paramString)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramString);
-        }
-      }
-    }
-    return localHashMap;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static String b(Map<Integer, Long> paramMap)
+  public void a(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramMap.keySet().iterator();
-    if (localIterator.hasNext())
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public void b(String paramString)
+  {
+    this.b = paramString;
+    if (!TextUtils.isEmpty(this.b))
     {
-      Object localObject = (Integer)localIterator.next();
-      if (localStringBuilder.length() > 0) {
-        localStringBuilder.append(",");
-      }
-      Long localLong = (Long)paramMap.get(localObject);
-      if (localObject != null) {}
-      for (;;)
-      {
-        try
-        {
-          localObject = URLEncoder.encode(localObject + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-          localStringBuilder.append("_");
-          if (localLong == null) {
-            break label165;
-          }
-          localObject = URLEncoder.encode(localLong + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-        }
-        catch (UnsupportedEncodingException paramMap)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramMap);
-        }
-        localObject = "";
-        continue;
-        label165:
-        localObject = "";
-      }
+      this.b = this.b.replaceAll("\\+86", "");
+      this.b = this.b.replaceAll("\\D", "");
     }
-    return localStringBuilder.toString();
+  }
+  
+  public String toString()
+  {
+    return "SimInfo mIseDataTrafficSim=" + this.jdField_a_of_type_Boolean + ",mIMSI=" + this.jdField_a_of_type_JavaLangString + ",mPhoneNum=" + this.b;
   }
 }
 

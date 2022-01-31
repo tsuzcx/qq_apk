@@ -1,14 +1,6 @@
-import java.util.Comparator;
-
-class apjw
-  implements Comparator<String>
+public abstract interface apjw
 {
-  apjw(apju paramapju) {}
-  
-  public int a(String paramString1, String paramString2)
-  {
-    return paramString2.compareTo(paramString1);
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,56 +1,13 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class aldj
+  implements DialogInterface.OnClickListener
 {
-  public static void a(String paramString, Bundle paramBundle)
-  {
-    if (paramBundle == null) {}
-    int i;
-    do
-    {
-      String str;
-      for (;;)
-      {
-        return;
-        try
-        {
-          if (alde.a())
-          {
-            i = paramBundle.getInt("featureId");
-            str = paramBundle.getString("featureKey");
-            if ("action_begin_trace".equals(paramString))
-            {
-              alde.a().a(i, str, paramBundle);
-              return;
-            }
-          }
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("TraceReport", 1, paramString, new Object[0]);
-          return;
-        }
-      }
-      if ("action_end_trace".equals(paramString))
-      {
-        alde.a().b(i, str, paramBundle);
-        return;
-      }
-      if ("action_report_span".equals(paramString))
-      {
-        alde.a().c(i, str, paramBundle);
-        return;
-      }
-      if ("action_update_trace".equals(paramString))
-      {
-        alde.a().a(i, paramBundle);
-        return;
-      }
-    } while (!"action_enable_trace".equals(paramString));
-    boolean bool = paramBundle.getBoolean("enable");
-    alde.a().a(i, bool);
-  }
+  public aldj(ApolloGameActivity paramApolloGameActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

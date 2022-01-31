@@ -1,19 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
 
 public class aebl
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aebl(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aebl(TranslucentTRansferFragment paramTranslucentTRansferFragment, bdjz parambdjz) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.d == 11) {
-      azmj.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
-    }
-    this.a.b.cancel();
+    this.jdField_a_of_type_Bdjz.dismiss();
   }
 }
 

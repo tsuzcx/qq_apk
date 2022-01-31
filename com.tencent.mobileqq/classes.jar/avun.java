@@ -1,24 +1,26 @@
-public class avun
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public abstract class avun
 {
-  avue[] a = new avue[3];
+  public long a;
+  public String a;
+  public boolean b;
   
-  public avue a(int paramInt)
+  public String a()
   {
-    Object localObject = this.a[paramInt];
-    if (localObject != null) {
-      return localObject;
-    }
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a[paramInt] = localObject;
-      return localObject;
-      localObject = new avuk();
-      continue;
-      localObject = new avuh();
-    }
+    return "";
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface)
+  {
+    return this.a;
+  }
+  
+  public abstract boolean a();
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return false;
   }
 }
 

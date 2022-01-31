@@ -1,22 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorApplyAllLoadingView;
+import android.graphics.Bitmap;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
 
 public class blgu
-  implements Animator.AnimatorListener
+  implements blic
 {
-  public blgu(AEEditorApplyAllLoadingView paramAEEditorApplyAllLoadingView) {}
+  public blgu(AETemplateInfoFragment paramAETemplateInfoFragment, boolean[] paramArrayOfBoolean, String paramString) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    this.a.a();
+    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
+    BitmapUtils.saveBitmap(paramBitmap, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

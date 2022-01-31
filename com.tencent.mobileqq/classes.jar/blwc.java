@@ -1,19 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.view.View;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import java.util.ArrayList;
+import java.util.List;
 
-public class blwc
-  implements DialogInterface.OnClickListener
+class blwc
+  implements uxy
 {
-  public blwc(MusicProviderView paramMusicProviderView, MusicItemInfo paramMusicItemInfo) {}
+  blwc(blwa paramblwa, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, uxz paramuxz, List<TroopBarPOI> paramList)
   {
-    paramDialogInterface.dismiss();
-    MusicProviderView.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_Blwi.k();
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+    this.jdField_a_of_type_Blwa.jdField_a_of_type_Uxz = paramuxz;
+    if (paramInt == 0) {
+      if (paramuxz.a()) {
+        break label199;
+      }
+    }
+    label199:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Blwa.d.setVisibility(0);
+      this.jdField_a_of_type_Blwa.a(bool);
+      if (this.jdField_a_of_type_Blwa.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_Blwa.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (this.jdField_a_of_type_Blwa.jdField_a_of_type_Uxz.b()) {
+        this.jdField_a_of_type_Blwa.jdField_a_of_type_JavaUtilArrayList.clear();
+      }
+      this.jdField_a_of_type_Blwa.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+      if (this.jdField_a_of_type_Blwa.jdField_a_of_type_Bnav != null)
+      {
+        this.jdField_a_of_type_Blwa.jdField_a_of_type_Bnav.a(this.jdField_a_of_type_Blwa.jdField_a_of_type_JavaUtilArrayList, null);
+        this.jdField_a_of_type_Blwa.jdField_a_of_type_Bnav.notifyDataSetChanged();
+        if (this.jdField_a_of_type_Blwa.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+        {
+          this.jdField_a_of_type_Blwa.a(this.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_Blwa.d.setVisibility(4);
+        }
+      }
+      int i = paramInt;
+      if (paramInt == 0) {
+        i = 0;
+      }
+      wxj.b("edit_video", "poi_list_success", 0, i, new String[0]);
+      return;
+    }
   }
 }
 

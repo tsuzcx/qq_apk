@@ -3,7 +3,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
 class rck
-  extends bhnr
+  extends bhry
 {
   rck(rch paramrch, AlphaAnimation paramAlphaAnimation) {}
   

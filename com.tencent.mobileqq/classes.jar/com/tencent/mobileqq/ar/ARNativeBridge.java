@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar;
 
-import amso;
-import amzf;
+import amxd;
+import ando;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -40,7 +40,7 @@ public class ARNativeBridge
   {
     boolean bool2 = true;
     long l = System.currentTimeMillis();
-    boolean bool3 = amso.a("ArMapEngine800", needCheckMd5);
+    boolean bool3 = amxd.a("ArMapEngine836", needCheckMd5);
     if (!bool3) {}
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -63,7 +63,7 @@ public class ARNativeBridge
     {
       try
       {
-        int i = amso.a("ArMapEngine800");
+        int i = amxd.a("ArMapEngine836");
         if (i != 0) {
           continue;
         }
@@ -84,7 +84,7 @@ public class ARNativeBridge
       if (QLog.isColorLevel()) {
         QLog.d("AREngine", 2, "initSoEnvirontMent loadSoSuccess = " + loadSoSuccess);
       }
-      amzf.a().f(System.currentTimeMillis() - l, loadSoSuccess);
+      ando.a().f(System.currentTimeMillis() - l, loadSoSuccess);
       return loadSoSuccess;
       bool1 = false;
     }

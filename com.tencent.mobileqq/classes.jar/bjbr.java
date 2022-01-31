@@ -1,16 +1,36 @@
-import java.util.concurrent.CountDownLatch;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
-class bjbr
+final class bjbr
+  extends bjao
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch;
-  private volatile String b;
-  private volatile String c;
+  bjbr(Context paramContext) {}
   
-  private bjbr(String paramString)
+  public void b(@NonNull bjap parambjap)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.e("Utility", 2, "-->getEntryControl:connection recv data!");
+    }
+    parambjap = parambjap.a();
+    boolean bool1 = bool2;
+    if (parambjap != null)
+    {
+      parambjap = bjbq.a("on_off", parambjap);
+      if (parambjap == null) {
+        bool1 = bool2;
+      }
+    }
+    else
+    {
+      bjbp.a(this.a, bool1);
+      return;
+    }
+    if (((Integer)parambjap).intValue() == 1) {}
+    for (bool1 = true;; bool1 = false) {
+      break;
+    }
   }
 }
 

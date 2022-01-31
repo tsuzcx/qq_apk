@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgho;
-import bgkd;
+import bglv;
+import bgok;
 import com.tencent.qqmini.sdk.core.widget.NavigationBar;
 import com.tencent.qqmini.sdk.core.widget.TabBar;
 import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;

@@ -44,8 +44,8 @@ public class SquareCornerTextImageView
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localLayoutParams);
     addView(this.jdField_a_of_type_AndroidWidgetTextView, paramContext);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559963, null);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378863));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559962, null);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378920));
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     paramContext = new FrameLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_AndroidViewView, paramContext);
@@ -58,14 +58,14 @@ public class SquareCornerTextImageView
     if ((rxv.a(paramrxv)) && ((f < 0.455D) || (f > 2.2D)))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131719056));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131719068));
     }
     for (;;)
     {
       if (rxv.b(paramrxv))
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131719055));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131719067));
       }
       if ((!rxv.c(paramrxv)) || (TextUtils.isEmpty(rxv.a(paramrxv)))) {
         break;

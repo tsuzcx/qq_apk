@@ -1,21 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
-import com.tencent.mobileqq.haoliyou.JefsClass;
+import android.os.Bundle;
+import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class anrh
-  implements DialogInterface.OnClickListener
+class anrh
+  implements EIPCResultCallback
 {
-  public anrh(JumpConfirmFragment paramJumpConfirmFragment) {}
+  anrh(anre paramanre, String paramString, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    JefsClass.getInstance().b(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
-    if (JumpConfirmFragment.b(this.a) == null) {}
-    for (paramDialogInterface = "";; paramDialogInterface = JumpConfirmFragment.b(this.a))
+    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.download url=", this.jdField_a_of_type_JavaLangString, ", ipc call back code=", Integer.valueOf(paramEIPCResult.code) });
+    int j = -1;
+    int i = j;
+    if (paramEIPCResult.code == 0)
     {
-      azmj.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "1", "", paramDialogInterface, "");
-      return;
+      paramEIPCResult = paramEIPCResult.data;
+      i = j;
+      if (paramEIPCResult != null)
+      {
+        i = j;
+        if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+          i = paramEIPCResult.getInt("code");
+        }
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onDownload(i);
     }
   }
 }

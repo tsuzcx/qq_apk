@@ -1,37 +1,18 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.widget.XListView;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ackn
-  implements aubp<bdsm>
+public final class ackn
+  implements DialogInterface.OnClickListener
 {
-  public ackn(ChatSettingForTroop paramChatSettingForTroop) {}
+  public ackn(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, acln paramacln, Bundle paramBundle) {}
   
-  public void a(bdsm parambdsm)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.f) {
-      return;
-    }
-    FormSimpleItem localFormSimpleItem = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
-    localFormSimpleItem.setRightText(parambdsm.jdField_a_of_type_JavaLangString);
-    localFormSimpleItem.setTag(2131374133, parambdsm);
-    if (parambdsm.jdField_a_of_type_Boolean)
-    {
-      localFormSimpleItem.setRightIcon(this.a.getResources().getDrawable(2130841116));
-      if (!bdwk.a(this.a.app, "troop_keyword_scrolled", false))
-      {
-        bdwk.b(this.a.app, "troop_keyword_scrolled", true);
-        this.a.jdField_a_of_type_ComTencentWidgetXListView.addOnLayoutChangeListener(ChatSettingForTroop.a(this.a));
-      }
-    }
-    for (;;)
-    {
-      azmj.b(null, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "qq_vip", "0X800A8F7", parambdsm.c, 1, 0, "", "", "", "");
-      return;
-      localFormSimpleItem.setRightIcon(null);
-    }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_Acln, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

@@ -1,13 +1,34 @@
+import NS_MOBILE_OPERATION.PicInfo;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import java.util.HashMap;
+
 public class aiqy
+  extends PhotoCommonBaseData
 {
-  public int a;
+  public int a = (int)bazm.a();
   public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c = 0;
-  public long c;
+  public HashMap<String, PicInfo> a;
+  public boolean a;
+  private boolean b;
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+    if (paramBoolean)
+    {
+      this.needMediaInfo = true;
+      bhrb.a();
+    }
+  }
+  
+  public boolean a()
+  {
+    if (Build.VERSION.SDK_INT < 17) {
+      return false;
+    }
+    return this.b;
+  }
 }
 
 

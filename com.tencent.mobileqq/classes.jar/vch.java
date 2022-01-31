@@ -1,65 +1,24 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCollectionViewCount;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class vch
-  extends unk<vdq>
+class vch
+  extends SimpleJob<Object>
 {
-  public static final String a;
-  public List<uzy> a;
-  public String b;
-  
-  static
+  vch(vcg paramvcg, String paramString)
   {
-    jdField_a_of_type_JavaLangString = ume.a("StorySvc.get_colleciton_view_count");
+    super(paramString);
   }
   
-  public vch()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public unf a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspCollectionViewCount localRspCollectionViewCount = new qqstory_service.RspCollectionViewCount();
-    try
-    {
-      localRspCollectionViewCount.mergeFrom(paramArrayOfByte);
-      return new vdq(this.b, localRspCollectionViewCount);
+    if (this.a.jdField_a_of_type_Vcj == null) {
+      this.a.jdField_a_of_type_Vcj = new vcj(this.a, this.a.d);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        wsv.d("Q.qqstory:UpdateCollectionViewCountRequest", paramArrayOfByte.toString());
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqCollectionViewCount localReqCollectionViewCount = new qqstory_service.ReqCollectionViewCount();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      uzy localuzy = (uzy)localIterator.next();
-      localReqCollectionViewCount.collection_id.add(localuzy.a());
-    }
-    return localReqCollectionViewCount.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "UpdateCollectionViewCountRequest{mIdList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    this.a.jdField_a_of_type_JavaLangString = "";
+    vcg.a(this.a);
+    return null;
   }
 }
 

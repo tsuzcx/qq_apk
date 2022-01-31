@@ -1,17 +1,22 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-final class aflz
-  implements afpr
+class aflz
+  implements arrh
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  aflz(aflw paramaflw, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void a()
   {
-    if (ajae.a((MessageForQQWalletMsg)paramChatMessage)) {
-      return 32;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    {
+      this.jdField_a_of_type_Aflw.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      return;
     }
-    return 90;
+    this.jdField_a_of_type_Aflw.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
+  
+  public void b() {}
 }
 
 

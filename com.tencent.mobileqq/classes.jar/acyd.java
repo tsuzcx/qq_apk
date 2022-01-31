@@ -1,29 +1,30 @@
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class acyd
-  implements View.OnClickListener
 {
-  public acyd(GeneralSettingActivity paramGeneralSettingActivity) {}
-  
-  public void onClick(View paramView)
+  public static void a()
   {
-    switch (paramView.getId())
-    {
-    default: 
+    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), JumpActivity.class);
+    localIntent.addFlags(268435456);
+    localIntent.addFlags(536870912);
+    localIntent.addFlags(67108864);
+    localIntent.addFlags(131072);
+    localIntent.setData(Uri.parse("mqqapi://qzone/to_friend_feeds"));
+    BaseApplicationImpl.getContext().startActivity(localIntent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Intent paramIntent, String paramString, boolean paramBoolean)
+  {
+    if ((!"msg_tab_camera".equals(paramString)) || (paramIntent == null)) {
       return;
     }
-    ((axho)this.a.app.getManager(36)).b("100190.100194");
-    paramView = new Intent();
-    paramView.putExtra("set_display_type", 1);
-    PublicFragmentActivity.a(this.a.getActivity(), paramView, QQSettingMsgClearFragment.class);
-    azmj.b(this.a.app, "CliOper", "", "", "0X800A1F2", "0X800A1F2", 0, 0, "", "", "", "");
-    azmj.b(this.a.app, "CliOper", "", "", "Setting_tab", "My_settab_log", 0, 0, "", "", "", "");
+    bjdt.a(paramFragmentActivity, paramQQAppInterface, paramIntent, 20005, paramBoolean);
   }
 }
 

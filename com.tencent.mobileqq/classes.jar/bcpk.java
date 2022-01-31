@@ -1,8 +1,14 @@
-public abstract interface bcpk
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+
+class bcpk
+  implements bcpo
 {
-  public abstract int a(int paramInt);
+  bcpk(bcpg parambcpg, String paramString) {}
   
-  public abstract String a(int paramInt1, int paramInt2);
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  {
+    if (paramInt == 0) {}
+  }
 }
 
 

@@ -1,19 +1,36 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
+import qqcircle.QQCircleDitto.StItemInfo;
 
 class ufl
-  implements Comparator<ueq>
+  implements udy
 {
-  ufl(ufj paramufj) {}
+  ufl(ufk paramufk) {}
   
-  public int a(ueq paramueq1, ueq paramueq2)
+  public void a()
   {
-    if (paramueq1.f() == paramueq2.f()) {
-      return 0;
+    String str = "";
+    if ((ufk.a(this.a) instanceof QQCircleDitto.StItemInfo)) {
+      str = ((QQCircleDitto.StItemInfo)ufk.a(this.a)).id.get();
     }
-    if (paramueq1.f() > paramueq2.f()) {
-      return 1;
+    tzs.a(str, 3, 1, 19, 2, ufk.a(this.a), ufk.a(this.a).poster.id.get(), "", ufk.a(this.a).id.get(), ufk.b(this.a), ufk.a(this.a), null);
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void b(int paramInt)
+  {
+    String str = "";
+    if ((ufk.a(this.a) instanceof QQCircleDitto.StItemInfo)) {
+      str = ((QQCircleDitto.StItemInfo)ufk.a(this.a)).id.get();
     }
-    return -1;
+    if (paramInt > 0) {}
+    for (paramInt = 18;; paramInt = 17)
+    {
+      tzs.a(str, 3, 1, paramInt, 2, ufk.a(this.a), ufk.a(this.a).poster.id.get(), "", ufk.a(this.a).id.get(), ufk.b(this.a), ufk.a(this.a), null);
+      return;
+    }
   }
 }
 

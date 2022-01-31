@@ -1,30 +1,49 @@
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class vtu
+  extends vpn
 {
-  private int a = 0;
+  public final ErrorMessage a;
+  public final boolean a;
+  public final String b;
   
-  vtu(int paramInt)
+  public vtu(@NonNull ErrorMessage paramErrorMessage, boolean paramBoolean)
   {
-    this.a = paramInt;
+    super(new vpm("ERROR_" + paramErrorMessage));
+    this.b = null;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add("ERROR");
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilMap.put("ERROR", "ERROR");
   }
   
-  public static vtu a(int paramInt)
+  public vtu(@NonNull String paramString, boolean paramBoolean)
   {
-    return new vtu(paramInt);
+    super(new vpm("LOADING_" + paramString));
+    this.b = paramString;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add("LOADING");
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilMap.put("LOADING", "LOADING");
   }
   
-  public int a()
+  public boolean b()
   {
-    switch (this.a)
-    {
-    default: 
-      return this.a;
-    }
-    return 0;
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null;
   }
   
-  public int b()
+  public boolean c()
   {
-    return this.a;
+    return this.b != null;
   }
 }
 

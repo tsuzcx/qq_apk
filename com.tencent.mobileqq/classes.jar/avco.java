@@ -1,14 +1,13 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-class avco
-  implements vuc
+public abstract interface avco
 {
-  avco(avcm paramavcm, avcc paramavcc, Object paramObject) {}
+  @Deprecated
+  public abstract void a();
   
-  public boolean a(vtz paramvtz, int paramInt1, int paramInt2)
-  {
-    return this.jdField_a_of_type_Avcc.a(this.jdField_a_of_type_Avcm, 0, paramInt1, this.jdField_a_of_type_Avcm.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(VideoData paramVideoData);
 }
 
 

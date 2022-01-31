@@ -1,17 +1,24 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFollowRcmd;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
 
 class ydt
-  extends GridLayoutManager.SpanSizeLookup
+  extends RecyclerView.ViewHolder
 {
-  ydt(yds paramyds) {}
-  
-  public int getSpanSize(int paramInt)
+  public ydt(ydp paramydp, View paramView)
   {
-    ydp localydp = this.a.b(paramInt);
-    if (localydp != null) {
-      return localydp.a(localydp.b(paramInt));
+    super(paramView);
+  }
+  
+  public void a(CertifiedAccountMeta.StFollowRcmd paramStFollowRcmd, int paramInt)
+  {
+    if ((this.itemView instanceof BlankRecommendItemView))
+    {
+      ((BlankRecommendItemView)this.itemView).setData(paramStFollowRcmd);
+      ((BlankRecommendItemView)this.itemView).setExtraTypeInfo(this.a.getExtraTypeInfo());
+      ((BlankRecommendItemView)this.itemView).setPos(paramInt);
     }
-    return 1;
   }
 }
 

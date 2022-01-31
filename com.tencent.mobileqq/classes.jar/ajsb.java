@@ -1,22 +1,24 @@
-public final class ajsb
-  implements ajse
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.3.1;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.3.2;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.widget.HorizontalListView;
+
+public class ajsb
+  implements azcw
 {
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  ajsb(ajry paramajry) {}
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
+    this.a.a.post(new PtvTemplateAdapter.3.2(this, paramPtvTemplateInfo, paramInt));
   }
   
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
+    this.a.a.post(new PtvTemplateAdapter.3.1(this, paramPtvTemplateInfo, paramBoolean));
+    if (!paramBoolean) {
+      ajpy.a("", "0X80075BB", "", "", "", "");
     }
-    return -paramInt1;
   }
 }
 

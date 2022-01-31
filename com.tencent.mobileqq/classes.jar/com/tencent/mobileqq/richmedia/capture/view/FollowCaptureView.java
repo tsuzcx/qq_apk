@@ -11,9 +11,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import axng;
-import axnh;
-import axqh;
+import axrp;
+import axrq;
+import axuq;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.richmedia.capture.data.FollowCaptureParam;
 import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodeConfig;
@@ -36,10 +36,10 @@ public class FollowCaptureView
   private int A;
   private int B;
   private int C;
-  private SurfaceTexture.OnFrameAvailableListener jdField_a_of_type_AndroidGraphicsSurfaceTexture$OnFrameAvailableListener = new axng(this);
+  private SurfaceTexture.OnFrameAvailableListener jdField_a_of_type_AndroidGraphicsSurfaceTexture$OnFrameAvailableListener = new axrp(this);
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
   private FollowCaptureParam jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam;
-  private HWDecodeListener jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderHWDecodeListener = new axnh(this);
+  private HWDecodeListener jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderHWDecodeListener = new axrq(this);
   private HWVideoDecoder jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderHWVideoDecoder;
   private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
   private SurfaceTexture jdField_b_of_type_AndroidGraphicsSurfaceTexture;
@@ -239,8 +239,8 @@ public class FollowCaptureView
   {
     super.onSurfaceCreated(paramGL10, paramEGLConfig);
     this.jdField_b_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-    this.z = axqh.a(36197);
-    this.A = axqh.a(3553);
+    this.z = axuq.a(36197);
+    this.A = axuq.a(3553);
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam != null) {
       F();
     }

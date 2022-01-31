@@ -1,209 +1,48 @@
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.remind.RemindPB.RemindItem;
-import com.tencent.pb.remind.RemindPB.RemindQuota;
-import com.tencent.pb.remind.RemindPB.ReqBody;
-import com.tencent.pb.remind.RemindPB.RspBody;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.msf.service.protocol.security.CustomSigContent;
+import com.tencent.msf.service.protocol.security.RespondCustomSig;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
+import mqq.observer.AccountObserver;
 
 public class alwp
-  extends alko
+  extends AccountObserver
 {
-  public alwp(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public alwp(MessageHandler paramMessageHandler, String paramString) {}
   
-  private boolean a(List<String> paramList)
+  public void onChangeToken(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    return (paramList != null) && (paramList.size() > 0);
-  }
-  
-  public void a(FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    Object localObject1;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    if ((paramBoolean) && (paramHashMap != null))
     {
-      localObject1 = new RemindPB.RspBody();
-      try
-      {
-        ((RemindPB.RspBody)localObject1).mergeFrom((byte[])paramObject);
-        paramObject = localObject1;
-      }
-      catch (Exception paramObject)
-      {
-        do
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("SpecialRemind.Service", 2, "handle send special sound exception:" + paramObject.getMessage());
-            }
-            paramObject.printStackTrace();
-            paramObject = null;
-            continue;
-            if (paramObject.msg_quota.has())
-            {
-              paramObject = (RemindPB.RemindQuota)paramObject.msg_quota.get();
-              if (paramObject.uint32_comm_quota.has()) {
-                akaj.a(paramObject.uint32_comm_quota.get(), this.app);
-              }
-              if (paramObject.uint32_svip_quota.has()) {
-                akaj.b(paramObject.uint32_svip_quota.get(), this.app);
-              }
-              akaj.b(this.app);
-              continue;
-              if (paramObject.rep_set_info.has())
-              {
-                localObject1 = paramObject.rep_set_info.get();
-                if ((localObject1 != null) && (((List)localObject1).size() > 0))
-                {
-                  paramObject = new ArrayList();
-                  localObject1 = ((List)localObject1).iterator();
-                  while (((Iterator)localObject1).hasNext())
-                  {
-                    localObject2 = (RemindPB.RemindItem)((Iterator)localObject1).next();
-                    if ((((RemindPB.RemindItem)localObject2).uint64_uin.has()) && (((RemindPB.RemindItem)localObject2).uint32_id.has()))
-                    {
-                      str = String.valueOf(((RemindPB.RemindItem)localObject2).uint64_uin.get());
-                      paramObject.add(str);
-                      akaj.a(str, ((RemindPB.RemindItem)localObject2).uint32_id.get(), this.app);
-                    }
-                  }
-                  akaj.a(paramObject, this.app);
-                  continue;
-                  if (paramObject.rep_clear_uin.has())
-                  {
-                    localObject1 = paramObject.rep_clear_uin.get();
-                    paramObject = new ArrayList();
-                    if ((localObject1 != null) && (((List)localObject1).size() > 0))
-                    {
-                      localObject1 = ((List)localObject1).iterator();
-                      while (((Iterator)localObject1).hasNext())
-                      {
-                        localObject2 = String.valueOf((Long)((Iterator)localObject1).next());
-                        paramObject.add(localObject2);
-                        akaj.c((String)localObject2, this.app);
-                      }
-                      akaj.b(paramObject, this.app);
-                    }
-                  }
-                }
-              }
-            }
-          }
-          if (i != 1) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("SpecialRemind.Service", 2, "get count fail.");
-        return;
-        int i = paramObject.int32_ret.get();
-        notifyUI(1001, paramFromServiceMsg.isSuccess(), Integer.valueOf(i));
+      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
+      if ((paramHashMap == null) || (paramHashMap.SigList == null)) {
         return;
       }
-      if ((paramObject != null) && (paramObject.uint32_method.has()))
+      int i = 0;
+      while (i < paramHashMap.SigList.size())
       {
-        i = paramObject.uint32_method.get();
-        if (paramObject.int32_ret.has())
+        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
+        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
         {
-          if (paramObject.int32_ret.get() != 0) {
-            break label503;
-          }
-          switch (i)
-          {
-          default: 
-            notifyUI(1000, paramFromServiceMsg.isSuccess(), Integer.valueOf(i));
-          }
+          localObject = new String(((CustomSigContent)localObject).SigContent);
+          OpenID localOpenID = new OpenID();
+          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
+          localOpenID.openID = ((String)localObject);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a().b(localOpenID);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.a(this.jdField_a_of_type_JavaLangString, localOpenID);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.notifyUI(1, true, localOpenID);
         }
+        i += 1;
       }
     }
-    label503:
-    do
+    if (paramBoolean) {}
+    for (paramHashMap = "0";; paramHashMap = "1")
     {
-      return;
-      Object localObject2;
-      String str;
-      if (QLog.isColorLevel()) {
-        QLog.e("QVipSpeicalCareHandler", 2, "-->report MM:cmd=" + paramFromServiceMsg.getServiceCmd() + ",error code=" + paramFromServiceMsg.getBusinessFailCode() + ",uin=" + this.app.getCurrentAccountUin());
-      }
-    } while (paramFromServiceMsg.isSuccess());
-    bfdq.a().a(paramFromServiceMsg.getServiceCmd(), 100, paramFromServiceMsg.getBusinessFailCode(), this.app.getCurrentAccountUin(), 1000277, alpo.a(2131711772), true);
-  }
-  
-  public void a(List<String> paramList1, int paramInt, List<String> paramList2)
-  {
-    RemindPB.ReqBody localReqBody = new RemindPB.ReqBody();
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      try
-      {
-        paramList1 = createToServiceMsg("SpecialRemind.Service");
-        paramList1.putWupBuffer(localReqBody.toByteArray());
-        sendPbReq(paramList1);
-        return;
-      }
-      catch (Exception paramList1)
-      {
-        paramList1.printStackTrace();
-        return;
-      }
-      localReqBody.uint32_method.set(1);
-      continue;
-      if ((a(paramList1)) && (a(paramList2)) && (paramList1.size() == paramList2.size()))
-      {
-        int j = paramList2.size();
-        int i = 0;
-        while (i < j)
-        {
-          RemindPB.RemindItem localRemindItem = new RemindPB.RemindItem();
-          localRemindItem.uint64_uin.set(Long.parseLong((String)paramList1.get(i)));
-          localRemindItem.uint32_id.set(Integer.parseInt((String)paramList2.get(i)));
-          localReqBody.rep_set_info.add(localRemindItem);
-          localReqBody.setHasFlag(true);
-          i += 1;
-        }
-        localReqBody.uint32_method.set(paramInt);
-        continue;
-        if (a(paramList1))
-        {
-          paramList1 = paramList1.iterator();
-          while (paramList1.hasNext())
-          {
-            paramList2 = (String)paramList1.next();
-            localReqBody.rep_clear_uin.add(Long.valueOf(Long.parseLong(paramList2)));
-          }
-          localReqBody.uint32_method.set(4);
-        }
-      }
-    }
-  }
-  
-  protected Class<? extends alkr> observerClass()
-  {
-    return alwq.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
-    if ((paramToServiceMsg == null) || (paramToServiceMsg.length() == 0)) {}
-    while (!"SpecialRemind.Service".equals(paramFromServiceMsg.getServiceCmd())) {
+      bfhz.a().a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.getAccount(), "", this.jdField_a_of_type_JavaLangString, "41", "19", paramHashMap, "", "", "4", false);
       return;
     }
-    a(paramFromServiceMsg, paramObject);
   }
 }
 

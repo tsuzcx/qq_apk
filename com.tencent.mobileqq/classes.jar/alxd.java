@@ -1,31 +1,56 @@
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+
 public class alxd
-  implements alkr
+  extends alpd
 {
-  protected void a(int paramInt) {}
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private aneh jdField_a_of_type_Aneh;
   
-  protected void a(int paramInt1, int paramInt2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public alxd(AppInterface paramAppInterface)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramObject == null);
-        paramObject = (Object[])paramObject;
-        a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 1);
-    a(((Integer)paramObject[0]).intValue());
+    super(paramAppInterface);
   }
+  
+  public void a(Context paramContext)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Aneh == null)
+      {
+        this.jdField_a_of_type_Aneh = aneh.a();
+        this.jdField_a_of_type_Aneh.a(paramContext, hashCode(), "MiniCodePeakHandler");
+      }
+      return;
+    }
+  }
+  
+  protected Class<? extends alpg> observerClass()
+  {
+    return null;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniCodePeakHandler", 2, "onDestroy");
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Aneh != null)
+      {
+        this.jdField_a_of_type_Aneh.a(hashCode(), "MiniCodePeakHandler");
+        this.jdField_a_of_type_Aneh = null;
+      }
+      return;
+    }
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

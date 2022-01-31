@@ -1,14 +1,14 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.os.Bundle;
-import bjci;
+import bjgp;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.MobileQQ;
 
 class VideoJsProxyImpl$1$1
-  implements bjci
+  implements bjgp
 {
   VideoJsProxyImpl$1$1(VideoJsProxyImpl.1 param1) {}
   

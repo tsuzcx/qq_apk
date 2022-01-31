@@ -24,7 +24,7 @@ final class ApolloGameUtil$16
     {
       try
       {
-        Bitmap localBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130838378);
+        Bitmap localBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130838379);
         localIntent.setFlags(337641472);
         ApolloGameUtil.a(localIntent, this.jdField_a_of_type_JavaLangString, localBitmap, null);
         return;

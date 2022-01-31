@@ -1,37 +1,29 @@
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.animation.Animation;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import java.util.Iterator;
+import java.util.List;
 
-public class awtc
-  extends awsv
+class awtc
+  implements View.OnClickListener
 {
-  public awtc(LSRecordPanel paramLSRecordPanel) {}
+  awtc(awtb paramawtb, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startCloseAnimation onAnimationEnd");
+    if (awtb.a(this.jdField_a_of_type_Awtb) == this.jdField_a_of_type_Int) {
+      return;
     }
-    if (LSRecordPanel.a(this.a))
-    {
-      if (paramAnimation == this.a.b) {
-        LSRecordPanel.a(this.a);
-      }
-      this.a.a = null;
-      this.a.b = null;
-      paramAnimation = (RelativeLayout.LayoutParams)LSRecordPanel.a(this.a).getLayoutParams();
-      int i = (int)(this.a.getResources().getDisplayMetrics().density * 4.0F);
-      paramAnimation.height -= i;
-      paramAnimation.width -= i;
-      int j = paramAnimation.rightMargin;
-      paramAnimation.rightMargin = (i / 2 + j);
-      LSRecordPanel.a(this.a, false);
-      LSRecordPanel.a(this.a).setLayoutParams(paramAnimation);
+    paramView = awtb.a(this.jdField_a_of_type_Awtb).iterator();
+    while (paramView.hasNext()) {
+      ((awtf)paramView.next()).a = false;
     }
+    ((awtf)awtb.a(this.jdField_a_of_type_Awtb).get(this.jdField_a_of_type_Int)).a = true;
+    awtb.a(this.jdField_a_of_type_Awtb, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Awtb.notifyDataSetChanged();
+    if (awtb.a(this.jdField_a_of_type_Awtb) != null) {
+      awtb.a(this.jdField_a_of_type_Awtb).a((awtf)awtb.a(this.jdField_a_of_type_Awtb).get(this.jdField_a_of_type_Int));
+    }
+    azqs.b(null, "dc00898", "", "", "0X800AB2B", "0X800AB2B", 0, 0, "0", "0", "", "");
   }
 }
 

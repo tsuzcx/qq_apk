@@ -1,49 +1,27 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import android.view.View;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class acsr
-  implements adsc
+  implements bhuk
 {
-  public acsr(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public acsr(Conversation paramConversation) {}
   
-  public void a(Editable paramEditable)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramEditable = paramEditable.toString();
-    if (TextUtils.isEmpty(paramEditable)) {
-      ForwardFriendListActivity.a(this.a).setVisibility(8);
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      if (ForwardFriendListActivity.a(this.a) != null) {
-        ForwardFriendListActivity.a(this.a).a(paramEditable);
-      }
+      this.a.jdField_a_of_type_Bhuf.e();
       return;
-      ForwardFriendListActivity.a(this.a).setVisibility(0);
-    }
-  }
-  
-  public void a(ResultRecord paramResultRecord)
-  {
-    if (paramResultRecord != null) {
-      ForwardFriendListActivity.a(this.a, paramResultRecord.a, paramResultRecord.a());
-    }
-    ForwardFriendListActivity.a(this.a).notifyDataSetChanged();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (ForwardFriendListActivity.a(this.a) == null))
-    {
-      ForwardFriendListActivity.a(this.a, ContactSearchFragment.a(6, 1, null, null, ForwardFriendListActivity.a(this.a)));
-      FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
-      localFragmentTransaction.add(2131375671, ForwardFriendListActivity.a(this.a));
-      localFragmentTransaction.commitAllowingStateLoss();
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, " showActionSheetForCancelMayknowRecommand recommend_item_menu hide clicked");
+      }
+      ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).g();
     }
   }
 }

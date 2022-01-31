@@ -1,149 +1,25 @@
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.playvideo.player.StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.2;
-import com.tencent.biz.qqstory.utils.JsonORM;
-import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Build.VERSION;
+import android.widget.ImageView;
 
-public class vsf
-  extends vsi
+class vsf
+  extends AnimatorListenerAdapter
 {
-  public static final SparseArray<String> a;
-  public static String[] a;
-  public static String[] b = { "UNKNOWN", "SYSTEM", "SELF" };
-  private vse jdField_a_of_type_Vse;
-  private vsi jdField_a_of_type_Vsi;
+  vsf(vsd paramvsd) {}
   
-  static
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    jdField_a_of_type_AndroidUtilSparseArray = new vsg();
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "UNKNOWN", "SOFTWARE_DEC", "OMX_HW_DEC", "STAGEFRIGHT_HW_DEC", "MEDIACODEC_HW_DEC", "MEDIACODEC_GLRENDER_DEC" };
-  }
-  
-  public vsf(vse paramvse)
-  {
-    this.jdField_a_of_type_Vse = paramvse;
-  }
-  
-  public void OnDownloadCallback(String paramString)
-  {
-    try
+    super.onAnimationEnd(paramAnimator);
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.a.a.setImageAlpha(255);
+    }
+    for (;;)
     {
-      vsh localvsh = (vsh)JsonORM.a(new JSONObject(paramString), vsh.class);
-      if (localvsh == null)
-      {
-        wsv.d("StoryPlayerTVKWrapper", "OnDownloadCallback. %s", new Object[] { paramString });
-        if (this.jdField_a_of_type_Vsi != null) {
-          this.jdField_a_of_type_Vsi.OnDownloadCallback(paramString);
-        }
-        return;
-      }
+      this.a.a.setVisibility(8);
+      return;
+      this.a.a.setImageResource(2130850072);
     }
-    catch (JsonORM.JsonParseException localJsonParseException)
-    {
-      for (;;)
-      {
-        localJsonParseException.printStackTrace();
-        Object localObject1 = null;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-        Object localObject2 = null;
-        continue;
-        switch (localObject2.d)
-        {
-        default: 
-          wsv.d("StoryPlayerTVKWrapper", "OnDownloadCallback. 未知. %s", new Object[] { paramString });
-          break;
-        case 1: 
-          wsv.d("StoryPlayerTVKWrapper", "OnDownloadCallback. 文件大小. %s", new Object[] { paramString });
-          break;
-        case 2: 
-          wsv.d("StoryPlayerTVKWrapper", "OnDownloadCallback. 下载 progress. offset = %d / %d, speedKBS = %d, clipNo = %d", new Object[] { Integer.valueOf(localObject2.c), Long.valueOf(localObject2.jdField_a_of_type_Long), Integer.valueOf(localObject2.b), Integer.valueOf(localObject2.jdField_a_of_type_Int) });
-          this.jdField_a_of_type_Vse.jdField_a_of_type_Long = localObject2.jdField_a_of_type_Long;
-          this.jdField_a_of_type_Vse.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(localObject2.b));
-          break;
-        case 3: 
-          wsv.d("StoryPlayerTVKWrapper", "OnDownloadCallback. 下载 DONE.");
-          break;
-        case 4: 
-        case 5: 
-        case 6: 
-          wsv.e("StoryPlayerTVKWrapper", "OnDownloadCallback. 下载出错. errorCode=%d, errorDetailCode=%d, errorMsg=%s", new Object[] { Integer.valueOf(localObject2.e), Integer.valueOf(localObject2.f), localObject2.jdField_a_of_type_JavaLangString });
-          break;
-        case 7: 
-          wsv.d("StoryPlayerTVKWrapper", "OnDownloadCallback. 存储文件完整下载完成.");
-        }
-      }
-    }
-  }
-  
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    wsv.b("StoryPlayerTVKWrapper", "onCompletion");
-    if (this.jdField_a_of_type_Vsi != null) {
-      this.jdField_a_of_type_Vsi.onCompletion(paramTVK_IMediaPlayer);
-    }
-  }
-  
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
-  {
-    boolean bool = false;
-    wsv.e("StoryPlayerTVKWrapper", "onError. model=%d, what=%d, position=%d, extra=%s, info=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, paramObject });
-    if (this.jdField_a_of_type_Vsi != null) {
-      bool = this.jdField_a_of_type_Vsi.onError(paramTVK_IMediaPlayer, paramInt1, paramInt2, paramInt3, paramString, paramObject);
-    }
-    return bool;
-  }
-  
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      wsv.d("StoryPlayerTVKWrapper", "onInfo. what=%d (%s), extra=%s", new Object[] { Integer.valueOf(paramInt), jdField_a_of_type_AndroidUtilSparseArray.get(paramInt, "UNKNOWN"), paramObject });
-    }
-    while (this.jdField_a_of_type_Vsi != null)
-    {
-      return this.jdField_a_of_type_Vsi.onInfo(paramTVK_IMediaPlayer, paramInt, paramObject);
-      int i = ((Integer)paramObject).intValue();
-      if ((i >= 0) && (i <= b.length))
-      {
-        wsv.d("StoryPlayerTVKWrapper", "onInfo. playerType %s", new Object[] { b[i] });
-      }
-      else
-      {
-        wsv.d("StoryPlayerTVKWrapper", "onInfo. playerType %d", new Object[] { Integer.valueOf(i) });
-        continue;
-        wsv.d("StoryPlayerTVKWrapper", "onInfo. start buffering");
-        continue;
-        wsv.d("StoryPlayerTVKWrapper", "onInfo. end buffering");
-        continue;
-        i = ((Integer)paramObject).intValue();
-        if ((i >= 0) && (i < jdField_a_of_type_ArrayOfJavaLangString.length)) {
-          wsv.d("StoryPlayerTVKWrapper", "onInfo. set decoder. %s", new Object[] { jdField_a_of_type_ArrayOfJavaLangString[i] });
-        } else {
-          wsv.d("StoryPlayerTVKWrapper", "onInfo. set decoder. %d", new Object[] { Integer.valueOf(i) });
-        }
-      }
-    }
-    return false;
-  }
-  
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    wsv.d("StoryPlayerTVKWrapper", "onVideoPrepared");
-    if (this.jdField_a_of_type_Vsi != null) {
-      this.jdField_a_of_type_Vsi.onVideoPrepared(paramTVK_IMediaPlayer);
-    }
-    ThreadManager.executeOnSubThread(new StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.2(this, paramTVK_IMediaPlayer));
   }
 }
 

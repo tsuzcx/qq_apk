@@ -1,421 +1,170 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import QMF_PROTOCAL.QmfBusiControl;
+import QMF_PROTOCAL.QmfDownstream;
+import com.qq.jce.wup.UniAttribute;
+import com.qq.taf.jce.JceStruct;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneUiJsPlugin.1;
-import cooperation.qzone.webviewplugin.QzoneUiJsPlugin.2;
-import cooperation.qzone.webviewplugin.QzoneUiJsPlugin.3;
-import java.util.Iterator;
-import java.util.Set;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.qzone.WNSStream;
+import cooperation.qzone.util.WnsError;
 
 public class bjur
-  extends bjts
-  implements bjmq
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bjus(this);
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
-  private String c;
-  
-  private JSONObject a(Intent paramIntent)
+  public static JceStruct a(byte[] paramArrayOfByte, String paramString)
   {
-    Object localObject1 = paramIntent.getStringExtra("param.videoPath");
-    int i = paramIntent.getIntExtra("param.videoType", 0);
-    Object localObject2 = paramIntent.getStringExtra("param.content");
-    long l1 = paramIntent.getLongExtra("param.videoSize", 0L);
-    String str1 = paramIntent.getStringExtra("param.thumbnailPath");
-    long l2 = paramIntent.getLongExtra("param.duration", 0L);
-    long l3 = paramIntent.getLongExtra("param.startTime", 0L);
-    long l4 = paramIntent.getLongExtra("param.totalDuration", 0L);
-    boolean bool1 = paramIntent.getBooleanExtra("param.needProcess", true);
-    boolean bool2 = paramIntent.getBooleanExtra("param.topicSyncQzone", false);
-    String str2 = paramIntent.getStringExtra("param.newFakeVid");
-    Bundle localBundle = paramIntent.getBundleExtra("param.extras");
-    paramIntent = new JSONObject();
-    try
-    {
-      paramIntent.put("videoPath", localObject1);
-      paramIntent.put("videoType", i);
-      paramIntent.put("content", localObject2);
-      paramIntent.put("videoSize", l1);
-      paramIntent.put("thumbnailPath", str1);
-      paramIntent.put("duration", l2);
-      paramIntent.put("totalDuration", l4);
-      paramIntent.put("needProcess", bool1);
-      paramIntent.put("syncQzone", bool2);
-      paramIntent.put("fakeVid", str2);
-      paramIntent.put("startTime", l3);
-      localObject1 = new JSONObject();
-      if (localBundle != null)
-      {
-        localObject2 = localBundle.keySet().iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          str1 = (String)((Iterator)localObject2).next();
-          ((JSONObject)localObject1).put(str1, localBundle.getInt(str1));
-        }
-      }
-      paramIntent.put("encodeExtras", localObject1);
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.w("QzoneUiJsPlugin", 1, "convertVideoInfoToJson error", localJSONException);
-      return paramIntent;
-    }
-    return paramIntent;
+    return a(paramArrayOfByte, paramString, null);
   }
   
-  private void a(String paramString)
+  public static JceStruct a(byte[] paramArrayOfByte, String paramString, int[] paramArrayOfInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzoneUiJsPlugin", 4, "handleRecordVideo json=" + paramString);
-    }
-    b();
-    for (;;)
-    {
-      int j;
-      int k;
-      int m;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        String str1 = paramString.getString("callback");
-        if (!TextUtils.isEmpty(str1))
-        {
-          this.c = str1;
-          str1 = paramString.optString("ptv_id");
-          String str2 = paramString.optString("confirm_btn_text");
-          j = paramString.optInt("need_input_text", 0);
-          if (j == 0) {
-            break label507;
-          }
-          i = paramString.optInt("need_sync_qzone", 0);
-          k = paramString.optInt("is_original_video", 0);
-          m = paramString.optInt("need_edit_video", 0);
-          boolean bool6 = paramString.optBoolean("support_local_video", true);
-          Object localObject = paramString.optJSONObject("last_video");
-          if ((localObject != null) && (((JSONObject)localObject).optInt("videoType") == 0))
-          {
-            localObject = ((JSONObject)localObject).optString("videoPath");
-            if (!TextUtils.isEmpty((CharSequence)localObject)) {
-              this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bjux.class).post(new QzoneUiJsPlugin.1(this, (String)localObject));
-            }
-          }
-          localObject = new Intent();
-          bool1 = paramString.optBoolean("support_beauty", true);
-          bool2 = paramString.optBoolean("support_dd", true);
-          bool3 = paramString.optBoolean("support_filter", true);
-          bool4 = paramString.optBoolean("dd_category_unfold", false);
-          String str3 = paramString.optString("dd_category_name");
-          String str4 = paramString.optString("dd_item_id");
-          bool5 = paramString.optBoolean("filter_category_unfold", false);
-          String str5 = paramString.optString("filter_category_name");
-          String str6 = paramString.optString("filter_item_id");
-          int n = paramString.optInt("force_camera", 0);
-          ((Intent)localObject).putExtra("PeakConstants.ARG_BEAUTY", bool1);
-          ((Intent)localObject).putExtra("PeakConstants.ARG_SUPPORT_DD", bool2);
-          ((Intent)localObject).putExtra("PeakConstants.ARG_SUPPORT_FILTER", bool3);
-          ((Intent)localObject).putExtra("PeakConstants.ARG_UNFOLD_DD", bool4);
-          ((Intent)localObject).putExtra("PeakConstants.ARG_DD_CATEGORY_NAME", str3);
-          ((Intent)localObject).putExtra("PeakConstants.ARG_DD_ITEM_ID", str4);
-          ((Intent)localObject).putExtra("PeakConstants.ARG_UNFOLD_FILTER", bool5);
-          ((Intent)localObject).putExtra("PeakConstants.ARG_FILTER_CATEGORY_NAME", str5);
-          ((Intent)localObject).putExtra("PeakConstants.ARG_FILTER_ITEM_ID", str6);
-          ((Intent)localObject).putExtra("PeakConstants.ARG_FORCE_CAMERA", n);
-          paramString = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-          if (bjba.a().a() > 0)
-          {
-            bool1 = true;
-            break label512;
-            bjaw.a(paramString, "ref_h5_record_video", bool1, bool2, bool3, bool4, bool5, bool6, str1, str2, (Intent)localObject);
-          }
-        }
-        else
-        {
-          return;
-        }
-        boolean bool1 = false;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.w("QzoneUiJsPlugin", 1, "handleRecordVideo error", paramString);
-        return;
-      }
-      boolean bool2 = false;
-      break label519;
-      boolean bool3 = false;
-      break label527;
-      boolean bool4 = false;
-      break label534;
-      boolean bool5 = false;
-      continue;
-      label507:
-      int i = 0;
-      continue;
-      label512:
-      if (j > 0)
-      {
-        bool2 = true;
-        label519:
-        if (m > 0)
-        {
-          bool3 = true;
-          label527:
-          if (i > 0)
-          {
-            bool4 = true;
-            label534:
-            if (k > 0) {
-              bool5 = true;
-            }
-          }
-        }
-      }
-    }
+    return a(paramArrayOfByte, paramString, paramArrayOfInt, null);
   }
   
-  private void b()
+  public static JceStruct a(byte[] paramArrayOfByte, String paramString, int[] paramArrayOfInt, String[] paramArrayOfString)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
+      paramArrayOfInt[0] = -1000000;
     }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.qzone.topic.video.FakeFeed");
-    localIntentFilter.addAction("com.qzone.topic.video.HalfFakeFeed");
-    localIntentFilter.addAction("com.qzone.h5.video.recordCallback");
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  private void b(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzoneUiJsPlugin", 4, "handlePreviewVideo json=" + paramString);
-    }
-    int i;
-    long l1;
-    long l2;
-    Bundle localBundle;
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString).optJSONObject("video_info");
-      if (localJSONObject == null)
-      {
-        QLog.e("QzoneUiJsPlugin", 1, "handlePreviewVideo video_info is empty");
-        return;
-      }
-      paramString = localJSONObject.optString("videoPath");
-      i = localJSONObject.optInt("videoType");
-      l1 = localJSONObject.optLong("startTime");
-      l2 = localJSONObject.optLong("duration");
-      localJSONObject = localJSONObject.optJSONObject("encodeExtras");
-      localBundle = new Bundle();
-      if (localJSONObject != null)
-      {
-        Iterator localIterator = localJSONObject.keys();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          localBundle.putInt(str, localJSONObject.optInt(str));
-        }
-      }
-      if (i != 0) {
-        break label201;
-      }
-    }
-    catch (JSONException paramString)
-    {
-      QLog.w("QzoneUiJsPlugin", 1, "handlePreviewVideo error", paramString);
-      return;
-    }
-    bjaw.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), i, paramString, l2, localBundle);
-    return;
-    label201:
-    if (i == 1) {
-      bizm.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), bizt.a(), i, paramString, l1, l1 + l2);
-    }
-  }
-  
-  private void c(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzoneUiJsPlugin", 4, "handleUploadVideo json=" + paramString);
-    }
-    try
-    {
-      if (new JSONObject(paramString).optJSONObject("video_info") == null)
-      {
-        QLog.e("QzoneUiJsPlugin", 1, "handleUploadVideo video_info is empty");
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bjux.class).post(new QzoneUiJsPlugin.2(this, paramString));
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.w("QzoneUiJsPlugin", 1, "handleUploadVideo error", paramString);
-    }
-  }
-  
-  private void d(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzoneUiJsPlugin", 4, "handleGetVideoCover json=" + paramString);
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      String str = paramString.getString("callback");
-      if (!TextUtils.isEmpty(str))
-      {
-        this.b = str;
-        paramString = paramString.getString("timestamp");
-        if (!TextUtils.isEmpty(paramString)) {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bjux.class).post(new QzoneUiJsPlugin.3(this, paramString));
-        }
-      }
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.w("QzoneUiJsPlugin", 1, "handleGetVideoCover error", paramString);
-    }
-  }
-  
-  private void e(String paramString)
-  {
-    boolean bool2 = false;
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzoneUiJsPlugin", 4, "handleTopicUploadVideo json=" + paramString);
-    }
-    b();
+    Object localObject1 = new WNSStream();
+    label388:
     for (;;)
     {
       try
       {
-        paramString = new JSONObject(paramString);
-        String str = paramString.getString("callback");
-        if (!TextUtils.isEmpty(str)) {
-          this.jdField_a_of_type_JavaLangString = str;
-        }
-        str = paramString.getString("topicId");
-        if (TextUtils.isEmpty(str)) {
-          return;
-        }
-        if ("ptucamera".equals(paramString.optString("shoot")))
+        paramArrayOfByte = ((WNSStream)localObject1).unpack(bdpd.b(paramArrayOfByte));
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.WnsCode == 0))
         {
-          bool1 = true;
-          paramString = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-          if (bjba.a().a() > 0) {
-            bool2 = true;
+          localObject1 = new UniAttribute();
+          ((UniAttribute)localObject1).setEncodeName("utf-8");
+          ((UniAttribute)localObject1).decode(paramArrayOfByte.Extra);
+          Object localObject2 = (QmfBusiControl)((UniAttribute)localObject1).get("busiCompCtl");
+          if ((localObject2 != null) && (1 == ((QmfBusiControl)localObject2).compFlag))
+          {
+            localObject2 = WNSStream.decompress(paramArrayOfByte.BusiBuff);
+            if (localObject2 != null) {
+              paramArrayOfByte.BusiBuff = ((byte[])localObject2);
+            }
           }
-          bjaw.a(0L, paramString, true, true, "QZonePublishMoodTabActivity", bool2, true, str, bool1, null, null, null);
-          return;
+          else
+          {
+            localObject1 = new UniAttribute();
+            ((UniAttribute)localObject1).setEncodeName("utf-8");
+            ((UniAttribute)localObject1).decode(paramArrayOfByte.BusiBuff);
+            i = paramArrayOfByte.BizCode;
+            paramArrayOfByte = ((UniAttribute)localObject1).get("ret", Short.valueOf(paramArrayOfByte.BizCode));
+            if (!(paramArrayOfByte instanceof Short)) {
+              continue;
+            }
+            i = ((Short)paramArrayOfByte).intValue();
+            if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
+              paramArrayOfInt[0] = i;
+            }
+            a((UniAttribute)localObject1, paramArrayOfString);
+            return (JceStruct)((UniAttribute)localObject1).get(paramString);
+          }
+          if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
+            paramArrayOfInt[0] = 1000002;
+          }
+          a((UniAttribute)localObject1, paramArrayOfString);
+          return null;
+          if (!(paramArrayOfByte instanceof Integer)) {
+            break label388;
+          }
+          int i = ((Integer)paramArrayOfByte).intValue();
+          continue;
+        }
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.WnsCode != 0))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ProtocolUtils", 2, "decode " + paramString + " error:" + WnsError.getErrorMessage(paramArrayOfByte.WnsCode));
+          }
+          if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
+            paramArrayOfInt[0] = paramArrayOfByte.WnsCode;
+          }
+          if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0)) {
+            break;
+          }
+          paramArrayOfString[0] = WnsError.getErrorMessage(paramArrayOfByte.WnsCode);
+          break;
+        }
+        if (paramArrayOfByte == null)
+        {
+          if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
+            paramArrayOfInt[0] = 1000003;
+          }
+          return null;
         }
       }
-      catch (JSONException paramString)
+      catch (Throwable paramArrayOfByte)
       {
-        QLog.w("QzoneUiJsPlugin", 1, "topicUploadVideo error", paramString);
-        return;
+        if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
+          paramArrayOfInt[0] = 1000001;
+        }
+        return null;
       }
-      boolean bool1 = false;
+      return null;
     }
+    return null;
   }
   
-  public void a()
+  /* Error */
+  private static void a(UniAttribute paramUniAttribute, String[] paramArrayOfString)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
-    }
-    bjmn.a().b(this);
-    super.a();
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!"qzui".equals(paramString2)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null)) {
-      return false;
-    }
-    if (("topicUploadVideo".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
-    {
-      e(paramVarArgs[0]);
-      return true;
-    }
-    if (("getVideoFaceData".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
-    {
-      bjmn.a().a(this);
-      d(paramVarArgs[0]);
-      return true;
-    }
-    if (("recordVideo".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
-    {
-      a(paramVarArgs[0]);
-      return true;
-    }
-    if (("previewVideo".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
-    {
-      b(paramVarArgs[0]);
-      return true;
-    }
-    if (("uploadVideo".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
-    {
-      c(paramVarArgs[0]);
-      return true;
-    }
-    return false;
-  }
-  
-  public void onWebEvent(String paramString, Bundle paramBundle)
-  {
-    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
-    do
-    {
-      return;
-      paramBundle = paramBundle.getBundle("data");
-      if (paramBundle == null)
-      {
-        QLog.e("QzoneUiJsPlugin", 1, "call js function,bundle is empty");
-        return;
-      }
-    } while ((!"cmd.videoGetFakeFeedCover".equals(paramString)) || (TextUtils.isEmpty(this.b)));
-    paramString = paramBundle.getString("param.videoCoverPath");
-    int i = paramBundle.getInt("param.videoCoverWidth", 0);
-    int j = paramBundle.getInt("param.videoCoverHeight", 0);
-    paramBundle = paramBundle.getString("param.videoClientKey");
-    if (TextUtils.isEmpty(paramString)) {}
-    for (paramString = "";; paramString = bjtn.a(paramString, i, j))
-    {
-      JSONObject localJSONObject1 = new JSONObject();
-      try
-      {
-        localJSONObject1.put("code", 0);
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("msg", "");
-        localJSONObject2.put("base64", "data:image/jpg;base64," + paramString);
-        localJSONObject2.put("timestamp", paramBundle);
-        localJSONObject2.put("isFakeFeed", true);
-        localJSONObject1.put("data", localJSONObject2);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.b, new String[] { localJSONObject1.toString() });
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.w("QzoneUiJsPlugin", 1, "topicUploadVideo fake feed  callback error", paramString);
-        return;
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: ifnull +13 -> 14
+    //   4: aload_1
+    //   5: ifnull +9 -> 14
+    //   8: aload_1
+    //   9: arraylength
+    //   10: iconst_1
+    //   11: if_icmpge +4 -> 15
+    //   14: return
+    //   15: aload_1
+    //   16: iconst_0
+    //   17: aload_0
+    //   18: ldc 137
+    //   20: ldc 139
+    //   22: invokevirtual 87	com/qq/jce/wup/UniAttribute:get	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   25: checkcast 141	java/lang/String
+    //   28: checkcast 141	java/lang/String
+    //   31: aastore
+    //   32: aload_1
+    //   33: iconst_0
+    //   34: aaload
+    //   35: ifnonnull -21 -> 14
+    //   38: aload_1
+    //   39: iconst_0
+    //   40: ldc 143
+    //   42: aastore
+    //   43: return
+    //   44: astore_0
+    //   45: aload_1
+    //   46: iconst_0
+    //   47: aaload
+    //   48: ifnonnull -34 -> 14
+    //   51: aload_1
+    //   52: iconst_0
+    //   53: ldc 143
+    //   55: aastore
+    //   56: return
+    //   57: astore_0
+    //   58: aload_1
+    //   59: iconst_0
+    //   60: aaload
+    //   61: ifnonnull +8 -> 69
+    //   64: aload_1
+    //   65: iconst_0
+    //   66: ldc 143
+    //   68: aastore
+    //   69: aload_0
+    //   70: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	71	0	paramUniAttribute	UniAttribute
+    //   0	71	1	paramArrayOfString	String[]
+    // Exception table:
+    //   from	to	target	type
+    //   15	32	44	java/lang/Throwable
+    //   15	32	57	finally
   }
 }
 

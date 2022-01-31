@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.together;
 
-import balk;
+import bapt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.io.Serializable;
 
 public class TogetherUIData
   implements Serializable
 {
-  private balk mTogetherSession;
+  private bapt mTogetherSession;
   
   public String getCurUin()
   {
@@ -24,7 +24,7 @@ public class TogetherUIData
     return this.mTogetherSession.a(paramBoolean, paramQQAppInterface);
   }
   
-  public balk getTogetherSession()
+  public bapt getTogetherSession()
   {
     return this.mTogetherSession;
   }
@@ -34,9 +34,9 @@ public class TogetherUIData
     this.mTogetherSession = null;
   }
   
-  public void setTogetherSession(balk parambalk)
+  public void setTogetherSession(bapt parambapt)
   {
-    this.mTogetherSession = parambalk;
+    this.mTogetherSession = parambapt;
   }
 }
 

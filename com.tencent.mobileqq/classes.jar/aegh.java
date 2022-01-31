@@ -1,33 +1,21 @@
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aegh
-  extends WebChromeClient
+  implements View.OnTouchListener
 {
-  private aegh(UpgradeDetailActivity paramUpgradeDetailActivity) {}
+  public aegh(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
-    paramGeolocationPermissionsCallback.invoke(paramString, true, false);
-  }
-  
-  public void onProgressChanged(WebView paramWebView, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onProgressChanged: " + paramInt + "%");
+    if (paramMotionEvent.getAction() == 4)
+    {
+      this.a.a.dismiss();
+      return true;
     }
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onReceivedTitle:" + paramString);
-    }
-    this.a.setTitle(paramString);
+    return false;
   }
 }
 

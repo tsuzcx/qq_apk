@@ -1,69 +1,36 @@
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
+
 public class ajpt
+  extends ampt
 {
-  private int jdField_a_of_type_Int;
-  private short[] jdField_a_of_type_ArrayOfShort;
-  private int b;
-  
-  public ajpt(int paramInt)
+  public ajpt(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_ArrayOfShort = new short[paramInt];
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      this.a.a = paramSosoLbsInfo.a.a;
+      this.a.b = paramSosoLbsInfo.a.b;
+      if (QLog.isColorLevel()) {
+        QLog.d("FlowCameraActivity", 2, "onLocationUpdate() latitude=" + this.a.a + " longitude=" + this.a.b);
+      }
+      if (FlowCameraActivity2.a(this.a) != null) {
+        FlowCameraActivity2.a(this.a);
+      }
     }
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-  }
-  
-  public void a(short[] paramArrayOfShort, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ArrayOfShort == null) {}
     do
     {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int < paramInt2) {
-          break;
-        }
-        System.arraycopy(paramArrayOfShort, paramInt1, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int, paramInt2);
-        this.jdField_a_of_type_Int += paramInt2;
-        if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfShort.length) {
-          this.jdField_a_of_type_Int = 0;
-        }
-        this.b += paramInt2;
-      } while (this.b <= this.jdField_a_of_type_ArrayOfShort.length);
-      this.b = this.jdField_a_of_type_ArrayOfShort.length;
       return;
-      System.arraycopy(paramArrayOfShort, paramInt1, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int);
-      System.arraycopy(paramArrayOfShort, this.jdField_a_of_type_ArrayOfShort.length + paramInt1 - this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfShort, 0, paramInt2 - (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_Int = (paramInt2 - (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int));
-      if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfShort.length) {
-        this.jdField_a_of_type_Int = 0;
-      }
-      this.b += paramInt2;
-    } while (this.b <= this.jdField_a_of_type_ArrayOfShort.length);
-    this.b = this.jdField_a_of_type_ArrayOfShort.length;
-  }
-  
-  public short[] a()
-  {
-    if ((this.jdField_a_of_type_ArrayOfShort == null) || (this.b == 0) || (this.b > this.jdField_a_of_type_ArrayOfShort.length)) {
-      return null;
-    }
-    short[] arrayOfShort = new short[this.b];
-    if (this.jdField_a_of_type_Int >= this.b)
-    {
-      System.arraycopy(this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int - this.b, arrayOfShort, 0, this.b);
-      return arrayOfShort;
-    }
-    System.arraycopy(this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_ArrayOfShort.length - (this.b - this.jdField_a_of_type_Int), arrayOfShort, 0, this.b - this.jdField_a_of_type_Int);
-    System.arraycopy(this.jdField_a_of_type_ArrayOfShort, 0, arrayOfShort, this.b - this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-    return arrayOfShort;
+      this.a.a = 0.0D;
+      this.a.b = 0.0D;
+    } while (!QLog.isColorLevel());
+    QLog.d("FlowCameraActivity", 2, "onLocationUpdate() error");
   }
 }
 

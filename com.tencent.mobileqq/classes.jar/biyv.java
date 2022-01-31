@@ -1,27 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GpsInfo;
+import cooperation.qqreader.QRBridgeUtil;
+import java.util.Map;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public final class biyv
-  implements Parcelable.Creator<LbsDataV2.GpsInfo>
+  implements WtTicketPromise
 {
-  public LbsDataV2.GpsInfo a(Parcel paramParcel)
+  public biyv(String paramString) {}
+  
+  public void Done(Ticket paramTicket)
   {
-    LbsDataV2.GpsInfo localGpsInfo = new LbsDataV2.GpsInfo();
-    if (paramParcel != null)
+    if (paramTicket != null)
     {
-      localGpsInfo.lat = paramParcel.readInt();
-      localGpsInfo.lon = paramParcel.readInt();
-      localGpsInfo.alt = paramParcel.readInt();
-      localGpsInfo.gpsType = paramParcel.readInt();
-      localGpsInfo.accuracy = paramParcel.readInt();
+      bjbl.d("QRBridgeUtil", "preGetKeyInPreloadService : Done");
+      paramTicket = (byte[])paramTicket._pskey_map.get(this.a);
+      if (paramTicket != null) {
+        QRBridgeUtil.access$000().put(this.a, new String(paramTicket));
+      }
     }
-    return localGpsInfo;
   }
   
-  public LbsDataV2.GpsInfo[] a(int paramInt)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    return null;
+    bjbl.d("QRBridgeUtil", "preGetKeyInPreloadService failed " + paramErrMsg);
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    bjbl.d("QRBridgeUtil", "preGetKeyInPreloadService timeout!" + paramErrMsg);
   }
 }
 

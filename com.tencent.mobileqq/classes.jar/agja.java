@@ -1,20 +1,26 @@
-import android.os.Handler;
 import android.view.View;
-import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
 
 class agja
-  implements ysr
+  implements View.OnClickListener
 {
-  agja(agiy paramagiy) {}
+  agja(agiy paramagiy, AIOShortVideoData paramAIOShortVideoData) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    aekt.n = true;
-    this.a.p.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 10000L);
-    StructMsg.ButtonInfo localButtonInfo = this.a.a(paramInt1);
-    apwl.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramString, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), localButtonInfo);
-    azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Bqq_Crm", "", "Aio_menu", "Clk_menu", 0, 0, this.a.a(), paramInt1 + "", "", "");
+    agiy.a(this.jdField_a_of_type_Agiy, agiy.a(this.jdField_a_of_type_Agiy), alud.a(2131700435));
+    boolean bool = azgd.a().a();
+    paramView = agiy.b(this.jdField_a_of_type_Agiy);
+    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.g;
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.e;
+    if (bool) {}
+    for (int i = 1;; i = 0)
+    {
+      DanceMachineQQBrowserActivity.a(paramView, j, str, i, -999, 1, 0, null);
+      return;
+    }
   }
 }
 

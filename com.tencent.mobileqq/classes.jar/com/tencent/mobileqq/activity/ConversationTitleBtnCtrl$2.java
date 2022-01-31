@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import acos;
-import axho;
+import acth;
+import axlx;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
 
 public class ConversationTitleBtnCtrl$2
   implements Runnable
 {
-  public ConversationTitleBtnCtrl$2(acos paramacos) {}
+  public ConversationTitleBtnCtrl$2(acth paramacth) {}
   
   public void run()
   {
-    ((axho)BaseApplicationImpl.getApplication().getRuntime().getManager(36)).b("140000");
+    ((axlx)BaseApplicationImpl.getApplication().getRuntime().getManager(36)).b("140000");
   }
 }
 

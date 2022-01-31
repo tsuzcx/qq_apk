@@ -1,20 +1,32 @@
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 class wgp
-  extends vdz
 {
-  wgp(wgn paramwgn, FeedItem paramFeedItem) {}
+  public TextView a;
+  public StoryPickerHorizontalListView a;
   
-  public void a()
+  public wgp(wgo paramwgo, View paramView, wgn paramwgn)
   {
-    super.a();
-    wgn.a(this.jdField_a_of_type_Wgn, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365013));
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView = ((StoryPickerHorizontalListView)paramView.findViewById(2131367749));
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setSelection(0);
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setOnHorizontalScrollListener(paramwgn);
+    paramView = (wgh)this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.a();
+    paramView.a(paramwgo.jdField_a_of_type_Wgm);
+    paramView.a(paramwgo.jdField_a_of_type_Wgl);
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt, VideoCollectionItem paramVideoCollectionItem)
   {
-    super.a(paramInt);
-    wta.a("home_page", "suc_share", 2, paramInt, new String[] { wta.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", wta.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setData(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setTag(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(xqz.b(paramVideoCollectionItem.collectionTime));
+    this.jdField_a_of_type_Wgo.jdField_a_of_type_JavaUtilHashMap.put(paramVideoCollectionItem.collectionId, new WeakReference(this));
   }
 }
 

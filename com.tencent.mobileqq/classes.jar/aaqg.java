@@ -1,8 +1,18 @@
-public abstract interface aaqg
+import android.view.View;
+import com.tencent.gdtad.aditem.GdtAd;
+
+class aaqg
+  implements aaso
 {
-  public abstract void a();
+  aaqg(aaqa paramaaqa) {}
   
-  public abstract void b();
+  public void reportImpression(View paramView)
+  {
+    paramView = paramView.getTag(2131379969);
+    if ((paramView != null) && ((paramView instanceof GdtAd))) {
+      aasq.a(((GdtAd)paramView).getUrlForImpression());
+    }
+  }
 }
 
 

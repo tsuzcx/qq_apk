@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
-
-public class xfv
-  implements DialogInterface.OnClickListener
+public abstract interface xfv
 {
-  public xfv(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(xeq paramxeq);
+  
+  public abstract void a(boolean paramBoolean, xeq paramxeq);
+  
+  public abstract void b(int paramInt);
 }
 
 

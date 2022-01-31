@@ -1,14 +1,70 @@
-import android.support.annotation.NonNull;
-
-public abstract interface vkg
+public abstract class vkg
+  extends vji
 {
-  public abstract void a(@NonNull vkf paramvkf);
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
   
-  public abstract void a(@NonNull vkf paramvkf, @NonNull Throwable paramThrowable);
+  protected String a(int paramInt)
+  {
+    return null;
+  }
   
-  public abstract void b(@NonNull vkf paramvkf);
+  public void a(vkm paramvkm)
+  {
+    super.a(paramvkm);
+    paramvkm.a = this.jdField_c_of_type_JavaLangString;
+  }
   
-  public abstract void c(@NonNull vkf paramvkf);
+  public void a(vko paramvko)
+  {
+    super.a(paramvko);
+    paramvko.b = 2;
+    paramvko.d = ("[" + ulg.a + "] " + this.a);
+    paramvko.a = this.d;
+    paramvko.k = this.a;
+    paramvko.l = this.b;
+    paramvko.h = this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public void a(vkp paramvkp)
+  {
+    super.a(paramvkp);
+    paramvkp.jdField_c_of_type_JavaLangString = this.a;
+    paramvkp.d = this.b;
+    paramvkp.a = this.d;
+    paramvkp.e = this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public void a(vkq paramvkq)
+  {
+    super.a(paramvkq);
+    paramvkq.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+    paramvkq.e = this.d;
+    paramvkq.a = this.a;
+    paramvkq.d = vky.a(this.d);
+  }
+  
+  public void a(vkr paramvkr)
+  {
+    super.a(paramvkr);
+    paramvkr.jdField_c_of_type_JavaLangString = this.b;
+    paramvkr.a = this.a;
+    paramvkr.d = this.jdField_c_of_type_JavaLangString;
+    paramvkr.e = this.d;
+    paramvkr.jdField_c_of_type_Boolean = true;
+  }
+  
+  public void b(vkr paramvkr)
+  {
+    super.b(paramvkr);
+    paramvkr.jdField_c_of_type_JavaLangString = this.b;
+    paramvkr.a = this.a;
+    paramvkr.d = this.jdField_c_of_type_JavaLangString;
+    paramvkr.e = this.d;
+    paramvkr.jdField_c_of_type_Boolean = true;
+  }
 }
 
 

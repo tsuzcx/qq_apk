@@ -5,12 +5,12 @@ import android.view.Window;
 class rhj
   implements DialogInterface.OnShowListener
 {
-  rhj(rhf paramrhf, bhpy parambhpy) {}
+  rhj(rhf paramrhf, bhuf parambhuf) {}
   
   public void onShow(DialogInterface paramDialogInterface)
   {
     rhf.a(this.jdField_a_of_type_Rhf, "mShareActionSheet onShow()");
-    this.jdField_a_of_type_Bhpy.getWindow().clearFlags(8);
+    this.jdField_a_of_type_Bhuf.getWindow().clearFlags(8);
   }
 }
 

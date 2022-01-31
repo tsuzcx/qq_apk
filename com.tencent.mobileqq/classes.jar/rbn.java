@@ -41,30 +41,30 @@ public class rbn
   public rbn(View paramView, int paramInt)
   {
     super(paramView, paramInt);
-    this.jdField_b_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131368320));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131364607));
+    this.jdField_b_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131368331));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131364609));
     paramView = this.jdField_a_of_type_AndroidViewViewGroup;
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131379680));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout = ((VideoFeedsGestureLayout)paramView.findViewById(2131367125));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131364890));
-    this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372057));
-    this.d = ((ViewGroup)paramView.findViewById(2131379597));
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131376277));
-    this.u = ((TextView)paramView.findViewById(2131364956));
-    this.w = ((TextView)paramView.findViewById(2131378173));
-    this.c = ((ViewGroup)paramView.findViewById(2131372058));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131379738));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout = ((VideoFeedsGestureLayout)paramView.findViewById(2131367135));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131364892));
+    this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372077));
+    this.d = ((ViewGroup)paramView.findViewById(2131379655));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131376331));
+    this.u = ((TextView)paramView.findViewById(2131364958));
+    this.w = ((TextView)paramView.findViewById(2131378227));
+    this.c = ((ViewGroup)paramView.findViewById(2131372078));
     this.jdField_g_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131363395));
-    this.jdField_h_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131366986));
-    this.i = ((ImageView)paramView.findViewById(2131366987));
-    this.x = ((TextView)paramView.findViewById(2131371417));
-    this.y = ((TextView)paramView.findViewById(2131366332));
-    this.z = ((TextView)paramView.findViewById(2131369078));
-    this.v = ((TextView)paramView.findViewById(2131376618));
-    this.e = ((LinearLayout)paramView.findViewById(2131366985));
-    this.f = ((LinearLayout)paramView.findViewById(2131364338));
-    this.A = ((TextView)paramView.findViewById(2131366988));
-    this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379826));
-    this.s = paramView.findViewById(2131379621);
+    this.jdField_h_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131366996));
+    this.i = ((ImageView)paramView.findViewById(2131366997));
+    this.x = ((TextView)paramView.findViewById(2131371436));
+    this.y = ((TextView)paramView.findViewById(2131366334));
+    this.z = ((TextView)paramView.findViewById(2131369096));
+    this.v = ((TextView)paramView.findViewById(2131376672));
+    this.e = ((LinearLayout)paramView.findViewById(2131366995));
+    this.f = ((LinearLayout)paramView.findViewById(2131364340));
+    this.A = ((TextView)paramView.findViewById(2131366998));
+    this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379884));
+    this.s = paramView.findViewById(2131379679);
     this.jdField_a_of_type_Roh = new roh(paramView, null);
   }
 }

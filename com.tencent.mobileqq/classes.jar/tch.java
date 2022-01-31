@@ -77,7 +77,7 @@ public class tch
     if (paramWSRedDotPushMsg != null) {
       paramIntent.putExtra("key_weishi_push_msg_data", paramWSRedDotPushMsg);
     }
-    bizm.a(paramActivity, bizt.a(), paramIntent);
+    bjdt.a(paramActivity, bjea.a(), paramIntent);
   }
   
   public static void a(Context paramContext, String paramString)

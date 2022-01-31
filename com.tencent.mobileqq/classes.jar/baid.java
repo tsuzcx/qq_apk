@@ -1,27 +1,103 @@
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.teamwork.TeamWorkUtils.ProcessTDFileScheduler.1;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class baid
-  extends baif
+public class baid
 {
-  private bain a;
+  public static baid a;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private ConcurrentLinkedQueue<MessageRecord> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   
-  baid(@NonNull String paramString, int paramInt1, int paramInt2)
+  private baid(QQAppInterface paramQQAppInterface)
   {
-    super(2, paramString);
-    this.a = new bain(paramInt1, paramInt2, 1);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
   }
   
-  float a(@NonNull Paint paramPaint)
+  public static baid a(QQAppInterface paramQQAppInterface)
   {
-    float f = this.a.a().getBounds().width();
-    if (QLog.isColorLevel()) {
-      QLog.d("NickWrapper", 2, "getWidth normal span width " + f);
+    if (jdField_a_of_type_Baid == null) {}
+    try
+    {
+      if (jdField_a_of_type_Baid == null) {
+        jdField_a_of_type_Baid = new baid(paramQQAppInterface);
+      }
+      return jdField_a_of_type_Baid;
     }
-    return f;
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() <= 0) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while ((localQQAppInterface == null) || (localQQAppInterface.a.a() != 1));
+    ThreadManager.postImmediately(new TeamWorkUtils.ProcessTDFileScheduler.1(this, localQQAppInterface), null, true);
+  }
+  
+  public void a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {}
+    label190:
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          return;
+          Object localObject1;
+          if ((paramMessageRecord instanceof MessageForStructing))
+          {
+            localObject1 = (MessageForStructing)paramMessageRecord;
+            if ((((MessageForStructing)localObject1).structingMsg != null) && (!TextUtils.isEmpty(((MessageForStructing)localObject1).structingMsg.mMsgUrl)) && (arbq.a(((MessageForStructing)localObject1).structingMsg.mMsgUrl))) {
+              this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
+            }
+          }
+          else
+          {
+            if (!(paramMessageRecord instanceof MessageForArkApp)) {
+              break label190;
+            }
+            localObject1 = (MessageForArkApp)paramMessageRecord;
+            Object localObject2 = ((MessageForArkApp)localObject1).ark_app_message.metaList;
+            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+              try
+              {
+                localObject2 = new JSONObject(new JSONObject((String)localObject2).getString(((MessageForArkApp)localObject1).ark_app_message.appView));
+                localObject1 = ((JSONObject)localObject2).optString("appid");
+                localObject2 = ((JSONObject)localObject2).optString("qqdocurl");
+                if (((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).equals(String.valueOf(baic.a)))) || ((!TextUtils.isEmpty((CharSequence)localObject2)) && (arbq.a((String)localObject2))))
+                {
+                  this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
+                  return;
+                }
+              }
+              catch (JSONException paramMessageRecord) {}
+            }
+          }
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e(bagj.i, 2, paramMessageRecord.getMessage());
+      return;
+    } while ((!(paramMessageRecord instanceof MessageForText)) || (!arbq.a(((MessageForText)paramMessageRecord).msg)));
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
   }
 }
 

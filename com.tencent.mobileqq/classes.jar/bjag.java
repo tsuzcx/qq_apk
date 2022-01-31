@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
 
-public final class bjag
-  implements DialogInterface.OnDismissListener
+class bjag
+  implements View.OnClickListener
 {
-  public bjag(FragmentActivity paramFragmentActivity) {}
+  bjag(bjae parambjae) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    if (this.a.mRuntime.a() != null) {
+      this.a.mRuntime.a().loadUrl("javascript:" + bjae.a(this.a) + "()");
+    }
   }
 }
 

@@ -1,55 +1,63 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.LocationPoiDataHelper.1.1;
-import com.tencent.mobileqq.mini.out.CommonObserver;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.proto.lbsshare.LBSShare.LocationResp;
-import com.tencent.proto.lbsshare.LBSShare.POI;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
 
-public class atod
-  extends CommonObserver
+class atod
+  extends BroadcastReceiver
 {
-  public void onGetPoiList(boolean paramBoolean, LBSShare.LocationResp paramLocationResp)
+  atod(atnw paramatnw) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    atoc.a(this.a, false);
-    Object localObject1;
-    if (paramBoolean)
-    {
-      atoc.a(this.a);
-      localObject1 = paramLocationResp.poilist.get().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (LBSShare.POI)((Iterator)localObject1).next();
-        localObject2 = LocationRoom.Venue.a(atoc.a(this.a).app.c(), (LBSShare.POI)localObject2);
-        atoc.a(this.a).add(localObject2);
-      }
-      localObject1 = this.a;
-      if (paramLocationResp.next.get() <= 0) {
-        break label198;
-      }
+    paramContext = paramIntent.getAction();
+    paramIntent = paramIntent.getStringExtra("process_name");
+    if (QLog.isColorLevel()) {
+      QLog.d("LyricsController", 2, "onReceive action: " + paramContext + "  process_name:" + paramIntent);
     }
-    label198:
-    for (paramBoolean = true;; paramBoolean = false)
+    int i;
+    if ((paramIntent != null) && (paramIntent.contains("openSdk")))
     {
-      atoc.b((atoc)localObject1, paramBoolean);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("LocationPoiDataHelper", 4, "[venue][poi-data] onGetPoiList next: mVenueList size = " + atoc.a(this.a).size() + ", mHashMore = " + atoc.a(this.a));
+      i = 1;
+      if (!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
+        break label246;
       }
-      if (atoc.a(this.a) != null) {
-        ThreadManager.getUIHandler().post(new LocationPoiDataHelper.1.1(this));
+      if ((this.a.b) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout != null) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null) && (this.a.jdField_a_of_type_Atnu.jdField_h_of_type_Boolean))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a.setAlign(this.a.jdField_a_of_type_Atnu.a);
+        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.a.jdField_a_of_type_Atnu.g, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.g());
+        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.a.jdField_a_of_type_Atnu.jdField_h_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.g());
+        this.a.jdField_a_of_type_Atnu.jdField_h_of_type_Boolean = false;
       }
+      this.a.a(false);
+      this.a.jdField_a_of_type_Boolean = false;
+      atnw.a(this.a, false);
+    }
+    label246:
+    while (!"mqq.intent.action.QQ_FOREGROUND".equals(paramContext))
+    {
+      return;
+      i = 0;
+      break;
+    }
+    if (i == 0)
+    {
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.a(true);
+      atnw.a(this.a, false);
       return;
     }
+    if (this.a.b)
+    {
+      atnw.a(this.a, true);
+      return;
+    }
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Atnu.f = true;
+    atnw.a(this.a, false);
   }
-  
-  public void onGetStreetUrl(boolean paramBoolean, String paramString) {}
 }
 
 

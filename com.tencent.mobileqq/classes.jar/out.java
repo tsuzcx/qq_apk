@@ -19,7 +19,7 @@ public class out
   extends LottieDrawable
 {
   private static LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(5242880);
-  private static final String jdField_a_of_type_JavaLangString = bduw.a(aljq.aX + ".readInjoy/resource/lottie_background_res");
+  private static final String jdField_a_of_type_JavaLangString = bdzf.a(alof.aX + ".readInjoy/resource/lottie_background_res");
   private static LruCache<String, LottieComposition> b = new LruCache(1048576);
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   
@@ -63,20 +63,20 @@ public class out
     for (;;)
     {
       return localout;
-      bdwa localbdwa = ((bdvx)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(47)).a(1);
+      beaj localbeaj = ((beag)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(47)).a(1);
       File localFile2 = new File(jdField_a_of_type_JavaLangString);
       if (!localFile2.exists()) {}
       for (boolean bool = localFile2.mkdirs(); bool; bool = true)
       {
         str = str + ".zip";
         localFile2 = new File(str);
-        paramString = new bdvv(paramString, localFile2);
+        paramString = new beae(paramString, localFile2);
         paramString.b = 3;
         paramString.d = 60L;
         Bundle localBundle = new Bundle();
         localBundle.putLong("bgLottieResId", l);
         localBundle.putString("bgLottieResPath", str);
-        localbdwa.a(paramString, new ouy(l, str, localFile2, localFile1, new WeakReference(localout)), localBundle);
+        localbeaj.a(paramString, new ouy(l, str, localFile2, localFile1, new WeakReference(localout)), localBundle);
         return localout;
       }
     }

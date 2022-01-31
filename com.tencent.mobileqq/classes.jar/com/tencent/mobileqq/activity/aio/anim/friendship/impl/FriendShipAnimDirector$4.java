@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.anim.friendship.impl;
 
-import aerp;
-import aesp;
+import aewe;
+import aexe;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
@@ -12,14 +12,14 @@ import com.tencent.mobileqq.dinifly.LottieDrawable;
 public class FriendShipAnimDirector$4
   implements Runnable
 {
-  public FriendShipAnimDirector$4(aerp paramaerp) {}
+  public FriendShipAnimDirector$4(aewe paramaewe) {}
   
   public void run()
   {
-    if (aerp.a(this.this$0) != null) {
-      aerp.a(this.this$0).a(aerp.a(this.this$0) + "icon_close.png");
+    if (aewe.a(this.this$0) != null) {
+      aewe.a(this.this$0).a(aewe.a(this.this$0) + "icon_close.png");
     }
-    if ((aerp.a(this.this$0) == null) || (aerp.a(this.this$0).isAnimating())) {
+    if ((aewe.a(this.this$0) == null) || (aewe.a(this.this$0).isAnimating())) {
       return;
     }
     FriendShipLayout localFriendShipLayout = this.this$0.a();
@@ -29,26 +29,26 @@ public class FriendShipAnimDirector$4
         localFriendShipLayout.removeAllViews();
       }
       this.this$0.a(0);
-      aerp.a(this.this$0, new ImageView(this.this$0.a()));
-      aerp.a(this.this$0).setScaleType(ImageView.ScaleType.CENTER_CROP);
+      aewe.a(this.this$0, new ImageView(this.this$0.a()));
+      aewe.a(this.this$0).setScaleType(ImageView.ScaleType.CENTER_CROP);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
       localLayoutParams.gravity = 81;
       View localView = new View(this.this$0.a());
       localView.setBackgroundColor(-16777216);
       localFriendShipLayout.addView(localView, localLayoutParams);
-      localFriendShipLayout.addView(aerp.a(this.this$0), localLayoutParams);
-      aerp.a(this.this$0).setImageDrawable(aerp.a(this.this$0));
-      aerp.a(this.this$0).a(localView);
-      aerp.a(this.this$0).a(localFriendShipLayout);
+      localFriendShipLayout.addView(aewe.a(this.this$0), localLayoutParams);
+      aewe.a(this.this$0).setImageDrawable(aewe.a(this.this$0));
+      aewe.a(this.this$0).a(localView);
+      aewe.a(this.this$0).a(localFriendShipLayout);
     }
-    if (aerp.a(this.this$0).isAnimating()) {
-      aerp.a(this.this$0).cancelAnimation();
+    if (aewe.a(this.this$0).isAnimating()) {
+      aewe.a(this.this$0).cancelAnimation();
     }
-    if (aerp.a(this.this$0).a()) {
-      aerp.a(this.this$0).b();
+    if (aewe.a(this.this$0).a()) {
+      aewe.a(this.this$0).b();
     }
-    aerp.a(this.this$0).playAnimation();
-    aerp.a(this.this$0).a();
+    aewe.a(this.this$0).playAnimation();
+    aewe.a(this.this$0).a();
   }
 }
 

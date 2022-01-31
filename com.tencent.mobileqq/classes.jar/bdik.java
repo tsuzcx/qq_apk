@@ -1,14 +1,6 @@
-import android.os.Build.VERSION;
-
-public final class bdik
+class bdik
 {
-  public static int a()
-  {
-    if (Build.VERSION.SDK_INT > 10) {
-      return 4;
-    }
-    return 0;
-  }
+  private static final bdii a = new bdii(null);
 }
 
 

@@ -4,26 +4,26 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import apaz;
-import awbv;
-import awdg;
-import awdj;
+import apfi;
+import awge;
+import awhp;
+import awhs;
 
 public class PrecoverResource
-  extends awbv
+  extends awge
   implements Parcelable
 {
-  public static final Parcelable.Creator<PrecoverResource> CREATOR = new apaz();
-  @awdg
+  public static final Parcelable.Creator<PrecoverResource> CREATOR = new apfi();
+  @awhp
   public int arg1;
-  @awdg
+  @awhp
   public int arg2;
   public String businessId;
   public String md5;
-  @awdj
+  @awhs
   public String pk;
   public String resId;
-  @awdg
+  @awhp
   public String thirdPartDownloadPath;
   public String url;
   

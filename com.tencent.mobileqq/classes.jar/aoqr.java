@@ -1,56 +1,71 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aoqr
-  extends aopw<aoqq>
 {
-  public int a()
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  
+  public aoqr()
   {
-    return 465;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  @NonNull
-  public aoqq a()
+  public static aoqr a(aoko[] paramArrayOfaoko)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipExtendIconProcessor", 2, "migrateDefaultContent");
-    }
-    return new aoqq();
-  }
-  
-  @NonNull
-  public aoqq a(@NonNull aogf[] paramArrayOfaogf)
-  {
-    aoqq localaoqq = new aoqq();
+    localaoqr = new aoqr();
+    int i = 0;
     try
     {
-      localaoqq.a = new JSONObject(paramArrayOfaogf[0].a).optBoolean("showVipIcon", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QVipExtendIconProcessor", 2, "parsed showVipIcon: " + localaoqq.a);
+      while (i < paramArrayOfaoko.length)
+      {
+        JSONObject localJSONObject = new JSONObject(paramArrayOfaoko[i].jdField_a_of_type_JavaLangString);
+        if (localJSONObject.has("pubaccountSwitch"))
+        {
+          localaoqr.jdField_a_of_type_Int = localJSONObject.optInt("pubaccountSwitch");
+          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed swtich=" + localaoqr.jdField_a_of_type_Int);
+          }
+        }
+        if (localJSONObject.has("fullPopIntervalDay"))
+        {
+          localaoqr.jdField_b_of_type_Int = localJSONObject.optInt("fullPopIntervalDay");
+          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed fullPopIntervalDay=" + localaoqr.jdField_b_of_type_Int);
+          }
+        }
+        if (localJSONObject.has("isFeedByWeb"))
+        {
+          localaoqr.c = localJSONObject.optInt("isFeedByWeb");
+          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed isFeedByWeb=" + localaoqr.c);
+          }
+        }
+        if (localJSONObject.has("gamePubUrl"))
+        {
+          localaoqr.jdField_b_of_type_JavaLangString = localJSONObject.optString("gamePubUrl");
+          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed gamePubUlr=" + localaoqr.jdField_a_of_type_JavaLangString);
+          }
+        }
+        if (localJSONObject.has("feedUrl"))
+        {
+          localaoqr.jdField_a_of_type_JavaLangString = localJSONObject.optString("feedUrl");
+          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed feedUrl=" + localaoqr.jdField_a_of_type_JavaLangString);
+          }
+        }
+        i += 1;
       }
-      return localaoqq;
+      return localaoqr;
     }
-    catch (JSONException paramArrayOfaogf)
+    catch (Throwable paramArrayOfaoko)
     {
-      QLog.e("QVipExtendIconProcessor", 1, "parsed failed: ", paramArrayOfaogf);
+      com.tencent.TMG.utils.QLog.e("QQGameConfBean", 1, "QQGameConfBean parse error e=" + paramArrayOfaoko.toString());
     }
-    return localaoqq;
-  }
-  
-  public Class<aoqq> a()
-  {
-    return aoqq.class;
-  }
-  
-  @NonNull
-  public aoqq b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipExtendIconProcessor", 2, "migrateOldContent");
-    }
-    return new aoqq();
   }
 }
 

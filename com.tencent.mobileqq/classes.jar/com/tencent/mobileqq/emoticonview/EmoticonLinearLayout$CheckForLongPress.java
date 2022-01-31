@@ -2,8 +2,8 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.view.View;
 import android.view.ViewParent;
-import appt;
-import appw;
+import apuc;
+import apuf;
 
 class EmoticonLinearLayout$CheckForLongPress
   implements Runnable
@@ -19,29 +19,29 @@ class EmoticonLinearLayout$CheckForLongPress
   
   public void run()
   {
-    appw localappw;
+    apuf localapuf;
     if ((this.this$0.getParent() != null) && (this.a == EmoticonLinearLayout.a(this.this$0)) && (this.this$0.jdField_a_of_type_AndroidViewView != null))
     {
-      localappw = (appw)this.this$0.jdField_a_of_type_AndroidViewView.getTag();
-      if (localappw != null)
+      localapuf = (apuf)this.this$0.jdField_a_of_type_AndroidViewView.getTag();
+      if (localapuf != null)
       {
-        if ((this.this$0.jdField_a_of_type_Appt != null) && (this.this$0.jdField_a_of_type_Appt.a(localappw))) {
+        if ((this.this$0.jdField_a_of_type_Apuc != null) && (this.this$0.jdField_a_of_type_Apuc.a(localapuf))) {
           break label172;
         }
         this.this$0.jdField_a_of_type_Boolean = true;
         this.this$0.getParent().requestDisallowInterceptTouchEvent(true);
         this.this$0.sendAccessibilityEvent(2);
-        if (!"delete".equals(localappw.i)) {
+        if (!"delete".equals(localapuf.i)) {
           break label132;
         }
         this.this$0.jdField_a_of_type_JavaLangRunnable.run();
       }
     }
     label132:
-    while (("setting".equals(localappw.i)) || ("add".equals(localappw.i))) {
+    while (("setting".equals(localapuf.i)) || ("add".equals(localapuf.i))) {
       return;
     }
-    this.this$0.a(this.this$0.jdField_a_of_type_AndroidViewView, localappw);
+    this.this$0.a(this.this$0.jdField_a_of_type_AndroidViewView, localapuf);
     return;
     label172:
     this.this$0.jdField_a_of_type_AndroidViewView = null;

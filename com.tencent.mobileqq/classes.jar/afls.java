@@ -1,17 +1,26 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import android.content.Intent;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 class afls
-  extends afpq
+  extends ClickableSpan
 {
-  afls(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  afls(aflo paramaflo) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new asfg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (!bdin.d(this.a.a))
+    {
+      QQToast.a(this.a.a, alud.a(2131703619), 2000).a();
+      return;
+    }
+    paramView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140617UV3MZn.html?ADTAG=veda.mobileqq.en");
+    paramView.putExtra("hide_more_button", true);
+    this.a.a.startActivity(paramView);
   }
 }
 

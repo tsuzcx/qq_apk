@@ -2,7 +2,7 @@ package cooperation.comic.webbundle;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import azlj;
+import azps;
 import ndd;
 
 public final class WebBundleReportUtils$1
@@ -53,7 +53,7 @@ public final class WebBundleReportUtils$1
       localStringBuffer.append(this.jdField_d_of_type_JavaLangString).append('|');
       localStringBuffer.append(this.e).append('|');
       localStringBuffer.append(this.f);
-      azlj.a(null, "sendtdbank|b_sng_qqvip_sng_qq_comic|sng_mobileqq_times_statistics", localStringBuffer.toString(), true);
+      azps.a(null, "sendtdbank|b_sng_qqvip_sng_qq_comic|sng_mobileqq_times_statistics", localStringBuffer.toString(), true);
       return;
       str2 = Build.BRAND;
       break;

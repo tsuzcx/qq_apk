@@ -1,16 +1,19 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateEngine.TagItemInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.GetConfigListen;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
 
-public abstract interface bdpf
+public class bdpf
+  implements NormalConfigHandler.GetConfigListen<QAVFunCallConfig>
 {
-  public abstract boolean canUpdate(@Nullable QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2);
+  public bdpf(QAVFunCallHandler paramQAVFunCallHandler) {}
   
-  public abstract boolean deleteFiles(@Nullable QQAppInterface paramQQAppInterface, long paramLong, String paramString);
-  
-  public abstract VasQuickUpdateEngine.TagItemInfo getItemInfo(@Nullable QQAppInterface paramQQAppInterface, long paramLong, String paramString);
-  
-  public abstract boolean isFileExists(@Nullable QQAppInterface paramQQAppInterface, long paramLong, String paramString);
+  public void a(AppInterface paramAppInterface, QAVFunCallConfig paramQAVFunCallConfig)
+  {
+    this.a.setConfig(paramQAVFunCallConfig);
+    this.a.onGetConfig(paramAppInterface);
+    QAVFunCallHandler.access$000(this.a, "onGetConfig", paramAppInterface);
+  }
 }
 
 

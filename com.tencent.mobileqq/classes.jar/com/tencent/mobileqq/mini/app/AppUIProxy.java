@@ -11,9 +11,9 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.view.Window;
-import anxn;
-import anyc;
-import auag;
+import aobw;
+import aocl;
+import auep;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.colornote.data.ColorNote;
@@ -53,7 +53,7 @@ public class AppUIProxy
   protected boolean doNotMoveTaskToBackThisTime;
   private AppBrandFragment mAppBrandFragment;
   private AppLoadingUI mAppLoadingUI;
-  protected anxn mColorNoteController;
+  protected aobw mColorNoteController;
   private FragmentManager mFragmentManager;
   private Intent mIntent;
   public PostTable mPostTable;
@@ -158,7 +158,7 @@ public class AppUIProxy
     {
       paramBundle = sCacheAppBrandFragment;
       this.mAppBrandFragment = paramBundle;
-      paramBundle = (ViewGroup)paramBaseActivity.findViewById(2131369769);
+      paramBundle = (ViewGroup)paramBaseActivity.findViewById(2131369788);
       if (paramBundle != null)
       {
         this.mAppLoadingUI = new AppLoadingUI(paramBaseActivity);
@@ -167,7 +167,7 @@ public class AppUIProxy
       this.mIntent = paramBaseActivity.getIntent();
       this.mFragmentManager = paramBaseActivity.getFragmentManager();
       this.mAppBrandFragment.setArgumentBundle(this.mIntent.getExtras());
-      this.mFragmentManager.beginTransaction().replace(2131366788, this.mAppBrandFragment).commit();
+      this.mFragmentManager.beginTransaction().replace(2131366798, this.mAppBrandFragment).commit();
       this.mReceiver = new AppUIProxy.AppBrandCommonReceiver(this);
       paramBundle = new IntentFilter();
       paramBundle.addAction("com.tencent.mini.CreateShortcutSucceedReceiver");
@@ -186,11 +186,11 @@ public class AppUIProxy
     label365:
     for (EngineChannel localEngineChannel = (EngineChannel)this.mIntent.getParcelableExtra("engineChannel");; localEngineChannel = null)
     {
-      auag.a().a(localEngineChannel);
-      auag.a().a(paramBundle, null);
+      auep.a().a(localEngineChannel);
+      auep.a().a(paramBundle, null);
       MiniAppClientQIPCModule.registerModule();
       initOnIntentChanged();
-      this.mColorNoteController = new anxn(paramBaseActivity, false, true);
+      this.mColorNoteController = new aobw(paramBaseActivity, false, true);
       this.mColorNoteController.a(paramBaseActivity);
       this.mColorNoteController.a(this);
       this.mColorNoteController.a(new AppUIProxy.1(this, paramBaseActivity));
@@ -340,7 +340,7 @@ public class AppUIProxy
         MiniGdtReporter.report(localMiniAppConfig, 0);
       }
       if (!this.mAppBrandFragment.isAdded()) {
-        this.mFragmentManager.beginTransaction().replace(2131366788, this.mAppBrandFragment).commitAllowingStateLoss();
+        this.mFragmentManager.beginTransaction().replace(2131366798, this.mAppBrandFragment).commitAllowingStateLoss();
       }
       this.mIntent = null;
       this.mColorNoteController.a();
@@ -395,22 +395,22 @@ public class AppUIProxy
       QLog.d("miniapp-start_AppUIProxy", 2, "getColorNote, appId: " + localMiniAppConfig.config.appId + ", name: " + localMiniAppConfig.config.name);
     }
     byte[] arrayOfByte = MiniAppUtils.packMiniAppInfo(localMiniAppConfig.config);
-    return new anyc().a(16842752).a(localMiniAppConfig.config.appId).b(localMiniAppConfig.config.name).c(localMiniAppConfig.config.desc).d(localMiniAppConfig.config.iconUrl).a(arrayOfByte).a();
+    return new aocl().a(16842752).a(localMiniAppConfig.config.appId).b(localMiniAppConfig.config.name).c(localMiniAppConfig.config.desc).d(localMiniAppConfig.config.iconUrl).a(arrayOfByte).a();
   }
   
-  public anxn getColorNoteController()
+  public aobw getColorNoteController()
   {
     return this.mColorNoteController;
   }
   
   protected Fragment getCurrentFragment()
   {
-    return this.mFragmentManager.findFragmentById(2131366788);
+    return this.mFragmentManager.findFragmentById(2131366798);
   }
   
   protected int getLayoutResourceId()
   {
-    return 2131559311;
+    return 2131559310;
   }
   
   public boolean isWrapContent(BaseActivity paramBaseActivity)

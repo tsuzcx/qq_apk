@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.forward;
 
-import arzk;
-import arzy;
-import bdcd;
-import bdfq;
+import asdt;
+import aseh;
+import bdgm;
+import bdjz;
 
 public class ForwardShareByServerHelper$5
   implements Runnable
 {
-  public ForwardShareByServerHelper$5(arzk paramarzk, String paramString) {}
+  public ForwardShareByServerHelper$5(asdt paramasdt, String paramString) {}
   
   public void run()
   {
-    arzy.a("KEY_STAGE_2_TOTAL", false);
-    if (arzk.a(this.this$0) == null) {
-      arzk.a(this.this$0, bdcd.a(arzk.a(this.this$0), 230));
+    aseh.a("KEY_STAGE_2_TOTAL", false);
+    if (asdt.a(this.this$0) == null) {
+      asdt.a(this.this$0, bdgm.a(asdt.a(this.this$0), 230));
     }
-    arzk.a(this.this$0).setMessage(this.a);
-    arzk.a(this.this$0).setPositiveButton(2131694951, this.this$0.a);
-    arzk.a(this.this$0).show();
+    asdt.a(this.this$0).setMessage(this.a);
+    asdt.a(this.this$0).setPositiveButton(2131694953, this.this$0.a);
+    asdt.a(this.this$0).show();
   }
 }
 

@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
-
-class aezd
-  implements DialogInterface.OnClickListener
+public abstract interface aezd
 {
-  aezd(aezb paramaezb, ChatMessage paramChatMessage) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Aezb.d(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    paramDialogInterface.dismiss();
-  }
+  public abstract void h();
 }
 
 

@@ -1,15 +1,25 @@
-import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler.1;
 
-class akfz
-  implements axxi
+public class akfz
+  extends Handler
 {
-  akfz(akfy paramakfy) {}
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public akfz(VipSpecialCareHandler.1 param1, Looper paramLooper)
   {
-    if ((paramInt2 == 200) && (paramBitmap != null)) {
-      this.a.notifyDataSetChanged();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
+    akfy.a(this.a.this$0, "-->request timeout");
+    akfy.a(this.a.this$0, -2);
   }
 }
 

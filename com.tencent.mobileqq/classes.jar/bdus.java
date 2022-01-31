@@ -1,11 +1,20 @@
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUiPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class bdus
-  extends VasWebviewUiPlugin
 {
-  public long getPluginBusiness()
+  public static void a(String paramString, int paramInt)
   {
-    return 1048576L;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("authResult", String.valueOf(paramInt));
+    azri.a(BaseApplication.getContext()).a("", paramString, false, 0L, -1L, localHashMap, "", true);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errCode", paramString2);
+    azri.a(BaseApplication.getContext()).a("", paramString1, false, 0L, -1L, localHashMap, "", true);
   }
 }
 

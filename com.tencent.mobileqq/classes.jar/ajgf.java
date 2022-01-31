@@ -1,20 +1,23 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-final class ajgf
-  implements Animation.AnimationListener
+class ajgf
+  implements View.OnClickListener
 {
-  ajgf(View paramView, Animation paramAnimation) {}
+  ajgf(ajgb paramajgb) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    paramView = akyn.a();
+    if (paramView != null)
+    {
+      paramView.a(ajgb.a(this.a));
+      paramView.a();
+      akyn.i();
+    }
+    azqs.a(ajgb.a(this.a).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 10, 0, "", "", "", "");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -14,7 +14,7 @@ import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.smtt.sdk.WebView;
 
 public class nph
-  extends aaqp
+  extends aave
 {
   public nph(ReadInJoyNativeAdAppContentView paramReadInJoyNativeAdAppContentView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
@@ -48,7 +48,7 @@ public class nph
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    aanp.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
+    aase.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
     if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
     Object localObject;
     do
@@ -74,7 +74,7 @@ public class nph
     }
     catch (ActivityNotFoundException paramWebView)
     {
-      aanp.d("AbsWebView", paramWebView.toString());
+      aase.d("AbsWebView", paramWebView.toString());
     }
     return true;
   }

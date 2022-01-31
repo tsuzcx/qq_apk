@@ -1,32 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.IInterface;
 
-public final class awis
-  implements bapw
+public abstract interface awis
+  extends IInterface
 {
-  public void a(baqv parambaqv, baqw parambaqw)
-  {
-    if ((parambaqv == null) || (parambaqw == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(parambaqv instanceof baps));
-      parambaqv = (baps)parambaqv;
-      parambaqv.jdField_a_of_type_Long += parambaqw.c;
-      parambaqw.c = 0L;
-      parambaqw = "bytes=" + parambaqv.jdField_a_of_type_Long + "-";
-      parambaqv.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
-      parambaqw = parambaqv.jdField_a_of_type_JavaLangString;
-      if (parambaqw.contains("range="))
-      {
-        String str = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
-        parambaqv.jdField_a_of_type_JavaLangString = (str + "range=" + parambaqv.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("PortalManager", 2, "IBreakDownFix, " + parambaqw);
-  }
+  public abstract int a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2);
+  
+  public abstract int[] a();
+  
+  public abstract boolean[] a();
 }
 
 

@@ -1,12 +1,9 @@
-public class vlo
-  extends vld
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
+public abstract interface vlo
 {
-  public wkh a;
-  
-  public vlo(String paramString)
-  {
-    super(paramString);
-  }
+  public abstract boolean a(@NonNull StoryVideoItem paramStoryVideoItem);
 }
 
 

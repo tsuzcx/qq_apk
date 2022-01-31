@@ -1,70 +1,23 @@
-import android.os.Bundle;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
-
 public class auhl
-  extends AccessibilityDelegateCompat
 {
-  public auhl(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
   
-  private boolean a()
+  public auhl()
   {
-    return (this.a.a != null) && (this.a.a.getCount() > 1);
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+  public String toString()
   {
-    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
-    paramAccessibilityEvent.setClassName(MultiAIOBaseViewPager.class.getName());
-    paramAccessibilityEvent.setScrollable(a());
-    if ((paramAccessibilityEvent.getEventType() == 4096) && (this.a.a != null))
-    {
-      paramAccessibilityEvent.setItemCount(this.a.a.getCount());
-      paramAccessibilityEvent.setFromIndex(this.a.b);
-      paramAccessibilityEvent.setToIndex(this.a.b);
-    }
-  }
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setClassName(MultiAIOBaseViewPager.class.getName());
-    paramAccessibilityNodeInfoCompat.setScrollable(a());
-    if (this.a.canScrollHorizontally(1)) {
-      paramAccessibilityNodeInfoCompat.addAction(4096);
-    }
-    if (this.a.canScrollHorizontally(-1)) {
-      paramAccessibilityNodeInfoCompat.addAction(8192);
-    }
-  }
-  
-  public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
-  {
-    if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
-      return true;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 4096: 
-      if (this.a.canScrollHorizontally(1))
-      {
-        this.a.setCurrentItem(this.a.b + 1);
-        return true;
-      }
-      return false;
-    }
-    if (this.a.canScrollHorizontally(-1))
-    {
-      this.a.setCurrentItem(this.a.b - 1);
-      return true;
-    }
-    return false;
+    return "MsgBackupSessionTask[msg = " + this.jdField_a_of_type_JavaLangString + ", cmd = " + this.jdField_a_of_type_Int + ", isFileTask = " + this.jdField_a_of_type_Boolean + ", sessionId = " + this.jdField_a_of_type_Long + ", path = " + this.jdField_b_of_type_JavaLangString + ", url = " + this.c + ", retryTimes = " + this.jdField_a_of_type_Short + "]";
   }
 }
 

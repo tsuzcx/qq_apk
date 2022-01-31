@@ -1,36 +1,19 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.widget.ListView;
 
-public final class bhzf
+public abstract interface bhzf
 {
-  private final bhzg a;
+  public abstract void a(int paramInt, View paramView, ListView paramListView);
   
-  public bhzf(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
-  {
-    this(paramContext, paramOnGestureListener, null);
-  }
+  public abstract boolean a(int paramInt, View paramView, ListView paramListView);
   
-  public bhzf(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
-  {
-    if (Build.VERSION.SDK_INT > 17)
-    {
-      this.a = new bhzj(paramContext, paramOnGestureListener, paramHandler);
-      return;
-    }
-    this.a = new bhzh(paramContext, paramOnGestureListener, paramHandler);
-  }
+  public abstract void b(int paramInt, View paramView, ListView paramListView);
   
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return this.a.a(paramMotionEvent);
-  }
+  public abstract void c(int paramInt, View paramView, ListView paramListView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhzf
  * JD-Core Version:    0.7.0.1
  */

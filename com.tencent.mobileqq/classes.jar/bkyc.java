@@ -1,221 +1,173 @@
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
-import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
-import dov.com.qq.im.ae.gif.giftext.DrawableImageView;
-import java.io.File;
-import java.lang.ref.SoftReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import dov.com.qq.im.ae.view.AEDownLoadingView;
 
 public class bkyc
-  extends RecyclerView.Adapter<bkyi>
+  extends RecyclerView.ViewHolder
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private bkyh jdField_a_of_type_Bkyh;
-  private blad jdField_a_of_type_Blad;
-  private blzb jdField_a_of_type_Blzb;
-  private HashMap<String, SoftReference<bkzy>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<bkxt> jdField_a_of_type_JavaUtilList;
-  private Set<Integer> jdField_a_of_type_JavaUtilSet;
+  public ImageView a;
+  public RelativeLayout a;
+  public URLImageView a;
+  public AEDownLoadingView a;
+  public ImageView b;
+  public ImageView c;
   
-  public bkyc(Context paramContext, List<bkxt> paramList)
+  public bkyc(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_Int = ((int)(DeviceUtils.getScreenWidth(paramContext) * 0.44F) + 1);
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0))
-    {
-      ((bkxt)this.jdField_a_of_type_JavaUtilList.get(0)).a(true);
-      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(0));
-    }
+    super(paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377819));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376348));
+    this.b = ((ImageView)paramView.findViewById(2131365448));
+    this.c = ((ImageView)paramView.findViewById(2131378214));
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView = ((AEDownLoadingView)paramView.findViewById(2131372367));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131380135));
   }
   
-  private void a(ImageView paramImageView, String paramString, int paramInt)
+  private static int a(boolean paramBoolean)
   {
-    Object localObject1 = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (localObject1 != null) {}
-    for (localObject1 = (bkzy)((SoftReference)localObject1).get();; localObject1 = null)
-    {
-      if (localObject1 == null)
-      {
-        localObject1 = new ArrayList();
-        if (!TextUtils.isEmpty(paramString))
-        {
-          Object localObject2 = new File(paramString);
-          if (((File)localObject2).exists())
-          {
-            localObject2 = ((File)localObject2).listFiles();
-            if (localObject2.length > 0)
-            {
-              int i = 0;
-              while (i < localObject2.length)
-              {
-                String str = String.format(paramString + "/frame_%03d.png", new Object[] { Integer.valueOf(i) });
-                if (new File(str).exists()) {
-                  ((ArrayList)localObject1).add(str);
-                }
-                i += 1;
-              }
-            }
-          }
-        }
-        localObject1 = new bkzy(this.jdField_a_of_type_AndroidContentContext, (ArrayList)localObject1, 55L);
-        ((bkzy)localObject1).a(false);
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject1));
-      }
-      for (paramString = (String)localObject1;; paramString = (String)localObject1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("zswp20pro", 2, "playAnimationDrawable, position = " + paramInt);
-        }
-        if ((paramImageView.getDrawable() != null) && (paramImageView.getDrawable() != paramString) && ((paramImageView.getDrawable() instanceof bkzy)))
-        {
-          ((bkzy)paramImageView.getDrawable()).stop();
-          paramImageView.setImageDrawable(null);
-        }
-        paramImageView.setImageDrawable(paramString);
-        paramString.start();
-        return;
-      }
+    if (paramBoolean) {
+      return 0;
     }
+    return 8;
   }
   
-  private void a(AEGIFOutlineTextView paramAEGIFOutlineTextView)
+  private void a(blab paramblab)
   {
-    if (this.jdField_a_of_type_Blad != null)
-    {
-      this.jdField_a_of_type_Blad.a().a(this.jdField_a_of_type_Blzb, new bkye(this, paramAEGIFOutlineTextView));
-      this.jdField_a_of_type_Blad.b().a(this.jdField_a_of_type_Blzb, new bkyf(this, paramAEGIFOutlineTextView));
-    }
-    paramAEGIFOutlineTextView.setOnClickListener(new bkyg(this));
-    paramAEGIFOutlineTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.b.setVisibility(8);
+    this.c.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
   }
   
-  private void a(boolean paramBoolean)
+  private void b(blab paramblab)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    c(paramblab);
+    e(paramblab);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(a(paramblab.a));
+  }
+  
+  private void c(blab paramblab)
+  {
+    if (paramblab.a())
     {
-      this.jdField_a_of_type_AndroidViewView.setEnabled(paramBoolean);
-      if (paramBoolean) {
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(alpo.a(2131700334));
-      }
-    }
-    else
-    {
+      this.b.setVisibility(8);
+      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
       return;
     }
-    ((TextView)this.jdField_a_of_type_AndroidViewView).setText(alpo.a(2131700344));
-  }
-  
-  public bkyi a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new bkyi(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558544, paramViewGroup, false));
-  }
-  
-  public Set<Integer> a()
-  {
-    return this.jdField_a_of_type_JavaUtilSet;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(bkyh parambkyh)
-  {
-    this.jdField_a_of_type_Bkyh = parambkyh;
-  }
-  
-  public void a(bkyi parambkyi)
-  {
-    super.onViewRecycled(parambkyi);
-    if ((bkyi.a(parambkyi) != null) && (bkyi.a(parambkyi).getDrawable() != null) && ((bkyi.a(parambkyi).getDrawable() instanceof bkzy)))
+    if (paramblab.d)
     {
-      ((bkzy)bkyi.a(parambkyi).getDrawable()).stop();
-      bkyi.a(parambkyi).setImageDrawable(null);
+      this.b.setVisibility(8);
+      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
+      return;
     }
+    if (paramblab.jdField_e_of_type_Boolean)
+    {
+      this.b.setVisibility(8);
+      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(0);
+      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgress(paramblab.jdField_e_of_type_Int);
+      return;
+    }
+    this.b.setVisibility(0);
+    this.b.setImageResource(2130844188);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
   }
   
-  public void a(bkyi parambkyi, int paramInt)
+  private void d(blab paramblab)
   {
-    bkxt localbkxt = (bkxt)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837718);
-    localObject = bdpt.a("https://qd.myapp.com/myapp/qqteam/QIM/ae_gif_loading.png", new int[] { 0 }, (Drawable)localObject);
-    bkyi.a(parambkyi).setImageDrawable((Drawable)localObject);
-    bkyi.a(parambkyi).setVisibility(4);
-    parambkyi.a(localbkxt.a());
-    switch (localbkxt.jdField_a_of_type_Int)
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844254);
+    c(paramblab);
+    e(paramblab);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(a(paramblab.a));
+  }
+  
+  private void e(blab paramblab)
+  {
+    if (paramblab.a())
+    {
+      this.c.setVisibility(0);
+      this.c.setImageResource(2130845541);
+      return;
+    }
+    if (paramblab.b())
+    {
+      this.c.setVisibility(0);
+      this.c.setImageResource(paramblab.a());
+      return;
+    }
+    this.c.setVisibility(8);
+  }
+  
+  private void f(blab paramblab)
+  {
+    switch (this.jdField_a_of_type_Int)
     {
     default: 
-    case 10: 
-    case 11: 
-    case 12: 
-      for (;;)
-      {
-        localObject = parambkyi.itemView.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).width = -1;
-        ((ViewGroup.LayoutParams)localObject).height = this.jdField_a_of_type_Int;
-        parambkyi.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        parambkyi.itemView.setOnClickListener(new bkyd(this, localbkxt, paramInt, parambkyi));
-        return;
-        bkyi.b(parambkyi).setVisibility(4);
-        bkyi.a(parambkyi).setVisibility(0);
-      }
+      a(paramblab);
+      return;
+    case 0: 
+      a(paramblab);
+      return;
+    case 1: 
+      b(paramblab);
+      g(paramblab);
+      return;
     }
-    bkyi.a(parambkyi).setVisibility(8);
-    if (paramInt == 0)
-    {
-      a(bkyi.a(parambkyi));
-      bkyi.a(parambkyi).setVisibility(0);
-    }
-    bkyi.b(parambkyi).setVisibility(0);
-    if (this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt)))
-    {
-      parambkyi.a(true);
-      a(true);
-    }
-    for (;;)
-    {
-      localObject = localbkxt.c;
-      a(bkyi.a(parambkyi), (String)localObject, paramInt);
-      break;
-      parambkyi.a(false);
-    }
+    d(paramblab);
+    g(paramblab);
   }
   
-  public void a(blad paramblad, blzb paramblzb)
+  private void g(blab paramblab)
   {
-    this.jdField_a_of_type_Blad = paramblad;
-    this.jdField_a_of_type_Blzb = paramblzb;
+    if (TextUtils.isEmpty(paramblab.c)) {
+      return;
+    }
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    int i = aepi.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844187);
+    localURLDrawableOptions.mRequestWidth = i;
+    localURLDrawableOptions.mRequestHeight = i;
+    localURLDrawableOptions.mFailedDrawable = localDrawable;
+    localURLDrawableOptions.mLoadingDrawable = localDrawable;
+    localURLDrawableOptions.mRetryCount = 3;
+    paramblab = URLDrawable.getDrawable(paramblab.c, localURLDrawableOptions);
+    if (paramblab.getStatus() == 2) {
+      paramblab.restartDownload();
+    }
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramblab);
   }
   
-  public int getItemCount()
+  public void a(int paramInt, blab paramblab)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    this.jdField_a_of_type_Int = paramInt;
+    f(paramblab);
   }
   
-  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  public void a(Context paramContext)
   {
-    super.onAttachedToRecyclerView(paramRecyclerView);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    int i = aepi.a(6.0F, paramContext.getResources());
+    int j = aepi.a(2.0F, paramContext.getResources());
+    int k = aepi.a(16.0F, paramContext.getResources());
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setBgCorner(k / 2);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setMinimumHeight(k);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setMinimumWidth(k);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgressSizeAndMode(i, j, false);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setBgColor(-1);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgressColor(-16725252);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.a(false);
   }
 }
 

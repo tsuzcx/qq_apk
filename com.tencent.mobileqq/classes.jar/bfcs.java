@@ -1,15 +1,16 @@
-import android.text.Editable;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityControlFragment;
+import java.util.List;
 
-class bfcs
-  implements Comparator<Friend>
+public class bfcs
+  implements DialogInterface.OnClickListener
 {
-  bfcs(bfcr parambfcr, Editable paramEditable) {}
+  public bfcs(AuthorityControlFragment paramAuthorityControlFragment, List paramList) {}
   
-  public int a(Friend paramFriend1, Friend paramFriend2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1);
+    AuthorityControlFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlFragment).a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

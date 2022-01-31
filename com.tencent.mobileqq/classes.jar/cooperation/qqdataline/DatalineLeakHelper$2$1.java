@@ -1,8 +1,8 @@
 package cooperation.qqdataline;
 
-import abqn;
-import biqb;
-import biqc;
+import abvc;
+import biui;
+import biuj;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 import com.tencent.mfsdk.reporter.ReporterMachine;
@@ -12,20 +12,20 @@ import org.json.JSONObject;
 public class DatalineLeakHelper$2$1
   implements Runnable
 {
-  public DatalineLeakHelper$2$1(biqc parambiqc) {}
+  public DatalineLeakHelper$2$1(biuj parambiuj) {}
   
   public void run()
   {
-    Object localObject1 = abqn.a("mobile_dataline_leak");
+    Object localObject1 = abvc.a("mobile_dataline_leak");
     Object localObject2;
     if (((Boolean)localObject1[0]).booleanValue())
     {
       localObject2 = (String)localObject1[1];
-      biqb.a((String)localObject2);
+      biui.a((String)localObject2);
     }
     try
     {
-      if (!"0".equals("6b98d0b0"))
+      if (!"0".equals("fd2cc8f9"))
       {
         localObject1 = new JSONObject();
         JSONObject localJSONObject = new JSONObject();

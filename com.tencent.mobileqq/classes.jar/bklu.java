@@ -1,10 +1,39 @@
-public abstract interface bklu
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import org.apache.http.entity.ByteArrayEntity;
+
+public class bklu
+  extends ByteArrayEntity
 {
-  public abstract void a(float paramFloat);
+  protected final int a;
+  protected final int b;
   
-  public abstract void a(int paramInt);
+  public bklu(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    super(paramArrayOfByte);
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
   
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public InputStream getContent()
+  {
+    return new ByteArrayInputStream(this.content, this.a, this.b);
+  }
+  
+  public long getContentLength()
+  {
+    return this.b;
+  }
+  
+  public void writeTo(OutputStream paramOutputStream)
+  {
+    if (paramOutputStream == null) {
+      throw new IllegalArgumentException("Output stream may not be null");
+    }
+    paramOutputStream.write(this.content, this.a, this.b);
+    paramOutputStream.flush();
+  }
 }
 
 

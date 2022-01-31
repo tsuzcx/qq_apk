@@ -1,22 +1,18 @@
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.video.QzoneLiveVideoInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.share.QZoneShareActivity;
+import cooperation.qzone.share.QZoneShareActivity.4.2;
 
-public final class bjrt
-  implements bjlm
+public class bjrt
+  implements DialogInterface.OnClickListener
 {
-  public bjrt(String paramString) {}
+  public bjrt(QZoneShareActivity.4.2 param2) {}
   
-  public void onQzonePluginClientReady(bjjt parambjjt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (parambjjt == null) {
-      bjlk.a(QzoneLiveVideoInterface.getContext(), this);
-    }
-    do
-    {
-      return;
-      parambjjt = parambjjt.a(this.a);
-    } while (parambjjt == null);
-    QzoneLiveVideoInterface.access$002(parambjjt.ver);
+    QLog.e("QZoneShare", 1, "dialog click ");
+    this.a.a.a.finish();
   }
 }
 

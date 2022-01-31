@@ -1,21 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import tencent.im.oidb.oidb_0x8e7.oidb_0x8e7.WarnMsg;
 
 public class auvy
-  implements View.OnClickListener
 {
-  public auvy(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public int a;
+  public String a;
+  public oidb_0x8e7.WarnMsg a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
-      this.a.e("0X800590A");
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[level=").append(this.jdField_a_of_type_Int).append(",stockPerLike=").append(this.jdField_b_of_type_Int).append(",freeLikePeopleLimit=").append(this.c).append(",freeLikeOneLimit=").append(this.d).append(",stockCount=").append(this.e).append(",freeLikePeopleCount=").append(this.f).append(",buyStockUrl=").append(this.jdField_a_of_type_JavaLangString).append(",updateLevelUrl=").append(this.jdField_b_of_type_JavaLangString).append("]");
+    return localStringBuilder.toString();
   }
 }
 

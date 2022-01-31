@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.transfile;
 
-import bank;
-import banm;
+import bart;
+import barv;
 
 public class C2CPttUploadProcessor$2$2
   implements Runnable
 {
-  public C2CPttUploadProcessor$2$2(banm parambanm, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public C2CPttUploadProcessor$2$2(barv parambarv, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Banm.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
+    this.jdField_a_of_type_Barv.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
   }
 }
 

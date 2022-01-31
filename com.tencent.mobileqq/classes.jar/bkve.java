@@ -1,66 +1,31 @@
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.view.OrientationListener;
-import com.tencent.ttpic.baseutils.log.LogUtils;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-public abstract class bkve
+class bkve
+  implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private Sensor jdField_a_of_type_AndroidHardwareSensor;
-  private SensorEventListener jdField_a_of_type_AndroidHardwareSensorEventListener;
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private OrientationListener jdField_a_of_type_AndroidViewOrientationListener;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  bkve(bkuy parambkuy) {}
   
-  public bkve(Context paramContext)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this(paramContext, 3);
-  }
-  
-  public bkve(Context paramContext, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramContext.getSystemService("sensor"));
-    this.b = paramInt;
-    this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(1);
-    if (this.jdField_a_of_type_AndroidHardwareSensor != null) {
-      this.jdField_a_of_type_AndroidHardwareSensorEventListener = new bkvf(this);
+    if ((bkuy.a(this.a) != null) && (!bkuy.a(this.a)))
+    {
+      bkuy.a(this.a).setAlpha(1.0F);
+      bkuy.a(this.a).setVisibility(4);
+    }
+    if (bkuy.e(this.a) != null)
+    {
+      bkuy.f(this.a).a(327684, new Object[0]);
+      bkuy.g(this.a).a(196612, new Object[0]);
     }
   }
   
-  public void a()
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_AndroidHardwareSensor == null) {
-      LogUtils.w("MOEL", "Cannot detect sensors. Not enabled");
-    }
-    while (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener, this.jdField_a_of_type_AndroidHardwareSensor, this.b);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
-  
-  public abstract void a(int paramInt);
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_AndroidHardwareSensor != null;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidHardwareSensor == null) {
-      LogUtils.w("MOEL", "Cannot detect sensors. Invalid disable");
-    }
-    while (this.jdField_a_of_type_Boolean != true) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener);
-    this.jdField_a_of_type_Boolean = false;
+    bkuy.a(this.a).a().a(true, 150);
   }
 }
 

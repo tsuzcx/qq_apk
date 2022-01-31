@@ -40,7 +40,7 @@ public class tjj
   
   public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
   {
-    boolean bool3 = xoo.a(paramContext);
+    boolean bool3 = xsx.a(paramContext);
     tlo.d("WSPushLog", "WSWeSeeClientBiz strategyInfo.scheme = " + paramWSPushStrategyInfo.mScheme + ", isInstallWeishi = " + bool3);
     boolean bool1 = false;
     if (this.jdField_a_of_type_Int == 2)

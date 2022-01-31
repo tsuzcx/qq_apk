@@ -1,35 +1,7 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import cooperation.qzone.contentbox.FootNavigationLayout;
-import cooperation.qzone.report.lp.LpReportInfo_dc02880;
-import cooperation.qzone.report.lp.LpReportManager;
-
-public class bjee
-  implements View.OnClickListener
+public final class bjee
 {
-  public bjee(FootNavigationLayout paramFootNavigationLayout, bjew parambjew, int paramInt) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = bdds.a(((BaseActivity)this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext()).app, this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext(), this.jdField_a_of_type_Bjew.b);
-    if (paramView != null) {
-      paramView.c();
-    }
-    for (;;)
-    {
-      paramView = new LpReportInfo_dc02880(7, FootNavigationLayout.a()[this.jdField_a_of_type_Int]);
-      LpReportManager.getInstance().reportToDC02880(paramView, false, true);
-      return;
-      paramView = new Intent(this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext(), QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_Bjew.b);
-      bizm.c(paramView);
-      this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext().startActivity(paramView);
-    }
-  }
+  public boolean a;
+  public boolean b;
 }
 
 

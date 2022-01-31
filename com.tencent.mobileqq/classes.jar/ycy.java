@@ -1,15 +1,7 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class ycy
-  implements View.OnClickListener
+public abstract interface ycy
+  extends ybw
 {
-  ycy(ycx paramycx, int paramInt) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Ycx.a.a(this.jdField_a_of_type_Int, ycx.a(this.jdField_a_of_type_Ycx));
-  }
+  public abstract void a();
 }
 
 

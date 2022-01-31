@@ -1,12 +1,10 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.ArrayList;
-
-public class axkb
+public abstract interface axkb
 {
-  public int a;
-  public ayyn a;
-  public PtvTemplateManager.PtvTemplateInfo a;
-  public ArrayList<axka> a = new ArrayList();
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

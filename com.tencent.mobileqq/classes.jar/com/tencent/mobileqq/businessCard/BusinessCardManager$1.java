@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.businessCard;
 
-import anuj;
+import anys;
 import com.tencent.mobileqq.businessCard.data.BusinessCard;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class BusinessCardManager$1
   implements Runnable
 {
-  public BusinessCardManager$1(anuj paramanuj) {}
+  public BusinessCardManager$1(anys paramanys) {}
   
   public void run()
   {

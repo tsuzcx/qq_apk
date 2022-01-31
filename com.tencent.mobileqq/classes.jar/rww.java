@@ -1,11 +1,11 @@
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
 public class rww
-  implements bhvu
+  implements biab
 {
   public rww(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void a(bhvt parambhvt) {}
+  public void a(biaa parambiaa) {}
 }
 
 

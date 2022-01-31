@@ -1,20 +1,17 @@
-import java.util.HashMap;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
 
-public abstract class blhb
+public class blhb
+  implements blin
 {
-  public boolean a;
+  public blhb(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
   
-  public abstract float a();
-  
-  public abstract String a();
-  
-  public abstract HashMap<String, String> a();
-  
-  public abstract float b();
-  
-  public abstract String b();
-  
-  public abstract float c();
+  public void a(int paramInt)
+  {
+    AEVideoShelfEditFragment.c(this.a, AEVideoShelfEditFragment.c(this.a));
+    AEVideoShelfEditFragment.c(this.a, paramInt);
+    AEVideoShelfEditFragment.a(this.a, paramInt);
+    AEVideoShelfEditFragment.d(this.a, paramInt);
+  }
 }
 
 

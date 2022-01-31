@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity.selectmember;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import bdal;
-import bdbt;
+import bdeu;
+import bdgc;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.mobileqq.utils.ChnToSpell;
 import com.tencent.qphone.base.util.QLog;
@@ -39,7 +39,7 @@ class TroopAddFrdsInnerFrame$4
           label127:
           return;
         }
-        if (((!this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.p) && (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase(localTroopMemberInfo.memberuin))) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d.contains(localTroopMemberInfo.memberuin)) || (!bdal.d(localTroopMemberInfo.memberuin))) {
+        if (((!this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.p) && (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase(localTroopMemberInfo.memberuin))) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d.contains(localTroopMemberInfo.memberuin)) || (!bdeu.d(localTroopMemberInfo.memberuin))) {
           continue;
         }
       }
@@ -56,7 +56,7 @@ class TroopAddFrdsInnerFrame$4
             localObject1 = null;
             if (this.this$0.f == TroopAddFrdsInnerFrame.d)
             {
-              localTroopMemberInfo.displayedNamePinyinFirst = ChnToSpell.a(bdbt.h(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localTroopMemberInfo.troopuin, localTroopMemberInfo.memberuin), 2);
+              localTroopMemberInfo.displayedNamePinyinFirst = ChnToSpell.a(bdgc.h(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localTroopMemberInfo.troopuin, localTroopMemberInfo.memberuin), 2);
               if ((localTroopMemberInfo.displayedNamePinyinFirst == null) || (localTroopMemberInfo.displayedNamePinyinFirst.length() == 0))
               {
                 localObject1 = "#";

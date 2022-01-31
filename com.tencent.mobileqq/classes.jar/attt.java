@@ -1,28 +1,19 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.Point;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import java.util.List;
 
-public class attt
+public abstract interface attt
 {
-  public int a;
-  public String a;
-  public List<attw> a = new ArrayList();
-  public int b = -1;
-  public String b;
-  public String c;
+  public abstract void a(LocationRoom.Venue paramVenue);
   
-  public int a(int paramInt)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      attw localattw = (attw)localIterator.next();
-      if ((localattw.a <= paramInt) && (localattw.b > paramInt)) {
-        return localattw.c;
-      }
-    }
-    return 0;
-  }
+  public abstract void a(LatLng paramLatLng);
+  
+  public abstract void a(LatLng paramLatLng, float paramFloat, List<String> paramList);
+  
+  public abstract void a(boolean paramBoolean, Point paramPoint);
+  
+  public abstract void a(boolean paramBoolean, attu paramattu);
 }
 
 

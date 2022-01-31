@@ -1,15 +1,15 @@
 package com.tencent.ctsz;
 
-import zey;
+import zjn;
 
 public class m$1
   extends Thread
 {
-  public m$1(zey paramzey) {}
+  public m$1(zjn paramzjn) {}
   
   public void run()
   {
-    zey.a(this.this$0);
+    zjn.a(this.this$0);
   }
 }
 

@@ -1,23 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-
-class bbcc
-  extends BroadcastReceiver
+public class bbcc
+  extends bbbz
 {
-  bbcc(bbcb parambbcb) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b = 0;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bbcc()
   {
-    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("CommentSendSuccess".equals(paramIntent.getStringExtra("event"))))
-    {
-      this.a.a = true;
-      this.a.dismiss();
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicCommentPopupWindow", 2, "web call finish----------------");
-      }
-    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" isExist:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" fileId:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" startOffset:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" videoAttr:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" videoKandianType:").append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

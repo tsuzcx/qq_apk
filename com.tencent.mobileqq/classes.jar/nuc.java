@@ -20,7 +20,7 @@ public class nuc
     {
       int i = paramFromServiceMsg.getWupBuffer().length - 4;
       arrayOfByte = new byte[i];
-      bdlr.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      bdqa.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
     for (;;)
     {
@@ -48,8 +48,8 @@ public class nuc
         break label135;
       }
       paramIntent = new byte[arrayOfByte.length + 4];
-      bdlr.a(paramIntent, 0, arrayOfByte.length + 4);
-      bdlr.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      bdqa.a(paramIntent, 0, arrayOfByte.length + 4);
+      bdqa.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
       paramPacket.putSendData(paramIntent);
     }
     for (;;)
@@ -60,7 +60,7 @@ public class nuc
       return;
       label135:
       paramIntent = new byte[4];
-      bdlr.a(paramIntent, 0, 4L);
+      bdqa.a(paramIntent, 0, 4L);
       paramPacket.putSendData(paramIntent);
     }
   }

@@ -1,29 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
-
-public class ayfx
-  implements View.OnTouchListener
+public abstract interface ayfx
 {
-  public ayfx(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    paramView = this.a.getActivity();
-    if ((paramView instanceof ActiveEntitySearchActivity)) {
-      ((ActiveEntitySearchActivity)paramView).c();
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramView instanceof UniteSearchActivity)) {
-        ((UniteSearchActivity)paramView).b();
-      }
-    }
-  }
+  public abstract void a();
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import alpo;
+import alud;
 import android.widget.Toast;
 
 class GameActivity$9
@@ -15,7 +15,7 @@ class GameActivity$9
       GameActivity.access$1400(this.this$0);
       return;
     }
-    Toast.makeText(this.this$0, alpo.a(2131705386) + this.val$retCode + ")", 0).show();
+    Toast.makeText(this.this$0, alud.a(2131705398) + this.val$retCode + ")", 0).show();
   }
 }
 

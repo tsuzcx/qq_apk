@@ -1,27 +1,46 @@
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class aitq
-  implements View.OnFocusChangeListener
+class aitq
+  implements View.OnClickListener
 {
-  public aitq(LingHbFragment paramLingHbFragment) {}
+  aitq(aitp paramaitp) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      LingHbFragment.a(this.a).a(this.a.c.getText().toString(), false);
+    paramView = new Intent();
+    int i = ((NewPhotoPreviewActivity)this.a.mActivity).getCurrentSelectedPostion();
+    if ((aitp.a(this.a).selectedPhotoList == null) || (aitp.b(this.a).selectedPhotoList.size() == 0)) {
+      if ((aitp.a(this.a).paths != null) && (i != -1))
+      {
+        ArrayList localArrayList = new ArrayList();
+        String str = (String)aitp.b(this.a).paths.get(i);
+        if (TextUtils.isEmpty(str)) {
+          break label172;
+        }
+        localArrayList.add(str);
+        paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", localArrayList);
+        azqs.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, "1", "", "", "");
+      }
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("LingHbFragment", 2, "onFocusChange:" + paramBoolean);
-      }
+      ((NewPhotoPreviewActivity)this.a.mActivity).setResult(-1, paramView);
+      ((NewPhotoPreviewActivity)this.a.mActivity).finish();
       return;
-      LingHbFragment.a(this.a).a();
+      label172:
+      if (QLog.isColorLevel())
+      {
+        QLog.d("PhotoPreviewActivity", 2, "sendBtn click currentPath is null");
+        continue;
+        paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", aitp.c(this.a).selectedPhotoList);
+        azqs.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, String.valueOf(aitp.d(this.a).selectedPhotoList.size()), "", "", "");
+      }
     }
   }
 }

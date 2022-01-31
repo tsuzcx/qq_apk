@@ -1,18 +1,19 @@
-import java.io.File;
-import java.util.concurrent.Callable;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 class azyb
-  implements Callable<File>
 {
-  azyb(azya paramazya) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
+  String jdField_a_of_type_JavaLangString;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  String jdField_b_of_type_JavaLangString;
+  String c;
   
-  public File a()
-  {
-    if (azya.a(this.a).exists()) {
-      return azya.a(this.a);
-    }
-    return null;
-  }
+  azyb(azxz paramazxz) {}
 }
 
 

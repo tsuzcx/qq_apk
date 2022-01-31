@@ -22,7 +22,7 @@ import tencent.im.oidb.cmd0x472.Oidb_0x472.RspChannelArticle;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class stw
-  extends alko
+  extends alpd
 {
   public stw(QQAppInterface paramQQAppInterface)
   {
@@ -84,7 +84,7 @@ public class stw
         paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
         paramToServiceMsg.mergeFrom((byte[])paramObject);
         i = paramToServiceMsg.uint32_result.get();
-        if (!bjxj.b()) {
+        if (!bkbq.b()) {
           break label741;
         }
         QLog.i("SubscriptHandler", 2, "result: " + i);
@@ -315,7 +315,7 @@ public class stw
     paramString.uint32_req_article_info.set(1);
     paramString.uint32_version.set(1);
     paramString.uint32_comefrom.set(2);
-    switch (bewy.a(null))
+    switch (bfbh.a(null))
     {
     default: 
       i = 0;
@@ -333,7 +333,7 @@ public class stw
     }
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return stx.class;
   }

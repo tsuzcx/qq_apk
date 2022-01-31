@@ -1,11 +1,11 @@
 package com.tencent.qidian.data;
 
 import android.text.TextUtils;
-import awbv;
-import awdj;
-import bfvl;
-import bfvm;
-import bfvn;
+import awge;
+import awhs;
+import bfzs;
+import bfzt;
+import bfzu;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -21,7 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class QidianExternalInfo
-  extends awbv
+  extends awge
 {
   private static final String TAG = "QidianExternalInfo";
   public long city;
@@ -33,9 +33,9 @@ public class QidianExternalInfo
   public int isShowCall;
   public int isShowVideoCall;
   public String job = "";
-  public List<bfvl> mCompanyShowCaseInfos;
-  public List<bfvm> mGroupItems;
-  public List<bfvn> mPubAccItems;
+  public List<bfzs> mCompanyShowCaseInfos;
+  public List<bfzt> mGroupItems;
+  public List<bfzu> mPubAccItems;
   public String mail = "";
   public String masterUin = "";
   public String mobile = "";
@@ -43,7 +43,7 @@ public class QidianExternalInfo
   public long province;
   public String sign = "";
   public String tel = "";
-  @awdj
+  @awhs
   public String uin = "";
   public String verify_url;
   public int verity;
@@ -65,7 +65,7 @@ public class QidianExternalInfo
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (mobileqq_qidian.PubAccItem)((Iterator)localObject1).next();
-            this.mPubAccItems.add(new bfvn((mobileqq_qidian.PubAccItem)localObject2));
+            this.mPubAccItems.add(new bfzu((mobileqq_qidian.PubAccItem)localObject2));
           }
         }
       }
@@ -87,7 +87,7 @@ public class QidianExternalInfo
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (mobileqq_qidian.GroupItem)((Iterator)localObject1).next();
-          this.mGroupItems.add(new bfvm((mobileqq_qidian.GroupItem)localObject2));
+          this.mGroupItems.add(new bfzt((mobileqq_qidian.GroupItem)localObject2));
         }
       }
       if (localException.rpt_msg_company_show_case_info.has())
@@ -97,7 +97,7 @@ public class QidianExternalInfo
         while (localIterator.hasNext())
         {
           localObject1 = (mobileqq_qidian.CompanyShowCaseInfo)localIterator.next();
-          this.mCompanyShowCaseInfos.add(new bfvl((mobileqq_qidian.CompanyShowCaseInfo)localObject1));
+          this.mCompanyShowCaseInfos.add(new bfzs((mobileqq_qidian.CompanyShowCaseInfo)localObject1));
         }
       }
     }
@@ -180,7 +180,7 @@ public class QidianExternalInfo
     }
   }
   
-  public List<bfvl> getCompanyShowCaseInfos()
+  public List<bfzs> getCompanyShowCaseInfos()
   {
     if (this.mCompanyShowCaseInfos == null)
     {
@@ -192,7 +192,7 @@ public class QidianExternalInfo
     return this.mCompanyShowCaseInfos;
   }
   
-  public List<bfvm> getGroupItems()
+  public List<bfzt> getGroupItems()
   {
     if (this.mGroupItems == null)
     {
@@ -204,7 +204,7 @@ public class QidianExternalInfo
     return this.mGroupItems;
   }
   
-  public List<bfvn> getPublicAccountItems()
+  public List<bfzu> getPublicAccountItems()
   {
     if (this.mPubAccItems == null)
     {
@@ -244,8 +244,8 @@ public class QidianExternalInfo
       localIterator = this.mPubAccItems.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (bfvn)localIterator.next();
-        localExternalInfo.rpt_msg_pubacc_item.add(((bfvn)localObject).a());
+        localObject = (bfzu)localIterator.next();
+        localExternalInfo.rpt_msg_pubacc_item.add(((bfzu)localObject).a());
       }
     }
     if (this.mGroupItems != null)
@@ -253,8 +253,8 @@ public class QidianExternalInfo
       localIterator = this.mGroupItems.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (bfvm)localIterator.next();
-        localExternalInfo.rpt_msg_group_item.add(((bfvm)localObject).a());
+        localObject = (bfzt)localIterator.next();
+        localExternalInfo.rpt_msg_group_item.add(((bfzt)localObject).a());
       }
     }
     if (this.mCompanyShowCaseInfos != null)
@@ -262,8 +262,8 @@ public class QidianExternalInfo
       localIterator = this.mCompanyShowCaseInfos.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (bfvl)localIterator.next();
-        localExternalInfo.rpt_msg_company_show_case_info.add(((bfvl)localObject).a());
+        localObject = (bfzs)localIterator.next();
+        localExternalInfo.rpt_msg_company_show_case_info.add(((bfzs)localObject).a());
       }
     }
     localExternalInfo.uint64_master_uin.set(Long.parseLong(this.masterUin));

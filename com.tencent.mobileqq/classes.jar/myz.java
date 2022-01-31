@@ -4,15 +4,15 @@ import android.widget.FrameLayout.LayoutParams;
 import com.tencent.biz.PoiMapActivity;
 
 public class myz
-  implements bdjy<Integer>
+  implements bdoh<Integer>
 {
   public myz(PoiMapActivity paramPoiMapActivity) {}
   
-  public void a(bdjs<Integer> parambdjs, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void a(bdob<Integer> parambdob, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    parambdjs = (FrameLayout.LayoutParams)this.a.b.getLayoutParams();
-    parambdjs.bottomMargin = (this.a.o - paramInteger.intValue());
-    this.a.b.setLayoutParams(parambdjs);
+    parambdob = (FrameLayout.LayoutParams)this.a.b.getLayoutParams();
+    parambdob.bottomMargin = (this.a.o - paramInteger.intValue());
+    this.a.b.setLayoutParams(parambdob);
   }
 }
 

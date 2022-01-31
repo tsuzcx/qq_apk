@@ -1,30 +1,31 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.view.MaskView;
+import android.view.View;
+import com.tencent.widget.AdapterView;
 
-public class avtg
-  implements SurfaceHolder.Callback
+class avtg
+  implements bhuy
 {
-  public avtg(ScanOcrActivity paramScanOcrActivity) {}
+  private avtg(avtc paramavtc) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    ScanOcrActivity.a(this.a, paramSurfaceHolder);
-    if (ScanOcrActivity.a(this.a) == null)
+    if (this.a.jdField_a_of_type_Int != 0)
     {
-      ScanOcrActivity.a(this.a, new avsm(this.a, this.a.jdField_a_of_type_Avsr, ScanOcrActivity.a(this.a)));
-      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_Int);
-      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.a());
-      if (ScanOcrActivity.a(this.a)) {
-        ScanOcrActivity.a(this.a).a();
-      }
+      this.a.jdField_a_of_type_Int = 0;
+      this.a.a();
+    }
+    bhuy localbhuy = this.a.jdField_a_of_type_Avtb.a();
+    if (localbhuy != null) {
+      localbhuy.onItemSelected(paramAdapterView, paramView, paramInt, paramLong);
     }
   }
   
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder) {}
+  public void onNothingSelected(AdapterView<?> paramAdapterView)
+  {
+    bhuy localbhuy = this.a.jdField_a_of_type_Avtb.a();
+    if (localbhuy != null) {
+      localbhuy.onNothingSelected(paramAdapterView);
+    }
+  }
 }
 
 

@@ -9,7 +9,7 @@ class AEEditorVideoEditFragment$15
   
   public void run()
   {
-    this.this$0.a.b(false);
+    this.this$0.a.c(false);
     this.this$0.a.a(1);
   }
 }

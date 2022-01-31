@@ -1,498 +1,410 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.HotChatManager;
+import QC.UniBusiGetOneItemWithCheckReq;
+import QC.UniBusiGetOneItemWithCheckRsp;
+import QC.UniBusiSimpleFontItem;
+import QC.UniBusiSimpleItemDetail;
+import QC.UniBusiSimpleSigItem;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.GradientDrawable.Orientation;
+import android.graphics.drawable.LayerDrawable;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.ptt.preop.PTTPreDownloadStrategy;
+import com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout;
+import com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
-import mqq.manager.Manager;
+import mqq.app.AppRuntime;
 
-public final class awtw
-  implements Handler.Callback, Manager
+public class awtw
+  extends RecyclerView.Adapter<awue>
 {
-  private final awtx jdField_a_of_type_Awtx = new awtx();
-  private awty jdField_a_of_type_Awty;
-  private final bhow jdField_a_of_type_Bhow;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private int jdField_a_of_type_Int;
+  private UniBusiSimpleItemDetail jdField_a_of_type_QCUniBusiSimpleItemDetail;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private awtv jdField_a_of_type_Awtv;
+  public awud a;
+  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new awuc(this);
+  private StickyNoteShopLayout jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout;
+  private ArrayList<UniBusiSimpleItemDetail> jdField_a_of_type_JavaUtilArrayList;
   private boolean jdField_a_of_type_Boolean;
-  private final awtx jdField_b_of_type_Awtx = new awtx();
-  private boolean jdField_b_of_type_Boolean;
-  private final awtx c = new awtx();
+  private int b = -1;
+  private int c = -1;
+  private int d;
+  private final int e = 0;
+  private final int f = 1;
   
-  public awtw(QQAppInterface paramQQAppInterface)
+  public awtw(Context paramContext, ArrayList<UniBusiSimpleItemDetail> paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bhow = new bhow(ThreadManager.getSubThreadLooper(), this);
-    a(new PTTPreDownloadStrategy(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bhow));
+    this.jdField_a_of_type_Awud = new awty(this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130846692);
   }
   
-  public static int a(QQAppInterface paramQQAppInterface, MessageForPtt paramMessageForPtt)
+  private Drawable a(String paramString1, String paramString2)
   {
-    if (paramMessageForPtt.url == null) {}
-    int i;
-    do
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Object localObject = localDrawable;
+    if (!TextUtils.isEmpty(paramString2)) {}
+    try
     {
-      return 2005;
-      if ((paramMessageForPtt.url.startsWith(aljq.aW)) && (bdcs.a(paramMessageForPtt.getLocalFilePath()))) {
-        return 2003;
-      }
-      i = paramQQAppInterface.a().b(paramMessageForPtt.frienduin, paramMessageForPtt.getLocalFilePath(), paramMessageForPtt.uniseq);
-    } while ((i == -1) && (paramMessageForPtt.fileSize == -4L));
-    return i;
-  }
-  
-  public static awtw a(QQAppInterface paramQQAppInterface)
-  {
-    return (awtw)paramQQAppInterface.getManager(127);
-  }
-  
-  private awtx a(MessageForPtt paramMessageForPtt)
-  {
-    awtx localawtx = null;
-    if (paramMessageForPtt.istroop == 0) {
-      localawtx = this.jdField_a_of_type_Awtx;
-    }
-    do
-    {
-      return localawtx;
-      if (paramMessageForPtt.istroop == 1) {
-        return this.jdField_b_of_type_Awtx;
-      }
-    } while (paramMessageForPtt.istroop != 3000);
-    return this.c;
-  }
-  
-  private void a(awtx paramawtx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PTTPreDownloader", 2, "cancelCache");
-    }
-    int i = 0;
-    if (i < paramawtx.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      MessageForPtt localMessageForPtt = (MessageForPtt)paramawtx.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (this.jdField_a_of_type_Awty.b(localMessageForPtt)) {
-        if (localMessageForPtt.extFlag != -1L) {
-          break label120;
-        }
-      }
-      label120:
-      for (long l = localMessageForPtt.extFlag;; l = (0x3 ^ 0xFFFFFFFF) & localMessageForPtt.extFlag)
+      paramString1 = new URL("sig_cover", paramString2, paramString1);
+      localObject = localDrawable;
+      if (paramString1 != null)
       {
-        localMessageForPtt.extFlag = l;
-        localMessageForPtt.serial();
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageForPtt.frienduin, localMessageForPtt.istroop, localMessageForPtt.uniseq, localMessageForPtt.msgData);
-        i += 1;
-        break;
-      }
-    }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PTTPreDownloader", 4, "handleAddrReady:" + paramBoolean);
-    }
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      a(this.jdField_a_of_type_Awtx);
-      a(this.jdField_b_of_type_Awtx);
-      a(this.c);
-    }
-  }
-  
-  private void a(boolean paramBoolean, int paramInt, MessageForPtt paramMessageForPtt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PTTPreDownloader", 2, "handleDownloadFinish uin:" + paramMessageForPtt.frienduin + ", seq:" + paramMessageForPtt.uniseq + ", sucess:" + paramBoolean);
-    }
-    if ((paramMessageForPtt.extFlag > 0L) && ((paramMessageForPtt.extFlag & 1L) > 0L))
-    {
-      if (!paramBoolean) {
-        break label129;
-      }
-      this.jdField_a_of_type_Awty.b(paramMessageForPtt);
-    }
-    label129:
-    while (((paramMessageForPtt.extFlag & 0x2) != 0L) || (!this.jdField_a_of_type_Awty.a(paramMessageForPtt, 3)))
-    {
-      paramMessageForPtt = a(paramMessageForPtt);
-      if (paramMessageForPtt != null)
-      {
-        paramMessageForPtt.jdField_a_of_type_Int -= 1;
-        if (paramMessageForPtt.jdField_a_of_type_Int < 0) {
-          paramMessageForPtt.jdField_a_of_type_Int = 0;
+        paramString2 = URLDrawable.URLDrawableOptions.obtain();
+        localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        paramString2.mFailedDrawable = ((Drawable)localObject);
+        paramString2.mLoadingDrawable = ((Drawable)localObject);
+        paramString2.mPlayGifImage = true;
+        localObject = URLDrawable.getDrawable(paramString1, paramString2);
+        ((URLDrawable)localObject).addHeader("my_uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
+        if (((URLDrawable)localObject).getStatus() == 2) {
+          ((URLDrawable)localObject).restartDownload();
         }
-        a(paramMessageForPtt);
+        ((URLDrawable)localObject).setURLDrawableListener(this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener);
       }
-      return;
+      return localObject;
     }
-    if (paramMessageForPtt.extFlag == -1L) {}
-    for (long l = paramMessageForPtt.extFlag;; l = (0x3 ^ 0xFFFFFFFF) & paramMessageForPtt.extFlag)
-    {
-      paramMessageForPtt.extFlag = l;
-      paramMessageForPtt.serial();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageForPtt.frienduin, paramMessageForPtt.istroop, paramMessageForPtt.uniseq, paramMessageForPtt.msgData);
-      break;
-    }
-  }
-  
-  private boolean a(awtx paramawtx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PTTPreDownloader", 2, "startDownloadCache");
-    }
-    boolean bool = false;
-    for (;;)
-    {
-      if ((paramawtx.jdField_a_of_type_Int < 3) && (paramawtx.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-      {
-        MessageForPtt localMessageForPtt = (MessageForPtt)paramawtx.jdField_a_of_type_JavaUtilArrayList.get(0);
-        if (this.jdField_a_of_type_Awty.a(localMessageForPtt))
-        {
-          long l;
-          if (!g(localMessageForPtt)) {
-            if (this.jdField_a_of_type_Awty.b(localMessageForPtt))
-            {
-              if (localMessageForPtt.extFlag != -1L) {
-                break label157;
-              }
-              l = localMessageForPtt.extFlag;
-              label102:
-              localMessageForPtt.extFlag = l;
-            }
-          }
-          try
-          {
-            localMessageForPtt.serial();
-            label113:
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageForPtt.frienduin, localMessageForPtt.istroop, localMessageForPtt.uniseq, localMessageForPtt.msgData);
-            paramawtx.jdField_a_of_type_JavaUtilArrayList.remove(0);
-            for (bool = false;; bool = true)
-            {
-              break;
-              label157:
-              l = (0x3 ^ 0xFFFFFFFF) & localMessageForPtt.extFlag;
-              break label102;
-              paramawtx.jdField_a_of_type_Int += 1;
-              paramawtx.jdField_a_of_type_JavaUtilArrayList.remove(0);
-            }
-          }
-          catch (OutOfMemoryError localOutOfMemoryError)
-          {
-            break label113;
-          }
-        }
-      }
-    }
-    return bool;
-  }
-  
-  private boolean d(MessageForPtt paramMessageForPtt)
-  {
-    if ((paramMessageForPtt.istroop == 1) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(paramMessageForPtt.frienduin) != 1)) {}
-    int i;
-    awtx localawtx;
-    label290:
-    label355:
-    do
+    catch (MalformedURLException paramString1)
     {
       for (;;)
       {
-        return true;
-        if (!((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60)).b(paramMessageForPtt.frienduin))
-        {
-          i = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPtt);
-          if (QLog.isColorLevel()) {
-            QLog.d("PTTPreDownloader", 2, "handleReceivedPTT uin:" + paramMessageForPtt.frienduin + ", seq:" + paramMessageForPtt.uniseq + ", status:" + i);
-          }
-          if ((i == 0) || (i == -1))
-          {
-            localawtx = a(paramMessageForPtt);
-            if (localawtx != null)
-            {
-              if (!this.jdField_b_of_type_Boolean) {
-                break;
-              }
-              long l;
-              if ((localawtx.jdField_a_of_type_Int < 3) && (this.jdField_a_of_type_Awty.a(paramMessageForPtt))) {
-                if (!g(paramMessageForPtt)) {
-                  if (this.jdField_a_of_type_Awty.b(paramMessageForPtt))
-                  {
-                    if (paramMessageForPtt.extFlag != -1L) {
-                      break label290;
-                    }
-                    l = paramMessageForPtt.extFlag;
-                    paramMessageForPtt.extFlag = l;
-                    paramMessageForPtt.serial();
-                    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageForPtt.frienduin, paramMessageForPtt.istroop, paramMessageForPtt.uniseq, paramMessageForPtt.msgData);
-                  }
-                }
-              }
-              for (;;)
-              {
-                if (paramMessageForPtt.voiceChangeFlag != 1) {
-                  break label355;
-                }
-                azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "changevoice", "0X8006F7D", 0, 0, "" + paramMessageForPtt.istroop, "", "", "");
-                return true;
-                l = (0x3 ^ 0xFFFFFFFF) & paramMessageForPtt.extFlag;
-                break;
-                localawtx.jdField_a_of_type_Int += 1;
-                continue;
-                i = localawtx.jdField_a_of_type_JavaUtilArrayList.size();
-                localawtx.getClass();
-                if (i + 1 < 99) {
-                  localawtx.jdField_a_of_type_JavaUtilArrayList.add(paramMessageForPtt);
-                }
-              }
-            }
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("StickyNoteVasAdapter", 2, paramString1.getMessage());
         }
-      }
-      i = localawtx.jdField_a_of_type_JavaUtilArrayList.size();
-      localawtx.getClass();
-    } while (i + 1 >= 99);
-    localawtx.jdField_a_of_type_JavaUtilArrayList.add(paramMessageForPtt);
-    return true;
-  }
-  
-  private boolean e(MessageForPtt paramMessageForPtt)
-  {
-    return true;
-  }
-  
-  private boolean f(MessageForPtt paramMessageForPtt)
-  {
-    long l = 2L;
-    if (QLog.isColorLevel()) {
-      QLog.d("PTTPreDownloader", 2, "handleViewPTT uin:" + paramMessageForPtt.frienduin + ", seq:" + paramMessageForPtt.uniseq);
-    }
-    if (this.jdField_a_of_type_Awty.a(paramMessageForPtt, 1)) {
-      if (paramMessageForPtt.extFlag != -1L) {
-        break label113;
-      }
-    }
-    for (;;)
-    {
-      paramMessageForPtt.extFlag = l;
-      paramMessageForPtt.serial();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageForPtt.frienduin, paramMessageForPtt.istroop, paramMessageForPtt.uniseq, paramMessageForPtt.msgData);
-      return true;
-      label113:
-      l = 0x2 | paramMessageForPtt.extFlag;
-    }
-  }
-  
-  private boolean g(MessageForPtt paramMessageForPtt)
-  {
-    boolean bool2 = false;
-    int i = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPtt);
-    boolean bool1;
-    baub localbaub;
-    if (i != 0)
-    {
-      bool1 = bool2;
-      if (i != -1) {}
-    }
-    else
-    {
-      localbaub = new baub();
-      localbaub.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-      localbaub.jdField_c_of_type_JavaLangString = paramMessageForPtt.frienduin;
-      localbaub.jdField_a_of_type_Int = paramMessageForPtt.istroop;
-      localbaub.jdField_b_of_type_Int = 2;
-      localbaub.jdField_a_of_type_Long = paramMessageForPtt.uniseq;
-      localbaub.jdField_a_of_type_Boolean = false;
-      localbaub.e = paramMessageForPtt.urlAtServer;
-      localbaub.h = paramMessageForPtt.getLocalFilePath();
-      if ((!paramMessageForPtt.isSendFromOtherTerminal()) && (!paramMessageForPtt.isSend())) {
-        break label259;
-      }
-      bool1 = true;
-    }
-    for (;;)
-    {
-      localbaub.jdField_b_of_type_Boolean = bool1;
-      localbaub.f = paramMessageForPtt.md5;
-      localbaub.jdField_c_of_type_Long = paramMessageForPtt.groupFileID;
-      localbaub.jdField_g_of_type_JavaLangString = paramMessageForPtt.groupFileKeyStr;
-      localbaub.d = paramMessageForPtt.subVersion;
-      localbaub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageForPtt;
-      localbaub.jdField_g_of_type_Int = 1;
-      localbaub.jdField_a_of_type_JavaLangObject = new baug(6, 0);
-      try
-      {
-        bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbaub);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("PTTPreDownloader", 4, "startDownload uin:" + paramMessageForPtt.frienduin + ", seq:" + paramMessageForPtt.uniseq + ", doIt:" + bool1);
-        }
-        return bool1;
-        label259:
-        bool1 = false;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          bool1 = bool2;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("PTTPreDownloader", 2, "startDownload  exception=" + localException.getMessage());
-            bool1 = bool2;
-          }
-        }
+        paramString1 = null;
       }
     }
   }
   
-  public void a(awty paramawty)
+  private void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_Awty = paramawty;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, baug parambaug, MessageForPtt paramMessageForPtt)
-  {
-    parambaug = this.jdField_a_of_type_Bhow;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    String str3 = alud.a(2131705067);
+    String str2 = alud.a(2131720785);
+    String str1 = str2;
+    if (!TextUtils.isEmpty(paramString2))
     {
-      parambaug.obtainMessage(2, i, paramInt, paramMessageForPtt).sendToTarget();
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int j = 1;
-    int i = 1;
-    if (!paramBoolean1) {
-      return;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PTTPreDownloader", 4, "onAddrProviderReady delay:" + paramBoolean2);
-    }
-    if (paramBoolean2)
-    {
-      localObject = this.jdField_a_of_type_Bhow;
-      if (paramBoolean1) {}
-      for (;;)
-      {
-        localObject = ((bhow)localObject).obtainMessage(3, i, 0);
-        this.jdField_a_of_type_Bhow.sendMessageDelayed((Message)localObject, 30000L);
-        return;
-        i = 0;
+      str1 = str2;
+      if (paramString2.contains("svip")) {
+        str1 = alud.a(2131720783);
       }
     }
-    this.jdField_a_of_type_Bhow.removeMessages(3);
-    Object localObject = this.jdField_a_of_type_Bhow;
-    if (paramBoolean1) {}
-    for (i = j;; i = 0)
-    {
-      ((bhow)localObject).obtainMessage(3, i, 0).sendToTarget();
-      return;
-    }
+    bdgm.a(paramContext, 230, str3, paramString3, alud.a(2131705068), str1, new awtz(this, paramContext, paramString1, paramString2, paramString4), new awua(this)).show();
   }
   
-  public boolean a(MessageForPtt paramMessageForPtt)
+  public static boolean a(int paramInt)
   {
-    this.jdField_a_of_type_Bhow.obtainMessage(0, paramMessageForPtt).sendToTarget();
-    return true;
-  }
-  
-  public boolean b(MessageForPtt paramMessageForPtt)
-  {
-    long l = 2L;
-    int j = 0;
-    int i;
-    if (paramMessageForPtt.isSendFromLocal()) {
-      i = j;
-    }
-    while (i == 0)
-    {
-      return true;
-      i = j;
-      if (paramMessageForPtt.getPttStreamFlag() != 10001)
-      {
-        i = j;
-        if (paramMessageForPtt.extFlag != -1L)
-        {
-          i = j;
-          if ((paramMessageForPtt.extFlag & 0x2) <= 0L)
-          {
-            i = j;
-            if (paramMessageForPtt.fileSize > 0L) {
-              i = 1;
-            }
-          }
-        }
-      }
-    }
-    if (paramMessageForPtt.extFlag == -1L) {}
-    for (;;)
-    {
-      paramMessageForPtt.extFlag = l;
-      this.jdField_a_of_type_Bhow.obtainMessage(4, paramMessageForPtt).sendToTarget();
-      return true;
-      l = 0x2 | paramMessageForPtt.extFlag;
-    }
-  }
-  
-  public boolean c(MessageForPtt paramMessageForPtt)
-  {
-    return true;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Boolean) {
-      return true;
-    }
-    switch (paramMessage.what)
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    switch (paramInt)
     {
     default: 
-      return true;
+      return false;
     case 0: 
-      d((MessageForPtt)paramMessage.obj);
-      return true;
     case 1: 
-      e((MessageForPtt)paramMessage.obj);
       return true;
-    case 3: 
-      if (paramMessage.arg1 != 0) {
-        bool = true;
-      }
-      a(bool);
-      return true;
-    case 2: 
-      if (paramMessage.arg1 != 0) {}
-      for (bool = true;; bool = false)
-      {
-        a(bool, paramMessage.arg2, (MessageForPtt)paramMessage.obj);
-        return true;
-      }
+    case 4: 
+      return VipUtils.c(localQQAppInterface);
+    case 5: 
+      return VipUtils.b(localQQAppInterface);
     }
-    f((MessageForPtt)paramMessage.obj);
-    return true;
+    return false;
   }
   
-  public void onDestroy()
+  public int a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bhow.removeMessages(0);
-    this.jdField_a_of_type_Bhow.removeMessages(1);
-    this.jdField_a_of_type_Bhow.removeMessages(2);
-    this.jdField_a_of_type_Bhow.removeMessages(3);
-    this.jdField_a_of_type_Bhow.removeMessages(4);
-    a(this.jdField_a_of_type_Awtx);
-    a(this.jdField_b_of_type_Awtx);
-    a(this.c);
-    this.jdField_a_of_type_Awty.a();
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 2130846996;
+    case 0: 
+    case 1: 
+      return 2130846995;
+    case 4: 
+      return 2130847000;
+    case 5: 
+      return 2130846999;
+    case 21: 
+      return 2130846998;
+    }
+    return 2130846997;
+  }
+  
+  public Drawable a(Context paramContext, Drawable paramDrawable, boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      return paramDrawable;
+    }
+    return new LayerDrawable(new Drawable[] { paramDrawable, paramContext.getResources().getDrawable(2130849710) });
+  }
+  
+  public Drawable a(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    int i = 14606046;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      String str = paramString;
+      if (!paramString.contains("#")) {
+        str = "#" + paramString;
+      }
+      i = Color.parseColor(str);
+    }
+    paramString = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { i + 1291845632, i + -2147483648 });
+    if (!paramBoolean) {
+      return paramString;
+    }
+    return new LayerDrawable(new Drawable[] { paramString, paramContext.getResources().getDrawable(2130849710) });
+  }
+  
+  public awue a(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = new awue(this, View.inflate(paramViewGroup.getContext(), 2131561229, null));
+    if (paramInt == 1)
+    {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      return paramViewGroup;
+    }
+    paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    return paramViewGroup;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_QCUniBusiSimpleItemDetail != null) && (this.jdField_a_of_type_Boolean))
+    {
+      this.jdField_a_of_type_Boolean = false;
+      a(this.jdField_a_of_type_Int, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.feeType, this.jdField_a_of_type_Awud);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, awud paramawud)
+  {
+    if ((a(paramInt3)) && (paramawud != null))
+    {
+      paramawud.a(true, null);
+      return;
+    }
+    new beal("QC.UniBusinessUserInfoServer.UniBusinessUserInfoObj", "QcUniBusinessUserInfo.UniBusiGetOneItemWithCheck", "stReq", "stRsp").a("UniBusiGetOneItemWithCheck", new UniBusiGetOneItemWithCheckReq(beal.a(), paramInt1, paramInt2), new UniBusiGetOneItemWithCheckRsp(), new awub(this, paramawud), false);
+  }
+  
+  public void a(TextView paramTextView, int paramInt)
+  {
+    paramTextView.setCompoundDrawablePadding(bdoo.b(4.0F));
+    paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, a(paramInt), 0);
+  }
+  
+  public void a(awtv paramawtv)
+  {
+    this.jdField_a_of_type_Awtv = paramawtv;
+  }
+  
+  public void a(awue paramawue, int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.get(paramInt) == null)) {
+      return;
+    }
+    UniBusiSimpleItemDetail localUniBusiSimpleItemDetail = (UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramawue.jdField_a_of_type_AndroidWidgetTextView.setText(localUniBusiSimpleItemDetail.name);
+    boolean bool;
+    if (this.b == localUniBusiSimpleItemDetail.itemId)
+    {
+      bool = true;
+      if (this.c != localUniBusiSimpleItemDetail.itemId) {
+        break label290;
+      }
+      paramInt = 1;
+      label72:
+      paramawue.b.setVisibility(8);
+      if (paramInt != 0)
+      {
+        paramInt = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.jdField_a_of_type_Int;
+        localObject = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout;
+        if (paramInt == 2) {
+          paramawue.b.setVisibility(0);
+        }
+      }
+      QLog.d("StickyNoteVasAdapter", 1, " mAppId:" + this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Int != 9) {
+        break label295;
+      }
+      paramawue.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.setBackgroundDrawable(a(paramawue.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.getContext(), localUniBusiSimpleItemDetail.itemBgColor, bool));
+      paramInt = (azkz.e(paramawue.itemView.getContext()) - azkz.a(96.0F)) / 3;
+      Object localObject = paramawue.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).width = paramInt;
+      ((ViewGroup.LayoutParams)localObject).height = ((int)(paramInt * 0.57F));
+      paramawue.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramawue.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(String.valueOf(localUniBusiSimpleItemDetail.itemId), localUniBusiSimpleItemDetail.image));
+    }
+    for (;;)
+    {
+      a(paramawue.jdField_a_of_type_AndroidWidgetTextView, localUniBusiSimpleItemDetail.feeType);
+      paramawue.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.setOnClickListener(new awtx(this, localUniBusiSimpleItemDetail));
+      return;
+      bool = false;
+      break;
+      label290:
+      paramInt = 0;
+      break label72;
+      label295:
+      paramawue.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.setBackgroundDrawable(a(paramawue.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.getContext(), a(String.valueOf(localUniBusiSimpleItemDetail.itemId), localUniBusiSimpleItemDetail.image), bool));
+    }
+  }
+  
+  public void a(StickyNoteShopLayout paramStickyNoteShopLayout)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout = paramStickyNoteShopLayout;
+  }
+  
+  public void a(ArrayList<UniBusiSimpleItemDetail> paramArrayList, boolean paramBoolean)
+  {
+    int i;
+    if ((paramBoolean) && (this.jdField_a_of_type_JavaUtilArrayList != null))
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+      notifyDataSetChanged();
+      if (this.d != 0) {
+        if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+          i = 0;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        if (((UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(i)).itemId == this.d) {
+          this.jdField_a_of_type_QCUniBusiSimpleItemDetail = ((UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+        }
+      }
+      else
+      {
+        if (this.jdField_a_of_type_QCUniBusiSimpleItemDetail != null)
+        {
+          this.jdField_a_of_type_Boolean = true;
+          a(this.jdField_a_of_type_Int, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, -1, this.jdField_a_of_type_Awud);
+        }
+        this.d = 0;
+        return;
+        this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+        break;
+      }
+      i += 1;
+    }
+  }
+  
+  public void b()
+  {
+    notifyDataSetChanged();
+    if (this.jdField_a_of_type_Awtv != null)
+    {
+      if (this.jdField_a_of_type_Int != 5) {
+        break label60;
+      }
+      i = 0;
+      if (this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stFontItem != null) {
+        i = this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stFontItem.fontType;
+      }
+      this.jdField_a_of_type_Awtv.b(this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, i);
+    }
+    label60:
+    while (this.jdField_a_of_type_Int != 9) {
+      return;
+    }
+    int j = 16777215;
+    int i = j;
+    if (this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stSigItem != null)
+    {
+      i = j;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stSigItem.fontColor)) {
+        i = Color.parseColor(this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stSigItem.fontColor);
+      }
+    }
+    this.jdField_a_of_type_Awtv.a(this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, i);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.d = paramInt;
+    this.c = paramInt;
+    if (this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.a(false);
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    this.b = -1;
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        if (((UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(i)).itemId == paramInt)
+        {
+          this.b = paramInt;
+          this.jdField_a_of_type_QCUniBusiSimpleItemDetail = ((UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+          notifyDataSetChanged();
+          return;
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      int j = i;
+      if (this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.jdField_a_of_type_Int == 2)
+      {
+        StickyNoteShopLayout localStickyNoteShopLayout = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout;
+        j = Math.min(i, 30);
+      }
+      return j;
+    }
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt == getItemCount() - 1) {
+      return 1;
+    }
+    return 0;
   }
 }
 

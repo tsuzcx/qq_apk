@@ -10,8 +10,9 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class QQCircleRead$TagItem
   extends MessageMicro<TagItem>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "name", "tagType", "joinNum", "isFollow" }, new Object[] { "", Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L) }, TagItem.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40 }, new String[] { "name", "tagType", "joinNum", "isFollow", "isTop" }, new Object[] { "", Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L) }, TagItem.class);
   public final PBInt64Field isFollow = PBField.initInt64(0L);
+  public final PBInt64Field isTop = PBField.initInt64(0L);
   public final PBInt64Field joinNum = PBField.initInt64(0L);
   public final PBStringField name = PBField.initString("");
   public final PBInt32Field tagType = PBField.initInt32(0);

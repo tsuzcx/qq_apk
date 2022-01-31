@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import alpo;
-import wxp;
+import alud;
+import xby;
 
 class HWEditLocalVideoPlayer$5
   implements Runnable
@@ -10,7 +10,7 @@ class HWEditLocalVideoPlayer$5
   
   public void run()
   {
-    HWEditLocalVideoPlayer.a(this.this$0, this.this$0.a.getActivity(), alpo.a(2131706052));
+    HWEditLocalVideoPlayer.a(this.this$0, this.this$0.a.getActivity(), alud.a(2131706064));
   }
 }
 

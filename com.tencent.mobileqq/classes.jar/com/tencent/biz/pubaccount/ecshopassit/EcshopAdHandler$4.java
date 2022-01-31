@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import aaoo;
-import aaop;
-import aaoq;
-import aaor;
+import aatd;
+import aate;
+import aatf;
+import aatg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -41,13 +41,13 @@ public class EcshopAdHandler$4
       {
         qq_ad.QQAdGet localQQAdGet = new qq_ad.QQAdGet();
         qq_ad.QQAdGet.Phone localPhone = new qq_ad.QQAdGet.Phone();
-        Object localObject1 = new aaop();
-        ((aaop)localObject1).jdField_a_of_type_JavaLangString = "cd22b9";
+        Object localObject1 = new aate();
+        ((aate)localObject1).jdField_a_of_type_JavaLangString = "cd22b9";
         long l = System.currentTimeMillis();
-        localObject1 = aaoo.a(BaseApplicationImpl.getApplication().getApplicationContext(), (aaop)localObject1);
+        localObject1 = aatd.a(BaseApplicationImpl.getApplication().getApplicationContext(), (aate)localObject1);
         if (localObject1 != null)
         {
-          localObject1 = ((aaoq)localObject1).a;
+          localObject1 = ((aatf)localObject1).a;
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder().append("get deviceInfo cost：").append(System.currentTimeMillis() - l).append(", result = ");
@@ -58,7 +58,7 @@ public class EcshopAdHandler$4
           }
           if (localObject1 != null)
           {
-            localPhone.carrier.set(aaor.a(this.this$0.app.getApplication()));
+            localPhone.carrier.set(aatg.a(this.this$0.app.getApplication()));
             localPhone.muid.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid.get());
             localPhone.muid_type.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid_type.get());
             localPhone.conn.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).conn.get());

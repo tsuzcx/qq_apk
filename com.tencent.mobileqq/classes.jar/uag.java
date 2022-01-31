@@ -1,32 +1,50 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView;
-import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.method.BaseMovementMethod;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.widget.TextView;
 
 public class uag
-  extends Animation
+  extends BaseMovementMethod
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  private static uag a;
   
-  private uag(QCircleExpandableTextView paramQCircleExpandableTextView, int paramInt1, int paramInt2)
+  public static uag a()
   {
-    setDuration(paramQCircleExpandableTextView.b);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new uag();
+      }
+      return a;
+    }
+    finally {}
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    int i = (int)((this.b - this.jdField_a_of_type_Int) * paramFloat + this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.a.setMaxHeight(i - this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.e);
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.getLayoutParams().height = i;
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.requestLayout();
-  }
-  
-  public boolean willChangeBounds()
-  {
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
+    {
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      paramMotionEvent = paramTextView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      paramSpannable = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
+      if (paramSpannable.length != 0)
+      {
+        paramSpannable = paramSpannable[0];
+        if (i == 1) {
+          paramSpannable.onClick(paramTextView);
+        }
+      }
+    }
     return true;
   }
 }

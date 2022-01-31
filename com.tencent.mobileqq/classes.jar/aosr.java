@@ -1,46 +1,42 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
 
 public class aosr
-  extends aofy<aosq>
+  extends aokh<aosu>
 {
-  public static aosq a()
+  public static aosu a()
   {
-    return (aosq)aogj.a().a(334);
+    return (aosu)aoks.a().a(497);
   }
   
   public int a()
   {
-    return 334;
+    return 497;
   }
   
   @NonNull
-  public aosq a(int paramInt)
+  public aosu a(int paramInt)
   {
-    return new aosq();
+    return new aosu();
   }
   
   @Nullable
-  public aosq a(aogf[] paramArrayOfaogf)
+  public aosu a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return aosq.a(paramArrayOfaogf);
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aosu.a(paramArrayOfaoko);
     }
     return null;
   }
   
-  public Class<aosq> a()
+  public Class<aosu> a()
   {
-    return aosq.class;
+    return aosu.class;
   }
   
-  public void a(int paramInt)
-  {
-    QLog.d("TencentDocAIOPlusPanelEntryConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
-  }
+  public void a(int paramInt) {}
   
-  public void a(aosq paramaosq) {}
+  public void a(aosu paramaosu) {}
   
   public int b()
   {

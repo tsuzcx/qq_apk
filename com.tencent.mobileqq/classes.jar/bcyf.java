@@ -1,100 +1,66 @@
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.TransitionDrawable;
-import android.os.Handler;
-import android.view.View;
-import android.widget.ImageView;
-import java.util.Map;
-import java.util.WeakHashMap;
+import android.content.Intent;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.unifiedebug.SnapshotService;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
 
 public class bcyf
+  extends beej
 {
-  protected int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private bcyb jdField_a_of_type_Bcyb;
-  private Map<View, bcyi> jdField_a_of_type_JavaUtilMap = new WeakHashMap();
-  private boolean jdField_a_of_type_Boolean;
-  protected int b;
-  private boolean b;
-  
-  public bcyf(Context paramContext)
+  public bcyf(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bcyb = new bcyb(bczj.a(paramContext) / 8);
+    super(paramContext, paramActivity, paramAppInterface);
+    super.preInitPluginEngine();
+    this.mWebview = new TouchWebView(this.mContext);
+    buildBaseWebView(paramAppInterface);
   }
   
-  private bcyh a(View paramView)
+  public void a()
   {
-    if (paramView != null)
-    {
-      bcyi localbcyi = (bcyi)this.jdField_a_of_type_JavaUtilMap.get(paramView);
-      if (localbcyi != null) {
-        paramView = localbcyi.jdField_a_of_type_Bcyg;
-      }
-      while ((paramView instanceof bcyg))
-      {
-        return ((bcyg)paramView).a();
-        if ((paramView instanceof ImageView)) {
-          paramView = ((ImageView)paramView).getDrawable();
-        } else {
-          paramView = paramView.getBackground();
-        }
-      }
-    }
-    return null;
+    super.doOnResume();
   }
   
-  private void a(boolean paramBoolean, View paramView, Drawable paramDrawable, bcyi parambcyi)
+  public void a(Intent paramIntent)
   {
-    Object localObject = paramDrawable;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      localObject = paramDrawable;
-      if (paramBoolean)
-      {
-        localObject = paramDrawable;
-        if (!(paramDrawable instanceof AnimationDrawable))
-        {
-          localObject = paramDrawable;
-          if (paramDrawable != null)
-          {
-            localObject = new TransitionDrawable(new Drawable[] { new ColorDrawable(17170445), paramDrawable });
-            ((TransitionDrawable)localObject).startTransition(200);
-          }
-        }
-      }
-    }
-    paramDrawable = null;
-    if (parambcyi != null) {
-      paramDrawable = parambcyi.jdField_a_of_type_Bcye;
-    }
-    if (paramDrawable != null)
-    {
-      paramDrawable.a(paramView, (Drawable)localObject);
-      return;
-    }
-    if ((paramView instanceof ImageView))
-    {
-      ((ImageView)paramView).setImageDrawable((Drawable)localObject);
-      return;
-    }
-    paramView.setBackgroundDrawable((Drawable)localObject);
+    super.doOnCreate(paramIntent);
   }
   
-  public bcyb a()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_Bcyb;
+    if (bekd.jdField_a_of_type_Boolean)
+    {
+      beka.a(this.mWebview, bekd.jdField_a_of_type_JavaLangString);
+      bekd.jdField_a_of_type_Boolean = false;
+    }
+    this.mUrl = paramString;
+    this.mWebview.loadUrl(this.mUrl);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void b()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    super.doOnPause();
+  }
+  
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    if (paramArrayList != null) {
+      paramArrayList.add(new belw());
+    }
+  }
+  
+  public void c()
+  {
+    super.doOnDestroy();
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+    paramWebView.loadUrl("javascript:" + SnapshotService.jdField_a_of_type_JavaLangString);
   }
 }
 

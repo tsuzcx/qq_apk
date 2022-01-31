@@ -1,19 +1,35 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import java.util.Random;
 
-class bjst
-  extends BroadcastReceiver
+public class bjst
+  extends bjtd
 {
-  bjst(bjss parambjss) {}
+  protected int a;
+  protected Random a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bjst(int paramInt)
   {
-    if (paramIntent.getAction().equals("com.tencent.qq.syncSecretShuoshuoMsg"))
-    {
-      int i = paramIntent.getIntExtra("com.tencent.qq.syncSecretShuoshuoMsgType", 0);
-      bjss.a(this.a, i);
+    this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
+    this.jdField_a_of_type_Int = 1;
+    a(paramInt);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt < 1) {
+      i = 1;
     }
+    this.jdField_a_of_type_Int = i;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_Int) < 1;
   }
 }
 

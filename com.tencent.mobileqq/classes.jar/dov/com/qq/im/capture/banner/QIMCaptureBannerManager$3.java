@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.banner;
 
-import baps;
-import bapv;
-import baqx;
-import bdee;
-import blmy;
-import blmz;
+import baub;
+import baue;
+import bavg;
+import bdin;
+import blrk;
+import blrl;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -19,13 +19,13 @@ public class QIMCaptureBannerManager$3
     do
     {
       return;
-      baps localbaps = new baps();
-      localbaps.jdField_a_of_type_Bapx = new blmz(this);
-      localbaps.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig$BannerItem.imgUrl;
-      localbaps.jdField_a_of_type_Int = 0;
-      localbaps.jdField_c_of_type_JavaLangString = new File(blmy.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig$BannerItem.imgMd5).getPath();
-      localbaps.jdField_c_of_type_Int = bdee.a(baqx.a().a());
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0).a(localbaps);
+      baub localbaub = new baub();
+      localbaub.jdField_a_of_type_Baug = new blrl(this);
+      localbaub.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig$BannerItem.imgUrl;
+      localbaub.jdField_a_of_type_Int = 0;
+      localbaub.jdField_c_of_type_JavaLangString = new File(blrk.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig$BannerItem.imgMd5).getPath();
+      localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0).a(localbaub);
     } while (!QLog.isColorLevel());
     QLog.i("QIMCaptureBannerManager", 2, "preLoadBannerResources, url: " + this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig$BannerItem.imgUrl);
   }

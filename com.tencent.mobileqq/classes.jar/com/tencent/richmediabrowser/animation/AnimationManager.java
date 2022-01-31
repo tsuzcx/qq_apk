@@ -54,9 +54,9 @@ public class AnimationManager
   
   public void init()
   {
-    this.gallery = this.mContext.findViewById(2131367010);
+    this.gallery = this.mContext.findViewById(2131367020);
     this.animationView = ((AnimationView)this.mContext.findViewById(2131362576));
-    this.rootView = this.mContext.findViewById(2131375981);
+    this.rootView = this.mContext.findViewById(2131376034);
     this.bgView = this.mContext.findViewById(2131363034);
   }
   

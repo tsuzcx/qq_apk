@@ -9,7 +9,7 @@ public class pka
   {
     JSONObject localJSONObject = new JSONObject();
     Object localObject1 = new JSONObject();
-    ((JSONObject)localObject1).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + alpo.a(2131713513));
+    ((JSONObject)localObject1).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + alud.a(2131713525));
     localJSONObject.put("id_gallery_cnt", localObject1);
     localObject1 = new JSONObject();
     ((JSONObject)localObject1).put("gallery_icon", "qq_readinjoy_gallery_count");

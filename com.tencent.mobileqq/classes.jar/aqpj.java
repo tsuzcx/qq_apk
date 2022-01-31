@@ -1,24 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-
-class aqpj
-  implements aqzt
+public abstract interface aqpj
 {
-  aqpj(aqpi paramaqpi, aqpk paramaqpk) {}
+  public abstract void d();
   
-  public void a()
-  {
-    QLog.e("FileMultiMsg", 1, "sendDiscFile success");
-    this.jdField_a_of_type_Aqpi.a = true;
-    this.jdField_a_of_type_Aqpk.a(true);
-  }
+  public abstract void e();
   
-  public void a(long paramLong1, long paramLong2) {}
+  public abstract void n();
   
-  public void a(Object paramObject, int paramInt)
-  {
-    QLog.e("FileMultiMsg", 1, "sendDiscFile faild errCode" + paramInt);
-    this.jdField_a_of_type_Aqpk.a(false);
-  }
+  public abstract void p();
+  
+  public abstract void q();
 }
 
 

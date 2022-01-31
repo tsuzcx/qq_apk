@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
-import com.tencent.widget.AbsListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.RoamInfoListWrapper;
+import java.util.ArrayList;
 
-public class ambx
-  implements bhpo
+public final class ambx
+  implements Parcelable.Creator<RoamInfoListWrapper>
 {
-  public ambx(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public RoamInfoListWrapper a(Parcel paramParcel)
   {
-    if (NewFriendVerifyBlockedListFragment.a(this.a) != null)
-    {
-      if ((paramInt != 0) && (paramInt != 1)) {
-        NewFriendVerifyBlockedListFragment.a(this.a).a();
-      }
-    }
-    else {
-      return;
-    }
-    NewFriendVerifyBlockedListFragment.a(this.a).b();
-    NewFriendVerifyBlockedListFragment.a(this.a).c();
+    RoamInfoListWrapper localRoamInfoListWrapper = new RoamInfoListWrapper();
+    localRoamInfoListWrapper.a = paramParcel.readArrayList(ArrayList.class.getClassLoader());
+    return localRoamInfoListWrapper;
+  }
+  
+  public RoamInfoListWrapper[] a(int paramInt)
+  {
+    return new RoamInfoListWrapper[paramInt];
   }
 }
 

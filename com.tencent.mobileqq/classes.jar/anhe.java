@@ -1,18 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.view.ARScanEntryView.4.1;
 import com.tencent.qphone.base.util.QLog;
 
-class anhe
-  implements DialogInterface.OnClickListener
+public class anhe
+  implements awcr
 {
-  anhe(anhb paramanhb, String paramString1, String paramString2, DownloadInfo paramDownloadInfo, boolean paramBoolean, int paramInt) {}
+  public anhe(ARScanEntryView paramARScanEntryView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    QLog.d("ArkApp.downloadyyb.module", 1, new Object[] { "ark.dctrl [doDownloadAction] dialog callback appid=", this.jdField_a_of_type_JavaLangString, ",name=", this.b, ",which:", Integer.valueOf(paramInt) });
-    if (paramInt == 1) {
-      anhb.a(this.jdField_a_of_type_Anhb, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onStart ");
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onEnd  needReportRedDot = " + ARScanEntryView.a(this.a));
+    }
+    if (ARScanEntryView.a(this.a) != null) {
+      ARScanEntryView.a(this.a).post(new ARScanEntryView.4.1(this));
     }
   }
 }

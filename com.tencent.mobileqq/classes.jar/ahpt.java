@@ -1,20 +1,42 @@
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class ahpt
-  extends apxc
+public class ahpt
+  extends MqqHandler
 {
-  ahpt(ahpq paramahpq) {}
+  public ahpt(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  protected void c(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    ahpl localahpl = this.a.a(2);
-    localahpl.jdField_a_of_type_JavaLangObject = Boolean.valueOf(paramBoolean);
-    if ((localahpl.c) && (paramBoolean)) {
-      ahpq.a(this.a);
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_Ahot == null);
+      this.a.jdField_a_of_type_Ahot.a = bafj.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a.jdField_a_of_type_Ahot.notifyDataSetChanged();
+      this.a.jdField_a_of_type_Ambh.c = bafj.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      return;
+    case 1014: 
+      this.a.j();
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onResourceStateUpdate [id: %s, canBeShown: %s, isReady: %s]", new Object[] { Integer.valueOf(localahpl.jdField_a_of_type_Int), Boolean.valueOf(localahpl.c), Boolean.valueOf(paramBoolean) }));
+    paramMessage = paramMessage.obj;
+    try
+    {
+      this.a.a((List)paramMessage);
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      QLog.e("TroopNotifyAndRecommendView", 1, "handleRecommendData wrong");
     }
   }
 }

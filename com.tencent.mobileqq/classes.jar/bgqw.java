@@ -1,18 +1,13 @@
-import java.lang.reflect.Field;
+import com.tencent.qqmini.sdk.core.widget.CanvasView;
 
-public final class bgqw
+public class bgqw
 {
-  public final int a;
-  public final String a;
-  public final Field a;
+  public float a;
+  public int a;
+  public float b;
+  public float c;
   
-  public bgqw(String paramString, int paramInt, Field paramField)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangReflectField = paramField;
-    paramField.setAccessible(true);
-  }
+  public bgqw(CanvasView paramCanvasView) {}
 }
 
 

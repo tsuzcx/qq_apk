@@ -1,20 +1,19 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-public class azqc
+public final class azqc
 {
-  private static HashMap<String, azqb> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public static HashMap<String, azqb> a()
+  public static void a(Context paramContext, boolean paramBoolean)
   {
-    return jdField_a_of_type_JavaUtilHashMap;
+    paramContext = paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).edit();
+    paramContext.putBoolean("SUPPORT_MTA", paramBoolean);
+    paramContext.commit();
   }
   
-  public static List<String> a()
+  public static boolean a(Context paramContext, boolean paramBoolean)
   {
-    return jdField_a_of_type_JavaUtilList;
+    return paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).getBoolean("SUPPORT_MTA", paramBoolean);
   }
 }
 

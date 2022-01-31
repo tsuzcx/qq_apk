@@ -1,294 +1,82 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
-import com.tencent.open.model.AppInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.open.agent.BindGroupConfirmActivity;
+import com.tencent.open.agent.BindGroupConfirmActivity.2.1;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
 import java.util.List;
 
 public class bfdd
-  extends BaseAdapter
-  implements View.OnClickListener
+  extends Handler
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final IphoneTitleBarFragment jdField_a_of_type_ComTencentMobileqqFragmentIphoneTitleBarFragment;
-  @NonNull
-  private List<AppInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private List<Integer> b;
+  public bfdd(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
   
-  public bfdd(IphoneTitleBarFragment paramIphoneTitleBarFragment, QQAppInterface paramQQAppInterface)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFragmentIphoneTitleBarFragment = paramIphoneTitleBarFragment;
-    this.jdField_a_of_type_AndroidAppActivity = paramIphoneTitleBarFragment.getActivity();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.b = new ArrayList();
-  }
-  
-  private void a(int paramInt, View paramView, bfdf parambfdf)
-  {
-    parambfdf.jdField_a_of_type_Int = paramInt;
-    parambfdf.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    AppInfo localAppInfo = (AppInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    String str = localAppInfo.b();
-    paramView = str;
-    if (str == null) {
-      paramView = "";
-    }
-    parambfdf.jdField_a_of_type_AndroidWidgetTextView.setText(paramView.trim());
-    parambfdf.jdField_b_of_type_AndroidWidgetTextView.setText(localAppInfo.a());
-    parambfdf.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-    a(parambfdf, localAppInfo);
-  }
-  
-  private void a(View paramView)
-  {
-    bfdf localbfdf = (bfdf)paramView.getTag();
-    if (this.jdField_a_of_type_Boolean)
+    if (paramMessage == null) {}
+    do
     {
-      paramView = (CheckBox)paramView.findViewById(2131370843);
-      boolean bool;
-      if (!paramView.isChecked())
+      return;
+      switch (paramMessage.what)
       {
-        bool = true;
-        paramView.setChecked(bool);
-        if (!paramView.isChecked()) {
-          break label155;
-        }
-        this.b.add(Integer.valueOf(localbfdf.jdField_a_of_type_Int));
-        label65:
-        if (this.b.size() <= 0) {
-          break label178;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqFragmentIphoneTitleBarFragment.rightViewText.setEnabled(true);
-      }
-      for (;;)
-      {
-        paramView = (AppInfo)this.jdField_a_of_type_JavaUtilList.get(localbfdf.jdField_a_of_type_Int);
-        if (paramView != null) {
-          paramView.a(bool);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("AuthorityControlAdapter", 2, "onLayoutAppItemClick: invoked.  mCheckedPositions: " + this.b);
-        }
+      default: 
         return;
-        bool = false;
-        break;
-        label155:
-        int i = localbfdf.jdField_a_of_type_Int;
-        this.b.remove(Integer.valueOf(i));
-        break label65;
-        label178:
-        this.jdField_a_of_type_ComTencentMobileqqFragmentIphoneTitleBarFragment.rightViewText.setEnabled(false);
+      case 3: 
+        paramMessage = (GetAppInfoProto.GetAppinfoResponse)paramMessage.obj;
       }
-    }
-    paramView = (AppInfo)this.jdField_a_of_type_JavaUtilList.get(localbfdf.jdField_a_of_type_Int);
-    AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_AndroidAppActivity, paramView);
-  }
-  
-  private void a(bfdf parambfdf)
-  {
-    parambfdf.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-    parambfdf.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-  }
-  
-  private void a(bfdf parambfdf, View paramView)
-  {
-    parambfdf.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369145);
-    parambfdf.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131370843));
-    parambfdf.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367653));
-    parambfdf.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362708));
-    parambfdf.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362714));
-    parambfdf.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362698));
-    parambfdf.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370070);
-  }
-  
-  private void a(bfdf parambfdf, AppInfo paramAppInfo)
-  {
-    Object localObject1 = paramAppInfo.c();
-    Object localObject2 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838561);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-      parambfdf.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    } while (!paramMessage.iconsURL.has());
+    int i = 0;
+    int j = 0;
+    int m = 0;
+    label58:
+    GetAppInfoProto.MsgIconsurl localMsgIconsurl;
+    if (i < paramMessage.iconsURL.get().size()) {
+      localMsgIconsurl = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
     }
     for (;;)
     {
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject2);
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject2);
-      localObject2 = parambfdf.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
-      localURLDrawableOptions.mRequestHeight = ((ViewGroup.LayoutParams)localObject2).height;
-      localURLDrawableOptions.mRequestWidth = ((ViewGroup.LayoutParams)localObject2).width;
       try
       {
-        localObject1 = URLDrawable.getDrawable((String)localObject1, localURLDrawableOptions);
-        ((URLDrawable)localObject1).setTag(bcuq.b(((ViewGroup.LayoutParams)localObject2).width, ((ViewGroup.LayoutParams)localObject2).height, xod.a(this.jdField_a_of_type_AndroidAppActivity, 6.0F)));
-        ((URLDrawable)localObject1).setDecodeHandler(bcuq.i);
-        parambfdf.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
-        label135:
-        parambfdf.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramAppInfo.a());
-        return;
-        parambfdf.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
-      catch (Throwable localThrowable)
-      {
-        break label135;
-      }
-    }
-  }
-  
-  private void b(bfdf parambfdf)
-  {
-    parambfdf.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-    parambfdf.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
-  @NonNull
-  public List<AppInfo> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
-    {
-      int i = ((Integer)localIterator.next()).intValue();
-      if ((i < this.jdField_a_of_type_JavaUtilList.size()) && (i >= 0)) {
-        localArrayList.add((AppInfo)this.jdField_a_of_type_JavaUtilList.get(i));
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    this.b.clear();
-    notifyDataSetChanged();
-  }
-  
-  public void a(@NonNull List<AppInfo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.b.clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((AppInfo)localIterator.next()).a(false);
-    }
-    notifyDataSetChanged();
-  }
-  
-  public void b(List<AppInfo> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    label124:
-    for (;;)
-    {
-      AppInfo localAppInfo1;
-      if (localIterator1.hasNext())
-      {
-        localAppInfo1 = (AppInfo)localIterator1.next();
-        Iterator localIterator2 = paramList.iterator();
-        AppInfo localAppInfo2;
-        do
+        k = Integer.parseInt(localMsgIconsurl.size.get());
+        if (k >= 100)
         {
-          if (!localIterator2.hasNext()) {
+          paramMessage = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
+          if (paramMessage == null) {
             break;
           }
-          localAppInfo2 = (AppInfo)localIterator2.next();
-        } while (localAppInfo1.a() != localAppInfo2.a());
-      }
-      for (int i = 0;; i = 1)
-      {
-        if (i == 0) {
-          break label124;
+          ThreadManager.executeOnNetWorkThread(new BindGroupConfirmActivity.2.1(this, paramMessage));
+          return;
         }
-        localArrayList.add(localAppInfo1);
-        break;
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
-        return;
       }
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramViewGroup = new bfdf(null);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558671, null);
-      a(paramViewGroup, paramView);
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      a(paramInt, paramView, paramViewGroup);
-      if (!this.jdField_a_of_type_Boolean) {
+      catch (NumberFormatException localNumberFormatException)
+      {
+        int k = 0;
+        continue;
+        int n = m;
+        if (k > m)
+        {
+          j = i;
+          n = k;
+        }
+        i += 1;
+        m = n;
+      }
+      break label58;
+      paramMessage = (Bitmap)paramMessage.obj;
+      Bitmap localBitmap = bfii.a(this.a, paramMessage, 50, 50);
+      paramMessage.recycle();
+      if (localBitmap == null) {
         break;
       }
-      b(paramViewGroup);
-      return paramView;
-      paramViewGroup = (bfdf)paramView.getTag();
-    }
-    a(paramViewGroup);
-    return paramView;
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
+      this.a.b.setImageBitmap(localBitmap);
       return;
+      i = j;
     }
-    a(paramView);
   }
 }
 

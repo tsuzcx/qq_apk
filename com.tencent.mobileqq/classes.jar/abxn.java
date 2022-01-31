@@ -1,17 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment.UrlNotauthorizedError;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class abxn
-  implements DialogInterface.OnClickListener
+class abxn
+  extends SimpleObserver<auef>
 {
-  public abxn(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  abxn(abxj paramabxj, abxt paramabxt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(auef paramauef)
   {
-    azmj.b(this.a.app, "P_CliOper", "Safe_AntiFraud", this.a.app.getCurrentAccountUin(), "AlertDialog", "UserClick", 0, AddFriendLogicActivity.d(this.a), "", "", "", "");
-    this.a.finish();
+    abxt localabxt = this.jdField_a_of_type_Abxt;
+    if (paramauef.c == 1) {}
+    for (int i = 2;; i = 3)
+    {
+      localabxt.a(paramauef, i);
+      return;
+    }
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
+    }
+    int i;
+    if ((paramError instanceof VerifyUrlJobSegment.UrlNotauthorizedError)) {
+      i = 4;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Abxt.a(null, i);
+      return;
+      if ((paramError instanceof AppInfoError)) {
+        i = ((AppInfoError)paramError).type;
+      } else {
+        i = 0;
+      }
+    }
   }
 }
 

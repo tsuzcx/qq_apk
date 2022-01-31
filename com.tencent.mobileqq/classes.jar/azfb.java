@@ -1,18 +1,12 @@
-import android.os.Handler;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.12.1;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class azfb
-  implements afgh
+public abstract interface azfb
 {
-  azfb(azey paramazey) {}
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat);
   
-  public void a()
-  {
-    if (azey.a(this.a) == null) {
-      azey.a(this.a, new Handler());
-    }
-    azey.a(this.a).postDelayed(new RedBagVideoManager.12.1(this), 1000L);
-  }
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo, int paramInt);
+  
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean);
 }
 
 

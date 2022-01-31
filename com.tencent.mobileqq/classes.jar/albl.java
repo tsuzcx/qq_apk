@@ -1,11 +1,10 @@
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-
-class albl
+public abstract interface albl
 {
-  BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
-  ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream;
-  boolean jdField_a_of_type_Boolean;
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void b();
 }
 
 

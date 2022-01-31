@@ -1,43 +1,29 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.hotpic.HotPicTagInfo;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 public class aspm
+  implements Observer
 {
-  private SparseArray<HotPicTagInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private ArrayList<HotPicTagInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  protected void a() {}
   
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
+  protected void b() {}
   
-  public HotPicTagInfo a(int paramInt)
-  {
-    return (HotPicTagInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
+  protected void c() {}
   
-  public List<HotPicTagInfo> a()
+  public void update(Observable paramObservable, Object paramObject)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-  }
-  
-  public void a(HotPicTagInfo paramHotPicTagInfo)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramHotPicTagInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramHotPicTagInfo.tagId, paramHotPicTagInfo);
-  }
-  
-  public HotPicTagInfo b(int paramInt)
-  {
-    return (HotPicTagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    switch (((Integer)paramObject).intValue())
+    {
+    default: 
+      return;
+    case 1: 
+      a();
+      return;
+    case 2: 
+      b();
+      return;
+    }
+    c();
   }
 }
 

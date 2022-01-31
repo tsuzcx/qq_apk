@@ -1,19 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.aeeditor.module.toolbar.VideoEditToolBar;
+import java.util.concurrent.CountDownLatch;
 
-public class bllf
-  implements Animation.AnimationListener
+final class bllf
+  implements blny
 {
-  public bllf(VideoEditToolBar paramVideoEditToolBar) {}
+  bllf(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(boolean paramBoolean)
   {
-    this.a.setVisibility(0);
+    this.jdField_a_of_type_ArrayOfBoolean[0] = paramBoolean;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
 }
 

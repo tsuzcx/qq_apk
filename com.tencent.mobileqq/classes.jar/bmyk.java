@@ -1,32 +1,61 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
+import android.view.MotionEvent;
 
 public class bmyk
 {
-  TroopInfo a;
-  public boolean a;
-  
-  public bmyk(boolean paramBoolean, TroopInfo paramTroopInfo)
+  public static float a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
+    paramFloat1 = (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
+    if (!Float.isNaN(paramFloat1)) {
+      return paramFloat1;
+    }
+    return 1.0F;
   }
   
-  public static ArrayList<bmyk> a(ArrayList<TroopInfo> paramArrayList, ArrayList<String> paramArrayList1)
+  public static float a(MotionEvent paramMotionEvent)
   {
-    ArrayList localArrayList = new ArrayList(paramArrayList.size());
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      TroopInfo localTroopInfo = (TroopInfo)paramArrayList.get(i);
-      bmyk localbmyk = new bmyk(false, localTroopInfo);
-      if ((paramArrayList1 != null) && (paramArrayList1.contains(localTroopInfo.troopuin))) {
-        localbmyk.jdField_a_of_type_Boolean = true;
-      }
-      localArrayList.add(localbmyk);
-      i += 1;
+    if (paramMotionEvent.getPointerCount() > 1) {
+      return a(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1));
     }
-    return localArrayList;
+    return 1.0F;
+  }
+  
+  public static float[] a(MotionEvent paramMotionEvent)
+  {
+    float[] arrayOfFloat = new float[2];
+    if (paramMotionEvent.getPointerCount() > 1)
+    {
+      arrayOfFloat[0] = ((paramMotionEvent.getX(0) + paramMotionEvent.getX(1)) / 2.0F);
+      arrayOfFloat[1] = ((paramMotionEvent.getY(0) + paramMotionEvent.getY(1)) / 2.0F);
+    }
+    return arrayOfFloat;
+  }
+  
+  public static float b(float paramFloat1, float paramFloat2)
+  {
+    float f = (float)Math.toDegrees(Math.asin(paramFloat2 / a(paramFloat1, paramFloat2)));
+    if (!Float.isNaN(f))
+    {
+      if ((paramFloat2 >= 0.0F) && (paramFloat1 >= 0.0F)) {}
+      do
+      {
+        return f;
+        if ((paramFloat2 >= 0.0F) && (paramFloat1 <= 0.0F)) {
+          return 180.0F - f;
+        }
+      } while ((paramFloat2 <= 0.0F) && (paramFloat1 >= 0.0F));
+      if ((paramFloat2 <= 0.0F) && (paramFloat1 <= 0.0F)) {
+        return -180.0F - f;
+      }
+    }
+    return 0.0F;
+  }
+  
+  public static float b(MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getPointerCount() > 1) {
+      return b(paramMotionEvent.getX(1) - paramMotionEvent.getX(0), paramMotionEvent.getY(1) - paramMotionEvent.getY(0));
+    }
+    return 0.0F;
   }
 }
 

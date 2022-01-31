@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import xod;
-import xrh;
+import xsm;
+import xvq;
 
 public abstract class AbsEmptyView
   extends FrameLayout
@@ -71,8 +71,8 @@ public abstract class AbsEmptyView
         this.jdField_c_of_type_AndroidViewView.setVisibility(0);
         this.jdField_b_of_type_AndroidViewView.setVisibility(8);
         this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131380179));
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131380163));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131380237));
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131380221));
         return;
       }
       if (paramInt == 2)
@@ -80,7 +80,7 @@ public abstract class AbsEmptyView
         this.jdField_a_of_type_AndroidViewView.setVisibility(8);
         this.jdField_b_of_type_AndroidViewView.setVisibility(0);
         this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377844));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377898));
         this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363337));
         return;
       }
@@ -93,15 +93,15 @@ public abstract class AbsEmptyView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131561537, this);
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131369762);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131377837);
-    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131377836);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131375687));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377844));
+    LayoutInflater.from(paramContext).inflate(2131561555, this);
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131369781);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131377891);
+    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131377890);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131375738));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377898));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363337));
-    this.d = super.findViewById(2131378312);
-    this.jdField_a_of_type_Int = xod.a(getContext());
+    this.d = super.findViewById(2131378366);
+    this.jdField_a_of_type_Int = xsm.a(getContext());
     this.jdField_b_of_type_Int = a();
     a(0, true);
     super.postDelayed(new AbsEmptyView.2(this), 500L);
@@ -126,7 +126,7 @@ public abstract class AbsEmptyView
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(null);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new xrh(this, paramOnClickListener));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new xvq(this, paramOnClickListener));
   }
 }
 

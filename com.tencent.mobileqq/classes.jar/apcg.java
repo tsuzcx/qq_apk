@@ -1,13 +1,6 @@
-import org.json.JSONObject;
-
-public abstract class apcg
+public abstract interface apcg
 {
-  public String a;
-  public boolean a = true;
-  
-  public abstract JSONObject a();
-  
-  public abstract boolean a();
+  public abstract void a(apdh paramapdh, apcf paramapcf);
 }
 
 

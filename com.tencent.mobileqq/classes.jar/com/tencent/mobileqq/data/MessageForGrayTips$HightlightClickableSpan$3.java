@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import amij;
+import ammy;
 import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -13,10 +13,10 @@ class MessageForGrayTips$HightlightClickableSpan$3
   
   public void run()
   {
-    amij.a((QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.this$0).get());
+    ammy.a((QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.this$0).get());
     try
     {
-      MessageForGrayTips.HightlightClickableSpan.access$100(this.this$0).startActivity(amij.a);
+      MessageForGrayTips.HightlightClickableSpan.access$100(this.this$0).startActivity(ammy.a);
       return;
     }
     catch (Exception localException)

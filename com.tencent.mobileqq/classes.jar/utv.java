@@ -1,19 +1,62 @@
+import android.support.v4.util.LruCache;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.HashMap;
+
 public class utv
 {
-  public final long a;
-  public final utt a;
-  public final long b;
+  private static LruCache<String, CharSequence> jdField_a_of_type_AndroidSupportV4UtilLruCache;
+  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  private static utv jdField_a_of_type_Utv;
+  public String a;
   
-  public utv(utt paramutt, long paramLong1, long paramLong2)
+  public utv()
   {
-    this.jdField_a_of_type_Utt = paramutt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public String toString()
+  public static utv a()
   {
-    return "Progress{intput=" + this.jdField_a_of_type_Utt + ", downloadBytes=" + this.jdField_a_of_type_Long + ", totalBytes=" + this.b + '}';
+    if (jdField_a_of_type_Utv == null)
+    {
+      jdField_a_of_type_Utv = new utv();
+      jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(150);
+      jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    return jdField_a_of_type_Utv;
+  }
+  
+  public static void a()
+  {
+    if (jdField_a_of_type_AndroidSupportV4UtilLruCache != null) {
+      jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
+    }
+  }
+  
+  public CharSequence a(String paramString)
+  {
+    return (CharSequence)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+  }
+  
+  public void a(CommentEntry paramCommentEntry)
+  {
+    if (paramCommentEntry == null) {
+      return;
+    }
+    paramCommentEntry = paramCommentEntry.feedId + paramCommentEntry.replyTime;
+    if (jdField_a_of_type_JavaUtilHashMap.get(paramCommentEntry) == null)
+    {
+      jdField_a_of_type_JavaUtilHashMap.put(paramCommentEntry, Integer.valueOf(1));
+      return;
+    }
+    int i = ((Integer)jdField_a_of_type_JavaUtilHashMap.get(paramCommentEntry)).intValue();
+    jdField_a_of_type_JavaUtilHashMap.put(paramCommentEntry, Integer.valueOf(i + 1));
+  }
+  
+  public void a(String paramString, CharSequence paramCharSequence)
+  {
+    if (a(paramString) == null) {
+      jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, paramCharSequence);
+    }
   }
 }
 

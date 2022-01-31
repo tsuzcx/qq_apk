@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import alnc;
-import alvc;
-import amcz;
+import alrr;
+import alzr;
+import amho;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.SystemClock;
-import awbw;
-import awbx;
+import awgf;
+import awgg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -19,7 +19,7 @@ import mqq.app.MobileQQ;
 public class CheckPublicAccount
   extends AsyncStep
 {
-  alvc a;
+  alzr a;
   
   public int a()
   {
@@ -46,14 +46,14 @@ public class CheckPublicAccount
       long l = System.currentTimeMillis();
       if (l - ((SharedPreferences)localObject).getLong("eqqlist_login_update_ts", 0L) > 86400000L)
       {
-        alnc localalnc = (alnc)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(21);
-        if (localalnc != null) {
-          localalnc.a(SystemClock.uptimeMillis());
+        alrr localalrr = (alrr)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(21);
+        if (localalrr != null) {
+          localalrr.a(SystemClock.uptimeMillis());
         }
         ((SharedPreferences)localObject).edit().putLong("eqqlist_login_update_ts", l);
       }
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getEntityManagerFactory().createEntityManager();
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a().a((awbw)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a().a((awgf)localObject);
       if (bool) {
         return 2;
       }
@@ -63,19 +63,19 @@ public class CheckPublicAccount
   
   void b()
   {
-    if (this.jdField_a_of_type_Alvc == null)
+    if (this.jdField_a_of_type_Alzr == null)
     {
-      this.jdField_a_of_type_Alvc = new amcz(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Alvc);
+      this.jdField_a_of_type_Alzr = new amho(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Alzr);
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Alvc != null)
+    if (this.jdField_a_of_type_Alzr != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Alvc);
-      this.jdField_a_of_type_Alvc = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Alzr);
+      this.jdField_a_of_type_Alzr = null;
     }
   }
 }

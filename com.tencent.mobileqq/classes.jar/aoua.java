@@ -1,56 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.Context;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class aoua
-  extends aofy<aotz>
+class aoua
+  implements aoth
 {
-  public static aotz a()
+  aoua(aotz paramaotz) {}
+  
+  public void a(Context paramContext)
   {
-    return (aotz)aogj.a().a(451);
-  }
-  
-  public int a()
-  {
-    return 451;
-  }
-  
-  @NonNull
-  public aotz a(int paramInt)
-  {
-    return new aotz();
-  }
-  
-  @Nullable
-  public aotz a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return aotz.a(paramArrayOfaogf);
-    }
-    return null;
-  }
-  
-  public Class<aotz> a()
-  {
-    return aotz.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aotz paramaotz) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    VasWebviewUtil.openQQBrowserWithoutAD(paramContext, aotz.a(this.a), -1L, null, false, 0);
   }
 }
 

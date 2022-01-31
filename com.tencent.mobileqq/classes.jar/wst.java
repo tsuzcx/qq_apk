@@ -1,24 +1,41 @@
-public abstract interface wst
+public class wst<T>
+  extends wss
 {
-  public abstract void a(String paramString1, String paramString2);
+  public T a;
+  public String a;
+  public wsv<T> a;
   
-  public abstract void a(String paramString1, String paramString2, Throwable paramThrowable);
+  public wst(wsv<T> paramwsv)
+  {
+    this.jdField_a_of_type_JavaLangString = "GetResultSimpleStep";
+    this.jdField_a_of_type_Wsv = paramwsv;
+  }
   
-  public abstract boolean a(int paramInt);
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
   
-  public abstract void b(String paramString1, String paramString2);
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
   
-  public abstract void b(String paramString1, String paramString2, Throwable paramThrowable);
+  public void a()
+  {
+    if (this.jdField_a_of_type_Wsv != null) {
+      this.jdField_a_of_type_Wsv.a(this.jdField_a_of_type_JavaLangObject);
+    }
+  }
   
-  public abstract void c(String paramString1, String paramString2);
+  public void a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
   
-  public abstract void c(String paramString1, String paramString2, Throwable paramThrowable);
+  public void b() {}
   
-  public abstract void d(String paramString1, String paramString2);
-  
-  public abstract void d(String paramString1, String paramString2, Throwable paramThrowable);
-  
-  public abstract void e(String paramString1, String paramString2);
+  public void c() {}
 }
 
 

@@ -1,23 +1,80 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troopgift.RadioViewPager;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.FrameLayout;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class yqq
-  implements View.OnClickListener
+  extends Handler
 {
-  public yqq(RadioViewPager paramRadioViewPager, Context paramContext, String paramString) {}
+  private WeakReference<TribeVideoPlugin> a;
   
-  public void onClick(View paramView)
+  public yqq(TribeVideoPlugin paramTribeVideoPlugin)
   {
-    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("selfSet_leftViewText", alpo.a(2131713080));
-    paramView.putExtra("hide_more_button", true);
-    paramView.putExtra("hide_operation_bar", true);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    this.a = new WeakReference(paramTribeVideoPlugin);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.a.get();
+    Object localObject = paramMessage.obj;
+    if ((localTribeVideoPlugin == null) || (localObject == null) || (!(localObject instanceof String))) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              switch (paramMessage.what)
+              {
+              default: 
+                return;
+              case 1: 
+                TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, true);
+                return;
+              case 2: 
+                TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, false);
+                return;
+              case 3: 
+                paramMessage = (yqt)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+              }
+            } while ((paramMessage == null) || (yqt.c(paramMessage)));
+            if (QLog.isColorLevel()) {
+              QLog.d("TribeVideoPlugin", 2, "sdk player is not prepared");
+            }
+            TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, 5);
+            yqt.b(paramMessage, true);
+            return;
+            paramMessage = (yqt)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+          } while (paramMessage == null);
+          if ((TribeVideoPlugin.a(localTribeVideoPlugin) == 0) && (!TribeVideoPlugin.a(localTribeVideoPlugin)))
+          {
+            QLog.d("TribeVideoPlugin", 2, "MSG_SHOW_PLAYER_LAYOUT plugin.mPlayMode == PARAM_RESULT_PLAY_FRONT videoWrapper.mPlayerID = " + yqt.a(paramMessage));
+            TribeVideoPlugin.a(localTribeVideoPlugin).bringToFront();
+            TribeVideoPlugin.a(localTribeVideoPlugin, true);
+          }
+          TribeVideoPlugin.a(localTribeVideoPlugin, yqt.a(paramMessage), 1);
+          return;
+          paramMessage = (yqt)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+        } while (paramMessage == null);
+        TribeVideoPlugin.a(localTribeVideoPlugin, paramMessage);
+        return;
+        paramMessage = (yqt)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+      } while (paramMessage == null);
+      TribeVideoPlugin.b(localTribeVideoPlugin, paramMessage);
+      return;
+      paramMessage = (yqt)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+    } while (paramMessage == null);
+    TribeVideoPlugin.c(localTribeVideoPlugin, paramMessage);
+    return;
+    TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject);
   }
 }
 

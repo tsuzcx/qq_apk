@@ -1,37 +1,73 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.biz.qqstory.database.HotSortVideoEntry;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class wek
-  implements uni<wem, wen>
+public class wek
+  extends umf<QQStoryShareGroupProfileActivity, utf>
 {
-  wek(wej paramwej, boolean paramBoolean) {}
-  
-  public void a(@NonNull wem paramwem, @Nullable wen arg2, @NonNull ErrorMessage paramErrorMessage)
+  public wek(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    paramwem = new wel(paramErrorMessage, wej.a(this.jdField_a_of_type_Wej));
-    paramwem.jdField_b_of_type_Boolean = false;
-    paramwem.jdField_a_of_type_Boolean = wej.a(this.jdField_a_of_type_Wej);
-    paramwem.jdField_a_of_type_Int = wej.a(this.jdField_a_of_type_Wej);
-    if ((??? == null) || (paramErrorMessage.isFail()))
-    {
-      uht.a().dispatch(paramwem);
-      return;
-    }
-    paramwem.jdField_c_of_type_Int = ???.jdField_c_of_type_Int;
-    paramwem.jdField_b_of_type_Int = ???.jdField_b_of_type_Int;
-    paramwem.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
-    paramwem.jdField_c_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    ((urd)urr.a(15)).a(paramwem.jdField_a_of_type_JavaUtilList, wej.a(this.jdField_a_of_type_Wej), wej.c(this.jdField_a_of_type_Wej), true);
-    synchronized (this.jdField_a_of_type_Wej)
-    {
-      wej.a(this.jdField_a_of_type_Wej, true);
-      uht.a().dispatch(paramwem);
-      wsv.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from network: %s", paramwem);
-      return;
-    }
+    super(paramQQStoryShareGroupProfileActivity);
   }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull utf paramutf)
+  {
+    if ((paramutf.b != 3) || (paramutf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null)) {}
+    ArrayList localArrayList;
+    label68:
+    do
+    {
+      return;
+      int i;
+      wfk localwfk;
+      HotSortVideoEntry localHotSortVideoEntry;
+      if (paramutf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike == 1)
+      {
+        i = 1;
+        localwfk = paramQQStoryShareGroupProfileActivity.a.a;
+        Object localObject = paramQQStoryShareGroupProfileActivity.a.a.a;
+        localArrayList = new ArrayList();
+        localObject = ((List)localObject).iterator();
+        do
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          localHotSortVideoEntry = (HotSortVideoEntry)((Iterator)localObject).next();
+        } while (!localHotSortVideoEntry.feedId.equals(paramutf.jdField_a_of_type_JavaLangString));
+        if (i == 0) {
+          break label164;
+        }
+      }
+      for (int j = localHotSortVideoEntry.likeCount + 1;; j = localHotSortVideoEntry.likeCount - 1)
+      {
+        localHotSortVideoEntry.likeCount = j;
+        if (localHotSortVideoEntry.likeCount < 0) {
+          localHotSortVideoEntry.likeCount = 0;
+        }
+        localwfk.a(localHotSortVideoEntry);
+        localArrayList.add(localHotSortVideoEntry);
+        break label68;
+        i = 0;
+        break;
+      }
+    } while (localArrayList.size() <= 0);
+    label164:
+    ((uvh)uwa.a(25)).a(localArrayList);
+    paramQQStoryShareGroupProfileActivity.d = true;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return utf.class;
+  }
+  
+  public void b(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull utf paramutf) {}
 }
 
 

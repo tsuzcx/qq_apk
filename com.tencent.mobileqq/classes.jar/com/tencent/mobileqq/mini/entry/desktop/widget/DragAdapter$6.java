@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.entry.desktop.widget;
 
-import alpo;
-import aokd;
+import alud;
+import aoom;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
 
@@ -12,7 +12,7 @@ class DragAdapter$6
   
   public void run()
   {
-    QQToast.a(DragAdapter.access$600(this.this$0), alpo.a(2131703896) + aokd.c() + alpo.a(2131703895), 0).a();
+    QQToast.a(DragAdapter.access$600(this.this$0), alud.a(2131703908) + aoom.c() + alud.a(2131703907), 0).a();
     if (this.val$overTopTargetIndex != -1)
     {
       this.this$0.mData.remove(this.val$overTopTargetIndex);

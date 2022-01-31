@@ -1,8 +1,17 @@
-public abstract interface amlm
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Comparator;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+
+class amlm
+  implements Comparator<msg_comm.Msg>
 {
-  public abstract void a(int paramInt);
+  amlm(amll paramamll) {}
   
-  public abstract boolean a(int paramInt);
+  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
+  {
+    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
+  }
 }
 
 

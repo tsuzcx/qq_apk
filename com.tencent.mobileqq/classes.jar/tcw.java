@@ -63,7 +63,7 @@ class tcw
       for (;;)
       {
         paramthe = this.jdField_a_of_type_Tcu.a(new Object[] { Integer.valueOf(9), Integer.valueOf(paramthe.b), paramthe.jdField_a_of_type_JavaLangString, localObject1, Integer.valueOf(this.jdField_a_of_type_Tcu.hashCode()), Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.id });
-        uht.a().dispatch(paramthe);
+        umc.a().dispatch(paramthe);
         return;
         tcu.a(this.jdField_a_of_type_Tcu).put(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.id, localObject1);
         break;

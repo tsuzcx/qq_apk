@@ -1,19 +1,23 @@
-import com.tencent.widget.RangeButtonView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.widget.DynamicGridView;
 
 public class bhwc
+  extends AnimatorListenerAdapter
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
-  public int d;
-  public float e;
-  public float f;
+  public bhwc(DynamicGridView paramDynamicGridView) {}
   
-  public bhwc(RangeButtonView paramRangeButtonView) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    DynamicGridView.b(this.a, false);
+    DynamicGridView.a(this.a);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    DynamicGridView.b(this.a, true);
+    DynamicGridView.a(this.a);
+  }
 }
 
 

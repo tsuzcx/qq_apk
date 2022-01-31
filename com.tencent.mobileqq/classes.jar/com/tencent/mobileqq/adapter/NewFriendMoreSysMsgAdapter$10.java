@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.adapter;
 
-import akfo;
-import alvf;
-import avqe;
-import avqp;
+import akkd;
+import alzu;
+import avun;
+import avuy;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class NewFriendMoreSysMsgAdapter$10
   implements Runnable
 {
-  public NewFriendMoreSysMsgAdapter$10(akfo paramakfo, avqe paramavqe) {}
+  public NewFriendMoreSysMsgAdapter$10(akkd paramakkd, avun paramavun) {}
   
   public void run()
   {
-    ((alvf)this.this$0.a.getManager(257)).b(((avqp)this.a).a);
+    ((alzu)this.this$0.a.getManager(257)).b(((avuy)this.a).a);
     this.this$0.a.runOnUiThread(new NewFriendMoreSysMsgAdapter.10.1(this));
   }
 }

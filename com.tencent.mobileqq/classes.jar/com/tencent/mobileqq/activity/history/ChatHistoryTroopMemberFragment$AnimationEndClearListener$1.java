@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import ahyr;
+import aidg;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
@@ -8,7 +8,7 @@ import android.widget.RelativeLayout.LayoutParams;
 public class ChatHistoryTroopMemberFragment$AnimationEndClearListener$1
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$AnimationEndClearListener$1(ahyr paramahyr) {}
+  public ChatHistoryTroopMemberFragment$AnimationEndClearListener$1(aidg paramaidg) {}
   
   public void run()
   {
@@ -35,9 +35,9 @@ public class ChatHistoryTroopMemberFragment$AnimationEndClearListener$1
       this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
       this.a.jdField_a_of_type_AndroidViewView.setTag("left");
       continue;
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130849050);
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130849123);
       continue;
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130849049);
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130849122);
       continue;
       this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
       continue;

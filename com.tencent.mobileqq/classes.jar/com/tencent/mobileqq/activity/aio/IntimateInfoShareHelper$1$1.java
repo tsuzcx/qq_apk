@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aens;
-import bdit;
+import aesh;
+import bdnc;
 
 class IntimateInfoShareHelper$1$1
   implements Runnable
@@ -10,7 +10,7 @@ class IntimateInfoShareHelper$1$1
   
   public void run()
   {
-    aens.a(this.a.this$0).show();
+    aesh.a(this.a.this$0).show();
   }
 }
 

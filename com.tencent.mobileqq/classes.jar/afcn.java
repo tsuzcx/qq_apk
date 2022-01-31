@@ -1,8 +1,20 @@
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface afcn
+class afcn
+  extends bbgz
 {
-  public abstract void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo);
+  afcn(afcm paramafcm, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, SessionInfo paramSessionInfo, String paramString)
+  {
+    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramSessionInfo, paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.a(true);
+  }
 }
 
 

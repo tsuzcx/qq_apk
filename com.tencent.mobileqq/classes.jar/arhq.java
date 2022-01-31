@@ -1,14 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class arhq
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  arhq(arhp paramarhp) {}
+  arhq(arho paramarho) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.e();
+    if (paramIntent.getAction().equals("android.media.AUDIO_BECOMING_NOISY")) {
+      this.a.a();
+    }
   }
 }
 

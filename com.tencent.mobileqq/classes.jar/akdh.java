@@ -1,24 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class akdh
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<akdd> a;
+  akdh(akdf paramakdf) {}
   
-  public akdh(akdd paramakdd)
-  {
-    this.a = new WeakReference(paramakdd);
-  }
-  
-  public void onClick(View paramView)
-  {
-    akdd localakdd = (akdd)this.a.get();
-    if (localakdd != null) {
-      localakdd.onClick(paramView);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

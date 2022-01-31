@@ -1,7 +1,7 @@
 import com.tencent.qphone.base.util.QLog;
 
 public class suj
-  extends alvc
+  extends alzr
 {
   sue jdField_a_of_type_Sue = null;
   

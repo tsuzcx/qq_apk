@@ -1,52 +1,32 @@
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.startup.step.UpdateAvSo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.task.AsyncTask.1;
 
-public final class bhlt
+public abstract class bhlt
+  extends bhlu
 {
-  public static boolean a;
-  
-  public static File a(File paramFile)
+  public bhlt(Context paramContext, bgun parambgun)
   {
-    File localFile = new File(paramFile.getAbsolutePath() + ".shp");
-    if (paramFile.exists()) {
-      paramFile.renameTo(localFile);
-    }
-    return localFile;
+    super(paramContext, 2, parambgun);
   }
   
-  public static String a(File paramFile)
+  public abstract void a();
+  
+  public boolean b()
   {
-    return paramFile.getAbsolutePath() + ".shp";
+    return Looper.getMainLooper().getThread().getId() == Thread.currentThread().getId();
   }
   
-  public static boolean a()
+  public void f()
   {
-    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.vip_individuation.name());
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    if (!b())
     {
-      localObject = ((String)localObject).split("\\|");
-      if ((localObject != null) && (localObject.length >= 2) && (!"0".equals(localObject[1]))) {
-        return true;
-      }
+      a();
+      return;
     }
-    return false;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    boolean bool = a();
-    if ((!a) && (bool)) {
-      a = UpdateAvSo.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSharpPUtil", 2, "isSharpPAvaliable: " + a);
-    }
-    return (a) && (bool);
+    ThreadManager.a().post(new AsyncTask.1(this));
   }
 }
 

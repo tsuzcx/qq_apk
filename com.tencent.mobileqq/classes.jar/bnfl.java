@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class bnfl
-  implements DialogInterface.OnClickListener
+class bnfl
+  extends bmez
 {
-  public bnfl(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  private bnfl(bnfj parambnfj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
+    }
+    if ((bnfj.a(this.a) != null) && (bnfj.a(this.a).hasMessages(paramInt))) {
+      bnfj.a(this.a, paramBoolean, paramArrayList, paramInt);
+    }
   }
 }
 

@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
-
-public class axyf
-  implements DialogInterface.OnClickListener
+class axyf
 {
-  public axyf(SignatureEditFragment paramSignatureEditFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  private static final axyd a = new axyd(null);
 }
 
 

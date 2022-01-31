@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.newfriend.connections;
 
-import ahjd;
+import ahns;
 
 public class ConnectsExplorationFriendAdapter$2
   implements Runnable
 {
-  public ConnectsExplorationFriendAdapter$2(ahjd paramahjd) {}
+  public ConnectsExplorationFriendAdapter$2(ahns paramahns) {}
   
   public void run()
   {

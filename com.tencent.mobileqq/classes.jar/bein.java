@@ -1,58 +1,30 @@
+import android.graphics.Rect;
 import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.widget.ADView;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bein
-  implements bese
+class bein
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bein(ADView paramADView, LinearLayout paramLinearLayout) {}
+  bein(beim parambeim, View paramView) {}
   
-  public void a(int paramInt)
+  public void onGlobalLayout()
   {
-    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    int i = 0;
-    View localView;
-    while (i < j)
-    {
-      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if (localView != null) {
-        localView.setEnabled(false);
-      }
-      i += 1;
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - localRect.height();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SwiftBrowserScreenShotHandler", 2, "heightDiff:" + i);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.f) {
-      if (paramInt == -1) {
-        i = j - 1;
-      }
-    }
-    for (;;)
+    if (i > 150)
     {
-      if ((i > -1) && (i < j))
-      {
-        localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-        if (localView != null) {
-          localView.setEnabled(true);
-        }
-      }
+      this.jdField_a_of_type_Beim.c = true;
+      this.jdField_a_of_type_Beim.a(false, 0);
+    }
+    while (!this.jdField_a_of_type_Beim.c) {
       return;
-      i = paramInt;
-      if (paramInt == j)
-      {
-        i = 0;
-        continue;
-        if (paramInt == -1)
-        {
-          i = 0;
-        }
-        else
-        {
-          i = paramInt;
-          if (paramInt == j) {
-            i = j - 1;
-          }
-        }
-      }
     }
+    this.jdField_a_of_type_Beim.c = false;
   }
 }
 

@@ -1,44 +1,21 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.common.app.AppInterface;
+import eipc.EIPCResult;
 
-public abstract interface akwa
+class akwa
+  implements bduh
 {
-  public abstract int a();
+  akwa(akvv paramakvv, bdug parambdug, int paramInt) {}
   
-  public abstract long a();
-  
-  public abstract View a();
-  
-  public abstract void a();
-  
-  public abstract void a(akvz paramakvz);
-  
-  public abstract void a(akvz paramakvz, long paramLong);
-  
-  public abstract void a(Context paramContext, AppInterface paramAppInterface);
-  
-  public abstract void a(String paramString1, String paramString2, int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  public abstract void b();
-  
-  public abstract void b(akvz paramakvz);
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract boolean c();
-  
-  public abstract boolean d();
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Bdug.a(null);
+    if (paramBoolean) {}
+    for (int i = 0;; i = -1)
+    {
+      EIPCResult localEIPCResult = EIPCResult.createResult(i, null);
+      this.jdField_a_of_type_Akvv.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+      return;
+    }
+  }
 }
 
 

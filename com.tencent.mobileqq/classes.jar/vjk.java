@@ -1,23 +1,12 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
-
-public class vjk
-  implements View.OnKeyListener
+class vjk
+  extends viw
 {
-  public vjk(StoryPlayerFragment paramStoryPlayerFragment) {}
+  vjk(vji paramvji, vkp paramvkp) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public boolean b()
   {
-    if (paramInt == 4)
-    {
-      if (paramKeyEvent.getAction() == 1) {
-        this.a.finish();
-      }
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_Vkp.a = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 

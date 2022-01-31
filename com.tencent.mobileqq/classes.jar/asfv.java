@@ -1,17 +1,35 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class asfv
-  extends RecyclerView.ViewHolder
+final class asfv
+  extends mzz
 {
-  asfv(asfu paramasfu, View paramView)
-  {
-    super(paramView);
-  }
+  asfv(NearbyAppInterface paramNearbyAppInterface) {}
   
-  public String toString()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return super.toString();
+    boolean bool2 = false;
+    if (paramInt == 0) {
+      auwq.b(this.a.getCurrentAccountUin(), false);
+    }
+    for (boolean bool1 = false;; bool1 = auwq.b(this.a.getCurrentAccountUin()))
+    {
+      paramArrayOfByte = new HashMap();
+      paramArrayOfByte.put("param_reason", String.valueOf(paramInt));
+      paramBundle = azri.a(BaseApplicationImpl.getContext());
+      String str = this.a.getCurrentAccountUin();
+      if (paramInt == 0) {
+        bool2 = true;
+      }
+      paramBundle.a(str, "oidb_0x91f", bool2, 0L, 0L, paramArrayOfByte, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.nearby", 2, "oidb_0x91f| visible:" + bool1 + "replyCode:" + paramInt);
+      }
+      return;
+    }
   }
 }
 

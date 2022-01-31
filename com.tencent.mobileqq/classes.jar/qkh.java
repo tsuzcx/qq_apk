@@ -3,17 +3,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class qkh
 {
-  @awdg
+  @awhp
   public AtomicBoolean a;
-  @awdg
+  @awhp
   public AtomicInteger a;
-  @awdg
+  @awhp
   public AtomicBoolean b;
-  @awdg
+  @awhp
   public AtomicInteger b;
-  @awdg
+  @awhp
   public AtomicBoolean c = new AtomicBoolean(false);
-  @awdg
+  @awhp
   public AtomicBoolean d = new AtomicBoolean(false);
   
   public qkh()

@@ -1,9 +1,17 @@
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
 
 public class axqe
-  extends axqb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public axqe(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase, boolean paramBoolean) {}
+  public axqe(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    CameraCaptureButtonLayout.a(this.a, f);
+  }
 }
 
 

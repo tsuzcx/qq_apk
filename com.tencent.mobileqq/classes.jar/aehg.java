@@ -1,43 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class aehg
-  implements View.OnClickListener
+  extends alpq
 {
-  public aehg(VisitorsActivity paramVisitorsActivity, CardProfile paramCardProfile, awoi paramawoi, int paramInt) {}
+  public aehg(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(View paramView)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    int i = 1;
-    int j;
-    int k;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
-    {
-      j = 1;
-      k = this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bIsLastVoteCharged;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type != 3) {
-        break label136;
-      }
-      if (!((auri)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getManager(207)).c(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID)) {
-        break label131;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.systemmsg.TroopRequestActivity", 2, "onCardDownload() isSuccess = " + paramBoolean + "  data:" + paramObject);
     }
-    for (;;)
+    if (paramObject == null) {}
+    Card localCard;
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a(this.jdField_a_of_type_Awoi, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bVoteCnt, i);
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app, "CliOper", "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID), "like_mall", "like_list_view", j, 0, "", "", "", "");
-      return;
-      j = 0;
-      break;
-      label131:
-      i = 0;
-      continue;
-      label136:
-      i = k;
-    }
+      do
+      {
+        return;
+      } while ((!paramBoolean) || (!(paramObject instanceof Card)));
+      localCard = (Card)paramObject;
+    } while ((localCard.uin == null) || (!localCard.uin.equals(this.a.b)));
+    TroopRequestActivity.a(this.a, (Card)paramObject);
   }
 }
 

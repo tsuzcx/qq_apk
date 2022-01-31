@@ -1,14 +1,22 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 
 class aviu
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  aviu(avhw paramavhw) {}
+  aviu(avit paramavit) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    avhw.c(this.a);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.dismiss();
+    }
   }
 }
 

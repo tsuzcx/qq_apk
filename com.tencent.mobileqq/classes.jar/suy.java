@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class suy
-  extends anrk
+  extends anvt
 {
   public suy(Achilles.1 param1, RockDownloadInfo paramRockDownloadInfo, AchillesParams paramAchillesParams) {}
   

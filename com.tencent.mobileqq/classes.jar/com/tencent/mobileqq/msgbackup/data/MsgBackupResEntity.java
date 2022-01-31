@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.msgbackup.data;
 
 import android.text.TextUtils;
-import aufh;
-import awbv;
-import awdg;
+import aujq;
+import awge;
+import awhp;
 
 public class MsgBackupResEntity
-  extends awbv
+  extends awge
 {
   public static final String TABLE_NAME = "res";
   public byte[] extraData;
-  @awdg
+  @awhp
   public String extraDataStr;
   public String filePath;
   public long fileSize;
@@ -27,7 +27,7 @@ public class MsgBackupResEntity
   public void postRead()
   {
     super.postRead();
-    aufh.b(this);
+    aujq.b(this);
     try
     {
       if (this.extraData != null) {
@@ -37,7 +37,7 @@ public class MsgBackupResEntity
     }
     catch (Exception localException)
     {
-      aufh.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
+      aujq.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
       this.extraDataStr = "";
     }
   }
@@ -48,8 +48,8 @@ public class MsgBackupResEntity
     if (!TextUtils.isEmpty(this.extraDataStr)) {
       this.extraData = this.extraDataStr.getBytes();
     }
-    aufh.a(this);
-    this.filePath = aufh.c(this.filePath);
+    aujq.a(this);
+    this.filePath = aujq.c(this.filePath);
   }
   
   public String toLogString()

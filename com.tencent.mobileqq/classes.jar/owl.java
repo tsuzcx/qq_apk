@@ -14,7 +14,7 @@ public class owl
     if (paramUri != null) {}
     for (paramUri = paramUri.getClass().getSimpleName();; paramUri = "unkonw")
     {
-      azmj.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8009815", "0X8009815", 0, 0, "", "", paramUri, xne.c(BaseApplicationImpl.getContext()));
+      azqs.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8009815", "0X8009815", 0, 0, "", "", paramUri, xrn.c(BaseApplicationImpl.getContext()));
       return;
     }
   }

@@ -1,23 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
-public class aiic
-  implements DialogInterface.OnClickListener
+class aiic
+  implements View.OnClickListener
 {
-  public aiic(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
+  aiic(aihy paramaihy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("IphoneTitleBarActivity", 2, "new user guild confirm unbind");
-      }
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA5", "0X8006AA5", 0, 0, "", "", "", "");
-    }
+    aihy.a(this.a).setText("");
   }
 }
 

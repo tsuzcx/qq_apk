@@ -1,6 +1,9 @@
+import android.graphics.Canvas;
+import com.tencent.mobileqq.widget.BubbleVideoView;
+
 public abstract interface benn
 {
-  public abstract void a();
+  public abstract void a(BubbleVideoView paramBubbleVideoView, Canvas paramCanvas);
 }
 
 

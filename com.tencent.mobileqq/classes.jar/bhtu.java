@@ -1,14 +1,10 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
-
 public abstract interface bhtu
 {
-  public abstract void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject);
+  public abstract void y(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhtu
  * JD-Core Version:    0.7.0.1
  */

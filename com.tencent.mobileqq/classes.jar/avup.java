@@ -1,8 +1,19 @@
-public abstract interface avup
+import java.util.ArrayList;
+
+public class avup
+  extends avun
 {
-  public abstract void a();
+  public ArrayList<ahnq> a;
   
-  public abstract void b();
+  public avup(ArrayList<ahnq> paramArrayList)
+  {
+    this.a = paramArrayList;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 

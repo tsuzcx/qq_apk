@@ -236,8 +236,8 @@ public class BrowserBaseScene
     }
     for (;;)
     {
-      this.rootView = ((ViewGroup)this.mRoot.findViewById(2131375981));
-      this.mGallery = ((Gallery)this.mContext.findViewById(2131367010));
+      this.rootView = ((ViewGroup)this.mRoot.findViewById(2131376034));
+      this.mGallery = ((Gallery)this.mContext.findViewById(2131367020));
       this.bgView = this.mContext.findViewById(2131363034);
       this.progressView = createProgressBar();
       if (this.progressView != null) {

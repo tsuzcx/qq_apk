@@ -1,17 +1,6 @@
-import java.util.ArrayList;
-
 public class awna
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<awmy> a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  public static final String a = alud.a(2131708736);
 }
 
 

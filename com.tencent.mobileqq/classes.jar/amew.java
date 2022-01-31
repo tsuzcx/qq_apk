@@ -1,21 +1,25 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import android.view.View;
+import java.lang.ref.WeakReference;
 
 class amew
-  implements DialogInterface.OnClickListener
 {
-  amew(amev paramamev, Activity paramActivity) {}
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<amev> b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public amew(ames paramames, View paramView, amev paramamev)
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("back_for_hidden_chat", true);
-    paramDialogInterface.setFlags(603979776);
-    HiddenChatFragment.a(this.jdField_a_of_type_AndroidAppActivity, 3, 0, paramDialogInterface);
-    azmj.b(this.jdField_a_of_type_Amev.a, "dc00898", "", "", "0X800A34A", "0X800A34A", 0, 0, "0", "0", "", "");
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramamev);
+  }
+  
+  public amev a()
+  {
+    return (amev)this.b.get();
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
   }
 }
 

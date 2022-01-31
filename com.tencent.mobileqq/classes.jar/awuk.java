@@ -1,77 +1,58 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.upload.uinterface.data.UpsImageUploadTask;
 
 public class awuk
-  implements awug
+  extends awui
 {
-  private awui jdField_a_of_type_Awui;
-  private ArrayList<awug> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public long b;
+  public byte[] c;
+  public int g;
+  public int h;
+  public int i;
+  public String i;
+  public int j;
+  public String j;
+  public int k;
+  protected String k;
+  public int l = 1;
   
-  public awuh a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public awuk(long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2)
   {
-    paramArrayOfByte = new awuh(paramArrayOfByte, paramInt1, paramInt2);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (;;)
-    {
-      Object localObject = paramArrayOfByte;
-      awug localawug;
-      awuh localawuh;
-      if (localIterator.hasNext())
-      {
-        localawug = (awug)localIterator.next();
-        if (this.jdField_a_of_type_Awui != null) {
-          this.jdField_a_of_type_Awui.a(localawug, paramArrayOfByte);
-        }
-        localawuh = localawug.a(paramArrayOfByte.jdField_a_of_type_ArrayOfByte, paramArrayOfByte.b, paramArrayOfByte.jdField_a_of_type_Int);
-        localObject = localawuh;
-        if (localawuh != null)
-        {
-          localObject = localawuh;
-          if (localawuh.jdField_a_of_type_ArrayOfByte != null)
-          {
-            if (localawuh.jdField_a_of_type_Int != 0) {
-              break label121;
-            }
-            localObject = localawuh;
-          }
-        }
-      }
-      return localObject;
-      label121:
-      paramArrayOfByte = localawuh;
-      if (this.jdField_a_of_type_Awui != null)
-      {
-        this.jdField_a_of_type_Awui.b(localawug, localawuh);
-        paramArrayOfByte = localawuh;
-      }
-    }
+    super(paramLong, paramString1, paramArrayOfByte);
+    this.jdField_g_of_type_Int = 13;
+    this.jdField_k_of_type_Int = 3;
+    this.jdField_k_of_type_JavaLangString = paramString2;
   }
   
-  public void a()
+  public awui a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((awug)localIterator.next()).a();
-    }
+    UpsImageUploadTask localUpsImageUploadTask = new UpsImageUploadTask(this.jdField_g_of_type_JavaLangString);
+    localUpsImageUploadTask.dataType = this.jdField_g_of_type_Int;
+    localUpsImageUploadTask.fileId = this.jdField_i_of_type_JavaLangString;
+    localUpsImageUploadTask.flowId = this.jdField_e_of_type_Int;
+    localUpsImageUploadTask.iBatchID = this.b;
+    localUpsImageUploadTask.iBatchUploadCount = this.jdField_h_of_type_Int;
+    localUpsImageUploadTask.iBusiNessType = this.jdField_i_of_type_Int;
+    localUpsImageUploadTask.iCurrentUploadOrder = this.jdField_j_of_type_Int;
+    localUpsImageUploadTask.iSync = this.jdField_c_of_type_Int;
+    localUpsImageUploadTask.iUin = this.jdField_a_of_type_Long;
+    localUpsImageUploadTask.iUploadType = this.jdField_k_of_type_Int;
+    localUpsImageUploadTask.keepRaw = this.l;
+    localUpsImageUploadTask.md5 = this.jdField_h_of_type_JavaLangString;
+    localUpsImageUploadTask.preupload = this.jdField_d_of_type_Int;
+    localUpsImageUploadTask.reportRefer = this.jdField_d_of_type_JavaLangString;
+    localUpsImageUploadTask.sBusinessId = this.jdField_k_of_type_JavaLangString;
+    localUpsImageUploadTask.sCommand = this.jdField_j_of_type_JavaLangString;
+    localUpsImageUploadTask.sRefer = this.jdField_e_of_type_JavaLangString;
+    localUpsImageUploadTask.transferData = this.jdField_a_of_type_JavaUtilMap;
+    localUpsImageUploadTask.uiRefer = this.f;
+    localUpsImageUploadTask.uploadTaskCallback = this.jdField_a_of_type_ComTencentUploadUinterfaceIUploadTaskCallback;
+    localUpsImageUploadTask.vBusiNessData = this.jdField_c_of_type_ArrayOfByte;
+    localUpsImageUploadTask.vLoginData = this.jdField_a_of_type_ArrayOfByte;
+    this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask = localUpsImageUploadTask;
+    return this;
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((awug)localIterator.next()).a(paramInt1, paramInt2, paramInt3);
-    }
-  }
-  
-  public void a(awug paramawug)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramawug);
-  }
-  
-  public void a(awui paramawui)
-  {
-    this.jdField_a_of_type_Awui = paramawui;
-  }
+  protected void a(int paramInt, Object... paramVarArgs) {}
 }
 
 

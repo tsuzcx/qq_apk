@@ -1,23 +1,62 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.util.Base64;
+import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
 
 public class asrb
-  implements View.OnClickListener
 {
-  public asrb(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
+  static final String a = 'W' + 't' + 'R' + 'x' + 'K' + 'b' + 'L' + 'k';
   
-  public void onClick(View paramView)
+  public static String a(String paramString)
   {
-    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
-    if (this.a.a == null) {
-      return;
+    return a(paramString, a);
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      throw new XorCipherException("null input");
     }
-    if (HotVideoMongoliaRelativeLayout.a(this.a) != null) {
-      HotVideoMongoliaRelativeLayout.a(this.a).b(HotVideoMongoliaRelativeLayout.a(this.a));
+    try
+    {
+      paramString1 = new String(Base64.encode(a(paramString1.getBytes(), paramString2.getBytes()), 0));
+      return paramString1;
     }
-    QLog.d("HotVideoRelativeLayout", 2, "click round rect send view");
+    catch (Throwable paramString1)
+    {
+      throw new XorCipherException(paramString1);
+    }
+  }
+  
+  private static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    byte[] arrayOfByte = new byte[paramArrayOfByte1.length];
+    int i = 0;
+    while (i < paramArrayOfByte1.length)
+    {
+      arrayOfByte[i] = ((byte)(paramArrayOfByte1[i] ^ paramArrayOfByte2[(i % paramArrayOfByte2.length)]));
+      i += 1;
+    }
+    return arrayOfByte;
+  }
+  
+  public static String b(String paramString)
+  {
+    return b(paramString, a);
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      throw new XorCipherException("null input");
+    }
+    try
+    {
+      paramString1 = new String(a(Base64.decode(paramString1, 0), paramString2.getBytes()));
+      return paramString1;
+    }
+    catch (Throwable paramString1)
+    {
+      throw new XorCipherException(paramString1);
+    }
   }
 }
 

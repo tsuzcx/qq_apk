@@ -11,7 +11,7 @@ public class mmv
   {
     if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null)
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131372730, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131372756, false);
       this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131362956, false);
       this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131362968, false);
       this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131362967, false);

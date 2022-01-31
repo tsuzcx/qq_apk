@@ -2,12 +2,12 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.os.Handler.Callback;
 import android.os.Message;
-import bgkd;
+import bgok;
 
 class DataJsPlugin$12
   implements Handler.Callback
 {
-  DataJsPlugin$12(DataJsPlugin paramDataJsPlugin, bgkd parambgkd) {}
+  DataJsPlugin$12(DataJsPlugin paramDataJsPlugin, bgok parambgok) {}
   
   public boolean handleMessage(Message paramMessage)
   {

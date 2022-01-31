@@ -1,21 +1,15 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.ae.view.TabLayout;
 
 public class bljr
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView b;
+  public bljr(TabLayout paramTabLayout, int paramInt) {}
   
-  public bljr(bljo parambljo, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367933));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377566));
-    this.b = ((ImageView)paramView.findViewById(2131376285));
+    this.jdField_a_of_type_DovComQqImAeViewTabLayout.a(this.jdField_a_of_type_Int);
   }
 }
 

@@ -22,9 +22,9 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import bdcb;
-import bimg;
-import bimp;
+import bdgk;
+import biqn;
+import biqw;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginStatic;
@@ -37,16 +37,16 @@ import mqq.manager.TicketManager;
 
 public class BuscardHelper
 {
-  private static bimp a(Intent paramIntent, String paramString, ServiceConnection paramServiceConnection)
+  private static biqw a(Intent paramIntent, String paramString, ServiceConnection paramServiceConnection)
   {
-    bimp localbimp = new bimp(1);
-    localbimp.b = "BuscardPlugin.apk";
-    localbimp.d = PluginInfo.f;
-    localbimp.e = "com.tenpay.android.qqplugin.ipc.IpcService";
-    localbimp.jdField_a_of_type_JavaLangString = paramString;
-    localbimp.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbimp.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    return localbimp;
+    biqw localbiqw = new biqw(1);
+    localbiqw.b = "BuscardPlugin.apk";
+    localbiqw.d = PluginInfo.f;
+    localbiqw.e = "com.tenpay.android.qqplugin.ipc.IpcService";
+    localbiqw.jdField_a_of_type_JavaLangString = paramString;
+    localbiqw.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbiqw.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    return localbiqw;
   }
   
   public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
@@ -184,13 +184,13 @@ public class BuscardHelper
       if ((paramBoolean) || (a(paramString1, paramString2)))
       {
         paramString1 = PendingIntent.getActivity(paramActivity, 0, new Intent(paramActivity, paramActivity.getClass()).addFlags(536870912), 0);
-        String[] arrayOfString1 = { IsoDep.class.getName() };
-        paramString2 = NfcV.class.getName();
+        paramString2 = IsoDep.class.getName();
+        String[] arrayOfString1 = { NfcV.class.getName() };
         String[] arrayOfString2 = { NfcF.class.getName() };
         String[] arrayOfString3 = { MifareClassic.class.getName() };
-        String[] arrayOfString4 = { NfcA.class.getName() };
-        paramReaderCallback = NfcB.class.getName();
-        localNfcAdapter.enableForegroundDispatch(paramActivity, paramString1, new IntentFilter[] { new IntentFilter("android.nfc.action.TECH_DISCOVERED", "*/*") }, new String[][] { arrayOfString1, { paramString2 }, arrayOfString2, arrayOfString3, arrayOfString4, { paramReaderCallback } });
+        paramReaderCallback = NfcA.class.getName();
+        String str = NfcB.class.getName();
+        localNfcAdapter.enableForegroundDispatch(paramActivity, paramString1, new IntentFilter[] { new IntentFilter("android.nfc.action.TECH_DISCOVERED", "*/*") }, new String[][] { { paramString2 }, arrayOfString1, arrayOfString2, arrayOfString3, { paramReaderCallback }, { str } });
         return;
       }
     }
@@ -233,9 +233,9 @@ public class BuscardHelper
       paramIntent.putExtra("useSkinEngine", -1);
       paramIntent.putExtra("skey", (String)localObject);
       paramIntent.putExtra("uin", paramAppRuntime.getAccount());
-      paramIntent.putExtra("qq_version", bdcb.c());
+      paramIntent.putExtra("qq_version", bdgk.c());
       paramIntent = a(paramIntent, paramAppRuntime.getAccount(), paramServiceConnection);
-      bimg.c(paramAppRuntime.getApplication(), paramIntent);
+      biqn.c(paramAppRuntime.getApplication(), paramIntent);
       if (QLog.isColorLevel()) {
         QLog.i("BuscardHelper", 2, "launchPluginService");
       }
@@ -245,13 +245,13 @@ public class BuscardHelper
   
   public static void a(AppRuntime paramAppRuntime, Intent paramIntent, String paramString)
   {
-    bimg localbimg;
+    biqn localbiqn;
     if ((paramIntent != null) && (paramAppRuntime != null))
     {
       paramString = new Intent(paramIntent);
       paramIntent = (ResultReceiver)paramIntent.getParcelableExtra("result");
-      localbimg = (bimg)paramAppRuntime.getManager(27);
-      if ((localbimg != null) && (localbimg.isReady())) {
+      localbiqn = (biqn)paramAppRuntime.getManager(27);
+      if ((localbiqn != null) && (localbiqn.isReady())) {
         break label92;
       }
       if (QLog.isColorLevel()) {
@@ -270,7 +270,7 @@ public class BuscardHelper
       do
       {
         return;
-        if (!localbimg.isPlugininstalled("BuscardPlugin.apk")) {
+        if (!localbiqn.isPlugininstalled("BuscardPlugin.apk")) {
           break;
         }
       } while (paramIntent == null);
@@ -278,7 +278,7 @@ public class BuscardHelper
       paramAppRuntime.putParcelable("nfcIntent", paramString);
       paramIntent.send(4, paramAppRuntime);
       return;
-      localbimg.installPlugin("BuscardPlugin.apk", new BuscardHelper.BuscardInstallListener(paramAppRuntime, paramString));
+      localbiqn.installPlugin("BuscardPlugin.apk", new BuscardHelper.BuscardInstallListener(paramAppRuntime, paramString));
     } while (!QLog.isColorLevel());
     QLog.i("BuscardHelper", 2, "Plugin not installed,install first.");
   }

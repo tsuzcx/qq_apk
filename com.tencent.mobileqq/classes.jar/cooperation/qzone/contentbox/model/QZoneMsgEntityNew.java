@@ -2,9 +2,9 @@ package cooperation.qzone.contentbox.model;
 
 import NS_QZONE_MQMSG.QzoneMessageBoxRsp;
 import android.text.TextUtils;
-import awbv;
-import awdg;
-import bjew;
+import awge;
+import awhp;
+import bjjd;
 import cooperation.qzone.util.QZLog;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,15 +13,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 public class QZoneMsgEntityNew
-  extends awbv
+  extends awge
   implements Serializable
 {
   public static final String TAG;
-  @awdg
+  @awhp
   public ArrayList<MQMsg> ArkNes_vec;
   public String bottomItemBuffer;
-  @awdg
-  public ArrayList<bjew> bottomItems;
+  @awhp
+  public ArrayList<bjjd> bottomItems;
   public boolean hasmore = true;
   public String more_url = "";
   public String msgBuffer = "";
@@ -50,7 +50,7 @@ public class QZoneMsgEntityNew
     localQZoneMsgEntityNew.visitor_count = paramQzoneMessageBoxRsp.visitor_count;
     localQZoneMsgEntityNew.more_url = paramQzoneMessageBoxRsp.more_url;
     localQZoneMsgEntityNew.writeArkNewsToBuffer();
-    localQZoneMsgEntityNew.bottomItems = bjew.a(paramQzoneMessageBoxRsp.bottomVec);
+    localQZoneMsgEntityNew.bottomItems = bjjd.a(paramQzoneMessageBoxRsp.bottomVec);
     localQZoneMsgEntityNew.writeBottomItemToBuffer();
     if ((localQZoneMsgEntityNew.ArkNes_vec != null) && (localQZoneMsgEntityNew.ArkNes_vec.size() > 0) && (((MQMsg)localQZoneMsgEntityNew.ArkNes_vec.get(0)).pushTime > 0L)) {
       localQZoneMsgEntityNew.pushTime = ((MQMsg)localQZoneMsgEntityNew.ArkNes_vec.get(0)).pushTime;
@@ -125,9 +125,9 @@ public class QZoneMsgEntityNew
           int i = 0;
           while (i < localJSONArray.length())
           {
-            bjew localbjew = bjew.a(localJSONArray.getJSONObject(i));
-            if (localbjew != null) {
-              this.bottomItems.add(localbjew);
+            bjjd localbjjd = bjjd.a(localJSONArray.getJSONObject(i));
+            if (localbjjd != null) {
+              this.bottomItems.add(localbjjd);
             }
             i += 1;
           }
@@ -168,9 +168,9 @@ public class QZoneMsgEntityNew
     Iterator localIterator = this.bottomItems.iterator();
     while (localIterator.hasNext())
     {
-      bjew localbjew = (bjew)localIterator.next();
-      if (localbjew != null) {
-        localJSONArray.put(localbjew.a());
+      bjjd localbjjd = (bjjd)localIterator.next();
+      if (localbjjd != null) {
+        localJSONArray.put(localbjjd.a());
       }
     }
     this.bottomItemBuffer = localJSONArray.toString();

@@ -1,81 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.5;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
 public class ayci
-  implements bapx
+  implements DialogInterface.OnClickListener
 {
-  public ayci(ScribbleResMgr.5 param5) {}
+  public ayci(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public void onResp(baqw parambaqw)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 2;
-    QLog.i("ScribbleResMgr", 2, "DownloadResIcon onResp resp.mResult:  " + parambaqw.a);
-    int i = j;
-    Object localObject;
-    String str1;
-    String str2;
-    if (parambaqw.a == 0)
-    {
-      localObject = "";
-      str1 = "";
-      if (this.a.a == 3)
-      {
-        localObject = ScribbleResMgr.a(this.a.this$0);
-        str1 = ScribbleResMgr.b(this.a.this$0);
-      }
-      if (this.a.a == 4)
-      {
-        localObject = ScribbleResMgr.c(this.a.this$0);
-        str1 = ScribbleResMgr.d(this.a.this$0);
-      }
-      str2 = bdcs.c((String)localObject);
-      if ((TextUtils.isEmpty(str2)) || (!str2.equalsIgnoreCase(str1))) {
-        break label259;
-      }
-      str1 = ScribbleResMgr.a;
-      i = ndr.a((String)localObject, str1);
-      if (i == 0) {
-        break label334;
-      }
-      QLog.e("ScribbleResMgr", 2, "unZipFolder  failed, filepath=" + (String)localObject + " destDir= " + str1 + " result: " + i);
-    }
-    label259:
-    label334:
-    for (i = 0;; i = 1)
-    {
-      if (i != 0) {
-        i = 1;
-      }
-      for (;;)
-      {
-        if (parambaqw.a == 3) {
-          i = 4;
-        }
-        parambaqw = new ScribbleResMgr.ResInfo();
-        parambaqw.resType = this.a.a;
-        parambaqw.sourceId = 0;
-        ScribbleResMgr.a(this.a.this$0, parambaqw, i);
-        return;
-        if (str2 == null) {}
-        for (localObject = "";; localObject = str2)
-        {
-          str2 = str1;
-          if (str1 == null) {
-            str2 = "";
-          }
-          QLog.e("ScribbleResMgr", 2, "check wrong md5 =" + (String)localObject + " desMd5 = " + str2);
-          i = j;
-          break;
-        }
-        i = 2;
-      }
-    }
+    paramDialogInterface.dismiss();
+    this.a.a.clear();
+    SignTextEditFragment.a(this.a);
   }
-  
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 

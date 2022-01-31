@@ -1,110 +1,75 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.observer.BusinessObserver;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import java.io.File;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 class avgt
-  implements BusinessObserver
+  implements TVK_IMediaPlayer.OnDownloadCallbackListener
 {
-  avgt(avgk paramavgk) {}
+  avgt(avgo paramavgo, String paramString1, String paramString2, String paramString3) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void OnDownloadCallback(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyProfileDisplayPanel", 2, "type = [" + paramInt + "], isSuccess = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
-    }
-    Object localObject;
-    if (paramBoolean)
+    if (this.jdField_a_of_type_Avgo.a != null) {}
+    for (;;)
     {
       try
       {
-        ((auqc)this.a.a.app.getManager(106)).d.put(this.a.a.app.getCurrentAccountUin(), Integer.valueOf(1));
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label602;
-        }
-        localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
+        paramString = new JSONObject(paramString);
+        i = paramString.getInt("callBackType");
         if (QLog.isColorLevel()) {
-          QLog.i("NearbyProfileDisplayPanel", 2, "retCode = [" + paramInt + "]");
+          QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback callBackType=" + i);
         }
-        if (paramInt == 0) {
-          break label302;
+        if (i != 7) {
+          break label313;
         }
-        paramBundle = paramBundle.optString("msg");
-        if (!TextUtils.isEmpty(paramBundle))
+        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          break label312;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback success , vid = " + this.b);
+        }
+        this.jdField_a_of_type_Avgo.a.a(this.b, this.c, new File(this.jdField_a_of_type_JavaLangString));
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        if (!QLog.isColorLevel()) {
+          break label312;
+        }
+      }
+      int i = paramString.getInt("errorCode");
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback errorCode=" + i);
+      }
+      this.jdField_a_of_type_Avgo.a.a(this.b, this.c, i);
+      return;
+      QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback JSONException=" + paramString.getMessage());
+      return;
+      label312:
+      label313:
+      do
+      {
+        long l1;
+        if (i == 2)
         {
-          QQToast.a(this.a.a, 1, "" + paramBundle, 1).a();
+          l1 = paramString.getLong("fileSize");
+          long l2 = paramString.getLong("offset");
+          this.jdField_a_of_type_Avgo.a.a(this.b, this.c, l1, l2);
           return;
         }
-        QQToast.a(this.a.a, 1, alpo.a(2131707636), 1).a();
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        QQToast.a(this.a.a, 1, alpo.a(2131707739), 1).a();
-        if (!QLog.isColorLevel()) {
-          break label647;
-        }
-      }
-      QLog.e("NearbyProfileDisplayPanel", 2, "未知异常，请稍后重试", paramBundle);
-      return;
-      label302:
-      if (paramBundle.optInt("retcode") == 0)
-      {
-        paramBundle = this.a;
-        if (avgk.a(this.a)) {
-          break label648;
-        }
-      }
-    }
-    label647:
-    label648:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      avgk.a(paramBundle, paramBoolean);
-      localObject = this.a.a;
-      if (avgk.a(this.a)) {}
-      for (paramBundle = alpo.a(2131707745);; paramBundle = alpo.a(2131707645))
-      {
-        QQToast.a((Context)localObject, 2, paramBundle, 1).a();
-        ((auxi)this.a.a.app.a(119)).notifyUI(1000, true, new Object[] { Boolean.valueOf(avgk.a(this.a)), avgk.a(this.a).uin });
-        avgk.a(this.a, 1, 60);
-        if ((!avgk.a(this.a)) && (avgk.a(this.a).getChildAt(2).getVisibility() != 0))
+        if (i == 1)
         {
-          paramBundle = (Button)avgk.a(this.a).getChildAt(1).findViewById(2131379049);
-          paramBundle.setTextColor(this.a.a.getResources().getColor(2131166932));
-          paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130845050));
+          l1 = paramString.getLong("fileSize");
+          this.jdField_a_of_type_Avgo.a.a(this.b, this.c, l1);
         }
-        if (!avgk.a(this.a)) {
+        return;
+        if (i == 4) {
           break;
         }
-        paramBundle = (Button)avgk.a(this.a).getChildAt(1).findViewById(2131379049);
-        paramBundle.setTextColor(this.a.a.getResources().getColor(2131166934));
-        paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130845051));
-        return;
-      }
-      label602:
-      QQToast.a(this.a.a, 1, alpo.a(2131707630), 1).a();
-      return;
-      QQToast.a(this.a.a, 1, alpo.a(2131707728), 1).a();
-      return;
+      } while (i != 5);
     }
   }
 }

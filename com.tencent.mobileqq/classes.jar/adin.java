@@ -1,14 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.MainFragment;
 
-class adin
-  implements DialogInterface.OnClickListener
+public class adin
+  implements bevw
 {
-  adin(adii paramadii) {}
+  public adin(MainFragment paramMainFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    MainFragment.c(this.a);
   }
 }
 

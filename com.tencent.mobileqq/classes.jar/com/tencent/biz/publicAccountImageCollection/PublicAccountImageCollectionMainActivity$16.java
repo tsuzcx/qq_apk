@@ -1,6 +1,6 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import aluw;
+import alzl;
 import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -13,13 +13,13 @@ class PublicAccountImageCollectionMainActivity$16
   public void run()
   {
     if (TextUtils.isEmpty(this.this$0.a)) {}
-    aluw localaluw;
+    alzl localalzl;
     do
     {
       return;
-      localaluw = (aluw)this.this$0.app.getManager(56);
-    } while (localaluw == null);
-    PublicAccountImageCollectionMainActivity.c(this.this$0, localaluw.a(Long.valueOf(this.this$0.a)));
+      localalzl = (alzl)this.this$0.app.getManager(56);
+    } while (localalzl == null);
+    PublicAccountImageCollectionMainActivity.c(this.this$0, localalzl.a(Long.valueOf(this.this$0.a)));
     PublicAccountImageCollectionMainActivity.a(this.this$0).postDelayed(new PublicAccountImageCollectionMainActivity.16.1(this), 0L);
   }
 }

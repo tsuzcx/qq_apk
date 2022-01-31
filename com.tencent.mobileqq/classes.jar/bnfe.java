@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
-public class bnfe
-  implements DialogInterface.OnClickListener
+class bnfe
+  implements AbstractUnifiedMonitor.ThreadMonitorCallback
 {
-  public bnfe(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  bnfe(bnfd parambnfd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onThreadMonitorEnd(int paramInt)
+  {
+    if (paramInt == 10) {
+      this.a.a();
+    }
+  }
 }
 
 

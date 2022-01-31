@@ -1,25 +1,20 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.aeeditor.module.clip.image.AEEditorImageClipFragment;
+import dov.com.qq.im.aeeditor.view.ClipConstant.Anchor;
 import dov.com.qq.im.aeeditor.view.EditorClipView;
 
 public class bllu
-  extends GestureDetector.SimpleOnGestureListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private bllu(EditorClipView paramEditorClipView) {}
+  public bllu(AEEditorImageClipFragment paramAEEditorImageClipFragment, EditorClipView paramEditorClipView) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return true;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return this.a.a(paramFloat1, paramFloat2);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_DovComQqImAeeditorViewEditorClipView.b(ClipConstant.Anchor.TOP.v);
+    this.jdField_a_of_type_DovComQqImAeeditorViewEditorClipView.a(0.0F, i - AEEditorImageClipFragment.b(this.jdField_a_of_type_DovComQqImAeeditorModuleClipImageAEEditorImageClipFragment));
+    AEEditorImageClipFragment.d(this.jdField_a_of_type_DovComQqImAeeditorModuleClipImageAEEditorImageClipFragment, i);
   }
 }
 

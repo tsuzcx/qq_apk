@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import acng;
+import acrv;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.qphone.base.util.QLog;
 
 public class Conversation$31$2
   implements Runnable
 {
-  public Conversation$31$2(acng paramacng, boolean paramBoolean) {}
+  public Conversation$31$2(acrv paramacrv, boolean paramBoolean) {}
   
   public void run()
   {
-    Conversation.a(this.jdField_a_of_type_Acng.a, 800L);
+    Conversation.a(this.jdField_a_of_type_Acrv.a, 800L);
     PullRefreshHeader localPullRefreshHeader;
-    if (this.jdField_a_of_type_Acng.a.a != null)
+    if (this.jdField_a_of_type_Acrv.a.a != null)
     {
-      localPullRefreshHeader = this.jdField_a_of_type_Acng.a.a;
+      localPullRefreshHeader = this.jdField_a_of_type_Acrv.a.a;
       if (!this.jdField_a_of_type_Boolean) {
         break label66;
       }

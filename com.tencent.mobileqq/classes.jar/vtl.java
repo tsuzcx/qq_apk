@@ -1,194 +1,136 @@
-import android.util.Log;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupAdapter;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 import java.util.List;
+import java.util.Map;
 
-public class vtl
+class vtl
+  implements vss
 {
-  private List<vtn> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private vtm jdField_a_of_type_Vtm;
-  private vtq jdField_a_of_type_Vtq;
+  private vtl(vtj paramvtj) {}
   
-  public long a()
+  public void a(int paramInt1, int paramInt2)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    long l1 = 9223372036854775807L;
-    if (localIterator.hasNext())
+    StoryPlayerGroupHolder localStoryPlayerGroupHolder = this.a.a(paramInt1);
+    if (localStoryPlayerGroupHolder == null) {
+      wxe.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, find vertical holder is null");
+    }
+    do
     {
-      long l2 = ((vtn)localIterator.next()).a();
-      if ((l2 == -9223372036854775808L) || (l1 <= l2)) {
-        break label60;
-      }
-      l1 = l2;
-    }
-    label60:
-    for (;;)
-    {
-      break;
-      return l1;
-    }
-  }
-  
-  public List<vtn> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public vto a(boolean paramBoolean)
-  {
-    Object localObject2 = null;
-    int i = 0;
-    Object localObject1;
-    label24:
-    vtn localvtn;
-    label46:
-    vto localvto;
-    if (i == 0)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      localObject1 = null;
-      i = 0;
-      if (localIterator.hasNext())
-      {
-        localvtn = (vtn)localIterator.next();
-        localvto = localvtn.a();
-        if (localvto == null) {
-          break label151;
-        }
-        if (localvtn == this.jdField_a_of_type_Vtq)
-        {
-          localObject1 = localvto;
-          label70:
-          if (localvtn.a(false)) {
-            break label152;
-          }
-          if (!localvtn.b()) {
-            break label154;
-          }
-          i += 1;
-        }
-      }
-    }
-    label151:
-    label152:
-    label154:
-    for (;;)
-    {
-      break label24;
-      localvtn.a(localvto, 0L);
-      break label46;
-      if (localObject1 != null) {}
-      do
-      {
-        return localObject1;
-        localObject1 = localObject2;
-      } while (!paramBoolean);
-      if (i == this.jdField_a_of_type_JavaUtilList.size())
-      {
-        i = 1;
-        break;
-      }
-      i = 0;
-      break;
-      Log.d("Decoders", "EOS NULL");
-      return null;
-      break label70;
-      break label70;
-    }
-  }
-  
-  public vtq a()
-  {
-    return this.jdField_a_of_type_Vtq;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((vtn)localIterator.next()).e();
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(vtn paramvtn)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramvtn);
-    if ((paramvtn instanceof vtq)) {
-      this.jdField_a_of_type_Vtq = ((vtq)paramvtn);
-    }
-    while (!(paramvtn instanceof vtm)) {
       return;
-    }
-    this.jdField_a_of_type_Vtm = ((vtm)paramvtn);
-  }
-  
-  public void a(vtu paramvtu, long paramLong)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((vtn)localIterator.next()).a(paramvtu, paramLong);
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
-    {
-      if (!((vtn)localIterator.next()).b()) {
-        break label62;
+      if (vtj.a(this.a) == null)
+      {
+        wxe.d("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, mCurrentSelectedGroupId is null");
+        return;
       }
-      i += 1;
+      wxe.a("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, verticalPosition=%d, currentGroup=%s, onSelectedGroup=%s", Integer.valueOf(paramInt1), vtj.a(this.a), localStoryPlayerGroupHolder.jdField_a_of_type_Vpm);
+    } while ((vtj.a(this.a) != localStoryPlayerGroupHolder.jdField_a_of_type_Vpm) && (!vtj.a(this.a).equals(localStoryPlayerGroupHolder.jdField_a_of_type_Vpm)));
+    Object localObject = localStoryPlayerGroupHolder.a();
+    if ((localObject instanceof vub))
+    {
+      localObject = (VideoViewVideoHolder)((vub)localObject).b(VideoViewVideoHolder.class);
+      if (localObject != null)
+      {
+        if (paramInt2 != 1) {
+          break label168;
+        }
+        wxe.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, pause because of dragging");
+        ((VideoViewVideoHolder)localObject).e();
+      }
     }
-    label62:
+    label143:
+    while (vtj.a(this.a) != null)
+    {
+      vtj.a(this.a).a(paramInt1, paramInt2);
+      return;
+      label168:
+      if (paramInt2 == 0)
+      {
+        if ((!localStoryPlayerGroupHolder.d()) || (!localStoryPlayerGroupHolder.c())) {
+          break label229;
+        }
+        wxe.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, no need start");
+      }
+    }
     for (;;)
     {
+      wxj.a("play_video", "slide_up_down", 0, 0, new String[] { "2", "", "", "" });
+      break label143;
       break;
-      if (i == this.jdField_a_of_type_JavaUtilList.size()) {
-        bool = true;
+      label229:
+      wxe.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, start because of idle");
+      ((VideoViewVideoHolder)localObject).d();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3)
+  {
+    StoryPlayerGroupHolder localStoryPlayerGroupHolder = this.a.a(paramInt1);
+    if (localStoryPlayerGroupHolder == null) {
+      wxe.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrolled, Video, find vertical holder is null");
+    }
+    do
+    {
+      return;
+      if (vtj.a(this.a) == null)
+      {
+        wxe.d("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrolled, Video, mCurrentSelectedGroupId is null");
+        return;
       }
-      return bool;
-    }
+    } while (((vtj.a(this.a) != localStoryPlayerGroupHolder.jdField_a_of_type_Vpm) && (!vtj.a(this.a).equals(localStoryPlayerGroupHolder.jdField_a_of_type_Vpm))) || (vtj.a(this.a) == null));
+    vtj.a(this.a).a(paramInt1, paramInt2, paramFloat, paramInt3);
   }
   
-  public long b()
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (long l1 = 9223372036854775807L; localIterator.hasNext(); l1 = Math.min(((vtn)localIterator.next()).b(), l1)) {}
-    long l2 = l1;
-    if (l1 == 9223372036854775807L) {
-      l2 = -1L;
+    StoryPlayerGroupHolder localStoryPlayerGroupHolder = (StoryPlayerGroupHolder)vtj.a(this.a).a.get(Integer.valueOf(paramInt1));
+    if (localStoryPlayerGroupHolder == null) {
+      wxe.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Video, find vertical holder is null");
     }
-    return l2;
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((vtn)localIterator.next()).c();
-    }
-  }
-  
-  public boolean b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (!((vtn)localIterator.next()).d()) {
-        return false;
+    do
+    {
+      return;
+      if (vtj.a(this.a) == null)
+      {
+        wxe.d("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Video, mCurrentSelectedGroupId is null");
+        return;
+      }
+      wxe.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Video, verticalPosition=%d, oldHorizontalPosition=%d, horizontalPosition=%d, currentGroup=%s, onSelectedGroup=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), vtj.a(this.a), localStoryPlayerGroupHolder.jdField_a_of_type_Vpm });
+    } while ((vtj.a(this.a) != localStoryPlayerGroupHolder.jdField_a_of_type_Vpm) && (!vtj.a(this.a).equals(localStoryPlayerGroupHolder.jdField_a_of_type_Vpm)));
+    boolean bool1;
+    if (localStoryPlayerGroupHolder.a(paramInt3) != null)
+    {
+      if (vtj.a(this.a) != null) {
+        vtj.a(this.a).a(paramInt1, paramInt2, paramInt3);
+      }
+      if (localStoryPlayerGroupHolder.b != localStoryPlayerGroupHolder.jdField_a_of_type_JavaUtilList.size() - 1) {
+        break label257;
+      }
+      bool1 = true;
+      label195:
+      if (localStoryPlayerGroupHolder.b != 0) {
+        break label263;
       }
     }
-    return true;
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((vtn)localIterator.next()).d();
+    label257:
+    label263:
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      boolean bool3 = bool1;
+      if (bool1)
+      {
+        bool3 = bool1;
+        if (localStoryPlayerGroupHolder.d()) {
+          bool3 = false;
+        }
+      }
+      this.a.a.setEnableScrollDirection(bool3, bool2, true, true);
+      return;
+      wxe.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Video, getPageHolderOfPosition return null. onSelected true failed");
+      break;
+      bool1 = false;
+      break label195;
     }
   }
 }

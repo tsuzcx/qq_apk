@@ -1,27 +1,26 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
 
-public final class acgu
-  implements DialogInterface.OnClickListener
+public class acgu
+  extends Handler
 {
-  public acgu(QQAppInterface paramQQAppInterface, acgz paramacgz, long paramLong, Context paramContext, acgy paramacgy) {}
+  public acgu(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_Acgz.jdField_a_of_type_Int, this.jdField_a_of_type_Acgz.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Acgz.jdField_c_of_type_JavaLangString, true);
-    if (this.jdField_a_of_type_Acgz.jdField_a_of_type_Boolean) {
-      azmj.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    this.jdField_a_of_type_Acgz.b = false;
-    this.jdField_a_of_type_Acgz.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_Acgz.e = false;
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acgy, this.jdField_a_of_type_Acgz);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    this.a.c();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131721212);
     }
+    this.a.a(paramMessage, 1);
   }
 }
 

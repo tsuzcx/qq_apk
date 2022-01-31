@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bkqr;
-import bkrb;
+import bkuy;
+import bkvi;
 import com.tencent.qphone.base.util.QLog;
 
 public class AEBottomListPart$6$1
   implements Runnable
 {
-  public AEBottomListPart$6$1(bkrb parambkrb) {}
+  public AEBottomListPart$6$1(bkvi parambkvi) {}
   
   public void run()
   {
     QLog.d("AEWaterMarkListPart", 4, "getDateFromPtv: MaterialStoryLiveData onChanged");
-    bkqr.b(this.a.a);
+    bkuy.b(this.a.a);
   }
 }
 

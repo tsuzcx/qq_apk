@@ -1,19 +1,18 @@
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.text.TextUtils.TruncateAt;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.ExpandableListConnector.GroupMetadata;
 
-public class bhwq
-  extends StaticLayout
+public final class bhwq
+  implements Parcelable.Creator<ExpandableListConnector.GroupMetadata>
 {
-  public bhwq(CharSequence paramCharSequence, int paramInt1, int paramInt2, TextPaint paramTextPaint, int paramInt3, Layout.Alignment paramAlignment, float paramFloat1, float paramFloat2, boolean paramBoolean, TextUtils.TruncateAt paramTruncateAt, int paramInt4)
+  public ExpandableListConnector.GroupMetadata a(Parcel paramParcel)
   {
-    super(paramCharSequence, paramInt1, paramInt2, paramTextPaint, paramInt3, paramAlignment, paramFloat1, paramFloat2, paramBoolean, paramTruncateAt, paramInt4);
+    return ExpandableListConnector.GroupMetadata.a(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readLong());
   }
   
-  public int getParagraphDirection(int paramInt)
+  public ExpandableListConnector.GroupMetadata[] a(int paramInt)
   {
-    return 1;
+    return new ExpandableListConnector.GroupMetadata[paramInt];
   }
 }
 

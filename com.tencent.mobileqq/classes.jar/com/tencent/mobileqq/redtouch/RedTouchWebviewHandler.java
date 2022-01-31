@@ -3,12 +3,12 @@ package com.tencent.mobileqq.redtouch;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aphy;
-import apic;
-import axho;
-import axht;
-import bdcs;
-import becq;
+import apmh;
+import apml;
+import axlx;
+import axmc;
+import bdhb;
+import begz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -70,7 +70,7 @@ public class RedTouchWebviewHandler
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("path", paramString);
-    super.sendRemoteReq(apic.a("myIndividuationRedInfo", null, 0, localBundle), false, true);
+    super.sendRemoteReq(apml.a("myIndividuationRedInfo", null, 0, localBundle), false, true);
   }
   
   private BusinessInfoCheckUpdate.AppInfo getAppInfoByPath(String paramString)
@@ -98,7 +98,7 @@ public class RedTouchWebviewHandler
       {
         try
         {
-          localObject1 = bdcs.a((File)localObject1);
+          localObject1 = bdhb.a((File)localObject1);
           if (localObject1 != null) {
             break label145;
           }
@@ -172,7 +172,7 @@ public class RedTouchWebviewHandler
         {
           try
           {
-            localObject1 = bdcs.a((File)localObject1);
+            localObject1 = bdhb.a((File)localObject1);
             if (localObject1 != null) {
               break label152;
             }
@@ -415,7 +415,7 @@ public class RedTouchWebviewHandler
     //   172: astore 8
     //   174: aload_0
     //   175: aload 11
-    //   177: invokestatic 373	axht:a	(Lcom/tencent/mobileqq/redtouch/RedAppInfo;)Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;
+    //   177: invokestatic 373	axmc:a	(Lcom/tencent/mobileqq/redtouch/RedAppInfo;)Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;
     //   180: sipush 1002
     //   183: invokespecial 377	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:onReportRed	(Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;I)V
     //   186: aload_2
@@ -491,8 +491,8 @@ public class RedTouchWebviewHandler
     //   328: invokespecial 306	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   331: astore 10
     //   333: aload_0
-    //   334: getfield 393	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbecq;
-    //   337: invokevirtual 398	becq:a	()Landroid/app/Activity;
+    //   334: getfield 393	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbegz;
+    //   337: invokevirtual 398	begz:a	()Landroid/app/Activity;
     //   340: astore_2
     //   341: new 400	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody
     //   344: dup
@@ -501,8 +501,8 @@ public class RedTouchWebviewHandler
     //   350: aload 9
     //   352: getfield 405	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   355: aload_0
-    //   356: getfield 393	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbecq;
-    //   359: invokevirtual 408	becq:a	()Lcom/tencent/common/app/AppInterface;
+    //   356: getfield 393	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbegz;
+    //   359: invokevirtual 408	begz:a	()Lcom/tencent/common/app/AppInterface;
     //   362: invokevirtual 167	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   365: invokestatic 414	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   368: invokevirtual 420	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
@@ -517,7 +517,7 @@ public class RedTouchWebviewHandler
     //   392: aload 9
     //   394: getfield 439	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:appid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   397: aload 12
-    //   399: invokestatic 443	axho:a	(Ljava/lang/String;)I
+    //   399: invokestatic 443	axlx:a	(Ljava/lang/String;)I
     //   402: invokevirtual 436	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   405: aload 9
     //   407: getfield 446	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:platver	Lcom/tencent/mobileqq/pb/PBStringField;
@@ -637,8 +637,8 @@ public class RedTouchWebviewHandler
     //   685: dup
     //   686: ldc_w 506
     //   689: aload_0
-    //   690: getfield 393	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbecq;
-    //   693: invokevirtual 408	becq:a	()Lcom/tencent/common/app/AppInterface;
+    //   690: getfield 393	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbegz;
+    //   693: invokevirtual 408	begz:a	()Lcom/tencent/common/app/AppInterface;
     //   696: invokevirtual 167	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   699: ldc_w 508
     //   702: invokespecial 511	com/tencent/qphone/base/remote/ToServiceMsg:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
@@ -668,14 +668,14 @@ public class RedTouchWebviewHandler
     //   750: ldc2_w 533
     //   753: lload 6
     //   755: ladd
-    //   756: invokestatic 539	bdlr:a	([BIJ)V
+    //   756: invokestatic 539	bdqa:a	([BIJ)V
     //   759: aload 9
     //   761: iconst_4
     //   762: aload 10
     //   764: invokevirtual 532	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
     //   767: lload 6
     //   769: l2i
-    //   770: invokestatic 542	bdlr:a	([BI[BI)V
+    //   770: invokestatic 542	bdqa:a	([BI[BI)V
     //   773: aload 10
     //   775: aload 9
     //   777: invokevirtual 519	com/tencent/qphone/base/remote/ToServiceMsg:putWupBuffer	([B)V
@@ -693,8 +693,8 @@ public class RedTouchWebviewHandler
     //   804: invokevirtual 561	mqq/app/NewIntent:putExtra	(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
     //   807: pop
     //   808: aload_0
-    //   809: getfield 393	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbecq;
-    //   812: invokevirtual 408	becq:a	()Lcom/tencent/common/app/AppInterface;
+    //   809: getfield 393	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbegz;
+    //   812: invokevirtual 408	begz:a	()Lcom/tencent/common/app/AppInterface;
     //   815: aload_2
     //   816: invokevirtual 565	com/tencent/common/app/AppInterface:startServlet	(Lmqq/app/NewIntent;)V
     //   819: aload 8
@@ -741,7 +741,7 @@ public class RedTouchWebviewHandler
     //   918: ldc_w 353
     //   921: invokevirtual 357	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
     //   924: checkcast 334	com/tencent/mobileqq/redtouch/RedAppInfo
-    //   927: invokestatic 373	axht:a	(Lcom/tencent/mobileqq/redtouch/RedAppInfo;)Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;
+    //   927: invokestatic 373	axmc:a	(Lcom/tencent/mobileqq/redtouch/RedAppInfo;)Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;
     //   930: astore 15
     //   932: bipush 254
     //   934: istore 4
@@ -823,13 +823,13 @@ public class RedTouchWebviewHandler
     //   1097: astore 8
     //   1099: aload_2
     //   1100: astore 9
-    //   1102: new 441	axho
+    //   1102: new 441	axlx
     //   1105: dup
     //   1106: aload_0
-    //   1107: getfield 393	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbecq;
-    //   1110: invokevirtual 408	becq:a	()Lcom/tencent/common/app/AppInterface;
-    //   1113: invokespecial 591	axho:<init>	(Lcom/tencent/common/app/AppInterface;)V
-    //   1116: invokevirtual 592	axho:a	()Ljava/lang/String;
+    //   1107: getfield 393	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbegz;
+    //   1110: invokevirtual 408	begz:a	()Lcom/tencent/common/app/AppInterface;
+    //   1113: invokespecial 591	axlx:<init>	(Lcom/tencent/common/app/AppInterface;)V
+    //   1116: invokevirtual 592	axlx:a	()Ljava/lang/String;
     //   1119: astore_2
     //   1120: iload_3
     //   1121: istore 5
@@ -882,10 +882,10 @@ public class RedTouchWebviewHandler
     //   1220: ldc_w 607
     //   1223: aload_1
     //   1224: aload_0
-    //   1225: getfield 611	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mOnRemoteResp	Laphy;
-    //   1228: getfield 615	aphy:key	I
+    //   1225: getfield 611	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mOnRemoteResp	Lapmh;
+    //   1228: getfield 615	apmh:key	I
     //   1231: aload_2
-    //   1232: invokestatic 94	apic:a	(Ljava/lang/String;Ljava/lang/String;ILandroid/os/Bundle;)Landroid/os/Bundle;
+    //   1232: invokestatic 94	apml:a	(Ljava/lang/String;Ljava/lang/String;ILandroid/os/Bundle;)Landroid/os/Bundle;
     //   1235: iconst_0
     //   1236: iconst_1
     //   1237: invokespecial 98	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:sendRemoteReq	(Landroid/os/Bundle;ZZ)V
@@ -1370,7 +1370,7 @@ public class RedTouchWebviewHandler
       localJSONObject.put("obj_id", "");
       localJSONObject.put("pay_amt", 0);
       localJSONObject.put("service_id", 100005);
-      new axho(this.mRuntime.a()).c(paramAppInfo, localJSONObject.toString());
+      new axlx(this.mRuntime.a()).c(paramAppInfo, localJSONObject.toString());
       return;
     }
     catch (JSONException paramAppInfo)
@@ -1436,9 +1436,9 @@ public class RedTouchWebviewHandler
         paramString = str;
         Bundle localBundle = new Bundle();
         paramString = str;
-        localBundle.putInt("path", axho.a(localObject.getString("path")));
+        localBundle.putInt("path", axlx.a(localObject.getString("path")));
         paramString = str;
-        sendRemoteReq(apic.a("leba_item_get", str, this.mOnRemoteResp.key, localBundle), false, false);
+        sendRemoteReq(apml.a("leba_item_get", str, this.mOnRemoteResp.key, localBundle), false, false);
         return;
       }
       catch (Exception localException2)
@@ -1468,7 +1468,7 @@ public class RedTouchWebviewHandler
       Bundle localBundle = new Bundle();
       localBundle.putString("path", "100005.100022");
       localBundle.putString("subCmd", "redTouch_getIndividuationType");
-      super.sendRemoteReq(apic.a("redTouch_getRedInfo", paramString, this.mOnRemoteResp.key, localBundle), false, true);
+      super.sendRemoteReq(apml.a("redTouch_getRedInfo", paramString, this.mOnRemoteResp.key, localBundle), false, true);
       return;
     }
     catch (JSONException paramString)
@@ -1530,7 +1530,7 @@ public class RedTouchWebviewHandler
         str = paramString;
         ((Bundle)localObject2).putInt("setId", i);
         str = paramString;
-        super.sendRemoteReq(apic.a("redTouch_getRedPointShowInfo_set", paramString, this.mOnRemoteResp.key, (Bundle)localObject2), false, true);
+        super.sendRemoteReq(apml.a("redTouch_getRedPointShowInfo_set", paramString, this.mOnRemoteResp.key, (Bundle)localObject2), false, true);
         return;
         str = paramString;
         if (!((JSONObject)localObject3).isNull("path"))
@@ -1544,7 +1544,7 @@ public class RedTouchWebviewHandler
           str = paramString;
           ((Bundle)localObject3).putString("subCmd", "redTouch_getRedPointShowInfo_path");
           str = paramString;
-          super.sendRemoteReq(apic.a("redTouch_getRedInfo", paramString, this.mOnRemoteResp.key, (Bundle)localObject3), false, true);
+          super.sendRemoteReq(apml.a("redTouch_getRedInfo", paramString, this.mOnRemoteResp.key, (Bundle)localObject3), false, true);
           return;
         }
         str = paramString;
@@ -1642,7 +1642,7 @@ public class RedTouchWebviewHandler
         try
         {
           localObject = ((JSONObject)localObject).getString("path");
-          if (!new axho(this.mRuntime.a()).a().equals(localObject))
+          if (!new axlx(this.mRuntime.a()).a().equals(localObject))
           {
             localJSONObject.put("code", 0);
             localJSONObject.put("data", 0);
@@ -1889,7 +1889,7 @@ public class RedTouchWebviewHandler
       str1 = paramString;
       localBundle.putString("subCmd", "redTouch_reportBusinessRedTouch");
       str1 = paramString;
-      super.sendRemoteReq(apic.a("redTouch_getRedInfo", paramString, this.mOnRemoteResp.key, localBundle), false, true);
+      super.sendRemoteReq(apml.a("redTouch_getRedInfo", paramString, this.mOnRemoteResp.key, localBundle), false, true);
       return;
     }
     catch (Exception paramString)
@@ -1994,7 +1994,7 @@ public class RedTouchWebviewHandler
       localObject1 = paramString;
       ((Bundle)localObject3).putString("subCmd", "redTouch_reportRedTouch");
       localObject1 = paramString;
-      super.sendRemoteReq(apic.a("redTouch_getRedInfo", paramString, this.mOnRemoteResp.key, (Bundle)localObject3), false, true);
+      super.sendRemoteReq(apml.a("redTouch_getRedInfo", paramString, this.mOnRemoteResp.key, (Bundle)localObject3), false, true);
       localObject1 = paramString;
       localObject2 = new JSONObject();
       try
@@ -2072,9 +2072,9 @@ public class RedTouchWebviewHandler
       localObject1 = paramString;
       localObject3 = new Bundle();
       localObject1 = paramString;
-      ((Bundle)localObject3).putParcelable("red", axht.a((BusinessInfoCheckUpdate.AppInfo)localObject2));
+      ((Bundle)localObject3).putParcelable("red", axmc.a((BusinessInfoCheckUpdate.AppInfo)localObject2));
       localObject1 = paramString;
-      super.sendRemoteReq(apic.a("redTouch_setAppInfo", paramString, this.mOnRemoteResp.key, (Bundle)localObject3), false, true);
+      super.sendRemoteReq(apml.a("redTouch_setAppInfo", paramString, this.mOnRemoteResp.key, (Bundle)localObject3), false, true);
       return;
     }
     catch (Exception paramString)
@@ -2125,11 +2125,11 @@ public class RedTouchWebviewHandler
         paramString = str;
         Bundle localBundle = new Bundle();
         paramString = str;
-        localBundle.putInt("path", axho.a(localObject.getString("path")));
+        localBundle.putInt("path", axlx.a(localObject.getString("path")));
         paramString = str;
         localBundle.putInt("type", localObject.getInt("type"));
         paramString = str;
-        sendRemoteReq(apic.a("leba_item_set", str, this.mOnRemoteResp.key, localBundle), false, false);
+        sendRemoteReq(apml.a("leba_item_set", str, this.mOnRemoteResp.key, localBundle), false, false);
         return;
       }
       catch (Exception localException2)

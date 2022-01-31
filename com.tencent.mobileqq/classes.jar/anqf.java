@@ -1,21 +1,15 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
 public class anqf
-  implements bhqd
+  implements View.OnClickListener
 {
-  public anqf(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
+  public anqf(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.a.a.a("DynamicAvatarRecordActivity");
-    this.a.finish();
+    ArkIDESettingFragment.a(this.a, 0);
   }
 }
 

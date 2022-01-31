@@ -155,12 +155,12 @@ public class rgj
   
   private void a(String paramString)
   {
-    VideoFeedsPlayActivity.a(alpo.a(2131716558) + paramString);
+    VideoFeedsPlayActivity.a(alud.a(2131716570) + paramString);
   }
   
   private void a(String paramString1, String paramString2)
   {
-    VideoFeedsPlayActivity.a(alpo.a(2131716529) + paramString1 + " : " + paramString2);
+    VideoFeedsPlayActivity.a(alud.a(2131716541) + paramString1 + " : " + paramString2);
   }
   
   private void a(ArrayList<VideoInfo> paramArrayList, boolean paramBoolean)
@@ -210,7 +210,7 @@ public class rgj
         }
         a("info.vid=" + localVideoInfo.jdField_a_of_type_JavaLangString + ", info.title=" + localVideoInfo.jdField_c_of_type_JavaLangString + ", info.articleID=" + localVideoInfo.g + " add to videoDataList");
         if ((localVideoInfo.jdField_b_of_type_Boolean) && (TextUtils.isEmpty(localVideoInfo.jdField_k_of_type_JavaLangString))) {
-          localVideoInfo.jdField_k_of_type_JavaLangString = bdbt.b(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), localVideoInfo.j, true);
+          localVideoInfo.jdField_k_of_type_JavaLangString = bdgc.b(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), localVideoInfo.j, true);
         }
         rdm.a(localVideoInfo);
         localVideoInfo.jdField_k_of_type_Int = VideoFeedsRecommendFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment);
@@ -234,7 +234,7 @@ public class rgj
     //   3: dup
     //   4: invokespecial 188	java/lang/StringBuilder:<init>	()V
     //   7: ldc_w 318
-    //   10: invokestatic 194	alpo:a	(I)Ljava/lang/String;
+    //   10: invokestatic 194	alud:a	(I)Ljava/lang/String;
     //   13: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   16: ldc_w 320
     //   19: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -407,7 +407,7 @@ public class rgj
     //   400: dup
     //   401: invokespecial 188	java/lang/StringBuilder:<init>	()V
     //   404: ldc_w 397
-    //   407: invokestatic 194	alpo:a	(I)Ljava/lang/String;
+    //   407: invokestatic 194	alud:a	(I)Ljava/lang/String;
     //   410: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   413: aload 10
     //   415: invokevirtual 399	com/tencent/biz/pubaccount/VideoInfo:b	()Ljava/lang/String;

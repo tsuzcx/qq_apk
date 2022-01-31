@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.ecshopassit.view;
 
 import android.os.Bundle;
-import befo;
+import bejx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public class EcshopWebviewPool$1
     {
       Object localObject = new Bundle();
       ((Bundle)localObject).putInt("_accelerator_mode_", 3);
-      befo.a().a((Bundle)localObject);
+      bejx.a().a((Bundle)localObject);
       localObject = EcshopWebview.a(BaseApplicationImpl.sApplication);
       nvk.a(this.this$0).put(this.a, localObject);
       if (QLog.isColorLevel()) {

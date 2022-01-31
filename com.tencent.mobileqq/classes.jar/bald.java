@@ -1,14 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 class bald
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
-  bald(baky parambaky) {}
+  bald(bala parambala) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramDialogInterface.dismiss();
+    if ((paramInt == 4) && (bala.a(this.a) != null)) {
+      bala.a(this.a).a();
+    }
+    return paramInt == 4;
   }
 }
 

@@ -3,7 +3,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class sxm
-  implements ymm
+  implements yrb
 {
   sxm(sxe paramsxe, String paramString, boolean paramBoolean) {}
   
@@ -39,7 +39,7 @@ class sxm
         {
           localJSONException.printStackTrace();
         }
-        azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D30", "0X8005D30", 0, -1, "1", "", "", "");
+        azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D30", "0X8005D30", 0, -1, "1", "", "", "");
         return;
       }
     }

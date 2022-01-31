@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.contacts.view;
 
-import ahob;
-import ahqu;
-import ahqv;
-import ahqw;
-import ahqx;
-import ahqy;
-import ahqz;
-import alpo;
+import ahsq;
+import ahvj;
+import ahvk;
+import ahvl;
+import ahvm;
+import ahvn;
+import ahvo;
+import alud;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -33,7 +33,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bdkf;
+import bdoo;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.redtouch.RedTouch;
@@ -47,14 +47,14 @@ public class SimpleSlidingIndicator
 {
   private static final int[] jdField_b_of_type_ArrayOfInt = { 16842901, 16842904 };
   private int jdField_a_of_type_Int;
-  private ahob jdField_a_of_type_Ahob;
-  private ahqy jdField_a_of_type_Ahqy;
-  protected ahqz a;
+  private ahsq jdField_a_of_type_Ahsq;
+  private ahvn jdField_a_of_type_Ahvn;
+  protected ahvo a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray = new SparseBooleanArray();
-  ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new ahqx(this);
+  ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new ahvm(this);
   public LinearLayout a;
   protected int[] a;
   protected String[] a;
@@ -127,7 +127,7 @@ public class SimpleSlidingIndicator
       c();
       a(paramContext);
       if (Build.VERSION.SDK_INT >= 14) {
-        setAccessibilityDelegate(new ahqu(this));
+        setAccessibilityDelegate(new ahvj(this));
       }
       return;
       if (this.d < 0) {
@@ -139,7 +139,7 @@ public class SimpleSlidingIndicator
   private void a(int paramInt, View paramView)
   {
     paramView.setFocusable(true);
-    paramView.setOnClickListener(new ahqv(this, paramInt));
+    paramView.setOnClickListener(new ahvk(this, paramInt));
     paramView.setPadding(this.i, 0, this.i, 0);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -1);
     localLayoutParams.gravity = 17;
@@ -173,7 +173,7 @@ public class SimpleSlidingIndicator
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839467);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839468);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
@@ -218,7 +218,7 @@ public class SimpleSlidingIndicator
       {
         localObject = ValueAnimator.ofInt(new int[] { ((View)localObject).getLeft(), localView.getLeft() });
         ((ValueAnimator)localObject).setDuration(200L);
-        ((ValueAnimator)localObject).addUpdateListener(new ahqw(this));
+        ((ValueAnimator)localObject).addUpdateListener(new ahvl(this));
         ((ValueAnimator)localObject).start();
       }
       return;
@@ -303,8 +303,8 @@ public class SimpleSlidingIndicator
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Ahqz != null) {
-        this.jdField_a_of_type_Ahqz.a(paramInt, paramBoolean2);
+      if (this.jdField_a_of_type_Ahvo != null) {
+        this.jdField_a_of_type_Ahvo.a(paramInt, paramBoolean2);
       }
       return;
       label69:
@@ -431,7 +431,7 @@ public class SimpleSlidingIndicator
           int i3 = ((TextView)localObject).getRight();
           i2 = ((TextView)localObject).getTop();
           i3 -= this.i;
-          int i4 = bdkf.a(10.0F);
+          int i4 = bdoo.a(10.0F);
           this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i3, i2, i3 + i4, i4 + i2);
           this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
         }
@@ -448,12 +448,12 @@ public class SimpleSlidingIndicator
     for (;;)
     {
       return super.onInterceptTouchEvent(paramMotionEvent);
-      if (this.jdField_a_of_type_Ahob != null)
+      if (this.jdField_a_of_type_Ahsq != null)
       {
-        this.jdField_a_of_type_Ahob.c(true);
+        this.jdField_a_of_type_Ahsq.c(true);
         continue;
-        if (this.jdField_a_of_type_Ahob != null) {
-          this.jdField_a_of_type_Ahob.c(false);
+        if (this.jdField_a_of_type_Ahsq != null) {
+          this.jdField_a_of_type_Ahsq.c(false);
         }
       }
     }
@@ -467,8 +467,8 @@ public class SimpleSlidingIndicator
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      if (this.jdField_a_of_type_Ahob != null) {
-        this.jdField_a_of_type_Ahob.c(false);
+      if (this.jdField_a_of_type_Ahsq != null) {
+        this.jdField_a_of_type_Ahsq.c(false);
       }
     }
   }
@@ -483,10 +483,10 @@ public class SimpleSlidingIndicator
         View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i1);
         if (localView != null)
         {
-          String str2 = this.jdField_a_of_type_ArrayOfJavaLangString[i1] + alpo.a(2131714546);
+          String str2 = this.jdField_a_of_type_ArrayOfJavaLangString[i1] + alud.a(2131714558);
           String str1 = str2;
           if (i1 == this.e) {
-            str1 = str2 + alpo.a(2131714547);
+            str1 = str2 + alud.a(2131714559);
           }
           localView.setContentDescription(str1);
         }
@@ -510,19 +510,19 @@ public class SimpleSlidingIndicator
     this.g = paramInt;
   }
   
-  public void setInterceptListener(ahob paramahob)
+  public void setInterceptListener(ahsq paramahsq)
   {
-    this.jdField_a_of_type_Ahob = paramahob;
+    this.jdField_a_of_type_Ahsq = paramahsq;
   }
   
-  public void setOnTabClickListener(ahqy paramahqy)
+  public void setOnTabClickListener(ahvn paramahvn)
   {
-    this.jdField_a_of_type_Ahqy = paramahqy;
+    this.jdField_a_of_type_Ahvn = paramahvn;
   }
   
-  public void setOnTabListener(ahqz paramahqz)
+  public void setOnTabListener(ahvo paramahvo)
   {
-    this.jdField_a_of_type_Ahqz = paramahqz;
+    this.jdField_a_of_type_Ahvo = paramahvo;
   }
   
   public void setOverScrollMode(int paramInt)

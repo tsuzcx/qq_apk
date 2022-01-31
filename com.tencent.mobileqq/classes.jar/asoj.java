@@ -1,103 +1,60 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.etrump.mixlayout.EMEmoticon;
-import com.etrump.mixlayout.ETEngine;
-import com.etrump.mixlayout.ETFont;
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import java.lang.ref.WeakReference;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.gamecenter.view.ScrollTextView;
 
-public final class asoj
-  extends Handler
+public class asoj
+  extends Animation
 {
-  public asoj(Looper paramLooper)
+  private float jdField_a_of_type_Float;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private final boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private final boolean jdField_b_of_type_Boolean;
+  
+  public asoj(ScrollTextView paramScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
   }
   
-  public void handleMessage(Message arg1)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    asol localasol;
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.jdField_b_of_type_Float;
+    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
     int i;
-    ETEngine localETEngine;
-    Object localObject1;
-    switch (???.what)
+    if (this.jdField_b_of_type_Boolean)
     {
-    case 259: 
-    default: 
-    case 258: 
-      do
-      {
-        do
-        {
-          return;
-          localasol = (asol)???.obj;
-        } while (localasol == null);
-        i = asol.a(localasol).getWidth();
-        int j = asol.a(localasol).getHeight();
-        if ((HiBoomTextView.a() != null) && ((HiBoomTextView.a().getWidth() < i) || (HiBoomTextView.a().getHeight() < j)))
-        {
-          HiBoomTextView.a().recycle();
-          HiBoomTextView.a(null);
-        }
-        if (HiBoomTextView.a() != null) {
-          break;
-        }
-        HiBoomTextView.a(Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888));
-        localETEngine = asnp.a().b;
-        String str = asol.a(localasol) + asol.a(localasol).getId() + asol.a(localasol) + asol.a(localasol).getSize();
-        localObject1 = (EMEmoticon)HiBoomTextView.a().get(str);
-        ??? = (Message)localObject1;
-        if (localObject1 == null)
-        {
-          localObject1 = EMEmoticon.createEmoticon(localETEngine, asol.a(localasol), asol.a(localasol), asol.a(localasol));
-          ??? = (Message)localObject1;
-          if (localObject1 != null)
-          {
-            HiBoomTextView.a().put(str, localObject1);
-            ??? = (Message)localObject1;
-          }
-        }
-      } while (??? == null);
-      ???.gotoFrame(asol.b(localasol));
-      ???.drawFrame(HiBoomTextView.a());
-      localObject1 = asol.a(localasol);
-      if (asol.a(localasol).get() == null) {
-        break;
+      i = 1;
+      paramTransformation = paramTransformation.getMatrix();
+      localCamera.save();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label99;
       }
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
     }
     for (;;)
     {
-      synchronized (((HiBoomTextView)asol.a(localasol).get()).jdField_a_of_type_Asok)
-      {
-        if ((((Bitmap)localObject1).isRecycled()) || (HiBoomTextView.a((HiBoomTextView)asol.a(localasol).get()) != asol.a(localasol))) {
-          break label417;
-        }
-        ((Bitmap)localObject1).eraseColor(0);
-        localETEngine.native_cloneBitmap(HiBoomTextView.a(), (Bitmap)localObject1);
-        i = 1;
-        if (i == 0) {
-          break;
-        }
-        new Message().what = 259;
-        HiBoomTextView.jdField_a_of_type_Asom.obtainMessage(259, localasol).sendToTarget();
-        return;
-        HiBoomTextView.a().eraseColor(0);
-      }
-      if (HiBoomTextView.a() == null) {
-        break;
-      }
-      HiBoomTextView.a().recycle();
-      HiBoomTextView.a(null);
+      localCamera.getMatrix(paramTransformation);
+      localCamera.restore();
+      paramTransformation.preTranslate(-f1, -f2);
+      paramTransformation.postTranslate(f1, f2);
       return;
-      label417:
-      i = 0;
-      continue;
-      i = 0;
+      i = -1;
+      break;
+      label99:
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
     }
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.getHeight();
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.getWidth();
   }
 }
 

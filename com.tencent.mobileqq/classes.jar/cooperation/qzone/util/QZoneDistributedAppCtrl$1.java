@@ -1,16 +1,16 @@
 package cooperation.qzone.util;
 
-import bjqq;
-import bjqr;
+import bjux;
+import bjuy;
 
 public class QZoneDistributedAppCtrl$1
   implements Runnable
 {
-  public QZoneDistributedAppCtrl$1(bjqq parambjqq, bjqr parambjqr) {}
+  public QZoneDistributedAppCtrl$1(bjux parambjux, bjuy parambjuy) {}
   
   public void run()
   {
-    bjqq.a(this.this$0, this.a);
+    bjux.a(this.this$0, this.a);
   }
 }
 

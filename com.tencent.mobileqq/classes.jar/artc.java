@@ -1,44 +1,12 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import io.flutter.embedding.android.SplashScreen;
-import io.flutter.embedding.engine.renderer.OnFirstFrameRenderedListener;
-
-public class artc
-  implements SplashScreen
+final class artc
+  implements beac
 {
-  private OnFirstFrameRenderedListener a;
+  artc(arsr paramarsr) {}
   
-  public artc(OnFirstFrameRenderedListener paramOnFirstFrameRenderedListener)
+  public void callback(int paramInt)
   {
-    this.a = paramOnFirstFrameRenderedListener;
-  }
-  
-  @Nullable
-  public View createSplashView(@NonNull Context paramContext, @Nullable Bundle paramBundle)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131560690, null);
-  }
-  
-  public boolean doesSplashViewRememberItsTransition()
-  {
-    return false;
-  }
-  
-  @Nullable
-  public Bundle saveSplashScreenState()
-  {
-    return null;
-  }
-  
-  public void transitionToFlutter(@NonNull Runnable paramRunnable)
-  {
-    paramRunnable.run();
-    if (this.a != null) {
-      this.a.onFirstFrameRendered();
+    if ((paramInt == 1) || (paramInt == 2)) {
+      this.a.a();
     }
   }
 }

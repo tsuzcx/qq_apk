@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.activity.Conversation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
 
 public class acof
-  extends apxc
+  implements DialogInterface.OnClickListener
 {
-  public acof(Conversation paramConversation) {}
+  public acof(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
+    if (this.a.a != null)
+    {
+      this.a.a.b = false;
+      this.a.a.a(false);
     }
   }
 }

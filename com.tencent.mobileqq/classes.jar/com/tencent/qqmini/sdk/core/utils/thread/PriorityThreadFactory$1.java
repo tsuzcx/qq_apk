@@ -1,19 +1,19 @@
 package com.tencent.qqmini.sdk.core.utils.thread;
 
 import android.os.Process;
-import bgmb;
+import bgqi;
 
 public class PriorityThreadFactory$1
   extends Thread
 {
-  public PriorityThreadFactory$1(bgmb parambgmb, Runnable paramRunnable, String paramString)
+  public PriorityThreadFactory$1(bgqi parambgqi, Runnable paramRunnable, String paramString)
   {
     super(paramRunnable, paramString);
   }
   
   public void run()
   {
-    Process.setThreadPriority(bgmb.a(this.this$0));
+    Process.setThreadPriority(bgqi.a(this.this$0));
     super.run();
   }
 }

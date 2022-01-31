@@ -1,29 +1,23 @@
-class aumb
-  implements arls
+import android.view.View;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
+import java.util.Comparator;
+
+public class aumb
+  implements Comparator<View>
 {
-  aumb(ault paramault, aulo paramaulo) {}
-  
-  public void a(int paramInt)
+  public int a(View paramView1, View paramView2)
   {
-    if ((this.jdField_a_of_type_Aulo != null) && (this.jdField_a_of_type_Aulo.a != null))
+    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
+    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
+    if (paramView1.a != paramView2.a)
     {
-      String str = this.jdField_a_of_type_Aulo.a.a();
-      aulp localaulp = this.jdField_a_of_type_Ault.a(str);
-      if ((localaulp != null) && (!localaulp.a))
-      {
-        localaulp.c = paramInt;
-        this.jdField_a_of_type_Ault.a(str, localaulp);
-        ault.a(this.jdField_a_of_type_Ault, localaulp, paramInt);
+      if (paramView1.a) {
+        return 1;
       }
+      return -1;
     }
+    return paramView1.b - paramView2.b;
   }
-  
-  public void a(boolean paramBoolean)
-  {
-    ault.a(this.jdField_a_of_type_Ault, this.jdField_a_of_type_Aulo, paramBoolean);
-  }
-  
-  public void b(boolean paramBoolean) {}
 }
 
 

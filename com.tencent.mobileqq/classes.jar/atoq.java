@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.1;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.2;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.3;
 
-class atoq
-  implements View.OnClickListener
+public class atoq
 {
-  atoq(atop paramatop, atof paramatof) {}
-  
-  public void onClick(View paramView)
+  public static void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Atop.jdField_a_of_type_Atof.a()) {
-      return;
-    }
-    atof.a(this.jdField_a_of_type_Atop.jdField_a_of_type_Atof).c(true);
-    atof.a(this.jdField_a_of_type_Atop.jdField_a_of_type_Atof);
-    azmj.b(null, "CliOper", "", "", "0X800A973", "0X800A973", 0, 0, "0", "0", "0", "");
+    ThreadManager.post(new QQMusicPlayReport.2(paramInt1, paramInt2), 5, null, false);
+  }
+  
+  public static void a(boolean paramBoolean, int paramInt)
+  {
+    ThreadManager.post(new QQMusicPlayReport.1(paramBoolean, paramInt), 5, null, false);
+  }
+  
+  public static void b(boolean paramBoolean, int paramInt)
+  {
+    ThreadManager.post(new QQMusicPlayReport.3(paramBoolean, bdin.b(null), paramInt), 5, null, false);
   }
 }
 

@@ -1,44 +1,25 @@
-import java.util.List;
-
-class vko
-  implements vlf
+public class vko
+  extends vkn
 {
-  vko(vkn paramvkn) {}
-  
-  public void a()
-  {
-    vkn.a(this.a, this.a.a.a(vkn.a(this.a), 5));
-    List localList = vkn.a(this.a).a;
-    if ((vkn.a(this.a) == null) && (localList.size() > 0)) {
-      vkn.a(this.a, ((vle)localList.get(0)).a);
-    }
-    label193:
-    for (;;)
-    {
-      vkn.a(this.a).a(vkn.a(this.a), "");
-      wsv.d("Q.qqstory.player.data.SimpleDataProvider", "current group:%s", new Object[] { vkn.a(this.a) });
-      return;
-      int i = 0;
-      for (;;)
-      {
-        if (i >= localList.size()) {
-          break label193;
-        }
-        if (((vle)localList.get(i)).a.equals(vkn.a(this.a)))
-        {
-          i -= 1;
-          if (i < 0) {
-            break;
-          }
-          vkn.a(this.a, ((vle)localList.get(i)).a);
-          break;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public void a(vld paramvld, String paramString, boolean paramBoolean) {}
+  public String a;
+  public int b = 0;
+  public int c = 16296448;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 1;
+  public String e;
+  public String f = ulg.a;
+  public String g = "mqqapi://qstory/open?src_type=internal&version=1";
+  public String h;
+  public String i = "";
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n = "";
+  public String o;
+  public String p;
 }
 
 

@@ -1,21 +1,21 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bkqk;
-import bkqr;
+import bkur;
+import bkuy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class AEBottomListPart$7
   implements Runnable
 {
-  public AEBottomListPart$7(bkqr parambkqr, long paramLong) {}
+  public AEBottomListPart$7(bkuy parambkuy, long paramLong) {}
   
   public void run()
   {
-    if (bkqr.b(this.this$0))
+    if (bkuy.b(this.this$0))
     {
-      bkqr.a(this.this$0).setVisibility(0);
-      bkqr.a(this.this$0).a(new ArrayList());
+      bkuy.a(this.this$0).setVisibility(0);
+      bkuy.a(this.this$0).a(new ArrayList());
       QLog.d("AEWaterMarkListPart", 4, "hot data is empty, updatePackage, total cost=" + (System.currentTimeMillis() - this.a));
     }
   }

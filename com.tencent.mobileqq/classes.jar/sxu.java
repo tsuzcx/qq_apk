@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.6;
 
 public class sxu
-  implements bepr
+  implements beua
 {
   public sxu(PublicAccountH5AbilityPlugin.6 param6, ref paramref) {}
   

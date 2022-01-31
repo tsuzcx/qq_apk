@@ -9,8 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.Scroller;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import vml;
-import wta;
+import vqu;
+import wxj;
 
 public class CommentFloatDialogTopGestureLayout
   extends LinearLayout
@@ -20,7 +20,7 @@ public class CommentFloatDialogTopGestureLayout
   private View jdField_a_of_type_AndroidViewView;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
   private StoryPlayerCommentListView jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView;
-  private vml jdField_a_of_type_Vml;
+  private vqu jdField_a_of_type_Vqu;
   float b;
   
   public CommentFloatDialogTopGestureLayout(Context paramContext)
@@ -82,18 +82,18 @@ public class CommentFloatDialogTopGestureLayout
       }
       Object localObject = this.jdField_a_of_type_AndroidViewView;
       ThreadManager.getUIHandler().postDelayed(new CommentFloatDialogTopGestureLayout.1(this, (View)localObject), 32L);
-      this.jdField_a_of_type_Vml.a(i);
-      if (this.jdField_a_of_type_Vml.a())
+      this.jdField_a_of_type_Vqu.a(i);
+      if (this.jdField_a_of_type_Vqu.a())
       {
         localObject = "2";
-        if (!this.jdField_a_of_type_Vml.b()) {
+        if (!this.jdField_a_of_type_Vqu.b()) {
           break label127;
         }
       }
       label127:
       for (String str = "2";; str = "1")
       {
-        wta.a("play_video", "close_reply", 0, 2, new String[] { localObject, str });
+        wxj.a("play_video", "close_reply", 0, 2, new String[] { localObject, str });
         return;
         localObject = "1";
         break;
@@ -102,9 +102,9 @@ public class CommentFloatDialogTopGestureLayout
     a(0, 0, 200);
   }
   
-  public void a(vml paramvml, StoryPlayerCommentListView paramStoryPlayerCommentListView, View paramView)
+  public void a(vqu paramvqu, StoryPlayerCommentListView paramStoryPlayerCommentListView, View paramView)
   {
-    this.jdField_a_of_type_Vml = paramvml;
+    this.jdField_a_of_type_Vqu = paramvqu;
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView = paramStoryPlayerCommentListView;
     this.jdField_a_of_type_AndroidViewView = paramView;
   }

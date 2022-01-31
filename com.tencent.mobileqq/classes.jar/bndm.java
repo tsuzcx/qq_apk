@@ -1,20 +1,16 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.graphics.RectF;
 
-public class bndm
-  implements MediaPlayer.OnCompletionListener
+public abstract interface bndm
 {
-  public bndm(FixedSizeVideoView paramFixedSizeVideoView) {}
+  public abstract void a(int paramInt);
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    if (this.a.a != null)
-    {
-      this.a.removeCallbacks(FixedSizeVideoView.a(this.a));
-      this.a.a.a(paramMediaPlayer);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, RectF paramRectF);
+  
+  public abstract void a(int paramInt, RectF paramRectF);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 

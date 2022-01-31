@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.Doraemon.monitor;
 
-import abuu;
-import abuv;
+import abzj;
+import abzk;
 import java.util.HashMap;
 
 public class DoraemonAPIReporterMain$5
   implements Runnable
 {
-  public DoraemonAPIReporterMain$5(abuv paramabuv, abuu paramabuu, String paramString, HashMap paramHashMap) {}
+  public DoraemonAPIReporterMain$5(abzk paramabzk, abzj paramabzj, String paramString, HashMap paramHashMap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Abuu.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap);
+    this.jdField_a_of_type_Abzj.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap);
   }
 }
 

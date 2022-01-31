@@ -10,10 +10,10 @@ import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import atgg;
-import bdkf;
-import bjec;
-import bjed;
+import atkp;
+import bdoo;
+import bjij;
+import bjik;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -33,11 +33,11 @@ import mqq.app.AppRuntime;
 public abstract class BaseMsgView
   extends FrameLayout
 {
-  private static final int c = bdkf.a() - bdkf.b(24.0F);
-  private static final int d = bdkf.b(230.0F);
+  private static final int c = bdoo.a() - bdoo.b(24.0F);
+  private static final int d = bdoo.b(230.0F);
   protected int a;
   public Context a;
-  protected bjed a;
+  protected bjik a;
   protected QQAppInterface a;
   protected QzoneMsgPagerAdapter a;
   protected QzoneMsgViewPager a;
@@ -128,15 +128,15 @@ public abstract class BaseMsgView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bjed == null) {
+    if (this.jdField_a_of_type_Bjik == null) {
       return;
     }
     if ((this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgViewPager != null) && (this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgViewPager.getVisibility() == 0) && (this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgPagerAdapter != null) && (this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgPagerAdapter.getCount() > 1))
     {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgViewPager);
-      Message localMessage = this.jdField_a_of_type_Bjed.obtainMessage(10000, this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgPagerAdapter.getCount(), 0, this.jdField_a_of_type_JavaLangRefWeakReference);
-      this.jdField_a_of_type_Bjed.removeMessages(10000);
-      this.jdField_a_of_type_Bjed.sendMessageDelayed(localMessage, 3000L);
+      Message localMessage = this.jdField_a_of_type_Bjik.obtainMessage(10000, this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgPagerAdapter.getCount(), 0, this.jdField_a_of_type_JavaLangRefWeakReference);
+      this.jdField_a_of_type_Bjik.removeMessages(10000);
+      this.jdField_a_of_type_Bjik.sendMessageDelayed(localMessage, 3000L);
       return;
     }
     ApngImage.playByTag(this.jdField_a_of_type_Int);
@@ -158,19 +158,19 @@ public abstract class BaseMsgView
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Bjed == null) || (this.jdField_a_of_type_JavaLangRefWeakReference == null)) {
+    if ((this.jdField_a_of_type_Bjik == null) || (this.jdField_a_of_type_JavaLangRefWeakReference == null)) {
       return;
     }
-    this.jdField_a_of_type_Bjed.removeMessages(10000, this.jdField_a_of_type_JavaLangRefWeakReference);
+    this.jdField_a_of_type_Bjik.removeMessages(10000, this.jdField_a_of_type_JavaLangRefWeakReference);
     ApngImage.pauseByTag(this.jdField_a_of_type_Int);
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Bjed == null) {
+    if (this.jdField_a_of_type_Bjik == null) {
       return;
     }
-    this.jdField_a_of_type_Bjed.removeMessages(10000);
+    this.jdField_a_of_type_Bjik.removeMessages(10000);
   }
   
   protected void d()
@@ -178,10 +178,10 @@ public abstract class BaseMsgView
     try
     {
       Field localField = Class.forName("android.support.v4.view.ViewPager").getDeclaredField("mScroller");
-      bjec localbjec = new bjec(this.jdField_a_of_type_AndroidContentContext, new atgg(0.25D, 0.1000000014901161D, 0.25D, 1.0D));
-      localbjec.a(400);
+      bjij localbjij = new bjij(this.jdField_a_of_type_AndroidContentContext, new atkp(0.25D, 0.1000000014901161D, 0.25D, 1.0D));
+      localbjij.a(400);
       localField.setAccessible(true);
-      localField.set(this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgViewPager, localbjec);
+      localField.set(this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgViewPager, localbjij);
       return;
     }
     catch (Exception localException)

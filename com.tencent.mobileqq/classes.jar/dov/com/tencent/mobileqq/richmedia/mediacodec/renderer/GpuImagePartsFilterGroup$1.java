@@ -1,33 +1,33 @@
 package dov.com.tencent.mobileqq.richmedia.mediacodec.renderer;
 
-import bnjk;
-import bnjm;
-import bnjv;
+import bnnw;
+import bnny;
+import bnoh;
 
 public class GpuImagePartsFilterGroup$1
   implements Runnable
 {
-  public GpuImagePartsFilterGroup$1(bnjv parambnjv, int paramInt1, int paramInt2, int paramInt3) {}
+  public GpuImagePartsFilterGroup$1(bnoh parambnoh, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    bnjm localbnjm1 = null;
-    bnjm localbnjm2 = bnjv.a(this.this$0);
-    bnjv.a(this.this$0, null);
-    if ((bnjv.b(this.this$0) == null) || (bnjv.b(this.this$0).getFilterType() != this.a))
+    bnny localbnny1 = null;
+    bnny localbnny2 = bnoh.a(this.this$0);
+    bnoh.a(this.this$0, null);
+    if ((bnoh.b(this.this$0) == null) || (bnoh.b(this.this$0).getFilterType() != this.a))
     {
-      localbnjm1 = bnjv.b(this.this$0);
-      bnjv.b(this.this$0, (bnjm)bnjk.a(this.a));
-      bnjv.b(this.this$0).init();
-      bnjv.b(this.this$0).onOutputSizeChanged(this.b, this.c);
+      localbnny1 = bnoh.b(this.this$0);
+      bnoh.b(this.this$0, (bnny)bnnw.a(this.a));
+      bnoh.b(this.this$0).init();
+      bnoh.b(this.this$0).onOutputSizeChanged(this.b, this.c);
     }
-    bnjv.b(this.this$0).a(false, 0.0F);
-    bnjv.a(this.this$0, 0.0F);
-    if (localbnjm2 != null) {
-      localbnjm2.destroy();
+    bnoh.b(this.this$0).a(false, 0.0F);
+    bnoh.a(this.this$0, 0.0F);
+    if (localbnny2 != null) {
+      localbnny2.destroy();
     }
-    if (localbnjm1 != null) {
-      localbnjm1.destroy();
+    if (localbnny1 != null) {
+      localbnny1.destroy();
     }
   }
 }

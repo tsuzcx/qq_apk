@@ -1,69 +1,108 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ims.QQProtectRisks.QQProtectRisksResponse;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity.7.1;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class adop
-  extends nac
+  extends BaseAdapter
 {
-  public adop(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adoq(this);
+  List<ProfileLabelInfo> jdField_a_of_type_JavaUtilList;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public adop(List<ProfileLabelInfo> paramList)
   {
-    int i = 0;
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    for (paramInt = 0;; paramInt = 1)
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  private void a(ProfileLabelInfo paramProfileLabelInfo)
+  {
+    Object localObject = null;
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Awvn.a().keySet().iterator();
+    if (localIterator.hasNext())
     {
-      if (paramInt != 0) {}
-      try
+      ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)localIterator.next();
+      if (!localProfileLabelInfo.labelId.equals(paramProfileLabelInfo.labelId)) {
+        break label114;
+      }
+      localObject = localProfileLabelInfo;
+    }
+    label114:
+    for (;;)
+    {
+      break;
+      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Awvn.a(localObject)))
       {
-        QQProtectRisks.QQProtectRisksResponse localQQProtectRisksResponse = new QQProtectRisks.QQProtectRisksResponse();
-        localQQProtectRisksResponse.mergeFrom(paramArrayOfByte);
-        paramInt = i;
-        if (localQQProtectRisksResponse.uint32_sec_cmd.has()) {
-          paramInt = localQQProtectRisksResponse.uint32_sec_cmd.get();
-        }
-        if (paramInt == 1)
-        {
-          long l = 3600L;
-          paramArrayOfByte = "";
-          if (localQQProtectRisksResponse.uint32_cache_time.has()) {
-            l = localQQProtectRisksResponse.uint32_cache_time.get();
-          }
-          if (localQQProtectRisksResponse.str_risk_exist.has()) {
-            paramArrayOfByte = localQQProtectRisksResponse.str_risk_exist.get();
-          }
-          paramBundle = paramArrayOfByte;
-          if (TextUtils.isEmpty(paramArrayOfByte))
-          {
-            paramBundle = paramArrayOfByte;
-            if (localQQProtectRisksResponse.risk_info_list.has())
-            {
-              paramBundle = paramArrayOfByte;
-              if (!localQQProtectRisksResponse.risk_info_list.isEmpty()) {
-                paramBundle = this.a.getString(2131699746);
-              }
-            }
-          }
-          QQSettingSettingActivity.a(this.a, l, paramBundle);
-          this.a.runOnUiThread(new QQSettingSettingActivity.7.1(this, paramBundle));
-        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Awvn.c(localObject, this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Awvn.a(localObject));
         return;
       }
-      catch (Throwable paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        return;
-      }
+      a(paramProfileLabelInfo.labelId);
+      return;
+    }
+  }
+  
+  private void a(Long paramLong)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.b.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.addAll(((ProfileLabelTypeInfo)localIterator.next()).labels);
+    }
+    paramLong = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.a(paramLong, localArrayList);
+    if (paramLong != null) {
+      paramLong.toggleStatus();
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.getLayoutInflater().inflate(2131562709, null);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(32.0F * this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Float)));
+      paramViewGroup = new adoo();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377406));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      paramViewGroup.jdField_a_of_type_Int = paramInt;
+      int i = paramInt % ProfileActivity.a.length;
+      paramView.setBackgroundResource(ProfileActivity.a[i][0]);
+      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      i = ProfileActivity.a[i][1];
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
+      return paramView;
+      paramViewGroup = (adoo)paramView.getTag();
     }
   }
 }

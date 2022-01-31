@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity;
 
 import android.content.Context;
 import android.os.Handler;
-import bcru;
-import bcrv;
+import bcwd;
+import bcwe;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -19,22 +19,22 @@ class TroopInfoActivity$23
     {
       Object localObject = BaseApplication.getContext();
       String str = Long.toString(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
-      bcru localbcru = bcrv.a((Context)localObject).a();
-      if ((localbcru != null) && (localbcru.b.equals(str)))
+      bcwd localbcwd = bcwe.a((Context)localObject).a();
+      if ((localbcwd != null) && (localbcwd.b.equals(str)))
       {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopClass = localbcru.a();
-        this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopClassExtText = localbcru.a;
+        this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopClass = localbcwd.a();
+        this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopClassExtText = localbcwd.a;
       }
       for (;;)
       {
         this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
         this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
         return;
-        localObject = bcrv.a((Context)localObject).a((Context)localObject, str);
+        localObject = bcwe.a((Context)localObject).a((Context)localObject, str);
         if (localObject != null)
         {
-          this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopClass = ((bcru)localObject).a();
-          this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopClassExtText = ((bcru)localObject).a;
+          this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopClass = ((bcwd)localObject).a();
+          this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopClassExtText = ((bcwd)localObject).a;
         }
       }
       return;

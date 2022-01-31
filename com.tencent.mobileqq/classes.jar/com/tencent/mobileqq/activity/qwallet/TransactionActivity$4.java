@@ -9,7 +9,7 @@ class TransactionActivity$4
   
   public void run()
   {
-    TransactionActivity.b(this.this$0).setText(this.this$0.getString(2131697305) + "（" + this.a + "）");
+    TransactionActivity.b(this.this$0).setText(this.this$0.getString(2131697307) + "（" + this.a + "）");
   }
 }
 

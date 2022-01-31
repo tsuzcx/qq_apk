@@ -1,24 +1,32 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
-public class bjtl
-  extends bjts
+class bjtl
+  implements InvocationHandler
 {
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  bjtl(bjtj parambjtj) {}
+  
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
-    while (!"jumpQQCleanPage".equalsIgnoreCase(paramString3)) {
-      return false;
+    paramObject = paramMethod.getName();
+    boolean bool;
+    if ("onLoad".equals(paramObject)) {
+      if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 2))
+      {
+        int i = ((Integer)paramArrayOfObject[0]).intValue();
+        bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
+        bjtj.a(this.a, i, bool);
+      }
     }
-    if (this.a.mRuntime.a() != null)
+    for (;;)
     {
-      QQSettingCleanActivity.a(this.a.mRuntime.a());
-      return true;
+      return null;
+      if (("onLoadFinish".equals(paramObject)) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 1))
+      {
+        bool = ((Boolean)paramArrayOfObject[0]).booleanValue();
+        bjtj.a(this.a, bool);
+      }
     }
-    QLog.e("jumpCleanPage", 2, "call activity with null runtime");
-    return false;
   }
 }
 

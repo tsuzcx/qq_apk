@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -20,10 +20,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import ayrd;
-import bcuq;
-import bcwh;
-import bdbi;
+import ayvm;
+import bcyz;
+import bdaq;
+import bdfr;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
@@ -100,13 +100,13 @@ public class ComponentHeaderPolymeric
     if (paramInt == 1)
     {
       a(false);
-      QQToast.a(getContext(), alpo.a(2131702693), 0).a();
+      QQToast.a(getContext(), alud.a(2131702705), 0).a();
     }
     while (paramInt != 2) {
       return;
     }
     a(true);
-    QQToast.a(getContext(), alpo.a(2131702698), 0).a();
+    QQToast.a(getContext(), alud.a(2131702710), 0).a();
   }
   
   private void a(ArticleInfo paramArticleInfo, int paramInt)
@@ -160,17 +160,17 @@ public class ComponentHeaderPolymeric
   {
     if (paramBoolean)
     {
-      this.c.setBackgroundResource(2130848764);
-      this.c.setText(alpo.a(2131702632));
+      this.c.setBackgroundResource(2130848837);
+      this.c.setText(alud.a(2131702644));
       this.c.setTextColor(-2147483648);
       this.c.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       return;
     }
-    this.c.setBackgroundResource(2130848763);
-    this.c.setText(alpo.a(2131702669));
+    this.c.setBackgroundResource(2130848836);
+    this.c.setText(alud.a(2131702681));
     this.c.setTextColor(-1);
-    this.c.setCompoundDrawablePadding(aekt.a(3.0F, getResources()));
-    this.c.setCompoundDrawablesWithIntrinsicBounds(2130848761, 0, 0, 0);
+    this.c.setCompoundDrawablePadding(aepi.a(3.0F, getResources()));
+    this.c.setCompoundDrawablesWithIntrinsicBounds(2130848834, 0, 0, 0);
   }
   
   private void b(AppRuntime paramAppRuntime, String paramString, ArticleInfo paramArticleInfo)
@@ -201,7 +201,7 @@ public class ComponentHeaderPolymeric
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559968, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559967, this, true);
   }
   
   public void a()
@@ -220,15 +220,15 @@ public class ComponentHeaderPolymeric
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131378099);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131375210));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375202));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131375205));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375213));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375214));
-    this.c = ((TextView)paramView.findViewById(2131375204));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375206));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131375981);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131378153);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131375261));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375253));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131375256));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375264));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375265));
+    this.c = ((TextView)paramView.findViewById(2131375255));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375257));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376034);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setOnClickListener(this);
@@ -296,7 +296,7 @@ public class ComponentHeaderPolymeric
           QLog.d("ComponentHeaderPolymeric", 2, "articleInfo.mPolymericInfo = " + localArticleInfo.mPolymericInfo.toString());
         }
         return;
-        localObject1 = alpo.a(2131702651);
+        localObject1 = alud.a(2131702663);
         break;
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
@@ -305,7 +305,7 @@ public class ComponentHeaderPolymeric
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText(localArticleInfo.mPolymericInfo.jdField_a_of_type_JavaLangString);
         this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
         this.jdField_a_of_type_Long = localArticleInfo.mPolymericInfo.jdField_b_of_type_Long;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageDrawable(ayrd.a(this.jdField_a_of_type_Bcws, String.valueOf(this.jdField_a_of_type_Long), 1));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageDrawable(ayvm.a(this.jdField_a_of_type_Bdbb, String.valueOf(this.jdField_a_of_type_Long), 1));
         continue;
         localObject2 = localArticleInfo.mPolymericInfo.jdField_a_of_type_JavaLangString;
         if (((String)localObject2).startsWith("#"))
@@ -315,8 +315,8 @@ public class ComponentHeaderPolymeric
             localObject1 = "# " + ((String)localObject2).substring(1);
           }
           localObject1 = new SpannableString((CharSequence)localObject1);
-          ((SpannableString)localObject1).setSpan(new ForegroundColorSpan(getResources().getColor(2131166777)), 0, 1, 33);
-          ((SpannableString)localObject1).setSpan(new ImageSpan(getContext(), 2130842527), 1, 2, 33);
+          ((SpannableString)localObject1).setSpan(new ForegroundColorSpan(getResources().getColor(2131166779)), 0, 1, 33);
+          ((SpannableString)localObject1).setSpan(new ImageSpan(getContext(), 2130842540), 1, 2, 33);
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText((CharSequence)localObject1);
         }
         for (;;)
@@ -331,8 +331,8 @@ public class ComponentHeaderPolymeric
           ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
           ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
           localObject1 = URLDrawable.getDrawable(ors.a(localArticleInfo.mPolymericInfo.c), (URLDrawable.URLDrawableOptions)localObject1);
-          ((URLDrawable)localObject1).setTag(bcuq.b(72, 72, bcwh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.getContext(), 2.0F)));
-          ((URLDrawable)localObject1).setDecodeHandler(bcuq.i);
+          ((URLDrawable)localObject1).setTag(bcyz.b(72, 72, bdaq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.getContext(), 2.0F)));
+          ((URLDrawable)localObject1).setDecodeHandler(bcyz.i);
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageDrawable((Drawable)localObject1);
           break;
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText(localArticleInfo.mPolymericInfo.jdField_a_of_type_JavaLangString);
@@ -347,7 +347,7 @@ public class ComponentHeaderPolymeric
           if (((localObject1 instanceof ArticleInfo)) && (rqj.o((ArticleInfo)localObject1)))
           {
             this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText(localArticleInfo.mPolymericInfo.jdField_a_of_type_JavaLangString);
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageDrawable(ayrd.a(this.jdField_a_of_type_Bcws, String.valueOf(this.jdField_a_of_type_Long), 1));
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageDrawable(ayvm.a(this.jdField_a_of_type_Bdbb, String.valueOf(this.jdField_a_of_type_Long), 1));
           }
           else
           {
@@ -391,7 +391,7 @@ public class ComponentHeaderPolymeric
     }
     label1263:
     label1275:
-    for (((LinearLayout.LayoutParams)localObject1).rightMargin = bcwh.a(getContext(), 12.0F);; ((LinearLayout.LayoutParams)localObject1).rightMargin = bcwh.a(getContext(), 0.0F))
+    for (((LinearLayout.LayoutParams)localObject1).rightMargin = bdaq.a(getContext(), 12.0F);; ((LinearLayout.LayoutParams)localObject1).rightMargin = bdaq.a(getContext(), 0.0F))
     {
       this.c.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       if (!(paramObject instanceof pgq)) {
@@ -530,10 +530,10 @@ public class ComponentHeaderPolymeric
           {
             a(localArticleInfo);
             return;
-            paramView = oqu.g + bdbi.encodeToString(String.valueOf(localArticleInfo.mPolymericInfo.jdField_b_of_type_Long).getBytes(), 2);
+            paramView = oqu.g + bdfr.encodeToString(String.valueOf(localArticleInfo.mPolymericInfo.jdField_b_of_type_Long).getBytes(), 2);
             ors.a(getContext(), paramView);
             continue;
-            paramView = oqu.k + bdbi.encodeToString(String.valueOf(localArticleInfo.mPolymericInfo.jdField_b_of_type_Long).getBytes(), 2);
+            paramView = oqu.k + bdfr.encodeToString(String.valueOf(localArticleInfo.mPolymericInfo.jdField_b_of_type_Long).getBytes(), 2);
             ors.a(getContext(), paramView);
             continue;
             ors.a(getContext(), localArticleInfo.mPolymericInfo.d);
@@ -542,7 +542,7 @@ public class ComponentHeaderPolymeric
         if (this.jdField_a_of_type_Boolean) {
           break;
         }
-        QQToast.a(getContext(), alpo.a(2131702652), 0).a();
+        QQToast.a(getContext(), alud.a(2131702664), 0).a();
       } while (!QLog.isColorLevel());
       QLog.d("ComponentHeaderPolymeric", 2, "click when the button is disabled");
       return;

@@ -1,40 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.3.1;
 
-public class artq
+public final class artq
+  implements arts
 {
-  private static final String a = aljq.aW + File.separator + "qflutter";
-  private static final String b = BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath() + File.separator + "qflutter-so" + File.separator;
+  artq(String paramString1, String paramString2) {}
   
-  public static void a()
+  public void a(String paramString)
   {
-    if (arof.a(a))
-    {
-      int i = bdcs.a(a, b, false, true, true);
-      if (i == 0)
-      {
-        QLog.d("QFlutter.launcher", 4, String.format("checkDebugInstall copy result: %s", new Object[] { Integer.valueOf(i) }));
-        File[] arrayOfFile = new File(b).listFiles();
-        int j = arrayOfFile.length;
-        i = 0;
-        while (i < j)
-        {
-          File localFile = arrayOfFile[i];
-          QLog.d("QFlutter.launcher", 4, String.format("path: %s, time: %s, size: %s byte", new Object[] { localFile.getAbsolutePath(), Long.valueOf(localFile.lastModified()), Long.valueOf(localFile.length()) }));
-          i += 1;
-        }
-        artu.a().a(true, b, true, true);
-        return;
-      }
+    if (paramString == null) {
+      return;
     }
-    artu.a().a(false, b, true, true);
-  }
-  
-  public static boolean a()
-  {
-    return false;
+    new Handler(Looper.getMainLooper()).post(new UniformDownloadUtil.3.1(this));
   }
 }
 

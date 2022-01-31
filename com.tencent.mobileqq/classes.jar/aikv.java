@@ -1,81 +1,22 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.widget.AbsListView;
 
-final class aikv
-  implements absf
+public class aikv
+  extends aila
 {
-  aikv(QQAppInterface paramQQAppInterface, String paramString1, Activity paramActivity, String paramString2, String paramString3, String paramString4, Intent paramIntent) {}
-  
-  public void onComplete()
+  public aikv(AvatarPendantActivity paramAvatarPendantActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SdkDynamicAvatarSettingHelper", 2, "check api, onComplete");
-    }
+    super(paramAvatarPendantActivity);
   }
   
-  public void onFailure(int paramInt, String paramString)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SdkDynamicAvatarSettingHelper", 2, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
-    }
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SdkDynamicAvatarSettingHelper", 2, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
-    }
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFB", "0X8009DFB", 0, 0, this.jdField_a_of_type_JavaLangString, "2", "", "");
-    aikt.a(this.jdField_a_of_type_AndroidAppActivity, alpo.a(2131713975), this.b, this.c, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SdkDynamicAvatarSettingHelper", 2, "check api, onSuccess");
-    }
-    if (aikt.a(this.d))
-    {
-      paramJSONObject = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("open_id");
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramJSONObject)))
-      {
-        OpenID localOpenID = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString);
-        if (localOpenID == null) {}
-        while (paramJSONObject.equals(localOpenID.openID)) {
-          try
-          {
-            long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-            long l2 = System.currentTimeMillis();
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l1, paramJSONObject, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), new aikw(this, l2));
-            return;
-          }
-          catch (Exception paramJSONObject)
-          {
-            QLog.e("SdkDynamicAvatarSettingHelper", 1, "checkOpenidDiff exception=", paramJSONObject);
-            return;
-          }
-        }
-        aikt.b(this.jdField_a_of_type_AndroidAppActivity);
-        return;
-      }
-      QLog.e("SdkDynamicAvatarSettingHelper", 1, "checkOpenid, openId null");
+    if (this.a.e == AvatarPendantActivity.d) {}
+    while (Build.VERSION.SDK_INT < 14) {
       return;
     }
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFB", "0X8009DFB", 0, 0, this.jdField_a_of_type_JavaLangString, "3", "", "");
-    aikt.a(this.jdField_a_of_type_AndroidAppActivity, alpo.a(2131713979), this.b, this.c, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SdkDynamicAvatarSettingHelper", 2, "check api, onTrigger");
-    }
+    this.a.b();
   }
 }
 

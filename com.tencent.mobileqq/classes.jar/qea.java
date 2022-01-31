@@ -16,7 +16,7 @@ public class qea
   public void updateDrawState(TextPaint paramTextPaint)
   {
     paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(aekt.a(2, 14, this.a.getResources()));
+    paramTextPaint.setTextSize(aepi.a(2, 14, this.a.getResources()));
   }
 }
 

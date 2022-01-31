@@ -1,35 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.process.data.CmGameManager.GameEventReceiver.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
 
 public class akuc
-  extends BroadcastReceiver
+  implements Observer
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public akuc(ApolloGameStateMachine paramApolloGameStateMachine) {}
+  
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if (paramIntent == null) {
-      QLog.e("cmgame_process.CmGameManager", 1, "[onReceive] intent null");
-    }
-    do
+    if ((paramObject != null) && ((paramObject instanceof Bundle)))
     {
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        if (QLog.isColorLevel()) {
-          QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] action=", paramContext });
-        }
-      } while ((!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
-      paramContext = paramIntent.getStringExtra("data");
+      paramObservable = (Bundle)paramObject;
+      long l1 = paramObservable.getLong("START_TIME_KEY");
+      long l2 = paramObservable.getLong("END_TIME_KEY");
+      paramObject = paramObservable.getString("MESSAGE");
+      int i = paramObservable.getInt("FROM");
+      int j = paramObservable.getInt("TO");
       if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] data=", paramContext });
+        QLog.d("ApolloGameStateMachine", 2, new Object[] { "[pipLineObserver] cost:[", Long.valueOf(l2 - l1), "ms] message:[", paramObject, "] from:[", Integer.valueOf(i), "] to:[", Integer.valueOf(j), "] start:[", Long.valueOf(l1), "] end:[", Long.valueOf(l2), "]" });
       }
-    } while (TextUtils.isEmpty(paramContext));
-    ThreadManagerV2.excute(new CmGameManager.GameEventReceiver.1(this, paramContext), 16, null, false);
+    }
   }
 }
 

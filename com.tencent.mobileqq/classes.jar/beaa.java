@@ -1,731 +1,524 @@
+import MQQ.PopupImgInfo;
+import MQQ.ToastImgInfo;
+import MQQ.TrafficResultInfo;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.net.Uri;
+import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebReport;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
-import com.tencent.mobileqq.webview.AbsWebView.1;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.mobileqq.widget.WebViewProgressBar;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
-import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
-import com.tencent.smtt.export.external.interfaces.JsResult;
-import com.tencent.smtt.sdk.CookieSyncManager;
-import com.tencent.smtt.sdk.ValueCallback;
-import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebSettings.PluginState;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
-import java.io.File;
-import java.util.ArrayList;
-import mqq.app.MobileQQ;
-import org.json.JSONObject;
+import java.lang.reflect.Method;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 
-public abstract class beaa
+public class beaa
 {
-  public static final String TAG = "AbsWebView";
-  public static final String WEBP_DECODER_VERSION_OF_X5 = " WebP/0.3.0";
-  private nmx mChromeClient;
-  protected Context mContext;
-  protected Activity mInActivity;
-  protected AppInterface mInterface;
-  public boolean mIsFirstOnPageStart = true;
-  protected ProgressBar mLoadProgress;
-  public WebViewProgressBar mLoadingProgressBar;
-  yzu mOfflinePlugin;
-  public boolean mPerfFirstLoadTag = true;
-  public WebViewPluginEngine mPluginEngine;
-  public ArrayList<WebViewPlugin> mPluginList;
-  public besa mProgressBarController;
-  public long mRedirect302Time = -1L;
-  public String mRedirect302Url = "";
-  public long mStartLoadUrlMilliTimeStamp;
-  public bega mStateReporter = new bega();
-  public long mTimeBeforeLoadUrl;
-  public String mUrl;
-  private WebViewClient mWebViewClient;
-  public TouchWebView mWebview;
-  public JSONObject mX5PerformanceJson;
-  private final Object sInitEngineLock = new Object();
+  private static final ConcurrentHashMap<String, Boolean> a = new ConcurrentHashMap();
   
-  public beaa(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
+  public static int a()
   {
-    this.mContext = paramContext;
-    this.mInActivity = paramActivity;
-    this.mInterface = paramAppInterface;
-  }
-  
-  private void bindAllJavaScript()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "bindAllJavaScript");
-    }
-    long l = System.currentTimeMillis();
-    if (this.mPluginList == null) {
-      this.mPluginList = new ArrayList();
-    }
-    for (;;)
-    {
-      bindJavaScript(this.mPluginList);
-      if (QLog.isColorLevel()) {
-        QLog.d("AbsWebView", 2, "bindAllJavaScript time = " + (System.currentTimeMillis() - l));
-      }
-      return;
-      this.mPluginList.clear();
-    }
-  }
-  
-  private void bindWebChromeClient()
-  {
-    if (this.mChromeClient == null) {
-      this.mChromeClient = new beae(this);
-    }
-    this.mWebview.setWebChromeClient(this.mChromeClient);
-  }
-  
-  private void bindWebViewClient()
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AbsWebView", 2, "API Level >= 23");
-      }
-    }
-    for (this.mWebViewClient = new beac(this);; this.mWebViewClient = new bead(this))
-    {
-      this.mWebview.setWebViewClient(this.mWebViewClient);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AbsWebView", 2, "API level < 23");
-      }
-    }
-  }
-  
-  private void checkOfflinePlugin()
-  {
-    if (this.mOfflinePlugin == null)
-    {
-      Object localObject = this.mWebview.getPluginEngine();
-      if (localObject != null)
-      {
-        localObject = ((WebViewPluginEngine)localObject).a("offline");
-        if ((localObject != null) && ((localObject instanceof yzu))) {
-          this.mOfflinePlugin = ((yzu)localObject);
-        }
-      }
-    }
-  }
-  
-  private void initWebView(AppInterface paramAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "initWebView");
-    }
-    this.mWebview.setPluginEngine(this.mPluginEngine);
-    if (!this.mPluginEngine.a(this.mUrl, 1L, null)) {}
-    WebSettings localWebSettings = this.mWebview.getSettings();
-    paramAppInterface = localWebSettings.getUserAgentString();
-    String str1 = getUAMark();
-    boolean bool;
-    if (this.mWebview.getX5WebViewExtension() != null) {
-      bool = true;
-    }
-    for (;;)
-    {
-      localWebSettings.setUserAgentString(befr.a(paramAppInterface, str1, bool));
-      localWebSettings.setSavePassword(false);
-      localWebSettings.setSaveFormData(false);
-      localWebSettings.setBuiltInZoomControls(true);
-      localWebSettings.setUseWideViewPort(true);
-      localWebSettings.setLoadWithOverviewMode(true);
-      localWebSettings.setPluginState(WebSettings.PluginState.ON);
-      localWebSettings.setMediaPlaybackRequiresUserGesture(false);
-      paramAppInterface = this.mContext.getPackageManager();
-      try
-      {
-        if (!paramAppInterface.hasSystemFeature("android.hardware.touchscreen.multitouch"))
-        {
-          bool = paramAppInterface.hasSystemFeature("android.hardware.faketouch.multitouch.distinct");
-          if (!bool) {}
-        }
-        else
-        {
-          i = 1;
-          if (i != 0) {
-            break label519;
-          }
-          bool = true;
-          localWebSettings.setDisplayZoomControls(bool);
-          localWebSettings.setPluginsEnabled(true);
-          localWebSettings.setJavaScriptEnabled(true);
-          localWebSettings.setAllowContentAccess(true);
-          localWebSettings.setDatabaseEnabled(true);
-          localWebSettings.setDomStorageEnabled(true);
-          localWebSettings.setAppCacheEnabled(true);
-          String str2 = MobileQQ.getMobileQQ().getQQProcessName();
-          str1 = "";
-          paramAppInterface = str1;
-          if (str2 != null)
-          {
-            i = str2.lastIndexOf(':');
-            paramAppInterface = str1;
-            if (i > -1) {
-              paramAppInterface = "_" + str2.substring(i + 1);
-            }
-          }
-          localWebSettings.setDatabasePath(this.mContext.getApplicationContext().getDir("database" + paramAppInterface, 0).getPath());
-          localWebSettings.setAppCachePath(this.mContext.getApplicationContext().getDir("appcache" + paramAppInterface, 0).getPath());
-          if (Build.VERSION.SDK_INT >= 11) {
-            this.mWebview.removeJavascriptInterface("searchBoxJavaBridge_");
-          }
-        }
-      }
-      catch (RuntimeException paramAppInterface)
-      {
-        try
-        {
-          for (;;)
-          {
-            this.mWebview.requestFocus();
-            label378:
-            this.mWebview.setFocusableInTouchMode(true);
-            this.mWebview.setDownloadListener(new beab(this));
-            CookieSyncManager.createInstance(this.mContext.getApplicationContext());
-            if (this.mWebview.getX5WebViewExtension() != null)
-            {
-              this.mWebview.getX5WebViewExtension().setWebViewClientExtension(new beaf(this, this.mWebview));
-              if (this.mContext.getSharedPreferences("WebView_X5_Report", 4).getBoolean("enableX5Report", true))
-              {
-                paramAppInterface = new Bundle();
-                paramAppInterface.putBoolean("enabled", true);
-                this.mWebview.getX5WebViewExtension().invokeMiscMethod("webPerformanceRecordingEnabled", paramAppInterface);
-              }
-            }
-            return;
-            bool = false;
-            break;
-            int i = 0;
-            continue;
-            paramAppInterface = paramAppInterface;
-            i = 0;
-          }
-          label519:
-          bool = false;
-        }
-        catch (Exception paramAppInterface)
-        {
-          break label378;
-        }
-      }
-    }
-  }
-  
-  protected final void bindBaseJavaScript()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "bindBaseJavaScript");
-    }
-    if (this.mPluginList == null) {
-      this.mPluginList = new ArrayList();
-    }
-    for (;;)
-    {
-      this.mPluginList.add(new yzu());
-      this.mPluginList.add(new VasWebReport());
-      this.mPluginList.add(new zbx());
-      this.mPluginList.add(new atda());
-      this.mPluginList.add(new UiApiPlugin());
-      this.mPluginList.add(new atcy());
-      this.mPluginList.add(new QWalletPayJsPlugin());
-      this.mPluginList.add(new VasCommonJsPlugin());
-      this.mPluginList.add(new bdut());
-      this.mPluginList.add(new QWalletMixJsPlugin());
-      return;
-      this.mPluginList.clear();
-    }
-  }
-  
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList) {}
-  
-  protected final void buildBaseWebView(AppInterface paramAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "buildBaseWebView");
-    }
-    initPluginEngine();
-    initWebView(paramAppInterface);
-    bindWebViewClient();
-    bindWebChromeClient();
-  }
-  
-  public Object doInterceptRequest(WebView paramWebView, String paramString)
-  {
-    return null;
-  }
-  
-  protected final void doOnBackPressed(AppInterface paramAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "doOnBackPressed");
-    }
-    String str = this.mWebview.getUrl();
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "doOnBackPressed...url=" + str);
-    }
-    this.mStateReporter.a(this.mContext, paramAppInterface.getLongAccountUin(), str, false);
-  }
-  
-  protected final void doOnCreate(Intent paramIntent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "doOnCreate");
-    }
-    this.mStateReporter.a(1);
-    if (paramIntent != null)
-    {
-      this.mStateReporter.a(paramIntent.getStringExtra("key_service_id"));
-      long l2 = paramIntent.getLongExtra("startOpenPageTime", -1L);
-      long l1 = l2;
-      if (-1L == l2) {
-        l1 = System.currentTimeMillis();
-      }
-      this.mStateReporter.a(l1);
-    }
-  }
-  
-  protected final void doOnDestroy()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "doOnDestroy");
-    }
-    if (this.mChromeClient != null) {
-      this.mChromeClient.a();
-    }
-    if (this.mWebview != null)
-    {
-      WebViewPluginEngine localWebViewPluginEngine = this.mWebview.getPluginEngine();
-      if (localWebViewPluginEngine != null)
-      {
-        localWebViewPluginEngine.a(this.mWebview.getUrl(), 8589934596L, null);
-        localWebViewPluginEngine.b();
-      }
-    }
-    try
-    {
-      this.mWebview.stopLoading();
-      label75:
-      this.mWebview.loadUrlOriginal("about:blank");
-      this.mWebview.clearView();
-      this.mWebview.destroy();
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label75;
-    }
-  }
-  
-  protected final void doOnPause()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "doOnPause");
-    }
-    if (this.mWebview != null)
-    {
-      this.mWebview.onPause();
-      WebViewPluginEngine localWebViewPluginEngine = this.mWebview.getPluginEngine();
-      if (localWebViewPluginEngine != null) {
-        localWebViewPluginEngine.a(this.mWebview.getUrl(), 8589934597L, null);
-      }
-    }
-  }
-  
-  protected final void doOnResume()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "doOnResume");
-    }
-    if (this.mWebview != null)
-    {
-      this.mWebview.onResume();
-      WebViewPluginEngine localWebViewPluginEngine = this.mWebview.getPluginEngine();
-      if (localWebViewPluginEngine != null) {
-        localWebViewPluginEngine.a(this.mWebview.getUrl(), 2L, null);
-      }
-    }
-  }
-  
-  public boolean getIsReloadUrl()
-  {
-    checkOfflinePlugin();
-    if (this.mOfflinePlugin != null) {
-      return this.mOfflinePlugin.d;
-    }
-    return false;
-  }
-  
-  public long getOpenUrlAfterCheckOfflineTime()
-  {
-    checkOfflinePlugin();
-    if (this.mOfflinePlugin != null) {
-      return this.mOfflinePlugin.a;
-    }
-    return 0L;
-  }
-  
-  public long getReadIndexFromOfflineTime()
-  {
-    checkOfflinePlugin();
-    if (this.mOfflinePlugin != null) {
-      return this.mOfflinePlugin.b;
-    }
-    return 0L;
-  }
-  
-  protected String getUAMark()
-  {
-    return null;
-  }
-  
-  public View getVideoLoadingProgressView()
-  {
-    return null;
-  }
-  
-  public CustomWebView getWebView()
-  {
-    return this.mWebview;
-  }
-  
-  public long getmTimeBeforeLoadUrl()
-  {
-    return this.mTimeBeforeLoadUrl;
+    return a(BaseApplicationImpl.getApplication().getRuntime().getAccount());
   }
   
   /* Error */
-  public void initPluginEngine()
+  public static int a(int paramInt, Context paramContext)
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore_2
-    //   2: invokestatic 89	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5: ifeq +12 -> 17
-    //   8: ldc 8
-    //   10: iconst_2
-    //   11: ldc_w 550
-    //   14: invokestatic 94	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   17: aload_0
-    //   18: getfield 193	beaa:mPluginEngine	Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   21: ifnull +4 -> 25
-    //   24: return
-    //   25: aload_0
-    //   26: getfield 58	beaa:sInitEngineLock	Ljava/lang/Object;
-    //   29: astore 5
-    //   31: aload 5
-    //   33: monitorenter
-    //   34: aload_0
-    //   35: getfield 193	beaa:mPluginEngine	Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   38: ifnonnull +100 -> 138
-    //   41: aload_0
-    //   42: invokespecial 552	beaa:bindAllJavaScript	()V
-    //   45: iconst_0
-    //   46: istore_3
-    //   47: iconst_0
-    //   48: istore 4
-    //   50: iload 4
-    //   52: istore_1
-    //   53: aload_0
-    //   54: getfield 81	beaa:mInterface	Lcom/tencent/common/app/AppInterface;
-    //   57: invokestatic 557	bdzt:a	(Lmqq/app/AppRuntime;)Z
-    //   60: ifeq +55 -> 115
-    //   63: iload 4
-    //   65: istore_1
-    //   66: getstatic 560	bdzt:c	Z
-    //   69: ifne +46 -> 115
-    //   72: iload 4
-    //   74: istore_1
-    //   75: getstatic 562	bdzt:jdField_a_of_type_Boolean	Z
-    //   78: ifeq +37 -> 115
-    //   81: getstatic 564	bdzt:jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine	Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   84: astore 6
-    //   86: aload_0
-    //   87: aload 6
-    //   89: putfield 193	beaa:mPluginEngine	Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   92: aload 6
-    //   94: ifnull +56 -> 150
-    //   97: invokestatic 89	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   100: ifeq +163 -> 263
-    //   103: ldc 8
-    //   105: iconst_2
-    //   106: ldc_w 566
-    //   109: invokestatic 94	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   112: goto +151 -> 263
-    //   115: iload_1
-    //   116: ifeq +112 -> 228
-    //   119: aload_0
-    //   120: getfield 193	beaa:mPluginEngine	Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   123: aload_0
-    //   124: getfield 81	beaa:mInterface	Lcom/tencent/common/app/AppInterface;
-    //   127: aload_0
-    //   128: getfield 79	beaa:mInActivity	Landroid/app/Activity;
-    //   131: aload_0
-    //   132: getfield 102	beaa:mPluginList	Ljava/util/ArrayList;
-    //   135: invokevirtual 569	com/tencent/mobileqq/webview/swift/WebViewPluginEngine:a	(Lcom/tencent/common/app/AppInterface;Landroid/app/Activity;Ljava/util/List;)V
-    //   138: aload 5
-    //   140: monitorexit
-    //   141: return
-    //   142: astore 6
-    //   144: aload 5
-    //   146: monitorexit
-    //   147: aload 6
-    //   149: athrow
-    //   150: getstatic 571	bdzt:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   153: astore 6
-    //   155: aload 6
-    //   157: monitorenter
-    //   158: getstatic 571	bdzt:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   161: ldc2_w 572
-    //   164: invokevirtual 576	java/lang/Object:wait	(J)V
-    //   167: getstatic 564	bdzt:jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine	Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   170: astore 7
-    //   172: aload_0
-    //   173: aload 7
-    //   175: putfield 193	beaa:mPluginEngine	Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   178: aload 7
-    //   180: ifnull +78 -> 258
-    //   183: iload_2
-    //   184: istore_1
-    //   185: invokestatic 89	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   188: ifeq +14 -> 202
-    //   191: ldc 8
-    //   193: iconst_2
-    //   194: ldc_w 578
-    //   197: invokestatic 94	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   200: iload_2
-    //   201: istore_1
-    //   202: aload 6
-    //   204: monitorexit
-    //   205: goto -90 -> 115
-    //   208: astore 7
-    //   210: aload 6
-    //   212: monitorexit
-    //   213: aload 7
-    //   215: athrow
-    //   216: astore 7
-    //   218: aload 7
-    //   220: invokevirtual 581	java/lang/InterruptedException:printStackTrace	()V
-    //   223: iload_3
-    //   224: istore_1
-    //   225: goto -23 -> 202
-    //   228: aload_0
-    //   229: invokestatic 587	com/tencent/mobileqq/webprocess/WebAccelerateHelper:getInstance	()Lcom/tencent/mobileqq/webprocess/WebAccelerateHelper;
-    //   232: aload_0
-    //   233: getfield 81	beaa:mInterface	Lcom/tencent/common/app/AppInterface;
-    //   236: aload_0
-    //   237: getfield 79	beaa:mInActivity	Landroid/app/Activity;
-    //   240: aconst_null
-    //   241: aload_0
-    //   242: invokevirtual 591	beaa:myCommonJsPlugins	()Lcom/tencent/mobileqq/webprocess/WebAccelerateHelper$CommonJsPluginFactory;
-    //   245: aload_0
-    //   246: getfield 102	beaa:mPluginList	Ljava/util/ArrayList;
-    //   249: invokevirtual 595	com/tencent/mobileqq/webprocess/WebAccelerateHelper:createWebViewPluginEngine	(Lcom/tencent/common/app/AppInterface;Landroid/app/Activity;Lcom/tencent/biz/pubaccount/CustomWebView;Lcom/tencent/mobileqq/webprocess/WebAccelerateHelper$CommonJsPluginFactory;Ljava/util/List;)Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   252: putfield 193	beaa:mPluginEngine	Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   255: goto -117 -> 138
-    //   258: iconst_0
-    //   259: istore_1
-    //   260: goto -58 -> 202
-    //   263: iconst_1
-    //   264: istore_1
-    //   265: goto -150 -> 115
+    //   0: ldc 42
+    //   2: invokestatic 48	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   5: astore_2
+    //   6: aload_1
+    //   7: invokevirtual 54	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   10: astore_1
+    //   11: aload_1
+    //   12: aload_2
+    //   13: iconst_2
+    //   14: anewarray 56	java/lang/String
+    //   17: dup
+    //   18: iconst_0
+    //   19: ldc 58
+    //   21: aastore
+    //   22: dup
+    //   23: iconst_1
+    //   24: ldc 60
+    //   26: aastore
+    //   27: ldc 62
+    //   29: iconst_1
+    //   30: anewarray 56	java/lang/String
+    //   33: dup
+    //   34: iconst_0
+    //   35: iload_0
+    //   36: invokestatic 66	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   39: aastore
+    //   40: aconst_null
+    //   41: invokevirtual 72	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   44: astore_2
+    //   45: aload_2
+    //   46: ifnull +43 -> 89
+    //   49: aload_2
+    //   50: astore_1
+    //   51: aload_2
+    //   52: invokeinterface 78 1 0
+    //   57: ifeq +32 -> 89
+    //   60: aload_2
+    //   61: astore_1
+    //   62: aload_2
+    //   63: aload_2
+    //   64: ldc 58
+    //   66: invokeinterface 81 2 0
+    //   71: invokeinterface 85 2 0
+    //   76: istore_0
+    //   77: aload_2
+    //   78: ifnull +9 -> 87
+    //   81: aload_2
+    //   82: invokeinterface 88 1 0
+    //   87: iload_0
+    //   88: ireturn
+    //   89: aload_2
+    //   90: ifnull +9 -> 99
+    //   93: aload_2
+    //   94: invokeinterface 88 1 0
+    //   99: iconst_m1
+    //   100: ireturn
+    //   101: astore_3
+    //   102: aconst_null
+    //   103: astore_2
+    //   104: aload_2
+    //   105: astore_1
+    //   106: ldc 90
+    //   108: iconst_1
+    //   109: new 92	java/lang/StringBuilder
+    //   112: dup
+    //   113: invokespecial 93	java/lang/StringBuilder:<init>	()V
+    //   116: ldc 95
+    //   118: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   121: aload_3
+    //   122: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   125: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   128: invokestatic 111	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   131: aload_2
+    //   132: ifnull -33 -> 99
+    //   135: aload_2
+    //   136: invokeinterface 88 1 0
+    //   141: goto -42 -> 99
+    //   144: astore_2
+    //   145: aconst_null
+    //   146: astore_1
+    //   147: aload_1
+    //   148: ifnull +9 -> 157
+    //   151: aload_1
+    //   152: invokeinterface 88 1 0
+    //   157: aload_2
+    //   158: athrow
+    //   159: astore_2
+    //   160: goto -13 -> 147
+    //   163: astore_3
+    //   164: goto -60 -> 104
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	268	0	this	beaa
-    //   52	213	1	i	int
-    //   1	200	2	j	int
-    //   46	178	3	k	int
-    //   48	25	4	m	int
-    //   29	116	5	localObject1	Object
-    //   84	9	6	localWebViewPluginEngine1	WebViewPluginEngine
-    //   142	6	6	localObject2	Object
-    //   170	9	7	localWebViewPluginEngine2	WebViewPluginEngine
-    //   208	6	7	localObject4	Object
-    //   216	3	7	localInterruptedException	java.lang.InterruptedException
+    //   0	167	0	paramInt	int
+    //   0	167	1	paramContext	Context
+    //   5	131	2	localObject1	Object
+    //   144	14	2	localObject2	Object
+    //   159	1	2	localObject3	Object
+    //   101	21	3	localException1	Exception
+    //   163	1	3	localException2	Exception
     // Exception table:
     //   from	to	target	type
-    //   34	45	142	finally
-    //   53	63	142	finally
-    //   66	72	142	finally
-    //   75	92	142	finally
-    //   97	112	142	finally
-    //   119	138	142	finally
-    //   138	141	142	finally
-    //   144	147	142	finally
-    //   150	158	142	finally
-    //   213	216	142	finally
-    //   228	255	142	finally
-    //   158	178	208	finally
-    //   185	200	208	finally
-    //   202	205	208	finally
-    //   210	213	208	finally
-    //   218	223	208	finally
-    //   158	178	216	java/lang/InterruptedException
-    //   185	200	216	java/lang/InterruptedException
+    //   11	45	101	java/lang/Exception
+    //   11	45	144	finally
+    //   51	60	159	finally
+    //   62	77	159	finally
+    //   106	131	159	finally
+    //   51	60	163	java/lang/Exception
+    //   62	77	163	java/lang/Exception
   }
   
-  public boolean isMainPageUseLocalFile()
+  public static int a(String paramString)
   {
-    checkOfflinePlugin();
-    if (this.mOfflinePlugin != null) {
-      return this.mOfflinePlugin.e;
+    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + paramString, 4);
+    int i = paramString.getInt("kingCardSdk", -1);
+    int j = paramString.getInt("kingCard", -1);
+    int k = paramString.getInt("kingCard2", -1);
+    if (QLog.isColorLevel()) {
+      QLog.i("CUKingCardHelper", 2, "getCUKingStatus: status1=" + j + " status2=" + k + " sdkStatus=" + i);
     }
-    return false;
+    if (i >= 0) {
+      if (i <= 0) {}
+    }
+    do
+    {
+      return 1;
+      return 0;
+      if ((j < 0) && (k < 0)) {
+        return -1;
+      }
+    } while ((j > 0) || (k > 0));
+    return 0;
   }
   
-  public boolean ismPerfFirstLoadTag()
+  public static beab a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return this.mPerfFirstLoadTag;
+    VasWebviewUtil.reportCommercialDrainage("", "wkclub", "P1", paramString, 1, 0, 0, "", "", "");
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 4);
+    beab localbeab = new beab();
+    localbeab.jdField_a_of_type_JavaLangString = a(paramString);
+    String str;
+    if (!localSharedPreferences.getBoolean("guideEnable", false))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("CUKingCardHelper", 2, "not in CUKing Card gray uin!");
+      }
+      localbeab.jdField_a_of_type_Int = 4;
+      switch (localbeab.jdField_a_of_type_Int)
+      {
+      case 3: 
+      default: 
+        str = "P3";
+      }
+    }
+    for (;;)
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "wkclub", str, paramString, 1, 0, 0, "", "", "");
+      return localbeab;
+      int i;
+      if (localSharedPreferences.getInt("guideToastOpen", 0) == 1)
+      {
+        if (paramBoolean2)
+        {
+          str = localSharedPreferences.getString("toastText", "");
+          if (!a.containsKey(paramString)) {
+            break label258;
+          }
+          str = localSharedPreferences.getString("shortToastText", "");
+        }
+        for (;;)
+        {
+          i = localSharedPreferences.getInt("toastShowTime", 2);
+          QQToast.a(BaseApplicationImpl.getContext(), 2, str, i * 1000).a();
+          localbeab.jdField_a_of_type_Int = 1;
+          break;
+          label258:
+          a.put(paramString, Boolean.TRUE);
+        }
+      }
+      if (localSharedPreferences.getInt("guidePopupOpen", 0) == 1)
+      {
+        i = localSharedPreferences.getInt("popupRateType", 0);
+        if ((i == 0) || (i == 1))
+        {
+          i = localSharedPreferences.getInt("popupRate", 0);
+          label365:
+          long l;
+          StringBuilder localStringBuilder;
+          if ((localSharedPreferences.getInt("kingCard", 0) == 1) || (localSharedPreferences.getInt("kingCard", 0) == 1) || (localSharedPreferences.getInt("kingCard2", 0) == 1))
+          {
+            localbeab.jdField_a_of_type_Int = 3;
+            l = System.currentTimeMillis();
+            localStringBuilder = new StringBuilder();
+            if (!paramBoolean1) {
+              break label475;
+            }
+          }
+          label475:
+          for (str = "lastTipTime_";; str = "lastDialogTime_")
+          {
+            str = str + paramString;
+            if (l - localSharedPreferences.getLong(str, 0L) < i * 1000) {
+              localbeab.jdField_a_of_type_Int = 4;
+            }
+            if (localbeab.jdField_a_of_type_Int == 4) {
+              break;
+            }
+            localSharedPreferences.edit().putLong(str, l).commit();
+            break;
+            localbeab.jdField_a_of_type_Int = 2;
+            break label365;
+          }
+        }
+        localbeab.jdField_a_of_type_Int = 4;
+        break;
+      }
+      localbeab.jdField_a_of_type_Int = 4;
+      break;
+      str = "P5";
+      continue;
+      str = "P4";
+      continue;
+      str = "P2";
+    }
   }
   
-  protected WebAccelerateHelper.CommonJsPluginFactory myCommonJsPlugins()
+  private static Object a(int paramInt, String paramString, Context paramContext)
   {
-    return new WebAccelerateHelper.CommonJsPluginFactory();
-  }
-  
-  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback) {}
-  
-  public void onHideCustomView() {}
-  
-  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
-  {
-    return true;
-  }
-  
-  public Object onMiscCallBack(String paramString, Bundle paramBundle)
-  {
+    try
+    {
+      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        paramString = paramContext.getClass().getMethod(paramString, a(paramString));
+        if (paramInt >= 0)
+        {
+          paramString = paramString.invoke(paramContext, new Object[] { Integer.valueOf(paramInt) });
+          return paramString;
+        }
+      }
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("CUKingCardHelper", 1, "getPhoneInfo e = " + paramString);
+    }
     return null;
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString) {}
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap) {}
-  
-  public void onProgressChanged(WebView paramWebView, int paramInt) {}
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2) {}
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString) {}
-  
-  public void onWebViewReady() {}
-  
-  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2) {}
-  
-  protected final void preInitPluginEngine()
+  public static String a(int paramInt, Context paramContext)
   {
+    paramContext = (String)a(a(paramInt, paramContext), "getSubscriberId", paramContext);
     if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "preInitPluginEngine");
+      QLog.d("CUKingCardHelper", 2, "getSubscriberId, imsi = " + paramContext);
     }
-    WebViewPluginEngine localWebViewPluginEngine;
-    if ((bdzt.a(this.mInterface)) && (!bdzt.c))
-    {
-      localWebViewPluginEngine = bdzt.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine;
-      this.mPluginEngine = localWebViewPluginEngine;
-      if (localWebViewPluginEngine != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AbsWebView", 2, "use reader preloaded web engine!");
-        }
-        bindAllJavaScript();
-        this.mPluginEngine.a(this.mInterface, this.mInActivity, this.mPluginList);
-        return;
-      }
+    return paramContext;
+  }
+  
+  public static String a(String paramString)
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 4);
+    String str2 = localSharedPreferences.getString("guideUrl", "");
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "https://mc.vip.qq.com/wkcenter/index?_wv=3&_nav_alpha=0&_wvx=3";
     }
-    if ((bdzt.b(this.mInterface)) && (!bdzt.d))
-    {
-      localWebViewPluginEngine = bdzt.b;
-      this.mPluginEngine = localWebViewPluginEngine;
-      if (localWebViewPluginEngine != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AbsWebView", 2, "use comic preloaded web engine!");
-        }
-        bindAllJavaScript();
-        this.mPluginEngine.a(this.mInterface, this.mInActivity, this.mPluginList);
-        return;
-      }
+    str2 = "open";
+    if ((localSharedPreferences.getInt("kingCardSdk", 0) == 1) || (localSharedPreferences.getInt("kingCard", 0) == 1) || (localSharedPreferences.getInt("kingCard2", 0) == 1)) {
+      str2 = "update";
     }
-    if ((this.mPluginEngine == null) && (WebViewPluginEngine.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null))
+    if (!str1.contains("?")) {
+      str1 = str1 + "?";
+    }
+    for (paramString = str1 + "source=" + paramString + "&type=" + str2;; paramString = str1 + "&source=" + paramString + "&type=" + str2)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("AbsWebView", 2, "use preloaded web engine!");
+        QLog.i("CUKingCardHelper", 2, "open guide url: " + paramString);
       }
-      this.mPluginEngine = WebViewPluginEngine.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine;
-      WebViewPluginEngine.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = null;
-      bindAllJavaScript();
-      this.mPluginEngine.a(this.mInterface, this.mInActivity, this.mPluginList);
+      return paramString;
+    }
+  }
+  
+  public static void a(TrafficResultInfo paramTrafficResultInfo, Bundle paramBundle)
+  {
+    boolean bool2 = true;
+    if (paramTrafficResultInfo == null)
+    {
+      QLog.e("CUKingCardHelper", 1, "saveCUKingInfo error : trafficInfo = null");
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "WebAccelerateHelper.isWebViewCache:" + WebAccelerateHelper.isWebViewCache + ",mPluginEngine=" + this.mPluginEngine);
+    if (paramTrafficResultInfo.bUpdate == 0)
+    {
+      QLog.e("CUKingCardHelper", 1, "bUpdate=" + paramTrafficResultInfo.bUpdate + " it do not need to update CUKing info");
+      return;
     }
-    ThreadManager.postImmediately(new AbsWebView.1(this), null, false);
+    boolean bool1 = paramBundle.getBoolean(amfs.h);
+    boolean bool3 = paramBundle.getBoolean(amfs.i);
+    String str2 = paramBundle.getString(amfs.j);
+    String str1 = paramBundle.getString(amfs.k);
+    paramBundle = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + paramBundle, 4);
+    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+    if (bool1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("CUKingCardHelper", 2, String.format("Save CUKing Card Order State, State1: %d", new Object[] { Integer.valueOf(paramTrafficResultInfo.iWkOrderState1) }));
+      }
+      localEditor.putInt("kingCard", paramTrafficResultInfo.iWkOrderState1);
+      if (!TextUtils.isEmpty(str2))
+      {
+        paramBundle = str2;
+        localEditor.putString("imsiOne", paramBundle);
+        localEditor.putLong("kingCardLastRequest", System.currentTimeMillis() / 1000L);
+      }
+    }
+    else
+    {
+      if (bool3)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("CUKingCardHelper", 2, String.format("Save CUKing Card Order State, State2: %d", new Object[] { Integer.valueOf(paramTrafficResultInfo.iWkOrderState2) }));
+        }
+        localEditor.putInt("kingCard2", paramTrafficResultInfo.iWkOrderState2);
+        if (TextUtils.isEmpty(str1)) {
+          break label836;
+        }
+        paramBundle = str1;
+        label295:
+        localEditor.putString("imsiTwo", paramBundle);
+        localEditor.putLong("kingCardLastRequest", System.currentTimeMillis() / 1000L);
+      }
+      if (paramTrafficResultInfo.iDrawerEnable != 1) {
+        break label842;
+      }
+      bool1 = true;
+      label335:
+      localEditor.putBoolean("drawerEnable", bool1);
+      if (paramTrafficResultInfo.iGuideEnable != 1) {
+        break label847;
+      }
+      bool1 = true;
+      label357:
+      localEditor.putBoolean("guideEnable", bool1);
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder().append("saveCUKingInfo, is in gray : ");
+        if (paramTrafficResultInfo.iGuideEnable != 1) {
+          break label852;
+        }
+      }
+    }
+    label836:
+    label842:
+    label847:
+    label852:
+    for (bool1 = bool2;; bool1 = false)
+    {
+      QLog.i("CUKingCardHelper", 2, bool1);
+      localEditor.putString("drawerText", paramTrafficResultInfo.sDrawerText);
+      localEditor.putString("drawerUrl", paramTrafficResultInfo.sDrawerUrl);
+      localEditor.putString("guideUrl", paramTrafficResultInfo.sGuideUrl);
+      localEditor.putInt("kingCardRequestInterval", paramTrafficResultInfo.iImsiInterval);
+      int i;
+      if (paramTrafficResultInfo.popInfo != null)
+      {
+        i = localSharedPreferences.getInt("popup_version_v2", 0);
+        paramBundle = paramTrafficResultInfo.popInfo;
+        localEditor.putInt("guidePopupOpen", paramBundle.iOpen);
+        localEditor.putInt("popupRate", paramBundle.iRate);
+        localEditor.putInt("popupRateType", paramBundle.iRateType);
+        if (i != paramBundle.iPopupVer)
+        {
+          localEditor.putString("guidePopupText_v2", paramBundle.sPopupText);
+          localEditor.putString("guideJumpText_v2", paramBundle.sRedirectText);
+          localEditor.putString("guideContinueText_v2", paramBundle.sContinueText);
+          localEditor.putString("guidePopupImgUrl_v2", paramBundle.sPopupImgUrl);
+          localEditor.putInt("popup_version_v2", paramBundle.iPopupVer);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("CUKingCardHelper", 2, "saveCUKingInfo, popup open : " + paramBundle.iOpen + " ver:" + paramBundle.iPopupVer);
+        }
+      }
+      if (paramTrafficResultInfo.toasInfo != null)
+      {
+        i = localSharedPreferences.getInt("toast_version", 0);
+        paramTrafficResultInfo = paramTrafficResultInfo.toasInfo;
+        localEditor.putInt("guideToastOpen", paramTrafficResultInfo.iOpen);
+        localEditor.putInt("toastShowTime", paramTrafficResultInfo.iShowTime);
+        if (i != paramTrafficResultInfo.iToastVer)
+        {
+          localEditor.putString("toastText", paramTrafficResultInfo.sText);
+          localEditor.putString("shortToastText", paramTrafficResultInfo.sShortText);
+          localEditor.putInt("toast_version", paramTrafficResultInfo.iToastVer);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("CUKingCardHelper", 2, "saveCUKingInfo, toast open : " + paramTrafficResultInfo.iOpen + " ver:" + paramTrafficResultInfo.iToastVer);
+        }
+      }
+      localEditor.commit();
+      return;
+      paramBundle = "";
+      break;
+      paramBundle = "";
+      break label295;
+      bool1 = false;
+      break label335;
+      bool1 = false;
+      break label357;
+    }
   }
   
-  public void refresh()
+  public static boolean a(Activity paramActivity, int paramInt, beac parambeac, String paramString)
   {
-    this.mWebview.reload();
-  }
-  
-  public void setmPerfFirstLoadTag(boolean paramBoolean)
-  {
-    this.mPerfFirstLoadTag = paramBoolean;
-  }
-  
-  public void setmTimeBeforeLoadUrl(long paramLong)
-  {
-    this.mTimeBeforeLoadUrl = paramLong;
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
+    boolean bool = true;
+    if ((paramActivity == null) || (paramActivity.isFinishing())) {
+      bool = false;
+    }
+    beab localbeab;
+    do
+    {
+      return bool;
+      localbeab = a(paramString, false, true);
+      if (QLog.isColorLevel()) {
+        QLog.i("CUKingCardHelper", 2, "shouldOverrideDialog, popUpType: " + localbeab.jdField_a_of_type_Int);
+      }
+    } while (localbeab.jdField_a_of_type_Int == 4);
+    if (localbeab.jdField_a_of_type_Int == 1)
+    {
+      if (parambeac != null) {
+        parambeac.callback(2);
+      }
+      return false;
+    }
+    new bdzz(paramActivity, parambeac, paramInt, paramString, localbeab.jdField_a_of_type_Int).show();
     return false;
   }
   
-  public void showCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback) {}
-  
-  public void showProgressBar(boolean paramBoolean)
+  private static Class[] a(String paramString)
   {
-    ProgressBar localProgressBar;
-    if (this.mLoadProgress != null)
+    try
     {
-      localProgressBar = this.mLoadProgress;
-      if (!paramBoolean) {
-        break label24;
+      arrayOfMethod = TelephonyManager.class.getDeclaredMethods();
+      localObject1 = null;
+      i = 0;
+    }
+    catch (Exception paramString)
+    {
+      try
+      {
+        Method[] arrayOfMethod;
+        int i;
+        Object localObject3;
+        if (i < arrayOfMethod.length)
+        {
+          localObject3 = localObject1;
+          localObject2 = localObject1;
+          if (paramString.equals(arrayOfMethod[i].getName()))
+          {
+            localObject2 = localObject1;
+            localObject1 = arrayOfMethod[i].getParameterTypes();
+            localObject3 = localObject1;
+            localObject2 = localObject1;
+            if (localObject1.length >= 1)
+            {
+              localObject2 = localObject1;
+              Log.d("length:", "" + localObject1.length);
+              localObject3 = localObject1;
+            }
+          }
+        }
+        else
+        {
+          return localObject3;
+        }
+        i += 1;
+        Object localObject1 = localObject3;
       }
+      catch (Exception paramString)
+      {
+        Object localObject2;
+        break label112;
+      }
+      paramString = paramString;
+      localObject2 = null;
     }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localProgressBar.setVisibility(i);
-      return;
-    }
+    localObject3 = localObject1;
+    localObject2 = localObject1;
+    label112:
+    QLog.e("CUKingCardHelper", 1, "getMethodParamTypes e = " + paramString);
+    return localObject2;
   }
 }
 

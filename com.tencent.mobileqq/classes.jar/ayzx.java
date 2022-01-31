@@ -1,47 +1,25 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import QQService.StreamInfo;
 
 public class ayzx
 {
-  public static ayzz a(String paramString)
-  {
-    String str = paramString;
-    if (azax.a())
-    {
-      str = paramString;
-      if (!paramString.endsWith("64bit")) {
-        str = paramString + "64bit";
-      }
-    }
-    paramString = new ayzz();
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_resource_status_sp", 4);
-    paramString.a = localSharedPreferences.getInt(str + "_version_k", 0);
-    paramString.b = localSharedPreferences.getInt(str + "_status_k", -1);
-    paramString.c = localSharedPreferences.getInt(str + "_last_error_k", -1);
-    return paramString;
-  }
+  public int a;
+  public StreamInfo a;
+  public String a;
+  public short a;
+  public int b;
   
-  public static boolean a(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public ayzx(String paramString, short paramShort, int paramInt1, StreamInfo paramStreamInfo, int paramInt2)
   {
-    String str = paramString;
-    if (azax.a())
-    {
-      str = paramString;
-      if (!paramString.endsWith("64bit")) {
-        str = paramString + "64bit";
-      }
-    }
-    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_resource_status_sp", 4).edit();
-    paramString.putInt(str + "_version_k", paramInt1);
-    paramString.putInt(str + "_status_k", paramInt2);
-    paramString.putInt(str + "_last_error_k", paramInt3);
-    return paramString.commit();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Short = paramShort;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_QQServiceStreamInfo = paramStreamInfo;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ayzx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import aiqi;
-import aiqj;
+import aiux;
+import aiuy;
 import android.os.Bundle;
-import bdvv;
+import beae;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import java.util.List;
 
 public class PreloadImgManager$1$1
   implements Runnable
 {
-  public PreloadImgManager$1$1(aiqj paramaiqj, bdvv parambdvv) {}
+  public PreloadImgManager$1$1(aiuy paramaiuy, beae parambeae) {}
   
   public void run()
   {
-    int j = this.jdField_a_of_type_Bdvv.a.size();
-    Bundle localBundle = this.jdField_a_of_type_Bdvv.a();
+    int j = this.jdField_a_of_type_Beae.a.size();
+    Bundle localBundle = this.jdField_a_of_type_Beae.a();
     int i = 0;
     while (i < j)
     {
-      String str = (String)this.jdField_a_of_type_Bdvv.a.get(i);
-      aiqi.a(this.jdField_a_of_type_Aiqj.a, BaseApplication.getContext(), localBundle.getString(str), str);
+      String str = (String)this.jdField_a_of_type_Beae.a.get(i);
+      aiux.a(this.jdField_a_of_type_Aiuy.a, BaseApplication.getContext(), localBundle.getString(str), str);
       i += 1;
     }
   }

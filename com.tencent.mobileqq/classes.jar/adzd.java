@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adzd
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adzd(TroopInfoActivity paramTroopInfoActivity) {}
+  public adzd(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.d();
+    azqs.b(this.a.app, "dc00898", "", "", "0X8007547", "0X8007547", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
+    this.a.finish();
   }
 }
 

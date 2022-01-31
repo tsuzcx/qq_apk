@@ -37,9 +37,9 @@ public class AEMaterialParser
   {
     // Byte code:
     //   0: iconst_1
-    //   1: istore 6
+    //   1: istore 7
     //   3: iconst_1
-    //   4: istore 7
+    //   4: istore 6
     //   6: aconst_null
     //   7: astore 8
     //   9: aload_3
@@ -222,7 +222,7 @@ public class AEMaterialParser
     //   374: astore_1
     //   375: iload 5
     //   377: ifne +13 -> 390
-    //   380: iload 7
+    //   380: iload 6
     //   382: istore 5
     //   384: aload_1
     //   385: astore 8
@@ -267,7 +267,7 @@ public class AEMaterialParser
     //   457: astore_3
     //   458: iload 5
     //   460: ifne +33 -> 493
-    //   463: iload 6
+    //   463: iload 7
     //   465: istore 5
     //   467: iload 5
     //   469: ifne +30 -> 499
@@ -570,8 +570,8 @@ public class AEMaterialParser
     //   0	969	3	paramString2	String
     //   0	969	4	paramDecryptListener	DecryptListener
     //   19	476	5	i	int
-    //   1	463	6	j	int
-    //   4	377	7	k	int
+    //   4	377	6	j	int
+    //   1	463	7	k	int
     //   7	958	8	localObject1	Object
     //   25	502	9	localObject2	Object
     //   753	10	9	localObject3	Object

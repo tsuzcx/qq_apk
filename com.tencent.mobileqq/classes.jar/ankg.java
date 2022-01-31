@@ -1,10 +1,4 @@
-import com.tencent.mobileqq.ark.ArkHorizontalListView;
-
-public abstract interface ankg
-{
-  public abstract void a(ArkHorizontalListView paramArkHorizontalListView);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankg

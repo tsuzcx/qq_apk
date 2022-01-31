@@ -1,24 +1,55 @@
-import android.view.MotionEvent;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.AuthorityControlFragment;
+import android.widget.RelativeLayout;
 
-public class beye
-  implements View.OnTouchListener
+class beye
+  implements Animator.AnimatorListener
 {
-  public beye(AuthorityControlFragment paramAuthorityControlFragment) {}
+  beye(beyb parambeyb, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    switch (paramMotionEvent.getAction())
+    if (this.jdField_a_of_type_Beyb.a != null)
     {
+      if (this.jdField_a_of_type_Int != 0) {
+        break label41;
+      }
+      this.jdField_a_of_type_Beyb.a.setAlpha(1.0F);
     }
     for (;;)
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      beyb.b(this.jdField_a_of_type_Beyb, this.jdField_a_of_type_Int);
+      return;
+      label41:
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Beyb.a.setAlpha(0.0F);
+      }
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    beyb.b(this.jdField_a_of_type_Beyb, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      beyb.a(this.jdField_a_of_type_Beyb, false);
+      this.jdField_a_of_type_Beyb.a(false, new View[] { beyb.a(this.jdField_a_of_type_Beyb) });
+    }
+    beyb.a(this.jdField_a_of_type_Beyb);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    beyb.b(this.jdField_a_of_type_Beyb, 2);
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      beyb.a(this.jdField_a_of_type_Beyb, true);
+      if (beyb.a(this.jdField_a_of_type_Beyb) == 1) {
+        this.jdField_a_of_type_Beyb.a(true, new View[] { beyb.a(this.jdField_a_of_type_Beyb) });
+      }
     }
   }
 }

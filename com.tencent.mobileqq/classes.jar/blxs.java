@@ -1,30 +1,17 @@
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
 
-public class blxs
-  implements URLDrawable.URLDrawableListener
+class blxs
+  implements blxl
 {
-  private final WeakReference<TextView> a;
+  blxs(blxr paramblxr) {}
   
-  public blxs(TextView paramTextView)
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    this.a = new WeakReference(paramTextView);
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = (TextView)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setVisibility(8);
+    if (paramInt == 0) {
+      return bcnt.b(paramString);
     }
+    return "";
   }
 }
 

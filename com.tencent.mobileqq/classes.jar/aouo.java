@@ -1,123 +1,70 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsReaderGlobal;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.business.qvip.QQFriendRelation2Config;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-final class aouo
+public class aouo
+  extends aouf<QQFriendRelation2Config>
 {
-  private final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static aouo a(aogf[] paramArrayOfaogf)
+  public static QQFriendRelation2Config c()
   {
-    Object localObject1;
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0))
-    {
-      QLog.e("TdsReaderView_TdsReaderConfigBean", 1, "parse error, confFiles is no-valid.");
-      localObject1 = null;
-      return localObject1;
+    QQFriendRelation2Config localQQFriendRelation2Config2 = (QQFriendRelation2Config)aoks.a().a(491);
+    QQFriendRelation2Config localQQFriendRelation2Config1 = localQQFriendRelation2Config2;
+    if (localQQFriendRelation2Config2 == null) {
+      localQQFriendRelation2Config1 = new QQFriendRelation2Config();
     }
-    aouo localaouo = new aouo();
-    int j = paramArrayOfaogf.length;
-    int i = 0;
-    for (;;)
+    return localQQFriendRelation2Config1;
+  }
+  
+  public int a()
+  {
+    return 491;
+  }
+  
+  @NonNull
+  public QQFriendRelation2Config a()
+  {
+    return new QQFriendRelation2Config();
+  }
+  
+  @NonNull
+  public QQFriendRelation2Config a(aoko[] paramArrayOfaoko)
+  {
+    boolean bool = true;
+    localQQFriendRelation2Config = new QQFriendRelation2Config();
+    paramArrayOfaoko = paramArrayOfaoko[0].a;
+    try
     {
-      localObject1 = localaouo;
-      if (i >= j) {
-        break;
-      }
-      localObject1 = paramArrayOfaogf[i];
-      try
-      {
-        localObject1 = new JSONObject(((aogf)localObject1).a);
-        if (localObject1 != null)
-        {
-          if (((JSONObject)localObject1).has("has_gray")) {
-            localaouo.jdField_a_of_type_Boolean = ((JSONObject)localObject1).optBoolean("has_gray");
-          }
-          a((JSONObject)localObject1, localaouo.jdField_a_of_type_JavaUtilMap);
-        }
-        i += 1;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("TdsReaderView_TdsReaderConfigBean", 1, "parse error", localJSONException);
-          Object localObject2 = null;
+      if (!TextUtils.isEmpty(paramArrayOfaoko)) {
+        if (new JSONObject(paramArrayOfaoko).optInt("enable", 1) != 1) {
+          break label49;
         }
       }
+      for (;;)
+      {
+        localQQFriendRelation2Config.mIsEnable = bool;
+        return localQQFriendRelation2Config;
+        label49:
+        bool = false;
+      }
+      return localQQFriendRelation2Config;
+    }
+    catch (JSONException paramArrayOfaoko)
+    {
+      wxe.e("QQFriendRelation2Processor", "QQFriendRelation2Config onParsed exception :" + paramArrayOfaoko.getMessage());
     }
   }
   
-  public static void a(JSONObject paramJSONObject, Map<String, String> paramMap)
+  public Class<QQFriendRelation2Config> a()
   {
-    if ((paramJSONObject == null) || (paramMap == null)) {}
-    do
-    {
-      return;
-      if (paramJSONObject.has("facade_plugin_name")) {
-        paramMap.put("facade_plugin_name", paramJSONObject.optString("facade_plugin_name"));
-      }
-      if (paramJSONObject.has("facade_plugin_name_prefix")) {
-        paramMap.put("facade_plugin_name_prefix", paramJSONObject.optString("facade_plugin_name_prefix"));
-      }
-      if (paramJSONObject.has("facade_plugin_url")) {
-        paramMap.put("facade_plugin_url", paramJSONObject.optString("facade_plugin_url"));
-      }
-      if (paramJSONObject.has("facade_plugin_md5")) {
-        paramMap.put("facade_plugin_md5", paramJSONObject.optString("facade_plugin_md5"));
-      }
-      if (paramJSONObject.has("facade_plugin_entry_class")) {
-        paramMap.put("facade_plugin_entry_class", paramJSONObject.optString("facade_plugin_entry_class"));
-      }
-      if (paramJSONObject.has("pre_load_info")) {
-        paramMap.put("pre_load_info", paramJSONObject.optString("pre_load_info"));
-      }
-      if (paramJSONObject.has("global_required_res_info")) {
-        paramMap.put("global_required_res_info", paramJSONObject.optString("global_required_res_info"));
-      }
-      if (paramJSONObject.has("docs_plugin_info")) {
-        paramMap.put("docs_plugin_info", paramJSONObject.optString("docs_plugin_info"));
-      }
-      if (paramJSONObject.has("docs_font_info")) {
-        paramMap.put("docs_font_info", paramJSONObject.optString("docs_font_info"));
-      }
-      if (paramJSONObject.has("sheets_plugin_info")) {
-        paramMap.put("sheets_plugin_info", paramJSONObject.optString("sheets_plugin_info"));
-      }
-      if (paramJSONObject.has("slides_plugin_info")) {
-        paramMap.put("slides_plugin_info", paramJSONObject.optString("slides_plugin_info"));
-      }
-    } while (!paramJSONObject.has("slides_res_info"));
-    paramMap.put("slides_res_info", paramJSONObject.optString("slides_res_info"));
+    return QQFriendRelation2Config.class;
   }
   
-  public static void a(boolean paramBoolean, aouo paramaouo)
+  @NonNull
+  public QQFriendRelation2Config b()
   {
-    if (paramaouo == null) {
-      QLog.w("TdsReaderView_TdsReaderConfigBean", 1, "source error, configBean is null.");
-    }
-    int i;
-    do
-    {
-      return;
-      if (!paramaouo.jdField_a_of_type_JavaUtilMap.isEmpty()) {}
-      for (i = 1;; i = 0)
-      {
-        if (i != 0) {
-          TdsReaderGlobal.a(paramBoolean, paramaouo.jdField_a_of_type_JavaUtilMap);
-        }
-        if (!paramaouo.jdField_a_of_type_Boolean) {
-          break;
-        }
-        aour.b();
-        return;
-      }
-    } while (i == 0);
-    TdsReaderGlobal.a(true);
+    return new QQFriendRelation2Config();
   }
 }
 

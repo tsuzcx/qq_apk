@@ -1,42 +1,37 @@
-import android.text.TextUtils;
-import android.util.Log;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
+import cooperation.qzone.remote.IServiceHandler.Stub;
+import cooperation.qzone.remote.RemoteServiceProxy;
+import cooperation.qzone.remote.SendMsg;
 
 public class bjqs
+  implements ServiceConnection
 {
-  private static Field a;
+  public bjqs(RemoteServiceProxy paramRemoteServiceProxy) {}
   
-  private static void a(Throwable paramThrowable)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    try
-    {
-      if (a == null) {
-        a = Throwable.class.getDeclaredField("detailMessage");
-      }
-      a.setAccessible(true);
-      a.set(paramThrowable, "QzoneCatchedException:" + paramThrowable.getMessage());
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
     }
-    catch (Throwable paramThrowable)
+    this.a.serviceHandler = IServiceHandler.Stub.asInterface(paramIBinder);
+    if (RemoteServiceProxy.access$000(this.a) != null)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QZoneExceptionReport", 2, "addStackTag failed", paramThrowable);
+      paramComponentName = new SendMsg("cmd.registerListener");
+      paramComponentName.actionListener = RemoteServiceProxy.access$000(this.a);
+      this.a.sendMsg(paramComponentName);
     }
+    this.a.onBaseServiceConnected();
   }
   
-  public static final void a(Throwable paramThrowable, String paramString)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    if (paramThrowable == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
     }
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = Log.getStackTraceString(paramThrowable);
-    }
-    a(paramThrowable);
-    QLog.d("QZoneExceptionReport", 2, "", paramThrowable);
-    azlf.a(paramThrowable, str);
+    this.a.serviceHandler = null;
   }
 }
 

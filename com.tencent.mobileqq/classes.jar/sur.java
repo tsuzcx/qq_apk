@@ -25,7 +25,7 @@ class sur
   public void onAnimationStart(Animation paramAnimation)
   {
     if ((this.a.b > 0) && (this.a.c > 0)) {
-      ((ImageView)((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131372420)).setLayoutParams(new LinearLayout.LayoutParams(this.a.c, this.a.b));
+      ((ImageView)((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131372440)).setLayoutParams(new LinearLayout.LayoutParams(this.a.c, this.a.b));
     }
   }
 }

@@ -89,10 +89,10 @@ public class ovl
   
   public void a(ProteusItemView paramProteusItemView, int paramInt1, DynamicChannelDataModel paramDynamicChannelDataModel, VafContext paramVafContext, int paramInt2)
   {
-    bhxr.a("bindData");
+    biby.a("bindData");
     if ((paramProteusItemView == null) || (paramProteusItemView.a() == null))
     {
-      bhxr.a();
+      biby.a();
       if (QLog.isColorLevel()) {
         QLog.d("DynamicItemViewHelperCompatCGI", 2, new Object[] { "bindData, adapterViewType = ", Integer.valueOf(paramInt1) });
       }
@@ -121,7 +121,7 @@ public class ovl
           paramDynamicChannelDataModel = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean);
           if (paramDynamicChannelDataModel != null)
           {
-            paramDynamicChannelDataModel.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841380));
+            paramDynamicChannelDataModel.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841381));
             paramProteusItemView.d();
             paramProteusItemView.a(paramDynamicChannelDataModel);
           }
@@ -135,7 +135,7 @@ public class ovl
       opy.a((Container)localObject, paramDynamicChannelDataModel, localTemplateBean);
     }
     opy.a((Container)localObject, paramVafContext, localTemplateBean);
-    bhxr.a();
+    biby.a();
   }
   
   public void a(VafContext paramVafContext, int paramInt)

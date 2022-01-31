@@ -7,12 +7,12 @@ import android.content.Context;
 import android.text.Spanned;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import bhun;
+import bhyu;
 
 public class ListenCutCopyPasteEditText
   extends EditText
 {
-  protected bhun a;
+  protected bhyu a;
   
   public ListenCutCopyPasteEditText(Context paramContext)
   {
@@ -104,9 +104,9 @@ public class ListenCutCopyPasteEditText
     return bool;
   }
   
-  public void setCutCopyPasteCallback(bhun parambhun)
+  public void setCutCopyPasteCallback(bhyu parambhyu)
   {
-    this.a = parambhun;
+    this.a = parambhyu;
   }
 }
 

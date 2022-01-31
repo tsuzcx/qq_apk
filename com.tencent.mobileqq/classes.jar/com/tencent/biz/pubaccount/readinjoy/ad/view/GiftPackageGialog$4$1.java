@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import alpo;
+import alud;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -20,7 +20,7 @@ class GiftPackageGialog$4$1
   
   public void run()
   {
-    Object localObject1 = alpo.a(2131705652);
+    Object localObject1 = alud.a(2131705664);
     if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_ComTencentUtilPair.second)) {
       localObject1 = (String)this.jdField_a_of_type_ComTencentUtilPair.second;
     }
@@ -29,7 +29,7 @@ class GiftPackageGialog$4$1
     {
       localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_ComTencentUtilPair.second)) {
-        localObject2 = alpo.a(2131705653);
+        localObject2 = alud.a(2131705665);
       }
     }
     if (((Boolean)this.jdField_a_of_type_ComTencentUtilPair.first).booleanValue()) {}

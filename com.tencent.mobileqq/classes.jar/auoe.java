@@ -1,17 +1,20 @@
-import java.util.Comparator;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
 
-final class auoe
-  implements Comparator<auof>
+public class auoe
+  extends RecyclerView.ItemDecoration
 {
-  public int a(auof paramauof1, auof paramauof2)
+  private final int jdField_a_of_type_Int = aepi.a(12.0F, this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment.getResources());
+  
+  private auoe(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if (paramauof1.b < paramauof2.b) {
-      return -1;
-    }
-    if (paramauof1.b > paramauof2.b) {
-      return 1;
-    }
-    return 0;
+    paramRect.top = this.jdField_a_of_type_Int;
   }
 }
 

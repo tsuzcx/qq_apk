@@ -1,13 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+
 class bcre
-  implements azzg
+  implements View.OnClickListener
 {
-  bcre(bcrd parambcrd) {}
+  bcre(bcrd parambcrd, bcrf parambcrf, MediaPreviewInfo paramMediaPreviewInfo) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
+    this.jdField_a_of_type_Bcrf.a.setVisibility(8);
+    this.jdField_a_of_type_Bcrd.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewInfo, this.jdField_a_of_type_Bcrf);
   }
 }
 

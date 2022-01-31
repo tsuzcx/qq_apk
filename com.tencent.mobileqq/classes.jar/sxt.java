@@ -10,7 +10,7 @@ class sxt
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    alnq.a();
+    alsf.a();
     this.a.a.this$0.a.finish();
   }
 }

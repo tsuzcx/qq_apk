@@ -1,31 +1,28 @@
-import android.graphics.Canvas;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.CameraPreviewObservable.1;
 
 public class azhu
+  extends azfy
 {
-  public boolean d = true;
-  public boolean e = true;
-  public int f;
-  public boolean f;
-  public int g;
+  public Handler a;
   
-  azhu(TCProgressBar paramTCProgressBar)
+  public azhu(Handler paramHandler)
   {
-    this.jdField_f_of_type_Boolean = false;
-  }
-  
-  void a(Canvas paramCanvas)
-  {
-    this.jdField_f_of_type_Boolean = false;
-  }
-  
-  boolean a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
+    if (paramHandler != null)
+    {
+      this.a = paramHandler;
+      return;
     }
-    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
+    this.a = new Handler(Looper.getMainLooper());
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    if (this.a == null) {
+      return;
+    }
+    this.a.post(new CameraProxy.CameraPreviewObservable.1(this, paramInt, paramVarArgs));
   }
 }
 

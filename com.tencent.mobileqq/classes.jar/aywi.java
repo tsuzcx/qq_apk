@@ -1,45 +1,40 @@
-import PayMQQ.UniPayRequest;
-import PayMQQ.UniPayResponse;
-import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.SquareImageView;
 
 public class aywi
-  extends zdf
+  extends aywk
 {
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public int a;
+  public LinearLayout a;
+  public TextView a;
+  public URLImageView a;
+  public SquareImageView a;
+  public int b;
+  public LinearLayout b;
+  public LinearLayout c;
+  public LinearLayout d;
+  
+  public aywi(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramFromServiceMsg == null) {
-      return null;
-    }
-    paramToServiceMsg = new UniPacket(true);
-    try
-    {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = (UniPayResponse)paramToServiceMsg.getByClass("stResponse", new UniPayResponse());
-      return paramToServiceMsg;
-    }
-    catch (RuntimeException paramToServiceMsg)
-    {
-      return null;
-    }
-    catch (Exception paramToServiceMsg) {}
-    return null;
+    super(paramViewGroup, paramInt);
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  protected void a()
   {
-    paramUniPacket.setServantName("MQQ.VipSTCheckServer.VipSTCheckObj");
-    paramUniPacket.setFuncName("mobileUniPayCheck");
-    paramUniPacket.put("stRequest", (UniPayRequest)paramToServiceMsg.extraData.getSerializable("UniPayRequest"));
-    return true;
-  }
-  
-  public String[] a()
-  {
-    return new String[] { "VipSTCheckServer" };
+    View localView = a(this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377938));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131376793));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131368013));
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369366));
+    this.jdField_b_of_type_Int = this.jdField_b_of_type_AndroidWidgetLinearLayout.getChildCount();
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131368016));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131371982));
+    this.d = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131371983));
   }
 }
 

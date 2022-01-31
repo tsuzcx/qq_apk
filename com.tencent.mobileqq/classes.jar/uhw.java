@@ -1,29 +1,8 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.IEventReceiver;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.MotionEvent;
 
-public abstract class uhw<T extends IEventReceiver, EVENT extends ugz>
-  extends QQUIEventReceiver<T, EVENT>
+public abstract interface uhw
 {
-  public uhw(T paramT)
-  {
-    super(paramT);
-  }
-  
-  public final void a(@NonNull T paramT, @NonNull EVENT paramEVENT)
-  {
-    if ((paramEVENT.a != null) && (paramEVENT.a.isFail()))
-    {
-      c(paramT, paramEVENT);
-      return;
-    }
-    b(paramT, paramEVENT);
-  }
-  
-  public abstract void b(@NonNull T paramT, @NonNull EVENT paramEVENT);
-  
-  public abstract void c(@NonNull T paramT, @NonNull EVENT paramEVENT);
+  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
 }
 
 

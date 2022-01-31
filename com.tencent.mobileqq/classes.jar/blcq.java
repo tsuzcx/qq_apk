@@ -1,42 +1,112 @@
-import android.graphics.SurfaceTexture;
-import android.view.TextureView.SurfaceTextureListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.TextView;
+import java.util.ArrayList;
 
 public class blcq
-  implements TextureView.SurfaceTextureListener
+  extends RecyclerView.Adapter<blcs>
 {
-  private WeakReference<AETemplateInfoFragment> a;
+  private int jdField_a_of_type_Int = -1;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private blcf jdField_a_of_type_Blcf;
+  private ArrayList<blcb> jdField_a_of_type_JavaUtilArrayList;
   
-  public blcq(AETemplateInfoFragment paramAETemplateInfoFragment)
+  public blcq(Context paramContext, blcf paramblcf)
   {
-    this.a = new WeakReference(paramAETemplateInfoFragment);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Blcf = paramblcf;
+    a(this.jdField_a_of_type_Blcf.a());
+    a(this.jdField_a_of_type_Blcf.a());
   }
   
-  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  private void a(RecyclerView paramRecyclerView)
   {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureAvailable");
-    if ((this.a != null) && (this.a.get() != null)) {
-      AETemplateInfoFragment.a((AETemplateInfoFragment)this.a.get(), paramSurfaceTexture);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+  }
+  
+  private void a(ArrayList<blcb> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public blcs a(@NonNull ViewGroup paramViewGroup, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      this.jdField_a_of_type_AndroidContentContext = paramViewGroup.getContext();
+    }
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558546, paramViewGroup, false);
+    if (paramInt != 0) {
+      paramViewGroup.setVisibility(4);
+    }
+    return new blcs(paramViewGroup);
+  }
+  
+  public void a()
+  {
+    blcs localblcs = (blcs)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForLayoutPosition(this.jdField_a_of_type_Int);
+    if (localblcs != null) {
+      localblcs.a(false);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Int >= 0) {
+        ((blcb)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int - 1)).a(false);
+      }
+      this.jdField_a_of_type_Int = -1;
+      return;
+      if (this.jdField_a_of_type_Int >= 0) {
+        notifyItemChanged(this.jdField_a_of_type_Int);
+      }
     }
   }
   
-  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
+  public void a(blcs paramblcs, int paramInt)
   {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureDestroyed");
-    if ((this.a != null) && (this.a.get() != null)) {
-      AETemplateInfoFragment.c((AETemplateInfoFragment)this.a.get());
+    if (paramblcs.getLayoutPosition() == 0)
+    {
+      localObject = new FrameLayout.LayoutParams(bdaq.a(this.jdField_a_of_type_AndroidContentContext, 33.0F), bdaq.a(this.jdField_a_of_type_AndroidContentContext, 33.0F));
+      ((FrameLayout.LayoutParams)localObject).setMargins(0, 0, bdaq.a(this.jdField_a_of_type_AndroidContentContext, 51.0F), 0);
+      paramblcs.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      return;
     }
-    return true;
+    Object localObject = ((blcb)this.jdField_a_of_type_JavaUtilArrayList.get(paramblcs.getLayoutPosition() - 1)).a;
+    paramblcs.a.setText((CharSequence)localObject);
+    if (this.jdField_a_of_type_Int == paramblcs.getLayoutPosition()) {
+      paramblcs.a(true);
+    }
+    for (;;)
+    {
+      paramblcs.itemView.setOnClickListener(new blcr(this, paramblcs, (String)localObject));
+      return;
+      paramblcs.a(false);
+    }
   }
   
-  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  public int getItemCount()
   {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureSizeChanged");
+    return this.jdField_a_of_type_JavaUtilArrayList.size() + 1;
   }
   
-  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt != 0) {
+      return 0;
+    }
+    return 1;
+  }
 }
 
 

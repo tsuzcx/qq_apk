@@ -1,39 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoOutputFrameListener;
 
-public class vxl
-  extends QQUIEventReceiver<vwo, uqw>
+class vxl
+  implements TVK_IMediaPlayer.OnVideoOutputFrameListener
 {
-  public vxl(@NonNull vwo paramvwo)
-  {
-    super(paramvwo);
-  }
+  vxl(vxe paramvxe) {}
   
-  public void a(@NonNull vwo paramvwo, @NonNull uqw paramuqw)
+  public void OnVideoOutputFrame(TVK_IMediaPlayer paramTVK_IMediaPlayer, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramvwo.l();
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramvwo.a()).a();
-    if (localVideoViewVideoHolder != null) {
-      localVideoViewVideoHolder.c(false);
-    }
-    wsv.b(this.TAG, "delete onEvent");
-    if ((!paramuqw.jdField_a_of_type_Boolean) && (paramuqw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
-    {
-      if (QLog.isColorLevel()) {
-        wsv.d(this.TAG, "删除失败：%s", new Object[] { paramuqw.a() });
-      }
-      QQToast.a(paramvwo.b(), 1, alpo.a(2131707259), 0).a();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uqw.class;
+    wxe.a(this.a.a, "OnVideoOutputFrame width=%d height=%d rotation=%d %d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
   }
 }
 

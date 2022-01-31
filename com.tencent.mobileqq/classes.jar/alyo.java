@@ -1,39 +1,14 @@
-import com.tencent.mobileqq.data.Stranger;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.List;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class alyo
-  implements alkr
+class alyo
+  implements Comparator<PhoneContact>
 {
-  public void a(List<String> paramList) {}
+  alyo(alyn paramalyn) {}
   
-  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField) {}
-  
-  public void a(boolean paramBoolean, List<Stranger> paramList) {}
-  
-  public void b(boolean paramBoolean, List<Stranger> paramList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    if (paramInt == 4) {
-      a(paramBoolean, (PBRepeatMessageField)paramObject);
-    }
-    do
-    {
-      return;
-      if (paramInt == 2)
-      {
-        a(paramBoolean, (List)paramObject);
-        return;
-      }
-      if (paramInt == 3)
-      {
-        b(paramBoolean, (List)paramObject);
-        return;
-      }
-    } while (paramInt != 5);
-    a((List)paramObject);
+    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
   }
 }
 

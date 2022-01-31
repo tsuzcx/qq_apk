@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar;
 
-import amtf;
-import amuh;
-import avwn;
+import amxu;
+import amyw;
+import awaw;
 import com.tencent.qphone.base.util.QLog;
 
 public class ScanningSurfaceView$8
@@ -32,7 +32,7 @@ public class ScanningSurfaceView$8
         QLog.d("ScanningSurfaceView", 2, "5=" + this.b.a);
       }
       this.b.c = true;
-      this.this$0.a.a.a(3, this.b.g, this.b.h, new amuh(this));
+      this.this$0.a.a.a(3, this.b.g, this.b.h, new amyw(this));
       ScanningSurfaceView.a(this.this$0, this.b);
     }
   }

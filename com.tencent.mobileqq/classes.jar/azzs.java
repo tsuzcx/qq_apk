@@ -1,11 +1,22 @@
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+
 class azzs
-  implements azzg
+  implements baai
 {
-  azzs(azzp paramazzp) {}
+  azzs(azzq paramazzq, CountdownTextView paramCountdownTextView) {}
   
   public void a()
   {
-    azzp.a(this.a).a();
+    this.jdField_a_of_type_Azzq.jdField_d_of_type_Long = 0L;
+    this.jdField_a_of_type_Azzq.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(azzq.a(this.jdField_a_of_type_Azzq, 0L));
+  }
+  
+  public void a(long paramLong)
+  {
+    paramLong /= 1000L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(azzq.a(this.jdField_a_of_type_Azzq, paramLong));
+    this.jdField_a_of_type_Azzq.jdField_d_of_type_Long = paramLong;
   }
 }
 

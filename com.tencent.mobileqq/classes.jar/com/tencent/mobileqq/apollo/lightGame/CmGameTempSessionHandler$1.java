@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.lightGame;
 
-import akqu;
+import akvj;
 import android.text.TextUtils;
 import com.tencent.commonsdk.cache.QQLruCache;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,13 +8,13 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class CmGameTempSessionHandler$1
   implements Runnable
 {
-  public CmGameTempSessionHandler$1(akqu paramakqu) {}
+  public CmGameTempSessionHandler$1(akvj paramakvj) {}
   
   public void run()
   {
-    String str = akqu.a(this.this$0).getCurrentAccountUin();
+    String str = akvj.a(this.this$0).getCurrentAccountUin();
     if (TextUtils.isEmpty((CharSequence)this.this$0.a.get(str))) {
-      this.this$0.a.put(str, akqu.a(this.this$0).getCurrentNickname());
+      this.this$0.a.put(str, akvj.a(this.this$0).getCurrentNickname());
     }
   }
 }

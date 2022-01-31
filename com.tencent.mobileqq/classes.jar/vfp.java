@@ -1,15 +1,35 @@
-class vfp
-  extends veh
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetMusicListConfig;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+
+public class vfp
+  extends urt<vhj>
 {
-  vfp(vez paramvez, String paramString1, String paramString2, boolean paramBoolean, vgf paramvgf)
+  private static final String a = uqn.a("StorySvc.video_music_get");
+  
+  public String a()
   {
-    super(paramString1, paramString2, paramBoolean);
+    return a;
   }
   
-  public boolean b()
+  public vhj a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Vgf.h = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    qqstory_service.RspGetMusicListConfig localRspGetMusicListConfig = new qqstory_service.RspGetMusicListConfig();
+    try
+    {
+      localRspGetMusicListConfig.mergeFrom(paramArrayOfByte);
+      return new vhj(localRspGetMusicListConfig);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetMusicListConfig().toByteArray();
   }
 }
 

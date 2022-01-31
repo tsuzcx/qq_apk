@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.widget;
 
-import aiiy;
-import ailp;
+import ainn;
+import aiqe;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.PorterDuff.Mode;
@@ -16,10 +16,10 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewStub;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView.ScaleType;
-import baul;
-import bcgh;
-import bcmh;
-import bcuq;
+import bayu;
+import bckq;
+import bcqq;
+import bcyz;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -41,7 +41,7 @@ public class AvatarWallViewPagerAdapter
   protected QQAppInterface a;
   protected AvatarWallViewPager a;
   protected String a;
-  protected List<aiiy> a;
+  protected List<ainn> a;
   protected WeakReference<Activity> a;
   protected boolean a;
   protected int b;
@@ -72,19 +72,19 @@ public class AvatarWallViewPagerAdapter
     }
   }
   
-  private URLDrawable a(String paramString, aiiy paramaiiy)
+  private URLDrawable a(String paramString, ainn paramainn)
   {
-    paramString = ailp.a(paramString);
+    paramString = aiqe.a(paramString);
     if (paramString == null) {
       return null;
     }
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = baul.a;
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = bayu.a;
     paramString = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
     localObject = new Rect();
-    ailp.a((Rect)localObject, paramaiiy.d);
-    paramString.setTag(bcuq.a(((Rect)localObject).left, ((Rect)localObject).top, ((Rect)localObject).width(), ((Rect)localObject).height(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
-    paramString.setDecodeHandler(bcuq.x);
+    aiqe.a((Rect)localObject, paramainn.d);
+    paramString.setTag(bcyz.a(((Rect)localObject).left, ((Rect)localObject).top, ((Rect)localObject).width(), ((Rect)localObject).height(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
+    paramString.setDecodeHandler(bcyz.x);
     return paramString;
   }
   
@@ -93,12 +93,12 @@ public class AvatarWallViewPagerAdapter
     return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public List<aiiy> a()
+  public List<ainn> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public boolean a(List<aiiy> paramList)
+  public boolean a(List<ainn> paramList)
   {
     if (this.jdField_a_of_type_Boolean) {
       if (QLog.isColorLevel()) {
@@ -108,7 +108,7 @@ public class AvatarWallViewPagerAdapter
     do
     {
       return false;
-      if (!aiiy.a(paramList, this.jdField_a_of_type_JavaUtilList)) {
+      if (!ainn.a(paramList, this.jdField_a_of_type_JavaUtilList)) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -150,9 +150,9 @@ public class AvatarWallViewPagerAdapter
     if (paramObject.getTag() == null) {
       return -2;
     }
-    paramObject = (aiiy)paramObject.getTag();
-    aiiy localaiiy = (aiiy)this.jdField_a_of_type_JavaUtilList.get(i);
-    if ((!paramObject.jdField_c_of_type_JavaLangString.equals(localaiiy.jdField_c_of_type_JavaLangString)) || (paramObject.jdField_b_of_type_Int != localaiiy.jdField_b_of_type_Int) || (paramObject.jdField_c_of_type_Boolean != localaiiy.jdField_c_of_type_Boolean)) {
+    paramObject = (ainn)paramObject.getTag();
+    ainn localainn = (ainn)this.jdField_a_of_type_JavaUtilList.get(i);
+    if ((!paramObject.jdField_c_of_type_JavaLangString.equals(localainn.jdField_c_of_type_JavaLangString)) || (paramObject.jdField_b_of_type_Int != localainn.jdField_b_of_type_Int) || (paramObject.jdField_c_of_type_Boolean != localainn.jdField_c_of_type_Boolean)) {
       return -2;
     }
     return -1;
@@ -211,57 +211,57 @@ public class AvatarWallViewPagerAdapter
     }
     for (;;)
     {
-      View localView = LayoutInflater.from((Context)this.jdField_a_of_type_MqqUtilWeakReference.get()).inflate(2131559727, null);
-      bcmh localbcmh = new bcmh(this);
-      localbcmh.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131367933));
-      localbcmh.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+      View localView = LayoutInflater.from((Context)this.jdField_a_of_type_MqqUtilWeakReference.get()).inflate(2131559726, null);
+      bcqq localbcqq = new bcqq(this);
+      localbcqq.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131367944));
+      localbcqq.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
       if (a() <= i) {
         i = 0;
       }
       for (;;)
       {
-        aiiy localaiiy = (aiiy)this.jdField_a_of_type_JavaUtilList.get(i);
+        ainn localainn = (ainn)this.jdField_a_of_type_JavaUtilList.get(i);
         int j;
-        if (localaiiy != null)
+        if (localainn != null)
         {
-          j = localaiiy.jdField_b_of_type_Int;
-          if ((j == 1) && ((localaiiy.jdField_b_of_type_JavaLangString == null) || (!new File(localaiiy.jdField_b_of_type_JavaLangString).exists())))
+          j = localainn.jdField_b_of_type_Int;
+          if ((j == 1) && ((localainn.jdField_b_of_type_JavaLangString == null) || (!new File(localainn.jdField_b_of_type_JavaLangString).exists())))
           {
-            localObject = bcgh.b(bcgh.a(localaiiy.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 1));
+            localObject = bckq.b(bckq.a(localainn.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 1));
             label358:
             if (this.jdField_a_of_type_MqqUtilWeakReference != null) {
-              localView.setContentDescription(((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131696539));
+              localView.setContentDescription(((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131696541));
             }
             if (localObject != null)
             {
-              URLDrawable localURLDrawable = a((String)localObject, localaiiy);
+              URLDrawable localURLDrawable = a((String)localObject, localainn);
               if (localURLDrawable != null)
               {
                 localURLDrawable.setColorFilter(this.c, PorterDuff.Mode.SRC_ATOP);
-                localbcmh.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localURLDrawable);
+                localbcqq.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localURLDrawable);
               }
               if (QLog.isColorLevel()) {
                 QLog.i("AvatarWallViewPagerAdapter", 2, String.format("viewFactory: FROM_OTHERS, path=" + (String)localObject, new Object[0]));
               }
             }
-            if (!localaiiy.jdField_c_of_type_Boolean) {
+            if (!localainn.jdField_c_of_type_Boolean) {
               break label661;
             }
-            if (localbcmh.jdField_a_of_type_AndroidViewView == null)
+            if (localbcqq.jdField_a_of_type_AndroidViewView == null)
             {
-              localbcmh.jdField_a_of_type_AndroidViewView = ((ViewStub)localView.findViewById(2131379466)).inflate();
-              localObject = (FrameLayout.LayoutParams)localbcmh.jdField_a_of_type_AndroidViewView.getLayoutParams();
+              localbcqq.jdField_a_of_type_AndroidViewView = ((ViewStub)localView.findViewById(2131379524)).inflate();
+              localObject = (FrameLayout.LayoutParams)localbcqq.jdField_a_of_type_AndroidViewView.getLayoutParams();
               ((FrameLayout.LayoutParams)localObject).height = -1;
               ((FrameLayout.LayoutParams)localObject).width = -1;
-              localbcmh.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+              localbcqq.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
             }
-            localbcmh.jdField_a_of_type_AndroidViewView.setVisibility(0);
+            localbcqq.jdField_a_of_type_AndroidViewView.setVisibility(0);
           }
         }
         else
         {
           label547:
-          localView.setTag(localaiiy);
+          localView.setTag(localainn);
           localView.setId(i);
           if (paramViewGroup == null) {
             break label682;
@@ -278,21 +278,21 @@ public class AvatarWallViewPagerAdapter
           }
           i = paramInt - 1;
           break;
-          if ((j == 2) || ((localaiiy.jdField_b_of_type_JavaLangString != null) && (new File(localaiiy.jdField_b_of_type_JavaLangString).exists())))
+          if ((j == 2) || ((localainn.jdField_b_of_type_JavaLangString != null) && (new File(localainn.jdField_b_of_type_JavaLangString).exists())))
           {
-            localObject = localaiiy.jdField_b_of_type_JavaLangString;
+            localObject = localainn.jdField_b_of_type_JavaLangString;
             break label358;
           }
           if (j != 3) {
             break label358;
           }
-          localObject = bcgh.b(bcgh.a(localaiiy.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0));
+          localObject = bckq.b(bckq.a(localainn.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0));
           break label358;
           label661:
-          if (localbcmh.jdField_a_of_type_AndroidViewView == null) {
+          if (localbcqq.jdField_a_of_type_AndroidViewView == null) {
             break label547;
           }
-          localbcmh.jdField_a_of_type_AndroidViewView.setVisibility(8);
+          localbcqq.jdField_a_of_type_AndroidViewView.setVisibility(8);
           break label547;
           label682:
           i = getCount();

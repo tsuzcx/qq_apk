@@ -1,19 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
-class adsh
-  implements DialogInterface.OnClickListener
+public class adsh
+  implements aybu
 {
-  adsh(adsd paramadsd) {}
+  public adsh(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
   {
-    this.a.b = true;
-    adsd.b(this.a);
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    if (this.a.c)
+    {
+      if (paramInt != 100) {
+        this.a.a(2131690719);
+      }
+      this.a.z();
+    }
   }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

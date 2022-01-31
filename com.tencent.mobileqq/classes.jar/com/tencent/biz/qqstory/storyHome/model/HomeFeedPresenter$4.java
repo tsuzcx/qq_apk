@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
-import wli;
-import wmg;
+import wpr;
+import wqp;
 
 public final class HomeFeedPresenter$4
   implements Runnable
 {
-  public HomeFeedPresenter$4(wmg paramwmg) {}
+  public HomeFeedPresenter$4(wqp paramwqp) {}
   
   public void run()
   {
-    wli.a(this.a);
+    wpr.a(this.a);
   }
 }
 

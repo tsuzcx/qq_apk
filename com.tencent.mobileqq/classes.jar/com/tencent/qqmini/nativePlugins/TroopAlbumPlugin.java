@@ -1,6 +1,6 @@
 package com.tencent.qqmini.nativePlugins;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -11,15 +11,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import bdcd;
-import bdfq;
-import bfhq;
-import bgho;
-import bgkd;
-import bizm;
-import bizt;
-import bjmn;
-import bjmp;
+import bdgm;
+import bdjz;
+import bflz;
+import bglv;
+import bgok;
+import bjdt;
+import bjea;
+import bjqu;
+import bjqw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -56,8 +56,8 @@ public class TroopAlbumPlugin
   private Handler handler = new Handler();
   private long lastClickTime;
   Dialog mDownloadingDialog;
-  private bgkd mReq;
-  private bdfq openDialog;
+  private bgok mReq;
+  private bdjz openDialog;
   private BroadcastReceiver troopAlbumReceiver = new TroopAlbumPlugin.1(this);
   
   private void alertDownloadErrorCount(Activity paramActivity, int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
@@ -73,14 +73,14 @@ public class TroopAlbumPlugin
       String str = "";
       if (paramInt1 > 0)
       {
-        str = String.format(paramActivity.getString(2131718528), new Object[] { Integer.valueOf(paramInt1) }) + "，";
-        str = str + paramString + alpo.a(2131715561);
+        str = String.format(paramActivity.getString(2131718540), new Object[] { Integer.valueOf(paramInt1) }) + "，";
+        str = str + paramString + alud.a(2131715573);
       }
-      paramString = str + String.format(paramActivity.getString(2131718521), new Object[] { Integer.valueOf(paramInt2) });
-      bdcd.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131718526, new TroopAlbumPlugin.5(this)).show();
+      paramString = str + String.format(paramActivity.getString(2131718533), new Object[] { Integer.valueOf(paramInt2) });
+      bdgm.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131718538, new TroopAlbumPlugin.5(this)).show();
       return;
     }
-    bfhq.a().a(paramActivity.getString(2131718529) + paramString + alpo.a(2131715560));
+    bflz.a().a(paramActivity.getString(2131718541) + paramString + alud.a(2131715572));
   }
   
   private void handleChatAio(JSONObject paramJSONObject)
@@ -97,24 +97,24 @@ public class TroopAlbumPlugin
     Object localObject = new Intent();
     paramJSONObject = paramJSONObject.getJSONObject("data").toString();
     ((Intent)localObject).putExtra("photos", paramJSONObject);
-    bjmn.a().a(new TroopAlbumPlugin.2(this, paramJSONObject));
+    bjqu.a().a(new TroopAlbumPlugin.2(this, paramJSONObject));
     if (!isSdcardWorking())
     {
-      bfhq.a().a(alpo.a(2131715556));
+      bflz.a().a(alud.a(2131715568));
       return;
     }
     if (!NetworkState.isNetSupport())
     {
-      bfhq.a().a(alpo.a(2131715555));
+      bflz.a().a(alud.a(2131715567));
       return;
     }
     if (!NetworkState.isWifiConn())
     {
       localObject = this.mMiniAppContext.a();
-      bdcd.a((Context)localObject, 230).setTitle(((Context)localObject).getString(2131718525)).setMessage(((Context)localObject).getString(2131718527)).setPositiveButton(((Context)localObject).getString(2131718524), new TroopAlbumPlugin.4(this, paramJSONObject)).setNegativeButton(((Context)localObject).getString(2131718523), new TroopAlbumPlugin.3(this)).show();
+      bdgm.a((Context)localObject, 230).setTitle(((Context)localObject).getString(2131718537)).setMessage(((Context)localObject).getString(2131718539)).setPositiveButton(((Context)localObject).getString(2131718536), new TroopAlbumPlugin.4(this, paramJSONObject)).setNegativeButton(((Context)localObject).getString(2131718535), new TroopAlbumPlugin.3(this)).show();
       return;
     }
-    bjmn.a().a().d(paramJSONObject);
+    bjqu.a().a().d(paramJSONObject);
   }
   
   private void handleJumpCategoryAlbum(JSONObject paramJSONObject)
@@ -124,14 +124,14 @@ public class TroopAlbumPlugin
     paramJSONObject = paramJSONObject.optString("categoryId");
     Activity localActivity = this.mMiniAppContext.a();
     if (localActivity != null) {
-      bizm.a(localActivity, BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, paramJSONObject, -1);
+      bjdt.a(localActivity, BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, paramJSONObject, -1);
     }
   }
   
   private void handleJumpToPublishBox()
   {
-    bizt.a();
-    bizm.a(this.mMiniAppContext.a(), null, 0);
+    bjea.a();
+    bjdt.a(this.mMiniAppContext.a(), null, 0);
   }
   
   private void handleJumpToQzone(JSONObject paramJSONObject)
@@ -148,7 +148,7 @@ public class TroopAlbumPlugin
     QzonePluginProxyActivity.a(this.mMiniAppContext.a(), BaseApplicationImpl.sApplication.getRuntime().getAccount(), paramJSONObject, 0);
   }
   
-  private void handleQunDidPickAlbum(JSONObject paramJSONObject, bgkd parambgkd)
+  private void handleQunDidPickAlbum(JSONObject paramJSONObject, bgok parambgok)
   {
     try
     {
@@ -156,11 +156,11 @@ public class TroopAlbumPlugin
       paramJSONObject = new Bundle();
       paramJSONObject.putInt("key_personal_album_enter_model", 0);
       paramJSONObject.putBoolean("key_pass_result_by_bundle", true);
-      bizt localbizt = bizt.a();
-      localbizt.jdField_a_of_type_JavaLangString = BaseApplicationImpl.sApplication.getRuntime().getAccount();
+      bjea localbjea = bjea.a();
+      localbjea.jdField_a_of_type_JavaLangString = BaseApplicationImpl.sApplication.getRuntime().getAccount();
       paramJSONObject.putBoolean("key_need_change_to_jpg", true);
-      bizm.a(this.mMiniAppContext.a(), localbizt, paramJSONObject, 100);
-      this.mReq = parambgkd;
+      bjdt.a(this.mMiniAppContext.a(), localbjea, paramJSONObject, 100);
+      this.mReq = parambgok;
       paramJSONObject = new IntentFilter();
       paramJSONObject.addAction("troop_select");
       this.mMiniAppContext.a().registerReceiver(this.troopAlbumReceiver, paramJSONObject);
@@ -195,7 +195,7 @@ public class TroopAlbumPlugin
     }
   }
   
-  private void handleShowPhotoList(JSONObject paramJSONObject, bgkd parambgkd)
+  private void handleShowPhotoList(JSONObject paramJSONObject, bgok parambgok)
   {
     if (System.currentTimeMillis() - this.lastClickTime < 2000L)
     {
@@ -213,10 +213,10 @@ public class TroopAlbumPlugin
     int k = ((JSONObject)localObject1).optInt("orgVideoSize");
     int m = ((JSONObject)localObject1).optInt("videoWidth");
     int n = ((JSONObject)localObject1).optInt("videoHeight");
-    parambgkd = ((JSONObject)localObject1).optString("videoURL");
+    parambgok = ((JSONObject)localObject1).optString("videoURL");
     String str = ((JSONObject)localObject1).optString("videoID");
-    localObject1 = bizt.a();
-    ((bizt)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject3);
+    localObject1 = bjea.a();
+    ((bjea)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject3);
     localObject3 = new Bundle();
     ArrayList localArrayList = new ArrayList();
     PhotoInfo localPhotoInfo = new PhotoInfo();
@@ -232,27 +232,27 @@ public class TroopAlbumPlugin
     ((PictureUrl)localObject4).jdField_a_of_type_JavaLangString = ((String)localObject2);
     localPhotoInfo.a.d = ((PictureUrl)localObject4);
     localObject2 = new VideoUrl();
-    ((VideoUrl)localObject2).jdField_a_of_type_JavaLangString = parambgkd;
+    ((VideoUrl)localObject2).jdField_a_of_type_JavaLangString = parambgok;
     localPhotoInfo.a.jdField_a_of_type_Long = k;
     localPhotoInfo.a.jdField_a_of_type_JavaLangString = str;
-    localPhotoInfo.a.b = parambgkd;
+    localPhotoInfo.a.b = parambgok;
     localPhotoInfo.a.jdField_a_of_type_CooperationQzoneModelVideoUrl = ((VideoUrl)localObject2);
     localPhotoInfo.a.g = m;
     localPhotoInfo.a.h = n;
     localPhotoInfo.a.f = 5;
     localArrayList.add(localPhotoInfo);
-    parambgkd = new PhotoParam();
-    parambgkd.b = paramJSONObject;
-    parambgkd.g = paramJSONObject;
+    parambgok = new PhotoParam();
+    parambgok.b = paramJSONObject;
+    parambgok.g = paramJSONObject;
     ((Bundle)localObject3).putSerializable("picturelist", localArrayList);
     ((Bundle)localObject3).putInt("curindex", 0);
     ((Bundle)localObject3).putInt("mode", 13);
     ((Bundle)localObject3).putBoolean("need_clear_cache", true);
-    bizm.c(this.mMiniAppContext.a(), (bizt)localObject1, (Bundle)localObject3, 6);
+    bjdt.c(this.mMiniAppContext.a(), (bjea)localObject1, (Bundle)localObject3, 6);
     this.lastClickTime = System.currentTimeMillis();
   }
   
-  private void handleUploadPhoto(JSONObject paramJSONObject, bgkd parambgkd)
+  private void handleUploadPhoto(JSONObject paramJSONObject, bgok parambgok)
   {
     Object localObject = paramJSONObject.getJSONObject("data");
     paramJSONObject = ((JSONObject)localObject).optString("albumname");
@@ -261,8 +261,8 @@ public class TroopAlbumPlugin
     if (!TextUtils.isEmpty((CharSequence)localObject)) {}
     for (int i = 2;; i = 1)
     {
-      bizm.b(this.mMiniAppContext.a(), BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, 1, l, "", (String)localObject, paramJSONObject, 7001, 43);
-      this.mReq = parambgkd;
+      bjdt.b(this.mMiniAppContext.a(), BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, 1, l, "", (String)localObject, paramJSONObject, 7001, 43);
+      this.mReq = parambgok;
       paramJSONObject = new IntentFilter();
       paramJSONObject.addAction("troop_upload");
       this.mMiniAppContext.a().registerReceiver(this.troopAlbumReceiver, paramJSONObject);
@@ -275,58 +275,58 @@ public class TroopAlbumPlugin
     return SDCardMountMonitorReceiver.a().b();
   }
   
-  public void groupAlbumDownloadGroupAlbumPhoto(bgkd parambgkd)
+  public void groupAlbumDownloadGroupAlbumPhoto(bgok parambgok)
   {
     QMLog.i("Demo", "groupAlbum_downloadGroupAlbumPhoto succeed");
-    parambgkd.a();
+    parambgok.a();
   }
   
-  public void groupAlbumGroupUploadPhoto(bgkd parambgkd)
+  public void groupAlbumGroupUploadPhoto(bgok parambgok)
   {
     QMLog.i("Demo", "groupAlbum_groupUploadPhoto succeed");
-    parambgkd.a();
+    parambgok.a();
   }
   
-  public void groupAlbumImportGroupAIO(bgkd parambgkd)
+  public void groupAlbumImportGroupAIO(bgok parambgok)
   {
     QMLog.i("Demo", "groupAlbum_importGroupAIO succeed");
-    parambgkd.a();
+    parambgok.a();
   }
   
-  public void groupAlbumJumpCategoryAlbum(bgkd parambgkd)
+  public void groupAlbumJumpCategoryAlbum(bgok parambgok)
   {
     QMLog.i("Demo", "groupAlbum_jumpCategoryAlbum succeed");
-    parambgkd.a();
+    parambgok.a();
   }
   
-  public void groupAlbumJumpGroupAlbumSendBox(bgkd parambgkd)
+  public void groupAlbumJumpGroupAlbumSendBox(bgok parambgok)
   {
     QMLog.i("Demo", "groupAlbum_jumpGroupAlbumSendBox succeed");
-    parambgkd.a();
+    parambgok.a();
   }
   
-  public void groupAlbumOpenUserQzoneHome(bgkd parambgkd)
+  public void groupAlbumOpenUserQzoneHome(bgok parambgok)
   {
     QMLog.i("Demo", "groupAlbum_openUserQzoneHome succeed");
-    parambgkd.a();
+    parambgok.a();
   }
   
-  public void groupAlbumPickQzoneAlbum(bgkd parambgkd)
+  public void groupAlbumPickQzoneAlbum(bgok parambgok)
   {
     QMLog.i("Demo", "groupAlbum_pickQzoneAlbum succeed");
-    parambgkd.a();
+    parambgok.a();
   }
   
-  public void groupAlbumShowGroupPhotoBrowser(bgkd parambgkd)
+  public void groupAlbumShowGroupPhotoBrowser(bgok parambgok)
   {
     QMLog.i("Demo", "groupAlbum_showGroupPhotoBrowser succeed");
-    parambgkd.a();
+    parambgok.a();
   }
   
-  public void groupAlbumStart(bgkd parambgkd)
+  public void groupAlbumStart(bgok parambgok)
   {
     QMLog.i("Demo", "groupAlbum_start succeed");
-    parambgkd.a();
+    parambgok.a();
   }
 }
 

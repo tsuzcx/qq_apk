@@ -1,16 +1,27 @@
-import android.support.v4.util.LruCache;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
 
-class asov
-  extends LruCache<String, asow>
+public class asov
+  implements bexc
 {
-  asov(asou paramasou, int paramInt)
-  {
-    super(paramInt);
-  }
+  public asov(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  protected int a(String paramString, asow paramasow)
+  public void a(View paramView, int paramInt)
   {
-    return 1;
+    if ((paramInt == 5) || (paramInt == 4))
+    {
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", "2747277822");
+      this.a.startActivity(paramView);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    QQGameFeedWebFragment.a(this.a, this.a.a);
+    this.a.getActivity().finish();
   }
 }
 

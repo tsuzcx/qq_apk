@@ -1,76 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
+import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
 
-public class auec
-  implements DialogInterface.OnClickListener
+public abstract class auec
 {
-  public auec(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
+  public auef a;
+  public MiniAppActivity a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public auec(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
   {
-    aufh.a("MsgBackup_MsgBackupPcBaseFragment", "showStopMigrateDialog mextra is not null! %b, isFromPcHandle = %b", new Object[] { Boolean.valueOf(TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)), Boolean.valueOf(this.a.e) });
-    aucf.a().a().c();
-    aucf.a().a().a(null);
-    if (this.a.jdField_a_of_type_Boolean) {
-      if ((!this.a.e) && (this.a.b == 1))
-      {
-        this.a.a(this.a.getActivity());
-        if (!this.a.f)
-        {
-          if (this.a.b != 1) {
-            break label189;
-          }
-          if (this.a.e) {
-            auff.a("0X800A267", 2);
-          }
-        }
-        label141:
-        if (this.a.f)
-        {
-          if (this.a.b != 1) {
-            break label309;
-          }
-          if (this.a.e) {
-            auff.a("0X800A267", 3);
-          }
-        }
-      }
+    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity = paramMiniAppActivity;
+  }
+  
+  public abstract void a();
+  
+  public void a(auef paramauef)
+  {
+    this.jdField_a_of_type_Auef = paramauef;
+    if (this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity.jdField_a_of_type_Auef = paramauef;
     }
-    label189:
-    while (this.a.b != 2)
-    {
-      return;
-      this.a.m();
-      break;
-      if (this.a.b != 2) {
-        break label141;
-      }
-      auff.a("0X800A289", 1);
-      break label141;
-      if (this.a.e) {
-        if (this.a.getActivity() != null)
-        {
-          this.a.getActivity().setResult(1001);
-          this.a.getActivity().finish();
-        }
-      }
-      for (;;)
-      {
-        if ((this.a.f) || (this.a.b != 1) || (!this.a.e)) {
-          break label307;
-        }
-        auff.a("0X800A267", 1);
-        break;
-        this.a.a(this.a.getActivity());
-      }
-      break label141;
-    }
-    label307:
-    label309:
-    auff.a("0X800A289", 2);
+  }
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public void c()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity = null;
   }
 }
 

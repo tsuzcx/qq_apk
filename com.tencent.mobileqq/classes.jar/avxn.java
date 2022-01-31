@@ -1,34 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
 
-class avxn
-  implements ImageAssetDelegate
+public class avxn
+  implements View.OnClickListener
 {
-  avxn(avxm paramavxm) {}
+  public avxn(ScanOcrActivity paramScanOcrActivity) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void onClick(View paramView)
   {
-    Object localObject = null;
-    paramLottieImageAsset = paramLottieImageAsset.getFileName();
-    String str = this.a.jdField_a_of_type_JavaLangString + "guide_images" + File.separator + paramLottieImageAsset;
-    try
+    if ((ScanOcrActivity.a(this.a) == 1) && ((ScanOcrActivity.b(this.a) == 0) || (ScanOcrActivity.b(this.a) == 4)))
     {
-      paramLottieImageAsset = msp.a(str, this.a.jdField_a_of_type_Int, this.a.b);
-      return paramLottieImageAsset;
+      ScanOcrActivity.a(this.a).a();
+      ScanOcrActivity.a(this.a, false);
+      ScanOcrActivity.b(this.a);
+      return;
     }
-    catch (Exception localException)
-    {
-      do
-      {
-        paramLottieImageAsset = localObject;
-      } while (!AudioHelper.e());
-      QLog.w(avxl.jdField_a_of_type_JavaLangString, 1, "PromotionGuide Exception, imagePath[" + str + "]", localException);
-    }
-    return null;
+    this.a.finish();
   }
 }
 

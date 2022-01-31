@@ -1,13 +1,27 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vsq
-  implements vua
+  extends QQUIEventReceiver<vsp, vsu>
 {
-  public vsq(TextureVideoView paramTextureVideoView) {}
-  
-  public void a(vtz paramvtz, int paramInt)
+  public vsq(@NonNull vsp paramvsp)
   {
-    this.a.f = paramInt;
+    super(paramvsp);
+  }
+  
+  public void a(@NonNull vsp paramvsp, @NonNull vsu paramvsu)
+  {
+    if (paramvsu.a.isSuccess())
+    {
+      wxe.a("Q.qqstory.playernew.LoadingMoreWidget", "PlayVideoChangeReceiver. %s.", paramvsu.toString());
+      paramvsp.e();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vsu.class;
   }
 }
 

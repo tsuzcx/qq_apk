@@ -1,48 +1,14 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-
-public class asoh
-  extends GestureDetector.SimpleOnGestureListener
+public abstract interface asoh
 {
-  public asoh(HiBoomTextView paramHiBoomTextView) {}
+  public abstract void a(String paramString);
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    if (this.a.jdField_a_of_type_Ason != null)
-    {
-      this.a.jdField_a_of_type_Ason.a(this.a);
-      return true;
-    }
-    return super.onDoubleTap(paramMotionEvent);
-  }
+  public abstract void a(String paramString1, String paramString2);
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    asnr localasnr = asnp.a().a(this.a.jdField_a_of_type_Int, this.a.b, this.a.jdField_a_of_type_Asnq);
-    if (this.a.b())
-    {
-      localasnr.a(true);
-      this.a.invalidate();
-      return true;
-    }
-    if (HiBoomTextView.a(this.a)) {
-      this.a.a();
-    }
-    for (;;)
-    {
-      return super.onSingleTapConfirmed(paramMotionEvent);
-      if (localasnr.jdField_a_of_type_Int == 3)
-      {
-        this.a.a(true);
-      }
-      else if (localasnr.jdField_a_of_type_Int == 4)
-      {
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.invalidate();
-      }
-    }
-  }
+  public abstract void b(String paramString);
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d(String paramString);
 }
 
 

@@ -1,18 +1,10 @@
-import android.support.annotation.Nullable;
-import android.view.View;
-
 class bkue
-  implements bmac<bkuk>
 {
-  bkue(bkuc parambkuc) {}
+  public double a;
+  public boolean a;
+  public boolean b;
   
-  public void a(@Nullable bkuk parambkuk)
-  {
-    if (parambkuk == null) {
-      return;
-    }
-    bkuc.d(this.a).setSelected(parambkuk.a());
-  }
+  bkue(bkud parambkud) {}
 }
 
 

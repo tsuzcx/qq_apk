@@ -1,21 +1,43 @@
+import android.view.ViewGroup;
+import com.tencent.qphone.base.util.QLog;
+
 public class vbu
 {
-  public final String a;
-  public final xjo a;
-  public final xjw a;
-  public final String b;
+  private static String a = vbu.class.getSimpleName();
   
-  public vbu(String paramString1, xjw paramxjw, xjo paramxjo, String paramString2)
+  public static uuh a(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Xjw = paramxjw;
-    this.jdField_a_of_type_Xjo = paramxjo;
-    this.b = paramString2;
-  }
-  
-  public String toString()
-  {
-    return "TagInfoBaseVidList{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tagInfo=" + this.jdField_a_of_type_Xjw + ", comInfo=" + this.jdField_a_of_type_Xjo + ", extCfgInfo=" + this.b + '}';
+    wxe.a(a, "create type=%d", Integer.valueOf(paramInt));
+    switch (paramInt)
+    {
+    default: 
+      if (QLog.isDevelopLevel()) {
+        QLog.e(a, 2, "发现一个野生的类型: " + paramInt);
+      }
+      return new uuh(paramViewGroup, 2131561510);
+    case 6: 
+      return new vbl(paramViewGroup);
+    case 5: 
+      return new vbt(paramViewGroup);
+    case 7: 
+      return new vbk(paramViewGroup);
+    case 8: 
+      return new vca(paramViewGroup, 2131561510);
+    case 9: 
+      return new vbs(paramViewGroup);
+    case 3: 
+      return new vbm(paramViewGroup);
+    case 4: 
+      return new vbq(paramViewGroup, 4);
+    case 2: 
+      return new vby(paramViewGroup, 2131561512);
+    case 10: 
+    case 11: 
+      return new vbr(paramViewGroup);
+    case 12: 
+      return new vbv(paramViewGroup);
+    }
+    return new vbn(paramViewGroup);
   }
 }
 

@@ -2,7 +2,7 @@ import android.os.Bundle;
 import com.tencent.biz.pubaccount.CustomWebView;
 
 public class nnj
-  implements bedq
+  implements behz
 {
   public nnj(CustomWebView paramCustomWebView, nnk paramnnk) {}
   

@@ -7,7 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
-import azgq;
+import azkz;
 import com.tencent.qphone.base.util.QLog;
 
 public class SimpleProgressBar
@@ -21,7 +21,7 @@ public class SimpleProgressBar
   public int b;
   private int e;
   private final int f = -1;
-  private final int g = azgq.a(3.0F);
+  private final int g = azkz.a(3.0F);
   private int h = c;
   
   public SimpleProgressBar(Context paramContext, AttributeSet paramAttributeSet)

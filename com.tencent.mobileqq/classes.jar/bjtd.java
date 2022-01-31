@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class bjtd
-  implements DialogInterface.OnClickListener
+public abstract class bjtd
 {
-  bjtd(bdfq parambdfq) {}
+  public static bjtd a = new bjte();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
-    }
+    return 1;
   }
+  
+  public abstract boolean a();
 }
 
 

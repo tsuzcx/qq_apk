@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.transfile;
 
-import aogj;
-import aonc;
-import bamu;
+import aoks;
+import aorl;
+import bard;
 
 public class BaseTransFileController$1
   implements Runnable
 {
-  public BaseTransFileController$1(bamu parambamu) {}
+  public BaseTransFileController$1(bard parambard) {}
   
   public void run()
   {
-    this.this$0.a = ((aonc)aogj.a().a(538));
+    this.this$0.a = ((aorl)aoks.a().a(538));
   }
 }
 

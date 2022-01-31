@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data.nativemonitor;
 
-import alun;
+import alzc;
 import android.content.pm.ApplicationInfo;
-import apbm;
-import apbn;
+import apfv;
+import apfw;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -14,12 +14,12 @@ import java.util.Map;
 public class NativeMonitorConfigHelper$1$1
   implements Runnable
 {
-  public NativeMonitorConfigHelper$1$1(apbn paramapbn, String paramString1, String paramString2) {}
+  public NativeMonitorConfigHelper$1$1(apfw paramapfw, String paramString1, String paramString2) {}
   
   public void run()
   {
     File localFile = new File(this.a);
-    String str3 = apbm.a(localFile);
+    String str3 = apfv.a(localFile);
     long l = localFile.length();
     Object localObject2 = BaseApplicationImpl.getApplication();
     String str2 = ((BaseApplicationImpl)localObject2).getQQProcessName();
@@ -41,7 +41,7 @@ public class NativeMonitorConfigHelper$1$1
       if (QLog.isColorLevel()) {
         QLog.i("NativeMonitorConfig", 2, "soPath: " + str2 + ", md5: " + str3 + ", len: " + l + ", proc: " + str1 + ", backtrace:\n" + this.b);
       }
-      if (alun.a())
+      if (alzc.a())
       {
         localObject1 = new HashMap();
         ((HashMap)localObject1).put("so", localFile.getName());

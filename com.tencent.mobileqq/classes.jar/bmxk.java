@@ -1,170 +1,176 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.util.LruCache;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.biz.qqstory.takevideo.rmw.StoryFaceDrawableFactory.3;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.view.animation.LinearInterpolator;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bmxk
+  extends bmxt
 {
-  public int a;
-  private BroadcastReceiver a;
-  protected Context a;
-  public Handler a;
-  public LruCache<String, xqi> a;
-  protected bmxn a;
-  protected ArrayList<String> a;
-  public int b;
-  protected LruCache<String, String> b;
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private int jdField_b_of_type_Int;
+  private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
+  private String jdField_b_of_type_JavaLangString;
+  private int c;
+  private int d;
+  private int e;
   
-  public bmxk(Context paramContext)
+  public bmxk(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(60);
-    this.jdField_b_of_type_AndroidSupportV4UtilLruCache = new LruCache(120);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new bmxl(this, Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bmxm(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.qqhead.getheadresp");
-    paramContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.qim.qqhead.permission.getheadresp", null);
+    super(paramContext, paramString);
+    a(paramString);
+    b();
+    c();
   }
   
-  protected Bitmap a(Bitmap paramBitmap)
+  public static String a(int paramInt, String paramString)
   {
-    wsv.c("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap start.");
-    float f2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    int i = paramBitmap.getWidth();
-    float f1 = f2;
-    if (i > 0)
-    {
-      f1 = f2;
-      if (i < this.jdField_a_of_type_Int * f2) {
-        f1 = i / this.jdField_a_of_type_Int;
-      }
-    }
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int * f1));
-    this.jdField_b_of_type_Int = ((int)(f1 * this.jdField_b_of_type_Int));
-    i = this.jdField_a_of_type_Int;
-    wsv.c("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap end.");
-    return bdda.a(paramBitmap, i, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-  }
-  
-  public Bitmap a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      wsv.e("Q.qqstory.record.StoryFaceDrawableFactory", "localPath = null!");
-      return null;
-    }
-    wsv.b("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath start. localPath:%s.", paramString);
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      paramString = BitmapFactory.decodeFile(paramString);
-      if (paramString == null)
-      {
-        wsv.e("Q.qqstory.record.StoryFaceDrawableFactory", "BitmapFactory.decodeFile return null!");
-        return null;
+      localJSONObject.put("type", paramInt);
+      localJSONObject.put("city_bitmap_path", paramString);
+      paramString = localJSONObject.toString();
+      if (QLog.isColorLevel()) {
+        QLog.d("CityStickerDrawable", 2, paramString);
       }
+      return paramString;
     }
-    catch (OutOfMemoryError paramString)
+    catch (JSONException paramString)
     {
       for (;;)
       {
-        wsv.c("Q.qqstory.record.StoryFaceDrawableFactory", "BitmapFactory.decodeFile error : %s.", paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d("CityStickerDrawable", 2, paramString, new Object[0]);
+        }
         paramString = null;
       }
-      Bitmap localBitmap = a(paramString);
-      if (localBitmap == null)
-      {
-        wsv.e("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap return null!");
-        return null;
-      }
-      if ((paramString != null) && (!paramString.isRecycled())) {
-        paramString.recycle();
-      }
-      wsv.c("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath end.");
-      return localBitmap;
     }
   }
   
-  public Drawable a(String paramString, int paramInt1, int paramInt2)
+  protected void a(Canvas paramCanvas, ArrayList<Integer> paramArrayList)
   {
-    if (TextUtils.isEmpty(paramString))
+    int i;
+    int k;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      wsv.e("Q.qqstory.record.StoryFaceDrawableFactory", "getStoryFaceDrawable uin is null!");
-      return null;
-    }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    if (!TextUtils.isEmpty((CharSequence)this.jdField_b_of_type_AndroidSupportV4UtilLruCache.get(paramString)))
-    {
-      localxqi = (xqi)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
-      if (localxqi != null)
-      {
-        wsv.c("Q.qqstory.record.StoryFaceDrawableFactory", "getStoryFaceDrawable, hit cache:" + paramString);
-        return localxqi;
+      i = 225;
+      k = this.e;
+      if (paramArrayList == null) {
+        break label200;
       }
     }
-    wsv.c("Q.qqstory.record.StoryFaceDrawableFactory", "getStoryFaceDrawable, not in cache:" + paramString);
-    xqi localxqi = new xqi(paramInt1, paramInt2);
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, localxqi);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
-    return localxqi;
+    for (;;)
+    {
+      try
+      {
+        j = ((Integer)paramArrayList.get(this.jdField_a_of_type_Int)).intValue();
+        int n;
+        QLog.e("CityStickerDrawable", 1, paramArrayList, new Object[0]);
+      }
+      catch (RuntimeException paramArrayList)
+      {
+        try
+        {
+          n = ((Integer)paramArrayList.get(this.jdField_b_of_type_Int)).intValue();
+          i = n;
+          m = ((Integer)paramArrayList.get(this.c)).intValue();
+          k = n;
+          i = j;
+          j = m;
+          this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(k);
+          paramCanvas.save();
+          this.jdField_b_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_AndroidGraphicsRect);
+          this.jdField_b_of_type_AndroidGraphicsRect.offset(0, i);
+          paramCanvas.clipRect(0, 0, this.d, j);
+          paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+          paramCanvas.restore();
+          return;
+        }
+        catch (RuntimeException paramArrayList)
+        {
+          for (;;)
+          {
+            int m = j;
+            j = i;
+            i = m;
+          }
+        }
+        paramArrayList = paramArrayList;
+        j = 225;
+        i = 0;
+      }
+      m = j;
+      int j = k;
+      k = m;
+      continue;
+      label200:
+      j = k;
+      k = 225;
+      i = 0;
+    }
   }
   
-  public void a()
+  public String[] a(String paramString)
   {
-    wsv.c("Q.qqstory.record.StoryFaceDrawableFactory", "onDestory");
     try
     {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_b_of_type_AndroidSupportV4UtilLruCache.evictAll();
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
-      return;
+      paramString = new JSONObject(paramString);
+      if (paramString != null)
+      {
+        this.f = paramString.optInt("type", 0);
+        this.jdField_b_of_type_JavaLangString = paramString.optString("city_bitmap_path");
+      }
+      return new String[] { this.jdField_b_of_type_JavaLangString };
     }
-    catch (Exception localException)
+    catch (JSONException paramString)
     {
-      wsv.e("Q.qqstory.record.StoryFaceDrawableFactory", "onDestory:" + localException.toString());
+      for (;;)
+      {
+        QLog.e("CityStickerDrawable", 1, paramString, new Object[0]);
+        paramString = null;
+      }
     }
   }
   
-  public void a(bmxn parambmxn)
+  protected void b()
   {
-    this.jdField_a_of_type_Bmxn = parambmxn;
+    if ((this.jdField_b_of_type_JavaLangString != null) && (new File(this.jdField_b_of_type_JavaLangString).exists()))
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(this.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+      float f1 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 3.0F;
+      float f2 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 3.0F;
+      int i = a(f1, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int j = a(f2, this.jdField_a_of_type_AndroidContentContext.getResources());
+      this.d = i;
+      this.e = j;
+      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, i, j);
+      i = a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_Bmxh.a("offsetY", 0L, 500L, -i, 0, new LinearInterpolator());
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_Bmxh.a("alpha", 0L, 500L, 0, 255, new LinearInterpolator());
+      this.c = this.jdField_a_of_type_Bmxh.a("height", 0L, 500L, 0, this.e, new LinearInterpolator());
+    }
   }
   
-  protected void a(String paramString)
+  public int getIntrinsicHeight()
   {
-    wsv.b("Q.qqstory.record.StoryFaceDrawableFactory", "sendQQHeadRequest uin:%s.", paramString);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString);
-    paramString = new Intent("com.tencent.qqhead.getheadreq");
-    paramString.setPackage(this.jdField_a_of_type_AndroidContentContext.getPackageName());
-    paramString.putExtra("faceType", 1);
-    paramString.putStringArrayListExtra("uinList", localArrayList);
-    this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramString, "com.tencent.qim.qqhead.permission.getheadresp");
+    return this.e;
   }
   
-  protected void a(String paramString1, String paramString2)
+  public int getIntrinsicWidth()
   {
-    ThreadManager.post(new StoryFaceDrawableFactory.3(this, paramString2, paramString1), 8, null, true);
+    return this.d;
   }
 }
 

@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class ahnz
-  implements ahqo
+  extends akit
 {
-  ahnz(ahnt paramahnt) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (ahnt.a(this.a) != null) {
-      ahnt.a(this.a).a(paramInt1, paramInt2);
-    }
-  }
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public TextView b;
 }
 
 

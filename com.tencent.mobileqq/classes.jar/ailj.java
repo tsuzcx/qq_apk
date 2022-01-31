@@ -1,18 +1,32 @@
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity.10.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class ailj
-  implements QQPermissionCallback
+public class ailj
+  extends altm
 {
-  ailj(aili paramaili) {}
+  public ailj(BindNumberActivity paramBindNumberActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onGetFriendsHasBindPhone(boolean paramBoolean, int paramInt, List<String> paramList)
   {
-    bdcd.a(this.a.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    ailh.a(this.a.a);
+    if (QLog.isColorLevel()) {
+      if (paramList != null) {
+        break label95;
+      }
+    }
+    label95:
+    for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
+    {
+      QLog.i("BindNumberActivity", 2, String.format("onGetFriendsHasBindPhone [%s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), localObject }));
+      if (paramBoolean) {
+        this.a.runOnUiThread(new BindNumberActivity.10.1(this, paramInt, paramList));
+      }
+      this.a.app.removeObserver(this.a.a);
+      this.a.a = null;
+      return;
+    }
   }
 }
 

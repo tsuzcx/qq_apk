@@ -1,82 +1,67 @@
-import android.view.View;
-import com.tencent.mobileqq.search.activity.ContactSearchActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
+import pb.unite.search.DynamicAssociationWord.SuggestUrlItem;
 
 public class ayiv
-  implements ayjk
+  extends amfg
 {
-  public static final String a;
-  private int jdField_a_of_type_Int;
-  private ayjl jdField_a_of_type_Ayjl;
-  public List<ayjl> a;
-  private String b;
+  public ayiv(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
   
-  static
+  public void a(String paramString, int paramInt, List<AssociateSearchWordsFragment.AssociateItem> paramList, List<DynamicAssociationWord.SuggestUrlItem> paramList1, DynamicAssociationWord.SuggestUrlItem paramSuggestUrlItem)
   {
-    jdField_a_of_type_JavaLangString = alpo.a(2131705744);
-  }
-  
-  public ayiv(List<ayjl> paramList, String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return aydn.a("fts_native_contactor_maxnum", 3);
-  }
-  
-  public ayjl a()
-  {
-    return this.jdField_a_of_type_Ayjl;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<ayjl> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    if (SearchConfigManager.needSeparate) {}
-    for (int i = 1;; i = 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleSuggestUrlResult keyword=" + paramString + " activity keyword=" + this.a.jdField_a_of_type_JavaLangString + " size=" + paramList1.size());
+    }
+    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString))
     {
-      ContactSearchActivity.a(paramView.getContext(), this.b, this.jdField_a_of_type_Int, 197437, i);
-      ayrd.a(this.b, 20, 0, paramView);
-      if ((paramView.getContext() instanceof UniteSearchActivity))
-      {
-        ayrd.a("all_result", "more_contact", new String[] { "" + this.b });
-        if (SearchConfigManager.needSeparate) {
-          ayrd.a("search", "contact", "more", 0, 0, new String[] { ayrd.a(this.jdField_a_of_type_Int) });
-        }
-        aynt.a(null, 0, this.jdField_a_of_type_Int, "0X8009D39", 0, 0, null, null);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment = new AssociateSearchWordsFragment();
       }
-      return;
+      paramList1 = new ArrayList();
+      paramSuggestUrlItem = new AssociateSearchWordsFragment.AssociateItem();
+      paramSuggestUrlItem.jdField_a_of_type_Int = 1;
+      StringBuilder localStringBuilder = new StringBuilder("");
+      if ((paramList != null) && (paramList.size() > 0))
+      {
+        paramInt = 0;
+        if (paramInt < paramList.size())
+        {
+          String str = ((AssociateSearchWordsFragment.AssociateItem)paramList.get(paramInt)).jdField_a_of_type_JavaLangString;
+          AssociateSearchWordsFragment.AssociateItem localAssociateItem = new AssociateSearchWordsFragment.AssociateItem();
+          localAssociateItem.jdField_a_of_type_JavaLangString = str;
+          localAssociateItem.jdField_a_of_type_Int = 3;
+          localAssociateItem.d = (paramInt + 1);
+          paramList1.add(localAssociateItem);
+          if (paramInt != paramList.size() - 1)
+          {
+            paramList1.add(paramSuggestUrlItem);
+            localStringBuilder.append(str).append("::");
+          }
+          for (;;)
+          {
+            paramInt += 1;
+            break;
+            localStringBuilder.append(str);
+          }
+        }
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(true);
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramString);
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramList1);
+      aysc.a(null, new ReportModelDC02528().module("subweb_search").action("exp_thinkword_list").obj1(ayvm.a(this.a.jdField_a_of_type_ArrayOfLong)).ver1(this.a.a()).ver4(localStringBuilder.toString()).ver7("{experiment_id:" + aysc.b + "}"));
     }
   }
   
-  public void a(ayjl paramayjl)
+  public void a(String paramString1, Integer paramInteger, String paramString2)
   {
-    this.jdField_a_of_type_Ayjl = paramayjl;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleAssociateResultError keyword=" + paramString1 + "  resultCode=" + paramInteger + "  errorMsg=" + paramString2);
+    }
   }
 }
 

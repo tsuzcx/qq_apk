@@ -1,22 +1,6 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-
-class aqim
-  implements army
+public abstract interface aqim
 {
-  aqim(aqil paramaqil) {}
-  
-  public void a()
-  {
-    UniformDownloadActivity.a(this.a.a);
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 0);
-  }
-  
-  public void b()
-  {
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 0);
-  }
+  public abstract void a();
 }
 
 

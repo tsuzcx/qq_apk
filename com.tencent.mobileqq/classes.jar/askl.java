@@ -1,30 +1,35 @@
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
 import java.util.HashMap;
 import java.util.Map;
 
-public class askl
+class askl
   implements View.OnClickListener
 {
-  public askl(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  askl(askk paramaskk) {}
   
   public void onClick(View paramView)
   {
-    QQGameFeedWebFragment.a(this.a).setVisibility(8);
-    if (QQGameFeedWebFragment.a(this.a) != null) {
-      QQGameFeedWebFragment.a(this.a).setCurrentItem(0);
+    if ((askk.a(this.a) == null) || (TextUtils.isEmpty(askk.a(this.a).jumpUrl))) {
+      return;
     }
-    paramView = (String)QQGameFeedWebFragment.a(this.a).getTag();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(Integer.valueOf(1), paramView);
-    localHashMap.put(Integer.valueOf(2), "");
-    localHashMap.put(Integer.valueOf(3), "20");
-    localHashMap.put(Integer.valueOf(24), "1");
-    aact.a(akro.a(), "769", "205031", "", "76901", "1", "160", localHashMap);
+    paramView = new Intent(askd.a(askk.a(this.a)), QQBrowserActivity.class);
+    paramView.putExtra("url", askk.a(this.a).jumpUrl);
+    askd.a(askk.a(this.a)).startActivity(paramView);
+    paramView = new HashMap();
+    aahi.a(paramView, askk.a(this.a).msgId);
+    paramView.put(Integer.valueOf(2), askk.a(this.a).msgId);
+    paramView.put(Integer.valueOf(6), askk.a(this.a).feedId);
+    paramView.put(Integer.valueOf(4), "20");
+    paramView.put(Integer.valueOf(43), askk.a(this.a).algorithmId);
+    paramView.put(Integer.valueOf(44), askk.a(this.a).type + "");
+    aahi.a(akwd.a(), "769", "205022", askk.a(this.a).a().gameAppId, "76902", "1", "160", paramView);
   }
 }
 

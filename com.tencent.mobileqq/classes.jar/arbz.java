@@ -1,33 +1,10 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-
-final class arbz
-  implements View.OnClickListener
+class arbz
 {
-  arbz(ardn paramardn, FileManagerEntity paramFileManagerEntity) {}
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  long b;
   
-  public void onClick(View paramView)
-  {
-    try
-    {
-      paramView = bcjk.a(this.jdField_a_of_type_Ardn.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      if (paramView.e == null) {
-        return;
-      }
-      if (bdee.a(this.jdField_a_of_type_Ardn.getActivity()) == 0)
-      {
-        bcig.a(this.jdField_a_of_type_Ardn.getActivity(), this.jdField_a_of_type_Ardn.getActivity().getString(2131698040));
-        return;
-      }
-      bcig.a(this.jdField_a_of_type_Ardn.getActivity(), this.jdField_a_of_type_Ardn.getActivity().getString(2131692912), 0);
-      TroopFileTransferManager.a(this.jdField_a_of_type_Ardn.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin).a(paramView.e, paramView.g, paramView.c, paramView.h);
-      return;
-    }
-    catch (Exception paramView) {}
-  }
+  arbz(arby paramarby) {}
 }
 
 

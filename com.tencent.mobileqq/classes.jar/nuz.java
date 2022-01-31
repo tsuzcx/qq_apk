@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class nuz
-  extends amle
+  extends ampt
 {
   public nuz(ShopWebViewFragment paramShopWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {

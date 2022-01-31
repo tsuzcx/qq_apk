@@ -1,154 +1,53 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.CallSuper;
-import android.support.annotation.NonNull;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-
 public class bkis
-  implements blzb, bmam, bmcw
 {
-  private bmad jdField_a_of_type_Bmad = new bmad(this);
-  private bmal jdField_a_of_type_Bmal;
+  private static bkit a;
+  public static String a;
   
-  public View a()
+  static
   {
-    return null;
+    jdField_a_of_type_JavaLangString = "WadlProxyServiceUtil";
   }
   
-  public blyx a()
+  public static bkit a()
   {
-    return this.jdField_a_of_type_Bmad;
-  }
-  
-  @NonNull
-  public bmal a()
-  {
-    if (BaseApplicationImpl.getApplication() == null) {
-      throw new IllegalStateException("Your activity is not yet attached to the Application instance. You can't request ViewModel before onCreate call.");
+    if (jdField_a_of_type_Bkit == null) {
+      a();
     }
-    if (this.jdField_a_of_type_Bmal == null) {
-      this.jdField_a_of_type_Bmal = new bmal();
-    }
-    return this.jdField_a_of_type_Bmal;
+    return jdField_a_of_type_Bkit;
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(Intent paramIntent) {}
-  
-  @CallSuper
-  public void a(Bundle paramBundle)
+  public static void a()
   {
-    this.jdField_a_of_type_Bmad = new bmad(this);
-    try
+    synchronized (jdField_a_of_type_JavaLangString)
     {
-      this.jdField_a_of_type_Bmad.a(blyy.a);
-      return;
-    }
-    catch (Throwable paramBundle)
-    {
-      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(int paramInt, KeyEvent paramKeyEvent, boolean paramBoolean)
-  {
-    return false;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    return false;
-  }
-  
-  public void b(Bundle paramBundle) {}
-  
-  public void b_(int paramInt1, int paramInt2) {}
-  
-  @CallSuper
-  public void d()
-  {
-    try
-    {
-      this.jdField_a_of_type_Bmad.a(blyy.d);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-    }
-  }
-  
-  @CallSuper
-  public void e()
-  {
-    try
-    {
-      this.jdField_a_of_type_Bmad.a(blyy.f);
-      if (this.jdField_a_of_type_Bmal != null) {
-        this.jdField_a_of_type_Bmal.a();
+      if (jdField_a_of_type_Bkit == null) {
+        jdField_a_of_type_Bkit = new bkit();
       }
+      jdField_a_of_type_Bkit.a();
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-      }
     }
   }
   
-  @CallSuper
-  public void f()
+  public static void a(bkik parambkik)
   {
-    try
-    {
-      this.jdField_a_of_type_Bmad.a(blyy.c);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
+    if (jdField_a_of_type_Bkit != null) {
+      jdField_a_of_type_Bkit.a(parambkik);
     }
   }
   
-  @CallSuper
-  public void p()
+  public static void b()
   {
-    try
+    if (jdField_a_of_type_Bkit != null)
     {
-      this.jdField_a_of_type_Bmad.a(blyy.b);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
+      jdField_a_of_type_Bkit.d();
+      jdField_a_of_type_Bkit = null;
     }
   }
   
-  public void s() {}
-  
-  @CallSuper
-  public void t()
+  public static void b(bkik parambkik)
   {
-    try
-    {
-      this.jdField_a_of_type_Bmad.a(blyy.e);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
+    if (jdField_a_of_type_Bkit != null) {
+      jdField_a_of_type_Bkit.b(parambkik);
     }
   }
 }

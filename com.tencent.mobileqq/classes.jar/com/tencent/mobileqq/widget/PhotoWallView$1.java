@@ -2,8 +2,8 @@ package com.tencent.mobileqq.widget;
 
 import android.os.Handler;
 import android.os.Message;
-import awbw;
-import awbx;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QZonePhotoWall;
 import java.util.ArrayList;

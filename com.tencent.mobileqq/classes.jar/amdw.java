@@ -1,39 +1,25 @@
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.QQComicStep;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class amdw
-  extends alsi
+class amdw
+  extends ampn
 {
-  public amdw(QQComicStep paramQQComicStep) {}
-  
-  public void a(List<MessageRecord> paramList)
+  amdw(amdu paramamdu, String paramString1, long paramLong, String paramString2)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
-    {
-      return;
-      paramList = new ArrayList(paramList).iterator();
-      while (paramList.hasNext())
-      {
-        Object localObject = azqu.a(((MessageRecord)paramList.next()).msgData);
-        if ((localObject instanceof StructMsgForImageShare))
-        {
-          localObject = (StructMsgForImageShare)localObject;
-          if ((((StructMsgForImageShare)localObject).mMsgActionData != null) && (((StructMsgForImageShare)localObject).mMsgActionData.startsWith("comic_plugin.apk")))
-          {
-            String[] arrayOfString = ((StructMsgForImageShare)localObject).mMsgActionData.substring(((StructMsgForImageShare)localObject).mMsgActionData.indexOf("|") + 1).split("\\|");
-            if (arrayOfString.length >= 8) {
-              biiv.a(this.a.a.mApp, "3009", "1", "30014", arrayOfString[0], new String[] { arrayOfString[2], arrayOfString[4], agej.a(((StructMsgForImageShare)localObject).mMsgActionData) });
-            }
-          }
-        }
-      }
+    super(paramString1);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopHandler", 2, "onLocationFinish, time=" + (l - this.jdField_a_of_type_Long) + "ms");
     }
+    if (paramInt != 0) {
+      QLog.i("TroopHandler", 1, "getDetailOnlineMemberList, startLocation, errorCode=" + paramInt);
+    }
+    amdu.a(this.jdField_a_of_type_Amdu, this.jdField_a_of_type_JavaLangString, paramSosoLbsInfo);
   }
 }
 

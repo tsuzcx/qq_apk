@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import aluw;
+import alzl;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import phd;
@@ -13,11 +13,11 @@ public class SubscriptionInfoModule$1
   
   public void run()
   {
-    ((aluw)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(56)).a();
+    ((alzl)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(56)).a();
     suv localsuv = suv.a();
     localsuv.c((QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);
     if (localsuv.a((QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface)) {
-      localsuv.a(this.this$0.jdField_a_of_type_Awbw, (QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      localsuv.a(this.this$0.jdField_a_of_type_Awgf, (QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);
     }
   }
 }

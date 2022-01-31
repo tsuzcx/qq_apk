@@ -4,22 +4,22 @@ import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForDeviceFile;
 import java.util.concurrent.ConcurrentHashMap;
-import zti;
+import zxx;
 
 public class DeviceComnFileMsgProcessor$1
   implements Runnable
 {
-  public DeviceComnFileMsgProcessor$1(zti paramzti, MessageForDeviceFile paramMessageForDeviceFile) {}
+  public DeviceComnFileMsgProcessor$1(zxx paramzxx, MessageForDeviceFile paramMessageForDeviceFile) {}
   
   public void run()
   {
-    if (zti.a(this.this$0).containsKey(Long.valueOf(this.a.uSessionID)))
+    if (zxx.a(this.this$0).containsKey(Long.valueOf(this.a.uSessionID)))
     {
       this.a.nFileStatus = 23;
       this.a.serial();
-      zti.a(this.this$0).a().a(this.a.frienduin, 9501, this.a.uniseq, this.a.msgData);
-      zti.a(this.this$0, this.a);
-      zti.a(this.this$0).remove(Long.valueOf(this.a.uSessionID));
+      zxx.a(this.this$0).a().a(this.a.frienduin, 9501, this.a.uniseq, this.a.msgData);
+      zxx.a(this.this$0, this.a);
+      zxx.a(this.this$0).remove(Long.valueOf(this.a.uSessionID));
     }
   }
 }

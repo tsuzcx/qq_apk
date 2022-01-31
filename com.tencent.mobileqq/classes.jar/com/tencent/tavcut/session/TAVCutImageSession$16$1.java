@@ -1,27 +1,16 @@
 package com.tencent.tavcut.session;
 
-import android.graphics.Bitmap;
-import android.support.annotation.Nullable;
 import android.util.SparseArray;
-import com.tencent.tavcut.view.TAVCutImageView;
-import com.tencent.weseevideo.composition.image.WSImageRender.ImageRenderCallback;
-import java.lang.ref.WeakReference;
+import com.tencent.weseevideo.editor.sticker.StickerController;
 
 class TAVCutImageSession$16$1
-  implements WSImageRender.ImageRenderCallback
+  implements Runnable
 {
   TAVCutImageSession$16$1(TAVCutImageSession.16 param16) {}
   
-  public void onCompletion(@Nullable Bitmap paramBitmap)
+  public void run()
   {
-    Object localObject = (WeakReference)TAVCutImageSession.access$200(this.this$1.this$0).get(this.this$1.val$index);
-    if (localObject != null)
-    {
-      localObject = (TAVCutImageView)((WeakReference)localObject).get();
-      if (localObject != null) {
-        ((TAVCutImageView)localObject).setImageBitmap(paramBitmap);
-      }
-    }
+    this.this$1.this$0.applyCurrentSticker((StickerController)this.this$1.this$0.stickerControllers.get(this.this$1.val$index));
   }
 }
 

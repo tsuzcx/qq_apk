@@ -1,23 +1,21 @@
-import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.graphics.Bitmap;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnCaptureImageListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.17;
 
-class bgsx
-  extends bgsu
+public class bgsx
+  implements VideoPlayerProxy.OnCaptureImageListener
 {
-  bgsx(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
-  {
-    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
-  }
+  public bgsx(MiniAppVideoPlayer.17 param17) {}
   
-  protected bgsh b()
-  {
-    return new bgsh(2131694386, new bgsy(this));
-  }
+  public void onCaptureImageFailed(VideoPlayerProxy paramVideoPlayerProxy) {}
   
-  protected String b()
+  public void onCaptureImageSucceed(VideoPlayerProxy paramVideoPlayerProxy, Bitmap paramBitmap)
   {
-    return "skip_idAlert";
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
+      MiniAppVideoPlayer.a(this.a.this$0, Bitmap.createBitmap(paramBitmap));
+    }
   }
 }
 

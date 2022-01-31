@@ -1,35 +1,15 @@
-import android.text.Editable;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import com.tencent.biz.subscribe.comment.EmoView;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerViewNew;
 
 public class ycu
-  implements ycv
+  implements ych
 {
-  public ycu(EmoView paramEmoView) {}
+  public ycu(RecommendBannerViewNew paramRecommendBannerViewNew) {}
   
-  public boolean a()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (EmoView.a(this.a) == null) {
-      return false;
+    if (paramBoolean) {
+      RecommendBannerViewNew.a(this.a, paramInt);
     }
-    EmoView.a(this.a).dispatchKeyEvent(new KeyEvent(0L, 0L, 0, 67, 0, 0));
-    return true;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (EmoView.a(this.a) == null) {
-      return false;
-    }
-    if ((EmoView.b(this.a) > 0) && (EmoView.a(this.a).getText().length() + paramString.length() > EmoView.b(this.a)))
-    {
-      QQToast.a(this.a.getContext(), 0, alpo.a(2131704504), 0);
-      return false;
-    }
-    EmoView.a(EmoView.a(this.a), paramString);
-    return true;
   }
 }
 

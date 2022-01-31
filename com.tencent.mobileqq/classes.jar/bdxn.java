@@ -1,34 +1,22 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.graphics.Canvas;
+import android.view.SurfaceHolder;
 
-class bdxn
-  extends MqqHandler
+public class bdxn
+  extends bdxl
 {
-  bdxn(bdxm parambdxm) {}
-  
-  public void handleMessage(Message paramMessage)
+  public bdxn(SurfaceHolder paramSurfaceHolder)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 104: 
-      do
-      {
-        return;
-        paramMessage = (String)paramMessage.obj;
-        if ((this.a.jdField_a_of_type_Axhw != null) && (!TextUtils.isEmpty(paramMessage)))
-        {
-          this.a.jdField_a_of_type_Axhw.a(paramMessage);
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(bdxm.jdField_a_of_type_JavaLangString, 2, "captcha sig is empty");
-      return;
-    }
-    bdxm.a(this.a).finish();
+    super(paramSurfaceHolder);
+  }
+  
+  Canvas a(SurfaceHolder paramSurfaceHolder)
+  {
+    return paramSurfaceHolder.lockHardwareCanvas();
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

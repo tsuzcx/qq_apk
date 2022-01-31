@@ -1,15 +1,15 @@
 package cooperation.qwallet.plugin;
 
-import aiqi;
-import aiqz;
-import aita;
-import aitd;
-import aivh;
-import aixa;
-import aixc;
-import aizt;
-import ajad;
-import ajaf;
+import aiux;
+import aivo;
+import aixp;
+import aixs;
+import aizw;
+import ajbp;
+import ajbr;
+import ajei;
+import ajes;
+import ajeu;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -30,14 +30,14 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Base64;
-import asor;
-import azkj;
-import bcxv;
-import bdcs;
-import bdje;
-import bhoi;
-import bimg;
-import bimp;
+import asta;
+import azos;
+import bdce;
+import bdhb;
+import bdnn;
+import bhsp;
+import biqn;
+import biqw;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -250,7 +250,7 @@ public class QWalletHelper
     }
   }
   
-  private static void addLoadingDialogInfo(Context paramContext, AppInterface paramAppInterface, Bundle paramBundle, bimp parambimp)
+  private static void addLoadingDialogInfo(Context paramContext, AppInterface paramAppInterface, Bundle paramBundle, biqw parambiqw)
   {
     int i = 1;
     if (!(paramContext instanceof Activity)) {}
@@ -266,11 +266,11 @@ public class QWalletHelper
         {
           paramAppInterface = new QWalletPayProgressDialog(paramContext);
           paramAppInterface.show();
-          parambimp.jdField_a_of_type_AndroidAppDialog = paramAppInterface;
-          parambimp.jdField_b_of_type_Boolean = false;
-          parambimp.c = 10000;
-          parambimp.f = null;
-          new SplashDialogWrapper(paramContext, parambimp.jdField_a_of_type_AndroidAppDialog, parambimp.d, parambimp.jdField_b_of_type_JavaLangString, parambimp.jdField_b_of_type_Boolean, parambimp.c).show();
+          parambiqw.jdField_a_of_type_AndroidAppDialog = paramAppInterface;
+          parambiqw.jdField_b_of_type_Boolean = false;
+          parambiqw.c = 10000;
+          parambiqw.f = null;
+          new SplashDialogWrapper(paramContext, parambiqw.jdField_a_of_type_AndroidAppDialog, parambiqw.d, parambiqw.jdField_b_of_type_JavaLangString, parambiqw.jdField_b_of_type_Boolean, parambiqw.c).show();
           return;
           i = 0;
         }
@@ -294,9 +294,9 @@ public class QWalletHelper
   {
     if (paramQQAppInterface != null)
     {
-      aizt localaizt = (aizt)paramQQAppInterface.getManager(148);
-      if (localaizt != null) {
-        localaizt.onDestroy();
+      ajei localajei = (ajei)paramQQAppInterface.getManager(148);
+      if (localajei != null) {
+        localajei.onDestroy();
       }
     }
     mIsRefreshHome = true;
@@ -304,8 +304,8 @@ public class QWalletHelper
       mAppInterface = null;
     }
     QWalletResultReceiver.clear();
-    bcxv.a().a();
-    aiqi.a().b();
+    bdce.a().a();
+    aiux.a().b();
     CustomizeStrategyFactory.a().b();
     PayLogic.clearCache();
     lastTime = -1L;
@@ -519,7 +519,7 @@ public class QWalletHelper
     {
       return;
       l = VACDReportUtil.a(null, "qqwallet", "graphb", "invoke", paramString, 0, null);
-      if ((aiqz.a(paramQQAppInterface.getCurrentAccountUin(), "F2FRedpackQRCheck", true)) && (!isValidUrl(paramString)))
+      if ((aivo.a(paramQQAppInterface.getCurrentAccountUin(), "F2FRedpackQRCheck", true)) && (!isValidUrl(paramString)))
       {
         paramQQAppInterface = new Intent(paramActivity, PayBridgeActivity.class);
         paramQQAppInterface.putExtra("pay_requestcode", 200);
@@ -527,7 +527,7 @@ public class QWalletHelper
         VACDReportUtil.endReport(l, "invalidUrl", null, -900, null);
         return;
       }
-      if (!aiqz.a(paramQQAppInterface.getCurrentAccountUin(), "F2FRedpackGIF", true)) {
+      if (!aivo.a(paramQQAppInterface.getCurrentAccountUin(), "F2FRedpackGIF", true)) {
         break;
       }
       VACDReportUtil.a(l, null, "checkAnim", null, 0, null);
@@ -647,11 +647,11 @@ public class QWalletHelper
     //   147: invokevirtual 845	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   150: pop
     //   151: aconst_null
-    //   152: invokestatic 857	azmz:a	(Landroid/content/Context;)Lazmz;
+    //   152: invokestatic 857	azri:a	(Landroid/content/Context;)Lazri;
     //   155: aload_0
     //   156: aload 6
     //   158: invokevirtual 328	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   161: invokevirtual 860	azmz:b	(Lmqq/app/AppRuntime;Ljava/lang/String;)V
+    //   161: invokevirtual 860	azri:b	(Lmqq/app/AppRuntime;Ljava/lang/String;)V
     //   164: aload_2
     //   165: bipush 63
     //   167: invokevirtual 863	java/lang/String:indexOf	(I)I
@@ -888,7 +888,7 @@ public class QWalletHelper
     //   692: goto -102 -> 590
     //   695: aload_1
     //   696: ldc_w 950
-    //   699: invokestatic 954	alpo:a	(I)Ljava/lang/String;
+    //   699: invokestatic 954	alud:a	(I)Ljava/lang/String;
     //   702: iconst_0
     //   703: invokestatic 959	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
     //   706: invokevirtual 962	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
@@ -898,7 +898,7 @@ public class QWalletHelper
     //   714: return
     //   715: aload_1
     //   716: ldc_w 966
-    //   719: invokestatic 954	alpo:a	(I)Ljava/lang/String;
+    //   719: invokestatic 954	alud:a	(I)Ljava/lang/String;
     //   722: iconst_0
     //   723: invokestatic 959	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
     //   726: invokevirtual 962	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
@@ -1247,9 +1247,9 @@ public class QWalletHelper
     //   20: aload_0
     //   21: bipush 27
     //   23: invokevirtual 508	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   26: checkcast 1128	bimg
+    //   26: checkcast 1128	biqn
     //   29: ldc_w 587
-    //   32: invokevirtual 1131	bimg:isPlugininstalled	(Ljava/lang/String;)Z
+    //   32: invokevirtual 1131	biqn:isPlugininstalled	(Ljava/lang/String;)Z
     //   35: istore_1
     //   36: ldc 207
     //   38: iconst_1
@@ -1435,7 +1435,7 @@ public class QWalletHelper
     if (mDeviceId == null) {}
     try
     {
-      mDeviceId = bhoi.a("5076bf");
+      mDeviceId = bhsp.a("5076bf");
       if (QLog.isColorLevel()) {
         QLog.i("QWalletHelper", 1, "deviceId is:" + mDeviceId);
       }
@@ -1592,19 +1592,19 @@ public class QWalletHelper
     for (paramBoolean = true;; paramBoolean = false)
     {
       addExtraForQvipPayWalletAct(paramBaseActivity, paramQQAppInterface, localIntent, paramBoolean, true);
-      bimp localbimp = new bimp(0);
-      localbimp.jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
-      localbimp.d = "QWallet";
-      localbimp.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-      localbimp.e = "com.qwallet.activity.QWalletHomeActivity";
-      localbimp.jdField_a_of_type_JavaLangClass = QWalletPluginProxyActivity.class;
-      localbimp.jdField_a_of_type_AndroidContentIntent = localIntent;
-      localbimp.jdField_b_of_type_Int = -1;
-      localbimp.jdField_a_of_type_AndroidAppDialog = paramQWalletLoadingDialog;
-      localbimp.jdField_b_of_type_Boolean = false;
-      localbimp.c = 10000;
-      localbimp.f = null;
-      bimg.a(paramBaseActivity, localbimp);
+      biqw localbiqw = new biqw(0);
+      localbiqw.jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
+      localbiqw.d = "QWallet";
+      localbiqw.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
+      localbiqw.e = "com.qwallet.activity.QWalletHomeActivity";
+      localbiqw.jdField_a_of_type_JavaLangClass = QWalletPluginProxyActivity.class;
+      localbiqw.jdField_a_of_type_AndroidContentIntent = localIntent;
+      localbiqw.jdField_b_of_type_Int = -1;
+      localbiqw.jdField_a_of_type_AndroidAppDialog = paramQWalletLoadingDialog;
+      localbiqw.jdField_b_of_type_Boolean = false;
+      localbiqw.c = 10000;
+      localbiqw.f = null;
+      biqn.a(paramBaseActivity, localbiqw);
       if (paramLong == 0L) {
         break;
       }
@@ -1626,7 +1626,7 @@ public class QWalletHelper
     if (paramQQAppInterface == null) {
       return false;
     }
-    return ((aixa)paramQQAppInterface.getManager(273)).a("4001").a;
+    return ((ajbp)paramQQAppInterface.getManager(273)).a("4001").a;
   }
   
   private static String hexdigest(String paramString)
@@ -1761,7 +1761,7 @@ public class QWalletHelper
       bool1 = false;
       continue;
       label57:
-      String str1 = aiqz.a(paramString, "business_Device", "");
+      String str1 = aivo.a(paramString, "business_Device", "");
       if (!TextUtils.isEmpty(str1))
       {
         String str2 = hexdigest("3411587357140026");
@@ -1853,13 +1853,13 @@ public class QWalletHelper
       paramBundle = paramBundle.getString("packageName");
       bool1 = bool2;
     } while (TextUtils.isEmpty(paramBundle));
-    Object localObject = ajaf.a();
+    Object localObject = ajeu.a();
     if (localObject != null)
     {
-      localObject = (aitd)((QQAppInterface)localObject).getManager(245);
+      localObject = (aixs)((QQAppInterface)localObject).getManager(245);
       if (localObject != null)
       {
-        localObject = ((aitd)localObject).a("common", new String[] { "act_pay_pkgs" });
+        localObject = ((aixs)localObject).a("common", new String[] { "act_pay_pkgs" });
         if (localObject != null)
         {
           i = 0;
@@ -2111,18 +2111,18 @@ public class QWalletHelper
         }
         localIntent.putExtra("userQqResources", 1);
         addExtraForQvipPayWalletAct(paramContext, paramAppInterface, localIntent, false, false);
-        localObject = new bimp(0);
+        localObject = new biqw(0);
         String str = paramBundle.getString("preload_from");
         if (!TextUtils.isEmpty(str)) {
-          ((bimp)localObject).jdField_a_of_type_Asor = new asor(str, "com.tencent.mobileqq:tool", "qwallet_plugin.apk");
+          ((biqw)localObject).jdField_a_of_type_Asta = new asta(str, "com.tencent.mobileqq:tool", "qwallet_plugin.apk");
         }
-        ((bimp)localObject).jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
-        ((bimp)localObject).d = "Wallet";
-        ((bimp)localObject).jdField_a_of_type_JavaLangString = paramAppInterface.getCurrentAccountUin();
-        ((bimp)localObject).e = "com.qwallet.service.QWalletPluginService";
-        ((bimp)localObject).jdField_a_of_type_AndroidContentIntent = localIntent;
-        ((bimp)localObject).jdField_a_of_type_AndroidContentServiceConnection = null;
-        addLoadingDialogInfo(paramContext, paramAppInterface, paramBundle, (bimp)localObject);
+        ((biqw)localObject).jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
+        ((biqw)localObject).d = "Wallet";
+        ((biqw)localObject).jdField_a_of_type_JavaLangString = paramAppInterface.getCurrentAccountUin();
+        ((biqw)localObject).e = "com.qwallet.service.QWalletPluginService";
+        ((biqw)localObject).jdField_a_of_type_AndroidContentIntent = localIntent;
+        ((biqw)localObject).jdField_a_of_type_AndroidContentServiceConnection = null;
+        addLoadingDialogInfo(paramContext, paramAppInterface, paramBundle, (biqw)localObject);
         boolean bool = isLaunchPayPluginAct(paramBundle, paramContext);
         if (QLog.isColorLevel()) {
           QLog.i("Q.qwallet.pay.QWalletPayBridge", 2, "isLaunchPayPluginAct =" + bool);
@@ -2130,25 +2130,25 @@ public class QWalletHelper
         if (!bool) {
           break;
         }
-        launchPayPluginAct((bimp)localObject, localIntent, paramContext);
+        launchPayPluginAct((biqw)localObject, localIntent, paramContext);
         return;
       }
-      bimg.c(paramContext, (bimp)localObject);
+      biqn.c(paramContext, (biqw)localObject);
       return;
     }
   }
   
-  private static void launchPayPluginAct(bimp parambimp, Intent paramIntent, Context paramContext)
+  private static void launchPayPluginAct(biqw parambiqw, Intent paramIntent, Context paramContext)
   {
     Intent localIntent = new Intent();
     if ((paramIntent != null) && (paramIntent.getExtras() != null)) {
       localIntent.putExtras(paramIntent.getExtras());
     }
-    parambimp.e = "com.qwallet.activity.QvipPayBridgeActivity";
-    parambimp.jdField_a_of_type_JavaLangClass = QWalletPluginProxyActivity.class;
-    parambimp.jdField_a_of_type_AndroidContentIntent = localIntent;
-    parambimp.jdField_b_of_type_Int = 3001;
-    bimg.a((Activity)paramContext, parambimp);
+    parambiqw.e = "com.qwallet.activity.QvipPayBridgeActivity";
+    parambiqw.jdField_a_of_type_JavaLangClass = QWalletPluginProxyActivity.class;
+    parambiqw.jdField_a_of_type_AndroidContentIntent = localIntent;
+    parambiqw.jdField_b_of_type_Int = 3001;
+    biqn.a((Activity)paramContext, parambiqw);
   }
   
   public static void launchQWalletAct(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2)
@@ -2160,9 +2160,9 @@ public class QWalletHelper
     if (paramBoolean2) {
       MiniAppController.preloadMiniProcess(paramBaseActivity.app.getApp());
     }
-    ajad.a("homepage_onclick");
+    ajes.a("homepage_onclick");
     paramBoolean1 = PatternLockUtils.isNeedOpenPatternLock(paramBaseActivity, paramQQAppInterface.getCurrentAccountUin());
-    long l1 = azkj.a("com.tencent.mobileqq:tool");
+    long l1 = azos.a("com.tencent.mobileqq:tool");
     long l2 = VACDReportUtil.a(null, "qqwallet", "homepage", "click", "toolRunTime=" + l1, 0, null);
     qLaunchTime = System.currentTimeMillis();
     if (l1 > 5000L)
@@ -2199,7 +2199,7 @@ public class QWalletHelper
     }
     localIntent.putExtra("vfcAccountFlag", paramString1);
     localIntent.addFlags(67108864);
-    paramString1 = new bimp(1);
+    paramString1 = new biqw(1);
     paramString1.jdField_b_of_type_JavaLangString = "vfc_plugin.apk";
     paramString1.d = PluginInfo.o;
     paramString1.jdField_a_of_type_AndroidAppDialog = null;
@@ -2211,7 +2211,7 @@ public class QWalletHelper
     paramString1.c = 15000;
     paramString1.jdField_b_of_type_Boolean = true;
     paramString1.f = null;
-    bimg.a(paramBaseActivity, paramString1);
+    biqn.a(paramBaseActivity, paramString1);
   }
   
   public static JSONObject loadUnifiedConfig(Context paramContext)
@@ -2220,7 +2220,7 @@ public class QWalletHelper
     Object localObject1 = null;
     if (paramContext != null)
     {
-      localObject3 = bdcs.a(paramContext.getFilesDir() + "/qb_tenpay_unified_config");
+      localObject3 = bdhb.a(paramContext.getFilesDir() + "/qb_tenpay_unified_config");
       if (localObject3 == null) {
         break label111;
       }
@@ -2256,7 +2256,7 @@ public class QWalletHelper
   static Bundle parseExtraConfig(QQAppInterface paramQQAppInterface)
   {
     Bundle localBundle = new Bundle();
-    paramQQAppInterface = (aitd)paramQQAppInterface.getManager(245);
+    paramQQAppInterface = (aixs)paramQQAppInterface.getManager(245);
     if (paramQQAppInterface != null) {
       localBundle.putInt("accountShowType", paramQQAppInterface.a("common", 0, new String[] { "accountShow", "type" }));
     }
@@ -2265,29 +2265,29 @@ public class QWalletHelper
   
   static ArrayList<HashMap<String, String>> parseTabsConfig(QQAppInterface paramQQAppInterface)
   {
-    Object localObject1 = (aitd)paramQQAppInterface.getManager(245);
-    String str1 = ((aitd)localObject1).a("wallet_entry", "", new String[] { "tab1", "url" });
-    Object localObject2 = ((aitd)localObject1).a("wallet_entry", "", new String[] { "tab1", "beginTime" });
-    String str2 = ((aitd)localObject1).a("wallet_entry", "", new String[] { "tab1", "endTime" });
+    Object localObject1 = (aixs)paramQQAppInterface.getManager(245);
+    String str1 = ((aixs)localObject1).a("wallet_entry", "", new String[] { "tab1", "url" });
+    Object localObject2 = ((aixs)localObject1).a("wallet_entry", "", new String[] { "tab1", "beginTime" });
+    String str2 = ((aixs)localObject1).a("wallet_entry", "", new String[] { "tab1", "endTime" });
     if ((RedPacketManager.isValidDate((String)localObject2, str2)) && (!TextUtils.isEmpty(str1)))
     {
       paramQQAppInterface = new ArrayList();
       HashMap localHashMap1 = new HashMap();
-      localHashMap1.put("showTab", ((aitd)localObject1).a("wallet_entry", 0, new String[] { "showTab" }) + "");
-      localHashMap1.put("name", ((aitd)localObject1).a("wallet_entry", "", new String[] { "tab0", "name" }));
-      localHashMap1.put("iconNormal", ((aitd)localObject1).a("wallet_entry", "", new String[] { "tab0", "icon_normal" }));
-      localHashMap1.put("iconSelect", ((aitd)localObject1).a("wallet_entry", "", new String[] { "tab0", "icon_select" }));
+      localHashMap1.put("showTab", ((aixs)localObject1).a("wallet_entry", 0, new String[] { "showTab" }) + "");
+      localHashMap1.put("name", ((aixs)localObject1).a("wallet_entry", "", new String[] { "tab0", "name" }));
+      localHashMap1.put("iconNormal", ((aixs)localObject1).a("wallet_entry", "", new String[] { "tab0", "icon_normal" }));
+      localHashMap1.put("iconSelect", ((aixs)localObject1).a("wallet_entry", "", new String[] { "tab0", "icon_select" }));
       HashMap localHashMap2 = new HashMap();
-      localHashMap2.put("name", ((aitd)localObject1).a("wallet_entry", "", new String[] { "tab1", "name" }));
-      localHashMap2.put("iconNormal", ((aitd)localObject1).a("wallet_entry", "", new String[] { "tab1", "icon_normal" }));
-      localHashMap2.put("iconSelect", ((aitd)localObject1).a("wallet_entry", "", new String[] { "tab1", "icon_select" }));
-      localHashMap2.put("colorTop", ((aitd)localObject1).a("wallet_entry", "", new String[] { "tab1", "colorTop" }));
-      localHashMap2.put("colorBottom", ((aitd)localObject1).a("wallet_entry", "", new String[] { "tab1", "colorBottom" }));
+      localHashMap2.put("name", ((aixs)localObject1).a("wallet_entry", "", new String[] { "tab1", "name" }));
+      localHashMap2.put("iconNormal", ((aixs)localObject1).a("wallet_entry", "", new String[] { "tab1", "icon_normal" }));
+      localHashMap2.put("iconSelect", ((aixs)localObject1).a("wallet_entry", "", new String[] { "tab1", "icon_select" }));
+      localHashMap2.put("colorTop", ((aixs)localObject1).a("wallet_entry", "", new String[] { "tab1", "colorTop" }));
+      localHashMap2.put("colorBottom", ((aixs)localObject1).a("wallet_entry", "", new String[] { "tab1", "colorBottom" }));
       localHashMap2.put("url", str1);
       localHashMap2.put("beginTime", localObject2);
       localHashMap2.put("endTime", str2);
-      localHashMap2.put("action", ((aitd)localObject1).a("wallet_entry", 0, new String[] { "tab1", "action" }) + "");
-      localObject1 = ((aitd)localObject1).a("wallet_entry", "", new String[] { "tab1", "search" });
+      localHashMap2.put("action", ((aixs)localObject1).a("wallet_entry", 0, new String[] { "tab1", "action" }) + "");
+      localObject1 = ((aixs)localObject1).a("wallet_entry", "", new String[] { "tab1", "search" });
       try
       {
         localObject2 = new JSONObject((String)localObject1);
@@ -2317,36 +2317,36 @@ public class QWalletHelper
   
   public static ArrayList<HashMap<String, String>> parseTabsConfig(String paramString)
   {
-    if (bdje.a(paramString)) {}
+    if (bdnn.a(paramString)) {}
     for (;;)
     {
       return null;
       try
       {
         Object localObject1 = new JSONObject(paramString);
-        String str1 = aita.a((JSONObject)localObject1, "", new String[] { "tab1", "url" });
-        Object localObject2 = aita.a((JSONObject)localObject1, "", new String[] { "tab1", "beginTime" });
-        String str2 = aita.a((JSONObject)localObject1, "", new String[] { "tab1", "endTime" });
+        String str1 = aixp.a((JSONObject)localObject1, "", new String[] { "tab1", "url" });
+        Object localObject2 = aixp.a((JSONObject)localObject1, "", new String[] { "tab1", "beginTime" });
+        String str2 = aixp.a((JSONObject)localObject1, "", new String[] { "tab1", "endTime" });
         if ((!RedPacketManager.isValidDate((String)localObject2, str2)) || (TextUtils.isEmpty(str1))) {
           continue;
         }
         paramString = new ArrayList();
         HashMap localHashMap1 = new HashMap();
-        localHashMap1.put("showTab", aita.a((JSONObject)localObject1, 0, new String[] { "showTab" }) + "");
-        localHashMap1.put("name", aita.a((JSONObject)localObject1, "", new String[] { "tab0", "name" }));
-        localHashMap1.put("iconNormal", aita.a((JSONObject)localObject1, "", new String[] { "tab0", "icon_normal" }));
-        localHashMap1.put("iconSelect", aita.a((JSONObject)localObject1, "", new String[] { "tab0", "icon_select" }));
+        localHashMap1.put("showTab", aixp.a((JSONObject)localObject1, 0, new String[] { "showTab" }) + "");
+        localHashMap1.put("name", aixp.a((JSONObject)localObject1, "", new String[] { "tab0", "name" }));
+        localHashMap1.put("iconNormal", aixp.a((JSONObject)localObject1, "", new String[] { "tab0", "icon_normal" }));
+        localHashMap1.put("iconSelect", aixp.a((JSONObject)localObject1, "", new String[] { "tab0", "icon_select" }));
         HashMap localHashMap2 = new HashMap();
-        localHashMap2.put("name", aita.a((JSONObject)localObject1, "", new String[] { "tab1", "name" }));
-        localHashMap2.put("iconNormal", aita.a((JSONObject)localObject1, "", new String[] { "tab1", "icon_normal" }));
-        localHashMap2.put("iconSelect", aita.a((JSONObject)localObject1, "", new String[] { "tab1", "icon_select" }));
-        localHashMap2.put("colorTop", aita.a((JSONObject)localObject1, "", new String[] { "tab1", "colorTop" }));
-        localHashMap2.put("colorBottom", aita.a((JSONObject)localObject1, "", new String[] { "tab1", "colorBottom" }));
+        localHashMap2.put("name", aixp.a((JSONObject)localObject1, "", new String[] { "tab1", "name" }));
+        localHashMap2.put("iconNormal", aixp.a((JSONObject)localObject1, "", new String[] { "tab1", "icon_normal" }));
+        localHashMap2.put("iconSelect", aixp.a((JSONObject)localObject1, "", new String[] { "tab1", "icon_select" }));
+        localHashMap2.put("colorTop", aixp.a((JSONObject)localObject1, "", new String[] { "tab1", "colorTop" }));
+        localHashMap2.put("colorBottom", aixp.a((JSONObject)localObject1, "", new String[] { "tab1", "colorBottom" }));
         localHashMap2.put("url", str1);
         localHashMap2.put("beginTime", localObject2);
         localHashMap2.put("endTime", str2);
-        localHashMap2.put("action", aita.a((JSONObject)localObject1, 0, new String[] { "tab1", "action" }) + "");
-        localObject1 = aita.a((JSONObject)localObject1, "", new String[] { "tab1", "search" });
+        localHashMap2.put("action", aixp.a((JSONObject)localObject1, 0, new String[] { "tab1", "action" }) + "");
+        localObject1 = aixp.a((JSONObject)localObject1, "", new String[] { "tab1", "search" });
         try
         {
           localObject2 = new JSONObject((String)localObject1);
@@ -2483,7 +2483,7 @@ public class QWalletHelper
         QLog.d("QWalletHelper", 1, "save deviceId:" + getQWDevId());
       }
       if (!TextUtils.isEmpty(str1)) {
-        aiqz.a(paramString, "business_Device", str1);
+        aivo.a(paramString, "business_Device", str1);
       }
     }
   }
@@ -2511,7 +2511,7 @@ public class QWalletHelper
       try
       {
         Object localObject = new StringBuilder().append(paramString2).append("tenpayguid");
-        String str = bhoi.a("5076bf");
+        String str = bhsp.a("5076bf");
         mDeviceId = str;
         str = hexdigest(str);
         localObject = str.substring(0, AES_KEY_LENGTH);

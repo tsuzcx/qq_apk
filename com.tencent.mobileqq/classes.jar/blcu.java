@@ -1,16 +1,45 @@
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.util.List;
 
-public class blcu
-  implements bleg
+class blcu
+  implements View.OnClickListener
 {
-  public blcu(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
+  blcu(blct paramblct, int paramInt) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    AEVideoShelfEditFragment.c(this.a, AEVideoShelfEditFragment.c(this.a));
-    AEVideoShelfEditFragment.c(this.a, paramInt);
-    AEVideoShelfEditFragment.a(this.a, paramInt);
-    AEVideoShelfEditFragment.d(this.a, paramInt);
+    blct.a(this.jdField_a_of_type_Blct, this.jdField_a_of_type_Int);
+    blcv localblcv;
+    if (this.jdField_a_of_type_Int != blct.a(this.jdField_a_of_type_Blct))
+    {
+      int i = blct.a(this.jdField_a_of_type_Blct);
+      blct.a(this.jdField_a_of_type_Blct, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Blct.notifyItemChanged(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Blct.notifyItemChanged(i);
+      if (blct.a(this.jdField_a_of_type_Blct) != null)
+      {
+        localblcv = blct.a(this.jdField_a_of_type_Blct);
+        if (this.jdField_a_of_type_Int != 0) {
+          break label127;
+        }
+      }
+    }
+    label127:
+    for (paramView = null;; paramView = (blag)blct.a(this.jdField_a_of_type_Blct).get(this.jdField_a_of_type_Int - 1))
+    {
+      localblcv.a(paramView);
+      if (this.jdField_a_of_type_Int != 0) {
+        break;
+      }
+      bliy.a().k("none");
+      bliu.a().O();
+      bljn.b("AEGIFStickerAdapter", "【Gif Material Click】: null");
+      return;
+    }
+    bliy.a().k(((blag)blct.a(this.jdField_a_of_type_Blct).get(this.jdField_a_of_type_Int - 1)).a);
+    bliu.a().O();
+    bljn.b("AEGIFStickerAdapter", "【Gif Material Click】: " + ((blag)blct.a(this.jdField_a_of_type_Blct).get(this.jdField_a_of_type_Int - 1)).a);
   }
 }
 

@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
 
-class xul
-  implements View.OnClickListener
+public class xul
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  xul(xuj paramxuj) {}
+  public xul(NeoVideoRecordButton paramNeoVideoRecordButton) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramView = (TextView)this.a.a.findViewById(2131364770);
-    if ((paramView.getText() instanceof String)) {
-      this.a.a((String)paramView.getText());
-    }
+    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
+    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
+    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
+    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
+    NeoVideoRecordButton.a(this.a);
   }
 }
 

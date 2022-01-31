@@ -1,11 +1,11 @@
 package com.tencent.gdtad.views.video;
 
-import aaqb;
+import aauq;
 
 public class GdtVideoCommonView$3$1
   implements Runnable
 {
-  public GdtVideoCommonView$3$1(aaqb paramaaqb) {}
+  public GdtVideoCommonView$3$1(aauq paramaauq) {}
   
   public void run()
   {

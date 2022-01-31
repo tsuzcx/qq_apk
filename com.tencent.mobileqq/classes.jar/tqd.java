@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 class tqd
-  implements yjd
+  implements ynq
 {
   tqd(tqc paramtqc, String paramString) {}
   

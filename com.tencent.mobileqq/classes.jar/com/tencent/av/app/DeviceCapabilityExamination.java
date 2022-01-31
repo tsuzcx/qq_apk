@@ -1,17 +1,17 @@
 package com.tencent.av.app;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.text.TextUtils;
-import aogj;
-import baps;
-import bapv;
-import bdcs;
-import bdee;
+import aoks;
+import baub;
+import baue;
+import bdhb;
+import bdin;
 import com.tencent.av.VideoController;
 import com.tencent.av.video.call.ClientLogReport;
 import com.tencent.av.videoeffect.VideoEffectTest;
@@ -178,7 +178,7 @@ public class DeviceCapabilityExamination
     Object localObject1 = a().edit();
     ((SharedPreferences.Editor)localObject1).putLong(a(paramInt, "doneTime"), l);
     ((SharedPreferences.Editor)localObject1).commit();
-    int i = aogj.a().a(431, "");
+    int i = aoks.a().a(431, "");
     localObject1 = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject1 instanceof VideoAppInterface))
     {
@@ -271,7 +271,7 @@ public class DeviceCapabilityExamination
   
   public static void a(les paramles, String paramString1, String paramString2)
   {
-    if (!bdee.h(null))
+    if (!bdin.h(null))
     {
       QLog.w("DeviceCapabilityExamination", 1, "startDownloadTestResource, no wifi");
       return;
@@ -291,8 +291,8 @@ public class DeviceCapabilityExamination
     if (AudioHelper.e()) {
       QLog.w("DeviceCapabilityExamination", 1, "startDownloadTestResource, md5[" + paramString1 + "]");
     }
-    paramles = new baps();
-    paramles.jdField_a_of_type_Bapx = new lgw();
+    paramles = new baub();
+    paramles.jdField_a_of_type_Baug = new lgw();
     paramles.jdField_a_of_type_JavaLangString = paramString2;
     paramles.jdField_a_of_type_Int = 0;
     paramles.jdField_c_of_type_JavaLangString = (c(paramString1) + "sample.zip");
@@ -304,7 +304,7 @@ public class DeviceCapabilityExamination
   public static void a(lgx paramlgx, int paramInt1, int paramInt2)
   {
     ClientLogReport.instance().callbackSendLog(paramlgx.jdField_a_of_type_Long, 5274, paramlgx.a().getBytes());
-    AudioHelper.c(alpo.a(2131703547) + paramInt1 + "], resultCode:" + paramInt2);
+    AudioHelper.c(alud.a(2131703559) + paramInt1 + "], resultCode:" + paramInt2);
     a(paramInt1, paramInt2);
     a(paramInt1, paramlgx.h);
   }
@@ -474,7 +474,7 @@ public class DeviceCapabilityExamination
       String str = c(paramString);
       File localFile = new File(str);
       boolean bool = localFile.exists();
-      bdcs.a(str);
+      bdhb.a(str);
       QLog.w("DeviceCapabilityExamination", 1, "delSampleFile, codec[" + paramInt + "], md5[" + paramString + "], exists[" + bool + "->" + localFile.exists() + "]");
       return;
     }

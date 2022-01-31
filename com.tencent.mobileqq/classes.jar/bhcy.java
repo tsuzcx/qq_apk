@@ -1,16 +1,56 @@
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StGetAuthListReq;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.smtt.sdk.JsContext;
-import com.tencent.smtt.sdk.JsContext.ExceptionHandler;
-import com.tencent.smtt.sdk.JsError;
+import org.json.JSONObject;
 
-class bhcy
-  implements JsContext.ExceptionHandler
+public class bhcy
+  extends bhdw
 {
-  bhcy(bhcw parambhcw) {}
+  private INTERFACE.StGetAuthListReq a = new INTERFACE.StGetAuthListReq();
   
-  public void handleException(JsContext paramJsContext, JsError paramJsError)
+  public bhcy(COMM.StCommonExt paramStCommonExt, String paramString)
   {
-    QMLog.e("AppBrandService", "X5Exception:" + paramJsError.getMessage());
+    this.a.appid.set(paramString);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
+  }
+  
+  protected String a()
+  {
+    return "mini_user_info";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    if (paramArrayOfByte != null) {}
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("authList", a(paramArrayOfByte));
+      return localJSONObject;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("GetAuthListsRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    QMLog.d("GetAuthListsRequest", "onResponse fail.data = null");
+    return null;
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GetAuthList";
   }
 }
 

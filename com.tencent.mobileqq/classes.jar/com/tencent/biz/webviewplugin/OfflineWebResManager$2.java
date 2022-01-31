@@ -1,28 +1,28 @@
 package com.tencent.biz.webviewplugin;
 
-import awbv;
-import awbw;
+import awge;
+import awgf;
 import com.tencent.mobileqq.data.OfflineWebRes;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
-import zab;
+import zeq;
 
 public class OfflineWebResManager$2
   implements Runnable
 {
-  public OfflineWebResManager$2(zab paramzab, int paramInt) {}
+  public OfflineWebResManager$2(zeq paramzeq, int paramInt) {}
   
   public void run()
   {
     try
     {
       Thread.sleep(this.a * 1000);
-      if (!zab.jdField_a_of_type_Boolean)
+      if (!zeq.jdField_a_of_type_Boolean)
       {
-        zab.c();
-        if (!zab.b)
+        zeq.c();
+        if (!zeq.b)
         {
-          this.this$0.jdField_a_of_type_Awbw.a(OfflineWebRes.class.getSimpleName());
+          this.this$0.jdField_a_of_type_Awgf.a(OfflineWebRes.class.getSimpleName());
           return;
         }
       }
@@ -33,19 +33,19 @@ public class OfflineWebResManager$2
       {
         localException.printStackTrace();
       }
-      zab.jdField_a_of_type_Boolean = this.this$0.jdField_a_of_type_Awbw.d(OfflineWebRes.class.getSimpleName());
+      zeq.jdField_a_of_type_Boolean = this.this$0.jdField_a_of_type_Awgf.d(OfflineWebRes.class.getSimpleName());
       Object localObject;
-      if (!zab.jdField_a_of_type_Boolean)
+      if (!zeq.jdField_a_of_type_Boolean)
       {
         localObject = new OfflineWebRes();
         ((OfflineWebRes)localObject).fileName = "test";
         ((OfflineWebRes)localObject).hashName = "test";
         ((OfflineWebRes)localObject).md5 = "test_md5";
-        this.this$0.jdField_a_of_type_Awbw.a((awbv)localObject);
+        this.this$0.jdField_a_of_type_Awgf.a((awge)localObject);
       }
-      while (!zab.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
+      while (!zeq.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
       {
-        localObject = (String)zab.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+        localObject = (String)zeq.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
         this.this$0.b((String)localObject);
       }
       this.this$0.a();

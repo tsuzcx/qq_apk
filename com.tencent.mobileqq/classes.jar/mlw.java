@@ -24,7 +24,7 @@ public class mlw
         QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "onNotify_ScreenShot_Finish, flag[" + this.jdField_a_of_type_Long + "], _flag[" + paramLong + "], path[" + paramString + "], ret[" + paramBoolean + "], seq[" + this.b + "]");
       } while (this.jdField_a_of_type_Long != paramLong);
       if (paramBoolean) {
-        aybw.a((Context)this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString);
+        aygf.a((Context)this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString);
       }
     } while (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null);
     this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this);

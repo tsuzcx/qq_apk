@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import alpo;
+import alud;
 import android.view.View;
 import android.view.View.OnLongClickListener;
-import bhpy;
+import bhuf;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebView.HitTestResult;
@@ -22,13 +22,13 @@ class ProgressWebView$3
       if (QLog.isColorLevel()) {
         QLog.e("ProgressWebView", 2, "onLongClick : " + paramView);
       }
-      bhpy localbhpy = bhpy.a(ProgressWebView.access$500(this.this$0).getContext());
-      localbhpy.a(alpo.a(2131708881), 7);
-      localbhpy.a(alpo.a(2131708883), 7);
-      localbhpy.d(alpo.a(2131708894));
-      localbhpy.c(true);
-      localbhpy.a(new ProgressWebView.3.1(this, localbhpy, paramView));
-      localbhpy.show();
+      bhuf localbhuf = bhuf.a(ProgressWebView.access$500(this.this$0).getContext());
+      localbhuf.a(alud.a(2131708893), 7);
+      localbhuf.a(alud.a(2131708895), 7);
+      localbhuf.d(alud.a(2131708906));
+      localbhuf.c(true);
+      localbhuf.a(new ProgressWebView.3.1(this, localbhuf, paramView));
+      localbhuf.show();
       return true;
     }
     return false;

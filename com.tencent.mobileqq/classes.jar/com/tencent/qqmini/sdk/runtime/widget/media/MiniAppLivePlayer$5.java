@@ -5,7 +5,7 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.view.View;
 import android.view.Window;
-import bghl;
+import bgls;
 import com.tencent.qqmini.sdk.core.widget.NavigationBar;
 import com.tencent.qqmini.sdk.core.widget.TabBar;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -33,7 +33,7 @@ class MiniAppLivePlayer$5
     } while ((localActivity == null) || (MiniAppLivePlayer.a(this.this$0) == null) || (!(this.this$0.getParent() instanceof CoverLiveView)) || (!this.this$0.jdField_a_of_type_Boolean));
     this.this$0.jdField_a_of_type_Boolean = false;
     MiniAppLivePlayer.a(this.this$0);
-    Object localObject = this.this$0.jdField_a_of_type_Bghl.a();
+    Object localObject = this.this$0.jdField_a_of_type_Bgls.a();
     if (!(localObject instanceof AppBrandPageContainer))
     {
       QMLog.d("MiniAppLivePlayer", "Page is invalid");

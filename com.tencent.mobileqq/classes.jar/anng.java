@@ -1,19 +1,18 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
-import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class anng
-  implements View.OnClickListener
+class anng
+  implements alpg
 {
-  public anng(ArkAppListActivity paramArkAppListActivity, String paramString) {}
+  anng(annc paramannc) {}
   
-  public void onClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity, ArkAuthorityInfoActivity.class);
-    paramView.putExtra("intent_extra_authority_app_name", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity.startActivity(paramView);
+    if (!paramBoolean)
+    {
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkSafe,doReport, sso request failed");
+      return;
+    }
+    ArkAppCenter.b("ArkApp.ArkAppCGI", "ArkSafe.doReport.server.back=" + paramObject);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import ajsn;
-import ajso;
+import ajxc;
+import ajxd;
 
 public class LbsFilterStatusManager$3$1
   implements Runnable
 {
-  public LbsFilterStatusManager$3$1(ajso paramajso) {}
+  public LbsFilterStatusManager$3$1(ajxd paramajxd) {}
   
   public void run()
   {
-    ajsn.a(this.a.a);
+    ajxc.a(this.a.a);
   }
 }
 

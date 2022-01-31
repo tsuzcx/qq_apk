@@ -1,23 +1,37 @@
-import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
+import com.tencent.qphone.base.util.QLog;
 
 class afjz
-  implements bhqd
+  implements View.OnClickListener
 {
-  afjz(afjx paramafjx, bhpy parambhpy) {}
+  afjz(afjw paramafjw) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bhpy.dismiss();
-    switch (paramInt)
+    paramView = (MessageForArkFlashChat)paramView.getTag();
+    arwd localarwd;
+    String str1;
+    if (paramView != null)
     {
-    default: 
+      localarwd = ((FlashChatManager)this.a.a.getManager(217)).a;
+      str1 = localarwd.c;
+      String str2 = localarwd.f;
+      String str3 = localarwd.g;
+      if (QLog.isColorLevel()) {
+        QLog.d("FlashChat", 2, "mSourceOnClickListener clickAppMsg url = " + str1 + ", actionData = " + str2 + ", actionDataA = " + str3);
+      }
+      if (!this.a.a(str1, str2, str3)) {
+        break label116;
+      }
+    }
+    label116:
+    while (!this.a.a(str1, localarwd.b, paramView)) {
       return;
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_Afjx.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Afjx.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afjx.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Afjx.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Afjx.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, null, true, this.jdField_a_of_type_Afjx.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, true, true, null, "from_internal");
-    azmj.b(this.jdField_a_of_type_Afjx.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
   }
 }
 

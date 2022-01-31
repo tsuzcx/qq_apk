@@ -1,34 +1,29 @@
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.StoryChatVideoView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afuf
-  extends aelt
+abstract class afuf<T extends aeqy>
 {
-  public ViewGroup a;
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public AutoStartProgressBar a;
-  public URLDrawable a;
-  public QQStoryItemBuilder.StoryChatVideoView a;
-  public BubbleImageView a;
-  public boolean a;
-  public ImageView b;
-  public TextView b;
-  public BubbleImageView b;
-  public String b;
-  public TextView c;
-  public BubbleImageView c;
-  public TextView d;
-  public TextView e;
+  private T a;
+  
+  private afuf(afpy paramafpy) {}
+  
+  protected abstract T a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter);
+  
+  protected boolean a()
+  {
+    return true;
+  }
+  
+  protected T b(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    if (this.a == null) {
+      this.a = a(paramChatMessage, paramBaseAdapter);
+    }
+    if (a()) {
+      this.b.a(this.a, paramBaseAdapter);
+    }
+    return this.a;
+  }
 }
 
 

@@ -1,27 +1,16 @@
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import mqq.os.MqqHandler;
 
-public class aujs
-  extends aukm
+class aujs
+  implements bfah
 {
-  public aujs(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  aujs(aujr paramaujr) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap)
+  public void a(BaseResp paramBaseResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onGetTroopMemRecommendCards, success = " + paramBoolean + ",troopUin = " + paramString + ",notifySource = " + paramInt);
-    }
-    if ((MultiCardRecommendFragment.a(this.a) != null) && (MultiCardRecommendFragment.a(this.a).equals(paramString)))
-    {
-      MultiCardRecommendFragment.a(this.a).a.clear();
-      MultiCardRecommendFragment.a(this.a).a.putAll(paramMap);
-      this.a.a.removeMessages(1);
-      this.a.a.sendEmptyMessage(1);
-    }
+    QLog.d("AIOShareActionSheet", 1, "WXShareResult trans:" + paramBaseResp.transaction + " ,errCode:" + paramBaseResp.errCode + " ,errStr:" + paramBaseResp.errStr);
+    WXShareHelper.a().b(this);
   }
 }
 

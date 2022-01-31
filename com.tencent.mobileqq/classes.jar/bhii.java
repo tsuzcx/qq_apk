@@ -1,26 +1,72 @@
-import android.content.Intent;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.launcher.model.ShareState;
+import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-final class bhii
-  implements bgje
+@bglp(a="RuntimeInitTask")
+public class bhii
+  extends bhlw
 {
-  bhii(ShareState paramShareState, MiniAppProxy paramMiniAppProxy, bgho parambgho) {}
+  private bhey jdField_a_of_type_Bhey;
+  private boolean jdField_a_of_type_Boolean;
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public bhii(Context paramContext, bgun parambgun)
   {
-    if (9527 != paramInt1) {
-      return false;
+    super(paramContext, parambgun);
+  }
+  
+  public void a()
+  {
+    bhbs.a(202, "", a().getMiniAppInfoForReport());
+    MiniAppInfo localMiniAppInfo = a().getMiniAppInfo();
+    Object localObject2;
+    if (a() != null)
+    {
+      localObject2 = a();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label121;
+      }
+      localObject1 = bhio.class;
+      localObject1 = (bhil)((bgun)localObject2).getTask((Class)localObject1);
+      if (localObject1 == null) {
+        break label132;
+      }
     }
-    bhih.a(false);
-    bgjd.a().b(this);
-    paramInt1 = paramIntent.getIntExtra("more_item_id", -1);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareState.isShareInMiniProcess = paramIntent.getBooleanExtra("share_in_mini_process", false);
-    paramIntent = this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getMoreItemSelectedListener();
-    if (paramIntent != null) {
-      paramIntent.onMoreItemSelected(new bghp(this.jdField_a_of_type_Bgho), paramInt1);
+    label132:
+    for (Object localObject1 = ((bhil)localObject1).a();; localObject1 = null)
+    {
+      localObject2 = (bhih)a().getTask(bhih.class);
+      if (localObject2 != null)
+      {
+        this.jdField_a_of_type_Bhey = ((bhih)localObject2).a();
+        this.jdField_a_of_type_Bhey.a((bhhq)localObject1);
+      }
+      if ((this.jdField_a_of_type_Bhey != null) && (localMiniAppInfo != null))
+      {
+        this.jdField_a_of_type_Bhey.a(localMiniAppInfo, null);
+        c();
+        return;
+        label121:
+        localObject1 = bhil.class;
+        break;
+      }
+      e();
+      return;
     }
-    return true;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void c()
+  {
+    super.c();
+    bhbs.a(203, "", a().getMiniAppInfoForReport());
+  }
+  
+  public void d()
+  {
+    bhbs.a(222, "", a().getMiniAppInfoForReport());
   }
 }
 

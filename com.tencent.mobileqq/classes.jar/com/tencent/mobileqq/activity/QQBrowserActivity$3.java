@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import beax;
+import befg;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class QQBrowserActivity$3
@@ -10,7 +10,7 @@ class QQBrowserActivity$3
   
   public void run()
   {
-    beax.a().a(BaseApplicationImpl.sApplication.waitAppRuntime(null));
+    befg.a().a(BaseApplicationImpl.sApplication.waitAppRuntime(null));
   }
 }
 

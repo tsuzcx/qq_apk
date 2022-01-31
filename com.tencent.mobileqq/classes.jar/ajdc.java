@@ -1,24 +1,19 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
-class ajdc
-  implements View.OnClickListener
+public class ajdc
+  implements ajcl
 {
-  ajdc(ajbm paramajbm, String paramString) {}
+  public ajdc(DrawHbFragment paramDrawHbFragment, View paramView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "click move to url:" + this.jdField_a_of_type_JavaLangString);
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131368213).setVisibility(8);
+      return;
     }
-    paramView = new Intent(ajbm.a(this.jdField_a_of_type_Ajbm), QQBrowserDelegationActivity.class);
-    paramView.putExtra("injectrecommend", true);
-    ajbm.a(this.jdField_a_of_type_Ajbm).startActivity(paramView.putExtra("url", this.jdField_a_of_type_JavaLangString));
-    azmj.a(ajbm.a(this.jdField_a_of_type_Ajbm).app, "CliOper", "", "", "0X8004029", "0X8004029", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131368213).setVisibility(0);
   }
 }
 

@@ -12,10 +12,10 @@ public class rxn
   {
     Object localObject = this.a.getAdapter();
     RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
-    if ((localViewHolder != null) && ((localObject instanceof biau)))
+    if ((localViewHolder != null) && ((localObject instanceof bifb)))
     {
-      localObject = (biau)localObject;
-      if (((biau)localObject).d(paramInt))
+      localObject = (bifb)localObject;
+      if (((bifb)localObject).d(paramInt))
       {
         if (!RecyclerViewWithHeaderFooterFix.a(this.a).contains(localViewHolder.itemView))
         {
@@ -23,7 +23,7 @@ public class rxn
           return null;
         }
       }
-      else if ((((biau)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooterFix.b(this.a).contains(localViewHolder.itemView)))
+      else if ((((bifb)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooterFix.b(this.a).contains(localViewHolder.itemView)))
       {
         putRecycledView(localViewHolder);
         return null;

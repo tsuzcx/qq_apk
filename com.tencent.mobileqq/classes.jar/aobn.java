@@ -1,8 +1,6 @@
 public abstract interface aobn
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public abstract void a(int paramInt);
 }
 
 

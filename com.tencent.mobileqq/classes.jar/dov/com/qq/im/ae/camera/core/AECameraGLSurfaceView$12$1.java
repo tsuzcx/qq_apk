@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bkov;
+import bktc;
 
 class AECameraGLSurfaceView$12$1
   implements Runnable
 {
-  AECameraGLSurfaceView$12$1(AECameraGLSurfaceView.12 param12, bkov parambkov) {}
+  AECameraGLSurfaceView$12$1(AECameraGLSurfaceView.12 param12, bktc parambktc) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bkov.a(null);
+    this.jdField_a_of_type_Bktc.a(null);
   }
 }
 

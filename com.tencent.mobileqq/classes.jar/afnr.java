@@ -1,17 +1,22 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class afnr
-  extends afpq
+  implements View.OnClickListener
 {
-  afnr(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  afnr(afnq paramafnq, long paramLong) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new afge(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("uinType", this.jdField_a_of_type_Afnq.a.a);
+    localIntent.putExtra("uniseq", this.jdField_a_of_type_Long);
+    localIntent.putExtra("public_fragment_window_feature", 1);
+    adpn.a(paramView.getContext(), localIntent, PublicTransFragmentActivity.class, ScoreQAVFragment.class);
   }
 }
 

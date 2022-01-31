@@ -1,7 +1,7 @@
 package com.tencent.biz.webviewplugin;
 
-import bepp;
-import yzg;
+import bety;
+import zdv;
 
 class NewReportPlugin$3$1
   implements Runnable
@@ -10,8 +10,8 @@ class NewReportPlugin$3$1
   
   public void run()
   {
-    yzg.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a);
-    this.this$0.jdField_a_of_type_Bepp.dismiss();
+    zdv.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a);
+    this.this$0.jdField_a_of_type_Bety.dismiss();
   }
 }
 

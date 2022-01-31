@@ -1,29 +1,37 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
 
 class aqvi
-  extends aquk
+  extends aqru
 {
-  public aqvi(aqug paramaqug)
-  {
-    super(paramaqug);
-  }
+  aqvi(aqvh paramaqvh) {}
   
-  protected String a()
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    return "StateSenderCancelSendWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    Object localObject = this.a.a(paramInt + "", paramString, paramLong2 + "");
+    FileManagerEntity localFileManagerEntity = aqvh.a(this.a).a().a(paramLong2, paramLong1, paramString, paramInt);
+    if ((localObject != null) && (localFileManagerEntity != null))
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+      localObject = ((arpx)localObject).a();
+      if (localObject != null) {
+        ((arpw)localObject).a(0, paramInt, paramString, (int)(localFileManagerEntity.fProgress * 100.0F), new Bundle());
+      }
     }
-    aqug.b(this.jdField_a_of_type_Aqug, 11, 8);
-    aqug.c(this.jdField_a_of_type_Aqug, 11, 8);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateSenderCancelSend)");
-    this.jdField_a_of_type_Aquk = new aqvh(this.jdField_a_of_type_Aqug);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    paramString2 = this.a.a(paramInt1 + "", paramString1, paramLong2 + "");
+    FileManagerEntity localFileManagerEntity = aqvh.a(this.a).a().a(paramLong2, paramLong1, paramString1, paramInt1);
+    QLog.i("FMObserver<FileAssistant>", 1, "offline file download is finish. isSuc[" + paramBoolean + "sessionId[" + paramLong2 + "]");
+    if ((paramString2 != null) && (localFileManagerEntity != null) && (paramString2.a() != null)) {
+      paramString2.a().a(paramBoolean, paramInt1, paramString1, new Bundle());
+    }
+    if (paramString2 != null) {
+      this.a.b(paramString2);
+    }
   }
 }
 

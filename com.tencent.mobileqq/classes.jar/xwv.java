@@ -1,70 +1,29 @@
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.HashMap;
+
 public class xwv
+  extends QQUIEventReceiver<StoryUserBadgeView, vdi>
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  
-  public xwv(int paramInt)
+  public xwv(@NonNull StoryUserBadgeView paramStoryUserBadgeView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = "QQ";
-    this.d = 1;
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 65793: 
-      this.c = 1;
-      this.jdField_a_of_type_JavaLangString = "Windows";
-      this.jdField_a_of_type_Long = 1L;
-      this.jdField_b_of_type_Int = 1;
-      return;
-    case 66818: 
-    case 66831: 
-      this.c = 2;
-      this.jdField_a_of_type_JavaLangString = "Mac";
-      this.jdField_b_of_type_Int = 1;
-      return;
-    case 68361: 
-    case 72194: 
-      this.c = 3;
-      this.jdField_a_of_type_JavaLangString = "iPad";
-      this.jdField_b_of_type_Int = 2;
-      this.d = 2;
-      return;
-    case 65805: 
-    case 68104: 
-      this.c = 4;
-      this.jdField_a_of_type_JavaLangString = "aPad";
-      this.jdField_b_of_type_Int = 2;
-      this.d = 2;
-      return;
-    case 75023: 
-    case 78082: 
-    case 78096: 
-      this.c = 5;
-      this.jdField_a_of_type_JavaLangString = alpo.a(2131706707);
-      this.jdField_b_of_type_Int = 3;
-      this.d = 3;
-      return;
-    }
-    this.c = 6;
-    this.jdField_a_of_type_JavaLangString = "Windows";
-    this.jdField_b_of_type_JavaLangString = "TIM";
-    this.jdField_a_of_type_Long = 1L;
-    this.jdField_b_of_type_Int = 1;
+    super(paramStoryUserBadgeView);
   }
   
-  public String toString()
+  public void a(@NonNull StoryUserBadgeView paramStoryUserBadgeView, @NonNull vdi paramvdi)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("LoginDevItem[").append(this.jdField_b_of_type_JavaLangString).append("|").append(this.jdField_a_of_type_Int).append("|").append(this.jdField_a_of_type_Long).append("|").append(this.d).append("]");
-    return localStringBuilder.toString();
+    if (paramvdi.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
+    while (paramvdi.jdField_a_of_type_JavaUtilHashMap.get(paramStoryUserBadgeView.a()) == null) {
+      return;
+    }
+    paramStoryUserBadgeView.a(paramStoryUserBadgeView.a());
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdi.class;
   }
 }
 

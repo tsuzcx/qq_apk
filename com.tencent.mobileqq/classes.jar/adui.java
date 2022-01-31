@@ -1,25 +1,20 @@
-import android.provider.Settings.System;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
 
 public class adui
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adui(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public adui(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b(2);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.a);
-    if (this.a.a().booleanValue())
-    {
-      paramView = Settings.System.DEFAULT_NOTIFICATION_URI;
-      this.a.b();
-      this.a.a(paramView);
-    }
+    paramDialogInterface.dismiss();
+    RegisterChooseLoginActivity.a(this.a, true);
+    RegisterChooseLoginActivity.a(this.a, true);
+    azqs.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
+    azqs.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 1, 0, "", "", "", "");
+    azqs.a(this.a.app, "new_reg", "next_ask", "new_clk", "", 1, "");
   }
 }
 

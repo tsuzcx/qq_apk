@@ -1,16 +1,14 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import com.tencent.tavcut.bean.Size;
 
-class blox
-  extends AnimatorListenerAdapter
+public abstract interface blox
 {
-  blox(blov paramblov) {}
+  public abstract int a();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.b.setVisibility(8);
-  }
+  public abstract Size a(Size paramSize);
+  
+  public abstract int b();
+  
+  public abstract int c();
 }
 
 

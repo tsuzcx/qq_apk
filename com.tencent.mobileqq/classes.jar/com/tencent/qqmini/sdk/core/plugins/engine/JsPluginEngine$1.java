@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
-import bghu;
-import bgyg;
+import bgmb;
+import bhcn;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.proxy.WnsConfigProxy;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -14,7 +14,7 @@ class JsPluginEngine$1
   
   public void run()
   {
-    Object localObject1 = bghu.a;
+    Object localObject1 = bgmb.a;
     Object localObject2 = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
     if (localObject2 != null)
     {
@@ -26,7 +26,7 @@ class JsPluginEngine$1
     for (;;)
     {
       if ((localObject1 != null) && (((List)localObject1).contains(this.val$eventName))) {
-        bgyg.a(this.val$miniAppInfo, this.val$eventName);
+        bhcn.a(this.val$miniAppInfo, this.val$eventName);
       }
       return;
     }

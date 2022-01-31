@@ -1,126 +1,23 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Cap;
-import android.graphics.Paint.Join;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.takevideo.dancemachine.PKVideoSharer.2.1;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.qphone.base.util.QLog;
 
 public class xdg
-  extends xcw
+  implements bfah
 {
-  public static final int a;
-  public float a;
-  public Paint a;
-  xcs a;
-  public xdf a;
-  public float b;
-  public int b;
-  public Paint b;
-  public int c = aekt.a(6.0F, BaseApplicationImpl.getContext().getResources());
-  
-  static
+  public void a(BaseResp paramBaseResp)
   {
-    jdField_a_of_type_Int = xkm.a[8];
-  }
-  
-  public xdg(xcs paramxcs)
-  {
-    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Xcs = paramxcs;
-  }
-  
-  private void a(Paint paramPaint, xdf paramxdf)
-  {
-    paramPaint.setXfermode(null);
-    paramPaint.setColor(paramxdf.jdField_b_of_type_Int);
-    paramPaint.setStrokeWidth(paramxdf.c);
-    paramPaint.setShader(null);
-  }
-  
-  public Paint a()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsPaint;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(Canvas paramCanvas, xct paramxct, Paint paramPaint)
-  {
-    if ((paramxct instanceof xdf))
-    {
-      paramxct = (xdf)paramxct;
-      a(paramPaint, paramxct);
-      paramCanvas.drawPath(paramxct.a, paramPaint);
+    if (QLog.isColorLevel()) {
+      QLog.d("DanceMachinePKVideoSharer", 2, "[DanceMachine Share]  shareToWechat errorCode : " + paramBaseResp.errCode + "   errorStr : " + paramBaseResp.errCode + "  transaction : " + paramBaseResp.transaction + "  openId : " + paramBaseResp.openId + " type : " + paramBaseResp.getType() + " bitmap ");
     }
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
     }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-      this.jdField_a_of_type_Xdf = new xdf(new Path(), 101, this.jdField_a_of_type_AndroidGraphicsPaint.getColor(), this.c);
-      if (this.jdField_a_of_type_Xcs != null) {
-        this.jdField_a_of_type_Xcs.a(this.jdField_a_of_type_Xdf);
-      }
-      DoodleLayout.a("use_graffiti");
-      this.jdField_a_of_type_Xdf.a.reset();
-      this.jdField_a_of_type_Xdf.a.moveTo(f1, f2);
-      this.jdField_a_of_type_Xdf.a.lineTo(f1 + 1.0F, f2 + 1.0F);
-      continue;
-      if ((this.jdField_a_of_type_Xdf != null) && (this.jdField_a_of_type_Xdf.a != null)) {
-        this.jdField_a_of_type_Xdf.a.quadTo(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, (this.jdField_a_of_type_Float + f1) / 2.0F, (this.jdField_b_of_type_Float + f2) / 2.0F);
-      }
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
+    if ((paramBaseResp.errCode != 0) && (paramBaseResp.errCode != -2)) {
+      this.jdField_a_of_type_Xdf.a.runOnUiThread(new PKVideoSharer.2.1(this));
     }
-  }
-  
-  public Paint b()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPaint;
-  }
-  
-  public void b()
-  {
-    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Xdf = null;
   }
 }
 

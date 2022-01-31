@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import asbl;
+import asfu;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
 public final class MineFragment$2
@@ -10,7 +10,7 @@ public final class MineFragment$2
   
   public void run()
   {
-    asbl.b(this.a);
+    asfu.b(this.a);
   }
 }
 

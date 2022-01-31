@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import adxf;
+import aebu;
 
 public class TroopAssistantActivity$11$2
   implements Runnable
 {
-  public TroopAssistantActivity$11$2(adxf paramadxf, String paramString) {}
+  public TroopAssistantActivity$11$2(aebu paramaebu, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Adxf.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aebu.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

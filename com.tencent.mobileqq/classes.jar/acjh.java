@@ -1,29 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.TencentDocData;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class acjh
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   acjh(acjf paramacjf) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramView.getTag() instanceof String)) {}
-    do
-    {
-      return;
-      paramView = (akdm)paramView.getTag();
-      if ((paramView.a instanceof FileManagerEntity))
-      {
-        paramView = (FileManagerEntity)paramView.a;
-        this.a.a(paramView);
-        return;
-      }
-    } while (!(paramView.a instanceof TencentDocData));
-    paramView = (TencentDocData)paramView.a;
-    this.a.a(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 

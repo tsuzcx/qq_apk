@@ -2,20 +2,20 @@ package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.graphics.Bitmap;
 import android.os.Handler;
-import ariv;
-import aroo;
-import bdcs;
+import arne;
+import arsx;
+import bdhb;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class VideoFilePresenter$11$1
   implements Runnable
 {
-  public VideoFilePresenter$11$1(ariv paramariv, Bitmap paramBitmap) {}
+  public VideoFilePresenter$11$1(arne paramarne, Bitmap paramBitmap) {}
   
   public void run()
   {
-    String str = aroo.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    if (bdcs.b(str)) {
+    String str = arsx.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (bdhb.b(str)) {
       ThreadManagerV2.getUIHandlerV2().post(new VideoFilePresenter.11.1.1(this, str));
     }
   }

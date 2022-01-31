@@ -1,18 +1,6 @@
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-
-class baeg
-  extends baei
+public abstract interface baeg
 {
-  baeg(baed parambaed)
-  {
-    super(parambaed);
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
-  {
-    return a(paramWebView, paramString);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

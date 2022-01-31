@@ -2,22 +2,22 @@ package com.tencent.mobileqq.structmsg.view;
 
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aztd;
-import azte;
+import azxm;
+import azxn;
 import com.tencent.widget.SingleLineTextView;
 
 public class StructMsgItemLayout20$1
   implements Runnable
 {
-  public StructMsgItemLayout20$1(aztd paramaztd, int paramInt, azte paramazte) {}
+  public StructMsgItemLayout20$1(azxm paramazxm, int paramInt, azxn paramazxn) {}
   
   public void run()
   {
     int i = this.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_Azte.jdField_a_of_type_AndroidWidgetTextView.getWidth();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Azte.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getLayoutParams();
+    int j = this.jdField_a_of_type_Azxn.jdField_a_of_type_AndroidWidgetTextView.getWidth();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Azxn.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getLayoutParams();
     localLayoutParams.rightMargin = (j + i);
-    this.jdField_a_of_type_Azte.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_Azxn.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setLayoutParams(localLayoutParams);
   }
 }
 

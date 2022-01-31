@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.widget.relativevideo;
 
-import alpo;
+import alud;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,7 +14,7 @@ class ServiceFolderFollowPBHeadView$2
     if (this.a > 0)
     {
       ServiceFolderFollowPBHeadView.a(this.this$0).setVisibility(0);
-      String str = this.a + alpo.a(2131708273);
+      String str = this.a + alud.a(2131708285);
       ServiceFolderFollowPBHeadView.a(this.this$0).setText(str);
       return;
     }

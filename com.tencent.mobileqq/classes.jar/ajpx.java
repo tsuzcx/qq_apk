@@ -1,128 +1,97 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Typeface;
-import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import java.io.File;
+import java.util.Calendar;
 
-class ajpx
+public abstract class ajpx
 {
-  public int a;
-  public ajqs a;
-  public Bitmap a;
-  public boolean a;
-  public ajqs b;
+  public static float a;
+  public static int a;
+  public static int b = 3;
+  public static int c = 2;
+  public static int d = 1;
   
-  public ajpx(String paramString, float paramFloat1, int paramInt, float paramFloat2, float paramFloat3, Typeface paramTypeface)
+  static
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Ajqs = new ajqs(paramString, paramFloat1, paramInt, paramFloat2, -1.0F, 1, -1.0F, paramTypeface);
-    this.b = new ajqs(paramString, paramFloat1, -1, paramFloat2, -1.0F, 1, paramFloat3, paramTypeface);
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      b(paramString);
-      return;
-    }
+    jdField_a_of_type_Float = 0.75F;
+    jdField_a_of_type_Int = 2;
   }
   
-  private boolean a(String paramString1, String paramString2)
+  public static String a()
   {
-    if ((paramString1 == null) && (paramString2 == null)) {}
-    do
+    Calendar localCalendar = Calendar.getInstance();
+    StringBuilder localStringBuilder = new StringBuilder(ajrx.b);
+    localStringBuilder.append("IMG");
+    localStringBuilder.append(localCalendar.get(1));
+    int i = localCalendar.get(2) + 1;
+    if (i < 10)
     {
-      return true;
-      if ((paramString1 == null) || (paramString2 == null)) {
-        return false;
+      localObject = "0" + i;
+      localStringBuilder.append(localObject);
+      i = localCalendar.get(5);
+      if (i >= 10) {
+        break label300;
       }
-    } while (paramString1.equals(paramString2));
-    return false;
-  }
-  
-  private void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
+      localObject = "0" + i;
+      label108:
+      localStringBuilder.append(localObject);
+      i = localCalendar.get(11);
+      if (i >= 10) {
+        break label308;
+      }
+      localObject = "0" + i;
+      label148:
+      localStringBuilder.append(localObject);
+      i = localCalendar.get(12);
+      if (i >= 10) {
+        break label316;
+      }
+      localObject = "0" + i;
+      label188:
+      localStringBuilder.append(localObject);
+      i = localCalendar.get(13);
+      if (i >= 10) {
+        break label324;
+      }
+    }
+    label300:
+    label308:
+    label316:
+    label324:
+    for (Object localObject = "0" + i;; localObject = Integer.valueOf(i))
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      if (this.jdField_a_of_type_Int != -1)
+      localStringBuilder.append(localObject);
+      if (new File(localStringBuilder.toString() + ".jpg").exists()) {
+        break label332;
+      }
+      return localStringBuilder.toString() + ".jpg";
+      localObject = Integer.valueOf(i);
+      break;
+      localObject = Integer.valueOf(i);
+      break label108;
+      localObject = Integer.valueOf(i);
+      break label148;
+      localObject = Integer.valueOf(i);
+      break label188;
+    }
+    label332:
+    localObject = new StringBuilder(localStringBuilder);
+    int j = localStringBuilder.length();
+    i = 1;
+    for (;;)
+    {
+      if (i < 2147483647)
       {
-        GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Int = -1;
+        ((StringBuilder)localObject).append('(');
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(')');
+        ((StringBuilder)localObject).append(".jpg");
+        if (new File(((StringBuilder)localObject).toString()).exists()) {}
       }
-    }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      }
-      if (this.jdField_a_of_type_Int != -1)
+      else
       {
-        GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Int = -1;
+        return ((StringBuilder)localObject).toString();
       }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = ajqa.a(this.b.jdField_a_of_type_Float + 5.0F, this.b.b);
-    } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
-    paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.b.a(paramString, 0.0F, 0.0F);
-    this.jdField_a_of_type_Ajqs.a(paramString, 0.0F, 0.0F);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Int != -1)
-    {
-      GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = -1;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    }
-  }
-  
-  public void a(Canvas paramCanvas, float paramFloat1, float paramFloat2)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-    {
-      this.b.a(paramCanvas, paramFloat1, paramFloat2);
-      this.jdField_a_of_type_Ajqs.a(paramCanvas, paramFloat1, paramFloat2);
-      return;
-    }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramFloat1, paramFloat2, null);
-  }
-  
-  public void a(RenderBuffer paramRenderBuffer, float paramFloat1, float paramFloat2)
-  {
-    if ((paramRenderBuffer == null) || (!this.jdField_a_of_type_Boolean)) {}
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_Int < 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
-        this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-    } while (this.jdField_a_of_type_Int < 0);
-    ajqa.a(paramRenderBuffer, this.jdField_a_of_type_Int, this.b.jdField_a_of_type_Float, this.b.b, null, paramFloat1, paramFloat2);
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      if (!a(paramString, this.jdField_a_of_type_Ajqs.jdField_a_of_type_JavaLangString))
-      {
-        this.jdField_a_of_type_Ajqs.a(paramString);
-        this.b.a(paramString);
-        b(paramString);
-      }
-      return;
+      ((StringBuilder)localObject).delete(j, ((StringBuilder)localObject).length());
+      i += 1;
     }
   }
 }

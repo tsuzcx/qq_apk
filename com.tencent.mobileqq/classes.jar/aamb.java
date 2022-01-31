@@ -1,34 +1,108 @@
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.ad.tangram.canvas.download.AdDownloaderAdapter;
+import com.tencent.ad.tangram.canvas.download.IAdDownloader;
+import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
+import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-class aamb
-  implements EIPCResultCallback
+public class aamb
+  implements AdDownloaderAdapter
 {
-  aamb(aama paramaama, WeakReference paramWeakReference, aamh paramaamh) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void doDownloadAction(Activity paramActivity, Bundle paramBundle, String paramString, int paramInt)
   {
-    aami localaami = new aami();
-    boolean bool;
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
-    {
-      bool = true;
-      localaami.jdField_a_of_type_Boolean = bool;
-      if (paramEIPCResult == null) {
-        break label83;
-      }
+    bfkv.a().a(paramActivity, paramBundle, paramString, null, paramInt);
+  }
+  
+  public int getCurrentPkgDownloadProgress(Context paramContext, String paramString1, String paramString2)
+  {
+    return aatc.c(paramContext, paramString1, paramString2);
+  }
+  
+  public Object getDownloadInfoByUrl(String paramString)
+  {
+    paramString = bfkr.a().b(paramString);
+    paramString.m = "biz_src_ads";
+    return paramString;
+  }
+  
+  public IAdDownloader getDownloader()
+  {
+    return this;
+  }
+  
+  public int getProgress(Object paramObject)
+  {
+    if (!(paramObject instanceof DownloadInfo)) {
+      return 0;
     }
-    label83:
-    for (paramEIPCResult = paramEIPCResult.data;; paramEIPCResult = null)
-    {
-      localaami.jdField_a_of_type_AndroidOsBundle = paramEIPCResult;
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-        ((aamd)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Aamh, localaami);
-      }
+    paramObject = (DownloadInfo)DownloadInfo.class.cast(paramObject);
+    if (paramObject != null) {}
+    for (int i = paramObject.f;; i = 0) {
+      return i;
+    }
+  }
+  
+  public void installDownload(Object paramObject)
+  {
+    if ((paramObject instanceof DownloadInfo)) {
+      bfkr.a().a((DownloadInfo)paramObject);
+    }
+    while (!(paramObject instanceof Bundle)) {
       return;
-      bool = false;
-      break;
+    }
+    bfkv.a((Bundle)paramObject);
+  }
+  
+  public boolean isCurrentPkgTask(Pair<String, String> paramPair, Object paramObject)
+  {
+    if ((paramPair == null) || (TextUtils.isEmpty((CharSequence)paramPair.first)) || (TextUtils.isEmpty((CharSequence)paramPair.second)) || (!(paramObject instanceof AdAppBtnData))) {}
+    do
+    {
+      do
+      {
+        return false;
+        paramPair = bfkr.a().b((String)paramPair.first);
+      } while (paramPair == null);
+      paramObject = (AdAppBtnData)paramObject;
+    } while ((TextUtils.isEmpty(paramPair.e)) || (TextUtils.isEmpty(paramPair.c)) || (TextUtils.isEmpty(paramObject.packageName)) || (TextUtils.isEmpty(paramObject.mGdtAd_appId)));
+    return (paramPair.e.equals(paramObject.packageName)) && (paramPair.c.equals(paramObject.mGdtAd_appId));
+  }
+  
+  public int isPkgDownloadPaused(Context paramContext, String paramString1, String paramString2)
+  {
+    return aatc.b(paramContext, paramString1, paramString2);
+  }
+  
+  public int isPkgDownloading(Context paramContext, String paramString1, String paramString2)
+  {
+    return aatc.a(paramContext, paramString1, paramString2);
+  }
+  
+  public boolean isPkgExist(Context paramContext, String paramString1, String paramString2)
+  {
+    return aatc.b(paramContext, paramString2);
+  }
+  
+  public void pauseDownload(String paramString1, String paramString2)
+  {
+    bfkr.a().a(paramString2);
+  }
+  
+  public void registerListener(IAdDownloader.Callback paramCallback)
+  {
+    if ((paramCallback instanceof bfoj)) {
+      bfkr.a().a((bfoj)paramCallback);
+    }
+  }
+  
+  public void unregisterListener(IAdDownloader.Callback paramCallback)
+  {
+    if ((paramCallback instanceof bfoj)) {
+      bfkr.a().b((bfoj)paramCallback);
     }
   }
 }

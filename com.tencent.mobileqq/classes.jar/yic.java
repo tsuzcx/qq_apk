@@ -1,6 +1,19 @@
-public abstract interface yic
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+
+class yic
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public abstract void a(int paramInt);
+  yic(yib paramyib) {}
+  
+  public int getSpanSize(int paramInt)
+  {
+    paramInt = this.a.a(paramInt);
+    yhy localyhy = this.a.a(paramInt);
+    if (localyhy != null) {
+      return localyhy.getSpanCount(localyhy.getLocalPosition(paramInt));
+    }
+    return 1;
+  }
 }
 
 

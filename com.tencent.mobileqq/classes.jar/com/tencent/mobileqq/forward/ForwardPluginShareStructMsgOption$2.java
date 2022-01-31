@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.forward;
 
-import apnf;
-import apnu;
 import apro;
-import arxa;
-import bdcs;
-import bdvv;
-import bdvx;
+import apsd;
+import apvx;
+import asbj;
+import bdhb;
+import beae;
+import beag;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import java.io.File;
 import java.util.ArrayList;
@@ -14,28 +14,28 @@ import java.util.ArrayList;
 public class ForwardPluginShareStructMsgOption$2
   implements Runnable
 {
-  public ForwardPluginShareStructMsgOption$2(arxa paramarxa, String paramString) {}
+  public ForwardPluginShareStructMsgOption$2(asbj paramasbj, String paramString) {}
   
   public void run()
   {
-    Object localObject1 = apro.r.replace("[epId]", this.a);
-    boolean bool = bdcs.a((String)localObject1);
-    Object localObject2 = apro.c.replace("[epId]", this.a);
+    Object localObject1 = apvx.r.replace("[epId]", this.a);
+    boolean bool = bdhb.a((String)localObject1);
+    Object localObject2 = apvx.c.replace("[epId]", this.a);
     localObject1 = new File((String)localObject1);
     if (!bool)
     {
-      localObject2 = new bdvv((String)localObject2, (File)localObject1);
-      ((bdvv)localObject2).j = true;
-      if (bdvx.a((bdvv)localObject2, this.this$0.a) != 0) {
+      localObject2 = new beae((String)localObject2, (File)localObject1);
+      ((beae)localObject2).j = true;
+      if (beag.a((beae)localObject2, this.this$0.a) != 0) {
         return;
       }
     }
     localObject2 = new EmoticonPackage();
     ((EmoticonPackage)localObject2).epId = this.a;
     ((EmoticonPackage)localObject2).jobType = 4;
-    localObject1 = bdcs.a((File)localObject1);
+    localObject1 = bdhb.a((File)localObject1);
     ArrayList localArrayList = new ArrayList();
-    apnu.a(this.this$0.a, (EmoticonPackage)localObject2, apnf.c, (byte[])localObject1, localArrayList);
+    apsd.a(this.this$0.a, (EmoticonPackage)localObject2, apro.c, (byte[])localObject1, localArrayList);
   }
 }
 

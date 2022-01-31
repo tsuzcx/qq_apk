@@ -1,205 +1,170 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.device.DeviceHeadMgr;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.jungle.weather.proto.WeatherReportInfo.Area;
+import com.tencent.jungle.weather.proto.WeatherReportInfo.GetWeatherByLbsReq;
+import com.tencent.jungle.weather.proto.WeatherReportInfo.GetWeatherByLbsRsp;
+import com.tencent.jungle.weather.proto.WeatherReportInfo.PbRspMsgHead;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ExpandableListView;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import mqq.app.AppActivity;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
 
-public abstract class akgw
-  extends bhvo
-  implements bcwt, bhpo
+public class akgw
+  extends MSFServlet
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private bcws jdField_a_of_type_Bcws;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public ExpandableListView a;
-  
-  public akgw(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, AppActivity paramAppActivity)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
-    this.jdField_a_of_type_Bcws = new bcws(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Bcws.a(this);
-    bdda.a();
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), akgw.class);
+    localNewIntent.putExtra("req_type", 8888);
+    localNewIntent.putExtra("latitide", paramInt1);
+    localNewIntent.putExtra("longtitude", paramInt2);
+    a(paramQQAppInterface, localNewIntent, paramAppActivity);
   }
   
-  protected void a(akgx paramakgx, Bitmap paramBitmap)
+  public static void a(QQAppInterface paramQQAppInterface, AppActivity paramAppActivity)
   {
-    a(paramakgx, paramBitmap, true);
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), akgw.class);
+    localNewIntent.putExtra("req_type", 6666);
+    localNewIntent.putExtra("uin", Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
+    a(paramQQAppInterface, localNewIntent, paramAppActivity);
   }
   
-  protected void a(akgx paramakgx, Bitmap paramBitmap, boolean paramBoolean)
+  private static void a(QQAppInterface paramQQAppInterface, NewIntent paramNewIntent, AppActivity paramAppActivity)
   {
-    if (paramakgx.jdField_a_of_type_AndroidWidgetImageView == null) {
-      return;
-    }
-    if (aljq.z.equals(paramakgx.jdField_a_of_type_JavaLangString))
+    if (Build.VERSION.SDK_INT >= 23)
     {
-      paramakgx.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843762);
-      return;
-    }
-    if (aljq.A.equals(paramakgx.jdField_a_of_type_JavaLangString))
-    {
-      paramakgx.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843760);
-      return;
-    }
-    if (aljq.B.equals(paramakgx.jdField_a_of_type_JavaLangString))
-    {
-      paramakgx.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843765);
-      return;
-    }
-    if (aljq.y.equals(paramakgx.jdField_a_of_type_JavaLangString))
-    {
-      paramakgx.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839384);
-      return;
-    }
-    Bitmap localBitmap;
-    if (paramBitmap == null) {
-      if ((aljq.aa.equals(paramakgx.jdField_a_of_type_JavaLangString)) && ((paramakgx instanceof akhw)))
+      if (paramAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
       {
-        Object localObject = (Friends)((akhw)paramakgx).a;
-        localBitmap = paramBitmap;
-        if (localObject != null) {
-          if (DeviceHeadMgr.getInstance().isLostQfindDevice(((Friends)localObject).name))
-          {
-            localObject = DeviceHeadMgr.getInstance().getDeviceHeadDrawableByDin(((Friends)localObject).name);
-            localBitmap = paramBitmap;
-            if (localObject != null) {
-              paramakgx.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
-            }
-          }
-          else
-          {
-            localBitmap = DeviceHeadMgr.getInstance().getDeviceHeadByDin(((Friends)localObject).name);
-          }
+        SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0);
+        long l1 = localSharedPreferences.getLong("drawer_last_location_auth_dialog_time", 0L);
+        long l2 = System.currentTimeMillis();
+        if (l2 - l1 > 86400000L)
+        {
+          localSharedPreferences.edit().putLong("drawer_last_location_auth_dialog_time", l2).apply();
+          paramAppActivity.requestPermissions(new akgy(paramQQAppInterface, paramNewIntent, paramAppActivity, null), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+          return;
         }
-        paramBitmap = localBitmap;
+        if (QLog.isColorLevel()) {
+          QLog.d("weatherManager", 1, "without 24 hour from last location auth dialog");
+        }
+        paramNewIntent.putExtra("adcode", 0);
+        paramQQAppInterface.startServlet(paramNewIntent);
+        return;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("weatherManager", 1, "location permitted above android M");
+      }
+      b(paramQQAppInterface, paramNewIntent);
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 1, "direct locate in system below android M");
+    }
+    b(paramQQAppInterface, paramNewIntent);
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, NewIntent paramNewIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 2, "startLocation onLocationStart");
+    }
+    ampk.a(new akgx("qq_weather", false, paramNewIntent, paramQQAppInterface));
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (!"QQWeatherReport.getWeatherByLbs".equals(paramFromServiceMsg.getServiceCmd())) {
+      return;
+    }
+    boolean bool2 = paramFromServiceMsg.isSuccess();
+    int i = paramIntent.getIntExtra("req_type", 0);
+    Bundle localBundle = new Bundle();
+    localBundle.putAll(paramIntent.getExtras());
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 2, "WeatherServlet onReceive isSucess1:" + bool2);
+    }
+    bool1 = bool2;
+    if (bool2) {}
     for (;;)
     {
-      label205:
-      localBitmap = paramBitmap;
-      if (paramBitmap == null) {
-        if (paramBoolean) {
-          if (!(paramakgx instanceof akie)) {
-            break label368;
-          }
-        }
-      }
-      label368:
-      for (paramBitmap = bdda.h();; paramBitmap = bdda.a())
+      try
       {
-        localBitmap = paramBitmap;
-        if (!this.jdField_a_of_type_Bcws.a())
-        {
-          this.jdField_a_of_type_Bcws.a(paramakgx.jdField_a_of_type_JavaLangString, paramakgx.jdField_a_of_type_Int, false);
-          localBitmap = paramBitmap;
+        localObject = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        paramFromServiceMsg = new byte[((ByteBuffer)localObject).getInt() - 4];
+        ((ByteBuffer)localObject).get(paramFromServiceMsg);
+        localObject = new WeatherReportInfo.GetWeatherByLbsRsp();
+        ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).mergeFrom(paramFromServiceMsg);
+        if (((WeatherReportInfo.GetWeatherByLbsRsp)localObject).pbRspMsgHead.uint32_result.get() != 0) {
+          continue;
         }
-        if (localBitmap == null) {
-          break;
+        bool1 = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("weatherManager", 2, "WeatherServlet onReceive isSucess2:" + bool1);
         }
-        if ((paramakgx.jdField_a_of_type_Int != 1) || (!(paramakgx.jdField_a_of_type_AndroidWidgetImageView instanceof DynamicAvatarView)) || (!(paramakgx instanceof akhw))) {
-          break label399;
+        if (!bool1) {
+          continue;
         }
-        if (((akhw)paramakgx).b) {
-          break label375;
-        }
-        paramakgx.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-        ((DynamicAvatarView)paramakgx.jdField_a_of_type_AndroidWidgetImageView).setFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap), 1, paramakgx.jdField_a_of_type_JavaLangString, 100, false, true, 1);
-        return;
-        paramBitmap = this.jdField_a_of_type_Bcws.a(paramakgx.jdField_a_of_type_Int, paramakgx.jdField_a_of_type_JavaLangString);
-        break label205;
+        localBundle.putString("KEY_TEMPER", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).temper.get());
+        localBundle.putString("o_wea_code", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).o_wea_code.get());
+        localBundle.putString("area_info", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).area.city.get() + "-" + ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).area.area_name.get());
+        localBundle.putInt("adcode", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).area.area_id.get());
+        localBundle.putInt("show_flag", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).show_flag.get());
       }
-      label375:
-      paramakgx.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        Object localObject;
+        paramFromServiceMsg.printStackTrace();
+        bool1 = false;
+        continue;
+      }
+      notifyObserver(paramIntent, i, bool1, localBundle, akgu.class);
       return;
-      label399:
-      paramakgx.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
-      return;
+      bool1 = false;
+      continue;
+      localBundle.putInt("uint32_result", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).pbRspMsgHead.uint32_result.get());
+      localBundle.putString("string_err_msg", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).pbRspMsgHead.string_err_msg.get());
     }
   }
   
-  protected void a(String paramString, Bitmap paramBitmap)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    int j = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildCount();
-    int i = 0;
+    int i = paramIntent.getIntExtra("req_type", 0);
+    int j = paramIntent.getIntExtra("adcode", 0);
     Object localObject;
-    if (i < j)
+    switch (i)
     {
-      localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildAt(i).getTag();
-      if ((localObject != null) && ((localObject instanceof akgx)))
-      {
-        localObject = (akgx)localObject;
-        if (paramString != null) {
-          break label69;
-        }
-        a((akgx)localObject, null, false);
-      }
-      label69:
-      while (!paramString.equals(((akgx)localObject).jdField_a_of_type_JavaLangString))
-      {
-        i += 1;
-        break;
-      }
-      if (paramBitmap != null)
-      {
-        if ((((akgx)localObject).jdField_a_of_type_Int != 1) || (!(((akgx)localObject).jdField_a_of_type_AndroidWidgetImageView instanceof DynamicAvatarView)) || (!(localObject instanceof akhw))) {
-          break label175;
-        }
-        if (((akhw)localObject).b) {
-          break label151;
-        }
-        ((DynamicAvatarView)((akgx)localObject).jdField_a_of_type_AndroidWidgetImageView).a(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
-      }
+    default: 
+      throw new RuntimeException("Weatherservlet unknow req_type: " + i);
+    case 6666: 
+      localObject = new WeatherReportInfo.GetWeatherByLbsReq();
+      ((WeatherReportInfo.GetWeatherByLbsReq)localObject).uin.set(paramIntent.getLongExtra("uin", 0L));
+      ((WeatherReportInfo.GetWeatherByLbsReq)localObject).adcode_from_mapsdk.set(j);
     }
-    return;
-    label151:
-    ((akgx)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
-    return;
-    label175:
-    ((akgx)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_Bcws != null) {
-      this.jdField_a_of_type_Bcws.d();
-    }
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if ((!this.jdField_a_of_type_Bcws.a()) && (paramBitmap != null)) {
-      a(paramString, paramBitmap);
-    }
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt != 0)
+    for (paramIntent = ((WeatherReportInfo.GetWeatherByLbsReq)localObject).toByteArray();; paramIntent = ((WeatherReportInfo.GetWeatherByLbsReq)localObject).toByteArray())
     {
-      this.jdField_a_of_type_Bcws.a();
-      this.jdField_a_of_type_Bcws.c();
-      bcwi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localObject = ByteBuffer.allocate(paramIntent.length + 4);
+      ((ByteBuffer)localObject).putInt(paramIntent.length + 4).put(paramIntent);
+      paramPacket.setSSOCommand("QQWeatherReport.getWeatherByLbs");
+      paramPacket.putSendData(((ByteBuffer)localObject).array());
       return;
+      localObject = new WeatherReportInfo.GetWeatherByLbsReq();
+      ((WeatherReportInfo.GetWeatherByLbsReq)localObject).lat.set(paramIntent.getIntExtra("latitide", 0));
+      ((WeatherReportInfo.GetWeatherByLbsReq)localObject).lng.set(paramIntent.getIntExtra("longtitude", 0));
+      ((WeatherReportInfo.GetWeatherByLbsReq)localObject).adcode_from_mapsdk.set(j);
     }
-    if (this.jdField_a_of_type_Bcws.a())
-    {
-      this.jdField_a_of_type_Bcws.a();
-      this.jdField_a_of_type_Bcws.b();
-      a(null, null);
-    }
-    bcwi.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

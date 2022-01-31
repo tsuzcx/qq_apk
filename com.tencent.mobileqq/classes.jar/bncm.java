@@ -1,16 +1,6 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-
 class bncm
 {
-  public FilterDesc a;
-  public ArrayList<WeakReference<bnco>> a;
-  
-  bncm(bncl parambncl)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  private static final bncl a = new bncl(null);
 }
 
 

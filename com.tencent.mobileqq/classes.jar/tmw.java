@@ -2,7 +2,7 @@ import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public abstract class tmw<T>
-  extends biac<T>
+  extends biej<T>
 {
   public WSVerticalPageFragment a;
   public T a;

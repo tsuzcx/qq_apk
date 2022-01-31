@@ -85,7 +85,7 @@ public class tmx
   
   protected int b()
   {
-    return 2131559870;
+    return 2131559869;
   }
   
   protected void b()
@@ -104,9 +104,9 @@ public class tmx
   
   protected void e()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView = ((FeedRichTextView)a(2131379502));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView = ((FeedRichTextView)a(2131379560));
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379503));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379561));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
   }
   

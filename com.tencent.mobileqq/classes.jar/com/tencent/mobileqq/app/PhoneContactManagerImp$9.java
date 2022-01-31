@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import awbw;
-import awby;
+import awgf;
+import awgh;
 import com.tencent.mobileqq.data.ContactBinded;
 import com.tencent.mobileqq.data.PhoneContact;
 import java.util.Collection;
@@ -16,7 +16,7 @@ class PhoneContactManagerImp$9
   public void run()
   {
     Object localObject1 = PhoneContactManagerImp.a(this.this$0).a();
-    ((awby)localObject1).a();
+    ((awgh)localObject1).a();
     try
     {
       Iterator localIterator = PhoneContactManagerImp.a(this.this$0).values().iterator();
@@ -32,9 +32,9 @@ class PhoneContactManagerImp$9
     }
     finally
     {
-      ((awby)localObject1).b();
+      ((awgh)localObject1).b();
     }
-    ((awby)localObject1).b();
+    ((awgh)localObject1).b();
     localObject1 = PhoneContactManagerImp.a(this.this$0);
     if (localObject1 != null) {
       ((ContactBinded)localObject1).isReaded = true;

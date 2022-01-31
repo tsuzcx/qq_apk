@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class agcm
-  implements View.OnLongClickListener
+  implements DialogInterface.OnClickListener
 {
-  public agcm(PanelIconLinearLayout paramPanelIconLinearLayout) {}
+  public agcm(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (PanelIconLinearLayout.a(this.a) != null) {
-      PanelIconLinearLayout.a(this.a).a(1);
-    }
-    return true;
+    paramDialogInterface.dismiss();
   }
 }
 

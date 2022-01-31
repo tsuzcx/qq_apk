@@ -1,83 +1,74 @@
-import android.accounts.Account;
-import android.annotation.SuppressLint;
-import android.content.AbstractThreadedSyncAdapter;
-import android.content.ContentProviderClient;
-import android.content.Context;
-import android.content.SyncResult;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import org.json.JSONObject;
 
 public class aowd
-  extends AbstractThreadedSyncAdapter
 {
-  private Context a;
+  private int a;
+  private int b = 1;
+  private int c = 1;
   
-  public aowd(Context paramContext, boolean paramBoolean)
+  public aowd()
   {
-    super(paramContext, paramBoolean);
-    this.a = paramContext;
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public void onPerformSync(Account paramAccount, Bundle paramBundle, String paramString, ContentProviderClient paramContentProviderClient, SyncResult paramSyncResult)
+  public static aowd a(aoko paramaoko)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync");
-    }
-    if (!"Success".equals(BaseApplicationImpl.sInjectResult)) {}
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramAccount = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-          if ((paramAccount == null) || (!paramAccount.isLogin()))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync | app is null or not login, " + paramAccount);
-          }
-        }
-        catch (Throwable paramAccount)
-        {
-          for (;;)
-          {
-            QLog.e("ContactSync.SyncAdapter", 1, "onPerformSync exception", paramAccount);
-            paramAccount = null;
-          }
-          try
-          {
-            ((aovt)paramAccount.getManager(41)).a();
-            return;
-          }
-          catch (Throwable paramAccount) {}
-        }
+    aowd localaowd = new aowd();
+    if (paramaoko != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchBusinessConfBean", 2, "parse taskid->" + paramaoko.jdField_a_of_type_Int + " content->" + paramaoko.jdField_a_of_type_JavaLangString);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync | syncAllContacts exception", paramAccount);
+    }
+    try
+    {
+      paramaoko = new JSONObject(paramaoko.jdField_a_of_type_JavaLangString);
+      localaowd.a(paramaoko.optInt("business_switch_message", 1));
+      localaowd.b(paramaoko.optInt("business_switch_contact", 1));
+      localaowd.c(paramaoko.optInt("business_switch_dongtai", 1));
+      return localaowd;
+    }
+    catch (Exception paramaoko)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("SearchBusinessConfBean", 2, "parse error->" + paramaoko.toString());
+    }
+    return localaowd;
   }
   
-  @SuppressLint({"NewApi"})
-  public void onSyncCanceled()
+  void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.SyncAdapter", 2, "onSyncCanceled()");
-    }
-    super.onSyncCanceled();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  @SuppressLint({"NewApi"})
-  public void onSyncCanceled(Thread paramThread)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.SyncAdapter", 2, "onSyncCanceled(thread)");
-    }
-    super.onSyncCanceled(paramThread);
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  void b(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public boolean b()
+  {
+    return this.b == 1;
+  }
+  
+  void c(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public boolean c()
+  {
+    return this.c == 1;
+  }
+  
+  public String toString()
+  {
+    return String.format("mBusinessSwitchTabMessage:%d, mBusinessSwitchTabContact:%d, mBusinessSwitchTabDongtai:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
   }
 }
 

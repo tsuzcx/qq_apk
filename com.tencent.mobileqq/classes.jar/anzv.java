@@ -1,135 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.IOException;
 
 public class anzv
+  extends AsyncTask<Void, Void, String>
 {
-  public static final int[] a = { 17039360, 17104896, 16908289, 16908292 };
+  public anzv(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public static aoah a(int paramInt)
+  protected String a(Void... paramVarArgs)
   {
-    switch (paramInt)
+    try
     {
-    default: 
-      return null;
-    case 16908292: 
-      return new aoac();
-    case 17104896: 
-      return new aoad();
-    case 17039360: 
-      return new aree();
-    }
-    return new aoae();
-  }
-  
-  public static List<ColorNote> a(int paramInt)
-  {
-    List localList1 = b(paramInt);
-    List localList2 = c(0);
-    if (localList1 == null) {
-      return null;
-    }
-    if ((localList2 == null) || (localList2.size() == 0)) {
-      return localList1;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator1 = localList1.iterator();
-    while (localIterator1.hasNext())
-    {
-      ColorNote localColorNote = (ColorNote)localIterator1.next();
-      Iterator localIterator2 = localList2.iterator();
-      while (localIterator2.hasNext()) {
-        if (anyi.a(localColorNote, (ColorNote)localIterator2.next())) {
-          localArrayList.add(localColorNote);
-        }
-      }
-    }
-    localList1.removeAll(localArrayList);
-    return localList1;
-  }
-  
-  public static List<ColorNote> a(List<ColorNote> paramList)
-  {
-    Object localObject = paramList;
-    if (paramList != null)
-    {
-      localObject = paramList;
-      if (paramList.size() > 3) {
-        localObject = paramList.subList(0, 3);
-      }
-    }
-    return localObject;
-  }
-  
-  static List<ColorNote> a(List<ColorNote> paramList, int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      ColorNote localColorNote = (ColorNote)paramList.next();
-      if (localColorNote.getServiceType() == paramInt) {
-        localArrayList.add(0, localColorNote);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static void a(ColorNote paramColorNote)
-  {
-    if ((paramColorNote == null) || (TextUtils.isEmpty(paramColorNote.getMainTitle()))) {
-      return;
-    }
-    paramColorNote = anyi.c(paramColorNote);
-    paramColorNote.setType(2);
-    anxo localanxo = new anxo();
-    localanxo.a(paramColorNote.getServiceType(), paramColorNote.getSubType(), 2);
-    localanxo.a(new anzw(localanxo, paramColorNote));
-    a(paramColorNote.getServiceType());
-  }
-  
-  private static void a(List<ColorNote> paramList)
-  {
-    if ((paramList != null) && (paramList.size() >= 20))
-    {
-      anxo localanxo = new anxo();
-      int i = 9;
-      while (i < paramList.size())
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null)
       {
-        ColorNote localColorNote = (ColorNote)paramList.get(i);
-        localanxo.a(localColorNote.getServiceType(), localColorNote.getSubType(), 2);
-        i += 1;
+        bdhj.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramVarArgs);
+        return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131695351) + " " + paramVarArgs;
       }
+      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131695350);
+      return paramVarArgs;
     }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    if (BaseApplicationImpl.sProcessId == 1)
+    catch (IOException paramVarArgs)
     {
-      List localList = b(paramInt);
-      if ((localList != null) && (localList.size() > 20)) {
-        a(localList);
-      }
-      return true;
+      return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131695350);
     }
-    anxr.a(paramInt);
-    return true;
+    catch (OutOfMemoryError paramVarArgs) {}
+    return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131695350);
   }
   
-  public static List<ColorNote> b(int paramInt)
+  protected void a(String paramString)
   {
-    return a(c(2), paramInt);
-  }
-  
-  public static List<ColorNote> c(int paramInt)
-  {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a().a().a(false, paramInt);
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getTitleBarHeight());
   }
 }
 

@@ -1,23 +1,53 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class vpf
-  implements vrj
+  extends vpa<HomeFeedPlayInfo>
 {
-  public vpf(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
+  private int a;
+  public wou b = new wou();
   
-  public void a(@NonNull View paramView, int paramInt)
+  public vpf(HomeFeedPlayInfo paramHomeFeedPlayInfo)
   {
-    if (bngs.a)
-    {
-      paramInt = StoryPlayerGroupHolder.a(this.a);
-      paramView = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
-      paramView.bottomMargin = paramInt;
-      this.a.a.setLayoutParams(paramView);
+    super(paramHomeFeedPlayInfo);
+    paramHomeFeedPlayInfo = (woy)uwa.a(11);
+    if (paramHomeFeedPlayInfo.b != null) {
+      this.b = paramHomeFeedPlayInfo.b;
     }
+  }
+  
+  public woq a(String paramString)
+  {
+    Iterator localIterator = this.b.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      woq localwoq = (woq)localIterator.next();
+      if (localwoq.a.equals(paramString)) {
+        return localwoq;
+      }
+    }
+    return null;
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, vps paramvps)
+  {
+    Object localObject1 = this.b.jdField_a_of_type_JavaUtilList;
+    if ((paramBoolean) && (((List)localObject1).size() > 0))
+    {
+      localObject2 = b((List)localObject1);
+      paramvps.a(new ErrorMessage(), (List)localObject2, this.b.jdField_a_of_type_Boolean);
+      wxe.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject1).size()));
+      return;
+    }
+    localObject1 = (woy)uwa.a(11);
+    Object localObject2 = new vga();
+    ((vga)localObject2).a = ((woy)localObject1).a;
+    ((vga)localObject2).b = this.b.a();
+    wxe.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((vga)localObject2).b);
+    this.a = 0;
+    urp.a().a((urt)localObject2, new vpg(this, paramvps));
   }
 }
 

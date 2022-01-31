@@ -1,42 +1,26 @@
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import cooperation.qzone.util.QZLog;
 
-public class bkhh
+class bkhh
+  extends BroadcastReceiver
 {
-  private static bapv jdField_a_of_type_Bapv;
-  private static bdlp jdField_a_of_type_Bdlp = new bkhi();
-  private static bapv jdField_b_of_type_Bapv;
-  private static bdlp jdField_b_of_type_Bdlp = new bkhj();
+  bkhh(bkhg parambkhg) {}
   
-  public static bapv a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (jdField_a_of_type_Bapv == null) {}
     try
     {
-      if (jdField_a_of_type_Bapv == null)
-      {
-        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_a_of_type_Bdlp, 128);
-        localHttpCommunicator.a();
-        jdField_a_of_type_Bapv = new baqy(localHttpCommunicator, true);
-      }
-      return jdField_a_of_type_Bapv;
+      paramContext = paramIntent.getAction();
+      QZLog.i("BaseTranslucentControll", 4, "reveiver action = " + paramContext);
+      this.a.a(paramIntent);
+      return;
     }
-    finally {}
-  }
-  
-  public static bapv b()
-  {
-    if (jdField_b_of_type_Bapv == null) {}
-    try
+    catch (Exception paramContext)
     {
-      if (jdField_b_of_type_Bapv == null)
-      {
-        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_b_of_type_Bdlp, 128);
-        localHttpCommunicator.a();
-        jdField_b_of_type_Bapv = new baqy(localHttpCommunicator, true);
-      }
-      return jdField_b_of_type_Bapv;
+      QZLog.e("BaseTranslucentControll", "onReceive error", paramContext);
     }
-    finally {}
   }
 }
 

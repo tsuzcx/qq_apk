@@ -1,100 +1,37 @@
-import com.tencent.mobileqq.gamecenter.data.GameNoticeCenter;
-import com.tencent.mobileqq.gamecenter.data.GameNoticeCenter.GameNoticeInfoList;
-import com.tencent.mobileqq.gamecenter.data.GameNoticeInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
 
 public class ashf
-  implements ajdh
+  extends Handler
 {
-  private ajdj jdField_a_of_type_Ajdj;
-  private final GameNoticeInfo jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo;
+  public ashf(QQSettingMsgClearFragment paramQQSettingMsgClearFragment) {}
   
-  public ashf(GameNoticeCenter paramGameNoticeCenter, GameNoticeInfo paramGameNoticeInfo)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo = paramGameNoticeInfo;
-    QLog.d("GameNoticeCenter", 1, new Object[] { "hide banner at: ", GameNoticeCenter.a(paramGameNoticeCenter, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.endTime), ", mInfo=", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo });
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.bannerType == 1) {
-      GameNoticeCenter.a(paramGameNoticeCenter).e("81706").b("205431").d("8").c(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.appId).h(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.apkChannel).a();
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.bannerType != 2) {
-      return;
-    }
-    GameNoticeCenter.a(paramGameNoticeCenter).e("81707").b("205433").d("8").c(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.appId).h(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.apkChannel).a();
-  }
-  
-  public boolean isNeedAutoCloseWhenAccountChange()
-  {
-    return true;
-  }
-  
-  public void onClose()
-  {
-    QLog.d("GameNoticeCenter", 1, new Object[] { "onClose, ", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo });
-    GameNoticeInfo localGameNoticeInfo = GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter).getByAppId(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.appId);
-    if (localGameNoticeInfo != null)
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      localGameNoticeInfo.shown = true;
-      GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter).updateDB(localGameNoticeInfo);
     }
-    GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter, true);
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.bannerType == 1) {
-      GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter).e("81706").b("205435").d("20").c(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.appId).h(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.apkChannel).a();
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.bannerType != 2) {
-      return;
-    }
-    GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter).e("81707").b("205436").d("20").c(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.appId).h(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.apkChannel).a();
-  }
-  
-  public void onEnter()
-  {
-    QLog.d("GameNoticeCenter", 1, new Object[] { "onEnter, ", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo });
-    GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.jumpUrl, BaseApplication.getContext());
-    GameNoticeInfo localGameNoticeInfo = GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter).getByAppId(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.appId);
-    if (localGameNoticeInfo != null)
+    do
     {
-      localGameNoticeInfo.shown = true;
-      GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter).updateDB(localGameNoticeInfo);
-    }
-    GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter, true);
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.bannerType == 1) {
-      GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter).e("81706").b("205432").d("20").c(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.appId).h(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.apkChannel).a();
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.bannerType != 2) {
       return;
-    }
-    GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter).e("81707").b("205434").d("20").c(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.appId).h(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.apkChannel).a();
-  }
-  
-  public void onOverride()
-  {
-    QLog.d("GameNoticeCenter", 1, new Object[] { "onOverride, ", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo });
-    if ((GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter) != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.equals(GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter).jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo)))
-    {
-      GameNoticeInfo localGameNoticeInfo = GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter).getByAppId(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.appId);
-      if (localGameNoticeInfo != null)
+      paramMessage = this.a.getActivity();
+      if ((paramMessage != null) && (!paramMessage.isFinishing()))
       {
-        localGameNoticeInfo.shown = true;
-        GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter).updateDB(localGameNoticeInfo);
-        GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter, false);
+        this.a.jdField_a_of_type_Bety.a(this.a.getString(2131690862));
+        this.a.jdField_a_of_type_Bety.d(2130849126);
+        this.a.jdField_a_of_type_Bety.b(false);
       }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.bannerType == 1) {
-      GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter).e("81706").b("205584").c(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.appId).h(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.apkChannel).a();
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.bannerType != 2) {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
       return;
-    }
-    GameNoticeCenter.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter).e("81707").b("205585").c(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.appId).h(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.apkChannel).a();
-  }
-  
-  public String toString()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeInfo.toString();
-    }
-    return super.toString();
+    } while ((this.a.jdField_a_of_type_Bety == null) || (!this.a.jdField_a_of_type_Bety.isShowing()));
+    this.a.jdField_a_of_type_Bety.cancel();
+    this.a.jdField_a_of_type_Bety.a(this.a.getString(2131690864));
+    this.a.jdField_a_of_type_Bety.c(true);
+    this.a.jdField_a_of_type_Bety.a(false);
+    this.a.jdField_a_of_type_Bety.b(true);
   }
 }
 

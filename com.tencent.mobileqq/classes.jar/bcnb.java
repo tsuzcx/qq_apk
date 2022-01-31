@@ -1,17 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
-
-public class bcnb
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bcnb
 {
-  public bcnb(RedDotAnimateView paramRedDotAnimateView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.c = ((int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * 255.0F));
-    this.a.invalidate();
-  }
+  public abstract boolean a(bbsa parambbsa);
 }
 
 

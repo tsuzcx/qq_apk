@@ -1,20 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.mini.ui.dialog.DialogFromBottom;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
 
-final class aqcr
-  implements View.OnClickListener
+public abstract interface aqcr
 {
-  aqcr(DialogFromBottom paramDialogFromBottom) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.isShowing())
-    {
-      this.a.dismiss();
-      azmj.b(null, "dc00898", "", "", "0X800AD9C", "0X800AD9C", 2, 0, "", "", "", "");
-    }
-  }
+  public abstract void a(boolean paramBoolean, MiniAppRecommInfo paramMiniAppRecommInfo);
 }
 
 

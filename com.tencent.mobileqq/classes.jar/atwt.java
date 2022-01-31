@@ -1,23 +1,31 @@
-import android.animation.ArgbEvaluator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import android.util.Log;
+import java.util.ArrayList;
 
 public class atwt
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public atwt(MedalGuideView paramMedalGuideView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static atwl a(String paramString, boolean paramBoolean)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    MedalGuideView.a(this.a, f);
-    int i = ((Integer)this.a.jdField_a_of_type_AndroidAnimationArgbEvaluator.evaluate(f, Integer.valueOf(0), Integer.valueOf(this.a.jdField_a_of_type_Int))).intValue();
-    this.a.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(i);
-    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
+    if ((paramString != null) && (paramString.length() >= 0))
+    {
+      if (paramBoolean) {}
+      for (;;)
+      {
+        try
+        {
+          paramString = new atwx(paramString).a();
+          if ((paramString == null) || (paramString.a.size() <= 0)) {
+            break;
+          }
+          return paramString;
+        }
+        catch (Exception paramString)
+        {
+          Log.e("LyricParseHelper", "parse exception:", paramString);
+        }
+        paramString = new atwu(paramString).a();
+      }
     }
+    return null;
   }
 }
 

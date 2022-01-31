@@ -1,91 +1,72 @@
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import MQQ.GetRoamToastRsp;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class acox
-  extends WtloginObserver
+  extends amcd
 {
-  public acox(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
+  public acox(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void OnCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  public void a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt + " time=" + paramLong);
-      if (paramArrayOfByte2 == null) {}
-    }
-    try
-    {
-      paramString = new String(paramArrayOfByte2, "utf-8");
-      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode errMsg=" + paramString);
-      this.a.c();
-      if (DevlockQuickLoginActivity.a(this.a)) {
-        return;
-      }
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-      if (paramInt == 0)
-      {
-        QQToast.a(this.a.getApplicationContext(), 2, 2131692235, 0).b(DevlockQuickLoginActivity.a(this.a));
-        DevlockQuickLoginActivity.a(this.a);
-        DevlockQuickLoginActivity.a(this.a, 0, 2130772001);
-        return;
-      }
-      if (paramInt == 21)
-      {
-        paramString = this.a.getString(2131692232);
-        paramArrayOfByte1 = this.a.getString(2131720409);
-        this.a.a(null, paramString, paramArrayOfByte1, new acoy(this));
-        return;
-      }
-      paramString = DevlockQuickLoginActivity.a(this.a, 2131692233);
-      QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(DevlockQuickLoginActivity.b(this.a));
-    }
+    ChatSettingActivity.d(this.a);
   }
   
-  public void OnException(String paramString, int paramInt)
+  public void a(boolean paramBoolean, GetRoamToastRsp paramGetRoamToastRsp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DevlockQuickLoginActivity", 2, "OnException e=" + paramString);
-    }
-    this.a.c();
-    QQToast.a(DevlockQuickLoginActivity.b(this.a), 1, this.a.getString(2131692234), 0).b(DevlockQuickLoginActivity.d(this.a));
-  }
-  
-  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DevlockQuickLoginActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
-    }
-    if (DevlockQuickLoginActivity.b(this.a))
-    {
-      this.a.c();
+    if (this.a.a == null) {
       return;
     }
-    if (paramInt == 0)
+    Object localObject1;
+    Object localObject2;
+    if ((paramBoolean) && (paramGetRoamToastRsp != null) && (!TextUtils.isEmpty(paramGetRoamToastRsp.sToast)) && (((amca)this.a.app.a(13)).a(paramGetRoamToastRsp)))
     {
-      this.a.b();
-      return;
+      localObject1 = paramGetRoamToastRsp.sToast;
+      int i = ((String)localObject1).indexOf('#');
+      if (i < 0) {
+        break label306;
+      }
+      int j = ((String)localObject1).indexOf('#', i + 1);
+      if (j < 0) {
+        break label306;
+      }
+      localObject2 = new SpannableStringBuilder();
+      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, 0, i);
+      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, i + 1, j);
+      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, j + 1, ((String)localObject1).length());
+      ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(-12541697), i, j - 1, 33);
+      localObject1 = localObject2;
     }
-    this.a.c();
-    if (paramInt == 21)
+    label298:
+    label306:
+    for (;;)
     {
-      paramString = this.a.getString(2131692232);
-      paramArrayOfByte1 = this.a.getString(2131720409);
-      this.a.a(null, paramString, paramArrayOfByte1, new acoz(this));
+      this.a.c.setText((CharSequence)localObject1);
+      this.a.a.setTag(paramGetRoamToastRsp);
+      this.a.a.setVisibility(0);
+      azqs.b(this.a.app, "dc00898", "", "", "0X8009E31", "0X8009E31", 0, 0, "", "", "", "");
       return;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = ChatSettingActivity.a(this.a);
+        localObject2 = new StringBuilder().append("onGetRoamToast: ").append(paramBoolean).append(",");
+        if (paramGetRoamToastRsp != null) {
+          break label298;
+        }
+      }
+      for (paramGetRoamToastRsp = "null";; paramGetRoamToastRsp = paramGetRoamToastRsp.sToast)
+      {
+        QLog.d((String)localObject1, 2, paramGetRoamToastRsp);
+        this.a.a.setVisibility(8);
+        return;
+      }
     }
-    paramString = this.a.getString(2131692233);
-    QQToast.a(DevlockQuickLoginActivity.a(this.a), 1, paramString, 0).b(DevlockQuickLoginActivity.c(this.a));
   }
 }
 

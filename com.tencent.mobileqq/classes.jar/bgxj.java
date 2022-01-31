@@ -1,17 +1,41 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.report.GdtCgiReportRunnable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.manager.EngineVersion;
+import com.tencent.qqmini.sdk.manager.InstalledEngine;
 
-public class bgxj
+public final class bgxj
+  implements Parcelable.Creator<InstalledEngine>
 {
-  public static void a(String paramString)
+  public InstalledEngine a(Parcel paramParcel)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    boolean bool2 = true;
+    InstalledEngine localInstalledEngine = new InstalledEngine();
+    localInstalledEngine.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localInstalledEngine.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localInstalledEngine.jdField_a_of_type_ComTencentQqminiSdkManagerEngineVersion = ((EngineVersion)paramParcel.readParcelable(EngineVersion.class.getClassLoader()));
+    localInstalledEngine.jdField_a_of_type_Int = paramParcel.readInt();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      localInstalledEngine.jdField_a_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label102;
+      }
     }
-    ThreadManager.a(new GdtCgiReportRunnable(paramString), 16, null, false);
-    QMLog.i("GDT_CGI_REPORT", paramString);
+    label102:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localInstalledEngine.jdField_b_of_type_Boolean = bool1;
+      localInstalledEngine.jdField_b_of_type_Int = paramParcel.readInt();
+      return localInstalledEngine;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public InstalledEngine[] a(int paramInt)
+  {
+    return new InstalledEngine[paramInt];
   }
 }
 

@@ -1,30 +1,43 @@
-class vth
-  implements vud
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+
+public abstract class vth
 {
-  vth(vte paramvte, vrv paramvrv) {}
+  public abstract Activity a();
   
-  public boolean a_(vtz paramvtz, int paramInt1, int paramInt2)
-  {
-    int i;
-    if (paramInt1 == 3) {
-      i = 1;
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_Vrv.a(this.jdField_a_of_type_Vte, i, Integer.valueOf(paramInt2));
-      if (paramInt1 == 701)
-      {
-        i = 2;
-      }
-      else
-      {
-        i = paramInt1;
-        if (paramInt1 == 702) {
-          i = 3;
-        }
-      }
-    }
-  }
+  public abstract OpenPlayerBuilder.Data a();
+  
+  public abstract XViewPager a();
+  
+  public abstract String a(String paramString);
+  
+  public abstract vpm a();
+  
+  public abstract vpp a();
+  
+  public abstract vsz a();
+  
+  public abstract vts a();
+  
+  public abstract void a();
+  
+  public abstract void a(Intent paramIntent);
+  
+  public abstract void a(ulw paramulw);
+  
+  public abstract void a(vrx paramvrx);
+  
+  public abstract void a(vua paramvua);
+  
+  public abstract boolean a();
+  
+  public abstract void b(ulw paramulw);
+  
+  public abstract void b(vrx paramvrx);
+  
+  public abstract boolean b();
 }
 
 

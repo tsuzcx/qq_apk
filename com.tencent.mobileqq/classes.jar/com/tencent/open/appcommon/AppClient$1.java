@@ -3,9 +3,9 @@ package com.tencent.open.appcommon;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import bfjy;
-import bfkb;
-import bfko;
+import bfoh;
+import bfok;
+import bfox;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 public final class AppClient$1
@@ -15,29 +15,29 @@ public final class AppClient$1
   
   public void run()
   {
-    if (bfko.a().c())
+    if (bfox.a().c())
     {
-      DownloadInfo localDownloadInfo = bfkb.a().a(this.jdField_a_of_type_JavaLangString);
+      DownloadInfo localDownloadInfo = bfok.a().a(this.jdField_a_of_type_JavaLangString);
       if (localDownloadInfo != null)
       {
         if (localDownloadInfo.jdField_c_of_type_Int == 1)
         {
-          this.jdField_a_of_type_AndroidOsBundle.putString(bfjy.jdField_b_of_type_JavaLangString, localDownloadInfo.jdField_c_of_type_JavaLangString);
-          this.jdField_a_of_type_AndroidOsBundle.putString(bfjy.jdField_c_of_type_JavaLangString, localDownloadInfo.j);
-          this.jdField_a_of_type_AndroidOsBundle.putString(bfjy.d, localDownloadInfo.k);
-          this.jdField_a_of_type_AndroidOsBundle.putString(bfjy.i, this.jdField_b_of_type_JavaLangString);
-          this.jdField_a_of_type_AndroidOsBundle.putString(bfjy.f, localDownloadInfo.e);
-          this.jdField_a_of_type_AndroidOsBundle.putInt(bfjy.e, localDownloadInfo.b);
-          bfko.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, false, false);
+          this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.jdField_b_of_type_JavaLangString, localDownloadInfo.jdField_c_of_type_JavaLangString);
+          this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.jdField_c_of_type_JavaLangString, localDownloadInfo.j);
+          this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.d, localDownloadInfo.k);
+          this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.i, this.jdField_b_of_type_JavaLangString);
+          this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.f, localDownloadInfo.e);
+          this.jdField_a_of_type_AndroidOsBundle.putInt(bfoh.e, localDownloadInfo.b);
+          bfox.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, false, false);
           return;
         }
         this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 200);
         return;
       }
-      if ((this.jdField_b_of_type_AndroidOsBundle != null) && (this.jdField_b_of_type_AndroidOsBundle.containsKey(bfjy.f)))
+      if ((this.jdField_b_of_type_AndroidOsBundle != null) && (this.jdField_b_of_type_AndroidOsBundle.containsKey(bfoh.f)))
       {
         this.jdField_a_of_type_AndroidOsBundle.putAll(this.jdField_b_of_type_AndroidOsBundle);
-        bfko.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, false, false);
+        bfox.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, false, false);
         return;
       }
       this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 200);

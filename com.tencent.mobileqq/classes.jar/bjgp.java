@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.ImageTagInfo;
+import android.os.Bundle;
 
-public final class bjgp
-  implements Parcelable.Creator<ImageTagInfo>
+public abstract interface bjgp
 {
-  public ImageTagInfo a(Parcel paramParcel)
-  {
-    return new ImageTagInfo(paramParcel, null);
-  }
-  
-  public ImageTagInfo[] a(int paramInt)
-  {
-    return new ImageTagInfo[paramInt];
-  }
+  public abstract void callback(int paramInt, Bundle paramBundle);
 }
 
 

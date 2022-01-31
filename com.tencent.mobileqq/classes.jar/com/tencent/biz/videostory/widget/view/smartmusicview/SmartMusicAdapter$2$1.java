@@ -1,22 +1,22 @@
 package com.tencent.biz.videostory.widget.view.smartmusicview;
 
 import java.util.List;
-import yxh;
-import yxr;
-import yxs;
-import yxu;
+import zbw;
+import zcg;
+import zch;
+import zcj;
 
 public class SmartMusicAdapter$2$1
   implements Runnable
 {
-  public SmartMusicAdapter$2$1(yxu paramyxu) {}
+  public SmartMusicAdapter$2$1(zcj paramzcj) {}
   
   public void run()
   {
-    if ((yxs.a(this.a.jdField_a_of_type_Yxs) != null) && (yxs.a(this.a.jdField_a_of_type_Yxs) != null))
+    if ((zch.a(this.a.jdField_a_of_type_Zch) != null) && (zch.a(this.a.jdField_a_of_type_Zch) != null))
     {
-      int i = yxs.a(this.a.jdField_a_of_type_Yxs).a() % this.a.jdField_a_of_type_Yxs.a();
-      yxs.a(this.a.jdField_a_of_type_Yxs).a((VsMusicItemInfo)yxs.a(this.a.jdField_a_of_type_Yxs).get(i), i, this.a.jdField_a_of_type_Boolean);
+      int i = zch.a(this.a.jdField_a_of_type_Zch).a() % this.a.jdField_a_of_type_Zch.a();
+      zch.a(this.a.jdField_a_of_type_Zch).a((VsMusicItemInfo)zch.a(this.a.jdField_a_of_type_Zch).get(i), i, this.a.jdField_a_of_type_Boolean);
     }
   }
 }

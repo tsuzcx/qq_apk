@@ -1,48 +1,29 @@
-import com.tencent.TMG.utils.QLog;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aotx
+  implements aokj<String>
 {
-  private boolean a;
-  private boolean b;
-  private boolean c;
+  public boolean a;
   
-  public static aotx a(aogf[] paramArrayOfaogf)
+  public void a(String paramString)
   {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
-      return null;
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("QFileIPv6ConfigBean", 1, "receiveAllConfigs|type: 449configContent is empty");
+      return;
     }
-    aotx localaotx = new aotx();
     try
     {
-      paramArrayOfaogf = new JSONObject(paramArrayOfaogf[0].a);
-      localaotx.a = paramArrayOfaogf.getBoolean("fastload");
-      localaotx.b = paramArrayOfaogf.getBoolean("prefetch");
-      localaotx.c = paramArrayOfaogf.getBoolean("preloadWebView");
-      QLog.v("TencentDocPreloadConfigBean", 0, "fastload = " + localaotx.a + ", prefetch = " + localaotx.b + ", preloadWebView = " + localaotx.c);
-      return localaotx;
+      this.a = new JSONObject(paramString).getJSONObject("ipv6Config").getBoolean("allSwitch");
+      return;
     }
-    catch (JSONException paramArrayOfaogf)
+    catch (JSONException paramString)
     {
-      QLog.e("TencentDocPreloadConfigBean", 1, paramArrayOfaogf.getLocalizedMessage(), paramArrayOfaogf);
+      QLog.e("QFileIPv6ConfigBean", 1, paramString, new Object[0]);
     }
-    return localaotx;
-  }
-  
-  public boolean a()
-  {
-    return this.a;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
-  }
-  
-  public boolean c()
-  {
-    return this.c;
   }
 }
 

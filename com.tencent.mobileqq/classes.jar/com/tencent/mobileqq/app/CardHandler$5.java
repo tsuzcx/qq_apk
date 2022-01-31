@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import alkv;
+import alpk;
 
 public class CardHandler$5
   implements Runnable
 {
-  public CardHandler$5(alkv paramalkv) {}
+  public CardHandler$5(alpk paramalpk) {}
   
   public void run()
   {
-    alkv.a(this.this$0);
+    alpk.a(this.this$0);
   }
 }
 

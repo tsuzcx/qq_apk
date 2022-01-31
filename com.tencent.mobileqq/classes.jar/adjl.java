@@ -1,22 +1,37 @@
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
 
 public class adjl
-  implements QQPermissionCallback
+  extends uxx
 {
-  public adjl(ProfileCardMoreActivity paramProfileCardMoreActivity1, ProfileCardMoreActivity paramProfileCardMoreActivity2) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public adjl(NearbyActivity paramNearbyActivity, String paramString)
   {
-    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions denied...");
-    bdcd.a(this.a, paramArrayOfString, paramArrayOfInt);
+    super(paramString);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions grant...");
-    this.b.g();
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("startLocation end, errCode=").append(paramInt).append(" lbsInfo=").append(paramSosoLbsInfo).append(", info.location=");
+      if (paramSosoLbsInfo == null) {
+        break label103;
+      }
+    }
+    label103:
+    for (SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;; localSosoLocation = null)
+    {
+      QLog.d("nearby.heart_beat", 2, localSosoLocation);
+      if ((!this.a.isFinishing()) && (!this.a.c))
+      {
+        this.a.c = false;
+        this.a.a.a(1, paramSosoLbsInfo);
+      }
+      return;
+    }
   }
 }
 

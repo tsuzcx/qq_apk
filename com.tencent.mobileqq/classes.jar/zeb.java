@@ -1,24 +1,28 @@
-import android.view.animation.Animation;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
 
-class zeb
-  extends bhnr
+public class zeb
+  implements aoim
 {
-  zeb(zdy paramzdy) {}
+  public zeb(NewerGuidePlugin paramNewerGuidePlugin, String[] paramArrayOfString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a()
   {
-    this.a.a.a().e();
-    this.a.a.a().a();
+    return 1;
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public int a(int paramInt)
   {
-    this.a.a.a().d();
+    return this.jdField_a_of_type_ArrayOfJavaLangString.length;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt2];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zeb
  * JD-Core Version:    0.7.0.1
  */

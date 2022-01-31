@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.main;
 
-import aiak;
+import aiez;
 import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;

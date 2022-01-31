@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class audy
-  implements aubx
+class audy
+  implements DialogInterface.OnClickListener
 {
-  public audy(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
+  audy(audv paramaudv) {}
   
-  public void a()
-  {
-    this.a.a(this.a.a, this.a.getString(2131690487));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

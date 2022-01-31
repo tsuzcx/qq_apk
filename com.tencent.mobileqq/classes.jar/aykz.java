@@ -1,12 +1,29 @@
-import com.tencent.mobileqq.search.mostused.MostUsedSearch;
-import java.util.Comparator;
+import android.app.Activity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.SelectMemberContactSearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
-final class aykz
-  implements Comparator<MostUsedSearch>
+public class aykz
+  implements View.OnTouchListener
 {
-  public int a(MostUsedSearch paramMostUsedSearch1, MostUsedSearch paramMostUsedSearch2)
+  public aykz(SelectMemberContactSearchFragment paramSelectMemberContactSearchFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return Long.signum(paramMostUsedSearch2.latestUsedTime - paramMostUsedSearch1.latestUsedTime);
+    if ((!ayvm.a(SelectMemberContactSearchFragment.a(this.a))) && (!SelectMemberContactSearchFragment.a(this.a)) && (paramMotionEvent.getAction() == 1))
+    {
+      paramView = this.a.getActivity();
+      if (paramView != null) {
+        paramView.finish();
+      }
+      return false;
+    }
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

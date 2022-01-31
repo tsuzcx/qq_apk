@@ -1,13 +1,22 @@
-import com.dataline.util.widget.AsyncImageView;
-import com.tencent.mobileqq.customviews.MessageProgressTextView;
+import android.view.View;
 
-public class afgu
-  extends aelt
+public abstract interface afgu
 {
-  public AsyncImageView a;
-  public MessageProgressTextView a;
+  public abstract View a();
   
-  public afgu(afgr paramafgr) {}
+  public abstract void a();
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void d();
+  
+  public abstract void j();
+  
+  public abstract void p();
 }
 
 

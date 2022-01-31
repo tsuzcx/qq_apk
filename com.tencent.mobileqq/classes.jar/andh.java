@@ -1,47 +1,71 @@
-import android.animation.ObjectAnimator;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
-import android.widget.TextView;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class andh
-  implements OnCompositionLoadedListener
 {
-  public andh(QRScanEntryView paramQRScanEntryView) {}
+  protected static bauf a;
+  private baue jdField_a_of_type_Baue;
+  private bbaa jdField_a_of_type_Bbaa;
+  public QQAppInterface a;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ArrayList<andn> jdField_a_of_type_JavaUtilArrayList;
+  private HashMap<String, andm> jdField_a_of_type_JavaUtilHashMap;
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  static
   {
-    long l = 0L;
-    if (paramLottieComposition != null)
-    {
-      l = paramLottieComposition.getDuration() + 100L;
-      Object localObject = paramLottieComposition.getBounds();
-      int i = aekt.a(30.0F, this.a.getResources());
-      float f1 = i / ((Rect)localObject).width();
-      float f2 = i / ((Rect)localObject).height();
-      localObject = new LottieDrawable();
-      ((LottieDrawable)localObject).setComposition(paramLottieComposition);
-      ((LottieDrawable)localObject).setScale(f1, f2);
-      ((LottieDrawable)localObject).playAnimation();
-      QRScanEntryView.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, (Drawable)localObject, null, null);
+    jdField_a_of_type_Bauf = new andl();
+  }
+  
+  public andh(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Baue = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Bbaa = ((bbaa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193));
+  }
+  
+  public boolean a(andn paramandn, andm paramandm)
+  {
+    if ((paramandn == null) || (paramandm == null)) {
+      return false;
     }
+    Object localObject1 = new andi(this, paramandn);
+    ??? = new andj(this);
+    baub localbaub = new baub();
+    localbaub.jdField_a_of_type_Baug = ((baug)???);
+    localbaub.jdField_a_of_type_JavaLangString = paramandn.jdField_a_of_type_JavaLangString;
+    localbaub.jdField_a_of_type_Int = 0;
+    localbaub.c = paramandn.c;
+    localbaub.e = 1;
+    localbaub.jdField_a_of_type_Bauf = jdField_a_of_type_Bauf;
+    paramandn.jdField_a_of_type_Baub = localbaub;
     for (;;)
     {
-      paramLottieComposition = ObjectAnimator.ofFloat(QRScanEntryView.a(this.a), "alpha", new float[] { 1.0F, 0.0F, 1.0F });
-      paramLottieComposition.setDuration(300L);
-      paramLottieComposition.setRepeatCount(2);
-      paramLottieComposition.setStartDelay(l);
-      paramLottieComposition.start();
-      QRScanEntryView.a(this.a, QRScanEntryView.a(this.a), true, false);
-      QRScanEntryView.a(this.a, QRScanEntryView.b(this.a), false, true);
-      return;
-      QLog.e("AREngine_QRScanEntryView", 1, "loadFlashLightSVGDrawable fail, use static resource.");
-      QRScanEntryView.a(this.a).setCompoundDrawablesWithIntrinsicBounds(0, 2130844395, 0, 0);
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramandn);
+        switch (bdin.a(BaseApplication.getContext()))
+        {
+        default: 
+          i = 1;
+          localObject1 = new andk(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramandn.b, (bazz)localObject1, localbaub, paramandn, paramandm);
+          this.jdField_a_of_type_Bbaa.a(10065, "prd", paramandn.b, 0, paramandn.jdField_a_of_type_JavaLangString, localbaub.c, i, 0, false, (bazx)localObject1);
+          this.jdField_a_of_type_JavaUtilHashMap.put(paramandn.b, paramandm);
+          QLog.i("AREngine_ARPreSoResourceDownload", 1, "submitDownloadTask. url = " + paramandn.jdField_a_of_type_JavaLangString);
+          return true;
+        }
+      }
+      int i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
     }
   }
 }

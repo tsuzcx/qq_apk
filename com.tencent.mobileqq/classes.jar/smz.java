@@ -27,7 +27,7 @@ public class smz
 {
   public static String a;
   private static final sna jdField_a_of_type_Sna = new snb(null);
-  public static final String b = "QQ/8.3.3 Android/0.17 Android/" + Build.VERSION.RELEASE;
+  public static final String b = "QQ/8.3.5 Android/0.17 Android/" + Build.VERSION.RELEASE;
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   
   static

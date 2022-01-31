@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ayyj;
-import baps;
-import bapv;
-import baqx;
-import bdee;
+import azcs;
+import baub;
+import baue;
+import bavg;
+import bdin;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -32,13 +32,13 @@ public class PtvTemplateManager$15
       } while (!QLog.isColorLevel());
       QLog.d("Doodle_Strokes_PtvTemplateManager", 2, "reqApp:" + localQQAppInterface);
       return;
-      baps localbaps = new baps();
-      localbaps.jdField_a_of_type_Bapx = new ayyj(this);
-      localbaps.jdField_a_of_type_JavaLangString = this.a.doodleUrl;
-      localbaps.jdField_a_of_type_Int = 0;
-      localbaps.jdField_c_of_type_JavaLangString = new File(PtvTemplateManager.b, this.a.doodleName).getPath();
-      localbaps.jdField_c_of_type_Int = bdee.a(baqx.a().a());
-      localQQAppInterface.getNetEngine(0).a(localbaps);
+      baub localbaub = new baub();
+      localbaub.jdField_a_of_type_Baug = new azcs(this);
+      localbaub.jdField_a_of_type_JavaLangString = this.a.doodleUrl;
+      localbaub.jdField_a_of_type_Int = 0;
+      localbaub.jdField_c_of_type_JavaLangString = new File(PtvTemplateManager.b, this.a.doodleName).getPath();
+      localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
+      localQQAppInterface.getNetEngine(0).a(localbaub);
     } while (!QLog.isColorLevel());
     QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "startDownloadTemplate, url: " + this.a.doodleUrl);
   }

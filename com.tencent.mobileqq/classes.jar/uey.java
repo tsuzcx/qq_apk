@@ -1,57 +1,31 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckBlackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckBlackList;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.widgets.QCirclePushRankIndicator;
+import com.tencent.biz.qqcircle.widgets.QCirclePushRankTopView;
+import com.tencent.mobileqq.pb.PBStringField;
 import java.util.List;
+import qqcircle.QQCircleDitto.StItemContainer;
 
 public class uey
-  extends unk<uez>
+  implements ViewPager.OnPageChangeListener
 {
-  private static final String jdField_a_of_type_JavaLangString = ume.a("StorySvc.check_location_blacklist");
-  private List<ufv> jdField_a_of_type_JavaUtilList;
+  public uey(QCirclePushRankTopView paramQCirclePushRankTopView) {}
   
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public unf a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspCheckBlackList localRspCheckBlackList = new qqstory_service.RspCheckBlackList();
-    try
-    {
-      localRspCheckBlackList.mergeFrom(paramArrayOfByte);
-      return new uez(localRspCheckBlackList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
-  }
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
   
-  public void a(@NonNull List<ufv> paramList)
+  public void onPageSelected(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  protected byte[] a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      throw new QQStoryCmdHandler.IllegalUinException("req gps list is null");
+    if (QCirclePushRankTopView.a(this.a) != null) {
+      QCirclePushRankTopView.a(this.a).a(paramInt);
     }
-    qqstory_service.ReqCheckBlackList localReqCheckBlackList = new qqstory_service.ReqCheckBlackList();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(((ufv)localIterator.next()).a());
+    QCirclePushRankTopView.a(this.a, paramInt);
+    QQCircleDitto.StItemContainer localStItemContainer = (QQCircleDitto.StItemContainer)QCirclePushRankTopView.a(this.a).get(paramInt);
+    QCirclePushRankTopView.a(this.a, localStItemContainer);
+    if (this.a.a != null) {
+      this.a.a.setText(localStItemContainer.subTitle.get());
     }
-    localReqCheckBlackList.gps_list.addAll(localArrayList);
-    return localReqCheckBlackList.toByteArray();
   }
 }
 

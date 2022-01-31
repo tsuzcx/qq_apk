@@ -27,13 +27,13 @@ import org.json.JSONObject;
 
 public class rzv
   extends BaseAdapter
-  implements bfka, saj, sak
+  implements bfoj, saj, sak
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new rzw(this);
-  private bcws jdField_a_of_type_Bcws;
+  private bdbb jdField_a_of_type_Bdbb;
   private List<BaseData> jdField_a_of_type_JavaUtilList;
   private sai[] jdField_a_of_type_ArrayOfSai;
   private float jdField_b_of_type_Float = 14.0F;
@@ -41,11 +41,11 @@ public class rzv
   private int c = 18;
   private int d = -1;
   
-  public rzv(Context paramContext, List<BaseData> paramList, bcws parambcws)
+  public rzv(Context paramContext, List<BaseData> paramList, bdbb parambdbb)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bcws = parambcws;
+    this.jdField_a_of_type_Bdbb = parambdbb;
     f();
     g();
   }
@@ -73,7 +73,7 @@ public class rzv
     localsbq.a(this);
     localsbq.a(this.jdField_a_of_type_AndroidContentContext);
     localsbx.f();
-    bfgi.a().a(this);
+    bfkr.a().a(this);
   }
   
   private void g()
@@ -82,7 +82,7 @@ public class rzv
     {
       try
       {
-        localJSONObject = new JSONObject(String.valueOf(bjxj.a("local_kd_native_main_text_style")));
+        localJSONObject = new JSONObject(String.valueOf(bkbq.a("local_kd_native_main_text_style")));
         localIterator = localJSONObject.keys();
         boolean bool = localIterator.hasNext();
         if (!bool) {}
@@ -133,7 +133,7 @@ public class rzv
     BaseData localBaseData = (BaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     if (localBaseData == null)
     {
-      aekt.a("Q.readinjoy.fast_web", "", new NullPointerException());
+      aepi.a("Q.readinjoy.fast_web", "", new NullPointerException());
       paramViewGroup = new TextView(this.jdField_a_of_type_AndroidContentContext);
     }
     do
@@ -273,7 +273,7 @@ public class rzv
       }
       i += 1;
     }
-    bfgi.a().b(this);
+    bfkr.a().b(this);
   }
   
   public void e()
@@ -286,7 +286,7 @@ public class rzv
       }
       i += 1;
     }
-    bfgi.a().b(this);
+    bfkr.a().b(this);
   }
   
   public int getCount()

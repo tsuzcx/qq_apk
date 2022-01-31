@@ -1,70 +1,70 @@
 package cooperation.qzone;
 
-import bjbc;
+import bjfj;
 
 public class QzoneGiftFullScreenActionManager$1
   implements Runnable
 {
-  public QzoneGiftFullScreenActionManager$1(bjbc parambjbc, String paramString) {}
+  public QzoneGiftFullScreenActionManager$1(bjfj parambjfj, String paramString) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
-    //   4: getfield 29	bjbc:c	Z
+    //   1: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
+    //   4: getfield 29	bjfj:c	Z
     //   7: istore_1
     //   8: iload_1
     //   9: ifeq +18 -> 27
     //   12: aload_0
-    //   13: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
+    //   13: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
     //   16: aload_0
-    //   17: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
-    //   20: getfield 32	bjbc:jdField_a_of_type_Attr	Lattr;
-    //   23: invokestatic 36	bjbc:b	(Lbjbc;Lattr;)V
+    //   17: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
+    //   20: getfield 32	bjfj:jdField_a_of_type_Atya	Latya;
+    //   23: invokestatic 36	bjfj:b	(Lbjfj;Latya;)V
     //   26: return
     //   27: aload_0
-    //   28: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
+    //   28: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
     //   31: aload_0
     //   32: getfield 16	cooperation/qzone/QzoneGiftFullScreenActionManager$1:a	Ljava/lang/String;
-    //   35: invokestatic 38	bjbc:a	(Lbjbc;Ljava/lang/String;)V
+    //   35: invokestatic 38	bjfj:a	(Lbjfj;Ljava/lang/String;)V
     //   38: aload_0
-    //   39: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
-    //   42: getfield 41	bjbc:jdField_a_of_type_Atug	Latug;
+    //   39: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
+    //   42: getfield 41	bjfj:jdField_a_of_type_Atyp	Latyp;
     //   45: ldc 43
-    //   47: invokevirtual 48	atug:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   47: invokevirtual 48	atyp:a	(Ljava/lang/String;)Ljava/lang/String;
     //   50: astore_3
     //   51: aload_3
     //   52: ifnull +144 -> 196
     //   55: aload_0
-    //   56: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
+    //   56: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
     //   59: aload_0
-    //   60: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
-    //   63: getfield 51	bjbc:jdField_a_of_type_Attu	Lattu;
+    //   60: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
+    //   63: getfield 51	bjfj:jdField_a_of_type_Atyd	Latyd;
     //   66: aload_3
-    //   67: invokevirtual 56	attu:a	(Ljava/lang/String;)Lattr;
-    //   70: putfield 32	bjbc:jdField_a_of_type_Attr	Lattr;
+    //   67: invokevirtual 56	atyd:a	(Ljava/lang/String;)Latya;
+    //   70: putfield 32	bjfj:jdField_a_of_type_Atya	Latya;
     //   73: aload_0
-    //   74: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
+    //   74: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
     //   77: aload_0
-    //   78: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
-    //   81: getfield 32	bjbc:jdField_a_of_type_Attr	Lattr;
-    //   84: invokestatic 58	bjbc:a	(Lbjbc;Lattr;)V
+    //   78: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
+    //   81: getfield 32	bjfj:jdField_a_of_type_Atya	Latya;
+    //   84: invokestatic 58	bjfj:a	(Lbjfj;Latya;)V
     //   87: aload_0
-    //   88: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
+    //   88: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
     //   91: aload_0
-    //   92: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
-    //   95: getfield 51	bjbc:jdField_a_of_type_Attu	Lattu;
+    //   92: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
+    //   95: getfield 51	bjfj:jdField_a_of_type_Atyd	Latyd;
     //   98: aload_3
-    //   99: invokevirtual 61	attu:a	(Ljava/lang/String;)Ljava/util/List;
-    //   102: putfield 64	bjbc:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   99: invokevirtual 61	atyd:a	(Ljava/lang/String;)Ljava/util/List;
+    //   102: putfield 64	bjfj:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   105: aload_0
-    //   106: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
-    //   109: invokestatic 67	bjbc:a	(Lbjbc;)V
+    //   106: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
+    //   109: invokestatic 67	bjfj:a	(Lbjfj;)V
     //   112: aload_0
-    //   113: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
-    //   116: getfield 64	bjbc:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   113: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
+    //   116: getfield 64	bjfj:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   119: invokeinterface 73 1 0
     //   124: astore_3
     //   125: aload_3
@@ -72,43 +72,43 @@ public class QzoneGiftFullScreenActionManager$1
     //   131: ifeq +65 -> 196
     //   134: aload_3
     //   135: invokeinterface 83 1 0
-    //   140: checkcast 85	attp
+    //   140: checkcast 85	atxy
     //   143: astore 4
     //   145: aload_0
-    //   146: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
+    //   146: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
     //   149: aload 4
-    //   151: putfield 88	bjbc:jdField_a_of_type_Attp	Lattp;
+    //   151: putfield 88	bjfj:jdField_a_of_type_Atxy	Latxy;
     //   154: aload 4
     //   156: aload_0
-    //   157: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
-    //   160: getfield 91	bjbc:jdField_a_of_type_Atur	Latur;
-    //   163: putfield 92	attp:jdField_a_of_type_Atur	Latur;
+    //   157: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
+    //   160: getfield 91	bjfj:jdField_a_of_type_Atza	Latza;
+    //   163: putfield 92	atxy:jdField_a_of_type_Atza	Latza;
     //   166: aload 4
     //   168: aload_0
-    //   169: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
-    //   172: getfield 32	bjbc:jdField_a_of_type_Attr	Lattr;
-    //   175: putfield 93	attp:jdField_a_of_type_Attr	Lattr;
+    //   169: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
+    //   172: getfield 32	bjfj:jdField_a_of_type_Atya	Latya;
+    //   175: putfield 93	atxy:jdField_a_of_type_Atya	Latya;
     //   178: aload 4
-    //   180: invokevirtual 95	attp:a	()Z
+    //   180: invokevirtual 95	atxy:a	()Z
     //   183: istore_1
     //   184: aload_0
-    //   185: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
-    //   188: getfield 97	bjbc:b	Z
+    //   185: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
+    //   188: getfield 97	bjfj:b	Z
     //   191: istore_2
     //   192: iload_2
     //   193: ifeq +18 -> 211
     //   196: aload_0
-    //   197: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
+    //   197: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
     //   200: aload_0
-    //   201: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
-    //   204: getfield 32	bjbc:jdField_a_of_type_Attr	Lattr;
-    //   207: invokestatic 36	bjbc:b	(Lbjbc;Lattr;)V
+    //   201: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
+    //   204: getfield 32	bjfj:jdField_a_of_type_Atya	Latya;
+    //   207: invokestatic 36	bjfj:b	(Lbjfj;Latya;)V
     //   210: return
     //   211: iload_1
     //   212: ifeq -16 -> 196
     //   215: aload_0
-    //   216: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
-    //   219: getfield 97	bjbc:b	Z
+    //   216: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
+    //   219: getfield 97	bjfj:b	Z
     //   222: istore_1
     //   223: iload_1
     //   224: ifeq -99 -> 125
@@ -129,19 +129,19 @@ public class QzoneGiftFullScreenActionManager$1
     //   259: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   262: invokestatic 122	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   265: aload_0
-    //   266: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
+    //   266: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
     //   269: aload_0
-    //   270: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
-    //   273: getfield 32	bjbc:jdField_a_of_type_Attr	Lattr;
-    //   276: invokestatic 36	bjbc:b	(Lbjbc;Lattr;)V
+    //   270: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
+    //   273: getfield 32	bjfj:jdField_a_of_type_Atya	Latya;
+    //   276: invokestatic 36	bjfj:b	(Lbjfj;Latya;)V
     //   279: return
     //   280: astore_3
     //   281: aload_0
-    //   282: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
+    //   282: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
     //   285: aload_0
-    //   286: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjbc;
-    //   289: getfield 32	bjbc:jdField_a_of_type_Attr	Lattr;
-    //   292: invokestatic 36	bjbc:b	(Lbjbc;Lattr;)V
+    //   286: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lbjfj;
+    //   289: getfield 32	bjfj:jdField_a_of_type_Atya	Latya;
+    //   292: invokestatic 36	bjfj:b	(Lbjfj;Latya;)V
     //   295: aload_3
     //   296: athrow
     // Local variable table:
@@ -152,7 +152,7 @@ public class QzoneGiftFullScreenActionManager$1
     //   50	85	3	localObject1	Object
     //   230	23	3	localException	java.lang.Exception
     //   280	16	3	localObject2	Object
-    //   143	36	4	localattp	attp
+    //   143	36	4	localatxy	atxy
     // Exception table:
     //   from	to	target	type
     //   0	8	230	java/lang/Exception

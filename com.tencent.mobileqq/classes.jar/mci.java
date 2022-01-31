@@ -3,32 +3,32 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 class mci
-  implements bapx
+  implements baug
 {
   mci(mch parammch, String paramString, int paramInt1, DownloadInfo paramDownloadInfo, int paramInt2) {}
   
-  public void onResp(baqw parambaqw)
+  public void onResp(bavf parambavf)
   {
-    baps localbaps = (baps)parambaqw.jdField_a_of_type_Baqv;
-    if (this.jdField_a_of_type_Mch.jdField_a_of_type_Baps == localbaps) {
-      this.jdField_a_of_type_Mch.jdField_a_of_type_Baps = null;
+    baub localbaub = (baub)parambavf.jdField_a_of_type_Bave;
+    if (this.jdField_a_of_type_Mch.jdField_a_of_type_Baub == localbaub) {
+      this.jdField_a_of_type_Mch.jdField_a_of_type_Baub = null;
     }
     if (QLog.isColorLevel()) {
-      QLog.i("QavSo", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localbaps.jdField_a_of_type_JavaLangString, Integer.valueOf(parambaqw.jdField_a_of_type_Int), Integer.valueOf(parambaqw.c), this.jdField_a_of_type_JavaLangString }));
+      QLog.i("QavSo", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localbaub.jdField_a_of_type_JavaLangString, Integer.valueOf(parambavf.jdField_a_of_type_Int), Integer.valueOf(parambavf.c), this.jdField_a_of_type_JavaLangString }));
     }
     int i;
-    if (parambaqw.jdField_a_of_type_Int == 0)
+    if (parambavf.jdField_a_of_type_Int == 0)
     {
-      parambaqw = new File(localbaps.c);
-      if (parambaqw.exists())
+      parambavf = new File(localbaub.c);
+      if (parambavf.exists())
       {
         try
         {
-          if (!mcg.a(localbaps.c, this.jdField_a_of_type_JavaLangString)) {
+          if (!mcg.a(localbaub.c, this.jdField_a_of_type_JavaLangString)) {
             break label343;
           }
-          String str = parambaqw.getParent();
-          bdcs.a(localbaps.c, str, false);
+          String str = parambavf.getParent();
+          bdhb.a(localbaub.c, str, false);
           if (((this.jdField_a_of_type_Int != 1) || (!mcg.a(str + File.separator + this.jdField_a_of_type_ComTencentAvSoDownloadInfo.filename_so_wxvoiceembedqqegg, this.jdField_a_of_type_ComTencentAvSoDownloadInfo.MD5_so_wxvoiceembedqqegg))) && ((this.jdField_a_of_type_Int != 2) || (!mcg.a(str + File.separator + this.jdField_a_of_type_ComTencentAvSoDownloadInfo.filename_model_wxvoiceembed, this.jdField_a_of_type_ComTencentAvSoDownloadInfo.MD5_model_wxvoiceembed)))) {
             break label343;
           }
@@ -46,7 +46,7 @@ class mci
           this.jdField_a_of_type_Mch.jdField_a_of_type_Boolean = false;
           return;
         }
-        parambaqw.delete();
+        parambavf.delete();
       }
     }
     for (;;)
@@ -54,8 +54,8 @@ class mci
       if (i != 0)
       {
         mcg.a(100 / this.jdField_a_of_type_Mch.jdField_a_of_type_Int + this.jdField_a_of_type_Mch.b);
-        parambaqw = this.jdField_a_of_type_Mch;
-        parambaqw.b += 100 / this.jdField_a_of_type_Mch.jdField_a_of_type_Int;
+        parambavf = this.jdField_a_of_type_Mch;
+        parambavf.b += 100 / this.jdField_a_of_type_Mch.jdField_a_of_type_Int;
         if (!this.jdField_a_of_type_Mch.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo, this.b - 1)) {
           this.jdField_a_of_type_Mch.jdField_a_of_type_Boolean = false;
         }
@@ -66,7 +66,7 @@ class mci
     }
   }
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2)
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
   {
     int i;
     if (paramLong2 == 0L) {

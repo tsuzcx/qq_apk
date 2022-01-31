@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import aekt;
-import amap;
+import aepi;
+import amfe;
 import android.graphics.Paint;
 import android.text.TextUtils;
-import awbv;
-import awdg;
-import aynt;
-import bdcb;
+import awge;
+import awhp;
+import aysc;
+import bdgk;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
@@ -91,18 +91,18 @@ import tencent.im.oidb.articlesummary.articlesummary.WeishiUGInfo;
 import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
 
 public class BaseArticleInfo
-  extends awbv
+  extends awge
   implements qla
 {
-  @awdg
+  @awhp
   public static final int ARTICLE_TYPE_NOMAL = 0;
-  @awdg
+  @awhp
   public static final int ARTICLE_TYPE_SHORT_CONTENT = 1;
-  @awdg
+  @awhp
   private static final String TAG = "Q.readinjoy.BaseArticleInfo";
   public String adReportCommonData;
   public int articleStyle;
-  @awdg
+  @awhp
   public slx articleViewModel;
   public String avatar;
   public int busiType = 1;
@@ -113,25 +113,25 @@ public class BaseArticleInfo
   public byte[] bytesBusiData;
   public int click_area;
   public String click_jump_target;
-  @awdg
+  @awhp
   public List<VideoColumnInfo> columnEntrances;
   public byte[] columnEntrancesBytes;
   public String commentBtnJumpUrl;
   public String comment_id;
   public String comment_jump_url;
   public String content;
-  @awdg
+  @awhp
   public qku familyCommentInfo;
   public byte[] familyCommentInfoByte;
-  @awdg
+  @awhp
   public int feedsFirstExposurePos = -1;
   public String galleryReprotExdData;
   public String gifCoverUrl;
   public boolean hasAwesome;
   public boolean hasWalletIcon;
-  @awdg
+  @awhp
   public boolean hintFlag;
-  @awdg
+  @awhp
   public qky hotWordInfo;
   public byte[] hotWordInfoListBytes;
   public int icon_height;
@@ -144,32 +144,32 @@ public class BaseArticleInfo
   public int isCloseDislike;
   public boolean isColumnAnimationPlay;
   public boolean isExtraBiuExpanded;
-  @awdg
+  @awhp
   public boolean isNeeaRealExposureFilter;
-  @awdg
+  @awhp
   public boolean isNeedShowBtnWhenFollowed;
-  @awdg
+  @awhp
   public boolean isPublicAccountFollowed;
   public boolean isShowColumnAnimation;
-  @awdg
+  @awhp
   public boolean isShowFreeNetFlow;
-  @awdg
+  @awhp
   public boolean isShowGif;
-  @awdg
+  @awhp
   public boolean isShowRecommendList;
   public int isSuperTop;
   public boolean isSuperTopic;
-  @awdg
+  @awhp
   public boolean isTwoItem;
   public boolean isUseGif;
   public String jump_url;
-  @awdg
+  @awhp
   public boolean like;
   public int mAbandonRepeatFlag;
   public int mAccountLess;
   public long mAlgorithmGroup = -1L;
   public long mAlgorithmID = -1L;
-  @awdg
+  @awhp
   public qkf mArkAppFeedsInfo;
   public byte[] mArkAppFeedsInfoBytes;
   public String mArticleContentUrl = "";
@@ -178,7 +178,7 @@ public class BaseArticleInfo
   public String mArticleSubscriptColor;
   public String mArticleSubscriptText;
   public int mArticleType;
-  @awdg
+  @awhp
   private URL mCacheVideoURL;
   public String mCardJumpUrl;
   public long mChannelID = -1L;
@@ -190,126 +190,126 @@ public class BaseArticleInfo
   public long mCommentCount = -1L;
   public int mCommentIconType;
   public byte[] mCommentInfoBytes;
-  @awdg
+  @awhp
   public List<articlesummary.CommentInfo> mCommentsObj;
-  @awdg
+  @awhp
   public int mCurrentX;
   public String mDianDianLabelIconUrl;
   public String mDianDianLabelText;
   public String mDiskLikeInfoString;
-  @awdg
+  @awhp
   public ArrayList<DislikeInfo> mDislikeInfos;
   public byte[] mExtraBiuBriefBytes;
-  @awdg
+  @awhp
   public qks mExtraBiuBriefInfo;
   public String mFeedCookie;
   public long mFeedId;
-  @awdg
+  @awhp
   public long mFeedIndexInGroup;
   public int mFeedType;
   public String mFirstPagePicUrl = "";
   public String mGWCommonData;
-  @awdg
+  @awhp
   public galleryFeeds.GalleryFeedsInfo mGalleryFeedsInfo;
   public int mGalleryPicNumber;
-  @awdg
+  @awhp
   public long mGroupCount;
-  @awdg
+  @awhp
   public long mGroupId = -1L;
-  @awdg
+  @awhp
   public List<BaseArticleInfo> mGroupSubArticleList;
-  @awdg
+  @awhp
   public URL mHeaderIconUrl;
   public int mIsDispTimestamp;
   public int mIsGallery;
-  @awdg
+  @awhp
   public boolean mIsGalleryChannel;
-  @awdg
+  @awhp
   public boolean mIsInPolymeric;
   public boolean mIsPolymericGallery;
   public int mIsShowSearchord;
   public String mJsonPictureList;
   public String mJsonVideoList;
-  @awdg
+  @awhp
   public int mJumpType;
-  @awdg
+  @awhp
   public qlb mKdLiveInfo;
   public byte[] mKdLiveInfoBytes;
-  @awdg
+  @awhp
   public List<articlesummary.ChannelInfo> mLabelListObj;
   public byte[] mLableListInfoBytes;
   public long mMergeVideoId;
-  @awdg
+  @awhp
   private qla mModel;
   public byte[] mMultiBiuSameListBytes;
-  @awdg
+  @awhp
   public List<articlesummary.MultiBiuSameContent> mMultiBiuSameListObj;
   public byte[] mNewPackInfoBytes;
-  @awdg
+  @awhp
   public qlj mNewPolymericInfo;
   public String mOriginalUrl = "";
   public boolean mPUinIsActive;
   public byte[] mPackInfoBytes;
-  @awdg
+  @awhp
   public articlesummary.PackInfo mPackInfoObj;
-  @awdg
+  @awhp
   public articlesummary.PartnerAccountInfo mPartnerAccountInfo;
   public byte[] mPartnerAccountInfoBytes;
-  @awdg
+  @awhp
   public URL[] mPictures;
-  @awdg
+  @awhp
   public qlo mPolymericInfo;
-  @awdg
+  @awhp
   public URL mPolymericSmallVideoCoverUrl;
-  @awdg
+  @awhp
   public volatile TemplateBean mProteusTemplateBean;
   public long mRecommendFollowId;
   public byte[] mRecommendFollowInfoBytes;
-  @awdg
+  @awhp
   public qlt mRecommendFollowInfos;
   public long mRecommendSeq = -1L;
   public long mRecommendTime = -1L;
   public String mRecommentdReason = "";
-  @awdg
+  @awhp
   public String mRefreshTime = "0";
   public String mReportCommonData;
-  @awdg
+  @awhp
   public int mResolvedFeedType;
   public String mSearchWordSessionId;
   public String mSearchWordTitle;
   public ArrayList<RequestSearchWord.Rcmd> mSearchWords = new ArrayList();
   public byte[] mServerContext;
   public boolean mShowBigPicture;
-  @awdg
+  @awhp
   public VideoColumnInfo mSimpleVideoColumnInfo;
   public byte[] mSimpleVideoColumnInfoBytes;
-  @awdg
+  @awhp
   public URL mSinglePicture;
-  @awdg
+  @awhp
   public SocializeFeedsInfo mSocialFeedInfo;
   public byte[] mSocialFeedInfoByte;
   public String mStrCircleId;
   public int mStrategyId;
   public byte[] mSubArticleListBytes;
-  @awdg
+  @awhp
   public List<ArticleInfo> mSubArtilceList;
-  @awdg
+  @awhp
   public List<articlesummary.ArticleSummary> mSubSummaryListObj;
   public String mSubscribeID = "";
   public byte[] mSubscribeInfoBytes;
-  @awdg
+  @awhp
   public articlesummary.SubscribeInfo mSubscribeInfoObj;
   public String mSubscribeName = "";
   public String mSummary = "";
-  @awdg
+  @awhp
   public String mThirdVideoURL;
-  @awdg
+  @awhp
   public long mThirdVideoURLExpireTime;
   public long mTime = -1L;
   public String mTitle = "";
   public String mTopicPicInfo = "";
   public double mTopicPicWHRatio;
-  @awdg
+  @awhp
   public qnm mTopicRecommendFeedsInfo;
   public byte[] mTopicRecommendFeedsInfoByte;
   public int mVideoAdsJumpType;
@@ -317,54 +317,54 @@ public class BaseArticleInfo
   public int mVideoAdsSource;
   public String mVideoArticleSubsColor;
   public String mVideoArticleSubsText;
-  @awdg
+  @awhp
   public VideoColumnInfo mVideoColumnInfo;
   public byte[] mVideoColumnInfoBytes;
   public int mVideoCommentCount;
-  @awdg
+  @awhp
   private qkj mVideoCoverInterceptor;
-  @awdg
+  @awhp
   public URL mVideoCoverUrl;
-  @awdg
+  @awhp
   public articlesummary.VideoDownloadBarInfo mVideoDownloadBarInfo;
   public byte[] mVideoDownloadBarInfoBytes;
-  @awdg
+  @awhp
   public int mVideoDuration;
-  @awdg
+  @awhp
   public int mVideoJsonHeight;
-  @awdg
+  @awhp
   public int mVideoJsonWidth;
   public String mVideoLogoUrl;
   public int mVideoPlayCount;
   public int mVideoType;
-  @awdg
+  @awhp
   public String mVideoVid;
   public byte[] mWeishiUGInfo;
-  @awdg
+  @awhp
   public long mXGFileSize;
   public String msgBoxBriefContent;
   public String msgBoxBriefPreFix;
   public int msgBoxBriefPreFixType;
-  @awdg
+  @awhp
   public ArrayList<MultiBiuSameContent> multiBiuSameContentList;
-  @awdg
+  @awhp
   public qli multiVideoColumnInfo;
   public byte[] multiVideoColumnInfoBytes;
   public String nick_name;
-  @awdg
+  @awhp
   public qkh patchStatus = new qkh();
   public String proteusItemsData;
-  @awdg
+  @awhp
   public PTSItemData ptsItemData;
   public byte[] ptsItemDataBytes;
   public String ptsLiteAppName;
   public long publishUin;
   public String rawkey;
-  @awdg
+  @awhp
   public qlx scripCmsInfo;
   public byte[] scripCmsInfoByte;
   public boolean showBreathAnimation;
-  @awdg
+  @awhp
   public List<articlesummary.SRTUniversalID> srtUniversalID;
   public byte[] srtUniversalIDBytesList;
   public pcq strategy;
@@ -372,9 +372,9 @@ public class BaseArticleInfo
   public String thirdAction;
   public String thirdIcon;
   public String thirdName;
-  @awdg
+  @awhp
   public String thirdUin;
-  @awdg
+  @awhp
   public String thirdUinName;
   public long uin;
   public String vIconUrl;
@@ -383,9 +383,9 @@ public class BaseArticleInfo
   public int videoJumpChannelType = -1;
   public String videoReportInfo;
   public String viewRowkey;
-  @awdg
+  @awhp
   public pai waterFallPic;
-  @awdg
+  @awhp
   public articlesummary.WeishiUGInfo weishiUGInfo;
   private String wormholeData;
   private String wormholeId;
@@ -1411,8 +1411,8 @@ public class BaseArticleInfo
     this.mSearchWords.clear();
     localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     Paint localPaint = new Paint();
-    localPaint.setTextSize(aekt.a(14.0F, ((QQAppInterface)localObject).getApp().getResources()));
-    int i = (int)bdcb.k() - aekt.a(14.0F, ((QQAppInterface)localObject).getApp().getResources()) - (int)localPaint.measureText(paramString);
+    localPaint.setTextSize(aepi.a(14.0F, ((QQAppInterface)localObject).getApp().getResources()));
+    int i = (int)bdgk.k() - aepi.a(14.0F, ((QQAppInterface)localObject).getApp().getResources()) - (int)localPaint.measureText(paramString);
     int j;
     label146:
     RequestSearchWord.Rcmd localRcmd;
@@ -1432,13 +1432,13 @@ public class BaseArticleInfo
         {
           localRcmd = (RequestSearchWord.Rcmd)paramPBStringField.next();
           int k = (int)localPaint.measureText(localRcmd.word.get().toStringUtf8());
-          k = aekt.a(38.0F, ((QQAppInterface)localObject).getApp().getResources()) + k;
+          k = aepi.a(38.0F, ((QQAppInterface)localObject).getApp().getResources()) + k;
           if (i - k > 0) {
             if (TextUtils.isEmpty(paramString))
             {
               paramString = paramString + localRcmd.word.get().toStringUtf8();
               label264:
-              int m = aekt.a(14.0F, ((QQAppInterface)localObject).getApp().getResources());
+              int m = aepi.a(14.0F, ((QQAppInterface)localObject).getApp().getResources());
               this.mSearchWords.add(localRcmd);
               paramPBStringField.remove();
               i -= k - m;
@@ -1460,8 +1460,8 @@ public class BaseArticleInfo
       if (this.innerUniqueID != null) {
         paramPBRepeatMessageField = ByteStringMicro.copyFromUtf8(this.innerUniqueID).toStringUtf8();
       }
-      aynt.a(null, new ReportModelDC02528().module("all_result").action("exp_Kdfeedsback_list").obj1("2049").ver2("Kdfeedsback").ver3(this.mArticleContentUrl).ver4(paramString).ver5(this.mTitle).ver6(paramPBRepeatMessageField).session_id(this.mSearchWordSessionId));
-      ((amap)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(111)).a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "exp_Kdfeedsback_list", this.mSearchWordSessionId, this.mArticleContentUrl, paramString, this.mTitle, paramPBRepeatMessageField);
+      aysc.a(null, new ReportModelDC02528().module("all_result").action("exp_Kdfeedsback_list").obj1("2049").ver2("Kdfeedsback").ver3(this.mArticleContentUrl).ver4(paramString).ver5(this.mTitle).ver6(paramPBRepeatMessageField).session_id(this.mSearchWordSessionId));
+      ((amfe)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(111)).a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "exp_Kdfeedsback_list", this.mSearchWordSessionId, this.mArticleContentUrl, paramString, this.mTitle, paramPBRepeatMessageField);
       return;
     }
   }

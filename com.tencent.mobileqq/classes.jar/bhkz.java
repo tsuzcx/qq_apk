@@ -1,59 +1,10 @@
-import com.tencent.qqprotect.qsec.IQSecRuntime;
-import com.tencent.qqprotect.qsec.IRuntimeInterface;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import android.os.Bundle;
 
-public class bhkz
-  implements IQSecRuntime
+public abstract interface bhkz
 {
-  public static IQSecRuntime a;
-  private HashMap<String, IRuntimeInterface> a;
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public bhkz()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_ComTencentQqprotectQsecIQSecRuntime = this;
-  }
-  
-  public void a(IRuntimeInterface paramIRuntimeInterface)
-  {
-    String str = paramIRuntimeInterface.getInterfaceName();
-    if ((str != null) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(str, paramIRuntimeInterface);
-    }
-  }
-  
-  public Object getApplicationContext()
-  {
-    return MobileQQ.sMobileQQ;
-  }
-  
-  public Object getQQAppInterface()
-  {
-    return MobileQQ.sMobileQQ.waitAppRuntime(null);
-  }
-  
-  public int getRuntimeVersion()
-  {
-    return 1;
-  }
-  
-  public IRuntimeInterface queryRuntimeInterface(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    IRuntimeInterface localIRuntimeInterface2 = (IRuntimeInterface)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    IRuntimeInterface localIRuntimeInterface1 = localIRuntimeInterface2;
-    if (localIRuntimeInterface2 != null)
-    {
-      localIRuntimeInterface1 = localIRuntimeInterface2;
-      if (!paramString.equals(localIRuntimeInterface2.getInterfaceName())) {
-        localIRuntimeInterface1 = null;
-      }
-    }
-    return localIRuntimeInterface1;
-  }
+  public abstract void a(Bundle paramBundle);
 }
 
 

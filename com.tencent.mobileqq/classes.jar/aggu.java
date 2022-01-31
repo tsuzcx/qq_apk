@@ -1,16 +1,30 @@
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import mqq.util.WeakReference;
+import android.view.View.OnTouchListener;
 
 class aggu
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  aggu(aggt paramaggt, int paramInt) {}
+  aggu(aggq paramaggq) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ((PhotoListPanel)this.jdField_a_of_type_Aggt.a.get()).a(paramView, this.jdField_a_of_type_Int);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (Build.VERSION.SDK_INT >= 11)
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        if (Build.VERSION.SDK_INT >= 11) {
+          paramView.setAlpha(1.0F);
+        }
+      }
+    }
   }
 }
 

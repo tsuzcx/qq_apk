@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bebc;
-import becq;
-import bfnq;
+import befl;
+import begz;
+import bfrz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.open.appcommon.js.BaseInterface;
@@ -15,7 +15,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class WadlWebViewJsPlugin
-  extends bebc
+  extends befl
 {
   public static final String PLUGIN_NAMESPACE = "wadl_download";
   public static final String TAG = "WadlWebViewJsPlugin";
@@ -70,7 +70,7 @@ public class WadlWebViewJsPlugin
     int i;
     if (localBaseInterface != null)
     {
-      bfnq.c("WadlWebViewJsPlugin", "handleJsRequest pkgName=" + paramString2 + ",methodName=" + paramString3);
+      bfrz.c("WadlWebViewJsPlugin", "handleJsRequest pkgName=" + paramString2 + ",methodName=" + paramString3);
       Method[] arrayOfMethod = localBaseInterface.getClass().getDeclaredMethods();
       int j = arrayOfMethod.length;
       i = 0;

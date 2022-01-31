@@ -3,12 +3,12 @@ package com.tencent.device.datadef;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import zot;
+import zti;
 
 public class ProductInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ProductInfo> CREATOR = new zot();
+  public static final Parcelable.Creator<ProductInfo> CREATOR = new zti();
   public static final int DeviceOSType_Android = 2;
   public static final int DeviceOSType_Linux = 1;
   public static final int DeviceOSType_RTOS = 3;

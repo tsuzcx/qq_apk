@@ -1,50 +1,90 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.model.RenderInfo;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StKVData;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StModifyFriendInteractiveStorageReq;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StModifyFriendInteractiveStorageRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.Map;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONObject;
 
-@bghi(a="ApkgLoadAsyncTask")
 public class bhdu
-  extends bhhm
+  extends bhdw
 {
-  private bgjw jdField_a_of_type_Bgjw;
-  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  private boolean jdField_a_of_type_Boolean;
+  private CloudStorage.StModifyFriendInteractiveStorageReq a = new CloudStorage.StModifyFriendInteractiveStorageReq();
   
-  public bhdu(Context paramContext, bgqg parambgqg)
+  public bhdu(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, HashMap<String, String> paramHashMap)
   {
-    super(paramContext, parambgqg);
-  }
-  
-  public bgjw a()
-  {
-    return this.jdField_a_of_type_Bgjw;
-  }
-  
-  public void a() {}
-  
-  public void a(MiniAppInfo paramMiniAppInfo)
-  {
-    bgxl.a(206, "", a().getMiniAppInfoForReport());
-    QMLog.i("BaseRuntimeLoader", "ApkgLoadAsyncTask start loadApkgByConfig");
-    if ((this.jdField_a_of_type_Boolean) && (paramMiniAppInfo != null) && (paramMiniAppInfo.supportNativeRenderMode()))
-    {
-      QMLog.i("BaseRuntimeLoader", "ApkgLoadAsyncTask use flutter url:" + (String)paramMiniAppInfo.renderInfo.renderMaterialMap.get(Integer.valueOf(1)));
-      paramMiniAppInfo.downloadUrl = ((String)paramMiniAppInfo.renderInfo.renderMaterialMap.get(Integer.valueOf(1)));
+    if (paramStCommonExt != null) {
+      this.a.ext.set(paramStCommonExt);
     }
-    bgjh.a().a(a(), this.jdField_a_of_type_Boolean, paramMiniAppInfo, new bhdv(this, paramMiniAppInfo));
+    this.a.appid.set(paramString1);
+    this.a.toUser.set(paramString2);
+    this.a.shareId.set(paramString3);
+    this.a.opNum.set(paramInt);
+    this.a.operation.set(paramString4);
+    paramStCommonExt = paramHashMap.entrySet().iterator();
+    while (paramStCommonExt.hasNext())
+    {
+      paramString1 = (Map.Entry)paramStCommonExt.next();
+      paramString2 = new CloudStorage.StKVData();
+      paramString2.key.set((String)paramString1.getKey());
+      paramString2.value.set((String)paramString1.getValue());
+      this.a.KVDataList.add(paramString2);
+    }
   }
   
-  public void a(boolean paramBoolean)
+  protected String a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return "mini_app_cloudstorage";
   }
   
-  public void c()
+  public JSONObject a(byte[] paramArrayOfByte)
   {
-    super.c();
-    bgxl.a(207, "", a().getMiniAppInfoForReport());
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    CloudStorage.StModifyFriendInteractiveStorageRsp localStModifyFriendInteractiveStorageRsp = new CloudStorage.StModifyFriendInteractiveStorageRsp();
+    try
+    {
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      localStModifyFriendInteractiveStorageRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      if (localStModifyFriendInteractiveStorageRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("response", localStModifyFriendInteractiveStorageRsp);
+        paramArrayOfByte.put("resultCode", 0);
+        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
+        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+        return paramArrayOfByte;
+      }
+      QMLog.d("ModifyFriendInteractiveStorageRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("ModifyFriendInteractiveStorageRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "ModifyFriendInteractiveStorage";
   }
 }
 

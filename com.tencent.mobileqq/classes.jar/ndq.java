@@ -203,7 +203,7 @@ public class ndq
         if (paramLong1 > 0L) {
           str2 = String.valueOf(paramLong1);
         }
-        azmj.b(paramQQAppInterface, "P_CliOper", "qqconnect", paramString1, paramString2, paramString3, 0, 0, str2, str1, paramString4, "");
+        azqs.b(paramQQAppInterface, "P_CliOper", "qqconnect", paramString1, paramString2, paramString3, 0, 0, str2, str1, paramString4, "");
         return;
       }
     }

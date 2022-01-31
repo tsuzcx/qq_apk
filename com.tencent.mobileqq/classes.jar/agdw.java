@@ -1,18 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
 
-class agdw
-  implements bepg
+public class agdw
+  implements View.OnClickListener
 {
-  agdw(agdi paramagdi) {}
+  public agdw(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder) {}
   
-  public void a(bepe parambepe)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOGalleryScene", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambepe);
+    agea localagea = (agea)aepi.a(paramView);
+    if (paramView == localagea.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localagea);
     }
+    while (paramView != localagea.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+      return;
+    }
+    this.a.a(localagea);
   }
-  
-  public void a(bepe parambepe, int paramInt1, int paramInt2) {}
 }
 
 

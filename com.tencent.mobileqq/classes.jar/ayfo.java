@@ -1,17 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.mobileqq.robotchat.RobotChatTipLayout;
 
-class ayfo
-  implements View.OnClickListener
+public abstract interface ayfo
 {
-  ayfo(ayfm paramayfm) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.b(this.a.a.b);
-    this.a.a.e.setVisibility(0);
-  }
+  public abstract void a(RobotChatTipLayout paramRobotChatTipLayout);
 }
 
 

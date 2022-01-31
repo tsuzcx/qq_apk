@@ -1,48 +1,50 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
 
 public class ahbw
-  implements ruy
 {
-  public ahbw(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public int a;
+  public ahbx a;
+  @Nullable
+  public ahcd a;
+  @Nullable
+  public Drawable a;
+  public String a;
+  public boolean a;
+  @Nullable
+  public Drawable b;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
+  public String e;
+  public boolean e;
+  public String f;
+  public String g;
   
-  public void a(String paramString)
+  public void a(ahbw paramahbw)
   {
-    Object localObject;
-    if (paramString != null)
-    {
-      Iterator localIterator = this.a.c.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = (ChannelInfo)localIterator.next();
-      } while (!paramString.equals(((ChannelInfo)localObject).mChannelName));
-    }
-    for (paramString = (String)localObject;; paramString = null)
-    {
-      if (paramString != null)
-      {
-        if (!TextUtils.isEmpty(paramString.mJumpUrl))
-        {
-          localObject = new Intent(this.a, QQBrowserActivity.class);
-          ((Intent)localObject).putExtra("hide_operation_bar", true);
-          ((Intent)localObject).putExtra("url", paramString.mJumpUrl);
-          this.a.startActivity((Intent)localObject);
-        }
-      }
-      else {
-        return;
-      }
-      nxu.a(this.a, paramString.mChannelID, paramString.mChannelName, paramString.mChannelType, 0);
-      return;
-    }
+    this.jdField_a_of_type_JavaLangString = paramahbw.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramahbw.jdField_b_of_type_JavaLangString;
+    this.c = paramahbw.c;
+    this.jdField_e_of_type_JavaLangString = paramahbw.jdField_e_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramahbw.jdField_a_of_type_Int;
+    this.jdField_d_of_type_JavaLangString = paramahbw.jdField_d_of_type_JavaLangString;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramahbw.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    this.jdField_b_of_type_Boolean = paramahbw.jdField_b_of_type_Boolean;
+    this.jdField_a_of_type_Ahbx = paramahbw.jdField_a_of_type_Ahbx;
+    this.jdField_a_of_type_Ahcd = paramahbw.jdField_a_of_type_Ahcd;
+    this.jdField_a_of_type_Boolean = paramahbw.jdField_a_of_type_Boolean;
+    this.jdField_d_of_type_Boolean = paramahbw.jdField_d_of_type_Boolean;
+    this.jdField_e_of_type_Boolean = paramahbw.jdField_e_of_type_Boolean;
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramahbw.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  }
+  
+  public String toString()
+  {
+    return "ZhituPicData{url='" + this.jdField_a_of_type_JavaLangString + '\'' + ", path='" + this.jdField_b_of_type_JavaLangString + '\'' + ", originPath='" + this.c + '\'' + ", drawTextParam=" + this.jdField_a_of_type_Ahcd + ", inCache=" + this.jdField_a_of_type_Boolean + ", reqKey='" + this.jdField_d_of_type_JavaLangString + '\'' + ", idxInRes=" + this.jdField_a_of_type_Int + ", pic_md5='" + this.jdField_e_of_type_JavaLangString + '\'' + ", drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + ", originDrawable=" + this.jdField_b_of_type_AndroidGraphicsDrawableDrawable + ", isGif=" + this.jdField_b_of_type_Boolean + ", reportData=" + this.jdField_a_of_type_Ahbx + '}';
   }
 }
 

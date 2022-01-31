@@ -1,74 +1,29 @@
-import android.net.Uri;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.FeedsProtocol.GetMediaDetailRsp;
-import com.tencent.pb.now.FeedsProtocol.MediaInfo;
-import com.tencent.pb.now.FeedsProtocol.PicFeedsInfo;
-import com.tencent.pb.now.FeedsProtocol.ShortVideoInfo;
-import com.tencent.pb.now.FeedsProtocol.TextFeed;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class auys
-  extends auye
+  implements bemh<oidb_0x8e4.RspBody>
 {
-  private String a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  public auys(GameRoomInviteActivity paramGameRoomInviteActivity, bema parambema) {}
   
-  public auys()
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_JavaLangString = "PlayListDataModel";
-  }
-  
-  private void a(FeedsProtocol.GetMediaDetailRsp paramGetMediaDetailRsp)
-  {
-    paramGetMediaDetailRsp = paramGetMediaDetailRsp.media_list.get().iterator();
-    while (paramGetMediaDetailRsp.hasNext())
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
-      FeedsProtocol.MediaInfo localMediaInfo = (FeedsProtocol.MediaInfo)paramGetMediaDetailRsp.next();
-      if ((localMediaInfo.type.get() != 1) && (localMediaInfo.type.get() != 2)) {
-        if (localMediaInfo.type.get() == 3) {
-          a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.ShortVideoInfo)localMediaInfo.short_video.get(), this.jdField_a_of_type_JavaUtilArrayList);
-        } else if (localMediaInfo.type.get() == 5) {
-          a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.PicFeedsInfo)localMediaInfo.pic_info.get(), this.jdField_a_of_type_JavaUtilArrayList);
-        } else if (localMediaInfo.type.get() == 6) {
-          a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.TextFeed)localMediaInfo.text_feed.get(), this.jdField_a_of_type_JavaUtilArrayList);
-        }
+      GameRoomInviteActivity localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+      if ((!paramRspBody.uint64_leader_uin.has()) || (paramRspBody.uint64_leader_uin.get() == this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), null, alud.a(2131705499));
+        return;
       }
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    new auza(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_b_of_type_JavaLangString + "&start=" + this.jdField_b_of_type_Int + "&num=" + 10, new auyt(this));
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if ("1".equals(paramBundle.getString("isLocal"))) {}
-    do
-    {
-      return;
-      paramBundle = paramBundle.getString("raw_url");
-      this.jdField_b_of_type_JavaLangString = Uri.parse(paramBundle).getQuery();
-    } while (!QLog.isColorLevel());
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "PlayListDataModel, url=" + paramBundle);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Bema.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b, new auyt(this));
   }
 }
 

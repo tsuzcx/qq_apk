@@ -1,12 +1,28 @@
-import android.graphics.Bitmap;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-public class ahrv
+class ahrv
+  implements View.OnTouchListener
 {
-  public int a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public String b;
+  ahrv(ahrs paramahrs, TextView paramTextView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+    }
+  }
 }
 
 

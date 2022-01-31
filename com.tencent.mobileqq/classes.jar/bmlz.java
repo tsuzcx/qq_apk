@@ -1,15 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 class bmlz
-  implements ValueAnimator.AnimatorUpdateListener
+  extends QQUIEventReceiver<bmlp, bmsc>
 {
-  bmlz(bmly parambmly) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bmlz(@NonNull bmlp parambmlp)
   {
-    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.k();
+    super(parambmlp);
+  }
+  
+  public void a(@NonNull bmlp parambmlp, @NonNull bmsc parambmsc) {}
+  
+  public Class acceptEventClass()
+  {
+    return bmsc.class;
   }
 }
 

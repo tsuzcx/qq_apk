@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.extendfriend.bean;
 
-import alpo;
+import alud;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apye;
-import apyo;
+import aqcn;
+import aqcx;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MiniAppRecommInfo
-  extends apyo
+  extends aqcx
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<MiniAppRecommInfo> CREATOR = new apye();
+  public static final Parcelable.Creator<MiniAppRecommInfo> CREATOR = new aqcn();
   public List<MiniAppRecommInfo.MiniApp> appInfoList = new ArrayList();
   public long cacheValidTime = System.currentTimeMillis() / 1000L + 3600L;
-  public String headDesc = alpo.a(2131707214);
+  public String headDesc = alud.a(2131707226);
   
   public MiniAppRecommInfo() {}
   

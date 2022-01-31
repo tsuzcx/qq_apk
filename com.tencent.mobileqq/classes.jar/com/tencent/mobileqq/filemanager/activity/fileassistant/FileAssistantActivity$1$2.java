@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.fileassistant;
 
-import alpo;
+import alud;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.TextView;
@@ -12,10 +12,10 @@ class FileAssistantActivity$1$2
   
   public void run()
   {
-    this.a.this$0.a = ((ViewStub)this.a.this$0.findViewById(2131380053));
+    this.a.this$0.a = ((ViewStub)this.a.this$0.findViewById(2131380111));
     View localView = this.a.this$0.a.inflate();
     this.a.this$0.a.setVisibility(0);
-    ((TextView)localView.findViewById(2131378982)).setText(alpo.a(2131704866));
+    ((TextView)localView.findViewById(2131379040)).setText(alud.a(2131704878));
   }
 }
 

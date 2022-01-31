@@ -131,7 +131,7 @@ class AdProxyImpl$1$1
     //   261: invokevirtual 133	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   264: checkcast 135	NS_MINI_INTERFACE/INTERFACE$StApiAppInfo
     //   267: invokestatic 141	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:from	(LNS_MINI_INTERFACE/INTERFACE$StApiAppInfo;)Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;
-    //   270: invokestatic 147	bgud:a	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)V
+    //   270: invokestatic 147	bgyk:a	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)V
     //   273: iload_3
     //   274: iconst_1
     //   275: iadd

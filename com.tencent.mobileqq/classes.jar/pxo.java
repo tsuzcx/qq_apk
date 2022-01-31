@@ -5,7 +5,7 @@ import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class pxo
-  implements bhtz
+  implements bhyg
 {
   pxo(pxl parampxl) {}
   

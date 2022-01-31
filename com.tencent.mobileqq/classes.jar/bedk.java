@@ -1,14 +1,22 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.smtt.sdk.WebView;
-
-public abstract interface bedk
+public class bedk
 {
-  public abstract Activity a();
+  public int a;
+  public String a;
+  public int b;
+  public int c = 2;
+  public int d;
+  public int e;
+  public int f;
   
-  public abstract WebViewFragment a();
-  
-  public abstract WebView a();
+  public bedk(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+    this.f = paramInt4;
+  }
 }
 
 

@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.net.Uri.Builder;
 import android.os.Build.VERSION;
 import android.provider.MediaStore.Images.Media;
-import azmp;
+import azqy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
@@ -805,10 +805,10 @@ public class QAlbumBaseUtil
                   paramCursor.append(j);
                   paramCursor = paramCursor.toString();
                   if (i > 0) {
-                    azmp.a("Album_Query_File_Path_Null", paramCursor);
+                    azqy.a("Album_Query_File_Path_Null", paramCursor);
                   }
                   if (j > 0) {
-                    azmp.a("Album_Query_File_Not_Exist", paramCursor);
+                    azqy.a("Album_Query_File_Not_Exist", paramCursor);
                   }
                 }
                 sAlbumQueryFailReport = true;
@@ -1553,7 +1553,7 @@ public class QAlbumBaseUtil
     //   685: invokevirtual 590	android/media/MediaMetadataRetriever:release	()V
     //   688: aload_0
     //   689: athrow
-    //   690: invokestatic 599	bhou:d	()Z
+    //   690: invokestatic 599	bhtb:d	()Z
     //   693: ifeq -160 -> 533
     //   696: new 574	android/media/MediaMetadataRetriever
     //   699: dup

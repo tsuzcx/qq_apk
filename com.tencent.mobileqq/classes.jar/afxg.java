@@ -1,20 +1,11 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.mobileqq.activity.aio.stickerbubble.PokeEmoItemView;
 
 public class afxg
-  extends AnimatorListenerAdapter
+  extends aeqi
 {
-  public afxg(SixCombolEffectView paramSixCombolEffectView) {}
+  PokeEmoItemView jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePokeEmoItemView;
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.a) {
-      return;
-    }
-    this.a.b();
-  }
+  public afxg(afxe paramafxe) {}
 }
 
 

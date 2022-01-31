@@ -6,13 +6,13 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
-import ayoq;
+import aysz;
 
 public class RichNodeRootLayout
   extends LinearLayout
 {
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private ayoq jdField_a_of_type_Ayoq;
+  private aysz jdField_a_of_type_Aysz;
   private boolean jdField_a_of_type_Boolean;
   
   public RichNodeRootLayout(Context paramContext)
@@ -46,8 +46,8 @@ public class RichNodeRootLayout
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Ayoq != null) {
-      this.jdField_a_of_type_Ayoq.a();
+    if (this.jdField_a_of_type_Aysz != null) {
+      this.jdField_a_of_type_Aysz.a();
     }
   }
   
@@ -77,9 +77,9 @@ public class RichNodeRootLayout
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setEventHandler(ayoq paramayoq)
+  public void setEventHandler(aysz paramaysz)
   {
-    this.jdField_a_of_type_Ayoq = paramayoq;
+    this.jdField_a_of_type_Aysz = paramaysz;
   }
 }
 

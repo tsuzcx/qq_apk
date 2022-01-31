@@ -1,24 +1,10 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6.3.1;
-
-public class anel
-  implements anfk
+public abstract interface anel
 {
-  public anel(ArkAppDeviceModule.ObserverMethod.6.3.1 param1) {}
+  public abstract void b();
   
-  public void a(long paramLong)
-  {
-    ark.VariantWrapper localVariantWrapper = this.a.a.a.jdField_a_of_type_Andz.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
-  }
+  public abstract void b(int paramInt);
   
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    andw.a(this.a.a.a.jdField_a_of_type_Andz.a, this.a.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
-  }
+  public abstract void c(int paramInt);
 }
 
 

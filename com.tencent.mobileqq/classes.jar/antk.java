@@ -1,101 +1,32 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.content.Context;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class antk
+  extends antj
 {
-  static int b;
-  public int a;
-  public String a;
-  public int[] a;
-  public String b;
+  private float[] d = new float[16];
   
-  static
+  public antk(Context paramContext, int paramInt, SensorManager paramSensorManager, antb paramantb)
   {
-    jdField_b_of_type_Int = -1;
-  }
-  
-  public antk()
-  {
-    this.jdField_b_of_type_JavaLangString = "diy_chartlet";
-  }
-  
-  public static HashMap<String, antk> a(int paramInt, JSONObject paramJSONObject)
-  {
-    Object localObject1 = null;
-    Iterator localIterator = null;
-    ArrayList localArrayList = new ArrayList();
-    Object localObject2;
-    if (paramJSONObject.has("chartlet_animation"))
+    super(paramContext, paramInt, paramSensorManager, paramantb);
+    paramContext = paramSensorManager.getDefaultSensor(15);
+    if ((Build.VERSION.SDK_INT >= 18) && (paramContext != null))
     {
-      localObject2 = paramJSONObject.optJSONObject("chartlet_animation");
-      if (((JSONObject)localObject2).has("animation_set"))
-      {
-        localObject2 = ((JSONObject)localObject2).optJSONArray("animation_set");
-        int i = 0;
-        while (i < ((JSONArray)localObject2).length())
-        {
-          localArrayList.add(((JSONArray)localObject2).optString(i));
-          i += 1;
-        }
-      }
+      this.a.add(paramContext);
+      return;
     }
-    if (paramJSONObject.has("diy_animation")) {
-      localArrayList.add(paramJSONObject.optJSONObject("diy_animation").optString("diy"));
-    }
-    if (paramJSONObject.has("animation_sets"))
-    {
-      localObject2 = paramJSONObject.optJSONObject("animation_sets");
-      paramJSONObject = localIterator;
-      if (0 == 0) {
-        paramJSONObject = new HashMap(4);
-      }
-      localIterator = localArrayList.iterator();
-      label226:
-      for (;;)
-      {
-        localObject1 = paramJSONObject;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject1 = ((JSONObject)localObject2).optJSONObject((String)localIterator.next());
-        if (localObject1 != null)
-        {
-          if (((JSONObject)localObject1).has("text_size")) {}
-          for (localObject1 = antm.a((JSONObject)localObject1);; localObject1 = antl.a((JSONObject)localObject1))
-          {
-            if (localObject1 == null) {
-              break label226;
-            }
-            ((antk)localObject1).jdField_a_of_type_Int = paramInt;
-            paramJSONObject.put(((antk)localObject1).jdField_a_of_type_JavaLangString, localObject1);
-            break;
-          }
-        }
-      }
-    }
-    if ((localObject1 != null) && (((HashMap)localObject1).size() > 0)) {
-      ansd.a().a.put(Integer.valueOf(paramInt), localObject1);
-    }
-    return localObject1;
+    throw new OrientationProviderNotFound(String.valueOf(15));
   }
   
-  private static float b(Paint paramPaint, String paramString)
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramPaint == null)) {
-      return 0.0F;
-    }
-    return paramPaint.measureText(paramString);
+    antd.a(this.d, paramSensorEvent);
+    super.a(this.d);
   }
-  
-  public void a(anty paramanty, Canvas paramCanvas) {}
 }
 
 

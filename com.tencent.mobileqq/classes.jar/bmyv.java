@@ -1,21 +1,35 @@
-import android.util.Property;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
 class bmyv
-  extends Property<bmyp, Float>
+  implements wjt
 {
-  bmyv(bmyp parambmyp, Class paramClass, String paramString)
+  bmyv(bmyu parambmyu) {}
+  
+  public void b(boolean paramBoolean)
   {
-    super(paramClass, paramString);
+    if (bmyu.a(this.a).b())
+    {
+      wxj.a("video_edit", "repost_comment", 0, 0, new String[] { "", "", "", bmyu.a(this.a).a.a("vip_forward_vid") });
+      return;
+    }
+    wxj.a("video_edit", "repost_emoji", 0, 0, new String[] { "", "", "", bmyu.a(this.a).a.a("vip_forward_vid") });
   }
   
-  public Float a(bmyp parambmyp)
+  public boolean b()
   {
-    return Float.valueOf(bmyp.b(parambmyp));
+    return false;
   }
   
-  public void a(bmyp parambmyp, Float paramFloat)
+  public void c(boolean paramBoolean)
   {
-    bmyp.a(parambmyp, paramFloat);
+    if ((!bmyu.a(this.a).a()) && (!bmyu.a(this.a).c())) {
+      this.a.dismiss();
+    }
+  }
+  
+  public void d()
+  {
+    this.a.dismiss();
   }
 }
 

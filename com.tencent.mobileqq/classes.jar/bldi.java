@@ -1,51 +1,60 @@
-import android.content.Context;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.ttpic.baseutils.string.StringUtils;
+import android.support.annotation.Nullable;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collections;
+import java.util.List;
 
 class bldi
-  implements View.OnClickListener
+  implements bmeo<List<blag>>
 {
-  bldi(bldg parambldg) {}
+  bldi(bldg parambldg, blbt paramblbt) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable List<blag> paramList)
   {
-    if (bldg.a(this.a).getText().length() > bldg.a(this.a))
+    blda.a(this.jdField_a_of_type_Bldg.a).a().a(blda.a(this.jdField_a_of_type_Bldg.a));
+    QLog.d("AEGIFChunkPreviewFragment", 4, "On observe material list state");
+    int j;
+    int i;
+    if (paramList == null)
     {
-      QQToast.a(this.a.getContext(), this.a.getContext().getString(2131689849, new Object[] { Integer.valueOf(bldg.a(this.a)) }), 1).a();
-      return;
+      QLog.e("AEGIFChunkPreviewFragment", 4, "aeMaterialWrappers == null");
+      if ((paramList != null) && (blda.a(this.jdField_a_of_type_Bldg.a) != null))
+      {
+        QLog.e("AEGIFChunkPreviewFragment", 4, "Find materials num = " + paramList.size());
+        j = Math.min(paramList.size(), this.jdField_a_of_type_Blbt.b);
+        Collections.shuffle(paramList);
+        i = 0;
+      }
     }
-    if (bldg.a(this.a) != null) {
-      localObject = null;
-    }
-    try
+    for (;;)
     {
-      paramView = bldg.a(this.a).getText().toString();
-      localObject = paramView;
+      blca localblca;
+      if (i < j)
+      {
+        blag localblag = (blag)paramList.get(i);
+        localblca = new blca();
+        localblca.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = localblag.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial;
+        QLog.d("AEGIFChunkPreviewFragment", 4, "Assigning material to item index = " + i + "material id = " + localblag.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id);
+        localblca.b = 0;
+        localblca.jdField_a_of_type_Int = 10;
+        localblca.jdField_a_of_type_JavaLangString = "";
+        bliu.a().h(localblag.jdField_a_of_type_JavaLangString);
+        if (blda.a(this.jdField_a_of_type_Bldg.a).size() < blda.a(this.jdField_a_of_type_Bldg.a)) {}
+      }
+      else
+      {
+        return;
+        if (!paramList.isEmpty()) {
+          break;
+        }
+        QLog.e("AEGIFChunkPreviewFragment", 4, "aeMaterialWrappers is empty");
+        break;
+      }
+      blda.a(this.jdField_a_of_type_Bldg.a).add(localblca);
+      blda.a(this.jdField_a_of_type_Bldg.a).notifyItemInserted(blda.a(this.jdField_a_of_type_Bldg.a).size() - 1);
+      blda.a(this.jdField_a_of_type_Bldg.a).a(blqh.a(), localblca);
+      i += 1;
     }
-    catch (IndexOutOfBoundsException paramView)
-    {
-      label98:
-      break label98;
-    }
-    paramView = (View)localObject;
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      paramView = StringUtils.removeUTF8Emoji((String)localObject);
-    }
-    Object localObject = paramView;
-    if (!TextUtils.isEmpty(paramView)) {
-      localObject = paramView.replaceAll("\\r|\\n", "");
-    }
-    paramView = (View)localObject;
-    if (localObject != null) {
-      paramView = ((String)localObject).trim();
-    }
-    bldg.a(this.a).a(paramView);
-    this.a.dismiss();
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.fragment;
 
 import android.net.Uri;
 import android.os.Handler;
-import begt;
+import belc;
 import com.tencent.mobileqq.webview.webso.WebSoService;
 import com.tencent.qphone.base.util.QLog;
 
@@ -24,7 +24,7 @@ class NearbyHybridFragment$4
     if (i != -1) {}
     try
     {
-      begt.a(Uri.parse(this.this$0.c));
+      belc.a(Uri.parse(this.this$0.c));
       if (QLog.isColorLevel()) {
         QLog.d("nearby.NearbyHybridFragment.webloading", 2, "cleanWebSoData: hasCacheData=" + WebSoService.a().a(this.this$0.c));
       }

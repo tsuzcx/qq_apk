@@ -9,13 +9,13 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import bgid;
-import bgkk;
-import bgln;
-import bhbp;
-import bhbq;
-import bhcq;
-import bhes;
+import bgmk;
+import bgor;
+import bgpu;
+import bhfw;
+import bhfx;
+import bhgx;
+import bhiz;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.runtime.core.page.widget.MiniAppTextArea;
@@ -35,9 +35,9 @@ public class NativeViewContainer
   private Context jdField_a_of_type_AndroidContentContext;
   private SparseArray<MiniAppTextArea> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   private View jdField_a_of_type_AndroidViewView;
-  private bhcq jdField_a_of_type_Bhcq;
+  private bhgx jdField_a_of_type_Bhgx;
   private PageWebviewContainer jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer;
-  private List<bhbq> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<bhfx> jdField_a_of_type_JavaUtilList = new ArrayList();
   private SparseArray<CoverView> b = new SparseArray();
   
   public NativeViewContainer(Context paramContext, PageWebviewContainer paramPageWebviewContainer)
@@ -46,40 +46,40 @@ public class NativeViewContainer
     this.jdField_a_of_type_Float = DisplayUtil.getDensity(paramContext);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer = paramPageWebviewContainer;
-    this.jdField_a_of_type_Bhcq = new bhcq(this);
+    this.jdField_a_of_type_Bhgx = new bhgx(this);
     b();
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext().getApplicationContext()).inflate(2131559348, null);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext().getApplicationContext()).inflate(2131559347, null);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370481)).setOnClickListener(new bhbp(this));
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370500)).setOnClickListener(new bhfw(this));
     if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer != null) {
       this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.a(this.jdField_a_of_type_AndroidViewView);
     }
   }
   
-  private void b(bgid parambgid)
+  private void b(bgmk parambgmk)
   {
-    bgkk.a(new NativeViewContainer.3(this, parambgid));
+    bgor.a(new NativeViewContainer.3(this, parambgmk));
   }
   
-  private void c(bgid parambgid)
+  private void c(bgmk parambgmk)
   {
-    bgkk.a(new NativeViewContainer.4(this, parambgid));
+    bgor.a(new NativeViewContainer.4(this, parambgmk));
   }
   
-  private void d(bgid parambgid)
+  private void d(bgmk parambgmk)
   {
-    bgkk.a(new NativeViewContainer.5(this, parambgid));
+    bgor.a(new NativeViewContainer.5(this, parambgmk));
   }
   
-  private void e(bgid parambgid)
+  private void e(bgmk parambgmk)
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(parambgid.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject1 = new JSONObject(parambgmk.jdField_b_of_type_JavaLangString);
       int i = localJSONObject1.optInt("inputId");
       JSONObject localJSONObject2 = new JSONObject();
       localJSONObject2.put("inputId", i);
@@ -87,12 +87,12 @@ public class NativeViewContainer
       if (!TextUtils.isEmpty(str)) {
         localJSONObject2.put("data", str);
       }
-      bgkk.a(new NativeViewContainer.6(this, i, localJSONObject1, parambgid, localJSONObject2));
+      bgor.a(new NativeViewContainer.6(this, i, localJSONObject1, parambgmk, localJSONObject2));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("NativeViewContainer", parambgid.a + " error.", localJSONException);
+      QMLog.e("NativeViewContainer", parambgmk.a + " error.", localJSONException);
     }
   }
   
@@ -123,11 +123,11 @@ public class NativeViewContainer
     }
   }
   
-  private void f(bgid parambgid)
+  private void f(bgmk parambgmk)
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(parambgid.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject1 = new JSONObject(parambgmk.jdField_b_of_type_JavaLangString);
       int i = localJSONObject1.optInt("inputId");
       JSONObject localJSONObject2 = new JSONObject();
       localJSONObject2.put("inputId", i);
@@ -135,163 +135,163 @@ public class NativeViewContainer
       if (!TextUtils.isEmpty(str)) {
         localJSONObject2.put("data", str);
       }
-      bgkk.a(new NativeViewContainer.7(this, localJSONObject1, parambgid, localJSONObject2));
+      bgor.a(new NativeViewContainer.7(this, localJSONObject1, parambgmk, localJSONObject2));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("NativeViewContainer", parambgid.a + " error.", localJSONException);
+      QMLog.e("NativeViewContainer", parambgmk.a + " error.", localJSONException);
     }
   }
   
-  private void g(bgid parambgid)
+  private void g(bgmk parambgmk)
   {
     try
     {
-      int i = new JSONObject(parambgid.jdField_b_of_type_JavaLangString).optInt("inputId");
+      int i = new JSONObject(parambgmk.jdField_b_of_type_JavaLangString).optInt("inputId");
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("inputId", i);
-      bgkk.a(new NativeViewContainer.8(this, i, parambgid, localJSONObject));
+      bgor.a(new NativeViewContainer.8(this, i, parambgmk, localJSONObject));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("NativeViewContainer", parambgid.a + " error.", localJSONException);
+      QMLog.e("NativeViewContainer", parambgmk.a + " error.", localJSONException);
     }
   }
   
-  private void h(bgid parambgid)
+  private void h(bgmk parambgmk)
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(parambgid.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject1 = new JSONObject(parambgmk.jdField_b_of_type_JavaLangString);
       int i = localJSONObject1.optInt("canvasId");
       int j = localJSONObject1.optInt("parentId");
       JSONObject localJSONObject2 = localJSONObject1.optJSONObject("position");
       JSONObject localJSONObject3 = new JSONObject();
       localJSONObject3.put("containerId", i);
-      bgkk.a(new NativeViewContainer.10(this, localJSONObject1, i, j, localJSONObject2, localJSONObject1.optString("data"), parambgid, localJSONObject3));
+      bgor.a(new NativeViewContainer.10(this, localJSONObject1, i, j, localJSONObject2, localJSONObject1.optString("data"), parambgmk, localJSONObject3));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("NativeViewContainer", parambgid.a + " error.", localJSONException);
+      QMLog.e("NativeViewContainer", parambgmk.a + " error.", localJSONException);
     }
   }
   
-  private void i(bgid parambgid)
+  private void i(bgmk parambgmk)
   {
     try
     {
-      JSONObject localJSONObject2 = new JSONObject(parambgid.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject2 = new JSONObject(parambgmk.jdField_b_of_type_JavaLangString);
       int i = localJSONObject2.optInt("canvasId");
       JSONObject localJSONObject1 = localJSONObject2.optJSONObject("position");
       boolean bool = localJSONObject2.optBoolean("hide", false);
       localJSONObject2 = new JSONObject();
       localJSONObject2.put("containerId", i);
-      bgkk.a(new NativeViewContainer.11(this, i, localJSONObject1, bool, parambgid, localJSONObject2));
+      bgor.a(new NativeViewContainer.11(this, i, localJSONObject1, bool, parambgmk, localJSONObject2));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("NativeViewContainer", parambgid.a + " error.", localJSONException);
+      QMLog.e("NativeViewContainer", parambgmk.a + " error.", localJSONException);
     }
   }
   
-  private void j(bgid parambgid)
+  private void j(bgmk parambgmk)
   {
     try
     {
-      bgkk.a(new NativeViewContainer.12(this, new JSONObject(parambgid.jdField_b_of_type_JavaLangString).optInt("canvasId"), parambgid));
+      bgor.a(new NativeViewContainer.12(this, new JSONObject(parambgmk.jdField_b_of_type_JavaLangString).optInt("canvasId"), parambgmk));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("NativeViewContainer", parambgid.a + " error.", localJSONException);
+      QMLog.e("NativeViewContainer", parambgmk.a + " error.", localJSONException);
     }
   }
   
-  private void k(bgid parambgid)
+  private void k(bgmk parambgmk)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgid.jdField_b_of_type_JavaLangString);
-      a(localJSONObject.optInt("canvasId"), localJSONObject.optBoolean("reserve", false), localJSONObject.optBoolean("useHardwareAccelerate"), localJSONObject.optJSONArray("actions"), parambgid.a, parambgid.jdField_b_of_type_Int);
-      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.b(parambgid.a, null, parambgid.jdField_b_of_type_Int);
+      JSONObject localJSONObject = new JSONObject(parambgmk.jdField_b_of_type_JavaLangString);
+      a(localJSONObject.optInt("canvasId"), localJSONObject.optBoolean("reserve", false), localJSONObject.optBoolean("useHardwareAccelerate"), localJSONObject.optJSONArray("actions"), parambgmk.a, parambgmk.jdField_b_of_type_Int);
+      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.b(parambgmk.a, null, parambgmk.jdField_b_of_type_Int);
       return;
     }
-    catch (JSONException parambgid)
+    catch (JSONException parambgmk)
     {
-      parambgid.printStackTrace();
+      parambgmk.printStackTrace();
     }
   }
   
-  private void l(bgid parambgid)
+  private void l(bgmk parambgmk)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgid.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject = new JSONObject(parambgmk.jdField_b_of_type_JavaLangString);
       int i = localJSONObject.optInt("canvasId");
       CoverView localCoverView = (CoverView)this.b.get(i);
       if (!(localCoverView instanceof CanvasView))
       {
-        this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.c(parambgid.a, null, parambgid.jdField_b_of_type_Int);
+        this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.c(parambgmk.a, null, parambgmk.jdField_b_of_type_Int);
         return;
       }
-      ((CanvasView)localCoverView).a(this, getContext(), localJSONObject, parambgid.a, parambgid.jdField_b_of_type_Int);
+      ((CanvasView)localCoverView).a(this, getContext(), localJSONObject, parambgmk.a, parambgmk.jdField_b_of_type_Int);
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.c(parambgid.a, null, parambgid.jdField_b_of_type_Int);
+      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.c(parambgmk.a, null, parambgmk.jdField_b_of_type_Int);
     }
   }
   
-  private void m(bgid parambgid)
+  private void m(bgmk parambgmk)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgid.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject = new JSONObject(parambgmk.jdField_b_of_type_JavaLangString);
       int i = localJSONObject.optInt("canvasId");
       CoverView localCoverView = (CoverView)this.b.get(i);
       if (!(localCoverView instanceof CanvasView))
       {
-        this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.c(parambgid.a, null, parambgid.jdField_b_of_type_Int);
+        this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.c(parambgmk.a, null, parambgmk.jdField_b_of_type_Int);
         return;
       }
-      ((CanvasView)localCoverView).a(parambgid.a, localJSONObject, parambgid.jdField_b_of_type_Int);
+      ((CanvasView)localCoverView).a(parambgmk.a, localJSONObject, parambgmk.jdField_b_of_type_Int);
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.c(parambgid.a, null, parambgid.jdField_b_of_type_Int);
+      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.c(parambgmk.a, null, parambgmk.jdField_b_of_type_Int);
     }
   }
   
-  private void n(bgid parambgid)
+  private void n(bgmk parambgmk)
   {
     try
     {
-      Object localObject = new JSONObject(parambgid.jdField_b_of_type_JavaLangString);
+      Object localObject = new JSONObject(parambgmk.jdField_b_of_type_JavaLangString);
       int i = ((JSONObject)localObject).optInt("canvasId");
       CoverView localCoverView = (CoverView)this.b.get(i);
       if (!(localCoverView instanceof CanvasView))
       {
-        this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.c(parambgid.a, null, parambgid.jdField_b_of_type_Int);
+        this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.c(parambgmk.a, null, parambgmk.jdField_b_of_type_Int);
         return;
       }
       JSONArray localJSONArray = new JSONArray();
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("method", parambgid.a);
+        localJSONObject.put("method", parambgmk.a);
         localJSONObject.put("data", localObject);
-        localJSONObject.put("callbackId", parambgid.jdField_b_of_type_Int);
+        localJSONObject.put("callbackId", parambgmk.jdField_b_of_type_Int);
         localJSONArray.put(localJSONObject);
-        localObject = new bhes(true, localJSONArray, false);
-        ((CanvasView)localCoverView).a((bhes)localObject);
+        localObject = new bhiz(true, localJSONArray, false);
+        ((CanvasView)localCoverView).a((bhiz)localObject);
         return;
       }
       catch (Throwable localThrowable)
@@ -304,7 +304,7 @@ public class NativeViewContainer
     catch (Exception localException)
     {
       localException.printStackTrace();
-      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.c(parambgid.a, null, parambgid.jdField_b_of_type_Int);
+      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.c(parambgmk.a, null, parambgmk.jdField_b_of_type_Int);
     }
   }
   
@@ -346,41 +346,41 @@ public class NativeViewContainer
     return null;
   }
   
-  public String a(bgid parambgid)
+  public String a(bgmk parambgmk)
   {
-    QMLog.d("NativeViewContainer", "event = " + parambgid.a + ", params = " + parambgid.jdField_b_of_type_JavaLangString);
-    if ("showKeyboard".equals(parambgid.a)) {
-      a(parambgid);
+    QMLog.d("NativeViewContainer", "event = " + parambgmk.a + ", params = " + parambgmk.jdField_b_of_type_JavaLangString);
+    if ("showKeyboard".equals(parambgmk.a)) {
+      a(parambgmk);
     }
     for (;;)
     {
       return null;
-      if ("hideKeyboard".equals(parambgid.a)) {
-        b(parambgid);
-      } else if ("updateInput".equals(parambgid.a)) {
-        c(parambgid);
-      } else if ("setKeyboardValue".equals(parambgid.a)) {
-        d(parambgid);
-      } else if ("insertTextArea".equals(parambgid.a)) {
-        e(parambgid);
-      } else if ("updateTextArea".equals(parambgid.a)) {
-        f(parambgid);
-      } else if ("removeTextArea".equals(parambgid.a)) {
-        g(parambgid);
-      } else if ("insertCanvas".equals(parambgid.a)) {
-        h(parambgid);
-      } else if ("updateCanvas".equals(parambgid.a)) {
-        i(parambgid);
-      } else if ("removeCanvas".equals(parambgid.a)) {
-        j(parambgid);
-      } else if ("drawCanvas".equals(parambgid.a)) {
-        k(parambgid);
-      } else if ("canvasToTempFilePath".equals(parambgid.a)) {
-        l(parambgid);
-      } else if ("canvasPutImageData".equals(parambgid.a)) {
-        m(parambgid);
-      } else if ("canvasGetImageData".equals(parambgid.a)) {
-        n(parambgid);
+      if ("hideKeyboard".equals(parambgmk.a)) {
+        b(parambgmk);
+      } else if ("updateInput".equals(parambgmk.a)) {
+        c(parambgmk);
+      } else if ("setKeyboardValue".equals(parambgmk.a)) {
+        d(parambgmk);
+      } else if ("insertTextArea".equals(parambgmk.a)) {
+        e(parambgmk);
+      } else if ("updateTextArea".equals(parambgmk.a)) {
+        f(parambgmk);
+      } else if ("removeTextArea".equals(parambgmk.a)) {
+        g(parambgmk);
+      } else if ("insertCanvas".equals(parambgmk.a)) {
+        h(parambgmk);
+      } else if ("updateCanvas".equals(parambgmk.a)) {
+        i(parambgmk);
+      } else if ("removeCanvas".equals(parambgmk.a)) {
+        j(parambgmk);
+      } else if ("drawCanvas".equals(parambgmk.a)) {
+        k(parambgmk);
+      } else if ("canvasToTempFilePath".equals(parambgmk.a)) {
+        l(parambgmk);
+      } else if ("canvasPutImageData".equals(parambgmk.a)) {
+        m(parambgmk);
+      } else if ("canvasGetImageData".equals(parambgmk.a)) {
+        n(parambgmk);
       }
     }
   }
@@ -475,7 +475,7 @@ public class NativeViewContainer
     }
   }
   
-  public void a(int paramInt, JSONObject paramJSONObject, bgid parambgid)
+  public void a(int paramInt, JSONObject paramJSONObject, bgmk parambgmk)
   {
     Object localObject2 = (MiniAppTextArea)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
     int i = paramJSONObject.optInt("parentId");
@@ -498,7 +498,7 @@ public class NativeViewContainer
     }
     for (;;)
     {
-      ((MiniAppTextArea)localObject1).setAttributes(paramInt, paramJSONObject, parambgid);
+      ((MiniAppTextArea)localObject1).setAttributes(paramInt, paramJSONObject, parambgmk);
       return;
       label118:
       if (bool) {
@@ -546,7 +546,7 @@ public class NativeViewContainer
       this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.c(paramString, null, paramInt2);
       return;
     }
-    paramJSONArray = new bhes(paramBoolean1, paramJSONArray, paramBoolean2);
+    paramJSONArray = new bhiz(paramBoolean1, paramJSONArray, paramBoolean2);
     ((CanvasView)localCoverView).a(paramJSONArray);
   }
   
@@ -557,33 +557,33 @@ public class NativeViewContainer
     }
   }
   
-  void a(bgid parambgid)
+  void a(bgmk parambgmk)
   {
     try
     {
-      int i = new JSONObject(parambgid.jdField_b_of_type_JavaLangString).optInt("inputId");
+      int i = new JSONObject(parambgmk.jdField_b_of_type_JavaLangString).optInt("inputId");
       if (i > 0)
       {
-        bgkk.a(new NativeViewContainer.1(this, i, parambgid));
+        bgor.a(new NativeViewContainer.1(this, i, parambgmk));
         return;
       }
       if (System.currentTimeMillis() - 0L > 1000L)
       {
         System.currentTimeMillis();
-        bgkk.a(new NativeViewContainer.2(this, parambgid), 200L);
+        bgor.a(new NativeViewContainer.2(this, parambgmk), 200L);
         return;
       }
     }
     catch (Exception localException)
     {
-      QMLog.e("NativeViewContainer", parambgid.a + " error.", localException);
+      QMLog.e("NativeViewContainer", parambgmk.a + " error.", localException);
     }
   }
   
-  public void a(bgln parambgln)
+  public void a(bgpu parambgpu)
   {
     if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.a(parambgln);
+      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.a(parambgpu);
     }
   }
   
@@ -614,7 +614,7 @@ public class NativeViewContainer
   }
   
   /* Error */
-  public boolean a(bhbq parambhbq)
+  public boolean a(bhfx parambhfx)
   {
     // Byte code:
     //   0: aload_0
@@ -647,7 +647,7 @@ public class NativeViewContainer
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	47	0	this	NativeViewContainer
-    //   0	47	1	parambhbq	bhbq
+    //   0	47	1	parambhfx	bhfx
     //   32	7	2	bool	boolean
     // Exception table:
     //   from	to	target	type
@@ -671,7 +671,7 @@ public class NativeViewContainer
   }
   
   /* Error */
-  public boolean b(bhbq parambhbq)
+  public boolean b(bhfx parambhfx)
   {
     // Byte code:
     //   0: aload_0
@@ -704,7 +704,7 @@ public class NativeViewContainer
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	47	0	this	NativeViewContainer
-    //   0	47	1	parambhbq	bhbq
+    //   0	47	1	parambhfx	bhfx
     //   32	7	2	bool	boolean
     // Exception table:
     //   from	to	target	type
@@ -782,10 +782,10 @@ public class NativeViewContainer
     }
   }
   
-  public void setSoftKeyboardStateListener(bgln parambgln)
+  public void setSoftKeyboardStateListener(bgpu parambgpu)
   {
     if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.setSoftKeyboardStateListener(parambgln);
+      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.setSoftKeyboardStateListener(parambgpu);
     }
   }
 }

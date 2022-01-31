@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ocr;
 
-import amxh;
-import amxi;
-import avss;
-import avst;
+import anbq;
+import anbr;
+import avxb;
+import avxc;
 import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
 public class OcrControl$5$1
   implements Runnable
 {
-  public OcrControl$5$1(avst paramavst, OcrRecogResult paramOcrRecogResult, amxi paramamxi) {}
+  public OcrControl$5$1(avxc paramavxc, OcrRecogResult paramOcrRecogResult, anbr paramanbr) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Avst.a.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult.filename = this.jdField_a_of_type_Amxi.a.b;
+    if (this.jdField_a_of_type_Avxc.a.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult.filename = this.jdField_a_of_type_Anbr.a.b;
     }
   }
 }

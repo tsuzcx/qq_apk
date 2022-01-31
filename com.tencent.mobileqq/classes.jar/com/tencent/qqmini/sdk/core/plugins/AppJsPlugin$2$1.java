@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bghn;
-import bgkd;
-import bgki;
+import bglu;
+import bgok;
+import bgop;
 import com.tencent.qqmini.sdk.core.proxy.ThirdAppProxy.AppDownloadListener;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
@@ -22,14 +22,14 @@ class AppJsPlugin$2$1
       localJSONObject1.put("version", this.this$1.val$version);
       localJSONObject1.put("md5", this.this$1.val$md5);
       localJSONObject1.put("state", "onDownloadAppSucceed");
-      this.this$1.val$req.jdField_a_of_type_Bghn.a("onAppDownloadStateChange", localJSONObject1.toString(), 0);
+      this.this$1.val$req.jdField_a_of_type_Bglu.a("onAppDownloadStateChange", localJSONObject1.toString(), 0);
       return;
     }
     catch (Exception localException)
     {
       QMLog.e("AppJsPlugin", "onDownloadComplete exception, appid: " + this.this$1.val$appid, localException);
-      JSONObject localJSONObject2 = bgki.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, null);
-      this.this$1.val$req.jdField_a_of_type_Bghn.a(this.this$1.val$req.b, localJSONObject2.toString());
+      JSONObject localJSONObject2 = bgop.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, null);
+      this.this$1.val$req.jdField_a_of_type_Bglu.a(this.this$1.val$req.b, localJSONObject2.toString());
     }
   }
   
@@ -45,14 +45,14 @@ class AppJsPlugin$2$1
       localJSONObject.put("retCode", paramInt1);
       localJSONObject.put("errMsg", paramString);
       localJSONObject.put("state", "onDownloadAppFailed");
-      this.this$1.val$req.jdField_a_of_type_Bghn.a("onAppDownloadStateChange", localJSONObject.toString(), 0);
+      this.this$1.val$req.jdField_a_of_type_Bglu.a("onAppDownloadStateChange", localJSONObject.toString(), 0);
       return;
     }
     catch (Exception paramString)
     {
       QMLog.e("AppJsPlugin", "onDownloadFailed exception, appid: " + this.this$1.val$appid, paramString);
-      paramString = bgki.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, null);
-      this.this$1.val$req.jdField_a_of_type_Bghn.a(this.this$1.val$req.b, paramString.toString());
+      paramString = bgop.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, null);
+      this.this$1.val$req.jdField_a_of_type_Bglu.a(this.this$1.val$req.b, paramString.toString());
     }
   }
   
@@ -69,14 +69,14 @@ class AppJsPlugin$2$1
       localJSONObject1.put("totalSize", paramLong2);
       localJSONObject1.put("progress", paramInt);
       localJSONObject1.put("state", "onDownloadAppProgress");
-      this.this$1.val$req.jdField_a_of_type_Bghn.a("onAppDownloadStateChange", localJSONObject1.toString(), 0);
+      this.this$1.val$req.jdField_a_of_type_Bglu.a("onAppDownloadStateChange", localJSONObject1.toString(), 0);
       return;
     }
     catch (Exception localException)
     {
       QMLog.e("AppJsPlugin", "onDownloadProgress exception, appid: " + this.this$1.val$appid, localException);
-      JSONObject localJSONObject2 = bgki.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, null);
-      this.this$1.val$req.jdField_a_of_type_Bghn.a(this.this$1.val$req.b, localJSONObject2.toString());
+      JSONObject localJSONObject2 = bgop.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, null);
+      this.this$1.val$req.jdField_a_of_type_Bglu.a(this.this$1.val$req.b, localJSONObject2.toString());
     }
   }
 }

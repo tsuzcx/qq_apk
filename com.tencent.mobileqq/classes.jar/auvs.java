@@ -1,49 +1,34 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class auvs
-  extends baua
+class auvs
+  implements DialogInterface.OnClickListener
 {
-  public auvs(NearbyGuideActivity paramNearbyGuideActivity) {}
+  auvs(auvr paramauvr, boolean paramBoolean, String paramString1, auvz paramauvz, QQAppInterface paramQQAppInterface, String paramString2, Activity paramActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMessage == null) {
-      return;
-    }
-    baoj localbaoj = (baoj)paramMessage.obj;
-    switch (paramMessage.what)
+    if (this.jdField_a_of_type_Boolean)
     {
-    case 1004: 
-    default: 
-      return;
-    case 1002: 
-      if (localbaoj.a <= 0L) {
-        break;
+      this.jdField_a_of_type_Auvr.b();
+      if (!this.jdField_a_of_type_Auvr.a()) {
+        break label104;
       }
+      this.jdField_a_of_type_Auvr.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 0, 1);
+      this.jdField_a_of_type_Auvz.a(this.jdField_a_of_type_JavaLangString, false);
+      auvr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "pay_like", this.jdField_a_of_type_JavaLangString, this.b, "", "", "");
     }
-    for (int i = (int)(localbaoj.e * 100L / localbaoj.a); QLog.isColorLevel(); i = 0)
+    for (;;)
     {
-      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity .mPicUploadHandler.handleMessage, send process : " + i);
+      auvr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_no_warm", this.b);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload success. photo_id = " + baqs.a);
-      }
-      i = baqs.a;
-      if (i >= 0) {
-        this.a.a.set(0, Integer.valueOf(i));
-      }
-      this.a.a(this.a.a);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload fail.");
-      }
-      this.a.l();
-      this.a.c(alpo.a(2131707566));
-      this.a.a(true, null);
-      return;
+      this.jdField_a_of_type_Auvr.c();
+      break;
+      label104:
+      this.jdField_a_of_type_Auvr.a(this.jdField_a_of_type_AndroidAppActivity, this.b);
+      auvr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "exp_pay", this.b);
     }
   }
 }

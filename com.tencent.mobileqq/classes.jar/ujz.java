@@ -1,86 +1,89 @@
 import android.support.annotation.NonNull;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.StoryAlbumEntry;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class ujz
-  extends ujt
+  extends ujo<ujx>
 {
-  protected int a;
-  protected int b;
-  
-  public ujz(@NonNull String[] paramArrayOfString)
+  protected List<uja> a()
   {
-    super(paramArrayOfString);
-    paramArrayOfString = (urk)urr.a(10);
-    this.jdField_a_of_type_Int = ((Integer)paramArrayOfString.b("StoryMyCacheCountMax", Integer.valueOf(200))).intValue();
-    this.b = ((Integer)paramArrayOfString.b("StoryMyCacheCountNormal", Integer.valueOf(100))).intValue();
+    Object localObject = super.a();
+    if (localObject == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      uja localuja = (uja)((Iterator)localObject).next();
+      if ((localuja.jdField_b_of_type_Long >= ((ujx)a()).jdField_a_of_type_Long) && (localuja.jdField_b_of_type_Long <= ((ujx)a()).jdField_b_of_type_Long)) {
+        localArrayList.add(localuja);
+      }
+    }
+    return localArrayList;
   }
   
-  protected void a(String[] paramArrayOfString, uju paramuju)
+  protected List<uiz> a(@NonNull List<uja> paramList)
   {
-    int m = paramArrayOfString.length;
-    int i = 0;
-    String str;
-    if (i < m)
+    ArrayList localArrayList = new ArrayList();
+    paramList = new uiz(((ujx)a()).jdField_a_of_type_Int, paramList);
+    paramList.a(((ujx)a()).jdField_a_of_type_Long, ((ujx)a()).jdField_b_of_type_Long);
+    paramList.a(a());
+    paramList.b = ((ujx)a()).c;
+    Object localObject = uvx.a(QQStoryContext.a().a().createEntityManager(), StoryAlbumEntry.class, StoryAlbumEntry.class.getSimpleName(), "albumType=1 or albumType=6", null);
+    if (localObject != null)
     {
-      str = paramArrayOfString[i];
-      if (!a(str, this.jdField_a_of_type_Int)) {}
+      wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", " there is an old time album : " + ((List)localObject).size());
+      localObject = ((List)localObject).iterator();
     }
     for (;;)
     {
-      i += 1;
-      break;
-      File localFile = new File(str);
-      double d = a(localFile);
-      File[] arrayOfFile = localFile.listFiles();
-      ArrayList localArrayList = new ArrayList();
-      int k = arrayOfFile.length;
-      int j = 0;
-      while (j < k)
+      StoryAlbumEntry localStoryAlbumEntry;
+      if (((Iterator)localObject).hasNext())
       {
-        localArrayList.add(new uka(this, arrayOfFile[j]));
-        j += 1;
+        localStoryAlbumEntry = (StoryAlbumEntry)((Iterator)localObject).next();
+        if ((!TextUtils.equals(localStoryAlbumEntry.albumName, paramList.b)) || (localStoryAlbumEntry.startTime < ((ujx)a()).jdField_a_of_type_Long) || (localStoryAlbumEntry.startTime > ((ujx)a()).jdField_b_of_type_Long)) {}
       }
-      Collections.sort(localArrayList);
-      int n = localArrayList.size();
-      k = 0;
-      j = 0;
-      while (j < n)
+      else
       {
-        if (j % 150 == 0) {}
         try
         {
-          Thread.sleep(100L);
-          if ((j % 20 == 0) && (a(str, this.b))) {
-            return;
+          paramList.b(uiz.a(localStoryAlbumEntry));
+          paramList.a(localStoryAlbumEntry.getId());
+          wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", "time album  :" + paramList);
+          if (paramList.b() >= ((ujx)a()).jdField_b_of_type_Int) {
+            break;
           }
+          return null;
         }
-        catch (InterruptedException localInterruptedException)
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
         {
           for (;;)
           {
-            localInterruptedException.printStackTrace();
+            localInvalidProtocolBufferMicroException.printStackTrace();
           }
-          a(((uka)localArrayList.get(j)).a);
-          k += 1;
-          j += 1;
         }
       }
-      paramuju.jdField_a_of_type_Double = (d - a(localFile) + paramuju.jdField_a_of_type_Double);
-      paramuju.jdField_a_of_type_Int += k;
+      wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", "old time album is not match :" + localStoryAlbumEntry.startTime);
     }
+    localArrayList.add(paramList);
+    return localArrayList;
   }
   
-  public boolean a(String paramString, int paramInt)
+  public List<uiz> b()
   {
-    paramString = new File(paramString).listFiles();
-    if (paramString == null) {}
-    while (paramString.length <= paramInt) {
-      return true;
+    List localList = a();
+    if ((localList == null) || (localList.size() == 0))
+    {
+      wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", "data is null");
+      return null;
     }
-    return false;
+    return a(localList);
   }
 }
 

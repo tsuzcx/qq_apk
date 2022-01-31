@@ -1,180 +1,65 @@
-import android.annotation.SuppressLint;
-import android.content.ContentResolver;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.media.ThumbnailUtils;
-import android.os.Build.VERSION;
-import android.provider.MediaStore.Images.Media;
-import android.provider.MediaStore.Video.Thumbnails;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class banw
-  extends bame
+public abstract class banw
+  extends Binder
+  implements banv
 {
-  private static final String[] a = { "DISTINCT _id", "_data" };
+  private static final String DESCRIPTOR = "com.tencent.mobileqq.theme.ISwitchCallback";
+  static final int TRANSACTION_beginSwitch = 1;
+  static final int TRANSACTION_doSwitch = 3;
+  static final int TRANSACTION_onProgress = 2;
+  static final int TRANSACTION_postSwitch = 4;
   
-  public static String a(String paramString)
+  public banw()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
-    }
-    String str;
-    do
-    {
-      return paramString;
-      str = paramString;
-      if (paramString.startsWith("file://")) {
-        str = paramString.substring("file://".length());
-      }
-      paramString = str;
-    } while (str.startsWith(File.separator));
-    return File.separator + str;
+    attachInterface(this, "com.tencent.mobileqq.theme.ISwitchCallback");
   }
   
-  public static URL a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public static banv asInterface(IBinder paramIBinder)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramInt1);
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramInt2);
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramString2);
-    try
-    {
-      paramString1 = new URL("devicemsgthumb", "", localStringBuilder.toString());
-      return paramString1;
-    }
-    catch (MalformedURLException paramString1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceMsgThumbDownloader", 2, paramString1.getMessage(), paramString1);
-      }
-    }
-    return null;
-  }
-  
-  public Cursor a(String paramString)
-  {
-    paramString = "_data='" + a(paramString) + "' COLLATE NOCASE";
-    return BaseApplicationImpl.getContext().getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, a, paramString, null, null);
-  }
-  
-  @SuppressLint({"NewApi"})
-  public Bitmap a(String paramString)
-  {
-    if (Build.VERSION.SDK_INT < 8) {
+    if (paramIBinder == null) {
       return null;
     }
-    return ThumbnailUtils.createVideoThumbnail(paramString, 1);
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.theme.ISwitchCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof banv))) {
+      return (banv)localIInterface;
+    }
+    return new banx(paramIBinder);
   }
   
-  public LocalMediaInfo a(URL paramURL)
+  public IBinder asBinder()
   {
-    try
-    {
-      LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-      paramURL = paramURL.getFile().split("\\|");
-      localLocalMediaInfo.path = paramURL[0];
-      localLocalMediaInfo.thumbWidth = Integer.parseInt(paramURL[1]);
-      localLocalMediaInfo.thumbHeight = Integer.parseInt(paramURL[2]);
-      return localLocalMediaInfo;
-    }
-    catch (Exception paramURL) {}
-    return null;
+    return this;
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    return new File(aljq.aW);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public Bitmap b(String paramString)
-  {
-    Object localObject = null;
-    Cursor localCursor = null;
-    if (Build.VERSION.SDK_INT < 5)
+    switch (paramInt1)
     {
-      localObject = localCursor;
-      label17:
-      return localObject;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.theme.ISwitchCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
+      beginSwitch();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
+      onProgress(paramParcel1.readLong(), paramParcel1.readLong());
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
+      doSwitch(paramParcel1.readString(), paramParcel1.readString());
+      return true;
     }
-    try
-    {
-      localCursor = a(paramString);
-      paramString = (String)localObject;
-      if (localCursor != null) {
-        paramString = (String)localObject;
-      }
-    }
-    finally
-    {
-      try
-      {
-        if (localCursor.getCount() > 0)
-        {
-          long l = localCursor.getLong(localCursor.getColumnIndexOrThrow("_id"));
-          paramString = (String)localObject;
-          if (localCursor.moveToFirst()) {
-            paramString = MediaStore.Video.Thumbnails.getThumbnail(BaseApplicationImpl.getContext().getContentResolver(), l, 1, null);
-          }
-        }
-        localObject = paramString;
-        if (localCursor == null) {
-          break label17;
-        }
-        localCursor.close();
-        return paramString;
-      }
-      finally
-      {
-        break label112;
-      }
-      paramString = finally;
-      localCursor = null;
-    }
-    label112:
-    if (localCursor != null) {
-      localCursor.close();
-    }
-    throw paramString;
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramFile = a(paramDownloadParams.url);
-    if (paramFile == null) {}
-    do
-    {
-      return null;
-      if (bdcs.b(paramFile.path)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("DeviceMsgThumbDownloader", 2, "decodeFile file not exits. just return");
-    return null;
-    paramURLDrawableHandler = BaseApplicationImpl.getContext();
-    if (arni.a(paramFile.path) == 2) {}
-    for (paramFile = new bany(this);; paramFile = new banx(this)) {
-      return AlbumThumbManager.getInstance(paramURLDrawableHandler).getThumb(paramDownloadParams.url, paramFile);
-    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
+    postSwitch(paramParcel1.readInt());
+    return true;
   }
 }
 

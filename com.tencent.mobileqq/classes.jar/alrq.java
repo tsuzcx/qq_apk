@@ -1,27 +1,7 @@
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-
-class alrq
-  implements bhqd
+public class alrq
+  implements alpg
 {
-  alrq(alro paramalro, bhpy parambhpy) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.e();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("MayknowRecommendManager", 2, " onMsgTabRecommendBClick recommend_item_menu hide clicked");
-      }
-      this.jdField_a_of_type_Alro.h();
-      azmj.b(null, "dc00899", "Grp_recom", "", "msg_tab", "clk_hide", 0, 0, "", "", "", "");
-    }
-  }
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 

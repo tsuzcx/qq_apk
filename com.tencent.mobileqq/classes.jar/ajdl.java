@@ -1,28 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-class ajdl
-  implements View.OnClickListener
+public class ajdl
+  implements ajcq
 {
-  private ajdj jdField_a_of_type_Ajdj;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  public ajdl(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  ajdl(ajdj paramajdj, MqqHandler paramMqqHandler)
-  {
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-    this.jdField_a_of_type_Ajdj = paramajdj;
-  }
-  
-  public void onClick(View paramView)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Ajdj.jdField_a_of_type_JavaLangString + " on enter");
+      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineBegin---");
     }
-    this.jdField_a_of_type_Ajdj.jdField_a_of_type_Ajdh.onEnter();
-    azmj.a(null, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 1, 0, "", "", "", "");
+    DrawRedpacketPannelPreviewFragment.a(this.a, false);
+    DrawRedpacketPannelPreviewFragment.a(this.a);
+    DrawRedpacketPannelPreviewFragment.c(this.a).setTextColor(Color.parseColor("#878B99"));
+    DrawRedpacketPannelPreviewFragment.c(this.a).setText(alud.a(2131703927));
   }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineFinish---");
+    }
+    DrawRedpacketPannelPreviewFragment.c(this.a);
+  }
+  
+  public void a(int paramInt1, int paramInt2) {}
 }
 
 

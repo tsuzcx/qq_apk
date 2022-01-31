@@ -1,75 +1,32 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.confess.ConfessPlugin;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aojb
-  extends aofy<aoja>
+  implements ansr
 {
-  public int a()
-  {
-    return 453;
-  }
+  public aojb(ConfessPlugin paramConfessPlugin) {}
   
-  @NonNull
-  public aoja a(int paramInt)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    return new aoja();
-  }
-  
-  @Nullable
-  public aoja a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    if (QLog.isColorLevel())
     {
-      aoja localaoja = aoja.a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DonDisturbProcessor", 0, "onParsed don disturb" + paramArrayOfaogf[0].a);
+      QLog.i("ConfessPlugin", 4, "preLoadQQSelfHeaderBitmap onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+      if ((this.a.a != null) && (this.a.mRuntime != null) && (this.a.mRuntime.a() != null) && (TextUtils.equals(paramString1, this.a.mRuntime.a().getCurrentAccountUin())))
+      {
+        ThreadManager.getUIHandler().removeCallbacks(ConfessPlugin.a(this.a));
+        ThreadManager.getUIHandler().post(ConfessPlugin.a(this.a));
       }
-      return localaoja;
     }
-    return new aoja();
-  }
-  
-  public Class<aoja> a()
-  {
-    return aoja.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aoja paramaoja)
-  {
-    bdiv.a(BaseApplicationImpl.getContext(), "open_don_disturb", BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramaoja.a());
-    if (QLog.isColorLevel()) {
-      QLog.d("DonDisturbProcessor", 0, "onUpdate don disturb" + paramaoja);
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aojb
  * JD-Core Version:    0.7.0.1
  */

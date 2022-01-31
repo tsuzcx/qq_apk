@@ -1,36 +1,135 @@
-import com.tencent.TMG.utils.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aotv
+  implements aokj<String>, aotf
 {
-  public String a = alpo.a(2131715204);
-  public String b = alpo.a(2131715211);
-  public String c = alpo.a(2131715207);
-  public String d = alpo.a(2131715209);
-  public String e = alpo.a(2131715202);
+  static boolean jdField_a_of_type_Boolean = true;
+  static boolean b = true;
+  private long jdField_a_of_type_Long = 20971520L;
+  private ExcitingTransferUploadChnConfigInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
+  public String a;
+  private boolean c;
   
-  public static aotv a(aogf[] paramArrayOfaogf)
+  public aotv()
   {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
-      return null;
-    }
-    aotv localaotv = new aotv();
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_Long = 20971520L;
+    this.c = false;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
+  }
+  
+  private void a(JSONObject paramJSONObject)
+  {
     try
     {
-      paramArrayOfaogf = new JSONObject(paramArrayOfaogf[0].a).optJSONObject("MyFileNameConfig");
-      localaotv.a = paramArrayOfaogf.optString("tdfileTabName");
-      localaotv.b = paramArrayOfaogf.optString("wyfileTabName");
-      localaotv.c = paramArrayOfaogf.optString("tdlistTabviewName");
-      localaotv.d = paramArrayOfaogf.optString("createTXDocTitle");
-      localaotv.e = paramArrayOfaogf.optString("safeShareToastWording");
-      return localaotv;
+      this.c = paramJSONObject.getBoolean("enableaqq");
+      paramJSONObject = paramJSONObject.getJSONObject("config");
+      if (paramJSONObject != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uMuliFileSizeLimit = paramJSONObject.getLong("mulifilesizelimit");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uMaxChannelNum = paramJSONObject.getInt("maxchannelnum");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uPieceSize = paramJSONObject.getInt("piecesize");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostTotalUseCount = paramJSONObject.getInt("maxeachhosttotalusecount");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostErrorCount = paramJSONObject.getInt("maxeachhosterrorcount");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostParallelUseCount = paramJSONObject.getInt("maxeachhostparallelusecount");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nConnectTimeout = paramJSONObject.getLong("connecttimeout");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nDataTimeout = paramJSONObject.getLong("datatimeout");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nTotoalDataTimeout = paramJSONObject.getLong("totoaldatatimeout");
+        this.jdField_a_of_type_Long = paramJSONObject.getLong("limitedsize");
+      }
+      for (;;)
+      {
+        QLog.i("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "parse Exciting-Group-Upload config: enable:" + this.c + " LimitedSize:" + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.toString());
+        return;
+        this.jdField_a_of_type_Long = 20971520L;
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
+      }
+      return;
     }
-    catch (JSONException paramArrayOfaogf)
+    catch (JSONException paramJSONObject)
     {
-      QLog.e("TencentDocMyFileNameBean", 1, paramArrayOfaogf.getLocalizedMessage(), paramArrayOfaogf);
+      QLog.e("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramJSONObject));
     }
-    return localaotv;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public ExcitingTransferUploadChnConfigInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    int k = 0;
+    this.jdField_a_of_type_JavaLangString = paramString.toLowerCase();
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent is empty, use default value");
+      a();
+      return;
+    }
+    try
+    {
+      paramString = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      if (paramString.length() == 0)
+      {
+        QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent is empty json, use default value");
+        a();
+        return;
+      }
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramString));
+      return;
+    }
+    JSONArray localJSONArray = paramString.names();
+    int i = 0;
+    for (;;)
+    {
+      int j = k;
+      if (i < localJSONArray.length())
+      {
+        Object localObject = localJSONArray.getString(i).trim();
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = paramString.optJSONObject((String)localObject).getJSONObject("upload");
+          if (localObject != null)
+          {
+            a((JSONObject)localObject);
+            j = 1;
+          }
+        }
+      }
+      else
+      {
+        if (j != 0) {
+          break;
+        }
+        QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent no Exciting-Group-Upload config, use default value");
+        a();
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.c;
   }
 }
 

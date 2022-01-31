@@ -198,7 +198,7 @@ public class OverlayView
   private void b(@NonNull TypedArray paramTypedArray)
   {
     int k = paramTypedArray.getDimensionPixelSize(5, getResources().getDimensionPixelSize(2131298985));
-    int m = paramTypedArray.getColor(4, getResources().getColor(2131167158));
+    int m = paramTypedArray.getColor(4, getResources().getColor(2131167160));
     this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(k);
     this.jdField_c_of_type_AndroidGraphicsPaint.setColor(m);
     this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
@@ -210,7 +210,7 @@ public class OverlayView
   private void c(@NonNull TypedArray paramTypedArray)
   {
     int k = paramTypedArray.getDimensionPixelSize(9, getResources().getDimensionPixelSize(2131298986));
-    int m = paramTypedArray.getColor(6, getResources().getColor(2131167159));
+    int m = paramTypedArray.getColor(6, getResources().getColor(2131167161));
     this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(k);
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(m);
     this.jdField_c_of_type_Int = paramTypedArray.getInt(8, 2);
@@ -233,7 +233,7 @@ public class OverlayView
   protected void a(@NonNull TypedArray paramTypedArray)
   {
     this.jdField_c_of_type_Boolean = paramTypedArray.getBoolean(2, false);
-    this.e = paramTypedArray.getColor(3, getResources().getColor(2131167160));
+    this.e = paramTypedArray.getColor(3, getResources().getColor(2131167162));
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);

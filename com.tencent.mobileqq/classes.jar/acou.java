@@ -1,10 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.DevlockPushActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class acou
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public acou(DevlockPushActivity paramDevlockPushActivity) {}
+  public acou(ChatSettingActivity paramChatSettingActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

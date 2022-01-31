@@ -1,12 +1,10 @@
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+
 public abstract interface xbf
 {
   public abstract void a();
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(boolean paramBoolean, xah paramxah);
-  
-  public abstract void b(int paramInt);
+  public abstract void a(TroopBarPOI paramTroopBarPOI);
 }
 
 

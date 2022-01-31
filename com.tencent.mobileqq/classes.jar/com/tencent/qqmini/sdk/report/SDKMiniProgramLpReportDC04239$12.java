@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.report;
 
-import bgpm;
-import bgya;
-import bgyg;
+import bgtt;
+import bhch;
+import bhcn;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import java.util.Iterator;
@@ -16,26 +16,26 @@ public final class SDKMiniProgramLpReportDC04239$12
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (bgpm)localIterator.next();
-      if ((localObject != null) && (((bgpm)localObject).a() != null))
+      Object localObject = (bgtt)localIterator.next();
+      if ((localObject != null) && (((bgtt)localObject).a() != null))
       {
-        MiniAppInfo localMiniAppInfo = ((bgpm)localObject).a();
+        MiniAppInfo localMiniAppInfo = ((bgtt)localObject).a();
         if ((localMiniAppInfo.launchParam == null) || (!this.jdField_a_of_type_Boolean) || ((localMiniAppInfo.launchParam.scene != 3009) && (localMiniAppInfo.launchParam.scene != 3010)))
         {
-          String str1 = bgyg.a(localMiniAppInfo);
+          String str1 = bhcn.a(localMiniAppInfo);
           String str2 = this.jdField_a_of_type_JavaLangString;
           String str3 = this.b;
-          int i = ((bgpm)localObject).a();
+          int i = ((bgtt)localObject).a();
           if (this.jdField_a_of_type_Boolean) {}
-          for (localObject = ((bgpm)localObject).a();; localObject = null)
+          for (localObject = ((bgtt)localObject).a();; localObject = null)
           {
-            bgyg.b(localMiniAppInfo, str1, str2, "page_view", str3, String.valueOf(i), (String)localObject);
+            bhcn.b(localMiniAppInfo, str1, str2, "page_view", str3, String.valueOf(i), (String)localObject);
             break;
           }
         }
       }
     }
-    bgya.a().b();
+    bhch.a().b();
   }
 }
 

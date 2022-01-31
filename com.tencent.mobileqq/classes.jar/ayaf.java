@@ -1,17 +1,30 @@
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
 
-public class ayaf
-  implements View.OnClickListener
+class ayaf
+  implements bhuk
 {
-  public ayaf(CommentsView paramCommentsView, ayac paramayac, int paramInt) {}
+  ayaf(ayaa paramayaa, bhuf parambhuf) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.jdField_a_of_type_Ayac.a()) && (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null)) {
-      CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_Int, paramView);
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
     }
+    paramView = this.jdField_a_of_type_Bhuf.a(paramInt);
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+    }
+    if (TextUtils.isEmpty(paramView))
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+    }
+    this.jdField_a_of_type_Bhuf.dismiss();
   }
 }
 

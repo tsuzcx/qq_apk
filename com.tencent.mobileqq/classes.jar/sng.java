@@ -37,8 +37,8 @@ public class sng
     {
       localJSONObject.put(ViolaEnvironment.COMMON_UIN, ors.a());
       localJSONObject.put(ViolaEnvironment.COMMON_NET, Integer.toString(ors.a(BaseApplication.getContext())));
-      localJSONObject.put(ViolaEnvironment.COMMON_OPERATION_VERSION, bdcb.e());
-      localJSONObject.put(ViolaEnvironment.COMMON_QQ_VERSION, "8.3.3");
+      localJSONObject.put(ViolaEnvironment.COMMON_OPERATION_VERSION, bdgk.e());
+      localJSONObject.put(ViolaEnvironment.COMMON_QQ_VERSION, "8.3.5");
       localJSONObject.put(ViolaEnvironment.COMMON_PHONE_TYPE, Build.MODEL);
       String str2 = ViolaEnvironment.COMMON_BIZ;
       if (TextUtils.isEmpty(str1)) {}
@@ -100,10 +100,10 @@ public class sng
   {
     if (paramInt == 0)
     {
-      abqw.a().a(paramString, false);
+      abvl.a().a(paramString, false);
       return;
     }
-    abqw.a().a(paramString);
+    abvl.a().a(paramString);
   }
   
   public HashMap<String, String> getBaseReportData(String paramString)
@@ -112,8 +112,8 @@ public class sng
     String str1 = Uri.parse(paramString).getQueryParameter("v_bid");
     localHashMap.put(ViolaEnvironment.COMMON_UIN, ors.a());
     localHashMap.put(ViolaEnvironment.COMMON_NET, Integer.toString(ors.a(BaseApplication.getContext())));
-    localHashMap.put(ViolaEnvironment.COMMON_OPERATION_VERSION, bdcb.e());
-    localHashMap.put(ViolaEnvironment.COMMON_QQ_VERSION, "8.3.3");
+    localHashMap.put(ViolaEnvironment.COMMON_OPERATION_VERSION, bdgk.e());
+    localHashMap.put(ViolaEnvironment.COMMON_QQ_VERSION, "8.3.5");
     localHashMap.put(ViolaEnvironment.COMMON_PHONE_TYPE, Build.MODEL);
     String str2 = ViolaEnvironment.COMMON_BIZ;
     if (TextUtils.isEmpty(str1)) {}

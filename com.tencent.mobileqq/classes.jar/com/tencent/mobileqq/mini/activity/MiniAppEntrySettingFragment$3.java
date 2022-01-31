@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.activity;
 
 import android.support.v4.app.FragmentActivity;
-import awbw;
-import awbx;
-import awby;
+import awgf;
+import awgg;
+import awgh;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -24,31 +24,31 @@ class MiniAppEntrySettingFragment$3
       QLog.e("MiniAppEntrySettingFragment", 2, "updateLocalSwitchDataList, app is null.");
     }
     label34:
-    awbw localawbw;
+    awgf localawgf;
     do
     {
       return;
       QLog.i("MiniAppEntrySettingFragment", 1, "removeAllLocalSwitchDataList");
-      localawbw = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-    } while (localawbw == null);
-    localObject1 = localawbw.a();
+      localawgf = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+    } while (localawgf == null);
+    localObject1 = localawgf.a();
     try
     {
-      ((awby)localObject1).a();
-      localawbw.b(" DELETE FROM MiniAppSettingSwitchInfoEntity ");
-      ((awby)localObject1).c();
+      ((awgh)localObject1).a();
+      localawgf.b(" DELETE FROM MiniAppSettingSwitchInfoEntity ");
+      ((awgh)localObject1).c();
     }
     catch (Exception localException)
     {
       for (;;)
       {
         localException.printStackTrace();
-        ((awby)localObject1).b();
+        ((awgh)localObject1).b();
       }
     }
     finally
     {
-      ((awby)localObject1).b();
+      ((awgh)localObject1).b();
     }
     MiniAppEntrySettingFragment.access$400(this.this$0, this.val$serverSwitchInfoEntities);
   }

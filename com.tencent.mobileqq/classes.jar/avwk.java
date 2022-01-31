@@ -1,47 +1,28 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Random;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.widget.OCRBottomTabView;
 
 public class avwk
-  extends ayts
+  implements TextWatcher
 {
-  OlympicToolAppInterface jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  public avwk(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
-  public avwk(OlympicToolAppInterface paramOlympicToolAppInterface)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("OlympicToolService", 2, "new OlympicToolService");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface = paramOlympicToolAppInterface;
-    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
-  }
-  
-  public AppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
-  }
-  
-  protected void a()
-  {
-    try
+    if (paramEditable.toString().trim().length() == 0)
     {
-      super.a();
+      this.a.b.setEnabled(false);
+      this.a.a.setEnabled(false);
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.a.b.setEnabled(true);
+    this.a.a.setEnabled(true);
   }
   
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    super.b(paramToServiceMsg, null, avwl.class);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

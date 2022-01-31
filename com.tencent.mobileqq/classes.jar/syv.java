@@ -38,8 +38,8 @@ public class syv
       localsyw = new syw();
       if (paramInteger.intValue() == 1)
       {
-        localsyw.label = BaseApplicationImpl.getApplication().getString(2131696876);
-        localsyw.icon = 2130842281;
+        localsyw.label = BaseApplicationImpl.getApplication().getString(2131696878);
+        localsyw.icon = 2130842294;
         localsyw.iconNeedBg = true;
         localsyw.action = a(paramInteger.intValue());
         localsyw.argus = "";
@@ -48,8 +48,8 @@ public class syv
       if (paramInteger.intValue() == 2)
       {
         localObject = new syw();
-        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696871);
-        ((syw)localObject).icon = 2130838916;
+        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696873);
+        ((syw)localObject).icon = 2130838917;
         ((syw)localObject).iconNeedBg = true;
         ((syw)localObject).action = a(paramInteger.intValue());
         ((syw)localObject).argus = "";
@@ -58,8 +58,8 @@ public class syv
       if (paramInteger.intValue() == 3)
       {
         localObject = new syw();
-        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696884);
-        ((syw)localObject).icon = 2130838917;
+        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696886);
+        ((syw)localObject).icon = 2130838918;
         ((syw)localObject).iconNeedBg = true;
         ((syw)localObject).action = a(paramInteger.intValue());
         ((syw)localObject).argus = "";
@@ -68,8 +68,8 @@ public class syv
       if (paramInteger.intValue() == 4)
       {
         localObject = new syw();
-        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696891);
-        ((syw)localObject).icon = 2130838920;
+        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696893);
+        ((syw)localObject).icon = 2130838921;
         ((syw)localObject).action = a(paramInteger.intValue());
         ((syw)localObject).argus = "";
         return localObject;
@@ -77,8 +77,8 @@ public class syv
       if (paramInteger.intValue() == 5)
       {
         localObject = new syw();
-        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696874);
-        ((syw)localObject).icon = 2130838914;
+        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696876);
+        ((syw)localObject).icon = 2130838915;
         ((syw)localObject).action = a(paramInteger.intValue());
         ((syw)localObject).argus = "";
         return localObject;
@@ -86,9 +86,9 @@ public class syv
       if (paramInteger.intValue() == 6)
       {
         localObject = new syw();
-        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696888);
+        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696890);
         ((syw)localObject).iconNeedBg = true;
-        ((syw)localObject).icon = 2130838919;
+        ((syw)localObject).icon = 2130838920;
         ((syw)localObject).action = a(paramInteger.intValue());
         ((syw)localObject).argus = "";
         return localObject;
@@ -96,8 +96,8 @@ public class syv
       if (paramInteger.intValue() == 7)
       {
         localObject = new syw();
-        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696867);
-        ((syw)localObject).icon = 2130842284;
+        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696869);
+        ((syw)localObject).icon = 2130842297;
         ((syw)localObject).action = a(paramInteger.intValue());
         ((syw)localObject).argus = "";
         return localObject;
@@ -105,9 +105,9 @@ public class syv
       if (paramInteger.intValue() == 8)
       {
         localObject = new syw();
-        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696868);
+        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696870);
         ((syw)localObject).iconNeedBg = true;
-        ((syw)localObject).icon = 2130842280;
+        ((syw)localObject).icon = 2130842293;
         ((syw)localObject).action = a(paramInteger.intValue());
         ((syw)localObject).argus = "";
         return localObject;
@@ -115,9 +115,9 @@ public class syv
       if (paramInteger.intValue() == 9)
       {
         localObject = new syw();
-        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696895);
+        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696897);
         ((syw)localObject).iconNeedBg = true;
-        ((syw)localObject).icon = 2130842285;
+        ((syw)localObject).icon = 2130842298;
         ((syw)localObject).action = a(paramInteger.intValue());
         ((syw)localObject).argus = "";
         return localObject;
@@ -125,8 +125,8 @@ public class syv
       if (paramInteger.intValue() == 10)
       {
         localObject = new syw();
-        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696866);
-        ((syw)localObject).icon = 2130842282;
+        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696868);
+        ((syw)localObject).icon = 2130842295;
         ((syw)localObject).iconNeedBg = true;
         ((syw)localObject).action = a(paramInteger.intValue());
         ((syw)localObject).argus = "";
@@ -135,9 +135,9 @@ public class syv
       if (paramInteger.intValue() == 12)
       {
         localObject = new syw();
-        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696857);
+        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696859);
         ((syw)localObject).iconNeedBg = true;
-        ((syw)localObject).icon = 2130841330;
+        ((syw)localObject).icon = 2130841331;
         ((syw)localObject).action = a(paramInteger.intValue());
         ((syw)localObject).argus = "";
         return localObject;
@@ -145,9 +145,9 @@ public class syv
       if (paramInteger.intValue() == 28)
       {
         localObject = new syw();
-        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696865);
+        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696867);
         ((syw)localObject).iconNeedBg = true;
-        ((syw)localObject).icon = 2130849866;
+        ((syw)localObject).icon = 2130849939;
         ((syw)localObject).action = a(paramInteger.intValue());
         ((syw)localObject).argus = "";
         return localObject;
@@ -155,8 +155,8 @@ public class syv
       if (paramInteger.intValue() == 13)
       {
         localObject = new syw();
-        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696879);
-        ((syw)localObject).icon = 2130839160;
+        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696881);
+        ((syw)localObject).icon = 2130839161;
         ((syw)localObject).iconNeedBg = true;
         ((syw)localObject).action = a(paramInteger.intValue());
         ((syw)localObject).argus = "";
@@ -165,8 +165,8 @@ public class syv
       if (paramInteger.intValue() == 14)
       {
         localObject = new syw();
-        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696863);
-        ((syw)localObject).icon = 2130838912;
+        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696865);
+        ((syw)localObject).icon = 2130838913;
         ((syw)localObject).iconNeedBg = true;
         ((syw)localObject).action = a(paramInteger.intValue());
         ((syw)localObject).argus = "";
@@ -175,8 +175,8 @@ public class syv
       if (paramInteger.intValue() == 20)
       {
         localObject = new syw();
-        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696869);
-        ((syw)localObject).icon = 2130842270;
+        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696871);
+        ((syw)localObject).icon = 2130842283;
         ((syw)localObject).iconNeedBg = true;
         ((syw)localObject).action = a(paramInteger.intValue());
         ((syw)localObject).argus = "";
@@ -185,17 +185,17 @@ public class syv
       if (paramInteger.intValue() == 15)
       {
         localObject = new syw();
-        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696864);
+        ((syw)localObject).label = BaseApplicationImpl.getApplication().getString(2131696866);
         ((syw)localObject).iconNeedBg = true;
-        ((syw)localObject).icon = 2130842269;
+        ((syw)localObject).icon = 2130842282;
         ((syw)localObject).action = a(paramInteger.intValue());
         ((syw)localObject).argus = "";
         return localObject;
       }
       if (paramInteger.intValue() == 11)
       {
-        localsyw.label = BaseApplicationImpl.getApplication().getString(2131696886);
-        localsyw.icon = 2130838918;
+        localsyw.label = BaseApplicationImpl.getApplication().getString(2131696888);
+        localsyw.icon = 2130838919;
         localsyw.iconNeedBg = true;
         localsyw.action = a(paramInteger.intValue());
         localsyw.argus = "";
@@ -203,8 +203,8 @@ public class syv
       }
       if (paramInteger.intValue() == 19)
       {
-        localsyw.label = BaseApplicationImpl.getApplication().getString(2131696878);
-        localsyw.icon = 2130842283;
+        localsyw.label = BaseApplicationImpl.getApplication().getString(2131696880);
+        localsyw.icon = 2130842296;
         localsyw.iconNeedBg = true;
         localsyw.action = a(paramInteger.intValue());
         localsyw.argus = "";
@@ -212,8 +212,8 @@ public class syv
       }
       if (paramInteger.intValue() == 17)
       {
-        localsyw.label = BaseApplicationImpl.getApplication().getString(2131696872);
-        localsyw.icon = 2130842287;
+        localsyw.label = BaseApplicationImpl.getApplication().getString(2131696874);
+        localsyw.icon = 2130842300;
         localsyw.iconNeedBg = true;
         localsyw.action = a(paramInteger.intValue());
         localsyw.argus = "";
@@ -221,8 +221,8 @@ public class syv
       }
       if (paramInteger.intValue() == 16)
       {
-        localsyw.label = BaseApplicationImpl.getApplication().getString(2131695704);
-        localsyw.icon = 2130842286;
+        localsyw.label = BaseApplicationImpl.getApplication().getString(2131695706);
+        localsyw.icon = 2130842299;
         localsyw.iconNeedBg = true;
         localsyw.action = a(paramInteger.intValue());
         localsyw.argus = "";
@@ -230,8 +230,8 @@ public class syv
       }
       if (paramInteger.intValue() == 21)
       {
-        localsyw.label = BaseApplicationImpl.getApplication().getString(2131695765);
-        localsyw.icon = 2130842278;
+        localsyw.label = BaseApplicationImpl.getApplication().getString(2131695767);
+        localsyw.icon = 2130842291;
         localsyw.iconNeedBg = true;
         localsyw.action = a(paramInteger.intValue());
         localsyw.argus = "";
@@ -239,8 +239,8 @@ public class syv
       }
       if (paramInteger.intValue() == 18)
       {
-        localsyw.label = alpo.a(2131713433);
-        localsyw.icon = 2130842279;
+        localsyw.label = alud.a(2131713445);
+        localsyw.icon = 2130842292;
         localsyw.iconNeedBg = true;
         localsyw.action = 18;
         localsyw.a = true;
@@ -249,8 +249,8 @@ public class syv
       }
       if (paramInteger.intValue() == 22)
       {
-        localsyw.label = BaseApplicationImpl.getApplication().getString(2131696880);
-        localsyw.icon = 2130842289;
+        localsyw.label = BaseApplicationImpl.getApplication().getString(2131696882);
+        localsyw.icon = 2130842302;
         localsyw.iconNeedBg = true;
         localsyw.action = 22;
         localsyw.a = true;
@@ -259,8 +259,8 @@ public class syv
       }
       if (paramInteger.intValue() == 23)
       {
-        localsyw.label = BaseApplicationImpl.getApplication().getString(2131696890);
-        localsyw.icon = 2130842297;
+        localsyw.label = BaseApplicationImpl.getApplication().getString(2131696892);
+        localsyw.icon = 2130842310;
         localsyw.iconNeedBg = true;
         localsyw.action = 23;
         localsyw.a = true;
@@ -269,9 +269,9 @@ public class syv
       }
       if (paramInteger.intValue() == 25)
       {
-        localsyw.label = alpo.a(2131713221);
+        localsyw.label = alud.a(2131713233);
         localsyw.iconNeedBg = true;
-        localsyw.icon = 2130838730;
+        localsyw.icon = 2130838731;
         localsyw.action = 25;
         localsyw.argus = "";
         localsyw.a = true;
@@ -279,9 +279,9 @@ public class syv
       }
       if (paramInteger.intValue() == 26)
       {
-        localsyw.label = alpo.a(2131713483);
+        localsyw.label = alud.a(2131713495);
         localsyw.iconNeedBg = true;
-        localsyw.icon = 2130838734;
+        localsyw.icon = 2130838735;
         localsyw.action = 26;
         localsyw.argus = "";
         localsyw.a = true;
@@ -289,9 +289,9 @@ public class syv
       }
       if (paramInteger.intValue() == 27)
       {
-        localsyw.label = alpo.a(2131713285);
+        localsyw.label = alud.a(2131713297);
         localsyw.iconNeedBg = true;
-        localsyw.icon = 2130838732;
+        localsyw.icon = 2130838733;
         localsyw.action = 27;
         localsyw.argus = "";
         localsyw.a = true;
@@ -301,7 +301,7 @@ public class syv
       {
         localsyw.label = BaseApplicationImpl.getApplication().getString(2131690710);
         localsyw.iconNeedBg = true;
-        localsyw.icon = 2130838755;
+        localsyw.icon = 2130838756;
         localsyw.action = 29;
         localsyw.argus = "";
         localsyw.a = true;
@@ -311,7 +311,7 @@ public class syv
       {
         localsyw.label = BaseApplicationImpl.getApplication().getString(2131690708);
         localsyw.iconNeedBg = true;
-        localsyw.icon = 2130838729;
+        localsyw.icon = 2130838730;
         localsyw.action = 30;
         localsyw.argus = "";
         localsyw.a = true;
@@ -321,7 +321,7 @@ public class syv
       {
         localsyw.label = BaseApplicationImpl.getApplication().getString(2131690711);
         localsyw.iconNeedBg = true;
-        localsyw.icon = 2130838733;
+        localsyw.icon = 2130838734;
         localsyw.action = 31;
         localsyw.argus = "";
         localsyw.a = true;
@@ -329,9 +329,9 @@ public class syv
       }
       if (paramInteger.intValue() == 32)
       {
-        localsyw.label = BaseApplicationImpl.getApplication().getString(2131690903);
+        localsyw.label = BaseApplicationImpl.getApplication().getString(2131690904);
         localsyw.iconNeedBg = true;
-        localsyw.icon = 2130841955;
+        localsyw.icon = 2130841968;
         localsyw.action = 32;
         localsyw.argus = "";
         localsyw.a = true;
@@ -339,9 +339,9 @@ public class syv
       }
       if (paramInteger.intValue() == 33)
       {
-        localsyw.label = BaseApplicationImpl.getApplication().getString(2131690906);
+        localsyw.label = BaseApplicationImpl.getApplication().getString(2131690907);
         localsyw.iconNeedBg = true;
-        localsyw.icon = 2130841956;
+        localsyw.icon = 2130841969;
         localsyw.action = 33;
         localsyw.argus = "";
         localsyw.a = true;
@@ -351,7 +351,7 @@ public class syv
       {
         localsyw.label = BaseApplicationImpl.getApplication().getString(2131690712);
         localsyw.iconNeedBg = true;
-        localsyw.icon = 2130838764;
+        localsyw.icon = 2130838765;
         localsyw.action = 34;
         localsyw.argus = "";
         localsyw.a = true;
@@ -361,7 +361,7 @@ public class syv
       {
         localsyw.label = BaseApplicationImpl.getApplication().getString(2131690709);
         localsyw.iconNeedBg = true;
-        localsyw.icon = 2130838731;
+        localsyw.icon = 2130838732;
         localsyw.action = 35;
         localsyw.argus = "";
         localsyw.a = true;
@@ -369,9 +369,9 @@ public class syv
       }
       if (paramInteger.intValue() == 36)
       {
-        localsyw.label = BaseApplicationImpl.getApplication().getString(2131718807);
+        localsyw.label = BaseApplicationImpl.getApplication().getString(2131718819);
         localsyw.iconNeedBg = true;
-        localsyw.icon = 2130841374;
+        localsyw.icon = 2130841375;
         localsyw.action = 36;
         localsyw.argus = "";
         localsyw.a = true;
@@ -379,9 +379,9 @@ public class syv
       }
       if (paramInteger.intValue() == 37)
       {
-        localsyw.label = BaseApplicationImpl.getApplication().getString(2131718710);
+        localsyw.label = BaseApplicationImpl.getApplication().getString(2131718722);
         localsyw.iconNeedBg = true;
-        localsyw.icon = 2130841362;
+        localsyw.icon = 2130841363;
         localsyw.action = 37;
         localsyw.argus = "";
         localsyw.a = true;
@@ -389,9 +389,9 @@ public class syv
       }
       localObject = localsyw;
     } while (paramInteger.intValue() != 38);
-    localsyw.label = BaseApplicationImpl.getApplication().getString(2131718994);
+    localsyw.label = BaseApplicationImpl.getApplication().getString(2131719006);
     localsyw.iconNeedBg = true;
-    localsyw.icon = 2130841394;
+    localsyw.icon = 2130841395;
     localsyw.action = 38;
     localsyw.argus = "";
     localsyw.a = true;

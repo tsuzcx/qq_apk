@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.matchchat;
 
-import amfi;
-import apwx;
-import aqbv;
-import atwl;
-import azmj;
+import amjx;
+import aqbg;
+import aqge;
+import auau;
+import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
@@ -16,11 +16,11 @@ class MatchChatSettingFragment$2
   
   public void run()
   {
-    azmj.b(MatchChatSettingFragment.a(this.this$0), "dc00898", "", "", "0X800A699", "0X800A699", 0, 0, "", "", "", "");
-    atwl.a(MatchChatSettingFragment.a(this.this$0));
-    aqbv.b(MatchChatSettingFragment.a(this.this$0));
-    ((apwx)MatchChatSettingFragment.a(this.this$0).getManager(264)).c();
-    ((amfi)MatchChatSettingFragment.a(this.this$0).getManager(285)).a();
+    azqs.b(MatchChatSettingFragment.a(this.this$0), "dc00898", "", "", "0X800A699", "0X800A699", 0, 0, "", "", "", "");
+    auau.a(MatchChatSettingFragment.a(this.this$0));
+    aqge.b(MatchChatSettingFragment.a(this.this$0));
+    ((aqbg)MatchChatSettingFragment.a(this.this$0).getManager(264)).c();
+    ((amjx)MatchChatSettingFragment.a(this.this$0).getManager(285)).a();
     ThreadManager.getUIHandler().post(new MatchChatSettingFragment.2.1(this));
   }
 }

@@ -1,43 +1,64 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
 
-class ajcf
-  implements View.OnClickListener
+public abstract class ajcf
 {
-  ajcf(ajbm paramajbm) {}
+  protected Context a;
+  protected Rect a;
+  protected DoodleView a;
   
-  public void onClick(View paramView)
+  public ajcf(DoodleView paramDoodleView)
   {
-    paramView = QQPlayerService.a();
-    int i;
-    if (paramView != null)
-    {
-      ajbm.a(this.a).startActivity(paramView);
-      paramView = paramView.getComponent().getClassName();
-      if (!paramView.equals(MusicPlayerActivity.class.getName())) {
-        break label125;
-      }
-      i = 0;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    if (paramDoodleView == null) {
+      throw new IllegalStateException("DoodleView can not be null.");
     }
-    for (;;)
-    {
-      azmj.a(ajbm.a(this.a).app, "dc00898", "", "", "0X8009EE4", "0X8009EE4", 1, 0, "", "", "", "");
-      azmj.b(ajbm.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
-      return;
-      label125:
-      if (paramView.equals(MusicGeneQQBrowserActivity.class.getName())) {
-        i = 1;
-      } else {
-        i = -1;
-      }
+    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView = paramDoodleView;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView.invalidate();
     }
   }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
+  }
+  
+  public final void a(Canvas paramCanvas)
+  {
+    b(paramCanvas);
+  }
+  
+  public boolean a()
+  {
+    return b();
+  }
+  
+  public final boolean a(MotionEvent paramMotionEvent)
+  {
+    a();
+    return b(paramMotionEvent);
+  }
+  
+  protected abstract void b(Canvas paramCanvas);
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  protected abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

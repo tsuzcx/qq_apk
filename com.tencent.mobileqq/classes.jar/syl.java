@@ -5,9 +5,9 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
 
 final class syl
-  extends amni
+  extends amrx
 {
-  syl(Object paramObject, QQAppInterface paramQQAppInterface, String paramString, alvc paramalvc, boolean paramBoolean, Context paramContext) {}
+  syl(Object paramObject, QQAppInterface paramQQAppInterface, String paramString, alzr paramalzr, boolean paramBoolean, Context paramContext) {}
   
   public int a()
   {
@@ -25,11 +25,11 @@ final class syl
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Alvc != null) {
-        this.jdField_a_of_type_Alvc.onUpdate(102, true, this.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Alzr != null) {
+        this.jdField_a_of_type_Alzr.onUpdate(102, true, this.jdField_a_of_type_JavaLangString);
       }
       return;
-      paramObject = (aluw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+      paramObject = (alzl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
       paramObject.b(this.jdField_a_of_type_JavaLangString);
       paramObject.a(this.jdField_a_of_type_JavaLangString);
       StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
@@ -47,11 +47,11 @@ final class syl
   
   public void b(Object paramObject)
   {
-    if (this.jdField_a_of_type_Alvc != null) {
-      this.jdField_a_of_type_Alvc.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Alzr != null) {
+      this.jdField_a_of_type_Alzr.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
     }
     if (this.jdField_a_of_type_Boolean) {
-      syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
+      syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
     }
   }
   

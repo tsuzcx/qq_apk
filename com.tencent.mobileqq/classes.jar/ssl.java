@@ -1,16 +1,16 @@
 import android.view.View;
 
 class ssl
-  implements bhqd
+  implements bhuk
 {
-  ssl(ssk paramssk, ssj paramssj, int paramInt, bhpy parambhpy) {}
+  ssl(ssk paramssk, ssj paramssj, int paramInt, bhuf parambhuf) {}
   
   public void OnClick(View paramView, int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      this.jdField_a_of_type_Bhpy.dismiss();
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
     }
     ssk.a(this.jdField_a_of_type_Ssk, this.jdField_a_of_type_Ssj);
@@ -22,7 +22,7 @@ class ssl
     for (;;)
     {
       long l = ssp.a().a(this.jdField_a_of_type_Ssj);
-      azmj.b(ssk.a(this.jdField_a_of_type_Ssk), "dc01160", "Pb_account_lifeservice", "" + this.jdField_a_of_type_Ssj.jdField_a_of_type_JavaLangString, "0X80067F2", "0X80067F2", 0, 0, "" + (this.jdField_a_of_type_Int + 1), "" + l, "" + i, "" + paramInt);
+      azqs.b(ssk.a(this.jdField_a_of_type_Ssk), "dc01160", "Pb_account_lifeservice", "" + this.jdField_a_of_type_Ssj.jdField_a_of_type_JavaLangString, "0X80067F2", "0X80067F2", 0, 0, "" + (this.jdField_a_of_type_Int + 1), "" + l, "" + i, "" + paramInt);
       break;
     }
   }

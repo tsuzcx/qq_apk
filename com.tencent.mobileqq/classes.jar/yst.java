@@ -1,31 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface yst
+class yst
+  extends ysw
 {
-  public abstract long a();
+  yst(ysm paramysm, ysj paramysj, String paramString)
+  {
+    super(paramysm.a);
+  }
   
-  public abstract View a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void aw_();
-  
-  public abstract void b(long paramLong);
-  
-  public abstract void c(long paramLong);
-  
-  public abstract void setHeaderBgColor(int paramInt);
-  
-  public abstract void setHeaderBgDrawable(Drawable paramDrawable);
-  
-  public abstract void setHeaderBgRes(int paramInt);
-  
-  public abstract void setTextColor(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "watermark doen");
+    }
+    this.jdField_a_of_type_Ysj.a(this.jdField_a_of_type_JavaLangString, paramBoolean, null);
+  }
 }
 
 

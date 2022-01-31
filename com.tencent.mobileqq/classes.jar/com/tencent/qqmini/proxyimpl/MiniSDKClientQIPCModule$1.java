@@ -1,16 +1,16 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bghl;
-import bgyg;
+import bgls;
+import bhcn;
 
 class MiniSDKClientQIPCModule$1
   implements Runnable
 {
-  MiniSDKClientQIPCModule$1(MiniSDKClientQIPCModule paramMiniSDKClientQIPCModule, bghl parambghl) {}
+  MiniSDKClientQIPCModule$1(MiniSDKClientQIPCModule paramMiniSDKClientQIPCModule, bgls parambgls) {}
   
   public void run()
   {
-    bgyg.a(this.val$runtime.a(), "share_success");
+    bhcn.a(this.val$runtime.a(), "share_success");
   }
 }
 

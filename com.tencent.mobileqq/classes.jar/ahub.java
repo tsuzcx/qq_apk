@@ -1,103 +1,84 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AlphaClickableRelativeLayout;
+import com.tencent.widget.XListView;
 
 public class ahub
-  implements Handler.Callback
+  extends ahsd
 {
-  public ahub(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  protected ahud a;
+  protected FrameLayout a;
+  protected ImageView a;
+  protected TextView a;
+  private babe a;
+  protected QQAppInterface a;
+  protected AlphaClickableRelativeLayout a;
+  protected XListView a;
   
-  public boolean handleMessage(Message paramMessage)
+  public ahub(Activity paramActivity)
   {
-    switch (paramMessage.what)
-    {
-    case 6: 
-    case 7: 
-    case 11: 
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    case 9: 
-    case 22: 
-    case 23: 
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    case 20: 
-    case 21: 
-    case 65537: 
-    case 65538: 
-    case 65539: 
-    case 65540: 
-    case 24: 
-    case 25: 
-    case 27: 
-    case 28: 
-    case 33: 
-    case 14: 
-    case 15: 
-    case 26: 
-    case 34: 
-    case 13: 
-      do
-      {
-        return true;
-        this.a.g(paramMessage);
-        return true;
-        this.a.a(paramMessage);
-        return true;
-        this.a.f(paramMessage);
-        return true;
-        this.a.e(paramMessage);
-        return true;
-        this.a.b(paramMessage);
-        return true;
-        this.a.d(paramMessage);
-        return true;
-        this.a.c(paramMessage);
-        return true;
-        ChatHistoryC2CAllFragment.a(this.a);
-        return true;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.history.C2CAllFragment", 2, "handle_get_roam_msg_auth_mode notify UI");
-        }
-        if (this.a.jdField_a_of_type_Alsl.f())
-        {
-          this.a.c(false);
-          return true;
-        }
-        this.a.t();
-        return true;
-      } while (paramMessage.obj == null);
-      ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = this.a;
-      BaseApplication localBaseApplication = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-      if (((Boolean)paramMessage.obj).booleanValue() == true) {}
-      for (int i = 2131692294;; i = 2131692293)
-      {
-        localChatHistoryC2CAllFragment.a(localBaseApplication.getString(i));
-        return true;
-      }
-    case 39: 
-      ChatHistoryC2CAllFragment.a(this.a, paramMessage);
-      return true;
-    case 40: 
-      ChatHistoryC2CAllFragment.b(this.a, paramMessage);
-      return true;
-    case 41: 
-      ChatHistoryC2CAllFragment.c(this.a, paramMessage);
-      return true;
+    super(paramActivity);
+    this.jdField_a_of_type_Babe = new ahuc(this);
+    if ((paramActivity instanceof SplashActivity)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((SplashActivity)paramActivity).app;
     }
-    ChatHistoryC2CAllFragment.d(this.a, paramMessage);
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.i("CTEntryController", 2, "CTEntryController create");
+    }
   }
+  
+  public void a(ahud paramahud)
+  {
+    this.jdField_a_of_type_Ahud = paramahud;
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131376826));
+    this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout = ((AlphaClickableRelativeLayout)paramView.findViewById(2131375482));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375488));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramView.findViewById(2131370123));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362131));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(new ColorDrawable(0));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setNeedCheckSpringback(false);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
+    this.jdField_a_of_type_ComTencentWidgetXListView.mForContacts = true;
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  protected boolean a()
+  {
+    boolean bool = babd.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("CTEntryController", 2, String.format("shouldShowRecommendEntry, isStudyMode: %s", new Object[] { Boolean.valueOf(bool) }));
+    }
+    return !bool;
+  }
+  
+  public void b()
+  {
+    super.b();
+    babd.a(this.jdField_a_of_type_Babe);
+  }
+  
+  public void d()
+  {
+    super.d();
+    babd.b(this.jdField_a_of_type_Babe);
+  }
+  
+  public void d(boolean paramBoolean) {}
 }
 
 

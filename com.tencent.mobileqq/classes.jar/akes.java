@@ -1,277 +1,52 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.Display;
+import android.os.Handler;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.troop.widget.HotChatPostItemView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Queue;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class akes
-  extends BaseAdapter
+  implements View.OnClickListener
 {
-  protected int a;
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList<JSONObject> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  JSONObject jdField_a_of_type_OrgJsonJSONObject = null;
-  yyc jdField_a_of_type_Yyc;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = true;
+  public akes(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
-  public akes(Context paramContext, JSONArray paramJSONArray, yyc paramyyc)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Yyc = paramyyc;
-    if (this.jdField_a_of_type_Yyc != null) {}
-    for (;;)
+    if (QQToast.a() == 0)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      b(paramJSONArray);
-      return;
-      bool = false;
-    }
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilArrayList.size()) {
-      return i + this.jdField_a_of_type_Int;
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.b = true;
+      paramView = new amne(this.a, this.a.app, QQSpecialFriendSettingActivity.a(this.a));
+      paramView.setOnDismissListener(new aket(this, paramView));
+      paramView.show();
+      azqs.b(null, "dc00898", "", "", "0X8009ACB", "0X8009ACB", 0, 0, "", "", "", "");
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialFriendSettingActivity", 2, "finish all setings");
     }
-  }
-  
-  public void a(JSONArray paramJSONArray)
-  {
-    ArrayList localArrayList;
-    StringBuilder localStringBuilder;
-    int i;
-    if (paramJSONArray != null)
+    if (bdin.g(this.a))
     {
-      localArrayList = new ArrayList();
-      localStringBuilder = new StringBuilder("filterPids:");
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < paramJSONArray.length())
+      boolean bool1 = QQSpecialFriendSettingActivity.a(this.a).a();
+      boolean bool2 = QQSpecialFriendSettingActivity.b(this.a).a();
+      paramView = QQSpecialFriendSettingActivity.a(this.a);
+      String str = QQSpecialFriendSettingActivity.a(this.a);
+      int i = QQSpecialFriendSettingActivity.a(this.a);
+      paramView.a(str, new int[] { 2, 3 }, new boolean[] { bool1, bool2 }, new String[] { String.valueOf(i), null });
+      paramView = this.a.a.obtainMessage(8193);
+      paramView.obj = this.a.getString(2131699861);
+      this.a.a.sendMessage(paramView);
+      if ((bool1) && (bool2)) {}
+      for (paramView = "0";; paramView = "1")
       {
-        try
-        {
-          JSONObject localJSONObject = (JSONObject)paramJSONArray.get(i);
-          if (!localJSONObject.has("pid")) {
-            break label171;
-          }
-          String str = localJSONObject.optString("pid");
-          if (!this.jdField_a_of_type_JavaUtilHashSet.add(str))
-          {
-            localStringBuilder.append(str).append(",");
-            this.jdField_a_of_type_Int += 1;
-          }
-          else
-          {
-            localArrayList.add(localJSONObject);
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          if (!QLog.isColorLevel()) {
-            break label171;
-          }
-        }
-        QLog.e("HotChatPostListAdapterQ.hotchat.aio_post_list_req", 2, "process array" + localJSONException.toString());
-      }
-      else
-      {
-        if (!localArrayList.isEmpty())
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
-          notifyDataSetChanged();
-        }
+        azqs.b(null, "CliOper", "", "", "0X80050E2", "0X80050E2", 0, 0, paramView, "", "", "");
         return;
       }
-      label171:
-      i += 1;
     }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.b;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void b()
-  {
-    try
-    {
-      this.b = false;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void b(JSONArray paramJSONArray)
-  {
-    if (paramJSONArray != null)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilHashSet.clear();
-      int i = 0;
-      for (;;)
-      {
-        if (i < paramJSONArray.length()) {
-          try
-          {
-            JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-            String str = localJSONObject.optString("pid");
-            this.jdField_a_of_type_JavaUtilHashSet.add(str);
-            this.jdField_a_of_type_JavaUtilArrayList.add(localJSONObject);
-            i += 1;
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("HotChatPostListAdapterQ.hotchat.aio_post_list_req", 2, "setListItemsAndNotify JSONException:" + localJSONException.toString());
-              }
-            }
-          }
-        }
-      }
-      notifyDataSetChanged();
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_Yyc != null)
-      {
-        this.jdField_a_of_type_Yyc.a("com.tencent.biz.hotchatpostlist.widget.HotChatPostItemView");
-        this.jdField_a_of_type_Yyc = null;
-      }
-      return;
-    }
-    HotChatPostItemView.jdField_a_of_type_JavaUtilHashMap.clear();
-    HotChatPostItemView.jdField_a_of_type_JavaUtilQueue.clear();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return null;
-    }
-    return (JSONObject)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if ((paramView == null) && (this.jdField_a_of_type_Boolean)) {
-      paramView = this.jdField_a_of_type_Yyc.a("com.tencent.biz.hotchatpostlist.widget.HotChatPostItemView");
-    }
-    for (;;)
-    {
-      paramViewGroup = paramView;
-      if (paramView == null)
-      {
-        paramViewGroup = new HotChatPostItemView(this.jdField_a_of_type_AndroidContentContext);
-        if (QLog.isColorLevel()) {
-          QLog.e("HotChatPostListAdapter", 2, "loadPluginView failed");
-        }
-        this.jdField_a_of_type_Boolean = false;
-      }
-      paramView = (JSONObject)getItem(paramInt);
-      if (paramView != null) {
-        paramViewGroup.setOnClickListener(new akeu(this, paramView.optString("bid"), paramView.optString("pid")));
-      }
-      try
-      {
-        if (this.jdField_a_of_type_OrgJsonJSONObject == null)
-        {
-          this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-          paramInt = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay().getWidth();
-          this.jdField_a_of_type_OrgJsonJSONObject.put("densityDpi", this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi);
-          this.jdField_a_of_type_OrgJsonJSONObject.put("screenWidth", paramInt);
-        }
-        this.jdField_a_of_type_OrgJsonJSONObject.put("currentTime", NetConnInfoCenter.getServerTime());
-        paramView.put("extra_info_key", this.jdField_a_of_type_OrgJsonJSONObject);
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("HotChatPostListAdapter", 2, localJSONException.toString());
-          }
-        }
-        ((HotChatPostItemView)paramViewGroup).setData(paramView.toString());
-        return paramViewGroup;
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        yyc.a(paramViewGroup, paramView.toString());
-        return paramViewGroup;
-      }
-    }
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, new aket(this));
-    super.notifyDataSetChanged();
+    paramView = this.a.a.obtainMessage(8195);
+    paramView.arg1 = 0;
+    paramView.arg2 = 2131692398;
+    this.a.a.sendMessage(paramView);
   }
 }
 

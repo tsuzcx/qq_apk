@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.activity;
 
 import android.text.TextUtils;
-import bdbt;
+import bdgc;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.HashMap;
@@ -24,13 +24,13 @@ class TroopAdminList$2
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("uin", str);
-        localHashMap.put("nick", bdbt.j(this.this$0.app, str));
+        localHashMap.put("nick", bdgc.j(this.this$0.app, str));
         this.this$0.jdField_a_of_type_JavaUtilList.add(localHashMap);
       }
       i += 1;
     }
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)this.this$0.app.a(1));
-    this.this$0.addObserver(this.this$0.jdField_a_of_type_Alox);
+    this.this$0.addObserver(this.this$0.jdField_a_of_type_Altm);
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.c(this.this$0.jdField_a_of_type_ArrayOfJavaLangString);
     this.this$0.runOnUiThread(new TroopAdminList.2.1(this));
   }

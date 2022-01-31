@@ -1,22 +1,35 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.story.mode.StoryEffectTextMode.6.1;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class bmds
-  implements nbs
+class bmds
 {
-  bmds(bmdi parambmdi) {}
+  final Map<bmdk, List<bmdt>> a;
+  final Map<bmdt, bmdk> b;
   
-  public void loaded(String paramString, int paramInt)
+  bmds(Map<bmdt, bmdk> paramMap)
   {
-    if ((paramInt == 0) && (paramString == null) && (bmdi.a(this.a, bmdi.a(this.a).d))) {
-      ThreadManager.getUIHandler().post(new StoryEffectTextMode.6.1(this));
+    this.b = paramMap;
+    this.a = new HashMap();
+    Iterator localIterator = paramMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      bmdk localbmdk = (bmdk)localEntry.getValue();
+      List localList = (List)this.a.get(localbmdk);
+      paramMap = localList;
+      if (localList == null)
+      {
+        paramMap = new ArrayList();
+        this.a.put(localbmdk, paramMap);
+      }
+      paramMap.add(localEntry.getKey());
     }
-    QLog.i("StoryEffectTextModeQ.qqstory.text_filter", 2, "HtmlOffline.checkUpByBusinessId QG_SO_BID, loaded:code =" + paramInt);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

@@ -256,8 +256,8 @@ public abstract class TbsBaseConfig
     //   18: aload_0
     //   19: invokevirtual 84	com/tencent/smtt/sdk/TbsBaseConfig:getConfigFileName	()Ljava/lang/String;
     //   22: invokestatic 86	com/tencent/smtt/sdk/TbsBaseConfig:getTbsFile	(Landroid/content/Context;Ljava/lang/String;)Ljava/io/File;
-    //   25: astore 6
-    //   27: aload 6
+    //   25: astore 8
+    //   27: aload 8
     //   29: ifnonnull +51 -> 80
     //   32: iconst_0
     //   33: ifeq +11 -> 44
@@ -291,7 +291,7 @@ public abstract class TbsBaseConfig
     //   83: dup
     //   84: new 94	java/io/FileInputStream
     //   87: dup
-    //   88: aload 6
+    //   88: aload 8
     //   90: invokespecial 97	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   93: invokespecial 100	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   96: astore_2
@@ -315,20 +315,20 @@ public abstract class TbsBaseConfig
     //   141: aload_1
     //   142: invokeinterface 125 1 0
     //   147: checkcast 127	java/lang/String
-    //   150: astore 7
+    //   150: astore 6
     //   152: aload_0
     //   153: getfield 50	com/tencent/smtt/sdk/TbsBaseConfig:mSyncMap	Ljava/util/Map;
-    //   156: aload 7
+    //   156: aload 6
     //   158: invokeinterface 155 2 0
-    //   163: astore 8
+    //   163: astore 7
     //   165: aload 5
-    //   167: aload 7
+    //   167: aload 6
     //   169: new 157	java/lang/StringBuilder
     //   172: dup
     //   173: invokespecial 158	java/lang/StringBuilder:<init>	()V
     //   176: ldc 160
     //   178: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   181: aload 8
+    //   181: aload 7
     //   183: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   186: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   189: invokevirtual 174	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
@@ -339,11 +339,11 @@ public abstract class TbsBaseConfig
     //   199: invokespecial 158	java/lang/StringBuilder:<init>	()V
     //   202: ldc 176
     //   204: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   207: aload 7
+    //   207: aload 6
     //   209: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   212: ldc 178
     //   214: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   217: aload 8
+    //   217: aload 7
     //   219: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   222: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   225: invokestatic 147	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
@@ -375,7 +375,7 @@ public abstract class TbsBaseConfig
     //   280: dup
     //   281: new 183	java/io/FileOutputStream
     //   284: dup
-    //   285: aload 6
+    //   285: aload 8
     //   287: invokespecial 184	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   290: invokespecial 187	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   293: astore_1
@@ -488,9 +488,9 @@ public abstract class TbsBaseConfig
     //   385	5	4	localObject14	Object
     //   397	28	4	localObject15	Object
     //   104	191	5	localProperties	java.util.Properties
-    //   25	261	6	localFile	File
-    //   150	58	7	str	String
-    //   163	55	8	localObject16	Object
+    //   150	58	6	str	String
+    //   163	55	7	localObject16	Object
+    //   25	261	8	localFile	File
     // Exception table:
     //   from	to	target	type
     //   36	44	59	java/lang/Exception

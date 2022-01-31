@@ -1,6 +1,12 @@
-public abstract interface bern
+import android.graphics.Bitmap;
+
+public class bern
 {
-  public abstract void a();
+  public float a;
+  public Bitmap a;
+  public float b;
+  public float c;
+  public float d;
 }
 
 

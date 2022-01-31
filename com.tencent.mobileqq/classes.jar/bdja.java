@@ -1,44 +1,136 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.os.AsyncTask;
+import android.os.SystemClock;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.manager.ServerConfigManager.ConfigType;
 
-class bdja
-  implements ViewTreeObserver.OnGlobalLayoutListener
+final class bdja
+  extends AsyncTask<Void, Void, Void>
 {
-  bdja(bdiz parambdiz) {}
+  bdja(String paramString1, int paramInt, String paramString2) {}
   
-  public void onGlobalLayout()
+  protected Void a(Void... paramVarArgs)
   {
-    if (!bdiz.a(this.a)) {}
+    paramVarArgs = bdmh.a(ServerConfigManager.ConfigType.common, bdiz.p());
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PerformanceReportUtils", 4, "reportFPS openStr ：" + paramVarArgs);
+    }
+    if ((paramVarArgs == null) || (!"1".equals(paramVarArgs))) {
+      return null;
+    }
+    int i;
     for (;;)
     {
-      return;
-      Object localObject = new Rect();
-      bdiz.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
-      int j = bdiz.a(this.a) - ((Rect)localObject).height();
-      bdiz.a(this.a, ((Rect)localObject).height());
-      if (j > bdiz.b(this.a) / 3) {}
-      for (int i = 1; i != 0; i = 0)
+      try
       {
-        bdiz.a(this.a, false);
-        if (QLog.isColorLevel()) {
-          QLog.d("SoftKeyboardHeight", 2, new Object[] { "onGlobalLayout, keyboard height:", Integer.valueOf(j) });
+        localSharedPreferences = bdiz.a();
+        if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_Int <= 0)) {
+          break label631;
         }
-        localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_soft_keyboard", 0);
-        if (((SharedPreferences)localObject).getInt("key_height", 0) != j) {
-          ((SharedPreferences)localObject).edit().putInt("key_height", j).commit();
+        if ((this.jdField_a_of_type_Int >= 60) && (QLog.isDevelopLevel())) {
+          QLog.e("PerformanceReportUtils", 4, "reportFPS  fps error fpsvalue :" + this.jdField_a_of_type_Int);
         }
-        if (bdiz.a(this.a) != null) {
-          bdiz.a(this.a).a(j, false);
-        }
-        this.a.a();
-        return;
+        l2 = localSharedPreferences.getLong(this.jdField_a_of_type_JavaLangString, 0L);
+        l1 = bdiz.a();
+        paramVarArgs = bdmh.a(ServerConfigManager.ConfigType.common, bdiz.q());
+        if (paramVarArgs == null) {}
       }
+      catch (Exception paramVarArgs)
+      {
+        SharedPreferences localSharedPreferences;
+        long l2;
+        long l1;
+        HashMap localHashMap;
+        BaseApplicationImpl localBaseApplicationImpl;
+        break label631;
+        i = 1;
+        continue;
+      }
+      try
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("PerformanceReportUtils", 4, "reportFPS  server time：" + paramVarArgs);
+        }
+        l1 = Long.valueOf(paramVarArgs).longValue();
+        l1 *= 1000L;
+      }
+      catch (Exception paramVarArgs)
+      {
+        l1 = bdiz.a();
+        continue;
+        paramVarArgs = this.jdField_a_of_type_JavaLangString + "_new";
+      }
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PerformanceReportUtils", 4, "reportFPS report_time ：" + l1 + ",lastRp" + l2 + ",reportFPS fpsvalue：" + this.jdField_a_of_type_Int);
+    }
+    if ((l2 != 0L) && (SystemClock.uptimeMillis() >= l2))
+    {
+      if (SystemClock.uptimeMillis() - l2 < l1) {
+        break label633;
+      }
+      break label626;
+      bool = UnifiedMonitor.a().whetherReportThisTime(12, false);
+      if ((i == 0) && (!bool)) {
+        break label631;
+      }
+      localHashMap = new HashMap();
+      localHashMap.put("param_FPS", String.valueOf(this.jdField_a_of_type_Int));
+      localHashMap.put("aioBusiness", this.b);
+      localHashMap.put("theme_Id", QQAppInterface.d());
+      localHashMap.put("param_threadOpId", String.valueOf(amdr.a().a()));
+      if (QLog.isDevelopLevel()) {
+        QLog.d("PerformanceReportUtils", 4, "reportFPS real report  fpsvalue：" + this.jdField_a_of_type_Int);
+      }
+      localHashMap.put("param_DeviceType", String.valueOf(aips.a()));
+      paramVarArgs = null;
+      localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      if (localBaseApplicationImpl != null) {
+        paramVarArgs = localBaseApplicationImpl.getRuntime();
+      }
+      if ((paramVarArgs != null) && ((paramVarArgs instanceof QQAppInterface)))
+      {
+        if (((QQAppInterface)paramVarArgs).a.a == 0L) {
+          break label638;
+        }
+        bool = true;
+        label457:
+        localHashMap.put("param_is_logining", String.valueOf(bool));
+        if (((QQAppInterface)paramVarArgs).a.c()) {
+          break label644;
+        }
+      }
+    }
+    label644:
+    for (boolean bool = true;; bool = false)
+    {
+      localHashMap.put("param_syncing_msg", String.valueOf(bool));
+      localHashMap.put("param_NetType", String.valueOf(bdin.a(BaseApplication.getContext())));
+      if (i != 0)
+      {
+        paramVarArgs = this.jdField_a_of_type_JavaLangString;
+        azri.a(BaseApplication.getContext()).a(bdmh.a(), paramVarArgs, bdiz.a(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int, 0L, localHashMap, bdiz.o());
+        if (i == 0) {
+          break label631;
+        }
+        localSharedPreferences.edit().putLong(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis()).commit();
+      }
+      label626:
+      label631:
+      return null;
+      label633:
+      i = 0;
+      break;
+      label638:
+      bool = false;
+      break label457;
     }
   }
 }

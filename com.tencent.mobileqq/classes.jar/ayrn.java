@@ -1,37 +1,14 @@
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.ThemeImageView;
+import android.view.View.OnClickListener;
 
-public class ayrn
-  extends ayro
+class ayrn
+  implements View.OnClickListener
 {
-  public Button a;
+  ayrn(ayrm paramayrm, aynu paramaynu) {}
   
-  public ayrn(ViewGroup paramViewGroup, int paramInt)
+  public void onClick(View paramView)
   {
-    super(paramViewGroup, paramInt);
-  }
-  
-  public Button a()
-  {
-    return this.a;
-  }
-  
-  protected void a()
-  {
-    this.h = ((TextView)this.b.findViewById(2131371142));
-    this.e = ((ImageView)this.b.findViewById(2131361795));
-    this.i = ((TextView)this.b.findViewById(2131375678));
-    this.k = ((TextView)this.b.findViewById(2131376845));
-    this.a = ((Button)this.b.findViewById(2131375665));
-    this.a.setText(alpo.a(2131689628));
-    this.j = ((TextView)this.b.findViewById(2131375675));
-    if ((this.e instanceof ThemeImageView)) {
-      ((ThemeImageView)this.e).setSupportMaskView(true);
-    }
+    this.jdField_a_of_type_Aynu.a(paramView);
   }
 }
 

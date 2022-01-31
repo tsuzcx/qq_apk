@@ -1,107 +1,186 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.util.LruCache;
+import android.text.TextUtils;
+import com.tencent.ark.ArkAppPanelReport.ReqBody;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.Proto.EchoRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.Map;
 
-class anoh
-  extends Handler
+public class anoh
+  extends alpd
 {
-  anoh(anoe paramanoe, Looper paramLooper)
+  private static final int[] a = { 95 };
+  
+  public anoh(QQAppInterface paramQQAppInterface)
   {
-    super(paramLooper);
+    super(paramQQAppInterface);
   }
   
-  public void handleMessage(Message paramMessage)
+  private Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (paramMessage.what == 1001) {
+    try
+    {
+      paramToServiceMsg = new String((byte[])paramObject, "UTF-8");
+      paramFromServiceMsg = paramToServiceMsg;
+      if (paramToServiceMsg == null) {
+        paramFromServiceMsg = "";
+      }
+      return paramFromServiceMsg;
+    }
+    catch (Exception paramToServiceMsg)
+    {
       for (;;)
       {
-        try
-        {
-          paramMessage = (ArrayList)paramMessage.obj;
-          if ((paramMessage == null) || (paramMessage.size() <= 0)) {
-            continue;
-          }
-          Iterator localIterator = paramMessage.iterator();
-          if (!localIterator.hasNext()) {
-            continue;
-          }
-          str1 = (String)localIterator.next();
-          str2 = (String)this.a.b.get(str1);
-          paramMessage = BitmapFactory.decodeFile(str2);
-          if (paramMessage == null) {
-            continue;
-          }
-          if (anoe.a(this.a) != 1) {
-            continue;
-          }
-          localObject1 = QQAppInterface.a(paramMessage, bdda.a(paramMessage.getWidth()), 50, 50);
-          paramMessage = (Message)localObject1;
-          if (bhxo.a())
-          {
-            paramMessage = new Paint();
-            paramMessage.setAntiAlias(true);
-            paramMessage.setColor(ThemeUtil.NIGHTMODE_MASKCOLOR);
-            localObject2 = new Canvas((Bitmap)localObject1);
-            ((Canvas)localObject2).drawRoundRect(new RectF(0.0F, 0.0F, ((Canvas)localObject2).getWidth(), ((Canvas)localObject2).getHeight()), 10.0F, 10.0F, paramMessage);
-            paramMessage = (Message)localObject1;
-          }
+        ArkAppCenter.c("ArkApp.BusinessHandler", String.format("onReceive_AppMsg, fail convert data to string", new Object[0]));
+        paramToServiceMsg = null;
+      }
+    }
+  }
+  
+  private void a(String paramString, boolean paramBoolean, byte[] paramArrayOfByte, int paramInt1, int paramInt2, alpg paramalpg)
+  {
+    paramalpg = super.createToServiceMsg(paramString, paramalpg);
+    paramalpg.addAttribute("SendTime", Long.valueOf(System.currentTimeMillis()));
+    paramalpg.addAttribute("IsGenericCmd", Boolean.valueOf(paramBoolean));
+    paramalpg.addAttribute("IsPanelRequest", Boolean.valueOf(false));
+    paramalpg.addAttribute("NotifyType", Integer.valueOf(paramInt2));
+    paramalpg.putWupBuffer(paramArrayOfByte);
+    if (paramInt1 > 0) {
+      paramalpg.setTimeout(paramInt1);
+    }
+    if (!alpw.a().containsKey(paramString)) {
+      alpw.a(paramString, a);
+    }
+    super.sendPbReq(paramalpg);
+  }
+  
+  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    for (;;)
+    {
+      try
+      {
+        paramToServiceMsg = (Proto.EchoRsp)new Proto.EchoRsp().mergeFrom((byte[])paramObject);
+        if (paramToServiceMsg == null) {
+          return null;
         }
-        catch (OutOfMemoryError paramMessage)
+        if (paramToServiceMsg.msg.has())
         {
-          String str1;
-          String str2;
-          if (!QLog.isColorLevel()) {
-            continue;
+          paramToServiceMsg = paramToServiceMsg.msg.get();
+          paramFromServiceMsg = paramToServiceMsg;
+          if (paramToServiceMsg == null) {
+            paramFromServiceMsg = "";
           }
-          QLog.e("NonMainAppHeadLoader", 2, "decodeFile, OutOfMemoryError");
-          return;
-          Object localObject1 = this.a.a(paramMessage);
-          paramMessage = (Message)localObject1;
-          if (!bhxo.a()) {
-            continue;
-          }
-          paramMessage = new Paint();
-          paramMessage.setAntiAlias(true);
-          paramMessage.setColor(ThemeUtil.NIGHTMODE_MASKCOLOR);
-          Object localObject2 = new Canvas((Bitmap)localObject1);
-          ((Canvas)localObject2).drawCircle(((Canvas)localObject2).getWidth() / 2, ((Canvas)localObject2).getHeight() / 2, ((Canvas)localObject2).getWidth() / 2, paramMessage);
-          paramMessage = (Message)localObject1;
-          continue;
-        }
-        catch (Exception paramMessage)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("NonMainAppHeadLoader", 2, "decodeFile, exception:" + paramMessage.toString());
-        }
-        if (paramMessage != null)
-        {
-          localObject1 = Message.obtain();
-          localObject2 = new Bundle();
-          ((Bundle)localObject2).putParcelable("bmp", paramMessage);
-          ((Bundle)localObject2).putString("uin", str1);
-          ((Bundle)localObject2).putString("path", str2);
-          ((Message)localObject1).obj = localObject2;
-          ((Message)localObject1).what = 1002;
-          this.a.a.sendMessage((Message)localObject1);
-          if (QLog.isColorLevel()) {
-            QLog.d("NonMainAppHeadLoader", 2, "decodeFile, uin:" + str1);
-          }
+          return paramFromServiceMsg;
         }
       }
+      catch (Exception paramToServiceMsg)
+      {
+        return null;
+      }
+      paramToServiceMsg = null;
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    ArkAppPanelReport.ReqBody localReqBody = new ArkAppPanelReport.ReqBody();
+    localReqBody.bytes_app_name.set(ByteStringMicro.copyFromUtf8(paramString));
+    ArkAppCenter.a("ArkApp.BusinessHandler", String.format("reportArkAppPanelIconClick appName=%s", new Object[] { paramString }));
+    paramString = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "ArkAppPanel.Report");
+    paramString.putWupBuffer(localReqBody.toByteArray());
+    paramString.setNeedCallback(false);
+    sendPbReq(paramString);
+    return true;
+  }
+  
+  public boolean a(String paramString, int paramInt1, int paramInt2, alpg paramalpg)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramalpg == null)) {
+      return false;
+    }
+    paramalpg = super.createToServiceMsg(paramString, paramalpg);
+    paramalpg.addAttribute("SendTime", Long.valueOf(System.currentTimeMillis()));
+    paramalpg.addAttribute("IsGenericCmd", Boolean.valueOf(true));
+    paramalpg.addAttribute("IsPanelRequest", Boolean.valueOf(true));
+    paramalpg.addAttribute("NotifyType", Integer.valueOf(paramInt2));
+    if (paramInt1 > 0) {
+      paramalpg.setTimeout(paramInt1);
+    }
+    if (!alpw.a().containsKey(paramString)) {
+      alpw.a(paramString, a);
+    }
+    super.sendPbReq(paramalpg);
+    return true;
+  }
+  
+  public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, alpg paramalpg)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (paramalpg == null)) {
+      return false;
+    }
+    String str = paramString2;
+    if (paramString2 == null) {
+      str = "";
+    }
+    try
+    {
+      paramString2 = str.getBytes("UTF-8");
+      a(paramString1, true, paramString2, paramInt1, paramInt2, paramalpg);
+      return true;
+    }
+    catch (Exception paramString2)
+    {
+      ArkAppCenter.c("ArkApp.BusinessHandler", String.format("sendAppMsg, fail convert content to bytes array, cmd=%s, content=%s", new Object[] { paramString1, str }));
+    }
+    return false;
+  }
+  
+  protected Class<? extends alpg> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool1 = paramFromServiceMsg.isSuccess();
+    long l1 = ((Long)paramToServiceMsg.getAttribute("SendTime")).longValue();
+    long l2 = System.currentTimeMillis();
+    boolean bool2 = ((Boolean)paramToServiceMsg.getAttribute("IsGenericCmd")).booleanValue();
+    boolean bool3 = ((Boolean)paramToServiceMsg.getAttribute("IsPanelRequest")).booleanValue();
+    int i = ((Integer)paramToServiceMsg.getAttribute("NotifyType")).intValue();
+    String str = paramFromServiceMsg.getServiceCmd();
+    ArkAppCenter.c("ArkApp.BusinessHandler", String.format("onReceive, cmd=%s, app-msg=%s, panelRequest=%s, suc=%s, delay=%d, ", new Object[] { str, Boolean.toString(bool2), Boolean.toString(bool3), Boolean.toString(bool1), Long.valueOf(l2 - l1) }));
+    if (bool1) {
+      if (bool2) {
+        if (!bool3) {}
+      }
+    }
+    for (;;)
+    {
+      if (paramObject != null)
+      {
+        super.notifyUI(paramToServiceMsg, i, true, paramObject);
+        return;
+        paramObject = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        continue;
+        if (str.equalsIgnoreCase("ArkAppSvc.Echo")) {
+          paramObject = b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        }
+      }
+      else
+      {
+        super.notifyUI(paramToServiceMsg, i, false, null);
+        return;
+      }
+      paramObject = null;
     }
   }
 }

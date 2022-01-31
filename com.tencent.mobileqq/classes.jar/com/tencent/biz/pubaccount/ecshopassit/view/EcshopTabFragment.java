@@ -5,8 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import bdje;
-import beav;
+import bdnn;
+import befe;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import nur;
@@ -26,17 +26,17 @@ public class EcshopTabFragment
   private void a(View paramView)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview = nvk.a().a(paramView.getContext(), this.jdField_a_of_type_JavaLangString);
-    paramView = (FrameLayout)paramView.findViewById(2131364776);
+    paramView = (FrameLayout)paramView.findViewById(2131364777);
     if ((this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview.getParent() instanceof ViewGroup)) {
       ((ViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview.getParent()).removeView(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview);
     }
     paramView.addView(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview);
     this.jdField_a_of_type_Nvi = new nvj(this, getActivity(), getActivity(), nur.a(), this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview, this.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_Nvi.setmTimeBeforeLoadUrl(System.currentTimeMillis());
-    new beav(this.jdField_a_of_type_Nvi).a(null, nur.a(), null);
+    new befe(this.jdField_a_of_type_Nvi).a(null, nur.a(), null);
     this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview.setWillNotCacheDrawing(false);
     this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview.setDrawingCacheEnabled(true);
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview != null) && (!bdje.a(this.jdField_a_of_type_JavaLangString))) {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview != null) && (!bdnn.a(this.jdField_a_of_type_JavaLangString))) {
       this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview.loadUrl(this.jdField_a_of_type_JavaLangString);
     }
   }
@@ -61,7 +61,7 @@ public class EcshopTabFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561683, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561701, paramViewGroup, false);
     a(paramLayoutInflater);
     return paramLayoutInflater;
   }

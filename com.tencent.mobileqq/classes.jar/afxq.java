@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
 
-public class afxq
-  implements View.OnClickListener
+public abstract interface afxq
 {
-  public afxq(StructingMsgItemBuilder paramStructingMsgItemBuilder, BaseChatPie paramBaseChatPie, AbsShareMsg paramAbsShareMsg) {}
+  public abstract void a(PttAudioWaveView paramPttAudioWaveView);
   
-  public void onClick(View paramView)
-  {
-    paramView = ((agot)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg);
-    ((agot)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(paramView);
-  }
+  public abstract void a(PttAudioWaveView paramPttAudioWaveView, float paramFloat);
 }
 
 

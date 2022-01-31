@@ -1,25 +1,27 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vzy
-  implements bhqd
+  extends QQUIEventReceiver<vzl, vdl>
 {
-  public vzy(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, bhpy parambhpy) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public vzy(@NonNull vzl paramvzl)
   {
-    if (xod.b()) {}
-    do
+    super(paramvzl);
+  }
+  
+  public void a(@NonNull vzl paramvzl, @NonNull vdl paramvdl)
+  {
+    if (paramvdl.a.isSuccess())
     {
-      return;
-      this.jdField_a_of_type_Bhpy.e();
-      paramView = this.jdField_a_of_type_Bhpy.a(paramInt);
-    } while (!alpo.a(2131711422).equals(paramView));
-    paramView = TroopInfoActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.c, 0);
-    paramView.putInt("extra_last_open_from", this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.a);
-    bclo.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity, paramView, 2);
+      wxe.a(paramvzl.b, "receive user info event. %s.", paramvdl.toString());
+      paramvzl.i();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdl.class;
   }
 }
 

@@ -1,15 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class acme
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public acme(ContactBindedActivity paramContactBindedActivity) {}
+  public acme(ChatHistory paramChatHistory) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    ContactBindedActivity.a(this.a, null);
+    if (paramMessage.what == 1)
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = new bety(this.a, this.a.getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.c(2131691584);
+      if (!this.a.isFinishing()) {
+        this.a.a.show();
+      }
+    }
   }
 }
 

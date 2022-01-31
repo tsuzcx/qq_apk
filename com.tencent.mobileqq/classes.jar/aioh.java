@@ -1,17 +1,18 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 
 public class aioh
-  extends aiml
+  implements View.OnLayoutChangeListener
 {
-  public aioh(NewPhotoListActivity paramNewPhotoListActivity)
-  {
-    super(paramNewPhotoListActivity);
-  }
+  public aioh(PhotoCropActivity paramPhotoCropActivity) {}
   
-  public void initData(Intent paramIntent)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    super.initData(paramIntent);
+    if (((paramInt1 != paramInt5) || (paramInt2 != paramInt6) || (paramInt3 != paramInt7) || (paramInt4 != paramInt8)) && (this.a.a != null)) {
+      this.a.a.sendEmptyMessage(1001);
+    }
   }
 }
 

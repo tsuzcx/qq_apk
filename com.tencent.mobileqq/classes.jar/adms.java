@@ -1,27 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
 
 public class adms
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public adms(QQMapActivity paramQQMapActivity) {}
+  public adms(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((paramIntent.getAction().equals("android.intent.action.SCREEN_OFF")) && (!this.a.p) && (!this.a.q) && (GesturePWDUtils.getGesturePWDState(this.a, this.a.k) == 2) && (GesturePWDUtils.getGesturePWDMode(this.a, this.a.k) == 21))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("qqbaseactivity", 2, "qqmapactivity.start lock. receive lock.");
-      }
-      paramContext = new Intent(this.a, GesturePWDUnlockActivity.class);
-      QQMapActivity.a(this.a, paramContext);
-      this.a.q = true;
-    }
+    bdsr.a(this.a, "settings");
   }
 }
 

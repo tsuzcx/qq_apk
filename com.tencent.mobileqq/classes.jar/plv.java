@@ -156,7 +156,7 @@ public class plv
           ((JSONObject)localObject1).put("article_jump_url_1", localJSONObject1.optString("article_jump_url_1"));
           localJSONObject2.put("id_container_1", localObject1);
           localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("cover_image_url_1", ors.a(paramBaseArticleInfo.mFirstPagePicUrl, bdkf.b(180.5F), bdkf.b(102.0F)));
+          ((JSONObject)localObject1).put("cover_image_url_1", ors.a(paramBaseArticleInfo.mFirstPagePicUrl, bdoo.b(180.5F), bdoo.b(102.0F)));
           localJSONObject2.put("cover_image_1", localObject1);
           localJSONObject2.put("id_paly_wrapper_1", new JSONObject());
           localObject1 = new JSONObject();
@@ -191,7 +191,7 @@ public class plv
           localObject2 = rdm.d(paramBaseArticleInfo.mVideoCommentCount);
           if (!TextUtils.isEmpty((CharSequence)localObject2))
           {
-            ((JSONObject)localObject1).put("comment_num_1", (String)localObject2 + alpo.a(2131703815));
+            ((JSONObject)localObject1).put("comment_num_1", (String)localObject2 + alud.a(2131703827));
             localJSONObject2.put("id_comment_num", localObject1);
           }
           localObject1 = new JSONObject();
@@ -202,7 +202,7 @@ public class plv
           ((JSONObject)localObject1).put("article_jump_url_2", localJSONObject1.optString("article_jump_url_2"));
           localJSONObject2.put("id_container_1", localObject1);
           localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("cover_image_url_2", ors.a(localBaseArticleInfo.mFirstPagePicUrl, bdkf.b(180.5F), bdkf.b(102.0F)));
+          ((JSONObject)localObject1).put("cover_image_url_2", ors.a(localBaseArticleInfo.mFirstPagePicUrl, bdoo.b(180.5F), bdoo.b(102.0F)));
           localJSONObject2.put("cover_image_2", localObject1);
           localJSONObject2.put("id_play_wrapper_2", new JSONObject());
           localObject1 = new JSONObject();
@@ -237,7 +237,7 @@ public class plv
           localObject2 = rdm.d(localBaseArticleInfo.mVideoCommentCount);
           if (!TextUtils.isEmpty((CharSequence)localObject2))
           {
-            ((JSONObject)localObject1).put("comment_num_2", (String)localObject2 + alpo.a(2131703816));
+            ((JSONObject)localObject1).put("comment_num_2", (String)localObject2 + alud.a(2131703828));
             localJSONObject2.put("id_comment_num_2", localObject1);
           }
           localJSONObject2.put("style_ID", "ReadInjoy_double_short_video_cell");

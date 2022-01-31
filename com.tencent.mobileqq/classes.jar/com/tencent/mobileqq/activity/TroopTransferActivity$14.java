@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aefa;
-import aefb;
+import aejp;
+import aejq;
 import android.text.TextUtils;
-import bdal;
+import bdeu;
 import com.tencent.mobileqq.data.TroopMemberCardInfo;
 import com.tencent.mobileqq.utils.ChnToSpell;
 import java.util.ArrayList;
@@ -18,83 +18,83 @@ class TroopTransferActivity$14
     int i = 0;
     boolean bool = false;
     Object localObject;
-    aefa localaefa;
+    aejp localaejp;
     if (i < this.a.size())
     {
       localObject = (TroopMemberCardInfo)this.a.get(i);
-      localaefa = this.this$0.a.a(((TroopMemberCardInfo)localObject).memberuin);
-      if (localaefa != null) {}
+      localaejp = this.this$0.a.a(((TroopMemberCardInfo)localObject).memberuin);
+      if (localaejp != null) {}
     }
     for (;;)
     {
       i += 1;
       break;
-      if (!bdal.a(((TroopMemberCardInfo)localObject).name, localaefa.m))
+      if (!bdeu.a(((TroopMemberCardInfo)localObject).name, localaejp.m))
       {
-        localaefa.m = ((TroopMemberCardInfo)localObject).name;
-        if (!TextUtils.isEmpty(localaefa.m))
+        localaejp.m = ((TroopMemberCardInfo)localObject).name;
+        if (!TextUtils.isEmpty(localaejp.m))
         {
-          localaefa.n = ChnToSpell.a(localaefa.m, 2);
-          localaefa.o = ChnToSpell.a(localaefa.m, 1);
+          localaejp.n = ChnToSpell.a(localaejp.m, 2);
+          localaejp.o = ChnToSpell.a(localaejp.m, 1);
         }
       }
       else
       {
         label118:
-        if (!bdal.a(((TroopMemberCardInfo)localObject).nick, localaefa.g))
+        if (!bdeu.a(((TroopMemberCardInfo)localObject).nick, localaejp.g))
         {
-          localaefa.g = ((TroopMemberCardInfo)localObject).nick;
-          if (TextUtils.isEmpty(localaefa.g)) {
+          localaejp.g = ((TroopMemberCardInfo)localObject).nick;
+          if (TextUtils.isEmpty(localaejp.g)) {
             break label277;
           }
-          localaefa.h = ChnToSpell.a(localaefa.g, 2);
-          localaefa.i = ChnToSpell.a(localaefa.g, 1);
+          localaejp.h = ChnToSpell.a(localaejp.g, 2);
+          localaejp.i = ChnToSpell.a(localaejp.g, 1);
         }
         label181:
-        if (TextUtils.isEmpty(localaefa.j)) {
+        if (TextUtils.isEmpty(localaejp.j)) {
           break label294;
         }
-        localObject = localaefa.j;
+        localObject = localaejp.j;
       }
       for (;;)
       {
-        if (!bdal.a(localObject, localaefa.b))
+        if (!bdeu.a(localObject, localaejp.b))
         {
-          localaefa.b = ((String)localObject);
-          if (!TextUtils.isEmpty(localaefa.b))
+          localaejp.b = ((String)localObject);
+          if (!TextUtils.isEmpty(localaejp.b))
           {
-            localaefa.c = ChnToSpell.a(localaefa.b, 2);
-            localaefa.d = ChnToSpell.a(localaefa.b, 1);
+            localaejp.c = ChnToSpell.a(localaejp.b, 2);
+            localaejp.d = ChnToSpell.a(localaejp.b, 1);
             bool = true;
             break;
-            localaefa.n = "";
-            localaefa.o = "";
+            localaejp.n = "";
+            localaejp.o = "";
             break label118;
             label277:
-            localaefa.h = "";
-            localaefa.i = "";
+            localaejp.h = "";
+            localaejp.i = "";
             break label181;
             label294:
-            if (!TextUtils.isEmpty(localaefa.m))
+            if (!TextUtils.isEmpty(localaejp.m))
             {
-              localObject = localaefa.m;
+              localObject = localaejp.m;
               continue;
             }
-            if (!TextUtils.isEmpty(localaefa.g))
+            if (!TextUtils.isEmpty(localaejp.g))
             {
-              localObject = localaefa.g;
+              localObject = localaejp.g;
               continue;
             }
-            if (!TextUtils.isEmpty(localaefa.a))
+            if (!TextUtils.isEmpty(localaejp.a))
             {
-              localObject = localaefa.a;
+              localObject = localaejp.a;
               continue;
             }
             localObject = "";
             continue;
           }
-          localaefa.c = "";
-          localaefa.d = "";
+          localaejp.c = "";
+          localaejp.d = "";
           bool = true;
           break;
           this.this$0.a(bool);

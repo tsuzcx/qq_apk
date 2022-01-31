@@ -1,67 +1,23 @@
-import android.graphics.Paint;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.now.model.MedalInfo;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
 
 public class avaf
+  implements bhuk
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
-  public ImageView d;
+  public avaf(NearbyGuideActivity paramNearbyGuideActivity, bhuf parambhuf) {}
   
-  public void a(long paramLong)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(auzv.a(1000L * paramLong));
-  }
-  
-  public void a(MedalInfo paramMedalInfo, int paramInt, Paint paramPaint, boolean paramBoolean)
-  {
-    paramInt = (int)(paramInt - (int)paramPaint.measureText(this.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) - mww.a(this.jdField_c_of_type_AndroidWidgetTextView.getContext(), 30.0F));
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    if ((paramMedalInfo == null) || (paramMedalInfo.a == null) || (paramMedalInfo.a.size() < 0))
+    this.jdField_a_of_type_Bhuf.cancel();
+    switch (paramInt)
     {
-      this.a.setMaxWidth(paramInt);
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.a);
       return;
     }
-    this.a.setMaxWidth(paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if ((paramString1 != null) && (!paramString1.equals("")))
-    {
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-      localSpannableStringBuilder.append("回复");
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-8947849), 0, localSpannableStringBuilder.length(), 17);
-      int i = localSpannableStringBuilder.length();
-      String str = paramString1;
-      if (paramString1.length() > 6)
-      {
-        paramString1 = paramString1.substring(0, 6);
-        str = paramString1 + "...";
-      }
-      localSpannableStringBuilder.append(str);
-      localSpannableStringBuilder.append(": ");
-      localSpannableStringBuilder.append(paramString2);
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-16777216), i, str.length() + i, 17);
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-8947849), i + str.length(), localSpannableStringBuilder.length(), 17);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
-      return;
-    }
-    a(paramString2);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.f();
   }
 }
 

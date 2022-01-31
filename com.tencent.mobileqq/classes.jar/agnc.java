@@ -1,39 +1,124 @@
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import java.util.HashMap;
 
-class agnc
-  implements bhqd
+public class agnc
+  extends agmy
 {
-  agnc(agmy paramagmy, bhpy parambhpy, ChatMessage paramChatMessage, String paramString) {}
+  public static String[] a;
+  public int a;
+  public Bitmap a;
+  public AnimationView.AnimationInfo a;
+  public HashMap<String, Bitmap> a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void OnClick(View paramView, int paramInt)
+  static
   {
-    this.jdField_a_of_type_Bhpy.dismiss();
-    switch (paramInt)
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "icon_def", "icon_txt", "icon_voice", "icon_video", "icon_sp" };
+  }
+  
+  public agnc(String paramString)
+  {
+    super(paramString);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public Bitmap a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    Object localObject;
+    if (paramRedPacketInfo == null)
     {
+      localObject = null;
+      return localObject;
     }
-    do
+    if ((paramRedPacketInfo.a instanceof MessageForQQWalletMsg))
     {
-      return;
-      this.jdField_a_of_type_Agmy.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.jdField_a_of_type_JavaLangString, false, 1);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i(this.jdField_a_of_type_Agmy.jdField_a_of_type_JavaLangString, 2, "del hot chat member onClick, uin=" + this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin);
+      paramRedPacketInfo = (MessageForQQWalletMsg)paramRedPacketInfo.a;
+      if (paramRedPacketInfo.messageType == 6) {
+        paramRedPacketInfo = "icon_txt";
       }
-      if (!bdee.d(BaseApplication.getContext()))
+    }
+    for (;;)
+    {
+      label38:
+      if (paramRedPacketInfo != null) {}
+      for (paramRedPacketInfo = (Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get(paramRedPacketInfo);; paramRedPacketInfo = null)
       {
-        QQToast.a(this.jdField_a_of_type_Agmy.a(), this.jdField_a_of_type_Agmy.a().getString(2131694766), 0).b(this.jdField_a_of_type_Agmy.a().getTitleBarHeight());
-        return;
+        localObject = paramRedPacketInfo;
+        if (paramRedPacketInfo != null) {
+          break;
+        }
+        return (Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get("icon_def");
+        if (paramRedPacketInfo.messageType == 14)
+        {
+          paramRedPacketInfo = "icon_video";
+          break label38;
+        }
+        if ((paramRedPacketInfo.messageType == 13) || (paramRedPacketInfo.messageType == 15))
+        {
+          paramRedPacketInfo = "icon_voice";
+          break label38;
+        }
+        if (paramRedPacketInfo.messageType == 18)
+        {
+          paramRedPacketInfo = "icon_ksong";
+          break label38;
+        }
+        if (paramRedPacketInfo.messageType == 19)
+        {
+          paramRedPacketInfo = "icon_emoji";
+          break label38;
+        }
+        if (paramRedPacketInfo.messageType == 22)
+        {
+          paramRedPacketInfo = "icon_draw";
+          break label38;
+        }
+        if ((paramRedPacketInfo.messageType != 7) && (paramRedPacketInfo.messageType != 8) && (paramRedPacketInfo.messageType != 11) && (paramRedPacketInfo.messageType != 12) && (paramRedPacketInfo.messageType != 23)) {
+          break label213;
+        }
+        paramRedPacketInfo = "icon_sp";
+        break label38;
       }
-    } while ((alpu)this.jdField_a_of_type_Agmy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35) == null);
-    paramView = bdcd.a(this.jdField_a_of_type_Agmy.a(), 230).setMessage(2131693399).setNegativeButton(2131690624, new agne(this)).setPositiveButton(2131690626, new agnd(this));
-    paramView.setTitle(2131693400);
-    paramView.show();
+      label213:
+      paramRedPacketInfo = null;
+    }
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
+    {
+      this.b = paramRedPacketInfo.background;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.corner;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.animInfo;
+      this.c = paramRedPacketInfo.title;
+      this.jdField_a_of_type_Int = paramRedPacketInfo.isHideTitle;
+      this.d = paramRedPacketInfo.resPath;
+      String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str = arrayOfString[i];
+        if (paramRedPacketInfo.attribute.containsKey(str))
+        {
+          Bitmap localBitmap = (Bitmap)paramRedPacketInfo.attribute.getParcelable(str);
+          this.jdField_a_of_type_JavaUtilHashMap.put(str, localBitmap);
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.b != null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null);
   }
 }
 

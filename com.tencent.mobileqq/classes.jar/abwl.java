@@ -1,21 +1,22 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-
 public class abwl
-  implements DialogInterface.OnDismissListener
 {
-  public abwl(AccountManageActivity paramAccountManageActivity) {}
+  public double a;
+  public int a;
+  public long a;
+  public String a;
+  public double b;
+  public long b;
+  public String b;
+  public String c = "";
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public abwl()
   {
-    if ((paramDialogInterface != null) && ((paramDialogInterface instanceof Dialog))) {
-      ((Dialog)paramDialogInterface).setOnDismissListener(null);
-    }
-    if (paramDialogInterface == this.a.c) {
-      this.a.c = null;
-    }
+    this.jdField_a_of_type_Double = (0.0D / 0.0D);
+    this.jdField_a_of_type_Long = 9223372036854775807L;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Double = (0.0D / 0.0D);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
 }
 

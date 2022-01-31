@@ -1,26 +1,69 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
-class bazm
-  implements View.OnClickListener
+public class bazm
 {
-  bazm(bazl parambazl, int paramInt) {}
+  public static long a = -1L;
+  public static long b = -1L;
   
-  public void onClick(View paramView)
+  public static long a()
   {
-    paramView = new Intent(this.jdField_a_of_type_Bazl.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity(), QQBrowserActivity.class);
-    paramView.putExtra("url", ((bazy)this.jdField_a_of_type_Bazl.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).b);
-    this.jdField_a_of_type_Bazl.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity().startActivity(paramView);
-    if (this.jdField_a_of_type_Bazl.jdField_a_of_type_Bbaa.c == 31) {}
-    for (paramView = "1";; paramView = "2")
+    if (a < 0L)
     {
-      azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "Clk_tribe", 0, 0, this.jdField_a_of_type_Bazl.jdField_a_of_type_Bbaa.d, ((bazy)this.jdField_a_of_type_Bazl.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a + "", "", paramView);
-      return;
+      a = a("SP_KEY_C2C_PIC_SIZE_LIMIT", 16777216L);
+      if (QLog.isColorLevel()) {
+        QLog.d("PicUploadFileSizeLimit", 2, "getLimitC2C:" + a);
+      }
+    }
+    return a;
+  }
+  
+  private static long a(String paramString, long paramLong)
+  {
+    long l = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_PIC_SIZE_LIMIT", 4).getLong(paramString, -1L);
+    if (l < 0L) {
+      return paramLong;
+    }
+    return l;
+  }
+  
+  public static void a(long paramLong)
+  {
+    a("SP_KEY_C2C_PIC_SIZE_LIMIT", paramLong);
+    if (paramLong > 0L) {
+      a = paramLong;
+    }
+  }
+  
+  private static void a(String paramString, long paramLong)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_PIC_SIZE_LIMIT", 4).edit();
+    localEditor.putLong(paramString, paramLong);
+    localEditor.commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("PicUploadFileSizeLimit", 2, "setLimit:" + paramString + " size:" + paramLong);
+    }
+  }
+  
+  public static long b()
+  {
+    if (b < 0L)
+    {
+      b = a("SP_KEY_GROUP_PIC_SIZE_LIMIT", 16777216L);
+      if (QLog.isColorLevel()) {
+        QLog.d("PicUploadFileSizeLimit", 2, "getLimitGroup:" + b);
+      }
+    }
+    return b;
+  }
+  
+  public static void b(long paramLong)
+  {
+    a("SP_KEY_GROUP_PIC_SIZE_LIMIT", paramLong);
+    if (paramLong > 0L) {
+      b = paramLong;
     }
   }
 }

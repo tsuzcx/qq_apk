@@ -1,93 +1,52 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webprocess.PreloadService.PreloadImpl.1;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnControllerClickListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo.RecommadInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
 
 public class bdzu
+  implements TVK_IMediaPlayer.OnControllerClickListener
 {
-  private void a()
-  {
-    int i = befo.a().a();
-    if ((i & 0x2) == 0)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("_accelerator_mode_", i | 0x2);
-      befo.a().a(localBundle);
-    }
-  }
+  public bdzu(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  protected List<WebViewPlugin> a()
-  {
-    return null;
-  }
+  public void onAttationClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
   
-  public void a(AppInterface arg1)
-  {
-    if (((!bdzt.jdField_a_of_type_Boolean) && (bdzt.a(???))) || ((!bdzt.jdField_b_of_type_Boolean) && (bdzt.b(???)))) {}
-    label182:
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        try
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PreloadService", 2, "preload webview engine");
-          }
-          l1 = System.currentTimeMillis();
-          if (!bdzt.a(???)) {
-            break label182;
-          }
-          bdzt.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(???, null, null, a());
-        }
-        catch (Exception ???)
-        {
-          long l1;
-          long l2;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("PreloadService", 2, "preload error:" + ???.toString());
-          return;
-        }
-        synchronized (bdzt.jdField_a_of_type_JavaLangObject)
-        {
-          bdzt.jdField_a_of_type_JavaLangObject.notifyAll();
-          bdzt.jdField_a_of_type_Boolean = true;
-          l2 = System.currentTimeMillis();
-          if (QLog.isColorLevel()) {
-            QLog.i("QQBrowser", 2, "Pre_Load_async_create_webview_engine, cost=" + (l2 - l1));
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("PreloadService", 2, "asyncPreload end");
-          }
-          return;
-        }
-        if (bdzt.b(???))
-        {
-          bdzt.jdField_b_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(???, null, null, a());
-          bdzt.jdField_b_of_type_Boolean = true;
-        }
-      }
-    }
-    QLog.d("PreloadService", 2, "async preload:already inited.");
-  }
-  
-  public void a(AppInterface paramAppInterface, Context paramContext, long paramLong)
+  public void onBackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PreloadService", 2, "asyncPreload app = " + paramAppInterface);
+      QLog.d("VipVideoPlayActivity", 2, "video player onBackClick");
     }
-    if (paramAppInterface == null) {
+    this.a.setResult(0);
+    this.a.finish();
+  }
+  
+  public void onBackOnFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player onBackOnFullScreenClick");
+    }
+    if (this.a.getRequestedOrientation() == 0)
+    {
+      this.a.setRequestedOrientation(1);
       return;
     }
-    a();
-    ThreadManager.postImmediately(new PreloadService.PreloadImpl.1(this, paramAppInterface), null, true);
+    this.a.setResult(0);
+    this.a.finish();
   }
+  
+  public void onCacheClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  
+  public void onFeedbackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  
+  public void onFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player onFullScreenClick--------------");
+    }
+    this.a.setRequestedOrientation(0);
+  }
+  
+  public void onReopenClick(TVK_NetVideoInfo.RecommadInfo paramRecommadInfo) {}
 }
 
 

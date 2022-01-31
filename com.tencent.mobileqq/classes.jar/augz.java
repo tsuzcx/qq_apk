@@ -1,33 +1,39 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
 public class augz
 {
-  public static int a = 12;
-  public static boolean a;
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public static int a(Context paramContext)
+  public augy a()
   {
-    paramContext = paramContext.getResources();
-    return paramContext.getDisplayMetrics().widthPixels - aekt.a(42.0F, paramContext) * 2;
+    return new augy(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
   }
   
-  public static int a(Context paramContext, int paramInt)
+  public augz a(int paramInt)
   {
-    paramInt /= 5;
-    int i = a(paramContext);
-    paramContext = paramContext.getResources().getDisplayMetrics();
-    float f = paramContext.heightPixels * 1.0F / paramContext.widthPixels;
-    if (QLog.isColorLevel()) {
-      QLog.d("VelocityUtil", 2, "getInitVelocity() displayMetrics.widthPixels = " + paramContext.widthPixels + ", displayMetrics.heightPixels = " + paramContext.heightPixels + ", ratio = " + f + ", 16.F/9.F = " + 1.777778F + ",viewPagerClientWidth = " + i);
-    }
-    if ((f > 1.777778F) && (QLog.isColorLevel())) {
-      QLog.d("VelocityUtil", 2, "getInitVelocity() ratio > 16.F/9.F");
-    }
-    QLog.d("VelocityUtil", 1, "getInitVelocity: pendingVelocity = " + paramInt + ", viewPagerClientWidth = " + i);
-    return paramInt;
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public augz a(MsgBackupUserData paramMsgBackupUserData)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    return this;
+  }
+  
+  public augz a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public augz b(String paramString)
+  {
+    this.b = paramString;
+    return this;
   }
 }
 

@@ -1,22 +1,24 @@
-public class bkuk
+import java.util.concurrent.atomic.AtomicReference;
+
+class bkuk
+  implements bkuc
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
+  bkuk(bkuh parambkuh, AtomicReference paramAtomicReference) {}
   
-  public bkuk(boolean paramBoolean, int paramInt)
+  public void a(bkug parambkug)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
+    axqp localaxqp = (axqp)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    if (localaxqp != null) {
+      localaxqp.a(parambkug);
+    }
   }
   
-  public int a()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    axqp localaxqp = (axqp)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    if (localaxqp != null) {
+      localaxqp.a(paramString);
+    }
   }
 }
 

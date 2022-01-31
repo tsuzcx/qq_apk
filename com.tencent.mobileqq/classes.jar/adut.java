@@ -1,26 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.SplashActivity.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class adut
-  extends BroadcastReceiver
+  implements View.OnCreateContextMenuListener
 {
-  public adut(SplashActivity.1 param1) {}
+  public adut(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SplashActivity", 2, "onReceive:before_account_change");
-    }
-    this.a.this$0.b();
+    paramContextMenu.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adut
  * JD-Core Version:    0.7.0.1
  */

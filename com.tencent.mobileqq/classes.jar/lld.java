@@ -24,7 +24,7 @@ public abstract class lld
     this.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
     this.jdField_a_of_type_Long = lnz.d();
     this.jdField_b_of_type_Int = lnz.e();
-    this.jdField_b_of_type_Long = bdcb.d();
+    this.jdField_b_of_type_Long = bdgk.d();
   }
   
   public abstract boolean a(int paramInt, String paramString);

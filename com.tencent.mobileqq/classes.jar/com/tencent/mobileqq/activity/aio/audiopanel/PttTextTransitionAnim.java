@@ -6,7 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import azgq;
+import azkz;
 import com.tencent.qphone.base.util.QLog;
 
 public class PttTextTransitionAnim
@@ -53,8 +53,8 @@ public class PttTextTransitionAnim
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166890));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(azgq.a(16.0F));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166892));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(azkz.a(16.0F));
     this.jdField_d_of_type_Int = 255;
     this.jdField_e_of_type_Int = 0;
     this.jdField_e_of_type_Float = 0.0F;
@@ -62,7 +62,7 @@ public class PttTextTransitionAnim
     this.jdField_g_of_type_Float = 0.0F;
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131690031);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131690033);
-    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131698766);
+    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131698778);
     this.jdField_b_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString);
     this.jdField_c_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_b_of_type_JavaLangString);
     this.jdField_d_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_c_of_type_JavaLangString);

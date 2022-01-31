@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.storyHome.memory.model;
 
-import wir;
-import wis;
+import wna;
+import wnb;
 
 public class StoryQQ2UidConverter$2
   implements Runnable
 {
-  public StoryQQ2UidConverter$2(wir paramwir, String paramString) {}
+  public StoryQQ2UidConverter$2(wna paramwna, String paramString) {}
   
   public void run()
   {
-    if (wir.a(this.this$0) != null) {
-      wir.a(this.this$0).a(this.a, true);
+    if (wna.a(this.this$0) != null) {
+      wna.a(this.this$0).a(this.a, true);
     }
   }
 }

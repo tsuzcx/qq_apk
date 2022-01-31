@@ -1,45 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileBatchDownloadMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskSimpleFileItem;
-import cooperation.weiyun.sdk.download.DownloadType;
-import java.util.ArrayList;
-import java.util.List;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
 
-final class bkez
-  implements bkgz
+class bkez
+  implements ModuleDownloadListener
 {
-  public void a(bkge parambkge, DownloadType paramDownloadType, bkgw parambkgw)
+  bkez(bkey parambkey, bkfd parambkfd) {}
+  
+  public void onDownloadCanceled(String paramString)
   {
-    boolean bool = true;
-    Object localObject2 = new WeiyunPB.DiskSimpleFileItem();
-    ((WeiyunPB.DiskSimpleFileItem)localObject2).file_id.set(parambkge.a);
-    if (parambkge.e != null) {
-      ((WeiyunPB.DiskSimpleFileItem)localObject2).pdir_key.set(bkia.a(parambkge.e));
-    }
-    ((WeiyunPB.DiskSimpleFileItem)localObject2).filename.set(parambkge.b);
-    Object localObject1 = new ArrayList(1);
-    ((List)localObject1).add(localObject2);
-    localObject2 = new WeiyunPB.DiskFileBatchDownloadMsgReq();
-    ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).file_list.set((List)localObject1);
-    ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).download_type.set(paramDownloadType.ordinal());
-    localObject1 = ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).need_thumb;
-    if (paramDownloadType == DownloadType.FILE_THUMB) {}
-    for (;;)
-    {
-      ((PBBoolField)localObject1).set(bool);
-      if ((!TextUtils.isEmpty(parambkge.d)) && (TextUtils.isDigitsOnly(parambkge.d))) {
-        ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).file_owner.set(Long.parseLong(parambkge.d));
-      }
-      bkgd.a((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2, new bkfa(this, parambkge, parambkgw, paramDownloadType));
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+    bkey.a(this.jdField_a_of_type_Bkey, false);
+    this.jdField_a_of_type_Bkfd.a(false);
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("vip_tar_engine.jar")) {
       return;
-      bool = false;
     }
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bkey.a(), " onDownloadSucceed = ", bkey.b() });
+    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bkey.b());
+    bkey.a(this.jdField_a_of_type_Bkey);
+    this.jdField_a_of_type_Bkfd.a(bkey.a(this.jdField_a_of_type_Bkey));
   }
 }
 

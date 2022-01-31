@@ -2,7 +2,7 @@ import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.List;
 
 public class tez
-  implements bfka
+  implements bfoj
 {
   public void installSucceed(String paramString1, String paramString2) {}
   

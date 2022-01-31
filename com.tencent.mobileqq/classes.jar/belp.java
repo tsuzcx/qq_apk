@@ -1,22 +1,13 @@
-import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
 
-public class belp
+public abstract interface belp
+  extends begg
 {
-  public int a;
-  public long a;
-  public BitmapDrawable a;
+  public abstract zfy a();
   
-  public belp(int paramInt, long paramLong, BitmapDrawable paramBitmapDrawable)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = paramBitmapDrawable;
-  }
+  public abstract boolean a(String paramString);
   
-  public String toString()
-  {
-    return "Frame{index=" + this.jdField_a_of_type_Int + ", targetTime=" + this.jdField_a_of_type_Long + ", drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable + '}';
-  }
+  public abstract boolean a(String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle);
 }
 
 

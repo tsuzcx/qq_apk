@@ -1,39 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
 
 public class uzj
-  extends QQUIEventReceiver<uzh, uzg>
+  extends uro
 {
-  public uzj(uzh paramuzh)
+  public uzj(qqstory_service.RspMsgTabNodeWatched paramRspMsgTabNodeWatched)
   {
-    super(paramuzh);
+    super(paramRspMsgTabNodeWatched.result);
   }
   
-  public void a(@NonNull uzh paramuzh, @NonNull uzg paramuzg)
+  public String toString()
   {
-    if (paramuzh.a()) {}
-    do
-    {
-      return;
-      if (paramuzg.jdField_a_of_type_Boolean)
-      {
-        uzh.a(paramuzh);
-        return;
-      }
-      if ((paramuzg.a() != null) && (!paramuzg.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("HaloResponseReceiver", 2, "onEvent: failed. Message: exception: " + paramuzg.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
-    return;
-    uzh.a(paramuzh);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uzg.class;
+    return "MsgTabNodeWatchedResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
   }
 }
 

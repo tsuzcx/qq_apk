@@ -1,69 +1,19 @@
-import QC.FontInfo;
-import QC.FontRecommendRsp;
-import QC.ItemBase;
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hiboom.FontBubble;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.gamecenter.util.QQGameHelper.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class asno
-  implements asnl<FontRecommendRsp>
+  implements nbs
 {
-  public int a()
-  {
-    return 3;
-  }
+  public asno(QQGameHelper.2 param2) {}
   
-  public String a(Context paramContext)
+  public void loaded(String paramString, int paramInt)
   {
-    return bdox.a(paramContext, "font", "mvip.gexinghua.mobile.font.client_tab_store");
-  }
-  
-  public String a(FontBubble paramFontBubble)
-  {
-    return bdox.a("fontPreview").replace("[id]", Integer.toString(paramFontBubble.fontId));
-  }
-  
-  public List<FontBubble> a(QQAppInterface paramQQAppInterface, FontRecommendRsp paramFontRecommendRsp)
-  {
-    int j = ((alxl)paramQQAppInterface.a(13)).b();
-    paramQQAppInterface = new ArrayList();
-    if (paramFontRecommendRsp.vItems != null)
-    {
-      paramFontRecommendRsp = paramFontRecommendRsp.vItems.iterator();
-      if (paramFontRecommendRsp.hasNext())
-      {
-        FontInfo localFontInfo = (FontInfo)paramFontRecommendRsp.next();
-        FontBubble localFontBubble = new FontBubble();
-        localFontBubble.viewType = 1;
-        localFontBubble.fontId = localFontInfo.item.itemId;
-        if (localFontInfo.linkBubbleID > 0) {}
-        for (int i = localFontInfo.linkBubbleID;; i = j)
-        {
-          localFontBubble.bubbleId = i;
-          localFontBubble.name = localFontInfo.name;
-          localFontBubble.engine = localFontInfo.engine;
-          localFontBubble.feeType = localFontInfo.feeType;
-          localFontBubble.payUrl = localFontInfo.payUrl;
-          localFontBubble.title = localFontInfo.title;
-          localFontBubble.msg = localFontInfo.msg;
-          localFontBubble.btn = localFontInfo.btn;
-          localFontBubble.picUrl = localFontInfo.strPicUrl;
-          localFontBubble.panelType = 3;
-          paramQQAppInterface.add(localFontBubble);
-          break;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameHelper", 2, "load 4235 html web resource finish code:" + paramInt);
     }
-    return paramQQAppInterface;
   }
   
-  public void a(alxl paramalxl)
-  {
-    paramalxl.d();
-  }
+  public void progress(int paramInt) {}
 }
 
 

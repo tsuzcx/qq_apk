@@ -1,68 +1,94 @@
-import android.annotation.TargetApi;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
-import java.io.IOException;
+import android.support.v4.util.LruCache;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-@TargetApi(14)
-public class ulk
-  extends ulp
+public class ulk<KEY, VALUE extends ulj>
 {
-  private final batw jdField_a_of_type_Batw;
-  public String a;
-  private final boolean jdField_a_of_type_Boolean;
-  public String b;
+  public int a;
+  public LruCache<KEY, VALUE> a;
+  public ConcurrentHashMap<KEY, WeakReference<VALUE>> a;
   
-  public ulk(boolean paramBoolean)
+  public ulk(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    QQStoryContext.a();
-    this.jdField_a_of_type_Batw = QQStoryContext.a().a();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(50);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new ull(this, paramInt);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
   }
   
-  private void c()
+  private void b()
   {
-    baub localbaub = new baub();
-    localbaub.jdField_a_of_type_Awfy = new ull(this);
-    localbaub.i = this.jdField_a_of_type_JavaLangString;
-    localbaub.jdField_a_of_type_Boolean = true;
-    localbaub.jdField_b_of_type_Int = 196610;
-    QQStoryContext.a();
-    localbaub.jdField_b_of_type_JavaLangString = QQStoryContext.a().c();
-    localbaub.c = "";
-    localbaub.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    this.jdField_a_of_type_Batw.a(localbaub);
-  }
-  
-  protected void a()
-  {
-    File localFile2 = new File(this.jdField_a_of_type_JavaLangString);
-    if ((!localFile2.exists()) || (localFile2.length() == 0L)) {
-      wsv.e("Q.qqstory.publish.upload:ImageFileObject", "file not exit %s", new Object[] { this.jdField_a_of_type_JavaLangString });
-    }
-    Object localObject;
-    if ((this.jdField_a_of_type_Boolean) && (PngQuantUtils.a())) {
-      localObject = null;
-    }
-    try
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      File localFile1 = File.createTempFile("temp", "png", localFile2.getParentFile());
-      localObject = localFile1;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+      Object localObject = localIterator.next();
+      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      if ((localWeakReference != null) && (localWeakReference.get() == null))
       {
-        wsv.b("Q.qqstory.publish.upload:ImageFileObject", "create file", localIOException);
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject);
+        wxe.b("OneObjectCacheList", String.format("key :%s had been remove by jvm", new Object[] { localObject }));
       }
     }
-    if (PngQuantUtils.a(localFile2, localObject))
+  }
+  
+  public VALUE a(KEY paramKEY)
+  {
+    ulj localulj2 = (ulj)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramKEY);
+    ulj localulj1 = localulj2;
+    if (localulj2 == null)
     {
-      localFile2.delete();
-      localObject.renameTo(localFile2);
+      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramKEY);
+      localulj1 = localulj2;
+      if (localWeakReference != null)
+      {
+        localulj2 = (ulj)localWeakReference.get();
+        localulj1 = localulj2;
+        if (localulj2 != null)
+        {
+          wxe.b("OneObjectCacheList", String.format("revert key %s from second cache", new Object[] { paramKEY }));
+          a(paramKEY, localulj2);
+          localulj1 = localulj2;
+        }
+      }
     }
-    c();
+    return localulj1;
+  }
+  
+  public VALUE a(KEY paramKEY, VALUE paramVALUE)
+  {
+    ulj localulj = a(paramKEY);
+    if (localulj == null)
+    {
+      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramKEY, paramVALUE);
+      return paramVALUE;
+    }
+    localulj.copy(paramVALUE);
+    return localulj;
+  }
+  
+  public void a()
+  {
+    int i = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
+    if (i - this.jdField_a_of_type_Int > 50)
+    {
+      b();
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
+      wxe.a("OneObjectCacheList", "evict second cache data count:%d", Integer.valueOf(i - this.jdField_a_of_type_Int));
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.trimToSize(paramInt);
+  }
+  
+  public void a(KEY paramKEY)
+  {
+    ulj localulj = (ulj)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(paramKEY);
+    if (localulj != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramKEY, new WeakReference(localulj));
+    }
   }
 }
 

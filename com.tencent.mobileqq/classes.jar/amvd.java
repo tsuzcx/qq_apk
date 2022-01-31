@@ -1,18 +1,34 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
-
-public abstract interface amvd
-  extends IInterface
+public class amvd
 {
-  public abstract void a();
+  private amve jdField_a_of_type_Amve = new amve();
+  private amvf jdField_a_of_type_Amvf = new amvf();
   
-  public abstract void a(int paramInt);
+  public amvd()
+  {
+    this.jdField_a_of_type_Amve.a();
+    this.jdField_a_of_type_Amvf.a();
+  }
   
-  public abstract void a(long paramLong1, long paramLong2);
+  public void a()
+  {
+    this.jdField_a_of_type_Amve.c();
+    this.jdField_a_of_type_Amvf.c();
+  }
   
-  public abstract void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo);
+  public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    if (paramInt1 == 36197)
+    {
+      this.jdField_a_of_type_Amvf.a(paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
+      return;
+    }
+    if (paramInt1 == 3553)
+    {
+      this.jdField_a_of_type_Amve.a(paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
+      return;
+    }
+    throw new RuntimeException("textureType must be GLES11Ext.GL_TEXTURE_EXTERNAL_OES or GLES20.GL_TEXTURE_2D.");
+  }
 }
 
 

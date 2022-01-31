@@ -1,18 +1,26 @@
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.core.widget.media.danmu.BarrageView;
+
 public class bgtp
-  implements bghv<bgut>
+  implements Animation.AnimationListener
 {
-  public static bgut a(bgho parambgho)
+  private final View a;
+  
+  private bgtp(BarrageView paramBarrageView, View paramView)
   {
-    return (bgut)parambgho.a(new bgtp());
+    this.a = paramView;
   }
   
-  public bgut a(bghl parambghl)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((parambghl instanceof bgtj)) {
-      return ((bgtj)parambghl).a();
-    }
-    return null;
+    this.b.removeView(this.a);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

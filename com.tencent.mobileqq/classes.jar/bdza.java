@@ -1,12 +1,25 @@
-public abstract interface bdza
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiUiPlugin;
+
+public class bdza
+  extends EmojiUiPlugin
 {
-  public abstract void a();
+  public void OnActivityCreate()
+  {
+    this.mActivityType = 2;
+    super.OnActivityCreate();
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public void OnActivityPause()
+  {
+    super.OnActivityPause();
+    this.mRuntime.a().loadUrl("javascript:var webviewEvent = document.createEvent('Events');webviewEvent.initEvent('webviewobserve');webviewEvent.name = 'stopAudio';document.dispatchEvent(webviewEvent);");
+  }
   
-  public abstract void b();
-  
-  public abstract void c();
+  public long getPluginBusiness()
+  {
+    return 8L;
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.av.redpacket.ui;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -70,7 +70,7 @@ public class RedPacketRollNumberView
     localStrokeTextView.setTextSize(0, this.b);
     localStrokeTextView.setStrokeEnable(true);
     localStrokeTextView.setStrokeColor(-1);
-    localStrokeTextView.setStrokeSize(aekt.a(6.0F, getResources()));
+    localStrokeTextView.setStrokeSize(aepi.a(6.0F, getResources()));
     localStrokeTextView.setInnerTextColor(-2094274);
     localStrokeTextView.setTypeface(Typeface.defaultFromStyle(1));
     int i = (int)paramDouble;

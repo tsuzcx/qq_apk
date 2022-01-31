@@ -1,12 +1,12 @@
-class blkq
-  implements blko
+import java.io.File;
+import java.io.FileFilter;
+
+public final class blkq
+  implements FileFilter
 {
-  blkq(blkp paramblkp) {}
-  
-  public void a(int paramInt)
+  public boolean accept(File paramFile)
   {
-    blkp.a(this.a).a(paramInt);
-    blkp.a(this.a);
+    return paramFile.getName().endsWith(".json");
   }
 }
 

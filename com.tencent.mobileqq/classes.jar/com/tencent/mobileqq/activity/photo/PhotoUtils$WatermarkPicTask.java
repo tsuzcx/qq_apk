@@ -3,11 +3,11 @@ package com.tencent.mobileqq.activity.photo;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
-import bdda;
+import bdhj;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import xmn;
+import xqw;
 
 public class PhotoUtils$WatermarkPicTask
   implements Runnable
@@ -31,7 +31,7 @@ public class PhotoUtils$WatermarkPicTask
     Bitmap localBitmap2;
     try
     {
-      localBitmap2 = bdda.a(this.jdField_a_of_type_JavaLangString, null);
+      localBitmap2 = bdhj.a(this.jdField_a_of_type_JavaLangString, null);
       if (localBitmap2 == null)
       {
         if (QLog.isColorLevel()) {
@@ -51,11 +51,11 @@ public class PhotoUtils$WatermarkPicTask
     }
     int n = localBitmap2.getWidth();
     int m = localBitmap2.getHeight();
-    int k = bdda.d(this.jdField_a_of_type_JavaLangString);
+    int k = bdhj.d(this.jdField_a_of_type_JavaLangString);
     if (QLog.isColorLevel()) {
       QLog.d("PhotoUtils", 2, "watermark pic task, w=" + n + ", h=" + m + ", r=" + k);
     }
-    Object localObject4 = bdda.a(BaseApplication.getContext().getResources(), 2130845526);
+    Object localObject4 = bdhj.a(BaseApplication.getContext().getResources(), 2130845598);
     if (n != 576)
     {
       float f = n / 576.0F;
@@ -151,7 +151,7 @@ public class PhotoUtils$WatermarkPicTask
       }
       if (localObject1 != null)
       {
-        bool = xmn.a((Bitmap)localObject1, this.b);
+        bool = xqw.a((Bitmap)localObject1, this.b);
         ((Bitmap)localObject1).recycle();
       }
       localBitmap2.recycle();

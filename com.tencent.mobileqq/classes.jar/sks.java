@@ -2,7 +2,7 @@ import android.content.Context;
 import com.tencent.mobileqq.widget.AnimationTextView;
 
 public class sks
-  extends bdfq
+  extends bdjz
 {
   AnimationTextView a;
   
@@ -14,7 +14,7 @@ public class sks
   
   private void a()
   {
-    this.a = ((AnimationTextView)findViewById(2131376254));
+    this.a = ((AnimationTextView)findViewById(2131376308));
   }
   
   public void a(String paramString)

@@ -1,50 +1,19 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
-class afkc
-  extends ClickableSpan
+public class afkc
+  extends aeqi
 {
-  afkc(afjb paramafjb) {}
-  
-  public void onClick(View paramView)
-  {
-    Intent localIntent;
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, EditActivity.class);
-      paramView = ((almv)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      if ((paramView == null) || (!paramView.hasRenamed())) {
-        break label193;
-      }
-    }
-    label193:
-    for (paramView = paramView.discussionName;; paramView = "")
-    {
-      localIntent.putExtra("title", 2131691934);
-      localIntent.putExtra("action", 102);
-      localIntent.putExtra("limit", 48);
-      localIntent.putExtra("current", paramView);
-      localIntent.putExtra("canPostNull", false);
-      localIntent.putExtra("multiLine", false);
-      localIntent.putExtra("selfSet_leftViewText", this.a.jdField_a_of_type_AndroidContentContext.getString(2131690382));
-      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 6002);
-      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800666A", "0X800666A", 0, 0, "", "", "", "");
-      return;
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
-  }
+  public TextView a;
+  public AutoStartProgressBar a;
+  public ArkAppLoadLayout a;
+  public ArkAppView a;
+  public String b;
+  public View c;
+  public View d;
 }
 
 

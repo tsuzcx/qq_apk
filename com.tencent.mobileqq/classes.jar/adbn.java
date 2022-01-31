@@ -1,33 +1,23 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.Leba.30.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
 
 public class adbn
-  extends avqr
+  implements bhuy
 {
-  public adbn(Leba paramLeba) {}
+  public adbn(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((!paramBoolean1) || (paramInt == 2)) {}
-    for (;;)
-    {
+    if (paramView == null) {
       return;
-      if (Leba.b(this.a))
-      {
-        ArrayList localArrayList = new ArrayList();
-        alrc.a(localArrayList, aiab.a().a(this.a.a));
-        this.a.a(new Leba.30.1(this, localArrayList));
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.i("Q.lebatab.leba", 2, "onGameCenterMsgReceive, " + Leba.c(this.a));
-        return;
-        aiab.a |= 0x2;
-      }
     }
+    this.a.jdField_a_of_type_AndroidViewView = paramView;
+    this.a.jdField_a_of_type_Adbv.a(paramInt);
+    this.a.a(paramAdapterView, paramInt);
   }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

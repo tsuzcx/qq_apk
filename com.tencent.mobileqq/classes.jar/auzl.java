@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.2.1;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class auzl
-  implements auzu
+final class auzl
+  implements DialogInterface.OnClickListener
 {
-  auzl(auzj paramauzj) {}
+  auzl(Activity paramActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      ThreadManagerV2.excute(new ShortVideoShareUtil.1.2.1(this, (auqc)this.a.a.getManager(106)), 16, null, false);
-    }
+    auzg.a(this.a, 10);
   }
 }
 

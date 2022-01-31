@@ -1,31 +1,20 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.4.1;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
 
 public class bbed
-  implements Animation.AnimationListener
+  implements View.OnTouchListener
 {
-  public bbed(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public bbed(TribeVideoPreviewFragment paramTribeVideoPreviewFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.jdField_b_of_type_AndroidViewView == null) {
-      return;
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.getActivity().finish();
     }
-    this.a.jdField_b_of_type_AndroidViewView.post(new TroopAvatarWallPreviewActivity.4.1(this));
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (this.a.jdField_b_of_type_AndroidWidgetTextView == null) {
-      return;
-    }
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    return true;
   }
 }
 

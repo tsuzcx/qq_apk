@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class bnfk
-  implements DialogInterface.OnClickListener
+class bnfk
+  implements Handler.Callback
 {
-  public bnfk(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bnfk(bnfj parambnfj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
+    }
+    bnfj.a(this.a, false, null, paramMessage.what);
+    return false;
+  }
 }
 
 

@@ -1,33 +1,33 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanGood;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-
 public class ykb
-  implements View.OnClickListener
 {
-  public ykb(CommodityItemView paramCommodityItemView) {}
-  
-  public void onClick(View paramView)
+  public static <T> String a(String paramString, yka<T> paramyka)
   {
-    if ((this.a.a() != null) && (!CommodityItemView.a(this.a))) {
-      if (!(this.a.a() instanceof CommodityBean)) {
-        break label120;
-      }
-    }
-    label120:
-    for (paramView = ((CommodityBean)this.a.a()).mUrl;; paramView = ((CertifiedAccountMeta.StYouZanGood)this.a.a()).url.get())
-    {
-      if (CommodityItemView.a(this.a) != null) {
-        yvu.a(CommodityItemView.a(this.a).poster.id.get(), "auth_" + yjq.a(this.a.a()), "clk_goods", 0, 0, new String[0]);
-      }
-      xxk.a(paramView, 8002);
-      return;
-    }
+    return ykc.a().a(paramString, paramyka);
+  }
+  
+  public static void a(String paramString)
+  {
+    ykc.a().a(paramString);
+  }
+  
+  public static <T> void a(String paramString, ykh<T> paramykh)
+  {
+    ykc.a().a(paramString, paramykh);
+  }
+  
+  public static void a(Throwable paramThrowable)
+  {
+    wxe.a("PreLoader", "", paramThrowable);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return ykc.a().a(paramString);
+  }
+  
+  public static void b(String paramString)
+  {
+    wxe.b("PreLoader", paramString);
   }
 }
 

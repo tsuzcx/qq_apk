@@ -1,43 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.shortvideo.videotransfer.TransferData;
-import java.util.List;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
 
-public abstract interface bmjh
-  extends bmiw
+public class bmjh
+  extends bnph
 {
-  public abstract int a();
+  public bmjh(EditPicActivity paramEditPicActivity) {}
   
-  public abstract long a(int paramInt);
-  
-  public abstract Bitmap a(int paramInt);
-  
-  public abstract List<? extends bmlk> a();
-  
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt1, int paramInt2, float paramFloat);
-  
-  public abstract void a(int paramInt, byte[] paramArrayOfByte);
-  
-  public abstract void a(long paramLong, boolean paramBoolean);
-  
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
-  
-  public abstract void a(TransferData paramTransferData);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a(long paramLong);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(long paramLong, boolean paramBoolean);
-  
-  public abstract void k();
-  
-  public abstract void l();
+  public void a()
+  {
+    wxe.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
+    bmiq localbmiq = (bmiq)this.a.a.a(bmiq.class);
+    if (localbmiq != null) {
+      localbmiq.b();
+    }
+  }
 }
 
 

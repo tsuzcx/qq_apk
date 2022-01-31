@@ -1,7 +1,19 @@
+import android.os.Handler;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3.1.1;
+
 public class bbui
+  implements baeh
 {
-  public String a;
-  public String b;
+  public bbui(TroopEnterEffectController.3 param3) {}
+  
+  public void a(badk parambadk)
+  {
+    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
+      return;
+    }
+    this.a.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.3.1.1(this, parambadk));
+  }
 }
 
 

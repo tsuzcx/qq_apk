@@ -1,45 +1,18 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import feedcloud.FeedCloudMeta.StTagInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowTagView;
 
-class udr
-  extends RecyclerView.Adapter<uds>
+public class udr
+  implements DialogInterface.OnClickListener
 {
-  public List<FeedCloudMeta.StTagInfo> a;
+  public udr(QCircleFollowTagView paramQCircleFollowTagView) {}
   
-  private udr(udp paramudp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public uds a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new uds(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560544, paramViewGroup, false));
-  }
-  
-  public void a(List<FeedCloudMeta.StTagInfo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public void a(uds paramuds, int paramInt)
-  {
-    paramuds.a((FeedCloudMeta.StTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
+    this.a.a(false);
+    if (QCircleFollowTagView.a(this.a) != null) {
+      QCircleFollowTagView.a(this.a).a();
+    }
   }
 }
 

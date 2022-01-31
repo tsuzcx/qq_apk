@@ -1,13 +1,22 @@
-import com.tencent.ad.tangram.net.AdHttp.Params;
+import android.view.View;
 
-class aapr
-  extends AdHttp.Params
+public class aapr
 {
-  public int a = -2147483648;
+  public float a;
+  public float b;
+  public View f;
+  public View g;
+  public View h;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
+  public int o;
   
-  public boolean isSuccess()
+  public String toString()
   {
-    return (super.isSuccess()) && (this.responseData != null);
+    return " \nvideoViewScaleXby " + this.a + " videoViewScaleYby " + this.b + " videoViewXBy " + this.l + " videoViewYBy " + this.m + " btnTopMarginOffset " + this.j + " btnLeftMarginOffset " + this.k;
   }
 }
 

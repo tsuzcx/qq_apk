@@ -1,19 +1,26 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
 
-class asmn
-  implements DialogInterface.OnDismissListener
+public class asmn
+  implements bexc
 {
-  asmn(asmj paramasmj) {}
+  public asmn(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(View paramView, int paramInt)
   {
-    if (this.a.a)
+    if ((paramInt == 5) || (paramInt == 4))
     {
-      this.a.a = false;
-      asmj.a(this.a).finish();
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", "2747277822");
+      this.a.startActivity(paramView);
     }
+    while (paramInt != 1) {
+      return;
+    }
+    this.a.getActivity().finish();
   }
 }
 

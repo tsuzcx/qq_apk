@@ -1,22 +1,38 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class acok
-  implements Handler.Callback
+  implements acpa
 {
-  public acok(Conversation paramConversation) {}
+  public acok(ChatSettingActivity paramChatSettingActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(Activity paramActivity)
   {
-    atvl.a().a(paramMessage.what);
-    if (paramMessage.what == 4)
-    {
-      this.a.a(1134013, 0L, false);
-      return true;
+    QQToast.a(this.a, 2, 2131691566, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 1, 0, "", "", "", "");
     }
-    this.a.d(true);
-    return true;
+    while (paramInt != 1) {
+      return;
+    }
+    azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 1, 0, "", "", "", "");
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 1, 0, "", "", "", "");
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 1, 0, "", "", "", "");
   }
 }
 

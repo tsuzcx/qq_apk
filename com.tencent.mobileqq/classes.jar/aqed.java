@@ -1,6 +1,11 @@
-public abstract interface aqed
+import android.widget.TextView;
+
+public class aqed
 {
-  public abstract void a();
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  protected aqed(aqec paramaqec) {}
 }
 
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio;
 
-import awes;
-import awfc;
+import awjb;
+import awjl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 final class ForwardUtils$5
   implements Runnable
 {
-  ForwardUtils$5(awfc paramawfc, QQAppInterface paramQQAppInterface) {}
+  ForwardUtils$5(awjl paramawjl, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    awes.a(this.jdField_a_of_type_Awfc, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    awjb.a(this.jdField_a_of_type_Awjl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

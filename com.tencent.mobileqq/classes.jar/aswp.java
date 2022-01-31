@@ -1,35 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Process;
-import android.text.TextUtils;
-import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
-public final class aswp
-  extends BroadcastReceiver
+class aswp
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  aswp(aswm paramaswm) {}
+  
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HuayangPluginLauncher", 2, "onReceive ACTION_FORCE_UPDATE");
+    this.a.c = 7;
+    if (aswm.a(this.a) != null) {
+      aswm.a(this.a).a(this.a.b, paramTVK_IMediaPlayer, paramInt1, paramInt2, paramInt3, paramString, paramObject);
     }
-    if (TextUtils.equals(paramIntent.getAction(), "action_iv_plugin_update"))
-    {
-      paramIntent = (InstalledPlugin)paramIntent.getSerializableExtra("plugin");
-      if (paramIntent != null)
-      {
-        boolean bool = asws.a(paramContext, paramIntent).a();
-        if (QLog.isColorLevel()) {
-          QLog.d("HuayangPluginLauncher", 2, "onReceive isCalled:" + bool);
-        }
-        if (!bool)
-        {
-          com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity.a = 0L;
-          Process.killProcess(Process.myPid());
-        }
-      }
-    }
+    return false;
   }
 }
 

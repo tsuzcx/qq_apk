@@ -1,26 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
+
 public class apev
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b = "";
-  public String c = "";
+  public apev(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
   
-  public apev()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("enable:").append(this.jdField_a_of_type_Boolean).append(",");
-    localStringBuilder.append("mPlainContent:").append(this.jdField_a_of_type_JavaLangString).append(",");
-    localStringBuilder.append("mHighLightContent:").append(this.b).append(",");
-    localStringBuilder.append("times:").append(this.jdField_a_of_type_Int).append(",");
-    localStringBuilder.append("mJumpLinkUrls:").append(this.c).append(",");
-    return localStringBuilder.toString();
+    paramDialogInterface.dismiss();
   }
 }
 

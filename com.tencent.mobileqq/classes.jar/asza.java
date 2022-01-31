@@ -1,15 +1,17 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedRecord;
-import com.tencent.qqinterface.CommonCallback;
+import java.io.File;
+import java.util.concurrent.Callable;
 
 class asza
-  implements CustomizedRecord
+  implements Callable<File>
 {
-  asza(asyy paramasyy) {}
+  asza(asyz paramasyz) {}
   
-  public void getRecordInfo(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback)
+  public File a()
   {
-    aszx.a().b(paramBundle, paramCommonCallback);
+    if (asyz.a(this.a).exists()) {
+      return asyz.a(this.a);
+    }
+    return null;
   }
 }
 

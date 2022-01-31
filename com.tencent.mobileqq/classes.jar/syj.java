@@ -10,7 +10,7 @@ import mqq.observer.BusinessObserver;
 final class syj
   implements BusinessObserver
 {
-  syj(alvc paramalvc, String paramString, boolean paramBoolean, Context paramContext, AppInterface paramAppInterface, int paramInt) {}
+  syj(alzr paramalzr, String paramString, boolean paramBoolean, Context paramContext, AppInterface paramAppInterface, int paramInt) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
@@ -19,11 +19,11 @@ final class syj
     }
     if (!paramBoolean)
     {
-      if (this.jdField_a_of_type_Alvc != null) {
-        this.jdField_a_of_type_Alvc.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Alzr != null) {
+        this.jdField_a_of_type_Alzr.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
       }
       if (this.jdField_a_of_type_Boolean) {
-        syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
+        syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
       }
     }
     label366:
@@ -58,57 +58,57 @@ final class syj
                   if (paramInt != 0) {
                     break;
                   }
-                  if (this.jdField_a_of_type_Alvc != null) {
-                    this.jdField_a_of_type_Alvc.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+                  if (this.jdField_a_of_type_Alzr != null) {
+                    this.jdField_a_of_type_Alzr.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
                   }
                   syb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
                   return;
                 }
                 catch (Exception paramBundle)
                 {
-                  if (this.jdField_a_of_type_Alvc != null) {
-                    this.jdField_a_of_type_Alvc.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+                  if (this.jdField_a_of_type_Alzr != null) {
+                    this.jdField_a_of_type_Alzr.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
                   }
                 }
               } while (!this.jdField_a_of_type_Boolean);
-              syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
+              syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
               return;
               if (paramInt != 58) {
                 break;
               }
-              if (this.jdField_a_of_type_Alvc != null) {
-                this.jdField_a_of_type_Alvc.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+              if (this.jdField_a_of_type_Alzr != null) {
+                this.jdField_a_of_type_Alzr.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
               }
             } while (!this.jdField_a_of_type_Boolean);
-            syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695724);
+            syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695726);
             return;
             if (paramInt != 65) {
               break;
             }
-            if (this.jdField_a_of_type_Alvc != null) {
-              this.jdField_a_of_type_Alvc.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+            if (this.jdField_a_of_type_Alzr != null) {
+              this.jdField_a_of_type_Alzr.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
             }
           } while (!this.jdField_a_of_type_Boolean);
-          syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695697);
+          syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695699);
           return;
-          if (this.jdField_a_of_type_Alvc != null) {
-            this.jdField_a_of_type_Alvc.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+          if (this.jdField_a_of_type_Alzr != null) {
+            this.jdField_a_of_type_Alzr.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
           }
         } while (!this.jdField_a_of_type_Boolean);
-        syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
+        syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
         return;
-        if (this.jdField_a_of_type_Alvc != null) {
-          this.jdField_a_of_type_Alvc.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+        if (this.jdField_a_of_type_Alzr != null) {
+          this.jdField_a_of_type_Alzr.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
         }
       } while (!this.jdField_a_of_type_Boolean);
-      syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
+      syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
       return;
-      if (this.jdField_a_of_type_Alvc != null) {
-        this.jdField_a_of_type_Alvc.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Alzr != null) {
+        this.jdField_a_of_type_Alzr.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
       }
     } while (!this.jdField_a_of_type_Boolean);
     label404:
-    syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
+    syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
   }
 }
 

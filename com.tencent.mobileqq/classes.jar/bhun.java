@@ -1,12 +1,6 @@
-import android.widget.EditText;
-
 public abstract interface bhun
 {
-  public abstract void a(EditText paramEditText, CharSequence paramCharSequence);
-  
-  public abstract void b(EditText paramEditText, CharSequence paramCharSequence);
-  
-  public abstract void c(EditText paramEditText, CharSequence paramCharSequence);
+  public abstract void ap_();
 }
 
 

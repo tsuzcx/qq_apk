@@ -1,106 +1,62 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.DelCommentResp;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class avcm
-  implements avbz
+class avcm
+  extends nab
 {
-  TextureVideoView a;
+  avcm(avcj paramavcj, avcg paramavcg, Comments.Comment paramComment) {}
   
-  public avcm(Context paramContext)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a = new TextureVideoView(paramContext.getApplicationContext());
-  }
-  
-  public int a()
-  {
-    if (this.a == null) {
-      return 0;
-    }
-    return (int)(this.a.getCurrentPosition() / (this.a.getDuration() + 0.1D) * 100.0D);
-  }
-  
-  public long a()
-  {
-    return this.a.getCurrentPosition();
-  }
-  
-  public View a()
-  {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    this.a.a();
-  }
-  
-  public void a(long paramLong)
-  {
-    this.a.seekTo((int)paramLong);
-  }
-  
-  public void a(avca paramavca)
-  {
-    this.a.setOnCompletionListener(new avcn(this, paramavca));
-  }
-  
-  public void a(avcb paramavcb) {}
-  
-  public void a(avcc paramavcc)
-  {
-    this.a.setOnErrorListener(new avco(this, paramavcc, null));
-  }
-  
-  public void a(avcd paramavcd)
-  {
-    this.a.setOnInfoListener(new avcp(this, paramavcd));
-  }
-  
-  public void a(avce paramavce)
-  {
-    TextureVideoView localTextureVideoView = this.a;
-    if (paramavce == null) {}
-    for (paramavce = null;; paramavce = new avcq(this, paramavce))
+    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      localTextureVideoView.setOnPreparedListener(paramavce);
-      return;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, long paramLong)
-  {
-    paramString1 = paramString3;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      paramString1 = paramString3;
-      if (ujb.a(new File(paramString2))) {
-        paramString1 = paramString2;
+      paramBundle = new oidb_0xada.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        QLog.i("CommentsDataSource", 1, "err_msg:" + paramBundle.err_msg.get());
+        if (paramBundle.busi_buf.has())
+        {
+          paramArrayOfByte = new NowNearbyVideoCommentProto.DelCommentResp();
+          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+          if (QLog.isColorLevel()) {
+            QLog.i("CommentsDataSource", 1, "ret:" + paramArrayOfByte.result.get());
+          }
+          this.jdField_a_of_type_Avcg.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, (int)paramArrayOfByte.result.get());
+          paramArrayOfByte = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (paramArrayOfByte == null) {
+            return;
+          }
+          ((avrb)paramArrayOfByte.getManager(263)).a(avcj.a(this.jdField_a_of_type_Avcj).a, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment.a);
+          return;
+        }
+        QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
+        this.jdField_a_of_type_Avcg.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.i("CommentsDataSource", 1, "merge delete resp data error");
+        this.jdField_a_of_type_Avcg.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+        return;
       }
     }
-    this.a.setVideoPath(paramString1);
-  }
-  
-  public boolean a()
-  {
-    return this.a.isPlaying();
-  }
-  
-  public void b()
-  {
-    this.a.start();
-  }
-  
-  public void c()
-  {
-    this.a.pause();
-  }
-  
-  public void d()
-  {
-    b();
+    else
+    {
+      this.jdField_a_of_type_Avcg.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+    }
   }
 }
 

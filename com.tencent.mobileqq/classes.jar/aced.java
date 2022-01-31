@@ -1,27 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.AppRuntime;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aced
-  implements DialogInterface.OnClickListener
+public class aced
+  implements afjs
 {
-  aced(acec paramacec) {}
+  public aced(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (this.a.a.a() != null)
-    {
-      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
-      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
-      this.a.a.a().startActivity(localIntent);
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkFullScreenAppActivity", 2, "arkview loadSucc: " + ArkFullScreenAppActivity.a(this.a));
     }
-    paramDialogInterface.dismiss();
+    Object localObject;
+    boolean bool;
+    if (ArkFullScreenAppActivity.a(this.a) != null)
+    {
+      localObject = ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Afii;
+      if (localObject != null)
+      {
+        if ((!((afii)localObject).checkShare()) || (!ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Boolean)) {
+          break label135;
+        }
+        bool = true;
+        if (QLog.isColorLevel()) {
+          QLog.i("ArkFullScreenAppActivity", 2, "supportShare: " + bool);
+        }
+        localObject = this.a.rightViewImg;
+        if (!bool) {
+          break label140;
+        }
+      }
+    }
+    for (;;)
+    {
+      ((ImageView)localObject).setVisibility(i);
+      return;
+      label135:
+      bool = false;
+      break;
+      label140:
+      i = 4;
+    }
   }
+  
+  public void b() {}
 }
 
 

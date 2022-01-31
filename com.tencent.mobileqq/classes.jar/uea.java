@@ -1,40 +1,36 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import android.widget.ImageButton;
+import com.tencent.biz.qqcircle.events.QCircleForwardEvent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StRecomForward;
+import feedcloud.FeedCloudWrite.StRecomForwardFeedRsp;
 
-public class uea
+class uea
+  implements zac<FeedCloudWrite.StRecomForwardFeedRsp>
 {
-  public List<String> a;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public int g;
+  uea(udz paramudz) {}
   
-  public uea(int paramInt)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StRecomForwardFeedRsp paramStRecomForwardFeedRsp)
   {
-    this.jdField_e_of_type_Int = paramInt;
-  }
-  
-  public uea a(JSONObject paramJSONObject, int paramInt)
-  {
-    this.d = paramJSONObject.optString("transId", "");
-    this.g = paramJSONObject.optInt("min_limit", paramInt);
-    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("wording");
-    this.f = paramJSONObject.optInt("text_id", -1);
-    paramJSONObject = paramJSONObject.optJSONArray("transList");
-    if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStRecomForwardFeedRsp == null) || (TextUtils.isEmpty(paramStRecomForwardFeedRsp.feed.recomForward.id.get())))
     {
-      this.a = new ArrayList();
-      paramInt = 0;
-      while (paramInt < paramJSONObject.length())
-      {
-        this.a.add(paramJSONObject.getString(paramInt));
-        paramInt += 1;
-      }
+      wxe.c("QCircleBaseInputPopupWindow", "QCircleRecomForwardRequest  error, retCode == " + paramLong);
+      QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131698375), 0).a();
+      return;
     }
-    return this;
+    wxe.c("QCircleBaseInputPopupWindow", "QCircleRecomForwardRequest  success, rsp.feed.recomForward.id.get() == " + paramStRecomForwardFeedRsp.feed.recomForward.id.get() + " , commentId:" + paramStRecomForwardFeedRsp.comment.id.get());
+    QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131698376), 0).a();
+    udz.a(this.a).recomForward.id.set(paramStRecomForwardFeedRsp.feed.recomForward.id.get());
+    if (udz.a(this.a).isSelected())
+    {
+      yiw.a().a(new QCircleForwardEvent(udz.a(this.a), true));
+      return;
+    }
+    yiw.a().a(new QCircleForwardEvent(udz.a(this.a), false));
   }
 }
 

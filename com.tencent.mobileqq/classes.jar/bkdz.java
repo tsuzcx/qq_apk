@@ -1,10 +1,19 @@
-import android.os.Bundle;
-import android.os.IInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.vip.ad.TianshuAdManager.1.1;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import mqq.os.MqqHandler;
 
-public abstract interface bkdz
-  extends IInterface
+public class bkdz
+  implements bkgo
 {
-  public abstract void a(String paramString, Bundle paramBundle);
+  bkdz(bkdy parambkdy) {}
+  
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
+  {
+    if ((paramBoolean) && (paramGetAdsRsp != null)) {
+      ThreadManager.getUIHandler().postDelayed(new TianshuAdManager.1.1(this, paramGetAdsRsp), 500L);
+    }
+  }
 }
 
 

@@ -1,18 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-
-public class ajkr
-  implements ValueAnimator.AnimatorUpdateListener
+class ajkr
 {
-  public ajkr(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public ajkr(String paramString1, String paramString2, long paramLong)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

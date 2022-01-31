@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.location.ui;
 
-import atmg;
-import atpr;
+import atqp;
+import atua;
 import java.util.ArrayList;
 
 public class HeadSetViewModule$1
   implements Runnable
 {
-  public HeadSetViewModule$1(atmg paramatmg, ArrayList paramArrayList) {}
+  public HeadSetViewModule$1(atqp paramatqp, ArrayList paramArrayList) {}
   
   public void run()
   {
-    atmg.a(this.this$0).a(this.a);
-    atmg.a(this.this$0, this.a);
+    atqp.a(this.this$0).a(this.a);
+    atqp.a(this.this$0, this.a);
   }
 }
 

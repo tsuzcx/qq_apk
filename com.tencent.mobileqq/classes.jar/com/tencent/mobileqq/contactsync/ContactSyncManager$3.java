@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.contactsync;
 
-import aovt;
+import apac;
 
 public class ContactSyncManager$3
   implements Runnable
 {
-  public ContactSyncManager$3(aovt paramaovt) {}
+  public ContactSyncManager$3(apac paramapac) {}
   
   public void run()
   {

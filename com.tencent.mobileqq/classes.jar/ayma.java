@@ -1,12 +1,12 @@
-import android.view.View;
-
 public class ayma
-  implements aymg
 {
-  public void a(ayjj paramayjj, ayrv paramayrv)
-  {
-    paramayrv.a().setVisibility(8);
-  }
+  public int a;
+  public String a;
+  public long[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
 }
 
 

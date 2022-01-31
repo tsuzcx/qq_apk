@@ -1,95 +1,168 @@
+import android.graphics.BitmapFactory.Options;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.MD5;
+
 public class yhl
 {
-  /* Error */
-  public static Object a(byte[] paramArrayOfByte)
+  public static Pair<Boolean, Setting> a(int paramInt1, String paramString, int paramInt2)
   {
-    // Byte code:
-    //   0: new 10	java/io/ByteArrayInputStream
-    //   3: dup
-    //   4: aload_0
-    //   5: invokespecial 14	java/io/ByteArrayInputStream:<init>	([B)V
-    //   8: astore_1
-    //   9: new 16	java/io/ObjectInputStream
-    //   12: dup
-    //   13: aload_1
-    //   14: invokespecial 19	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   17: astore_2
-    //   18: aload_2
-    //   19: invokevirtual 23	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   22: astore_0
-    //   23: aload_1
-    //   24: invokevirtual 27	java/io/ByteArrayInputStream:close	()V
-    //   27: aload_2
-    //   28: invokevirtual 28	java/io/ObjectInputStream:close	()V
-    //   31: aload_0
-    //   32: areturn
-    //   33: astore_1
-    //   34: aconst_null
-    //   35: astore_0
-    //   36: aload_1
-    //   37: invokevirtual 31	java/lang/Exception:printStackTrace	()V
-    //   40: aload_0
-    //   41: areturn
-    //   42: astore_1
-    //   43: goto -7 -> 36
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	46	0	paramArrayOfByte	byte[]
-    //   8	16	1	localByteArrayInputStream	java.io.ByteArrayInputStream
-    //   33	4	1	localException1	java.lang.Exception
-    //   42	1	1	localException2	java.lang.Exception
-    //   17	11	2	localObjectInputStream	java.io.ObjectInputStream
-    // Exception table:
-    //   from	to	target	type
-    //   0	23	33	java/lang/Exception
-    //   23	31	42	java/lang/Exception
+    String str = QQAppInterface.b(paramInt1, paramString, paramInt2);
+    paramString = new QQEntityManagerFactory(paramString).createEntityManager();
+    if ((0 == 0) && (!TextUtils.isEmpty(str)) && (paramString != null)) {}
+    for (paramString = (Setting)paramString.a(Setting.class, str);; paramString = null)
+    {
+      if (paramString == null) {
+        return new Pair(Boolean.valueOf(true), paramString);
+      }
+      boolean bool;
+      switch (paramInt1)
+      {
+      default: 
+        bool = false;
+      }
+      for (;;)
+      {
+        return new Pair(Boolean.valueOf(bool), paramString);
+        if ((paramString == null) || (System.currentTimeMillis() - paramString.updateTimestamp > 86400000L)) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+      }
+    }
   }
   
-  /* Error */
-  public static byte[] a(Object paramObject)
+  public static bdam a(String paramString)
   {
-    // Byte code:
-    //   0: new 35	java/io/ByteArrayOutputStream
-    //   3: dup
-    //   4: invokespecial 37	java/io/ByteArrayOutputStream:<init>	()V
-    //   7: astore_1
-    //   8: new 39	java/io/ObjectOutputStream
-    //   11: dup
-    //   12: aload_1
-    //   13: invokespecial 42	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   16: astore_2
-    //   17: aload_2
-    //   18: aload_0
-    //   19: invokevirtual 46	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
-    //   22: aload_1
-    //   23: invokevirtual 50	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   26: astore_0
-    //   27: aload_1
-    //   28: invokevirtual 51	java/io/ByteArrayOutputStream:close	()V
-    //   31: aload_2
-    //   32: invokevirtual 52	java/io/ObjectOutputStream:close	()V
-    //   35: aload_0
-    //   36: areturn
-    //   37: astore_1
-    //   38: aconst_null
-    //   39: astore_0
-    //   40: aload_1
-    //   41: invokevirtual 31	java/lang/Exception:printStackTrace	()V
-    //   44: aload_0
-    //   45: areturn
-    //   46: astore_1
-    //   47: goto -7 -> 40
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	50	0	paramObject	Object
-    //   7	21	1	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   37	4	1	localException1	java.lang.Exception
-    //   46	1	1	localException2	java.lang.Exception
-    //   16	16	2	localObjectOutputStream	java.io.ObjectOutputStream
-    // Exception table:
-    //   from	to	target	type
-    //   0	27	37	java/lang/Exception
-    //   27	35	46	java/lang/Exception
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inPreferredConfig = bdaw.a;
+    bdam localbdam = new bdam();
+    int i = 0;
+    do
+    {
+      bdal.a(paramString, localOptions, localbdam);
+      if (localbdam.a == 1) {
+        NearbyAppInterface.b();
+      }
+      i += 1;
+    } while ((i < 2) && (localbdam.a == 1));
+    return localbdam;
+  }
+  
+  public static String a(Setting paramSetting, int paramInt1, String paramString, int paramInt2)
+  {
+    Object localObject = paramSetting;
+    if (paramSetting == null)
+    {
+      localObject = paramSetting;
+      if (paramString != null)
+      {
+        localObject = paramSetting;
+        if (paramInt1 != 101)
+        {
+          localObject = paramSetting;
+          if (paramInt1 != 1001) {
+            localObject = (Setting)a(paramInt1, paramString, paramInt2).second;
+          }
+        }
+      }
+    }
+    paramSetting = new StringBuilder(256);
+    if (paramInt1 == 32) {
+      if (bdep.a())
+      {
+        paramSetting.append(alof.bL);
+        localObject = a((Setting)localObject, paramString, paramInt1);
+        switch (((Integer)localObject[0]).intValue())
+        {
+        }
+      }
+    }
+    for (;;)
+    {
+      localObject = MD5.toMD5(paramString);
+      localObject = MD5.toMD5((String)localObject + paramString);
+      paramSetting.append(MD5.toMD5((String)localObject + paramString));
+      paramSetting.append(".jpg_");
+      return paramSetting.toString();
+      paramSetting.append("/data/data/com.tencent.mobileqq/files/head/_stranger/");
+      break;
+      if (bdep.a())
+      {
+        paramSetting.append(alof.bJ);
+        break;
+      }
+      paramSetting.append("/data/data/com.tencent.mobileqq/files/head/_hd/");
+      break;
+      paramSetting.append("troop_sys_b_");
+      paramString = (String)localObject[1];
+      continue;
+      paramSetting.append("sys_");
+      paramString = (String)localObject[1];
+      continue;
+      paramSetting.append("dis_g_");
+      paramString = paramString + paramString;
+      continue;
+      paramSetting.append("dis_pstn_g_");
+      paramString = paramString + paramString;
+      continue;
+      paramSetting.append("troop_");
+      continue;
+      paramSetting.append("new_troop_b_");
+      continue;
+      paramSetting.append("stranger_").append(Integer.toString(paramInt2)).append("_");
+      continue;
+      paramSetting.append("qcall_").append(Integer.toString(paramInt2)).append("_");
+    }
+  }
+  
+  private static Object[] a(Setting paramSetting, String paramString, int paramInt)
+  {
+    String str = paramString;
+    int i = paramInt;
+    if (paramSetting != null)
+    {
+      str = paramString;
+      i = paramInt;
+      if (paramInt != 101)
+      {
+        str = paramString;
+        i = paramInt;
+        if (paramInt != 1001)
+        {
+          str = paramString;
+          i = paramInt;
+          if (paramString != null)
+          {
+            str = paramString;
+            i = paramInt;
+            if (paramSetting.bHeadType == 0)
+            {
+              str = String.valueOf(paramSetting.systemHeadID);
+              if (paramInt != 4) {
+                break label87;
+              }
+              i = -56;
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      return new Object[] { Integer.valueOf(i), str };
+      label87:
+      if (paramInt == 16) {
+        i = 16;
+      } else {
+        i = -55;
+      }
+    }
   }
 }
 

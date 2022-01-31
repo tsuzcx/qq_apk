@@ -1,14 +1,14 @@
 package com.tencent.biz.subscribe.baseUI;
 
-import xyz;
+import ydi;
 
 public class AbsUI$1
   implements Runnable
 {
   public void run()
   {
-    this.this$0.b();
-    this.this$0.j();
+    this.this$0.c();
+    this.this$0.k();
   }
 }
 

@@ -1,20 +1,18 @@
-public abstract class bjoe<T, P>
+import android.content.Context;
+
+final class bjoe
+  implements bjpt
 {
-  private volatile T a;
+  bjoe(Context paramContext, bjog parambjog, bjof parambjof) {}
   
-  protected abstract T a(P paramP);
-  
-  public final T b(P paramP)
+  public void onQzonePluginClientReady(bjoa parambjoa)
   {
-    if (this.a == null) {}
-    try
+    if (parambjoa == null)
     {
-      if (this.a == null) {
-        this.a = a(paramP);
-      }
-      return this.a;
+      bjpr.a(this.jdField_a_of_type_AndroidContentContext, this);
+      return;
     }
-    finally {}
+    parambjoa.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bjog, this.jdField_a_of_type_Bjof);
   }
 }
 

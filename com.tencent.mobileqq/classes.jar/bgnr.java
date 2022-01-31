@@ -1,6 +1,6 @@
 public abstract interface bgnr
 {
-  public abstract void a(bgnj parambgnj, int paramInt1, int paramInt2);
+  public abstract void a(bgod parambgod, int paramInt, String paramString);
 }
 
 

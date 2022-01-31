@@ -1,9 +1,28 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+
 public class afgl
+  implements affa
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  private BaseChatPie a;
+  
+  public afgl(BaseChatPie paramBaseChatPie)
+  {
+    this.a = paramBaseChatPie;
+  }
+  
+  public void a(int paramInt)
+  {
+    String str = this.a.c();
+    if (!TextUtils.isEmpty(str)) {
+      bdww.a(this.a.a).a(str);
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[6];
+  }
 }
 
 

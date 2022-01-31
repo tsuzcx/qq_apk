@@ -1,15 +1,15 @@
 import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class adov
-  implements BusinessObserver
+  extends avva
 {
-  protected void a() {}
+  public adov(PublicAccountListActivity paramPublicAccountListActivity) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramInt == 10000) {
-      a();
+    if (PublicAccountListActivity.a(this.a)) {
+      PublicAccountListActivity.a(this.a);
     }
   }
 }

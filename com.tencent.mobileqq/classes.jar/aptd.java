@@ -1,14 +1,35 @@
-public abstract interface aptd
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+
+public abstract class aptd
 {
-  public abstract int a();
+  public final EmoticonPanelController a;
   
-  public abstract String a();
+  public aptd(EmoticonPanelController paramEmoticonPanelController)
+  {
+    this.a = paramEmoticonPanelController;
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public void a() {}
   
-  public abstract boolean a();
+  public void a(int paramInt) {}
   
-  public abstract String b();
+  public void a(boolean paramBoolean) {}
+  
+  public abstract int[] a();
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
 }
 
 

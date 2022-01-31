@@ -14,8 +14,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
-import bhuo;
-import bhup;
+import bhyv;
+import bhyw;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Random;
 
@@ -31,13 +31,13 @@ public class MovingView
   Point jdField_a_of_type_AndroidGraphicsPoint;
   public Handler a;
   public Scroller a;
-  bhup jdField_a_of_type_Bhup;
+  bhyw jdField_a_of_type_Bhyw;
   Random jdField_a_of_type_JavaUtilRandom;
   public boolean a;
   private float jdField_b_of_type_Float;
   public int b;
   Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  bhup jdField_b_of_type_Bhup;
+  bhyw jdField_b_of_type_Bhyw;
   public boolean b;
   public int c;
   private boolean c;
@@ -54,21 +54,21 @@ public class MovingView
   public MovingView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidOsHandler = new bhuo(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new bhyv(this, Looper.getMainLooper());
     c();
   }
   
   public MovingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidOsHandler = new bhuo(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new bhyv(this, Looper.getMainLooper());
     c();
   }
   
   public MovingView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidOsHandler = new bhuo(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new bhyv(this, Looper.getMainLooper());
     c();
   }
   
@@ -159,7 +159,7 @@ public class MovingView
     }
   }
   
-  private void a(Bitmap paramBitmap, bhup parambhup)
+  private void a(Bitmap paramBitmap, bhyw parambhyw)
   {
     float f3 = paramBitmap.getWidth();
     float f4 = paramBitmap.getHeight();
@@ -170,10 +170,10 @@ public class MovingView
     }
     for (f1 *= f4;; f1 = this.jdField_b_of_type_Float)
     {
-      parambhup.jdField_a_of_type_Float = (f2 / f3);
-      parambhup.jdField_b_of_type_Float = (f1 / f4);
-      parambhup.c = ((this.jdField_a_of_type_Float - f2) / 2.0F);
-      parambhup.d = ((this.jdField_b_of_type_Float - f1) / 2.0F);
+      parambhyw.jdField_a_of_type_Float = (f2 / f3);
+      parambhyw.jdField_b_of_type_Float = (f1 / f4);
+      parambhyw.c = ((this.jdField_a_of_type_Float - f2) / 2.0F);
+      parambhyw.d = ((this.jdField_b_of_type_Float - f1) / 2.0F);
       return;
       f2 *= f3;
     }
@@ -282,18 +282,18 @@ public class MovingView
         this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
         if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
         {
-          if (this.jdField_b_of_type_Bhup == null) {
-            this.jdField_b_of_type_Bhup = new bhup(this);
+          if (this.jdField_b_of_type_Bhyw == null) {
+            this.jdField_b_of_type_Bhyw = new bhyw(this);
           }
-          this.jdField_b_of_type_Bhup.jdField_a_of_type_Float = this.jdField_a_of_type_Bhup.jdField_a_of_type_Float;
-          this.jdField_b_of_type_Bhup.jdField_b_of_type_Float = this.jdField_a_of_type_Bhup.jdField_b_of_type_Float;
-          this.jdField_b_of_type_Bhup.c = this.jdField_a_of_type_Bhup.c;
-          this.jdField_b_of_type_Bhup.d = this.jdField_a_of_type_Bhup.d;
+          this.jdField_b_of_type_Bhyw.jdField_a_of_type_Float = this.jdField_a_of_type_Bhyw.jdField_a_of_type_Float;
+          this.jdField_b_of_type_Bhyw.jdField_b_of_type_Float = this.jdField_a_of_type_Bhyw.jdField_b_of_type_Float;
+          this.jdField_b_of_type_Bhyw.c = this.jdField_a_of_type_Bhyw.c;
+          this.jdField_b_of_type_Bhyw.d = this.jdField_a_of_type_Bhyw.d;
         }
-        if (this.jdField_a_of_type_Bhup == null) {
-          this.jdField_a_of_type_Bhup = new bhup(this);
+        if (this.jdField_a_of_type_Bhyw == null) {
+          this.jdField_a_of_type_Bhyw = new bhyw(this);
         }
-        a(paramBitmap, this.jdField_a_of_type_Bhup);
+        a(paramBitmap, this.jdField_a_of_type_Bhyw);
       }
     }
     if (QLog.isColorLevel()) {
@@ -336,8 +336,8 @@ public class MovingView
       if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
       {
         this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-        this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.jdField_a_of_type_Bhup.jdField_a_of_type_Float, this.jdField_a_of_type_Bhup.jdField_b_of_type_Float);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Bhup.c + this.jdField_a_of_type_Int, this.jdField_a_of_type_Bhup.d + this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.jdField_a_of_type_Bhyw.jdField_a_of_type_Float, this.jdField_a_of_type_Bhyw.jdField_b_of_type_Float);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Bhyw.c + this.jdField_a_of_type_Int, this.jdField_a_of_type_Bhyw.d + this.jdField_b_of_type_Int);
         paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, this.jdField_a_of_type_AndroidGraphicsPaint);
         return;
         this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
@@ -372,8 +372,8 @@ public class MovingView
         this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255 - m);
       }
       this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.jdField_b_of_type_Bhup.jdField_a_of_type_Float, this.jdField_b_of_type_Bhup.jdField_b_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_b_of_type_Bhup.c + this.jdField_a_of_type_Int, this.jdField_b_of_type_Bhup.d + this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.jdField_b_of_type_Bhyw.jdField_a_of_type_Float, this.jdField_b_of_type_Bhyw.jdField_b_of_type_Float);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_b_of_type_Bhyw.c + this.jdField_a_of_type_Int, this.jdField_b_of_type_Bhyw.d + this.jdField_b_of_type_Int);
       paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, this.jdField_a_of_type_AndroidGraphicsPaint);
       if (bool) {
         this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255);
@@ -386,8 +386,8 @@ public class MovingView
       }
       this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(m);
       this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.jdField_a_of_type_Bhup.jdField_a_of_type_Float, this.jdField_a_of_type_Bhup.jdField_b_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Bhup.c + this.jdField_a_of_type_Int, this.jdField_a_of_type_Bhup.d + this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.jdField_a_of_type_Bhyw.jdField_a_of_type_Float, this.jdField_a_of_type_Bhyw.jdField_b_of_type_Float);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Bhyw.c + this.jdField_a_of_type_Int, this.jdField_a_of_type_Bhyw.d + this.jdField_b_of_type_Int);
       paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, this.jdField_a_of_type_AndroidGraphicsPaint);
       this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255);
     }

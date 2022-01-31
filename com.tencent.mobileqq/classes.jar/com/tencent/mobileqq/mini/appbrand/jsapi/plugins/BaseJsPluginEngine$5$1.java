@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.mini.widget.AuthDialog;
 
 class BaseJsPluginEngine$5$1
@@ -13,7 +13,7 @@ class BaseJsPluginEngine$5$1
     if ((this.this$1.this$0.authDialog == null) || (BaseJsPluginEngine.access$300(this.this$1.this$0))) {
       return;
     }
-    this.this$1.this$0.authDialog.show(this.this$1.val$miniIconUrl, this.this$1.val$miniAppName, this.this$1.val$authTitle, this.val$avatarUrl, this.val$nickName, this.this$1.val$authDesc, alpo.a(2131701377), new BaseJsPluginEngine.5.1.1(this), alpo.a(2131701381), new BaseJsPluginEngine.5.1.2(this));
+    this.this$1.this$0.authDialog.show(this.this$1.val$miniIconUrl, this.this$1.val$miniAppName, this.this$1.val$authTitle, this.val$avatarUrl, this.val$nickName, this.this$1.val$authDesc, alud.a(2131701389), new BaseJsPluginEngine.5.1.1(this), alud.a(2131701393), new BaseJsPluginEngine.5.1.2(this));
   }
 }
 

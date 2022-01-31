@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.TbsDownloader.TbsDownloaderCallback;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class befj
-  implements TbsDownloader.TbsDownloaderCallback
+class befj
+  implements View.OnClickListener
 {
-  public void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
+  befj(befi parambefi) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (befh.a != null))
-    {
-      BrowserAppInterface localBrowserAppInterface = (BrowserAppInterface)befh.a.get();
-      if (localBrowserAppInterface != null)
-      {
-        localBrowserAppInterface.a(false);
-        QLog.i("SwiftBrowserIdleTaskHelper", 1, "call downloadX5Kernel on callback:download tbs.");
-      }
-    }
+    this.a.mInActivity.finish();
   }
 }
 

@@ -1,24 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.widget.ScrollView;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import java.util.Comparator;
 
 public class awpc
-  implements View.OnClickListener
+  implements Comparator<PersonalityLabelInfo>
 {
-  public awpc(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  public awpc(PersonalityLabel paramPersonalityLabel) {}
   
-  public void onClick(View paramView)
+  public int a(PersonalityLabelInfo paramPersonalityLabelInfo1, PersonalityLabelInfo paramPersonalityLabelInfo2)
   {
-    StickyNotePublishFragment.a(this.a).setVisibility(8);
-    StickyNotePublishFragment.a(this.a).setVisibility(8);
-    StickyNotePublishFragment.a(this.a).setVisibility(8);
-    StickyNotePublishFragment.a(this.a).setVisibility(0);
-    StickyNotePublishFragment.a(this.a).requestFocus();
-    bhoc.a(StickyNotePublishFragment.a(this.a));
+    return -(int)(paramPersonalityLabelInfo1.modTime - paramPersonalityLabelInfo2.modTime);
   }
 }
 

@@ -1,27 +1,11 @@
-import com.jakewharton.disklrucache.DiskLruCache.Snapshot;
-import java.io.InputStream;
+import android.view.View;
+import android.widget.TextView;
 
 public class yvi
 {
-  private DiskLruCache.Snapshot jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot;
-  private InputStream jdField_a_of_type_JavaIoInputStream;
-  
-  public yvi(yvh paramyvh) {}
-  
-  public InputStream a()
-  {
-    return this.jdField_a_of_type_JavaIoInputStream;
-  }
-  
-  public void a(DiskLruCache.Snapshot paramSnapshot)
-  {
-    this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot = paramSnapshot;
-  }
-  
-  public void a(InputStream paramInputStream)
-  {
-    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
-  }
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
 }
 
 

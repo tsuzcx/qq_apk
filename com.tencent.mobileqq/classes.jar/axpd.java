@@ -1,18 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.opengl.GLSurfaceView;
+import android.view.MotionEvent;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
-class axpd
-  extends Handler
+public class axpd
+  implements GLGestureListener
 {
-  axpd(axpc paramaxpc, Looper paramLooper)
+  public int onGetPriority()
   {
-    super(paramLooper);
+    return 1020;
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    this.a.a(paramMessage);
+    if (paramMotionEvent.getPointerCount() != 1) {
+      return false;
+    }
+    int i = paramMotionEvent.getAction();
+    GLSurfaceView localGLSurfaceView = GLGestureProxy.getInstance().getGLSurfaceView();
+    switch (i & 0xFF)
+    {
+    }
+    do
+    {
+      return false;
+    } while ((!(localGLSurfaceView instanceof AECameraGLSurfaceView)) || (!((AECameraGLSurfaceView)localGLSurfaceView).c()));
+    ((AECameraGLSurfaceView)localGLSurfaceView).setTapEvent(100, paramMotionEvent.getX(), paramMotionEvent.getY());
+    return true;
   }
 }
 

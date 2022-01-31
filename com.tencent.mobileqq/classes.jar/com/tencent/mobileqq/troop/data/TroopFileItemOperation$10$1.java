@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.troop.data;
 
 import android.app.Activity;
-import bbnr;
-import bboe;
-import bbog;
-import bboh;
-import bcjk;
-import bdcd;
-import bdfq;
+import bbsa;
+import bbsn;
+import bbsp;
+import bbsq;
+import bcnt;
+import bdgm;
+import bdjz;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
 public class TroopFileItemOperation$10$1
   implements Runnable
 {
-  public TroopFileItemOperation$10$1(bbog parambbog) {}
+  public TroopFileItemOperation$10$1(bbsp parambbsp) {}
   
   public void run()
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.a.jdField_a_of_type_Bbnr.a);
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.a.jdField_a_of_type_Bbsa.a);
     if ((localObject != null) && (((TroopFileTransferManager.Item)localObject).ErrorCode == -136))
     {
-      this.a.jdField_a_of_type_Bboe.a(this.a.jdField_a_of_type_Bbnr, this.a.jdField_a_of_type_Bboe.a.getString(2131698191), this.a.jdField_a_of_type_Bboe.a.getString(2131698192));
+      this.a.jdField_a_of_type_Bbsn.a(this.a.jdField_a_of_type_Bbsa, this.a.jdField_a_of_type_Bbsn.a.getString(2131698193), this.a.jdField_a_of_type_Bbsn.a.getString(2131698194));
       return;
     }
-    int i = bboe.a(this.a.jdField_a_of_type_Bboe, false);
-    bboh localbboh = new bboh(this);
+    int i = bbsn.a(this.a.jdField_a_of_type_Bbsn, false);
+    bbsq localbbsq = new bbsq(this);
     if (i == 1) {}
-    for (localObject = bboe.a(2131697827, new Object[] { bcjk.a(this.a.jdField_a_of_type_Bbnr.c), this.a.jdField_a_of_type_Bbnr.a() });; localObject = bboe.a(2131698128, new Object[] { bcjk.a(this.a.jdField_a_of_type_Bbnr.c) }))
+    for (localObject = bbsn.a(2131697829, new Object[] { bcnt.a(this.a.jdField_a_of_type_Bbsa.c), this.a.jdField_a_of_type_Bbsa.a() });; localObject = bbsn.a(2131698130, new Object[] { bcnt.a(this.a.jdField_a_of_type_Bbsa.c) }))
     {
-      bdcd.a(this.a.jdField_a_of_type_Bboe.a, 230, bboe.a(2131698130), (String)localObject, 2131690648, 2131698129, localbboh, localbboh).show();
+      bdgm.a(this.a.jdField_a_of_type_Bbsn.a, 230, bbsn.a(2131698132), (String)localObject, 2131690648, 2131698131, localbbsq, localbbsq).show();
       return;
     }
   }

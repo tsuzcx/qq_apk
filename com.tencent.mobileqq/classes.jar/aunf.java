@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.music.SongInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class aunf
-  extends aumi
+public class aunf
+  implements View.OnClickListener
 {
-  aunf(aund paramaund) {}
+  public aunf(MultiCardFragment paramMultiCardFragment) {}
   
-  public void onPlaySongChanged(SongInfo paramSongInfo)
+  public void onClick(View paramView)
   {
-    if (aund.a(this.a) != null) {
-      aund.a(this.a, aund.a(this.a).a());
-    }
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    aund.a(this.a, paramInt);
-    if (paramInt == 2) {
-      aund.a(this.a, aund.a(this.a).c());
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "onClick() called with: v = [" + paramView + "]");
     }
   }
 }

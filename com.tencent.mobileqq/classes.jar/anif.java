@@ -1,42 +1,203 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.io.File;
+import android.content.BroadcastReceiver;
+import android.text.TextUtils;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import java.util.Locale;
 
-class anif
-  implements anip
+public class anif
+  extends ankc
 {
-  anif(anid paramanid, anir paramanir, anin paramanin, String paramString1, anip paramanip, String paramString2) {}
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private anig jdField_a_of_type_Anig = new anig(this, null);
+  private anii jdField_a_of_type_Anii = new anii(this, null);
+  private aniw jdField_a_of_type_Aniw = new aniw(this, null);
+  private aniy jdField_a_of_type_Aniy = new aniy(this, null);
+  public anjo a;
+  private HashMap<String, anih> b = new ArkAppDeviceModule.1(this);
   
-  public void a(boolean paramBoolean)
+  public anif(ark.Application paramApplication, long paramLong)
   {
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Anir.jdField_a_of_type_Boolean = false;
+    super(paramApplication, paramLong);
+    this.jdField_a_of_type_Anjo = new anjo(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  private void a(long paramLong, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppDeviceModule", 2, "doScanCodeCallback cbId=" + paramLong + ", scanResult=" + paramString1 + ", scanType=" + paramString2);
     }
-    synchronized (this.jdField_a_of_type_Anir)
-    {
-      anir localanir2 = this.jdField_a_of_type_Anir;
-      int i = localanir2.jdField_a_of_type_Int - 1;
-      localanir2.jdField_a_of_type_Int = i;
-      if (i > 0)
-      {
-        ArkAppCenter.c("ArkApp.Dict.Update", String.format(Locale.CHINA, "updateWordDict, one task complete, name=%s, success=%s, left=%d", new Object[] { this.jdField_a_of_type_Anin.jdField_a_of_type_JavaLangString, Boolean.toString(paramBoolean), Integer.valueOf(i) }));
-        return;
-      }
-      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, all complete, success=%s", new Object[] { Boolean.toString(this.jdField_a_of_type_Anir.jdField_a_of_type_Boolean) }));
-      if (!this.jdField_a_of_type_Anir.jdField_a_of_type_Boolean)
-      {
-        bdcs.a(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Anip.a(false);
-        return;
-      }
-    }
-    if (!anid.a(ania.a(this.b), new File(this.jdField_a_of_type_JavaLangString).getParent()))
-    {
-      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, renameDictDirAfterUpdateSuccess fail");
-      this.jdField_a_of_type_Anip.a(false);
+    ark.VariantWrapper localVariantWrapper1 = a(paramLong);
+    if (localVariantWrapper1 == null) {
       return;
     }
-    this.jdField_a_of_type_Anip.a(true);
+    int i;
+    ark.VariantWrapper localVariantWrapper2;
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      i = 1;
+      localVariantWrapper2 = localVariantWrapper1.Create();
+      if (i == 0) {
+        break label186;
+      }
+      if (!"QR_CODE".equalsIgnoreCase(paramString2)) {
+        break label179;
+      }
+      paramString2 = "QRCode";
+      label104:
+      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"result\":\"%s\",\"type\":\"%s\",\"charset\":\"%s\"}", new Object[] { paramString1, paramString2, "utf-8" }));
+    }
+    for (;;)
+    {
+      paramString1 = localVariantWrapper1.Create();
+      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString1);
+      paramString1.Reset();
+      localVariantWrapper2.Reset();
+      localVariantWrapper1.Reset();
+      return;
+      i = 0;
+      break;
+      label179:
+      paramString2 = "BarCode";
+      break label104;
+      label186:
+      localVariantWrapper2.SetNull();
+    }
+  }
+  
+  private void a(long paramLong, boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppDeviceModule", 2, "doPositionCallback cbId=" + paramLong + ", success=" + paramBoolean + ", lat=" + paramDouble1 + ", lng=" + paramDouble2);
+    }
+    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
+    if (localVariantWrapper1 == null) {
+      return;
+    }
+    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
+    if (paramBoolean) {
+      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"latitude\":%.6f,\"longitude\":%.6f}", new Object[] { Double.valueOf(paramDouble1), Double.valueOf(paramDouble2) }));
+    }
+    for (;;)
+    {
+      ark.VariantWrapper localVariantWrapper3 = localVariantWrapper1.Create();
+      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, localVariantWrapper3);
+      localVariantWrapper3.Reset();
+      localVariantWrapper2.Reset();
+      return;
+      localVariantWrapper2.SetNull();
+    }
+  }
+  
+  private void a(long paramLong, boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppDeviceModule", 2, "doConnectionCallback cbId=" + paramLong + ", success=" + paramBoolean + ", netType=" + paramString);
+    }
+    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
+    if (localVariantWrapper1 == null) {
+      return;
+    }
+    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
+    if (paramBoolean) {
+      localVariantWrapper2.SetString(paramString);
+    }
+    for (;;)
+    {
+      paramString = localVariantWrapper1.Create();
+      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString);
+      paramString.Reset();
+      localVariantWrapper2.Reset();
+      return;
+      localVariantWrapper2.SetNull();
+    }
+  }
+  
+  private void a(long paramLong, boolean paramBoolean, String paramString, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppDeviceModule", 2, "doSensorCallback cbId=" + paramLong + ", success=" + paramBoolean + ", sensorEventType=" + paramString + ", argA=" + paramFloat1 + ", argB=" + paramFloat2 + ", argC=" + paramFloat3);
+    }
+    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
+    if (localVariantWrapper1 == null) {
+      return;
+    }
+    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
+    String str = null;
+    if ("Motion".equals(paramString))
+    {
+      str = "{\"x\":%.6f,\"y\":%.6f,\"z\":%.6f}";
+      if ((!paramBoolean) || (TextUtils.isEmpty(str))) {
+        break label220;
+      }
+      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, str, new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3) }));
+    }
+    for (;;)
+    {
+      paramString = localVariantWrapper1.Create();
+      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString);
+      paramString.Reset();
+      localVariantWrapper2.Reset();
+      return;
+      if (!"Orientation".equals(paramString)) {
+        break;
+      }
+      str = "{\"alpha\":%.6f,\"beta\":%.6f,\"gamma\":%.6f}";
+      break;
+      label220:
+      localVariantWrapper2.SetNull();
+    }
+  }
+  
+  public void Destruct()
+  {
+    if (this.jdField_a_of_type_Anjo != null) {
+      this.jdField_a_of_type_Anjo.a();
+    }
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {}
+    try
+    {
+      BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      label31:
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+      super.Destruct();
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label31;
+    }
+  }
+  
+  public String GetTypeName()
+  {
+    return "Device";
+  }
+  
+  public boolean HasMenthod(String paramString)
+  {
+    return (this.b != null) && (this.b.containsKey(paramString)) && (this.b.get(paramString) != null);
+  }
+  
+  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppDeviceModule", 2, "invokeFunc=" + paramString);
+    }
+    if (!a(paramString)) {
+      return false;
+    }
+    if (this.b != null)
+    {
+      anih localanih = (anih)this.b.get(paramString);
+      if (localanih != null) {
+        return localanih.a(paramString, paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+    }
+    return false;
   }
 }
 

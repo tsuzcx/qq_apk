@@ -1,55 +1,27 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.activity.aio.AudioSenorManager;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aelg
-  implements SensorEventListener
+  extends WtloginObserver
 {
-  public aelg(AudioSenorManager paramAudioSenorManager) {}
+  public aelg(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    int i = 1;
-    if (aekt.b()) {}
-    label141:
-    label144:
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      return;
-      boolean bool;
-      if (paramSensorEvent.values[0] < AudioSenorManager.c(this.a))
-      {
-        bool = true;
-        label28:
-        QLog.d("AudioSenorManager", 2, "ProximityEventListener$onSensorChanged close =" + bool + " | mIsMoving =" + this.a.a);
-        if ((!AudioHelper.c()) && (bool) && (!this.a.a)) {
-          continue;
-        }
-        if (!bool) {
-          break label141;
-        }
-      }
-      for (;;)
-      {
-        if (i == AudioSenorManager.a(this.a)) {
-          break label144;
-        }
-        AudioSenorManager.a(this.a, i);
-        if (AudioSenorManager.a(this.a) == null) {
-          break;
-        }
-        AudioSenorManager.a(this.a).a(i);
-        return;
-        bool = false;
-        break label28;
-        i = 0;
+      QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
       }
     }
+    if (paramInt2 == 0) {
+      return;
+    }
+    VerifyPhoneNumActivity.a(this.a);
+    VerifyPhoneNumActivity.b(this.a);
   }
 }
 

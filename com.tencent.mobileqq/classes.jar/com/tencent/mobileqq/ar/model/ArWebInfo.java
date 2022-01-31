@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.model;
 
-import anbj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anfs;
 
 public class ArWebInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArWebInfo> CREATOR = new anbj();
+  public static final Parcelable.Creator<ArWebInfo> CREATOR = new anfs();
   public String a;
   public boolean a;
   public String b;

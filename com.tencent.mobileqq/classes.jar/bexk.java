@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.AuthorityAccountView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
 
 public class bexk
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bexk(AuthorityAccountView paramAuthorityAccountView) {}
+  public bexk(FloatingScreenContainer paramFloatingScreenContainer, WindowManager.LayoutParams paramLayoutParams) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof String))) {
-      this.a.b((String)paramView);
-    }
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.alpha = (paramValueAnimator.floatValue() * 1.0F + 0.0F);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
   }
 }
 

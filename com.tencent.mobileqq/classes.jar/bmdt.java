@@ -1,21 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.widget.TextView;
+import java.lang.reflect.Method;
 
 class bmdt
-  implements DialogInterface.OnCancelListener
 {
-  bmdt(bmdi parambmdi) {}
+  final int jdField_a_of_type_Int;
+  final Method jdField_a_of_type_JavaLangReflectMethod;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  bmdt(int paramInt, Method paramMethod)
   {
-    bmdi.b(this.a).R();
-    bmdi.a(this.a).setVisibility(0);
-    if (bmdi.a(this.a) != null) {
-      bmdi.a(this.a).startAnimation(bmdi.a(this.a));
-    }
-    bmdi.c(this.a);
-    bmdi.a(this.a, true);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangReflectMethod = paramMethod;
+    this.jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (bmdt)paramObject;
+    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaLangReflectMethod.getName().equals(paramObject.jdField_a_of_type_JavaLangReflectMethod.getName())));
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int * 31 + this.jdField_a_of_type_JavaLangReflectMethod.getName().hashCode();
   }
 }
 

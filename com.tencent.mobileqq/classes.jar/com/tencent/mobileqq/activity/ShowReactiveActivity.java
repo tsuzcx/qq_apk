@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import adtj;
-import adtk;
-import aekt;
-import alkv;
-import allb;
-import aloz;
-import alpo;
-import alrh;
+import adxy;
+import adxz;
+import aepi;
+import alpk;
+import alpq;
+import alto;
+import alud;
+import alvw;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -21,18 +21,18 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import aokg;
-import aokh;
-import aoqs;
-import aoqt;
-import atry;
-import auny;
-import auog;
-import auoj;
-import auoy;
-import auoz;
-import azmj;
-import bdee;
+import aoop;
+import aooq;
+import aovb;
+import aovc;
+import atwh;
+import aush;
+import ausp;
+import auss;
+import auth;
+import auti;
+import azqs;
+import bdin;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -50,8 +50,8 @@ public class ShowReactiveActivity
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
   int jdField_a_of_type_Int;
-  private allb jdField_a_of_type_Allb = new adtk(this);
-  aloz jdField_a_of_type_Aloz;
+  private alpq jdField_a_of_type_Alpq = new adxz(this);
+  alto jdField_a_of_type_Alto;
   Button jdField_a_of_type_AndroidWidgetButton;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -66,64 +66,64 @@ public class ShowReactiveActivity
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)a(2131362537));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)a(2131362546));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131362547));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131370908));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131370927));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem = ((FormMutiItem)a(2131363343));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131375487));
-    this.b = ((TextView)a(2131375488));
-    aokg localaokg = aokh.a();
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131375538));
+    this.b = ((TextView)a(2131375539));
+    aoop localaoop = aooq.a();
     boolean bool;
     label159:
     FormMutiItem localFormMutiItem;
-    if (!TextUtils.isEmpty(localaokg.e))
+    if (!TextUtils.isEmpty(localaoop.e))
     {
-      if (alrh.a()) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(localaokg.e);
+      if (alvw.a()) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(localaoop.e);
       }
     }
     else
     {
-      bool = ((aloz)this.app.getManager(51)).a(false);
+      bool = ((alto)this.app.getManager(51)).a(false);
       localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
       if (bool) {
         break label431;
       }
       bool = true;
       ((FormSwitchItem)localObject).setChecked(bool);
-      ((alkv)this.app.a(2)).q();
+      ((alpk)this.app.a(2)).q();
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
       if (this.jdField_a_of_type_Int == 1)
       {
         this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(0);
-        azmj.b(null, "dc00898", "", "", "0X800A1FC", "0X800A1FC", 0, 0, "", "", "", "");
+        azqs.b(null, "dc00898", "", "", "0X800A1FC", "0X800A1FC", 0, 0, "", "", "", "");
       }
-      localObject = auny.a(this.app);
+      localObject = aush.a(this.app);
       LayoutInflater localLayoutInflater = LayoutInflater.from(this);
       Iterator localIterator = ((ArrayList)localObject).iterator();
       localObject = null;
       label256:
-      auoz localauoz;
+      auti localauti;
       int i;
       do
       {
         if (!localIterator.hasNext()) {
           break;
         }
-        localauoz = (auoz)localIterator.next();
-        i = auny.a(this.app, null, localauoz.jdField_a_of_type_Long, localauoz.jdField_b_of_type_Long, true);
+        localauti = (auti)localIterator.next();
+        i = aush.a(this.app, null, localauti.jdField_a_of_type_Long, localauti.jdField_b_of_type_Long, true);
       } while (i == 0);
-      localFormMutiItem = (FormMutiItem)localLayoutInflater.inflate(2131561284, null);
+      localFormMutiItem = (FormMutiItem)localLayoutInflater.inflate(2131561302, null);
       localFormMutiItem.setLeftIcon(a(i));
-      localFormMutiItem.setFirstLineText(localauoz.jdField_b_of_type_JavaLangString);
-      localFormMutiItem.setSecondLineText(localauoz.c);
-      if (!a(localauoz)) {
+      localFormMutiItem.setFirstLineText(localauti.jdField_b_of_type_JavaLangString);
+      localFormMutiItem.setSecondLineText(localauti.c);
+      if (!a(localauti)) {
         break label436;
       }
       FormMutiItem.setNeedFocusBg(true);
       localFormMutiItem.setBgType(2);
-      localFormMutiItem.setTag(localauoz);
+      localFormMutiItem.setTag(localauti);
       localFormMutiItem.setOnClickListener(this);
-      localFormMutiItem.setRightIcon(getResources().getDrawable(2130839202));
+      localFormMutiItem.setRightIcon(getResources().getDrawable(2130839203));
     }
     for (;;)
     {
@@ -133,7 +133,7 @@ public class ShowReactiveActivity
       }
       localObject = localFormMutiItem;
       break label256;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131690630));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131690630));
       break;
       label431:
       bool = false;
@@ -141,23 +141,23 @@ public class ShowReactiveActivity
       label436:
       FormMutiItem.setNeedFocusBg(false);
       localFormMutiItem.setBgType(2);
-      localFormMutiItem.setSecondLineTextViewPaddingRight(aekt.a(12.0F, getResources()));
+      localFormMutiItem.setSecondLineTextViewPaddingRight(aepi.a(12.0F, getResources()));
     }
     if (localObject != null) {
       ((FormMutiItem)localObject).setBgType(3);
     }
-    Object localObject = new auog(this, 2130849557);
+    Object localObject = new ausp(this, 2130849630);
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setLeftIcon((Drawable)localObject);
-    ((auog)localObject).a("");
-    if (!TextUtils.isEmpty(localaokg.f)) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setFirstLineText(localaokg.f);
+    ((ausp)localObject).a("");
+    if (!TextUtils.isEmpty(localaoop.f)) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setFirstLineText(localaoop.f);
     }
-    if (!TextUtils.isEmpty(localaokg.g)) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setSecondLineText(localaokg.g);
+    if (!TextUtils.isEmpty(localaoop.g)) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setSecondLineText(localaoop.g);
     }
-    localObject = aoqt.c();
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new adtj(this, (aoqs)localObject));
-    if (((aoqs)localObject).a)
+    localObject = aovc.c();
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new adxy(this, (aovb)localObject));
+    if (((aovb)localObject).a)
     {
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       this.b.setVisibility(0);
@@ -165,9 +165,9 @@ public class ShowReactiveActivity
     for (;;)
     {
       if (AppSetting.c) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131719887));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131719899));
       }
-      atry.a("1", "1", "1", LpReportInfo_dc03950.getReportUserType(this.app));
+      atwh.a("1", "1", "1", LpReportInfo_dc03950.getReportUserType(this.app));
       return;
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       this.b.setVisibility(8);
@@ -191,9 +191,9 @@ public class ShowReactiveActivity
     startActivity(localIntent);
   }
   
-  private boolean a(auoz paramauoz)
+  private boolean a(auti paramauti)
   {
-    return (paramauoz.jdField_a_of_type_Auoy != null) && (!TextUtils.isEmpty(paramauoz.jdField_a_of_type_Auoy.jdField_b_of_type_JavaLangString));
+    return (paramauti.jdField_a_of_type_Auth != null) && (!TextUtils.isEmpty(paramauti.jdField_a_of_type_Auth.jdField_b_of_type_JavaLangString));
   }
   
   protected Drawable a(int paramInt)
@@ -211,21 +211,21 @@ public class ShowReactiveActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561283);
+    super.setContentView(2131561301);
     setTitle(2131690629);
-    this.jdField_a_of_type_Aloz = ((aloz)this.app.getManager(51));
+    this.jdField_a_of_type_Alto = ((alto)this.app.getManager(51));
     this.jdField_a_of_type_Int = getIntent().getIntExtra("entry", 1);
     a();
-    addObserver(this.jdField_a_of_type_Allb);
-    azmj.b(null, "dc00898", "", "", "0X800A1FB", "0X800A1FB", 0, 0, "", "", "", "");
+    addObserver(this.jdField_a_of_type_Alpq);
+    azqs.b(null, "dc00898", "", "", "0X800A1FB", "0X800A1FB", 0, 0, "", "", "", "");
     return false;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Allb != null) {
-      removeObserver(this.jdField_a_of_type_Allb);
+    if (this.jdField_a_of_type_Alpq != null) {
+      removeObserver(this.jdField_a_of_type_Alpq);
     }
   }
   
@@ -238,9 +238,9 @@ public class ShowReactiveActivity
   {
     boolean bool1 = true;
     boolean bool2 = false;
-    if (!bdee.d(getActivity()))
+    if (!bdin.d(getActivity()))
     {
-      QQToast.a(getApplicationContext(), 2131719872, 1).a();
+      QQToast.a(getApplicationContext(), 2131719884, 1).a();
       bool1 = bool2;
       if (!paramBoolean) {
         bool1 = true;
@@ -255,8 +255,8 @@ public class ShowReactiveActivity
     if (paramBoolean)
     {
       i = 1;
-      azmj.b(paramCompoundButton, "CliOper", "", "", "0X8007021", "0X8007021", 0, 0, String.valueOf(i), "", "", "");
-      paramCompoundButton = (alkv)this.app.a(2);
+      azqs.b(paramCompoundButton, "CliOper", "", "", "0X8007021", "0X8007021", 0, 0, String.valueOf(i), "", "", "");
+      paramCompoundButton = (alpk)this.app.a(2);
       if (paramBoolean) {
         break label131;
       }
@@ -275,8 +275,8 @@ public class ShowReactiveActivity
   {
     if (paramView.getId() == 2131362537)
     {
-      azmj.b(null, "dc00898", "", "", "0X800A1FD", "0X800A1FD", 0, 0, "", "", "", "");
-      paramView = aokh.a().a();
+      azqs.b(null, "dc00898", "", "", "0X800A1FD", "0X800A1FD", 0, 0, "", "", "", "");
+      paramView = aooq.a().a();
       Intent localIntent = new Intent(this, QQBrowserActivity.class);
       localIntent.putExtra("url", paramView);
       localIntent.putExtra("finish_animation_out_to_right", true);
@@ -291,16 +291,16 @@ public class ShowReactiveActivity
         do
         {
           return;
-        } while ((paramView.getTag() == null) || (!(paramView.getTag() instanceof auoz)));
-        paramView = (auoz)paramView.getTag();
+        } while ((paramView.getTag() == null) || (!(paramView.getTag() instanceof auti)));
+        paramView = (auti)paramView.getTag();
       } while (paramView == null);
       if (paramView.jdField_a_of_type_Long == 7L)
       {
-        atry.a(this.app, this, 2087, "1");
+        atwh.a(this.app, this, 2087, "1");
         return;
       }
-    } while ((paramView.jdField_a_of_type_Auoy == null) || (TextUtils.isEmpty(paramView.jdField_a_of_type_Auoy.jdField_b_of_type_JavaLangString)));
-    a(auoj.a(paramView.jdField_a_of_type_Auoy.jdField_b_of_type_JavaLangString));
+    } while ((paramView.jdField_a_of_type_Auth == null) || (TextUtils.isEmpty(paramView.jdField_a_of_type_Auth.jdField_b_of_type_JavaLangString)));
+    a(auss.a(paramView.jdField_a_of_type_Auth.jdField_b_of_type_JavaLangString));
   }
 }
 

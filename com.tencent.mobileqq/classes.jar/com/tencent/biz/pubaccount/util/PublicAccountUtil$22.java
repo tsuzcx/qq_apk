@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.util;
 
-import aljq;
+import alof;
 import opt;
 import opw;
 import syb;
@@ -12,12 +12,12 @@ public final class PublicAccountUtil$22
   
   public void run()
   {
-    if (aljq.aR.equals(this.a))
+    if (alof.aR.equals(this.a))
     {
       opw.a();
       return;
     }
-    if (aljq.aS.equals(this.a))
+    if (alof.aS.equals(this.a))
     {
       opt.a();
       return;

@@ -1,45 +1,118 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLoadMoreVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupStoryInfo;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
 
-public final class wfx
-  extends QQUIEventReceiver<wfn, uyg>
+public class wfx
+  extends naa
 {
-  public wfx(@NonNull wfn paramwfn)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramwfn);
-  }
-  
-  public void a(@NonNull wfn paramwfn, @NonNull uyg paramuyg)
-  {
-    if (wfn.a(paramwfn) == null) {
-      wsv.b(this.TAG, "ignore this feature event. %s.", paramuyg.toString());
+    bool = true;
+    int i = 0;
+    Object localObject1;
+    Object localObject2;
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      paramBundle = new qqstory_struct.ErrorInfo();
+      paramBundle.error_code.set(paramInt);
+      localObject1 = paramBundle.error_desc;
+      localObject2 = new StringBuilder().append(paramInt);
+      if (paramArrayOfByte == null)
+      {
+        paramArrayOfByte = ",data is null";
+        ((PBBytesField)localObject1).set(ByteStringMicro.copyFromUtf8(paramArrayOfByte));
+        paramArrayOfByte = paramBundle;
+      }
     }
-    usu localusu;
     do
     {
-      return;
-      while (!paramuyg.hasNext())
+      for (;;)
       {
-        do
+        return paramArrayOfByte;
+        paramArrayOfByte = ", data is valid";
+        break;
+        Object localObject4 = new qqstory_service.RspLoadMoreVideoList();
+        localObject1 = (uvx)uwa.a(5);
+        Object localObject3 = paramBundle.getString("extra_feedid");
+        localObject2 = (uvn)uwa.a(19);
+        for (;;)
         {
-          wsv.a(this.TAG, "receive feature event. %s.", paramuyg.toString());
-        } while (paramuyg.a == null);
-        paramuyg = paramuyg.a.iterator();
+          try
+          {
+            ((qqstory_service.RspLoadMoreVideoList)localObject4).mergeFrom(paramArrayOfByte);
+            paramBundle = (qqstory_struct.ErrorInfo)((qqstory_service.RspLoadMoreVideoList)localObject4).result.get();
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+          {
+            paramBundle = null;
+            continue;
+            paramArrayOfByte = "";
+            continue;
+            bool = false;
+            continue;
+          }
+          try
+          {
+            localObject3 = ((uvn)localObject2).a((String)localObject3);
+            paramArrayOfByte = paramBundle;
+            if (localObject3 == null) {
+              break;
+            }
+            paramArrayOfByte = paramBundle;
+            if (paramBundle.error_code.get() != 0) {
+              break;
+            }
+            if (!((qqstory_service.RspLoadMoreVideoList)localObject4).next_cookie.has()) {
+              continue;
+            }
+            paramArrayOfByte = ((qqstory_service.RspLoadMoreVideoList)localObject4).next_cookie.get().toStringUtf8();
+            if (((qqstory_service.RspLoadMoreVideoList)localObject4).is_end.get() != 1) {
+              continue;
+            }
+            localObject4 = ((qqstory_service.RspLoadMoreVideoList)localObject4).video_list.get();
+            ((VideoCollectionItem)localObject3).nextCookie = paramArrayOfByte;
+            paramInt = i;
+            if (paramInt < ((List)localObject4).size())
+            {
+              paramArrayOfByte = (qqstory_struct.GroupStoryInfo)((List)localObject4).get(paramInt);
+              StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+              localStoryVideoItem.convertFrom("dummy", paramArrayOfByte);
+              paramArrayOfByte = ((uvx)localObject1).a(localStoryVideoItem.mVid, localStoryVideoItem);
+              ((VideoCollectionItem)localObject3).videoVidList.add(paramArrayOfByte.mVid);
+              paramArrayOfByte = new wnd(paramArrayOfByte.mVid, paramArrayOfByte);
+              ((VideoCollectionItem)localObject3).collectionVideoUIItemList.add(paramArrayOfByte);
+              paramInt += 1;
+            }
+            else
+            {
+              ((uvn)localObject2).a((VideoCollectionItem)localObject3);
+              a((VideoCollectionItem)localObject3, bool);
+              return paramBundle;
+            }
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+          {
+            paramArrayOfByte = paramBundle;
+          }
+        }
       }
-      localusu = (usu)paramuyg.next();
-    } while (!localusu.a.equals(wfn.a(paramwfn)));
-    wsv.a(this.TAG, "receive feature data. update visit count from %d to %d.", Long.valueOf(wfn.a(paramwfn).a.mViewTotalTime), Integer.valueOf(localusu.c));
-    wfn.a(paramwfn).a.mViewTotalTime = localusu.c;
-    paramwfn.a();
+    } while (!QLog.isColorLevel());
+    QLog.w("Q.qqstory.discover.ShareGroupManager", 2, "doGetMoreVideoByVideoCollectionItem exception:" + localInvalidProtocolBufferMicroException1);
+    return paramBundle;
   }
   
-  public Class acceptEventClass()
-  {
-    return uyg.class;
-  }
+  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean) {}
 }
 
 

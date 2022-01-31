@@ -29,7 +29,7 @@ public class qki
   
   static
   {
-    jdField_c_of_type_Int = ((Integer)bjxj.a(h, Integer.valueOf(0))).intValue();
+    jdField_c_of_type_Int = ((Integer)bkbq.a(h, Integer.valueOf(0))).intValue();
   }
   
   private static int a(BaseArticleInfo paramBaseArticleInfo)
@@ -48,8 +48,8 @@ public class qki
   
   public static void a()
   {
-    jdField_c_of_type_Int = ((Integer)bjxj.a(h, Integer.valueOf(0))).intValue();
-    NativeAwesomeCommentView.jdField_a_of_type_Int = ((Integer)bjxj.a(i, Integer.valueOf(1))).intValue();
+    jdField_c_of_type_Int = ((Integer)bkbq.a(h, Integer.valueOf(0))).intValue();
+    NativeAwesomeCommentView.jdField_a_of_type_Int = ((Integer)bkbq.a(i, Integer.valueOf(1))).intValue();
   }
   
   public static void a(BaseArticleInfo paramBaseArticleInfo, String paramString)

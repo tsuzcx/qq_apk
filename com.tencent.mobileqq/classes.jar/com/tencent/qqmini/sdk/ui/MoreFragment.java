@@ -18,7 +18,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhic;
+import bhmj;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.utils.DisplayUtil;
 import java.util.Iterator;
@@ -74,7 +74,7 @@ public class MoreFragment
     localAnimationSet.setInterpolator(new DecelerateInterpolator());
     localAnimationSet.setDuration(200L);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new bhic(this, paramInt, paramBoolean, paramBundle));
+    localAnimationSet.setAnimationListener(new bhmj(this, paramInt, paramBoolean, paramBundle));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
   }
   
@@ -119,14 +119,14 @@ public class MoreFragment
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.jdField_a_of_type_Int = getActivity().getResources().getDisplayMetrics().heightPixels;
     this.b = DisplayUtil.getStatusBarHeight(getActivity());
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559354, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559353, paramViewGroup, false);
     if (paramLayoutInflater == null)
     {
       getActivity().finish();
       return null;
     }
     this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131362208);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131370599));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131370618));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     paramLayoutInflater.setOnClickListener(this);
     paramViewGroup = a();
@@ -139,9 +139,9 @@ public class MoreFragment
       return null;
     }
     if (paramViewGroup.getBooleanExtra("key_orientation_landscape", false)) {
-      getActivity().findViewById(16908290).setBackgroundResource(2130840922);
+      getActivity().findViewById(16908290).setBackgroundResource(2130840923);
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131370725));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131370744));
     this.jdField_a_of_type_JavaUtilList = paramViewGroup.getParcelableArrayListExtra("key_more_item_list");
     if (this.jdField_a_of_type_JavaUtilList == null)
     {

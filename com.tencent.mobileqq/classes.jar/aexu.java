@@ -1,74 +1,11 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.animation.Animator;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 
-class aexu
-  implements belb
+public abstract interface aexu
 {
-  aexu(aexr paramaexr) {}
+  public abstract void a(Animator paramAnimator, int paramInt);
   
-  public void a(int paramInt)
-  {
-    if ((!aexr.a(this.a)) && (paramInt == 1)) {
-      this.a.a();
-    }
-  }
-  
-  public void a(int paramInt, float paramFloat)
-  {
-    if (aexr.a(this.a)) {
-      this.a.a(paramInt, paramFloat);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    aexr.a(this.a);
-    if (aexr.a(this.a)) {
-      this.a.b(paramInt);
-    }
-  }
-  
-  public void f()
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.an();
-    }
-    if (aexr.a(this.a)) {
-      this.a.f();
-    }
-    if (!akwk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        akwk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", true);
-      }
-      return;
-    }
-  }
-  
-  public void g()
-  {
-    if (aexr.a(this.a)) {
-      this.a.g();
-    }
-  }
-  
-  public void h()
-  {
-    if (aexr.a(this.a)) {
-      this.a.h();
-    }
-  }
-  
-  public void i()
-  {
-    aexr.b(this.a);
-    if (aexr.a(this.a)) {
-      this.a.i();
-    }
-    if (akwk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      akwk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", false);
-    }
-  }
+  public abstract void a(LottieDrawable paramLottieDrawable, int paramInt);
 }
 
 

@@ -10,7 +10,7 @@ public class ad
   
   public void onGlobalLayout()
   {
-    if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLineCount() > 3) && (!LiteActivity.a(this.a)) && (!azib.b()))
+    if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLineCount() > 3) && (!LiteActivity.a(this.a)) && (!azmk.b()))
     {
       this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
       return;

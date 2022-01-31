@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.launcher.annotation;
 
-import bgqv;
-import bgqw;
+import bgvc;
+import bgvd;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public class JsonORM
 {
-  private static final Map<Class, bgqw[]> a = new IdentityHashMap();
+  private static final Map<Class, bgvd[]> a = new IdentityHashMap();
   
   public static int a(Class<?> paramClass)
   {
@@ -45,7 +45,7 @@ public class JsonORM
     if ((paramJSONObject == null) || (paramClass == null)) {
       throw new IllegalArgumentException("both jsonObject and clazz should not be null");
     }
-    Object localObject2 = (bgqw[])a.get(paramClass);
+    Object localObject2 = (bgvd[])a.get(paramClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -199,25 +199,25 @@ public class JsonORM
     paramField.set(paramObject, paramJSONObject.optString(paramString));
   }
   
-  private static void a(Class<?> paramClass, ArrayList<bgqw> paramArrayList)
+  private static void a(Class<?> paramClass, ArrayList<bgvd> paramArrayList)
   {
     paramClass = paramClass.getDeclaredFields();
     int i = 0;
     if (i != paramClass.length)
     {
       Field localField = paramClass[i];
-      bgqv localbgqv = (bgqv)localField.getAnnotation(bgqv.class);
-      if (localbgqv == null) {}
+      bgvc localbgvc = (bgvc)localField.getAnnotation(bgvc.class);
+      if (localbgvc == null) {}
       for (;;)
       {
         i += 1;
         break;
-        paramArrayList.add(new bgqw(localbgqv.a(), a(localField.getType()), localField));
+        paramArrayList.add(new bgvd(localbgvc.a(), a(localField.getType()), localField));
       }
     }
   }
   
-  private static bgqw[] a(Class<?> paramClass)
+  private static bgvd[] a(Class<?> paramClass)
   {
     ArrayList localArrayList = new ArrayList();
     while (paramClass != null)
@@ -225,7 +225,7 @@ public class JsonORM
       a(paramClass, localArrayList);
       paramClass = paramClass.getSuperclass();
     }
-    paramClass = new bgqw[localArrayList.size()];
+    paramClass = new bgvd[localArrayList.size()];
     localArrayList.toArray(paramClass);
     return paramClass;
   }

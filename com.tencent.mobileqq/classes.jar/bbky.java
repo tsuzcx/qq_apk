@@ -1,37 +1,25 @@
-import NearbyGroup.GroupInfo;
-import NearbyGroup.GroupLabel;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 
 public class bbky
-  extends akee
+  implements URLDrawable.DownloadListener
 {
-  public int a;
-  public GroupInfo a;
-  public View a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public TroopLabelLayout a;
-  public ArrayList<GroupLabel> a;
-  public int b = 2;
-  public ImageView b;
-  public LinearLayout b;
-  public TextView b;
-  public TroopLabelLayout b;
-  public String b;
-  public TextView c;
-  public int d;
-  public TextView d;
-  public TextView e;
+  public bbky(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, bbkz parambbkz) {}
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    this.jdField_a_of_type_Bbkz.a(null);
+  }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    Bitmap localBitmap = bfln.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
+    this.jdField_a_of_type_Bbkz.a(localBitmap);
+  }
 }
 
 

@@ -47,9 +47,9 @@ public class owx
     }
   }
   
-  private void a(awbw paramawbw, long paramLong, int paramInt)
+  private void a(awgf paramawgf, long paramLong, int paramInt)
   {
-    if (paramawbw == null)
+    if (paramawgf == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("ReadInJoyFollowingMemberPrefetcher", 0, "update follow status error, entity manager is null!");
@@ -58,14 +58,14 @@ public class owx
     }
     if ((paramInt == 1) || (paramInt == 0))
     {
-      ReadinjoyFollowingUserBriefInfo localReadinjoyFollowingUserBriefInfo = (ReadinjoyFollowingUserBriefInfo)paramawbw.a(ReadinjoyFollowingUserBriefInfo.class, String.valueOf(paramLong));
+      ReadinjoyFollowingUserBriefInfo localReadinjoyFollowingUserBriefInfo = (ReadinjoyFollowingUserBriefInfo)paramawgf.a(ReadinjoyFollowingUserBriefInfo.class, String.valueOf(paramLong));
       if (localReadinjoyFollowingUserBriefInfo != null) {
-        paramawbw.b(localReadinjoyFollowingUserBriefInfo);
+        paramawgf.b(localReadinjoyFollowingUserBriefInfo);
       }
       this.jdField_a_of_type_JavaUtilSet.remove(Long.valueOf(paramLong));
       return;
     }
-    paramawbw.b(new ReadinjoyFollowingUserBriefInfo(paramLong, paramInt));
+    paramawgf.b(new ReadinjoyFollowingUserBriefInfo(paramLong, paramInt));
     this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(paramLong));
   }
   
@@ -81,7 +81,7 @@ public class owx
         localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
         paramList = paramList.iterator();
         while (paramList.hasNext()) {
-          a((awbw)localObject, ((qkw)paramList.next()).a().longValue(), paramInt);
+          a((awgf)localObject, ((qkw)paramList.next()).a().longValue(), paramInt);
         }
       }
     }

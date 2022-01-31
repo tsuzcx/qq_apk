@@ -1,17 +1,13 @@
-import java.util.List;
-
 public class araq
 {
   public int a;
-  public String a;
-  public List<String> a;
-  public boolean a;
-  public byte[] a;
-  public byte[] b;
-  public byte[] c;
-  public byte[] d;
+  String a;
   
-  public araq(arap paramarap) {}
+  public araq(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

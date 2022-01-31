@@ -1,29 +1,54 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import dov.com.qq.im.aeeditor.module.controlpanel.VideoControlPanel;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
-import dov.com.qq.im.aeeditor.module.music.AEEditorMusicHelper;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 
 public class bliq
-  extends BroadcastReceiver
+  extends QIPCModule
 {
-  public bliq(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
+  private static boolean a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bliq(String paramString)
   {
-    if (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) {}
-    do
+    super(paramString);
+  }
+  
+  public static bliq a()
+  {
+    return blir.a;
+  }
+  
+  public static void a()
+  {
+    if (!a)
     {
-      return;
-      paramContext = AEEditorMusicHelper.a(paramIntent);
-    } while (paramContext == null);
-    if ((AEEditorMusicHelper.a(paramContext)) && (AEEditorVideoEditFragment.a(this.a) != null))
-    {
-      AEEditorVideoEditFragment.a(this.a).a(new bljv(paramContext, false));
-      return;
+      QIPCClientHelper.getInstance().getClient().registerModule(a());
+      a = true;
     }
-    AEEditorVideoEditFragment.a(this.a, paramContext);
+  }
+  
+  public static void b()
+  {
+    if (a)
+    {
+      QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
+      a = false;
+    }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("action_get_send_to_info".equals(paramString)) {
+      bliu.a().a(Long.valueOf(paramBundle.getLong("key_receiver_type")));
+    }
+    for (;;)
+    {
+      return null;
+      if ("action_get_cancle_send_info".equals(paramString)) {
+        bliu.a().H();
+      }
+    }
   }
 }
 

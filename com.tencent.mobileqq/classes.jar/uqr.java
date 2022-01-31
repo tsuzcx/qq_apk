@@ -1,6 +1,12 @@
-public abstract interface uqr<DATA>
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+
+public class uqr
 {
-  public abstract void a(boolean paramBoolean, DATA paramDATA);
+  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
+  {
+    return urk.a(paramQQStoryAutoPlayView, paramMotionEvent);
+  }
 }
 
 

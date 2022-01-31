@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bghn;
+import bglu;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IBoxADLisener;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;

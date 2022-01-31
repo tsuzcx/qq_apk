@@ -1,44 +1,44 @@
-import com.tencent.mobileqq.data.CameraEmotionData;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class alku
-  implements alkr
+public final class alku
 {
-  protected void a() {}
+  private static HashMap<String, Long> a = new HashMap();
+  private static HashMap<String, Long> b = new HashMap();
   
-  protected void a(int paramInt) {}
-  
-  protected void a(int paramInt, CameraEmotionData paramCameraEmotionData) {}
-  
-  protected void a(boolean paramBoolean, int paramInt) {}
-  
-  protected void b(int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public static void a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), (CameraEmotionData)paramObject[1]);
-      return;
-    case 2: 
-      a(((Integer)paramObject).intValue());
-      return;
-    case 3: 
-      b(((Integer)paramObject).intValue());
-      return;
-    case 4: 
-      a();
-      return;
+    a.clear();
+    b.clear();
+  }
+  
+  public static void a(String paramString)
+  {
+    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString))) {
+      a.put(paramString, Long.valueOf(SystemClock.uptimeMillis()));
     }
-    a(paramBoolean, ((Integer)paramObject).intValue());
+  }
+  
+  public static void b(String paramString)
+  {
+    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString)) && (a.containsKey(paramString)))
+    {
+      Long localLong = (Long)a.get(paramString);
+      if (localLong != null)
+      {
+        long l1 = localLong.longValue();
+        long l2 = SystemClock.uptimeMillis();
+        b.put(paramString, Long.valueOf(l2));
+        QLog.d("TraceReport_CmShowStatUtil", 1, new Object[] { "eventName=", paramString, ", cost=", Long.valueOf(l2 - l1) });
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alku
  * JD-Core Version:    0.7.0.1
  */

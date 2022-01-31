@@ -1,50 +1,70 @@
-import android.app.Activity;
-import android.app.KeyguardManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.CacheMap;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class agcy
-  extends BroadcastReceiver
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  boolean jdField_a_of_type_Boolean = true;
+  private static final String jdField_a_of_type_JavaLangString = agcy.class.getSimpleName();
+  private StructingMsgItemBuilder.CacheMap jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap = new StructingMsgItemBuilder.CacheMap(null);
+  private StructingMsgItemBuilder.CacheMap b = new StructingMsgItemBuilder.CacheMap(null);
   
-  public agcy(Activity paramActivity)
+  private agcz a(String paramString, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    boolean bool = true;
-    paramIntent = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(paramIntent)) {
-      if (!a(paramContext)) {
-        this.jdField_a_of_type_Boolean = bool;
+    Iterator localIterator = this.b.get(paramString).iterator();
+    while (localIterator.hasNext())
+    {
+      paramString = (agcz)localIterator.next();
+      if (paramString != null) {
+        paramString.a(paramViewGroup);
       }
     }
     for (;;)
     {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this);
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-      }
-      return;
-      bool = false;
-      break;
-      if ("android.intent.action.SCREEN_OFF".equals(paramIntent)) {
-        this.jdField_a_of_type_Boolean = false;
-      } else if ("android.intent.action.USER_PRESENT".equals(paramIntent)) {
-        this.jdField_a_of_type_Boolean = true;
-      }
+      this.b.remove(paramString);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(paramString);
+      return paramString;
+      paramString = null;
     }
+  }
+  
+  public View a(String paramString, ViewGroup paramViewGroup)
+  {
+    a(paramString, paramViewGroup);
+    paramString = a(paramString, paramViewGroup);
+    if (paramString != null) {
+      return paramString.a();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.clear();
+    this.b.clear();
+  }
+  
+  public void a(String paramString, View paramView, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(new agcz(paramString, paramView, paramViewGroup));
+  }
+  
+  public void a(String paramString, ViewGroup paramViewGroup)
+  {
+    if (paramViewGroup == null) {}
+    agcz localagcz;
+    do
+    {
+      return;
+      while (!paramString.hasNext()) {
+        paramString = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.get(paramString).iterator();
+      }
+      localagcz = (agcz)paramString.next();
+    } while ((localagcz == null) || (localagcz.a() == null) || (localagcz.a() != paramViewGroup));
+    localagcz.a().removeAllViews();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.remove(localagcz);
+    this.b.add(localagcz);
   }
 }
 

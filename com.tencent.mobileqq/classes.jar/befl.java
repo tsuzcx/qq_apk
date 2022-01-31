@@ -1,61 +1,77 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import java.lang.reflect.Method;
 
-public class befl
-  extends befk
+@Deprecated
+public abstract class befl
+  extends WebViewPlugin
 {
-  public befl(int paramInt)
+  public befl()
   {
-    super(paramInt);
+    this.mPluginNameSpace = getNameSpace();
   }
   
-  public int a()
+  protected Method getJsMethod(String paramString1, String paramString2, int paramInt)
   {
-    if (WebAccelerateHelper.preloadBrowserView == null)
-    {
-      WebAccelerateHelper.preInflaterBrowserView();
-      if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserIdleTaskHelper", 2, "preloadBrowserView on idle.");
-      }
-    }
-    do
-    {
-      return 2;
-      if (SwiftReuseTouchWebView.b != 0) {
-        break;
-      }
-      SwiftReuseTouchWebView.a(BaseApplicationImpl.sApplication).a(true);
-    } while (!QLog.isColorLevel());
-    QLog.d("SwiftBrowserIdleTaskHelper", 2, "preload Webview on idle.");
-    return 2;
-    long l;
-    if (befh.a() < 5)
-    {
-      l = System.currentTimeMillis();
-      if (System.currentTimeMillis() > befh.a() + 10000L)
-      {
-        befh.a();
-        befh.b();
-        befh.a(l);
-        if (QLog.isColorLevel()) {
-          QLog.d("SwiftBrowserIdleTaskHelper", 2, "downloadX5KernelIfNeeded on idle.");
-        }
-      }
-    }
+    if (!getNameSpace().equals(paramString1)) {}
     for (;;)
     {
-      return 1;
-      if (QLog.isColorLevel())
+      return null;
+      paramString1 = getClass().getDeclaredMethods();
+      int j = paramString1.length;
+      int i = 0;
+      while (i < j)
       {
-        QLog.d("SwiftBrowserIdleTaskHelper", 2, "not need check because time limit:" + l + " - " + befh.a() + " < 10s.");
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("SwiftBrowserIdleTaskHelper", 2, "not need check because count limit:" + befh.a() + ">=" + 5 + ".");
+        Method localMethod = paramString1[i];
+        if ((localMethod.getName().equals(paramString2)) && (localMethod.getParameterTypes().length == paramInt)) {
+          return localMethod;
         }
+        i += 1;
       }
     }
+  }
+  
+  protected abstract String getNameSpace();
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = false;
+    paramString2 = getJsMethod(paramString2, paramString3, paramVarArgs.length);
+    if (paramString2 != null) {}
+    try
+    {
+      if (paramVarArgs.length == 0) {}
+      for (paramString1 = paramString2.invoke(this, new Object[0]);; paramString1 = paramString2.invoke(this, paramVarArgs))
+      {
+        paramString2 = paramString2.getReturnType();
+        if ((paramString2 != Void.TYPE) && (paramString2 != Void.class)) {
+          break label97;
+        }
+        if (paramJsBridgeListener == null) {
+          break label128;
+        }
+        if (!paramJsBridgeListener.a) {
+          break;
+        }
+        callJs4OpenApi(paramJsBridgeListener, 0, JsBridgeListener.a(0, null, null));
+        break label128;
+      }
+      paramJsBridgeListener.a(null);
+      break label128;
+      label97:
+      if (paramJsBridgeListener != null) {
+        if (paramJsBridgeListener.a) {
+          callJs4OpenApi(paramJsBridgeListener, 0, JsBridgeListener.a(0, paramString1, null));
+        } else {
+          paramJsBridgeListener.a(paramString1);
+        }
+      }
+      label128:
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramJsBridgeListener) {}
+    return false;
   }
 }
 

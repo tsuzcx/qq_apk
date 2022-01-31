@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.11;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
 public class anqc
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public anqc(DynamicAvatarRecordActivity.11 param11) {}
+  public anqc(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.this$0.finish();
+    paramView = (bhuf)bhus.a(BaseActivity.sTopActivity, null);
+    paramView.a(BaseActivity.sTopActivity.getString(2131690268));
+    paramView.a(2131690267, 3);
+    paramView.c(2131690266);
+    paramView.setOnDismissListener(new anqd(this, paramView));
+    paramView.a(new anqe(this, paramView));
+    if (!paramView.isShowing()) {
+      paramView.show();
+    }
   }
 }
 

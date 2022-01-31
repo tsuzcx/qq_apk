@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgho;
-import bgie;
-import bgkd;
-import bhab;
+import bglv;
+import bgml;
+import bgok;
+import bhei;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import com.tencent.qqmini.sdk.core.widget.media.CoverVideoView;
 import java.lang.ref.WeakReference;
@@ -12,11 +12,11 @@ import org.json.JSONObject;
 class MediaJsPlugin$2
   implements Runnable
 {
-  MediaJsPlugin$2(MediaJsPlugin paramMediaJsPlugin, int paramInt, JSONObject paramJSONObject1, bgkd parambgkd, JSONObject paramJSONObject2) {}
+  MediaJsPlugin$2(MediaJsPlugin paramMediaJsPlugin, int paramInt, JSONObject paramJSONObject1, bgok parambgok, JSONObject paramJSONObject2) {}
   
   public void run()
   {
-    CoverView localCoverView = bhab.a(MediaJsPlugin.access$100(this.this$0)).a(this.val$videoPlayerId);
+    CoverView localCoverView = bhei.a(MediaJsPlugin.access$100(this.this$0)).a(this.val$videoPlayerId);
     Object localObject = localCoverView;
     if (localCoverView == null)
     {
@@ -24,9 +24,9 @@ class MediaJsPlugin$2
       ((CoverVideoView)localObject).setAtyRef(new WeakReference(MediaJsPlugin.access$300(this.this$0).a()));
       ((CoverVideoView)localObject).setData(this.val$jsonObject.optString("data"));
       ((CoverVideoView)localObject).setServiceWebview(this.val$req.a);
-      ((CoverVideoView)localObject).setPageWebviewId(bgie.a(MediaJsPlugin.access$400(this.this$0)).a());
+      ((CoverVideoView)localObject).setPageWebviewId(bgml.a(MediaJsPlugin.access$400(this.this$0)).a());
       ((CoverVideoView)localObject).setVideoPlayerId(this.val$videoPlayerId);
-      bhab.a(MediaJsPlugin.access$500(this.this$0)).a(0, this.val$videoPlayerId, (CoverView)localObject);
+      bhei.a(MediaJsPlugin.access$500(this.this$0)).a(0, this.val$videoPlayerId, (CoverView)localObject);
     }
     if ((localObject instanceof CoverVideoView))
     {

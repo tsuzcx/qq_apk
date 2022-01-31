@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.pic;
 
-import awdy;
-import awen;
-import awew;
-import awfc;
-import awfl;
-import awga;
-import azls;
-import batw;
-import baub;
-import bauf;
+import awih;
+import awiw;
+import awjf;
+import awjl;
+import awju;
+import awkj;
+import azqb;
+import bayf;
+import bayk;
+import bayo;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
@@ -18,30 +18,30 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class BasePicOprerator$3
   implements Runnable
 {
-  public BasePicOprerator$3(awdy paramawdy, awfc paramawfc) {}
+  public BasePicOprerator$3(awih paramawih, awjl paramawjl) {}
   
   public void run()
   {
-    awew localawew = this.a.jdField_a_of_type_Awew;
-    awen.a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_JavaLangString, "doForward", "start");
+    awjf localawjf = this.a.jdField_a_of_type_Awjf;
+    awiw.a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_JavaLangString, "doForward", "start");
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null)
     {
-      localawew.a("doForward", "rec==null");
-      this.this$0.a(4, localawew.jdField_a_of_type_Awey);
+      localawjf.a("doForward", "rec==null");
+      this.this$0.a(4, localawjf.jdField_a_of_type_Awjh);
       return;
     }
     Object localObject1 = (MessageForPic)this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    ((MessageForPic)localObject1).path = localawew.jdField_a_of_type_Awfl.g;
-    awdy.a(this.this$0, this.a, ((MessageForPic)localObject1).uniseq);
+    ((MessageForPic)localObject1).path = localawjf.jdField_a_of_type_Awju.g;
+    awih.a(this.this$0, this.a, ((MessageForPic)localObject1).uniseq);
     if (this.a.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData != null) {
       ((MessageForPic)localObject1).picExtraData = this.a.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData;
     }
     Object localObject2 = new CompressInfo(((MessageForPic)localObject1).path, 0);
-    awga.b((CompressInfo)localObject2);
-    bauf localbauf;
+    awkj.b((CompressInfo)localObject2);
+    bayo localbayo;
     if (((CompressInfo)localObject2).jdField_e_of_type_JavaLangString != null)
     {
-      if (azls.a())
+      if (azqb.a())
       {
         ((MessageForPic)localObject1).bigThumbMsgUrl = ((CompressInfo)localObject2).jdField_e_of_type_JavaLangString;
         ((MessageForPic)localObject1).thumbWidth = ((CompressInfo)localObject2).d;
@@ -52,33 +52,33 @@ public class BasePicOprerator$3
     {
       ((MessageForPic)localObject1).serial();
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageForPic)localObject1).frienduin, ((MessageForPic)localObject1).istroop, ((MessageForPic)localObject1).uniseq, ((MessageForPic)localObject1).msgData);
-      localObject2 = new baub();
-      ((baub)localObject2).jdField_b_of_type_JavaLangString = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-      ((baub)localObject2).c = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin;
-      ((baub)localObject2).d = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin;
-      ((baub)localObject2).jdField_a_of_type_Int = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop;
-      ((baub)localObject2).jdField_b_of_type_Int = 1;
-      ((baub)localObject2).jdField_a_of_type_Long = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
-      ((baub)localObject2).jdField_a_of_type_Boolean = true;
-      ((baub)localObject2).jdField_e_of_type_Int = localawew.jdField_a_of_type_Awfl.jdField_a_of_type_Int;
-      ((baub)localObject2).i = localawew.jdField_a_of_type_Awfl.g;
-      localbauf = new bauf();
-      if (localawew.jdField_a_of_type_Awfl.l != 1) {
+      localObject2 = new bayk();
+      ((bayk)localObject2).jdField_b_of_type_JavaLangString = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+      ((bayk)localObject2).c = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin;
+      ((bayk)localObject2).d = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin;
+      ((bayk)localObject2).jdField_a_of_type_Int = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop;
+      ((bayk)localObject2).jdField_b_of_type_Int = 1;
+      ((bayk)localObject2).jdField_a_of_type_Long = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
+      ((bayk)localObject2).jdField_a_of_type_Boolean = true;
+      ((bayk)localObject2).jdField_e_of_type_Int = localawjf.jdField_a_of_type_Awju.jdField_a_of_type_Int;
+      ((bayk)localObject2).i = localawjf.jdField_a_of_type_Awju.g;
+      localbayo = new bayo();
+      if (localawjf.jdField_a_of_type_Awju.l != 1) {
         break label486;
       }
     }
     label486:
     for (boolean bool = true;; bool = false)
     {
-      localbauf.jdField_a_of_type_Boolean = bool;
-      ((baub)localObject2).jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject1);
-      ((baub)localObject2).jdField_a_of_type_JavaLangObject = localbauf;
-      ((baub)localObject2).jdField_a_of_type_Awfy = this.this$0;
+      localbayo.jdField_a_of_type_Boolean = bool;
+      ((bayk)localObject2).jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject1);
+      ((bayk)localObject2).jdField_a_of_type_JavaLangObject = localbayo;
+      ((bayk)localObject2).jdField_a_of_type_Awkh = this.this$0;
       localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      ((batw)localObject1).a(((baub)localObject2).c + ((baub)localObject2).jdField_a_of_type_Long);
-      ((batw)localObject1).a((baub)localObject2);
-      this.this$0.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localawew.jdField_a_of_type_Awfl.h);
-      awen.a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_JavaLangString, "doForward", "end");
+      ((bayf)localObject1).a(((bayk)localObject2).c + ((bayk)localObject2).jdField_a_of_type_Long);
+      ((bayf)localObject1).a((bayk)localObject2);
+      this.this$0.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localawjf.jdField_a_of_type_Awju.h);
+      awiw.a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_JavaLangString, "doForward", "end");
       return;
       ((MessageForPic)localObject1).thumbMsgUrl = ((CompressInfo)localObject2).jdField_e_of_type_JavaLangString;
       break;

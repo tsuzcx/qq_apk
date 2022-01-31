@@ -1,122 +1,32 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
 
 public class bkdi
-  extends BaseAdapter
+  extends Handler
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  public bkdi(TroopHWJsPlugin paramTroopHWJsPlugin) {}
   
-  public bkdi(bkdd parambkdd, Context paramContext)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private LayoutInflater a()
-  {
-    if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    }
-    return this.jdField_a_of_type_AndroidViewLayoutInflater;
-  }
-  
-  private View a()
-  {
-    return a().inflate(2131562808, null);
-  }
-  
-  private void a(bkdj parambkdj, bkdk parambkdk)
-  {
-    parambkdj = URLDrawable.getDrawable(parambkdj.b, null);
-    parambkdk.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(parambkdj);
-    parambkdk.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-    parambkdk.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_Bkdd.a != null) {
-      return this.jdField_a_of_type_Bkdd.a.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (this.jdField_a_of_type_Bkdd.a != null) {
-      return this.jdField_a_of_type_Bkdd.a.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    if (this.jdField_a_of_type_Bkdd.a != null) {
-      return this.jdField_a_of_type_Bkdd.a.size();
-    }
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    switch (paramMessage.what)
     {
-      paramViewGroup = new bkdk(this.jdField_a_of_type_Bkdd);
-      paramView = a();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370186));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369345));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365495);
-      paramView.setTag(paramViewGroup);
+    case 2: 
+    default: 
+      return;
+    case 0: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131697865, 0).a();
+      return;
+    case 1: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131697883, 0).a();
+      return;
+    case 3: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131697863, 0).a();
+      return;
     }
-    while (paramViewGroup == null)
-    {
-      return paramView;
-      paramViewGroup = (bkdk)paramView.getTag();
-    }
-    if (getCount() <= 1)
-    {
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      paramView.setBackgroundResource(2130848722);
-    }
-    bkdj localbkdj;
-    for (;;)
-    {
-      localbkdj = (bkdj)getItem(paramInt);
-      if (localbkdj != null) {
-        break;
-      }
-      return paramView;
-      if (paramInt <= 0)
-      {
-        paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        paramView.setBackgroundResource(2130848722);
-      }
-      else if (paramInt < getCount() - 1)
-      {
-        paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        paramView.setBackgroundResource(2130848721);
-      }
-      else
-      {
-        paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        paramView.setBackgroundResource(2130848720);
-      }
-    }
-    paramViewGroup.jdField_a_of_type_Bkdj = localbkdj;
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localbkdj.a);
-    if (TextUtils.isEmpty(localbkdj.b)) {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    }
-    a(localbkdj, paramViewGroup);
-    return paramView;
+    QQToast.a(BaseApplicationImpl.getContext(), 2131697864, 0).a();
   }
 }
 

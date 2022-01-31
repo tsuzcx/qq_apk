@@ -1,41 +1,16 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CSettingFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
 
 public class ahvl
-  implements ackl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ahvl(ChatHistoryC2CSettingFragment paramChatHistoryC2CSettingFragment) {}
+  public ahvl(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
   
-  public void a(Activity paramActivity)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QQToast.a(paramActivity, 2, 2131691565, 0).b(this.a.getActivity().getTitleBarHeight());
-    paramActivity.setResult(-1);
-    paramActivity.finish();
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramInt == 0) {
-      azmj.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 2, 0, "", "", "", "");
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    azmj.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 2, 0, "", "", "", "");
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramInt == 0) {
-      azmj.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 2, 0, "", "", "", "");
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    azmj.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 2, 0, "", "", "", "");
+    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.invalidate();
   }
 }
 

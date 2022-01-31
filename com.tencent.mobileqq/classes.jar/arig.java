@@ -1,15 +1,24 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.List;
 
 class arig
-  implements bhqq
+  implements arfs
 {
-  arig(arif paramarif) {}
+  arig(arif paramarif, BaseActivity paramBaseActivity) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public arki a()
   {
-    this.a.a.f();
-    return true;
+    Object localObject2 = null;
+    List localList = this.jdField_a_of_type_Arif.a();
+    Object localObject1 = localObject2;
+    if (localList != null)
+    {
+      localObject1 = localObject2;
+      if (localList.size() > 0) {
+        localObject1 = new arkz(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localList, arif.a(this.jdField_a_of_type_Arif));
+      }
+    }
+    return localObject1;
   }
 }
 

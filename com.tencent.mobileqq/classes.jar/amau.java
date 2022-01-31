@@ -1,43 +1,68 @@
-import android.text.TextUtils;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AccountNotMatchException;
 
 public class amau
-  extends alko
 {
-  public amau(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  private alvn jdField_a_of_type_Alvn = new amaw(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new amav(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  protected Class<? extends alkr> observerClass()
+  public amau(String paramString)
   {
-    return amav.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null)) {
-      notifyUI(1, false, null);
-    }
-    String str;
-    do
+    try
     {
+      this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(paramString));
+      paramString = new IntentFilter();
+      paramString.addAction("com.tencent.mobileqq.addLbsObserver");
+      paramString.addAction("com.tencent.mobileqq.removeLbsObserver");
+      paramString.addAction("com.tencent.mobileqq.getStreetViewUrl");
+      paramString.addAction("com.tencent.mobileqq.unregisterReceiver");
+      paramString.addAction("com.tencent.mobileqq.getLbsShareSearch");
+      paramString.addAction("com.tencent.mobileqq.getLbsShareShop");
+      paramString.addAction("com.tencent.mobileqq.getShareShopDetail");
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQMapActivityProxy", 2, "QQMapActivityProxy-create, registerReceiver:" + hashCode() + ", " + this.jdField_a_of_type_AndroidContentBroadcastReceiver.hashCode());
+      }
       return;
-      str = paramToServiceMsg.getServiceCmd();
-      if (TextUtils.isEmpty(str))
+    }
+    catch (AccountNotMatchException paramString)
+    {
+      for (;;)
       {
-        notifyUI(1, false, null);
-        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("QQMapActivityProxy", 2, "AccountNotMatchException " + paramString.toString());
+        }
       }
-      if ((str.compareTo("VipPayLogicServer.getCommPayInfo ") == 0) && (QLog.isColorLevel())) {
-        QLog.i("VIPRecommendPayHandler", 2, "req---" + paramToServiceMsg + ",res----" + paramFromServiceMsg + ",data-----" + paramObject);
-      }
-    } while (str.compareTo("VipPayLogicServer.getCommPayInfo ") != 0);
-    notifyUI(1, true, paramObject);
-    bdcs.a(this.app.getCurrentAccountUin() + "_" + "VIPRecommendPayFile.txt", paramObject);
+    }
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQMapActivityProxy", 2, "onDestory,  hashCode=" + hashCode());
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alvn);
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.w("QQMapActivityProxy", 2, "onDestory, mBroadcastReceiver throw an exception when receive UNREGISTER_RECEIVER : " + localException.toString());
+    }
   }
 }
 

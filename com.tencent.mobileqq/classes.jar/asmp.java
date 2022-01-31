@@ -1,10 +1,18 @@
-import android.net.Uri;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
 
-public abstract interface asmp
+public class asmp
+  implements View.OnTouchListener
 {
-  public abstract void a(Uri paramUri);
+  public asmp(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  public abstract void a(String paramString1, String paramString2, long paramLong);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return this.a.a.onTouchEvent(paramMotionEvent);
+  }
 }
 
 

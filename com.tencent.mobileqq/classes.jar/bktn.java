@@ -1,17 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
-
 public class bktn
-  extends blpe
+  extends bktl
 {
-  public bktn(AEMaterialProviderView paramAEMaterialProviderView) {}
-  
-  public void a()
+  public int a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEMaterialProviderView", 2, "material list updated!");
-    }
-    this.a.a(true);
+    return paramInt * -1;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return paramInt < 0;
   }
 }
 

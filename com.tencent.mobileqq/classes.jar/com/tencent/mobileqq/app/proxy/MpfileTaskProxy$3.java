@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.proxy;
 
-import amjg;
-import amji;
+import amnv;
+import amnx;
 
 public class MpfileTaskProxy$3
   implements Runnable
 {
-  public MpfileTaskProxy$3(amjg paramamjg, String paramString1, String paramString2, String[] paramArrayOfString, amji paramamji) {}
+  public MpfileTaskProxy$3(amnv paramamnv, String paramString1, String paramString2, String[] paramArrayOfString, amnx paramamnx) {}
   
   public void run()
   {
-    this.this$0.a.a(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ArrayOfJavaLangString, 2, this.jdField_a_of_type_Amji);
+    this.this$0.a.a(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ArrayOfJavaLangString, 2, this.jdField_a_of_type_Amnx);
   }
 }
 

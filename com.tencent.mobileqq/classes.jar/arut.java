@@ -1,82 +1,169 @@
-import android.content.Intent;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.View;
+import android.os.Handler;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.widget.QFileSendBarManager.5;
+import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
-class arut
-  implements View.OnClickListener
+public class arut
+  extends arus
 {
-  arut(arum paramarum, String paramString, aruy paramaruy) {}
+  private int jdField_a_of_type_Int;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aruu(this);
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bety jdField_a_of_type_Bety;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public arut(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
   {
-    azmj.b(this.jdField_a_of_type_Arum.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800514A", "0X800514A", 0, 0, "", "", "", "");
-    paramView = this.jdField_a_of_type_Arum.jdField_a_of_type_AndroidOsBundle.getParcelable("FORWARD_MSG_FOR_PIC");
-    if ((paramView instanceof MessageForPic))
+    super(paramQQAppInterface, paramContext, paramQFileSendBottomView);
+    d();
+  }
+  
+  private void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Bety != null) {
+      g();
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardBaseOption", 2, "getImageEditListener from MessageForPic");
+      if (!this.jdField_a_of_type_Bety.isShowing()) {
+        this.jdField_a_of_type_Bety.show();
       }
-      paramView = (MessageForPic)paramView;
-      File localFile = new File(paramView.path);
-      if (((localFile == null) || (!localFile.exists()) || (localFile.length() != paramView.size)) || (paramView != null)) {
-        arum.a(this.jdField_a_of_type_Arum, paramView, this.jdField_a_of_type_JavaLangString);
-      }
+      return;
+      this.jdField_a_of_type_Bety = new bety(SplashActivity.sTopActivity, SplashActivity.sTopActivity.getResources().getDimensionPixelSize(2131298914));
+      this.jdField_a_of_type_Bety.setCancelable(false);
+      this.jdField_a_of_type_Bety.a(alud.a(2131714211));
+      this.jdField_a_of_type_Bety.show();
+    }
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131376385));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131371216));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+  }
+  
+  private void e()
+  {
+    if (!AppNetConnInfo.isNetSupport())
+    {
+      arri.a(2131694702);
+      return;
+    }
+    if ((arrr.a()) && (arbs.c() > arbp.a()))
+    {
+      arrr.a(true, this.jdField_a_of_type_AndroidContentContext, new aruv(this), this.jdField_b_of_type_Int);
+      return;
+    }
+    c();
+  }
+  
+  private void f()
+  {
+    if (bcnt.a(this.jdField_a_of_type_AndroidContentContext) == 0)
+    {
+      bcmp.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(2131698042));
+      c();
     }
     do
     {
-      do
-      {
-        return;
-        if (!(paramView instanceof AIOImageData)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardOption.ForwardBaseOption", 2, "getImageEditListener from AIOImageData");
-        }
-        paramView = (AIOImageData)paramView;
-        if ((paramView.a(4)) && (paramView.a(4) != null))
-        {
-          arum.a(this.jdField_a_of_type_Arum, paramView, this.jdField_a_of_type_JavaLangString);
-          return;
-        }
-        if ((paramView.a(2)) && (paramView.a(2) != null))
-        {
-          arum.a(this.jdField_a_of_type_Arum, paramView, this.jdField_a_of_type_JavaLangString);
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: image does not exist");
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardBaseOption", 2, "getImageEditListener from other");
+      if (!arrr.a()) {
+        break;
       }
-      paramView = this.jdField_a_of_type_Arum.jdField_a_of_type_AndroidOsBundle.getString("forward_filepath");
-      if (paramView != null)
-      {
-        arum.a(this.jdField_a_of_type_Arum, paramView, this.jdField_a_of_type_JavaLangString);
-        return;
+    } while (!bezm.a((Activity)this.jdField_a_of_type_AndroidContentContext, 2, new aruw(this)));
+    Object localObject = new arux(this);
+    String str = this.jdField_a_of_type_AndroidContentContext.getString(2131697830);
+    localObject = bdgm.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131698039), str, 2131690648, 2131698230, (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
+    if ((aoul.c().b.jdField_a_of_type_Boolean) && (!beav.a().b())) {
+      ((bdjz)localObject).setMessageWithoutAutoLink(aoul.c().b.a(this.jdField_a_of_type_AndroidContentContext, str));
+    }
+    ((bdjz)localObject).show();
+    return;
+    c();
+  }
+  
+  private void g()
+  {
+    try
+    {
+      if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+        this.jdField_a_of_type_Bety.cancel();
       }
-      if (this.jdField_a_of_type_Arum.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("key_flag_from_plugin", false))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: from QZone");
-        }
-        this.jdField_a_of_type_Arum.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_QZONE_SHARE", true);
-        arum.a(this.jdField_a_of_type_Arum, this.jdField_a_of_type_Arum.b, this.jdField_a_of_type_JavaLangString);
-        return;
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void a()
+  {
+    String str = this.jdField_a_of_type_AndroidContentContext.getString(2131692546) + this.jdField_a_of_type_AndroidContentContext.getString(2131692725) + arbs.b() + this.jdField_a_of_type_AndroidContentContext.getString(2131692726);
+    long l = arbs.d();
+    Object localObject1 = "";
+    if (l > 0L) {
+      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131692544) + arso.a(l);
+    }
+    Object localObject2 = localObject1;
+    if (arbs.e() > 0L)
+    {
+      localObject2 = localObject1;
+      if (!arrr.a(this.jdField_a_of_type_AndroidContentContext)) {
+        localObject2 = (String)localObject1 + this.jdField_a_of_type_AndroidContentContext.getString(2131692545) + arso.a(arbs.e());
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: Unknown source");
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+    localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (arbs.b() > 0L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ((TextView)localObject1).setEnabled(bool);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
+      return;
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("qfile_search_param_exparams_busi_type");
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("qfile_search_param_ex_params_target_uin");
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("qfile_search_param_exparams_peer_type", -1);
+      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("qfile_search_param_exparams_send_uin");
+    }
+  }
+  
+  public void b()
+  {
+    super.b();
+  }
+  
+  public void c()
+  {
+    a(2131695302);
+    new Handler().postDelayed(new QFileSendBarManager.5(this), 100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arut
  * JD-Core Version:    0.7.0.1
  */

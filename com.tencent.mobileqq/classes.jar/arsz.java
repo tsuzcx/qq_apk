@@ -1,14 +1,16 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
+import android.content.Context;
+import android.os.AsyncTask;
 
-public abstract interface arsz
+final class arsz
+  extends da
 {
-  public abstract Activity a();
+  arsz(Context paramContext) {}
   
-  public abstract Bundle a();
-  
-  public abstract FragmentManager a();
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
+  {
+    super.a(paramAsyncTask, paramInt);
+    cx.a(this.a, paramAsyncTask, paramInt, new arta(this));
+  }
 }
 
 

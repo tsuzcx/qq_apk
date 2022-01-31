@@ -1,8 +1,13 @@
-public abstract class alcy
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+
+public class alcy
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public alcy(ApolloGameActivity paramApolloGameActivity) {}
   
-  public abstract void a(int paramInt, String paramString);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

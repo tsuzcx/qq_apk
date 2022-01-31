@@ -6,9 +6,9 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class qao
   extends pxl
 {
-  public qao(Context paramContext, bcws parambcws, rqj paramrqj)
+  public qao(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()

@@ -23,7 +23,7 @@ class AVActivity$3
       return;
       l = AudioHelper.b();
       localView = this.this$0.a(l);
-      localRelativeLayout = (RelativeLayout)this.this$0.findViewById(2131372663);
+      localRelativeLayout = (RelativeLayout)this.this$0.findViewById(2131372689);
     } while ((localView == null) || (localRelativeLayout.getVisibility() == 0));
     QLog.w(this.this$0.b, 1, "qav_UserGuide_for_more, 计划显示, seq[" + l + "]");
     localView.setAlpha(0.01F);

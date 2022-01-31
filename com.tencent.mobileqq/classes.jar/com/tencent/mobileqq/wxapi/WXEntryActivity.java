@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import bjnt;
+import bjsa;
 import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
 import com.tencent.mobileqq.activity.qwallet.WXMiniProgramHelper;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
@@ -41,7 +41,7 @@ public class WXEntryActivity
     {
       try
       {
-        bjnt.a().a(this, getIntent());
+        bjsa.a().a(this, getIntent());
       }
       catch (Throwable paramBundle)
       {

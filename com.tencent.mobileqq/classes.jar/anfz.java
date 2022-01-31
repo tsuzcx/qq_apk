@@ -1,18 +1,39 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+
 class anfz
-  implements yhz
+  extends Handler
 {
-  anfz(anfv paramanfv, long paramLong) {}
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public anfz(anfy paramanfy, Looper paramLooper)
   {
-    anfv localanfv = this.jdField_a_of_type_Anfv;
-    long l = this.jdField_a_of_type_Long;
-    if (paramBoolean1) {}
-    for (int i = 1;; i = 0)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      localanfv.a(l, paramBoolean1, paramString, i);
-      return;
     }
+    do
+    {
+      return;
+      anfy.a(this.a);
+      return;
+      if (anfy.a(this.a))
+      {
+        anfy.a(this.a, false);
+        anet.a();
+      }
+      try
+      {
+        anfy.b(this.a);
+        return;
+      }
+      catch (Throwable paramMessage) {}
+    } while (!QLog.isColorLevel());
+    QLog.i("QRSession", 2, paramMessage.getMessage(), paramMessage);
   }
 }
 

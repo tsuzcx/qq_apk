@@ -1,25 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.widget.ImageAnimationView;
-import com.tencent.widget.Gallery;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
-public class bbdr
-  implements Animation.AnimationListener
+public abstract class bbdr
+  extends RecyclerView.ViewHolder
 {
-  public bbdr(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public int a;
+  public SeekBar a;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  public RelativeLayout b;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  ImageView d;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public bbdr(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setVisibility(4);
-    this.a.finish();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
+    super(paramView);
   }
 }
 

@@ -1,9 +1,13 @@
-class wqa
-  implements bhqf
+public abstract interface wqa
+  extends wow<wpn>
 {
-  wqa(wps paramwps) {}
+  public abstract void a(String paramString);
   
-  public void onDismiss() {}
+  public abstract void a(wqp paramwqp);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void f();
 }
 
 

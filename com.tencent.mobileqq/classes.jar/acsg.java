@@ -1,20 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.43.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class acsg
-  extends MqqHandler
+  extends adtk
 {
-  public acsg(FontSettingActivity paramFontSettingActivity) {}
+  public acsg(Conversation paramConversation) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a()
   {
-    if (16711697 == paramMessage.what)
-    {
-      alnq.a(this.a, FontSettingActivity.a(this.a), false);
-      this.a.c = true;
-      this.a.a.notifyDataSetChanged();
-    }
+    ThreadManagerV2.getUIHandlerV2().post(new Conversation.43.1(this));
   }
 }
 

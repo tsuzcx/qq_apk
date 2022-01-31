@@ -1,13 +1,29 @@
-public class aexn
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import java.util.WeakHashMap;
+
+class aexn
+  implements OnCompositionLoadedListener
 {
-  public int a;
-  TItemViewHolder jdField_a_of_type_JavaLangObject;
+  aexn(aexk paramaexk) {}
   
-  public aexn(int paramInt, TItemViewHolder paramTItemViewHolder)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    this.jdField_a_of_type_Int = paramTItemViewHolder;
-    Object localObject;
-    this.jdField_a_of_type_JavaLangObject = localObject;
+    if (aexk.a(this.a) == null) {
+      return;
+    }
+    if (paramLottieComposition != null)
+    {
+      aexk.a(this.a).setComposition(paramLottieComposition);
+      aexk.a(this.a).loop(false);
+      aexk.a(this.a).setVisibility(0);
+      aexk.a(this.a).playAnimation();
+      return;
+    }
+    aexk.a(this.a).clear();
+    this.a.a();
   }
 }
 

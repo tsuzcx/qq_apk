@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import java.io.Serializable;
 
 public class TroopAioKeywordTipInfo
-  extends awbv
+  extends awge
   implements Serializable
 {
   public String icon;
-  @awdj
+  @awhs
   public int ruleId;
   public String summary;
   public String title;

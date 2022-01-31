@@ -1,37 +1,18 @@
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import android.graphics.drawable.Drawable;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.IDrawableLoadedCallBack;
+import com.tencent.qqmini.sdk.minigame.ui.LoadingUI;
 
 public class bgzz
-  implements bghv<String>
+  implements MiniAppProxy.IDrawableLoadedCallBack
 {
-  private int jdField_a_of_type_Int = -1;
-  private bgho jdField_a_of_type_Bgho;
+  public bgzz(LoadingUI paramLoadingUI) {}
   
-  public static bgzz a(bgho parambgho)
+  public void onLoadSuccessed(Drawable paramDrawable)
   {
-    bgzz localbgzz = new bgzz();
-    localbgzz.jdField_a_of_type_Bgho = parambgho;
-    return localbgzz;
-  }
-  
-  public String a()
-  {
-    this.jdField_a_of_type_Int = 1;
-    return (String)this.jdField_a_of_type_Bgho.a(this);
-  }
-  
-  public String a(bghl parambghl)
-  {
-    parambghl = parambghl.a();
-    if (!(parambghl instanceof AppBrandPageContainer)) {
-      return null;
-    }
-    parambghl = (AppBrandPageContainer)parambghl;
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      return "";
-    }
-    return parambghl.b();
+    LoadingUI.a(this.a).setVisibility(0);
+    LoadingUI.a(this.a).setVisibility(8);
   }
 }
 

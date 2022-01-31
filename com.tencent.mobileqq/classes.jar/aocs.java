@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.widget.RoundImageView;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class aocs
+final class aocs
+  implements DialogInterface.OnClickListener
 {
-  public aoxp a;
-  public RoundImageView a;
+  aocs(bdjz parambdjz, Context paramContext) {}
   
-  public aocs(aoco paramaoco, RoundImageView paramRoundImageView, aoxp paramaoxp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = paramRoundImageView;
-    this.jdField_a_of_type_Aoxp = paramaoxp;
+    if (this.jdField_a_of_type_Bdjz.isShowing()) {
+      this.jdField_a_of_type_Bdjz.dismiss();
+    }
+    aofm.a(this.jdField_a_of_type_AndroidContentContext, true);
   }
 }
 

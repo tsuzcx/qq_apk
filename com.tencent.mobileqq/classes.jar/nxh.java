@@ -2,7 +2,7 @@ import android.view.animation.Animation;
 import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
 
 class nxh
-  extends bhnr
+  extends bhry
 {
   nxh(nxg paramnxg) {}
   

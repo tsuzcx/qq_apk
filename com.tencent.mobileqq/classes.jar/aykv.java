@@ -1,78 +1,26 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
 
 public class aykv
-  extends ayih
+  implements ruy
 {
-  TroopMemberInfo jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo;
-  String jdField_a_of_type_JavaLangString;
+  public aykv(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
   
-  public aykv(QQAppInterface paramQQAppInterface, int paramInt, TroopMemberInfo paramTroopMemberInfo, String paramString)
+  public void a(String paramString)
   {
-    super(paramQQAppInterface, paramInt, paramTroopMemberInfo);
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo = paramTroopMemberInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(View paramView)
-  {
-    Context localContext = paramView.getContext();
-    if ((paramView.getId() == 2131375665) && (this.b == 23)) {
-      TroopAddFrdsInnerFrame.a(localContext, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo, this.jdField_a_of_type_JavaLangString, false);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      FragmentActivity localFragmentActivity = this.a.getActivity();
+      if ((localFragmentActivity instanceof ActiveEntitySearchActivity))
+      {
+        ((ActiveEntitySearchActivity)localFragmentActivity).b(paramString);
+        if (this.a.a != null) {
+          ayvm.a("sub_result", "clk_hot", new String[] { paramString, ayvm.a(this.a.a) });
+        }
+      }
     }
-    while (this.b != 23) {
-      return;
-    }
-    Intent localIntent = new Intent(localContext, FriendProfileCardActivity.class);
-    localIntent.putExtra("troopUin", this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopuin);
-    localIntent.putExtra("memberUin", this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin);
-    localIntent.putExtra("fromFlag", 1);
-    localIntent.putExtra("selfSet_leftViewText", paramView.getContext().getString(2131721064));
-    localIntent.putExtra("custom_leftbackbutton_name", paramView.getContext().getString(2131690623));
-    awnk.a(localContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localIntent, 9);
-  }
-  
-  public CharSequence c()
-  {
-    aloz localaloz = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    if (localaloz.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin)) {
-      return alpo.a(2131715635);
-    }
-    if (localaloz.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin, false)) {
-      return alpo.a(2131715636);
-    }
-    return null;
-  }
-  
-  public String c()
-  {
-    return bdbt.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopuin, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin);
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public String d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.commonFrdCnt <= 0) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.commonFrdCnt + alpo.a(2131715637);
-  }
-  
-  public int f()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.commonFrdCnt < 0) {
-      return 0;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.commonFrdCnt;
   }
 }
 

@@ -2,11 +2,11 @@ package com.tencent.mobileqq.app.automator.step;
 
 import QC.Hamlet;
 import QC.UniBusinessItem;
-import aloz;
-import alxl;
-import amct;
+import alto;
+import amca;
+import amhi;
 import android.text.TextUtils;
-import bdsk;
+import bdwt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -47,15 +47,15 @@ public class ChatBackgroundAuth
     return null;
   }
   
-  private ArrayList<Hamlet> a(HashMap<String, Integer> paramHashMap1, HashMap<String, Integer> paramHashMap2, aloz paramaloz, int paramInt1, int paramInt2)
+  private ArrayList<Hamlet> a(HashMap<String, Integer> paramHashMap1, HashMap<String, Integer> paramHashMap2, alto paramalto, int paramInt1, int paramInt2)
   {
     ArrayList localArrayList = new ArrayList();
-    a(paramaloz, paramHashMap1, localArrayList, paramInt1);
-    a(paramaloz, paramHashMap2, localArrayList, paramInt2);
+    a(paramalto, paramHashMap1, localArrayList, paramInt1);
+    a(paramalto, paramHashMap2, localArrayList, paramInt2);
     return localArrayList;
   }
   
-  private void a(aloz paramaloz, HashMap<String, Integer> paramHashMap, ArrayList<Hamlet> paramArrayList, int paramInt)
+  private void a(alto paramalto, HashMap<String, Integer> paramHashMap, ArrayList<Hamlet> paramArrayList, int paramInt)
   {
     Iterator localIterator = paramHashMap.keySet().iterator();
     Object localObject3;
@@ -102,7 +102,7 @@ public class ChatBackgroundAuth
       {
         ((Hamlet)localObject1).itemlist.add(localUniBusinessItem);
         break;
-        if (paramaloz.b((String)localObject1))
+        if (paramalto.b((String)localObject1))
         {
           i = 2;
           break label115;
@@ -143,9 +143,9 @@ public class ChatBackgroundAuth
     Object localObject = (ChatBackgroundManager)this.a.app.getManager(63);
     HashMap localHashMap = ((ChatBackgroundManager)localObject).a();
     localObject = ((ChatBackgroundManager)localObject).c();
-    ((alxl)this.a.app.a(13)).a(a(localHashMap, (HashMap)localObject, (aloz)this.a.app.getManager(51), 8, 35), new amct(this.a.app), true);
-    if (!bdsk.a.a(this.a.app, "namePlate_UrlConfig")) {
-      bdsk.a.download(null, "namePlate_UrlConfig", null, false);
+    ((amca)this.a.app.a(13)).a(a(localHashMap, (HashMap)localObject, (alto)this.a.app.getManager(51), 8, 35), new amhi(this.a.app), true);
+    if (!bdwt.a.a(this.a.app, "namePlate_UrlConfig")) {
+      bdwt.a.download(null, "namePlate_UrlConfig", null, false);
     }
     return 7;
   }

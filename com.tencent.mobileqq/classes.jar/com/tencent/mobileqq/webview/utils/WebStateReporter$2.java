@@ -2,23 +2,23 @@ package com.tencent.mobileqq.webview.utils;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import azlj;
-import bega;
+import azps;
+import bekj;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
 public class WebStateReporter$2
   implements Runnable
 {
-  public WebStateReporter$2(bega parambega, String paramString, long paramLong, int paramInt) {}
+  public WebStateReporter$2(bekj parambekj, String paramString, long paramLong, int paramInt) {}
   
   public void run()
   {
     int i;
-    if (bega.a.containsKey(this.jdField_a_of_type_JavaLangString))
+    if (bekj.a.containsKey(this.jdField_a_of_type_JavaLangString))
     {
-      i = ((Integer)bega.a.get(this.jdField_a_of_type_JavaLangString)).intValue();
-      if ((1 != i) && (this.jdField_a_of_type_Long % i != bega.c)) {
+      i = ((Integer)bekj.a.get(this.jdField_a_of_type_JavaLangString)).intValue();
+      if ((1 != i) && (this.jdField_a_of_type_Long % i != bekj.c)) {
         break label63;
       }
       i = 1;
@@ -75,7 +75,7 @@ public class WebStateReporter$2
       ((StringBuilder)localObject).append(str1).append("|");
       ((StringBuilder)localObject).append(str1).append("|");
       ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-      azlj.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
+      azps.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
       return;
     }
   }

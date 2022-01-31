@@ -15,14 +15,14 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import aogj;
-import beje;
-import bhou;
+import aoks;
+import benn;
+import bhtb;
 
 public class BubbleVideoView
   extends BubbleImageView
 {
-  private static beje a;
+  private static benn a;
   private Bitmap b;
   private boolean c;
   
@@ -43,14 +43,14 @@ public class BubbleVideoView
   
   private void b(Canvas paramCanvas)
   {
-    if (jdField_a_of_type_Beje != null) {
-      jdField_a_of_type_Beje.a(this, paramCanvas);
+    if (jdField_a_of_type_Benn != null) {
+      jdField_a_of_type_Benn.a(this, paramCanvas);
     }
   }
   
-  public static void setDrawListener(beje parambeje)
+  public static void setDrawListener(benn parambenn)
   {
-    jdField_a_of_type_Beje = parambeje;
+    jdField_a_of_type_Benn = parambenn;
   }
   
   protected void a()
@@ -124,7 +124,7 @@ public class BubbleVideoView
   {
     this.e = f;
     int i;
-    if (bhou.e())
+    if (bhtb.e())
     {
       this.jdField_a_of_type_Int = 1;
       a();
@@ -132,7 +132,7 @@ public class BubbleVideoView
       if (Build.VERSION.SDK_INT >= 28)
       {
         this.g = true;
-        Object localObject = (String)aogj.a().a(462);
+        Object localObject = (String)aoks.a().a(462);
         if ((localObject != null) && (((String)localObject).length() > 0))
         {
           localObject = ((String)localObject).split("\\|");

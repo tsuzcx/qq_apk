@@ -1,77 +1,32 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserMiniAIOHelper.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
 
-public class arbk
-  implements Observer
+class arbk
+  extends aqru
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  arbk(arbj paramarbj) {}
   
-  public arbk(QQAppInterface paramQQAppInterface, String paramString)
+  protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("PreviewStep_1", 4, "SUCCESS OnFileWeiYunPreview harcode[" + arbp.a + "]");
     }
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this);
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this);
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this);
-    }
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
+    if (arbp.a)
     {
-      do
+      paramString4 = "183.61.37.13";
+      paramString5 = "443";
+      if (this.a.jdField_a_of_type_Aqlx != null) {}
+    }
+    else
+    {
+      if ((paramString4 != null) && (paramString4.length() > 0)) {}
+      for (;;)
       {
-        do
-        {
-          return;
-        } while ((!(paramObject instanceof MessageRecord)) || (!(paramObject instanceof ChatMessage)));
-        paramObservable = (MessageRecord)paramObject;
-      } while (!QLog.isColorLevel());
-      QLog.d("FileBrowserMiniAIOHelper<QFile>", 2, "recv: msgseq[" + paramObservable.msgseq + "] uin[" + paramObservable.frienduin + "]");
-    } while (!paramObservable.frienduin.equals(this.jdField_a_of_type_JavaLangString));
-    ThreadManagerV2.getUIHandlerV2().post(new FileBrowserMiniAIOHelper.1(this));
+        paramString5 = String.valueOf(paramInt2);
+        break;
+        paramString4 = paramString5;
+      }
+    }
+    this.a.jdField_a_of_type_Aqlx.a(paramBoolean, paramString4, paramString5, paramInt1, paramString1, paramString2, paramString3, this.a.jdField_a_of_type_JavaLangString, null);
   }
 }
 

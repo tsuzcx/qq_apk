@@ -1,11 +1,12 @@
-public class bawt
-  extends bawz
+class bawt
 {
-  public String a;
+  int jdField_a_of_type_Int;
+  String[] jdField_a_of_type_ArrayOfJavaLangString;
   
-  public String toString()
+  bawt(int paramInt, String[] paramArrayOfString)
   {
-    return this.a;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

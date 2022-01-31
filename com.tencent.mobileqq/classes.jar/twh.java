@@ -1,14 +1,40 @@
-import com.tencent.biz.qqcircle.fragments.QCirclePersonalBaseBottomFragment;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.Response;
 
-public class twh
-  implements ydr<trl>
+class twh
+  implements Callback
 {
-  public twh(QCirclePersonalBaseBottomFragment paramQCirclePersonalBaseBottomFragment) {}
+  twh(twe paramtwe, tvy paramtvy, boolean paramBoolean, String paramString) {}
   
-  public void a(yeb paramyeb, trl paramtrl)
+  public void onFailure(Call paramCall, IOException paramIOException)
   {
-    if (paramyeb.e()) {
-      this.a.b();
+    QLog.d(twe.jdField_a_of_type_JavaLangString, 1, "checkResource onFailure");
+    this.jdField_a_of_type_Tvy.a(false, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onResponse(Call paramCall, Response paramResponse)
+  {
+    try
+    {
+      paramCall = paramResponse.headers().get("X-COS-META-MD5");
+      if ((TextUtils.isEmpty(paramCall)) || (this.jdField_a_of_type_JavaLangString.equals(paramCall)))
+      {
+        QLog.d(twe.jdField_a_of_type_JavaLangString, 1, "checkResource is up to date");
+        this.jdField_a_of_type_Tvy.a(true, this.jdField_a_of_type_Boolean, false, paramCall);
+        return;
+      }
+      QLog.d(twe.jdField_a_of_type_JavaLangString, 1, "checkResource need update");
+      this.jdField_a_of_type_Tvy.a(true, this.jdField_a_of_type_Boolean, true, paramCall);
+      return;
+    }
+    catch (Throwable paramCall)
+    {
+      paramCall.printStackTrace();
     }
   }
 }

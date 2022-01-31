@@ -1,18 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-
-final class aqdg
-  implements DialogInterface.OnClickListener
+public class aqdg
 {
-  aqdg(BaseActivity paramBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    String str = aqcz.a(this.a.app);
-    aqcq.b(this.a, str);
-    paramDialogInterface.dismiss();
-  }
+  public int a;
+  public long a;
+  public aqcx a;
+  public String a;
 }
 
 

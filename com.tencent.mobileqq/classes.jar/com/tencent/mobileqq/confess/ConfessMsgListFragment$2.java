@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.confess;
 
-import aljq;
+import alof;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -11,7 +11,7 @@ class ConfessMsgListFragment$2
   
   public void run()
   {
-    this.this$0.a.a().d(aljq.aN, 1032);
+    this.this$0.a.a().d(alof.aN, 1032);
   }
 }
 

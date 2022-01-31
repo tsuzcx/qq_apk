@@ -1,34 +1,59 @@
-import NS_USER_ACTION_REPORT.UserActionReport;
-import NS_USER_ACTION_REPORT.UserActionReportReq;
-import NS_USER_ACTION_REPORT.UserCommReport;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import java.util.Vector;
 
-public class bjgg
-  extends QzoneExternalRequest
+class bjgg
+  implements Downloader.DownloadListener
 {
-  private final JceStruct a;
+  bjgg(bjgf parambjgf, bjgh parambjgh) {}
   
-  public bjgg(UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
+  public void onDownloadCanceled(String paramString)
   {
-    this.a = new UserActionReportReq(1, paramUserCommReport, paramArrayList);
-    this.needCompress = false;
+    bjgf.a(this.jdField_a_of_type_Bjgf, false);
+    if (bjgf.a(this.jdField_a_of_type_Bjgf).size() > 0)
+    {
+      bjgh localbjgh = (bjgh)bjgf.a(this.jdField_a_of_type_Bjgf).get(0);
+      bjgf.a(this.jdField_a_of_type_Bjgf).remove(0);
+      bjgf.a(this.jdField_a_of_type_Bjgf, localbjgh);
+    }
+    if (this.jdField_a_of_type_Bjgh.a != null) {
+      this.jdField_a_of_type_Bjgh.a.onDownloadCanceled(paramString);
+    }
   }
   
-  public String getCmdString()
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    return "MobileReport.UserActionReport";
+    bjgf.a(this.jdField_a_of_type_Bjgf, false);
+    if (bjgf.a(this.jdField_a_of_type_Bjgf).size() > 0)
+    {
+      bjgh localbjgh = (bjgh)bjgf.a(this.jdField_a_of_type_Bjgf).get(0);
+      bjgf.a(this.jdField_a_of_type_Bjgf).remove(0);
+      bjgf.a(this.jdField_a_of_type_Bjgf, localbjgh);
+    }
+    if (this.jdField_a_of_type_Bjgh.a != null) {
+      this.jdField_a_of_type_Bjgh.a.onDownloadFailed(paramString, paramDownloadResult);
+    }
   }
   
-  public JceStruct getReq()
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
   {
-    return this.a;
+    if (this.jdField_a_of_type_Bjgh.a != null) {
+      this.jdField_a_of_type_Bjgh.a.onDownloadProgress(paramString, paramLong, paramFloat);
+    }
   }
   
-  public String uniKey()
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    return "UserActionReport";
+    bjgf.a(this.jdField_a_of_type_Bjgf, false);
+    if (bjgf.a(this.jdField_a_of_type_Bjgf).size() > 0)
+    {
+      bjgh localbjgh = (bjgh)bjgf.a(this.jdField_a_of_type_Bjgf).get(0);
+      bjgf.a(this.jdField_a_of_type_Bjgf).remove(0);
+      bjgf.a(this.jdField_a_of_type_Bjgf, localbjgh);
+    }
+    if (this.jdField_a_of_type_Bjgh.a != null) {
+      this.jdField_a_of_type_Bjgh.a.onDownloadSucceed(paramString, paramDownloadResult);
+    }
   }
 }
 

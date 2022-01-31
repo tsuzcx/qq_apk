@@ -3,13 +3,13 @@ package com.tencent.mobileqq.extendfriend.fragment;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aqad;
+import aqem;
 import com.tencent.mobileqq.data.Card;
 
 public class ExtendFriendProfileEditFragment$ExtendFriendInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<ExtendFriendInfo> CREATOR = new aqad();
+  public static final Parcelable.Creator<ExtendFriendInfo> CREATOR = new aqem();
   public int a;
   public long a;
   public String a;

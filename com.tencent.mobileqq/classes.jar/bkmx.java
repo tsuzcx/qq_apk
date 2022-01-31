@@ -1,15 +1,15 @@
-import android.content.Intent;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface bkmx
+class bkmx
+  implements DialogInterface.OnClickListener
 {
-  public abstract Intent a(View paramView, int paramInt);
+  bkmx(bkms parambkms) {}
   
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract void b(View paramView, int paramInt);
-  
-  public abstract void c(View paramView, int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.a(2);
+  }
 }
 
 

@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
 import com.tencent.widget.AbsListView;
 
 public class rpp
-  implements bhpo
+  implements bhtv
 {
   public rpp(DailyTitleBarSwitcher paramDailyTitleBarSwitcher) {}
   

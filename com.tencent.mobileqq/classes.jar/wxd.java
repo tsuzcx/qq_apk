@@ -1,80 +1,135 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class wxd
-  extends SimpleObserver<xgs>
+public class wxd
+  implements wxc
 {
-  wxd(wxb paramwxb, xgs paramxgs) {}
+  public static final wxd a;
+  public int a;
+  private int b = -1;
   
-  public void a(xgs paramxgs)
+  static
   {
-    super.onNext(paramxgs);
-    this.jdField_a_of_type_Wxb.a(5);
-    paramxgs = this.jdField_a_of_type_Xgs.a;
-    wsv.b("EditVideoSave", "publishParam = " + paramxgs);
-    Intent localIntent;
-    int j;
-    int i;
-    if (this.jdField_a_of_type_Wxb.jdField_a_of_type_Wxp.getActivity() != null)
+    jdField_a_of_type_Wxd = new wxd();
+  }
+  
+  private wxd()
+  {
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  public static wxd a()
+  {
+    return jdField_a_of_type_Wxd;
+  }
+  
+  private void a(int paramInt, String paramString1, String paramString2)
+  {
+    switch (paramInt)
     {
-      localIntent = this.jdField_a_of_type_Wxb.jdField_a_of_type_Wxp.getActivity().getIntent();
-      if (localIntent == null) {
-        break label331;
-      }
-      j = localIntent.getIntExtra("sv_total_frame_count", 0);
-      i = localIntent.getIntExtra("sv_total_record_time", 0);
+    default: 
+      return;
+    case 2: 
+      QLog.d(paramString1, 2, paramString2);
+      return;
+    case 3: 
+      QLog.d(paramString1, 2, paramString2);
+      return;
+    case 4: 
+      QLog.i(paramString1, 2, paramString2);
+      return;
+    case 5: 
+      QLog.e(paramString1, 1, paramString2);
+      return;
     }
-    for (;;)
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  private void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    switch (paramInt)
     {
-      localIntent = SaveVideoActivity.a(this.jdField_a_of_type_Wxb.jdField_a_of_type_Wxp.a(), paramxgs.b, i, j, this.jdField_a_of_type_Wxb.jdField_a_of_type_Wwe.a.a());
-      wxb.a(this.jdField_a_of_type_Wxb, paramxgs.b);
-      localIntent.putExtra("mediacodec_encode_enable", true);
-      this.jdField_a_of_type_Wxb.jdField_a_of_type_Wxp.getActivity().startActivityForResult(localIntent, 111);
-      wxb.a(this.jdField_a_of_type_Wxb, SystemClock.elapsedRealtime());
-      this.jdField_a_of_type_Wxb.jdField_a_of_type_Int = 5;
-      this.jdField_a_of_type_Wxb.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Wxb.b = ((int)(7000.0D / paramxgs.a * 4.0D));
-      wsv.b("EditVideoSave", "[30s]progressIncrement Old = " + this.jdField_a_of_type_Wxb.b);
-      if (this.jdField_a_of_type_Wxb.b <= 0) {
-        this.jdField_a_of_type_Wxb.b = 2;
-      }
-      wsv.b("EditVideoSave", "[30s]progressIncrement new = " + this.jdField_a_of_type_Wxb.b);
-      this.jdField_a_of_type_Wxb.f();
-      if (azcx.a().jdField_a_of_type_Int == 1) {}
-      for (i = 1;; i = 2)
+    default: 
+      return;
+    case 2: 
+      QLog.d(paramString1, 2, paramString2, paramThrowable);
+      return;
+    case 3: 
+      QLog.d(paramString1, 2, paramString2, paramThrowable);
+      return;
+    case 4: 
+      QLog.i(paramString1, 2, paramString2, paramThrowable);
+      return;
+    case 5: 
+      QLog.e(paramString1, 1, paramString2, paramThrowable);
+      return;
+    }
+    QLog.e(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    a(2, paramString1, paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a(3, paramString1, paramString2, paramThrowable);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if ((this.b != -1) && (paramInt >= this.b)) {}
+    do
+    {
+      do
       {
-        axlc.j(i);
-        return;
+        return true;
+      } while (5 <= paramInt);
+      if (!QLog.isColorLevel()) {
+        return false;
       }
-      label331:
-      i = 0;
-      j = 0;
-    }
+    } while (this.jdField_a_of_type_Int <= paramInt);
+    return false;
   }
   
-  public void onCancel()
+  public void b(String paramString1, String paramString2)
   {
-    super.onCancel();
-    wsv.d("EditVideoSave", "saveVideo cancel !");
-    this.jdField_a_of_type_Wxb.jdField_a_of_type_Wwe.a(0);
-    this.jdField_a_of_type_Wxb.g();
-    QQToast.a(this.jdField_a_of_type_Wxb.jdField_a_of_type_Wxp.a(), alpo.a(2131704128), 0).a();
+    a(3, paramString1, paramString2);
   }
   
-  public void onError(@NonNull Error paramError)
+  public void b(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    super.onError(paramError);
-    wsv.e("EditVideoSave", "saveVideo error ：" + paramError);
-    this.jdField_a_of_type_Wxb.jdField_a_of_type_Wwe.a(0);
-    QQToast.a(this.jdField_a_of_type_Wxb.jdField_a_of_type_Wxp.a(), 1, alpo.a(2131704196) + paramError, 0).a();
-    this.jdField_a_of_type_Wxb.g();
+    a(4, paramString1, paramString2, paramThrowable);
+  }
+  
+  public void c(String paramString1, String paramString2)
+  {
+    a(4, paramString1, paramString2);
+  }
+  
+  public void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a(5, paramString1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    a(5, paramString1, paramString2);
+  }
+  
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a(6, paramString1, paramString2, paramThrowable);
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    a(6, paramString1, paramString2);
   }
 }
 

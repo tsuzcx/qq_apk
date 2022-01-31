@@ -10,7 +10,7 @@ import com.tencent.mobileqq.widget.QQToast;
 import java.lang.ref.WeakReference;
 
 class dx
-  implements arnx
+  implements arsg
 {
   dx(dt paramdt, DataLineMsgRecord paramDataLineMsgRecord) {}
   
@@ -27,9 +27,9 @@ class dx
           return;
           paramView = new WeakReference(this.jdField_a_of_type_Dt.jdField_a_of_type_AndroidContentContext);
         } while (!(this.jdField_a_of_type_Dt.jdField_a_of_type_AndroidContentContext instanceof Activity));
-        if (!bdee.d(this.jdField_a_of_type_Dt.jdField_a_of_type_AndroidContentContext))
+        if (!bdin.d(this.jdField_a_of_type_Dt.jdField_a_of_type_AndroidContentContext))
         {
-          QQToast.a(this.jdField_a_of_type_Dt.jdField_a_of_type_AndroidContentContext, 2131692397, 0).b(this.jdField_a_of_type_Dt.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
+          QQToast.a(this.jdField_a_of_type_Dt.jdField_a_of_type_AndroidContentContext, 2131692398, 0).b(this.jdField_a_of_type_Dt.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
           return;
         }
       } while ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord == null) || (paramView.get() == null));

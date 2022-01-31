@@ -3,7 +3,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
 class mua
-  extends amab
+  extends ameq
 {
   mua(mtz parammtz) {}
   

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import bdcs;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class FileUtils$1
@@ -8,7 +8,7 @@ public final class FileUtils$1
 {
   public void run()
   {
-    bdcs.a(BaseApplicationImpl.sApplication, true);
+    bdhb.a(BaseApplicationImpl.sApplication, true);
   }
 }
 

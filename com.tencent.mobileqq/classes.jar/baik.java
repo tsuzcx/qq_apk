@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
 class baik
-  implements bhqf
+  extends WebChromeClient
 {
-  baik(baig parambaig, QQAppInterface paramQQAppInterface, int paramInt) {}
+  baik(baij parambaij) {}
   
-  public void onDismiss()
+  public void onProgressChanged(WebView paramWebView, int paramInt)
   {
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92E", "0X800A92E", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    super.onProgressChanged(paramWebView, paramInt);
+    QLog.i("TenDocWebViewPool", 1, "tendocpreload onProgressChanged = " + paramInt);
   }
 }
 

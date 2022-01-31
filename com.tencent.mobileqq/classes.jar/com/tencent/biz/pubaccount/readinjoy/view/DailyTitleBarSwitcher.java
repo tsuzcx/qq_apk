@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
-import bhpo;
+import bhtv;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import rpo;
 import rpp;
@@ -18,7 +18,7 @@ public class DailyTitleBarSwitcher
 {
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new rpo(this);
-  private final bhpo jdField_a_of_type_Bhpo = new rpp(this);
+  private final bhtv jdField_a_of_type_Bhtv = new rpp(this);
   private DailyTitleBar jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBar;
   private boolean jdField_a_of_type_Boolean;
   private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
@@ -87,9 +87,9 @@ public class DailyTitleBarSwitcher
     this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBar.setOnTitleClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
   }
   
-  public bhpo a()
+  public bhtv a()
   {
-    return this.jdField_a_of_type_Bhpo;
+    return this.jdField_a_of_type_Bhtv;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)

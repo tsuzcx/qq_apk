@@ -1,122 +1,45 @@
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+
 public class betk
+  implements URLDrawableDownListener
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static long jdField_a_of_type_Long;
+  final String jdField_a_of_type_JavaLangString;
+  final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  final String b;
   
-  public static int a(int paramInt)
+  public betk(View paramView, String paramString1, String paramString2)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+  }
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    paramView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramView != null)
     {
-    default: 
-      return paramInt;
-    case 0: 
-      return 1;
-    case 1: 
-      return 2;
-    case 3000: 
-      return 4;
+      QLog.e("Q.profilecard.FrdProfileCard", 1, this.jdField_a_of_type_JavaLangString + this.b);
+      paramView.setVisibility(8);
     }
-    return 3;
   }
   
-  public static void a()
-  {
-    jdField_a_of_type_Long = System.currentTimeMillis();
-  }
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
   
-  public static void a(int paramInt)
-  {
-    azmj.b(null, "dc00898", "", "", "0X800A496", "0X800A496", paramInt, 0, String.valueOf(paramInt), "", "", "");
-  }
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
   
-  public static void b()
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    azmj.b(null, "dc00898", "", "", "0X800A494", "0X800A494", 0, 0, "", "", "", "");
-  }
-  
-  public static void b(int paramInt)
-  {
-    jdField_a_of_type_Int = paramInt;
-    azmj.b(null, "dc00898", "", "", "0X800A20B", "0X800A20B", paramInt, 0, String.valueOf(paramInt), "", "", "");
-  }
-  
-  public static void c()
-  {
-    azmj.b(null, "dc00898", "", "", "0X800A495", "0X800A495", 0, 0, "", "", "", "");
-  }
-  
-  public static void c(int paramInt)
-  {
-    azmj.b(null, "dc00898", "", "", "0X800A87C", "0X800A87C", jdField_a_of_type_Int, 0, String.valueOf(paramInt / 1000), "", "", "");
-  }
-  
-  public static void d()
-  {
-    azmj.b(null, "dc00898", "", "", "0X800A20C", "0X800A20C", 0, 0, "", "", "", "");
-    d(1);
-  }
-  
-  public static void d(int paramInt)
-  {
-    if (jdField_a_of_type_Long == 0L) {
-      return;
+    paramView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramView != null) {
+      paramView.setVisibility(0);
     }
-    long l1 = System.currentTimeMillis();
-    long l2 = jdField_a_of_type_Long;
-    jdField_a_of_type_Long = 0L;
-    azmj.b(null, "dc00898", "", "", "0X800A87D", "0X800A87D", paramInt, 0, String.valueOf((l1 - l2) / 1000L), "", "", "");
-  }
-  
-  public static void e()
-  {
-    azmj.b(null, "dc00898", "", "", "0X800A20D", "0X800A20D", 0, 0, "", "", "", "");
-    d(2);
-    a();
-  }
-  
-  public static void e(int paramInt)
-  {
-    if (jdField_a_of_type_Long == 0L) {
-      return;
-    }
-    long l1 = System.currentTimeMillis();
-    long l2 = jdField_a_of_type_Long;
-    jdField_a_of_type_Long = 0L;
-    azmj.b(null, "dc00898", "", "", "0X800A87E", "0X800A87E", paramInt, 0, String.valueOf((l1 - l2) / 1000L), "", "", "");
-  }
-  
-  public static void f()
-  {
-    azmj.b(null, "dc00898", "", "", "0X800A20E", "0X800A20E", 0, 0, "", "", "", "");
-    e(2);
-    a();
-  }
-  
-  public static void g()
-  {
-    azmj.b(null, "dc00898", "", "", "0X800A20F", "0X800A20F", 0, 0, "", "", "", "");
-    e(1);
-  }
-  
-  public static void h()
-  {
-    azmj.b(null, "dc00898", "", "", "0X800A210", "0X800A210", 0, 0, "", "", "", "");
-  }
-  
-  public static void i()
-  {
-    azmj.b(null, "dc00898", "", "", "0X800A87F", "0X800A87F", jdField_a_of_type_Int, 0, "", "", "", "");
-  }
-  
-  public static void j()
-  {
-    azmj.b(null, "dc00898", "", "", "0X800A880", "0X800A880", jdField_a_of_type_Int, 0, "", "", "", "");
-  }
-  
-  public static void k()
-  {
-    azmj.b(null, "dc00898", "", "", "0X800A881", "0X800A881", jdField_a_of_type_Int, 0, "", "", "", "");
-    e(1);
   }
 }
 

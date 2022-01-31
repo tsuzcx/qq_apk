@@ -1,15 +1,16 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-class anze
-  extends GestureDetector.SimpleOnGestureListener
+public class anze
+  implements View.OnClickListener
 {
-  anze(anzc paramanzc) {}
+  public anze(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    anzc.a(this.a);
-    return true;
+    paramView = (anzj)paramView.getTag();
+    this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.b, paramView.jdField_a_of_type_Boolean);
   }
 }
 

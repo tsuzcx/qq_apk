@@ -25,7 +25,7 @@ public class put
   {
     super.setContext(paramContext);
     paramContext = paramContext.getResources().getDisplayMetrics();
-    float f2 = alnq.a() / 16.0F;
+    float f2 = alsf.a() / 16.0F;
     float f1 = f2;
     if (f2 == 0.0F) {
       f1 = 1.0F;

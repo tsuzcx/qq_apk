@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.extendfriend;
 
-import apxb;
-import apxd;
-import apxh;
-import baps;
-import bapv;
+import aqbk;
+import aqbm;
+import aqbq;
+import baub;
+import baue;
 import com.tencent.qphone.base.util.QLog;
 import lel;
 
 public class ExtendFriendResourceDownloader$4
   implements Runnable
 {
-  public ExtendFriendResourceDownloader$4(apxd paramapxd, apxb paramapxb) {}
+  public ExtendFriendResourceDownloader$4(aqbm paramaqbm, aqbk paramaqbk) {}
   
   public void run()
   {
-    baps localbaps = new baps();
-    localbaps.jdField_a_of_type_JavaLangString = this.a.b;
-    localbaps.jdField_a_of_type_Int = 0;
-    String str = apxd.a(this.this$0, this.a.c);
-    apxd.a(this.this$0, str);
-    localbaps.c = str;
-    localbaps.a(this.a);
-    QLog.d("ExtendFriendResourceDownloader", 2, "Limitchatres start download : " + this.a.jdField_a_of_type_JavaLangString + " url: " + this.a.b + " w:" + localbaps.c);
-    localbaps.jdField_a_of_type_Bapx = new apxh(this);
-    lel.a().a(localbaps);
+    baub localbaub = new baub();
+    localbaub.jdField_a_of_type_JavaLangString = this.a.b;
+    localbaub.jdField_a_of_type_Int = 0;
+    String str = aqbm.a(this.this$0, this.a.c);
+    aqbm.a(this.this$0, str);
+    localbaub.c = str;
+    localbaub.a(this.a);
+    QLog.d("ExtendFriendResourceDownloader", 2, "Limitchatres start download : " + this.a.jdField_a_of_type_JavaLangString + " url: " + this.a.b + " w:" + localbaub.c);
+    localbaub.jdField_a_of_type_Baug = new aqbq(this);
+    lel.a().a(localbaub);
   }
 }
 

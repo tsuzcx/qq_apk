@@ -1,18 +1,63 @@
-class afcb
-  implements bcnf
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.doodle.control.RDBaseListLayout;
+import java.util.ArrayList;
+
+public class afcb
+  extends BaseAdapter
 {
-  afcb(afby paramafby, String paramString) {}
+  private afcb(RDBaseListLayout paramRDBaseListLayout) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a() {}
+  
+  public void b() {}
+  
+  public int getCount()
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ((agiu)afby.a(this.jdField_a_of_type_Afby)).X = true;
-      this.jdField_a_of_type_Afby.a(true);
-      return;
+    return RDBaseListLayout.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return RDBaseListLayout.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = RDBaseListLayout.a(this.a).get(paramInt);
+    if (paramView == null) {
+      paramView = this.a.a(paramInt, paramViewGroup);
     }
-    ((agiu)afby.a(this.jdField_a_of_type_Afby)).X = false;
-    this.jdField_a_of_type_Afby.a(false);
+    for (;;)
+    {
+      if (paramView == null) {
+        paramViewGroup = null;
+      }
+      View localView;
+      do
+      {
+        return paramViewGroup;
+        paramView = (afcc)paramView.getTag();
+        if (paramView == null) {
+          break label102;
+        }
+        paramView = paramView.a;
+        break;
+        this.a.a(paramInt, paramViewGroup, paramView);
+        localView = ((afcd)paramView).a();
+        paramViewGroup = localView;
+      } while (localView == null);
+      localView.setTag(new afcc(this.a, paramInt, paramView));
+      return localView;
+      label102:
+      paramView = null;
+    }
   }
 }
 

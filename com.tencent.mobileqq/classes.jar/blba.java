@@ -1,12 +1,6 @@
-public class blba
+class blba
 {
-  public float a;
-  public int a;
-  public float b;
-  public float c;
-  public float d;
-  
-  public blba(blax paramblax) {}
+  private static blay a = new blay(null);
 }
 
 

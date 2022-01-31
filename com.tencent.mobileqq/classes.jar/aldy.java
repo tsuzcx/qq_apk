@@ -1,87 +1,67 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class aldy
-  implements Handler.Callback
+final class aldy
+  extends bead
 {
-  private int jdField_a_of_type_Int;
-  private final aldz jdField_a_of_type_Aldz;
-  private alea jdField_a_of_type_Alea;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
+  aldy(File paramFile, aknx paramaknx, int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2, AtomicInteger paramAtomicInteger3, aled paramaled, String paramString, int paramInt3, int[] paramArrayOfInt, int paramInt4) {}
   
-  public aldy(aldz paramaldz)
+  public void onDone(beae parambeae)
   {
-    this.jdField_a_of_type_Aldz = paramaldz;
-    this.jdField_a_of_type_AndroidOsHandler = new bhow(ThreadManager.getSubThreadLooper(), this);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(int paramInt, alea paramalea)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Alea = paramalea;
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.b = false;
-    do
-    {
-      while (!this.b) {
-        switch (this.jdField_a_of_type_Aldz.a(paramBundle))
-        {
-        case 0: 
-        default: 
-          break;
-        case -1: 
-          if (this.jdField_a_of_type_Alea != null)
-          {
-            paramBundle = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
-            this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramBundle, this.jdField_a_of_type_Int);
-          }
-          break;
-        }
-      }
-      return;
-    } while (!this.jdField_a_of_type_Boolean);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-    localMessage.setData(paramBundle);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void b()
-  {
-    this.b = true;
-    this.jdField_a_of_type_Alea = null;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
+    boolean bool = true;
+    super.onDone(parambeae);
+    if (3 == parambeae.a()) {
+      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
     }
     for (;;)
     {
-      return false;
-      if (!this.b) {
-        a(paramMessage.getData());
-      }
-      return true;
-      if (this.jdField_a_of_type_Alea != null)
+      try
       {
-        this.jdField_a_of_type_Alea.b();
-        this.jdField_a_of_type_Alea = null;
+        ndr.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+        aldv.a(this.jdField_a_of_type_Aknx, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) {
+          break label421;
+        }
+        if (this.jdField_a_of_type_Aled != null)
+        {
+          parambeae = this.jdField_a_of_type_Aled;
+          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) {
+            bool = false;
+          }
+          parambeae.onDownLoadFinish(bool, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfInt, this.d);
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloResDownloader", 2, "downloadApolloRes download all done uin: " + this.jdField_a_of_type_JavaLangString + "all cnt: " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", err cnt: " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+          }
+        }
+        this.jdField_a_of_type_JavaIoFile.delete();
+        return;
+      }
+      catch (Exception parambeae)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambeae.getMessage());
+        continue;
+      }
+      catch (OutOfMemoryError parambeae)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambeae.getMessage());
+        continue;
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+      QLog.d("ApolloResDownloader", 1, "download file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " task.getStatus()->" + parambeae.a());
+      continue;
+      label421:
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "downloadApolloRes download uin:" + this.jdField_a_of_type_JavaLangString + ", cb cnt: " + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", all cnt: " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
       }
     }
   }

@@ -13,7 +13,7 @@ public class oue
     QLog.d("VideoSingleModeConfigHandler", 2, "[onReceiveConfig] " + paramString);
     paramString = osq.a(paramString);
     if ((String)paramString.get("readinjoy_single_video_switch") != null) {
-      bjxj.a((String)paramString.get("readinjoy_single_video_switch"));
+      bkbq.a((String)paramString.get("readinjoy_single_video_switch"));
     }
     return true;
   }
@@ -21,7 +21,7 @@ public class oue
   public void onWipeConfig(int paramInt)
   {
     super.onWipeConfig(paramInt);
-    bjxj.a(null);
+    bkbq.a(null);
   }
 }
 

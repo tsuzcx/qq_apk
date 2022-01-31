@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class lzv
-  extends autc
+  extends auxl
 {
   public lzv(QQServiceForAV paramQQServiceForAV) {}
   

@@ -1,16 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
 
-class wpd
-  implements View.OnClickListener
+public final class wpd
+  extends uli
 {
-  wpd(wou paramwou, wsb paramwsb) {}
-  
-  public void onClick(View paramView)
-  {
-    wta.a("home_page", "guide_close", 0, 0, new String[0]);
-    this.jdField_a_of_type_Wsb.dismiss();
-  }
+  public FeedItem a;
 }
 
 

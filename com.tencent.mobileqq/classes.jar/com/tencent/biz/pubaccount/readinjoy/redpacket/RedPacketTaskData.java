@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.redpacket;
 
 import android.support.annotation.NonNull;
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class RedPacketTaskData
-  extends awbv
+  extends awge
 {
   public static final String TABLE_NAME = RedPacketTaskData.class.getSimpleName();
   public long insertTime;
-  @awdj
+  @awhs
   @NonNull
   public String rowKey = "";
   

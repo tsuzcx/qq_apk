@@ -78,7 +78,7 @@ public class AlbumListAdapter
   {
     this.mAlbumListCallback = paramAbstractAlbumListFragment.mAlbumListLogic.mAlbumListAdapterCallBack;
     this.mResources = paramAbstractAlbumListFragment.getResources();
-    this.mRightArrow = this.mResources.getDrawable(2130839102).getConstantState();
+    this.mRightArrow = this.mResources.getDrawable(2130839103).getConstantState();
     this.mCoverWidth = this.mResources.getDimensionPixelSize(2131296381);
     this.mCoverHeight = this.mCoverWidth;
   }

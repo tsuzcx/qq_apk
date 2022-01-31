@@ -1,15 +1,12 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
+import android.content.DialogInterface.OnDismissListener;
 
-public class ymh
-  implements DialogInterface.OnClickListener
+final class ymh
+  implements DialogInterface.OnDismissListener
 {
-  public ymh(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    EditUniqueTitleActivity.a(this.a);
+    ymg.a(false);
   }
 }
 

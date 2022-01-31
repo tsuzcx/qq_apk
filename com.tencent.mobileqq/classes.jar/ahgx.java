@@ -1,33 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.List;
 
 public class ahgx
-  extends Handler
+  extends oxe
 {
-  private WeakReference<NewFriendActivity> a;
+  public ahgx(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public ahgx(NewFriendActivity paramNewFriendActivity)
+  public void f(boolean paramBoolean, List<ChannelInfo> paramList)
   {
-    this.a = new WeakReference(paramNewFriendActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    NewFriendActivity localNewFriendActivity = (NewFriendActivity)this.a.get();
-    if (localNewFriendActivity == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    if (paramBoolean)
     {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      localNewFriendActivity.a(paramMessage.arg1);
-      return;
+      if ((paramList != null) && (!paramList.isEmpty()))
+      {
+        this.a.c.clear();
+        this.a.c.addAll(paramList);
+      }
+      ClassificationSearchActivity.b(this.a, true);
     }
-    localNewFriendActivity.finish();
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.imcore.message;
 
-import abnt;
-import aukr;
+import absi;
+import aupa;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class BaseMessageManager$2
   implements Runnable
 {
-  public BaseMessageManager$2(abnt paramabnt, aukr paramaukr, MessageRecord paramMessageRecord) {}
+  public BaseMessageManager$2(absi paramabsi, aupa paramaupa, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aukr.b(this.this$0.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    this.jdField_a_of_type_Aupa.b(this.this$0.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
   }
 }
 

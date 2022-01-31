@@ -1,44 +1,88 @@
-import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.DragGallery;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.LinkedHashMap;
 
-class aimx
-  implements View.OnClickListener
+public class aimx
+  extends besd
 {
-  aimx(aimu paramaimu) {}
+  private aimx(NewStyleCountryActivity paramNewStyleCountryActivity) {}
   
-  public void onClick(View paramView)
+  public int a()
   {
-    ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
-    if (((NewPhotoPreviewActivity)this.a.mActivity).getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false))
-    {
-      paramView = this.a.mPhotoCommonData.selectedPhotoList.iterator();
-      for (long l = 0L; paramView.hasNext(); l = bdcs.a((String)paramView.next()) + l) {}
-      if (this.a.mPhotoCommonData.selectedPhotoList.size() == 0)
-      {
-        int i = ((NewPhotoPreviewActivity)this.a.mActivity).gallery.getFirstVisiblePosition();
-        if (i < this.a.a.paths.size()) {
-          bdcs.a((String)this.a.a.paths.get(i));
-        }
-      }
-      if (arni.a()) {
-        armv.a(this.a.mActivity, 2131692752, 2131692757, new aimy(this));
-      }
+    return 2131562572;
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(((bdjc)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString)).intValue();
+    ((TextView)paramView).setText(((bdjc)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return ((bdjc)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean;
+  }
+  
+  public int getCount()
+  {
+    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (((bdjc)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean) {
+      return 0;
     }
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    bdjc localbdjc = (bdjc)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if (getItemViewType(paramInt) == 0)
+    {
+      if (paramView != null) {
+        break label115;
+      }
+      paramView = this.a.getLayoutInflater().inflate(a(), paramViewGroup, false);
+    }
+    label115:
     for (;;)
     {
-      LpReportInfo_pf00064.allReport(603, 1);
-      return;
-      this.a.c();
-      continue;
-      this.a.c();
+      ((TextView)paramView).setText(localbdjc.jdField_a_of_type_JavaLangString);
+      for (;;)
+      {
+        paramView.setVisibility(0);
+        return paramView;
+        View localView = paramView;
+        if (paramView == null)
+        {
+          localView = NewStyleCountryActivity.a(this.a, paramViewGroup, this.a.getLayoutInflater(), false);
+          localView.setOnClickListener(this.a);
+        }
+        this.a.a(localView, localbdjc);
+        paramView = localView;
+      }
     }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 2;
   }
 }
 

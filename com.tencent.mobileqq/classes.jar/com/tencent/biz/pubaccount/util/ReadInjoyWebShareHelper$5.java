@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import becq;
-import bfdq;
-import bfdw;
+import begz;
+import bfhz;
+import bfif;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
@@ -77,9 +77,9 @@ public class ReadInjoyWebShareHelper$5
     label359:
     for (i = 3;; i = 4)
     {
-      ((Bundle)localObject1).putString("intext_3", bfdw.b(i));
+      ((Bundle)localObject1).putString("intext_3", bfif.b(i));
       ((Bundle)localObject1).putString("stringext_1", this.jdField_b_of_type_JavaLangString);
-      bfdq.a().a((Bundle)localObject1, "", szc.a(this.this$0).a().getAccount(), false);
+      bfhz.a().a((Bundle)localObject1, "", szc.a(this.this$0).a().getAccount(), false);
       return;
       szc.a(this.this$0).a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
       break;

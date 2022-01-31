@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dating;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,11 +13,11 @@ import android.view.View.OnClickListener;
 import android.webkit.URLUtil;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azmj;
-import baul;
-import bdcs;
-import bddb;
-import bdds;
+import azqs;
+import bayu;
+import bdhb;
+import bdhk;
+import bdib;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -35,7 +35,7 @@ import mqq.os.MqqHandler;
 public class CarrierHelper
   implements View.OnClickListener
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { alpo.a(2131701831), alpo.a(2131701834), alpo.a(2131701837), alpo.a(2131701835), alpo.a(2131701832), alpo.a(2131701831), alpo.a(2131701836) };
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { alud.a(2131701843), alud.a(2131701846), alud.a(2131701849), alud.a(2131701847), alud.a(2131701844), alud.a(2131701843), alud.a(2131701848) };
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
   private Activity jdField_a_of_type_AndroidAppActivity;
@@ -139,10 +139,10 @@ public class CarrierHelper
     SingleLineTextView localSingleLineTextView2 = (SingleLineTextView)paramView.findViewById(2131362031);
     TextView localTextView1 = (TextView)paramView.findViewById(2131361973);
     TextView localTextView2 = (TextView)paramView.findViewById(2131361975);
-    View localView = paramView.findViewById(2131364016);
+    View localView = paramView.findViewById(2131364018);
     localBorderTextView.setTextSize(1, 11.0F);
     localBorderTextView.setBorderWidth(Math.round(localBorderTextView.getResources().getDisplayMetrics().density * 1.0F));
-    ((ImageView)localObject).setImageDrawable(baul.a(paramAdData.img_url));
+    ((ImageView)localObject).setImageDrawable(bayu.a(paramAdData.img_url));
     int i;
     if ((paramAdData.wording != null) && (paramAdData.wording.length() > 0))
     {
@@ -172,7 +172,7 @@ public class CarrierHelper
       paramView.setContentDescription((CharSequence)localObject);
       localView.setContentDescription((CharSequence)localObject);
       localView.setTag(paramAdData.jump_url);
-      localView.setTag(2131373449, Integer.valueOf(paramAdData.ad_source));
+      localView.setTag(2131373501, Integer.valueOf(paramAdData.ad_source));
       localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       return;
       localBorderTextView.setVisibility(4);
@@ -189,7 +189,7 @@ public class CarrierHelper
       return;
     }
     int i = this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView.a();
-    bdcs.a(paramString, new Object[] { this.jdField_a_of_type_JavaUtilList, Integer.valueOf(i), this.jdField_a_of_type_JavaUtilArrayList });
+    bdhb.a(paramString, new Object[] { this.jdField_a_of_type_JavaUtilList, Integer.valueOf(i), this.jdField_a_of_type_JavaUtilArrayList });
   }
   
   public void a(List<AdData> paramList, int paramInt, ArrayList<CarrierHelper.EntranceConfig> paramArrayList)
@@ -213,25 +213,25 @@ public class CarrierHelper
   
   public void onClick(View paramView)
   {
-    Object localObject = (Integer)paramView.getTag(2131373449);
+    Object localObject = (Integer)paramView.getTag(2131373501);
     String str = (String)paramView.getTag();
     if ((localObject == null) || (str == null)) {
       return;
     }
     if ((this.b == 2) || (this.b == 1)) {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80050D1", "0X80050D1", this.b, 0, String.valueOf(localObject), "", "", "");
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80050D1", "0X80050D1", this.b, 0, String.valueOf(localObject), "", "", "");
     }
     if (((Integer)localObject).intValue() == 5) {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80052A3", "0X80052A3", this.b, 0, "", "", "", "");
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80052A3", "0X80052A3", this.b, 0, "", "", "", "");
     }
     if (this.jdField_a_of_type_AndroidAppActivity == null) {}
     for (paramView = BaseApplicationImpl.getContext();; paramView = this.jdField_a_of_type_AndroidAppActivity)
     {
-      localObject = bdds.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, str);
+      localObject = bdib.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, str);
       if (localObject == null) {
         break;
       }
-      ((bddb)localObject).c();
+      ((bdhk)localObject).c();
       return;
     }
     localObject = new Intent(BaseApplicationImpl.getContext(), QQBrowserActivity.class);

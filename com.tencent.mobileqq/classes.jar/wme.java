@@ -1,77 +1,10 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import java.util.ArrayList;
 import java.util.List;
 
-public abstract class wme<T extends FeedItem>
+public abstract interface wme
 {
-  protected T a;
-  public boolean b;
+  public abstract void a(String paramString, List<wnd> paramList);
   
-  public wme(@NonNull T paramT)
-  {
-    xmh.a(paramT);
-    this.a = paramT;
-  }
-  
-  public static wme a(int paramInt)
-  {
-    FeedItem localFeedItem = FeedItem.createFeedItemByType(paramInt);
-    if (localFeedItem == null) {
-      return null;
-    }
-    return localFeedItem.generateHomeFeed();
-  }
-  
-  public T a()
-  {
-    return this.a;
-  }
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt, vap paramvap, vaj paramvaj, vam paramvam);
-  
-  public abstract boolean a(qqstory_struct.StoryFeed paramStoryFeed);
-  
-  public abstract void b();
-  
-  public List<StoryVideoItem> d()
-  {
-    return new ArrayList(0);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (wme)paramObject;
-      if (this.a != null) {
-        return this.a.equals(paramObject.a);
-      }
-    } while (paramObject.a == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    if (this.a != null) {
-      return this.a.hashCode();
-    }
-    return 0;
-  }
-  
-  public String toString()
-  {
-    return this.a.toString();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

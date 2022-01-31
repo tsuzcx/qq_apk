@@ -1,27 +1,16 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.QQBroadcastReceiver;
 
-public class avxw
-  extends QQBroadcastReceiver
+final class avxw
+  implements alrb
 {
-  public avxw(ScanTorchActivity paramScanTorchActivity) {}
-  
-  public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean)
   {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      paramAppRuntime = paramIntent.getAction();
-      if (QLog.isColorLevel()) {
-        QLog.d("ScanTorchActivity", 2, new Object[] { "onReceive, action=", paramAppRuntime });
-      }
-    } while (!"com.tencent.mobileqq__alive".equals(paramAppRuntime));
-    ScanTorchActivity.a(this.a);
+    if (paramBoolean) {
+      avxv.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.ocr.dpc", 2, "onDpcPullFinished, hasChanged=" + paramBoolean);
+    }
   }
 }
 

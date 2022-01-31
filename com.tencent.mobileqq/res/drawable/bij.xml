@@ -2,13 +2,13 @@
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_selected="true" android:state_pressed="true">
-        <bitmap android:src="@drawable/dot" android:alpha="0.5" />
+        <bitmap android:src="@drawable/duq" android:alpha="0.5" />
     </item>
-    <item android:state_enabled="false" android:drawable="@drawable/dos" />
-    <item android:state_selected="true" android:state_pressed="false" android:drawable="@drawable/dot" />
+    <item android:state_enabled="false" android:drawable="@drawable/dsp" />
+    <item android:state_selected="true" android:state_pressed="false" android:drawable="@drawable/duq" />
     <item android:state_selected="false" android:state_pressed="true">
-        <bitmap android:src="@drawable/dos" android:alpha="0.5" />
+        <bitmap android:src="@drawable/dsp" android:alpha="0.5" />
     </item>
-    <item android:state_selected="false" android:drawable="@drawable/dos" />
-    <item android:drawable="@drawable/dot" />
+    <item android:state_selected="false" android:drawable="@drawable/dsp" />
+    <item android:drawable="@drawable/duq" />
 </selector>

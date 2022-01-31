@@ -1,74 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import MQQ.PayRuleCfg;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.QQSettingMe;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
-class adsf
-  extends aqnl
+public class adsf
+  extends bayv
 {
-  adsf(adsd paramadsd) {}
+  public adsf(QQSettingMe paramQQSettingMe, TextView paramTextView) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferProgress");
-    if (this.a.jdField_a_of_type_JavaUtilList != null)
-    {
-      paramInt = 0;
-      if (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break label232;
-      }
-      if (((adsk)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a != paramLong1) {}
+    QLog.e("QQSettingRedesign", 1, "VipInfoHandler updateVipItemView onLoadFialed: ", paramThrowable);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "VipInfoHandler onLoadSuccessed: " + QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconUrl);
     }
-    for (;;)
+    try
     {
-      if (paramInt != -1) {
-        paramInt = 0;
-      }
-      for (;;)
-      {
-        if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
-        {
-          paramString = (FileManagerEntity)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-          if (paramString.uniseq != paramLong1) {
-            break label202;
-          }
-          if (this.a.jdField_a_of_type_Bdfq != null) {
-            this.a.jdField_a_of_type_Bdfq.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf((int)(paramString.fProgress * 100.0F)) }));
-          }
-        }
-        return;
-        paramInt += 1;
-        break;
-        label202:
-        paramInt += 1;
-      }
-      this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconText);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconTextCol));
       return;
-      label232:
-      paramInt = -1;
     }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String arg6, int paramInt1, int paramInt2, String paramString2)
-  {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferEnd");
-    if (!this.a.jdField_b_of_type_Boolean) {
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-      {
-        this.a.a();
-        return;
-      }
+    catch (Exception paramURLDrawable)
+    {
+      QLog.e("QQSettingRedesign", 1, "VipInfoHandler setTextColor: " + QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconTextCol, paramURLDrawable);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
     }
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferStart");
-    if (this.a.jdField_a_of_type_Bdfq != null) {
-      this.a.jdField_a_of_type_Bdfq.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(0) }));
-    }
-    this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
   }
 }
 

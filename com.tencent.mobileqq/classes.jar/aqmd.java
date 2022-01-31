@@ -1,26 +1,37 @@
-import android.content.Context;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.ArrayList;
 
 public class aqmd
-  implements View.OnLongClickListener
+  implements bhuk
 {
-  public aqmd(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public aqmd(LocalFileBrowserActivity paramLocalFileBrowserActivity, bhuf parambhuf) {}
   
-  public boolean onLongClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
-      return false;
+    switch (paramInt)
+    {
     }
-    paramView.setSelected(true);
-    bdkz localbdkz = new bdkz();
-    localbdkz.a(2131366752, paramView.getContext().getString(2131692835));
-    localbdkz.a(2131365063, paramView.getContext().getString(2131691561));
-    ApolloUtil.a(paramView, QfileBaseRecentFileTabView.n(this.a), localbdkz);
-    this.a.a = bdbk.a(paramView, localbdkz, new aqme(this, paramView), new aqmg(this, paramView));
-    return true;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e != -1)
+      {
+        paramView = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
+        if ((!arso.a(paramView.c())) || (arso.c(paramView.c())))
+        {
+          arrr.d(paramView.c());
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.remove(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
+          LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity);
+        }
+        else
+        {
+          arri.a(2131692487);
+        }
+      }
+    }
   }
 }
 

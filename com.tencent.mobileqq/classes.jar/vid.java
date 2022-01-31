@@ -1,18 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
-
-public class vid
-  implements DialogInterface.OnCancelListener
+class vid
+  implements vij
 {
-  public vid(FollowCaptureLauncher paramFollowCaptureLauncher) {}
+  vid(vic paramvic) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a(vkn paramvkn)
   {
-    FollowCaptureLauncher.a(this.a, true);
-    FollowCaptureLauncher.a(this.a);
-    FollowCaptureLauncher.a(this.a, false);
-    wta.a("FollowLaunchCancel", true, System.currentTimeMillis() - FollowCaptureLauncher.a(this.a), new String[] { "dialog_cancel" });
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).a(paramvkn.a);
+    }
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).a();
+    }
+  }
+  
+  public void b(vkn paramvkn)
+  {
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).c(paramvkn.a);
+    }
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).a();
+    }
+  }
+  
+  public void c(vkn paramvkn)
+  {
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).d(paramvkn.a);
+    }
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).a();
+    }
   }
 }
 

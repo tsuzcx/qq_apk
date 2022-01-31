@@ -1,39 +1,85 @@
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.widget.ListView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.BabyQAIOPanel;
+import java.util.ArrayList;
 
-public abstract class aepy
+public class aepy
+  extends BaseAdapter
 {
-  public int a;
-  public AIOAnimationConatiner a;
-  public ListView a;
+  public aepy(BabyQAIOPanel paramBabyQAIOPanel) {}
   
-  public aepy(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
+  public aepw a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner = paramAIOAnimationConatiner;
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
+    if ((paramInt >= 0) && (paramInt < BabyQAIOPanel.a(this.a).size())) {
+      return (aepw)BabyQAIOPanel.a(this.a).get(paramInt);
+    }
+    return new aepw();
   }
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public boolean a(int paramInt)
+  public int getCount()
   {
-    return false;
+    return BabyQAIOPanel.a(this.a).size();
   }
   
-  public abstract boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract boolean a(Object... paramVarArgs);
-  
-  public void b() {}
-  
-  public abstract void c();
-  
-  public void d()
+  public long getItemId(int paramInt)
   {
-    AIOAnimationConatiner.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
+    {
+      localObject = new aepx();
+      paramView = LayoutInflater.from(BabyQAIOPanel.a(this.a)).inflate(2131558560, paramViewGroup, false);
+      ((aepx)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368527));
+      ((aepx)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367843));
+      ((aepx)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377621));
+      ((aepx)localObject).b = ((ImageView)paramView.findViewById(2131371092));
+      paramView.setTag(localObject);
+      paramViewGroup = (ViewGroup)localObject;
+      localObject = (RelativeLayout.LayoutParams)paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      if (paramInt % 2 == 0) {
+        break label249;
+      }
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = bdaq.a(this.a.getContext(), 8.0F);
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = bdaq.a(this.a.getContext(), 12.0F);
+      label148:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = a(paramInt);
+      paramViewGroup.jdField_a_of_type_Int = ((aepw)localObject).jdField_a_of_type_Int;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((aepw)localObject).jdField_a_of_type_JavaLangString);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(((aepw)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      if (!((aepw)localObject).jdField_a_of_type_Boolean) {
+        break label286;
+      }
+      paramViewGroup.b.setVisibility(0);
+    }
+    for (;;)
+    {
+      paramView.setOnClickListener(this.a);
+      if (AppSetting.c) {
+        paramView.setContentDescription(((aepw)localObject).jdField_a_of_type_JavaLangString);
+      }
+      return paramView;
+      paramViewGroup = (aepx)paramView.getTag();
+      break;
+      label249:
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = bdaq.a(this.a.getContext(), 12.0F);
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = bdaq.a(this.a.getContext(), 8.0F);
+      break label148;
+      label286:
+      paramViewGroup.b.setVisibility(8);
+    }
   }
 }
 

@@ -1,106 +1,73 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPubAccount;
+import com.tencent.mobileqq.data.PAMessage;
+import com.tencent.open.adapter.OpenAppClient;
 
-public class afwo
-  implements VideoPlayerCallback
+class afwo
+  implements View.OnClickListener
 {
-  public afwo(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
+  afwo(afwn paramafwn) {}
   
-  public void onCapFrame(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap) {}
-  
-  public void onDownloadComplete(long paramLong) {}
-  
-  public void onDownloadProgress(long paramLong1, long paramLong2) {}
-  
-  public void onLoopBack(long paramLong1, long paramLong2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoRealItemBuilder", 2, "playShortVideoByPath, onLoopBack, id = " + paramLong1);
-    }
-    MessageForShortVideo localMessageForShortVideo = bdan.a().a(Long.valueOf(paramLong1));
-    this.a.a(localMessageForShortVideo, paramLong2);
-  }
-  
-  public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
-  
-  public void onPlayProgress(long paramLong1, long paramLong2) {}
-  
-  public void onStateChange(long paramLong, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoRealItemBuilder", 2, "onStateChange , state =  " + paramInt + ", msgUniseq = " + paramLong);
-    }
-    if (paramInt == 4)
+    oxp.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null);
+    paramView = (afwp)aepi.a(paramView);
+    if (swh.a(paramView.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidContentContext)) {}
+    for (;;)
     {
-      localObject = bdan.a().a(Long.valueOf(paramLong));
-      if ((localObject != null) && (!bdan.a().a(Long.valueOf(paramLong))))
+      paramView = paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+      if ((paramView instanceof MessageForPubAccount))
       {
-        ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8008E51", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject, this.a.jdField_a_of_type_AndroidContentContext);
-        if (!bdan.a().b(Long.valueOf(((MessageForShortVideo)localObject).uniseq)))
-        {
-          bdan.a().a(Long.valueOf(((MessageForShortVideo)localObject).uniseq));
-          ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8008E50", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject, this.a.jdField_a_of_type_AndroidContentContext);
+        paramView = (MessageForPubAccount)paramView;
+        if ((paramView.mPAMessage != null) && (paramView.mPAMessage.mMsgId > 0L)) {
+          azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", paramView.frienduin, "mp_msg_sys_14", "msg_click", 0, 1, 0, Long.toString(paramView.mPAMessage.mMsgId), "", "", "");
         }
-        bdan.a().a(Long.valueOf(paramLong), true);
       }
-    }
-    Object localObject = this.a.a(paramLong);
-    if (localObject == null) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ShortVideoRealItemBuilder", 2, "holder == null, msgUniseq = " + paramLong);
+      return;
+      if ((paramView.b == null) || (!paramView.b.equals("open_local"))) {
+        break;
       }
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("schemaurl", paramView.c);
+      ((Bundle)localObject).putString("uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      OpenAppClient.b((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Bundle)localObject);
     }
-    label219:
-    MessageForShortVideo localMessageForShortVideo;
-    do
+    Object localObject = new Intent(this.a.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
+    ((Intent)localObject).putExtra("uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    ((Intent)localObject).putExtra("url", paramView.c);
+    ((Intent)localObject).putExtra("assignBackText", this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690623));
+    ((Intent)localObject).putExtra("puin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    ((Intent)localObject).putExtra("source_name", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+    MessageForPubAccount localMessageForPubAccount;
+    if ((paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForPubAccount))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              break label219;
-              break label219;
-              break label219;
-              do
-              {
-                return;
-              } while (paramInt == 5);
-              if ((paramInt != 7) && (paramInt != 8)) {
-                break;
-              }
-              ShortVideoRealItemBuilder.a(this.a).removeCallbacksAndMessages(null);
-              ((afwt)localObject).a.setVisibility(0);
-              this.a.a((afwt)localObject);
-            } while (paramInt != 8);
-            localObject = bdan.a().a(Long.valueOf(paramLong));
-          } while (localObject == null);
-          this.a.a((MessageForShortVideo)localObject, ((MessageForShortVideo)localObject).videoFileTime * 1000);
-          return;
-          if (paramInt != 4) {
-            break;
-          }
-          ShortVideoRealItemBuilder.a(this.a).removeCallbacksAndMessages(null);
-          this.a.b((afwt)localObject);
-          localObject = bdan.a().a(Long.valueOf(paramLong));
-        } while (localObject == null);
-        this.a.a((MessageForShortVideo)localObject, 0L);
-        return;
-      } while (paramInt != 1);
-      localMessageForShortVideo = bdan.a().a(Long.valueOf(paramLong));
-    } while (localMessageForShortVideo == null);
-    ((afwt)localObject).a.setVisibility(0);
-    this.a.c(localMessageForShortVideo, (afwt)localObject);
+      localMessageForPubAccount = (MessageForPubAccount)paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+      if ((localMessageForPubAccount.mPAMessage == null) || (localMessageForPubAccount.mPAMessage.mMsgId <= 0L)) {
+        break label449;
+      }
+    }
+    label449:
+    for (long l = localMessageForPubAccount.mPAMessage.mMsgId;; l = -1L)
+    {
+      if (l >= 0L) {
+        ((Intent)localObject).putExtra("msg_id", String.valueOf(l));
+      }
+      ((Intent)localObject).putExtra("fromAio", true);
+      ((Intent)localObject).putExtra("big_brother_source_key", syb.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString));
+      syb.a((Intent)localObject, paramView.c);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramView.c, "", "", "");
+      break;
+    }
   }
 }
 

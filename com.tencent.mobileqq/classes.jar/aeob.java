@@ -1,202 +1,34 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.IntimateInfo;
-import com.tencent.qphone.base.util.QLog;
+import Wallet.AcsPullMsgRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-class aeob
-  extends ased
+public class aeob
+  implements aeor
 {
-  aeob(aenv paramaenv) {}
+  public aeob(ReminderListFragment paramReminderListFragment) {}
   
-  protected void a(boolean paramBoolean, int paramInt, ArrayList<ahkz> paramArrayList)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
     if (paramBoolean)
     {
-      this.a.jdField_a_of_type_Int = paramInt;
-      this.a.jdField_a_of_type_JavaUtilList = ahmk.a(paramArrayList, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      ahmk.a(this.a.jdField_a_of_type_JavaLangString, paramInt);
-      ahmk.a(this.a.jdField_a_of_type_JavaLangString, paramArrayList);
-      paramArrayList = aenv.a(this.a).obtainMessage();
-      paramArrayList.what = 9;
-      paramArrayList.obj = null;
-      aenv.a(this.a).removeMessages(9);
-      aenv.a(this.a).sendMessage(paramArrayList);
-      return;
-    }
-    paramArrayList = aenv.a(this.a).obtainMessage();
-    paramArrayList.what = 10;
-    paramArrayList.obj = null;
-    aenv.a(this.a).sendMessage(paramArrayList);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onBandIntimateRelationship");
-    }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)) || (!paramBoolean))
-    {
-      QLog.d("intimate_relationship", 1, String.format("onBandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
-      return;
-    }
-    this.a.d();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, IntimateInfo paramIntimateInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onGetIntimateInfo");
-    }
-    if ((this.a.jdField_a_of_type_Auip != null) && (this.a.jdField_a_of_type_Auip.a() == 1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetIntimateInfo, in card mode, return");
-      }
-    }
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_Auip != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetIntimateInfo, mViewDelegate == null:" + aenv.b(this.a));
-      }
-    } while (aenv.b(this.a));
-    while ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)))
-    {
-      QLog.d("intimate_relationship", 1, String.format("onGetIntimateInfo return, friendUin: %s", new Object[] { paramString }));
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetIntimateInfo, mode: " + this.a.jdField_a_of_type_Auip.a());
-      }
-    }
-    if (paramBoolean)
-    {
-      paramString = aenv.a(this.a).obtainMessage();
-      paramString.what = 0;
-      paramString.obj = paramIntimateInfo;
-      aenv.a(this.a).removeMessages(0);
-      aenv.a(this.a).sendMessage(paramString);
-      return;
-    }
-    paramString = aenv.a(this.a).obtainMessage();
-    paramString.what = 1;
-    paramString.obj = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693726);
-    aenv.a(this.a).sendMessage(paramString);
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onDisbandIntimateRelationship");
-    }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)))
-    {
-      QLog.d("intimate_relationship", 1, String.format("onDisbandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
-      return;
-    }
-    Message localMessage = aenv.a(this.a).obtainMessage();
-    if (!paramBoolean1)
-    {
-      localMessage.what = 5;
-      aenv.a(this.a).sendMessage(localMessage);
-      return;
-    }
-    if (paramBoolean2)
-    {
-      this.a.d();
-      return;
-    }
-    localMessage.what = 6;
-    localMessage.obj = paramString;
-    aenv.a(this.a).sendMessage(localMessage);
-  }
-  
-  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos");
-    }
-    if ((this.a.jdField_a_of_type_Auip != null) && (this.a.jdField_a_of_type_Auip.a() == 1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, in card mode, return");
-      }
-    }
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_Auip != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mViewDelegate == null : " + aenv.b(this.a));
-      }
-    } while (aenv.b(this.a));
-    paramObject = null;
-    if ((paramBoolean) && (paramHashMap != null))
-    {
-      long l1 = 0L;
-      try
+      paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null)
       {
-        long l2 = Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue();
-        l1 = l2;
-      }
-      catch (NumberFormatException paramObject)
-      {
-        for (;;)
+        paramBundle = paramBundle.msgs;
+        if ((paramBundle != null) && (!paramBundle.isEmpty()))
         {
-          QLog.e("intimate_relationship", 2, "valueOf string err ");
+          ArrayList localArrayList = new ArrayList(paramBundle.size());
+          ReminderListFragment.a(this.a, paramBundle, localArrayList, true);
+          return;
         }
+        ReminderListFragment.b(this.a);
+        return;
       }
-    }
-    for (paramHashMap = (IntimateInfo)paramHashMap.get(Long.valueOf(l1));; paramHashMap = paramObject)
-    {
-      if (paramHashMap == null) {
-        break label272;
-      }
-      paramObject = aenv.a(this.a).obtainMessage();
-      paramObject.what = 0;
-      paramObject.obj = paramHashMap;
-      aenv.a(this.a).removeMessages(0);
-      aenv.a(this.a).sendMessage(paramObject);
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mode: " + this.a.jdField_a_of_type_Auip.a());
-      break;
-      QLog.e("intimate_relationship", 2, "onGetGroupIntimateInfos failed !");
-    }
-    label272:
-    paramHashMap = aenv.a(this.a).obtainMessage();
-    paramHashMap.what = 1;
-    paramHashMap.obj = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693726);
-    aenv.a(this.a).sendMessage(paramHashMap);
-  }
-  
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onHandleGetLoverIntimateInfo isSuccess = " + paramBoolean + " data = " + paramArrayOfObject);
-    }
-    if (paramBoolean)
-    {
-      Message localMessage = aenv.a(this.a).obtainMessage();
-      localMessage.what = 7;
-      localMessage.obj = paramArrayOfObject;
-      aenv.a(this.a).removeMessages(7);
-      aenv.a(this.a).sendMessage(localMessage);
+      ReminderListFragment.b(this.a);
       return;
     }
-    paramArrayOfObject = aenv.a(this.a).obtainMessage();
-    paramArrayOfObject.what = 8;
-    paramArrayOfObject.obj = null;
-    aenv.a(this.a).sendMessage(paramArrayOfObject);
+    ReminderListFragment.a(this.a, alud.a(2131713773));
   }
 }
 

@@ -1,17 +1,36 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class beuo
-  implements anoi
+class beuo
+  implements DialogInterface.OnDismissListener
 {
-  public beuo(ShareActionSheetV2 paramShareActionSheetV2) {}
+  private WeakReference<DialogInterface.OnDismissListener> a;
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public beuo(DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    if (paramBitmap == null) {
-      return;
+    this.a = new WeakReference(paramOnDismissListener);
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.a == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneProgressDialog", 2, "CustomDismissListener mDismissLis, lis is null");
+      }
     }
-    ShareActionSheetV2.a(this.a, paramString1, paramString2, paramBitmap);
+    do
+    {
+      return;
+      DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
+      if (localOnDismissListener != null)
+      {
+        localOnDismissListener.onDismiss(paramDialogInterface);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("QzoneProgressDialog", 2, "CustomDismissListener, lis is null");
   }
 }
 

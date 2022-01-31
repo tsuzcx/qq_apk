@@ -1,73 +1,181 @@
-import android.content.Context;
-import android.util.Log;
-import com.tencent.mobileqq.emoticonview.EmotionPanelListView;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.List;
 
 public class apsp
 {
-  private static apsp jdField_a_of_type_Apsp;
-  private List<EmotionPanelListView> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public static apsp a()
+  public static int a()
   {
-    if (jdField_a_of_type_Apsp == null) {}
-    try
+    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = apsj.a().a(1);
+    if ((localQQSysAndEmojiResInfo instanceof apso))
     {
-      if (jdField_a_of_type_Apsp == null) {
-        jdField_a_of_type_Apsp = new apsp();
+      int j = ((apso)localQQSysAndEmojiResInfo).c();
+      int i = j;
+      if (j == 0) {
+        i = azah.b.length;
       }
-      return jdField_a_of_type_Apsp;
+      return i;
     }
-    finally {}
+    return 0;
   }
   
-  public EmotionPanelListView a(Context paramContext)
+  public static int a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    int i = apsj.a().a(1).a(paramInt);
+    if (i == -1)
     {
-      paramContext = (EmotionPanelListView)this.jdField_a_of_type_JavaUtilList.remove(0);
-      if (QLog.isColorLevel()) {
-        Log.d("EmotionPanelListViewPool", "from listview pool and poolSize = " + this.jdField_a_of_type_JavaUtilList.size());
+      if (paramInt < azah.a.length) {
+        return azah.a[paramInt];
       }
-      return paramContext;
+      QLog.d("SysFaceUtil", 1, new Object[] { "unrecognized localId:", Integer.valueOf(paramInt) });
+      return paramInt;
     }
-    return new EmotionPanelListView(paramContext);
+    return i;
   }
   
-  public void a()
+  public static Drawable a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      Log.d("EmotionPanelListViewPool", "destory");
+    if (paramInt < 0) {
+      throw new IllegalArgumentException("invaid sysface static index: " + paramInt);
     }
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    Object localObject;
+    if (paramInt < bamd.jdField_a_of_type_Int)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList = null;
+      localObject = BaseApplicationImpl.getContext().getResources();
+      paramInt = bamd.b[paramInt];
+      if (BaseApplicationImpl.sImageCache != null) {
+        localObject = banh.a((Resources)localObject, paramInt);
+      }
     }
+    Drawable localDrawable;
+    do
+    {
+      return localObject;
+      return ((Resources)localObject).getDrawable(paramInt);
+      localDrawable = apsj.a().a(1).a(paramInt);
+      localObject = localDrawable;
+    } while (!QLog.isColorLevel());
+    QLog.d("SysFaceUtil", 2, "getFaceDrawable in new way");
+    return localDrawable;
   }
   
-  public void a(EmotionPanelListView paramEmotionPanelListView)
+  public static String a(int paramInt)
   {
-    if (paramEmotionPanelListView == null) {}
-    for (;;)
+    String str2 = apsj.a().a(1).a(paramInt);
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2))
     {
-      return;
-      if (this.jdField_a_of_type_JavaUtilList == null)
+      str1 = str2;
+      if (paramInt < bamd.jdField_a_of_type_ArrayOfJavaLangString.length) {
+        str1 = bamd.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      }
+    }
+    return str1;
+  }
+  
+  public static ArrayList<Integer> a()
+  {
+    Object localObject = apsj.a().a(1).a();
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
+      return localObject;
+    }
+    localObject = apzf.a();
+    ArrayList localArrayList = new ArrayList(localObject.length);
+    int i = 0;
+    while (i < localObject.length)
+    {
+      localArrayList.add(Integer.valueOf(localObject[i]));
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public static void a()
+  {
+    apsj.a().a(1).c();
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    Object localObject = apsj.a().a(1);
+    if ((localObject instanceof apso))
+    {
+      localObject = (apso)localObject;
+      try
       {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        this.jdField_a_of_type_JavaUtilList.add(paramEmotionPanelListView);
+        boolean bool = ((apso)localObject).b(paramInt);
+        return bool;
       }
-      while (QLog.isColorLevel())
+      catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
       {
-        Log.d("EmotionPanelListViewPool", "relase listview");
-        return;
-        if (!this.jdField_a_of_type_JavaUtilList.contains(paramEmotionPanelListView)) {
-          this.jdField_a_of_type_JavaUtilList.add(0, paramEmotionPanelListView);
-        }
+        return false;
       }
     }
+    return false;
+  }
+  
+  public static int b(int paramInt)
+  {
+    int i = apsj.a().a(1).b(paramInt);
+    if (i == -1)
+    {
+      if (paramInt < azah.b.length) {
+        return azah.b[paramInt];
+      }
+      QLog.d("SysFaceUtil", 1, new Object[] { "unrecognized serverId:", Integer.valueOf(paramInt) });
+      return paramInt;
+    }
+    return i;
+  }
+  
+  public static Drawable b(int paramInt)
+  {
+    if (paramInt < 0) {
+      throw new IllegalArgumentException("invaid sysface gif index: " + paramInt);
+    }
+    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = apsj.a().a(1);
+    if ((localQQSysAndEmojiResInfo instanceof apso)) {
+      return ((apso)localQQSysAndEmojiResInfo).b(paramInt);
+    }
+    return null;
+  }
+  
+  public static final String b(int paramInt)
+  {
+    return String.valueOf(new char[] { '\024', (char)paramInt });
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = apsj.a().a(1);
+    if ((localQQSysAndEmojiResInfo instanceof apso)) {
+      return ((apso)localQQSysAndEmojiResInfo).c(paramInt);
+    }
+    return false;
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    boolean bool = true;
+    if ((paramInt == 255) || (paramInt == 511) || (paramInt == 250)) {
+      bool = false;
+    }
+    int i;
+    do
+    {
+      return bool;
+      int j = apsj.a().a(1).a();
+      i = j;
+      if (j <= 0) {
+        i = 65535;
+      }
+    } while ((paramInt >= 0) && (paramInt <= i));
+    return false;
   }
 }
 

@@ -1,13 +1,6 @@
-public class akon
+public abstract interface akon
 {
-  public int a;
-  public String a;
-  
-  public akon(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

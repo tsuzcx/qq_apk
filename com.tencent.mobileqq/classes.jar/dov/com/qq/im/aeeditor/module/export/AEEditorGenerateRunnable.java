@@ -1,10 +1,10 @@
 package dov.com.qq.im.aeeditor.module.export;
 
-import blfg;
-import blgd;
-import bljc;
-import blkj;
-import blkl;
+import bljn;
+import blkk;
+import blno;
+import blov;
+import blox;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.tavcut.bean.Size;
 import com.tencent.tavcut.exporter.VideoExportConfig;
@@ -16,7 +16,7 @@ import com.tencent.weseevideo.model.MediaModel;
 public class AEEditorGenerateRunnable
   implements Runnable
 {
-  private blgd jdField_a_of_type_Blgd;
+  private blkk jdField_a_of_type_Blkk;
   private VideoExporter jdField_a_of_type_ComTencentTavcutExporterVideoExporter;
   private MediaModel jdField_a_of_type_ComTencentWeseevideoModelMediaModel;
   private final String jdField_a_of_type_JavaLangString = "AEEditorGenerateRunnable";
@@ -24,14 +24,14 @@ public class AEEditorGenerateRunnable
   private String c;
   private String d;
   
-  public AEEditorGenerateRunnable(String paramString1, String paramString2, String paramString3, MediaModel paramMediaModel, blgd paramblgd)
+  public AEEditorGenerateRunnable(String paramString1, String paramString2, String paramString3, MediaModel paramMediaModel, blkk paramblkk)
   {
-    blfg.b("AEEditorGenerateRunnable", "[AEEditorGenerateRunnable] new :" + paramString1);
+    bljn.b("AEEditorGenerateRunnable", "[AEEditorGenerateRunnable] new :" + paramString1);
     this.b = paramString1;
     this.c = paramString2;
     this.d = paramString3;
     this.jdField_a_of_type_ComTencentWeseevideoModelMediaModel = paramMediaModel;
-    this.jdField_a_of_type_Blgd = paramblgd;
+    this.jdField_a_of_type_Blkk = paramblkk;
   }
   
   public VideoExporter a()
@@ -44,27 +44,27 @@ public class AEEditorGenerateRunnable
     try
     {
       TAVCutVideoSession localTAVCutVideoSession = new TAVCutVideoSession();
-      blkl localblkl = blkj.a();
-      Size localSize = localblkl.a(VideoUtil.getVideoSize(this.c));
+      blox localblox = blov.a();
+      Size localSize = localblox.a(VideoUtil.getVideoSize(this.c));
       localTAVCutVideoSession.setMediaModel(this.jdField_a_of_type_ComTencentWeseevideoModelMediaModel);
       localTAVCutVideoSession.init(BaseApplicationImpl.getContext());
       VideoExportConfig localVideoExportConfig = new VideoExportConfig();
       localVideoExportConfig.setOutputPath(this.d);
       localVideoExportConfig.setSize(localSize.getWidth(), localSize.getHeight());
-      localVideoExportConfig.setBitRate(localblkl.b());
-      localVideoExportConfig.setFrameRate(localblkl.c());
+      localVideoExportConfig.setBitRate(localblox.b());
+      localVideoExportConfig.setFrameRate(localblox.c());
       localTAVCutVideoSession.applyCurrentSticker();
       this.jdField_a_of_type_ComTencentTavcutExporterVideoExporter = localTAVCutVideoSession.getExporter(localVideoExportConfig);
-      this.jdField_a_of_type_ComTencentTavcutExporterVideoExporter.export(new bljc(this, localTAVCutVideoSession));
+      this.jdField_a_of_type_ComTencentTavcutExporterVideoExporter.export(new blno(this, localTAVCutVideoSession));
       return;
     }
     catch (Exception localException)
     {
       do
       {
-        blfg.d("AEEditorGenerateRunnable", "[ERROR!!!!] generate error" + localException.getMessage());
-      } while (this.jdField_a_of_type_Blgd == null);
-      this.jdField_a_of_type_Blgd.a(this.b, -3);
+        bljn.d("AEEditorGenerateRunnable", "[ERROR!!!!] generate error" + localException.getMessage());
+      } while (this.jdField_a_of_type_Blkk == null);
+      this.jdField_a_of_type_Blkk.a(this.b, -3);
     }
   }
 }

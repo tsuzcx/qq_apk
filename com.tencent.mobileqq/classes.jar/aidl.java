@@ -1,44 +1,22 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.activity.history.tendoc.TenDocMessageResultAdapter;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-class aidl
-  implements bhqp
+public class aidl
+  implements TextWatcher
 {
-  aidl(aidj paramaidj) {}
+  public aidl(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TenDocMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
-    }
-    if ((aidj.a(this.a).getCount() <= 0) || (paramInt <= 0)) {
-      return;
-    }
-    paramAdapterView = (aicu)aidj.a(this.a).getItem(paramInt - 1);
-    if ((paramAdapterView != null) && (paramAdapterView.a != null))
-    {
-      paramAdapterView = paramAdapterView.a;
-      QLog.d("TenDocMessageSearchDialog", 4, "jump to mr: " + paramAdapterView.msgseq + " " + paramAdapterView.shmsgseq);
-      if (abot.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) {
-        ChatHistoryBubbleListForTroopFragment.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramAdapterView.shmsgseq, 0, 2);
-      }
-      for (;;)
-      {
-        azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A175", "0X800A175", aidj.a(this.a), 0, "", "", "s_qq_history_tab", "");
-        this.a.a(true);
-        return;
-        ChatHistoryActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.h, paramAdapterView.time, paramAdapterView.shmsgseq, 0);
-      }
-    }
-    QLog.e("TenDocMessageSearchDialog", 2, "null item: " + paramInt);
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.e(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

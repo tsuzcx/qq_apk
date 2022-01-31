@@ -1,19 +1,11 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
-
-class alwy
-  extends amky
+public class alwy
 {
-  alwy(alwx paramalwx, String paramString, boolean paramBoolean)
-  {
-    super(paramString, paramBoolean);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    QLog.d("RedpointHandler", 1, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
-    alwx.a(this.a, paramInt, paramSosoLbsInfo);
-  }
+  public int a;
+  public long a = 9223372036854775807L;
+  public String a;
+  public int b = 1000;
+  public int c;
+  public int d = -1;
 }
 
 

@@ -1,22 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class bmyf
-  implements ValueAnimator.AnimatorUpdateListener
+class bmyf
+  extends Handler
 {
-  public bmyf(SlideBottomPanel paramSlideBottomPanel, View paramView) {}
+  private WeakReference<bmye> a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bmyf(WeakReference<bmye> paramWeakReference)
   {
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if ((paramValueAnimator instanceof Float))
-    {
-      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a != null) {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a.fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.b - this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.j));
-      }
+    this.a = paramWeakReference;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.get() != null) {
+      bmye.a((bmye)this.a.get());
     }
   }
 }

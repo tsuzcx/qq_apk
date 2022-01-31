@@ -1,61 +1,31 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class bdxv
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public int a;
-  public String a;
-  public List<bdxx> a;
-  public boolean a;
-  public String b;
-  public String c;
+  public bdxv(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public bdxv()
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_Int = -30009;
-  }
-  
-  public bdxv(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Int = -30009;
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("msg");
-    if (paramJSONObject.optInt("openflag") == 1)
+    if (QLog.isColorLevel()) {
+      QLog.d("HealthBusinessPlugin", 2, "onVideoPrepared video");
+    }
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("ret", -30009);
-      this.c = paramJSONObject.optString("content");
-      this.b = paramJSONObject.optString("url");
-      paramJSONObject = paramJSONObject.optString("list");
-      if (!TextUtils.isEmpty(paramJSONObject)) {
-        break label96;
-      }
+      paramTVK_IMediaPlayer.pause();
+      this.a.jdField_a_of_type_AndroidOsHandler.post(this.a.b);
     }
     for (;;)
     {
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
       return;
-      bool = false;
-      break;
-      label96:
-      paramJSONObject = new JSONArray(paramJSONObject);
-      int j = paramJSONObject.length();
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      while (i < j)
-      {
-        JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
-        if (localJSONObject != null) {
-          this.jdField_a_of_type_JavaUtilList.add(new bdxx(localJSONObject.optString("num"), localJSONObject.optString("light")));
-        }
-        i += 1;
-      }
+      paramTVK_IMediaPlayer.start();
     }
-  }
-  
-  public String toString()
-  {
-    return "LiangHaoRsp{openFlag=" + this.jdField_a_of_type_Boolean + ", ret=" + this.jdField_a_of_type_Int + ", msg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", moreUrl='" + this.b + '\'' + ", content='" + this.c + '\'' + '}';
   }
 }
 

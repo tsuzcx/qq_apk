@@ -59,7 +59,7 @@ public class mcg
   {
     if (new File(paramString1).exists())
     {
-      if (!paramString2.equalsIgnoreCase(awiz.a(paramString1)))
+      if (!paramString2.equalsIgnoreCase(awni.a(paramString1)))
       {
         QLog.i("QavSo", 1, "checkFileValid failed. check md5 failed. filename = " + paramString1 + ", md5FromConfig = " + paramString2);
         return false;

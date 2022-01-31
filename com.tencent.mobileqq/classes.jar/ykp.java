@@ -1,28 +1,44 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.View;
-import android.widget.RadioGroup;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseBottomPersonalFragment;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedReq;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.qphone.base.util.QLog;
 
 public class ykp
-  implements ViewPager.OnPageChangeListener
+  extends ykr
 {
-  public ykp(RelativePersonalBottomView paramRelativePersonalBottomView) {}
+  private CertifiedAccountWrite.StPublishFeedReq a = new CertifiedAccountWrite.StPublishFeedReq();
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public ykp(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    
-    if ((RelativePersonalBottomView.a(this.a) != null) && (RelativePersonalBottomView.a(this.a).getChildCount() > paramInt)) {
-      RelativePersonalBottomView.a(this.a).getChildAt(paramInt).performClick();
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
     }
-    if (RelativePersonalBottomView.a(this.a).size() > paramInt) {
-      ((SubscribeBaseBottomPersonalFragment)RelativePersonalBottomView.a(this.a).get(paramInt)).a(paramInt);
+    if (paramStFeed != null) {
+      this.a.feed.set(paramStFeed);
     }
+  }
+  
+  public static CertifiedAccountWrite.StPublishFeedRsp a(byte[] paramArrayOfByte)
+  {
+    CertifiedAccountWrite.StPublishFeedRsp localStPublishFeedRsp = new CertifiedAccountWrite.StPublishFeedRsp();
+    try
+    {
+      paramArrayOfByte = (CertifiedAccountWrite.StPublishFeedRsp)localStPublishFeedRsp.mergeFrom(paramArrayOfByte);
+      return paramArrayOfByte;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CertifiedAccountGetMsgTopRequest", 2, "onResponse fail." + paramArrayOfByte);
+      }
+    }
+    return null;
+  }
+  
+  public byte[] a()
+  {
+    return this.a.toByteArray();
   }
 }
 

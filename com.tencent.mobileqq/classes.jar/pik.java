@@ -4,7 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class pik
-  implements ymm
+  implements yrb
 {
   pik(pih parampih, String paramString) {}
   

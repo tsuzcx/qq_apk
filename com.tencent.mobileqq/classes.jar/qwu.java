@@ -14,7 +14,7 @@ public class qwu
   public void a(List paramList, boolean paramBoolean)
   {
     qwp.a(this.a).a(paramList, paramBoolean);
-    bfrq.c(new SelectVideoPresenter.5.1(this));
+    bfvz.c(new SelectVideoPresenter.5.1(this));
   }
 }
 

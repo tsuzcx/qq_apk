@@ -1,20 +1,53 @@
-public class amxh
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
+import com.tencent.qphone.base.util.QLog;
+
+class amxh
+  implements andm
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  amxh(amxf paramamxf, ARCommonConfigInfo.NativeSoRes paramNativeSoRes) {}
   
-  public amxh()
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
+    andm localandm = amxf.a(this.jdField_a_of_type_Amxf, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localandm != null) {
+      localandm.a();
+    }
   }
   
-  public String toString()
+  public void a(long paramLong1, long paramLong2)
   {
-    return "ARCloudReqFileInfo{fileName='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileFormat=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", width=" + this.c + ", previewPath='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    andm localandm = amxf.a(this.jdField_a_of_type_Amxf, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localandm != null) {
+      localandm.a(paramLong1, paramLong2);
+    }
+  }
+  
+  public void a(boolean paramBoolean, andn paramandn)
+  {
+    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a + ", filename = " + paramandn.c + ", url = " + paramandn.a);
+    if (paramBoolean) {
+      if (!amxf.a(this.jdField_a_of_type_Amxf, paramandn.c, paramandn.b))
+      {
+        amxf.a(this.jdField_a_of_type_Amxf, paramandn.c);
+        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
+      }
+    }
+    andm localandm;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Amxf.a(paramandn.d, paramandn.c, paramandn.b) == 0) {}
+      localandm = amxf.a(this.jdField_a_of_type_Amxf, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    } while (localandm == null);
+    localandm.a(paramBoolean, paramandn);
+  }
+  
+  public void b()
+  {
+    andm localandm = amxf.a(this.jdField_a_of_type_Amxf, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localandm != null) {
+      localandm.b();
+    }
   }
 }
 

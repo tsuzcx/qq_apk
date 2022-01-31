@@ -64,7 +64,7 @@ public final class StructMsgForHypertext$HyperTextView
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag(2131377085);
+    Object localObject = paramView.getTag(2131377139);
     if ((localObject != null) && ((localObject instanceof StructMsgForHypertext)))
     {
       localObject = (StructMsgForHypertext)localObject;

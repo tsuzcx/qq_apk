@@ -1,16 +1,16 @@
 package com.tencent.qav.observer;
 
-import bfrn;
-import bfro;
+import bfvw;
+import bfvx;
 
 public class FilterableObservable$1
   implements Runnable
 {
-  public FilterableObservable$1(bfrn parambfrn, bfro parambfro, int paramInt, Object[] paramArrayOfObject) {}
+  public FilterableObservable$1(bfvw parambfvw, bfvx parambfvx, int paramInt, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bfro.update(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    this.jdField_a_of_type_Bfvx.update(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
   }
 }
 

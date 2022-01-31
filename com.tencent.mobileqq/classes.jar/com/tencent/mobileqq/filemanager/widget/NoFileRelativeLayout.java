@@ -12,8 +12,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import arqi;
-import badt;
+import arur;
+import baic;
 
 public class NoFileRelativeLayout
   extends RelativeLayout
@@ -40,14 +40,14 @@ public class NoFileRelativeLayout
   public NoFileRelativeLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramAttributeSet = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560636, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramAttributeSet.findViewById(2131371196));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet.findViewById(2131377566));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet.findViewById(2131377577));
-    badt.a(this.jdField_a_of_type_AndroidWidgetTextView, new arqi(this));
+    paramAttributeSet = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560654, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramAttributeSet.findViewById(2131371215));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet.findViewById(2131377620));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet.findViewById(2131377631));
+    baic.a(this.jdField_a_of_type_AndroidWidgetTextView, new arur(this));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramAttributeSet.findViewById(2131367933));
-    this.jdField_a_of_type_AndroidViewView = paramAttributeSet.findViewById(2131378129);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramAttributeSet.findViewById(2131367944));
+    this.jdField_a_of_type_AndroidViewView = paramAttributeSet.findViewById(2131378183);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   

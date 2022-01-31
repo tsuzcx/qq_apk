@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.report;
 
-import bgyg;
+import bhcn;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -28,7 +28,7 @@ public final class SDKMiniProgramLpReportDC04239$7
         str1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("actiontype");
         localObject = this.jdField_a_of_type_OrgJsonJSONObject.optString("sub_actiontype");
         String str2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("reserves_action");
-        bgyg.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, "1", null, str1, (String)localObject, str2);
+        bhcn.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, "1", null, str1, (String)localObject, str2);
       }
       return;
     }

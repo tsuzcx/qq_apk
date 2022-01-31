@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.flutter.launch;
 
-import artu;
+import aryd;
 
 public class QFlutterLauncher$4
   implements Runnable
 {
-  public QFlutterLauncher$4(artu paramartu, int paramInt, boolean paramBoolean) {}
+  public QFlutterLauncher$4(aryd paramaryd, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    artu.b(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    aryd.b(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
 }
 

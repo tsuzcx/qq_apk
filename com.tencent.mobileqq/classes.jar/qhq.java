@@ -36,7 +36,7 @@ public class qhq
   
   public static int a()
   {
-    return bewy.a(null);
+    return bfbh.a(null);
   }
   
   public static String a()

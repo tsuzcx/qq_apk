@@ -1,58 +1,47 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x938.cmd0x938.ClientConfig;
-import tencent.im.oidb.cmd0x938.cmd0x938.DataCardConfig;
-import tencent.im.oidb.cmd0x938.cmd0x938.RspBody;
 
 class auqj
-  extends mzz
+  implements awiq
 {
-  auqj(auqi paramauqi, aupr paramaupr) {}
+  auqj(auqc paramauqc, aupx paramaupx) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    boolean bool2 = true;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
+    if (this.jdField_a_of_type_Aupx.a != null)
     {
-      paramBundle = new cmd0x938.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (cmd0x938.ClientConfig)paramBundle.msg_client_config.get();
-      boolean bool1;
-      if (paramArrayOfByte.uint32_show_card.get() == 1)
+      String str = this.jdField_a_of_type_Auqc.a(this.jdField_a_of_type_Aupx.a.a);
+      aupy localaupy = this.jdField_a_of_type_Auqc.a(str);
+      if ((localaupy != null) && (!localaupy.a))
       {
-        bool1 = true;
-        if (paramArrayOfByte.uint32_show_list.get() != 1) {
-          break label208;
-        }
+        localaupy.c = (paramInt / 100);
+        this.jdField_a_of_type_Auqc.a(str, localaupy);
+        auqc.a(this.jdField_a_of_type_Auqc, localaupy, paramInt / 100);
       }
-      for (;;)
-      {
-        long l = paramArrayOfByte.uint64_next_time.get();
-        if (paramBundle.msg_datacard_config.has()) {
-          ((cmd0x938.DataCardConfig)paramBundle.msg_datacard_config.get()).uint32_entry_ability.get();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("Q..troop.faceScore", 2, "fetchGrayAbility onResult isShowCard=" + bool1 + "  isShowList=" + bool2 + "  expireTime=" + l);
-        }
-        paramArrayOfByte = new aups(bool1, bool2, l, paramArrayOfByte.bytes_list_jump_url.get().toStringUtf8(), paramArrayOfByte.bytes_card_url_h.get().toStringUtf8(), paramArrayOfByte.bytes_card_url_g.get().toStringUtf8());
-        this.jdField_a_of_type_Aupr.a(paramArrayOfByte);
-        return;
-        bool1 = false;
-        break;
-        label208:
-        bool2 = false;
-      }
-      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+  }
+  
+  public void a(awir paramawir)
+  {
+    int i = 0;
+    String str = "";
+    int k;
+    if (paramawir != null)
     {
-      paramArrayOfByte.printStackTrace();
+      k = paramawir.jdField_a_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiRichMediaSaveManager", 2, "isFilePreDownload shortVideoReq result = " + k);
+      }
+      j = k;
+      if (paramawir.jdField_a_of_type_Awjh != null)
+      {
+        i = paramawir.jdField_a_of_type_Awjh.jdField_a_of_type_Int;
+        str = paramawir.jdField_a_of_type_Awjh.b;
+      }
+    }
+    for (int j = k;; j = 0)
+    {
+      this.jdField_a_of_type_Auqc.a(this.jdField_a_of_type_Aupx, j, i, str);
+      return;
     }
   }
 }

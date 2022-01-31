@@ -1,29 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
 
-final class auzq
-  implements bevy
+public class auzq
+  implements View.OnClickListener
 {
-  auzq(String paramString, auzu paramauzu) {}
+  public auzq(RecentUserInvitePanel paramRecentUserInvitePanel, auzv paramauzv) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onClick(View paramView)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Auzu != null) {
-        this.jdField_a_of_type_Auzu.a(true);
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a.a(paramView, this.jdField_a_of_type_Auzv);
     }
-    label50:
-    while (this.jdField_a_of_type_Auzu == null) {
-      return;
-    }
-    this.jdField_a_of_type_Auzu.a(false);
   }
 }
 

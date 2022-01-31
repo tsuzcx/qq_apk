@@ -1,17 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.util.Pair;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class atqb
-  implements View.OnClickListener
+  implements atqh
 {
-  atqb(atpy paramatpy, View.OnClickListener paramOnClickListener) {}
+  atqb(atpw paramatpw, int paramInt, String paramString) {}
   
-  public void onClick(View paramView)
+  public Pair<Integer, String> a()
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    return new Pair(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public atpo a()
+  {
+    if (atpw.a(this.jdField_a_of_type_Atpw) == null) {
+      QLog.d("LocationHandler", 1, "[LocationManager] getLocation: invoked. location null detected");
     }
-    this.jdField_a_of_type_Atpy.b();
+    return new atpo(this.jdField_a_of_type_Atpw.app.c(), atpw.a(this.jdField_a_of_type_Atpw), atpw.a(this.jdField_a_of_type_Atpw));
   }
 }
 

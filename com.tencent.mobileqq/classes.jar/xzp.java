@@ -1,59 +1,104 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class xzp
-  implements ycg
+public class xzp
+  extends WtloginObserver
 {
-  xzp(xzn paramxzn) {}
+  public xzp(QRLoginAuthActivity paramQRLoginAuthActivity) {}
   
-  public void a(int paramInt)
+  public void OnCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null) {
-      this.a.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginAuthActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt);
     }
+    paramArrayOfByte1 = null;
+    paramString = paramArrayOfByte1;
+    if (paramInt == 0)
+    {
+      paramString = paramArrayOfByte1;
+      if (paramWUserSigInfo != null) {
+        paramString = WtloginHelper.getLoginTlvValue(paramWUserSigInfo, 54);
+      }
+    }
+    paramArrayOfByte1 = new Message();
+    paramWUserSigInfo = new Bundle();
+    paramWUserSigInfo.putInt("ret", paramInt);
+    paramWUserSigInfo.putByteArray("errMsg", paramArrayOfByte2);
+    if (paramString != null) {
+      paramWUserSigInfo.putByteArray("devInfo", paramString);
+    }
+    paramArrayOfByte1.setData(paramWUserSigInfo);
+    paramArrayOfByte1.what = 2;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramArrayOfByte1);
   }
   
-  public void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString)
+  public void OnException(String paramString, int paramInt)
   {
-    if (paramStGetFeedDetailRsp == null)
-    {
-      QLog.e(xzn.jdField_a_of_type_JavaLangString, 1, "onFeedResponse rsp is null");
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginAuthActivity", 2, "OnException e=" + paramString);
+    }
+    paramString = new Message();
+    paramString.what = 3;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+  }
+  
+  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginAuthActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
+    }
+    if (this.a.isFinishing()) {
       return;
     }
-    CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)paramStGetFeedDetailRsp.feed.get();
-    QLog.d(xzn.jdField_a_of_type_JavaLangString, 1, "onFeedResponse hideLoadingView!");
-    this.a.d();
-    boolean bool = xzn.a(this.a, paramLong, localStFeed);
-    String str = xzn.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder().append("isInterceptRspByFeedStatus ").append(bool).append(",status ");
-    if (localStFeed == null) {}
-    for (Object localObject = "none";; localObject = Integer.valueOf(localStFeed.status.get()))
+    this.a.jdField_a_of_type_JavaLangString = paramString;
+    paramErrMsg = null;
+    paramString = paramErrMsg;
+    if (paramArrayList != null)
     {
-      QLog.i(str, 2, localObject);
-      if (!bool) {
-        break;
+      paramString = paramErrMsg;
+      if (paramArrayList.size() > 0)
+      {
+        paramString = new ByteArrayOutputStream();
+        int i = 0;
+        for (;;)
+        {
+          if (i < paramArrayList.size()) {
+            try
+            {
+              paramString.write(HexUtil.hexStr2Bytes((String)paramArrayList.get(i)));
+              i += 1;
+            }
+            catch (Throwable paramErrMsg)
+            {
+              for (;;)
+              {
+                paramErrMsg.printStackTrace();
+              }
+            }
+          }
+        }
+        paramString = paramString.toByteArray();
       }
-      this.a.a(paramLong, paramString);
-      return;
     }
-    this.a.b(localStFeed);
-    xzn.a(this.a, paramStGetFeedDetailRsp.share);
-    xzn.a(this.a, paramStGetFeedDetailRsp.detailUrl.get());
-    xzn.b(this.a, paramStGetFeedDetailRsp.share);
-    this.a.a(localStFeed);
-    QLog.i(xzn.jdField_a_of_type_JavaLangString, 1, "isFinish:" + paramStGetFeedDetailRsp.isFinish.get() + " | recommend feeds size:" + paramStGetFeedDetailRsp.vecRcmdFeed.get().size());
-    this.a.a(paramStGetFeedDetailRsp, paramBoolean);
-    if (!paramBoolean) {
-      yvu.a(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + yjq.a(this.a.a()), "exp", 0, 0, new String[] { "", "", localStFeed.id.get(), localStFeed.title.get() });
-    }
-    this.a.d(true);
+    paramArrayList = new Message();
+    paramErrMsg = new Bundle();
+    paramErrMsg.putInt("ret", paramInt);
+    paramErrMsg.putByteArray("tlv", paramString);
+    paramErrMsg.putByteArray("appName", paramArrayOfByte1);
+    paramErrMsg.putByteArray("errMsg", paramArrayOfByte2);
+    paramArrayList.setData(paramErrMsg);
+    paramArrayList.what = 1;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramArrayList);
   }
 }
 

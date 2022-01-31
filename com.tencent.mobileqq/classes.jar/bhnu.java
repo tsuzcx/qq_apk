@@ -1,135 +1,174 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.AutoSaveUtils.1;
-import java.util.Collections;
-import java.util.HashSet;
+import com.tencent.qqprotect.qsec.FilterManager.1;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhnu
+  implements bhog
 {
-  private static Set<String> a(boolean paramBoolean)
+  private static volatile bhnu jdField_a_of_type_Bhnu;
+  private static String jdField_a_of_type_JavaLangString = "qp_fm_config";
+  private static String b = "_last_time";
+  private Map<String, bhnt> jdField_a_of_type_JavaUtilMap = new HashMap();
+  
+  private long a(String paramString, long paramLong)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("setting_auto_save_sp", 4);
-    if (paramBoolean) {}
-    for (String str = "qqsetting_auto_save_path_pic_key";; str = "qqsetting_auto_save_path_video_key") {
-      return bdiw.a(localSharedPreferences, str, new HashSet());
+    long l = -1L;
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences(jdField_a_of_type_JavaLangString, 0);
+    if (localSharedPreferences != null) {
+      l = localSharedPreferences.getLong(paramString + b, paramLong);
     }
+    return l;
   }
   
-  public static void a(String paramString, boolean paramBoolean)
+  public static bhnu a()
   {
-    a(paramString, paramBoolean, false);
-  }
-  
-  public static void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (a(paramBoolean1))
+    if (jdField_a_of_type_Bhnu == null) {}
+    try
     {
-      paramString = new AutoSaveUtils.1(paramString, paramBoolean1);
-      if (paramBoolean2) {
-        paramString.run();
+      if (jdField_a_of_type_Bhnu == null) {
+        jdField_a_of_type_Bhnu = new bhnu();
       }
+      return jdField_a_of_type_Bhnu;
     }
-    else
-    {
-      return;
-    }
-    ThreadManagerV2.executeOnFileThread(paramString);
+    finally {}
   }
   
-  private static void a(boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("setting_auto_save_sp", 4).edit();
-    if (paramBoolean) {}
-    for (String str = "qqsetting_auto_save_path_pic_key";; str = "qqsetting_auto_save_path_video_key")
-    {
-      localEditor.putStringSet(str, new HashSet());
-      localEditor.commit();
-      return;
-    }
-  }
-  
-  public static void a(boolean paramBoolean, String paramString)
+  private void a(String paramString)
   {
     if (paramString == null) {
       return;
     }
-    a(paramBoolean, Collections.singletonList(paramString));
+    paramString = new bhob(paramString);
+    bhne.a().cloudDetect(paramString, true, false, null);
   }
   
-  public static void a(boolean paramBoolean, List<String> paramList)
+  private boolean a(String paramString, long paramLong)
   {
-    if ((paramList == null) && (paramList.size() == 0)) {}
-    while (!a(paramBoolean)) {
-      return;
-    }
-    Set localSet = a(paramBoolean);
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    boolean bool = false;
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences(jdField_a_of_type_JavaLangString, 0);
+    if (localSharedPreferences != null)
     {
-      String str = (String)paramList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoSaveUtils", 2, "autoSaveMediaInSp: isPic " + paramBoolean + ",path=" + str);
-      }
-      if (localSet.contains(str)) {
-        a(str, paramBoolean);
-      }
+      localSharedPreferences.edit().putLong(paramString + b, paramLong).commit();
+      bool = true;
     }
-    a(paramBoolean);
+    return bool;
   }
   
-  public static void a(boolean paramBoolean1, boolean paramBoolean2)
+  public bhnt a(String paramString)
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("setting_auto_save_sp", 4).edit();
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramBoolean1) {}
-    for (String str = "qqsetting_auto_save_pic_key";; str = "qqsetting_auto_save_video_key")
+    return (bhnt)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+  }
+  
+  public bhof a(String paramString)
+  {
+    bhoh localbhoh = null;
+    if (paramString.equalsIgnoreCase("App")) {
+      localbhoh = new bhoh(this);
+    }
+    return localbhoh;
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      localEditor.putBoolean(str + BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramBoolean2);
-      localEditor.commit();
-      return;
+      Object localObject = (String)localIterator.next();
+      long l1 = a((String)localObject, -1L);
+      if (l1 != -1L)
+      {
+        long l2 = new Date().getTime();
+        bhnt localbhnt = a((String)localObject);
+        if ((localbhnt != null) && (l2 - l1 < localbhnt.a() * 1000L))
+        {
+          QLog.d("QSFM", 1, String.format("scan not start: %s:%d-%d=%d:%d", new Object[] { localObject, Long.valueOf(l2), Long.valueOf(l1), Long.valueOf(l2 - l1), Long.valueOf(localbhnt.a() * 1000L) }));
+          continue;
+        }
+      }
+      localObject = a((String)localObject);
+      if (localObject != null) {
+        ThreadManager.post(new FilterManager.1(this, (bhof)localObject), 5, null, true);
+      }
     }
   }
   
-  public static boolean a(boolean paramBoolean)
+  public void a(String paramString, Object paramObject)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("setting_auto_save_sp", 4);
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramBoolean) {}
-    for (String str = "qqsetting_auto_save_pic_key";; str = "qqsetting_auto_save_video_key") {
-      return localSharedPreferences.getBoolean(str + BaseApplicationImpl.getApplication().getRuntime().getAccount(), false);
+    a(paramString, new Date().getTime());
+    QLog.d("QSFM", 1, String.format("scan started: %s", new Object[] { paramString }));
+  }
+  
+  public boolean a(byte[] paramArrayOfByte)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilMap.clear();
+      paramArrayOfByte = new JSONArray(new String(paramArrayOfByte));
+      if (paramArrayOfByte != null)
+      {
+        int i = 0;
+        while (i < paramArrayOfByte.length())
+        {
+          JSONObject localJSONObject = paramArrayOfByte.getJSONObject(i);
+          if ((localJSONObject != null) && (localJSONObject.has("type"))) {
+            this.jdField_a_of_type_JavaUtilMap.put(localJSONObject.getString("type"), new bhnt(localJSONObject));
+          }
+          i += 1;
+        }
+      }
+      return true;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return false;
+  }
+  
+  public void b(String paramString, Object paramObject)
+  {
+    if (paramObject != null)
+    {
+      bhnt localbhnt = a(paramString);
+      if ((localbhnt != null) && (localbhnt.a(paramObject)))
+      {
+        a(bhns.a(paramObject, "packageName").toString());
+        if (localbhnt.a() > 100000)
+        {
+          bhmx localbhmx = new bhmx();
+          Iterator localIterator = localbhnt.a().iterator();
+          if (localIterator.hasNext())
+          {
+            paramString = bhns.b(paramObject, (String)localIterator.next());
+            if (paramString != null) {}
+            for (paramString = paramString.toString();; paramString = "")
+            {
+              localbhmx.a(paramString);
+              break;
+            }
+          }
+          bhmu.a(localbhmx.toString(), localbhnt.a());
+        }
+      }
     }
   }
   
-  public static void b(boolean paramBoolean, String paramString)
+  public void c(String paramString, Object paramObject)
   {
-    HashSet localHashSet;
-    SharedPreferences.Editor localEditor;
-    if (a(paramBoolean))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoSaveUtils", 2, "addAutoSavePath: isPic " + paramBoolean + ",tempPath=" + paramString);
-      }
-      localHashSet = new HashSet(a(paramBoolean));
-      localHashSet.add(paramString);
-      localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("setting_auto_save_sp", 4).edit();
-      if (!paramBoolean) {
-        break label104;
-      }
-    }
-    label104:
-    for (paramString = "qqsetting_auto_save_path_pic_key";; paramString = "qqsetting_auto_save_path_video_key")
-    {
-      bdiw.a(localEditor, paramString, localHashSet);
-      localEditor.commit();
-      return;
-    }
+    QLog.d("QSFM", 1, String.format("scan completed: %s", new Object[] { paramString }));
+    bhne.a().flushRequest();
   }
 }
 

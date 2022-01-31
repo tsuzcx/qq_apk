@@ -1,46 +1,24 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ahdc
-  extends ahad
+  implements DialogInterface.OnClickListener
 {
-  public ahdc(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    super(paramContext, paramQQAppInterface, paramBoolean);
-  }
+  public ahdc(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  protected int a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return 10028;
-  }
-  
-  protected void a(RecommendTroopItem paramRecommendTroopItem)
-  {
-    super.a(paramRecommendTroopItem);
-    azmj.b(null, "dc00899", "Grp_find_new", "", "grptab", "Clk_join", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
-  }
-  
-  protected int b()
-  {
-    return 21;
-  }
-  
-  protected void b(RecommendTroopItem paramRecommendTroopItem)
-  {
-    super.b(paramRecommendTroopItem);
-    azmj.b(null, "dc00899", "Grp_recom", "", "search", "recom_clk_add", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
-  }
-  
-  protected int c()
-  {
-    return 10003;
-  }
-  
-  protected void c(RecommendTroopItem paramRecommendTroopItem)
-  {
-    super.c(paramRecommendTroopItem);
-    azmj.b(null, "dc00899", "Grp_find_new", "", "grptab", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+    if (!bdin.g(this.a.getApplicationContext())) {
+      QQToast.a(this.a, 2131695131, 1).a();
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      this.a.f();
+    }
   }
 }
 

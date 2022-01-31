@@ -1,14 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afrc
-  implements View.OnClickListener
+class afrc
+  extends afuf
 {
-  public void onClick(View paramView)
+  afrc(afpy paramafpy)
   {
-    ThreadManager.post(new MarketFaceItemBuilder.7.1(this), 5, null, true);
+    super(paramafpy, null);
+  }
+  
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afid(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

@@ -1,50 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.provider.LocalPhotoGroupData;
-import java.util.ArrayList;
 
-final class azmh
-  implements bjmq
+class azmh
+  extends baot
 {
-  azmh(QQAppInterface paramQQAppInterface) {}
+  azmh(azmg paramazmg) {}
   
-  public void onWebEvent(String paramString, Bundle paramBundle)
+  public boolean a(int paramInt)
   {
-    if ((paramBundle == null) || (!paramBundle.containsKey("data")))
-    {
-      QLog.e("[PhotoAlbum]QZoneReport", 1, "onWebEvent data == null || !data.containsKey(\"data\")");
-      return;
-    }
-    paramBundle = paramBundle.getBundle("data");
-    if (paramBundle == null)
-    {
-      QLog.e("[PhotoAlbum]QZoneReport", 1, "onWebEvent getTravelGroup bundle is empty");
-      return;
-    }
-    boolean bool;
-    if ("cmd.getTravelGroup".equals(paramString))
-    {
-      QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent CMD_GET_TRAVEL_GROUP");
-      paramString = (LocalPhotoGroupData)paramBundle.getSerializable("groupData");
-      if ((paramString == null) || (paramString.pathList == null) || (paramString.pathList.size() == 0))
-      {
-        QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent localPhotoGroupData == null");
-        bool = false;
-      }
-    }
-    for (;;)
-    {
-      azmg.a(this.a, bool);
-      bjmn.a().b(this);
-      return;
-      QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent localPhotoGroupData:" + paramString.toString());
-      LocalMultiProcConfig.putLong("SP_LAST_UPDATE_TIME", paramString.startTime);
-      bool = true;
-      continue;
-      bool = false;
-    }
+    QLog.i("SimpleUILog.SimpleUIHandler", 1, String.format("emptyCallback postSwitch %d", new Object[] { Integer.valueOf(paramInt) }));
+    azmg.a(this.a, azmg.a(this.a), -2147483648, azmg.b(this.a), -2147483648, null, -2147483648);
+    return super.a(paramInt);
   }
 }
 

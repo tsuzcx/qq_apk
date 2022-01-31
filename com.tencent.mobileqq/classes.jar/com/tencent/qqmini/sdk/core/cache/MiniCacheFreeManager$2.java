@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.cache;
 
-import bgiv;
+import bgnc;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public final class MiniCacheFreeManager$2
@@ -10,13 +10,13 @@ public final class MiniCacheFreeManager$2
   
   public void run()
   {
-    bgiv.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-    bgiv.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-    bgiv.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-    bgiv.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-    bgiv.c(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+    bgnc.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+    bgnc.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+    bgnc.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+    bgnc.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+    bgnc.c(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
     if (this.jdField_a_of_type_Boolean) {
-      bgiv.d(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+      bgnc.d(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
     }
   }
 }

@@ -1,18 +1,35 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
+import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
+import java.util.ArrayList;
 
-class yoq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class yoq
+  extends yhw
 {
-  yoq(yom paramyom) {}
+  public yoq(CommodityListView paramCommodityListView) {}
   
-  public void onGlobalLayout()
+  public yhx a(ViewGroup paramViewGroup, int paramInt)
   {
-    int i = this.a.d.getMeasuredWidth();
-    i = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() - i - bdcq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 5.0F));
-    this.a.c.setMaxWidth(i);
-    this.a.c.setText(new bahs(this.a.jdField_a_of_type_Bbnp.h, 16).a());
+    paramViewGroup = new CommodityItemView(this.a.getContext());
+    paramViewGroup.setIsPublishUI(CommodityListView.a(this.a));
+    paramViewGroup.setCurrentFeed(CommodityListView.a(this.a));
+    return new yhx(this, paramViewGroup);
+  }
+  
+  public int getItemCount()
+  {
+    return this.mDataList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if (!bhrz.a(paramInt, this.mDataList))
+    {
+      ((CommodityItemView)paramViewHolder.itemView).setData(this.mDataList.get(paramInt));
+      ((CommodityItemView)paramViewHolder.itemView).b().setOnClickListener(new yor(this, paramInt));
+    }
   }
 }
 

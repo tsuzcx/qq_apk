@@ -1,18 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-final class bire
-  implements View.OnClickListener
+public abstract interface bire
+  extends birl
 {
-  bire(Dialog paramDialog, String paramString) {}
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidAppDialog != null) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d(String paramString);
 }
 
 

@@ -1,27 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.2;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.FriendCardApolloViewController;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class akqm
-  implements View.OnClickListener
+  extends bdul
 {
-  public akqm(CmGameLoadingView.2 param2) {}
+  private java.lang.ref.WeakReference<FriendCardApolloViewController> a;
   
-  public void onClick(View paramView)
+  public akqm(FriendCardApolloViewController paramFriendCardApolloViewController)
   {
-    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-    this.a.this$0.setProgressViewVisibility(true);
-    if (this.a.jdField_a_of_type_Aknu != null) {
-      this.a.jdField_a_of_type_Aknu.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.mLoadingOnMainProcess)) {
-      ApolloGameUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    this.a = new mqq.util.WeakReference(paramFriendCardApolloViewController);
+  }
+  
+  protected void onGetExploreMsg(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendCardApolloViewController", 1, "[onGetExploreMsg] get info end");
+        }
+        paramObject = new JSONObject((String)paramObject);
+        if (paramObject.optInt("entry_id", -1) != 2) {
+          return;
+        }
+        FriendCardApolloViewController localFriendCardApolloViewController = (FriendCardApolloViewController)this.a.get();
+        if (localFriendCardApolloViewController == null) {
+          return;
+        }
+        FriendCardApolloViewController.a(localFriendCardApolloViewController, paramObject.optString("icon_url"));
+        QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] iconUrl:" + FriendCardApolloViewController.a(localFriendCardApolloViewController));
+        return;
+      }
+      catch (Exception paramObject) {}
+    } else if (QLog.isColorLevel()) {
+      QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] result:" + paramBoolean);
     }
   }
 }

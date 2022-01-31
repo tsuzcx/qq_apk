@@ -13,7 +13,7 @@ import android.os.ParcelUuid;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.SparseArray;
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +32,7 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
   extends BluetoothGattCallback
 {
   List<Integer> blueToothConnListeners = new ArrayList();
-  Map<Integer, bgkd> blueToothServiceListeners = new HashMap();
+  Map<Integer, bgok> blueToothServiceListeners = new HashMap();
   Runnable connTimeoutJob;
   BluetoothGatt gatt;
   long lastConnectionTime;
@@ -139,14 +139,14 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
     return "";
   }
   
-  public void getServices(bgkd parambgkd)
+  public void getServices(bgok parambgok)
   {
-    QMLog.d("BluetoothJsPlugin", "BluetoothDeviceExtend.getServices callbackId=" + parambgkd.b);
+    QMLog.d("BluetoothJsPlugin", "BluetoothDeviceExtend.getServices callbackId=" + parambgok.b);
     if (this.gatt == null) {
       throw new RuntimeException("getService exception, state=" + this.state + ",gatt=" + this.gatt);
     }
-    if (!this.blueToothServiceListeners.containsKey(Integer.valueOf(parambgkd.b))) {
-      this.blueToothServiceListeners.put(Integer.valueOf(parambgkd.b), parambgkd);
+    if (!this.blueToothServiceListeners.containsKey(Integer.valueOf(parambgok.b))) {
+      this.blueToothServiceListeners.put(Integer.valueOf(parambgok.b), parambgok);
     }
     if (this.services != null) {
       onServicesDiscovered(this.gatt, 0);
@@ -156,11 +156,11 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
       return;
       if (this.lastConnectionTime + 600L > System.currentTimeMillis())
       {
-        BluetoothJsPlugin.access$400(this.this$0).postDelayed(new BluetoothJsPlugin.BluetoothDeviceExtend.2(this, parambgkd), 600L);
+        BluetoothJsPlugin.access$400(this.this$0).postDelayed(new BluetoothJsPlugin.BluetoothDeviceExtend.2(this, parambgok), 600L);
         return;
       }
     } while (this.gatt.discoverServices());
-    parambgkd.b();
+    parambgok.b();
   }
   
   public boolean notifyBLECharacteristicValueChange(BluetoothGattCharacteristic paramBluetoothGattCharacteristic, boolean paramBoolean)
@@ -349,12 +349,12 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
     //   212: iload_2
     //   213: invokestatic 143	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   216: invokeinterface 409 2 0
-    //   221: checkcast 236	bgkd
+    //   221: checkcast 236	bgok
     //   224: astore 6
     //   226: iload 4
     //   228: ifeq +52 -> 280
     //   231: aload 6
-    //   233: invokevirtual 412	bgkd:a	()Ljava/lang/String;
+    //   233: invokevirtual 412	bgok:a	()Ljava/lang/String;
     //   236: pop
     //   237: goto -89 -> 148
     //   240: astore 5
@@ -381,7 +381,7 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
     //   275: istore 4
     //   277: goto -147 -> 130
     //   280: aload 6
-    //   282: invokevirtual 277	bgkd:b	()Ljava/lang/String;
+    //   282: invokevirtual 277	bgok:b	()Ljava/lang/String;
     //   285: pop
     //   286: goto -138 -> 148
     //   289: aload_0
@@ -420,7 +420,7 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
     //   146	13	5	localIterator	Iterator
     //   240	5	5	localObject1	Object
     //   249	5	5	localObject2	Object
-    //   224	57	6	localbgkd	bgkd
+    //   224	57	6	localbgok	bgok
     // Exception table:
     //   from	to	target	type
     //   137	148	240	finally
@@ -490,10 +490,10 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
             break label273;
           }
           paramInt = ((Integer)paramBluetoothGatt.next()).intValue();
-          localObject2 = (bgkd)this.blueToothServiceListeners.get(Integer.valueOf(paramInt));
+          localObject2 = (bgok)this.blueToothServiceListeners.get(Integer.valueOf(paramInt));
           if (localObject1 != null)
           {
-            ((bgkd)localObject2).a((JSONObject)localObject1);
+            ((bgok)localObject2).a((JSONObject)localObject1);
             continue;
             bool = false;
             break;
@@ -506,7 +506,7 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
           }
           catch (JSONException localJSONException) {}
         }
-        ((bgkd)localObject2).b();
+        ((bgok)localObject2).b();
       }
       label273:
       return;

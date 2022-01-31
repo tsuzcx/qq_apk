@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.report;
 
-import bgya;
+import bhch;
 
 public final class MiniAppReportManager2$3
   implements Runnable
 {
   public void run()
   {
-    bgya.a().c();
+    bhch.a().c();
   }
 }
 

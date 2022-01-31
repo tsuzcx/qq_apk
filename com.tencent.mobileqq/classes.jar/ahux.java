@@ -1,37 +1,18 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-class ahux
-  implements army
+public class ahux
 {
-  ahux(ahuw paramahuw, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void a()
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      this.jdField_a_of_type_Ahuw.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    allz localallz;
-    ArrayList localArrayList;
+    if (paramQQAppInterface == null) {}
     do
     {
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
-      }
-      localallz = (allz)this.jdField_a_of_type_Ahuw.a.a.a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localallz.a(localArrayList));
-    armz.a(2131692744);
-    return;
-    this.jdField_a_of_type_Ahuw.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      auwq.a(paramQQAppInterface.getAccount(), "sp_key_card_redpoint_count", Integer.valueOf(paramInt));
+    } while (!QLog.isColorLevel());
+    QLog.i("CardUtil", 2, String.format("updateCardRedPoint count:%d", new Object[] { Integer.valueOf(paramInt) }));
   }
-  
-  public void b() {}
 }
 
 

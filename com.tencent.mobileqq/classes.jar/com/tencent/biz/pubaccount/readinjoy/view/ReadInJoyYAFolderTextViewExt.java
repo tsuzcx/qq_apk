@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.text.DynamicLayout;
@@ -17,8 +17,8 @@ import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView.BufferType;
-import baig;
-import bain;
+import bamp;
+import bamw;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -39,7 +39,7 @@ public class ReadInJoyYAFolderTextViewExt
   private List<ClickableSpan> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString = alpo.a(2131713264);
+  private String jdField_b_of_type_JavaLangString = alud.a(2131713276);
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = 0;
   private int d = -1;
@@ -65,7 +65,7 @@ public class ReadInJoyYAFolderTextViewExt
   
   private SpannableStringBuilder a(SpannableStringBuilder paramSpannableStringBuilder)
   {
-    Object localObject = (bain[])paramSpannableStringBuilder.getSpans(0, paramSpannableStringBuilder.length(), bain.class);
+    Object localObject = (bamw[])paramSpannableStringBuilder.getSpans(0, paramSpannableStringBuilder.length(), bamw.class);
     int i = paramSpannableStringBuilder.length();
     if ((localObject != null) && (localObject.length > 0))
     {
@@ -372,9 +372,9 @@ public class ReadInJoyYAFolderTextViewExt
         paramInt2 = getMeasuredHeight();
         if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Int)
         {
-          paramInt1 = this.jdField_a_of_type_Int * getLineHeight() + i + aekt.a(8.5F, getResources());
+          paramInt1 = this.jdField_a_of_type_Int * getLineHeight() + i + aepi.a(8.5F, getResources());
           if (this.jdField_c_of_type_Int != 0) {
-            paramInt1 = (this.jdField_a_of_type_Int + 1) * getLineHeight() + i + aekt.a(8.5F, getResources());
+            paramInt1 = (this.jdField_a_of_type_Int + 1) * getLineHeight() + i + aepi.a(8.5F, getResources());
           }
           if ((paramInt2 > 0) && (paramInt1 > paramInt2))
           {
@@ -515,7 +515,7 @@ public class ReadInJoyYAFolderTextViewExt
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
     Object localObject = paramCharSequence;
-    if ((paramCharSequence instanceof baig)) {
+    if ((paramCharSequence instanceof bamp)) {
       localObject = new SpannableStringBuilder(paramCharSequence);
     }
     super.setText((CharSequence)localObject, paramBufferType);

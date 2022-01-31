@@ -1,22 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Looper;
+import android.os.MessageQueue;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class acpd
-  implements DialogInterface.OnClickListener
+  implements View.OnLayoutChangeListener
 {
-  public acpd(DialogActivity paramDialogActivity) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public acpd(ChatSettingForTroop paramChatSettingForTroop) {}
+  
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList conform to setting.");
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent("android.settings.IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS", Uri.parse("package:" + this.a.getPackageName()));
-    this.a.startActivity(paramDialogInterface);
-    this.a.finish();
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      Looper.myQueue().addIdleHandler(new acpe(this));
+      this.jdField_a_of_type_Boolean = true;
+    }
   }
 }
 

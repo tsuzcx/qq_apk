@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
-import aajy;
-import aano;
+import aaon;
+import aasd;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,7 +27,7 @@ class AdProxyImpl$SDKInterstitialAdView
   String mEntryPath;
   String mGdtCookie;
   AdProxy.InterstitialADLisener mInterstitialAdListener;
-  aajy mInterstitialAdView;
+  aaon mInterstitialAdView;
   String mPosid;
   String mRefer;
   String mReportData;
@@ -53,7 +53,7 @@ class AdProxyImpl$SDKInterstitialAdView
   
   private GdtHandler.Options getClickOption(JSONObject paramJSONObject)
   {
-    Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject));
+    Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject));
     paramJSONObject = new GdtHandler.Options();
     paramJSONObject.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject);
     paramJSONObject.jdField_a_of_type_Boolean = true;

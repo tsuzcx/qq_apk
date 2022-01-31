@@ -1,21 +1,16 @@
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
-class aydd
+public class aydd
   implements View.OnClickListener
 {
-  aydd(aydb paramaydb, ayjg paramayjg) {}
+  public aydd(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
   public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Ayjg.d))
-    {
-      ayrd.a(this.jdField_a_of_type_Aydb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aydb.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ayjg.d);
-      ayrd.a("hot_list", "clk_title", new String[] { String.valueOf(1), String.valueOf(this.jdField_a_of_type_Aydb.jdField_a_of_type_Int) });
-      return;
-    }
-    ayrd.a("hot_list", "clk_title", new String[] { String.valueOf(2), String.valueOf(this.jdField_a_of_type_Aydb.jdField_a_of_type_Int) });
+    azqs.b(null, "dc00898", "", "", "0X800A98A", "0X800A98A", 1, 0, "0", "0", "", "");
+    SignatureHistoryFragment.d(this.a, true);
   }
 }
 

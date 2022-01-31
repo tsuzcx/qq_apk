@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.Doraemon.impl;
 
-import absu;
-import abte;
-import atzw;
+import abxj;
+import abxt;
+import auef;
 
 public class DefaultDoraemonAppInfoHelper$2
   implements Runnable
 {
-  public DefaultDoraemonAppInfoHelper$2(absu paramabsu, abte paramabte, atzw paramatzw) {}
+  public DefaultDoraemonAppInfoHelper$2(abxj paramabxj, abxt paramabxt, auef paramauef) {}
   
   public void run()
   {
-    abte localabte = this.jdField_a_of_type_Abte;
-    atzw localatzw = this.jdField_a_of_type_Atzw;
-    if (this.jdField_a_of_type_Atzw.c == 1) {}
+    abxt localabxt = this.jdField_a_of_type_Abxt;
+    auef localauef = this.jdField_a_of_type_Auef;
+    if (this.jdField_a_of_type_Auef.c == 1) {}
     for (int i = 2;; i = 3)
     {
-      localabte.a(localatzw, i);
+      localabxt.a(localauef, i);
       return;
     }
   }

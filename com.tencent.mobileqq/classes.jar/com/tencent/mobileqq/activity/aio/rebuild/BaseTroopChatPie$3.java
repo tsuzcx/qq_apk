@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agiu;
-import bclk;
+import agnj;
+import bcpt;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class BaseTroopChatPie$3
   implements Runnable
 {
-  public BaseTroopChatPie$3(agiu paramagiu, bclk parambclk) {}
+  public BaseTroopChatPie$3(agnj paramagnj, bcpt parambcpt) {}
   
   public void run()
   {

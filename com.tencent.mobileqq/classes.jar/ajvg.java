@@ -1,14 +1,10 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
-
-public class ajvg
-  extends akee
+public abstract interface ajvg
 {
-  public CheckBox a;
-  public TextView a;
+  public abstract void a();
   
-  private ajvg(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
 }
 
 

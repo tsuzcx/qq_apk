@@ -1,6 +1,24 @@
-public abstract interface bepu
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.FolderTextView;
+
+public class bepu
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public bepu(FolderTextView paramFolderTextView) {}
+  
+  public void onClick(View paramView)
+  {
+    if (FolderTextView.a(this.a) == 0) {
+      FolderTextView.a(this.a, 1);
+    }
+    for (;;)
+    {
+      FolderTextView.a(this.a);
+      return;
+      FolderTextView.a(this.a, 0);
+    }
+  }
 }
 
 

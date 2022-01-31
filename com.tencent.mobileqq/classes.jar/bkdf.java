@@ -1,15 +1,24 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
 
-class bkdf
-  implements View.OnTouchListener
+public class bkdf
+  implements bhuk
 {
-  bkdf(bkdd parambkdd) {}
+  public bkdf(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, bhuf parambhuf) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    return paramMotionEvent.getAction() == 2;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.e();
+      return;
+      TroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, 29954);
+      continue;
+      this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_Int);
+    }
   }
 }
 

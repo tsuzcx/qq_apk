@@ -1,32 +1,20 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.microapp.sdk.OnUpdateListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TopayManager.5.1;
 
-class aiws
-  implements OnUpdateListener
+public class aiws
+  implements DialogInterface.OnClickListener
 {
-  aiws(aiwk paramaiwk, ResultReceiver paramResultReceiver) {}
+  public aiws(TopayManager.5.1 param1) {}
   
-  public void onCheckForUpdate(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    switch (paramInt)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("action", 0);
-      localBundle.putBoolean("res", paramBoolean);
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
+    default: 
+      return;
     }
-  }
-  
-  public void onUpdateSucc(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("action", 1);
-      localBundle.putBoolean("res", paramBoolean);
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

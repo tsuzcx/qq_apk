@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.report;
 
-import bgyg;
+import bhcn;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -17,7 +17,7 @@ public final class SDKMiniProgramLpReportDC04239$8
       QMLog.d("MiniProgramLpReportDC04239", "reportApiInvoke() called with args: " + this.jdField_a_of_type_JavaLangString);
     }
     if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null) {
-      bgyg.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, bgyg.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo), null, "inner-app", "from_api", this.jdField_a_of_type_JavaLangString);
+      bhcn.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, bhcn.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo), null, "inner-app", "from_api", this.jdField_a_of_type_JavaLangString);
     }
   }
 }

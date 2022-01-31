@@ -1,25 +1,23 @@
-import android.graphics.Rect;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Point;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
-class aofe
-  implements Comparator<Rect>
+public class aofe
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aofe(aofb paramaofb) {}
+  public aofe(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout1, ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout2, Point paramPoint, LinearLayout.LayoutParams paramLayoutParams, int paramInt) {}
   
-  public int a(Rect paramRect1, Rect paramRect2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
-    do
-    {
-      return -1;
-      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
-        return 1;
-      }
-    } while (paramRect1.width() > paramRect2.width());
-    if (paramRect1.width() < paramRect2.width()) {
-      return 1;
+    int i = (int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * (ColorNoteSmallScreenRelativeLayout.b(this.b) / 2));
+    int j = ColorNoteSmallScreenRelativeLayout.a(this.b, this.b.e());
+    int k = ColorNoteSmallScreenRelativeLayout.c(this.b);
+    if (ColorNoteSmallScreenRelativeLayout.a(this.b) != null) {
+      ColorNoteSmallScreenRelativeLayout.a(this.b).a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout, this.jdField_a_of_type_AndroidGraphicsPoint.x - i, this.jdField_a_of_type_AndroidGraphicsPoint.y, j + this.jdField_a_of_type_AndroidGraphicsPoint.x - i, k + this.jdField_a_of_type_AndroidGraphicsPoint.y);
     }
-    return 0;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = (this.jdField_a_of_type_Int + i);
   }
 }
 

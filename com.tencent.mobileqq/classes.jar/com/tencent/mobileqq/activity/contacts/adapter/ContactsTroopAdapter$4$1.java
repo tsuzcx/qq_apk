@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import ahnd;
+import ahrs;
 
 class ContactsTroopAdapter$4$1
   implements Runnable

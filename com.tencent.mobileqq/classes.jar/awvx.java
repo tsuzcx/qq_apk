@@ -1,17 +1,28 @@
+import android.content.res.Resources;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+import com.tencent.mobileqq.profile.view.VipTagView;
+
 public class awvx
-  implements alkr
+  implements Animation.AnimationListener
 {
-  public void a(boolean paramBoolean, Object paramObject) {}
+  public awvx(ProfileTagView paramProfileTagView, VipTagView paramVipTagView) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBoolean, paramObject);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a.a != 0) {
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setTagColor(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.getResources().getColor(2131166488), this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.getResources().getColor(2131166486));
+    }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

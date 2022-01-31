@@ -1,54 +1,17 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class ahpw
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public ahpw(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView, structmsg.SystemMsg paramSystemMsg) {}
   
-  public JSONObject a()
+  public void onClick(View paramView)
   {
-    try
-    {
-      localJSONObject = new JSONObject();
-      localJSONException1.printStackTrace();
-    }
-    catch (JSONException localJSONException1)
-    {
-      try
-      {
-        localJSONObject.put("entryID", this.jdField_a_of_type_Int);
-        localJSONObject.put("redDotVersion", this.jdField_b_of_type_Int);
-        localJSONObject.put("showRedDot", this.jdField_a_of_type_Boolean);
-        localJSONObject.put("userCanceled", this.jdField_b_of_type_Boolean);
-        localJSONObject.put("lastCancelTime", this.jdField_a_of_type_Long);
-        return localJSONObject;
-      }
-      catch (JSONException localJSONException2)
-      {
-        JSONObject localJSONObject;
-        break label68;
-      }
-      localJSONException1 = localJSONException1;
-      localJSONObject = null;
-    }
-    label68:
-    return localJSONObject;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("entryID");
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("redDotVersion");
-      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("showRedDot");
-      this.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("userCanceled");
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("lastCancelTime");
-    }
+    awrt.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView.jdField_a_of_type_Ahoe.a(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
   }
 }
 

@@ -3,7 +3,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 final class sxx
-  implements ymm
+  implements yrb
 {
   sxx(spj paramspj, String paramString) {}
   

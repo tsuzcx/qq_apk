@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aimj;
-import aimk;
-import aiml;
+import aiqy;
+import aiqz;
+import aira;
 import android.content.Intent;
-import azmj;
+import azqs;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import java.util.ArrayList;
 
 public class PhotoListLogicDefault$1
   implements Runnable
 {
-  public PhotoListLogicDefault$1(aiml paramaiml, boolean paramBoolean, Intent paramIntent, ArrayList paramArrayList, int paramInt, String paramString1, String paramString2) {}
+  public PhotoListLogicDefault$1(aira paramaira, boolean paramBoolean, Intent paramIntent, ArrayList paramArrayList, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -20,8 +20,8 @@ public class PhotoListLogicDefault$1
     }
     for (;;)
     {
-      azmj.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
-      ayyu.b = System.currentTimeMillis();
+      azqs.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
+      azdd.b = System.currentTimeMillis();
       return;
       PhotoUtils.a(this.this$0.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, this.this$0.mPhotoCommonData.currentQualityType, this.this$0.a.jdField_a_of_type_Boolean);
     }

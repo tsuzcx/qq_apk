@@ -1,16 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserSelfInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserSelfInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-class wsm
-  implements View.OnClickListener
+public class wsm
+  extends urt<wsn>
 {
-  wsm(wsj paramwsj) {}
+  public static final String a = uqn.a("StorySvc.get_user_base_info");
   
-  public void onClick(View paramView)
+  public String a()
   {
-    if (wsj.a(this.a) != null) {
-      wsj.a(this.a).h();
+    return a;
+  }
+  
+  public wsn a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetUserSelfInfo localRspGetUserSelfInfo = new qqstory_service.RspGetUserSelfInfo();
+    try
+    {
+      localRspGetUserSelfInfo.mergeFrom(paramArrayOfByte);
+      return new wsn(localRspGetUserSelfInfo);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        wxe.c("Q.qqstory.home.GetUserSelfInfoStep", "decodeResponse error=%s", paramArrayOfByte);
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetUserSelfInfo().toByteArray();
   }
 }
 

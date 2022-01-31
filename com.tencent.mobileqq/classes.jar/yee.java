@@ -1,42 +1,16 @@
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.7.1;
 
 public class yee
-  extends StaggeredGridLayoutManager
+  implements ymp
 {
-  public yee(int paramInt1, int paramInt2)
-  {
-    super(paramInt1, paramInt2);
-  }
+  yee(ydw paramydw) {}
   
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  public void a(int paramInt)
   {
-    try
-    {
-      super.onLayoutChildren(paramRecycler, paramState);
-      return;
+    if (ydw.q(this.a) != null) {
+      ydw.r(this.a).runOnUiThread(new DetailBaseAdapter.7.1(this));
     }
-    catch (Exception paramRecycler)
-    {
-      paramRecycler.printStackTrace();
-      QLog.e("SafeStaggeredGridLayoutManager", 4, paramRecycler, new Object[0]);
-    }
-  }
-  
-  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
-  {
-    try
-    {
-      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
-      return paramInt;
-    }
-    catch (Exception paramRecycler)
-    {
-      paramRecycler.printStackTrace();
-    }
-    return 0;
   }
 }
 

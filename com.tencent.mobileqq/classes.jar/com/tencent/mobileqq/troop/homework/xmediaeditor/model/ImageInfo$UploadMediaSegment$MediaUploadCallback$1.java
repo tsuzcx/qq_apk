@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
-import bbzl;
-import bbzu;
-import bbzw;
-import bbzx;
-import bcaa;
-import bcan;
-import bcav;
-import bcbf;
-import bcbi;
+import bcdu;
+import bced;
+import bcef;
+import bceg;
+import bcej;
+import bcew;
+import bcfe;
+import bcfo;
+import bcfr;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import java.lang.ref.WeakReference;
@@ -16,21 +16,21 @@ import java.lang.ref.WeakReference;
 public class ImageInfo$UploadMediaSegment$MediaUploadCallback$1
   implements Runnable
 {
-  public ImageInfo$UploadMediaSegment$MediaUploadCallback$1(bbzx parambbzx, bcaa parambcaa) {}
+  public ImageInfo$UploadMediaSegment$MediaUploadCallback$1(bceg parambceg, bcej parambcej) {}
   
   public void run()
   {
-    bbzw.a(this.jdField_a_of_type_Bbzx.a).e = 95;
-    bbzw.a(this.jdField_a_of_type_Bbzx.a).g = -2147483648;
-    XMediaEditor localXMediaEditor = (XMediaEditor)bbzw.a(this.jdField_a_of_type_Bbzx.a).get();
+    bcef.a(this.jdField_a_of_type_Bceg.a).e = 95;
+    bcef.a(this.jdField_a_of_type_Bceg.a).g = -2147483648;
+    XMediaEditor localXMediaEditor = (XMediaEditor)bcef.a(this.jdField_a_of_type_Bceg.a).get();
     if (localXMediaEditor != null)
     {
-      Object localObject = localXMediaEditor.findViewHolderForLayoutPosition(bbzw.a(this.jdField_a_of_type_Bbzx.a).c);
-      if ((localObject instanceof bcbi))
+      Object localObject = localXMediaEditor.findViewHolderForLayoutPosition(bcef.a(this.jdField_a_of_type_Bceg.a).c);
+      if ((localObject instanceof bcfr))
       {
-        localObject = (bcbi)localObject;
-        if (this.jdField_a_of_type_Bcaa.d.equals(((bcbi)localObject).a.getTag())) {
-          ((bcbf)((bbzl)localXMediaEditor.getAdapter()).a.a(2)).a((bcav)localObject, bbzw.a(this.jdField_a_of_type_Bbzx.a), 0);
+        localObject = (bcfr)localObject;
+        if (this.jdField_a_of_type_Bcej.d.equals(((bcfr)localObject).a.getTag())) {
+          ((bcfo)((bcdu)localXMediaEditor.getAdapter()).a.a(2)).a((bcfe)localObject, bcef.a(this.jdField_a_of_type_Bceg.a), 0);
         }
       }
     }

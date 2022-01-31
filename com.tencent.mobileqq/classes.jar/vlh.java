@@ -1,20 +1,32 @@
-import android.support.annotation.NonNull;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
 
-public abstract interface vlh
+public final class vlh
+  implements Parcelable.Creator
 {
-  public abstract List<vlk> a(List<vld> paramList);
+  public StoryPushMsg a(Parcel paramParcel)
+  {
+    int i = paramParcel.readInt();
+    Object localObject = paramParcel.readString();
+    String str1 = paramParcel.readString();
+    long l = paramParcel.readLong();
+    String str2 = paramParcel.readString();
+    String str3 = paramParcel.readString();
+    int j = paramParcel.readInt();
+    String str4 = paramParcel.readString();
+    String str5 = paramParcel.readString();
+    String str6 = paramParcel.readString();
+    paramParcel = paramParcel.readBundle();
+    localObject = new StoryPushMsg(i, (String)localObject, str1, l, str3, str4, j, str5, str6, str2);
+    ((StoryPushMsg)localObject).a = paramParcel;
+    return localObject;
+  }
   
-  @NonNull
-  public abstract vlg a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt, vlj paramvlj);
-  
-  public abstract boolean a(vle paramvle);
-  
-  public abstract void b();
+  public StoryPushMsg[] a(int paramInt)
+  {
+    return new StoryPushMsg[paramInt];
+  }
 }
 
 

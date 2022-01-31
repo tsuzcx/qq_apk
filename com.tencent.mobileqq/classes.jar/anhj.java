@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
 class anhj
-  implements bjyn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  anhj(anhi paramanhi, QQAppInterface paramQQAppInterface) {}
+  anhj(anhi paramanhi) {}
   
-  public void a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anhi.jdField_a_of_type_Amab);
-      ((alzf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(alkk.a(this.jdField_a_of_type_Anhi.jdField_a_of_type_JavaLangString), true);
-    }
+    this.a.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
   }
 }
 

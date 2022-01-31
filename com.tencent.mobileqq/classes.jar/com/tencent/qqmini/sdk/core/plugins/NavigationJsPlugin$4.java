@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bgho;
+import bglv;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 class NavigationJsPlugin$4

@@ -1,72 +1,40 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import dov.com.qq.im.aeeditor.AEEditorActivity;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
 public class blfq
+  extends bmes
 {
-  public static void a(Activity paramActivity, int paramInt1, Bundle paramBundle, int paramInt2)
+  public final bmen<blfi> a;
+  private boolean a;
+  public final bmen<AECaptureMode[]> b = new bmen();
+  
+  public blfq()
   {
-    int i;
-    Intent localIntent;
-    if (paramInt1 == 0)
-    {
-      i = 10000;
-      localIntent = new Intent(paramActivity, AEEditorActivity.class);
-      if (paramBundle == null) {
-        break label87;
-      }
-    }
-    label87:
-    for (paramBundle = new Bundle(paramBundle);; paramBundle = new Bundle())
-    {
-      paramBundle.putInt("editorType", paramInt1);
-      paramBundle.putInt("editorFrom", paramInt2);
-      localIntent.putExtras(paramBundle);
-      paramActivity.startActivityForResult(localIntent, i);
-      return;
-      if (paramInt1 == 1)
-      {
-        i = 10001;
-        break;
-      }
-      throw new IllegalArgumentException("wrong editor type");
-    }
+    this.jdField_a_of_type_Bmen = new bmen();
   }
   
-  public static boolean a(Intent paramIntent)
+  public void a(boolean paramBoolean)
   {
-    return a(paramIntent, 0);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  private static boolean a(Intent paramIntent, int paramInt)
+  public boolean a()
   {
-    if (paramIntent == null) {}
-    do
-    {
-      return false;
-      paramIntent = paramIntent.getExtras();
-    } while ((paramIntent == null) || (!paramIntent.containsKey("editorType")) || (paramIntent.getInt("editorType") != paramInt));
-    return true;
+    return (this.jdField_a_of_type_Bmen.a() != null) && (((blfi)this.jdField_a_of_type_Bmen.a()).a == AECaptureMode.GIF);
   }
   
-  public static boolean a(Bundle paramBundle)
+  public boolean b()
   {
-    return a(paramBundle, 0);
+    return (this.jdField_a_of_type_Bmen.a() != null) && (((blfi)this.jdField_a_of_type_Bmen.a()).a == AECaptureMode.NORMAL);
   }
   
-  private static boolean a(Bundle paramBundle, int paramInt)
+  public boolean c()
   {
-    if (paramBundle == null) {}
-    while ((!paramBundle.containsKey("editorType")) || (paramBundle.getInt("editorType") != paramInt)) {
-      return false;
-    }
-    return true;
+    return (this.jdField_a_of_type_Bmen.a() != null) && (((blfi)this.jdField_a_of_type_Bmen.a()).a == AECaptureMode.PLAY);
   }
   
-  public static boolean b(Bundle paramBundle)
+  public boolean d()
   {
-    return a(paramBundle, 1);
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

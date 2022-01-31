@@ -1,15 +1,12 @@
+import com.tencent.biz.qqstory.msgTabNode.view.DotAnimationView;
+
 public class vag
-  extends ugz
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
+  public float a;
+  public float b;
+  public float c;
   
-  public String toString()
-  {
-    return "WatchVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin=" + this.b + ", isLiveVideo=" + this.jdField_a_of_type_Boolean + ", unReadCount=" + this.jdField_a_of_type_Int + '}';
-  }
+  private vag(DotAnimationView paramDotAnimationView) {}
 }
 
 

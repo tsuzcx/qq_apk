@@ -2,7 +2,7 @@ package com.tencent.mobileqq.microapp.appbrand.utils;
 
 import android.os.Environment;
 import android.text.TextUtils;
-import bdcs;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.microapp.apkg.f;
 import com.tencent.qphone.base.util.MD5;
@@ -55,7 +55,7 @@ public class b
   
   private void c()
   {
-    bdcs.a(a(0), false);
+    bdhb.a(a(0), false);
   }
   
   private String h(String paramString)
@@ -277,7 +277,7 @@ public class b
       if (TextUtils.isEmpty(paramString)) {
         return null;
       }
-      if (bdcs.d(str, new File(a(1), paramString).getAbsolutePath())) {
+      if (bdhb.d(str, new File(a(1), paramString).getAbsolutePath())) {
         return "wxfile://" + "store" + "_" + paramString;
       }
     }

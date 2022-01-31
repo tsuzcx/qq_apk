@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import agcw;
-import agcx;
-import agdi;
+import aghl;
+import aghm;
+import aghx;
 
 public class AIOGalleryActivity$AIOGalleryManager$1$4
   implements Runnable
 {
-  public AIOGalleryActivity$AIOGalleryManager$1$4(agcx paramagcx) {}
+  public AIOGalleryActivity$AIOGalleryManager$1$4(aghm paramaghm) {}
   
   public void run()
   {
-    if (agcw.i(this.a.a) != null)
+    if (aghl.i(this.a.a) != null)
     {
-      ((agdi)agcw.j(this.a.a)).e();
-      ((agdi)agcw.k(this.a.a)).e();
+      ((aghx)aghl.j(this.a.a)).e();
+      ((aghx)aghl.k(this.a.a)).e();
     }
   }
 }

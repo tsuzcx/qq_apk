@@ -1,43 +1,28 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
 
 public class vbi
-  extends unk
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
+  public vbi(MsgTabStoryNodeView paramMsgTabStoryNodeView, Context paramContext) {}
   
-  public String a()
+  public void onClick(View paramView)
   {
-    return ume.a("StorySvc.get_profile_feed_id_list");
-  }
-  
-  public unf a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspProfileStoryFeedIdList localRspProfileStoryFeedIdList = new qqstory_service.RspProfileStoryFeedIdList();
-    try
+    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeView.a.isShown()) {}
+    for (int i = 1;; i = 0)
     {
-      localRspProfileStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new vbj(localRspProfileStoryFeedIdList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
+      wxj.a("msg_tab", "clk_all", 0, i, new String[0]);
+      paramView = bdib.a(QQStoryContext.a(), this.jdField_a_of_type_AndroidContentContext, "qqstory://qstory/open?from=msgTab");
+      xqq.a(paramView);
+      if (paramView != null) {
+        paramView.c();
       }
+      return;
     }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqProfileStoryFeedIdList localReqProfileStoryFeedIdList = new qqstory_service.ReqProfileStoryFeedIdList();
-    localReqProfileStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    localReqProfileStoryFeedIdList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localReqProfileStoryFeedIdList.toByteArray();
   }
 }
 

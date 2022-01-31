@@ -1,13 +1,12 @@
-public class azze
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class azze
+  implements DialogInterface.OnClickListener
 {
-  public float a;
-  public float b;
+  azze(azzb paramazzb) {}
   
-  public azze(float paramFloat1, float paramFloat2)
-  {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

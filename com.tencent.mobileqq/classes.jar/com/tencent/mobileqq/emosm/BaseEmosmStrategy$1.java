@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.emosm;
 
-import aphr;
-import apkd;
-import azmj;
+import apma;
+import apom;
+import azqs;
 import java.util.ArrayList;
 
 public class BaseEmosmStrategy$1
   implements Runnable
 {
-  public BaseEmosmStrategy$1(aphr paramaphr, ArrayList paramArrayList) {}
+  public BaseEmosmStrategy$1(apma paramapma, ArrayList paramArrayList) {}
   
   public void run()
   {
-    apkd.a(this.a);
-    azmj.b(null, "dc00898", "", "", "0X800A6E1", "0X800A6E1", 0, 0, "", "", "", "");
+    apom.a(this.a);
+    azqs.b(null, "dc00898", "", "", "0X800A6E1", "0X800A6E1", 0, 0, "", "", "", "");
   }
 }
 

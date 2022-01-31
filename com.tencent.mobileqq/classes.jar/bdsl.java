@@ -1,15 +1,15 @@
-public class bdsl
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bdsl
+  implements DialogInterface.OnClickListener
 {
-  String a;
-  String b;
-  String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
+  bdsl(bdsg parambdsg, long paramLong, int paramInt, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bdsg.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class agzk
-  implements agzr
+class agzk
+  implements View.OnClickListener
 {
-  public agzk(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment) {}
+  agzk(agzj paramagzj) {}
   
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramArrayOfAIORichMediaData != null) && (paramArrayOfAIORichMediaData.length > 0))
-    {
-      this.a.a = paramArrayOfAIORichMediaData[(paramArrayOfAIORichMediaData.length - 1)];
-      if (QLog.isColorLevel()) {
-        QLog.i("chatHistory.troop.portal", 2, "get the first media data");
-      }
-    }
-    do
-    {
-      return;
-      this.a.a = null;
-    } while (!QLog.isColorLevel());
-    QLog.i("chatHistory.troop.portal", 2, "no media data found");
+    agzj.a(this.a).a();
+    ChatActivityUtils.a(agzj.a(this.a), agzj.a(this.a), agzj.a(this.a).jdField_a_of_type_Int, agzj.a(this.a).jdField_a_of_type_JavaLangString, true, true, null, null);
+    azqs.b(agzj.a(this.a), "CliOper", "", "", "0X8003F00", "0X8003F00", 0, 0, "", "", "", "");
   }
 }
 

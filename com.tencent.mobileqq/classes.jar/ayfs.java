@@ -1,16 +1,12 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
 
 class ayfs
-  implements View.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  ayfs(ayfq paramayfq) {}
-  
-  public void onClick(View paramView)
+  ayfs(ayfq paramayfq, View paramView)
   {
-    this.a.a.b(this.a.a.b);
-    this.a.a.e.setVisibility(0);
+    super(paramView);
   }
 }
 

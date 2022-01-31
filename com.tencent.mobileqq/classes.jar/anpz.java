@@ -1,120 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
-class anpz
-  implements anpq
+public class anpz
+  implements View.OnClickListener
 {
-  anpz(anpx paramanpx) {}
+  public anpz(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String arg1, boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.dynamicAvatar", 2, "onDownloadFinish url: " + ??? + " isSuccess: " + paramBoolean1 + " isFileExist: " + paramBoolean2);
-    }
-    if (TextUtils.isEmpty(???)) {
-      return;
-    }
-    int i;
-    synchronized (this.a.c)
-    {
-      i = this.a.c.size() - 1;
-      if (i >= 0)
-      {
-        WeakReference localWeakReference = (WeakReference)this.a.c.get(i);
-        if ((localWeakReference == null) || (localWeakReference.get() == null))
-        {
-          this.a.c.remove(i);
-        }
-        else if (???.equals(((bcwi)((WeakReference)this.a.c.get(i)).get()).jdField_b_of_type_JavaLangString))
-        {
-          localWeakReference = (WeakReference)this.a.c.remove(i);
-          if (paramBoolean1)
-          {
-            this.a.b.add(localWeakReference);
-            if (QLog.isColorLevel()) {
-              QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish add to wait play list.");
-            }
-          }
-        }
-      }
-    }
-    if (!bcwi.jdField_b_of_type_Boolean) {
-      synchronized (this.a.d)
-      {
-        i = this.a.d.size() - 1;
-        label257:
-        if (i >= 0) {
-          if ((this.a.d.get(i) != null) && (((WeakReference)this.a.d.get(i)).get() != null))
-          {
-            ??? = (WeakReference)this.a.d.get(i);
-            label314:
-            if ((??? != null) && (???.get() != null)) {
-              this.a.a((bcwi)???.get(), false, false);
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      synchronized (this.a.a)
-      {
-        i = this.a.a.size() - 1;
-        if (i >= 0)
-        {
-          if (((WeakReference)this.a.a.get(i)).get() == null) {
-            this.a.a.remove(i);
-          }
-          i -= 1;
-          continue;
-          this.a.d.remove(i);
-          i -= 1;
-          break label257;
-          ??? = finally;
-          throw ???;
-        }
-        i = this.a.b.size() - 1;
-        if (i < 0) {
-          break label695;
-        }
-        ??? = (WeakReference)this.a.b.get(i);
-        if ((??? == null) || (((WeakReference)???).get() == null))
-        {
-          this.a.b.remove(i);
-        }
-        else if (this.a.a.size() < anpx.a(this.a).a)
-        {
-          this.a.b.remove(i);
-          if (this.a.a.contains(???)) {
-            break label712;
-          }
-          paramBoolean1 = this.a.a((bcwi)((WeakReference)???).get());
-          if (paramBoolean1) {
-            this.a.a.add(???);
-          }
-          if (!QLog.isColorLevel()) {
-            break label712;
-          }
-          QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish to play.02 result : " + paramBoolean1 + " playing size: " + this.a.a.size());
-        }
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish to play.02 beyond maxPlayingCount : " + anpx.a(this.a).a);
-        break label712;
-        label695:
-        return;
-        ??? = null;
-        break label314;
-        i -= 1;
-        break;
-      }
-      label712:
-      i -= 1;
+    paramView = (bhuf)bhus.a(BaseActivity.sTopActivity, null);
+    paramView.a(BaseActivity.sTopActivity.getString(2131690265));
+    paramView.a(2131690264, 3);
+    paramView.c(2131690266);
+    paramView.setOnDismissListener(new anqa(this, paramView));
+    paramView.a(new anqb(this, paramView));
+    if (!paramView.isShowing()) {
+      paramView.show();
     }
   }
 }

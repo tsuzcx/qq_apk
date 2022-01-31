@@ -1,51 +1,16 @@
-import android.content.Context;
-import android.text.TextUtils;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.datepicker.CalendarDay;
+import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
 
-public class bewr
+public abstract interface bewr
 {
-  public Context a;
-  public bewo a;
-  private Map<String, Object> a;
+  public abstract CalendarDay a();
   
-  public bewr(Context paramContext, bewo parambewo)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bewo = parambewo;
-  }
+  public abstract void a(CalendarDay paramCalendarDay, MessageRecord paramMessageRecord);
   
-  public Object a(String paramString)
-  {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    if (TextUtils.isEmpty(paramString)) {
-      return localObject2;
-    }
-    if (this.jdField_a_of_type_JavaUtilMap == null) {
-      this.jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
-    }
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    }
-    if (TextUtils.equals(paramString, "intchk")) {
-      localObject1 = new bewu(this);
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject1);
-      return localObject1;
-      if (TextUtils.equals(paramString, "app_scan")) {
-        localObject1 = new bewt(this);
-      } else if (TextUtils.equals(paramString, "sig_check")) {
-        localObject1 = new beww(this);
-      }
-    }
-  }
+  public abstract void a(SimpleMonthView paramSimpleMonthView, int paramInt1, int paramInt2);
+  
+  public abstract CalendarDay b();
 }
 
 

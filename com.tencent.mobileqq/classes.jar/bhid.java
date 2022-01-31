@@ -1,18 +1,54 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.ui.MoreItem;
+import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import com.tencent.qqmini.sdk.log.QMLog;
 
-public final class bhid
-  implements Parcelable.Creator<MoreItem>
+@bglp(a="BaselibLoadAsyncTask")
+public class bhid
+  extends bhlt
 {
-  public MoreItem a(Parcel paramParcel)
+  private BaselibLoader.BaselibContent a;
+  
+  public bhid(Context paramContext, bgun parambgun)
   {
-    return new MoreItem(paramParcel);
+    super(paramContext, parambgun);
   }
   
-  public MoreItem[] a(int paramInt)
+  public void a()
   {
-    return new MoreItem[paramInt];
+    bhbs.a(204, "", a().getMiniAppInfoForReport());
+    if (a().getMiniAppInfoForReport() != null) {}
+    for (String str = a().getMiniAppInfoForReport().appId;; str = "")
+    {
+      QMLog.d("BaseRuntimeLoader", "startLoadBaseLib. appid:" + str);
+      if (!a()) {
+        break;
+      }
+      c();
+      return;
+    }
+    bhck.a(bhcg.a(), 10, "0");
+    AppLoaderFactory.g().getMiniAppEnv().getBaselibLoader().loadBaselib(a(), new bhie(this));
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) && (this.a.isBaseLibInited());
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.a = null;
+  }
+  
+  public void c()
+  {
+    super.c();
+    bhbs.a(205, "", a().getMiniAppInfoForReport());
   }
 }
 

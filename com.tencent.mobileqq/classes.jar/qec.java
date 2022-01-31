@@ -12,7 +12,7 @@ public class qec
   
   public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    ComponentHeaderRecommend.a(this.a).setText(alpo.a(2131702674));
+    ComponentHeaderRecommend.a(this.a).setText(alud.a(2131702686));
     ComponentHeaderRecommend.a(this.a).setTextColor(Color.parseColor("#BBBBBB"));
     ComponentHeaderRecommend.a(this.a).setEnabled(false);
     ComponentHeaderRecommend.a(this.a).getPaint().setFakeBoldText(false);
@@ -24,7 +24,7 @@ public class qec
     if ((this.a.a.a != null) && (this.a.a.a.a() != null))
     {
       localArticleInfo = this.a.a.a.a();
-      str = ors.a(localArticleInfo.mAlgorithmID, ors.a(localArticleInfo), this.a.a.a.e(), 0, 0, bdee.h(this.a.getContext()), ComponentHeaderRecommend.a(this.a) + "", null, localArticleInfo.innerUniqueID, null, localArticleInfo);
+      str = ors.a(localArticleInfo.mAlgorithmID, ors.a(localArticleInfo), this.a.a.a.e(), 0, 0, bdin.h(this.a.getContext()), ComponentHeaderRecommend.a(this.a) + "", null, localArticleInfo.innerUniqueID, null, localArticleInfo);
       if (!szp.a(this.a.a.a.e())) {
         break label305;
       }

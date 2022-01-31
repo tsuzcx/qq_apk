@@ -1,7 +1,7 @@
 package com.tencent.gdtad.views.canvas;
 
-import aanp;
-import aapa;
+import aase;
+import aatp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,10 +34,10 @@ public abstract class GdtCanvasBaseFragment
   {
     if ((paramActivity == null) || (paramAdCanvasData == null) || (!paramAdCanvasData.isValid()))
     {
-      aanp.b("GdtCanvasBaseFragment", "start error");
+      aase.b("GdtCanvasBaseFragment", "start error");
       return;
     }
-    aanp.b("GdtCanvasBaseFragment", "start");
+    aase.b("GdtCanvasBaseFragment", "start");
     Bundle localBundle = new Bundle();
     if ((paramBundle != null) && (!paramBundle.isEmpty())) {
       localBundle.putAll(paramBundle);
@@ -49,7 +49,7 @@ public abstract class GdtCanvasBaseFragment
     paramBundle.putExtra("big_brother_source_key", "biz_src_ads");
     paramBundle.putExtras(localBundle);
     if (TextUtils.isEmpty(paramBundle.getStringExtra("big_brother_ref_source_key"))) {
-      aanp.d("GdtCanvasBaseFragment", "start gdt empty refId");
+      aase.d("GdtCanvasBaseFragment", "start gdt empty refId");
     }
     PublicFragmentActivity.a(paramActivity, paramBundle, paramClass);
     AdReporterForAnalysis.reportForStartActivity(paramActivity, paramAdCanvasData.ad, "GdtCanvasBaseFragment");
@@ -104,7 +104,7 @@ public abstract class GdtCanvasBaseFragment
       paramLayoutInflater.sourceId = getArguments().getString("big_brother_ref_source_key");
     }
     this.contentView = new AdCanvasView(getActivity());
-    aapa.a(this.contentView);
+    aatp.a(this.contentView);
     this.contentView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     this.contentView.setData(paramLayoutInflater);
     if ((getActivity() != null) && (getActivity().getWindow() != null)) {

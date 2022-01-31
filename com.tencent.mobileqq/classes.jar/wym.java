@@ -1,62 +1,140 @@
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
-import java.io.File;
-import org.json.JSONObject;
+import android.annotation.TargetApi;
+import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.EditPicSave.3;
+import com.tencent.biz.qqstory.takevideo.EditPicSave.4;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
+import com.tribe.async.reactive.UIThreadOffFunction;
+import java.util.Iterator;
+import java.util.List;
 
 public class wym
-  implements Cloneable
+  extends xal
 {
-  public static final String a;
   public int a;
-  public int b;
-  public String b;
-  public String c;
+  private Dialog jdField_a_of_type_AndroidAppDialog;
+  betn jdField_a_of_type_Betn;
+  ThreadExcutor.IThreadListener jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener = new wyn(this);
+  public boolean a;
+  public int b = 20;
   
-  static
+  public wym(@NonNull xan paramxan)
   {
-    jdField_a_of_type_JavaLangString = ArtFilterManager.jdField_b_of_type_JavaLangString + "loading" + File.separator;
+    super(paramxan);
   }
   
-  public static wym a(JSONObject paramJSONObject)
+  private betn a()
   {
-    wym localwym = new wym();
-    localwym.jdField_b_of_type_Int = paramJSONObject.getInt("version");
-    localwym.jdField_a_of_type_Int = paramJSONObject.getInt("picNum");
-    localwym.c = paramJSONObject.getString("url");
-    localwym.jdField_b_of_type_JavaLangString = paramJSONObject.getString("md5");
-    return localwym;
+    betn localbetn = new betn(a());
+    localbetn.a(aepi.a(50.0F, a()));
+    localbetn.a(true);
+    localbetn.c(false);
+    localbetn.f(-1);
+    localbetn.e(0);
+    localbetn.d(-15550475);
+    localbetn.g(3);
+    localbetn.jdField_f_of_type_Boolean = true;
+    localbetn.jdField_f_of_type_Int = 2;
+    localbetn.e(true);
+    localbetn.a(new wyp(this));
+    return localbetn;
   }
   
-  public String a()
+  private void i()
   {
-    Object localObject = new File(c());
-    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
-    {
-      localObject = ((File)localObject).listFiles();
-      if ((localObject != null) && (localObject.length == this.jdField_a_of_type_Int)) {
-        return c();
-      }
+    xlb localxlb = new xlb(this.jdField_a_of_type_Xan.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams);
+    localxlb.b = xlr.a(2);
+    localxlb.a = new xlf(this.jdField_a_of_type_Xan.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a.a());
+    Iterator localIterator = this.jdField_a_of_type_Xan.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((xal)localIterator.next()).a(0, localxlb);
     }
-    return null;
+    wxe.d("EditPicSave", "PUBLISH start ...");
+    a(alud.a(2131704080), false, 0);
+    a(20);
+    Stream.of(localxlb).map(new xld((wxs)a(wxs.class), null)).map(new ThreadOffFunction("EditPicSave", 2)).map(new xlp(wyi.a + "qq_pic_merged_" + System.currentTimeMillis() + ".jpg")).map(new UIThreadOffFunction(this)).subscribe(new wyo(this));
   }
   
-  public String b()
+  public void a(int paramInt)
   {
-    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + ".zip";
+    if (this.jdField_a_of_type_Betn == null) {
+      return;
+    }
+    this.jdField_a_of_type_Betn.a();
+    this.jdField_a_of_type_Betn.c(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.w("EditPicSave", 2, "[setProgress] current:" + this.jdField_a_of_type_Betn.a() + ", progress:" + paramInt);
+    }
+    this.jdField_a_of_type_Betn.b(true);
+    this.jdField_a_of_type_Betn.d(false);
+    this.jdField_a_of_type_Betn.a(String.valueOf(paramInt) + "%");
   }
   
-  public String c()
+  public void a(int paramInt, Object paramObject)
   {
-    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + File.separator;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    wxk.b("0X80080E1", wxk.a);
+    i();
   }
   
-  public Object clone()
+  @TargetApi(14)
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    return super.clone();
+    if (this.jdField_a_of_type_AndroidAppDialog == null)
+    {
+      this.jdField_a_of_type_AndroidAppDialog = new Dialog(a());
+      Object localObject = this.jdField_a_of_type_AndroidAppDialog.getWindow();
+      if (localObject != null)
+      {
+        ((Window)localObject).setBackgroundDrawable(new ColorDrawable());
+        if (Build.VERSION.SDK_INT >= 14) {
+          ((Window)localObject).setDimAmount(0.0F);
+        }
+      }
+      this.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131561642);
+      localObject = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372332);
+      this.jdField_a_of_type_Betn = a();
+      ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_Betn);
+    }
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131370777)).setText(paramString);
+    this.jdField_a_of_type_AndroidAppDialog.setCancelable(paramBoolean);
+    this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(paramBoolean);
+    this.jdField_a_of_type_Betn.c(0);
+    a().a().postDelayed(new EditPicSave.3(this), paramInt);
   }
   
-  public String d()
+  public void d()
   {
-    return "loading" + File.separator + this.jdField_b_of_type_Int + ".zip";
+    g();
+    super.d();
+  }
+  
+  public void f()
+  {
+    this.jdField_a_of_type_Xby.a().postDelayed(new EditPicSave.4(this), 1000L);
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_AndroidAppDialog != null) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

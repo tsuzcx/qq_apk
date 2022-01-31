@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import aoxh;
-import aozh;
+import apbq;
+import apdq;
 import java.io.Serializable;
 import java.util.Comparator;
 
 public final class DanmakuManager$DanmakuComparator
-  implements Serializable, Comparator<aoxh>
+  implements Serializable, Comparator<apbq>
 {
-  public int compare(aoxh paramaoxh1, aoxh paramaoxh2)
+  public int compare(apbq paramapbq1, apbq paramapbq2)
   {
-    return aozh.a(paramaoxh1, paramaoxh2);
+    return apdq.a(paramapbq1, paramapbq2);
   }
 }
 

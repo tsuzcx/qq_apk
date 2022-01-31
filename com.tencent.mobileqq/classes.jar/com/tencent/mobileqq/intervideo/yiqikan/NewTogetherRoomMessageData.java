@@ -3,12 +3,12 @@ package com.tencent.mobileqq.intervideo.yiqikan;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import atau;
+import atfd;
 
 public class NewTogetherRoomMessageData
   implements Parcelable
 {
-  public static final Parcelable.Creator<NewTogetherRoomMessageData> CREATOR = new atau();
+  public static final Parcelable.Creator<NewTogetherRoomMessageData> CREATOR = new atfd();
   public int a;
   public long a;
   public String a;

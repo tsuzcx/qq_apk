@@ -1,8 +1,6 @@
-import com.tencent.mobileqq.data.CameraEmotionData;
-
 public abstract interface apji
 {
-  public abstract void a(int paramInt, CameraEmotionData paramCameraEmotionData);
+  public abstract void a(apjh paramapjh);
 }
 
 

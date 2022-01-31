@@ -1,30 +1,21 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public class avmm
-  implements avmy
+class avmm
+  implements View.OnClickListener
 {
-  public avmm(NearbyMomentFragment paramNearbyMomentFragment) {}
+  avmm(avmf paramavmf) {}
   
-  public void a(boolean paramBoolean1, List<avnx> paramList, boolean paramBoolean2, int paramInt)
+  public void onClick(View paramView)
   {
-    NearbyMomentFragment.a(this.a, false);
-    if (paramBoolean1)
-    {
-      NearbyMomentFragment.b(this.a, paramBoolean2);
-      if (paramBoolean2) {
-        NearbyMomentFragment.a(this.a).setText(alpo.a(2131707596));
-      }
-      NearbyMomentFragment.a(this.a, paramInt);
-      if ((paramList != null) && (paramList.size() > 0))
-      {
-        paramList = NearbyMomentFragment.a(this.a, paramList);
-        NearbyMomentFragment.a(this.a).addAll(paramList);
-        NearbyMomentFragment.a(this.a).b(paramList);
-        NearbyMomentFragment.a(this.a, paramList);
-      }
-    }
+    paramView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "https://buluo.qq.com/mobile/xxq_setting.html?_wv=1027&uin=" + this.a.a.app.c());
+    paramView.putExtra("reqType", 1);
+    this.a.a.startActivity(paramView);
   }
 }
 

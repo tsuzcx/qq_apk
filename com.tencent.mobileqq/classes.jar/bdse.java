@@ -1,139 +1,178 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Rect;
-import android.graphics.drawable.NinePatchDrawable;
-import com.tencent.mobileqq.activity.aio.item.TroopPobingItemView;
-import com.tencent.mobileqq.vas.quickupdate.PobingUpdateCallback.1;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
 import java.io.File;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
+import org.json.JSONObject;
 
 public class bdse
-  extends bdrz
+  implements Manager
 {
-  public static final bdse a;
-  public static final HashMap<Integer, String> a;
+  bead jdField_a_of_type_Bead = new bdsf(this, "param_WIFIColorRingDownloadFlow", "param_XGColorRingDownloadFlow");
+  private beag jdField_a_of_type_Beag;
+  public beak a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  static
+  public bdse(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Bdse = new bdse();
-    jdField_a_of_type_JavaUtilHashMap = new PobingUpdateCallback.1();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Beag = ((beag)paramQQAppInterface.getManager(47));
   }
   
-  public static NinePatchDrawable a(Resources paramResources, Bitmap paramBitmap)
+  public static Bitmap a(long paramLong)
   {
-    int i = 0;
-    int[] arrayOfInt1 = new int[2];
-    arrayOfInt1[0] = (paramBitmap.getWidth() / 2);
-    arrayOfInt1[1] = (paramBitmap.getWidth() / 2 + 1);
-    int[] arrayOfInt2 = new int[2];
-    arrayOfInt2[0] = (paramBitmap.getHeight() / 2);
-    arrayOfInt2[1] = (paramBitmap.getHeight() / 2 + 1);
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(arrayOfInt1.length * 4 + arrayOfInt2.length * 4 + 36 + 32).order(ByteOrder.nativeOrder());
-    localByteBuffer.put((byte)1);
-    localByteBuffer.put((byte)2);
-    localByteBuffer.put((byte)2);
-    localByteBuffer.put((byte)9);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(arrayOfInt1[0]);
-    localByteBuffer.putInt(arrayOfInt1[1]);
-    localByteBuffer.putInt(arrayOfInt2[0]);
-    localByteBuffer.putInt(arrayOfInt2[1]);
-    while (i < 9)
+    if (paramLong == 0L) {}
+    for (;;)
     {
-      localByteBuffer.putInt(1);
-      i += 1;
-    }
-    return new NinePatchDrawable(paramResources, paramBitmap, localByteBuffer.array(), new Rect(), "");
-  }
-  
-  public static String a(int paramInt)
-  {
-    return "pobing.preview.cache." + paramInt;
-  }
-  
-  public static boolean a()
-  {
-    return QzoneConfig.getInstance().getConfig("qqsetting", "addgroupvasfeaturedisable", 0L) == 0L;
-  }
-  
-  public Bitmap a(Context paramContext, int paramInt, String paramString)
-  {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inDensity = 320;
-    localOptions.inTargetDensity = 320;
-    paramContext = getDir(paramContext, getScid(paramInt));
-    paramContext = paramContext + File.separator + paramString;
-    paramString = new bcwd();
-    bcwc.a(paramContext, localOptions, paramString);
-    if (paramString.jdField_a_of_type_Int != 0)
-    {
-      QLog.e("PobingUpdateCallback", 1, paramContext + " decodeFail: " + paramString.jdField_a_of_type_Int);
       return null;
-    }
-    return paramString.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public boolean a(Context paramContext, int paramInt)
-  {
-    Object localObject = "newComeCard." + paramInt;
-    paramContext = jdField_a_of_type_Bdse.getDir(paramContext, (String)localObject);
-    if (!new File(paramContext).exists()) {
-      return false;
-    }
-    if (paramInt == 2000) {
-      return new File(paramContext, "addgroup_preview.png").exists();
-    }
-    localObject = TroopPobingItemView.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    File localFile;
-    while (((Iterator)localObject).hasNext())
-    {
-      localFile = new File(paramContext, (String)((Iterator)localObject).next());
-      if (!localFile.exists())
+      Object localObject = a(paramLong, 1);
+      if (new File((String)localObject).exists())
       {
-        QLog.e("PobingUpdateCallback", 1, "missing: " + localFile.getAbsolutePath());
-        return false;
+        try
+        {
+          localObject = BitmapFactory.decodeFile((String)localObject);
+          return localObject;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("ColorRingManager", 2, "getCoverBitmap OOM.");
+        }
       }
     }
-    localObject = jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    while (((Iterator)localObject).hasNext())
+  }
+  
+  public static String a(long paramLong, int paramInt)
+  {
+    if (paramLong == 0L) {}
+    do
     {
-      localFile = new File(paramContext, (String)((Iterator)localObject).next());
-      if (!localFile.exists())
-      {
-        QLog.e("PobingUpdateCallback", 1, "missing: " + localFile.getAbsolutePath());
-        return false;
+      return "";
+      if (paramInt == 2) {
+        return bdsd.a + File.separator + paramLong + File.separator + "config.txt";
+      }
+      if (paramInt == 1) {
+        return bdsd.a + File.separator + paramLong + File.separator + "cover.jpg";
+      }
+    } while (paramInt != 3);
+    return bdsd.a + File.separator + paramLong + File.separator + "ring.mp3";
+  }
+  
+  public static String a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2)
+  {
+    Object localObject = "";
+    if (paramInt2 == 3)
+    {
+      localObject = becr.a(paramAppRuntime, 0, null).getString("_3_" + paramInt1, null);
+      paramAppRuntime = (AppRuntime)localObject;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        paramAppRuntime = bdtg.a("colorringAudio");
       }
     }
-    return true;
+    for (;;)
+    {
+      localObject = paramAppRuntime;
+      if (paramAppRuntime != null) {
+        localObject = paramAppRuntime.replace("[id]", String.valueOf(paramInt1));
+      }
+      return localObject;
+      if (paramInt2 == 2)
+      {
+        paramAppRuntime = bdtg.a("colorringConfig");
+      }
+      else
+      {
+        paramAppRuntime = (AppRuntime)localObject;
+        if (paramInt2 == 1) {
+          paramAppRuntime = bdtg.a("colorringCover");
+        }
+      }
+    }
   }
   
-  public long getBID()
+  public static JSONObject a(long paramLong)
   {
-    return 40L;
+    Object localObject = new File(bdsd.a + File.separator + paramLong + File.separator + "config.txt");
+    try
+    {
+      localObject = bdhb.a((File)localObject);
+      if (localObject != null)
+      {
+        localObject = new JSONObject((String)localObject);
+        return localObject;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return null;
   }
   
-  protected String getRootDir()
+  public static void a(String paramString1, int paramInt, String paramString2) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    return "newComeCard";
+    this.jdField_a_of_type_Beag.a(1).a(true, a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramInt2));
   }
   
-  protected String getScidPrefix()
+  public void a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, String paramString)
   {
-    return "newComeCard.";
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorRingManager", 2, ">>startDownload, id=" + paramInt1);
+    }
+    if (paramInt1 == 0) {}
+    label284:
+    do
+    {
+      return;
+      String str = a(paramInt1, paramInt2);
+      File localFile = new File(str);
+      if ((localFile.exists()) && (localFile.isFile())) {}
+      Bundle localBundle;
+      for (boolean bool = true;; bool = false)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ColorRingManager", 2, "startDownload exists(), id=" + paramInt1 + ", resType=ring3,, isIPC=" + paramBoolean + ", srcType=" + paramInt3 + ", fileExist=" + bool);
+        }
+        if ((bool) && (!paramBoolean)) {
+          break;
+        }
+        localBundle = new Bundle();
+        localBundle.putInt("callId", paramInt1);
+        localBundle.putString("path", str);
+        localBundle.putBoolean("isIPC", paramBoolean);
+        localBundle.putInt("resourceType", paramInt2);
+        localBundle.putInt("srcType", paramInt3);
+        localBundle.putString("path", str);
+        localBundle.putString("colorType", paramString);
+        paramString = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramInt2);
+        if (!bool) {
+          break label284;
+        }
+        localBundle.putBoolean("isExists", true);
+        paramString = new beae(paramString, localFile);
+        paramString.a(3);
+        paramString.a = 0;
+        paramString.a(localBundle);
+        this.jdField_a_of_type_Bead.onDone(paramString);
+        return;
+      }
+      paramString = new beae(paramString, new File(str + ".tmp"));
+      paramString.e = 3145728L;
+      paramString.b = true;
+      this.jdField_a_of_type_Beag.a(1).a(paramString, this.jdField_a_of_type_Bead, localBundle);
+    } while (!QLog.isColorLevel());
+    QLog.d("ColorRingManager", 2, "<<startDownload, id=" + paramInt1);
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_Beak = null;
   }
 }
 

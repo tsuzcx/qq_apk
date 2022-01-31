@@ -1,18 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
-import cooperation.qwallet.plugin.QWalletPrivacyUtils;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import mqq.app.AppRuntime;
 
 public class aiqv
-  implements DialogInterface.OnClickListener
+  extends avvd
 {
-  public aiqv(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    QWalletPrivacyUtils.setHasClickAgree(this.a.getActivity().app);
-    this.a.a();
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp))) {
+      aiqy.getInstance().a = ((get_albumlist_num_rsp)paramBundle).album_num;
+    }
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(NewPhotoListActivity.a);
   }
 }
 

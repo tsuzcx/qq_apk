@@ -1,35 +1,56 @@
-import QC.SuixintieCheckInfo;
-import QC.SuixintieCheckItem;
-import com.qq.taf.jce.JceInputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class awpw
+class awpw
+  implements bhuk
 {
-  public static SuixintieCheckInfo a(String paramString)
-  {
-    SuixintieCheckInfo localSuixintieCheckInfo = new SuixintieCheckInfo();
-    localSuixintieCheckInfo.readFrom(new JceInputStream(beuz.a(paramString, 0)));
-    if (localSuixintieCheckInfo.vSuixintieCheckList != null) {
-      return localSuixintieCheckInfo;
-    }
-    return null;
-  }
+  awpw(awpv paramawpv, awoz paramawoz) {}
   
-  public static SuixintieCheckItem a(SuixintieCheckInfo paramSuixintieCheckInfo, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramSuixintieCheckInfo.vSuixintieCheckList != null)
+    switch (paramInt)
     {
-      paramSuixintieCheckInfo = paramSuixintieCheckInfo.vSuixintieCheckList.iterator();
-      while (paramSuixintieCheckInfo.hasNext())
+    default: 
+    case 0: 
+      for (;;)
       {
-        SuixintieCheckItem localSuixintieCheckItem = (SuixintieCheckItem)paramSuixintieCheckInfo.next();
-        if (localSuixintieCheckItem.appid == paramInt) {
-          return localSuixintieCheckItem;
-        }
+        this.jdField_a_of_type_Awpv.a.jdField_a_of_type_Bhuf.e();
+        return;
+        this.jdField_a_of_type_Awpv.a.jdField_a_of_type_Awoy.a(awpv.a(this.jdField_a_of_type_Awpv), this.jdField_a_of_type_Awoz.a);
       }
     }
-    return null;
+    paramView = (PersonalityLabelInfo)PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Awpv.a).get(Long.valueOf(awpv.a(this.jdField_a_of_type_Awpv)));
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Awpv.a.jdField_a_of_type_Bhuf.e();
+      return;
+    }
+    paramInt = 0;
+    label115:
+    if (paramInt < paramView.personalityLabelPhotos.size()) {
+      if (((PersonalityLabelPhoto)paramView.personalityLabelPhotos.get(paramInt)).uniseq == this.jdField_a_of_type_Awoz.a.uniseq) {
+        paramView.personalityLabelPhotos.remove(paramInt);
+      }
+    }
+    for (;;)
+    {
+      if (paramInt < 0)
+      {
+        this.jdField_a_of_type_Awpv.a.jdField_a_of_type_Bhuf.e();
+        return;
+        paramInt += 1;
+        break label115;
+      }
+      paramView.photoCount -= 1;
+      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Awpv.a, awpv.a(this.jdField_a_of_type_Awpv), paramView);
+      this.jdField_a_of_type_Awpv.a.jdField_a_of_type_Awoy.b(awpv.a(this.jdField_a_of_type_Awpv), this.jdField_a_of_type_Awoz.a);
+      break;
+      paramInt = -1;
+    }
   }
 }
 

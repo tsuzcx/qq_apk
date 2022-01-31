@@ -1,23 +1,14 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 
-public class atdi
-  extends WebViewPlugin
+class atdi
+  implements atdz
 {
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  atdi(atdh paramatdh, atfe paramatfe) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    if (("nvPopToRoot".equals(paramString3)) && (paramVarArgs.length > 0))
-    {
-      paramJsBridgeListener = this.mRuntime.a();
-      paramString1 = new Intent(paramJsBridgeListener, SplashActivity.class);
-      paramString1.setFlags(67108864);
-      paramJsBridgeListener.startActivity(paramString1);
-      return false;
-    }
-    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    QLog.i("XProxy|NowProxy", 1, "openWatchTogetherRoom  enter success  retCode= " + paramInt + ";msg=" + paramString);
+    this.jdField_a_of_type_Atfe.a(paramInt, paramString);
   }
 }
 

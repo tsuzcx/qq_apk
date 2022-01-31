@@ -1,8 +1,17 @@
-public class ajpz
+import android.app.Activity;
+import android.content.Intent;
+
+public abstract interface ajpz
 {
-  public int a;
-  public String a;
-  public String b;
+  public abstract String a();
+  
+  public abstract void a(Activity paramActivity);
+  
+  public abstract void a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(Activity paramActivity, Intent paramIntent);
+  
+  public abstract void c_(String paramString);
 }
 
 

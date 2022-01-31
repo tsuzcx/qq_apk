@@ -1,11 +1,11 @@
 package com.tencent.device.qfind;
 
-import zvb;
+import zzq;
 
 public class QFindBLEScanMgr$ScanReceiver$1
   implements Runnable
 {
-  public QFindBLEScanMgr$ScanReceiver$1(zvb paramzvb) {}
+  public QFindBLEScanMgr$ScanReceiver$1(zzq paramzzq) {}
   
   public void run()
   {

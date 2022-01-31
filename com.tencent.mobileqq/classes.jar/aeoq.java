@@ -1,28 +1,6 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.data.MessageForPtt;
-
-public class aeoq
-  implements MediaPlayer.OnCompletionListener
+public abstract interface aeoq
 {
-  public aeoq(MediaPlayerManager paramMediaPlayerManager) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    if (paramMediaPlayer != null) {
-      paramMediaPlayer.release();
-    }
-    bdaz.a = null;
-    if ((MediaPlayerManager.a(this.a) != null) && ((MediaPlayerManager.a(this.a) instanceof MessageForPtt))) {
-      ((MessageForPtt)MediaPlayerManager.a(this.a)).playProgress = 0.0F;
-    }
-    if ((MediaPlayerManager.a(this.a) != null) && (MediaPlayerManager.a(this.a))) {
-      return;
-    }
-    MediaPlayerManager.a(this.a, null);
-    this.a.e();
-  }
+  public abstract void a();
 }
 
 

@@ -1,12 +1,19 @@
-public abstract interface bffv
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import com.tencent.open.agent.OpenCardContainer;
+
+public class bffv
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(bffw parambffw);
+  public bffv(OpenCardContainer paramOpenCardContainer, ImageView paramImageView) {}
   
-  public abstract void b(bffw parambffw);
-  
-  public abstract void c(bffw parambffw);
-  
-  public abstract void d(bffw parambffw);
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.setBackgroundColor(0);
+    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+  }
 }
 
 

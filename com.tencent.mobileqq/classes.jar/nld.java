@@ -5,7 +5,7 @@ import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisem
 import com.tencent.qphone.base.util.QLog;
 
 public class nld
-  implements bhqd
+  implements bhuk
 {
   public nld(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
@@ -18,10 +18,10 @@ public class nld
       if (QLog.isColorLevel()) {
         QLog.i("PublicAccountAdvertisementActivity", 2, "action" + paramView);
       }
-      if ((!TextUtils.isEmpty(paramView)) && (paramView.equals(this.a.getResources().getString(2131693470))))
+      if ((!TextUtils.isEmpty(paramView)) && (paramView.equals(this.a.getResources().getString(2131693472))))
       {
-        astr.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
-        azmj.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
+        asya.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
+        azqs.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
       }
     }
   }

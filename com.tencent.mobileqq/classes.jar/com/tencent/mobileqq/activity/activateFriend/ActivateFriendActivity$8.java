@@ -13,7 +13,7 @@ class ActivateFriendActivity$8
   public void run()
   {
     int i = this.this$0.app.a().b();
-    Object localObject2 = this.this$0.app.getApp().getString(2131720570);
+    Object localObject2 = this.this$0.app.getApp().getString(2131720582);
     Object localObject1 = localObject2;
     if (i > 0)
     {

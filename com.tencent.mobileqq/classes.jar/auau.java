@@ -1,246 +1,165 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
+import com.tencent.mobileqq.matchchat.MatchChatMsgUtil.1;
+import com.tencent.mobileqq.matchchat.RecentMatchChatListItem;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import localpb.richMsg.MixedMsg.Elem;
-import localpb.richMsg.MixedMsg.Msg;
-import localpb.richMsg.RichMsg.PicRec;
-import tencent.im.msg.im_msg_body.CustomFace;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.NotOnlineImage;
-import tencent.im.msg.im_msg_body.RichText;
 
-class auau
-  extends awfx
+public class auau
 {
-  auau(auat paramauat, MessageForMixedMsg paramMessageForMixedMsg, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
-  
-  private boolean a(MessageForPic paramMessageForPic, awfd paramawfd)
+  public static int a(QQAppInterface paramQQAppInterface)
   {
-    im_msg_body.RichText localRichText = new im_msg_body.RichText();
-    im_msg_body.Elem localElem = new im_msg_body.Elem();
-    String str = "";
-    if (paramawfd.jdField_a_of_type_JavaLangObject != null) {
-      if ((paramawfd.jdField_a_of_type_JavaLangObject instanceof im_msg_body.NotOnlineImage))
-      {
-        localElem.not_online_image.set((im_msg_body.NotOnlineImage)paramawfd.jdField_a_of_type_JavaLangObject);
-        if (paramawfd.b)
-        {
-          if (!localElem.not_online_image.res_id.has()) {
-            break label274;
-          }
-          str = localElem.not_online_image.res_id.get().toStringUtf8();
-        }
-      }
-    }
-    for (;;)
+    if (paramQQAppInterface == null) {}
+    do
     {
-      paramMessageForPic.uuid = str;
-      paramMessageForPic.path = str;
-      paramMessageForPic.thumbMsgUrl = localElem.not_online_image.str_thumb_url.get();
-      paramMessageForPic.thumbHeight = localElem.not_online_image.uint32_thumb_height.get();
-      paramMessageForPic.thumbWidth = localElem.not_online_image.uint32_thumb_width.get();
-      paramMessageForPic.md5 = bdcs.c(auat.a());
-      paramMessageForPic.msgData = paramMessageForPic.getSerialPB().toByteArray();
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, " pic resp uuid = " + str + " picMsgMD5 = " + paramMessageForPic.md5 + " hasCode = " + paramMessageForPic.hashCode());
-      }
-      int i = 1;
-      label227:
-      boolean bool;
-      if (i != 0)
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MixedMsgManager", 2, "updateMessageForPic success");
+        return 0;
+        if (a(paramQQAppInterface)) {
+          break;
         }
-        localRichText.elems.add(localElem);
-        if (paramawfd.jdField_a_of_type_Int == 0) {
-          bool = true;
-        }
-      }
-      for (;;)
-      {
-        paramMessageForPic.richText = localRichText;
-        return bool;
-        label274:
-        if (!localElem.not_online_image.download_path.has()) {
-          break label489;
-        }
-        str = localElem.not_online_image.download_path.get().toStringUtf8();
+      } while (!QLog.isColorLevel());
+      QLog.i("MatchChatMsgUtil", 2, "isMatchChatRedPointSwitchOn false");
+      return 0;
+      if (a(paramQQAppInterface, "matchchat_redpoint_show")) {
         break;
-        if ((paramawfd.jdField_a_of_type_JavaLangObject instanceof im_msg_body.CustomFace))
-        {
-          localElem.custom_face.set((im_msg_body.CustomFace)paramawfd.jdField_a_of_type_JavaLangObject);
-          if (paramawfd.b)
-          {
-            if (localElem.custom_face.str_file_path.has()) {
-              str = localElem.custom_face.str_file_path.get();
-            }
-            paramMessageForPic.path = str;
-            paramMessageForPic.uuid = str;
-            paramMessageForPic.md5 = bdcs.c(auat.a());
-            paramMessageForPic.msgData = paramMessageForPic.getSerialPB().toByteArray();
-          }
-          i = 1;
-          break label227;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("MixedMsgManager", 2, "WTF, picResult.mExtraObj is " + paramawfd.jdField_a_of_type_JavaLangObject.getClass().getSimpleName());
-        }
-        i = 0;
-        break label227;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("MixedMsgManager", 2, "[requestUploadPics] Bad picture element");
-          bool = false;
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.e("MixedMsgManager", 2, "updateMessageForPic failed, add empty element");
-          }
-        }
-        bool = false;
       }
-      label489:
-      str = "";
+    } while (!QLog.isColorLevel());
+    QLog.i("MatchChatMsgUtil", 2, "isRedPointShow false");
+    return 0;
+    Object localObject = paramQQAppInterface.a(1044).a(alof.aU, 1044);
+    if (localObject == null)
+    {
+      QLog.i("MatchChatMsgUtil", 1, "getMatchChatRedPointNum null");
+      return 0;
     }
+    localObject = ((List)localObject).iterator();
+    String str;
+    int j;
+    for (int i = 0; ((Iterator)localObject).hasNext(); i = paramQQAppInterface.a().a(str, j) + i)
+    {
+      MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
+      str = localMessageRecord.senderuin;
+      j = localMessageRecord.istroop;
+    }
+    return i;
   }
   
-  private boolean a(ArrayList<awfd> paramArrayList)
+  public static Intent a(Context paramContext)
   {
-    MessageForMixedMsg localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
-    int j;
-    boolean bool2;
-    if (localMessageForMixedMsg.msgElemList != null)
-    {
-      int i = 0;
-      j = 0;
-      boolean bool1 = true;
-      bool2 = bool1;
-      if (j >= localMessageForMixedMsg.msgElemList.size()) {
-        break label135;
-      }
-      Object localObject = (MessageRecord)localMessageForMixedMsg.msgElemList.get(j);
-      if (!(localObject instanceof MessageForPic)) {
-        break label138;
-      }
-      localObject = (MessageForPic)localObject;
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, "updateMessageForPic for MessageForMixedMsg, subMsgIndex[" + j);
-      }
-      if (!a((MessageForPic)localObject, (awfd)paramArrayList.get(i))) {
-        bool1 = false;
-      }
-      i += 1;
-    }
-    label135:
-    label138:
+    paramContext = new Intent(paramContext, PublicFragmentActivity.class);
+    paramContext.putExtra("uintype", 1044);
+    paramContext.putExtra("uin", alof.aU);
+    paramContext.putExtra("public_fragment_class", MatchChatMsgListFragment.class.getName());
+    paramContext.addFlags(268435456);
+    return paramContext;
+  }
+  
+  public static Intent a(Context paramContext, String paramString, int paramInt)
+  {
+    paramContext = new Intent(paramContext, ChatActivity.class);
+    paramContext.putExtra("uin", paramString);
+    paramContext.putExtra("uintype", 1044);
+    paramContext.putExtra("entrance", paramInt);
+    paramContext.addFlags(268435456);
+    return paramContext;
+  }
+  
+  public static BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    int i = a(paramQQAppInterface);
+    QLog.i("MatchChatMsgUtil", 1, "getMatchChatRedPointAppInfo num = " + i);
+    paramQQAppInterface = new BusinessInfoCheckUpdate.AppInfo();
+    paramQQAppInterface.path.set(paramString);
+    paramQQAppInterface.num.set(i);
+    paramQQAppInterface.type.set(2);
+    paramQQAppInterface.iNewFlag.set(1);
+    return paramQQAppInterface;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
     for (;;)
     {
-      j += 1;
-      break;
-      bool2 = true;
-      return bool2;
-    }
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, ArrayList<awfd> paramArrayList)
-  {
-    if ((paramInt == 0) && (paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, "onForwardMultiMsgPicsUpload success[" + paramArrayList.size() + "]");
-      }
-      boolean bool = a(paramArrayList);
-      if (!bool)
+      return;
+      Object localObject = paramQQAppInterface.a(1044).a(alof.aU, 1044);
+      if (localObject == null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("MixedMsgManager", 2, "onForwardMultiMsgPicsUpload : isAllPicUploadSuccessful = false ");
-        }
-        auat.a(this.jdField_a_of_type_Auat, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, false, "picUpload fail");
+        QLog.i("MatchChatMsgUtil", 1, "clearMatchChatMessageBox null");
         return;
       }
-      paramArrayList = new MixedMsg.Msg();
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgElemList.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Object localObject1 = (MessageRecord)localIterator.next();
-        MixedMsg.Elem localElem = new MixedMsg.Elem();
-        if ((localObject1 instanceof MessageForText))
-        {
-          if (!TextUtils.isEmpty(((MessageRecord)localObject1).msg)) {
-            localElem.textMsg.set(((MessageRecord)localObject1).msg);
-          }
+        MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
+        if (QLog.isColorLevel()) {
+          QLog.i("MatchChatMsgUtil", 1, "clearMatchChatMessageBox, delete uin = " + localMessageRecord.senderuin);
         }
-        else {
-          for (;;)
-          {
-            paramArrayList.elems.get().add(localElem);
-            break;
-            Object localObject2;
-            if (((MessageRecord)localObject1).msgtype == -2000)
-            {
-              localObject2 = new RichMsg.PicRec();
-              try
-              {
-                localObject1 = (RichMsg.PicRec)((RichMsg.PicRec)localObject2).mergeFrom(((MessageRecord)localObject1).msgData);
-                localElem.picMsg.set((MessageMicro)localObject1);
-              }
-              catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-              {
-                QLog.e("MixedMsgManager", 1, "onForwardMultiMsgPicsUpload", localInvalidProtocolBufferMicroException);
-              }
-            }
-            else if ((localInvalidProtocolBufferMicroException instanceof MessageForReplyText))
-            {
-              try
-              {
-                MessageForReplyText localMessageForReplyText = (MessageForReplyText)localInvalidProtocolBufferMicroException;
-                if (localMessageForReplyText.mSourceMsgInfo != null) {
-                  localMessageForReplyText.mSourceMsgInfo.packSourceMsg(MessageForReplyText.getAppInterface(), localMessageForReplyText.getSourceMessage());
-                }
-                localObject2 = ammq.a(localMessageForReplyText.mSourceMsgInfo);
-                localElem.sourceMsgInfo.set(bdcv.a((byte[])localObject2));
-                if (TextUtils.isEmpty(localMessageForReplyText.msg)) {
-                  continue;
-                }
-                localElem.textMsg.set(localMessageForReplyText.msg);
-              }
-              catch (Exception localException) {}
-              if (QLog.isColorLevel()) {
-                QLog.d("MixedMsgManager", 2, localException.getMessage());
-              }
-            }
-          }
-        }
+        String str = localMessageRecord.senderuin;
+        int i = localMessageRecord.istroop;
+        paramQQAppInterface.a().a(str, i);
       }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData = paramArrayList.toByteArray();
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, "updateMsgRecords done, goto onPackAndSendMsg");
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, RecentMatchChatListItem paramRecentMatchChatListItem, boolean paramBoolean)
+  {
+    if ((paramQQAppInterface == null) || (paramRecentMatchChatListItem == null)) {}
+    int i;
+    do
+    {
+      return;
+      i = paramQQAppInterface.a().a(paramRecentMatchChatListItem.a(), paramRecentMatchChatListItem.a());
+      if (paramBoolean) {
+        paramQQAppInterface.a().a(alof.aU, 1044, paramRecentMatchChatListItem.a(), paramQQAppInterface.getCurrentAccountUin());
       }
-      auat.a(this.jdField_a_of_type_Auat, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, bool);
+    } while (i <= 0);
+    paramQQAppInterface.a().a(paramRecentMatchChatListItem.a(), paramRecentMatchChatListItem.a(), true, false);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  {
+    if (paramQQAppInterface == null) {
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.e("MixedMsgManager", 2, "onForwardMultiMsgPicsUpload failed");
+      QLog.i("MatchChatMsgUtil", 2, "saveRedPointShow key =" + paramString + " value =" + paramString);
     }
-    auat.a(this.jdField_a_of_type_Auat, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, false, "picUpload fail : result = " + paramInt);
+    bdne.a(paramQQAppInterface.getAccount(), "match_chat_config_sp").edit().putBoolean(paramString, paramBoolean).apply();
+  }
+  
+  public static void a(RedTouch paramRedTouch, QQAppInterface paramQQAppInterface)
+  {
+    ThreadManagerV2.excute(new MatchChatMsgUtil.1(paramQQAppInterface, paramRedTouch), 16, null, false);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return true;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    return bdne.a(paramQQAppInterface.getAccount(), "match_chat_config_sp").getBoolean(paramString, false);
   }
 }
 

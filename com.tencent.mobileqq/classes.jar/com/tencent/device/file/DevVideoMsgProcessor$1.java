@@ -1,9 +1,9 @@
 package com.tencent.device.file;
 
 import android.content.Intent;
-import ayyu;
-import ayzo;
-import azae;
+import azdd;
+import azdx;
+import azen;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,7 +14,7 @@ public final class DevVideoMsgProcessor$1
   
   public void run()
   {
-    ayzo localayzo = ayyu.a(0, 1);
+    azdx localazdx = azdd.a(0, 1);
     Object localObject = new Intent();
     ((Intent)localObject).addFlags(603979776);
     ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_JavaLangString);
@@ -22,12 +22,12 @@ public final class DevVideoMsgProcessor$1
     ((Intent)localObject).putExtra("file_send_business_type", 1);
     ((Intent)localObject).putExtra("file_send_path", this.b);
     long l = System.currentTimeMillis();
-    localObject = ayyu.a(1, localObject, localayzo);
+    localObject = azdd.a(1, localObject, localazdx);
     if (QLog.isColorLevel()) {
       QLog.i("DeviceShortVideo", 2, "createShortVideoUploadInfo cost:" + (System.currentTimeMillis() - l));
     }
-    localayzo.a((azae)localObject);
-    ayyu.a(localayzo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    localazdx.a((azen)localObject);
+    azdd.a(localazdx, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

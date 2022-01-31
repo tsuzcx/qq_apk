@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference;
 public class msm
   extends mta
 {
-  int jdField_a_of_type_Int = 2130841639;
+  int jdField_a_of_type_Int = 2130841652;
   Runnable jdField_a_of_type_JavaLangRunnable = null;
   WeakReference<AVActivity> jdField_a_of_type_JavaLangRefWeakReference = null;
   public meu a;
@@ -61,7 +61,7 @@ public class msm
       bool = a();
       QLog.w(this.i, 1, "hook, mHook[" + bool + "]");
       if (!bool) {
-        this.jdField_a_of_type_Int = 2130841639;
+        this.jdField_a_of_type_Int = 2130841652;
       }
       a(false);
     } while (bool);

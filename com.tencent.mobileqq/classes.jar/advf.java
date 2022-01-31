@@ -1,22 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.util.Pair;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
 
-class advf
-  implements DialogInterface.OnClickListener
+public class advf
+  implements Handler.Callback
 {
-  advf(adve paramadve, azyl paramazyl, Pair paramPair) {}
+  public advf(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Azyl.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!azyl.a(this.jdField_a_of_type_Adve.a.app))
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_Adve.a.setTitle("");
-      azyk.a(this.jdField_a_of_type_Adve.a.app, this.jdField_a_of_type_Adve.a, null);
     }
-    this.jdField_a_of_type_Adve.a.finish();
+    for (;;)
+    {
+      return true;
+      paramMessage = new advg(this);
+      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
+    }
   }
 }
 

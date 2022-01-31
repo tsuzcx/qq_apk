@@ -1,21 +1,18 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
-final class arbx
-  implements View.OnClickListener
+public final class arbx
+  implements Parcelable.Creator<FileInfo>
 {
-  arbx(Activity paramActivity, String paramString) {}
-  
-  public void onClick(View paramView)
+  public FileInfo a(Parcel paramParcel)
   {
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BasePluginActivity))
-    {
-      arni.a(((BasePluginActivity)this.jdField_a_of_type_AndroidAppActivity).getOutActivity(), this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    arni.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    return new FileInfo(paramParcel, null);
+  }
+  
+  public FileInfo[] a(int paramInt)
+  {
+    return new FileInfo[paramInt];
   }
 }
 

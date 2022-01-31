@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bdrb;
+import bdvk;
 import com.tencent.qphone.base.util.QLog;
 
 class QQSettingMe$8
@@ -13,7 +13,7 @@ class QQSettingMe$8
     if (QLog.isColorLevel()) {
       QLog.d("QQSettingRedesign", 2, "init parse config json");
     }
-    bdrb.a().a(this.this$0.a);
+    bdvk.a().a(this.this$0.a);
   }
 }
 

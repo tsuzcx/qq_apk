@@ -49,7 +49,7 @@ public class nsd
   
   private void a(String paramString)
   {
-    paramString = bhos.a(paramString);
+    paramString = bhsz.a(paramString);
     String str1 = a(paramString, "sub_action", "");
     String str2 = a(paramString, "action_name", "");
     if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
@@ -59,24 +59,24 @@ public class nsd
       }
       return;
     }
-    azmj.b(null, a(paramString, "tag", "P_CliOper"), a(paramString, "main_action", "Pb_account_lifeservice"), a(paramString, "to_uin", ""), str1, str2, a(paramString, "from_type", 0), a(paramString, "result", 0), a(paramString, "r2", ""), a(paramString, "r3", ""), a(paramString, "r4", ""), a(paramString, "r5", ""));
+    azqs.b(null, a(paramString, "tag", "P_CliOper"), a(paramString, "main_action", "Pb_account_lifeservice"), a(paramString, "to_uin", ""), str1, str2, a(paramString, "from_type", 0), a(paramString, "result", 0), a(paramString, "r2", ""), a(paramString, "r3", ""), a(paramString, "r4", ""), a(paramString, "r5", ""));
   }
   
   protected void a(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!apmy.a().a())
+    if (!aprh.a().a())
     {
       if (paramBoolean2) {
-        Toast.makeText(this.mRuntime.a().getApplicationContext(), alpo.a(2131709186), 0).show();
+        Toast.makeText(this.mRuntime.a().getApplicationContext(), alud.a(2131709198), 0).show();
       }
       return;
     }
     if (paramBoolean1)
     {
-      apmy.a().b(paramBundle);
+      aprh.a().b(paramBundle);
       return;
     }
-    apmy.a().a(paramBundle);
+    aprh.a().a(paramBundle);
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -150,7 +150,7 @@ public class nsd
             paramString1 = paramString1.optString("feeds_type", "1");
             this.a.putLong("feeds_id", Long.valueOf(paramJsBridgeListener).longValue());
             this.a.putInt("feeds_type", Integer.valueOf(paramString1).intValue());
-            a(apic.a("ipc_kandian_socialfeeds_update", "", -1, this.a), false, false);
+            a(apml.a("ipc_kandian_socialfeeds_update", "", -1, this.a), false, false);
           }
           catch (Exception paramJsBridgeListener)
           {

@@ -1,6 +1,6 @@
 package cooperation.qlink;
 
-import alpo;
+import alud;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,19 +8,19 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import aqxj;
-import arof;
-import bdcd;
-import bdfq;
-import bhoe;
-import bioj;
-import bipi;
-import bipj;
-import bipk;
-import bipl;
-import bipm;
-import bipn;
-import bipo;
+import arbs;
+import arso;
+import bdgm;
+import bdjz;
+import bhsl;
+import bisq;
+import bitp;
+import bitq;
+import bitr;
+import bits;
+import bitt;
+import bitu;
+import bitv;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -39,12 +39,12 @@ public class QlinkShareJumpActivity
   implements Handler.Callback
 {
   private Bundle jdField_a_of_type_AndroidOsBundle;
-  private bdfq jdField_a_of_type_Bdfq;
+  private bdjz jdField_a_of_type_Bdjz;
   private String jdField_a_of_type_JavaLangString;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bhoe(Looper.getMainLooper(), this);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bhsl(Looper.getMainLooper(), this);
   private boolean jdField_a_of_type_Boolean;
-  private String b = alpo.a(2131710399);
+  private String b = alud.a(2131710411);
   
   /* Error */
   private String a(Uri paramUri)
@@ -92,7 +92,7 @@ public class QlinkShareJumpActivity
     //   87: lstore 4
     //   89: lload 4
     //   91: l2f
-    //   92: invokestatic 102	bdcs:c	()F
+    //   92: invokestatic 102	bdhb:c	()F
     //   95: fcmpl
     //   96: ifle +27 -> 123
     //   99: aload_0
@@ -140,7 +140,7 @@ public class QlinkShareJumpActivity
     //   194: aastore
     //   195: iconst_0
     //   196: aaload
-    //   197: invokestatic 137	bdcs:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   197: invokestatic 137	bdhb:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   200: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   203: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   206: astore 8
@@ -157,7 +157,7 @@ public class QlinkShareJumpActivity
     //   232: ifne +26 -> 258
     //   235: aload_0
     //   236: ldc 148
-    //   238: invokestatic 25	alpo:a	(I)Ljava/lang/String;
+    //   238: invokestatic 25	alud:a	(I)Ljava/lang/String;
     //   241: putfield 27	cooperation/qlink/QlinkShareJumpActivity:b	Ljava/lang/String;
     //   244: aload 6
     //   246: ifnull +10 -> 256
@@ -179,7 +179,7 @@ public class QlinkShareJumpActivity
     //   280: invokestatic 73	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   283: aload_0
     //   284: ldc 155
-    //   286: invokestatic 25	alpo:a	(I)Ljava/lang/String;
+    //   286: invokestatic 25	alud:a	(I)Ljava/lang/String;
     //   289: putfield 27	cooperation/qlink/QlinkShareJumpActivity:b	Ljava/lang/String;
     //   292: aload 6
     //   294: ifnull +10 -> 304
@@ -193,7 +193,7 @@ public class QlinkShareJumpActivity
     //   312: ifle +30 -> 342
     //   315: aload_0
     //   316: ldc 158
-    //   318: invokestatic 25	alpo:a	(I)Ljava/lang/String;
+    //   318: invokestatic 25	alud:a	(I)Ljava/lang/String;
     //   321: putfield 27	cooperation/qlink/QlinkShareJumpActivity:b	Ljava/lang/String;
     //   324: aload_1
     //   325: invokevirtual 161	java/io/InputStream:close	()V
@@ -317,7 +317,7 @@ public class QlinkShareJumpActivity
         break label259;
       }
       localObject1 = b((Uri)localObject2);
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (arof.a((String)localObject1)) && (new File((String)localObject1).canRead())) {
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (arso.a((String)localObject1)) && (new File((String)localObject1).canRead())) {
         break label254;
       }
       localObject1 = a((Uri)localObject2);
@@ -350,7 +350,7 @@ public class QlinkShareJumpActivity
               continue;
             }
             localObject2 = b((Uri)((Iterator)localObject1).next());
-            if (arof.a((String)localObject2)) {
+            if (arso.a((String)localObject2)) {
               localArrayList.add(localObject2);
             }
             for (;;)
@@ -403,20 +403,20 @@ public class QlinkShareJumpActivity
   {
     this.jdField_a_of_type_Boolean = true;
     ThreadManager.post(new QlinkShareJumpActivity.5(this, paramString, paramInputStream, paramLong), 5, null, true);
-    if (this.jdField_a_of_type_Bdfq == null)
+    if (this.jdField_a_of_type_Bdjz == null)
     {
-      this.jdField_a_of_type_Bdfq = bdcd.a(this, getString(2131691365), alpo.a(2131710402), new bipm(this));
-      this.jdField_a_of_type_Bdfq.setOnDismissListener(new bipn(this));
+      this.jdField_a_of_type_Bdjz = bdgm.a(this, getString(2131691366), alud.a(2131710414), new bitt(this));
+      this.jdField_a_of_type_Bdjz.setOnDismissListener(new bitu(this));
     }
-    this.jdField_a_of_type_Bdfq.show();
+    this.jdField_a_of_type_Bdjz.show();
   }
   
   private void a(boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (String str = getString(2131698721);; str = getString(2131698722))
+    for (String str = getString(2131698733);; str = getString(2131698734))
     {
-      bdcd.a(this, 230, getString(2131698677), str, 2131698670, 2131698670, new bipj(this), null).show();
+      bdgm.a(this, 230, getString(2131698689), str, 2131698682, 2131698682, new bitq(this), null).show();
       return;
     }
   }
@@ -474,7 +474,7 @@ public class QlinkShareJumpActivity
   private void b()
   {
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 50) {
-      bdcd.a(this, 230, getString(2131698677), getString(2131698681), 2131698670, 2131698670, new bipk(this), null).show();
+      bdgm.a(this, 230, getString(2131698689), getString(2131698693), 2131698682, 2131698682, new bitr(this), null).show();
     }
     while ((a()) || (a(false))) {
       return;
@@ -484,20 +484,20 @@ public class QlinkShareJumpActivity
   
   private void b(String paramString)
   {
-    bdfq localbdfq = new bdfq(this, 2131755801);
-    localbdfq.setContentView(2131558943);
-    localbdfq.setTitle(getString(2131720796));
-    localbdfq.setMessage(paramString);
-    localbdfq.setCanceledOnTouchOutside(false);
-    localbdfq.setCancelable(false);
-    localbdfq.setNegativeButton(getString(2131690623), new bipl(this));
-    localbdfq.show();
+    bdjz localbdjz = new bdjz(this, 2131755801);
+    localbdjz.setContentView(2131558942);
+    localbdjz.setTitle(getString(2131720808));
+    localbdjz.setMessage(paramString);
+    localbdjz.setCanceledOnTouchOutside(false);
+    localbdjz.setCancelable(false);
+    localbdjz.setNegativeButton(getString(2131690623), new bits(this));
+    localbdjz.show();
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Bdfq != null) {
-      this.jdField_a_of_type_Bdfq.dismiss();
+    if (this.jdField_a_of_type_Bdjz != null) {
+      this.jdField_a_of_type_Bdjz.dismiss();
     }
   }
   
@@ -511,7 +511,7 @@ public class QlinkShareJumpActivity
       localBundle = new Bundle();
       localBundle.putStringArrayList("string_filepaths", this.jdField_a_of_type_JavaUtilArrayList);
       localArrayList = new ArrayList();
-      localArrayList.addAll(aqxj.a());
+      localArrayList.addAll(arbs.a());
       if (localArrayList == null) {
         break label141;
       }
@@ -520,10 +520,10 @@ public class QlinkShareJumpActivity
     for (int i = localArrayList.size();; i = 0)
     {
       localBundle.putInt("string_beforeshare_selectedfile_count", i);
-      bioj.a(this, 10, localBundle);
+      bisq.a(this, 10, localBundle);
       finish();
       return;
-      bdcd.a(this, 230, getString(2131698677), getString(2131698722), 2131698670, 2131698670, new bipo(this), null).show();
+      bdgm.a(this, 230, getString(2131698689), getString(2131698734), 2131698682, 2131698682, new bitv(this), null).show();
       return;
     }
   }
@@ -567,7 +567,7 @@ public class QlinkShareJumpActivity
           while (paramBundle.hasNext())
           {
             String str = (String)paramBundle.next();
-            if (arof.a(str))
+            if (arso.a(str))
             {
               if (this.jdField_a_of_type_JavaUtilArrayList == null) {
                 this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -583,7 +583,7 @@ public class QlinkShareJumpActivity
       catch (Exception paramBundle)
       {
         paramBundle.printStackTrace();
-        bdcd.a(this, 230, getString(2131698677), getString(2131698722), 2131698670, 2131698670, new bipi(this), null).show();
+        bdgm.a(this, 230, getString(2131698689), getString(2131698734), 2131698682, 2131698682, new bitp(this), null).show();
         return false;
       }
       d();
@@ -624,7 +624,7 @@ public class QlinkShareJumpActivity
       c();
       b();
       continue;
-      this.jdField_a_of_type_Bdfq.setProgress(paramMessage.arg1);
+      this.jdField_a_of_type_Bdjz.setProgress(paramMessage.arg1);
     }
   }
   

@@ -1,197 +1,73 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class blzc
+class blzc
+  implements baug
 {
-  private static Map<Class, Integer> a = new HashMap();
-  private static Map<Class, List<Constructor<? extends blyv>>> b = new HashMap();
+  blzc(blzb paramblzb, String paramString1, String paramString2, blze paramblze, String paramString3, String paramString4, blzd paramblzd) {}
   
-  private static int a(Class<?> paramClass)
+  public void onResp(bavf parambavf)
   {
-    if (a.containsKey(paramClass)) {
-      return ((Integer)a.get(paramClass)).intValue();
+    if (QLog.isColorLevel()) {
+      QLog.i("ConfigSimplifier_PTV", 2, "onResp resultcode: " + parambavf.c + " threadid=" + Thread.currentThread().getId());
     }
-    int i = b(paramClass);
-    a.put(paramClass, Integer.valueOf(i));
-    return i;
-  }
-  
-  private static blyv a(Constructor<? extends blyv> paramConstructor, Object paramObject)
-  {
-    try
-    {
-      paramConstructor = (blyv)paramConstructor.newInstance(new Object[] { paramObject });
-      return paramConstructor;
-    }
-    catch (IllegalAccessException paramConstructor)
-    {
-      throw new RuntimeException(paramConstructor);
-    }
-    catch (InstantiationException paramConstructor)
-    {
-      throw new RuntimeException(paramConstructor);
-    }
-    catch (InvocationTargetException paramConstructor)
-    {
-      throw new RuntimeException(paramConstructor);
-    }
-  }
-  
-  @NonNull
-  public static blyw a(Object paramObject)
-  {
-    if ((paramObject instanceof blyt)) {
-      return new blyu((blyt)paramObject);
-    }
-    if ((paramObject instanceof blyw)) {
-      return (blyw)paramObject;
-    }
-    Object localObject = paramObject.getClass();
-    if (a((Class)localObject) == 2)
-    {
-      localObject = (List)b.get(localObject);
-      if (((List)localObject).size() == 1) {
-        return new blzi(a((Constructor)((List)localObject).get(0), paramObject));
+    File localFile = new File(this.jdField_a_of_type_JavaLangString, this.b);
+    if (!localFile.exists()) {
+      if (QLog.isColorLevel()) {
+        QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip !zipfile.exists()");
       }
-      blyv[] arrayOfblyv = new blyv[((List)localObject).size()];
-      int i = 0;
-      while (i < ((List)localObject).size())
-      {
-        arrayOfblyv[i] = a((Constructor)((List)localObject).get(i), paramObject);
-        i += 1;
-      }
-      return new blys(arrayOfblyv);
     }
-    return new blzf(paramObject);
-  }
-  
-  public static String a(String paramString)
-  {
-    return paramString.replace(".", "_") + "_LifecycleAdapter";
-  }
-  
-  @Nullable
-  private static Constructor<? extends blyv> a(Class<?> paramClass)
-  {
-    for (;;)
+    label249:
+    do
     {
-      try
+      for (;;)
       {
-        localObject = paramClass.getPackage();
-        String str = paramClass.getCanonicalName();
-        if (localObject != null)
+        return;
+        parambavf = "";
+        try
         {
-          localObject = ((Package)localObject).getName();
-          if (((String)localObject).isEmpty())
+          String str = bdhb.c(localFile.getPath());
+          parambavf = str;
+          if ((TextUtils.isEmpty(this.jdField_a_of_type_Blze.c)) || (!this.jdField_a_of_type_Blze.c.equalsIgnoreCase(parambavf))) {}
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+        {
+          for (;;)
           {
-            str = a(str);
-            if (((String)localObject).isEmpty())
+            try
             {
-              localObject = str;
-              paramClass = Class.forName((String)localObject).getDeclaredConstructor(new Class[] { paramClass });
-              if (paramClass.isAccessible()) {
-                break label124;
+              ndr.a(localFile, this.c);
+              parambavf = new File(this.d);
+              if (!parambavf.exists()) {
+                break label249;
               }
-              paramClass.setAccessible(true);
-              return paramClass;
+              parambavf = bnpl.a(parambavf);
+              if ((this.jdField_a_of_type_Blzd == null) || (parambavf == null)) {
+                break;
+              }
+              this.jdField_a_of_type_Blzd.a(parambavf);
+              return;
+              localUnsatisfiedLinkError = localUnsatisfiedLinkError;
+              QLog.e("ConfigSimplifier_PTV", 1, "onResp error, ", localUnsatisfiedLinkError);
+            }
+            catch (IOException parambavf)
+            {
+              QLog.e("ConfigSimplifier_PTV", 1, "onResp error, ", parambavf);
+              continue;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.e("ConfigSimplifier_PTV", 2, new Object[] { "parseFilterConfigZip error, md5:", this.jdField_a_of_type_Blze.c, " ", parambavf });
             }
           }
-          else
-          {
-            str = str.substring(((String)localObject).length() + 1);
-            continue;
-          }
-          localObject = (String)localObject + "." + str;
-          continue;
-          return paramClass;
         }
       }
-      catch (ClassNotFoundException paramClass)
-      {
-        return null;
-      }
-      catch (NoSuchMethodException paramClass)
-      {
-        throw new RuntimeException(paramClass);
-      }
-      label124:
-      Object localObject = "";
-    }
+    } while (!QLog.isColorLevel());
+    QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip !jsonFile.exists()");
   }
   
-  private static boolean a(Class<?> paramClass)
-  {
-    return (paramClass != null) && (blza.class.isAssignableFrom(paramClass));
-  }
-  
-  private static int b(Class<?> paramClass)
-  {
-    if (paramClass.getCanonicalName() == null) {
-      return 1;
-    }
-    Object localObject1 = a(paramClass);
-    if (localObject1 != null)
-    {
-      b.put(paramClass, Collections.singletonList(localObject1));
-      return 2;
-    }
-    if (blyp.a.a(paramClass)) {
-      return 1;
-    }
-    Object localObject2 = paramClass.getSuperclass();
-    localObject1 = null;
-    if (a((Class)localObject2))
-    {
-      if (a((Class)localObject2) == 1) {
-        return 1;
-      }
-      localObject1 = new ArrayList((Collection)b.get(localObject2));
-    }
-    localObject2 = paramClass.getInterfaces();
-    int j = localObject2.length;
-    int i = 0;
-    Class localClass;
-    while (i < j)
-    {
-      localClass = localObject2[i];
-      if (!a(localClass))
-      {
-        i += 1;
-      }
-      else
-      {
-        if (a(localClass) == 1) {
-          return 1;
-        }
-        if (localObject1 != null) {
-          break label197;
-        }
-        localObject1 = new ArrayList();
-      }
-    }
-    label197:
-    for (;;)
-    {
-      ((List)localObject1).addAll((Collection)b.get(localClass));
-      break;
-      if (localObject1 != null)
-      {
-        b.put(paramClass, localObject1);
-        return 2;
-      }
-      return 1;
-    }
-  }
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

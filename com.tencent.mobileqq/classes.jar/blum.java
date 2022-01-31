@@ -1,18 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.text.TextParcelData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public final class blum
-  implements Parcelable.Creator<TextParcelData>
+public class blum
+  implements blun
 {
-  public TextParcelData a(Parcel paramParcel)
+  private File a;
+  
+  public void a()
   {
-    return new TextParcelData(paramParcel);
+    try
+    {
+      blur localblur = (blur)blqr.a().c(10);
+      localblur.a(this.a);
+      localblur.a(7000.0F);
+      localblur.c();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("HumVoiceRecognizer", 2, "recognize: invoked. info: throwable = " + localThrowable);
+    }
   }
   
-  public TextParcelData[] a(int paramInt)
+  public void a(File paramFile)
   {
-    return new TextParcelData[paramInt];
+    this.a = paramFile;
   }
 }
 

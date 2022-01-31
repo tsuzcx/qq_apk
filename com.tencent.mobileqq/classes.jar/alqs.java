@@ -1,29 +1,32 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 class alqs
-  implements Comparator<File>
+  implements INetInfoHandler
 {
-  alqs(alqr paramalqr) {}
+  alqs(alqo paramalqo) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
   {
-    long l2 = 0L;
-    if (paramFile1 != null) {}
-    for (long l1 = paramFile1.lastModified();; l1 = 0L)
-    {
-      if (paramFile2 != null) {
-        l2 = paramFile2.lastModified();
-      }
-      if (l2 >= l1) {
-        break;
-      }
-      return -1;
-    }
-    if (l2 > l1) {
-      return 1;
-    }
-    return 0;
+    this.a.b();
+  }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    this.a.b();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    this.a.c();
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.c();
   }
 }
 

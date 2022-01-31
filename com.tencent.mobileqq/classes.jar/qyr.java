@@ -27,7 +27,7 @@ public class qyr
   
   private int a(String paramString)
   {
-    return bjxj.a(ors.a(), true, true).getInt(paramString, 0);
+    return bkbq.a(ors.a(), true, true).getInt(paramString, 0);
   }
   
   public static qyr a()
@@ -44,12 +44,12 @@ public class qyr
   
   private void a(String paramString, int paramInt)
   {
-    if (bjxj.a(ors.a(), true, true) == null)
+    if (bkbq.a(ors.a(), true, true) == null)
     {
       a("writeToSP() failed");
       return;
     }
-    bjxj.a(paramString, Integer.valueOf(paramInt));
+    bkbq.a(paramString, Integer.valueOf(paramInt));
   }
   
   private static boolean a()
@@ -59,7 +59,7 @@ public class qyr
     int j = ((Calendar)localObject1).get(2);
     int k = ((Calendar)localObject1).get(5);
     localObject1 = i + j + k;
-    Object localObject2 = bjxj.a(ors.a(), true, true);
+    Object localObject2 = bkbq.a(ors.a(), true, true);
     if (localObject2 == null)
     {
       a("checkIsToday() failed");
@@ -72,7 +72,7 @@ public class qyr
     }
     localObject2 = ((SharedPreferences)localObject2).edit();
     ((SharedPreferences.Editor)localObject2).putString("entrance_button_daily", (String)localObject1);
-    bjxj.a((SharedPreferences.Editor)localObject2, true);
+    bkbq.a((SharedPreferences.Editor)localObject2, true);
     return false;
   }
   
@@ -141,7 +141,7 @@ public class qyr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qyr
  * JD-Core Version:    0.7.0.1
  */

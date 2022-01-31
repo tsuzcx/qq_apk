@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.Nullable;
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -15,7 +15,7 @@ import qnq;
 import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.UgcVideoInfo;
 
 public class UgcVideo
-  extends awbv
+  extends awge
   implements Parcelable, Serializable, Comparable<UgcVideo>
 {
   public static final Parcelable.Creator<UgcVideo> CREATOR = new qnq();
@@ -55,7 +55,7 @@ public class UgcVideo
   public boolean reprintDisable;
   public int retryTime;
   public String rowkey = "";
-  @awdj
+  @awhs
   public String seqId = "";
   public long startCompressTime;
   public long startUploadingTime;

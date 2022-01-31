@@ -1,19 +1,28 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public abstract interface vjt
+class vjt
+  extends vim
 {
-  public abstract Context a();
+  vjt(vji paramvji, StoryVideoItem paramStoryVideoItem, vkq paramvkq)
+  {
+    super(paramStoryVideoItem);
+  }
   
-  public abstract View a();
-  
-  public abstract void finish();
-  
-  public abstract Activity getActivity();
-  
-  public abstract void startActivity(Intent paramIntent);
+  public boolean b()
+  {
+    String str = (String)a("result");
+    xqq.a(str);
+    xqq.a(this.jdField_a_of_type_Vkq.d);
+    if (this.jdField_a_of_type_Vkq.d == null)
+    {
+      this.jdField_a_of_type_Vkq.d = "";
+      wxe.c(this.b, "imageLocalPath is null", new Throwable());
+    }
+    a("DownloadPic2FileJob_iiu", str);
+    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Vkq.d);
+    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Vkq.a));
+    return true;
+  }
 }
 
 

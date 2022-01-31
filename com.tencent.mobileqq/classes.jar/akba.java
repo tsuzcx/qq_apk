@@ -1,13 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
 public class akba
-  implements View.OnClickListener
+  extends akit
 {
-  public akba(SpecailCareListActivity paramSpecailCareListActivity) {}
-  
-  public void onClick(View paramView) {}
+  public CheckBox a;
+  public Object a;
+  public TextView d;
+  public TextView e;
 }
 
 

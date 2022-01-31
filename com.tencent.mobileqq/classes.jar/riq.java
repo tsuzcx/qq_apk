@@ -17,7 +17,7 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 
 public class riq
-  implements DialogInterface.OnShowListener, View.OnClickListener, xqs
+  implements DialogInterface.OnShowListener, View.OnClickListener, xvb
 {
   private int jdField_a_of_type_Int;
   private Activity jdField_a_of_type_AndroidAppActivity;
@@ -92,7 +92,7 @@ public class riq
       if (paramBoolean)
       {
         i = 12;
-        i = aekt.a(i, this.jdField_a_of_type_AndroidAppActivity.getResources());
+        i = aepi.a(i, this.jdField_a_of_type_AndroidAppActivity.getResources());
         localURLDrawableOptions.mRequestWidth = i;
         localURLDrawableOptions.mRequestHeight = i;
         localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
@@ -108,8 +108,8 @@ public class riq
         if ((paramBoolean) && (!TextUtils.isEmpty(paramVideoInfo.c)))
         {
           paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
-          paramViewGroup.mRequestWidth = bcwh.a(this.jdField_a_of_type_AndroidAppActivity, 23.0F);
-          paramViewGroup.mRequestHeight = bcwh.a(this.jdField_a_of_type_AndroidAppActivity, 23.0F);
+          paramViewGroup.mRequestWidth = bdaq.a(this.jdField_a_of_type_AndroidAppActivity, 23.0F);
+          paramViewGroup.mRequestHeight = bdaq.a(this.jdField_a_of_type_AndroidAppActivity, 23.0F);
           paramImageView2.setImageDrawable(URLDrawable.getDrawable(paramVideoInfo.c, paramViewGroup));
         }
       }
@@ -164,10 +164,10 @@ public class riq
         localObject = (rbs)paramrbt;
         if (((rbs)localObject).i == null)
         {
-          ((rbs)localObject).i = ((ViewGroup)((ViewStub)((rbs)localObject).p.findViewById(2131379650)).inflate());
-          ((rbs)localObject).b = ((ImageView)((rbs)localObject).i.findViewById(2131379630));
-          ((rbs)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((rbs)localObject).i.findViewById(2131379631));
-          ((rbs)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((rbs)localObject).i.findViewById(2131379645));
+          ((rbs)localObject).i = ((ViewGroup)((ViewStub)((rbs)localObject).p.findViewById(2131379708)).inflate());
+          ((rbs)localObject).b = ((ImageView)((rbs)localObject).i.findViewById(2131379688));
+          ((rbs)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((rbs)localObject).i.findViewById(2131379689));
+          ((rbs)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((rbs)localObject).i.findViewById(2131379703));
         }
         localViewGroup = ((rbs)paramrbt).i;
         localObject = ((rbs)paramrbt).jdField_a_of_type_AndroidWidgetImageView;

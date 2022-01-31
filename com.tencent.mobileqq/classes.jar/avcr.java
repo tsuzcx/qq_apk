@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-
-public abstract interface avcr
+public class avcr
 {
-  public abstract int a();
+  public int a;
+  public String a;
+  public int b;
   
-  public abstract void a();
+  public avcr() {}
   
-  public abstract void a(Comments.Comment paramComment);
-  
-  public abstract void b();
-  
-  public abstract void b(Comments.Comment paramComment);
-  
-  public abstract void c();
+  public avcr(String paramString, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

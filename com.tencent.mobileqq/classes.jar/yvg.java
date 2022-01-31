@@ -1,75 +1,116 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Arrays;
+import android.graphics.Color;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.minigame.utils.DpUtil;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class yvg
+  extends BaseAdapter
 {
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
+  private List<yvh> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Map<Integer, yvi> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public yvg(yvc paramyvc, String paramString1, String paramString2)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public void a(String paramString)
-  {
-    Object localObject = new File(paramString);
-    if (((File)localObject).exists())
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      this.jdField_a_of_type_Boolean = true;
-      localObject = Arrays.asList(((File)localObject).list());
-      String str;
-      if (((List)localObject).contains("bg@2x.png"))
+      yvh localyvh = (yvh)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (i == paramInt) {}
+      for (boolean bool = true;; bool = false)
       {
-        str = paramString + "/" + "bg@2x.png";
-        if (!new File(str).exists()) {
-          break label195;
-        }
-        this.c = str;
-      }
-      if (((List)localObject).contains("camera@2x.png"))
-      {
-        str = paramString + "/" + "camera@2x.png";
-        if (!new File(str).exists()) {
-          break label203;
-        }
-        this.d = str;
+        localyvh.jdField_a_of_type_Boolean = bool;
+        i += 1;
+        break;
       }
     }
+    notifyDataSetChanged();
+  }
+  
+  public void a(List<yvh> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    yvh localyvh = (yvh)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt)))
+    {
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560430, paramViewGroup, false);
+      paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, DpUtil.dip2px(paramViewGroup.getContext(), 50.0F)));
+      paramViewGroup = new yvi();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378821));
+      paramViewGroup.b = paramView.findViewById(2131379929);
+      if ((localyvh != null) && (Build.VERSION.SDK_INT >= 4)) {
+        paramView.setContentDescription(localyvh.jdField_a_of_type_JavaLangString);
+      }
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView;
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramViewGroup);
+    }
+    label260:
+    label266:
     for (;;)
     {
-      if (((List)localObject).contains("point@2x.png"))
+      if ((localyvh != null) && (paramViewGroup != null) && (paramView != null))
       {
-        paramString = paramString + "/" + "point@2x.png";
-        if (!new File(paramString).exists()) {
-          break label211;
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localyvh.jdField_a_of_type_JavaLangString);
+        TextView localTextView = paramViewGroup.jdField_a_of_type_AndroidWidgetTextView;
+        if (!localyvh.jdField_a_of_type_Boolean) {
+          break label251;
         }
-        this.e = paramString;
+        paramInt = Color.parseColor("#ffff5b84");
+        label185:
+        localTextView.setTextColor(paramInt);
+        paramViewGroup = paramViewGroup.b;
+        if (!localyvh.jdField_a_of_type_Boolean) {
+          break label260;
+        }
       }
-      return;
-      label195:
-      this.jdField_a_of_type_Boolean = false;
-      break;
-      label203:
-      this.jdField_a_of_type_Boolean = false;
+      for (paramInt = 0;; paramInt = 8)
+      {
+        paramViewGroup.setVisibility(paramInt);
+        paramView.setSelected(localyvh.jdField_a_of_type_Boolean);
+        return paramView;
+        paramViewGroup = (yvi)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+        if (paramViewGroup == null) {
+          break label266;
+        }
+        paramView = paramViewGroup.jdField_a_of_type_AndroidViewView;
+        break;
+        label251:
+        paramInt = Color.parseColor("#ff878b99");
+        break label185;
+      }
     }
-    label211:
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public boolean a()
-  {
-    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "isResourceReady:" + this.jdField_a_of_type_Boolean);
-    return this.jdField_a_of_type_Boolean;
   }
 }
 

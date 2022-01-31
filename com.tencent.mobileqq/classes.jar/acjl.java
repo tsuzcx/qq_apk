@@ -1,22 +1,9 @@
-class acjl
-  extends aqnl
+import com.tencent.common.config.AppSetting;
+
+public abstract interface acjl
 {
-  acjl(acjf paramacjf) {}
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.a.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.a.notifyDataSetChanged();
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.a.notifyDataSetChanged();
-  }
+  public static final boolean S = AppSetting.c;
+  public static final String f = alud.a(2131701945);
 }
 
 

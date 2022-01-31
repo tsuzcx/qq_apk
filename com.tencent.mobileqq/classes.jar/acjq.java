@@ -1,21 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
-import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
-
 public class acjq
-  implements DialogInterface.OnClickListener
 {
-  public acjq(ChatHistoryImageView paramChatHistoryImageView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.a.a != null)
-    {
-      this.a.a.b = false;
-      this.a.a.a(false);
-    }
-  }
+  public int a;
+  public long a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public long c;
 }
 
 

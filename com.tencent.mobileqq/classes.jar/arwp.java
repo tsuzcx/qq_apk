@@ -1,26 +1,12 @@
-import android.view.KeyEvent;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-class arwp
-  implements apqc
+public abstract interface arwp
+  extends View.OnTouchListener
 {
-  arwp(arwl paramarwl) {}
+  public abstract void a(View paramView, int paramInt1, int paramInt2);
   
-  public boolean a(KeyEvent paramKeyEvent)
-  {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (arwl.a(this.a)))
-    {
-      arwl.a(this.a).removeView(arwl.a(this.a));
-      arwl.a(this.a, false);
-      paramKeyEvent = this.a.getWindow().getAttributes();
-      paramKeyEvent.y = 0;
-      this.a.getWindow().setAttributes(paramKeyEvent);
-      arwl.a(this.a);
-      return true;
-    }
-    return false;
-  }
+  public abstract void b(View paramView, int paramInt1, int paramInt2);
 }
 
 

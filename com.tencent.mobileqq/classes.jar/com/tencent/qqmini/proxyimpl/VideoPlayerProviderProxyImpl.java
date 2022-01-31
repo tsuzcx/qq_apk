@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bgjm;
-import bgnj;
+import bgnt;
+import bgrq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.appbrand.page.embedded.VideoEmbeddedWidgetClient;
 import com.tencent.oskplayer.OskPlayerCore;
@@ -14,10 +14,10 @@ public class VideoPlayerProviderProxyImpl
   
   public String getUrl(String paramString)
   {
-    return OskPlayerCore.getInstance().getUrl(bgjm.a().a(paramString));
+    return OskPlayerCore.getInstance().getUrl(bgnt.a().a(paramString));
   }
   
-  public bgnj getVideoPlayer()
+  public bgrq getVideoPlayer()
   {
     if (!this.inited)
     {

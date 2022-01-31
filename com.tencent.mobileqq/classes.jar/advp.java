@@ -1,28 +1,20 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class advp
-  implements View.OnFocusChangeListener
+  implements DialogInterface.OnDismissListener
 {
-  public advp(SubLoginActivity paramSubLoginActivity) {}
+  public advp(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (true == paramBoolean)
+    if (this.a.getActivity() != null)
     {
-      if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).getText().length() > 0)) {
-        SubLoginActivity.a(this.a).setVisibility(0);
-      }
-      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
-    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
-      return;
-    }
-    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

@@ -82,7 +82,7 @@ public abstract class rbm
   
   private boolean a(rbn paramrbn)
   {
-    return (raw.a(this.b) != null) && (bdee.b(raw.a(this.b))) && (paramrbn != null) && (paramrbn.jdField_a_of_type_Rfs != null) && (paramrbn.jdField_a_of_type_Rfs.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) && (paramrbn.jdField_a_of_type_Rfs.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_b_of_type_Long >= 0L) && ((paramrbn instanceof rbt)) && (!raw.a(this.b, (rbt)paramrbn));
+    return (raw.a(this.b) != null) && (bdin.b(raw.a(this.b))) && (paramrbn != null) && (paramrbn.jdField_a_of_type_Rfs != null) && (paramrbn.jdField_a_of_type_Rfs.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) && (paramrbn.jdField_a_of_type_Rfs.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_b_of_type_Long >= 0L) && ((paramrbn instanceof rbt)) && (!raw.a(this.b, (rbt)paramrbn));
   }
   
   private void b(VideoInfo paramVideoInfo, boolean paramBoolean)
@@ -260,17 +260,17 @@ public abstract class rbm
   {
     Object localObject = paramrbn.jdField_a_of_type_Rfs.jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
     if (paramBoolean) {}
-    for (localObject = alpo.a(2131716603);; localObject = rdm.c(((VideoInfo)localObject).jdField_b_of_type_Long))
+    for (localObject = alud.a(2131716615);; localObject = rdm.c(((VideoInfo)localObject).jdField_b_of_type_Long))
     {
       paramrbn.g.setVisibility(8);
-      Drawable localDrawable = raw.a(this.b).getResources().getDrawable(2130842757);
+      Drawable localDrawable = raw.a(this.b).getResources().getDrawable(2130842770);
       paramrbn.x.setText((CharSequence)localObject);
       paramrbn.x.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
-      paramrbn.x.setCompoundDrawablePadding(aekt.a(6.0F, raw.a(this.b).getResources()));
+      paramrbn.x.setCompoundDrawablePadding(aepi.a(6.0F, raw.a(this.b).getResources()));
       paramrbn.x.setVisibility(0);
       paramrbn.x.setOnClickListener(this.b);
       paramrbn.x.setTag(paramrbn);
-      if ((!paramBoolean) && (!TextUtils.isEmpty(bdvr.a("kandian"))))
+      if ((!paramBoolean) && (!TextUtils.isEmpty(beaa.a("kandian"))))
       {
         paramrbn.z.setVisibility(0);
         rdm.a(raw.a(this.b), paramrbn.z);
@@ -357,7 +357,7 @@ public abstract class rbm
     if (paramBoolean)
     {
       this.a.e.setVisibility(0);
-      this.a.i.setBackgroundDrawable(raw.a(this.b, 2130841444));
+      this.a.i.setBackgroundDrawable(raw.a(this.b, 2130841445));
       this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setVisibility(8);
     }
     for (;;)
@@ -371,16 +371,16 @@ public abstract class rbm
       this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.setIsInFullScreen(paramBoolean);
       this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.a();
       h(false);
-      if (bngs.b())
+      if (bnle.b())
       {
         if (!paramBoolean) {
           break;
         }
-        this.a.d.setPadding(bngs.b(raw.a(this.b)), 0, bngs.b(raw.a(this.b)), 0);
+        this.a.d.setPadding(bnle.b(raw.a(this.b)), 0, bnle.b(raw.a(this.b)), 0);
       }
       return;
       this.a.e.setVisibility(8);
-      this.a.i.setBackgroundDrawable(raw.a(this.b, 2130841445));
+      this.a.i.setBackgroundDrawable(raw.a(this.b, 2130841446));
       this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setVisibility(0);
     }
     this.a.d.setPadding(0, 0, 0, 0);
@@ -398,7 +398,7 @@ public abstract class rbm
       {
         this.a.g.setVisibility(0);
         this.a.x.setVisibility(8);
-        if ((!raw.k(this.b)) && (!TextUtils.isEmpty(bdvr.a("kandian")))) {
+        if ((!raw.k(this.b)) && (!TextUtils.isEmpty(beaa.a("kandian")))) {
           this.a.z.setVisibility(8);
         }
       }

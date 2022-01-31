@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.startup.step;
 
-import abqn;
-import almv;
-import aloz;
-import alrv;
-import amfn;
+import abvc;
+import alrk;
+import alto;
+import alwk;
+import amkc;
 import android.os.Handler;
-import aowf;
-import azju;
-import bjqj;
+import apao;
+import azod;
+import bjuq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
@@ -35,16 +35,16 @@ public class InitMagnifierSDK
   
   public static String a()
   {
-    return "V 8.3.3." + aowf.a(BaseApplicationImpl.sApplication) + ".r" + AppSetting.g();
+    return "V 8.3.5." + apao.a(BaseApplicationImpl.sApplication) + ".r" + AppSetting.g();
   }
   
   @NotNull
   public static List<String> a(String paramString)
   {
     ArrayList localArrayList = new ArrayList(4);
-    localArrayList.add(abqn.b());
-    localArrayList.add(abqn.a());
-    localArrayList.addAll(abqn.b());
+    localArrayList.add(abvc.b());
+    localArrayList.add(abvc.a());
+    localArrayList.addAll(abvc.b());
     QLog.i("QQ_QAPM", 1, "leakDump" + paramString);
     return localArrayList;
   }
@@ -87,8 +87,8 @@ public class InitMagnifierSDK
     Object localObject2;
     if (2 == BaseApplicationImpl.sProcessId)
     {
-      str = bjqj.c();
-      localObject1 = str + bjqj.a();
+      str = bjuq.c();
+      localObject1 = str + bjuq.a();
       if (!a.contains(localObject1))
       {
         localObject2 = new StringBuffer(512);
@@ -96,28 +96,28 @@ public class InitMagnifierSDK
         if ((localObject3 instanceof QQAppInterface))
         {
           localObject3 = (QQAppInterface)localObject3;
-          localaloz = (aloz)((QQAppInterface)localObject3).getManager(51);
-          if (localaloz != null)
+          localalto = (alto)((QQAppInterface)localObject3).getManager(51);
+          if (localalto != null)
           {
-            i = localaloz.a();
+            i = localalto.a();
             ((StringBuffer)localObject2).append("fc=");
             ((StringBuffer)localObject2).append(i);
             ((StringBuffer)localObject2).append("&");
           }
-          localObject3 = (almv)((QQAppInterface)localObject3).getManager(53);
+          localObject3 = (alrk)((QQAppInterface)localObject3).getManager(53);
           if (localObject3 != null)
           {
-            i = ((almv)localObject3).a().size();
+            i = ((alrk)localObject3).a().size();
             ((StringBuffer)localObject2).append("dc=");
             ((StringBuffer)localObject2).append(i);
             ((StringBuffer)localObject2).append("&");
-            i = ((almv)localObject3).b();
+            i = ((alrk)localObject3).b();
             ((StringBuffer)localObject2).append("dmc=");
             ((StringBuffer)localObject2).append(i);
             ((StringBuffer)localObject2).append("&");
           }
         }
-        a(paramHandler, paramLong, (100 - alrv.a().a) * Runtime.getRuntime().maxMemory() / 100L, str, ((StringBuffer)localObject2).toString());
+        a(paramHandler, paramLong, (100 - alwk.a().a) * Runtime.getRuntime().maxMemory() / 100L, str, ((StringBuffer)localObject2).toString());
         a(paramLong);
         a.add(localObject1);
       }
@@ -125,7 +125,7 @@ public class InitMagnifierSDK
     while (1 != BaseApplicationImpl.sProcessId)
     {
       Object localObject3;
-      aloz localaloz;
+      alto localalto;
       int i;
       return;
     }
@@ -215,7 +215,7 @@ public class InitMagnifierSDK
   
   public static boolean a(Object paramObject)
   {
-    return !amfn.a().a;
+    return !amkc.a().a;
   }
   
   protected boolean doStep()
@@ -226,7 +226,7 @@ public class InitMagnifierSDK
     for (int i = Integer.parseInt(MagnifierSDK.a());; i = 1)
     {
       localObject = MagnifierSDK.a(ThreadManager.getSubThreadHandler(), i, (String)localObject);
-      ((MagnifierSDK)localObject).a(new azju());
+      ((MagnifierSDK)localObject).a(new azod());
       if (7 == BaseApplicationImpl.sProcessId)
       {
         ((MagnifierSDK)localObject).a(BaseApplicationImpl.getApplication(), 9);

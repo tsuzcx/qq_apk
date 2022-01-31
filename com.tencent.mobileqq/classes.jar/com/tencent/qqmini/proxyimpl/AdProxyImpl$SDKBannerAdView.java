@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import aajj;
+import aany;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
@@ -21,7 +21,7 @@ class AdProxyImpl$SDKBannerAdView
   AdProxy.IBannerAdListener mBannerListener;
   int mDeviceOrientation;
   String mEntryPath;
-  aajj mGdtBannerView;
+  aany mGdtBannerView;
   String mGdtCookie;
   int mHeight;
   String mPosid;

@@ -1,9 +1,18 @@
-public abstract interface behb
-  extends bebx
+import android.util.LruCache;
+
+public final class behb
+  extends LruCache<String, abyx>
 {
-  public abstract long b();
+  public behb(int paramInt)
+  {
+    super(paramInt);
+  }
   
-  public abstract boolean c(String paramString);
+  protected void a(boolean paramBoolean, String paramString, abyx paramabyx1, abyx paramabyx2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramabyx1, paramabyx2);
+    paramabyx1.b();
+  }
 }
 
 

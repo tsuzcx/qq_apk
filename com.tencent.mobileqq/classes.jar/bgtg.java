@@ -1,82 +1,25 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.triton.sdk.bridge.IJSEngine;
-import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
-import com.tencent.qqmini.sdk.core.plugins.engine.JsPluginEngine;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import java.util.Observable;
+import java.util.Observer;
 
 public class bgtg
-  implements IJSEngine
+  implements Observer
 {
-  private bgtj jdField_a_of_type_Bgtj;
-  private JsPluginEngine jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine;
+  public bgtg(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  bgtg(bgtj parambgtj)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    this.jdField_a_of_type_Bgtj = parambgtj;
-  }
-  
-  public JsPluginEngine a()
-  {
-    return this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onResume();
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onPause();
-    }
-  }
-  
-  public boolean canHandleEvent(String paramString)
-  {
-    return true;
-  }
-  
-  public ITTJSRuntime getJsRuntime(int paramInt)
-  {
-    if (this.jdField_a_of_type_Bgtj.a(paramInt) != null) {
-      return this.jdField_a_of_type_Bgtj.a(paramInt).a;
-    }
-    return null;
-  }
-  
-  public void onCreate(Context paramContext)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine = new JsPluginEngine(paramContext);
-    this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onCreate(this.jdField_a_of_type_Bgtj);
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onDestroy();
-    }
-  }
-  
-  public String onScriptCall(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null)
+    if (!(paramObject instanceof String)) {}
+    do
     {
-      bgth localbgth = this.jdField_a_of_type_Bgtj.a(paramInt2);
-      localObject1 = localObject2;
-      if (localbgth != null) {
-        localObject1 = this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.handleNativeRequest(paramString1, paramString2, localbgth, paramInt1);
+      return;
+      if (("resetPlayer".equals((String)paramObject)) && (this.a.y))
+      {
+        this.a.g();
+        this.a.c();
+        return;
       }
-    }
-    paramString1 = (String)localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      paramString1 = "{}";
-    }
-    return paramString1;
+    } while (!"resumePlayer".equals((String)paramObject));
   }
 }
 

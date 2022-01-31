@@ -1,69 +1,60 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import com.tencent.kwstudio.office.preview.IHostInterface.IDownloadListener;
 
-class arhd
-  implements areg
+public final class arhd
+  implements baug
 {
-  arhd(argq paramargq) {}
+  private final IHostInterface.IDownloadListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener;
+  private final String jdField_a_of_type_JavaLangString;
   
-  public void a()
+  private arhd(String paramString, IHostInterface.IDownloadListener paramIDownloadListener)
   {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Ardq.a();
-    bbpe localbbpe = bcjk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity);
-    if ((TextUtils.isEmpty(argq.a(this.a))) && (localbbpe.a != null)) {
-      argq.a(this.a, localbbpe.a.toString());
-    }
-    bboe localbboe = new bboe(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
-    if ((localbbpe.b == 10) || (localbbpe.b == 9)) {
-      if (localbbpe.a != null)
-      {
-        localbboe.b(localbbpe.a);
-        localFileManagerEntity.status = 2;
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.i("TroopFileModel<FileAssistant>", 2, "TroopFileModel doStartDownload : resumeDownload error, infoId is null");
-      return;
-      if (localbbpe.b == 7)
-      {
-        if (localFileManagerEntity.isZipInnerFile) {
-          localbboe.a(localFileManagerEntity);
-        }
-        for (;;)
-        {
-          localFileManagerEntity.status = 2;
-          return;
-          localbboe.a(localFileManagerEntity.strTroopFilePath, localbbpe.g, localbbpe.c, localbbpe.h);
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopFileModel<FileAssistant>", 2, "TroopFileModel doStartDownload : can not handle file info status,download error");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener = paramIDownloadListener;
   }
   
-  public void b()
+  public void onResp(bavf parambavf)
   {
-    Object localObject = this.a.jdField_a_of_type_Ardq.a();
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
-    localObject = bcjk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject);
-    if ((TextUtils.isEmpty(argq.a(this.a))) && (((bbpe)localObject).a != null)) {
-      argq.a(this.a, ((bbpe)localObject).a.toString());
-    }
-    if (!TextUtils.isEmpty(argq.a(this.a)))
+    int i = 0;
+    if (parambavf.jdField_a_of_type_Int == 3) {}
+    label74:
+    label80:
+    for (;;)
     {
-      localTroopFileTransferManager.d(UUID.fromString(argq.a(this.a)));
-      if (aroo.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-        this.a.a("0x8009D61", null);
+      return;
+      boolean bool;
+      if (parambavf.jdField_a_of_type_Int == 0)
+      {
+        bool = true;
+        if (!bool) {
+          break label74;
+        }
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener == null) {
+          break label80;
+        }
+        if (bool) {
+          this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, parambavf.jdField_a_of_type_Long, 1.0F);
+        }
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadFinished(this.jdField_a_of_type_JavaLangString, bool, i);
+        return;
+        bool = false;
+        break;
+        i = parambavf.b;
       }
     }
-    argq.a(this.a, (bbpe)localObject);
+  }
+  
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
+  {
+    if (paramLong2 != 0L)
+    {
+      float f = (float)paramLong1 / (float)paramLong2;
+      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener != null) {
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramLong2, f);
+      }
+    }
   }
 }
 

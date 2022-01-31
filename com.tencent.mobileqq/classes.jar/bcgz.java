@@ -1,32 +1,29 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.TroopInfo;
 
-class bcgz
-  extends Handler
+public class bcgz
+  implements Comparable<bcgz>
 {
-  bcgz(bcgy parambcgy, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public int a;
+  public TroopInfo a;
+  public String a;
+  public int b;
   
-  public void handleMessage(Message paramMessage)
+  public int a(@NonNull bcgz parambcgz)
   {
-    super.handleMessage(paramMessage);
-    if (this.a.a) {}
-    Object localObject;
-    String str;
-    do
-    {
-      return;
-      localObject = (Object[])paramMessage.obj;
-      paramMessage = (RollangleImageView)localObject[0];
-      str = (String)localObject[1];
-      localObject = (Bitmap)localObject[2];
-    } while ((paramMessage == null) || (str == null) || (localObject == null) || (!str.equals(paramMessage.b)));
-    paramMessage.setImageBitmap((Bitmap)localObject);
+    if (this.b != parambcgz.b) {
+      return this.b - parambcgz.b;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime != parambcgz.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime) {
+      return (int)(parambcgz.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime);
+    }
+    if (parambcgz.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime != this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime) {
+      return (int)(parambcgz.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime);
+    }
+    if (this.jdField_a_of_type_Int != parambcgz.jdField_a_of_type_Int) {
+      return this.jdField_a_of_type_Int - parambcgz.jdField_a_of_type_Int;
+    }
+    return this.jdField_a_of_type_JavaLangString.compareTo(parambcgz.jdField_a_of_type_JavaLangString);
   }
 }
 

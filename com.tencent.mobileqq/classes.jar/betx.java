@@ -1,26 +1,10 @@
-import android.view.View;
+import com.tencent.map.lib.basemap.data.GeoPoint;
 
-class betx
-  implements beto
+public abstract interface betx
 {
-  betx(betw parambetw) {}
+  public abstract void onMapScrollEnd(GeoPoint paramGeoPoint);
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.a(true, new View[] { this.a.a });
-  }
-  
-  public void b()
-  {
-    this.a.a(false, new View[] { this.a.a });
-  }
-  
-  public void c()
-  {
-    atbj.a().a(2);
-  }
+  public abstract void onMapScrollStart(GeoPoint paramGeoPoint);
 }
 
 

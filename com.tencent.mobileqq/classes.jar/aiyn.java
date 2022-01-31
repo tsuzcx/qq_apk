@@ -1,19 +1,23 @@
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
+import org.json.JSONObject;
 
 public class aiyn
-  implements aixw
+  implements View.OnClickListener
 {
-  public aiyn(DrawHbFragment paramDrawHbFragment, View paramView) {}
+  public aiyn(SendHbMainFragment paramSendHbMainFragment, JSONObject paramJSONObject) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
+    if (bjcf.a()) {}
+    do
     {
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131368202).setVisibility(8);
       return;
-    }
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131368202).setVisibility(0);
+      paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("url");
+    } while (TextUtils.isEmpty(paramView));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentSendHbMainFragment.openUrl(paramView);
   }
 }
 

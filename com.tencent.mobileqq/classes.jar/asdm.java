@@ -1,40 +1,39 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.fragment.TroopRobotFragment;
-import com.tencent.mobileqq.fragment.TroopRobotFragment.1.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.manager.Manager;
 
 public class asdm
-  extends amab
+  implements Manager
 {
-  public asdm(TroopRobotFragment paramTroopRobotFragment) {}
+  private arzn jdField_a_of_type_Arzn;
+  private Map<String, Map<String, Object>> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
+  public asdm()
   {
-    String str = String.valueOf(paramLong1);
-    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
-    {
-      TroopRobotFragment.a(this.a, paramLong1);
-      return;
-    }
-    QLog.i("TroopRobotFragment", 2, "onAddRobot  net troopuin" + paramLong1 + " cur " + TroopRobotFragment.a(this.a));
+    QLog.d("SDK_SHARE.ForwardSdkStatusManager", 1, "--> init");
+    this.jdField_a_of_type_Arzn = new arzn();
   }
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, bckv parambckv)
+  public arzn a()
   {
-    String str = String.valueOf(paramLong);
-    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
-    {
-      if ((paramBoolean) && (parambckv != null) && (this.a.getActivity() != null))
-      {
-        QLog.d("TroopRobotFragment", 2, "onGetAllRobots");
-        this.a.getActivity().runOnUiThread(new TroopRobotFragment.1.1(this, parambckv));
-        return;
-      }
-      QLog.e("TroopRobotFragment", 2, "onGetAllRobots err " + paramInt + " :" + paramLong);
-      TroopRobotFragment.a(this.a, paramLong);
-      return;
-    }
-    QLog.i("TroopRobotFragment", 2, "onGetAllRobots  net troopuin" + paramLong + " cur " + TroopRobotFragment.a(this.a));
+    return this.jdField_a_of_type_Arzn;
+  }
+  
+  public Map<String, Object> a(String paramString)
+  {
+    return (Map)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+  }
+  
+  public void a(String paramString, Map<String, Object> paramMap)
+  {
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramMap);
+  }
+  
+  public void onDestroy()
+  {
+    QLog.d("SDK_SHARE.ForwardSdkStatusManager", 1, "--> onDestroy");
+    this.jdField_a_of_type_Arzn.a();
   }
 }
 

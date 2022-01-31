@@ -1,27 +1,12 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.data.OpenID;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class bcfd
-  extends ndm
+final class bcfd
+  implements DialogInterface.OnClickListener
 {
-  bcfd(bcfc parambcfc) {}
-  
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((bcfc.a(this.a) == null) || (bcfc.a(this.a) == null) || (bcfc.a(this.a) == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((bcfc.a(this.a).isFinishing()) || (bcfc.a(this.a)));
-      bcfc.a(this.a).d();
-      if (bcfc.a(this.a) != null) {
-        bcfc.a(this.a).removeCallbacksAndMessages(null);
-      }
-    } while ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null) || (paramOpenID.openID.equals(bcfc.a(this.a))));
-    bcfc.a(this.a).b();
+    paramDialogInterface.dismiss();
   }
 }
 

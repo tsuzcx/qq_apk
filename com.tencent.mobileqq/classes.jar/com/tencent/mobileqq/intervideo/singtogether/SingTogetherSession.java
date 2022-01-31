@@ -4,17 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import atar;
-import balk;
-import ball;
-import bhxo;
+import atfa;
+import bapt;
+import bapu;
+import bibv;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SingTogetherSession
-  extends balk
+  extends bapt
   implements Parcelable
 {
-  public static final Parcelable.Creator<SingTogetherSession> CREATOR = new atar();
+  public static final Parcelable.Creator<SingTogetherSession> CREATOR = new atfa();
   public int a;
   public long a;
   public String a;
@@ -55,7 +55,7 @@ public class SingTogetherSession
       {
         paramQQAppInterface = a(paramQQAppInterface, this.jdField_f_of_type_JavaLangString);
         if (!TextUtils.isEmpty(paramQQAppInterface)) {
-          str = ball.a(16, paramQQAppInterface);
+          str = bapu.a(16, paramQQAppInterface);
         }
       }
     }
@@ -71,7 +71,7 @@ public class SingTogetherSession
         {
           paramQQAppInterface = a(paramQQAppInterface, this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString);
           if (!TextUtils.isEmpty(paramQQAppInterface)) {
-            str = ball.a(16, paramQQAppInterface);
+            str = bapu.a(16, paramQQAppInterface);
           } else {
             str = "群友";
           }
@@ -86,7 +86,7 @@ public class SingTogetherSession
   
   public int a()
   {
-    return bhxo.a;
+    return bibv.a;
   }
   
   public String a()
@@ -148,7 +148,7 @@ public class SingTogetherSession
   
   public int b()
   {
-    return 2130838172;
+    return 2130838173;
   }
   
   public String b(QQAppInterface paramQQAppInterface)

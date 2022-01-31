@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.core.utils;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bgkt;
+import bgpa;
 
 public class FileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FileInfo> CREATOR = new bgkt();
+  public static final Parcelable.Creator<FileInfo> CREATOR = new bgpa();
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;

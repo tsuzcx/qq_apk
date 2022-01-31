@@ -1,30 +1,35 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ListView;
 
 class bbcs
-  implements View.OnTouchListener
+  implements Animator.AnimatorListener
 {
-  bbcs(bbcq parambbcq) {}
+  bbcs(bbco parambbco) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramView.setAlpha(1.0F);
-        }
-      }
-    }
+    bbco.a(this.a).setPadding(bdaq.a(bbco.a(this.a).getContext(), 8.0F), -bbco.a(this.a), 0, 0);
+    bbco.a(this.a).setVisibility(8);
+    bbco.a(this.a, false);
+    bbco.b(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    bbco.a(this.a).setPadding(bdaq.a(bbco.a(this.a).getContext(), 8.0F), -bbco.a(this.a), 0, 0);
+    bbco.a(this.a).setVisibility(8);
+    bbco.a(this.a, false);
+    bbco.b(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    bbco.a(this.a).setPadding(bdaq.a(bbco.a(this.a).getContext(), 8.0F), 0, 0, 0);
+    bbco.a(this.a, true);
+    bbco.b(this.a, true);
   }
 }
 

@@ -46,7 +46,7 @@ public class ppe
       try
       {
         l1 = Long.parseLong(paramArticleInfo.mSubscribeID);
-        str1 = oqu.k + bdbi.encodeToString(String.valueOf(l1).getBytes(), 2);
+        str1 = oqu.k + bdfr.encodeToString(String.valueOf(l1).getBytes(), 2);
         if (!TextUtils.isEmpty(str1)) {
           break label650;
         }
@@ -64,7 +64,7 @@ public class ppe
           localNumberFormatException2.printStackTrace();
           continue;
         }
-        str1 = oqu.k + bdbi.encodeToString(String.valueOf(l1).getBytes(), 2);
+        str1 = oqu.k + bdfr.encodeToString(String.valueOf(l1).getBytes(), 2);
         if (paramAtomicLong != null) {
           paramAtomicLong.set(l1);
         }
@@ -92,7 +92,7 @@ public class ppe
           if (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw != null)
           {
             l1 = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw.a;
-            str2 = oqu.g + bdbi.encodeToString(String.valueOf(l1).getBytes(), 2);
+            str2 = oqu.g + bdfr.encodeToString(String.valueOf(l1).getBytes(), 2);
           }
         }
       }
@@ -107,7 +107,7 @@ public class ppe
           if (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qme != null)
           {
             l1 = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qme.a;
-            str2 = oqu.g + bdbi.encodeToString(String.valueOf(l1).getBytes(), 2);
+            str2 = oqu.g + bdfr.encodeToString(String.valueOf(l1).getBytes(), 2);
           }
         }
       }
@@ -128,19 +128,19 @@ public class ppe
           if (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qme != null)
           {
             l1 = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qme.a;
-            str2 = oqu.g + bdbi.encodeToString(String.valueOf(l1).getBytes(), 2);
+            str2 = oqu.g + bdfr.encodeToString(String.valueOf(l1).getBytes(), 2);
             continue;
             label524:
             String str3;
             if ((paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw != null))
             {
               l1 = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw.a;
-              str3 = oqu.g + bdbi.encodeToString(String.valueOf(l1).getBytes(), 2);
+              str3 = oqu.g + bdfr.encodeToString(String.valueOf(l1).getBytes(), 2);
             }
             else if ((paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qme != null))
             {
               l1 = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qme.a;
-              str3 = oqu.g + bdbi.encodeToString(String.valueOf(l1).getBytes(), 2);
+              str3 = oqu.g + bdfr.encodeToString(String.valueOf(l1).getBytes(), 2);
             }
           }
         }

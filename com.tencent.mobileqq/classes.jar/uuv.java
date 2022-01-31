@@ -1,65 +1,27 @@
 public class uuv
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
+  public final int a;
+  public final String a;
+  public final int b;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
   
-  public void a(uuv paramuuv)
+  public uuv(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2)
   {
-    if (paramuuv == null) {
-      return;
-    }
-    this.jdField_a_of_type_Long = paramuuv.jdField_a_of_type_Long;
-    this.jdField_b_of_type_Long = paramuuv.jdField_b_of_type_Long;
-    this.jdField_a_of_type_JavaLangString = paramuuv.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramuuv.jdField_b_of_type_JavaLangString;
-    this.c = paramuuv.c;
-    this.d = paramuuv.d;
-    this.jdField_a_of_type_Boolean = paramuuv.jdField_a_of_type_Boolean;
-    this.jdField_b_of_type_Boolean = paramuuv.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    long l = System.currentTimeMillis();
-    boolean bool1;
-    if ((l >= this.jdField_a_of_type_Long) && (l < this.jdField_b_of_type_Long))
-    {
-      bool1 = true;
-      if ((!bool1) || (!this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean)) {
-        break label68;
-      }
-      bool1 = bool2;
-    }
-    label68:
-    for (;;)
-    {
-      wsv.a("Q.qqstory.config.takevideo", "isVariable=%b content=%s", Boolean.valueOf(bool1), toString());
-      return bool1;
-      bool1 = false;
-      break;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("MsgTabTakeVideoNodeConfig=[");
-    localStringBuilder.append(" startTime:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" endTime:").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(" imageUrl:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" desc:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" jumpUrl:").append(this.c);
-    localStringBuilder.append(" contentId:").append(this.d);
-    localStringBuilder.append(" isOneTimeUse:").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" hasClicked:").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
+    return "AddressInfo{country='" + this.jdField_a_of_type_JavaLangString + '\'' + ", province='" + this.jdField_b_of_type_JavaLangString + '\'' + ", city='" + this.c + '\'' + ", district='" + this.d + '\'' + ", street='" + this.e + '\'' + ", longitude=" + this.jdField_a_of_type_Int + ", latitude=" + this.jdField_b_of_type_Int + '}';
   }
 }
 

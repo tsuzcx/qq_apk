@@ -1,27 +1,23 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
 
 class bebi
-  implements Animation.AnimationListener
+  extends MQLruCache<String, Object>
 {
-  bebi(bebh parambebh, View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  bebi(bebh parambebh, int paramInt)
   {
-    paramAnimation = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimation.leftMargin = this.jdField_a_of_type_Bebh.e;
-    paramAnimation.topMargin = this.jdField_a_of_type_Bebh.f;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Bebh.a = false;
+    super(paramInt);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected int a(String paramString, Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof Bitmap)))
+    {
+      paramString = (Bitmap)paramObject;
+      return paramString.getRowBytes() * paramString.getHeight();
+    }
+    return super.sizeOfObj(paramString, paramObject);
+  }
 }
 
 

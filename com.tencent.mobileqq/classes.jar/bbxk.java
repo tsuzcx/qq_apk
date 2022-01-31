@@ -1,18 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import android.os.Bundle;
 
-public class bbxk
-  implements View.OnClickListener
+public abstract interface bbxk
 {
-  public bbxk(ReciteFragment paramReciteFragment) {}
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public void onClick(View paramView)
-  {
-    this.a.m();
-    BeginnerGuideFragment.b(ReciteFragment.a(this.a), null, 4);
-  }
+  public abstract void a(long paramLong1, String paramString, long paramLong2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, Bundle paramBundle, int paramInt);
+  
+  public abstract void b(long paramLong1, long paramLong2, long paramLong3);
 }
 
 

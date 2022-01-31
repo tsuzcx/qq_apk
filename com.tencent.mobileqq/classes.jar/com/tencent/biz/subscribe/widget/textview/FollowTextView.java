@@ -10,9 +10,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import bdje;
-import bhpy;
-import bjqz;
+import bdnn;
+import bhuf;
+import bjvg;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.event.FollowUpdateEvent;
 import com.tencent.biz.subscribe.event.SimpleBaseEvent;
@@ -26,25 +26,25 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import syb;
-import xzd;
-import yej;
-import yel;
-import yjq;
-import yli;
-import ylj;
-import ylk;
-import yll;
-import ylm;
-import yvu;
+import ydm;
+import yiw;
+import yiy;
+import yod;
+import ypx;
+import ypy;
+import ypz;
+import yqa;
+import yqb;
+import zaj;
 
 public class FollowTextView
   extends TextView
-  implements View.OnClickListener, yel
+  implements View.OnClickListener, yiy
 {
   private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private xzd jdField_a_of_type_Xzd;
-  private ylm jdField_a_of_type_Ylm;
+  private ydm jdField_a_of_type_Ydm;
+  private yqb jdField_a_of_type_Yqb;
   protected boolean a;
   private volatile boolean b = true;
   private boolean c;
@@ -73,12 +73,12 @@ public class FollowTextView
     String str3;
     if (paramStFeed != null)
     {
-      if (bdje.a(paramStFeed.id.get())) {
+      if (bdnn.a(paramStFeed.id.get())) {
         break label100;
       }
       str1 = paramStFeed.id.get();
       str2 = paramStFeed.poster.id.get();
-      str3 = "auth_" + yjq.a(a());
+      str3 = "auth_" + yod.a(a());
       if (!paramBoolean) {
         break label114;
       }
@@ -87,7 +87,7 @@ public class FollowTextView
     label114:
     for (paramStFeed = "follow";; paramStFeed = "un_follow")
     {
-      yvu.a(str2, str3, paramStFeed, 0, 0, new String[] { "", "", str1 });
+      zaj.a(str2, str3, paramStFeed, 0, 0, new String[] { "", "", str1 });
       return;
       str1 = paramStFeed.poster.nick.get();
       break;
@@ -96,29 +96,22 @@ public class FollowTextView
   
   private void d()
   {
-    bhpy localbhpy = bhpy.a(getContext());
-    localbhpy.a(String.format(getContext().getResources().getString(2131695777), new Object[] { this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get() }));
-    localbhpy.a(2131696917, 3);
-    localbhpy.c(2131690648);
-    localbhpy.setOnDismissListener(new ylk(this));
-    localbhpy.a(new yll(this, localbhpy));
-    if (!localbhpy.isShowing())
+    bhuf localbhuf = bhuf.a(getContext());
+    localbhuf.a(String.format(getContext().getResources().getString(2131695779), new Object[] { this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get() }));
+    localbhuf.a(2131696919, 3);
+    localbhuf.c(2131690648);
+    localbhuf.setOnDismissListener(new ypz(this));
+    localbhuf.a(new yqa(this, localbhuf));
+    if (!localbhuf.isShowing())
     {
       this.b = true;
-      localbhpy.show();
+      localbhuf.show();
     }
   }
   
   public ExtraTypeInfo a()
   {
     return this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  }
-  
-  public ArrayList<Class> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(FollowUpdateEvent.class);
-    return localArrayList;
   }
   
   protected void a()
@@ -141,20 +134,6 @@ public class FollowTextView
     c();
   }
   
-  public void a(SimpleBaseEvent paramSimpleBaseEvent)
-  {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) && ((paramSimpleBaseEvent instanceof FollowUpdateEvent)))
-    {
-      FollowUpdateEvent localFollowUpdateEvent = (FollowUpdateEvent)paramSimpleBaseEvent;
-      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get().equals(localFollowUpdateEvent.useId))
-      {
-        a(localFollowUpdateEvent.followStatus);
-        bjqz.a(getContext(), (FollowUpdateEvent)paramSimpleBaseEvent);
-        SubscribeHybirdFragment.a(getContext(), (FollowUpdateEvent)paramSimpleBaseEvent);
-      }
-    }
-  }
-  
   public void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
@@ -172,34 +151,34 @@ public class FollowTextView
     Object localObject = (QQAppInterface)localObject;
     if (paramBoolean)
     {
-      syb.a((AppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), new yli(this), false, 0, true);
+      syb.a((AppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), new ypx(this), false, 0, true);
       return;
     }
-    syb.a((QQAppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), false, new ylj(this), true);
+    syb.a((QQAppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), false, new ypy(this), true);
   }
   
   protected boolean a()
   {
-    return (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (bdje.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get()));
+    return (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (bdnn.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get()));
   }
   
   protected void b()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      i = 2130838726;
+      i = 2130838727;
       setBackgroundResource(i);
       if (!this.jdField_a_of_type_Boolean) {
-        break label47;
+        break label43;
       }
     }
-    label47:
+    label43:
     for (int i = -9211021;; i = Color.parseColor("#bdbfc9"))
     {
       setTextColor(i);
       setText(2131690707);
       return;
-      i = 2130838724;
+      i = 2130838725;
       break;
     }
   }
@@ -208,7 +187,7 @@ public class FollowTextView
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      i = 2130838898;
+      i = 2130838899;
       setBackgroundResource(i);
       if (!this.jdField_a_of_type_Boolean) {
         break label47;
@@ -220,16 +199,23 @@ public class FollowTextView
       setTextColor(i);
       setText(2131690713);
       return;
-      i = 2130838896;
+      i = 2130838897;
       break;
     }
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(FollowUpdateEvent.class);
+    return localArrayList;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if (!isInEditMode()) {
-      yej.a().a(this);
+      yiw.a().a(this);
     }
   }
   
@@ -244,8 +230,8 @@ public class FollowTextView
         QQToast.a(getContext(), "请勿重复操作", 0).a();
         return;
       }
-      if (this.jdField_a_of_type_Xzd != null) {
-        this.jdField_a_of_type_Xzd.a();
+      if (this.jdField_a_of_type_Ydm != null) {
+        this.jdField_a_of_type_Ydm.a();
       }
       if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.followState.get() == 0)
       {
@@ -259,7 +245,21 @@ public class FollowTextView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    yej.a().b(this);
+    yiw.a().b(this);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) && ((paramSimpleBaseEvent instanceof FollowUpdateEvent)))
+    {
+      FollowUpdateEvent localFollowUpdateEvent = (FollowUpdateEvent)paramSimpleBaseEvent;
+      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get().equals(localFollowUpdateEvent.useId))
+      {
+        a(localFollowUpdateEvent.followStatus);
+        bjvg.a(getContext(), (FollowUpdateEvent)paramSimpleBaseEvent);
+        SubscribeHybirdFragment.a(getContext(), (FollowUpdateEvent)paramSimpleBaseEvent);
+      }
+    }
   }
   
   public void setExtraTypeInfo(ExtraTypeInfo paramExtraTypeInfo)
@@ -276,9 +276,9 @@ public class FollowTextView
     }
   }
   
-  public void setFollowStateChangeListener(ylm paramylm)
+  public void setFollowStateChangeListener(yqb paramyqb)
   {
-    this.jdField_a_of_type_Ylm = paramylm;
+    this.jdField_a_of_type_Yqb = paramyqb;
   }
   
   public void setIsInNightMode(boolean paramBoolean)
@@ -286,9 +286,9 @@ public class FollowTextView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setItemPreClickListener(xzd paramxzd)
+  public void setItemPreClickListener(ydm paramydm)
   {
-    this.jdField_a_of_type_Xzd = paramxzd;
+    this.jdField_a_of_type_Ydm = paramydm;
   }
   
   public void setNoneReportType(boolean paramBoolean)

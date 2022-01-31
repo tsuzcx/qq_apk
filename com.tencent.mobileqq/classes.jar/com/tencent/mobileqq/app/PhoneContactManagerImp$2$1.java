@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import altv;
+import alyk;
 import com.tencent.qphone.base.util.QLog;
 
 public class PhoneContactManagerImp$2$1
   implements Runnable
 {
-  public PhoneContactManagerImp$2$1(altv paramaltv) {}
+  public PhoneContactManagerImp$2$1(alyk paramalyk) {}
   
   public void run()
   {

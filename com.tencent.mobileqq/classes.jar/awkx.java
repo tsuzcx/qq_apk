@@ -1,22 +1,84 @@
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
 
 public class awkx
-  extends alox
+  implements Comparable<awkx>
 {
-  public awkx(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  public int a;
+  public Drawable a;
+  public String a;
+  public int[] a;
+  public int b;
+  public Drawable b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public int a(awkx paramawkx)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelGalleryActivity", 2, "onUpdateFriendInfo refresh UI uin:" + paramString + " suc:" + paramBoolean);
+    if (paramawkx != null) {
+      return this.c - paramawkx.c;
     }
-    if ((paramBoolean) && (TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), paramString)) && (!PersonalityLabelGalleryActivity.a(this.a)))
+    return 0;
+  }
+  
+  public Drawable a()
+  {
+    try
     {
-      PersonalityLabelGalleryActivity.a(this.a, bdbt.a(this.a.app, PersonalityLabelGalleryActivity.a(this.a)));
-      if (!TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), PersonalityLabelGalleryActivity.b(this.a))) {
-        PersonalityLabelGalleryActivity.d(this.a);
+      if ((this.a == null) && (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)))
+      {
+        Object localObject = URLDrawable.URLDrawableOptions.obtain();
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(this.e, (URLDrawable.URLDrawableOptions)localObject);
+        localObject = URLDrawable.getDrawable(this.f, (URLDrawable.URLDrawableOptions)localObject);
+        StateListDrawable localStateListDrawable = new StateListDrawable();
+        localStateListDrawable.addState(new int[] { -16842908, -16842913, -16842919 }, localURLDrawable);
+        localStateListDrawable.addState(new int[] { -16842908, 16842913, -16842919 }, (Drawable)localObject);
+        this.a = localStateListDrawable;
+      }
+      return this.a;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("AIOPanelIconItem", 1, localThrowable, new Object[0]);
+      }
+    }
+  }
+  
+  public Drawable b()
+  {
+    try
+    {
+      if ((this.b == null) && (!TextUtils.isEmpty(this.g)) && (!TextUtils.isEmpty(this.h)))
+      {
+        Object localObject = URLDrawable.URLDrawableOptions.obtain();
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(this.g, (URLDrawable.URLDrawableOptions)localObject);
+        localObject = URLDrawable.getDrawable(this.h, (URLDrawable.URLDrawableOptions)localObject);
+        StateListDrawable localStateListDrawable = new StateListDrawable();
+        localStateListDrawable.addState(new int[] { -16842908, -16842913, -16842919 }, localURLDrawable);
+        localStateListDrawable.addState(new int[] { -16842908, 16842913, -16842919 }, (Drawable)localObject);
+        this.b = localStateListDrawable;
+      }
+      return this.b;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("AIOPanelIconItem", 1, localThrowable, new Object[0]);
       }
     }
   }

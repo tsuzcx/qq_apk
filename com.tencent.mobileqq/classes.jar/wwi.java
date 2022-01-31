@@ -1,19 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
 
-class wwi
-  extends SimpleJob<Object>
+public class wwi
+  extends xvp
 {
-  wwi(wwe paramwwe, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
+  private final String a;
+  
+  public wwi(Context paramContext, String paramString)
   {
-    super(paramString1);
+    super(paramContext);
+    this.a = paramString;
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public int a()
   {
-    wta.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return 0;
+  }
+  
+  public View a(int paramInt, wtq paramwtq, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public wtq a(int paramInt, ViewGroup paramViewGroup)
+  {
     return null;
   }
 }

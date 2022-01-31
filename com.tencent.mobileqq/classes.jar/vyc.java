@@ -1,27 +1,72 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
 
 public class vyc
-  extends QQUIEventReceiver<vya, uzc>
+  extends Handler
 {
-  public vyc(@NonNull vya paramvya)
-  {
-    super(paramvya);
-  }
+  private vyc(MediaPlayer paramMediaPlayer) {}
   
-  public void a(@NonNull vya paramvya, @NonNull uzc paramuzc)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramuzc.a.isSuccess())
+    switch (paramMessage.what)
     {
-      wsv.a(this.TAG, "receive user info event. %s.", paramuzc.toString());
-      paramvya.i();
+    default: 
+    case 1: 
+    case 4: 
+    case 2: 
+    case 5: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            Log.d("Story-MediaPlayer", "onPrepared");
+          } while (this.a.jdField_a_of_type_Vyn == null);
+          this.a.jdField_a_of_type_Vyn.a_(this.a);
+          return;
+          Log.d("Story-MediaPlayer", "onSeekComplete");
+        } while (this.a.jdField_a_of_type_Vyo == null);
+        this.a.jdField_a_of_type_Vyo.a(this.a);
+        return;
+        Log.d("Story-MediaPlayer", "onPlaybackComplete");
+        if (this.a.jdField_a_of_type_Vyk != null) {
+          this.a.jdField_a_of_type_Vyk.a(this.a);
+        }
+        this.a.c(false);
+        return;
+        Log.d("Story-MediaPlayer", "onVideoSizeChanged");
+      } while (this.a.jdField_a_of_type_Vyq == null);
+      this.a.jdField_a_of_type_Vyq.a(this.a, paramMessage.arg1, paramMessage.arg2);
+      return;
+    case 100: 
+      Log.e("Story-MediaPlayer", "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
+      if (this.a.jdField_a_of_type_Vyl == null) {
+        break;
+      }
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uzc.class;
+    for (boolean bool = this.a.jdField_a_of_type_Vyl.a(this.a, paramMessage.arg1, paramMessage.arg2);; bool = false)
+    {
+      if ((this.a.jdField_a_of_type_Vyk != null) && (!bool)) {
+        this.a.jdField_a_of_type_Vyk.a(this.a);
+      }
+      this.a.c(false);
+      return;
+      Log.d("Story-MediaPlayer", "onInfo");
+      if (this.a.jdField_a_of_type_Vym == null) {
+        break;
+      }
+      this.a.jdField_a_of_type_Vym.a_(this.a, paramMessage.arg1, paramMessage.arg2);
+      return;
+      if (this.a.jdField_a_of_type_Vyj != null) {
+        this.a.jdField_a_of_type_Vyj.a(this.a, paramMessage.arg1);
+      }
+      this.a.e = paramMessage.arg1;
+      return;
+    }
   }
 }
 

@@ -1,39 +1,22 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
 
-class aytr
-  extends aoct
+public class aytr
+  extends ayuf
 {
-  aytr(aytq paramaytq) {}
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public aytr(GroupSearchEngine paramGroupSearchEngine, ayug paramayug, String paramString, int paramInt)
   {
-    if ((paramFromServiceMsg != null) && ("VideoSvc.Send".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())))
-    {
-      localObject = this.a.a("VideoSvc.Send");
-      if (localObject != null)
-      {
-        localObject = ((zdf)localObject).a(paramToServiceMsg, paramFromServiceMsg);
-        localMessageHandler = aytq.a(this.a).a();
-        if ((localMessageHandler != null) && (localObject != null)) {
-          localMessageHandler.onReceive(paramToServiceMsg, paramFromServiceMsg, localObject);
-        }
-      }
-    }
-    while (paramFromServiceMsg == null)
-    {
-      Object localObject;
-      MessageHandler localMessageHandler;
-      return;
-    }
-    this.a.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    super(paramGroupSearchEngine, paramayug, paramString, paramInt);
+  }
+  
+  public aynt a(List<aynu> paramList, String paramString)
+  {
+    return new aynl(paramList, paramString, GroupSearchEngine.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aytr
  * JD-Core Version:    0.7.0.1
  */

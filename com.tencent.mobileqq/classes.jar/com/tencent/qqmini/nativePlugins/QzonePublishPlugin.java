@@ -1,6 +1,6 @@
 package com.tencent.qqmini.nativePlugins;
 
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
@@ -12,27 +12,27 @@ public class QzonePublishPlugin
   public static final String API_NAVIGATE_TO_PUBLISH_PROGRAM = "checkin_qzoneUploadAndPublish";
   private static final String TAG = "[mini] QzonePublishPlugin";
   
-  private JSONObject getParam(bgkd parambgkd)
+  private JSONObject getParam(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("[mini] QzonePublishPlugin", "Failed to parse jsonParams=" + parambgkd.b);
+      QMLog.e("[mini] QzonePublishPlugin", "Failed to parse jsonParams=" + parambgok.b);
     }
     return null;
   }
   
   /* Error */
-  public void checkinQzoneUploadAndPublish(bgkd parambgkd)
+  public void checkinQzoneUploadAndPublish(bgok parambgok)
   {
     // Byte code:
     //   0: aload_0
     //   1: aload_1
-    //   2: invokespecial 57	com/tencent/qqmini/nativePlugins/QzonePublishPlugin:getParam	(Lbgkd;)Lorg/json/JSONObject;
+    //   2: invokespecial 57	com/tencent/qqmini/nativePlugins/QzonePublishPlugin:getParam	(Lbgok;)Lorg/json/JSONObject;
     //   5: ldc 59
     //   7: invokevirtual 63	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   10: astore 9
@@ -56,9 +56,9 @@ public class QzonePublishPlugin
     //   53: aload 8
     //   55: invokestatic 81	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   58: ifne +476 -> 534
-    //   61: invokestatic 87	bgjm:a	()Lbgjm;
+    //   61: invokestatic 87	bgnt:a	()Lbgnt;
     //   64: aload 8
-    //   66: invokevirtual 90	bgjm:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   66: invokevirtual 90	bgnt:a	(Ljava/lang/String;)Ljava/lang/String;
     //   69: astore 8
     //   71: aload 9
     //   73: ldc 92
@@ -246,9 +246,9 @@ public class QzonePublishPlugin
     //   482: aload 8
     //   484: invokevirtual 206	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   487: pop
-    //   488: invokestatic 213	bizt:a	()Lbizt;
+    //   488: invokestatic 213	bjea:a	()Lbjea;
     //   491: aload 13
-    //   493: putfield 215	bizt:a	Ljava/lang/String;
+    //   493: putfield 215	bjea:a	Ljava/lang/String;
     //   496: aload 14
     //   498: aload 9
     //   500: iload 7
@@ -260,21 +260,21 @@ public class QzonePublishPlugin
     //   512: aload 16
     //   514: ldc 217
     //   516: iconst_2
-    //   517: invokestatic 222	bizm:a	(Ljava/lang/String;Ljava/util/ArrayList;ILcooperation/qzone/LbsDataV2$PoiInfo;Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/HashMap;Ljava/util/HashMap;Ljava/lang/String;I)V
+    //   517: invokestatic 222	bjdt:a	(Ljava/lang/String;Ljava/util/ArrayList;ILcooperation/qzone/LbsDataV2$PoiInfo;Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/HashMap;Ljava/util/HashMap;Ljava/lang/String;I)V
     //   520: aload_1
-    //   521: invokevirtual 224	bgkd:a	()Ljava/lang/String;
+    //   521: invokevirtual 224	bgok:a	()Ljava/lang/String;
     //   524: pop
     //   525: return
     //   526: aload_1
     //   527: ldc 226
-    //   529: invokevirtual 227	bgkd:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   529: invokevirtual 227	bgok:a	(Ljava/lang/String;)Ljava/lang/String;
     //   532: pop
     //   533: return
     //   534: goto -463 -> 71
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	537	0	this	QzonePublishPlugin
-    //   0	537	1	parambgkd	bgkd
+    //   0	537	1	parambgok	bgok
     //   110	33	2	d1	double
     //   118	39	4	d2	double
     //   360	37	6	i	int

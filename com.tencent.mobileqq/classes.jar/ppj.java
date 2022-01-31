@@ -22,7 +22,7 @@ class ppj
       oxb.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, true);
       return;
     }
-    QQToast.a(pph.a(this.jdField_a_of_type_Pph), alpo.a(2131708225), 0).a();
+    QQToast.a(pph.a(this.jdField_a_of_type_Pph), alud.a(2131708237), 0).a();
   }
 }
 

@@ -1,30 +1,50 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.mobileqq.widget.ContainerView;
 
 public class aeau
-  implements View.OnClickListener
+  extends Handler
 {
-  public aeau(TroopMemberListActivity paramTroopMemberListActivity) {}
-  
-  public void onClick(View paramView)
+  public aeau(TextPreviewActivity paramTextPreviewActivity, Looper paramLooper)
   {
-    xmh.a(this.a.jdField_a_of_type_Aecg);
-    xmh.a(this.a.jdField_a_of_type_JavaUtilList);
-    paramView = new ArrayList();
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      paramView.add(((aece)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
-      i += 1;
+    default: 
+    case 100: 
+    case 16: 
+    case 18: 
+    case 19: 
+      do
+      {
+        do
+        {
+          return;
+          if (this.a.jdField_a_of_type_JavaLangCharSequence != null) {
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(this.a.jdField_a_of_type_JavaLangCharSequence);
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a.setMovementMethod(beoj.a());
+          return;
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_Fx.a(this.a.e));
+          return;
+        } while (!(paramMessage.obj instanceof Drawable));
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)paramMessage.obj);
+        return;
+      } while (!(paramMessage.obj instanceof Bitmap));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)paramMessage.obj);
+      return;
     }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
-    this.a.setResult(-1, localIntent);
-    this.a.finish();
+    this.a.a();
   }
 }
 

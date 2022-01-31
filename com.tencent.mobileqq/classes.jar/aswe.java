@@ -1,54 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 class aswe
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  aswe(aswd paramaswd) {}
+  aswe(asvy paramasvy) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    int j = paramIntent.getIntExtra("key_state", -1);
-    if (aswd.a(this.a)) {
-      aswd.a(this.a, j);
-    }
-    if (paramContext.equals(aswm.a(aswd.a(this.a))))
-    {
-      paramContext = (aswf)aswd.a(this.a).get();
-      if (paramContext != null) {
-        paramContext.a(j, paramIntent.getExtras());
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GroupVideoManager.IVPluginLoader", 2, "state:" + j);
-        }
-        paramContext = aswd.jdField_a_of_type_ArrayOfInt;
-        int k = paramContext.length;
-        int i = 0;
-        while (i < k)
-        {
-          if ((j == paramContext[i]) && (aswd.b(this.a)))
-          {
-            aswd.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
-            aswd.a(this.a, false);
-          }
-          i += 1;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("GroupVideoManager.IVPluginLoader", 2, "loadListener null");
-        }
-      }
-      if ((aswd.c(this.a)) && (j == 4))
-      {
-        aswd.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        aswd.a(this.a, false);
-      }
-    }
+    paramDialogInterface.dismiss();
+    asvy.a(this.a);
+    QLog.d("PresenceInterfaceImpl", 2, "User allowed downd");
   }
 }
 

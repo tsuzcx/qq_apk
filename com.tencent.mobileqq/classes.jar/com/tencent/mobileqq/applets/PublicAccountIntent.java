@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.applets;
 
-import alkr;
+import alpg;
 import android.content.Context;
 import mqq.app.NewIntent;
 import mqq.app.Servlet;
@@ -8,21 +8,21 @@ import mqq.app.Servlet;
 public class PublicAccountIntent
   extends NewIntent
 {
-  private alkr a;
+  private alpg a;
   
   public PublicAccountIntent(Context paramContext, Class<? extends Servlet> paramClass)
   {
     super(paramContext, paramClass);
   }
   
-  public alkr a()
+  public alpg a()
   {
     return this.a;
   }
   
-  public void a(alkr paramalkr)
+  public void a(alpg paramalpg)
   {
-    this.a = paramalkr;
+    this.a = paramalpg;
   }
 }
 

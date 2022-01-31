@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import anzr;
-import anzx;
+import aoea;
+import aoeg;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import java.util.Iterator;
 import java.util.List;
@@ -14,7 +14,7 @@ public class ColorNoteSettingBaseSection
   extends LinearLayout
 {
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private anzr jdField_a_of_type_Anzr;
+  private aoea jdField_a_of_type_Aoea;
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   
   public ColorNoteSettingBaseSection(Context paramContext)
@@ -37,15 +37,15 @@ public class ColorNoteSettingBaseSection
   
   private void b()
   {
-    inflate(getContext(), 2131558848, this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131376268));
+    inflate(getContext(), 2131558847, this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131376322));
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363121));
   }
   
   public void a()
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    Iterator localIterator = this.jdField_a_of_type_Anzr.a(getContext()).iterator();
+    Iterator localIterator = this.jdField_a_of_type_Aoea.a(getContext()).iterator();
     while (localIterator.hasNext())
     {
       HistoryFormItem localHistoryFormItem = (HistoryFormItem)localIterator.next();
@@ -53,10 +53,10 @@ public class ColorNoteSettingBaseSection
     }
   }
   
-  public void setAdapter(anzr paramanzr)
+  public void setAdapter(aoea paramaoea)
   {
-    this.jdField_a_of_type_Anzr = paramanzr;
-    this.jdField_a_of_type_Anzr.a(new anzx(this));
+    this.jdField_a_of_type_Aoea = paramaoea;
+    this.jdField_a_of_type_Aoea.a(new aoeg(this));
   }
   
   public void setContentDescription(CharSequence paramCharSequence)

@@ -27,7 +27,7 @@ public class QavBeautyMenuPanel
   extends RelativeLayout
   implements mee
 {
-  static final int[] jdField_a_of_type_ArrayOfInt = { 2131372774, 2131372775 };
+  static final int[] jdField_a_of_type_ArrayOfInt = { 2131372800, 2131372801 };
   long jdField_a_of_type_Long = 0L;
   final View jdField_a_of_type_AndroidViewView;
   VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
@@ -50,10 +50,10 @@ public class QavBeautyMenuPanel
   public QavBeautyMenuPanel(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    inflate(paramContext, 2131559604, this);
+    inflate(paramContext, 2131559603, this);
     Object localObject = paramContext.getResources();
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131377327);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator = ((SimpleSlidingIndicator)this.jdField_a_of_type_AndroidViewView.findViewById(2131376786));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131377381);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator = ((SimpleSlidingIndicator)this.jdField_a_of_type_AndroidViewView.findViewById(2131376840));
     paramAttributeSet = ((Resources)localObject).getDisplayMetrics();
     int k = Math.min(paramAttributeSet.widthPixels, paramAttributeSet.heightPixels);
     int j = ((Resources)localObject).getDimensionPixelSize(2131297456);
@@ -65,14 +65,14 @@ public class QavBeautyMenuPanel
       if (QLog.isDevelopLevel()) {
         QLog.i("QavBeautyMenuPanel", 4, String.format("QavBeautyMenuPanel, init[%s, %s, %s, %s]", new Object[] { Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramInt) }));
       }
-      paramAttributeSet = ((Resources)localObject).getString(2131695874);
-      localObject = ((Resources)localObject).getString(2131695875);
+      paramAttributeSet = ((Resources)localObject).getString(2131695876);
+      localObject = ((Resources)localObject).getString(2131695877);
       SimpleSlidingIndicator localSimpleSlidingIndicator = this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator;
       int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
       localSimpleSlidingIndicator.setTabData(new String[] { paramAttributeSet, localObject }, arrayOfInt);
       this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.setCurrentPosition(0, false);
       this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.setOnTabListener(new mos(this));
-      this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage = ((PanelViewPage)findViewById(2131371549));
+      this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage = ((PanelViewPage)findViewById(2131371568));
       paramAttributeSet = new ArrayList(2);
       paramAttributeSet.add(new BeautyView(paramContext));
       paramAttributeSet.add(new MakeupView(paramContext));
@@ -80,7 +80,7 @@ public class QavBeautyMenuPanel
       this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.setAdapter(this.jdField_a_of_type_Mot);
       this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.setIsPagingEnabled(false);
       this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.setCurrentItem(0, false);
-      setBackgroundResource(2130841822);
+      setBackgroundResource(2130841835);
       return;
       float f = j * 2 + i;
       f = (k - 20) / f;

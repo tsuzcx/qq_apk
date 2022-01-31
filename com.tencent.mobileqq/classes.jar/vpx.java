@@ -1,18 +1,11 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-
 public class vpx
-  implements vhv
+  extends vpm
 {
-  public vpx(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public woq a;
   
-  public void a()
+  public vpx(String paramString)
   {
-    wsv.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoaded");
-  }
-  
-  public void b()
-  {
-    wsv.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoadedFailed");
+    super(paramString);
   }
 }
 

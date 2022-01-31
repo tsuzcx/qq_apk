@@ -1,110 +1,199 @@
-import android.content.Context;
-import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.ark.open.ArkAppMgr;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FaceDownloader;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
-class bddk
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public class bddk
+  implements Handler.Callback, bdhh
 {
-  bddk(bddb parambddb, bepp parambepp, String paramString1, String paramString2, String paramString3) {}
+  private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+  private volatile String jdField_a_of_type_JavaLangString;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private volatile WeakReference<bddm> jdField_b_of_type_MqqUtilWeakReference;
+  private volatile boolean jdField_b_of_type_Boolean;
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  private QQAppInterface a()
   {
-    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
-      this.jdField_a_of_type_Bepp.dismiss();
+    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) {
+      return (QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get();
     }
-    if ((paramAppPathInfo != null) && (paramInt == 0))
+    return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+  }
+  
+  private void a(String paramString)
+  {
+    try
+    {
+      paramString = BitmapFactory.decodeFile(paramString);
+      paramString = new BitmapDrawable(a().getApp().getResources(), paramString);
+      Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1);
+      localMessage.obj = paramString;
+      localMessage.sendToTarget();
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("QQAvatarFHDDecoder", 2, "downloadFHDAvatar getDrawable " + paramString.toString());
+        }
+        paramString = null;
+      }
+    }
+  }
+  
+  private void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQAvatarFHDDecoder", 2, "getLocalThumbFile ");
+    }
+    paramString = a().a(1, paramString, 0);
+    if (new File(paramString).exists())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("JumpAction", 2, new Object[] { "Ark mqqapi://ligthapp/open goToLightAppOpen get path succeed, appPath: ", paramAppPathInfo.path });
+        QLog.i("QQAvatarFHDDecoder", 2, "getLocalThumbFile exist");
       }
-      paramObject = this.jdField_a_of_type_JavaLangString;
-      if (!TextUtils.isEmpty(paramObject)) {
-        break label426;
-      }
-      paramString = ArkAppCacheMgr.getApplicationLauncher(paramAppPathInfo.path);
-      if ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))))
+      a(paramString);
+    }
+  }
+  
+  public void a(Setting paramSetting)
+  {
+    boolean bool1 = false;
+    Object localObject;
+    if ((paramSetting == null) || (TextUtils.isEmpty(paramSetting.uin)) || (TextUtils.isEmpty(paramSetting.url))) {
+      if (QLog.isColorLevel())
       {
-        paramAppPathInfo = paramObject;
-        paramInt = 0;
+        localObject = new StringBuilder().append("downloadFHDAvatar return ");
+        if (paramSetting == null) {
+          break label71;
+        }
+        paramSetting = paramSetting.toString();
+        QLog.i("QQAvatarFHDDecoder", 2, paramSetting);
       }
     }
     for (;;)
     {
-      paramObject = this.b;
-      if (TextUtils.isEmpty(paramObject)) {
-        paramObject = "{}";
-      }
-      for (;;)
+      return;
+      label71:
+      paramSetting = "";
+      break;
+      localObject = bddf.b(paramSetting.uin);
+      if (arso.a((String)localObject))
       {
-        if (paramInt != 0)
-        {
-          anjv.a(null, this.c, "FullScreenOrH5Show", 0, 0, 0L, 0L, 0L, "", "");
-          if (this.jdField_a_of_type_Bddb.a != null) {
-            ArkFullScreenAppActivity.a(this.jdField_a_of_type_Bddb.a, this.c, paramAppPathInfo, "0.0.0.1", paramObject, anjs.a(), null, 1);
-          }
+        if (QLog.isColorLevel()) {
+          QLog.i("QQAvatarFHDDecoder", 2, "downloadFHDAvatar already exist " + (String)localObject);
         }
-        do
-        {
-          do
-          {
-            return;
-            paramAppPathInfo = paramString;
-            paramInt = 1;
-            paramString = null;
-            break;
-            paramObject = new Intent();
-            paramObject.setClassName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.QQBrowserDelegationActivity");
-            paramObject.putExtra("param_force_internal_browser", true);
-            paramObject.putExtra("url", paramString);
-            paramObject.putExtra("injectrecommend", false);
-            paramObject.putExtra("browserType", 3);
-            if (!TextUtils.isEmpty(this.c))
-            {
-              paramObject.putExtra("h5_ark_app_name", this.c);
-              paramString = ArkAppMgr.getInstance().getAppPathByNameFromLocal(this.c, paramAppPathInfo, null, false);
-              if (!TextUtils.isEmpty(paramString))
-              {
-                paramObject.putExtra("h5_ark_app_path", paramString);
-                paramString = ArkAppCacheMgr.getApplicationDesc(this.c);
-                if (!TextUtils.isEmpty(paramString)) {
-                  paramObject.putExtra("h5_ark_app_des", paramString);
-                }
-              }
-            }
-            paramString = aoho.b(186);
-            if (paramString != null)
-            {
-              paramString = paramString.a();
-              if (!TextUtils.isEmpty(paramString)) {
-                paramObject.putExtra("h5_ark_check_config", paramString);
-              }
-            }
-            paramObject.addFlags(603979776);
-          } while (this.jdField_a_of_type_Bddb.a == null);
-          this.jdField_a_of_type_Bddb.a.startActivity(paramObject);
-          return;
-          QQToast.a(this.jdField_a_of_type_Bddb.a, 2131690238, 0).a();
-        } while (!QLog.isColorLevel());
-        QLog.d("JumpAction", 2, "Ark mqqapi://ligthapp/open goToLightAppOpen appPath is null ");
+        a((String)localObject);
         return;
       }
-      label426:
-      paramAppPathInfo = paramObject;
-      paramString = null;
-      paramInt = 1;
+      paramSetting = FaceDownloader.a(paramSetting.url, paramSetting.bFaceFlags);
+      File localFile1 = new File((String)localObject);
+      File localFile2 = new File(localFile1.getPath() + System.currentTimeMillis());
+      if (HttpDownloadUtil.a(a(), new aprk(MsfSdkUtils.insertMtype("friendlist", paramSetting), localFile2, 0), this) == 0) {
+        bool1 = true;
+      }
+      boolean bool2;
+      if (bool1)
+      {
+        if (localFile2.exists()) {
+          bool1 = localFile2.renameTo(localFile1);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("QQAvatarFHDDecoder", 2, "downloadFHDAvatar suc " + bool1 + " " + (String)localObject);
+        }
+        bool2 = bool1;
+        if (bool1)
+        {
+          a((String)localObject);
+          bool2 = bool1;
+        }
+      }
+      while (!bool2)
+      {
+        b(this.jdField_a_of_type_JavaLangString);
+        return;
+        bool2 = bool1;
+        if (localFile2.exists())
+        {
+          localFile2.delete();
+          bool2 = bool1;
+        }
+      }
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQAvatarFHDDecoder", 2, "onHttpStart " + paramString + " " + paramInt);
+    }
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2) {}
+  
+  public void b(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQAvatarFHDDecoder", 2, "onHttpEnd " + paramString + " " + paramInt);
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    }
+    if ((paramMessage.obj instanceof Drawable)) {}
+    for (paramMessage = (Drawable)paramMessage.obj;; paramMessage = null)
+    {
+      bddm localbddm;
+      String str;
+      if (this.jdField_b_of_type_MqqUtilWeakReference != null)
+      {
+        localbddm = (bddm)this.jdField_b_of_type_MqqUtilWeakReference.get();
+        if (localbddm != null)
+        {
+          str = this.jdField_a_of_type_JavaLangString;
+          if (paramMessage == null) {
+            break label105;
+          }
+        }
+      }
+      label105:
+      for (boolean bool = true;; bool = false)
+      {
+        localbddm.a(str, bool, paramMessage);
+        this.jdField_b_of_type_MqqUtilWeakReference = null;
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_JavaLangString = null;
+        return true;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bddk
  * JD-Core Version:    0.7.0.1
  */

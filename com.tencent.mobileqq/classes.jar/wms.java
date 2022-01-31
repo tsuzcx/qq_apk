@@ -1,37 +1,51 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class wms
+  implements IEventReceiver
 {
   public int a;
-  public Drawable a;
+  public QQUserUIItem a;
+  private StoryMemoriesFragment jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment;
   public String a;
-  public wmo a;
-  public int b;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  protected ulw a;
+  private wmu jdField_a_of_type_Wmu;
+  private wmv jdField_a_of_type_Wmv;
   
-  public String a()
+  public wms(int paramInt, String paramString, StoryMemoriesFragment paramStoryMemoriesFragment)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return "?";
-    }
-    if (this.jdField_a_of_type_Wmo == null) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    return wnd.a(new Object[] { this.jdField_a_of_type_JavaLangString, "/", this.jdField_a_of_type_Wmo.a() });
+    this.jdField_a_of_type_Ulw = new wmt(this);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment = paramStoryMemoriesFragment;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public boolean equals(Object paramObject)
+  public void a()
   {
-    return a().equals(((wms)paramObject).a());
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((uwm)uwa.a(2)).b(this.jdField_a_of_type_JavaLangString);
+    vls.a().addObserver(this.jdField_a_of_type_Ulw);
+    this.jdField_a_of_type_Wmu = new wmu(this);
+    umc.a().registerSubscriber(this.jdField_a_of_type_Wmu);
+    this.jdField_a_of_type_Wmv = new wmv(this);
+    umc.a().registerSubscriber(this.jdField_a_of_type_Wmv);
   }
   
-  public int hashCode()
+  public void b()
   {
-    return a().hashCode();
+    vls.a().removeObserver(this.jdField_a_of_type_Ulw);
+    umc.a().unRegisterSubscriber(this.jdField_a_of_type_Wmu);
+    umc.a().unRegisterSubscriber(this.jdField_a_of_type_Wmv);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
   
-  public String toString()
+  public boolean isValidate()
   {
-    return a();
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 

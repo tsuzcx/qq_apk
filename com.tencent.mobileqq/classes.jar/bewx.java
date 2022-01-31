@@ -1,6 +1,11 @@
-public abstract interface bewx
+public abstract class bewx
+  implements bewy
 {
-  public abstract void a(String paramString);
+  public void a() {}
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean) {}
 }
 
 

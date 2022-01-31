@@ -17,7 +17,7 @@ class qww
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    paramURLDrawable = bdda.b(paramURLDrawable.getCurrDrawable());
+    paramURLDrawable = bdhj.b(paramURLDrawable.getCurrDrawable());
     qwp.a(this.a, paramURLDrawable, qwp.a(this.a).e);
   }
 }

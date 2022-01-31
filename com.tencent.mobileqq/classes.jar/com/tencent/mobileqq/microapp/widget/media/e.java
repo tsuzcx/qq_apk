@@ -3,9 +3,9 @@ package com.tencent.mobileqq.microapp.widget.media;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.hardware.Camera;
-import azcw;
-import bcwc;
-import bdje;
+import azhf;
+import bdal;
+import bdnn;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
@@ -51,10 +51,10 @@ final class e
       {
         return;
       }
-      localObject1 = bcwc.a(this.a, 0, this.a.length);
+      localObject1 = bdal.a(this.a, 0, this.a.length);
       localObject2 = new Matrix();
       f = 90.0F;
-      if (azcw.d(azcw.g)) {
+      if (azhf.d(azhf.g)) {
         f = 90.0F + 180.0F;
       }
       ((Matrix)localObject2).postRotate(f);
@@ -66,7 +66,7 @@ final class e
       localObject2 = new File(b.a().a("jpg"));
       ((File)localObject2).getParentFile().mkdirs();
       localObject1 = MiniAppCamera.a((Bitmap)localObject1, (File)localObject2, this.b.a);
-      if (bdje.a((String)localObject1))
+      if (bdnn.a((String)localObject1))
       {
         localObject1 = com.tencent.mobileqq.microapp.b.a.b(this.b.b, null);
         if (localObject1 != null)

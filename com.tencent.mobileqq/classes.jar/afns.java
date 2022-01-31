@@ -1,17 +1,36 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class afns
-  extends afpq
+  extends ClickableSpan
 {
-  afns(aflj paramaflj)
+  afns(afnq paramafnq, String paramString) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramaflj, null);
+    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    azqs.b(this.jdField_a_of_type_Afnq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Afnq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X800491B", "0X800491B", 0, 0, "", "", "", "");
+    try
+    {
+      this.jdField_a_of_type_Afnq.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      return;
+    }
+    catch (ActivityNotFoundException paramView)
+    {
+      paramView.printStackTrace();
+    }
   }
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return new aofh(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    paramTextPaint.setColor(-16732929);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import mqq.app.QQPermissionCallback;
-
 public class bbbb
-  implements QQPermissionCallback
+  extends bbbi
 {
-  public bbbb(AbsPublishActivity paramAbsPublishActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public int b;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public String toString()
   {
-    bdcd.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a(this.a, this.a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" groupFileID:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" groupFileKey:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" md5:");
+    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
+    localStringBuilder.append(" voiceType:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" downType:").append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

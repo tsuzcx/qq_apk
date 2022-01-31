@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFrag
 import com.tencent.widget.AdapterView;
 
 public class oie
-  implements bhqp
+  implements bhuw
 {
   public oie(ReadInjoyFriendsBiuComponentFragment paramReadInjoyFriendsBiuComponentFragment) {}
   

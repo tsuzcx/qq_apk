@@ -1,37 +1,20 @@
-import com.tencent.biz.videostory.video.FrameVideoHelper;
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.ui.RefreshView;
 
-class yxo
-  implements yvz
+public class yxo
+  extends Handler
 {
-  yxo(yxj paramyxj) {}
+  public yxo(RefreshView paramRefreshView) {}
   
-  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    if ((!paramBoolean) || (paramArrayList == null))
+    switch (paramMessage.what)
     {
-      this.a.a(alpo.a(2131704252));
-      QLog.w("EditVideoSmartMusicPart", 1, "extractFrame failed  data is null");
-    }
-    yxj localyxj;
-    StringBuilder localStringBuilder;
-    if (yxj.a(this.a) != null)
-    {
-      localyxj = this.a;
-      localStringBuilder = new StringBuilder().append(alpo.a(2131704138)).append(yxj.a(this.a).a()).append("ms\n抽取图片数：");
-      if (paramArrayList != null) {
-        break label133;
-      }
-    }
-    label133:
-    for (int i = 0;; i = paramArrayList.size())
-    {
-      localyxj.a(i + "\n抽帧字节数：" + yxj.a(this.a).b() + "KB");
-      yxj.a(this.a, paramArrayList);
+    default: 
       return;
     }
+    this.a.a();
   }
 }
 

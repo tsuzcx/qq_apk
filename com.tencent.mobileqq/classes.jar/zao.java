@@ -1,21 +1,9 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
+import java.util.ArrayList;
 
-class zao
-  implements Animation.AnimationListener
+public abstract interface zao
 {
-  zao(zal paramzal, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong);
 }
 
 

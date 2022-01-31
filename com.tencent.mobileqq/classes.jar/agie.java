@@ -1,55 +1,12 @@
-import android.content.Context;
-import android.text.Editable;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.widget.XEditTextEx;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 class agie
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  agie(agid paramagid) {}
+  agie(aghx paramaghx) {}
   
-  public void onClick(View paramView)
-  {
-    boolean bool = true;
-    this.a.jdField_a_of_type_Agia.f.setVisibility(8);
-    if (this.a.jdField_a_of_type_Agia.f.getChildCount() > 0) {
-      this.a.jdField_a_of_type_Agia.f.removeAllViews();
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {}
-    while (!(paramView.getTag() instanceof Integer)) {
-      return;
-    }
-    aizl.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    int i = ((Integer)paramView.getTag()).intValue();
-    paramView = aixf.a().a(i);
-    paramView = "，" + paramView;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(paramView);
-    paramView = bdbt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin);
-    QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    Context localContext = this.a.jdField_a_of_type_AndroidContentContext;
-    String str1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    String str2 = this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin;
-    XEditTextEx localXEditTextEx = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) {}
-    for (;;)
-    {
-      paramView = bceh.a(localQQAppInterface, localContext, str1, str2, paramView, false, localXEditTextEx, bool);
-      if ((paramView != null) && (paramView.length() != 0)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().insert(0, paramView);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.length());
-      return;
-      bool = false;
-    }
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

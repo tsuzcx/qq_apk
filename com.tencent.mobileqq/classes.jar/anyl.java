@@ -1,87 +1,83 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Point;
-import android.text.TextUtils;
-import mqq.util.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.business.sougou.WordMatchManager;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class anyl
-  extends BroadcastReceiver
+public class anyl
+  implements bckx
 {
-  anyl(anyk paramanyk) {}
+  public anyl(WordMatchManager paramWordMatchManager) {}
   
-  public void onReceive(Context arg1, Intent paramIntent)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (paramIntent == null) {}
-    do
+    int i = 1;
+    if (paramJSONObject != null) {}
+    try
     {
-      do
+      int j = paramJSONObject.getInt("retcode");
+      if (j != 0) {
+        i = 0;
+      }
+      if (i == 0)
       {
-        int j;
-        do
+        if (QLog.isColorLevel()) {
+          QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi end(failed)| type:" + paramInt + ",time:" + System.currentTimeMillis());
+        }
+        this.a.a(false);
+        return;
+      }
+    }
+    catch (JSONException paramBundle)
+    {
+      paramBundle = paramBundle;
+      paramBundle.printStackTrace();
+      paramBundle = new anym();
+      try
+      {
+        if (paramJSONObject.has("result"))
         {
-          for (;;)
-          {
-            return;
-            ??? = paramIntent.getAction();
-            if (!TextUtils.isEmpty(???))
-            {
-              if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-                com.tencent.qphone.base.util.QLog.d("ColorNoteQIPCModule", 1, "action receive: " + ???);
-              }
-              if (???.equals("key_float_window_position"))
-              {
-                i = paramIntent.getIntExtra("key_float_window_position_x", 0);
-                j = paramIntent.getIntExtra("key_float_window_position_y", 0);
-                synchronized (anyk.a())
-                {
-                  anyk.a(this.a).set(i, j);
-                  if (com.tencent.qphone.base.util.QLog.isColorLevel())
-                  {
-                    com.tencent.qphone.base.util.QLog.d("ColorNoteQIPCModule", 1, "KEY_FLOAT_WINDOW_POSITION receive: " + i + ", " + j);
-                    return;
-                  }
-                }
-              }
-            }
+          paramJSONObject = paramJSONObject.getJSONObject("result");
+          if (paramJSONObject.has("id")) {
+            paramBundle.c = paramJSONObject.getString("id");
           }
-          if (!???.equals("key_delete_item_call")) {
-            break;
+          if (paramJSONObject.has("md5")) {
+            paramBundle.jdField_a_of_type_JavaLangString = paramJSONObject.getString("md5");
           }
-          anyk.a(this.a, paramIntent.getBooleanExtra("extra_can_add_colornote", true));
-          ??? = paramIntent.getStringArrayExtra("key_color_note_servicetype_list");
-          paramIntent = paramIntent.getStringArrayExtra("key_color_note_suptype_list");
-        } while ((anyk.a(this.a) == null) || (??? == null) || (paramIntent == null) || (???.length != paramIntent.length));
-        int i = 0;
-        while ((paramIntent != null) && (i < paramIntent.length)) {
-          try
-          {
-            j = Integer.valueOf(???[i]).intValue();
-            if (j != -1)
-            {
-              anxq localanxq = (anxq)anyk.a(this.a).get();
-              if (localanxq != null) {
-                localanxq.onDeleteColorNote(j, paramIntent[i], false);
-              }
-            }
-            i += 1;
+          if (paramJSONObject.has("type")) {
+            paramBundle.jdField_a_of_type_Int = paramJSONObject.getInt("type");
           }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              com.tencent.qphone.base.util.QLog.e("ColorNoteQIPCModule", 2, "integer cast error", localException);
-              j = -1;
-            }
+          if (paramJSONObject.has("need_flag")) {
+            paramBundle.jdField_b_of_type_Int = paramJSONObject.getInt("need_flag");
+          }
+          if (paramJSONObject.has("delay")) {
+            paramBundle.jdField_a_of_type_Long = paramJSONObject.getLong("delay");
+          }
+          if (paramJSONObject.has("base_md5")) {
+            paramBundle.jdField_b_of_type_JavaLangString = paramJSONObject.getString("base_md5");
           }
         }
-      } while ((!???.equals("key_after_sync_msg")) || (anyk.b(this.a) == null));
-      ??? = (aobe)anyk.b(this.a).get();
-    } while (??? == null);
-    boolean bool = paramIntent.getBooleanExtra("extra_after_sync_msg", true);
-    ???.onServiceSyncSucc(bool);
-    this.a.b(bool);
-    com.tencent.TMG.utils.QLog.d("ColorNoteQIPCModule", 1, "invoke listener: " + bool);
+      }
+      catch (JSONException paramJSONObject)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot parse json error | type:" + paramInt + ",time:" + System.currentTimeMillis());
+          }
+        }
+        this.a.a(paramBundle);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi end(success) | type:" + paramInt + ",time:" + System.currentTimeMillis());
+      }
+      if (paramBundle.jdField_a_of_type_Int != paramInt)
+      {
+        this.a.a(false);
+        return;
+      }
+    }
+    finally {}
   }
 }
 

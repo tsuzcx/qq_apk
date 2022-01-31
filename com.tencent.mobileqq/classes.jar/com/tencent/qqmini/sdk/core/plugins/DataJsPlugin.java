@@ -6,13 +6,13 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.text.TextUtils;
-import bgho;
-import bgjw;
-import bgkd;
-import bgki;
-import bgnf;
-import bgte;
-import bgyd;
+import bglv;
+import bgod;
+import bgok;
+import bgop;
+import bgrm;
+import bgxl;
+import bhck;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.auth.AuthFilterList;
 import com.tencent.qqmini.sdk.core.auth.AuthState;
@@ -42,7 +42,7 @@ public class DataJsPlugin
   private ChannelProxy mChannelProxy;
   private MiniAppProxy mMiniAppProxy;
   
-  private void getGroupInfo(bgkd parambgkd)
+  private void getGroupInfo(bgok parambgok)
   {
     JSONObject localJSONObject = new JSONObject();
     boolean bool2 = false;
@@ -69,37 +69,37 @@ public class DataJsPlugin
         localJSONException.printStackTrace();
       }
     }
-    parambgkd.a(localJSONObject);
+    parambgok.a(localJSONObject);
   }
   
-  private void getNativeUserInfo(bgkd parambgkd)
+  private void getNativeUserInfo(bgok parambgok)
   {
     if ((MiniAppEnv.g().getAuthSate(this.mMiniAppContext.a().appId).isPermissionGranted("scope.userInfo")) || (AuthFilterList.isAppInWhiteList(this.mMiniAppContext.a().appId)) || (AuthFilterList.apiAuthoritySilent(this.mMiniAppContext.a())))
     {
-      parambgkd.a(bgki.a("getUserInfo", null).toString());
+      parambgok.a(bgop.a("getUserInfo", null).toString());
       return;
     }
     QMLog.e("DataJsPlugin", "getUserInfo已弃用，请使用createUserInfoButton");
-    parambgkd.a(bgki.a("getUserInfo", null, "getUserInfo已弃用，请使用createUserInfoButton").toString());
+    parambgok.a(bgop.a("getUserInfo", null, "getUserInfo已弃用，请使用createUserInfoButton").toString());
   }
   
-  private void getNativeWeRunData(bgkd parambgkd)
+  private void getNativeWeRunData(bgok parambgok)
   {
-    parambgkd.a();
+    parambgok.a();
   }
   
-  private void getUserInfo(bgkd parambgkd, String paramString1, boolean paramBoolean, String paramString2)
+  private void getUserInfo(bgok parambgok, String paramString1, boolean paramBoolean, String paramString2)
   {
     String str = this.mApkgInfo.appId;
     QMLog.d("DataJsPlugin", "getUserInfo appID:" + str);
-    this.mChannelProxy.getUserInfo(str, paramBoolean, paramString2, new DataJsPlugin.11(this, paramString1, parambgkd));
+    this.mChannelProxy.getUserInfo(str, paramBoolean, paramString2, new DataJsPlugin.11(this, paramString1, parambgok));
   }
   
-  private String handleGetTextLineHeight(bgkd parambgkd)
+  private String handleGetTextLineHeight(bgok parambgok)
   {
     try
     {
-      Object localObject1 = new JSONObject(parambgkd.b);
+      Object localObject1 = new JSONObject(parambgok.b);
       String str2 = ((JSONObject)localObject1).optString("fontStyle");
       String str3 = ((JSONObject)localObject1).optString("fontWeight");
       String str4 = ((JSONObject)localObject1).optString("fontFamily");
@@ -107,22 +107,22 @@ public class DataJsPlugin
       int i = ((JSONObject)localObject1).getInt("fontSize");
       if ((!"normal".equals(str3)) && (!"bold".equals(str3)))
       {
-        parambgkd.a("fontWeight is illegal");
+        parambgok.a("fontWeight is illegal");
         return "";
       }
       if ((!"normal".equals(str2)) && (!"italic".equals(str2)))
       {
-        parambgkd.a("fontStyle is illegal");
+        parambgok.a("fontStyle is illegal");
         return "";
       }
       if (i <= 0)
       {
-        parambgkd.a("jsPluginEngine is illegal");
+        parambgok.a("jsPluginEngine is illegal");
         return "";
       }
       if (TextUtils.isEmpty(str1))
       {
-        parambgkd.a("text is empty");
+        parambgok.a("text is empty");
         return "";
       }
       Paint localPaint = new Paint();
@@ -135,7 +135,7 @@ public class DataJsPlugin
       }
       while (localObject1 == null)
       {
-        parambgkd.a("cannot create this font");
+        parambgok.a("cannot create this font");
         return "";
         localObject1 = localObject2;
         if ("bold".equals(str3))
@@ -160,83 +160,83 @@ public class DataJsPlugin
       }
       localObject1 = new Rect();
       localPaint.getTextBounds(str1, 0, str1.length(), (Rect)localObject1);
-      parambgkd.a();
+      parambgok.a();
       localObject1 = "" + ((Rect)localObject1).height();
       return localObject1;
     }
     catch (JSONException localJSONException)
     {
-      parambgkd.a("json exception");
+      parambgok.a("json exception");
     }
     return "";
   }
   
-  private void invokeGroupJSApi(bgkd parambgkd)
+  private void invokeGroupJSApi(bgok parambgok)
   {
     try
     {
-      Object localObject = new JSONObject(parambgkd.b);
+      Object localObject = new JSONObject(parambgok.b);
       String str = ((JSONObject)localObject).optString("entryDataHash");
       localObject = ((JSONObject)localObject).optString("url");
       if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.launchParam != null) && (this.mMiniAppInfo.launchParam.entryModel != null) && (str != null) && (str.equals(this.mMiniAppInfo.launchParam.entryModel.getEntryHash())) && (this.mMiniAppInfo.launchParam.entryModel.isAdmin) && (localObject != null) && (((String)localObject).contains("{{gid}}"))) {
-        startGroupBrowserActivity(((String)localObject).replace("{{gid}}", String.valueOf(this.mMiniAppInfo.launchParam.entryModel.uin)), parambgkd);
+        startGroupBrowserActivity(((String)localObject).replace("{{gid}}", String.valueOf(this.mMiniAppInfo.launchParam.entryModel.uin)), parambgok);
       }
       return;
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
-      parambgkd.printStackTrace();
+      parambgok.printStackTrace();
     }
   }
   
-  private void operateGetShareInfo(String paramString, int paramInt, bgkd parambgkd)
+  private void operateGetShareInfo(String paramString, int paramInt, bgok parambgok)
   {
     if (TextUtils.isEmpty(paramString))
     {
-      parambgkd.a("shareTicket can not be null");
+      parambgok.a("shareTicket can not be null");
       return;
     }
     Object localObject = new HandlerThread("getShareInfoHandlerThread");
     ((HandlerThread)localObject).start();
-    localObject = new Handler(((HandlerThread)localObject).getLooper(), new DataJsPlugin.12(this, parambgkd));
+    localObject = new Handler(((HandlerThread)localObject).getLooper(), new DataJsPlugin.12(this, parambgok));
     ((Handler)localObject).sendEmptyMessageDelayed(1, paramInt);
     String str = this.mApkgInfo.appId;
-    this.mChannelProxy.getGroupShareInfo(str, paramString, new DataJsPlugin.13(this, parambgkd, (Handler)localObject));
+    this.mChannelProxy.getGroupShareInfo(str, paramString, new DataJsPlugin.13(this, parambgok, (Handler)localObject));
   }
   
-  private void private_addContact(bgkd parambgkd)
+  private void private_addContact(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
-      if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).addPublicAccount(bgte.a().a(), localJSONObject.optString("mpid"), new DataJsPlugin.2(this, parambgkd)))
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
+      if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).addPublicAccount(bgxl.a().a(), localJSONObject.optString("mpid"), new DataJsPlugin.2(this, parambgok)))
       {
-        bgnf.a(this.mMiniAppContext.a(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中关注公众号", 1);
-        parambgkd.b();
+        bgrm.a(this.mMiniAppContext.a(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中关注公众号", 1);
+        parambgok.b();
       }
       return;
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
-      parambgkd.printStackTrace();
+      parambgok.printStackTrace();
     }
   }
   
-  private void profile(bgkd parambgkd)
+  private void profile(bgok parambgok)
   {
     try
     {
-      parambgkd = new JSONObject(parambgkd.b);
-      QMLog.d("DataJsPlugin", "查看公众号: " + parambgkd);
-      if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).jump2PublicAccount(this.mMiniAppContext.a(), parambgkd.optString("uin"), parambgkd.optString("pubName"))) {
-        bgnf.a(this.mMiniAppContext.a(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中打开公众号", 1);
+      parambgok = new JSONObject(parambgok.b);
+      QMLog.d("DataJsPlugin", "查看公众号: " + parambgok);
+      if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).jump2PublicAccount(this.mMiniAppContext.a(), parambgok.optString("uin"), parambgok.optString("pubName"))) {
+        bgrm.a(this.mMiniAppContext.a(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中打开公众号", 1);
       }
       return;
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
-      QMLog.e("DataJsPlugin", "profile", parambgkd);
-      parambgkd.printStackTrace();
+      QMLog.e("DataJsPlugin", "profile", parambgok);
+      parambgok.printStackTrace();
     }
   }
   
@@ -262,64 +262,64 @@ public class DataJsPlugin
     }
   }
   
-  private void scanCode(bgkd parambgkd)
+  private void scanCode(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
-      if (!this.mMiniAppProxy.enterQRCode(this.mMiniAppContext.a(), localJSONObject.optBoolean("onlyFromCamera", false), new DataJsPlugin.1(this, parambgkd)))
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
+      if (!this.mMiniAppProxy.enterQRCode(this.mMiniAppContext.a(), localJSONObject.optBoolean("onlyFromCamera", false), new DataJsPlugin.1(this, parambgok)))
       {
-        bgnf.a(this.mMiniAppContext.a(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中扫码二维码", 1);
-        parambgkd.b();
+        bgrm.a(this.mMiniAppContext.a(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中扫码二维码", 1);
+        parambgok.b();
       }
       return;
     }
-    catch (Throwable parambgkd) {}
+    catch (Throwable parambgok) {}
   }
   
-  private void startGroupBrowserActivity(String paramString, bgkd parambgkd)
+  private void startGroupBrowserActivity(String paramString, bgok parambgok)
   {
-    if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openGroup(this.mMiniAppContext.a(), paramString, new DataJsPlugin.14(this, parambgkd)))
+    if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openGroup(this.mMiniAppContext.a(), paramString, new DataJsPlugin.14(this, parambgok)))
     {
-      bgnf.a(this.mContext, 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中打开QQ群", 1);
-      parambgkd.a("app not implement");
+      bgrm.a(this.mContext, 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中打开QQ群", 1);
+      parambgok.a("app not implement");
     }
   }
   
-  public void advertTap(bgkd parambgkd)
+  public void advertTap(bgok parambgok)
   {
     for (;;)
     {
       try
       {
-        String str = new JSONObject(parambgkd.b).getJSONObject("data").getJSONObject("data").get("ads_info").toString();
+        String str = new JSONObject(parambgok.b).getJSONObject("data").getJSONObject("data").get("ads_info").toString();
         AdProxy localAdProxy = (AdProxy)ProxyManager.get(AdProxy.class);
         if (localAdProxy != null)
         {
           bool = localAdProxy.adClick(this.mMiniAppContext.a(), str);
           if (bool)
           {
-            parambgkd.a();
+            parambgok.a();
             return;
           }
-          parambgkd.b();
+          parambgok.b();
           return;
         }
       }
       catch (Exception localException)
       {
-        QMLog.e("DataJsPlugin", "advert_tap, data is wrong " + parambgkd.b);
+        QMLog.e("DataJsPlugin", "advert_tap, data is wrong " + parambgok.b);
         return;
       }
       boolean bool = false;
     }
   }
   
-  public void batchGetContact(bgkd parambgkd)
+  public void batchGetContact(bgok parambgok)
   {
     try
     {
-      JSONArray localJSONArray = new JSONObject(parambgkd.b).optJSONArray("appIds");
+      JSONArray localJSONArray = new JSONObject(parambgok.b).optJSONArray("appIds");
       ArrayList localArrayList = new ArrayList();
       if ((localJSONArray != null) && (localJSONArray.length() > 0))
       {
@@ -330,40 +330,40 @@ public class DataJsPlugin
           i += 1;
         }
       }
-      this.mChannelProxy.batchGetContact(localArrayList, new DataJsPlugin.5(this, parambgkd));
+      this.mChannelProxy.batchGetContact(localArrayList, new DataJsPlugin.5(this, parambgok));
       return;
     }
     catch (Throwable localThrowable)
     {
-      parambgkd.a("batchGetContact failed.");
+      parambgok.a("batchGetContact failed.");
     }
   }
   
-  public void getCloudTicket(bgkd parambgkd)
+  public void getCloudTicket(bgok parambgok)
   {
     try
     {
-      Object localObject = new JSONObject(parambgkd.b);
+      Object localObject = new JSONObject(parambgok.b);
       String str = this.mApkgInfo.appId;
       localObject = ((JSONObject)localObject).optString("envId");
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        this.mChannelProxy.getTcbTicket(str, (String)localObject, new DataJsPlugin.4(this, parambgkd));
+        this.mChannelProxy.getTcbTicket(str, (String)localObject, new DataJsPlugin.4(this, parambgok));
       }
       return;
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      QMLog.e("DataJsPlugin", "API_GET_CLOUD_TICKET error, ", parambgkd);
+      QMLog.e("DataJsPlugin", "API_GET_CLOUD_TICKET error, ", parambgok);
     }
   }
   
-  public void getPerformance(bgkd parambgkd)
+  public void getPerformance(bgok parambgok)
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("ret", bgyd.a(this.mMiniAppInfo.appId));
-      parambgkd.a(localJSONObject);
+      localJSONObject.put("ret", bhck.a(this.mMiniAppInfo.appId));
+      parambgok.a(localJSONObject);
       return;
     }
     catch (JSONException localJSONException)
@@ -375,40 +375,40 @@ public class DataJsPlugin
     }
   }
   
-  public void getShareInfo(bgkd parambgkd)
+  public void getShareInfo(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       String str = localJSONObject.optString("shareTicket");
       int j = localJSONObject.optInt("timeout", 0);
       int i = j;
       if (j <= 0) {
         i = 30000;
       }
-      operateGetShareInfo(str, i, parambgkd);
+      operateGetShareInfo(str, i, parambgok);
       return;
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
-      QMLog.e("DataJsPlugin", parambgkd.getMessage(), parambgkd);
-      parambgkd.printStackTrace();
+      QMLog.e("DataJsPlugin", parambgok.getMessage(), parambgok);
+      parambgok.printStackTrace();
     }
   }
   
-  public void getUserInfoExtra(bgkd parambgkd)
+  public void getUserInfoExtra(bgok parambgok)
   {
-    bgjw localbgjw = this.mApkgInfo;
-    this.mChannelProxy.getUserInfoExtra(localbgjw.appId, new DataJsPlugin.9(this, parambgkd));
+    bgod localbgod = this.mApkgInfo;
+    this.mChannelProxy.getUserInfoExtra(localbgod.appId, new DataJsPlugin.9(this, parambgok));
   }
   
-  public void operateWXData(bgkd parambgkd)
+  public void operateWXData(bgok parambgok)
   {
     Object localObject3;
     String str2;
     try
     {
-      localObject3 = new JSONObject(parambgkd.b);
+      localObject3 = new JSONObject(parambgok.b);
       Object localObject1 = ((JSONObject)localObject3).optJSONObject("data");
       str2 = ((JSONObject)localObject1).optString("api_name");
       if (("webapi_getuserinfo".equals(str2)) || ("webapi_getuserinfo_opendata".equals(str2)))
@@ -421,7 +421,7 @@ public class DataJsPlugin
         }
         for (;;)
         {
-          getUserInfo(parambgkd, str2, bool, (String)localObject1);
+          getUserInfo(parambgok, str2, bool, (String)localObject1);
           return;
           localObject1 = localObject3;
           if (TextUtils.isEmpty((CharSequence)localObject3)) {
@@ -437,7 +437,7 @@ public class DataJsPlugin
     }
     catch (JSONException localJSONException1)
     {
-      parambgkd.a("json exception");
+      parambgok.a("json exception");
       return;
     }
     Object localObject2;
@@ -453,7 +453,7 @@ public class DataJsPlugin
         {
           ((JSONObject)localObject3).put("data", "{\"action_code\":1,\"skip_local_check\":1,\"wording\":\"\"}");
           ((JSONObject)localObject2).put("respData", localObject3);
-          parambgkd.a((JSONObject)localObject2);
+          parambgok.a((JSONObject)localObject2);
           return;
         }
         catch (JSONException localJSONException2)
@@ -464,17 +464,17 @@ public class DataJsPlugin
           }
         }
       }
-      this.mChannelProxy.checkNavigateRight(this.mApkgInfo.appId, (String)localObject2, new DataJsPlugin.7(this, parambgkd));
+      this.mChannelProxy.checkNavigateRight(this.mApkgInfo.appId, (String)localObject2, new DataJsPlugin.7(this, parambgok));
       return;
     }
     if ("webapi_getadvert".equals(str2))
     {
-      webapiGetadvert(parambgkd, (JSONObject)localObject2);
+      webapiGetadvert(parambgok, (JSONObject)localObject2);
       return;
     }
     if ("advert_tap".equals(str2))
     {
-      advertTap(parambgkd);
+      advertTap(parambgok);
       return;
     }
     if ("webapi_getshareinfo".equals(str2))
@@ -485,28 +485,28 @@ public class DataJsPlugin
       if (j <= 0) {
         i = 30000;
       }
-      operateGetShareInfo(str1, i, parambgkd);
+      operateGetShareInfo(str1, i, parambgok);
       return;
     }
     if ("webapi_getwerunstep_history".equals(str2))
     {
       localObject2 = this.mApkgInfo.appId;
-      this.mChannelProxy.getUserHealthData((String)localObject2, new DataJsPlugin.8(this, parambgkd));
+      this.mChannelProxy.getUserHealthData((String)localObject2, new DataJsPlugin.8(this, parambgok));
     }
   }
   
-  public void reportSubmitForm(bgkd parambgkd)
+  public void reportSubmitForm(bgok parambgok)
   {
     String str = this.mApkgInfo.appId;
-    this.mChannelProxy.getFormId(str, new DataJsPlugin.3(this, parambgkd));
+    this.mChannelProxy.getFormId(str, new DataJsPlugin.3(this, parambgok));
   }
   
-  public void verifyPlugin(bgkd parambgkd)
+  public void verifyPlugin(bgok parambgok)
   {
     try
     {
       ArrayList localArrayList = new ArrayList();
-      Object localObject = new JSONObject(parambgkd.b).optJSONObject("data").optJSONArray("plugins");
+      Object localObject = new JSONObject(parambgok.b).optJSONObject("data").optJSONArray("plugins");
       if ((localObject != null) && (((JSONArray)localObject).length() > 0))
       {
         int i = 0;
@@ -521,16 +521,16 @@ public class DataJsPlugin
         }
       }
       localObject = this.mApkgInfo.appId;
-      this.mChannelProxy.verifyPlugin((String)localObject, localArrayList, new DataJsPlugin.6(this, parambgkd));
+      this.mChannelProxy.verifyPlugin((String)localObject, localArrayList, new DataJsPlugin.6(this, parambgok));
       return;
     }
     catch (Throwable localThrowable)
     {
-      parambgkd.a("verifyPlugin failed.");
+      parambgok.a("verifyPlugin failed.");
     }
   }
   
-  public void webapiGetadvert(bgkd parambgkd, JSONObject paramJSONObject)
+  public void webapiGetadvert(bgok parambgok, JSONObject paramJSONObject)
   {
     for (;;)
     {
@@ -541,7 +541,7 @@ public class DataJsPlugin
         if (paramJSONObject.optJSONObject("data").has("adType")) {
           i = paramJSONObject.optJSONObject("data").optInt("adType");
         }
-        long l = Long.valueOf(bgte.a().a()).longValue();
+        long l = Long.valueOf(bgxl.a().a()).longValue();
         String str5 = this.mMiniAppInfo.appId;
         QMLog.d("DataJsPlugin", "webapi_getadvert getAppid = " + str5);
         if (!TextUtils.isEmpty(str5))
@@ -577,7 +577,7 @@ public class DataJsPlugin
             str2 = localMiniAppInfo.via;
             localObject2 = (AdProxy)ProxyManager.get(AdProxy.class);
             if (localObject2 != null) {
-              ((AdProxy)localObject2).requestAdInfo(this.mMiniAppContext.a(), String.valueOf(l), str4, str5, 53, 0, i, str6, paramJSONObject, (String)localObject1, str1, str2, new DataJsPlugin.10(this, parambgkd, i));
+              ((AdProxy)localObject2).requestAdInfo(this.mMiniAppContext.a(), String.valueOf(l), str4, str5, 53, 0, i, str6, paramJSONObject, (String)localObject1, str1, str2, new DataJsPlugin.10(this, parambgok, i));
             }
           }
           else
@@ -588,9 +588,9 @@ public class DataJsPlugin
         }
         return;
       }
-      catch (Exception parambgkd)
+      catch (Exception parambgok)
       {
-        parambgkd.printStackTrace();
+        parambgok.printStackTrace();
       }
       label310:
       paramJSONObject = "";

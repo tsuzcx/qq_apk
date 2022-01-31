@@ -1,8 +1,17 @@
-public abstract interface ajxy
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.widget.ContainerView;
+
+class ajxy
+  implements View.OnLongClickListener
 {
-  public abstract void a(int paramInt);
+  ajxy(ajxw paramajxw, ContainerView paramContainerView) {}
   
-  public abstract void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3);
+  public boolean onLongClick(View paramView)
+  {
+    this.jdField_a_of_type_Ajxw.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView, paramView);
+    return false;
+  }
 }
 
 

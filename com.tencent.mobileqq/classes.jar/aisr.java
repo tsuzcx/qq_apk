@@ -1,26 +1,24 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.widget.AbsListView;
 
-public class aisr
-  implements PopupWindow.OnDismissListener
+class aisr
+  implements bhtv
 {
-  public aisr(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  aisr(aisq paramaisq) {}
   
-  public void onDismiss()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    RedPacketManager.getInstance().onActiveAccount();
-    if ((TroopUnAccalimedRedPacketList.a(this.a) != null) && (aisu.a(TroopUnAccalimedRedPacketList.a(this.a)) != null))
+    if ((aisq.a(this.a)) && (paramInt == 0) && (((NewPhotoListActivity)this.a.mActivity).mGridView != null) && (((NewPhotoListActivity)this.a.mActivity).photoListAdapter != null) && (aisq.a(this.a).selectedMediaInfoHashMap != null)) {
+      aisq.a(this.a);
+    }
+    if (paramInt == 0)
     {
-      aisu.a(TroopUnAccalimedRedPacketList.a(this.a)).clear();
-      TroopUnAccalimedRedPacketList.a(this.a).notifyDataSetChanged();
+      abvl.a().a("list_photo", false);
+      return;
     }
-    if ((!TroopUnAccalimedRedPacketList.a(this.a)) && (TroopUnAccalimedRedPacketList.a(this.a) != null)) {
-      ajaf.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
-    }
+    abvl.a().a("list_photo");
   }
 }
 

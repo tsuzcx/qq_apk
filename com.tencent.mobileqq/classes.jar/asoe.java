@@ -1,6 +1,8 @@
 public abstract interface asoe
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
 }
 
 

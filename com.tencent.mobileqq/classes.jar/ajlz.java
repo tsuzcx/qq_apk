@@ -1,70 +1,66 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ajlz
-  implements SeekBar.OnSeekBarChangeListener
+  extends ajlr
+  implements Cloneable
 {
-  public ajlz(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public ajlz(Context paramContext)
   {
-    this.a.c = paramInt;
-    if (paramBoolean) {
-      NewFlowCameraActivity.a(this.a, this.a.c, false);
-    }
-    float f = this.a.c / 100.0F;
-    if (f != this.a.jdField_a_of_type_Float)
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131699977);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    QLog.d("TroopConfessToMeMsg", 2, "deSerialize");
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      this.a.jdField_a_of_type_Float = f;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.a(false, this.a.jdField_a_of_type_Float, this.a.c);
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      this.c = paramArrayOfByte.getString("messageNavInfo");
+      if ((this.c != null) && (this.c.length() != 0)) {
+        this.jdField_a_of_type_Bbpe.a(this.c);
       }
+      return;
     }
-    if (paramBoolean) {
-      NewFlowCameraActivity.a(this.a).setContentDescription(alpo.a(2131707851) + this.a.c + "%");
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
     }
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public byte[] a()
   {
-    if (this.a.jdField_a_of_type_Bhoe != null) {
-      this.a.jdField_a_of_type_Bhoe.removeMessages(1011);
-    }
-    if (this.a.e != null) {
-      this.a.e.setVisibility(0);
-    }
+    return b();
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public byte[] b()
   {
-    if (this.a.jdField_a_of_type_Float >= 0.0F)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0);
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      localSharedPreferences.edit().putFloat("beauty_radius" + str, this.a.jdField_a_of_type_Float);
-      localSharedPreferences.edit().putFloat("beauty_whitenmag" + str, this.a.jdField_a_of_type_Float);
-      localSharedPreferences.edit().putInt("beauty_level" + str, paramSeekBar.getProgress());
-      localSharedPreferences.edit().commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("beauty", 2, "onStopTrackingTouch mBeautyValue" + this.a.jdField_a_of_type_Float + " mBeautyProcess=" + paramSeekBar.getProgress());
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("time", this.jdField_a_of_type_Int);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Bbpe != null) {
+        this.c = this.jdField_a_of_type_Bbpe.a();
       }
-      if (this.a.jdField_a_of_type_Bhoe != null)
+      localJSONObject.put("messageNavInfo", this.c);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        this.a.jdField_a_of_type_Bhoe.removeMessages(1011);
-        this.a.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(1011, NewFlowCameraActivity.jdField_a_of_type_Long);
-      }
-      if (this.a.e != null) {
-        this.a.e.setVisibility(4);
+        localJSONException.printStackTrace();
       }
     }
+    return localJSONObject.toString().getBytes();
   }
 }
 

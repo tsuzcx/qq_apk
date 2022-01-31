@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import amqh;
+import amuw;
 import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -9,7 +9,7 @@ public class PcmRecordController
   extends AudioRecordController
 {
   private long jdField_a_of_type_Long;
-  private amqh jdField_a_of_type_Amqh;
+  private amuw jdField_a_of_type_Amuw;
   private String jdField_a_of_type_JavaLangString;
   private volatile boolean jdField_a_of_type_Boolean;
   private volatile boolean b;
@@ -24,11 +24,11 @@ public class PcmRecordController
   {
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     while (this.jdField_a_of_type_Boolean) {
-      if ((this.jdField_a_of_type_Amqh != null) && (this.jdField_a_of_type_Long > 0L) && (!this.b)) {
+      if ((this.jdField_a_of_type_Amuw != null) && (this.jdField_a_of_type_Long > 0L) && (!this.b)) {
         try
         {
           long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-          byte[] arrayOfByte = this.jdField_a_of_type_Amqh.a(l);
+          byte[] arrayOfByte = this.jdField_a_of_type_Amuw.a(l);
           VideoRecordController localVideoRecordController = (VideoRecordController)this.jdField_a_of_type_JavaLangRefWeakReference.get();
           if (localVideoRecordController != null) {
             localVideoRecordController.a(arrayOfByte, SystemClock.elapsedRealtimeNanos());
@@ -52,8 +52,8 @@ public class PcmRecordController
   {
     try
     {
-      if (this.jdField_a_of_type_Amqh == null) {
-        this.jdField_a_of_type_Amqh = new amqh(this.jdField_a_of_type_JavaLangString, 48000, 1, 16);
+      if (this.jdField_a_of_type_Amuw == null) {
+        this.jdField_a_of_type_Amuw = new amuw(this.jdField_a_of_type_JavaLangString, 48000, 1, 16);
       }
       if (!this.jdField_a_of_type_Boolean)
       {
@@ -78,10 +78,10 @@ public class PcmRecordController
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Amqh != null)
+      if (this.jdField_a_of_type_Amuw != null)
       {
-        this.jdField_a_of_type_Amqh.a();
-        this.jdField_a_of_type_Amqh = null;
+        this.jdField_a_of_type_Amuw.a();
+        this.jdField_a_of_type_Amuw = null;
       }
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_Long = 0L;

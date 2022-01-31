@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bgqv;
+import bgvc;
 import com.tencent.qqmini.sdk.launcher.annotation.JsonORM;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.io.Serializable;
@@ -20,15 +20,15 @@ public class BaseLibInfo
   public static final String KEY_4 = "key4";
   public static final String KEY_5 = "key5";
   public static final String LOG_TAG = "BaseLibInfo";
-  @bgqv(a="key4")
+  @bgvc(a="key4")
   public String baseLibDesc;
-  @bgqv(a="key2")
+  @bgvc(a="key2")
   public String baseLibKey;
-  @bgqv(a="key5")
+  @bgvc(a="key5")
   public int baseLibType;
-  @bgqv(a="key1")
+  @bgvc(a="key1")
   public String baseLibUrl;
-  @bgqv(a="key3")
+  @bgvc(a="key3")
   public String baseLibVersion;
   
   public BaseLibInfo() {}

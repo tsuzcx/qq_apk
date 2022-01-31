@@ -12,15 +12,15 @@ class nok
   public void a(URL paramURL, Throwable paramThrowable)
   {
     this.jdField_a_of_type_Noj.a = 3;
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131369751).setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131365978).setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131365978).setOnClickListener(new nol(this));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131369770).setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131365980).setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131365980).setOnClickListener(new nol(this));
   }
   
   public void a(URL paramURL, sfc paramsfc)
   {
     this.jdField_a_of_type_Noj.a = 2;
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131369751).setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131369770).setVisibility(8);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewResizeURLImageView.setPublicAccountImageDownListener(null);
     noj.a(this.jdField_a_of_type_Noj, null);
   }

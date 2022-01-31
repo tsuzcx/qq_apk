@@ -1,87 +1,31 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public class asyx
-  extends alxx
+class asyx
+  implements Callable<File>
 {
-  public asyx(ShareToQQActivity paramShareToQQActivity) {}
+  asyx(asyw paramasyw) {}
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  public File a()
   {
-    if (this.a.a == null)
+    try
     {
-      this.a.finish();
-      return;
+      boolean bool = asyw.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("shadow::CdnPmUpdater", 2, "isNeedDownload:" + bool);
+      }
+      if (!bool)
+      {
+        localFile = this.a.getLatest();
+        return localFile;
+      }
+      File localFile = this.a.a();
+      return localFile;
     }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
+    finally
     {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bdal.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k != 0)
-      {
-        paramList = new Intent();
-        paramList.putExtra("isSuccess", paramBoolean);
-        paramList.putExtra("isCancelShield", false);
-        this.a.setResult(-1, paramList);
-      }
-      this.a.finish();
-      return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, List<Long> paramList)
-  {
-    int k = 0;
-    if (this.a.a == null)
-    {
-      this.a.finish();
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bdal.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k != 0)
-      {
-        paramList = new Intent();
-        paramList.putExtra("isSuccess", paramBoolean);
-        paramList.putExtra("isCancelShield", true);
-        this.a.setResult(-1, paramList);
-      }
-      this.a.finish();
-      return;
+      asyw.a(this.a, false);
     }
   }
 }

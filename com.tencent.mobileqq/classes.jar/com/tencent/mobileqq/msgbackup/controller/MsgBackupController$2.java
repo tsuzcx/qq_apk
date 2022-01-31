@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
-import aucc;
-import aucm;
-import aucr;
+import augl;
+import augv;
+import auha;
 import java.util.List;
 
 public class MsgBackupController$2
   implements Runnable
 {
-  public MsgBackupController$2(aucc paramaucc, aucr paramaucr, aucm paramaucm, List paramList, int paramInt) {}
+  public MsgBackupController$2(augl paramaugl, auha paramauha, augv paramaugv, List paramList, int paramInt) {}
   
   public void run()
   {
-    this.this$0.a(aucc.a(this.this$0), this.jdField_a_of_type_Aucr, this.jdField_a_of_type_Aucm, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int, aucc.a());
+    this.this$0.a(augl.a(this.this$0), this.jdField_a_of_type_Auha, this.jdField_a_of_type_Augv, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int, augl.a());
   }
 }
 

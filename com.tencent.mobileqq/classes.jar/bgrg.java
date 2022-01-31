@@ -1,6 +1,26 @@
-public abstract interface bgrg
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class bgrg
+  implements View.OnClickListener
 {
-  public abstract void a(bgjw parambgjw, int paramInt, String paramString);
+  bgrg(bgrb parambgrb, DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgrb, 1);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Bgrb.isShowing()) {
+        this.jdField_a_of_type_Bgrb.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
+  }
 }
 
 

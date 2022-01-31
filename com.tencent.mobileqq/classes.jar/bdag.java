@@ -1,136 +1,101 @@
-import android.os.Build;
-import android.os.Environment;
-import android.os.StatFs;
-import android.text.TextUtils;
-import java.io.File;
-import java.lang.reflect.Method;
-
 public class bdag
 {
-  public static String a;
-  static boolean a;
-  static boolean b;
+  public static bdag a;
+  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[256];
+  private static char[] jdField_a_of_type_ArrayOfChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
   
-  static
+  protected bdag()
   {
-    jdField_a_of_type_JavaLangString = "SystemUtil";
+    a();
   }
   
-  public static long a()
+  public static bdag a()
   {
+    if (jdField_a_of_type_Bdag == null) {}
     try
     {
-      StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
-      long l = localStatFs.getBlockSize();
-      l = localStatFs.getAvailableBlocks() * l / 1024L;
-      return l;
+      jdField_a_of_type_Bdag = new bdag();
+      return jdField_a_of_type_Bdag;
     }
-    catch (Exception localException) {}
-    return 0L;
+    finally {}
   }
   
-  public static String a(String paramString)
+  public String a(String paramString)
   {
-    try
-    {
-      Class localClass = Class.forName("android.os.SystemProperties");
-      paramString = (String)localClass.getMethod("get", new Class[] { String.class, String.class }).invoke(localClass, new Object[] { paramString, null });
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+    return a(paramString.getBytes()).toString();
   }
   
-  public static void a()
+  public StringBuffer a(byte[] paramArrayOfByte)
   {
-    boolean bool2 = true;
-    jdField_a_of_type_Boolean = true;
-    boolean bool1 = bool2;
-    if (TextUtils.isEmpty(a("ro.miui.ui.version.code")))
+    int k = 0;
+    StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length * 2);
+    int i = 0;
+    int j = 0;
+    char c;
+    while (k < paramArrayOfByte.length)
     {
-      bool1 = bool2;
-      if (TextUtils.isEmpty(a("ro.miui.ui.version.name"))) {
-        if (TextUtils.isEmpty(a("ro.miui.internal.storage"))) {
-          break label50;
+      i = i << 8 | paramArrayOfByte[k] & 0xFF;
+      j += 8;
+      if (j > 5)
+      {
+        Object localObject = jdField_a_of_type_ArrayOfChar;
+        j -= 6;
+        c = localObject[(i >> j)];
+        if (c == 'i') {
+          localObject = "ia";
+        }
+        for (;;)
+        {
+          localStringBuffer.append(localObject);
+          i &= (1 << j) - 1;
+          break;
+          if (c == '+') {
+            localObject = "ib";
+          } else if (c == '/') {
+            localObject = "ic";
+          } else {
+            localObject = Character.valueOf(c);
+          }
         }
       }
+      k += 1;
     }
-    label50:
-    for (bool1 = bool2;; bool1 = false)
+    if (j > 0)
     {
-      b = bool1;
-      return;
-    }
-  }
-  
-  public static boolean a()
-  {
-    boolean bool1 = false;
-    try
-    {
-      boolean bool2 = Environment.getExternalStorageState().equals("mounted");
-      if (bool2) {
-        bool1 = true;
+      c = jdField_a_of_type_ArrayOfChar[(i << 6 - j)];
+      if (c != 'i') {
+        break label185;
       }
-      return bool1;
+      paramArrayOfByte = "ia";
     }
-    catch (Exception localException) {}
-    return false;
-  }
-  
-  public static long b()
-  {
-    try
+    for (;;)
     {
-      StatFs localStatFs = new StatFs("/data/data/com.tencent.mobileqq/files/");
-      long l = localStatFs.getBlockSize();
-      l = localStatFs.getAvailableBlocks() * l / 1024L;
-      return l;
-    }
-    catch (Exception localException) {}
-    return 0L;
-  }
-  
-  public static boolean b()
-  {
-    if (jdField_a_of_type_Boolean) {
-      return b;
-    }
-    a();
-    return b;
-  }
-  
-  public static boolean c()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean d()
-  {
-    boolean bool = false;
-    try
-    {
-      Method localMethod = Build.class.getMethod("hasSmartBar", new Class[0]);
-      if (localMethod != null) {
-        bool = true;
+      localStringBuffer.append(paramArrayOfByte);
+      return localStringBuffer;
+      label185:
+      if (c == '+') {
+        paramArrayOfByte = "ib";
+      } else if (c == '/') {
+        paramArrayOfByte = "ic";
+      } else {
+        paramArrayOfByte = Character.valueOf(c);
       }
-      return bool;
     }
-    catch (Exception localException) {}
-    return false;
   }
   
-  public static boolean e()
+  protected void a()
   {
-    return (!TextUtils.isEmpty(a("ro.meizu.product.model"))) || ("meizu".equalsIgnoreCase(Build.BRAND)) || ("22c4185e".equalsIgnoreCase(Build.BRAND));
+    int i = 0;
+    while (i < jdField_a_of_type_ArrayOfChar.length)
+    {
+      jdField_a_of_type_ArrayOfByte[jdField_a_of_type_ArrayOfChar[i]] = ((byte)i);
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdag
  * JD-Core Version:    0.7.0.1
  */

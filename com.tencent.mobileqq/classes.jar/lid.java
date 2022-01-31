@@ -816,7 +816,7 @@ public class lid
         int i2;
         if (i1 != -1)
         {
-          bool = amey.a(paramVideoAppInterface.getApp(), paramVideoAppInterface.getAccount(), str, i1);
+          bool = amjn.a(paramVideoAppInterface.getApp(), paramVideoAppInterface.getAccount(), str, i1);
           if (bool)
           {
             i2 = 2;
@@ -1343,8 +1343,8 @@ public class lid
       }
     }
     label35:
-    for (this.P = bdfe.b(this.jdField_g_of_type_Long);; this.P = 0) {
-      return bdfe.a(this.P);
+    for (this.P = bdjn.b(this.jdField_g_of_type_Long);; this.P = 0) {
+      return bdjn.a(this.P);
     }
   }
   

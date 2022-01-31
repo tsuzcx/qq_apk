@@ -1,25 +1,54 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import java.util.ArrayList;
 import java.util.List;
 
-public class aylj
-  extends ayle
+public abstract class aylj
+  extends aynv
 {
-  ayjk a(ahea paramahea, List<ayjl> paramList, String paramString1, boolean paramBoolean, String paramString2)
+  public int a;
+  protected QQAppInterface a;
+  protected CharSequence a;
+  protected String a;
+  protected ArrayList<String> a;
+  protected List<? extends FTSEntity> a;
+  public int b;
+  protected CharSequence b;
+  protected String b;
+  public int c = -1;
+  protected CharSequence c;
+  public int d = -1;
+  protected CharSequence d;
+  
+  public aylj(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ArrayList<String> paramArrayList, List<? extends FTSEntity> paramList)
   {
-    ayrc.a(90);
-    return new ayio(paramahea, paramList, paramString1);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  ayjl a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public CharSequence d()
   {
     return null;
   }
   
-  ayjl a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
-  {
-    return new ayip(paramrecord, paramString, paramCharSequence);
-  }
+  public abstract CharSequence e();
+  
+  public abstract CharSequence f();
 }
 
 

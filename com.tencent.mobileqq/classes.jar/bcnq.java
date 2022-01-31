@@ -1,254 +1,66 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.List;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Task;
+import java.util.LinkedList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bcnq
-  extends BaseAdapter
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  Setting jdField_a_of_type_ComTencentMobileqqDataSetting = null;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<TextView> jdField_a_of_type_JavaLangRefWeakReference = null;
-  protected List<String> a;
-  boolean jdField_a_of_type_Boolean = false;
-  String jdField_b_of_type_JavaLangString = null;
-  protected List<String> b;
-  boolean jdField_b_of_type_Boolean = true;
-  boolean c = false;
+  public int a;
+  public LinkedList<TroopFileTransferManager.Task> a;
+  public AtomicInteger a;
   
-  public bcnq(Context paramContext, QQAppInterface paramQQAppInterface)
+  public bcnq(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = ((int)paramContext.getResources().getDimension(2131297345));
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private URL a(URL paramURL)
+  /* Error */
+  public void a(TroopFileTransferManager.Task paramTask)
   {
-    URL localURL = paramURL;
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-    {
-      localURL = paramURL;
-      if ("2000".equals(this.jdField_b_of_type_JavaLangString))
-      {
-        localURL = paramURL;
-        if (paramURL.getProtocol().startsWith("http")) {
-          localURL = swu.a(paramURL.toString(), 2);
-        }
-      }
-    }
-    return localURL;
-  }
-  
-  private boolean a(int paramInt)
-  {
-    return (this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > paramInt) && (!TextUtils.isEmpty((CharSequence)this.jdField_b_of_type_JavaUtilList.get(paramInt))) && (bame.a((String)this.jdField_b_of_type_JavaUtilList.get(paramInt)) != null);
-  }
-  
-  public String a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < getCount())) {
-      return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a(int paramInt, bcns parambcns)
-  {
-    if ((parambcns == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
-    URLImageView localURLImageView;
-    ImageProgressCircle localImageProgressCircle;
-    label67:
-    Object localObject;
-    label83:
-    label217:
-    label219:
-    do
-    {
-      return;
-      localURLImageView = parambcns.jdField_a_of_type_ComTencentImageURLImageView;
-      localImageProgressCircle = parambcns.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
-      parambcns = a(paramInt);
-      if ((this.c) || (a(paramInt)))
-      {
-        parambcns = (String)this.jdField_b_of_type_JavaUtilList.get(paramInt);
-        QLog.d("TroopAvatarBigPhotoAdapter", 2, "load origin");
-        if (TextUtils.isEmpty(parambcns)) {
-          break label217;
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          break label219;
-        }
-        localObject = parambcns;
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopAvatarBigPhotoAdapter", 2, "loadThumbImage() path = " + (String)localObject);
-        }
-        String str = Uri.parse((String)localObject).getScheme();
-        if ((!TextUtils.isEmpty(str)) && ((str.equals("http")) || (str.equals("https")))) {
-          break label294;
-        }
-      }
-      for (;;)
-      {
-        try
-        {
-          localObject = new File((String)localObject).toURL();
-          localObject = a((URL)localObject);
-          if (((this.jdField_a_of_type_ComTencentMobileqqDataSetting != null) && (this.jdField_a_of_type_ComTencentMobileqqDataSetting.bHeadType != 0)) || (parambcns == null) || (!parambcns.equals(aiiy.jdField_a_of_type_JavaLangString))) {
-            break label324;
-          }
-          localURLImageView.setImageResource(2130842128);
-          return;
-        }
-        catch (MalformedURLException parambcns) {}
-        QLog.d("TroopAvatarBigPhotoAdapter", 2, "load current");
-        break label67;
-        break;
-        if (bcgh.b(parambcns))
-        {
-          if ((parambcns != null) && (parambcns.equals(aiiy.jdField_a_of_type_JavaLangString)))
-          {
-            localObject = bcgh.a(parambcns, this.jdField_a_of_type_JavaLangString, 0);
-            localObject = bcgh.b((String)localObject);
-            break label83;
-          }
-          localObject = bcgh.a(parambcns, this.jdField_a_of_type_JavaLangString, 1);
-          continue;
-        }
-        localObject = parambcns;
-        break label83;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("TroopAvatarBigPhotoAdapter", 2, parambcns.toString());
-        return;
-        try
-        {
-          localObject = new URL((String)localObject);
-        }
-        catch (MalformedURLException parambcns) {}
-      }
-    } while (!QLog.isColorLevel());
-    label294:
-    QLog.i("TroopAvatarBigPhotoAdapter", 2, parambcns.toString());
-    return;
-    label324:
-    parambcns = URLDrawable.URLDrawableOptions.obtain();
-    parambcns.mRequestWidth = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
-    parambcns.mRequestHeight = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
-    parambcns.mLoadingDrawable = baul.a;
-    if (this.jdField_b_of_type_Boolean) {
-      parambcns.mPlayGifImage = true;
-    }
-    localURLImageView.setImageDrawable(URLDrawable.getDrawable((URL)localObject, parambcns));
-    a(localImageProgressCircle);
-    localURLImageView.setURLDrawableDownListener(new bcnr(this, localImageProgressCircle, localURLImageView));
-  }
-  
-  public void a(TextView paramTextView)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTextView);
-  }
-  
-  public void a(ImageProgressCircle paramImageProgressCircle)
-  {
-    if (paramImageProgressCircle == null) {}
-    while (paramImageProgressCircle.getVisibility() == 4) {
-      return;
-    }
-    paramImageProgressCircle.setVisibility(4);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(String paramString, Setting paramSetting)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqDataSetting = paramSetting;
-  }
-  
-  public void a(List<String> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(List<String> paramList)
-  {
-    this.jdField_b_of_type_JavaUtilList = paramList;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558854, null);
-      paramView = new bcns(this);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131367910));
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle = ((ImageProgressCircle)localView.findViewById(2131368010));
-      localView.setTag(paramView);
-      paramViewGroup = paramView;
-    }
-    for (;;)
-    {
-      a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-      a(paramInt, paramViewGroup);
-      return localView;
-      paramViewGroup = (bcns)paramView.getTag();
-      localView = paramView;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 24	bcnq:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   6: aload_1
+    //   7: invokevirtual 32	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   10: pop
+    //   11: aload_0
+    //   12: getfield 19	bcnq:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   15: invokevirtual 36	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
+    //   18: aload_0
+    //   19: getfield 26	bcnq:jdField_a_of_type_Int	I
+    //   22: if_icmple +14 -> 36
+    //   25: aload_0
+    //   26: getfield 19	bcnq:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   29: invokevirtual 39	java/util/concurrent/atomic/AtomicInteger:decrementAndGet	()I
+    //   32: pop
+    //   33: aload_0
+    //   34: monitorexit
+    //   35: return
+    //   36: new 41	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskPool$1
+    //   39: dup
+    //   40: aload_0
+    //   41: invokespecial 44	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskPool$1:<init>	(Lbcnq;)V
+    //   44: iconst_5
+    //   45: aconst_null
+    //   46: iconst_1
+    //   47: invokestatic 50	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   50: goto -17 -> 33
+    //   53: astore_1
+    //   54: aload_0
+    //   55: monitorexit
+    //   56: aload_1
+    //   57: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	58	0	this	bcnq
+    //   0	58	1	paramTask	TroopFileTransferManager.Task
+    // Exception table:
+    //   from	to	target	type
+    //   2	33	53	finally
+    //   36	50	53	finally
   }
 }
 

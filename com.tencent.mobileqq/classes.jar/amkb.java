@@ -1,18 +1,10 @@
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-class amkb
+public abstract interface amkb
 {
-  long jdField_a_of_type_Long;
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public abstract void a(String paramString, boolean paramBoolean);
   
-  amkb(amjw paramamjw) {}
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, Long paramLong);
+  
+  public abstract void b(String paramString, boolean paramBoolean);
 }
 
 

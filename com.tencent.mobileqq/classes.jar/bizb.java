@@ -1,18 +1,11 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-final class bizb
-  implements View.OnClickListener
+class bizb
+  implements biqt
 {
-  bizb(Dialog paramDialog, Context paramContext, String paramString) {}
+  bizb(biyz parambiyz) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidAppDialog != null) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    bjbl.c("QRPluginManager", "startPluginByActivity: openPlugin result = " + paramBoolean);
   }
 }
 

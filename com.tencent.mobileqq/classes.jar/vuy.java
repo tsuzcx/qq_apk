@@ -1,50 +1,36 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 public class vuy
+  extends JobSegment<String, String>
 {
-  public int a;
-  public Drawable a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
+  private vuy(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public vuy(View paramView)
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369496);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369495));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369487));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369484));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369494));
-    this.c = ((TextView)paramView.findViewById(2131361894));
-    this.jdField_a_of_type_Int = paramView.getContext().getResources().getDimensionPixelOffset(2131298809);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramView.getContext().getResources().getDrawable(2130839435);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839429);
-    this.jdField_a_of_type_AndroidViewView.setPadding(this.jdField_a_of_type_AndroidViewView.getPaddingLeft(), this.jdField_a_of_type_AndroidViewView.getPaddingTop(), this.jdField_a_of_type_AndroidViewView.getPaddingRight(), this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839435);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_b_of_type_AndroidWidgetTextView.setTypeface(null, 1);
-    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription("");
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription("");
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.c.setVisibility(8);
+    this.a.jdField_a_of_type_Vwa.a(null);
+    this.a.jdField_a_of_type_Vwa.a(null);
+    this.a.jdField_a_of_type_Vwa.a(null);
+    this.a.jdField_a_of_type_Vwa.a(null);
+    this.a.jdField_a_of_type_Vwa.a(null);
+    if (VideoViewVideoHolder.f(this.a) == 0)
+    {
+      wxe.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. already idle state");
+      notifyResult(paramString);
+      return;
+    }
+    if (VideoViewVideoHolder.f(this.a) < 7)
+    {
+      wxe.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. change to idle directly");
+      VideoViewVideoHolder.a(this.a, 0);
+      notifyResult(paramString);
+      return;
+    }
+    wxe.b(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. stop video view");
+    this.a.jdField_a_of_type_Vwa.a();
+    VideoViewVideoHolder.a(this.a, 0);
+    notifyResult(paramString);
   }
 }
 

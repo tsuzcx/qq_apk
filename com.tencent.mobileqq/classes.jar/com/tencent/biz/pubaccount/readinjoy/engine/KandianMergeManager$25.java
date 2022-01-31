@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bjxj;
+import bkbq;
 import ors;
 
 class KandianMergeManager$25
@@ -12,9 +12,9 @@ class KandianMergeManager$25
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = bjxj.a(KandianMergeManager.a(this.this$0), 1).edit();
+    SharedPreferences.Editor localEditor = bkbq.a(KandianMergeManager.a(this.this$0), 1).edit();
     localEditor.remove("kandian_push_msg_xml").remove("kandian_push_msg_time");
-    bjxj.a(localEditor, true);
+    bkbq.a(localEditor, true);
     ors.a("kandian_lock_screen_push_info", true);
   }
 }

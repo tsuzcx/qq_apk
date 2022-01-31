@@ -1,31 +1,32 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.freshnews.BlockableEditTextView;
 
 public class ashw
-  implements ArkViewImplement.LoadCallback
+  implements ActionMode.Callback
 {
-  public ashw(QQGamePadFaceFragment paramQQGamePadFaceFragment) {}
+  public ashw(BlockableEditTextView paramBlockableEditTextView) {}
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    onLoadState(paramInt1);
+    return false;
   }
   
-  public void onLoadState(int paramInt)
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    if ((QLog.isColorLevel()) || (paramInt == -1)) {
-      QLog.d("QQGamePadFaceFragment", 2, new Object[] { "onLoadFinish, ret=", Integer.valueOf(paramInt), ", ", QQGamePadFaceFragment.a(this.a) });
+    if (BlockableEditTextView.a(this.a) == 0) {
+      return true;
     }
-    if (paramInt == 1) {
-      QQGamePadFaceFragment.a(this.a).a(QQGamePadFaceFragment.a(this.a).padFaceId);
-    }
-    while (paramInt != -1) {
-      return;
-    }
-    QQGamePadFaceFragment.a(this.a).a(QQGamePadFaceFragment.a(this.a).padFaceId);
-    QQGamePadFaceFragment.b(this.a);
+    return BlockableEditTextView.a(this.a);
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

@@ -1,88 +1,30 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.tmassistantbase.util.GlobalUtil;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLDecoder;
+import android.annotation.SuppressLint;
+import android.os.AsyncTask;
+import android.os.Build.VERSION;
+import java.util.concurrent.Executor;
 
-public class bfmd
+public abstract class bfmd<Param, Progress, Result>
+  extends AsyncTask<Param, Progress, Result>
 {
-  public static String a(String paramString)
+  protected String a;
+  protected String b;
+  
+  public bfmd(String paramString1, String paramString2)
   {
-    bfhg.b("CommonUtils_", "genExistedAPKFileNameByUrl url = " + paramString);
-    Object localObject2 = null;
-    if (paramString.contains(".apk"))
-    {
-      localObject2 = paramString.trim().substring(paramString.lastIndexOf("/") + 1).trim();
-      localObject1 = localObject2;
-      if (((String)localObject2).contains("?")) {
-        localObject1 = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("?"));
-      }
-      localObject2 = localObject1;
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        paramString = c(b((String)localObject1));
-        bfhg.b("CommonUtils_", "genExistedAPKFileNameByUrl  fileName = " + paramString);
-        return paramString;
-      }
+    this.a = paramString1;
+    if (!paramString1.toLowerCase().startsWith("http")) {
+      this.a = ("https://openmobile.qq.com/" + paramString1);
     }
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject2 = GlobalUtil.calcMD5AsString(paramString);
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = Integer.toString(Math.abs(paramString.hashCode()));
-      }
-      localObject1 = (String)localObject1 + ".apk";
-    }
-    bfhg.b("CommonUtils_", "genExistedAPKFileNameByUrl fileName == null, return fileName = " + (String)localObject1);
-    return localObject1;
+    this.b = paramString2;
   }
   
-  public static void a(ImageView paramImageView, String paramString)
+  @SuppressLint({"InlinedApi", "NewApi"})
+  public Executor a()
   {
-    try
-    {
-      paramString = new URL(paramString);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestHeight = 234;
-      localURLDrawableOptions.mRequestWidth = 234;
-      localURLDrawableOptions.mFailedDrawable = BaseApplication.getContext().getResources().getDrawable(2130841499);
-      localURLDrawableOptions.mLoadingDrawable = BaseApplication.getContext().getResources().getDrawable(2130841499);
-      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-      paramString.setAutoDownload(true);
-      paramString.setURLDrawableListener(new bfme(paramImageView));
-      paramString.startDownload();
-      paramImageView.setImageDrawable(paramString);
-      return;
+    if (Build.VERSION.SDK_INT >= 11) {
+      return AsyncTask.THREAD_POOL_EXECUTOR;
     }
-    catch (MalformedURLException paramImageView)
-    {
-      paramImageView.printStackTrace();
-    }
-  }
-  
-  public static boolean a()
-  {
-    return bfko.a().b();
-  }
-  
-  private static String b(String paramString)
-  {
-    if (paramString != null) {
-      return URLDecoder.decode(paramString);
-    }
-    return "";
-  }
-  
-  private static String c(String paramString)
-  {
-    return paramString.replace("?", "_").replace("*", "_").replace(" ", "_").replace("$", "_").replace("&", "_").replace("@", "_").replace("#", "_").replace("<", "_").replace(">", "_").replace("|", "_").replace(":", "_").replace("/", "_").replace("\\", "_").replace("\"", "_");
+    return null;
   }
 }
 

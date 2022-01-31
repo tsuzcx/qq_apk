@@ -1,13 +1,10 @@
-import android.text.method.TransformationMethod;
-
 public abstract interface bhxs
-  extends TransformationMethod
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void onScrollStateChanged(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhxs
  * JD-Core Version:    0.7.0.1
  */

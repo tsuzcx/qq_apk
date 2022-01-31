@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.managers;
 
-import amij;
-import aogj;
-import aols;
-import atvr;
+import ammy;
+import aoks;
+import aoqb;
+import auaa;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class PushNotificationManager$1
   implements Runnable
 {
-  public PushNotificationManager$1(atvr paramatvr, QQAppInterface paramQQAppInterface) {}
+  public PushNotificationManager$1(auaa paramauaa, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    atvr.a(this.this$0, (aols)aogj.a().a(390));
-    amij.a(this.a);
+    auaa.a(this.this$0, (aoqb)aoks.a().a(390));
+    ammy.a(this.a);
   }
 }
 

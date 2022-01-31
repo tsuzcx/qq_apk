@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.playvideo.floatdialog;
 
-import vml;
-import vmt;
-import wew;
+import vqu;
+import vrc;
+import wjf;
 
 public class CommentFloatDialog$OnCommentListViewStateChangeListener$1
   implements Runnable
 {
-  public CommentFloatDialog$OnCommentListViewStateChangeListener$1(vmt paramvmt) {}
+  public CommentFloatDialog$OnCommentListViewStateChangeListener$1(vrc paramvrc) {}
   
   public void run()
   {
-    vml.a(this.a.a).a(true);
+    vqu.a(this.a.a).a(true);
   }
 }
 

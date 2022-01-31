@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.hotpic;
 
-import aspo;
+import astx;
 
 public class HotPicMainPanel$2$1
   implements Runnable
 {
-  public HotPicMainPanel$2$1(aspo paramaspo) {}
+  public HotPicMainPanel$2$1(astx paramastx) {}
   
   public void run()
   {

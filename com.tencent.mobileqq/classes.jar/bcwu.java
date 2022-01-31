@@ -1,127 +1,89 @@
 import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.util.FaceInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.data.MessageForTroopEffectPic;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController.2;
+import com.tencent.mobileqq.trooppiceffects.view.NormalPicView;
+import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView;
+import com.tencent.mobileqq.trooppiceffects.view.ShakePicView;
+import com.tencent.mobileqq.trooppiceffects.view.VideoPicView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Hashtable;
-import java.util.LinkedList;
 
-public abstract class bcwu
+public class bcwu
 {
-  int jdField_a_of_type_Int = 10;
-  bcwv jdField_a_of_type_Bcwv = null;
-  Hashtable<String, FaceInfo> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-  LinkedList<FaceInfo> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  boolean jdField_a_of_type_Boolean = false;
-  protected int b;
-  Hashtable<String, FaceInfo> jdField_b_of_type_JavaUtilHashtable = new Hashtable();
-  boolean jdField_b_of_type_Boolean = false;
-  boolean c = false;
+  protected Handler a;
+  protected ViewGroup a;
+  protected bcxg a;
   
-  public abstract Bitmap a(int paramInt1, String paramString, int paramInt2, byte paramByte);
+  public bcwu(ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    azqs.b(null, "dc00899", "show_pic", "", paramString1, paramString2, 0, 0, "", "", "", "");
+  }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      ausq.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
+    if ((this.jdField_a_of_type_Bcxg != null) && (this.jdField_a_of_type_AndroidViewViewGroup != null))
+    {
+      this.jdField_a_of_type_Bcxg.b();
+      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_Bcxg.a());
+      this.jdField_a_of_type_Bcxg = null;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
   
-  public abstract void a(int paramInt1, String paramString, int paramInt2, long paramLong);
-  
-  public void a(bcwv parambcwv)
+  public void a(int paramInt1, Bitmap paramBitmap, int paramInt2, bcww parambcww)
   {
-    this.jdField_a_of_type_Bcwv = parambcwv;
-  }
-  
-  public abstract void a(AppInterface paramAppInterface);
-  
-  protected void a(FaceInfo paramFaceInfo)
-  {
-    if (paramFaceInfo == null) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopPicEffectsController", 2, "showPicEffect");
+    }
+    if ((this.jdField_a_of_type_Bcxg == null) && (this.jdField_a_of_type_AndroidViewViewGroup != null)) {
+      switch (paramInt1)
+      {
+      default: 
+        this.jdField_a_of_type_Bcxg = new NormalPicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
+      }
+    }
     for (;;)
     {
+      this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_Bcxg.a(), -1, paramInt2);
+      this.jdField_a_of_type_Bcxg.setBitmap(paramBitmap);
+      this.jdField_a_of_type_Bcxg.a();
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopPicEffectsController.2(this, parambcww), 6000L);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.e("FaceDecoderBase", 2, "enqueueDecode, iRunningRequests=" + this.jdField_b_of_type_Int + ", pause=" + this.jdField_a_of_type_Boolean + ",faceinfo=" + paramFaceInfo.toString());
-      }
-      try
-      {
-        this.jdField_a_of_type_JavaUtilLinkedList.remove(paramFaceInfo);
-        if (paramFaceInfo.jdField_b_of_type_Boolean)
-        {
-          this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramFaceInfo);
-          paramFaceInfo.a(FaceInfo.k);
-          if ((this.jdField_b_of_type_Int >= this.jdField_a_of_type_Int) || (this.jdField_a_of_type_Boolean)) {
-            continue;
-          }
-          e();
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.e("FaceDecoderBase", 2, "enqueueDecode", localException);
-            continue;
-            this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramFaceInfo);
-          }
-        }
-      }
+      this.jdField_a_of_type_Bcxg = new PhantomPicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
+      continue;
+      this.jdField_a_of_type_Bcxg = new ShakePicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
+      continue;
+      this.jdField_a_of_type_Bcxg = new VideoPicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext(), paramInt1);
     }
   }
   
-  public boolean a()
+  public void a(TroopChatPie paramTroopChatPie, MessageForTroopEffectPic paramMessageForTroopEffectPic, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Boolean;
+    awjl localawjl = awjb.a(6, 1536, 1);
+    awjd localawjd = paramMessageForTroopEffectPic.getPicDownloadInfo();
+    localawjl.a(paramMessageForTroopEffectPic, localawjd);
+    localawjl.a(new bcwv(this, localawjd, paramTroopChatPie, paramMessageForTroopEffectPic, paramBoolean));
+    awjb.a(localawjl, paramTroopChatPie.a);
   }
-  
-  public final boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3)
-  {
-    return a(paramString, paramInt1, paramBoolean1, paramInt2, paramBoolean2, paramByte, paramInt3, 100, false);
-  }
-  
-  public abstract boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3, int paramInt4, boolean paramBoolean3);
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FaceDecoderBase", 2, "resume");
-    }
-    this.jdField_a_of_type_Boolean = false;
-    while ((this.jdField_b_of_type_Int < this.jdField_a_of_type_Int) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())) {
-      e();
-    }
+    this.jdField_a_of_type_AndroidViewViewGroup = null;
   }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      ausq.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
-    }
-    this.jdField_a_of_type_JavaUtilHashtable.clear();
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      ausq.a(2, "FaceDecoderBase", "destory", new Object[0]);
-    }
-    c();
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Bcwv = null;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  protected abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcwu
  * JD-Core Version:    0.7.0.1
  */

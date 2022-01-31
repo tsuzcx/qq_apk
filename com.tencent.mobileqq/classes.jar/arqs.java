@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import android.app.Activity;
 
-public class arqs
-  implements bevo
+class arqs
+  implements beac
 {
-  public arqs(QfileEditBottomBar paramQfileEditBottomBar) {}
+  arqs(arqo paramarqo, Activity paramActivity, int paramInt) {}
   
-  public void a(int paramInt)
+  public void callback(int paramInt)
   {
-    QfileEditBottomBar.a(this.a);
+    if ((paramInt == 1) || (paramInt == 2)) {
+      arqo.a(this.jdField_a_of_type_Arqo, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    }
   }
 }
 

@@ -1,59 +1,65 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.ArConfigService.4.1;
-import com.tencent.mobileqq.ar.ArConfigService.4.2;
-import com.tencent.mobileqq.ar.ArConfigService.4.3;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
 
 public class amsf
-  implements apgm
 {
-  public amsf(ArConfigService paramArConfigService) {}
+  private static amsf a;
   
-  public void a(XmlData paramXmlData)
+  public static amsf a()
+  {
+    if (a == null) {
+      a = new amsf();
+    }
+    return a;
+  }
+  
+  public void a(long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "EarlyDownLoadListener");
+      QLog.d("ARDebugReport", 2, String.format("AR_选图_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
     }
   }
   
-  public void a(XmlData paramXmlData, long paramLong1, long paramLong2)
+  public void a(long paramLong1, long paramLong2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadProgress data=%s curOffset=%s totalLen=%s", new Object[] { paramXmlData, Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-    }
-    if ("qq.android.ar.native.so_v8.0.0".equals(paramXmlData.strResName)) {
-      ArConfigService.a(this.a, (int)(100L * paramLong1 / paramLong2));
-    }
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
-    if (!ArConfigService.e(this.a)) {
-      ArConfigService.a(this.a).post(new ArConfigService.4.1(this, i));
+      QLog.d("ARDebugReport", 2, String.format("AR_选图_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
     }
   }
   
-  public void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString)
+  public void b(long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadFinish data=%s result=%s", new Object[] { paramXmlData, Boolean.valueOf(paramBoolean1) }));
+      QLog.d("ARDebugReport", 2, String.format("AR_识别_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
     }
-    if (paramBoolean1)
-    {
-      if ("qq.android.ar.native.so_v8.0.0".equals(paramXmlData.strResName)) {
-        ArConfigService.b(this.a, true);
-      }
-      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
-        ArConfigService.a(this.a).post(new ArConfigService.4.2(this));
-      }
-    }
-    while (ArConfigService.e(this.a)) {
-      return;
-    }
-    ArConfigService.a(this.a).post(new ArConfigService.4.3(this));
-    ArConfigService.a(this.a, true);
   }
   
-  public void b(XmlData paramXmlData) {}
+  public void b(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("QR_识别_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
+    }
+  }
+  
+  public void c(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_追踪_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
+  }
+  
+  public void d(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("人脸_特征提取_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
+  }
+  
+  public void e(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("人脸_追踪_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
+  }
 }
 
 

@@ -1,46 +1,57 @@
-import android.app.Activity;
-import android.os.Looper;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.view.ApolloGameWrapper.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.ActivityManager;
+import android.os.Debug.MemoryInfo;
+import android.os.Process;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.theme.SkinEngine;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class alhi
 {
-  public static void a(boolean paramBoolean, Activity paramActivity, agwa paramagwa, AppInterface paramAppInterface, String paramString, alhj paramalhj)
+  public static String a()
   {
-    a(paramBoolean, paramActivity, paramagwa, paramAppInterface, paramString, paramalhj, true);
-  }
-  
-  public static void a(boolean paramBoolean1, Activity paramActivity, agwa paramagwa, AppInterface paramAppInterface, String paramString, alhj paramalhj, boolean paramBoolean2)
-  {
-    if (paramalhj == null)
+    StringBuilder localStringBuilder = new StringBuilder("RAM Info:all=");
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.ApolloGameWrapper", 2, "checkApolloGame listener is null");
-      }
-      return;
-    }
-    if ((paramActivity == null) || (paramAppInterface == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.ApolloGameWrapper", 2, "checkApolloGame activity is null OR appInterface is null");
-      }
-      paramalhj.a(false, null);
-      return;
-    }
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      paramagwa = akty.a(paramString);
-      if ((paramagwa == null) || (paramagwa.a == null) || (paramagwa.a.get() != paramActivity))
+      Object localObject = new DecimalFormat();
+      ((DecimalFormat)localObject).applyPattern("0.0");
+      long l1 = bdgk.d() / 1024L / 1024L;
+      long l2 = bdgk.e() / 1024L / 1024L;
+      Debug.MemoryInfo[] arrayOfMemoryInfo = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getProcessMemoryInfo(new int[] { Process.myPid() });
+      float f2 = -1.0F;
+      float f1 = f2;
+      if (arrayOfMemoryInfo != null)
       {
-        paramalhj.a(false, paramagwa);
-        return;
+        f1 = f2;
+        if (arrayOfMemoryInfo.length > 0) {
+          f1 = arrayOfMemoryInfo[0].getTotalPss() / 1024.0F;
+        }
       }
-      paramalhj.a(true, paramagwa);
-      return;
+      f2 = (float)Runtime.getRuntime().freeMemory() / 1024.0F / 1024.0F;
+      float f3 = (float)Runtime.getRuntime().totalMemory() / 1024.0F / 1024.0F;
+      float f4 = (float)Runtime.getRuntime().maxMemory() / 1024.0F / 1024.0F;
+      localStringBuilder.append(l1).append("M,avaiable:").append(l2).append("M used:").append(((DecimalFormat)localObject).format(f1)).append("M freeMemory:").append(f2).append("M,appTotalMemory:").append(f3).append("M,maxMemory:").append(f4).append("M, ImgCache:").append(BaseApplicationImpl.sImageCache.size() / 1024 / 1024).append("M,SkinCache:").append(SkinEngine.dumpDrawableCacheMemSize() / 1024L / 1024L).append("M,LeakMonitor=").append(amkc.a().jdField_a_of_type_Boolean);
+      localObject = (ArrayList)amkc.jdField_a_of_type_JavaUtilArrayList.clone();
+      if (((ArrayList)localObject).size() > 0)
+      {
+        localStringBuilder.append(",Leaked=[");
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          localStringBuilder.append((String)((Iterator)localObject).next());
+          localStringBuilder.append(",");
+        }
+      }
+      return localStringBuilder.toString();
     }
-    paramActivity.runOnUiThread(new ApolloGameWrapper.1(paramString, paramActivity, paramalhj));
+    catch (Throwable localThrowable) {}
+    for (;;)
+    {
+      localStringBuilder.append("]");
+    }
   }
 }
 

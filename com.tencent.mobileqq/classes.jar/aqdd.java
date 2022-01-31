@@ -1,12 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
+import com.tencent.qphone.base.util.QLog;
 
-final class aqdd
-  implements DialogInterface.OnClickListener
+public class aqdd
+  implements aqhr
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aqdd(ExtendFriendBaseFragment paramExtendFriendBaseFragment) {}
+  
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    aqhi.a(this.a.a);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.a.a == null)
+    {
+      QLog.d("ExtendFriendBaseFragment", 1, "sendMsgDirectly()-> showToast() mActivity is null just return");
+      return;
+    }
+    aqhi.a(this.a.a, this.a.a.getString(paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    aqhi.a(this.a.a, paramString1, paramString2);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  {
+    aqhi.a(this.a.a, paramBoolean, paramInt, paramString1, paramString2);
   }
 }
 

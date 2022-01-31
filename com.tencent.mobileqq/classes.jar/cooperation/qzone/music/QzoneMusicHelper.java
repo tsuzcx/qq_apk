@@ -1,6 +1,6 @@
 package cooperation.qzone.music;
 
-import alpo;
+import alud;
 import android.text.TextUtils;
 import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 public class QzoneMusicHelper
 {
-  public static final String NO_NETWORK_MSG = alpo.a(2131712411);
+  public static final String NO_NETWORK_MSG = alud.a(2131712423);
   
   public static SongInfo convertAudioSongInfo(JSONObject paramJSONObject)
   {

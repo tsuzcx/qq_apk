@@ -2,11 +2,11 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import bcwt;
+import bdbc;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class CorpReq$3
-  implements bcwt
+  implements bdbc
 {
   CorpReq$3(CorpReq paramCorpReq, QQAppInterface paramQQAppInterface, String paramString, CorpResp paramCorpResp) {}
   

@@ -1,32 +1,44 @@
-import android.view.animation.Animation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class acwa
-  extends bhnr
+  implements View.OnClickListener
 {
-  public acwa(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public acwa(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (this.a.d == null) {
+    paramView = this.a;
+    if (!this.a.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.jdField_a_of_type_Boolean = bool;
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break;
+      }
+      this.a.e();
+      if (this.a.getIntent().getBooleanExtra("key_need_hide_couser_when_emoj", false)) {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
+      }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837979);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131704026));
+      if ((!this.a.b) && (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null)) {
+        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      }
       return;
     }
-    if (paramAnimation == FriendProfileCardActivity.b(this.a)) {
-      this.a.i(1);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
+    if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
-    this.a.d.clearAnimation();
-    this.a.a.clearAnimation();
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (this.a.d == null) {}
-    while (paramAnimation != FriendProfileCardActivity.a(this.a)) {
-      return;
-    }
-    this.a.i(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847428);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131704016));
+    this.a.a();
   }
 }
 

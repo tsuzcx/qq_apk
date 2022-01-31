@@ -1,17 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.qphone.base.util.QLog;
 
-class ahnj
-  extends amab
+public class ahnj
+  extends amgi
 {
-  ahnj(ahnd paramahnd) {}
+  public ahnj(SystemMsgListView paramSystemMsgListView) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
-    if (localBitmap != null) {
-      ahnd.a(this.a, paramString, localBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendVerification.manager", 2, "ui.onRefreshBlockedEntrance");
     }
+    if (((Activity)SystemMsgListView.a(this.a)).isFinishing()) {}
+    while ((!paramBoolean) || (SystemMsgListView.a(this.a) == null)) {
+      return;
+    }
+    SystemMsgListView.a(this.a).c();
   }
 }
 

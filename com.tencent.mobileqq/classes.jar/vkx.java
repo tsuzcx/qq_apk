@@ -1,38 +1,114 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
-class vkx
-  implements uni<vbr, vbs>
+public abstract class vkx
 {
-  vkx(vkw paramvkw, vlj paramvlj) {}
+  private static Long jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
+  public bety a;
+  public String a;
+  public WeakReference<Activity> a;
+  public List<int[]> a;
+  private vkw jdField_a_of_type_Vkw;
+  public boolean a;
+  public boolean b = true;
   
-  public void a(@NonNull vbr paramvbr, @Nullable vbs paramvbs, @NonNull ErrorMessage paramErrorMessage)
+  public vkx(Activity paramActivity)
   {
-    if ((paramErrorMessage.isFail()) || (paramvbs == null))
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+  }
+  
+  public static boolean a()
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - jdField_a_of_type_JavaLangLong.longValue();
+    if ((l2 > 0L) && (l2 < 800L))
     {
-      wsv.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      this.jdField_a_of_type_Vlj.a(paramErrorMessage, null, false);
+      if (QLog.isColorLevel()) {
+        QLog.i("isFastDoubleClick", 2, "time:" + l1 + ", mLastClickTIme:" + jdField_a_of_type_JavaLangLong + ", timeDiff:" + l2);
+      }
+      return true;
+    }
+    jdField_a_of_type_JavaLangLong = Long.valueOf(l1);
+    return false;
+  }
+  
+  public Activity a()
+  {
+    return (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  protected abstract void a();
+  
+  protected void a(int paramInt)
+  {
+    if (a()) {
       return;
     }
-    vkw.a(this.jdField_a_of_type_Vkw);
-    this.jdField_a_of_type_Vkw.b.a(paramvbs.jdField_a_of_type_JavaUtilList, paramvbs.jdField_a_of_type_JavaLangString, paramvbs.jdField_a_of_type_Boolean);
-    ((wkp)urr.a(11)).a(paramvbs.jdField_a_of_type_JavaUtilList);
-    AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
-    boolean bool = wlg.a(paramvbs, localAtomicBoolean);
-    wsv.d("Q.qqstory.player.data.HomeFeedPlayPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramvbs.b), Integer.valueOf(vkw.b(this.jdField_a_of_type_Vkw)), Boolean.valueOf(bool) });
-    if ((!paramvbs.jdField_a_of_type_Boolean) && (vkw.b(this.jdField_a_of_type_Vkw) < 10) && ((!paramvbs.b) || (bool)))
+    b();
+    this.jdField_a_of_type_Vkw.a(b(paramInt));
+  }
+  
+  public void a(vkw paramvkw)
+  {
+    this.jdField_a_of_type_Vkw = paramvkw;
+  }
+  
+  public abstract int b(int paramInt);
+  
+  public void b()
+  {
+    if (!this.b) {}
+    do
     {
-      wsv.d("Q.qqstory.player.data.HomeFeedPlayPageLoader", "feedId list not end, pull more");
-      paramvbr.b = this.jdField_a_of_type_Vkw.b.a();
-      ung.a().a(paramvbr, this);
-      return;
+      Activity localActivity;
+      do
+      {
+        return;
+        if (this.jdField_a_of_type_Bety != null) {
+          break;
+        }
+        localActivity = a();
+      } while (localActivity == null);
+      int i = localActivity.getResources().getDimensionPixelSize(2131298914);
+      this.jdField_a_of_type_Bety = new bety(localActivity);
+      this.jdField_a_of_type_Bety.a(alud.a(2131714366));
+      this.jdField_a_of_type_Bety.b(i);
+    } while (this.jdField_a_of_type_Bety.isShowing());
+    this.jdField_a_of_type_Bety.show();
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+      this.jdField_a_of_type_Bety.dismiss();
     }
-    if (localAtomicBoolean.getAndSet(false)) {
-      this.jdField_a_of_type_Vkw.b.c();
+  }
+  
+  public void d()
+  {
+    a();
+    if (this.jdField_a_of_type_Vkw != null) {
+      this.jdField_a_of_type_Vkw.a();
     }
-    this.jdField_a_of_type_Vlj.a(paramErrorMessage, vkr.b(paramvbs.jdField_a_of_type_JavaUtilList), paramvbs.jdField_a_of_type_Boolean);
+  }
+  
+  protected void e()
+  {
+    if (this.jdField_a_of_type_Vkw != null) {
+      this.jdField_a_of_type_Vkw.b();
+    }
+  }
+  
+  protected void f()
+  {
+    if (this.jdField_a_of_type_Vkw != null) {
+      this.jdField_a_of_type_Vkw.c();
+    }
   }
 }
 

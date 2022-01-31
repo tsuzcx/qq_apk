@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aloz;
-import awmk;
+import alto;
+import awqt;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class FriendProfileCardActivity$63
@@ -13,7 +13,7 @@ class FriendProfileCardActivity$63
   {
     try
     {
-      ((aloz)this.this$0.app.getManager(51)).a(this.this$0.a.a);
+      ((alto)this.this$0.app.getManager(51)).a(this.this$0.a.a);
       return;
     }
     catch (Throwable localThrowable)

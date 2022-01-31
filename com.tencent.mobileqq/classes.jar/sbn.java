@@ -13,7 +13,7 @@ public class sbn
   
   public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    return new sbo(LayoutInflater.from(paramContext).inflate(2131560028, null), paramBaseData);
+    return new sbo(LayoutInflater.from(paramContext).inflate(2131560027, null), paramBaseData);
   }
   
   public boolean a(BaseData paramBaseData)

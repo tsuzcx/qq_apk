@@ -1,16 +1,25 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-class anzf
-  implements View.OnTouchListener
+public class anzf
+  implements View.OnClickListener
 {
-  anzf(anzc paramanzc) {}
+  public anzf(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return anzc.a(this.a).onTouchEvent(paramMotionEvent);
+    paramView = (anzj)paramView.getTag();
+    if (!((alto)this.a.app.getManager(51)).b(paramView.a)) {}
+    for (int i = 35;; i = 1)
+    {
+      paramView = new ProfileActivity.AllInOne(paramView.a, i);
+      ProfileActivity.a(this.a, paramView, 1016);
+      return;
+    }
   }
 }
 

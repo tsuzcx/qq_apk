@@ -1,6 +1,20 @@
-public abstract interface ajba
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import eipc.EIPCResult;
+import java.util.HashMap;
+
+class ajba
+  implements ajam
 {
-  public abstract void a(String paramString);
+  ajba(ajaz paramajaz, int paramInt) {}
+  
+  public void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result_code", paramInt);
+    localBundle.putSerializable("path_result", paramHashMap);
+    this.jdField_a_of_type_Ajaz.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+  }
 }
 
 

@@ -1,23 +1,21 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.View.OnTouchListener;
 
-public class yfc
-  implements View.OnClickListener
+class yfc
+  implements View.OnTouchListener
 {
-  public yfc(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, yem paramyem) {}
+  yfc(yew paramyew) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Yem.a.poster.registerCertifiedAccountUrl.get()))
-    {
-      xxk.a(this.jdField_a_of_type_Yem.a.poster.registerCertifiedAccountUrl.get());
-      yvu.b(this.jdField_a_of_type_Yem.a.poster.id.get(), "auth_person", "apply_clk", 0, 0, new String[0]);
+    if (paramMotionEvent.getAction() == 0) {
+      yew.a(this.a, 0);
     }
+    if (yew.a(this.a) != null) {
+      yew.a(this.a).a(paramMotionEvent);
+    }
+    return true;
   }
 }
 

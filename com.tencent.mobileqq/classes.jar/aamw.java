@@ -1,24 +1,8 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-
 public class aamw
-  implements aanf
 {
-  public boolean a(aamm paramaamm, String paramString, String... paramVarArgs)
+  public static String a(long paramLong1, long paramLong2, int paramInt)
   {
-    Object localObject = null;
-    ymk localymk = ymk.a();
-    localymk.a();
-    localymk.j(new aamx(this, paramaamm, paramString, paramVarArgs, localymk));
-    if (paramaamm != null) {}
-    for (paramString = paramaamm.a();; paramString = null)
-    {
-      paramVarArgs = localObject;
-      if (paramaamm != null) {
-        paramVarArgs = paramaamm.a();
-      }
-      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getUserInfo", paramVarArgs);
-      return true;
-    }
+    return bflr.d(String.format("%s_%d_%d_%d", new Object[] { "!@#$%qboi!@#^&*m13=4aa22", Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt) })).toLowerCase();
   }
 }
 

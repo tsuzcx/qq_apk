@@ -10,15 +10,15 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class qbp
   extends qbk
 {
-  public qbp(Context paramContext, bcws parambcws, rqj paramrqj)
+  public qbp(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()
   {
     this.jdField_a_of_type_Boolean = true;
-    return a(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).r().l().g().n().q().j();
+    return a(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).r().l().g().n().q().j();
   }
   
   public pxl d()
@@ -32,7 +32,7 @@ public class qbp
     LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
     localLinearLayout2.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
     localLinearLayout2.setOrientation(1);
-    localLinearLayout2.setPadding(0, 0, 0, aekt.a(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    localLinearLayout2.setPadding(0, 0, 0, aepi.a(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader != null) {
       localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader);
     }
@@ -41,7 +41,7 @@ public class qbp
       LinearLayout localLinearLayout3 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
       localLinearLayout3.setOrientation(1);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.setMargins(aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLayoutParams.setMargins(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       localLinearLayout3.setLayoutParams(localLayoutParams);
       localLinearLayout3.addView((View)this.jdField_a_of_type_Pxk);
       if ((this.jdField_a_of_type_Pxk instanceof ComponentContentBigImageVideo))
@@ -56,7 +56,7 @@ public class qbp
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
       localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
     }
-    opi.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842639));
+    opi.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842652));
     localLinearLayout1.addView(localLinearLayout2);
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
       localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);

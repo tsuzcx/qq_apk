@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.datareportviewer;
 
-import apde;
+import aphn;
 
 public class DataReportViewerFloatViewHelper$1
   implements Runnable
 {
   public void run()
   {
-    apde.a(this.this$0, this.this$0.a());
+    aphn.a(this.this$0, this.this$0.a());
   }
 }
 

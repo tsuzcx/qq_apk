@@ -1,10 +1,6 @@
-import com.tencent.mobileqq.hotpic.HotVideoData;
-
-public abstract interface asrf
+class asrf
 {
-  public abstract void a(HotVideoData paramHotVideoData);
-  
-  public abstract void b(HotVideoData paramHotVideoData);
+  private static final asrc a = new asrc(null);
 }
 
 

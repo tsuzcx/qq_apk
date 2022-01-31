@@ -1,53 +1,63 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.21.1;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AppGuideTipsConfig;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTimDouFuGuide;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class agdt
-  implements agdc
+  extends aepl
 {
-  agdt(agdi paramagdi) {}
-  
-  public void a(int paramInt)
+  public agdt(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    View localView;
-    if (paramInt == 0)
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+  }
+  
+  protected aepm a()
+  {
+    return new agdv(this);
+  }
+  
+  protected View a(MessageRecord paramMessageRecord, aepm paramaepm, View paramView, LinearLayout paramLinearLayout, aetk paramaetk)
+  {
+    paramLinearLayout = (agdv)paramaepm;
+    paramaepm = paramView;
+    if (paramView == null)
     {
-      localView = this.a.a().findViewById(2131367020);
-      if (localView != null) {}
+      paramaepm = LayoutInflater.from(this.a).inflate(2131558819, null);
+      paramLinearLayout.b = ((TextView)paramaepm.findViewById(2131377938));
+      paramLinearLayout.c = ((TextView)paramaepm.findViewById(2131364771));
     }
-    do
+    if ((paramMessageRecord != null) && ((paramMessageRecord instanceof MessageForTimDouFuGuide)))
     {
-      do
+      paramMessageRecord = ((MessageForTimDouFuGuide)paramMessageRecord).config;
+      if (paramMessageRecord != null)
       {
-        do
-        {
-          return;
-          localView.setVisibility(0);
-          AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-          localAlphaAnimation.setDuration(300L);
-          localView.startAnimation(localAlphaAnimation);
-          localView.postDelayed(new AIOGalleryScene.21.1(this, localView), 8000L);
-          return;
-          if (1 != paramInt) {
-            break;
-          }
-        } while ((this.a.jdField_a_of_type_Azey == null) || (((agdi.ai(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)agdi.aj(this.a)).b)) || (this.a.c));
-        this.a.c(null);
-        return;
-        if (2 != paramInt) {
-          break;
-        }
-        this.a.a(null);
-      } while ((this.a.jdField_a_of_type_Azey == null) || (((agdi.ak(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)agdi.al(this.a)).b)) || (this.a.c));
-      this.a.jdField_a_of_type_Azey.b(this.a.jdField_a_of_type_Ages.a().jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData);
-      return;
-    } while (3 != paramInt);
-    this.a.jdField_a_of_type_Ages.a().jdField_a_of_type_Agfr.i = true;
-    this.a.e.setText("");
-    this.a.u();
+        paramLinearLayout.b.setText(paramMessageRecord.tipsHighLight);
+        paramView = new SpannableString(paramMessageRecord.tipsMsg + alud.a(2131715328));
+        int i = paramView.length();
+        paramView.setSpan(new ForegroundColorSpan(paramaepm.getResources().getColor(2131166915)), i - 4, i, 33);
+        paramLinearLayout.c.setText(paramView);
+        paramaepm.setOnClickListener(new agdu(this, paramMessageRecord));
+      }
+    }
+    return paramaepm;
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  public bdpk[] a(View paramView)
+  {
+    return new bdpi().a();
   }
 }
 

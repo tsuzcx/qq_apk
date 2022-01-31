@@ -4,9 +4,9 @@ import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import atch;
-import azjt;
-import azmz;
+import atgq;
+import azoc;
+import azri;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
@@ -45,7 +45,7 @@ public class InitHook
     }
     while (paramBoolean)
     {
-      azmz.a(BaseApplicationImpl.getApplication()).a(null, "JavaHookSdkLoadSo", paramBoolean, 0L, 0L, null, "", true);
+      azri.a(BaseApplicationImpl.getApplication()).a(null, "JavaHookSdkLoadSo", paramBoolean, 0L, 0L, null, "", true);
       return;
       ((SharedPreferences.Editor)localObject1).commit();
     }
@@ -57,7 +57,7 @@ public class InitHook
       ((HashMap)localObject1).put("detail", localObject2.toString());
     }
     ((HashMap)localObject1).put("param_FailCode", Integer.toString(paramInt));
-    azmz.a(BaseApplicationImpl.getApplication()).a(null, "JavaHookSdkLoadSo", paramBoolean, 0L, 0L, (HashMap)localObject1, "", true);
+    azri.a(BaseApplicationImpl.getApplication()).a(null, "JavaHookSdkLoadSo", paramBoolean, 0L, 0L, (HashMap)localObject1, "", true);
   }
   
   private static void b()
@@ -90,7 +90,7 @@ public class InitHook
         return;
       }
       finally {}
-      atch.a();
+      atgq.a();
     }
   }
   
@@ -132,7 +132,7 @@ public class InitHook
     //   62: ldc 161
     //   64: invokestatic 163	com/tencent/mobileqq/startup/step/InitHook:a	(ZLjava/lang/Throwable;I)V
     //   67: invokestatic 95	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   70: invokestatic 100	azmz:a	(Landroid/content/Context;)Lazmz;
+    //   70: invokestatic 100	azri:a	(Landroid/content/Context;)Lazri;
     //   73: aconst_null
     //   74: ldc 191
     //   76: iconst_1
@@ -141,7 +141,7 @@ public class InitHook
     //   79: aconst_null
     //   80: ldc 47
     //   82: iconst_1
-    //   83: invokevirtual 105	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   83: invokevirtual 105	azri:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   86: goto -75 -> 11
     //   89: astore_1
     //   90: ldc 2
@@ -169,13 +169,13 @@ public class InitHook
     //   132: iconst_1
     //   133: ldc 205
     //   135: invokestatic 199	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   138: invokestatic 210	com/tencent/mobileqq/app/QQAppInterface:a	()Lazoa;
-    //   141: invokevirtual 214	azoa:b	()V
+    //   138: invokestatic 210	com/tencent/mobileqq/app/QQAppInterface:a	()Lazsj;
+    //   141: invokevirtual 214	azsj:b	()V
     //   144: getstatic 33	com/tencent/common/app/BaseApplicationImpl:sProcessId	I
     //   147: iconst_1
     //   148: if_icmpne -137 -> 11
-    //   151: invokestatic 217	atcc:a	()V
-    //   154: invokestatic 220	atbz:a	()V
+    //   151: invokestatic 217	atgl:a	()V
+    //   154: invokestatic 220	atgi:a	()V
     //   157: getstatic 33	com/tencent/common/app/BaseApplicationImpl:sProcessId	I
     //   160: iconst_1
     //   161: if_icmpne +3 -> 164
@@ -222,7 +222,7 @@ public class InitHook
     {
       b();
       return true;
-      DeviceProfileManager.a(new azjt(null));
+      DeviceProfileManager.a(new azoc(null));
       continue;
       c();
     }

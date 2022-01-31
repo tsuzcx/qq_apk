@@ -1,49 +1,75 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class acwh
-  implements DialogInterface.OnClickListener
+  implements aufy<List<EmoticonPackage>>
 {
-  public acwh(FriendProfileCardActivity paramFriendProfileCardActivity, Context paramContext) {}
+  public acwh(EmosmActivity paramEmosmActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(List<EmoticonPackage> paramList)
   {
-    switch (paramInt)
+    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.a.jdField_a_of_type_Apoy != null) {
+      this.a.jdField_a_of_type_Apoy.a();
+    }
+    if ((paramList != null) && (paramList.size() > 0))
     {
+      EmoticonPackage localEmoticonPackage;
+      if (this.a.b == 1)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localEmoticonPackage = (EmoticonPackage)paramList.next();
+          if ((3 != localEmoticonPackage.jobType) && (1 != localEmoticonPackage.jobType) && (5 != localEmoticonPackage.jobType)) {
+            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
+          }
+        }
+      }
+      if (this.a.b == 2)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localEmoticonPackage = (EmoticonPackage)paramList.next();
+          if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
+            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
+          }
+        }
+      }
+    }
+    if (this.a.b == 1)
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.findHeaderViewPosition(this.a.jdField_a_of_type_AndroidViewView) == -1) {
+        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.addHeaderView(this.a.jdField_a_of_type_AndroidViewView);
+      }
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.a.d();
+      if (this.a.b != 2) {
+        break label344;
+      }
+      this.a.setTitle(2131692094);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.dismiss();
-      com.tencent.mobileqq.activity.AddFriendLogicActivity.b = false;
+      if (this.a.jdField_a_of_type_Apoy != null) {
+        this.a.jdField_a_of_type_Apoy.notifyDataSetChanged();
+      }
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog back");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getIntExtra("source_id", 3999) == 3090) {}
-      try
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.isEmpty())
       {
-        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getStringExtra("extra");
-        arys.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, true, "action_game_make_friend", Long.valueOf(paramDialogInterface).longValue(), -1, alpo.a(2131705293));
-        if ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity))) {
-          continue;
-        }
-        ((Activity)this.jdField_a_of_type_AndroidContentContext).moveTaskToBack(true);
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        break;
       }
-      catch (Exception paramDialogInterface)
-      {
-        for (;;)
-        {
-          QLog.e("FriendProfileCardActivity", 1, "feedBackToGameSDK error = " + paramDialogInterface);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog stay");
-      }
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.removeHeaderView(this.a.jdField_a_of_type_AndroidViewView);
+      break;
+      label344:
+      this.a.setTitle(2131692341);
     }
   }
 }

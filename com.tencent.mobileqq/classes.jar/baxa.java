@@ -1,49 +1,57 @@
-import com.qq.taf.jce.HexUtil;
+import android.os.SystemClock;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class baxa
-  extends bawz
+class baxa
+  implements ITransactionCallback
 {
-  public int a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
+  baxa(bawz parambawz, long paramLong) {}
   
-  public String toString()
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" chatType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" clientType:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" seq:");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(" fileId:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" troopUin:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" agentType:");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(" md5:");
-    localStringBuilder.append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    localStringBuilder.append(" busiType:");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append(" fileType:");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(" downType:");
-    localStringBuilder.append(this.h);
-    localStringBuilder.append(" sceneType:");
-    localStringBuilder.append(this.i);
-    localStringBuilder.append(" subBusiType:");
-    localStringBuilder.append(this.j);
-    return localStringBuilder.toString();
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms");
+    }
+    this.jdField_a_of_type_Bawz.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Bawz.b);
+    this.jdField_a_of_type_Bawz.d();
+  }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  {
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long));
+    }
+    this.jdField_a_of_type_Bawz.b.b();
+    this.jdField_a_of_type_Bawz.b.a = 1;
+    this.jdField_a_of_type_Bawz.s = this.jdField_a_of_type_Bawz.q;
+    this.jdField_a_of_type_Bawz.a.a = paramArrayOfByte;
+    this.jdField_a_of_type_Bawz.e();
+    this.jdField_a_of_type_Bawz.a.a();
+  }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> onTransStart()");
+    }
+    this.jdField_a_of_type_Bawz.b.a();
+  }
+  
+  public void onUpdateProgress(int paramInt)
+  {
+    bawz localbawz = this.jdField_a_of_type_Bawz;
+    bass localbass = this.jdField_a_of_type_Bawz.a;
+    long l = paramInt;
+    localbass.e = l;
+    localbawz.s = l;
+    if ((paramInt < this.jdField_a_of_type_Bawz.q) && (!this.jdField_a_of_type_Bawz.o) && (!this.jdField_a_of_type_Bawz.k)) {
+      this.jdField_a_of_type_Bawz.i();
+    }
   }
 }
 

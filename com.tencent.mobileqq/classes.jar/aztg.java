@@ -1,100 +1,121 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class aztg
-  extends azqk
 {
-  private LinearLayout a(Context paramContext)
-  {
-    Resources localResources = paramContext.getResources();
-    paramContext = new LinearLayout(paramContext);
-    paramContext.setOrientation(1);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    int i = localResources.getDimensionPixelSize(2131298817);
-    int j = localResources.getDimensionPixelSize(2131298818);
-    paramContext.setPadding(i, localResources.getDimensionPixelSize(2131298819), j, localResources.getDimensionPixelSize(2131298816));
-    paramContext.setLayoutParams(localLayoutParams);
-    return paramContext;
-  }
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
+  private TreeMap<azth, String> jdField_a_of_type_JavaUtilTreeMap;
   
-  protected int b()
+  private String a()
   {
-    return 21;
-  }
-  
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    if (paramBundle.getInt("accostType") == AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA) {}
-    Resources localResources = paramContext.getResources();
-    int i;
-    int k;
-    label102:
-    Object localObject2;
-    if ((paramView != null) && ((paramView instanceof LinearLayout)))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nBusiness\n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeMap.entrySet().iterator();
+    int i = 0;
+    if (localIterator.hasNext())
     {
-      paramView = (LinearLayout)paramView;
-      paramView.removeAllViews();
-      i = paramView.getPaddingTop();
-      j = paramView.getPaddingBottom();
-      k = localResources.getDimensionPixelSize(2131298817);
-      int m = localResources.getDimensionPixelSize(2131298818);
-      a(paramView);
-      d(paramView);
-      paramView.setPadding(k, i, m, j);
-      k = aekt.a(7.0F, localResources);
-      i = 0;
-      if (i >= this.a.size()) {
-        return paramView;
-      }
-      localObject2 = (azqj)this.a.get(i);
-      if (!(localObject2 instanceof azvk)) {
-        break label216;
-      }
-      localObject1 = (azvk)localObject2;
-      localObject2 = ((azvk)localObject1).a(paramContext, null, paramBundle);
-      if (localObject2 != null)
+      localObject = (Map.Entry)localIterator.next();
+      if (i < 20) {}
+    }
+    else
+    {
+      return localStringBuilder.toString();
+    }
+    localStringBuilder.append("fd: ").append((String)((Map.Entry)localObject).getValue()).append(" ").append("(").append("count: ").append(((azth)((Map.Entry)localObject).getKey()).jdField_a_of_type_Int).append(")").append("\n");
+    Object localObject = new ArrayList(((azth)((Map.Entry)localObject).getKey()).jdField_a_of_type_JavaUtilHashMap.values());
+    Collections.sort((List)localObject);
+    localObject = ((List)localObject).iterator();
+    int j = 0;
+    for (;;)
+    {
+      azth localazth;
+      if (((Iterator)localObject).hasNext())
       {
-        localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-        localLayoutParams.topMargin = ((azvk)localObject1).k;
-        localLayoutParams.bottomMargin = ((azvk)localObject1).l;
-        paramView.addView((View)localObject2, localLayoutParams);
+        localazth = (azth)((Iterator)localObject).next();
+        if (j >= 5) {
+          localStringBuilder.append("\t\t").append("…").append("\n");
+        }
       }
-    }
-    label216:
-    while (!(localObject2 instanceof azso))
-    {
-      LinearLayout.LayoutParams localLayoutParams;
-      i += 1;
-      break label102;
-      paramView = a(paramContext);
-      break;
-    }
-    Object localObject1 = ((azqj)localObject2).a(paramContext, null, paramBundle);
-    if (((azso)localObject2).a) {}
-    for (int j = 0;; j = aekt.a(2.0F, localResources))
-    {
-      localObject2 = new LinearLayout.LayoutParams(-1, j);
-      ((LinearLayout.LayoutParams)localObject2).topMargin = k;
-      ((LinearLayout.LayoutParams)localObject2).bottomMargin = k;
-      if (localObject1 == null) {
+      else
+      {
+        i += 1;
         break;
       }
-      paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-      break;
+      j += 1;
+      localStringBuilder.append("\t\t").append(localazth.jdField_a_of_type_JavaLangString).append("(").append("count: ").append(localazth.jdField_a_of_type_Int).append(")").append("\n");
     }
-    return paramView;
   }
   
-  public String b()
+  private void a(azti paramazti)
   {
-    return "Layout21";
+    paramazti.a();
+    c(paramazti);
+    b(paramazti);
+  }
+  
+  private String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nSystem\n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      localStringBuilder.append("fd: ").append((String)localEntry.getKey()).append(" ").append("(").append("count: ").append(localEntry.getValue()).append(")").append("\n");
+    }
+    return localStringBuilder.toString();
+  }
+  
+  private void b(azti paramazti)
+  {
+    Object localObject = paramazti.a();
+    paramazti = new HashMap(20);
+    localObject = ((HashMap)localObject).entrySet().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+      String str = (String)localEntry.getValue();
+      if (azti.a(str) == null) {
+        paramazti.put(localEntry.getKey(), str);
+      }
+    }
+    this.jdField_a_of_type_JavaUtilTreeMap = new TreeMap(paramazti);
+  }
+  
+  private void c(azti paramazti)
+  {
+    this.jdField_a_of_type_JavaUtilMap = new HashMap(10);
+    paramazti = paramazti.b().entrySet().iterator();
+    while (paramazti.hasNext())
+    {
+      Object localObject = (Map.Entry)paramazti.next();
+      azth localazth = (azth)((Map.Entry)localObject).getKey();
+      localObject = (String)((Map.Entry)localObject).getValue();
+      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(localazth.jdField_a_of_type_Int));
+      }
+      else
+      {
+        Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+        Map localMap = this.jdField_a_of_type_JavaUtilMap;
+        int i = localInteger.intValue();
+        localMap.put(localObject, Integer.valueOf(localazth.jdField_a_of_type_Int + i));
+      }
+    }
+  }
+  
+  public String a(azti paramazti)
+  {
+    a(paramazti);
+    return a() + b();
   }
 }
 

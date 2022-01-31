@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import akro;
-import aktn;
-import aktp;
-import alef;
-import alpo;
+import akwd;
+import akyc;
+import akye;
+import aliu;
+import alud;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
-import bctc;
-import bcwc;
-import bdvv;
-import bdvx;
+import bcxl;
+import bdal;
+import beae;
+import beag;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.Utils;
@@ -23,39 +23,39 @@ import java.io.File;
 public class CmGameCommonShare$4
   implements Runnable
 {
-  public CmGameCommonShare$4(aktn paramaktn, int paramInt) {}
+  public CmGameCommonShare$4(akyc paramakyc, int paramInt) {}
   
   public void run()
   {
-    if (TextUtils.isEmpty(aktn.b(this.this$0))) {
-      aktn.a(this.this$0, "shareQRCode_default_v2.png");
+    if (TextUtils.isEmpty(akyc.b(this.this$0))) {
+      akyc.a(this.this$0, "shareQRCode_default_v2.png");
     }
     Object localObject2;
     Object localObject1;
-    if ((aktn.b(this.this$0).startsWith("http")) || (aktn.b(this.this$0).startsWith("https")))
+    if ((akyc.b(this.this$0).startsWith("http")) || (akyc.b(this.this$0).startsWith("https")))
     {
-      localObject2 = new File(alef.s + aktn.a(this.this$0) + File.separator + Utils.Crc64String(aktn.b(this.this$0)) + "_shareQRCode.png");
+      localObject2 = new File(aliu.s + akyc.a(this.this$0) + File.separator + Utils.Crc64String(akyc.b(this.this$0)) + "_shareQRCode.png");
       localObject1 = localObject2;
       if (!((File)localObject2).exists())
       {
-        bdvv localbdvv = new bdvv(aktn.b(this.this$0), (File)localObject2);
-        localbdvv.p = false;
-        localbdvv.j = false;
-        localbdvv.n = true;
-        localbdvv.s = false;
-        localbdvv.q = true;
-        localbdvv.r = true;
-        localbdvv.b = true;
-        localbdvv.f = "apollo_res";
+        beae localbeae = new beae(akyc.b(this.this$0), (File)localObject2);
+        localbeae.p = false;
+        localbeae.j = false;
+        localbeae.n = true;
+        localbeae.s = false;
+        localbeae.q = true;
+        localbeae.r = true;
+        localbeae.b = true;
+        localbeae.f = "apollo_res";
         localObject1 = localObject2;
-        if (bdvx.a(localbdvv, akro.a().getCurrentAccountUin(), BaseApplicationImpl.getContext()) != 0) {
-          ApolloItemBuilder.a(alpo.a(2131702437), 1, BaseApplicationImpl.getContext());
+        if (beag.a(localbeae, akwd.a().getCurrentAccountUin(), BaseApplicationImpl.getContext()) != 0) {
+          ApolloItemBuilder.a(alud.a(2131702449), 1, BaseApplicationImpl.getContext());
         }
       }
     }
     else
     {
-      localObject1 = new File(aktn.c(this.this$0));
+      localObject1 = new File(akyc.c(this.this$0));
     }
     for (;;)
     {
@@ -64,22 +64,22 @@ public class CmGameCommonShare$4
         if ((!((File)localObject1).isFile()) || (!((File)localObject1).exists()))
         {
           QLog.e("apollo_cmGame_CmGameCommonShare", 1, new Object[] { "shareResult2WXFriendOrCircle sharefile is not exsit:", ((File)localObject1).getAbsolutePath() });
-          localObject1 = new File(aktn.a(this.this$0, aktn.a(this.this$0)));
+          localObject1 = new File(akyc.a(this.this$0, akyc.a(this.this$0)));
           if (!((File)localObject1).exists())
           {
-            localObject1 = new File(aktn.b(this.this$0, aktn.a(this.this$0)));
+            localObject1 = new File(akyc.b(this.this$0, akyc.a(this.this$0)));
             if (((File)localObject1).exists())
             {
               localObject2 = BitmapFactory.decodeFile(((File)localObject1).getAbsolutePath());
               if (localObject2 == null) {
                 break;
               }
-              localObject2 = bctc.a((Bitmap)localObject2);
-              WXShareHelper.a().a(new aktp(this));
+              localObject2 = bcxl.a((Bitmap)localObject2);
+              WXShareHelper.a().a(new akye(this));
               WXShareHelper.a().a(((File)localObject1).getAbsolutePath(), (Bitmap)localObject2, this.a);
               return;
             }
-            localObject2 = bcwc.b(BaseApplicationImpl.getApplication().getResources(), 2130838498);
+            localObject2 = bdal.b(BaseApplicationImpl.getApplication().getResources(), 2130838499);
             continue;
           }
         }

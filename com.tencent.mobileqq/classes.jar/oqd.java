@@ -14,7 +14,7 @@ import java.util.Map;
 final class oqd
   implements ViewFactory.FoundClickableViewListener
 {
-  oqd(int paramInt, Container paramContainer, pgd parampgd, VafContext paramVafContext, bcws parambcws, rqj paramrqj, BaseArticleInfo paramBaseArticleInfo) {}
+  oqd(int paramInt, Container paramContainer, pgd parampgd, VafContext paramVafContext, bdbb parambdbb, rqj paramrqj, BaseArticleInfo paramBaseArticleInfo) {}
   
   public void onFound(ViewBase paramViewBase)
   {

@@ -1,14 +1,27 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-class vup
-  implements MediaPlayer.OnErrorListener
+public class vup
+  extends vut<StoryVideoItem>
 {
-  vup(vuj paramvuj, vuc paramvuc) {}
-  
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public vup(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    return this.jdField_a_of_type_Vuc.a(this.jdField_a_of_type_Vuj, paramInt1, paramInt2);
+    super(paramVideoViewVideoHolder, null);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    wxe.d(this.a.a, "VideoStartSegment, error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 

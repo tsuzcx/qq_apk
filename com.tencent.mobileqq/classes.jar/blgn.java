@@ -1,16 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.support.annotation.Nullable;
 
-public class blgn
-  implements ValueAnimator.AnimatorUpdateListener
+class blgn
+  implements bmeo<Boolean>
 {
-  public blgn(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  blgn(blgj paramblgj) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    AEEditorAILoadingView.a(this.a).setPadding(0, ((Integer)paramValueAnimator.getAnimatedValue()).intValue(), 0, 0);
+    if (paramBoolean.booleanValue()) {
+      blgj.a(this.a).d();
+    }
   }
 }
 

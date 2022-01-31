@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 class ImageJsPlugin$4

@@ -2,20 +2,20 @@ package com.tencent.biz.qqstory.playvideo;
 
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArraySet;
-import vjz;
-import vkf;
-import vkg;
+import voi;
+import voo;
+import vop;
 
 public final class TVKPreloader$8
   implements Runnable
 {
-  public TVKPreloader$8(vkf paramvkf) {}
+  public TVKPreloader$8(voo paramvoo) {}
   
   public void run()
   {
-    Iterator localIterator = vjz.a().iterator();
+    Iterator localIterator = voi.a().iterator();
     while (localIterator.hasNext()) {
-      ((vkg)localIterator.next()).a(this.a, new Throwable("TVK_ICacheMgr create failed !"));
+      ((vop)localIterator.next()).a(this.a, new Throwable("TVK_ICacheMgr create failed !"));
     }
   }
 }

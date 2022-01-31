@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.util.SparseIntArray;
-import bjxj;
+import bkbq;
 import com.tencent.qphone.base.util.QLog;
 import rib;
 
@@ -21,8 +21,8 @@ public class VideoFeedsShuntBarConfigure$1
         int k = rib.a(this.this$0).valueAt(i);
         if (k != 0)
         {
-          int m = ((Integer)bjxj.a(rib.a(this.this$0) + j, Integer.valueOf(0))).intValue();
-          bjxj.a(rib.a(this.this$0) + j, Integer.valueOf(k + m));
+          int m = ((Integer)bkbq.a(rib.a(this.this$0) + j, Integer.valueOf(0))).intValue();
+          bkbq.a(rib.a(this.this$0) + j, Integer.valueOf(k + m));
           if (QLog.isColorLevel()) {
             QLog.d(rib.a(), 2, "video_source_id: " + j + ", has display counts: " + (m + k));
           }

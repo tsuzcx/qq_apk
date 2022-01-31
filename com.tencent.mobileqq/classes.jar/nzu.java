@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 import com.tencent.widget.Switch;
 
 public class nzu
-  implements bepr
+  implements beua
 {
   public nzu(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   

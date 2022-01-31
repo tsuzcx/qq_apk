@@ -12,7 +12,7 @@ public class mlo
   public mlo(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
     super(paramContext, paramVideoAppInterface);
-    this.jdField_a_of_type_Int = ((int)bdcq.a(paramContext, 100.0F));
+    this.jdField_a_of_type_Int = ((int)bdgz.a(paramContext, 100.0F));
   }
   
   public int a()

@@ -51,19 +51,19 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
   public MiniAppDesktopAdapter$PopularityListModuleViewHolder(View paramView)
   {
     super(paramView);
-    this.rootView = paramView.findViewById(2131370493);
-    this.titleIconImg = ((ImageView)paramView.findViewById(2131370501));
-    this.titleTv = ((TextView)paramView.findViewById(2131370500));
-    this.moreAppImg = ((ImageView)paramView.findViewById(2131370492));
-    this.firstAppIconImg = ((ImageView)paramView.findViewById(2131370489));
-    this.secondAppIconImg = ((ImageView)paramView.findViewById(2131370494));
-    this.thirdAppIconImg = ((ImageView)paramView.findViewById(2131370497));
-    this.firstAppTitleTv = ((TextView)paramView.findViewById(2131370491));
-    this.secondAppTitleTv = ((TextView)paramView.findViewById(2131370496));
-    this.thirdAppTitleTv = ((TextView)paramView.findViewById(2131370499));
-    this.firstAppOpenImg = ((ImageView)paramView.findViewById(2131370490));
-    this.secondAppOpenImg = ((ImageView)paramView.findViewById(2131370495));
-    this.thirdAppOpenImg = ((ImageView)paramView.findViewById(2131370498));
+    this.rootView = paramView.findViewById(2131370512);
+    this.titleIconImg = ((ImageView)paramView.findViewById(2131370520));
+    this.titleTv = ((TextView)paramView.findViewById(2131370519));
+    this.moreAppImg = ((ImageView)paramView.findViewById(2131370511));
+    this.firstAppIconImg = ((ImageView)paramView.findViewById(2131370508));
+    this.secondAppIconImg = ((ImageView)paramView.findViewById(2131370513));
+    this.thirdAppIconImg = ((ImageView)paramView.findViewById(2131370516));
+    this.firstAppTitleTv = ((TextView)paramView.findViewById(2131370510));
+    this.secondAppTitleTv = ((TextView)paramView.findViewById(2131370515));
+    this.thirdAppTitleTv = ((TextView)paramView.findViewById(2131370518));
+    this.firstAppOpenImg = ((ImageView)paramView.findViewById(2131370509));
+    this.secondAppOpenImg = ((ImageView)paramView.findViewById(2131370514));
+    this.thirdAppOpenImg = ((ImageView)paramView.findViewById(2131370517));
     this.firstAppIconImg.setOnClickListener(this);
     this.secondAppIconImg.setOnClickListener(this);
     this.thirdAppIconImg.setOnClickListener(this);
@@ -179,7 +179,7 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
       this.titleTv.setText(paramDesktopPopularModuleInfo.title);
     }
     paramActivity = URLDrawable.URLDrawableOptions.obtain();
-    Object localObject = this.itemView.getContext().getResources().getDrawable(2130847839);
+    Object localObject = this.itemView.getContext().getResources().getDrawable(2130847912);
     paramActivity.mFailedDrawable = ((Drawable)localObject);
     paramActivity.mLoadingDrawable = ((Drawable)localObject);
     paramActivity.mPlayGifImage = false;

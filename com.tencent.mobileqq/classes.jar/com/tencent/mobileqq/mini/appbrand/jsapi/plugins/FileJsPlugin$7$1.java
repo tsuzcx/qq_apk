@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.content.Intent;
 import android.os.Bundle;
-import aqwa;
-import arni;
+import araj;
+import arrr;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.ValueCallback;
@@ -18,10 +18,10 @@ class FileJsPlugin$7$1
     QLog.d("[mini] FileJsPlugin", 1, "openFileReader callback  : " + paramString);
     if ((paramString != null) && (paramString.startsWith("http")))
     {
-      if (aqwa.a().a() == null)
+      if (araj.a().a() == null)
       {
         paramString = new Bundle();
-        paramString.putString("_filename_from_dlg", this.this$1.this$0.jsPluginEngine.getActivityContext().getString(2131694943));
+        paramString.putString("_filename_from_dlg", this.this$1.this$0.jsPluginEngine.getActivityContext().getString(2131694945));
         paramString.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_jc_file");
         Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
         localIntent.putExtra("param", paramString);
@@ -32,7 +32,7 @@ class FileJsPlugin$7$1
     else {
       return;
     }
-    arni.b(this.this$1.this$0.jsPluginEngine.getActivityContext(), "http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
+    arrr.b(this.this$1.this$0.jsPluginEngine.getActivityContext(), "http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
   }
 }
 

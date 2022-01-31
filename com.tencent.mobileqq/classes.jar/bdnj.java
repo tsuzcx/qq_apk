@@ -1,74 +1,44 @@
-import android.view.LayoutInflater;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Rect;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.ColorSelectView;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class bdnj
-  extends BaseAdapter
+class bdnj
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static final int[] a;
-  public int a;
+  bdnj(bdni parambdni) {}
   
-  static
+  public void onGlobalLayout()
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, -16777216, -51904, -41579, -2992688, -15808515, -16268201, -12464 };
-  }
-  
-  public bdnj()
-  {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return jdField_a_of_type_ArrayOfInt.length;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(jdField_a_of_type_ArrayOfInt[paramInt]);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561673, paramViewGroup, false);
-    }
-    paramView = (ColorSelectView)localView.findViewById(2131364457);
-    paramViewGroup = (ImageView)localView.findViewById(2131364455);
-    if (paramInt == 0)
+    if (!bdni.a(this.a)) {}
+    for (;;)
     {
-      paramView.setVisibility(8);
-      paramViewGroup.setVisibility(0);
-      if (this.jdField_a_of_type_Int == paramInt) {}
-      for (paramInt = 2130846544;; paramInt = 2130846543)
+      return;
+      Object localObject = new Rect();
+      bdni.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
+      int j = bdni.a(this.a) - ((Rect)localObject).height();
+      bdni.a(this.a, ((Rect)localObject).height());
+      if (j > bdni.b(this.a) / 3) {}
+      for (int i = 1; i != 0; i = 0)
       {
-        paramViewGroup.setImageResource(paramInt);
-        return localView;
+        bdni.a(this.a, false);
+        if (QLog.isColorLevel()) {
+          QLog.d("SoftKeyboardHeight", 2, new Object[] { "onGlobalLayout, keyboard height:", Integer.valueOf(j) });
+        }
+        localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_soft_keyboard", 0);
+        if (((SharedPreferences)localObject).getInt("key_height", 0) != j) {
+          ((SharedPreferences)localObject).edit().putInt("key_height", j).commit();
+        }
+        if (bdni.a(this.a) != null) {
+          bdni.a(this.a).a(j, false);
+        }
+        this.a.a();
+        return;
       }
-    }
-    paramView.setVisibility(0);
-    paramViewGroup.setVisibility(8);
-    paramView.setColor(jdField_a_of_type_ArrayOfInt[paramInt]);
-    if (this.jdField_a_of_type_Int == paramInt) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.setSelect(bool);
-      return localView;
     }
   }
 }

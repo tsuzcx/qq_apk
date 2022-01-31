@@ -1,30 +1,35 @@
-import java.util.HashMap;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.1.1;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.1.2;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class anjp
+  extends ampt
 {
-  private static HashMap<String, anjq> a = new HashMap();
-  
-  public static Object a(int paramInt, String paramString, Object paramObject1, Object paramObject2)
+  anjp(anjo paramanjo, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    paramString = (anjq)a.get(paramString);
-    if (paramString != null) {
-      paramObject2 = paramString.a(paramInt, paramObject1);
-    }
-    return paramObject2;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public static void a(String paramString)
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
   {
-    if (paramString != null) {
-      a.remove(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onConsecutiveFailure errCode=" + paramInt1 + ", failCount=" + paramInt2);
     }
+    if (paramInt2 < 3) {
+      return;
+    }
+    ArkAppCenter.a().post(anjo.a(this.a), new ArkAppEventObserverManager.1.2(this));
   }
   
-  public static void a(String paramString, anjq paramanjq)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (paramString != null) {
-      a.put(paramString, paramanjq);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onLocationFinish errCode=" + paramInt);
     }
+    ArkAppCenter.a().post(anjo.a(this.a), new ArkAppEventObserverManager.1.1(this, paramSosoLbsInfo, paramInt));
   }
 }
 

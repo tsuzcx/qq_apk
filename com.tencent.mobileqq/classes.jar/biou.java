@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qlink.QlinkBridgeActivity;
+import com.tencent.TMG.sdk.AVContext.StartParam;
 
 public class biou
-  implements DialogInterface.OnDismissListener
+  extends AVContext.StartParam
 {
-  public biou(QlinkBridgeActivity paramQlinkBridgeActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public int a;
+  public long a;
 }
 
 

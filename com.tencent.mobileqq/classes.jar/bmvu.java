@@ -1,10 +1,10 @@
-import java.util.List;
-
 public abstract interface bmvu
 {
-  public abstract void a(long paramLong);
+  public abstract void a();
   
-  public abstract void a(List<Long> paramList);
+  public abstract void a(String paramString);
+  
+  public abstract void b(String paramString);
 }
 
 

@@ -1,62 +1,29 @@
-public abstract class ayys
-  extends ayzb
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+
+public class ayys
+  extends zhu
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "QQServiceDiscussSvc" };
+  private ayyp jdField_a_of_type_Ayyp = new ayyp();
+  private ayyr jdField_a_of_type_Ayyr = new ayyr();
   
-  public ayys()
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
+    return this.jdField_a_of_type_Ayyp.a(paramToServiceMsg, paramFromServiceMsg);
   }
   
-  public String a()
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    return null;
+    return this.jdField_a_of_type_Ayyr.a(paramToServiceMsg, paramUniPacket);
   }
   
-  public boolean a()
+  public String[] a()
   {
-    if (this.jdField_a_of_type_Int == -1)
-    {
-      a("ShortVideoBaseInfo.check", "reqBusiType invalid, reqBusiType:" + this.jdField_a_of_type_Int);
-      return false;
-    }
-    if (this.jdField_b_of_type_Int == -1)
-    {
-      a("ShortVideoBaseInfo.check", "uinType invalid,uinType:" + this.jdField_b_of_type_Int);
-      return false;
-    }
-    if (this.c == null)
-    {
-      a("ShortVideoBaseInfo.check", "peerUin invalid,peerUin:" + this.c);
-      return false;
-    }
-    return true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nShortVideoBaseInfo");
-    localStringBuilder.append("\n |-").append("localUUID:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("uniseq:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n |-").append("reqBusiType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\n |-").append("selfUin:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("peerUin:").append(this.c);
-    localStringBuilder.append("\n |-").append("secondId:").append(this.d);
-    localStringBuilder.append("\n |-").append("md5:").append(this.e);
-    localStringBuilder.append("\n |-").append("thumbMD5:").append(this.g);
-    localStringBuilder.append("\n |-").append("errInfo:").append(this.jdField_a_of_type_Awey);
-    return localStringBuilder.toString();
+    return jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 

@@ -1,22 +1,16 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agiv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DialogInterface.OnClickListener
 {
-  agiv(agiu paramagiu) {}
+  agiv(agit paramagit) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.T)
-    {
-      this.a.T = false;
-      agiu.a(this.a).sendEmptyMessageDelayed(23, 100L);
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, " doOnCreate_initUI onGlobalLayout");
-      }
-    }
+    paramDialogInterface.dismiss();
+    aghx.u(this.a.a).setResult(8001);
   }
 }
 

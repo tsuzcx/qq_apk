@@ -1,94 +1,67 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aone
+  extends aokh<aond>
 {
-  private aonf[] a = new aonf[0];
-  
-  public static aone a(String paramString)
+  public static aond a()
   {
-    int i = 0;
-    aone localaone = new aone();
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SingTogetherConfigBean", 0, "parse content is empty");
-      }
-    }
-    for (;;)
-    {
-      return localaone;
-      try
-      {
-        paramString = new JSONObject(paramString).getJSONArray("array");
-        if ((paramString != null) && (paramString.length() > 0))
-        {
-          localaone.a = new aonf[paramString.length()];
-          while (i < paramString.length())
-          {
-            aonf localaonf = aonf.a(paramString.getJSONObject(i));
-            localaone.a[i] = localaonf;
-            i += 1;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.d("SingTogetherConfigBean", 0, "parse config=" + localaone);
-            return localaone;
-          }
-        }
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    return localaone;
+    return (aond)aoks.a().a(452);
   }
   
-  public aonf a(int paramInt)
+  public int a()
   {
-    Object localObject;
-    if ((this.a == null) || (this.a.length <= 0))
+    return 452;
+  }
+  
+  @NonNull
+  public aond a(int paramInt)
+  {
+    return new aond().b("0");
+  }
+  
+  @Nullable
+  public aond a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      localObject = null;
-      return localObject;
-    }
-    aonf[] arrayOfaonf = this.a;
-    int j = arrayOfaonf.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= j) {
-        break label64;
+      aond localaond = aond.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CLovePushGrayProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
       }
-      aonf localaonf = arrayOfaonf[i];
-      localObject = localaonf;
-      if (localaonf.a == paramInt) {
-        break;
-      }
-      i += 1;
+      return localaond;
     }
-    label64:
     return null;
   }
   
-  public String toString()
+  public Class<aond> a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(super.toString()).append(" ");
-    if ((this.a != null) && (this.a.length > 0))
-    {
-      aonf[] arrayOfaonf = this.a;
-      int j = arrayOfaonf.length;
-      int i = 0;
-      while (i < j)
-      {
-        localStringBuilder.append(arrayOfaonf[i]).append(" ");
-        i += 1;
-      }
+    return aond.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CLovePushGrayProcessor", 2, "onReqFailed " + paramInt);
     }
-    return localStringBuilder.toString();
+  }
+  
+  public void a(aond paramaond) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

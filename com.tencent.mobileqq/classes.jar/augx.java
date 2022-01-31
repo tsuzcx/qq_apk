@@ -1,286 +1,140 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.SystemClock;
-import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
-import com.tencent.mobileqq.multiaio.presenter.MultiAioContext.1;
+import com.tencent.mobileqq.data.MessageForMarketFace;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 public class augx
+  implements augj
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private augw jdField_a_of_type_Augw;
-  private auha jdField_a_of_type_Auha;
-  private auhb jdField_a_of_type_Auhb;
-  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private List<aifb> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private volatile Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private volatile List<RecentBaseData> jdField_b_of_type_JavaUtilList;
-  private int jdField_c_of_type_Int;
-  private volatile Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
+  public augx() {}
   
-  public augx(augw paramaugw)
+  public augx(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Augw = paramaugw;
+    this();
   }
   
-  public static augx a(AppInterface paramAppInterface)
+  public static auix a(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioContext", 2, "create() called with: app = [" + paramAppInterface + "]");
-    }
-    paramAppInterface = (augw)paramAppInterface.getManager(325);
-    augx localaugx = new augx(paramAppInterface);
-    localaugx.c(paramAppInterface.a(localaugx));
-    return localaugx;
-  }
-  
-  private void a(List<RecentBaseData> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioContext", 2, "setRecentUserList() called with: recentUserList = [" + paramList + "]");
-    }
-    this.jdField_b_of_type_JavaUtilList = paramList;
-  }
-  
-  private void c(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public aifb a(MultiAIOItemFragment paramMultiAIOItemFragment)
-  {
-    Object localObject2 = null;
-    int i = paramMultiAIOItemFragment.a();
-    Object localObject1 = localObject2;
-    if (i >= 0)
+    switch (paramMsgBackupResEntity.msgType)
     {
-      localObject1 = localObject2;
-      if (i < this.jdField_a_of_type_JavaUtilList.size()) {
-        localObject1 = (aifb)this.jdField_a_of_type_JavaUtilList.get(i);
+    default: 
+      return null;
+    case 1: 
+      return new auja(paramMsgBackupResEntity);
+    case 2: 
+      return new aujf(paramMsgBackupResEntity);
+    }
+    return new aujc(paramMsgBackupResEntity);
+  }
+  
+  public static aujd a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForPic)) {
+      return new auiz((MessageForPic)paramMessageRecord);
+    }
+    if ((paramMessageRecord instanceof MessageForShortVideo)) {
+      return new auje((MessageForShortVideo)paramMessageRecord);
+    }
+    if ((paramMessageRecord instanceof MessageForPtt)) {
+      return new aujb((MessageForPtt)paramMessageRecord);
+    }
+    if ((paramMessageRecord instanceof MessageForMarketFace)) {
+      return new auiv(paramMessageRecord);
+    }
+    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
+      return new auiy((MessageForMixedMsg)paramMessageRecord);
+    }
+    return null;
+  }
+  
+  public augw a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    paramMessageRecord = a(paramMsgBackupResEntity);
+    if (paramMessageRecord != null) {
+      return paramMessageRecord.a();
+    }
+    return new augw();
+  }
+  
+  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    return null;
+  }
+  
+  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  {
+    paramMessageRecord = a(paramMessageRecord);
+    if (paramMessageRecord != null)
+    {
+      paramMessageRecord.a();
+      Object localObject = paramMessageRecord.a();
+      if (QLog.isColorLevel()) {
+        paramMessageRecord.a("onExport");
       }
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null)
-    {
-      localObject2 = aifi.a(paramMultiAIOItemFragment.getActivity(), paramMultiAIOItemFragment.a(), paramMultiAIOItemFragment.getActivity().app);
-      a(i, (aifb)localObject2);
-    }
-    return localObject2;
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public View a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {}
-    for (View localView1 = null;; localView1 = (View)this.jdField_a_of_type_JavaUtilArrayList.remove(0))
-    {
-      if (localView1 != null)
+      if (localObject != null)
       {
-        localObject = localView1.getParent();
-        if (localObject != null) {
-          ((ViewGroup)localObject).removeView(localView1);
+        paramList.addAll((Collection)localObject);
+        if (QLog.isColorLevel())
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext())
+          {
+            localObject = (MsgBackupResEntity)paramList.next();
+            if (QLog.isColorLevel()) {
+              paramMessageRecord.a("export resEntity:" + ((MsgBackupResEntity)localObject).toLogString());
+            }
+          }
         }
       }
-      if (!QLog.isColorLevel()) {
-        break;
+    }
+  }
+  
+  public boolean a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord != null)
+    {
+      paramMessageRecord = a(paramMessageRecord);
+      if (paramMessageRecord != null) {
+        return paramMessageRecord.a();
       }
-      QLog.d("MultiAioContext", 2, "getCacheViewFor() called with: position = [" + paramInt + "], v = " + localView1);
-      Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext())
+    }
+    return false;
+  }
+  
+  public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    return (paramMsgBackupResEntity.msgType == 1) || (paramMsgBackupResEntity.msgType == 2) || (paramMsgBackupResEntity.msgType == 3);
+  }
+  
+  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  {
+    aujd localaujd = a(paramMessageRecord);
+    if (localaujd != null)
+    {
+      if (QLog.isColorLevel()) {
+        localaujd.a("onImport,uniseq:" + paramMessageRecord.uniseq + " msg:" + paramMessageRecord);
+      }
+      localaujd.b();
+      if (paramList != null)
       {
-        View localView2 = (View)((Iterator)localObject).next();
-        QLog.d("MultiAioContext", 2, "getCacheViewFor() cached v = [" + localView2 + "]");
+        paramMessageRecord = paramList.iterator();
+        while (paramMessageRecord.hasNext())
+        {
+          paramList = a((MsgBackupResEntity)paramMessageRecord.next());
+          if (paramList != null) {
+            paramList.a();
+          }
+        }
       }
     }
-    return localView1;
-  }
-  
-  public auhb a()
-  {
-    return this.jdField_a_of_type_Auhb;
-  }
-  
-  public List<RecentBaseData> a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, String paramString1, int paramInt, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioContext", 2, "getRecentUserList() called with: app = [" + paramQQAppInterface + "], activity = [" + paramFragmentActivity + "], openedFrom = [" + paramString1 + "], enteranceType = [" + paramInt + "], enteranceUin = [" + paramString2 + "], enterNickName = [" + paramString3 + "], mRecentUserList = " + this.jdField_b_of_type_JavaUtilList);
-    }
-    List localList2 = this.jdField_b_of_type_JavaUtilList;
-    List localList1 = localList2;
-    if (localList2 == null)
-    {
-      localList1 = augl.a(paramFragmentActivity, paramQQAppInterface, paramString1, paramInt, paramString2, paramString3);
-      a(localList1);
-    }
-    return localList1;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioContext", 2, "destroy() called");
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this);
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (this.jdField_b_of_type_JavaUtilList != null) {
-      this.jdField_b_of_type_JavaUtilList = null;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_b_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_c_of_type_AndroidGraphicsBitmap = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt, aifb paramaifb)
-  {
-    while (this.jdField_a_of_type_JavaUtilList.size() <= paramInt) {
-      this.jdField_a_of_type_JavaUtilList.add(null);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioContext", 2, "setMiniPie() called with: position = [" + paramInt + "], miniPie = [" + paramaifb + "]");
-    }
-    this.jdField_a_of_type_JavaUtilList.set(paramInt, paramaifb);
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    if (this.jdField_a_of_type_Auha != null) {
-      this.jdField_a_of_type_Auha.a(paramIntent);
-    }
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioContext", 2, "setDecorViewBitmap() called with: decorViewBitmap = [" + paramBitmap + "]");
-    }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public void a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, int paramInt)
-  {
-    while (paramInt > 0)
-    {
-      a(paramLayoutInflater.inflate(2131558795, paramViewGroup, false));
-      paramInt -= 1;
-    }
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioContext", 2, "putCacheView() called size = " + this.jdField_a_of_type_JavaUtilArrayList.size() + " with: v = [" + paramView + "]");
-    }
-  }
-  
-  public void a(auha paramauha)
-  {
-    this.jdField_a_of_type_Auha = paramauha;
-  }
-  
-  public void a(auhb paramauhb)
-  {
-    this.jdField_a_of_type_Auhb = paramauhb;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, String paramString1, int paramInt, String paramString2, String paramString3)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getRecentThreadLooper());
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this);
-    this.jdField_a_of_type_AndroidOsHandler.postAtTime(new MultiAioContext.1(this, paramFragmentActivity, paramQQAppInterface, paramString1, paramInt, paramString2, paramString3), this, 0L);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean) {
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public Bitmap b()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Auhb != null) {
-      this.jdField_a_of_type_Auhb.a();
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(Bitmap paramBitmap)
-  {
-    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public int c()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public Bitmap c()
-  {
-    return this.jdField_c_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public void c(Bitmap paramBitmap)
-  {
-    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
 }
 

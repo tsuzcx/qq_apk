@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aifb;
+import aijq;
 
 public class MiniPie$8
   implements Runnable
 {
-  public MiniPie$8(aifb paramaifb) {}
+  public MiniPie$8(aijq paramaijq) {}
   
   public void run()
   {

@@ -1,51 +1,19 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 
-public class ayim
-  implements ayjk
+class ayim
+  implements View.OnClickListener
 {
-  private ahea jdField_a_of_type_Ahea;
-  private String jdField_a_of_type_JavaLangString;
-  private List<ayjl> jdField_a_of_type_JavaUtilList;
+  ayim(ayik paramayik, besf parambesf) {}
   
-  public ayim(ahea paramahea, List<ayjl> paramList, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Ahea = paramahea;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public String a()
-  {
-    return alpo.a(2131705724);
-  }
-  
-  public List<ayjl> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    ayrd.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("from_key", 0);
-    localIntent.setClass(paramView.getContext(), ClassificationSearchActivity.class);
-    ClassificationSearchActivity.a((Activity)paramView.getContext(), localIntent, this.jdField_a_of_type_Ahea);
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    ((amch)ayii.a(this.jdField_a_of_type_Ayik.jdField_a_of_type_Ayii).getManager(299)).a();
+    this.jdField_a_of_type_Besf.dismiss();
+    ayii.a(this.jdField_a_of_type_Ayik.jdField_a_of_type_Ayii);
+    aysc.a(this.jdField_a_of_type_Ayik.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ReportModelDC02528().module("all_result").action("clk_his_del").ver2(aysc.a(this.jdField_a_of_type_Ayik.jdField_a_of_type_Ayii.b)).ver7("{experiment_id:" + aysc.b + "}"));
   }
 }
 

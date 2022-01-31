@@ -1,33 +1,17 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class aftt
-  implements View.OnTouchListener
+  extends afuf
 {
-  final aeov jdField_a_of_type_Aeov;
-  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new aftu(this));
-  View jdField_a_of_type_AndroidViewView = null;
-  
-  public aftt(aftr paramaftr, aeov paramaeov)
+  aftt(afpy paramafpy)
   {
-    this.jdField_a_of_type_Aeov = paramaeov;
+    super(paramafpy, null);
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (this.jdField_a_of_type_Aeov != null) {
-      this.jdField_a_of_type_Aeov.onTouch(paramView, paramMotionEvent);
-    }
-    if (this.jdField_a_of_type_AndroidViewGestureDetector != null)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-      return true;
-    }
-    this.jdField_a_of_type_AndroidViewView = null;
-    return false;
+    return new afvd(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

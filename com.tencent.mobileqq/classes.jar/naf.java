@@ -58,11 +58,11 @@ public class naf
         }
         catch (JSONException paramRedDotInfo)
         {
-          wsv.c("TroopRedTouchConfigure", "isStoryDisplayRedDot() APPID_STORY_IMG: Error parse json: ", paramRedDotInfo);
+          wxe.c("TroopRedTouchConfigure", "isStoryDisplayRedDot() APPID_STORY_IMG: Error parse json: ", paramRedDotInfo);
           return true;
         }
       }
-      wsv.b("TroopRedTouchConfigure", "isStoryDisplayRedDot() APPID_STORY_IMG: str_custom_buffer is null");
+      wxe.b("TroopRedTouchConfigure", "isStoryDisplayRedDot() APPID_STORY_IMG: str_custom_buffer is null");
       return true;
     }
     return b(i);

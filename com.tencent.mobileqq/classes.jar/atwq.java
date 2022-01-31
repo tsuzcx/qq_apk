@@ -1,6 +1,20 @@
-public abstract interface atwq
+import android.os.Handler;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager;
+
+public class atwq
 {
-  public abstract void g();
+  private static final atxa<Handler, Void> a = new atwr();
+  private static atxa<TimerTaskManager, Void> b = new atws();
+  
+  public static Handler a()
+  {
+    return (Handler)a.b(null);
+  }
+  
+  public static TimerTaskManager a()
+  {
+    return (TimerTaskManager)b.b(null);
+  }
 }
 
 

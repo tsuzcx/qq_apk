@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aild;
-import ajyg;
+import aips;
+import akcv;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.os.Process;
 import android.text.TextUtils;
-import awen;
-import awes;
-import awfc;
-import awfl;
-import axso;
-import azmz;
-import bcki;
-import bdaq;
-import bdar;
-import bdcs;
-import bddw;
-import bdil;
-import bilx;
+import awiw;
+import awjb;
+import awjl;
+import awju;
+import axwx;
+import azri;
+import bcor;
+import bdez;
+import bdfa;
+import bdhb;
+import bdif;
+import bdmu;
+import biqe;
 import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity.SendVideoInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -34,9 +34,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import zpa;
-import zti;
-import ztk;
+import ztp;
+import zxx;
+import zxz;
 
 public class SendPhotoTask
   implements Runnable
@@ -96,7 +96,7 @@ public class SendPhotoTask
   
   protected CompressInfo a(int paramInt, Intent paramIntent)
   {
-    return awes.a(paramInt, paramIntent);
+    return awjb.a(paramInt, paramIntent);
   }
   
   protected ArrayList<String> a()
@@ -144,7 +144,7 @@ public class SendPhotoTask
   
   protected ArrayList<Integer> a(CompressInfo paramCompressInfo)
   {
-    return bilx.a(paramCompressInfo.jdField_e_of_type_JavaLangString);
+    return biqe.a(paramCompressInfo.jdField_e_of_type_JavaLangString);
   }
   
   protected void a(Intent paramIntent)
@@ -172,12 +172,12 @@ public class SendPhotoTask
     QLog.d("SendPhotoTask", 2, " sendPhotoTask(),  mBusiType :" + this.jdField_a_of_type_Int + ", mNeedCompress:" + this.jdField_a_of_type_Boolean + ", mCurType:" + this.jdField_b_of_type_Int + ",mIsWaitForResult:" + this.jdField_b_of_type_Boolean + ",picQualityType: " + this.d + ",mSendBackground = " + this.jdField_c_of_type_Boolean + "mPaths :" + Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray()) + ", PhotoTypeSize:" + this.jdField_b_of_type_JavaUtilHashMap.size());
   }
   
-  protected void a(awfc paramawfc, QQAppInterface paramQQAppInterface)
+  protected void a(awjl paramawjl, QQAppInterface paramQQAppInterface)
   {
-    awes.a(paramawfc, paramQQAppInterface);
+    awjb.a(paramawjl, paramQQAppInterface);
   }
   
-  protected void a(BaseActivity paramBaseActivity, awfc paramawfc)
+  protected void a(BaseActivity paramBaseActivity, awjl paramawjl)
   {
     boolean bool1 = false;
     int i = -1;
@@ -189,37 +189,37 @@ public class SendPhotoTask
     do
     {
       return;
-      if ((paramawfc != null) && (paramawfc.jdField_a_of_type_Awfl != null)) {
+      if ((paramawjl != null) && (paramawjl.jdField_a_of_type_Awju != null)) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.d("SendPhotoTask", 2, "sendPhoto,sendReq is null,return!");
     return;
-    a(paramBaseActivity.app, this.jdField_a_of_type_JavaLangString, paramawfc.jdField_a_of_type_Awfl.jdField_g_of_type_JavaLangString);
-    if (paramawfc.jdField_a_of_type_Awfl.jdField_b_of_type_Int == 9501)
+    a(paramBaseActivity.app, this.jdField_a_of_type_JavaLangString, paramawjl.jdField_a_of_type_Awju.jdField_g_of_type_JavaLangString);
+    if (paramawjl.jdField_a_of_type_Awju.jdField_b_of_type_Int == 9501)
     {
-      b(paramBaseActivity, paramawfc);
+      b(paramBaseActivity, paramawjl);
       return;
     }
     Object localObject;
     int j;
-    if ((paramawfc.jdField_a_of_type_Awfl.jdField_b_of_type_Int == 9500) && ((paramawfc.jdField_a_of_type_Int == 2) || (paramawfc.jdField_a_of_type_Int == 4)))
+    if ((paramawjl.jdField_a_of_type_Awju.jdField_b_of_type_Int == 9500) && ((paramawjl.jdField_a_of_type_Int == 2) || (paramawjl.jdField_a_of_type_Int == 4)))
     {
       localObject = paramBaseActivity.getIntent();
       this.jdField_a_of_type_AndroidContentIntent.removeExtra("PhotoConst.SEND_BUSINESS_TYPE");
       ((Intent)localObject).setClassName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.ChatActivity");
-      ((Intent)localObject).putExtra("uin", paramawfc.jdField_a_of_type_Awfl.c);
-      ((Intent)localObject).putExtra("key_confess_topicid", paramawfc.jdField_a_of_type_Awfl.o);
+      ((Intent)localObject).putExtra("uin", paramawjl.jdField_a_of_type_Awju.c);
+      ((Intent)localObject).putExtra("key_confess_topicid", paramawjl.jdField_a_of_type_Awju.o);
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(paramawfc.jdField_a_of_type_Awfl.jdField_g_of_type_JavaLangString);
+      localArrayList.add(paramawjl.jdField_a_of_type_Awju.jdField_g_of_type_JavaLangString);
       ((Intent)localObject).putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
       ((Intent)localObject).putExtra("PhotoConst.SINGLE_PHOTO_PATH", (String)localArrayList.get(0));
       ((Intent)localObject).putExtra("PhotoConst.SEND_SIZE_SPEC", 2);
       ((Intent)localObject).addFlags(603979776);
       ((Intent)localObject).putExtra("param_compressInitTime", System.currentTimeMillis());
-      j = ((Intent)localObject).getIntExtra(bdaq.h, -1);
+      j = ((Intent)localObject).getIntExtra(bdez.h, -1);
       if ((j != 80) && (j != 82)) {
-        ((Intent)localObject).putExtra(bdaq.h, 82);
+        ((Intent)localObject).putExtra(bdez.h, 82);
       }
       paramBaseActivity.startActivityForResult((Intent)localObject, 2);
     }
@@ -233,21 +233,21 @@ public class SendPhotoTask
         if (bool2) {
           i = paramBaseActivity.getIntent().getIntExtra("forward_source_uin_type", -1);
         }
-        if (paramawfc.jdField_a_of_type_Awfl == null) {
+        if (paramawjl.jdField_a_of_type_Awju == null) {
           break;
         }
         j = this.jdField_b_of_type_Int;
-        if (paramawfc.jdField_a_of_type_Awfl.h == 2) {
+        if (paramawjl.jdField_a_of_type_Awju.h == 2) {
           bool1 = true;
         }
-        aild.a((String[])localObject, j, bool1, bool2, i, paramBaseActivity.app);
+        aips.a((String[])localObject, j, bool1, bool2, i, paramBaseActivity.app);
         return;
       }
       catch (Exception paramBaseActivity)
       {
         return;
       }
-      a(paramawfc, paramBaseActivity.app);
+      a(paramawjl, paramBaseActivity.app);
     }
   }
   
@@ -256,7 +256,7 @@ public class SendPhotoTask
     if (TextUtils.isEmpty(paramString2)) {
       return;
     }
-    ((axso)paramQQAppInterface.getManager(326)).a(paramString1, paramString2);
+    ((axwx)paramQQAppInterface.getManager(326)).a(paramString1, paramString2);
   }
   
   protected void a(CompressInfo paramCompressInfo)
@@ -266,7 +266,7 @@ public class SendPhotoTask
   
   protected void a(List<String> paramList)
   {
-    bcki.a(((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app, this.jdField_a_of_type_JavaLangString, ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app.c(), paramList, this.jdField_b_of_type_Long);
+    bcor.a(((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app, this.jdField_a_of_type_JavaLangString, ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app.c(), paramList, this.jdField_b_of_type_Long);
   }
   
   protected boolean a(int paramInt, String paramString)
@@ -292,9 +292,9 @@ public class SendPhotoTask
     return false;
   }
   
-  protected boolean a(awfc paramawfc, awfl paramawfl)
+  protected boolean a(awjl paramawjl, awju paramawju)
   {
-    if (!paramawfc.a(paramawfl))
+    if (!paramawjl.a(paramawju))
     {
       QLog.e("SendPhotoTask", 2, "sendPhotoTask. failed to bind the UpInfo to the sendReq");
       return false;
@@ -302,7 +302,7 @@ public class SendPhotoTask
     return true;
   }
   
-  protected boolean a(awfl paramawfl)
+  protected boolean a(awju paramawju)
   {
     CompressInfo localCompressInfo = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentIntent);
     if (localCompressInfo == null)
@@ -319,25 +319,25 @@ public class SendPhotoTask
       QLog.d("SendPhotoTask", 2, "sendPhotoTask, compress start.compressInfo.src = " + localCompressInfo.c);
     }
     a(localCompressInfo);
-    paramawfl.jdField_g_of_type_JavaLangString = localCompressInfo.jdField_e_of_type_JavaLangString;
+    paramawju.jdField_g_of_type_JavaLangString = localCompressInfo.jdField_e_of_type_JavaLangString;
     if (QLog.isColorLevel()) {
-      QLog.d("SendPhotoTask", 2, "sendPhotoTask,  compress finish, upInfo.localPath = " + paramawfl.jdField_g_of_type_JavaLangString);
+      QLog.d("SendPhotoTask", 2, "sendPhotoTask,  compress finish, upInfo.localPath = " + paramawju.jdField_g_of_type_JavaLangString);
     }
     if ((localCompressInfo.jdField_g_of_type_Int != 2) && (b(localCompressInfo.jdField_e_of_type_JavaLangString))) {
-      bddw.a();
+      bdif.a();
     }
     try
     {
-      paramawfl.jdField_a_of_type_JavaUtilArrayList = a(localCompressInfo);
-      if ((paramawfl.jdField_a_of_type_JavaUtilArrayList != null) && (QLog.isColorLevel())) {
-        QLog.d("peak_pgjpeg", 2, "@SendPhotoActivity.sendPhotoTask:" + paramawfl.jdField_a_of_type_JavaUtilArrayList.toString());
+      paramawju.jdField_a_of_type_JavaUtilArrayList = a(localCompressInfo);
+      if ((paramawju.jdField_a_of_type_JavaUtilArrayList != null) && (QLog.isColorLevel())) {
+        QLog.d("peak_pgjpeg", 2, "@SendPhotoActivity.sendPhotoTask:" + paramawju.jdField_a_of_type_JavaUtilArrayList.toString());
       }
-      bddw.a("peak_pgjpeg", "@PeakUtils.getSliceInfos(" + localCompressInfo.jdField_e_of_type_JavaLangString + ")");
+      bdif.a("peak_pgjpeg", "@PeakUtils.getSliceInfos(" + localCompressInfo.jdField_e_of_type_JavaLangString + ")");
       this.jdField_c_of_type_JavaUtilArrayList.add(localCompressInfo);
       if (localCompressInfo.jdField_e_of_type_Boolean)
       {
-        paramawfl.jdField_g_of_type_Int = 1;
-        awen.a(paramawfl, "fixProtocolType", "sendReq.upInfo.protocolType");
+        paramawju.jdField_g_of_type_Int = 1;
+        awiw.a(paramawju, "fixProtocolType", "sendReq.upInfo.protocolType");
         return true;
       }
     }
@@ -346,7 +346,7 @@ public class SendPhotoTask
       for (;;)
       {
         if (QLog.isColorLevel()) {
-          QLog.w("peak_pgjpeg", 2, "@OutOfMemoryError occurred in PeakUtils.getSliceInfos， " + localCompressInfo.jdField_e_of_type_JavaLangString + "'s size is " + bdcs.a(localCompressInfo.jdField_e_of_type_JavaLangString));
+          QLog.w("peak_pgjpeg", 2, "@OutOfMemoryError occurred in PeakUtils.getSliceInfos， " + localCompressInfo.jdField_e_of_type_JavaLangString + "'s size is " + bdhb.a(localCompressInfo.jdField_e_of_type_JavaLangString));
         }
       }
     }
@@ -358,37 +358,37 @@ public class SendPhotoTask
           QLog.w("peak_pgjpeg", 2, "@ArrayIndexOutOfBoundsException occurred in PeakUtils.getSliceInfos， " + localCompressInfo.jdField_e_of_type_JavaLangString);
         }
       }
-      paramawfl.jdField_g_of_type_Int = paramawfl.a();
+      paramawju.jdField_g_of_type_Int = paramawju.a();
     }
     return true;
   }
   
   protected boolean a(String paramString)
   {
-    return !bdcs.b(paramString);
+    return !bdhb.b(paramString);
   }
   
   protected boolean a(String paramString, int paramInt)
   {
     this.jdField_a_of_type_AndroidContentIntent.putExtra("PhotoConst.PHOTO_SEND_PATH", paramString);
     this.jdField_a_of_type_AndroidContentIntent.putExtra("PhotoConst.PHOTO_SEND_PATH_INDEX", paramInt);
-    awfc localawfc = awes.a(2, this.jdField_a_of_type_Int);
-    localawfc.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("KEY_MSG_FORWARD_ID", -1);
-    awfl localawfl = awes.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentIntent);
-    if (!a(localawfc, localawfl)) {}
+    awjl localawjl = awjb.a(2, this.jdField_a_of_type_Int);
+    localawjl.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("KEY_MSG_FORWARD_ID", -1);
+    awju localawju = awjb.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentIntent);
+    if (!a(localawjl, localawju)) {}
     do
     {
       return false;
       if (!this.jdField_a_of_type_Boolean) {
         break;
       }
-    } while (!a(localawfl));
+    } while (!a(localawju));
     for (;;)
     {
-      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localawfc);
-      this.jdField_b_of_type_Long = localawfl.jdField_a_of_type_Long;
+      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localawjl);
+      this.jdField_b_of_type_Long = localawju.jdField_a_of_type_Long;
       return true;
-      localawfl.jdField_g_of_type_JavaLangString = paramString;
+      localawju.jdField_g_of_type_JavaLangString = paramString;
     }
   }
   
@@ -397,8 +397,8 @@ public class SendPhotoTask
     this.jdField_a_of_type_AndroidContentIntent.putExtra("PhotoConst.PHOTO_SEND_PATH", paramString);
     this.jdField_a_of_type_AndroidContentIntent.putExtra("PhotoConst.photo_send_qzone_pic_file_params", paramParcelable);
     this.jdField_a_of_type_AndroidContentIntent.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1045);
-    paramString = awes.a(2, 1045);
-    paramParcelable = awes.a(1045, this.jdField_a_of_type_AndroidContentIntent);
+    paramString = awjb.a(2, 1045);
+    paramParcelable = awjb.a(1045, this.jdField_a_of_type_AndroidContentIntent);
     if (!a(paramString, paramParcelable)) {
       return false;
     }
@@ -443,42 +443,42 @@ public class SendPhotoTask
   
   protected void b(Intent paramIntent)
   {
-    paramIntent = new ajyg((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramIntent);
+    paramIntent = new akcv((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramIntent);
     paramIntent.a();
     paramIntent.a();
   }
   
-  protected void b(BaseActivity paramBaseActivity, awfc paramawfc)
+  protected void b(BaseActivity paramBaseActivity, awjl paramawjl)
   {
-    Object localObject = (zpa)paramBaseActivity.app.a(51);
-    if ((((zpa)localObject).c(Long.parseLong(paramawfc.jdField_a_of_type_Awfl.c))) && (((zpa)localObject).a(Long.parseLong(paramawfc.jdField_a_of_type_Awfl.c), 17))) {}
+    Object localObject = (ztp)paramBaseActivity.app.a(51);
+    if ((((ztp)localObject).c(Long.parseLong(paramawjl.jdField_a_of_type_Awju.c))) && (((ztp)localObject).a(Long.parseLong(paramawjl.jdField_a_of_type_Awju.c), 17))) {}
     for (boolean bool = true; !Boolean.valueOf(bool).booleanValue(); bool = false)
     {
       localObject = new ArrayList();
-      ((ArrayList)localObject).add(paramawfc.jdField_a_of_type_Awfl.jdField_g_of_type_JavaLangString);
-      ((ztk)paramBaseActivity.app.a(49)).a().a(ztk.d, paramawfc.jdField_a_of_type_Awfl.c, (List)localObject);
+      ((ArrayList)localObject).add(paramawjl.jdField_a_of_type_Awju.jdField_g_of_type_JavaLangString);
+      ((zxz)paramBaseActivity.app.a(49)).a().a(zxz.d, paramawjl.jdField_a_of_type_Awju.c, (List)localObject);
       return;
     }
-    paramBaseActivity.runOnUiThread(new SendPhotoTask.1(this, (zpa)localObject, paramawfc, paramBaseActivity));
+    paramBaseActivity.runOnUiThread(new SendPhotoTask.1(this, (ztp)localObject, paramawjl, paramBaseActivity));
   }
   
   protected boolean b(String paramString)
   {
-    return bilx.a(paramString);
+    return biqe.a(paramString);
   }
   
   public void run()
   {
     int i = 0;
     if (this.jdField_a_of_type_Long > 0L) {
-      azmz.a(BaseApplication.getContext()).a(null, "actSendPhotoIdleCost", false, this.jdField_a_of_type_Long, 0L, null, "");
+      azri.a(BaseApplication.getContext()).a(null, "actSendPhotoIdleCost", false, this.jdField_a_of_type_Long, 0L, null, "");
     }
     if (QLog.isColorLevel()) {
       QLog.d("SendPhotoTask", 2, "SendPhoto, current pid=" + Process.myPid() + "," + this.jdField_a_of_type_JavaLangRefWeakReference + ", idleCost" + this.jdField_a_of_type_Long);
     }
     long l = System.currentTimeMillis();
     if ((this.jdField_b_of_type_JavaUtilArrayList != null) && (!this.jdField_b_of_type_JavaUtilArrayList.isEmpty())) {
-      bdil.a(((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int);
+      bdmu.a(((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int);
     }
     if (this.jdField_a_of_type_JavaUtilArrayList == null) {
       if (this.jdField_a_of_type_AndroidOsHandler != null) {
@@ -493,7 +493,7 @@ public class SendPhotoTask
       }
       ArrayList localArrayList1 = a();
       ArrayList localArrayList2 = b();
-      awen.b("PIC_TAG_COST", "launch req ", "time cost:" + (System.currentTimeMillis() - l));
+      awiw.b("PIC_TAG_COST", "launch req ", "time cost:" + (System.currentTimeMillis() - l));
       ArrayList localArrayList3 = new ArrayList();
       localArrayList3.addAll(localArrayList1);
       localArrayList3.addAll(localArrayList2);
@@ -507,7 +507,7 @@ public class SendPhotoTask
         if (this.jdField_a_of_type_JavaUtilHashMap != null) {
           i = this.jdField_a_of_type_JavaUtilHashMap.size();
         }
-        bdar.a(j, i);
+        bdfa.a(j, i);
       }
     } while (this.jdField_a_of_type_AndroidOsHandler == null);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);

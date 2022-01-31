@@ -1,34 +1,17 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
-class yni
-  implements nfh
+public class yni
+  implements View.OnTouchListener
 {
-  yni(ync paramync, Bundle paramBundle, int paramInt) {}
+  public yni(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("state", paramInt2);
-    this.jdField_a_of_type_AndroidOsBundle.putInt("percentage", paramInt3);
-    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", 0L);
-    if ((paramInt2 == 6) && (this.jdField_a_of_type_Int == 2)) {
-      this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Ync.a.a(79, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      if ((paramInt2 == 4) && (this.jdField_a_of_type_Int == 1)) {
-        this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-      }
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", paramInt);
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-    this.jdField_a_of_type_Ync.a.a(79, this.jdField_a_of_type_AndroidOsBundle);
+    VideoPlayerView.a(this.a);
+    return false;
   }
 }
 

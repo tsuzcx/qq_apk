@@ -1,15 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.2.1;
+import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.2.2;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
 public class axnw
-  implements View.OnClickListener
+  implements azcw
 {
-  public axnw(QQSlidingTabView paramQQSlidingTabView, int paramInt) {}
+  axnw(axnu paramaxnu) {}
   
-  public void onClick(View paramView)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.jdField_a_of_type_Int);
+    if (this.a.a != null) {
+      this.a.a.runOnUiThread(new PtvTemplateAdapter.2.2(this, paramPtvTemplateInfo, paramInt));
+    }
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    if (this.a.a != null) {
+      this.a.a.runOnUiThread(new PtvTemplateAdapter.2.1(this, paramPtvTemplateInfo, paramBoolean));
+    }
   }
 }
 

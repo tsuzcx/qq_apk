@@ -1,25 +1,23 @@
-import android.support.annotation.NonNull;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.intervideo.nowproxy.proxyinner.channel.FromService;
 
-public class abug
-  extends absj
+public final class abug
+  implements Parcelable.Creator<FromService>
 {
-  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull absf paramabsf)
+  public FromService a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 31: 
-      abvm.a(paramabsf, null);
-    }
-    for (;;)
-    {
-      return true;
-      abvm.a(paramabsf, null);
-      continue;
-      abvm.a(paramabsf, null);
-    }
+    FromService localFromService = new FromService();
+    localFromService.jdField_a_of_type_Int = paramParcel.readInt();
+    localFromService.b = paramParcel.readInt();
+    localFromService.c = paramParcel.readInt();
+    localFromService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
+    return localFromService;
+  }
+  
+  public FromService[] a(int paramInt)
+  {
+    return new FromService[paramInt];
   }
 }
 

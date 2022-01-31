@@ -1,33 +1,12 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
+import java.util.Vector;
 
-class awsq
-  implements aurq
+public class awsq
 {
-  awsq(awsp paramawsp, CardProfile paramCardProfile, ImageView paramImageView) {}
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Awsp.a(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile, this.jdField_a_of_type_AndroidWidgetImageView, paramBoolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_Awsp.a;
-    String str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
-    {
-      str1 = "1";
-      if (!paramBoolean) {
-        break label69;
-      }
-    }
-    label69:
-    for (String str2 = "2";; str2 = "1")
-    {
-      auri.a(localQQAppInterface, "detail_like", paramString, str1, "", "", str2);
-      return;
-      str1 = "2";
-      break;
-    }
-  }
+  public String a;
+  public Vector<String> a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

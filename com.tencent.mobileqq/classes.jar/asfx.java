@@ -1,21 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
 
-class asfx
-  implements CompoundButton.OnCheckedChangeListener
+public class asfx
+  implements Handler.Callback
 {
-  asfx(asfu paramasfu, String paramString) {}
+  public asfx(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramCompoundButton = bkeu.a();
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
-    {
-      paramCompoundButton.a(str, i);
-      return;
-    }
+    MsgBackupSettingFragment.a(this.a, paramMessage);
+    return false;
   }
 }
 

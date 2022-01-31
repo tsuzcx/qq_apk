@@ -1,20 +1,18 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public final class bjbs
-  implements DialogInterface.OnClickListener
+public class bjbs
 {
-  public bjbs(Context paramContext, int paramInt, String paramString, Intent paramIntent) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (!bizm.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), "com.qzonex.app.tab.QZoneTabActivity")) {
-      bizm.a(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("sid"), this.jdField_a_of_type_AndroidContentContext);
-    }
-    paramDialogInterface.dismiss();
-  }
+  public int a;
+  public Drawable a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public int b;
+  public Drawable b;
 }
 
 

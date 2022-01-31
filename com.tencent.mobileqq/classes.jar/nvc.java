@@ -2,11 +2,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 public class nvc
-  extends aofy<nva>
+  extends aokh<nva>
 {
   public static nva a()
   {
-    return (nva)aogj.a().a(593);
+    return (nva)aoks.a().a(593);
   }
   
   public int a()
@@ -26,12 +26,12 @@ public class nvc
   }
   
   @Nullable
-  public nva a(aogf[] paramArrayOfaogf)
+  public nva a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length == 0)) {
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length == 0)) {
       return new nva();
     }
-    return nva.a(paramArrayOfaogf[0].a);
+    return nva.a(paramArrayOfaoko[0].a);
   }
   
   public void a(int paramInt) {}

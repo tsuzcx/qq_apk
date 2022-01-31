@@ -14,7 +14,7 @@ class MultiVideoEnterPageActivity$TimeoutRunnable
     if (QLog.isColorLevel()) {
       QLog.w(this.this$0.jdField_a_of_type_JavaLangString, 1, "TimeoutRunnable, mHaveMoreRoom[" + this.this$0.jdField_a_of_type_Boolean + "]");
     }
-    QQToast.a(this.this$0, 2131696146, 1).b(MultiVideoEnterPageActivity.d(this.this$0).getDimensionPixelSize(2131298914));
+    QQToast.a(this.this$0, 2131696148, 1).b(MultiVideoEnterPageActivity.d(this.this$0).getDimensionPixelSize(2131298914));
     if (!this.this$0.jdField_a_of_type_Boolean)
     {
       this.this$0.b();

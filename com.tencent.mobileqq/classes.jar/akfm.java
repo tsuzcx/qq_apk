@@ -1,8 +1,42 @@
-public abstract interface akfm
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
+
+public class akfm
+  implements bhzf
 {
-  public abstract void a();
+  public akfm(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public abstract void b();
+  public void a(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
+    if (bdin.d(this.a))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(true);
+      this.a.jdField_a_of_type_Boolean = true;
+      ((axjn)this.a.app.getManager(91)).a();
+      return true;
+    }
+    paramView = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(2000, 0, 0);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramView, 1000L);
+    return true;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

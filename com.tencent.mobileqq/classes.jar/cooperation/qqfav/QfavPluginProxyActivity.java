@@ -5,10 +5,10 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import bimg;
-import bimp;
-import biqv;
-import bisz;
+import biqn;
+import biqw;
+import bivc;
+import bixg;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 
@@ -68,8 +68,8 @@ public class QfavPluginProxyActivity
   public static boolean a(Context paramContext, String paramString, Intent paramIntent, int paramInt, boolean paramBoolean)
   {
     QfavPluginProxyService.a();
-    if ((paramIntent.getBooleanExtra("bShowProgress", false)) && (!biqv.a(paramContext))) {}
-    for (bisz localbisz = new bisz(paramContext);; localbisz = null)
+    if ((paramIntent.getBooleanExtra("bShowProgress", false)) && (!bivc.a(paramContext))) {}
+    for (bixg localbixg = new bixg(paramContext);; localbixg = null)
     {
       String str = a(paramIntent);
       paramIntent.putExtra("useSkinEngine", true);
@@ -77,19 +77,19 @@ public class QfavPluginProxyActivity
       if ((paramBoolean) || (!(paramContext instanceof Activity))) {
         paramIntent.addFlags(268435456);
       }
-      bimp localbimp = new bimp(0);
-      localbimp.jdField_b_of_type_JavaLangString = "qqfav.apk";
-      localbimp.d = "qqfav.apk";
-      localbimp.jdField_a_of_type_JavaLangString = paramString;
-      localbimp.e = str;
-      localbimp.jdField_a_of_type_JavaLangClass = a(paramIntent);
-      localbimp.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      localbimp.jdField_b_of_type_Int = paramInt;
-      localbimp.jdField_a_of_type_AndroidAppDialog = localbisz;
-      localbimp.c = 30000;
-      localbimp.f = null;
-      localbimp.jdField_b_of_type_Boolean = false;
-      bimg.a(paramContext, localbimp);
+      biqw localbiqw = new biqw(0);
+      localbiqw.jdField_b_of_type_JavaLangString = "qqfav.apk";
+      localbiqw.d = "qqfav.apk";
+      localbiqw.jdField_a_of_type_JavaLangString = paramString;
+      localbiqw.e = str;
+      localbiqw.jdField_a_of_type_JavaLangClass = a(paramIntent);
+      localbiqw.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      localbiqw.jdField_b_of_type_Int = paramInt;
+      localbiqw.jdField_a_of_type_AndroidAppDialog = localbixg;
+      localbiqw.c = 30000;
+      localbiqw.f = null;
+      localbiqw.jdField_b_of_type_Boolean = false;
+      biqn.a(paramContext, localbiqw);
       QLog.i("qqfav", 2, "QfavPluginProxyActivity: openPluginActivityForResult: " + str);
       return true;
     }

@@ -1,15 +1,17 @@
-import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2;
-import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2.1;
-import com.tencent.image.URLDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
 
 public class yjl
-  extends yjf
+  implements View.OnClickListener
 {
-  public yjl(SubscribeQRCodeShareHelper.2.1 param1) {}
+  public yjl(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    yjk.a(this.a.a.this$0, yjk.b(this.a.a.this$0));
+    if (SubscribeMultiPicFragment.a(this.a) != null) {
+      this.a.a(SubscribeMultiPicFragment.a(this.a).a(1));
+    }
   }
 }
 

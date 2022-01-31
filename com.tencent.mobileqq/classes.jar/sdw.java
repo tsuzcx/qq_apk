@@ -25,7 +25,7 @@ public class sdw
     if (paramInt != 0) {
       return;
     }
-    bjxj.a("readinjoy_follow_subscribed_list_data_key", paramString);
+    bkbq.a("readinjoy_follow_subscribed_list_data_key", paramString);
     if (TextUtils.isEmpty(paramString))
     {
       QLog.d("ReadInJoyDiandianHeaderController", 1, "from server data is empty !");

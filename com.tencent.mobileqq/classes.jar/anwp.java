@@ -1,18 +1,34 @@
-import android.hardware.Camera;
-import android.hardware.Camera.PictureCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.PictureCallbackForward.1;
+import android.graphics.Rect;
+import java.util.Arrays;
 
 public class anwp
-  implements Camera.PictureCallback
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final anwf jdField_a_of_type_Anwf;
-  private final anwh jdField_a_of_type_Anwh;
+  public int a;
+  public Rect a;
+  public anwi a;
+  public String a;
+  public boolean a;
+  public String[] a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c = 50;
+  public int d = -1;
+  public int e = 1;
   
-  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
+  public anwp()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PictureCallbackForward.1(this, paramArrayOfByte));
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    return "CommonAttrs [key=" + this.jdField_b_of_type_JavaLangString + ", mRect=" + this.jdField_a_of_type_AndroidGraphicsRect + ", count=" + this.jdField_a_of_type_Int + ", duration=" + this.c + ", align=" + this.d + ", mBigImgPath=" + this.jdField_a_of_type_JavaLangString + ", repeatCount=" + this.jdField_b_of_type_Int + ", mAnimationPath=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + "]";
   }
 }
 

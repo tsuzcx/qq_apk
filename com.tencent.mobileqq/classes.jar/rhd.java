@@ -4,7 +4,7 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import java.util.Random;
 
 public class rhd
-  extends ayts
+  extends ayyb
 {
   VideoFeedsAppInterface jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
   Random jdField_a_of_type_JavaUtilRandom = new Random();

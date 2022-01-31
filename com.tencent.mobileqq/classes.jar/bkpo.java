@@ -1,17 +1,17 @@
-import dov.com.qq.im.capture.view.CountDownView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.ae.AEPituCameraUnit.16;
 
-class bkpo
-  implements bnhb
+public class bkpo
+  implements View.OnClickListener
 {
-  bkpo(bkpn parambkpn, bkuk parambkuk) {}
+  public bkpo(AEPituCameraUnit.16 param16) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (bkpi.a(this.jdField_a_of_type_Bkpn.a) != null) {
-      bkpi.a(this.jdField_a_of_type_Bkpn.a).a(this.jdField_a_of_type_Bkuk.a(), false);
+    if (bkpl.a(this.a.this$0) != null) {
+      bkpl.a(this.a.this$0).f();
     }
-    bkpi.a(this.jdField_a_of_type_Bkpn.a).setTouchEnable(false);
   }
 }
 

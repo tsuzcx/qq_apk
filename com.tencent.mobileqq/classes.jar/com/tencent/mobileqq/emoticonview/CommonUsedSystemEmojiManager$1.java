@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emoticonview;
 
-import appp;
+import apty;
 
 public class CommonUsedSystemEmojiManager$1
   implements Runnable
 {
-  public CommonUsedSystemEmojiManager$1(appp paramappp) {}
+  public CommonUsedSystemEmojiManager$1(apty paramapty) {}
   
   public void run()
   {

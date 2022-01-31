@@ -22,9 +22,9 @@ public abstract class qgf
   {
     this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
     this.jdField_a_of_type_AndroidViewView = a(paramViewGroup);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131380066);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380058));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380061));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131380124);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380116));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380119));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
   }
   
@@ -49,7 +49,7 @@ public abstract class qgf
     {
       i = 1;
       localorz2 = localorz1.a("redpack_status", Integer.valueOf(i)).a("redpack_type", Integer.valueOf(paramInt2)).a("plat_source", Integer.valueOf(paramInt3)).a("action_position", Integer.valueOf(paramInt1));
-      if (!bdee.h(BaseApplicationImpl.getContext())) {
+      if (!bdin.h(BaseApplicationImpl.getContext())) {
         break label137;
       }
     }
@@ -76,7 +76,7 @@ public abstract class qgf
     {
       i = 1;
       localorz2 = localorz1.a("redpack_status", Integer.valueOf(i)).a("redpack_type", Integer.valueOf(paramInt1)).a("plat_source", Integer.valueOf(paramInt2));
-      if (!bdee.h(BaseApplicationImpl.getContext())) {
+      if (!bdin.h(BaseApplicationImpl.getContext())) {
         break label126;
       }
     }

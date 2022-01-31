@@ -1,189 +1,63 @@
-import android.text.TextUtils;
+import android.text.Editable;
+import android.text.Spanned;
+import android.widget.EditText;
+import com.tencent.open.agent.SendStoryActivity;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.Arrays;
 
 public class bfha
+  extends bflo
 {
-  protected int a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
-  protected String h;
-  protected String i;
-  protected String j;
-  protected String k;
-  protected String l;
-  protected String m;
-  
-  public static bfha a()
+  public bfha(SendStoryActivity paramSendStoryActivity, EditText paramEditText, int paramInt)
   {
-    return new bfha();
+    super(paramEditText, paramInt);
   }
   
-  private static String a(String paramString)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    paramInt3 = 0;
+    paramSpanned = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText();
+    StringBuilder localStringBuilder = new StringBuilder(paramSpanned.toString());
+    Friend[] arrayOfFriend = (Friend[])paramSpanned.getSpans(0, paramSpanned.length(), Friend.class);
+    Arrays.sort(arrayOfFriend, new bfhb(this, paramSpanned));
+    paramInt4 = arrayOfFriend.length;
+    while (paramInt3 < paramInt4)
+    {
+      Friend localFriend = arrayOfFriend[paramInt3];
+      localStringBuilder.delete(paramSpanned.getSpanStart(localFriend), paramSpanned.getSpanEnd(localFriend));
+      paramInt3 += 1;
+    }
+    paramInt4 = this.jdField_a_of_type_Int - bflv.a(localStringBuilder.toString());
+    paramInt3 = bflv.a(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
+    if (paramInt4 <= 0) {
       return "";
     }
-    return paramString.replace("|", "");
-  }
-  
-  public final bfha a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public final bfha a(String paramString)
-  {
-    this.f = paramString;
-    return this;
-  }
-  
-  public String a()
-  {
-    return "";
-  }
-  
-  public final bfha b(String paramString)
-  {
-    this.g = paramString;
-    return this;
-  }
-  
-  public final String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(this.jdField_a_of_type_JavaLangString));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.b));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.c));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.d));
-    localStringBuilder.append("|");
-    localStringBuilder.append(bexd.a().a());
-    localStringBuilder.append("|");
-    localStringBuilder.append(bexd.a().c());
-    localStringBuilder.append("|");
-    localStringBuilder.append(System.currentTimeMillis());
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.e));
-    return localStringBuilder.toString();
-  }
-  
-  public final bfha c(String paramString)
-  {
-    this.h = paramString;
-    return this;
-  }
-  
-  public final String c()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(this.f));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.g));
-    localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.h));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.i));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.j));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.k));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.l));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.m));
-    return localStringBuilder.toString();
-  }
-  
-  public final bfha d(String paramString)
-  {
-    this.i = paramString;
-    return this;
-  }
-  
-  public final String d()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" ");
-    localStringBuilder.append("|");
-    localStringBuilder.append(" ");
-    localStringBuilder.append("|");
-    localStringBuilder.append(" ");
-    localStringBuilder.append("|");
-    localStringBuilder.append(" ");
-    localStringBuilder.append("|");
-    localStringBuilder.append(" ");
-    localStringBuilder.append("|");
-    localStringBuilder.append(" ");
-    localStringBuilder.append("|");
-    localStringBuilder.append(" ");
-    localStringBuilder.append("|");
-    localStringBuilder.append(" ");
-    localStringBuilder.append("|");
-    localStringBuilder.append(" ");
-    return localStringBuilder.toString();
-  }
-  
-  public final bfha e(String paramString)
-  {
-    this.j = paramString;
-    return this;
-  }
-  
-  public final bfha f(String paramString)
-  {
-    this.k = paramString;
-    return this;
-  }
-  
-  public final bfha g(String paramString)
-  {
-    this.l = paramString;
-    return this;
-  }
-  
-  public final bfha h(String paramString)
-  {
-    this.m = paramString;
-    return this;
-  }
-  
-  public final bfha i(String paramString)
-  {
-    this.e = paramString;
-    return this;
-  }
-  
-  public final bfha j(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
-  
-  public final bfha k(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public final bfha l(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  public final bfha m(String paramString)
-  {
-    this.d = paramString;
-    return this;
+    if (paramInt4 >= paramInt3) {
+      return null;
+    }
+    paramInt3 = paramInt1;
+    if (paramInt3 < paramInt2)
+    {
+      int j;
+      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3))) {
+        j = bflv.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
+      }
+      for (int i = 2;; i = 1)
+      {
+        paramInt4 -= j;
+        if (paramInt4 < 0) {
+          break label257;
+        }
+        paramInt3 = i + paramInt3;
+        break;
+        j = bflv.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
+      }
+    }
+    label257:
+    if (paramInt3 == paramInt1) {
+      return "";
+    }
+    return paramCharSequence.subSequence(paramInt1, paramInt3);
   }
 }
 

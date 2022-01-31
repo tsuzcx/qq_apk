@@ -1,18 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import android.util.SparseArray;
 
-final class bclw
-  extends bdvu
+class bclw
+  extends bcly
 {
-  bclw(WeakReference paramWeakReference, File paramFile, baaa parambaaa) {}
+  bclw(bclu parambclu) {}
   
-  public void onDone(bdvv parambdvv)
+  protected void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoAnimationUtils", 2, "onDone:" + parambdvv.a);
+    if (paramBoolean) {}
+    synchronized (this.a.a)
+    {
+      this.a.a.clear();
+      this.a.b();
+      bclu.a(this.a);
+      return;
     }
-    bclv.a(this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Baaa);
   }
 }
 

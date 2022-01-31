@@ -1,14 +1,10 @@
-import com.tencent.open.agent.OpenAuthorityFragment;
-
-public class bfax
-  implements bfbq
+public abstract interface bfax
 {
-  public bfax(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  public abstract bfay getCodec(String paramString);
   
-  public void a()
-  {
-    this.a.l();
-  }
+  public abstract int send(Object paramObject);
+  
+  public abstract void setNetTransportEventListener(String paramString, bfaz parambfaz);
 }
 
 

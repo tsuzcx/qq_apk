@@ -1,35 +1,14 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class afkm
-  extends ClickableSpan
+  implements DialogInterface.OnClickListener
 {
-  afkm(afjb paramafjb, int paramInt) {}
+  afkm(afkj paramafkj) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Afjb.a instanceof Activity))
-    {
-      paramView = bhpy.a(this.jdField_a_of_type_Afjb.a);
-      paramView.b(2131692000);
-      paramView.c(2131690648);
-      paramView.a(new afkn(this, paramView));
-      paramView.show();
-      BaseChatPie localBaseChatPie = ((FragmentActivity)this.jdField_a_of_type_Afjb.a).getChatFragment().a();
-      if ((localBaseChatPie instanceof agkt)) {
-        ((agkt)localBaseChatPie).a = paramView;
-      }
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
+    paramDialogInterface.dismiss();
   }
 }
 

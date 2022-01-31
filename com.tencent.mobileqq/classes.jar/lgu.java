@@ -31,7 +31,7 @@ public class lgu
     if (AudioHelper.e()) {
       QLog.d("DeviceCapabilityExamination", 1, "testVideoEffectIfNeed reportByRoomId " + localHashMap);
     }
-    azmz.a(BaseApplication.getContext()).a(this.a.a.getCurrentAccountUin(), "QAV_REPORT_VIDEO_EFFECT_TEST", true, 0L, 0L, localHashMap, "", true);
+    azri.a(BaseApplication.getContext()).a(this.a.a.getCurrentAccountUin(), "QAV_REPORT_VIDEO_EFFECT_TEST", true, 0L, 0L, localHashMap, "", true);
   }
 }
 

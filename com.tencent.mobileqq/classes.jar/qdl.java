@@ -29,7 +29,7 @@ public class qdl
       return;
       if (rcp.a().a())
       {
-        QQToast.a(this.a.getContext(), alpo.a(2131702666), 0).a();
+        QQToast.a(this.a.getContext(), alud.a(2131702678), 0).a();
         return;
       }
       nrt.a(null, "", "0X8009CA4", "0X8009CA4", 0, 0, paramView.getCurrentAccountUin(), ComponentContentUGCVoice.a(this.a).mFeedId + "", "1", "", false);

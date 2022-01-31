@@ -1,37 +1,21 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.apollo.ApolloGameNormalStartHandler.3;
+
 public class aknw
+  implements View.OnClickListener
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public aknw(ApolloGameNormalStartHandler.3 param3) {}
   
-  public boolean equals(Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramObject == null) || (!(paramObject instanceof aknw))) {}
-    do
-    {
-      return false;
-      paramObject = (aknw)paramObject;
-    } while ((this.a != paramObject.a) || (this.b != paramObject.b) || (this.c != paramObject.c) || (this.d != paramObject.d) || (this.e != paramObject.e));
-    return true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("{");
-    localStringBuilder.append("positionX:").append(this.a);
-    localStringBuilder.append(", positionY:").append(this.b);
-    localStringBuilder.append(", width:").append(this.c);
-    localStringBuilder.append(", height:").append(this.d);
-    localStringBuilder.append(", align:").append(this.e);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    aknv.a(this.a.this$0).dismiss();
+    aknv.a(this.a.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aknw
  * JD-Core Version:    0.7.0.1
  */

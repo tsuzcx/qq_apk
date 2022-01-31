@@ -172,8 +172,8 @@ public class ptw
               j = 0;
               label126:
               localLayoutParams.leftMargin = j;
-              this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localContext.getResources().getDrawable(2130848851);
-              this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = localContext.getResources().getDrawable(2130848852);
+              this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localContext.getResources().getDrawable(2130848924);
+              this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = localContext.getResources().getDrawable(2130848925);
               this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(Color.parseColor(this.jdField_e_of_type_JavaLangString), PorterDuff.Mode.SRC_OVER);
               this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(Color.parseColor(this.jdField_f_of_type_JavaLangString), PorterDuff.Mode.SRC_OVER);
               if (((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable)) && ((this.jdField_b_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable)))

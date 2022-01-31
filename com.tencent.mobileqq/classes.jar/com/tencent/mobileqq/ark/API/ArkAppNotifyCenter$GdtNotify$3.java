@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ark.API;
 
-import aaie;
-import aaig;
-import aano;
-import angm;
-import angn;
+import aamt;
+import aamv;
+import aasd;
+import ankv;
+import ankw;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
@@ -13,16 +13,16 @@ import tencent.gdt.qq_ad_get.QQAdGet;
 public class ArkAppNotifyCenter$GdtNotify$3
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$3(angm paramangm, String paramString1, WeakReference paramWeakReference1, boolean paramBoolean, String paramString2, WeakReference paramWeakReference2) {}
+  public ArkAppNotifyCenter$GdtNotify$3(ankv paramankv, String paramString1, WeakReference paramWeakReference1, boolean paramBoolean, String paramString2, WeakReference paramWeakReference2) {}
   
   public void run()
   {
     try
     {
-      this.this$0.a = new angn(this);
-      aaig localaaig = new aaig();
-      localaaig.a = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(aano.a(new qq_ad_get.QQAdGet(), new JSONObject(this.jdField_b_of_type_JavaLangString))));
-      new aaie(localaaig, new WeakReference(this.this$0.a)).a(this.jdField_b_of_type_JavaLangRefWeakReference);
+      this.this$0.a = new ankw(this);
+      aamv localaamv = new aamv();
+      localaamv.a = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(aasd.a(new qq_ad_get.QQAdGet(), new JSONObject(this.jdField_b_of_type_JavaLangString))));
+      new aamt(localaamv, new WeakReference(this.this$0.a)).a(this.jdField_b_of_type_JavaLangRefWeakReference);
       return;
     }
     catch (Throwable localThrowable)

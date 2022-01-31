@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import android.os.Message;
-import avod;
-import bhow;
+import avsm;
+import bhtd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 import com.tencent.qphone.base.util.QLog;
@@ -14,9 +14,9 @@ class FriendProfileCardActivity$58
   
   public void run()
   {
-    Object localObject = (avod)this.this$0.app.getManager(160);
-    RedTouchItem localRedTouchItem = ((avod)localObject).a(100601);
-    if ((((avod)localObject).a(localRedTouchItem, false)) && (localRedTouchItem.passThroughLevel > 0))
+    Object localObject = (avsm)this.this$0.app.getManager(160);
+    RedTouchItem localRedTouchItem = ((avsm)localObject).a(100601);
+    if ((((avsm)localObject).a(localRedTouchItem, false)) && (localRedTouchItem.passThroughLevel > 0))
     {
       localObject = this.this$0.b.obtainMessage();
       ((Message)localObject).what = 14;

@@ -1,16 +1,10 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afvn
-  extends aelt
+final class afvn
+  implements DialogInterface.OnClickListener
 {
-  public RelativeLayout a;
-  public DoodleMsgLayout a;
-  public MessageProgressView a;
-  
-  public afvn(ScribbleItemBuilder paramScribbleItemBuilder) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

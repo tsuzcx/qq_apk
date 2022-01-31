@@ -1,7 +1,7 @@
 import com.dataline.activities.LiteActivity;
 
 public class bh
-  implements aggw
+  implements agll
 {
   public bh(LiteActivity paramLiteActivity) {}
 }

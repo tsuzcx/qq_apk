@@ -2,29 +2,29 @@ package com.tencent.biz.qqstory.playvideo;
 
 import android.os.Handler;
 import java.lang.ref.WeakReference;
-import vix;
-import vrr;
+import vng;
+import vwa;
 
 public class ProgressControler$2
   implements Runnable
 {
-  public ProgressControler$2(vix paramvix) {}
+  public ProgressControler$2(vng paramvng) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {}
-    vrr localvrr;
+    vwa localvwa;
     do
     {
       do
       {
         return;
       } while (this.this$0.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localvrr = (vrr)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localvrr == null);
-    if (localvrr.b() > 0L)
+      localvwa = (vwa)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localvwa == null);
+    if (localvwa.b() > 0L)
     {
-      this.this$0.a(localvrr.a(), localvrr.b(), localvrr);
+      this.this$0.a(localvwa.a(), localvwa.b(), localvwa);
       return;
     }
     this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);

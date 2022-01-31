@@ -1,8 +1,25 @@
-import java.util.ArrayList;
-
-public abstract interface bbad
+public class bbad
 {
-  public abstract void a(int paramInt, String paramString, ArrayList<bbaa> paramArrayList);
+  public int a;
+  public long a;
+  public bazx a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public long d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
 }
 
 

@@ -1,86 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.DetailVideoInfoWidget.SubscribeStatusReceiver.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.dispatch.Dispatcher;
-
-public class vwj
-  extends uhn
+class vwj
+  implements vwe
 {
-  public String a;
+  public vwe a;
   
-  private vwj(vvy paramvvy) {}
+  private vwj(vwg paramvwg) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  public boolean a(vwa paramvwa, int paramInt, Object paramObject)
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
-    boolean bool = TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString);
-    if (bool) {
-      this.jdField_a_of_type_JavaLangString = null;
-    }
-    StoryVideoItem localStoryVideoItem;
-    if (this.jdField_a_of_type_Vvy.a != null)
+    if (vwg.a(this.jdField_a_of_type_Vwg) != null)
     {
-      localStoryVideoItem = this.jdField_a_of_type_Vvy.a.a();
-      if (localStoryVideoItem != null) {
-        break label64;
+      if (paramInt != 2) {
+        break label54;
+      }
+      vwg.a(this.jdField_a_of_type_Vwg).c(vwg.a(this.jdField_a_of_type_Vwg));
+    }
+    while (this.jdField_a_of_type_Vwe != null)
+    {
+      return this.jdField_a_of_type_Vwe.a(paramvwa, paramInt, paramObject);
+      label54:
+      if (paramInt == 3) {
+        vwg.a(this.jdField_a_of_type_Vwg).b(vwg.a(this.jdField_a_of_type_Vwg));
       }
     }
-    label64:
-    label326:
-    do
-    {
-      do
-      {
-        usd localusd;
-        QQUserUIItem localQQUserUIItem;
-        do
-        {
-          return;
-          localStoryVideoItem = null;
-          break;
-          localusd = (usd)urr.a(2);
-          localQQUserUIItem = localusd.b(localStoryVideoItem.mOwnerUid);
-        } while ((localQQUserUIItem == null) || (!TextUtils.equals(paramString, localQQUserUIItem.getUnionId())));
-        if (paramBoolean1)
-        {
-          if (paramBoolean2) {}
-          for (paramInt = 1;; paramInt = 0)
-          {
-            localQQUserUIItem.isSubscribe = paramInt;
-            ThreadManager.post(new DetailVideoInfoWidget.SubscribeStatusReceiver.1(this, localusd, localQQUserUIItem), 5, null, false);
-            if (paramBoolean2)
-            {
-              paramString = (uhl)vhj.a().getManager(181);
-              if (!paramString.g())
-              {
-                paramString.c();
-                QQToast.a(vhj.a(), 2, alpo.a(2131703541), 0).a();
-              }
-              paramString = new wng(2);
-              uht.a().dispatch(paramString);
-            }
-            vvy.a(this.jdField_a_of_type_Vvy, localStoryVideoItem, localQQUserUIItem);
-            if (!bool) {
-              break;
-            }
-            wta.a("play_video", "follow_suc", 0, 0, new String[] { "", "", "", localStoryVideoItem.mVid });
-            return;
-          }
-        }
-        if (!paramBoolean2) {
-          break label326;
-        }
-        QQToast.a(vhj.a(), 1, alpo.a(2131703540), 0).a();
-      } while (!bool);
-      wta.a("play_video", "follow_fail", 0, 0, new String[] { "", "", "", localStoryVideoItem.mVid });
-      return;
-      QQToast.a(vhj.a(), 1, alpo.a(2131703538), 0).a();
-    } while (!bool);
-    wta.a("play_video", "unfollow_fail", 0, 0, new String[] { "", "", "", localStoryVideoItem.mVid });
+    return false;
   }
 }
 

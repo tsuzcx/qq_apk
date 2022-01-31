@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo
 import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class rzl
-  implements anxw
+  implements aocf
 {
   public rzl(FastWebActivity paramFastWebActivity) {}
   
@@ -19,18 +19,18 @@ public class rzl
         str1 = FastWebActivity.a(this.a).g;
       }
     }
-    anyc localanyc = new anyc().a(16908290);
+    aocl localaocl = new aocl().a(16908290);
     StringBuilder localStringBuilder = new StringBuilder().append("mainFeeds:");
     if (FastWebActivity.a(this.a) == null)
     {
       str2 = "";
-      localanyc = localanyc.a(str2);
+      localaocl = localaocl.a(str2);
       if (FastWebActivity.a(this.a) != null) {
         break label164;
       }
       str2 = "";
       label108:
-      localanyc = localanyc.b(str2);
+      localaocl = localaocl.b(str2);
       if (FastWebActivity.a(this.a) != null) {
         break label178;
       }
@@ -39,7 +39,7 @@ public class rzl
     label178:
     for (str2 = "";; str2 = FastWebActivity.a(this.a).mSubscribeName)
     {
-      return localanyc.c(str2).d(str1).a(FastWebActivity.a(this.a)).a();
+      return localaocl.c(str2).d(str1).a(FastWebActivity.a(this.a)).a();
       str2 = FastWebActivity.a(this.a).innerUniqueID;
       break;
       str2 = FastWebActivity.a(this.a).mTitle;

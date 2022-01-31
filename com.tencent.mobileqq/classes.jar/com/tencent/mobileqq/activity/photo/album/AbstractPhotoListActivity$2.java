@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aimj;
+import aiqy;
 import android.view.View;
-import bhqp;
+import bhuw;
 import com.tencent.widget.AdapterView;
 
 class AbstractPhotoListActivity$2
-  implements bhqp
+  implements bhuw
 {
   AbstractPhotoListActivity$2(AbstractPhotoListActivity paramAbstractPhotoListActivity) {}
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    aimj localaimj = this.this$0.mPhotoListLogic.mPhotoCommonData;
+    aiqy localaiqy = this.this$0.mPhotoListLogic.mPhotoCommonData;
     int i = this.this$0.photoListAdapter.getItemViewType(paramInt);
     if (this.this$0.mPhotoListLogic != null) {}
     switch (i)

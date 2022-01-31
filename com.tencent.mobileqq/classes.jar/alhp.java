@@ -1,26 +1,90 @@
-import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
-import com.tencent.qphone.base.util.QLog;
-
 public class alhp
-  extends bdvu
 {
-  public alhp(ApolloLottieAnim paramApolloLottieAnim, String paramString1, String paramString2, String paramString3) {}
-  
-  public void onDone(bdvv parambdvv)
+  public static void a(int paramInt)
   {
-    super.onDone(parambdvv);
-    if (3 == parambdvv.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    }
-    for (;;)
+    a(paramInt, "");
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    a(paramInt1, null, paramInt2, -100, 0L, 0, 0L, new Object[] { "" });
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, long paramLong, Object... paramVarArgs)
+  {
+    a(paramInt1, null, paramInt2, paramInt3, paramLong, 0, 0L, paramVarArgs);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, Object... paramVarArgs)
+  {
+    a(paramInt1, null, paramInt2, paramInt3, 0L, 0, 0L, paramVarArgs);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, Object... paramVarArgs)
+  {
+    a(paramInt1, null, paramInt2, -100, 0L, 0, 0L, paramVarArgs);
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    a(paramInt, paramString, null);
+  }
+  
+  public static void a(int paramInt1, String paramString, int paramInt2)
+  {
+    a(paramInt1, paramString, paramInt2, -100, 0L, 0, 0L, new Object[] { "" });
+  }
+  
+  public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, long paramLong1, int paramInt4, long paramLong2, Object... paramVarArgs)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
+    int i = 0;
+    while (i < paramVarArgs.length)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloLottieAnim", 2, "downloadZip onDone task.getStatus()->" + parambdvv.a());
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a = 2;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      localStringBuilder.append(paramVarArgs[i]);
+      i += 1;
     }
+    alhw.a(paramInt1, paramString, paramInt2, paramInt3, paramLong1, paramInt4, paramLong2, new Object[] { localStringBuilder.toString() });
+  }
+  
+  public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, Object... paramVarArgs)
+  {
+    a(paramInt1, paramString, paramInt2, paramInt3, 0L, 0, 0L, paramVarArgs);
+  }
+  
+  public static void a(int paramInt1, String paramString, int paramInt2, Object... paramVarArgs)
+  {
+    a(paramInt1, paramString, paramInt2, -100, 0L, 0, 0L, paramVarArgs);
+  }
+  
+  public static void a(int paramInt, String paramString1, String paramString2)
+  {
+    alhw.a(paramInt, paramString1, paramString2);
+  }
+  
+  public static void a(int paramInt, String paramString, int... paramVarArgs)
+  {
+    alhw.a(paramInt, paramString, paramVarArgs);
+  }
+  
+  public static void a(int paramInt, boolean paramBoolean)
+  {
+    alhw.a(paramInt, paramBoolean);
+  }
+  
+  public static void a(alhq paramalhq)
+  {
+    alhw.a(paramalhq);
+  }
+  
+  public static void b(int paramInt)
+  {
+    b(paramInt, null);
+  }
+  
+  public static void b(int paramInt, String paramString)
+  {
+    alhw.a(paramInt, paramString);
   }
 }
 

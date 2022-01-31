@@ -1,44 +1,22 @@
-import com.tencent.mobileqq.fts.entity.FTSEntity;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class asen
+class asen
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Class<? extends FTSEntity> jdField_a_of_type_JavaLangClass;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  aseo[] jdField_a_of_type_ArrayOfAseo;
-  private String b;
+  asen(asem paramasem) {}
   
-  public asem a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaLangClass == null) {
-      throw new IllegalArgumentException("entityClazz must not be null.");
+    if (this.a.jdField_a_of_type_Bdjz == null) {
+      return;
     }
-    return new asem(this.jdField_a_of_type_JavaLangClass, this.jdField_a_of_type_ArrayOfAseo, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
-  }
-  
-  public asen a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public asen a(Class<? extends FTSEntity> paramClass)
-  {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-    return this;
-  }
-  
-  public asen a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public asen a(aseo... paramVarArgs)
-  {
-    this.jdField_a_of_type_ArrayOfAseo = paramVarArgs;
-    return this;
+    this.a.jdField_a_of_type_Bdjz.hideSoftInputFromWindow();
+    paramView = new asbq(this.a.jdField_a_of_type_Bdjz);
+    paramView.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692845), this.a.jdField_a_of_type_JavaLangString);
+    this.a.jdField_a_of_type_Bdjz.addPreviewView(paramView.b());
+    this.a.D();
   }
 }
 

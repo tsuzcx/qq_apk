@@ -1,9 +1,12 @@
-public class asnu
+import android.app.Activity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+
+public abstract interface asnu
 {
-  public int a;
-  public String a;
-  public int[] a;
-  public int[] b;
+  public abstract void a(MessageRecord paramMessageRecord, Activity paramActivity);
+  
+  public abstract void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity, int paramInt);
 }
 
 

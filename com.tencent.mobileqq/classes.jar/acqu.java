@@ -1,19 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditActivity;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
 
 public class acqu
-  implements View.OnClickListener
+  extends ScaleAnimation
 {
-  public acqu(EditActivity paramEditActivity) {}
-  
-  public void onClick(View paramView)
+  public acqu(ContactBindedActivity paramContactBindedActivity, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, float paramFloat5, int paramInt2, float paramFloat6)
   {
-    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
-      EditActivity.a(this.a).dismiss();
+    super(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramFloat5, paramInt2, paramFloat6);
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    if (paramTransformation == null) {
+      return;
     }
-    this.a.finish();
+    super.applyTransformation(paramFloat, paramTransformation);
+    paramTransformation.setAlpha(0.0F + 1.0F * paramFloat);
   }
 }
 

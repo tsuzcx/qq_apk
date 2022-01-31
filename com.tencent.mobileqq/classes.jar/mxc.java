@@ -48,7 +48,7 @@ public class mxc
       }
     }
     if (parammxg != null) {
-      if (bdee.h(BaseApplication.getContext()))
+      if (bdin.h(BaseApplication.getContext()))
       {
         parammxg.setHeader("Net-type", "Wifi");
         if (parammxf.jdField_a_of_type_JavaUtilHashMap == null) {
@@ -232,7 +232,7 @@ public class mxc
         Thread.sleep(1000L);
         if (n > 0)
         {
-          bool = bdee.g(BaseApplication.getContext());
+          bool = bdin.g(BaseApplication.getContext());
           if (!bool) {
             break label452;
           }

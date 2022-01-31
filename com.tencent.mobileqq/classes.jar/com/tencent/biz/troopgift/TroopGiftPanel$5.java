@@ -1,12 +1,12 @@
 package com.tencent.biz.troopgift;
 
 import android.os.Handler;
-import bdbt;
+import bdgc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.qphone.base.util.QLog;
-import yqv;
+import yvk;
 
 class TroopGiftPanel$5
   implements Runnable
@@ -17,12 +17,12 @@ class TroopGiftPanel$5
   {
     if (((TroopManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(52)).b(this.jdField_a_of_type_JavaLangString, this.b) != null)
     {
-      String str = bdbt.h((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
+      String str = bdgc.h((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
       this.jdField_a_of_type_AndroidOsHandler.post(new TroopGiftPanel.5.1(this, str));
       return;
     }
     QLog.e("TroopGiftPanel", 1, "last receiver is not in troop, troopUin=" + this.jdField_a_of_type_JavaLangString + ", memberUin=" + this.b);
-    yqv.b(this.jdField_a_of_type_JavaLangString, "");
+    yvk.b(this.jdField_a_of_type_JavaLangString, "");
   }
 }
 

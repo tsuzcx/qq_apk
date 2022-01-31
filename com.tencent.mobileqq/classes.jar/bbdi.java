@@ -1,30 +1,21 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.23.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 public class bbdi
-  implements bhqd
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  String jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Bcnt.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Int);
+  public bbdi(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public bbdi(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, bhpy parambhpy, URLDrawable paramURLDrawable) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    paramView = this.jdField_a_of_type_Bhpy.a(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131693485).equals(paramView)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, "onCompletion");
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131693495).equals(paramView)) {
-        TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131693493).equals(paramView)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.c, this.jdField_a_of_type_JavaLangString);
-      }
-    }
+    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.23.1(this));
   }
 }
 

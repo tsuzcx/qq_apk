@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
 
-class ahsu
-  implements DialogInterface.OnClickListener
+public class ahsu
+  extends alwx
 {
-  ahsu(ahsh paramahsh, boolean paramBoolean, String paramString) {}
+  private ahsu(AlphabetFriendFragment paramAlphabetFriendFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void f()
   {
-    azmj.b(null, "dc00898", "", "", "0X8009DCA", "0X8009DCA", 0, 0, ahsh.a(this.jdField_a_of_type_Ahsh), "", "", "");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      ahsh.a(this.jdField_a_of_type_Ahsh, ahsh.a(this.jdField_a_of_type_Ahsh), Long.valueOf(ahsh.a(this.jdField_a_of_type_Ahsh)).longValue(), false);
-      return;
+    if (AlphabetFriendFragment.b(this.a)) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
     }
-    ahsh.a(this.jdField_a_of_type_Ahsh, ahsh.a(this.jdField_a_of_type_Ahsh), Long.valueOf(ahsh.a(this.jdField_a_of_type_Ahsh)).longValue(), false, this.jdField_a_of_type_JavaLangString);
   }
 }
 

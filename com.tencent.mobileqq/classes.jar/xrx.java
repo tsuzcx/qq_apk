@@ -1,58 +1,14 @@
 import android.view.View;
-import com.tencent.widget.ListView;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
 
-public class xrx
-  implements bhuy
+public abstract class xrx
+  extends xsa
 {
-  private CopyOnWriteArraySet<bhuy> a = new CopyOnWriteArraySet();
-  
-  public xrx(bhuy parambhuy)
+  public xrx(xsc paramxsc, View paramView)
   {
-    if (parambhuy != null) {
-      this.a.add(parambhuy);
-    }
+    super(paramxsc, paramView);
   }
   
-  public void a(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bhuy)localIterator.next()).a(paramInt, paramView, paramListView);
-    }
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.iterator();
-    boolean bool = false;
-    if (localIterator.hasNext())
-    {
-      bhuy localbhuy = (bhuy)localIterator.next();
-      if ((bool) || (localbhuy.a(paramInt, paramView, paramListView))) {}
-      for (bool = true;; bool = false) {
-        break;
-      }
-    }
-    return bool;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bhuy)localIterator.next()).b(paramInt, paramView, paramListView);
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bhuy)localIterator.next()).c(paramInt, paramView, paramListView);
-    }
-  }
+  public abstract int a();
 }
 
 

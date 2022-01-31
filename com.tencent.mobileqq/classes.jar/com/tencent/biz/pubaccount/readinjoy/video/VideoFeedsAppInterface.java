@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import alko;
-import alkr;
+import alpd;
+import alpg;
 import android.os.Bundle;
-import awbx;
+import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -22,11 +22,11 @@ public class VideoFeedsAppInterface
   extends AppInterface
 {
   public static String a;
-  private HashMap<Integer, alko> jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
-  private List<alkr> jdField_a_of_type_JavaUtilList = new Vector();
+  private HashMap<Integer, alpd> jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
+  private List<alpg> jdField_a_of_type_JavaUtilList = new Vector();
   private rhd jdField_a_of_type_Rhd;
-  private List<alkr> b = new Vector();
-  private List<alkr> c = new Vector();
+  private List<alpg> b = new Vector();
+  private List<alpg> c = new Vector();
   
   static
   {
@@ -38,23 +38,23 @@ public class VideoFeedsAppInterface
     super(paramBaseApplicationImpl, paramString);
   }
   
-  public alko a(int paramInt)
+  public alpd a(int paramInt)
   {
-    alko localalko = (alko)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    if (localalko == null) {}
+    alpd localalpd = (alpd)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localalpd == null) {}
     for (;;)
     {
       synchronized (this.jdField_a_of_type_JavaUtilHashMap)
       {
-        localalko = (alko)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-        if (localalko == null) {
+        localalpd = (alpd)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+        if (localalpd == null) {
           break label113;
         }
-        return localalko;
-        if (localalko != null) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localalko);
+        return localalpd;
+        if (localalpd != null) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localalpd);
         }
-        return localalko;
+        return localalpd;
       }
       Object localObject2 = new ntb(this);
       continue;
@@ -75,29 +75,29 @@ public class VideoFeedsAppInterface
     this.jdField_a_of_type_Rhd.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
   
-  public void addObserver(alkr paramalkr)
+  public void addObserver(alpg paramalpg)
   {
-    addObserver(paramalkr, false);
+    addObserver(paramalpg, false);
   }
   
-  public void addObserver(alkr paramalkr, boolean paramBoolean)
+  public void addObserver(alpg paramalpg, boolean paramBoolean)
   {
-    if (paramalkr == null) {
+    if (paramalpg == null) {
       return;
     }
     if (paramBoolean) {
       synchronized (this.b)
       {
-        if (!this.b.contains(paramalkr)) {
-          this.b.add(paramalkr);
+        if (!this.b.contains(paramalpg)) {
+          this.b.add(paramalpg);
         }
         return;
       }
     }
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramalkr)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramalkr);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramalpg)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramalpg);
       }
       return;
     }
@@ -113,7 +113,7 @@ public class VideoFeedsAppInterface
     return AppSetting.a();
   }
   
-  public List<alkr> getBusinessObserver(int paramInt)
+  public List<alpg> getBusinessObserver(int paramInt)
   {
     if (paramInt == 1) {
       return this.jdField_a_of_type_JavaUtilList;
@@ -132,7 +132,7 @@ public class VideoFeedsAppInterface
     return getAccount();
   }
   
-  public awbx getEntityManagerFactory(String paramString)
+  public awgg getEntityManagerFactory(String paramString)
   {
     return null;
   }
@@ -148,24 +148,24 @@ public class VideoFeedsAppInterface
     this.jdField_a_of_type_Rhd = new rhd(this);
   }
   
-  public void removeObserver(alkr paramalkr)
+  public void removeObserver(alpg paramalpg)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramalkr);
+      this.jdField_a_of_type_JavaUtilList.remove(paramalpg);
       synchronized (this.b)
       {
-        this.b.remove(paramalkr);
+        this.b.remove(paramalpg);
       }
     }
     synchronized (this.c)
     {
-      this.c.remove(paramalkr);
+      this.c.remove(paramalpg);
       return;
-      paramalkr = finally;
-      throw paramalkr;
-      paramalkr = finally;
-      throw paramalkr;
+      paramalpg = finally;
+      throw paramalpg;
+      paramalpg = finally;
+      throw paramalpg;
     }
   }
   

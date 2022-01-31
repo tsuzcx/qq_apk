@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import anxn;
+import aobw;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.app.AppLoaderFactory;
 import com.tencent.mobileqq.mini.app.AppUIProxy;
@@ -112,7 +112,7 @@ public class AppBrandUI
     return this.mAppUIProxy;
   }
   
-  public anxn getColorNoteController()
+  public aobw getColorNoteController()
   {
     IAppUIProxy localIAppUIProxy = getAppUIProxy();
     if ((localIAppUIProxy instanceof AppUIProxy)) {

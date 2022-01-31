@@ -1,20 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-
-class ahsx
-  implements azjq
+public abstract interface ahsx
 {
-  ahsx(ahsw paramahsw) {}
-  
-  public void a()
-  {
-    QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog grant");
-  }
-  
-  public void b()
-  {
-    QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog denied");
-    ahsh.a(this.a.a, ahsh.b(this.a.a));
-  }
+  public abstract void d(int paramInt);
 }
 
 

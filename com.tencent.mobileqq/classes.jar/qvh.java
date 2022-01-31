@@ -2,7 +2,7 @@ import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FriendListFragment;
 
 public class qvh
-  implements bhsr
+  implements bhwy
 {
   public qvh(FriendListFragment paramFriendListFragment) {}
   

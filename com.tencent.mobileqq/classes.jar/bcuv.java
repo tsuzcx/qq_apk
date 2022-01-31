@@ -1,23 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.gdtad.util.GdtSmartBlur;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.os.Handler;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.4.1;
 
-final class bcuv
-  implements DownloadParams.DecodeHandler
+public class bcuv
+  implements baej
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  bcuv(bcur parambcur) {}
+  
+  public void a()
   {
-    if (paramBitmap != null)
-    {
-      paramDownloadParams = paramDownloadParams.tag;
-      if ((GdtSmartBlur.a().a) && ((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1))
-      {
-        int i = ((int[])(int[])paramDownloadParams)[0];
-        GdtSmartBlur.a().a(paramBitmap, i);
-      }
-    }
-    return paramBitmap;
+    this.a.a.post(new TroopGiftAnimationController.4.1(this));
   }
 }
 

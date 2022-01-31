@@ -1,24 +1,13 @@
-import android.view.View;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.widget.AdapterView;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfbk
-  implements bhqp
 {
-  public bfbk(OpenCardContainer paramOpenCardContainer) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static void a()
   {
-    paramAdapterView = bfbr.a(this.a.jdField_a_of_type_Bfbr).iterator();
-    while (paramAdapterView.hasNext()) {
-      ((bfbu)paramAdapterView.next()).a = false;
-    }
-    ((bfbu)bfbr.a(this.a.jdField_a_of_type_Bfbr).get(paramInt)).a = true;
-    this.a.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(false);
-    this.a.jdField_a_of_type_Bfbr.notifyDataSetChanged();
+    QLog.i("Q.quicklogin.OpenSdkQIPCClient", 1, "doPtloginCancel");
+    QIPCClientHelper.getInstance().callServer("open_sdk_qipc_module", "action_ptlogin_cancel", new Bundle());
   }
 }
 

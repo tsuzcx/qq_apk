@@ -1,39 +1,46 @@
-import android.graphics.Bitmap;
-import com.tencent.image.NativeGifImage;
-import java.io.File;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class agsm
-  extends NativeGifImage
+  extends aqbl
 {
-  public agsm(File paramFile, boolean paramBoolean)
+  agsm(agse paramagse) {}
+  
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, aqcl paramaqcl, String paramString)
   {
-    super(paramFile, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, String.format("onGetUnLimitFriendInfo() success=%s uinType=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) }));
+    }
+    if ((paramBoolean) && (paramaqcl != null)) {
+      ThreadManager.getSubThreadHandler().post(new LimitChatPie.7.1(this, paramInt2, paramaqcl));
+    }
   }
   
-  public int a()
+  protected void a(boolean paramBoolean, aqcx paramaqcx, int paramInt)
   {
-    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
+    if ((paramBoolean) && (paramaqcx != null))
+    {
+      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramaqcx, this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO, this.a.g, this.a.L);
+      agse.a(this.a, paramaqcx.mNickName);
+      this.a.e.setText(paramaqcx.mNickName);
+      if ((!TextUtils.isEmpty(paramaqcx.mNickName)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramaqcx.mNickName;
+      }
+    }
   }
   
-  public Bitmap a()
+  protected void a(boolean paramBoolean, ArrayList<Long> paramArrayList)
   {
-    return this.mCurrentFrameBitmap;
-  }
-  
-  public void a()
-  {
-    getNextFrame();
-    applyNextFrame();
-  }
-  
-  public int b()
-  {
-    return this.mMetaData[FRAME_COUNT_INDEX];
-  }
-  
-  public int c()
-  {
-    return this.mCurrentFrameIndex;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, String.format("onGetExtendFriendOnlineState success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    agse.a(this.a, paramArrayList);
   }
 }
 

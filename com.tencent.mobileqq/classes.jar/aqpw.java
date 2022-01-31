@@ -1,29 +1,59 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.1;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.2;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.3;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-final class aqpw
-  extends ypu
+public class aqpw
+  extends aqru
 {
-  aqpw(String paramString, aqqr paramaqqr, long paramLong) {}
+  public aqpw(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
+  protected void a(int paramInt, long paramLong, String paramString)
   {
-    if (!paramBoolean)
+    super.a(paramInt, paramLong, paramString);
+    arrr.a(paramLong, paramInt, paramString);
+    bkmm.a(this.a.a, paramInt);
+  }
+  
+  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  {
+    super.a(paramLong, paramString1, paramInt, paramString2);
+    arrr.a(paramLong);
+  }
+  
+  protected void a(arcg paramarcg)
+  {
+    if (paramarcg == null) {}
+    FileManagerEntity localFileManagerEntity;
+    do
     {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return failed fileid " + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aqqr.a(aqpv.a(this.jdField_a_of_type_Long, false), true);
-      return;
-    }
-    paramBundle.putString("_m_ForwardBusType", String.valueOf(paramInt2));
-    paramBundle.putString("_m_ForwardDeadTime", String.valueOf(paramInt3));
-    if (paramInt1 == 0)
-    {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult success fileid " + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aqqr.a(this.jdField_a_of_type_JavaLangString, paramBundle);
-      return;
-    }
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return[" + paramInt1 + "] fileid " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Aqqr.a(aqpv.a(this.jdField_a_of_type_Long, false), false);
+      do
+      {
+        return;
+      } while (!(paramarcg.a instanceof FileManagerEntity));
+      localFileManagerEntity = (FileManagerEntity)paramarcg.a;
+    } while ((paramarcg.b == null) || (paramarcg.b.length() <= 0));
+    localFileManagerEntity.strThumbPath = paramarcg.b;
+    QfileBaseLocalFileTabView.c(this.a).a().c(localFileManagerEntity);
+    this.a.i();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    QfileBaseLocalFileTabView.a(this.a, new QfileBaseLocalFileTabView.7.1(this));
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    QfileBaseLocalFileTabView.b(this.a, new QfileBaseLocalFileTabView.7.2(this, paramLong2, paramBoolean, paramInt2, paramString2));
+  }
+  
+  protected void b()
+  {
+    super.b();
+    QfileBaseLocalFileTabView.c(this.a, new QfileBaseLocalFileTabView.7.3(this));
   }
 }
 

@@ -1,13 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bbdz
-  implements DialogInterface.OnClickListener
+class bbdz
+  implements View.OnClickListener
 {
-  public bbdz(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  bbdz(bbdw parambbdw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView) {}
 }
 
 

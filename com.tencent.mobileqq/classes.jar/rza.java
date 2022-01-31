@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class rza
-  implements bhyj
+  implements bicq
 {
   public rza(FastWebActivity paramFastWebActivity) {}
   

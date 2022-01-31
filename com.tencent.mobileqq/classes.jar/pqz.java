@@ -31,9 +31,9 @@ public class pqz
     this.jdField_a_of_type_AndroidWidgetTextView.setPadding(Utils.dp2px(5.0D), 0, Utils.dp2px(5.0D), 0);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 12.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(paramVafContext.getContext().getResources().getDrawable(2130842329), null, null, null);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(paramVafContext.getContext().getResources().getDrawable(2130842342), null, null, null);
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(Utils.dp2px(2.0D));
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130842307));
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130842320));
     paramVafContext = new RelativeLayout.LayoutParams(-2, Utils.dp2px(20.0D));
     paramVafContext.addRule(11);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, Utils.dp2px(12.0D), 0);
@@ -47,7 +47,7 @@ public class pqz
   
   public int getComMeasuredWidth()
   {
-    return (int)(float)bdcb.i();
+    return (int)(float)bdgk.i();
   }
   
   public View getNativeView()

@@ -1,83 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.CheckBox;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class ajxl
-  extends Handler
+  extends ajxt
 {
-  public ajxl(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  protected final BaseChatPie a;
   
-  public void handleMessage(Message paramMessage)
+  public ajxl(BaseChatPie paramBaseChatPie)
   {
-    switch (paramMessage.what)
+    this.a = paramBaseChatPie;
+  }
+  
+  void a(bdpi parambdpi, View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((parambdpi != null) && (parambdpi.a() > 0))
     {
-    }
-    label366:
-    do
-    {
-      Object[] arrayOfObject;
-      String str;
-      do
-      {
-        do
-        {
-          return;
-          TroopMemberListInnerFrame.a(this.a, paramMessage);
-          return;
-          paramMessage = this.a;
-          paramMessage.jdField_a_of_type_Double += TroopMemberListInnerFrame.jdField_b_of_type_Double;
-        } while ((this.a.jdField_a_of_type_Double >= 90.0D) || (this.a.jdField_a_of_type_Int <= 0));
-        if (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() == 8) {
-          this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        }
-        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress((int)this.a.jdField_a_of_type_Double);
-        this.a.d.setText(String.format(alpo.a(2131715995), new Object[] { Integer.valueOf(Math.min((int)(this.a.jdField_a_of_type_Int * this.a.jdField_a_of_type_Double / 100.0D), this.a.jdField_a_of_type_Int)), Integer.valueOf(this.a.jdField_a_of_type_Int) }));
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4), 800L);
-        return;
-        TroopMemberListInnerFrame.a(this.a, paramMessage.arg1);
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
-        if (!(paramMessage.obj instanceof Object[])) {
-          break label366;
-        }
-        arrayOfObject = (Object[])paramMessage.obj;
-        if (arrayOfObject.length <= 0) {
-          break label366;
-        }
-        str = (String)arrayOfObject[1];
-        if (str.equals(this.a.jdField_b_of_type_JavaLangString)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("TroopMemberListInnerFrame.thread", 2, "handleMessage, troopUin != mTroopUin, break:" + str + "," + this.a.jdField_b_of_type_JavaLangString);
-      return;
-      this.a.jdField_a_of_type_JavaUtilMap = ((Map)arrayOfObject[0]);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberListInnerFrame.thread", 2, "handleMessage, mIndexedFriends.size=" + this.a.jdField_a_of_type_JavaUtilMap.size());
+      if (this.a == null) {
+        break label43;
       }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == 1) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == 0) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == 5))
-      {
-        int i = TroopMemberListInnerFrame.a(this.a, this.a.jdField_a_of_type_JavaUtilMap);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b(i);
+      if (this.a.g() < 8) {
+        a(paramView, paramInt1, paramInt2, parambdpi, paramInt3, false);
       }
-      paramMessage.obj = TroopMemberListInnerFrame.a(this.a);
-      TroopMemberListInnerFrame.a(this.a, paramMessage);
-    } while ((this.a.jdField_a_of_type_Boolean) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.q));
-    this.a.jdField_a_of_type_Boolean = true;
-    paramMessage = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
-    if (!this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramMessage.setChecked(bool);
-      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
-      return;
     }
+    return;
+    label43:
+    a(paramView, paramInt1, paramInt2, parambdpi, paramInt3, false);
   }
 }
 

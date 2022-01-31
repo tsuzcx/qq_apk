@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class lzn
-  implements bcwt
+  implements bdbc
 {
   public lzn(QQServiceForAV paramQQServiceForAV) {}
   

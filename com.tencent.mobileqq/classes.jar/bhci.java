@@ -1,17 +1,22 @@
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.log.QMLog;
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
+import java.util.List;
+import org.json.JSONObject;
 
 class bhci
-  implements MethodChannel.MethodCallHandler
+  implements AsyncResult
 {
-  bhci(bhch parambhch) {}
+  bhci(bhch parambhch, List paramList) {}
   
-  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    paramResult.success(null);
-    QMLog.d("miniapp-start-TISSUE-flutter_method_channel", paramMethodCall.method);
+    if (paramBoolean)
+    {
+      QMLog.d("MiniProgramReporter", "onDcReport() called with: isSuc = [true], ret = [" + paramJSONObject + "]");
+      return;
+    }
+    QMLog.e("MiniProgramReporter", "performReportViaSSO onDcReport: sso command failed, try again");
+    this.jdField_a_of_type_Bhch.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

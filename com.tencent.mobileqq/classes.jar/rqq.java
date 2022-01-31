@@ -7,7 +7,7 @@ import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class rqq
-  implements bhtz
+  implements bhyg
 {
   rqq(rqj paramrqj, BaseArticleInfo paramBaseArticleInfo) {}
   

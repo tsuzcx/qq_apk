@@ -1,19 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.widget.SlideDownFrameLayout;
+import android.graphics.Canvas;
 
-public class berc
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface berc
 {
-  public berc(SlideDownFrameLayout paramSlideDownFrameLayout) {}
+  public abstract void a(Canvas paramCanvas);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    SlideDownFrameLayout.a(this.a).a().setY(f);
-    SlideDownFrameLayout.a(this.a).a(f, SlideDownFrameLayout.a(this.a).a().getHeight());
-  }
+  public abstract void b(Canvas paramCanvas);
 }
 
 

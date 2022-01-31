@@ -1,52 +1,58 @@
-import VipRecommend.MQQ.CommPayInfo;
-import VipRecommend.MQQ.UserInfo;
-import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class aywj
-  extends zdf
+  extends aywk
 {
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  
+  public aywj(ViewGroup paramViewGroup, int paramInt)
   {
-    if ("VipPayLogicServer.getCommPayInfo ".equals(paramToServiceMsg.getServiceCmd()))
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    View localView = a(this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377938));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131369365));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367944));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364893));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377448));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377279));
+    this.d = ((TextView)localView.findViewById(2131365129));
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
-      if (paramFromServiceMsg == null) {
-        return null;
+      if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
+        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(this.jdField_c_of_type_AndroidWidgetTextView.getContext().getResources().getColor(2131166840));
       }
-      paramToServiceMsg = new UniPacket(true);
-      try
-      {
-        paramToServiceMsg.setEncodeName("utf-8");
-        paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-        paramToServiceMsg = (CommPayInfo)paramToServiceMsg.getByClass("payInfo", new CommPayInfo());
-        return paramToServiceMsg;
-      }
-      catch (RuntimeException paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-        return null;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        return null;
+      if (this.d != null) {
+        this.d.setTextColor(this.d.getContext().getResources().getColor(2131166840));
       }
     }
-    return null;
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramUniPacket.setServantName("MQQ.VipPayLogicServer.VipPayLogicObj");
-    paramUniPacket.setFuncName("getCommPayInfo");
-    paramUniPacket.put("userInfo", (UserInfo)paramToServiceMsg.extraData.getSerializable("VIPRecommendPayRequest"));
-    return true;
-  }
-  
-  public String[] a()
-  {
-    return new String[] { "VipPayLogicServer" };
+    do
+    {
+      return;
+      if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
+        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
+      }
+    } while (this.d == null);
+    this.d.setTextColor(Color.parseColor("#737373"));
   }
 }
 

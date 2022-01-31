@@ -1,6 +1,16 @@
-public abstract interface aewy
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+
+class aewy
+  implements badp
 {
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString);
+  aewy(aewx paramaewx) {}
+  
+  public void a()
+  {
+    badv localbadv = new badv(3000, 360, 0);
+    localbadv.a = true;
+    this.a.a.d.a(new bado[] { localbadv });
+  }
 }
 
 

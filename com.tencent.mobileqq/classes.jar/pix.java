@@ -37,7 +37,7 @@ public class pix
       QLog.d("FeedsPreloadExposeReport", 1, "app is null or cost is not available, reportFeedsPreloadExposeMonitorData");
       return;
     }
-    azmz.a(localAppRuntime.getApplication()).a(str, "actFeedsPreloadExposeReport", paramBoolean, paramLong, 0L, localHashMap, null);
+    azri.a(localAppRuntime.getApplication()).a(str, "actFeedsPreloadExposeReport", paramBoolean, paramLong, 0L, localHashMap, null);
   }
   
   private static List<ReportInfo> b(List<ArticleInfo> paramList)

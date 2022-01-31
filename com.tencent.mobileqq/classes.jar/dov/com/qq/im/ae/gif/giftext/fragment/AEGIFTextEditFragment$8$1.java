@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.gif.giftext.fragment;
 
-import bkzl;
-import bkzu;
+import blds;
+import bleb;
 
 public class AEGIFTextEditFragment$8$1
   implements Runnable
 {
-  public AEGIFTextEditFragment$8$1(bkzu parambkzu) {}
+  public AEGIFTextEditFragment$8$1(bleb parambleb) {}
   
   public void run()
   {
-    bkzl.a(this.a.a, true);
+    blds.a(this.a.a, true);
   }
 }
 

@@ -8,18 +8,18 @@ import java.util.List;
 public class lcq
   implements ldq
 {
-  public lcq(AITranslator paramAITranslator, String paramString1, long paramLong, Context paramContext, afyy paramafyy, String paramString2, Language paramLanguage, ldp paramldp, List paramList1, List paramList2, int paramInt, AITranslator.TranslatorType paramTranslatorType) {}
+  public lcq(AITranslator paramAITranslator, String paramString1, long paramLong, Context paramContext, agdn paramagdn, String paramString2, Language paramLanguage, ldp paramldp, List paramList1, List paramList2, int paramInt, AITranslator.TranslatorType paramTranslatorType) {}
   
   public void a(TranslateError paramTranslateError, Long paramLong)
   {
     AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afyy, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Ldp, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComRookeryTranslateAITranslator$TranslatorType, paramTranslateError, paramLong);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agdn, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Ldp, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComRookeryTranslateAITranslator$TranslatorType, paramTranslateError, paramLong);
   }
   
   public void a(List<Language> paramList, List<String> paramList1, Long paramLong)
   {
     AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afyy, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Ldp, 0, AITranslator.TranslatorType.MS, paramList, paramList1, this.jdField_a_of_type_JavaUtilList, paramLong);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agdn, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Ldp, 0, AITranslator.TranslatorType.MS, paramList, paramList1, this.jdField_a_of_type_JavaUtilList, paramLong);
   }
 }
 

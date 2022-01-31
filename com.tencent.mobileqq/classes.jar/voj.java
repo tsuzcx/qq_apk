@@ -1,10 +1,19 @@
-public abstract interface voj
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.1.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+
+public final class voj
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3);
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public void onComplete(String arg1, String paramString2)
+  {
+    synchronized ()
+    {
+      paramString2 = voi.a();
+      voi.a().post(new TVKPreloader.1.1(this, paramString2));
+      return;
+    }
+  }
 }
 
 

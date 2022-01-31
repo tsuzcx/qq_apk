@@ -1,27 +1,49 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneShareData;
+import java.util.ArrayList;
+import java.util.Map;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public final class bjrz
-  implements Parcelable.Creator<QzoneVerticalVideoTopicInfo>
+public class bjrz
+  extends MSFServlet
 {
-  public QzoneVerticalVideoTopicInfo a(Parcel paramParcel)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    QzoneVerticalVideoTopicInfo localQzoneVerticalVideoTopicInfo = new QzoneVerticalVideoTopicInfo();
-    QzoneVerticalVideoTopicInfo.a(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.b(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.c(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.d(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.e(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.f(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.g(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.h(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    return localQzoneVerticalVideoTopicInfo;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    {
+      QLog.e("QzoneShare.QzoneShareServlet", 1, "QzoneShareServlet onReceive success.");
+      return;
+    }
+    QLog.e("QzoneShare.QzoneShareServlet", 1, "QzoneShareServlet onReceive fail.");
   }
   
-  public QzoneVerticalVideoTopicInfo[] a(int paramInt)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return new QzoneVerticalVideoTopicInfo[paramInt];
+    paramIntent = paramIntent.getExtras();
+    Object localObject1 = (QZoneShareData)paramIntent.get("sharedata");
+    long l = ((QZoneShareData)localObject1).jdField_a_of_type_Long;
+    Object localObject2 = ((QZoneShareData)localObject1).e;
+    String str1 = ((QZoneShareData)localObject1).jdField_b_of_type_JavaLangString;
+    String str2 = ((QZoneShareData)localObject1).c;
+    String str3 = ((QZoneShareData)localObject1).d;
+    String str4 = ((QZoneShareData)localObject1).g;
+    ArrayList localArrayList = ((QZoneShareData)localObject1).jdField_a_of_type_JavaUtilArrayList;
+    int i = ((QZoneShareData)localObject1).jdField_a_of_type_Int;
+    Map localMap = ((QZoneShareData)localObject1).jdField_a_of_type_JavaUtilMap;
+    String str5 = paramIntent.getString("reason");
+    localObject2 = new bjry((String)localObject2, str3, 2020014, paramIntent.getLong("uin"), str1, str2, str5, localArrayList, l, str4, i, localMap, ((QZoneShareData)localObject1).jdField_b_of_type_JavaUtilMap);
+    localObject1 = ((bjry)localObject2).encode();
+    paramIntent = (Intent)localObject1;
+    if (localObject1 == null) {
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + ((bjry)localObject2).uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import aaon;
-import bfgi;
+import aatc;
+import bfkr;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
 import noy;
@@ -29,8 +29,8 @@ class ADVideoAppDownloadManager$3
         {
           QLog.d("ADVideoAppDownloadManager", 1, "already finishDownload." + this.a.d);
           this.this$0.a(this.a, 5, 100);
-          DownloadInfo localDownloadInfo = bfgi.a().c(this.a.a);
-          bfgi.a().a(localDownloadInfo);
+          DownloadInfo localDownloadInfo = bfkr.a().c(this.a.a);
+          bfkr.a().a(localDownloadInfo);
           return;
         }
         i = ADVideoAppDownloadManager.a(this.this$0, ADVideoAppDownloadManager.a(this.this$0), this.a);
@@ -40,7 +40,7 @@ class ADVideoAppDownloadManager$3
       } while (!QLog.isColorLevel());
       QLog.d("ADVideoAppDownloadManager", 2, "isPkgDownloading.isPkgDownloading." + this.a.d + " " + i);
       return;
-      if (aaon.a())
+      if (aatc.a())
       {
         this.this$0.a(this.a, 0);
         return;

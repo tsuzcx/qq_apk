@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.hotpic;
 
-import assd;
-import assf;
-import assn;
+import aswm;
+import aswo;
+import asww;
 
 public class VideoBaseItem$2$1
   implements Runnable
 {
-  public VideoBaseItem$2$1(assf paramassf) {}
+  public VideoBaseItem$2$1(aswo paramaswo) {}
   
   public void run()
   {
     this.a.a.c = 4;
-    if (assd.a(this.a.a) != null) {
-      assd.a(this.a.a).d(assd.a(this.a.a));
+    if (aswm.a(this.a.a) != null) {
+      aswm.a(this.a.a).d(aswm.a(this.a.a));
     }
   }
 }

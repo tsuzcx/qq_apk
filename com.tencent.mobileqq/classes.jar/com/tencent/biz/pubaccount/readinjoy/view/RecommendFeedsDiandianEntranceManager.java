@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bjxj;
+import bkbq;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -28,7 +28,7 @@ public class RecommendFeedsDiandianEntranceManager
   private static int jdField_a_of_type_Int = 600000;
   private static RecommendFeedsDiandianEntranceManager.EntranceIconInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecommendFeedsDiandianEntranceManager$EntranceIconInfo;
   private static RecommendFeedsDiandianEntranceManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecommendFeedsDiandianEntranceManager;
-  private static int b = bjxj.e();
+  private static int b = bkbq.e();
   private long jdField_a_of_type_Long;
   private List<rxl> jdField_a_of_type_JavaUtilList;
   private int c = -1;
@@ -72,16 +72,16 @@ public class RecommendFeedsDiandianEntranceManager
     switch ()
     {
     default: 
-      return 2130842705;
+      return 2130842718;
     case 4: 
-      return 2130848838;
+      return 2130848911;
     }
-    return 2130848809;
+    return 2130848882;
   }
   
   private RecommendFeedsDiandianEntranceManager.EntranceIconInfo b()
   {
-    Object localObject = bjxj.a(ors.a().c());
+    Object localObject = bkbq.a(ors.a().c());
     if (localObject != null) {
       try
       {
@@ -115,7 +115,7 @@ public class RecommendFeedsDiandianEntranceManager
   {
     if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecommendFeedsDiandianEntranceManager$EntranceIconInfo != null)
     {
-      SharedPreferences localSharedPreferences = bjxj.a(ors.a().c());
+      SharedPreferences localSharedPreferences = bkbq.a(ors.a().c());
       if (localSharedPreferences != null) {
         try
         {
@@ -205,7 +205,7 @@ public class RecommendFeedsDiandianEntranceManager
   
   public void a(String paramString)
   {
-    int i = bjxj.e();
+    int i = bkbq.e();
     QLog.d("RecommendFeedsDiandianEntranceManager", 1, "checkAndUpdateIconInfo | reason " + paramString + "; configFeedsType : " + i);
     paramString = b();
     if (paramString != null)
@@ -243,7 +243,7 @@ public class RecommendFeedsDiandianEntranceManager
   
   public boolean a()
   {
-    int i = bjxj.e();
+    int i = bkbq.e();
     return (i == 1) || (i == 2);
   }
   

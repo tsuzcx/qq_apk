@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apuk;
-import apuo;
+import apyt;
+import apyx;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 
 public class StickerGestureDetector$StickerAnimationListener$1
   implements Runnable
 {
-  public StickerGestureDetector$StickerAnimationListener$1(apuo paramapuo) {}
+  public StickerGestureDetector$StickerAnimationListener$1(apyx paramapyx) {}
   
   public void run()
   {

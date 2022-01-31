@@ -2,8 +2,8 @@ package com.tencent.mobileqq.minigame.manager;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bdcb;
-import bguy;
+import bdgk;
+import bgzf;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
@@ -37,7 +37,7 @@ public class GameRuntimeLoader
   private GpkgLoadAsyncTask mGpkgLoadTask;
   private GameRuntimeLoader.GameRuntimeProgressListener mGpkgLoadTaskListener;
   private InitGameRuntimeTask mInitGameRuntimeTask;
-  private bguy mInspectorAgentWrapper;
+  private bgzf mInspectorAgentWrapper;
   private InstalledEngineLoadTask mInstalledEngineLoadTask;
   private GameRuntimeLoader.GameRuntimeProgressListener mInstalledEngineLoadTaskListener;
   private GameJsPluginEngine mJsPluginEngine;
@@ -52,13 +52,13 @@ public class GameRuntimeLoader
     if (paramContext == null) {
       throw new IllegalArgumentException("can't create GameRuntimeLoader with null context");
     }
-    GameLog.getInstance().i(this.TAG, "run on device pref level:" + bdcb.f());
+    GameLog.getInstance().i(this.TAG, "run on device pref level:" + bdgk.f());
     this.mContext = paramContext;
     this.mJsPluginEngine = new GameJsPluginEngine();
     this.mLibVersionManager = new GameLibVersionManager();
     this.mGameInfoManager = new GameInfoManager();
     this.mReportManager = new GameReportManager();
-    this.mInspectorAgentWrapper = new bguy();
+    this.mInspectorAgentWrapper = new bgzf();
     this.mRuntimeListeners = new ArrayList();
     this.mInstalledEngineLoadTaskListener = new GameRuntimeLoader.1(this);
     this.mGpkgLoadTaskListener = new GameRuntimeLoader.2(this);
@@ -210,7 +210,7 @@ public class GameRuntimeLoader
     return this.mGameInfoManager;
   }
   
-  public bguy getInspectorAgentWrapper()
+  public bgzf getInspectorAgentWrapper()
   {
     return this.mInspectorAgentWrapper;
   }

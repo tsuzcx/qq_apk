@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgho;
-import bgln;
+import bglv;
+import bgpu;
 import com.tencent.qqmini.sdk.core.widget.KeyboardLayout;
 import com.tencent.qqmini.sdk.utils.DisplayUtil;
 
 class InputJsPlugin$4
-  implements bgln
+  implements bgpu
 {
   InputJsPlugin$4(InputJsPlugin paramInputJsPlugin) {}
   

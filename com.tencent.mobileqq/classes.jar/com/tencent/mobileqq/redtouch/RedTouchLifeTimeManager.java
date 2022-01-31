@@ -6,8 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
-import axhn;
-import bkcj;
+import axlw;
+import bkgq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -22,7 +22,7 @@ public class RedTouchLifeTimeManager
 {
   private static RedTouchLifeTimeManager jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchLifeTimeManager;
   private long jdField_a_of_type_Long;
-  Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new axhn(this);
+  Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new axlw(this);
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private String b;
@@ -63,16 +63,16 @@ public class RedTouchLifeTimeManager
     this.jdField_a_of_type_Boolean = false;
     long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
     QLog.i("RedTouchLifeTimeManager", 1, "triggleReport time = " + l + " class name " + this.jdField_a_of_type_JavaLangString);
-    bkcj localbkcj = new bkcj();
-    localbkcj.d = 133;
-    localbkcj.jdField_e_of_type_Int = ((int)l);
-    localbkcj.g = String.valueOf(this.c);
-    localbkcj.b = String.valueOf(this.d);
-    localbkcj.jdField_a_of_type_Int = 1;
-    localbkcj.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
-    localbkcj.jdField_e_of_type_JavaLangString = "vab_red";
-    localbkcj.f = "vab_red";
-    ThreadManager.getSubThreadHandler().post(new RedTouchLifeTimeManager.1(this, localbkcj));
+    bkgq localbkgq = new bkgq();
+    localbkgq.d = 133;
+    localbkgq.jdField_e_of_type_Int = ((int)l);
+    localbkgq.g = String.valueOf(this.c);
+    localbkgq.b = String.valueOf(this.d);
+    localbkgq.jdField_a_of_type_Int = 1;
+    localbkgq.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
+    localbkgq.jdField_e_of_type_JavaLangString = "vab_red";
+    localbkgq.f = "vab_red";
+    ThreadManager.getSubThreadHandler().post(new RedTouchLifeTimeManager.1(this, localbkgq));
   }
   
   public void a(String paramString)

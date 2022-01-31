@@ -9,8 +9,8 @@ public class miu
   
   public void onClick(View paramView)
   {
-    bdfc.c();
-    azmj.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_call", 0, 0, this.a.b, "", "", "");
+    bdjl.c();
+    azqs.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_call", 0, 0, this.a.b, "", "", "");
     this.a.d(10);
   }
 }

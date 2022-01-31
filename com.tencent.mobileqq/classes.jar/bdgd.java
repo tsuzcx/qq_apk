@@ -1,14 +1,17 @@
-import android.widget.TextView;
-
-class bdgd
+public class bdgd
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public String a;
+  public boolean a;
   
-  private bdgd(bdfq parambdfq) {}
+  bdgd(String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdgd
  * JD-Core Version:    0.7.0.1
  */

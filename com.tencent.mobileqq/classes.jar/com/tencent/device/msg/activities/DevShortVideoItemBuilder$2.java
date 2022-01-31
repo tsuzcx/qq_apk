@@ -1,20 +1,20 @@
 package com.tencent.device.msg.activities;
 
-import ayyu;
-import ayzo;
+import azdd;
+import azdx;
 import com.tencent.mobileqq.data.MessageForShortVideo;
-import zsr;
+import zxg;
 
 public class DevShortVideoItemBuilder$2
   implements Runnable
 {
-  public DevShortVideoItemBuilder$2(zsr paramzsr, MessageForShortVideo paramMessageForShortVideo) {}
+  public DevShortVideoItemBuilder$2(zxg paramzxg, MessageForShortVideo paramMessageForShortVideo) {}
   
   public void run()
   {
-    ayzo localayzo = ayyu.a(1, this.this$0.c);
-    localayzo.a(ayyu.a(this.this$0.c, this.a, localayzo));
-    ayyu.a(localayzo, this.this$0.a);
+    azdx localazdx = azdd.a(1, this.this$0.c);
+    localazdx.a(azdd.a(this.this$0.c, this.a, localazdx));
+    azdd.a(localazdx, this.this$0.a);
   }
 }
 

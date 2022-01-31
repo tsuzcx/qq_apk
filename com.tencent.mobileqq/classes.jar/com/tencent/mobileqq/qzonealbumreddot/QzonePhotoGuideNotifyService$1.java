@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.qzonealbumreddot;
 
-import awwx;
-import awxa;
+import axbg;
+import axbj;
 import com.tencent.qphone.base.util.QLog;
 
 public class QzonePhotoGuideNotifyService$1
   implements Runnable
 {
-  public QzonePhotoGuideNotifyService$1(awxa paramawxa) {}
+  public QzonePhotoGuideNotifyService$1(axbj paramaxbj) {}
   
   public void run()
   {

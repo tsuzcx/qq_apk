@@ -1,14 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.MedalItem;
 
-class avda
-  implements View.OnClickListener
+public final class avda
+  implements Parcelable.Creator<MedalItem>
 {
-  avda(avcw paramavcw) {}
-  
-  public void onClick(View paramView)
+  public MedalItem a(Parcel paramParcel)
   {
-    this.a.b(paramView);
+    return new MedalItem(paramParcel);
+  }
+  
+  public MedalItem[] a(int paramInt)
+  {
+    return new MedalItem[paramInt];
   }
 }
 

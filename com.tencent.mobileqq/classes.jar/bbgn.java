@@ -1,16 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
 
 public class bbgn
-  implements bbgq
+  implements DialogInterface.OnClickListener
 {
-  public bbgn(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
+  public bbgn(QLifeCommentActivity paramQLifeCommentActivity, bdjz parambdjz) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bevy);
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
+    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
+      this.jdField_a_of_type_Bdjz.cancel();
+    }
+    QLifeCommentActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityQLifeCommentActivity);
+    azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "cancel", 0, 0, "", "", "", this.jdField_a_of_type_ComTencentMobileqqTroopActivityQLifeCommentActivity.z);
   }
 }
 

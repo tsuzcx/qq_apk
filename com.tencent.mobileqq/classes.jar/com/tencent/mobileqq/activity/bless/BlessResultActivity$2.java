@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.bless;
 
-import azey;
+import azjh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +18,7 @@ class BlessResultActivity$2
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
-      azey.a((QQAppInterface)localAppRuntime);
+      azjh.a((QQAppInterface)localAppRuntime);
     }
   }
 }

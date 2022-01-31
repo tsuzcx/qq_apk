@@ -1,17 +1,17 @@
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
+
 public class bkxu
+  extends bltq
 {
-  private Boolean a;
-  public String a;
+  public bkxu(AEMaterialProviderView paramAEMaterialProviderView) {}
   
-  public bkxu(String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("AEMaterialProviderView", 2, "material list updated!");
+    }
+    this.a.a(true);
   }
 }
 

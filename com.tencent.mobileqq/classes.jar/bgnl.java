@@ -1,6 +1,8 @@
+import android.content.Intent;
+
 public abstract interface bgnl
 {
-  public abstract void a(bgnj parambgnj);
+  public abstract boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent);
 }
 
 

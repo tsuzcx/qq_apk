@@ -1,25 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.qphone.base.util.QLog;
 
-class behx
-  extends BroadcastReceiver
+public final class behx
+  implements ThreadExcutor.IThreadListener
 {
-  behx(behr parambehr) {}
+  long a = 0L;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    long l1 = paramIntent.getLongExtra("groupId", 0L);
-    paramContext = paramIntent.getLongArrayExtra("uinList");
-    boolean bool = paramIntent.getBooleanExtra("isSpeaking", false);
-    int j = paramContext.length;
-    int i = 0;
-    while (i < j)
-    {
-      long l2 = paramContext[i];
-      this.a.notifyUI(2, true, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Boolean.valueOf(bool) });
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserCookieMonster", 2, "Web_qqbrowser_pre_get_key, cost=" + (System.currentTimeMillis() - this.a));
     }
+    this.a = 0L;
+  }
+  
+  public void onPreRun()
+  {
+    this.a = System.currentTimeMillis();
   }
 }
 

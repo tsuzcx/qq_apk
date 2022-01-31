@@ -1,15 +1,15 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
 
-public class acri
-  implements View.OnLongClickListener
+class acri
+  implements View.OnClickListener
 {
-  public acri(EditInfoActivity paramEditInfoActivity) {}
+  acri(acrh paramacrh) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    return true;
+    this.a.a.onClick(this.a.a.a);
   }
 }
 

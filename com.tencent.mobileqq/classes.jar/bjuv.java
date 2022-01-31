@@ -1,15 +1,12 @@
-class bjuv
+import com.tencent.mobileqq.testassister.ShareAppLogHelper.LogFile;
+import java.util.Comparator;
+
+final class bjuv
+  implements Comparator<ShareAppLogHelper.LogFile>
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  
-  public bjuv(bjuu parambjuu, int paramInt)
+  public int a(ShareAppLogHelper.LogFile paramLogFile1, ShareAppLogHelper.LogFile paramLogFile2)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return (int)(paramLogFile1.lastModified() - paramLogFile2.lastModified()) / 1000;
   }
 }
 

@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class aedh
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public aedh(TroopRequestActivity paramTroopRequestActivity) {}
+  public aedh(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.g();
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
   }
 }
 

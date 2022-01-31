@@ -1,27 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-
-abstract class atlj<T extends alko>
+public class atlj
 {
-  protected final QQAppInterface a;
+  public int a;
+  public int b;
   
-  public atlj(QQAppInterface paramQQAppInterface)
+  public atlj(int paramInt1, int paramInt2)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  protected final boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseProto", 2, new Object[] { "ssoLinkOk: invoked. ", " req: ", paramToServiceMsg, " res: ", paramFromServiceMsg, " data: ", paramObject });
-    }
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null) || (!paramFromServiceMsg.isSuccess())) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
-    }
-    return false;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

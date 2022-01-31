@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class MsgTabNodeEntity
-  extends awbv
+  extends awge
 {
   public long cacheSeq;
   public boolean firstExp = true;
@@ -23,7 +23,7 @@ public class MsgTabNodeEntity
   public long reqTimeStamp;
   public String title;
   public long uid;
-  @awdj
+  @awhs
   public String unionId;
   public String videoCover;
   public int videoCoverType;

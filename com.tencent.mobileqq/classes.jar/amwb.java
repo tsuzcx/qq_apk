@@ -1,34 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.1;
-import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.2;
-import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.3;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public class amwb
-  extends Handler
+  extends amvl
 {
-  public amwb(amvz paramamvz, Looper paramLooper)
+  public ArCloudConfigInfo a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public amwb(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    super(paramLooper);
+    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 100: 
-      anbk.a().a(new ARCamera.ARCameraHandler.1(this));
-      removeMessages(100);
-      sendEmptyMessageDelayed(100, 3000L);
-      return;
-    case 101: 
-      anbk.a().a(new ARCamera.ARCameraHandler.2(this));
-      return;
-    }
-    anbk.a().a(new ARCamera.ARCameraHandler.3(this));
+    StringBuilder localStringBuilder = new StringBuilder("GeneralAR_3D_ResourceInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mLuaScriptPath=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", mResourceDirPath='").append(this.c).append('\'');
+    localStringBuilder.append(", mMusicPath='").append(this.d).append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

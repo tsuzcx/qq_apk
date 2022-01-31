@@ -1,12 +1,12 @@
 package dov.com.qq.im.capture.predownload;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="resId, resType")
 public class QIMResClickHistory
-  extends awbv
+  extends awge
 {
   public String resId;
   public String resType;

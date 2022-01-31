@@ -1,35 +1,58 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
+import android.app.Activity;
+import android.content.Context;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
+import com.tencent.mobileqq.activity.QQBrowserSwipeLayout;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class adpz
-  implements TextWatcher
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public adpz(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
+  private float jdField_a_of_type_Float;
   
-  public void afterTextChanged(Editable paramEditable)
+  public adpz(QQBrowserSwipeLayout paramQQBrowserSwipeLayout, Context paramContext)
   {
-    if (paramEditable == null) {}
+    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
+    boolean bool = false;
+    if (QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null) {
+      bool = QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout, paramMotionEvent1);
+    }
+    if ((!QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout)) || (paramFloat1 < 200.0F)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    if ((f1 < 0.0F) && (f2 < 0.5F) && (!bool))
+    {
+      if (!(QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) instanceof Activity)) {
+        break label175;
+      }
+      QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout, true);
+      if (QQBrowserSwipeLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null)
+      {
+        QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout).H();
+        QQBrowserSwipeLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout);
+      }
+    }
     for (;;)
     {
-      return;
-      if (TextUtils.isEmpty(paramEditable.toString())) {
-        RegisterPersonalInfoActivity.a(this.a).setEnabled(false);
-      }
-      while (RegisterPersonalInfoActivity.a(this.a) != null)
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      label175:
+      if (QQBrowserSwipeLayout.d(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null)
       {
-        RegisterPersonalInfoActivity.a(this.a).b(RegisterPersonalInfoActivity.a(this.a).isEnabled());
-        return;
-        RegisterPersonalInfoActivity.a(this.a).setEnabled(true);
+        QQBrowserSwipeLayout.e(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout).H();
+        QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout);
       }
     }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

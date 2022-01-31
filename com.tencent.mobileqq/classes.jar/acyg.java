@@ -1,41 +1,14 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
-import com.tencent.widget.Switch;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class acyg
-  implements CompoundButton.OnCheckedChangeListener
+class acyg
+  implements View.OnClickListener
 {
-  public acyg(GeneralSettingActivity paramGeneralSettingActivity) {}
+  acyg(acye paramacye) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    boolean bool1 = this.a.a.a().isChecked();
-    boolean bool2 = ThemeUtil.isNowThemeIsNight(this.a.app, false, null);
-    int j = azib.c();
-    int i;
-    if ((bool1) && (bool2)) {
-      i = azib.b;
-    }
-    while (paramBoolean)
-    {
-      String str = azhw.b[i];
-      if (!bajd.a(this.a, str, new acyh(this, paramCompoundButton, bool1, i))) {
-        GeneralSettingActivity.a(this.a, paramCompoundButton, true, bool1, i);
-      }
-      return;
-      i = j;
-      if (bool1)
-      {
-        i = j;
-        if (ThemeUtil.isNowThemeIsNight(this.a.app, false, azhw.b[j])) {
-          i = azib.d();
-        }
-      }
-    }
-    GeneralSettingActivity.a(this.a, paramCompoundButton, false, bool1, i);
+    acye.a(this.a).a(paramView);
   }
 }
 

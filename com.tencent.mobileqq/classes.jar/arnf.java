@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.12.1;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.12.2;
 
 public class arnf
-  implements Comparator<FileInfo>
+  implements aqxm
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  arnf(arnb paramarnb) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    if (paramFileInfo1.c())
-    {
-      if (!paramFileInfo2.c()) {
-        return -1000;
-      }
-    }
-    else if (paramFileInfo2.c()) {
-      return 1000;
-    }
-    return paramFileInfo1.d().compareToIgnoreCase(paramFileInfo2.d());
+    this.a.a(paramInt, paramString);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.a.a.runOnUiThread(new VideoFilePresenter.12.1(this, paramString1));
+  }
+  
+  public void aG_() {}
+  
+  public void aH_()
+  {
+    this.a.a.runOnUiThread(new VideoFilePresenter.12.2(this));
   }
 }
 

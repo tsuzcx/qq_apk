@@ -1,6 +1,13 @@
-class bkos
+import com.tencent.ttpic.video.AECoderFactory.AEEncoderFactory;
+import com.tencent.ttpic.video.AEEncoder;
+
+final class bkos
+  implements AECoderFactory.AEEncoderFactory
 {
-  static final bkop a = new bkop(null);
+  public AEEncoder createEncoder(String paramString, int paramInt1, int paramInt2)
+  {
+    return new axtp(paramString, paramInt1, paramInt2);
+  }
 }
 
 

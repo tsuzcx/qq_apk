@@ -1,21 +1,37 @@
-import android.content.Context;
-import java.lang.ref.WeakReference;
+import android.database.Cursor;
+import android.os.Parcel;
 
-public class bfht
+final class bfht
+  implements bfnq<bfhs>
 {
-  public String a;
-  public WeakReference<Context> a;
-  public String b;
-  public WeakReference<bfie> b;
-  public String c;
-  
-  public bfht(bfhs parambfhs, Context paramContext, String paramString1, String paramString2, String paramString3, bfie parambfie)
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(parambfie);
+    return 0;
+  }
+  
+  public bfhs a(Cursor paramCursor)
+  {
+    Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("data"));
+    if (localObject == null) {
+      return null;
+    }
+    paramCursor = Parcel.obtain();
+    paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
+    paramCursor.setDataPosition(0);
+    localObject = new bfhs();
+    ((bfhs)localObject).a(paramCursor);
+    paramCursor.recycle();
+    return localObject;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public bfnr[] a()
+  {
+    return new bfnr[] { new bfnr("groupId", "INTEGER UNIQUE"), new bfnr("data", "BLOB") };
   }
 }
 

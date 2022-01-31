@@ -1,161 +1,76 @@
-import android.content.Context;
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
 
 public class auil
-  extends auip
+  implements DialogInterface.OnClickListener
 {
-  private aenv jdField_a_of_type_Aenv;
-  boolean jdField_a_of_type_Boolean = false;
+  public auil(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
   
-  public auil(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, ViewGroup paramViewGroup)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramViewGroup);
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (this.jdField_a_of_type_Aenv != null)
-    {
-      this.jdField_a_of_type_Aenv.a(null);
-      this.jdField_a_of_type_Aenv = null;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    if (this.jdField_a_of_type_Aenv == null) {
-      return;
-    }
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_Aenv.c(true);
-      this.jdField_a_of_type_Aenv.b(true);
-      this.jdField_a_of_type_Aenv.d();
-      this.jdField_a_of_type_Aenv.a(3);
-      return;
-    }
-    this.jdField_a_of_type_Aenv.b(false);
-    this.jdField_a_of_type_Aenv.c(false);
-    this.jdField_a_of_type_Aenv.a(4);
-  }
-  
-  public void a(auij paramauij)
-  {
-    super.a(paramauij);
-    if (this.jdField_a_of_type_Aenv != null)
-    {
-      if (a() != 0) {
-        this.jdField_a_of_type_Aenv.b(false);
+    aujq.a("MsgBackup_MsgBackupPcBaseFragment", "showStopMigrateDialog mextra is not null! %b, isFromPcHandle = %b", new Object[] { Boolean.valueOf(TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)), Boolean.valueOf(this.a.e) });
+    augo.a().a().c();
+    augo.a().a().a(null);
+    if (this.a.jdField_a_of_type_Boolean) {
+      if ((!this.a.e) && (this.a.b == 1))
+      {
+        this.a.a(this.a.getActivity());
+        if (!this.a.f)
+        {
+          if (this.a.b != 1) {
+            break label189;
+          }
+          if (this.a.e) {
+            aujo.a("0X800A267", 2);
+          }
+        }
+        label141:
+        if (this.a.f)
+        {
+          if (this.a.b != 1) {
+            break label309;
+          }
+          if (this.a.e) {
+            aujo.a("0X800A267", 3);
+          }
+        }
       }
-      this.jdField_a_of_type_Aenv.a(a(), a());
-      this.jdField_a_of_type_Aenv.b();
     }
-  }
-  
-  public boolean a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    if (this.jdField_a_of_type_Aenv == null)
+    label189:
+    while (this.a.b != 2)
     {
-      paramBundle = null;
-      Bundle localBundle = a();
-      if (localBundle != null) {
-        paramBundle = localBundle.getString("uin");
+      return;
+      this.a.m();
+      break;
+      if (this.a.b != 2) {
+        break label141;
       }
-      this.jdField_a_of_type_Aenv = new aenv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, paramBundle);
-      this.jdField_a_of_type_Aenv.a(this);
-      b(1);
-      a(this.jdField_a_of_type_Aenv.a());
+      aujo.a("0X800A289", 1);
+      break label141;
+      if (this.a.e) {
+        if (this.a.getActivity() != null)
+        {
+          this.a.getActivity().setResult(1001);
+          this.a.getActivity().finish();
+        }
+      }
+      for (;;)
+      {
+        if ((this.a.f) || (this.a.b != 1) || (!this.a.e)) {
+          break label307;
+        }
+        aujo.a("0X800A267", 1);
+        break;
+        this.a.a(this.a.getActivity());
+      }
+      break label141;
     }
-    b(this.jdField_a_of_type_Aenv.a());
-    if (a() != null) {
-      this.jdField_a_of_type_Aenv.a(a(), a());
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Aenv.i();
-    }
-    return true;
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("IntimateInfoViewDelegete", 2, "doOnResume() called");
-    }
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Aenv == null) {
-      return;
-    }
-    if (a() == 0)
-    {
-      this.jdField_a_of_type_Aenv.b(true);
-      this.jdField_a_of_type_Aenv.d();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aenv.p();
-      this.jdField_a_of_type_Aenv.i();
-      return;
-      this.jdField_a_of_type_Aenv.b(false);
-    }
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("IntimateInfoViewDelegete", 2, "doOnPause() called");
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Aenv == null) {
-      return;
-    }
-    this.jdField_a_of_type_Aenv.h();
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Aenv == null) {
-      return;
-    }
-    this.jdField_a_of_type_Aenv.a(true);
-    this.jdField_a_of_type_Aenv.b();
-  }
-  
-  public void f() {}
-  
-  public void g()
-  {
-    super.g();
-    if (this.jdField_a_of_type_Aenv == null) {
-      return;
-    }
-    this.jdField_a_of_type_Aenv.j();
-  }
-  
-  public void h() {}
-  
-  public void i()
-  {
-    super.i();
-    if (this.jdField_a_of_type_Aenv != null) {
-      this.jdField_a_of_type_Aenv.r();
-    }
-  }
-  
-  public void j()
-  {
-    super.j();
-    if (this.jdField_a_of_type_Aenv != null) {
-      this.jdField_a_of_type_Aenv.s();
-    }
+    label307:
+    label309:
+    aujo.a("0X800A289", 2);
   }
 }
 

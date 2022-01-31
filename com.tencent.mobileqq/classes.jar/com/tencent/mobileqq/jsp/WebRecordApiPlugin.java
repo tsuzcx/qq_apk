@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.jsp;
 
-import atfv;
-import becq;
+import atke;
+import begz;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 public class WebRecordApiPlugin
   extends WebViewPlugin
 {
-  private atfv jdField_a_of_type_Atfv;
+  private atke jdField_a_of_type_Atke;
   private String jdField_a_of_type_JavaLangString;
   private String b;
   private String c;
@@ -27,8 +27,8 @@ public class WebRecordApiPlugin
     if (!"webRecord".equals(paramString2)) {
       return false;
     }
-    if (this.jdField_a_of_type_Atfv == null) {
-      this.jdField_a_of_type_Atfv = new atfv(this, this.mRuntime.a(), (BaseActivity)this.mRuntime.a());
+    if (this.jdField_a_of_type_Atke == null) {
+      this.jdField_a_of_type_Atke = new atke(this, this.mRuntime.a(), (BaseActivity)this.mRuntime.a());
     }
     if ("startRecord".equals(paramString3)) {
       try
@@ -37,7 +37,7 @@ public class WebRecordApiPlugin
         this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback", "");
         int i = paramJsBridgeListener.optInt("format", 0);
         int j = paramJsBridgeListener.optInt("maxTime", 0);
-        this.jdField_a_of_type_Atfv.a(i, j);
+        this.jdField_a_of_type_Atke.a(i, j);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -52,7 +52,7 @@ public class WebRecordApiPlugin
     }
     if ("stopRecord".equals(paramString3))
     {
-      this.jdField_a_of_type_Atfv.b(0);
+      this.jdField_a_of_type_Atke.b(0);
       return true;
     }
     if ("play".equals(paramString3)) {
@@ -61,7 +61,7 @@ public class WebRecordApiPlugin
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
         this.b = paramJsBridgeListener.optString("callback", "");
         paramJsBridgeListener = paramJsBridgeListener.optString("recordID", "");
-        this.jdField_a_of_type_Atfv.b(paramJsBridgeListener);
+        this.jdField_a_of_type_Atke.b(paramJsBridgeListener);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -78,7 +78,7 @@ public class WebRecordApiPlugin
       try
       {
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("recordID", "");
-        this.jdField_a_of_type_Atfv.d(paramJsBridgeListener);
+        this.jdField_a_of_type_Atke.d(paramJsBridgeListener);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -95,7 +95,7 @@ public class WebRecordApiPlugin
       try
       {
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("recordID", "");
-        this.jdField_a_of_type_Atfv.c(paramJsBridgeListener);
+        this.jdField_a_of_type_Atke.c(paramJsBridgeListener);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -116,7 +116,7 @@ public class WebRecordApiPlugin
         paramJsBridgeListener = paramString2.optJSONArray("recordIDs");
         paramString1 = paramString2.optString("cgi", "");
         paramString2 = paramString2.optString("cookie", "");
-        this.jdField_a_of_type_Atfv.a(paramJsBridgeListener, paramString1, paramString2);
+        this.jdField_a_of_type_Atke.a(paramJsBridgeListener, paramString1, paramString2);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -134,12 +134,12 @@ public class WebRecordApiPlugin
   
   public void onDestroy()
   {
-    boolean bool = this.jdField_a_of_type_Atfv.a();
+    boolean bool = this.jdField_a_of_type_Atke.a();
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "RecordSoundPanel.onDestroy() is called,isRecording is:" + bool);
     }
     if (bool) {
-      this.jdField_a_of_type_Atfv.b(1);
+      this.jdField_a_of_type_Atke.b(1);
     }
   }
 }

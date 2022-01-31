@@ -1,17 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
+import android.view.View;
 
-public class arsb
-  extends arrv
+final class arsb
+  implements bhuk
 {
-  public arsb(FlashChatTextEffectView paramFlashChatTextEffectView) {}
+  arsb(bhuf parambhuf) {}
   
-  public void b(boolean paramBoolean, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.b(paramBoolean, paramBundle);
-    if (paramBoolean) {
-      this.a.b();
-    }
+    this.a.cancel();
   }
 }
 

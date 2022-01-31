@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.play;
 
-import alpo;
+import alud;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ class AEVideoShelfEditFragment$11
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), alpo.a(2131689847), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), alud.a(2131689847), 0).a();
   }
 }
 

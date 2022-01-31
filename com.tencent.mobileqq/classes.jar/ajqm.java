@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-final class ajqm
-  implements ajqn
+public class ajqm
+  implements View.OnLayoutChangeListener
 {
-  ajqm(QQAppInterface paramQQAppInterface, int paramInt, String paramString) {}
+  public ajqm(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt) {}
   
-  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    ajql.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, paramString);
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.removeOnLayoutChangeListener(this);
+    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, this.jdField_a_of_type_Int, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.addOnLayoutChangeListener(new ajqn(this));
   }
 }
 

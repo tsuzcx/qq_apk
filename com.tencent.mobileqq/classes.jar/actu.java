@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class actu
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public actu(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public actu(DialogActivity paramDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ForwardTroopListFragment.a(this.a);
+    this.a.finish();
   }
 }
 

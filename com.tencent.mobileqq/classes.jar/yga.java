@@ -1,46 +1,47 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StModifyFeedReq;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StModifyFeedRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.biz.subscribe.comment.CommentEditText;
 import com.tencent.qphone.base.util.QLog;
 
 public class yga
-  extends yge
+  implements TextWatcher
 {
-  private CertifiedAccountWrite.StModifyFeedReq a = new CertifiedAccountWrite.StModifyFeedReq();
+  int jdField_a_of_type_Int = -1;
+  String jdField_a_of_type_JavaLangString = null;
   
-  public yga(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
-  {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-    if (paramStFeed != null) {
-      this.a.feed.set(paramStFeed);
-    }
-    this.a.mBitmap.set(1L);
-  }
+  public yga(CommentEditText paramCommentEditText) {}
   
-  public static CertifiedAccountWrite.StModifyFeedRsp a(byte[] paramArrayOfByte)
+  public void afterTextChanged(Editable paramEditable)
   {
-    CertifiedAccountWrite.StModifyFeedRsp localStModifyFeedRsp = new CertifiedAccountWrite.StModifyFeedRsp();
+    if (this.jdField_a_of_type_JavaLangString != null) {}
     try
     {
-      paramArrayOfByte = (CertifiedAccountWrite.StModifyFeedRsp)localStModifyFeedRsp.mergeFrom(paramArrayOfByte);
-      return paramArrayOfByte;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CertifiedAccountModifyFeedRequest", 2, "onResponse fail." + paramArrayOfByte);
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setText(this.jdField_a_of_type_JavaLangString);
+      if (i > this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.length()) {
+        this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setSelection(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.length());
       }
+      return;
     }
-    return null;
+    catch (Exception paramEditable)
+    {
+      QLog.e("CommentInputPopupWindow", 1, "setTextError");
+    }
   }
   
-  public byte[] a()
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    return this.a.toByteArray();
+    paramInt2 = paramCharSequence.toString().indexOf("[/", paramInt1);
+    int i = paramCharSequence.toString().indexOf(']', paramInt1);
+    if ((paramInt2 >= paramInt1) && (paramInt2 < paramInt1 + paramInt3) && ((i > paramInt1 + paramInt3) || (i == -1)))
+    {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.getSelectionEnd();
+      this.jdField_a_of_type_JavaLangString = (paramCharSequence.subSequence(0, paramInt2).toString() + paramCharSequence.subSequence(paramInt1 + paramInt3, paramCharSequence.length()));
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = null;
   }
 }
 

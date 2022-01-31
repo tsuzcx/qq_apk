@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import adky;
-import aieq;
+import adpn;
+import aijf;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ public class MiniChatActivity
     localIntent.putExtra("minaio_scaled_ration", paramFloat2);
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("key_mini_from", 3);
-    adky.a(paramActivity, localIntent, MiniChatActivity.class, MiniChatFragment.class);
+    adpn.a(paramActivity, localIntent, MiniChatActivity.class, MiniChatFragment.class);
   }
   
   public static void a(Activity paramActivity, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
@@ -47,7 +47,7 @@ public class MiniChatActivity
     localIntent.putExtra("key_mini_msgtab_businame", paramInt2);
     localIntent.putExtra("key_mini_from", 2);
     localIntent.putExtra("public_fragment_window_feature", 1);
-    adky.a(paramActivity, localIntent, MiniChatActivity.class, MiniChatFragment.class, 1);
+    adpn.a(paramActivity, localIntent, MiniChatActivity.class, MiniChatFragment.class, 1);
     if (paramBoolean) {
       paramActivity.overridePendingTransition(2130771994, 2130771995);
     }
@@ -64,7 +64,7 @@ public class MiniChatActivity
     localIntent.putExtra("key_mini_aio_msg_shmsgseq", paramLong1);
     localIntent.putExtra("key_mini_from", 5);
     localIntent.putExtra("key_mini_aio_barrage_time_location", paramLong2);
-    adky.a(paramActivity, localIntent, MiniChatActivity.class, MiniChatFragment.class, 1);
+    adpn.a(paramActivity, localIntent, MiniChatActivity.class, MiniChatFragment.class, 1);
     if (paramBoolean) {
       paramActivity.overridePendingTransition(2130771994, 2130771995);
     }
@@ -74,7 +74,7 @@ public class MiniChatActivity
   {
     paramIntent.putExtra("key_mini_from", 1);
     paramIntent.putExtra("public_fragment_window_feature", 1);
-    adky.a(paramActivity, paramIntent, MiniChatActivity.class, MiniMsgTabFragment.class, paramInt);
+    adpn.a(paramActivity, paramIntent, MiniChatActivity.class, MiniMsgTabFragment.class, paramInt);
   }
   
   public static boolean a()
@@ -97,7 +97,7 @@ public class MiniChatActivity
     for (;;)
     {
       if (getIntent().getBooleanExtra("isLandscape", false)) {
-        findViewById(16908290).setBackgroundResource(2130840922);
+        findViewById(16908290).setBackgroundResource(2130840923);
       }
       return super.doOnCreate(paramBundle);
       getWindow().setDimAmount(0.0F);
@@ -125,7 +125,7 @@ public class MiniChatActivity
   public void finish()
   {
     if (getIntent().getBooleanExtra("key_mini_need_update_unread", false)) {
-      aieq.a().b();
+      aijf.a().b();
     }
     if (getIntent().getIntExtra("key_mini_from", 0) == 5) {}
     super.finish();

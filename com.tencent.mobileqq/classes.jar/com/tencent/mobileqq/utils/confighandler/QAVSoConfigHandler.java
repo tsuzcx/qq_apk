@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils.confighandler;
 
-import alpo;
+import alud;
 import com.tencent.av.so.DownloadInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
@@ -17,7 +17,7 @@ public class QAVSoConfigHandler
   public int getConfigVer()
   {
     if (AudioHelper.d()) {
-      throw new IllegalArgumentException(this.TAG + alpo.a(2131709326));
+      throw new IllegalArgumentException(this.TAG + alud.a(2131709338));
     }
     return 0;
   }
@@ -30,7 +30,7 @@ public class QAVSoConfigHandler
   public void saveConfig(String paramString, int paramInt)
   {
     if (AudioHelper.d()) {
-      throw new IllegalArgumentException(this.TAG + alpo.a(2131709325));
+      throw new IllegalArgumentException(this.TAG + alud.a(2131709337));
     }
   }
 }

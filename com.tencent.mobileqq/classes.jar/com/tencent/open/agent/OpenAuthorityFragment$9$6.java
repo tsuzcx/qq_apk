@@ -1,13 +1,13 @@
 package com.tencent.open.agent;
 
 import android.support.v4.app.FragmentActivity;
-import bfbd;
+import bffm;
 import com.tencent.qphone.base.util.QLog;
 
 public class OpenAuthorityFragment$9$6
   implements Runnable
 {
-  public OpenAuthorityFragment$9$6(bfbd parambfbd) {}
+  public OpenAuthorityFragment$9$6(bffm parambffm) {}
   
   public void run()
   {

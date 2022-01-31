@@ -25,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
 public class qun
   implements Manager
 {
-  private awbw jdField_a_of_type_Awbw;
+  private awgf jdField_a_of_type_Awgf;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new quo(this);
   private final ArrayList<UgcVideo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -38,7 +38,7 @@ public class qun
   public qun(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Awbw = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_Awgf = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
     AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
   }
   

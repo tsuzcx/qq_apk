@@ -1,83 +1,20 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class alja
+class alja
+  implements Comparator<ApolloActionData>
 {
-  public SessionInfo a;
-  public List<alhk> a;
-  public Context b;
-  public int c = 0;
-  public int d;
-  public int e;
-  protected int f = -1;
+  alja(aliw paramaliw) {}
   
-  public int a()
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    return 0;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 0;
-  }
-  
-  public alhk a(String paramString)
-  {
-    return null;
-  }
-  
-  public View a()
-  {
-    return null;
-  }
-  
-  public View a(int paramInt)
-  {
-    View localView = a();
-    a(localView, paramInt);
-    return localView;
-  }
-  
-  public ArrayList<alhk> a(int paramInt)
-  {
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(View paramView, int paramInt) {}
-  
-  public void b(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public void c(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewBinder", 2, new Object[] { "[setHighlightItemIndex] highlightItemIndex=", Integer.valueOf(paramInt) });
+    if (paramApolloActionData2.obtainedTime == paramApolloActionData1.obtainedTime) {
+      return 0;
     }
-    if ((this.a == null) || (this.a.size() == 0)) {
-      QLog.e("ApolloViewBinder", 1, "[setHighlightItemIndex] no panel data, set failed");
+    if (paramApolloActionData2.obtainedTime > paramApolloActionData1.obtainedTime) {
+      return 1;
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramInt < 0) || (paramInt >= this.a.size()));
-      this.f = paramInt;
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloViewBinder", 2, new Object[] { "[setHighlightItemIndex] set success, highlightItemIndex=", Integer.valueOf(paramInt) });
-  }
-  
-  public void c_(List<alhk> paramList)
-  {
-    this.a = paramList;
+    return -1;
   }
 }
 

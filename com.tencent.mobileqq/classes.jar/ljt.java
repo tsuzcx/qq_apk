@@ -71,7 +71,7 @@ public class ljt
   
   public static void a(String paramString)
   {
-    azmj.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
   }
   
   public static void a(boolean paramBoolean)

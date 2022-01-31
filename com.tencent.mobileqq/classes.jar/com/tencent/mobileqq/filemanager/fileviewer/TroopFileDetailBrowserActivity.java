@@ -5,41 +5,41 @@ import android.content.Intent;
 import android.text.method.LinkMovementMethod;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aopz;
-import aoqa;
-import aoqc;
-import aqnl;
-import aqse;
-import arbg;
-import ardn;
-import ardv;
-import ardw;
-import arni;
-import azmj;
-import bdee;
-import bdwm;
+import aoui;
+import aouj;
+import aoul;
+import aqru;
+import aqwn;
+import arfp;
+import arhw;
+import arie;
+import arif;
+import arrr;
+import azqs;
+import bdin;
+import beav;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public final class TroopFileDetailBrowserActivity
   extends FileBrowserActivity
-  implements ardn
+  implements arhw
 {
-  protected aqnl a;
+  protected aqru a;
   public ForwardFileInfo b;
   
   public TroopFileDetailBrowserActivity()
   {
-    this.jdField_a_of_type_Aqnl = new ardv(this);
+    this.jdField_a_of_type_Aqru = new arie(this);
   }
   
   private int a(Context paramContext)
   {
-    if (!bdee.g(paramContext)) {
+    if (!bdin.g(paramContext)) {
       return 2;
     }
-    if (bdee.h(paramContext)) {
+    if (bdin.h(paramContext)) {
       return 0;
     }
     return 1;
@@ -48,45 +48,45 @@ public final class TroopFileDetailBrowserActivity
   protected boolean a(Intent paramIntent)
   {
     if (this.app != null) {
-      this.app.a().addObserver(this.jdField_a_of_type_Aqnl);
+      this.app.a().addObserver(this.jdField_a_of_type_Aqru);
     }
-    ardw localardw = new ardw(this.app);
-    if (!localardw.a(paramIntent, this)) {}
+    arif localarif = new arif(this.app);
+    if (!localarif.a(paramIntent, this)) {}
     do
     {
       return false;
       this.b = ((ForwardFileInfo)super.getIntent().getParcelableExtra("fileinfo"));
-      if (this.jdField_a_of_type_Arbg == null)
+      if (this.jdField_a_of_type_Arfp == null)
       {
-        this.jdField_a_of_type_Arbg = new arbg(this, this, localardw.a(this));
-        this.jdField_a_of_type_Arbg.a(this.jdField_a_of_type_Ardo);
+        this.jdField_a_of_type_Arfp = new arfp(this, this, localarif.a(this));
+        this.jdField_a_of_type_Arfp.a(this.jdField_a_of_type_Arhx);
       }
       int i = paramIntent.getIntExtra("file_enter_file_browser_type", 0);
       paramIntent = paramIntent.getBundleExtra("file_browser_extra_params");
-      if (this.jdField_a_of_type_Arbg.a(a(), new RelativeLayout.LayoutParams(-1, -1), i, paramIntent)) {
+      if (this.jdField_a_of_type_Arfp.a(a(), new RelativeLayout.LayoutParams(-1, -1), i, paramIntent)) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.w("FileBrowserActivity<FileAssistant>", 2, "error. can not create a fileviewer from FileBrowserManager");
     return false;
-    if (localardw.a() == 1) {
-      azmj.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "pic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", arni.b(arni.a(this.b.d())));
+    if (localarif.a() == 1) {
+      azqs.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "pic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", arrr.b(arrr.a(this.b.d())));
     }
     for (;;)
     {
       if (a(getBaseContext()) == 1)
       {
-        paramIntent = (TextView)findViewById(2131367367);
-        if ((paramIntent != null) && (aoqc.c().c.a) && (!bdwm.a().b()))
+        paramIntent = (TextView)findViewById(2131367377);
+        if ((paramIntent != null) && (aoul.c().c.a) && (!beav.a().b()))
         {
-          paramIntent.setText(aoqc.c().c.a(this, ""));
+          paramIntent.setText(aoul.c().c.a(this, ""));
           paramIntent.setMovementMethod(LinkMovementMethod.getInstance());
           paramIntent.setHighlightColor(17170445);
           paramIntent.setVisibility(0);
         }
       }
       return true;
-      azmj.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "nonpic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", arni.b(arni.a(this.b.d())));
+      azqs.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "nonpic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", arrr.b(arrr.a(this.b.d())));
     }
   }
   
@@ -111,7 +111,7 @@ public final class TroopFileDetailBrowserActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.app.a().deleteObserver(this.jdField_a_of_type_Aqnl);
+    this.app.a().deleteObserver(this.jdField_a_of_type_Aqru);
   }
 }
 

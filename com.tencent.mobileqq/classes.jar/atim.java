@@ -1,18 +1,36 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import android.os.Handler;
+import android.os.Message;
 
-public final class atim
-  implements Parcelable.Creator<MusicInfo>
+public class atim
+  extends Handler
 {
-  public MusicInfo a(Parcel paramParcel)
+  atil a;
+  
+  protected atim(atil paramatil)
   {
-    return new MusicInfo(paramParcel, null);
+    this.a = paramatil;
   }
   
-  public MusicInfo[] a(int paramInt)
+  protected void a()
   {
-    return new MusicInfo[paramInt];
+    this.a = null;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      paramMessage = (String)paramMessage.obj;
+      this.a.a(paramMessage);
+      return;
+    }
+    this.a.a();
   }
 }
 

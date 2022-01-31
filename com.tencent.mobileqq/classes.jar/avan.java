@@ -1,25 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
 
 public class avan
-  implements bhqd
+  implements Animation.AnimationListener
 {
-  public avan(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bhpy parambhpy) {}
+  public avan(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Bhpy != null) {
-        this.jdField_a_of_type_Bhpy.dismiss();
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
-    }
+    ChooseInterestTagActivity.a(this.a).fullScroll(66);
   }
 }
 

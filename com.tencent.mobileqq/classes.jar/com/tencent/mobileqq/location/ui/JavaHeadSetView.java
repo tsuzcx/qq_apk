@@ -15,16 +15,16 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import atlh;
-import atln;
-import atlx;
-import atmg;
-import atof;
-import atpb;
-import atpr;
-import atpv;
-import bhxo;
-import bngs;
+import atpq;
+import atpw;
+import atqg;
+import atqp;
+import atso;
+import attk;
+import atua;
+import atue;
+import bibv;
+import bnle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -40,8 +40,8 @@ public class JavaHeadSetView
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  atmg jdField_a_of_type_Atmg;
-  private atpr jdField_a_of_type_Atpr;
+  atqp jdField_a_of_type_Atqp;
+  private atua jdField_a_of_type_Atua;
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
   private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
   private ImageView b;
@@ -50,7 +50,7 @@ public class JavaHeadSetView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Atmg = new atmg(paramContext);
+    this.jdField_a_of_type_Atqp = new atqp(paramContext);
     c();
     b();
     a();
@@ -113,8 +113,8 @@ public class JavaHeadSetView
   
   private void a()
   {
-    View localView = a(2131375981);
-    if (bhxo.a())
+    View localView = a(2131376034);
+    if (bibv.a())
     {
       localView.setBackgroundColor(Color.parseColor("#CC000000"));
       return;
@@ -126,12 +126,12 @@ public class JavaHeadSetView
   {
     if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
     {
-      bngs.a((Activity)this.jdField_a_of_type_AndroidContentContext);
-      if (bngs.jdField_a_of_type_Boolean)
+      bnle.a((Activity)this.jdField_a_of_type_AndroidContentContext);
+      if (bnle.jdField_a_of_type_Boolean)
       {
-        View localView = a(2131371225);
+        View localView = a(2131371244);
         ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-        localLayoutParams.height = bngs.jdField_a_of_type_Int;
+        localLayoutParams.height = bnle.jdField_a_of_type_Int;
         localView.setLayoutParams(localLayoutParams);
         localView.setVisibility(0);
       }
@@ -140,24 +140,24 @@ public class JavaHeadSetView
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidViewView = inflate(getContext(), 2131559216, this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)a(2131369542));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131363922));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_Atmg);
+    this.jdField_a_of_type_AndroidViewView = inflate(getContext(), 2131559215, this);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)a(2131369560));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131363924));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_Atqp);
     try
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844891)));
-      atpb.a(this.jdField_a_of_type_AndroidWidgetImageView, "退出位置共享");
-      this.b = ((ImageView)a(2131370418));
-      this.b.setOnClickListener(this.jdField_a_of_type_Atmg);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844963)));
+      attk.a(this.jdField_a_of_type_AndroidWidgetImageView, "退出位置共享");
+      this.b = ((ImageView)a(2131370437));
+      this.b.setOnClickListener(this.jdField_a_of_type_Atqp);
     }
     catch (Throwable localThrowable1)
     {
       try
       {
-        this.b.setImageDrawable(a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844892)));
-        atpb.a(this.b, "最小化位置共享");
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131377684));
+        this.b.setImageDrawable(a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844964)));
+        attk.a(this.b, "最小化位置共享");
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131377738));
         d();
         return;
         localThrowable1 = localThrowable1;
@@ -175,9 +175,9 @@ public class JavaHeadSetView
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Atpr);
-    this.jdField_a_of_type_Atmg.a(this.jdField_a_of_type_Atpr);
-    this.jdField_a_of_type_Atmg.a(this.jdField_a_of_type_AndroidWidgetTextView);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Atua);
+    this.jdField_a_of_type_Atqp.a(this.jdField_a_of_type_Atua);
+    this.jdField_a_of_type_Atqp.a(this.jdField_a_of_type_AndroidWidgetTextView);
   }
   
   protected final <T extends View> T a(int paramInt)
@@ -185,30 +185,30 @@ public class JavaHeadSetView
     return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
   }
   
-  public void setLocationController(atof paramatof, atlh paramatlh, boolean paramBoolean)
+  public void setLocationController(atso paramatso, atpq paramatpq, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Atpr.a(paramatof);
-    this.jdField_a_of_type_Atmg.a(paramatlh);
+    this.jdField_a_of_type_Atua.a(paramatso);
+    this.jdField_a_of_type_Atqp.a(paramatpq);
     int i;
-    if (!atln.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a.a(paramatlh))
+    if (!atpw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a.a(paramatpq))
     {
-      paramatof = new ArrayList();
-      paramatof.add(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-      this.jdField_a_of_type_Atpr.a(paramatof);
-      if ((!paramBoolean) || (atpv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramatlh.a(), paramatlh.a()))) {
+      paramatso = new ArrayList();
+      paramatso.add(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+      this.jdField_a_of_type_Atua.a(paramatso);
+      if ((!paramBoolean) || (atue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramatpq.a(), paramatpq.a()))) {
         break label108;
       }
       i = 1;
-      paramatlh = this.jdField_a_of_type_AndroidWidgetTextView;
+      paramatpq = this.jdField_a_of_type_AndroidWidgetTextView;
       if (i == 0) {
         break label114;
       }
     }
     label108:
     label114:
-    for (paramatof = "正在发起...";; paramatof = "正在加入...")
+    for (paramatso = "正在发起...";; paramatso = "正在加入...")
     {
-      paramatlh.setText(paramatof);
+      paramatpq.setText(paramatso);
       return;
       i = 0;
       break;

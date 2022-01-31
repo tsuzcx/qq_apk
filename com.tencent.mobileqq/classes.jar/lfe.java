@@ -79,7 +79,7 @@ public class lfe
     if (QLog.isColorLevel()) {
       QLog.d("VideoCallStateMonitor", 2, "begin monitor " + paramInt);
     }
-    Map localMap = bdcb.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
+    Map localMap = bdgk.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
     if (a(localMap, "summary.total-pss") <= 0L) {
       if (QLog.isColorLevel()) {
         QLog.e("VideoCallStateMonitor", 1, "getTotalPss error!");
@@ -96,7 +96,7 @@ public class lfe
       }
       return;
       a(SystemClock.uptimeMillis(), localMap);
-      a(bdcb.e() / 1000L);
+      a(bdgk.e() / 1000L);
     }
   }
   
@@ -251,7 +251,7 @@ public class lfe
             localObject1 = "1";
             ((HashMap)localObject2).put("firstChat", localObject1);
             ((HashMap)localObject2).put("chatType", String.valueOf(this.jdField_c_of_type_Int));
-            ((HashMap)localObject2).put("device_memory", String.valueOf(bdcb.d() / 1024L));
+            ((HashMap)localObject2).put("device_memory", String.valueOf(bdgk.d() / 1024L));
             ((HashMap)localObject2).put("totalPss_growth", String.valueOf(l1 - l2));
             ((HashMap)localObject2).put("totalPss_growthRate", String.valueOf(d1));
             ((HashMap)localObject2).put("javaPss_growth", String.valueOf(l3 - l4));

@@ -1,163 +1,89 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
+import QMF_PROTOCAL.QmfDownstream;
+import QzoneCombine.ClientOnlineNotfiyRsp;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import cooperation.qzone.WNSStream;
+import java.io.IOException;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class azca
+public class azca
+  extends MSFServlet
 {
-  int jdField_a_of_type_Int = 0;
-  baps jdField_a_of_type_Baps;
-  DownloadInfo jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = 0;
-  int c;
-  
-  azca()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_c_of_type_Int = 0;
-  }
-  
-  boolean a(DownloadInfo paramDownloadInfo)
-  {
-    boolean bool;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == paramDownloadInfo) || (((TextUtils.isEmpty(paramDownloadInfo.MD5_zip_model)) || (paramDownloadInfo.MD5_zip_model.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo.MD5_zip_model))) && ((TextUtils.isEmpty(paramDownloadInfo.MD5_zip_so)) || (paramDownloadInfo.MD5_zip_so.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo.MD5_zip_so))))) {
-        break label382;
-      }
-      bool = true;
+    if (paramFromServiceMsg == null) {
+      QLog.e("NotifyQZoneServer", 1, "fromServiceMsg==null");
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavGesture", 2, String.format("DownloadContrl, mDownloading[%s], reDownload[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
+      return;
+      if (paramFromServiceMsg.getResultCode() != 1000) {
+        break label192;
       }
-      if (!bool)
+      Object localObject = new WNSStream();
+      paramFromServiceMsg = bdpd.b(paramFromServiceMsg.getWupBuffer());
+      try
       {
-        return this.jdField_a_of_type_Boolean;
-        bool = true;
-      }
-      else
-      {
-        if (this.jdField_a_of_type_Baps != null)
+        paramFromServiceMsg = ((WNSStream)localObject).unpack(paramFromServiceMsg);
+        if (paramFromServiceMsg != null)
         {
-          Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-          if ((localObject instanceof AppInterface))
+          paramFromServiceMsg = (ClientOnlineNotfiyRsp)bilr.a(ClientOnlineNotfiyRsp.class, paramFromServiceMsg.BusiBuff);
+          if (paramFromServiceMsg != null)
           {
-            localObject = ((AppInterface)localObject).getNetEngine(0);
-            if (localObject != null)
+            localObject = paramFromServiceMsg.AttachInfo;
+            paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).edit();
+            localObject = bdhe.a((byte[])localObject);
+            paramIntent = paramIntent.getStringExtra("key_uin");
+            paramFromServiceMsg.putString("key_attach_info" + paramIntent, (String)localObject);
+            if (QLog.isDevelopLevel()) {
+              QLog.d("NotifyQZoneServer", 4, "onReceive attachinfo:" + (String)localObject);
+            }
+            if (Build.VERSION.SDK_INT >= 9)
             {
-              QLog.d("QavGesture", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_Baps.a() }));
-              ((bapv)localObject).b(this.jdField_a_of_type_Baps);
+              paramFromServiceMsg.apply();
+              return;
             }
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = paramDownloadInfo;
-        this.jdField_c_of_type_Int = 0;
-        this.jdField_a_of_type_Baps = null;
-        this.jdField_a_of_type_Int = 0;
-        this.b = 0;
-        if (!azce.d(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo))
-        {
-          this.jdField_c_of_type_Int |= 0x1;
-          this.jdField_a_of_type_Int += 1;
-        }
-        if (!azce.c(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo))
-        {
-          this.jdField_c_of_type_Int |= 0x2;
-          this.jdField_a_of_type_Int += 1;
-        }
-        if ((azce.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo)) && (!azce.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo)))
-        {
-          this.jdField_c_of_type_Int |= 0x3;
-          this.jdField_a_of_type_Int += 1;
-        }
-        QLog.d("QavGesture", 1, String.format("DownloadContrl, mResFlag[%s], mInfo[%s]", new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo }));
-        if (this.jdField_a_of_type_Int == 0) {
-          return this.jdField_a_of_type_Boolean;
-        }
-        this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, 3);
-        return this.jdField_a_of_type_Boolean;
-        label382:
-        bool = false;
+      }
+      catch (IOException paramIntent)
+      {
+        QLog.e("NotifyQZoneServer", 1, paramIntent, new Object[0]);
+        return;
       }
     }
+    paramFromServiceMsg.commit();
+    return;
+    label192:
+    QLog.e("NotifyQZoneServer", 1, "onReceive fromServiceMsg.getResultCode():" + paramFromServiceMsg.getResultCode());
   }
   
-  boolean a(DownloadInfo paramDownloadInfo, int paramInt)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    String str2;
-    String str1;
-    int i;
-    if (!azce.d(paramDownloadInfo))
-    {
-      str2 = paramDownloadInfo.url_zip_so;
-      str1 = paramDownloadInfo.MD5_zip_so;
-      i = 1;
+    long l = paramIntent.getLongExtra("lastPushMsgTime", 0L);
+    paramIntent = paramIntent.getStringExtra("key_uin");
+    paramIntent = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).getString("key_attach_info" + paramIntent, "");
+    byte[] arrayOfByte = bdhe.a(paramIntent);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("NotifyQZoneServer", 4, "onSend lastPushMsgTime:" + l + ",attachinfo:" + paramIntent);
     }
-    String str3;
-    boolean bool2;
-    for (;;)
+    bjcq localbjcq = new bjcq(l, arrayOfByte);
+    arrayOfByte = localbjcq.encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null)
     {
-      str3 = azce.b() + str1;
-      if (paramInt >= 0) {
-        break label154;
-      }
-      QLog.d("QavGesture", 1, String.format("downloadRes, 下载死循环了. res_flag[%s], info[%s]", new Object[] { Integer.valueOf(i), paramDownloadInfo }));
-      azbz.a(-3);
-      bool2 = false;
-      return bool2;
-      if ((paramDownloadInfo.enable) && (!azce.c(paramDownloadInfo)))
-      {
-        str2 = paramDownloadInfo.url_zip_model;
-        str1 = paramDownloadInfo.MD5_zip_model;
-        i = 2;
-      }
-      else
-      {
-        if ((!azce.a(paramDownloadInfo)) || (azce.b(paramDownloadInfo))) {
-          break;
-        }
-        str2 = paramDownloadInfo.url_zip_gamemodel;
-        str1 = paramDownloadInfo.MD5_zip_gamemodel;
-        i = 3;
-      }
+      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localbjcq.uniKey());
+      paramIntent = new byte[4];
     }
-    azbz.a(100);
-    return false;
-    label154:
-    baps localbaps = new baps();
-    localbaps.jdField_a_of_type_Bapx = new azcb(this, str1, paramDownloadInfo, i, paramInt);
-    localbaps.a(i + "_" + str1);
-    localbaps.jdField_a_of_type_JavaLangString = str2;
-    localbaps.jdField_a_of_type_Int = 0;
-    localbaps.jdField_c_of_type_JavaLangString = new File(str3).getPath();
-    localbaps.jdField_c_of_type_Int = bdee.a(baqx.a().a());
-    paramDownloadInfo = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramDownloadInfo instanceof QQAppInterface))
-    {
-      paramDownloadInfo = ((QQAppInterface)paramDownloadInfo).getNetEngine(0);
-      if (paramDownloadInfo != null)
-      {
-        this.jdField_a_of_type_Baps = localbaps;
-        paramDownloadInfo.a(this.jdField_a_of_type_Baps);
-      }
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (!bool1) {
-        azbz.a(-2);
-      }
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("QavGesture", 2, String.format("downloadRes, res_flag[%s], md5[%s], etr[%s]", new Object[] { Integer.valueOf(i), str1, Boolean.valueOf(bool1) }));
-      return bool1;
-    }
+    paramPacket.setTimeout(30000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbjcq.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

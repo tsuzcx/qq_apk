@@ -1,29 +1,12 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
-final class ayoa
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public class ayoa
 {
-  protected WeakReference<aynz> a;
+  public String a;
+  public String b;
   
-  public ayoa(aynz paramaynz)
+  public ayoa(String paramString1, String paramString2)
   {
-    this.a = new WeakReference(paramaynz);
-  }
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
-  {
-    aynz localaynz = (aynz)this.a.get();
-    if (localaynz == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkNodeContainer", 1, "onGetAppPathByName.wrapper == null");
-      }
-      return;
-    }
-    localaynz.onGetAppPathByName(paramInt, paramString, paramAppPathInfo, paramObject);
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

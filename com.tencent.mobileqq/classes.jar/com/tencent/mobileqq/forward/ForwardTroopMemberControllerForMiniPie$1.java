@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.forward;
 
-import almv;
+import alrk;
 import android.text.TextUtils;
 import android.util.Pair;
-import asag;
+import asep;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
@@ -18,11 +18,11 @@ import mqq.os.MqqHandler;
 public class ForwardTroopMemberControllerForMiniPie$1
   implements Runnable
 {
-  public ForwardTroopMemberControllerForMiniPie$1(asag paramasag, String paramString) {}
+  public ForwardTroopMemberControllerForMiniPie$1(asep paramasep, String paramString) {}
   
   public void run()
   {
-    Object localObject1 = ((almv)asag.a(this.this$0).getManager(53)).a(this.a);
+    Object localObject1 = ((alrk)asep.a(this.this$0).getManager(53)).a(this.a);
     ArrayList localArrayList = new ArrayList();
     if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
     {

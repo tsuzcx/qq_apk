@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.ContainerView;
 
 public class beoh
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public beoh(ProfileCardMoreInfoView paramProfileCardMoreInfoView, View paramView) {}
+  public beoh(ContainerView paramContainerView) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    awne.a().b(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (!ContainerView.a(this.a))
+    {
+      ContainerView.a(this.a, ContainerView.a);
+      ContainerView.a(this.a, true);
+    }
   }
 }
 

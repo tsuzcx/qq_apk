@@ -1,27 +1,7 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-
-public class apku
-  extends DataSetObserver
+class apku
 {
-  public apku(DragSortListView paramDragSortListView) {}
-  
-  private void a()
-  {
-    if (this.a.g == 4) {
-      this.a.a();
-    }
-  }
-  
-  public void onChanged()
-  {
-    a();
-  }
-  
-  public void onInvalidated()
-  {
-    a();
-  }
+  baub jdField_a_of_type_Baub;
+  bazx jdField_a_of_type_Bazx;
 }
 
 

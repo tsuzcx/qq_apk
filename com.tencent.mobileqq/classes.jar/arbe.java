@@ -1,27 +1,34 @@
-import android.annotation.TargetApi;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp;
 
-public class arbe
-  extends BroadcastReceiver
+class arbe
+  implements bkkj<WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp>
 {
-  public arbe(FileBrowserActivity paramFileBrowserActivity) {}
+  arbe(arau paramarau, arbi paramarbi) {}
   
-  @TargetApi(5)
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt, String paramString, WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
   {
-    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Failed errorCode=" + paramInt + "; errorMsg=" + paramString);
+    }
+    if (this.jdField_a_of_type_Arbi != null) {
+      this.jdField_a_of_type_Arbi.a(paramInt, paramString);
+    }
+  }
+  
+  public void a(WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Success");
+    }
+    if (this.jdField_a_of_type_Arbi != null) {
+      this.jdField_a_of_type_Arbi.a(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arbe
  * JD-Core Version:    0.7.0.1
  */

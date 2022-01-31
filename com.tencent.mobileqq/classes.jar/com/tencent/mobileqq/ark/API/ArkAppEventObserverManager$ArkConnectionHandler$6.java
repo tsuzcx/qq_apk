@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ark.API;
 
-import anff;
-import anfh;
-import anfj;
+import anjo;
+import anjq;
+import anjs;
 
 public class ArkAppEventObserverManager$ArkConnectionHandler$6
   implements Runnable
 {
-  public ArkAppEventObserverManager$ArkConnectionHandler$6(anfh paramanfh) {}
+  public ArkAppEventObserverManager$ArkConnectionHandler$6(anjq paramanjq) {}
   
   public void run()
   {
-    if ((anff.a(this.a.a) != null) && (!"none".equals(anff.b(this.a.a))))
+    if ((anjo.a(this.a.a) != null) && (!"none".equals(anjo.b(this.a.a))))
     {
-      anff.a(this.a.a).a(true, "none");
-      anff.a(this.a.a, "none");
+      anjo.a(this.a.a).a(true, "none");
+      anjo.a(this.a.a, "none");
     }
   }
 }

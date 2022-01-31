@@ -1,11 +1,16 @@
-import java.util.concurrent.Executor;
+import java.util.Random;
 
-final class blzk
-  implements Executor
+public class blzk
 {
-  public void execute(Runnable paramRunnable)
+  private static Random a = new Random();
+  
+  public static blzl a()
   {
-    blzj.a().b(paramRunnable);
+    int i = bnsm.a / 4;
+    int j = a.nextInt(bnsm.a / 2);
+    int k = bnsm.a / 4;
+    int m = a.nextInt(bnsm.a / 2);
+    return new blzl(i - j + bnsm.a / 2, k - m + (bnsm.b - bnsm.a(249.0F)) / 2);
   }
 }
 

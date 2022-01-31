@@ -1,24 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.List;
 
 class arjs
-  implements View.OnClickListener
+  implements yuf
 {
-  arjs(arjr paramarjr) {}
+  arjs(arjr paramarjr, boolean paramBoolean, String paramString, short paramShort) {}
   
-  public void onClick(View paramView)
+  public void a(List<arnw> paramList)
   {
-    if (!arjr.a(this.a)) {
-      return;
+    if (this.jdField_a_of_type_Arjr.a.jdField_a_of_type_Arkp != null) {
+      this.jdField_a_of_type_Arjr.a.jdField_a_of_type_Arkp.a(paramList, this.jdField_a_of_type_Arjr.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Arjr.a.b, this.jdField_a_of_type_Arjr.a.c, this.jdField_a_of_type_Arjr.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
     }
-    long l = aqxj.b();
-    azmj.b(null, "dc00898", "", "", "0X800AA92", "0X800AA92", 4, 0, "" + l, "0", "", "");
-    if ((1 == arjr.a(this.a)) && (!arjr.b(this.a)))
+    if (paramList != null)
     {
-      armv.a(arjr.a(this.a), 2131698703, 2131698702, new arjt(this));
+      azqs.b(this.jdField_a_of_type_Arjr.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_suc", 0, 0, "" + this.jdField_a_of_type_Arjr.a.jdField_a_of_type_Arhz.a().TroopUin, "", arrr.f(this.jdField_a_of_type_Arjr.a.c()), "1");
       return;
     }
-    arjr.a(this.a);
+    azqs.b(this.jdField_a_of_type_Arjr.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.jdField_a_of_type_Arjr.a.jdField_a_of_type_Arhz.a().TroopUin, "-1", arrr.f(this.jdField_a_of_type_Arjr.a.c()), "1");
   }
 }
 

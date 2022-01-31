@@ -2,13 +2,13 @@ package com.tencent.qqmini.sdk.minigame.plugins;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import bgkd;
-import bgwc;
+import bgok;
+import bhaj;
 
 class OpenDataJsPlugin$9
   implements DialogInterface.OnClickListener
 {
-  OpenDataJsPlugin$9(OpenDataJsPlugin paramOpenDataJsPlugin, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, Boolean paramBoolean, bgkd parambgkd, String paramString8, String paramString9) {}
+  OpenDataJsPlugin$9(OpenDataJsPlugin paramOpenDataJsPlugin, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, Boolean paramBoolean, bgok parambgok, String paramString8, String paramString9) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
@@ -21,8 +21,8 @@ class OpenDataJsPlugin$9
     }
     catch (Throwable paramDialogInterface)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramDialogInterface.getMessage());
-      bgwc.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramDialogInterface.getMessage());
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramDialogInterface.getMessage());
+      bhaj.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramDialogInterface.getMessage());
       this.val$req.b();
     }
   }

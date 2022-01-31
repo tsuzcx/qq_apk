@@ -1,14 +1,19 @@
-import android.app.Activity;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-public abstract interface begy
-  extends bebx
+public class begy
+  implements ThreadExcutor.IThreadListener
 {
-  public abstract int a(WebViewPlugin paramWebViewPlugin, byte paramByte, boolean paramBoolean);
+  public begy(WebViewPlugin paramWebViewPlugin) {}
   
-  public abstract Activity b();
+  public void onAdded() {}
   
-  public abstract boolean e();
+  public void onPostRun()
+  {
+    this.a.onPostPluginAsyncTask();
+  }
+  
+  public void onPreRun() {}
 }
 
 

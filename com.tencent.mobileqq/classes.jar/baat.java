@@ -1,33 +1,19 @@
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
-import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
+import com.tencent.mobileqq.studymode.ModeRadioGroup;
+import kotlin.Metadata;
 
-public class baat
-  extends baaw
-  implements azza
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+public final class baat
+  implements View.OnClickListener
 {
-  protected String b;
+  public baat(ModeRadioGroup paramModeRadioGroup, int paramInt) {}
   
-  public baat(SpriteNativeView paramSpriteNativeView, String paramString)
+  public final void onClick(View paramView)
   {
-    super(paramSpriteNativeView);
-    this.b = paramString;
-  }
-  
-  protected ImageView a()
-  {
-    return new PressEffectImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
-  }
-  
-  public String a()
-  {
-    return this.b;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
+    if (ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup)) {
+      ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup, this.jdField_a_of_type_Int, true, false, 4, null);
+    }
   }
 }
 

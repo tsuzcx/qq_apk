@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount;
 
 import android.text.TextUtils;
-import bjxj;
+import bkbq;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -23,7 +23,7 @@ public class VideoPlayRecommendHandler$4
     ((oidb_0x6cf.ReqBody)localObject).uint64_uin.set(this.jdField_a_of_type_Long);
     ((oidb_0x6cf.ReqBody)localObject).uint32_req_source.set(this.jdField_a_of_type_Int);
     ((oidb_0x6cf.ReqBody)localObject).uint32_req_sub_source.set(6);
-    ((oidb_0x6cf.ReqBody)localObject).uint32_req_sim_type.set(bjxj.c());
+    ((oidb_0x6cf.ReqBody)localObject).uint32_req_sim_type.set(bkbq.c());
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       ((oidb_0x6cf.ReqBody)localObject).bytes_req_range_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
     }

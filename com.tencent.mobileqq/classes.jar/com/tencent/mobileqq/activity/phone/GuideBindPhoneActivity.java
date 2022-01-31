@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.phone;
 
-import alpo;
+import alud;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import aovo;
-import awdq;
-import azmj;
-import bhou;
+import aozx;
+import awhz;
+import azqs;
+import bhtb;
 import com.tencent.mobileqq.activity.ContactBindedActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
@@ -24,7 +24,7 @@ public class GuideBindPhoneActivity
   implements View.OnClickListener
 {
   protected int a;
-  protected awdq a;
+  protected awhz a;
   protected int b = 0;
   
   public GuideBindPhoneActivity()
@@ -44,13 +44,13 @@ public class GuideBindPhoneActivity
   
   public void b()
   {
-    if ((bhou.k()) && (aovo.a("android.permission.WRITE_CONTACTS")))
+    if ((bhtb.k()) && (aozx.a("android.permission.WRITE_CONTACTS")))
     {
       String str1 = getIntent().getStringExtra("key_contact_name");
       String str2 = getIntent().getStringExtra("key_contact_phone");
       PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.app.getManager(11);
       if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (localPhoneContactManagerImp.b(str1, str2))) {
-        QQToast.a(getApplicationContext(), 2, alpo.a(2131705799), 0).a();
+        QQToast.a(getApplicationContext(), 2, alud.a(2131705811), 0).a();
       }
       finish();
     }
@@ -109,27 +109,27 @@ public class GuideBindPhoneActivity
     {
       paramBundle = new GuideBindPhoneActivity.1(this);
       GuideBindPhoneActivity.2 local2 = new GuideBindPhoneActivity.2(this);
-      aovo.a(this, this.app, paramBundle, local2);
+      aozx.a(this, this.app, paramBundle, local2);
     }
-    setContentView(2131559174);
-    PhoneContactManagerImp.a(this.app, getResources(), (ImageView)findViewById(2131364712));
-    paramBundle = findViewById(2131369129);
+    setContentView(2131559173);
+    PhoneContactManagerImp.a(this.app, getResources(), (ImageView)findViewById(2131364713));
+    paramBundle = findViewById(2131369147);
     if ((paramBundle != null) && ("1000".equals(ThemeUtil.curThemeId))) {
-      paramBundle.setBackgroundResource(2130839216);
+      paramBundle.setBackgroundResource(2130839217);
     }
     for (;;)
     {
-      setTitle(null, getString(2131695204));
+      setTitle(null, getString(2131695206));
       setLeftViewName(2131690382);
-      this.jdField_a_of_type_Awdq = new awdq(this, getPackageName());
-      findViewById(2131364711).setOnClickListener(this);
-      azmj.b(this.app, "dc00898", "", "", "0X8009F1B", "0X8009F1B", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Awhz = new awhz(this, getPackageName());
+      findViewById(2131364712).setOnClickListener(this);
+      azqs.b(this.app, "dc00898", "", "", "0X8009F1B", "0X8009F1B", 0, 0, "", "", "", "");
       if (QLog.isColorLevel()) {
         QLog.i("GuideBindPhoneActivity", 2, String.format("init [%s, %s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b) }));
       }
       return true;
       if (paramBundle != null) {
-        paramBundle.setBackgroundResource(2130838591);
+        paramBundle.setBackgroundResource(2130838592);
       }
     }
   }
@@ -141,12 +141,12 @@ public class GuideBindPhoneActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131364711)
+    if (paramView.getId() == 2131364712)
     {
       if (QLog.isColorLevel()) {
         QLog.i("GuideBindPhoneActivity", 2, "jump permission page");
       }
-      if (!bhou.k()) {
+      if (!bhtb.k()) {
         break label114;
       }
       if ((this.b == 2) || (this.b == 1)) {
@@ -157,18 +157,18 @@ public class GuideBindPhoneActivity
     {
       try
       {
-        this.jdField_a_of_type_Awdq.a();
-        azmj.b(this.app, "dc00898", "", "", "0X8009F1C", "0X8009F1C", 0, 0, "", "", "", "");
+        this.jdField_a_of_type_Awhz.a();
+        azqs.b(this.app, "dc00898", "", "", "0X8009F1C", "0X8009F1C", 0, 0, "", "", "", "");
         return;
       }
       catch (Throwable paramView)
       {
         paramView.printStackTrace();
-        this.jdField_a_of_type_Awdq.b();
+        this.jdField_a_of_type_Awhz.b();
         continue;
       }
       label114:
-      this.jdField_a_of_type_Awdq.b();
+      this.jdField_a_of_type_Awhz.b();
     }
   }
 }

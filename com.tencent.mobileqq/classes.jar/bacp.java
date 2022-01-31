@@ -1,19 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.view.View;
 
-public final class bacp
-  implements Parcelable.Creator<TeamWorkFileImportInfo>
+public class bacp
+  implements baco
 {
-  public TeamWorkFileImportInfo a(Parcel paramParcel)
-  {
-    return new TeamWorkFileImportInfo(paramParcel);
-  }
+  public void a(Throwable paramThrowable) {}
   
-  public TeamWorkFileImportInfo[] a(int paramInt)
-  {
-    return new TeamWorkFileImportInfo[paramInt];
-  }
+  public void onCloseLoadingView() {}
+  
+  public void onEnterComplete() {}
+  
+  public void onShowLoadingView(View paramView) {}
 }
 
 

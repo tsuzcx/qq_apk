@@ -1,56 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class ayqg
-  implements Comparator<ayjh>
+  implements View.OnClickListener
 {
-  ayqg(ayqf paramayqf) {}
+  ayqg(ayqe paramayqe, aynu paramaynu) {}
   
-  public int a(ayjh paramayjh1, ayjh paramayjh2)
+  public void onClick(View paramView)
   {
-    int i = -1;
-    Object localObject = (aubm)this.a.a.getManager(11);
-    paramayjh1 = ((aubm)localObject).c(((ayid)paramayjh1).e());
-    paramayjh2 = ((aubm)localObject).c(((ayid)paramayjh2).e());
-    if ((paramayjh1 == null) || (paramayjh2 == null)) {
-      if ((paramayjh1 == null) && (paramayjh2 == null)) {
-        i = 0;
-      }
-    }
-    boolean bool2;
-    do
+    Object localObject = paramView.getContext();
+    paramView = this.jdField_a_of_type_Aynu.b();
+    if ((localObject instanceof BaseActivity))
     {
-      do
-      {
-        return i;
-        if (paramayjh2 == null) {}
-        for (i = -1;; i = 1) {
-          return i;
-        }
-        if ((paramayjh1.uin.equals("0")) && (paramayjh2.uin.equals("0"))) {
-          break;
-        }
-        if ((!paramayjh1.uin.equals("0")) && (!paramayjh2.uin.equals("0"))) {
-          return 0;
-        }
-      } while (!paramayjh2.uin.equals("0"));
-      return 1;
-      if (!paramayjh1.uin.equals("0")) {
-        break;
-      }
-      localObject = (aloz)this.a.a.getManager(51);
-      boolean bool1 = ((aloz)localObject).a(paramayjh1.unifiedCode, true);
-      bool2 = ((aloz)localObject).a(paramayjh2.unifiedCode, true);
-      if ((!bool1) && (!bool2)) {
-        break;
-      }
-      if ((bool1) && (bool2)) {
-        return 0;
-      }
-    } while (bool2);
-    return 1;
-    return 0;
+      ayvm.a("all_result", "clk_result_join", new String[0]);
+      localObject = (BaseActivity)localObject;
+      ayqe.a(this.jdField_a_of_type_Ayqe, (Activity)localObject, paramView);
+    }
   }
 }
 

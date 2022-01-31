@@ -1,23 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import android.view.KeyEvent;
+import android.view.Window;
+import android.view.WindowManager;
 
-public class asay
-  implements View.OnClickListener
+class asay
+  implements apul
 {
-  public asay(CommonTabFragment paramCommonTabFragment) {}
+  asay(asau paramasau) {}
   
-  public void onClick(View paramView)
+  public boolean a(KeyEvent paramKeyEvent)
   {
-    if ((this.a.a == null) || (this.a.a.mWebview == null)) {}
-    do
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (asau.a(this.a)))
     {
-      return;
-      paramView = this.a.a.mWebview.getPluginEngine();
-    } while (paramView == null);
-    paramView.a(this.a.a.mWebview.getUrl(), 8589934606L, null);
+      asau.a(this.a).removeView(asau.a(this.a));
+      asau.a(this.a, false);
+      paramKeyEvent = this.a.getWindow().getAttributes();
+      paramKeyEvent.y = 0;
+      this.a.getWindow().setAttributes(paramKeyEvent);
+      asau.a(this.a);
+      return true;
+    }
+    return false;
   }
 }
 

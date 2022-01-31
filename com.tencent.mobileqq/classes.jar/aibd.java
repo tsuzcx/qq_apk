@@ -1,14 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.widget.XListView;
 
-class aibd
-  implements DialogInterface.OnClickListener
+public class aibd
+  extends Handler
 {
-  aibd(aiak paramaiak) {}
+  public aibd(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    paramDialogInterface.dismiss();
+    if ((paramMessage.what != 1) || (ChatHistoryTroopFileFragment.a(this.a) == null)) {}
+    for (;;)
+    {
+      return;
+      int i = ChatHistoryTroopFileFragment.a(this.a).getFirstVisiblePosition();
+      while (i <= ChatHistoryTroopFileFragment.a(this.a).getLastVisiblePosition())
+      {
+        paramMessage = ChatHistoryTroopFileFragment.a(this.a).getChildAt(i);
+        if (paramMessage != null)
+        {
+          paramMessage = paramMessage.getTag();
+          if ((paramMessage != null) && ((paramMessage instanceof bbvo))) {
+            ((bbvo)paramMessage).a(this.a.a, ChatHistoryTroopFileFragment.a(this.a));
+          }
+        }
+        i += 1;
+      }
+    }
   }
 }
 

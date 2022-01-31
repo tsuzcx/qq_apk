@@ -22,11 +22,11 @@ public class okx
   
   private omg a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.getAdapter() instanceof bhtf)))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.getAdapter() instanceof bhxm)))
     {
-      bhtf localbhtf = (bhtf)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.getAdapter();
-      if ((localbhtf.getWrappedAdapter() instanceof omg)) {
-        return (omg)localbhtf.getWrappedAdapter();
+      bhxm localbhxm = (bhxm)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.getAdapter();
+      if ((localbhxm.getWrappedAdapter() instanceof omg)) {
+        return (omg)localbhxm.getWrappedAdapter();
       }
     }
     return null;

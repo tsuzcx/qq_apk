@@ -1,17 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
 class bbop
-  implements DialogInterface.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  bbop(bboe parambboe, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
+  bbop(bbon parambbon, boolean paramBoolean, View paramView, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c(this.jdField_a_of_type_JavaUtilUUID);
+    boolean bool = false;
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      paramAnimator = new int[2];
+      this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramAnimator);
+      i = xsm.d(this.jdField_a_of_type_Bbon.jdField_a_of_type_AndroidContentContext) - paramAnimator[1];
+      if (i >= this.jdField_a_of_type_Int) {}
+    }
+    for (int i = this.jdField_a_of_type_Int - i;; i = 0)
+    {
+      if (this.jdField_a_of_type_Bbon.jdField_a_of_type_Bbor != null)
+      {
+        paramAnimator = this.jdField_a_of_type_Bbon.jdField_a_of_type_Bbor;
+        if (!this.jdField_a_of_type_Boolean) {
+          bool = true;
+        }
+        paramAnimator.a(bool, i);
+      }
+      return;
     }
   }
 }

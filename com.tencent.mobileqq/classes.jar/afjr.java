@@ -1,9 +1,19 @@
-class afjr
-  implements bhqf
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+
+public class afjr
+  implements View.OnClickListener
 {
-  afjr(afjq paramafjq) {}
+  public afjr(ArkAppView paramArkAppView, ArkViewModel paramArkViewModel) {}
   
-  public void onDismiss() {}
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
+      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
+    }
+  }
 }
 
 

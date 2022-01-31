@@ -6,9 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import bgho;
-import bgkd;
-import bgkk;
+import bglv;
+import bgok;
+import bgor;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.auth.AuthState;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
@@ -196,44 +196,44 @@ public class TelephonyJsPlugin
     }
   }
   
-  public String addPhoneContact(bgkd parambgkd)
+  public String addPhoneContact(bgok parambgok)
   {
-    bgkk.a(new TelephonyJsPlugin.2(this, parambgkd));
-    return parambgkd.a();
+    bgor.a(new TelephonyJsPlugin.2(this, parambgok));
+    return parambgok.a();
   }
   
-  public void getPhoneNumber(bgkd parambgkd)
+  public void getPhoneNumber(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b).optJSONObject("data");
+      JSONObject localJSONObject = new JSONObject(parambgok.b).optJSONObject("data");
       String str = localJSONObject.optString("api_name", "");
       localJSONObject.optBoolean("with_credentials", true);
       if ("webapi_getuserwxphone".equals(str))
       {
-        if (MiniAppEnv.g().getAuthSate(this.mMiniAppContext.a().appId).isPermissionGranted(parambgkd.a))
+        if (MiniAppEnv.g().getAuthSate(this.mMiniAppContext.a().appId).isPermissionGranted(parambgok.a))
         {
-          ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getPhoneNumber(this.mMiniAppContext.a().appId, new TelephonyJsPlugin.1(this, parambgkd));
+          ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getPhoneNumber(this.mMiniAppContext.a().appId, new TelephonyJsPlugin.1(this, parambgok));
           return;
         }
-        parambgkd.b();
+        parambgok.b();
         return;
       }
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
-      QMLog.e("TelephonyJsPlugin", "handleNativeRequest", parambgkd);
+      QMLog.e("TelephonyJsPlugin", "handleNativeRequest", parambgok);
     }
   }
   
-  public void handleMakePhoneCall(bgkd parambgkd)
+  public void handleMakePhoneCall(bgok parambgok)
   {
     j = 0;
     i = j;
-    if (!TextUtils.isEmpty(parambgkd.b)) {}
+    if (!TextUtils.isEmpty(parambgok.b)) {}
     try
     {
-      Object localObject = new JSONObject(parambgkd.b).optString("phoneNumber");
+      Object localObject = new JSONObject(parambgok.b).optString("phoneNumber");
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         break label111;
       }
@@ -252,10 +252,10 @@ public class TelephonyJsPlugin
     }
     if (i != 0)
     {
-      parambgkd.a();
+      parambgok.a();
       return;
     }
-    parambgkd.b();
+    parambgok.b();
   }
 }
 

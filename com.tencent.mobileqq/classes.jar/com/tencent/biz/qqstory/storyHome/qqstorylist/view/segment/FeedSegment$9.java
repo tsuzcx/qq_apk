@@ -2,21 +2,21 @@ package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
 import android.graphics.Rect;
 import com.tribe.async.dispatch.Dispatcher;
-import uht;
-import wps;
-import wqj;
-import wsv;
+import umc;
+import wub;
+import wus;
+import wxe;
 
 public class FeedSegment$9
   implements Runnable
 {
-  public FeedSegment$9(wps paramwps, Rect paramRect) {}
+  public FeedSegment$9(wub paramwub, Rect paramRect) {}
   
   public void run()
   {
-    wqj localwqj = new wqj(this.a.top, this.a.left, this.a.right, this.a.bottom);
-    uht.a().dispatch(localwqj);
-    wsv.b("Q.qqstory.home:FeedSegment_animation", "发了动画时间过去了 2");
+    wus localwus = new wus(this.a.top, this.a.left, this.a.right, this.a.bottom);
+    umc.a().dispatch(localwus);
+    wxe.b("Q.qqstory.home:FeedSegment_animation", "发了动画时间过去了 2");
   }
 }
 

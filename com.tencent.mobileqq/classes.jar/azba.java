@@ -1,42 +1,172 @@
-import android.media.Image;
-import android.media.Image.Plane;
-import android.media.ImageReader;
-import android.media.ImageReader.OnImageAvailableListener;
-import android.os.Handler;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer;
-import java.nio.ByteBuffer;
+import KQQ.RespBatchProcess;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import friendlist.GetMultiTroopInfoResp;
+import friendlist.GetTroopAppointRemarkResp;
+import friendlist.GetTroopListRespV2;
+import friendlist.GetTroopMemberListResp;
+import friendlist.GetTroopRemarkResp;
+import friendlist.ModifyGroupCardResp;
+import friendlist.ModifyGroupInfoResp;
 
 public class azba
-  implements ImageReader.OnImageAvailableListener
 {
-  public azba(Camera2Control paramCamera2Control) {}
+  private final <T> T a(byte[] paramArrayOfByte, String paramString, T paramT)
+  {
+    UniPacket localUniPacket = new UniPacket(true);
+    try
+    {
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      return localUniPacket.getByClass(paramString, paramT);
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      return null;
+    }
+    catch (RuntimeException paramArrayOfByte) {}
+    return null;
+  }
   
-  public void onImageAvailable(ImageReader paramImageReader)
+  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return (GetMultiTroopInfoResp)a(paramFromServiceMsg.getWupBuffer(), "GMTIRESP", new GetMultiTroopInfoResp());
+  }
+  
+  private Object c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    paramFromServiceMsg = (GetTroopListRespV2)a(paramFromServiceMsg.getWupBuffer(), "GetTroopListRespV2", new GetTroopListRespV2());
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.result != 1))
+    {
+      paramToServiceMsg = paramFromServiceMsg;
+      if (paramFromServiceMsg.vecTroopList == null)
+      {
+        paramToServiceMsg = paramFromServiceMsg;
+        if (paramFromServiceMsg.vecTroopListDel == null)
+        {
+          paramToServiceMsg = paramFromServiceMsg;
+          if (paramFromServiceMsg.vecTroopRank == null)
+          {
+            paramToServiceMsg = paramFromServiceMsg;
+            if (paramFromServiceMsg.vecFavGroup != null) {}
+          }
+        }
+      }
+    }
+    else
+    {
+      paramToServiceMsg = null;
+    }
+    return paramToServiceMsg;
+  }
+  
+  private Object d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    paramFromServiceMsg = (GetTroopRemarkResp)a(paramFromServiceMsg.getWupBuffer(), "GTRRESP", new GetTroopRemarkResp());
+    if (paramFromServiceMsg == null) {
+      paramToServiceMsg = null;
+    }
+    do
+    {
+      return paramToServiceMsg;
+      paramToServiceMsg = paramFromServiceMsg;
+    } while (paramFromServiceMsg.result != 1);
+    return null;
+  }
+  
+  private Object e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     try
     {
-      azbl.a(1, "[Camera2]Image Capture cost:" + (float)(System.currentTimeMillis() - Camera2Control.a(this.a)) / 1000.0F);
-      azbk.a(2, Camera2Control.a(this.a).a * Camera2Control.a(this.a).b, System.currentTimeMillis() - Camera2Control.a(this.a));
-      paramImageReader = paramImageReader.acquireNextImage();
-      if (paramImageReader != null)
-      {
-        ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
-        byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
-        localByteBuffer.get(arrayOfByte);
-        if ((Camera2Control.a(this.a) != null) && (Camera2Control.a(this.a) != null))
-        {
-          Camera2Control.a(this.a).a = Camera2Control.a(this.a).a;
-          Camera2Control.a(this.a).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.a)));
-        }
-        paramImageReader.close();
-      }
-      return;
+      paramToServiceMsg = (GetTroopMemberListResp)a(paramFromServiceMsg.getWupBuffer(), "GTMLRESP", new GetTroopMemberListResp());
+      paramFromServiceMsg = paramToServiceMsg;
+      StringBuilder localStringBuilder;
+      label74:
+      return paramFromServiceMsg;
     }
-    catch (Exception paramImageReader)
+    catch (OutOfMemoryError paramToServiceMsg)
     {
-      azbl.a(1, "[Camera2] onImageAvailable mImageReader exception:" + paramImageReader);
+      try
+      {
+        if (!QLog.isColorLevel()) {
+          return paramFromServiceMsg;
+        }
+        localStringBuilder = new StringBuilder().append("FriendListService.decodeTroopGetMemberList");
+        if (paramToServiceMsg == null) {}
+        for (paramFromServiceMsg = "resp == null";; paramFromServiceMsg = "resp != null")
+        {
+          QLog.d("get_troop_member", 2, paramFromServiceMsg);
+          return paramToServiceMsg;
+        }
+        paramToServiceMsg = paramToServiceMsg;
+        paramToServiceMsg = null;
+      }
+      catch (OutOfMemoryError paramFromServiceMsg)
+      {
+        break label74;
+      }
+      paramFromServiceMsg = paramToServiceMsg;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("TroopReceiver", 2, "decodeTroopGetMemberList OOM");
+        return paramToServiceMsg;
+      }
     }
+  }
+  
+  private Object f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return (ModifyGroupCardResp)a(paramFromServiceMsg.getWupBuffer(), "MGCRESP", new ModifyGroupCardResp());
+  }
+  
+  private Object g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return (ModifyGroupInfoResp)a(paramFromServiceMsg.getWupBuffer(), "MGIRESP", new ModifyGroupInfoResp());
+  }
+  
+  private Object h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return (GetTroopAppointRemarkResp)a(paramFromServiceMsg.getWupBuffer(), "GTARESP", new GetTroopAppointRemarkResp());
+  }
+  
+  private Object i(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return (RespBatchProcess)a(paramFromServiceMsg.getWupBuffer(), "RespBatchProcess", new RespBatchProcess());
+  }
+  
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    String str = paramFromServiceMsg.getServiceCmd();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopReceiver", 2, "~~~decode cmd: " + str);
+    }
+    if ("friendlist.GetMultiTroopInfoReq".equalsIgnoreCase(str)) {
+      return b(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("friendlist.GetTroopListReqV2".equalsIgnoreCase(str)) {
+      return c(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("friendlist.getTroopRemark".equalsIgnoreCase(str)) {
+      return d(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("friendlist.getTroopMemberList".equalsIgnoreCase(str)) {
+      return e(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("friendlist.ModifyGroupCardReq".equalsIgnoreCase(str)) {
+      return f(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("friendlist.ModifyGroupInfoReq".equalsIgnoreCase(str)) {
+      return g(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("friendlist.GetTroopAppointRemarkReq".equalsIgnoreCase(str)) {
+      return h(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("ProfileService.ReqBatchProcess".equalsIgnoreCase(str)) {
+      return i(paramToServiceMsg, paramFromServiceMsg);
+    }
+    return null;
   }
 }
 

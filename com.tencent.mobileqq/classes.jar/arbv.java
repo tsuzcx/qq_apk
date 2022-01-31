@@ -1,27 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-final class arbv
-  implements View.OnClickListener
+public class arbv
+  implements Cloneable
 {
-  arbv(FileManagerEntity paramFileManagerEntity, ardn paramardn) {}
+  public int a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
   
-  public void onClick(View paramView)
-  {
-    try
-    {
-      if (biuq.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))
-      {
-        biuq.a().a(this.jdField_a_of_type_Ardn.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath, false);
-        return;
-      }
-      QLog.e("FileOperaterUtils-PUPU", 2, "Should not open the file with pupu: " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath);
-      return;
-    }
-    catch (Exception paramView) {}
-  }
+  public arbv(arbu paramarbu) {}
 }
 
 

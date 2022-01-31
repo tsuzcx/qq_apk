@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import aprg;
+import apvp;
 
 class EmoticonPanelController$1
   implements Runnable

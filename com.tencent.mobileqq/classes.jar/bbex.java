@@ -1,16 +1,30 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-public class bbex
+class bbex
   implements View.OnClickListener
 {
-  public bbex(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  private bbey jdField_a_of_type_Bbey;
+  private bbez jdField_a_of_type_Bbez;
+  
+  public bbex(bbez parambbez)
+  {
+    this.jdField_a_of_type_Bbez = parambbez;
+  }
+  
+  public void a(bbey parambbey)
+  {
+    this.jdField_a_of_type_Bbey = parambbey;
+  }
   
   public void onClick(View paramView)
   {
-    QQToast.a(this.a.a, alpo.a(2131715606), 0).a();
+    int i = ((Integer)paramView.getTag()).intValue();
+    bbez.a(this.jdField_a_of_type_Bbez, i);
+    if (this.jdField_a_of_type_Bbey != null) {
+      this.jdField_a_of_type_Bbey.a((bbfa)bbez.a(this.jdField_a_of_type_Bbez).get(i));
+    }
   }
 }
 

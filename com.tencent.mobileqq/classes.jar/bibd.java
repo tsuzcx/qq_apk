@@ -1,12 +1,12 @@
-import com.tencent.widget.pull2refresh.XRecyclerView;
+import android.view.View;
 
 public abstract interface bibd
 {
-  public abstract void a();
+  public abstract void a_(View paramView);
   
-  public abstract void a(XRecyclerView paramXRecyclerView, int paramInt);
+  public abstract void e();
   
-  public abstract void a(XRecyclerView paramXRecyclerView, boolean paramBoolean);
+  public abstract void e(boolean paramBoolean);
 }
 
 

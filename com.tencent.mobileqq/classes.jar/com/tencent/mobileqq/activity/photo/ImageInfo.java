@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aiiz;
-import aijk;
+import aino;
+import ainz;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 
 public class ImageInfo
-  extends aiiz
+  extends aino
   implements Parcelable
 {
-  public static final Parcelable.Creator<ImageInfo> CREATOR = new aijk();
+  public static final Parcelable.Creator<ImageInfo> CREATOR = new ainz();
   public long a;
   public int b;
   public long b;

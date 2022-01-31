@@ -1,237 +1,80 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+import com.tencent.map.geolocation.TencentLocation;
 import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONArray;
 
 public class wmw
-  implements Handler.Callback, IEventReceiver, uxu, wqw
+  extends vcf
+  implements urr<vfx, vhn>
 {
-  private int jdField_a_of_type_Int = 1;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(paramLooper, this);
-  private ConcurrentHashMap<String, StoryVideoItem> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private uro jdField_a_of_type_Uro = (uro)urr.a(5);
-  private uxt jdField_a_of_type_Uxt;
-  private wmx jdField_a_of_type_Wmx;
-  private wmy jdField_a_of_type_Wmy;
-  protected wqs a;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = 0;
-  private ConcurrentHashMap<String, String> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private uxt jdField_b_of_type_Uxt;
+  public String a;
+  private String b;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
   
-  public wmw(Looper paramLooper)
+  private void d()
   {
-    this.jdField_a_of_type_Wqs = new wqs();
-    this.jdField_a_of_type_Wqs.a(this);
-    this.jdField_a_of_type_Wmy = new wmy(this);
-    this.jdField_a_of_type_Wmx = new wmx(this, this);
-    uht.a().registerSubscriber(this.jdField_a_of_type_Wmy);
-    uht.a().registerSubscriber(this.jdField_a_of_type_Wmx);
+    vfx localvfx = new vfx();
+    localvfx.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localvfx.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localvfx.jdField_b_of_type_Long = 0L;
+    localvfx.c = 10;
+    localvfx.d = 10;
+    urp.a().a(localvfx, this);
+    wxe.a("Q.qqstory.memories:ShareGroupPageLoader", "send share group list request. request=%s.", localvfx.toString());
   }
   
-  private boolean a(String paramString)
+  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) != null) {}
-    do
-    {
-      return true;
-      paramString = this.jdField_a_of_type_Uro.a(paramString);
-    } while ((paramString != null) && (a(paramString)));
-    return false;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public StoryVideoItem a(String paramString)
-  {
-    StoryVideoItem localStoryVideoItem2 = (StoryVideoItem)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    StoryVideoItem localStoryVideoItem1;
-    if ((localStoryVideoItem2 != null) && (!TextUtils.isEmpty(localStoryVideoItem2.mVideoUrl)) && (localStoryVideoItem2.mVideoDuration >= 0L))
-    {
-      localStoryVideoItem1 = localStoryVideoItem2;
-      if (localStoryVideoItem2.mSourceType != -1) {}
-    }
-    else
-    {
-      localStoryVideoItem1 = this.jdField_a_of_type_Uro.a(paramString);
-    }
-    return localStoryVideoItem1;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    uht.a().unRegisterSubscriber(this.jdField_a_of_type_Wmy);
-    uht.a().unRegisterSubscriber(this.jdField_a_of_type_Wmx);
-    this.jdField_a_of_type_Wqs.a();
-    if (this.jdField_a_of_type_Uxt != null) {
-      this.jdField_a_of_type_Uxt.a();
-    }
-    if (this.jdField_b_of_type_Uxt != null) {
-      this.jdField_b_of_type_Uxt.a();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(QQStoryAutoPlayView paramQQStoryAutoPlayView, List<wme> paramList)
-  {
-    StoryVideoItem localStoryVideoItem = paramQQStoryAutoPlayView.a();
-    if (localStoryVideoItem == null) {
-      wta.b("story_home_dev", "feed_play_req", 0, 3, new String[0]);
-    }
-    boolean bool;
-    do
-    {
-      return;
-      this.jdField_a_of_type_Wqs.a(this.jdField_a_of_type_Uro.a(localStoryVideoItem.mVid), paramList);
-      bool = StoryVideoItem.isPlayable(localStoryVideoItem.mVid, false);
-      paramList = null;
-      if (bool) {
-        paramList = ujb.a(localStoryVideoItem.mVid, 0, false, false);
-      }
-      if (a(localStoryVideoItem)) {
-        break;
-      }
-      wsv.a("Q.qqstory.home.AutoPlayManager", "AutoPlayManager that need to req the storyVideoItem vid=%s cover=%s", localStoryVideoItem.mVid, localStoryVideoItem.getThumbUrl());
-    } while (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(localStoryVideoItem.mVid) != null);
-    paramQQStoryAutoPlayView = new ArrayList();
-    paramQQStoryAutoPlayView.add(localStoryVideoItem.mVid);
-    a(paramQQStoryAutoPlayView);
-    wta.b("story_home_dev", "feed_play_req", 0, 2, new String[] { localStoryVideoItem.mVid });
-    return;
-    if ((bool) && (paramList != null))
-    {
-      wsv.b("Q.qqstory.home.AutoPlayManager", "AutoPlayManager that have the mp4 file,do play now vid+" + localStoryVideoItem.mVid + " cover=" + localStoryVideoItem.getThumbUrl());
-      if (localStoryVideoItem.mErrorCode != 0) {
-        wsv.e("Q.qqstory.home.AutoPlayManager", "AutoPlayManager request the error video to auto play error code=" + localStoryVideoItem.mErrorCode);
-      }
-      File localFile = ujb.a(localStoryVideoItem.mVid, 1, false, false);
-      xmh.a(paramList);
-      paramQQStoryAutoPlayView.a(paramList, localFile);
-      wta.b("story_home_dev", "feed_play_req", 1, 0, new String[] { localStoryVideoItem.mVid });
+    super.a(paramTencentLocation, paramInt);
+    if (this.jdField_c_of_type_Boolean) {
       return;
     }
-    wta.b("story_home_dev", "feed_play_req", 0, 1, new String[] { localStoryVideoItem.mVid });
+    this.jdField_b_of_type_JavaLangString = "";
+    d();
   }
   
-  public void a(String paramString1, String paramString2)
+  public void a(@NonNull vfx paramvfx, @Nullable vhn paramvhn, @NonNull ErrorMessage paramErrorMessage)
   {
-    wsv.b("Q.qqstory.home.AutoPlayManager", "AutoPlayManager onSuccess = " + paramString1);
-    paramString2 = new wqo();
-    paramString2.a = paramString1;
-    uht.a().dispatch(paramString2);
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
-    wta.b("auto_play", "rsp_down", 0, 0, new String[] { paramString1 });
-  }
-  
-  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage)
-  {
-    wsv.b("Q.qqstory.home.AutoPlayManager", "AutoPlayManager onError = " + paramString1);
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
-    wta.b("auto_play", "rsp_down", 1, 0, new String[] { paramString1 });
-  }
-  
-  public void a(List<String> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
+    wxe.a("Q.qqstory.memories:ShareGroupPageLoader", "get share group list return:%s", paramErrorMessage.toString());
+    if (this.jdField_c_of_type_Boolean)
     {
-      String str = (String)localIterator.next();
-      if (!a(str)) {
-        localArrayList.add(str);
-      }
+      wxe.c("Q.qqstory.memories:ShareGroupPageLoader", "don't nothing after terminate");
+      return;
     }
-    wsv.a("Q.qqstory.home.AutoPlayManager", "fetchStoryVideoItemByVid, request=%s, original=%s", new JSONArray(localArrayList), new JSONArray(paramList));
-    if (localArrayList.size() > 0)
+    wmx localwmx = new wmx(paramErrorMessage, this.jdField_c_of_type_JavaLangString);
+    localwmx.jdField_b_of_type_Boolean = false;
+    if ((paramvhn == null) || (paramErrorMessage.isFail()))
     {
-      this.jdField_a_of_type_Uxt = uxt.a(localArrayList);
-      this.jdField_a_of_type_Uxt.a("Q.qqstory.home.AutoPlayManager");
-      this.jdField_a_of_type_Uxt.a(this);
-      this.jdField_a_of_type_Uxt.b();
+      umc.a().dispatch(localwmx);
+      return;
     }
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a(StoryVideoItem paramStoryVideoItem)
-  {
-    if (paramStoryVideoItem == null) {}
-    while ((TextUtils.isEmpty(paramStoryVideoItem.getVideoUrl())) || (paramStoryVideoItem.mSourceType == -1) || (paramStoryVideoItem.mVideoDuration < 0L)) {
-      return false;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
-    return true;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    wsv.b("Q.qqstory.home.AutoPlayManager", "AutoPlayManager onPause = " + paramString1);
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
-    wta.b("auto_play", "rsp_down", 2, 0, new String[] { paramString1 });
-  }
-  
-  public void b(List<StoryVideoItem> paramList)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramList));
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    this.jdField_b_of_type_JavaLangString = paramvhn.jdField_a_of_type_JavaLangString;
+    localwmx.jdField_a_of_type_JavaUtilList = paramvhn.jdField_a_of_type_JavaUtilArrayList;
+    localwmx.jdField_a_of_type_Int = paramvhn.b;
+    localwmx.jdField_a_of_type_Boolean = paramvhn.jdField_a_of_type_Boolean;
+    localwmx.jdField_c_of_type_Boolean = TextUtils.isEmpty(paramvfx.jdField_a_of_type_JavaLangString);
+    paramvhn = paramvhn.jdField_a_of_type_JavaUtilArrayList;
+    ((uvn)uwa.a(19)).b(paramvhn, paramvfx.jdField_b_of_type_JavaLangString, localwmx.jdField_c_of_type_Boolean);
+    try
     {
+      this.jdField_b_of_type_Boolean = true;
+      umc.a().dispatch(localwmx);
+      wxe.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from network: %s", localwmx);
+      return;
     }
-    for (;;)
-    {
-      return true;
-      paramMessage = ((List)paramMessage.obj).iterator();
-      while (paramMessage.hasNext())
-      {
-        StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramMessage.next();
-        if ((localStoryVideoItem.mErrorCode == 0) && ((TextUtils.isEmpty(localStoryVideoItem.mVideoUrl)) || (localStoryVideoItem.mVideoDuration < 0L) || (localStoryVideoItem.mSourceType == -1))) {
-          xmh.a("handleMessage is illegal debug info=%s", new Object[] { localStoryVideoItem });
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localStoryVideoItem.mVid, localStoryVideoItem);
-        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localStoryVideoItem.mVid);
-      }
-    }
+    finally {}
   }
   
-  public boolean isValidate()
+  public void c()
   {
-    return this.jdField_a_of_type_Boolean;
+    super.c();
+    if (this.jdField_c_of_type_Boolean) {
+      return;
+    }
+    d();
   }
 }
 

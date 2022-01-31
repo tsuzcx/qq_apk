@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class avyv
-  implements View.OnClickListener
 {
-  avyv(avyo paramavyo) {}
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
   
-  public void onClick(View paramView)
-  {
-    bdoi.a(avyo.a(this.a), "panel");
-  }
+  avyv(avyt paramavyt) {}
 }
 
 

@@ -5,17 +5,17 @@ import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActiv
 import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
 
 public class nyb
-  extends beey
+  extends bejh
 {
   nyb(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
   
   public void a()
   {
     super.a();
-    if ((this.jdField_a_of_type_Bedi.a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_ComTencentBizUiTouchWebView != null) && (this.c != null))
+    if ((this.jdField_a_of_type_Behr.a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_ComTencentBizUiTouchWebView != null) && (this.c != null))
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView = new ImageView(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841332);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841333);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(13);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
@@ -23,7 +23,7 @@ public class nyb
       if (IPluginAdapterProxy.getProxy().isNightMode())
       {
         this.c.setBackgroundColor(-6710887);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841333);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841334);
       }
     }
   }

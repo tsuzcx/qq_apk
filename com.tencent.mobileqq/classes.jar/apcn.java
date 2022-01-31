@@ -1,59 +1,26 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import java.util.ArrayList;
-
 public class apcn
-  extends BaseAdapter
 {
-  public apcn(DataReportSettingFragment paramDataReportSettingFragment) {}
+  private static apcc jdField_a_of_type_Apcc;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public apcg a(int paramInt)
+  public static void a(apco paramapco)
   {
-    return (apcg)this.a.a.get(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.a.a.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    apcg localapcg;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.a.getActivity()).inflate(2131559470, paramViewGroup, false);
-      paramViewGroup = new apcr(this.a);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramView.findViewById(2131368563));
-      paramViewGroup.jdField_a_of_type_Apco = new apco(this.a);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(paramViewGroup.jdField_a_of_type_Apco);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnLongClickListener(paramViewGroup.jdField_a_of_type_Apco);
-      paramView.setTag(paramViewGroup);
-      localapcg = a(paramInt);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(localapcg.jdField_a_of_type_Boolean);
-      if (!(localapcg instanceof apdh)) {
-        break label179;
-      }
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setText(localapcg.jdField_a_of_type_JavaLangString + " - " + ((apdh)localapcg).b);
+    if (paramapco != null) {
+      apds.a(paramapco);
     }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_Apco.a = localapcg;
-      return paramView;
-      paramViewGroup = (apcr)paramView.getTag();
-      break;
-      label179:
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setText(localapcg.jdField_a_of_type_JavaLangString);
+  }
+  
+  public static boolean a()
+  {
+    return (jdField_a_of_type_Boolean) && (b());
+  }
+  
+  private static boolean b()
+  {
+    if (jdField_a_of_type_Apcc != null) {
+      return jdField_a_of_type_Apcc.a();
     }
+    return true;
   }
 }
 

@@ -1,24 +1,67 @@
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
 public class xxx
-  implements ValueAnimator.AnimatorUpdateListener
+  extends ValueAnimator
 {
+  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener;
   private View jdField_a_of_type_AndroidViewView;
   
-  private xxx(FollowedRecommendBannerView paramFollowedRecommendBannerView, View paramView)
+  private xxx(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
+    setObjectValues(new Object[] { new xya(paramFloat1, paramFloat2, paramFloat3), new xya(paramFloat4, paramFloat5, paramFloat6) });
+    setEvaluator(new xyb(null));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new xxy(this, a(paramView));
+    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
   }
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private CircularRevealCompatLayout a(View paramView)
   {
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    if ((paramView instanceof CircularRevealCompatLayout)) {
+      return (CircularRevealCompatLayout)paramView;
+    }
+    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
+    if ((localViewGroup instanceof CircularRevealCompatLayout)) {
+      return (CircularRevealCompatLayout)localViewGroup;
+    }
+    CircularRevealCompatLayout localCircularRevealCompatLayout = new CircularRevealCompatLayout(paramView.getContext());
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    int i = localViewGroup.indexOfChild(paramView);
+    localViewGroup.removeView(paramView);
+    localCircularRevealCompatLayout.addView(paramView, new ViewGroup.LayoutParams(-1, -1));
+    localViewGroup.addView(localCircularRevealCompatLayout, i, localLayoutParams);
+    return localCircularRevealCompatLayout;
+  }
+  
+  public static xxx a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  {
+    return new xxx(paramView, paramInt1, paramInt2, paramFloat1, paramInt1, paramInt2, paramFloat2);
+  }
+  
+  public void a()
+  {
+    Object localObject = this.jdField_a_of_type_AndroidViewView.getParent();
+    if ((localObject instanceof CircularRevealCompatLayout))
+    {
+      localObject = (CircularRevealCompatLayout)localObject;
+      ((CircularRevealCompatLayout)localObject).removeView(this.jdField_a_of_type_AndroidViewView);
+      ViewGroup localViewGroup = (ViewGroup)((CircularRevealCompatLayout)localObject).getParent();
+      ViewGroup.LayoutParams localLayoutParams = ((CircularRevealCompatLayout)localObject).getLayoutParams();
+      int i = localViewGroup.indexOfChild((View)localObject);
+      localViewGroup.removeView((View)localObject);
+      localViewGroup.addView(this.jdField_a_of_type_AndroidViewView, i, localLayoutParams);
+    }
+  }
+  
+  public void removeAllUpdateListeners()
+  {
+    super.removeAllUpdateListeners();
+    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
   }
 }
 

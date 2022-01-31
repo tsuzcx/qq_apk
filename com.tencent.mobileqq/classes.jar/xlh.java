@@ -1,110 +1,38 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageForTroopStory;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import java.lang.ref.WeakReference;
 
 public class xlh
 {
-  public static MessageRecord a(QQAppInterface paramQQAppInterface, String paramString)
+  public final double a;
+  public final float a;
+  public final int a;
+  public final String a;
+  public final WeakReference<Activity> a;
+  public final boolean a;
+  public final double b;
+  public final int b;
+  public final String b;
+  public final boolean b;
+  public final int c;
+  
+  public xlh(Activity paramActivity, int paramInt1, int paramInt2, String paramString1, float paramFloat, boolean paramBoolean1, int paramInt3, double paramDouble1, double paramDouble2, String paramString2, boolean paramBoolean2)
   {
-    if ((paramQQAppInterface != null) && (a(paramString)))
-    {
-      xlf localxlf = (xlf)paramQQAppInterface.getManager(208);
-      String str = a(paramString);
-      paramString = localxlf.a(paramString);
-      if (paramString != null) {
-        return paramQQAppInterface.a().d(str, 1, paramString.longValue());
-      }
-    }
-    return null;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Double = paramDouble1;
+    this.jdField_b_of_type_Double = paramDouble2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
   }
   
-  public static String a(Intent paramIntent, @NonNull String paramString1, String paramString2)
+  public String toString()
   {
-    int j = 78;
-    int i = 8;
-    int k = 0;
-    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1)))
-    {
-      paramString1 = paramString1.replace("$GCODE$", paramString2);
-      if (paramIntent != null) {
-        break label121;
-      }
-      label36:
-      if (paramIntent != null) {
-        break label133;
-      }
-      label40:
-      if (paramIntent != null) {
-        break label146;
-      }
-    }
-    for (;;)
-    {
-      paramIntent = new StringBuilder(paramString1);
-      paramIntent.append("&troopStoryMemoriesFrom=").append(i).append("&playVideoFrom=").append(j).append("&lastOpenFrom=").append(k);
-      return paramIntent.toString();
-      QLog.e("TroopStoryUtil", 1, new Object[] { "configTroopStoryProfileFromAIO empty. troopUin=", "", ", url=", paramString1 });
-      break;
-      label121:
-      i = paramIntent.getIntExtra("extra_share_group_from", 8);
-      break label36;
-      label133:
-      j = paramIntent.getIntExtra("extra_play_video_from", 78);
-      break label40;
-      label146:
-      k = paramIntent.getIntExtra("extra_last_open_from", 0);
-    }
-  }
-  
-  public static String a(MessageForShortVideo paramMessageForShortVideo)
-  {
-    return ("gs_" + paramMessageForShortVideo.frienduin + '_' + paramMessageForShortVideo.getMd5() + '_' + bfhi.d(paramMessageForShortVideo.uuid) + "-700").toLowerCase();
-  }
-  
-  public static String a(String paramString)
-  {
-    if (a(paramString))
-    {
-      paramString = paramString.split("_");
-      if (paramString.length > 2) {
-        return paramString[1];
-      }
-    }
-    return null;
-  }
-  
-  public static void a(MessageForTroopStory paramMessageForTroopStory, Bundle paramBundle)
-  {
-    paramBundle.putInt("forward_type", 32);
-    paramBundle.putLong("key_uid", paramMessageForTroopStory.uid);
-    paramBundle.putString("key_union_id", paramMessageForTroopStory.unionId);
-    paramBundle.putString("key_md5", paramMessageForTroopStory.md5);
-    paramBundle.putString("key_thumb_url", paramMessageForTroopStory.thumbUrl);
-    paramBundle.putString("key_doodle_url", paramMessageForTroopStory.doodleUrl);
-    paramBundle.putInt("key_video_width", paramMessageForTroopStory.videoWidth);
-    paramBundle.putInt("key_video_height", paramMessageForTroopStory.videoHeight);
-    paramBundle.putString("key_source_name", paramMessageForTroopStory.sourceName);
-    paramBundle.putString("key_source_action_type", paramMessageForTroopStory.sourceActionType);
-    paramBundle.putString("key_source_action_data", paramMessageForTroopStory.sourceActionData);
-    paramBundle.putString("key_compatible_text", paramMessageForTroopStory.compatibleText);
-    paramBundle.putInt("key_ctr_version", paramMessageForTroopStory.ctrVersion);
-  }
-  
-  public static boolean a(int paramInt, MessageRecord paramMessageRecord)
-  {
-    return (uhl.i()) && (paramInt == 1) && ((paramMessageRecord instanceof MessageForShortVideo)) && (((MessageForShortVideo)paramMessageRecord).busiType == 1);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return (paramString != null) && (paramString.startsWith("gs_"));
+    return "GenerateThumbArgs{mFileDir='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mRatioWH=" + this.jdField_a_of_type_Float + ", mShowLastFrameThumb=" + this.jdField_a_of_type_Boolean + ", mOrientation=" + this.c + ", mLatitude=" + this.jdField_a_of_type_Double + ", mLongitude=" + this.jdField_b_of_type_Double + ", mExistsThumbPath=" + this.jdField_b_of_type_JavaLangString + ", mThumbOk=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 

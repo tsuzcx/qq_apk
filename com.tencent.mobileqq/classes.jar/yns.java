@@ -1,25 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-class yns
-  extends yoh
+public abstract class yns
+  implements URLDrawable.URLDrawableListener
 {
-  yns(ynm paramynm, ynu paramynu, String paramString)
-  {
-    super(paramynm);
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "mixAudio end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "mixAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Ynm.a));
-      this.jdField_a_of_type_Ynm.a = System.currentTimeMillis();
-    }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Ynu.a(this.jdField_a_of_type_JavaLangString, false, "mixAudio done.");
-    }
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

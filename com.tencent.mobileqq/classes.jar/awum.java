@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pushdialog.AIOPushDialogHelper.1.1;
-import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
 
-public class awum
-  implements awus
+class awum
+  extends awuh
 {
-  awum(awul paramawul) {}
-  
-  public void a(List<PushDialogTemplate> paramList)
+  awum(awul paramawul, long paramLong)
   {
-    ThreadManager.getUIHandler().post(new AIOPushDialogHelper.1.1(this, paramList));
+    super(paramLong);
+  }
+  
+  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  {
+    paramUploadImageSize = awug.a(paramAbstractUploadTask.uploadFilePath);
+    if (paramUploadImageSize != null)
+    {
+      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
+      paramUploadImageSize.recycle();
+      return paramAbstractUploadTask;
+    }
+    return new IUploadConfig.UploadImageSize(640, 1136, 100);
   }
 }
 

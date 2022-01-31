@@ -1,8 +1,20 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.MapWidget;
 
-public abstract interface atta
+class atta
+  implements View.OnClickListener
 {
-  public abstract void a(Bitmap paramBitmap);
+  atta(atsy paramatsy, atso paramatso) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Atsy.jdField_a_of_type_Atso.a()) {
+      return;
+    }
+    atso.a(this.jdField_a_of_type_Atsy.jdField_a_of_type_Atso).a(atsy.a(this.jdField_a_of_type_Atsy));
+    azqs.b(null, "CliOper", "", "", "0X800A96F", "0X800A96F", 0, 0, "0", "0", "0", "");
+  }
 }
 
 

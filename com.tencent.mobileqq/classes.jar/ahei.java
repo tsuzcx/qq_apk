@@ -1,36 +1,16 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
 
 public class ahei
-  implements ahqz
+  implements View.OnTouchListener
 {
-  public ahei(TroopView paramTroopView) {}
+  public ahei(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
   
-  public int a(int paramInt, boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = TroopView.a(this.a).getCurrentItem();
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "onTabChanged. position:" + paramInt + " currentClassifyPos:" + i);
-    }
-    Object localObject = TroopView.a(this.a).a(i, false);
-    if (localObject != null)
-    {
-      localObject = (AddContactViewPagerTroopFragment)localObject;
-      ahan localahan = (ahan)this.a.a.get(i);
-      if ((paramInt >= 0) && (paramInt < localahan.jdField_a_of_type_JavaUtilArrayList.size()))
-      {
-        localahan.b = paramInt;
-        ahao localahao = (ahao)localahan.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-        ((AddContactViewPagerTroopFragment)localObject).a(localahao.b, localahao.jdField_a_of_type_JavaLangString);
-        azmj.b(null, "dc00899", "Grp_find_new", "", "grptab", "sub_tag_clk", 0, 0, localahao.jdField_a_of_type_JavaLangString, localahan.jdField_a_of_type_JavaLangString, "", "");
-      }
-    }
-    return 0;
+    return (paramMotionEvent.getAction() == 2) && ((this.a.a == null) || (this.a.a.getCount() == 0));
   }
 }
 

@@ -1,21 +1,26 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.util.Comparator;
-
 public class amdg
-  implements Comparator<File>
+  implements alpg
 {
-  public amdg(CleanCache paramCleanCache) {}
+  protected void a(boolean paramBoolean, bade parambade) {}
   
-  public int a(File paramFile1, File paramFile2)
+  protected void b(boolean paramBoolean, bade parambade) {}
+  
+  protected void c(boolean paramBoolean, bade parambade) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      b(paramBoolean, (bade)paramObject);
+      return;
+    case 1: 
+      c(paramBoolean, (bade)paramObject);
+      return;
     }
-    if (paramFile2.lastModified() - paramFile1.lastModified() < 0L) {
-      return -1;
-    }
-    return 0;
+    a(paramBoolean, (bade)paramObject);
   }
 }
 

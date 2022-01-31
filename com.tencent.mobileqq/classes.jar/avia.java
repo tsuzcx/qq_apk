@@ -1,18 +1,40 @@
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.now.ilive_short_video_label.GetShortVideoVideoLabelRsp;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
 class avia
-  extends bcjt
+  implements avdq
 {
-  avia(avhw paramavhw) {}
+  avia(avhf paramavhf) {}
   
-  public void a(long paramLong)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramLong > 0L)
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new oidb_0xada.RspBody();
+    }
+    try
     {
-      avhw.c(this.a).setText(String.format(alpo.a(2131707651), new Object[] { Long.valueOf(paramLong) }));
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.i("PlayOperationViewModel", 2, "queryVideoState err_msg:   " + paramBundle.err_msg.get());
+      }
+      if (paramBundle.busi_buf.has())
+      {
+        paramArrayOfByte = new ilive_short_video_label.GetShortVideoVideoLabelRsp();
+        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+        this.a.a(paramArrayOfByte);
+      }
       return;
     }
-    avhw.c(this.a).setText(alpo.a(2131707749));
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
 }
 

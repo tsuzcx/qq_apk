@@ -1,16 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class adpf
-  implements DialogInterface.OnClickListener
 {
-  public adpf(RegisterActivity paramRegisterActivity) {}
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adpf(PublicAccountInfo paramPublicAccountInfo)
   {
-    this.a.a = 0;
-    this.a.finish();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.b = str;
   }
 }
 

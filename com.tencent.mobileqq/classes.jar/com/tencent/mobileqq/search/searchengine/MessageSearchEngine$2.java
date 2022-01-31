@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import amej;
-import aypz;
+import amiy;
+import ayui;
 
 public class MessageSearchEngine$2
   implements Runnable
 {
-  public MessageSearchEngine$2(aypz paramaypz) {}
+  public MessageSearchEngine$2(ayui paramayui) {}
   
   public void run()
   {

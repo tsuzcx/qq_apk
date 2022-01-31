@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import aail;
+import aana;
 import android.text.TextUtils;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
@@ -63,7 +63,7 @@ class AdProxyImpl$SDKRewardedVideoAdView$1
           paramJSONObject = new GdtAd(paramJSONObject);
           if (paramJSONObject.isValid())
           {
-            aail.a().a(paramJSONObject);
+            aana.a().a(paramJSONObject);
             AdProxyImpl.SDKRewardedVideoAdView localSDKRewardedVideoAdView = this.this$1;
             i = j;
             if (this.this$1.mDeviceOrientation == 90) {

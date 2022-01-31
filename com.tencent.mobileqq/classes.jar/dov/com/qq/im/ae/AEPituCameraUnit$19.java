@@ -1,9 +1,9 @@
 package dov.com.qq.im.ae;
 
-import bkle;
-import bkvr;
-import bkvu;
-import blbm;
+import bkpl;
+import bkzy;
+import blab;
+import blft;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.watermark.LogicDataManager;
 import java.util.List;
@@ -11,17 +11,17 @@ import java.util.List;
 public class AEPituCameraUnit$19
   implements Runnable
 {
-  public AEPituCameraUnit$19(bkle parambkle, VideoMaterial paramVideoMaterial) {}
+  public AEPituCameraUnit$19(bkpl parambkpl, VideoMaterial paramVideoMaterial) {}
   
   public void run()
   {
-    if ((bkle.a(this.this$0) != null) && (bkle.a(this.this$0).a(131072) != null)) {
-      bkle.a(this.this$0).a(131072).a(114, this.a);
+    if ((bkpl.a(this.this$0) != null) && (bkpl.a(this.this$0).a(131072) != null)) {
+      bkpl.a(this.this$0).a(131072).a(114, this.a);
     }
-    if ((bkvr.a().c) && (LogicDataManager.getInstance().getEditableWMElement().size() > 0))
+    if ((bkzy.a().c) && (LogicDataManager.getInstance().getEditableWMElement().size() > 0))
     {
-      bkvr.a().c = false;
-      bkle.a(this.this$0).a(589825, new Object[0]);
+      bkzy.a().c = false;
+      bkpl.a(this.this$0).a(589825, new Object[0]);
     }
   }
 }

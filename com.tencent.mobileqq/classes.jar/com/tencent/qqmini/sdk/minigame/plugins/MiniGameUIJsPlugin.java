@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import bgkd;
-import bgkk;
-import bgnf;
-import bgnw;
+import bgok;
+import bgor;
+import bgrm;
+import bgsd;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
@@ -17,33 +17,33 @@ public class MiniGameUIJsPlugin
   public static final String EVENT_SHOW_LOADING = "showLoading";
   public static final String EVENT_SHOW_TOAST = "showToast";
   private static final String TAG = "MiniGameUIJsPlugin";
-  private bgnf toast;
-  private bgnw toastView;
+  private bgrm toast;
+  private bgsd toastView;
   
-  public void hideToastOrLoading(bgkd parambgkd)
+  public void hideToastOrLoading(bgok parambgok)
   {
-    bgkk.a(new MiniGameUIJsPlugin.2(this, parambgkd));
+    bgor.a(new MiniGameUIJsPlugin.2(this, parambgok));
   }
   
-  public void showLoading(bgkd parambgkd)
+  public void showLoading(bgok parambgok)
   {
-    bgkk.a(new MiniGameUIJsPlugin.3(this, parambgkd));
+    bgor.a(new MiniGameUIJsPlugin.3(this, parambgok));
   }
   
-  public void showToast(bgkd parambgkd)
+  public void showToast(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       String str = localJSONObject.optString("title", "");
       int i = localJSONObject.optInt("duration", 1500);
       boolean bool = localJSONObject.optBoolean("mask", false);
-      bgkk.a(new MiniGameUIJsPlugin.1(this, localJSONObject.optString("icon", "success"), localJSONObject.optString("image", ""), str, i, bool, parambgkd));
+      bgor.a(new MiniGameUIJsPlugin.1(this, localJSONObject.optString("icon", "success"), localJSONObject.optString("image", ""), str, i, bool, parambgok));
       return;
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
-      QMLog.e("MiniGameUIJsPlugin", parambgkd.getMessage(), parambgkd);
+      QMLog.e("MiniGameUIJsPlugin", parambgok.getMessage(), parambgok);
     }
   }
 }

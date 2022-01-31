@@ -1,81 +1,42 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder;
 
 public class bcem
-  extends BroadcastReceiver
+  extends bcfn<ArithmeticViewHolder, bcdv>
 {
-  public bcem(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private ArithmeticViewHolder jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bcem(XMediaEditor paramXMediaEditor, Context paramContext)
   {
-    int j = 0;
-    paramContext = paramIntent.getAction();
-    int i = j;
-    if (this.a.a != null)
-    {
-      i = j;
-      if (this.a.a.isHomeworkTroop()) {
-        i = 1;
-      }
+    super(paramXMediaEditor);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+  }
+  
+  public ArithmeticViewHolder a(ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder = new ArithmeticViewHolder(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor, this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561347, paramViewGroup, false));
+    return this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder;
+  }
+  
+  public void a(View paramView, ArithmeticViewHolder paramArithmeticViewHolder) {}
+  
+  public void a(bcdv parambcdv)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder.a(true);
     }
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext))
-    {
-      paramContext = paramIntent.getStringExtra("data");
-      if (("onHomeworkTroopIdentityChanged".equals(paramIntent.getStringExtra("event"))) && (i != 0)) {}
-    }
-    for (;;)
-    {
-      return;
-      if (!TextUtils.isEmpty(paramContext)) {
-        try
-        {
-          paramContext = new JSONObject(paramContext);
-          paramIntent = paramContext.optString("groupCode");
-          if (TextUtils.equals(this.a.a.troopUin, paramIntent))
-          {
-            String str1 = paramContext.optString("content");
-            String str2 = paramContext.optString("source");
-            i = paramContext.optInt("rankId", 333);
-            String str3 = paramContext.optString("nickName");
-            paramContext.optString("uin");
-            paramContext.optString("course");
-            paramContext.optString("name");
-            if ("join".equals(str2))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("wyx", 2, new Object[] { "mHomeworkTroopIdentityChangedReceiver source=join. cGroupOption=", Short.valueOf(this.a.a.cGroupOption), ", joinType=", Integer.valueOf(VisitorTroopCardFragment.a(this.a)) });
-              }
-              if (VisitorTroopCardFragment.a(this.a) != 1) {
-                break label323;
-              }
-              this.a.e();
-            }
-            while (QLog.isColorLevel())
-            {
-              QLog.d("zivonchen", 2, "mHomeworkTroopIdentityChangedReceiver troopUin = " + paramIntent + ", content = " + str1 + ", source = " + str2 + ", rankId = " + i + ", nickName = " + str3);
-              return;
-              label323:
-              if (VisitorTroopCardFragment.a(this.a) == 2) {
-                VisitorTroopCardFragment.a(this.a, str1);
-              }
-            }
-            if ("start_recomend_page".equals(paramContext))
-            {
-              this.a.getActivity().finish();
-              return;
-            }
-          }
-        }
-        catch (JSONException paramContext) {}
-      }
+  }
+  
+  public void a(ArithmeticViewHolder paramArithmeticViewHolder, bcdv parambcdv, int paramInt)
+  {
+    paramArithmeticViewHolder.a(parambcdv, paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a() != 0) {
+      paramArithmeticViewHolder.itemView.setPadding(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0);
     }
   }
 }

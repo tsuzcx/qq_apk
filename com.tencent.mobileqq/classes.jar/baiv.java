@@ -1,90 +1,35 @@
-import android.text.Editable.Factory;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
+import android.util.SparseArray;
+import android.view.View;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
 public class baiv
-  extends baiq
+  implements bhuk
 {
-  public static Editable.Factory c = new baiw();
+  public baiv(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, SparseArray paramSparseArray, bhuf parambhuf) {}
   
-  public baiv(CharSequence paramCharSequence, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramCharSequence, paramInt);
-  }
-  
-  public baiv(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    super(paramCharSequence, paramInt1, paramInt2);
-  }
-  
-  public String a()
-  {
-    int j = 0;
-    int m = length();
-    char[] arrayOfChar = new char[m];
-    getChars(0, m, arrayOfChar, 0);
-    StringBuilder localStringBuilder = new StringBuilder(m);
-    bain[] arrayOfbain = (bain[])getSpans(0, m, bain.class);
-    Arrays.sort(arrayOfbain, new baix(this));
-    int n = arrayOfbain.length;
-    int i = 0;
-    bain localbain;
-    int i1;
-    int k;
-    if (i < n)
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
     {
-      localbain = arrayOfbain[i];
-      i1 = getSpanStart(localbain);
-      k = getSpanEnd(localbain);
-      if ((localbain != null) && (i1 < k) && (k > 0)) {}
-    }
-    else
-    {
-      if (j < m) {
-        localStringBuilder.append(arrayOfChar, j, m - j);
+      paramInt = -1;
+      switch (paramInt)
+      {
       }
-      return localStringBuilder.toString();
-    }
-    if (i1 > j) {
-      localStringBuilder.append(arrayOfChar, j, i1 - j);
-    }
-    switch (localbain.c)
-    {
     }
     for (;;)
     {
-      i += 1;
-      j = k;
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
+      if (this.jdField_a_of_type_Bhuf.isShowing()) {
+        this.jdField_a_of_type_Bhuf.dismiss();
+      }
+      return;
+      paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
       break;
-      try
-      {
-        localStringBuilder.append(baiy.b(localbain.a));
-      }
-      catch (Exception localException1)
-      {
-        try
-        {
-          String str = toString();
-          if ((TextUtils.isEmpty(str)) || (str.length() < k)) {
-            continue;
-          }
-          localStringBuilder.append(str.substring(i1, k));
-        }
-        catch (Exception localException2)
-        {
-          QLog.e("QzoneTextBuilder", 1, localException2.getStackTrace());
-        }
-      }
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 2);
       continue;
-      localStringBuilder.append(localException2.a());
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 1);
       continue;
-      j = 0x7FFFFFFF & localException2.a;
-      if (j < bjwo.b.length) {
-        localStringBuilder.append(bjwo.b[j]);
-      } else {
-        QLog.e("QzoneTextBuilder", 1, "不支持的表情");
-      }
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 0);
     }
   }
 }

@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.widget;
 
-import bgnw;
+import bgsd;
 
 public class ToastView$1
   implements Runnable
 {
-  public ToastView$1(bgnw parambgnw) {}
+  public ToastView$1(bgsd parambgsd) {}
   
   public void run()
   {

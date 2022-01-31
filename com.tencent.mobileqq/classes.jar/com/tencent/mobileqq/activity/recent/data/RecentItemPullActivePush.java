@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import bdjj;
+import bdns;
 import com.tencent.mobileqq.data.RecentUser;
 
 public class RecentItemPullActivePush
@@ -17,7 +17,7 @@ public class RecentItemPullActivePush
   {
     this.mTitleName = paramString;
     this.time = paramLong;
-    this.mShowTime = bdjj.a(paramLong, true, "yyyy-MM-dd");
+    this.mShowTime = bdns.a(paramLong, true, "yyyy-MM-dd");
   }
 }
 

@@ -1,119 +1,67 @@
-import NS_COMM.COMM.Entry;
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_AD.MiniAppAd.StGetAdForSdkReq;
-import NS_MINI_AD.MiniAppAd.StGetAdForSdkRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONObject;
+import java.util.Map;
 
-public class bgyo
-  extends bgzp
+final class bgyo
+  implements DownloaderProxy.DownloadListener
 {
-  private MiniAppAd.StGetAdForSdkReq a = new MiniAppAd.StGetAdForSdkReq();
+  bgyo(MiniAppInfo paramMiniAppInfo, bgyt parambgyt, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt) {}
   
-  public bgyo(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap)
+  public void onDownloadFailed(int paramInt, String paramString)
   {
-    this.a.strAppid.set(paramString1);
-    this.a.iAdType.set(paramInt);
-    this.a.strGetAdUrl.set(paramString4);
-    paramString1 = new ArrayList();
-    if ((paramHashMap != null) && (paramHashMap.size() > 0))
+    bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 1011, "game pkg download failed s=[" + paramString + "], httpStatus=[" + paramInt + "] ", "1");
+    bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 620, null, null, null, paramInt, "1", 0L, null);
+    if (this.jdField_a_of_type_Bgyt != null)
     {
-      paramString4 = paramHashMap.entrySet().iterator();
-      while (paramString4.hasNext())
+      this.jdField_a_of_type_Bgyt.onInitGpkgInfo(2004, null, "download pkg fail");
+      QMLog.e("[minigame] GpkgManager", "[Gpkg]onDownloadFailed() called with: s = [" + paramInt + "], downloadResult = [" + paramString + "]");
+    }
+    bhcn.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, "1", null, "page_view", "load_fail", "download_apk_fail", "");
+    bhbs.a("2launch_fail", "download_apk_fail", null, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+  }
+  
+  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
+  
+  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Bgyt != null)
+    {
+      float f = paramFloat;
+      long l = paramLong2;
+      if (paramLong2 == 0L)
       {
-        localObject1 = (Map.Entry)paramString4.next();
-        paramHashMap = (String)((Map.Entry)localObject1).getKey();
-        localObject1 = (String)((Map.Entry)localObject1).getValue();
-        localObject2 = new COMM.Entry();
-        ((COMM.Entry)localObject2).key.set(paramHashMap);
-        ((COMM.Entry)localObject2).value.set((String)localObject1);
-        paramString1.add(localObject2);
+        f = paramFloat;
+        l = paramLong2;
+        if (this.jdField_a_of_type_Int > 0)
+        {
+          paramLong2 = this.jdField_a_of_type_Int;
+          f = paramFloat;
+          l = paramLong2;
+          if (paramLong2 > paramLong1)
+          {
+            f = (float)paramLong1 * 1.0F / (float)paramLong2;
+            l = paramLong2;
+          }
+        }
       }
+      this.jdField_a_of_type_Bgyt.onDownloadGpkgProgress(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, f, l);
     }
-    if (paramString1.size() > 0) {
-      this.a.mapParam.addAll(paramString1);
-    }
-    paramString4 = new COMM.StCommonExt();
-    paramHashMap = new ArrayList();
-    Object localObject1 = new COMM.Entry();
-    ((COMM.Entry)localObject1).key.set("refer");
-    Object localObject2 = ((COMM.Entry)localObject1).value;
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = "";
-    }
-    ((PBStringField)localObject2).set(paramString1);
-    paramHashMap.add(localObject1);
-    paramString2 = new COMM.Entry();
-    paramString2.key.set("via");
-    localObject1 = paramString2.value;
-    paramString1 = paramString3;
-    if (TextUtils.isEmpty(paramString3)) {
-      paramString1 = "";
-    }
-    ((PBStringField)localObject1).set(paramString1);
-    paramHashMap.add(paramString2);
-    paramString4.mapInfo.set(paramHashMap);
-    this.a.extInfo.setHasFlag(true);
-    this.a.extInfo.set(paramString4);
   }
   
-  protected String a()
+  public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
   {
-    return "mini_app_ad";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    long l = 0L;
+    bgyk.jdField_a_of_type_Long = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    QMLog.i("[minigame] GpkgManager", "[Gpkg] onDownloadSucceed " + paramInt + ",cost:" + bgyk.jdField_a_of_type_Long);
+    bhck.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 2, "1");
+    paramString = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+    if (bgyk.jdField_a_of_type_Long > 0L) {
+      l = bgyk.jdField_a_of_type_Long;
     }
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    MiniAppAd.StGetAdForSdkRsp localStGetAdForSdkRsp = new MiniAppAd.StGetAdForSdkRsp();
-    try
-    {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStGetAdForSdkRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStGetAdForSdkRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("response", localStGetAdForSdkRsp);
-        paramArrayOfByte.put("resultCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        return paramArrayOfByte;
-      }
-      QMLog.d("GetAdRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("GetAdRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetAdForSdk";
+    bhck.a(paramString, 620, null, null, null, 0, "1", l, null);
+    bgyk.a(bgyk.a(this.jdField_a_of_type_JavaLangString), this.b, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.jdField_a_of_type_Bgyt, this.c, this.d);
   }
 }
 

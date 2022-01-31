@@ -1,44 +1,30 @@
-import android.media.MediaFormat;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public abstract class xji
+public class xji
+  implements TextWatcher
 {
-  protected int a;
-  protected axrn a;
-  protected String a;
-  protected String b;
+  public xji(xjg paramxjg) {}
   
-  protected void a(int paramInt, String paramString1, String paramString2, MediaFormat paramMediaFormat, SlideItemInfo paramSlideItemInfo, xjh paramxjh)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramxjh != null)
-    {
-      xig localxig = new xig();
-      localxig.jdField_a_of_type_Long = paramxjh.b;
-      localxig.jdField_a_of_type_Int = paramInt;
-      localxig.jdField_b_of_type_JavaLangString = paramString2;
-      localxig.jdField_a_of_type_JavaLangString = paramString1;
-      localxig.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
-      localxig.c = this.jdField_b_of_type_JavaLangString;
-      localxig.jdField_a_of_type_Boolean = false;
-      localxig.jdField_b_of_type_Int = 1;
-      if (paramSlideItemInfo != null)
-      {
-        localxig.jdField_a_of_type_Boolean = paramSlideItemInfo.jdField_a_of_type_Boolean;
-        localxig.jdField_b_of_type_Int = paramSlideItemInfo.c;
-      }
-      if (paramxjh.a != null) {
-        paramxjh.a.a(localxig);
-      }
+    String str = xrc.a(paramEditable.toString(), 30);
+    if (str.length() < paramEditable.length()) {
+      paramEditable.replace(0, paramEditable.length(), str);
     }
+    this.a.jdField_a_of_type_JavaLangString = paramEditable.toString();
   }
   
-  protected boolean a(xjh paramxjh)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((!paramxjh.d) && (QLog.isColorLevel())) {
-      QLog.d("ToVideoConverter", 2, "run exit:" + paramxjh.b + " currContext.isRun:" + paramxjh.d);
+    paramCharSequence = paramCharSequence.toString();
+    this.a.jdField_a_of_type_JavaLangString = paramCharSequence;
+    wxe.b("Q.qqstory.record.label.QQStoryAddVideoLabelView", "keyword = " + this.a.jdField_a_of_type_JavaLangString);
+    if (this.a.jdField_a_of_type_Xjj != null) {
+      this.a.jdField_a_of_type_Xjj.a(this.a.jdField_a_of_type_JavaLangString);
     }
-    return !paramxjh.d;
   }
 }
 

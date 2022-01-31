@@ -1,12 +1,12 @@
 package com.tencent.open.agent;
 
-import beyr;
+import bfda;
 import java.util.List;
 
 public class BindGroupAdapter$1
   implements Runnable
 {
-  public BindGroupAdapter$1(beyr parambeyr, List paramList) {}
+  public BindGroupAdapter$1(bfda parambfda, List paramList) {}
   
   public void run()
   {

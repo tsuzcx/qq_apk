@@ -1,14 +1,63 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class bkiq
-  implements DialogInterface.OnClickListener
+  extends bkih
 {
-  bkiq(bkil parambkil) {}
+  private WeakReference<bkil> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bkiq(bkil parambkil)
   {
-    this.a.a.a(2);
+    this.a = new WeakReference(parambkil);
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    bkil localbkil = (bkil)this.a.get();
+    if (localbkil == null) {
+      bfrz.c("WadlProxyServiceManager", "##@transferAsync, manager gc: " + paramString);
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          bfrz.c("WadlProxyServiceManager", "##@Call back from Service: " + paramString);
+        }
+        paramBundle.setClassLoader(getClass().getClassLoader());
+      } while (paramString == null);
+      if (paramString.equals("WADL.REVERSE_HEART_CMD"))
+      {
+        paramString = bkil.a(localbkil).obtainMessage();
+        paramString.what = 4;
+        paramString.setData(paramBundle);
+        bkil.a(localbkil).sendMessage(paramString);
+        return;
+      }
+      if (paramString.equals("WADL.REVERSE_ACTION_CMD"))
+      {
+        paramString = bkil.a(localbkil).obtainMessage();
+        paramString.what = 3;
+        paramString.setData(paramBundle);
+        bkil.a(localbkil).sendMessage(paramString);
+        return;
+      }
+      if (paramString.equals("WADL.REVERSE_STOP_MONITOR_CMD"))
+      {
+        paramString = bkil.a(localbkil).obtainMessage();
+        paramString.what = 5;
+        paramString.setData(paramBundle);
+        bkil.a(localbkil).sendMessage(paramString);
+        return;
+      }
+    } while (!paramString.equals("WADL.REVERSE_START_MONITOR_CMD"));
+    paramString = bkil.a(localbkil).obtainMessage();
+    paramString.what = 6;
+    paramString.setData(paramBundle);
+    bkil.a(localbkil).sendMessage(paramString);
   }
 }
 

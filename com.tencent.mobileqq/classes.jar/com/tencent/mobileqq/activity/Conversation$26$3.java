@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import acnb;
-import ajee;
+import acrq;
+import ajit;
 import java.util.HashSet;
 import java.util.Iterator;
 
 public class Conversation$26$3
   implements Runnable
 {
-  public Conversation$26$3(acnb paramacnb, HashSet paramHashSet) {}
+  public Conversation$26$3(acrq paramacrq, HashSet paramHashSet) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Acnb.a.a != null)
+    if (this.jdField_a_of_type_Acrq.a.a != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        this.jdField_a_of_type_Acnb.a.a.a(str, false);
+        this.jdField_a_of_type_Acrq.a.a.a(str, false);
       }
     }
   }

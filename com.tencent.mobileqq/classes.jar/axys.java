@@ -1,43 +1,31 @@
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.richmediabrowser.listener.IGalleryImageListener;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.presenter.BasePresenter;
 
-public final class axys
-  implements appt
+class axys
+  implements IGalleryImageListener
 {
-  public axys(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  axys(axyr paramaxyr, URLDrawable paramURLDrawable, RichMediaBrowserInfo paramRichMediaBrowserInfo) {}
   
-  public void a(appw paramappw)
+  public void onLoadDrawable(int paramInt, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadSuccessed(int paramInt, boolean paramBoolean)
   {
-    if (paramappw != null) {}
-    try
+    this.jdField_a_of_type_Axyr.a.b.setVisibility(8);
+    if (paramBoolean)
     {
-      paramappw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+      this.jdField_a_of_type_Axyr.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramInt = this.jdField_a_of_type_ComTencentImageURLDrawable.getExifOrientation();
+      this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo.orientation = paramInt;
+      BasePresenter.updateRotation(this.jdField_a_of_type_Axyr.a.galleryView, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
       return;
     }
-    catch (Throwable paramappw) {}
+    QQToast.a(this.jdField_a_of_type_Axyr.a.mContext, this.jdField_a_of_type_Axyr.a.mContext.getString(2131695501), 0).a();
   }
-  
-  public void a(appw paramappw1, appw paramappw2, Drawable paramDrawable) {}
-  
-  public boolean a(appw paramappw)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    baiy.a(this.jdField_a_of_type_AndroidWidgetEditText);
-  }
-  
-  public void b(appw paramappw) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

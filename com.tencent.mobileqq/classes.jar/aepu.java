@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-
-public final class aepu
-  implements Parcelable.Creator<SessionInfo>
+public abstract interface aepu
 {
-  public SessionInfo a(Parcel paramParcel)
-  {
-    return new SessionInfo(paramParcel);
-  }
-  
-  public SessionInfo[] a(int paramInt)
-  {
-    return new SessionInfo[paramInt];
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.intervideo.singtogether;
 
-import awbv;
+import awge;
 
 public class OpenIdItem
-  extends awbv
+  extends awge
 {
   public long appId;
   public String openId;

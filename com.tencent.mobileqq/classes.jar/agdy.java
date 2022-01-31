@@ -1,16 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
+import com.tencent.qphone.base.util.QLog;
 
-class agdy
-  implements DialogInterface.OnClickListener
+public class agdy
+  extends agdz
 {
-  agdy(agdi paramagdi) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agdy(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder)
   {
-    if ((this.a.a != null) && (!this.a.a.c())) {
-      this.a.a.f();
+    super(paramTribeShortVideoItemBuilder);
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TribeShortVideoItemBuilder", 2, "get video download finish,vid=" + paramString1);
     }
+    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
+  }
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeShortVideoItemBuilder", 2, "Download video failed,vid=" + paramString1);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder.a(this.jdField_a_of_type_Agea, this.jdField_a_of_type_Long);
+  }
+  
+  public void b(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeShortVideoItemBuilder", 2, "Download video onPause,vid=" + paramString1);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder.a(this.jdField_a_of_type_Agea, this.jdField_a_of_type_Long);
   }
 }
 

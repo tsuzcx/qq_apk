@@ -1,22 +1,59 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class abzm
-  implements View.OnClickListener
+  implements abzi
 {
-  public abzm(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  abzj jdField_a_of_type_Abzj;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   
-  public void onClick(View paramView)
+  private void a()
   {
-    if (ArkFullScreenAppActivity.a(this.a) != null) {
-      anjv.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).a, null, anjv.b, 0, 0);
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
+      try
+      {
+        if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
+        {
+          IntentFilter localIntentFilter = new IntentFilter();
+          localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update");
+          localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update_batch");
+          abzn localabzn = new abzn(this);
+          BaseApplicationImpl.getContext().registerReceiver(localabzn, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+          this.jdField_a_of_type_AndroidContentBroadcastReceiver = localabzn;
+        }
+        return;
+      }
+      finally {}
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkFullScreenAppActivity", 2, "click to close");
-    }
-    this.a.finish();
+  }
+  
+  public void a(abzj paramabzj)
+  {
+    this.jdField_a_of_type_Abzj = paramabzj;
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    a();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("key", paramString1);
+    localBundle.putInt("type", paramInt);
+    localBundle.putString("appid", paramString2);
+    abxa.a(2, localBundle, null);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    a();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("key", paramString1);
+    localBundle.putInt("type", paramInt);
+    localBundle.putString("appid", paramString2);
+    localBundle.putString("api", paramString3);
+    abxa.a(3, localBundle, null);
   }
 }
 

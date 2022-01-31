@@ -1,23 +1,16 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
-public class aiig
-  implements Animation.AnimationListener
+class aiig
+  implements View.OnClickListener
 {
-  public aiig(NewStyleCountryActivity paramNewStyleCountryActivity, int paramInt) {}
+  aiig(aiie paramaiie) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.requestLayout();
+    this.a.a.setText("");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -41,7 +41,7 @@ final class odq
     {
     default: 
       return;
-    case 2131366263: 
+    case 2131366265: 
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar.getVisibility() == 0)) {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar.setVisibility(8);
       }

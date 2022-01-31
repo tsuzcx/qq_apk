@@ -1,36 +1,34 @@
-import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class adtb
-  extends alox
+  extends alpq
 {
-  public adtb(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
+  public adtb(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  protected void onGetBothDongtaiPermissions(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if (paramBoolean1)
-    {
-      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
-      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean3);
+    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
+      QQSettingSettingActivity.a(this.a, (Card)paramObject);
     }
   }
   
-  protected void onSetNotAllowedSeeMyDongtai(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if (!paramBoolean1)
+    if ((paramString != null) && (paramString.equals(this.a.app.getCurrentAccountUin())))
     {
-      this.a.a(2131719872, 1);
-      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
+      if (paramBoolean1) {
+        this.a.a(this.a.app.getCurrentAccountUin());
+      }
+      return;
     }
-  }
-  
-  protected void onSetShieldHisDongtai(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!paramBoolean1)
-    {
-      this.a.a(2131719872, 1);
-      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
+    QLog.e("QQSetting2Activity", 2, "onGetAllowSeeLoginDays isSuccess " + paramBoolean1 + "isAllow:" + paramBoolean2 + "uin " + str);
   }
 }
 

@@ -1,23 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.data.SubAccountInfo;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class acbf
-  implements View.OnClickListener
+  implements bdbc
 {
-  public acbf(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  public acbf(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    paramView = (View)paramView.getParent();
-    if ((paramView == null) || (paramView.getTag() == null)) {}
-    do
+    String str2;
+    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
     {
+      paramBitmap = this.a.app.a(paramBitmap);
+      String str1 = (String)AccountManageActivity.a(this.a).getTag();
+      str2 = (String)AccountManageActivity.b(this.a).getTag();
+      if (!paramString.equals(str1)) {
+        break label78;
+      }
+      AccountManageActivity.a(this.a).setImageBitmap(paramBitmap);
+    }
+    label78:
+    while (!paramString.equals(str2)) {
       return;
-      azmj.b(this.a.app, "CliOper", "", "", "0X8007146", "0X8007146", 0, 0, "", "", "", "");
-    } while (!(paramView.getTag() instanceof SubAccountInfo));
-    this.a.a((SubAccountInfo)paramView.getTag());
+    }
+    AccountManageActivity.b(this.a).setImageBitmap(paramBitmap);
   }
 }
 

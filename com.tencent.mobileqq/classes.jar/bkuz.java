@@ -1,28 +1,11 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-
 class bkuz
-  implements ActionMode.Callback
+  implements bkuw
 {
-  bkuz(bkus parambkus) {}
+  bkuz(bkuy parambkuy) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void a()
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    bkuy.a(this.a).a(131076, new Object[0]);
   }
 }
 

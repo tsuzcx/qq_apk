@@ -15,8 +15,8 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import bdcq;
-import bdkf;
+import bdgz;
+import bdoo;
 import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
 import java.util.Iterator;
 import java.util.List;
@@ -27,7 +27,7 @@ public class ReadInJoySearchTipsContainer
   extends ViewGroup
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = bdkf.a(260.0F);
+  private int jdField_a_of_type_Int = bdoo.a(260.0F);
   private List<ReadInJoySearchTipsContainer.TipsInfo> jdField_a_of_type_JavaUtilList;
   public ruy a;
   private int jdField_b_of_type_Int = 5;
@@ -56,12 +56,12 @@ public class ReadInJoySearchTipsContainer
       return;
     }
     Button localButton = new Button(getContext());
-    localButton.setBackgroundResource(2130848901);
+    localButton.setBackgroundResource(2130848974);
     GradientDrawable localGradientDrawable = (GradientDrawable)((android.graphics.drawable.DrawableContainer.DrawableContainerState)((android.graphics.drawable.StateListDrawable)localButton.getBackground()).getConstantState()).getChildren()[1];
     if (paramInt2 != 0)
     {
       localGradientDrawable.setStroke(1, paramInt2);
-      localButton.setPadding(bdkf.a(15.0F), bdkf.a(5.0F), bdkf.a(15.0F), bdkf.a(6.0F));
+      localButton.setPadding(bdoo.a(15.0F), bdoo.a(5.0F), bdoo.a(15.0F), bdoo.a(6.0F));
       localButton.setText(paramString1);
       localButton.setTextSize(14.0F);
       localButton.setSingleLine();
@@ -90,12 +90,12 @@ public class ReadInJoySearchTipsContainer
   
   protected int a(int paramInt)
   {
-    int i6 = (int)bdcq.a(getContext(), 7.0F);
-    int i1 = (int)bdcq.a(getContext(), 10.0F);
-    int i7 = (int)bdcq.a(getContext(), 10.0F);
-    int i8 = (int)bdcq.a(getContext(), 4.0F);
-    int m = (int)bdcq.a(getContext(), 12.0F);
-    int i9 = (int)bdcq.a(getContext(), 12.0F);
+    int i6 = (int)bdgz.a(getContext(), 7.0F);
+    int i1 = (int)bdgz.a(getContext(), 10.0F);
+    int i7 = (int)bdgz.a(getContext(), 10.0F);
+    int i8 = (int)bdgz.a(getContext(), 4.0F);
+    int m = (int)bdgz.a(getContext(), 12.0F);
+    int i9 = (int)bdgz.a(getContext(), 12.0F);
     int i10 = getChildCount();
     int n = 0;
     int k = m;
@@ -175,11 +175,11 @@ public class ReadInJoySearchTipsContainer
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i2 = (int)bdcq.a(getContext(), 7.0F);
-    int k = (int)bdcq.a(getContext(), 10.0F);
-    int i3 = (int)bdcq.a(getContext(), 4.0F);
-    paramInt4 = (int)bdcq.a(getContext(), 12.0F);
-    int i4 = (int)bdcq.a(getContext(), 12.0F);
+    int i2 = (int)bdgz.a(getContext(), 7.0F);
+    int k = (int)bdgz.a(getContext(), 10.0F);
+    int i3 = (int)bdgz.a(getContext(), 4.0F);
+    paramInt4 = (int)bdgz.a(getContext(), 12.0F);
+    int i4 = (int)bdgz.a(getContext(), 12.0F);
     int i5 = getChildCount();
     int i = 0;
     int j = 1;

@@ -1,17 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
 
-final class ahtf
-  implements ValueAnimator.AnimatorUpdateListener
+public class ahtf
+  extends awhw
 {
-  ahtf(ProgressBar paramProgressBar) {}
+  private ahtf(FriendFragment paramFriendFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void a(boolean paramBoolean)
   {
-    if (this.a != null) {
-      this.a.setProgress(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    }
+    FriendFragment.a(this.a);
   }
 }
 

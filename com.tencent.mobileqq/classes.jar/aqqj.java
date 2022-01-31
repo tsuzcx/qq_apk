@@ -1,54 +1,15 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import java.util.Comparator;
 
-class aqqj
-  implements aqnr
+public class aqqj
+  implements Comparator<OfflineFileInfo>
 {
-  aqqj(aqqi paramaqqi, String paramString, aqqr paramaqqr) {}
+  public aqqj(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a(int paramInt, String paramString)
+  public int a(OfflineFileInfo paramOfflineFileInfo1, OfflineFileInfo paramOfflineFileInfo2)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2DiscTaskExcuter onFaild：");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqqi.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild:" + paramInt);
-      }
-      this.jdField_a_of_type_Aqqr.a(aqpv.a(this.jdField_a_of_type_Aqqi.jdField_a_of_type_Long, bool2), bool1);
-      return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "2");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aqqi.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aqqi.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aqqi.c);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aqqi.e);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aqqi.f);
-    localBundle.putString("_m_ForwardUuid", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqqi.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send success");
-    }
-    this.jdField_a_of_type_Aqqr.a(paramString, localBundle);
+    return Long.valueOf(paramOfflineFileInfo1.c).compareTo(Long.valueOf(paramOfflineFileInfo2.c));
   }
 }
 

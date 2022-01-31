@@ -1,124 +1,121 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bcdx
-  extends ahai
+  extends bcei
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  View jdField_a_of_type_AndroidViewView;
-  ArrayList<RecommendTroopItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  TextView b;
-  boolean d = false;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
   
-  public bcdx(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, ahal paramahal, String paramString, boolean paramBoolean, TextView paramTextView, View paramView)
+  public bcdx(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_Ahal = paramahal;
-    this.c = false;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramTextView;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    try
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramString3;
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {}
+    for (this.g = 0;; this.g = 3)
     {
-      this.jdField_a_of_type_Long = Long.parseLong(paramString);
-      a();
+      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+      try
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("type", "voice");
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          this.jdField_a_of_type_OrgJsonJSONObject.put("path", this.jdField_a_of_type_JavaLangString);
+        }
+        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+          this.jdField_a_of_type_OrgJsonJSONObject.put("url", this.jdField_b_of_type_JavaLangString);
+        }
+        if (this.jdField_a_of_type_Int > 0) {
+          this.jdField_a_of_type_OrgJsonJSONObject.put("time", this.jdField_a_of_type_Int);
+        }
+        if (this.jdField_b_of_type_Int > 0) {
+          this.jdField_a_of_type_OrgJsonJSONObject.put("size", this.jdField_b_of_type_Int);
+        }
+        return;
+      }
+      catch (JSONException paramString1)
+      {
+        paramString1.printStackTrace();
+      }
+    }
+  }
+  
+  public bcdx(JSONObject paramJSONObject)
+  {
+    a(paramJSONObject);
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("path");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("url");
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("time");
+    this.jdField_b_of_type_Int = paramJSONObject.optInt("size");
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    {
+      this.g = 0;
       return;
     }
-    catch (NumberFormatException paramQQAppInterface)
+    this.g = 3;
+  }
+  
+  public boolean a()
+  {
+    return ndd.a(this.jdField_b_of_type_JavaLangString);
+  }
+  
+  public int b()
+  {
+    return 3;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("path", paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("url", paramString);
+      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+      {
+        this.g = 0;
+        return;
+      }
+    }
+    catch (JSONException paramString)
     {
       for (;;)
       {
-        QLog.d("TroopDataCardRecomTroopListWrapper", 1, "TroopDataCardRecomTroopListWrapper NumberFormatException ", paramQQAppInterface);
+        paramString.printStackTrace();
       }
+      this.g = 3;
     }
-  }
-  
-  protected ahad a()
-  {
-    return new bcdw(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-  }
-  
-  protected void a()
-  {
-    super.a();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(this.b);
-      this.b.setVisibility(8);
-    }
-    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    ((alzf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, 25);
-  }
-  
-  protected void a(boolean paramBoolean1, long paramLong, int paramInt, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int j = paramArrayList.size();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopDataCardRecomTroopListWrapper", 2, "onGetTroopDataCardRecommendTroopList isSuccess = " + paramBoolean1 + ",troopUIN = " + paramLong + ",serverPageID = " + paramInt + ",dataListSize = " + i + ",newDataListSize = " + j);
-    }
-    this.d = paramBoolean2;
-    if ((paramBoolean1) && (this.jdField_a_of_type_Long == paramLong))
-    {
-      if (j + i < 50) {
-        break label221;
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList.subList(0, 50 - i));
-      this.d = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopDataCardRecomTroopListWrapper", 2, "onGetTroopDataCardRecommendTroopList reach limit,this.dataList.size() = " + this.jdField_a_of_type_JavaUtilArrayList.size());
-      }
-    }
-    for (;;)
-    {
-      c();
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        if (this.d) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText("没有更多内容了");
-        }
-      }
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-      label221:
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    }
-  }
-  
-  protected boolean a()
-  {
-    return this.d;
-  }
-  
-  protected void c()
-  {
-    this.jdField_a_of_type_Ahad.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Ahad.notifyDataSetChanged();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopDataCardRecomTroopListWrapper", 2, "refreshListView,this.dataList.size() = " + this.jdField_a_of_type_JavaUtilArrayList.size());
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-    {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-      this.b.setVisibility(0);
-      return;
-    }
-    this.b.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import awbw;
-import awbx;
-import bjxj;
+import awgf;
+import awgg;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +20,7 @@ public class ReadInJoyLogicEngine$6
   
   public void run()
   {
-    Pair localPair = bjxj.a();
+    Pair localPair = bkbq.a();
     long l1 = NetConnInfoCenter.getServerTimeMillis() / 1000L;
     long l2 = NetConnInfoCenter.getServerTimeMillis() / 1000L - ((Long)localPair.first).longValue();
     long l3 = owy.a() / 1000L;
@@ -37,7 +37,7 @@ public class ReadInJoyLogicEngine$6
     }
     localObject1 = this.this$0.a().createEntityManager();
     localObject2 = String.format(Locale.CHINA, "delete from %s where recommendSeq not in ( select recommendSeq from %s where channelID = %d order by recommendSeq desc limit %d ) and recommendTime < %d  and channelID = %d ", new Object[] { WeiShiVideoArticleInfo.TABLE_NAME, WeiShiVideoArticleInfo.TABLE_NAME, Integer.valueOf(this.a), localPair.second, Long.valueOf(l2), Integer.valueOf(this.a) });
-    if (!((awbw)localObject1).b((String)localObject2)) {
+    if (!((awgf)localObject1).b((String)localObject2)) {
       QLog.d("VideoArticleInfo", 2, "delete main outdated article fail !");
     }
     for (;;)

@@ -1,16 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acka
-  implements axxi
+public final class acka
+  implements DialogInterface.OnClickListener
 {
-  public acka(ChatSettingActivity paramChatSettingActivity) {}
+  public acka(acln paramacln) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.f != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
-      ChatSettingActivity.a(this.a, this.a.a, this.a.f);
+    if (this.a != null) {
+      this.a.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

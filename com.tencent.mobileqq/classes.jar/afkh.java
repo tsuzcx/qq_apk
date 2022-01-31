@@ -1,18 +1,18 @@
-import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 class afkh
-  implements arnx
+  extends aepm
 {
-  afkh(afjb paramafjb) {}
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  View d;
   
-  public void onClick(View paramView)
-  {
-    arni.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 3);
-    arni.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-  }
+  afkh(afkg paramafkg) {}
 }
 
 

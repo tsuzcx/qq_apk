@@ -1,46 +1,115 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class alib
-  extends bdqc
+  implements alif
 {
-  public alib(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData, int paramInt) {}
-  
-  protected void onAuthResponse(boolean paramBoolean, Object paramObject)
+  public QQAppInterface a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, new Object[] { "[showNewActionFloatView] onAuthResponse, result=", Boolean.valueOf(paramBoolean), ", data=", paramObject });
-    }
-    if ((paramObject != null) && ((paramObject instanceof HashMap)))
+    if (BaseApplicationImpl.sProcessId == 1)
     {
-      paramObject = (HashMap)paramObject;
-      localObject = (String)paramObject.get("optFrom");
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && ("newActionFloatView".equals(localObject))) {}
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+        return (QQAppInterface)localAppRuntime;
+      }
     }
-    else
+    return null;
+  }
+  
+  public List<TraceData> a()
+  {
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null) {
+      return null;
+    }
+    return localQQAppInterface.getEntityManagerFactory().createEntityManager().a(TraceData.class);
+  }
+  
+  public boolean a(List<TraceData> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return false;
+    }
+    Object localObject;
+    awgh localawgh;
+    TraceData localTraceData;
+    try
     {
-      return;
+      localObject = a();
+      if (localObject == null) {
+        return false;
+      }
+      localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
+      localawgh = ((awgf)localObject).a();
+      localawgh.a();
+      paramList = paramList.iterator();
+      for (;;)
+      {
+        if (paramList.hasNext())
+        {
+          localTraceData = (TraceData)paramList.next();
+          if (localTraceData.getStatus() == 1000)
+          {
+            ((awgf)localObject).b(localTraceData);
+            continue;
+            return true;
+          }
+        }
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a.removeObserver(this);
-    if (paramBoolean)
+    catch (Throwable paramList)
     {
-      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 0, 21, this.jdField_a_of_type_Int, null);
-      return;
+      QLog.e("TraceReport", 1, paramList, new Object[0]);
     }
-    Object localObject = new Bundle();
-    paramObject = (String)paramObject.get("url");
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, new Object[] { "[showNewActionFloatView] onAuthResponse, activityUrl=", paramObject });
+    for (;;)
+    {
+      ((awgf)localObject).a(localTraceData);
+      break;
+      localawgh.c();
+      localawgh.b();
+      ((awgf)localObject).a();
     }
-    ((Bundle)localObject).putString("activityUrl", paramObject);
-    ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 1, 22, this.jdField_a_of_type_Int, (Bundle)localObject);
+  }
+  
+  public boolean b(List<TraceData> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return false;
+    }
+    Object localObject;
+    awgh localawgh;
+    try
+    {
+      localObject = a();
+      if (localObject == null) {
+        return false;
+      }
+      localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
+      localawgh = ((awgf)localObject).a();
+      localawgh.a();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        ((awgf)localObject).b((TraceData)paramList.next());
+        continue;
+        return true;
+      }
+    }
+    catch (Throwable paramList)
+    {
+      QLog.e("TraceReport", 1, paramList, new Object[0]);
+    }
+    for (;;)
+    {
+      localawgh.c();
+      localawgh.b();
+      ((awgf)localObject).a();
+    }
   }
 }
 

@@ -1,10 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-final class auqe
-  implements DialogInterface.OnClickListener
+class auqe
+  implements arpz
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  auqe(auqc paramauqc, arpy paramarpy) {}
+  
+  public void a()
+  {
+    Message localMessage = auqc.a(this.jdField_a_of_type_Auqc).obtainMessage(1);
+    aupy localaupy = this.jdField_a_of_type_Auqc.a(this.jdField_a_of_type_Arpy.a());
+    if (localaupy != null)
+    {
+      localaupy.jdField_a_of_type_Int = 0;
+      localMessage.obj = localaupy;
+      auqc.a(this.jdField_a_of_type_Auqc).sendMessage(localMessage);
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("MultiRichMediaSaveManager", 2, "saveVideoFile fail, errorCode = " + paramInt + " ,errorMsg = " + paramString);
+    }
+    aupy localaupy = this.jdField_a_of_type_Auqc.a(this.jdField_a_of_type_Arpy.a());
+    if (localaupy != null)
+    {
+      localaupy.jdField_a_of_type_Int = -1;
+      localaupy.b = paramInt;
+      localaupy.jdField_a_of_type_JavaLangString = paramString;
+      auqc.a(this.jdField_a_of_type_Auqc, localaupy);
+    }
+  }
 }
 
 

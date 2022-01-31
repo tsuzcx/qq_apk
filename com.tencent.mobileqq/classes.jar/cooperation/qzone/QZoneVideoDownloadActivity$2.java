@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
 
 class QZoneVideoDownloadActivity$2
@@ -10,7 +10,7 @@ class QZoneVideoDownloadActivity$2
   
   public void run()
   {
-    QQToast.a(this.this$0.getApplicationContext(), alpo.a(2131712907), 1).a();
+    QQToast.a(this.this$0.getApplicationContext(), alud.a(2131712919), 1).a();
   }
 }
 

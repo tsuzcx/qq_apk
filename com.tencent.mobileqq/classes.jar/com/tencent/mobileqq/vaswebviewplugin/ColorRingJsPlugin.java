@@ -3,8 +3,8 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import becq;
-import bedv;
+import begz;
+import beie;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -34,13 +34,13 @@ public class ColorRingJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ColorRingJsPlugin", 2, "changeTab");
     }
-    bedv localbedv = (bedv)super.getBrowserComponent(32);
-    if (localbedv != null)
+    beie localbeie = (beie)super.getBrowserComponent(32);
+    if (localbeie != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putString("callbackId", paramString);
-      paramString = localbedv.a.obtainMessage(5, localBundle);
-      localbedv.a.dispatchMessage(paramString);
+      paramString = localbeie.a.obtainMessage(5, localBundle);
+      localbeie.a.dispatchMessage(paramString);
     }
   }
   
@@ -126,15 +126,15 @@ public class ColorRingJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ColorRingJsPlugin", 2, "play, id=" + paramLong);
     }
-    bedv localbedv = (bedv)super.getBrowserComponent(32);
-    if (localbedv != null)
+    beie localbeie = (beie)super.getBrowserComponent(32);
+    if (localbeie != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putLong("id", paramLong);
       localBundle.putString("callbackId", paramString2);
       localBundle.putString("type", paramString1);
-      paramString1 = localbedv.a.obtainMessage(3, localBundle);
-      localbedv.a.dispatchMessage(paramString1);
+      paramString1 = localbeie.a.obtainMessage(3, localBundle);
+      localbeie.a.dispatchMessage(paramString1);
     }
   }
   
@@ -143,16 +143,16 @@ public class ColorRingJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ColorRingJsPlugin", 2, "setup, id=" + paramLong);
     }
-    bedv localbedv = (bedv)super.getBrowserComponent(32);
-    if (localbedv != null)
+    beie localbeie = (beie)super.getBrowserComponent(32);
+    if (localbeie != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putLong("id", paramLong);
       localBundle.putInt("status", paramInt);
       localBundle.putString("type", paramString1);
       localBundle.putString("callbackId", paramString2);
-      paramString1 = localbedv.a.obtainMessage(4, localBundle);
-      localbedv.a.dispatchMessage(paramString1);
+      paramString1 = localbeie.a.obtainMessage(4, localBundle);
+      localbeie.a.dispatchMessage(paramString1);
     }
   }
 }

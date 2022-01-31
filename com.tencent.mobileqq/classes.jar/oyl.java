@@ -95,7 +95,7 @@ public class oyl
     QLog.d("RIJRedPacketPopupStep", 1, "showErrorRedPacketDialog");
     if ((a()) && (b()))
     {
-      new qgm((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView(), BaseApplicationImpl.getContext().getString(2131718911), BaseApplicationImpl.getContext().getString(2131719097), paramInt1, paramInt2, this.jdField_a_of_type_JavaLangString).a(false);
+      new qgm((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView(), BaseApplicationImpl.getContext().getString(2131718923), BaseApplicationImpl.getContext().getString(2131719109), paramInt1, paramInt2, this.jdField_a_of_type_JavaLangString).a(false);
       a(true);
     }
   }

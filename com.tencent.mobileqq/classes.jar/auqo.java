@@ -1,27 +1,34 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.view.animation.DecelerateInterpolator;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
 
 class auqo
-  extends AnimatorListenerAdapter
+  implements arqb
 {
-  auqo(auqn paramauqn, auqr paramauqr, URLDrawable paramURLDrawable) {}
+  auqo(auqc paramauqc, String paramString, aupx paramaupx) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Auqn.a() != null)
+    if ((this.jdField_a_of_type_Aupx != null) && (this.jdField_a_of_type_Aupx.a != null))
     {
-      this.jdField_a_of_type_Auqr.b.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      paramAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_Auqr.b, "alpha", new float[] { 0.2F, 1.0F });
-      paramAnimator.setInterpolator(new DecelerateInterpolator());
-      paramAnimator.setDuration(300L).start();
-      return;
+      String str = this.jdField_a_of_type_Aupx.a.a();
+      aupy localaupy = this.jdField_a_of_type_Auqc.a(str);
+      if ((localaupy != null) && (!localaupy.a))
+      {
+        localaupy.c = paramInt;
+        this.jdField_a_of_type_Auqc.a(str, localaupy);
+        auqc.a(this.jdField_a_of_type_Auqc, localaupy, paramInt);
+      }
     }
-    this.jdField_a_of_type_Auqr.b.setAlpha(1.0F);
   }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiRichMediaSaveManager", 2, "downloadFile key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramBoolean);
+    }
+    auqc.a(this.jdField_a_of_type_Auqc, this.jdField_a_of_type_Aupx, paramBoolean);
+  }
+  
+  public void b(boolean paramBoolean) {}
 }
 
 

@@ -1,17 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.os.Handler;
+import android.os.Looper;
+import android.webkit.ValueCallback;
 
-class bhfb
-  implements DialogInterface.OnClickListener
+public abstract class bhfb
+  extends bhfe<Integer, Integer>
 {
-  bhfb(bhex parambhex, JsResult paramJsResult) {}
+  public static final Integer a;
+  public static final Integer b = Integer.valueOf(2);
+  protected Handler a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
-    paramDialogInterface.dismiss();
+    jdField_a_of_type_JavaLangInteger = Integer.valueOf(1);
   }
+  
+  public bhfb()
+  {
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  }
+  
+  public void a(Integer paramInteger)
+  {
+    Object localObject = getCurrState();
+    if ((localObject instanceof bhfc))
+    {
+      localObject = (bhfc)localObject;
+      if ((bhfc.a((bhfc)localObject) != null) && (jdField_a_of_type_JavaLangInteger == paramInteger)) {
+        setCurrState(bhfc.a((bhfc)localObject));
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        super.sendEvent(paramInteger);
+      }
+      return;
+    }
+  }
+  
+  public abstract void a(String paramString1, ValueCallback paramValueCallback, String paramString2);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aloz;
+import alto;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
@@ -12,15 +12,15 @@ class PermisionPrivacyActivity$14
   
   public void run()
   {
-    aloz localaloz = (aloz)this.this$0.app.getManager(51);
-    Card localCard = localaloz.b(this.this$0.app.getCurrentAccountUin());
+    alto localalto = (alto)this.this$0.app.getManager(51);
+    Card localCard = localalto.b(this.this$0.app.getCurrentAccountUin());
     if (localCard != null)
     {
       if (!this.a) {}
       for (boolean bool = true;; bool = false)
       {
         localCard.isHidePrettyGroutIdentity = bool;
-        if (localaloz.a(localCard)) {
+        if (localalto.a(localCard)) {
           break;
         }
         QLog.e("vip_pretty.Q.security", 1, "onGetPrettyOwnerFlag save card flag=" + this.a + " failed");

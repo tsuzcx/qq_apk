@@ -1,60 +1,29 @@
-import android.content.Context;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class ajhz
-  extends ajhc
+class ajhz
+  implements View.OnClickListener
 {
-  public ajhz(Context paramContext) {}
+  private ajhy jdField_a_of_type_Ajhy;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public void a(byte[] paramArrayOfByte)
+  ajhz(ajhy paramajhy, MqqHandler paramMqqHandler)
   {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Bbkv == null) {
-        this.jdField_a_of_type_Bbkv = new bbkv();
-      }
-      this.jdField_a_of_type_Bbkv.a(paramArrayOfByte.getString("messageNavInfo"));
-      return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    this.jdField_a_of_type_Ajhy = paramajhy;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
   }
   
-  public byte[] a()
+  public void onClick(View paramView)
   {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Bbkv != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbkv.a());
-      }
-      return localJSONObject.toString().getBytes();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Ajhy.jdField_a_of_type_JavaLangString + " on close");
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    paramView = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(201);
+    paramView.obj = this.jdField_a_of_type_Ajhy;
+    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramView);
+    this.jdField_a_of_type_Ajhy.jdField_a_of_type_Ajhw.onClose();
   }
 }
 

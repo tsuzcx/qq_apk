@@ -1,27 +1,25 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.concurrent.atomic.AtomicLong;
 
-class wso
+public abstract class wso<T extends Dispatcher.Dispatchable>
+  extends QQUIEventReceiver<wru, T>
+  implements wsz
 {
-  public TextView a;
+  protected static AtomicLong a = new AtomicLong(0L);
+  public int a;
+  public long a;
+  public vcf a;
+  public wtb a;
+  public int b;
   
-  public wso(View paramView)
-  {
-    this.a = ((TextView)paramView.findViewById(2131377349));
-  }
+  public abstract int a(T paramT);
   
-  public void a(xjw paramxjw, wsn paramwsn)
+  public abstract void a(T paramT);
+  
+  public boolean b()
   {
-    if (TextUtils.isEmpty(paramxjw.a))
-    {
-      this.a.setVisibility(8);
-      return;
-    }
-    this.a.setVisibility(0);
-    this.a.setText(wsj.a(paramxjw));
-    wsj.a(this.a);
-    this.a.setOnClickListener(new wsp(this, paramwsn, paramxjw));
+    return this.b > 0;
   }
 }
 

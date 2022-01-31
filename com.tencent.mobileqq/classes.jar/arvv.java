@@ -1,61 +1,14 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import java.util.Set;
+import android.content.DialogInterface;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-public class arvv
-  extends arum
+class arvv
+  extends bdgx
 {
-  public arvv(Intent paramIntent)
-  {
-    super(paramIntent);
-  }
+  arvv(arvt paramarvt, int paramInt) {}
   
-  protected View a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("key_hiboom_id");
-    HiBoomTextView localHiBoomTextView = new HiBoomTextView(this.jdField_a_of_type_AndroidAppActivity);
-    localHiBoomTextView.setHiBoom(i, 0, asnx.jdField_a_of_type_Asnq);
-    localHiBoomTextView.setText(this.jdField_a_of_type_JavaLangString);
-    localHiBoomTextView.setMaxSize(asnx.jdField_a_of_type_Int);
-    localHiBoomTextView.setLayoutParams(new RelativeLayout.LayoutParams(500, 500));
-    return localHiBoomTextView;
-  }
-  
-  protected void a()
-  {
-    if (k()) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-    if (l()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (m()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
-    }
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    return true;
-  }
-  
-  protected void b()
-  {
-    this.jdField_a_of_type_Bdfq.setMessage(null);
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  protected boolean h()
-  {
-    return true;
+    this.jdField_a_of_type_Arvt.a.a(this.jdField_a_of_type_Int);
   }
 }
 

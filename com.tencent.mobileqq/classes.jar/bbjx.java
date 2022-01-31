@@ -1,22 +1,19 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
-class bbjx
-  implements Comparator<Map.Entry<String, bbjy>>
+public final class bbjx
+  implements QQPermissionCallback
 {
-  bbjx(bbjv parambbjv) {}
+  public bbjx(BaseActivity paramBaseActivity) {}
   
-  public int a(Map.Entry<String, bbjy> paramEntry1, Map.Entry<String, bbjy> paramEntry2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    long l = ((bbjy)paramEntry2.getValue()).a - ((bbjy)paramEntry1.getValue()).a;
-    if (l > 0L) {
-      return 1;
+    if (!this.a.isFinishing()) {
+      bdgm.b(this.a);
     }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
   }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

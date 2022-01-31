@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.utils;
 
-import bdks;
+import bdpb;
 
 public class VoicePlayer$2
   implements Runnable
 {
-  public VoicePlayer$2(bdks parambdks) {}
+  public VoicePlayer$2(bdpb parambdpb) {}
   
   public void run()
   {
-    bdks.a(this.this$0, false);
+    bdpb.a(this.this$0, false);
   }
 }
 

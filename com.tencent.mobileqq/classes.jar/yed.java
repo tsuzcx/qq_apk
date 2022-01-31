@@ -1,41 +1,29 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.qphone.base.util.QLog;
 
-public class yed
-  extends LinearLayoutManager
+class yed
+  implements ymp
 {
-  public yed(Context paramContext, int paramInt, boolean paramBoolean)
-  {
-    super(paramContext, paramInt, paramBoolean);
-  }
+  yed(ydw paramydw, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  public void a(int paramInt)
   {
-    try
+    QLog.d(ydw.jdField_a_of_type_JavaLangString, 2, "count:" + paramInt);
+    if ((ydw.n(this.jdField_a_of_type_Ydw) != null) && (paramInt == 1))
     {
-      super.onLayoutChildren(paramRecycler, paramState);
+      if (ymo.a().a(ydw.o(this.jdField_a_of_type_Ydw), "subscribe_sp_key_show_praise_guide") != 0) {
+        break label90;
+      }
+      if ((this.jdField_a_of_type_Ydw.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null) && (!this.jdField_a_of_type_Ydw.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a())) {
+        this.jdField_a_of_type_Ydw.i();
+      }
+    }
+    label90:
+    while ((ymo.a().a(ydw.p(this.jdField_a_of_type_Ydw), "subscribe_sp_key_show_follow_guide") != 0) || (ybu.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed))) {
       return;
     }
-    catch (Exception paramRecycler)
-    {
-      paramRecycler.printStackTrace();
-    }
-  }
-  
-  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
-  {
-    try
-    {
-      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
-      return paramInt;
-    }
-    catch (IndexOutOfBoundsException paramRecycler)
-    {
-      paramRecycler.printStackTrace();
-    }
-    return 0;
+    this.jdField_a_of_type_Ydw.h();
   }
 }
 

@@ -1,24 +1,14 @@
-import android.text.TextUtils;
-import cooperation.qqreader.host.webview.ReaderBaseWebViewPlugin;
-import cooperation.qqreader.proxy.ReaderJsCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class bivy
-  implements ReaderJsCallback
+  implements View.OnClickListener
 {
-  bivy(bivx parambivx) {}
+  bivy(bivx parambivx, biwb parambiwb) {}
   
-  public void onCallback(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(paramString1)) {
-      bivx.a(this.a, paramString1, new String[] { paramString2 });
-    }
-  }
-  
-  public void onInitPluginCallBack(ReaderBaseWebViewPlugin paramReaderBaseWebViewPlugin)
-  {
-    if (paramReaderBaseWebViewPlugin != null) {
-      paramReaderBaseWebViewPlugin.init(this.a.mRuntime, bivx.a(this.a));
-    }
+    this.jdField_a_of_type_Biwb.a(paramView);
   }
 }
 

@@ -1,35 +1,8 @@
-import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
-import android.content.Context;
-import android.content.DialogInterface;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import java.io.File;
 
-class bgsu
-  extends bgsi
+public abstract interface bgsu
 {
-  bgsu(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
-  {
-    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
-  }
-  
-  protected bgsh a()
-  {
-    return new bgsh(2131694387, new bgsw(this));
-  }
-  
-  protected void a(DialogInterface paramDialogInterface)
-  {
-    a("expo");
-  }
-  
-  protected bgsh b()
-  {
-    return new bgsh(2131694331, new bgsv(this));
-  }
-  
-  protected String b()
-  {
-    return "off_idAlert";
-  }
+  public abstract void a(File paramFile);
 }
 
 

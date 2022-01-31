@@ -1,23 +1,13 @@
-import android.view.View;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
-class atme
-  implements bhqd
+public class atme
+  implements atok
 {
-  atme(atmd paramatmd, bhpy parambhpy) {}
+  public atme(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.e();
-      return;
-      atmd.a(this.jdField_a_of_type_Atmd);
-      continue;
-      atmd.b(this.jdField_a_of_type_Atmd);
-    }
+    ListenTogetherManager.a(this.a, paramString, paramInt1, paramInt2);
   }
 }
 

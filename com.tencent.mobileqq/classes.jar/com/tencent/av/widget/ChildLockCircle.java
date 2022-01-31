@@ -18,7 +18,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
-import azmj;
+import azqs;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.AVActivity;
@@ -79,17 +79,17 @@ public class ChildLockCircle
   
   private void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    setId(2131372583);
-    setBackgroundResource(2130841722);
+    setId(2131372609);
+    setBackgroundResource(2130841735);
     paramAttributeSet = getResources();
-    this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(2131695896);
-    this.jdField_b_of_type_JavaLangString = paramAttributeSet.getString(2131695897);
-    this.jdField_c_of_type_JavaLangString = paramAttributeSet.getString(2131695894);
-    this.jdField_d_of_type_JavaLangString = paramAttributeSet.getString(2131695895);
+    this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(2131695898);
+    this.jdField_b_of_type_JavaLangString = paramAttributeSet.getString(2131695899);
+    this.jdField_c_of_type_JavaLangString = paramAttributeSet.getString(2131695896);
+    this.jdField_d_of_type_JavaLangString = paramAttributeSet.getString(2131695897);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130841713);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130841707);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130841726);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130841720);
       this.jdField_a_of_type_AndroidGraphicsRectF.left = 12.0F;
       this.jdField_a_of_type_AndroidGraphicsRectF.top = 12.0F;
       this.jdField_a_of_type_AndroidGraphicsPaint.setFlags(1);
@@ -144,10 +144,10 @@ public class ChildLockCircle
     {
       if (!((AVActivity)getContext()).a().a().x)
       {
-        azmj.b(null, "CliOper", "", "", "0X80061F8", "0X80061F8", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X80061F8", "0X80061F8", 0, 0, "", "", "", "");
         return;
       }
-      azmj.b(null, "CliOper", "", "", "0X80061FA", "0X80061FA", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X80061FA", "0X80061FA", 0, 0, "", "", "", "");
       return;
     }
     catch (Exception localException)
@@ -158,7 +158,7 @@ public class ChildLockCircle
   
   public Bitmap a(Resources paramResources, int paramInt)
   {
-    int j = 2130841713;
+    int j = 2130841726;
     int i = j;
     switch (paramInt)
     {
@@ -168,33 +168,33 @@ public class ChildLockCircle
     for (;;)
     {
       return BitmapFactory.decodeResource(paramResources, i);
-      i = 2130841707;
-      continue;
-      i = 2130841714;
-      continue;
-      i = 2130841715;
-      continue;
-      i = 2130841716;
-      continue;
-      i = 2130841717;
-      continue;
-      i = 2130841718;
-      continue;
-      i = 2130841719;
-      continue;
       i = 2130841720;
+      continue;
+      i = 2130841727;
+      continue;
+      i = 2130841728;
+      continue;
+      i = 2130841729;
+      continue;
+      i = 2130841730;
+      continue;
+      i = 2130841731;
+      continue;
+      i = 2130841732;
+      continue;
+      i = 2130841733;
+      continue;
+      i = 2130841734;
       continue;
       i = 2130841721;
       continue;
-      i = 2130841708;
+      i = 2130841722;
       continue;
-      i = 2130841709;
+      i = 2130841723;
       continue;
-      i = 2130841710;
+      i = 2130841724;
       continue;
-      i = 2130841711;
-      continue;
-      i = 2130841712;
+      i = 2130841725;
     }
   }
   
@@ -309,7 +309,7 @@ public class ChildLockCircle
         if (QLog.isColorLevel()) {
           QLog.e("ChildLockCircle", 2, "[childLock] action lock");
         }
-        azmj.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
         return false;
       }
       paramMessage.a().y = false;
@@ -317,7 +317,7 @@ public class ChildLockCircle
       if (QLog.isColorLevel()) {
         QLog.e("ChildLockCircle", 2, "[childLock] action unlock");
       }
-      azmj.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
       return false;
     }
     catch (Exception paramMessage) {}

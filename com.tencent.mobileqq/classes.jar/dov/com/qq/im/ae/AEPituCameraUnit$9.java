@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae;
 
-import bkle;
+import bkpl;
 import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
 public class AEPituCameraUnit$9
   implements Runnable
 {
-  public AEPituCameraUnit$9(bkle parambkle) {}
+  public AEPituCameraUnit$9(bkpl parambkpl) {}
   
   public void run()
   {
-    bkle.a(this.this$0).setCameraPermissionResult(true);
+    bkpl.a(this.this$0).setCameraPermissionResult(true);
   }
 }
 

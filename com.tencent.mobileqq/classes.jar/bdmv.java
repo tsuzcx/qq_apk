@@ -1,39 +1,19 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+
 public class bdmv
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
+  public bdmv(ShareActionSheetBuilder paramShareActionSheetBuilder) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public void c(String paramString)
-  {
-    this.c = paramString;
-  }
-  
-  public String toString()
-  {
-    return super.toString();
+    if (this.a.a.isShowing())
+    {
+      this.a.a.cancel();
+      this.a.a.dismiss();
+    }
   }
 }
 

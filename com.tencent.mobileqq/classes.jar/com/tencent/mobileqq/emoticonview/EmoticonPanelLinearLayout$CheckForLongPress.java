@@ -3,8 +3,8 @@ package com.tencent.mobileqq.emoticonview;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
-import appt;
-import appw;
+import apuc;
+import apuf;
 
 class EmoticonPanelLinearLayout$CheckForLongPress
   implements Runnable
@@ -26,17 +26,17 @@ class EmoticonPanelLinearLayout$CheckForLongPress
   {
     if ((this.this$0.getParent() != null) && (this.jdField_a_of_type_Int == EmoticonPanelLinearLayout.a(this.this$0)) && (this.this$0.jdField_a_of_type_AndroidViewView != null))
     {
-      appw localappw = (appw)this.this$0.jdField_a_of_type_AndroidViewView.getTag();
-      if (localappw != null)
+      apuf localapuf = (apuf)this.this$0.jdField_a_of_type_AndroidViewView.getTag();
+      if (localapuf != null)
       {
-        if ((this.this$0.jdField_a_of_type_Appt != null) && (this.this$0.jdField_a_of_type_Appt.a(localappw))) {
+        if ((this.this$0.jdField_a_of_type_Apuc != null) && (this.this$0.jdField_a_of_type_Apuc.a(localapuf))) {
           break label134;
         }
         this.this$0.d = true;
         this.this$0.getParent().requestDisallowInterceptTouchEvent(true);
         this.this$0.sendAccessibilityEvent(2);
-        if (EmoticonPanelLinearLayout.a(this.this$0, localappw)) {
-          this.this$0.a(this.this$0.jdField_a_of_type_AndroidViewView, localappw);
+        if (EmoticonPanelLinearLayout.a(this.this$0, localapuf)) {
+          this.this$0.a(this.this$0.jdField_a_of_type_AndroidViewView, localapuf);
         }
       }
     }

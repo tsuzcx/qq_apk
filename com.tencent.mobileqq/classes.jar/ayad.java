@@ -1,24 +1,29 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+import com.tencent.richmediabrowser.listener.IGalleryImageListener;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.view.GalleryUrlImageView;
 
-public abstract class ayad
-  extends ClickableSpan
-  implements View.OnClickListener
+class ayad
+  implements IGalleryImageListener
 {
-  private int a;
+  ayad(ayaa paramayaa, RichMediaBrowserInfo paramRichMediaBrowserInfo, String paramString, URLDrawable paramURLDrawable, AIOPictureData paramAIOPictureData, GalleryUrlImageView paramGalleryUrlImageView) {}
   
-  public ayad(int paramInt)
-  {
-    this.a = paramInt;
-  }
+  public void onLoadDrawable(int paramInt, URLDrawable paramURLDrawable) {}
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onLoadSuccessed(int paramInt, boolean paramBoolean)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.a);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.clearShadowLayer();
+    this.jdField_a_of_type_Ayaa.b.setVisibility(8);
+    if (paramBoolean)
+    {
+      ayaa.a(this.jdField_a_of_type_Ayaa, this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
+      return;
+    }
+    if ((!ayaa.a(this.jdField_a_of_type_Ayaa, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData, this.jdField_a_of_type_ComTencentRichmediabrowserViewGalleryUrlImageView)) && (!ayaa.b(this.jdField_a_of_type_Ayaa, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData, this.jdField_a_of_type_ComTencentRichmediabrowserViewGalleryUrlImageView)) && (!ayaa.c(this.jdField_a_of_type_Ayaa, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData, this.jdField_a_of_type_ComTencentRichmediabrowserViewGalleryUrlImageView))) {
+      ayaa.a(this.jdField_a_of_type_Ayaa, this.jdField_a_of_type_ComTencentRichmediabrowserViewGalleryUrlImageView);
+    }
+    ayaa.a(this.jdField_a_of_type_Ayaa, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_a_of_type_Int, 2);
   }
 }
 

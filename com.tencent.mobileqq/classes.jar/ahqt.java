@@ -1,6 +1,29 @@
-public abstract interface ahqt
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+
+public class ahqt
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public ahqt(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((paramView.getTag() instanceof ahpn))
+    {
+      paramView = (ahpn)paramView.getTag();
+      if (paramView != null) {}
+    }
+    else
+    {
+      return;
+    }
+    paramView = TroopInfoActivity.a(paramView.b, 4);
+    paramView.putInt("t_s_f", 1002);
+    bcpx.a(this.a.getActivity(), paramView, 2);
+  }
 }
 
 

@@ -1,23 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
 
-class asfy
-  implements View.OnClickListener
+public class asfy
+  implements Handler.Callback
 {
-  asfy(asfu paramasfu, String paramString) {}
+  public asfy(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramView = new HashMap();
-    aact.a(paramView, this.jdField_a_of_type_JavaLangString);
-    paramView.put(Integer.valueOf(2), this.jdField_a_of_type_JavaLangString);
-    paramView.put(Integer.valueOf(10), "0");
-    aact.a(akro.a(), "769", "205711", this.jdField_a_of_type_Asfu.a().gameAppId, "76905", "1", "160", paramView);
-    asfu.a(this.jdField_a_of_type_Asfu).dismiss();
+    this.a.a(paramMessage);
+    return false;
   }
 }
 

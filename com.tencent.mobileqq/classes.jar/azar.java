@@ -1,32 +1,45 @@
-import com.tencent.qphone.base.util.QLog;
+import PayMQQ.UniPayRequest;
+import PayMQQ.UniPayResponse;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class azar
-  implements azgx
+public class azar
+  extends zhu
 {
-  azar(azap paramazap) {}
-  
-  public void a()
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.a.a = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onStop!");
+    if (paramFromServiceMsg == null) {
+      return null;
     }
+    paramToServiceMsg = new UniPacket(true);
+    try
+    {
+      paramToServiceMsg.setEncodeName("utf-8");
+      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+      paramToServiceMsg = (UniPayResponse)paramToServiceMsg.getByClass("stResponse", new UniPayResponse());
+      return paramToServiceMsg;
+    }
+    catch (RuntimeException paramToServiceMsg)
+    {
+      return null;
+    }
+    catch (Exception paramToServiceMsg) {}
+    return null;
   }
   
-  public void a(Process paramProcess)
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    this.a.a = paramProcess;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer Start!");
-    }
+    paramUniPacket.setServantName("MQQ.VipSTCheckServer.VipSTCheckObj");
+    paramUniPacket.setFuncName("mobileUniPayCheck");
+    paramUniPacket.put("stRequest", (UniPayRequest)paramToServiceMsg.extraData.getSerializable("UniPayRequest"));
+    return true;
   }
   
-  public void b()
+  public String[] a()
   {
-    this.a.a = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onDestroy!");
-    }
+    return new String[] { "VipSTCheckServer" };
   }
 }
 

@@ -1,29 +1,51 @@
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
 class aqvj
-  extends aquk
+  extends alpa
 {
-  public aqvj(aqug paramaqug)
-  {
-    super(paramaqug);
-  }
+  aqvj(aqvh paramaqvh) {}
   
-  protected String a()
+  protected void a(Object paramObject)
   {
-    return "StateSenderCancelSendWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    Object localObject1 = (bbtn)paramObject;
+    if (localObject1 == null) {}
+    arpx localarpx;
+    do
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+      do
+      {
+        return;
+        paramObject = ((bbtn)localObject1).jdField_b_of_type_Long + "";
+        localObject2 = ((bbtn)localObject1).e;
+        localarpx = this.a.a("1", paramObject, (String)localObject2);
+      } while (localarpx == null);
+      switch (((bbtn)localObject1).jdField_b_of_type_Int)
+      {
+      default: 
+        return;
+      }
+    } while (localarpx.a() == null);
+    Object localObject2 = new Bundle();
+    int i = (int)((float)((bbtn)localObject1).d * 1.0F / ((float)((bbtn)localObject1).c * 1.0F) * 100.0F);
+    localarpx.a().a(0, Integer.parseInt("1"), paramObject, i, (Bundle)localObject2);
+    return;
+    QLog.i("QFileMultiControlManager<QFile>", 1, "troop file download is finish. fileId[" + (String)localObject2 + "]");
+    if (localarpx.a() != null)
+    {
+      localObject2 = new Bundle();
+      boolean bool = bdhb.b(((bbtn)localObject1).a);
+      localarpx.a().a(bool, Integer.parseInt("1"), paramObject, (Bundle)localObject2);
     }
-    aqug.b(this.jdField_a_of_type_Aqug, 11, 8);
-    aqug.c(this.jdField_a_of_type_Aqug, 11, 8);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateSenderCancelSend)");
-    this.jdField_a_of_type_Aquk = new aqvh(this.jdField_a_of_type_Aqug);
+    this.a.b(localarpx);
+    return;
+    QLog.i("QFileMultiControlManager<QFile>", 1, "troop file download is stop. fileId[" + (String)localObject2 + "]");
+    if (localarpx.a() != null)
+    {
+      localObject1 = new Bundle();
+      localarpx.a().a(false, Integer.parseInt("1"), paramObject, (Bundle)localObject1);
+    }
+    this.a.b(localarpx);
   }
 }
 

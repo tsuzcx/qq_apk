@@ -1,14 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bdoc
-  implements DialogInterface.OnClickListener
+final class bdoc
+  implements bdoi<Integer>
 {
-  bdoc(bdnx parambdnx, long paramLong, int paramInt, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Integer a(float paramFloat, Integer paramInteger1, Integer paramInteger2)
   {
-    this.jdField_a_of_type_Bdnx.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    int i = paramInteger1.intValue();
+    float f = i;
+    return Integer.valueOf((int)((paramInteger2.intValue() - i) * paramFloat + f));
   }
 }
 

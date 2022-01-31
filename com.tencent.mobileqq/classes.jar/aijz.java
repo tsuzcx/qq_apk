@@ -1,17 +1,47 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aijz
-  extends aijp
+  extends aijq
 {
-  public aijz(PhotoCropActivity paramPhotoCropActivity)
+  public aijz(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    super(paramPhotoCropActivity);
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
   }
   
-  public void a(int paramInt)
+  private void A()
   {
-    this.a.getIntent().putExtra("PhotoConst.QZONE_COVER_SYNC_FLAG", paramInt);
+    if (!this.d) {}
+    while (this.jdField_a_of_type_AndroidWidgetImageView == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
+    if (mdj.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698878));
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+  }
+  
+  protected boolean b()
+  {
+    return true;
+  }
+  
+  protected void g()
+  {
+    super.g();
+    A();
+  }
+  
+  protected void y()
+  {
+    this.jdField_a_of_type_JavaLangString = "MiniPieForDisc";
   }
 }
 

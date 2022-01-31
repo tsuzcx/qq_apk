@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.faceunlock;
 
-import ahti;
+import ahxx;
 import android.util.Base64;
-import bdcs;
+import bdhb;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -10,13 +10,13 @@ import mqq.os.MqqHandler;
 public class FaceUnblockCameraJsApiPlugin$2
   implements Runnable
 {
-  public FaceUnblockCameraJsApiPlugin$2(ahti paramahti, String paramString) {}
+  public FaceUnblockCameraJsApiPlugin$2(ahxx paramahxx, String paramString) {}
   
   public void run()
   {
     try
     {
-      Object localObject = bdcs.a(this.a);
+      Object localObject = bdhb.a(this.a);
       if (localObject != null)
       {
         localObject = Base64.encodeToString((byte[])localObject, 0);

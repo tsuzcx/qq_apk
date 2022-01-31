@@ -15,7 +15,7 @@ import tencent.im.oidb.cmd0xb73.oidb_0xb73.ReqBody;
 import tencent.im.oidb.cmd0xb73.oidb_0xb73.RspBody;
 
 public class rey
-  extends alko
+  extends alpd
 {
   private String a;
   
@@ -90,7 +90,7 @@ public class rey
     sendPbReq(makeOIDBPkg("OidbSvc.0xb73", 2931, 0, localReqBody.toByteArray()));
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return rfa.class;
   }

@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.magicface.magicfaceaction;
 
-import attr;
-import atts;
+import atya;
+import atyb;
 import java.util.TimerTask;
 
 public class ActionGlobalData$1
   extends TimerTask
 {
-  public ActionGlobalData$1(attr paramattr) {}
+  public ActionGlobalData$1(atya paramatya) {}
   
   public void run()
   {
-    attr localattr = this.this$0;
-    localattr.h += 1;
-    localattr = this.this$0;
-    localattr.jdField_a_of_type_Float -= 0.1F;
-    if (this.this$0.jdField_a_of_type_Atts != null) {
-      this.this$0.jdField_a_of_type_Atts.b();
+    atya localatya = this.this$0;
+    localatya.h += 1;
+    localatya = this.this$0;
+    localatya.jdField_a_of_type_Float -= 0.1F;
+    if (this.this$0.jdField_a_of_type_Atyb != null) {
+      this.this$0.jdField_a_of_type_Atyb.b();
     }
     if (this.this$0.h * 100 == this.this$0.c * 1000)
     {
       this.this$0.jdField_a_of_type_Float = 0.0F;
-      if (this.this$0.jdField_a_of_type_Atts != null) {
-        this.this$0.jdField_a_of_type_Atts.a();
+      if (this.this$0.jdField_a_of_type_Atyb != null) {
+        this.this$0.jdField_a_of_type_Atyb.a();
       }
       cancel();
     }

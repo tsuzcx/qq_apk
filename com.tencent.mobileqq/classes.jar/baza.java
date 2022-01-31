@@ -1,22 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.24.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import java.net.URL;
 
-public class baza
-  implements TVK_IMediaPlayer.OnErrorListener
+class baza
+  implements bazg
 {
-  public baza(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  baza(bayz parambayz) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public Bitmap getBitmap(URL paramURL)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "onError");
-    }
-    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.24.1(this));
-    return false;
+    return ShortVideoUtils.a(null, paramURL.getPath());
   }
 }
 

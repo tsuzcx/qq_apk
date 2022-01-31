@@ -18,7 +18,7 @@ public class mwe
     localBundle.putString("desc", paramString3);
     localBundle.putLong("req_share_id", 0L);
     localBundle.putString("detail_url", paramString4);
-    bjao.a(paramAppInterface, paramContext, localBundle, null);
+    bjev.a(paramAppInterface, paramContext, localBundle, null);
     if (QLog.isColorLevel()) {
       QLog.i(a, 2, "shareToQzone. title:" + paramString2 + " desc:" + paramString3 + " shareLink:" + paramString4 + " icon:" + paramString1);
     }

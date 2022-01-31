@@ -213,10 +213,10 @@ public class rfp
     if ((paramObject != null) && (paramObject.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) && (QLog.isColorLevel())) {
       QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "播放状态回调 onError() " + (String)localObject + ", vid=" + paramObject.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString);
     }
-    alpo.a(2131716622);
+    alud.a(2131716634);
     if (paramInt1 == 123) {
       if (paramInt2 == 103) {
-        paramrjn = alpo.a(2131716618) + paramInt1 + "-" + paramInt2 + ")";
+        paramrjn = alud.a(2131716630) + paramInt1 + "-" + paramInt2 + ")";
       }
     }
     for (;;)
@@ -231,28 +231,28 @@ public class rfp
       while (((Iterator)localObject).hasNext()) {
         ((rfu)((Iterator)localObject).next()).a(paramObject, paramInt1, paramInt2, paramrjn);
       }
-      paramrjn = alpo.a(2131716605) + paramInt1 + "-" + paramInt2 + ")";
+      paramrjn = alud.a(2131716617) + paramInt1 + "-" + paramInt2 + ")";
       continue;
       if (paramInt1 == 122)
       {
         if (paramInt2 == 204) {
-          paramrjn = alpo.a(2131716582) + paramInt1 + "-" + paramInt2 + ")";
+          paramrjn = alud.a(2131716594) + paramInt1 + "-" + paramInt2 + ")";
         } else if (paramInt2 == 202) {
-          paramrjn = alpo.a(2131716522) + paramInt1 + "-" + paramInt2 + ")";
+          paramrjn = alud.a(2131716534) + paramInt1 + "-" + paramInt2 + ")";
         } else {
-          paramrjn = alpo.a(2131716620) + paramInt1 + "-" + paramInt2 + ")";
+          paramrjn = alud.a(2131716632) + paramInt1 + "-" + paramInt2 + ")";
         }
       }
       else if (paramInt1 == 101)
       {
         if (paramInt2 == 80) {
-          paramrjn = alpo.a(2131716549) + paramInt1 + "-" + paramInt2 + ")";
+          paramrjn = alud.a(2131716561) + paramInt1 + "-" + paramInt2 + ")";
         } else {
-          paramrjn = alpo.a(2131716551) + paramInt1 + "-" + paramInt2 + ")";
+          paramrjn = alud.a(2131716563) + paramInt1 + "-" + paramInt2 + ")";
         }
       }
       else {
-        paramrjn = alpo.a(2131716575) + paramInt1 + "-" + paramInt2 + ")";
+        paramrjn = alud.a(2131716587) + paramInt1 + "-" + paramInt2 + ")";
       }
     }
     if ((paramObject != null) && (paramObject.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)) {

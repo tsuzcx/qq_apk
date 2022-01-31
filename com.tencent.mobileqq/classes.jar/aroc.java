@@ -1,12 +1,14 @@
-public class aroc
+class aroc
+  implements arrh
 {
-  int a;
-  int b;
+  aroc(arob paramarob) {}
   
-  public String toString()
+  public void a()
   {
-    return "Type [type1=" + this.a + ", type2=" + this.b + "]";
+    aroa.a(this.a.a);
   }
+  
+  public void b() {}
 }
 
 

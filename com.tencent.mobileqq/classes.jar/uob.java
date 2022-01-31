@@ -1,42 +1,33 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
+import android.annotation.TargetApi;
+import java.util.List;
 
+@TargetApi(14)
 public class uob
-  extends upt
+  implements unm
 {
-  qqstory_service.RspDelFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment;
-  upu jdField_a_of_type_Upu;
-  
-  public uob(qqstory_service.RspDelFeedComment paramRspDelFeedComment, upu paramupu)
-  {
-    super(paramRspDelFeedComment.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment = paramRspDelFeedComment;
-    this.jdField_a_of_type_Upu = paramupu;
-  }
-  
-  public uob(upu paramupu)
-  {
-    this.jdField_a_of_type_Upu = paramupu;
-  }
+  public int a;
   
   public void a()
   {
-    this.jdField_a_of_type_Upu.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment);
+    ((unu)uwa.a(6)).a(this.a);
   }
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Upu.a(paramInt, paramBundle);
+    this.a = paramInt;
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(List<unj> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Upu.a(paramInt, paramString);
+    if (paramList == null) {
+      return;
+    }
+    ((unu)uwa.a(6)).a(paramList, this.a, paramBoolean);
   }
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void a(unn paramunn)
   {
-    this.jdField_a_of_type_Upu.a(paramBoolean, paramBundle);
+    ((unu)uwa.a(6)).a(paramunn);
   }
 }
 

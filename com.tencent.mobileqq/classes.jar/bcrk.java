@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
 
-class bcrk
-  implements baaa
+public class bcrk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bcrk(bcrj parambcrj) {}
+  public bcrk(RedDotAnimateView paramRedDotAnimateView) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a.a.a.this$0.a();
-    if (this.a.a.a.a.a != null) {
-      this.a.a.a.a.a.a();
-    }
+    this.a.c = ((int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * 255.0F));
+    this.a.invalidate();
   }
 }
 

@@ -1,53 +1,75 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class aono
+  extends aokh<aonn>
 {
-  public aooh a;
-  public boolean a;
-  
-  public aono()
+  public int a()
   {
-    this.jdField_a_of_type_Aooh = new aooh();
+    return 168;
   }
   
-  public static aono a(String paramString)
+  @NonNull
+  public aonn a(int paramInt)
   {
-    if (paramString == null) {}
-    do
+    return new aonn();
+  }
+  
+  @Nullable
+  public aonn a(aoko[] paramArrayOfaoko)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaoko != null)
     {
-      return null;
-      try
+      localObject1 = localObject2;
+      if (paramArrayOfaoko.length > 0)
       {
-        aono localaono = new aono();
-        paramString = new JSONObject(paramString);
-        localaono.jdField_a_of_type_Boolean = paramString.optBoolean("showTogetherWatchInTroopSettingCard", false);
-        paramString = paramString.optJSONObject("watchTogether");
-        if (paramString != null)
+        localObject1 = localObject2;
+        if (paramArrayOfaoko[0] != null)
         {
-          aooh localaooh = new aooh();
-          localaooh.a(paramString.optInt("version"));
-          localaooh.b(paramString.optInt("jumpType"));
-          localaooh.a(paramString.optString("jumpUrl"));
-          localaooh.b(paramString.optString("jumpExtensionInfo"));
-          localaono.jdField_a_of_type_Aooh = localaooh;
+          localObject1 = aonn.a(paramArrayOfaoko[0].a);
+          paramArrayOfaoko = BaseApplicationImpl.getApplication().getRuntime();
+          if ((paramArrayOfaoko instanceof QQAppInterface)) {
+            ((FlashChatManager)((QQAppInterface)paramArrayOfaoko).getManager(217)).b(((aonn)localObject1).a);
+          }
         }
-        QLog.d("TogetherBusinessConfProcessor", 2, "confBean = " + localaono.toString());
-        return localaono;
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("TogetherBusinessConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+    }
+    return localObject1;
   }
   
-  public String toString()
+  public Class<aonn> a()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("TogetherConfigureBean{showTogetherWatchInTroopSettingCard=").append(this.jdField_a_of_type_Boolean).append(", watchTogether=");
-    if (this.jdField_a_of_type_Aooh == null) {}
-    for (String str = "null";; str = this.jdField_a_of_type_Aooh.toString()) {
-      return str + '}';
+    return aonn.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aonn paramaonn)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FlashChatConfProcessor", 2, "onUpdate " + paramaonn.toString());
     }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

@@ -1,34 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.ChatSettingForTroop.51;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aclu
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aclu(ChatSettingForTroop.51 param51) {}
+  public aclu(ChatHistory paramChatHistory) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
+    if (this.a.d < this.a.c)
     {
-      this.a.this$0.a.cancel();
-      return;
-    }
-    try
-    {
-      arys.a(this.a.this$0, true, "action_game_join_group", Long.valueOf(this.a.this$0.d).longValue(), -1, this.a.a);
-      this.a.this$0.a.cancel();
-      this.a.this$0.finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838929);
+      paramView = this.a;
+      paramView.d += 1;
+      if (this.a.d >= this.a.c)
       {
-        QLog.e("Q.chatopttroop", 1, "showAlertDlg error = " + paramDialogInterface);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130849050);
       }
+      this.a.e = ((this.a.d - 1) * 8);
+      this.a.jdField_a_of_type_Acms.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      this.a.t();
     }
   }
 }

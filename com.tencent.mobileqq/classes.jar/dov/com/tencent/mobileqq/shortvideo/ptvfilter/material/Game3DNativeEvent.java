@@ -1,9 +1,9 @@
 package dov.com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
-import bnng;
+import bnrs;
 
 class Game3DNativeEvent
-  implements bnng
+  implements bnrs
 {
   public native void gestureEventNative(long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
   

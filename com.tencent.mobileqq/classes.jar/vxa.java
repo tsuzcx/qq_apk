@@ -1,66 +1,17 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
+import com.tencent.qphone.base.util.QLog;
 
 public class vxa
-  extends QQUIEventReceiver<vwo, vhs>
+  implements vyl
 {
-  public vxa(@NonNull vwo paramvwo)
-  {
-    super(paramvwo);
-  }
+  public vxa(TrimTextureVideoView paramTrimTextureVideoView) {}
   
-  public void a(@NonNull vwo paramvwo, @NonNull vhs paramvhs)
+  public boolean a(vyi paramvyi, int paramInt1, int paramInt2)
   {
-    if (TextUtils.equals(String.valueOf(paramvwo.hashCode()), paramvhs.jdField_a_of_type_JavaLangString)) {
-      b(paramvwo, paramvhs);
+    if (QLog.isColorLevel()) {
+      QLog.e(this.a.a, 2, "TrimTextureVideoView MediaPlayer onError==>what:" + paramInt1 + "|extra:" + paramInt2);
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vhs.class;
-  }
-  
-  public void b(vwo paramvwo, vhs paramvhs)
-  {
-    paramvwo = ((StoryPlayerGroupHolder)paramvwo.a()).a();
-    if (paramvwo != null) {
-      paramvwo.c(false);
-    }
-    if (paramvhs.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
-      return;
-    }
-    boolean bool = vhj.a(paramvhs.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    switch (paramvhs.jdField_a_of_type_Int)
-    {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131707262), 0).a();
-      return;
-    case 2: 
-      if (bool) {}
-      for (paramvwo = "2";; paramvwo = "1")
-      {
-        wta.a("play_video", "down_suc", 0, 0, new String[] { paramvwo, "", "", paramvhs.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-        QQToast.a(BaseApplicationImpl.getContext(), 2, ume.a(2131700088), 0).a();
-        return;
-      }
-    }
-    if (bool) {}
-    for (paramvwo = "2";; paramvwo = "1")
-    {
-      wta.a("play_video", "down_fail", 0, 0, new String[] { paramvwo, "", "", paramvhs.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-      QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131707266), 0).a();
-      return;
-    }
+    return true;
   }
 }
 

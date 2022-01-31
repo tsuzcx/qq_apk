@@ -1,102 +1,115 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aopl
-  extends aofy<aopk>
 {
-  public int a()
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
+  public long c;
+  
+  public aopl()
   {
-    return 555;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 8;
+    this.jdField_a_of_type_Long = 100000000L;
+    this.jdField_b_of_type_Int = 7;
+    this.jdField_b_of_type_Long = 16777216L;
+    this.jdField_c_of_type_Long = 16777216L;
+    this.jdField_c_of_type_Int = -1;
   }
   
-  @NonNull
-  public aopk a(int paramInt)
+  public static aopl a(aoko[] paramArrayOfaoko)
   {
-    return new aopk();
-  }
-  
-  @Nullable
-  public aopk a(aogf[] paramArrayOfaogf)
-  {
-    QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onParsed");
-    if (paramArrayOfaogf != null) {
-      try
+    aopl localaopl = new aopl();
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      int j = paramArrayOfaoko.length;
+      int i = 0;
+      if (i < j)
       {
-        if (paramArrayOfaogf.length > 0)
+        Object localObject = paramArrayOfaoko[i];
+        if (localObject == null) {}
+        for (;;)
         {
-          paramArrayOfaogf = (aopk)aogt.a(paramArrayOfaogf[0].a, aopk.class);
-          return paramArrayOfaogf;
+          i += 1;
+          break;
+          localObject = ((aoko)localObject).a;
+          try
+          {
+            JSONObject localJSONObject = new JSONObject((String)localObject);
+            a(localJSONObject, localaopl);
+            b(localJSONObject, localaopl);
+            c(localJSONObject, localaopl);
+            if (QLog.isColorLevel()) {
+              QLog.i("PicCommonBean", 2, "parse: " + (String)localObject + " bean:" + localaopl);
+            }
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
         }
       }
-      catch (QStorageInstantiateException paramArrayOfaogf)
-      {
-        QLog.e("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaogf.getMessage());
-      }
     }
-    return null;
-  }
-  
-  public Class<aopk> a()
-  {
-    return aopk.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
-  
-  public void a(aopk paramaopk)
-  {
-    if (paramaopk != null)
-    {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label152;
-      }
+    if (localaopl.jdField_a_of_type_Int < 0) {
+      localaopl.jdField_a_of_type_Int = 8;
     }
-    label152:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null)
-      {
-        if (TextUtils.isEmpty(paramaopk.a)) {
-          paramaopk.a = "{}";
-        }
-        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("groupfile_excitingdownload_" + ((QQAppInterface)localObject).c(), 0).edit();
-        localEditor.putString("qfile_groupfile_excitingdownload", paramaopk.a);
-        localEditor.apply();
-        QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "save Exciting-Group-Download config [" + paramaopk.a + "]");
-        localObject = (aqpu)((QQAppInterface)localObject).getManager(317);
-        if (localObject != null) {
-          ((aqpu)localObject).a(paramaopk);
-        }
-      }
-      return;
+    if (localaopl.jdField_a_of_type_Long < 0L) {
+      localaopl.jdField_a_of_type_Long = 100000000L;
+    }
+    if (localaopl.jdField_b_of_type_Int < 1) {
+      localaopl.jdField_a_of_type_Long = 7L;
+    }
+    return localaopl;
+  }
+  
+  private static void a(JSONObject paramJSONObject, aopl paramaopl)
+  {
+    paramJSONObject = paramJSONObject.getJSONObject("regionDecode");
+    if (paramJSONObject.has("ramThreshold")) {
+      paramaopl.jdField_a_of_type_Int = paramJSONObject.optInt("ramThreshold");
+    }
+    if (paramJSONObject.has("pxThreshold")) {
+      paramaopl.jdField_a_of_type_Long = paramJSONObject.optLong("pxThreshold");
+    }
+    if (paramJSONObject.has("threadCount")) {
+      paramaopl.jdField_b_of_type_Int = paramJSONObject.optInt("threadCount");
+    }
+    if (paramJSONObject.has("needRegionDecode")) {
+      paramaopl.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("needRegionDecode");
     }
   }
   
-  public int b()
+  private static void b(JSONObject paramJSONObject, aopl paramaopl)
   {
-    return 0;
+    paramJSONObject = paramJSONObject.getJSONObject("uploadLimit");
+    if (paramJSONObject.has("c2c")) {
+      paramaopl.jdField_b_of_type_Long = paramJSONObject.optInt("c2c");
+    }
+    if (paramJSONObject.has("group")) {
+      paramaopl.jdField_c_of_type_Long = paramJSONObject.optInt("group");
+    }
   }
   
-  public boolean b()
+  private static void c(JSONObject paramJSONObject, aopl paramaopl)
   {
-    return false;
+    paramJSONObject = paramJSONObject.getJSONObject("switchEXIF");
+    if (paramJSONObject.has("switch")) {
+      paramaopl.jdField_c_of_type_Int = paramJSONObject.optInt("switch");
+    }
   }
   
-  public boolean c()
+  public String toString()
   {
-    return true;
+    return "PicCommonBean{needRegionDecode=" + this.jdField_a_of_type_Boolean + ", ramThreshold=" + this.jdField_a_of_type_Int + ", pxThreshold=" + this.jdField_a_of_type_Long + ", threadCount=" + this.jdField_b_of_type_Int + ", C2C_FileSize_Limit=" + this.jdField_b_of_type_Long + ", GROUP_FileSize_Limit=" + this.jdField_c_of_type_Long + ", EXIF_SWITCH=" + this.jdField_c_of_type_Int + '}';
   }
 }
 

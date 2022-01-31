@@ -1,72 +1,43 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import java.util.List;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class acqm
-  extends aked
+  implements bkcu
 {
-  private List<acqj> jdField_a_of_type_JavaUtilList;
+  public acqm(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public acqm(List<acqj> paramList)
+  public void a(int paramInt)
   {
-    super(paramList, paramList.app, paramList.a, 1, true);
+    int i = 0;
+    boolean bool;
     Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    acqj localacqj;
-    if (paramView == null)
+    if (paramInt == 0)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.getLayoutInflater().inflate(2131559030, paramViewGroup, false);
-      paramViewGroup = new acqo(null);
-      paramViewGroup.c = ((ImageView)paramView.findViewById(2131368782));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378839));
-      paramView.setTag(paramViewGroup);
-      localacqj = (acqj)getItem(paramInt);
-      if (localacqj != null)
-      {
-        if ((localacqj.b != null) && (!"".equals(localacqj.b.trim()))) {
-          break label149;
+      this.a.b = true;
+      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim();
+      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[5];
+      if (localObject != null) {
+        if (!bool) {
+          break label88;
         }
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localacqj.jdField_a_of_type_JavaLangString);
       }
     }
-    for (;;)
+    label88:
+    for (paramInt = 0;; paramInt = 8)
     {
-      paramViewGroup.jdField_a_of_type_JavaLangString = localacqj.jdField_a_of_type_JavaLangString;
-      paramViewGroup.c.setImageBitmap(a(1, localacqj.jdField_a_of_type_JavaLangString));
-      return paramView;
-      paramViewGroup = (acqo)paramView.getTag();
-      break;
-      label149:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localacqj.b);
+      ((View)localObject).setVisibility(paramInt);
+      localObject = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[6];
+      if (localObject != null)
+      {
+        paramInt = i;
+        if (bool) {
+          paramInt = 3;
+        }
+        ((FormSimpleItem)localObject).setBgType(paramInt);
+      }
+      return;
     }
   }
 }

@@ -1,13 +1,23 @@
-import android.widget.ImageView.ScaleType;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
 
-public class alal
+class alal
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public ImageView.ScaleType a = ImageView.ScaleType.CENTER_INSIDE;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  alal(alaj paramalaj) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (alaj.a(this.a) != null)
+    {
+      alaj.b(this.a).setVisibility(8);
+      alaj.c(this.a).setVisibility(8);
+      alaj.b(this.a, false);
+      alaj.a(this.a).a();
+    }
+    this.a.a(6, 3, true);
+  }
 }
 
 

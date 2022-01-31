@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awbv;
+import awge;
 
 public class ArticleReadInfo
-  extends awbv
+  extends awge
   implements Cloneable
 {
   public static final String TABLE_NAME = ArticleReadInfo.class.getSimpleName();

@@ -1,13 +1,14 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class vku
-  implements weu
+  implements DialogInterface.OnDismissListener
 {
-  vku(vkt paramvkt, List paramList) {}
+  vku(vks paramvks) {}
   
-  public void a(wev paramwev)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    vkt.a(this.jdField_a_of_type_Vkt, this.jdField_a_of_type_JavaUtilList, paramwev);
+    this.a.e();
   }
 }
 

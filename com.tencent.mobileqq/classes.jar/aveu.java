@@ -1,32 +1,37 @@
-import android.app.Activity;
-import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class aveu
-  extends zep
+  implements AdapterView.OnItemLongClickListener
 {
-  public aveu(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
+  public aveu(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public zdw a(Activity paramActivity, zec paramzec)
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return new avew(paramActivity, paramzec);
-  }
-  
-  public zdy a(Activity paramActivity, zec paramzec)
-  {
-    return new avfa((PicBrowserActivity)paramActivity, paramzec);
-  }
-  
-  public zec a(Activity paramActivity)
-  {
-    paramActivity = new avfg(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
-    paramActivity.a(this.a.jdField_b_of_type_Int);
-    return paramActivity;
-  }
-  
-  public zed a(Activity paramActivity, zec paramzec)
-  {
-    return null;
+    paramAdapterView = (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt);
+    if (paramAdapterView == null) {
+      return true;
+    }
+    paramLong = Long.parseLong(this.a.a.getCurrentAccountUin());
+    if (paramAdapterView.c == paramLong)
+    {
+      this.a.c(paramAdapterView);
+      return true;
+    }
+    if (ShortVideoCommentsView.a(this.a).c == paramLong) {
+      this.a.e(paramAdapterView);
+    }
+    for (;;)
+    {
+      return false;
+      this.a.d(paramAdapterView);
+    }
   }
 }
 

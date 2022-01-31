@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
 import android.app.Activity;
-import biqt;
+import biva;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
 
@@ -13,7 +13,7 @@ final class AIOLongShotHelper$4
   public void run()
   {
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    biqt.b(this.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_AndroidAppActivity, localBaseApplicationImpl.getRuntime().getAccount());
+    biva.b(this.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_AndroidAppActivity, localBaseApplicationImpl.getRuntime().getAccount());
   }
 }
 

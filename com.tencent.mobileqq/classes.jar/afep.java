@@ -1,8 +1,14 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
 
-public abstract interface afep
+public class afep
+  implements affa
 {
-  public abstract void a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo);
+  public void a(int paramInt) {}
+  
+  public int[] a()
+  {
+    return new int[6];
+  }
 }
 
 

@@ -1,54 +1,16 @@
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class adeg
-  extends adei
+  extends WebViewClient
 {
-  protected View a;
-  protected String a;
-  protected boolean a;
+  public adeg(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public adeg(View paramView, String paramString)
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    super(null);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onClick(View paramView)
-  {
-    super.onClick(paramView);
-    try
-    {
-      if (QSecFramework.a().a(1001).booleanValue()) {
-        if (this.jdField_a_of_type_Boolean)
-        {
-          paramView = this.jdField_a_of_type_AndroidViewView;
-          QSecFramework.a().a(5, 0, 1, new Object[] { Integer.valueOf(80), paramView }, null);
-          this.jdField_a_of_type_Boolean = false;
-          if (QLog.isColorLevel()) {
-            QLog.i("MainFragment", 2, "附近人机上报: lebaView onCreate, from=" + this.jdField_a_of_type_JavaLangString);
-          }
-        }
-        else
-        {
-          QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(80), Integer.valueOf(1), Integer.valueOf(6), "lebaClick", null }, null);
-          if (QLog.isColorLevel())
-          {
-            QLog.i("MainFragment", 2, "附近人机上报: lebaView onClick, from=" + this.jdField_a_of_type_JavaLangString);
-            return;
-          }
-        }
-      }
-    }
-    catch (Exception paramView)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("MainFragment", 2, "ABotDragClickListener onClick exp=", paramView);
-      }
-    }
+    if (this.a.a(paramString)) {}
+    return true;
   }
 }
 

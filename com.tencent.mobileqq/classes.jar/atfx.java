@@ -1,81 +1,118 @@
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherClientIPCModule.1;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import eipc.EIPCResult;
 
 public class atfx
-  extends MSFServlet
+  extends QIPCModule
 {
-  public static long a;
-  public static long b;
-  public static long c;
-  public static long d;
+  private static volatile atfx jdField_a_of_type_Atfx;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public atfx(String paramString)
   {
-    c = System.currentTimeMillis();
+    super(paramString);
     if (QLog.isColorLevel()) {
-      QLog.d("WebSSOAgentServlet", 2, "onReceive");
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bdlr.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
-      localBundle.putString("extra_result_err_msg", paramFromServiceMsg.getBusinessFailMsg());
-      localBundle.putString("extra_cmd", paramIntent.getStringExtra("extra_cmd"));
-      localBundle.putString("extra_callbackid", paramIntent.getStringExtra("extra_callbackid"));
-      localBundle.putByteArray("extra_data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
-      arrayOfByte = null;
+      QLog.d("WatchTogetherClientIPCModule", 2, "WatchTogetherClientIPCModule register");
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public static atfx a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebSSOAgentServlet", 2, "onSend");
-    }
-    String str = paramIntent.getStringExtra("extra_cmd");
-    if (str == null)
+    if (jdField_a_of_type_Atfx == null) {}
+    try
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
+      if (jdField_a_of_type_Atfx == null) {
+        jdField_a_of_type_Atfx = new atfx("WatchTogetherClientIPCModule");
       }
+      return jdField_a_of_type_Atfx;
+    }
+    finally {}
+  }
+  
+  private boolean a()
+  {
+    return Thread.currentThread() == Looper.getMainLooper().getThread();
+  }
+  
+  public void a(String paramString, WatchTogetherFloatingData paramWatchTogetherFloatingData)
+  {
+    if (a())
+    {
+      if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString)) {
+        atfs.a().a(BaseApplicationImpl.getContext(), paramWatchTogetherFloatingData);
+      }
+      do
+      {
+        return;
+        if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
+        {
+          atfs.a().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
+          return;
+        }
+      } while (!"ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(paramString));
+      atfs.a().b();
       return;
     }
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("extra_data");
-    paramPacket.setSSOCommand(str);
-    long l = paramIntent.getLongExtra("extra_timeout", -1L);
-    if (l > 0L) {
-      paramPacket.setTimeout(l);
+    this.jdField_a_of_type_AndroidOsHandler.post(new WatchTogetherClientIPCModule.1(this, paramString, paramWatchTogetherFloatingData));
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WatchTogetherClientIPCModule", 2, "call TogetherBusinessIPCModule action=" + paramString);
     }
-    if (arrayOfByte != null)
+    EIPCResult localEIPCResult = new EIPCResult();
+    if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString)) {
+      if (paramBundle != null)
+      {
+        paramBundle = (WatchTogetherFloatingData)paramBundle.getSerializable("BUNDLE_KEY_UI_DATA");
+        if (paramBundle != null)
+        {
+          a(paramString, paramBundle);
+          localEIPCResult.code = 0;
+        }
+      }
+    }
+    for (;;)
     {
-      paramIntent = new byte[arrayOfByte.length + 4];
-      bdlr.a(paramIntent, 0, arrayOfByte.length + 4);
-      bdlr.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
+      callbackResult(paramInt, localEIPCResult);
+      return localEIPCResult;
+      localEIPCResult.code = -102;
+      continue;
+      localEIPCResult.code = -102;
+      continue;
+      if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
+      {
+        if (paramBundle != null)
+        {
+          paramBundle = (WatchTogetherFloatingData)paramBundle.getSerializable("BUNDLE_KEY_UI_DATA");
+          if (paramBundle != null)
+          {
+            a(paramString, paramBundle);
+            localEIPCResult.code = 0;
+          }
+          else
+          {
+            localEIPCResult.code = -102;
+          }
+        }
+        else
+        {
+          localEIPCResult.code = -102;
+        }
+      }
+      else if ("ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(paramString))
+      {
+        a(paramString, new WatchTogetherFloatingData());
+        localEIPCResult.code = 0;
+      }
     }
-    b = System.currentTimeMillis();
   }
 }
 

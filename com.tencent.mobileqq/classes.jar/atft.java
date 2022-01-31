@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
 
-public class atft
-  implements bcox
+class atft
+  implements IVideoInnerStatusListener
 {
-  public atft(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  atft(atfs paramatfs) {}
   
-  public void a(long paramLong)
+  public void notifyVideoClose(int paramInt) {}
+  
+  public void notifyVideoSeek(int paramInt) {}
+  
+  public void notifyVideoStart()
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(paramLong) });
+    if (atfs.a(this.a) != null)
+    {
+      aubw.a().a(1, atfs.a(this.a));
+      return;
+    }
+    this.a.a(false);
   }
+  
+  public void notifyVideoStop() {}
 }
 
 

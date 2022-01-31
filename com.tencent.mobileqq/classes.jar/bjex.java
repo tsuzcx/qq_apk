@@ -1,9 +1,6 @@
-import android.view.View;
-import cooperation.qzone.contentbox.model.MQMsg;
-
 public abstract interface bjex
 {
-  public abstract void a(MQMsg paramMQMsg, View paramView, int paramInt);
+  public abstract void a(boolean paramBoolean, int paramInt, String paramString);
 }
 
 

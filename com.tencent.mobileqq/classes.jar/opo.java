@@ -2,7 +2,7 @@ import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
 
 final class opo
-  extends amle
+  extends ampt
 {
   opo(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {

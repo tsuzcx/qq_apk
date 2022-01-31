@@ -1,30 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 
-class aiwb
-  implements EIPCResultCallback
+public class aiwb
+  extends bewx
 {
-  aiwb(aivz paramaivz, aivw paramaivw, DownloadParam paramDownloadParam) {}
+  public aiwb(RedPacketKSongFragment paramRedPacketKSongFragment, bewy parambewy) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a()
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
-    {
-      i = paramEIPCResult.data.getInt("result_code");
-      paramEIPCResult = (PreloadManager.PathResult)paramEIPCResult.data.getSerializable("path_result");
-      if (this.jdField_a_of_type_Aivw != null) {
-        this.jdField_a_of_type_Aivw.onResult(i, paramEIPCResult);
-      }
-    }
-    while (this.jdField_a_of_type_Aivw == null)
-    {
-      int i;
-      return;
-    }
-    this.jdField_a_of_type_Aivw.onResult(1, PreloadManager.PathResult.getFailRes(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.url));
+    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.a.release();
+    this.jdField_a_of_type_Bewy.a();
   }
 }
 

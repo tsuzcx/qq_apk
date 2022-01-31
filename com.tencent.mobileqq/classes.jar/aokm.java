@@ -1,69 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aokm
-  extends aofy<aokl>
+  implements aojz
 {
-  public static aokl a()
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, aojy paramaojy)
   {
-    return (aokl)aogj.a().a(572);
-  }
-  
-  public int a()
-  {
-    return 572;
-  }
-  
-  @NonNull
-  public aokl a(int paramInt)
-  {
-    return new aokl();
-  }
-  
-  @Nullable
-  public aokl a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    if ((paramaojy != null) && ("smart_devices_discovery_config".equals(paramString))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("OnSmartDeviceDiscoveryCfgListener", 2, "handleConfigForTag smartDeviceDiscoverCfg content = " + paramaojy.a);
+      }
+    }
+    try
     {
-      new aokl();
-      return aokl.a(paramArrayOfaogf);
+      paramInt = new JSONObject(paramaojy.a).optInt("smart_device_discovery_config_switch");
+      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", paramInt).apply();
+      return;
     }
-    return null;
-  }
-  
-  public Class<aokl> a()
-  {
-    return aokl.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aokl paramaokl)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NotificationBannerConfProcessor", 2, "onUpdate " + paramaokl.toString());
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      return;
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    catch (Exception paramString) {}finally
+    {
+      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", 1).apply();
+    }
   }
 }
 

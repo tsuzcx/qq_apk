@@ -2,7 +2,7 @@ package com.tencent.mobileqq.filemanager.util;
 
 import android.os.Handler;
 import android.os.Looper;
-import arnz;
+import arsi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public final class FileManagerUtil$21
   implements Runnable
 {
-  public FileManagerUtil$21(FileManagerEntity paramFileManagerEntity, arnz paramarnz, QQAppInterface paramQQAppInterface) {}
+  public FileManagerUtil$21(FileManagerEntity paramFileManagerEntity, arsi paramarsi, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -19,8 +19,8 @@ public final class FileManagerUtil$21
       if (QLog.isColorLevel()) {
         QLog.w("CHECK_FILE_EXISTED", 1, "checkFileExisted: entity is null");
       }
-      if (this.jdField_a_of_type_Arnz != null) {
-        this.jdField_a_of_type_Arnz.a(false);
+      if (this.jdField_a_of_type_Arsi != null) {
+        this.jdField_a_of_type_Arsi.a(false);
       }
     }
     do

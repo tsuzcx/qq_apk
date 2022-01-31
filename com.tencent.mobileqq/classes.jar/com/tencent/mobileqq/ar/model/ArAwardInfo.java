@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.model;
 
-import anbd;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anfm;
 
 public class ArAwardInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArAwardInfo> CREATOR = new anbd();
+  public static final Parcelable.Creator<ArAwardInfo> CREATOR = new anfm();
   public int a;
   public String a;
   public int b;

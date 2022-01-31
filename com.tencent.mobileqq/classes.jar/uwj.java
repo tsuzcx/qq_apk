@@ -1,18 +1,33 @@
+import com.tencent.biz.qqstory.model.TroopNickNameManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+
 public class uwj
-  extends ugz
+  extends ameq
 {
-  public String a;
-  public vld a;
+  uwj(uwi paramuwi) {}
   
-  public uwj(vld paramvld, String paramString)
+  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
   {
-    this.jdField_a_of_type_Vld = paramvld;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "UpdateMsgTabCoverEvent{, groupId=" + this.jdField_a_of_type_Vld + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onGetTroopMemberCardInfoResult suc=").append(paramBoolean).append(" size=");
+      if (paramArrayList != null) {
+        break label78;
+      }
+    }
+    label78:
+    for (int i = 0;; i = paramArrayList.size())
+    {
+      QLog.d("TroopNickNameManager", 2, i);
+      if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+        ThreadManager.executeOnSubThread(new TroopNickNameManager.1.1(this, paramArrayList));
+      }
+      return;
+    }
   }
 }
 

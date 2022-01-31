@@ -3,14 +3,14 @@ package com.tencent.mobileqq.richmedia.capture.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import axkd;
-import axkm;
+import axom;
+import axov;
 import java.util.ArrayList;
 
 public class FilterCategoryItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<FilterCategoryItem> CREATOR = new axkm();
+  public static final Parcelable.Creator<FilterCategoryItem> CREATOR = new axov();
   public int a;
   public String a;
   public ArrayList<String> a;
@@ -98,7 +98,7 @@ public class FilterCategoryItem
   public FilterDesc a()
   {
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      return axkd.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0));
+      return axom.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0));
     }
     return null;
   }

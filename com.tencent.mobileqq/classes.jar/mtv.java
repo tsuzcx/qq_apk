@@ -6,7 +6,7 @@ public class mtv
 {
   public static Drawable a(Resources paramResources, int paramInt)
   {
-    return a(paramResources, paramInt, 2131165944, true, 2130841638, 2131165947, null);
+    return a(paramResources, paramInt, 2131165944, true, 2130841651, 2131165947, null);
   }
   
   private static Drawable a(Resources paramResources, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4, Drawable paramDrawable)
@@ -43,12 +43,12 @@ public class mtv
   
   public static Drawable a(Resources paramResources, int paramInt, Drawable paramDrawable, boolean paramBoolean)
   {
-    return a(paramResources, paramInt, 2131165944, paramBoolean, 2130841638, 2131165947, paramDrawable);
+    return a(paramResources, paramInt, 2131165944, paramBoolean, 2130841651, 2131165947, paramDrawable);
   }
   
   public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
   {
-    return a(paramResources, paramInt, 2131165944, paramBoolean, 2130841638, 2131165947, null);
+    return a(paramResources, paramInt, 2131165944, paramBoolean, 2130841651, 2131165947, null);
   }
   
   public static Drawable b(Resources paramResources, int paramInt)

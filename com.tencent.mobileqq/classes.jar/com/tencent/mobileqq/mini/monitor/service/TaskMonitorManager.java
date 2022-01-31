@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.monitor.service;
 
-import alpo;
+import alud;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import bcwk;
+import bdat;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
@@ -14,7 +14,7 @@ public class TaskMonitorManager
   public static final String SCENE_TAG_HIDE = "hide";
   public static final String SCENE_TAG_SHOW = "show";
   public static final String TAG = "TaskMonitorManager";
-  public static String TASK_PERFM_SWITCH_PAGE = alpo.a(2131715112);
+  public static String TASK_PERFM_SWITCH_PAGE = alud.a(2131715124);
   protected static TaskMonitorManager mInstance;
   protected boolean isCalcDeviceUsageOk = true;
   protected volatile long mAppCurUsage;
@@ -29,7 +29,7 @@ public class TaskMonitorManager
   
   protected TaskMonitorManager()
   {
-    bcwk.a().a(this.mFpsListener);
+    bdat.a().a(this.mFpsListener);
     updateCpuInfoSync();
   }
   

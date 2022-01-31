@@ -1,33 +1,92 @@
 package com.tencent.biz.qqcircle.bizparts;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
-import bepp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.graphics.BitmapFactory;
+import bdbk;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StImage;
+import feedcloud.FeedCloudMeta.StShare;
+import feedcloud.FeedCloudMeta.StUser;
 import java.util.Map;
-import tsv;
+import ndd;
+import trz;
+import ttl;
 
 public class QCircleSharePart$4
   implements Runnable
 {
-  public QCircleSharePart$4(tsv paramtsv, Map paramMap, String paramString1, String paramString2, String paramString3, int paramInt) {}
+  public QCircleSharePart$4(ttl paramttl, Map paramMap, Runnable paramRunnable) {}
   
   public void run()
   {
-    if ((tsv.a(this.this$0) != null) && (tsv.a(this.this$0).isShowing())) {
-      tsv.a(this.this$0).dismiss();
-    }
-    tsv.a(this.this$0, String.valueOf(System.currentTimeMillis()));
-    Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
-    WXShareHelper localWXShareHelper = WXShareHelper.a();
-    String str1 = tsv.a(this.this$0);
-    String str2 = this.jdField_a_of_type_JavaLangString;
-    String str3 = this.b;
-    String str4 = this.c;
-    if (this.jdField_a_of_type_Int == 9) {}
-    for (int i = 0;; i = 1)
+    Object localObject1 = null;
+    for (;;)
     {
-      localWXShareHelper.b(str1, str2, localBitmap, str3, str4, i);
+      try
+      {
+        if (ttl.a(this.this$0) == null) {
+          return;
+        }
+        if (ttl.a(this.this$0).jdField_a_of_type_Int != 1) {
+          continue;
+        }
+        localObject1 = bdbk.a(((BaseActivity)this.this$0.a()).app, 1, 1, ttl.a(this.this$0).jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.id.get());
+        if (localObject1 == null) {
+          continue;
+        }
+        localObject1 = ((bdbk)localObject1).a();
+      }
+      catch (Exception localException)
+      {
+        int i;
+        int j;
+        double d;
+        Bitmap localBitmap;
+        QLog.e("QCircleSharePart", 1, "shareToWeChat  Exception : " + localException.getMessage());
+        continue;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        QLog.e("QCircleSharePart", 1, "shareToWeChat  OutOfMemoryError : " + localOutOfMemoryError.getMessage());
+        continue;
+        Object localObject3 = localOutOfMemoryError;
+        continue;
+        Object localObject2 = null;
+        continue;
+        return;
+        continue;
+      }
+      if (localObject1 != null)
+      {
+        i = ((Bitmap)localObject1).getWidth();
+        j = ((Bitmap)localObject1).getHeight();
+        if (i * j <= 8000) {
+          continue;
+        }
+        d = Math.sqrt(8000.0D / (i * j));
+        localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject1, (int)(i * d), (int)(j * d), true);
+        localObject3 = localBitmap;
+        if (ttl.a(this.this$0).jdField_a_of_type_Int != 1)
+        {
+          ((Bitmap)localObject1).recycle();
+          localObject3 = localBitmap;
+        }
+        this.jdField_a_of_type_JavaUtilMap.put("image", localObject3);
+      }
+      if (this.this$0.a() == null) {
+        continue;
+      }
+      this.this$0.a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
       return;
+      localObject3 = ndd.a(BaseApplicationImpl.getContext(), ttl.a(this.this$0).jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.share.cover.picUrl.get(), "GET", null, null);
+      if (localObject3 != null) {
+        localObject1 = BitmapFactory.decodeByteArray((byte[])localObject3, 0, localObject3.length);
+      }
     }
   }
 }

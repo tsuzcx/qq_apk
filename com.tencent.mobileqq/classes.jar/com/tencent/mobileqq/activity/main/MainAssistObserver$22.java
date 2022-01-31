@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.main;
 
-import aiak;
-import bepp;
+import aiez;
+import bety;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class MainAssistObserver$22
   implements Runnable
 {
-  public MainAssistObserver$22(aiak paramaiak) {}
+  public MainAssistObserver$22(aiez paramaiez) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class MainAssistObserver$22
       return;
     }
     this.this$0.c = true;
-    this.this$0.jdField_a_of_type_Bepp.hide();
+    this.this$0.jdField_a_of_type_Bety.hide();
   }
 }
 

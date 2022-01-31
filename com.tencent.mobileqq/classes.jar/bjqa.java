@@ -1,19 +1,12 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import java.io.File;
+import java.io.FileFilter;
 
 final class bjqa
-  implements QQPermissionCallback
+  implements FileFilter
 {
-  bjqa(String paramString1, String paramString2, Activity paramActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public boolean accept(File paramFile)
   {
-    bdcd.b(bjpz.a(this.jdField_a_of_type_AndroidAppActivity));
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bjpz.a(this.jdField_a_of_type_JavaLangString, this.b);
+    return paramFile.getName().endsWith(".cfg");
   }
 }
 

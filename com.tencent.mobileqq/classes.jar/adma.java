@@ -1,18 +1,37 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.widget.XEditTextEx;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adma
-  implements View.OnTouchListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adma(QQLSActivity paramQQLSActivity) {}
+  public adma(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    QQLSActivity.a(this.a).setCursorVisible(true);
-    return false;
+    if (NotifyPushSettingActivity.a())
+    {
+      NotifyPushSettingActivity.b(this.a).setChecked(false);
+      NotifyPushSettingActivity.b(this.a).setVisibility(8);
+      if (!paramBoolean) {
+        break label113;
+      }
+    }
+    label113:
+    for (int i = 1;; i = 0)
+    {
+      azqs.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
+      return;
+      if (paramBoolean)
+      {
+        NotifyPushSettingActivity.b(this.a).setVisibility(0);
+        NotifyPushSettingActivity.b(this.a).setVisibility(8);
+        break;
+      }
+      NotifyPushSettingActivity.b(this.a).setVisibility(8);
+      break;
+    }
   }
 }
 

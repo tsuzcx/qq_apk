@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bebx;
-import becq;
-import behj;
-import bepp;
+import begg;
+import begz;
+import bels;
+import bety;
 
 class EmojiJsPlugin$8
   implements Runnable
@@ -12,10 +12,10 @@ class EmojiJsPlugin$8
   
   public void run()
   {
-    bebx localbebx = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-    if ((localbebx != null) && ((localbebx instanceof behj)))
+    begg localbegg = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
+    if ((localbegg != null) && ((localbegg instanceof bels)))
     {
-      this.this$0.progressDialog = new bepp(this.this$0.mRuntime.a(), ((behj)localbebx).b());
+      this.this$0.progressDialog = new bety(this.this$0.mRuntime.a(), ((bels)localbegg).b());
       this.this$0.progressDialog.show();
     }
   }

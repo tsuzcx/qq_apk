@@ -1,19 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity;
+import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.1;
+import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.2;
+import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.3;
+import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.4;
+import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.5;
 
 public class axxz
-  implements DialogInterface.OnClickListener
+  extends agkm
 {
-  public axxz(SignTextEditFragment paramSignTextEditFragment) {}
+  public axxz(AIOGalleryActivity paramAIOGalleryActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
-    this.a.a.clear();
-    SignTextEditFragment.a(this.a);
+    this.a.runOnUiThread(new AIOGalleryActivity.2.4(this));
   }
+  
+  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
+  {
+    this.a.runOnUiThread(new AIOGalleryActivity.2.2(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean));
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  {
+    this.a.runOnUiThread(new AIOGalleryActivity.2.1(this, paramBoolean, paramLong, paramInt1, paramInt2, paramInt3, paramString));
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3)
+  {
+    this.a.runOnUiThread(new AIOGalleryActivity.2.5(this, paramLong, paramInt1, paramInt2, paramString1, paramArrayOfString, paramString2, paramMessageForShortVideo, paramInt3));
+  }
+  
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
+  {
+    this.a.runOnUiThread(new AIOGalleryActivity.2.3(this, paramArrayOfAIORichMediaData, paramInt));
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

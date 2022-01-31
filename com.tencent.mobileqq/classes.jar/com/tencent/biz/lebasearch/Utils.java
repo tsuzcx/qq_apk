@@ -1,8 +1,8 @@
 package com.tencent.biz.lebasearch;
 
-import ajgm;
-import aljq;
-import alkr;
+import ajlb;
+import alof;
+import alpg;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -12,11 +12,11 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import azmj;
-import bdcd;
-import bdcq;
-import bdfq;
-import bioj;
+import azqs;
+import bdgm;
+import bdgz;
+import bdjz;
+import bisq;
 import com.dataline.activities.LiteActivity;
 import com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity;
 import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
@@ -48,7 +48,7 @@ import nfx;
 import ntw;
 import org.json.JSONObject;
 import tlv;
-import ymk;
+import yqz;
 
 public class Utils
 {
@@ -105,7 +105,7 @@ public class Utils
   public static final int TYPE_SET_CLOSE = 2;
   public static final int TYPE_SET_OPEN = 1;
   
-  public static bdfq createPluginSetDialogForMain(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, long paramLong, String paramString1, String paramString2, Handler paramHandler)
+  public static bdjz createPluginSetDialogForMain(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, long paramLong, String paramString1, String paramString2, Handler paramHandler)
   {
     nfw localnfw = new nfw(paramInt, paramQQAppInterface, paramLong, paramHandler);
     paramHandler = new nfx(paramHandler);
@@ -115,7 +115,7 @@ public class Utils
       if (paramInt != 1) {
         break label116;
       }
-      i = 2131696451;
+      i = 2131696453;
       label42:
       if (paramInt != 1) {
         break label123;
@@ -123,50 +123,50 @@ public class Utils
     }
     label116:
     label123:
-    for (paramInt = 2131696456;; paramInt = 2131696454)
+    for (paramInt = 2131696458;; paramInt = 2131696456)
     {
-      return bdcd.a((BaseActivity)paramContext, paramString2, i, paramInt, localnfw, paramHandler);
+      return bdgm.a((BaseActivity)paramContext, paramString2, i, paramInt, localnfw, paramHandler);
       if (paramInt == 1) {}
-      for (paramQQAppInterface = paramContext.getResources().getString(2131696459, new Object[] { paramString1 });; paramQQAppInterface = paramContext.getString(2131696455, new Object[] { paramString1 }))
+      for (paramQQAppInterface = paramContext.getResources().getString(2131696461, new Object[] { paramString1 });; paramQQAppInterface = paramContext.getString(2131696457, new Object[] { paramString1 }))
       {
         paramString2 = paramQQAppInterface;
         break;
       }
-      i = 2131696453;
+      i = 2131696455;
       break label42;
     }
   }
   
-  public static bdfq createPluginSetDialogForWeb(Context paramContext, ymk paramymk, alkr paramalkr, int paramInt, long paramLong, String paramString1, String paramString2)
+  public static bdjz createPluginSetDialogForWeb(Context paramContext, yqz paramyqz, alpg paramalpg, int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    bdfq localbdfq = bdcd.a(paramContext, 230);
-    paramalkr = new nfv(paramInt, paramalkr, paramContext, paramymk, paramLong);
-    paramymk = new TextView(paramContext);
-    paramymk.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    paramymk.setTextSize(14.0F);
-    paramymk.setTextColor(paramContext.getResources().getColor(2131165448));
-    paramymk.setGravity(1);
-    paramymk.setPadding((int)bdcq.a(paramContext, 15.0F), (int)bdcq.a(paramContext, 30.0F), (int)bdcq.a(paramContext, 15.0F), (int)bdcq.a(paramContext, 15.0F));
+    bdjz localbdjz = bdgm.a(paramContext, 230);
+    paramalpg = new nfv(paramInt, paramalpg, paramContext, paramyqz, paramLong);
+    paramyqz = new TextView(paramContext);
+    paramyqz.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+    paramyqz.setTextSize(14.0F);
+    paramyqz.setTextColor(paramContext.getResources().getColor(2131165448));
+    paramyqz.setGravity(1);
+    paramyqz.setPadding((int)bdgz.a(paramContext, 15.0F), (int)bdgz.a(paramContext, 30.0F), (int)bdgz.a(paramContext, 15.0F), (int)bdgz.a(paramContext, 15.0F));
     if (paramInt == 1)
     {
-      localbdfq.setPositiveButton(2131696451, paramalkr);
-      localbdfq.setNegativeButton(2131696456, paramalkr);
+      localbdjz.setPositiveButton(2131696453, paramalpg);
+      localbdjz.setNegativeButton(2131696458, paramalpg);
       if (paramString2 != null) {}
       for (;;)
       {
-        paramymk.setText(paramString2);
-        localbdfq.addView(paramymk);
-        return localbdfq;
-        paramString2 = paramContext.getResources().getString(2131696459, new Object[] { paramString1 });
+        paramyqz.setText(paramString2);
+        localbdjz.addView(paramyqz);
+        return localbdjz;
+        paramString2 = paramContext.getResources().getString(2131696461, new Object[] { paramString1 });
       }
     }
     if (paramString2 != null) {}
     for (;;)
     {
-      localbdfq.setNegativeButton(2131696454, paramalkr);
-      localbdfq.setPositiveButton(2131696453, paramalkr);
+      localbdjz.setNegativeButton(2131696456, paramalpg);
+      localbdjz.setPositiveButton(2131696455, paramalpg);
       break;
-      paramString2 = paramContext.getString(2131696455, new Object[] { paramString1 });
+      paramString2 = paramContext.getString(2131696457, new Object[] { paramString1 });
     }
   }
   
@@ -182,14 +182,14 @@ public class Utils
     if ((paramContext != null) && ((paramContext instanceof QQAppInterface))) {}
     for (paramContext = (QQAppInterface)paramContext;; paramContext = null)
     {
-      azmj.b(paramContext, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.hongbao.click", 0, 0, "", "", "", "");
+      azqs.b(paramContext, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.hongbao.click", 0, 0, "", "", "", "");
       return true;
     }
   }
   
   public static boolean gotoFaceToFaceSend(Context paramContext, HashMap<String, Object> paramHashMap)
   {
-    bioj.a(paramContext, 14, null);
+    bisq.a(paramContext, 14, null);
     return true;
   }
   
@@ -305,9 +305,9 @@ public class Utils
             }
           }
           paramHashMap.setClass(paramContext, LiteActivity.class);
-          paramHashMap.putExtra("targetUin", aljq.z);
-          ajgm.a = true;
-          ajgm.a(paramHashMap);
+          paramHashMap.putExtra("targetUin", alof.z);
+          ajlb.a = true;
+          ajlb.a(paramHashMap);
           continue;
           paramHashMap.setClass(paramContext, TroopAssistantActivity.class);
           continue;
@@ -453,13 +453,13 @@ public class Utils
     }
   }
   
-  public static void sendPluginSetMessage(Context paramContext, ymk paramymk, alkr paramalkr, long paramLong, boolean paramBoolean)
+  public static void sendPluginSetMessage(Context paramContext, yqz paramyqz, alpg paramalpg, long paramLong, boolean paramBoolean)
   {
     paramContext = new Handler(paramContext.getMainLooper());
     Bundle localBundle = new Bundle();
     localBundle.putLong("uiResId", paramLong);
     localBundle.putBoolean("isChecked", paramBoolean);
-    paramContext.post(new Utils.2(paramymk, localBundle, paramalkr));
+    paramContext.post(new Utils.2(paramyqz, localBundle, paramalpg));
   }
 }
 

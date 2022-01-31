@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -13,7 +13,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ImageView.ScaleType;
-import bcch;
+import bcgq;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.gif.GifView;
@@ -329,7 +329,7 @@ public class ComponentPGCShortContentBig
     {
       paramLayoutParams.width = (paramInt * 2 / 3);
       paramLayoutParams.height = paramInt;
-      b(alpo.a(2131702723));
+      b(alud.a(2131702735));
       return;
     }
     if ((0.667D <= paramFloat1) && (paramFloat1 <= 1.5D))
@@ -341,7 +341,7 @@ public class ComponentPGCShortContentBig
     }
     paramLayoutParams.width = ((int)(paramInt * 1.5D));
     paramLayoutParams.height = paramInt;
-    b(alpo.a(2131702723));
+    b(alud.a(2131702735));
   }
   
   private void a(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, ViewGroup.LayoutParams paramLayoutParams)
@@ -360,7 +360,7 @@ public class ComponentPGCShortContentBig
       }
     }
     label70:
-    for (paramLayoutParams = alpo.a(2131702668);; paramLayoutParams = alpo.a(2131702708))
+    for (paramLayoutParams = alud.a(2131702680);; paramLayoutParams = alud.a(2131702720))
     {
       localKanDianRoundCornerTextView.setText(paramLayoutParams);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setVisibility(0);
@@ -374,7 +374,7 @@ public class ComponentPGCShortContentBig
       if (this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setText(alpo.a(2131702640));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setText(alud.a(2131702652));
         return;
       }
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setVisibility(4);
@@ -387,7 +387,7 @@ public class ComponentPGCShortContentBig
       if (this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setText(alpo.a(2131702645));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setText(alud.a(2131702657));
         return;
       }
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setVisibility(4);
@@ -400,7 +400,7 @@ public class ComponentPGCShortContentBig
       if (this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setText(alpo.a(2131702630));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setText(alud.a(2131702642));
         return;
       }
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setVisibility(4);
@@ -410,7 +410,7 @@ public class ComponentPGCShortContentBig
     paramLayoutParams.height = paramInt2;
     KanDianRoundCornerTextView localKanDianRoundCornerTextView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView;
     if (this.jdField_a_of_type_Boolean) {}
-    for (paramLayoutParams = alpo.a(2131702646);; paramLayoutParams = alpo.a(2131702653))
+    for (paramLayoutParams = alud.a(2131702658);; paramLayoutParams = alud.a(2131702665))
     {
       localKanDianRoundCornerTextView.setText(paramLayoutParams);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setVisibility(0);
@@ -514,7 +514,7 @@ public class ComponentPGCShortContentBig
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setText(alpo.a(2131702643));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setText(alud.a(2131702655));
       return;
     }
     KanDianRoundCornerTextView localKanDianRoundCornerTextView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView;
@@ -700,8 +700,8 @@ public class ComponentPGCShortContentBig
   
   private void l()
   {
-    int i = aekt.a(12.0F, getResources());
-    int j = aekt.a(4.5F, getResources());
+    int i = aepi.a(12.0F, getResources());
+    int j = aepi.a(4.5F, getResources());
     i = (int)((this.g - (i * this.jdField_a_of_type_Float + j)) / this.jdField_b_of_type_Float);
     this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = i;
     if (this.jdField_b_of_type_Int == 0)
@@ -723,18 +723,18 @@ public class ComponentPGCShortContentBig
       if (f1 > this.jdField_e_of_type_Float)
       {
         this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.width = ((int)(i * this.jdField_c_of_type_Float));
-        b(alpo.a(2131702723));
+        b(alud.a(2131702735));
         return;
       }
     } while (f1 >= this.jdField_f_of_type_Float);
     this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.width = ((int)(i * this.jdField_d_of_type_Float));
-    b(alpo.a(2131702723));
+    b(alud.a(2131702735));
   }
   
   private void m()
   {
-    int j = aekt.a(12.0F, getResources());
-    int k = aekt.a(4.5F, getResources());
+    int j = aepi.a(12.0F, getResources());
+    int k = aepi.a(4.5F, getResources());
     int i = (this.g - (j * 2 + k * 2)) / 3 * 2 + k;
     j = (this.g - (j * 2 + k)) / 2;
     if ((this.jdField_b_of_type_Int == 0) || (this.jdField_c_of_type_Int == 0))
@@ -770,7 +770,7 @@ public class ComponentPGCShortContentBig
     if ((jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Boolean)) {
       if (this.jdField_b_of_type_Boolean) {
         if (Aladdin.getConfig(192).getIntegerFromString("picture_click_jumptype", 0) == 0) {
-          bcch.a((Activity)getContext(), 0, localArrayList, null, null, false, false, "4", 100, null, null, "");
+          bcgq.a((Activity)getContext(), 0, localArrayList, null, null, false, false, "4", 100, null, null, "");
         }
       }
     }
@@ -795,7 +795,7 @@ public class ComponentPGCShortContentBig
       }
       this.jdField_b_of_type_Boolean = true;
       continue;
-      bcch.a((Activity)getContext(), 0, localArrayList, null, null, false, false, "4", 100, null, null, "");
+      bcgq.a((Activity)getContext(), 0, localArrayList, null, null, false, false, "4", 100, null, null, "");
     }
   }
   
@@ -836,7 +836,7 @@ public class ComponentPGCShortContentBig
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366450));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366455));
     this.jdField_d_of_type_Int = -1;
     a(0, null);
   }
@@ -899,7 +899,7 @@ public class ComponentPGCShortContentBig
   
   protected int b()
   {
-    return 2131559952;
+    return 2131559951;
   }
   
   public void b()

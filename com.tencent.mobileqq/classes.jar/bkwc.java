@@ -1,16 +1,13 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-
-public class bkwc
+class bkwc
+  implements yyi
 {
-  public int a;
-  public MetaMaterial a;
-  public int b;
+  bkwc(bkvx parambkvx, Runnable paramRunnable) {}
   
-  public bkwc(MetaMaterial paramMetaMaterial, int paramInt1, int paramInt2)
+  public void a()
   {
-    this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = paramMetaMaterial;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

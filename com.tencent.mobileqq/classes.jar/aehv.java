@@ -1,19 +1,15 @@
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 
 public class aehv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
-  public aehv(VisitorsActivity paramVisitorsActivity) {}
+  public aehv(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    this.a.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    int[] arrayOfInt = new int[2];
-    this.a.b.getLocationInWindow(arrayOfInt);
-    this.a.i = arrayOfInt[1];
+    this.a.f();
   }
 }
 

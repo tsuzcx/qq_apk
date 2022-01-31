@@ -1,23 +1,23 @@
 package com.tencent.gamecenter.common.util;
 
-import aact;
-import aadi;
-import aadk;
+import aahi;
+import aahx;
+import aahz;
 
 public class ScreenshotManager$2
   implements Runnable
 {
-  public ScreenshotManager$2(aadi paramaadi, String paramString, aadk paramaadk) {}
+  public ScreenshotManager$2(aahx paramaahx, String paramString, aahz paramaahz) {}
   
   public void run()
   {
-    if (this.this$0.a(aadi.a(this.this$0), this.jdField_a_of_type_JavaLangString))
+    if (this.this$0.a(aahx.a(this.this$0), this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Aadk.a(0, "succ");
-      aact.a("gamecenter_shot_key", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aahz.a(0, "succ");
+      aahi.a("gamecenter_shot_key", this.jdField_a_of_type_JavaLangString);
       return;
     }
-    this.jdField_a_of_type_Aadk.a(-200, "save file fail");
+    this.jdField_a_of_type_Aahz.a(-200, "save file fail");
   }
 }
 

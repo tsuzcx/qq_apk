@@ -1,15 +1,18 @@
+import android.content.Context;
+
+@bglp(a="PreloadFlagTask")
 public class bhig
+  extends bhlt
 {
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
+  public bhig(Context paramContext, bgun parambgun)
+  {
+    super(paramContext, parambgun);
+  }
+  
+  public void a()
+  {
+    c();
+  }
 }
 
 

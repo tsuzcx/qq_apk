@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import alwx;
+import ambm;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class Leba$3
@@ -10,7 +10,7 @@ class Leba$3
   
   public void run()
   {
-    ((alwx)this.this$0.a.a(87)).a(false, false);
+    ((ambm)this.this$0.a.a(87)).a(false, false);
   }
 }
 

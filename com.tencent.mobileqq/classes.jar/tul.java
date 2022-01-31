@@ -1,26 +1,16 @@
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetCommentListRsp;
+
 class tul
-  implements ubq
+  implements ykh<Object>
 {
-  tul(tuk paramtuk) {}
+  tul(tuk paramtuk, FeedCloudMeta.StFeed paramStFeed) {}
   
-  public void a()
+  public void a(Object... paramVarArgs)
   {
-    if (tym.a().d(57))
-    {
-      tyk.a(55, 3, tuk.a(this.a));
-      return;
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
+      tuk.a(this.jdField_a_of_type_Tuk, ((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetCommentListRsp)paramVarArgs[3], this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, false);
     }
-    tyg.a(55, 3, tuk.a(this.a));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (tym.a().d(57))
-    {
-      tyk.a(54, 2, tuk.a(this.a));
-      return;
-    }
-    tyg.a(54, 2, tuk.a(this.a));
   }
 }
 

@@ -1,33 +1,11 @@
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.qphone.base.util.QLog;
-
-public class asra
-  implements asrd
+class asra
+  implements bico
 {
-  public asra(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
+  asra(asqz paramasqz) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
-    if ((this.a.jdField_a_of_type_Int == 2) && (this.a.jdField_a_of_type_Asrg != null))
-    {
-      this.a.jdField_a_of_type_Asrg.a(0, paramView);
-      return;
-    }
-    if ((this.a.jdField_a_of_type_Int == 3) && (this.a.jdField_a_of_type_Asrg != null)) {
-      this.a.jdField_a_of_type_Asrg.a(4, paramView);
-    }
-    for (;;)
-    {
-      QLog.d("HotVideoRelativeLayout", 2, "click base view");
-      return;
-      if ((this.a.jdField_a_of_type_Int == 4) && (this.a.jdField_a_of_type_Asrg != null)) {
-        this.a.jdField_a_of_type_Asrg.a(1, paramView);
-      } else if ((this.a.jdField_a_of_type_Int == 6) && (this.a.jdField_a_of_type_Asrg != null)) {
-        this.a.jdField_a_of_type_Asrg.a(2, paramView);
-      }
-    }
+    this.a.a = true;
   }
 }
 

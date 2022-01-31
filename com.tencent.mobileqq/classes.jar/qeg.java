@@ -2,7 +2,7 @@ import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
 
 public class qeg
-  implements bhqd
+  implements bhuk
 {
   public qeg(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   

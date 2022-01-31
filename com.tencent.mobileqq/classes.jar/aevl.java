@@ -1,16 +1,6 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-
-public class aevl
-  implements aexd
+public abstract interface aevl
 {
-  public aevl(DoodlePanel paramDoodlePanel) {}
-  
-  public void a(aexc paramaexc)
-  {
-    this.a.a(paramaexc);
-    paramaexc = "" + paramaexc.a + ";" + paramaexc.b + ";" + paramaexc.c;
-    bczr.a(this.a.getContext(), "aio_doodle_colorpicker_select", paramaexc);
-  }
+  public abstract void aq_();
 }
 
 

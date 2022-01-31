@@ -1,60 +1,96 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetCommentList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCommentList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import java.io.File;
 
-public class uoc
-  extends ups
+public abstract class uoc
 {
-  int jdField_a_of_type_Int;
-  public final String a;
-  String b;
+  protected uoc a;
+  protected String[] a;
   
-  public uoc(unw paramunw, String paramString, int paramInt)
+  public uoc(@NonNull String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_JavaLangString = ume.a("StorySvc.get_comment_list");
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
   }
   
-  public String a()
+  public static double a(File paramFile)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    double d1 = 0.0D;
+    double d2;
+    if (paramFile.isDirectory())
+    {
+      paramFile = paramFile.listFiles();
+      d2 = d1;
+      if (paramFile != null)
+      {
+        int j = paramFile.length;
+        int i = 0;
+        for (;;)
+        {
+          d2 = d1;
+          if (i >= j) {
+            break;
+          }
+          d2 = a(paramFile[i]);
+          i += 1;
+          d1 = d2 + d1;
+        }
+      }
+    }
+    else
+    {
+      d2 = paramFile.length() / 1024.0D / 1024.0D;
+    }
+    return d2;
   }
   
-  public upt a(byte[] paramArrayOfByte)
+  public uoc a(uoc paramuoc)
   {
-    qqstory_service.RspGetCommentList localRspGetCommentList = new qqstory_service.RspGetCommentList();
+    this.jdField_a_of_type_Uoc = paramuoc;
+    return this.jdField_a_of_type_Uoc;
+  }
+  
+  public void a(File paramFile)
+  {
     try
     {
-      localRspGetCommentList.mergeFrom(paramArrayOfByte);
-      return new uod(this.jdField_a_of_type_Unw, localRspGetCommentList);
+      xrg.d(paramFile.getPath());
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    catch (Exception paramFile)
     {
-      wsv.d("Q.qqstory:GetCommentListRequest", "" + paramArrayOfByte);
+      wxe.d("Q.qqstory.cleaner:AbsCleanStep", "delete failed : " + paramFile);
     }
-    return null;
   }
   
-  protected byte[] a()
+  public void a(uod paramuod)
   {
-    qqstory_service.ReqGetCommentList localReqGetCommentList = new qqstory_service.ReqGetCommentList();
-    localReqGetCommentList.vid.set(ByteStringMicro.copyFromUtf8(this.b));
-    localReqGetCommentList.latest_comment_id.set(this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory:GetCommentListRequest", 2, "getCommentListData by latest_comment_id: " + this.jdField_a_of_type_Int);
-    }
-    return localReqGetCommentList.toByteArray();
+    a(this.jdField_a_of_type_ArrayOfJavaLangString, paramuod);
+    if (this.jdField_a_of_type_Uoc != null) {}
+    long l;
+    do
+    {
+      try
+      {
+        Thread.sleep(100L);
+        this.jdField_a_of_type_Uoc.a(paramuod);
+        return;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          wxe.e("Q.qqstory.cleaner:AbsCleanStep", "sleep error ,InterruptedException");
+        }
+      }
+      l = xrg.a() / 1024L;
+      wxe.d("Q.qqstory.cleaner:AbsCleanStep", "clean cache over , spend time = %d , free size = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - paramuod.jdField_a_of_type_Long), Long.valueOf(l) });
+      if (paramuod.jdField_a_of_type_Int != 0) {
+        wxj.b("story_cache", "clear_cache", 0, 0, new String[] { String.valueOf(0), String.valueOf(paramuod.jdField_a_of_type_Int), String.valueOf(paramuod.jdField_a_of_type_Double), String.valueOf(l) });
+      }
+    } while (paramuod.jdField_b_of_type_Int == 0);
+    wxj.b("story_cache", "clear_cache", 0, 0, new String[] { String.valueOf(1), String.valueOf(paramuod.jdField_b_of_type_Int), String.valueOf(paramuod.jdField_b_of_type_Double), String.valueOf(l) });
   }
   
-  public String toString()
-  {
-    return "GetCommentListRequest{ vid=" + this.b + ", startCommentID=" + this.jdField_a_of_type_Int + '}';
-  }
+  protected abstract void a(String[] paramArrayOfString, uod paramuod);
 }
 
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aikl;
+import aipa;
 import android.app.Activity;
 import com.tencent.qphone.base.util.QLog;
 
 public class SDKAvatarSettingManager$5
   implements Runnable
 {
-  public SDKAvatarSettingManager$5(aikl paramaikl) {}
+  public SDKAvatarSettingManager$5(aipa paramaipa) {}
   
   public void run()
   {
-    if (aikl.a(this.this$0).isFinishing()) {
+    if (aipa.a(this.this$0).isFinishing()) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -19,7 +19,7 @@ public class SDKAvatarSettingManager$5
     }
     this.this$0.a = true;
     this.this$0.d();
-    aikl.a(this.this$0, aikl.a(this.this$0));
+    aipa.a(this.this$0, aipa.a(this.this$0));
   }
 }
 

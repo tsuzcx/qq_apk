@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
 import android.os.Handler;
-import awbw;
+import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
 import java.util.List;
 import ovz;
@@ -16,7 +16,7 @@ public class DynamicChannelDataModule$2
     Object localObject = ovz.a(this.this$0);
     int i = this.a;
     int j = this.b;
-    localObject = ((awbw)localObject).a(DynamicChannelDataModel.class, true, "channelID = ?", new String[] { String.valueOf(i) }, null, null, "recommendSeq asc", String.valueOf(j));
+    localObject = ((awgf)localObject).a(DynamicChannelDataModel.class, true, "channelID = ?", new String[] { String.valueOf(i) }, null, null, "recommendSeq asc", String.valueOf(j));
     if ((localObject == null) || (((List)localObject).size() == 0))
     {
       ovz.a(this.this$0, this.a, 2);

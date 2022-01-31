@@ -1,10 +1,15 @@
-public abstract interface bhjz
+import android.widget.NumberPicker;
+import android.widget.NumberPicker.OnValueChangeListener;
+
+class bhjz
+  implements NumberPicker.OnValueChangeListener
 {
-  public abstract void a(String paramString, Object paramObject);
+  bhjz(bhjy parambhjy) {}
   
-  public abstract void b(String paramString, Object paramObject);
-  
-  public abstract void c(String paramString, Object paramObject);
+  public void onValueChange(NumberPicker paramNumberPicker, int paramInt1, int paramInt2)
+  {
+    bhjy.a(this.a, paramInt2);
+  }
 }
 
 

@@ -1,17 +1,24 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
 
 public class vqb
-  extends vqk<String>
+  implements vpt
 {
-  public vqb(VideoViewVideoHolder paramVideoViewVideoHolder)
+  private final vqa a;
+  
+  public vqb(vqa paramvqa)
   {
-    super(paramVideoViewVideoHolder, null);
+    this.a = paramvqa;
   }
   
-  public void a(String paramString)
+  public void a(vpu paramvpu)
   {
-    super.onNext(paramString);
-    VideoViewVideoHolder.a(this.a);
+    Stream localStream2 = Stream.of(this.a.a).map(new ThreadOffFunction("Q.qqstory.player.data.MsgTabPlayPageLoader", 2)).map(new uyw("Q.qqstory.player.data.MsgTabPlayPageLoader", this.a.c, this.a.d, this.a));
+    Stream localStream1 = localStream2;
+    if (this.a.a.a == 5) {
+      localStream1 = localStream2.map(new uyt()).map(new uyj(this.a.a));
+    }
+    localStream1.subscribe(new vqc(this, paramvpu));
   }
 }
 

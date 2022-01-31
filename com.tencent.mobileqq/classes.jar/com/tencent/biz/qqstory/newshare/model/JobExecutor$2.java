@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.newshare.model;
 
-import vfy;
-import vga;
+import vkh;
+import vkj;
 
 public class JobExecutor$2
   implements Runnable
 {
-  public JobExecutor$2(vga paramvga, vfy paramvfy) {}
+  public JobExecutor$2(vkj paramvkj, vkh paramvkh) {}
   
   public void run()
   {

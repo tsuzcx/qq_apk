@@ -1,150 +1,149 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.conditionsearch.data.AddressData.NO_LIMIT_ADDRESS;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.Collections;
+import java.util.List;
 
-class aohu
+public class aohu
+  implements aoil
 {
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<aohw> jdField_a_of_type_JavaUtilArrayList;
+  public aohu(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public aohu(String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = a(paramString);
+    LocationSelectActivity.a(this.a).setRightTextColor(2);
+    this.a.jdField_a_of_type_Bhuf.dismiss();
   }
   
-  public Object a(Map<String, Object> paramMap)
+  public void a(int paramInt1, int paramInt2)
   {
-    Object localObject;
-    if (paramMap == null)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView == null) {
+      return;
+    }
+    switch (paramInt1)
     {
-      localObject = null;
-      return localObject;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
-      return null;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    label809:
+    label812:
     for (;;)
     {
-      localObject = paramMap;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      paramMap = ((aohw)localIterator.next()).a(paramMap);
-    }
-  }
-  
-  public ArrayList<aohw> a(String paramString)
-  {
-    ArrayList localArrayList = b(paramString);
-    if (localArrayList.size() == 0) {
-      return null;
-    }
-    if (!((String)localArrayList.get(0)).equals("$")) {
-      return null;
-    }
-    paramString = new ArrayList();
-    int i = 1;
-    for (;;)
-    {
-      try
+      LocationSelectActivity.a(this.a, LocationSelectActivity.a(this.a), LocationSelectActivity.a(this.a));
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(null);
+      this.a.jdField_a_of_type_ArrayOfInt[0] = paramInt2;
+      this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[0] = ((BaseAddress)((ArrayList)this.a.jdField_a_of_type_ArrayOfJavaLangObject[0]).get(paramInt2));
+      ArrayList localArrayList1 = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[0].getDataList();
+      if (localArrayList1.size() > 0)
       {
-        if (i < localArrayList.size())
+        this.a.jdField_a_of_type_ArrayOfJavaLangObject[1] = localArrayList1;
+        this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = ((BaseAddress)localArrayList1.get(0));
+        this.a.jdField_a_of_type_ArrayOfInt[1] = 0;
+        localArrayList1 = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1].getDataList();
+        if (localArrayList1.size() > 0)
         {
-          str1 = (String)localArrayList.get(i);
-          if (TextUtils.isEmpty(str1)) {
-            return null;
-          }
-          if (str1.charAt(0) == '.')
-          {
-            paramString.add(new aohx(str1.substring(1)));
-          }
-          else
-          {
-            String str2 = aohy.a().b(str1);
-            if (!TextUtils.isEmpty(str2)) {
-              paramString.add(new aohx(str2));
-            }
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("ArkMsgReplyConfigMgr", 1, "parsePattern error:" + localException.getMessage());
-      }
-      return paramString;
-      String str1 = aohy.a().a(str1);
-      if (!TextUtils.isEmpty(str1)) {
-        paramString.add(new aohv(Integer.parseInt(str1)));
-      } else {
-        return null;
-      }
-      i += 1;
-    }
-  }
-  
-  public ArrayList<String> b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = new StringBuilder();
-    int i = 0;
-    int j = 0;
-    if (j < paramString.length())
-    {
-      char c = paramString.charAt(j);
-      Object localObject2;
-      if (i == 0) {
-        if (c != '.')
-        {
-          localObject2 = localObject1;
-          if (c != '[') {}
-        }
-        else
-        {
-          if (((StringBuilder)localObject1).length() == 0) {
-            return null;
-          }
-          localArrayList.add(((StringBuilder)localObject1).toString());
-          localObject2 = new StringBuilder();
-          if (c != '[') {
-            break label126;
-          }
-          i = 1;
+          this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = localArrayList1;
+          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = ((BaseAddress)localArrayList1.get(0));
+          this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
         }
       }
       for (;;)
       {
-        ((StringBuilder)localObject2).append(c);
-        j += 1;
-        localObject1 = localObject2;
-        break;
-        label126:
-        i = 0;
-        continue;
-        localObject2 = localObject1;
-        if (c == ']')
+        if (this.a.jdField_a_of_type_Int > 1)
         {
-          i = 0;
-          localObject2 = localObject1;
+          this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1);
+          this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.a.jdField_a_of_type_ArrayOfInt[1]);
+          if (this.a.jdField_a_of_type_Int == 3)
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+            this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.a.jdField_a_of_type_ArrayOfInt[2]);
+          }
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(this);
+        break;
+        if (this.a.jdField_a_of_type_Int == 3)
+        {
+          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = new AddressData.NO_LIMIT_ADDRESS(3);
+          this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = null;
+          this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
+          continue;
+          if (this.a.jdField_a_of_type_Int > 1)
+          {
+            this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = new AddressData.NO_LIMIT_ADDRESS(2);
+            this.a.jdField_a_of_type_ArrayOfJavaLangObject[1] = null;
+            this.a.jdField_a_of_type_ArrayOfInt[1] = 0;
+            if (this.a.jdField_a_of_type_Int == 3)
+            {
+              this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = new AddressData.NO_LIMIT_ADDRESS(3);
+              this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = null;
+              this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
+            }
+          }
         }
       }
+      this.a.jdField_a_of_type_ArrayOfInt[1] = paramInt2;
+      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(null);
+      try
+      {
+        this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = ((BaseAddress)((ArrayList)this.a.jdField_a_of_type_ArrayOfJavaLangObject[1]).get(paramInt2));
+        localArrayList1 = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1].getDataList();
+        if (localArrayList1.size() > 0)
+        {
+          this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = localArrayList1;
+          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = ((BaseAddress)localArrayList1.get(0));
+          this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
+          if (this.a.jdField_a_of_type_Int > 2)
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+            this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.a.jdField_a_of_type_ArrayOfInt[2]);
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(this);
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = new BaseAddress("不限", "0", 2);
+          continue;
+          if (this.a.jdField_a_of_type_Int > 2)
+          {
+            this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = new AddressData.NO_LIMIT_ADDRESS(3);
+            this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = null;
+            this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
+          }
+        }
+      }
+      ArrayList localArrayList2;
+      if (Collections.emptyList().equals(this.a.jdField_a_of_type_ArrayOfJavaLangObject[2]))
+      {
+        if (!QLog.isColorLevel()) {
+          break label809;
+        }
+        QLog.d("LocationSelectActivity", 2, "columnListArray at 2 is empty");
+        localArrayList2 = null;
+      }
+      for (;;)
+      {
+        if ((localArrayList2 == null) || (paramInt2 >= localArrayList2.size()) || (paramInt2 < 0)) {
+          break label812;
+        }
+        this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = ((BaseAddress)localArrayList2.get(paramInt2));
+        this.a.jdField_a_of_type_ArrayOfInt[2] = paramInt2;
+        break;
+        localArrayList2 = (ArrayList)this.a.jdField_a_of_type_ArrayOfJavaLangObject[2];
+        continue;
+        localArrayList2 = null;
+      }
     }
-    if (((StringBuilder)localObject1).length() == 0) {
-      return null;
-    }
-    localArrayList.add(((StringBuilder)localObject1).toString());
-    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,45 @@
-import android.os.Build;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.util.QzoneHardwareRestriction;
+import android.os.Bundle;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.share.QZoneShareActivity;
+import mqq.observer.BusinessObserver;
 
 public class bjrp
+  implements BusinessObserver
 {
-  public static final int a = QzoneConfig.getInstance().getConfig("PhotoUpload", "createGifLowDeviceSize", 720);
-  public static final int b = QzoneConfig.getInstance().getConfig("PhotoUpload", "createGifMiddleDeviceSize", 720);
-  public static final int c = QzoneConfig.getInstance().getConfig("PhotoUpload", "createGifHighDeviceSize", 720);
-  public static final int d = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_delay", 200);
-  public static final int e = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_size_limit", 64);
-  public static final int f = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_max_speed", 20);
-  public static final int g = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_min_multiple_speed", 3);
-  private static int h = -1;
+  public bjrp(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public static int a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = 2;
-    if (QzoneHardwareRestriction.meetHardwareRestriction(2, 2)) {
-      i = 3;
-    }
-    while (QzoneHardwareRestriction.meetHardwareRestriction(1, 1)) {
-      return i;
-    }
-    return 1;
-  }
-  
-  public static boolean a()
-  {
-    if (h >= 0) {
-      return h == 1;
-    }
-    String[] arrayOfString = QzoneConfig.getInstance().getConfig("QZoneSetting", "GenerateGifBlackList", "X9007,MI 2C,A0001").split(",");
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    synchronized (QZoneShareActivity.jdField_a_of_type_JavaLangObject)
     {
-      String str = arrayOfString[i];
-      if (Build.MODEL.equalsIgnoreCase(str))
+      this.a.h = false;
+      if (paramBoolean) {}
+      try
       {
-        h = 1;
-        return true;
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
+          localGetAppinfoResponse.mergeFrom(paramBundle);
+          this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse = localGetAppinfoResponse;
+          if (QLog.isColorLevel()) {
+            QLog.d("QZoneShare", 2, "get appinfo time = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+          }
+        }
       }
-      i += 1;
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QZoneShare", 2, paramBundle.getMessage());
+          }
+        }
+      }
+      QZoneShareActivity.jdField_a_of_type_JavaLangObject.notify();
+      return;
     }
-    h = 0;
-    return false;
-  }
-  
-  public static int b()
-  {
-    int i = a();
-    if (i == 1) {
-      return a;
-    }
-    if (i == 2) {
-      return b;
-    }
-    if (i == 3) {
-      return c;
-    }
-    return 720;
   }
 }
 

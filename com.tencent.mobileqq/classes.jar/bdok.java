@@ -1,50 +1,50 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.vas.FriendCloneSettingFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.util.Base64;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import org.json.JSONObject;
 
-public class bdok
-  extends alxo
+final class bdok
+  extends bead
 {
-  public bdok(FriendCloneSettingFragment paramFriendCloneSettingFragment) {}
+  bdok(QQAppInterface paramQQAppInterface) {}
   
-  public void d(boolean paramBoolean, Object paramObject)
+  public void onDone(beae parambeae)
   {
-    int i;
-    if ((paramBoolean) && ((paramObject instanceof ArrayList)))
+    super.onDone(parambeae);
+    parambeae = new File(bdoj.jdField_a_of_type_JavaLangString);
+    if (parambeae.exists())
     {
-      paramObject = (ArrayList)paramObject;
-      i = ((Integer)paramObject.get(1)).intValue();
-      if (i == 257) {
-        if (((Boolean)paramObject.get(2)).booleanValue())
-        {
-          this.a.a(1);
-          this.a.jdField_a_of_type_Int = 1;
-        }
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      if (this.a.jdField_a_of_type_Beps != null) {
-        this.a.jdField_a_of_type_Beps.b();
-      }
-      return;
-      this.a.a(0);
-      this.a.jdField_a_of_type_Int = 0;
-      continue;
-      if (i == 258)
+      parambeae = bdhb.a(parambeae, -1);
+      if (!TextUtils.isEmpty(parambeae)) {}
+      try
       {
-        this.a.jdField_a_of_type_Int = this.a.b;
-        continue;
-        this.a.a(this.a.jdField_a_of_type_Int);
-        if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) {
-          QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, alpo.a(2131705246), 0).a();
+        parambeae = Base64.decode(parambeae, 0);
+        SecretKeySpec localSecretKeySpec = new SecretKeySpec("xydata3456789012xydata3456789012".getBytes(), "AES");
+        IvParameterSpec localIvParameterSpec = new IvParameterSpec("xydata3456789012".getBytes());
+        Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
+        localCipher.init(2, localSecretKeySpec, localIvParameterSpec);
+        parambeae = new JSONObject(new String(localCipher.doFinal(parambeae)));
+        if (QLog.isColorLevel()) {
+          QLog.d("VasResourceCheckUtil", 2, "decode json success, content = " + parambeae.toString());
         }
-        QLog.e("IphoneTitleBarFragment", 0, "onFriendCloneAuth: failed. ");
+        bdoj.a(this.a);
+        bdoj.jdField_a_of_type_AndroidOsHandler.sendMessage(bdoj.jdField_a_of_type_AndroidOsHandler.obtainMessage(257));
+        return;
+      }
+      catch (Exception parambeae)
+      {
+        QLog.e("VasResourceCheckUtil", 1, "decode json fail: " + parambeae.getMessage());
+        bdoj.jdField_a_of_type_AndroidOsHandler.sendMessage(bdoj.jdField_a_of_type_AndroidOsHandler.obtainMessage(259));
+        return;
       }
     }
+    bdoj.jdField_a_of_type_AndroidOsHandler.sendMessage(bdoj.jdField_a_of_type_AndroidOsHandler.obtainMessage(258));
   }
 }
 

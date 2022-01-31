@@ -1,15 +1,48 @@
-class ajqk
-  implements ajqn
+import android.app.Activity;
+import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
+import java.util.ArrayList;
+
+public class ajqk
 {
-  ajqk(ajqj paramajqj) {}
-  
-  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
-  {
-    if ((paramInt1 != this.a.a) && (this.a.a != 0)) {
-      return false;
-    }
-    return ajqj.a(this.a, paramInt1, paramInt2, paramString, paramInt3, paramInt4);
-  }
+  public double a;
+  public int a;
+  public ajpz a;
+  public Activity a;
+  public QzoneVerticalVideoTopicInfo a;
+  public String a;
+  public ArrayList<String> a;
+  public boolean a;
+  public double b;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e;
+  public String e;
+  public boolean e;
+  public int f;
+  public String f;
+  public boolean f;
+  public int g;
+  public String g;
+  public boolean g;
+  public int h;
+  public String h;
+  public boolean h;
+  public int i;
+  public String i;
+  public boolean i;
+  public int j;
+  public String j;
+  public int k;
+  public String k;
+  public int l;
+  public int m;
 }
 
 

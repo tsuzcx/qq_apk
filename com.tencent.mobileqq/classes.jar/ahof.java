@@ -1,16 +1,10 @@
-import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class ahof
-  extends alsi
 {
-  private ahof(AlphabetFriendFragment paramAlphabetFriendFragment) {}
-  
-  protected void f()
-  {
-    if (AlphabetFriendFragment.b(this.a)) {
-      AlphabetFriendFragment.a(this.a, 1400L, true);
-    }
-  }
+  public int a;
+  public TroopInfo a;
+  public String a;
 }
 
 

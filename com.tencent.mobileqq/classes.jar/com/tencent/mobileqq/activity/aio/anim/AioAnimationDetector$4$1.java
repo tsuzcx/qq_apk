@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aeqe;
-import aeqf;
-import afbv;
+import aeut;
+import aeuu;
+import afgk;
 
 public class AioAnimationDetector$4$1
   implements Runnable
 {
-  public AioAnimationDetector$4$1(aeqe paramaeqe, afbv paramafbv, String paramString) {}
+  public AioAnimationDetector$4$1(aeut paramaeut, afgk paramafgk, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Afbv.a(new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Aeqe.a.a) });
+    this.jdField_a_of_type_Afgk.a(new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Aeut.a.a) });
   }
 }
 

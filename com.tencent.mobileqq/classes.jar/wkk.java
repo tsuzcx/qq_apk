@@ -1,20 +1,29 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wkk
-  extends uxs
+  extends QQUIEventReceiver<wjw, uwk>
 {
-  public List<String> a = new ArrayList();
-  
-  public wkk(ErrorMessage paramErrorMessage)
+  public wkk(@NonNull wjw paramwjw)
   {
-    super(paramErrorMessage);
+    super(paramwjw);
   }
   
-  public String toString()
+  public void a(@NonNull wjw paramwjw, @NonNull uwk paramuwk)
   {
-    return "FeedData{" + super.toString() + '}';
+    if (wjw.a(paramwjw) == null)
+    {
+      wxe.b(this.TAG, "ignore this troop nick name change event. %s.", paramuwk.toString());
+      return;
+    }
+    wxe.a(this.TAG, "receive troop nick name change event. %s.", paramuwk.toString());
+    wjw.a(paramwjw).c();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uwk.class;
   }
 }
 

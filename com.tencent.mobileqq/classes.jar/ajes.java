@@ -1,23 +1,11 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.qphone.base.util.QLog;
 
-class ajes
-  implements View.OnTouchListener
+public class ajes
 {
-  ajes(ajer paramajer) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a(String paramString)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      paramView.setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(1.0F);
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QWalletPerTrace", 2, "markTimeStamp " + paramString);
     }
   }
 }

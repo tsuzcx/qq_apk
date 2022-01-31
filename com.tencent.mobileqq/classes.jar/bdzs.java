@@ -1,17 +1,47 @@
-class bdzs
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+
+final class bdzs
+  implements TVK_SDKMgr.OnLogListener
 {
-  int jdField_a_of_type_Int;
-  char[] jdField_a_of_type_ArrayOfChar = new char[4];
-  
-  private void a(byte[] paramArrayOfByte)
+  public int d(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = bdzq.a(paramArrayOfByte);
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfChar.length)
-    {
-      this.jdField_a_of_type_ArrayOfChar[i] = ((char)paramArrayOfByte[(i + 4)]);
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
   }
 }
 

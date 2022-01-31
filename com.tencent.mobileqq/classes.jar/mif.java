@@ -13,7 +13,7 @@ class mif
     if (this.a.a.a != null) {
       this.a.a.a.j();
     }
-    azmj.b(null, "CliOper", "", "", "0X8005DF1", "0X8005DF1", 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", "0X8005DF1", "0X8005DF1", 0, 0, "", "", "", "");
   }
 }
 

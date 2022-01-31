@@ -27,7 +27,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import org.json.JSONObject;
 
 public class nop
-  implements bfka, bked
+  implements bfoj, bkik
 {
   public Context a;
   protected Handler a;
@@ -43,8 +43,8 @@ public class nop
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
     a();
-    bkel.a().a(this);
-    bfgi.a().a(this);
+    bkis.a().a(this);
+    bfkr.a().a(this);
   }
   
   public static int a(WadlResult paramWadlResult)
@@ -121,21 +121,21 @@ public class nop
       }
     }
     Bundle localBundle = new Bundle();
-    localBundle.putString(bfjy.f, str1);
-    localBundle.putString(bfjy.jdField_b_of_type_JavaLangString, str2);
-    localBundle.putString(bfjy.j, str3);
-    localBundle.putString(bfjy.l, str4);
-    localBundle.putInt(bfjy.k, 2);
-    localBundle.putInt(bfjy.E, 0);
-    localBundle.putBoolean(bfjy.x, false);
-    localBundle.putInt(bfjy.H, 0);
-    localBundle.putBoolean(bfjy.y, true);
-    localBundle.putBoolean(bfjy.h, true);
-    localBundle.putBoolean(bfjy.r, false);
-    localBundle.putBoolean(bfjy.J, false);
+    localBundle.putString(bfoh.f, str1);
+    localBundle.putString(bfoh.jdField_b_of_type_JavaLangString, str2);
+    localBundle.putString(bfoh.j, str3);
+    localBundle.putString(bfoh.l, str4);
+    localBundle.putInt(bfoh.k, 2);
+    localBundle.putInt(bfoh.E, 0);
+    localBundle.putBoolean(bfoh.x, false);
+    localBundle.putInt(bfoh.H, 0);
+    localBundle.putBoolean(bfoh.y, true);
+    localBundle.putBoolean(bfoh.h, true);
+    localBundle.putBoolean(bfoh.r, false);
+    localBundle.putBoolean(bfoh.J, false);
     localBundle.putString("sendTime", "_" + GlobalUtil.calcMD5AsString(str3));
     if (!TextUtils.isEmpty(paramqyj.f)) {
-      localBundle.putString(bfjy.i, paramqyj.f);
+      localBundle.putString(bfoh.i, paramqyj.f);
     }
     if (QLog.isColorLevel()) {
       QLog.d("ADBaseAppDownloadManager", 2, "startRealDownload pkg:" + str1 + ", appid:" + str2 + ", name:" + str4 + ", url:" + str3);
@@ -144,7 +144,7 @@ public class nop
       this.jdField_a_of_type_JavaUtilList.remove(paramqyj);
     }
     this.jdField_a_of_type_JavaUtilList.add(paramqyj);
-    bfgm.a().a(paramActivity, localBundle, "biz_src_feeds_kandianads", null, 0);
+    bfkv.a().a(paramActivity, localBundle, "biz_src_feeds_kandianads", null, 0);
   }
   
   public static boolean a(Context paramContext, String paramString)
@@ -155,7 +155,7 @@ public class nop
       do
       {
         return false;
-        paramContext = bfgi.a().c(paramString);
+        paramContext = bfkr.a().c(paramString);
       } while ((paramContext == null) || (TextUtils.isEmpty(paramContext.l)));
       paramContext = paramContext.l;
     } while ((TextUtils.isEmpty(paramContext)) || (!new File(paramContext).exists()));
@@ -194,7 +194,7 @@ public class nop
           } while (TextUtils.isEmpty(str1));
           bool2 = bool1;
         } while (TextUtils.isEmpty(str2));
-        localDownloadInfo = bfgi.a().c(str1);
+        localDownloadInfo = bfkr.a().c(str1);
         bool2 = bool1;
       } while (localDownloadInfo == null);
       paramqyj = "";
@@ -217,7 +217,7 @@ public class nop
     TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo2;
     if (localDownloadInfo.jdField_c_of_type_Int == 0)
     {
-      localTMAssistantDownloadTaskInfo2 = bfgi.a().a(localDownloadInfo.d);
+      localTMAssistantDownloadTaskInfo2 = bfkr.a().a(localDownloadInfo.d);
       paramContext = paramqyj;
       if (localTMAssistantDownloadTaskInfo2 != null)
       {
@@ -229,7 +229,7 @@ public class nop
       paramqyj = paramContext;
       if (TextUtils.isEmpty(paramContext))
       {
-        localTMAssistantDownloadTaskInfo1 = bfgi.a().a(localDownloadInfo);
+        localTMAssistantDownloadTaskInfo1 = bfkr.a().a(localDownloadInfo);
         paramqyj = paramContext;
       }
     }
@@ -249,10 +249,10 @@ public class nop
       }
       localDownloadInfo.l = paramContext;
       localDownloadInfo.a(4);
-      bfgi.a().c(localDownloadInfo);
+      bfkr.a().c(localDownloadInfo);
       paramqyj = paramContext;
       break;
-      localTMAssistantDownloadTaskInfo2 = bfgi.a().a(localDownloadInfo);
+      localTMAssistantDownloadTaskInfo2 = bfkr.a().a(localDownloadInfo);
       paramContext = paramqyj;
       if (localTMAssistantDownloadTaskInfo2 != null)
       {
@@ -264,7 +264,7 @@ public class nop
       paramqyj = paramContext;
       if (TextUtils.isEmpty(paramContext))
       {
-        localTMAssistantDownloadTaskInfo1 = bfgi.a().a(localDownloadInfo.d);
+        localTMAssistantDownloadTaskInfo1 = bfkr.a().a(localDownloadInfo.d);
         paramqyj = paramContext;
       }
     }
@@ -300,7 +300,7 @@ public class nop
   
   private void c()
   {
-    bfgi.a().b(this);
+    bfkr.a().b(this);
     this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
@@ -311,7 +311,7 @@ public class nop
       paramqyj.jdField_a_of_type_CooperationWadlIpcWadlParams = a(paramqyj);
     }
     a(paramqyj);
-    bkel.a().a(paramqyj.jdField_a_of_type_CooperationWadlIpcWadlParams);
+    bkis.a().a(paramqyj.jdField_a_of_type_CooperationWadlIpcWadlParams);
     if (this.jdField_a_of_type_JavaUtilList.contains(paramqyj)) {
       this.jdField_a_of_type_JavaUtilList.remove(paramqyj);
     }
@@ -586,7 +586,7 @@ public class nop
       QLog.d("ADBaseAppDownloadManager", 2, "startDownload " + paramqyj.d + " progress " + paramInt);
     }
     paramqyj.jdField_a_of_type_Int = 3;
-    bfgi.a().a(this);
+    bfkr.a().a(this);
     a((Activity)this.jdField_a_of_type_AndroidContentContext, paramqyj);
   }
   
@@ -598,7 +598,7 @@ public class nop
       paramqyj.jdField_a_of_type_CooperationWadlIpcWadlParams = a(paramqyj);
     }
     if ((paramqyj.jdField_a_of_type_Boolean) && (paramqyj.jdField_a_of_type_CooperationWadlIpcWadlParams != null)) {
-      bkel.a().a(0, paramqyj.jdField_a_of_type_JavaLangString);
+      bkis.a().a(0, paramqyj.jdField_a_of_type_JavaLangString);
     }
     do
     {
@@ -606,7 +606,7 @@ public class nop
       d(paramqyj);
       paramqyj = paramqyj.jdField_c_of_type_JavaLangString;
     } while (TextUtils.isEmpty(paramqyj));
-    bfgi.a().a(paramqyj);
+    bfkr.a().a(paramqyj);
   }
   
   public boolean a(qyj paramqyj)
@@ -620,7 +620,7 @@ public class nop
   public void b()
   {
     c();
-    bkel.a().b(this);
+    bkis.a().b(this);
     this.jdField_a_of_type_AndroidContentContext = null;
   }
   
@@ -636,7 +636,7 @@ public class nop
       this.jdField_b_of_type_JavaUtilList.clear();
       this.jdField_b_of_type_JavaUtilList.add(paramqyj);
     }
-    bkel.a().a(localArrayList);
+    bkis.a().a(localArrayList);
     if (this.jdField_a_of_type_JavaUtilList.contains(paramqyj)) {
       this.jdField_a_of_type_JavaUtilList.remove(paramqyj);
     }
@@ -656,7 +656,7 @@ public class nop
   public void c(qyj paramqyj)
   {
     if ((paramqyj.jdField_a_of_type_Boolean) && (paramqyj.jdField_a_of_type_CooperationWadlIpcWadlParams != null)) {
-      bkel.a().a(0, paramqyj.jdField_a_of_type_JavaLangString);
+      bkis.a().a(0, paramqyj.jdField_a_of_type_JavaLangString);
     }
     do
     {
@@ -664,7 +664,7 @@ public class nop
       d(paramqyj);
       paramqyj = paramqyj.jdField_c_of_type_JavaLangString;
     } while (TextUtils.isEmpty(paramqyj));
-    bfgi.a().a(paramqyj);
+    bfkr.a().a(paramqyj);
   }
   
   public boolean c(qyj paramqyj)
@@ -692,7 +692,7 @@ public class nop
     if (paramqyj.jdField_a_of_type_CooperationWadlIpcWadlParams == null) {
       paramqyj.jdField_a_of_type_CooperationWadlIpcWadlParams = a(paramqyj);
     }
-    bkel.a().b(paramqyj.jdField_a_of_type_CooperationWadlIpcWadlParams);
+    bkis.a().b(paramqyj.jdField_a_of_type_CooperationWadlIpcWadlParams);
   }
   
   public void installSucceed(String paramString1, String paramString2)

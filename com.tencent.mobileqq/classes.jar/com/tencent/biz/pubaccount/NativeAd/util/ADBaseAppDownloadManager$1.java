@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.NativeAd.util;
 
-import bdee;
-import bfgi;
+import bdin;
+import bfkr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -28,8 +28,8 @@ public class ADBaseAppDownloadManager$1
       {
         QLog.d("ADBaseAppDownloadManager", 1, "already finishDownload." + this.a.d);
         this.this$0.a(this.a, 5, 100);
-        DownloadInfo localDownloadInfo = bfgi.a().c(this.a.jdField_a_of_type_JavaLangString);
-        bfgi.a().a(localDownloadInfo);
+        DownloadInfo localDownloadInfo = bfkr.a().c(this.a.jdField_a_of_type_JavaLangString);
+        bfkr.a().a(localDownloadInfo);
         return;
       }
       if (this.a.jdField_a_of_type_Boolean)
@@ -37,7 +37,7 @@ public class ADBaseAppDownloadManager$1
         nop.a(this.this$0, this.a);
         return;
       }
-      if (bdee.g(BaseApplicationImpl.getContext()))
+      if (bdin.g(BaseApplicationImpl.getContext()))
       {
         this.this$0.a(this.a, 0);
         return;

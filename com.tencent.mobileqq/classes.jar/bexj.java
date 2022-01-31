@@ -1,28 +1,38 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.open.agent.AuthorityAccountView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ObjectAnimator;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
 
 public class bexj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Animator.AnimatorListener
 {
-  public bexj(AuthorityAccountView paramAuthorityAccountView, ImageView paramImageView) {}
+  public bexj(FloatingScreenContainer paramFloatingScreenContainer) {}
   
-  public void onGlobalLayout()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    View localView = AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView).findViewById(2131361830);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
-    localLayoutParams.topMargin = (this.jdField_a_of_type_AndroidWidgetImageView.getHeight() / 2 + this.jdField_a_of_type_AndroidWidgetImageView.getTop() - localView.getHeight() / 2);
-    localView.setLayoutParams(localLayoutParams);
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      return;
+    FloatingScreenContainer.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    FloatingScreenContainer.a(this.a).removeAllListeners();
+    if (FloatingScreenContainer.a(this.a) != null) {
+      FloatingScreenContainer.a(this.a).b();
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    FloatingScreenContainer.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    FloatingScreenContainer.a(this.a, true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (FloatingScreenContainer.a(this.a) != null) {
+      FloatingScreenContainer.a(this.a).a();
+    }
+    FloatingScreenContainer.a(this.a, true);
   }
 }
 

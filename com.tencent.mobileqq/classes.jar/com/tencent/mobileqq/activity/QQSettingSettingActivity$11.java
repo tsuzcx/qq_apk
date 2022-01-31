@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import aloz;
+import alto;
 import com.tencent.mobileqq.data.Card;
 
 class QQSettingSettingActivity$11
   implements Runnable
 {
-  QQSettingSettingActivity$11(QQSettingSettingActivity paramQQSettingSettingActivity, aloz paramaloz, String paramString) {}
+  QQSettingSettingActivity$11(QQSettingSettingActivity paramQQSettingSettingActivity, alto paramalto, String paramString) {}
   
   public void run()
   {
-    Card localCard = this.jdField_a_of_type_Aloz.b(this.jdField_a_of_type_JavaLangString);
+    Card localCard = this.jdField_a_of_type_Alto.b(this.jdField_a_of_type_JavaLangString);
     this.this$0.runOnUiThread(new QQSettingSettingActivity.11.1(this, localCard));
   }
 }

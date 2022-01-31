@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.task;
 
-import alpo;
+import alud;
 import android.content.Context;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -34,7 +34,7 @@ public class GpkgLoadAsyncTask
       for (Object localObject = this.miniAppConfig.config;; localObject = "")
       {
         QLog.e(str, 1, localObject);
-        onTaskFailed(2002, alpo.a(2131705688));
+        onTaskFailed(2002, alud.a(2131705700));
         return;
       }
     }

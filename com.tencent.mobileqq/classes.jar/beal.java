@@ -1,114 +1,106 @@
+import QC.LoginInfo;
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.qq.jce.wup.UniPacket;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import tencent.aio.video.aio_video.ErrInfo;
-import tencent.aio.video.aio_video.RspGetUinByOpenId;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.manager.TicketManager;
 
-class beal
-  extends nac
+public class beal
 {
-  beal(beai parambeai, beao parambeao) {}
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<String, JceStruct> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private String b;
+  private String c = "req";
+  private String d = "rsp";
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public beal(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("urlSecMgr", 2, "receive getUinWithOpenID code=" + paramInt);
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString1;
+    if (!alpw.a().containsKey(paramString2)) {
+      alpw.a(paramString2, new int[] { 13 });
     }
-    Object localObject = "";
-    j = -1;
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      i = j;
-      paramBundle = (Bundle)localObject;
-      if (paramArrayOfByte != null) {
-        paramBundle = (Bundle)localObject;
-      }
+  }
+  
+  public beal(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString1;
+    if (!alpw.a().containsKey(paramString2)) {
+      alpw.a(paramString2, new int[] { 13 });
     }
+    this.c = paramString3;
+    this.d = paramString4;
+  }
+  
+  public static LoginInfo a()
+  {
     try
     {
-      aio_video.RspGetUinByOpenId localRspGetUinByOpenId = new aio_video.RspGetUinByOpenId();
-      paramBundle = (Bundle)localObject;
-      localRspGetUinByOpenId.mergeFrom(paramArrayOfByte);
-      paramBundle = (Bundle)localObject;
-      localObject = localRspGetUinByOpenId.err_info.err_msg.get().toStringUtf8();
-      paramBundle = (Bundle)localObject;
-      i = localRspGetUinByOpenId.err_info.err_code.get();
-      paramBundle = (Bundle)localObject;
+      Object localObject = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localObject == null) {
+        return null;
+      }
+      String str = ((AppInterface)localObject).getCurrentAccountUin();
+      localObject = ((TicketManager)((AppInterface)localObject).getManager(2)).getSkey(str);
+      LoginInfo localLoginInfo = new LoginInfo();
+      localLoginInfo.lUin = Long.parseLong(str);
+      localLoginInfo.iKeyType = 1;
+      localLoginInfo.sSKey = ((String)localObject);
+      localLoginInfo.iOpplat = 2;
+      localLoginInfo.sClientVer = bdgk.c();
+      return localLoginInfo;
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        label340:
-        i = j;
-        continue;
-        paramArrayOfByte = "";
-        paramInt = 0;
-      }
+      QLog.e("JceProtocol", 1, localException, new Object[0]);
     }
-    if (QLog.isColorLevel())
+    return null;
+  }
+  
+  public static String a(ToServiceMsg paramToServiceMsg)
+  {
+    return paramToServiceMsg.getServiceCmd() + "_" + paramToServiceMsg.extraData.get(aloy.SEQ_KEY);
+  }
+  
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, UniPacket paramUniPacket)
+  {
+    paramToServiceMsg = a(paramToServiceMsg);
+    ayym.a(paramToServiceMsg);
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramToServiceMsg))
     {
-      localObject = new StringBuilder().append("getUinWithOpenID error code=").append(paramInt);
-      if (paramArrayOfByte == null)
-      {
-        paramArrayOfByte = ", data=null";
-        QLog.i("urlSecMgr", 2, paramArrayOfByte);
-        paramArrayOfByte = "";
-        paramInt = 0;
-      }
-      for (;;)
-      {
-        if (this.jdField_a_of_type_Beao != null)
-        {
-          localObject = new Bundle();
-          if (paramInt != 0) {
-            i = 0;
-          }
-          ((Bundle)localObject).putInt("result", i);
-          ((Bundle)localObject).putString("errMsg", paramBundle);
-          ((Bundle)localObject).putString("retUin", paramArrayOfByte);
-          this.jdField_a_of_type_Beao.a((Bundle)localObject);
-        }
-        return;
-        paramArrayOfByte = ", msg=" + paramBundle + ", errCode=" + i;
-        break;
-        paramBundle = new aio_video.RspGetUinByOpenId();
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          long l = paramBundle.uin.get();
-          paramArrayOfByte = String.valueOf(l);
-        }
-        catch (InvalidProtocolBufferMicroException paramBundle)
-        {
-          try
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("urlSecMgr", 2, new Object[] { "getUinWithOpenID uin:", Long.valueOf(paramBundle.uin.get()) });
-            }
-            paramInt = 1;
-            i = j;
-            paramBundle = (Bundle)localObject;
-          }
-          catch (InvalidProtocolBufferMicroException paramBundle)
-          {
-            break label340;
-          }
-          paramBundle = paramBundle;
-          paramArrayOfByte = "";
-          if (QLog.isColorLevel()) {
-            QLog.i("urlSecMgr", 2, "parse error", paramBundle);
-          }
-          paramInt = 0;
-          i = j;
-          paramBundle = (Bundle)localObject;
-        }
-      }
+      paramFromServiceMsg = (JceStruct)this.jdField_a_of_type_JavaUtilHashMap.get(paramToServiceMsg);
+      this.jdField_a_of_type_JavaUtilHashMap.remove(paramToServiceMsg);
+      return paramUniPacket.getByClass(this.d, paramFromServiceMsg);
     }
+    return null;
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket, int paramInt)
+  {
+    paramUniPacket.setServantName(this.b);
+    paramUniPacket.setFuncName(paramToServiceMsg.extraData.getString("funcName"));
+    paramUniPacket.setRequestId(paramInt);
+    paramUniPacket.put(this.c, paramToServiceMsg.extraData.get("req"));
+  }
+  
+  public void a(String paramString, JceStruct paramJceStruct1, JceStruct paramJceStruct2, alpg paramalpg, boolean paramBoolean)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    paramalpg = ((amca)localQQAppInterface.a(13)).createToServiceMsg(this.jdField_a_of_type_JavaLangString, paramalpg, paramBoolean);
+    String str = a(paramalpg);
+    this.jdField_a_of_type_JavaUtilHashMap.put(str, paramJceStruct2);
+    ayym.a(this, str);
+    paramalpg.extraData.putSerializable("req", paramJceStruct1);
+    paramalpg.extraData.putString("funcName", paramString);
+    localQQAppInterface.sendToService(paramalpg);
   }
 }
 

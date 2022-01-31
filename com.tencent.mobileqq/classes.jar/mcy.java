@@ -16,10 +16,10 @@ class mcy
   mcy(LinearLayout paramLinearLayout)
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout.findViewById(2131372860));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131372857));
-    this.jdField_a_of_type_AndroidViewView = paramLinearLayout.findViewById(2131372861);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramLinearLayout.findViewById(2131372863));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout.findViewById(2131372886));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131372883));
+    this.jdField_a_of_type_AndroidViewView = paramLinearLayout.findViewById(2131372887);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramLinearLayout.findViewById(2131372889));
   }
   
   Resources a()

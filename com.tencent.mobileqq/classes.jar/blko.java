@@ -1,6 +1,6 @@
-public abstract interface blko
+class blko
 {
-  public abstract void a(int paramInt);
+  public static blkl a = new blkl(null);
 }
 
 

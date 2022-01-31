@@ -1,6 +1,17 @@
-public abstract interface bcnf
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+
+public class bcnf
+  implements aqxn
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public bcnf(TroopFileTransferManager paramTroopFileTransferManager, TroopFileTransferManager.Item paramItem) {}
+  
+  public void a() {}
+  
+  public void b()
+  {
+    aqxi.a(new arjc(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.e)));
+  }
 }
 
 

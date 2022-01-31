@@ -1,46 +1,34 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.UploadTask;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.MessageForPLNews;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
-public class afws
-  implements ajxy
+class afws
+  implements View.OnClickListener
 {
-  public afws(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
+  afws(afwr paramafwr, MessageForPLNews paramMessageForPLNews, String paramString) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    ShortVideoRealItemBuilder localShortVideoRealItemBuilder = this.a;
-    if (ShortVideoRealItemBuilder.a(this.a) != null) {}
-    for (long l = ShortVideoRealItemBuilder.a(this.a).uniseq;; l = -1L)
-    {
-      ShortVideoRealItemBuilder.a(localShortVideoRealItemBuilder, l);
+    paramView = (afwt)paramView.getTag();
+    if (paramView == null) {
       return;
     }
-  }
-  
-  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
-  {
-    if (QLog.isColorLevel())
-    {
-      paramArrayOfByte2 = new StringBuilder().append("onEncodeSuccess curMsg:");
-      if (ShortVideoRealItemBuilder.a(this.a) == null) {
-        break label120;
-      }
+    paramView = new ProfileActivity.AllInOne(paramView.jdField_a_of_type_JavaLangString, 1);
+    Intent localIntent = new Intent(this.jdField_a_of_type_Afwr.jdField_a_of_type_AndroidContentContext, PersonalityLabelGalleryActivity.class);
+    localIntent.putExtra("personality_label_allinone", paramView);
+    localIntent.putExtra("fromType", 2);
+    localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPLNews.frienduin);
+    localIntent.putExtra("nickname", this.jdField_a_of_type_JavaLangString);
+    if (!(this.jdField_a_of_type_Afwr.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+      localIntent.addFlags(268435456);
     }
-    label120:
-    for (paramString2 = Long.valueOf(ShortVideoRealItemBuilder.a(this.a).uniseq);; paramString2 = "")
-    {
-      QLog.i("ShortVideoRealItemBuilder", 2, paramString2);
-      if (ShortVideoRealItemBuilder.a(this.a) == null) {
-        break;
-      }
-      ShortVideoRealItemBuilder.a(this.a).md5 = HexUtil.bytes2HexStr(paramArrayOfByte1);
-      new ShortVideoRealItemBuilder.UploadTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, ShortVideoRealItemBuilder.a(this.a), paramString1, this.a).run();
-      return;
-    }
-    axsh.a(new RuntimeException("onMediaMessageSend failed"));
+    this.jdField_a_of_type_Afwr.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    azqs.b(this.jdField_a_of_type_Afwr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "3", "", "");
   }
 }
 

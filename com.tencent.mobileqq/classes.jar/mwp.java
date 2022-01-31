@@ -27,7 +27,7 @@ class mwp
     localLayoutParams.addRule(15, -1);
     localLayoutParams.addRule(11, -1);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841915);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841928);
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(15, -1);
@@ -42,7 +42,7 @@ class mwp
     addView(this.jdField_a_of_type_AndroidWidgetTextView);
     addView(this.jdField_a_of_type_AndroidWidgetImageView);
     setBackgroundResource(2130837556);
-    setId(2131369140);
+    setId(2131369158);
     setMinimumHeight(paramContext.getResources().getDimensionPixelSize(2131296614));
   }
   

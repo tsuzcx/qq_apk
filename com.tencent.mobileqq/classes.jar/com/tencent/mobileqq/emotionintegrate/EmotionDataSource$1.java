@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import apvv;
-import apvy;
-import apvz;
+import aqae;
+import aqah;
+import aqai;
 import java.util.List;
 
 public class EmotionDataSource$1
   implements Runnable
 {
-  public EmotionDataSource$1(apvy paramapvy, boolean paramBoolean, apvz paramapvz, apvv paramapvv) {}
+  public EmotionDataSource$1(aqah paramaqah, boolean paramBoolean, aqai paramaqai, aqae paramaqae) {}
   
   public void run()
   {
     List localList = this.this$0.a(this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_Apvz != null) {
-      this.jdField_a_of_type_Apvz.a(localList, this.jdField_a_of_type_Apvv);
+    if (this.jdField_a_of_type_Aqai != null) {
+      this.jdField_a_of_type_Aqai.a(localList, this.jdField_a_of_type_Aqae);
     }
   }
 }

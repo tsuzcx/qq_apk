@@ -1,8 +1,20 @@
-import android.hardware.Camera;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface axnm
+public class axnm
 {
-  public abstract void a(byte[] paramArrayOfByte, Camera paramCamera);
+  public static int a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, "##" + paramString2);
+    }
+    return 0;
+  }
+  
+  public static int b(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 2, "##" + paramString2);
+    return 0;
+  }
 }
 
 

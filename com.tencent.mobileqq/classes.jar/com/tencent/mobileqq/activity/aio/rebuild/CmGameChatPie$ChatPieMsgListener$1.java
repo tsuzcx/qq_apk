@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agjp;
-import agkb;
-import agkc;
+import agoe;
+import agoq;
+import agor;
 
 public class CmGameChatPie$ChatPieMsgListener$1
   implements Runnable
 {
-  public CmGameChatPie$ChatPieMsgListener$1(agkb paramagkb, agjp paramagjp, String paramString, agkc paramagkc) {}
+  public CmGameChatPie$ChatPieMsgListener$1(agoq paramagoq, agoe paramagoe, String paramString, agor paramagor) {}
   
   public void run()
   {
-    agjp.a(this.jdField_a_of_type_Agjp, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agkc, this.jdField_a_of_type_Agkc.c);
+    agoe.a(this.jdField_a_of_type_Agoe, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agor, this.jdField_a_of_type_Agor.c);
   }
 }
 

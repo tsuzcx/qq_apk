@@ -1,27 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class adqs
-  extends alka
+  implements bhuk
 {
-  public adqs(RewardNoticeActivity paramRewardNoticeActivity) {}
+  public adqs(QQLSActivity paramQQLSActivity, MessageForPtt paramMessageForPtt, bhuf parambhuf) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramBoolean)
+    acjm.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    paramView = acjm.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), new SessionInfo(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    if (paramView != null) {}
+    try
     {
-      if (!TextUtils.isEmpty(this.a.f)) {
-        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
-      }
-      if (this.a.a == 13) {
-        this.a.b();
-      }
-      this.a.finish();
+      ((MessageForPtt)paramView).c2cViaOffline = true;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("DiyTextId", paramView.vipBubbleDiyTextId);
+      acjm.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath(), paramView.uniseq, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength * 1000, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.d();
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
     }
-    QQToast.a(this.a.app.getApp(), 1, alpo.a(2131713825), 0).a();
+    catch (RuntimeException paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, paramView.getMessage(), 0).a();
+      }
+    }
   }
 }
 

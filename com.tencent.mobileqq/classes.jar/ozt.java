@@ -34,7 +34,7 @@ public class ozt
       localJSONObject.put("feeds_type", "" + ors.a(paramBaseArticleInfo));
       localJSONObject.put("rowkey", szp.a(paramBaseArticleInfo));
       paramBaseArticleInfo = localJSONObject.toString();
-      nrt.a(null, "", "0X8009990", "0X8009990", 0, 0, "4", "", alpo.a(2131713518), paramBaseArticleInfo, false);
+      nrt.a(null, "", "0X8009990", "0X8009990", 0, 0, "4", "", alud.a(2131713530), paramBaseArticleInfo, false);
       return;
     }
     catch (Exception paramBaseArticleInfo) {}

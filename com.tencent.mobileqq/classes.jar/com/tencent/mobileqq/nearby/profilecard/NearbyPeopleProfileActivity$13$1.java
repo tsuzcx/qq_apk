@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import avft;
-import avgj;
+import avkc;
+import avks;
 
 public class NearbyPeopleProfileActivity$13$1
   implements Runnable
 {
-  public NearbyPeopleProfileActivity$13$1(avft paramavft) {}
+  public NearbyPeopleProfileActivity$13$1(avkc paramavkc) {}
   
   public void run()
   {

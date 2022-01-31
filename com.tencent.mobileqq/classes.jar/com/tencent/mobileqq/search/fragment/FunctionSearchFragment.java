@@ -2,11 +2,11 @@ package com.tencent.mobileqq.search.fragment;
 
 import android.os.Bundle;
 import android.view.View;
-import aydn;
-import ayfe;
-import aygg;
-import aygh;
-import aypx;
+import ayhw;
+import ayjn;
+import aykp;
+import aykq;
+import ayug;
 import com.tencent.widget.ListView;
 import cooperation.qqfav.globalsearch.FunctionSearchEngine;
 
@@ -23,19 +23,19 @@ public class FunctionSearchFragment
     return 120;
   }
   
-  protected ayfe a()
+  protected ayjn a()
   {
-    return new aygh(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bcws);
+    return new aykq(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb);
   }
   
-  protected aypx a()
+  protected ayug a()
   {
     return new FunctionSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1);
   }
   
   protected String a()
   {
-    return aydn.a();
+    return ayhw.a();
   }
   
   protected void a(String paramString, int paramInt)
@@ -46,7 +46,7 @@ public class FunctionSearchFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new aygg(this));
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new aykp(this));
   }
 }
 

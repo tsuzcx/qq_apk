@@ -1,32 +1,53 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.ListView;
 
-class afcr
-  implements bcwt
+public class afcr
+  implements affa
 {
-  afcr(afco paramafco) {}
+  private afcs jdField_a_of_type_Afcs;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public afcr(BaseChatPie paramBaseChatPie)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    for (;;)
-    {
-      return;
-      if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-        afco.b(this.a).setImageBitmap(paramBitmap);
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("intimate_relationship", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
-        return;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-          afco.a(this.a).setImageBitmap(paramBitmap);
-        }
-      }
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+  }
+  
+  private ListView a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof agso)) {
+      return ((agso)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a();
     }
+    return this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+    case 2: 
+    case 6: 
+    case 17: 
+      do
+      {
+        return;
+        this.jdField_a_of_type_Afcs = new afcs();
+        return;
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Afcs.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
+        return;
+      } while (!this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Afcs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Afcs = null;
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 2, 6, 11, 17 };
   }
 }
 

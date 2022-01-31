@@ -1,168 +1,95 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Build.VERSION;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import android.os.Looper;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.utils.PerformanceReportUtils.1;
-import com.tencent.mobileqq.utils.PerformanceReportUtils.3;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class bdeq
 {
-  private static long jdField_a_of_type_Long = 14400000L;
-  private static String jdField_a_of_type_JavaLangString = "uiswitchinterval";
-  static String[] jdField_a_of_type_ArrayOfJavaLangString = { jdField_e_of_type_JavaLangString, jdField_f_of_type_JavaLangString, jdField_g_of_type_JavaLangString, jdField_h_of_type_JavaLangString, i, j, k };
-  private static long jdField_b_of_type_Long;
-  private static String jdField_b_of_type_JavaLangString = "uiswitchflag";
-  private static long jdField_c_of_type_Long;
-  private static String jdField_c_of_type_JavaLangString = "fpsinterval";
-  private static long jdField_d_of_type_Long;
-  private static String jdField_d_of_type_JavaLangString = "fpsflag";
-  private static long jdField_e_of_type_Long;
-  private static String jdField_e_of_type_JavaLangString = "actUISwitchC2C";
-  private static long jdField_f_of_type_Long;
-  private static String jdField_f_of_type_JavaLangString = "actUISwitchGroup";
-  private static long jdField_g_of_type_Long;
-  private static String jdField_g_of_type_JavaLangString = "actUISwitchDiscuss";
-  private static long jdField_h_of_type_Long;
-  private static String jdField_h_of_type_JavaLangString = "actUISwitchQzone";
-  private static String i = "actUISwitchUserAlbum";
-  private static String j = "actUISwitchQunAlbum";
-  private static String k = "actUISwitchUserHome";
-  private static String l = "actUISwitchPushBannerMyfeed";
-  private static String m = "actUISwitchNotificationMyfeed";
-  private static String n = "actUISwitchMyfeed";
-  private static String o = "actUISwitchAioPreload";
-  private static String p = "";
+  private static int jdField_a_of_type_Int = 1;
+  private static Handler jdField_a_of_type_AndroidOsHandler = new bder(ThreadManager.getSubThreadLooper());
+  private static bhsk<Integer> jdField_a_of_type_Bhsk = new bhsk(40);
   
-  public static String a()
+  public static void a(boolean paramBoolean)
   {
-    long l2 = 0L;
-    if (fx.c) {
-      l2 = 0L | 0x200;
-    }
-    long l1 = l2;
-    if (BubbleManager.a) {
-      l1 = l2 | 0x100;
-    }
-    l2 = l1;
-    if (AvatarPendantManager.b) {
-      l2 = l1 | 0x400;
-    }
-    return String.valueOf(l2);
-  }
-  
-  public static void a()
-  {
-    fx.c = false;
-    AvatarPendantManager.b = false;
-    BubbleManager.a = false;
-    ansd.a().d();
-    ThreadManager.executeOnSubThread(new PerformanceReportUtils.3());
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt, long paramLong)
-  {
-    ThreadManager.post(new PerformanceReportUtils.1(paramInt, paramLong, paramString), 8, null, false);
-  }
-  
-  public static void a(Intent paramIntent, int paramInt, String paramString)
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = paramIntent.getLongExtra("key_time_record", -1L);
-    if (l2 != -1L)
+    Handler localHandler = jdField_a_of_type_AndroidOsHandler;
+    if (paramBoolean) {}
+    for (int i = 2;; i = 1)
     {
-      paramIntent.removeExtra("key_time_record");
-      a(BaseApplicationImpl.getContext(), paramString, paramInt, l1 - l2);
-    }
-  }
-  
-  public static void a(String paramString1, int paramInt, String paramString2)
-  {
-    new bder(paramString1, paramInt, paramString2).execute(new Void[0]);
-  }
-  
-  public static void a(String paramString, long paramLong)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PerformanceReportUtils", 4, "reportFPS saveCompleteTime ：tag:" + paramString + ",time:" + paramLong);
-    }
-    if ("actFPSAIO".equals(paramString)) {
-      jdField_b_of_type_Long = paramLong;
-    }
-    do
-    {
+      localHandler.sendEmptyMessage(i);
       return;
-      if ("actFPSRecent".equals(paramString))
-      {
-        jdField_c_of_type_Long = paramLong;
-        return;
-      }
-      if ("actFPSFriend".equals(paramString))
-      {
-        jdField_d_of_type_Long = paramLong;
-        return;
-      }
-      if ("actFPSQZoneFriendFeed".equals(paramString))
-      {
-        jdField_e_of_type_Long = paramLong;
-        return;
-      }
-      if ("actFPSQZoneMyFeed".equals(paramString))
-      {
-        jdField_f_of_type_Long = paramLong;
-        return;
-      }
-      if ("actFPSQZoneUserHome".equals(paramString))
-      {
-        jdField_g_of_type_Long = paramLong;
-        return;
-      }
-    } while (!"actFPSQZoneMoodList".equals(paramString));
-    jdField_h_of_type_Long = paramLong;
-  }
-  
-  private static SharedPreferences b()
-  {
-    BaseApplication localBaseApplication = BaseApplication.getContext();
-    if (Build.VERSION.SDK_INT > 10) {}
-    for (int i1 = 4;; i1 = 0) {
-      return localBaseApplication.getSharedPreferences("PerformanceReportUtils", i1);
     }
   }
   
-  private static boolean b(String paramString)
+  private static Thread[] a()
   {
-    long l1;
-    if ("actFPSAIO".equals(paramString)) {
-      l1 = jdField_b_of_type_Long;
+    try
+    {
+      ThreadGroup localThreadGroup = Thread.currentThread().getThreadGroup();
+      Thread[] arrayOfThread = new Thread[localThreadGroup.activeCount()];
+      localThreadGroup.enumerate(arrayOfThread);
+      return arrayOfThread;
     }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ThreadPriorityManager", 2, "", localException);
+      }
+    }
+    return new Thread[0];
+  }
+  
+  private static void c()
+  {
+    jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 30000L);
+    if (jdField_a_of_type_Bhsk.a() > 0) {}
     for (;;)
     {
-      if (l1 == 0L) {}
-      while ((float)(SystemClock.uptimeMillis() - l1) / 1000.0F >= 10.0F)
+      return;
+      Thread[] arrayOfThread = a();
+      if (arrayOfThread.length < 2)
       {
-        return false;
-        if ("actFPSRecent".equals(paramString))
-        {
-          l1 = jdField_c_of_type_Long;
-          break;
-        }
-        if (!"actFPSFriend".equals(paramString)) {
-          break label72;
-        }
-        l1 = jdField_d_of_type_Long;
-        break;
+        jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+        return;
       }
-      return true;
-      label72:
-      l1 = 0L;
+      Thread localThread1 = Looper.getMainLooper().getThread();
+      Thread localThread2 = ThreadManager.getSubThread();
+      int j = arrayOfThread.length;
+      int i = 0;
+      while (i < j)
+      {
+        Thread localThread3 = arrayOfThread[i];
+        if ((localThread3 != null) && (localThread1 != null) && (localThread2 != null) && (localThread3.getId() != localThread2.getId()) && (localThread3.getId() != localThread1.getId()) && (localThread3.isAlive()))
+        {
+          jdField_a_of_type_Bhsk.a(localThread3.getId(), Integer.valueOf(localThread3.getPriority()));
+          localThread3.setPriority(jdField_a_of_type_Int);
+        }
+        i += 1;
+      }
     }
+  }
+  
+  private static void d()
+  {
+    if (jdField_a_of_type_Bhsk.a() <= 0) {
+      return;
+    }
+    Thread[] arrayOfThread = a();
+    int j = arrayOfThread.length;
+    int i = 0;
+    while (i < j)
+    {
+      Thread localThread = arrayOfThread[i];
+      if ((localThread != null) && (localThread.isAlive()))
+      {
+        int k = ((Integer)jdField_a_of_type_Bhsk.a(localThread.getId(), Integer.valueOf(0))).intValue();
+        if (k != 0) {
+          localThread.setPriority(k);
+        }
+      }
+      i += 1;
+    }
+    jdField_a_of_type_Bhsk.a();
   }
 }
 

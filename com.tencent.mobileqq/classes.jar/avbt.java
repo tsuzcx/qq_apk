@@ -1,43 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.nearby.now.view.SplitedProgressBar;
+import java.security.InvalidParameterException;
 
-class avbt
-  implements avcb
+public class avbt
 {
-  avbt(avbo paramavbo) {}
+  private SplitedProgressBar a;
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public avbt(SplitedProgressBar paramSplitedProgressBar)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("VideoPlayerView", 2, "OnDownloadListener error ! vid = " + paramString1 + "  url = " + paramString2 + "  errorCode=" + paramInt);
+    if (paramSplitedProgressBar == null) {
+      throw new InvalidParameterException("ProgressControler: progressBar is null");
     }
-    if (this.a.jdField_a_of_type_Avah != null) {
-      this.a.jdField_a_of_type_Avah.a(paramString1, 199, paramInt, "use sdk download error");
+    this.a = paramSplitedProgressBar;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 0) {
+      return;
+    }
+    this.a.setTotalCount(paramInt);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 < this.a.b) {
+      this.a.setProgress(paramInt1, paramInt2);
     }
   }
   
-  public void a(String paramString1, String paramString2, long paramLong)
+  public void a(boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("VideoPlayerView", 2, "OnDownloadListener onProgress   ! vid = " + paramString1 + "  url = " + paramString2 + "  offset=" + paramLong2);
-    }
-    this.a.jdField_a_of_type_Long = paramLong1;
-    if (paramLong2 > this.a.b) {
-      this.a.b = paramLong2;
+    SplitedProgressBar localSplitedProgressBar = this.a;
+    if (paramBoolean) {}
+    for (int i = 8;; i = 0)
+    {
+      localSplitedProgressBar.setVisibility(i);
+      return;
     }
   }
   
-  public void a(String paramString1, String paramString2, File paramFile)
+  public void b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "OnDownloadListener onSuccess ! vid = " + paramString1 + "  url = " + paramString2);
+    if (paramInt == 0) {
+      return;
     }
-    avbo.a(paramFile);
+    this.a.setShowMaxCount(paramInt);
   }
 }
 

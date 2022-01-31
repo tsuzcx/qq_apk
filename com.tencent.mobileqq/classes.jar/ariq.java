@@ -1,36 +1,9 @@
-import android.graphics.drawable.Drawable;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import java.util.List;
 
-class ariq
-  implements arcg
+public abstract interface ariq
 {
-  ariq(arin paramarin) {}
-  
-  public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    arin.a(this.a, paramBoolean);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Ardo != null)) {
-      this.a.jdField_a_of_type_Ardo.a();
-    }
-    if (paramBoolean)
-    {
-      if (this.a.jdField_a_of_type_Arfz.e() == 10) {
-        ardu.a(this.a.jdField_a_of_type_Arfz.c());
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Arfz.d(), this);
-      arin.b(this.a, true);
-      arin.a(this.a);
-      this.a.d = false;
-    }
-  }
+  public abstract void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList);
 }
 
 

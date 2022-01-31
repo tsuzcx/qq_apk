@@ -1,18 +1,33 @@
-public abstract interface axpo
+class axpo
 {
-  public abstract void a(int paramInt, Throwable paramThrowable);
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int b;
   
-  public abstract void a(long paramLong);
+  public axpo(axpn paramaxpn, String paramString, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
   
-  public abstract void b(long paramLong);
+  public int a()
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      return this.b * 100 / this.jdField_a_of_type_Int;
+    }
+    return 0;
+  }
   
-  public abstract void f();
+  public void a()
+  {
+    this.b += 1;
+  }
   
-  public abstract void g();
-  
-  public abstract void i();
-  
-  public abstract void l();
+  public void b()
+  {
+    this.jdField_a_of_type_Int += 1;
+  }
 }
 
 

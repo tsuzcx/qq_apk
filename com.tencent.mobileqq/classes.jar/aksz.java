@@ -1,12 +1,14 @@
-import org.json.JSONObject;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
 
-public abstract interface aksz
+public class aksz
+  implements aktf
 {
-  public abstract String a();
+  public aksz(CmGameDebugView paramCmGameDebugView) {}
   
-  public abstract JSONObject a(aksy paramaksy, JSONObject paramJSONObject);
-  
-  public abstract int c();
+  public void a()
+  {
+    this.a.b();
+  }
 }
 
 

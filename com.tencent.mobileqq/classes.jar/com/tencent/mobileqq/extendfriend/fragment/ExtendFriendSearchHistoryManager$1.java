@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import aqao;
+import aqex;
 
 public class ExtendFriendSearchHistoryManager$1
   implements Runnable
 {
-  public ExtendFriendSearchHistoryManager$1(aqao paramaqao) {}
+  public ExtendFriendSearchHistoryManager$1(aqex paramaqex) {}
   
   public void run()
   {
-    aqao.a(this.this$0);
+    aqex.a(this.this$0);
   }
 }
 

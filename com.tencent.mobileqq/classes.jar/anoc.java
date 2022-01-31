@@ -1,28 +1,14 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
 
-class anoc
-  implements Animator.AnimatorListener
+final class anoc
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  anoc(annx paramannx, View paramView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    this.jdField_a_of_type_Annx.l();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Annx.l();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Annx.e) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp.ArkAppCenterUtil", 2, new Object[] { "preDownloadArkApp download complete,retCode: ", Integer.valueOf(paramInt), ";msg: ", paramString });
     }
   }
 }

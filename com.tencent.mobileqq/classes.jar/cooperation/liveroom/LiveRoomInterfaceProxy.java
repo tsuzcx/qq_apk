@@ -2,7 +2,7 @@ package cooperation.liveroom;
 
 import android.content.Intent;
 import android.os.Bundle;
-import awbx;
+import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.remote.SimpleAccount;
@@ -79,7 +79,7 @@ public class LiveRoomInterfaceProxy
     return this.mRuntime.getDevLockIntent();
   }
   
-  public awbx getEntityManagerFactory(String paramString)
+  public awgg getEntityManagerFactory(String paramString)
   {
     return this.mRuntime.getQQEntityManagerFactory();
   }

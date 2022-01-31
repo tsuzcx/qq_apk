@@ -1,30 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.VideoCompositeRec.1;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class uko
-  extends QQUIEventReceiver<ukd, ulg>
+class uko
+  implements View.OnClickListener
 {
-  public uko(@NonNull ukd paramukd)
-  {
-    super(paramukd);
-  }
+  uko(ukl paramukl) {}
   
-  public void a(@NonNull ukd paramukd, @NonNull ulg paramulg)
+  public void onClick(View paramView)
   {
-    if (paramulg.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      wsv.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "get event update  vid:%s video path:%s", paramulg.jdField_a_of_type_JavaLangString, paramulg.b);
-      Bosses.get().postLightWeightJob(new StoryVideoUploadManager.VideoCompositeRec.1(this, paramukd, paramulg), 0);
+    if (ukl.a(this.a) != null) {
+      ukl.a(this.a).a(ukl.a(this.a));
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return ulg.class;
   }
 }
 

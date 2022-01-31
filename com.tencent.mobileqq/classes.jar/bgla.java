@@ -1,34 +1,59 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AuthDevUgActivity;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import com.tencent.qqconnect.wtlogin.Login;
+import cooperation.qqfav.util.HandlerPlus;
 
 public class bgla
+  implements View.OnClickListener
 {
-  public static void a(String paramString, JSONObject paramJSONObject, int paramInt)
+  public bgla(Login paramLogin) {}
+  
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetButton)
     {
-    case -4: 
-    default: 
-    case -5: 
-      try
-      {
-        paramJSONObject.put("errMsg", "unknown reason");
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        QMLog.e("MiniappHttpUtil", "fillErrMsg", paramString);
-        return;
-      }
-      if (TextUtils.isEmpty(paramString)) {}
-      for (paramString = "abort";; paramString = paramString + ":fail abort")
-      {
-        paramJSONObject.put("errMsg", paramString);
-        return;
-      }
+      AuthDevUgActivity.a(4);
+      this.a.b();
     }
-    paramJSONObject.put("errMsg", "request protocol error");
+    do
+    {
+      return;
+      if (paramView == this.a.c)
+      {
+        paramView = (InputMethodManager)this.a.getSystemService("input_method");
+        if (paramView != null) {
+          paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+        }
+        paramView = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+        paramView.what = 0;
+        this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessageDelayed(paramView, 100L);
+        return;
+      }
+      if (paramView == this.a.jdField_a_of_type_AndroidViewView)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+        return;
+      }
+      if (paramView == this.a.jdField_b_of_type_AndroidViewView)
+      {
+        this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
+        return;
+      }
+      if (paramView == this.a.jdField_a_of_type_AndroidWidgetTextView)
+      {
+        paramView = new Intent(this.a, LoginPhoneNumActivity2.class);
+        paramView.putExtra("key_req_src", this.a.jdField_a_of_type_Int);
+        this.a.startActivityForResult(paramView, 10000);
+        return;
+      }
+    } while (paramView != this.a.jdField_b_of_type_AndroidWidgetTextView);
+    this.a.e();
   }
 }
 

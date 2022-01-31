@@ -2,8 +2,8 @@ package com.tencent.mobileqq.vashealth;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bdug;
-import bduj;
+import bdyp;
+import bdys;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -15,11 +15,11 @@ class StepAlarmReceiver$2
   
   public void run()
   {
-    String str = String.valueOf(bdug.a());
+    String str = String.valueOf(bdyp.a());
     if ((!TextUtils.isEmpty(StepAlarmReceiver.jdField_a_of_type_JavaLangString)) && (!str.equals(StepAlarmReceiver.jdField_a_of_type_JavaLangString))) {
-      bdug.jdField_a_of_type_Float = 0.0F;
+      bdyp.jdField_a_of_type_Float = 0.0F;
     }
-    Object localObject = bduj.a();
+    Object localObject = bdys.a();
     if (((SharedPreferences)localObject).getBoolean("config_ready", false))
     {
       this.this$0.jdField_a_of_type_Long = ((SharedPreferences)localObject).getInt("max_interval", 0);
@@ -28,7 +28,7 @@ class StepAlarmReceiver$2
     StepAlarmReceiver.jdField_a_of_type_JavaLangString = str;
     try
     {
-      localObject = bdug.a();
+      localObject = bdyp.a();
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         return;
       }
@@ -36,14 +36,14 @@ class StepAlarmReceiver$2
       int i = ((JSONObject)localObject).getInt(str + "_total");
       int j = ((JSONObject)localObject).getInt(str + "_init");
       float f1 = ((JSONObject)localObject).getInt(str + "_offset") + (i - j);
-      float f2 = bdug.jdField_a_of_type_Float;
+      float f2 = bdyp.jdField_a_of_type_Float;
       long l1 = NetConnInfoCenter.getServerTimeMillis();
-      long l2 = bdug.jdField_a_of_type_Long;
+      long l2 = bdyp.jdField_a_of_type_Long;
       str = ((JSONObject)localObject).toString();
       QLog.i("StepAlarmReceiver", 1, "receiver long time report max report steps:" + this.this$0.jdField_a_of_type_Int + ",report interval:" + this.this$0.jdField_a_of_type_Long);
       if ((f1 - f2 > this.this$0.jdField_a_of_type_Int) || (l1 - l2 > this.this$0.jdField_a_of_type_Long))
       {
-        bdug.a(str);
+        bdyp.a(str);
         return;
       }
     }

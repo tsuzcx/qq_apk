@@ -1,14 +1,6 @@
-import android.os.Bundle;
-
-class yoj
-  implements ymm
+public abstract interface yoj
 {
-  yoj(yoi paramyoi) {}
-  
-  public void callback(Bundle paramBundle)
-  {
-    this.a.a.a.b();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

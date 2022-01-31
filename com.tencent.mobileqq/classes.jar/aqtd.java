@@ -1,16 +1,14 @@
-public abstract interface aqtd
+abstract class aqtd
 {
-  public abstract void a(int paramInt, String paramString);
+  aqtd(aqsf paramaqsf) {}
   
-  public abstract void a(String paramString1, String paramString2);
+  abstract void a(String paramString, int paramInt);
   
-  public abstract void aJ_();
-  
-  public abstract void aK_();
+  abstract void a(String paramString, int paramInt, aqtc paramaqtc);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqtd
  * JD-Core Version:    0.7.0.1
  */

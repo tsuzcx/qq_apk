@@ -1,13 +1,22 @@
-import android.view.View;
+import android.graphics.Bitmap;
 
-class awmv
-  implements bhqd
+public class awmv
 {
-  awmv(awmt paramawmt) {}
+  public float a;
+  public int a;
+  public Bitmap a;
+  public float b;
+  public int b;
+  public float c = 0.0F;
+  public float d = 0.0F;
+  public float e;
   
-  public void OnClick(View paramView, int paramInt)
+  private awmv()
   {
-    awmt.a(this.a, paramInt);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
   }
 }
 

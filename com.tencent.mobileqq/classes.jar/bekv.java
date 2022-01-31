@@ -1,83 +1,37 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.mobileqq.widget.MeasureGridView;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bekv
-  extends BaseAdapter
+  implements bela
 {
-  public bekv(DraggableGridView paramDraggableGridView) {}
+  public bekv(WebSoService paramWebSoService, long paramLong, WebSoService.WebSoState paramWebSoState, Handler paramHandler, String paramString) {}
   
-  public int getCount()
+  public void a(String paramString)
   {
-    if (DraggableGridView.a(this.a) != null) {
-      return DraggableGridView.a(this.a).a() * 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("WebSoService", 2, "verifyHtmlData cost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((DraggableGridView.a(this.a) != null) && (paramInt % 2 == 0)) {
-      return DraggableGridView.a(this.a).a(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt % 2 == 0) {
-      return DraggableGridView.a(this.a).b(paramInt / 2) + 1;
-    }
-    return DraggableGridView.a();
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (getItemViewType(paramInt) == DraggableGridView.a())
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 2))
     {
-      if (paramView == null)
-      {
-        paramViewGroup = (MeasureGridView)LayoutInflater.from(this.a.getContext()).inflate(2131560409, paramViewGroup, false);
-        paramViewGroup.setClickable(false);
-        paramViewGroup.setNumColumns(DraggableGridView.a(this.a));
-        paramViewGroup.setAdapter(new bekw(this.a, paramInt / 2));
-        paramView = paramViewGroup;
-      }
-      for (;;)
-      {
-        paramViewGroup.setTag(Integer.valueOf(paramInt / 2));
-        localObject = paramView;
-        return localObject;
-        paramViewGroup = (MeasureGridView)paramView;
-        ((bekw)paramViewGroup.getAdapter()).a(paramInt / 2);
-      }
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Bekm.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = true;
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e = false;
+      belc.a("load from cache");
+      WebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
     }
-    if (paramView == null) {
-      paramView = DraggableGridView.a(this.a).a(LayoutInflater.from(this.a.getContext()), paramInt / 2, paramViewGroup);
-    }
-    for (paramViewGroup = paramView;; paramViewGroup = paramView)
+    if (!TextUtils.isEmpty(paramString))
     {
-      localObject = paramViewGroup;
-      if (DraggableGridView.a(this.a) == null) {
-        break;
-      }
-      DraggableGridView.a(this.a).a(paramView, paramInt / 2);
-      return paramViewGroup;
+      VipUtils.a(null, "webview_report", "0X8006566", "0X8006566", 0, 1, new String[] { this.jdField_a_of_type_JavaLangString });
+      return;
     }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return DraggableGridView.a(this.a).b() + 1;
+    VipUtils.a(null, "webview_report", "0X8006566", "0X8006566", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString });
   }
 }
 

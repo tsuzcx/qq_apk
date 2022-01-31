@@ -1,11 +1,15 @@
-class asxs
-  implements asyg
+import android.graphics.ColorMatrixColorFilter;
+import com.tencent.mobileqq.identification.IdentificationPoseReflect.3.1;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYTReflectListener;
+
+public class asxs
+  implements YtSDKKitFramework.IYTReflectListener
 {
   asxs(asxr paramasxr) {}
   
-  public void a(int paramInt)
+  public void onReflectEvent(ColorMatrixColorFilter paramColorMatrixColorFilter)
   {
-    this.a.a(this.a.d, paramInt);
+    asxr.a(this.a, new IdentificationPoseReflect.3.1(this, paramColorMatrixColorFilter));
   }
 }
 

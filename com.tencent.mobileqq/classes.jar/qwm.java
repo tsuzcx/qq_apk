@@ -17,12 +17,12 @@ public class qwm
   
   protected Boolean a(Void... paramVarArgs)
   {
-    return Boolean.valueOf(xmn.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString));
+    return Boolean.valueOf(xqw.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString));
   }
   
   public void a()
   {
-    executeOnExecutor(alza.a(64), null);
+    executeOnExecutor(amdp.a(64), null);
   }
   
   public void a(URLDrawable.DownloadListener paramDownloadListener)

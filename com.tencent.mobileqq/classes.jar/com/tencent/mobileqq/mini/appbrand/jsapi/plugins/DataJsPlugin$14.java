@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import Wallet.FocusMpIdRsp;
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -21,10 +21,10 @@ class DataJsPlugin$14
     if ((paramBundle == null) || (paramBundle.err_code != 0))
     {
       this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
-      QQToast.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, 0, alpo.a(2131703113), 1).b(this.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131298914));
+      QQToast.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, 0, alud.a(2131703125), 1).b(this.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131298914));
       return;
     }
-    QQToast.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, 0, alpo.a(2131703117), 1).b(this.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131298914));
+    QQToast.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, 0, alud.a(2131703129), 1).b(this.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131298914));
     this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
   }
 }

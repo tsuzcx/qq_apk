@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.location.ui;
 
-import atpb;
+import attk;
 
 class LocationShareFragment$3
   implements Runnable
@@ -9,7 +9,7 @@ class LocationShareFragment$3
   
   public void run()
   {
-    atpb.a(this.this$0.getActivity());
+    attk.a(this.this$0.getActivity());
   }
 }
 

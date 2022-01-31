@@ -1,28 +1,28 @@
+import java.util.Comparator;
+
 class aylq
-  implements bbbq
+  implements Comparator<ayls>
 {
-  aylq(aylm paramaylm, ayij paramayij) {}
+  aylq(ayln paramayln) {}
   
-  public void a(String paramString, int paramInt)
+  public int a(ayls paramayls1, ayls paramayls2)
   {
-    if ((this.jdField_a_of_type_Ayij.b != null) && (this.jdField_a_of_type_Ayij.b.equals(paramString)))
+    int j = Long.signum(paramayls1.jdField_a_of_type_Int - paramayls2.jdField_a_of_type_Int);
+    int i = j;
+    if (j == 0)
     {
-      if (paramInt != 3) {
-        break label45;
-      }
-      this.jdField_a_of_type_Ayij.j = 2;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aylm.a();
-      return;
-      label45:
-      if ((paramInt == 2) || (paramInt == 4)) {
-        this.jdField_a_of_type_Ayij.j = 1;
-      } else if (paramInt == 1) {
-        this.jdField_a_of_type_Ayij.j = 0;
+      j = Long.signum(paramayls1.b - paramayls2.b);
+      i = j;
+      if (j == 0)
+      {
+        j = Long.signum(paramayls1.c - paramayls2.c);
+        i = j;
+        if (j == 0) {
+          i = Long.signum(-paramayls1.jdField_a_of_type_Long + paramayls2.jdField_a_of_type_Long);
+        }
       }
     }
+    return i;
   }
 }
 

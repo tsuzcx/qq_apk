@@ -1,43 +1,47 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import feedcloud.FeedCloudMeta.StDittoFeed;
-import feedcloud.FeedCloudMeta.StFeed;
-import mqq.app.AppRuntime;
-import qqcircle.QQCircleDitto.StItemContainer;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.widgets.message.item.QCircleMessageReplyItemView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import java.util.List;
 
-class trk
-  implements Observer<FeedCloudMeta.StFeed>
+public class trk
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  trk(trj paramtrj) {}
+  private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+  private List<trx> jdField_a_of_type_JavaUtilList;
+  private ugy jdField_a_of_type_Ugy;
   
-  public void a(@Nullable FeedCloudMeta.StFeed paramStFeed)
+  public void a(List<trx> paramList)
   {
-    boolean bool = false;
-    if (paramStFeed == null)
-    {
-      this.a.a(false);
-      return;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(ugy paramugy)
+  {
+    this.jdField_a_of_type_Ugy = paramugy;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    trj.a(this.a, new QQCircleDitto.StItemContainer());
-    tyj.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 9, 1L);
-    try
-    {
-      trj.a(this.a).mergeFrom(paramStFeed.dittoFeed.dittoData.get().toByteArray());
-      paramStFeed = this.a;
-      if (trj.a(this.a).items.size() > 0) {
-        bool = true;
-      }
-      paramStFeed.a(bool);
-      return;
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      ((trl)paramViewHolder).a(this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
     }
-    catch (Exception paramStFeed)
-    {
-      paramStFeed.printStackTrace();
-    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = new QCircleMessageReplyItemView(paramViewGroup.getContext());
+    paramViewGroup.setReplyItemListener(this.jdField_a_of_type_Ugy);
+    return new trl(paramViewGroup);
   }
 }
 

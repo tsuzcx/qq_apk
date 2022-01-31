@@ -1,16 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-class wpc
-  implements View.OnClickListener
+public final class wpc
+  extends QQUIEventReceiver<woy, vcp>
 {
-  wpc(wou paramwou, wsb paramwsb) {}
-  
-  public void onClick(View paramView)
+  public wpc(@NonNull woy paramwoy)
   {
-    wta.a("home_page", "guide_shoot", 0, 0, new String[0]);
-    this.jdField_a_of_type_Wou.a.a(false, true, 13, null);
-    this.jdField_a_of_type_Wsb.dismiss();
+    super(paramwoy);
+  }
+  
+  public void a(@NonNull woy paramwoy, @NonNull vcp paramvcp)
+  {
+    wxe.a(this.TAG, "receive feature event. %s.", paramvcp.toString());
+    if ((paramvcp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvcp.jdField_a_of_type_JavaUtilList != null))
+    {
+      paramvcp = paramvcp.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramvcp.hasNext())
+      {
+        uxd localuxd = (uxd)paramvcp.next();
+        woy.a(paramwoy).put(localuxd.a, localuxd);
+      }
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vcp.class;
   }
 }
 

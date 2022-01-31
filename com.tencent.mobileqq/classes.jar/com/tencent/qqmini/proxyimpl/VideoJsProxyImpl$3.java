@@ -220,9 +220,9 @@ class VideoJsProxyImpl$3
     //   432: aload 11
     //   434: getfield 95	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
     //   437: astore_1
-    //   438: invokestatic 188	bgjm:a	()Lbgjm;
+    //   438: invokestatic 188	bgnt:a	()Lbgnt;
     //   441: aload_1
-    //   442: invokevirtual 191	bgjm:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   442: invokevirtual 191	bgnt:e	(Ljava/lang/String;)Ljava/lang/String;
     //   445: astore_1
     //   446: aload_0
     //   447: getfield 10	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl$3:this$0	Lcom/tencent/qqmini/proxyimpl/VideoJsProxyImpl;

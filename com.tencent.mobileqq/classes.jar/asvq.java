@@ -1,55 +1,28 @@
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
-
 public class asvq
-  implements aswa
 {
-  public asvq(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void a(boolean paramBoolean)
+  public asvq(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt1, int paramInt2, long paramLong)
   {
-    int k = 1;
-    IVPluginDataReporter localIVPluginDataReporter;
-    int j;
-    if (!bdee.a(GroupVideoLoadingFragment.a(this.a)))
-    {
-      i = 1;
-      if (!paramBoolean) {
-        break label80;
-      }
-      GroupVideoLoadingFragment.a(this.a, false);
-      localIVPluginDataReporter = GroupVideoLoadingFragment.a(this.a).opType("enterPage");
-      if (!paramBoolean) {
-        break label111;
-      }
-      j = 1;
-      label50:
-      localIVPluginDataReporter = localIVPluginDataReporter.opIn(j);
-      if (i == 0) {
-        break label116;
-      }
-    }
-    label80:
-    label111:
-    label116:
-    for (int i = k;; i = 0)
-    {
-      localIVPluginDataReporter.opResult(i).report();
-      return;
-      i = 0;
-      break;
-      if (i != 0) {
-        GroupVideoLoadingFragment.a(this.a, true);
-      }
-      for (;;)
-      {
-        aswy.b("2880338");
-        break;
-        GroupVideoLoadingFragment.a(this.a, false);
-      }
-      j = 0;
-      break label50;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
+    this.g = paramString7;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

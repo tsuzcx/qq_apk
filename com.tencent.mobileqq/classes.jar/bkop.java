@@ -1,160 +1,37 @@
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PeakService;
-import com.tencent.qphone.base.util.BaseApplication;
-import dov.com.qq.im.ae.camera.core.AEEditorGenerateBroadcastReceiver;
-import java.util.Iterator;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.util.WeakReference;
 
-public class bkop
-  implements bkoo
+final class bkop
+  extends PagerAdapter
 {
-  private AEEditorGenerateBroadcastReceiver jdField_a_of_type_DovComQqImAeCameraCoreAEEditorGenerateBroadcastReceiver = new AEEditorGenerateBroadcastReceiver(this);
-  private final String jdField_a_of_type_JavaLangString = "AEEditorManagerForQzone";
-  private List<bkor> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private Map<String, LocalMediaInfo> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private List<bkoo> a;
   
-  public static bkop a()
+  public void a(List<bkoo> paramList)
   {
-    return bkos.a;
+    this.a = ((List)new WeakReference(paramList).get());
   }
   
-  private void a(@NonNull String paramString1, @NonNull String paramString2)
+  public int getCount()
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      blfg.d("AEEditorManagerForQzone", "[sendBroadCast] action or missionID is null");
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.setAction(paramString1);
-    localIntent.setPackage(BaseApplicationImpl.getContext().getPackageName());
-    localIntent.putExtra("generate_mission", paramString2);
-    BaseApplicationImpl.getContext().sendBroadcast(localIntent);
+    return this.a.size();
   }
   
-  public LocalMediaInfo a(String paramString)
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    paramString = (LocalMediaInfo)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {
-      return paramString;
+    View localView = bkoo.a((bkoo)this.a.get(paramInt));
+    if ((bkoo.a((bkoo)this.a.get(paramInt)) instanceof bkpk)) {
+      ((bkpk)bkoo.a((bkoo)this.a.get(paramInt))).a();
     }
-    return null;
+    paramViewGroup.addView(localView);
+    return localView;
   }
   
-  public void a()
+  public boolean isViewFromObject(View paramView, Object paramObject)
   {
-    blfg.b("AEEditorManagerForQzone", "[init]");
-    this.jdField_a_of_type_DovComQqImAeCameraCoreAEEditorGenerateBroadcastReceiver.a(BaseApplicationImpl.getContext());
-  }
-  
-  public void a(@Nullable bkor parambkor)
-  {
-    blfg.b("AEEditorManagerForQzone", "[addListener]");
-    if ((parambkor != null) && (!this.jdField_a_of_type_JavaUtilList.contains(parambkor))) {
-      this.jdField_a_of_type_JavaUtilList.add(parambkor);
-    }
-  }
-  
-  public void a(@NonNull String paramString)
-  {
-    blfg.b("AEEditorManagerForQzone", "[cancel]");
-    a("AEEDITOR_ORDER_CANCEL", paramString);
-  }
-  
-  public void a(String paramString, float paramFloat)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      blfg.d("AEEditorManagerForQzone", "[onAETavSessionExporting] mission is null");
-      return;
-    }
-    Object localObject = (LocalMediaInfo)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localObject == null)
-    {
-      localObject = blll.a(0, 0, null, null, paramString);
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
-    }
-    for (;;)
-    {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((bkor)((Iterator)localObject).next()).onAETavSessionExporting(paramString, paramFloat);
-      }
-      break;
-      ((LocalMediaInfo)localObject).isVideoReady = false;
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      blfg.d("AEEditorManagerForQzone", "[onAETavSessionExportError] mission is null");
-      return;
-    }
-    Object localObject = (LocalMediaInfo)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localObject == null)
-    {
-      localObject = blll.a(0, 0, null, null, paramString);
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
-    }
-    for (;;)
-    {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((bkor)((Iterator)localObject).next()).onAETavSessionExportError(paramString, paramInt);
-      }
-      break;
-      ((LocalMediaInfo)localObject).isVideoReady = false;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      blfg.d("AEEditorManagerForQzone", "[onAETavSessionExportCompleted] mission is null");
-    }
-    for (;;)
-    {
-      return;
-      paramString2 = blll.a(paramString2, paramString3);
-      this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
-      paramString3 = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramString3.hasNext()) {
-        ((bkor)paramString3.next()).onAETavSessionExportCompleted(paramString1, paramString2);
-      }
-    }
-  }
-  
-  public void b(@Nullable bkor parambkor)
-  {
-    blfg.b("AEEditorManagerForQzone", "[removeListener]");
-    if ((parambkor != null) && (this.jdField_a_of_type_JavaUtilList.contains(parambkor))) {
-      this.jdField_a_of_type_JavaUtilList.remove(parambkor);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    blfg.b("AEEditorManagerForQzone", "[save]");
-    a("AEEDITOR_ORDER_SAVE", paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    blfg.b("AEEditorManagerForQzone", "[retry]");
-    Intent localIntent = new Intent(BaseApplicationImpl.getApplication(), PeakService.class);
-    localIntent.putExtra("ServiceAction", 4);
-    localIntent.putExtra("generate_mission", paramString);
-    BaseApplicationImpl.getApplication().startService(localIntent);
+    return paramView == paramObject;
   }
 }
 

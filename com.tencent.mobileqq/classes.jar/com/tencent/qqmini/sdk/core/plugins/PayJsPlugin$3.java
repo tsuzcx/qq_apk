@@ -2,17 +2,17 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bgjd;
-import bgje;
-import bgkd;
+import bgnk;
+import bgnl;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class PayJsPlugin$3
-  implements bgje
+  implements bgnl
 {
-  PayJsPlugin$3(PayJsPlugin paramPayJsPlugin, bgkd parambgkd) {}
+  PayJsPlugin$3(PayJsPlugin paramPayJsPlugin, bgok parambgok) {}
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -34,7 +34,7 @@ class PayJsPlugin$3
             if (paramInt1 == 0)
             {
               this.val$req.a(localJSONObject);
-              bgjd.a().b(this);
+              bgnk.a().b(this);
               return true;
             }
           }
@@ -48,7 +48,7 @@ class PayJsPlugin$3
         }
       }
       this.val$req.b();
-      bgjd.a().b(this);
+      bgnk.a().b(this);
       return true;
     }
     return false;

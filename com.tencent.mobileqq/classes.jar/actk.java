@@ -1,48 +1,70 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.adapter.ForwardRecentItemView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.DevlockPushActivity;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class actk
-  implements View.OnClickListener
+  extends WtloginObserver
 {
-  public actk(ForwardRecentActivity paramForwardRecentActivity, DeviceInfo paramDeviceInfo, ForwardRecentItemView paramForwardRecentItemView, ResultRecord paramResultRecord, Resources paramResources, String paramString) {}
+  public actk(DevlockPushActivity paramDevlockPushActivity) {}
   
-  public void onClick(View paramView)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if (ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity))
+    if (!this.a.isResume())
     {
-      if (ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, String.valueOf(this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.din), 9501))
+      this.a.b();
+      return;
+    }
+    if (((this.a.jdField_a_of_type_Bety == null) || (!this.a.jdField_a_of_type_Bety.isShowing())) && (paramInt == 0) && (paramDevlockInfo != null))
+    {
+      this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = paramDevlockInfo;
+      aqax.a().a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.TransferInfo);
+      return;
+    }
+    this.a.b();
+    if ((paramInt == 0) && (paramDevlockInfo != null))
+    {
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.a(false);
-        ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, String.valueOf(this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.din), 9501);
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus ret = " + paramInt);
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
       }
-      while (!ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord)) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.a(true);
+      this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = paramDevlockInfo;
+      aqax.a().a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.TransferInfo);
+      this.a.a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
       return;
     }
-    if (!bdee.g(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity))
+    if (QLog.isColorLevel())
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, alpo.a(2131705158), 1000).b(this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131298914));
-      return;
+      QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus ret = " + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
+      }
+      if (paramDevlockInfo == null) {
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus DevlockInfo is null");
+      }
     }
-    paramView = new Bundle();
-    paramView.putString("uin", String.valueOf(this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.din));
-    paramView.putInt("uintype", 9501);
-    paramView.putString("uinname", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.a(aruc.j.intValue(), paramView);
+    paramDevlockInfo = this.a.getString(2131692204);
+    paramWUserSigInfo = paramDevlockInfo;
+    if (paramErrMsg != null)
+    {
+      paramWUserSigInfo = paramDevlockInfo;
+      if (!TextUtils.isEmpty(paramErrMsg.getMessage())) {
+        paramWUserSigInfo = paramErrMsg.getMessage();
+      }
+    }
+    QQToast.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     actk
  * JD-Core Version:    0.7.0.1
  */

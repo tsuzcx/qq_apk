@@ -1,23 +1,16 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public class aujw
-  extends GestureDetector.SimpleOnGestureListener
+class aujw
+  implements DialogInterface.OnClickListener
 {
-  public aujw(MultiCardRootLayout paramMultiCardRootLayout) {}
+  aujw(aujr paramaujr) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((MultiCardRootLayout.a(this.a)) && (MultiCardRootLayout.a(this.a) != null))
-    {
-      aujz localaujz = (aujz)MultiCardRootLayout.a(this.a).get();
-      if (localaujz != null) {
-        localaujz.a(this.a);
-      }
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    this.a.e();
+    aujr.a(this.a).a(false, null, false);
   }
 }
 

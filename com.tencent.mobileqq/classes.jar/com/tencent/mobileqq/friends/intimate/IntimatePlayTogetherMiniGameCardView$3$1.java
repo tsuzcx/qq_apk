@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.friends.intimate;
 
 import android.graphics.Bitmap;
-import aseh;
+import asiq;
 import com.tencent.widget.ThemeImageView;
 
 public class IntimatePlayTogetherMiniGameCardView$3$1
   implements Runnable
 {
-  public IntimatePlayTogetherMiniGameCardView$3$1(aseh paramaseh, Bitmap paramBitmap) {}
+  public IntimatePlayTogetherMiniGameCardView$3$1(asiq paramasiq, Bitmap paramBitmap) {}
   
   public void run()
   {

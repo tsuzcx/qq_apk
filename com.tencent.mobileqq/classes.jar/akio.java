@@ -1,18 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class akio
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   akio(akim paramakim) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(akim.a(this.a), 4, "right button is clicked! ");
-    }
-    akim.a(this.a, 0);
+    paramView = paramView.getTag();
+    if (!(paramView instanceof akir)) {}
+    do
+    {
+      return;
+      paramView = (akir)paramView;
+    } while ((paramView.a == null) || (this.a.a == null));
+    this.a.a.a(paramView.a);
   }
 }
 

@@ -1,23 +1,23 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.book.BookEditText;
 
 public class ahdo
+  implements InputFilter
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public RichStatus a;
-  public AccountSearchPb.record a;
-  public String a;
-  public boolean a = true;
-  public int b;
-  public TextView b;
-  public String b;
-  public int c;
-  public TextView c;
-  public TextView d;
+  public ahdo(BookEditText paramBookEditText) {}
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    this.a.a(paramSpanned.toString());
+    if (this.a.a(paramCharSequence.toString()) == 0) {
+      BookEditText.a(this.a);
+    }
+    while (!bamp.a(paramCharSequence.toString())) {
+      return paramCharSequence.subSequence(paramInt1, paramInt2 - paramInt1);
+    }
+    return "";
+  }
 }
 
 

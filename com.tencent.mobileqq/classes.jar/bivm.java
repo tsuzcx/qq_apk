@@ -1,17 +1,35 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.ContentValues;
 
-class bivm
-  extends BroadcastReceiver
+public final class bivm
 {
-  private bivm(bivh parambivh) {}
+  public long a;
+  public Object a;
+  public String a;
+  public long b = -1L;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bivm(long paramLong1, long paramLong2, ContentValues paramContentValues)
   {
-    if ("cooperation.qqreader.start_reader_act_completed".equals(paramIntent.getAction())) {
-      bivh.b(this.a);
+    this.jdField_a_of_type_Long = 1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = paramLong1;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangObject = paramContentValues;
+    try
+    {
+      this.jdField_a_of_type_JavaLangString = paramContentValues.getAsString("entityNickName");
+      return;
     }
+    catch (Exception paramContentValues) {}
+  }
+  
+  public bivm(long paramLong1, long paramLong2, Object paramObject, String paramString)
+  {
+    this.jdField_a_of_type_Long = 1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = paramLong1;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

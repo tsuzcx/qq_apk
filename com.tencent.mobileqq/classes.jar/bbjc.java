@@ -1,13 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.16;
 
-class bbjc
-  extends bbje
+public class bbjc
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public bbjc(TroopBarPublishActivity.16 param16) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.this$0.t();
+  }
 }
 
 

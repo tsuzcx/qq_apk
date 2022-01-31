@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.activity.AssistantSettingActivity.32.1;
-import com.tencent.widget.HeightAdaptableListView;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class acai
-  implements ahpp
+  extends alqh
 {
-  public acai(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public acai(AboutActivity paramAboutActivity) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    this.a.a.post(new AssistantSettingActivity.32.1(this));
-    AssistantSettingActivity.c(this.a);
+    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
+    paramUpgradeDetailWrapper = this.a.app.a();
+    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
   }
 }
 

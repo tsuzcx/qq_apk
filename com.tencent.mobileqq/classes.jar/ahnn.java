@@ -1,16 +1,27 @@
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.widget.SingleLineTextView;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationClidFragment;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
 
-class ahnn
-  extends akee
+public class ahnn
+  implements bibb
 {
-  public Button a;
-  public TextView a;
-  public MayKnowRecommend a;
-  public SingleLineTextView a;
-  public SingleLineTextView b;
+  public ahnn(ConnectionsExplorationClidFragment paramConnectionsExplorationClidFragment) {}
+  
+  public void a(View paramView)
+  {
+    paramView = this.a.getParentFragment();
+    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
+      ((ConnectionsExplorationFragment)paramView).a(false);
+    }
+  }
+  
+  public void b(View paramView)
+  {
+    paramView = this.a.getParentFragment();
+    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
+      ((ConnectionsExplorationFragment)paramView).a(true);
+    }
+  }
 }
 
 

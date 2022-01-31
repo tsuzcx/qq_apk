@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-public class aqmv
-  implements View.OnClickListener
+class aqmv
+  implements arrh
 {
-  public aqmv(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  aqmv(aqmu paramaqmu) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    QfileRecentPicFileTabView.a(this.a, paramView, true);
-    paramView.sendAccessibilityEvent(8);
+    UniformDownloadActivity.a(this.a.a);
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 0);
+  }
+  
+  public void b()
+  {
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 0);
   }
 }
 

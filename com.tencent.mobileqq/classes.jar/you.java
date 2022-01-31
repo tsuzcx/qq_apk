@@ -1,24 +1,75 @@
-import android.content.Intent;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StVideo;
+import android.graphics.Color;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 
-class you
-  implements View.OnClickListener
+public class you
 {
-  you(yom paramyom, bbnq parambbnq) {}
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private RoundCornerImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView;
   
-  public void onClick(View paramView)
+  public you(BlankRecommendItemView paramBlankRecommendItemView, View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopTipsPopWindow", 2, "mTroopNotifyAdImage onClick--------");
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368778));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378784));
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setBackgroundColor(Color.parseColor("#252525"));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.invalidate();
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-5723992);
+  }
+  
+  public void a(CertifiedAccountMeta.StFeed paramStFeed)
+  {
+    if (paramStFeed != null)
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      int i = paramStFeed.cover.width.get();
+      if (paramStFeed.cover.height.get() > i) {
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      }
+      try
+      {
+        for (;;)
+        {
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageURL(paramStFeed.cover.url.get());
+          if (paramStFeed.video.duration.get() <= 0L) {
+            break;
+          }
+          i = paramStFeed.video.duration.get() / 1000 / 60;
+          int j = paramStFeed.video.duration.get() / 1000;
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("%02d:%02d", new Object[] { Integer.valueOf(i), Integer.valueOf(j % 60) }));
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.jdField_a_of_type_AndroidViewView.setOnClickListener(new yov(this, paramStFeed));
+          return;
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          QLog.e("BlankRecommendItemView", 2, "setData() set image url error! url: " + paramStFeed.cover.url.get(), localThrowable);
+          continue;
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        }
+      }
     }
-    paramView = new Intent(this.jdField_a_of_type_Yom.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_Bbnq.b);
-    this.jdField_a_of_type_Yom.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramView);
-    azmj.b(this.jdField_a_of_type_Yom.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "clk_ad", 0, 0, this.jdField_a_of_type_Yom.b, String.valueOf(this.jdField_a_of_type_Yom.jdField_a_of_type_Bbnp.a), "8020205751015455", "");
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
 }
 

@@ -11,7 +11,7 @@ public final class QQUtils$3
   {
     String str = null;
     if (this.jdField_a_of_type_Boolean) {
-      str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131720504);
+      str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131720516);
     }
     if (str != null) {
       QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, str, 0).b(this.jdField_a_of_type_Int);

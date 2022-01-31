@@ -1,19 +1,19 @@
 package cooperation.qzone.patch;
 
-import alpo;
-import bjjr;
+import alud;
+import bjny;
 
 public class QZonePatchService$1
   implements Runnable
 {
-  public QZonePatchService$1(bjjr parambjjr, String paramString1, String paramString2) {}
+  public QZonePatchService$1(bjny parambjny, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bjjr.b(alpo.a(2131712453));
-    bjjr.b(alpo.a(2131712454));
-    bjjr.a();
-    bjjr.b(this.a, this.b);
+    bjny.b(alud.a(2131712465));
+    bjny.b(alud.a(2131712466));
+    bjny.a();
+    bjny.b(this.a, this.b);
   }
 }
 

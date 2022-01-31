@@ -1,9 +1,14 @@
+import android.view.View;
+import android.view.ViewGroup;
+
 public class uso
+  extends uli
 {
-  @xnb(a="type")
   public int a;
-  @xnb(a="content")
-  public usn a;
+  public View a;
+  public ViewGroup a;
+  
+  public uso(usn paramusn) {}
 }
 
 

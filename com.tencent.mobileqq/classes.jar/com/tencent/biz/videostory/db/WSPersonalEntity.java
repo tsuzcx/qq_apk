@@ -1,12 +1,12 @@
 package com.tencent.biz.videostory.db;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class WSPersonalEntity
-  extends awbv
+  extends awge
 {
-  @awdj
+  @awhs
   public String uin;
   public byte[] weiShiPersonalRsp;
   

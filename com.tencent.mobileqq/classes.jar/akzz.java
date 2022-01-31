@@ -1,38 +1,111 @@
-import android.app.Activity;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
-import java.util.ArrayList;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.process.ui.NativeUIManager.1;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
-public abstract interface akzz
+public class akzz
 {
-  public abstract String a();
+  private int jdField_a_of_type_Int;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  public HashMap<String, akzy> a;
   
-  public abstract String a(int paramInt, ApolloWebAvatarParam paramApolloWebAvatarParam);
+  public akzz(Context paramContext, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public abstract String a(akzw paramakzw);
+  public akzy a(String paramString)
+  {
+    akzr localakzr = null;
+    Object localObject = null;
+    if ("Dialog".equals(paramString))
+    {
+      localakzr = new akzr();
+      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+        break label38;
+      }
+    }
+    label38:
+    for (paramString = localObject;; paramString = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get())
+    {
+      localakzr.a(paramString);
+      return localakzr;
+    }
+  }
   
-  public abstract String a(String paramString);
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (String)localIterator.next();
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = (akzy)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+          if (localObject != null) {
+            ((akzy)localObject).a();
+          }
+        }
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    }
+  }
   
-  public abstract String a(ArrayList<ApolloWebAvatarParam> paramArrayList);
+  public void a(akzy paramakzy)
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (paramakzy != null)) {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(paramakzy.a());
+    }
+  }
   
-  public abstract String a(int[] paramArrayOfInt);
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    paramString1 = akwd.a(this.jdField_a_of_type_Int);
+    if (paramString1 != null)
+    {
+      paramString1 = paramString1.a();
+      if (paramString1 != null) {
+        paramString1.runRenderTask(new NativeUIManager.1(this, paramString1, paramString2, paramString3));
+      }
+    }
+  }
   
-  public abstract void a(int paramInt, int[] paramArrayOfInt);
-  
-  public abstract void a(Activity paramActivity, String paramString1, String paramString2);
-  
-  public abstract void a(ArrayList<String> paramArrayList);
-  
-  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract String b(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d(int paramInt);
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    akzy localakzy;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      localakzy = null;
+      if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+        localakzy = (akzy)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+      }
+      if (localakzy == null) {
+        break label45;
+      }
+      localakzy.a(paramString2, paramString4, this);
+    }
+    label45:
+    do
+    {
+      do
+      {
+        return;
+      } while ("destroy".equals(paramString3));
+      localakzy = a(paramString1);
+    } while (localakzy == null);
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localakzy);
+    a(paramString1, paramString2, paramString3, paramString4);
+  }
 }
 
 

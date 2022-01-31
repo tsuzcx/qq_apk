@@ -1,6 +1,19 @@
-public abstract interface bhsu
+public class bhsu
 {
-  public abstract boolean a(int paramInt);
+  private static ThreadLocal<StringBuilder> a = new ThreadLocal();
+  
+  public static StringBuilder a()
+  {
+    StringBuilder localStringBuilder = (StringBuilder)a.get();
+    if (localStringBuilder == null)
+    {
+      localStringBuilder = new StringBuilder();
+      a.set(localStringBuilder);
+      return localStringBuilder;
+    }
+    localStringBuilder.setLength(0);
+    return localStringBuilder;
+  }
 }
 
 

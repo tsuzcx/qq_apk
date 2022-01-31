@@ -1,24 +1,18 @@
-import io.flutter.plugin.common.BinaryMessenger;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodCodec;
-
-public class arsq
-  extends arsl
+public abstract class arsq
 {
-  public arsq(String paramString, BinaryMessenger paramBinaryMessenger)
-  {
-    super(paramString, paramBinaryMessenger);
-  }
+  public void a() {}
   
-  public MethodChannel.MethodCallHandler a()
-  {
-    return new arsr(this);
-  }
+  public void b() {}
   
-  public MethodCodec a()
-  {
-    return arss.a;
-  }
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

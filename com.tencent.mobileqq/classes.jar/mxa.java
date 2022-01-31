@@ -19,7 +19,7 @@ import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgB
 import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader;
 
 public class mxa
-  extends alko
+  extends alpd
 {
   static String a;
   public long a;
@@ -37,9 +37,9 @@ public class mxa
     this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0xbC2CType0x211_SubC2CType0xb$MsgBody$MsgHeader = new C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader();
   }
   
-  private msg_svc.PbSendMsgReq a(int paramInt1, String paramString, aywb paramaywb, long paramLong1, int paramInt2, long paramLong2)
+  private msg_svc.PbSendMsgReq a(int paramInt1, String paramString, azak paramazak, long paramLong1, int paramInt2, long paramLong2)
   {
-    return ayvu.a(this.app, paramInt1, paramString, paramaywb, paramLong1, paramInt2);
+    return azad.a(this.app, paramInt1, paramString, paramazak, paramLong1, paramInt2);
   }
   
   private void a(C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader paramMsgHeader)
@@ -71,12 +71,12 @@ public class mxa
     localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 13);
     localToServiceMsg.extraData.putBoolean("ISFROM_QAV", true);
     localToServiceMsg.addAttribute("cookie", Long.valueOf(paramLong1));
-    paramLong1 = arni.b();
-    long l = arni.a();
-    Object localObject = new aywb();
-    ((aywb)localObject).jdField_a_of_type_Int = paramInt2;
-    ((aywb)localObject).jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    paramString = a(13, paramString, (aywb)localObject, l, ayvy.b(paramLong1), paramLong2);
+    paramLong1 = arrr.b();
+    long l = arrr.a();
+    Object localObject = new azak();
+    ((azak)localObject).jdField_a_of_type_Int = paramInt2;
+    ((azak)localObject).jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    paramString = a(13, paramString, (azak)localObject, l, azah.b(paramLong1), paramLong2);
     paramArrayOfByte = new im_msg_head.InstInfo();
     paramArrayOfByte.uint32_apppid.set(AppSetting.a());
     paramArrayOfByte.uint32_instid.set(AppSetting.a());
@@ -114,7 +114,7 @@ public class mxa
     return !this.allowCmdSet.contains(paramString);
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return null;
   }

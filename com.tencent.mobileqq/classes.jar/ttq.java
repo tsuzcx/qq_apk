@@ -1,15 +1,21 @@
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
+import feedcloud.FeedCloudWrite.StDelFeedRsp;
 
-public class ttq
-  implements Dispatcher.Dispatchable
+class ttq
+  implements zac<FeedCloudWrite.StDelFeedRsp>
 {
-  public int a;
-  public Object a;
+  ttq(ttp paramttp, String paramString) {}
   
-  public ttq(int paramInt, Object... paramVarArgs)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDelFeedRsp paramStDelFeedRsp)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramVarArgs;
+    if ((!paramBoolean) || (paramLong != 0L))
+    {
+      QLog.e("QCircleSharePart", 1, "deleteFeed  error");
+      return;
+    }
+    QLog.d("QCircleSharePart", 1, "deleteFeed  success");
+    yiw.a().a(new QCircleFeedEvent(this.jdField_a_of_type_JavaLangString, 3));
   }
 }
 

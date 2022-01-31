@@ -1,105 +1,17 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTranslateToken;
 
-public final class vgp
+public class vgp
+  extends uro
 {
-  public static <K, V, T extends V> T a(@NonNull Map<K, V> paramMap, K paramK, T paramT)
-  {
-    Object localObject = paramMap.get(paramK);
-    if ((localObject != null) || (paramMap.containsKey(paramK))) {
-      paramT = localObject;
-    }
-    return paramT;
-  }
+  public long a;
+  public String a;
+  public String c;
   
-  public static String a(String paramString)
-  {
-    return aljq.bo + bame.c(paramString);
-  }
+  public vgp(qqstory_service.RspTranslateToken paramRspTranslateToken) {}
   
-  public static String a(String paramString, boolean paramBoolean)
+  public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    String str1 = null;
-    int i = 1;
-    String[] arrayOfString = paramString.split("&");
-    int k = arrayOfString.length;
-    int j = 0;
-    paramString = str1;
-    if (j < k)
-    {
-      str1 = arrayOfString[j];
-      String str2 = str1.split("=")[0];
-      if ((str2.equals("src_type")) || (str2.equals("version")) || (str2.equals("type")) || (str2.equals("actionnamekey")) || (str2.equals("storysharefrom")) || ((paramBoolean) && (str2.equals("videoId"))) || ((paramBoolean) && (str2.equals("videoOwnerUin"))) || ((paramBoolean) && (str2.equals("unionid"))))
-      {
-        if (i != 0) {
-          i = 0;
-        }
-        for (;;)
-        {
-          localStringBuilder.append(str1);
-          j += 1;
-          break;
-          localStringBuilder.append('&');
-        }
-      }
-      str1 = paramString;
-      if (QLog.isColorLevel())
-      {
-        if (paramString != null) {
-          break label216;
-        }
-        paramString = new StringBuilder();
-      }
-      for (;;)
-      {
-        paramString.append(str2);
-        str1 = paramString;
-        paramString = str1;
-        break;
-        label216:
-        paramString.append('|');
-      }
-    }
-    if ((paramString != null) && (QLog.isColorLevel())) {
-      QLog.d("ShareUtil", 2, "remove params:" + paramString);
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return paramString;
-      arrayOfString = paramString.split("\\?");
-    } while (arrayOfString.length != 2);
-    paramString = arrayOfString[0];
-    String[] arrayOfString = arrayOfString[1].split("&");
-    StringBuilder localStringBuilder = new StringBuilder("?");
-    int i = 0;
-    if (i < arrayOfString.length)
-    {
-      Object localObject = arrayOfString[i].split("=");
-      if (localObject.length != 2) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localObject = localObject[0];
-        if ("s".equals(localObject)) {
-          arrayOfString[i] = ((String)localObject + "=" + "140");
-        }
-        localStringBuilder.append(arrayOfString[i]);
-        if (i + 1 < arrayOfString.length) {
-          localStringBuilder.append("&");
-        }
-      }
-    }
-    return paramString + localStringBuilder.toString();
+    return "StoryShareTranslateTokenResponse{coverUrl='" + this.c + '\'' + ", dstBuffer='" + this.jdField_a_of_type_JavaLangString + '\'' + ", shootTimeMillis=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

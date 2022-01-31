@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aloz;
+import alto;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ class PermisionPrivacyActivity$2
   
   public void run()
   {
-    boolean bool = ((aloz)this.this$0.app.getManager(51)).c(this.this$0.app.getCurrentAccountUin()).medalSwitchDisable;
+    boolean bool = ((alto)this.this$0.app.getManager(51)).c(this.this$0.app.getCurrentAccountUin()).medalSwitchDisable;
     if (QLog.isColorLevel()) {
       QLog.d("Q.security", 2, "PermisionPrivacyActivity initUI medalSwitchDisable = " + bool);
     }

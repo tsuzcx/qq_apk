@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aqnw;
-import aqos;
+import aqsf;
+import aqtb;
 import java.util.HashMap;
 
 public class FileMultiMsgManager$3
   implements Runnable
 {
-  public FileMultiMsgManager$3(aqnw paramaqnw, long paramLong) {}
+  public FileMultiMsgManager$3(aqsf paramaqsf, long paramLong) {}
   
   public void run()
   {
-    aqos localaqos = null;
-    if (aqnw.a(this.this$0).containsKey(Long.valueOf(this.a))) {
-      localaqos = (aqos)aqnw.a(this.this$0).get(Long.valueOf(this.a));
+    aqtb localaqtb = null;
+    if (aqsf.a(this.this$0).containsKey(Long.valueOf(this.a))) {
+      localaqtb = (aqtb)aqsf.a(this.this$0).get(Long.valueOf(this.a));
     }
-    if (localaqos != null) {
-      localaqos.d();
+    if (localaqtb != null) {
+      localaqtb.d();
     }
   }
 }

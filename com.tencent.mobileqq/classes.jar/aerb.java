@@ -1,8 +1,18 @@
-import android.graphics.Bitmap;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
 
-public abstract interface aerb
+public class aerb
+  extends QQLruCache<String, agmy>
 {
-  public abstract Bitmap a();
+  public aerb(CustomizeStrategyFactory paramCustomizeStrategyFactory, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, agmy paramagmy1, agmy paramagmy2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramagmy1, paramagmy2);
+  }
 }
 
 

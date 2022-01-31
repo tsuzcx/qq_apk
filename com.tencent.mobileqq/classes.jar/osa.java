@@ -25,13 +25,13 @@ public class osa
     int j = paramView.getPaddingTop();
     int k = paramView.getPaddingBottom();
     if (ors.s()) {
-      paramRoundAngleFrameLayout.setRaduis(bcwh.a(paramContext, 8.0F));
+      paramRoundAngleFrameLayout.setRaduis(bdaq.a(paramContext, 8.0F));
     }
-    for (int i = bcwh.a(paramContext, 14.0F);; i = bcwh.a(paramContext, 6.0F))
+    for (int i = bdaq.a(paramContext, 14.0F);; i = bdaq.a(paramContext, 6.0F))
     {
       paramView.setPadding(i, j, i, k);
       return;
-      paramRoundAngleFrameLayout.setRaduis(bcwh.a(paramContext, 0.0F));
+      paramRoundAngleFrameLayout.setRaduis(bdaq.a(paramContext, 0.0F));
     }
   }
   

@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-import apes;
+import apjb;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 
@@ -15,7 +15,7 @@ public class InputBar
 {
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
-  private apes jdField_a_of_type_Apes;
+  private apjb jdField_a_of_type_Apjb;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private boolean jdField_a_of_type_Boolean;
   private int b;
@@ -50,8 +50,8 @@ public class InputBar
         while (!this.jdField_a_of_type_Boolean)
         {
           return;
-          if ((paramInt4 == this.h) && (this.jdField_a_of_type_Apes != null)) {
-            this.jdField_a_of_type_Apes.a();
+          if ((paramInt4 == this.h) && (this.jdField_a_of_type_Apjb != null)) {
+            this.jdField_a_of_type_Apjb.a();
           }
         }
         if (QLog.isDevelopLevel()) {
@@ -77,9 +77,9 @@ public class InputBar
     this.d = paramInt2;
   }
   
-  public void setmCallback(apes paramapes)
+  public void setmCallback(apjb paramapjb)
   {
-    this.jdField_a_of_type_Apes = paramapes;
+    this.jdField_a_of_type_Apjb = paramapjb;
   }
 }
 

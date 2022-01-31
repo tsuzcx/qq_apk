@@ -1,16 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class armg
-  implements bdvt
+  implements View.OnClickListener
 {
-  armg(armf paramarmf, army paramarmy) {}
+  armg(armd paramarmd) {}
   
-  public void callback(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      this.jdField_a_of_type_Army.a();
-      return;
-    }
-    this.jdField_a_of_type_Army.b();
+    arrr.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Arki.d());
+    this.a.b = true;
   }
 }
 

@@ -1,37 +1,20 @@
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-class atnh
-  implements bhpo
+public class atnh
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
+  public atnh(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager, atnw paramatnw) {}
   
-  atnh(atnf paramatnf) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramInt = paramAbsListView.getFirstVisiblePosition();
-    if (paramInt > this.jdField_a_of_type_Int)
-    {
-      if (!atnf.a(this.jdField_a_of_type_Atnf).b()) {
-        atnf.a(this.jdField_a_of_type_Atnf).a();
-      }
-      if (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("LocationShareController", 4, "onScrollStateChanged");
-        }
-        atnf.a(this.jdField_a_of_type_Atnf).a();
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-      if (paramInt >= this.jdField_a_of_type_Int) {}
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.c();
+    this.jdField_a_of_type_Atnw.b(false);
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
     }
   }
 }

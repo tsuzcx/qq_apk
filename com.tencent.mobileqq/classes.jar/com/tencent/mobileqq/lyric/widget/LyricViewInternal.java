@@ -18,12 +18,12 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Scroller;
-import atsb;
-import atsc;
-import atse;
-import atsg;
-import atsu;
-import atsx;
+import atwk;
+import atwl;
+import atwn;
+import atwp;
+import atxd;
+import atxg;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
@@ -38,13 +38,13 @@ public class LyricViewInternal
   protected final Paint a;
   protected final Handler a;
   protected Scroller a;
-  protected atsc a;
+  protected atwl a;
   protected Object a;
   protected final String a;
   public boolean a;
   protected int b;
   protected final Paint b;
-  protected atsc b;
+  protected atwl b;
   protected String b;
   protected volatile boolean b;
   protected int c;
@@ -107,7 +107,7 @@ public class LyricViewInternal
     this.jdField_j_of_type_Int = -1;
     this.jdField_a_of_type_JavaLangObject = new Object();
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new atsx(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new atxg(this, Looper.getMainLooper());
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     paramAttributeSet = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
     if (Build.VERSION.SDK_INT < 13) {}
@@ -117,8 +117,8 @@ public class LyricViewInternal
       localObject = new DisplayMetrics();
       paramAttributeSet.getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
       this.jdField_a_of_type_Float = ((DisplayMetrics)localObject).density;
-      this.jdField_a_of_type_JavaLangString = paramContext.getString(2131720232);
-      this.jdField_b_of_type_JavaLangString = paramContext.getString(2131720231);
+      this.jdField_a_of_type_JavaLangString = paramContext.getString(2131720244);
+      this.jdField_b_of_type_JavaLangString = paramContext.getString(2131720243);
       this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new AccelerateDecelerateInterpolator());
       return;
       localObject = new Point();
@@ -137,9 +137,9 @@ public class LyricViewInternal
     return this.r;
   }
   
-  public atsc a()
+  public atwl a()
   {
-    return this.jdField_a_of_type_Atsc;
+    return this.jdField_a_of_type_Atwl;
   }
   
   public void a() {}
@@ -179,7 +179,7 @@ public class LyricViewInternal
     }
   }
   
-  void a(atsc paramatsc1, atsc paramatsc2)
+  void a(atwl paramatwl1, atwl paramatwl2)
   {
     for (;;)
     {
@@ -188,23 +188,23 @@ public class LyricViewInternal
         Log.d("ModuleLyricViewInternal", "setLyric begin");
         this.jdField_c_of_type_Boolean = true;
         this.jdField_e_of_type_Boolean = false;
-        if (paramatsc1 != null)
+        if (paramatwl1 != null)
         {
           c();
-          atsc localatsc = new atsc(2, 0, null);
-          localatsc.a(paramatsc1);
-          this.jdField_a_of_type_Atsc = localatsc;
-          if ((paramatsc2 != null) && (paramatsc1.a() == paramatsc2.a()))
+          atwl localatwl = new atwl(2, 0, null);
+          localatwl.a(paramatwl1);
+          this.jdField_a_of_type_Atwl = localatwl;
+          if ((paramatwl2 != null) && (paramatwl1.a() == paramatwl2.a()))
           {
-            paramatsc1 = new atsc(2, 0, null);
-            paramatsc1.a(paramatsc2);
-            this.jdField_b_of_type_Atsc = paramatsc1;
+            paramatwl1 = new atwl(2, 0, null);
+            paramatwl1.a(paramatwl2);
+            this.jdField_b_of_type_Atwl = paramatwl1;
             setState(70);
             Log.d("ModuleLyricViewInternal", "setLyric end");
             return;
           }
           Log.w("ModuleLyricViewInternal", "setLyric -> pronounce lyric is empty or has incorrect lines");
-          this.jdField_b_of_type_Atsc = new atsc(2, 0, null);
+          this.jdField_b_of_type_Atwl = new atwl(2, 0, null);
           continue;
         }
         Log.w("ModuleLyricViewInternal", "setLyric -> lyric is null");
@@ -214,7 +214,7 @@ public class LyricViewInternal
     }
   }
   
-  protected void a(atse paramatse, Canvas paramCanvas, int paramInt1, int paramInt2)
+  protected void a(atwn paramatwn, Canvas paramCanvas, int paramInt1, int paramInt2)
   {
     for (;;)
     {
@@ -222,7 +222,7 @@ public class LyricViewInternal
       int i2;
       try
       {
-        ArrayList localArrayList = paramatse.a();
+        ArrayList localArrayList = paramatwn.a();
         int i5 = this.s;
         Paint localPaint = this.jdField_b_of_type_AndroidGraphicsPaint;
         i3 = 0;
@@ -230,8 +230,8 @@ public class LyricViewInternal
         if (i3 >= localArrayList.size()) {
           break label773;
         }
-        atsg localatsg = (atsg)localArrayList.get(i3);
-        if (localatsg.jdField_a_of_type_JavaUtilArrayList == null)
+        atwp localatwp = (atwp)localArrayList.get(i3);
+        if (localatwp.jdField_a_of_type_JavaUtilArrayList == null)
         {
           paramInt2 = i1;
           break label783;
@@ -245,31 +245,31 @@ public class LyricViewInternal
         if (i3 == 0)
         {
           i4 = this.jdField_c_of_type_Int;
-          if ((localatsg.a() > i5) || (localatsg.b() < i5)) {
+          if ((localatwp.a() > i5) || (localatwp.b() < i5)) {
             continue;
           }
           f3 = 0.0F;
           f2 = 0.0F;
-          paramatse = null;
+          paramatwn = null;
           i2 = 0;
           paramInt2 = 0;
-          if (paramInt2 >= localatsg.jdField_a_of_type_JavaUtilArrayList.size()) {
+          if (paramInt2 >= localatwp.jdField_a_of_type_JavaUtilArrayList.size()) {
             break label776;
           }
-          paramatse = (atsb)localatsg.jdField_a_of_type_JavaUtilArrayList.get(paramInt2);
-          atsb localatsb = null;
-          if (paramInt2 < localatsg.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
-            localatsb = (atsb)localatsg.jdField_a_of_type_JavaUtilArrayList.get(paramInt2 + 1);
+          paramatwn = (atwk)localatwp.jdField_a_of_type_JavaUtilArrayList.get(paramInt2);
+          atwk localatwk = null;
+          if (paramInt2 < localatwp.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
+            localatwk = (atwk)localatwp.jdField_a_of_type_JavaUtilArrayList.get(paramInt2 + 1);
           }
-          if ((paramatse.jdField_a_of_type_Long > i5) || (localatsb == null) || (localatsb.jdField_a_of_type_Long <= i5)) {
+          if ((paramatwn.jdField_a_of_type_Long > i5) || (localatwk == null) || (localatwk.jdField_a_of_type_Long <= i5)) {
             continue;
           }
-          f1 = (float)(i5 - paramatse.jdField_a_of_type_Long);
-          l1 = paramatse.jdField_b_of_type_Long;
+          f1 = (float)(i5 - paramatwn.jdField_a_of_type_Long);
+          l1 = paramatwn.jdField_b_of_type_Long;
           f1 /= (float)l1;
           f2 = f1;
           f3 = f1;
-          if (paramatse != null)
+          if (paramatwn != null)
           {
             f1 = paramInt1;
             f4 = f1;
@@ -278,9 +278,9 @@ public class LyricViewInternal
         }
         try
         {
-          if (localatsg.jdField_a_of_type_JavaLangString.length() >= ((atsb)localatsg.jdField_a_of_type_JavaUtilArrayList.get(paramInt2 - 1)).jdField_b_of_type_Int)
+          if (localatwp.jdField_a_of_type_JavaLangString.length() >= ((atwk)localatwp.jdField_a_of_type_JavaUtilArrayList.get(paramInt2 - 1)).jdField_b_of_type_Int)
           {
-            f4 = this.jdField_b_of_type_AndroidGraphicsPaint.measureText(localatsg.jdField_a_of_type_JavaLangString.substring(0, ((atsb)localatsg.jdField_a_of_type_JavaUtilArrayList.get(paramInt2 - 1)).jdField_b_of_type_Int));
+            f4 = this.jdField_b_of_type_AndroidGraphicsPaint.measureText(localatwp.jdField_a_of_type_JavaLangString.substring(0, ((atwk)localatwp.jdField_a_of_type_JavaUtilArrayList.get(paramInt2 - 1)).jdField_b_of_type_Int));
             f1 = f4 + f1;
             f4 = f1;
           }
@@ -289,20 +289,20 @@ public class LyricViewInternal
         {
           try
           {
-            if (paramInt2 == localatsg.jdField_a_of_type_JavaUtilArrayList.size() - 1)
+            if (paramInt2 == localatwp.jdField_a_of_type_JavaUtilArrayList.size() - 1)
             {
-              f1 = this.jdField_d_of_type_AndroidGraphicsPaint.measureText(localatsg.jdField_a_of_type_JavaLangString.substring(paramatse.jdField_a_of_type_Int, localatsg.jdField_a_of_type_JavaLangString.length()));
+              f1 = this.jdField_d_of_type_AndroidGraphicsPaint.measureText(localatwp.jdField_a_of_type_JavaLangString.substring(paramatwn.jdField_a_of_type_Int, localatwp.jdField_a_of_type_JavaLangString.length()));
               i2 = localPaint.getColor();
               int i6 = this.jdField_c_of_type_AndroidGraphicsPaint.getColor();
-              localatsg.a(paramCanvas, paramInt1, i1 + i4, this.jdField_c_of_type_AndroidGraphicsPaint, localPaint, this.jdField_d_of_type_AndroidGraphicsPaint, paramInt2, f1, f4, new int[] { i2, i6 }, new float[] { f3, f2 });
+              localatwp.a(paramCanvas, paramInt1, i1 + i4, this.jdField_c_of_type_AndroidGraphicsPaint, localPaint, this.jdField_d_of_type_AndroidGraphicsPaint, paramInt2, f1, f4, new int[] { i2, i6 }, new float[] { f3, f2 });
               paramInt2 = this.jdField_e_of_type_Int + i4 + i1;
               break label783;
               i4 = this.jdField_d_of_type_Int;
               continue;
-              if ((paramatse.jdField_a_of_type_Long <= i5) && (paramatse.jdField_a_of_type_Long + paramatse.jdField_b_of_type_Long >= i5))
+              if ((paramatwn.jdField_a_of_type_Long <= i5) && (paramatwn.jdField_a_of_type_Long + paramatwn.jdField_b_of_type_Long >= i5))
               {
-                f1 = (float)(i5 - paramatse.jdField_a_of_type_Long);
-                l1 = paramatse.jdField_b_of_type_Long;
+                f1 = (float)(i5 - paramatwn.jdField_a_of_type_Long);
+                l1 = paramatwn.jdField_b_of_type_Long;
                 f3 = f1 / (float)l1;
                 f2 = f3;
                 continue;
@@ -310,34 +310,34 @@ public class LyricViewInternal
               i2 = paramInt2;
               paramInt2 += 1;
               continue;
-              f4 = this.jdField_b_of_type_AndroidGraphicsPaint.measureText(localatsg.jdField_a_of_type_JavaLangString.substring(0, localatsg.jdField_a_of_type_JavaLangString.length()));
+              f4 = this.jdField_b_of_type_AndroidGraphicsPaint.measureText(localatwp.jdField_a_of_type_JavaLangString.substring(0, localatwp.jdField_a_of_type_JavaLangString.length()));
               f1 = f4 + f1;
               continue;
               localStringIndexOutOfBoundsException = localStringIndexOutOfBoundsException;
-              f4 = this.jdField_b_of_type_AndroidGraphicsPaint.measureText(localatsg.jdField_a_of_type_JavaLangString.substring(0, localatsg.jdField_a_of_type_JavaLangString.length()));
+              f4 = this.jdField_b_of_type_AndroidGraphicsPaint.measureText(localatwp.jdField_a_of_type_JavaLangString.substring(0, localatwp.jdField_a_of_type_JavaLangString.length()));
               f4 = f1 + f4;
               continue;
             }
-            if (localatsg.jdField_a_of_type_JavaLangString.length() >= paramatse.jdField_b_of_type_Int)
+            if (localatwp.jdField_a_of_type_JavaLangString.length() >= paramatwn.jdField_b_of_type_Int)
             {
-              f1 = this.jdField_d_of_type_AndroidGraphicsPaint.measureText(localatsg.jdField_a_of_type_JavaLangString.substring(paramatse.jdField_a_of_type_Int, paramatse.jdField_b_of_type_Int));
+              f1 = this.jdField_d_of_type_AndroidGraphicsPaint.measureText(localatwp.jdField_a_of_type_JavaLangString.substring(paramatwn.jdField_a_of_type_Int, paramatwn.jdField_b_of_type_Int));
               continue;
             }
-            f1 = this.jdField_d_of_type_AndroidGraphicsPaint.measureText(localatsg.jdField_a_of_type_JavaLangString.substring(paramatse.jdField_a_of_type_Int, localatsg.jdField_a_of_type_JavaLangString.length()));
+            f1 = this.jdField_d_of_type_AndroidGraphicsPaint.measureText(localatwp.jdField_a_of_type_JavaLangString.substring(paramatwn.jdField_a_of_type_Int, localatwp.jdField_a_of_type_JavaLangString.length()));
             continue;
           }
-          catch (StringIndexOutOfBoundsException paramatse)
+          catch (StringIndexOutOfBoundsException paramatwn)
           {
-            f1 = this.jdField_d_of_type_AndroidGraphicsPaint.measureText(localatsg.jdField_a_of_type_JavaLangString.substring(0, localatsg.jdField_a_of_type_JavaLangString.length()));
+            f1 = this.jdField_d_of_type_AndroidGraphicsPaint.measureText(localatwp.jdField_a_of_type_JavaLangString.substring(0, localatwp.jdField_a_of_type_JavaLangString.length()));
             continue;
           }
         }
-        if (localatsg.b() < i5)
+        if (localatwp.b() < i5)
         {
-          localatsg.a(paramCanvas, paramInt1, i1 + i4, localPaint, true);
+          localatwp.a(paramCanvas, paramInt1, i1 + i4, localPaint, true);
           continue;
         }
-        localatsg.a(paramCanvas, paramInt1, i1 + i4, this.jdField_c_of_type_AndroidGraphicsPaint, true);
+        localatwp.a(paramCanvas, paramInt1, i1 + i4, this.jdField_c_of_type_AndroidGraphicsPaint, true);
       }
       finally {}
       continue;
@@ -352,43 +352,43 @@ public class LyricViewInternal
     }
   }
   
-  protected void a(atse paramatse, Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint)
+  protected void a(atwn paramatwn, Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint)
   {
-    paramatse = paramatse.a();
+    paramatwn = paramatwn.a();
     int i3 = this.jdField_b_of_type_Int;
     int i4 = this.jdField_c_of_type_Int;
     int i2 = 0;
     int i1 = paramInt2;
     paramInt2 = i2;
-    while (paramInt2 < paramatse.size())
+    while (paramInt2 < paramatwn.size())
     {
-      ((atsg)paramatse.get(paramInt2)).a(paramCanvas, paramInt1, i1 + this.jdField_c_of_type_Int, paramPaint, false);
+      ((atwp)paramatwn.get(paramInt2)).a(paramCanvas, paramInt1, i1 + this.jdField_c_of_type_Int, paramPaint, false);
       i1 += i3 + i4;
       paramInt2 += 1;
     }
   }
   
-  protected void a(atse paramatse, Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint1, Paint paramPaint2)
+  protected void a(atwn paramatwn, Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint1, Paint paramPaint2)
   {
-    paramatse = paramatse.a();
+    paramatwn = paramatwn.a();
     int i3 = this.jdField_b_of_type_Int;
     int i4 = this.jdField_c_of_type_Int;
     int i2 = 0;
     int i1 = paramInt2;
     paramInt2 = i2;
-    while (paramInt2 < paramatse.size())
+    while (paramInt2 < paramatwn.size())
     {
-      ((atsg)paramatse.get(paramInt2)).a(paramCanvas, paramInt1, i1 + this.jdField_c_of_type_Int, paramPaint1, paramPaint2);
+      ((atwp)paramatwn.get(paramInt2)).a(paramCanvas, paramInt1, i1 + this.jdField_c_of_type_Int, paramPaint1, paramPaint2);
       i1 += i3 + i4;
       paramInt2 += 1;
     }
   }
   
-  protected void a(atse paramatse, Canvas paramCanvas, int paramInt1, int paramInt2, boolean paramBoolean)
+  protected void a(atwn paramatwn, Canvas paramCanvas, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    ArrayList localArrayList = paramatse.a();
+    ArrayList localArrayList = paramatwn.a();
     if (paramBoolean) {}
-    for (paramatse = this.jdField_b_of_type_AndroidGraphicsPaint;; paramatse = this.jdField_a_of_type_AndroidGraphicsPaint)
+    for (paramatwn = this.jdField_b_of_type_AndroidGraphicsPaint;; paramatwn = this.jdField_a_of_type_AndroidGraphicsPaint)
     {
       int i3 = this.jdField_b_of_type_Int;
       int i4 = this.jdField_c_of_type_Int;
@@ -397,33 +397,33 @@ public class LyricViewInternal
       paramInt2 = i2;
       while (paramInt2 < localArrayList.size())
       {
-        ((atsg)localArrayList.get(paramInt2)).a(paramCanvas, paramInt1, i1 + this.jdField_c_of_type_Int, paramatse, paramBoolean);
+        ((atwp)localArrayList.get(paramInt2)).a(paramCanvas, paramInt1, i1 + this.jdField_c_of_type_Int, paramatwn, paramBoolean);
         i1 += i3 + i4;
         paramInt2 += 1;
       }
     }
   }
   
-  public void a(atsu paramatsu)
+  public void a(atxd paramatxd)
   {
-    this.jdField_a_of_type_Atsc = new atsc(2, 0, null);
-    this.jdField_b_of_type_Atsc = new atsc(2, 0, null);
-    this.jdField_d_of_type_Int = paramatsu.jdField_j_of_type_Int;
-    this.jdField_b_of_type_Int = paramatsu.jdField_d_of_type_Int;
-    this.jdField_c_of_type_Int = paramatsu.jdField_i_of_type_Int;
-    int i1 = paramatsu.jdField_e_of_type_Int;
-    int i2 = paramatsu.jdField_f_of_type_Int;
-    int i3 = paramatsu.jdField_g_of_type_Int;
-    this.jdField_e_of_type_Int = paramatsu.jdField_h_of_type_Int;
-    int i4 = paramatsu.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Int = paramatsu.jdField_a_of_type_Int;
-    this.jdField_g_of_type_Boolean = paramatsu.jdField_a_of_type_Boolean;
-    boolean bool = paramatsu.jdField_b_of_type_Boolean;
+    this.jdField_a_of_type_Atwl = new atwl(2, 0, null);
+    this.jdField_b_of_type_Atwl = new atwl(2, 0, null);
+    this.jdField_d_of_type_Int = paramatxd.jdField_j_of_type_Int;
+    this.jdField_b_of_type_Int = paramatxd.jdField_d_of_type_Int;
+    this.jdField_c_of_type_Int = paramatxd.jdField_i_of_type_Int;
+    int i1 = paramatxd.jdField_e_of_type_Int;
+    int i2 = paramatxd.jdField_f_of_type_Int;
+    int i3 = paramatxd.jdField_g_of_type_Int;
+    this.jdField_e_of_type_Int = paramatxd.jdField_h_of_type_Int;
+    int i4 = paramatxd.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Int = paramatxd.jdField_a_of_type_Int;
+    this.jdField_g_of_type_Boolean = paramatxd.jdField_a_of_type_Boolean;
+    boolean bool = paramatxd.jdField_b_of_type_Boolean;
     this.jdField_i_of_type_Boolean = true;
     this.v = 3;
     this.w = 2;
-    this.jdField_g_of_type_Int = paramatsu.l;
-    this.jdField_a_of_type_Boolean = paramatsu.jdField_c_of_type_Boolean;
+    this.jdField_g_of_type_Int = paramatxd.l;
+    this.jdField_a_of_type_Boolean = paramatxd.jdField_c_of_type_Boolean;
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_c_of_type_AndroidGraphicsPaint.setTextSize(i1);
     this.jdField_c_of_type_AndroidGraphicsPaint.setColor(i3);
@@ -479,9 +479,9 @@ public class LyricViewInternal
     return paramInt;
   }
   
-  public atsc b()
+  public atwl b()
   {
-    return this.jdField_a_of_type_Atsc;
+    return this.jdField_a_of_type_Atwl;
   }
   
   void b()
@@ -538,13 +538,13 @@ public class LyricViewInternal
       int i5 = this.jdField_c_of_type_Int;
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Atsc.a(this.jdField_b_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidGraphicsPaint, paramInt1, false, true);
-        if ((this.jdField_b_of_type_Atsc != null) && (this.jdField_a_of_type_Atsc.a() == this.jdField_b_of_type_Atsc.a()))
+        this.jdField_a_of_type_Atwl.a(this.jdField_b_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidGraphicsPaint, paramInt1, false, true);
+        if ((this.jdField_b_of_type_Atwl != null) && (this.jdField_a_of_type_Atwl.a() == this.jdField_b_of_type_Atwl.a()))
         {
           if (!this.jdField_a_of_type_Boolean) {
             break label222;
           }
-          this.jdField_b_of_type_Atsc.a(this.jdField_b_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidGraphicsPaint, paramInt1, false, true);
+          this.jdField_b_of_type_Atwl.a(this.jdField_b_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidGraphicsPaint, paramInt1, false, true);
         }
       }
       int i1;
@@ -561,27 +561,27 @@ public class LyricViewInternal
             break;
           }
           paramInt1 = paramInt2;
-          if (this.jdField_a_of_type_Atsc.jdField_a_of_type_JavaUtilArrayList.get(i1) != null) {
-            paramInt1 = paramInt2 + ((atse)this.jdField_a_of_type_Atsc.jdField_a_of_type_JavaUtilArrayList.get(i1)).a();
+          if (this.jdField_a_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList.get(i1) != null) {
+            paramInt1 = paramInt2 + ((atwn)this.jdField_a_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList.get(i1)).a();
           }
           i1 += 1;
           paramInt2 = paramInt1;
         }
-        this.jdField_a_of_type_Atsc.a(this.jdField_b_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidGraphicsPaint, paramInt1);
+        this.jdField_a_of_type_Atwl.a(this.jdField_b_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidGraphicsPaint, paramInt1);
         break;
         label222:
-        this.jdField_b_of_type_Atsc.a(this.jdField_b_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidGraphicsPaint, paramInt1);
+        this.jdField_b_of_type_Atwl.a(this.jdField_b_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidGraphicsPaint, paramInt1);
       }
       label241:
-      paramInt1 = this.jdField_a_of_type_Atsc.b();
+      paramInt1 = this.jdField_a_of_type_Atwl.b();
       paramInt2 = paramInt1;
       if (this.jdField_f_of_type_Boolean)
       {
         paramInt2 = paramInt1;
-        if (this.jdField_b_of_type_Atsc != null)
+        if (this.jdField_b_of_type_Atwl != null)
         {
           paramInt2 = paramInt1;
-          if (this.jdField_b_of_type_Atsc.jdField_a_of_type_JavaUtilArrayList != null) {
+          if (this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList != null) {
             if (this.jdField_b_of_type_Boolean)
             {
               i1 = this.p;
@@ -589,13 +589,13 @@ public class LyricViewInternal
               if (i1 <= this.q)
               {
                 paramInt2 = paramInt1;
-                if (i1 < this.jdField_b_of_type_Atsc.jdField_a_of_type_JavaUtilArrayList.size()) {
+                if (i1 < this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList.size()) {
                   if (i1 >= 0) {
                     break label332;
                   }
                 }
                 label332:
-                for (paramInt2 = paramInt1;; paramInt2 = paramInt1 + ((atse)this.jdField_b_of_type_Atsc.jdField_a_of_type_JavaUtilArrayList.get(i1)).a())
+                for (paramInt2 = paramInt1;; paramInt2 = paramInt1 + ((atwn)this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList.get(i1)).a())
                 {
                   i1 += 1;
                   paramInt1 = paramInt2;
@@ -605,7 +605,7 @@ public class LyricViewInternal
             }
             else
             {
-              paramInt2 = paramInt1 + this.jdField_b_of_type_Atsc.b();
+              paramInt2 = paramInt1 + this.jdField_b_of_type_Atwl.b();
             }
           }
         }
@@ -656,7 +656,7 @@ public class LyricViewInternal
   {
     if ((paramInt1 >= 0) && (paramInt2 > paramInt1))
     {
-      if ((this.jdField_a_of_type_Atsc == null) || (this.jdField_a_of_type_Atsc.a())) {
+      if ((this.jdField_a_of_type_Atwl == null) || (this.jdField_a_of_type_Atwl.a())) {
         Log.e("ModuleLyricViewInternal", "setSegment -> lyric is empty");
       }
     }
@@ -672,8 +672,8 @@ public class LyricViewInternal
     }
     this.n = paramInt1;
     this.o = paramInt2;
-    this.p = this.jdField_a_of_type_Atsc.b(paramInt1);
-    this.q = this.jdField_a_of_type_Atsc.c(paramInt2);
+    this.p = this.jdField_a_of_type_Atwl.b(paramInt1);
+    this.q = this.jdField_a_of_type_Atwl.c(paramInt2);
     if ((this.p < 0) || (this.q < 0))
     {
       Log.e("ModuleLyricViewInternal", "setSegment -> lyric line number is illegal");

@@ -1,19 +1,46 @@
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View.OnTouchListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
-public class yaz
-  implements View.OnClickListener
+class yaz
+  implements View.OnTouchListener
 {
-  public yaz(CommentBottomBar paramCommentBottomBar) {}
+  yaz(yay paramyay, Drawable paramDrawable, ybe paramybe) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!bdee.g(this.a.getContext())) {
-      QQToast.a(this.a.getContext(), alpo.a(2131694770), 0).a();
+    switch (paramMotionEvent.getAction())
+    {
     }
-    this.a.a();
+    for (;;)
+    {
+      return true;
+      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable)) {
+        if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
+        {
+          ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-15263977);
+        }
+        else
+        {
+          ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-920840);
+          continue;
+          if (yay.a(this.jdField_a_of_type_Yay) != null) {
+            yay.a(this.jdField_a_of_type_Yay).a(this.jdField_a_of_type_Ybe);
+          }
+          if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable)) {
+            if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
+              ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-16777216);
+            } else {
+              ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-1);
+            }
+          }
+        }
+      }
+    }
   }
 }
 

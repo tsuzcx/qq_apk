@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import bdje;
+import bdnn;
 
 final class MiniLogManager$2
   extends BroadcastReceiver
@@ -12,7 +12,7 @@ final class MiniLogManager$2
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (bdje.a(paramContext)) {}
+    if (bdnn.a(paramContext)) {}
     do
     {
       return;

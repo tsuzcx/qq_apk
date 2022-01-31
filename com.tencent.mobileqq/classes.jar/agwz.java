@@ -1,38 +1,28 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-
 public class agwz
-  implements BusinessObserver
 {
-  private Handler a;
+  public double a;
+  public double b;
   
-  agwz(Handler paramHandler)
+  public agwz(double paramDouble1, double paramDouble2)
   {
-    this.a = paramHandler;
+    this.a = paramDouble1;
+    this.b = paramDouble2;
   }
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public agwz(agwz paramagwz)
   {
-    paramInt = paramBundle.getInt("ErrorCode");
-    String str1 = paramBundle.getString("UniqueKey");
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituObserver", 2, agwq.a(str1, "onReceive", "observer onReceive with code: " + paramInt));
-    }
-    String str2 = agwq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
-    if (!str2.equals(str1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituObserver", 2, agwq.a(str1, "onReceive", "response with " + str1 + " but the last one is " + str2 + ", skip."));
-      }
-    }
-    while (this.a == null) {
-      return;
-    }
-    paramBundle = this.a.obtainMessage(2, paramBundle);
-    this.a.sendMessage(paramBundle);
+    a(paramagwz);
+  }
+  
+  public void a(agwz paramagwz)
+  {
+    this.a = paramagwz.a;
+    this.b = paramagwz.b;
+  }
+  
+  public String toString()
+  {
+    return "Acceleration{ax=" + this.a + ", ay=" + this.b + '}';
   }
 }
 

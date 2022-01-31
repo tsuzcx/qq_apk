@@ -1,28 +1,13 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
 
-final class bcvm
-  implements DownloadParams.DecodeHandler
+public class bcvm
+  implements baej
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public bcvm(TroopGiftToPersonalSurfaceView paramTroopGiftToPersonalSurfaceView, baej parambaej) {}
+  
+  public void a()
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return bdda.e(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToPersonalSurfaceView.a(0, new bcvn(this));
   }
 }
 

@@ -1,41 +1,41 @@
 package com.tencent.mobileqq.ar.model;
 
-import amrz;
-import amxp;
-import anbo;
+import amwo;
+import anby;
+import anfx;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public class QQARSession$24
   implements Runnable
 {
-  public QQARSession$24(anbo paramanbo, int paramInt) {}
+  public QQARSession$24(anfx paramanfx, int paramInt) {}
   
   public void run()
   {
-    if (!anbo.a(this.this$0).d())
+    if (!anfx.a(this.this$0).d())
     {
-      if (anbo.a(this.this$0).j()) {
-        anbo.c(this.this$0);
+      if (anfx.a(this.this$0).j()) {
+        anfx.c(this.this$0);
       }
-      if (anbo.a(this.this$0) != 1L) {
+      if (anfx.a(this.this$0) != 1L) {
         break label132;
       }
       this.this$0.b(1L);
-      anbo.b(this.this$0);
+      anfx.b(this.this$0);
     }
     for (;;)
     {
       this.this$0.k();
-      if ((anbo.b(this.this$0)) && (this.this$0.a == 2) && (anbo.a(this.this$0) != null))
+      if ((anfx.b(this.this$0)) && (this.this$0.a == 2) && (anfx.a(this.this$0) != null))
       {
-        amrz localamrz = new amrz(anbo.a(this.this$0));
-        anbo.a(this.this$0).a(3, localamrz, this.a);
+        amwo localamwo = new amwo(anfx.a(this.this$0));
+        anfx.a(this.this$0).a(3, localamwo, this.a);
       }
       return;
       label132:
-      if (anbo.a(this.this$0) == 2L) {
+      if (anfx.a(this.this$0) == 2L) {
         this.this$0.m();
-      } else if (anbo.a(this.this$0) == 2048L) {
+      } else if (anfx.a(this.this$0) == 2048L) {
         this.this$0.o();
       }
     }

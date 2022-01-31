@@ -2,7 +2,7 @@ package com.tencent.mobileqq.widget;
 
 import android.os.Handler;
 import android.os.Message;
-import bcwh;
+import bdaq;
 import com.tencent.mobileqq.app.ThreadManager;
 
 class DraggableGridView$ScrollThread
@@ -36,7 +36,7 @@ class DraggableGridView$ScrollThread
     {
       int i = 0;
       if (this.jdField_a_of_type_Int == 1) {
-        i = bcwh.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
+        i = bdaq.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
       }
       for (;;)
       {
@@ -53,7 +53,7 @@ class DraggableGridView$ScrollThread
         }
         break;
         if (this.jdField_a_of_type_Int == 2) {
-          i = -bcwh.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
+          i = -bdaq.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
         }
       }
     }

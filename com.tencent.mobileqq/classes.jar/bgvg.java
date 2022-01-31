@@ -1,349 +1,411 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.os.Process;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
-import com.tencent.qqmini.sdk.manager.EngineVersion;
-import com.tencent.qqmini.sdk.manager.InstalledEngine;
-import com.tencent.qqmini.sdk.minigame.task.InstalledEngineLoadTask.1;
-import com.tencent.qqmini.sdk.minigame.utils.TTHandleThread;
-import com.tencent.qqmini.sdk.utils.DebugUtil;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.util.SparseArray;
+import com.tencent.qqmini.sdk.launcher.dynamic.ReflectException;
+import java.lang.reflect.AccessibleObject;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Member;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
-@bghi(a="InstalledEngineLoadTask")
 public class bgvg
-  extends bhhm
-  implements bgrs
 {
-  private EngineChannel jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel;
-  private InstalledEngine jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine;
-  private final String jdField_a_of_type_JavaLangString = "[MiniEng]" + toString();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private int b;
-  private int c;
+  private static SparseArray<Class> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private static SparseArray<Method> b = new SparseArray();
+  private static SparseArray<Constructor> c = new SparseArray();
+  private static SparseArray<Field> d = new SparseArray();
+  private final Object jdField_a_of_type_JavaLangObject;
+  private final boolean jdField_a_of_type_Boolean;
   
-  public bgvg(Context paramContext, bgqg parambgqg)
+  private bgvg(Class<?> paramClass)
   {
-    super(paramContext, parambgqg);
-    bgwc.a().i(this.jdField_a_of_type_JavaLangString, "new InstalledEngineLoadTask");
+    this.jdField_a_of_type_JavaLangObject = paramClass;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  private String a(String paramString)
+  private bgvg(Object paramObject)
   {
-    long l = System.currentTimeMillis();
-    Object localObject = new File(paramString);
-    if (((File)localObject).exists()) {}
-    for (;;)
-    {
-      try
-      {
-        localObject = bgwf.a((File)localObject);
-        if (localObject == null) {
-          continue;
-        }
-      }
-      catch (IOException localIOException)
-      {
-        str = "";
-        continue;
-      }
-      bgwc.a().d(this.jdField_a_of_type_JavaLangString, "[MiniEng] calcMD5 " + paramString + ", md5:" + (String)localObject + ", cost:" + (System.currentTimeMillis() - l));
-      return localObject;
-      localObject = "";
-      continue;
-      String str = "";
-    }
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  private boolean a(InstalledEngine paramInstalledEngine)
+  public static bgvg a(Class<?> paramClass)
   {
-    if ((paramInstalledEngine == null) || (TextUtils.isEmpty(paramInstalledEngine.jdField_b_of_type_JavaLangString))) {
-      return false;
-    }
-    File localFile = new File(paramInstalledEngine.jdField_b_of_type_JavaLangString);
-    if ((!localFile.exists()) || (localFile.isFile())) {
-      return false;
-    }
-    boolean bool;
+    return new bgvg(paramClass);
+  }
+  
+  public static bgvg a(Object paramObject)
+  {
+    return new bgvg(paramObject);
+  }
+  
+  public static bgvg a(String paramString)
+  {
+    return a(a(paramString));
+  }
+  
+  public static bgvg a(String paramString, ClassLoader paramClassLoader)
+  {
+    return a(a(paramString, paramClassLoader));
+  }
+  
+  private static bgvg a(Constructor<?> paramConstructor, Object... paramVarArgs)
+  {
     try
     {
-      localObject1 = new File(localFile, "verify.json");
-      if ((((File)localObject1).exists()) && (((File)localObject1).isFile())) {
-        break label134;
-      }
-      bgwc.a().i(this.jdField_a_of_type_JavaLangString, "verifyEngine " + paramInstalledEngine + " has no verify.json, skip!");
-      return true;
+      paramConstructor = a(paramConstructor.newInstance(paramVarArgs));
+      return paramConstructor;
     }
-    catch (Throwable paramInstalledEngine)
+    catch (Exception paramConstructor)
     {
-      bgwc.a().e(this.jdField_a_of_type_JavaLangString, "verifyEngine exception.", paramInstalledEngine);
-      bool = false;
-    }
-    return bool;
-    label134:
-    Object localObject1 = bgkv.b((File)localObject1);
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      bgwc.a().i(this.jdField_a_of_type_JavaLangString, "verifyEngine " + paramInstalledEngine + " verify.json has no content, skip!");
-      return true;
-    }
-    if (QMLog.isColorLevel()) {
-      bgwc.a().d(this.jdField_a_of_type_JavaLangString, "verifyEngine " + paramInstalledEngine + " content:" + (String)localObject1);
-    }
-    localObject1 = new JSONObject((String)localObject1);
-    if (!((JSONObject)localObject1).has("verify_list"))
-    {
-      bgwc.a().i(this.jdField_a_of_type_JavaLangString, "verifyEngine " + paramInstalledEngine + " verify.json has no verify_list, skip!");
-      return true;
-    }
-    paramInstalledEngine = ((JSONObject)localObject1).getJSONArray("verify_list");
-    int i = 0;
-    for (;;)
-    {
-      if (i < paramInstalledEngine.length())
-      {
-        if (paramInstalledEngine.get(i) == null)
-        {
-          bgwc.a().e(this.jdField_a_of_type_JavaLangString, "配置文件格式异常！！请使用json工具检测");
-          break label621;
-        }
-        Object localObject3 = (JSONObject)paramInstalledEngine.get(i);
-        localObject1 = ((JSONObject)localObject3).optString("name");
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label621;
-        }
-        Object localObject2 = new File(localFile, (String)localObject1);
-        if ((!((File)localObject2).exists()) || (!((File)localObject2).isFile()))
-        {
-          bgwc.a().w(this.jdField_a_of_type_JavaLangString, "verifyEngine file " + (String)localObject1 + " not found");
-          bool = false;
-          break;
-        }
-        int j = ((JSONObject)localObject3).optInt("length");
-        if ((j > 0) && (((File)localObject2).length() != j))
-        {
-          bgwc.a().w(this.jdField_a_of_type_JavaLangString, "verifyEngine file " + (String)localObject1 + " length fail, config_length:" + j + ", local_length:" + ((File)localObject2).length());
-          bool = false;
-          break;
-        }
-        localObject3 = ((JSONObject)localObject3).optString("md5");
-        if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          break label621;
-        }
-        localObject2 = a(((File)localObject2).getAbsolutePath());
-        if ((TextUtils.isEmpty((CharSequence)localObject2)) || (((String)localObject3).equalsIgnoreCase((String)localObject2))) {
-          break label621;
-        }
-        bgwc.a().w(this.jdField_a_of_type_JavaLangString, "verifyEngine file " + (String)localObject1 + " md5 fail, config_md5:" + (String)localObject3 + ", local_md5:" + (String)localObject2);
-        bool = false;
-        break;
-      }
-      bool = true;
-      break;
-      label621:
-      i += 1;
+      throw new ReflectException(paramConstructor);
     }
   }
   
-  private InstalledEngine b()
+  public static Class<?> a(Class<?> paramClass)
   {
-    InstalledEngine localInstalledEngine = new InstalledEngine();
-    localInstalledEngine.jdField_a_of_type_Int = 2;
-    localInstalledEngine.jdField_a_of_type_ComTencentQqminiSdkManagerEngineVersion = EngineVersion.a(b() + "_" + "1.14.0.00225");
-    localInstalledEngine.jdField_b_of_type_JavaLangString = "";
-    localInstalledEngine.jdField_a_of_type_Boolean = true;
-    localInstalledEngine.jdField_b_of_type_Boolean = true;
-    localInstalledEngine.jdField_a_of_type_JavaLangString = "MiniGame-Default";
-    bgwc.a().i(this.jdField_a_of_type_JavaLangString, "generateDefaultEngine, " + localInstalledEngine);
-    return localInstalledEngine;
-  }
-  
-  private static String b()
-  {
-    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();
-  }
-  
-  private void b(int paramInt, Bundle paramBundle)
-  {
-    paramBundle.putInt("baseLibType", 2);
-    paramBundle.putInt("enginePid", Process.myPid());
-    bgwc.a().i(this.jdField_a_of_type_JavaLangString, "installEngineRequestCount, " + this.b + " upgradeEngineRequestCount, " + this.c + "," + paramInt);
-    if (paramInt == 5) {
-      this.c += 1;
+    Class<?> localClass;
+    if (paramClass == null) {
+      localClass = null;
     }
-    if (paramInt == 3) {
-      this.b += 1;
-    }
-    if (this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel != null)
-    {
-      this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(paramInt, paramBundle);
-      return;
-    }
-    bgwc.a().w(this.jdField_a_of_type_JavaLangString, "failed sendCommand mEngineChannel is null");
-  }
-  
-  private void d()
-  {
-    EngineChannel localEngineChannel = new EngineChannel();
-    localEngineChannel.a("GameEngine(" + Process.myPid() + ")");
-    localEngineChannel.a(this);
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("engineChannel", localEngineChannel);
-    b(1, localBundle);
-  }
-  
-  private void h()
-  {
-    TTHandleThread.a().a(new InstalledEngineLoadTask.1(this), 100L);
-  }
-  
-  public InstalledEngine a()
-  {
-    return this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine;
-  }
-  
-  public String a()
-  {
-    InstalledEngine localInstalledEngine = a();
-    if (localInstalledEngine != null)
-    {
-      if (localInstalledEngine.jdField_a_of_type_Boolean) {
-        return localInstalledEngine.jdField_b_of_type_JavaLangString + "/";
-      }
-      bgwc.a().e(this.jdField_a_of_type_JavaLangString, "getInstalledEnginePath failed, engine:" + localInstalledEngine + DebugUtil.getStackTrace());
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    if (this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel == null)
-    {
-      h();
-      return;
-    }
-    d();
-    h();
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    bgwc.a().i(this.jdField_a_of_type_JavaLangString, "onReceiveData what=" + paramInt);
-    if (paramBundle != null) {
-      paramBundle.setClassLoader(getClass().getClassLoader());
-    }
-    if (paramInt == 55) {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    }
-    Object localObject;
-    if (paramInt == 51) {
-      if (paramBundle != null)
-      {
-        paramBundle = paramBundle.getParcelableArrayList("installedEngineList");
-        if (paramBundle != null)
-        {
-          bgwc.a().i(this.jdField_a_of_type_JavaLangString, "getInstalledEngineList success " + paramBundle.size());
-          paramBundle = paramBundle.iterator();
-          if (paramBundle.hasNext())
-          {
-            localObject = (InstalledEngine)paramBundle.next();
-            if (a((InstalledEngine)localObject))
-            {
-              this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine = ((InstalledEngine)localObject);
-              bgwc.a().i(this.jdField_a_of_type_JavaLangString, "verifyEngine " + localObject + " success, break");
-            }
-          }
-          else
-          {
-            label193:
-            if (this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine == null) {
-              break label340;
-            }
-            bgwc.a().i(this.jdField_a_of_type_JavaLangString, "get InstalledEngine success:" + this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine);
-            c();
-          }
-        }
-      }
-    }
-    label340:
     do
     {
       do
       {
-        return;
-        bgwc.a().w(this.jdField_a_of_type_JavaLangString, "verifyEngine " + localObject + " fail, check next one");
-        Bundle localBundle = new Bundle();
-        localBundle.putParcelable("invalidEngine", (Parcelable)localObject);
-        b(56, localBundle);
-        break;
-        bgwc.a().i(this.jdField_a_of_type_JavaLangString, "getInstalledEngineList gameEngineList is null");
-        break label193;
-        bgwc.a().i(this.jdField_a_of_type_JavaLangString, "getInstalledEngineList data is null");
-        break label193;
-        if (this.b < 2)
-        {
-          bgwc.a().i(this.jdField_a_of_type_JavaLangString, "no engine installed, send cmd WHAT_INSTALL_LATEST_ENGINE");
-          b(3, new Bundle());
-          return;
-        }
-        bgwc.a().i(this.jdField_a_of_type_JavaLangString, "no engine installed but installEngineRequestCount reaches max 2");
-        this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine = b();
-        c();
-        return;
-        if (paramInt == 52)
-        {
-          bgwc.a().i(this.jdField_a_of_type_JavaLangString, "EVENT_INSTALL_LATEST_ENGINE_BEGIN");
-          return;
-        }
-        if (paramInt != 53) {
-          break label531;
-        }
-      } while (paramBundle == null);
-      localObject = paramBundle.getString("engineInstallerMessage");
-      float f = paramBundle.getFloat("engineInstallerProgress");
-      bgwc.a().i(this.jdField_a_of_type_JavaLangString, "EVENT_INSTALL_LATEST_ENGINE_PROCESS, message:" + (String)localObject + ", progress:" + f);
-      paramBundle = new bgvr().a((String)localObject).a(f).a();
-      a().notifyRuntimeEvent(2011, new Object[] { paramBundle });
-      return;
-    } while (paramInt != 54);
-    label531:
-    bgwc.a().i(this.jdField_a_of_type_JavaLangString, "EVENT_INSTALL_LATEST_ENGINE_FINISH");
-    b(1, new Bundle());
+        return localClass;
+        localClass = paramClass;
+      } while (!paramClass.isPrimitive());
+      if (Boolean.TYPE == paramClass) {
+        return Boolean.class;
+      }
+      if (Integer.TYPE == paramClass) {
+        return Integer.class;
+      }
+      if (Long.TYPE == paramClass) {
+        return Long.class;
+      }
+      if (Short.TYPE == paramClass) {
+        return Short.class;
+      }
+      if (Byte.TYPE == paramClass) {
+        return Byte.class;
+      }
+      if (Double.TYPE == paramClass) {
+        return Double.class;
+      }
+      if (Float.TYPE == paramClass) {
+        return Float.class;
+      }
+      if (Character.TYPE == paramClass) {
+        return Character.class;
+      }
+      localClass = paramClass;
+    } while (Void.TYPE != paramClass);
+    return Void.class;
   }
   
-  public void a(EngineChannel paramEngineChannel)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel = paramEngineChannel;
-  }
-  
-  public void b()
+  private static Class<?> a(String paramString)
   {
     try
     {
-      bgwc.a().i(this.jdField_a_of_type_JavaLangString, "[MiniEng]" + this + " reset ");
-      this.b = 0;
-      this.c = 0;
-      this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine = null;
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = null;
-      super.b();
-      return;
+      int i = paramString.hashCode();
+      if (jdField_a_of_type_AndroidUtilSparseArray.get(i) != null) {
+        return (Class)jdField_a_of_type_AndroidUtilSparseArray.get(i);
+      }
+      paramString = Class.forName(paramString);
+      if (paramString != null)
+      {
+        jdField_a_of_type_AndroidUtilSparseArray.put(i, paramString);
+        return paramString;
+      }
     }
-    finally
+    catch (Exception paramString)
     {
-      localObject = finally;
-      throw localObject;
+      throw new ReflectException(paramString);
     }
+    return paramString;
+  }
+  
+  private static Class<?> a(String paramString, ClassLoader paramClassLoader)
+  {
+    try
+    {
+      paramString = Class.forName(paramString, true, paramClassLoader);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      throw new ReflectException(paramString);
+    }
+  }
+  
+  public static <T extends AccessibleObject> T a(T paramT)
+  {
+    T ?;
+    if (paramT == null) {
+      ? = null;
+    }
+    do
+    {
+      Member localMember;
+      do
+      {
+        return ?;
+        if (!(paramT instanceof Member)) {
+          break;
+        }
+        localMember = (Member)paramT;
+        if (!Modifier.isPublic(localMember.getModifiers())) {
+          break;
+        }
+        ? = paramT;
+      } while (Modifier.isPublic(localMember.getDeclaringClass().getModifiers()));
+      ? = paramT;
+    } while (paramT.isAccessible());
+    paramT.setAccessible(true);
+    return paramT;
+  }
+  
+  private Field a(String paramString)
+  {
+    Class localClass = a();
+    try
+    {
+      i = localClass.hashCode();
+      i = paramString.hashCode() + i;
+      if (d.get(i) != null) {
+        return (Field)d.get(i);
+      }
+      localField2 = localClass.getField(paramString);
+      localField1 = localField2;
+      if (localField2 != null)
+      {
+        d.put(i, localField2);
+        return localField2;
+      }
+    }
+    catch (NoSuchFieldException localNoSuchFieldException2)
+    {
+      for (;;)
+      {
+        try
+        {
+          int i = localClass.hashCode();
+          i = paramString.hashCode() + i;
+          if (d.get(i) != null) {
+            return (Field)d.get(i);
+          }
+          Field localField2 = (Field)a(localClass.getDeclaredField(paramString));
+          Field localField1 = localField2;
+          if (localField2 == null) {
+            break;
+          }
+          d.put(i, localField2);
+          return localField2;
+        }
+        catch (NoSuchFieldException localNoSuchFieldException1)
+        {
+          localClass = localClass.getSuperclass();
+          if (localClass == null) {
+            throw new ReflectException(localNoSuchFieldException2);
+          }
+        }
+      }
+      return localNoSuchFieldException1;
+    }
+  }
+  
+  private boolean a(Class<?>[] paramArrayOfClass1, Class<?>[] paramArrayOfClass2)
+  {
+    if (paramArrayOfClass1.length == paramArrayOfClass2.length)
+    {
+      int i = 0;
+      if (i < paramArrayOfClass2.length)
+      {
+        if (paramArrayOfClass2[i] == bgvh.class) {}
+        while (a(paramArrayOfClass1[i]).isAssignableFrom(a(paramArrayOfClass2[i])))
+        {
+          i += 1;
+          break;
+        }
+      }
+    }
+    else
+    {
+      return false;
+    }
+    return true;
+  }
+  
+  private static Class<?>[] a(Object... paramVarArgs)
+  {
+    int i = 0;
+    if (paramVarArgs == null) {
+      return new Class[0];
+    }
+    Class[] arrayOfClass = new Class[paramVarArgs.length];
+    if (i < paramVarArgs.length)
+    {
+      Object localObject = paramVarArgs[i];
+      if (localObject == null) {}
+      for (localObject = bgvh.class;; localObject = localObject.getClass())
+      {
+        arrayOfClass[i] = localObject;
+        i += 1;
+        break;
+      }
+    }
+    return arrayOfClass;
+  }
+  
+  public bgvg a()
+  {
+    return a(new Object[0]);
+  }
+  
+  /* Error */
+  public bgvg a(Object... paramVarArgs)
+  {
+    // Byte code:
+    //   0: aload_1
+    //   1: invokestatic 203	bgvg:a	([Ljava/lang/Object;)[Ljava/lang/Class;
+    //   4: astore 5
+    //   6: aload_0
+    //   7: invokevirtual 166	bgvg:a	()Ljava/lang/Class;
+    //   10: astore 4
+    //   12: aload 5
+    //   14: invokevirtual 167	java/lang/Object:hashCode	()I
+    //   17: aload_1
+    //   18: invokestatic 208	java/util/Arrays:hashCode	([Ljava/lang/Object;)I
+    //   21: iadd
+    //   22: istore_2
+    //   23: getstatic 28	bgvg:c	Landroid/util/SparseArray;
+    //   26: iload_2
+    //   27: invokevirtual 122	android/util/SparseArray:get	(I)Ljava/lang/Object;
+    //   30: ifnull +22 -> 52
+    //   33: getstatic 28	bgvg:c	Landroid/util/SparseArray;
+    //   36: iload_2
+    //   37: invokevirtual 122	android/util/SparseArray:get	(I)Ljava/lang/Object;
+    //   40: checkcast 62	java/lang/reflect/Constructor
+    //   43: astore 4
+    //   45: aload 4
+    //   47: aload_1
+    //   48: invokestatic 210	bgvg:a	(Ljava/lang/reflect/Constructor;[Ljava/lang/Object;)Lbgvg;
+    //   51: areturn
+    //   52: aload 4
+    //   54: aload 5
+    //   56: invokevirtual 214	java/lang/Class:getDeclaredConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   59: invokestatic 177	bgvg:a	(Ljava/lang/reflect/AccessibleObject;)Ljava/lang/reflect/AccessibleObject;
+    //   62: checkcast 62	java/lang/reflect/Constructor
+    //   65: astore 4
+    //   67: getstatic 28	bgvg:c	Landroid/util/SparseArray;
+    //   70: iload_2
+    //   71: aload 4
+    //   73: invokevirtual 129	android/util/SparseArray:put	(ILjava/lang/Object;)V
+    //   76: goto -31 -> 45
+    //   79: astore 4
+    //   81: aload_0
+    //   82: invokevirtual 166	bgvg:a	()Ljava/lang/Class;
+    //   85: invokevirtual 218	java/lang/Class:getDeclaredConstructors	()[Ljava/lang/reflect/Constructor;
+    //   88: astore 6
+    //   90: aload 6
+    //   92: arraylength
+    //   93: istore_3
+    //   94: iconst_0
+    //   95: istore_2
+    //   96: iload_2
+    //   97: iload_3
+    //   98: if_icmpge +43 -> 141
+    //   101: aload 6
+    //   103: iload_2
+    //   104: aaload
+    //   105: astore 7
+    //   107: aload_0
+    //   108: aload 7
+    //   110: invokevirtual 222	java/lang/reflect/Constructor:getParameterTypes	()[Ljava/lang/Class;
+    //   113: aload 5
+    //   115: invokespecial 224	bgvg:a	([Ljava/lang/Class;[Ljava/lang/Class;)Z
+    //   118: ifeq +16 -> 134
+    //   121: aload 7
+    //   123: invokestatic 177	bgvg:a	(Ljava/lang/reflect/AccessibleObject;)Ljava/lang/reflect/AccessibleObject;
+    //   126: checkcast 62	java/lang/reflect/Constructor
+    //   129: aload_1
+    //   130: invokestatic 210	bgvg:a	(Ljava/lang/reflect/Constructor;[Ljava/lang/Object;)Lbgvg;
+    //   133: areturn
+    //   134: iload_2
+    //   135: iconst_1
+    //   136: iadd
+    //   137: istore_2
+    //   138: goto -42 -> 96
+    //   141: new 70	com/tencent/qqmini/sdk/launcher/dynamic/ReflectException
+    //   144: dup
+    //   145: aload 4
+    //   147: invokespecial 73	com/tencent/qqmini/sdk/launcher/dynamic/ReflectException:<init>	(Ljava/lang/Throwable;)V
+    //   150: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	151	0	this	bgvg
+    //   0	151	1	paramVarArgs	Object[]
+    //   22	116	2	i	int
+    //   93	6	3	j	int
+    //   10	62	4	localObject	Object
+    //   79	67	4	localNoSuchMethodException	java.lang.NoSuchMethodException
+    //   4	110	5	arrayOfClass	Class[]
+    //   88	14	6	arrayOfConstructor	Constructor[]
+    //   105	17	7	localConstructor	Constructor
+    // Exception table:
+    //   from	to	target	type
+    //   6	45	79	java/lang/NoSuchMethodException
+    //   45	52	79	java/lang/NoSuchMethodException
+    //   52	76	79	java/lang/NoSuchMethodException
+  }
+  
+  public Class<?> a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return (Class)this.jdField_a_of_type_JavaLangObject;
+    }
+    return this.jdField_a_of_type_JavaLangObject.getClass();
+  }
+  
+  public <T> T a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public <T> T a(String paramString)
+  {
+    return b(paramString).a();
+  }
+  
+  public bgvg b(String paramString)
+  {
+    try
+    {
+      paramString = a(a(paramString).get(this.jdField_a_of_type_JavaLangObject));
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      throw new ReflectException(paramString);
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof bgvg)) {
+      return this.jdField_a_of_type_JavaLangObject.equals(((bgvg)paramObject).a());
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_JavaLangObject.hashCode();
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangObject.toString();
   }
 }
 

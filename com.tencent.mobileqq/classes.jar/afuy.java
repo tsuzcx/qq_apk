@@ -1,26 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.MessageForLongMsg;
 
 class afuy
   implements DialogInterface.OnClickListener
 {
-  afuy(afus paramafus, MessageForReplyText paramMessageForReplyText) {}
+  afuy(afuw paramafuw, MessageForLongMsg paramMessageForLongMsg) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Afus.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) && (((bcjl)this.jdField_a_of_type_Afus.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48)).a(this.jdField_a_of_type_Afus.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true).a) && ((this.jdField_a_of_type_Afus.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)))
-    {
-      paramDialogInterface = (BaseActivity)this.jdField_a_of_type_Afus.jdField_a_of_type_AndroidContentContext;
-      QQToast.a(this.jdField_a_of_type_Afus.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131697832, 0).b(paramDialogInterface.getTitleBarHeight());
-      return;
-    }
-    this.jdField_a_of_type_Afus.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, null, true);
+    acjm.a(this.jdField_a_of_type_Afuw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afuw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afuw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongMsg);
   }
 }
 

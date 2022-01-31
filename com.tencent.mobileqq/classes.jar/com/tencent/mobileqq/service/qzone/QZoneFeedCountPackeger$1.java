@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.service.qzone;
 
-import aywk;
+import azat;
 import com.qq.jce.wup.UniAttribute;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -11,7 +11,7 @@ public final class QZoneFeedCountPackeger$1
   
   public void run()
   {
-    aywk.a(this.jdField_a_of_type_ComQqJceWupUniAttribute, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    azat.a(this.jdField_a_of_type_ComQqJceWupUniAttribute, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

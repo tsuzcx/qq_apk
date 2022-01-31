@@ -1,42 +1,15 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
 import java.util.List;
 
 class arlb
-  implements bevo
+  implements yuf
 {
-  arlb(arky paramarky, List paramList, aqns paramaqns, arld paramarld) {}
+  arlb(arla paramarla, boolean paramBoolean, String paramString, short paramShort) {}
   
-  public void a(int paramInt)
+  public void a(List<arnw> paramList)
   {
-    if (paramInt == 2)
-    {
-      armz.d(arky.a(this.jdField_a_of_type_Arky).getString(2131692912));
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        localFileManagerEntity = (FileManagerEntity)localIterator.next();
-        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-          if (bdcs.b(localFileManagerEntity.getFilePath())) {
-            this.jdField_a_of_type_Aqns.a(localFileManagerEntity.getFilePath(), "", arky.a(this.jdField_a_of_type_Arky).getCurrentAccountUin(), 0, false);
-          } else {
-            this.jdField_a_of_type_Aqns.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
-          }
-        }
-      }
-      if (this.jdField_a_of_type_Arld != null) {
-        this.jdField_a_of_type_Arld.a(4, 0);
-      }
+    if (this.jdField_a_of_type_Arla.a.jdField_a_of_type_Arkp != null) {
+      this.jdField_a_of_type_Arla.a.jdField_a_of_type_Arkp.a(paramList, this.jdField_a_of_type_Arla.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Arla.a.b, this.jdField_a_of_type_Arla.a.c, this.jdField_a_of_type_Arla.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
     }
-    while (this.jdField_a_of_type_Arld == null)
-    {
-      Iterator localIterator;
-      FileManagerEntity localFileManagerEntity;
-      return;
-    }
-    this.jdField_a_of_type_Arld.a(4, 1);
   }
 }
 

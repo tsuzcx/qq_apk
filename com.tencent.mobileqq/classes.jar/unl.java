@@ -1,6 +1,14 @@
-public abstract interface unl<T extends unf>
+public class unl
+  implements ulj
 {
-  public abstract void a(int paramInt, String paramString, T paramT);
+  public String a;
+  
+  public void copy(Object paramObject)
+  {
+    if ((paramObject instanceof unl)) {
+      this.a = ((unl)paramObject).a;
+    }
+  }
 }
 
 

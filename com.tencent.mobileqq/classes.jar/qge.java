@@ -1,7 +1,7 @@
 import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
 
 class qge
-  extends afyi
+  extends agcx
 {
   PressEffectImageView jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView;
   

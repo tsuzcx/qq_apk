@@ -1,13 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
+import java.util.List;
 
-public class blhz
-  implements DialogInterface.OnClickListener
+public abstract interface blhz
 {
-  public blhz(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(List<blia> paramList);
 }
 
 

@@ -1,13 +1,65 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class apyb
-  extends apyo
+final class apyb
+  implements aufy<EmoticonPackage>
 {
-  public int a;
-  public List<String> a = new ArrayList();
-  public int b;
-  public int c = -1;
+  apyb(Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, apro paramapro, SessionInfo paramSessionInfo) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage)
+  {
+    boolean bool;
+    if ((paramEmoticonPackage != null) && ((2 != paramEmoticonPackage.status) || (!paramEmoticonPackage.valid))) {
+      if (paramEmoticonPackage.jobType == 4)
+      {
+        bool = true;
+        EmojiHomeUiPlugin.openEmojiDetailPage(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005C13", 0, 0, "", "", "", "");
+      }
+    }
+    label194:
+    do
+    {
+      do
+      {
+        return;
+        bool = false;
+        break;
+        if (!this.jdField_a_of_type_Apro.c()) {
+          break label237;
+        }
+        if (!this.jdField_a_of_type_Apro.b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, true, true)) {
+          break label194;
+        }
+        if (this.jdField_a_of_type_Apro.b())
+        {
+          apxv.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "MbFasong", "MbZidongBofang", 0, 0, "", "", "", "");
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("PicEmoticonInfo", 2, "not support h5magic ");
+      return;
+      ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131690020, 0);
+      paramEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+    } while (paramEmoticonPackage == null);
+    paramEmoticonPackage.obtainMessage(10).sendToTarget();
+    paramEmoticonPackage.obtainMessage(21).sendToTarget();
+    return;
+    label237:
+    ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131690039);
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005C16", 0, 0, "", "", "", "");
+  }
 }
 
 

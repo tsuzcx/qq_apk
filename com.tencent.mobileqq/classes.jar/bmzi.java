@@ -1,26 +1,23 @@
-import android.util.Property;
+import android.view.KeyEvent;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 class bmzi
-  extends Property<bmzg, Integer>
+  implements TextView.OnEditorActionListener
 {
-  bmzi(bmzg parambmzg, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  bmzi(bmzh parambmzh) {}
   
-  public Integer a(bmzg parambmzg)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (parambmzg != null) {
-      return Integer.valueOf(bmzg.b(parambmzg));
+    if (paramInt == 6)
+    {
+      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
+      if (paramTextView != null) {
+        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
+      }
     }
-    return Integer.valueOf(255);
-  }
-  
-  public void a(bmzg parambmzg, Integer paramInteger)
-  {
-    if (parambmzg != null) {
-      bmzg.b(parambmzg, paramInteger.intValue());
-    }
+    return false;
   }
 }
 

@@ -1,61 +1,69 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public abstract class aowf
+public class aowf
 {
-  public static int a(Context paramContext)
-  {
-    try
-    {
-      int i = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode;
-      return i;
-    }
-    catch (Exception paramContext) {}
-    return 0;
-  }
+  private int a;
+  private int b;
+  private int c = 1;
   
-  public static int a(Context paramContext, String paramString)
+  public static aowf a(aoko paramaoko)
   {
-    try
-    {
-      int i = paramContext.getPackageManager().getPackageInfo(paramString, 0).versionCode;
-      return i;
-    }
-    catch (Exception paramContext) {}
-    return 0;
-  }
-  
-  public static String a(Context paramContext)
-  {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
-      return paramContext;
-    }
-    catch (Exception paramContext) {}
-    return "";
-  }
-  
-  public static boolean a(String paramString, Context paramContext)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
-    {
-      return false;
-      paramContext = paramContext.getPackageManager();
-      try
-      {
-        paramString = paramContext.getApplicationInfo(paramString, 0);
-        if (paramString != null) {
-          return true;
-        }
+    aowf localaowf = new aowf();
+    if (paramaoko != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchHotWordConfBean", 2, "parse taskid->" + paramaoko.jdField_a_of_type_Int + " content->" + paramaoko.jdField_a_of_type_JavaLangString);
       }
-      catch (PackageManager.NameNotFoundException paramString) {}
     }
-    return false;
+    try
+    {
+      paramaoko = new JSONObject(paramaoko.jdField_a_of_type_JavaLangString);
+      localaowf.a(paramaoko.optInt("hotword_switch_message", 0));
+      localaowf.b(paramaoko.optInt("hotword_switch_contact", 0));
+      localaowf.c(paramaoko.optInt("hotword_switch_dongtai", 1));
+      return localaowf;
+    }
+    catch (Exception paramaoko)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("SearchHotWordConfBean", 2, "parse error->" + paramaoko.toString());
+    }
+    return localaowf;
+  }
+  
+  void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  void b(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public boolean b()
+  {
+    return this.b == 1;
+  }
+  
+  void c(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public boolean c()
+  {
+    return this.c == 1;
+  }
+  
+  public String toString()
+  {
+    return String.format("mHotWordSwitchTabMessage:%d, mHotWordSwitchTabContact:%d, mHotWordSwitchTabDongtai:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
   }
 }
 

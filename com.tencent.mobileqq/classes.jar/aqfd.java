@@ -1,41 +1,19 @@
-import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
 public class aqfd
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aqfd(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
+  public aqfd(ExtendFriendSquareFragment paramExtendFriendSquareFragment, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (bdee.d(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity))
-    {
-      long l = System.currentTimeMillis();
-      if ((l - this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b < Face2FaceAddFriendActivity.jdField_a_of_type_Long) && (l > this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "click too offen,please try again later ");
-        }
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b = l;
-      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendDetailView.d();
-      paramView = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).obtainMessage();
-      paramView.what = 2;
-      paramView.arg1 = 2;
-      paramView.obj = this.jdField_a_of_type_JavaLangString;
-      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendMessage(paramView);
-      azmj.b(null, "CliOper", "", "", "0X80050EF", "0X80050EF", 2, 0, "", "", "", "");
-      return;
-    }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getResources().getString(2131692347);
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 0, paramView, 0).b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getTitleBarHeight());
+    int[] arrayOfInt = new int[2];
+    this.jdField_a_of_type_AndroidViewView.getLocationInWindow(arrayOfInt);
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment.e = arrayOfInt[1];
   }
 }
 

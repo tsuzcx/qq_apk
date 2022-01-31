@@ -1,21 +1,16 @@
-import mqq.util.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 class anqa
-  implements almm
+  implements DialogInterface.OnDismissListener
 {
-  WeakReference<anpx> a;
+  anqa(anpz paramanpz, bhuf parambhuf) {}
   
-  public anqa(anpx paramanpx)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a = new WeakReference(paramanpx);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    anpx localanpx = (anpx)this.a.get();
-    if (localanpx != null) {
-      localanpx.a(paramBoolean);
-    }
+    this.jdField_a_of_type_Bhuf.dismiss();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearApp actionsheet is closed", new Object[0]));
   }
 }
 

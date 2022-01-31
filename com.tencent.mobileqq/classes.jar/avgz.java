@@ -1,12 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class avgz
-  implements DialogInterface.OnClickListener
+  implements vyn
 {
-  avgz(avgk paramavgk) {}
+  avgz(avgv paramavgv, avgn paramavgn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a_(vyi paramvyi)
+  {
+    this.jdField_a_of_type_Avgn.a(this.jdField_a_of_type_Avgv);
+  }
 }
 
 

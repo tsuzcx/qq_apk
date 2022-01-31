@@ -1,15 +1,41 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract interface azzw
+class azzw
+  implements View.OnClickListener
 {
-  public abstract int a(int paramInt1, int paramInt2, int paramInt3, String paramString, Paint paramPaint);
+  azzw(azzv paramazzv) {}
   
-  public abstract String a(azzc paramazzc, String paramString);
-  
-  public abstract void a(int paramInt, String paramString, Paint paramPaint);
-  
-  public abstract boolean a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2, Paint paramPaint);
+  public void onClick(View paramView)
+  {
+    Context localContext = paramView.getContext();
+    if (bdin.a(localContext) == 1)
+    {
+      azzv.a(this.a, localContext, paramView);
+      if ((localContext instanceof BaseActivity)) {
+        azqs.b(((BaseActivity)localContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
+      }
+    }
+    for (;;)
+    {
+      azqs.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
+      return;
+      if (!bdin.g(localContext))
+      {
+        QQToast.a(localContext, 2131692398, 0).a();
+      }
+      else
+      {
+        Resources localResources = localContext.getResources();
+        bdgm.a(localContext, 232, "", alud.a(2131714984), localResources.getString(2131690648), localResources.getString(2131694953), new azzx(this, localContext, paramView), new azzy(this)).show();
+      }
+    }
+  }
 }
 
 

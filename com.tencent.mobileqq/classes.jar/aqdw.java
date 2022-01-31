@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendMultiLinesTagsView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
 
 public class aqdw
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
+  public aqdw(ExtendFriendEditFragment paramExtendFriendEditFragment, ExtendFriendProfileEditFragment.ExtendFriendInfo paramExtendFriendInfo) {}
   
-  public aqdw(ExtendFriendMultiLinesTagsView paramExtendFriendMultiLinesTagsView, int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    ExtendFriendEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendEditFragment, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo);
   }
 }
 

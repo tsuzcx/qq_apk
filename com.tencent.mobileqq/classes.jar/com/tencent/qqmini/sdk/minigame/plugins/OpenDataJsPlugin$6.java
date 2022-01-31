@@ -2,8 +2,8 @@ package com.tencent.qqmini.sdk.minigame.plugins;
 
 import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetPotentialFriendListRsp;
 import NS_MINI_CLOUDSTORAGE.CloudStorage.StUserGameData;
-import bgkd;
-import bgwc;
+import bgok;
+import bhaj;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
@@ -16,15 +16,15 @@ import org.json.JSONObject;
 class OpenDataJsPlugin$6
   implements AsyncResult
 {
-  OpenDataJsPlugin$6(OpenDataJsPlugin paramOpenDataJsPlugin, bgkd parambgkd) {}
+  OpenDataJsPlugin$6(OpenDataJsPlugin paramOpenDataJsPlugin, bgok parambgok) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     QMLog.d("OpenDataJsPlugin", "getPotentialFriendList receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
     if (paramJSONObject == null)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , ret == null");
-      bgwc.a("handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , ret == null");
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , ret == null");
+      bhaj.a("handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , ret == null");
       this.val$req.b();
       return;
     }
@@ -56,21 +56,21 @@ class OpenDataJsPlugin$6
       }
       catch (Exception paramJSONObject)
       {
-        bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error ", paramJSONObject);
-        bgwc.a("handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error " + paramJSONObject.getMessage());
+        bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error ", paramJSONObject);
+        bhaj.a("handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error " + paramJSONObject.getMessage());
         this.val$req.b();
         return;
       }
       this.val$req.a(paramJSONObject);
       return;
       label338:
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , retCode!=0oruserGameDataList is empty");
-      bgwc.a("handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , retCode!=0oruserGameDataList is empty");
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , retCode!=0oruserGameDataList is empty");
+      bhaj.a("handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , retCode!=0oruserGameDataList is empty");
       this.val$req.b();
       return;
     }
-    bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , isSuc false");
-    bgwc.a("handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , isSuc false");
+    bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , isSuc false");
+    bhaj.a("handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , isSuc false");
     this.val$req.b();
   }
 }

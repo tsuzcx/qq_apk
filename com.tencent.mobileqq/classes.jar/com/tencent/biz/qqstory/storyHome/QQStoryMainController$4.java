@@ -3,8 +3,8 @@ package com.tencent.biz.qqstory.storyHome;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import wcw;
-import wde;
+import whf;
+import whn;
 
 class QQStoryMainController$4
   implements Runnable
@@ -18,9 +18,9 @@ class QQStoryMainController$4
     }
     this.this$0.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView = this.this$0.a();
     this.this$0.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.setInputViewHideListener(this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView);
-    this.this$0.jdField_a_of_type_Wde.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.a(), this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView);
-    QQStoryMainController.a(this.this$0, this.this$0.jdField_a_of_type_Wcw.a());
-    QQStoryMainController.a(this.this$0, this.this$0.jdField_a_of_type_Wcw.a());
+    this.this$0.jdField_a_of_type_Whn.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.a(), this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView);
+    QQStoryMainController.a(this.this$0, this.this$0.jdField_a_of_type_Whf.a());
+    QQStoryMainController.a(this.this$0, this.this$0.jdField_a_of_type_Whf.a());
     QQStoryMainController.a(this.this$0).setVisibility(8);
     QQStoryMainController.a(this.this$0).setVisibility(8);
     QQStoryMainController.a(this.this$0.jdField_a_of_type_AndroidAppActivity, "mainHallConfig", QQStoryMainController.a(this.this$0), QQStoryMainController.a(this.this$0));

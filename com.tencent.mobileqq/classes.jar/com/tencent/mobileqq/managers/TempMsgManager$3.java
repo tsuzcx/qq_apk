@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.managers;
 
-import atvu;
+import auad;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class TempMsgManager$3
   implements Runnable
 {
-  public TempMsgManager$3(atvu paramatvu, String paramString) {}
+  public TempMsgManager$3(auad paramauad, String paramString) {}
   
   public void run()
   {
-    QQToast.a(atvu.a(this.this$0).getApp(), this.a, 1).a();
+    QQToast.a(auad.a(this.this$0).getApp(), this.a, 1).a();
   }
 }
 

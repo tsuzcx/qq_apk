@@ -11,7 +11,7 @@ final class szb
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramInt = 1;
-    bjxj.a("readinjoy_user_data_switch", Integer.valueOf(1));
+    bkbq.a("readinjoy_user_data_switch", Integer.valueOf(1));
     paramDialogInterface.dismiss();
     paramDialogInterface = new JSONObject();
     try

@@ -1,28 +1,14 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.mobileqq.widget.OvalProgress;
 
 public class berk
-  extends AccessibilityDelegateCompat
 {
-  public berk(TabBarView paramTabBarView) {}
+  public double a;
+  public double b;
+  public double c;
+  public double d;
+  public double e;
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (this.a.a(paramView) == this.a.o) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
-    }
-  }
-  
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    super.sendAccessibilityEvent(paramView, paramInt);
-  }
+  public berk(OvalProgress paramOvalProgress) {}
 }
 
 

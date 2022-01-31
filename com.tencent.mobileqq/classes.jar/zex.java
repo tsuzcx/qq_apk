@@ -1,35 +1,26 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
 class zex
-  extends URLDrawableDownListener.Adapter
+  implements QQPermissionCallback
 {
-  zex(zew paramzew, int paramInt, ViewGroup paramViewGroup) {}
+  zex(zet paramzet) {}
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Zew.a(this.jdField_a_of_type_Int, false);
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user denied = ");
+    bdgm.a(this.a.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Zew.b(this.jdField_a_of_type_Int, paramInt / 100);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_Zew.a(this.jdField_a_of_type_Int, true);
-    paramView = this.jdField_a_of_type_Zew.a(paramURLDrawable.getURL(), this.jdField_a_of_type_AndroidViewViewGroup);
-    if (paramView != null) {
-      this.jdField_a_of_type_Zew.a(paramView, paramURLDrawable);
-    }
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user grant = ");
+    zet.g(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zex
  * JD-Core Version:    0.7.0.1
  */

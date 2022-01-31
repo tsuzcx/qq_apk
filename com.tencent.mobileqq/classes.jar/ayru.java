@@ -1,21 +1,15 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
 
-public abstract interface ayru
-  extends ayrs
+class ayru
+  implements View.OnClickListener
 {
-  public abstract View a(String paramString);
+  ayru(ayro paramayro, ayoq paramayoq, ayxb paramayxb) {}
   
-  public abstract ImageView a();
-  
-  public abstract TextView a();
-  
-  public abstract TextView b();
-  
-  public abstract TextView c();
-  
-  public abstract TextView d();
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Ayoq.a(this.jdField_a_of_type_Ayxb.a());
+  }
 }
 
 

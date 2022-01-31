@@ -1,48 +1,25 @@
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
+import com.tencent.mobileqq.search.fragment.MessageSearchDetailFragment;
+import com.tencent.widget.ListView;
+
 public class aykw
+  extends ayjp<aynx, ayxt>
 {
-  public static final int[] a = { 1, 2, 3, 4 };
-  public static final int[] b = { 6 };
-  public static final int[] c = { 7 };
-  
-  public static int a(int paramInt)
+  public aykw(MessageSearchDetailFragment paramMessageSearchDetailFragment, ListView paramListView, bdbb parambdbb, FullMessageSearchResult.SearchResultItem paramSearchResultItem, String paramString, QQAppInterface paramQQAppInterface)
   {
-    int k = 0;
-    int[] arrayOfInt = a;
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (arrayOfInt[i] == paramInt)
-      {
-        i = 1;
-        return i;
-      }
-      i += 1;
-    }
-    arrayOfInt = b;
-    j = arrayOfInt.length;
-    i = 0;
-    while (i < j)
-    {
-      if (arrayOfInt[i] == paramInt) {
-        return 2;
-      }
-      i += 1;
-    }
-    arrayOfInt = c;
-    int m = arrayOfInt.length;
-    j = 0;
-    for (;;)
-    {
-      i = k;
-      if (j >= m) {
-        break;
-      }
-      if (arrayOfInt[j] == paramInt) {
-        return 3;
-      }
-      j += 1;
-    }
+    super(paramListView, parambdbb, paramSearchResultItem, paramString, paramQQAppInterface);
+  }
+  
+  protected ayqp a(int paramInt)
+  {
+    return new ayrm(MessageSearchDetailFragment.a(this.a));
+  }
+  
+  protected aywe a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new ayxt(paramViewGroup, 2131562610);
   }
 }
 

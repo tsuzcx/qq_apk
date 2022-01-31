@@ -2,19 +2,19 @@ package com.tencent.mobileqq.troop.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import bhpo;
+import bhtv;
 import com.tencent.biz.qqstory.view.widget.LoadMoreLayout;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.XListView;
-import xrt;
+import xwc;
 
 public class LoadMoreXListView
   extends XListView
-  implements bhpo
+  implements bhtv
 {
   private int jdField_a_of_type_Int = -1;
-  private bhpo jdField_a_of_type_Bhpo;
-  public xrt a;
+  private bhtv jdField_a_of_type_Bhtv;
+  public xwc a;
   
   public LoadMoreXListView(Context paramContext)
   {
@@ -43,34 +43,34 @@ public class LoadMoreXListView
   protected void b()
   {
     LoadMoreLayout localLoadMoreLayout = new LoadMoreLayout(getContext());
-    this.jdField_a_of_type_Xrt = new xrt(localLoadMoreLayout, getContext().getApplicationContext());
+    this.jdField_a_of_type_Xwc = new xwc(localLoadMoreLayout, getContext().getApplicationContext());
     super.addFooterView(localLoadMoreLayout);
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Bhpo != null) {
-      this.jdField_a_of_type_Bhpo.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (this.jdField_a_of_type_Bhtv != null) {
+      this.jdField_a_of_type_Bhtv.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
     if (paramInt1 == this.jdField_a_of_type_Int) {}
     do
     {
       return;
       this.jdField_a_of_type_Int = paramInt1;
-    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_a_of_type_Xrt.a());
-    this.jdField_a_of_type_Xrt.b(true);
+    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_a_of_type_Xwc.a());
+    this.jdField_a_of_type_Xwc.b(true);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_Bhpo != null) {
-      this.jdField_a_of_type_Bhpo.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.jdField_a_of_type_Bhtv != null) {
+      this.jdField_a_of_type_Bhtv.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
-  public void setOnScrollListener(bhpo parambhpo)
+  public void setOnScrollListener(bhtv parambhtv)
   {
-    this.jdField_a_of_type_Bhpo = parambhpo;
+    this.jdField_a_of_type_Bhtv = parambhtv;
   }
 }
 

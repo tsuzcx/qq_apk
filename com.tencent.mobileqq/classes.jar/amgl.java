@@ -1,68 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.BaseConstants;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.addfriendverifi.data.AddFriendBlockedInfo;
+import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class amgl
+  extends amgi
 {
-  private static boolean a;
-  private static boolean b;
+  public amgl(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public static void a(MessageRecord paramMessageRecord)
+  public void a(boolean paramBoolean, List<AddFriendBlockedInfo> paramList, String paramString)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("param_FailCode", String.valueOf(paramMessageRecord.istroop));
-    azmz.a(BaseApplication.getContext()).a(null, "actInvalidMessageRecord", false, 0L, 0L, localHashMap, "");
+    if (QLog.isColorLevel()) {
+      QLog.i("BlockedListFragment", 2, "onGetAddFriendBlockedList, success=" + paramBoolean);
+    }
+    if ((!paramBoolean) || (NewFriendVerifyBlockedListFragment.a(this.a) == null) || (NewFriendVerifyBlockedListFragment.a(this.a).isFinishing()) || (NewFriendVerifyBlockedListFragment.a(this.a) == null) || (NewFriendVerifyBlockedListFragment.a(this.a) == null)) {
+      return;
+    }
+    this.a.a.removeMessages(1);
+    this.a.a.sendEmptyMessage(1);
   }
   
-  public static void a(String paramString)
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    if (!a)
+    if (paramBoolean)
     {
-      a = true;
-      c("reportSaveInvalidUserError");
-      azlf.a(new RuntimeException(), paramString);
+      this.a.a.removeMessages(1);
+      this.a.a.sendEmptyMessage(1);
     }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if ((paramInt == 1008) && (paramQQAppInterface != null))
-    {
-      paramQQAppInterface = ((aloz)paramQQAppInterface.getManager(51)).c(paramString);
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.isFriend())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static void b(String paramString)
-  {
-    if (!b)
-    {
-      b = true;
-      c("reportInvalidRefredshLastMsg");
-      azlf.a(new RuntimeException(), paramString);
-    }
-  }
-  
-  public static void c(String paramString)
-  {
-    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-    StringBuilder localStringBuilder = new StringBuilder(512);
-    int j = arrayOfStackTraceElement.length;
-    int i = 0;
-    while (i < j)
-    {
-      localStringBuilder.append(arrayOfStackTraceElement[i].toString()).append("\n");
-      i += 1;
-    }
-    QLog.i(paramString, 1, localStringBuilder.toString());
   }
 }
 

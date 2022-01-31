@@ -1,70 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
-
 public class aolt
-  extends aofy<aols>
+  extends aolr
 {
-  public int a()
+  private aomk jdField_a_of_type_Aomk;
+  private aomu jdField_a_of_type_Aomu;
+  
+  public aolt(String paramString, aomk paramaomk, aomu paramaomu)
   {
-    return 390;
+    super(paramString);
+    this.jdField_a_of_type_Aomk = paramaomk;
+    this.jdField_a_of_type_Aomu = paramaomu;
   }
   
-  @NonNull
-  public aols a(int paramInt)
+  public aomk a()
   {
-    return new aols();
+    return this.jdField_a_of_type_Aomk;
   }
   
-  @Nullable
-  public aols a(aogf[] paramArrayOfaogf)
+  public aomu a()
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
-    {
-      aols localaols = aols.a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QConfPushProcessor", 0, "onParsed " + paramArrayOfaogf[0].a);
-      }
-      return localaols;
-    }
-    return new aols();
-  }
-  
-  public Class<aols> a()
-  {
-    return aols.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aols paramaols)
-  {
-    ((atvr)BaseApplicationImpl.getApplication().getRuntime().getManager(308)).a(paramaols);
-    if (QLog.isColorLevel()) {
-      QLog.d("QConfPushProcessor", 0, "onUpdate " + paramaols);
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.jdField_a_of_type_Aomu;
   }
 }
 

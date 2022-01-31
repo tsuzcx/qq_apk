@@ -1,53 +1,26 @@
-import android.os.FileObserver;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMFileEventNotify.1;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.util.Property;
 
-public class bncy
-  extends FileObserver
+class bncy
+  extends Property<bncx, Integer>
 {
-  private boolean a;
-  
-  private void a()
+  bncy(bncx parambncx, Class paramClass, String paramString)
   {
-    if (!this.a)
-    {
-      this.a = true;
-      RMVideoStateMgr.a().a(new RMFileEventNotify.1(this));
-    }
+    super(paramClass, paramString);
   }
   
-  public void onEvent(int paramInt, String paramString)
+  public Integer a(bncx parambncx)
   {
-    if ((paramInt & 0x20) == 32) {
-      if (QLog.isColorLevel()) {
-        QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][OPEN]  path=" + paramString);
-      }
+    if (parambncx != null) {
+      return Integer.valueOf(bncx.a(parambncx));
     }
-    do
-    {
-      return;
-      if ((paramInt & 0x400) == 1024)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE_SELF]  path=" + paramString);
-        }
-        a();
-        return;
-      }
-      if ((paramInt & 0x200) == 512)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE]  path=" + paramString);
-        }
-        a();
-        return;
-      }
-    } while ((paramInt & 0x8) != 8);
-    if (QLog.isColorLevel()) {
-      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][CLOSE_WRITE]  path=" + paramString);
+    return Integer.valueOf(0);
+  }
+  
+  public void a(bncx parambncx, Integer paramInteger)
+  {
+    if (parambncx != null) {
+      bncx.a(parambncx, paramInteger.intValue());
     }
-    a();
   }
 }
 

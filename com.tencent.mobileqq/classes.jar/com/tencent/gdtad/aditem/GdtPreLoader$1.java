@@ -1,32 +1,32 @@
 package com.tencent.gdtad.aditem;
 
-import aail;
-import aaim;
-import aanp;
+import aana;
+import aanb;
+import aase;
 import android.text.TextUtils;
 import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager;
 
 public class GdtPreLoader$1
   implements Runnable
 {
-  public GdtPreLoader$1(aail paramaail, GdtAd paramGdtAd) {}
+  public GdtPreLoader$1(aana paramaana, GdtAd paramGdtAd) {}
   
   public void run()
   {
     if ((this.a == null) || (!this.a.isValid())) {
-      aanp.d("GdtPreLoader", "preLoadAfterAdLoaded error");
+      aase.d("GdtPreLoader", "preLoadAfterAdLoaded error");
     }
     do
     {
       do
       {
         return;
-        aanp.b("GdtPreLoader", "preLoadAfterAdLoaded");
+        aase.b("GdtPreLoader", "preLoadAfterAdLoaded");
       } while (!this.a.isQQMINIProgram());
-      aanp.b("GdtPreLoader", String.format("canPreloadForQQMINIProgram %b", new Object[] { Boolean.valueOf(this.a.canPreloadForQQMINIProgram()) }));
+      aase.b("GdtPreLoader", String.format("canPreloadForQQMINIProgram %b", new Object[] { Boolean.valueOf(this.a.canPreloadForQQMINIProgram()) }));
     } while ((!this.a.canPreloadForQQMINIProgram()) || (TextUtils.isEmpty(this.a.getUrlForLandingPage())));
-    aanp.b("GdtPreLoader", "MiniAppPrePullManager.getInstance().prePullAppinfoByLink start");
-    MiniAppPrePullManager.getInstance().prePullAppinfoByLink(this.a.getUrlForLandingPage(), false, new aaim(this));
+    aase.b("GdtPreLoader", "MiniAppPrePullManager.getInstance().prePullAppinfoByLink start");
+    MiniAppPrePullManager.getInstance().prePullAppinfoByLink(this.a.getUrlForLandingPage(), false, new aanb(this));
   }
 }
 

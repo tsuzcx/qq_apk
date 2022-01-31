@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import befr;
+import beka;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
@@ -16,8 +16,8 @@ class QQBrowserActivity$1
       QLog.d("WebLog_QQBrowserActivity", 2, "start request: " + WebAccelerateHelper.isWebViewCache);
     }
     WebProcessManager.a(true);
-    befr.a();
-    befr.b();
+    beka.a();
+    beka.b();
   }
 }
 

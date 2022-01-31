@@ -32,7 +32,7 @@ import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 public abstract class noe
-  implements bfka
+  implements bfoj
 {
   protected int a;
   protected AnimatorSet a;
@@ -93,12 +93,12 @@ public abstract class noe
   
   private void d()
   {
-    if (!bdee.g(this.jdField_a_of_type_AndroidContentContext))
+    if (!bdin.g(this.jdField_a_of_type_AndroidContentContext))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131718824), 0).b(0);
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131718836), 0).b(0);
       return;
     }
-    if (bdee.h(this.jdField_a_of_type_AndroidContentContext))
+    if (bdin.h(this.jdField_a_of_type_AndroidContentContext))
     {
       e();
       return;
@@ -111,9 +111,9 @@ public abstract class noe
     noy.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Nnw, this);
     if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131718927));
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131718939));
       this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setTextColor(-16777216);
-      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setBackgroundResource(2130839141);
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setBackgroundResource(2130839142);
       this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setProgress(0);
       this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setClickable(false);
     }
@@ -127,7 +127,7 @@ public abstract class noe
     {
       if (this.jdField_a_of_type_AndroidAppDialog == null)
       {
-        this.jdField_a_of_type_AndroidAppDialog = noy.a(this.jdField_a_of_type_AndroidContentContext, null, this.jdField_a_of_type_AndroidContentContext.getString(2131718935), new noh(this), this.jdField_a_of_type_AndroidContentContext.getString(2131718936), new noi(this), this.jdField_a_of_type_AndroidContentContext.getString(2131718937));
+        this.jdField_a_of_type_AndroidAppDialog = noy.a(this.jdField_a_of_type_AndroidContentContext, null, this.jdField_a_of_type_AndroidContentContext.getString(2131718947), new noh(this), this.jdField_a_of_type_AndroidContentContext.getString(2131718948), new noi(this), this.jdField_a_of_type_AndroidContentContext.getString(2131718949));
         this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
       }
       this.jdField_a_of_type_AndroidAppDialog.show();
@@ -138,8 +138,8 @@ public abstract class noe
   {
     if (this.jdField_c_of_type_Int == 3)
     {
-      bfkb.a().a(this.jdField_a_of_type_Nnw.d);
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131718938), 0).b(0);
+      bfok.a().a(this.jdField_a_of_type_Nnw.d);
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131718950), 0).b(0);
       ThreadManager.getUIHandler().post(new AdModuleBase.5(this));
     }
   }
@@ -161,11 +161,11 @@ public abstract class noe
     AdProgressButton localAdProgressButton;
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Nnw != null) && (this.jdField_a_of_type_Nnw.jdField_a_of_type_Int == 2))
     {
-      localAdProgressButton = (AdProgressButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131372326);
+      localAdProgressButton = (AdProgressButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131372346);
       if (this.jdField_a_of_type_Nnw.jdField_b_of_type_Int != 2) {
         break label70;
       }
-      localAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131718941));
+      localAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131718953));
     }
     label70:
     do
@@ -176,35 +176,35 @@ public abstract class noe
       } while (this.jdField_a_of_type_Nnw.jdField_b_of_type_Int != 1);
       if (noy.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Nnw.f))
       {
-        localAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131718939));
+        localAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131718951));
         this.jdField_c_of_type_Int = 1;
         return;
       }
       if (noy.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Nnw))
       {
-        localAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131718932));
+        localAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131718944));
         this.jdField_c_of_type_Int = 2;
         return;
       }
     } while (this.jdField_c_of_type_Int == 3);
-    localAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131718926));
+    localAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131718938));
     this.jdField_c_of_type_Int = 0;
   }
   
   public void a(Context paramContext, View paramView)
   {
-    Object localObject1 = LayoutInflater.from(paramContext).inflate(2131560070, null);
+    Object localObject1 = LayoutInflater.from(paramContext).inflate(2131560069, null);
     Object localObject2 = new RelativeLayout.LayoutParams(-1, -2);
     ((RelativeLayout.LayoutParams)localObject2).addRule(12, -1);
     ((ViewGroup)paramView).addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     if (((this.jdField_a_of_type_Nnw == null) || (this.jdField_a_of_type_Nnw.jdField_a_of_type_Int != 1)) && (!this.jdField_a_of_type_Boolean) && ((this.jdField_b_of_type_Int == 1) || (this.jdField_b_of_type_Int == 2)))
     {
-      paramView.findViewById(2131377846).setVisibility(0);
+      paramView.findViewById(2131377900).setVisibility(0);
       if (this.jdField_b_of_type_Int == 1) {
-        paramView.findViewById(2131377850).setVisibility(8);
+        paramView.findViewById(2131377904).setVisibility(8);
       }
-      localObject1 = paramView.findViewById(2131379373);
-      localObject2 = paramView.findViewById(2131379374);
+      localObject1 = paramView.findViewById(2131379431);
+      localObject2 = paramView.findViewById(2131379432);
       ((View)localObject1).setAlpha(0.0F);
       ((View)localObject1).setVisibility(0);
       ((View)localObject2).setAlpha(0.0F);
@@ -224,26 +224,26 @@ public abstract class noe
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
     }
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Nnw != null) && (this.jdField_a_of_type_Nnw.jdField_a_of_type_Int == 2)) {
-      paramView.findViewById(2131365422).setVisibility(0);
+      paramView.findViewById(2131365424).setVisibility(0);
     }
     try
     {
       localObject1 = new URL(this.jdField_a_of_type_Nnw.jdField_a_of_type_JavaLangString);
-      ((ResizeURLImageView)paramView.findViewById(2131365433)).a((URL)localObject1);
-      ((TextView)paramView.findViewById(2131365430)).setText(this.jdField_a_of_type_Nnw.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton = ((AdProgressButton)paramView.findViewById(2131372326));
+      ((ResizeURLImageView)paramView.findViewById(2131365435)).a((URL)localObject1);
+      ((TextView)paramView.findViewById(2131365432)).setText(this.jdField_a_of_type_Nnw.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton = ((AdProgressButton)paramView.findViewById(2131372346));
       this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setProgressColor(paramContext.getResources().getColor(2131165332));
       this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setOnClickListener(new nof(this));
       int i = noy.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Nnw);
       if (i >= 0)
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131718927));
+        this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131718939));
         this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setTextColor(-16777216);
-        this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setBackgroundResource(2130839141);
+        this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setBackgroundResource(2130839142);
         this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setProgress(i);
         this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setClickable(false);
         this.jdField_c_of_type_Int = 3;
-        bfkb.a().a(this);
+        bfok.a().a(this);
       }
       if (this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler == null)
       {
@@ -273,7 +273,7 @@ public abstract class noe
     }
     this.jdField_a_of_type_Int = 0;
     if (this.jdField_a_of_type_Boolean) {
-      bfkb.a().b(this);
+      bfok.a().b(this);
     }
   }
   

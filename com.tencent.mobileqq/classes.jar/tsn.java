@@ -1,27 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.qphone.base.util.QLog;
 
 class tsn
-  implements bhqd
+  implements MediaPlayer.OnErrorListener
 {
-  tsn(tsl paramtsl, bhpy parambhpy) {}
+  tsn(tsk paramtsk) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (!ytg.a("showMoreActionSheetClick")) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      tsl.d(this.jdField_a_of_type_Tsl);
-      continue;
-      PublicFragmentActivity.a(this.jdField_a_of_type_Tsl.a(), TempMsgSettingFragment.class);
-    }
+    tsk.a(this.a);
+    QLog.e("QCircleFolderSplashPart", 1, "play splash video error!what:" + paramInt1 + ",extra:" + paramInt2);
+    return true;
   }
 }
 

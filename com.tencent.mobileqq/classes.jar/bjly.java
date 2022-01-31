@@ -1,6 +1,16 @@
-public abstract interface bjly
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+
+public class bjly
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, int paramInt, String paramString);
+  public bjly(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.getPlayMode();
+  }
 }
 
 

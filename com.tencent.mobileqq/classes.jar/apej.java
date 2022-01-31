@@ -1,93 +1,42 @@
-import android.content.res.Resources;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.dating.NearbyTransitActivity;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import android.annotation.TargetApi;
+import android.graphics.Rect;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.qphone.base.util.QLog;
 
 public class apej
-  extends alqf
+  implements ArkViewImplement.LoadCallback
 {
-  public apej(NearbyTransitActivity paramNearbyTransitActivity) {}
+  public apej(MessageForArkApp paramMessageForArkApp, anou paramanou, afih paramafih, anoq paramanoq, int paramInt) {}
   
-  protected void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, Boolean paramBoolean1)
-  {
-    apds.a("NearbyTransitActivity", new Object[] { "onJoinHotChat", Boolean.valueOf(NearbyTransitActivity.a(this.a)), Boolean.valueOf(paramBoolean), paramString1 });
-    NearbyTransitActivity.a("onJoinHotChat", 1);
-    if (NearbyTransitActivity.a(this.a)) {
-      return;
-    }
-    NearbyTransitActivity.a(this.a).removeMessages(2);
-    NearbyTransitActivity.a(this.a).removeMessages(5);
-    if (this.a.jdField_a_of_type_Beps != null) {
-      this.a.jdField_a_of_type_Beps.b();
-    }
-    paramBoolean1 = Message.obtain();
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString1))) {
-      paramBoolean1.what = 3;
-    }
-    for (paramBoolean1.obj = new Object[] { paramString1, paramString2, paramString4 };; paramBoolean1.obj = paramString1)
-    {
-      NearbyTransitActivity.a(this.a).sendMessage(paramBoolean1);
-      return;
-      paramString1 = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        paramString1 = NearbyTransitActivity.jdField_a_of_type_JavaLangString;
-      }
-      paramBoolean1.what = 1;
-      paramBoolean1.arg1 = 11;
-    }
-  }
+  @TargetApi(14)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean, HotChatInfo paramHotChatInfo, Common.WifiPOIInfo paramWifiPOIInfo, int paramInt, String paramString)
+  @TargetApi(14)
+  public void onLoadState(int paramInt)
   {
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString))
-    {
-      str = paramString;
-      if (paramHotChatInfo != null) {
-        str = paramHotChatInfo.name;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageForArkApp", 2, new Object[] { "ArkFold.attachArkView onLoadFinish MessageForArkApp state=", Integer.valueOf(paramInt), ",app=", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName });
     }
-    if ((NearbyTransitActivity.a(this.a) == 1) && (!bdal.a(str, NearbyTransitActivity.a(this.a)))) {}
-    do
+    this.jdField_a_of_type_Anou.b.setVisibility(8);
+    if (paramInt == 1)
     {
-      return;
-      NearbyTransitActivity.a("onQuickJoinHotChat", 1);
-      apds.a("NearbyTransitActivity", new Object[] { "onQuickJoinHotChat", Boolean.valueOf(NearbyTransitActivity.a(this.a)), Boolean.valueOf(paramBoolean), Integer.valueOf(NearbyTransitActivity.a(this.a)), Integer.valueOf(paramInt), str, paramHotChatInfo, paramWifiPOIInfo });
-    } while (NearbyTransitActivity.a(this.a));
-    NearbyTransitActivity.a(this.a).removeMessages(2);
-    NearbyTransitActivity.a(this.a).removeMessages(5);
-    if (this.a.jdField_a_of_type_Beps != null) {
-      this.a.jdField_a_of_type_Beps.b();
-    }
-    paramWifiPOIInfo = Message.obtain();
-    if (paramBoolean) {
-      if ((paramHotChatInfo != null) && ((paramInt == 1) || (paramInt == 2)))
+      Object localObject = this.jdField_a_of_type_Afih.getContainerRect();
+      float f = anob.a();
+      paramInt = (int)((((Rect)localObject).right - ((Rect)localObject).left) * f);
+      int i = (int)((((Rect)localObject).bottom - ((Rect)localObject).top) * f);
+      this.jdField_a_of_type_Anoq.a(this.jdField_a_of_type_Anou, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+      if (anob.a)
       {
-        paramWifiPOIInfo.what = 3;
-        paramWifiPOIInfo.obj = new Object[] { paramHotChatInfo.troopUin, paramHotChatInfo.troopCode, paramHotChatInfo.name };
+        localObject = this.jdField_a_of_type_Anou.a.getLayoutParams();
+        QLog.d("MessageForArkApp", 2, new Object[] { "ArkFold.attachArkView.onLoadFinish arkContainer rect(", Integer.valueOf(paramInt), ",", Integer.valueOf(i), "), arkView rect(", Integer.valueOf(((ViewGroup.LayoutParams)localObject).width), ",", Integer.valueOf(((ViewGroup.LayoutParams)localObject).height), "),app=", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName });
       }
     }
-    while ((NearbyTransitActivity.b(this.a) == 1) && (paramWifiPOIInfo.what == 3) && (paramHotChatInfo.mFissionRoomNum > 0))
-    {
-      ausq.a("NearbyTransitActivity", new Object[] { "onQuickJoinHotChat allocate room success,is to showing entering tip " });
-      paramString = Message.obtain();
-      paramString.what = 5;
-      paramString.obj = String.format(this.a.getResources().getString(2131693404), new Object[] { Integer.valueOf(paramHotChatInfo.mFissionRoomNum) });
-      NearbyTransitActivity.a(this.a).sendMessage(paramString);
-      NearbyTransitActivity.a(this.a).sendMessageDelayed(paramWifiPOIInfo, 600L);
-      return;
-      paramWifiPOIInfo.what = 1;
-      paramWifiPOIInfo.arg1 = 5;
-      paramWifiPOIInfo.obj = NearbyTransitActivity.jdField_a_of_type_JavaLangString;
-      continue;
-      paramWifiPOIInfo.what = 1;
-      paramWifiPOIInfo.arg1 = (paramInt + 100);
-      paramWifiPOIInfo.obj = aupu.a(paramInt);
-    }
-    NearbyTransitActivity.a(this.a).sendMessage(paramWifiPOIInfo);
+    this.jdField_a_of_type_Anoq.a(this.jdField_a_of_type_Afih, this.jdField_a_of_type_Int);
   }
 }
 

@@ -4,21 +4,21 @@ import java.util.Iterator;
 import java.util.List;
 
 public class oln
-  implements bhpo
+  implements bhtv
 {
-  private List<bhpo> a = new ArrayList();
+  private List<bhtv> a = new ArrayList();
   
-  public void a(bhpo parambhpo)
+  public void a(bhtv parambhtv)
   {
-    if ((this.a != null) && (!this.a.contains(parambhpo))) {
-      this.a.add(parambhpo);
+    if ((this.a != null) && (!this.a.contains(parambhtv))) {
+      this.a.add(parambhtv);
     }
   }
   
-  public void b(bhpo parambhpo)
+  public void b(bhtv parambhtv)
   {
-    if ((this.a != null) && (this.a.contains(parambhpo))) {
-      this.a.remove(parambhpo);
+    if ((this.a != null) && (this.a.contains(parambhtv))) {
+      this.a.remove(parambhtv);
     }
   }
   
@@ -31,9 +31,9 @@ public class oln
       Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
-        bhpo localbhpo = (bhpo)localIterator.next();
-        if (localbhpo != null) {
-          localbhpo.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+        bhtv localbhtv = (bhtv)localIterator.next();
+        if (localbhtv != null) {
+          localbhtv.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
         }
       }
     }
@@ -48,9 +48,9 @@ public class oln
       Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
-        bhpo localbhpo = (bhpo)localIterator.next();
-        if (localbhpo != null) {
-          localbhpo.onScrollStateChanged(paramAbsListView, paramInt);
+        bhtv localbhtv = (bhtv)localIterator.next();
+        if (localbhtv != null) {
+          localbhtv.onScrollStateChanged(paramAbsListView, paramInt);
         }
       }
     }

@@ -1,16 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class arhx
-  implements View.OnClickListener
+public abstract interface arhx
 {
-  arhx(arhu paramarhu) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    arni.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Arfz.d());
-    this.a.b = true;
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

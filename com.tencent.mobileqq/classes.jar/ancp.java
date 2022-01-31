@@ -1,13 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public class ancp
-  implements DialogInterface.OnClickListener
 {
-  public ancp(ARScanEntryView paramARScanEntryView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public ArCloudConfigInfo a;
+  public String a = "";
+  public boolean a;
+  public String b = "";
+  public boolean b;
 }
 
 

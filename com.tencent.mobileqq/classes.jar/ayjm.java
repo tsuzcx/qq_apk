@@ -1,37 +1,11 @@
-public abstract class ayjm
-  implements ayjl
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+
+public class ayjm
 {
-  private int a;
-  private int b;
-  public boolean f = true;
-  public int r;
-  public int s;
+  public volatile long a;
+  public volatile String a;
   
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public Object a(String paramString)
-  {
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.s = paramInt;
-  }
+  public ayjm(UniteSearchActivity paramUniteSearchActivity) {}
 }
 
 

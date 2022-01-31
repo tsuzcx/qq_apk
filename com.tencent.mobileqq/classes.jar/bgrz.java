@@ -1,37 +1,17 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqmini.sdk.core.widget.TabBar;
+import com.tencent.qqmini.sdk.launcher.model.TabBarInfo.ButtonInfo;
 
-class bgrz
-  implements bgrw
+public class bgrz
+  implements View.OnClickListener
 {
-  bgrz(bgrx parambgrx, EngineChannel paramEngineChannel, BaseLibInfo paramBaseLibInfo) {}
+  public bgrz(TabBar paramTabBar, int paramInt, TabBarInfo.ButtonInfo paramButtonInfo) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
-  }
-  
-  public void a(float paramFloat, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putFloat("engineInstallerProgress", paramFloat);
-    localBundle.putString("engineInstallerMessage", paramString);
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(53, localBundle);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(52, null);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
-    bgrt localbgrt = (bgrt)bgrx.b(this.jdField_a_of_type_Bgrx).get(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType);
-    if (localbgrt != null) {
-      localbgrt.b(this);
+    if (TabBar.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetTabBar) != null) {
+      TabBar.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetTabBar).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo$ButtonInfo.pagePath, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo$ButtonInfo.text);
     }
   }
 }

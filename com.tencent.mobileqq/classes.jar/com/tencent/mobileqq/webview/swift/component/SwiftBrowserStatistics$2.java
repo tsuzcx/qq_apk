@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import azmd;
-import bdhy;
-import beep;
+import azqm;
+import bdmh;
+import beiy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -10,13 +10,13 @@ import mqq.app.AppRuntime;
 public class SwiftBrowserStatistics$2
   implements Runnable
 {
-  public SwiftBrowserStatistics$2(beep parambeep, AppRuntime paramAppRuntime) {}
+  public SwiftBrowserStatistics$2(beiy parambeiy, AppRuntime paramAppRuntime) {}
   
   public void run()
   {
-    if (!azmd.a)
+    if (!azqm.a)
     {
-      boolean bool = bdhy.a(BaseApplicationImpl.getApplication());
+      boolean bool = bdmh.a(BaseApplicationImpl.getApplication());
       if (QLog.isColorLevel()) {
         QLog.d("SwiftBrowserStatistics", 1, new Object[] { "reportPushEvent isScreenLock=", Boolean.valueOf(bool), ",isBackground=", Boolean.valueOf(this.a.isBackground_Stop) });
       }
@@ -25,14 +25,14 @@ public class SwiftBrowserStatistics$2
         if (!this.this$0.g) {
           break label91;
         }
-        beep.a(this.this$0);
+        beiy.a(this.this$0);
       }
     }
     label91:
-    while (!beep.a(this.this$0)) {
+    while (!beiy.a(this.this$0)) {
       return;
     }
-    beep.b(this.this$0);
+    beiy.b(this.this$0);
   }
 }
 

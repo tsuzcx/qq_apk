@@ -1,17 +1,57 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
 public class xqd
-  implements ValueAnimator.AnimatorUpdateListener
+  extends xwu
 {
-  public xqd(NeoVideoRecordButton paramNeoVideoRecordButton) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public View a(Context paramContext, View paramView, bibi parambibi, int paramInt)
   {
-    this.a.c.a(((Integer)paramValueAnimator.getAnimatedValue("radius")).intValue(), 0.0F);
-    this.a.c.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
-    NeoVideoRecordButton.a(this.a);
+    parambibi.a = new bibj[this.b];
+    paramInt = 0;
+    while (paramInt < this.b)
+    {
+      parambibi.a[paramInt] = new bibj();
+      parambibi.a[paramInt].jdField_a_of_type_Int = -1;
+      parambibi.a[paramInt].c = 0;
+      parambibi.a[paramInt].jdField_a_of_type_AndroidViewView = null;
+      paramInt += 1;
+    }
+    parambibi.g = paramView.findViewById(2131369147);
+    return paramView;
+  }
+  
+  public void a(int paramInt, Object paramObject, bibj[] paramArrayOfbibj)
+  {
+    paramArrayOfbibj[0].jdField_a_of_type_Int = 0;
+    paramArrayOfbibj[0].b = 0;
+    paramArrayOfbibj[1].jdField_a_of_type_Int = -1;
+    paramArrayOfbibj[1].b = -1;
+    String str = QQStoryContext.a().a();
+    if ((this.a.a) || (((TroopStoryItemInfo)paramObject).uin.equals(str)))
+    {
+      paramArrayOfbibj[1].jdField_a_of_type_Int = 1;
+      paramArrayOfbibj[1].b = 1;
+    }
+  }
+  
+  protected void a(ViewGroup paramViewGroup, View paramView, bibj parambibj, int paramInt)
+  {
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
+    if (localLayoutParams == null) {
+      paramView.setLayoutParams(new LinearLayout.LayoutParams(parambibj.c, parambibj.d));
+    }
+    for (;;)
+    {
+      paramViewGroup.addView(paramView, paramInt);
+      return;
+      localLayoutParams.width = parambibj.c;
+      localLayoutParams.height = parambibj.d;
+    }
   }
 }
 

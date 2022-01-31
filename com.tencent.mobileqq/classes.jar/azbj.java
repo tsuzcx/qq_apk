@@ -1,7 +1,14 @@
-public class azbj
+import com.tencent.qphone.base.util.QLog;
+
+class azbj
+  implements aahz
 {
-  public int a = -1;
-  public azbg a;
+  azbj(azbi paramazbi, int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
+  {
+    QLog.i("Q.lebatab.GameCenterManagerImp", 1, "on push code=" + paramInt + " cmd=" + this.jdField_a_of_type_Int);
+  }
 }
 
 

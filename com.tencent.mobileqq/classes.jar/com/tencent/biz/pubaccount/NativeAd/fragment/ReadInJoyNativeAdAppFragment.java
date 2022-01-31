@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.NativeAd.fragment;
 
-import aanp;
-import adky;
+import aase;
+import adpn;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -106,11 +106,11 @@ public class ReadInJoyNativeAdAppFragment
       }
       return;
     }
-    aanp.b("ReadInJoyNativeAdAppFragment", "start");
+    aase.b("ReadInJoyNativeAdAppFragment", "start");
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtras(paramBundle);
-    adky.a(paramActivity, localIntent, PublicFragmentActivityForTool.class, paramClass);
+    adpn.a(paramActivity, localIntent, PublicFragmentActivityForTool.class, paramClass);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -137,8 +137,8 @@ public class ReadInJoyNativeAdAppFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560069, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppContentView = ((ReadInJoyNativeAdAppContentView)paramLayoutInflater.findViewById(2131370974));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560068, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppContentView = ((ReadInJoyNativeAdAppContentView)paramLayoutInflater.findViewById(2131370993));
     if (this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppContentView != null)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppContentView.setVideoPlayPositon(this.jdField_a_of_type_Long);

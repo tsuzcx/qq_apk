@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig.BannerItem;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerManager.3;
 
-class blrl
-  implements axll
+public class blrl
+  implements baug
 {
-  blrl(blrk paramblrk, boolean paramBoolean) {}
+  public blrl(QIMCaptureBannerManager.3 param3) {}
   
-  public void a()
+  public void onResp(bavf parambavf)
   {
-    this.jdField_a_of_type_Blrk.a = new blrm(this, "NewStoryTakeVideoActivity");
-    SosoInterface.a(this.jdField_a_of_type_Blrk.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMCaptureBannerManager", 2, "onResp url: " + this.a.a.imgUrl + " resultcode: " + parambavf.c);
+    }
   }
+  
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

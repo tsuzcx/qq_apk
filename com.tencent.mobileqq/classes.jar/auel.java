@@ -1,22 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+import java.util.Map;
 
-public class auel
-  implements DialogInterface.OnClickListener
+class auel
+  extends auei<auek>
 {
-  public auel(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public auel(auek paramauek)
   {
-    aucf.a().a().c();
-    aucf.a().d();
-    if (this.a.a)
-    {
-      this.a.g();
+    super(paramauek);
+  }
+  
+  public void a(auek paramauek, boolean paramBoolean, auef paramauef)
+  {
+    if (paramauek == null) {
       return;
     }
-    this.a.a(this.a.getActivity());
+    if (paramBoolean)
+    {
+      auek.a(paramauek, (auec)auek.a(paramauek).get(paramauef.h));
+      return;
+    }
+    auek.a(paramauek, paramauef.jdField_a_of_type_JavaLangString, paramauef.jdField_a_of_type_Int, 1001);
   }
 }
 

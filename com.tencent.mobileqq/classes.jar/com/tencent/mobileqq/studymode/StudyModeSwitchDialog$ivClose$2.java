@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.studymode;
 
 import android.widget.ImageView;
-import azwy;
+import babh;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
@@ -11,14 +11,14 @@ public final class StudyModeSwitchDialog$ivClose$2
   extends Lambda
   implements Function0<ImageView>
 {
-  public StudyModeSwitchDialog$ivClose$2(azwy paramazwy)
+  public StudyModeSwitchDialog$ivClose$2(babh parambabh)
   {
     super(0);
   }
   
   public final ImageView invoke()
   {
-    return (ImageView)this.this$0.findViewById(2131368728);
+    return (ImageView)this.this$0.findViewById(2131368742);
   }
 }
 

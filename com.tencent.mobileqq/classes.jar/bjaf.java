@@ -1,35 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneNavigateToQQTransparentFragment;
+import android.text.TextUtils;
+import cooperation.qqreader.host.webview.ReaderBaseWebViewPlugin;
+import cooperation.qqreader.proxy.ReaderJsCallback;
 
-public class bjaf
-  implements aqdi
+class bjaf
+  implements ReaderJsCallback
 {
-  public bjaf(QZoneNavigateToQQTransparentFragment paramQZoneNavigateToQQTransparentFragment, FragmentActivity paramFragmentActivity) {}
+  bjaf(bjae parambjae) {}
   
-  public void a()
+  public void onCallback(String paramString1, String paramString2)
   {
-    QZoneNavigateToQQTransparentFragment.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null)
-    {
-      QLog.d("QZoneNavigateToQQTransparentFragment", 1, "sendMsgDirectly()-> showToast() activity is null just return");
-      return;
+    if (!TextUtils.isEmpty(paramString1)) {
+      bjae.a(this.a, paramString1, new String[] { paramString2 });
     }
-    QZoneNavigateToQQTransparentFragment.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(paramInt));
   }
   
-  public void a(String paramString1, String paramString2)
+  public void onInitPluginCallBack(ReaderBaseWebViewPlugin paramReaderBaseWebViewPlugin)
   {
-    QZoneNavigateToQQTransparentFragment.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString1, paramString2);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
-  {
-    QZoneNavigateToQQTransparentFragment.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, paramInt, paramString1, paramString2);
+    if (paramReaderBaseWebViewPlugin != null) {
+      paramReaderBaseWebViewPlugin.init(this.a.mRuntime, bjae.a(this.a));
+    }
   }
 }
 

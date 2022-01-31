@@ -1,23 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-
-public class wnb
+public abstract interface wnb
 {
-  public static void a(String paramString, Object... paramVarArgs)
-  {
-    wsv.e(paramString, wnd.a(paramVarArgs));
-  }
-  
-  public static void b(String paramString, Object... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString, 2, wnd.a(paramVarArgs));
-    }
-  }
-  
-  public static void c(String paramString, Object... paramVarArgs)
-  {
-    wsv.d(paramString, wnd.a(paramVarArgs));
-  }
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 

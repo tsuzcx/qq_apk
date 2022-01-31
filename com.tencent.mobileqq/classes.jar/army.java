@@ -1,8 +1,14 @@
-public abstract interface army
+import android.view.View;
+
+class army
+  implements arsg
 {
-  public abstract void a();
+  army(armw paramarmw) {}
   
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    arrr.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Arki.d());
+  }
 }
 
 

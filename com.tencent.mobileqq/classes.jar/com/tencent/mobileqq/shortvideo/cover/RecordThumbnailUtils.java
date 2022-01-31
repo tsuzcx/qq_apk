@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Matrix;
 import android.text.TextUtils;
-import azbo;
-import azhd;
+import azfx;
+import azlm;
 import java.io.File;
 
 public class RecordThumbnailUtils
@@ -198,7 +198,7 @@ public class RecordThumbnailUtils
     //   340: aload 11
     //   342: iload_2
     //   343: iload_3
-    //   344: invokestatic 125	azfy:a	([I[BII)V
+    //   344: invokestatic 125	azkh:a	([I[BII)V
     //   347: aload 12
     //   349: iload_2
     //   350: iload_3
@@ -396,7 +396,7 @@ public class RecordThumbnailUtils
   public static String a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bitmap.Config paramConfig)
   {
     File localFile = new File(paramString);
-    return a(paramString, paramInt1, paramInt2, azbo.a + File.separator + azhd.a(localFile) + ".jpg", paramInt3, paramConfig);
+    return a(paramString, paramInt1, paramInt2, azfx.a + File.separator + azlm.a(localFile) + ".jpg", paramInt3, paramConfig);
   }
   
   /* Error */
@@ -533,7 +533,7 @@ public class RecordThumbnailUtils
     //   264: ldc 239
     //   266: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   269: aload_3
-    //   270: invokestatic 244	bdcs:b	(Ljava/lang/String;)Z
+    //   270: invokestatic 244	bdhb:b	(Ljava/lang/String;)Z
     //   273: invokevirtual 247	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   276: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   279: invokestatic 66	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -626,7 +626,7 @@ public class RecordThumbnailUtils
   public static String b(String paramString, int paramInt1, int paramInt2, int paramInt3, Bitmap.Config paramConfig)
   {
     paramConfig = new File(paramString);
-    return a(0, paramString, paramInt1, paramInt2, azbo.a + File.separator + azhd.a(paramConfig) + ".jpg", paramInt3);
+    return a(0, paramString, paramInt1, paramInt2, azfx.a + File.separator + azlm.a(paramConfig) + ".jpg", paramInt3);
   }
   
   private static native int nativeGenCover(Bitmap paramBitmap, int paramInt1, int paramInt2);

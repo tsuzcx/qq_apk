@@ -1,45 +1,20 @@
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adjs
-  extends anuk
+  implements DialogInterface.OnClickListener
 {
-  public adjs(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public adjs(NotificationActivity paramNotificationActivity) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramBoolean, paramString);
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    super.a(paramBoolean, paramString, paramInt);
-    if (paramBoolean)
-    {
-      BusinessCard localBusinessCard = ((anuj)this.a.app.getManager(112)).a(paramString);
-      QLog.i("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo success : cardId = " + paramString);
-      this.a.a(localBusinessCard);
-      this.a.a = localBusinessCard;
-      return;
-    }
-    QLog.e("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo faild : cardId = " + paramString);
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    super.b(paramBoolean, paramString);
-  }
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt)
-  {
-    super.b(paramBoolean, paramString, paramInt);
+    NotificationActivity.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adjs
  * JD-Core Version:    0.7.0.1
  */

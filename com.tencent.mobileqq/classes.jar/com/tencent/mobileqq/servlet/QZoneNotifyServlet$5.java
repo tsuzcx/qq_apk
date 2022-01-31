@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.servlet;
 
-import ayxp;
+import azby;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
@@ -8,7 +8,7 @@ import mqq.app.NewIntent;
 public class QZoneNotifyServlet$5
   implements Runnable
 {
-  public QZoneNotifyServlet$5(ayxp paramayxp) {}
+  public QZoneNotifyServlet$5(azby paramazby) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class QZoneNotifyServlet$5
     if (localAppRuntime == null) {
       return;
     }
-    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), ayxp.class);
+    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), azby.class);
     localNewIntent.setAction("Qzone_Get_NewAndUnread_Count");
     localNewIntent.putExtra("bNotWorkInBackGround", true);
     localNewIntent.putExtra("qzone_send_by_time", 4);

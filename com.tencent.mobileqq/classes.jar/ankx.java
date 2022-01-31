@@ -1,19 +1,6 @@
-import android.content.Context;
-import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-
-class ankx
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public abstract interface ankx
 {
-  ankx(anku paramanku, String paramString, Context paramContext) {}
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
-  {
-    if ((paramInt == 0) && (paramAppPathInfo.path != null)) {
-      ArkAppCacheMgr.getAppIcon(this.jdField_a_of_type_JavaLangString, new anky(this));
-    }
-  }
+  public abstract boolean a(String paramString1, String paramString2, String paramString3);
 }
 
 

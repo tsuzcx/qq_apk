@@ -1,6 +1,19 @@
-public abstract interface ajro
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class ajro
+  implements azht
 {
-  public abstract void a(float paramFloat1, float paramFloat2);
+  public ajro(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".photo", 2, "shot photo with custom camera focus " + paramBoolean1);
+    }
+    ajrw.a(paramBoolean1);
+    NewFlowCameraActivity.b(this.a);
+  }
 }
 
 

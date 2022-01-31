@@ -1,92 +1,130 @@
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tribe.async.async.JobContext;
 
 public class xlp
+  extends xlo<xlb, xlb>
 {
-  public View a;
-  public TextView a;
-  public View b;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
+  public final String a;
+  private boolean a;
   
-  public xlp(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  public xlp(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378063));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365011));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370684));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379599));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369447);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369449);
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131369450);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131369448);
+    this(true, paramString);
   }
   
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
+  public xlp(boolean paramBoolean)
   {
-    Object localObject = xmq.a(paramTroopStoryItemInfo.publishTime);
-    if (TextUtils.isEmpty(localObject[0]))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(localObject[1]);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      if ((paramInt > 0) && (((TroopStoryItemInfo)this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.get(paramInt - 1)).itemType == 0))
-      {
-        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
-      while (paramTroopStoryItemInfo.publishCount == 0)
-      {
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(alpo.a(2131716170));
-        return;
-        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
+    this(paramBoolean, null);
+  }
+  
+  public xlp(boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  protected void a(JobContext paramJobContext, xlb paramxlb)
+  {
+    boolean bool2 = false;
+    int i = 1;
+    String str = this.jdField_a_of_type_JavaLangString;
+    paramJobContext = str;
+    if (str == null) {
+      paramJobContext = xlr.a(paramxlb.jdField_a_of_type_Int, paramxlb.jdField_b_of_type_JavaLangString, ".jpg");
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(localObject[1]);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(localObject[0]);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    if ((paramInt > 0) && (((TroopStoryItemInfo)this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.get(paramInt - 1)).itemType == 0))
-    {
-      this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(0);
+    if ((this.jdField_a_of_type_Boolean) && (paramxlb.jdField_a_of_type_Boolean)) {
+      wxe.b("Q.qqstory.publish.edit.MergePicSegment", "merge has doodle");
     }
+    boolean bool1;
     for (;;)
     {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      break;
-      this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramTroopStoryItemInfo.publishCount).append("个小视频");
-    if (paramTroopStoryItemInfo.dayCommentCount > 0)
-    {
-      ((StringBuilder)localObject).append(" 评论").append(paramTroopStoryItemInfo.dayCommentCount);
-      if (paramTroopStoryItemInfo.dayLikeCount > 0) {
-        ((StringBuilder)localObject).append("·");
+      try
+      {
+        bool1 = xqw.a(xqw.c(paramxlb.jdField_a_of_type_Xlf.jdField_a_of_type_AndroidGraphicsBitmap, paramxlb.jdField_a_of_type_Xlf.jdField_b_of_type_AndroidGraphicsBitmap), paramJobContext);
+        i = 0;
+        bool2 = true;
+        axpl.d = bool2;
+        if ((i != 0) || (bool1)) {
+          break;
+        }
+        wxe.e("Q.qqstory.publish.edit.MergePicSegment", "save err");
+        super.notifyError(new ErrorMessage(-1, alud.a(2131706946)));
+        return;
+      }
+      catch (Throwable paramJobContext)
+      {
+        wxe.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext);
+        paramJobContext = null;
+        bool1 = false;
+        continue;
+      }
+      if (paramxlb.jdField_a_of_type_Xlf.jdField_a_of_type_Int > 0)
+      {
+        wxe.b("Q.qqstory.publish.edit.MergePicSegment", "merge use display");
+        try
+        {
+          bool1 = xqw.a(paramxlb.jdField_a_of_type_Xlf.jdField_a_of_type_AndroidGraphicsBitmap, paramJobContext);
+          i = 0;
+          bool2 = true;
+        }
+        catch (Throwable paramJobContext)
+        {
+          for (;;)
+          {
+            wxe.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext);
+            paramJobContext = null;
+            bool1 = false;
+          }
+        }
+      }
+      else
+      {
+        wxe.b("Q.qqstory.publish.edit.MergePicSegment", "merge use origin");
+        paramJobContext = paramxlb.jdField_a_of_type_Xlf.jdField_a_of_type_JavaLangString;
+        wxk.b("0X80075C9");
+        paramxlb.jdField_a_of_type_Xlf.jdField_b_of_type_Boolean = true;
+        bool1 = false;
       }
     }
-    if (paramTroopStoryItemInfo.dayLikeCount > 0)
-    {
-      if (paramTroopStoryItemInfo.dayCommentCount <= 0) {
-        ((StringBuilder)localObject).append(" ");
-      }
-      ((StringBuilder)localObject).append("赞").append(paramTroopStoryItemInfo.dayLikeCount);
+    paramxlb.jdField_a_of_type_Xlf.jdField_b_of_type_JavaLangString = paramJobContext;
+    paramxlb.jdField_a_of_type_Xlf.jdField_a_of_type_Boolean = bool1;
+    if ((paramxlb.jdField_a_of_type_Int == 3) && (bool1)) {
+      a(paramxlb, paramxlb.jdField_a_of_type_Xlf.jdField_a_of_type_JavaLangString, paramJobContext);
     }
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(((StringBuilder)localObject).toString());
+    super.notifyResult(paramxlb);
+  }
+  
+  public void a(xlb paramxlb, String paramString1, String paramString2)
+  {
+    double d1;
+    double d2;
+    if (((paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditTakePhotoSource)) && (((EditTakePhotoSource)paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).b != 4.9E-324D) && (((EditTakePhotoSource)paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a != 4.9E-324D))
+    {
+      d1 = ((EditTakePhotoSource)paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).b;
+      d2 = ((EditTakePhotoSource)paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a;
+      if (!TextUtils.isEmpty(paramString1)) {
+        if (!bjud.a(paramString1, paramString2)) {
+          bjud.b(paramString2, d2, d1);
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        bjud.b(paramString2, d2, d1);
+        return;
+      } while ((!(paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditLocalPhotoSource)) || (TextUtils.isEmpty(paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a.a())) || (bjud.a(paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a.a(), paramString2)));
+      paramxlb = ((EditLocalPhotoSource)paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a;
+    } while (paramxlb == null);
+    bjud.a(paramString2, paramxlb.longitude / 1000000.0D, paramxlb.latitude / 1000000.0D);
   }
 }
 

@@ -2,8 +2,8 @@ package com.tencent.litetransfersdk;
 
 import android.os.Handler;
 import android.os.Looper;
-import armo;
-import baqx;
+import arqx;
+import bavg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.SoLoadUtil;
@@ -91,7 +91,7 @@ public class LiteTransferWrapper
   
   public static int getNetType()
   {
-    return baqx.a().a();
+    return bavg.a().a();
   }
   
   public void CancelAll(int paramInt, boolean paramBoolean)
@@ -390,26 +390,26 @@ public class LiteTransferWrapper
   {
     try
     {
-      File localFile = new File(armo.a().b());
+      File localFile = new File(arqx.a().b());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetDefaultPath(armo.a().b());
-      localFile = new File(armo.a().d());
+      SetDefaultPath(arqx.a().b());
+      localFile = new File(arqx.a().d());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbPath(armo.a().d());
-      localFile = new File(armo.a().c());
+      SetThumbPath(arqx.a().d());
+      localFile = new File(arqx.a().c());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetTempPath(armo.a().c());
-      localFile = new File(armo.a().c());
+      SetTempPath(arqx.a().c());
+      localFile = new File(arqx.a().c());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbTempPath(armo.a().c());
+      SetThumbTempPath(arqx.a().c());
       return;
     }
     catch (Exception localException) {}

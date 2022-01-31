@@ -1,15 +1,25 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+
 public class ajow
+  implements DialogInterface.OnShowListener
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  public ajow(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public String toString()
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    return "RMVideoClipSpec: " + this.a + "," + this.b + "," + this.c + "," + this.d + "," + this.e + "," + this.f;
+    if (EditLocalVideoActivity.a(this.a) != null) {
+      EditLocalVideoActivity.a(this.a).setVisibility(8);
+    }
+    if (EditLocalVideoActivity.a(this.a) != null) {
+      EditLocalVideoActivity.a(this.a).setVisibility(8);
+    }
+    if ((EditLocalVideoActivity.a(this.a) != null) && (EditLocalVideoActivity.a(this.a) != 1)) {
+      EditLocalVideoActivity.a(this.a, true);
+    }
   }
 }
 

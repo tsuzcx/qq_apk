@@ -1,58 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.earlydownload.handler.AppleEmojiHandler.1;
-import com.tencent.mobileqq.earlydownload.xmldata.AppleEmojiData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
 
 public class apgq
-  extends apgu
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public apgq(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.appleemoji", paramQQAppInterface);
-  }
+  public apgq(DataReportSettingFragment paramDataReportSettingFragment) {}
   
-  public int a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return 10001;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return AppleEmojiData.class;
-  }
-  
-  public String a()
-  {
-    return "AppleMojiHandler";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppleMojiHandler", 2, "doOnDownloadSuccess:" + paramString);
-    }
-    File localFile = new File(paramString);
-    if (!localFile.exists())
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppleMojiHandler", 2, "doOnDownloadSuccess sorse not exists");
-      }
+      aphn.a().c();
       return;
     }
-    ThreadManager.excute(new AppleEmojiHandler.1(this, localFile, paramString), 64, null, true);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
+    aphn.a().d();
   }
 }
 

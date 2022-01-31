@@ -1,15 +1,15 @@
 package dov.com.qq.im.capture.poi;
 
-import blrt;
+import blwf;
 
 public class FacePoiUI$2
   implements Runnable
 {
-  public FacePoiUI$2(blrt paramblrt, boolean paramBoolean1, boolean paramBoolean2) {}
+  public FacePoiUI$2(blwf paramblwf, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    blrt.a(this.this$0, this.a, this.b);
+    blwf.a(this.this$0, this.a, this.b);
   }
 }
 

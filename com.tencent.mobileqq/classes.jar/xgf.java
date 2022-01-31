@@ -1,31 +1,6 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.Friends;
-
-public class xgf
+public abstract interface xgf
 {
-  @NonNull
-  protected final Friends a;
-  protected boolean a;
-  
-  public xgf(@NonNull Friends paramFriends)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  public abstract void a(xiq paramxiq);
 }
 
 

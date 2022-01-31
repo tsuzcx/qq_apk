@@ -1,11 +1,6 @@
-import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
-
-public class afky
+public abstract interface afky
 {
-  public int a;
-  public String a;
-  
-  public afky(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
+  public abstract void onUpdate(int paramInt);
 }
 
 

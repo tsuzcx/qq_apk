@@ -1,42 +1,41 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
 
-class azgu
-  extends BroadcastReceiver
+public class azgu
+  extends AsyncTask<Void, Void, Integer>
 {
-  azgu(azgt paramazgt) {}
+  public azgu(SVHwEncoder.HwEncode paramHwEncode) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected Integer a(Void... paramVarArgs)
   {
-    paramContext = paramIntent.getStringExtra("callback");
-    String str1 = paramIntent.getStringExtra("uuid");
-    String str2 = paramIntent.getStringExtra("md5");
-    String str3 = paramIntent.getStringExtra("imgurl");
-    String str4 = paramIntent.getStringExtra("mediaType");
-    boolean bool = axld.e();
-    paramIntent = new JSONObject();
-    try
+    long l = System.currentTimeMillis();
+    paramVarArgs = SVHwEncoder.HwEncode.a(this.a) + "shortvideo_thumb.jpg";
+    int j = this.a.a.a(SVHwEncoder.HwEncode.b(this.a), SVHwEncoder.f(this.a.this$0), SVHwEncoder.g(this.a.this$0), SVHwEncoder.a(this.a.this$0), SVHwEncoder.b(this.a.this$0), paramVarArgs);
+    int i = j;
+    String str;
+    if (j == 0)
     {
-      paramIntent.put("uuid", str1);
-      paramIntent.put("md5", str2);
-      paramIntent.put("imgurl", str3);
-      paramIntent.put("mediaType", str4);
-      paramIntent.put("hasGesture", bool);
-      if (QLog.isColorLevel()) {
-        QLog.i("ShortVideoJsApiPlugin", 2, "call webView, uuid" + str1 + ", md5:" + str2 + ", imgurl:" + str3 + ", mediaType:" + str4 + ", hasGesture:" + bool);
+      str = ShortVideoUtils.a(this.a.a.jdField_a_of_type_JavaLangString, "jpg");
+      if (!bdhb.c(paramVarArgs, str)) {
+        break label177;
       }
-      this.a.callJs(paramContext, new String[] { paramIntent.toString() });
-      return;
+      this.a.a.b = str;
+      i = j;
     }
-    catch (JSONException localJSONException)
+    for (;;)
     {
-      for (;;)
+      this.a.a.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
+      this.a.a.jdField_a_of_type_Int = i;
+      SVHwEncoder.HwEncode.a(this.a, true);
+      return Integer.valueOf(i);
+      label177:
+      i = j;
+      if (!bdhb.b(str))
       {
-        localJSONException.printStackTrace();
+        this.a.this$0.a("doInBackground()", "rename failure, mThumbFilePath = " + paramVarArgs + ",thumbPath=" + str);
+        i = -3;
       }
     }
   }

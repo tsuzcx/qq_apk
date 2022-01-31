@@ -1,27 +1,14 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.ttpic.openapi.model.WMEditItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bkuu
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  bkuu(bkus parambkus, bkva parambkva, WMEditItem paramWMEditItem) {}
+  bkuu(bkur parambkur) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((InputMethodManager)AEModule.getContext().getSystemService("input_method")).hideSoftInputFromWindow(bkus.a(this.jdField_a_of_type_Bkus).getWindowToken(), 0);
-    bkus.a(this.jdField_a_of_type_Bkus).setTextColor(-1);
-    bkus.a(this.jdField_a_of_type_Bkus, bkus.a(this.jdField_a_of_type_Bkus));
-    bkus.a(this.jdField_a_of_type_Bkus, this.jdField_a_of_type_Bkva.a);
-    bkus.a(this.jdField_a_of_type_Bkus).setTextColor(-12339461);
-    bkus.a(this.jdField_a_of_type_Bkus, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
-    if (bkus.a(this.jdField_a_of_type_Bkus) != null) {
-      bkus.a(this.jdField_a_of_type_Bkus).a(this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem.itemType, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem.value, this.jdField_a_of_type_Bkva.a);
-    }
+    bkur.a(this.a).a(bkur.a(this.a).a(), bkur.a(this.a), bkur.a(this.a));
   }
 }
 

@@ -1,37 +1,31 @@
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
-
-public class bdbw
-  extends MqqHandler
+class bdbw
+  extends altm
 {
-  private final WeakReference<Handler.Callback> a;
+  private bdbw(bdbu parambdbu) {}
   
-  public bdbw(Handler.Callback paramCallback)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.a = new WeakReference(paramCallback);
+    this.a.a(4, paramBoolean, new Object[] { paramString });
   }
   
-  public bdbw(Looper paramLooper, Handler.Callback paramCallback)
+  public void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramCallback);
+    this.a.a(39, paramBoolean, new Object[] { paramString });
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    if (localCallback != null) {
-      localCallback.handleMessage(paramMessage);
-    }
+    this.a.a(6, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
   }
   
-  public String toString()
+  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    return super.toString() + " " + localCallback;
+    this.a.a(5, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    this.a.a(30, paramBoolean, new Object[] { paramString });
   }
 }
 

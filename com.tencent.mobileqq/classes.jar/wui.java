@@ -1,9 +1,21 @@
-public abstract interface wui
-  extends wwd
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+
+class wui
+  extends SimpleJob<Object>
 {
-  public abstract void a(long paramLong);
+  wui(wuh paramwuh, String paramString1, String paramString2)
+  {
+    super(paramString1);
+  }
   
-  public abstract void b();
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    wub.a(this.jdField_a_of_type_Wuh.a.a).a(this.jdField_a_of_type_JavaLangString);
+    return null;
+  }
 }
 
 

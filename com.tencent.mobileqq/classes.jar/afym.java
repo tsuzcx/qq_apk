@@ -1,40 +1,35 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
 class afym
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   afym(afyl paramafyl) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject = aekt.a(paramView);
-    if (!(localObject instanceof MessageForText)) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
-      }
-    }
-    do
+    switch (paramMotionEvent.getAction())
     {
-      do
-      {
-        return;
-        localObject = (MessageForText)localObject;
-      } while (this.a.a());
-      if (((MessageForText)localObject).msgtype == -1003)
-      {
-        aekt.n = true;
-        localObject = bdlr.a(((MessageForText)localObject).action);
-        localObject = bdds.a(this.a.a, paramView.getContext(), (String)localObject);
-        if (localObject != null) {
-          ((bddb)localObject).c();
-        }
-      }
-    } while (!(paramView instanceof ETTextView));
-    ((ETTextView)paramView).startAnimation(true, false);
+    case 2: 
+    default: 
+      return true;
+    case 0: 
+      afyl.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      afyl.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(true);
+      return true;
+    case 3: 
+      afyl.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      afyl.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
+      return true;
+    }
+    afyl.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    afyl.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
+    paramView.performClick();
+    afyl.a(this.a, paramView);
+    return true;
   }
 }
 

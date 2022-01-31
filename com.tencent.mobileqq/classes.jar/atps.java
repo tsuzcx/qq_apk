@@ -1,15 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
-class atps
-  implements View.OnClickListener
+abstract class atps<T extends alpd>
 {
-  atps(atpr paramatpr, String paramString) {}
+  protected final QQAppInterface a;
   
-  public void onClick(View paramView)
+  public atps(QQAppInterface paramQQAppInterface)
   {
-    atpr.a(this.jdField_a_of_type_Atpr).a(this.jdField_a_of_type_JavaLangString);
-    azmj.b(null, "CliOper", "", "", "0X800A770", "0X800A770", 0, 0, "", "0", "0", "");
+    this.a = paramQQAppInterface;
+  }
+  
+  protected final boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseProto", 2, new Object[] { "ssoLinkOk: invoked. ", " req: ", paramToServiceMsg, " res: ", paramFromServiceMsg, " data: ", paramObject });
+    }
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null) || (!paramFromServiceMsg.isSuccess())) {}
+    for (int i = 1; i == 0; i = 0) {
+      return true;
+    }
+    return false;
   }
 }
 

@@ -6,22 +6,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
-import bgrq;
-import bgrr;
-import bgrs;
+import bgvx;
+import bgvy;
+import bgvz;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 
 public class EngineChannel
   implements Parcelable
 {
-  public static final Parcelable.Creator<EngineChannel> CREATOR = new bgrq();
+  public static final Parcelable.Creator<EngineChannel> CREATOR = new bgvx();
   private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
-  private bgrs jdField_a_of_type_Bgrs;
+  private bgvz jdField_a_of_type_Bgvz;
   private String jdField_a_of_type_JavaLangString = "Unknown";
   
   public EngineChannel()
   {
-    this.jdField_a_of_type_AndroidOsResultReceiver = new EngineChannel.MyReceiver(this, new bgrr(ThreadManager.a().getLooper()));
+    this.jdField_a_of_type_AndroidOsResultReceiver = new EngineChannel.MyReceiver(this, new bgvy(ThreadManager.a().getLooper()));
   }
   
   private EngineChannel(ResultReceiver paramResultReceiver)
@@ -36,9 +36,9 @@ public class EngineChannel
     }
   }
   
-  public void a(bgrs parambgrs)
+  public void a(bgvz parambgvz)
   {
-    this.jdField_a_of_type_Bgrs = parambgrs;
+    this.jdField_a_of_type_Bgvz = parambgvz;
   }
   
   public void a(String paramString)

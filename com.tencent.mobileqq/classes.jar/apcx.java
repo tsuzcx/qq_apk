@@ -1,17 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-
-public class apcx
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface apcx
 {
-  public apcx(DataReportViewer paramDataReportViewer) {}
+  public abstract void i();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
-  }
+  public abstract void j();
+  
+  public abstract void k();
 }
 
 

@@ -1,82 +1,87 @@
+import android.os.RemoteCallbackList;
+import android.os.RemoteException;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.qphone.base.util.QLog;
+
 public class amwt
-  extends amxe
-  implements amwr
+  implements anep
 {
-  public int a;
-  public String a;
-  public amwu[] a;
-  public int b = -1;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e = 0;
+  public amwt(ArConfigService paramArConfigService) {}
   
-  public amwt()
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfAmwu = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-  }
-  
-  public static boolean a(amwt paramamwt)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramamwt != null)
-    {
-      bool1 = bool2;
-      if (paramamwt.jdField_a_of_type_Int == 0)
+    if (ArConfigService.c(this.a) != null) {
+      try
       {
-        bool1 = bool2;
-        if (paramamwt.b == 0)
+        int j = ArConfigService.c(this.a).beginBroadcast();
+        int i = 0;
+        for (;;)
         {
-          bool1 = bool2;
-          if (paramamwt.jdField_a_of_type_ArrayOfAmwu != null)
+          if (i >= j) {
+            break label106;
+          }
+          try
           {
-            bool1 = bool2;
-            if (paramamwt.jdField_a_of_type_ArrayOfAmwu[0].jdField_c_of_type_Int == 0)
+            ((amzp)ArConfigService.c(this.a).getBroadcastItem(i)).a(paramInt1, paramInt2);
+            i += 1;
+          }
+          catch (RemoteException localRemoteException)
+          {
+            for (;;)
             {
-              bool1 = bool2;
-              if (paramamwt.jdField_a_of_type_ArrayOfAmwu[0].a != null) {
-                bool1 = true;
-              }
+              localRemoteException.printStackTrace();
             }
           }
         }
+        return;
       }
-    }
-    return bool1;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfAmwu[0].a;
-  }
-  
-  public String toString()
-  {
-    if (this.jdField_a_of_type_ArrayOfAmwu != null)
-    {
-      String str1 = "ImageTags{";
-      int i = 0;
-      for (;;)
+      catch (Exception localException)
       {
-        str2 = str1;
-        if (i >= this.jdField_a_of_type_ArrayOfAmwu.length) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onProgress error:" + localException.getMessage());
         }
-        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfAmwu[i];
-        i += 1;
       }
     }
-    String str2 = "null";
-    return "ARCloudObjectClassifyResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
+    label106:
+    ArConfigService.c(this.a).finishBroadcast();
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (ArConfigService.c(this.a) != null) {}
+    for (;;)
+    {
+      int i;
+      try
+      {
+        int j = ArConfigService.c(this.a).beginBroadcast();
+        i = 0;
+        if (i >= j) {
+          break label129;
+        }
+        if (paramBoolean) {}
+        try
+        {
+          ((amzp)ArConfigService.c(this.a).getBroadcastItem(i)).a(paramInt);
+        }
+        catch (RemoteException localRemoteException)
+        {
+          localRemoteException.printStackTrace();
+        }
+        ((amzp)ArConfigService.c(this.a).getBroadcastItem(i)).b(paramInt, 0);
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onFinish error:" + localException.getMessage());
+        }
+      }
+      return;
+      label129:
+      ArConfigService.c(this.a).finishBroadcast();
+      return;
+      i += 1;
+    }
   }
 }
 

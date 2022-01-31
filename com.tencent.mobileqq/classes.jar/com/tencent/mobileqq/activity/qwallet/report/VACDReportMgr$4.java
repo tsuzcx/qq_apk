@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.report;
 
-import aizt;
+import ajei;
 import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class VACDReportMgr$4
   implements Runnable
 {
-  public VACDReportMgr$4(aizt paramaizt, byte[] paramArrayOfByte) {}
+  public VACDReportMgr$4(ajei paramajei, byte[] paramArrayOfByte) {}
   
   public void run()
   {
@@ -16,8 +16,8 @@ public class VACDReportMgr$4
     {
       try
       {
-        while ((aizt.b(this.this$0).isEmpty()) && (aizt.a(this.this$0).isEmpty())) {
-          aizt.a().wait();
+        while ((ajei.b(this.this$0).isEmpty()) && (ajei.a(this.this$0).isEmpty())) {
+          ajei.a().wait();
         }
         try
         {
@@ -27,12 +27,12 @@ public class VACDReportMgr$4
           }
           do
           {
-            synchronized (aizt.a())
+            synchronized (ajei.a())
             {
-              aizt.b(this.this$0, 2);
-              if (aizt.a(this.this$0))
+              ajei.b(this.this$0, 2);
+              if (ajei.a(this.this$0))
               {
-                aizt.c(this.this$0).post(this);
+                ajei.c(this.this$0).post(this);
                 return;
                 localObject1 = finally;
                 throw localObject1;

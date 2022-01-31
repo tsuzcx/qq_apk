@@ -1,8 +1,8 @@
 package cooperation.qqreader;
 
 import android.os.Bundle;
-import biuv;
-import bixe;
+import bizc;
+import bjbl;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import eipc.EIPCClient;
 import eipc.EIPCResult;
@@ -10,11 +10,11 @@ import eipc.EIPCResult;
 public class QRPluginManagerClient$1
   implements Runnable
 {
-  public QRPluginManagerClient$1(biuv parambiuv) {}
+  public QRPluginManagerClient$1(bizc parambizc) {}
   
   public void run()
   {
-    bixe.d("QRPluginManagerClient", "launchPlugin");
+    bjbl.d("QRPluginManagerClient", "launchPlugin");
     Object localObject = QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "download_reader_plugin", new Bundle());
     StringBuilder localStringBuilder;
     if ((localObject == null) || (!((EIPCResult)localObject).isSuccess()))
@@ -27,8 +27,8 @@ public class QRPluginManagerClient$1
     label82:
     for (localObject = "null";; localObject = ((EIPCResult)localObject).e.toString())
     {
-      bixe.a("QRPluginManagerClient", (String)localObject);
-      biuv.a(this.this$0, 0L);
+      bjbl.a("QRPluginManagerClient", (String)localObject);
+      bizc.a(this.this$0, 0L);
       return;
     }
   }

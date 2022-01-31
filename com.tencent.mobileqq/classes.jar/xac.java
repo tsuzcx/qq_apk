@@ -1,15 +1,18 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
-public abstract interface xac
+public class xac
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a();
+  public xac(EditVideoGuide paramEditVideoGuide) {}
   
-  public abstract boolean a();
-  
-  public abstract void b(Canvas paramCanvas);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.jdField_a_of_type_Int = 3;
+    this.a.b = 3;
+    this.a.jdField_a_of_type_Xan.a(14);
+  }
 }
 
 

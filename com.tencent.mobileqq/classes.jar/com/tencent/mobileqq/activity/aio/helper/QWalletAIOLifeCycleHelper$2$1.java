@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afbe;
-import afbg;
+import afft;
+import affv;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.widget.XEditTextEx;
@@ -10,13 +10,13 @@ import com.tencent.widget.XPanelContainer;
 public class QWalletAIOLifeCycleHelper$2$1
   implements Runnable
 {
-  public QWalletAIOLifeCycleHelper$2$1(afbg paramafbg) {}
+  public QWalletAIOLifeCycleHelper$2$1(affv paramaffv) {}
   
   public void run()
   {
-    ((XPanelContainer)afbe.a(this.a.a).c.findViewById(2131375981)).a(1);
-    afbe.a(this.a.a).a.setSelection(afbe.a(this.a.a).a.getText().toString().length());
-    afbe.a(this.a.a).a.requestFocus();
+    ((XPanelContainer)afft.a(this.a.a).c.findViewById(2131376034)).a(1);
+    afft.a(this.a.a).a.setSelection(afft.a(this.a.a).a.getText().toString().length());
+    afft.a(this.a.a).a.requestFocus();
   }
 }
 

@@ -1,25 +1,12 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnItemTouchListener;
-import android.view.MotionEvent;
+import org.json.JSONObject;
 
-class yas
-  implements RecyclerView.OnItemTouchListener
+public abstract interface yas
 {
-  yas(yan paramyan) {}
+  public abstract JSONObject a();
   
-  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
-  {
-    return yan.a(this.a, paramMotionEvent);
-  }
+  public abstract void a();
   
-  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
-  
-  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
-  {
-    if (yan.a(this.a) != null) {
-      yan.a(this.a).a(paramMotionEvent);
-    }
-  }
+  public abstract void b();
 }
 
 

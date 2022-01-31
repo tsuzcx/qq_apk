@@ -1,8 +1,15 @@
-public abstract interface ajnu
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class ajnu
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  ajnu(ajns paramajns) {}
   
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

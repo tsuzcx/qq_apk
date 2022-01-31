@@ -1,23 +1,35 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class ascl
-  implements CompoundButton.OnCheckedChangeListener
+class ascl
+  extends BroadcastReceiver
 {
-  public ascl(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
+  ascl(ascj paramascj, String paramString) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131695480), "qqsetting_auto_receive_pic_key", paramBoolean);
-    paramCompoundButton = QQSettingAutoDownloadAndSaveFragment.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    if ((ascj.a(this.jdField_a_of_type_Ascj) == null) || (ascj.a(this.jdField_a_of_type_Ascj).isFinishing()))
     {
-      azmj.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
+      QLog.e("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onReceive null == mActivity || mActivity.isFinishing()");
       return;
     }
+    ascj.a(this.jdField_a_of_type_Ascj);
+    ascj.a(this.jdField_a_of_type_Ascj).removeMessages(93);
+    ascj.a(this.jdField_a_of_type_Ascj).removeMessages(94);
+    paramContext = ((asdm)ascj.a(this.jdField_a_of_type_Ascj).a.getManager(350)).a(this.jdField_a_of_type_JavaLangString);
+    if (paramContext == null)
+    {
+      QLog.e("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onReceive b77Result == null");
+      return;
+    }
+    QLog.e("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onReceive parseB77Result");
+    ascj.a(this.jdField_a_of_type_Ascj, paramContext);
   }
 }
 

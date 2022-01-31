@@ -1,4 +1,5 @@
-// INTERNAL ERROR //
+class vsw {}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vsw

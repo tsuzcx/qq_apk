@@ -1,38 +1,46 @@
-import android.os.Handler;
-import com.tencent.biz.qqcircle.requests.QCircleDoRecommendRequest;
-import com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView;
-import com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView.6.1;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
 import com.tencent.qphone.base.util.QLog;
 
-public class ucj
-  implements ytf
+class ucj
+  implements yhs
 {
-  public ucj(QCircleRecommendImageView paramQCircleRecommendImageView) {}
+  ucj(uce paramuce) {}
   
   public void a()
   {
-    QCircleRecommendImageView.a(this.a, 0);
-    if (!ndk.a(this.a.getContext()))
+    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardClosed");
+    if (uce.a(this.a))
     {
-      QCircleRecommendImageView.b(this.a, QCircleRecommendImageView.a(this.a));
-      ThreadManagerV2.getUIHandlerV2().post(new QCircleRecommendImageView.6.1(this));
+      uce.b(this.a, false);
+      if (uce.a(this.a) != null) {
+        uce.a(this.a).setVisibility(0);
+      }
+      if (uce.a(this.a) != null) {
+        uce.a(this.a).setVisibility(0);
+      }
     }
-    while ((QCircleRecommendImageView.a(this.a) == null) || (QCircleRecommendImageView.a(this.a) == null)) {
-      return;
-    }
-    int i = QCircleRecommendImageView.b(this.a) - QCircleRecommendImageView.a(this.a);
-    if (i <= 0)
+    for (;;)
     {
-      QLog.d("QCircleRecommend", 1, "addPushTimes" + i + "merge request");
-      QCircleRecommendImageView.b(this.a, QCircleRecommendImageView.a(this.a));
+      uce.a(this.a, false);
       return;
+      this.a.dismiss();
     }
-    QCircleRecommendImageView.a(this.a, i);
-    QLog.d("QCircleRecommend", 1, "QCircleDoRecommendRequest add push " + i);
-    QCircleDoRecommendRequest localQCircleDoRecommendRequest = new QCircleDoRecommendRequest(QCircleRecommendImageView.a(this.a), i, QCircleRecommendImageView.a(this.a));
-    VSNetworkHelper.a().a(this.a.getContext(), localQCircleDoRecommendRequest, new uck(this, localQCircleDoRecommendRequest));
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardOpened");
+    if (uce.a(this.a) != paramInt)
+    {
+      uce.a(this.a, paramInt);
+      uce.a(this.a);
+      uce.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
+      uce.a(this.a).commit();
+    }
+    this.a.c();
+    uce.a(this.a, true);
   }
 }
 

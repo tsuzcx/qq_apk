@@ -1,11 +1,38 @@
-import android.view.View;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.ProxyDrawable;
+import com.tencent.widget.BubblePopupWindow;
 
-public abstract interface bhvl
+public class bhvl
+  extends ProxyDrawable
 {
-  public abstract void a();
+  int jdField_a_of_type_Int;
+  int b;
   
-  public abstract void a(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView, View paramView, int paramInt);
+  public bhvl(BubblePopupWindow paramBubblePopupWindow, Drawable paramDrawable)
+  {
+    super(paramDrawable);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    invalidateSelf();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    Rect localRect = getBounds();
+    if (this.b > this.jdField_a_of_type_Int)
+    {
+      int i = paramCanvas.save();
+      paramCanvas.clipRect(this.jdField_a_of_type_Int, 0, this.b, localRect.height());
+      this.mCurrDrawable.draw(paramCanvas);
+      paramCanvas.restoreToCount(i);
+    }
+  }
 }
 
 

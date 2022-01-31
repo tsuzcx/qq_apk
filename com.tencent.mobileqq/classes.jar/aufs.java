@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.Emoticon;
 
 class aufs
-  implements DialogInterface.OnClickListener
+  implements aufy<apxv>
 {
-  aufs(aufi paramaufi) {}
+  aufs(aufn paramaufn, boolean paramBoolean, SessionInfo paramSessionInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(apxv paramapxv)
   {
-    paramDialogInterface.dismiss();
-    azmj.b(this.a.a, "CliOper", "", "", aufi.b, aufi.b, 0, 0, "", "", "", "");
+    if ((paramapxv != null) && (paramapxv.a != null))
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        aufn.a(this.jdField_a_of_type_Aufn.a, "0X800A937", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramapxv.a.epId);
+      }
+    }
+    else {
+      return;
+    }
+    aufn.a(this.jdField_a_of_type_Aufn.a, "0X800A936", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramapxv.a.epId);
   }
 }
 

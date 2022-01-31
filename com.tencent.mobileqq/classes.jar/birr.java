@@ -1,15 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.ProgressDialog;
+import android.content.Context;
 
-class birr
-  implements View.OnClickListener
+public class birr
 {
-  birr(birq parambirq, biru parambiru) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Biru.a(paramView);
-  }
+  public ProgressDialog a;
+  public Context a;
+  public biqu a;
+  public biqw a;
+  public boolean a = true;
 }
 
 

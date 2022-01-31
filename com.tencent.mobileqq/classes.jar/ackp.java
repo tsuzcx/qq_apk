@@ -1,20 +1,12 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class ackp
-  implements MessageQueue.IdleHandler
+public final class ackp
+  implements DialogInterface.OnClickListener
 {
-  ackp(acko paramacko) {}
-  
-  public boolean queueIdle()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    View localView = this.a.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
-    int i = localView.getTop();
-    int j = (this.a.a.jdField_a_of_type_ComTencentWidgetXListView.getHeight() - localView.getHeight()) / 2;
-    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.smoothScrollBy(i - j, 1000);
-    return false;
+    paramDialogInterface.dismiss();
   }
 }
 

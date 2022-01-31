@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.appbrand.page;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import bdcd;
-import bdfq;
+import bdgm;
+import bdjz;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
@@ -30,7 +30,7 @@ class ProgressWebView$1
   
   public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    bdcd.a(ProgressWebView.access$100(this.this$0).activity, paramString2, 2131690648, 2131694951, new ProgressWebView.1.2(this, paramJsResult), new ProgressWebView.1.3(this, paramJsResult)).show();
+    bdgm.a(ProgressWebView.access$100(this.this$0).activity, paramString2, 2131690648, 2131694953, new ProgressWebView.1.2(this, paramJsResult), new ProgressWebView.1.3(this, paramJsResult)).show();
     return true;
   }
   

@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
 import android.os.Build.VERSION;
-import bgho;
-import bgkd;
-import bgki;
-import bglb;
-import bgtj;
-import bgwc;
-import bgwp;
+import bglv;
+import bgok;
+import bgop;
+import bgpi;
+import bgxq;
+import bhaj;
+import bhaw;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -44,477 +44,477 @@ public class WebAudioPlugin
   public static final String API_WEB_AUDIO_CONNECT_AUDIO_NODE = "webAudioConnectAudioNode";
   private static final String TAG = "WebAudioPlugin";
   private ITTEngine mTTEngine;
-  private bgwp mWebAudioManager;
+  private bhaw mWebAudioManager;
   private AtomicInteger sId = new AtomicInteger();
   
-  public String audioBufferCopyFromChannel(bgkd parambgkd)
+  public String audioBufferCopyFromChannel(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     return "{}";
   }
   
-  public String audioBufferCopyToChannel(bgkd parambgkd)
+  public String audioBufferCopyToChannel(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      Object localObject = new JSONObject(parambgkd.b);
+      Object localObject = new JSONObject(parambgok.b);
       int i = ((JSONObject)localObject).getInt("bufferId");
       int j = ((JSONObject)localObject).optInt("sourceId", -1);
       int k = ((JSONObject)localObject).getInt("channelId");
       int m = ((JSONObject)localObject).optInt("startInChannel", 0);
-      localObject = bglb.a(this.mMiniAppContext, (JSONObject)localObject, "data");
+      localObject = bgpi.a(this.mMiniAppContext, (JSONObject)localObject, "data");
       if (localObject != null)
       {
-        localObject = ((bglb)localObject).jdField_a_of_type_ArrayOfByte;
+        localObject = ((bgpi)localObject).jdField_a_of_type_ArrayOfByte;
         if ((localObject != null) && (localObject.length != 0))
         {
-          bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_COPY_TO_CHANNEL data.length " + localObject.length);
-          i = bgwp.a().a((byte[])localObject, i, j, k, m);
+          bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_COPY_TO_CHANNEL data.length " + localObject.length);
+          i = bhaw.a().a((byte[])localObject, i, j, k, m);
           localObject = new JSONObject();
           ((JSONObject)localObject).put("bufferId", i);
-          bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_COPY_TO_CHANNEL newBufferId: " + i);
-          parambgkd = bgki.a(parambgkd.a, (JSONObject)localObject).toString();
-          return parambgkd;
+          bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_COPY_TO_CHANNEL newBufferId: " + i);
+          parambgok = bgop.a(parambgok.a, (JSONObject)localObject).toString();
+          return parambgok;
         }
       }
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
-      parambgkd.printStackTrace();
+      parambgok.printStackTrace();
     }
     return "{}";
   }
   
-  public String audioProcessingEventSetQueueBuffer(bgkd parambgkd)
+  public String audioProcessingEventSetQueueBuffer(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      parambgkd = new JSONObject(parambgkd.b);
-      int i = parambgkd.optInt("channelId", -2);
-      int j = parambgkd.optInt("bufferId");
-      bgwp.a().a(i, j);
+      parambgok = new JSONObject(parambgok.b);
+      int i = parambgok.optInt("channelId", -2);
+      int j = parambgok.optInt("bufferId");
+      bhaw.a().a(i, j);
       return "{}";
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
       for (;;)
       {
-        parambgkd.printStackTrace();
+        parambgok.printStackTrace();
       }
     }
   }
   
-  public String closeWebAudioContext(bgkd parambgkd)
+  public String closeWebAudioContext(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      int i = new JSONObject(parambgkd.b).getInt("audioId");
-      bgwp.a().a(i);
-      parambgkd = bgki.a(parambgkd.a, null).toString();
-      return parambgkd;
+      int i = new JSONObject(parambgok.b).getInt("audioId");
+      bhaw.a().a(i);
+      parambgok = bgop.a(parambgok.a, null).toString();
+      return parambgok;
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_CLOSE_WEB_AUDIO_CONTEXT error " + parambgkd.getMessage());
+      bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_CLOSE_WEB_AUDIO_CONTEXT error " + parambgok.getMessage());
     }
     return "{}";
   }
   
-  public String createWebAudioBufferSource(bgkd parambgkd)
+  public String createWebAudioBufferSource(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      int i = new JSONObject(parambgkd.b).getInt("audioId");
-      JSONObject localJSONObject = bgwp.a().a(i);
-      parambgkd = bgki.a(parambgkd.a, localJSONObject).toString();
-      return parambgkd;
+      int i = new JSONObject(parambgok.b).getInt("audioId");
+      JSONObject localJSONObject = bhaw.a().a(i);
+      parambgok = bgop.a(parambgok.a, localJSONObject).toString();
+      return parambgok;
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_SET_SOURCE_BUFFER error " + parambgkd.getMessage());
+      bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_SET_SOURCE_BUFFER error " + parambgok.getMessage());
     }
     return "{}";
   }
   
-  public String createWebAudioContext(bgkd parambgkd)
+  public String createWebAudioContext(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
-    JSONObject localJSONObject = bgwp.a().a(parambgkd.b);
-    return bgki.a(parambgkd.a, localJSONObject).toString();
+    JSONObject localJSONObject = bhaw.a().a(parambgok.b);
+    return bgop.a(parambgok.a, localJSONObject).toString();
   }
   
-  public String createWebAudioContextBuffer(bgkd parambgkd)
+  public String createWebAudioContextBuffer(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       int i = localJSONObject.optInt("numOfChannels", 1);
       int j = localJSONObject.optInt("length");
       int k = localJSONObject.optInt("sampleRate");
       int m = localJSONObject.getInt("audioId");
-      localJSONObject = bgwp.a().a(m, i, j, k);
-      parambgkd = bgki.a(parambgkd.a, localJSONObject).toString();
-      return parambgkd;
+      localJSONObject = bhaw.a().a(m, i, j, k);
+      parambgok = bgop.a(parambgok.a, localJSONObject).toString();
+      return parambgok;
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_SET_SOURCE_BUFFER error " + parambgkd.getMessage());
+      bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_SET_SOURCE_BUFFER error " + parambgok.getMessage());
     }
     return "{}";
   }
   
-  public String createWebAudioGain(bgkd parambgkd)
+  public String createWebAudioGain(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("audioNodeType", 5);
       localJSONObject.put("channelId", -1);
-      parambgkd = bgki.a(parambgkd.a, localJSONObject).toString();
-      return parambgkd;
+      parambgok = bgop.a(parambgok.a, localJSONObject).toString();
+      return parambgok;
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_CREATE_GAIN error " + parambgkd.getMessage());
+      bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_CREATE_GAIN error " + parambgok.getMessage());
     }
     return "{}";
   }
   
-  public String createWebAudioScriptProcessor(bgkd parambgkd)
+  public String createWebAudioScriptProcessor(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       int i = localJSONObject.optInt("bufferSize");
       int j = localJSONObject.optInt("inputChannelNum");
       int k = localJSONObject.optInt("outputChannelNum");
       int m = localJSONObject.getInt("audioId");
-      bgwp.a().a(parambgkd, m, i, j, k);
+      bhaw.a().a(parambgok, m, i, j, k);
       return "{}";
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
       for (;;)
       {
-        parambgkd.printStackTrace();
+        parambgok.printStackTrace();
       }
     }
   }
   
-  public String decodeWebAudioData(bgkd parambgkd)
+  public String decodeWebAudioData(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      Object localObject = new JSONObject(parambgkd.b);
+      Object localObject = new JSONObject(parambgok.b);
       int i = this.sId.incrementAndGet();
-      localObject = bglb.a(this.mMiniAppContext, (JSONObject)localObject, "data");
+      localObject = bgpi.a(this.mMiniAppContext, (JSONObject)localObject, "data");
       if (localObject != null)
       {
-        localObject = ((bglb)localObject).jdField_a_of_type_ArrayOfByte;
+        localObject = ((bgpi)localObject).jdField_a_of_type_ArrayOfByte;
         if (Build.VERSION.SDK_INT >= 16) {
-          bgwp.a().a(i, (byte[])localObject, parambgkd);
+          bhaw.a().a(i, (byte[])localObject, parambgok);
         }
       }
       localObject = new JSONObject();
       ((JSONObject)localObject).put("decodeId", i);
-      parambgkd = bgki.a(parambgkd.a, (JSONObject)localObject).toString();
-      return parambgkd;
+      parambgok = bgop.a(parambgok.a, (JSONObject)localObject).toString();
+      return parambgok;
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_GET_BUFFTER_CHANNEL_DATA error " + parambgkd.getMessage());
+      bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_GET_BUFFTER_CHANNEL_DATA error " + parambgok.getMessage());
     }
     return "{}";
   }
   
-  public String getWebAudioBufferChannelData(bgkd parambgkd)
+  public String getWebAudioBufferChannelData(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      Object localObject = new JSONObject(parambgkd.b);
+      Object localObject = new JSONObject(parambgok.b);
       int i = ((JSONObject)localObject).getInt("bufferId");
       int j = ((JSONObject)localObject).getInt("channelId");
-      localObject = bgwp.a().a(i, j);
+      localObject = bhaw.a().a(i, j);
       JSONObject localJSONObject = new JSONObject();
-      bglb.a(this.mMiniAppContext, (byte[])localObject, bglb.jdField_a_of_type_Int, "data", localJSONObject);
-      bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_GET_BUFFTER_CHANNEL_DATA data.length " + localObject.length);
-      parambgkd = bgki.a(parambgkd.a, localJSONObject).toString();
-      return parambgkd;
+      bgpi.a(this.mMiniAppContext, (byte[])localObject, bgpi.jdField_a_of_type_Int, "data", localJSONObject);
+      bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_GET_BUFFTER_CHANNEL_DATA data.length " + localObject.length);
+      parambgok = bgop.a(parambgok.a, localJSONObject).toString();
+      return parambgok;
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_GET_BUFFTER_CHANNEL_DATA error " + parambgkd.getMessage());
+      bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_GET_BUFFTER_CHANNEL_DATA error " + parambgok.getMessage());
     }
     return "{}";
   }
   
-  public String getWebAudioCurrentGain(bgkd parambgkd)
+  public String getWebAudioCurrentGain(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      parambgkd = new JSONObject(parambgkd.b);
-      int i = parambgkd.getInt("channelId");
-      int j = parambgkd.getInt("audioId");
-      parambgkd = bgwp.a().a(j, i) + "";
-      return parambgkd;
+      parambgok = new JSONObject(parambgok.b);
+      int i = parambgok.getInt("channelId");
+      int j = parambgok.getInt("audioId");
+      parambgok = bhaw.a().a(j, i) + "";
+      return parambgok;
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_GET_CURRENT_GAIN error " + parambgkd.getMessage());
+      bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_GET_CURRENT_GAIN error " + parambgok.getMessage());
     }
     return "{}";
   }
   
-  public String getWebAudioCurrentTime(bgkd parambgkd)
+  public String getWebAudioCurrentTime(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      int i = new JSONObject(parambgkd.b).getInt("audioId");
-      parambgkd = bgwp.a().a(i) + "";
-      return parambgkd;
+      int i = new JSONObject(parambgok.b).getInt("audioId");
+      parambgok = bhaw.a().a(i) + "";
+      return parambgok;
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_SET_BUFFER_SOURCE_LOOP error " + parambgkd.getMessage());
+      bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_SET_BUFFER_SOURCE_LOOP error " + parambgok.getMessage());
     }
     return "{}";
   }
   
-  public String getWebAudioDestination(bgkd parambgkd)
+  public String getWebAudioDestination(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("audioNodeType", 4);
-      parambgkd = bgki.a(parambgkd.a, localJSONObject).toString();
-      return parambgkd;
+      parambgok = bgop.a(parambgok.a, localJSONObject).toString();
+      return parambgok;
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_SET_SOURCE_BUFFER error " + parambgkd.getMessage());
+      bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_SET_SOURCE_BUFFER error " + parambgok.getMessage());
     }
     return "{}";
   }
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    super.onCreate(parambgho);
-    if ((this.mMiniAppContext instanceof bgtj)) {
-      this.mTTEngine = ((bgtj)this.mMiniAppContext).a();
+    super.onCreate(parambglv);
+    if ((this.mMiniAppContext instanceof bgxq)) {
+      this.mTTEngine = ((bgxq)this.mMiniAppContext).a();
     }
-    bgwp.a().a(this.mTTEngine);
+    bhaw.a().a(this.mTTEngine);
   }
   
-  public String operateWebAudioContext(bgkd parambgkd)
+  public String operateWebAudioContext(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      parambgkd = new JSONObject(parambgkd.b).getString("operationType");
-      if (parambgkd.equals("suspend")) {
-        bgwp.a().c(this.mTTEngine);
+      parambgok = new JSONObject(parambgok.b).getString("operationType");
+      if (parambgok.equals("suspend")) {
+        bhaw.a().c(this.mTTEngine);
       }
       for (;;)
       {
         return "{}";
-        if (parambgkd.equals("resume")) {
-          bgwp.a().d(this.mTTEngine);
+        if (parambgok.equals("resume")) {
+          bhaw.a().d(this.mTTEngine);
         }
       }
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
       for (;;)
       {
-        bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_OPERATE_WEB_AUDIO_CONTEXT error " + parambgkd.getMessage());
+        bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_OPERATE_WEB_AUDIO_CONTEXT error " + parambgok.getMessage());
       }
     }
   }
   
-  public String setWebAudioBufferSourceLoop(bgkd parambgkd)
+  public String setWebAudioBufferSourceLoop(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       boolean bool = localJSONObject.getBoolean("loop");
       int i = localJSONObject.getInt("channelId");
       int j = localJSONObject.getInt("audioId");
-      bgwp.a().a(j, i, bool);
-      parambgkd = bgki.a(parambgkd.a, null).toString();
-      return parambgkd;
+      bhaw.a().a(j, i, bool);
+      parambgok = bgop.a(parambgok.a, null).toString();
+      return parambgok;
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_SET_BUFFER_SOURCE_LOOP error " + parambgkd.getMessage());
+      bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_SET_BUFFER_SOURCE_LOOP error " + parambgok.getMessage());
     }
     return "{}";
   }
   
-  public String setWebAudioCurrentGain(bgkd parambgkd)
+  public String setWebAudioCurrentGain(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       int i = localJSONObject.getInt("channelId");
       double d = localJSONObject.getDouble("data");
       int j = localJSONObject.getInt("audioId");
-      bgwp.a().a(j, i, d);
-      parambgkd = bgki.a(parambgkd.a, null).toString();
-      return parambgkd;
+      bhaw.a().a(j, i, d);
+      parambgok = bgop.a(parambgok.a, null).toString();
+      return parambgok;
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_GET_CURRENT_GAIN error " + parambgkd.getMessage());
+      bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_GET_CURRENT_GAIN error " + parambgok.getMessage());
     }
     return "{}";
   }
   
-  public String setWebAudioSourceBuffer(bgkd parambgkd)
+  public String setWebAudioSourceBuffer(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       int i = localJSONObject.getInt("channelId");
       int j = localJSONObject.optInt("bufferId", -1);
       int k = localJSONObject.optInt("decodeId", -1);
       if (j != -1)
       {
-        localJSONObject = bgwp.a().a(i, j);
-        return bgki.a(parambgkd.a, localJSONObject).toString();
+        localJSONObject = bhaw.a().a(i, j);
+        return bgop.a(parambgok.a, localJSONObject).toString();
       }
       if (k != -1)
       {
-        localJSONObject = bgwp.a().b(i, k);
-        parambgkd = bgki.a(parambgkd.a, localJSONObject).toString();
-        return parambgkd;
+        localJSONObject = bhaw.a().b(i, k);
+        parambgok = bgop.a(parambgok.a, localJSONObject).toString();
+        return parambgok;
       }
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_SET_SOURCE_BUFFER error " + parambgkd.getMessage());
+      bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_SET_SOURCE_BUFFER error " + parambgok.getMessage());
     }
     return "{}";
   }
   
-  public String sourceStart(bgkd parambgkd)
+  public String sourceStart(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       int i = localJSONObject.getInt("audioId");
       int j = localJSONObject.getInt("channelId");
       int k = localJSONObject.optInt("when", 0);
       int m = localJSONObject.optInt("offset", 0);
       int n = localJSONObject.optInt("duration", -1);
-      localJSONObject = bgwp.a().a(parambgkd, i, j, k, m, n);
-      parambgkd = bgki.a(parambgkd.a, localJSONObject).toString();
-      return parambgkd;
+      localJSONObject = bhaw.a().a(parambgok, i, j, k, m, n);
+      parambgok = bgop.a(parambgok.a, localJSONObject).toString();
+      return parambgok;
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_SOURCE_START error " + parambgkd.getMessage());
+      bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_SOURCE_START error " + parambgok.getMessage());
     }
     return "{}";
   }
   
-  public String sourceStop(bgkd parambgkd)
+  public String sourceStop(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       int i = localJSONObject.getInt("audioId");
       int j = localJSONObject.getInt("channelId");
       int k = localJSONObject.optInt("when", 0);
-      localJSONObject = bgwp.a().a(i, j, k);
-      parambgkd = bgki.a(parambgkd.a, localJSONObject).toString();
-      return parambgkd;
+      localJSONObject = bhaw.a().a(i, j, k);
+      parambgok = bgop.a(parambgok.a, localJSONObject).toString();
+      return parambgok;
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("WebAudioPlugin", "handleNativeRequest API_SOURCE_STOP error " + parambgkd.getMessage());
+      bhaj.a().e("WebAudioPlugin", "handleNativeRequest API_SOURCE_STOP error " + parambgok.getMessage());
     }
     return "{}";
   }
   
-  public String webAudioConnectAudioNode(bgkd parambgkd)
+  public String webAudioConnectAudioNode(bgok parambgok)
   {
     if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
-      return bgki.b(parambgkd.a, null).toString();
+      return bgop.b(parambgok.a, null).toString();
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       int i = localJSONObject.optInt("oriAudioNodeType", -1);
       localJSONObject.optInt("channelId", -2);
       localJSONObject.optInt("audioNodeType");
       int j = localJSONObject.getInt("audioId");
-      if (i == bgwp.jdField_a_of_type_Int) {
-        bgwp.a().a(parambgkd, j);
+      if (i == bhaw.jdField_a_of_type_Int) {
+        bhaw.a().a(parambgok, j);
       }
       return "{}";
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
       for (;;)
       {
-        parambgkd.printStackTrace();
+        parambgok.printStackTrace();
       }
     }
   }

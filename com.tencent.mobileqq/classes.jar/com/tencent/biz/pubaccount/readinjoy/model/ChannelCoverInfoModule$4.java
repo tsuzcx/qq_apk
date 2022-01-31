@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import alpo;
+import alud;
 import android.text.TextUtils;
-import bcyj;
+import bdcs;
 import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -29,8 +29,8 @@ public class ChannelCoverInfoModule$4
     List localList1 = this.this$0.c();
     if (localList1.isEmpty())
     {
-      localList1.add(new qkm(TabChannelCoverInfo.TYPE_CHANNEL_MY_CONFIG, alpo.a(2131701917), alpo.a(2131701889)));
-      localList1.add(new qkm(TabChannelCoverInfo.TYPE_CHANNEL_RECOMMEND_CONFIG, alpo.a(2131701906), alpo.a(2131701915)));
+      localList1.add(new qkm(TabChannelCoverInfo.TYPE_CHANNEL_MY_CONFIG, alud.a(2131701929), alud.a(2131701901)));
+      localList1.add(new qkm(TabChannelCoverInfo.TYPE_CHANNEL_RECOMMEND_CONFIG, alud.a(2131701918), alud.a(2131701927)));
     }
     Object localObject2 = new HashMap();
     Object localObject1 = localList1.iterator();
@@ -58,7 +58,7 @@ public class ChannelCoverInfoModule$4
           if (!TextUtils.isEmpty(((TabChannelCoverInfo)localObject4).redPointJson)) {}
           try
           {
-            ((TabChannelCoverInfo)localObject4).redPoint = ((qnc)bcyj.b(new JSONObject(((TabChannelCoverInfo)localObject4).redPointJson), qnc.class));
+            ((TabChannelCoverInfo)localObject4).redPoint = ((qnc)bdcs.b(new JSONObject(((TabChannelCoverInfo)localObject4).redPointJson), qnc.class));
             List localList2 = (List)((HashMap)localObject2).get(Long.valueOf(((TabChannelCoverInfo)localObject4).channelConfigType));
             if (localList2 != null) {
               localList2.add(localObject4);

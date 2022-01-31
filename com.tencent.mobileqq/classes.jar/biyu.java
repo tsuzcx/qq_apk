@@ -1,26 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GeoInfo;
-import cooperation.qzone.LbsDataV2.GetGeoInfoRsp;
-import cooperation.qzone.LbsDataV2.GpsInfo;
+import android.os.Handler.Callback;
+import android.os.Message;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public final class biyu
-  implements Parcelable.Creator<LbsDataV2.GetGeoInfoRsp>
+  extends WtloginObserver
 {
-  public LbsDataV2.GetGeoInfoRsp a(Parcel paramParcel)
+  public biyu(Handler.Callback paramCallback) {}
+  
+  public void OnException(String paramString, int paramInt)
   {
-    LbsDataV2.GetGeoInfoRsp localGetGeoInfoRsp = new LbsDataV2.GetGeoInfoRsp();
-    if (paramParcel != null)
-    {
-      localGetGeoInfoRsp.stGps = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
-      localGetGeoInfoRsp.stGeoInfo = ((LbsDataV2.GeoInfo)paramParcel.readParcelable(LbsDataV2.GeoInfo.class.getClassLoader()));
+    paramString = Message.obtain();
+    paramString.what = 1001;
+    if (this.a != null) {
+      this.a.handleMessage(paramString);
     }
-    return localGetGeoInfoRsp;
   }
   
-  public LbsDataV2.GetGeoInfoRsp[] a(int paramInt)
+  public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
   {
-    return null;
+    paramString = Message.obtain();
+    paramString.what = 1000;
+    if (this.a != null) {
+      this.a.handleMessage(paramString);
+    }
   }
 }
 

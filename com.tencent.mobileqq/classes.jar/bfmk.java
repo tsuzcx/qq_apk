@@ -1,326 +1,532 @@
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.model.AppInfo;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import tencent.im.oidb.oidb_0xc05.GetAuthAppListReq;
-import tencent.im.oidb.oidb_0xc05.GetAuthAppListRsp;
-import tencent.im.oidb.oidb_0xc05.ReqBody;
-import tencent.im.oidb.oidb_0xc05.RspBody;
-import tencent.im.oidb.oidb_0xccd.ReqBody;
-import tencent.im.oidb.oidb_0xccd.Result;
-import tencent.im.oidb.oidb_0xccd.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import tencent.im.oidb.qqconnect.Appinfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.open.base.http.HttpBaseUtil;
+import com.tencent.open.base.http.HttpBaseUtil.HttpStatusException;
+import com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException;
+import com.tencent.open.base.http.HttpCgiAsyncTask.1;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.io.CharConversionException;
+import java.io.EOFException;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InvalidClassException;
+import java.io.InvalidObjectException;
+import java.io.NotActiveException;
+import java.io.NotSerializableException;
+import java.io.OptionalDataException;
+import java.io.StreamCorruptedException;
+import java.io.SyncFailedException;
+import java.io.UTFDataFormatException;
+import java.io.UnsupportedEncodingException;
+import java.io.WriteAbortedException;
+import java.net.BindException;
+import java.net.ConnectException;
+import java.net.HttpRetryException;
+import java.net.MalformedURLException;
+import java.net.NoRouteToHostException;
+import java.net.PortUnreachableException;
+import java.net.ProtocolException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
+import java.net.UnknownServiceException;
+import java.nio.channels.ClosedChannelException;
+import java.nio.channels.FileLockInterruptionException;
+import java.nio.charset.MalformedInputException;
+import java.nio.charset.UnmappableCharacterException;
+import java.util.HashMap;
+import java.util.InvalidPropertiesFormatException;
+import java.util.concurrent.Executor;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.zip.ZipException;
+import javax.net.ssl.SSLHandshakeException;
+import javax.net.ssl.SSLKeyException;
+import javax.net.ssl.SSLPeerUnverifiedException;
+import javax.net.ssl.SSLProtocolException;
+import org.apache.http.ConnectionClosedException;
+import org.apache.http.MalformedChunkCodingException;
+import org.apache.http.NoHttpResponseException;
+import org.apache.http.client.HttpResponseException;
+import org.apache.http.conn.ConnectTimeoutException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bfmk
-  extends alko
+public class bfmk
+  extends bfmd<Bundle, Void, HashMap<String, Object>>
 {
-  private final List<qqconnect.Appinfo> a = new ArrayList(10);
-  private final List<AppInfo> b = new ArrayList(10);
+  protected Handler a;
+  public bfml a;
   
-  public bfmk(QQAppInterface paramQQAppInterface)
+  public bfmk(String paramString1, String paramString2, bfml parambfml)
   {
-    super(paramQQAppInterface);
+    super(paramString1, paramString2);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_Bfml = parambfml;
   }
   
-  private void a(int paramInt1, int paramInt2)
+  public static int a(IOException paramIOException)
   {
-    Object localObject1 = new oidb_0xc05.ReqBody();
-    Object localObject2 = new oidb_0xc05.GetAuthAppListReq();
-    ((oidb_0xc05.GetAuthAppListReq)localObject2).start.set(paramInt1);
-    ((oidb_0xc05.GetAuthAppListReq)localObject2).limit.set(paramInt2);
-    ((oidb_0xc05.ReqBody)localObject1).get_auth_app_list_req.set((MessageMicro)localObject2);
-    localObject2 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(3077);
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(1);
-    ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xc05.ReqBody)localObject1).toByteArray()));
-    localObject1 = createToServiceMsg("OidbSvc.0xc05");
-    ((ToServiceMsg)localObject1).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
-    ((ToServiceMsg)localObject1).extraData.putInt("req_index", paramInt1);
-    ((ToServiceMsg)localObject1).extraData.putInt("req_page_size", paramInt2);
-    sendPbReq((ToServiceMsg)localObject1);
+    if ((paramIOException instanceof CharConversionException)) {
+      return -20;
+    }
+    if ((paramIOException instanceof MalformedInputException)) {
+      return -21;
+    }
+    if ((paramIOException instanceof UnmappableCharacterException)) {
+      return -22;
+    }
+    if ((paramIOException instanceof HttpResponseException)) {
+      return -23;
+    }
+    if ((paramIOException instanceof ClosedChannelException)) {
+      return -24;
+    }
+    if ((paramIOException instanceof ConnectionClosedException)) {
+      return -25;
+    }
+    if ((paramIOException instanceof EOFException)) {
+      return -26;
+    }
+    if ((paramIOException instanceof FileLockInterruptionException)) {
+      return -27;
+    }
+    if ((paramIOException instanceof FileNotFoundException)) {
+      return -28;
+    }
+    if ((paramIOException instanceof HttpRetryException)) {
+      return -29;
+    }
+    if ((paramIOException instanceof ConnectTimeoutException)) {
+      return -7;
+    }
+    if ((paramIOException instanceof SocketTimeoutException)) {
+      return -8;
+    }
+    if ((paramIOException instanceof InvalidPropertiesFormatException)) {
+      return -30;
+    }
+    if ((paramIOException instanceof MalformedChunkCodingException)) {
+      return -31;
+    }
+    if ((paramIOException instanceof MalformedURLException)) {
+      return -3;
+    }
+    if ((paramIOException instanceof NoHttpResponseException)) {
+      return -32;
+    }
+    if ((paramIOException instanceof InvalidClassException)) {
+      return -33;
+    }
+    if ((paramIOException instanceof InvalidObjectException)) {
+      return -34;
+    }
+    if ((paramIOException instanceof NotActiveException)) {
+      return -35;
+    }
+    if ((paramIOException instanceof NotSerializableException)) {
+      return -36;
+    }
+    if ((paramIOException instanceof OptionalDataException)) {
+      return -37;
+    }
+    if ((paramIOException instanceof StreamCorruptedException)) {
+      return -38;
+    }
+    if ((paramIOException instanceof WriteAbortedException)) {
+      return -39;
+    }
+    if ((paramIOException instanceof ProtocolException)) {
+      return -40;
+    }
+    if ((paramIOException instanceof SSLHandshakeException)) {
+      return -41;
+    }
+    if ((paramIOException instanceof SSLKeyException)) {
+      return -42;
+    }
+    if ((paramIOException instanceof SSLPeerUnverifiedException)) {
+      return -43;
+    }
+    if ((paramIOException instanceof SSLProtocolException)) {
+      return -44;
+    }
+    if ((paramIOException instanceof BindException)) {
+      return -45;
+    }
+    if ((paramIOException instanceof ConnectException)) {
+      return -46;
+    }
+    if ((paramIOException instanceof NoRouteToHostException)) {
+      return -47;
+    }
+    if ((paramIOException instanceof PortUnreachableException)) {
+      return -48;
+    }
+    if ((paramIOException instanceof SyncFailedException)) {
+      return -49;
+    }
+    if ((paramIOException instanceof UTFDataFormatException)) {
+      return -50;
+    }
+    if ((paramIOException instanceof UnknownHostException)) {
+      return -51;
+    }
+    if ((paramIOException instanceof UnknownServiceException)) {
+      return -52;
+    }
+    if ((paramIOException instanceof UnsupportedEncodingException)) {
+      return -53;
+    }
+    if ((paramIOException instanceof ZipException)) {
+      return -54;
+    }
+    return -2;
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public bfmg a(String paramString1, String paramString2, Bundle paramBundle)
   {
-    Object localObject = "";
-    int i;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("OpenAgentHandler", 2, "handleGetAuthorizeAppList");
-      }
-      paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-      try
-      {
-        paramObject = (oidb_sso.OIDBSSOPkg)paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        paramFromServiceMsg = paramObject;
-      }
-      catch (Exception paramObject)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("OpenAgentHandler", 2, "handleGetAuthorizeAppList, parsed pkg failed", paramObject);
-          }
-        }
-      }
-      i = -1;
-      if (paramFromServiceMsg.uint32_result.has()) {
-        i = paramFromServiceMsg.uint32_result.get();
-      }
-      if ((i == 0) && (paramFromServiceMsg.bytes_bodybuffer.has()) && (paramFromServiceMsg.bytes_bodybuffer.get() != null))
-      {
-        paramObject = new oidb_0xc05.RspBody();
-        try
-        {
-          paramObject.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-          i = 1;
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          for (;;)
-          {
-            int j;
-            if (QLog.isColorLevel()) {
-              QLog.d("OpenAgentHandler", 2, "handleGetAuthorizeAppList, parsed rsp failed", paramFromServiceMsg);
-            }
-            i = 0;
-            continue;
-            paramToServiceMsg = new ArrayList(this.a.size());
-            paramObject = this.a.iterator();
-            while (paramObject.hasNext()) {
-              paramToServiceMsg.add(new AppInfo((qqconnect.Appinfo)paramObject.next()));
-            }
-            this.a.clear();
-            notifyUI(0, true, paramToServiceMsg);
-            continue;
-            paramToServiceMsg = paramFromServiceMsg;
-            i = 0;
-            continue;
-            paramFromServiceMsg = "";
-          }
-        }
-        if (i != 0) {
-          if (paramObject.wording.has())
-          {
-            paramFromServiceMsg = paramObject.wording.get();
-            if (paramObject.get_auth_app_list_rsp.has())
-            {
-              paramObject = paramObject.get_auth_app_list_rsp;
-              localObject = paramObject.appinfos.get();
-              if (localObject != null)
-              {
-                this.a.addAll((Collection)localObject);
-                i = paramToServiceMsg.extraData.getInt("req_index");
-                j = paramToServiceMsg.extraData.getInt("req_page_size");
-                if (i + j <= paramObject.total_count.get())
-                {
-                  a(i + j, 10);
-                  paramToServiceMsg = paramFromServiceMsg;
-                  i = 1;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if (i == 0)
-      {
-        this.a.clear();
-        notifyUI(0, false, paramToServiceMsg);
-      }
-      return;
-      i = 0;
-      paramToServiceMsg = (ToServiceMsg)localObject;
-    }
+    return HttpBaseUtil.a(paramString1, paramString2, paramBundle);
   }
   
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  protected HashMap<String, Object> a(Bundle... paramVarArgs)
   {
-    int i;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("OpenAgentHandler", 2, "handleDelAppAuthrize");
-      }
-      paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-      try
-      {
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom((byte[])paramObject);
-        paramToServiceMsg = paramFromServiceMsg;
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("OpenAgentHandler", 2, "handleDelAppAuthrize, parsed pkg failed", paramFromServiceMsg);
-          }
-        }
-      }
-      i = -1;
-      if (paramToServiceMsg.uint32_result.has()) {
-        i = paramToServiceMsg.uint32_result.get();
-      }
-      if ((i == 0) && (paramToServiceMsg.bytes_bodybuffer.has()) && (paramToServiceMsg.bytes_bodybuffer.get() != null))
-      {
-        paramFromServiceMsg = new oidb_0xccd.RspBody();
-        try
-        {
-          paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-          i = 1;
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("OpenAgentHandler", 2, "handleGetAuthorizeAppList, parsed rsp failed", paramToServiceMsg);
-            }
-            i = 0;
-          }
-          notifyUI(1, true, paramToServiceMsg);
-          this.b.clear();
-          i = 1;
-        }
-        if ((i != 0) && (paramFromServiceMsg.errcode.get() == 0))
-        {
-          paramToServiceMsg = new ArrayList(this.b.size());
-          paramFromServiceMsg = paramFromServiceMsg.Results.get();
-          if ((paramFromServiceMsg != null) && (!paramFromServiceMsg.isEmpty()))
-          {
-            paramFromServiceMsg = paramFromServiceMsg.iterator();
-            while (paramFromServiceMsg.hasNext())
-            {
-              paramObject = (oidb_0xccd.Result)paramFromServiceMsg.next();
-              if (paramObject.errcode.get() == 0)
-              {
-                i = paramObject.uint32_appid.get();
-                paramObject = this.b.iterator();
-                while (paramObject.hasNext())
-                {
-                  AppInfo localAppInfo = (AppInfo)paramObject.next();
-                  if (localAppInfo.a() == i) {
-                    paramToServiceMsg.add(localAppInfo);
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if (i == 0)
-      {
-        this.b.clear();
-        notifyUI(1, false, "");
-      }
-      return;
-      i = 0;
-    }
+    return b(paramVarArgs);
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenAgentHandler", 2, "getAuthorizedAppList");
-    }
-    a(0, 10);
+    this.jdField_a_of_type_Bfml = null;
   }
   
-  public void a(List<AppInfo> paramList)
+  @SuppressLint({"InlinedApi", "NewApi"})
+  public void a(Bundle paramBundle)
   {
-    if (QLog.isColorLevel())
+    Executor localExecutor = a();
+    if (localExecutor != null)
     {
-      localObject2 = new StringBuilder().append("deleteAppAuthorize, ");
-      if (paramList == null) {
-        break label131;
+      executeOnExecutor(localExecutor, new Bundle[] { paramBundle });
+      return;
+    }
+    execute(new Bundle[] { paramBundle });
+  }
+  
+  protected void a(HashMap<String, Object> paramHashMap)
+  {
+    if (!isCancelled()) {
+      this.jdField_a_of_type_AndroidOsHandler.post(new HttpCgiAsyncTask.1(this, paramHashMap));
+    }
+  }
+  
+  public HashMap<String, Object> b(Bundle... paramVarArgs)
+  {
+    HashMap localHashMap = new HashMap();
+    if (isCancelled()) {
+      return localHashMap;
+    }
+    long l3 = SystemClock.elapsedRealtime();
+    long l1 = 0L;
+    String str2 = MsfSdkUtils.insertMtype("yingyongbao", this.jdField_a_of_type_JavaLangString);
+    Object localObject = paramVarArgs[0].getString("appid_for_getting_config");
+    try
+    {
+      bool = paramVarArgs[0].getBoolean("from_h5", false);
+      j = bfmx.a(bfbm.a().a(), (String)localObject).a("Common_HttpRetryCount");
+      bflp.c("OpenConfig_agent", "config 1:Common_HttpRetryCount            config_value:" + j + "   appid:" + (String)localObject + "     url:" + str2);
+      if (j == 0)
+      {
+        j = 3;
+        bflp.c("OpenConfig_agent", "config 1:Common_HttpRetryCount            result_value:" + j + "   appid:" + (String)localObject + "     url:" + str2);
+        str3 = paramVarArgs[0].getString("downloadfile");
+        i = 0;
+        if (!isCancelled()) {
+          break label203;
+        }
+        return localHashMap;
       }
     }
-    label131:
-    for (Object localObject1 = "size=" + paramList.size();; localObject1 = "apps=null")
+    catch (Exception localException)
     {
-      QLog.d("OpenAgentHandler", 2, (String)localObject1);
-      localObject1 = new ArrayList(paramList.size());
-      localObject2 = paramList.iterator();
-      while (((Iterator)localObject2).hasNext())
+      int j;
+      int i;
+      label203:
+      int k;
+      long l2;
+      long l4;
+      label1338:
+      for (;;)
       {
-        AppInfo localAppInfo = (AppInfo)((Iterator)localObject2).next();
-        if (localAppInfo.a() > 0) {
-          ((List)localObject1).add(Integer.valueOf(localAppInfo.a()));
+        String str3;
+        boolean bool = false;
+        continue;
+        continue;
+        k = i + 1;
+        l2 = l1;
+        l4 = l1;
+        for (;;)
+        {
+          try
+          {
+            localbfmg = a(this.jdField_a_of_type_JavaLangString, this.b, paramVarArgs[0]);
+            l2 = l1;
+            l4 = l1;
+            str1 = localbfmg.jdField_a_of_type_JavaLangString;
+            l2 = l1;
+            l4 = l1;
+            localObject = new JSONObject();
+            if (str3 == null) {
+              continue;
+            }
+            l2 = l1;
+            l4 = l1;
+            ((JSONObject)localObject).put("content", localbfmg.jdField_a_of_type_JavaIoInputStream);
+          }
+          catch (ConnectTimeoutException localConnectTimeoutException)
+          {
+            bfmg localbfmg;
+            String str1;
+            JSONObject localJSONObject2;
+            long l5;
+            localConnectTimeoutException.printStackTrace();
+            localHashMap.put("ResultType", Integer.valueOf(0));
+            localHashMap.put("ResultValue", localConnectTimeoutException);
+            i = -7;
+            l1 = SystemClock.elapsedRealtime();
+            l2 = 0L;
+            if (k < j) {
+              break label1338;
+            }
+            l3 = 0L;
+            l4 = l1;
+            l1 = l3;
+            continue;
+            l2 = l1;
+            l4 = l1;
+            localJSONObject1 = HttpBaseUtil.a(str1);
+            continue;
+            l2 = l1;
+            l4 = l1;
+            localJSONObject1.put("httpdatamodified", localbfmg.jdField_a_of_type_Int);
+            continue;
+          }
+          catch (SocketTimeoutException localSocketTimeoutException)
+          {
+            localSocketTimeoutException.printStackTrace();
+            localHashMap.put("ResultType", Integer.valueOf(0));
+            localHashMap.put("ResultValue", localSocketTimeoutException);
+            i = -8;
+            l1 = SystemClock.elapsedRealtime();
+            continue;
+            i = -55;
+            continue;
+            l2 = l1;
+            l4 = l1;
+            try
+            {
+              i = localSocketTimeoutException.getInt("ret");
+            }
+            catch (JSONException localJSONException2)
+            {
+              l2 = l1;
+              l4 = l1;
+              try
+              {
+                i = localSocketTimeoutException.getInt("resultCode");
+              }
+              catch (JSONException localJSONException1)
+              {
+                i = -55;
+              }
+            }
+            continue;
+          }
+          catch (JSONException paramVarArgs)
+          {
+            paramVarArgs.printStackTrace();
+            localHashMap.put("ResultType", Integer.valueOf(0));
+            localHashMap.put("ResultValue", paramVarArgs);
+            l1 = 0L;
+            l2 = 0L;
+            i = -4;
+            l4 = l3;
+            continue;
+          }
+          catch (HttpBaseUtil.NetworkUnavailableException paramVarArgs)
+          {
+            paramVarArgs.printStackTrace();
+            localHashMap.put("ResultType", Integer.valueOf(0));
+            localHashMap.put("ResultValue", paramVarArgs);
+            return localHashMap;
+          }
+          catch (HttpBaseUtil.HttpStatusException paramVarArgs)
+          {
+            paramVarArgs.printStackTrace();
+            localHashMap.put("ResultType", Integer.valueOf(0));
+            localHashMap.put("ResultValue", paramVarArgs);
+            try
+            {
+              i = Integer.parseInt(paramVarArgs.getMessage().replace("http status code error:", ""));
+              bfng.a().a(str2, l3, l2, 0L, i, bfbm.a().a(), "1000002", null);
+              return localHashMap;
+            }
+            catch (Exception paramVarArgs)
+            {
+              paramVarArgs.printStackTrace();
+              continue;
+            }
+          }
+          catch (IOException paramVarArgs)
+          {
+            paramVarArgs.printStackTrace();
+            localHashMap.put("ResultType", Integer.valueOf(0));
+            localHashMap.put("ResultValue", paramVarArgs);
+            i = a(paramVarArgs);
+            l1 = 0L;
+            l2 = 0L;
+            l4 = l3;
+            continue;
+          }
+          catch (Exception paramVarArgs)
+          {
+            if (!(paramVarArgs instanceof HttpBaseUtil.NetworkUnavailableException)) {
+              continue;
+            }
+            paramVarArgs.printStackTrace();
+            localHashMap.put("ResultType", Integer.valueOf(0));
+            localHashMap.put("ResultValue", paramVarArgs);
+            return localHashMap;
+            if (!(paramVarArgs instanceof HttpBaseUtil.HttpStatusException)) {
+              continue;
+            }
+            paramVarArgs.printStackTrace();
+            localHashMap.put("ResultType", Integer.valueOf(0));
+            localHashMap.put("ResultValue", paramVarArgs);
+            try
+            {
+              i = Integer.parseInt(paramVarArgs.getMessage().replace("http status code error:", ""));
+              bfng.a().a(str2, l3, l4, 0L, i, bfbm.a().a(), "1000002", null);
+              return localHashMap;
+            }
+            catch (Exception paramVarArgs)
+            {
+              paramVarArgs.printStackTrace();
+              continue;
+            }
+            if (!(paramVarArgs instanceof IOException)) {
+              continue;
+            }
+            paramVarArgs.printStackTrace();
+            localHashMap.put("ResultType", Integer.valueOf(0));
+            localHashMap.put("ResultValue", paramVarArgs);
+            i = a((IOException)paramVarArgs);
+            l1 = 0L;
+            l2 = 0L;
+            l4 = l3;
+            continue;
+            paramVarArgs.printStackTrace();
+            localHashMap.put("ResultType", Integer.valueOf(0));
+            localHashMap.put("ResultValue", paramVarArgs);
+            i = -6;
+            l1 = 0L;
+            l2 = 0L;
+            l4 = l3;
+            continue;
+          }
+          l2 = l1;
+          l4 = l1;
+          bflp.a("HttpCgiAsyncTask", "response.isModified= " + localbfmg.jdField_a_of_type_Int);
+          l2 = l1;
+          l4 = l1;
+          if (localbfmg.jdField_a_of_type_Int == 0)
+          {
+            if (!bool) {
+              continue;
+            }
+            l2 = l1;
+            l4 = l1;
+            localJSONObject2 = new JSONObject();
+            l2 = l1;
+            l4 = l1;
+            localJSONObject2.put("httpdatamodified", localbfmg.jdField_a_of_type_Int);
+            l2 = l1;
+            l4 = l1;
+            ((JSONObject)localObject).put("extend", localJSONObject2);
+          }
+          l2 = l1;
+          l4 = l1;
+          localHashMap.put("ResultType", Integer.valueOf(1));
+          l2 = l1;
+          l4 = l1;
+          localHashMap.put("ResultValue", localObject);
+          if (!bool) {
+            continue;
+          }
+          l2 = l1;
+          l4 = l1;
+          localObject = Pattern.compile("\"(?:ret|resultCode)\"\\s*\\:\\s*(\\d+)").matcher(str1);
+          l2 = l1;
+          l4 = l1;
+          if (!((Matcher)localObject).find()) {
+            continue;
+          }
+          l2 = l1;
+          l4 = l1;
+          i = Integer.parseInt(((Matcher)localObject).group(1));
+          l2 = l1;
+          l4 = l1;
+          l1 = localbfmg.jdField_a_of_type_Long;
+          l2 = l1;
+          l4 = l1;
+          l5 = localbfmg.b;
+          l2 = l5;
+          l4 = l3;
+          bflp.c("ReportManager", str2 + " | " + l4 + " | " + l1 + " | " + l2 + " | " + i);
+          l3 = 0L;
+          try
+          {
+            paramVarArgs = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
+            if (paramVarArgs != null) {
+              l3 = Long.valueOf(paramVarArgs.getUin()).longValue();
+            }
+          }
+          catch (Exception paramVarArgs)
+          {
+            JSONObject localJSONObject1;
+            paramVarArgs.printStackTrace();
+            l3 = 0L;
+            continue;
+            i = k;
+            l2 = 0L;
+            l3 = l1;
+            l1 = l2;
+          }
+          bfng.a().a(str2, l4, l1, l2, i, l3, "1000002", null);
+          return localHashMap;
+          if (!bool) {
+            continue;
+          }
+          l2 = l1;
+          l4 = l1;
+          str1 = HttpBaseUtil.a(str1);
+          l2 = l1;
+          l4 = l1;
+          ((JSONObject)localObject).put("content", str1);
         }
       }
     }
-    Object localObject2 = new oidb_0xccd.ReqBody();
-    ((oidb_0xccd.ReqBody)localObject2).uint32_appids.set((List)localObject1);
-    ((oidb_0xccd.ReqBody)localObject2).platform.set(1);
-    localObject1 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(3277);
-    ((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(1);
-    ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xccd.ReqBody)localObject2).toByteArray()));
-    localObject2 = createToServiceMsg("OidbSvc.0xccd");
-    ((ToServiceMsg)localObject2).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
-    this.b.addAll(paramList);
-    sendPbReq((ToServiceMsg)localObject2);
   }
   
-  protected boolean msgCmdFilter(String paramString)
+  public void b()
   {
-    if (this.allowCmdSet == null)
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("OidbSvc.0xc05");
-      this.allowCmdSet.add("OidbSvc.0xccd");
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_Bfml = null;
     }
-    return !this.allowCmdSet.contains(paramString);
-  }
-  
-  protected Class<? extends alkr> observerClass()
-  {
-    return bfml.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("OpenAgentHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
-      }
-    }
-    do
-    {
-      return;
-      if ("OidbSvc.0xc05".equals(paramFromServiceMsg.getServiceCmd()))
-      {
-        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-    } while (!"OidbSvc.0xccd".equals(paramFromServiceMsg.getServiceCmd()));
-    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

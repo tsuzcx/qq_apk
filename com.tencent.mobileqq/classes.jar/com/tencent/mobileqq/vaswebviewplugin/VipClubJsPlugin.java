@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import bdss;
-import becq;
+import bdxb;
+import begz;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
@@ -51,9 +51,9 @@ public class VipClubJsPlugin
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      bdss localbdss = VipWallpaperService.a(this.mRuntime.a(), true);
+      bdxb localbdxb = VipWallpaperService.a(this.mRuntime.a(), true);
       localJSONObject.put("result", "0");
-      localJSONObject.put("id", localbdss.a);
+      localJSONObject.put("id", localbdxb.a);
       super.callJs(paramString, new String[] { localJSONObject.toString() });
       return;
     }
@@ -73,7 +73,7 @@ public class VipClubJsPlugin
         paramString3 = new JSONObject();
         if ("0".equals(paramString2))
         {
-          VipWallpaperService.a(this.mRuntime.a(), new bdss(), null);
+          VipWallpaperService.a(this.mRuntime.a(), new bdxb(), null);
           paramString3.put("result", "0");
           paramString3.put("msg", "恢复系统壁纸");
           super.callJs(paramString1, new String[] { paramString3.toString() });
@@ -83,7 +83,7 @@ public class VipClubJsPlugin
         if (new File(str).exists())
         {
           AtomicBoolean localAtomicBoolean = new AtomicBoolean();
-          paramString2 = new bdss(paramString2, str, "");
+          paramString2 = new bdxb(paramString2, str, "");
           VipWallpaperService.a(this.mRuntime.a(), paramString2, localAtomicBoolean);
           paramString3.put("result", "0");
           paramString3.put("msg", "设置成功");

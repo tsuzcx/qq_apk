@@ -4,24 +4,24 @@ import android.os.Handler;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
-import bkle;
+import bkpl;
 import com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable;
 
 public class AEPituCameraUnit$23
   implements Runnable
 {
-  public AEPituCameraUnit$23(bkle parambkle, LazyLoadAnimationDrawable paramLazyLoadAnimationDrawable) {}
+  public AEPituCameraUnit$23(bkpl parambkpl, LazyLoadAnimationDrawable paramLazyLoadAnimationDrawable) {}
   
   public void run()
   {
-    if (bkle.a(this.this$0) == null)
+    if (bkpl.a(this.this$0) == null)
     {
-      ViewStub localViewStub = (ViewStub)bkle.a(this.this$0).findViewById(2131377094);
-      bkle.a(this.this$0, (ImageView)localViewStub.inflate().findViewById(2131362575));
+      ViewStub localViewStub = (ViewStub)bkpl.a(this.this$0).findViewById(2131377148);
+      bkpl.a(this.this$0, (ImageView)localViewStub.inflate().findViewById(2131362575));
     }
-    bkle.a(this.this$0).postDelayed(bkle.a(this.this$0), this.a.getTotalDuration());
-    bkle.a(this.this$0).setVisibility(0);
-    bkle.a(this.this$0).setImageDrawable(this.a);
+    bkpl.a(this.this$0).postDelayed(bkpl.a(this.this$0), this.a.getTotalDuration());
+    bkpl.a(this.this$0).setVisibility(0);
+    bkpl.a(this.this$0).setImageDrawable(this.a);
     this.a.start();
   }
 }

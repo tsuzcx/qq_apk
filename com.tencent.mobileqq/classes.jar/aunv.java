@@ -1,69 +1,44 @@
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources;
-import android.os.Bundle;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 
 public class aunv
+  implements View.OnClickListener
 {
-  public static final String a = "qqmusic://qq.com/ui/myTab?p=%7B%22tab%22%3A%22home%22%7D&ADTAG=YIQITING&source=" + URLEncoder.encode("https://y.qq.com/m/index.html?ADTAG=YIQITING");
+  public aunv(MultiCardPageIndicator paramMultiCardPageIndicator) {}
   
-  public static void a(Context paramContext, String paramString)
+  public void onClick(View paramView)
   {
-    long l = 0L;
-    for (;;)
-    {
-      try
-      {
-        localObject = new URL(paramString);
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        Object localObject;
-        int i;
-        QLog.e("QQMusicConst", 1, "music player activity url io MalformedURLException ", localMalformedURLException);
-        continue;
-      }
-      try
-      {
-        i = ((URL)localObject).openConnection().getContentLength();
-        l = i;
-      }
-      catch (IOException localIOException)
-      {
-        QLog.e("QQMusicConst", 1, "music player activity url IOException ", localIOException);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
     }
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("big_brother_source_key", "biz_src_qqmusic");
-    ((Bundle)localObject).putLong("_filesize_from_dlg", l);
-    ((Bundle)localObject).putString("_filename_from_dlg", paramContext.getResources().getString(2131694945));
-    ((Bundle)localObject).putString("FILE_MIME_TYPE", "application/vnd.android.package-archive");
-    ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_qqmusic");
-    aqwa.a().b(paramString, (Bundle)localObject);
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return a(paramContext, "com.tencent.qqmusic");
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getPackageManager();
-    try
+    MultiCardPageIndicator.a(this.a, SystemClock.uptimeMillis());
+    paramView = paramView.getTag();
+    if ((paramView instanceof auny)) {}
+    for (paramView = (auny)paramView;; paramView = null)
     {
-      paramContext.getPackageInfo(paramString, 1);
-      return true;
+      if (paramView == null) {}
+      int j;
+      do
+      {
+        return;
+        int i = MultiCardPageIndicator.a(this.a).a();
+        j = paramView.jdField_a_of_type_Int;
+        this.a.setCurrentItem(j);
+        azqs.b(null, "dc00898", "", "", "0X800A216", "0X800A216", 0, 0, "", "", "", "");
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        MultiCardPageIndicator.a(this.a).setCurrentItem(j);
+        if ((i == j) && (MultiCardPageIndicator.a(this.a) != null)) {
+          MultiCardPageIndicator.a(this.a).a(j);
+        }
+      } while (MultiCardPageIndicator.a(this.a) == null);
+      MultiCardPageIndicator.a(this.a).a(j);
+      return;
     }
-    catch (PackageManager.NameNotFoundException paramContext) {}
-    return false;
   }
 }
 

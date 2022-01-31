@@ -1,20 +1,67 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public class uzc
-  extends ugz
+class uzc
+  extends ulw
 {
-  public QQUserUIItem a;
-  public String a;
-  public List<QQUserUIItem> a;
-  public String b;
+  uzc(uza paramuza) {}
   
-  public String toString()
+  public void a(byte paramByte)
   {
-    if (this.a == null) {
-      return "UpdateUserInfoEvent " + super.toString();
+    boolean bool = true;
+    this.a.a = paramByte;
+    uza.c(this.a, true);
+    uza localuza;
+    if (paramByte != -1)
+    {
+      if (paramByte == 0) {
+        uza.b(this.a);
+      }
+      localuza = this.a;
+      if (paramByte != 2) {
+        break label88;
+      }
     }
-    return "UpdateUserInfoEvent " + this.a.toString() + super.toString();
+    for (;;)
+    {
+      localuza.a(bool);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryOIDBReceived:" + this.a.c);
+      }
+      return;
+      label88:
+      bool = false;
+    }
+  }
+  
+  public void b()
+  {
+    uvt localuvt = (uvt)uwa.a(10);
+    this.a.b = ((Boolean)localuvt.b("key_story_msg_tab_show", Boolean.valueOf(false))).booleanValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "commonConfigReceived:" + this.a.b);
+    }
+    uza.a(this.a);
+    uza.a(this.a, true);
+    uza.a(this.a, true);
+    uza.b(this.a);
+  }
+  
+  public void f(boolean paramBoolean)
+  {
+    if (!uza.a(this.a))
+    {
+      if (paramBoolean)
+      {
+        this.a.c = this.a.a();
+        uza.a(this.a);
+        uza.a(this.a, true);
+      }
+      uza.b(this.a, true);
+      uza.b(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryDPCCfgHasContentReceived:" + this.a.c);
+    }
   }
 }
 

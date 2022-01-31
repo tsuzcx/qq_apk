@@ -1,19 +1,12 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import cooperation.qzone.util.TimeCostTrace;
 
-class bjun
-  implements bjup
+public abstract interface bjun
 {
-  bjun(bjul parambjul) {}
-  
-  public void a(JSONObject paramJSONObject, Bundle paramBundle)
-  {
-    paramJSONObject.put("status", paramBundle.getInt("status", 1));
-  }
+  public abstract void reportPerfTime(TimeCostTrace paramTimeCostTrace);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjun
  * JD-Core Version:    0.7.0.1
  */

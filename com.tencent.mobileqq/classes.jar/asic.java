@@ -1,28 +1,25 @@
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
-import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.freshnews.feed.NearbyImgLoader.RequestLoadedImgTask;
 
 public class asic
-  implements View.OnClickListener
+  implements URLDrawableHandler
 {
-  public asic(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  public asic(NearbyImgLoader.RequestLoadedImgTask paramRequestLoadedImgTask) {}
   
-  public void onClick(View paramView)
+  public void doCancel() {}
+  
+  public boolean isCancelled()
   {
-    if (QQGamePubAccountFragment.a(this.a) != null)
-    {
-      QQGamePubAccountFragment.a(this.a).scrollToPosition(0);
-      QQGamePubAccountFragment.a(this.a).setVisibility(8);
-      if (this.a.a != null) {
-        this.a.a.setCurrentItem(0);
-      }
-    }
-    paramView = (String)QQGamePubAccountFragment.a(this.a).getTag();
-    aact.a(akro.a(), "769", "205031", "", "76901", "1", "160", new String[] { paramView, "", "20" });
+    return false;
   }
+  
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
+  
+  public void publishProgress(int paramInt) {}
 }
 
 

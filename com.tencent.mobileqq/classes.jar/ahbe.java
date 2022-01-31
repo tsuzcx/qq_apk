@@ -1,51 +1,18 @@
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
 
-public class ahbe
-  implements RadioGroup.OnCheckedChangeListener
+public final class ahbe
+  implements Parcelable.Creator<ZhituImgResponse>
 {
-  public ahbe(AddContactsActivity paramAddContactsActivity) {}
-  
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public ZhituImgResponse a(Parcel paramParcel)
   {
-    if ((paramInt == 2131377315) && (AddContactsActivity.a(this.a).isChecked()))
-    {
-      AddContactsActivity.a(this.a);
-      azmj.b(this.a.app, "CliOper", "", "", "0X8004BE9", "0X8004BE9", 0, 0, "", "", "", "");
-      AddContactsActivity.a(this.a).setSelected(true);
-      AddContactsActivity.b(this.a).setSelected(false);
-      AddContactsActivity.c(this.a).setSelected(false);
-      AddContactsActivity.a(this.a).setVisibility(8);
-    }
-    do
-    {
-      return;
-      if ((paramInt == 2131377317) && (AddContactsActivity.b(this.a).isChecked()))
-      {
-        AddContactsActivity.b(this.a);
-        azmj.b(this.a.app, "CliOper", "", "", "0X8004BEA", "0X8004BEA", 0, 0, "", "", "", "");
-        azmj.b(this.a.app, "P_CliOper", "Grp_find", "", "grptab", "exp", 0, 0, "", "", "", "");
-        AddContactsActivity.b(this.a).setSelected(true);
-        AddContactsActivity.a(this.a).setSelected(false);
-        AddContactsActivity.c(this.a).setSelected(false);
-        paramRadioGroup = AddContactsActivity.a(this.a);
-        if (AddContactsActivity.a(this.a)) {}
-        for (paramInt = 0;; paramInt = 8)
-        {
-          paramRadioGroup.setVisibility(paramInt);
-          return;
-        }
-      }
-    } while ((paramInt != 2131377316) || (!AddContactsActivity.c(this.a).isChecked()));
-    AddContactsActivity.c(this.a);
-    azmj.b(this.a.app, "CliOper", "", "", "0X8004BEB", "0X8004BEB", 0, 0, "", "", "", "");
-    AddContactsActivity.c(this.a).setSelected(true);
-    AddContactsActivity.a(this.a).setSelected(false);
-    AddContactsActivity.b(this.a).setSelected(false);
-    AddContactsActivity.a(this.a).setVisibility(8);
+    return new ZhituImgResponse(paramParcel);
+  }
+  
+  public ZhituImgResponse[] a(int paramInt)
+  {
+    return new ZhituImgResponse[paramInt];
   }
 }
 

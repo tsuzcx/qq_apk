@@ -1,27 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
-import java.util.Iterator;
-import java.util.List;
+import android.os.ResultReceiver;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class ajap
-  implements ValueAnimator.AnimatorUpdateListener
+class ajap
+  implements EIPCResultCallback
 {
-  public ajap(RecordMicView paramRecordMicView) {}
+  ajap(ajao paramajao, ResultReceiver paramResultReceiver) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    float f = paramValueAnimator.getAnimatedFraction();
-    paramValueAnimator = RecordMicView.a(this.a).iterator();
-    while (paramValueAnimator.hasNext())
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
     {
-      ajaq localajaq = (ajaq)paramValueAnimator.next();
-      localajaq.jdField_c_of_type_Float = (localajaq.f + (localajaq.g - localajaq.f) * f);
-      localajaq.d = (localajaq.h + (localajaq.i - localajaq.h) * f);
-      localajaq.e = (localajaq.j + (localajaq.k - localajaq.j) * f);
-      localajaq.a = (localajaq.b + (int)((localajaq.jdField_c_of_type_Int - localajaq.b) * f));
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramEIPCResult.data);
+      return;
     }
-    this.a.invalidate();
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, null);
   }
 }
 

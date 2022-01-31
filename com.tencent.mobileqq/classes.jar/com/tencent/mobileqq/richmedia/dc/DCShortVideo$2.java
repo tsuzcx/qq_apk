@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.richmedia.dc;
 
-import axot;
-import axov;
-import axow;
+import axtc;
+import axte;
+import axtf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class DCShortVideo$2
   implements Runnable
 {
-  public DCShortVideo$2(axot paramaxot, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, int paramInt3) {}
+  public DCShortVideo$2(axtc paramaxtc, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, int paramInt3) {}
   
   public void run()
   {
-    Object localObject = new axov();
-    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, (axow)localObject);
-    ((axov)localObject).jdField_a_of_type_Int = this.c;
+    Object localObject = new axte();
+    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, (axtf)localObject);
+    ((axte)localObject).jdField_a_of_type_Int = this.c;
     if (QLog.isDevelopLevel()) {
-      QLog.d("DCShortVideo", 4, "[reportPreview]shortVideoType=" + ((axov)localObject).f + ",uinType = " + ((axov)localObject).b + ",groupMemCount = " + ((axov)localObject).c + ",age = " + ((axov)localObject).d + ",gender = " + ((axov)localObject).e + ",reprotHour = " + ((axov)localObject).g + ",netType = " + ((axov)localObject).h + ",playAction = " + ((axov)localObject).jdField_a_of_type_Int);
+      QLog.d("DCShortVideo", 4, "[reportPreview]shortVideoType=" + ((axte)localObject).f + ",uinType = " + ((axte)localObject).b + ",groupMemCount = " + ((axte)localObject).c + ",age = " + ((axte)localObject).d + ",gender = " + ((axte)localObject).e + ",reprotHour = " + ((axte)localObject).g + ",netType = " + ((axte)localObject).h + ",playAction = " + ((axte)localObject).jdField_a_of_type_Int);
     }
-    localObject = new DataReport.ReportTask("ShortVideo.Preview", ((axov)localObject).a("ShortVideo.Preview"));
+    localObject = new DataReport.ReportTask("ShortVideo.Preview", ((axte)localObject).a("ShortVideo.Preview"));
     DataReport.a().a((DataReport.ReportTask)localObject);
   }
 }

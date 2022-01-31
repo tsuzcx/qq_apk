@@ -1,76 +1,75 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troop.quickat.ui.AIOAtSearchManager;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-class bccz
-  extends amab
+public class bccz
+  extends BaseAdapter
 {
-  bccz(bccy parambccy) {}
+  protected SearchReciteArticleFragment a;
+  protected String a;
+  protected List<bccy> a;
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public bccz(SearchReciteArticleFragment paramSearchReciteArticleFragment)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AtPanel", 2, "onUpdateTroopGetMemberList troopUin=" + paramString + " isSuccess=" + paramBoolean + " reqType=" + paramInt1 + " type" + paramInt2 + " reqTimestamp=" + paramLong);
-    }
-    if (paramInt1 != 2) {}
-    do
-    {
-      return;
-      if ((paramString != null) && (paramString.equals(bccy.a(this.a).a))) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AtPanel", 2, " onUpdateTroopGetMemberList troopUin =" + paramString + " mSession.troopUin=" + bccy.a(this.a).a);
-    return;
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder().append(" onUpdateTroopGetMemberList troopMemberInfoList =");
-        if (paramList != null) {
-          break label224;
-        }
-      }
-      label224:
-      for (paramInt1 = 0;; paramInt1 = paramList.size())
-      {
-        QLog.d("AtPanel", 2, paramInt1);
-        if (bccy.a(this.a) != null) {
-          break label235;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("AtPanel", 2, " onUpdateTroopGetMemberList mPopupWindow = null");
-        return;
-      }
-      label235:
-      bccy.a(this.a).a(0, 2131689924);
-      return;
-    }
-    paramString = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)paramList.next();
-      paramString.add(bcde.a(bccy.a(this.a), localTroopMemberInfo));
-    }
-    bccy.a(this.a).a(paramString);
-    bccy.a(this.a).a(bccy.a(this.a), bccy.a(this.a), bccy.a(this.a).G());
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment = paramSearchReciteArticleFragment;
   }
   
-  protected void b()
+  public bccy a(int paramInt)
   {
-    super.b();
-    if (QLog.isColorLevel()) {
-      QLog.d("AtPanel", 2, "onTroopMemberUpdate: invoked. ");
+    return (bccy)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public void a(bccy parambccy)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(parambccy);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560474, null, false);
+      paramViewGroup = new bcda(this);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379043));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131378722));
+      paramView.setTag(paramViewGroup);
     }
-    bccy.a(this.a, true);
+    for (;;)
+    {
+      paramViewGroup.jdField_a_of_type_Int = paramInt;
+      bccy localbccy = a(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(SearchReciteArticleFragment.a(this.jdField_a_of_type_JavaLangString, localbccy.jdField_a_of_type_JavaLangString, Color.parseColor("#00B6F9")));
+      paramViewGroup.b.setText(localbccy.b);
+      return paramView;
+      paramViewGroup = (bcda)paramView.getTag();
+    }
   }
 }
 

@@ -15,7 +15,7 @@ public class oug
   
   public static boolean a()
   {
-    return ((Boolean)bjxj.a(b, Boolean.valueOf(false))).booleanValue();
+    return ((Boolean)bkbq.a(b, Boolean.valueOf(false))).booleanValue();
   }
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
@@ -40,7 +40,7 @@ public class oug
           if (Integer.parseInt(str1) == 1)
           {
             bool = true;
-            bjxj.a(str2, Boolean.valueOf(bool));
+            bkbq.a(str2, Boolean.valueOf(bool));
           }
         }
         else
@@ -59,7 +59,7 @@ public class oug
   public void onWipeConfig(int paramInt)
   {
     super.onWipeConfig(paramInt);
-    bjxj.a(b, Boolean.valueOf(false));
+    bkbq.a(b, Boolean.valueOf(false));
   }
 }
 

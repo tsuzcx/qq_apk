@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ark.API;
 
-import anfv;
-import angf;
+import anke;
+import anko;
 
 public class ArkAppModuleReg$ModuleQQ$7$2$1
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$7$2$1(angf paramangf) {}
+  public ArkAppModuleReg$ModuleQQ$7$2$1(anko paramanko) {}
   
   public void run()
   {
-    anfv.a(this.a.a.this$0, this.a.a.a, this.a.a.jdField_b_of_type_JavaLangString, 16L, this.a.a.jdField_b_of_type_Long, 2);
+    anke.a(this.a.a.this$0, this.a.a.a, this.a.a.jdField_b_of_type_JavaLangString, 16L, this.a.a.jdField_b_of_type_Long, 2);
   }
 }
 

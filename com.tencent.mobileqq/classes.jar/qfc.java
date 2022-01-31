@@ -13,7 +13,7 @@ public class qfc
     ors.a = ComponentTopicItemMulti.a(this.a);
     ors.a(this.a.getContext(), this.a.a.b);
     paramView = szp.b(ComponentTopicItemMulti.a(this.a));
-    String str = ors.a(ComponentTopicItemMulti.a(this.a).mAlgorithmID, ors.a(ComponentTopicItemMulti.a(this.a)), ComponentTopicItemMulti.a(this.a), 0, 0, bdee.h(this.a.getContext()), ComponentTopicItemMulti.a(this.a).mSubscribeID, null, ComponentTopicItemMulti.a(this.a).innerUniqueID, null, ComponentTopicItemMulti.a(this.a));
+    String str = ors.a(ComponentTopicItemMulti.a(this.a).mAlgorithmID, ors.a(ComponentTopicItemMulti.a(this.a)), ComponentTopicItemMulti.a(this.a), 0, 0, bdin.h(this.a.getContext()), ComponentTopicItemMulti.a(this.a).mSubscribeID, null, ComponentTopicItemMulti.a(this.a).innerUniqueID, null, ComponentTopicItemMulti.a(this.a));
     nrt.a(null, ComponentTopicItemMulti.a(this.a).mSubscribeID, paramView, paramView, 0, 0, ComponentTopicItemMulti.a(this.a).mFeedId + "", String.valueOf(this.a.a.a), String.valueOf(ComponentTopicItemMulti.a(this.a).mAlgorithmID), str, false);
     ors.a(ComponentTopicItemMulti.a(this.a), ComponentTopicItemMulti.a(this.a));
   }

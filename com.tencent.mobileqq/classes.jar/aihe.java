@@ -1,68 +1,86 @@
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.ClipboardManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
 
-public class aihe
-  extends awdn
+class aihe
+  implements View.OnClickListener
 {
-  public aihe(BindVerifyActivity paramBindVerifyActivity) {}
+  aihe(aiha paramaiha) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
+    int i = paramView.getId();
     if (QLog.isColorLevel()) {
-      QLog.i("BindVerifyActivity", 2, "onBindMobile [" + paramBoolean + ", " + paramBundle + "]");
+      QLog.i("LinkMessageSearchDialog", 2, "onClick, id = " + i);
     }
-    this.a.b();
-    int i;
-    if (paramBoolean)
+    switch (i)
     {
-      i = paramBundle.getInt("k_result");
-      if ((i == 104) || (i == 0)) {
-        this.a.b();
-      }
+    default: 
+    case 2131364912: 
+    case 2131366760: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+          } while (this.a.jdField_a_of_type_Aihj == null);
+          ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_Aihj.a.msg);
+          return;
+        } while (this.a.jdField_a_of_type_Aihj == null);
+        paramView = this.a.jdField_a_of_type_Aihj.a;
+      } while (!(paramView instanceof MessageForText));
     }
-    for (;;)
+    for (paramView = (MessageForText)paramView;; paramView = null)
     {
-      this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
-      BindVerifyActivity.a(this.a, null);
-      return;
-      if (i == 107)
+      try
       {
-        this.a.a(paramBundle);
-      }
-      else if (i == 106)
-      {
-        this.a.a();
-        if (this.a.getIntent().getBooleanExtra("k_is_block", false)) {
-          azmj.b(this.a.app, "CliOper", "", "", "0X80053D5", "0X80053D5", 2, 0, "", "", "", "");
+        paramView = bbmp.a(paramView.msgData);
+        if (paramView == null) {
+          continue;
         }
+        paramView = (TroopLinkElement)paramView;
+        Object localObject = new Bundle();
+        if (paramView != null)
+        {
+          ((Bundle)localObject).putString("image_url_remote", paramView.url);
+          ((Bundle)localObject).putString("detail_url", paramView.iconUrl);
+          ((Bundle)localObject).putString("title", paramView.title);
+          ((Bundle)localObject).putString("desc", paramView.title);
+          ((Bundle)localObject).putString("req_create_time", paramView.timeSecond);
+        }
+        paramView = azvd.a((Bundle)localObject);
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("forward_type", -3);
+        ((Intent)localObject).putExtra("stuctmsg_bytes", paramView.getBytes());
+        aryv.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
+        return;
       }
-      else
+      catch (Exception paramView)
       {
-        this.a.a(1, a(i));
-        continue;
-        this.a.a(1, this.a.getString(2131719221));
+        return;
       }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindVerifyActivity", 2, "onRebindMobile [" + paramBoolean + ", " + paramBundle + "]");
-    }
-    this.a.b();
-    if (paramBoolean) {
-      this.a.b();
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
-      BindVerifyActivity.a(this.a, null);
+      if (QLog.isColorLevel()) {
+        QLog.i("LinkMessageSearchDialog", 2, "OnClickListener, setMessageItems");
+      }
+      this.a.c = false;
+      aiha.a(this.a).setVisibility(8);
+      aiha.a(this.a, 0, null);
+      this.a.jdField_a_of_type_Aieg.a(aiha.a(this.a), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long);
+      this.a.jdField_a_of_type_Aieg.notifyDataSetChanged();
+      this.a.b = 1;
       return;
-      this.a.a(1, this.a.getString(2131719221));
     }
   }
 }

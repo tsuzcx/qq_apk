@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import alpo;
+import alud;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -13,7 +13,7 @@ class ScanGLRenderBaseFragment$1
   {
     FragmentActivity localFragmentActivity = this.this$0.getActivity();
     if (localFragmentActivity != null) {
-      QQToast.a(localFragmentActivity, alpo.a(2131713892), 0).a();
+      QQToast.a(localFragmentActivity, alud.a(2131713904), 0).a();
     }
   }
 }

@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment;
 
 public class apzn
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public apzn(ExtendFriendEditFragment paramExtendFriendEditFragment, ExtendFriendProfileEditFragment.ExtendFriendInfo paramExtendFriendInfo) {}
+  public apzn(AIOEmotionBaseFragment paramAIOEmotionBaseFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ExtendFriendEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendEditFragment, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo);
+    this.a.a("0X8009980");
+    this.a.a();
   }
 }
 

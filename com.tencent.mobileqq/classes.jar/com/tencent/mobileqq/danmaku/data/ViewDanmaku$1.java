@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.danmaku.data;
 
 import android.view.View;
-import aoxp;
+import apby;
 
 public class ViewDanmaku$1
   implements Runnable
 {
-  public ViewDanmaku$1(aoxp paramaoxp, View paramView) {}
+  public ViewDanmaku$1(apby paramapby, View paramView) {}
   
   public void run()
   {

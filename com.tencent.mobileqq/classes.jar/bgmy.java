@@ -1,25 +1,65 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.io.FilterOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 class bgmy
-  implements View.OnClickListener
+  extends FilterOutputStream
 {
-  bgmy(bgmu parambgmu, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  private bgmy(bgmx parambgmx, OutputStream paramOutputStream)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgmu, 0);
-    }
+    super(paramOutputStream);
+  }
+  
+  public void close()
+  {
     try
     {
-      if (this.jdField_a_of_type_Bgmu.isShowing()) {
-        this.jdField_a_of_type_Bgmu.dismiss();
-      }
+      this.out.close();
       return;
     }
-    catch (Exception paramView) {}
+    catch (IOException localIOException)
+    {
+      bgmx.a(this.a, true);
+    }
+  }
+  
+  public void flush()
+  {
+    try
+    {
+      this.out.flush();
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      bgmx.a(this.a, true);
+    }
+  }
+  
+  public void write(int paramInt)
+  {
+    try
+    {
+      this.out.write(paramInt);
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      bgmx.a(this.a, true);
+    }
+  }
+  
+  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    try
+    {
+      this.out.write(paramArrayOfByte, paramInt1, paramInt2);
+      return;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      bgmx.a(this.a, true);
+    }
   }
 }
 

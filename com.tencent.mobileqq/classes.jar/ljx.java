@@ -123,7 +123,7 @@ public class ljx
   public static void a(String paramString1, String paramString2, int paramInt, String paramString3)
   {
     lek.c("MagicDataReport", "reportClickEvent key = " + paramString2 + ", fromType = " + paramInt + ", value = " + paramString3 + ", mRoomId = " + c);
-    azmj.b(null, paramString1, "", "", paramString2, paramString2, paramInt, 0, "", "", c, paramString3);
+    azqs.b(null, paramString1, "", "", paramString2, paramString2, paramInt, 0, "", "", c, paramString3);
   }
   
   public static void b(int paramInt, String paramString)

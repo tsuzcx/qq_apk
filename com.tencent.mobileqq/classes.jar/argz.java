@@ -1,27 +1,26 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import tencent.im.cs.group_file_common.group_file_common.FileInfo;
+import java.util.HashMap;
 
-class argz
-  extends ypo
+public final class argz
+  implements bauf
 {
-  argz(argq paramargq) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
+  public void a(bave parambave, bavf parambavf)
   {
-    if (paramFileInfo != null)
+    if ((parambave == null) || (parambavf == null)) {}
+    do
     {
-      String str = bdbt.h(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(this.a.jdField_a_of_type_Ardq.a().TroopUin), paramFileInfo.uint64_uploader_uin.get() + "");
-      paramFileInfo = new Date(paramFileInfo.uint32_upload_time.get() * 1000L);
-      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
-      paramFileInfo = " 于" + localSimpleDateFormat.format(paramFileInfo) + "上传";
-      if (this.a.jdField_a_of_type_Argg != null) {
-        this.a.jdField_a_of_type_Argg.b(str, paramFileInfo);
-      }
-    }
+      do
+      {
+        return;
+      } while (!(parambave instanceof baub));
+      parambave = (baub)parambave;
+      parambave.jdField_a_of_type_Long += parambavf.c;
+      parambavf.c = 0L;
+      parambavf = "bytes=" + parambave.jdField_a_of_type_Long + "-";
+      parambave.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
+      parambavf = parambave.jdField_a_of_type_JavaLangString;
+    } while (!parambavf.contains("range="));
+    parambavf = parambavf.substring(0, parambavf.lastIndexOf("range="));
+    parambave.jdField_a_of_type_JavaLangString = (parambavf + "range=" + parambave.jdField_a_of_type_Long);
   }
 }
 

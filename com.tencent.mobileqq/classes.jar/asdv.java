@@ -1,27 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
-import com.tencent.mobileqq.friends.intimate.CommonTroopListActivity;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class asdv
-  implements View.OnClickListener
+final class asdv
+  implements DialogInterface.OnClickListener
 {
-  public asdv(CommonTroopListActivity paramCommonTroopListActivity) {}
+  asdv(long paramLong, int paramInt, Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramView.getTag() instanceof IntimateInfo.CommonTroopInfo))
-    {
-      paramView = (IntimateInfo.CommonTroopInfo)paramView.getTag();
-      Intent localIntent = aekt.a(new Intent(CommonTroopListActivity.a(this.a), SplashActivity.class), null);
-      localIntent.putExtra("uin", paramView.troopCode);
-      localIntent.putExtra("uintype", 1);
-      localIntent.putExtra("uinname", paramView.troopName);
-      this.a.startActivity(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardShareByServerHelper", 2, "-->qbShowShareResultDialog--stay");
     }
-    azmj.b(null, "dc00898", "", "", "0X8009F54", "0X8009F54", CommonTroopListActivity.a(this.a), 0, "", "", "", "");
+    asdt.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

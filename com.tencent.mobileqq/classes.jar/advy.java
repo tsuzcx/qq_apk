@@ -1,20 +1,43 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
+import mqq.app.MobileQQ;
 
 public class advy
-  implements TextView.OnEditorActionListener
+  extends RecyclerView.Adapter<advz>
 {
-  public advy(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  advw jdField_a_of_type_Advw;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public advy(ScoreQAVFragment paramScoreQAVFragment) {}
+  
+  public advz a(ViewGroup paramViewGroup, int paramInt)
   {
-    if ((paramInt == 1) || ((paramKeyEvent != null) && (66 == paramKeyEvent.getKeyCode()) && (paramKeyEvent.getAction() == 0))) {
-      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).callJs("onTabKeyDown()");
+    return new advz(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2131559627, paramViewGroup, false), this.jdField_a_of_type_Advw);
+  }
+  
+  public void a(advw paramadvw)
+  {
+    this.jdField_a_of_type_Advw = paramadvw;
+  }
+  
+  public void a(advz paramadvz, int paramInt)
+  {
+    paramadvz.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt))
+    {
+      paramadvz.a.setSelected(true);
+      return;
     }
-    return false;
+    paramadvz.a.setSelected(false);
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

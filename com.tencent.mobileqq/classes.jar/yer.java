@@ -1,41 +1,21 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
 
-public class yer
-  implements anxw
+class yer
+  implements ylr
 {
-  public yer(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
+  yer(yep paramyep) {}
   
-  public ColorNote getColorNote()
+  public void a(boolean paramBoolean)
   {
-    if ((SubscribeHybirdFragment.a(this.a) == null) || (SubscribeHybirdFragment.a(this.a) == null)) {
-      QLog.e("SubscribeHybirdFragment", 1, "initColorNote, shareInfoBean is null");
-    }
-    byte[] arrayOfByte;
-    Object localObject;
-    String str1;
-    String str2;
-    String str3;
-    do
+    String str2 = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+    if (paramBoolean) {}
+    for (String str1 = "cancel";; str1 = "dislike")
     {
-      return null;
-      arrayOfByte = yhl.a(new SubscribeColorNoteReserveBean(SubscribeHybirdFragment.a(this.a).toByteArray(), SubscribeHybirdFragment.a(this.a).pageType));
-      localObject = new xzf();
-      ((xzf)localObject).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = SubscribeHybirdFragment.a(this.a);
-      ((xzf)localObject).jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = SubscribeHybirdFragment.a(this.a);
-      str1 = SubscribeHybirdFragment.a(this.a).id.get();
-      str2 = ((xzf)localObject).c();
-      ((xzf)localObject).d();
-      str3 = ((xzf)localObject).e();
-      localObject = ((xzf)localObject).f();
-    } while (TextUtils.isEmpty(str1));
-    return new anyc().a(16908291).a(str1).b(str2).c((String)localObject).d(str3).a(arrayOfByte).a();
+      zaj.a(str2, "auth_feeds", str1, 0, 0, new String[] { "", this.a.jdField_a_of_type_Yen.getAdapterPosition() + "", this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+      return;
+    }
   }
 }
 

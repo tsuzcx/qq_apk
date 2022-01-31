@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
 import android.view.View;
-import bcay;
+import bcfh;
 
 public class TextItem$1$1
   implements Runnable
 {
-  public TextItem$1$1(bcay parambcay, View paramView) {}
+  public TextItem$1$1(bcfh parambcfh, View paramView) {}
   
   public void run()
   {

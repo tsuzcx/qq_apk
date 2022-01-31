@@ -1,10 +1,6 @@
-import android.util.Pair;
-
-public abstract interface atly
+class atly
 {
-  public abstract Pair<Integer, String> a();
-  
-  public abstract atlf a();
+  private static final atlw a = new atlw(null);
 }
 
 

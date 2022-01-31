@@ -1,84 +1,122 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.BlockingQueue;
+import java.io.ByteArrayOutputStream;
+import java.io.Closeable;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.Charset;
 
 class bgni
-  extends Handler
+  implements Closeable
 {
-  private bgni(Looper paramLooper)
+  private int jdField_a_of_type_Int;
+  private final InputStream jdField_a_of_type_JavaIoInputStream;
+  private final Charset jdField_a_of_type_JavaNioCharsetCharset;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int b;
+  
+  public bgni(InputStream paramInputStream, int paramInt, Charset paramCharset)
   {
-    super(paramLooper);
+    if ((paramInputStream == null) || (paramCharset == null)) {
+      throw new NullPointerException();
+    }
+    if (paramInt < 0) {
+      throw new IllegalArgumentException("capacity <= 0");
+    }
+    if (!paramCharset.equals(bgnb.jdField_a_of_type_JavaNioCharsetCharset)) {
+      throw new IllegalArgumentException("Unsupported encoding");
+    }
+    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
+    this.jdField_a_of_type_JavaNioCharsetCharset = paramCharset;
+    this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
   }
   
-  private void a(bgnf parambgnf)
+  public bgni(InputStream paramInputStream, Charset paramCharset)
   {
-    if (parambgnf == null) {}
+    this(paramInputStream, 8192, paramCharset);
+  }
+  
+  private void a()
+  {
+    int i = this.jdField_a_of_type_JavaIoInputStream.read(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length);
+    if (i == -1) {
+      throw new EOFException();
+    }
+    this.jdField_a_of_type_Int = 0;
+    this.b = i;
+  }
+  
+  public String a()
+  {
+    synchronized (this.jdField_a_of_type_JavaIoInputStream)
+    {
+      if (this.jdField_a_of_type_ArrayOfByte == null) {
+        throw new IOException("LineReader is closed");
+      }
+    }
+    if (this.jdField_a_of_type_Int >= this.b) {
+      a();
+    }
+    int i = this.jdField_a_of_type_Int;
     for (;;)
     {
-      return;
-      if (!bgnf.a(parambgnf))
+      if (i != this.b)
       {
-        bgnf.a(parambgnf, System.currentTimeMillis() + bgnf.a(parambgnf));
-        bgnf.b(parambgnf, true);
-      }
-      parambgnf.a();
-      if (bgnf.a(parambgnf) == 0) {}
-      for (int i = 200; bgnf.b(parambgnf) + i < bgnf.c(parambgnf); i = 400)
-      {
-        bgnf.a().add(new WeakReference(parambgnf));
-        long l = bgnf.b(parambgnf);
-        a(parambgnf, i + l - System.currentTimeMillis());
-        return;
-      }
-    }
-  }
-  
-  private void a(bgnf parambgnf, long paramLong)
-  {
-    QMLog.d("QQToast", "scheduleNextToast to " + paramLong);
-    removeMessages(1);
-    bgnf.a().add(new WeakReference(parambgnf));
-    sendEmptyMessageDelayed(1, paramLong);
-  }
-  
-  private void b(bgnf parambgnf)
-  {
-    if (parambgnf == null) {}
-    do
-    {
-      return;
-      bgnf.b(parambgnf, false);
-    } while (bgnf.a(parambgnf) == null);
-    bgnf.a(parambgnf).cancel();
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (QMLog.isColorLevel()) {
-          QMLog.d("QQToast", "MSG_SHOW_TOAST received");
+        if (this.jdField_a_of_type_ArrayOfByte[i] != 10) {
+          break label272;
         }
-        paramMessage = (WeakReference)bgnf.a().poll();
-      } while (paramMessage == null);
-      a((bgnf)paramMessage.get());
-      return;
-      if (QMLog.isColorLevel()) {
-        QMLog.d("QQToast", "MSG_HIDE_TOAST received");
+        if ((i == this.jdField_a_of_type_Int) || (this.jdField_a_of_type_ArrayOfByte[(i - 1)] != 13)) {
+          break label267;
+        }
       }
-      paramMessage = (WeakReference)bgnf.a().poll();
-    } while (paramMessage == null);
-    b((bgnf)paramMessage.get());
+      label267:
+      for (int j = i - 1;; j = i)
+      {
+        Object localObject2 = new String(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, j - this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaNioCharsetCharset.name());
+        this.jdField_a_of_type_Int = (i + 1);
+        return localObject2;
+        localObject2 = new bgnj(this, this.b - this.jdField_a_of_type_Int + 80);
+        for (;;)
+        {
+          ((ByteArrayOutputStream)localObject2).write(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b - this.jdField_a_of_type_Int);
+          this.b = -1;
+          a();
+          i = this.jdField_a_of_type_Int;
+          while (i != this.b)
+          {
+            if (this.jdField_a_of_type_ArrayOfByte[i] == 10)
+            {
+              if (i != this.jdField_a_of_type_Int) {
+                ((ByteArrayOutputStream)localObject2).write(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, i - this.jdField_a_of_type_Int);
+              }
+              this.jdField_a_of_type_Int = (i + 1);
+              localObject2 = ((ByteArrayOutputStream)localObject2).toString();
+              return localObject2;
+            }
+            i += 1;
+          }
+        }
+      }
+      label272:
+      i += 1;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.b == -1;
+  }
+  
+  public void close()
+  {
+    synchronized (this.jdField_a_of_type_JavaIoInputStream)
+    {
+      if (this.jdField_a_of_type_ArrayOfByte != null)
+      {
+        this.jdField_a_of_type_ArrayOfByte = null;
+        this.jdField_a_of_type_JavaIoInputStream.close();
+      }
+      return;
+    }
   }
 }
 

@@ -1,21 +1,56 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Color;
-import android.view.View;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.2;
+import java.lang.ref.WeakReference;
 
-final class axlb
-  implements ValueAnimator.AnimatorUpdateListener
+public class axlb
+  extends Handler
 {
-  final int jdField_a_of_type_Int = Color.red(this.d);
-  final int b = Color.green(this.d);
-  final int c = Color.blue(this.d);
+  private WeakReference<ReceiptMessageReadMemberListContainerFragment> a;
   
-  axlb(int paramInt, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private axlb(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
+    this.a = new WeakReference(paramReceiptMessageReadMemberListContainerFragment);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ReceiptMessageReadMemberListContainerFragment localReceiptMessageReadMemberListContainerFragment = (ReceiptMessageReadMemberListContainerFragment)this.a.get();
+    if ((localReceiptMessageReadMemberListContainerFragment == null) || (!localReceiptMessageReadMemberListContainerFragment.isAdded())) {}
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      case 0: 
+      default: 
+        return;
+      case -1: 
+        localReceiptMessageReadMemberListContainerFragment.stopTitleProgress();
+        ReceiptMessageReadMemberListContainerFragment.g(localReceiptMessageReadMemberListContainerFragment);
+        return;
+      case 1: 
+        ReceiptMessageReadMemberListContainerFragment.b(localReceiptMessageReadMemberListContainerFragment);
+        return;
+      }
+    } while (this.a.get() == null);
+    if (ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment)) {
+      ReceiptMessageReadMemberListContainerFragment.c(localReceiptMessageReadMemberListContainerFragment);
+    }
+    for (;;)
+    {
+      ReceiptMessageReadMemberListContainerFragment.d(localReceiptMessageReadMemberListContainerFragment);
+      return;
+      sendEmptyMessage(5);
+    }
+    ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment, ((Long)paramMessage.obj).longValue());
+    return;
+    ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
+    return;
+    ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.2(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
   }
 }
 

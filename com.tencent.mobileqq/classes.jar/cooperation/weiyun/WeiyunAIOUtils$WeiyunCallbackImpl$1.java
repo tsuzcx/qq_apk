@@ -1,23 +1,23 @@
 package cooperation.weiyun;
 
-import bkfk;
-import bkfr;
+import bkjr;
+import bkjy;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class WeiyunAIOUtils$WeiyunCallbackImpl$1
   implements Runnable
 {
-  public WeiyunAIOUtils$WeiyunCallbackImpl$1(bkfk parambkfk) {}
+  public WeiyunAIOUtils$WeiyunCallbackImpl$1(bkjr parambkjr) {}
   
   public void run()
   {
     if (BaseActivity.sTopActivity != null)
     {
-      bkfr.a(bkfk.a(this.this$0), BaseActivity.sTopActivity, bkfk.a(this.this$0));
+      bkjy.a(bkjr.a(this.this$0), BaseActivity.sTopActivity, bkjr.a(this.this$0));
       return;
     }
-    QQToast.a(bkfk.a(this.this$0), 2, 2131697814, 1).b(bkfk.a(this.this$0));
+    QQToast.a(bkjr.a(this.this$0), 2, 2131697816, 1).b(bkjr.a(this.this$0));
   }
 }
 

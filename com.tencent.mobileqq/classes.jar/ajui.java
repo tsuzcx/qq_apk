@@ -1,75 +1,69 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import java.util.List;
-import tencent.im.nearfield_discuss.nearfield_discuss.UserProfile;
-
 public class ajui
-  extends BaseAdapter
 {
-  ajuj jdField_a_of_type_Ajuj;
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private int jdField_a_of_type_Int;
+  private short[] jdField_a_of_type_ArrayOfShort;
+  private int b;
   
-  public ajui(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity)
+  public ajui(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramCreateFaceToFaceDiscussionActivity.jdField_a_of_type_AndroidContentContext);
+    if (paramInt > 0) {
+      this.jdField_a_of_type_ArrayOfShort = new short[paramInt];
+    }
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
   }
   
-  public int getCount()
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size() < 50) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size() + 1;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size();
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
   }
   
-  public Object getItem(int paramInt)
+  public void a(short[] paramArrayOfShort, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList == null) {
+    if (this.jdField_a_of_type_ArrayOfShort == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int < paramInt2) {
+          break;
+        }
+        System.arraycopy(paramArrayOfShort, paramInt1, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int, paramInt2);
+        this.jdField_a_of_type_Int += paramInt2;
+        if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfShort.length) {
+          this.jdField_a_of_type_Int = 0;
+        }
+        this.b += paramInt2;
+      } while (this.b <= this.jdField_a_of_type_ArrayOfShort.length);
+      this.b = this.jdField_a_of_type_ArrayOfShort.length;
+      return;
+      System.arraycopy(paramArrayOfShort, paramInt1, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int);
+      System.arraycopy(paramArrayOfShort, this.jdField_a_of_type_ArrayOfShort.length + paramInt1 - this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfShort, 0, paramInt2 - (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_Int = (paramInt2 - (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int));
+      if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfShort.length) {
+        this.jdField_a_of_type_Int = 0;
+      }
+      this.b += paramInt2;
+    } while (this.b <= this.jdField_a_of_type_ArrayOfShort.length);
+    this.b = this.jdField_a_of_type_ArrayOfShort.length;
+  }
+  
+  public short[] a()
+  {
+    if ((this.jdField_a_of_type_ArrayOfShort == null) || (this.b == 0) || (this.b > this.jdField_a_of_type_ArrayOfShort.length)) {
       return null;
     }
-    return (nearfield_discuss.UserProfile)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    short[] arrayOfShort = new short[this.b];
+    if (this.jdField_a_of_type_Int >= this.b)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560963, null);
-      this.jdField_a_of_type_Ajuj = new ajuj(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity);
-      this.jdField_a_of_type_Ajuj.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367808));
-      this.jdField_a_of_type_Ajuj.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370958));
-      paramView.setTag(this.jdField_a_of_type_Ajuj);
+      System.arraycopy(this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int - this.b, arrayOfShort, 0, this.b);
+      return arrayOfShort;
     }
-    while ((paramInt == getCount() - 1) && (getCount() < 50))
-    {
-      CreateFaceToFaceDiscussionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, paramView);
-      return paramView;
-      this.jdField_a_of_type_Ajuj = ((ajuj)paramView.getTag());
-      if (this.jdField_a_of_type_Ajuj.jdField_a_of_type_Boolean)
-      {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560963, null);
-        this.jdField_a_of_type_Ajuj = new ajuj(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity);
-        this.jdField_a_of_type_Ajuj.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367808));
-        this.jdField_a_of_type_Ajuj.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370958));
-        paramView.setTag(this.jdField_a_of_type_Ajuj);
-        this.jdField_a_of_type_Ajuj.jdField_a_of_type_Boolean = false;
-      }
-    }
-    CreateFaceToFaceDiscussionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, paramView, (nearfield_discuss.UserProfile)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.get(paramInt));
-    return paramView;
+    System.arraycopy(this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_ArrayOfShort.length - (this.b - this.jdField_a_of_type_Int), arrayOfShort, 0, this.b - this.jdField_a_of_type_Int);
+    System.arraycopy(this.jdField_a_of_type_ArrayOfShort, 0, arrayOfShort, this.b - this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    return arrayOfShort;
   }
 }
 

@@ -1,18 +1,11 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
 
-class afpn
-  extends afpq
+public class afpn
 {
-  afpn(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  public int a;
+  public String a;
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new agbb(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
+  public afpn(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
 }
 
 

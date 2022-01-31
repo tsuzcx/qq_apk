@@ -1,21 +1,6 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.config.ResourcePluginListener;
-import com.tencent.qphone.base.util.QLog;
-
-public class adbd
-  extends ResourcePluginListener
+public abstract interface adbd
 {
-  public adbd(Leba paramLeba) {}
-  
-  public void a(byte paramByte)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
-    }
-    if (paramByte != -1) {
-      this.a.a.sendEmptyMessage(11340002);
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

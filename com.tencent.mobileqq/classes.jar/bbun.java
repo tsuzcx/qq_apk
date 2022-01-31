@@ -1,49 +1,39 @@
-import android.graphics.Bitmap;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
+import android.os.Handler;
+import android.util.SparseArray;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.4.1;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bbun
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
+  extends VasQuickUpdateManager.CallBacker
 {
-  private bbun(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
+  bbun(bbuf parambbuf) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    BaseScaleAndMoveBitmapView.a(this.a, false);
-    BaseScaleAndMoveBitmapView localBaseScaleAndMoveBitmapView = this.a;
-    localBaseScaleAndMoveBitmapView.c *= paramScaleGestureDetector.getScaleFactor();
-    this.a.c = Math.max(BaseScaleAndMoveBitmapView.a(this.a), Math.min(this.a.c, BaseScaleAndMoveBitmapView.b(this.a)));
-    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c <= this.a.getHeight())
+    if ((paramLong == 25L) && (paramString1.startsWith("groupeffect_item_")) && (paramInt1 == 0))
     {
-      this.a.b = ((this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c);
-      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c > this.a.getWidth()) {
-        break label323;
+      paramInt1 = bbuf.a(paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopEnterEffect.Controller", 2, "download Res callback success id = " + paramInt1);
       }
-      this.a.jdField_a_of_type_Float = ((this.a.getWidth() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c) / 2.0F);
-    }
-    for (;;)
-    {
-      wsv.a("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "onScale %f", Float.valueOf(this.a.c));
-      this.a.invalidate();
-      return true;
-      if (this.a.b(0.0F) >= 0.0F)
+      if (paramInt1 > 0)
       {
-        this.a.b = 0.0F;
-        break;
-      }
-      if (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) > this.a.getHeight()) {
-        break;
-      }
-      this.a.b = (this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      break;
-      label323:
-      if (this.a.a(0.0F) >= 0.0F) {
-        this.a.jdField_a_of_type_Float = 0.0F;
-      } else if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) <= this.a.getWidth()) {
-        this.a.jdField_a_of_type_Float = (this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
+        paramString1 = (bbuo)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+        this.a.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt1);
+        if (paramString1 == null) {
+          break label154;
+        }
+        if (bcoq.a(new File(bbuf.jdField_a_of_type_JavaLangString + paramInt1))) {
+          this.a.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.4.1(this, paramInt1, paramString1));
+        }
       }
     }
+    return;
+    label154:
+    QLog.e("TroopEnterEffect.Controller", 1, "mResDownloadCallback effectData = null id = " + paramInt1);
   }
 }
 

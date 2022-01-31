@@ -1,19 +1,6 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.ViewGroup;
-
-class bmgv
-  extends AnimatorListenerAdapter
+public abstract interface bmgv
 {
-  bmgv(bmgo parambmgo) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.d.setVisibility(8);
-    this.a.e.setVisibility(8);
-    this.a.f.setVisibility(8);
-    this.a.b = this.a.c;
-  }
+  public abstract void b();
 }
 
 

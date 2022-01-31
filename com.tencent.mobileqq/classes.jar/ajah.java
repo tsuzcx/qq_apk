@@ -1,22 +1,8 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
 
-final class ajah
-  extends ClickableSpan
+public abstract interface ajah
 {
-  ajah(ajak paramajak, String paramString) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Ajak.a(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
-  }
+  public abstract void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo);
 }
 
 

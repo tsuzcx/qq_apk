@@ -1,12 +1,12 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bfqs;
-import bfqu;
-import bfqx;
-import bfrc;
-import bfrf;
-import bfrg;
-import bfri;
+import bfvb;
+import bfvd;
+import bfvg;
+import bfvl;
+import bfvo;
+import bfvp;
+import bfvr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
@@ -19,24 +19,24 @@ public class VoIPProxyImpl
   extends VoIPProxy
 {
   private static final String TAG = "VoIPProxyImpl";
-  private bfrf mQavMultiObserver = new VoIPProxyImpl.2(this);
+  private bfvo mQavMultiObserver = new VoIPProxyImpl.2(this);
   private VoIPProxy.VoIPListener mVoIPListener;
   
   private void qavDeInitSDK()
   {
     QLog.i("VoIPProxyImpl", 1, "qavDeInitSDK");
     ((PushManager)BaseApplicationImpl.getApplication().getRuntime().getManager(5)).unregistProxyMessagePush(AppSetting.a(), BaseApplicationImpl.getApplication().getQQProcessName());
-    bfqu localbfqu = bfqu.a();
-    localbfqu.b(this.mQavMultiObserver);
-    localbfqu.a();
+    bfvd localbfvd = bfvd.a();
+    localbfvd.b(this.mQavMultiObserver);
+    localbfvd.a();
   }
   
   public int enableLocalAudio(boolean paramBoolean)
   {
-    bfrc localbfrc = bfqu.a().a();
-    if (localbfrc != null)
+    bfvl localbfvl = bfvd.a().a();
+    if (localbfvl != null)
     {
-      localbfrc.a(paramBoolean);
+      localbfvl.a(paramBoolean);
       return 0;
     }
     return -1;
@@ -44,13 +44,13 @@ public class VoIPProxyImpl
   
   public int enableRemoteAudio(boolean paramBoolean)
   {
-    bfrc localbfrc = bfqu.a().a();
-    if (localbfrc != null)
+    bfvl localbfvl = bfvd.a().a();
+    if (localbfvl != null)
     {
       if (!paramBoolean) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
-        localbfrc.b(paramBoolean);
+        localbfvl.b(paramBoolean);
         return 0;
       }
     }
@@ -59,9 +59,9 @@ public class VoIPProxyImpl
   
   public void exitRoom()
   {
-    bfrc localbfrc = bfqu.a().a();
-    if (localbfrc != null) {
-      localbfrc.a();
+    bfvl localbfvl = bfvd.a().a();
+    if (localbfvl != null) {
+      localbfvl.a();
     }
   }
   
@@ -69,40 +69,40 @@ public class VoIPProxyImpl
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     ((PushManager)((AppRuntime)localObject).getManager(5)).registProxyMessagePush(AppSetting.a(), BaseApplicationImpl.getApplication().getQQProcessName(), "", new String[] { "MultiVideo.c2sack", "MultiVideo.s2c" });
-    bfrg.a(new bfri());
-    bfqx localbfqx = bfqx.a();
-    localbfqx.a((AppRuntime)localObject);
-    localbfqx.a(new VoIPProxyImpl.1(this));
-    localObject = bfqu.a();
-    ((bfqu)localObject).a(BaseApplicationImpl.getApplication().getApplicationContext(), paramLong, localbfqx);
+    bfvp.a(new bfvr());
+    bfvg localbfvg = bfvg.a();
+    localbfvg.a((AppRuntime)localObject);
+    localbfvg.a(new VoIPProxyImpl.1(this));
+    localObject = bfvd.a();
+    ((bfvd)localObject).a(BaseApplicationImpl.getApplication().getApplicationContext(), paramLong, localbfvg);
     this.mVoIPListener = paramVoIPListener;
-    ((bfqu)localObject).a(this.mQavMultiObserver);
+    ((bfvd)localObject).a(this.mQavMultiObserver);
   }
   
   public int joinRoom(long paramLong, int paramInt, String paramString, byte[] paramArrayOfByte)
   {
-    bfrc localbfrc = bfqu.a().a();
-    if (localbfrc != null)
+    bfvl localbfvl = bfvd.a().a();
+    if (localbfvl != null)
     {
-      bfqs localbfqs = new bfqs();
-      localbfqs.jdField_a_of_type_Int = 11;
-      localbfqs.b = 14;
-      localbfqs.c = 1;
-      localbfqs.d = paramInt;
-      localbfqs.jdField_a_of_type_Long = paramLong;
-      localbfqs.jdField_a_of_type_JavaLangString = paramString;
-      localbfqs.e = 1;
-      localbfqs.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-      return localbfrc.a(localbfqs);
+      bfvb localbfvb = new bfvb();
+      localbfvb.jdField_a_of_type_Int = 11;
+      localbfvb.b = 14;
+      localbfvb.c = 1;
+      localbfvb.d = paramInt;
+      localbfvb.jdField_a_of_type_Long = paramLong;
+      localbfvb.jdField_a_of_type_JavaLangString = paramString;
+      localbfvb.e = 1;
+      localbfvb.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      return localbfvl.a(localbfvb);
     }
     return -4;
   }
   
   public void setAudioRoute(int paramInt)
   {
-    bfrc localbfrc = bfqu.a().a();
-    if (localbfrc != null) {
-      localbfrc.a(paramInt);
+    bfvl localbfvl = bfvd.a().a();
+    if (localbfvl != null) {
+      localbfvl.a(paramInt);
     }
   }
   
@@ -114,9 +114,9 @@ public class VoIPProxyImpl
   
   public void updateRoomInfo()
   {
-    bfrc localbfrc = bfqu.a().a();
-    if (localbfrc != null) {
-      localbfrc.b();
+    bfvl localbfvl = bfvd.a().a();
+    if (localbfvl != null) {
+      localbfvl.b();
     }
   }
 }

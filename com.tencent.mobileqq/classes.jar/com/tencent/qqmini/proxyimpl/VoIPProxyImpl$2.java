@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bfqt;
-import bfrf;
+import bfvc;
+import bfvo;
 import com.tencent.qqmini.sdk.core.proxy.VoIPProxy.MultiUserInfo;
 import com.tencent.qqmini.sdk.core.proxy.VoIPProxy.VoIPListener;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 class VoIPProxyImpl$2
-  extends bfrf
+  extends bfvo
 {
   VoIPProxyImpl$2(VoIPProxyImpl paramVoIPProxyImpl) {}
   
@@ -27,71 +27,71 @@ class VoIPProxyImpl$2
     }
   }
   
-  public void onUserAudioAvailable(bfqt parambfqt, boolean paramBoolean)
+  public void onUserAudioAvailable(bfvc parambfvc, boolean paramBoolean)
   {
     if (VoIPProxyImpl.access$000(this.this$0) != null)
     {
       VoIPProxy.MultiUserInfo localMultiUserInfo = null;
-      if (parambfqt != null)
+      if (parambfvc != null)
       {
         localMultiUserInfo = new VoIPProxy.MultiUserInfo();
-        localMultiUserInfo.mMicOn = parambfqt.jdField_a_of_type_Boolean;
-        localMultiUserInfo.mOpenId = parambfqt.jdField_a_of_type_JavaLangString;
-        localMultiUserInfo.mUin = parambfqt.jdField_a_of_type_Long;
+        localMultiUserInfo.mMicOn = parambfvc.jdField_a_of_type_Boolean;
+        localMultiUserInfo.mOpenId = parambfvc.jdField_a_of_type_JavaLangString;
+        localMultiUserInfo.mUin = parambfvc.jdField_a_of_type_Long;
       }
       VoIPProxyImpl.access$000(this.this$0).onUserAudioAvailable(localMultiUserInfo, paramBoolean);
     }
   }
   
-  public void onUserEnter(bfqt parambfqt)
+  public void onUserEnter(bfvc parambfvc)
   {
     if (VoIPProxyImpl.access$000(this.this$0) != null)
     {
       VoIPProxy.MultiUserInfo localMultiUserInfo = null;
-      if (parambfqt != null)
+      if (parambfvc != null)
       {
         localMultiUserInfo = new VoIPProxy.MultiUserInfo();
-        localMultiUserInfo.mMicOn = parambfqt.jdField_a_of_type_Boolean;
-        localMultiUserInfo.mOpenId = parambfqt.jdField_a_of_type_JavaLangString;
-        localMultiUserInfo.mUin = parambfqt.jdField_a_of_type_Long;
+        localMultiUserInfo.mMicOn = parambfvc.jdField_a_of_type_Boolean;
+        localMultiUserInfo.mOpenId = parambfvc.jdField_a_of_type_JavaLangString;
+        localMultiUserInfo.mUin = parambfvc.jdField_a_of_type_Long;
       }
       VoIPProxyImpl.access$000(this.this$0).onUserEnter(localMultiUserInfo);
     }
   }
   
-  public void onUserExit(bfqt parambfqt)
+  public void onUserExit(bfvc parambfvc)
   {
     if (VoIPProxyImpl.access$000(this.this$0) != null)
     {
       VoIPProxy.MultiUserInfo localMultiUserInfo = null;
-      if (parambfqt != null)
+      if (parambfvc != null)
       {
         localMultiUserInfo = new VoIPProxy.MultiUserInfo();
-        localMultiUserInfo.mMicOn = parambfqt.jdField_a_of_type_Boolean;
-        localMultiUserInfo.mOpenId = parambfqt.jdField_a_of_type_JavaLangString;
-        localMultiUserInfo.mUin = parambfqt.jdField_a_of_type_Long;
+        localMultiUserInfo.mMicOn = parambfvc.jdField_a_of_type_Boolean;
+        localMultiUserInfo.mOpenId = parambfvc.jdField_a_of_type_JavaLangString;
+        localMultiUserInfo.mUin = parambfvc.jdField_a_of_type_Long;
       }
       VoIPProxyImpl.access$000(this.this$0).onUserExit(localMultiUserInfo);
     }
   }
   
-  public void onUserSpeaking(bfqt parambfqt, boolean paramBoolean)
+  public void onUserSpeaking(bfvc parambfvc, boolean paramBoolean)
   {
     if (VoIPProxyImpl.access$000(this.this$0) != null)
     {
       VoIPProxy.MultiUserInfo localMultiUserInfo = null;
-      if (parambfqt != null)
+      if (parambfvc != null)
       {
         localMultiUserInfo = new VoIPProxy.MultiUserInfo();
-        localMultiUserInfo.mMicOn = parambfqt.jdField_a_of_type_Boolean;
-        localMultiUserInfo.mOpenId = parambfqt.jdField_a_of_type_JavaLangString;
-        localMultiUserInfo.mUin = parambfqt.jdField_a_of_type_Long;
+        localMultiUserInfo.mMicOn = parambfvc.jdField_a_of_type_Boolean;
+        localMultiUserInfo.mOpenId = parambfvc.jdField_a_of_type_JavaLangString;
+        localMultiUserInfo.mUin = parambfvc.jdField_a_of_type_Long;
       }
       VoIPProxyImpl.access$000(this.this$0).onUserSpeaking(localMultiUserInfo, paramBoolean);
     }
   }
   
-  public void onUserUpdate(List<bfqt> paramList)
+  public void onUserUpdate(List<bfvc> paramList)
   {
     if (VoIPProxyImpl.access$000(this.this$0) != null)
     {
@@ -102,13 +102,13 @@ class VoIPProxyImpl$2
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
-          bfqt localbfqt = (bfqt)paramList.next();
-          if (localbfqt != null)
+          bfvc localbfvc = (bfvc)paramList.next();
+          if (localbfvc != null)
           {
             VoIPProxy.MultiUserInfo localMultiUserInfo = new VoIPProxy.MultiUserInfo();
-            localMultiUserInfo.mMicOn = localbfqt.jdField_a_of_type_Boolean;
-            localMultiUserInfo.mOpenId = localbfqt.jdField_a_of_type_JavaLangString;
-            localMultiUserInfo.mUin = localbfqt.jdField_a_of_type_Long;
+            localMultiUserInfo.mMicOn = localbfvc.jdField_a_of_type_Boolean;
+            localMultiUserInfo.mOpenId = localbfvc.jdField_a_of_type_JavaLangString;
+            localMultiUserInfo.mUin = localbfvc.jdField_a_of_type_Long;
             localArrayList.add(localMultiUserInfo);
           }
         }

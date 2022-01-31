@@ -1,15 +1,14 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class afkk
-  implements arnx
+  implements DialogInterface.OnClickListener
 {
-  afkk(afjb paramafjb) {}
+  afkk(afkj paramafkj) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = aqxg.a();
-    arni.c(this.a.a, paramView);
-    arng.a("0X8007FA2");
+    paramDialogInterface.dismiss();
   }
 }
 

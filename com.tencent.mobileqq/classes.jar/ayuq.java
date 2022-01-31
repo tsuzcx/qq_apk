@@ -1,22 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
+import java.util.Set;
 
-class ayuq
-  extends Handler
+public class ayuq
+  extends aytg
 {
-  ayuq(ayup paramayup) {}
+  public final ayur a;
   
-  public void handleMessage(Message paramMessage)
+  public ayuq(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == 0)
-    {
-      ayup.a = false;
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "wtlogin time out");
-      }
-    }
+    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
+    this.a = new ayur(paramQQAppInterface);
+  }
+  
+  public Comparator<aynq> a()
+  {
+    return this.a;
   }
 }
 

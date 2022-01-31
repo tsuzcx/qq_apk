@@ -1,27 +1,14 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public class ankl
+class ankl
+  implements afje
 {
-  public View a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public BaseChatItemLayout a;
-  public ArkAppLoadLayout a;
-  public ArkAppRootLayout a;
-  public ArkAppView a;
-  public LinearLayout b;
+  ankl(anke paramanke, long paramLong) {}
+  
+  public void a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    this.jdField_a_of_type_Anke.a(this.jdField_a_of_type_Long, paramBoolean, paramSosoLbsInfo);
+  }
 }
 
 

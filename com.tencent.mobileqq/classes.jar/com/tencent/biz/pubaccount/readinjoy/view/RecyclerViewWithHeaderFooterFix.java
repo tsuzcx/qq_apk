@@ -11,9 +11,9 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import biag;
-import biau;
-import biay;
+import bien;
+import bifb;
+import biff;
 import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -24,7 +24,7 @@ import rxn;
 public class RecyclerViewWithHeaderFooterFix
   extends RecyclerViewCompat
 {
-  private biay jdField_a_of_type_Biay;
+  private biff jdField_a_of_type_Biff;
   private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
   public boolean a;
   private final List<View> b = new ArrayList();
@@ -91,20 +91,20 @@ public class RecyclerViewWithHeaderFooterFix
       localObject = new rxm(this, paramAdapter);
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((biau)localObject).a((View)localIterator.next());
+        ((bifb)localObject).a((View)localIterator.next());
       }
       localIterator = this.b.iterator();
       while (localIterator.hasNext()) {
-        ((biau)localObject).c((View)localIterator.next());
+        ((bifb)localObject).c((View)localIterator.next());
       }
-      ((biau)localObject).setHasStableIds(paramAdapter.hasStableIds());
+      ((bifb)localObject).setHasStableIds(paramAdapter.hasStableIds());
       if ((getLayoutManager() instanceof GridLayoutManager))
       {
         paramAdapter = (GridLayoutManager)getLayoutManager();
-        paramAdapter.setSpanSizeLookup(new biag((biau)localObject, paramAdapter));
+        paramAdapter.setSpanSizeLookup(new bien((bifb)localObject, paramAdapter));
       }
-      if (this.jdField_a_of_type_Biay != null) {
-        ((biau)localObject).a(this.jdField_a_of_type_Biay);
+      if (this.jdField_a_of_type_Biff != null) {
+        ((bifb)localObject).a(this.jdField_a_of_type_Biff);
       }
     }
     super.setAdapter((RecyclerView.Adapter)localObject);
@@ -113,14 +113,14 @@ public class RecyclerViewWithHeaderFooterFix
   public void setLayoutManager(RecyclerView.LayoutManager paramLayoutManager)
   {
     super.setLayoutManager(paramLayoutManager);
-    if ((getAdapter() != null) && ((getAdapter() instanceof biau)))
+    if ((getAdapter() != null) && ((getAdapter() instanceof bifb)))
     {
-      Object localObject = (biau)getAdapter();
+      Object localObject = (bifb)getAdapter();
       if ((getLayoutManager() instanceof GridLayoutManager))
       {
         paramLayoutManager = (GridLayoutManager)getLayoutManager();
-        localObject = new biag((biau)localObject, paramLayoutManager);
-        ((biag)localObject).a(paramLayoutManager.getSpanSizeLookup());
+        localObject = new bien((bifb)localObject, paramLayoutManager);
+        ((bien)localObject).a(paramLayoutManager.getSpanSizeLookup());
         paramLayoutManager.setSpanSizeLookup((GridLayoutManager.SpanSizeLookup)localObject);
       }
     }

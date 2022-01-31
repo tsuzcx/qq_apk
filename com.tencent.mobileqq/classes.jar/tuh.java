@@ -1,26 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.biz.qqcircle.comment.ItemReplyContainer;
-import com.tencent.biz.qqcircle.comment.QCircleCommentItemView;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.biz.qqcircle.comment.ItemReplyView;
+import com.tencent.biz.qqcircle.widgets.QCircleCommentPraiseLayout;
 import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StReply;
 
 public class tuh
-  implements View.OnClickListener
+  implements ucq
 {
-  public tuh(QCircleCommentItemView paramQCircleCommentItemView) {}
+  public tuh(ItemReplyView paramItemReplyView) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if ((QCircleCommentItemView.a(this.a) != null) && (QCircleCommentItemView.a(this.a).vecReply.size() > 0))
+    FeedCloudMeta.StComment localStComment;
+    FeedCloudMeta.StReply localStReply;
+    yhn localyhn;
+    QCircleCommentPraiseLayout localQCircleCommentPraiseLayout;
+    if (ItemReplyView.a(this.a) != null)
     {
-      QCircleCommentItemView.a(this.a).a(paramView, 10, QCircleCommentItemView.a(this.a), QCircleCommentItemView.a(this.a));
-      this.a.a.b.setVisibility(8);
-      this.a.a.a.setVisibility(8);
-      QCircleCommentItemView.a(this.a).setVisibility(0);
-      QCircleCommentItemView.a(this.a).setVisibility(0);
+      localStComment = ItemReplyView.a(this.a);
+      localStReply = ItemReplyView.a(this.a);
+      localyhn = ItemReplyView.a(this.a);
+      localQCircleCommentPraiseLayout = ItemReplyView.a(this.a);
+      if (!paramBoolean) {
+        break label83;
+      }
+    }
+    label83:
+    for (int i = 14;; i = 15)
+    {
+      localyhn.a(localQCircleCommentPraiseLayout, i, ItemReplyView.a(this.a), new Object[] { localStComment, localStReply });
+      return;
     }
   }
 }

@@ -2,9 +2,9 @@ package com.tencent.qqmini.sdk.runtime.core.page;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
-import bgid;
-import bgjm;
-import bhbv;
+import bgmk;
+import bgnt;
+import bhgc;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.smtt.sdk.QbSdk;
@@ -14,14 +14,14 @@ import java.util.HashMap;
 public class PageWebviewContainer$6
   implements Runnable
 {
-  PageWebviewContainer$6(PageWebviewContainer paramPageWebviewContainer, String paramString, bgid parambgid) {}
+  PageWebviewContainer$6(PageWebviewContainer paramPageWebviewContainer, String paramString, bgmk parambgmk) {}
   
   public void run()
   {
     if (PageWebviewContainer.a(this.this$0) != null) {
       PageWebviewContainer.a(this.this$0).setEnabled(false);
     }
-    String str = bgjm.a().a(this.jdField_a_of_type_JavaLangString);
+    String str = bgnt.a().a(this.jdField_a_of_type_JavaLangString);
     if (!TextUtils.isEmpty(str))
     {
       Object localObject = new File(str);
@@ -31,13 +31,13 @@ public class PageWebviewContainer$6
         ((HashMap)localObject).put("style", "1");
         ((HashMap)localObject).put("local", "true");
         ((HashMap)localObject).put("topBarBgColor", "#808080");
-        if (QbSdk.openFileReader(AppLoaderFactory.g().getContext(), str, (HashMap)localObject, new bhbv(this)) > 0) {
-          this.jdField_a_of_type_Bgid.a();
+        if (QbSdk.openFileReader(AppLoaderFactory.g().getContext(), str, (HashMap)localObject, new bhgc(this)) > 0) {
+          this.jdField_a_of_type_Bgmk.a();
         }
       }
     }
     QMLog.e("PageWebviewContainer", "openDocument fail.");
-    this.jdField_a_of_type_Bgid.b();
+    this.jdField_a_of_type_Bgmk.b();
   }
 }
 

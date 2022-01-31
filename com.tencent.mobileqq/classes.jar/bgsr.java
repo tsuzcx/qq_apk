@@ -1,24 +1,6 @@
-import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-
-class bgsr
-  extends bgsi
+public abstract interface bgsr
 {
-  bgsr(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
-  {
-    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
-  }
-  
-  protected bgsh a()
-  {
-    return new bgsh(2131694346, new bgss(this));
-  }
-  
-  protected bgsh b()
-  {
-    return new bgsh(2131694326, new bgst(this));
-  }
+  public abstract void a();
 }
 
 

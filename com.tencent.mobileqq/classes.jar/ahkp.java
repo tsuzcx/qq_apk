@@ -1,38 +1,31 @@
 import android.content.Context;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
-public class ahkp
-  extends ahgk
+public abstract class ahkp<T>
+  extends ahkt<T>
 {
-  public int a;
-  public long a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public ShaderAnimLayout a;
-  public String a;
-  public structmsg.StructMsg a;
-  public int b;
-  public long b;
-  public ImageView b;
-  public LinearLayout b;
-  public TextView b;
-  public String b;
-  public long c;
-  public TextView c;
-  public TextView d;
+  protected int a;
+  protected Context a;
+  protected LayoutInflater a;
   
-  public ahkp(Context paramContext, View paramView)
+  public ahkp(Context paramContext, int paramInt)
   {
-    super(paramContext, paramView);
+    super(paramContext);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_Int = paramInt;
+    a(new ahkq(this, paramInt));
   }
+  
+  public ahkz a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  {
+    return b(paramContext, paramViewGroup, paramInt);
+  }
+  
+  protected abstract void a(ahkz paramahkz, T paramT, int paramInt);
+  
+  protected abstract ahkz b(Context paramContext, ViewGroup paramViewGroup, int paramInt);
 }
 
 

@@ -1,22 +1,17 @@
-import android.widget.TextView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class bivl
-  implements bimm
+final class bivl
+  implements View.OnClickListener
 {
-  bivl(bivh parambivh) {}
+  bivl(Dialog paramDialog, String paramString) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (!paramBoolean)
-    {
-      bixe.a("ReaderSplashImpl", "jumpToPlugin: openPlugin: failed");
-      if (bivh.a(this.a) != null) {
-        bivh.a(this.a).setText("跳转失败，请返回重试");
-      }
-      return;
+    if (this.jdField_a_of_type_AndroidAppDialog != null) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    bixe.d("ReaderSplashImpl", "jumpToPlugin: openPlugin: succeed");
-    bivh.b(this.a);
   }
 }
 

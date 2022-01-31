@@ -1,42 +1,94 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoue
-  extends aofy<aoud>
+  extends aokh<aotz>
 {
-  public static aoud a()
-  {
-    return (aoud)aogj.a().a(348);
-  }
+  final String a = "QfileFileAssistantTipsConfigProcessor<FileAssistant>";
   
   public int a()
   {
-    return 348;
+    return 606;
   }
   
   @NonNull
-  public aoud a(int paramInt)
+  public aotz a(int paramInt)
   {
-    return new aoud();
+    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
+    return new aotz();
   }
   
   @Nullable
-  public aoud a(aogf[] paramArrayOfaogf)
+  public aotz a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return aoud.a(paramArrayOfaogf);
+    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "onParsed");
+    if (paramArrayOfaoko != null) {
+      try
+      {
+        if (paramArrayOfaoko.length > 0)
+        {
+          paramArrayOfaoko = (aotz)aolc.a(paramArrayOfaoko[0].a, aotz.class);
+          return paramArrayOfaoko;
+        }
+      }
+      catch (QStorageInstantiateException paramArrayOfaoko) {}
     }
     return null;
   }
   
-  public Class<aoud> a()
+  public Class<aotz> a()
   {
-    return aoud.class;
+    return aotz.class;
   }
   
-  public void a(int paramInt) {}
+  public void a(int paramInt)
+  {
+    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
+  }
   
-  public void a(aoud paramaoud) {}
+  public void a(aotz paramaotz)
+  {
+    if (paramaotz == null)
+    {
+      QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "onUpdate: newConf is null.");
+      return;
+    }
+    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "QfileFileAssistantTipsConfigProcessor onUpdate");
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface)) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      if (localObject == null)
+      {
+        QLog.e("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "app is null!!!");
+        return;
+      }
+      if (paramaotz == null) {
+        break;
+      }
+      if (TextUtils.isEmpty(paramaotz.a)) {
+        paramaotz.a = "{}";
+      }
+      SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("qfile_file_assistant_tips" + ((QQAppInterface)localObject).c(), 0).edit();
+      localEditor.putString("qfile_file_assistant_tips", paramaotz.a);
+      localEditor.apply();
+      QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "save FileAssistantTips config [" + paramaotz.a + "]");
+      localObject = (aqud)((QQAppInterface)localObject).getManager(317);
+      if (localObject == null) {
+        break;
+      }
+      ((aqud)localObject).a(paramaotz);
+      return;
+    }
+  }
   
   public int b()
   {
@@ -50,7 +102,7 @@ public class aoue
   
   public boolean c()
   {
-    return false;
+    return true;
   }
 }
 

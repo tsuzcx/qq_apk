@@ -18,14 +18,14 @@
         <dov.com.qq.im.ae.album.AEAlbumLinearLayout android:id="@id/d1q" android:layout_width="fill_parent" android:layout_height="fill_parent" app:minPreviewHeight="65.0dip">
             <FrameLayout android:background="@color/db" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <dov.com.qq.im.ae.album.nocropper.AECropperView android:id="@id/d1r" android:layout_width="fill_parent" android:layout_height="wrap_content" app:addPaddingToMakeSquare="false" app:fitToCenter="false" app:gridColor="@color/al3" app:gridOpacity="0.8" app:gridThickness="1.1999817dip" />
-                <ImageView android:layout_gravity="bottom|center|left" android:id="@id/mby" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginBottom="2.0dip" android:src="@drawable/bsb" />
-                <TextView android:textSize="17.0sp" android:textColor="#ffbababa" android:gravity="center" android:layout_gravity="center" android:id="@id/mrj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w9d" android:drawableTop="@drawable/brz" android:drawablePadding="13.0dip" />
-                <dov.com.qq.im.ae.album.AEAlbumPreviewMaskLayout android:id="@id/kts" android:background="@color/bz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:layout_gravity="bottom|center|left" android:id="@id/mg8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginBottom="2.0dip" android:src="@drawable/bwy" />
+                <TextView android:textSize="17.0sp" android:textColor="#ffbababa" android:gravity="center" android:layout_gravity="center" android:id="@id/mt6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w9d" android:drawableTop="@drawable/bwt" android:drawablePadding="13.0dip" />
+                <dov.com.qq.im.ae.album.AEAlbumPreviewMaskLayout android:id="@id/ku2" android:background="@color/bz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
                     <View android:layout_gravity="bottom|center" android:background="@drawable/g3" android:layout_width="29.0dip" android:layout_height="3.0dip" android:layout_marginBottom="12.0dip" />
                 </dov.com.qq.im.ae.album.AEAlbumPreviewMaskLayout>
             </FrameLayout>
             <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <android.support.v7.widget.RecyclerView android:id="@id/mjk" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="1.0dip" android:paddingStart="1.5dip" android:paddingEnd="1.5dip" />
+                <android.support.v7.widget.RecyclerView android:id="@id/mk5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="1.0dip" android:paddingStart="1.5dip" android:paddingEnd="1.5dip" />
                 <View android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="2.0dip" />
             </FrameLayout>
         </dov.com.qq.im.ae.album.AEAlbumLinearLayout>

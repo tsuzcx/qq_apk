@@ -1,18 +1,12 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afzo
-  extends aelt
+class afzo
+  implements DialogInterface.OnClickListener
 {
-  public RelativeLayout a;
-  public TextView a;
-  public URLDrawable a;
-  public URLImageView a;
-  public BubbleImageView a;
-  public TextView b;
+  afzo(afzh paramafzh) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

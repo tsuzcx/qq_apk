@@ -1,19 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import java.util.List;
 
 class avem
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
   avem(avek paramavek) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.dismiss();
+    avek.a(this.a).a.clear();
+    avek.a(this.a).a();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

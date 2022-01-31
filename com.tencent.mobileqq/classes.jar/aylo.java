@@ -1,24 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
 
 class aylo
-  implements View.OnClickListener
+  implements Comparator<ayls>
 {
-  aylo(aylm paramaylm, ayij paramayij) {}
+  aylo(ayln paramayln) {}
   
-  public void onClick(View paramView)
+  public int a(ayls paramayls1, ayls paramayls2)
   {
-    if ("ActiveEntitySearchResultPresenter_add_troop".equals(paramView.getTag())) {
-      aylm.a(this.jdField_a_of_type_Aylm, paramView.getContext(), this.jdField_a_of_type_Ayij);
-    }
-    try
+    int j = Long.signum(paramayls1.b - paramayls2.b);
+    int i = j;
+    if (j == 0)
     {
-      azmj.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "P_CliOper", "Grp_find", "", "grptab", "Clk_join", 0, 0, this.jdField_a_of_type_Ayij.b, "", "", "");
-      return;
+      j = Long.signum(paramayls1.c - paramayls2.c);
+      i = j;
+      if (j == 0) {
+        i = Long.signum(-paramayls1.a + paramayls2.a);
+      }
     }
-    catch (Throwable paramView) {}
+    return i;
   }
 }
 

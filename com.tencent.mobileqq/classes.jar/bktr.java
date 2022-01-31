@@ -1,25 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
-public class bktr
-  implements Animator.AnimatorListener
+class bktr
+  implements blzz
 {
-  public bktr(AEProviderContainerView paramAEProviderContainerView) {}
+  bktr(bktp parambktp) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEProviderContainerView", 2, "panel closed");
-    }
+    bktp.a(this.a).setTouchEnable(true);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void b()
+  {
+    bktp.a(this.a).o();
+    bktp.a(this.a).setTouchEnable(true);
+  }
 }
 
 

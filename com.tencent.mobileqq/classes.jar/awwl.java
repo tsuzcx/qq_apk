@@ -1,17 +1,41 @@
-import com.tencent.mobileqq.data.QCallRecord;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.view.VipPhotoViewForSimple;
+import com.tencent.qphone.base.util.QLog;
 
-class awwl
-  implements Comparator<QCallRecord>
+public class awwl
+  implements View.OnClickListener
 {
-  awwl(awwk paramawwk) {}
+  private long jdField_a_of_type_Long;
   
-  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  public awwl(VipPhotoViewForSimple paramVipPhotoViewForSimple) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramQCallRecord1.type == QCallRecord.TYPE_DATE) {
-      return 0;
+    long l = System.currentTimeMillis();
+    if (Math.abs(l - this.jdField_a_of_type_Long) < 1000L) {}
+    do
+    {
+      do
+      {
+        return;
+        this.jdField_a_of_type_Long = l;
+      } while ((paramView == null) || (!(paramView.getTag() instanceof awor)));
+      paramView = (awor)paramView.getTag();
+    } while (paramView == null);
+    int i = paramView.a;
+    paramView = VipPhotoViewForSimple.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple).a.a;
+    switch (i)
+    {
+    default: 
+      return;
     }
-    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+    if (QLog.isColorLevel()) {
+      QLog.i("ProfileCard.VipPhotoViewForSimple", 2, "View.OnClickListener click type is photo wall view");
+    }
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple.a, "CliOper", "", "", "card_mall", "0X80066C4", 0, 0, "1", "", "", "");
+    VipPhotoViewForSimple.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple, VipPhotoViewForSimple.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple));
   }
 }
 

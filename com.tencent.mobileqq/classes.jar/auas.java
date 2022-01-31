@@ -1,12 +1,35 @@
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface auas
+public class auas
+  extends altm
 {
-  public abstract void a(int paramInt);
+  public auas(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
   
-  public abstract void a(long paramLong);
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a(paramString))) {
+      this.a.b();
+    }
+  }
   
-  public abstract void a(List<amzu> paramList, long paramLong);
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MatchChatMsgListFragment", 2, "onUpdateFriendInfo uin =" + paramString);
+      }
+      int i = 0;
+      if (this.a.a(paramString)) {
+        i = 1;
+      }
+      if (i != 0) {
+        this.a.b();
+      }
+    }
+  }
 }
 
 

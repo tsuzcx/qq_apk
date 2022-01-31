@@ -1,23 +1,124 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajub
-  implements View.OnClickListener
+class ajub
+  implements INetInfoHandler
 {
-  public ajub(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  ajub(ajua paramajua) {}
   
-  public void onClick(View paramView)
+  public void onNetMobile2None()
   {
-    if (this.a.c) {
-      azmj.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
+    boolean bool = true;
+    synchronized (this.a)
+    {
+      if (ajua.a(this.a) == null) {
+        return;
+      }
+      if (ajua.a(this.a).a == null) {
+        return;
+      }
     }
+    ajua localajua2 = this.a;
+    if (!ajua.a(this.a).c) {}
     for (;;)
     {
-      this.a.finish();
-      this.a.overridePendingTransition(2130771988, 2130771989);
+      localajua2.a(bool, true);
       return;
-      azmj.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
+      bool = false;
+    }
+  }
+  
+  public void onNetMobile2Wifi(String arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ajua.a(), 2, "onNetMobile2Wifi, AutoTranslate:  ");
+    }
+    synchronized (this.a)
+    {
+      if (ajua.a(this.a) == null) {
+        return;
+      }
+      if (ajua.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    ajua.a(this.a);
+  }
+  
+  public void onNetNone2Mobile(String arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ajua.a(), 2, "onNetNone2Mobile ");
+    }
+    synchronized (this.a)
+    {
+      if (ajua.a(this.a) == null) {
+        return;
+      }
+      if (ajua.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    ajua.a(this.a);
+  }
+  
+  public void onNetNone2Wifi(String arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ajua.a(), 2, "onNetNone2Wifi, AutoTranslate:  ");
+    }
+    synchronized (this.a)
+    {
+      if (ajua.a(this.a) == null) {
+        return;
+      }
+      if (ajua.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    ajua.a(this.a);
+  }
+  
+  public void onNetWifi2Mobile(String arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ajua.a(), 2, "onNetWifi2Mobile, need restore:  ");
+    }
+    synchronized (this.a)
+    {
+      if (ajua.a(this.a) == null) {
+        return;
+      }
+      if (ajua.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    ajua.a(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    boolean bool = true;
+    synchronized (this.a)
+    {
+      if (ajua.a(this.a) == null) {
+        return;
+      }
+      if (ajua.a(this.a).a == null) {
+        return;
+      }
+    }
+    ajua localajua2 = this.a;
+    if (!ajua.a(this.a).c) {}
+    for (;;)
+    {
+      localajua2.a(bool, true);
+      return;
+      bool = false;
     }
   }
 }

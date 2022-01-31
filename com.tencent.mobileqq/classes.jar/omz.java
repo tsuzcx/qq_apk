@@ -34,7 +34,7 @@ public class omz
   private static Map<String, omz> jdField_a_of_type_JavaUtilMap = new HashMap();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private bhod<Pair<String, BaseCommentData>> jdField_a_of_type_Bhod = new bhod();
+  private bhsk<Pair<String, BaseCommentData>> jdField_a_of_type_Bhsk = new bhsk();
   protected CommonCommentData a;
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   protected String a;
@@ -558,7 +558,7 @@ public class omz
       try
       {
         paramString = new JSONObject(paramString);
-        ((BaseCommentData)localObject1).commentContent = new String(bdbi.decode(paramString.getString("comment"), 0));
+        ((BaseCommentData)localObject1).commentContent = new String(bdfr.decode(paramString.getString("comment"), 0));
         if (paramInt == 2)
         {
           localObject2 = (SubCommentData)localObject1;
@@ -714,8 +714,8 @@ public class omz
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_JavaLangString = "";
-    if (this.jdField_a_of_type_Bhod != null) {
-      this.jdField_a_of_type_Bhod.a();
+    if (this.jdField_a_of_type_Bhsk != null) {
+      this.jdField_a_of_type_Bhsk.a();
     }
     if (this.jdField_e_of_type_JavaUtilList != null) {
       this.jdField_e_of_type_JavaUtilList.clear();
@@ -1002,7 +1002,7 @@ public class omz
     if (this.jdField_a_of_type_JavaUtilList == null) {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
-    Pair localPair = (Pair)this.jdField_a_of_type_Bhod.a(paramLong);
+    Pair localPair = (Pair)this.jdField_a_of_type_Bhsk.a(paramLong);
     if (localPair == null) {
       QLog.d("ReadInJoyCommentDataManager", 1, "onCreateCommentResult | fake comment data not exist, return !");
     }
@@ -1011,7 +1011,7 @@ public class omz
     {
       return;
       localBaseCommentData = (BaseCommentData)localPair.second;
-      this.jdField_a_of_type_Bhod.b(paramLong);
+      this.jdField_a_of_type_Bhsk.b(paramLong);
       if (paramBoolean)
       {
         olt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (String)localPair.first);
@@ -1305,7 +1305,7 @@ public class omz
       QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "del comment resp, ret : ", Boolean.valueOf(paramBoolean), ", data : ", paramBaseCommentData });
       if (paramBoolean)
       {
-        QQToast.a(BaseApplication.getContext(), 2, alpo.a(2131713333), 0).a();
+        QQToast.a(BaseApplication.getContext(), 2, alud.a(2131713345), 0).a();
         Bundle localBundle = BaseActivity.sTopActivity.getIntent().getBundleExtra("bundle");
         if ((paramBaseCommentData instanceof CommentData)) {}
         for (int i = ((CommentData)paramBaseCommentData).subCommentNum + 1; localBundle != null; i = 1)
@@ -1652,7 +1652,7 @@ public class omz
     } while (localSubCommentData == null);
     long l = this.jdField_a_of_type_Ooi.a(paramString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 2, localSubCommentData.parentCommentId, this.g, paramInt);
     if (l != -1L) {
-      this.jdField_a_of_type_Bhod.b(l, new Pair(paramString, localSubCommentData));
+      this.jdField_a_of_type_Bhsk.b(l, new Pair(paramString, localSubCommentData));
     }
     QLog.d("ReadInJoyCommentDataManager", 1, "create reply comment, seq : " + l + ", data : " + localSubCommentData);
   }
@@ -1668,7 +1668,7 @@ public class omz
     } while (localBaseCommentData == null);
     long l = this.jdField_a_of_type_Ooi.a(paramString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, "", this.g, paramInt);
     if (l != -1L) {
-      this.jdField_a_of_type_Bhod.b(l, new Pair(paramString, localBaseCommentData));
+      this.jdField_a_of_type_Bhsk.b(l, new Pair(paramString, localBaseCommentData));
     }
     QLog.d("ReadInJoyCommentDataManager", 1, "create main comment, seq : " + l + ", data : " + localBaseCommentData);
   }

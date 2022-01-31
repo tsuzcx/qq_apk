@@ -38,7 +38,7 @@ public class oqu
   {
     jdField_a_of_type_ArrayOfChar = new char[] { '…' };
     jdField_a_of_type_JavaLangString = new String(jdField_a_of_type_ArrayOfChar);
-    jdField_b_of_type_JavaLangString = alpo.a(2131713520);
+    jdField_b_of_type_JavaLangString = alud.a(2131713532);
     jdField_c_of_type_JavaLangString = "https://kandian.qq.com/mqq/html/homepage.html?_wv=16778243&_bid=2378&uin=";
     jdField_d_of_type_JavaLangString = "https://kandian.qq.com/mqq/html/messagebox3.html?_wv=3&_bid=2378&x5PreFetch=1&adtag=1&privateLetters=";
     jdField_e_of_type_JavaLangString = "https://kandian.qq.com/mqq/vue/comment?_wv=3&_bid=2378&x5PreFetch=1&feedstype=&uin=&feeds_id=";
@@ -48,7 +48,7 @@ public class oqu
     i = "https://kandian.qq.com/mqq/html/allfrdbiu.html?_wv=3&_bid=2378&x5PreFetch=1";
     j = "https://kandian.qq.com/mqq/vue/wendafeeds?_wv=67&_bid=2378&source=1";
     k = "https://kandian.qq.com/mqq/vue/main?_wv=10145&_bid=2378&adfrom=client&x5PreFetch=1&accountId=";
-    l = alpo.a(2131713142);
+    l = alud.a(2131713154);
     m = "https://kandian.qq.com/mqq/html/feedback.html?_wv=3&_bid=2378&x5PreFetch=1";
     n = "https://post.mp.qq.com/mkandian/history";
     o = "https://post.mp.qq.com/mkandian/topic?_wv=3";

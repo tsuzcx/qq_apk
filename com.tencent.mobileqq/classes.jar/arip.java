@@ -1,14 +1,8 @@
-import android.view.View;
-
-class arip
-  implements arnx
+public abstract interface arip
 {
-  arip(arin paramarin) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    arni.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Arfz.d());
-  }
+  public abstract void b();
 }
 
 

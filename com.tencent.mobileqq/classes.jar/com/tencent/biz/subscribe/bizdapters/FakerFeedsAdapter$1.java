@@ -2,18 +2,18 @@ package com.tencent.biz.subscribe.bizdapters;
 
 import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
 import java.util.ArrayList;
-import xzw;
+import yef;
 
 public class FakerFeedsAdapter$1
   implements Runnable
 {
-  public FakerFeedsAdapter$1(xzw paramxzw, SubscribeFeedsEvent paramSubscribeFeedsEvent) {}
+  public FakerFeedsAdapter$1(yef paramyef, SubscribeFeedsEvent paramSubscribeFeedsEvent) {}
   
   public void run()
   {
-    this.this$0.b().add(0, this.a.mSingleFakeFeed);
+    this.this$0.getDataList().add(0, this.a.mSingleFakeFeed);
     this.this$0.notifyDataSetChanged();
-    this.this$0.b();
+    this.this$0.a();
   }
 }
 

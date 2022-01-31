@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
 import android.text.TextUtils;
-import bgkd;
-import bhab;
+import bgok;
+import bhei;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import com.tencent.qqmini.sdk.core.widget.media.CoverVideoView;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -12,12 +12,12 @@ import org.json.JSONArray;
 class MediaJsPlugin$1
   implements Runnable
 {
-  MediaJsPlugin$1(MediaJsPlugin paramMediaJsPlugin, int paramInt, bgkd parambgkd, String paramString1, String paramString2) {}
+  MediaJsPlugin$1(MediaJsPlugin paramMediaJsPlugin, int paramInt, bgok parambgok, String paramString1, String paramString2) {}
   
   public void run()
   {
     int i = 0;
-    CoverView localCoverView = bhab.a(MediaJsPlugin.access$000(this.this$0)).a(this.val$videoPlayerId);
+    CoverView localCoverView = bhei.a(MediaJsPlugin.access$000(this.this$0)).a(this.val$videoPlayerId);
     if ((localCoverView == null) || (!(localCoverView instanceof CoverVideoView)))
     {
       this.val$req.b();

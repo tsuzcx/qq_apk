@@ -1,38 +1,41 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.Layout;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.TextView;
 
-final class bdkc
-  implements Handler.Callback
+class bdkc
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public boolean handleMessage(Message paramMessage)
+  bdkc(bdjz parambdjz, int paramInt, String paramString) {}
+  
+  public void onGlobalLayout()
   {
-    QQAppInterface localQQAppInterface;
-    if ((BaseApplicationImpl.getApplication().waitAppRuntime(null) instanceof QQAppInterface))
+    this.jdField_a_of_type_Bdjz.text.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int i;
+    if (this.jdField_a_of_type_Bdjz.text.getLineCount() > this.jdField_a_of_type_Int)
     {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null);
-      switch (paramMessage.what)
-      {
+      i = this.jdField_a_of_type_Bdjz.text.getLayout().getLineEnd(this.jdField_a_of_type_Int - 1);
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        break label134;
       }
     }
-    for (;;)
+    label134:
+    for (String str = "";; str = this.jdField_a_of_type_JavaLangString)
     {
-      return true;
-      QQToast.a(localQQAppInterface.getApplication(), alpo.a(2131716430), 0).a();
-      continue;
-      QQToast.a(localQQAppInterface.getApplication(), alpo.a(2131716429), 0).a();
-      continue;
-      QQToast.a(localQQAppInterface.getApplication(), alpo.a(2131716428), 0).a();
-      continue;
-      QQToast.a(localQQAppInterface.getApplication(), alpo.a(2131716431), 0).a();
+      boolean bool1 = bamp.a(str);
+      boolean bool2 = bamp.b(str);
+      if ((!bool1) && (!bool2))
+      {
+        str = this.jdField_a_of_type_Bdjz.text.getText().subSequence(0, i - 3) + "...";
+        this.jdField_a_of_type_Bdjz.text.setText(str);
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdkc
  * JD-Core Version:    0.7.0.1
  */

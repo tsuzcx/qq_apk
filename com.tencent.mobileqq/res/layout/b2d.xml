@@ -42,7 +42,7 @@
     <com.tencent.mobileqq.widget.FixedBounceScrollView android:orientation="vertical" android:id="@id/evw" android:fadingEdgeLength="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="20.0dip" android:layout_marginBottom="10.0dip" android:layout_above="@id/acj" android:layout_below="@id/head_layout" android:overScrollMode="never" android:requiresFadingEdge="vertical">
         <LinearLayout android:orientation="vertical" android:id="@id/midcontent_list" android:paddingBottom="40.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <include android:id="@id/cgf" android:visibility="gone" layout="@layout/ach" />
-            <include android:id="@id/mn2" layout="@layout/b2g" />
+            <include android:id="@id/moh" layout="@layout/b2g" />
             <include android:id="@id/f5d" layout="@layout/b2g" />
             <include android:id="@id/mypocket" layout="@layout/b2g" />
             <include android:id="@id/myDressup" layout="@layout/b2f" />
@@ -52,7 +52,7 @@
             <include android:id="@id/f55" layout="@layout/b2g" />
             <include android:id="@id/f5a" layout="@layout/b2g" />
             <include android:id="@id/f5c" layout="@layout/b2g" />
-            <include android:id="@id/mj4" layout="@layout/b2g" />
+            <include android:id="@id/mjn" layout="@layout/b2g" />
             <include android:id="@id/aoc" layout="@layout/b2g" />
             <include android:id="@id/f4a" layout="@layout/b2g" />
             <include android:id="@id/bch" layout="@layout/b2g" />

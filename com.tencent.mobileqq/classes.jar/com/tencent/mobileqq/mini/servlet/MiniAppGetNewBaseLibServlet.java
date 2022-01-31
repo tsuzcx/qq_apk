@@ -7,8 +7,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdku;
-import bizf;
+import bdpd;
+import bjdm;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -38,7 +38,7 @@ public class MiniAppGetNewBaseLibServlet
     long l1 = i * 1000;
     long l2 = System.currentTimeMillis();
     StorageUtil.getPreference().edit().putLong("baselib_min_update_time", l1 + l2).apply();
-    StorageUtil.getPreference().edit().putString("baselib_update_qua", bizf.a()).apply();
+    StorageUtil.getPreference().edit().putString("baselib_update_qua", bjdm.a()).apply();
     paramArrayOfByte = localStGetNewBaseLibRsp.jsOrsoLibs.get().iterator();
     while (paramArrayOfByte.hasNext())
     {
@@ -72,7 +72,7 @@ public class MiniAppGetNewBaseLibServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetNewBaseLib");
-    paramPacket.putSendData(bdku.a((byte[])localObject));
+    paramPacket.putSendData(bdpd.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     QLog.i("MiniAppGetNewBaseLibServlet", 1, "[MiniEng] GetNewBaseLibServlet send request");
     super.onSend(paramIntent, paramPacket);

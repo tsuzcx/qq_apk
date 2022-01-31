@@ -1,12 +1,10 @@
-import cooperation.qzone.statistic.access.concept.Collector;
-
-final class bjos
-  extends bjor
+public class bjos
 {
-  public boolean a(Collector paramCollector)
-  {
-    return true;
-  }
+  public float a;
+  public int a;
+  private bjot jdField_a_of_type_Bjot;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
 }
 
 

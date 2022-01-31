@@ -8,13 +8,13 @@ import common.config.service.QzoneConfig;
 public class tgx
   implements Handler.Callback
 {
-  private static final bjoe<tgx, Void> jdField_a_of_type_Bjoe = new tgy();
+  private static final bjsl<tgx, Void> jdField_a_of_type_Bjsl = new tgy();
   private static String jdField_a_of_type_JavaLangString;
   public Handler a;
   
   public static tgx a()
   {
-    return (tgx)jdField_a_of_type_Bjoe.b(null);
+    return (tgx)jdField_a_of_type_Bjsl.b(null);
   }
   
   private static void c(the paramthe)

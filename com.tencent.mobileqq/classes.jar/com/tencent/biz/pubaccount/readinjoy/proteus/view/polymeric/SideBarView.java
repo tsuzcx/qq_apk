@@ -86,7 +86,7 @@ public class SideBarView
       if ((!paramString.startsWith("http")) && (!paramString.startsWith("pubaccount"))) {
         break label64;
       }
-      Drawable localDrawable = getContext().getResources().getDrawable(2130842845);
+      Drawable localDrawable = getContext().getResources().getDrawable(2130842858);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = DrawableUtil.getDrawable(getContext(), paramString, localDrawable, localDrawable);
     }
     label64:

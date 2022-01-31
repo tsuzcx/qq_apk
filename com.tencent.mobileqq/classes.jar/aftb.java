@@ -1,10 +1,18 @@
-import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface aftb
+class aftb
+  extends afuf
 {
-  public abstract void a(PttAudioWaveView paramPttAudioWaveView);
+  aftb(afpy paramafpy)
+  {
+    super(paramafpy, null);
+  }
   
-  public abstract void a(PttAudioWaveView paramPttAudioWaveView, float paramFloat);
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new zxc(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

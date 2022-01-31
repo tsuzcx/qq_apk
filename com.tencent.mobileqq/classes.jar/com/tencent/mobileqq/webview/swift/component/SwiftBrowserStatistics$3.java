@@ -2,16 +2,16 @@ package com.tencent.mobileqq.webview.swift.component;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import azlj;
-import beep;
-import beer;
+import azps;
+import beiy;
+import beja;
 import java.net.URLEncoder;
 import myl;
 
 public class SwiftBrowserStatistics$3
   implements Runnable
 {
-  public SwiftBrowserStatistics$3(beep parambeep, String paramString, int paramInt) {}
+  public SwiftBrowserStatistics$3(beiy parambeiy, String paramString, int paramInt) {}
   
   public void run()
   {
@@ -55,7 +55,7 @@ public class SwiftBrowserStatistics$3
         ((StringBuilder)localObject).append(str1).append("|");
         ((StringBuilder)localObject).append(str1).append("|");
         ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-        azlj.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
+        azps.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
         return;
       }
     }

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import aups;
-import aupt;
-import avlb;
+import auub;
+import auuc;
+import avpk;
 
 public class NearbyProfileFragment$2$1
   implements Runnable
 {
-  public NearbyProfileFragment$2$1(avlb paramavlb, aups paramaups) {}
+  public NearbyProfileFragment$2$1(avpk paramavpk, auub paramauub) {}
   
   public void run()
   {
-    aupt.a(this.jdField_a_of_type_Avlb.a.a.getAppInterface(), this.jdField_a_of_type_Aups);
+    auuc.a(this.jdField_a_of_type_Avpk.a.a.getAppInterface(), this.jdField_a_of_type_Auub);
   }
 }
 

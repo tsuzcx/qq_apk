@@ -14,19 +14,19 @@ import java.util.Iterator;
 import java.util.List;
 
 public class nqo
-  extends beei
+  extends beir
 {
   nqo(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
   
   public List<ShareActionSheetBuilder.ActionSheetItem>[] a()
   {
     ArrayList localArrayList1 = new ArrayList();
-    beei localbeei = (beei)this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_Bedf.a(4);
-    if ((localbeei != null) && (localbeei.c()) && (!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:diandian")))
+    beir localbeir = (beir)this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_Beho.a(4);
+    if ((localbeir != null) && (localbeir.c()) && (!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:diandian")))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696876);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842281;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696878);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842294;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 34;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
@@ -35,8 +35,8 @@ public class nqo
     if ((!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:qq")) && ((this.jdField_a_of_type_Long & 0x8) == 0L))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696871);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130838916;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696873);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130838917;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 2;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
@@ -45,22 +45,22 @@ public class nqo
     if ((!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:QZone")) && ((this.jdField_a_of_type_Long & 0x10) == 0L))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696884);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130838917;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696886);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130838918;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 3;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList1.add(localObject1);
     }
-    if (((this.jdField_a_of_type_Long & 0x8000000) != 0L) && (bjxj.a()) && (this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentCommonAppAppInterface != null))
+    if (((this.jdField_a_of_type_Long & 0x8000000) != 0L) && (bkbq.a()) && (this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentCommonAppAppInterface != null))
     {
       localObject1 = "readinjoy_" + this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount() + "_" + 1;
       localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences((String)localObject1, 4);
       if ((localObject1 != null) && (((SharedPreferences)localObject1).getBoolean("share_to_news", false)))
       {
         localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696885);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130838915;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696887);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130838916;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 13;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
@@ -70,8 +70,8 @@ public class nqo
     if ((!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:appMessage")) && ((this.jdField_a_of_type_Long & 0x4000) == 0L))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696891);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130838920;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696893);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130838921;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 9;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList1.add(localObject1);
@@ -79,18 +79,18 @@ public class nqo
     if ((!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:timeline")) && ((this.jdField_a_of_type_Long & 0x8000) == 0L))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696874);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130838914;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696876);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130838915;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 10;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList1.add(localObject1);
     }
-    if ((localbeei != null) && (localbeei.b()) && (!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:sinaWeibo")))
+    if ((localbeir != null) && (localbeir.b()) && (!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:sinaWeibo")))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696888);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696890);
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130838919;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130838920;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 12;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList1.add(localObject1);
@@ -98,8 +98,8 @@ public class nqo
     if ((!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:openWithQQBrowser")) && ((this.jdField_a_of_type_Long & 0x200) == 0L))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696867);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842284;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696869);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842297;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 5;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList1.add(localObject1);
@@ -107,23 +107,23 @@ public class nqo
     if ((!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:openWithSafari")) && ((this.jdField_a_of_type_Long & 0x100) == 0L))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696868);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696870);
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842280;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842293;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 4;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList1.add(localObject1);
     }
     Object localObject1 = BaseApplicationImpl.getApplication().getPackageManager();
     if ((!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:qiDian")) && ((this.jdField_a_of_type_Long & 0x10) == 0L)) {
-      bfua.a(BaseApplicationImpl.getApplication(), localArrayList1);
+      bfyh.a(BaseApplicationImpl.getApplication(), localArrayList1);
     }
     if ((!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:qiYeQQ")) && ((this.jdField_a_of_type_Long & 0x20) == 0L) && (new Intent().setPackage("com.tencent.eim").setData(Uri.parse("eimapi://")).resolveActivity((PackageManager)localObject1) != null))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696882);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696884);
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130843955;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130844027;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 20;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList1.add(localObject1);
@@ -151,9 +151,9 @@ public class nqo
           j = i;
           break;
           if (TextUtils.isEmpty(((nqz)localObject2).jdField_a_of_type_JavaLangString)) {}
-          for (localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131695704);; localActionSheetItem.label = ((nqz)localObject2).jdField_a_of_type_JavaLangString)
+          for (localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131695706);; localActionSheetItem.label = ((nqz)localObject2).jdField_a_of_type_JavaLangString)
           {
-            localActionSheetItem.icon = 2130842286;
+            localActionSheetItem.icon = 2130842299;
             localActionSheetItem.iconNeedBg = true;
             localActionSheetItem.action = 30;
             localActionSheetItem.argus = "";
@@ -162,8 +162,8 @@ public class nqo
             break;
           }
           localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-          ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131695765);
-          ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130842278;
+          ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131695767);
+          ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130842291;
           ((ShareActionSheetBuilder.ActionSheetItem)localObject2).iconNeedBg = true;
           ((ShareActionSheetBuilder.ActionSheetItem)localObject2).action = 31;
           ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = "";
@@ -198,9 +198,9 @@ public class nqo
             break;
           case 1: 
             if (TextUtils.isEmpty(((nqz)localObject2).jdField_a_of_type_JavaLangString)) {}
-            for (localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131695704);; localActionSheetItem.label = ((nqz)localObject2).jdField_a_of_type_JavaLangString)
+            for (localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131695706);; localActionSheetItem.label = ((nqz)localObject2).jdField_a_of_type_JavaLangString)
             {
-              localActionSheetItem.icon = 2130842286;
+              localActionSheetItem.icon = 2130842299;
               localActionSheetItem.iconNeedBg = true;
               localActionSheetItem.action = 37;
               localActionSheetItem.argus = "";
@@ -210,8 +210,8 @@ public class nqo
             }
           case 3: 
             localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131696872);
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130842287;
+            ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131696874);
+            ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130842300;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject2).iconNeedBg = true;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject2).action = 35;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = "";
@@ -221,13 +221,13 @@ public class nqo
         }
       }
     }
-    localObject1 = (beed)this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_Bedf.a(64);
-    if ((localObject1 != null) && (((beed)localObject1).a()) && (!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:screenShotShare")))
+    localObject1 = (beim)this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_Beho.a(64);
+    if ((localObject1 != null) && (((beim)localObject1).a()) && (!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:screenShotShare")))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696895);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696897);
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842285;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842298;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 21;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList2.add(localObject1);
@@ -235,37 +235,37 @@ public class nqo
     if ((!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:favorite")) && ((this.jdField_a_of_type_Long & 0x2000) == 0L))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696857);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696859);
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130843741;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130843813;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 6;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList2.add(localObject1);
     }
-    if ((!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:exportTencentDocs")) && ((((beey)this.jdField_a_of_type_Bedi.a().a(2)).a.b & 0x4000) == 0L))
+    if ((!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:exportTencentDocs")) && ((((bejh)this.jdField_a_of_type_Behr.a().a(2)).a.b & 0x4000) == 0L))
     {
       localObject2 = a();
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.g;
       }
-      if (bacb.a((String)localObject1))
+      if (bagk.a((String)localObject1))
       {
         localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696865);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696867);
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130849866;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130849939;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 68;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
         localArrayList2.add(localObject1);
-        bacb.a(0, 0);
+        bagk.a(0, 0);
       }
     }
     if ((!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:setFont")) && (this.jdField_a_of_type_Boolean))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696866);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842282;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696868);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842295;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 7;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
@@ -274,8 +274,8 @@ public class nqo
     if ((!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:copyUrl")) && ((this.jdField_a_of_type_Long & 0x20) == 0L))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696863);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130838912;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696865);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130838913;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 1;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
@@ -284,18 +284,18 @@ public class nqo
     if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && ((this.jdField_a_of_type_Long & 0x40) == 0L) && (j == 0))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696896);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842278;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696898);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842291;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 8;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList2.add(localObject1);
     }
-    if ((localbeei != null) && (localbeei.d()))
+    if ((localbeir != null) && (localbeir.d()))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696878);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842283;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696880);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842296;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 38;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
@@ -304,8 +304,8 @@ public class nqo
     if (!sxe.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:exposeArticle"))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696869);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842270;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696871);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842283;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 11;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
@@ -339,10 +339,10 @@ public class nqo
           break;
         }
       } while (this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentCommonAppAppInterface == null);
-      azmj.b(null, "CliOper", "", this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X8004B5D", "0X8004B5D", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X8004B5D", "0X8004B5D", 0, 0, "", "", "", "");
       return;
     } while ((i != 6) || (this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentCommonAppAppInterface == null));
-    azmj.b(null, "CliOper", "", this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X8004B5E", "0X8004B5E", 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X8004B5E", "0X8004B5E", 0, 0, "", "", "", "");
   }
 }
 

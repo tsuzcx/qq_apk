@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.base.download;
 
-import uie;
-import uil;
-import uin;
+import umn;
+import umu;
+import umw;
 
 public class DownloadUrlManager$1$1
   implements Runnable
 {
-  public DownloadUrlManager$1$1(uie paramuie, uil paramuil) {}
+  public DownloadUrlManager$1$1(umn paramumn, umu paramumu) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Uie.a != null) {
-      this.jdField_a_of_type_Uie.a.a(this.jdField_a_of_type_Uil);
+    if (this.jdField_a_of_type_Umn.a != null) {
+      this.jdField_a_of_type_Umn.a.a(this.jdField_a_of_type_Umu);
     }
   }
 }

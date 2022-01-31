@@ -1,18 +1,18 @@
 package dov.com.qq.im.capture.control;
 
 import android.text.TextUtils;
-import baps;
-import bapv;
-import bapx;
-import baqv;
-import baqw;
-import baqx;
-import bdcb;
-import bdee;
-import bhma;
-import bllv;
-import blmf;
-import blne;
+import baub;
+import baue;
+import baug;
+import bave;
+import bavf;
+import bavg;
+import bdgk;
+import bdin;
+import bhqh;
+import blqh;
+import blqr;
+import blrq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.data.FlowMusic;
@@ -30,32 +30,32 @@ import org.json.JSONObject;
 
 public class GetSingleFullMusicInfoTask
   extends AsyncStep
-  implements bapx
+  implements baug
 {
-  private bapv jdField_a_of_type_Bapv;
-  private blne jdField_a_of_type_Blne;
+  private baue jdField_a_of_type_Baue;
+  private blrq jdField_a_of_type_Blrq;
   protected FlowMusic a;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   protected FlowMusic b;
   private String b;
   private String c;
   
-  public GetSingleFullMusicInfoTask(FlowMusic paramFlowMusic, blne paramblne)
+  public GetSingleFullMusicInfoTask(FlowMusic paramFlowMusic, blrq paramblrq)
   {
     this.jdField_a_of_type_ComTencentMobileqqDataFlowMusic = paramFlowMusic;
-    this.jdField_a_of_type_Blne = paramblne;
-    paramFlowMusic = (QIMMusicConfigManager)blmf.a(2);
+    this.jdField_a_of_type_Blrq = paramblrq;
+    paramFlowMusic = (QIMMusicConfigManager)blqr.a(2);
     this.c = paramFlowMusic.a().getCurrentAccountUin();
-    this.jdField_a_of_type_Bapv = paramFlowMusic.jdField_a_of_type_Bapv;
+    this.jdField_a_of_type_Baue = paramFlowMusic.jdField_a_of_type_Baue;
   }
   
-  public GetSingleFullMusicInfoTask(String paramString, blne paramblne)
+  public GetSingleFullMusicInfoTask(String paramString, blrq paramblrq)
   {
     this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Blne = paramblne;
-    paramString = (QIMMusicConfigManager)blmf.a(2);
+    this.jdField_a_of_type_Blrq = paramblrq;
+    paramString = (QIMMusicConfigManager)blqr.a(2);
     this.c = paramString.a().getCurrentAccountUin();
-    this.jdField_a_of_type_Bapv = paramString.jdField_a_of_type_Bapv;
+    this.jdField_a_of_type_Baue = paramString.jdField_a_of_type_Baue;
   }
   
   private static String a(long paramLong)
@@ -63,7 +63,7 @@ public class GetSingleFullMusicInfoTask
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("OpitrtqeGzopIlwxs").append("_").append("2000000025").append("_").append("SApgehUTVGxZKBQZTt").append("_").append("QmnkKmaTHNDozKdIUA").append("_").append(paramLong);
     localObject = ((StringBuilder)localObject).toString();
-    String str = bhma.a((String)localObject).toLowerCase();
+    String str = bhqh.a((String)localObject).toLowerCase();
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "generate the sign string, pre=" + (String)localObject + ", md5=" + str);
     }
@@ -112,9 +112,9 @@ public class GetSingleFullMusicInfoTask
   
   private void a(boolean paramBoolean, FlowMusic arg2)
   {
-    if (this.jdField_a_of_type_Blne != null)
+    if (this.jdField_a_of_type_Blrq != null)
     {
-      this.jdField_a_of_type_Blne.a(paramBoolean, ???);
+      this.jdField_a_of_type_Blrq.a(paramBoolean, ???);
       return;
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
@@ -129,28 +129,28 @@ public class GetSingleFullMusicInfoTask
     if (this.jdField_a_of_type_ComTencentMobileqqDataFlowMusic != null)
     {
       ??? = this.jdField_a_of_type_ComTencentMobileqqDataFlowMusic.songMid;
-      baps localbaps = new baps();
-      localbaps.jdField_a_of_type_Int = 0;
-      localbaps.e = 1;
-      localbaps.jdField_c_of_type_Int = bdee.a(baqx.a().a());
-      localbaps.jdField_c_of_type_Long = 60000L;
-      localbaps.jdField_a_of_type_Bapx = this;
+      baub localbaub = new baub();
+      localbaub.jdField_a_of_type_Int = 0;
+      localbaub.e = 1;
+      localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
+      localbaub.jdField_c_of_type_Long = 60000L;
+      localbaub.jdField_a_of_type_Baug = this;
       long l = System.currentTimeMillis() / 1000L;
-      String str = ((TicketManagerImpl)bllv.a().getManager(2)).getSkey(this.c);
+      String str = ((TicketManagerImpl)blqh.a().getManager(2)).getSkey(this.c);
       HashMap localHashMap = new HashMap();
       localHashMap.put("app_id", "2000000025");
       localHashMap.put("app_key", "SApgehUTVGxZKBQZTt");
-      localHashMap.put("device_id", bdcb.a());
+      localHashMap.put("device_id", bdgk.a());
       localHashMap.put("timestamp", String.valueOf(l));
       localHashMap.put("sign", a(l));
       localHashMap.put("song_mid", ???);
       localHashMap.putAll(a(this.c, str));
-      localbaps.jdField_a_of_type_JavaLangString = a("https://open.music.qq.com/fcgi-bin/fcg_music_custom_get_song_info_batch.fcg", localHashMap);
+      localbaub.jdField_a_of_type_JavaLangString = a("https://open.music.qq.com/fcgi-bin/fcg_music_custom_get_song_info_batch.fcg", localHashMap);
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "QQMusicReq SingleFullMusicInfoTask songId:" + (String)???);
       }
-      this.jdField_a_of_type_Bapv.a(localbaps);
-      if (this.jdField_a_of_type_Blne != null) {}
+      this.jdField_a_of_type_Baue.a(localbaub);
+      if (this.jdField_a_of_type_Blrq != null) {}
     }
     try
     {
@@ -168,47 +168,47 @@ public class GetSingleFullMusicInfoTask
     }
   }
   
-  public void onResp(baqw parambaqw)
+  public void onResp(bavf parambavf)
   {
-    if (parambaqw.jdField_c_of_type_Int == 200)
+    if (parambavf.jdField_c_of_type_Int == 200)
     {
-      if (parambaqw.a != null)
+      if (parambavf.a != null)
       {
-        parambaqw = new String(parambaqw.a);
-        if (!TextUtils.isEmpty(parambaqw))
+        parambavf = new String(parambavf.a);
+        if (!TextUtils.isEmpty(parambavf))
         {
           if (QLog.isColorLevel()) {
-            QLog.d("QQInitHandler", 2, "GetSingleFullMusicInfoTask respJson =" + parambaqw);
+            QLog.d("QQInitHandler", 2, "GetSingleFullMusicInfoTask respJson =" + parambavf);
           }
           try
           {
-            parambaqw = new JSONObject(parambaqw);
-            if (parambaqw.optInt("ret", -1) == 0)
+            parambavf = new JSONObject(parambavf);
+            if (parambavf.optInt("ret", -1) == 0)
             {
-              parambaqw = parambaqw.optJSONArray("songlist");
-              if (parambaqw == null) {
+              parambavf = parambavf.optJSONArray("songlist");
+              if (parambavf == null) {
                 return;
               }
-              parambaqw = parambaqw.optJSONObject(0);
-              if (parambaqw == null) {
+              parambavf = parambavf.optJSONObject(0);
+              if (parambavf == null) {
                 return;
               }
               this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic = new FlowMusic();
-              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.albumId = parambaqw.optInt("album_id");
-              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.albumMid = parambaqw.optString("album_mid");
-              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.albumName = parambaqw.optString("album_name");
-              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.albumUrl = parambaqw.optString("album_pic");
-              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.singerId = parambaqw.optInt("singer_id");
-              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.singerMid = parambaqw.optString("singer_mid");
-              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.singerName = parambaqw.optString("singer_name");
-              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.songId = parambaqw.optInt("song_id");
-              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.songMid = parambaqw.optString("song_mid");
-              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.songName = parambaqw.optString("song_name");
-              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.songPlayTime = parambaqw.optInt("song_play_time");
-              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.userOwnRule = parambaqw.optInt("user_own_rule");
-              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.url = parambaqw.optString("song_play_url");
-              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.size = parambaqw.optLong("song_size");
-              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.playable = parambaqw.optInt("playable", 1);
+              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.albumId = parambavf.optInt("album_id");
+              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.albumMid = parambavf.optString("album_mid");
+              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.albumName = parambavf.optString("album_name");
+              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.albumUrl = parambavf.optString("album_pic");
+              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.singerId = parambavf.optInt("singer_id");
+              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.singerMid = parambavf.optString("singer_mid");
+              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.singerName = parambavf.optString("singer_name");
+              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.songId = parambavf.optInt("song_id");
+              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.songMid = parambavf.optString("song_mid");
+              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.songName = parambavf.optString("song_name");
+              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.songPlayTime = parambavf.optInt("song_play_time");
+              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.userOwnRule = parambavf.optInt("user_own_rule");
+              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.url = parambavf.optString("song_play_url");
+              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.size = parambavf.optLong("song_size");
+              this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.playable = parambavf.optInt("playable", 1);
               this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic.storeTimeStamp = System.currentTimeMillis();
               a(true, this.jdField_b_of_type_ComTencentMobileqqDataFlowMusic);
               return;
@@ -216,13 +216,13 @@ public class GetSingleFullMusicInfoTask
             a(false, null);
             return;
           }
-          catch (JSONException parambaqw)
+          catch (JSONException parambavf)
           {
             if (!QLog.isColorLevel()) {
               return;
             }
           }
-          QLog.d("QQInitHandler", 2, "GetSingleFullMusicInfoTask e:" + parambaqw.toString());
+          QLog.d("QQInitHandler", 2, "GetSingleFullMusicInfoTask e:" + parambavf.toString());
         }
       }
       else
@@ -233,13 +233,13 @@ public class GetSingleFullMusicInfoTask
     else
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QQInitHandler", 2, "GetSingleFullMusicInfoTask resp.mHttpCode:" + parambaqw.jdField_c_of_type_Int);
+        QLog.d("QQInitHandler", 2, "GetSingleFullMusicInfoTask resp.mHttpCode:" + parambavf.jdField_c_of_type_Int);
       }
       a(false, null);
     }
   }
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

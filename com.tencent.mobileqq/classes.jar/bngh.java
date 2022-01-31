@@ -1,6 +1,23 @@
-public abstract interface bngh
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+
+class bngh
+  implements aepr
 {
-  public abstract void a();
+  bngh(bngf parambngf) {}
+  
+  public void a(AudioPlayer paramAudioPlayer)
+  {
+    bngf.b(this.a);
+    bngf.a(this.a, bngf.a(this.a));
+  }
+  
+  public void a(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void b(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 

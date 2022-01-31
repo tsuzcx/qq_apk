@@ -1,15 +1,12 @@
+import java.io.File;
+
 public class bkpg
-  extends bkpe
 {
-  public int a(int paramInt)
-  {
-    return paramInt * -1;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return paramInt < 0;
-  }
+  public static final String a = bkpi.a + File.separator + "playshow";
+  public static final String b = bkoz.e;
+  public static final String c = a + File.separator + "material_config";
+  public static final String d = a + File.separator + "thumbs";
+  public static final String e = a + File.separator + "videos";
 }
 
 

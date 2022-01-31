@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import aphy;
+import apmh;
 
 class VasWebviewJsPlugin$1
-  extends aphy
+  extends apmh
 {
   VasWebviewJsPlugin$1(VasWebviewJsPlugin paramVasWebviewJsPlugin) {}
   

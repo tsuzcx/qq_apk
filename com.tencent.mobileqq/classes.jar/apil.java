@@ -1,19 +1,25 @@
-import mqq.app.QQPermissionCallback;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-class apil
-  implements QQPermissionCallback
+public class apil
+  implements Handler.Callback
 {
-  apil(apik paramapik) {}
+  private String a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public apil(String paramString)
   {
-    bdcd.b(this.a.a);
+    this.a = paramString;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.c();
-    apik.a(this.a).f();
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    }
+    auwc.a(this.a, 1);
+    return true;
   }
 }
 

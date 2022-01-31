@@ -1,26 +1,22 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity.7.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class adkv
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
-  public adkv(PublicAccountListActivity paramPublicAccountListActivity) {}
+  adkv(adku paramadku) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.b(paramEditable);
+    ThreadManager.getSubThreadHandler().post(new NotificationActivity.7.1.1(this));
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adkv
  * JD-Core Version:    0.7.0.1
  */

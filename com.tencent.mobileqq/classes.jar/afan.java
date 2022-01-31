@@ -1,32 +1,22 @@
-import com.tencent.mobileqq.app.icebreaking.AIOIceBreakShow;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
 
-class afan
-  implements amfh
+public class afan
+  implements afap
 {
-  afan(afam paramafam) {}
+  public afan(DoodleView paramDoodleView) {}
   
-  public void a(boolean paramBoolean, List<agtk> paramList)
+  public void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetIceBreakHotPic, success: ").append(paramBoolean).append(" hotPiceList size: ");
-    int i;
-    if (paramList == null)
-    {
-      i = 0;
-      QLog.i("IceBreak.HotPic", 1, i);
-      if (paramBoolean) {
-        break label59;
-      }
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a();
     }
-    label59:
-    while (this.a.a == null)
-    {
-      return;
-      i = paramList.size();
-      break;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a(paramInt1, paramInt2);
     }
-    this.a.a.a(paramList);
   }
 }
 

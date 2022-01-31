@@ -1,21 +1,12 @@
+import android.view.View;
+
 class aqnq
-  extends aqpp
 {
-  aqnq(aqnm paramaqnm, aqnr paramaqnr) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Aqnr.a(paramString2);
-      return;
-    }
-    this.jdField_a_of_type_Aqnr.a(paramInt, paramString1);
-  }
+  View[] a = new View[12];
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqnq
  * JD-Core Version:    0.7.0.1
  */

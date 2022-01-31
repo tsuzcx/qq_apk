@@ -1,22 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
-
-public class atnp
-  implements View.OnClickListener
+class atnp
 {
-  public atnp(LocationPickFragment paramLocationPickFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    if (LocationPickFragment.a(this.a).b())
-    {
-      LocationPickFragment.a(this.a).b();
-      return;
-    }
-    LocationPickFragment.a(this.a).a();
-  }
+  private static atnn a = new atnn(null);
 }
 
 

@@ -1,116 +1,133 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.data.SpecialCareInfo;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class akab
-  extends alox
+  extends alrl
 {
-  public akab(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  public akab(SelectMemberActivity paramSelectMemberActivity) {}
   
-  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_global isSuccess: " + paramBoolean);
+    if (!paramBoolean) {
+      SelectMemberActivity.jdField_b_of_type_Boolean = false;
     }
-    Object localObject;
-    boolean bool;
-    if (!paramBoolean)
+    if (this.a.jdField_a_of_type_Bety != null)
     {
-      localObject = this.a;
-      FormSwitchItem localFormSwitchItem = QQSpecialCareSettingActivity.a(this.a);
-      if (!QQSpecialCareSettingActivity.a(this.a).a())
+      this.a.jdField_a_of_type_Bety.dismiss();
+      if (paramBoolean)
       {
-        bool = true;
-        ((QQSpecialCareSettingActivity)localObject).a(localFormSwitchItem, bool);
+        if (QLog.isColorLevel()) {
+          QLog.d("SelectMemberActivity", 2, "create discussion success: roomId: " + paramLong + ", mSubType: " + this.a.jdField_b_of_type_Int + ", mEntrance: " + this.a.d);
+        }
+        paramString = new ArrayList();
+        Iterator localIterator = this.a.e.iterator();
+        while (localIterator.hasNext())
+        {
+          ResultRecord localResultRecord = (ResultRecord)localIterator.next();
+          if (localResultRecord.jdField_a_of_type_Int == 5)
+          {
+            if (localResultRecord.jdField_a_of_type_JavaLangString.startsWith("pstn")) {
+              localResultRecord.jdField_a_of_type_JavaLangString = localResultRecord.jdField_a_of_type_JavaLangString.substring("pstn".length());
+            }
+            paramString.add(localResultRecord.jdField_a_of_type_JavaLangString);
+          }
+          else if ((localResultRecord.jdField_a_of_type_Int == 4) && (localResultRecord.jdField_a_of_type_JavaLangString.startsWith("+")))
+          {
+            paramString.add(localResultRecord.jdField_a_of_type_JavaLangString);
+          }
+        }
+        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", paramLong);
+        if (this.a.d == 12) {
+          this.a.jdField_a_of_type_AndroidContentIntent.putExtra("select_memeber_discussion_memeber_count", this.a.e.size() + 1);
+        }
+        this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set", this.a.e);
+        this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
+        this.a.finish();
       }
     }
     else
     {
-      this.a.a.sendEmptyMessage(8194);
-      localObject = this.a.a.obtainMessage(8195);
-      if (paramBoolean) {
-        i = 2;
-      }
-      ((Message)localObject).arg1 = i;
+      return;
+    }
+    QLog.d("SelectMemberActivity", 1, "create discussion fail, errCode=" + paramInt);
+    if (paramInt == 1000)
+    {
+      QQToast.a(this.a, this.a.getString(2131698051), 2000).b(this.a.jdField_c_of_type_AndroidViewView.getHeight());
+      azqs.b(this.a.app, "dc00899", "Grp_set", "", "Grp_data", "forbid_discuss", 0, 0, "", "", "", "");
+      return;
+    }
+    QQToast.a(this.a, this.a.getString(2131691871), 2000).b(this.a.jdField_c_of_type_AndroidViewView.getHeight());
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  {
+    if (this.a.jdField_a_of_type_Bety != null)
+    {
+      this.a.jdField_a_of_type_Bety.dismiss();
       if (!paramBoolean) {
-        break label194;
+        break label231;
       }
-      if (!Boolean.valueOf(((boolean[])(boolean[])paramArrayOfObject[2])[0]).booleanValue()) {
-        break label188;
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectMemberActivity", 2, "add discussion member success: roomId: " + paramLong);
       }
-      i = 2131699852;
+      paramArrayList = new ArrayList();
+      Iterator localIterator = this.a.e.iterator();
+      while (localIterator.hasNext())
+      {
+        ResultRecord localResultRecord = (ResultRecord)localIterator.next();
+        if (localResultRecord.jdField_a_of_type_Int == 5)
+        {
+          if (localResultRecord.jdField_a_of_type_JavaLangString.startsWith("pstn")) {
+            localResultRecord.jdField_a_of_type_JavaLangString = localResultRecord.jdField_a_of_type_JavaLangString.substring("pstn".length());
+          }
+          paramArrayList.add(localResultRecord.jdField_a_of_type_JavaLangString);
+        }
+      }
+      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", paramLong);
+      this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set", this.a.e);
+      if (!paramBoolean) {
+        break label213;
+      }
+      this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
     }
     for (;;)
     {
-      ((Message)localObject).arg2 = i;
-      this.a.a.sendMessage((Message)localObject);
-      QQSpecialCareSettingActivity.b(this.a);
-      azyl.c(this.a.app);
+      this.a.finish();
       return;
-      bool = false;
-      break;
-      label188:
-      i = 2131699851;
-      continue;
-      label194:
-      if (((boolean[])(boolean[])paramArrayOfObject[2])[0] != 0) {
-        i = 2131699856;
-      } else {
-        i = 2131699847;
-      }
+      label213:
+      this.a.setResult(1, this.a.jdField_a_of_type_AndroidContentIntent);
     }
+    label231:
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectMemberActivity", 2, "add discussion member fail");
+    }
+    if (paramInt == 1000) {
+      azqs.b(this.a.app, "dc00899", "Grp_set", "", "Grp_data", "forbid_discuss", 0, 0, "", "", "", "");
+    }
+    QQToast.a(this.a, this.a.getString(2131691866), 2000).b(this.a.jdField_c_of_type_AndroidViewView.getHeight());
   }
   
-  protected void onSetSpecialCareSwitch_qzone(boolean paramBoolean, Object[] paramArrayOfObject)
+  protected void a(Object[] paramArrayOfObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_qzone isSuccess: " + paramBoolean);
+    if (this.a.jdField_a_of_type_Bety != null) {
+      this.a.jdField_a_of_type_Bety.dismiss();
     }
-    FormSwitchItem localFormSwitchItem;
-    if (!paramBoolean)
+    if (paramArrayOfObject == null) {}
+    String str;
+    do
     {
-      paramArrayOfObject = this.a;
-      localFormSwitchItem = QQSpecialCareSettingActivity.b(this.a);
-      if (QQSpecialCareSettingActivity.b(this.a).a()) {
-        break label77;
-      }
-    }
-    label77:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramArrayOfObject.a(localFormSwitchItem, paramBoolean);
-      QQSpecialCareSettingActivity.b(this.a);
       return;
-    }
-  }
-  
-  protected void onSetSpecialCareSwitch_specialRing(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_specialRing isSuccess: " + paramBoolean);
-    }
-    QQSpecialCareSettingActivity.b(this.a);
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onUpdateDelFriend isSuccess: " + paramBoolean + ", uin: " + paramObject);
-    }
-    QQSpecialCareSettingActivity.b(this.a);
-  }
-  
-  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List<SpecialCareInfo> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onUpdateSpecialCareList isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2);
-    }
-    QQSpecialCareSettingActivity.b(this.a);
+      str = (String)paramArrayOfObject[0];
+    } while (!this.a.jdField_c_of_type_JavaLangString.equals(str));
+    int i = ((Integer)paramArrayOfObject[1]).intValue();
+    QLog.d("SelectMemberActivity", 2, "add discussion member failed, error code: " + i);
+    QQToast.a(this.a, this.a.getString(2131691866), 0).b(this.a.getTitleBarHeight());
   }
 }
 

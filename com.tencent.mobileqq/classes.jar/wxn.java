@@ -1,25 +1,23 @@
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
+
 public class wxn
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  @xnb(a="tag_type")
-  public int a;
-  @xnb(a="tag_id")
-  public long a;
-  @xnb(a="tag_name")
-  public String a;
-  @xnb(a="join_count")
-  public int b;
-  @xnb(a="tag_desc")
-  public String b;
-  @xnb(a="music_type")
-  public int c;
-  @xnb(a="wording")
-  public String c;
-  @xnb(a="music_id")
-  public String d;
-  @xnb(a="music_title")
-  public String e;
-  @xnb(a="music_download_url")
-  public String f;
+  public wxn(DanceMachineQQBrowserActivity paramDanceMachineQQBrowserActivity) {}
+  
+  public void onSystemUiVisibilityChange(int paramInt)
+  {
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 4870;; paramInt = 775)
+    {
+      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
+      return;
+    }
+  }
 }
 
 

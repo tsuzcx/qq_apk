@@ -1,41 +1,65 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTDocFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.1;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.2;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.3;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.4;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.5;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.6;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqmx
-  extends aroh
+  implements artx
 {
-  public aqmx(QfileRecentTDocFileTabView paramQfileRecentTDocFileTabView) {}
+  public aqmx(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void a() {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e()
+  public void a(int paramInt, Bundle paramBundle)
   {
-    Object localObject = aqxj.b();
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (aqxh.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
-          azmj.b(QfileRecentTDocFileTabView.b(this.a), "dc00898", "", "", "0X800A08C", "0X800A08C", 0, 0, "", "", "", "");
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadStart progress = " + paramInt);
     }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.2(this));
   }
   
-  public void f() {}
-  
-  public void g()
+  public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    this.a.a.a().G();
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadFailed errCode = " + paramInt);
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.6(this));
+  }
+  
+  public void a(String paramString, long paramLong, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadSucess ");
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.1(this));
+    azqs.b(null, "dc00898", "", "", "0X8008FFA", "0X8008FFA", 1, 0, "", "", "", "");
+  }
+  
+  public void b(int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadProgress progress = " + paramInt);
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.4(this, paramInt));
+  }
+  
+  public void c(int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadPause progress = " + paramInt);
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.5(this));
+  }
+  
+  public void d(int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadResume progress = " + paramInt);
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.3(this));
   }
 }
 

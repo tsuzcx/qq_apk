@@ -1,16 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
-
-public class ymf
-  implements View.OnClickListener
+public abstract interface ymf
 {
-  public ymf(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    EditUniqueTitleActivity.a(this.a);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs);
 }
 
 

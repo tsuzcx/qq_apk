@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.bluetooth.BluetoothGatt;
-import bgkd;
+import bgok;
 
 class BluetoothJsPlugin$BluetoothDeviceExtend$2
   implements Runnable
 {
-  BluetoothJsPlugin$BluetoothDeviceExtend$2(BluetoothJsPlugin.BluetoothDeviceExtend paramBluetoothDeviceExtend, bgkd parambgkd) {}
+  BluetoothJsPlugin$BluetoothDeviceExtend$2(BluetoothJsPlugin.BluetoothDeviceExtend paramBluetoothDeviceExtend, bgok parambgok) {}
   
   public void run()
   {

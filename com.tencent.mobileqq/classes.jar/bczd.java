@@ -1,8 +1,14 @@
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public abstract interface bczd
+final class bczd
+  implements DownloadParams.DecodeHandler
 {
-  public abstract void a(String paramString, boolean paramBoolean, Drawable paramDrawable);
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    return bcyz.a(paramBitmap);
+  }
 }
 
 

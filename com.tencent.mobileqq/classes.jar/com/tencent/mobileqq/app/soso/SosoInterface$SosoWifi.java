@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.soso;
 
-import amlj;
+import ampy;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public final class SosoInterface$SosoWifi
   implements Parcelable
 {
-  public static final Parcelable.Creator<SosoWifi> CREATOR = new amlj();
+  public static final Parcelable.Creator<SosoWifi> CREATOR = new ampy();
   public int a;
   public long a;
   public String a;

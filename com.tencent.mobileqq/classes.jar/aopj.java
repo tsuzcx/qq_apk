@@ -1,103 +1,57 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Deprecated
 public class aopj
-  extends aofy<aopi>
 {
-  public int a()
-  {
-    return 533;
-  }
+  public int a = -1;
   
-  @NonNull
-  public aopi a(int paramInt)
+  public static aopj a(aoko[] paramArrayOfaoko)
   {
-    return new aopi();
-  }
-  
-  @Nullable
-  public aopi a(aogf[] paramArrayOfaogf)
-  {
-    QLog.i("QFileExcitingConfigProcessor<FileAssistant>", 1, "onParsed");
-    if (paramArrayOfaogf != null) {
-      try
+    aopj localaopj = new aopj();
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      int j = paramArrayOfaoko.length;
+      int i = 0;
+      if (i < j)
       {
-        if (paramArrayOfaogf.length > 0)
+        Object localObject = paramArrayOfaoko[i];
+        if (localObject == null) {}
+        for (;;)
         {
-          paramArrayOfaogf = (aopi)aogt.a(paramArrayOfaogf[0].a, aopi.class);
-          return paramArrayOfaogf;
+          i += 1;
+          break;
+          localObject = ((aoko)localObject).a;
+          try
+          {
+            a(new JSONObject((String)localObject), localaopj);
+            if (QLog.isColorLevel()) {
+              QLog.i("PhotoListPanelBean", 2, "parse: " + (String)localObject + " bean:" + localaopj);
+            }
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
         }
-      }
-      catch (QStorageInstantiateException paramArrayOfaogf)
-      {
-        QLog.e("QFileExcitingConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaogf.getMessage());
       }
     }
-    return null;
+    return localaopj;
   }
   
-  public Class<aopi> a()
+  private static void a(JSONObject paramJSONObject, aopj paramaopj)
   {
-    return aopi.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.i("QFileExcitingConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
-  
-  public void a(aopi paramaopi)
-  {
-    if (paramaopi != null)
-    {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label152;
-      }
-    }
-    label152:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null)
-      {
-        if (TextUtils.isEmpty(paramaopi.a)) {
-          paramaopi.a = "{}";
-        }
-        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("file_exciting_" + ((QQAppInterface)localObject).c(), 0).edit();
-        localEditor.putString("qfile_file_exciting", paramaopi.a);
-        localEditor.apply();
-        QLog.i("QFileExcitingConfigProcessor<FileAssistant>", 1, "save download config [" + paramaopi.a + "]");
-        localObject = (aqpu)((QQAppInterface)localObject).getManager(317);
-        if (localObject != null) {
-          ((aqpu)localObject).a(paramaopi);
-        }
-      }
-      return;
+    if (paramJSONObject.has("showMode")) {
+      paramaopj.a = paramJSONObject.optInt("showMode");
     }
   }
   
-  public int b()
+  public String toString()
   {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return "PhotoListPanelBean{showMode=" + this.a + '}';
   }
 }
 

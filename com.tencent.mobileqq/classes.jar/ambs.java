@@ -1,15 +1,30 @@
-import android.os.Bundle;
-
-class ambs
-  extends alox
+public class ambs
+  implements alpg
 {
-  ambs(ambq paramambq) {}
+  protected void a(int paramInt) {}
   
-  protected void onAddFriendSecCheck(boolean paramBoolean, Bundle paramBundle) {}
+  protected void a(int paramInt1, int paramInt2) {}
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    ambq.a(this.a, paramBoolean2, paramBundle);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (paramObject == null);
+        paramObject = (Object[])paramObject;
+        a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    a(((Integer)paramObject[0]).intValue());
   }
 }
 

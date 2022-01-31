@@ -1,37 +1,89 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class bbkg
-  extends AnimatorListenerAdapter
+public class bbkg
+  extends Handler
 {
-  bbkg(bbke parambbke, boolean paramBoolean, View paramView, int paramInt) {}
+  public bbkg(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    if (!this.jdField_a_of_type_Boolean)
+    if (this.a.isFinishing()) {}
+    do
     {
-      paramAnimator = new int[2];
-      this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramAnimator);
-      i = xod.d(this.jdField_a_of_type_Bbke.jdField_a_of_type_AndroidContentContext) - paramAnimator[1];
-      if (i >= this.jdField_a_of_type_Int) {}
-    }
-    for (int i = this.jdField_a_of_type_Int - i;; i = 0)
-    {
-      if (this.jdField_a_of_type_Bbke.jdField_a_of_type_Bbki != null)
+      do
       {
-        paramAnimator = this.jdField_a_of_type_Bbke.jdField_a_of_type_Bbki;
-        if (!this.jdField_a_of_type_Boolean) {
-          bool = true;
+        do
+        {
+          do
+          {
+            return;
+            switch (paramMessage.what)
+            {
+            case 1002: 
+            case 1007: 
+            default: 
+              return;
+            case 1001: 
+              this.a.a(false);
+              if ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing())) {
+                this.a.jdField_a_of_type_Bety.dismiss();
+              }
+              QQToast.a(this.a, 2131696744, 1).b(this.a.getTitleBarHeight());
+            }
+          } while (!(paramMessage.obj instanceof String));
+          paramMessage = (String)paramMessage.obj;
+          try
+          {
+            this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramMessage);
+            return;
+          }
+          catch (UnsupportedOperationException paramMessage) {}
+        } while (!QLog.isColorLevel());
+        QLog.d("TroopBar", 2, paramMessage.toString());
+        return;
+        if ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing())) {
+          this.a.jdField_a_of_type_Bety.dismiss();
         }
-        paramAnimator.a(bool, i);
+        this.a.a(false);
+        this.a.a();
+        return;
+        if ((paramMessage.arg1 == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo != null)) {
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.url = ((String)paramMessage.obj);
+        }
+      } while ((this.a.jdField_a_of_type_Bety == null) || (!this.a.jdField_a_of_type_Bety.isShowing()));
+      this.a.a();
+      return;
+      this.a.a(false);
+      if ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing())) {
+        this.a.jdField_a_of_type_Bety.dismiss();
       }
+      QQToast.a(this.a, 2131696722, 1).b(this.a.getTitleBarHeight());
+      return;
+      if ((paramMessage.obj instanceof String))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a((String)paramMessage.obj);
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a(this.a.jdField_a_of_type_JavaUtilArrayList);
+    } while (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 0);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
+    return;
+    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
+    if ((Build.VERSION.SDK_INT >= 23) && (this.a.checkSelfPermission("android.permission.RECORD_AUDIO") != 0))
+    {
+      this.a.requestPermissions(new bbkh(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
       return;
     }
+    TroopBarReplyActivity.a(this.a, 4);
   }
 }
 

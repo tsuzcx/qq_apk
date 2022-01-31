@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import befc;
-import befd;
+import bejl;
+import bejm;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -14,7 +14,7 @@ class SwiftBrowserWebViewHandler$1$1
   {
     Iterator localIterator = this.a.this$0.a.iterator();
     while (localIterator.hasNext()) {
-      ((befd)localIterator.next()).a();
+      ((bejm)localIterator.next()).a();
     }
     this.a.this$0.a.clear();
   }

@@ -1,26 +1,51 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.core.widget.ActionSheetDialog.3;
+import com.tencent.qqmini.sdk.core.plugins.engine.JsPluginEngine;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
-public class bgmm
-  implements Animation.AnimationListener
+public final class bgmm
+  extends bgok
+  implements bgmc<String>
 {
-  public bgmm(ActionSheetDialog.3 param3) {}
+  private bgok a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static bgmm a(bgok parambgok, String paramString)
   {
-    try
-    {
-      bgml.a(this.a.this$0);
-      bgml.a(this.a.this$0, true);
-      return;
-    }
-    catch (Exception paramAnimation) {}
+    bgmm localbgmm = new bgmm();
+    localbgmm.jdField_a_of_type_Bgok = parambgok;
+    localbgmm.jdField_a_of_type_JavaLangString = paramString;
+    localbgmm.jdField_b_of_type_JavaLangString = parambgok.jdField_b_of_type_JavaLangString;
+    localbgmm.jdField_b_of_type_Int = parambgok.jdField_b_of_type_Int;
+    localbgmm.jdField_a_of_type_Bglu = parambgok.jdField_a_of_type_Bglu;
+    return localbgmm;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public String a(bgls parambgls)
+  {
+    parambgls = parambgls.a();
+    if ((parambgls instanceof JsPluginEngine))
+    {
+      parambgls = (JsPluginEngine)parambgls;
+      QMLog.d("RepeatRequestEvent", "Dispatch repeat RequestEvent=" + this.jdField_a_of_type_JavaLangString);
+      return parambgls.dispatchSecondaryRequestEvent(this);
+    }
+    QMLog.w("RepeatRequestEvent", "Failed to handle repeat RequestEvent=" + this.jdField_a_of_type_JavaLangString);
+    return "";
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String a(JSONObject paramJSONObject)
+  {
+    return this.jdField_a_of_type_Bgok.a(paramJSONObject);
+  }
+  
+  public String a(JSONObject paramJSONObject, String paramString)
+  {
+    return this.jdField_a_of_type_Bgok.a(paramJSONObject, paramString);
+  }
+  
+  public String b(JSONObject paramJSONObject)
+  {
+    return this.jdField_a_of_type_Bgok.b(paramJSONObject);
+  }
 }
 
 

@@ -1,35 +1,28 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import com.tencent.qphone.base.util.QLog;
-
 public class andn
-  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public andn(QRScanEntryView paramQRScanEntryView, String paramString, Activity paramActivity) {}
+  public int a;
+  public long a;
+  public baub a;
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "";
+  public String d;
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public andn()
   {
-    if (paramBoolean)
-    {
-      paramBundle = new Intent();
-      paramBundle.putExtra("detectType", 2);
-      paramBundle.putExtra("scannerResult", this.jdField_a_of_type_JavaLangString.trim());
-      this.jdField_a_of_type_AndroidAppActivity.setResult(13, paramBundle);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
-      QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, null);
-      QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, 0L);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("AREngine_QRScanEntryView", 2, "onLaunchResult 1 false " + this.jdField_a_of_type_JavaLangString);
-    }
-    QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, this.jdField_a_of_type_JavaLangString);
-    QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, System.currentTimeMillis());
-    ((anbp)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.a).b(false);
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", md5='").append(this.b).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

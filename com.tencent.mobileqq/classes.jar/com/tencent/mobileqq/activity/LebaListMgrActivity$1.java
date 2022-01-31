@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aiab;
-import alra;
+import aieq;
+import alvp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
@@ -12,9 +12,9 @@ class LebaListMgrActivity$1
   
   public void run()
   {
-    aiab.a().a(this.this$0, this.this$0.app);
+    aieq.a().a(this.this$0, this.this$0.app);
     boolean bool = this.this$0.app.a().a();
-    List localList = aiab.a().a();
+    List localList = aieq.a().a();
     this.this$0.runOnUiThread(new LebaListMgrActivity.1.1(this, bool, localList));
   }
 }

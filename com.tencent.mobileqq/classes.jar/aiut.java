@@ -1,82 +1,40 @@
-import Wallet.GetSkinListRsp;
-import Wallet.SetSelectedSkinRsp;
-import Wallet.SkinInfo;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QwAdapter;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.observer.BusinessObserver;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class aiut
-  implements BusinessObserver
+  extends BroadcastReceiver
 {
-  aiut(aius paramaius) {}
+  private aiut(aiul paramaiul) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = 0;
-    QLog.d("HbSkinLogic", 2, "mObserver type = " + paramInt + " isSuccess = " + paramBoolean + " bundle = " + paramBundle);
-    aius.a(this.a, false);
-    if (paramBundle != null) {
-      switch (paramInt)
-      {
+    int i;
+    String str1;
+    if ("grap_idiom_hb_result_action".equals(paramIntent.getAction()))
+    {
+      i = paramIntent.getIntExtra("grap_hb_state", 0);
+      paramContext = paramIntent.getStringExtra("listid");
+      str1 = paramIntent.getStringExtra("grap_hb_frienduin");
+      if ((i != 1) && (i != 10)) {
+        break label59;
       }
+      aiul.a(this.a, paramContext, str1, 1, true);
     }
-    label241:
+    label59:
+    String str2;
     do
     {
-      return;
-      List localList = aius.a(this.a).getList();
-      localList.clear();
-      aius.a(this.a, localList);
-      GetSkinListRsp localGetSkinListRsp = (GetSkinListRsp)paramBundle.getSerializable("rsp");
-      QLog.d("HbSkinLogic", 2, "GetSkinListRsp = " + localGetSkinListRsp);
-      if (localGetSkinListRsp != null)
+      do
       {
-        aius localaius = this.a;
-        if (localGetSkinListRsp.is_hide_list) {}
-        for (paramInt = 8;; paramInt = 0)
-        {
-          localaius.b(paramInt);
-          if (!localGetSkinListRsp.is_hide_list) {
-            break label241;
-          }
-          if (aius.a(this.a) != -1) {
-            break;
-          }
-          aiup.c = aius.a(this.a, -1);
-          return;
-        }
-        aius.b(this.a, true);
-        aiup.c = aius.a(this.a, aius.a(this.a));
         return;
-        aiup.jdField_a_of_type_Boolean = paramBundle.getBoolean("isCache");
-        aius.a(this.a, localGetSkinListRsp.selected_id);
-        QLog.d("HbSkinLogic", 2, "rsp size = " + localGetSkinListRsp.skin_list.size() + " serverSkinID = " + aius.b(this.a));
-        aiup.c = localGetSkinListRsp.selected_id;
-        QLog.d("HbSkinLogic", 2, "select restor: " + aiup.c);
-        aius.a(this.a).clear();
-        paramInt = i;
-        while (paramInt < localGetSkinListRsp.skin_list.size())
-        {
-          paramBundle = new aiup((SkinInfo)localGetSkinListRsp.skin_list.get(paramInt));
-          paramBundle.jdField_a_of_type_Int = (paramInt + 1);
-          aius.a(this.a).add(paramBundle);
-          paramInt += 1;
-        }
-        if (!TextUtils.isEmpty(localGetSkinListRsp.more_skin_url)) {
-          localList.add(aiur.c(localGetSkinListRsp.more_skin_url));
-        }
-      }
-      aiup.a(localList);
-      aius.a(this.a).notifyDataSetChanged();
-      aius.b(this.a, aius.a(this.a));
-      return;
-      paramBundle = (SetSelectedSkinRsp)paramBundle.getSerializable("rsp");
-    } while (!QLog.isColorLevel());
-    QLog.d("HbSkinLogic", 2, "SetSelectedSkinRsp = " + paramBundle);
+      } while (i != 12);
+      str2 = paramIntent.getStringExtra("grap_hb_idiom");
+      i = paramIntent.getIntExtra("grap_hb_seq", 0);
+      paramIntent = paramIntent.getStringExtra("grap_idiom_alpha");
+    } while (this.a.a(paramContext) == null);
+    aiul.a(this.a, paramContext, str1, 1, false);
+    this.a.a(paramContext, str2, paramIntent, i);
   }
 }
 

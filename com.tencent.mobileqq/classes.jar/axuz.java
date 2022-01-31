@@ -1,50 +1,24 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-import java.util.concurrent.ConcurrentHashMap;
-
 public class axuz
 {
-  private static int a;
-  public ConcurrentHashMap<Long, axvc> a;
+  private final int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
+  private final long b;
   
-  static
+  private axuz(long paramLong1, long paramLong2, int paramInt)
   {
-    jdField_a_of_type_Int = 900000;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private axuz()
+  public String toString()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  public static final axuz a()
-  {
-    return axvb.a();
-  }
-  
-  public axvc a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
-      return (axvc)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    BrowserLogHelper.getInstance().getGalleryLog().d(" LongVideoUrlCacheManager", 4, "LongVideoUrlCacheManager,clearCache");
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-  }
-  
-  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new axvc(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
+    return "VideoTimeStamp{TIME-CLOCK=" + this.jdField_a_of_type_Long + ", TIME-FRAME=" + this.b + ", CYCLE=" + this.jdField_a_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axuz
  * JD-Core Version:    0.7.0.1
  */

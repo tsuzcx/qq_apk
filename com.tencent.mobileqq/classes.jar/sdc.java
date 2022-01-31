@@ -294,7 +294,7 @@ public class sdc
           break;
           localObject2 = paramsdh.b();
           if (!((String)localObject2).equals(i)) {
-            throw new IllegalArgumentException(alpo.a(2131706008));
+            throw new IllegalArgumentException(alud.a(2131706020));
           }
           localXmlSerializer.startTag("", (String)localObject2);
           int i2 = paramsdh.b();
@@ -398,7 +398,7 @@ public class sdc
             }
             else
             {
-              throw new IllegalArgumentException(alpo.a(2131706007) + (String)localObject);
+              throw new IllegalArgumentException(alud.a(2131706019) + (String)localObject);
               a(localsdh, localsdg, localArrayList, paramSparseArray);
               if (2 == localsdh.c())
               {

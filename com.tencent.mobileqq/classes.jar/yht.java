@@ -1,81 +1,20 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.app.Activity;
+import android.view.View;
 
 public class yht
+  extends uce
 {
-  private static boolean a;
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, yhz paramyhz)
+  public yht(Activity paramActivity)
   {
-    a(paramContext, paramString1, true, paramString2, 2131696917, paramyhz);
+    super(paramActivity);
   }
   
-  public static void a(Context paramContext, String paramString, yhz paramyhz)
+  protected int a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("SubscribeFollowUserUtil", 2, "follow user failed! user is null");
-    }
-    do
-    {
-      return;
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface))
-      {
-        syb.a((QQAppInterface)localAppRuntime, paramContext, paramString, new yhx(paramyhz), false, 0, true);
-        return;
-      }
-    } while (paramyhz == null);
-    paramyhz.a(false, paramString, false);
+    return 2131558700;
   }
   
-  public static void a(Context paramContext, String paramString1, boolean paramBoolean, String paramString2, int paramInt, yhz paramyhz)
-  {
-    if (paramContext == null) {}
-    bhpy localbhpy;
-    do
-    {
-      return;
-      localbhpy = bhpy.a(paramContext);
-      if (paramBoolean) {
-        localbhpy.a(String.format(paramContext.getResources().getString(2131695777), new Object[] { paramString2 }));
-      }
-      localbhpy.a(paramInt, 3);
-      localbhpy.c(2131690648);
-      localbhpy.setOnDismissListener(new yhu());
-      localbhpy.a(new yhv(paramyhz, paramString1, localbhpy));
-      localbhpy.a(new yhw(paramContext, paramString1, paramyhz, localbhpy));
-    } while (localbhpy.isShowing());
-    a = false;
-    localbhpy.show();
-  }
-  
-  public static void b(Context paramContext, String paramString, yhz paramyhz)
-  {
-    a(paramContext, paramString, false, "", 2131695775, paramyhz);
-  }
-  
-  public static void c(Context paramContext, String paramString, yhz paramyhz)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("SubscribeFollowUserUtil", 2, "unfollow user failed! user is null");
-    }
-    do
-    {
-      return;
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface))
-      {
-        syb.a((QQAppInterface)localAppRuntime, paramContext, paramString, false, new yhy(paramyhz), true);
-        return;
-      }
-    } while (paramyhz == null);
-    paramyhz.a(false, paramString, false);
-  }
+  protected void a(View paramView) {}
 }
 
 

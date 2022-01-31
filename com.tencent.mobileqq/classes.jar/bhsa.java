@@ -1,21 +1,38 @@
-import android.view.ViewTreeObserver;
-import com.tencent.widget.DynamicGridView;
-
 public class bhsa
-  implements bhsh
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  
-  public bhsa(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
+  public static void a(Object paramObject)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    a((String)null, paramObject);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public static void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new bhsb(this, paramInt1, paramInt2));
+    if (paramString == null) {
+      throw new AssertionError();
+    }
+    throw new AssertionError(paramString);
+  }
+  
+  public static void a(String paramString, Object paramObject)
+  {
+    if (paramObject != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(paramString, bool);
+      return;
+    }
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      a(paramString);
+    }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    a((String)null, paramBoolean);
   }
 }
 

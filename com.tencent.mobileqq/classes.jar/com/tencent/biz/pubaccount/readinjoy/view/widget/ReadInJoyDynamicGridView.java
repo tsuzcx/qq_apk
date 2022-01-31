@@ -22,9 +22,9 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ListAdapter;
-import bdkf;
-import bhpo;
-import bhqp;
+import bdoo;
+import bhtv;
+import bhuw;
 import com.tencent.widget.GridView;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -55,8 +55,8 @@ public class ReadInJoyDynamicGridView
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
   private View jdField_a_of_type_AndroidViewView;
-  private bhpo jdField_a_of_type_Bhpo;
-  private bhqp jdField_a_of_type_Bhqp;
+  private bhtv jdField_a_of_type_Bhtv;
+  private bhuw jdField_a_of_type_Bhuw;
   private List<Long> jdField_a_of_type_JavaUtilList = new ArrayList();
   private siq jdField_a_of_type_Siq;
   private sir jdField_a_of_type_Sir;
@@ -65,8 +65,8 @@ public class ReadInJoyDynamicGridView
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private bhpo jdField_b_of_type_Bhpo = new sii(this);
-  private bhqp jdField_b_of_type_Bhqp = new sid(this);
+  private bhtv jdField_b_of_type_Bhtv = new sii(this);
+  private bhuw jdField_b_of_type_Bhuw = new sid(this);
   private boolean jdField_b_of_type_Boolean;
   private int c = -1;
   private int jdField_d_of_type_Int = -1;
@@ -587,13 +587,13 @@ public class ReadInJoyDynamicGridView
   
   public void a(Context paramContext)
   {
-    super.setOnScrollListener(this.jdField_b_of_type_Bhpo);
+    super.setOnScrollListener(this.jdField_b_of_type_Bhtv);
     paramContext = paramContext.getResources().getDisplayMetrics();
     this.jdField_i_of_type_Int = ((int)(8.0F * paramContext.density + 0.5F));
     this.jdField_g_of_type_Int = ((int)(paramContext.density * 16.0F + 0.5F));
     setNumColumns(4);
-    setHorizontalSpacing(bdkf.a(0.0F));
-    setVerticalSpacing(bdkf.a(0.0F));
+    setHorizontalSpacing(bdoo.a(0.0F));
+    setVerticalSpacing(bdoo.a(0.0F));
     setSelector(17170445);
     setClipChildren(false);
   }
@@ -773,15 +773,15 @@ public class ReadInJoyDynamicGridView
     this.jdField_a_of_type_Sis = paramsis;
   }
   
-  public void setOnItemClickListener(bhqp parambhqp)
+  public void setOnItemClickListener(bhuw parambhuw)
   {
-    this.jdField_a_of_type_Bhqp = parambhqp;
-    super.setOnItemClickListener(this.jdField_b_of_type_Bhqp);
+    this.jdField_a_of_type_Bhuw = parambhuw;
+    super.setOnItemClickListener(this.jdField_b_of_type_Bhuw);
   }
   
-  public void setOnScrollListener(bhpo parambhpo)
+  public void setOnScrollListener(bhtv parambhtv)
   {
-    this.jdField_a_of_type_Bhpo = parambhpo;
+    this.jdField_a_of_type_Bhtv = parambhtv;
   }
   
   public void setOnSelectedItemBitmapCreationListener(sit paramsit)

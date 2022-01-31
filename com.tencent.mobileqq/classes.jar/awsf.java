@@ -1,21 +1,42 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.VipProfileSimpleView;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class awsf
-  implements Animation.AnimationListener
+  extends alpq
 {
-  public awsf(VipProfileSimpleView paramVipProfileSimpleView, awmk paramawmk) {}
+  public awsf(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void reqShoppingInfo(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
   {
-    VipProfileSimpleView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileSimpleView, true);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileSimpleView.g(this.jdField_a_of_type_Awmk);
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "user binding shoppingNo = " + paramString1 + "Threadid=" + Thread.currentThread().getId());
+    }
+    if ((this.a.app == null) || (this.a.isFinishing())) {}
+    do
+    {
+      return;
+      this.a.app.removeObserver(this);
+      this.a.b = null;
+    } while (!paramBoolean);
+    if ("0".equals(paramString1))
+    {
+      paramString1 = this.a.a;
+      paramString2 = this.a.a;
+      paramString1 = paramString1.getSharedPreferences("is_binding_shop", 0).edit();
+      paramString1.putBoolean(this.a.e, false);
+      paramString1.commit();
+      return;
+    }
+    paramString1 = this.a.a;
+    paramString2 = this.a.a;
+    paramString1 = paramString1.getSharedPreferences("is_binding_shop", 0).edit();
+    paramString1.putBoolean(this.a.e, true);
+    paramString1.commit();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

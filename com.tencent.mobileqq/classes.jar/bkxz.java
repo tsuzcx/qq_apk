@@ -1,16 +1,27 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
-class bkxz
-  extends RecyclerView.OnScrollListener
+public class bkxz
+  implements Animation.AnimationListener
 {
-  bkxz(bkxy parambkxy) {}
+  public bkxz(AEProviderContainerView paramAEProviderContainerView) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    bkxy.a(this.a).notifyDataSetChanged();
+    this.a.setAlpha(1.0F);
+    this.a.setVisibility(8);
+    if (AEProviderContainerView.a(this.a) != null) {
+      AEProviderContainerView.a(this.a).a(false, 150);
+    }
+    if (AEProviderContainerView.a(this.a) != null) {
+      AEProviderContainerView.a(this.a).a(131075, new Object[0]);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

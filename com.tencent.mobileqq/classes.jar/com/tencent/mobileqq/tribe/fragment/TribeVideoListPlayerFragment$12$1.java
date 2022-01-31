@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.tribe.fragment;
 
 import android.os.Handler;
-import azmj;
-import bayo;
-import bazz;
+import azqs;
+import bbcx;
+import bbei;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
@@ -19,7 +19,7 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 public class TribeVideoListPlayerFragment$12$1
   implements Runnable
 {
-  public TribeVideoListPlayerFragment$12$1(bayo parambayo) {}
+  public TribeVideoListPlayerFragment$12$1(bbcx parambbcx) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ public class TribeVideoListPlayerFragment$12$1
     {
       try
       {
-        HttpResponse localHttpResponse = ndd.a(BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_Bazz.h, null, "GET", null, null);
+        HttpResponse localHttpResponse = ndd.a(BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_Bbei.h, null, "GET", null, null);
         if ((localHttpResponse != null) && (localHttpResponse.getStatusLine().getStatusCode() == 200)) {
           TribeVideoListPlayerFragment.jdField_a_of_type_AndroidOsHandler.post(new TribeVideoListPlayerFragment.12.1.1(this));
         }
@@ -41,7 +41,7 @@ public class TribeVideoListPlayerFragment$12$1
       }
       try
       {
-        azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "ad_dislike_suc", this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.e, 0, "" + this.a.jdField_a_of_type_Bazz.a.report_info.trace_info.aid.get(), "" + (this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.indexOf(this.a.jdField_a_of_type_Bazz) + 1), "", "");
+        azqs.b(null, "dc00899", "Grp_tribe", "", "video_player", "ad_dislike_suc", this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.e, 0, "" + this.a.jdField_a_of_type_Bbei.a.report_info.trace_info.aid.get(), "" + (this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.indexOf(this.a.jdField_a_of_type_Bbei) + 1), "", "");
         return;
       }
       catch (Exception localException)

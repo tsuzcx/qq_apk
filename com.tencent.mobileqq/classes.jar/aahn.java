@@ -1,11 +1,31 @@
-import com.tencent.ad.tangram.device.AdImeiAdapter;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class aahn
-  implements AdImeiAdapter
+  implements TVK_SDKMgr.InstallListener
 {
-  public String getIMEI()
+  public aahn(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
+  
+  public void onInstallProgress(float paramFloat)
   {
-    return bhoi.a("f4c66e");
+    if (QLog.isColorLevel()) {
+      QLog.d("GCApi", 1, String.format("plugin install %f", new Object[] { Float.valueOf(paramFloat) }));
+    }
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GCApi", 1, "plugin fail errorCode = " + paramInt);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GCApi", 1, "plugin success");
+    }
   }
 }
 

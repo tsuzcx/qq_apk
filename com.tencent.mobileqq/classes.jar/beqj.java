@@ -1,76 +1,142 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.RectF;
+import android.util.Pair;
+import android.util.SparseArray;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.PopupWindow;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class beqj
+class beqj
+  extends FrameLayout
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  int[] jdField_a_of_type_ArrayOfInt = new int[2];
   
-  public beqj(Bitmap paramBitmap)
+  public beqj(beqf parambeqf, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = 0;
+    super(paramContext);
+    setWillNotDraw(false);
   }
   
-  public beqj(Bitmap paramBitmap, int paramInt)
+  private FrameLayout.LayoutParams a(beqi parambeqi, beqh parambeqh)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = (paramInt % 360);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public Matrix a()
-  {
-    Matrix localMatrix = new Matrix();
-    if (this.jdField_a_of_type_Int != 0)
+    if (parambeqh.width == -9) {
+      parambeqh.width = (parambeqi.jdField_a_of_type_AndroidViewView.getMeasuredWidth() + -parambeqh.a * 2);
+    }
+    if (parambeqh.height == -9) {
+      parambeqh.height = (parambeqi.jdField_a_of_type_AndroidViewView.getMeasuredHeight() + -parambeqh.b * 2);
+    }
+    if (parambeqh.a != 2147483647)
     {
-      int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
-      int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
-      localMatrix.preTranslate(-i, -j);
-      localMatrix.postRotate(this.jdField_a_of_type_Int);
-      localMatrix.postTranslate(c() / 2, b() / 2);
+      parambeqh.gravity |= 0x3;
+      parambeqh.leftMargin = (parambeqi.jdField_a_of_type_ArrayOfInt[0] + parambeqh.a - this.jdField_a_of_type_ArrayOfInt[0]);
     }
-    return localMatrix;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int / 90 % 2 != 0;
-  }
-  
-  public int b()
-  {
-    if (a()) {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    if (parambeqh.b != 2147483647)
+    {
+      parambeqh.gravity |= 0x30;
+      parambeqh.topMargin = (parambeqi.jdField_a_of_type_ArrayOfInt[1] + parambeqh.b - this.jdField_a_of_type_ArrayOfInt[1]);
     }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    return parambeqh;
   }
   
-  public int c()
+  protected void onAttachedToWindow()
   {
-    if (a()) {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    super.onAttachedToWindow();
+    try
+    {
+      getLocationOnScreen(this.jdField_a_of_type_ArrayOfInt);
+      int i = 0;
+      while (i < beqf.a(this.jdField_a_of_type_Beqf).size())
+      {
+        beqi localbeqi = (beqi)beqf.a(this.jdField_a_of_type_Beqf).valueAt(i);
+        if (localbeqi.jdField_a_of_type_ArrayOfInt == null)
+        {
+          localbeqi.jdField_a_of_type_ArrayOfInt = new int[2];
+          localbeqi.jdField_a_of_type_AndroidViewView.getLocationOnScreen(localbeqi.jdField_a_of_type_ArrayOfInt);
+        }
+        i += 1;
+      }
+      return;
     }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    catch (NullPointerException localNullPointerException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("GuideView", 2, "getLocationOnScreen Null Pointer");
+      }
+    }
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
+    int i = 0;
+    while (i < beqf.a(this.jdField_a_of_type_Beqf).size())
+    {
+      beqi localbeqi = (beqi)beqf.a(this.jdField_a_of_type_Beqf).valueAt(i);
+      int j = paramCanvas.save();
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(localbeqi.jdField_a_of_type_ArrayOfInt[0], localbeqi.jdField_a_of_type_ArrayOfInt[1], localbeqi.jdField_a_of_type_ArrayOfInt[0] + localbeqi.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), localbeqi.jdField_a_of_type_ArrayOfInt[1] + localbeqi.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
+      this.jdField_a_of_type_AndroidGraphicsRectF.offset(-this.jdField_a_of_type_ArrayOfInt[0], -this.jdField_a_of_type_ArrayOfInt[1]);
+      paramCanvas.clipRect(this.jdField_a_of_type_AndroidGraphicsRectF);
+      localbeqi.jdField_a_of_type_AndroidViewView.getRootView().draw(paramCanvas);
+      paramCanvas.restoreToCount(j);
+      i += 1;
+    }
+  }
+  
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    paramInt1 = 0;
+    while (paramInt1 < beqf.a(this.jdField_a_of_type_Beqf).size())
+    {
+      beqi localbeqi = (beqi)beqf.a(this.jdField_a_of_type_Beqf).valueAt(paramInt1);
+      Iterator localIterator = localbeqi.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        Pair localPair = (Pair)localIterator.next();
+        if (indexOfChild((View)localPair.first) == -1)
+        {
+          Object localObject = ((View)localPair.first).getLayoutParams();
+          if (localPair.second != null) {
+            localObject = a(localbeqi, (beqh)localPair.second);
+          }
+          if (localObject != null) {
+            addViewInLayout((View)localPair.first, -1, (ViewGroup.LayoutParams)localObject);
+          }
+        }
+      }
+      paramInt1 += 1;
+    }
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return super.onTouchEvent(paramMotionEvent);
+      int i = 0;
+      while (i < beqf.a(this.jdField_a_of_type_Beqf).size())
+      {
+        beqi localbeqi = (beqi)beqf.a(this.jdField_a_of_type_Beqf).valueAt(i);
+        if ((paramMotionEvent.getX() > localbeqi.jdField_a_of_type_ArrayOfInt[0]) && (paramMotionEvent.getX() < localbeqi.jdField_a_of_type_ArrayOfInt[0] + localbeqi.jdField_a_of_type_AndroidViewView.getMeasuredWidth()) && (paramMotionEvent.getY() > localbeqi.jdField_a_of_type_ArrayOfInt[1]) && (paramMotionEvent.getY() < localbeqi.jdField_a_of_type_ArrayOfInt[1] + localbeqi.jdField_a_of_type_AndroidViewView.getMeasuredHeight()) && (localbeqi.jdField_a_of_type_AndroidViewView$OnClickListener != null))
+        {
+          this.jdField_a_of_type_Beqf.a.dismiss();
+          localbeqi.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(localbeqi.jdField_a_of_type_AndroidViewView);
+          return true;
+        }
+        i += 1;
+      }
+    }
   }
 }
 

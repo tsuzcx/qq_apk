@@ -1,51 +1,33 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.LocalWtTicketPromise.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class bafe
-  implements WtTicketPromise
+  extends badg
 {
-  private aosy jdField_a_of_type_Aosy;
-  private WeakReference<bafd> jdField_a_of_type_JavaLangRefWeakReference;
+  protected badn a;
+  protected SpriteNativeView a;
   
-  public bafe(bafd parambafd, aosy paramaosy)
+  public bafe()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambafd);
-    this.jdField_a_of_type_Aosy = paramaosy;
+    this.jdField_a_of_type_Badn = new badn(0.0F, 0.0F);
   }
   
-  public void Done(Ticket paramTicket)
+  public badm<bafe> a()
   {
-    if ((paramTicket != null) && (paramTicket._pskey_map != null))
-    {
-      ThreadManager.excute(new ConfigSettingForDataLine.LocalWtTicketPromise.1(this), 128, null, false);
-      return;
-    }
-    if (this.jdField_a_of_type_Aosy != null) {
-      this.jdField_a_of_type_Aosy.a(false);
-    }
-    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket is null");
+    return this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView;
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public void b() {}
+  
+  public void c() {}
+  
+  public boolean c()
   {
-    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket failed");
-    if (this.jdField_a_of_type_Aosy != null) {
-      this.jdField_a_of_type_Aosy.a(false);
-    }
+    this.e = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getWidth();
+    this.f = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getHeight();
+    return b();
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (this.jdField_a_of_type_Aosy != null) {
-      this.jdField_a_of_type_Aosy.a(false);
-    }
-    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket time oiut");
-  }
+  public void d() {}
 }
 
 

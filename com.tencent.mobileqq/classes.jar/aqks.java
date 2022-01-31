@@ -1,17 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewStub;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
 
 public class aqks
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public aqks(FileAssistantActivity paramFileAssistantActivity) {}
+  public aqks(Face2FaceFriendDetailView paramFace2FaceFriendDetailView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    FileAssistantActivity.a(this.a).getLayoutParams().height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    FileAssistantActivity.a(this.a).requestLayout();
+    this.a.d();
   }
 }
 

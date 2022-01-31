@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bdlr;
+import bdqa;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -51,7 +51,7 @@ public class DislikeInfo
       if (i >= j) {
         break;
       }
-      localObject2 = (String)localObject1 + bdlr.a(((DislikeInfo)paramArrayList.get(i)).jdField_a_of_type_ArrayOfByte);
+      localObject2 = (String)localObject1 + bdqa.a(((DislikeInfo)paramArrayList.get(i)).jdField_a_of_type_ArrayOfByte);
       localObject1 = localObject2;
       if (i != j - 1) {
         localObject1 = (String)localObject2 + "_";
@@ -77,7 +77,7 @@ public class DislikeInfo
         DislikeInfo localDislikeInfo = new DislikeInfo();
         try
         {
-          localDisLikeInfo.mergeFrom(bdlr.a(paramString[i]));
+          localDisLikeInfo.mergeFrom(bdqa.a(paramString[i]));
           localDislikeInfo.a(localDisLikeInfo);
           localArrayList.add(localDislikeInfo);
           i += 1;

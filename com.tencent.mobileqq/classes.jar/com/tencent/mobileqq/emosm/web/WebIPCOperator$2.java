@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
-import apmy;
+import aprh;
 
 public class WebIPCOperator$2
   implements Runnable
 {
-  public WebIPCOperator$2(apmy paramapmy, Bundle paramBundle) {}
+  public WebIPCOperator$2(aprh paramaprh, Bundle paramBundle) {}
   
   public void run()
   {

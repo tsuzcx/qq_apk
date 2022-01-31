@@ -1,13 +1,13 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import bmix;
-import bmjf;
+import bmnj;
+import bmnr;
 
 public class EditVideoPlayer$3
   implements Runnable
 {
-  public EditVideoPlayer$3(bmjf parambmjf) {}
+  public EditVideoPlayer$3(bmnr parambmnr) {}
   
   public void run()
   {

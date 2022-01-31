@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountMenuResponse;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class PublicAccountMenuEntity
-  extends awbv
+  extends awge
 {
   public byte[] data;
   public long savedDateTime;
   public int seqno;
-  @awdj
+  @awhs
   public String uin;
   
   public PublicAccountMenuEntity() {}

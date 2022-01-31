@@ -1,19 +1,31 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.support.v7.widget.LinearSmoothScroller;
+import android.graphics.drawable.Drawable;
+import android.view.View;
 
-class yxi
-  extends LinearSmoothScroller
+public abstract interface yxi
 {
-  yxi(yxh paramyxh, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public abstract long a();
   
-  public PointF computeScrollVectorForPosition(int paramInt)
-  {
-    return this.a.a(paramInt);
-  }
+  public abstract View a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void at_();
+  
+  public abstract void b(long paramLong);
+  
+  public abstract void c(long paramLong);
+  
+  public abstract void setHeaderBgColor(int paramInt);
+  
+  public abstract void setHeaderBgDrawable(Drawable paramDrawable);
+  
+  public abstract void setHeaderBgRes(int paramInt);
+  
+  public abstract void setTextColor(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
 }
 
 

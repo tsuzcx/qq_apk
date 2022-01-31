@@ -1,44 +1,43 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v4.util.LruCache;
 
-class apdf
-  extends DataReportViewer
+public class apdf<T>
 {
-  apdf(apde paramapde, Context paramContext1, Context paramContext2)
+  private LruCache<String, T> a = new apdg(this, (int)Runtime.getRuntime().maxMemory() / 32);
+  
+  private static int a(Bitmap paramBitmap)
   {
-    super(paramContext1);
+    if (paramBitmap == null) {
+      return 0;
+    }
+    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
   }
   
-  public void d()
+  private int b(T paramT)
   {
-    int j = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (int i = 2038;; i = 2003)
-    {
-      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(j, -2, i, 776, -2);
-      localLayoutParams.gravity = 51;
-      localLayoutParams.x = 0;
-      localLayoutParams.y = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
-      apde.a(this.jdField_a_of_type_Apde).updateViewLayout(apde.a(this.jdField_a_of_type_Apde), localLayoutParams);
-      return;
+    if ((paramT instanceof Bitmap)) {
+      return a((Bitmap)paramT);
     }
+    if ((paramT instanceof BitmapDrawable)) {
+      return a(((BitmapDrawable)paramT).getBitmap());
+    }
+    return 0;
   }
   
-  public void e()
+  protected int a(T paramT)
   {
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (int i = 2038;; i = 2003)
+    return 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    try
     {
-      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -2, i, 776, -2);
-      localLayoutParams.gravity = 51;
-      localLayoutParams.x = 0;
-      localLayoutParams.y = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
-      apde.a(this.jdField_a_of_type_Apde).updateViewLayout(apde.a(this.jdField_a_of_type_Apde), localLayoutParams);
+      this.a.trimToSize(paramInt);
       return;
     }
+    finally {}
   }
 }
 

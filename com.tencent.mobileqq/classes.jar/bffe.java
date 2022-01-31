@@ -1,87 +1,37 @@
-import android.net.Uri;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.appcommon.js.OpenJsBridge.1;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.model.GetVirtualListResult;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
 public class bffe
-  extends atck
+  implements bfrt
 {
-  public HashMap<String, atcm> b = new HashMap();
+  public bffe(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public HashMap<String, atcm> a()
+  public void a()
   {
-    return this.b;
-  }
-  
-  public void a(atcm paramatcm, String paramString)
-  {
-    this.b.put(paramString, paramatcm);
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString == null)
+    boolean bool = true;
+    GetVirtualListResult localGetVirtualListResult = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a));
+    if (localGetVirtualListResult != null)
     {
-      this.b.clear();
-      return;
-    }
-    this.b.remove(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2, List<String> paramList, atcl paramatcl)
-  {
-    long l1 = System.currentTimeMillis();
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j) {
-        try
-        {
-          paramList.set(i, URLDecoder.decode((String)paramList.get(i), "UTF-8"));
-          i += 1;
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
-        {
-          for (;;)
-          {
-            localUnsupportedEncodingException.printStackTrace();
-            if (QLog.isDevelopLevel()) {
-              QLog.i("OpenJsBridge", 4, "[getResult]decode failed: " + (String)paramList.get(i));
-            }
-          }
-        }
+      QLog.d("OpenAuthorityFragment", 1, "getVirtualList onSuccess null != virtualResult");
+      bfrs localbfrs = this.a.jdField_a_of_type_Bfrs;
+      if (localGetVirtualListResult.a == 0) {}
+      for (;;)
+      {
+        localbfrs.a(bool, localGetVirtualListResult);
+        return;
+        bool = false;
       }
     }
-    long l2 = System.currentTimeMillis();
-    bfhg.b("OpenJsBridge", "[getResult]time4-time3=" + (l2 - l1));
-    paramString1 = (atcm)this.b.get(paramString1);
-    if (paramString1 != null) {
-      paramString1.call(paramString2, paramList, paramatcl);
-    }
-    while (!(paramatcl instanceof bfff)) {
-      return;
-    }
-    ((bfff)paramatcl).b(paramString2);
+    QLog.d("OpenAuthorityFragment", 1, "getVirtualList onSuccess null == virtualResult");
+    this.a.jdField_a_of_type_Bfrs.a(false, null);
   }
   
-  public boolean a(WebView paramWebView, String paramString)
+  public void a(int paramInt, String paramString)
   {
-    if (paramString == null) {}
-    Uri localUri;
-    do
-    {
-      return false;
-      localUri = Uri.parse(paramString);
-    } while ((localUri == null) || (localUri.getScheme() == null) || (!localUri.getScheme().equals("jsbridge")));
-    bfhg.b("OpenJsBridge", "[canHandleUrl] AsyncInterface_start:" + paramString);
-    ThreadManager.executeOnSubThread(new OpenJsBridge.1(this, paramString, paramWebView));
-    return true;
+    QLog.d("OpenAuthorityFragment", 1, new Object[] { "getVirtualList onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
+    this.a.jdField_a_of_type_Bfrs.a(false, null);
   }
 }
 

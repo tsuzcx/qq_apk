@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
-import java.util.List;
+import java.util.Comparator;
 
-public abstract interface aldo
+class aldo
+  implements Comparator<alen>
 {
-  public abstract void a(aldp paramaldp);
+  aldo(aldl paramaldl) {}
   
-  public abstract void a(List<TraceData> paramList);
-  
-  public abstract void b(List<TraceData> paramList);
+  public int a(alen paramalen1, alen paramalen2)
+  {
+    return paramalen1.h - paramalen2.h;
+  }
 }
 
 

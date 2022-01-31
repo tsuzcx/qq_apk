@@ -1,10 +1,26 @@
-public abstract interface anbt
+import android.text.TextUtils;
+
+public class anbt
 {
-  public abstract void a();
+  public String a;
+  public String b;
+  public String c;
   
-  public abstract void a(int paramInt);
+  public String a()
+  {
+    if (TextUtils.isEmpty(this.b)) {
+      return "";
+    }
+    return this.b;
+  }
   
-  public abstract void b();
+  public String b()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return "";
+    }
+    return this.c;
+  }
 }
 
 

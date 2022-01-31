@@ -14,6 +14,8 @@ import com.tencent.biz.qqcircle.events.QCirclePushUpdateEvent;
 import com.tencent.biz.qqcircle.events.QCircleTaskCenterEvent;
 import com.tencent.biz.qqcircle.requests.QCircleDoRecommendRequest;
 import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.network.utils.NetworkUtils;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -21,6 +23,8 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import feedcloud.FeedCloudMeta.StFeed;
@@ -32,25 +36,25 @@ import java.util.Timer;
 import qqcircle.QQCircleFeedBase.StFeedBusiReqData;
 import tqt;
 import tra;
-import tvo;
-import tvq;
-import tvr;
-import ucg;
-import uch;
-import uci;
-import ucj;
-import ucl;
-import yej;
-import yel;
-import ygq;
-import yte;
+import tvz;
+import twb;
+import twc;
+import ufb;
+import ufc;
+import ufd;
+import ufe;
+import ufg;
+import yiw;
+import yiy;
+import yld;
+import yxt;
 
 public class QCircleRecommendImageView
   extends ImageView
-  implements yel
+  implements yiy
 {
-  private static Map<String, tvq> jdField_a_of_type_JavaUtilMap;
-  private static tvo jdField_a_of_type_Tvo = new tvo();
+  private static Map<String, twb> jdField_a_of_type_JavaUtilMap;
+  private static tvz jdField_a_of_type_Tvz = new tvz();
   private static boolean jdField_a_of_type_Boolean;
   private static int g = 300;
   private static final int h = QzoneConfig.getQQCircleMaxPushCount();
@@ -62,7 +66,7 @@ public class QCircleRecommendImageView
   private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
   private FeedCloudMeta.StPushList jdField_a_of_type_FeedcloudFeedCloudMeta$StPushList;
   private Timer jdField_a_of_type_JavaUtilTimer;
-  private ucl jdField_a_of_type_Ucl;
+  private ufg jdField_a_of_type_Ufg;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
   private QQAnimationDrawable jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable;
@@ -78,9 +82,9 @@ public class QCircleRecommendImageView
   
   static
   {
-    jdField_a_of_type_Tvo.a(new tvr("https://down.qq.com/video_story/qcircle/animation/icon_start_recommend.zip"));
-    jdField_a_of_type_Tvo.a(new tvr("https://down.qq.com/video_story/qcircle/animation/icon_end_recommend.zip"));
-    jdField_a_of_type_Tvo.a(new tvr("https://down.qq.com/video_story/qcircle/animation/qcircle_follow_tab_push_icon_end.zip"));
+    jdField_a_of_type_Tvz.a(new twc("https://down.qq.com/video_story/qcircle/animation/icon_start_recommend.zip"));
+    jdField_a_of_type_Tvz.a(new twc("https://down.qq.com/video_story/qcircle/animation/icon_end_recommend.zip"));
+    jdField_a_of_type_Tvz.a(new twc("https://down.qq.com/video_story/qcircle/animation/qcircle_follow_tab_push_icon_end.zip"));
   }
   
   public QCircleRecommendImageView(Context paramContext)
@@ -107,10 +111,10 @@ public class QCircleRecommendImageView
     {
       if ((jdField_a_of_type_JavaUtilMap != null) && (jdField_a_of_type_JavaUtilMap.containsKey(paramString)))
       {
-        paramString = (tvq)jdField_a_of_type_JavaUtilMap.get(paramString);
+        paramString = (twb)jdField_a_of_type_JavaUtilMap.get(paramString);
         if (paramString != null)
         {
-          paramString = ygq.a(paramString.b);
+          paramString = yld.a(paramString.b);
           if ((paramString != null) && (paramString.length > 0))
           {
             QQAnimationDrawable localQQAnimationDrawable = new QQAnimationDrawable();
@@ -122,7 +126,7 @@ public class QCircleRecommendImageView
     }
     catch (Exception paramString)
     {
-      QLog.e("QCircleRecommend", 1, "getAnimationDrawable error" + paramString.getMessage());
+      QLog.e("QCircleRecommend_", 1, "getAnimationDrawable error" + paramString.getMessage());
       paramString.printStackTrace();
     }
     return null;
@@ -130,8 +134,8 @@ public class QCircleRecommendImageView
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Ucl != null) {
-      this.jdField_a_of_type_Ucl.a(paramInt);
+    if (this.jdField_a_of_type_Ufg != null) {
+      this.jdField_a_of_type_Ufg.a(paramInt);
     }
   }
   
@@ -139,27 +143,37 @@ public class QCircleRecommendImageView
   {
     if (paramInt1 == 0)
     {
-      QLog.d("QCircleRecommend", 1, "fuel is use up: " + paramInt2);
-      tqt.a().a(getContext(), getContext().getString(2131698284, new Object[] { Integer.valueOf(paramInt2) }));
+      QLog.d("QCircleRecommend_", 1, "fuel is use up: " + paramInt2);
+      tqt.a().a(getContext(), getContext().getString(2131698286, new Object[] { Integer.valueOf(paramInt2) }));
       j();
       return;
     }
     if (paramInt1 <= i)
     {
-      QLog.d("QCircleRecommend", 1, "fuel is not enough: " + paramInt2);
-      tqt.a().a(getContext(), getContext().getString(2131698320, new Object[] { Integer.valueOf(paramInt2) }));
+      QLog.d("QCircleRecommend_", 1, "fuel is not enough: " + paramInt2);
+      tqt.a().a(getContext(), getContext().getString(2131698329, new Object[] { Integer.valueOf(paramInt2) }));
       return;
     }
-    QLog.d("QCircleRecommend", 1, "fuel is enough: " + paramInt2);
-    tqt.a().a(getContext(), getResources().getString(2131698362, new Object[] { Integer.valueOf(paramInt2) }));
+    QLog.d("QCircleRecommend_", 1, "fuel is enough: " + paramInt2);
+    tqt.a().a(getContext(), getResources().getString(2131698374, new Object[] { Integer.valueOf(paramInt2) }));
+  }
+  
+  private void a(String paramString)
+  {
+    if (!NetworkUtils.isNetworkAvailable(BaseApplicationImpl.getContext()))
+    {
+      QQToast.a(BaseApplicationImpl.getContext(), 1, BaseApplicationImpl.getContext().getResources().getString(2131694779), 0).a();
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, paramString, 0).a();
   }
   
   private void a(boolean paramBoolean)
   {
     if (!jdField_a_of_type_Boolean)
     {
-      jdField_a_of_type_Tvo.a(new uci(this, paramBoolean));
-      jdField_a_of_type_Tvo.a();
+      jdField_a_of_type_Tvz.a(new ufd(this, paramBoolean));
+      jdField_a_of_type_Tvz.a();
       return;
     }
     try
@@ -169,7 +183,7 @@ public class QCircleRecommendImageView
     }
     catch (Exception localException)
     {
-      QLog.i("QCircleRecommend", 1, "playError " + localException.getMessage());
+      QLog.i("QCircleRecommend_", 1, "playError " + localException.getMessage());
       localException.printStackTrace();
     }
   }
@@ -180,18 +194,18 @@ public class QCircleRecommendImageView
     {
       if ((this.jdField_d_of_type_Int == 1) || (this.jdField_d_of_type_Int == 3))
       {
-        setBackgroundDrawable(getResources().getDrawable(2130843572));
+        setBackgroundDrawable(getResources().getDrawable(2130843589));
         return;
       }
       if (this.jdField_d_of_type_Int == 2)
       {
-        setBackgroundDrawable(getResources().getDrawable(2130843557));
+        setBackgroundDrawable(getResources().getDrawable(2130843572));
         return;
       }
     }
     catch (Exception localException)
     {
-      QLog.e("QCircleRecommend", 1, "showRecommendView setBackgroundDrawable error");
+      QLog.e("QCircleRecommend_", 1, "showRecommendView setBackgroundDrawable error");
     }
   }
   
@@ -211,18 +225,18 @@ public class QCircleRecommendImageView
     {
       if ((this.jdField_d_of_type_Int == 1) || (this.jdField_d_of_type_Int == 3))
       {
-        setBackgroundDrawable(getResources().getDrawable(2130843571));
+        setBackgroundDrawable(getResources().getDrawable(2130843588));
         return;
       }
       if (this.jdField_d_of_type_Int == 2)
       {
-        setBackgroundDrawable(getResources().getDrawable(2130843556));
+        setBackgroundDrawable(getResources().getDrawable(2130843571));
         return;
       }
     }
     catch (Exception localException)
     {
-      QLog.e("QCircleRecommend", 1, "showUnRecommendView setBackgroundDrawable error");
+      QLog.e("QCircleRecommend_", 1, "showUnRecommendView setBackgroundDrawable error");
     }
   }
   
@@ -233,13 +247,13 @@ public class QCircleRecommendImageView
       if (this.jdField_d_of_type_Int != 2) {
         break label30;
       }
-      setBackgroundDrawable(getResources().getDrawable(2130843548));
+      setBackgroundDrawable(getResources().getDrawable(2130843563));
     }
     label30:
     while ((this.jdField_d_of_type_Int != 1) && (this.jdField_d_of_type_Int != 3)) {
       return;
     }
-    setBackgroundDrawable(getResources().getDrawable(2130843565));
+    setBackgroundDrawable(getResources().getDrawable(2130843582));
   }
   
   private void e()
@@ -249,9 +263,15 @@ public class QCircleRecommendImageView
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable = a("https://down.qq.com/video_story/qcircle/animation/icon_start_recommend.zip");
+    if (this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable == null)
+    {
+      QLog.d("QCircleRecommend_", 1, "mStartAnimationDrawable is null");
+      g();
+      return;
+    }
     this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(true);
     this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(480L);
-    this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(new ucg(this));
+    this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(new ufb(this));
     setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable);
     this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.start();
   }
@@ -261,42 +281,51 @@ public class QCircleRecommendImageView
     if ((this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable != null) && (this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.isRunning())) {
       return;
     }
-    if (this.jdField_d_of_type_Int == 2) {}
-    for (this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable = a("https://down.qq.com/video_story/qcircle/animation/icon_end_recommend.zip");; this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable = a("https://down.qq.com/video_story/qcircle/animation/qcircle_follow_tab_push_icon_end.zip"))
+    if (this.jdField_d_of_type_Int == 2) {
+      this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable = a("https://down.qq.com/video_story/qcircle/animation/icon_end_recommend.zip");
+    }
+    while (this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable == null)
     {
-      this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(true);
-      this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(250L);
-      this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(new uch(this));
-      postDelayed(new QCircleRecommendImageView.3(this), 250L);
-      setImageDrawable(this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable);
-      this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.start();
+      QLog.d("QCircleRecommend_", 1, "mStartAnimationDrawable is null");
+      g();
       return;
-      if ((this.jdField_d_of_type_Int != 1) && (this.jdField_d_of_type_Int != 3)) {
-        break;
+      if ((this.jdField_d_of_type_Int == 1) || (this.jdField_d_of_type_Int == 3))
+      {
+        this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable = a("https://down.qq.com/video_story/qcircle/animation/qcircle_follow_tab_push_icon_end.zip");
+      }
+      else
+      {
+        QLog.e("QCircleRecommend_", 1, "showEnd error pageType" + this.jdField_d_of_type_Int);
+        return;
       }
     }
-    QLog.e("QCircleRecommend", 1, "showEnd error pageType" + this.jdField_d_of_type_Int);
+    this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(true);
+    this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(250L);
+    this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(new ufc(this));
+    postDelayed(new QCircleRecommendImageView.3(this), 250L);
+    setImageDrawable(this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable);
+    this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.start();
   }
   
   private void g()
   {
-    yte.b(QCircleDoRecommendRequest.class.getSimpleName(), g, new ucj(this));
+    yxt.b(QCircleDoRecommendRequest.class.getSimpleName(), g, new ufe(this));
   }
   
   private void h()
   {
-    tqt.a().a(getContext(), getContext().getResources().getString(2131698275));
+    tqt.a().a(getContext(), getContext().getResources().getString(2131698277));
   }
   
   private void i()
   {
-    tqt.a().a(getContext(), getContext().getString(2131698332, new Object[] { Integer.valueOf(h) }));
+    tqt.a().a(getContext(), getContext().getString(2131698341, new Object[] { Integer.valueOf(h) }));
   }
   
   private void j()
   {
     QCircleTaskCenterEvent localQCircleTaskCenterEvent = new QCircleTaskCenterEvent(getContext().hashCode(), true);
-    yej.a().a(localQCircleTaskCenterEvent);
+    yiw.a().a(localQCircleTaskCenterEvent);
   }
   
   private void k()
@@ -321,77 +350,9 @@ public class QCircleRecommendImageView
     return this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
   }
   
-  public ArrayList<Class> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(QCirclePushAnimationStateEvent.class);
-    localArrayList.add(QCirclePushUpdateEvent.class);
-    return localArrayList;
-  }
-  
   protected void a()
   {
     c();
-  }
-  
-  public void a(SimpleBaseEvent paramSimpleBaseEvent)
-  {
-    if ((paramSimpleBaseEvent.mHashCode == hashCode()) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed == null)) {
-      QLog.d("QCircleRecommend", 1, "receive event sent by self or feed is null");
-    }
-    for (;;)
-    {
-      return;
-      Object localObject;
-      if ((paramSimpleBaseEvent instanceof QCirclePushAnimationStateEvent))
-      {
-        localObject = (QCirclePushAnimationStateEvent)paramSimpleBaseEvent;
-        QLog.d("QCircleRecommend", 1, "mTargetFeedId:" + ((QCirclePushAnimationStateEvent)localObject).mTargetFeedId + "mPage" + ((QCirclePushAnimationStateEvent)localObject).mSceneType);
-        if ((((QCirclePushAnimationStateEvent)localObject).mTargetFeedId.equals(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get())) && (((QCirclePushAnimationStateEvent)localObject).mSceneType == this.jdField_d_of_type_Int)) {
-          a(false);
-        }
-      }
-      if ((paramSimpleBaseEvent instanceof QCirclePushUpdateEvent))
-      {
-        paramSimpleBaseEvent = (QCirclePushUpdateEvent)paramSimpleBaseEvent;
-        if (paramSimpleBaseEvent.mTargetFeedId.equals(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get())) {
-          localObject = new QQCircleFeedBase.StFeedBusiReqData();
-        }
-      }
-      try
-      {
-        ((QQCircleFeedBase.StFeedBusiReqData)localObject).mergeFrom(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.busiData.get().toByteArray());
-        if (((QQCircleFeedBase.StFeedBusiReqData)localObject).pushList != null)
-        {
-          if (paramSimpleBaseEvent.mAllPushTimes <= 0) {
-            break label280;
-          }
-          bool = true;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramSimpleBaseEvent)
-      {
-        for (;;)
-        {
-          paramSimpleBaseEvent.printStackTrace();
-          return;
-          boolean bool = false;
-        }
-      }
-      catch (Exception paramSimpleBaseEvent)
-      {
-        QLog.e("QCircleRecommend", 1, "receiveEvent error" + paramSimpleBaseEvent.getMessage());
-        paramSimpleBaseEvent.printStackTrace();
-      }
-    }
-    b(bool);
-    this.jdField_a_of_type_Int = paramSimpleBaseEvent.mAllPushTimes;
-    this.jdField_b_of_type_Int = paramSimpleBaseEvent.mAllPushTimes;
-    QLog.d("QCircleRecommend", 1, "hasLikeCount" + this.jdField_a_of_type_Int);
-    ((QQCircleFeedBase.StFeedBusiReqData)localObject).pushList.hasClickCount.set(paramSimpleBaseEvent.mAllPushTimes);
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.busiData.set(ByteStringMicro.copyFrom(((QQCircleFeedBase.StFeedBusiReqData)localObject).toByteArray()));
-    return;
-    label280:
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -445,7 +406,7 @@ public class QCircleRecommendImageView
         break label333;
       }
       this.jdField_c_of_type_Int = 1;
-      yej.a().a(new QCirclePushAnimationEvent(a().id.get(), 1, 1, this.jdField_d_of_type_Int));
+      yiw.a().a(new QCirclePushAnimationEvent(a().id.get(), 1, 1, this.jdField_d_of_type_Int));
     }
     for (;;)
     {
@@ -457,20 +418,88 @@ public class QCircleRecommendImageView
       break label269;
       label333:
       this.jdField_c_of_type_Int += 1;
-      yej.a().a(new QCirclePushAnimationEvent(a().id.get(), this.jdField_c_of_type_Int, 2, this.jdField_d_of_type_Int));
+      yiw.a().a(new QCirclePushAnimationEvent(a().id.get(), this.jdField_c_of_type_Int, 2, this.jdField_d_of_type_Int));
     }
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(QCirclePushAnimationStateEvent.class);
+    localArrayList.add(QCirclePushUpdateEvent.class);
+    return localArrayList;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    yej.a().a(this);
+    yiw.a().a(this);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    yej.a().b(this);
+    yiw.a().b(this);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if ((paramSimpleBaseEvent.mHashCode == hashCode()) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed == null)) {
+      QLog.d("QCircleRecommend_", 1, "receive event sent by self or feed is null");
+    }
+    for (;;)
+    {
+      return;
+      Object localObject;
+      if ((paramSimpleBaseEvent instanceof QCirclePushAnimationStateEvent))
+      {
+        localObject = (QCirclePushAnimationStateEvent)paramSimpleBaseEvent;
+        QLog.d("QCircleRecommend_", 1, "mTargetFeedId:" + ((QCirclePushAnimationStateEvent)localObject).mTargetFeedId + "mPage" + ((QCirclePushAnimationStateEvent)localObject).mSceneType);
+        if ((((QCirclePushAnimationStateEvent)localObject).mTargetFeedId.equals(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get())) && (((QCirclePushAnimationStateEvent)localObject).mSceneType == this.jdField_d_of_type_Int)) {
+          a(false);
+        }
+      }
+      if ((paramSimpleBaseEvent instanceof QCirclePushUpdateEvent))
+      {
+        paramSimpleBaseEvent = (QCirclePushUpdateEvent)paramSimpleBaseEvent;
+        if (paramSimpleBaseEvent.mTargetFeedId.equals(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get())) {
+          localObject = new QQCircleFeedBase.StFeedBusiReqData();
+        }
+      }
+      try
+      {
+        ((QQCircleFeedBase.StFeedBusiReqData)localObject).mergeFrom(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.busiData.get().toByteArray());
+        if (((QQCircleFeedBase.StFeedBusiReqData)localObject).pushList != null)
+        {
+          if (paramSimpleBaseEvent.mAllPushTimes <= 0) {
+            break label280;
+          }
+          bool = true;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramSimpleBaseEvent)
+      {
+        for (;;)
+        {
+          paramSimpleBaseEvent.printStackTrace();
+          return;
+          boolean bool = false;
+        }
+      }
+      catch (Exception paramSimpleBaseEvent)
+      {
+        QLog.e("QCircleRecommend_", 1, "receiveEvent error" + paramSimpleBaseEvent.getMessage());
+        paramSimpleBaseEvent.printStackTrace();
+      }
+    }
+    b(bool);
+    this.jdField_a_of_type_Int = paramSimpleBaseEvent.mAllPushTimes;
+    this.jdField_b_of_type_Int = paramSimpleBaseEvent.mAllPushTimes;
+    QLog.d("QCircleRecommend_", 1, "hasLikeCount" + this.jdField_a_of_type_Int);
+    ((QQCircleFeedBase.StFeedBusiReqData)localObject).pushList.hasClickCount.set(paramSimpleBaseEvent.mAllPushTimes);
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.busiData.set(ByteStringMicro.copyFrom(((QQCircleFeedBase.StFeedBusiReqData)localObject).toByteArray()));
+    return;
+    label280:
   }
   
   public void setFeedData(FeedCloudMeta.StFeed paramStFeed, int paramInt)
@@ -497,7 +526,7 @@ public class QCircleRecommendImageView
         b(bool);
         this.jdField_a_of_type_Int = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StPushList.hasClickCount.get();
         this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-        QLog.d("QCircleRecommend", 1, "hashCode" + hashCode() + "feedId:" + this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get() + "  hasClickCount" + this.jdField_a_of_type_Int);
+        QLog.d("QCircleRecommend_", 1, "hashCode" + hashCode() + "feedId:" + this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get() + "  hasClickCount" + this.jdField_a_of_type_Int);
         return;
         label170:
         bool = false;
@@ -515,9 +544,9 @@ public class QCircleRecommendImageView
     this.jdField_d_of_type_Int = paramInt;
   }
   
-  public void setReportListener(ucl paramucl)
+  public void setReportListener(ufg paramufg)
   {
-    this.jdField_a_of_type_Ucl = paramucl;
+    this.jdField_a_of_type_Ufg = paramufg;
   }
 }
 

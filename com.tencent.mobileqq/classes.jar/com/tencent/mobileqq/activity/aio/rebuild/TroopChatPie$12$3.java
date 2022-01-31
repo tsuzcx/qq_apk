@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agqx;
-import bblf;
-import bblx;
+import agvm;
+import bbpo;
+import bbqg;
 
 public class TroopChatPie$12$3
   implements Runnable
 {
-  public TroopChatPie$12$3(agqx paramagqx) {}
+  public TroopChatPie$12$3(agvm paramagvm) {}
   
   public void run()
   {

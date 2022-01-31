@@ -1,24 +1,25 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.12.1;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
 
 public class acqz
-  extends alox
+  implements acln
 {
-  public acqz(EditInfoActivity paramEditInfoActivity) {}
+  public acqz(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  public void a()
   {
-    if (!this.a.f.equals(paramString1)) {}
-    while (!this.a.j) {
-      return;
-    }
-    this.a.j = false;
-    this.a.runOnUiThread(new EditInfoActivity.12.1(this, paramBoolean, paramString2));
+    this.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acqz
  * JD-Core Version:    0.7.0.1
  */

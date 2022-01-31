@@ -1,39 +1,36 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 
-public class bejj
-  implements TextWatcher
+class bejj
+  implements TouchWebView.OnScrollChangedListener
 {
-  public bejj(ClearableEditText paramClearableEditText) {}
+  bejj(bejh parambejh) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    paramCharSequence = this.a.getText().toString();
-    if (this.a.isFocused())
+    if (System.currentTimeMillis() - this.a.a > 1000L)
     {
-      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
-        this.a.setClearButtonVisible(false);
+      paramInt1 = paramInt2 - paramInt4;
+      if (paramInt1 <= 0) {
+        break label55;
+      }
+      if (Math.abs(paramInt1) > 50)
+      {
+        this.a.b(false);
+        this.a.a = System.currentTimeMillis();
       }
     }
-    else {
+    label55:
+    while (Math.abs(paramInt1) <= 50) {
       return;
     }
-    if ((ClearableEditText.a(this.a)) || (ClearableEditText.b(this.a)))
-    {
-      this.a.setClearButtonVisible(true);
-      return;
-    }
-    this.a.setClearButtonVisible(false);
+    this.a.b(true);
+    this.a.a = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bejj
  * JD-Core Version:    0.7.0.1
  */

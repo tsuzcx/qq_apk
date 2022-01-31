@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amqu;
-import amro;
+import amvj;
+import amwd;
 
 public class MultiFragmentAnimRenderable$4
   implements Runnable
@@ -9,8 +9,8 @@ public class MultiFragmentAnimRenderable$4
   public void run()
   {
     this.this$0.f();
-    if (amro.a(this.this$0) != null) {
-      amro.a(this.this$0).b(1, 0);
+    if (amwd.a(this.this$0) != null) {
+      amwd.a(this.this$0).b(1, 0);
     }
   }
 }

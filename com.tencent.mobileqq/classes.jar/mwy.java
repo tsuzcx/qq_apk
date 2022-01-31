@@ -4,14 +4,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class mwy
 {
-  private awbw jdField_a_of_type_Awbw;
-  private awbx jdField_a_of_type_Awbx;
-  private ConcurrentHashMap<String, awbv> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private awgf jdField_a_of_type_Awgf;
+  private awgg jdField_a_of_type_Awgg;
+  private ConcurrentHashMap<String, awge> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
   public mwy(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_Awbx = paramVideoAppInterface.getEntityManagerFactory(paramVideoAppInterface.getCurrentAccountUin());
-    this.jdField_a_of_type_Awbw = this.jdField_a_of_type_Awbx.createEntityManager();
+    this.jdField_a_of_type_Awgg = paramVideoAppInterface.getEntityManagerFactory(paramVideoAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_Awgf = this.jdField_a_of_type_Awgg.createEntityManager();
   }
   
   public ExtensionInfo a(String paramString)
@@ -38,7 +38,7 @@ public class mwy
         }
         ??? = localObject2;
       } while (localObject2 != null);
-      localObject2 = (ExtensionInfo)this.jdField_a_of_type_Awbw.a(ExtensionInfo.class, paramString);
+      localObject2 = (ExtensionInfo)this.jdField_a_of_type_Awgf.a(ExtensionInfo.class, paramString);
       ??? = localObject2;
     } while (localObject2 == null);
     synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)

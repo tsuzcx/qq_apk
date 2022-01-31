@@ -23,14 +23,14 @@ public class phd
   extends pgp
 {
   protected long a;
-  private alvc jdField_a_of_type_Alvc = new phe(this);
+  private alzr jdField_a_of_type_Alzr = new phe(this);
   private List<sut> jdField_a_of_type_JavaUtilList;
   private volatile boolean jdField_a_of_type_Boolean;
   private Handler b = new phf(this, ThreadManager.getSubThreadLooper());
   
-  public phd(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public phd(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
     this.jdField_a_of_type_Long = 2000L;
   }
   
@@ -59,7 +59,7 @@ public class phd
   
   public void a()
   {
-    this.jdField_a_of_type_Alvc = null;
+    this.jdField_a_of_type_Alzr = null;
     if (this.b != null)
     {
       this.b.removeCallbacksAndMessages(null);
@@ -90,7 +90,7 @@ public class phd
     for (int i = localsut.b;; i = 0)
     {
       f();
-      azmj.b(null, "dc00899", "Pb_account_lifeservice", paramString, "0X80064CD", "0X80064CD", 0, 0, "" + i, "" + j, "", "");
+      azqs.b(null, "dc00899", "Pb_account_lifeservice", paramString, "0X80064CD", "0X80064CD", 0, 0, "" + i, "" + j, "", "");
       return;
     }
   }
@@ -116,7 +116,7 @@ public class phd
     } while ((localsut.a == null) || (!localsut.a.equals(paramString)));
     for (int i = localsut.b;; i = 0)
     {
-      azmj.b(null, "dc00899", "Pb_account_lifeservice", paramString, "0X80064CF", "0X80064CF", 0, 0, "" + i, "", "", "");
+      azqs.b(null, "dc00899", "Pb_account_lifeservice", paramString, "0X80064CF", "0X80064CF", 0, 0, "" + i, "", "", "");
       return;
     }
   }
@@ -147,7 +147,7 @@ public class phd
     for (int i = localsut.b;; i = 0)
     {
       f();
-      azmj.b(null, "dc00899", "Pb_account_lifeservice", paramString, "0X80064CE", "0X80064CE", 0, 0, "" + i, "" + j, "", "");
+      azqs.b(null, "dc00899", "Pb_account_lifeservice", paramString, "0X80064CE", "0X80064CE", 0, 0, "" + i, "" + j, "", "");
       return;
     }
   }
@@ -184,7 +184,7 @@ public class phd
     } while ((localsut.a == null) || (!localsut.a.equals(paramString)));
     for (int i = localsut.b;; i = 0)
     {
-      azmj.b(null, "dc00899", "Pb_account_lifeservice", paramString, "0X80064D0", "0X80064D0", 0, 0, "" + i, "", "", "");
+      azqs.b(null, "dc00899", "Pb_account_lifeservice", paramString, "0X80064D0", "0X80064D0", 0, 0, "" + i, "", "", "");
       return;
     }
   }

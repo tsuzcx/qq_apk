@@ -1,11 +1,11 @@
 package com.tencent.mm.hardcoder;
 
-import absd;
+import abws;
 
 public class HardCoderManager$2
   implements Runnable
 {
-  public HardCoderManager$2(absd paramabsd) {}
+  public HardCoderManager$2(abws paramabws) {}
   
   public void run()
   {

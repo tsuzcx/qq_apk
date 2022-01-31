@@ -1,79 +1,36 @@
-import android.content.Context;
 import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 
-class bmuf
-  extends bmua<bmud>
+public class bmuf
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367786);
-  private ImageView b = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367787);
-  private ImageView c = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370638);
-  private ImageView d = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370639);
+  @NonNull
+  public final bmqe a;
+  @NonNull
+  public final bmqf a;
+  @NonNull
+  public final bmqg a;
+  @NonNull
+  public final bmqp a;
+  @NonNull
+  public final bmqs a;
+  @NonNull
+  public final bmqw a;
+  public final ArrayList<bmri> a;
   
-  private bmuf(bmud parambmud, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public bmuf(@NonNull bmqw parambmqw, @NonNull bmqs parambmqs, @NonNull bmqg parambmqg, @NonNull bmqe parambmqe, @NonNull bmqp parambmqp, @NonNull bmqf parambmqf)
   {
-    super(paramContext, paramViewGroup);
-  }
-  
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131561573, paramViewGroup, false);
-  }
-  
-  void a(ImageView paramImageView, char paramChar)
-  {
-    switch (paramChar)
-    {
-    default: 
-      return;
-    case '0': 
-      paramImageView.setImageResource(2130846162);
-      return;
-    case '1': 
-      paramImageView.setImageResource(2130846163);
-      return;
-    case '2': 
-      paramImageView.setImageResource(2130846164);
-      return;
-    case '3': 
-      paramImageView.setImageResource(2130846165);
-      return;
-    case '4': 
-      paramImageView.setImageResource(2130846166);
-      return;
-    case '5': 
-      paramImageView.setImageResource(2130846167);
-      return;
-    case '6': 
-      paramImageView.setImageResource(2130846168);
-      return;
-    case '7': 
-      paramImageView.setImageResource(2130846169);
-      return;
-    case '8': 
-      paramImageView.setImageResource(2130846170);
-      return;
-    }
-    paramImageView.setImageResource(2130846171);
-  }
-  
-  public void a(bmud parambmud, int paramInt)
-  {
-    super.a(parambmud, paramInt);
-    parambmud = new SimpleDateFormat("HH:mm");
-    ((bmud)this.jdField_a_of_type_Bmtz).c = parambmud.format(new Date());
-    wsv.b("TimeFilterData", "TimeFilterData time:" + ((bmud)this.jdField_a_of_type_Bmtz).c);
-    a(this.jdField_a_of_type_AndroidWidgetImageView, ((bmud)this.jdField_a_of_type_Bmtz).c.charAt(0));
-    a(this.b, ((bmud)this.jdField_a_of_type_Bmtz).c.charAt(1));
-    a(this.c, ((bmud)this.jdField_a_of_type_Bmtz).c.charAt(3));
-    a(this.d, ((bmud)this.jdField_a_of_type_Bmtz).c.charAt(4));
-    paramInt = xod.d(this.jdField_a_of_type_AndroidViewView.getContext());
-    this.jdField_a_of_type_AndroidViewView.setPadding(0, paramInt / 3 * 2, 0, 0);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Bmqw = parambmqw;
+    this.jdField_a_of_type_Bmqs = parambmqs;
+    this.jdField_a_of_type_Bmqg = parambmqg;
+    this.jdField_a_of_type_Bmqe = parambmqe;
+    this.jdField_a_of_type_Bmqf = parambmqf;
+    this.jdField_a_of_type_Bmqp = parambmqp;
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambmqg);
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambmqe);
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambmqs);
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambmqw);
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambmqp);
   }
 }
 

@@ -1,10 +1,6 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-
-public class ance
-  extends ancd
+public abstract interface ance
 {
-  public void a(AppInterface paramAppInterface, Bundle paramBundle) {}
+  public abstract void a(ancg paramancg);
 }
 
 

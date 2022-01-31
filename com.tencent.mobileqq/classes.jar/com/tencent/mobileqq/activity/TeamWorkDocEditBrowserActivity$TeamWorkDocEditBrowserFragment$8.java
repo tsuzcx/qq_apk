@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import badg;
+import bahp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -24,7 +24,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$8
       }
       ((JSONObject)localObject).put("prvurl", this.a);
       String str = String.format("https://%s.docs.qq.com/preview/imp/save_to_mylist", new Object[] { this.this$0.a.getCurrentAccountUin() });
-      localObject = badg.b((JSONObject)localObject, this.this$0.a.getCurrentAccountUin(), str, "docs.qq.com");
+      localObject = bahp.b((JSONObject)localObject, this.this$0.a.getCurrentAccountUin(), str, "docs.qq.com");
       this.this$0.c((String)localObject);
       return;
     }

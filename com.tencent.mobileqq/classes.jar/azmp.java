@@ -1,20 +1,14 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.soload.LoadExtResult;
 
-public class azmp
+public abstract interface azmp
 {
-  public static void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    paramString1 = new Exception(paramString1);
-    if (paramString2 == null)
-    {
-      azlf.a(paramString1);
-      return;
-    }
-    azlf.a(paramString1, paramString2);
-  }
+  public abstract LoadExtResult a(azms paramazms);
+  
+  public abstract void a(azms paramazms, azmw paramazmw);
+  
+  public abstract void a(String paramString);
+  
+  public abstract boolean a(String paramString);
 }
 
 

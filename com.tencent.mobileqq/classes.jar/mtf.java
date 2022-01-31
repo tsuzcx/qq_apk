@@ -1,5 +1,5 @@
 final class mtf
-  implements bhqf
+  implements bhum
 {
   public void onDismiss() {}
 }

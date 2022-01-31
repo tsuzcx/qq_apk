@@ -1,6 +1,36 @@
-public abstract interface aamg
+import com.tencent.ad.tangram.log.AdLogAdapter;
+import com.tencent.qphone.base.util.QLog;
+
+public final class aamg
+  implements AdLogAdapter
 {
-  public abstract aami a(aamh paramaamh);
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
 }
 
 

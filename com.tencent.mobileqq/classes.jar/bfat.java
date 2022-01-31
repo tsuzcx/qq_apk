@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import org.json.JSONObject;
+import android.os.Bundle;
 
 public class bfat
-  implements DialogInterface.OnClickListener
+  extends bfas
 {
-  public bfat(OpenAuthorityFragment paramOpenAuthorityFragment, int paramInt, JSONObject paramJSONObject) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bfat(Bundle paramBundle)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    super(paramBundle);
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    paramString1 = this.a.getBundle(paramString1);
+    if (paramString1 != null) {
+      return paramString1.getString(paramString2);
+    }
+    return null;
   }
 }
 

@@ -1,31 +1,8 @@
-import android.app.Activity;
-import android.content.Context;
-import java.lang.ref.WeakReference;
-
-public class ydh
-  extends yax
+public abstract interface ydh
 {
-  protected WeakReference<Context> a;
+  public abstract void a();
   
-  public ydh(Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-    this.a = new WeakReference(paramContext);
-  }
-  
-  public boolean a()
-  {
-    Context localContext = (Context)this.a.get();
-    return ((localContext instanceof Activity)) && (((Activity)localContext).isFinishing());
-  }
-  
-  public void show()
-  {
-    if (a()) {
-      return;
-    }
-    super.show();
-  }
+  public abstract void b();
 }
 
 

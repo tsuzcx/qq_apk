@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
+import android.view.View;
+import com.tencent.mobileqq.screendetect.ScreenShotFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ayfy
-  implements Parcelable.Creator<AssociateSearchWordsFragment.AssociateItem>
+public class ayfy
+  implements ayfr
 {
-  public AssociateSearchWordsFragment.AssociateItem a(Parcel paramParcel)
-  {
-    return new AssociateSearchWordsFragment.AssociateItem(paramParcel);
-  }
+  public ayfy(ScreenShotFragment paramScreenShotFragment) {}
   
-  public AssociateSearchWordsFragment.AssociateItem[] a(int paramInt)
+  public void a(View paramView, int paramInt)
   {
-    return new AssociateSearchWordsFragment.AssociateItem[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotFragment", 2, "ScreenShotInnerAdapter OnItemClickListener : position = " + paramInt + ", view = " + paramView);
+    }
+    ScreenShotFragment.a(this.a, paramInt);
   }
 }
 

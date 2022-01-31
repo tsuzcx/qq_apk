@@ -1,33 +1,24 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class wfb
+  extends SimpleJob<Object>
 {
-  public int a;
-  public CommentEntry a;
-  private int b = -1;
-  
-  wfb(wew paramwew)
+  wfb(wez paramwez, String paramString)
   {
-    this.jdField_a_of_type_Int = -1;
+    super(paramString);
   }
   
-  private void a()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = null;
-    this.jdField_a_of_type_Int = -1;
-    this.b = -1;
-  }
-  
-  public void a(CommentEntry paramCommentEntry, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
-    this.b = paramCommentEntry.commentId;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a(CommentEntry paramCommentEntry)
-  {
-    return paramCommentEntry.commentId != this.b;
+    if (this.a.a == null) {
+      this.a.a = new wfc(this.a, this.a.c);
+    }
+    this.a.d = this.a.a.a;
+    wez.a(this.a);
+    return null;
   }
 }
 

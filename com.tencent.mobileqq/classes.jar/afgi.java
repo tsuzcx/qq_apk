@@ -1,60 +1,128 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.helper.TroopAddFriendTipsHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.TroopAddFriendTipsHelper.2;
+import com.tencent.mobileqq.activity.aio.helper.TroopAddFriendTipsHelper.3;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
+import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public final class afgi
-  extends Drawable.ConstantState
+public class afgi
+  implements affa
 {
-  public int a;
-  public final Paint a;
-  public ArrayList<afgl> a;
-  public boolean a;
-  public int b;
-  public ArrayList<Bitmap> b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public afgi()
+  public afgi(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 160;
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramBaseChatPie.a();
   }
   
-  public int getChangingConfigurations()
+  private void a(String paramString)
   {
-    return 0;
+    Object localObject = (amdu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if (localObject != null)
+    {
+      localObject = ((amdu)localObject).a();
+      if (localObject != null) {
+        ((TroopBatchAddFriendMgr)localObject).g(paramString);
+      }
+    }
   }
   
-  @NonNull
-  public Drawable newDrawable()
+  public void a()
   {
-    return new CustomFrameAnimationDrawable(this, null, null);
+    ThreadManager.post(new TroopAddFriendTipsHelper.1(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("uin")), 2, null, true);
   }
   
-  public Drawable newDrawable(Resources paramResources)
+  public void a(int paramInt)
   {
-    return new CustomFrameAnimationDrawable(this, paramResources, null);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) {}
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 2: 
+      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      return;
+    case 6: 
+      a();
+      return;
+    }
+    a(null);
+  }
+  
+  public void a(MessageRecord paramMessageRecord)
+  {
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    if (!str1.equalsIgnoreCase(paramMessageRecord.frienduin)) {}
+    for (;;)
+    {
+      return;
+      TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((amdu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a();
+      String str2;
+      if ((paramMessageRecord != null) && (paramMessageRecord.msgtype == -1012) && (localTroopBatchAddFriendMgr.b("newMember"))) {
+        str2 = paramMessageRecord.getExtInfoFromExtStr("troop_new_member_uin");
+      }
+      try
+      {
+        QLog.d("TroopAddFriendTipsHelper", 1, "checkTipsTriggerInAio update newMemberUin = " + asrb.a(str2) + " troop:" + str1);
+        if ((localTroopBatchAddFriendMgr.a(str1)) && (!bclg.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str1))) {
+          ThreadManager.getSubThreadHandler().postDelayed(new TroopAddFriendTipsHelper.2(this, str2, str1), 1000L);
+        }
+        if ((paramMessageRecord != null) && (!paramMessageRecord.isSendFromLocal()) && (paramMessageRecord.mMessageInfo != null) && (!nav.a(paramMessageRecord)) && ((paramMessageRecord.mMessageInfo.a.a()) || (paramMessageRecord.mMessageInfo.l.a())) && (localTroopBatchAddFriendMgr.b("atMeOrReplyMe")) && (localTroopBatchAddFriendMgr.e(paramMessageRecord.senderuin))) {
+          localTroopBatchAddFriendMgr.a(str1, paramMessageRecord.senderuin, paramMessageRecord.time, paramMessageRecord.shmsgseq);
+        }
+        if ((paramMessageRecord == null) || (!paramMessageRecord.isSendFromLocal())) {
+          continue;
+        }
+        if (paramMessageRecord.atInfoList != null)
+        {
+          i = 1;
+          if (((i | paramMessageRecord instanceof MessageForReplyText) == 0) || (!localTroopBatchAddFriendMgr.b("atMeOrReplyMe"))) {
+            continue;
+          }
+          localTroopBatchAddFriendMgr.a(paramMessageRecord, str1);
+          return;
+        }
+      }
+      catch (XorCipherException localXorCipherException)
+      {
+        for (;;)
+        {
+          localXorCipherException.printStackTrace();
+          continue;
+          int i = 0;
+        }
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    ThreadManager.postImmediately(new TroopAddFriendTipsHelper.3(this, paramBoolean, paramString), null, true);
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 2, 6, 11 };
   }
 }
 

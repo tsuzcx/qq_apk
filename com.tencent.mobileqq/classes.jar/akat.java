@@ -1,26 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
-public class akat
-  implements Animation.AnimationListener
+class akat
+  implements View.OnClickListener
 {
-  public akat(SpecailCareListActivity paramSpecailCareListActivity, akbh paramakbh) {}
+  akat(akar paramakar) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    paramAnimation = new RelativeLayout.LayoutParams(this.jdField_a_of_type_Akbh.a.getLayoutParams());
-    paramAnimation.addRule(15);
-    paramAnimation.setMargins((int)(12.0F * SpecailCareListActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, (int)(10.0F * SpecailCareListActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0);
-    this.jdField_a_of_type_Akbh.a.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Akbh.a.clearAnimation();
+    GroupManagerActivity.a((Activity)akar.a(this.a));
+    azqs.b(akar.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureSegmentView;
+import dov.com.qq.im.ptv.LightVideoSoDownloadFragment;
+import dov.com.qq.im.ptv.LightVideoSoDownloadFragment.4;
 
-class bmfl
-  implements bmjj
+public class bmfl
+  implements DialogInterface.OnCancelListener
 {
-  bmfl(bmfh parambmfh) {}
+  public bmfl(LightVideoSoDownloadFragment.4 param4) {}
   
-  public void a() {}
-  
-  public void a(TroopBarPOI paramTroopBarPOI)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditProviderPart", 2, "onSelectLocation " + paramTroopBarPOI);
-    }
-    bmfh.a(this.a).setLocation(paramTroopBarPOI);
+    this.a.this$0.a.setCameraPermissionResult(false);
   }
 }
 

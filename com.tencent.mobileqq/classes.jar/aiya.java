@@ -1,30 +1,6 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
-
-public class aiya
-  implements aiyd
+public abstract interface aiya
 {
-  public aiya(DoodleLayout paramDoodleLayout) {}
-  
-  public void a()
-  {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
-    }
-  }
-  
-  public void b()
-  {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(this.a.a(true, false));
-    }
-  }
+  public abstract void a();
 }
 
 

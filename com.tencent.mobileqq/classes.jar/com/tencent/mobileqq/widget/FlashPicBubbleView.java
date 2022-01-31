@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -48,14 +48,14 @@ public class FlashPicBubbleView
   {
     super.onDraw(paramCanvas);
     Object localObject = getResources();
-    Drawable localDrawable1 = ((Resources)localObject).getDrawable(2130846708);
-    Drawable localDrawable2 = ((Resources)localObject).getDrawable(2130846709);
-    localDrawable1.setBounds(0, 0, getWidth(), aekt.a(95.0F, (Resources)localObject));
-    localDrawable2.setBounds(0, aekt.a(95.0F, (Resources)localObject), getWidth(), getHeight());
+    Drawable localDrawable1 = ((Resources)localObject).getDrawable(2130846781);
+    Drawable localDrawable2 = ((Resources)localObject).getDrawable(2130846782);
+    localDrawable1.setBounds(0, 0, getWidth(), aepi.a(95.0F, (Resources)localObject));
+    localDrawable2.setBounds(0, aepi.a(95.0F, (Resources)localObject), getWidth(), getHeight());
     LightingColorFilter localLightingColorFilter;
     if ((!this.c) && (!this.jdField_a_of_type_Boolean))
     {
-      localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166288));
+      localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166290));
       localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131165508));
     }
     for (;;)
@@ -72,18 +72,18 @@ public class FlashPicBubbleView
       return;
       if ((!this.c) && (this.jdField_a_of_type_Boolean))
       {
-        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166289));
-        localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166285));
+        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166291));
+        localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166287));
       }
       else if ((this.c) && (!this.jdField_a_of_type_Boolean))
       {
-        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166286));
+        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166288));
         localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131165508));
       }
       else
       {
-        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166287));
-        localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166285));
+        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166289));
+        localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166287));
       }
     }
     paramCanvas.save();

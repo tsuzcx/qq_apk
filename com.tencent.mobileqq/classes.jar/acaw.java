@@ -1,100 +1,139 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity.25.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.ArrayList;
+import java.util.List;
 
 public class acaw
-  extends alsi
+  extends altm
 {
-  public acaw(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public acaw(AccountManageActivity paramAccountManageActivity) {}
   
-  public void a(boolean paramBoolean, String paramString, azyv paramazyv)
+  void a(String paramString, int paramInt)
   {
-    if (AssociatedAccountActivity.a(this.a, paramString, paramazyv)) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "onPushSubAccountMsg subUin" + paramString);
-      }
-    } while (!paramBoolean);
-    AssociatedAccountActivity.b(this.a, false);
+    this.a.runOnUiThread(new AccountManageActivity.25.1(this, paramString, paramInt));
   }
   
-  public void a(boolean paramBoolean, String paramString, azyw paramazyw)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (AssociatedAccountActivity.a(this.a, paramString, paramazyw)) {}
-    do
+    int j = 0;
+    if ((!paramBoolean) || (paramString == null)) {}
+    for (;;)
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "onSubAccountThirdQQUnreadMsgNum mIsFromPull=" + this.a.jdField_b_of_type_Boolean + "  mPullReqNeedBackNum=" + this.a.jdField_a_of_type_Int + " isSuccess=" + paramBoolean + "  mainAccount=" + paramString + "  data=" + paramazyw);
+      int i;
+      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+        i = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
       }
-      if (this.a.jdField_b_of_type_Boolean)
+      while (j < this.a.jdField_a_of_type_JavaUtilList.size())
       {
-        AssociatedAccountActivity.a(this.a, paramBoolean, false);
-        return;
+        if ((i > j) && (this.a.jdField_a_of_type_JavaUtilList.get(j) != null) && (paramString.equals(((SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(j)).getUin())))
+        {
+          a(paramString, j);
+          return;
+        }
+        j += 1;
+        continue;
+        i = 0;
       }
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.c = false;
-    } while (!paramBoolean);
-    AssociatedAccountActivity.a(this.a, paramazyw);
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      paramString1 = new StringBuilder().append("onSubAccountMsgNumConfirm isSuccess=").append(paramBoolean).append(" subUin=").append(paramString1).append(" set need2ConfirmMsgNum=");
-      if (paramBoolean) {
-        break label157;
-      }
-    }
-    label157:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("AssociatedAccountActivity", 2, paramBoolean + " nextAction=" + paramString2 + " mNeed2ConfirmMsgNum=" + this.a.jdField_b_of_type_Int);
-      if (!"sub.account.switchAccount".equals(paramString2)) {
-        break;
-      }
-      paramString1 = this.a;
-      paramString1.jdField_b_of_type_Int -= 1;
-      if (this.a.jdField_b_of_type_Int <= 0) {
-        AssociatedAccountActivity.b(this.a, false, this.a.jdField_a_of_type_JavaLangString);
-      }
-      if (this.a.jdField_b_of_type_Int >= 0) {
-        break;
-      }
-      this.a.jdField_b_of_type_Int = 0;
-      return;
     }
   }
   
-  public void b(boolean paramBoolean, String paramString, azyv paramazyv)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (AssociatedAccountActivity.a(this.a, paramString, paramazyv)) {}
-    do
-    {
+    int j = 0;
+    if ((!paramBoolean) || (paramString == null)) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "onGetSubAccountMsg subAccount=" + paramString + " mIsFromPull=" + this.a.jdField_b_of_type_Boolean + " isSuccess=" + paramBoolean + "  mPullReqNeedBackNum=" + this.a.jdField_a_of_type_Int);
+    }
+    Object localObject3 = (badd)this.a.app.getManager(61);
+    Object localObject1 = "";
+    int i = ((badd)localObject3).a();
+    label67:
+    label124:
+    Object localObject2;
+    if (i == 0)
+    {
+      AccountManageActivity.a(this.a).setVisibility(8);
+      AccountManageActivity.b(this.a).setVisibility(8);
+      if (AppSetting.c) {
+        AccountManageActivity.a(this.a).setContentDescription("关联QQ号" + (String)localObject1);
       }
-      if (this.a.jdField_b_of_type_Boolean)
+      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout == null) {
+        break label566;
+      }
+      i = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      if (j >= this.a.jdField_a_of_type_JavaUtilList.size()) {
+        break label569;
+      }
+      if ((i > j) && (this.a.jdField_a_of_type_JavaUtilList.get(j) != null) && (paramString.equals(((SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(j)).getUin())))
       {
-        AssociatedAccountActivity.a(this.a, paramBoolean, true);
-        return;
+        localObject1 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131370977);
+        localObject2 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131361822);
+        ((TextView)localObject1).setText(bdgc.h(this.a.app, paramString));
+        ((TextView)localObject2).setText(paramString);
+        a(paramString, j);
       }
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.c = false;
-      if ((paramBoolean) && (paramazyv.c))
-      {
-        this.a.c();
-        return;
+    }
+    else if (i == 1)
+    {
+      localObject3 = ((badd)localObject3).a("sub.uin.default");
+      if (localObject3 == null) {
+        break label571;
       }
-    } while (!paramBoolean);
-    this.a.a();
+      localObject2 = bdgc.c(this.a.app, ((SubAccountInfo)localObject3).subuin, false);
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        if (!TextUtils.isEmpty(((SubAccountInfo)localObject3).subname))
+        {
+          localObject1 = localObject2;
+          if (((String)localObject2).equals(((SubAccountInfo)localObject3).subname)) {}
+        }
+        else
+        {
+          ((SubAccountInfo)localObject3).subname = ((String)localObject2);
+          this.a.a(AccountManageActivity.b(this.a), ((SubAccountInfo)localObject3).subuin);
+          AccountManageActivity.b(this.a).setVisibility(0);
+          AccountManageActivity.a(this.a).setVisibility(8);
+          localObject1 = localObject2;
+          if (AppSetting.c) {
+            AccountManageActivity.a(this.a).setContentDescription("关联QQ号" + (String)localObject2);
+          }
+        }
+      }
+    }
+    label566:
+    label569:
+    label571:
+    for (localObject1 = localObject2;; localObject1 = "")
+    {
+      break label67;
+      localObject2 = i + alud.a(2131700132);
+      localObject3 = ((badd)localObject3).a();
+      localObject1 = localObject2;
+      if (((ArrayList)localObject3).size() != 2) {
+        break label67;
+      }
+      this.a.a(AccountManageActivity.b(this.a), (String)((ArrayList)localObject3).get(0));
+      AccountManageActivity.b(this.a).setVisibility(0);
+      this.a.a(AccountManageActivity.b(this.a), (String)((ArrayList)localObject3).get(1));
+      AccountManageActivity.a(this.a).setVisibility(0);
+      localObject1 = localObject2;
+      break label67;
+      j += 1;
+      break label124;
+      i = 0;
+      break label124;
+      break;
+    }
   }
 }
 

@@ -1,37 +1,42 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
-public class bdky
+class bdky
+  implements View.OnTouchListener
 {
-  public static SharedPreferences a(String paramString1, String paramString2, String paramString3)
+  bdky(bdku parambdku) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((AudioHelper.d()) && (TextUtils.isEmpty(paramString2)))
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839717);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130839717));
+    if (this.a.c)
     {
-      paramString2 = " getSP, 获取配置需要UIN, uin[" + paramString2 + "], spName[" + paramString3 + "]";
-      QLog.w(paramString1, 1, paramString2, new Throwable("打印调用栈"));
-      throw new IllegalArgumentException(paramString1 + paramString2);
-    }
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject != null)
-    {
-      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences(paramString3 + paramString2, 4);
-      if ((localObject == null) && (AudioHelper.d())) {
-        QLog.w(paramString1, 1, "getSP, sp为null, uin[" + paramString2 + "], spName[" + paramString3 + "]", new Throwable("打印调用栈"));
+      bdku.a(this.a);
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label110;
       }
-      return localObject;
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
     }
-    if (AudioHelper.d()) {
-      QLog.w(paramString1, 1, "getSP, BaseApplicationImpl为null, uin[" + paramString2 + "], spName[" + paramString3 + "]", new Throwable("打印调用栈"));
+    for (;;)
+    {
+      this.a.c = false;
+      paramView = this.a.getWindow().getAttributes();
+      paramView.y = 0;
+      this.a.getWindow().setAttributes(paramView);
+      return false;
+      label110:
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
     }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdky
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabF
 import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
 
 public class ssv
-  implements xzj
+  implements yds
 {
   public ssv(FolderFollowTabFragment paramFolderFollowTabFragment) {}
   

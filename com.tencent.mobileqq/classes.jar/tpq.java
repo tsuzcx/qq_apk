@@ -3,7 +3,7 @@ import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 final class tpq
-  implements bevy
+  implements bfah
 {
   tpq(String paramString) {}
   
@@ -17,13 +17,13 @@ final class tpq
     {
     case -1: 
     default: 
-      xxb.a(1, 2131720019);
+      ybk.a(1, 2131720031);
     }
     for (;;)
     {
       WXShareHelper.a().b(this);
       return;
-      xxb.a(2, 2131720038);
+      ybk.a(2, 2131720050);
     }
   }
 }

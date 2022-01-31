@@ -1,17 +1,19 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-final class ajyf
-  implements DialogInterface.OnClickListener
+public abstract interface ajyf
 {
-  ajyf(Context paramContext) {}
+  public abstract int a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ((Activity)this.a).finish();
-  }
+  public abstract void a();
+  
+  public abstract void a(@Nullable ajyd paramajyd);
+  
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
 }
 
 

@@ -1,22 +1,63 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class acrn
-  implements InputFilter
+  implements alth
 {
-  Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[🀀-🏿]|[🐀-🟿]|[☀-⟿]", 66);
+  public acrn(Conversation paramConversation) {}
   
-  public acrn(EditInfoActivity paramEditInfoActivity) {}
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public ViewGroup a()
   {
-    if (this.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramCharSequence).find()) {
-      return "";
-    }
-    return null;
+    return this.a.a.a;
+  }
+  
+  public bicb a(String paramString)
+  {
+    return this.a.a.a(paramString);
+  }
+  
+  public void a()
+  {
+    this.a.a.a();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.a.a.a(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public void a(Configuration paramConfiguration)
+  {
+    this.a.a.a(paramConfiguration);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.a.a.a(paramQQAppInterface);
+  }
+  
+  public void a(String paramString, bicb parambicb)
+  {
+    this.a.a.a(paramString, parambicb);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.a.a(paramBoolean);
+  }
+  
+  public void b()
+  {
+    this.a.a.c();
+  }
+  
+  public void c()
+  {
+    this.a.a.d();
   }
 }
 

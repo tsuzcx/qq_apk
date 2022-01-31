@@ -3,7 +3,7 @@ import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
 import com.tencent.widget.AbsListView;
 
 public class olc
-  implements bhpo
+  implements bhtv
 {
   public olc(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   

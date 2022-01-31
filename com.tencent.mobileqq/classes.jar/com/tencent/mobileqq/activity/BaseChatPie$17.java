@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import acex;
+import acjm;
 import android.os.Bundle;
 import android.os.Message;
-import aslq;
+import aspz;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,7 +20,7 @@ class BaseChatPie$17
   
   public void run()
   {
-    acex.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    acjm.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     Iterator localIterator = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int).iterator();
     while (localIterator.hasNext())
     {
@@ -28,7 +28,7 @@ class BaseChatPie$17
       if ((localObject instanceof MessageForUniteGrayTip))
       {
         localObject = (MessageForUniteGrayTip)localObject;
-        if (aslq.a((MessageForUniteGrayTip)localObject, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+        if (aspz.a((MessageForUniteGrayTip)localObject, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
         {
           Message localMessage = new Message();
           Bundle localBundle = new Bundle();

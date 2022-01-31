@@ -1,29 +1,22 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 class bdho
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  int jdField_a_of_type_Int;
+  bdho(bdhk parambdhk) {}
   
-  public bdho(bdhj parambdhj, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Bdhj.a != null)
-    {
-      this.jdField_a_of_type_Bdhj.a.onClick(this.jdField_a_of_type_Bdhj, this.jdField_a_of_type_Bdhj.a(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_Bdhj.dismiss();
+    if ((this.a.a instanceof LoginActivity)) {
+      ((LoginActivity)this.a.a).finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdho
  * JD-Core Version:    0.7.0.1
  */

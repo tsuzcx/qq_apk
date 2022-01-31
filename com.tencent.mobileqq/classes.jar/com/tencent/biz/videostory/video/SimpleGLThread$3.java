@@ -4,18 +4,18 @@ import android.os.Handler;
 import android.os.Looper;
 import com.tencent.ttpic.baseutils.gles.EglCore;
 import com.tencent.ttpic.baseutils.gles.OffscreenSurface;
-import ywg;
+import zav;
 
 public class SimpleGLThread$3
   implements Runnable
 {
-  public SimpleGLThread$3(ywg paramywg) {}
+  public SimpleGLThread$3(zav paramzav) {}
   
   public void run()
   {
-    ywg.a(this.this$0).release();
-    ywg.a(this.this$0).release();
-    ywg.a(this.this$0).getLooper().quit();
+    zav.a(this.this$0).release();
+    zav.a(this.this$0).release();
+    zav.a(this.this$0).getLooper().quit();
   }
 }
 

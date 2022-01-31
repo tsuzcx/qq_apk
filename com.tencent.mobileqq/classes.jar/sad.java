@@ -23,11 +23,11 @@ public class sad
   
   private rzr a()
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() instanceof bhtf))
+    if ((this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() instanceof bhxm))
     {
-      bhtf localbhtf = (bhtf)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter();
-      if ((localbhtf.getWrappedAdapter() instanceof rzr)) {
-        return (rzr)localbhtf.getWrappedAdapter();
+      bhxm localbhxm = (bhxm)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter();
+      if ((localbhxm.getWrappedAdapter() instanceof rzr)) {
+        return (rzr)localbhxm.getWrappedAdapter();
       }
     }
     return null;
@@ -40,7 +40,7 @@ public class sad
     }
     if ((BaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt) == null)
     {
-      aekt.a("ItemHeightHelper", "", new IllegalArgumentException(" data == null index: " + paramInt + "   itemArrayList.size() :" + this.jdField_a_of_type_JavaUtilList.size()));
+      aepi.a("ItemHeightHelper", "", new IllegalArgumentException(" data == null index: " + paramInt + "   itemArrayList.size() :" + this.jdField_a_of_type_JavaUtilList.size()));
       return true;
     }
     return false;

@@ -1,14 +1,31 @@
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import android.content.Context;
+import android.view.animation.Interpolator;
+import android.widget.Scroller;
 
-class bjij
+public class bjij
+  extends Scroller
 {
-  long jdField_a_of_type_Long;
-  bjif jdField_a_of_type_Bjif;
-  ModuleDownloadListener jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener;
-  Object jdField_a_of_type_JavaLangObject;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  public int a;
+  
+  public bjij(Context paramContext, Interpolator paramInterpolator)
+  {
+    super(paramContext, paramInterpolator);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+  }
 }
 
 

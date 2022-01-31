@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.activity.QQIdentiferLegacy;
-import mqq.app.QQPermissionCallback;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
 public class adlq
-  implements QQPermissionCallback
+  implements View.OnClickListener
 {
-  public adlq(QQIdentiferLegacy paramQQIdentiferLegacy) {}
+  public adlq(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    bdcd.a(QQIdentiferLegacy.a(this.a), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QQIdentiferLegacy.a(this.a);
+    paramView = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

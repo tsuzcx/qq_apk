@@ -1,18 +1,10 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.hotpic.HotVideoData;
 
-class asvo
-  implements aswa
+public abstract interface asvo
 {
-  asvo(asvn paramasvn, String paramString) {}
+  public abstract void a(HotVideoData paramHotVideoData);
   
-  public void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (TextUtils.equals("download", this.jdField_a_of_type_JavaLangString)))
-    {
-      asvn.a(this.jdField_a_of_type_Asvn).c(2131696082);
-      asvn.a(this.jdField_a_of_type_Asvn).show();
-    }
-  }
+  public abstract void b(HotVideoData paramHotVideoData);
 }
 
 

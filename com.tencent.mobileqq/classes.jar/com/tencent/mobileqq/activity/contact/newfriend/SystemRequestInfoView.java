@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import ahiw;
-import ahix;
-import alsi;
-import amha;
+import ahnl;
+import ahnm;
+import alwx;
+import amlp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -13,10 +13,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import azmj;
-import baaz;
-import bdee;
-import bepp;
+import azqs;
+import bafi;
+import bdin;
+import bety;
 import com.tencent.mobileqq.activity.AddRequestActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendListHandler;
@@ -42,10 +42,10 @@ public class SystemRequestInfoView
 {
   int jdField_a_of_type_Int;
   public long a;
-  private alsi jdField_a_of_type_Alsi = new ahiw(this);
+  private alwx jdField_a_of_type_Alwx = new ahnl(this);
   private Intent jdField_a_of_type_AndroidContentIntent;
   Button jdField_a_of_type_AndroidWidgetButton;
-  public bepp a;
+  public bety a;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public String a;
@@ -75,33 +75,33 @@ public class SystemRequestInfoView
   
   void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bepp == null)
+    if (this.jdField_a_of_type_Bety == null)
     {
-      this.jdField_a_of_type_Bepp = new bepp(getContext(), a());
-      this.jdField_a_of_type_Bepp.setOnDismissListener(new ahix(this));
-      this.jdField_a_of_type_Bepp.c(paramInt);
-      this.jdField_a_of_type_Bepp.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_Bepp.setCancelable(false);
-      this.jdField_a_of_type_Bepp.show();
+      this.jdField_a_of_type_Bety = new bety(getContext(), a());
+      this.jdField_a_of_type_Bety.setOnDismissListener(new ahnm(this));
+      this.jdField_a_of_type_Bety.c(paramInt);
+      this.jdField_a_of_type_Bety.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_Bety.setCancelable(false);
+      this.jdField_a_of_type_Bety.show();
     }
   }
   
   public boolean a()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Bepp != null)
+    if (this.jdField_a_of_type_Bety != null)
     {
       bool = true;
-      this.jdField_a_of_type_Bepp.cancel();
-      this.jdField_a_of_type_Bepp = null;
+      this.jdField_a_of_type_Bety.cancel();
+      this.jdField_a_of_type_Bety = null;
     }
     return bool;
   }
   
   public void onClick(View paramView)
   {
-    if (!bdee.d(getContext())) {
-      QQToast.a(getContext(), getResources().getString(2131694764), 0).b(a());
+    if (!bdin.d(getContext())) {
+      QQToast.a(getContext(), getResources().getString(2131694766), 0).b(a());
     }
     label835:
     for (;;)
@@ -115,7 +115,7 @@ public class SystemRequestInfoView
         {
           ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(0, Long.parseLong(this.jdField_b_of_type_JavaLangString), this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte, (byte)0, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Long, this.jdField_b_of_type_Long);
           i = 1;
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673B", "0X800673B", 0, 0, "", "", "", "");
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673B", "0X800673B", 0, 0, "", "", "", "");
         }
       }
       for (;;)
@@ -123,10 +123,10 @@ public class SystemRequestInfoView
         if (i == 0) {
           break label835;
         }
-        a(2131719773);
+        a(2131719785);
         return;
-        long l1 = baaz.a().b();
-        paramView = baaz.a().a(Long.valueOf(l1));
+        long l1 = bafi.a().b();
+        paramView = bafi.a().a(Long.valueOf(l1));
         long l2;
         int m;
         int n;
@@ -167,8 +167,8 @@ public class SystemRequestInfoView
         break;
         if (paramView == this.jdField_b_of_type_AndroidWidgetButton)
         {
-          l1 = baaz.a().b();
-          this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = baaz.a().a(Long.valueOf(l1));
+          l1 = bafi.a().b();
+          this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = bafi.a().a(Long.valueOf(l1));
           if (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null)
           {
             i = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get();
@@ -187,7 +187,7 @@ public class SystemRequestInfoView
           }
           for (;;)
           {
-            azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673A", "0X800673A", 0, 0, "", "", "", "");
+            azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673A", "0X800673A", 0, 0, "", "", "", "");
             break;
             localObject = new StringBuilder().append("refuse, ");
             if (paramView != null) {}
@@ -207,7 +207,7 @@ public class SystemRequestInfoView
           paramView = new Intent(this.jdField_a_of_type_AndroidContentIntent);
           paramView.setClass(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, AddRequestActivity.class);
           this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivityForResult(paramView, 1018);
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673D", "0X800673D", 0, 0, "", "", "", "");
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673D", "0X800673D", 0, 0, "", "", "", "");
           i = k;
         }
       }

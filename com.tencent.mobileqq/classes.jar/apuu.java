@@ -1,35 +1,67 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class apuu
-  implements TextWatcher
+  implements apuy
 {
-  public apuu(SystemAndEmojiUniversalPanel paramSystemAndEmojiUniversalPanel) {}
+  public apuu(EmoticonPanelController paramEmoticonPanelController, int paramInt, long paramLong) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a()
   {
-    ImageButton localImageButton;
-    if (SystemAndEmojiUniversalPanel.a(this.a) != null)
+    int k = 1;
+    int j = this.jdField_a_of_type_Int;
+    int i = j;
+    List localList;
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_b_of_type_Boolean)
     {
-      localImageButton = SystemAndEmojiUniversalPanel.a(this.a);
-      if (TextUtils.isEmpty(paramEditable)) {
-        break label33;
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonPanelController", 2, "switchTabMode mMarketPgkDownloaded = true");
+      }
+      localList = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_b_of_type_JavaUtilList;
+      i = j;
+      if (localList != null)
+      {
+        i = j;
+        if (localList.size() > 0)
+        {
+          if ((localList.size() <= EmoticonPanelController.d) || (((apwv)localList.get(EmoticonPanelController.d)).jdField_a_of_type_Int != 8)) {
+            break label163;
+          }
+          i = 1;
+          if (!((apno)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a.getManager(334)).c()) {
+            break label198;
+          }
+        }
       }
     }
-    label33:
-    for (boolean bool = true;; bool = false)
+    label163:
+    label198:
+    for (j = k;; j = 0)
     {
-      localImageButton.setEnabled(bool);
-      return;
+      if (i != 0) {
+        if (localList.size() >= j + 4) {
+          i = j + 3;
+        }
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_b_of_type_Boolean = false;
+        EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController, this.jdField_a_of_type_Long, i);
+        return;
+        i = 0;
+        break;
+        i = 0;
+        continue;
+        if (localList.size() >= j + 3) {
+          i = j + 2;
+        } else {
+          i = 0;
+        }
+      }
     }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

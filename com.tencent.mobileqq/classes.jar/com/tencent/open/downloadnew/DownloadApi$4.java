@@ -1,7 +1,7 @@
 package com.tencent.open.downloadnew;
 
 import android.os.Bundle;
-import bfko;
+import bfox;
 
 public final class DownloadApi$4
   implements Runnable
@@ -10,7 +10,7 @@ public final class DownloadApi$4
   
   public void run()
   {
-    bfko.a().a(this.a);
+    bfox.a().a(this.a);
   }
 }
 

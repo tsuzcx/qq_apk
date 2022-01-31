@@ -1,7 +1,7 @@
 package com.dataline.activities;
 
 import android.graphics.Bitmap;
-import bcwc;
+import bdal;
 import cb;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
 import java.io.File;
@@ -20,7 +20,7 @@ final class LiteActivity$15
     do
     {
       return;
-      localBitmap = bcwc.a(this.jdField_a_of_type_JavaLangString);
+      localBitmap = bdal.a(this.jdField_a_of_type_JavaLangString);
     } while (this.jdField_a_of_type_Cb == null);
     this.jdField_a_of_type_Cb.a(localBitmap, false);
   }

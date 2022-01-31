@@ -1,8 +1,16 @@
-public abstract interface blli
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.YoutuResultItem;
+import java.util.List;
+
+public class blli
 {
-  public abstract void a();
+  public String a;
+  public List<YoutuResultItem> a;
   
-  public abstract void b();
+  public blli(String paramString, List<YoutuResultItem> paramList)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
 }
 
 

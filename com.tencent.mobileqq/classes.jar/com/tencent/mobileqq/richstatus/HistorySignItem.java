@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richstatus;
 
-import ayaa;
+import ayej;
 import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
 import java.io.Serializable;
 import java.util.List;
@@ -9,7 +9,7 @@ public class HistorySignItem
   implements Serializable
 {
   public List<CommentItem> commentItemList;
-  public List<ayaa> likeItemList;
+  public List<ayej> likeItemList;
   public RichStatus richStatus;
   public long totalLikeNum;
 }

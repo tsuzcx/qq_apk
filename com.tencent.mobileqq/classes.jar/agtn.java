@@ -1,20 +1,23 @@
-import android.util.SparseIntArray;
-import java.util.Comparator;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
-final class agtn
-  implements Comparator<agtj>
+class agtn
+  implements Animator.AnimatorListener
 {
-  public int a(agtj paramagtj1, agtj paramagtj2)
+  agtn(agti paramagti) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramagtj1 == null) || (paramagtj2 == null)) {
-      return 0;
-    }
-    float f1 = agtm.a().get(paramagtj1.c());
-    float f2 = agtm.a().get(paramagtj2.c());
-    float f3 = paramagtj1.b() * 100;
-    float f4 = 1.0F / (paramagtj1.a() + 1) / 10.0F;
-    return Float.compare(f2 + (paramagtj2.b() * 100 + 1.0F / (paramagtj2.a() + 1) / 10.0F), f1 + (f3 + f4));
+    this.a.a.removeHeaderView(agti.a(this.a));
+    agti.a(this.a, true);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

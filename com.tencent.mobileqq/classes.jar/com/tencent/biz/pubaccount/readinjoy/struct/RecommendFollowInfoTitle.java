@@ -3,11 +3,11 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import awbv;
+import awge;
 import qls;
 
 public class RecommendFollowInfoTitle
-  extends awbv
+  extends awge
   implements Parcelable
 {
   public static Parcelable.Creator<RecommendFollowInfoTitle> CREATOR = new qls();

@@ -1,55 +1,34 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.widget.GridListView;
 
 public class beqa
+  extends DataSetObserver
 {
-  Context jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
-  private Handler jdField_a_of_type_AndroidOsHandler = new beqb(this, Looper.getMainLooper());
-  Toast jdField_a_of_type_AndroidWidgetToast = null;
+  public beqa(GridListView paramGridListView) {}
   
-  public beqa(Context paramContext) {}
-  
-  public void a()
+  public void onChanged()
   {
-    if (this.jdField_a_of_type_AndroidWidgetToast != null) {
-      this.jdField_a_of_type_AndroidWidgetToast.cancel();
+    if (this.a.jdField_a_of_type_Beqd != null) {
+      GridListView.a(this.a, this.a.jdField_a_of_type_Beqd.getCount());
+    }
+    if (this.a.jdField_a_of_type_Beqe != null) {
+      this.a.jdField_a_of_type_Beqe.notifyDataSetChanged();
     }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onInvalidated()
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    beqc localbeqc = new beqc(null);
-    localbeqc.jdField_a_of_type_Int = paramInt4;
-    localbeqc.b = paramInt1;
-    localbeqc.c = paramInt3;
-    localbeqc.d = paramInt2;
-    localMessage.obj = localbeqc;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    beqc localbeqc = new beqc(null);
-    localbeqc.jdField_a_of_type_Int = paramInt3;
-    localbeqc.jdField_a_of_type_JavaLangString = paramString;
-    localbeqc.c = paramInt2;
-    localbeqc.d = paramInt1;
-    localMessage.obj = localbeqc;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    if (this.a.jdField_a_of_type_Beqd != null) {
+      GridListView.a(this.a, this.a.jdField_a_of_type_Beqd.getCount());
+    }
+    if (this.a.jdField_a_of_type_Beqe != null) {
+      this.a.jdField_a_of_type_Beqe.notifyDataSetInvalidated();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beqa
  * JD-Core Version:    0.7.0.1
  */

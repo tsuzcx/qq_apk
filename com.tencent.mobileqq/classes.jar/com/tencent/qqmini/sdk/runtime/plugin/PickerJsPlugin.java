@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
 import android.text.TextUtils;
-import bgkd;
-import bgkk;
-import bgkz;
-import bhen;
-import bheu;
-import bhfo;
+import bgok;
+import bgor;
+import bgpg;
+import bhiu;
+import bhjb;
+import bhjv;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.Calendar;
@@ -18,15 +18,15 @@ public class PickerJsPlugin
   extends BaseJsPlugin
 {
   private static final String TAG = "PickerJsPlugin";
-  private bhfo mutiPickerView;
+  private bhjv mutiPickerView;
   
-  public void handleShowDatePickerView(bgkd parambgkd)
+  public void handleShowDatePickerView(bgok parambgok)
   {
     JSONObject localJSONObject;
     String str;
     try
     {
-      Object localObject2 = new JSONObject(parambgkd.b);
+      Object localObject2 = new JSONObject(parambgok.b);
       localJSONObject = ((JSONObject)localObject2).optJSONObject("range");
       str = ((JSONObject)localObject2).optString("current");
       Object localObject1 = str;
@@ -42,104 +42,104 @@ public class PickerJsPlugin
       localObject2 = ((JSONObject)localObject2).optString("fields");
       if ("date".equals(str))
       {
-        localObject1 = bhen.b((String)localObject1);
+        localObject1 = bhiu.b((String)localObject1);
         if (localObject1 == null)
         {
-          parambgkd.b();
+          parambgok.b();
           return;
         }
-        bgkk.a(new PickerJsPlugin.3(this, (Date)localObject1, (String)localObject2, parambgkd, localJSONObject));
+        bgor.a(new PickerJsPlugin.3(this, (Date)localObject1, (String)localObject2, parambgok, localJSONObject));
         return;
       }
     }
     catch (JSONException localJSONException)
     {
       QMLog.e("PickerJsPlugin", "showDatePickerView error.", localJSONException);
-      parambgkd.b();
+      parambgok.b();
       return;
     }
     if ("time".equals(str)) {
-      bgkk.a(new PickerJsPlugin.4(this, bhen.a(localJSONException), parambgkd, localJSONObject));
+      bgor.a(new PickerJsPlugin.4(this, bhiu.a(localJSONException), parambgok, localJSONObject));
     }
   }
   
-  public void handleShowMultiPickerView(bgkd parambgkd)
+  public void handleShowMultiPickerView(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
-      int[] arrayOfInt = bgkz.a(localJSONObject.optJSONArray("current"));
-      bgkk.a(new PickerJsPlugin.2(this, bgkz.a(localJSONObject, "array"), arrayOfInt, parambgkd));
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
+      int[] arrayOfInt = bgpg.a(localJSONObject.optJSONArray("current"));
+      bgor.a(new PickerJsPlugin.2(this, bgpg.a(localJSONObject, "array"), arrayOfInt, parambgok));
       return;
     }
     catch (JSONException localJSONException)
     {
       QMLog.e("PickerJsPlugin", "showMultiPickerView error.", localJSONException);
-      parambgkd.b();
+      parambgok.b();
     }
   }
   
-  public void handleShowPickerView(bgkd parambgkd)
+  public void handleShowPickerView(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
-      bgkk.a(new PickerJsPlugin.1(this, localJSONObject.optJSONArray("array"), localJSONObject.optInt("current", 0), parambgkd));
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
+      bgor.a(new PickerJsPlugin.1(this, localJSONObject.optJSONArray("array"), localJSONObject.optInt("current", 0), parambgok));
       return;
     }
     catch (JSONException localJSONException)
     {
       QMLog.e("PickerJsPlugin", "showPickerView error.", localJSONException);
-      parambgkd.b();
+      parambgok.b();
     }
   }
   
-  public void handleUpdateMultiPickerView(bgkd parambgkd)
+  public void handleUpdateMultiPickerView(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
-      bgkk.a(new PickerJsPlugin.5(this, localJSONObject.optInt("column"), localJSONObject.optInt("current"), localJSONObject.optJSONArray("array"), parambgkd));
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
+      bgor.a(new PickerJsPlugin.5(this, localJSONObject.optInt("column"), localJSONObject.optInt("current"), localJSONObject.optJSONArray("array"), parambgok));
       return;
     }
     catch (Exception localException)
     {
       QMLog.e("PickerJsPlugin", "updateMultiPickerView error.", localException);
-      parambgkd.b();
+      parambgok.b();
     }
   }
   
-  protected void updateDataPickerFields(bheu parambheu, String paramString)
+  protected void updateDataPickerFields(bhjb parambhjb, String paramString)
   {
-    if (parambheu == null) {}
+    if (parambhjb == null) {}
     do
     {
       return;
       if (TextUtils.isEmpty(paramString))
       {
-        parambheu.a(0);
-        parambheu.b(0);
-        parambheu.c(0);
+        parambhjb.a(0);
+        parambhjb.b(0);
+        parambhjb.c(0);
         return;
       }
       if (paramString.equals("year"))
       {
-        parambheu.a(0);
-        parambheu.b(8);
-        parambheu.c(8);
+        parambhjb.a(0);
+        parambhjb.b(8);
+        parambhjb.c(8);
         return;
       }
       if (paramString.equals("month"))
       {
-        parambheu.a(0);
-        parambheu.b(0);
-        parambheu.c(8);
+        parambhjb.a(0);
+        parambhjb.b(0);
+        parambhjb.c(8);
         return;
       }
     } while (!paramString.equals("day"));
-    parambheu.a(0);
-    parambheu.b(0);
-    parambheu.c(0);
+    parambhjb.a(0);
+    parambhjb.b(0);
+    parambhjb.c(0);
   }
 }
 

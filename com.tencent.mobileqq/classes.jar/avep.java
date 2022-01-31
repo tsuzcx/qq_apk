@@ -1,94 +1,67 @@
-import android.support.v4.util.SparseArrayCompat;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.MagazinePlayerView.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class avep
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+  extends avfx
 {
-  private SparseArrayCompat<View> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-  private RecyclerView.Adapter jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  private SparseArrayCompat<View> b = new SparseArrayCompat();
+  public avbq a;
+  public VideoData a;
+  private String b = "MagazinePlayerView";
+  private long d;
   
-  public avep(RecyclerView.Adapter paramAdapter)
+  public avep(Context paramContext, avbq paramavbq, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramAdapter;
+    super(paramContext, paramQQAppInterface);
+    this.jdField_a_of_type_Avbq = paramavbq;
   }
   
-  private boolean a(int paramInt)
+  public void a()
   {
-    return paramInt < a();
-  }
-  
-  private boolean b(int paramInt)
-  {
-    return paramInt >= a() + c();
-  }
-  
-  private int c()
-  {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size();
-  }
-  
-  public RecyclerView.Adapter a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size() + 100000, paramView);
-  }
-  
-  public int b()
-  {
-    return this.b.size();
-  }
-  
-  public void b(View paramView)
-  {
-    this.b.put(this.b.size() + 200000, paramView);
-  }
-  
-  public int getItemCount()
-  {
-    return a() + c() + b();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (a(paramInt)) {
-      return this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(paramInt);
-    }
-    if (b(paramInt)) {
-      return this.b.keyAt(paramInt - a() - c());
-    }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemViewType(paramInt - a());
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((a(paramInt)) || (b(paramInt))) {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null)
+    {
+      QLog.w(this.b, 2, "pasue mShortVideoInfo is null!!");
       return;
     }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - a());
+    super.a();
   }
   
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  public void a(RelativeLayout paramRelativeLayout, VideoData paramVideoData, aveq paramaveq)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt) != null) {
-      return new aveq((View)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.i(this.b, 2, "play() called with: rootView = [" + paramRelativeLayout + "], videoData = [" + paramVideoData + "]");
     }
-    if (this.b.get(paramInt) != null) {
-      return new aveq((View)this.b.get(paramInt));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
+    this.jdField_a_of_type_Aveq = paramaveq;
+    if (paramVideoData.a == 1)
+    {
+      a(paramRelativeLayout);
+      this.d = 0L;
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      d();
+      avef.a().a(this.jdField_a_of_type_AndroidWidgetImageView, paramVideoData.c, new ColorDrawable(0), new ColorDrawable(0), null);
+      this.jdField_a_of_type_AndroidOsHandler.post(new MagazinePlayerView.1(this));
+      return;
     }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
+    super.a(paramRelativeLayout, paramVideoData, paramaveq);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) {}
+    while (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a == 1) {
+      return;
+    }
+    if (this.jdField_a_of_type_Avbq != null) {
+      this.jdField_a_of_type_Avbq.a();
+    }
+    super.b();
   }
 }
 

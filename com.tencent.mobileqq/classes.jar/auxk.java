@@ -1,50 +1,41 @@
-import com.tencent.mobileqq.nearby.now.view.SplitedProgressBar;
-import java.security.InvalidParameterException;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.nearby.nearby_ice_break.IceRsp;
 
-public class auxk
+class auxk
+  implements avdh
 {
-  private SplitedProgressBar a;
+  auxk(auxh paramauxh) {}
   
-  public auxk(SplitedProgressBar paramSplitedProgressBar)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramSplitedProgressBar == null) {
-      throw new InvalidParameterException("ProgressControler: progressBar is null");
-    }
-    this.a = paramSplitedProgressBar;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return;
-    }
-    this.a.setTotalCount(paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 < this.a.b) {
-      this.a.setProgress(paramInt1, paramInt2);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    SplitedProgressBar localSplitedProgressBar = this.a;
-    if (paramBoolean) {}
-    for (int i = 8;; i = 0)
+    paramBundle = new nearby_ice_break.IceRsp();
+    try
     {
-      localSplitedProgressBar.setVisibility(i);
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (paramBundle.result.has())
+      {
+        if (paramBundle.result.get() == 0)
+        {
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          QLog.i("NearbyCardHandler", 2, "sendPoBingMsg. success");
+          return;
+        }
+        QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. result=" + paramBundle.result.get() + " errorMsg=" + paramBundle.err_msg.get());
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. error=" + QLog.getStackTraceString(paramArrayOfByte));
       return;
     }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (paramInt == 0) {
-      return;
-    }
-    this.a.setShowMaxCount(paramInt);
+    QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. no result");
   }
 }
 

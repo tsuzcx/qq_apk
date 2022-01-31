@@ -1,30 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import java.util.Queue;
 
 public class bcrg
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public bcrg(TroopInteractGiftAnimationController.1.1 param1) {}
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onClick(View paramView)
+  public bcrg(MessageSubtitleView paramMessageSubtitleView, boolean paramBoolean, int paramInt)
   {
-    this.a.a.this$0.b();
-    paramView = this.a.a.this$0;
-    paramView.jdField_a_of_type_Int += 1;
-    if (this.a.a.this$0.jdField_a_of_type_Boolean)
-    {
-      this.a.a.this$0.jdField_a_of_type_Boolean = false;
-      this.a.a.this$0.a(this.a.a.a, this.a.a.a.frienduin, this.a.a.a.interactId, this.a.a.a.animationPackageId, this.a.a.this$0.jdField_a_of_type_Int, false);
-    }
-    if (this.a.a.this$0.jdField_a_of_type_Int % 5 == 0) {
-      this.a.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a(this.a.a.a.animationPackageId + "");
-    }
-    azmj.b(null, "dc00899", "Grp_flower", "", "inter_gift", "clk_ball", 0, 0, this.a.a.a.frienduin, "", "", "");
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_Int == MessageSubtitleView.c) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.b();
+      }
+      if (!this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.a.isEmpty()) {
+        MessageSubtitleView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView);
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

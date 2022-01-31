@@ -1,12 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class bgur
-  implements DialogInterface.OnClickListener
+class bgur
+  implements bgup
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bgur(bguq parambguq) {}
+  
+  public void a(int paramInt, String paramString, bgun parambgun)
   {
-    paramDialogInterface.dismiss();
+    if ((paramInt == 0) && (parambgun != null))
+    {
+      if (this.a.isRuntimeLoaderValid(parambgun)) {
+        this.a.onRuntimeReady();
+      }
+      return;
+    }
+    this.a.onRuntimeFail(paramInt, paramString);
   }
 }
 

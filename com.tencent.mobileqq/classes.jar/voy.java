@@ -1,43 +1,43 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import java.util.List;
 
-public abstract class voy
+class voy
+  implements vpo
 {
-  public abstract Activity a();
+  voy(vow paramvow) {}
   
-  public abstract OpenPlayerBuilder.Data a();
+  public void a()
+  {
+    vow.a(this.a, this.a.a.a(vow.a(this.a), 5));
+    List localList = vow.a(this.a).a;
+    if ((vow.a(this.a) == null) && (localList.size() > 0)) {
+      vow.a(this.a, ((vpn)localList.get(0)).a);
+    }
+    label199:
+    for (;;)
+    {
+      wxe.d("Q.qqstory.player.data.SimpleDataProvider", "current group:%s", new Object[] { vow.a(this.a) });
+      vow.a(this.a).a(vow.a(this.a), "");
+      return;
+      int i = 0;
+      for (;;)
+      {
+        if (i >= localList.size()) {
+          break label199;
+        }
+        if (((vpn)localList.get(i)).a.equals(vow.a(this.a)))
+        {
+          if (localList.size() <= i + 1) {
+            break;
+          }
+          vow.a(this.a, ((vpn)localList.get(i + 1)).a);
+          break;
+        }
+        i += 1;
+      }
+    }
+  }
   
-  public abstract XViewPager a();
-  
-  public abstract String a(String paramString);
-  
-  public abstract vld a();
-  
-  public abstract vlg a();
-  
-  public abstract voq a();
-  
-  public abstract vpj a();
-  
-  public abstract void a();
-  
-  public abstract void a(Intent paramIntent);
-  
-  public abstract void a(uhn paramuhn);
-  
-  public abstract void a(vno paramvno);
-  
-  public abstract void a(vpr paramvpr);
-  
-  public abstract boolean a();
-  
-  public abstract void b(uhn paramuhn);
-  
-  public abstract void b(vno paramvno);
-  
-  public abstract boolean b();
+  public void a(vpm paramvpm, String paramString, boolean paramBoolean) {}
 }
 
 

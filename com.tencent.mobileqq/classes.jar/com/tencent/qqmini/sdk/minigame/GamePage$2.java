@@ -1,20 +1,20 @@
 package com.tencent.qqmini.sdk.minigame;
 
-import bgti;
-import bgwh;
+import bgxp;
+import bhao;
 import com.tencent.qqmini.sdk.minigame.ui.VConsoleDragView;
 
 public class GamePage$2
   implements Runnable
 {
-  public GamePage$2(bgti parambgti, VConsoleDragView paramVConsoleDragView) {}
+  public GamePage$2(bgxp parambgxp, VConsoleDragView paramVConsoleDragView) {}
   
   public void run()
   {
-    if (!bgti.a(this.this$0))
+    if (!bgxp.a(this.this$0))
     {
-      bgti.a(this.this$0);
-      bgti.a(this.this$0).a(bgti.a(this.this$0), this.a, false);
+      bgxp.a(this.this$0);
+      bgxp.a(this.this$0).a(bgxp.a(this.this$0), this.a, false);
     }
   }
 }

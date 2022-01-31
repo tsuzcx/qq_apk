@@ -1,21 +1,7 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
-import com.tencent.widget.AdapterView;
-
 public class bbyj
-  implements bhqp
 {
-  public bbyj(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if (paramInt < this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.getCount())
-    {
-      paramAdapterView = this.a.jdField_a_of_type_Bbyq.a(paramInt);
-      this.a.a(paramInt, paramAdapterView);
-    }
-  }
+  public static final String a = alof.aX + "troop/homework/";
+  public static final String b = a + "upload/";
 }
 
 

@@ -1,226 +1,102 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class azsf
-  extends azqj
+  extends QIPCModule
 {
-  public String S;
-  public String T;
-  public int k;
+  private static azsf jdField_a_of_type_Azsf;
+  private ConcurrentHashMap<Integer, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public azsf()
+  public azsf(String paramString)
   {
-    this.a = "head";
+    super(paramString);
   }
   
-  public azsf(int paramInt, String paramString1, String paramString2)
+  public static azsf a()
   {
-    this();
-    this.k = paramInt;
-    this.S = paramString1;
-    this.T = paramString2;
-  }
-  
-  public View a(Context paramContext, View paramView, int paramInt, Bundle paramBundle)
-  {
-    Object localObject2 = paramContext.getResources();
-    LinearLayout localLinearLayout;
-    Object localObject1;
-    Object localObject3;
-    if ((paramView != null) && ((paramView instanceof LinearLayout)))
+    if (jdField_a_of_type_Azsf == null) {}
+    try
     {
-      localLinearLayout = (LinearLayout)paramView;
-      localObject1 = (ImageView)localLinearLayout.findViewById(2131378614);
-      paramBundle = (ImageView)localLinearLayout.findViewById(2131378617);
-      paramView = (TextView)localLinearLayout.findViewById(2131378615);
-      localObject3 = bdda.a();
-      localObject2 = localObject3;
-      if ((paramContext instanceof BaseActivity)) {
-        localObject2 = bcxb.a(((BaseActivity)paramContext).app, 1, this.S, 3, (Drawable)localObject3, (Drawable)localObject3);
+      if (jdField_a_of_type_Azsf == null) {
+        jdField_a_of_type_Azsf = new azsf("BatteryModule");
       }
-      ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
-      if (paramBundle != null)
+      return jdField_a_of_type_Azsf;
+    }
+    finally {}
+  }
+  
+  void a()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_process_id", BaseApplicationImpl.sProcessId);
+    QIPCClientHelper.getInstance().callServer("BatteryModule", "action_monitor", localBundle, new azsg(this));
+  }
+  
+  void a(Bundle paramBundle)
+  {
+    paramBundle.putString("key_process_name", BaseApplicationImpl.getApplication().getQQProcessName());
+    QIPCClientHelper.getInstance().getClient().callServer("BatteryModule", "action_report", paramBundle, null);
+  }
+  
+  void a(String... paramVarArgs)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putStringArray("key_message", paramVarArgs);
+    QIPCClientHelper.getInstance().getClient().callServer("BatteryModule", "action_record", localBundle);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("BatteryStats.Module", 2, "action = " + paramString);
+    }
+    int i;
+    if ("action_monitor".equals(paramString))
+    {
+      i = azsk.a().a();
+      if ((i == 0) || (i == 1))
       {
-        if (paramInt != 2) {
-          break label594;
+        paramString = new Bundle();
+        if (i == 1) {}
+        for (;;)
+        {
+          paramString.putBoolean("key_monitor", bool);
+          callbackResult(paramInt, EIPCResult.createSuccessResult(paramString));
+          return null;
+          bool = false;
         }
-        paramBundle.setImageResource(2130849778);
       }
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramBundle.getInt("key_process_id")), Integer.valueOf(paramInt));
+      return null;
+    }
+    if ("action_record".equals(paramString))
+    {
+      azsk.a().a(paramBundle.getInt("key_process_id"), paramBundle.getStringArray("key_message"));
+      return EIPCResult.createSuccessResult(null);
+    }
+    if ("action_alarm".equals(paramString))
+    {
+      paramInt = paramBundle.getInt("monitor_type", -1);
+      i = paramBundle.getInt("except_type", -1);
+      int j = paramBundle.getInt("key_level", -1);
+      paramString = paramBundle.getString("key_message");
+      paramBundle = paramBundle.getString("key_description");
+      azsk.a().a(paramInt, i, j, paramString, paramBundle);
     }
     for (;;)
     {
-      if (paramView != null)
-      {
-        paramView.setText(this.T);
-        paramView.setTextSize(2, 20.0F);
-        paramView.setTextColor(-1);
-        paramView.setSingleLine();
-        paramView.setEllipsize(TextUtils.TruncateAt.END);
-      }
-      return localLinearLayout;
-      localLinearLayout = new LinearLayout(paramContext);
-      localLinearLayout.setId(2131378616);
-      localLinearLayout.setOrientation(1);
-      if (this.k == 4)
-      {
-        i = 53;
-        label193:
-        if (this.k != 4) {
-          break label406;
-        }
-      }
-      label406:
-      for (int j = 53;; j = 135)
-      {
-        i = paramBundle.getInt("bundle_args_cover_width", aekt.a(i, (Resources)localObject2));
-        j = paramBundle.getInt("bundle_args_cover_height", aekt.a(j, (Resources)localObject2));
-        paramView = new FrameLayout(paramContext);
-        localObject1 = new LinearLayout.LayoutParams(i, j);
-        ((LinearLayout.LayoutParams)localObject1).gravity = 1;
-        paramView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        localLinearLayout.addView(paramView);
-        if (paramInt != 4) {
-          break label414;
-        }
-        i = paramBundle.getInt("bundle_args_avatar_width", aekt.a(50.0F, (Resources)localObject2));
-        j = paramBundle.getInt("bundle_args_avatar_height", aekt.a(50.0F, (Resources)localObject2));
-        localObject1 = new ImageView(paramContext);
-        ((ImageView)localObject1).setId(2131378614);
-        paramBundle = new FrameLayout.LayoutParams(i, j);
-        paramBundle.gravity = 17;
-        paramView.addView((View)localObject1, paramBundle);
-        paramBundle = new ImageView(paramContext);
-        paramBundle.setId(2131378617);
-        paramView.addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
-        paramView = null;
-        break;
-        i = 180;
-        break label193;
-      }
-      label414:
-      int i = paramBundle.getInt("bundle_args_avatar_width", aekt.a(80.0F, (Resources)localObject2));
-      j = paramBundle.getInt("bundle_args_avatar_height", aekt.a(80.0F, (Resources)localObject2));
-      localObject1 = new ImageView(paramContext);
-      ((ImageView)localObject1).setId(2131378614);
-      paramBundle = new FrameLayout.LayoutParams(i, j);
-      paramBundle.gravity = 17;
-      paramView.addView((View)localObject1, paramBundle);
-      paramBundle = new ImageView(paramContext);
-      paramBundle.setId(2131378617);
-      paramView.addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
-      paramView = new TextView(paramContext);
-      paramView.setId(2131378615);
-      localObject3 = new LinearLayout.LayoutParams(aekt.a(180.0F, (Resources)localObject2), -2);
-      ((LinearLayout.LayoutParams)localObject3).gravity = 1;
-      ((LinearLayout.LayoutParams)localObject3).topMargin = aekt.a(5.0F, (Resources)localObject2);
-      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-      paramView.setGravity(1);
-      localLinearLayout.addView(paramView);
-      break;
-      label594:
-      if (paramInt == 1) {
-        paramBundle.setImageResource(2130849780);
-      } else if (paramInt == 3) {
-        paramBundle.setImageResource(2130849779);
-      } else if (paramInt == 4) {
-        paramBundle.setImageResource(2130849777);
+      return null;
+      if ("action_report".equals(paramString)) {
+        azsk.a().a(paramBundle);
       }
     }
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    return a(paramContext, paramView, this.k, paramBundle);
-  }
-  
-  public String a()
-  {
-    return "Avatar";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.S = paramObjectInput.readUTF();
-    this.T = paramObjectInput.readUTF();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.S == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.T != null) {
-        break label48;
-      }
-    }
-    label48:
-    for (String str = "";; str = this.T)
-    {
-      paramObjectOutput.writeUTF(str);
-      return;
-      str = this.S;
-      break;
-    }
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "head");
-    if (this.S == null)
-    {
-      str = "";
-      paramXmlSerializer.attribute(null, "uin", str);
-      if (this.T != null) {
-        break label71;
-      }
-    }
-    label71:
-    for (String str = "";; str = this.T)
-    {
-      paramXmlSerializer.attribute(null, "nick", str);
-      paramXmlSerializer.endTag(null, "head");
-      return;
-      str = this.S;
-      break;
-    }
-  }
-  
-  public boolean a(azsa paramazsa)
-  {
-    if (paramazsa == null) {
-      return false;
-    }
-    String str2 = paramazsa.a("uin");
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    this.S = str1;
-    str1 = paramazsa.a("nick");
-    paramazsa = str1;
-    if (str1 == null) {
-      paramazsa = "";
-    }
-    this.T = paramazsa;
-    return true;
   }
 }
 

@@ -2,11 +2,11 @@ package com.tencent.mobileqq.activity.aio.item;
 
 import android.content.Context;
 import android.text.TextUtils;
-import ayyu;
-import ayzo;
-import azae;
-import azmz;
-import bdcs;
+import azdd;
+import azdx;
+import azen;
+import azri;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.msg.data.MessageForDevLittleVideo;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -61,7 +61,7 @@ public class ShortVideoRealItemBuilder$UploadTask
               localMessageForShortVideo = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
               localObject1 = localMessageForShortVideo.videoFileName;
               localShortVideoRealItemBuilder = (ShortVideoRealItemBuilder)this.c.get();
-              if (!bdcs.b((String)localObject1)) {
+              if (!bdhb.b((String)localObject1)) {
                 break;
               }
               if (QLog.isColorLevel()) {
@@ -70,7 +70,7 @@ public class ShortVideoRealItemBuilder$UploadTask
             } while (localShortVideoRealItemBuilder == null);
             ShortVideoRealItemBuilder.a(localShortVideoRealItemBuilder, localMessageForShortVideo.uniseq);
             return;
-            if (bdcs.b(this.jdField_a_of_type_JavaLangString)) {
+            if (bdhb.b(this.jdField_a_of_type_JavaLangString)) {
               break;
             }
             if (QLog.isColorLevel()) {
@@ -103,14 +103,14 @@ public class ShortVideoRealItemBuilder$UploadTask
       ShortVideoRealItemBuilder.a(localShortVideoRealItemBuilder, localMessageForShortVideo.uniseq);
       return;
       localMessageForShortVideo.videoFileSize = ((int)l);
-      if (!bdcs.b(localMessageForShortVideo.mThumbFilePath)) {
+      if (!bdhb.b(localMessageForShortVideo.mThumbFilePath)) {
         break label349;
       }
       localObject2 = ShortVideoUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
       if (((String)localObject2).equals(localMessageForShortVideo.mThumbFilePath)) {
         break label349;
       }
-      if (bdcs.c(localMessageForShortVideo.mThumbFilePath, (String)localObject2)) {
+      if (bdhb.c(localMessageForShortVideo.mThumbFilePath, (String)localObject2)) {
         break;
       }
       if (QLog.isColorLevel()) {
@@ -126,7 +126,7 @@ public class ShortVideoRealItemBuilder$UploadTask
       localObject2 = ShortVideoUtils.a(localMessageForShortVideo, "mp4");
       if (!this.jdField_a_of_type_JavaLangString.equals(localObject2))
       {
-        bdcs.c(this.jdField_a_of_type_JavaLangString, (String)localObject2);
+        bdhb.c(this.jdField_a_of_type_JavaLangString, (String)localObject2);
         if (QLog.isColorLevel()) {
           QLog.i("ShortVideoRealItemBuilder", 2, "onPostExecute destVideoPath " + (String)localObject2);
         }
@@ -141,17 +141,17 @@ public class ShortVideoRealItemBuilder$UploadTask
     for (int i = 4;; i = 2)
     {
       ((QQAppInterface)localObject1).a().a(localMessageForShortVideo.frienduin, localMessageForShortVideo.istroop, localMessageForShortVideo.uniseq, localMessageForShortVideo.msgData);
-      localObject2 = ayyu.a(0, i);
-      azae localazae = ayyu.a(localMessageForShortVideo, (ayzo)localObject2);
-      localazae.a = false;
-      ((ayzo)localObject2).a(localazae);
-      ayyu.a((ayzo)localObject2, (QQAppInterface)localObject1);
+      localObject2 = azdd.a(0, i);
+      azen localazen = azdd.a(localMessageForShortVideo, (azdx)localObject2);
+      localazen.a = false;
+      ((azdx)localObject2).a(localazen);
+      azdd.a((azdx)localObject2, (QQAppInterface)localObject1);
       this.jdField_b_of_type_Long = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.i("ShortVideoRealItemBuilder", 2, "[" + localMessageForShortVideo.uniseq + "]mMessageForShortVideo = " + localMessageForShortVideo + "\n |- upload cost:" + (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000.0D);
       }
       localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin();
-      azmz.a(BaseApplicationImpl.getContext()).a((String)localObject1, "actShortVideoGenerateDuration", true, 0L, 0L, ShortVideoRealItemBuilder.a(), "");
+      azri.a(BaseApplicationImpl.getContext()).a((String)localObject1, "actShortVideoGenerateDuration", true, 0L, 0L, ShortVideoRealItemBuilder.a(), "");
       if (localShortVideoRealItemBuilder == null) {
         break;
       }

@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.storyHome.detail.model.cmment;
 
-import wfh;
+import wjq;
 
 public class KeyboardAndEmojiManager$2
   implements Runnable
 {
-  public KeyboardAndEmojiManager$2(wfh paramwfh) {}
+  public KeyboardAndEmojiManager$2(wjq paramwjq) {}
   
   public void run()
   {

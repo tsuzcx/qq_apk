@@ -6,8 +6,8 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
-import azdz;
-import azet;
+import azii;
+import azjc;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(14)
@@ -15,7 +15,7 @@ public class CameraTextureView
   extends TextureView
   implements TextureView.SurfaceTextureListener
 {
-  public azdz a;
+  public azii a;
   
   public CameraTextureView(Context paramContext)
   {
@@ -65,7 +65,7 @@ public class CameraTextureView
         if (QLog.isColorLevel()) {
           QLog.i("PEAK_CAMERA", 2, "onAttachedToWindow[crash]", localRuntimeException);
         }
-        azet.a(3);
+        azjc.a(3);
       }
     }
   }

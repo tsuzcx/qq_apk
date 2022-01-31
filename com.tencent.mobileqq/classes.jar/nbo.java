@@ -18,7 +18,7 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import java.util.Map;
 
 public class nbo
-  extends zdf
+  extends zhu
 {
   public static int a;
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "hrtxformqq" };

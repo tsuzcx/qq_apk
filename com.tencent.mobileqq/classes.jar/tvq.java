@@ -1,14 +1,15 @@
-public class tvq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class tvq
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public boolean a;
-  public String b;
+  tvq(tvl paramtvl, int paramInt) {}
   
-  public tvq(String paramString1, boolean paramBoolean, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramString2;
+    this.jdField_a_of_type_Tvl.jdField_a_of_type_Tvj.a.a().a(tuz.a(this.jdField_a_of_type_Tvl.jdField_a_of_type_Tvj.a), this.jdField_a_of_type_Tvl.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Int);
+    tuz.b(this.jdField_a_of_type_Tvl.jdField_a_of_type_Tvj.a, true);
   }
 }
 

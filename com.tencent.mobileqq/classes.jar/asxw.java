@@ -1,33 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import org.json.JSONObject;
+import android.graphics.ColorMatrixColorFilter;
+import android.os.Bundle;
+import java.util.Map;
 
-class asxw
-  extends BroadcastReceiver
+public abstract interface asxw
 {
-  asxw(asxr paramasxr) {}
+  public abstract void a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    int i;
-    if ((paramContext.equals(aswm.a(asxr.b(this.a)))) || (paramContext.equals(aswm.d(asxr.b(this.a)))))
-    {
-      i = paramIntent.getIntExtra("key_state", -1);
-      paramContext = asxr.a(this.a, i);
-    }
-    switch (i)
-    {
-    default: 
-      return;
-    case 9: 
-    case 100: 
-      this.a.callJs("notifyJsCallback", new String[] { paramContext.toString() });
-      return;
-    }
-    asxx.a.a = 0L;
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
+  
+  public abstract void a(ColorMatrixColorFilter paramColorMatrixColorFilter);
+  
+  public abstract void a(Map<String, Object> paramMap);
 }
 
 

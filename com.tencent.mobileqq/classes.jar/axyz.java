@@ -1,40 +1,25 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.Button;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.os.Message;
 import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
-public class axyz
-  implements TextWatcher
+class axyz
+  extends MqqHandler
 {
-  private int jdField_a_of_type_Int;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private int b;
+  axyz(axyy paramaxyy) {}
   
-  public axyz(SignatureHistoryFragment paramSignatureHistoryFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (baiy.a(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 50))
+    switch (paramMessage.what)
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), 1, 2131690363, 0).a();
-      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
-    }
-    if ((paramEditable == null) || (paramEditable.length() == 0))
-    {
-      SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(false);
+    default: 
+      return;
+    case 1: 
+      QQToast.a(axyy.a(this.a).mContext, 2131720109, 0).a();
       return;
     }
-    SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(true);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = (paramInt1 + paramInt3);
+    paramMessage = (String)paramMessage.obj;
+    bdhj.a(axyy.a(this.a).mContext, paramMessage);
+    QQToast.a(axyy.a(this.a).mContext, 2, alud.a(2131700524), 0).a();
   }
 }
 

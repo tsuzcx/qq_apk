@@ -1,30 +1,17 @@
-import android.os.AsyncTask;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
 public class acwt
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public acwt(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public acwt(FontSettingActivity paramFontSettingActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.execute(new Void[0]);
-    this.a.f = false;
-    if (this.a.d) {
-      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    }
-    while (this.a.jdField_c_of_type_Boolean) {
-      return;
-    }
-    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+    FontSettingActivity.a(this.a).dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

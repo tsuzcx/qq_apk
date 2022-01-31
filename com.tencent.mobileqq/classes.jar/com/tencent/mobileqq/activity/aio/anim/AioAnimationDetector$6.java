@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aeqd;
-import aeqf;
-import aeqg;
+import aeus;
+import aeuu;
+import aeuv;
 import android.graphics.drawable.Drawable;
 
 public class AioAnimationDetector$6
   implements Runnable
 {
-  public AioAnimationDetector$6(aeqd paramaeqd, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, aeqf paramaeqf) {}
+  public AioAnimationDetector$6(aeus paramaeus, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, aeuu paramaeuu) {}
   
   public void run()
   {
     AIOAnimationConatiner localAIOAnimationConatiner = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
     Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (this.jdField_a_of_type_Aeqf.a == null) {}
-    for (int i = -1;; i = this.jdField_a_of_type_Aeqf.a.a)
+    if (this.jdField_a_of_type_Aeuu.a == null) {}
+    for (int i = -1;; i = this.jdField_a_of_type_Aeuu.a.a)
     {
       localAIOAnimationConatiner.a(2, 300, new Object[] { localDrawable, Integer.valueOf(0), Integer.valueOf(i) });
       return;

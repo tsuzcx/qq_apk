@@ -1,60 +1,71 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-import com.tencent.qphone.base.util.BaseApplication;
-import protocol.KQQConfig.UpgradeInfo;
+import android.view.animation.AnimationUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class abvq
-  implements View.OnClickListener
 {
-  public abvq(AboutActivity paramAboutActivity) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = -1L;
+  private String jdField_a_of_type_JavaLangString;
+  private StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
+  private final CopyOnWriteArrayList<String> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   
-  public void onClick(View paramView)
+  public void a()
   {
-    int i = 2;
-    if (bfko.a().b())
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 1) {
+      return;
+    }
+    new abvr(this).execute(new Void[0]);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangString != null)
     {
-      if (bdii.a()) {
-        i = 1;
-      }
-      azmj.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
-      paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-      paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
-      paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
-      paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
-      paramView.putExtra("activity_type", 4096);
-      if (BaseActivity.sTopActivity != null) {
-        BaseActivity.sTopActivity.startActivity(paramView);
+      if (paramInt == 2)
+      {
+        this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
+        this.jdField_a_of_type_Int = 0;
       }
     }
-    do
-    {
-      do
-      {
-        return;
-        if ((AboutActivity.a(this.a).jdField_a_of_type_Amlu == null) || (!bdii.a(AboutActivity.a(this.a).jdField_a_of_type_Amlu.a))) {
-          break;
-        }
-        if (bdii.a()) {
-          i = 1;
-        }
-        azmj.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
-        paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-        paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
-        paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
-        paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
-        paramView.putExtra("activity_type", 4096);
-      } while (BaseActivity.sTopActivity == null);
-      BaseActivity.sTopActivity.startActivity(paramView);
+    else {
       return;
-    } while ((AboutActivity.a(this.a) == null) || (AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null));
-    azmj.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", amlp.a(), "");
-    UpgradeDetailActivity.a(this.a, amlp.a().a(), false, false, true);
+    }
+    if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Int > 0))
+    {
+      long l = AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long;
+      if ((l > 1000L) || ((l >= 500L) && ("actFPSRecent".equals(this.jdField_a_of_type_JavaLangString))))
+      {
+        paramInt = (int)Math.floor(this.jdField_a_of_type_Int * 1000 / ((float)l * 1.0F));
+        this.jdField_a_of_type_JavaLangStringBuffer.setLength(0);
+        this.jdField_a_of_type_JavaLangStringBuffer.append("FPSCalculator ").append(this.jdField_a_of_type_JavaLangString).append(" frameCount :").append(this.jdField_a_of_type_Int).append(",diffTime :").append(l).append(" fps:").append(paramInt);
+        this.jdField_a_of_type_JavaLangStringBuffer.append(",aioBusiness=").append(bdiz.a());
+        if (QLog.isDevelopLevel()) {
+          QLog.e("FPSCalculator", 4, this.jdField_a_of_type_JavaLangStringBuffer.toString());
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_JavaLangStringBuffer.toString());
+        if ((paramInt > 0) && (!"".equals(this.jdField_a_of_type_JavaLangString))) {
+          bdiz.a(this.jdField_a_of_type_JavaLangString, paramInt, bdiz.a());
+        }
+        if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 100) {
+          a();
+        }
+      }
+    }
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      this.jdField_a_of_type_Int += 1;
+    }
   }
 }
 

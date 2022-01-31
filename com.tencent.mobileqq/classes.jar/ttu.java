@@ -1,17 +1,25 @@
-import com.tencent.biz.qqcircle.comment.QCircleCommentBottomBar;
-import java.util.ArrayList;
-import java.util.List;
-
-public class ttu
-  implements ucl
+class ttu
+  implements yia
 {
-  public ttu(QCircleCommentBottomBar paramQCircleCommentBottomBar) {}
+  ttu(ttr paramttr) {}
   
-  public void a(int paramInt)
+  public void a(yii paramyii, Object paramObject)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(tym.a("ext2", String.valueOf(paramInt)));
-    tyg.a(34, 2, QCircleCommentBottomBar.a(this.a), localArrayList);
+    if (paramyii.e()) {
+      if (ttr.a(this.a) != null) {
+        ttr.a(this.a).a(ttr.a(this.a), ttr.b(this.a), true, false);
+      }
+    }
+    do
+    {
+      return;
+      if (paramyii.d())
+      {
+        ttr.a(this.a, false);
+        return;
+      }
+    } while (!paramyii.c());
+    ttr.a(this.a, true);
   }
 }
 

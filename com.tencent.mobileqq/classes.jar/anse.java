@@ -1,200 +1,158 @@
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_GetDiyText_Req;
-import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_GetDiyText_Rsp;
-import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_Req;
-import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_Req_Comm;
-import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_Rsp;
-import com.tencent.mobileqq.bubble.BubbleDiyComu.UserTextInfo;
-import com.tencent.mobileqq.bubble.BubbleDiyEntity;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.RectF;
+import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Interpolator;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
 
 public class anse
-  extends alko
+  extends awmc
 {
-  public anse(QQAppInterface paramQQAppInterface)
+  public int a;
+  public long a;
+  public Context a;
+  protected RectF a;
+  public View a;
+  private Interpolator a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
+  public int d;
+  public int e;
+  
+  public anse(View paramView)
   {
-    super(paramQQAppInterface);
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_b_of_type_Int = 2;
+    this.jdField_b_of_type_Long = 1L;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
   }
   
-  public void a(List<String> paramList, alkr paramalkr)
+  private void a(long paramLong)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    BubbleDiyComu.Bubble_Req_Comm localBubble_Req_Comm;
-    BubbleDiyComu.Bubble_GetDiyText_Req localBubble_GetDiyText_Req;
-    ArrayList localArrayList;
-    label252:
-    do
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  private void f()
+  {
+    a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_b_of_type_Long = 1L;
+    this.jdField_b_of_type_Int = 2;
+  }
+  
+  public RectF a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.f - 0.0F, this.g - 0.0F - paramInt, this.f + this.h + 0.0F, 0.0F + (this.g + this.i) - paramInt);
+    return this.jdField_a_of_type_AndroidGraphicsRectF;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    int i = paramInt;
+    if (this.jdField_a_of_type_Boolean) {
+      i = (int)(paramInt + this.jdField_a_of_type_Int * (this.jdField_b_of_type_Float - 1.0F));
+    }
+    this.g = i;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  {
+    super.a(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+    this.jdField_a_of_type_Int = paramInt2;
+  }
+  
+  public void a(int paramInt, long paramLong)
+  {
+    this.e = this.jdField_a_of_type_Int;
+    this.d = (this.jdField_a_of_type_Int + paramInt);
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
+    this.jdField_b_of_type_Int = 1;
+    a(paramLong);
+  }
+  
+  protected void a(Canvas paramCanvas) {}
+  
+  public boolean a(Canvas paramCanvas)
+  {
+    boolean bool2 = false;
+    b();
+    paramCanvas.save();
+    paramCanvas.translate(0.0F, this.c);
+    a(paramCanvas);
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {}
+    for (boolean bool1 = super.a(paramCanvas);; bool1 = false)
     {
+      b(paramCanvas);
+      paramCanvas.restore();
+      if ((this.jdField_a_of_type_Boolean) || (bool1)) {
+        bool2 = true;
+      }
+      return bool2;
+    }
+  }
+  
+  public void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("BubbleDiyHandler", 2, "try fetchDiyTexts: " + TextUtils.join(",", paramList));
-      }
-      localBubble_Req_Comm = new BubbleDiyComu.Bubble_Req_Comm();
-      localBubble_Req_Comm.platform.set(109L);
-      localBubble_Req_Comm.osver.set(Build.VERSION.RELEASE);
-      localBubble_Req_Comm.mqqver.set("8.3.3");
-      localBubble_GetDiyText_Req = new BubbleDiyComu.Bubble_GetDiyText_Req();
-      localArrayList = new ArrayList();
-      Iterator localIterator = paramList.iterator();
-      for (;;)
-      {
-        if (!localIterator.hasNext()) {
-          break label252;
-        }
-        Object localObject = (String)localIterator.next();
-        BubbleDiyComu.UserTextInfo localUserTextInfo = new BubbleDiyComu.UserTextInfo();
-        localObject = ((String)localObject).split("_");
-        long l1 = 0L;
-        if (localObject.length == 2) {}
-        try
-        {
-          long l2 = Long.parseLong(localObject[0]);
-          l1 = l2;
-          i = Integer.parseInt(localObject[1]);
-          l1 = l2;
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          for (;;)
-          {
-            QLog.e("BubbleDiyHandler", 1, "", localNumberFormatException);
-            int i = 0;
-          }
-        }
-        if ((l1 > 0L) && (i > 0))
-        {
-          localUserTextInfo.text_uin.set(l1);
-          localUserTextInfo.text_id.set(i);
-          localArrayList.add(localUserTextInfo);
-        }
-      }
-      if (!localArrayList.isEmpty()) {
+    }
+    float f2 = (float)(AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long) * 1.0F / (float)this.jdField_b_of_type_Long;
+    if (this.jdField_a_of_type_AndroidViewAnimationInterpolator != null) {}
+    for (float f1 = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f2);; f1 = f2)
+    {
+      float f3 = this.e;
+      a((int)(f1 * (this.d - this.e) + f3));
+      if (f2 <= 0.99D) {
         break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("BubbleDiyHandler", 2, "no diy id need request: " + TextUtils.join(",", paramList));
-    return;
-    localBubble_GetDiyText_Req.user_text_info.set(localArrayList);
-    paramList = new BubbleDiyComu.Bubble_Req();
-    paramList.cmd.set(1);
-    paramList.packet_seq.set(System.currentTimeMillis());
-    paramList.comm.set(localBubble_Req_Comm);
-    paramList.reqcmd_0x01.set(localBubble_GetDiyText_Req);
-    paramalkr = super.createToServiceMsg("bubble.1", paramalkr);
-    paramalkr.putWupBuffer(paramList.toByteArray());
-    super.sendPbReq(paramalkr);
-  }
-  
-  protected Class<? extends alkr> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (paramFromServiceMsg.getServiceCmd().equals("bubble.1"))
-    {
-      bool = paramFromServiceMsg.isSuccess();
-      localObject = String.valueOf(paramToServiceMsg.getAttribute("_tag_LOGSTR"));
-      if (QLog.isColorLevel()) {
-        QLog.d("BubbleDiyHandler", 2, "key_seq=" + (String)localObject + " isSuccess=" + bool + " resultCode=" + paramFromServiceMsg.getResultCode());
-      }
-      if (bool) {
-        paramFromServiceMsg = new BubbleDiyComu.Bubble_Rsp();
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      do
+      switch (this.jdField_b_of_type_Int)
       {
-        try
-        {
-          boolean bool;
-          paramFromServiceMsg = (BubbleDiyComu.Bubble_Rsp)paramFromServiceMsg.mergeFrom((byte[])paramObject);
-          if (paramFromServiceMsg != null) {
-            if (paramFromServiceMsg.ret.get() != 0L)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("BubbleDiyHandler", 2, "DiyText...fetch key 回包 sso 成功 ，server 失败，ret = " + paramFromServiceMsg.ret.get());
-              }
-              super.notifyUI(paramToServiceMsg, 1, false, null);
-              return;
-            }
-          }
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          Object localObject;
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("BubbleDiyHandler", 2, "DiyText bubble_Rsp is null 业务回包 异常");
-            }
-            paramFromServiceMsg = null;
-          }
-          if ((paramFromServiceMsg.rspcmd_0x01.has()) && (paramFromServiceMsg.rspcmd_0x01.user_text_info.has()))
-          {
-            paramObject = paramFromServiceMsg.rspcmd_0x01.user_text_info.get();
-            paramFromServiceMsg = new ArrayList();
-            if (paramObject != null)
-            {
-              paramObject = paramObject.iterator();
-              while (paramObject.hasNext())
-              {
-                localObject = (BubbleDiyComu.UserTextInfo)paramObject.next();
-                if ((((BubbleDiyComu.UserTextInfo)localObject).text.has()) && (((BubbleDiyComu.UserTextInfo)localObject).text_uin.has()) && (((BubbleDiyComu.UserTextInfo)localObject).text_id.has()))
-                {
-                  try
-                  {
-                    JSONObject localJSONObject = new JSONObject(((BubbleDiyComu.UserTextInfo)localObject).text.get());
-                    BubbleDiyEntity localBubbleDiyEntity = new BubbleDiyEntity();
-                    localBubbleDiyEntity.uinAndDiyId = (((BubbleDiyComu.UserTextInfo)localObject).text_uin.get() + "_" + ((BubbleDiyComu.UserTextInfo)localObject).text_id.get());
-                    localBubbleDiyEntity.diyText = localJSONObject.optString("diyText");
-                    localBubbleDiyEntity.bottomLeftId = localJSONObject.optString("bl");
-                    localBubbleDiyEntity.bottomRightId = localJSONObject.optString("br");
-                    localBubbleDiyEntity.topLeftId = localJSONObject.optString("tl");
-                    localBubbleDiyEntity.topRightId = localJSONObject.optString("tr");
-                    paramFromServiceMsg.add(localBubbleDiyEntity);
-                    if (!QLog.isColorLevel()) {
-                      continue;
-                    }
-                    QLog.i("BubbleDiyHandler", 2, "onReceive: uinAndDiyId: " + localBubbleDiyEntity.uinAndDiyId + ",config: " + ((BubbleDiyComu.UserTextInfo)localObject).text.get());
-                  }
-                  catch (Exception localException) {}
-                  if (QLog.isColorLevel()) {
-                    QLog.e("BubbleDiyHandler", 2, "", localException);
-                  }
-                }
-              }
-            }
-            ansd.a().a(this.app, true, paramFromServiceMsg);
-            super.notifyUI(paramToServiceMsg, 1, true, paramFromServiceMsg);
-            return;
-          }
-          super.notifyUI(paramToServiceMsg, 1, false, null);
-          return;
-        }
-        super.notifyUI(paramToServiceMsg, 1, false, null);
+      case 2: 
+      default: 
+        f();
         return;
-        super.notifyUI(paramToServiceMsg, 1, false, null);
-      } while (!QLog.isColorLevel());
-      QLog.d("BubbleDiyHandler", 2, "DiyText isSuccess is false sso通道  异常");
+      case 1: 
+        this.jdField_b_of_type_Int = 3;
+        c();
+        return;
+      }
+      this.jdField_b_of_type_Int = 2;
       return;
     }
-    QLog.d("BubbleDiyHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
+  }
+  
+  protected void b(Canvas paramCanvas) {}
+  
+  public void c()
+  {
+    this.e = this.g;
+    this.d = this.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = 3;
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new ansf(this);
+    a(1500L);
+  }
+  
+  public void d() {}
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConvActivePendantHolderBase", 2, "stopActiveSanHua stopAnimation");
+    }
+    super.e();
+    f();
+    this.jdField_b_of_type_Float = 1.0F;
+    this.jdField_a_of_type_Float = 1.0F;
   }
 }
 

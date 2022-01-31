@@ -1,65 +1,27 @@
-import android.text.TextUtils;
-import android.util.Log;
-import java.lang.reflect.Field;
+import android.text.Editable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class bglg
+  implements View.OnTouchListener
 {
-  public static Object a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
-    {
-      paramString = Class.forName(paramString).newInstance();
-      return paramString;
-    }
-    catch (ClassNotFoundException paramString)
-    {
-      Log.e("ReflectionUtil", "ClassNotFoundException: ");
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (IllegalAccessException paramString)
-    {
-      Log.e("ReflectionUtil", "IllegalAccessException: ");
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (InstantiationException paramString)
-    {
-      Log.e("ReflectionUtil", "InstantiationException: ");
-      paramString.printStackTrace();
-    }
-    return null;
-  }
+  public bglg(Login paramLogin) {}
   
-  public static Object a(String paramString1, String paramString2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
+    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText) {
+      if ((paramMotionEvent.getAction() == 0) && (this.a.jdField_b_of_type_AndroidWidgetEditText.getText().length() > 0)) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      }
     }
-    try
-    {
-      paramString1 = Class.forName(paramString1);
-      paramString1 = paramString1.getField(paramString2).get(paramString1);
-      return paramString1;
+    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramMotionEvent.getAction() != 0) || (this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length() <= 0)) {
+      return false;
     }
-    catch (NoSuchFieldException paramString1)
-    {
-      Log.w("ReflectionUtil", "NoSuchFieldException: " + paramString1.getMessage());
-      return null;
-    }
-    catch (IllegalAccessException paramString1)
-    {
-      Log.w("ReflectionUtil", "IllegalAccessException: " + paramString1.getMessage());
-      return null;
-    }
-    catch (ClassNotFoundException paramString1)
-    {
-      Log.w("ReflectionUtil", "ClassNotFoundException: " + paramString1.getMessage());
-    }
-    return null;
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    return false;
   }
 }
 

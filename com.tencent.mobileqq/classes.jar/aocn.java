@@ -1,78 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.comment.DanmuItemBean;
+import com.tencent.TMG.utils.QLog;
 
 public class aocn
+  implements alpg
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
-  
-  public aocn(DanmuItemBean paramDanmuItemBean)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Long = paramDanmuItemBean.jdField_b_of_type_Long;
-    this.jdField_a_of_type_JavaLangString = String.valueOf(paramDanmuItemBean.jdField_a_of_type_Long);
-    this.jdField_b_of_type_JavaLangString = paramDanmuItemBean.jdField_b_of_type_JavaLangString;
-    this.jdField_c_of_type_JavaLangString = paramDanmuItemBean.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_Long = paramDanmuItemBean.d;
-    this.jdField_c_of_type_Long = paramDanmuItemBean.jdField_c_of_type_Long;
-    this.jdField_a_of_type_Boolean = paramDanmuItemBean.jdField_a_of_type_Boolean;
-    this.d = paramDanmuItemBean.jdField_c_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramDanmuItemBean.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = this.d;; str = this.jdField_b_of_type_JavaLangString) {
-      return str + " : " + this.jdField_c_of_type_JavaLangString;
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof aocn))
+    switch (paramInt)
     {
-      paramObject = (aocn)paramObject;
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long)
+    default: 
+      return;
+    case 1: 
+      paramObject = (Object[])paramObject;
+      if ((paramObject != null) && (paramObject.length == 1))
       {
-        bool1 = bool2;
-        if (this.jdField_b_of_type_Long == paramObject.jdField_b_of_type_Long)
-        {
-          bool1 = bool2;
-          if (this.jdField_c_of_type_Long == paramObject.jdField_c_of_type_Long)
-          {
-            bool1 = bool2;
-            if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-            {
-              bool1 = bool2;
-              if (!TextUtils.isEmpty(paramObject.jdField_a_of_type_JavaLangString))
-              {
-                bool1 = bool2;
-                if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
-                  bool1 = true;
-                }
-              }
-            }
-          }
+        aocp localaocp = aocq.a();
+        if ((localaocp == null) || (!localaocp.a())) {
+          break label135;
         }
       }
+      break;
     }
-    return bool1;
-  }
-  
-  public int hashCode()
-  {
-    return String.valueOf(this.jdField_a_of_type_Long).hashCode();
+    label135:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if ((paramInt != 0) && (!((Boolean)paramObject[0]).booleanValue())) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        aobw.c(paramBoolean);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("ColorNoteObserver", 0, "onUpdate: TYPE_REQ_GET_COLOR_NOTE_RECENT_SWITCH");
+        return;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ColorNoteObserver", 0, "onUpdate: params == null || params.length != 1");
+      return;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ColorNoteObserver", 0, "onUpdate: TYPE_REQ_SET_COLOR_NOTE_RECENT_SWITCH");
+      return;
+    }
   }
 }
 

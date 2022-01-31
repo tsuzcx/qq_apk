@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import azlg;
+import azpp;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public final class CrashUtils$1
@@ -10,7 +10,7 @@ public final class CrashUtils$1
   
   public void run()
   {
-    azlg.a(this.a);
+    azpp.a(this.a);
   }
 }
 

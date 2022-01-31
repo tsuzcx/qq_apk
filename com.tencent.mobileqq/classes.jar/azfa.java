@@ -1,20 +1,32 @@
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import com.tencent.qphone.base.util.QLog;
 
 class azfa
-  implements afgh
+  implements azlg
 {
-  azfa(azey paramazey, CustomFrameAnimationDrawable paramCustomFrameAnimationDrawable) {}
+  azfa(azey paramazey) {}
   
   public void a()
   {
-    if (this.jdField_a_of_type_Azey.c > 0) {
-      return;
+    this.a.a = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onStop!");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.h();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.c();
-    azey localazey = this.jdField_a_of_type_Azey;
-    localazey.c += 1;
+  }
+  
+  public void a(Process paramProcess)
+  {
+    this.a.a = paramProcess;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer Start!");
+    }
+  }
+  
+  public void b()
+  {
+    this.a.a = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onDestroy!");
+    }
   }
 }
 

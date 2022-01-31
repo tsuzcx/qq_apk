@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import aphq;
+import aplz;
 
 public class AppleEmojiData
   extends XmlData
 {
-  @aphq(a=true, b=false)
+  @aplz(a=true, b=false)
   public String v7a_MD5;
   
   public String getSharedPreferencesName()

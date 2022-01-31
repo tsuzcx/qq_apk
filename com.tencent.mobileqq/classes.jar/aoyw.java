@@ -1,48 +1,78 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.util.LruCache;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public class aoyw<T>
+public class aoyw
+  extends aokh<String>
 {
-  private LruCache<String, T> a = new aoyx(this, (int)Runtime.getRuntime().maxMemory() / 32);
-  
-  private static int a(Bitmap paramBitmap)
+  public int a()
   {
-    if (paramBitmap == null) {
-      return 0;
-    }
-    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
+    return 462;
   }
   
-  private int b(T paramT)
+  public Class<String> a()
   {
-    if ((paramT instanceof Bitmap)) {
-      return a((Bitmap)paramT);
-    }
-    if ((paramT instanceof BitmapDrawable)) {
-      return a(((BitmapDrawable)paramT).getBitmap());
-    }
-    return 0;
+    return String.class;
   }
   
-  protected int a(T paramT)
+  @NonNull
+  public String a(int paramInt)
   {
-    return 0;
+    return "";
+  }
+  
+  @Nullable
+  public String a(aoko[] paramArrayOfaoko)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onParsed");
+    }
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length == 0)) {
+      paramArrayOfaoko = null;
+    }
+    String str;
+    do
+    {
+      return paramArrayOfaoko;
+      str = paramArrayOfaoko[0].a;
+      paramArrayOfaoko = str;
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoDrawConfProcessor", 2, " onParsed, content:" + str);
+    return str;
   }
   
   public void a(int paramInt)
   {
-    try
-    {
-      this.a.trimToSize(paramInt);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onReqFailed");
     }
-    finally {}
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onUpdate");
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoyw
  * JD-Core Version:    0.7.0.1
  */

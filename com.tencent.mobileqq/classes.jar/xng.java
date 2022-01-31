@@ -1,18 +1,14 @@
-public class xng
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+
+public abstract interface xng
 {
-  public static long a(String paramString, long paramLong)
-  {
-    try
-    {
-      long l = Long.valueOf(paramString).longValue();
-      return l;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      wsv.d("NumberUtils", "Invalid num string " + paramString + ", return default number " + paramLong);
-    }
-    return paramLong;
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(SlideItemInfo paramSlideItemInfo);
+  
+  public abstract void b(String paramString);
 }
 
 

@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bmgo;
-import bmix;
+import bmla;
+import bmnj;
 import com.tencent.image.URLImageView;
 import cooperation.qzone.widget.FastAnimationDrawable;
 
@@ -18,7 +18,7 @@ class EditGifImage$2
     this.this$0.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.this$0.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable);
     this.this$0.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
     this.this$0.d = false;
-    this.this$0.jdField_a_of_type_Bmix.a.a(true, false);
+    this.this$0.jdField_a_of_type_Bmnj.a.a(true, false);
     this.this$0.b = localFastAnimationDrawable;
   }
 }

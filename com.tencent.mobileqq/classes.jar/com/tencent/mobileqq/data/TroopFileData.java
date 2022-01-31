@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import java.io.Serializable;
 
 public class TroopFileData
-  extends awbv
+  extends awge
   implements Serializable
 {
   public static final long serialVersionUID = 0L;
@@ -16,7 +16,7 @@ public class TroopFileData
   public int duration;
   public long entitySessionId;
   public String fileName;
-  @awdj
+  @awhs
   public String fileUrl;
   public int height;
   public long lastTime;

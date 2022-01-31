@@ -12,7 +12,7 @@ class rrg
   
   public void a(pdc parampdc)
   {
-    bhxr.a("ReadInJoyBaseAdapter.Viewtype " + this.jdField_a_of_type_Int);
+    biby.a("ReadInJoyBaseAdapter.Viewtype " + this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Rqj.a(this.jdField_a_of_type_Int)) {
       if ((opy.a(this.jdField_a_of_type_Rqj.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) && (this.jdField_a_of_type_Rqj.c != 56))
       {
@@ -27,7 +27,7 @@ class rrg
     if (parampdc.a(this.jdField_a_of_type_Int)) {
       this.jdField_a_of_type_JavaLangObject = parampdc.a(this.b, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewViewGroup);
     }
-    bhxr.a();
+    biby.a();
   }
 }
 

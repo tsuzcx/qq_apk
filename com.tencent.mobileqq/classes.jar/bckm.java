@@ -1,21 +1,7 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.mobileqq.app.ThreadManager;
-
 public class bckm
 {
-  private static Handler a;
-  
-  public static void a(Runnable paramRunnable)
-  {
-    if (a == null)
-    {
-      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("TroopMemberDBThread", 0);
-      localHandlerThread.start();
-      a = new Handler(localHandlerThread.getLooper());
-    }
-    a.post(paramRunnable);
-  }
+  public String a;
+  public boolean a;
 }
 
 

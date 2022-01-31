@@ -4,7 +4,7 @@ import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
 
 class dp
-  implements army
+  implements arrh
 {
   dp(do paramdo, DataLineMsgRecord paramDataLineMsgRecord, dq paramdq) {}
   

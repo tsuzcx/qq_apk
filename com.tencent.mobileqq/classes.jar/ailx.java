@@ -1,6 +1,18 @@
-public abstract interface ailx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+
+public class ailx
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString);
+  public ailx(BindVerifyActivity paramBindVerifyActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.setResult(0);
+    this.a.finish();
+  }
 }
 
 

@@ -1,34 +1,63 @@
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+
 public class wxm
+  extends bayj
 {
-  public int a;
-  public long a;
-  public boolean a;
+  public wxm(CommonPicUploadFragment paramCommonPicUploadFragment) {}
   
-  public boolean equals(Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    if (this == paramObject) {}
+    bass localbass = (bass)paramMessage.obj;
+    if ((localbass == null) || (localbass.b != 24) || (localbass.c != CommonPicUploadFragment.a(this.a, CommonPicUploadFragment.a(this.a)))) {}
     do
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      do
+      {
+        return;
+      } while (localbass.f.equals(CommonPicUploadFragment.b(this.a)));
+      switch (paramMessage.what)
+      {
+      case 1004: 
+      default: 
+        return;
+      case 1003: 
+        if (QLog.isColorLevel()) {
+          QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send finished!" + CommonPicUploadFragment.a(this.a));
+        }
+        break;
       }
-      paramObject = (wxm)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
-        return false;
+    } while (CommonPicUploadFragment.a(this.a));
+    paramMessage = new Bdh_extinfo.UploadPicExtInfo();
+    try
+    {
+      paramMessage.mergeFrom(localbass.a, 0, localbass.a.length);
+      CommonPicUploadFragment.a(this.a, true);
+      CommonPicUploadFragment.b(this.a, localbass.f);
+      CommonPicUploadFragment.c(this.a, paramMessage.bytes_file_resid.get().toStringUtf8());
+      CommonPicUploadFragment.d(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
+      if (QLog.isColorLevel()) {
+        QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler mUuid=" + CommonPicUploadFragment.c(this.a) + ", mPicMd5=" + CommonPicUploadFragment.b(this.a) + ", mPicUrl=" + CommonPicUploadFragment.d(this.a));
       }
-    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int * 31 + (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32);
-  }
-  
-  public String toString()
-  {
-    return "EditBehavior{hasMusic=" + this.jdField_a_of_type_Boolean + ", musicType=" + this.jdField_a_of_type_Int + ", musicId=" + this.jdField_a_of_type_Long + '}';
+      CommonPicUploadFragment.a(this.a).sendEmptyMessage(1005);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      for (;;)
+      {
+        localInvalidProtocolBufferMicroException.printStackTrace();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send error:" + localbass.g);
+    }
+    CommonPicUploadFragment.a(this.a).sendEmptyMessage(1003);
   }
 }
 

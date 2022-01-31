@@ -1,17 +1,12 @@
-public class baug
+public abstract interface baug
 {
-  public int a;
-  public int b;
+  public abstract void onResp(bavf parambavf);
   
-  public baug(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     baug
  * JD-Core Version:    0.7.0.1
  */

@@ -19,15 +19,15 @@ public class pzm
 {
   private qcf a;
   
-  public pzm(Context paramContext, bcws parambcws, rqj paramrqj)
+  public pzm(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()
   {
     this.jdField_a_of_type_Boolean = true;
-    return a(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).f().g().q().l().n().j();
+    return a(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).f().g().q().l().n().j();
   }
   
   public pxl d()
@@ -46,17 +46,17 @@ public class pzm
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
     localLinearLayout2.setBackgroundColor(Color.parseColor("#F8F8F8"));
     localLinearLayout2.setLayoutParams(localLayoutParams);
-    opi.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841381));
+    opi.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841382));
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary != null) {
       localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary);
     }
     if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentGridImage)))
     {
       localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.setMargins(aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLayoutParams.setMargins(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       ((ComponentContentGridImage)this.jdField_a_of_type_Pxk).setLayoutParams(localLayoutParams);
       ((ComponentContentGridImage)this.jdField_a_of_type_Pxk).setDuplicateParentStateEnabled(true);
-      opi.a((ComponentContentGridImage)this.jdField_a_of_type_Pxk, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841381));
+      opi.a((ComponentContentGridImage)this.jdField_a_of_type_Pxk, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841382));
       ((ComponentContentGridImage)this.jdField_a_of_type_Pxk).setOnNoItemClickListener(new pzn(this));
       localLinearLayout2.addView((ComponentContentGridImage)this.jdField_a_of_type_Pxk);
     }
@@ -92,7 +92,7 @@ public class pzm
       if ((this.jdField_a_of_type_Qcf.a() != null) && (this.jdField_a_of_type_Qcf.a().size() != 0)) {
         break label136;
       }
-      localLayoutParams.setMargins(aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      localLayoutParams.setMargins(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
     }
     for (;;)
     {
@@ -102,7 +102,7 @@ public class pzm
       localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
       break;
       label136:
-      localLayoutParams.setMargins(aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLayoutParams.setMargins(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
     }
   }
   

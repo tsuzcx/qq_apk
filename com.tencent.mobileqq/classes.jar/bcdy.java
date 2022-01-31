@@ -1,44 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import org.json.JSONObject;
 
-public class bcdy
+public abstract class bcdy
 {
-  private static bcdy jdField_a_of_type_Bcdy = new bcdy();
-  String jdField_a_of_type_JavaLangString;
+  protected JSONObject a;
+  protected boolean b = true;
+  public int c;
   
-  public static bcdy a()
+  public abstract int a();
+  
+  public JSONObject a()
   {
-    return jdField_a_of_type_Bcdy;
+    return this.a;
   }
-  
-  public void a() {}
-  
-  public void a(BaseChatPie paramBaseChatPie) {}
   
   public void a(String paramString) {}
   
-  public void a(String paramString, bcdz parambcdz) {}
-  
-  public void a(String paramString1, String paramString2, String paramString3) {}
-  
   public boolean a()
   {
-    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+    return this.b;
   }
   
-  public boolean a(String paramString)
-  {
-    return true;
-  }
+  public abstract int b();
   
-  public void b() {}
-  
-  public boolean b(String paramString)
+  public String toString()
   {
-    if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      return false;
+    if (this.a != null) {
+      return this.a.toString();
     }
-    return paramString.equals(this.jdField_a_of_type_JavaLangString);
+    return "";
   }
 }
 

@@ -1,26 +1,54 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.qphone.base.util.QLog;
 
 class asbk
-  implements View.OnClickListener
+  extends URLDrawableDownListener.Adapter
 {
-  asbk(asbj paramasbj, int paramInt) {}
+  asbk(asbj paramasbj) {}
   
-  public void onClick(View paramView)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (asbj.a(this.jdField_a_of_type_Asbj, this.jdField_a_of_type_Int))
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadCancelled");
+    }
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {}
+    do
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface != null) {
-        azmj.b(localQQAppInterface, "dc00898", "", "", "0X800A612", "0X800A612", 0, 0, "", "", "", "");
+      return;
+      paramView.setBackgroundDrawable(null);
+      if ((paramView instanceof ImageView))
+      {
+        ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
+        ((ImageView)paramView).setImageDrawable(paramURLDrawable);
+        paramView.requestLayout();
       }
-    }
-    if (LangSettingFragment.a(this.jdField_a_of_type_Asbj.a) != ((Integer)paramView.getTag()).intValue()) {
-      LangSettingFragment.a(this.jdField_a_of_type_Asbj.a, ((Integer)paramView.getTag()).intValue());
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadSuccessed");
   }
 }
 

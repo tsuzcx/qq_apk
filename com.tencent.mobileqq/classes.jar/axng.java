@@ -1,20 +1,27 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView.1.1;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.revokemsg.RevokeMsgInfo;
 
-public class axng
-  implements SurfaceTexture.OnFrameAvailableListener
+public final class axng
+  implements Parcelable.Creator<RevokeMsgInfo>
 {
-  public axng(FollowCaptureView paramFollowCaptureView) {}
-  
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  public RevokeMsgInfo a(Parcel paramParcel)
   {
-    FollowCaptureView.a(this.a, paramSurfaceTexture);
-    this.a.queueEvent(new FollowCaptureView.1.1(this, paramSurfaceTexture));
-    if (!FollowCaptureView.a(this.a)) {
-      FollowCaptureView.a(this.a, true);
-    }
+    RevokeMsgInfo localRevokeMsgInfo = new RevokeMsgInfo();
+    localRevokeMsgInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localRevokeMsgInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localRevokeMsgInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localRevokeMsgInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localRevokeMsgInfo.b = paramParcel.readLong();
+    localRevokeMsgInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    localRevokeMsgInfo.d = paramParcel.readString();
+    localRevokeMsgInfo.e = paramParcel.readInt();
+    return localRevokeMsgInfo;
+  }
+  
+  public RevokeMsgInfo[] a(int paramInt)
+  {
+    return new RevokeMsgInfo[paramInt];
   }
 }
 

@@ -1,134 +1,85 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.utils.MessageRoamHandler.ChatHistoryMessageObserver.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
-
 public class amms
-  extends alsi
 {
-  private int a;
+  public static int a;
+  public static long a;
+  public static String a;
+  public static int b;
+  public static String b;
+  public static int c;
+  public static String c;
+  public static int d;
+  public static String d;
+  public static int e;
+  public static String e;
+  public static int f;
+  public static int g;
+  public static int h;
+  public static int i;
+  public static int j;
+  public static int k;
+  public static int l;
+  public static int m;
+  public static int n;
+  public static int o;
   
-  public amms(ammr paramammr, int paramInt)
+  static
   {
-    this.jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_JavaLangString = "sp_msglrucache";
+    jdField_b_of_type_JavaLangString = "sp_key_msglrucache_switch";
+    jdField_c_of_type_JavaLangString = "sp_key_cacheinitadjust_switch";
+    jdField_d_of_type_JavaLangString = "sp_key_report_aio_last_time";
+    jdField_a_of_type_Int = 1600;
+    jdField_b_of_type_Int = 1400;
+    jdField_c_of_type_Int = 1;
+    jdField_d_of_type_Int = 2;
+    jdField_e_of_type_Int = 40;
+    f = 20;
+    g = 10;
+    i = 5;
+    j = -1;
+    k = 2;
+    l = 1;
+    m = 1;
+    jdField_e_of_type_JavaLangString = "msglrucacheMoniterLogin";
+    n = 100;
+    o = 10;
+    jdField_a_of_type_Long = 60000L;
   }
   
-  protected void b(boolean paramBoolean)
+  public static int a(String paramString)
   {
-    if (this.jdField_a_of_type_Ammr.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
-      return;
-    }
-    alsl localalsl = (alsl)this.jdField_a_of_type_Ammr.app.getManager(92);
-    if (!paramBoolean)
-    {
-      localalsl.a(8, null);
-      return;
-    }
-    localalsl.a(9, null);
-  }
-  
-  protected void c(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Ammr.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
-      return;
-    }
-    alsl localalsl = (alsl)this.jdField_a_of_type_Ammr.app.getManager(92);
-    if (!paramBoolean)
-    {
-      localalsl.a(7, null);
-      return;
-    }
-    localalsl.a(6, null);
-  }
-  
-  protected void c(boolean paramBoolean, Object paramObject)
-  {
-    paramObject = (Bundle)paramObject;
-    String str1 = paramObject.getString("PEER_UIN");
-    long l = paramObject.getLong("BEGTIME");
-    boolean bool1 = paramObject.getBoolean("NO_MSG");
-    int j = paramObject.getInt("SVR_CODE");
-    String str2 = paramObject.getString("SVR_MSG");
-    boolean bool2 = paramObject.getBoolean("FETCH_MORE");
-    int i = paramObject.getInt("MSG_COUNT");
-    boolean bool3 = paramObject.getBoolean("IS_PRELOAD_TYPE");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.roammsg", 2, "beginTime: " + l + ",isNoMsg: " + bool1 + ",svrCode: " + j + ",msgCount:" + i + ",fetchMore: " + bool2 + ",svrMsg: " + str2 + ",isPreloadType:" + bool3);
-    }
-    if (bool3) {
-      return;
-    }
-    if ((paramBoolean) && (bool2) && (i > 0) && (i <= 8))
-    {
-      ThreadManager.getSubThreadHandler().post(new MessageRoamHandler.ChatHistoryMessageObserver.1(this, l, i, str1, bool2));
-      return;
-    }
-    paramObject = (alsl)this.jdField_a_of_type_Ammr.app.getManager(92);
-    i = 1;
-    if (!paramBoolean)
-    {
-      if (bool1) {
-        i = 2;
-      }
-      if (j == 51) {
-        i = 3;
-      }
-      paramObject.b(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "onUpdateGetRoamChat isSuccess: " + paramBoolean + ", whatMsg: " + i + ", beginTime: " + l);
-      }
-      if (!bool2) {
-        break label354;
-      }
-    }
-    label354:
-    for (j = 1;; j = 0)
-    {
-      paramObject.a(i, j, Long.valueOf(l));
-      return;
-      j = 0;
-      i = j;
-      if (!bool2)
+    if (paramString != null) {
+      try
       {
-        i = j;
-        if (!paramObject.a(l)) {
-          i = 4;
+        if (paramString.contains("&"))
+        {
+          paramString = paramString.split("&");
+          if (paramString.length >= 2)
+          {
+            int i1 = Integer.valueOf(paramString[1]).intValue();
+            return i1;
+          }
         }
       }
-      paramObject.b(true);
-      break;
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
+    return 0;
   }
   
-  protected void d(boolean paramBoolean, Object paramObject)
+  public static String a(String paramString)
   {
-    if (paramObject == null) {}
-    Object localObject1;
-    do
+    String str = paramString;
+    if (paramString != null)
     {
-      return;
-      localObject2 = (HashMap)paramObject;
-      localObject1 = (String)((HashMap)localObject2).get("KEYWORD");
-      long l = ((Long)((HashMap)localObject2).get("SEARCHSEQUENCE")).longValue();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "onUpdateRoamMsgSearchResult isSuccess:" + paramBoolean + ",keyword:" + (String)localObject1 + ",sequence:" + l);
+      str = paramString;
+      if (paramString.contains("&")) {
+        str = paramString.split("&")[0];
       }
-      localObject1 = this.jdField_a_of_type_Ammr.app.getHandler(aica.class);
-      if (!paramBoolean)
-      {
-        localObject2 = ((MqqHandler)localObject1).obtainMessage(4);
-        ((Message)localObject2).obj = paramObject;
-        ((MqqHandler)localObject1).sendMessage((Message)localObject2);
-        return;
-      }
-    } while (((HashMap)localObject2).get("SEARCHRESULT") == null);
-    Object localObject2 = ((MqqHandler)localObject1).obtainMessage(5);
-    ((Message)localObject2).obj = paramObject;
-    ((MqqHandler)localObject1).sendMessage((Message)localObject2);
+    }
+    return str;
   }
 }
 

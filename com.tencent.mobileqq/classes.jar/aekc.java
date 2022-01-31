@@ -1,8 +1,21 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
 
-public abstract interface aekc
+public class aekc
 {
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  public int a;
+  public awge a;
+  public String a;
+  
+  public aekc(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, int paramInt, awge paramawge)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Awge = paramawge;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

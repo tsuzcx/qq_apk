@@ -1,33 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
 
 public class vmz
-  extends SimpleObserver<weh>
+  implements View.OnTouchListener
 {
-  public vmz(vmu paramvmu) {}
+  public vmz(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
   
-  public void a(weh paramweh)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.onNext(paramweh);
-    vmu.a(this.a, paramweh, new ErrorMessage(), true);
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    wsv.d("Q.qqstory.player.CommentFloatDialogController", "refresh data cancel");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    if (((ErrorMessage)paramError).errorCode == 2223)
-    {
-      vmu.a(this.a, vmu.a(this.a), new ErrorMessage(), false);
-      return;
-    }
-    vmu.a(this.a, vmu.a(this.a), (ErrorMessage)paramError, false);
+    return this.a.a.onTouchEvent(paramMotionEvent);
   }
 }
 

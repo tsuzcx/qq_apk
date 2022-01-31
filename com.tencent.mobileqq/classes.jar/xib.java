@@ -1,17 +1,8 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.ConvertRunnable;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import java.lang.ref.WeakReference;
-
-public class xib
+public abstract interface xib
 {
-  public static int a = 3;
-  public long a;
-  public ConvertRunnable a;
-  public SlideItemInfo a;
-  public WeakReference<xic> a;
-  public int b;
-  public long b;
-  public int c;
+  public abstract int a();
+  
+  public abstract xhr a(int paramInt);
 }
 
 

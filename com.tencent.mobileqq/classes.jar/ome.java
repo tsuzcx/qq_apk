@@ -3,7 +3,7 @@ import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFr
 import com.tencent.widget.AbsListView;
 
 public class ome
-  implements bhpo
+  implements bhtv
 {
   public ome(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
   

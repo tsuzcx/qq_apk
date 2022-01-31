@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process;
 
-import akrg;
-import akxx;
+import akvv;
+import alcm;
 import android.os.Bundle;
 import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
 import com.tencent.qphone.base.util.QLog;
@@ -10,11 +10,11 @@ import eipc.EIPCResult;
 public class CmGameServerQIPCModule$3
   implements Runnable
 {
-  public CmGameServerQIPCModule$3(akrg paramakrg, IPCSpriteContext paramIPCSpriteContext, int paramInt) {}
+  public CmGameServerQIPCModule$3(akvv paramakvv, IPCSpriteContext paramIPCSpriteContext, int paramInt) {}
   
   public void run()
   {
-    Object localObject = akxx.a(this.jdField_a_of_type_ComTencentMobileqqApolloSdkIPCSpriteContext);
+    Object localObject = alcm.a(this.jdField_a_of_type_ComTencentMobileqqApolloSdkIPCSpriteContext);
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("IPCSpriteContext", this.jdField_a_of_type_ComTencentMobileqqApolloSdkIPCSpriteContext);
     localBundle.putString("js_content", (String)localObject);

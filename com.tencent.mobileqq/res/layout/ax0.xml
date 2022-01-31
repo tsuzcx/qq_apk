@@ -2,6 +2,6 @@
 <RelativeLayout android:orientation="vertical" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <dov.com.qq.im.aeeditor.module.topbar.AEEditorTopBar android:id="@id/jt2" android:background="@color/e3" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true" />
-    <com.tencent.tavcut.view.TAVCutVideoView android:id="@id/mph" android:background="@color/e3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/miy" android:layout_below="@id/jt2" />
-    <dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu android:id="@id/miy" android:background="@color/dw" android:layout_width="fill_parent" android:layout_height="181.0dip" android:layout_alignParentBottom="true" />
+    <com.tencent.tavcut.view.TAVCutVideoView android:id="@id/mr0" android:background="@color/e3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/mjh" android:layout_below="@id/jt2" />
+    <dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu android:id="@id/mjh" android:background="@color/dw" android:layout_width="fill_parent" android:layout_height="181.0dip" android:layout_alignParentBottom="true" />
 </RelativeLayout>

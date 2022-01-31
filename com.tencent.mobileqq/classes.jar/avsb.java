@@ -1,28 +1,60 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.widget.OCRBottomTabView;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class avsb
-  implements TextWatcher
+  extends avqc
 {
-  public avsb(OCRResultFragmentNew paramOCRResultFragmentNew) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public avsb(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    if (paramEditable.toString().trim().length() == 0)
-    {
-      this.a.b.setEnabled(false);
-      this.a.a.setEnabled(false);
-      return;
-    }
-    this.a.b.setEnabled(true);
-    this.a.a.setEnabled(true);
+    super(paramContext, paramQQAppInterface);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public int a(avqj paramavqj)
+  {
+    return 5;
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public View a(ViewGroup paramViewGroup, avqj paramavqj)
+  {
+    paramViewGroup = (avsc)paramavqj;
+    paramavqj = new TextView(this.a);
+    paramavqj.setTextColor(this.a.getResources().getColor(2131165307));
+    paramavqj.setTextSize(1, 16.0F);
+    paramavqj.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+    paramViewGroup.g = paramavqj;
+    return paramavqj;
+  }
+  
+  public avqj a()
+  {
+    return new avsc(this);
+  }
+  
+  public void f(avqj paramavqj)
+  {
+    paramavqj = (avsc)paramavqj;
+    Object localObject = (avsk)paramavqj.a;
+    String str = ((avsk)localObject).n;
+    localObject = bdnu.a(this.a, ((avsk)localObject).a, str);
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      paramavqj.g.setVisibility(8);
+      return;
+    }
+    paramavqj.g.setVisibility(0);
+    if ((localObject instanceof SpannableString)) {
+      paramavqj.g.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+    paramavqj.g.setText((CharSequence)localObject);
+  }
 }
 
 

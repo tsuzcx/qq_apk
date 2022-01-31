@@ -1,48 +1,30 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.util.ArrayList;
 import java.util.List;
 
 public class aefi
-  extends alox
+  implements View.OnClickListener
 {
-  public aefi(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public aefi(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    xqq.a(this.a.a);
+    xqq.a(this.a.a.a);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.a.a.size())
     {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-      return;
+      paramView.add(((aegt)this.a.a.a.get(i)).a);
+      i += 1;
     }
-    this.a.a(2131719810, 1);
-  }
-  
-  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList)
-  {
-    if (paramBoolean)
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      this.a.a(2131691543, 2);
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if ((paramBoolean1) && (paramBoolean3))
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.setResult(-1, localIntent);
+    this.a.finish();
   }
 }
 

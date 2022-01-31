@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ahlc
-  implements View.OnClickListener
+public abstract interface ahlc
 {
-  public ahlc(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  public abstract QQAppInterface a();
   
-  public void onClick(View paramView)
-  {
-    bdaj.a("Grp_contacts_news", "notice", "unnormal_clk", 0, 0, new String[0]);
-    TroopSuspiciousFragment.a(this.a.a);
-  }
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract Activity getActivity();
 }
 
 

@@ -1,66 +1,44 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
-public class ajiz
-  implements TextWatcher
+class ajiz
+  implements View.OnClickListener
 {
-  public ajiz(LoginView paramLoginView) {}
+  ajiz(ajit paramajit) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    LoginView.c(this.a);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Object localObject;
-    if (paramCharSequence.length() > 0) {
-      if (this.a.b != null)
-      {
-        localObject = (ajjo)this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getAdapter();
-        if ((localObject != null) && (((ajjo)localObject).getCount() != 0)) {
-          break label139;
-        }
-        localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-        paramInt1 = (int)(15.0F * LoginView.a(this.a) + 0.5F);
-        if (((RelativeLayout.LayoutParams)localObject).rightMargin != paramInt1)
-        {
-          ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
-          this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-        this.a.b.setVisibility(0);
-      }
-    }
-    for (;;)
+    if (paramView == null) {}
+    Object localObject1;
+    RecentBaseData localRecentBaseData;
+    do
     {
-      if (paramCharSequence.length() <= 4) {
-        break label237;
+      do
+      {
+        int i;
+        do
+        {
+          return;
+          i = paramView.getId();
+        } while ((i < 0) || (i >= this.a.getCount()));
+        localObject1 = this.a.getItem(i);
+      } while ((localObject1 == null) || (!(localObject1 instanceof RecentBaseData)));
+      localRecentBaseData = (RecentBaseData)localObject1;
+      Object localObject2 = null;
+      localObject1 = localObject2;
+      if ((paramView instanceof TextView))
+      {
+        paramView = ((TextView)paramView).getText();
+        localObject1 = localObject2;
+        if (paramView != null) {
+          localObject1 = paramView.toString();
+        }
       }
-      this.a.b(paramCharSequence.toString());
-      return;
-      label139:
-      localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-      paramInt1 = (int)(40.0F * LoginView.a(this.a) + 0.5F);
-      if (((RelativeLayout.LayoutParams)localObject).rightMargin == paramInt1) {
-        break;
-      }
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
-      this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      break;
-      if ((this.a.b != null) && (this.a.b.isShown())) {
-        this.a.b.setVisibility(8);
-      }
-    }
-    label237:
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a(false, null);
+    } while (TextUtils.isEmpty((CharSequence)localObject1));
+    this.a.a(localRecentBaseData, (String)localObject1, "1");
   }
 }
 

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.app.automator.step;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aowf;
-import bdcs;
+import apao;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -27,16 +27,16 @@ public class QAVStep
       }
       return 7;
     }
-    bdcs.a(str1 + 106);
-    bdcs.d(str1 + 132 + str2);
-    bdcs.d(str1 + 176 + str2);
-    bdcs.d(str1 + 216 + str2);
-    bdcs.a(str1 + 263);
-    bdcs.a(str1 + 270);
-    bdcs.d(str1 + 370 + str2);
-    bdcs.d(str1 + "beauty" + File.separator + "beauty_config.json");
-    bdcs.a(str1 + "signal_strength");
-    i = aowf.a(BaseApplicationImpl.getContext());
+    bdhb.a(str1 + 106);
+    bdhb.d(str1 + 132 + str2);
+    bdhb.d(str1 + 176 + str2);
+    bdhb.d(str1 + 216 + str2);
+    bdhb.a(str1 + 263);
+    bdhb.a(str1 + 270);
+    bdhb.d(str1 + 370 + str2);
+    bdhb.d(str1 + "beauty" + File.separator + "beauty_config.json");
+    bdhb.a(str1 + "signal_strength");
+    i = apao.a(BaseApplicationImpl.getContext());
     localSharedPreferences.edit().putInt("flag_delete", i).commit();
     return 7;
   }

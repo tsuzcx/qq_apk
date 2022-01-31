@@ -1,7 +1,7 @@
 package cooperation.qqreader.host.advertisement;
 
-import bkcg;
-import bkci;
+import bkgn;
+import bkgp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,11 +10,11 @@ public class ReaderTianShuSdk
   public static void requestAd(int paramInt1, int paramInt2, ReaderTianShuSdk.RequestListener paramRequestListener)
   {
     ArrayList localArrayList = new ArrayList();
-    bkcg localbkcg = new bkcg();
-    localbkcg.a = paramInt1;
-    localbkcg.b = paramInt2;
-    localArrayList.add(localbkcg);
-    bkci.a().a(localArrayList, new ReaderTianShuSdk.ReaderTianShuGetAdvCallback(paramInt1, paramRequestListener));
+    bkgn localbkgn = new bkgn();
+    localbkgn.a = paramInt1;
+    localbkgn.b = paramInt2;
+    localArrayList.add(localbkgn);
+    bkgp.a().a(localArrayList, new ReaderTianShuSdk.ReaderTianShuGetAdvCallback(paramInt1, paramRequestListener));
   }
 }
 

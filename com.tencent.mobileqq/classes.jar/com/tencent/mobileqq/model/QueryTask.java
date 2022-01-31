@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.model;
 
-import aubp;
-import aubq;
+import aufy;
+import aufz;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class QueryTask<Param, Result>
   implements Runnable
 {
-  public aubp<Result> a;
-  public aubq<Param, Result> a;
+  public aufy<Result> a;
+  public aufz<Param, Result> a;
   private Param a;
   
-  public QueryTask(aubq<Param, Result> paramaubq, aubp<Result> paramaubp)
+  public QueryTask(aufz<Param, Result> paramaufz, aufy<Result> paramaufy)
   {
-    this.jdField_a_of_type_Aubq = paramaubq;
-    this.jdField_a_of_type_Aubp = paramaubp;
+    this.jdField_a_of_type_Aufz = paramaufz;
+    this.jdField_a_of_type_Aufy = paramaufy;
   }
   
   public void a(Param paramParam)
@@ -26,7 +26,7 @@ public class QueryTask<Param, Result>
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_Aubq.a(this.jdField_a_of_type_JavaLangObject);
+    Object localObject = this.jdField_a_of_type_Aufz.a(this.jdField_a_of_type_JavaLangObject);
     ThreadManager.getUIHandler().post(new QueryTask.1(this, localObject));
   }
 }

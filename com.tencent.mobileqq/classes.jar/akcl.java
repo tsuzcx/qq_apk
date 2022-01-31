@@ -1,19 +1,14 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.applets.data.AppletItem;
-import java.util.List;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-class akcl
-  implements CompoundButton.OnCheckedChangeListener
+abstract interface akcl
 {
-  akcl(akck paramakck) {}
+  public abstract void a(int paramInt);
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    int i = ((Integer)paramCompoundButton.getTag()).intValue();
-    AppletItem localAppletItem = (AppletItem)this.a.a.get(i);
-    akck.a(this.a).a(paramCompoundButton, paramBoolean, localAppletItem);
-  }
+  public abstract void a(int paramInt, String paramString1, PublishVideoEntry paramPublishVideoEntry, String paramString2, long paramLong);
+  
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
+  
+  public abstract void b(PublishVideoEntry paramPublishVideoEntry, String paramString);
 }
 
 

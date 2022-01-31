@@ -1,19 +1,8 @@
-import android.view.View;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-class afje
-  implements arnx
+public abstract interface afje
 {
-  afje(afjb paramafjb) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = bdcd.a(this.a.a, 230);
-    paramView.setTitle(2131691610);
-    paramView.setMessage(2131691611);
-    paramView.setNegativeButton(2131690648, new afjf(this, paramView));
-    paramView.setPositiveButton(2131694951, new afjg(this));
-    paramView.show();
-  }
+  public abstract void a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo);
 }
 
 

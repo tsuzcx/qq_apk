@@ -1,26 +1,21 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adrw
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
-  public adrw(SelectedAndSearchBar paramSelectedAndSearchBar) {}
+  public adrw(QQSettingCleanActivity paramQQSettingCleanActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (SelectedAndSearchBar.a(this.a) != null) {
-      SelectedAndSearchBar.a(this.a).a(paramEditable);
-    }
+    azqs.b(this.a.app, "dc00898", "", "", "0X8007915", "0X8007915", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adrw
  * JD-Core Version:    0.7.0.1
  */

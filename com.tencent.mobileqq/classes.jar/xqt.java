@@ -1,31 +1,11 @@
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
 
-public class xqt
-  implements URLDrawable.URLDrawableListener
+abstract interface xqt
 {
-  private final WeakReference<TextView> a;
+  public abstract void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener);
   
-  public xqt(TextView paramTextView)
-  {
-    this.a = new WeakReference(paramTextView);
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = (TextView)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setVisibility(8);
-    }
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

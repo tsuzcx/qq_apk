@@ -2,8 +2,8 @@ package com.tencent.qqmini.sdk.runtime.plugin;
 
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
-import bgkd;
-import bhab;
+import bgok;
+import bhei;
 import com.tencent.qqmini.sdk.runtime.widget.media.CoverPusherView;
 import com.tencent.qqmini.sdk.utils.DisplayUtil;
 import org.json.JSONObject;
@@ -11,11 +11,11 @@ import org.json.JSONObject;
 class LivePusherJsPlugin$2
   implements Runnable
 {
-  LivePusherJsPlugin$2(LivePusherJsPlugin paramLivePusherJsPlugin, int paramInt, JSONObject paramJSONObject, bgkd parambgkd) {}
+  LivePusherJsPlugin$2(LivePusherJsPlugin paramLivePusherJsPlugin, int paramInt, JSONObject paramJSONObject, bgok parambgok) {}
   
   public void run()
   {
-    Object localObject1 = bhab.a(LivePusherJsPlugin.access$600(this.this$0)).a(this.val$livePusherId);
+    Object localObject1 = bhei.a(LivePusherJsPlugin.access$600(this.this$0)).a(this.val$livePusherId);
     if (!(localObject1 instanceof CoverPusherView)) {}
     do
     {

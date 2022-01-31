@@ -68,7 +68,7 @@ public class ReadInJoyViolaChannelFragment
   private void a()
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView = new ViolaBaseView(getActivity());
-    ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379948)).addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
+    ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380006)).addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
     if (this.jdField_a_of_type_Sno.a()) {
       this.jdField_a_of_type_Sno.d();
     }
@@ -295,7 +295,7 @@ public class ReadInJoyViolaChannelFragment
     }
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getActivity());
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558457, paramViewGroup, false));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372951));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372977));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
     this.jdField_a_of_type_AndroidContentContext = getActivity();
     this.jdField_a_of_type_Sno = new sno(this);

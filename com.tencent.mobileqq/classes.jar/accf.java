@@ -1,26 +1,39 @@
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
 public class accf
-  extends Handler
+  extends ndm
 {
-  public accf(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  public accf(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    switch (paramMessage.what)
+    if ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Boolean)) {}
+    do
     {
-    default: 
       return;
-    }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131721199);
-    }
-    this.a.a(paramMessage, 1);
+      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqBaseActivity", 2, "openIdObserver success");
+        }
+        if (!paramOpenID.openID.equals(AddFriendLogicActivity.jdField_a_of_type_JavaLangString))
+        {
+          AddFriendLogicActivity.a(this.a, true);
+          this.a.a();
+          return;
+        }
+        AddFriendLogicActivity.a(this.a);
+        return;
+      }
+      AddFriendLogicActivity.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("qqBaseActivity", 2, "openIdObserver fail");
   }
 }
 

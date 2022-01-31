@@ -1,30 +1,15 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
 
 class avdk
-  implements avmx
+  extends nab
 {
-  avdk(avdj paramavdj) {}
+  avdk(avdj paramavdj, avdq paramavdq) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramBoolean)
-    {
-      avms localavms = (avms)this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263);
-      if (localavms != null) {
-        localavms.d(paramString);
-      }
-      avcw.a(this.a.a.a, paramString);
-      if ((this.a.a.a.jdField_a_of_type_AndroidViewView.getContext() instanceof Activity)) {
-        ((BaseActivity)this.a.a.a.jdField_a_of_type_AndroidViewView.getContext()).finish();
-      }
-      return;
+    if (this.jdField_a_of_type_Avdq != null) {
+      this.jdField_a_of_type_Avdq.a(paramInt, paramArrayOfByte, paramBundle);
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131708638), 0).a();
   }
 }
 

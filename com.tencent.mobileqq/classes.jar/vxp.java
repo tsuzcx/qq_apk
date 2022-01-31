@@ -1,32 +1,13 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
 class vxp
-  extends vox
+  implements vyl
 {
-  vxp(vxo paramvxo) {}
+  vxp(vxn paramvxn, vwd paramvwd, Object paramObject) {}
   
-  public void d()
+  public boolean a(vyi paramvyi, int paramInt1, int paramInt2)
   {
-    super.d();
-    if (bngs.b(this.a.b()))
-    {
-      LinearLayout localLinearLayout = (LinearLayout)this.a.a().a.findViewById(2131363407);
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
-      localLayoutParams.height = vxo.a(this.a);
-      if (!azgq.a(this.a.a.getContext())) {
-        localLinearLayout.setBackgroundColor(Color.parseColor("#181818"));
-      }
-      localLinearLayout.setLayoutParams(localLayoutParams);
-    }
-  }
-  
-  public void g()
-  {
-    super.g();
-    vxo.a(this.a).a();
+    return this.jdField_a_of_type_Vwd.a(this.jdField_a_of_type_Vxn, 0, paramInt1, this.jdField_a_of_type_Vxn.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
   }
 }
 

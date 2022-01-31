@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.minigame.ui;
 
 import android.app.Activity;
-import bgvn;
+import bgzu;
 
 public class GameRuntimeStateObserver$2
   implements Runnable
 {
-  public GameRuntimeStateObserver$2(bgvn parambgvn) {}
+  public GameRuntimeStateObserver$2(bgzu parambgzu) {}
   
   public void run()
   {
-    if (!bgvn.a(this.this$0).isFinishing()) {
-      bgvn.a(this.this$0).finish();
+    if (!bgzu.a(this.this$0).isFinishing()) {
+      bgzu.a(this.this$0).finish();
     }
   }
 }

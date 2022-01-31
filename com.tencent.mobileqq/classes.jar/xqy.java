@@ -1,20 +1,8 @@
-import android.view.View;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tribe.async.dispatch.Dispatcher.Command;
 
 public class xqy
-  implements bhww
-{
-  public xqy(SegmentList paramSegmentList) {}
-  
-  public void a_(View paramView) {}
-  
-  public void e() {}
-  
-  public void e(boolean paramBoolean)
-  {
-    this.a.requestDisallowInterceptTouchEvent(paramBoolean);
-  }
-}
+  implements Dispatcher.Command
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar

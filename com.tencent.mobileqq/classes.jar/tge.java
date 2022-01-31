@@ -9,8 +9,8 @@ import java.util.List;
 
 public class tge
 {
-  private static final int jdField_a_of_type_Int = azgq.a(240.0F);
-  private static final int b = azgq.a(240.0F);
+  private static final int jdField_a_of_type_Int = azkz.a(240.0F);
+  private static final int b = azkz.a(240.0F);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
   

@@ -4,12 +4,12 @@ import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.List;
-import uid;
-import uil;
-import uja;
-import uje;
-import ujm;
-import urr;
+import umm;
+import umu;
+import unj;
+import unn;
+import unv;
+import uwa;
 
 class PreloadDownloader$DownloadRunnable
   implements Runnable
@@ -41,15 +41,15 @@ class PreloadDownloader$DownloadRunnable
       }
       else
       {
-        if ((this.this$0.jdField_a_of_type_Ujm != null) && (!this.this$0.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue.isBusy())) {
-          this.this$0.jdField_a_of_type_Ujm.a(this.this$0.a());
+        if ((this.this$0.jdField_a_of_type_Unv != null) && (!this.this$0.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue.isBusy())) {
+          this.this$0.jdField_a_of_type_Unv.a(this.this$0.a());
         }
         ??? = this.this$0.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue;
-        this.this$0.jdField_a_of_type_Uja = ((PreloadQueue)???).getFirstAndBlockIfLowestPriority();
-        uja localuja1 = this.this$0.jdField_a_of_type_Uja;
-        if (localuja1 != null)
+        this.this$0.jdField_a_of_type_Unj = ((PreloadQueue)???).getFirstAndBlockIfLowestPriority();
+        unj localunj1 = this.this$0.jdField_a_of_type_Unj;
+        if (localunj1 != null)
         {
-          localuja1.c = ((PreloadQueue)???).getId();
+          localunj1.c = ((PreloadQueue)???).getId();
           for (;;)
           {
             Iterator localIterator;
@@ -59,25 +59,25 @@ class PreloadDownloader$DownloadRunnable
               if (!localIterator.hasNext()) {
                 break;
               }
-              uje localuje = (uje)((WeakReference)localIterator.next()).get();
-              if (localuje != null) {
-                localuje.a(localuja1.jdField_b_of_type_JavaLangString, localuja1.jdField_a_of_type_Int, localuja1);
+              unn localunn = (unn)((WeakReference)localIterator.next()).get();
+              if (localunn != null) {
+                localunn.a(localunj1.jdField_b_of_type_JavaLangString, localunj1.jdField_a_of_type_Int, localunj1);
               }
             }
             localIterator.remove();
           }
-          localuja2.jdField_b_of_type_Int = 1;
-          if (TextUtils.isEmpty(localuja2.d))
+          localunj2.jdField_b_of_type_Int = 1;
+          if (TextUtils.isEmpty(localunj2.d))
           {
-            ??? = ((uid)urr.a(28)).a(localuja2.jdField_b_of_type_JavaLangString, localuja2.jdField_a_of_type_Int);
-            localuja2.d = ((uil)???).jdField_b_of_type_JavaLangString;
-            localuja2.jdField_a_of_type_Boolean = ((uil)???).jdField_a_of_type_Boolean;
-            localuja2.f = ((uil)???).c;
-            this.this$0.b(localuja2);
+            ??? = ((umm)uwa.a(28)).a(localunj2.jdField_b_of_type_JavaLangString, localunj2.jdField_a_of_type_Int);
+            localunj2.d = ((umu)???).jdField_b_of_type_JavaLangString;
+            localunj2.jdField_a_of_type_Boolean = ((umu)???).jdField_a_of_type_Boolean;
+            localunj2.f = ((umu)???).c;
+            this.this$0.b(localunj2);
           }
           else
           {
-            this.this$0.b(localuja2);
+            this.this$0.b(localunj2);
           }
         }
       }

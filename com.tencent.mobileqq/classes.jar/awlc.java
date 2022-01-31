@@ -1,20 +1,43 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class awlc
-  implements ValueAnimator.AnimatorUpdateListener
+public final class awlc
 {
-  public awlc(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ValueAnimator paramValueAnimator, View paramView) {}
+  final TroopAIOAppInfo a = new TroopAIOAppInfo();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private void a(String paramString)
   {
-    int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.height = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    if (!TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOPlusPanelAppInfoConfigProcessor", 2, "Config parse configText -> " + paramString);
+      }
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.a.appid = paramString.optInt("appid");
+      this.a.name = paramString.optString("title");
+      this.a.enName = paramString.optString("eng_title");
+      this.a.iconUrl = paramString.optString("iconNormal");
+      this.a.iconPress = paramString.optString("iconPress");
+      this.a.simpleDayUrl = paramString.optString("iconConciseNormal");
+      this.a.simpleDayPressUrl = paramString.optString("iconConcisePress");
+      this.a.simpleNightUrl = paramString.optString("iconConciseNightNormal");
+      this.a.simpleNightPressUrl = paramString.optString("iconConciseNightPress");
+      this.a.redDotID = awmb.a(this.a.appid);
+      this.a.actionType = paramString.optString("actionType");
+      this.a.action = paramString.optString("action");
+      this.a.enableC2C = paramString.optInt("enableC2C");
+      this.a.enableGroup = paramString.optInt("enableGroup");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("AIOPlusPanelAppInfoConfigProcessor", 1, paramString, new Object[0]);
+    }
   }
 }
 

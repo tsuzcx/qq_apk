@@ -1,71 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
-import com.tencent.mobileqq.activity.qwallet.widget.RollNumberView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
-public class aitv
-  extends Handler
+class aitv
+  implements DialogInterface.OnClickListener
 {
-  WeakReference<QzoneHbFragment> a;
+  aitv(aitu paramaitu) {}
   
-  public aitv(QzoneHbFragment paramQzoneHbFragment)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramQzoneHbFragment);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    QzoneHbFragment localQzoneHbFragment = (QzoneHbFragment)this.a.get();
-    if (localQzoneHbFragment == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          switch (paramMessage.what)
-          {
-          case 102: 
-          default: 
-            return;
-          case 100: 
-            if (QLog.isColorLevel()) {
-              QLog.d("QzoneHbFragment", 2, "MSG_UPDATE----1");
-            }
-            break;
-          }
-        } while ((QzoneHbFragment.a(localQzoneHbFragment) == null) || (TextUtils.isEmpty(QzoneHbFragment.a(localQzoneHbFragment))));
-        try
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QzoneHbFragment", 2, "MSG_UPDATE----in mModifyAmountBtn.setEnabled(false)");
-          }
-          double d = Double.parseDouble(QzoneHbFragment.a(localQzoneHbFragment));
-          QzoneHbFragment.a(localQzoneHbFragment).reset(d);
-          QzoneHbFragment.a(localQzoneHbFragment).setVisibility(0);
-          QzoneHbFragment.a(localQzoneHbFragment).setVisibility(8);
-          QzoneHbFragment.a(localQzoneHbFragment).roll();
-          QzoneHbFragment.b(localQzoneHbFragment).setEnabled(false);
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          paramMessage.printStackTrace();
-          return;
-        }
-      } while (TextUtils.isEmpty(QzoneHbFragment.a(localQzoneHbFragment)));
-      QzoneHbFragment.a(localQzoneHbFragment).setText(QzoneHbFragment.a(localQzoneHbFragment));
-      QzoneHbFragment.a(localQzoneHbFragment).setVisibility(8);
-      QzoneHbFragment.a(localQzoneHbFragment).setVisibility(0);
-      QzoneHbFragment.b(localQzoneHbFragment).setEnabled(true);
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneHbFragment", 2, "MSG_ROLL_STOP AmountBtn.setEnabled(true)---");
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", ((NewPhotoPreviewActivity)this.a.a.mActivity).getCurrentSelectedPostion());
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, paramDialogInterface);
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
+    aitt.a(this.a.a).dismiss();
   }
 }
 

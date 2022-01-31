@@ -1,181 +1,112 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Bitmap.Config;
-import android.graphics.Color;
-import java.io.ByteArrayOutputStream;
-import java.lang.reflect.Array;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.style.QCircleWebViewTitleStyle;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.widget.WebViewProgressBar;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.FadeIconImageView;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class ufz
+  extends beft
 {
-  public static double a(Bitmap paramBitmap1, Bitmap paramBitmap2)
+  public ufz(bejh parambejh)
   {
-    if ((paramBitmap1 == null) || (paramBitmap2 == null)) {}
-    while ((paramBitmap1.getWidth() != paramBitmap2.getWidth()) || (paramBitmap1.getHeight() != paramBitmap2.getHeight())) {
-      return 0.0D;
-    }
-    int i = a(a(paramBitmap1));
-    int j = a(a(paramBitmap2));
-    return a(a(paramBitmap1, i), a(paramBitmap2, j), paramBitmap1.getWidth(), paramBitmap1.getHeight());
+    super(parambejh);
   }
   
-  private static double a(int[][] paramArrayOfInt1, int[][] paramArrayOfInt2, int paramInt1, int paramInt2)
+  public void a()
   {
-    double d1 = 0.0D;
-    int i = 0;
-    while (i < paramInt1)
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_Bejh.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar != null) {
+      this.jdField_a_of_type_Bejh.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setVisibility(8);
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    try
     {
-      int j = 0;
-      while (j < paramInt2)
+      if (this.jdField_a_of_type_AndroidViewView != null)
       {
-        double d2 = d1;
-        if (paramArrayOfInt1[i][j] != paramArrayOfInt2[i][j]) {
-          d2 = d1 + 1.0D;
-        }
-        j += 1;
-        d1 = d2;
+        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+        localLayoutParams.setMargins(0, ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidViewView.getContext()) + xin.b(this.jdField_a_of_type_AndroidViewView.getContext(), 50.0F), 0, 0);
+        this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
       }
-      i += 1;
+      super.a(paramBoolean, paramInt1, paramInt2);
+      return;
     }
-    return 1.0D - d1 / (paramInt1 * paramInt2);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("WebLog_SwiftIphoneTitleBarUI", 1, "setWarnToastVisible error");
+        localException.printStackTrace();
+      }
+    }
   }
   
-  private static int a(byte[] paramArrayOfByte)
+  public void b()
   {
-    float f1 = 0.0F;
-    int m = 0;
-    int[] arrayOfInt = new int[256];
-    int i = 0;
-    while (i < arrayOfInt.length)
-    {
-      arrayOfInt[i] = 0;
-      i += 1;
-    }
-    int j = 0;
-    i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      n = paramArrayOfByte[i] & 0xFF;
-      arrayOfInt[n] += 1;
-      k = j;
-      if (arrayOfInt[n] > j) {
-        k = arrayOfInt[n];
-      }
-      i += 1;
-      j = k;
-    }
-    int n = paramArrayOfByte.length;
-    i = 0;
-    for (float f2 = 0.0F; i < 256; f2 = f3 + f2)
-    {
-      f3 = arrayOfInt[i] * i;
-      i += 1;
-    }
-    j = 0;
-    float f3 = 0.0F;
-    int k = 0;
-    i = m;
-    if (i < 256)
-    {
-      k = arrayOfInt[i] + k;
-      if (k != 0) {}
-    }
     for (;;)
     {
-      i += 1;
-      break;
-      m = n - k;
-      if (m == 0) {
-        return j;
-      }
-      f1 = arrayOfInt[i] * i + f1;
-      float f4 = f1 / k;
-      float f5 = (f2 - f1) / m;
-      float f6 = k;
-      f4 = (f4 - f5) * (m * f6 * (f4 - f5));
-      if (f4 > f3)
+      try
       {
-        j = i;
-        f3 = f4;
-      }
-    }
-  }
-  
-  public static Bitmap a(Bitmap paramBitmap)
-  {
-    Bitmap localBitmap;
-    if (paramBitmap.getWidth() <= 50)
-    {
-      localBitmap = paramBitmap;
-      if (paramBitmap.getHeight() <= 50) {}
-    }
-    else
-    {
-      localBitmap = a(paramBitmap, 50, 50);
-    }
-    return b(localBitmap);
-  }
-  
-  private static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
-  {
-    return Bitmap.createScaledBitmap(paramBitmap, paramInt1, paramInt2, false);
-  }
-  
-  private static byte[] a(Bitmap paramBitmap)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramBitmap.getByteCount());
-    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
-    return localByteArrayOutputStream.toByteArray();
-  }
-  
-  private static int[][] a(Bitmap paramBitmap, int paramInt)
-  {
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { i, j });
-    i = 0;
-    while (i < paramBitmap.getWidth())
-    {
-      j = 0;
-      if (j < paramBitmap.getHeight())
-      {
-        if (Color.red(paramBitmap.getPixel(i, j)) > paramInt) {
-          arrayOfInt[i][j] = 1;
-        }
-        for (;;)
-        {
-          j += 1;
+        if (this.jdField_a_of_type_Bejh.jdField_a_of_type_AndroidAppActivity == null) {
           break;
-          arrayOfInt[i][j] = 0;
+        }
+        localObject = this.jdField_a_of_type_Bejh.jdField_a_of_type_AndroidAppActivity.getResources();
+        if (!this.jdField_a_of_type_Bejk.m)
+        {
+          this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(tra.b(false));
+          if ((this.jdField_a_of_type_Bejh.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) && (this.jdField_a_of_type_Bejh.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.d != null))
+          {
+            ImmersiveUtils.a(true, this.jdField_a_of_type_Bejh.jdField_a_of_type_AndroidAppActivity.getWindow());
+            this.jdField_a_of_type_Bejh.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.d.setBackgroundColor(tra.b(false));
+          }
+        }
+        if ((this.jdField_a_of_type_Bejk.a instanceof QCircleWebViewTitleStyle)) {}
+        switch (((QCircleWebViewTitleStyle)this.jdField_a_of_type_Bejk.a).a)
+        {
+        case 0: 
+          this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setImageDrawable(((Resources)localObject).getDrawable(2130843739));
+          localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.getLayoutParams();
+          ((RelativeLayout.LayoutParams)localObject).height = xin.b(this.jdField_a_of_type_Bejh.jdField_a_of_type_AndroidAppActivity, 50.0F);
+          ((RelativeLayout.LayoutParams)localObject).width = xin.b(this.jdField_a_of_type_Bejh.jdField_a_of_type_AndroidAppActivity, 50.0F);
+          ((RelativeLayout.LayoutParams)localObject).setMargins(xin.b(this.jdField_a_of_type_Bejh.jdField_a_of_type_AndroidAppActivity, 5.0F), 0, 0, 0);
+          this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(0);
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.c.setTextColor(-16777216);
+          this.b.setTextColor(-16777216);
+          return;
         }
       }
-      i += 1;
+      catch (Exception localException)
+      {
+        Object localObject;
+        QLog.e("WebLog_SwiftIphoneTitleBarUI", 1, "initDefaultThemeTitleBar error" + localException.getMessage());
+        localException.printStackTrace();
+        return;
+      }
+      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setImageDrawable(((Resources)localObject).getDrawable(2130843739));
+      continue;
+      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setImageDrawable(localException.getDrawable(2130843541));
+      continue;
+      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setImageDrawable(localException.getDrawable(2130843542));
     }
-    return arrayOfInt;
   }
   
-  private static Bitmap b(Bitmap paramBitmap)
+  public void c()
   {
-    int k = paramBitmap.getWidth();
-    int m = paramBitmap.getHeight();
-    int[] arrayOfInt = new int[k * m];
-    paramBitmap.getPixels(arrayOfInt, 0, k, 0, 0, k, m);
-    int i = 0;
-    while (i < m)
-    {
-      int j = 0;
-      while (j < k)
-      {
-        int n = arrayOfInt[(k * i + j)];
-        double d = (0xFF0000 & n) >> 16;
-        n = (int)(((0xFF00 & n) >> 8) * 0.59D + d * 0.3D + (n & 0xFF) * 0.11D);
-        arrayOfInt[(k * i + j)] = (n | n << 16 | 0xFF000000 | n << 8);
-        j += 1;
-      }
-      i += 1;
-    }
-    paramBitmap = Bitmap.createBitmap(k, m, Bitmap.Config.RGB_565);
-    paramBitmap.setPixels(arrayOfInt, 0, k, 0, 0, k, m);
-    return paramBitmap;
+    super.c();
   }
 }
 

@@ -1,22 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.ImageView;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
 class aest
-  implements ValueAnimator.AnimatorUpdateListener
+  implements afhc
 {
-  aest(aess paramaess) {}
+  aest(aesk paramaesk) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
   {
-    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
-    if (aess.a(this.a) != null) {
-      aess.a(this.a).setAlpha((float)d);
-    }
-    if (aess.a(this.a) != null) {
-      aess.a(this.a).setAlpha((float)d * 2.0F);
-    }
+    aesk.a(this.a);
   }
 }
 

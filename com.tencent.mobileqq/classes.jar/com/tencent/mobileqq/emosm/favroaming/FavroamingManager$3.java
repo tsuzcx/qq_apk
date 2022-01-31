@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import alnm;
-import apke;
-import apkf;
+import alsb;
+import apon;
+import apoo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
 public class FavroamingManager$3
   implements Runnable
 {
-  public FavroamingManager$3(apkf paramapkf, alnm paramalnm) {}
+  public FavroamingManager$3(apoo paramapoo, alsb paramalsb) {}
   
   public void run()
   {
-    List localList = ((apke)apkf.h(this.this$0).getManager(149)).a("needDel");
+    List localList = ((apon)apoo.h(this.this$0).getManager(149)).a("needDel");
     if (localList.size() > 0) {
       this.a.a(localList, true);
     }

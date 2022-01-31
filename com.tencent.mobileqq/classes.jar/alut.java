@@ -1,14 +1,6 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
-
-class alut
-  implements FileFilter
+public abstract interface alut
 {
-  public boolean accept(File paramFile)
-  {
-    return Pattern.matches("cpu[0-9]+", paramFile.getName());
-  }
+  public abstract void a();
 }
 
 

@@ -1,22 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.view.VideoCoverPickerProviderView;
-import java.lang.ref.WeakReference;
-
-public class blxk
-  implements View.OnClickListener
+public class blxk<F, S>
 {
-  public blxk(VideoCoverPickerProviderView paramVideoCoverPickerProviderView) {}
+  public F a;
+  public S b;
   
-  public void onClick(View paramView)
+  public blxk(F paramF, S paramS)
   {
-    if (VideoCoverPickerProviderView.a(this.a) != null)
-    {
-      paramView = (blxm)VideoCoverPickerProviderView.a(this.a).get();
-      if (paramView != null) {
-        paramView.a(VideoCoverPickerProviderView.a(this.a), true);
-      }
-    }
+    this.a = paramF;
+    this.b = paramS;
   }
 }
 

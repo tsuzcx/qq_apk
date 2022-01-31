@@ -1,15 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.15.1;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
 public class bkrx
-  implements bkog
+  extends GestureDetector.SimpleOnGestureListener
 {
-  bkrx(bkrq parambkrq) {}
+  private bkrx(AECropperImageView paramAECropperImageView) {}
   
-  public void a(Bitmap paramBitmap)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    ThreadManager.excute(new VideoStoryCapturePart.15.1(this, paramBitmap), 64, null, false);
+    if (!AECropperImageView.a(this.a)) {}
+    do
+    {
+      return false;
+      if (AECropperImageView.b(this.a))
+      {
+        bljn.d("AECropperImageView", "Cropping current bitmap. Can't perform this action right now.");
+        return false;
+      }
+    } while ((paramMotionEvent1 == null) || (paramMotionEvent2 == null) || (paramMotionEvent1.getPointerCount() > 1) || (paramMotionEvent2.getPointerCount() > 1));
+    this.a.a(paramFloat1, paramFloat2);
+    return false;
   }
 }
 

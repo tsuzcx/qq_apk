@@ -1,62 +1,42 @@
-import android.content.Context;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ajhn
-  extends ajhc
+class ajhn
+  implements View.OnClickListener
 {
-  public ajhn(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131693012);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
+  ajhn(ajgb paramajgb) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    paramArrayOfByte = new String(paramArrayOfByte);
+    paramView = (azum)paramView.getTag();
+    if (paramView != null) {
+      paramView.jdField_a_of_type_Bdhk.b();
+    }
     try
     {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Bbkv == null) {
-        this.jdField_a_of_type_Bbkv = new bbkv();
+      if (!TextUtils.isEmpty(paramView.jdField_a_of_type_JavaLangString))
+      {
+        i = Integer.parseInt(paramView.jdField_a_of_type_JavaLangString);
+        azqs.b(ajgb.a(this.a).app, "dc00898", "", "", "0X80087C1", "0X80087C1", i, 0, "", "", "", "");
+        paramView = new aokd(ajgb.a(this.a).getApplicationContext(), aozj.jdField_a_of_type_JavaLangString);
+        if (paramView != null)
+        {
+          paramView.b();
+          paramView.c();
+        }
+        return;
       }
-      this.jdField_a_of_type_Bbkv.a(paramArrayOfByte.getString("messageNavInfo"));
-      return;
     }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Bbkv != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbkv.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
+    catch (Throwable paramView)
     {
       for (;;)
       {
-        localJSONException.printStackTrace();
+        paramView.printStackTrace();
+        int i = 0;
+        continue;
+        i = 0;
       }
     }
   }

@@ -1,17 +1,45 @@
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
+import java.util.ArrayList;
+import java.util.List;
 
-class avyz
-  extends View.AccessibilityDelegate
+public class avyz
 {
-  avyz(avyo paramavyo, ClickableSpan paramClickableSpan) {}
+  public float a;
+  public int a;
+  public Bitmap a;
+  public Rect a;
+  public String a;
+  public List<Point> a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d = -2147483648;
+  public boolean d;
+  public int e = -2147483648;
+  public int f = 2147483647;
+  public int g = 2147483647;
+  public int h = -1;
+  public int i = -1;
+  public int j = -1;
+  public int k = -1;
+  public int l = -1;
+  public int m = -1;
+  public int n = -1;
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public avyz(asjy paramasjy)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
-    if ((paramInt == 1) && (this.jdField_a_of_type_AndroidTextStyleClickableSpan != null)) {
-      this.jdField_a_of_type_AndroidTextStyleClickableSpan.onClick(paramView);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Float = -1.0F;
+    this.jdField_a_of_type_JavaLangString = paramasjy.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramasjy.a();
+    this.h = paramasjy.b;
+    this.l = paramasjy.jdField_a_of_type_Int;
+    if (((asjz)paramasjy.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Int > ((asjz)paramasjy.jdField_a_of_type_JavaUtilArrayList.get(1)).jdField_a_of_type_Int) {
+      this.c = true;
     }
   }
 }

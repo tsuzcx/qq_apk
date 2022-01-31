@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class bbfy
-  implements QQPermissionCallback
+  implements DialogInterface.OnDismissListener
 {
-  bbfy(bbfx parambbfx) {}
+  bbfy(bbfv parambbfv) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bdcd.a(this.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    TroopBarReplyActivity.a(this.a.a, 4);
+    bbfv.a(this.a);
   }
 }
 

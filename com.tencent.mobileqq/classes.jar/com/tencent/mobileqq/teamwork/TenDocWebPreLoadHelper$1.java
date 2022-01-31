@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamwork;
 
-import badz;
+import baii;
 
 public final class TenDocWebPreLoadHelper$1
   implements Runnable
@@ -9,7 +9,7 @@ public final class TenDocWebPreLoadHelper$1
   
   public void run()
   {
-    badz.b(this.a);
+    baii.b(this.a);
   }
 }
 

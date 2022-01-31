@@ -1,22 +1,16 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
 
-class aikr
+public class aikr
   implements DialogInterface.OnClickListener
 {
-  aikr(aikl paramaikl) {}
+  public aikr(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 1) {
-      aikl.a(this.a, aikl.a(this.a));
-    }
-    while (paramInt != 0) {
-      return;
-    }
-    this.a.b();
-    aikl.a(this.a).moveTaskToBack(true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantTipsInfo, false, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,40 +1,41 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import java.util.ArrayList;
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbgi
-  extends BroadcastReceiver
+  extends AsyncTask<Void, Void, String>
 {
-  public bbgi(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public bbgi(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected String a(Void... paramVarArgs)
   {
-    paramContext = paramIntent.getAction();
-    if ("key_photo_delete_action".equals(paramContext))
+    try
     {
-      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
-      if ((i >= 0) && (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())) {
-        this.a.jdField_a_of_type_JavaUtilArrayList.remove(i);
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null)
+      {
+        bdhj.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramVarArgs);
+        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131695351) + " " + paramVarArgs;
       }
     }
-    do
+    catch (Exception paramVarArgs)
     {
-      do
+      for (;;)
       {
-        return;
-        if (!"key_audio_delete_action".equals(paramContext)) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.e("PhotoPreviewActivity", 2, QLog.getStackTraceString(paramVarArgs));
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      } while (!this.a.k);
-      bcht.a(this.a.m, this.a.n, "del_record", this.a.o, "", "", "");
-      return;
-    } while (!"key_photo_add_action".equals(paramContext));
-    this.a.h();
+        paramVarArgs = null;
+      }
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131695350);
+  }
+  
+  protected void a(String paramString)
+  {
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
   }
 }
 

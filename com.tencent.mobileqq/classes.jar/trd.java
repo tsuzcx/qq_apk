@@ -1,50 +1,38 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import java.util.List;
+import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
+import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetFeedDetailRsp;
+import java.util.ArrayList;
 
 public class trd
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+  implements zac<FeedCloudRead.StGetFeedDetailRsp>
 {
-  private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private List<trs> jdField_a_of_type_JavaUtilList;
-  private xzc jdField_a_of_type_Xzc;
+  public trd(QCircleFakeAdapter paramQCircleFakeAdapter, QCircleFeedEvent paramQCircleFeedEvent, boolean paramBoolean) {}
   
-  public void a(ExtraTypeInfo paramExtraTypeInfo)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = paramExtraTypeInfo;
-  }
-  
-  public void a(List<trs> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void a(xzc paramxzc)
-  {
-    this.jdField_a_of_type_Xzc = paramxzc;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
+    if ((paramBoolean) && (paramLong == 0L) && (paramStGetFeedDetailRsp.feed != null))
+    {
+      int i = QCircleFakeAdapter.a(this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter, this.jdField_a_of_type_ComTencentBizQqcircleEventsQCircleFeedEvent.mTargetId);
+      if (i != -1)
+      {
+        tqg.a(paramStGetFeedDetailRsp.feed.id.get(), (FeedCloudMeta.StFeed)this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getDataList().get(i));
+        QCircleFakeAdapter.a(this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter, this.jdField_a_of_type_ComTencentBizQqcircleEventsQCircleFeedEvent.mTargetId);
+        this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getDataList().remove(i);
+        this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getDataList().add(i, paramStGetFeedDetailRsp.feed);
+        this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.notifyDataSetChanged();
+        QLog.d("QCircleFakeAdapter", 1, "success replace feed");
+      }
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && ((this.jdField_a_of_type_Xzc instanceof trr))) {
-      ((tre)paramViewHolder).a(this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo, (trr)this.jdField_a_of_type_Xzc);
+    for (;;)
+    {
+      QLog.d("QCircleFakeAdapter", 1, "fetch real feed success:" + paramBoolean + "  retCode code:" + paramLong + "fromRetry" + this.jdField_a_of_type_Boolean);
+      return;
+      this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.a(this.jdField_a_of_type_ComTencentBizQqcircleEventsQCircleFeedEvent);
+      QLog.d("QCircleFakeAdapter", 1, "start retry");
     }
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new tre(new QCircleFeedCommentWidget(paramViewGroup.getContext()));
   }
 }
 

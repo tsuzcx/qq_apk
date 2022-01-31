@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adke
-  extends alox
+  implements DialogInterface.OnClickListener
 {
-  public adke(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adke(NotificationActivity paramNotificationActivity) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      this.a.c();
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adke
  * JD-Core Version:    0.7.0.1
  */

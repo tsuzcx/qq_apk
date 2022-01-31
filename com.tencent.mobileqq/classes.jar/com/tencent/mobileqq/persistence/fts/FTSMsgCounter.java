@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.persistence.fts;
 
-import awbv;
+import awge;
 
 public class FTSMsgCounter
-  extends awbv
+  extends awge
 {
   public static final String EXTRA_FTS_MSG_COUNTER = "ExtraFTSMsgCounter";
   public long mCounter;

@@ -1,36 +1,33 @@
-import android.animation.ValueAnimator;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-public class bmor
-  extends ValueAnimator
+public abstract interface bmor
 {
-  private bmos jdField_a_of_type_Bmos;
-  private boolean jdField_a_of_type_Boolean;
+  @NonNull
+  public abstract Context a();
   
-  public bmor()
-  {
-    setInterpolator(new AccelerateDecelerateInterpolator());
-  }
+  public abstract Intent a(bnaz parambnaz);
   
-  public void a(bmoq parambmoq1, bmoq parambmoq2)
-  {
-    setObjectValues(new Object[] { parambmoq1, parambmoq2 });
-    this.jdField_a_of_type_Boolean = bmoq.a(parambmoq1, parambmoq2);
-  }
+  @NonNull
+  public abstract View a();
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
+  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3);
   
-  public void setObjectValues(Object... paramVarArgs)
-  {
-    super.setObjectValues(paramVarArgs);
-    if (this.jdField_a_of_type_Bmos == null) {
-      this.jdField_a_of_type_Bmos = new bmos();
-    }
-    setEvaluator(this.jdField_a_of_type_Bmos);
-  }
+  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3, boolean paramBoolean);
+  
+  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong);
+  
+  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong, DialogInterface.OnDismissListener paramOnDismissListener);
+  
+  public abstract void b();
+  
+  @Nullable
+  public abstract Activity getActivity();
 }
 
 

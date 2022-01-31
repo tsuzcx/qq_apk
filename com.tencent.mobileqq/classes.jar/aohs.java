@@ -1,40 +1,25 @@
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity.2;
+import mqq.app.QQPermissionCallback;
 
 public class aohs
-  extends aoho
+  implements QQPermissionCallback
 {
-  public int a()
+  public aohs(LocationSelectActivity.2 param2) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return 159;
+    bdgm.a(this.a.this$0, paramArrayOfString, paramArrayOfInt);
   }
   
-  public aohi a(String paramString)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QLog.d("ArkMsgAIDisableConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
-    try
-    {
-      aoig localaoig = (aoig)aogt.a(paramString, aoig.class);
-      return new aohm(paramString, localaoig);
-    }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      for (;;)
-      {
-        QLog.i("ArkMsgAIDisableConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
-        Object localObject = null;
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
+    LocationSelectActivity.a(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohs
  * JD-Core Version:    0.7.0.1
  */

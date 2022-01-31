@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class accc
-  extends alxu
+  implements DialogInterface.OnClickListener
 {
-  public accc(AuthDevRenameActivity paramAuthDevRenameActivity) {}
+  public accc(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AuthDevRenameActivity.a(this.a);
-    if (!paramBoolean)
-    {
-      QQToast.a(this.a, this.a.getString(2131692239), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
+    azqs.b(this.a.app, "P_CliOper", "Safe_AntiFraud", this.a.app.getCurrentAccountUin(), "AlertDialog", "UserClick", 0, AddFriendLogicActivity.d(this.a), "", "", "", "");
     this.a.finish();
   }
 }

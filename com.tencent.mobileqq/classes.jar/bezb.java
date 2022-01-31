@@ -1,24 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.open.agent.BindGroupFragment;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
 
 public class bezb
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public bezb(BindGroupFragment paramBindGroupFragment, String paramString) {}
+  public bezb(ShareActionSheetV2 paramShareActionSheetV2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramInt == 1)
-    {
-      BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment, alpo.a(2131701487));
-      ((alzf)BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment).a(20)).a(Integer.valueOf(BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Integer.valueOf(BindGroupFragment.b(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), BindGroupFragment.c(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment));
+    ShareActionSheetV2.b(this.a);
+    if (ShareActionSheetV2.a(this.a) != null) {
+      ShareActionSheetV2.a(this.a).onCancel(paramDialogInterface);
     }
-    while (paramInt != 0) {
-      return;
-    }
-    paramDialogInterface.dismiss();
   }
 }
 

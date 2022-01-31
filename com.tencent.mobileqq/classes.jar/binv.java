@@ -1,10 +1,14 @@
-import android.os.IInterface;
-import cooperation.qappcenter.remote.RecvMsg;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public abstract interface binv
-  extends IInterface
+class binv
+  implements aocf
 {
-  public abstract void a(RecvMsg paramRecvMsg);
+  binv(binu parambinu, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte) {}
+  
+  public ColorNote getColorNote()
+  {
+    return new aocl().a(16908292).a(this.jdField_a_of_type_JavaLangString).b(this.b).c(this.c).d("resdrawable://2130838642").a(this.jdField_a_of_type_ArrayOfByte).a();
+  }
 }
 
 

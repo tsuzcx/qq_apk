@@ -1,22 +1,22 @@
-import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
 
 public class ahjm
+  implements View.OnClickListener
 {
-  public int a;
-  public int b;
-  public int c;
+  public ahjm(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
   
-  public ahjm(int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "TabLayoutStatus{, tabId=" + this.a + ", scrollPos=" + this.b + ", scrollTop='" + this.c + '\'' + '}';
+    int i = Face2FaceAddContactFragment.a(this.a).length();
+    if (i >= 4) {
+      return;
+    }
+    Face2FaceAddContactFragment.a(this.a, paramView, i);
+    i = Face2FaceAddContactFragment.a(this.a).length();
+    Face2FaceAddContactFragment.a(this.a, i);
+    Face2FaceAddContactFragment.b(this.a, i);
   }
 }
 

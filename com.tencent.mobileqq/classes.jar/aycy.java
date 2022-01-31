@@ -1,18 +1,25 @@
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
-class aycy
+public class aycy
   implements View.OnTouchListener
 {
-  aycy(aycv paramaycv) {}
+  public aycy(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    if (paramMotionEvent.getAction() == 1)
+    {
+      if (paramMotionEvent.getY() < paramView.findViewById(2131379004).getHeight() + aepi.a(30.0F, paramView.getResources())) {
+        SignatureHistoryFragment.a(this.a, true);
+      }
+    }
+    else {
+      return false;
+    }
+    SignatureHistoryFragment.a(this.a, false);
     return false;
   }
 }

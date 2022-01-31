@@ -29,17 +29,17 @@ public class pdv
   
   public View a(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560204, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131367293));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369360));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369363));
-    this.c = ((TextView)paramViewGroup.findViewById(2131369340));
-    this.d = ((TextView)paramViewGroup.findViewById(2131369359));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131367296));
-    this.e = ((TextView)paramViewGroup.findViewById(2131375775));
-    this.f = ((TextView)paramViewGroup.findViewById(2131375779));
-    this.g = ((TextView)paramViewGroup.findViewById(2131375756));
-    this.h = ((TextView)paramViewGroup.findViewById(2131375774));
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560203, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131367303));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369378));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369381));
+    this.c = ((TextView)paramViewGroup.findViewById(2131369358));
+    this.d = ((TextView)paramViewGroup.findViewById(2131369377));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131367306));
+    this.e = ((TextView)paramViewGroup.findViewById(2131375826));
+    this.f = ((TextView)paramViewGroup.findViewById(2131375830));
+    this.g = ((TextView)paramViewGroup.findViewById(2131375807));
+    this.h = ((TextView)paramViewGroup.findViewById(2131375825));
     paramViewGroup.setTag(this);
     return paramViewGroup;
   }

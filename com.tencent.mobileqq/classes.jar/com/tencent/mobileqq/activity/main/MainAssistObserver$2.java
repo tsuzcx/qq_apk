@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.main;
 
-import agci;
-import aiak;
-import alrv;
+import aggx;
+import aiez;
+import alwk;
 import android.content.res.Resources;
 import android.support.v4.util.MQLruCache;
 import android.util.DisplayMetrics;
-import aukx;
-import azoa;
+import aupg;
+import azsj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -17,7 +17,7 @@ import com.tencent.qphone.base.util.QLog;
 public class MainAssistObserver$2
   implements Runnable
 {
-  public MainAssistObserver$2(aiak paramaiak) {}
+  public MainAssistObserver$2(aiez paramaiez) {}
   
   public void run()
   {
@@ -28,13 +28,13 @@ public class MainAssistObserver$2
     }
     try
     {
-      agci.a(localQQAppInterface);
-      aukx.a().a(localQQAppInterface);
+      aggx.a(localQQAppInterface);
+      aupg.a().a(localQQAppInterface);
       localObject = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics();
       int i = ((DisplayMetrics)localObject).widthPixels;
       int j = ((DisplayMetrics)localObject).heightPixels;
       localObject = BaseApplicationImpl.sImageCache;
-      float f = alrv.a().a;
+      float f = alwk.a().a;
       ((MQLruCache)localObject).setLargeSize((int)(j * i * 4 * f));
       localQQAppInterface.E();
       QQToast.a(true);

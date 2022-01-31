@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import bdje;
+import awge;
+import bdnn;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id")
 public class TroopFeedItem
-  extends awbv
+  extends awge
 {
   public static final int ABLUM_FEED_TYPE = 18;
   public static final String APPID_STORY_PGC_CONTENT = "1105527223";
@@ -46,8 +46,8 @@ public class TroopFeedItem
   
   public boolean isVaild()
   {
-    if ((bdje.a(this.tag)) || (bdje.a(this.title))) {}
-    while (((this.type == 0) || (this.type == 131)) && (bdje.a(this.content))) {
+    if ((bdnn.a(this.tag)) || (bdnn.a(this.title))) {}
+    while (((this.type == 0) || (this.type == 131)) && (bdnn.a(this.content))) {
       return false;
     }
     return true;

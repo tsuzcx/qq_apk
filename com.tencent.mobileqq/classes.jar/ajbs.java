@@ -1,27 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.Conversation;
-import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
-class ajbs
-  implements DialogInterface.OnClickListener
+public class ajbs
 {
-  ajbs(ajbr paramajbr) {}
+  public int a;
+  public String a;
+  public JSONObject a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ajbs() {}
+  
+  public ajbs(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (akty.a() != null) {
-      akro.a();
-    }
-    paramDialogInterface = akro.a();
-    if (paramDialogInterface != null)
-    {
-      paramDialogInterface = paramDialogInterface.getHandler(Conversation.class);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(1134052));
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+  }
+  
+  public String toString()
+  {
+    return "id: " + this.jdField_a_of_type_JavaLangString + " type: " + this.jdField_a_of_type_Int + " name: " + this.b + " params: " + this.jdField_a_of_type_OrgJsonJSONObject;
   }
 }
 

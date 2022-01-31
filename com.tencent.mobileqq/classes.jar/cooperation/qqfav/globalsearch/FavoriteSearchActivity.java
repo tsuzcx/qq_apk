@@ -1,9 +1,9 @@
 package cooperation.qqfav.globalsearch;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.Intent;
-import birs;
+import bivz;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
@@ -18,14 +18,14 @@ public class FavoriteSearchActivity
     paramContext.startActivity(localIntent);
   }
   
-  public BaseSearchFragment<birs> a()
+  public BaseSearchFragment<bivz> a()
   {
     return new FavoriteSearchFragment();
   }
   
   public String a()
   {
-    return alpo.a(2131704764);
+    return alud.a(2131704776);
   }
   
   public void doOnResume()

@@ -1,13 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.DrawerFrame;
-
-public class bela
-  implements View.OnClickListener
+public abstract interface bela
 {
-  public bela(DrawerFrame paramDrawerFrame) {}
-  
-  public void onClick(View paramView) {}
+  public abstract void a(String paramString);
 }
 
 

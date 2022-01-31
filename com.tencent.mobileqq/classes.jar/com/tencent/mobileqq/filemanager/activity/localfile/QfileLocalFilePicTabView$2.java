@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import alpo;
+import alud;
 import android.content.SharedPreferences;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
@@ -18,8 +18,8 @@ class QfileLocalFilePicTabView$2
   public void run()
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    localLinkedHashMap.put(alpo.a(2131710058), new ArrayList());
-    localLinkedHashMap.put(alpo.a(2131710057), new ArrayList());
+    localLinkedHashMap.put(alud.a(2131710070), new ArrayList());
+    localLinkedHashMap.put(alud.a(2131710069), new ArrayList());
     try
     {
       Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -35,11 +35,11 @@ class QfileLocalFilePicTabView$2
         }
         else
         {
-          localObject1 = alpo.a(2131710049);
+          localObject1 = alud.a(2131710061);
         }
         localObject3 = localObject1;
         if (((String)localObject1).equalsIgnoreCase("camera") == true) {
-          localObject3 = alpo.a(2131710073);
+          localObject3 = alud.a(2131710085);
         }
         if (!localLinkedHashMap.containsKey(localObject3)) {
           localLinkedHashMap.put(localObject3, new ArrayList());

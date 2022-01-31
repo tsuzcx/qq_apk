@@ -1,22 +1,21 @@
-import android.arch.lifecycle.MutableLiveData;
-import com.tencent.biz.qqcircle.requests.QCircleGetFeedDetailRequest;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudCommon.StCommonExt;
-import feedcloud.FeedCloudRead.StGetFeedDetailRsp;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.qqcircle.fragments.QCircleFolderRcmdTabFragment;
 
-class tww
-  implements yvn<FeedCloudRead.StGetFeedDetailRsp>
+public class tww
+  extends RecyclerView.OnScrollListener
 {
-  tww(twv paramtwv, QCircleGetFeedDetailRequest paramQCircleGetFeedDetailRequest) {}
+  public tww(QCircleFolderRcmdTabFragment paramQCircleFolderRcmdTabFragment) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    QLog.d("QCircleContentModel", 1, "getSingleFeed onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedDetailRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedDetailRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
-    if ((paramStGetFeedDetailRsp != null) && (paramStGetFeedDetailRsp.extInfo.has())) {
-      this.jdField_a_of_type_Twv.a((FeedCloudCommon.StCommonExt)paramStGetFeedDetailRsp.extInfo.get());
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
+    {
+      abvl.a().a("qcircle_all_push_tab_page", false);
+      return;
     }
-    twv.a(this.jdField_a_of_type_Twv).postValue(new trw(paramLong, paramString, paramStGetFeedDetailRsp, false));
-    this.jdField_a_of_type_Twv.a().a(4);
+    abvl.a().a("qcircle_all_push_tab_page");
   }
 }
 

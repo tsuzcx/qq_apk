@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.webviewplugin;
 
 import android.app.Activity;
-import becq;
-import behn;
+import begz;
+import belw;
 
 public class WebViewJumpPlugin$2
   implements Runnable
 {
-  public WebViewJumpPlugin$2(behn parambehn) {}
+  public WebViewJumpPlugin$2(belw parambelw) {}
   
   public void run()
   {

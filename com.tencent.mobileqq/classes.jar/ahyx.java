@@ -1,60 +1,41 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
+import mqq.os.MqqHandler;
 
 public class ahyx
-  extends akee
+  extends AccountObserver
 {
-  public View a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public TroopMemberListSlideItem a;
-  public boolean a;
-  public View b;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
-  public View e;
-  public TextView e;
-  public View f;
-  public TextView f;
-  public TextView g;
-  public TextView h;
-  public TextView i;
-  public TextView j;
-  public TextView k;
+  public ahyx(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public ahyx(View paramView, boolean paramBoolean)
+  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378739));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378790));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTroopMemberListSlideItem = ((TroopMemberListSlideItem)paramView.findViewById(2131378388));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376773);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365067);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131365068);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368782));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378828));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378829));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378839));
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131378922);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131368821));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378597));
-    this.g = ((TextView)paramView.findViewById(2131363616));
-    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131375782);
-    this.h = ((TextView)paramView.findViewById(2131379265));
-    this.i = ((TextView)paramView.findViewById(2131362823));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364252));
-    this.j = ((TextView)paramView.findViewById(2131378768));
-    this.jdField_f_of_type_AndroidViewView = paramView.findViewById(2131362096);
-    if (paramBoolean) {
-      this.k = ((TextView)paramView.findViewById(2131375583));
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
+      if (paramString2 == null)
+      {
+        i = 0;
+        QLog.e("Q.history.C2CAllFragment", 2, i);
+      }
     }
-    this.jdField_a_of_type_Boolean = false;
+    else
+    {
+      paramString1 = this.a.a.obtainMessage(39);
+      if (!paramBoolean) {
+        break label103;
+      }
+    }
+    label103:
+    for (int i = 1;; i = 0)
+    {
+      paramString1.arg1 = i;
+      paramString1.arg2 = 0;
+      this.a.a.sendMessage(paramString1);
+      return;
+      i = paramString2.length();
+      break;
+    }
   }
 }
 

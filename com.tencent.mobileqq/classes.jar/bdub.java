@@ -1,41 +1,15 @@
-import android.net.Uri;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import com.tencent.image.URLDrawableHandler;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class bdub
-  extends bdvu
+class bdub
+  implements EIPCResultCallback
 {
-  public bdub(PathTraceManager paramPathTraceManager, String paramString1, String paramString2) {}
+  bdub(bdua parambdua, URLDrawableHandler paramURLDrawableHandler) {}
   
-  public void onDone(bdvv parambdvv)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    super.onDone(parambdvv);
-    if (QLog.isColorLevel()) {
-      QLog.d("PathTraceManager", 1, "voice down");
-    }
-    parambdvv = new File(this.jdField_a_of_type_JavaLangString);
-    try
-    {
-      ndr.a(parambdvv, PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager));
-      i = 1;
-    }
-    catch (IOException parambdvv)
-    {
-      for (;;)
-      {
-        QLog.i("PathTraceManager", 1, "unzip fail");
-        int i = 0;
-      }
-    }
-    if (i != 0)
-    {
-      QLog.d("PathTraceManager", 1, "unzip success");
-      if (this.b != null) {
-        bdaz.a(Uri.fromFile(new File(PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager), this.b + ".mp3")), false, true);
-      }
-    }
+    this.jdField_a_of_type_Bdua.a(this.jdField_a_of_type_ComTencentImageURLDrawableHandler, false);
   }
 }
 

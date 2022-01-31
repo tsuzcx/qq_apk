@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import akjc;
+import aknr;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -11,7 +11,7 @@ import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 public class ApolloGameArkHandler$1
   implements Runnable
 {
-  public ApolloGameArkHandler$1(akjc paramakjc, String paramString) {}
+  public ApolloGameArkHandler$1(aknr paramaknr, String paramString) {}
   
   public void run()
   {

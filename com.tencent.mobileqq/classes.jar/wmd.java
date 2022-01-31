@@ -1,61 +1,26 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class wmd
-  extends wmg<ShareGroupFeedItem>
+class wmd
+  extends QQUIEventReceiver<wmb, vem>
 {
-  public wmd(@NonNull ShareGroupFeedItem paramShareGroupFeedItem)
+  public wmd(@NonNull wmb paramwmb)
   {
-    super(paramShareGroupFeedItem);
+    super(paramwmb);
   }
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public void a(@NonNull wmb paramwmb, @NonNull vem paramvem)
   {
-    super.a(paramStoryVideoItem);
-    paramStoryVideoItem = (ShareGroupFeedItem)a();
-    paramStoryVideoItem.videoCount -= 1;
-    if (((ShareGroupFeedItem)a()).videoCount < 0) {
-      ((ShareGroupFeedItem)a()).videoCount = 0;
+    wxe.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video info list. %s.", paramvem.toString());
+    if (paramvem.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      wmb.a(paramwmb).a(paramvem.jdField_a_of_type_JavaLangString, paramvem.jdField_a_of_type_JavaUtilList);
     }
   }
   
-  public void a(StoryVideoItem paramStoryVideoItem, boolean paramBoolean)
+  public Class acceptEventClass()
   {
-    super.a(paramStoryVideoItem, paramBoolean);
-    paramStoryVideoItem = (ShareGroupFeedItem)a();
-    paramStoryVideoItem.videoCount += 1;
-    if (((ShareGroupFeedItem)a()).videoCount < 0) {
-      ((ShareGroupFeedItem)a()).videoCount = 0;
-    }
-  }
-  
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
-  {
-    ((ShareGroupFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), paramStoryFeed);
-    ((ShareGroupFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    Object localObject = (qqstory_struct.ShareGroupFeed)paramStoryFeed.share_group_feed.get();
-    paramStoryFeed = new ArrayList();
-    localObject = ((qqstory_struct.ShareGroupFeed)localObject).video_list.get().iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      qqstory_struct.ShareGroupVideoInfo localShareGroupVideoInfo = (qqstory_struct.ShareGroupVideoInfo)((Iterator)localObject).next();
-      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-      localStoryVideoItem.convertFrom("Q.qqstory.home.data.VideoListHomeFeed", localShareGroupVideoInfo);
-      paramStoryFeed.add(localStoryVideoItem);
-    }
-    c(paramStoryFeed, true);
-    return true;
+    return vem.class;
   }
 }
 

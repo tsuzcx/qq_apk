@@ -1,47 +1,49 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.2;
+import com.tencent.mobileqq.app.ThreadManager;
 
-abstract class afgm
+public class afgm
+  implements affa
 {
-  protected int a;
-  protected afli a;
-  protected String a;
-  protected int b;
-  protected String b;
+  private BaseChatPie a;
   
-  public int a()
+  public afgm(BaseChatPie paramBaseChatPie)
   {
-    return this.jdField_b_of_type_Int;
+    this.a = paramBaseChatPie;
   }
   
-  public String a()
+  private void a()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    if ((this.a != null) && (this.a.z()) && (this.a.b() == 1)) {
+      ThreadManager.post(new TroopNotificationAIOHelper.1(this), 8, null, true);
+    }
   }
   
-  public abstract void a();
+  private void b()
+  {
+    if ((this.a != null) && (this.a.b() == 1)) {
+      ThreadManager.post(new TroopNotificationAIOHelper.2(this), 8, null, true);
+    }
+  }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(afli paramafli)
-  {
-    this.jdField_a_of_type_Afli = paramafli;
-  }
-  
-  public boolean a(String paramString)
-  {
-    a();
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 4: 
+      a();
+      return;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = -1;
-    return true;
+    b();
   }
   
-  public abstract boolean b(String paramString);
+  public int[] a()
+  {
+    return new int[] { 4, 9 };
+  }
 }
 
 

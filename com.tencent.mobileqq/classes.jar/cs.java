@@ -13,13 +13,13 @@ public class cs
     if (paramBoolean)
     {
       PrinterOptionActivity.a(this.a).setVisibility(0);
-      PrinterOptionActivity.a(this.a).setText(2131691429);
+      PrinterOptionActivity.a(this.a).setText(2131691430);
       return;
     }
     if (PrinterOptionActivity.b(this.a))
     {
       PrinterOptionActivity.a(this.a).setVisibility(0);
-      PrinterOptionActivity.a(this.a).setText(2131691409);
+      PrinterOptionActivity.a(this.a).setText(2131691410);
       return;
     }
     PrinterOptionActivity.a(this.a).setVisibility(4);

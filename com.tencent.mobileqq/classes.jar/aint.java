@@ -1,18 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
-class aint
-  implements DialogInterface.OnClickListener
+public class aint
+  implements DialogInterface.OnCancelListener
 {
-  aint(ainq paramainq) {}
+  public aint(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (((NewPhotoListActivity)this.a.mActivity).sendBtn != null) {
-      ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
-    }
+    this.a.a = null;
   }
 }
 

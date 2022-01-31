@@ -1,19 +1,18 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class bmdz
-  implements View.OnClickListener
+  implements ThreadFactory
 {
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  
   bmdz(bmdy parambmdy) {}
   
-  public void onClick(View paramView)
+  public Thread newThread(Runnable paramRunnable)
   {
-    if (bmdy.a(this.a) == -1) {
-      bmdy.a(this.a, "Clk_add_topic");
-    }
-    TroopBarPublishUtils.a((Activity)this.a.a(), 1001, bmdy.a(this.a));
+    paramRunnable = new Thread(paramRunnable);
+    paramRunnable.setName(String.format("arch_disk_io_%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement()) }));
+    return paramRunnable;
   }
 }
 

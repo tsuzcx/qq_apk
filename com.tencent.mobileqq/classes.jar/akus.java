@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.2;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class akus
-  implements DialogInterface.OnClickListener
+class akus
+  extends akvk
 {
-  public akus(CmGameSubRscHandler.2 param2) {}
+  public QQAppInterface a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  akus(QQAppInterface paramQQAppInterface)
   {
-    if (this.a.a != null) {
-      this.a.a.a(null);
-    }
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    akuq.a(((aknx)this.a.getManager(153)).a(), paramInt);
+  }
+  
+  public void b(String paramString, int paramInt1, int paramInt2)
+  {
+    QLog.i("CmGameTemp_CmGameAudioManager", 0, "[onQueryAudioRoomId] friUin:" + paramString + ",roomID:" + paramInt1);
+    super.b(paramString, paramInt1, paramInt2);
+    ((aknx)this.a.getManager(153)).a().a(paramString, String.valueOf(paramInt1), paramInt2);
   }
 }
 

@@ -1,32 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiPictureUrl;
 
-class bjlo
-  extends Handler
+public final class bjlo
+  implements Parcelable.Creator<WeishiPictureUrl>
 {
-  bjlo(bjln parambjln, Looper paramLooper)
+  public WeishiPictureUrl a(Parcel paramParcel)
   {
-    super(paramLooper);
+    return new WeishiPictureUrl(paramParcel);
   }
   
-  public void handleMessage(Message paramMessage)
+  public WeishiPictureUrl[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginPreInstaller", 2, "handleMessage, retryInstallNum=" + bjln.a());
-    }
-    if (paramMessage.what == 1) {}
-    try
-    {
-      paramMessage = (String)paramMessage.obj;
-      bjln.a(this.a).a(paramMessage, this.a, 2);
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      QLog.e("QZonePluginPreInstaller", 1, paramMessage, new Object[0]);
-    }
+    return new WeishiPictureUrl[paramInt];
   }
 }
 

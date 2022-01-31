@@ -1,46 +1,88 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aysu
-  extends aysb
 {
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public SquareImageView a;
-  public Button b;
-  public LinearLayout b;
-  public TextView b;
-  public LinearLayout c;
+  private int jdField_a_of_type_Int = 1;
+  private String jdField_a_of_type_JavaLangString = "";
+  private String b = "";
   
-  public aysu(ViewGroup paramViewGroup, int paramInt)
+  public static String a(int paramInt, boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    super(paramViewGroup, paramInt);
+    int i = 1;
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("entry", paramInt);
+      if (paramBoolean1)
+      {
+        paramInt = 1;
+        localJSONObject.put("match", paramInt);
+        localJSONObject.put("keyword", paramString);
+        if (!paramBoolean2) {
+          break label74;
+        }
+      }
+      label74:
+      for (paramInt = i;; paramInt = 0)
+      {
+        localJSONObject.put("nightmode", paramInt);
+        paramString = localJSONObject.toString();
+        return paramString;
+        paramInt = 0;
+        break;
+      }
+      return null;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("RichMetaData", 2, "setLayout101ExtraData exception:" + paramString);
+    }
   }
   
-  protected void a()
+  public String a()
   {
-    super.a();
-    View localView = a(this.jdField_c_of_type_Int);
-    a(localView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131375906));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363691));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368886));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369610));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369611));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378637));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378636));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131368715));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369609));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363521));
+    JSONObject localJSONObject1 = new JSONObject();
+    try
+    {
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("serverdata", new JSONObject(this.jdField_a_of_type_JavaLangString));
+      localJSONObject2.put("state", this.jdField_a_of_type_Int);
+      if (!TextUtils.isEmpty(this.b)) {
+        localJSONObject2.put("extradata", new JSONObject(this.b));
+      }
+      localJSONObject1.put("data", localJSONObject2);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("RichMetaData", 2, "convertMetaData exception : " + localJSONException);
+      }
+    }
+    return localJSONObject1.toString();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Int = 1;
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void b(String paramString)
+  {
+    this.b = paramString;
   }
 }
 

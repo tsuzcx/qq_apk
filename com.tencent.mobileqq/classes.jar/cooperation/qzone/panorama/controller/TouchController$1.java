@@ -1,6 +1,6 @@
 package cooperation.qzone.panorama.controller;
 
-import bjix;
+import bjne;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -9,7 +9,7 @@ public class TouchController$1
 {
   private int[] jdField_b_of_type_ArrayOfInt = { 0, 0 };
   
-  public TouchController$1(bjix parambjix, int paramInt1, int[] paramArrayOfInt, int paramInt2) {}
+  public TouchController$1(bjne parambjne, int paramInt1, int[] paramArrayOfInt, int paramInt2) {}
   
   public void run()
   {
@@ -30,12 +30,12 @@ public class TouchController$1
     {
       if ((this.jdField_b_of_type_ArrayOfInt[1] == 1) && (this.jdField_b_of_type_ArrayOfInt[0] == 1))
       {
-        bjix.a(this.this$0).cancel();
+        bjne.a(this.this$0).cancel();
         cancel();
       }
       float f1 = this.jdField_a_of_type_ArrayOfInt[0];
-      float f2 = bjix.a(this.this$0);
-      bjix.a(this.this$0, 0.0F, f1 * f2);
+      float f2 = bjne.a(this.this$0);
+      bjne.a(this.this$0, 0.0F, f1 * f2);
       return;
       this.jdField_b_of_type_ArrayOfInt[0] = 0;
       this.jdField_a_of_type_ArrayOfInt[0] -= 3;

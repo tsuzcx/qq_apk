@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
-class adtu
-  implements View.OnClickListener
+public class adtu
+  implements DialogInterface.OnClickListener
 {
-  adtu(adtr paramadtr, int paramInt) {}
+  public adtu(RegisterActivity paramRegisterActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!adto.a(this.jdField_a_of_type_Adtr.a)) {}
-    do
-    {
-      return;
-      paramView = azhw.b[this.jdField_a_of_type_Adtr.a(this.jdField_a_of_type_Int).jdField_a_of_type_Int];
-    } while (bajd.a(adto.a(this.jdField_a_of_type_Adtr.a), paramView, new adtv(this)));
-    adtr.a(this.jdField_a_of_type_Adtr, this.jdField_a_of_type_Int);
+    this.a.a = 0;
+    this.a.finish();
   }
 }
 

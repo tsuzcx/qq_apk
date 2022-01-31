@@ -1,16 +1,13 @@
-class blnk
-  implements bnco
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+
+public class blnk
+  implements blnz
 {
-  blnk(blni paramblni) {}
+  public blnk(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public void a(boolean paramBoolean)
+  public boolean a(int paramInt1, int paramInt2)
   {
-    if (paramBoolean)
-    {
-      this.a.b();
-      return;
-    }
-    this.a.a(4);
+    return paramInt1 != paramInt2;
   }
 }
 

@@ -1,37 +1,26 @@
-import android.text.TextUtils;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.BaseButton;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
 
-class bmgd
-  implements blsx
+public class bmgd
+  extends AnimatorListenerAdapter
 {
-  private int jdField_a_of_type_Int = -1;
-  private bmix jdField_a_of_type_Bmix;
-  private String jdField_a_of_type_JavaLangString = "";
+  public bmgd(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
   
-  public bmgd(bmix parambmix)
-  {
-    this.jdField_a_of_type_Bmix = parambmix;
-  }
-  
-  public void a(float paramFloat, String paramString, int paramInt) {}
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("EditVideoAblumList", 2, "download Res Finished , type id, " + this.jdField_a_of_type_Int + " isSuccess : " + paramBoolean + " url : " + paramString + " StickerStr : " + this.jdField_a_of_type_JavaLangString + " mParent : " + this.jdField_a_of_type_Bmix);
+      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner captureView 190ms all end ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
     }
-    if ((this.jdField_a_of_type_Int != -1) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Bmix != null)) {
-      this.jdField_a_of_type_Bmix.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.a.jdField_a_of_type_Bmgo.d = 1;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner captureView begin  ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
     }
   }
 }

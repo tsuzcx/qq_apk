@@ -28,7 +28,7 @@ public class psy
   {
     try
     {
-      float f = Float.valueOf((String)bjxj.a("kandian_daily_wrapper_alpha", "1.0")).floatValue();
+      float f = Float.valueOf((String)bkbq.a("kandian_daily_wrapper_alpha", "1.0")).floatValue();
       if ((f >= 0.0F) && (f <= 1.0F)) {
         return f;
       }
@@ -70,12 +70,12 @@ public class psy
     {
       if (this.jdField_a_of_type_AndroidViewView == null)
       {
-        this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.getContext()).inflate(2131559991, null, false);
-        localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377734);
+        this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.getContext()).inflate(2131559990, null, false);
+        localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377788);
         ((TextView)localObject).setTextSize(0, Utils.dp2px(14.0D));
         ((TextView)localObject).setText(rry.a(((TextView)localObject).getContext()));
         f = a();
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130848805);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130848878);
         this.jdField_a_of_type_AndroidViewView.getBackground().setAlpha((int)(f * 255.0F));
         this.jdField_a_of_type_AndroidViewView.setPadding(0, 0, 0, 0);
         localObject = new RelativeLayout.LayoutParams(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.getWidth(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.getHeight());

@@ -9,7 +9,7 @@ public class srt
   {
     Toast localToast = new Toast(paramContext);
     localToast.setDuration(paramInt);
-    paramContext = (TextView)LayoutInflater.from(paramContext).inflate(2131562516, null);
+    paramContext = (TextView)LayoutInflater.from(paramContext).inflate(2131562534, null);
     localToast.setView(paramContext);
     paramContext.setText(paramCharSequence);
     localToast.setGravity(17, 0, 0);

@@ -5,11 +5,11 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import aqcc;
+import aqgl;
 
 public abstract class LoadingLayoutBase
   extends FrameLayout
-  implements aqcc
+  implements aqgl
 {
   public LoadingLayoutBase(Context paramContext)
   {

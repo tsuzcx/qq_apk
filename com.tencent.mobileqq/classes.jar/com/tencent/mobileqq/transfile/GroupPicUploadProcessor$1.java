@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import bapa;
+import batj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class GroupPicUploadProcessor$1
   implements Runnable
 {
-  public GroupPicUploadProcessor$1(bapa parambapa) {}
+  public GroupPicUploadProcessor$1(batj parambatj) {}
   
   public void run()
   {

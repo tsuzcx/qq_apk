@@ -1,43 +1,15 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.ShieldFriendsListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class adtd
-  extends alox
+  extends alqh
 {
-  public adtd(ShieldFriendsListActivity paramShieldFriendsListActivity) {}
+  public adtd(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    super.onUpdateFriendShieldFlag(paramLong, paramBoolean1, paramBoolean2, paramBoolean3, paramString);
-    if (!paramBoolean2)
-    {
-      paramString = this.a;
-      if (!paramBoolean1)
-      {
-        paramBoolean1 = true;
-        if (ShieldFriendsListActivity.a(paramString, paramLong, paramBoolean1)) {
-          QQToast.a(BaseApplication.getContext(), alpo.a(2131714376), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
-        }
-      }
-    }
-    do
-    {
-      return;
-      paramBoolean1 = false;
-      break;
-      if (ShieldFriendsListActivity.a(this.a).a(String.valueOf(paramLong)))
-      {
-        ShieldFriendsListActivity.a(this.a, paramLong, paramBoolean1);
-        return;
-      }
-      paramString = ((aloz)this.a.app.getManager(51)).e(String.valueOf(paramLong));
-    } while ((paramString == null) || (paramString.isShield()));
-    ShieldFriendsListActivity.a(this.a).a(paramString);
-    ShieldFriendsListActivity.a(this.a);
+    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
+    QQSettingSettingActivity.c(this.a);
   }
 }
 

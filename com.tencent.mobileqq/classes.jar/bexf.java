@@ -1,57 +1,30 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.open.agent.AgentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.graphics.Outline;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewOutlineProvider;
 
-class bexf
-  implements bfnk
+@TargetApi(21)
+public class bexf
+  extends ViewOutlineProvider
 {
-  bexf(bexe parambexe) {}
+  private float a;
   
-  public void a()
+  public bexf(float paramFloat)
   {
-    QLog.d("AgentActivity", 1, "preAuthWithRetry onSuccess");
-    AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b, true);
+    this.a = paramFloat;
   }
   
-  public void a(int paramInt, String paramString)
+  public void getOutline(View paramView, Outline paramOutline)
   {
-    QLog.d("AgentActivity", 1, new Object[] { "preAuthWithRetry onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
-    if ((paramInt == 110530) || (paramInt == 1002))
-    {
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b, false);
-      return;
-    }
-    if (paramInt == 110509)
-    {
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b);
-      return;
-    }
-    if (paramInt == 110513)
-    {
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, 0, "");
-      return;
-    }
-    String str;
-    if (paramInt == -1) {
-      str = this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131695063);
-    }
-    for (;;)
-    {
-      ForwardUtils.a(str, this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, new bexg(this, paramInt, paramString));
-      return;
-      if (TextUtils.isEmpty(paramString)) {
-        str = String.format(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131695051), new Object[] { Integer.valueOf(paramInt) });
-      } else {
-        str = String.format(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131696957), new Object[] { paramString, Integer.valueOf(paramInt) });
-      }
-    }
+    Rect localRect = new Rect();
+    paramView.getGlobalVisibleRect(localRect);
+    paramOutline.setRoundRect(new Rect(0, 0, localRect.right - localRect.left - 0, localRect.bottom - localRect.top - 0), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bexf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,73 @@
-import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
-import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.OnLoadBaselibListener;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyReq;
+import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
-class bhdx
-  implements BaselibLoader.OnLoadBaselibListener
+public class bhdx
+  extends bhdw
 {
-  bhdx(bhdw parambhdw) {}
+  private MiniAppMidasPay.StQueryStarCurrencyReq a = new MiniAppMidasPay.StQueryStarCurrencyReq();
   
-  public void onResult(int paramInt, String paramString, BaselibLoader.BaselibContent paramBaselibContent)
+  public bhdx(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    bgyd.a(bgxz.a(), 11, "0");
-    if ((paramInt == 0) && (paramBaselibContent != null) && (paramBaselibContent.isBaseLibInited()))
-    {
-      bhdw.a(this.a, paramBaselibContent);
-      bgxn.a = true;
-      this.a.c();
-      return;
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
     }
-    this.a.e();
+    this.a.appId.set(paramString1);
+    this.a.prepayId.set(paramString2);
+    this.a.starCurrency.set(paramInt1);
+    this.a.sandboxEnv.set(paramInt2);
+  }
+  
+  protected String a()
+  {
+    return "mini_app_pay";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    MiniAppMidasPay.StQueryStarCurrencyRsp localStQueryStarCurrencyRsp = new MiniAppMidasPay.StQueryStarCurrencyRsp();
+    try
+    {
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      localStQueryStarCurrencyRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      if (localStQueryStarCurrencyRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("response", localStQueryStarCurrencyRsp);
+        paramArrayOfByte.put("resultCode", localStQWebRsp.retCode.get());
+        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+        return paramArrayOfByte;
+      }
+      QMLog.d("QueryCurrencyRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("QueryCurrencyRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  public byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "QueryStarCurrency";
   }
 }
 

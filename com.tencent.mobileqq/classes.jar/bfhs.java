@@ -1,134 +1,300 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.http.AvatarUpdateService.1;
-import com.tencent.qphone.base.util.QLog;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.content.ContentValues;
+import android.os.Parcel;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bfhs
-  implements bfie
+  extends bfnp
 {
-  private static bfhs a;
-  public SharedPreferences a;
-  public HashMap<String, bfht> a;
+  public static final bfnq<bfhs> a;
+  public int a;
+  public String a;
+  public List<Friend> a;
+  public int b;
   
-  protected bfhs()
+  static
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("uin_avatarurl", 0);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_Bfnq = new bfht();
   }
   
-  public static bfhs a()
+  public bfhs()
   {
-    try
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = -1;
+  }
+  
+  public static final List<bfhs> a(JSONObject paramJSONObject)
+  {
+    JSONArray localJSONArray1 = paramJSONObject.getJSONArray("qqlist");
+    int k = paramJSONObject.optInt("app_tid", -1);
+    int m = paramJSONObject.optInt("app_rid", -1);
+    int n = localJSONArray1.length();
+    ArrayList localArrayList1 = new ArrayList(n);
+    int i = 0;
+    while (i < n)
     {
-      if (jdField_a_of_type_Bfhs == null) {
-        jdField_a_of_type_Bfhs = new bfhs();
-      }
-      return jdField_a_of_type_Bfhs;
-    }
-    finally {}
-  }
-  
-  public void a(Context paramContext, String paramString1, String paramString2, String paramString3, bfie parambfie)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarUpdateService", 2, "-->updateAvatar--uin = " + paramString1);
-    }
-    String str2 = "https://openmobile.qq.com/getface?appid=716027609&imgtype=3&encrytype=0&devtype=0&keytype=0&uin=" + paramString1;
-    for (String str1 = paramString1; str1.length() < 10; str1 = "0" + str1) {}
-    str1 = "o" + str1;
-    ThreadManager.post(new AvatarUpdateService.1(this, str2, "uin=" + str1 + "; skey=" + paramString2, paramString1, paramString3, paramContext, parambfie), 5, null, true);
-  }
-  
-  protected void a(Bitmap paramBitmap, String paramString)
-  {
-    if (paramBitmap == null) {}
-    do
-    {
-      return;
-      paramString = bdda.a(paramString);
-    } while (paramString == null);
-    paramString = new FileOutputStream(paramString);
-    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, paramString);
-    paramString.flush();
-    paramString.close();
-  }
-  
-  public void a(String paramString, Bitmap arg2)
-  {
-    boolean bool2 = true;
-    Object localObject1;
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      JSONObject localJSONObject = localJSONArray1.getJSONObject(i);
+      JSONArray localJSONArray2 = localJSONObject.getJSONArray("data");
+      int i1 = localJSONArray2.length();
+      ArrayList localArrayList2 = new ArrayList(i1);
+      int j = 0;
+      if (j < i1)
       {
-        localObject1 = (bfht)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        if (QLog.isColorLevel())
+        Object localObject = localJSONArray2.getJSONObject(j);
+        String str = ((JSONObject)localObject).getString("data");
+        if (((JSONObject)localObject).has("nick"))
         {
-          ??? = new StringBuilder().append("-->onTaskCompleted--identifier = ").append(paramString).append(", bitmap = null ? ");
-          if (??? == null)
-          {
-            bool1 = true;
-            ??? = ((StringBuilder)???).append(bool1).append(", task = null ? ");
-            if (localObject1 != null) {
-              break label116;
-            }
-            bool1 = bool2;
-            QLog.d("AvatarUpdateService", 2, bool1);
+          paramJSONObject = ((JSONObject)localObject).getString("nick");
+          label129:
+          if (!((JSONObject)localObject).has("label")) {
+            break label216;
           }
+        }
+        label216:
+        for (localObject = ((JSONObject)localObject).getString("label");; localObject = null)
+        {
+          Friend localFriend = new Friend();
+          localFriend.jdField_a_of_type_JavaLangString = str;
+          localFriend.jdField_b_of_type_JavaLangString = bflv.a(paramJSONObject);
+          localFriend.jdField_c_of_type_JavaLangString = bflv.a((String)localObject);
+          localFriend.jdField_b_of_type_Int = m;
+          localFriend.jdField_c_of_type_Int = k;
+          localArrayList2.add(localFriend);
+          j += 1;
+          break;
+          paramJSONObject = null;
+          break label129;
+        }
+      }
+      paramJSONObject = new bfhs();
+      paramJSONObject.jdField_a_of_type_Int = i;
+      paramJSONObject.jdField_a_of_type_JavaLangString = bflv.a(localJSONObject.getString("label"));
+      paramJSONObject.jdField_a_of_type_JavaUtilList = localArrayList2;
+      localArrayList1.add(paramJSONObject);
+      i += 1;
+    }
+    return localArrayList1;
+  }
+  
+  public static final List<bfhs> b(JSONObject paramJSONObject)
+  {
+    JSONArray localJSONArray1 = paramJSONObject.getJSONArray("data");
+    int m = localJSONArray1.length();
+    int n = paramJSONObject.optInt("app_tid", -1);
+    int i1 = paramJSONObject.optInt("app_rid", -1);
+    ArrayList localArrayList1 = new ArrayList(m + 3);
+    ArrayList localArrayList2 = new ArrayList();
+    bfhs localbfhs = new bfhs();
+    localbfhs.jdField_a_of_type_Int = 0;
+    localbfhs.jdField_a_of_type_JavaLangString = alud.a(2131705263);
+    localbfhs.jdField_a_of_type_JavaUtilList = localArrayList2;
+    localArrayList1.add(localbfhs);
+    int j = 0;
+    int i = 1;
+    while (j < m)
+    {
+      JSONObject localJSONObject1 = localJSONArray1.getJSONObject(j);
+      JSONArray localJSONArray2 = localJSONObject1.getJSONArray("friends");
+      int i2 = localJSONArray2.length();
+      ArrayList localArrayList3 = new ArrayList(i2);
+      int k = 0;
+      while (k < i2)
+      {
+        JSONObject localJSONObject2 = localJSONArray2.getJSONObject(k);
+        if (localJSONObject2.getInt("unabled") == 1)
+        {
+          k += 1;
         }
         else
         {
-          if (localObject1 != null) {
-            break;
+          String str2 = localJSONObject2.getString("openid");
+          if (localJSONObject2.has("nickname"))
+          {
+            localObject = localJSONObject2.getString("nickname");
+            label202:
+            if (!localJSONObject2.has("remark")) {
+              break label307;
+            }
           }
-          return;
+          label307:
+          for (String str1 = localJSONObject2.getString("remark");; str1 = null)
+          {
+            Friend localFriend = new Friend();
+            localFriend.jdField_a_of_type_JavaLangString = str2;
+            localFriend.jdField_b_of_type_JavaLangString = bflv.a((String)localObject);
+            localFriend.jdField_c_of_type_JavaLangString = bflv.a(str1);
+            if (localJSONObject2.getInt("specified") == 1)
+            {
+              localFriend.jdField_b_of_type_Int = i1;
+              localFriend.jdField_c_of_type_Int = n;
+              localArrayList2.add(localFriend);
+            }
+            localArrayList3.add(localFriend);
+            break;
+            localObject = null;
+            break label202;
+          }
         }
       }
-      boolean bool1 = false;
-      continue;
-      label116:
-      bool1 = false;
+      Object localObject = new bfhs();
+      ((bfhs)localObject).jdField_a_of_type_Int = i;
+      ((bfhs)localObject).jdField_a_of_type_JavaLangString = bflv.a(localJSONObject1.getString("groupname"));
+      ((bfhs)localObject).jdField_a_of_type_JavaUtilList = localArrayList3;
+      localArrayList1.add(localObject);
+      j += 1;
+      i += 1;
     }
-    ??? = (Context)((bfht)localObject1).jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((??? != null) && (??? != null))
+    if (paramJSONObject.getInt("only") == 1)
     {
-      ??? = bfdz.a((Context)???, ???, 63, 63);
-      if (??? == null) {}
+      paramJSONObject = new ArrayList(1);
+      paramJSONObject.add(localbfhs);
+      return paramJSONObject;
     }
-    try
+    if (localArrayList2.size() == 0)
     {
-      a(???, ((bfht)localObject1).jdField_b_of_type_JavaLangString);
-      ??? = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      ((SharedPreferences.Editor)???).putString(((bfht)localObject1).jdField_a_of_type_JavaLangString, ((bfht)localObject1).c);
-      ((SharedPreferences.Editor)???).commit();
-      label205:
-      localObject1 = (bfie)((bfht)localObject1).jdField_b_of_type_JavaLangRefWeakReference.get();
-      if (localObject1 != null)
+      localArrayList1.remove(0);
+      i = 0;
+      while (i < localArrayList1.size())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("AvatarUpdateService", 2, "-->onTaskCompleted--callback not null, invoke it");
+        paramJSONObject = (bfhs)localArrayList1.get(i);
+        paramJSONObject.jdField_a_of_type_Int -= 1;
+        i += 1;
+      }
+    }
+    return localArrayList1;
+  }
+  
+  public static final List<bfhs> c(JSONObject paramJSONObject)
+  {
+    JSONArray localJSONArray1 = paramJSONObject.getJSONArray("qqlist");
+    int m = localJSONArray1.length();
+    int n = paramJSONObject.optInt("app_tid", -1);
+    int i1 = paramJSONObject.optInt("app_rid", -1);
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    bfhs localbfhs2 = new bfhs();
+    localbfhs2.jdField_a_of_type_Int = 0;
+    localbfhs2.jdField_a_of_type_JavaLangString = alud.a(2131705262);
+    localbfhs2.jdField_a_of_type_JavaUtilList = localArrayList2;
+    localArrayList1.add(localbfhs2);
+    int i = 0;
+    bfhs localbfhs1 = null;
+    int j = 1;
+    if (i < m)
+    {
+      JSONObject localJSONObject1 = localJSONArray1.getJSONObject(i);
+      JSONArray localJSONArray2 = localJSONObject1.getJSONArray("data");
+      int i2 = localJSONArray2.length();
+      ArrayList localArrayList3 = new ArrayList();
+      int k = 0;
+      Object localObject;
+      if (k < i2)
+      {
+        JSONObject localJSONObject2 = localJSONArray2.getJSONObject(k);
+        String str2 = localJSONObject2.getString("data");
+        if (localJSONObject2.has("nick"))
+        {
+          localObject = localJSONObject2.getString("nick");
+          label181:
+          if (!localJSONObject2.has("label")) {
+            break label294;
+          }
         }
-        ((bfie)localObject1).a(paramString, ???);
+        label294:
+        for (String str1 = localJSONObject2.getString("label");; str1 = null)
+        {
+          Friend localFriend = new Friend();
+          localFriend.jdField_a_of_type_JavaLangString = str2;
+          localFriend.jdField_b_of_type_JavaLangString = ((String)localObject);
+          localFriend.jdField_c_of_type_JavaLangString = str1;
+          if ((localJSONObject2.getInt("specified") == 1) && (!localArrayList2.contains(localFriend)))
+          {
+            localFriend.jdField_b_of_type_Int = i1;
+            localFriend.jdField_c_of_type_Int = n;
+            localArrayList2.add(localFriend);
+          }
+          localArrayList3.add(localFriend);
+          k += 1;
+          break;
+          localObject = null;
+          break label181;
+        }
       }
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      if (alud.a(2131705261).equals(localJSONObject1.getString("label")))
       {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-        return;
+        localbfhs1 = new bfhs();
+        localbfhs1.jdField_a_of_type_Int = 0;
+        localbfhs1.jdField_a_of_type_JavaLangString = bflv.a(localJSONObject1.getString("label"));
+        localbfhs1.jdField_a_of_type_JavaUtilList = localArrayList3;
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localObject = new bfhs();
+        ((bfhs)localObject).jdField_a_of_type_Int = j;
+        ((bfhs)localObject).jdField_a_of_type_JavaLangString = bflv.a(localJSONObject1.getString("label"));
+        ((bfhs)localObject).jdField_a_of_type_JavaUtilList = localArrayList3;
+        localArrayList1.add(localObject);
+        j += 1;
       }
     }
-    catch (IOException localIOException)
+    if (paramJSONObject.getInt("only") == 1)
     {
-      break label205;
+      paramJSONObject = new ArrayList();
+      paramJSONObject.add(localbfhs2);
+      return paramJSONObject;
     }
+    if (localArrayList2.size() == 0)
+    {
+      if ((localbfhs1 == null) || (localbfhs1.jdField_a_of_type_JavaUtilList == null) || (localbfhs1.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+        break label493;
+      }
+      localArrayList1.remove(0);
+      localArrayList1.add(0, localbfhs1);
+    }
+    for (;;)
+    {
+      return localArrayList1;
+      label493:
+      localArrayList1.remove(0);
+      i = 0;
+      while (i < localArrayList1.size())
+      {
+        paramJSONObject = (bfhs)localArrayList1.get(i);
+        paramJSONObject.jdField_a_of_type_Int -= 1;
+        i += 1;
+      }
+    }
+  }
+  
+  public void a(ContentValues paramContentValues)
+  {
+    Parcel localParcel = Parcel.obtain();
+    b(localParcel);
+    byte[] arrayOfByte = localParcel.marshall();
+    localParcel.recycle();
+    paramContentValues.put("data", arrayOfByte);
+    paramContentValues.put("groupId", Integer.valueOf(this.jdField_a_of_type_Int));
+  }
+  
+  public void a(Parcel paramParcel)
+  {
+    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramParcel.readTypedList(this.jdField_a_of_type_JavaUtilList, Friend.CREATOR);
+  }
+  
+  public void b(Parcel paramParcel)
+  {
+    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

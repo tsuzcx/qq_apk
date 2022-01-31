@@ -1,13 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import android.graphics.Matrix;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 
-public class avzt
-  implements DialogInterface.OnClickListener
+public abstract interface avzt
 {
-  public avzt(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  public abstract void a(Matrix paramMatrix);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(MotionEvent paramMotionEvent);
+  
+  public abstract void a(ScaleGestureDetector paramScaleGestureDetector);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean a(ScaleGestureDetector paramScaleGestureDetector);
+  
+  public abstract void b(MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean b(ScaleGestureDetector paramScaleGestureDetector);
+  
+  public abstract void c(MotionEvent paramMotionEvent);
+  
+  public abstract boolean c(MotionEvent paramMotionEvent);
 }
 
 

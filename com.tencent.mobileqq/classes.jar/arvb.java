@@ -1,12 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
-class arvb
-  implements DialogInterface.OnClickListener
+public class arvb
+  implements bezx
 {
-  arvb(aruz paramaruz) {}
+  public arvb(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt)
+  {
+    QfileEditBottomBar.a(this.a);
+  }
 }
 
 

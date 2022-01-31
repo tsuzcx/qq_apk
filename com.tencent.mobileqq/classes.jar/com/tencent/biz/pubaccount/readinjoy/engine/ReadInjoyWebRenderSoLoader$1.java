@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.text.TextUtils;
-import aphn;
-import apho;
+import aplw;
+import aplx;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import ndd;
@@ -54,9 +54,9 @@ public final class ReadInjoyWebRenderSoLoader$1
         oxo.b();
         return;
       }
-      if (j < apho.a.length)
+      if (j < aplx.a.length)
       {
-        if ((!bool) || (!oxo.b(apho.a[j]))) {
+        if ((!bool) || (!oxo.b(aplx.a[j]))) {
           break label296;
         }
         bool = true;
@@ -70,9 +70,9 @@ public final class ReadInjoyWebRenderSoLoader$1
       {
         i = 0;
         bool = true;
-        if (i < aphn.a.length)
+        if (i < aplw.a.length)
         {
-          if ((!bool) || (!oxo.b(aphn.a[i]))) {
+          if ((!bool) || (!oxo.b(aplw.a[i]))) {
             break label308;
           }
           bool = true;

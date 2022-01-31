@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.multicard;
 
-import auji;
+import aunr;
 import java.util.ArrayList;
 
 class MultiCardManager$3$1
@@ -10,8 +10,8 @@ class MultiCardManager$3$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$3.jdField_a_of_type_Auji != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$3.jdField_a_of_type_Auji.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$3.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$3.jdField_a_of_type_Aunr != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$3.jdField_a_of_type_Aunr.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$3.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilArrayList);
     }
   }
 }

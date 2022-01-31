@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.AccountDetailActivity;
 import mqq.util.WeakReference;
 
 public class nkv
-  extends alox
+  extends altm
 {
   WeakReference<AccountDetailActivity> a;
   

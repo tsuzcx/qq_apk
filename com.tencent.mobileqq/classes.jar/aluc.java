@@ -1,80 +1,70 @@
-import android.text.TextUtils;
-import android.util.Xml;
-import java.io.ByteArrayInputStream;
-import org.xmlpull.v1.XmlPullParser;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aluc
 {
+  public static final String[] a;
+  private static final String[] b = { "MSG", "RESUME", "TICK", "FG", "BG", "ENTER", "MAIN" };
   public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public int d;
-  public int e;
+  public GuardManager a;
+  protected long c;
+  protected long d;
   
-  public aluc()
+  static
   {
-    this.jdField_b_of_type_Boolean = true;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "EMPTY", "BG_FETCH", "FG_MAIN", "FG_OTHER", "BG_GUARD", "BG_UNGUARD", "LITE_GUARD", "LITE_UNGUARD", "DEAD" };
   }
   
-  public static aluc a(String paramString)
+  public void a()
   {
-    Object localObject = null;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      aluc localaluc = new aluc();
-      XmlPullParser localXmlPullParser = Xml.newPullParser();
-      localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-      for (int i = 0;; i = localXmlPullParser.next())
-      {
-        localObject = localaluc;
-        if (i == 1) {
-          break;
-        }
-        if ((i == 2) && (localXmlPullParser.getName().equalsIgnoreCase("banner")))
-        {
-          int j = localXmlPullParser.getAttributeCount();
-          i = 0;
-          if (i < j)
-          {
-            paramString = localXmlPullParser.getAttributeName(i);
-            if ("text".equals(paramString)) {
-              localaluc.jdField_b_of_type_JavaLangString = localXmlPullParser.getAttributeValue(i);
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              if ("url".equals(paramString)) {
-                localaluc.jdField_a_of_type_JavaLangString = localXmlPullParser.getAttributeValue(i);
-              } else if ("dayNum".equals(paramString)) {
-                localaluc.jdField_a_of_type_Int = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
-              } else if ("dayIntervalNum".equals(paramString)) {
-                localaluc.jdField_b_of_type_Int = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
-              } else if ("totalNum".equals(paramString)) {
-                localaluc.c = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
-              } else if ("loginNum".equals(paramString)) {
-                localaluc.e = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
-              } else if ("banner".equals(paramString)) {
-                localaluc.jdField_a_of_type_Boolean = "1".equals(localXmlPullParser.getAttributeValue(i));
-              } else if ("setEntry".equals(paramString)) {
-                localaluc.jdField_b_of_type_Boolean = "1".equals(localXmlPullParser.getAttributeValue(i));
-              }
-            }
-          }
-        }
-      }
+    this.c += 1L;
+    this.d += 1L;
+  }
+  
+  public final void a(int paramInt, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GuardManager", 2, jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int] + " onEvent " + b[paramInt] + ", " + paramObject + ", " + this.c + ", " + this.d);
     }
-    return localObject;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 2: 
+      a();
+      return;
+    case 0: 
+      b();
+      return;
+    case 3: 
+      a((String)paramObject);
+      return;
+    case 4: 
+      d((String)paramObject);
+      return;
+    case 5: 
+      b((String)paramObject);
+      return;
+    case 6: 
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(2, null);
+      return;
+    }
+    c((String)paramObject);
   }
   
-  public String toString()
+  protected void a(String paramString) {}
+  
+  protected void b() {}
+  
+  protected void b(String paramString)
   {
-    return "MobileUnityBannerData [url=" + this.jdField_a_of_type_JavaLangString + ", text=" + this.jdField_b_of_type_JavaLangString + ", dayNum=" + this.jdField_a_of_type_Int + ", dayIntervalNum=" + this.jdField_b_of_type_Int + ", totalNum=" + this.c + ", loginNum = " + this.e + ", version=" + this.d + "]";
+    this.d = 0L;
+    this.c = 0L;
   }
+  
+  protected void c(String paramString) {}
+  
+  protected void d(String paramString) {}
 }
 
 

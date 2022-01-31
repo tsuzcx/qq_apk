@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aimj;
+import aiqy;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ public class PhotoCommonBaseData
   public static final String TAG = "AlbumModule";
   public static final int TYPE_SLIDESHOW = 1;
   private static volatile int holdLogicNumber = 0;
-  static volatile aimj instance;
+  static volatile aiqy instance;
   public String albumId;
   public String albumName;
   public HashMap<String, LocalMediaInfo> allMediaInfoHashMap = new HashMap();
@@ -37,23 +37,23 @@ public class PhotoCommonBaseData
   public long videoDurationLimit;
   public long videoSizeLimit;
   
-  public static aimj getInstance()
+  public static aiqy getInstance()
   {
     return getInstance(false);
   }
   
-  static aimj getInstance(boolean paramBoolean)
+  static aiqy getInstance(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      instance = new aimj();
+      instance = new aiqy();
       return instance;
     }
     if (instance == null) {}
     try
     {
       if (instance == null) {
-        instance = new aimj();
+        instance = new aiqy();
       }
       return instance;
     }

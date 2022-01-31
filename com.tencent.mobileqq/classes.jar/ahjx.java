@@ -1,25 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class ahjx
-  implements View.OnClickListener
 {
-  public ahjx(NotificationView paramNotificationView) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  public boolean a()
   {
-    paramView = (ahjv)paramView.getTag();
-    if (paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() == 2)
+    return this.jdField_a_of_type_Int != 1;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject instanceof ahjx))
     {
-      this.a.a(paramView);
-      if (paramView.jdField_a_of_type_Int == 82) {
-        azmj.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
-      }
+      paramObject = (ahjx)paramObject;
+      return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
     }
+    return super.equals(paramObject);
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "Face2FaceFriendInfo uin:" + this.jdField_a_of_type_JavaLangString + " nick:" + this.b + " type:" + this.jdField_a_of_type_Int;
   }
 }
 

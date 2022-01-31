@@ -1,22 +1,20 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class xat
-  extends ugz
+class xat
+  extends SimpleJob<Object>
 {
-  public final int a;
-  public final long a;
-  @NonNull
-  public final xaj a;
-  public final boolean a;
-  public final long b;
-  
-  public xat(@NonNull xaj paramxaj, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2)
+  xat(xan paramxan, String paramString)
   {
-    this.jdField_a_of_type_Xaj = paramxaj;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    wxk.a("0X80076BC");
+    return null;
   }
 }
 

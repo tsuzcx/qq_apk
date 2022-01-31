@@ -1,60 +1,40 @@
-import android.content.Context;
-import android.os.SystemClock;
-import com.tencent.mobileqq.richmedia.dc.DataReport;
-import com.tencent.mobileqq.richmedia.dc.DataReport.ReportTask;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
 
-public class axoq
-  extends axpc
+class axoq
+  implements baug
 {
-  private axos a;
-  private boolean b;
-  
-  public axoq(Context paramContext)
+  public void onResp(bavf parambavf)
   {
-    super(paramContext);
-  }
-  
-  public void a()
-  {
-    if ((this.a != null) && (!this.b))
+    Object localObject = (axot)parambavf.jdField_a_of_type_Bave.a();
+    lek.c("CaptureVideoFilterManager", "download file call back. file = " + ((axot)localObject).a);
+    if (parambavf.jdField_a_of_type_Int != 0)
     {
-      DataReport.ReportTask localReportTask = new DataReport.ReportTask("Pic.AioPreview.Progressive", this.a.a("Pic.AioPreview.Progressive"));
-      DataReport.a().a(localReportTask);
-      this.b = true;
+      lek.c("CaptureVideoFilterManager", "download file faild. errcode = " + parambavf.b);
+      return;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((this.a == null) && (!this.b))
+    if (!((axot)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(parambavf.jdField_a_of_type_Bave.c)))
     {
-      axos localaxos = new axos(null);
-      axos.a(localaxos, paramBoolean);
-      axos.a(localaxos, SystemClock.uptimeMillis());
-      this.a = localaxos;
+      lek.c("CaptureVideoFilterManager", "download file faild : md5 is not match.");
+      bdhb.d(parambavf.jdField_a_of_type_Bave.c);
+      return;
+    }
+    lek.c("CaptureVideoFilterManager", "download file successed.");
+    try
+    {
+      localObject = axom.a();
+      bdhb.a(parambavf.jdField_a_of_type_Bave.c, (String)localObject, false);
+      bdhb.d(parambavf.jdField_a_of_type_Bave.c);
+      return;
+    }
+    catch (IOException parambavf)
+    {
+      parambavf.printStackTrace();
+      lek.c("CaptureVideoFilterManager", "BEAUTY_ZIP unzip file faild.");
     }
   }
   
-  public void b()
-  {
-    if ((this.a != null) && (!this.b)) {
-      axos.b(this.a, SystemClock.uptimeMillis());
-    }
-  }
-  
-  public void c()
-  {
-    if ((this.a != null) && (!this.b)) {
-      axos.c(this.a, SystemClock.uptimeMillis());
-    }
-  }
-  
-  public void d()
-  {
-    if ((this.a != null) && (!this.b)) {
-      axos.b(this.a, true);
-    }
-  }
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

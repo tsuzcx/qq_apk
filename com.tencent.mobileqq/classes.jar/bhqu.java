@@ -1,16 +1,20 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
 
-public abstract interface bhqu
+public class bhqu
+  extends Handler
 {
-  public abstract View a(ViewGroup paramViewGroup, AdapterView paramAdapterView, int paramInt);
+  public bhqu(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
   
-  public abstract void a(ViewGroup paramViewGroup, View paramView, int paramInt);
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhqu
  * JD-Core Version:    0.7.0.1
  */

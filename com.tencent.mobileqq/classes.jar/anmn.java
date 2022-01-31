@@ -1,46 +1,54 @@
-import android.content.Intent;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1.1.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.lang.ref.WeakReference;
 
 public class anmn
-  extends aimu
+  implements anmy
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  public anmn(ArkAiDictUpdateMgr.1 param1, aomv paramaomv, anna paramanna, aomj paramaomj) {}
   
-  public anmn(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public void a(boolean paramBoolean)
   {
-    super(paramNewPhotoPreviewActivity);
-  }
-  
-  public void initData(Intent paramIntent)
-  {
-    super.initData(paramIntent);
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("key_ark_app_res_path");
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("key_should_compress", false);
-    this.b = paramIntent.getStringExtra("key_ark_app_engine_res_dir");
-  }
-  
-  public void initUI()
-  {
-    super.initUI();
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new anmo(this));
-  }
-  
-  public void onBackPressed(boolean paramBoolean)
-  {
-    if ("FROM_PHOTO_LIST".equals(this.jdField_a_of_type_Aimr.from))
+    if (!paramBoolean)
     {
-      Intent localIntent = ((NewPhotoPreviewActivity)this.mActivity).getIntent();
-      localIntent.putExtra("PhotoConst.ALWAYS_SHOW_NUMBER_WHEN_ONLY_ONE_IMAGE", true);
-      localIntent.putExtra("key_ark_app_res_path", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("key_should_compress", this.jdField_a_of_type_Boolean);
-      localIntent.putExtra("key_ark_app_engine_res_dir", this.b);
-      localIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
-      localIntent.putExtra("enter_from", 3);
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, one task failed, dict-id=%s", new Object[] { anmm.a(this.jdField_a_of_type_Aomv) }));
+      this.jdField_a_of_type_Anna.jdField_a_of_type_Boolean = false;
     }
-    super.onBackPressed(paramBoolean);
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_Anna)
+      {
+        anna localanna2 = this.jdField_a_of_type_Anna;
+        int i = localanna2.jdField_a_of_type_Int - 1;
+        localanna2.jdField_a_of_type_Int = i;
+        if (i != 0) {
+          return;
+        }
+        if (this.jdField_a_of_type_Anna.jdField_a_of_type_Boolean)
+        {
+          ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, all success");
+          anmm.a(this.jdField_a_of_type_Aomj);
+          anmm.b(this.jdField_a_of_type_Aomj);
+          anmj.b((AppInterface)anmm.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0).get());
+          try
+          {
+            anmm.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0, false);
+            if (anmm.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0))
+            {
+              anmm.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0, false);
+              ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, pending update task exists, wait 5 second and update");
+              ArkAppCenter.a().postToMainThreadDelayed(new ArkAiDictUpdateMgr.1.1.1(this), 5000L);
+            }
+            return;
+          }
+          finally {}
+        }
+      }
+      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, one or more tasks failed.");
+    }
   }
 }
 

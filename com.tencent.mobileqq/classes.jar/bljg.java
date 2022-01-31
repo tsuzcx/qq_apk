@@ -1,7 +1,6 @@
-public abstract interface bljg
-  extends bljf
+class bljg
 {
-  public abstract void i();
+  private static final bljc a = new bljc(null);
 }
 
 

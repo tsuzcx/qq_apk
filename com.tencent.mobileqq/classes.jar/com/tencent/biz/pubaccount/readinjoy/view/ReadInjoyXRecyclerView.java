@@ -15,9 +15,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout.LayoutParams;
-import biai;
-import biak;
-import bias;
+import biep;
+import bier;
+import biez;
 import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
@@ -32,11 +32,11 @@ import sgm;
 
 public class ReadInjoyXRecyclerView
   extends AbsPullToRefreshViewFix
-  implements biak, bias
+  implements bier, biez
 {
   public static int b = 1001;
   private Handler jdField_a_of_type_AndroidOsHandler = new rvy(this, Looper.getMainLooper());
-  private biai jdField_a_of_type_Biai;
+  private biep jdField_a_of_type_Biep;
   protected RecyclerViewWithHeaderFooterFix a;
   private XLoadMoreLayout jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout;
   private ThreadLocal<Boolean> jdField_a_of_type_JavaLangThreadLocal = new rvz(this);
@@ -94,9 +94,9 @@ public class ReadInjoyXRecyclerView
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecyclerViewWithHeaderFooterFix = new rwa(this, getContext());
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecyclerViewWithHeaderFooterFix, localLayoutParams);
-    this.jdField_a_of_type_Biai = new biai(this.jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout, getContext());
-    this.jdField_a_of_type_Biai.a(true);
-    this.jdField_a_of_type_Biai.a(this);
+    this.jdField_a_of_type_Biep = new biep(this.jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout, getContext());
+    this.jdField_a_of_type_Biep.a(true);
+    this.jdField_a_of_type_Biep.a(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecyclerViewWithHeaderFooterFix.b(this.jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecyclerViewWithHeaderFooterFix.addOnScrollListener(new rwb(this));
   }
@@ -114,7 +114,7 @@ public class ReadInjoyXRecyclerView
       setPullHeaderBgDrawable(new ColorDrawable(Color.parseColor("#F7F7F7")));
       return localView;
     }
-    setPullHeaderBgDrawable(getResources().getDrawable(2130839219));
+    setPullHeaderBgDrawable(getResources().getDrawable(2130839220));
     return localView;
   }
   
@@ -165,8 +165,8 @@ public class ReadInjoyXRecyclerView
     if (QLog.isColorLevel()) {
       QLog.d("XRecyclerView", 2, "loadMoreComplete(): hasMoreData=" + paramBoolean2);
     }
-    this.jdField_a_of_type_Biai.a(paramBoolean1, paramBoolean2);
-    this.jdField_a_of_type_Biai.a(paramBoolean2);
+    this.jdField_a_of_type_Biep.a(paramBoolean1, paramBoolean2);
+    this.jdField_a_of_type_Biep.a(paramBoolean2);
   }
   
   @TargetApi(14)

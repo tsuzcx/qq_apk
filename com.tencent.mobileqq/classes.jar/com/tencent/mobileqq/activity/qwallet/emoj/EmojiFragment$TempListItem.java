@@ -18,11 +18,11 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import baul;
+import bayu;
 import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.QWalletPicHelper;
-import xod;
+import xsm;
 
 class EmojiFragment$TempListItem
   extends FrameLayout
@@ -46,21 +46,21 @@ class EmojiFragment$TempListItem
     paramEmojiFragment = new RelativeLayout(paramContext);
     this.mRootLayout.addView(paramEmojiFragment);
     Object localObject = (LinearLayout.LayoutParams)paramEmojiFragment.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).width = xod.a(paramContext, 66.0F);
-    ((LinearLayout.LayoutParams)localObject).height = xod.a(paramContext, 66.0F);
+    ((LinearLayout.LayoutParams)localObject).width = xsm.a(paramContext, 66.0F);
+    ((LinearLayout.LayoutParams)localObject).height = xsm.a(paramContext, 66.0F);
     ((LinearLayout.LayoutParams)localObject).gravity = 17;
     this.mCornerImageView = new ImageView(paramContext);
     paramEmojiFragment.addView(this.mCornerImageView);
-    this.mCornerImageView.getLayoutParams().width = xod.a(paramContext, 66.0F);
-    this.mCornerImageView.getLayoutParams().height = xod.a(paramContext, 66.0F);
+    this.mCornerImageView.getLayoutParams().width = xsm.a(paramContext, 66.0F);
+    this.mCornerImageView.getLayoutParams().height = xsm.a(paramContext, 66.0F);
     this.mCornerImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.mCornerImageView.setImageResource(2130842946);
+    this.mCornerImageView.setImageResource(2130842959);
     this.mCornerImageView.setVisibility(8);
     this.mLoadingView = new View(paramContext);
     paramEmojiFragment.addView(this.mLoadingView);
     localObject = (RelativeLayout.LayoutParams)this.mLoadingView.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).width = xod.a(paramContext, 40.0F);
-    ((RelativeLayout.LayoutParams)localObject).height = xod.a(paramContext, 40.0F);
+    ((RelativeLayout.LayoutParams)localObject).width = xsm.a(paramContext, 40.0F);
+    ((RelativeLayout.LayoutParams)localObject).height = xsm.a(paramContext, 40.0F);
     ((RelativeLayout.LayoutParams)localObject).addRule(13, -1);
     this.mImageView = new ImageView(paramContext);
     paramEmojiFragment.addView(this.mImageView);
@@ -77,7 +77,7 @@ class EmojiFragment$TempListItem
     paramEmojiFragment.width = -2;
     paramEmojiFragment.height = -2;
     paramEmojiFragment.gravity = 1;
-    paramEmojiFragment.topMargin = xod.a(paramContext, 6.0F);
+    paramEmojiFragment.topMargin = xsm.a(paramContext, 6.0F);
   }
   
   public void setData(EmojiFragment.TemplateInfo paramTemplateInfo)
@@ -95,12 +95,12 @@ class EmojiFragment$TempListItem
       if (QLog.isColorLevel()) {
         QLog.i("EmojiFragment", 2, "模板url: " + (String)localObject1);
       }
-      Object localObject2 = getResources().getDrawable(2130843040);
+      Object localObject2 = getResources().getDrawable(2130843053);
       this.mLoadingView.setBackgroundDrawable((Drawable)localObject2);
       ((Animatable)localObject2).start();
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("qwallet_config_md5", paramTemplateInfo.md5);
-      localObject1 = QWalletPicHelper.getNetDrawableForQWallet((String)localObject1, baul.a, baul.a, (Bundle)localObject2);
+      localObject1 = QWalletPicHelper.getNetDrawableForQWallet((String)localObject1, bayu.a, bayu.a, (Bundle)localObject2);
       this.mImageView.setImageDrawable((Drawable)localObject1);
       if (localObject1 == null) {
         break label252;
@@ -127,7 +127,7 @@ class EmojiFragment$TempListItem
       break;
       label252:
       this.mImageView.setImageDrawable(null);
-      this.mLoadingView.setBackgroundDrawable(getResources().getDrawable(2130843117));
+      this.mLoadingView.setBackgroundDrawable(getResources().getDrawable(2130843130));
       this.mCornerImageView.setVisibility(8);
     }
   }

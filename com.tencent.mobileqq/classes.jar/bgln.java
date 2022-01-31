@@ -1,12 +1,20 @@
-public abstract interface bgln
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+
+public class bgln
+  implements DialogInterface.OnClickListener
 {
-  public abstract void onSoftKeyboardClosed();
+  public bgln(OpenSDKAppInterface paramOpenSDKAppInterface) {}
   
-  public abstract void onSoftKeyboardOpened(int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgln
  * JD-Core Version:    0.7.0.1
  */

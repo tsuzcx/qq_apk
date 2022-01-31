@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
 import android.support.v4.util.LruCache;
-import azjw;
+import azof;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.cache.QQConcurrentHashMap;
 import com.tencent.commonsdk.cache.QQHashMap;
@@ -11,7 +11,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
-import zdp;
+import zie;
 
 public class InitMemoryCache
   extends Step
@@ -25,29 +25,29 @@ public class InitMemoryCache
     {
       return true;
       a = true;
-      zdp localzdp = zdp.a();
-      QQHashMap.setManager(localzdp);
-      QQConcurrentHashMap.setManager(localzdp);
-      QQLruCache.setManager(localzdp);
-      LruCache.setManager(localzdp);
+      zie localzie = zie.a();
+      QQHashMap.setManager(localzie);
+      QQConcurrentHashMap.setManager(localzie);
+      QQLruCache.setManager(localzie);
+      LruCache.setManager(localzie);
       QLog.e("qiqili", 1, "InitMemoryCache BaseApplicationImpl.sProcessId =" + BaseApplicationImpl.sProcessId + "BaseApplicationImpl.processName=" + BaseApplicationImpl.processName);
       BaseApplicationImpl.sImageHashMap = new ConcurrentHashMap();
       long l;
       if (BaseApplicationImpl.sProcessId == 1)
       {
         l = MemoryManager.a() * 3L / 16L;
-        BaseApplicationImpl.sImageCache = new azjw(Integer.valueOf((int)l));
+        BaseApplicationImpl.sImageCache = new azof(Integer.valueOf((int)l));
         BaseApplicationImpl.sImageCacheSize = (int)l;
       }
       while ((BaseApplicationImpl.sProcessId == 2) || (BaseApplicationImpl.sProcessId == 5) || (BaseApplicationImpl.sProcessId == 7) || (BaseApplicationImpl.sProcessId == 9) || (BaseApplicationImpl.sProcessId == 11) || (BaseApplicationImpl.sProcessId == 10))
       {
         ThreadManager.getSubThreadHandler().post(new InitMemoryCache.2(this));
-        zdp.a().d();
+        zie.a().d();
         return true;
         if (BaseApplicationImpl.sProcessId == 5)
         {
           l = MemoryManager.a() * 3L / 16L;
-          BaseApplicationImpl.sImageCache = new azjw(Integer.valueOf((int)l));
+          BaseApplicationImpl.sImageCache = new azof(Integer.valueOf((int)l));
           BaseApplicationImpl.sImageCacheSize = (int)l;
         }
         else
@@ -61,18 +61,18 @@ public class InitMemoryCache
             if (j > 4194304) {
               i = j;
             }
-            BaseApplicationImpl.sImageCache = new azjw(Integer.valueOf(i));
+            BaseApplicationImpl.sImageCache = new azof(Integer.valueOf(i));
             BaseApplicationImpl.sImageCacheSize = j;
             if (QLog.isColorLevel()) {
               QLog.d("MemoryCache", 2, "memory size:" + j);
             }
             ThreadManager.getSubThreadHandler().post(new InitMemoryCache.1(this));
-            zdp.a().d();
+            zie.a().d();
           }
           else if ((BaseApplicationImpl.sProcessId == 7) || (BaseApplicationImpl.sProcessId == 2))
           {
             l = MemoryManager.a() * 3L / 16L;
-            BaseApplicationImpl.sImageCache = new azjw(Integer.valueOf((int)l));
+            BaseApplicationImpl.sImageCache = new azof(Integer.valueOf((int)l));
             BaseApplicationImpl.sImageCacheSize = (int)l;
           }
           else if (BaseApplicationImpl.processName.endsWith(":video"))
@@ -82,7 +82,7 @@ public class InitMemoryCache
             if (j > 4194304) {
               i = j;
             }
-            BaseApplicationImpl.sImageCache = new azjw(Integer.valueOf(i));
+            BaseApplicationImpl.sImageCache = new azof(Integer.valueOf(i));
             BaseApplicationImpl.sImageCacheSize = j;
           }
         }

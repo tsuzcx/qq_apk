@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 import org.json.JSONObject;
 
 public class son
-  implements azjq
+  implements aznz
 {
   public son(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
   

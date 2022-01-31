@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class acnq
-  extends alxd
+  implements DialogInterface.OnClickListener
 {
-  public acnq(Conversation paramConversation) {}
+  public acnq(ChatHistoryFileActivity paramChatHistoryFileActivity, acnt paramacnt) {}
   
-  protected void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, new Object[] { "onRegPrxyUpdateLoginDevStatus int iState = ", Integer.valueOf(paramInt) });
-    }
-    if (paramInt == 1)
-    {
-      this.a.a.a(27, 2);
-      this.a.a.a(-1, null);
-      return;
-    }
-    this.a.a.k();
+    this.jdField_a_of_type_Acnt.a(false);
   }
 }
 

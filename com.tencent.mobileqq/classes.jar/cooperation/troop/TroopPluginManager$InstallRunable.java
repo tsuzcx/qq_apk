@@ -2,10 +2,10 @@ package cooperation.troop;
 
 import android.os.Handler;
 import android.os.Looper;
-import bimg;
-import bjyl;
-import bjym;
-import bjyn;
+import biqn;
+import bkcs;
+import bkct;
+import bkcu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.WeakReference;
 
@@ -13,13 +13,13 @@ public class TroopPluginManager$InstallRunable
   implements Runnable
 {
   public Handler a;
-  public bjyn a;
+  public bkcu a;
   public String a;
   
-  public TroopPluginManager$InstallRunable(TroopPluginManager paramTroopPluginManager, bjyn parambjyn, String paramString)
+  public TroopPluginManager$InstallRunable(TroopPluginManager paramTroopPluginManager, bkcu parambkcu, String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bjyl(this, Looper.getMainLooper());
-    this.jdField_a_of_type_Bjyn = parambjyn;
+    this.jdField_a_of_type_AndroidOsHandler = new bkcs(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Bkcu = parambkcu;
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
@@ -30,9 +30,9 @@ public class TroopPluginManager$InstallRunable
     do
     {
       return;
-      localObject = (bimg)((QQAppInterface)localObject).getManager(27);
+      localObject = (biqn)((QQAppInterface)localObject).getManager(27);
     } while (localObject == null);
-    ((bimg)localObject).a(this.jdField_a_of_type_JavaLangString, false, new bjym(this));
+    ((biqn)localObject).a(this.jdField_a_of_type_JavaLangString, false, new bkct(this));
   }
 }
 

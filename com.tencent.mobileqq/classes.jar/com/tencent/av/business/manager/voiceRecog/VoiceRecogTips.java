@@ -1,12 +1,12 @@
 package com.tencent.av.business.manager.voiceRecog;
 
-import alpo;
+import alud;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.ListAdapter;
-import ayvc;
+import ayzl;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.magicface.FaceItem;
@@ -40,7 +40,7 @@ public class VoiceRecogTips
   public static void a(VideoAppInterface paramVideoAppInterface)
   {
     paramVideoAppInterface = llj.a(paramVideoAppInterface);
-    b = ayvc.a();
+    b = ayzl.a();
     paramVideoAppInterface.edit().putLong("voiceStickerTabShowFlag", b);
   }
   
@@ -175,7 +175,7 @@ public class VoiceRecogTips
   {
     paramVideoAppInterface = llj.a(paramVideoAppInterface);
     paramVideoAppInterface.edit().putString("blessingTips", paramString);
-    jdField_a_of_type_Long = ayvc.a();
+    jdField_a_of_type_Long = ayzl.a();
     paramVideoAppInterface.edit().putLong("blessingTime", jdField_a_of_type_Long);
     jdField_a_of_type_Int = 1;
   }
@@ -389,7 +389,7 @@ public class VoiceRecogTips
   
   public static void b(VideoAppInterface paramVideoAppInterface, String paramString)
   {
-    mdd.a(paramVideoAppInterface, 1025, alpo.a(2131717226) + paramString + alpo.a(2131717227));
+    mdd.a(paramVideoAppInterface, 1025, alud.a(2131717238) + paramString + alud.a(2131717239));
   }
   
   void a(VideoAppInterface paramVideoAppInterface, ljv paramljv)

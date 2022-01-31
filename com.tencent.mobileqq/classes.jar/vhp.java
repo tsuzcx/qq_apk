@@ -1,37 +1,36 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoSimpleInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-final class vhp
-  implements bhqd
+public class vhp
+  extends uro
 {
-  vhp(CommentEntry paramCommentEntry, bhpy parambhpy) {}
+  public List<StoryVideoItem> a = new ArrayList();
   
-  public void OnClick(View paramView, int paramInt)
+  public vhp(qqstory_service.RspSimpleInfoList paramRspSimpleInfoList)
   {
-    switch (paramInt)
+    super(paramRspSimpleInfoList.result);
+    paramRspSimpleInfoList = paramRspSimpleInfoList.video_list.get();
+    if (paramRspSimpleInfoList != null)
     {
-    default: 
-      paramView = "16384";
-      QQUserUIItem localQQUserUIItem = ((usd)urr.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId);
-      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
-        new uzn().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.content);
+      paramRspSimpleInfoList = paramRspSimpleInfoList.iterator();
+      while (paramRspSimpleInfoList.hasNext())
+      {
+        qqstory_struct.StoryVideoSimpleInfo localStoryVideoSimpleInfo = (qqstory_struct.StoryVideoSimpleInfo)paramRspSimpleInfoList.next();
+        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+        localStoryVideoItem.convertFrom("Q.qqstory.net:GetSimpleInfoListResponse", localStoryVideoSimpleInfo);
+        this.a.add(localStoryVideoItem);
       }
-      break;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      wsv.d("Q.qqstory.player.PlayModeUtils", "report comment error because evil uin is empty.");
-    }
+  }
+  
+  public String toString()
+  {
+    return "GetSimpleInfoListResponse{mVideoItemList=" + this.a + '}';
   }
 }
 

@@ -1,63 +1,40 @@
-import java.lang.ref.WeakReference;
+import NS_MOBILE_CLIENT_REPORT.CLIENT_NBP_REPORT_REQ;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class bjrg
+  extends bjdo
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static int jdField_b_of_type_Int;
-  private static bjrg jdField_b_of_type_Bjrg;
-  public int a;
-  private bjrg jdField_a_of_type_Bjrg;
-  public String a;
-  public WeakReference<bjrf> a;
-  public String b;
-  public String c;
-  public String d;
+  public JceStruct a;
   
-  public bjrg(int paramInt, String paramString)
+  public bjrg(String paramString, ArrayList<String> paramArrayList, Map<String, String> paramMap)
   {
-    this.jdField_a_of_type_JavaLangString = (paramInt + " " + paramString);
+    CLIENT_NBP_REPORT_REQ localCLIENT_NBP_REPORT_REQ = new CLIENT_NBP_REPORT_REQ();
+    localCLIENT_NBP_REPORT_REQ.strABTestId = paramString;
+    localCLIENT_NBP_REPORT_REQ.report_info = paramArrayList;
+    localCLIENT_NBP_REPORT_REQ.extra_info = paramMap;
+    this.a = localCLIENT_NBP_REPORT_REQ;
   }
   
-  public static bjrg a(int paramInt, String paramString)
+  public int a()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_b_of_type_Bjrg != null)
-      {
-        bjrg localbjrg = jdField_b_of_type_Bjrg;
-        jdField_b_of_type_Bjrg = localbjrg.jdField_a_of_type_Bjrg;
-        localbjrg.jdField_a_of_type_Bjrg = null;
-        localbjrg.jdField_a_of_type_JavaLangString = (paramInt + " " + paramString);
-        localbjrg.jdField_a_of_type_Int = paramInt;
-        jdField_b_of_type_Int -= 1;
-        return localbjrg;
-      }
-      return new bjrg(paramInt, paramString);
-    }
+    return 0;
   }
   
-  private void b()
+  public String getCmdString()
   {
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.c = null;
-    this.d = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    return "QzoneNewService.nbpClientReport";
   }
   
-  public void a()
+  public JceStruct getReq()
   {
-    b();
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_b_of_type_Int < 100)
-      {
-        this.jdField_a_of_type_Bjrg = jdField_b_of_type_Bjrg;
-        jdField_b_of_type_Bjrg = this;
-        jdField_b_of_type_Int += 1;
-      }
-      return;
-    }
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "nbpClientReport";
   }
 }
 

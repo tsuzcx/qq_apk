@@ -1,14 +1,14 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bfka;
-import bgxk;
+import bfoj;
+import bhbr;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 class MiniAppProxyImpl$12
-  implements bfka
+  implements bfoj
 {
   MiniAppProxyImpl$12(MiniAppProxyImpl paramMiniAppProxyImpl) {}
   
@@ -17,7 +17,7 @@ class MiniAppProxyImpl$12
     if ((MiniAppProxyImpl.access$1200(this.this$0) != null) && (MiniAppProxyImpl.access$1300(this.this$0) != null) && (MiniAppProxyImpl.access$1200(this.this$0).equals(paramString1)) && (MiniAppProxyImpl.access$1300(this.this$0).equals(paramString2)))
     {
       QLog.d("MiniAppProxyImpl", 1, "installSucceed: " + paramString1 + "; pkgname : " + paramString2);
-      bgxk.a(MiniAppProxyImpl.access$1100(this.this$0), null, "launchapp", "installapp", "qqdownload");
+      bhbr.a(MiniAppProxyImpl.access$1100(this.this$0), null, "launchapp", "installapp", "qqdownload");
     }
   }
   
@@ -41,7 +41,7 @@ class MiniAppProxyImpl$12
     {
       QLog.d("MiniAppProxyImpl", 1, "onDownloadFinish");
       AppBrandTask.runTaskOnUiThread(new MiniAppProxyImpl.12.1(this));
-      bgxk.a(MiniAppProxyImpl.access$1100(this.this$0), null, "launchapp", "downloadappfinish", "qqdownload");
+      bhbr.a(MiniAppProxyImpl.access$1100(this.this$0), null, "launchapp", "downloadappfinish", "qqdownload");
     }
   }
   
@@ -50,7 +50,7 @@ class MiniAppProxyImpl$12
     if ((MiniAppProxyImpl.access$1000(this.this$0) != null) && (paramDownloadInfo != null) && (MiniAppProxyImpl.access$1000(this.this$0).equals(paramDownloadInfo.d)))
     {
       QLog.d("MiniAppProxyImpl", 1, "onDownloadPause");
-      bgxk.a(MiniAppProxyImpl.access$1100(this.this$0), null, "launchapp", "downloadapppause", "qqdownload");
+      bhbr.a(MiniAppProxyImpl.access$1100(this.this$0), null, "launchapp", "downloadapppause", "qqdownload");
     }
   }
   

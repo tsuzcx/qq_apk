@@ -1,18 +1,34 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qqfav.widget.QfavJumpActivity;
+import java.io.IOException;
+import java.io.InputStream;
 
-public final class bixb
+public class bixb
+  implements DialogInterface.OnClickListener
 {
-  private static SharedPreferences b(Context paramContext)
+  public bixb(QfavJumpActivity paramQfavJumpActivity, InputStream paramInputStream) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return paramContext.getSharedPreferences("reader_user" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
+    try
+    {
+      this.jdField_a_of_type_JavaIoInputStream.close();
+      this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.finish();
+      return;
+    }
+    catch (IOException paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bixb
  * JD-Core Version:    0.7.0.1
  */

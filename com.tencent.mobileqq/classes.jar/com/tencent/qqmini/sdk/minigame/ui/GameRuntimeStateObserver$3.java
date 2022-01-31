@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.minigame.ui;
 
 import android.widget.Toast;
-import bgvn;
+import bgzu;
 
 public class GameRuntimeStateObserver$3
   implements Runnable
 {
-  public GameRuntimeStateObserver$3(bgvn parambgvn) {}
+  public GameRuntimeStateObserver$3(bgzu parambgzu) {}
   
   public void run()
   {
-    Toast.makeText(bgvn.a(this.this$0), "小游戏配置加载失败！", 0).show();
+    Toast.makeText(bgzu.a(this.this$0), "小游戏配置加载失败！", 0).show();
   }
 }
 

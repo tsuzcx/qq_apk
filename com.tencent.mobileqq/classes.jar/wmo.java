@@ -1,10 +1,17 @@
-import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import java.util.List;
 
-public abstract interface wmo
+public class wmo
+  extends uli
 {
-  public abstract Bitmap a(Bitmap paramBitmap);
+  public List<MomeriesYearNode> a;
+  public boolean a;
   
-  public abstract String a();
+  public wmo(wml paramwml, ErrorMessage paramErrorMessage)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+  }
 }
 
 

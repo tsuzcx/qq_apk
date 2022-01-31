@@ -43,16 +43,16 @@ public class qve
   public void setViewImage(ImageView paramImageView, String paramString)
   {
     super.setViewImage(paramImageView, paramString);
-    if (paramImageView.getId() == 2131367808) {}
+    if (paramImageView.getId() == 2131367819) {}
     try
     {
-      Object localObject = this.a.getResources().getDrawable(2130840084);
+      Object localObject = this.a.getResources().getDrawable(2130840085);
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
       localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
       localObject = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-      ((URLDrawable)localObject).setTag(bcuq.a(140, 140));
-      ((URLDrawable)localObject).setDecodeHandler(bcuq.o);
+      ((URLDrawable)localObject).setTag(bcyz.a(140, 140));
+      ((URLDrawable)localObject).setDecodeHandler(bcyz.o);
       paramImageView.setImageDrawable((Drawable)localObject);
       return;
     }

@@ -154,7 +154,7 @@ public class nwj
     {
       this.jdField_a_of_type_Rjg.a((String)localObject);
       this.jdField_a_of_type_Rkb.a((String)localObject);
-      this.jdField_a_of_type_Rkp = new rkp((FrameLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131379755), (ReadInJoyBaseListView)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131377224), this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_a_of_type_Rkp = new rkp((FrameLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131379813), (ReadInJoyBaseListView)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131377278), this.jdField_a_of_type_AndroidAppActivity);
       this.jdField_a_of_type_Rkp.a(this);
       this.jdField_a_of_type_Rjg.a(this.jdField_a_of_type_Rkp);
       this.jdField_a_of_type_Rkp.a(this);
@@ -487,13 +487,13 @@ public class nwj
   
   public void p()
   {
-    if (xoo.a(a()))
+    if (xsx.a(a()))
     {
       tam.a(a(), "video_type_videopublic");
       nrt.a(null, "", "0X8009338", "0X8009338", 0, 0, "", "", "", ntd.a("0"), false);
       return;
     }
-    QQToast.a(a(), -1, alpo.a(2131713455), 0).b(a().getResources().getDimensionPixelSize(2131298914));
+    QQToast.a(a(), -1, alud.a(2131713467), 0).b(a().getResources().getDimensionPixelSize(2131298914));
     tam.b(a(), "video_type_videopublic");
     nrt.a(null, "", "0X8009338", "0X8009338", 0, 0, "", "", "", ntd.a("1"), false);
   }

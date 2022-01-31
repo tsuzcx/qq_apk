@@ -2,9 +2,9 @@ package com.tencent.mobileqq.activity;
 
 import android.graphics.Bitmap;
 import android.os.Message;
-import awmk;
-import bdjc;
-import bhow;
+import awqt;
+import bdnl;
+import bhtd;
 import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
 import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
 
@@ -23,11 +23,11 @@ class FriendProfileCardActivity$48
     if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
       localObject = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(((Bitmap)localObject).getWidth() * 0.125F), (int)(((Bitmap)localObject).getHeight() * 0.125F), true);
-      bdjc.a((Bitmap)localObject, 2);
-      if ((this.this$0.b != null) && (this.this$0.jdField_a_of_type_Awmk != null) && (this.this$0.jdField_a_of_type_Awmk.a != null))
+      bdnl.a((Bitmap)localObject, 2);
+      if ((this.this$0.b != null) && (this.this$0.jdField_a_of_type_Awqt != null) && (this.this$0.jdField_a_of_type_Awqt.a != null))
       {
         localObject = this.this$0.b.obtainMessage(12, localObject);
-        this.this$0.jdField_a_of_type_ComTencentMobileqqProfileProfileShoppingPhotoInfo = ProfileShoppingPhotoInfo.getPhotoInfo(this.this$0.app, this.this$0.jdField_a_of_type_Awmk.a.a);
+        this.this$0.jdField_a_of_type_ComTencentMobileqqProfileProfileShoppingPhotoInfo = ProfileShoppingPhotoInfo.getPhotoInfo(this.this$0.app, this.this$0.jdField_a_of_type_Awqt.a.a);
         this.this$0.b.sendMessage((Message)localObject);
       }
     }

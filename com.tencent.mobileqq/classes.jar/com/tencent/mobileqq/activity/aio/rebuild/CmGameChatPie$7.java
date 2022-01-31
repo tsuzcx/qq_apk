@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agjp;
-import alpo;
+import agoe;
+import alud;
 import android.widget.TextView;
 
 public class CmGameChatPie$7
   implements Runnable
 {
-  public CmGameChatPie$7(agjp paramagjp) {}
+  public CmGameChatPie$7(agoe paramagoe) {}
   
   public void run()
   {
-    this.this$0.f.setText(alpo.a(2131720302));
+    this.this$0.f.setText(alud.a(2131720314));
   }
 }
 

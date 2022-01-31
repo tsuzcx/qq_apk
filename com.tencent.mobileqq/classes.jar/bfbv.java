@@ -1,18 +1,25 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.open.agent.OpenCardContainer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.agent.AuthorityAccountView;
+import com.tencent.open.agent.AuthorityAccountView.DelAccountRunnable;
 
 public class bfbv
-  extends bhxb
+  implements DialogInterface.OnClickListener
 {
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public bfbv(AuthorityAccountView paramAuthorityAccountView, String paramString) {}
   
-  private bfbv(OpenCardContainer paramOpenCardContainer) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1) {
+      ThreadManager.executeOnSubThread(new AuthorityAccountView.DelAccountRunnable(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView, this.jdField_a_of_type_JavaLangString));
+    }
+    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a == null)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a.dismiss();
+    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a = null;
+  }
 }
 
 

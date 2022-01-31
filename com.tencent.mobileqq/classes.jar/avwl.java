@@ -1,57 +1,52 @@
-import android.content.Intent;
-import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.text.TextUtils;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class avwl
-  extends MSFServlet
+  implements ActionMode.Callback
 {
-  public String[] getPreferSSOCommands()
-  {
-    return null;
-  }
+  public avwl(OCRResultFragmentNew paramOCRResultFragmentNew, EditText paramEditText) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if (paramIntent != null)
+    if (paramMenuItem.getItemId() == 2131371337)
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("OlympicToolServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
-      }
-      ((OlympicToolAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.i("OlympicToolServlet", 4, "send: " + paramIntent.getServiceCmd());
-        }
+      paramActionMode = avvq.a(this.jdField_a_of_type_AndroidWidgetEditText);
+      if (TextUtils.isEmpty(paramActionMode)) {
+        QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), 1, alud.a(2131708212), 0).a();
       }
     }
+    else
+    {
+      return false;
+    }
+    OCRTextSearchActivity.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), paramActionMode);
+    OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew).overridePendingTransition(2130771992, 0);
+    return true;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    paramActionMode = paramActionMode.getMenuInflater();
+    if (paramActionMode != null) {
+      paramActionMode.inflate(2131623940, paramMenu);
+    }
+    return true;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

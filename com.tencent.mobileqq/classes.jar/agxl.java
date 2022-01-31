@@ -1,168 +1,210 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.zhitu.gate.ZhituSafeGate.GateInfo;
-import tencent.im.zhitu.gate.ZhituSafeGate.RspBody;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class agxl
-  extends MSFServlet
 {
-  private void a(Intent paramIntent, int paramInt, FromServiceMsg paramFromServiceMsg)
+  private agxk jdField_a_of_type_Agxk = new agxm(this);
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
+  private StickerBubbleAnimationView jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
+  private List<WeakReference<agxo>> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private boolean jdField_a_of_type_Boolean;
+  private agxk jdField_b_of_type_Agxk = new agxn(this);
+  private StickerBubbleAnimationView jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
+  private List<WeakReference<agxo>> jdField_b_of_type_JavaUtilList = new LinkedList();
+  private boolean jdField_b_of_type_Boolean;
+  
+  public static agxl a()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ErrorCode", paramInt);
-    localBundle.putParcelable("FromServerMsg", paramFromServiceMsg);
-    localBundle.putString("UniqueKey", paramIntent.getStringExtra("ZhituReqKey"));
-    notifyObserver(paramIntent, 0, false, localBundle, agwz.class);
+    return agxp.a();
   }
   
-  private byte[] a(byte[] paramArrayOfByte)
+  private void a(View paramView)
   {
-    byte[] arrayOfByte = new byte[paramArrayOfByte.length + 4];
-    bdlr.a(arrayOfByte, 0, paramArrayOfByte.length + 4);
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 4, paramArrayOfByte.length);
-    return arrayOfByte;
-  }
-  
-  public String[] getPreferSSOCommands()
-  {
-    return new String[] { "AIMessage.Text2Image", "MQInference.ZhituReport" };
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituServlet", 2, "onReceive with code: " + paramFromServiceMsg.getResultCode());
-    }
-    Object localObject = paramIntent.getStringExtra("ZhituCMD");
-    if (((String)localObject).equals("MQInference.ZhituReport")) {}
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (!((String)localObject).equals("ZhituGate.Check")) {
-            break label295;
-          }
-          if (!paramFromServiceMsg.isSuccess()) {
-            break;
-          }
-          paramIntent = getAppRuntime();
-        } while ((paramIntent == null) || (!(paramIntent instanceof AppInterface)));
-        i = paramFromServiceMsg.getWupBuffer().length - 4;
-        localObject = new byte[i];
-        bdlr.a((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-        paramFromServiceMsg.putWupBuffer((byte[])localObject);
-        for (;;)
-        {
-          try
-          {
-            paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
-            localObject = new ZhituSafeGate.RspBody();
-            ((ZhituSafeGate.RspBody)localObject).mergeFrom(paramFromServiceMsg);
-            i = ((ZhituSafeGate.RspBody)localObject).int32_result.get();
-            if (i != 0) {
-              break;
-            }
-            i = ((ZhituSafeGate.GateInfo)((ZhituSafeGate.RspBody)localObject).gate_info.get()).uint32_state.get();
-            paramFromServiceMsg = agwq.a((QQAppInterface)paramIntent);
-            if (i == 1)
-            {
-              bool = true;
-              paramFromServiceMsg.c(bool);
-              long l = System.currentTimeMillis();
-              agwq.a((QQAppInterface)paramIntent).a(l);
-              return;
-            }
-          }
-          catch (Exception paramIntent)
-          {
-            QLog.e("ZhituServlet", 2, "onReceive CMD_SAFE_GATE has exception: ", paramIntent);
-            return;
-          }
-          boolean bool = false;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ZhituServlet", 2, "onReceive CMD_SAFE_GATE failed result: " + i);
-      return;
-      i = paramFromServiceMsg.getResultCode();
-    } while (!QLog.isColorLevel());
-    QLog.d("ZhituServlet", 2, "onReceive CMD_SAFE_GATE not Success code is : " + i);
-    return;
-    label295:
-    if (!paramFromServiceMsg.isSuccess())
-    {
-      a(paramIntent, 1, paramFromServiceMsg);
+    if (paramView.getParent() == null) {
       return;
     }
-    localObject = paramFromServiceMsg.getWupBuffer();
-    if (localObject != null)
-    {
-      String str = new String(Arrays.copyOfRange((byte[])localObject, 4, localObject.length));
-      for (;;)
+    ((ViewGroup)paramView.getParent()).removeView(paramView);
+  }
+  
+  private void a(ViewGroup paramViewGroup, View paramView)
+  {
+    new RelativeLayout.LayoutParams(-1, -1);
+    if (paramView.getParent() != null) {
+      if (paramView.getParent() != paramViewGroup)
       {
-        try
-        {
-          if (!TextUtils.isEmpty(str))
-          {
-            localObject = (ZhituResponse)bcyj.b(new JSONObject(str), ZhituResponse.class);
-            Bundle localBundle = new Bundle();
-            localBundle.putInt("ErrorCode", 0);
-            localBundle.putParcelable("Response", (Parcelable)localObject);
-            localBundle.putString("UniqueKey", paramIntent.getStringExtra("ZhituReqKey"));
-            localBundle.putInt("StartIdx", paramIntent.getIntExtra("StartIdx", 0));
-            localBundle.putString("QueryText", paramIntent.getStringExtra("QueryText"));
-            notifyObserver(paramIntent, 0, true, localBundle, agwz.class);
-            return;
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ZhituServlet", 2, "parse json error with str:\n" + str + "\n" + localJSONException);
-          }
-          a(paramIntent, 3, paramFromServiceMsg);
-          return;
-        }
-        ZhituResponse localZhituResponse = new ZhituResponse();
+        ((ViewGroup)paramView.getParent()).removeView(paramView);
+        paramViewGroup.addView(paramView);
       }
     }
-    a(paramIntent, 2, paramFromServiceMsg);
+    for (;;)
+    {
+      paramView.bringToFront();
+      return;
+      paramViewGroup.addView(paramView);
+    }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  private void a(List<WeakReference<agxo>> paramList)
   {
-    if (paramIntent == null) {
-      return;
-    }
-    String str = paramIntent.getStringExtra("ZhituCMD");
-    paramPacket.setSSOCommand(str);
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituServlet", 2, "onSend with cmd: " + str);
-    }
-    paramIntent = paramIntent.getByteArrayExtra("ZhituRequestBytes");
-    if (paramIntent != null)
+    try
     {
-      paramPacket.putSendData(a(paramIntent));
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        agxo localagxo = (agxo)((WeakReference)paramList.next()).get();
+        if (localagxo != null) {
+          localagxo.a();
+        }
+      }
+    }
+    finally {}
+  }
+  
+  private void b(List<WeakReference<agxo>> paramList)
+  {
+    Iterator localIterator = new ArrayList(paramList).iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      agxo localagxo = (agxo)localWeakReference.get();
+      if (localagxo != null) {
+        localagxo.b();
+      } else {
+        paramList.remove(localWeakReference);
+      }
+    }
+  }
+  
+  public StickerBubbleAnimationView a(Context paramContext)
+  {
+    paramContext = d(paramContext);
+    if (this.jdField_b_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleAnimationViewHolder", 2, "hideSendAnimationView: " + paramContext);
+      }
+      a(paramContext);
+      this.jdField_b_of_type_Boolean = false;
+    }
+    return paramContext;
+  }
+  
+  public StickerBubbleAnimationView a(ViewGroup paramViewGroup, Context paramContext)
+  {
+    paramContext = d(paramContext);
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleAnimationViewHolder", 2, "showSendAnimationView: " + paramContext.getParent() + " / " + paramViewGroup);
+      }
+      a(paramViewGroup, paramContext);
+      this.jdField_b_of_type_Boolean = true;
+    }
+    return paramContext;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleAnimationViewHolder", 2, "cleanView");
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      b(this.jdField_a_of_type_AndroidContentContext);
+    }
+    if (this.jdField_b_of_type_Boolean) {
+      a(this.jdField_a_of_type_AndroidContentContext);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = null;
+    this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = null;
+  }
+  
+  public void a(agxo paramagxo)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramagxo));
       return;
     }
-    throw new IllegalArgumentException("no bytes to send");
+    finally
+    {
+      paramagxo = finally;
+      throw paramagxo;
+    }
+  }
+  
+  public StickerBubbleAnimationView b(Context paramContext)
+  {
+    paramContext = c(paramContext);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleAnimationViewHolder", 2, "hideReceiveAnimationView: " + paramContext);
+      }
+      a(paramContext);
+      this.jdField_a_of_type_Boolean = false;
+    }
+    return paramContext;
+  }
+  
+  public StickerBubbleAnimationView b(ViewGroup paramViewGroup, Context paramContext)
+  {
+    paramContext = c(paramContext);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleAnimationViewHolder", 2, "showReceiveAnimationView: " + paramContext.getParent() + " / " + paramViewGroup);
+      }
+      a(paramViewGroup, paramContext);
+      this.jdField_a_of_type_Boolean = true;
+    }
+    return paramContext;
+  }
+  
+  public void b(agxo paramagxo)
+  {
+    try
+    {
+      this.jdField_b_of_type_JavaUtilList.add(new WeakReference(paramagxo));
+      return;
+    }
+    finally
+    {
+      paramagxo = finally;
+      throw paramagxo;
+    }
+  }
+  
+  public StickerBubbleAnimationView c(Context paramContext)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = new StickerBubbleAnimationView(paramContext);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setShowText(false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setId(2131377065);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setAnimationCallback(this.jdField_a_of_type_Agxk);
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
+  }
+  
+  public StickerBubbleAnimationView d(Context paramContext)
+  {
+    if (this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView == null)
+    {
+      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = new StickerBubbleAnimationView(paramContext);
+      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setId(2131377065);
+      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setAnimationCallback(this.jdField_b_of_type_Agxk);
+    }
+    return this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
   }
 }
 

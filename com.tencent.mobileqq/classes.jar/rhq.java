@@ -51,7 +51,7 @@ class rhq
         i += 1;
         break;
         noy.a(new obk().a(rhf.a(this.jdField_a_of_type_Rhf)).a(noy.c).b(noy.P).a(localAdvertisementInfo).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo).a(l).a(paramView).a());
-        QQToast.a(rhf.a(this.jdField_a_of_type_Rhf), -1, rhf.a(this.jdField_a_of_type_Rhf).getString(2131700043), 0).b(rhf.a(this.jdField_a_of_type_Rhf).getResources().getDimensionPixelSize(2131298914));
+        QQToast.a(rhf.a(this.jdField_a_of_type_Rhf), -1, rhf.a(this.jdField_a_of_type_Rhf).getString(2131700055), 0).b(rhf.a(this.jdField_a_of_type_Rhf).getResources().getDimensionPixelSize(2131298914));
         rhf.a(this.jdField_a_of_type_Rhf).dismiss();
         return true;
       }

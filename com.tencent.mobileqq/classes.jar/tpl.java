@@ -6,7 +6,7 @@ import com.tencent.widget.AdapterView;
 import java.util.ArrayList;
 
 class tpl
-  implements bhqp
+  implements bhuw
 {
   tpl(tpk paramtpk) {}
   

@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import arfz;
-import aris;
-import arje;
-import arke;
+import arki;
+import arnb;
+import arnn;
+import aron;
 
 public class VideoFilePresenter$7$1
   implements Runnable
 {
-  public VideoFilePresenter$7$1(arje paramarje, int paramInt) {}
+  public VideoFilePresenter$7$1(arnn paramarnn, int paramInt) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Int == 21)
     {
-      this.jdField_a_of_type_Arje.a.jdField_a_of_type_Arke.h(true);
-      this.jdField_a_of_type_Arje.a.jdField_a_of_type_Arfz.a("0x8009D62", null);
+      this.jdField_a_of_type_Arnn.a.jdField_a_of_type_Aron.h(true);
+      this.jdField_a_of_type_Arnn.a.jdField_a_of_type_Arki.a("0x8009D62", null);
     }
     while (this.jdField_a_of_type_Int != 22) {
       return;
     }
-    this.jdField_a_of_type_Arje.a.jdField_a_of_type_Arke.h(false);
+    this.jdField_a_of_type_Arnn.a.jdField_a_of_type_Aron.h(false);
   }
 }
 

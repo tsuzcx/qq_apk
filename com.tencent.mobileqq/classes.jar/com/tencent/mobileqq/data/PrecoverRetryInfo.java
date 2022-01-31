@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class PrecoverRetryInfo
-  extends awbv
+  extends awge
 {
   public String businessId;
   public int itemRetryCount;
   public String md5;
-  @awdj
+  @awhs
   public String pk;
   public long retryUpdateTime;
   public int totalRetryCount;

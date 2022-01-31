@@ -14,15 +14,15 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout.LayoutParams;
-import bgid;
-import bgkq;
-import bgln;
-import bglo;
-import bhbq;
-import bhcm;
-import bhcn;
-import bhco;
-import bhcp;
+import bgmk;
+import bgox;
+import bgpu;
+import bgpv;
+import bhfx;
+import bhgt;
+import bhgu;
+import bhgv;
+import bhgw;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
 import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
@@ -35,15 +35,15 @@ import org.json.JSONObject;
 
 public class MiniAppTextArea
   extends EditText
-  implements bhbq
+  implements bhfx
 {
   private static int jdField_e_of_type_Int = 45;
   private int jdField_a_of_type_Int = -1;
   private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener;
-  private bhcp jdField_a_of_type_Bhcp;
+  private bhgw jdField_a_of_type_Bhgw;
   private NativeViewContainer jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer;
   private String jdField_a_of_type_JavaLangString;
-  private Map<Integer, bgln> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private Map<Integer, bgpu> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
   private boolean jdField_b_of_type_Boolean;
@@ -67,7 +67,7 @@ public class MiniAppTextArea
   {
     super(paramContext);
     setPadding(0, 0, 0, 0);
-    this.jdField_a_of_type_Bhcp = new bhcp(this);
+    this.jdField_a_of_type_Bhgw = new bhgw(this);
     this.jdField_c_of_type_Int = DisplayUtil.getRealHeight(getContext());
     this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer = paramNativeViewContainer;
     e();
@@ -209,7 +209,7 @@ public class MiniAppTextArea
       this.jdField_f_of_type_Boolean = false;
       h();
       if (this.g != 0) {
-        bgkq.a(localPageWebviewContainer, this.g, 0.0F, 1.0F, 1.0F);
+        bgox.a(localPageWebviewContainer, this.g, 0.0F, 1.0F, 1.0F);
       }
       a(paramBoolean);
       this.g = 0;
@@ -224,13 +224,13 @@ public class MiniAppTextArea
     if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer != null) {}
     try
     {
-      bhco localbhco = a();
-      if (localbhco.a() != this.jdField_b_of_type_Int)
+      bhgv localbhgv = a();
+      if (localbhgv.a() != this.jdField_b_of_type_Int)
       {
-        this.jdField_b_of_type_Int = localbhco.a();
+        this.jdField_b_of_type_Int = localbhgv.a();
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("height", a(localbhco.b() / DisplayUtil.getDensity(getContext())));
-        localJSONObject.put("lineCount", localbhco.a());
+        localJSONObject.put("height", a(localbhgv.b() / DisplayUtil.getDensity(getContext())));
+        localJSONObject.put("lineCount", localbhgv.a());
         localJSONObject.put("inputId", this.jdField_a_of_type_Int);
         this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer.a().b("onTextAreaHeightChange", localJSONObject.toString());
       }
@@ -244,9 +244,9 @@ public class MiniAppTextArea
   
   private void e()
   {
-    bhcp localbhcp = new bhcp(this);
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localbhcp);
-    this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer.setSoftKeyboardStateListener(localbhcp);
+    bhgw localbhgw = new bhgw(this);
+    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localbhgw);
+    this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer.setSoftKeyboardStateListener(localbhgw);
   }
   
   private void f()
@@ -307,7 +307,7 @@ public class MiniAppTextArea
     for (PageWebviewContainer localPageWebviewContainer = this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer.a();; localPageWebviewContainer = null)
     {
       if (localPageWebviewContainer != null) {
-        bgkq.a(localPageWebviewContainer, this.h, this.g, 1.0F, 1.0F);
+        bgox.a(localPageWebviewContainer, this.h, this.g, 1.0F, 1.0F);
       }
       this.h = this.g;
       if ((!this.jdField_d_of_type_Boolean) || (this.jdField_f_of_type_Boolean)) {
@@ -326,16 +326,16 @@ public class MiniAppTextArea
     return this.jdField_f_of_type_Int;
   }
   
-  public bhco a()
+  public bhgv a()
   {
-    bhco localbhco = new bhco();
+    bhgv localbhgv = new bhgv();
     Layout localLayout = getLayout();
     if (localLayout != null)
     {
-      localbhco.a(localLayout.getLineCount());
-      localbhco.b(localLayout.getHeight());
+      localbhgv.a(localLayout.getLineCount());
+      localbhgv.b(localLayout.getHeight());
     }
-    return localbhco;
+    return localbhgv;
   }
   
   public void a()
@@ -362,7 +362,7 @@ public class MiniAppTextArea
     }
     localObject = paramJSONObject.optString("placeholder");
     JSONObject localJSONObject = paramJSONObject.optJSONObject("placeholderStyle");
-    if (!bglo.a((String)localObject)) {
+    if (!bgpv.a((String)localObject)) {
       setHint((CharSequence)localObject);
     }
     if (localJSONObject != null)
@@ -419,7 +419,7 @@ public class MiniAppTextArea
     }
   }
   
-  public void setAttributes(int paramInt, JSONObject paramJSONObject, bgid parambgid)
+  public void setAttributes(int paramInt, JSONObject paramJSONObject, bgmk parambgmk)
   {
     this.jdField_a_of_type_Int = paramInt;
     if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer.a()) {}
@@ -457,7 +457,7 @@ public class MiniAppTextArea
       }
       String str = paramJSONObject.optString("placeholder");
       localObject = paramJSONObject.optJSONObject("placeholderStyle");
-      if (!bglo.a(str)) {
+      if (!bgpv.a(str)) {
         setHint(str);
       }
       if (localObject != null)
@@ -476,8 +476,8 @@ public class MiniAppTextArea
       if (i1 > 0) {
         setSelection(i1);
       }
-      setOnFocusChangeListener(new bhcm(this));
-      addTextChangedListener(new bhcn(this, (JSONObject)localObject, localJSONObject, paramInt, paramJSONObject, parambgid));
+      setOnFocusChangeListener(new bhgt(this));
+      addTextChangedListener(new bhgu(this, (JSONObject)localObject, localJSONObject, paramInt, paramJSONObject, parambgmk));
       return;
     }
   }

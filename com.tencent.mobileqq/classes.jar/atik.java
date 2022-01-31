@@ -1,8 +1,39 @@
-public abstract interface atik
+import NS_MOBILE_EXTRA.mobile_get_urlinfo_req;
+import QMF_PROTOCAL.RetryInfo;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+
+public class atik
+  extends QzoneExternalRequest
 {
-  public abstract void a();
+  private JceStruct a;
   
-  public abstract void a(boolean paramBoolean);
+  public atik(String paramString)
+  {
+    mobile_get_urlinfo_req localmobile_get_urlinfo_req = new mobile_get_urlinfo_req();
+    localmobile_get_urlinfo_req.url = paramString;
+    this.a = localmobile_get_urlinfo_req;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.getUrlInfo";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public Object getRetryInfo()
+  {
+    return new RetryInfo((short)0, 0, System.currentTimeMillis());
+  }
+  
+  public String uniKey()
+  {
+    return "getUrlInfo";
+  }
 }
 
 

@@ -1,16 +1,30 @@
 import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback.Stub;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
 import com.tencent.qqmini.sdk.log.QMLog;
 
-final class bgtz
-  extends MiniCmdCallback.Stub
+class bgtz
+  implements bgvw
 {
-  bgtz(MiniAppInfo paramMiniAppInfo) {}
+  bgtz(bgty parambgty, MiniCmdCallback paramMiniCmdCallback, String paramString) {}
   
-  public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    QMLog.d("ApkgMainProcessManager", "queueSubProcessLoadTask() called with: miniAppConfig = [" + this.a + "]");
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherIpcMiniCmdCallback == null) {
+      return;
+    }
+    if ((paramInt == 0) || (paramInt == 1)) {
+      try
+      {
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherIpcMiniCmdCallback.onCmdResult(true, new Bundle());
+        return;
+      }
+      catch (Exception localException)
+      {
+        QMLog.e("MiniAppCmdServlet", "cmd response exception. cmd=" + this.jdField_a_of_type_JavaLangString, localException);
+        return;
+      }
+    }
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherIpcMiniCmdCallback.onCmdResult(false, new Bundle());
   }
 }
 

@@ -1,15 +1,28 @@
-import com.tencent.mobileqq.widget.AdaptiveLayout;
+import android.graphics.Bitmap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public class beip
+class beip
+  implements Animation.AnimationListener
 {
-  public int a;
-  public int b;
+  beip(beim parambeim) {}
   
-  public beip(AdaptiveLayout paramAdaptiveLayout, int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SwiftBrowserScreenShotHandler", 2, "showScreenshotPad->on hideAnimationEnd!");
+    }
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.a.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

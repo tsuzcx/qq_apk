@@ -1,24 +1,24 @@
 package com.tencent.biz.qqstory.takevideo.slideshow.core;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import wta;
-import xjj;
-import xjk;
+import wxj;
+import xns;
+import xnt;
 
 public class VideoMerger$2
   implements Runnable
 {
-  public VideoMerger$2(xjj paramxjj, xjk paramxjk) {}
+  public VideoMerger$2(xns paramxns, xnt paramxnt) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("VideoMerger", 2, "merge video failed");
     }
-    wta.a("actAlbumResult", new String[] { "99" });
-    QQToast.a(this.a.a, alpo.a(2131716692), 0).a();
+    wxj.a("actAlbumResult", new String[] { "99" });
+    QQToast.a(this.a.a, alud.a(2131716704), 0).a();
   }
 }
 

@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
-import awbx;
+import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -28,7 +28,7 @@ public class MiniAppInterface
   static final String TAG = "MiniAppInterface";
   private BroadcastReceiver accountReceiver = new b(this);
   private HashMap authorizeMap = new HashMap();
-  private awbx mFactory;
+  private awgg mFactory;
   
   public MiniAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
@@ -96,7 +96,7 @@ public class MiniAppInterface
     return getAccount();
   }
   
-  public awbx getEntityManagerFactory(String paramString)
+  public awgg getEntityManagerFactory(String paramString)
   {
     if (this.mFactory == null) {
       this.mFactory = new QQEntityManagerFactory(getAccount());

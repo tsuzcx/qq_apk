@@ -1,37 +1,37 @@
 package com.tencent.mobileqq.emoticonview;
 
-import aprg;
-import apsm;
+import apvp;
+import apwv;
 import java.util.List;
 
 public class EmoticonPanelSystemAndEmojiHelper$1
   implements Runnable
 {
-  public EmoticonPanelSystemAndEmojiHelper$1(aprg paramaprg) {}
+  public EmoticonPanelSystemAndEmojiHelper$1(apvp paramapvp) {}
   
   public void run()
   {
     List localList = this.this$0.a.b;
     int i;
-    apsm localapsm;
+    apwv localapwv;
     if (localList != null)
     {
       i = 0;
       if (i < localList.size())
       {
-        localapsm = (apsm)localList.get(i);
-        if ((localapsm == null) || (localapsm.a != 7)) {}
+        localapwv = (apwv)localList.get(i);
+        if ((localapwv == null) || (localapwv.a != 7)) {}
       }
     }
     for (;;)
     {
-      if ((localapsm != null) && (this.this$0.a.a != null)) {
-        this.this$0.a.a.a(localapsm);
+      if ((localapwv != null) && (this.this$0.a.a != null)) {
+        this.this$0.a.a.a(localapwv);
       }
       return;
       i += 1;
       break;
-      localapsm = null;
+      localapwv = null;
     }
   }
 }

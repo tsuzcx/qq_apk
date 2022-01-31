@@ -1,18 +1,31 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.Properties;
+import android.graphics.Bitmap;
 
 public class bnck
 {
-  private static int a = 10000;
+  public int a;
+  public long a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public String d;
+  public String e;
+  String f;
+  public String g;
   
-  public static void a(String paramString, Properties paramProperties)
+  public void a()
   {
-    Properties localProperties = paramProperties;
-    if (paramProperties == null) {
-      localProperties = new Properties();
-    }
-    localProperties.setProperty("shortvideo_business_type", "" + a);
-    azly.a(VideoEnvironment.a()).reportKVEvent(paramString, localProperties);
+    this.jdField_b_of_type_Int = 0;
+    this.c = 0;
+    this.e = "";
+    this.g = "";
+    this.a = 0L;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 

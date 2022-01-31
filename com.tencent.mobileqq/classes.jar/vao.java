@@ -1,73 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeed;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vao
-  extends unk
+  extends QQUIEventReceiver<vai, vsu>
 {
-  public static final String a;
-  public List<wkh> a;
-  public List<String> b = new ArrayList();
-  
-  static
+  public vao(@NonNull vai paramvai)
   {
-    jdField_a_of_type_JavaLangString = ume.a("StorySvc.homepage_batch_feeds_detail_720");
+    super(paramvai);
   }
   
-  public vao()
+  public void a(@NonNull vai paramvai, @NonNull vsu paramvsu)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public unf a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspStoryFeed localRspStoryFeed = new qqstory_service.RspStoryFeed();
-    try
-    {
-      localRspStoryFeed.mergeFrom(paramArrayOfByte);
-      return new vap(localRspStoryFeed);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+    if ((paramvai.a.a().equals(paramvsu.jdField_a_of_type_JavaLangString)) && ((paramvsu.jdField_a_of_type_Vpm instanceof vqa))) {
+      paramvai.a(((vqa)paramvsu.jdField_a_of_type_Vpm).a(), paramvsu.b);
     }
   }
   
-  protected byte[] a()
+  public Class acceptEventClass()
   {
-    qqstory_service.ReqStoryFeed localReqStoryFeed = new qqstory_service.ReqStoryFeed();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      wkh localwkh = (wkh)localIterator.next();
-      if (localwkh != null) {
-        if (TextUtils.isEmpty(localwkh.jdField_a_of_type_JavaLangString)) {
-          wsv.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "check your param feedId is null");
-        } else {
-          localArrayList.add(localwkh.a());
-        }
-      }
-    }
-    if (localArrayList.size() == 0) {
-      throw new QQStoryCmdHandler.IllegalUinException("feed id seq is null");
-    }
-    localReqStoryFeed.feed_id_list.set(localArrayList);
-    return localReqStoryFeed.toByteArray();
+    return vsu.class;
   }
 }
 

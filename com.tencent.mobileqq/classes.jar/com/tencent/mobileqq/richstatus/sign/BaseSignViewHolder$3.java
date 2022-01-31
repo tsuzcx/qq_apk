@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.richstatus.sign;
 
-import ayap;
+import ayey;
 
 public class BaseSignViewHolder$3
   implements Runnable
 {
-  public BaseSignViewHolder$3(ayap paramayap) {}
+  public BaseSignViewHolder$3(ayey paramayey) {}
   
   public void run()
   {

@@ -1,57 +1,14 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.magicface.view.MagicfaceContainerView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class atux
-  extends GestureDetector.SimpleOnGestureListener
+class atux
+  implements View.OnClickListener
 {
-  public atux(MagicfaceContainerView paramMagicfaceContainerView) {}
+  atux(atus paramatus, atuh paramatuh) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.a(5);
-    }
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (paramMotionEvent1.getX() - paramMotionEvent2.getX() > 150.0F) {
-      if (this.a.a != null) {
-        this.a.a.a(0);
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          if (paramMotionEvent1.getX() - paramMotionEvent2.getX() >= -150.0F) {
-            break;
-          }
-        } while (this.a.a == null);
-        this.a.a.a(1);
-        return false;
-        if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 150.0F) {
-          break;
-        }
-      } while (this.a.a == null);
-      this.a.a.a(2);
-      return false;
-    } while ((paramMotionEvent1.getY() - paramMotionEvent2.getY() >= -150.0F) || (this.a.a == null));
-    this.a.a.a(3);
-    return false;
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(4);
-    }
-    return false;
+    this.jdField_a_of_type_Atuh.b();
   }
 }
 

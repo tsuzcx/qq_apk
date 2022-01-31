@@ -1,16 +1,20 @@
-import android.widget.CheckBox;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 public class ahtt
-  implements Cloneable
+  extends akit
 {
-  public CheckBox a;
+  public ahtq a;
+  public View a;
+  public ImageView a;
   public TextView a;
-  public TencentDocItem a;
-  public AsyncImageView a;
+  public ImageView b;
   public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
 }
 
 

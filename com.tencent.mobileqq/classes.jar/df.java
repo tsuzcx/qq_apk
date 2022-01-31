@@ -6,26 +6,26 @@ import java.util.List;
 
 public class df
 {
-  private almg jdField_a_of_type_Almg;
+  private alqv jdField_a_of_type_Alqv;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public de a;
   private di jdField_a_of_type_Di;
   private List<de> jdField_a_of_type_JavaUtilList;
-  private zoz jdField_a_of_type_Zoz;
+  private zto jdField_a_of_type_Zto;
   
   public df(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Almg = new dg(this);
-    this.jdField_a_of_type_Zoz = new dh(this);
+    this.jdField_a_of_type_Alqv = new dg(this);
+    this.jdField_a_of_type_Zto = new dh(this);
   }
   
   public static DeviceInfo a(QQAppInterface paramQQAppInterface, long paramLong)
   {
     if (paramLong != 0L)
     {
-      paramQQAppInterface = (zpa)paramQQAppInterface.a(51);
+      paramQQAppInterface = (ztp)paramQQAppInterface.a(51);
       if (paramQQAppInterface.a())
       {
         DeviceInfo[] arrayOfDeviceInfo = paramQQAppInterface.a();
@@ -58,7 +58,7 @@ public class df
   public de a()
   {
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    str = bczr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), str + "_last_printer");
+    str = bdea.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), str + "_last_printer");
     a();
     return b(str);
   }
@@ -98,10 +98,10 @@ public class df
   public List<de> a()
   {
     this.jdField_a_of_type_JavaUtilList.clear();
-    Object localObject = (allz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
-    if (((allz)localObject).a.jdField_a_of_type_JavaUtilList != null)
+    Object localObject = (alqo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
+    if (((alqo)localObject).a.jdField_a_of_type_JavaUtilList != null)
     {
-      localObject = ((allz)localObject).a.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = ((alqo)localObject).a.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext())
       {
         de localde = a((String)((Iterator)localObject).next());
@@ -115,8 +115,8 @@ public class df
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Almg);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Zoz);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alqv);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Zto);
     }
     this.jdField_a_of_type_Di = null;
   }
@@ -125,8 +125,8 @@ public class df
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Almg);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Zoz);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Alqv);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Zto);
     }
     this.jdField_a_of_type_Di = paramdi;
   }
@@ -137,12 +137,12 @@ public class df
       return;
     }
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    bczr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), str + "_last_printer", paramString);
+    bdea.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), str + "_last_printer", paramString);
   }
   
   public boolean a()
   {
-    return ((alxb)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(10)).a() != 0;
+    return ((ambq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(10)).a() != 0;
   }
   
   public boolean a(String paramString)
@@ -151,7 +151,7 @@ public class df
     boolean bool1 = bool2;
     if (paramString != null)
     {
-      int i = arni.a(paramString);
+      int i = arrr.a(paramString);
       if ((i != 3) && (i != 0) && (i != 7) && (i != 6) && (i != 9))
       {
         bool1 = bool2;

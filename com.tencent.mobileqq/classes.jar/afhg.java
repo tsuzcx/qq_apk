@@ -1,16 +1,33 @@
+import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class afhg
-  extends aekx
+  implements bdbc
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  List<ImageView> jdField_a_of_type_JavaUtilList;
-  TextView b;
+  afhg(afhd paramafhd) {}
   
-  afhg(afhf paramafhf) {}
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
+    for (;;)
+    {
+      return;
+      if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
+        afhd.b(this.a).setImageBitmap(paramBitmap);
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("intimate_relationship", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
+        return;
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+          afhd.a(this.a).setImageBitmap(paramBitmap);
+        }
+      }
+    }
+  }
 }
 
 

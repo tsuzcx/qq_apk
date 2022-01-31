@@ -2,8 +2,8 @@ package com.tencent.mobileqq.minigame.ui;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import azly;
-import bdkf;
+import azqh;
+import bdoo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Properties;
@@ -16,10 +16,10 @@ class GameActivity$39
   public void run()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.this$0.getCurrentAccountUin()).append("-").append(GameActivity.access$5700(this.this$0)).append("-").append(bdkf.a()).append("-").append(Build.BRAND).append("-").append(Build.MODEL).append("-").append(Build.VERSION.SDK_INT);
+    localStringBuilder.append(this.this$0.getCurrentAccountUin()).append("-").append(GameActivity.access$5700(this.this$0)).append("-").append(bdoo.a()).append("-").append(Build.BRAND).append("-").append(Build.MODEL).append("-").append(Build.VERSION.SDK_INT);
     Properties localProperties = new Properties();
     localProperties.put("detail_ino", localStringBuilder.toString());
-    azly.a(BaseApplicationImpl.getContext()).reportKVEvent("minigame_density_info", localProperties);
+    azqh.a(BaseApplicationImpl.getContext()).reportKVEvent("minigame_density_info", localProperties);
     QLog.i("[minigame] GameActivity", 1, localStringBuilder.toString());
   }
 }

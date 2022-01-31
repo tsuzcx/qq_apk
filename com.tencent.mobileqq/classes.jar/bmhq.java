@@ -1,12 +1,23 @@
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+
 public class bmhq
+  extends blqj
 {
-  public final bmjj a;
-  public final String a;
+  private beag jdField_a_of_type_Beag;
+  private PtvTemplateManager.PtvTemplateInfo jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
   
-  public bmhq(bmjj parambmjj, String paramString)
+  public PtvTemplateManager.PtvTemplateInfo a()
   {
-    this.jdField_a_of_type_Bmjj = parambmjj;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
+  }
+  
+  public void a() {}
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Beag != null) {
+      this.jdField_a_of_type_Beag.onDestroy();
+    }
   }
 }
 

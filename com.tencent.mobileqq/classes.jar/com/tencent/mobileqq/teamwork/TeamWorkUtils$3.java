@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.teamwork;
 
-import badt;
+import baic;
 
 public final class TeamWorkUtils$3
   implements Runnable
 {
   public void run()
   {
-    badt.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    baic.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

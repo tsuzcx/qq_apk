@@ -1,35 +1,25 @@
-import android.graphics.Paint;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class admp
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements aybu
 {
-  public admp(QQMapActivity paramQQMapActivity) {}
+  public admp(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onGlobalLayout()
+  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    int i = this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getWidth();
-    if (i > 0)
-    {
-      int j = bcwh.a(this.a, 10.0F);
-      Object localObject = new Paint();
-      ((Paint)localObject).setTextSize(bcwh.a(this.a, 14.0F));
-      ((Paint)localObject).setAntiAlias(true);
-      int k = (int)(((Paint)localObject).measureText(this.a.e.getText().toString()) + 1.0F);
-      ((Paint)localObject).setTextSize(bcwh.a(this.a, 20.0F));
-      if ((int)(((Paint)localObject).measureText(this.a.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) + 1.0F) + (k + j) > i)
-      {
-        localObject = this.a.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).width = (i - j - k);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      }
-      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    PermisionPrivacyActivity.a(this.a, this.a.h.a(), paramBoolean);
+  }
+  
+  public void b(int paramInt, boolean paramBoolean)
+  {
+    if (paramInt == -1) {
+      PermisionPrivacyActivity.a(this.a, 2131719884);
     }
+    PermisionPrivacyActivity.a(this.a, this.a.h.a(), PermisionPrivacyActivity.a(this.a).b());
   }
 }
 

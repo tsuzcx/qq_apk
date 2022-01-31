@@ -12,10 +12,10 @@ import java.util.List;
 
 public class sud
   extends BaseAdapter
-  implements bcwt
+  implements bdbc
 {
   Activity jdField_a_of_type_AndroidAppActivity;
-  public bcws a;
+  public bdbb a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   protected List<suc> a;
   private sty jdField_a_of_type_Sty;
@@ -26,8 +26,8 @@ public class sud
   {
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_JavaUtilList = new ArrayList(11);
-    this.jdField_a_of_type_Bcws = new bcws(paramActivity, paramQQAppInterface);
-    this.jdField_a_of_type_Bcws.a(this);
+    this.jdField_a_of_type_Bdbb = new bdbb(paramActivity, paramQQAppInterface);
+    this.jdField_a_of_type_Bdbb.a(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_Sty = paramsty;
     this.jdField_a_of_type_Boolean = ThemeUtil.isInNightMode(paramQQAppInterface);
@@ -70,7 +70,7 @@ public class sud
   
   public void b()
   {
-    this.jdField_a_of_type_Bcws.a(null);
+    this.jdField_a_of_type_Bdbb.a(null);
   }
   
   public int getCount()
@@ -99,7 +99,7 @@ public class sud
     View localView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2131560216, null);
+      localView = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2131560215, null);
       paramView = new sue(this, localView, this.jdField_a_of_type_Boolean);
       localView.setVisibility(0);
       localView.setFocusable(false);

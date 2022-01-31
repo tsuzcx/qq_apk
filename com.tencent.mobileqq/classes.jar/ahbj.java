@@ -1,23 +1,15 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import android.os.MessageQueue.IdleHandler;
 
 class ahbj
-  implements Animator.AnimatorListener
+  implements MessageQueue.IdleHandler
 {
   ahbj(ahbf paramahbf) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean queueIdle()
   {
-    this.a.a.findViewById(16908290).setBackgroundDrawable(null);
+    this.a.b();
+    return false;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

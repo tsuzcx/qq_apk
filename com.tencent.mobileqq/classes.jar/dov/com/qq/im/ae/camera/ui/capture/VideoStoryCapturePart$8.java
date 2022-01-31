@@ -1,20 +1,20 @@
 package dov.com.qq.im.ae.camera.ui.capture;
 
 import android.widget.ImageView;
-import bkrq;
-import blbj;
+import bkvx;
+import blfq;
 
 public class VideoStoryCapturePart$8
   implements Runnable
 {
-  public VideoStoryCapturePart$8(bkrq parambkrq) {}
+  public VideoStoryCapturePart$8(bkvx parambkvx) {}
   
   public void run()
   {
-    bkrq.c(this.this$0);
-    bkrq.a(this.this$0).a(false);
-    bkrq.b(this.this$0);
-    bkrq.a(this.this$0).setVisibility(0);
+    bkvx.c(this.this$0);
+    bkvx.a(this.this$0).a(false);
+    bkvx.b(this.this$0);
+    bkvx.a(this.this$0).setVisibility(0);
   }
 }
 

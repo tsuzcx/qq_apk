@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import aipw;
-import aitw;
-import aiui;
-import aiuj;
-import aiuk;
 import aiul;
-import aiun;
-import aiuo;
-import aiva;
-import aivb;
-import aive;
-import alpo;
+import aiyl;
+import aiyx;
+import aiyy;
+import aiyz;
+import aiza;
+import aizc;
+import aizd;
+import aizp;
+import aizq;
+import aizt;
+import alud;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
@@ -26,11 +26,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import bdag;
-import bdee;
-import bdje;
-import bixy;
-import biyf;
+import bdep;
+import bdin;
+import bdnn;
+import bjcf;
+import bjcm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -50,39 +50,39 @@ public class WordChainHbFragment
   private static long jdField_a_of_type_Long;
   private static SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("red_packet", 0);
   private static final CopyOnWriteArrayList<String> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private aipw jdField_a_of_type_Aipw;
-  private aiva jdField_a_of_type_Aiva;
+  private aiul jdField_a_of_type_Aiul;
+  private aizp jdField_a_of_type_Aizp;
   private SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private WordChainHbFragment.IdiomHbBundleInfo jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo = new WordChainHbFragment.IdiomHbBundleInfo();
   private SearchFileFlowLayout jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSearchFileFlowLayout;
   private String jdField_a_of_type_JavaLangString;
-  private ArrayList<aiul> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<aiza> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
   private long jdField_b_of_type_Long;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private boolean jdField_b_of_type_Boolean = true;
   private TextView c;
   
-  private aiva a(int paramInt)
+  private aizp a(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 0: 
-      return new aivb();
+      return new aizq();
     }
-    return new aive();
+    return new aizt();
   }
   
   private String a(boolean paramBoolean)
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo != null) && (this.jdField_a_of_type_Aiva != null))
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo != null) && (this.jdField_a_of_type_Aizp != null))
       {
-        String str = this.jdField_a_of_type_Aiva.a(jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList, paramBoolean);
+        String str = this.jdField_a_of_type_Aizp.a(jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList, paramBoolean);
         return str;
       }
     }
@@ -95,14 +95,14 @@ public class WordChainHbFragment
   
   private void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo != null) && (this.jdField_a_of_type_Aiva != null))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo != null) && (this.jdField_a_of_type_Aizp != null))
     {
-      InputFilter[] arrayOfInputFilter = this.jdField_a_of_type_Aiva.a(paramInt);
+      InputFilter[] arrayOfInputFilter = this.jdField_a_of_type_Aizp.a(paramInt);
       this.jdField_c_of_type_AndroidWidgetEditText.setFilters(arrayOfInputFilter);
     }
   }
   
-  private void a(aiuk paramaiuk)
+  private void a(aiyz paramaiyz)
   {
     int i = 2;
     for (;;)
@@ -116,21 +116,21 @@ public class WordChainHbFragment
           QLog.d("WordChainHbFragment", 2, "is getIdiomListFromSSO...");
         }
         this.jdField_a_of_type_Boolean = true;
-        if (!biyf.c.contains(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.recv_type)) {
+        if (!bjcm.c.contains(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.recv_type)) {
           break label112;
         }
         if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.recv_type))
         {
-          if (this.jdField_a_of_type_Aipw == null) {
+          if (this.jdField_a_of_type_Aiul == null) {
             break;
           }
-          this.jdField_a_of_type_Aipw.a(new aiuj(this, paramaiuk), i, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.currSelectedSubChannel);
+          this.jdField_a_of_type_Aiul.a(new aiyy(this, paramaiyz), i, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.currSelectedSubChannel);
           return;
         }
       }
-      catch (Throwable paramaiuk)
+      catch (Throwable paramaiyz)
       {
-        QLog.e("WordChainHbFragment", 1, paramaiuk, new Object[0]);
+        QLog.e("WordChainHbFragment", 1, paramaiyz, new Object[0]);
         return;
       }
       i = 1;
@@ -140,23 +140,23 @@ public class WordChainHbFragment
     }
   }
   
-  private void a(TextView paramTextView, aiul paramaiul)
+  private void a(TextView paramTextView, aiza paramaiza)
   {
-    paramTextView.setBackgroundDrawable(getResources().getDrawable(2130846756));
+    paramTextView.setBackgroundDrawable(getResources().getDrawable(2130846829));
     paramTextView.setTextColor(-1);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo != null) && ((paramTextView.getTag() instanceof aiul)))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo != null) && ((paramTextView.getTag() instanceof aiza)))
     {
-      aiul localaiul = (aiul)paramTextView.getTag();
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.currSelectedSubChannel = localaiul.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Aiva = a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.currSelectedSubChannel);
+      aiza localaiza = (aiza)paramTextView.getTag();
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.currSelectedSubChannel = localaiza.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Aizp = a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.currSelectedSubChannel);
       this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(alpo.a(2131711656) + paramTextView.getText().toString());
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131711668) + paramTextView.getText().toString());
       this.jdField_a_of_type_AndroidWidgetTextView.setText("");
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidWidgetTextView.getText() + paramTextView.getText().toString());
       if (this.jdField_b_of_type_Boolean) {
         jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("sp_key_last_selete_label", this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.currSelectedSubChannel).apply();
       }
-      a(paramaiul.b);
+      a(paramaiza.b);
       jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
       if (this.jdField_c_of_type_AndroidWidgetEditText != null) {
         this.jdField_c_of_type_AndroidWidgetEditText.setText((CharSequence)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.currSelectedSubChannel));
@@ -171,11 +171,11 @@ public class WordChainHbFragment
     }
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
     {
-      aiul localaiul = new aiul();
-      localaiul.jdField_a_of_type_JavaLangString = alpo.a(2131721445);
-      localaiul.jdField_a_of_type_Int = 0;
-      localaiul.b = 4;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localaiul);
+      aiza localaiza = new aiza();
+      localaiza.jdField_a_of_type_JavaLangString = alud.a(2131721458);
+      localaiza.jdField_a_of_type_Int = 0;
+      localaiza.b = 4;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localaiza);
     }
   }
   
@@ -183,7 +183,7 @@ public class WordChainHbFragment
   {
     if (this.jdField_c_of_type_AndroidWidgetTextView != null)
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundDrawable(getResources().getDrawable(2130846755));
+      this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundDrawable(getResources().getDrawable(2130846828));
       this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#03081A"));
     }
   }
@@ -213,10 +213,10 @@ public class WordChainHbFragment
         if ((localObject instanceof TextView))
         {
           localObject = (TextView)localObject;
-          aiul localaiul = (aiul)((TextView)localObject).getTag();
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.currSelectedSubChannel == localaiul.jdField_a_of_type_Int))
+          aiza localaiza = (aiza)((TextView)localObject).getTag();
+          if ((this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.currSelectedSubChannel == localaiza.jdField_a_of_type_Int))
           {
-            a((TextView)localObject, localaiul);
+            a((TextView)localObject, localaiza);
             this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localObject);
           }
         }
@@ -233,7 +233,7 @@ public class WordChainHbFragment
   {
     j = 0;
     i = j;
-    if (!bdje.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.biz_params)) {}
+    if (!bdnn.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.biz_params)) {}
     try
     {
       this.jdField_b_of_type_Boolean = false;
@@ -260,7 +260,7 @@ public class WordChainHbFragment
     }
     if (i == 0)
     {
-      localObject = aiuo.a(this.channel, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo, this.mActivity.a(), a());
+      localObject = aizd.a(this.channel, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo, this.mActivity.a(), a());
       this.jdField_c_of_type_AndroidWidgetEditText.setHint((CharSequence)localObject);
     }
   }
@@ -279,7 +279,7 @@ public class WordChainHbFragment
     localMap.put("wishing", this.jdField_a_of_type_JavaLangString);
     localMap.put("bus_type", "2");
     localMap.put("total_num", str1);
-    localMap.put("total_amount", bixy.a(str2));
+    localMap.put("total_amount", bjcf.a(str2));
     localMap.put("channel", "" + this.channel);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.skinId)) {
       localMap.put("skin_id", this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.skinId);
@@ -290,12 +290,12 @@ public class WordChainHbFragment
   
   public int a()
   {
-    return 2131561701;
+    return 2131561719;
   }
   
   protected String a()
   {
-    return alpo.a(2131706090);
+    return alud.a(2131706102);
   }
   
   public void a()
@@ -308,30 +308,30 @@ public class WordChainHbFragment
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    biyf.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo);
+    bjcm.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo);
     if (QLog.isColorLevel()) {
       QLog.i("WordChainHbFragment", 2, "bizParams:" + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.biz_params);
     }
-    if (biyf.b.contains(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.recv_type))
+    if (bjcm.b.contains(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.recv_type))
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText("1");
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131378186).setVisibility(8);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131378240).setVisibility(8);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131368722).setOnClickListener(this);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131368736).setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSearchFileFlowLayout = ((SearchFileFlowLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366460));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378935));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378780));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSearchFileFlowLayout = ((SearchFileFlowLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366466));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378993));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378835));
       if (QLog.isColorLevel())
       {
-        QLog.i("WordChainHbFragment", 2, "isFlyMe: " + bdag.d() + " isMeizu:" + bdag.e());
+        QLog.i("WordChainHbFragment", 2, "isFlyMe: " + bdep.d() + " isMeizu:" + bdep.e());
         QLog.i("WordChainHbFragment", 2, "biz_params: " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.biz_params);
       }
       return;
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.people_num)) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(alpo.a(2131706094) + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.people_num + alpo.a(2131706098));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(alud.a(2131706106) + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$IdiomHbBundleInfo.people_num + alud.a(2131706110));
       }
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     }
@@ -342,8 +342,8 @@ public class WordChainHbFragment
     if (super.a())
     {
       this.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_AndroidWidgetEditText.getText().toString().trim();
-      if (this.jdField_a_of_type_Aiva != null) {
-        this.jdField_a_of_type_AndroidWidgetButton.setEnabled(this.jdField_a_of_type_Aiva.a(this.jdField_a_of_type_JavaLangString));
+      if (this.jdField_a_of_type_Aizp != null) {
+        this.jdField_a_of_type_AndroidWidgetButton.setEnabled(this.jdField_a_of_type_Aizp.a(this.jdField_a_of_type_JavaLangString));
       }
     }
     return this.jdField_a_of_type_AndroidWidgetButton.isEnabled();
@@ -368,7 +368,7 @@ public class WordChainHbFragment
     paramView = a(false);
     if (TextUtils.isEmpty(paramView))
     {
-      if (!bdee.g(this.mActivity))
+      if (!bdin.g(this.mActivity))
       {
         paramView = a(true);
         this.jdField_c_of_type_AndroidWidgetEditText.setText(paramView);
@@ -376,7 +376,7 @@ public class WordChainHbFragment
         this.jdField_c_of_type_AndroidWidgetEditText.setSelection(this.jdField_c_of_type_AndroidWidgetEditText.getText().length());
         return;
       }
-      a(new aiui(this));
+      a(new aiyx(this));
       return;
     }
     this.jdField_c_of_type_AndroidWidgetEditText.setText(paramView);
@@ -387,7 +387,7 @@ public class WordChainHbFragment
   protected void onLazyLoad()
   {
     super.onLazyLoad();
-    this.jdField_a_of_type_Aipw = ((aipw)this.mQApp.getManager(125));
+    this.jdField_a_of_type_Aiul = ((aiul)this.mQApp.getManager(125));
     if ((jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()) || (System.currentTimeMillis() - jdField_a_of_type_Long > 86400000L)) {
       a(null);
     }

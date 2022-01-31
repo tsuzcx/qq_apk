@@ -1,48 +1,27 @@
-import com.tencent.biz.qqstory.database.LikeEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wen
-  extends unf
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vem>
 {
-  public List<LikeEntry> a;
-  public int b;
-  public int c;
-  
-  public wen(qqstory_service.RspFeedLikeList paramRspFeedLikeList)
+  public wen(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    super(paramRspFeedLikeList.result);
-    paramRspFeedLikeList = (qqstory_struct.FeedLikeInfo)paramRspFeedLikeList.feed_like_info.get();
-    this.a = a(paramRspFeedLikeList);
-    this.b = paramRspFeedLikeList.like_total_count.get();
-    this.c = paramRspFeedLikeList.has_like.get();
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public List<LikeEntry> a(qqstory_struct.FeedLikeInfo paramFeedLikeInfo)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vem paramvem)
   {
-    paramFeedLikeInfo = paramFeedLikeInfo.like_list.get();
-    ArrayList localArrayList1 = new ArrayList();
-    usd localusd = (usd)urr.a(2);
-    ArrayList localArrayList2 = new ArrayList();
-    int i = 0;
-    while (i < paramFeedLikeInfo.size())
-    {
-      LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)paramFeedLikeInfo.get(i));
-      if (localusd.b(localLikeEntry.unionId) == null) {
-        localArrayList2.add(new usy("", localLikeEntry.unionId));
-      }
-      localArrayList1.add(localLikeEntry);
-      i += 1;
+    if (paramvem.a.isSuccess()) {
+      paramQQStoryShareGroupProfileActivity.a.a(paramvem);
     }
-    if (!localArrayList2.isEmpty()) {
-      new uza().a(1, localArrayList2);
-    }
-    return localArrayList1;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vem.class;
   }
 }
 

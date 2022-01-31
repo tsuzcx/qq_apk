@@ -1,70 +1,37 @@
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.Handler;
-import android.view.KeyEvent;
-import android.view.ViewGroup;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class zeu
+class zeu
+  implements bhuk
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  protected zep a;
+  zeu(zet paramzet) {}
   
-  public ViewGroup a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(Configuration paramConfiguration) {}
-  
-  void a(zep paramzep)
-  {
-    this.jdField_a_of_type_Zep = paramzep;
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
-  {
-    return false;
-  }
-  
-  public void b(ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-  }
-  
-  public void b(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public boolean e()
-  {
-    return false;
-  }
-  
-  public void f() {}
-  
-  public void h() {}
-  
-  public void k() {}
-  
-  public void l() {}
-  
-  public void p() {}
-  
-  public void s() {}
-  
-  public void t()
-  {
-    if (this.jdField_a_of_type_Zep != null) {
-      this.jdField_a_of_type_Zep.a();
+    this.a.a.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow button %d", new Object[] { Integer.valueOf(paramInt) }));
+      }
+      return;
+    case 0: 
+      zet.a(this.a);
+      return;
+    case 1: 
+      zet.b(this.a);
+      return;
+    case 2: 
+      zet.c(this.a);
+      return;
     }
+    zet.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zeu
  * JD-Core Version:    0.7.0.1
  */

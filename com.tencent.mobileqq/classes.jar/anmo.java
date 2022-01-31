@@ -1,42 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.ark.image.PhotoPreviewLogicArk.1.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.io.File;
 import java.util.Locale;
 
-public class anmo
-  implements View.OnClickListener
+class anmo
+  implements anmy
 {
-  anmo(anmn paramanmn) {}
+  anmo(anmm paramanmm, anna paramanna, anmw paramanmw, String paramString1, anmy paramanmy, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
-    if (anmn.a(this.a).selectedPhotoList.size() > 0)
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Anna.jdField_a_of_type_Boolean = false;
+    }
+    synchronized (this.jdField_a_of_type_Anna)
     {
-      if (QLog.isColorLevel())
+      anna localanna2 = this.jdField_a_of_type_Anna;
+      int i = localanna2.jdField_a_of_type_Int - 1;
+      localanna2.jdField_a_of_type_Int = i;
+      if (i > 0)
       {
-        paramView = new StringBuilder(anmn.b(this.a).selectedPhotoList.size() * 128);
-        int i = 0;
-        while (i < anmn.c(this.a).selectedPhotoList.size())
-        {
-          paramView.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), anmn.d(this.a).selectedPhotoList.get(i) }));
-          i += 1;
-        }
-        QLog.d("PhotoPreviewLogicArk", 2, paramView.toString());
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format(Locale.CHINA, "updateWordDict, one task complete, name=%s, success=%s, left=%d", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString, Boolean.toString(paramBoolean), Integer.valueOf(i) }));
+        return;
       }
-      ThreadManagerV2.executeOnSubThread(new PhotoPreviewLogicArk.1.1(this));
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, all complete, success=%s", new Object[] { Boolean.toString(this.jdField_a_of_type_Anna.jdField_a_of_type_Boolean) }));
+      if (!this.jdField_a_of_type_Anna.jdField_a_of_type_Boolean)
+      {
+        bdhb.a(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Anmy.a(false);
+        return;
+      }
     }
-    for (;;)
+    if (!anmm.a(anmj.a(this.b), new File(this.jdField_a_of_type_JavaLangString).getParent()))
     {
-      ((NewPhotoPreviewActivity)this.a.mActivity).finish();
+      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, renameDictDirAfterUpdateSuccess fail");
+      this.jdField_a_of_type_Anmy.a(false);
       return;
-      anmg.a().a("callbackArk", null, null);
     }
+    this.jdField_a_of_type_Anmy.a(true);
   }
 }
 

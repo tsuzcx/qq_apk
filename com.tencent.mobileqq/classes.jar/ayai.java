@@ -1,8 +1,17 @@
-import android.view.View;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface ayai
+class ayai
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, View paramView);
+  ayai(ayag paramayag) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.a.mContext.setResult(8001);
+  }
 }
 
 

@@ -9,7 +9,7 @@ import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
 public class lzx
-  extends alox
+  extends altm
 {
   public lzx(QQServiceForAV paramQQServiceForAV) {}
   
@@ -23,7 +23,7 @@ public class lzx
     }
     this.a.b.remove(paramString);
     if (this.a.b()) {
-      localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Alox);
+      localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Altm);
     }
   }
   
@@ -41,24 +41,24 @@ public class lzx
       localIntent = new Intent();
       localIntent.setAction("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO");
       localIntent.putExtra("uin", paramString);
-      localObject = (aloz)QQServiceForAV.m(this.a).getManager(51);
+      localObject = (alto)QQServiceForAV.m(this.a).getManager(51);
       if (localObject == null) {
         break label205;
       }
-      localObject = ((aloz)localObject).e(paramString);
+      localObject = ((alto)localObject).e(paramString);
       if (localObject == null) {
         break label205;
       }
     }
     label205:
-    for (Object localObject = bdbt.a((Friends)localObject);; localObject = paramString)
+    for (Object localObject = bdgc.a((Friends)localObject);; localObject = paramString)
     {
       localIntent.putExtra("nick", (String)localObject);
       localIntent.setPackage(localQQAppInterface.getApplication().getPackageName());
       localQQAppInterface.getApp().sendBroadcast(localIntent);
       this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramString);
       if (this.a.b()) {
-        localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Alox);
+        localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Altm);
       }
       return;
     }

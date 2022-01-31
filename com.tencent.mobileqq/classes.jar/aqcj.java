@@ -1,6 +1,12 @@
-public abstract interface aqcj
+import android.graphics.drawable.Drawable;
+
+public class aqcj
 {
-  public abstract void a();
+  public int a;
+  public Drawable a;
+  public String a;
+  public String b;
+  public String c;
 }
 
 

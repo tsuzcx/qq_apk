@@ -1,22 +1,17 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
-public class ahov
-  implements Handler.Callback
+class ahov
+  implements View.OnClickListener
 {
-  public ahov(PublicAccountFragment paramPublicAccountFragment) {}
+  ahov(ahot paramahot) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.i();
-    }
+    paramView = (RecommendTroopItem)paramView.getTag(-1);
+    bcpx.a(ahot.a(this.a), paramView, 10001);
+    bdes.a("Grp_contacts_news", "notice", "recom_clk_add", 0, 0, new String[] { paramView.uin, paramView.recomAlgol });
   }
 }
 

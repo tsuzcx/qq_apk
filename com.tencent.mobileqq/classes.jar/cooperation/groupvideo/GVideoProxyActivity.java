@@ -1,17 +1,17 @@
 package cooperation.groupvideo;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import bepp;
-import bill;
-import bilm;
-import bimg;
-import bimp;
+import bety;
+import bips;
+import bipt;
+import biqn;
+import biqw;
 import com.tencent.mobileqq.activity.fling.FlingHandler;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import cooperation.plugin.PluginInfo;
@@ -23,32 +23,32 @@ public class GVideoProxyActivity
   
   public static Dialog a(Activity paramActivity)
   {
-    paramActivity = new bepp(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131298914));
-    paramActivity.a(alpo.a(2131705809));
-    paramActivity.setOnDismissListener(new bill());
+    paramActivity = new bety(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131298914));
+    paramActivity.a(alud.a(2131705821));
+    paramActivity.setOnDismissListener(new bips());
     return paramActivity;
   }
   
   public static void a(Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString1, String paramString2, int paramInt)
   {
-    bimp localbimp = new bimp(1);
-    localbimp.jdField_b_of_type_JavaLangString = "group_video_plugin.apk";
-    localbimp.d = PluginInfo.k;
-    localbimp.jdField_a_of_type_JavaLangString = paramString2;
-    localbimp.e = paramString1;
-    localbimp.jdField_a_of_type_JavaLangClass = GVideoProxyActivity.class;
+    biqw localbiqw = new biqw(1);
+    localbiqw.jdField_b_of_type_JavaLangString = "group_video_plugin.apk";
+    localbiqw.d = PluginInfo.k;
+    localbiqw.jdField_a_of_type_JavaLangString = paramString2;
+    localbiqw.e = paramString1;
+    localbiqw.jdField_a_of_type_JavaLangClass = GVideoProxyActivity.class;
     paramString1 = paramIntent;
     if (paramIntent == null) {
       paramString1 = new Intent();
     }
-    localbimp.jdField_a_of_type_AndroidContentIntent = paramString1;
-    localbimp.jdField_a_of_type_AndroidAppDialog = paramDialog;
-    localbimp.jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
-    localbimp.jdField_a_of_type_AndroidContentIntent.putExtra("param_plugin_gesturelock", true);
-    localbimp.jdField_b_of_type_Int = paramInt;
-    localbimp.c = 20000;
-    localbimp.f = null;
-    bimg.a(paramActivity, localbimp);
+    localbiqw.jdField_a_of_type_AndroidContentIntent = paramString1;
+    localbiqw.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    localbiqw.jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
+    localbiqw.jdField_a_of_type_AndroidContentIntent.putExtra("param_plugin_gesturelock", true);
+    localbiqw.jdField_b_of_type_Int = paramInt;
+    localbiqw.c = 20000;
+    localbiqw.f = null;
+    biqn.a(paramActivity, localbiqw);
   }
   
   public String getPluginID()
@@ -72,7 +72,7 @@ public class GVideoProxyActivity
   public void onCreate(Bundle paramBundle)
   {
     if (getIntent().getExtras() != null) {
-      this.a = new bilm(this);
+      this.a = new bipt(this);
     }
     super.onCreate(paramBundle);
   }

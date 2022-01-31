@@ -1,142 +1,39 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
-public class aqqs
+class aqqs
+  implements arrh
 {
-  int jdField_a_of_type_Int;
-  public aqya a;
-  String jdField_a_of_type_JavaLangString;
-  public HashMap<String, ArrayList<MessageRecord>> a;
-  List<aqqp> jdField_a_of_type_JavaUtilList;
-  List<aqqp> b;
-  List<aqqp> c;
-  public List<aqqp> d;
-  List<aqqp> e;
-  
-  public aqqs(String paramString, aqya paramaqya, HashMap<String, ArrayList<MessageRecord>> paramHashMap)
-  {
-    this.jdField_a_of_type_JavaLangString = paramaqya;
-    this.jdField_a_of_type_Aqya = paramHashMap;
-    this.jdField_a_of_type_Int = 0;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilHashMap = localObject;
-    this.b = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.c = new ArrayList();
-    this.d = new ArrayList();
-    this.e = new ArrayList();
-  }
-  
-  public int a()
-  {
-    return this.b.size();
-  }
+  aqqs(aqqr paramaqqr, FileManagerEntity paramFileManagerEntity) {}
   
   public void a()
   {
-    c();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((aqqp)localIterator.next()).a();
+    this.jdField_a_of_type_Aqqr.a.a.a().ac();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      QfileBaseRecentFileTabView.t(this.jdField_a_of_type_Aqqr.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public void a(aqqp paramaqqp)
-  {
-    if (paramaqqp != null) {
-      this.b.add(paramaqqp);
-    }
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((aqqp)localIterator.next()).b();
-    }
-    this.jdField_a_of_type_Int = 5;
-  }
-  
-  void c()
-  {
-    if (10 <= this.b.size()) {}
+    alqo localalqo;
     ArrayList localArrayList;
-    for (int i = 10;; i = this.b.size())
+    do
     {
-      localArrayList = new ArrayList(i);
-      int j = 0;
-      while (j < i)
-      {
-        aqqp localaqqp = (aqqp)this.b.get(j);
-        this.jdField_a_of_type_JavaUtilList.add(localaqqp);
-        localArrayList.add(localaqqp);
-        j += 1;
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
       }
-    }
-    this.b.removeAll(localArrayList);
+      localalqo = (alqo)QfileBaseRecentFileTabView.u(this.jdField_a_of_type_Aqqr.a).a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localalqo.a(localArrayList));
+    arri.a(2131692746);
+    return;
+    QfileBaseRecentFileTabView.v(this.jdField_a_of_type_Aqqr.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
   
-  public void d()
-  {
-    int j = this.c.size();
-    int k = this.e.size();
-    int m = this.d.size();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    aqqp localaqqp;
-    if (localIterator.hasNext())
-    {
-      localaqqp = (aqqp)localIterator.next();
-      if ((localaqqp.b == 2) || (localaqqp.b == 3) || (localaqqp.b == 4)) {
-        localIterator.remove();
-      }
-      if (localaqqp.b == 2)
-      {
-        this.c.add(localaqqp);
-        i += 1;
-      }
-    }
-    for (;;)
-    {
-      break;
-      if (localaqqp.b == 3)
-      {
-        this.e.add(localaqqp);
-        i += 1;
-      }
-      else if (localaqqp.b == 4)
-      {
-        this.d.add(localaqqp);
-        i += 1;
-        continue;
-        c();
-        if (QLog.isColorLevel())
-        {
-          int n = this.jdField_a_of_type_JavaUtilList.size();
-          int i1 = this.b.size();
-          QLog.i("FileMultiMsgManager<FileAssistant>", 1, "request update, forwardSeq[ " + this.jdField_a_of_type_JavaLangString + "] removeCount[" + i + "] leftCount[" + (n + i1) + "] finishCount[" + (m + (j + k)) + "]");
-        }
-        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext()) {
-          ((aqqp)localIterator.next()).a();
-        }
-        if ((this.jdField_a_of_type_JavaUtilList.size() <= 0) && (this.b.size() <= 0))
-        {
-          this.jdField_a_of_type_Int = 5;
-          if (QLog.isDevelopLevel()) {
-            QLog.i("FileMultiMsgManager<FileAssistant>", 1, "all task upload finish , remove multi request: forwardSeq[ " + this.jdField_a_of_type_JavaLangString + "]");
-          }
-          aqpv.a(this.jdField_a_of_type_Aqpv, this.jdField_a_of_type_JavaLangString);
-        }
-        return;
-      }
-    }
-  }
+  public void b() {}
 }
 
 

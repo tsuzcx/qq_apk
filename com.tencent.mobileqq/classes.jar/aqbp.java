@@ -1,94 +1,104 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class aqbp
-  extends aofy<aqbw>
+class aqbp
+  implements bazz
 {
-  public static aqbw a()
-  {
-    return (aqbw)aogj.a().a(532);
-  }
+  aqbp(aqbm paramaqbm) {}
   
-  public int a()
-  {
-    return 532;
-  }
-  
-  @NonNull
-  public aqbw a(int paramInt)
+  public void a(bazy parambazy)
   {
     if (QLog.isColorLevel()) {
-      QLog.e("LimitChatOnPlusConfProcessor", 2, "migrateOldOrDefaultContent ");
+      QLog.d("ExtendFriendResourceDownloader", 2, String.format("onPreDownloadStart url=%s", new Object[] { parambazy.a.jdField_a_of_type_JavaLangString }));
     }
-    return new aqbw();
   }
   
-  @Nullable
-  public aqbw a(aogf[] paramArrayOfaogf)
+  public void onResp(bavf parambavf)
   {
+    int i = 1;
+    Object localObject = ((baub)parambavf.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString;
     if (QLog.isColorLevel()) {
-      QLog.d("LimitChatOnPlusConfProcessor", 2, "onParsed start");
+      QLog.d("ExtendFriendResourceDownloader", 2, String.format("onResp url=%s result=%s", new Object[] { localObject, Integer.valueOf(parambavf.jdField_a_of_type_Int) }));
     }
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    switch (parambavf.jdField_a_of_type_Int)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LimitChatOnPlusConfProcessor", 2, "onParsed " + paramArrayOfaogf.length);
-      }
-      return aqbw.a(paramArrayOfaogf[0]);
     }
-    return null;
-  }
-  
-  public Class<aqbw> a()
-  {
-    return aqbw.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("LimitChatOnPlusConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(aqbw paramaqbw)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    label277:
+    label282:
+    label303:
+    label308:
+    do
     {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramaqbw == null) {
-        break label73;
-      }
-    }
-    label73:
-    for (paramaqbw = paramaqbw.toString();; paramaqbw = " empty")
-    {
-      QLog.d("LimitChatOnPlusConfProcessor", 2, paramaqbw);
-      paramaqbw = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramaqbw instanceof QQAppInterface)) {
-        ((apwx)((QQAppInterface)paramaqbw).getManager(264)).b();
-      }
       return;
+      if (aqbm.a(this.a) != null) {
+        aqbm.a(this.a).a((String)localObject, parambavf.jdField_a_of_type_Long);
+      }
+      parambavf = (baub)parambavf.jdField_a_of_type_Bave;
+      boolean bool2 = aqbm.a(this.a, parambavf.c, aqbm.a(this.a));
+      boolean bool1;
+      if (bool2)
+      {
+        localObject = new File(aqbm.a());
+        if (!((File)localObject).exists()) {
+          ((File)localObject).mkdirs();
+        }
+        boolean bool4 = aqbm.b(this.a, parambavf.c, aqbm.a());
+        boolean bool3 = aqbm.a(this.a);
+        if (QLog.isColorLevel()) {
+          QLog.d("ExtendFriendResourceDownloader", 2, String.format("onResp ResultOk unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool3) }));
+        }
+        if (aqbm.a(this.a) != null)
+        {
+          parambavf = aqbm.a(this.a);
+          if ((bool4) && (bool3))
+          {
+            bool1 = true;
+            parambavf.a(bool1);
+          }
+        }
+        else
+        {
+          parambavf = aqhg.a();
+          if ((!bool4) || (!bool3)) {
+            break label303;
+          }
+          bool1 = true;
+          if (bool3) {
+            break label308;
+          }
+          parambavf.b(bool1, i);
+        }
+      }
+      for (;;)
+      {
+        aqhg.a().a(bool2, 0);
+        return;
+        bool1 = false;
+        break;
+        bool1 = false;
+        break label277;
+        i = 0;
+        break label282;
+        if (QLog.isColorLevel()) {
+          QLog.e("ExtendFriendResourceDownloader", 2, "onResp ResultOk file check invalid.");
+        }
+        aqbm.a(this.a, parambavf.c);
+        if (aqbm.a(this.a) != null) {
+          aqbm.a(this.a).a(false);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("ExtendFriendResourceDownloader", 2, "download fail " + parambavf.jdField_a_of_type_JavaLangString);
+      }
+    } while (aqbm.a(this.a) == null);
+    aqbm.a(this.a).a((String)localObject, -1L);
+  }
+  
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendResourceDownloader", 2, String.format("onUpdateProgeress url=%s totalLen=%s curOffset=%s", new Object[] { ((baub)parambave).jdField_a_of_type_JavaLangString, Long.valueOf(paramLong2), Long.valueOf(paramLong1) }));
     }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

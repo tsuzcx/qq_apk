@@ -1,17 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
+import com.tencent.qphone.base.util.QLog;
 
-class atay
-  implements DialogInterface.OnClickListener
+public final class atay
+  extends BroadcastReceiver
 {
-  atay(atax paramatax, Bundle paramBundle) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramDialogInterface.dismiss();
-    QIPCClientHelper.getInstance().callServer("TogetherBusinessIPCModule", "action_open_start", this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Atax);
+    if (QLog.isColorLevel()) {
+      QLog.d("HuayangPluginLauncher", 2, "onReceive ACTION_FORCE_UPDATE");
+    }
+    if (TextUtils.equals(paramIntent.getAction(), "action_iv_plugin_update"))
+    {
+      paramIntent = (InstalledPlugin)paramIntent.getSerializableExtra("plugin");
+      if (paramIntent != null)
+      {
+        boolean bool = atbb.a(paramContext, paramIntent).a();
+        if (QLog.isColorLevel()) {
+          QLog.d("HuayangPluginLauncher", 2, "onReceive isCalled:" + bool);
+        }
+        if (!bool)
+        {
+          com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity.a = 0L;
+          Process.killProcess(Process.myPid());
+        }
+      }
+    }
   }
 }
 

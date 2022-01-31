@@ -1,68 +1,46 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.DragShadowBuilder;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public class avoo
+@TargetApi(11)
+class avoo
+  extends View.DragShadowBuilder
 {
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public int a;
+  
+  public avoo(avnl paramavnl, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.redtouch.util", 2, "onMedalConfigChanged configOn:" + paramBoolean + " refresh parents");
-    }
-    paramQQAppInterface = (avod)paramQQAppInterface.getManager(160);
-    RedTouchItem localRedTouchItem = paramQQAppInterface.a(10016);
-    if (paramQQAppInterface.a(localRedTouchItem))
-    {
-      localRedTouchItem.isClosed = paramBoolean;
-      paramQQAppInterface.d(10016);
-    }
-    localRedTouchItem = paramQQAppInterface.a(10015);
-    if (paramQQAppInterface.a(localRedTouchItem))
-    {
-      localRedTouchItem.isClosed = paramBoolean;
-      paramQQAppInterface.d(10015);
-    }
+    super(paramView);
+    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Avnl.a.f * 1.4D));
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public void onDrawShadow(Canvas paramCanvas)
   {
-    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("medal_wall_" + paramQQAppInterface.getCurrentAccountUin(), 4).getBoolean("medal_switch_disable", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.redtouch.util", 2, "card.medalSwitchDisable=" + bool);
-    }
-    if (bdiv.W(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i != 0) && (QLog.isColorLevel())) {
-        QLog.d("Q.redtouch.util", 2, "medal config off");
-      }
-      if ((bool) || (i != 0)) {
-        break;
-      }
-      return true;
-    }
-    return false;
+    getView().setDrawingCacheEnabled(false);
+    getView().setDrawingCacheEnabled(true);
+    Object localObject = new Paint();
+    ((Paint)localObject).setShadowLayer(10.0F, 0.0F, 0.0F, -16777216);
+    paramCanvas.drawRect(new Rect(10, 10, this.jdField_a_of_type_Int + 10, this.jdField_a_of_type_Int + 10), (Paint)localObject);
+    localObject = getView().getDrawingCache();
+    Matrix localMatrix = new Matrix();
+    float f = this.jdField_a_of_type_Int / ((Bitmap)localObject).getWidth();
+    localMatrix.postScale(f, f);
+    paramCanvas.drawBitmap(Bitmap.createBitmap((Bitmap)localObject, 0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), localMatrix, true), 10.0F, 10.0F, null);
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public void onProvideShadowMetrics(Point paramPoint1, Point paramPoint2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.redtouch.util", 2, "onLikeRankListConfigChanged configOn:" + paramBoolean + " refresh parents");
-    }
-    paramQQAppInterface = (avod)paramQQAppInterface.getManager(160);
-    RedTouchItem localRedTouchItem = paramQQAppInterface.a(100601);
-    if (paramQQAppInterface.a(localRedTouchItem))
-    {
-      localRedTouchItem.isClosed = paramBoolean;
-      paramQQAppInterface.d(100601);
-    }
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    return ((alre)paramQQAppInterface.getManager(186)).c();
+    int i = this.jdField_a_of_type_Int + 20;
+    int j = this.jdField_a_of_type_Int + 20;
+    paramPoint1.set(i, j);
+    paramPoint2.set(i / 2, j / 2);
   }
 }
 

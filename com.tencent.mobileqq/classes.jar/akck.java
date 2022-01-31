@@ -1,125 +1,59 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.applets.data.AppletItem;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.1;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.2;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
-import java.util.ArrayList;
-import java.util.List;
 
 public class akck
-  extends BaseAdapter
+  implements akcl
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new akcl(this);
-  private asaw jdField_a_of_type_Asaw;
-  protected QQAppInterface a;
-  protected List<Object> a;
+  akck(akci paramakci) {}
   
-  public akck(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, asaw paramasaw)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramFragmentActivity.getSystemService("layout_inflater"));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidAppActivity = paramFragmentActivity;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramFragmentActivity.getResources().getDrawable(2130844855);
-    this.jdField_a_of_type_Asaw = paramasaw;
-  }
-  
-  public void a(List<AppletItem> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    if (akci.a(this.a) != null) {
+      akci.a(this.a).a(paramInt);
     }
-    notifyDataSetChanged();
   }
   
-  public int getCount()
+  public void a(int paramInt, String paramString1, PublishVideoEntry paramPublishVideoEntry, String paramString2, long paramLong)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramInt == 0) && (paramPublishVideoEntry != null) && (paramString2 != null)) {
+      akci.a(this.a).a(paramPublishVideoEntry, paramString2);
     }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    AppletItem localAppletItem = (AppletItem)getItem(paramInt);
-    if (localAppletItem == null) {
-      return paramView;
-    }
-    Object localObject;
-    if (paramView == null)
+    for (;;)
     {
-      paramView = new akcm();
-      localObject = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561252, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131362722));
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)((View)localObject).findViewById(2131362721));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131362723));
-      paramView.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)((View)localObject).findViewById(2131362724));
-      ((View)localObject).setTag(paramView);
-      paramViewGroup = paramView;
-      paramView = (View)localObject;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839253);
-      localObject = paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (localAppletItem.b() != 1) {
-        break label301;
-      }
-    }
-    label301:
-    for (boolean bool = true;; bool = false)
-    {
-      ((Switch)localObject).setChecked(bool);
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch.setTag(Integer.valueOf(paramInt));
+      ThreadManager.excute(new EncodeVideoTask.2.2(this, paramInt, paramPublishVideoEntry, paramLong), 64, null, true);
+      return;
       if (QLog.isColorLevel()) {
-        QLog.d("AppletsListAdapter", 2, localAppletItem.toString());
+        QLog.d("EncodeVideoTask", 2, new Object[] { "composite error, fakeVid:", akci.e(this.a), ", errorCode:", Integer.valueOf(paramInt), ", errorMsg:", paramString1 });
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localAppletItem.a());
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqAppletsDataAppletItem = localAppletItem;
-      if (TextUtils.isEmpty(localAppletItem.b())) {
-        break label307;
-      }
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = aekt.a(paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.getMeasuredWidth(), this.jdField_a_of_type_AndroidAppActivity.getResources());
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth;
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localObject = URLDrawable.getDrawable(localAppletItem.b(), (URLDrawable.URLDrawableOptions)localObject);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
-      return paramView;
-      paramViewGroup = (akcm)paramView.getTag();
-      break;
+      akci.a(this.a).a(paramInt);
     }
-    label307:
-    paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    return paramView;
+  }
+  
+  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("EncodeVideoTask", 2, "generate files|onNext file: " + paramString);
+    }
+    if (akci.b(this.a))
+    {
+      b(paramPublishVideoEntry, paramString);
+      return;
+    }
+    if ((paramPublishVideoEntry != null) && (!TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) && (bdhb.b(paramPublishVideoEntry.doodlePath)))
+    {
+      akci.a(paramString, paramPublishVideoEntry, akci.a(this.a));
+      return;
+    }
+    b(paramPublishVideoEntry, paramString);
+  }
+  
+  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  {
+    ThreadManager.excute(new EncodeVideoTask.2.1(this, paramString, paramPublishVideoEntry), 64, null, true);
   }
 }
 

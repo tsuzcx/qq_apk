@@ -1,18 +1,28 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class baqg
-  extends alsi
+  implements View.OnClickListener
 {
-  baqg(baqf parambaqf) {}
+  baqg(baqe parambaqe) {}
   
-  public void a(boolean paramBoolean, long paramLong, alsj paramalsj)
+  public void onClick(View paramView)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramalsj);
-    if (paramBoolean)
+    switch (((bapp)paramView.getTag()).b)
     {
-      this.a.e();
-      return;
     }
-    this.a.d();
+    for (;;)
+    {
+      this.a.dismiss();
+      return;
+      this.a.d();
+      continue;
+      this.a.e();
+      continue;
+      this.a.f();
+      continue;
+      this.a.g();
+    }
   }
 }
 

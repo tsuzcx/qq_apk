@@ -1,21 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 
-public class beor
-  implements bjyn
+final class beor
+  implements bene
 {
-  public beor(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
-  
-  public void a(int paramInt)
+  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    if (paramInt == 0)
-    {
-      this.a.g = true;
-      View localView = this.a.a("map_key_troop_mem_recent_said");
-      if (localView != null) {
-        ProfileCardMoreInfoView.a(localView, this.a.a);
-      }
+    Matrix localMatrix = new Matrix();
+    if (paramDrawable == null) {
+      return localMatrix;
     }
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    float f = Math.max(paramInt1 / i, paramInt2 / j);
+    localMatrix.setScale(f, f);
+    localMatrix.postTranslate((int)(0.0F + 0.5F), (int)(0.0F + 0.5F));
+    return localMatrix;
   }
 }
 

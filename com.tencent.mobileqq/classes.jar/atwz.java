@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.medalwall.MedalID;
+import java.util.Comparator;
 
-public final class atwz
-  implements Parcelable.Creator<MedalID>
+class atwz
+  implements Comparator<atwn>
 {
-  public MedalID a(Parcel paramParcel)
+  public int a(atwn paramatwn1, atwn paramatwn2)
   {
-    return new MedalID(paramParcel);
-  }
-  
-  public MedalID[] a(int paramInt)
-  {
-    return new MedalID[paramInt];
+    if (paramatwn1.a >= paramatwn2.a) {
+      return 1;
+    }
+    return -1;
   }
 }
 

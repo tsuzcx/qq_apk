@@ -1,932 +1,729 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
+import android.view.View;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.Client;
+import com.tencent.mobileqq.log.VipWebViewReportLog;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
+import com.tencent.mobileqq.webview.sonic.SonicClientImpl;
+import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewModule.2;
+import com.tencent.mobileqq.webview.swift.WebViewModule.3;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import common.config.service.QzoneConfig;
-import java.io.File;
-import java.util.Iterator;
+import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.export.external.interfaces.SslError;
+import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebView.HitTestResult;
+import com.tencent.sonic.sdk.SonicEngine;
+import com.tencent.sonic.sdk.SonicSession;
+import com.tencent.sonic.sdk.SonicSessionConfig.Builder;
+import java.util.HashMap;
+import java.util.Map;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class begt
+  implements begh
 {
-  public static final String a = bduw.a(aljq.aX + "tencent/MobileQQ/webso/offline/");
-  public static String b;
-  public static final String c = BaseApplication.getContext().getFilesDir() + "/webso/offline/";
+  protected int a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  behe jdField_a_of_type_Behe;
+  protected final bejo a;
+  public TouchWebView a;
+  public volatile AppInterface a;
+  public BrowserAppInterface a;
+  protected SonicClientImpl a;
+  protected volatile WebViewPluginEngine a;
+  public String a;
+  protected myl a;
+  protected volatile boolean a;
+  public String b;
+  protected boolean b;
+  private String c;
+  public boolean c;
+  boolean d = true;
   
-  public static String a()
+  public begt(@NotNull Intent paramIntent, Context paramContext)
   {
-    Object localObject = "Android Qzone/" + bizf.a();
-    String str;
-    switch (ndd.a())
-    {
-    case 0: 
-    default: 
-      str = "";
-    }
-    for (;;)
-    {
-      int i = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());
-      localObject = new StringBuilder((String)localObject);
-      ((StringBuilder)localObject).append(" ").append("QQ/").append("8.3.3").append(".").append("4515").append(str).append(" Pixel/").append(BaseApplicationImpl.getContext().getResources().getDisplayMetrics().widthPixels).append(" StatusBarHeight/" + i);
-      return ((StringBuilder)localObject).toString();
-      str = " NetType/UNKNOWN";
-      continue;
-      str = " NetType/WIFI";
-      continue;
-      str = " NetType/2G";
-      continue;
-      str = " NetType/3G";
-      continue;
-      str = " NetType/4G";
-    }
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Bejo = new bejo(new begu(this));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
   }
   
-  public static String a(Uri paramUri)
+  protected int a(Bundle paramBundle)
   {
+    i = 1;
+    ndq.a("Web_qqbrowser_state_machine_init_data");
+    QbSdk.setQQBuildNumber("4555");
+    paramBundle = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("options");
+    if (paramBundle != null) {}
     try
     {
-      if (b(paramUri)) {}
-      for (String str = paramUri.toString();; str = paramUri.getAuthority() + paramUri.getPath()) {
-        return bfhi.d(str);
+      paramBundle = new JSONObject(paramBundle);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("url", paramBundle.getString("url"));
+      if (!this.jdField_a_of_type_AndroidContentIntent.hasExtra("key_isReadModeEnabled")) {
+        this.jdField_a_of_type_AndroidContentIntent.putExtra("key_isReadModeEnabled", true);
       }
-      return paramUri.toString();
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("ba_is_login", paramBundle.optBoolean("ba_is_login", true));
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("isShowAd", paramBundle.optBoolean("isShowAd", true));
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("avoidLoginWeb", paramBundle.optBoolean("avoidLoginWeb", false));
     }
-    catch (Throwable localThrowable)
+    catch (JSONException paramBundle)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebSoUtils", 2, "getUrlKey..uri", localThrowable);
-      }
-    }
-  }
-  
-  public static String a(String paramString)
-  {
-    try
-    {
-      str = a(Uri.parse(paramString));
-      return str;
-    }
-    catch (Throwable localThrowable)
-    {
-      do
+      for (;;)
       {
-        String str = paramString;
-      } while (!QLog.isColorLevel());
-      QLog.d("WebSoUtils", 2, "getUrlKey..url", localThrowable);
+        boolean bool;
+        int j;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("WebViewModule", 2, paramBundle.toString());
+          continue;
+          i = 0;
+        }
+      }
     }
-    return paramString;
+    new StringBuilder().append(Build.MANUFACTURER).append("_").append(Build.MODEL).toString();
+    bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("fromNearby", false);
+    paramBundle = getClass();
+    j = hashCode();
+    if (bool)
+    {
+      azsa.a(paramBundle, j, i, this.jdField_c_of_type_JavaLangString);
+      ndq.b("Web_qqbrowser_state_machine_init_data");
+      this.jdField_a_of_type_Int = 4;
+      return 0;
+    }
   }
   
-  public static String a(String paramString1, String paramString2)
+  public final behe a()
   {
-    String str = String.valueOf(System.currentTimeMillis());
-    WebSoService.a().a(paramString1, str);
-    return a(paramString2, str, null);
+    this.jdField_a_of_type_Behe = new behe(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_AndroidContentContext, false);
+    this.jdField_a_of_type_Behe.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl);
+    TouchWebView localTouchWebView = this.jdField_a_of_type_Behe.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl.bindWebView(localTouchWebView);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(localTouchWebView);
+    localTouchWebView.setPluginEngine(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine);
+    if (this.jdField_b_of_type_Boolean) {
+      localTouchWebView.setMask(true);
+    }
+    return this.jdField_a_of_type_Behe;
   }
   
-  public static String a(String paramString1, String paramString2, String paramString3)
+  public Object a(String paramString, Bundle paramBundle)
   {
-    a("addTag");
-    StringBuilder localStringBuilder = new StringBuilder(paramString1);
-    if (!TextUtils.isEmpty(paramString1)) {}
-    try
-    {
-      localStringBuilder.append("<script> var _WebSoLocalTime=" + paramString2 + ";</script>");
-      localStringBuilder.append("<script> var _WebSoNetTime=" + paramString3 + ";</script>");
-      QLog.i("WebSoService", 1, "add _WebSoLocalTime=" + paramString2 + ", add _WebSoNetTime=" + paramString3);
-      return localStringBuilder.toString();
-    }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
-      return "";
-    }
-    catch (OutOfMemoryError paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-    return "";
+    return null;
   }
   
-  public static void a()
+  public String a()
   {
-    try
+    return null;
+  }
+  
+  public void a()
+  {
+    g();
+    f();
+    if (!this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("key_is_init_sonic_session", true)) {}
+    for (boolean bool = false;; bool = a(b()))
     {
-      bdcs.b(b());
+      if (!bool) {
+        ThreadManager.post(new WebViewModule.2(this), 5, null, true);
+      }
+      this.jdField_b_of_type_Boolean = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
+      this.jdField_a_of_type_Myl = myl.a();
+      this.jdField_c_of_type_Boolean = false;
+      this.jdField_a_of_type_Int = 2;
+      if ((WebAccelerateHelper.isWebViewCache) || (SwiftReuseTouchWebView.b > 0)) {
+        this.jdField_a_of_type_Bejo.a();
+      }
+      WebAccelerateHelper.isWebViewCache = true;
+      this.jdField_a_of_type_Bejo.a(new Bundle());
       return;
     }
-    catch (Exception localException)
-    {
-      QLog.e("WebSoUtils", 1, localException, new Object[0]);
-    }
   }
   
-  public static void a(Uri paramUri)
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback) {}
+  
+  public void a(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2) {}
+  
+  public void a(WebView paramWebView, int paramInt) {}
+  
+  public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    if (paramUri == null) {
+    if ((this.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {
       return;
     }
-    f(b(paramUri));
-    f(c(paramUri));
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getContext().getSharedPreferences("wns_html_etags", 0).edit();
-    String str = String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
-    paramUri = a(paramUri);
-    localEditor.remove("eTag_" + str + paramUri);
-    localEditor.remove("templateTag_" + str + paramUri);
-    localEditor.remove("htmlSha1_" + str + paramUri);
-    if (Build.VERSION.SDK_INT < 9)
-    {
-      localEditor.commit();
-      return;
-    }
-    localEditor.apply();
+    k();
   }
   
-  public static void a(String paramString)
+  public void a(WebView paramWebView, SslError paramSslError) {}
+  
+  public void a(WebView paramWebView, String paramString)
+  {
+    if ((this.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {}
+    do
+    {
+      return;
+      k();
+      this.d = false;
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl.pageFinish(paramString);
+      }
+    } while ((Build.VERSION.SDK_INT < 19) || (this.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_Behe == null) || (this.jdField_a_of_type_Behe.a() == null));
+    b(paramWebView, paramWebView.getTitle());
+  }
+  
+  public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    if ((this.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {
+      return;
+    }
+    k();
+  }
+  
+  public void a(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("WebSo", 1, paramString);
+      QLog.d("WebViewModule", 2, "onGeolocationPermissionsShowPrompt:" + paramString);
     }
-  }
-  
-  public static boolean a(Uri paramUri)
-  {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (paramUri == null) {
-      bool2 = bool1;
-    }
-    for (;;)
+    String str = paramString;
+    if (paramString != null)
     {
-      return bool2;
-      try
+      str = paramString;
+      if (paramString.indexOf(':') == -1)
       {
-        String str = paramUri.getQueryParameter("_proxy");
-        bool1 = bool2;
-        if (str != null) {
-          if (!"1".equals(str))
-          {
-            bool1 = bool2;
-            if (!"true".equals(str)) {}
+        str = paramString;
+        if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
+        {
+          str = paramString;
+          if (this.jdField_a_of_type_ComTencentBizUiTouchWebView.getX5WebViewExtension() != null) {
+            str = "http://" + paramString + "/";
           }
-          else
-          {
-            boolean bool3 = TextUtils.isEmpty(e(paramUri.toString()));
-            bool1 = bool2;
-            if (!bool3) {
-              bool1 = true;
-            }
-          }
-        }
-        bool2 = bool1;
-        if (bool1) {
-          return bool1;
         }
       }
-      catch (Exception paramUri) {}
     }
-    return false;
+    boolean bool2 = this.jdField_a_of_type_Myl.a(str, "publicAccount.getLocation");
+    paramString = "";
+    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
+      paramString = ndq.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 2);
+    }
+    boolean bool3 = PublicAccountJavascriptInterface.getLocationPermissionGrant(this.jdField_b_of_type_JavaLangString, paramString);
+    if ((bool3) && (bool2)) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebViewModule", 2, new Object[] { "onGeolocationPermissionsShowPrompt allow:", Boolean.valueOf(bool2), " granted:", Boolean.valueOf(bool3), " hasRight:", Boolean.valueOf(bool1), " uin:", this.jdField_b_of_type_JavaLangString, " urlHost:", paramString });
+      }
+      paramGeolocationPermissionsCallback.invoke(str, bool1, false);
+      return;
+    }
   }
   
-  public static boolean a(String paramString)
+  void a(String paramString1, String paramString2)
   {
-    boolean bool2 = false;
     try
     {
-      paramString = Uri.parse(paramString).getQueryParameter("_updateProxy");
-      boolean bool1 = bool2;
-      if (!TextUtils.isEmpty(paramString))
+      paramString1 = SwiftBrowserCookieMonster.b(paramString1);
+      String str = SwiftBrowserCookieMonster.b(paramString2);
+      if (((paramString1 != null) && (paramString1.contains("ptlogin"))) || ((str != null) && (str.contains("ptlogin")))) {
+        this.d = false;
+      }
+      if (this.d)
       {
-        boolean bool3 = "0".equals(paramString);
-        bool1 = bool2;
-        if (!bool3) {
-          bool1 = true;
+        paramString1 = SwiftBrowserCookieMonster.a(paramString2);
+        if (paramString1 != null) {
+          paramString1.a(paramString2, null, null, this.jdField_a_of_type_AndroidContentIntent);
         }
       }
-      return bool1;
+      return;
     }
-    catch (Exception paramString)
+    catch (Throwable paramString1)
     {
-      paramString.printStackTrace();
+      QLog.e("WebViewModule", 1, paramString1, new Object[0]);
+    }
+  }
+  
+  protected boolean a(long paramLong, Map<String, Object> paramMap)
+  {
+    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
+    {
+      WebViewPluginEngine localWebViewPluginEngine = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
+      if (localWebViewPluginEngine != null) {
+        return localWebViewPluginEngine.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), paramLong, paramMap);
+      }
     }
     return false;
   }
   
-  /* Error */
-  public static boolean a(byte[] paramArrayOfByte, String paramString)
+  public boolean a(ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: aconst_null
-    //   4: astore 8
-    //   6: aconst_null
-    //   7: astore 4
-    //   9: aconst_null
-    //   10: astore 10
-    //   12: aconst_null
-    //   13: astore 9
-    //   15: aconst_null
-    //   16: astore 7
-    //   18: ldc_w 315
-    //   21: invokestatic 200	begt:a	(Ljava/lang/String;)V
-    //   24: aload_0
-    //   25: ifnull +10 -> 35
-    //   28: aload_1
-    //   29: invokestatic 206	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   32: ifeq +7 -> 39
-    //   35: iconst_0
-    //   36: istore_3
-    //   37: iload_3
-    //   38: ireturn
-    //   39: new 317	java/io/File
-    //   42: dup
-    //   43: aload_1
-    //   44: invokespecial 318	java/io/File:<init>	(Ljava/lang/String;)V
-    //   47: astore 6
-    //   49: aload 6
-    //   51: invokevirtual 321	java/io/File:exists	()Z
-    //   54: ifeq +9 -> 63
-    //   57: aload 6
-    //   59: invokevirtual 324	java/io/File:delete	()Z
-    //   62: pop
-    //   63: aload 6
-    //   65: invokevirtual 327	java/io/File:createNewFile	()Z
-    //   68: pop
-    //   69: new 329	java/io/ByteArrayInputStream
-    //   72: dup
-    //   73: aload_0
-    //   74: iconst_0
-    //   75: aload_0
-    //   76: arraylength
-    //   77: invokespecial 332	java/io/ByteArrayInputStream:<init>	([BII)V
-    //   80: astore_1
-    //   81: new 334	java/io/BufferedOutputStream
-    //   84: dup
-    //   85: new 336	java/io/FileOutputStream
-    //   88: dup
-    //   89: aload 6
-    //   91: invokespecial 339	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   94: sipush 4096
-    //   97: invokespecial 342	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
-    //   100: astore 6
-    //   102: aload 10
-    //   104: astore_0
-    //   105: aload 6
-    //   107: astore 5
-    //   109: aload_1
-    //   110: astore 4
-    //   112: aload 9
-    //   114: astore 8
-    //   116: invokestatic 348	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   119: sipush 4096
-    //   122: invokevirtual 352	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
-    //   125: astore 9
-    //   127: aload 9
-    //   129: astore 7
-    //   131: aload 9
-    //   133: astore_0
-    //   134: aload 6
-    //   136: astore 5
-    //   138: aload_1
-    //   139: astore 4
-    //   141: aload 9
-    //   143: astore 8
-    //   145: aload_1
-    //   146: aload 9
-    //   148: invokevirtual 358	java/io/InputStream:read	([B)I
-    //   151: istore_2
-    //   152: iload_2
-    //   153: iconst_m1
-    //   154: if_icmpeq +84 -> 238
-    //   157: aload 9
-    //   159: astore 7
-    //   161: aload 9
-    //   163: astore_0
-    //   164: aload 6
-    //   166: astore 5
-    //   168: aload_1
-    //   169: astore 4
-    //   171: aload 9
-    //   173: astore 8
-    //   175: aload 6
-    //   177: aload 9
-    //   179: iconst_0
-    //   180: iload_2
-    //   181: invokevirtual 363	java/io/OutputStream:write	([BII)V
-    //   184: goto -57 -> 127
-    //   187: astore_0
-    //   188: aload 7
-    //   190: astore 8
-    //   192: aload_0
-    //   193: astore 7
-    //   195: aload 8
-    //   197: astore_0
-    //   198: aload 6
-    //   200: astore 5
-    //   202: aload_1
-    //   203: astore 4
-    //   205: aload 7
-    //   207: invokevirtual 364	java/io/IOException:printStackTrace	()V
-    //   210: invokestatic 348	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   213: aload 8
-    //   215: invokevirtual 368	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   218: aload_1
-    //   219: ifnull +7 -> 226
-    //   222: aload_1
-    //   223: invokevirtual 371	java/io/InputStream:close	()V
-    //   226: aload 6
-    //   228: ifnull +8 -> 236
-    //   231: aload 6
-    //   233: invokevirtual 372	java/io/OutputStream:close	()V
-    //   236: iconst_0
-    //   237: ireturn
-    //   238: aload 9
-    //   240: astore 7
-    //   242: aload 9
-    //   244: astore_0
-    //   245: aload 6
-    //   247: astore 5
-    //   249: aload_1
-    //   250: astore 4
-    //   252: aload 9
-    //   254: astore 8
-    //   256: aload 6
-    //   258: invokevirtual 375	java/io/OutputStream:flush	()V
-    //   261: iconst_1
-    //   262: istore_3
-    //   263: invokestatic 348	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   266: aload 9
-    //   268: invokevirtual 368	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   271: aload_1
-    //   272: ifnull +7 -> 279
-    //   275: aload_1
-    //   276: invokevirtual 371	java/io/InputStream:close	()V
-    //   279: aload 6
-    //   281: ifnull -244 -> 37
-    //   284: aload 6
-    //   286: invokevirtual 372	java/io/OutputStream:close	()V
-    //   289: iconst_1
-    //   290: ireturn
-    //   291: astore_0
-    //   292: aload_0
-    //   293: invokevirtual 225	java/lang/Exception:printStackTrace	()V
-    //   296: iconst_0
-    //   297: ireturn
-    //   298: astore_0
-    //   299: aload_0
-    //   300: invokevirtual 225	java/lang/Exception:printStackTrace	()V
-    //   303: iconst_0
-    //   304: ireturn
-    //   305: astore 7
-    //   307: aconst_null
-    //   308: astore 6
-    //   310: aconst_null
-    //   311: astore_1
-    //   312: aload 8
-    //   314: astore_0
-    //   315: aload 6
-    //   317: astore 5
-    //   319: aload_1
-    //   320: astore 4
-    //   322: aload 7
-    //   324: invokevirtual 225	java/lang/Exception:printStackTrace	()V
-    //   327: invokestatic 348	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   330: aload 8
-    //   332: invokevirtual 368	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   335: aload_1
-    //   336: ifnull +7 -> 343
-    //   339: aload_1
-    //   340: invokevirtual 371	java/io/InputStream:close	()V
-    //   343: aload 6
-    //   345: ifnull +8 -> 353
-    //   348: aload 6
-    //   350: invokevirtual 372	java/io/OutputStream:close	()V
-    //   353: iconst_0
-    //   354: ireturn
-    //   355: astore_0
-    //   356: aload_0
-    //   357: invokevirtual 225	java/lang/Exception:printStackTrace	()V
-    //   360: iconst_0
-    //   361: ireturn
-    //   362: astore 6
-    //   364: aconst_null
-    //   365: astore 5
-    //   367: aconst_null
-    //   368: astore_1
-    //   369: aload 4
-    //   371: astore_0
-    //   372: invokestatic 348	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   375: aload_0
-    //   376: invokevirtual 368	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   379: aload_1
-    //   380: ifnull +7 -> 387
-    //   383: aload_1
-    //   384: invokevirtual 371	java/io/InputStream:close	()V
-    //   387: aload 5
-    //   389: ifnull +8 -> 397
-    //   392: aload 5
-    //   394: invokevirtual 372	java/io/OutputStream:close	()V
-    //   397: aload 6
-    //   399: athrow
-    //   400: astore_0
-    //   401: aload_0
-    //   402: invokevirtual 225	java/lang/Exception:printStackTrace	()V
-    //   405: goto -8 -> 397
-    //   408: astore 6
-    //   410: aconst_null
-    //   411: astore 5
-    //   413: aload 4
-    //   415: astore_0
-    //   416: goto -44 -> 372
-    //   419: astore 6
-    //   421: aload 4
-    //   423: astore_1
-    //   424: goto -52 -> 372
-    //   427: astore 7
-    //   429: aconst_null
-    //   430: astore 6
-    //   432: goto -120 -> 312
-    //   435: astore 7
-    //   437: goto -125 -> 312
-    //   440: astore 7
-    //   442: aconst_null
-    //   443: astore 6
-    //   445: aconst_null
-    //   446: astore_1
-    //   447: aload 5
-    //   449: astore 8
-    //   451: goto -256 -> 195
-    //   454: astore 7
-    //   456: aconst_null
-    //   457: astore 6
-    //   459: aload 5
-    //   461: astore 8
-    //   463: goto -268 -> 195
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	466	0	paramArrayOfByte	byte[]
-    //   0	466	1	paramString	String
-    //   151	30	2	i	int
-    //   36	227	3	bool	boolean
-    //   7	415	4	str	String
-    //   1	459	5	localObject1	Object
-    //   47	302	6	localObject2	Object
-    //   362	36	6	localObject3	Object
-    //   408	1	6	localObject4	Object
-    //   419	1	6	localObject5	Object
-    //   430	28	6	localObject6	Object
-    //   16	225	7	arrayOfByte1	byte[]
-    //   305	18	7	localException1	Exception
-    //   427	1	7	localException2	Exception
-    //   435	1	7	localException3	Exception
-    //   440	1	7	localIOException1	java.io.IOException
-    //   454	1	7	localIOException2	java.io.IOException
-    //   4	458	8	localObject7	Object
-    //   13	254	9	arrayOfByte2	byte[]
-    //   10	93	10	localObject8	Object
-    // Exception table:
-    //   from	to	target	type
-    //   116	127	187	java/io/IOException
-    //   145	152	187	java/io/IOException
-    //   175	184	187	java/io/IOException
-    //   256	261	187	java/io/IOException
-    //   263	271	291	java/lang/Exception
-    //   275	279	291	java/lang/Exception
-    //   284	289	291	java/lang/Exception
-    //   210	218	298	java/lang/Exception
-    //   222	226	298	java/lang/Exception
-    //   231	236	298	java/lang/Exception
-    //   49	63	305	java/lang/Exception
-    //   63	81	305	java/lang/Exception
-    //   327	335	355	java/lang/Exception
-    //   339	343	355	java/lang/Exception
-    //   348	353	355	java/lang/Exception
-    //   49	63	362	finally
-    //   63	81	362	finally
-    //   372	379	400	java/lang/Exception
-    //   383	387	400	java/lang/Exception
-    //   392	397	400	java/lang/Exception
-    //   81	102	408	finally
-    //   116	127	419	finally
-    //   145	152	419	finally
-    //   175	184	419	finally
-    //   205	210	419	finally
-    //   256	261	419	finally
-    //   322	327	419	finally
-    //   81	102	427	java/lang/Exception
-    //   116	127	435	java/lang/Exception
-    //   145	152	435	java/lang/Exception
-    //   175	184	435	java/lang/Exception
-    //   256	261	435	java/lang/Exception
-    //   49	63	440	java/io/IOException
-    //   63	81	440	java/io/IOException
-    //   81	102	454	java/io/IOException
+    return false;
   }
   
-  private static String b()
+  public boolean a(WebView paramWebView, String paramString)
   {
-    if (bdcs.a()) {
-      if (!TextUtils.isEmpty(b)) {}
+    return false;
+  }
+  
+  public boolean a(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    return false;
+  }
+  
+  boolean a(String paramString)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewModule", 2, "initSonicSession url = :" + paramString);
     }
     for (;;)
     {
+      int i;
       try
       {
-        b = a;
-        Object localObject = b;
-        localObject = new File((String)localObject);
-        if (!((File)localObject).exists()) {
-          ((File)localObject).mkdirs();
+        SonicSessionConfig.Builder localBuilder = new SonicSessionConfig.Builder();
+        localBuilder.setSessionMode(1);
+        Object localObject = Uri.parse(paramString);
+        if (((Uri)localObject).isHierarchical())
+        {
+          localObject = ((Uri)localObject).getQueryParameter("_sonic_xv");
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            HashMap localHashMap = new HashMap();
+            long l = Long.parseLong((String)localObject);
+            if ((0x2 & l) == 0L) {
+              break label332;
+            }
+            bool = true;
+            localBuilder.setSupportLocalServer(bool);
+            if ((0x4 & l) == 0L) {
+              break label338;
+            }
+            i = 1;
+            break label320;
+            label137:
+            localHashMap.put("cache-offline", localObject);
+            localBuilder.setCustomResponseHeaders(localHashMap);
+            if ((0x8 & l) == 0L) {
+              break label351;
+            }
+            bool = true;
+            localBuilder.setSupportCacheControl(bool);
+          }
         }
-        String str2 = ((File)localObject).getAbsolutePath();
-        localObject = str2;
-        if (!str2.endsWith(File.separator)) {
-          localObject = str2 + File.separator;
+        localObject = WebAccelerateHelper.getSonicEngine();
+        if (localObject != null)
+        {
+          localObject = ((SonicEngine)localObject).createSession(paramString, localBuilder.build());
+          if (localObject != null)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl = new SonicClientImpl((SonicSession)localObject);
+            ((SonicSession)localObject).bindClient(this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl);
+            return true;
+          }
+          QLog.d("WebViewModule", 1, "initSonicSession sonicSession = null, url = " + paramString);
+          return false;
         }
-        return localObject;
       }
       catch (Exception localException)
       {
-        QLog.e("WebSoUtils", 1, "error getting sdcard root path " + localException);
-        continue;
+        QLog.e("WebViewModule", 1, "initSonicSession exception, url = " + paramString, localException);
+        return false;
       }
-      String str1 = c;
-    }
-  }
-  
-  public static String b(Uri paramUri)
-  {
-    paramUri = d(paramUri);
-    if (TextUtils.isEmpty(paramUri)) {
-      return "";
-    }
-    return paramUri + ".txt";
-  }
-  
-  public static String b(String paramString)
-  {
-    if (paramString == null) {
-      return "error";
-    }
-    return b() + a(paramString) + ".screenshot";
-  }
-  
-  public static String b(String paramString1, String paramString2)
-  {
-    paramString2 = a(paramString2, WebSoService.a().a(paramString1), String.valueOf(System.currentTimeMillis()));
-    WebSoService.a().a(paramString1);
-    return paramString2;
-  }
-  
-  public static void b(Uri paramUri)
-  {
-    if (paramUri == null) {
-      return;
-    }
-    a(paramUri);
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getContext().getSharedPreferences("wns_html_etags", 0).edit();
-    long l = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-    paramUri = a(paramUri);
-    localEditor.putLong("webso_" + String.valueOf(l) + paramUri + "_503", System.currentTimeMillis());
-    if (Build.VERSION.SDK_INT < 9)
-    {
-      localEditor.commit();
-      return;
-    }
-    localEditor.apply();
-  }
-  
-  private static boolean b(Uri paramUri)
-  {
-    boolean bool2 = false;
-    String str = null;
-    if (paramUri != null) {}
-    try
-    {
-      str = paramUri.getQueryParameter("_proxyByURL");
-      boolean bool1 = bool2;
-      if (str != null) {
-        if (!"1".equals(str))
-        {
-          boolean bool3 = "true".equals(str);
-          bool1 = bool2;
-          if (!bool3) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-      }
-      return bool1;
-    }
-    catch (Exception paramUri) {}
-    return false;
-  }
-  
-  public static boolean b(String paramString)
-  {
-    try
-    {
-      boolean bool = a(Uri.parse(paramString));
-      return bool;
-    }
-    catch (Exception paramString) {}
-    return false;
-  }
-  
-  public static String c(Uri paramUri)
-  {
-    paramUri = d(paramUri);
-    if (TextUtils.isEmpty(paramUri)) {
-      return "";
-    }
-    return paramUri + "_template.txt";
-  }
-  
-  public static String c(String paramString)
-  {
-    a("getHtmlData");
-    try
-    {
-      paramString = new File(b(Uri.parse(paramString)));
-      if ((paramString == null) || (!paramString.exists())) {
-        return null;
-      }
-    }
-    catch (Throwable paramString)
-    {
+      QLog.d("WebViewModule", 1, "initSonicSession sonicEngine = null, url = " + paramString);
+      return false;
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("WebSoUtils", 2, "getHtmlData", paramString);
+        label320:
+        if (i == 0) {
+          break label343;
         }
-        paramString = null;
-      }
-      try
-      {
-        paramString = bdcs.b(paramString);
-        return paramString;
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    return null;
-  }
-  
-  public static boolean c(String paramString)
-  {
-    boolean bool2 = false;
-    try
-    {
-      String str1 = QzoneConfig.getInstance().getConfig("QzoneCover", "dynamicCoverPreviewUrl", "h5.qzone.qq.com/bgstore/dynamiccover");
-      String str2 = QzoneConfig.getInstance().getConfig("QzoneCover", "dynamicCoverPreviewKeyword", "tplId=");
-      boolean bool1 = bool2;
-      if (paramString != null)
-      {
-        bool1 = bool2;
-        if (paramString.contains(str1))
-        {
-          boolean bool3 = paramString.contains(str2);
-          bool1 = bool2;
-          if (bool3) {
-            bool1 = true;
-          }
-        }
-      }
-      return bool1;
-    }
-    catch (Exception paramString) {}
-    return false;
-  }
-  
-  public static String d(Uri paramUri)
-  {
-    if (paramUri == null) {
-      return "";
-    }
-    String str2 = b();
-    if (b(paramUri)) {
-      paramUri = paramUri.toString();
-    }
-    for (;;)
-    {
-      String str1 = paramUri + String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
-      try
-      {
-        paramUri = bfhi.d(str1);
-        return str2 + paramUri;
-        paramUri = paramUri.getAuthority() + paramUri.getPath();
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          paramUri = str1;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("WebSoUtils", 2, "getFileBasePath..uri", localThrowable);
-            paramUri = str1;
-          }
-        }
-      }
-    }
-  }
-  
-  public static String d(String paramString)
-  {
-    String str1 = c(paramString);
-    if (TextUtils.isEmpty(str1)) {
-      paramString = "";
-    }
-    Object localObject;
-    String str2;
-    do
-    {
-      return paramString;
-      localObject = BaseApplicationImpl.getContext().getSharedPreferences("wns_html_etags", 0);
-      str2 = a(paramString);
-      long l = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-      localObject = ((SharedPreferences)localObject).getString("htmlSha1_" + String.valueOf(l) + str2, "");
-      str2 = bege.a(str1);
-      if (!str2.equals(localObject)) {
+        str = "store";
+        break label137;
+        label332:
+        bool = false;
         break;
+        label338:
+        i = 0;
       }
-      paramString = str1;
-    } while (!QLog.isColorLevel());
-    QLog.d("WebSoUtils", 2, "getHtmlDataAndCheck success");
+      label343:
+      String str = "true";
+      continue;
+      label351:
+      boolean bool = false;
+    }
+  }
+  
+  protected int b(Bundle paramBundle)
+  {
+    ndq.a("Web_qqbrowser_state_machine_init_x5_environment");
+    this.jdField_a_of_type_Int = 8;
+    if (bejz.a())
+    {
+      ndq.b("Web_qqbrowser_state_machine_init_x5_environment");
+      return 0;
+    }
+    if (bejz.b())
+    {
+      ndq.b("Web_qqbrowser_state_machine_init_x5_environment");
+      return 0;
+    }
+    ndq.b("Web_qqbrowser_state_machine_init_x5_environment");
+    return 0;
+  }
+  
+  public View b()
+  {
+    return null;
+  }
+  
+  public String b()
+  {
+    String str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("url");
+    String str1 = str2;
+    if (str2 == null)
+    {
+      str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("key_params_qq");
+      str1 = str2;
+      if (str2 == null) {
+        str1 = "";
+      }
+    }
     return str1;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.onResume();
+    }
+    a(2L, null);
+  }
+  
+  public void b(WebView paramWebView, String paramString) {}
+  
+  public void b(WebView paramWebView, String paramString, Bitmap paramBitmap) {}
+  
+  public void b(String paramString1, String paramString2)
+  {
     if (QLog.isColorLevel()) {
-      QLog.w("WebSoUtils", 2, "校验缓存etag 不一致，html-sha1 check fail. http rsp etag=" + (String)localObject + ",cache_sha1=" + str2);
+      QLog.i("WebViewModule", 2, "X5 webkit detect 302 url: " + paramString2);
     }
-    try
-    {
-      a(Uri.parse(paramString));
-      return "";
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    SwiftBrowserCookieMonster.d();
+    a(paramString1, paramString2);
+  }
+  
+  public boolean b(WebView paramWebView, String paramString)
+  {
+    if ((this.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {
+      return true;
     }
-    catch (Exception paramString)
+    if (((paramString.startsWith("http://")) || (!paramString.startsWith("https://"))) || (((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://"))) && (!paramString.startsWith("http://")) && (paramString.startsWith("https://")))) {}
+    String str = beka.b(paramString);
+    if (("http".equals(str)) || ("https".equals(str)))
     {
-      for (;;)
+      paramWebView = paramWebView.getHitTestResult();
+      if ((paramWebView != null) && (paramWebView.getType() == 0))
+      {
+        QLog.i("WebViewModule", 1, "shouldOverrideUrlLoading detect 302, url: " + paramString);
+        paramWebView = this.jdField_a_of_type_JavaLangString;
+        this.jdField_a_of_type_JavaLangString = paramString;
+        SwiftBrowserCookieMonster.d();
+        a(paramWebView, this.jdField_a_of_type_JavaLangString);
+      }
+    }
+    return false;
+  }
+  
+  protected int c(Bundle paramBundle)
+  {
+    ndq.a("Web_qqbrowser_state_machine_init_app_and_webview_engine");
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
+    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof BrowserAppInterface)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface = ((BrowserAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    }
+    if ((!WebAccelerateHelper.isWebViewCache) && (!VipWebViewReportLog.a())) {
+      VipWebViewReportLog.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    }
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
+    h();
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_a_of_type_AndroidContentIntent.getStringArrayExtra("insertPluginsArray"));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_c_of_type_JavaLangString, 1L, null);
+    }
+    this.jdField_a_of_type_Int = 16;
+    ndq.b("Web_qqbrowser_state_machine_init_app_and_webview_engine");
+    return 1;
+  }
+  
+  public void c()
+  {
+    if (1 != this.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_Bejo.b();
+      this.jdField_a_of_type_Int = 1;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl.destroy();
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl = null;
+    }
+    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {}
+    for (Object localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();; localObject = null)
+    {
+      if (localObject != null) {
+        ((WebViewPluginEngine)localObject).a(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 8589934596L, null);
+      }
+      new Bundle().putString("url", this.jdField_c_of_type_JavaLangString);
+      d();
+      if (QQBrowserActivity.c == 0)
+      {
+        aprh.a().a().doUnbindService(BaseApplicationImpl.getApplication());
+        beja.d = -1;
+      }
+      localObject = azsa.a(getClass(), hashCode());
+      if (localObject != null) {
+        azqs.b(null, "CliOper", "", "", ((azsb)localObject).jdField_a_of_type_JavaLangString, ((azsb)localObject).jdField_a_of_type_JavaLangString, ((azsb)localObject).jdField_a_of_type_Int, 0, Long.toString(SystemClock.elapsedRealtime() - ((azsb)localObject).b), "", "", "");
+      }
+      bejq.a().a(2);
+      return;
+    }
+  }
+  
+  public void c(String paramString, int paramInt) {}
+  
+  public boolean c(WebView paramWebView, String paramString)
+  {
+    if ((this.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {
+      return true;
+    }
+    ndq.a("urlInterceptManager");
+    beka.b(paramString);
+    ndq.b("urlInterceptManager");
+    return false;
+  }
+  
+  protected int d(Bundle paramBundle)
+  {
+    ndq.a("Web_qqbrowser_state_machine_init_webview");
+    i();
+    ndq.b("Web_qqbrowser_state_machine_init_webview");
+    this.jdField_a_of_type_Int = 32;
+    return 0;
+  }
+  
+  void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewModule", 2, "onDestroy");
+    }
+    this.jdField_c_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Behe != null)
+    {
+      this.jdField_a_of_type_Behe.a();
+      this.jdField_a_of_type_Behe = null;
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView = null;
+    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+  }
+  
+  protected int e(Bundle paramBundle)
+  {
+    ndq.a("Web_qqbrowser_state_machine_load_url");
+    System.currentTimeMillis();
+    ndq.a("Web_qqbrowser_init");
+    j();
+    ndq.b("Web_qqbrowser_init");
+    ndq.b("Web_qqbrowser_state_machine_load_url");
+    this.jdField_a_of_type_Int = 1024;
+    return 0;
+  }
+  
+  public void e()
+  {
+    a(8589934597L, null);
+  }
+  
+  protected int f(Bundle paramBundle)
+  {
+    ndq.a("Web_qqbrowser_state_machine_init_FINAL");
+    ndq.a("Web_IPCSetup");
+    if (!aprh.a().a()) {
+      aprh.a().a().doBindService(BaseApplicationImpl.getApplication());
+    }
+    ndq.b("Web_IPCSetup");
+    bejq.a().a(new begv(this, 2));
+    ndq.b("Web_qqbrowser_state_machine_init_FINAL");
+    ndq.b("Web_qqbrowser_state_machine_all");
+    this.jdField_a_of_type_Int = 1;
+    return -1;
+  }
+  
+  void f()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("url");
+      if (belc.b(str)) {
+        ThreadManager.postImmediately(new WebViewModule.3(this, str), null, false);
+      }
+    }
+  }
+  
+  void g()
+  {
+    this.jdField_c_of_type_JavaLangString = b();
+  }
+  
+  protected void h()
+  {
+    synchronized (bejx.a)
+    {
+      if (WebViewPluginEngine.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebViewPluginEngine.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine;
+        WebViewPluginEngine.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = null;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("WebSoUtils", 2, "clean web so data exception=" + paramString.getMessage());
+          QLog.d("WebViewModule", 2, "-->web engine and plugin initialized at process preload!");
         }
-        paramString.printStackTrace();
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.b();
+        if (begw.a(this.jdField_a_of_type_AndroidContentIntent) != null)
+        {
+          ??? = begw.a(this.jdField_a_of_type_AndroidContentIntent);
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, null, ((WebAccelerateHelper.CommonJsPluginFactory)???).getCommonJsPlugin());
+          WebAccelerateHelper.getInstance().bindFragment(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine, null);
+        }
+        return;
       }
     }
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(this.jdField_a_of_type_ComTencentCommonAppAppInterface, null, null, begw.a(this.jdField_a_of_type_AndroidContentIntent), null);
+    WebAccelerateHelper.getInstance().onPluginRuntimeReady(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine, this.jdField_a_of_type_ComTencentCommonAppAppInterface, null);
+    WebAccelerateHelper.getInstance().bindFragment(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine, null);
   }
   
-  public static boolean d(String paramString)
+  protected void i()
   {
+    int k = -1;
+    int j = 0;
+    int i;
+    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)
+    {
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView = a().a();
+      System.currentTimeMillis();
+      i = k;
+      switch (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("reqType", -1))
+      {
+      default: 
+        i = k;
+      }
+    }
     for (;;)
     {
-      try
+      if (AppSetting.f) {
+        i = 2;
+      }
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.getSettings().setCacheMode(i);
+      if (QLog.isColorLevel()) {
+        QLog.i("WebViewModule", 2, "setCacheMode=" + i);
+      }
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.getSettings().setAllowFileAccessFromFileURLs(false);
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.getSettings().setAllowUniversalAccessFromFileURLs(false);
+      System.currentTimeMillis();
+      long l1 = System.currentTimeMillis();
+      IX5WebViewExtension localIX5WebViewExtension = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getX5WebViewExtension();
+      i = j;
+      if (localIX5WebViewExtension != null) {
+        i = 1;
+      }
+      if (i != 0)
       {
-        paramString = new File(b(Uri.parse(paramString)));
-        if (paramString != null) {
-          continue;
+        Bundle localBundle = beka.a();
+        if (localBundle != null) {
+          localIX5WebViewExtension.invokeMiscMethod("setDomainsAndArgumentForImageRequest", localBundle);
         }
       }
-      catch (Throwable paramString)
-      {
-        if (!QLog.isColorLevel()) {
-          break label87;
-        }
-        QLog.d("WebSoUtils", 2, "getHtmlData", paramString);
-        break label87;
-        if ((!paramString.exists()) || (!paramString.canRead())) {
-          continue;
-        }
-        long l = paramString.length();
-        if (l <= 0L) {
-          continue;
-        }
-        return true;
+      long l2 = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.i("WebViewModule", 2, "setDomainsAndArgumentForImageRequest, cost=" + (l2 - l1));
       }
-      catch (Exception paramString)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w("WebSoUtils", 2, "getHtmlData", paramString);
-        return false;
-      }
-      return false;
-      label87:
-      paramString = null;
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_c_of_type_JavaLangString, 8589934623L, null);
+      return;
+      i = 2;
+      continue;
+      i = 0;
     }
   }
   
-  public static String e(String paramString)
+  public void j()
   {
-    Object localObject = QzoneConfig.getInstance().getConfig("QzUrlCache", "HttpProxyHost2Command", "{\".qzone.qq.com\":{\"command\":\"qzoneh5.h5.wnshtml\",\"msfCommand\":\"qzoneh5.h5.wnshtml\"},\"web.gamecenter.qq.com\":{\"command\":\"mqqweb.gamecenter.websoh5\",\"msfCommand\":\"mqqweb.gamecenter.websoh5\"},\"m.gamecenter.qq.com\":{\"command\":\"mqqweb.gamecenterV2.h5\",\"msfCommand\":\"mqqweb.gamecenterV2.h5\"},\"mc.vip.qq.com\":{\"command\":\"mqqweb.mcvip.websoh5\",\"msfCommand\":\"mqqweb.mcvip.websoh5\"},\"zb.vip.qq.com\":{\"command\":\"mqqweb.zb.webso\",\"msfCommand\":\"mqqweb.zb.webso\"},\"vv.video.qq.com\":{\"command\":\"qzoneh5.video.vv\",\"msfCommand\":\"qzoneh5.video.vv\"},\"qzpb.qq.com\":{\"command\":\"qzoneh5.video.vv\",\"msfCommand\":\"qzoneh5.video.vv\"},\"vv6.video.qq.com\":{\"command\":\"qzoneh5.video.vv\",\"msfCommand\":\"qzoneh5.video.vv\"},\".urlshare.cn\":{\"command\":\"qzoneh5.urlshare.webso\",\"msfCommand\":\"qzoneh5.urlshare.webso\"},\"now.qq.com\":{\"command\":\"ilive_node.node.nearby\",\"msfCommand\":\"ilive_node.node.nearby\"},\"nearby.qq.com\":{\"command\":\"ilive_node.node.nearby\",\"msfCommand\":\"ilive_node.node.nearby\"},\".weishi.com\":{\"command\":\"qzoneh5.h5.wnshtml\",\"msfCommand\":\"qzoneh5.h5.wnshtml\"},\".weishi.qq.com\":{\"command\":\"qzoneh5.h5.wnshtml\",\"msfCommand\":\"qzoneh5.h5.wnshtml\"},\"h5.gdt.qq.com\":{\"command\":\"nemoh5.gdt.lp\",\"msfCommand\":\"nemoh5.gdt.lp\"},\"club.vip.qq.com\":{\"command\":\"qzoneh5.club.wnshtml\",\"msfCommand\":\"qzoneh5.club.wnshtml\"},\".q.qq.com\":{\"command\":\"qzoneh5.h5.wnshtml\",\"msfCommand\":\"qzoneh5.h5.wnshtml\"} }");
-    try
-    {
-      localObject = new JSONObject((String)localObject);
-      Iterator localIterator = ((JSONObject)localObject).keys();
-      paramString = Uri.parse(paramString).getHost();
-      while (localIterator.hasNext())
-      {
-        String str = localIterator.next().toString();
-        if ((paramString.equals(str)) || ((str.startsWith(".")) && (paramString.endsWith(str))))
-        {
-          localObject = (JSONObject)((JSONObject)localObject).get(str);
-          paramString = ((JSONObject)localObject).optString("command");
-          localObject = ((JSONObject)localObject).optString("msfCommand");
-          boolean bool = TextUtils.isEmpty(paramString);
-          if (bool) {
-            return localObject;
-          }
-          return paramString;
-        }
-      }
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("WebSoUtils", 1, "getWnsCommand error:", paramString);
-      return null;
-    }
-    return null;
-  }
-  
-  public static boolean e(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    long l;
+    ndq.a("Web_readyToLoadUrl");
+    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null) {}
     do
     {
-      do
-      {
-        return false;
-      } while (!a(paramString));
-      Object localObject = Uri.parse(paramString);
-      paramString = BaseApplicationImpl.getContext().getSharedPreferences("wns_html_etags", 0);
-      l = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-      localObject = a((Uri)localObject);
-      l = paramString.getLong("webso_" + String.valueOf(l) + (String)localObject + "_503", -1L);
-    } while ((l == -1L) || (System.currentTimeMillis() - l >= 43200000L));
-    if (QLog.isColorLevel()) {
-      QLog.e("WebSoUtils", 2, "now hit webso time, so return true");
-    }
-    return true;
-  }
-  
-  public static String f(String paramString)
-  {
-    Object localObject = QzoneConfig.getInstance().getConfig("QzUrlCache", "HttpProxyHost2Command", "{\".qzone.qq.com\":{\"command\":\"qzoneh5.h5.wnshtml\",\"msfCommand\":\"qzoneh5.h5.wnshtml\"},\"web.gamecenter.qq.com\":{\"command\":\"mqqweb.gamecenter.websoh5\",\"msfCommand\":\"mqqweb.gamecenter.websoh5\"},\"m.gamecenter.qq.com\":{\"command\":\"mqqweb.gamecenterV2.h5\",\"msfCommand\":\"mqqweb.gamecenterV2.h5\"},\"mc.vip.qq.com\":{\"command\":\"mqqweb.mcvip.websoh5\",\"msfCommand\":\"mqqweb.mcvip.websoh5\"},\"zb.vip.qq.com\":{\"command\":\"mqqweb.zb.webso\",\"msfCommand\":\"mqqweb.zb.webso\"},\"vv.video.qq.com\":{\"command\":\"qzoneh5.video.vv\",\"msfCommand\":\"qzoneh5.video.vv\"},\"qzpb.qq.com\":{\"command\":\"qzoneh5.video.vv\",\"msfCommand\":\"qzoneh5.video.vv\"},\"vv6.video.qq.com\":{\"command\":\"qzoneh5.video.vv\",\"msfCommand\":\"qzoneh5.video.vv\"},\".urlshare.cn\":{\"command\":\"qzoneh5.urlshare.webso\",\"msfCommand\":\"qzoneh5.urlshare.webso\"},\"now.qq.com\":{\"command\":\"ilive_node.node.nearby\",\"msfCommand\":\"ilive_node.node.nearby\"},\"nearby.qq.com\":{\"command\":\"ilive_node.node.nearby\",\"msfCommand\":\"ilive_node.node.nearby\"},\".weishi.com\":{\"command\":\"qzoneh5.h5.wnshtml\",\"msfCommand\":\"qzoneh5.h5.wnshtml\"},\".weishi.qq.com\":{\"command\":\"qzoneh5.h5.wnshtml\",\"msfCommand\":\"qzoneh5.h5.wnshtml\"},\"h5.gdt.qq.com\":{\"command\":\"nemoh5.gdt.lp\",\"msfCommand\":\"nemoh5.gdt.lp\"},\"club.vip.qq.com\":{\"command\":\"qzoneh5.club.wnshtml\",\"msfCommand\":\"qzoneh5.club.wnshtml\"},\".q.qq.com\":{\"command\":\"qzoneh5.h5.wnshtml\",\"msfCommand\":\"qzoneh5.h5.wnshtml\"} }");
-    try
-    {
-      localObject = new JSONObject((String)localObject);
-      Iterator localIterator = ((JSONObject)localObject).keys();
-      paramString = Uri.parse(paramString).getHost();
-      while (localIterator.hasNext())
-      {
-        String str = localIterator.next().toString();
-        if ((paramString.equals(str)) || ((str.startsWith(".")) && (paramString.endsWith(str))))
-        {
-          paramString = (JSONObject)((JSONObject)localObject).get(str);
-          localObject = paramString.optString("command");
-          paramString = paramString.optString("msfCommand");
-          boolean bool = TextUtils.isEmpty(paramString);
-          if (bool) {
-            paramString = (String)localObject;
-          }
-          return paramString;
-        }
+      return;
+      if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+        this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(this.jdField_c_of_type_JavaLangString);
       }
-    }
-    catch (Exception paramString)
+      ndq.b("Web_readyToLoadUrl");
+    } while (!this.jdField_a_of_type_ComTencentBizUiTouchWebView.isPaused);
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onResume();
+  }
+  
+  void k()
+  {
+    if (1 != this.jdField_a_of_type_Int)
     {
-      paramString.printStackTrace();
-      return null;
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Bejo.b();
+      this.jdField_a_of_type_Bejo.a();
+      this.jdField_a_of_type_Bejo.a(null);
     }
-    return null;
   }
   
-  private static boolean f(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return bdcs.d(paramString);
-  }
-  
-  public static String g(String paramString)
-  {
-    a("removeTag");
-    return paramString.replaceFirst("<script>.*_WebSoLocalTime.*_WebSoNetTime.*;</script>", "");
-  }
+  public void v() {}
 }
 
 

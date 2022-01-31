@@ -96,17 +96,17 @@ public class rch
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundColor(-14277082);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setOutlineProvider(new bhrl(bdkf.a(3.0F)));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setOutlineProvider(new bhvs(bdoo.a(3.0F)));
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setClipToOutline(true);
     }
     this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(paramContext);
     this.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(new rci(this));
     this.jdField_a_of_type_AndroidWidgetSeekBar = new SeekBar(paramContext);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, bdkf.a(1.0F));
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, bdoo.a(1.0F));
     localLayoutParams.gravity = 80;
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setPadding(bdkf.a(1.5F), 0, bdkf.a(1.5F), 0);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setPadding(bdoo.a(1.5F), 0, bdoo.a(1.5F), 0);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setThumb(new ColorDrawable());
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgressDrawable(paramContext.getResources().getDrawable(2130841400));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgressDrawable(paramContext.getResources().getDrawable(2130841401));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidViewView = new View(paramContext);
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-14277082);

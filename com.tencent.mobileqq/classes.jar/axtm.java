@@ -1,33 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public final class axtm
-  implements Parcelable.Creator<AIOBrowserBaseData>
+class axtm
+  extends Handler
 {
-  public AIOBrowserBaseData a(Parcel paramParcel)
+  axtm(axtl paramaxtl, Looper paramLooper)
   {
-    Object localObject = paramParcel.readString();
-    try
-    {
-      localObject = AIOBrowserBaseData.a((String)localObject);
-      ((AIOBrowserBaseData)localObject).readFromParcel(paramParcel);
-      return localObject;
-    }
-    catch (ClassNotFoundException paramParcel)
-    {
-      throw new RuntimeException(paramParcel);
-    }
+    super(paramLooper);
   }
   
-  public AIOBrowserBaseData[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new AIOBrowserBaseData[paramInt];
+    this.a.a(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axtm
  * JD-Core Version:    0.7.0.1
  */

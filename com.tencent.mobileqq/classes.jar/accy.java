@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class accy
-  implements aggs
+  implements DialogInterface.OnClickListener
 {
-  public accy(BaseChatPie paramBaseChatPie) {}
+  public accy(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.K) {
-      this.a.be();
-    }
-    ((afaz)this.a.a.a(7)).b(this.a.hashCode());
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-
-public final class amlh
-  implements Parcelable.Creator<SosoInterface.SosoLbsInfo>
+public abstract interface amlh
 {
-  public SosoInterface.SosoLbsInfo a(Parcel paramParcel)
-  {
-    return new SosoInterface.SosoLbsInfo(paramParcel);
-  }
+  public abstract void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3);
   
-  public SosoInterface.SosoLbsInfo[] a(int paramInt)
-  {
-    return new SosoInterface.SosoLbsInfo[paramInt];
-  }
+  public abstract void b(int paramInt, boolean paramBoolean, Object paramObject);
+  
+  public abstract void c(int paramInt, boolean paramBoolean, Object paramObject);
 }
 
 

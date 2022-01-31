@@ -1,46 +1,31 @@
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import cooperation.qzone.QzoneVideoSoDownloadModule;
-import java.util.ArrayList;
+import android.os.Bundle;
 
-public class bjcj
-  implements ayzy
+public abstract class bjcj
 {
-  private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected final int a;
+  public String a;
+  protected final int b;
+  public String b;
+  public int c = -9999999;
+  public int d;
   
-  public bjcj(QzoneVideoSoDownloadModule paramQzoneVideoSoDownloadModule, QQAppInterface paramQQAppInterface, ResultReceiver paramResultReceiver)
+  public bjcj()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsResultReceiver = paramResultReceiver;
+    this.jdField_a_of_type_Int = -9999999;
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(Bundle paramBundle)
   {
-    VideoEnvironment.a("QzoneVideoSoDownloadModule", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
-    {
-      if (paramInt2 != 0)
-      {
-        QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -2, alpo.a(2131712888) + paramInt2 + "]");
-        ayyy.b(1, paramInt2);
-        return;
-      }
-      ArrayList localArrayList = new ArrayList(1);
-      paramInt1 = ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList);
-      if (paramInt1 == 0)
-      {
-        ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, new bjck(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver));
-        return;
-      }
-      QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -2, alpo.a(2131712972) + paramInt1 + "]");
-      ayyy.b(1, paramInt1);
-      return;
-    }
-    QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -2, alpo.a(2131712863) + paramInt2 + "]");
-    ayyy.b(1, paramInt2);
+    paramBundle.putInt("_mqqpay_baseresp_retcode", this.c);
+    paramBundle.putString("_mqqpay_baseresp_retmsg", this.jdField_a_of_type_JavaLangString);
+    paramBundle.putString("_mqqpay_baseapi_apiname", this.jdField_b_of_type_JavaLangString);
+    paramBundle.putInt("_mqqpay_baseapi_apimark", this.d);
+  }
+  
+  public boolean a()
+  {
+    return this.c == 0;
   }
 }
 

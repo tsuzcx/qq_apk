@@ -1,62 +1,53 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.mobileqq.vas.PendantInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.ContactCard;
+import com.tencent.mobileqq.data.TroopMemberCard;
+import com.tencent.mobileqq.qcall.QCallCardInfo;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class awqt
-  implements Handler.Callback
 {
-  public awqt(ProfileHeaderView paramProfileHeaderView) {}
+  public int a;
+  public View.OnClickListener a;
+  public View.OnLongClickListener a;
+  public awra a;
+  public bcyx a;
+  public betg a;
+  public ProfileActivity.AllInOne a;
+  public Card a;
+  public ContactCard a;
+  public TroopMemberCard a;
+  public QCallCardInfo a;
+  public RichStatus a;
+  public String a;
+  public boolean a;
+  public String[] a;
+  public int b = -1;
+  public String b;
+  public boolean b;
+  public int c;
+  public boolean c;
   
-  public boolean handleMessage(Message paramMessage)
+  public awqt()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(ProfileHeaderView.jdField_a_of_type_JavaLangString, 4, String.format(Locale.getDefault(), "mUICallback [%d]", new Object[] { Integer.valueOf(paramMessage.what) }));
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_c_of_type_Int = -1;
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataCard == null) {
+      return 0L;
     }
-    if (ProfileHeaderView.jdField_b_of_type_Int == paramMessage.what)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView handleMessage msg what is check tips time=" + this.a.jdField_a_of_type_Int);
-      }
-      if ((this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
-        this.a.k(this.a.jdField_a_of_type_Awmk);
-      }
-    }
-    do
-    {
-      do
-      {
-        return true;
-      } while (ProfileHeaderView.c != paramMessage.what);
-      localObject = (View)this.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_avatar_pendant");
-    } while (!(localObject instanceof ImageView));
-    Object localObject = (ImageView)localObject;
-    paramMessage = (ExtensionInfo)paramMessage.obj;
-    if ((paramMessage != null) && (paramMessage.isPendantValid()))
-    {
-      this.a.jdField_a_of_type_Long = paramMessage.pendantId;
-      AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
-      ((ImageView)localObject).setVisibility(0);
-      if (bdbg.a(this.a.jdField_a_of_type_Long))
-      {
-        localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 2, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
-        return true;
-      }
-      localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 1, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
-      return true;
-    }
-    ((ImageView)localObject).setVisibility(4);
-    this.a.jdField_a_of_type_Long = 0L;
-    return true;
+    return this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_c_of_type_Boolean;
   }
 }
 

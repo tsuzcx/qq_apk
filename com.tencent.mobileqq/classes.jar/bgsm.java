@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class bgsm
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
   bgsm(bgsi parambgsi) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.b(paramDialogInterface);
-    bgse.a();
+    this.a.dismiss();
     if (bgsi.a(this.a) != null) {
-      bgsi.a(this.a).onDismiss(paramDialogInterface);
+      bgsi.a(this.a).onDismiss();
     }
   }
 }

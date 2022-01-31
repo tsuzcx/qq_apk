@@ -1,17 +1,31 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.sdk.CmShowSpriteDrawerInfoBridge.4.1;
+import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class alcj
-  extends AVAudioCtrl.EnableSpeakerCompleteCallback
+public class alcj
+  implements EIPCResultCallback
 {
-  alcj(alce paramalce) {}
+  alcj(alch paramalch, alcg paramalcg) {}
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.b(paramBoolean, paramInt);
+    Object localObject = (IPCSpriteContext)paramEIPCResult.data.getParcelable("IPCSpriteContext");
+    paramEIPCResult = paramEIPCResult.data.getString("js_content");
+    QLog.i("CmShow_SpriteDrawerInfoBridge", 1, "checkfDressChanged CmShow_ spriteJs:" + paramEIPCResult);
+    if (TextUtils.isEmpty(paramEIPCResult)) {
+      alhp.a(this.jdField_a_of_type_Alcg.a(), 300, 301, new Object[] { "spriteJs is empty" });
     }
+    do
+    {
+      return;
+      localObject = (alcd)alch.a(this.jdField_a_of_type_Alch).a(100);
+    } while (localObject == null);
+    ThreadManagerV2.excute(new CmShowSpriteDrawerInfoBridge.4.1(this, paramEIPCResult, (alcd)localObject), 16, null, false);
   }
 }
 

@@ -1,46 +1,17 @@
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
 
-public abstract class ahno
-  implements ahob
+public class ahno
+  implements View.OnClickListener
 {
-  protected Activity a;
+  public ahno(ConnectionsExplorationFragment paramConnectionsExplorationFragment) {}
   
-  public ahno(Activity paramActivity)
+  public void onClick(View paramView)
   {
-    this.a = paramActivity;
+    this.a.getActivity().finish();
   }
-  
-  public Activity a()
-  {
-    return this.a;
-  }
-  
-  public void a(View paramView) {}
-  
-  public void a(QQAppInterface paramQQAppInterface) {}
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c() {}
-  
-  public void c(boolean paramBoolean)
-  {
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      FrameHelperActivity.c(paramBoolean);
-      return;
-    }
-  }
-  
-  public void d() {}
-  
-  public void e() {}
 }
 
 

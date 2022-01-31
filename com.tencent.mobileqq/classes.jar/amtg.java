@@ -1,25 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.QQToast;
-
-class amtg
-  implements DialogInterface.OnClickListener
+public class amtg
 {
-  amtg(amtf paramamtf) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public amtg(amtf paramamtf, int paramInt1, int paramInt2)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      QQToast.a(this.a.a, 2, 2131690232, 0).a();
-      paramDialogInterface.dismiss();
-      azmj.b(null, "dc00898", "", "", "0X8008353", "0X8008353", 0, 0, "", "", "", "");
-      return;
-    }
-    paramDialogInterface.dismiss();
+    this.b = paramInt1;
+    this.c = paramInt2;
+  }
+  
+  public boolean a()
+  {
+    return this.c == 1;
+  }
+  
+  public boolean b()
+  {
+    return this.c == 2;
+  }
+  
+  public boolean c()
+  {
+    return this.c == 3;
   }
 }
 

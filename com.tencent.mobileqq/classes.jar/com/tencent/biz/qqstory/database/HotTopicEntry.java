@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class HotTopicEntry
-  extends awbv
+  extends awge
 {
   public long databaseTime = System.currentTimeMillis();
   public boolean topicCanJoin;
   public int topicColor;
   public String topicCover;
   public String topicDesc;
-  @awdj
+  @awhs
   public long topicId;
   public String topicLogo;
   public String topicName;

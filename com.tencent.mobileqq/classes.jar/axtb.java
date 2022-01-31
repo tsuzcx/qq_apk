@@ -1,70 +1,77 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Collection;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.Iterator;
-import mqq.manager.Manager;
 
-public class axtb
-  implements Manager
+class axtb
+  extends axtk
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HashMap<Long, axtg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
+  private long c;
   
-  public axtb(QQAppInterface paramQQAppInterface)
+  public HashMap<String, String> a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public static axtb a(QQAppInterface paramQQAppInterface)
-  {
-    return (axtb)paramQQAppInterface.getManager(294);
-  }
-  
-  public axtg a(long paramLong, int paramInt)
-  {
-    try
+    paramString = null;
+    if ((this.jdField_a_of_type_Long == 0L) || (this.c == 0L)) {
+      return null;
+    }
+    if (QLog.isColorLevel()) {
+      paramString = new StringBuilder();
+    }
+    HashMap localHashMap = new HashMap();
+    if (this.jdField_a_of_type_Boolean)
     {
-      axtg localaxtg2 = (axtg)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      axtg localaxtg1 = localaxtg2;
-      if (localaxtg2 == null)
+      localHashMap.put("is_progressive", "progressive");
+      localHashMap.put("view_count", "1");
+      if (this.jdField_b_of_type_Boolean)
       {
-        localaxtg1 = new axtg(paramLong);
-        localaxtg1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        localaxtg1.jdField_a_of_type_Int = paramInt;
-        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localaxtg1);
+        localHashMap.put("failure", "1");
+        if (QLog.isColorLevel())
+        {
+          paramString.append("progressive:\n");
+          paramString.append("refresh_dp:" + String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) + "\n");
+          paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
+          QLog.i(axtl.a, 2, paramString.toString());
+        }
       }
-      return localaxtg1;
     }
-    finally {}
-  }
-  
-  public void a(axtg paramaxtg)
-  {
-    try
+    label391:
+    for (;;)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramaxtg.jdField_a_of_type_Long));
-      return;
-    }
-    finally {}
-  }
-  
-  public void onDestroy()
-  {
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((axtg)localIterator.next()).b();
+      return localHashMap;
+      if (this.jdField_b_of_type_Long > this.jdField_a_of_type_Long) {
+        localHashMap.put("to_dp", String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
       }
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      if ((this.c <= this.jdField_a_of_type_Long) || (this.c <= this.jdField_b_of_type_Long)) {
+        break;
+      }
+      localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
+      break;
+      localHashMap.put("is_progressive", "baseline");
+      localHashMap.put("view_count", "1");
+      if (this.jdField_b_of_type_Boolean) {
+        localHashMap.put("failure", "1");
+      }
+      for (;;)
+      {
+        if (!QLog.isColorLevel()) {
+          break label391;
+        }
+        paramString.append("baseline:\n");
+        paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
+        QLog.i(axtl.a, 2, paramString.toString());
+        break;
+        if (this.c > this.jdField_a_of_type_Long) {
+          localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
+        }
+      }
     }
-    finally {}
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axtb
  * JD-Core Version:    0.7.0.1
  */

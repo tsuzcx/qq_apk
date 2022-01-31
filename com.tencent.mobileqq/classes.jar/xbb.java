@@ -1,14 +1,23 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
 
 class xbb
-  implements View.OnFocusChangeListener
+  implements bhtv
 {
-  xbb(xay paramxay) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  xbb(xba paramxba) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    wsv.b("EditTextDialog", "onFocusChange:" + paramBoolean);
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_Xba.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_Xba.a.size() - 1)) {
+      this.jdField_a_of_type_Xba.f();
+    }
   }
 }
 

@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew.1;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class ajjs
-  implements DialogInterface.OnClickListener
+final class ajjs
+  implements Animation.AnimationListener
 {
-  public ajjs(CameraPreviewNew.1 param1) {}
+  ajjs(View paramView, Animation paramAnimation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

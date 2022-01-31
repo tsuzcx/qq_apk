@@ -1,15 +1,15 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bmit;
+import bmnf;
 
 public class EditVideoMultiSegment$1
   implements Runnable
 {
-  public EditVideoMultiSegment$1(bmit parambmit, long paramLong, boolean paramBoolean1, boolean paramBoolean2) {}
+  public EditVideoMultiSegment$1(bmnf parambmnf, long paramLong, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    bmit.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.b);
+    bmnf.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

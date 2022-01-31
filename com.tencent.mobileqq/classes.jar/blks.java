@@ -1,16 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
-class blks
-  implements View.OnClickListener
+public class blks
+  implements Animator.AnimatorListener
 {
-  blks(blkp paramblkp) {}
+  public blks(AEEditorAILoadingView paramAEEditorAILoadingView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    blkp.b(this.a);
-    this.a.dismiss();
+    AEEditorAILoadingView.c(this.a).setVisibility(8);
+    AEEditorAILoadingView.d(this.a).playAnimation();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

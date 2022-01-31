@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.imaxad;
 
-import astr;
-import astt;
-import astv;
-import astw;
+import asya;
+import asyc;
+import asye;
+import asyf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
@@ -15,12 +15,12 @@ import nlp;
 public class ImaxAdRecentUserManager$1
   implements Runnable
 {
-  public ImaxAdRecentUserManager$1(astt paramastt, boolean paramBoolean, QQAppInterface paramQQAppInterface, nlo paramnlo, RecentUser paramRecentUser) {}
+  public ImaxAdRecentUserManager$1(asyc paramasyc, boolean paramBoolean, QQAppInterface paramQQAppInterface, nlo paramnlo, RecentUser paramRecentUser) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean) {
-      astr.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nlo);
+      asya.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nlo);
     }
     if (this.jdField_a_of_type_Nlo != null)
     {
@@ -29,10 +29,10 @@ public class ImaxAdRecentUserManager$1
       }
       Iterator localIterator = this.jdField_a_of_type_Nlo.a.iterator();
       while (localIterator.hasNext()) {
-        astw.b(((nlp)localIterator.next()).b);
+        asyf.b(((nlp)localIterator.next()).b);
       }
     }
-    astv.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
+    asye.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
   }
 }
 

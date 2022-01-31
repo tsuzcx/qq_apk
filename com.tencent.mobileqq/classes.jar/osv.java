@@ -72,7 +72,7 @@ public class osv
   
   public static void a()
   {
-    Aladdin.initialize(Aladdin.InitParams.newBuilder().withUserId(ors.a()).withAppVersion("8.3.3").withContext(BaseApplicationImpl.getContext()).withExecutor(osw.a).withRequestHandler(new ost()).withAppFlavorId(AppSetting.a() + "").withLogger(new osr()).build());
+    Aladdin.initialize(Aladdin.InitParams.newBuilder().withUserId(ors.a()).withAppVersion("8.3.5").withContext(BaseApplicationImpl.getContext()).withExecutor(osw.a).withRequestHandler(new ost()).withAppFlavorId(AppSetting.a() + "").withLogger(new osr()).build());
     Aladdin.registerBeanClass("SneakyParams", SneakyParams.class);
     Aladdin.registerBeanClass("AchillesParams", AchillesParams.class);
     Aladdin.registerBeanClass("SneakyRule", SneakyRule.class);

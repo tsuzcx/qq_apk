@@ -1,36 +1,39 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView;
+import android.graphics.Bitmap;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
 public class agxb
-  extends RecyclerView.OnScrollListener
+  extends NativeGifImage
 {
-  public boolean a;
-  
-  public agxb(ZhituPanelView paramZhituPanelView) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public agxb(File paramFile, boolean paramBoolean)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0)
-    {
-      GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
-      if ((localGridLayoutManager.findLastCompletelyVisibleItemPosition() + 1 == localGridLayoutManager.getItemCount()) && (this.jdField_a_of_type_Boolean)) {
-        ((agxc)paramRecyclerView.getAdapter()).a();
-      }
-    }
+    super(paramFile, paramBoolean);
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public int a()
   {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if (paramInt2 > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
+    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
+  }
+  
+  public Bitmap a()
+  {
+    return this.mCurrentFrameBitmap;
+  }
+  
+  public void a()
+  {
+    getNextFrame();
+    applyNextFrame();
+  }
+  
+  public int b()
+  {
+    return this.mMetaData[FRAME_COUNT_INDEX];
+  }
+  
+  public int c()
+  {
+    return this.mCurrentFrameIndex;
   }
 }
 

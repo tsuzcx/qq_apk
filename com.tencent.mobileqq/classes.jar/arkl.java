@@ -1,32 +1,28 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.net.URL;
 
 public abstract interface arkl
 {
   public abstract int a();
   
-  public abstract long a();
-  
-  public abstract arkm a();
-  
-  public abstract BaseActivity a();
-  
-  public abstract FileManagerEntity a();
-  
   public abstract String a();
   
-  public abstract void a();
+  public abstract URL a();
   
-  public abstract void a(Bitmap paramBitmap);
+  public abstract void a(int paramInt);
   
-  public abstract boolean a(Bitmap paramBitmap, int paramInt, String paramString);
+  public abstract void a(String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract int b();
   
   public abstract String b();
   
-  public abstract void b();
+  public abstract void b(String paramString);
   
-  public abstract String c();
+  public abstract boolean b();
 }
 
 

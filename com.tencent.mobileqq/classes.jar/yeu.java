@@ -1,15 +1,21 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
 
-public class yeu
-  implements View.OnClickListener
+class yeu
+  extends RecyclerView.ViewHolder
 {
-  public yeu(SubscribeHybirdFragment paramSubscribeHybirdFragment, xzf paramxzf) {}
-  
-  public void onClick(View paramView)
+  public yeu(yes paramyes, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeHybirdFragment.a(this.jdField_a_of_type_Xzf);
+    super(paramView);
+  }
+  
+  public void a(SubscribeDraftBean paramSubscribeDraftBean)
+  {
+    if ((this.itemView instanceof SubScribeDraftItemView)) {
+      ((SubScribeDraftItemView)this.itemView).setData(paramSubscribeDraftBean);
+    }
   }
 }
 

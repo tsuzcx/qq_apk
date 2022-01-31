@@ -1,25 +1,20 @@
-import android.content.Context;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import mqq.os.MqqHandler;
 
 public class aduh
-  implements View.OnClickListener
+  extends MqqHandler
 {
-  public aduh(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public aduh(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.b(1);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230721);
-    if (this.a.a().booleanValue())
+    switch (paramMessage.what)
     {
-      this.a.b();
-      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
+    default: 
+      return;
     }
+    this.a.finish();
   }
 }
 

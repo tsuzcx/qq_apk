@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amrp;
+import amwe;
 import android.annotation.TargetApi;
 import android.graphics.SurfaceTexture;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
@@ -9,19 +9,19 @@ import com.tencent.qphone.base.util.QLog;
 public class NormalVideoARRenderable$3
   implements Runnable
 {
-  public NormalVideoARRenderable$3(amrp paramamrp) {}
+  public NormalVideoARRenderable$3(amwe paramamwe) {}
   
   @TargetApi(11)
   public void run()
   {
     try
     {
-      amrp.a(this.this$0).updateTexImage();
-      amrp.a(this.this$0).getTransformMatrix(amrp.a(this.this$0));
+      amwe.a(this.this$0).updateTexImage();
+      amwe.a(this.this$0).getTransformMatrix(amwe.a(this.this$0));
       if (ScanTorchActivity.i)
       {
-        amrp localamrp = this.this$0;
-        localamrp.b += 1L;
+        amwe localamwe = this.this$0;
+        localamwe.b += 1L;
         if (this.this$0.b >= 30L)
         {
           this.this$0.b = 0L;

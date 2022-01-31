@@ -1,22 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiUserInfo;
+import cooperation.qzone.album.QzonePhotoInfo;
 
 public final class bjhj
-  implements Parcelable.Creator<WeishiUserInfo>
+  implements Parcelable.Creator<QzonePhotoInfo>
 {
-  public WeishiUserInfo a(Parcel paramParcel)
+  public QzonePhotoInfo a(Parcel paramParcel)
   {
-    WeishiUserInfo localWeishiUserInfo = new WeishiUserInfo();
-    localWeishiUserInfo.uin = paramParcel.readLong();
-    localWeishiUserInfo.nickName = paramParcel.readString();
-    localWeishiUserInfo.logo = paramParcel.readString();
-    return localWeishiUserInfo;
+    return new QzonePhotoInfo(paramParcel);
   }
   
-  public WeishiUserInfo[] a(int paramInt)
+  public QzonePhotoInfo[] a(int paramInt)
   {
-    return new WeishiUserInfo[paramInt];
+    return new QzonePhotoInfo[paramInt];
   }
 }
 

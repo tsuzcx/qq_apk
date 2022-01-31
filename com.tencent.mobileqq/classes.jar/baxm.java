@@ -1,36 +1,39 @@
-import java.util.ArrayList;
-
 public class baxm
-  extends baxq
 {
+  public float a;
   public int a;
+  public long a;
   public String a;
-  public ArrayList<basp> a;
-  public byte[] a;
-  public ArrayList<basp> b;
-  public byte[] b;
+  public int b;
+  public long b;
+  public String b = "";
+  public int c;
+  public long c;
+  public String c = "";
+  public int d;
+  public long d;
+  public String d = "";
+  public int e;
+  public long e;
+  public String e = "";
+  public long f;
+  public String f = "";
+  public long g;
+  public long h;
+  public long i;
+  public long j;
+  public long k;
+  public long l;
+  public long m;
+  public long n;
+  public long o;
+  public long p;
+  public long q;
   
   public baxm()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" urlParam:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" msgUkey:");
-    localStringBuilder.append(this.jdField_b_of_type_ArrayOfByte);
-    localStringBuilder.append(" ipList:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
-    localStringBuilder.append(" mIpv6List:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaUtilArrayList);
-    localStringBuilder.append(" resId:");
-    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Float = 0.0F;
   }
 }
 

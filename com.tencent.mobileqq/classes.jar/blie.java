@@ -1,13 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment;
+import android.graphics.Rect;
 
 public class blie
-  implements DialogInterface.OnClickListener
 {
-  public blie(AEEditorCommonEditFragment paramAEEditorCommonEditFragment) {}
+  public Rect a;
+  public float[] a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public blie(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public int a()
+  {
+    return Math.abs(this.a.left - this.a.right) * Math.abs(this.a.top - this.a.bottom);
+  }
 }
 
 

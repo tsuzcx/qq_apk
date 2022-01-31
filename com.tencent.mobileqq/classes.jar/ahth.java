@@ -1,16 +1,15 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
 
-class ahth
-  extends RecyclerView.ViewHolder
+public class ahth
+  extends alwx
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private ahth(FriendFragment paramFriendFragment) {}
   
-  ahth(ahtg paramahtg, View paramView)
+  protected void f()
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376920));
+    if (FriendFragment.b(this.a)) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
   }
 }
 

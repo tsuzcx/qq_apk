@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import alpo;
-import amta;
-import amtf;
-import amtq;
-import amtt;
-import amtu;
+import alud;
+import amxp;
+import amxu;
+import amyf;
+import amyi;
+import amyj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -32,8 +32,8 @@ import android.util.DisplayMetrics;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import avwn;
-import azmj;
+import awaw;
+import azqs;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -49,7 +49,7 @@ public class ObjectSurfaceView
 {
   private float jdField_a_of_type_Float = 1.0F;
   private long jdField_a_of_type_Long = 50L;
-  public amtf a;
+  public amxu a;
   BlurMaskFilter jdField_a_of_type_AndroidGraphicsBlurMaskFilter;
   Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   SweepGradient jdField_a_of_type_AndroidGraphicsSweepGradient;
@@ -57,7 +57,7 @@ public class ObjectSurfaceView
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
   private Runnable jdField_a_of_type_JavaLangRunnable = new ObjectSurfaceView.1(this);
-  private List<amta> jdField_a_of_type_JavaUtilList;
+  private List<amxp> jdField_a_of_type_JavaUtilList;
   private ConcurrentHashMap<String, ObjectBaseData> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private CopyOnWriteArrayList<ObjectBaseData> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   private boolean jdField_a_of_type_Boolean;
@@ -414,7 +414,7 @@ public class ObjectSurfaceView
         if ((!localObjectBaseData2.jdField_a_of_type_Boolean) || (!localObjectBaseData2.jdField_f_of_type_Boolean) || (localObjectBaseData2.C == 0.0F)) {
           break label3942;
         }
-        localObjectBaseData2.aF = (localObjectBaseData2.jdField_a_of_type_Float - localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float - localObjectBaseData2.jdField_i_of_type_Float - localObjectBaseData2.aS - amtt.jdField_e_of_type_Int);
+        localObjectBaseData2.aF = (localObjectBaseData2.jdField_a_of_type_Float - localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float - localObjectBaseData2.jdField_i_of_type_Float - localObjectBaseData2.aS - amyi.jdField_e_of_type_Int);
         localObjectBaseData2.x = (localObjectBaseData2.aG - localObjectBaseData2.aC);
         localObjectBaseData2.z = (localObjectBaseData2.jdField_b_of_type_Float + localObjectBaseData2.B * localObjectBaseData2.C + localObjectBaseData2.E);
         localObjectBaseData2.A = (localObjectBaseData2.jdField_a_of_type_Float + localObjectBaseData2.B * localObjectBaseData2.C + localObjectBaseData2.E);
@@ -551,7 +551,7 @@ public class ObjectSurfaceView
           break label6522;
         }
         i = 0;
-        j = this.jdField_a_of_type_Amtf.a.a();
+        j = this.jdField_a_of_type_Amxu.a.a();
         if (!localObjectBaseData2.jdField_f_of_type_Boolean) {
           break label6491;
         }
@@ -559,15 +559,15 @@ public class ObjectSurfaceView
         if (j == 3) {
           break label6522;
         }
-        localObject1 = this.jdField_a_of_type_Amtf.a;
+        localObject1 = this.jdField_a_of_type_Amxu.a;
         localObject2 = localObjectBaseData2.jdField_h_of_type_JavaLangString;
         str = localObjectBaseData2.jdField_i_of_type_JavaLangString;
-        amtu localamtu = new amtu(this, localObjectBaseData2);
+        amyj localamyj = new amyj(this, localObjectBaseData2);
         if (TextUtils.isEmpty(localObjectBaseData2.jdField_c_of_type_JavaLangString)) {
           break label6485;
         }
         bool = true;
-        ((avwn)localObject1).a((String)localObject2, str, localamtu, bool);
+        ((awaw)localObject1).a((String)localObject2, str, localamyj, bool);
       }
       for (int i = 0;; i = k)
       {
@@ -613,7 +613,7 @@ public class ObjectSurfaceView
           if ((!localObjectBaseData2.jdField_a_of_type_Boolean) || (!localObjectBaseData2.jdField_f_of_type_Boolean) || (localObjectBaseData2.C == 0.0F)) {
             break label5607;
           }
-          localObjectBaseData2.aF = (localObjectBaseData2.jdField_a_of_type_Float - localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float - localObjectBaseData2.jdField_i_of_type_Float - localObjectBaseData2.aS - amtt.jdField_e_of_type_Int);
+          localObjectBaseData2.aF = (localObjectBaseData2.jdField_a_of_type_Float - localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float - localObjectBaseData2.jdField_i_of_type_Float - localObjectBaseData2.aS - amyi.jdField_e_of_type_Int);
           localObjectBaseData2.x = (localObjectBaseData2.jdField_b_of_type_Float + localObjectBaseData2.B * localObjectBaseData2.C + localObjectBaseData2.E);
           localObjectBaseData2.z = (localObjectBaseData2.aG + localObjectBaseData2.aC);
           localObjectBaseData2.A = (localObjectBaseData2.jdField_a_of_type_Float + localObjectBaseData2.B * localObjectBaseData2.C + localObjectBaseData2.E);
@@ -738,7 +738,7 @@ public class ObjectSurfaceView
         k = i;
         if (j != 2)
         {
-          this.jdField_a_of_type_Amtf.a.a(2, localObjectBaseData2.jdField_h_of_type_JavaLangString, false);
+          this.jdField_a_of_type_Amxu.a.a(2, localObjectBaseData2.jdField_h_of_type_JavaLangString, false);
           k = i;
         }
       }
@@ -746,10 +746,10 @@ public class ObjectSurfaceView
     label337:
     label372:
     label6389:
-    this.jdField_a_of_type_Amtf.a.a();
+    this.jdField_a_of_type_Amxu.a.a();
     label402:
     label488:
-    this.jdField_a_of_type_Amtf.a.a();
+    this.jdField_a_of_type_Amxu.a.a();
     label518:
     label3341:
     label3620:
@@ -779,7 +779,7 @@ public class ObjectSurfaceView
       if ((getContext() instanceof Activity)) {
         ((Activity)getContext()).overridePendingTransition(2130771997, 0);
       }
-      azmj.b(null, "dc00898", "", "", "0X800899A", "0X800899A", 0, 0, "", "", "", "");
+      azqs.b(null, "dc00898", "", "", "0X800899A", "0X800899A", 0, 0, "", "", "", "");
       return;
     }
     catch (Exception paramString)
@@ -956,56 +956,56 @@ public class ObjectSurfaceView
     Object localObject2;
     int k;
     Object localObject1;
-    amta localamta;
+    amxp localamxp;
     RectF localRectF;
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
       if (a() == null)
       {
         if (this.jdField_a_of_type_JavaUtilList.get(0) != null) {}
-        for (f1 = ((amta)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_Float;; f1 = 0.0F)
+        for (f1 = ((amxp)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_Float;; f1 = 0.0F)
         {
           i = 1;
           for (j = 0; i < this.jdField_a_of_type_JavaUtilList.size(); j = k)
           {
-            localObject2 = (amta)this.jdField_a_of_type_JavaUtilList.get(i);
+            localObject2 = (amxp)this.jdField_a_of_type_JavaUtilList.get(i);
             k = j;
             if (localObject2 != null)
             {
               k = j;
-              if (((amta)localObject2).jdField_a_of_type_Float > f1) {
+              if (((amxp)localObject2).jdField_a_of_type_Float > f1) {
                 k = i;
               }
             }
             if ((localObject2 != null) && (QLog.isColorLevel()))
             {
-              localObject1 = alpo.a(2131708072);
-              if (!TextUtils.isEmpty(((amta)localObject2).jdField_a_of_type_JavaLangString)) {
-                localObject1 = ((amta)localObject2).jdField_a_of_type_JavaLangString;
+              localObject1 = alud.a(2131708084);
+              if (!TextUtils.isEmpty(((amxp)localObject2).jdField_a_of_type_JavaLangString)) {
+                localObject1 = ((amxp)localObject2).jdField_a_of_type_JavaLangString;
               }
-              QLog.d("ObjectSurfaceView", 2, "name = " + (String)localObject1 + ",confidence = " + ((amta)localObject2).jdField_a_of_type_Float + ",faceId = " + ((amta)localObject2).jdField_a_of_type_Int + ",isTmpFace = " + ((amta)localObject2).jdField_e_of_type_Boolean);
+              QLog.d("ObjectSurfaceView", 2, "name = " + (String)localObject1 + ",confidence = " + ((amxp)localObject2).jdField_a_of_type_Float + ",faceId = " + ((amxp)localObject2).jdField_a_of_type_Int + ",isTmpFace = " + ((amxp)localObject2).jdField_e_of_type_Boolean);
             }
             i += 1;
           }
         }
-        localObject1 = (amta)this.jdField_a_of_type_JavaUtilList.get(j);
+        localObject1 = (amxp)this.jdField_a_of_type_JavaUtilList.get(j);
         if (localObject1 != null) {
-          ((amta)localObject1).jdField_a_of_type_Boolean = true;
+          ((amxp)localObject1).jdField_a_of_type_Boolean = true;
         }
       }
       j = 0;
       if (j < this.jdField_a_of_type_JavaUtilList.size())
       {
-        localamta = (amta)this.jdField_a_of_type_JavaUtilList.get(j);
-        if (localamta != null)
+        localamxp = (amxp)this.jdField_a_of_type_JavaUtilList.get(j);
+        if (localamxp != null)
         {
-          localRectF = localamta.a();
+          localRectF = localamxp.a();
           i = 0;
           if (i >= this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size()) {
             break label1496;
           }
           localObject2 = (ObjectBaseData)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
-          if ((localObject2 != null) && (((ObjectBaseData)localObject2).jdField_e_of_type_JavaLangString.equals(localamta.jdField_a_of_type_JavaLangString)) && (((ObjectBaseData)localObject2).jdField_e_of_type_Boolean == localamta.jdField_e_of_type_Boolean)) {
+          if ((localObject2 != null) && (((ObjectBaseData)localObject2).jdField_e_of_type_JavaLangString.equals(localamxp.jdField_a_of_type_JavaLangString)) && (((ObjectBaseData)localObject2).jdField_e_of_type_Boolean == localamxp.jdField_e_of_type_Boolean)) {
             i = 1;
           }
         }
@@ -1015,7 +1015,7 @@ public class ObjectSurfaceView
     {
       localObject1 = localObject2;
       k = i;
-      if (!localamta.jdField_e_of_type_Boolean)
+      if (!localamxp.jdField_e_of_type_Boolean)
       {
         localObject1 = localObject2;
         k = i;
@@ -1023,15 +1023,15 @@ public class ObjectSurfaceView
         {
           localObject1 = localObject2;
           k = i;
-          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(localamta.jdField_a_of_type_Int)))
+          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(localamxp.jdField_a_of_type_Int)))
           {
-            localObject2 = (ObjectBaseData)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(localamta.jdField_a_of_type_Int));
+            localObject2 = (ObjectBaseData)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(localamxp.jdField_a_of_type_Int));
             localObject1 = localObject2;
             k = i;
             if (localObject2 != null)
             {
               b((ObjectBaseData)localObject2);
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(localamta.jdField_a_of_type_Int));
+              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(localamxp.jdField_a_of_type_Int));
               k = 1;
               localObject1 = localObject2;
             }
@@ -1040,25 +1040,25 @@ public class ObjectSurfaceView
       }
       if (k == 0)
       {
-        localObject1 = new amtq(getContext());
-        ((ObjectBaseData)localObject1).jdField_e_of_type_Boolean = localamta.jdField_e_of_type_Boolean;
-        ((ObjectBaseData)localObject1).jdField_e_of_type_JavaLangString = localamta.jdField_a_of_type_JavaLangString;
-        if (!localamta.jdField_e_of_type_Boolean)
+        localObject1 = new amyf(getContext());
+        ((ObjectBaseData)localObject1).jdField_e_of_type_Boolean = localamxp.jdField_e_of_type_Boolean;
+        ((ObjectBaseData)localObject1).jdField_e_of_type_JavaLangString = localamxp.jdField_a_of_type_JavaLangString;
+        if (!localamxp.jdField_e_of_type_Boolean)
         {
-          ((ObjectBaseData)localObject1).jdField_a_of_type_Boolean = localamta.jdField_a_of_type_Boolean;
+          ((ObjectBaseData)localObject1).jdField_a_of_type_Boolean = localamxp.jdField_a_of_type_Boolean;
           if (QLog.isColorLevel()) {
             QLog.d("ObjectSurfaceView", 2, "1=" + ((ObjectBaseData)localObject1).jdField_a_of_type_Boolean);
           }
-          ((ObjectBaseData)localObject1).jdField_d_of_type_JavaLangString = localamta.jdField_b_of_type_JavaLangString;
-          ((ObjectBaseData)localObject1).jdField_f_of_type_JavaLangString = localamta.jdField_a_of_type_JavaLangString;
-          ((ObjectBaseData)localObject1).jdField_b_of_type_JavaLangString = localamta.jdField_f_of_type_JavaLangString;
-          ((ObjectBaseData)localObject1).jdField_f_of_type_Boolean = localamta.jdField_b_of_type_Boolean;
-          ((ObjectBaseData)localObject1).jdField_g_of_type_Boolean = localamta.jdField_c_of_type_Boolean;
+          ((ObjectBaseData)localObject1).jdField_d_of_type_JavaLangString = localamxp.jdField_b_of_type_JavaLangString;
+          ((ObjectBaseData)localObject1).jdField_f_of_type_JavaLangString = localamxp.jdField_a_of_type_JavaLangString;
+          ((ObjectBaseData)localObject1).jdField_b_of_type_JavaLangString = localamxp.jdField_f_of_type_JavaLangString;
+          ((ObjectBaseData)localObject1).jdField_f_of_type_Boolean = localamxp.jdField_b_of_type_Boolean;
+          ((ObjectBaseData)localObject1).jdField_g_of_type_Boolean = localamxp.jdField_c_of_type_Boolean;
           ((ObjectBaseData)localObject1).jdField_a_of_type_AndroidGraphicsRectF = localRectF;
-          ((ObjectBaseData)localObject1).jdField_a_of_type_JavaLangString = localamta.jdField_h_of_type_JavaLangString;
-          ((ObjectBaseData)localObject1).jdField_c_of_type_JavaLangString = localamta.jdField_g_of_type_JavaLangString;
-          ((ObjectBaseData)localObject1).jdField_h_of_type_JavaLangString = localamta.jdField_d_of_type_JavaLangString;
-          ((ObjectBaseData)localObject1).jdField_i_of_type_JavaLangString = localamta.jdField_e_of_type_JavaLangString;
+          ((ObjectBaseData)localObject1).jdField_a_of_type_JavaLangString = localamxp.jdField_h_of_type_JavaLangString;
+          ((ObjectBaseData)localObject1).jdField_c_of_type_JavaLangString = localamxp.jdField_g_of_type_JavaLangString;
+          ((ObjectBaseData)localObject1).jdField_h_of_type_JavaLangString = localamxp.jdField_d_of_type_JavaLangString;
+          ((ObjectBaseData)localObject1).jdField_i_of_type_JavaLangString = localamxp.jdField_e_of_type_JavaLangString;
           if ((!((ObjectBaseData)localObject1).jdField_d_of_type_Boolean) && (QLog.isColorLevel()))
           {
             ((ObjectBaseData)localObject1).jdField_d_of_type_Boolean = true;
@@ -1070,7 +1070,7 @@ public class ObjectSurfaceView
       for (;;)
       {
         ((ObjectBaseData)localObject1).jdField_a_of_type_AndroidGraphicsRectF = localRectF;
-        ((ObjectBaseData)localObject1).jdField_g_of_type_JavaLangString = localamta.jdField_c_of_type_JavaLangString;
+        ((ObjectBaseData)localObject1).jdField_g_of_type_JavaLangString = localamxp.jdField_c_of_type_JavaLangString;
         if (((ObjectBaseData)localObject1).jdField_a_of_type_Boolean)
         {
           i = 0;
@@ -1093,7 +1093,7 @@ public class ObjectSurfaceView
         {
           f1 = localRectF.centerX();
           float f2 = localRectF.centerY();
-          if ((Math.abs(f1 - ((ObjectBaseData)localObject1).jdField_a_of_type_Float) > amtt.jdField_j_of_type_Int) || (Math.abs(f2 - ((ObjectBaseData)localObject1).jdField_b_of_type_Float) > amtt.jdField_j_of_type_Int))
+          if ((Math.abs(f1 - ((ObjectBaseData)localObject1).jdField_a_of_type_Float) > amyi.jdField_j_of_type_Int) || (Math.abs(f2 - ((ObjectBaseData)localObject1).jdField_b_of_type_Float) > amyi.jdField_j_of_type_Int))
           {
             ((ObjectBaseData)localObject1).jdField_a_of_type_Float = f1;
             ((ObjectBaseData)localObject1).jdField_b_of_type_Float = f2;
@@ -1127,8 +1127,8 @@ public class ObjectSurfaceView
           if (j >= this.jdField_a_of_type_JavaUtilList.size()) {
             break label1487;
           }
-          localObject2 = (amta)this.jdField_a_of_type_JavaUtilList.get(j);
-          if ((localObject2 == null) || (localObject1 == null) || (!((ObjectBaseData)localObject1).jdField_e_of_type_JavaLangString.equals(((amta)localObject2).jdField_a_of_type_JavaLangString)) || (((ObjectBaseData)localObject1).jdField_e_of_type_Boolean != ((amta)localObject2).jdField_e_of_type_Boolean)) {}
+          localObject2 = (amxp)this.jdField_a_of_type_JavaUtilList.get(j);
+          if ((localObject2 == null) || (localObject1 == null) || (!((ObjectBaseData)localObject1).jdField_e_of_type_JavaLangString.equals(((amxp)localObject2).jdField_a_of_type_JavaLangString)) || (((ObjectBaseData)localObject1).jdField_e_of_type_Boolean != ((amxp)localObject2).jdField_e_of_type_Boolean)) {}
         }
         label1487:
         for (j = 1;; j = 0)
@@ -1155,8 +1155,8 @@ public class ObjectSurfaceView
           return;
           b();
           QLog.e("ObjectSurfaceView", 1, "lost the face data.");
-          this.jdField_a_of_type_Amtf.a.a();
-          this.jdField_a_of_type_Amtf.a.a();
+          this.jdField_a_of_type_Amxu.a.a();
+          this.jdField_a_of_type_Amxu.a.a();
           return;
         }
       }
@@ -1172,12 +1172,12 @@ public class ObjectSurfaceView
     this.jdField_b_of_type_Boolean = false;
     a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
     this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_a_of_type_Amtf.a.a();
-    this.jdField_a_of_type_Amtf.a.a();
+    this.jdField_a_of_type_Amxu.a.a();
+    this.jdField_a_of_type_Amxu.a.a();
     QLog.d("ObjectSurfaceView", 1, "clear the animation and face data.");
   }
   
-  public void setFaceData(List<amta> paramList)
+  public void setFaceData(List<amxp> paramList)
   {
     try
     {

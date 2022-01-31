@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
 
 public class auvf
-  implements View.OnClickListener
+  implements yrb
 {
-  public auvf(PlayerInvitePanel paramPlayerInvitePanel, int paramInt) {}
+  public auvf(NearbyJsInterface paramNearbyJsInterface, yqz paramyqz, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onClick(View paramView)
+  public void callback(Bundle paramBundle)
   {
-    if (PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel) != null) {
-      PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel).onItemClick(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-    }
+    paramBundle = paramBundle.getString("nearbyVideoConfig");
+    this.jdField_a_of_type_Yqz.b(new auvg(this, paramBundle));
   }
 }
 

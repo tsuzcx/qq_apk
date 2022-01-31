@@ -1,29 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aqit
-  implements View.OnClickListener
+class aqit
+  implements Handler.Callback
 {
-  public aqit(UniformDownloadActivity paramUniformDownloadActivity) {}
+  aqit(aqio paramaqio) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (this.a.a != null)
+    switch (paramMessage.what)
     {
-      this.a.a.dismiss();
-      this.a.a = null;
+    default: 
+      return false;
+    case 1: 
+      if (this.a.b.size() == 0)
+      {
+        QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
+        return false;
+      }
+      this.a.b();
+      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      }
+      paramMessage = (String)this.a.b.get(this.a.b.size() - 1);
+      Drawable localDrawable = bdhj.a(true);
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localQQAppInterface != null) {
+        bdbk.a(localQQAppInterface, 1, paramMessage, 4, localDrawable, localDrawable);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
+      return false;
     }
-    if (UniformDownloadActivity.a(this.a)) {
-      bfja.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3009", false);
-    }
-    for (;;)
+    paramMessage = (ArrayList)paramMessage.obj;
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-      return;
-      bfja.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3006", false);
+      paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
+      return false;
     }
+    aqio.a(this.a, paramMessage);
+    return false;
   }
 }
 

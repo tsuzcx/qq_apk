@@ -1,11 +1,11 @@
 class agnl
-  implements nbt
+  extends amny
 {
-  agnl(agmy paramagmy) {}
+  agnl(agnj paramagnj) {}
   
-  public void loaded(int paramInt, String paramString)
+  public void b()
   {
-    agmy.a(this.a, 0, 10);
+    this.a.b(false, false);
   }
 }
 

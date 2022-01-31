@@ -1,15 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.now.model.Comments;
 
 class avhc
-  implements DialogInterface.OnClickListener
+  implements avch
 {
-  avhc(avgk paramavgk) {}
+  avhc(avhb paramavhb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.d(true);
-    azmj.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
+    if (avhb.a(this.a) != null)
+    {
+      avhb.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131696854));
+      avhb.a(this.a).b();
+      avhb.a(this.a).c();
+    }
+  }
+  
+  public void a(Comments paramComments)
+  {
+    if (avhb.a(this.a) != null)
+    {
+      avhb.a(this.a);
+      avhb.a(this.a).a(paramComments);
+      avhb.a(this.a).b();
+    }
   }
 }
 

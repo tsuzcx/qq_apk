@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bgjm;
-import bgkd;
+import bgnt;
+import bgok;
 import java.io.File;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,14 +11,14 @@ import org.json.JSONObject;
 class FileJsPlugin$10
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$10(FileJsPlugin paramFileJsPlugin, String paramString, JSONObject paramJSONObject, bgkd parambgkd) {}
+  FileJsPlugin$10(FileJsPlugin paramFileJsPlugin, String paramString, JSONObject paramJSONObject, bgok parambgok) {}
   
   public String run()
   {
     if ((TextUtils.isEmpty(this.val$dirPath)) || (this.val$reqParamObj.isNull("dirPath"))) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "invalid path");
     }
-    Object localObject = bgjm.a().a(this.val$dirPath);
+    Object localObject = bgnt.a().a(this.val$dirPath);
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "no such file or directory, open " + this.val$dirPath);
     }

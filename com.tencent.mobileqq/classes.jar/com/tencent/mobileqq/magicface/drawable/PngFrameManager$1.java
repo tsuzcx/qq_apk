@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.magicface.drawable;
 
-import afrf;
+import afvu;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import atte;
-import attf;
-import attk;
+import atxn;
+import atxo;
+import atxt;
 
 public class PngFrameManager$1
   implements Runnable
 {
-  public PngFrameManager$1(atte paramatte, attk paramattk) {}
+  public PngFrameManager$1(atxn paramatxn, atxt paramatxt) {}
   
   public void run()
   {
     if ((this.a.a.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() != 0) && (this.a.a.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0)) {
-      this.a.a.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new attf(this));
+      this.a.a.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new atxo(this));
     }
   }
 }

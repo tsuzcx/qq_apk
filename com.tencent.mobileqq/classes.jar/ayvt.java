@@ -1,10 +1,14 @@
-import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ayvt
+public final class ayvt
+  implements DialogInterface.OnClickListener
 {
-  public MessageForText.AtTroopMemberInfo a;
-  public ArrayList<Object> a = new ArrayList(2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    com.tencent.mobileqq.search.util.VADHelper.c = false;
+    paramDialogInterface.dismiss();
+  }
 }
 
 

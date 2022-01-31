@@ -1,12 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-class anzh
+public class anzh
   implements View.OnClickListener
 {
-  anzh(anzg paramanzg) {}
+  public anzh(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(View paramView)
+  {
+    paramView = (anzj)paramView.getTag();
+    this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.b, paramView.jdField_a_of_type_Boolean);
+  }
 }
 
 

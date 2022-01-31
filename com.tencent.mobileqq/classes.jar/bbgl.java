@@ -1,40 +1,23 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class bbgl
-  extends amab
+class bbgl
+  extends BroadcastReceiver
 {
-  public bbgl(TroopCreateLogicActivity paramTroopCreateLogicActivity) {}
+  bbgl(bbgk parambbgk) {}
   
-  protected void a(long paramLong, int paramInt1, boolean paramBoolean, String paramString, int paramInt2, int paramInt3)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.app.removeObserver(this.a.a);
-    if (paramInt1 == 0)
+    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("CommentSendSuccess".equals(paramIntent.getStringExtra("event"))))
     {
-      TroopManager localTroopManager = (TroopManager)this.a.app.getManager(52);
-      localObject = null;
-      if (localTroopManager != null) {
-        localObject = localTroopManager.b(Long.toString(paramLong));
-      }
-      if (localObject != null)
-      {
-        ((TroopInfo)localObject).troopLat = paramInt2;
-        ((TroopInfo)localObject).troopLon = paramInt3;
-        localTroopManager.b((TroopInfo)localObject);
+      this.a.a = true;
+      this.a.dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicCommentPopupWindow", 2, "web call finish----------------");
       }
     }
-    Object localObject = new Intent();
-    ((Intent)localObject).putExtra("troopUin", paramLong);
-    ((Intent)localObject).putExtra("errCode", paramInt1);
-    ((Intent)localObject).putExtra("isClear", paramBoolean);
-    ((Intent)localObject).putExtra("location", paramString);
-    ((Intent)localObject).putExtra("lat", paramInt2);
-    ((Intent)localObject).putExtra("lon", paramInt3);
-    this.a.setResult(-1, (Intent)localObject);
-    this.a.finish();
   }
 }
 

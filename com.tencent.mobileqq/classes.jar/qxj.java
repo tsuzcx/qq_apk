@@ -7,15 +7,15 @@ import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 class qxj
-  extends baua
+  extends bayj
 {
   qxj(qxi paramqxi) {}
   
   public void handleMessage(Message paramMessage)
   {
-    baoj localbaoj = (baoj)paramMessage.obj;
-    if ((localbaoj == null) || (localbaoj.jdField_b_of_type_Int != 24) || (localbaoj.c != 54)) {}
-    while ((qxi.a(this.a) == null) || (localbaoj.jdField_b_of_type_Long != qxi.a(this.a))) {
+    bass localbass = (bass)paramMessage.obj;
+    if ((localbass == null) || (localbass.jdField_b_of_type_Int != 24) || (localbass.c != 54)) {}
+    while ((qxi.a(this.a) == null) || (localbass.jdField_b_of_type_Long != qxi.a(this.a))) {
       return;
     }
     switch (paramMessage.what)

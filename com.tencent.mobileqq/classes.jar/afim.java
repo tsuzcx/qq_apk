@@ -1,37 +1,8 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
 
-class afim
-  implements agbp
+public abstract interface afim
 {
-  afim(afij paramafij, afiv paramafiv, MessageForPoke paramMessageForPoke) {}
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("placeholder", 2, "HIDE_PLACEHOLDER Unlimited 1");
-    }
-    afss.a().a(20);
-    this.jdField_a_of_type_Afiv.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_Afiv.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Afiv.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageMatrix(null);
-    this.jdField_a_of_type_Afiv.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Afiv.b == afij.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Afij.a instanceof ChatHistoryActivity)) && (!afij.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Afiv.c.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Afiv.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Afiv.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-      return;
-      this.jdField_a_of_type_Afiv.c.setVisibility(8);
-    }
-  }
+  public abstract void a(afii paramafii, ArkAppLoadLayout paramArkAppLoadLayout);
 }
 
 

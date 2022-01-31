@@ -1,21 +1,25 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
-class afae
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class afae
+  implements DialogInterface.OnClickListener
 {
-  afae(afab paramafab) {}
+  public afae(DoodlePanel paramDoodlePanel) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getLineCount() > 3) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.h()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.C()) && (!azib.b()))
+    switch (paramInt)
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+    case 0: 
+    default: 
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+    if (DoodlePanel.a(this.a) != null) {
+      DoodlePanel.a(this.a).a(false, false);
+    }
+    DoodlePanel.a(this.a);
   }
 }
 

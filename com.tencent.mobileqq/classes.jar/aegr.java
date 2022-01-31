@@ -1,27 +1,25 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aegr
-  extends WtloginObserver
+  implements View.OnClickListener
 {
-  public aegr(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public aegr(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
-      }
+    this.a.jdField_d_of_type_Boolean = true;
+    this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.findViewById(2131368626));
+    this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.jdField_d_of_type_AndroidWidgetTextView.setText(alud.a(2131716032));
+    this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new aegs(this));
+    TroopMemberListActivity.a(this.a);
+    if (this.a.a != null) {
+      this.a.a.a();
     }
-    if (paramInt2 == 0) {
-      return;
-    }
-    VerifyPhoneNumActivity.a(this.a);
-    VerifyPhoneNumActivity.b(this.a);
   }
 }
 

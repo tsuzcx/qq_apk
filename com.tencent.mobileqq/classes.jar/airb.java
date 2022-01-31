@@ -1,21 +1,13 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
-
-public class airb
-  extends baum
+class airb
+  implements bezx
 {
-  public airb(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  airb(aira paramaira, Runnable paramRunnable) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(int paramInt)
   {
-    super.onLoadFialed(paramURLDrawable, paramThrowable);
-    this.a.b();
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    super.onLoadSuccessed(paramURLDrawable);
-    this.a.d();
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

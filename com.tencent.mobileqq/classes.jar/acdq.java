@@ -1,15 +1,29 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class acdq
-  implements anti
+public class acdq
+  implements bhuk
 {
-  acdq(acdp paramacdp, int paramInt1, int paramInt2) {}
+  public acdq(AddRequestActivity paramAddRequestActivity, bhuf parambhuf) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Acdp.a.a.setOnMeasureListener(null);
-    this.jdField_a_of_type_Acdp.a.a.setSelectionFromBottom(this.jdField_a_of_type_Int, this.b);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      if (bdin.d(BaseApplication.getContext())) {
+        zdv.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a, null, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.getCurrentAccountUin(), 20010, null);
+      } else {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131694768, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
+      }
+    }
   }
 }
 

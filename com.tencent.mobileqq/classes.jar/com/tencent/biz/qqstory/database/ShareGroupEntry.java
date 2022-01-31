@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.database;
 
 import android.os.Parcel;
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShareGroupEntry
-  extends awbv
+  extends awge
 {
   public int allowStrangerVisitAndPost;
   public String backgroundUrl;
@@ -21,7 +21,7 @@ public class ShareGroupEntry
   public String name;
   public int ownerType;
   public String ownerUnionId;
-  @awdj
+  @awhs
   public String shareGroupId;
   public int type;
   public int videoCount;

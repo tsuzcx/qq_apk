@@ -5,12 +5,12 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
-import awiq;
+import awmz;
 
 public class ImageSwitchAnimView
   extends View
 {
-  private awiq a = new awiq(getContext(), 0, 0, 0, 0, 0, 0, 0, 0);
+  private awmz a = new awmz(getContext(), 0, 0, 0, 0, 0, 0, 0, 0);
   
   public ImageSwitchAnimView(Context paramContext)
   {

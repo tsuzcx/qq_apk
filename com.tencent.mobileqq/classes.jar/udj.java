@@ -1,28 +1,15 @@
-import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
 class udj
-  implements ucd
+  implements DialogInterface.OnClickListener
 {
-  udj(udf paramudf, String paramString) {}
+  udj(udi paramudi, int paramInt) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    tyg.a("", this.jdField_a_of_type_Udf.a(), this.jdField_a_of_type_Udf.a, 43);
-    tqs.a(udf.a(this.jdField_a_of_type_Udf).getContext(), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a(FeedCloudMeta.StUser paramStUser)
-  {
-    tyg.a(paramStUser.id.get(), this.jdField_a_of_type_Udf.a(), this.jdField_a_of_type_Udf.a, 41);
-    tqs.a(paramStUser);
-  }
-  
-  public void b()
-  {
-    tyg.a("", this.jdField_a_of_type_Udf.a(), this.jdField_a_of_type_Udf.a, 42);
-    tqs.a(udf.a(this.jdField_a_of_type_Udf).getContext(), this.jdField_a_of_type_JavaLangString);
+    QCircleFeedCommentWidget.a(this.jdField_a_of_type_Udi.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a(this.jdField_a_of_type_Udi.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Udi.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Udi.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, this.jdField_a_of_type_Int);
   }
 }
 

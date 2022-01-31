@@ -1,39 +1,73 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCTransportFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tribe.async.dispatch.Dispatcher;
+import java.io.File;
+import mqq.app.AppRuntime;
 
 public class auea
-  implements best
+  extends aued
 {
-  public auea(MsgBackupPCTransportFragment paramMsgBackupPCTransportFragment) {}
-  
-  public void a(View paramView, int paramInt)
+  public static String a(String paramString1, String paramString2)
   {
-    int i = aubu.a().a();
-    switch (paramInt)
-    {
+    if (TextUtils.isEmpty(paramString2)) {
+      return ncb.a(paramString1) + paramString1;
     }
+    return ncb.a(paramString1) + paramString1 + File.separator + paramString2;
+  }
+  
+  private static void b(boolean paramBoolean, String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject)
+  {
+    auee localauee = new auee();
+    int i;
+    if ("MiniAppLauncher".equals(paramString2))
+    {
+      i = 1;
+      localauee.jdField_a_of_type_Int = i;
+      localauee.jdField_a_of_type_Boolean = paramBoolean;
+      localauee.jdField_a_of_type_JavaLangString = paramString2;
+      if (!paramBoolean) {
+        break label107;
+      }
+    }
+    label107:
+    for (localauee.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { paramString1, paramObject, Integer.valueOf(paramInt), a(paramString3, "") };; localauee.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { paramString1, paramObject, Integer.valueOf(paramInt) })
+    {
+      if (localauee.jdField_a_of_type_Int != 1) {
+        break label135;
+      }
+      umc.a().dispatch("MiniAppManager", localauee);
+      return;
+      i = 5;
+      break;
+    }
+    label135:
+    umc.a().dispatch(localauee);
+  }
+  
+  public void a(String paramString1, String paramString2, Object paramObject)
+  {
+    String str = paramString1.substring("ak:".length());
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime == null)
+    {
+      b(false, paramString1, paramString2, -1, str, paramObject);
+      return;
+    }
+    nbv.b(str, localAppRuntime, new aueb(this, str, paramString1, paramString2, paramObject, System.currentTimeMillis()), true, 0, true);
+  }
+  
+  public boolean a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
+    String str;
     do
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "page is in pc Link page! click cancel! bizType = " + i + ", pcHandler = " + this.a.e);
-      }
-      this.a.aL_();
-      return;
-      aucf.a = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "backup is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + aucf.a + ", curSpeed = " + this.a.a + ", hasFinishedCount = " + this.a.d);
-      }
-      aucf.a().a().a(null);
-      aucf.a().a(this.a.a, this.a.d, i, this.a.getActivity());
-      if (this.a.b != 1) {
-        break;
-      }
-    } while (!this.a.e);
-    auff.a("0X800A260");
-    return;
-    auff.a("0X800A284");
+      return false;
+      str = paramBundle.getString("bid");
+      paramBundle = paramBundle.getString("path");
+    } while ((!nbv.c(str)) || (!ndl.a(paramBundle, str)));
+    return true;
   }
 }
 

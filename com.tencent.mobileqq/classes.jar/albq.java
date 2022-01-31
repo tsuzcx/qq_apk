@@ -1,273 +1,143 @@
-import android.content.Context;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoBridge.1;
+import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoBridge.2;
+import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoBridge.3;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import mqq.os.MqqHandler;
 
-class albq
-  implements BusinessObserver
+public class albq
+  implements albk
 {
-  private long jdField_a_of_type_Long;
-  private albr jdField_a_of_type_Albr;
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<albp> jdField_a_of_type_JavaUtilList;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private boolean jdField_a_of_type_Boolean;
-  private final String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  private alba jdField_a_of_type_Alba;
+  private albb jdField_a_of_type_Albb;
+  private albe jdField_a_of_type_Albe;
+  private albn jdField_a_of_type_Albn;
+  private String jdField_a_of_type_JavaLangString;
   
-  public albq(albr paramalbr, String paramString1, String paramString2)
+  public albq(alba paramalba, albn paramalbn, albb paramalbb, albe paramalbe)
   {
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Albr = paramalbr;
+    this.jdField_a_of_type_Alba = paramalba;
+    this.jdField_a_of_type_Albn = paramalbn;
+    this.jdField_a_of_type_Albb = paramalbb;
+    this.jdField_a_of_type_Albe = paramalbe;
   }
   
-  public JSONObject a(boolean paramBoolean, Bundle paramBundle)
+  private boolean a(int paramInt1, int paramInt2)
   {
-    if (paramBundle == null) {
-      return null;
+    if ((this.jdField_a_of_type_Alba == null) || (this.jdField_a_of_type_Alba.a() == null)) {}
+    while (this.jdField_a_of_type_Albe.a(paramInt1, paramInt2) == null) {
+      return false;
     }
-    JSONObject localJSONObject;
-    for (;;)
-    {
-      try
-      {
-        localJSONObject = new JSONObject();
-        if (!paramBoolean) {
-          break label323;
-        }
-        Object localObject = paramBundle.getByteArray("extra_data");
-        if (localObject == null) {
-          break;
-        }
-        paramBundle = new WebSSOAgent.UniSsoServerRsp();
-        paramBundle.mergeFrom((byte[])localObject);
-        localJSONObject.put("ssoRet", 0);
-        if (paramBundle.ret.has())
-        {
-          long l = paramBundle.ret.get();
-          localJSONObject.put("businessRet", l);
-          if (QLog.isColorLevel()) {
-            QLog.d("apollo_client_ApolloWebDataHandler", 2, "uniAgent, ret, biz ret code=" + l);
-          }
-          if (paramBundle.errmsg.has())
-          {
-            localObject = paramBundle.errmsg.get();
-            localJSONObject.put("msg", localObject);
-            if (QLog.isColorLevel()) {
-              QLog.d("apollo_client_ApolloWebDataHandler", 2, "uniAgent, ret, errmsg=" + (String)localObject);
-            }
-            if (!paramBundle.rspdata.has()) {
-              break label473;
-            }
-            paramBundle = paramBundle.rspdata.get();
-            localJSONObject.put("data", paramBundle);
-            if (!QLog.isColorLevel()) {
-              break label473;
-            }
-            QLog.d("apollo_client_ApolloWebDataHandler", 2, "uniAgent, ret, rspData=" + paramBundle);
-            break label473;
-          }
-        }
-        else
-        {
-          localJSONObject.put("businessRet", 0);
-          continue;
-        }
-        localJSONObject.put("msg", "SSO发送成功");
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return null;
-      }
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.w("apollo_client_ApolloWebDataHandler", 2, "uniAgent, onReceive, ret success but no data");
-    }
-    localJSONObject.put("ssoRet", 255);
-    localJSONObject.put("businessRet", 0);
-    localJSONObject.put("msg", "SSO返回数据包为空");
-    break label473;
-    label323:
-    int i = paramBundle.getInt("extra_result_code");
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloWebDataHandler", 2, "uniAgent, msfResultCode=" + i);
-    }
-    if (i == 1001)
-    {
-      localJSONObject.put("ssoRet", 201);
-      localJSONObject.put("businessRet", 0);
-      localJSONObject.put("msg", alpo.a(2131700956));
-    }
-    for (;;)
-    {
-      localJSONObject.put("ssoRet", 202);
-      localJSONObject.put("businessRet", 0);
-      localJSONObject.put("msg", alpo.a(2131700953));
-      label473:
-      do
-      {
-        localJSONObject.put("ssoRet", 255);
-        localJSONObject.put("businessRet", 0);
-        localJSONObject.put("msg", alpo.a(2131700957));
-        return localJSONObject;
-        if (i == 1002) {
-          break;
-        }
-      } while (i != 1013);
-    }
+    return true;
   }
   
   public void a()
   {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((albp)localIterator.next()).a(this, this.jdField_a_of_type_Albr);
-      }
-      this.jdField_a_of_type_JavaUtilList.clear();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloWebDataHandler", 2, "notifySSORsp, mReceivedSSO:" + this.jdField_b_of_type_Boolean);
-    }
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Albb.a();
   }
   
-  public void a(albp paramalbp)
+  public void a(alba paramalba)
   {
-    if (paramalbp != null) {
-      this.jdField_a_of_type_JavaUtilList.add(paramalbp);
-    }
-  }
-  
-  public void a(Context paramContext, String paramString, JSONObject paramJSONObject, AppInterface paramAppInterface)
-  {
-    if ((paramJSONObject == null) || (paramContext == null) || (paramAppInterface == null)) {}
-    try
-    {
-      if (!QLog.isColorLevel()) {
-        return;
-      }
-      QLog.d("apollo_client_ApolloWebDataHandler", 2, "sendRequest, requestJsonObj:" + paramJSONObject + " context:" + paramContext + " app:" + paramAppInterface);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      Object localObject;
-      long l;
-      paramContext.printStackTrace();
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloWebDataHandler", 2, "sendRequest, currentUrl:" + paramString + " requestJsonObj:requestJsonObj");
+      QLog.d("cmshow_scripted_SpriteDrawerInfoBridge", 2, "[initSprite]");
     }
-    if ((paramJSONObject.optInt("needCookie") == 1) && (!TextUtils.isEmpty(paramString)))
+    if ((this.jdField_a_of_type_Albb == null) || (paramalba == null) || (!paramalba.c())) {
+      if (paramalba != null) {
+        alhp.a(paramalba.a(), 300, 160, new Object[] { "glview is not ready" });
+      }
+    }
+    String str;
+    alar localalar;
+    do
     {
-      localObject = SwiftBrowserCookieMonster.c(paramString);
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      do
       {
-        if (((String)localObject).indexOf(',') != -1) {
-          ((String)localObject).replace(',', ';');
+        return;
+        if (a(0, -1)) {
+          break;
         }
-        paramJSONObject.put("Cookie", localObject);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloWebDataHandler", 2, "Get cookie:" + ndq.c((String)localObject, new String[0]) + " from " + ndq.b(paramString, new String[0]));
-      }
-    }
-    localObject = new WebSSOAgent.UniSsoServerReqComm();
-    ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-    ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-    ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.3.3");
-    paramString = new WebSSOAgent.UniSsoServerReq();
-    paramString.comm.set((MessageMicro)localObject);
-    paramJSONObject.remove("callback");
-    paramJSONObject.remove("cmd");
-    paramJSONObject.remove("needCookie");
-    paramJSONObject.remove("timeout");
-    localObject = new JSONObject();
-    ((JSONObject)localObject).put("fingerprint", Build.FINGERPRINT);
-    ((JSONObject)localObject).put("model", Build.MODEL);
-    ((JSONObject)localObject).put("manufacturer", Build.MANUFACTURER);
-    ((JSONObject)localObject).put("brand", Build.BRAND);
-    ((JSONObject)localObject).put("device", Build.DEVICE);
-    ((JSONObject)localObject).put("product", Build.PRODUCT);
-    ((JSONObject)localObject).put("id", Build.ID);
-    ((JSONObject)localObject).put("level", Build.VERSION.SDK_INT);
-    ((JSONObject)localObject).put("cpu_abi", Build.CPU_ABI);
-    ((JSONObject)localObject).put("cpu_abi2", Build.CPU_ABI2);
-    paramJSONObject.put("option", localObject);
-    paramString.reqdata.set(paramJSONObject.toString());
-    paramContext = new NewIntent(paramContext, atfx.class);
-    paramContext.putExtra("extra_cmd", this.jdField_a_of_type_JavaLangString);
-    paramContext.putExtra("extra_data", paramString.toByteArray());
-    paramContext.putExtra("extra_timeout", -1L);
-    paramContext.setObserver(this);
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloWebDataHandler", 2, "uniAgent, req, send request to msf");
-    }
-    paramAppInterface.startServlet(paramContext);
-    if (this.jdField_a_of_type_Albr != null)
-    {
-      paramContext = this.jdField_a_of_type_Albr;
-      l = System.currentTimeMillis();
-      this.jdField_a_of_type_Long = l;
-      paramContext.jdField_a_of_type_Long = l;
+        QLog.w("cmshow_scripted_SpriteDrawerInfoBridge", 1, "[initSprite], fail to load script.");
+      } while (paramalba.e != 1);
+      ThreadManager.getUIHandler().post(new SpriteDrawerInfoBridge.2(this, paramalba));
       return;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString)) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 10000L) && (this.jdField_a_of_type_Boolean) && (((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_OrgJsonJSONObject != null)) || (!this.jdField_b_of_type_Boolean));
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_OrgJsonJSONObject = a(paramBoolean, paramBundle);
-      this.jdField_b_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebSSOTask, onReceive, isSuccess: " + paramBoolean + " mResultJson:" + this.jdField_a_of_type_OrgJsonJSONObject);
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        str = this.jdField_a_of_type_Albb.a();
+        QLog.d("CmShowStatUtil", 1, "drawer get spriteJs");
       }
-      a();
-      if (this.jdField_a_of_type_Albr != null) {
-        this.jdField_a_of_type_Albr.b = System.currentTimeMillis();
+      while (TextUtils.isEmpty(str))
+      {
+        alhp.a(paramalba.a(), 300, 301, new Object[] { "spriteJs is empty" });
+        return;
+        str = this.jdField_a_of_type_JavaLangString;
+        QLog.d("CmShowStatUtil", 1, "drawer spriteJs from cache");
+        this.jdField_a_of_type_JavaLangString = null;
       }
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("apollo_client_ApolloWebDataHandler", 2, "uniAgent, onReceive, Exception: " + paramBundle.getMessage());
-    }
-  }
-  
-  public String toString()
-  {
+      localalar = (alar)this.jdField_a_of_type_Albe.a(0);
+    } while (localalar == null);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mSSOCmd:").append(this.jdField_a_of_type_JavaLangString).append(" mPreloadTS:").append(this.jdField_a_of_type_Long).append(" mIsSuccess:").append(this.jdField_a_of_type_Boolean).append(" mReceivedSSO:").append(this.jdField_b_of_type_Boolean).append(" mResultJson:").append(this.jdField_a_of_type_OrgJsonJSONObject);
-    return localStringBuilder.toString();
+    localStringBuilder.append("initDrawerInfoSprite('").append(str).append("');");
+    alhp.a(this.jdField_a_of_type_Alba.a(), 350);
+    localalar.a(localStringBuilder.toString());
+    ThreadManager.executeOnSubThread(new SpriteDrawerInfoBridge.3(this, localalar, paramalba));
+  }
+  
+  public void a(SpriteTaskParam paramSpriteTaskParam)
+  {
+    if (paramSpriteTaskParam == null) {
+      return;
+    }
+    ThreadManager.excute(new SpriteDrawerInfoBridge.1(this, paramSpriteTaskParam), 192, null, true);
+  }
+  
+  public void b() {}
+  
+  public void b(SpriteTaskParam paramSpriteTaskParam)
+  {
+    boolean bool = true;
+    if ((paramSpriteTaskParam == null) || (this.jdField_a_of_type_Albb == null) || (this.jdField_a_of_type_Alba == null) || (!this.jdField_a_of_type_Alba.c())) {
+      return;
+    }
+    this.jdField_a_of_type_Albb.a(paramSpriteTaskParam);
+    if (!a(paramSpriteTaskParam.jdField_c_of_type_Int, paramSpriteTaskParam.f))
+    {
+      QLog.w("cmshow_scripted_SpriteDrawerInfoBridge", 1, "[playAction], fail to load script.");
+      paramSpriteTaskParam.jdField_b_of_type_Int = 4;
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_Albb.a(paramSpriteTaskParam);
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      paramSpriteTaskParam.jdField_b_of_type_Int = 4;
+      return;
+    }
+    alas localalas = this.jdField_a_of_type_Albe.a(paramSpriteTaskParam.jdField_c_of_type_Int);
+    if (localalas == null)
+    {
+      QLog.w("cmshow_scripted_SpriteDrawerInfoBridge", 1, "actionScript == null.");
+      paramSpriteTaskParam.jdField_b_of_type_Int = 4;
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteDrawerInfoBridge", 2, new Object[] { "[playAction], ready to play, actionId:", Integer.valueOf(paramSpriteTaskParam.f) });
+    }
+    paramSpriteTaskParam.jdField_b_of_type_Int = 2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("playDrawerInfoAction ('").append((String)localObject).append("');");
+    localalas.a(localStringBuilder.toString());
+    localalas.a(paramSpriteTaskParam.jdField_a_of_type_JavaLangString, false);
+    localalas.a(paramSpriteTaskParam.jdField_b_of_type_JavaLangString, false);
+    localObject = this.jdField_a_of_type_Alba.a();
+    if (!TextUtils.isEmpty(paramSpriteTaskParam.jdField_c_of_type_JavaLangString)) {}
+    for (;;)
+    {
+      algj.a((QQAppInterface)localObject, paramSpriteTaskParam, bool, paramSpriteTaskParam.jdField_b_of_type_Boolean);
+      return;
+      bool = false;
+    }
   }
 }
 

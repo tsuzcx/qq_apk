@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet;
 
 import Wallet.PfaFriendRsp;
-import aisa;
+import aiwp;
 
 class TopayManager$1$1
   implements Runnable
@@ -13,9 +13,9 @@ class TopayManager$1$1
     if (this.a != null) {}
     for (boolean bool = true;; bool = false)
     {
-      aisa.a(bool, this.a, true);
+      aiwp.a(bool, this.a, true);
       if (this.this$0.jdField_a_of_type_Boolean) {
-        aisa.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
+        aiwp.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
       }
       return;
     }

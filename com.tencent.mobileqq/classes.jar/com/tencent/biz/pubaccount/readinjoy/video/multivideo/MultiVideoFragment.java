@@ -16,10 +16,10 @@ import android.view.Window;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bcwh;
-import bdkf;
-import bhou;
-import bngs;
+import bdaq;
+import bdoo;
+import bhtb;
+import bnle;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAccessibilityHelper;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
@@ -71,7 +71,7 @@ public class MultiVideoFragment
   
   private int a()
   {
-    return bcwh.a(getActivity(), 44.0F) + bngs.b(getActivity()) + bdkf.a(10.0F);
+    return bdaq.a(getActivity(), 44.0F) + bnle.b(getActivity()) + bdoo.a(10.0F);
   }
   
   public static void a(Activity paramActivity, Intent paramIntent, int paramInt)
@@ -144,12 +144,12 @@ public class MultiVideoFragment
   private void a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
     this.jdField_a_of_type_Rha = new rha(getActivity());
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560058, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131364566));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370175));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370197));
-    this.b = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131370188));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView = ((VideoFeedsRecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379755));
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560057, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131364568));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370194));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370216));
+    this.b = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131370207));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView = ((VideoFeedsRecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379813));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoMultivideoMultiVideoLoadingFooter = new MultiVideoLoadingFooter(getActivity());
     VideoFeedsAccessibilityHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setExtraFooterCount(1);
@@ -174,7 +174,7 @@ public class MultiVideoFragment
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(otp.a());
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      if (bngs.b()) {
+      if (bnle.b()) {
         rna.a(getActivity(), this.jdField_a_of_type_AndroidViewViewGroup);
       }
       rna.a(getActivity(), this.b);
@@ -363,7 +363,7 @@ public class MultiVideoFragment
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
-    if (bhou.d()) {
+    if (bhtb.d()) {
       paramActivity.getWindow().setFlags(16777216, 16777216);
     }
     try
@@ -371,9 +371,9 @@ public class MultiVideoFragment
       paramActivity.requestWindowFeature(1);
       label25:
       paramActivity.getWindow().setFlags(1024, 1024);
-      bngs.a(paramActivity);
-      if (bngs.b()) {
-        bngs.c(paramActivity);
+      bnle.a(paramActivity);
+      if (bnle.b()) {
+        bnle.c(paramActivity);
       }
       return;
     }

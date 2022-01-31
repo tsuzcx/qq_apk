@@ -1,21 +1,22 @@
-import com.idlefish.flutterboost.FlutterBoost.BoostPluginsRegister;
-import com.tencent.qflutter.TextPlatformViewPlugin;
-import io.flutter.plugin.common.PluginRegistry;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
-import io.flutter.plugins.GeneratedPluginRegistrant;
+import android.os.Bundle;
 
-class artw
-  implements FlutterBoost.BoostPluginsRegister
+public abstract interface artw
 {
-  artw(artu paramartu) {}
+  public abstract int a();
   
-  public void registerPlugins(PluginRegistry paramPluginRegistry)
-  {
-    GeneratedPluginRegistrant.registerWith(paramPluginRegistry);
-    paramPluginRegistry = paramPluginRegistry.registrarFor("TextPlatformViewPlugin");
-    TextPlatformViewPlugin.register(paramPluginRegistry);
-    arsm.a().a(paramPluginRegistry.messenger());
-  }
+  public abstract int a(artx paramartx);
+  
+  public abstract int a(String paramString, Bundle paramBundle);
+  
+  public abstract int b();
+  
+  public abstract int c();
+  
+  public abstract int d();
+  
+  public abstract int e();
+  
+  public abstract int f();
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aekt;
+import aepi;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
@@ -19,10 +19,10 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bcuq;
-import bcwh;
-import bjxj;
-import bjxn;
+import bcyz;
+import bdaq;
+import bkbq;
+import bkbu;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
@@ -77,7 +77,7 @@ public class ComponentContentVerticalSmallVideo
   
   public static ShapeDrawable a(int paramInt, Context paramContext)
   {
-    int i = bcwh.a(paramContext, 2.0F);
+    int i = bdaq.a(paramContext, 2.0F);
     paramContext = new ShapeDrawable(new RoundRectShape(new float[] { i, i, i, i, i, i, i, i }, null, null));
     paramContext.getPaint();
     paramContext.getPaint().setColor(paramInt);
@@ -126,7 +126,7 @@ public class ComponentContentVerticalSmallVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559961, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559960, this, true);
   }
   
   public URL a(pgd parampgd)
@@ -180,15 +180,15 @@ public class ComponentContentVerticalSmallVideo
   
   public void a(View paramView)
   {
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367982));
-    this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367981));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364003));
-    this.d = ((TextView)paramView.findViewById(2131364542));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379712));
-    this.e = ((TextView)paramView.findViewById(2131377208));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131367983);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131376000));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372065));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367993));
+    this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367992));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364005));
+    this.d = ((TextView)paramView.findViewById(2131364544));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379770));
+    this.e = ((TextView)paramView.findViewById(2131377262));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131367994);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131376053));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372085));
   }
   
   public void a(Object paramObject)
@@ -214,22 +214,22 @@ public class ComponentContentVerticalSmallVideo
     }
     if (ors.s(paramObject))
     {
-      this.jdField_a_of_type_AndroidUtilPair = new Pair(Integer.valueOf(aekt.a(165.0F, getResources())), Integer.valueOf(aekt.a(293.0F, getResources())));
-      findViewById(2131365120).setVisibility(8);
+      this.jdField_a_of_type_AndroidUtilPair = new Pair(Integer.valueOf(aepi.a(165.0F, getResources())), Integer.valueOf(aepi.a(293.0F, getResources())));
+      findViewById(2131365122).setVisibility(8);
     }
     for (;;)
     {
       b();
       if (this.jdField_a_of_type_Qbs.a.e() == 56)
       {
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setForeground(getResources().getDrawable(2130842761));
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setForeground(getResources().getDrawable(2130842774));
         label148:
         if (!this.jdField_a_of_type_Boolean) {
           break label411;
         }
         Object localObject = orc.a(1, this.jdField_a_of_type_Qbs.a.e());
         localObject = URLDrawable.getDrawable(a(localpgd), ((Integer)((Pair)localObject).first).intValue(), ((Integer)((Pair)localObject).second).intValue(), new ColorDrawable(-1447447), new ColorDrawable(-1447447));
-        ((URLDrawable)localObject).setDecodeHandler(bcuq.t);
+        ((URLDrawable)localObject).setDecodeHandler(bcyz.t);
         this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageDrawable((Drawable)localObject);
         this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(0);
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -266,21 +266,21 @@ public class ComponentContentVerticalSmallVideo
         {
           QLog.e("PolymericSmallVideo_ComponentContentVerticalSmallVideo", 1, "bindData setVideoCover failed. Exception e = " + localException);
           continue;
-          bjxn localbjxn = bjxj.a(BaseApplicationImpl.getApplication().getRuntime());
-          if ((localbjxn != null) && (localbjxn.jdField_a_of_type_Boolean))
+          bkbu localbkbu = bkbq.a(BaseApplicationImpl.getApplication().getRuntime());
+          if ((localbkbu != null) && (localbkbu.jdField_a_of_type_Boolean))
           {
             this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-            this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(aekt.a(3.0F, getResources()));
-            this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130848779, 0, 0, 0);
+            this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(aepi.a(3.0F, getResources()));
+            this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130848852, 0, 0, 0);
             label521:
-            if ((localbjxn == null) || (localbjxn.b)) {
+            if ((localbkbu == null) || (localbkbu.b)) {
               break label585;
             }
             this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
           }
           for (;;)
           {
-            if ((localbjxn == null) || (localbjxn.c)) {
+            if ((localbkbu == null) || (localbkbu.c)) {
               break label658;
             }
             this.d.setVisibility(8);
@@ -289,8 +289,8 @@ public class ComponentContentVerticalSmallVideo
             this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
             break label521;
             label585:
-            if ((localbjxn != null) && (localbjxn.jdField_a_of_type_Int > 0)) {
-              this.jdField_b_of_type_AndroidWidgetTextView.setMaxLines(localbjxn.jdField_a_of_type_Int);
+            if ((localbkbu != null) && (localbkbu.jdField_a_of_type_Int > 0)) {
+              this.jdField_b_of_type_AndroidWidgetTextView.setMaxLines(localbkbu.jdField_a_of_type_Int);
             }
             if (rqj.q(paramObject)) {
               this.jdField_b_of_type_AndroidWidgetTextView.setText(paramObject.mTitle);
@@ -299,7 +299,7 @@ public class ComponentContentVerticalSmallVideo
             }
           }
           label658:
-          this.d.setText(getResources().getString(2131718774, new Object[] { paramObject.getCommentCount() + "" }));
+          this.d.setText(getResources().getString(2131718786, new Object[] { paramObject.getCommentCount() + "" }));
           if (paramObject.mVideoPlayCount <= 0) {
             this.jdField_c_of_type_AndroidWidgetTextView.setText("0");
           } else {

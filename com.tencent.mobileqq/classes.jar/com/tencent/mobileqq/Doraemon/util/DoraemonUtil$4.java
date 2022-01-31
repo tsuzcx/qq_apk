@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.Doraemon.util;
 
-import absf;
+import abwu;
 
 public final class DoraemonUtil$4
   implements Runnable
 {
-  public DoraemonUtil$4(absf paramabsf, int paramInt) {}
+  public DoraemonUtil$4(abwu paramabwu, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Absf.onPermission(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Abwu.onPermission(this.jdField_a_of_type_Int);
   }
 }
 

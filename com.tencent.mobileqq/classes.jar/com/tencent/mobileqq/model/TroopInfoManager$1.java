@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.model;
 
-import aubr;
+import auga;
 
 public class TroopInfoManager$1
   implements Runnable
 {
-  public TroopInfoManager$1(aubr paramaubr) {}
+  public TroopInfoManager$1(auga paramauga) {}
   
   public void run()
   {

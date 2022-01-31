@@ -1,8 +1,8 @@
 package com.tencent.mfsdk.reporter;
 
-import abrh;
+import abvw;
 import android.text.TextUtils;
-import bdcs;
+import bdhb;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +15,7 @@ public class QCloudFileUploadRunnable
   extends BaseUploadRunnable
 {
   private int jdField_a_of_type_Int;
-  private abrh jdField_a_of_type_Abrh;
+  private abvw jdField_a_of_type_Abvw;
   private File jdField_a_of_type_JavaIoFile;
   private FileInputStream jdField_a_of_type_JavaIoFileInputStream;
   private String jdField_a_of_type_JavaLangString;
@@ -30,12 +30,12 @@ public class QCloudFileUploadRunnable
   private String d;
   private String e;
   
-  public QCloudFileUploadRunnable(URL paramURL, String paramString, JSONObject paramJSONObject, abrh paramabrh, int paramInt, MqqHandler paramMqqHandler)
+  public QCloudFileUploadRunnable(URL paramURL, String paramString, JSONObject paramJSONObject, abvw paramabvw, int paramInt, MqqHandler paramMqqHandler)
   {
     this.jdField_a_of_type_JavaNetURL = paramURL;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_Abrh = paramabrh;
+    this.jdField_a_of_type_Abvw = paramabvw;
     this.jdField_c_of_type_Int = paramInt;
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
     if (QLog.isColorLevel()) {
@@ -104,7 +104,7 @@ public class QCloudFileUploadRunnable
       l = System.currentTimeMillis();
       str = "out_" + String.valueOf(l) + ".zip";
       localObject = (String)localObject + "/" + str;
-      bdcs.e(this.jdField_a_of_type_JavaLangString, (String)localObject);
+      bdhb.e(this.jdField_a_of_type_JavaLangString, (String)localObject);
     }
     return false;
     return false;
@@ -355,20 +355,20 @@ public class QCloudFileUploadRunnable
     //   446: aload 7
     //   448: invokevirtual 304	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   451: invokespecial 307	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   454: invokestatic 312	abrx:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   454: invokestatic 312	abwm:a	(Ljava/io/InputStream;)Ljava/lang/String;
     //   457: invokevirtual 314	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:a	(Ljava/lang/String;)Z
     //   460: istore_3
     //   461: aload 6
     //   463: astore 5
     //   465: aload_0
-    //   466: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Abrh	Labrh;
+    //   466: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Abvw	Labvw;
     //   469: ifnull +24 -> 493
     //   472: iload_3
     //   473: ifeq +20 -> 493
     //   476: aload 6
     //   478: astore 5
     //   480: aload_0
-    //   481: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Abrh	Labrh;
+    //   481: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Abvw	Labvw;
     //   484: aload_0
     //   485: getfield 27	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_c_of_type_Int	I
     //   488: invokeinterface 318 2 0

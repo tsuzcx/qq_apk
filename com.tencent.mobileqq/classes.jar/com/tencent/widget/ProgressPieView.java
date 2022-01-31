@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -16,9 +16,9 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import bhvw;
-import bhvx;
-import bhvy;
+import biad;
+import biae;
+import biaf;
 
 public class ProgressPieView
   extends View
@@ -31,9 +31,9 @@ public class ProgressPieView
   RectF jdField_a_of_type_AndroidGraphicsRectF;
   public Drawable a;
   DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics;
-  bhvw jdField_a_of_type_Bhvw = new bhvw(this);
-  bhvx jdField_a_of_type_Bhvx = new bhvx(this);
-  bhvy jdField_a_of_type_Bhvy;
+  biad jdField_a_of_type_Biad = new biad(this);
+  biae jdField_a_of_type_Biae = new biae(this);
+  biaf jdField_a_of_type_Biaf;
   public String a;
   public boolean a;
   public float b;
@@ -678,8 +678,8 @@ public class ProgressPieView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    paramInt1 = resolveSize(aekt.a(this.jdField_d_of_type_Float, getResources()), paramInt1);
-    paramInt2 = resolveSize(aekt.a(this.jdField_d_of_type_Float, getResources()), paramInt2);
+    paramInt1 = resolveSize(aepi.a(this.jdField_d_of_type_Float, getResources()), paramInt1);
+    paramInt2 = resolveSize(aepi.a(this.jdField_d_of_type_Float, getResources()), paramInt2);
     this.jdField_e_of_type_Float = Math.min(paramInt1, paramInt2);
     setMeasuredDimension(paramInt1, paramInt2);
   }
@@ -743,9 +743,9 @@ public class ProgressPieView
     invalidate();
   }
   
-  public void setOnProgressListener(bhvy parambhvy)
+  public void setOnProgressListener(biaf parambiaf)
   {
-    this.jdField_a_of_type_Bhvy = parambhvy;
+    this.jdField_a_of_type_Biaf = parambiaf;
   }
   
   public void setPregressPreColor(int paramInt)
@@ -761,16 +761,16 @@ public class ProgressPieView
     }
     this.jdField_b_of_type_Int = paramInt;
     invalidate();
-    if (this.jdField_a_of_type_Bhvy != null)
+    if (this.jdField_a_of_type_Biaf != null)
     {
       if (this.jdField_b_of_type_Int == this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_Bhvy.b();
+        this.jdField_a_of_type_Biaf.b();
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_Bhvy.a(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Biaf.a(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
   }
   
   public void setProgressColor(int paramInt)

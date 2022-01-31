@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import acip;
-import agdf;
+import acne;
+import aghu;
 
 public class ChatHistoryEmotionView$4
   implements Runnable
 {
-  public ChatHistoryEmotionView$4(acip paramacip) {}
+  public ChatHistoryEmotionView$4(acne paramacne) {}
   
   public void run()
   {
     if (this.this$0.a) {
-      agdf.a(acip.a(this.this$0));
+      aghu.a(acne.a(this.this$0));
     }
     this.this$0.g();
   }

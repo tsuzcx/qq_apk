@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
-import bjdd;
-import bjde;
-import bjdf;
+import bjhk;
+import bjhl;
+import bjhm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.XListView;
 
@@ -32,11 +32,11 @@ public class FeedListView
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void a(bjdf parambjdf) {}
+  public void a(bjhm parambjhm) {}
   
   public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, long paramLong) {}
   
-  public boolean a(String paramString, bjdf parambjdf)
+  public boolean a(String paramString, bjhm parambjhm)
   {
     return false;
   }
@@ -65,9 +65,9 @@ public class FeedListView
   
   public void q_() {}
   
-  public void setExpandHead(bjdd parambjdd) {}
+  public void setExpandHead(bjhk parambjhk) {}
   
-  public void setFeedUinChangedListener(bjde parambjde) {}
+  public void setFeedUinChangedListener(bjhl parambjhl) {}
   
   public void setLongClickValid(boolean paramBoolean)
   {

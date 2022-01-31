@@ -1,18 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.miniapp.MiniAppOptions;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public final class auaf
-  implements Parcelable.Creator<MiniAppOptions>
+class auaf
+  implements DialogInterface.OnClickListener
 {
-  public MiniAppOptions a(Parcel paramParcel)
-  {
-    return new MiniAppOptions(paramParcel);
-  }
+  auaf(auad paramauad, BaseChatPie paramBaseChatPie, short paramShort) {}
   
-  public MiniAppOptions[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new MiniAppOptions[paramInt];
+    if (paramInt == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(1);
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      if (paramInt == 1)
+      {
+        this.jdField_a_of_type_Auad.a(this.jdField_a_of_type_Short, true, true);
+        azqs.b(auad.a(this.jdField_a_of_type_Auad), "dc00898", "", "", "0X8009978", "0X8009978", this.jdField_a_of_type_Auad.a(this.jdField_a_of_type_Short), this.jdField_a_of_type_Auad.a(this.jdField_a_of_type_Short), "", "", "", "");
+      }
+    }
   }
 }
 

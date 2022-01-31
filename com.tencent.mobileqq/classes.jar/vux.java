@@ -1,117 +1,91 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-public abstract class vux
-  implements IEventReceiver
+public class vux
+  extends JobSegment<StoryVideoItem, StoryVideoItem>
+  implements uoa
 {
-  private long a;
-  protected Map<Subscriber, String> a;
-  protected Set<vno> a;
-  public vuu a;
-  protected boolean a;
-  public boolean b;
+  private StoryVideoItem jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+  private vuw jdField_a_of_type_Vuw;
+  private boolean jdField_a_of_type_Boolean;
   
-  public Map<Subscriber, String> a()
+  public vux(VideoViewVideoHolder paramVideoViewVideoHolder, vuw paramvuw, boolean paramBoolean)
   {
-    return null;
+    this.jdField_a_of_type_Vuw = paramvuw;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public Set<vno> a()
+  protected void a(StoryVideoItem paramStoryVideoItem)
   {
-    return null;
+    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 6);
+    super.notifyResult(paramStoryVideoItem);
   }
   
-  public void a()
+  protected void a(JobContext paramJobContext, StoryVideoItem paramStoryVideoItem)
   {
-    Iterator localIterator;
-    Object localObject;
-    if ((this.jdField_a_of_type_JavaUtilMap != null) && (!this.jdField_a_of_type_JavaUtilMap.isEmpty()))
+    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 5);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    if (this.jdField_a_of_type_Boolean)
     {
-      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (Subscriber)((Map.Entry)localIterator.next()).getKey();
-        uht.a().unRegisterSubscriber((Subscriber)localObject);
-      }
-      this.jdField_a_of_type_JavaUtilMap.clear();
+      a(paramStoryVideoItem);
+      return;
     }
-    if ((this.jdField_a_of_type_JavaUtilSet != null) && (!this.jdField_a_of_type_JavaUtilSet.isEmpty()))
+    wxe.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully");
+    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 5);
+    this.jdField_a_of_type_Vuw.a().a(paramStoryVideoItem.mVid, 0, true, this);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (!isCanceled())
     {
-      localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (vno)localIterator.next();
-        this.jdField_a_of_type_Vuu.b((vno)localObject);
-      }
-      this.jdField_a_of_type_JavaUtilSet.clear();
+      wxe.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully, onSuccess");
+      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, "VD", SystemClock.uptimeMillis());
+      a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      return;
     }
+    wxe.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully, onSuccess. stream canceled");
   }
   
-  public final void a(@NonNull vuu paramvuu, int paramInt, @NonNull vpk paramvpk)
+  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
   {
-    vuu.a(paramvuu, paramInt);
-    this.jdField_a_of_type_Vuu = paramvuu;
-    if (!this.jdField_a_of_type_Boolean)
+    if (!isCanceled())
     {
-      Object localObject1 = a();
-      if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
-      {
-        Iterator localIterator = ((Map)localObject1).entrySet().iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject2 = (Map.Entry)localIterator.next();
-          Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject2).getKey();
-          localObject2 = (String)((Map.Entry)localObject2).getValue();
-          uht.a().registerSubscriber((String)localObject2, localSubscriber);
-        }
-        if (this.jdField_a_of_type_JavaUtilMap == null) {
-          this.jdField_a_of_type_JavaUtilMap = new HashMap();
-        }
-        this.jdField_a_of_type_JavaUtilMap.putAll((Map)localObject1);
-      }
-      localObject1 = a();
-      if ((localObject1 != null) && (!((Set)localObject1).isEmpty()))
-      {
-        if (this.jdField_a_of_type_JavaUtilSet == null) {
-          this.jdField_a_of_type_JavaUtilSet = new HashSet();
-        }
-        this.jdField_a_of_type_JavaUtilSet.addAll((Collection)localObject1);
-      }
-      this.jdField_a_of_type_Boolean = true;
+      wxe.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, paramErrorMessage, "showVideo, start download video fully, onError", new Object[0]);
+      VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 3);
+      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
+      VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, paramErrorMessage.errorCode);
+      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), paramErrorMessage.getErrorMessage()));
+      return;
     }
-    a(paramvuu.a, paramvpk);
+    wxe.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, paramErrorMessage, "showVideo, start download video fully, onError. stream canceled", new Object[0]);
   }
   
-  public final void a(vuy paramvuy, vpk paramvpk)
+  public void b(String paramString, int paramInt)
   {
-    paramvuy.a();
-    b(paramvuy, paramvpk);
-  }
-  
-  public boolean a(View paramView)
-  {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
-      return false;
+    if (!isCanceled())
+    {
+      wxe.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully, onCancel");
+      VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 3);
+      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
+      VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 1234);
+      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), "Download video cancel"));
+      return;
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    return true;
+    wxe.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully, onCancel. stream canceled");
   }
   
-  public abstract void b(vuy paramvuy, vpk paramvpk);
-  
-  public boolean isValidate()
+  public void onCancel()
   {
-    return this.b;
+    super.onCancel();
+    wxe.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "VideoFileSegment onCancel");
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) {
+      this.jdField_a_of_type_Vuw.a().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0);
+    }
   }
 }
 

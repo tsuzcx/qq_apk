@@ -1,26 +1,54 @@
+import android.os.AsyncTask;
+import com.tencent.mobileqq.widget.ksong.KSongProsBar;
+import com.tencent.mobileqq.widget.ksong.KSongView;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.QwAdapter;
+
 public class bewz
+  extends AsyncTask<String, Void, beww>
 {
-  private static bish a;
+  public bewz(KSongView paramKSongView) {}
   
-  private static bish a()
+  protected beww a(String... paramVarArgs)
   {
-    try
+    String str = paramVarArgs[0];
+    paramVarArgs = paramVarArgs[1];
+    for (;;)
     {
-      if (a == null)
+      try
       {
-        a = new bish();
-        a.a("OpenLog");
-        a.a(4);
+        KSongView.a(this.a, KSongView.a(this.a, paramVarArgs));
+        if ((KSongView.a(this.a) != null) && (KSongView.a(this.a, str)))
+        {
+          paramVarArgs = KSongView.a(this.a);
+          return paramVarArgs;
+        }
       }
-      bish localbish = a;
-      return localbish;
+      finally {}
+      paramVarArgs = null;
     }
-    finally {}
   }
   
-  public static bish a(String paramString1, int paramInt, String paramString2)
+  protected void a(beww parambeww)
   {
-    return a().c(paramString1, paramInt, paramString2);
+    boolean bool = false;
+    if (parambeww != null)
+    {
+      if (KSongView.a(this.a) != null) {
+        KSongView.a(this.a).a(parambeww);
+      }
+      KSongView.a(this.a).notifyDataSetChanged();
+      KSongView.a(this.a, 0);
+    }
+    QLog.i("KSongView", 2, "InitTask config = " + parambeww);
+    if (KSongView.a(this.a) != null)
+    {
+      bewy localbewy = KSongView.a(this.a);
+      if (parambeww != null) {
+        bool = true;
+      }
+      localbewy.a(bool);
+    }
   }
 }
 

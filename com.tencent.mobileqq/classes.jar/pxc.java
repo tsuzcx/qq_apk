@@ -43,11 +43,11 @@ public class pxc
       paramBaseArticleInfo = new JSONObject(paramBaseArticleInfo.proteusItemsData).optString("article_jump_url");
       if ((!TextUtils.isEmpty(paramBaseArticleInfo)) && (paramBaseArticleInfo.startsWith("mqqapi://readinjoy/open?src_type=internal&target=4")))
       {
-        paramBaseArticleInfo = bhos.a(paramBaseArticleInfo);
+        paramBaseArticleInfo = bhsz.a(paramBaseArticleInfo);
         String str = (String)paramBaseArticleInfo.get("appSchema");
         if (("com.tencent.reading".equals(paramBaseArticleInfo.get("appPackageName"))) && (str != null))
         {
-          paramBaseArticleInfo = (String)bhos.a(Uri.decode(str)).get("rowkey");
+          paramBaseArticleInfo = (String)bhsz.a(Uri.decode(str)).get("rowkey");
           if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramBaseArticleInfo))
           {
             this.jdField_a_of_type_JavaUtilSet.add(paramBaseArticleInfo);
@@ -119,7 +119,7 @@ public class pxc
       if (!c) {
         break;
       }
-      this.d = bdem.a(BaseApplicationImpl.getApplication(), "com.tencent.reading");
+      this.d = bdiv.a(BaseApplicationImpl.getApplication(), "com.tencent.reading");
       c = false;
       return;
       bool = false;
@@ -133,7 +133,7 @@ public class pxc
     do
     {
       return paramString;
-      str = (String)bhos.a(paramString).get("rowkey");
+      str = (String)bhsz.a(paramString).get("rowkey");
       str = (String)this.jdField_a_of_type_JavaUtilMap.get(str);
     } while (TextUtils.isEmpty(str));
     paramString = paramString + "&item=" + str;

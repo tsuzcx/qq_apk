@@ -1,44 +1,93 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.4;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class aktp
-  implements bevy
+  extends aktk
 {
-  public aktp(CmGameCommonShare.4 param4) {}
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  boolean d;
   
-  public void a(BaseResp paramBaseResp)
+  public aktp(QQAppInterface paramQQAppInterface)
   {
-    if (paramBaseResp == null) {
-      return;
+    super(paramQQAppInterface);
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp" + paramQQAppInterface.c(), 0);
+    this.jdField_a_of_type_Int = paramQQAppInterface.getInt("hire_priority", 1);
+    this.jdField_b_of_type_Int = paramQQAppInterface.getInt("hire_action", 0);
+    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getString("hire_word", "");
+    this.jdField_a_of_type_Long = paramQQAppInterface.getLong("hire_for", 0L);
+    this.jdField_b_of_type_Long = paramQQAppInterface.getLong("hire_end", 0L);
+  }
+  
+  public int a(albr paramalbr, int paramInt, AppInterface paramAppInterface, Context paramContext)
+  {
+    if ((NetConnInfoCenter.getServerTime() > this.jdField_b_of_type_Long) || (this.d) || (!this.c)) {
+      return super.a(paramalbr, paramInt, paramAppInterface, paramContext);
     }
-    QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[shareResult2WXFriendOrCircle], resp.errCode:" + paramBaseResp.errCode);
-    if (paramBaseResp.errCode == 0) {
-      if (this.a.a == 0) {
-        aktn.a(this.a.this$0, 0, 2);
-      }
-    }
-    for (;;)
+    if (this.jdField_b_of_type_Int > 0)
     {
-      WXShareHelper.a().b(this);
-      return;
-      aktn.a(this.a.this$0, 0, 3);
-      continue;
-      if (paramBaseResp.errCode == -2)
+      if (ApolloUtil.c(5, this.jdField_b_of_type_Int))
       {
-        if (this.a.a == 0) {
-          aktn.a(this.a.this$0, 2, 2);
-        } else {
-          aktn.a(this.a.this$0, 2, 3);
-        }
+        paramContext = new ApolloActionData();
+        paramContext.actionId = this.jdField_b_of_type_Int;
+        paramContext.actionType = 0;
+        albi.a(paramalbr, 6, paramContext);
+        this.d = true;
+        paramAppInterface.getApp().getSharedPreferences("apollo_sp" + paramAppInterface.getCurrentAccountUin(), 0).edit().putLong("hire_end", NetConnInfoCenter.getServerTime()).commit();
+        return 0;
       }
-      else if (this.a.a == 0) {
-        aktn.a(this.a.this$0, 1, 2);
-      } else {
-        aktn.a(this.a.this$0, 1, 3);
-      }
+      QLog.w("AplloDrawerStatus", 2, "HireDrawerStatus resource is not ready, actionId:" + this.jdField_b_of_type_Int);
+      super.a(paramalbr, paramInt, paramAppInterface, paramContext);
+      aldv.a(paramAppInterface, ApolloUtil.c(this.jdField_b_of_type_Int) + "/d.zip", ApolloUtil.d(this.jdField_b_of_type_Int));
+      return 0;
     }
+    QLog.w("AplloDrawerStatus", 2, "HireDrawerStatus action is not correct, actionId:" + this.jdField_b_of_type_Int);
+    super.a(paramalbr, paramInt, paramAppInterface, paramContext);
+    paramAppInterface.getApp().getSharedPreferences("apollo_sp" + paramAppInterface.getCurrentAccountUin(), 0).edit().putLong("hire_end", NetConnInfoCenter.getServerTime()).commit();
+    return 0;
+  }
+  
+  public void a(albr paramalbr, Context paramContext, QQAppInterface paramQQAppInterface)
+  {
+    paramalbr = new Intent();
+    paramalbr.putExtra("extra_key_url_append", "&tab=interactive&suin=" + paramQQAppInterface.getCurrentAccountUin());
+    ApolloUtil.a(paramContext, paramalbr, "drawer", aliu.ai, null);
+    a(paramQQAppInterface);
+    VipUtils.a(null, "cmshow", "Apollo", "0X80065F002", 0, 0, new String[] { String.valueOf(this.jdField_b_of_type_Int) });
+  }
+  
+  public void a(albr paramalbr, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (!this.c) {}
+    boolean bool;
+    do
+    {
+      return;
+      bool = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp" + paramQQAppInterface.c(), 0).getBoolean("hire_bubble_click", false);
+    } while ((NetConnInfoCenter.getServerTime() > this.jdField_b_of_type_Long) || (bool));
+    this.jdField_b_of_type_Boolean = true;
+    albi.a(paramalbr, this.jdField_a_of_type_JavaLangString, 7, 0);
+    VipUtils.a(null, "cmshow", "Apollo", "0X80065F001", 0, 0, new String[] { String.valueOf(this.jdField_b_of_type_Int) });
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    paramQQAppInterface.getApp().getSharedPreferences("apollo_sp" + paramQQAppInterface.c(), 0).edit().putBoolean("hire_bubble_click", true).commit();
   }
 }
 

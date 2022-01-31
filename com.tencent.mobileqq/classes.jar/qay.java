@@ -10,15 +10,15 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class qay
   extends pxl
 {
-  public qay(Context paramContext, bcws parambcws, rqj paramrqj)
+  public qay(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()
   {
     this.jdField_a_of_type_Boolean = true;
-    return f(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).q().g().l().n();
+    return f(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).q().g().l().n();
   }
   
   public pxl d()
@@ -36,7 +36,7 @@ public class qay
     {
       LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.setMargins(aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLayoutParams.setMargins(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       localLinearLayout2.setLayoutParams(localLayoutParams);
       localLinearLayout2.addView((View)this.jdField_a_of_type_Pxk);
       localLinearLayout1.addView(localLinearLayout2);

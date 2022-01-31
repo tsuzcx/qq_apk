@@ -1,17 +1,34 @@
-import java.util.Comparator;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
 
 public class bbnt
-  implements Comparator<bbnr>
+  implements View.OnFocusChangeListener
 {
-  public int a(bbnr parambbnr1, bbnr parambbnr2)
+  public bbnt(NewTroopContactView paramNewTroopContactView) {}
+  
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (parambbnr1.b < parambbnr2.b) {
-      return 1;
+    if (paramBoolean)
+    {
+      paramView = this.a.a();
+      if (paramView != null)
+      {
+        paramView.d(true);
+        paramView.a(NewTroopContactView.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList);
+        FragmentTransaction localFragmentTransaction = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getSupportFragmentManager().beginTransaction();
+        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
+          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
+        }
+        localFragmentTransaction.add(2131375722, paramView);
+        localFragmentTransaction.commitAllowingStateLoss();
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
+      }
     }
-    if (parambbnr1.b == parambbnr2.b) {
-      return 0;
-    }
-    return -1;
   }
 }
 

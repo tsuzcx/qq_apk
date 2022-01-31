@@ -1,31 +1,73 @@
+import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import java.io.IOException;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bcky
-  extends nac
+public class bcky
+  extends bckw
 {
-  bcky(bckx parambckx, bclf parambclf) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public bcky(String paramString1, String paramString2, bckx parambckx, int paramInt, Bundle paramBundle)
   {
-    paramBundle = new cmd0x934.RspBody();
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_Bclf.a(paramInt, paramBundle);
-      return;
+    super(paramString1, paramString2, parambckx, paramInt, paramBundle);
+  }
+  
+  protected JSONObject a(HashMap<String, Object>... paramVarArgs)
+  {
+    if (isCancelled()) {
+      return null;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    Object localObject = paramVarArgs[0];
+    if (((((HashMap)localObject).get("CONTEXT") instanceof Context)) && ((((HashMap)localObject).get("BUNDLE") instanceof Bundle)))
     {
-      for (;;)
+      paramVarArgs = (Context)((HashMap)localObject).get("CONTEXT");
+      localObject = (Bundle)((HashMap)localObject).get("BUNDLE");
+    }
+    for (;;)
+    {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
+        Bundle localBundle = new Bundle();
+        String str1 = ((Bundle)localObject).getString("Cookie");
+        String str2 = ((Bundle)localObject).getString("Referer");
+        String str3 = ((Bundle)localObject).getString("Origin");
+        if (str1 != null)
+        {
+          localBundle.putString("Cookie", str1);
+          ((Bundle)localObject).remove("Cookie");
         }
+        if (str2 != null)
+        {
+          localBundle.putString("Referer", str2);
+          ((Bundle)localObject).remove("Referer");
+        }
+        if (str3 != null)
+        {
+          localBundle.putString("Origin", str3);
+          ((Bundle)localObject).remove("Origin");
+        }
+        paramVarArgs = new JSONObject(ndd.a(paramVarArgs, this.a, this.b, (Bundle)localObject, localBundle));
       }
+      catch (IOException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        paramVarArgs = null;
+        continue;
+      }
+      catch (JSONException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        paramVarArgs = null;
+        continue;
+      }
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+      }
+      return paramVarArgs;
+      paramVarArgs = null;
     }
   }
 }

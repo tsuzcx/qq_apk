@@ -6,7 +6,7 @@ import com.tencent.biz.lebasearch.Utils;
 public final class nfv
   implements DialogInterface.OnClickListener
 {
-  public nfv(int paramInt, alkr paramalkr, Context paramContext, ymk paramymk, long paramLong) {}
+  public nfv(int paramInt, alpg paramalpg, Context paramContext, yqz paramyqz, long paramLong) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
@@ -17,19 +17,19 @@ public final class nfv
     case 1: 
       if (this.jdField_a_of_type_Int == 1)
       {
-        this.jdField_a_of_type_Alkr.onUpdate(17, false, null);
+        this.jdField_a_of_type_Alpg.onUpdate(17, false, null);
         paramDialogInterface.dismiss();
         return;
       }
-      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ymk, this.jdField_a_of_type_Alkr, this.jdField_a_of_type_Long, false);
+      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Yqz, this.jdField_a_of_type_Alpg, this.jdField_a_of_type_Long, false);
       return;
     }
     if (this.jdField_a_of_type_Int == 1)
     {
-      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ymk, this.jdField_a_of_type_Alkr, this.jdField_a_of_type_Long, true);
+      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Yqz, this.jdField_a_of_type_Alpg, this.jdField_a_of_type_Long, true);
       return;
     }
-    this.jdField_a_of_type_Alkr.onUpdate(17, false, null);
+    this.jdField_a_of_type_Alpg.onUpdate(17, false, null);
     paramDialogInterface.dismiss();
   }
 }

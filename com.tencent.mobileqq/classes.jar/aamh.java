@@ -1,34 +1,72 @@
-import android.os.Bundle;
+import android.content.Context;
 import android.text.TextUtils;
+import com.tencent.ad.tangram.process.AdProcessManager;
+import com.tencent.ad.tangram.process.AdProcessManagerAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.ToolAppRuntime;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 
-public final class aamh
+public class aamh
+  implements AdProcessManagerAdapter
 {
-  public Bundle a;
-  
-  public aamh(Bundle paramBundle)
+  public Boolean isOnMainProcess()
   {
-    this.a = paramBundle;
-  }
-  
-  public String a()
-  {
-    if (this.a != null) {
-      return this.a.getString("IPC_ACTION");
+    if (BaseApplicationImpl.getApplication() == null) {}
+    while (BaseApplicationImpl.getApplication().getRuntime() == null) {
+      return null;
     }
-    return null;
+    return Boolean.valueOf(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface);
   }
   
-  public boolean a()
+  public Boolean isOnWebProcess()
   {
-    return (!TextUtils.isEmpty(a())) && (!TextUtils.isEmpty(b()));
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    do
+    {
+      return null;
+      localObject = AdProcessManager.INSTANCE.getCurrentProcessName((Context)localObject);
+    } while (TextUtils.isEmpty((CharSequence)localObject));
+    return Boolean.valueOf(TextUtils.equals((CharSequence)localObject, "com.tencent.mobileqq:tool"));
   }
   
-  public String b()
+  public Boolean isWebProcessRunning()
   {
-    if (this.a != null) {
-      return this.a.getString("IPC_TO_PROCESS_NAME");
+    Object localObject = isWebProcessRunningForPreloading();
+    if ((localObject != null) && (((Boolean)localObject).booleanValue())) {
+      return Boolean.valueOf(true);
     }
-    return null;
+    localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    for (;;)
+    {
+      return null;
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+      if ((localObject != null) && ((localObject instanceof QQAppInterface))) {
+        try
+        {
+          boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
+          return Boolean.valueOf(bool);
+        }
+        catch (Throwable localThrowable)
+        {
+          aase.d("GdtProcessManagerAdapter", "isWebProcessRunning", localThrowable);
+        }
+      }
+    }
+  }
+  
+  public Boolean isWebProcessRunningForPreloading()
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    do
+    {
+      return null;
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    } while ((localObject == null) || (!(localObject instanceof ToolAppRuntime)));
+    return Boolean.valueOf(beiy.s);
   }
 }
 

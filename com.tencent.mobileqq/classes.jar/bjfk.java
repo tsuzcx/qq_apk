@@ -1,6 +1,9 @@
 public abstract interface bjfk
-  extends bjfi
-{}
+{
+  public abstract void a(atya paramatya);
+  
+  public abstract void b(atya paramatya);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

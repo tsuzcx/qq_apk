@@ -1,8 +1,12 @@
-import org.json.JSONObject;
-
-public abstract interface annk
+public class annk
 {
-  public abstract void a(boolean paramBoolean, JSONObject paramJSONObject, Object paramObject);
+  public void a(annm paramannm, Object paramObject) {}
+  
+  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject) {}
+  
+  public void b(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
 }
 
 

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.utils;
 
-import bdfh;
-import bdfj;
+import bdjq;
+import bdjs;
 import java.lang.ref.WeakReference;
 
 public class QQCustomArkDialog$2$1
   implements Runnable
 {
-  public QQCustomArkDialog$2$1(bdfj parambdfj, WeakReference paramWeakReference, int paramInt) {}
+  public QQCustomArkDialog$2$1(bdjs parambdjs, WeakReference paramWeakReference, int paramInt) {}
   
   public void run()
   {
-    bdfh localbdfh = (bdfh)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localbdfh == null) {
+    bdjq localbdjq = (bdjq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localbdjq == null) {
       return;
     }
-    bdfh.a(localbdfh, this.jdField_a_of_type_Int);
+    bdjq.a(localbdjq, this.jdField_a_of_type_Int);
   }
 }
 

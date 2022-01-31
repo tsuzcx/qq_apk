@@ -1,114 +1,51 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.bigbrother.ServerApi.ErrorInfo;
-import com.tencent.mobileqq.bigbrother.ServerApi.ReqPreDownloadRecmd;
-import com.tencent.mobileqq.bigbrother.ServerApi.ReqUpdateDownCountRecmd;
-import com.tencent.mobileqq.bigbrother.ServerApi.RspUpdateDownCountRecmd;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
-import mqq.observer.BusinessObserver;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class anrr
-  extends MSFServlet
 {
-  private String a = "RockDownloaderServlet";
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private HashMap<String, anrs> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public anrr(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, "onReceive with code: " + paramFromServiceMsg.getResultCode());
-    }
-    Object localObject = paramIntent.getStringExtra("BUNDLE_CMD");
-    boolean bool = paramFromServiceMsg.isSuccess();
-    try
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  public anrs a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
     {
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-      paramFromServiceMsg = new byte[localByteBuffer.getInt() - 4];
-      localByteBuffer.get(paramFromServiceMsg);
-      if ("QQApkSvc.pre_download_apk".equals(localObject))
-      {
-        localObject = new Bundle();
-        ((Bundle)localObject).putByteArray("BUNDLE_KEY_RESPONSE_BYTE", paramFromServiceMsg);
-        if ((paramIntent instanceof NewIntent))
-        {
-          paramIntent = (NewIntent)paramIntent;
-          if (paramIntent.getObserver() != null) {
-            paramIntent.getObserver().onReceive(1, bool, (Bundle)localObject);
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.getPreprocessor in valid param");
       }
-      else if ("QQApkSvc.update_download_count".equals(localObject))
-      {
-        paramIntent = new ServerApi.RspUpdateDownCountRecmd();
-        paramIntent.mergeFrom(paramFromServiceMsg);
-        paramFromServiceMsg = (ServerApi.ErrorInfo)paramIntent.err_info.get();
-        if (paramFromServiceMsg != null)
-        {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.d(this.a, 2, new Object[] { localObject, " ", Boolean.valueOf(bool), " ", Integer.valueOf(paramIntent.download_num.get()), " ", paramFromServiceMsg.err_msg.get(), " ", Integer.valueOf(paramFromServiceMsg.err_code.get()), " ", paramFromServiceMsg.jump_url.get() });
-        }
-      }
+      return null;
     }
-    catch (Exception paramIntent)
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
-      if (QLog.isColorLevel())
-      {
-        QLog.d(this.a, 2, paramIntent, new Object[0]);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a, 2, new Object[] { localObject, " ", Boolean.valueOf(bool), " ", Integer.valueOf(paramIntent.download_num.get()) });
-        }
-      }
+      paramString = (anrs)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      return paramString;
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(String paramString, anrs paramanrs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, "onSend");
-    }
-    String str = paramIntent.getStringExtra("BUNDLE_CMD");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, new Object[] { "cmd=", str });
-    }
-    Object localObject;
-    if ("QQApkSvc.pre_download_apk".equals(str))
-    {
-      localObject = new ServerApi.ReqPreDownloadRecmd();
-      ((ServerApi.ReqPreDownloadRecmd)localObject).platform.set("android");
-      ((ServerApi.ReqPreDownloadRecmd)localObject).source.set(paramIntent.getStringExtra("BUNDLE_KEY_SOURCE"));
-      ((ServerApi.ReqPreDownloadRecmd)localObject).scene.set(paramIntent.getStringExtra("BUNDLE_KEY_SCENE"));
-      ((ServerApi.ReqPreDownloadRecmd)localObject).pkg_name.set(paramIntent.getStringExtra("BUNDLE_KEY_PKG_NAME"));
-      ((ServerApi.ReqPreDownloadRecmd)localObject).uin.set(paramIntent.getLongExtra("BUNDLE_KEY_UIN", 0L));
-      paramPacket.setSSOCommand(str);
-      paramPacket.putSendData(bdku.a(((ServerApi.ReqPreDownloadRecmd)localObject).toByteArray()));
-    }
-    for (;;)
+    if ((TextUtils.isEmpty(paramString)) || (paramanrs == null))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(this.a, 2, "onSendFinish");
+        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.setPreprocessor in valid param");
       }
       return;
-      if ("QQApkSvc.update_download_count".equals(str))
-      {
-        localObject = new ServerApi.ReqUpdateDownCountRecmd();
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).source.set(paramIntent.getStringExtra("BUNDLE_KEY_SOURCE"));
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).scene.set(paramIntent.getStringExtra("BUNDLE_KEY_SCENE"));
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).pkg_name.set(paramIntent.getStringExtra("BUNDLE_KEY_PKG_NAME"));
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).uin.set(paramIntent.getLongExtra("BUNDLE_KEY_UIN", 0L));
-        paramPacket.setSSOCommand(str);
-        paramPacket.putSendData(bdku.a(((ServerApi.ReqUpdateDownCountRecmd)localObject).toByteArray()));
-      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, new Object[] { "AAShare.setPreprocessor app=", paramString });
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramanrs);
+      return;
     }
   }
 }

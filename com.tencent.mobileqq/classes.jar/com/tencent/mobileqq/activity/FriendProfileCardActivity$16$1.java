@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acun;
+import aczc;
 
 public class FriendProfileCardActivity$16$1
   implements Runnable
 {
-  public FriendProfileCardActivity$16$1(acun paramacun) {}
+  public FriendProfileCardActivity$16$1(aczc paramaczc) {}
   
   public void run()
   {

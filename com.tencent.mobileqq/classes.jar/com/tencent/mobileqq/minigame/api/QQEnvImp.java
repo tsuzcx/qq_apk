@@ -7,9 +7,9 @@ import android.os.Build;
 import android.os.Process;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bdcb;
-import bizf;
-import bngs;
+import bdgk;
+import bjdm;
+import bnle;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -188,7 +188,7 @@ public class QQEnvImp
   @NonNull
   public String getGlobalConfig()
   {
-    return "self = GameGlobal = __TT__GLOBAL__ = global = window = this;\nself.__ttObjdec__ = {};\nself.wx = self.wx || {};\nself.WeixinNativeBuffer = Triton.WeixinNativeBuffer;\nvar __wxConfig = __wxConfig || {};\n__wxConfig.env = {};\n__wxConfig.env.USER_DATA_PATH = '" + MiniAppGlobal.STR_WXFILE + "usr';\n__wxConfig.platform = 'android';\n__wxConfig.QUA = '" + bizf.a() + "';\nwx.env = __wxConfig.env;\nvar __qqConfig = __wxConfig || {};\n";
+    return "self = GameGlobal = __TT__GLOBAL__ = global = window = this;\nself.__ttObjdec__ = {};\nself.wx = self.wx || {};\nself.WeixinNativeBuffer = Triton.WeixinNativeBuffer;\nvar __wxConfig = __wxConfig || {};\n__wxConfig.env = {};\n__wxConfig.env.USER_DATA_PATH = '" + MiniAppGlobal.STR_WXFILE + "usr';\n__wxConfig.platform = 'android';\n__wxConfig.QUA = '" + bjdm.a() + "';\nwx.env = __wxConfig.env;\nvar __qqConfig = __wxConfig || {};\n";
   }
   
   public Set<String> getLogBlackList()
@@ -208,7 +208,7 @@ public class QQEnvImp
   
   public String getPlatformVersion()
   {
-    return bdcb.c();
+    return bdgk.c();
   }
   
   public String getResPath(String paramString1, String paramString2, MiniGameInfo paramMiniGameInfo)
@@ -239,7 +239,7 @@ public class QQEnvImp
   
   public boolean isNotchValid()
   {
-    return bngs.b();
+    return bnle.b();
   }
   
   public int jsErrorDetectInterval()

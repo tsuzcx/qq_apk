@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class agth
-  implements agtl
+class agth
+  extends altm
 {
-  protected QQAppInterface a;
+  agth(agsy paramagsy) {}
   
-  public agth(QQAppInterface paramQQAppInterface)
+  protected void onAddFriend(String paramString)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public void a() {}
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    return agug.a(paramQQAppInterface).a(paramString);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString))
+    {
+      Intent localIntent = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
+      localIntent.putExtra("uintype", 0);
+      agsy.b(this.a, localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.nearby.follow", 2, "onAddFriend, addUin:" + paramString + "|updateSession");
+      }
+    }
   }
 }
 

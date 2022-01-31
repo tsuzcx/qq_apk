@@ -1,24 +1,28 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import android.content.Context;
+import android.view.View.MeasureSpec;
+import android.widget.FrameLayout;
+import com.tencent.widget.GridView;
 
-public class aqab
-  implements View.OnClickListener
+class aqab
+  extends FrameLayout
 {
-  public aqab(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
-  
-  public void onClick(View paramView)
+  public aqab(apzy paramapzy, Context paramContext)
   {
-    if (this.a.getActivity() != null)
-    {
-      paramView = "";
-      if (this.a.getActivity().app != null) {
-        paramView = ((apwx)this.a.getActivity().app.getManager(264)).f();
-      }
-      aqcq.b(this.a.getActivity(), paramView);
+    super(paramContext);
+  }
+  
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int i = apzy.a(this.a).getPaddingLeft() + getPaddingLeft();
+    if (i != paramInt1) {
+      offsetLeftAndRight(i - paramInt1);
     }
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  protected void onMeasure(int paramInt1, int paramInt2)
+  {
+    super.onMeasure(View.MeasureSpec.makeMeasureSpec(apzy.a(this.a).getMeasuredWidth() - apzy.a(this.a).getPaddingLeft() - apzy.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
   }
 }
 

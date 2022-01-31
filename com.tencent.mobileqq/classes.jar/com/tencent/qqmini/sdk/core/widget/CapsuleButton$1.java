@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.widget;
 
 import android.widget.TextView;
-import bgkm;
+import bgot;
 
 class CapsuleButton$1
   implements Runnable
@@ -13,7 +13,7 @@ class CapsuleButton$1
     if ((CapsuleButton.a() > 0) && (CapsuleButton.a(this.this$0) != null))
     {
       CapsuleButton.a(this.this$0).setVisibility(0);
-      bgkm.a(CapsuleButton.a(this.this$0), 7, CapsuleButton.a(), 0);
+      bgot.a(CapsuleButton.a(this.this$0), 7, CapsuleButton.a(), 0);
       return;
     }
     CapsuleButton.a(this.this$0).setVisibility(8);

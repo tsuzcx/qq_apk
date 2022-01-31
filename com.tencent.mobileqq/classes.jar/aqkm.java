@@ -1,15 +1,20 @@
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
 
-public abstract interface aqkm
+public class aqkm
+  implements Animation.AnimationListener
 {
-  public abstract View.OnClickListener a(TextView paramTextView);
+  public aqkm(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
   
-  public abstract boolean a();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.b();
+  }
   
-  public abstract boolean b();
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract boolean c();
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

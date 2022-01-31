@@ -1,35 +1,67 @@
-import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Queue;
+import java.util.Set;
 
-class uka
-  implements Comparable<uka>
+public class uka
 {
-  public long a;
-  public final File a;
+  private ukb a = new ukb();
   
-  public uka(ujz paramujz, File paramFile)
+  public uka(HashMap<String, List<uja>> paramHashMap)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    paramujz = paramFile.getName();
-    try
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext())
     {
-      this.jdField_a_of_type_Long = Long.parseLong(paramujz);
-      return;
-    }
-    catch (Exception paramFile)
-    {
-      wsv.d("Q.qqstory.cleaner:MyVideoCleanStep", "Parse %s error , %s", new Object[] { paramujz, paramFile.getMessage() });
+      Object localObject = (Map.Entry)paramHashMap.next();
+      String str = (String)((Map.Entry)localObject).getKey();
+      localObject = ((Map.Entry)localObject).getValue();
+      if (localObject == null)
+      {
+        wxe.d("Q.qqstory.recommendAlbum.logic.AlbumTree", "value is null key=%s", new Object[] { str });
+      }
+      else
+      {
+        localObject = (List)localObject;
+        this.a.a(str, ((List)localObject).size());
+      }
     }
   }
   
-  public int a(uka paramuka)
+  public String a()
   {
-    if (this.jdField_a_of_type_Long < paramuka.jdField_a_of_type_Long) {
-      return -1;
+    StringBuilder localStringBuilder = new StringBuilder("AlbumTree=[\n");
+    LinkedList localLinkedList = new LinkedList();
+    localLinkedList.add(this.a);
+    while (localLinkedList.size() > 0)
+    {
+      int j = localLinkedList.size();
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = (ukb)localLinkedList.poll();
+        if (localObject != null)
+        {
+          localStringBuilder.append(" [").append(((ukb)localObject).toString()).append("];");
+          localObject = ((ukb)localObject).a.iterator();
+          while (((Iterator)localObject).hasNext()) {
+            localLinkedList.offer((ukb)((Iterator)localObject).next());
+          }
+        }
+        i += 1;
+      }
+      localStringBuilder.append("\n");
     }
-    if (this.jdField_a_of_type_Long == paramuka.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return 1;
+    localStringBuilder.append("\n]");
+    wxe.d("Q.qqstory.recommendAlbum.logic.AlbumTree", "traverse " + localStringBuilder.toString());
+    return localStringBuilder.toString();
+  }
+  
+  public ukb a()
+  {
+    return this.a;
   }
 }
 

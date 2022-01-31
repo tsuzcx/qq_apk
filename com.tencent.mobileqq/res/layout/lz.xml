@@ -16,7 +16,7 @@
             <ImageView android:id="@id/icq" android:layout_width="90.0dip" android:layout_height="31.0dip" android:layout_marginTop="20.0dip" android:scaleType="fitXY" android:layout_alignParentRight="true" />
         </RelativeLayout>
         <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/eet" android:background="#fff7f7f7" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageView android:id="@id/lcb" android:layout_width="60.0dip" android:layout_height="55.0dip" android:layout_marginTop="20.0dip" android:scaleType="fitXY" />
+            <ImageView android:id="@id/ll1" android:layout_width="60.0dip" android:layout_height="55.0dip" android:layout_marginTop="20.0dip" android:scaleType="fitXY" />
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

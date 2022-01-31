@@ -1,13 +1,38 @@
-import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Date;
 
-public class bhnh
-  implements SpecialAVFilterResource
+final class bhnh
+  extends bhnl
 {
-  public static final String a = aljq.aW + "/tencent/qq/music/";
-  
-  public String getMusicResPath()
+  bhnh(bhng parambhng)
   {
-    return a;
+    super(null);
+  }
+  
+  public boolean a(String paramString, bhoe parambhoe)
+  {
+    if (this.a.size() >= this.a.maxSize())
+    {
+      bhng.a(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, "Cache not load completely.");
+      }
+      return false;
+    }
+    if (parambhoe.a > new Date().getTime())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, parambhoe.toString() }));
+      }
+      this.a.put(paramString, parambhoe);
+    }
+    for (;;)
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, parambhoe.toString() }));
+      }
+    }
   }
 }
 

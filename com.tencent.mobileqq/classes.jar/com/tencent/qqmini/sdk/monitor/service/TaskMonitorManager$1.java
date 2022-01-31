@@ -1,31 +1,31 @@
 package com.tencent.qqmini.sdk.monitor.service;
 
-import bgxa;
-import bgxf;
+import bhbh;
+import bhbm;
 
 public class TaskMonitorManager$1
   implements Runnable
 {
-  public TaskMonitorManager$1(bgxf parambgxf) {}
+  public TaskMonitorManager$1(bhbm parambhbm) {}
   
   public void run()
   {
     this.this$0.jdField_a_of_type_Long = this.this$0.c;
-    this.this$0.c = bgxa.a("-1");
+    this.this$0.c = bhbh.a("-1");
     long l2 = this.this$0.c;
     long l3 = this.this$0.jdField_a_of_type_Long;
     if (this.this$0.jdField_b_of_type_Boolean)
     {
       this.this$0.jdField_b_of_type_Long = this.this$0.d;
-      this.this$0.d = bgxa.a("-2");
+      this.this$0.d = bhbh.a("-2");
     }
     for (long l1 = this.this$0.d - this.this$0.jdField_b_of_type_Long;; l1 = 0L)
     {
-      bgxf localbgxf = this.this$0;
+      bhbm localbhbm = this.this$0;
       if ((this.this$0.d > 0L) && (l1 > 0L)) {}
       for (boolean bool = true;; bool = false)
       {
-        localbgxf.jdField_b_of_type_Boolean = bool;
+        localbhbm.jdField_b_of_type_Boolean = bool;
         if (!this.this$0.jdField_b_of_type_Boolean) {
           break;
         }

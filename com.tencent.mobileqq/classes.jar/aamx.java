@@ -1,37 +1,18 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.aditem.GdtBaseAdItem;
 
-class aamx
-  implements ymm
+public final class aamx
+  implements Parcelable.Creator<GdtBaseAdItem>
 {
-  aamx(aamw paramaamw, aamm paramaamm, String paramString, String[] paramArrayOfString, ymk paramymk) {}
-  
-  public void callback(Bundle paramBundle)
+  public GdtBaseAdItem a(Parcel paramParcel)
   {
-    String str1 = paramBundle.getString("phone");
-    String str2 = paramBundle.getString("name");
-    String str3 = paramBundle.getString("city");
-    String str4 = paramBundle.getString("area");
-    paramBundle = new JSONObject();
-    try
-    {
-      paramBundle.put("phone", str1);
-      paramBundle.put("name", str2);
-      paramBundle.put("city", str3);
-      paramBundle.put("area", str4);
-      paramBundle = paramBundle.toString();
-      aanp.a("GdtGetUserInfoHandler", "handleJsCallRequest() called with: webPlugin = [" + this.jdField_a_of_type_Aamm + "], callback = [" + this.jdField_a_of_type_JavaLangString + "], args = [" + this.jdField_a_of_type_ArrayOfJavaLangString + "], result = [" + paramBundle + "]");
-      this.jdField_a_of_type_Aamm.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-      this.jdField_a_of_type_Ymk.b();
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        aanp.d("GdtGetUserInfoHandler", localException.toString());
-      }
-    }
+    return new GdtBaseAdItem(paramParcel);
+  }
+  
+  public GdtBaseAdItem[] a(int paramInt)
+  {
+    return new GdtBaseAdItem[paramInt];
   }
 }
 

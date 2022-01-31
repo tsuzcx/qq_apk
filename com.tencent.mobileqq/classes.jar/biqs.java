@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqdataline.ipc.MessageRecordParcel;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 
-public final class biqs
-  implements Parcelable.Creator<MessageRecordParcel>
+final class biqs
+  implements biqu
 {
-  public MessageRecordParcel a(Parcel paramParcel)
+  public void a(boolean paramBoolean, Context paramContext, biqw parambiqw)
   {
-    return MessageRecordParcel.a(paramParcel);
-  }
-  
-  public MessageRecordParcel[] a(int paramInt)
-  {
-    return new MessageRecordParcel[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean) {
+      biqn.f(paramContext, parambiqw);
+    }
   }
 }
 

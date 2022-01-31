@@ -1,246 +1,151 @@
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.os.SystemClock;
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController.1;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.CookieManager;
 import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class bafi
 {
-  public static String a;
-  private static HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private static bafi jdField_a_of_type_Bafi;
+  private long jdField_a_of_type_Long = -1L;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<Long, structmsg.StructMsg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  private long b = -1L;
   
-  static
+  public static bafi a()
   {
-    jdField_a_of_type_JavaLangString = "";
-    jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-    jdField_a_of_type_ArrayOfJavaLangString = new String[2];
-  }
-  
-  public static long a(String paramString)
-  {
-    paramString = (Long)jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-    if (paramString != null) {
-      return SystemClock.elapsedRealtime() - paramString.longValue();
+    if (jdField_a_of_type_Bafi == null) {
+      jdField_a_of_type_Bafi = new bafi();
     }
-    return 0L;
+    return jdField_a_of_type_Bafi;
   }
   
-  public static String a(String paramString)
+  public int a(QQAppInterface paramQQAppInterface)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (paramString = "";; paramString = paramString.hashCode() + "_" + System.currentTimeMillis())
-    {
-      jdField_a_of_type_JavaLangString = paramString;
-      QLog.d("TenDocLogReportHelper", 2, "init trace id: " + jdField_a_of_type_JavaLangString);
-      return jdField_a_of_type_JavaLangString;
+    int i = 0;
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      i = paramQQAppInterface.getInt("sp_unread_friendsys_count", 0);
     }
+    return i;
   }
   
-  public static String a(String paramString1, String paramString2)
+  public long a()
   {
-    String str;
-    if (paramString1 == null) {
-      str = null;
+    return this.b;
+  }
+  
+  public long a(QQAppInterface paramQQAppInterface)
+  {
+    long l = 0L;
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      l = paramQQAppInterface.getLong("sp_oldest_friendmsg", 0L);
     }
-    Uri localUri;
-    do
-    {
-      return str;
-      localUri = Uri.parse(paramString1);
-      str = paramString1;
-    } while (!TextUtils.isEmpty(localUri.getQueryParameter("xiaolv_wy_tdoc_tid")));
-    QLog.d("TenDocLogReportHelper", 2, "trace url: " + paramString1 + ",traceId: " + paramString2);
-    paramString1 = localUri.buildUpon();
-    paramString1.appendQueryParameter("xiaolv_wy_tdoc_tid", paramString2);
-    return paramString1.toString();
+    return l;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  public structmsg.StructMsg a(Long paramLong)
   {
-    azmj.b(paramQQAppInterface, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
+    structmsg.StructMsg localStructMsg = null;
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      localStructMsg = (structmsg.StructMsg)this.jdField_a_of_type_JavaUtilHashMap.get(paramLong);
+    }
+    return localStructMsg;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void a()
   {
-    a(jdField_a_of_type_ArrayOfJavaLangString, paramString1, paramString3, paramString4, paramString5);
-    azmj.b(paramQQAppInterface, "dc00898", "", "", paramString2, paramString2, 0, 0, "", "", jdField_a_of_type_ArrayOfJavaLangString[0], jdField_a_of_type_ArrayOfJavaLangString[1]);
+    jdField_a_of_type_Bafi = null;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.b = paramLong;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("TenDocLogReportHelper", 2, "reportTDW: traceId=" + paramString1 + " T=" + paramString2 + " value=" + paramString3 + " extra1=" + paramString4 + " extra2=" + paramString5);
+      QLog.d("FriendSystemMsgController", 2, "setUnReadFriendSystemMsgNum count = " + paramInt, new Throwable("debug"));
+    }
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.edit().putInt("sp_unread_friendsys_count", paramInt).commit();
     }
   }
   
-  public static void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public void a(QQAppInterface paramQQAppInterface, long paramLong)
   {
-    if (paramTeamWorkFileImportInfo == null) {
-      return;
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.edit().putLong("sp_oldest_friendmsg", paramLong).commit();
     }
-    if (TextUtils.isEmpty(paramTeamWorkFileImportInfo.k))
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.edit().putBoolean("sp_is_sysmsg_over", paramBoolean).commit();
+    }
+  }
+  
+  public void a(Long paramLong, structmsg.StructMsg paramStructMsg)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      paramTeamWorkFileImportInfo.k = a(paramTeamWorkFileImportInfo.b);
-      return;
-    }
-    QLog.d("TenDocLogReportHelper", 2, "has setted trace Id: " + paramTeamWorkFileImportInfo.k);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(SystemClock.elapsedRealtime()));
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    QLog.d(paramString1, 2, "tencentdoc log:" + paramString2 + " - " + paramString3);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    QLog.d(paramString1, 2, "tencentdoc log:" + paramString2 + " - " + paramString3 + " - " + paramString4);
-  }
-  
-  private static void a(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    try
-    {
-      jdField_a_of_type_OrgJsonJSONObject.put("trace", paramString1);
-      jdField_a_of_type_OrgJsonJSONObject.put("value", paramString2);
-      jdField_a_of_type_OrgJsonJSONObject.put("extra1", paramString3);
-      jdField_a_of_type_OrgJsonJSONObject.put("extra2", paramString4);
-      paramString1 = jdField_a_of_type_OrgJsonJSONObject.toString();
-      int i = paramString1.length();
-      int j = i / 2;
-      paramArrayOfString[0] = paramString1.substring(0, j);
-      paramArrayOfString[1] = paramString1.substring(j, i);
-      return;
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      QLog.e("TenDocLogReportHelper", 2, "report fail", paramArrayOfString);
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramString)) {
-      if (!paramString.contains("docs.qq.com"))
-      {
-        bool1 = bool2;
-        if (!paramString.contains("docx.qq.com")) {}
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendSystemMsgController", 2, "putStructMsgToMap key=" + paramLong);
       }
-      else
-      {
-        bool1 = true;
-      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramLong, paramStructMsg);
     }
-    return bool1;
   }
   
-  public static String b(String paramString)
+  public void a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
   {
-    if (paramString == null) {
-      paramString = null;
-    }
-    Uri localUri;
-    do
-    {
-      return paramString;
-      localUri = Uri.parse(paramString);
-    } while (!TextUtils.isEmpty(localUri.getQueryParameter("showDiscuss")));
-    paramString = localUri.buildUpon();
-    paramString.appendQueryParameter("showDiscuss", "true");
-    return paramString.toString();
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
+    paramQQAppInterface.a(new FriendSystemMsgController.1(this, paramQQAppInterface, paramBoolean));
   }
   
-  public static void b(String paramString1, String paramString2, String paramString3)
+  public boolean a(QQAppInterface paramQQAppInterface)
   {
-    String str;
-    if (a(paramString1))
-    {
-      str = "ps_key:" + b(paramString1);
-      paramString1 = c(paramString1);
-      if (TextUtils.isEmpty(paramString1)) {
-        a(paramString2, paramString3, str);
-      }
+    if ((this.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_JavaLangString.equals(paramQQAppInterface.getCurrentAccountUin()))) {
+      this.jdField_a_of_type_Boolean = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("friend_system_msg_nomore_msg", false);
     }
-    else
-    {
-      return;
-    }
-    a(paramString2, paramString3, str, paramString1);
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public static void b(String paramString1, String paramString2, String paramString3, String paramString4)
+  public long b()
   {
-    if (a(paramString1))
-    {
-      paramString1 = c(paramString1);
-      if (TextUtils.isEmpty(paramString1)) {
-        a(paramString2, paramString3, paramString4);
-      }
-    }
-    else
-    {
-      return;
-    }
-    a(paramString2, paramString3, paramString4, paramString1);
+    return this.jdField_a_of_type_Long;
   }
   
-  private static boolean b(String paramString)
+  public void b()
   {
-    paramString = CookieManager.getInstance().getCookie(paramString);
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split(";");
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String[] arrayOfString = paramString[i];
-        if ((arrayOfString != null) && (arrayOfString.contains("p_skey")))
-        {
-          arrayOfString = arrayOfString.split("=");
-          if ((arrayOfString.length > 1) && (!TextUtils.isEmpty(arrayOfString[1]))) {
-            return true;
-          }
-        }
-        i += 1;
-      }
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
     }
-    return false;
   }
   
-  public static String c(String paramString)
+  public void b(long paramLong)
   {
-    if (paramString == null) {
-      return null;
-    }
-    return Uri.parse(paramString).getQueryParameter("xiaolv_wy_tdoc_tid");
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public static String d(String paramString)
+  public boolean b(QQAppInterface paramQQAppInterface)
   {
-    String str = c(paramString);
-    if (!TextUtils.isEmpty(str)) {}
-    int i;
-    do
-    {
-      return str;
-      i = paramString.indexOf("?");
-      str = paramString;
-    } while (i == -1);
-    return paramString.substring(0, i);
+    boolean bool = false;
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      bool = paramQQAppInterface.getBoolean("sp_is_sysmsg_over", false);
+    }
+    return bool;
   }
 }
 

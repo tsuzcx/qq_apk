@@ -1,28 +1,29 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
-public class asax
-  extends amle
+class asax
+  implements View.OnTouchListener
 {
-  public asax(CommonTabFragment paramCommonTabFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  asax(asau paramasau) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonTabFragment", 2, "startLocation finish" + System.currentTimeMillis());
-    }
-    if (paramInt != 0)
+    asau.a(this.a).setImageResource(2130839717);
+    asau.a(this.a).setTag(Integer.valueOf(2130839717));
+    if (asau.a(this.a))
     {
-      QQToast.a(this.a.a, 1, alpo.a(2131702622), 1).a();
-      this.a.e();
-      return;
+      asau.a(this.a);
+      asau.a(this.a).removeView(asau.a(this.a));
+      asau.a(this.a, false);
+      paramView = this.a.getWindow().getAttributes();
+      paramView.y = 0;
+      this.a.getWindow().setAttributes(paramView);
     }
-    this.a.a(paramSosoLbsInfo);
+    return false;
   }
 }
 

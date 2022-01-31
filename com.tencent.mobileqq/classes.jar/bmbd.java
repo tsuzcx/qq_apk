@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.richmedia.capture.view.SimpleEffectsCaptureView;
-import dov.com.qq.im.ptv.LightWeightCameraCaptureUnit.10;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.capture.view.ProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class bmbd
-  implements DialogInterface.OnCancelListener
+  implements Animation.AnimationListener
 {
-  public bmbd(LightWeightCameraCaptureUnit.10 param10) {}
+  public bmbd(QIMProviderContainerView paramQIMProviderContainerView) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.this$0.a.setCameraPermissionResult(false);
+    if (QIMProviderContainerView.a(this.a) != null)
+    {
+      QIMProviderContainerView.a(this.a).setAlpha(1.0F);
+      QIMProviderContainerView.a(this.a).setVisibility(0);
+    }
   }
 }
 

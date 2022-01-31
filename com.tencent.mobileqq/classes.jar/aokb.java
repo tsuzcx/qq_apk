@@ -1,78 +1,122 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.graphics.Bitmap;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.entry.MiniAppEntryHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 public class aokb
-  extends aofy<aoka>
 {
-  public static aoka a()
+  public static byte a;
+  private static aokd jdField_a_of_type_Aokd;
+  public static aozv a;
+  private static HttpCommunicator jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator;
+  private static ArrayList<aokc> jdField_a_of_type_JavaUtilArrayList;
+  static aozq[] jdField_a_of_type_ArrayOfAozq;
+  public static byte b;
+  static aozv b;
+  private boolean jdField_a_of_type_Boolean = true;
+  
+  static
   {
-    return (aoka)aogj.a().a(446);
+    jdField_a_of_type_Byte = 3;
+    jdField_b_of_type_Byte = 1;
   }
   
-  public int a()
+  public aokb(QQAppInterface paramQQAppInterface, String paramString)
   {
-    return 446;
+    jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator = paramQQAppInterface.getHttpCommunicatort();
+    jdField_a_of_type_Aokd = new aokd(paramQQAppInterface.getApp(), paramString);
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_Aozv = new aozv((short)24, (byte)0);
+    jdField_b_of_type_Aozv = new aozv((short)12, (byte)1);
+    jdField_a_of_type_ArrayOfAozq = new aozq[] { jdField_a_of_type_Aozv, jdField_b_of_type_Aozv };
+    jdField_a_of_type_Aokd.a();
   }
   
-  @NonNull
-  public aoka a(int paramInt)
+  public static aokd a()
   {
-    return new aoka();
+    return jdField_a_of_type_Aokd;
   }
   
-  @Nullable
-  public aoka a(aogf[] paramArrayOfaogf)
+  public static HttpCommunicator a()
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return aoka.a(paramArrayOfaogf);
+    return jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator;
+  }
+  
+  public static String a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if (localAppRuntime != null) {
+      return localAppRuntime.getAccount();
     }
     return null;
   }
   
-  public Class<aoka> a()
+  public static String a(String paramString1, int paramInt, String paramString2)
   {
-    return aoka.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aoka paramaoka)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppApiReportProcessor", 2, "onUpdate " + paramaoka.toString());
-    }
-    paramaoka = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramaoka instanceof QQAppInterface))
+    paramString1 = new StringBuffer(aokd.a(paramString1, paramInt).trim());
+    if (paramString2 != null)
     {
-      paramaoka = (MiniAppEntryHandler)((QQAppInterface)paramaoka).a(149);
-      if (paramaoka != null) {
-        paramaoka.notifyUI(0, true, null);
+      paramString2 = paramString2.trim();
+      if (paramString2.length() > 0)
+      {
+        if (paramString2.charAt(0) != '&') {
+          paramString1.append('&');
+        }
+        paramString1.append(paramString2);
       }
     }
+    return paramString1.toString();
   }
   
-  public boolean a()
+  public static ArrayList<aokc> a()
   {
-    return true;
+    return jdField_a_of_type_JavaUtilArrayList;
   }
   
-  public int b()
+  public static void a()
   {
-    return 0;
+    jdField_a_of_type_Aokd = null;
+    if (jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator != null) {
+      jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.b();
+    }
+    jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator = null;
   }
   
-  public boolean b()
+  public int a(int paramInt)
   {
-    return false;
+    return jdField_a_of_type_ArrayOfAozq[paramInt].a();
   }
   
-  public boolean c()
+  public long a(int paramInt1, int paramInt2)
   {
-    return true;
+    return ((aozv)jdField_a_of_type_ArrayOfAozq[paramInt1]).a(paramInt2);
+  }
+  
+  public Bitmap a(int paramInt1, int paramInt2)
+  {
+    return ((aozv)jdField_a_of_type_ArrayOfAozq[paramInt1]).a(paramInt2);
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    return ((aozv)jdField_a_of_type_ArrayOfAozq[paramInt1]).c(paramInt2);
+  }
+  
+  public short a(int paramInt1, int paramInt2)
+  {
+    return ((aozv)jdField_a_of_type_ArrayOfAozq[paramInt1]).a(paramInt2);
+  }
+  
+  public String b(int paramInt1, int paramInt2)
+  {
+    return ((aozv)jdField_a_of_type_ArrayOfAozq[paramInt1]).a(paramInt2);
+  }
+  
+  public String c(int paramInt1, int paramInt2)
+  {
+    return ((aozv)jdField_a_of_type_ArrayOfAozq[paramInt1]).b(paramInt2);
   }
 }
 

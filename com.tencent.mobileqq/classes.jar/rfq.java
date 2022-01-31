@@ -4,17 +4,17 @@ import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.PlayStar
 import com.tencent.mobileqq.data.MessageForShortVideo;
 
 public class rfq
-  implements aenl
+  implements aesa
 {
   public rfq(VideoFeedsPlayManager.PlayStartVideoRunnable paramPlayStartVideoRunnable, MessageForShortVideo paramMessageForShortVideo) {}
   
-  public void a(View paramView, baoj parambaoj, int paramInt1, int paramInt2)
+  public void a(View paramView, bass parambass, int paramInt1, int paramInt2)
   {
     if ((!VideoFeedsPlayManager.PlayStartVideoRunnable.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$PlayStartVideoRunnable)) && (!VideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$PlayStartVideoRunnable.this$0, VideoFeedsPlayManager.PlayStartVideoRunnable.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$PlayStartVideoRunnable)))) {}
-    while ((parambaoj == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (parambaoj.jdField_b_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq) || ((parambaoj.jdField_b_of_type_Int != 6) && (parambaoj.jdField_b_of_type_Int != 17) && (parambaoj.jdField_b_of_type_Int != 9) && (parambaoj.jdField_b_of_type_Int != 20))) {
+    while ((parambass == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (parambass.jdField_b_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq) || ((parambass.jdField_b_of_type_Int != 6) && (parambass.jdField_b_of_type_Int != 17) && (parambass.jdField_b_of_type_Int != 9) && (parambass.jdField_b_of_type_Int != 20))) {
       return;
     }
-    VideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$PlayStartVideoRunnable.this$0, parambaoj.u, parambaoj.c, parambaoj.d, parambaoj.jdField_b_of_type_Long);
+    VideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$PlayStartVideoRunnable.this$0, parambass.u, parambass.c, parambass.d, parambass.jdField_b_of_type_Long);
   }
 }
 

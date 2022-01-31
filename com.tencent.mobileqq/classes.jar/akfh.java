@@ -1,18 +1,16 @@
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-class akfh
+public class akfh
   implements Animation.AnimationListener
 {
-  akfh(akfe paramakfe, View paramView) {}
+  public akfh(SpecailCareListActivity paramSpecailCareListActivity, akfw paramakfw) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView.getTag() instanceof akfk))) {
-      ((akfk)this.jdField_a_of_type_AndroidViewView.getTag()).a = true;
-    }
-    akfe.a(this.jdField_a_of_type_Akfe);
+    this.jdField_a_of_type_Akfw.c.setVisibility(4);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

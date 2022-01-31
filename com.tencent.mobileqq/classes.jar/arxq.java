@@ -1,16 +1,8 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-
-class arxq
-  extends RecyclerView.ViewHolder
+public abstract interface arxq
 {
-  public int a = arxj.b;
+  public abstract void a(int paramInt);
   
-  public arxq(View paramView)
-  {
-    super(paramView);
-    paramView.setTag(this);
-  }
+  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3);
 }
 
 

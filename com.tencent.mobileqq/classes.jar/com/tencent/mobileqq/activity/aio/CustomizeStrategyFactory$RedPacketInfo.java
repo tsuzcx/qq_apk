@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aemn;
+import aerc;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
@@ -13,7 +13,7 @@ public class CustomizeStrategyFactory$RedPacketInfo
 {
   public int a;
   public long a;
-  public aemn a;
+  public aerc a;
   public Bitmap a;
   public MessageRecord a;
   public String a;
@@ -34,7 +34,7 @@ public class CustomizeStrategyFactory$RedPacketInfo
   public boolean a()
   {
     Object localObject2 = null;
-    if ((this.b) && (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null) && (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable.length > 0) && (this.jdField_a_of_type_Aemn != null) && (this.jdField_a_of_type_Aemn.b > 0))
+    if ((this.b) && (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null) && (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable.length > 0) && (this.jdField_a_of_type_Aerc != null) && (this.jdField_a_of_type_Aerc.b > 0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("CustomizeStrategyFactory", 2, "anim valid");
@@ -54,8 +54,8 @@ public class CustomizeStrategyFactory$RedPacketInfo
     {
       localStringBuilder = localStringBuilder.append(localObject1).append("|");
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_Aemn != null) {
-        localObject1 = Integer.valueOf(this.jdField_a_of_type_Aemn.b);
+      if (this.jdField_a_of_type_Aerc != null) {
+        localObject1 = Integer.valueOf(this.jdField_a_of_type_Aerc.b);
       }
       QLog.d("CustomizeStrategyFactory", 2, localObject1);
       return false;

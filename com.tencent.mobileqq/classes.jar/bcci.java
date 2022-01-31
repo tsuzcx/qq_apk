@@ -1,19 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.os.CountDownTimer;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
-class bcci
-  extends BroadcastReceiver
+public class bcci
+  extends CountDownTimer
 {
-  bcci(bcch parambcch) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bcci(ReciteRecordLayout paramReciteRecordLayout, long paramLong1, long paramLong2)
   {
-    paramContext = paramIntent.getStringExtra("callback");
-    QLog.d("TroopReceiver", 4, paramContext);
-    this.a.e(paramContext);
+    super(paramLong1, paramLong2);
   }
+  
+  public void onFinish()
+  {
+    ReciteRecordLayout.a(this.a);
+  }
+  
+  public void onTick(long paramLong) {}
 }
 
 

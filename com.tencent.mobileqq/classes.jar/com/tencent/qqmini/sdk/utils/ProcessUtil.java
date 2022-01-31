@@ -10,8 +10,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Process;
-import bgho;
-import bgpw;
+import bglv;
+import bgud;
 import com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.shell.IAppBrandProxy;
@@ -29,10 +29,10 @@ public class ProcessUtil
     Process.killProcess(Process.myPid());
   }
   
-  public static void exitProcess(bgho parambgho)
+  public static void exitProcess(bglv parambglv)
   {
     AppLoaderFactory.g().getAppBrandProxy().onAppDestroy(null);
-    finishAndRemoveAllTasks(parambgho.a());
+    finishAndRemoveAllTasks(parambglv.a());
     Process.killProcess(Process.myPid());
   }
   
@@ -94,11 +94,11 @@ public class ProcessUtil
     }
   }
   
-  private static bgpw getCurrentProcessorInfo(Context paramContext)
+  private static bgud getCurrentProcessorInfo(Context paramContext)
   {
     paramContext = getCurrentProcessName(paramContext);
     if (paramContext != null) {
-      return (bgpw)AppBrandLaunchManager.subProcessorInfoMap.get(paramContext);
+      return (bgud)AppBrandLaunchManager.subProcessorInfoMap.get(paramContext);
     }
     return null;
   }

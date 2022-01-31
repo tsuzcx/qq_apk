@@ -1,36 +1,42 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoSimpleInfo;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
 
 public class vdg
-  extends unf
+  extends uuc
 {
-  public List<StoryVideoItem> a = new ArrayList();
+  qqstory_service.RspIconPostfix a;
   
-  public vdg(qqstory_service.RspSimpleInfoList paramRspSimpleInfoList)
+  public vdg() {}
+  
+  public vdg(qqstory_service.RspIconPostfix paramRspIconPostfix)
   {
-    super(paramRspSimpleInfoList.result);
-    paramRspSimpleInfoList = paramRspSimpleInfoList.video_list.get();
-    if (paramRspSimpleInfoList != null)
-    {
-      paramRspSimpleInfoList = paramRspSimpleInfoList.iterator();
-      while (paramRspSimpleInfoList.hasNext())
-      {
-        qqstory_struct.StoryVideoSimpleInfo localStoryVideoSimpleInfo = (qqstory_struct.StoryVideoSimpleInfo)paramRspSimpleInfoList.next();
-        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-        localStoryVideoItem.convertFrom("Q.qqstory.net:GetSimpleInfoListResponse", localStoryVideoSimpleInfo);
-        this.a.add(localStoryVideoItem);
-      }
+    super(paramRspIconPostfix.result);
+    this.a = paramRspIconPostfix;
+  }
+  
+  public void a()
+  {
+    if ((this.a.icon_info.has()) && (this.a.icon_info.size() > 0)) {
+      Bosses.get().postJob(new vdh(this, "GetUserIconHandler"));
     }
   }
   
-  public String toString()
+  public void a(int paramInt, Bundle paramBundle)
   {
-    return "GetSimpleInfoListResponse{mVideoItemList=" + this.a + '}';
+    if (QLog.isColorLevel()) {
+      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
+    }
   }
 }
 

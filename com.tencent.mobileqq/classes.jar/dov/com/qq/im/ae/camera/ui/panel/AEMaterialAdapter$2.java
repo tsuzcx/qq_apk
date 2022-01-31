@@ -2,35 +2,35 @@ package dov.com.qq.im.ae.camera.ui.panel;
 
 import android.app.Activity;
 import android.content.Intent;
-import bktf;
-import bktm;
-import bkvr;
-import bkvu;
-import blfg;
+import bkxm;
+import bkxt;
+import bkzy;
+import blab;
+import bljn;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class AEMaterialAdapter$2
   implements Runnable
 {
-  public AEMaterialAdapter$2(bktf parambktf, int paramInt, bkvu parambkvu, boolean paramBoolean) {}
+  public AEMaterialAdapter$2(bkxm parambkxm, int paramInt, blab paramblab, boolean paramBoolean) {}
   
   public void run()
   {
     Object localObject1;
     Object localObject2;
-    if ((((bkvu)this.this$0.a.get(this.jdField_a_of_type_Int)).a.equals(this.jdField_a_of_type_Bkvu.a)) && (this.jdField_a_of_type_Boolean))
+    if ((((blab)this.this$0.a.get(this.jdField_a_of_type_Int)).a.equals(this.jdField_a_of_type_Blab.a)) && (this.jdField_a_of_type_Boolean))
     {
-      localObject1 = ((Activity)bktf.a(this.this$0)).getIntent();
-      ((Intent)localObject1).putExtra("widgetinfo", "camera^" + this.jdField_a_of_type_Bkvu.a);
-      localObject2 = this.jdField_a_of_type_Bkvu.i;
-      blfg.b("AEMaterialAdapter", "onDownloadFinish---塞拍同款名 takeSameName=" + (String)localObject2);
+      localObject1 = ((Activity)bkxm.a(this.this$0)).getIntent();
+      ((Intent)localObject1).putExtra("widgetinfo", "camera^" + this.jdField_a_of_type_Blab.a);
+      localObject2 = this.jdField_a_of_type_Blab.i;
+      bljn.b("AEMaterialAdapter", "onDownloadFinish---塞拍同款名 takeSameName=" + (String)localObject2);
       ((Intent)localObject1).putExtra("key_camera_material_name", (String)localObject2);
-      if (bktf.a(this.this$0) != null)
+      if (bkxm.a(this.this$0) != null)
       {
-        localObject1 = bktf.a(this.this$0);
-        localObject2 = this.jdField_a_of_type_Bkvu;
-        if (bktf.a(this.this$0)) {
+        localObject1 = bkxm.a(this.this$0);
+        localObject2 = this.jdField_a_of_type_Blab;
+        if (bkxm.a(this.this$0)) {
           break label215;
         }
       }
@@ -38,9 +38,9 @@ public class AEMaterialAdapter$2
     label215:
     for (boolean bool = true;; bool = false)
     {
-      ((bkvr)localObject1).a((bkvu)localObject2, bool);
-      QLog.d("AEMaterialAdapter", 4, "### [material panel] download finish, select material " + this.jdField_a_of_type_Bkvu.a);
-      bktf.a(this.this$0).a(this.jdField_a_of_type_Bkvu);
+      ((bkzy)localObject1).a((blab)localObject2, bool);
+      QLog.d("AEMaterialAdapter", 4, "### [material panel] download finish, select material " + this.jdField_a_of_type_Blab.a);
+      bkxm.a(this.this$0).a(this.jdField_a_of_type_Blab);
       return;
     }
   }

@@ -1,17 +1,16 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
 
-public class aepr
+public abstract interface aepr
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
+  public abstract void a(AudioPlayer paramAudioPlayer);
+  
+  public abstract void a(AudioPlayer paramAudioPlayer, int paramInt);
+  
+  public abstract void b(AudioPlayer paramAudioPlayer, int paramInt);
+  
+  public abstract void c(AudioPlayer paramAudioPlayer, int paramInt);
+  
+  public abstract void d(AudioPlayer paramAudioPlayer, int paramInt);
 }
 
 

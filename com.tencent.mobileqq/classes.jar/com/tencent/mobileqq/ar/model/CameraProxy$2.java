@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar.model;
 
-import amvz;
-import anbk;
+import anai;
 import android.graphics.SurfaceTexture;
 import android.os.Build;
-import azmz;
+import anft;
+import azri;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -12,36 +12,36 @@ import java.util.HashMap;
 public class CameraProxy$2
   implements Runnable
 {
-  public CameraProxy$2(anbk paramanbk, SurfaceTexture paramSurfaceTexture) {}
+  public CameraProxy$2(anft paramanft, SurfaceTexture paramSurfaceTexture) {}
   
   public void run()
   {
     QLog.i("CameraProxy", 2, "startCameraPreview.");
-    if ((anbk.a(this.this$0) != 2) || (anbk.a(this.this$0) == null) || (anbk.a(this.this$0)))
+    if ((anft.a(this.this$0) != 2) || (anft.a(this.this$0) == null) || (anft.a(this.this$0)))
     {
-      QLog.i("CameraProxy", 2, String.format("cancel to start preview. mCurCameraState=%s mARCamera=%s mIsCameraPreviewing=%s", new Object[] { Integer.valueOf(anbk.a(this.this$0)), anbk.a(this.this$0), Boolean.valueOf(anbk.a(this.this$0)) }));
+      QLog.i("CameraProxy", 2, String.format("cancel to start preview. mCurCameraState=%s mARCamera=%s mIsCameraPreviewing=%s", new Object[] { Integer.valueOf(anft.a(this.this$0)), anft.a(this.this$0), Boolean.valueOf(anft.a(this.this$0)) }));
       return;
     }
-    anbk.b(this.this$0, anbk.a(this.this$0).a());
-    anbk.c(this.this$0, anbk.a(this.this$0).b());
-    anbk.d(this.this$0, anbk.a(this.this$0).c());
-    anbk.a(this.this$0, anbk.a(this.this$0).a(this.this$0, this.a, this.this$0));
-    if (anbk.a(this.this$0))
+    anft.b(this.this$0, anft.a(this.this$0).a());
+    anft.c(this.this$0, anft.a(this.this$0).b());
+    anft.d(this.this$0, anft.a(this.this$0).c());
+    anft.a(this.this$0, anft.a(this.this$0).a(this.this$0, this.a, this.this$0));
+    if (anft.a(this.this$0))
     {
-      QLog.i("CameraProxy", 2, "start preview successfully. mCurCameraState = " + anbk.a(this.this$0));
-      anbk.a(this.this$0, true, 0, 1);
-      QLog.i("CameraProxy", 2, "openCamera end. mIsCameraPreviewing = " + anbk.a(this.this$0));
+      QLog.i("CameraProxy", 2, "start preview successfully. mCurCameraState = " + anft.a(this.this$0));
+      anft.a(this.this$0, true, 0, 1);
+      QLog.i("CameraProxy", 2, "openCamera end. mIsCameraPreviewing = " + anft.a(this.this$0));
       return;
     }
-    QLog.i("CameraProxy", 2, "start preview failed. mCurCameraState = " + anbk.a(this.this$0));
-    anbk.a(this.this$0).a();
-    anbk.a(this.this$0, 0);
-    anbk.a(this.this$0, false, 0, 2);
+    QLog.i("CameraProxy", 2, "start preview failed. mCurCameraState = " + anft.a(this.this$0));
+    anft.a(this.this$0).a();
+    anft.a(this.this$0, 0);
+    anft.a(this.this$0, false, 0, 2);
     HashMap localHashMap = new HashMap();
     localHashMap.put("ar_model", Build.MODEL);
     localHashMap.put("ar_type", "2");
     localHashMap.put("ar_reason", String.valueOf(-4));
-    azmz.a(BaseApplication.getContext()).a("", "AndroidARException", true, 0L, 0L, localHashMap, "", true);
+    azri.a(BaseApplication.getContext()).a("", "AndroidARException", true, 0L, 0L, localHashMap, "", true);
   }
 }
 

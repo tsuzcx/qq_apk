@@ -1,29 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import java.util.ArrayList;
-
-public class avgb
-  implements bhqd
+class avgb
+  implements avgm
 {
-  public avgb(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, bhpy parambhpy) {}
+  avgb(avfx paramavfx) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean a(avgi paramavgi, int paramInt, Object paramObject)
   {
-    switch (paramInt)
-    {
+    if (paramInt == 21) {
+      aveh.f();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.e();
-      return;
-      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity) != null) {
-        NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity).a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.size());
-      }
-      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.h();
-      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-    }
+    return false;
   }
 }
 

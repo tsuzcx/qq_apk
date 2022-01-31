@@ -69,9 +69,9 @@ public class BeautyToolbar
     {
       this.mUIInfo = new mej();
       this.mUIInfo.d = 4;
-      this.mUIInfo.f = 2131559640;
-      this.mUIInfo.e = 2130841631;
-      this.mUIInfo.a = this.mApp.getApp().getString(2131696375);
+      this.mUIInfo.f = 2131559639;
+      this.mUIInfo.e = 2130841644;
+      this.mUIInfo.a = this.mApp.getApp().getString(2131696377);
     }
     return this.mUIInfo;
   }
@@ -79,7 +79,7 @@ public class BeautyToolbar
   public String getUnableInfo()
   {
     if (this.mActivity.get() != null) {
-      return ((AVActivity)this.mActivity.get()).getResources().getString(2131695932);
+      return ((AVActivity)this.mActivity.get()).getResources().getString(2131695934);
     }
     return "";
   }
@@ -91,15 +91,15 @@ public class BeautyToolbar
   
   protected void onCreate(long paramLong, AVActivity paramAVActivity)
   {
-    this.mBeautySeekBar = ((RelativeLayout)this.toolbarView.findViewById(2131372879));
-    this.mSeek = ((SeekBar)this.toolbarView.findViewById(2131372880));
-    this.mTip = ((TextView)this.toolbarView.findViewById(2131372881));
+    this.mBeautySeekBar = ((RelativeLayout)this.toolbarView.findViewById(2131372905));
+    this.mSeek = ((SeekBar)this.toolbarView.findViewById(2131372906));
+    this.mTip = ((TextView)this.toolbarView.findViewById(2131372907));
     this.mTipLayoutParams = null;
     this.mContext = paramAVActivity;
-    this.mThumb_0 = this.mContext.getResources().getDrawable(2130841592);
-    this.mThumb_30 = this.mContext.getResources().getDrawable(2130841594);
-    this.mThumb_60 = this.mContext.getResources().getDrawable(2130841595);
-    this.mThumb_100 = this.mContext.getResources().getDrawable(2130841593);
+    this.mThumb_0 = this.mContext.getResources().getDrawable(2130841605);
+    this.mThumb_30 = this.mContext.getResources().getDrawable(2130841607);
+    this.mThumb_60 = this.mContext.getResources().getDrawable(2130841608);
+    this.mThumb_100 = this.mContext.getResources().getDrawable(2130841606);
     this.mSeek.setMax(100);
     this.mSeek.setOnSeekBarChangeListener(this.mOnSeekBarChangeListener);
     this.mSeek.getViewTreeObserver().addOnGlobalLayoutListener(new mel(this));
@@ -109,9 +109,9 @@ public class BeautyToolbar
     if (AudioHelper.a(0) == 1)
     {
       this.toolbarView.setBackgroundColor(-16711936);
-      this.toolbarView.findViewById(2131372879).setBackgroundColor(-256);
-      this.toolbarView.findViewById(2131372883).setBackgroundColor(-16711681);
-      this.toolbarView.findViewById(2131372880).setBackgroundColor(-65281);
+      this.toolbarView.findViewById(2131372905).setBackgroundColor(-256);
+      this.toolbarView.findViewById(2131372909).setBackgroundColor(-16711681);
+      this.toolbarView.findViewById(2131372906).setBackgroundColor(-65281);
     }
     this.mBeautySeekBar.setVisibility(4);
   }

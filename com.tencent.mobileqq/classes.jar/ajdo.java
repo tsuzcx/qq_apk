@@ -1,131 +1,32 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.SwapViews;
 
-class ajdo
-  implements ajdh
+public final class ajdo
+  implements Animation.AnimationListener
 {
-  private final int jdField_a_of_type_Int;
-  @Nullable
-  private ajdj jdField_a_of_type_Ajdj;
-  @Nullable
-  private final Bundle jdField_a_of_type_AndroidOsBundle;
-  @NonNull
-  private final String jdField_a_of_type_JavaLangString;
-  @NonNull
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private final View jdField_a_of_type_AndroidViewView;
   private final boolean jdField_a_of_type_Boolean;
-  @Nullable
-  private final String b;
+  private final View b;
   
-  public ajdo(@NonNull String paramString1, @NonNull QQAppInterface paramQQAppInterface, @Nullable String paramString2, int paramInt, @Nullable Bundle paramBundle, boolean paramBoolean)
+  private ajdo(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment, boolean paramBoolean, View paramView1, View paramView2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
     this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidViewView = paramView1;
+    this.b = paramView2;
   }
   
-  public void a(@Nullable ajdj paramajdj)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Ajdj = paramajdj;
+    DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).post(new DrawRedpacketPannelPreviewFragment.SwapViews(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidViewView, this.b));
   }
   
-  public boolean isNeedAutoCloseWhenAccountChange()
-  {
-    return true;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onClose()
-  {
-    if (this.jdField_a_of_type_Ajdj == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    ajbm.a(localQQAppInterface, this.jdField_a_of_type_Ajdj);
-  }
-  
-  public void onEnter()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "onEnter: " + this.jdField_a_of_type_Ajdj + " / " + this.b + " / " + this.jdField_a_of_type_Int + " / " + this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_Ajdj == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    Object localObject3 = QQBrowserActivity.class;
-    Object localObject1 = localObject3;
-    if (!TextUtils.isEmpty(this.b)) {}
-    try
-    {
-      localObject1 = Class.forName(this.b);
-      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-      localObject3 = localBaseActivity;
-      if (localBaseActivity == null)
-      {
-        localObject3 = BaseApplicationImpl.getContext();
-        QLog.d("Q.recent.banner", 1, "sTopActivity is null,set Application context");
-      }
-      if (localObject3 != null)
-      {
-        localObject1 = new Intent(localQQAppInterface.getApp(), (Class)localObject1);
-        ((Intent)localObject1).setFlags(this.jdField_a_of_type_Int);
-        ((Intent)localObject1).putExtra("banner_fromBanner", true);
-        ((Intent)localObject1).putExtra("url", this.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject1).putExtra("banner_webview_extra", this.jdField_a_of_type_AndroidOsBundle);
-        ((Intent)localObject1).putExtra("force_no_reload", this.jdField_a_of_type_Boolean);
-      }
-      for (;;)
-      {
-        try
-        {
-          ((Context)localObject3).startActivity((Intent)localObject1);
-          ajbm.a(localQQAppInterface, this.jdField_a_of_type_Ajdj);
-          return;
-        }
-        catch (Exception localException)
-        {
-          QLog.d("Q.recent.banner", 1, "startActivity,error =" + localException);
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.recent.banner", 2, "sTopActivity is null");
-        }
-      }
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
-      {
-        Object localObject2 = localObject3;
-      }
-    }
-  }
-  
-  public void onOverride()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "banner for " + this.jdField_a_of_type_JavaLangString + " is overrided");
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

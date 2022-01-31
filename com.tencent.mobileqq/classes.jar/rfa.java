@@ -2,7 +2,7 @@ import android.os.Bundle;
 import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
 
 public class rfa
-  implements alkr
+  implements alpg
 {
   public rfa(rez paramrez) {}
   
@@ -14,8 +14,8 @@ public class rfa
     }
     paramObject = (Bundle)paramObject;
     rez.a(this.a, (LikeAnimationInfo)paramObject.getParcelable("key_like_animation_info"));
-    bjxj.a();
-    bjxj.a(rez.a(this.a));
+    bkbq.a();
+    bkbq.a(rez.a(this.a));
     rez.a(this.a, rez.a(this.a));
   }
 }

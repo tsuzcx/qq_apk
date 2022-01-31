@@ -1,6 +1,19 @@
-public abstract interface blip
+import android.graphics.Bitmap;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+
+public class blip
 {
-  public abstract void a(int paramInt);
+  public static Bitmap a(Bitmap paramBitmap, String paramString)
+  {
+    if (!BitmapUtils.isLegal(paramBitmap)) {}
+    int i;
+    do
+    {
+      return paramBitmap;
+      i = BitmapUtils.getDegreeByExif(paramString) % 360;
+    } while (i == 0);
+    return BitmapUtils.rotateBitmap(paramBitmap, i);
+  }
 }
 
 

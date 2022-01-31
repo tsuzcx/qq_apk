@@ -1,12 +1,20 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import java.io.File;
 
-public class agfm
+class agfm
+  implements agfo
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  agfm(agfj paramagfj, String paramString, agfp paramagfp) {}
   
-  public agfm(agfi paramagfi) {}
+  public void a(int paramInt)
+  {
+    if (new File(this.jdField_a_of_type_JavaLangString).exists())
+    {
+      this.jdField_a_of_type_Agfp.a.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Agfp.f.setVisibility(8);
+    }
+  }
 }
 
 

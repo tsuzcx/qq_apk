@@ -1,52 +1,55 @@
-import android.content.Context;
-import android.support.v4.view.ViewPager;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
-import java.lang.reflect.Field;
+import android.text.Spanned;
+import android.text.TextUtils;
 
-public class blxq
-  extends Scroller
+class blxq
+  extends bmsw
 {
-  private int a = 750;
-  
-  public blxq(Context paramContext)
+  blxq(blxo paramblxo, int paramInt)
   {
-    super(paramContext);
+    super(paramInt);
   }
   
-  public blxq(Context paramContext, Interpolator paramInterpolator)
+  public int a(CharSequence paramCharSequence)
   {
-    super(paramContext, paramInterpolator);
+    return 0;
   }
   
-  public void a(int paramInt)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    this.a = paramInt;
-  }
-  
-  public void a(ViewPager paramViewPager)
-  {
-    try
+    Object localObject = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
+    String str1 = bcnt.b((String)localObject);
+    String str2 = this.jdField_a_of_type_Blxo.a(str1);
+    this.jdField_a_of_type_Int = (((String)localObject).length() - str1.length() + 20);
+    localObject = str2.split("\n");
+    int m = localObject.length;
+    int j = 0;
+    int i = 0;
+    if (j < m)
     {
-      Field localField = ViewPager.class.getDeclaredField("mScroller");
-      localField.setAccessible(true);
-      localField.set(paramViewPager, this);
-      return;
+      int k = localObject[j].length();
+      int n = k / 5;
+      if (k % 5 > 0) {}
+      for (k = 1;; k = 0)
+      {
+        i += k + n;
+        j += 1;
+        break;
+      }
     }
-    catch (Exception paramViewPager)
+    if (TextUtils.equals(paramCharSequence, "\n")) {
+      i += 1;
+    }
+    for (;;)
     {
-      paramViewPager.printStackTrace();
+      if (i > blxo.a().length)
+      {
+        if (!TextUtils.equals("", paramCharSequence)) {
+          a();
+        }
+        return "";
+      }
+      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
     }
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
   }
 }
 

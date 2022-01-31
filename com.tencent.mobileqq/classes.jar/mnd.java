@@ -65,7 +65,7 @@ public class mnd
     label208:
     for (Object localObject = "tip_in";; localObject = "tip_no")
     {
-      azmj.b(null, "dc00899", "Grp_video", "", "invite", (String)localObject, 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.a().g), this.jdField_d_of_type_Int + "", "", "");
+      azqs.b(null, "dc00899", "Grp_video", "", "invite", (String)localObject, 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.a().g), this.jdField_d_of_type_Int + "", "", "");
       bool1 = true;
       return bool1;
     }
@@ -211,16 +211,16 @@ public class mnd
       for (;;)
       {
         if (this.jdField_a_of_type_Mnc != null) {
-          this.jdField_a_of_type_Mnc.c(alpo.a(2131716666));
+          this.jdField_a_of_type_Mnc.c(alud.a(2131716678));
         }
         if (!this.jdField_a_of_type_Lid.R) {
           break;
         }
-        azmj.b(null, "CliOper", "", "", "0X8008B24", "0X8008B24", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8008B24", "0X8008B24", 0, 0, "", "", "", "");
         return;
         this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, this.jdField_a_of_type_Lid.jdField_d_of_type_JavaLangString, j, i);
       }
-      azmj.b(null, "CliOper", "", "", "0X8008B27", "0X8008B27", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8008B27", "0X8008B27", 0, 0, "", "", "", "");
       return;
     }
   }
@@ -246,7 +246,7 @@ public class mnd
   {
     QLog.w("VideoInviteFloatBarUICtr", 1, "refuseVideoRequest, seq[" + paramLong + "]");
     if (this.jdField_a_of_type_Lid.R) {
-      azmj.b(null, "CliOper", "", "", "0X8008B25", "0X8008B25", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8008B25", "0X8008B25", 0, 0, "", "", "", "");
     }
     while (this.jdField_c_of_type_Boolean)
     {
@@ -256,7 +256,7 @@ public class mnd
       this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, l, 1);
       a();
       return;
-      azmj.b(null, "CliOper", "", "", "0X8008B28", "0X8008B28", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8008B28", "0X8008B28", 0, 0, "", "", "", "");
     }
     this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, this.jdField_c_of_type_JavaLangString, 1, false);
     this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_c_of_type_JavaLangString, 252);
@@ -287,7 +287,7 @@ public class mnd
   public void c(long paramLong)
   {
     QLog.w("VideoInviteFloatBarUICtr", 1, "ignoreGAInvite, seq[" + paramLong + "]");
-    azmj.b(null, "CliOper", "", "", "0X8008B2C", "0X8008B2C", 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", "0X8008B2C", "0X8008B2C", 0, 0, "", "", "", "");
     if (!a(0)) {
       this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, this.jdField_c_of_type_Int, this.jdField_a_of_type_Long);
     }
@@ -311,10 +311,10 @@ public class mnd
   {
     QLog.w("VideoInviteFloatBarUICtr", 1, "acceptGAudioChat, seq[" + paramLong + "]");
     if (this.jdField_a_of_type_Mnc != null) {
-      this.jdField_a_of_type_Mnc.c(alpo.a(2131716667));
+      this.jdField_a_of_type_Mnc.c(alud.a(2131716679));
     }
     this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, this.jdField_c_of_type_Int, this.jdField_a_of_type_Lid.g, this.jdField_a_of_type_ArrayOfLong, false);
-    azmj.b(null, "CliOper", "", "", "0X8008B2B", "0X8008B2B", 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", "0X8008B2B", "0X8008B2B", 0, 0, "", "", "", "");
     b();
   }
 }

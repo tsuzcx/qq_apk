@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 class seu
-  extends amar
+  extends amfg
 {
   seu(set paramset) {}
   
@@ -15,13 +15,13 @@ class seu
     }
   }
   
-  public void a(List<ayks> paramList, int paramInt)
+  public void a(List<aypb> paramList, int paramInt)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
     }
     if (paramInt != 10) {}
-    ayks localayks;
+    aypb localaypb;
     do
     {
       do
@@ -30,9 +30,9 @@ class seu
         while ((paramList == null) || (paramList.size() <= 0)) {}
         paramList = paramList.iterator();
       } while (!paramList.hasNext());
-      localayks = (ayks)paramList.next();
-    } while (!(localayks instanceof HotWordSearchEntryDataModel));
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)localayks);
+      localaypb = (aypb)paramList.next();
+    } while (!(localaypb instanceof HotWordSearchEntryDataModel));
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)localaypb);
     set.jdField_a_of_type_Int = 0;
     this.a.a(false, -1, -1);
   }

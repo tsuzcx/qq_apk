@@ -1,252 +1,321 @@
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.Style;
-import android.graphics.PointF;
-import android.graphics.RectF;
-import android.graphics.Typeface;
-import android.support.annotation.Nullable;
-import android.text.InputFilter;
-import android.text.TextPaint;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import java.util.List;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.util.ArrayList;
 
 public class blud
-  extends DynamicTextItem
 {
-  public static final int b;
-  public static final int c;
-  public static final int d;
-  private float jdField_a_of_type_Float;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private InputFilter jdField_a_of_type_AndroidTextInputFilter;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  bluk jdField_a_of_type_Bluk;
-  private String jdField_a_of_type_JavaLangString = "jenny";
-  private float jdField_b_of_type_Float;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private TextPaint jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
-  bluk jdField_b_of_type_Bluk;
-  private String jdField_b_of_type_JavaLangString = "05/09";
-  bluk jdField_c_of_type_Bluk;
-  private String jdField_c_of_type_JavaLangString = "by";
-  int e = 0;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
-  private int j;
-  private int k;
-  private int l;
-  private int m;
+  private static long a;
   
-  static
+  public static String a(MusicItemInfo paramMusicItemInfo)
   {
-    Resources localResources = BaseApplicationImpl.getContext().getResources();
-    jdField_b_of_type_Int = aekt.a(18.0F, localResources);
-    d = aekt.a(6.0F, localResources);
-    int n = bmtu.a();
-    jdField_c_of_type_Int = localResources.getDisplayMetrics().widthPixels - bmmk.a - n * 2;
-  }
-  
-  public blud(int paramInt, List<String> paramList, Typeface paramTypeface)
-  {
-    super(paramInt, paramList);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
-    if (paramTypeface == null)
-    {
-      this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
-      this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
-      this.jdField_b_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.jdField_b_of_type_AndroidTextTextPaint.setTextSkewX(-0.15F);
-      this.k = aekt.a(41.0F, BaseApplicationImpl.getContext().getResources());
-      this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(this.k);
-      this.jdField_b_of_type_AndroidTextTextPaint.setColor(-1);
-      this.jdField_b_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-      this.g = aekt.a(34.0F, BaseApplicationImpl.getContext().getResources());
-      this.h = aekt.a(45.0F, BaseApplicationImpl.getContext().getResources());
-      this.l = aekt.a(4.0F, BaseApplicationImpl.getContext().getResources());
-      this.m = aekt.a(3.0F, BaseApplicationImpl.getContext().getResources());
-      this.jdField_c_of_type_Bluk = new bluk(0);
-      this.jdField_c_of_type_Bluk.a(new bltv(-1, this.l, this.m));
-      this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSkewX(-0.15F);
-      if (paramTypeface != null) {
-        this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
-      }
-      this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.j = aekt.a(19.0F, BaseApplicationImpl.getContext().getResources());
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.j);
-      this.jdField_a_of_type_AndroidTextTextPaint.setColor(-16777216);
-      TextPaint localTextPaint = new TextPaint();
-      if (paramTypeface != null) {
-        localTextPaint.setTypeface(paramTypeface);
-      }
-      this.jdField_b_of_type_JavaLangString = bluu.a();
-      localTextPaint.setAntiAlias(true);
-      localTextPaint.setTextSkewX(-0.15F);
-      localTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.i = aekt.a(23.0F, BaseApplicationImpl.getContext().getResources());
-      localTextPaint.setTextSize(this.i);
-      localTextPaint.setColor(-1);
-      this.jdField_b_of_type_Bluk = new bluk(0);
-      this.jdField_b_of_type_Bluk.a(new bltv(-16777216, this.l, this.m));
-      this.jdField_b_of_type_Bluk.a(this.jdField_b_of_type_JavaLangString, jdField_c_of_type_Int, this.i, localTextPaint);
-      if (paramList != null) {
-        break label541;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("HumUtils", 2, "humRecognitionResultText: humMusicItemInfo = " + paramMusicItemInfo);
     }
-    label541:
-    for (paramInt = 0;; paramInt = paramList.size())
-    {
-      int n = 0;
-      while (n < paramInt)
-      {
-        a(n, (String)paramList.get(n));
-        n += 1;
-      }
-      this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
-      break;
+    Object localObject;
+    if (paramMusicItemInfo == null) {
+      localObject = "";
     }
-  }
-  
-  private boolean a(float paramFloat1, float paramFloat2, RectF paramRectF, PointF paramPointF)
-  {
-    if ((paramRectF == null) || (paramPointF == null)) {}
+    String str;
     do
     {
-      return false;
-      paramRectF = new RectF(paramRectF.left + paramPointF.x, paramRectF.top + paramPointF.y, paramRectF.right + paramPointF.x, paramRectF.bottom + paramPointF.y);
-    } while ((paramFloat1 <= paramRectF.left) || (paramFloat1 >= paramRectF.right) || (paramFloat2 <= paramRectF.top) || (paramFloat2 >= paramRectF.bottom));
-    return true;
+      return localObject;
+      str = paramMusicItemInfo.mMusicName;
+      if (paramMusicItemInfo.mMusicName.length() > 7) {
+        str = paramMusicItemInfo.mMusicName.substring(0, 7) + "...";
+      }
+      localObject = str;
+    } while (TextUtils.isEmpty(paramMusicItemInfo.mSingername));
+    return paramMusicItemInfo.mSingername + "-" + str;
   }
   
-  public float a()
+  public static String a(String paramString)
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return 2;
-  }
-  
-  public int a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    float f1 = paramFloat1 / a();
-    RectF localRectF1 = new RectF(this.jdField_b_of_type_AndroidGraphicsRectF.left * f1, this.jdField_b_of_type_AndroidGraphicsRectF.top * f1, this.jdField_b_of_type_AndroidGraphicsRectF.right * f1, this.jdField_b_of_type_AndroidGraphicsRectF.bottom * f1);
-    RectF localRectF2 = new RectF(this.jdField_a_of_type_AndroidGraphicsRectF.left * f1, this.jdField_a_of_type_AndroidGraphicsRectF.top * f1, this.jdField_a_of_type_AndroidGraphicsRectF.right * f1, f1 * this.jdField_a_of_type_AndroidGraphicsRectF.bottom);
-    PointF localPointF = new PointF(-paramFloat1 / 2.0F, -paramFloat2 / 2.0F);
-    if (a(paramFloat3, paramFloat4, localRectF1, localPointF)) {
-      return 1;
-    }
-    if (a(paramFloat3, paramFloat4, localRectF2, localPointF)) {
-      return 0;
-    }
-    return -1;
-  }
-  
-  public int a(MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2, @Nullable bmmn parambmmn, bmtw parambmtw)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    if (parambmmn != null) {
-      return parambmtw.a(parambmmn, f1, f2);
-    }
-    paramMotionEvent = new PointF((paramFloat1 - a()) / 2.0F, (paramFloat2 - b()) / 2.0F);
-    if (a(f1, f2, this.jdField_b_of_type_AndroidGraphicsRectF, paramMotionEvent)) {
-      return 1;
-    }
-    if (a(f1, f2, this.jdField_a_of_type_AndroidGraphicsRectF, paramMotionEvent)) {
-      return 0;
-    }
-    return -1;
-  }
-  
-  public InputFilter a()
-  {
-    if (this.jdField_a_of_type_AndroidTextInputFilter == null) {
-      this.jdField_a_of_type_AndroidTextInputFilter = new blue(this, 20);
-    }
-    return this.jdField_a_of_type_AndroidTextInputFilter;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if ((paramInt < 0) || (paramInt >= a())) {
-      return;
-    }
-    super.a(paramInt, paramString);
-    String str = super.b(paramInt);
-    paramString = str;
-    if (TextUtils.isEmpty(str)) {
-      paramString = "　　";
-    }
-    this.f = aekt.a(18.0F, BaseApplicationImpl.getContext().getResources());
-    if (paramInt == 0)
+    Object localObject = MessageDigest.getInstance("MD5");
+    ((MessageDigest)localObject).update(paramString.getBytes("UTF-8"));
+    paramString = ((MessageDigest)localObject).digest();
+    localObject = new StringBuilder();
+    int i = 0;
+    if (i < paramString.length)
     {
-      paramString = " " + paramString;
-      this.jdField_a_of_type_Bluk = new bluk(0);
-      this.jdField_a_of_type_Bluk.a(new bltv(-16777216, this.l, this.m));
-      this.jdField_a_of_type_Bluk.a(paramString, jdField_c_of_type_Int, this.k, this.jdField_b_of_type_AndroidTextTextPaint);
-      this.jdField_a_of_type_Float = Math.max(this.jdField_a_of_type_Bluk.a(), this.jdField_b_of_type_Bluk.a());
-      this.jdField_a_of_type_Float = Math.max(this.jdField_c_of_type_Bluk.a(), this.jdField_a_of_type_Float);
-      this.jdField_b_of_type_Float = (this.jdField_a_of_type_Bluk.b() + this.g + this.jdField_b_of_type_Bluk.b() + this.h + this.jdField_c_of_type_Bluk.b());
-      return;
+      if (Integer.toHexString(paramString[i] & 0xFF).length() == 1) {
+        ((StringBuilder)localObject).append("0").append(Integer.toHexString(paramString[i] & 0xFF));
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        ((StringBuilder)localObject).append(Integer.toHexString(paramString[i] & 0xFF));
+      }
     }
-    if (paramString.length() > 18) {}
-    for (this.jdField_a_of_type_JavaLangString = paramString.substring(0, 18);; this.jdField_a_of_type_JavaLangString = paramString)
-    {
-      this.jdField_c_of_type_Bluk.a(this.jdField_c_of_type_JavaLangString + "\n" + this.jdField_a_of_type_JavaLangString, jdField_c_of_type_Int, this.j, this.jdField_a_of_type_AndroidTextTextPaint);
-      return;
-    }
+    return ((StringBuilder)localObject).toString();
   }
   
-  public void a(Canvas paramCanvas)
+  public static void a()
   {
-    this.e = 0;
-    this.jdField_a_of_type_Bluk.a(paramCanvas, 0, this.e);
-    this.e = ((int)(this.e + this.jdField_a_of_type_Bluk.b()));
-    this.e += this.g;
-    this.jdField_b_of_type_Bluk.a(paramCanvas, 0, this.e);
-    this.e = ((int)(this.e + this.jdField_b_of_type_Bluk.b()));
-    this.e += this.h;
-    this.jdField_c_of_type_Bluk.a(paramCanvas, 0, this.e);
-    if (super.b(1))
-    {
-      this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_Bluk.a(2, this.jdField_c_of_type_Bluk.a()));
-      RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
-      localRectF.top += this.e;
-      localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
-      localRectF.bottom += this.e;
-      paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
-    }
-    this.e = ((int)(this.e + this.jdField_c_of_type_Bluk.b()));
-    if (super.b(0))
-    {
-      this.jdField_b_of_type_AndroidGraphicsRectF.left = 0.0F;
-      this.jdField_a_of_type_AndroidGraphicsRectF.top = 0.0F;
-      this.jdField_a_of_type_AndroidGraphicsRectF.right = this.jdField_a_of_type_Bluk.a();
-      this.jdField_a_of_type_AndroidGraphicsRectF.bottom = this.jdField_a_of_type_Bluk.b();
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
-    }
+    xtc localxtc = xtc.a(BaseApplicationImpl.getApplication().getApplicationContext());
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add("-formats");
+    localxtc.a((String[])localArrayList.toArray(new String[0]), new bluf());
   }
   
-  public boolean a()
+  public static void a(String paramString1, String paramString2, blur paramblur)
   {
-    return true;
+    a();
+    xtc localxtc = xtc.a(BaseApplicationImpl.getApplication().getApplicationContext());
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add("-f");
+    localArrayList.add("s16le");
+    localArrayList.add("-ar");
+    localArrayList.add("44100");
+    localArrayList.add("-ac");
+    localArrayList.add("1");
+    localArrayList.add("-i");
+    localArrayList.add(paramString1);
+    localArrayList.add("-f");
+    localArrayList.add("s16le");
+    localArrayList.add("-ar");
+    localArrayList.add("8000");
+    localArrayList.add("-ac");
+    localArrayList.add("1");
+    localArrayList.add("-acodec");
+    localArrayList.add("pcm_s16le");
+    localArrayList.add(paramString2);
+    localxtc.a((String[])localArrayList.toArray(new String[0]), new blue(paramString2, paramblur));
   }
   
-  public float b()
+  public static boolean a()
   {
-    return this.jdField_b_of_type_Float;
+    File localFile = new File(bluq.a);
+    if (!localFile.exists()) {
+      localFile.mkdir();
+    }
+    try
+    {
+      new blub(BaseApplicationImpl.getContext()).a("svm_snr15_random_noise", localFile);
+      return true;
+    }
+    catch (IOException localIOException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("HumUtils", 2, "copyHumClassifier: Failed. exception = ", localIOException);
+      }
+    }
+    return false;
+  }
+  
+  /* Error */
+  public static byte[] a(File paramFile)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 208	java/io/File:length	()J
+    //   4: l2i
+    //   5: istore_1
+    //   6: iload_1
+    //   7: newarray byte
+    //   9: astore 4
+    //   11: aconst_null
+    //   12: astore_2
+    //   13: aconst_null
+    //   14: astore_3
+    //   15: new 210	java/io/FileInputStream
+    //   18: dup
+    //   19: aload_0
+    //   20: invokespecial 213	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   23: astore_0
+    //   24: aload_0
+    //   25: astore_2
+    //   26: aload_0
+    //   27: aload 4
+    //   29: iconst_0
+    //   30: iload_1
+    //   31: invokevirtual 217	java/io/FileInputStream:read	([BII)I
+    //   34: pop
+    //   35: aload_0
+    //   36: ifnull +7 -> 43
+    //   39: aload_0
+    //   40: invokevirtual 220	java/io/FileInputStream:close	()V
+    //   43: aload 4
+    //   45: areturn
+    //   46: astore_0
+    //   47: invokestatic 13	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   50: ifeq -7 -> 43
+    //   53: ldc 15
+    //   55: iconst_2
+    //   56: ldc 222
+    //   58: aload_0
+    //   59: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   62: aload 4
+    //   64: areturn
+    //   65: astore_3
+    //   66: aconst_null
+    //   67: astore_0
+    //   68: aload_0
+    //   69: astore_2
+    //   70: invokestatic 13	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   73: ifeq +14 -> 87
+    //   76: aload_0
+    //   77: astore_2
+    //   78: ldc 15
+    //   80: iconst_2
+    //   81: ldc 222
+    //   83: aload_3
+    //   84: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   87: aload_0
+    //   88: ifnull -45 -> 43
+    //   91: aload_0
+    //   92: invokevirtual 220	java/io/FileInputStream:close	()V
+    //   95: aload 4
+    //   97: areturn
+    //   98: astore_0
+    //   99: invokestatic 13	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   102: ifeq -59 -> 43
+    //   105: ldc 15
+    //   107: iconst_2
+    //   108: ldc 222
+    //   110: aload_0
+    //   111: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   114: aload 4
+    //   116: areturn
+    //   117: astore_2
+    //   118: aload_3
+    //   119: astore_0
+    //   120: aload_2
+    //   121: astore_3
+    //   122: aload_0
+    //   123: astore_2
+    //   124: invokestatic 13	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   127: ifeq +14 -> 141
+    //   130: aload_0
+    //   131: astore_2
+    //   132: ldc 15
+    //   134: iconst_2
+    //   135: ldc 222
+    //   137: aload_3
+    //   138: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   141: aload_0
+    //   142: ifnull -99 -> 43
+    //   145: aload_0
+    //   146: invokevirtual 220	java/io/FileInputStream:close	()V
+    //   149: aload 4
+    //   151: areturn
+    //   152: astore_0
+    //   153: invokestatic 13	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   156: ifeq -113 -> 43
+    //   159: ldc 15
+    //   161: iconst_2
+    //   162: ldc 222
+    //   164: aload_0
+    //   165: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   168: aload 4
+    //   170: areturn
+    //   171: astore_0
+    //   172: aload_2
+    //   173: ifnull +7 -> 180
+    //   176: aload_2
+    //   177: invokevirtual 220	java/io/FileInputStream:close	()V
+    //   180: aload_0
+    //   181: athrow
+    //   182: astore_2
+    //   183: invokestatic 13	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   186: ifeq -6 -> 180
+    //   189: ldc 15
+    //   191: iconst_2
+    //   192: ldc 222
+    //   194: aload_2
+    //   195: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   198: goto -18 -> 180
+    //   201: astore_0
+    //   202: goto -30 -> 172
+    //   205: astore_3
+    //   206: goto -84 -> 122
+    //   209: astore_3
+    //   210: goto -142 -> 68
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	213	0	paramFile	File
+    //   5	26	1	i	int
+    //   12	66	2	localFile1	File
+    //   117	4	2	localIOException1	IOException
+    //   123	54	2	localFile2	File
+    //   182	13	2	localIOException2	IOException
+    //   14	1	3	localObject	Object
+    //   65	54	3	localFileNotFoundException1	java.io.FileNotFoundException
+    //   121	17	3	localIOException3	IOException
+    //   205	1	3	localIOException4	IOException
+    //   209	1	3	localFileNotFoundException2	java.io.FileNotFoundException
+    //   9	160	4	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   39	43	46	java/io/IOException
+    //   15	24	65	java/io/FileNotFoundException
+    //   91	95	98	java/io/IOException
+    //   15	24	117	java/io/IOException
+    //   145	149	152	java/io/IOException
+    //   15	24	171	finally
+    //   124	130	171	finally
+    //   132	141	171	finally
+    //   176	180	182	java/io/IOException
+    //   26	35	201	finally
+    //   70	76	201	finally
+    //   78	87	201	finally
+    //   26	35	205	java/io/IOException
+    //   26	35	209	java/io/FileNotFoundException
+  }
+  
+  /* Error */
+  public static boolean b()
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: invokestatic 228	java/lang/System:currentTimeMillis	()J
+    //   6: lstore_0
+    //   7: getstatic 230	blud:a	J
+    //   10: lstore_2
+    //   11: lload_0
+    //   12: lload_2
+    //   13: lsub
+    //   14: lstore_2
+    //   15: lconst_0
+    //   16: lload_2
+    //   17: lcmp
+    //   18: ifge +20 -> 38
+    //   21: lload_2
+    //   22: ldc2_w 231
+    //   25: lcmp
+    //   26: ifge +12 -> 38
+    //   29: iconst_1
+    //   30: istore 4
+    //   32: ldc 2
+    //   34: monitorexit
+    //   35: iload 4
+    //   37: ireturn
+    //   38: lload_0
+    //   39: putstatic 230	blud:a	J
+    //   42: iconst_0
+    //   43: istore 4
+    //   45: goto -13 -> 32
+    //   48: astore 5
+    //   50: ldc 2
+    //   52: monitorexit
+    //   53: aload 5
+    //   55: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   6	33	0	l1	long
+    //   10	12	2	l2	long
+    //   30	14	4	bool	boolean
+    //   48	6	5	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	11	48	finally
+    //   38	42	48	finally
   }
 }
 

@@ -1,69 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.WebpSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.mobileqq.util.WebpSoLoader;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.datareportviewer.ReportData;
+import java.util.HashMap;
 
-public class aphp
-  extends apgu
+class aphp
+  extends BroadcastReceiver
 {
-  QQAppInterface b = null;
+  aphp(aphn paramaphn) {}
   
-  public aphp(QQAppInterface paramQQAppInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super("qq.android.pic.webp.so", paramQQAppInterface);
-    this.b = paramQQAppInterface;
-  }
-  
-  public int a()
-  {
-    return 10056;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return WebpSoData.class;
-  }
-  
-  public String a()
-  {
-    return "QWebpSoDownloadDuration";
-  }
-  
-  public void a(String paramString)
-  {
-    try
+    paramContext = (ReportData)paramIntent.getSerializableExtra("reportData");
+    paramIntent = (aphq)aphn.a(this.a).get(paramContext.actionName);
+    if ((paramIntent != null) && (paramIntent.b()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QWebpSoDownloadHandler", 2, "onDownload success: " + paramString);
-      }
-      String str = WebpSoLoader.a(BaseApplicationImpl.getContext());
-      if (!TextUtils.isEmpty(str)) {
-        bdcs.a(paramString, str, false);
-      }
+      this.a.a();
+      aphn.a(this.a).a(paramContext);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QWebpSoDownloadHandler", 2, localException.getMessage());
-        }
-      }
-    }
-    super.a(paramString);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
   }
 }
 

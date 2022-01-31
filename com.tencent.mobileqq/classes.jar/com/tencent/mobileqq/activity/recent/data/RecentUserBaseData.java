@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ajib;
+import ajmq;
 import android.content.Context;
-import aupu;
+import auud;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -14,7 +14,7 @@ public abstract class RecentUserBaseData
 {
   protected static final String DES_DEFAULT_HAVE_MSG = "%s,%s,%d条未读,%s";
   protected static final String DES_DEFAULT_NO_MSG = "%s,%s,%s";
-  @ajib
+  @ajmq
   public RecentUser mUser;
   
   public RecentUserBaseData(RecentUser paramRecentUser)
@@ -71,7 +71,7 @@ public abstract class RecentUserBaseData
     this.mMsgExtroInfo = "";
     this.mMenuFlag &= 0xFFFFFF0F;
     int i;
-    if ((this.mUser.getType() == 1) && (!aupu.a(paramQQAppInterface, this.mUser)))
+    if ((this.mUser.getType() == 1) && (!auud.a(paramQQAppInterface, this.mUser)))
     {
       paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
       int j = this.mMenuFlag;

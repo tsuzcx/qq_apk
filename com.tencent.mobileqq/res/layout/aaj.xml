@@ -11,8 +11,8 @@
                 <TextView android:textSize="14.0dip" android:textColor="#daffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/lkj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" />
             </LinearLayout>
             <ImageView android:layout_gravity="center|right" android:id="@id/eq8" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="fill_parent" android:layout_marginRight="36.0dip" android:src="@drawable/dpt" android:scaleType="center" android:contentDescription="@string/pws" />
-            <com.tencent.biz.pubaccount.readinjoy.view.FrameLayoutCompat android:layout_gravity="center|right" android:id="@id/mtu" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="fill_parent">
-                <com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView android:layout_gravity="center" android:id="@id/mu0" android:visibility="gone" android:layout_width="27.0dip" android:layout_height="27.0dip" />
+            <com.tencent.biz.pubaccount.readinjoy.view.FrameLayoutCompat android:layout_gravity="center|right" android:id="@id/mvg" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="fill_parent">
+                <com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView android:layout_gravity="center" android:id="@id/mvm" android:visibility="gone" android:layout_width="27.0dip" android:layout_height="27.0dip" />
             </com.tencent.biz.pubaccount.readinjoy.view.FrameLayoutCompat>
             <ImageView android:layout_gravity="right" android:id="@id/ir3" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="fill_parent" android:src="@drawable/dt7" android:scaleType="centerInside" android:contentDescription="@string/pv7" />
         </FrameLayout>

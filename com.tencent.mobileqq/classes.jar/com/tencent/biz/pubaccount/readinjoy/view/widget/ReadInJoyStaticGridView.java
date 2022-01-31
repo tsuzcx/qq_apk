@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.view.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bdkf;
+import bdoo;
 import com.tencent.widget.AbsListView.LayoutParams;
 
 public class ReadInJoyStaticGridView
@@ -29,8 +29,8 @@ public class ReadInJoyStaticGridView
   {
     setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     setNumColumns(4);
-    setHorizontalSpacing(bdkf.a(0.0F));
-    setVerticalSpacing(bdkf.a(0.0F));
+    setHorizontalSpacing(bdoo.a(0.0F));
+    setVerticalSpacing(bdoo.a(0.0F));
     setSelector(17170445);
     setClipChildren(false);
   }

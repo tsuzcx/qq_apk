@@ -25,11 +25,11 @@ public class AVLoadingDialogActivity
   Dialog a()
   {
     Dialog localDialog = new Dialog(this, 2131755801);
-    localDialog.setContentView(2131559438);
+    localDialog.setContentView(2131559437);
     localDialog.setCancelable(false);
-    TextView localTextView = (TextView)localDialog.findViewById(2131371874);
+    TextView localTextView = (TextView)localDialog.findViewById(2131371894);
     if (localTextView != null) {
-      localTextView.setText(2131696350);
+      localTextView.setText(2131696352);
     }
     return localDialog;
   }

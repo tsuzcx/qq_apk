@@ -1,7 +1,9 @@
-public class aywb
+import android.widget.ImageView;
+
+public abstract interface aywb
+  extends aywe
 {
-  public int a;
-  public byte[] a;
+  public abstract ImageView b();
 }
 
 

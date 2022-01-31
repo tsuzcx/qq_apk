@@ -1,303 +1,126 @@
+import Wallet.DownloadReportReq;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.qq.wx.voice.embed.recognizer.GrammarNative;
+import com.qq.taf.jce.JceStruct;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.List;
-import mqq.app.AppRuntime;
+import java.lang.ref.WeakReference;
+import java.util.Map;
 
 public class ajas
+  extends bead
 {
-  private static volatile ajas jdField_a_of_type_Ajas;
-  private int jdField_a_of_type_Int = -1;
+  private boolean jdField_a_of_type_Boolean;
   
-  public static ajas a()
-  {
-    if (jdField_a_of_type_Ajas == null) {}
-    try
-    {
-      if (jdField_a_of_type_Ajas == null) {
-        jdField_a_of_type_Ajas = new ajas();
-      }
-      return jdField_a_of_type_Ajas;
-    }
-    finally {}
-  }
+  public ajas(PreloadResource paramPreloadResource, int paramInt, WeakReference paramWeakReference, bead parambead, long paramLong) {}
   
-  public float a()
+  public void onDoneFile(beae parambeae)
   {
-    try
-    {
-      float f = GrammarNative.getResultCfd();
-      return f;
+    Object localObject = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (PreloadManager.a((PreloadManager)localObject)) {
+      ((PreloadManager)localObject).c();
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+    if (this.jdField_a_of_type_Bead != null) {
+      this.jdField_a_of_type_Bead.onDoneFile(parambeae);
     }
-    return 1.0F;
-  }
-  
-  public int a(byte[] paramArrayOfByte, int paramInt)
-  {
-    if (this.jdField_a_of_type_Int == 1)
+    localObject = new DownloadReportReq();
+    int i;
+    File localFile;
+    long l;
+    if (parambeae.jdField_a_of_type_Int == 0)
     {
-      do
+      ((DownloadReportReq)localObject).iType = 1;
+      int j = -1;
+      i = j;
+      if (parambeae.jdField_a_of_type_JavaUtilMap != null)
       {
-        try
+        i = j;
+        if (!TextUtils.isEmpty(parambeae.jdField_a_of_type_JavaLangString))
         {
-          paramInt = GrammarNative.recognize(paramArrayOfByte, paramInt);
-          if (paramInt < 0)
-          {
-            i = -1;
-            return i;
+          localFile = (File)parambeae.jdField_a_of_type_JavaUtilMap.get(parambeae.jdField_a_of_type_JavaLangString);
+          if (localFile != null) {
+            break label242;
           }
-        }
-        catch (Throwable paramArrayOfByte)
-        {
-          paramArrayOfByte.printStackTrace();
-          return -1;
-        }
-        int i = paramInt;
-      } while (paramInt != 1);
-      this.jdField_a_of_type_Int = 0;
-      return 1;
-    }
-    return 0;
-  }
-  
-  public String a(AppRuntime paramAppRuntime)
-  {
-    localStringBuilder = new StringBuilder();
-    try
-    {
-      paramAppRuntime = ((PreloadManager)paramAppRuntime.getManager(151)).b("2017112200");
-      if (paramAppRuntime != null)
-      {
-        paramAppRuntime = paramAppRuntime.getResList();
-        if (paramAppRuntime != null)
-        {
-          int i = 0;
-          while (i < paramAppRuntime.size())
-          {
-            PreloadResource localPreloadResource = (PreloadResource)paramAppRuntime.get(i);
-            if (i != 0) {
-              localStringBuilder.append("&");
-            }
-            localStringBuilder.append(localPreloadResource.mResId);
-            i += 1;
-          }
+          l = -2L;
+          label113:
+          i = (int)l;
         }
       }
-      return localStringBuilder.toString();
     }
-    catch (Throwable paramAppRuntime)
-    {
-      paramAppRuntime.printStackTrace();
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      this.jdField_a_of_type_Int = 1;
-      try
-      {
-        int i = GrammarNative.begin();
-        if (i < 0) {
-          return false;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool = false;
-    try
-    {
-      int i = GrammarNative.update(paramString.getBytes("GBK"));
-      if (i == 0) {
-        bool = true;
-      }
-      return bool;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return false;
-  }
-  
-  public boolean a(AppRuntime paramAppRuntime)
-  {
-    File localFile = null;
     for (;;)
     {
-      try
+      for (;;)
       {
+        ((DownloadReportReq)localObject).vecResInfo = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.getMyResInfos(i);
+        ((DownloadReportReq)localObject).iUin = this.jdField_a_of_type_Long;
+        ((DownloadReportReq)localObject).sPhoneType = bdgk.i();
+        ((DownloadReportReq)localObject).sOsVersion = bdgk.e();
+        ((DownloadReportReq)localObject).sQQVersion = bdgk.c();
+        ((DownloadReportReq)localObject).iScene = parambeae.a().getInt("scene");
+        aivh.a((JceStruct)localObject, null);
         if (QLog.isColorLevel()) {
-          QLog.d("VoiceRecognizer", 2, "init is call" + this.jdField_a_of_type_Int);
+          QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " flow down result:" + parambeae.jdField_a_of_type_Int + localObject);
         }
-        int i = this.jdField_a_of_type_Int;
-        boolean bool;
-        if (i != -1)
+        return;
+        ((DownloadReportReq)localObject).iType = 2;
+        break;
+        try
         {
-          bool = true;
-          return bool;
-        }
-        if (paramAppRuntime == null)
-        {
-          bool = false;
-        }
-        else
-        {
-          PreloadManager localPreloadManager = (PreloadManager)paramAppRuntime.getManager(151);
-          Object localObject = localPreloadManager.a("2018011001");
-          String str = localPreloadManager.a("2018011002");
-          paramAppRuntime = localFile;
-          if (!TextUtils.isEmpty((CharSequence)localObject))
+          label242:
+          if (localFile.exists())
           {
-            paramAppRuntime = localFile;
-            if (!TextUtils.isEmpty(str))
-            {
-              localFile = new File((String)localObject, "libwxvoiceembed.so");
-              localObject = new File(str, "libwxvoiceembed.bin");
-              paramAppRuntime = localFile;
-              if (localFile.exists())
-              {
-                paramAppRuntime = localFile;
-                if (((File)localObject).exists())
-                {
-                  i = 1;
-                  paramAppRuntime = localFile;
-                  if (i == 0)
-                  {
-                    localPreloadManager.a("2017112200");
-                    bool = false;
-                    continue;
-                  }
-                  try
-                  {
-                    System.load(paramAppRuntime.getAbsolutePath());
-                    i = GrammarNative.init(str.getBytes(), "libwxvoiceembed.bin".getBytes(), null);
-                    if (i >= 0) {
-                      continue;
-                    }
-                    bool = false;
-                  }
-                  catch (Throwable paramAppRuntime)
-                  {
-                    paramAppRuntime.printStackTrace();
-                    bool = false;
-                  }
-                  continue;
-                  this.jdField_a_of_type_Int = 0;
-                  bool = true;
-                  continue;
-                }
-              }
-            }
+            l = localFile.length();
+            break label113;
           }
-          i = 0;
+          l = -3L;
+        }
+        catch (Throwable localThrowable)
+        {
+          i = -4;
+          localThrowable.printStackTrace();
         }
       }
-      finally {}
     }
   }
   
-  public boolean b()
+  public void onProgress(beae parambeae)
   {
-    if (this.jdField_a_of_type_Int == 1)
+    double d;
+    if (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Int = 0;
-      try
-      {
-        int i = GrammarNative.end();
-        if (i < 0) {
-          return false;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-        return false;
+      this.jdField_a_of_type_Boolean = true;
+      long l1 = System.currentTimeMillis();
+      long l2 = parambeae.g;
+      d = parambeae.f / (l1 - l2);
+      if (d >= 1.0D) {
+        break label43;
       }
     }
-    return true;
+    label43:
+    do
+    {
+      return;
+      parambeae = new DownloadReportReq();
+      parambeae.sSpeed = (d + "");
+      parambeae.vecResInfo = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.getMyResInfos();
+      parambeae.iType = 0;
+      parambeae.iUin = this.jdField_a_of_type_Long;
+      aivh.a(parambeae, null);
+    } while (!QLog.isColorLevel());
+    QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " flow down speed:" + d);
   }
   
-  /* Error */
-  public boolean c()
+  public boolean onStart(beae parambeae)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: invokestatic 106	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5: ifeq +31 -> 36
-    //   8: ldc 108
-    //   10: iconst_2
-    //   11: new 36	java/lang/StringBuilder
-    //   14: dup
-    //   15: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   18: ldc 168
-    //   20: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: aload_0
-    //   24: getfield 13	ajas:jdField_a_of_type_Int	I
-    //   27: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   30: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   36: aload_0
-    //   37: getfield 13	ajas:jdField_a_of_type_Int	I
-    //   40: istore_1
-    //   41: iload_1
-    //   42: iconst_m1
-    //   43: if_icmpeq +25 -> 68
-    //   46: invokestatic 171	com/qq/wx/voice/embed/recognizer/GrammarNative:destroy	()I
-    //   49: ifne +19 -> 68
-    //   52: aload_0
-    //   53: iconst_m1
-    //   54: putfield 13	ajas:jdField_a_of_type_Int	I
-    //   57: iconst_1
-    //   58: istore_2
-    //   59: aload_0
-    //   60: monitorexit
-    //   61: iload_2
-    //   62: ireturn
-    //   63: astore_3
-    //   64: aload_3
-    //   65: invokevirtual 172	java/lang/Exception:printStackTrace	()V
-    //   68: iconst_0
-    //   69: istore_2
-    //   70: goto -11 -> 59
-    //   73: astore_3
-    //   74: aload_0
-    //   75: monitorexit
-    //   76: aload_3
-    //   77: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	78	0	this	ajas
-    //   40	4	1	i	int
-    //   58	12	2	bool	boolean
-    //   63	2	3	localException	java.lang.Exception
-    //   73	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   46	57	63	java/lang/Exception
-    //   2	36	73	finally
-    //   36	41	73	finally
-    //   46	57	73	finally
-    //   64	68	73	finally
+    int i = 3;
+    parambeae.f = 1048576L;
+    if (this.jdField_a_of_type_Int > 3) {
+      i = this.jdField_a_of_type_Int;
+    }
+    parambeae.b = i;
+    return super.onStart(parambeae);
   }
 }
 

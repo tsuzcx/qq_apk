@@ -1,17 +1,60 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
 class ajxe
-  extends amab
 {
-  ajxe(ajxc paramajxc) {}
+  int jdField_a_of_type_Int = 3;
+  long jdField_a_of_type_Long = 0L;
+  ajxe jdField_a_of_type_Ajxe = null;
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+  boolean jdField_a_of_type_Boolean = false;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  static ajxe a()
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
-    if (localBitmap != null) {
-      ajxc.a(this.a, paramString, localBitmap);
+    ajxe localajxe = new ajxe();
+    localajxe.a();
+    return localajxe;
+  }
+  
+  String a()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      return "LBS_REQ_OK";
+    case 1: 
+      return "LBS_REQ_PENDING";
     }
+    return "LBS_REQ_PERM_OK";
+  }
+  
+  void a()
+  {
+    if (this.jdField_a_of_type_Ajxe == null) {
+      this.jdField_a_of_type_Ajxe = new ajxe();
+    }
+  }
+  
+  boolean a(String paramString)
+  {
+    ajxc.a("startLocation", String.format("filterId=%s , IdList=%s", new Object[] { paramString, this.jdField_a_of_type_JavaUtilArrayList.toString() }), null);
+    return this.jdField_a_of_type_JavaUtilArrayList.contains(paramString);
+  }
+  
+  void b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  void c()
+  {
+    this.jdField_a_of_type_Ajxe.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Ajxe.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Ajxe.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Ajxe.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Ajxe.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
   }
 }
 

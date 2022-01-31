@@ -1,9 +1,9 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bnli;
-import bnlj;
-import bnln;
-import bnlo;
+import bnpu;
+import bnpv;
+import bnpz;
+import bnqa;
 import java.util.Iterator;
 import java.util.concurrent.PriorityBlockingQueue;
 
@@ -15,10 +15,10 @@ public class ShortVideoPreDownloader$4
     Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.iterator();
     while (localIterator.hasNext())
     {
-      bnlo localbnlo = (bnlo)localIterator.next();
-      bnli.a(localbnlo, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (localbnlo.a != null) {
-        bnln.a("consumeAllThumbsInPendingQueue", "consume thumb, uniseq=" + localbnlo.a.a);
+      bnqa localbnqa = (bnqa)localIterator.next();
+      bnpu.a(localbnqa, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (localbnqa.a != null) {
+        bnpz.a("consumeAllThumbsInPendingQueue", "consume thumb, uniseq=" + localbnqa.a.a);
       }
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.clear();

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo.script;
 
-import akwi;
-import akwl;
+import alax;
+import alba;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class SpriteBridge$3
   implements Runnable
 {
-  public SpriteBridge$3(akwi paramakwi) {}
+  public SpriteBridge$3(alax paramalax) {}
   
   public void run()
   {
-    if ((akwi.a(this.this$0) != null) && (akwi.a(this.this$0).a() != null)) {
-      akwi.a(this.this$0).a().h();
+    if ((alax.a(this.this$0) != null) && (alax.a(this.this$0).a() != null)) {
+      alax.a(this.this$0).a().h();
     }
   }
 }

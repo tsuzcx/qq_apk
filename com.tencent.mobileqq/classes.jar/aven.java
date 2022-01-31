@@ -1,51 +1,23 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.now.view.widget.LabelViewItem;
-import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
-import java.util.List;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-public class aven
-  extends BaseAdapter
+public abstract interface aven
 {
-  public aven(TopicLabelListView paramTopicLabelListView) {}
+  public abstract void a();
   
-  public int getCount()
-  {
-    if ((TopicLabelListView.a(this.a) == null) || (TopicLabelListView.a(this.a).size() == 0)) {
-      return 0;
-    }
-    return TopicLabelListView.a(this.a).size();
-  }
+  public abstract void a(Comments.Comment paramComment);
   
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
+  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
   
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
+  public abstract void a(Comments paramComments);
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramViewGroup = new aveo(this.a, null);
-      paramView = new LabelViewItem(TopicLabelListView.a(this.a));
-      paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      paramViewGroup.a = ((String)TopicLabelListView.a(this.a).get(paramInt));
-      ((LabelViewItem)paramView).setText(paramViewGroup.a);
-      return paramView;
-      paramViewGroup = (aveo)paramView.getTag();
-    }
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void b(Comments.Comment paramComment);
+  
+  public abstract void c();
 }
 
 

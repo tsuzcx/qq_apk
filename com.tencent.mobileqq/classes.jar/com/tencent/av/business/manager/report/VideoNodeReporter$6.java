@@ -1,7 +1,7 @@
 package com.tencent.av.business.manager.report;
 
 import android.text.TextUtils;
-import azlj;
+import azps;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -18,7 +18,7 @@ public class VideoNodeReporter$6
     Object localObject = lkz.a(this.this$0, this.a);
     QLog.d("VideoNodeReporter", 1, "reportToServer ,roomId = " + this.a + ", detail = " + (String)localObject);
     if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.a != 0L)) {
-      azlj.a(null, "dc02402", (String)localObject);
+      azps.a(null, "dc02402", (String)localObject);
     }
     lkz.a(this.this$0, this.a);
     localObject = this.this$0.a.iterator();

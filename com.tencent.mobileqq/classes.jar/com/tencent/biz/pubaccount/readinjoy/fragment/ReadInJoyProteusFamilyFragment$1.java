@@ -11,7 +11,7 @@ class ReadInJoyProteusFamilyFragment$1
   
   public void run()
   {
-    this.this$0.setTitle(ReadInJoyProteusFamilyFragment.a(this.this$0).getString(2131718966) + "(" + this.a.size() + ")");
+    this.this$0.setTitle(ReadInJoyProteusFamilyFragment.a(this.this$0).getString(2131718978) + "(" + this.a.size() + ")");
     if (ReadInJoyProteusFamilyFragment.a(this.this$0) != null) {
       ReadInJoyProteusFamilyFragment.a(this.this$0).a(true, this.a);
     }

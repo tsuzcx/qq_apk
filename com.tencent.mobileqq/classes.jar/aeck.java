@@ -1,22 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
+import com.tencent.mobileqq.activity.TroopClassChoiceActivity.GetClassChoiceCallBack.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeck
-  implements TextWatcher
+  implements bcwg
 {
-  public aeck(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aeck(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(boolean paramBoolean)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.c(paramEditable);
+    if (paramBoolean)
+    {
+      this.a.a = bcwe.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getContext(), TroopClassChoiceActivity.a(this.a));
+      this.a.runOnUiThread(new TroopClassChoiceActivity.GetClassChoiceCallBack.1(this));
+      return;
+    }
+    QLog.e("IphoneTitleBarActivity", 1, "getClassChoiceFromServer failed!");
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

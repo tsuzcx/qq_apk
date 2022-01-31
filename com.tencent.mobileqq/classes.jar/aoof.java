@@ -1,24 +1,10 @@
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class aoof
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  
-  public aoof()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = -1;
-  }
+  private String a = "";
+  private String b = "";
   
   public static aoof a(String paramString)
   {
@@ -30,59 +16,24 @@ public class aoof
       {
         aoof localaoof = new aoof();
         paramString = new JSONObject(paramString);
-        Object localObject = paramString.optJSONArray("whiteList");
-        if (localObject != null) {
-          localaoof.jdField_a_of_type_JavaLangString = ((JSONArray)localObject).toString();
-        }
-        localObject = paramString.optJSONObject("jumpLimit");
-        if (localObject != null) {
-          localaoof.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).toString();
-        }
-        localObject = paramString.optJSONArray("whiteListv2");
-        if (localObject != null) {
-          localaoof.c = ((JSONArray)localObject).toString();
-        }
-        int i = paramString.optInt("aio_pre_safecheck", -1);
-        if (i != -1) {
-          localaoof.jdField_a_of_type_Int = i;
-        }
-        localObject = paramString.optJSONArray("kbWhiteList");
-        if (localObject != null) {
-          localaoof.d = ((JSONArray)localObject).toString();
-        }
-        i = paramString.optInt("force_https_enable", -1);
-        if (i != -1) {
-          localaoof.jdField_b_of_type_Int = i;
-        }
-        localObject = paramString.optJSONArray("force_https_whitelist");
-        if (localObject != null) {
-          localaoof.e = ((JSONArray)localObject).toString();
-        }
-        paramString = paramString.optJSONArray("force_https_blacklist");
-        if (paramString != null) {
-          localaoof.f = paramString.toString();
-        }
-        QLog.d("ConfBean", 2, "confBean = " + localaoof.toString());
+        localaoof.a = paramString.optString("dest_icon", "");
+        localaoof.b = paramString.optString("avatar_pendant", "");
         return localaoof;
       }
       catch (Exception paramString) {}
     } while (!QLog.isColorLevel());
-    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
+    QLog.e("TogetherEntryConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
     return null;
   }
   
-  public String toString()
+  public String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("whitelistStr:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" limit:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" whiteListV2:").append(this.c);
-    localStringBuilder.append(" aioPreCheckSwitch:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" kbWhiteList:").append(this.d);
-    localStringBuilder.append(" forceHttpsEnable:").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" forceHttpsWhitelist:").append(this.e);
-    localStringBuilder.append(" forceHttpsBlacklist:").append(this.f);
-    return localStringBuilder.toString();
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

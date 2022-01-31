@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import aact;
-import akro;
+import aahi;
+import akwd;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +16,7 @@ class QQGameFeedWebFragment$10
     HashMap localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf(24), "1");
     localHashMap.put(Integer.valueOf(3), "20");
-    aact.a(akro.a(), "769", "205036", "", "76901", "1", "160", localHashMap);
+    aahi.a(akwd.a(), "769", "205036", "", "76901", "1", "160", localHashMap);
   }
 }
 

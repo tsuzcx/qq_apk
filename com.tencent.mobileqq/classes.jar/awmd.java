@@ -1,31 +1,23 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import java.util.Comparator;
-import java.util.Random;
+import android.view.animation.Interpolator;
 
-public class awmd
-  implements Comparator<awlz>
+class awmd
+  implements Interpolator
 {
-  int jdField_a_of_type_Int;
-  Random jdField_a_of_type_JavaUtilRandom;
-  int b;
-  
-  public awmd(TagCloudView paramTagCloudView, Random paramRandom, int paramInt1, int paramInt2)
+  public float getInterpolation(float paramFloat)
   {
-    this.jdField_a_of_type_JavaUtilRandom = paramRandom;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt1;
-  }
-  
-  public int a(awlz paramawlz1, awlz paramawlz2)
-  {
-    if ((paramawlz1.b.y > this.jdField_a_of_type_Int) || (paramawlz2.b.y > this.jdField_a_of_type_Int)) {
-      return -(paramawlz1.b.y - paramawlz2.b.y);
+    if (paramFloat < 0.2094D) {
+      return (float)(-34.0D * (paramFloat - 0.18D) * (paramFloat - 0.18D) + 1.08D);
     }
-    if ((paramawlz1.b.x > this.b) || (paramawlz2.b.x > this.b)) {
-      return -(paramawlz1.b.x - paramawlz2.b.x);
+    if (paramFloat < 0.404D) {
+      return (float)(5.9D * (paramFloat - 0.34D) * (paramFloat - 0.34D) + 0.95D);
     }
-    return this.jdField_a_of_type_JavaUtilRandom.nextInt(3) - 2;
+    if (paramFloat < 0.6045D) {
+      return (float)(-3.0D * (paramFloat - 0.53D) * (paramFloat - 0.53D) + 1.02D);
+    }
+    if (paramFloat < 0.8064D) {
+      return (float)((paramFloat - 0.72D) * (paramFloat - 0.72D) + 0.99D);
+    }
+    return (float)(-0.3D * (paramFloat - 0.915D) * (paramFloat - 0.915D) + 1.001D);
   }
 }
 

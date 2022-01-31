@@ -1,38 +1,30 @@
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class baxi
-  extends baxq
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<basp> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public boolean c = false;
+  public static long a;
+  public static Object a;
+  public static HashMap<Long, baxj> a;
+  public static long b;
   
-  public baxi()
+  static
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 0L;
+    jdField_a_of_type_JavaLangObject = new Object();
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public String toString()
+  public static baxj a(long paramLong)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" fileID:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" isExist:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" blockSize:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" netChg:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    return localStringBuilder.toString();
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      baxj localbaxj2 = (baxj)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      baxj localbaxj1 = localbaxj2;
+      if (localbaxj2 == null) {
+        localbaxj1 = new baxj();
+      }
+      jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localbaxj1);
+      return localbaxj1;
+    }
   }
 }
 

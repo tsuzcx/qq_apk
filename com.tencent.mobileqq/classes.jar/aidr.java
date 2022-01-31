@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
-class aidr
-  implements View.OnClickListener
+public class aidr
 {
-  aidr(aidp paramaidp) {}
+  public int a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public TextView b;
   
-  public void onClick(View paramView)
-  {
-    this.a.a.setText("");
-  }
+  public aidr(aidq paramaidq) {}
 }
 
 

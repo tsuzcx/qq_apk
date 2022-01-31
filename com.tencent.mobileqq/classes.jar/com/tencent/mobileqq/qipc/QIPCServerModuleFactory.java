@@ -1,54 +1,54 @@
 package com.tencent.mobileqq.qipc;
 
-import aame;
-import aamk;
-import abse;
-import aieq;
-import aiwk;
-import aljy;
-import alli;
-import alnf;
-import aloy;
-import alyb;
-import amlk;
-import amnl;
-import anmg;
-import anwx;
-import anxs;
-import aobz;
-import apjd;
-import apkb;
-import aqxc;
-import artm;
-import askr;
-import aste;
-import atbb;
-import atgd;
-import atjc;
-import awfe;
-import awjp;
-import axfy;
-import azfk;
-import aznw;
-import azpe;
-import badj;
-import badt;
-import bakc;
-import bavf;
-import bcpy;
-import bdpr;
-import bdpv;
-import bdql;
-import bexc;
-import bfkl;
-import bijc;
-import bilz;
-import bivv;
-import bjbk;
-import bkeq;
-import bkwn;
-import blel;
-import blym;
+import aaqt;
+import aaqz;
+import abwt;
+import aijf;
+import ajaz;
+import alon;
+import alpx;
+import alru;
+import altn;
+import amcq;
+import ampz;
+import amsa;
+import anqp;
+import aobg;
+import aocb;
+import aogi;
+import apnm;
+import apok;
+import arbl;
+import arxv;
+import aspa;
+import asxn;
+import atfk;
+import atkm;
+import atnl;
+import awjn;
+import awny;
+import axkh;
+import azjt;
+import azsf;
+import aztn;
+import bahs;
+import baic;
+import baol;
+import bazo;
+import bcuh;
+import bdua;
+import bdue;
+import bduu;
+import bfbl;
+import bfou;
+import binj;
+import biqg;
+import bjac;
+import bjfr;
+import bkix;
+import blau;
+import blis;
+import bmcy;
 import com.tencent.mobileqq.mini.reuse.MiniAppBannerIPCModule;
 import com.tencent.mobileqq.mini.reuse.MiniAppTransferModule;
 import com.tencent.mobileqq.vas.QuickUpdateIPCModule;
@@ -58,7 +58,7 @@ import ldx;
 import mqq.app.SecurityFileModule;
 import pea;
 import reg;
-import wyp;
+import xcy;
 
 public class QIPCServerModuleFactory
 {
@@ -67,181 +67,181 @@ public class QIPCServerModuleFactory
   public static QIPCModule onCreateModule(String paramString)
   {
     if ("CommonModule".equals(paramString)) {
-      return alli.a();
+      return alpx.a();
     }
     if ("InnerDnsModule".equals(paramString)) {
-      return bavf.a();
+      return bazo.a();
     }
     if ("Module_DownloaderGetCodeServer".equals(paramString)) {
-      return bfkl.a().a();
+      return bfou.a().a();
     }
     if ("PhotoPlusModule".equals(paramString)) {
-      return bilz.a();
+      return biqg.a();
     }
     if ("PrecoverIPCServer_MODEL".equals(paramString)) {
-      return awjp.a().a();
+      return awny.a().a();
     }
     if ("ArtFilterModule".equals(paramString)) {
-      return wyp.a();
+      return xcy.a();
     }
     if ("Module_VideoFeedsIPCServer".equals(paramString)) {
       return reg.a().a();
     }
     if ("BatteryModule".equals(paramString)) {
-      return aznw.a();
+      return azsf.a();
     }
     if ("VasMonitorIPCModule".equals(paramString)) {
-      return bdql.a();
+      return bduu.a();
     }
     if ("SignInModule".equals(paramString)) {
-      return alyb.a();
+      return amcq.a();
     }
     if ("QQComicIPCModule".equals(paramString)) {
-      return bijc.a();
+      return binj.a();
     }
     if ("QWalletIPCModule".equals(paramString)) {
-      return aiwk.a();
+      return ajaz.a();
     }
     if ("WadlQIPCModule".equals(paramString)) {
-      return bkeq.a();
+      return bkix.a();
     }
     if ("CampusCircleIpcServer_Model".equals(paramString)) {
-      return anwx.a();
+      return aobg.a();
     }
     if ("soso_interface".equals(paramString)) {
-      return amlk.a();
+      return ampz.a();
     }
     if ("REAL_NAME".equals(paramString)) {
-      return axfy.a();
+      return axkh.a();
     }
     if ("QzoneVideoSoDownloadModule".equals(paramString)) {
       return QzoneVideoSoDownloadModule.a();
     }
     if ("QzoneIPCModule".equals(paramString)) {
-      return bjbk.a();
+      return bjfr.a();
     }
     if ("Module_VideoPlayIPCServer".equals(paramString)) {
-      return azfk.a().a();
+      return azjt.a().a();
     }
     if ("gdt_ipc".equals(paramString)) {
-      return aamk.a();
+      return aaqz.a();
     }
     if ("gdt_ipc_module_client_to_server".equals(paramString)) {
-      return aame.a();
+      return aaqt.a();
     }
     if ("VasFontIPCModule".equals(paramString)) {
       return gh.a();
     }
     if ("EmoticonIPCModule".equals(paramString)) {
-      return apkb.a();
+      return apok.a();
     }
     if ("BabyQIPCModule".equals(paramString)) {
-      return aljy.a();
+      return alon.a();
     }
     if ("VasApngIPCModule".equals(paramString)) {
-      return bdpr.a();
+      return bdua.a();
     }
     if ("ThemeIPCModule".equals(paramString)) {
-      return bakc.a();
+      return baol.a();
     }
     if ("QuickUpdateIPCModule".equals(paramString)) {
       return QuickUpdateIPCModule.a();
     }
     if ("HardCoderModule".equals(paramString)) {
-      return abse.a();
+      return abwt.a();
     }
     if ("TeamWorkModule".equals(paramString)) {
-      return badj.a();
+      return bahs.a();
     }
     if ("ChooseImageIPCModule".equals(paramString)) {
-      return anmg.a();
+      return anqp.a();
     }
     if ("IdentificationIpcServer_Model".equals(paramString)) {
-      return aste.a();
+      return asxn.a();
     }
     if ("MiniAppTransferModule".equals(paramString)) {
       return MiniAppTransferModule.getInstance();
     }
     if ("MiniMsgIPCServer".equals(paramString)) {
-      return aieq.a();
+      return aijf.a();
     }
     if ("ColorNoteIPCServer".equals(paramString)) {
-      return anxs.a();
+      return aocb.a();
     }
     if ("JubaoIPCServer".equals(paramString)) {
-      return atgd.a();
+      return atkm.a();
     }
     if ("SecurityFileModule".equals(paramString)) {
       return SecurityFileModule.getInstance();
     }
     if ("PublicAccountModule".equals(paramString)) {
-      return amnl.a();
+      return amsa.a();
     }
     if ("Module_WeiyunDownloadService".equals(paramString)) {
-      return aqxc.a().a();
+      return arbl.a().a();
     }
     if ("Module_TDFileChangeNameQIPCModule".equals(paramString)) {
-      return badt.a();
+      return baic.a();
     }
     if ("NetworkMonitorIPCModule".equals(paramString)) {
-      return azpe.a();
+      return aztn.a();
     }
     if (MiniAppBannerIPCModule.NAME.equals(paramString)) {
       return MiniAppBannerIPCModule.getInstance();
     }
     if ("AECameraLaunchServer".equals(paramString)) {
-      return bkwn.a();
+      return blau.a();
     }
     if ("VasCommonIPCModule".equals(paramString)) {
-      return bdpv.a();
+      return bdue.a();
     }
     if ("ListenTogetherIPCModuleMainServer".equals(paramString)) {
-      return atjc.a();
+      return atnl.a();
     }
     if ("CameraEmoIpcServer".equals(paramString)) {
-      return apjd.a();
+      return apnm.a();
     }
     if ("Module_CheckInServer".equals(paramString)) {
-      return bcpy.a();
+      return bcuh.a();
     }
     if ("PeakIpcModuleServer".equals(paramString)) {
-      return blym.a();
+      return bmcy.a();
     }
     if ("AECameraGetInfoServer".equals(paramString)) {
-      return blel.a();
+      return blis.a();
     }
     if ("FriendQIPCModule".equals(paramString)) {
-      return aloy.a();
+      return altn.a();
     }
     if ("ExtendFriendQIPCModule".equals(paramString)) {
-      return alnf.a();
+      return alru.a();
     }
     if ("open_sdk_qipc_module".equals(paramString)) {
-      return bexc.a();
+      return bfbl.a();
     }
     if ("PicSTWXQIPCModule".equals(paramString)) {
-      return awfe.a();
+      return awjn.a();
     }
     if ("ReadInJoyIPCModule".equals(paramString)) {
       return pea.a();
     }
     if ("DanmuDataIPCServer".equals(paramString)) {
-      return aobz.a();
+      return aogi.a();
     }
     if ("AioShareMusicIPCMainClient".equals(paramString)) {
       return ldx.a();
     }
     if ("QQGameIPCModule".equals(paramString)) {
-      return askr.a();
+      return aspa.a();
     }
     if ("TogetherBusinessIPCModule".equals(paramString)) {
-      return atbb.a();
+      return atfk.a();
     }
     if ("ReaderIPCModule".equals(paramString)) {
-      return bivv.a();
+      return bjac.a();
     }
     if ("FlutterMainQIPCModule".equals(paramString)) {
-      return artm.a();
+      return arxv.a();
     }
     return null;
   }

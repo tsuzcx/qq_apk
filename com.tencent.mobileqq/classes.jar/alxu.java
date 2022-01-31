@@ -1,106 +1,69 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.NewFriendManager.3.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class alxu
-  implements alkr
+  extends altm
 {
-  protected void a(int paramInt, Bundle paramBundle) {}
+  alxu(alxr paramalxr) {}
   
-  protected void a(int paramInt, String paramString) {}
-  
-  protected void a(Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString) {}
-  
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void b(int paramInt, Bundle paramBundle) {}
-  
-  protected void b(int paramInt, String paramString) {}
-  
-  protected void b(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  protected void onAddFriend(String paramString)
   {
-    String str = null;
-    Object localObject2 = null;
-    Object localObject1 = null;
-    int i = -1;
-    switch (paramInt)
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-    default: 
       return;
-    case 1: 
-      b(paramInt, (Bundle)paramObject);
-      return;
-    case 2: 
-      a(paramInt, (Bundle)paramObject);
-      return;
-    case 3: 
-      i = 0;
-      str = "";
-      localObject1 = str;
-      paramInt = i;
-      if (paramBoolean)
+      localObject = this.a.b();
+    } while (((ArrayList)localObject).isEmpty());
+    Object localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      avun localavun = (avun)((Iterator)localObject).next();
+      if ((localavun instanceof avui))
       {
-        paramObject = (Bundle)paramObject;
-        localObject1 = str;
-        paramInt = i;
-        if (paramObject != null)
+        int i = ((avui)localavun).a.structMsg.msg.sub_type.get();
+        String str = ((avui)localavun).a.senderuin;
+        if ((i == 13) && (paramString.equals(str)))
         {
-          paramInt = paramObject.getInt("status");
-          localObject1 = paramObject.getString("wording");
+          ((Iterator)localObject).remove();
+          alxr.a(this.a).a().b(alof.M, 0, ((avui)localavun).a.uniseq, false);
         }
       }
-      a(paramBoolean, paramInt, (String)localObject1);
-      return;
-    case 4: 
-      if (paramBoolean)
-      {
-        paramObject = (Bundle)paramObject;
-        if (paramObject != null)
-        {
-          paramInt = paramObject.getInt(AuthDevRenameActivity.i);
-          localObject1 = paramObject.getByteArray(AuthDevRenameActivity.h);
-          paramObject = paramObject.getString(AuthDevRenameActivity.f);
-        }
-      }
-      break;
     }
-    for (;;)
-    {
-      a(paramBoolean, paramInt, (byte[])localObject1, paramObject);
-      return;
-      a(paramBoolean, (Bundle)paramObject);
-      return;
-      b(paramBoolean, (Bundle)paramObject);
-      return;
-      localObject1 = (Bundle)paramObject;
-      paramObject = str;
-      if (localObject1 != null)
-      {
-        i = ((Bundle)localObject1).getInt("ret_code", -1);
-        paramObject = ((Bundle)localObject1).getString("err_msg");
-      }
-      a(i, paramObject);
-      return;
-      localObject1 = (Bundle)paramObject;
-      paramObject = localObject2;
-      if (localObject1 != null)
-      {
-        i = ((Bundle)localObject1).getInt("ret_code", -1);
-        paramObject = ((Bundle)localObject1).getString("err_msg");
-      }
-      b(i, paramObject);
-      return;
-      a(paramObject);
-      return;
-      paramInt = -1;
-      str = null;
-      paramObject = localObject1;
-      localObject1 = str;
+    alxr.a(this.a).sendEmptyMessage(2);
+  }
+  
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (alxr.a(this.a) != null)) {
+      alxr.a(this.a).sendEmptyMessage(2);
+    }
+  }
+  
+  protected void onGetPushRecommend(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (alxr.a(this.a) != null)) {
+      alxr.a(this.a).sendEmptyMessage(2);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    alxr.a(this.a).runOnUiThread(new NewFriendManager.3.1(this, paramBoolean));
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (alxr.a(this.a) != null)) {
+      alxr.a(this.a).sendEmptyMessage(2);
     }
   }
 }

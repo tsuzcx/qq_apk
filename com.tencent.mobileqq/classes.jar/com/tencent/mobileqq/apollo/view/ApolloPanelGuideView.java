@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.view;
 
-import alhk;
-import alhm;
-import alit;
+import allz;
+import almb;
+import alni;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -25,10 +25,10 @@ public class ApolloPanelGuideView
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private alit jdField_a_of_type_Alit;
+  private alni jdField_a_of_type_Alni;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private ApolloLinearLayoutNoPreview jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayoutNoPreview;
-  private List<alhk> jdField_a_of_type_JavaUtilList;
+  private List<allz> jdField_a_of_type_JavaUtilList;
   
   public ApolloPanelGuideView(Context paramContext)
   {
@@ -51,23 +51,23 @@ public class ApolloPanelGuideView
     if (i < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
     {
       ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      alhm localalhm = (alhm)localViewGroup.getTag();
+      almb localalmb = (almb)localViewGroup.getTag();
       if (i < this.jdField_a_of_type_JavaUtilList.size())
       {
         localViewGroup.setVisibility(0);
-        localalhm.jdField_a_of_type_Alhk = ((alhk)this.jdField_a_of_type_JavaUtilList.get(i));
-        ApolloActionData localApolloActionData = localalhm.jdField_a_of_type_Alhk.a;
-        localalhm.jdField_a_of_type_Alhk.c = 0;
-        localalhm.jdField_a_of_type_AndroidWidgetTextView.setText(localApolloActionData.actionName);
-        localalhm.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localalhm.jdField_a_of_type_Alhk.a(getContext(), getContext().getResources().getDisplayMetrics().density));
-        localalhm.e.setBackgroundDrawable(null);
-        localalhm.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-        localalhm.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        localalhm.e.setVisibility(8);
-        if (localalhm.jdField_a_of_type_AndroidViewView != null)
+        localalmb.jdField_a_of_type_Allz = ((allz)this.jdField_a_of_type_JavaUtilList.get(i));
+        ApolloActionData localApolloActionData = localalmb.jdField_a_of_type_Allz.a;
+        localalmb.jdField_a_of_type_Allz.c = 0;
+        localalmb.jdField_a_of_type_AndroidWidgetTextView.setText(localApolloActionData.actionName);
+        localalmb.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localalmb.jdField_a_of_type_Allz.a(getContext(), getContext().getResources().getDisplayMetrics().density));
+        localalmb.e.setBackgroundDrawable(null);
+        localalmb.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+        localalmb.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        localalmb.e.setVisibility(8);
+        if (localalmb.jdField_a_of_type_AndroidViewView != null)
         {
-          localViewGroup.removeView(localalhm.jdField_a_of_type_AndroidViewView);
-          localalhm.jdField_a_of_type_AndroidViewView = null;
+          localViewGroup.removeView(localalmb.jdField_a_of_type_AndroidViewView);
+          localalmb.jdField_a_of_type_AndroidViewView = null;
         }
       }
       for (;;)
@@ -75,8 +75,8 @@ public class ApolloPanelGuideView
         i += 1;
         break;
         localViewGroup.setVisibility(4);
-        localalhm.jdField_a_of_type_Alhk = null;
-        localalhm.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+        localalmb.jdField_a_of_type_Allz = null;
+        localalmb.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
       }
     }
   }
@@ -89,7 +89,7 @@ public class ApolloPanelGuideView
       return;
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        if (((alhk)localIterator.next()).a.actionId == paramApolloActionData.actionId) {
+        if (((allz)localIterator.next()).a.actionId == paramApolloActionData.actionId) {
           post(new ApolloPanelGuideView.1(this));
         }
       }
@@ -104,32 +104,32 @@ public class ApolloPanelGuideView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Alit == null) {
+    if (this.jdField_a_of_type_Alni == null) {
       return;
     }
     switch (paramView.getId())
     {
     default: 
       return;
-    case 2131368074: 
-      this.jdField_a_of_type_Alit.a(this);
+    case 2131368085: 
+      this.jdField_a_of_type_Alni.a(this);
       return;
     }
-    this.jdField_a_of_type_Alit.b(this);
+    this.jdField_a_of_type_Alni.b(this);
   }
   
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    findViewById(2131368074).setOnClickListener(this);
-    findViewById(2131377263).setOnClickListener(this);
+    findViewById(2131368085).setOnClickListener(this);
+    findViewById(2131377317).setOnClickListener(this);
     LinearLayout localLinearLayout = (LinearLayout)findViewById(2131361930);
     this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayoutNoPreview = new ApolloLinearLayoutNoPreview(getContext(), null, 0, 4, 1);
     localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayoutNoPreview, -1, -2);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayoutNoPreview.getChildAt(0));
   }
   
-  public void setActions(List<alhk> paramList)
+  public void setActions(List<allz> paramList)
   {
     if (paramList == null) {
       return;
@@ -143,9 +143,9 @@ public class ApolloPanelGuideView
     this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayoutNoPreview.setCallback(paramBaseChatPie);
   }
   
-  public void setClickCallback(alit paramalit)
+  public void setClickCallback(alni paramalni)
   {
-    this.jdField_a_of_type_Alit = paramalit;
+    this.jdField_a_of_type_Alni = paramalni;
   }
   
   public void setSessionInfo(SessionInfo paramSessionInfo)

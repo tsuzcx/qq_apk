@@ -17,14 +17,14 @@ public class ssi
       if (ServiceAccountFolderActivityNew.a(this.a)) {}
       for (str = "1";; str = "2")
       {
-        yvu.b("auth_discover", "tofollow", 0, 0, new String[] { str });
+        zaj.b("auth_discover", "tofollow", 0, 0, new String[] { str });
         return;
       }
     }
     if (ServiceAccountFolderActivityNew.a(this.a)) {}
     for (String str = "1";; str = "2")
     {
-      yvu.b("auth_follow", "todiscover", 0, 0, new String[] { str });
+      zaj.b("auth_follow", "todiscover", 0, 0, new String[] { str });
       return;
     }
   }
@@ -35,7 +35,7 @@ public class ssi
   
   public void onPageSelected(int paramInt)
   {
-    xxd.a();
+    ybm.a();
     a(paramInt);
     if ((ServiceAccountFolderActivityNew.a(this.a) != null) && (ServiceAccountFolderActivityNew.a(this.a).getChildCount() > paramInt))
     {
@@ -56,7 +56,7 @@ public class ssi
     label173:
     for (String str = "auth_follow";; str = "auth_discover")
     {
-      yvu.a(str, "exp", 0, 0, new String[] { String.valueOf(l1 - l2) });
+      zaj.a(str, "exp", 0, 0, new String[] { String.valueOf(l1 - l2) });
       ServiceAccountFolderActivityNew.a(this.a, 0L);
       ServiceAccountFolderActivityNew.a(this.a, System.currentTimeMillis());
       ServiceAccountFolderActivityNew.a(this.a, paramInt);

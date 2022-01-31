@@ -23,9 +23,9 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class mov
-  implements Handler.Callback, ViewTreeObserver.OnGlobalLayoutListener, appt
+  implements Handler.Callback, ViewTreeObserver.OnGlobalLayoutListener, apuc
 {
-  private final int jdField_a_of_type_Int = 2130841805;
+  private final int jdField_a_of_type_Int = 2130841818;
   private final Activity jdField_a_of_type_AndroidAppActivity;
   private final Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
   private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
@@ -33,11 +33,11 @@ public class mov
   private final InputMethodManager jdField_a_of_type_AndroidViewInputmethodInputMethodManager;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private final bhow jdField_a_of_type_Bhow = new bhow(Looper.getMainLooper(), this);
+  private final bhtd jdField_a_of_type_Bhtd = new bhtd(Looper.getMainLooper(), this);
   private VideoChatRoomListView jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomListView;
   private mpb jdField_a_of_type_Mpb;
   public boolean a;
-  private final int b = 2130841807;
+  private final int b = 2130841820;
   private int c = 0;
   private int d = 0;
   private int e = -1;
@@ -77,17 +77,17 @@ public class mov
   
   private void g()
   {
-    baiq localbaiq = null;
+    bamz localbamz = null;
     Object localObject = this.jdField_a_of_type_AndroidWidgetEditText.getText();
-    if ((localObject instanceof baiq))
+    if ((localObject instanceof bamz))
     {
-      localbaiq = (baiq)localObject;
+      localbamz = (bamz)localObject;
       localObject = null;
     }
     for (;;)
     {
-      if (localbaiq != null) {
-        localObject = lmv.a(localbaiq);
+      if (localbamz != null) {
+        localObject = lmv.a(localbamz);
       }
       this.jdField_a_of_type_AndroidWidgetEditText.setText("");
       if ((this.jdField_a_of_type_Mpb != null) && (!TextUtils.isEmpty((CharSequence)localObject))) {
@@ -95,8 +95,8 @@ public class mov
       }
       return;
       localObject = localObject.toString();
-      if (baiy.a((String)localObject)) {
-        localbaiq = new baiq((CharSequence)localObject, 3, 16);
+      if (banh.a((String)localObject)) {
+        localbamz = new bamz((CharSequence)localObject, 3, 16);
       }
     }
   }
@@ -104,7 +104,7 @@ public class mov
   private void h()
   {
     long l = AudioHelper.b();
-    if (this.jdField_a_of_type_Bhow.hasMessages(2)) {
+    if (this.jdField_a_of_type_Bhtd.hasMessages(2)) {
       if (QLog.isColorLevel()) {
         QLog.i("ChatRoomUtil", 2, "showEmotionLayout, is to show. seq[" + l + "]");
       }
@@ -121,7 +121,7 @@ public class mov
     if (QLog.isColorLevel()) {
       QLog.i("ChatRoomUtil", 2, "showEmotionLayout, isSoftKeyboardShown[" + c() + "], seq[" + l + "]");
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841807);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841820);
     if (c())
     {
       a(5, l);
@@ -130,7 +130,7 @@ public class mov
       localMessage.what = 2;
       localMessage.arg1 = 0;
       localMessage.arg2 = 0;
-      this.jdField_a_of_type_Bhow.sendMessageDelayed(localMessage, 100L);
+      this.jdField_a_of_type_Bhtd.sendMessageDelayed(localMessage, 100L);
       return;
     }
     i();
@@ -139,7 +139,7 @@ public class mov
   private void i()
   {
     long l = AudioHelper.b();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841807);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841820);
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
     a(4, l);
   }
@@ -187,7 +187,7 @@ public class mov
         if (this.c != 1) {
           break label526;
         }
-        this.jdField_a_of_type_Bhow.removeMessages(2);
+        this.jdField_a_of_type_Bhtd.removeMessages(2);
         a(2, l);
         if (b()) {
           e();
@@ -217,7 +217,7 @@ public class mov
       label526:
       if (this.d == 5)
       {
-        this.jdField_a_of_type_Bhow.removeMessages(2);
+        this.jdField_a_of_type_Bhtd.removeMessages(2);
         i();
       }
       else if (b())
@@ -281,7 +281,7 @@ public class mov
     this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
     this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(baiq.a(16));
+    this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(bamz.a(16));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new mow(this));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new mox(this));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new moy(this));
@@ -291,7 +291,7 @@ public class mov
   public mov a(ImageView paramImageView)
   {
     this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841805);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841818);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new moz(this));
     return this;
   }
@@ -314,14 +314,14 @@ public class mov
     this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
   }
   
-  public void a(appw paramappw)
+  public void a(apuf paramapuf)
   {
-    if ((paramappw instanceof apur)) {
-      ((apur)paramappw).a(null, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+    if ((paramapuf instanceof apza)) {
+      ((apza)paramapuf).a(null, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
     }
   }
   
-  public void a(appw paramappw1, appw paramappw2, Drawable paramDrawable) {}
+  public void a(apuf paramapuf1, apuf paramapuf2, Drawable paramDrawable) {}
   
   public boolean a()
   {
@@ -333,17 +333,17 @@ public class mov
     return bool1;
   }
   
-  public boolean a(appw paramappw)
+  public boolean a(apuf paramapuf)
   {
     return false;
   }
   
   public void b()
   {
-    baiy.a(this.jdField_a_of_type_AndroidWidgetEditText);
+    banh.a(this.jdField_a_of_type_AndroidWidgetEditText);
   }
   
-  public void b(appw paramappw) {}
+  public void b(apuf paramapuf) {}
   
   public boolean b()
   {
@@ -370,7 +370,7 @@ public class mov
     long l = AudioHelper.b();
     if (b())
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841805);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841818);
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
       if ((this.d != 6) && (!c())) {
         a(7, l);
@@ -404,7 +404,7 @@ public class mov
       Message localMessage = Message.obtain();
       localMessage.what = 2;
       paramMessage.arg1 += 1;
-      this.jdField_a_of_type_Bhow.sendMessageDelayed(localMessage, 100L);
+      this.jdField_a_of_type_Bhtd.sendMessageDelayed(localMessage, 100L);
     }
     for (;;)
     {

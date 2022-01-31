@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.msgbackup.transport;
 
-import aubu;
-import auey;
-import aufh;
+import augd;
+import aujh;
+import aujq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -10,12 +10,12 @@ import com.tencent.qphone.base.util.QLog;
 public class MsgBackupTransportProcessor$4
   implements Runnable
 {
-  public MsgBackupTransportProcessor$4(auey paramauey, String paramString) {}
+  public MsgBackupTransportProcessor$4(aujh paramaujh, String paramString) {}
   
   public void run()
   {
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    auey.a(this.this$0, localBaseApplication);
+    aujh.a(this.this$0, localBaseApplication);
     this.this$0.jdField_a_of_type_Int = 1;
     this.this$0.jdField_a_of_type_Long = this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.createSession(1, Long.parseLong(this.a), this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupNotifier);
     if (this.this$0.a())
@@ -32,9 +32,9 @@ public class MsgBackupTransportProcessor$4
     this.this$0.b = new MsgBackupEndPoint();
     int i = this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.start(this.this$0.jdField_a_of_type_Long, this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint, this.this$0.b);
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "after start called with ret = " + i + ", ipv4 = " + aufh.a(this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint.ipv4) + ", udpport = " + this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint.port + ", tcpport = " + this.this$0.b.port);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "after start called with ret = " + i + ", ipv4 = " + aujq.a(this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint.ipv4) + ", udpport = " + this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint.port + ", tcpport = " + this.this$0.b.port);
     }
-    aubu.a().a();
+    augd.a().a();
   }
 }
 

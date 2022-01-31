@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.runtime.core;
 
-import bgkd;
-import bhas;
+import bgok;
+import bhez;
 
 public class EventListener$5
   implements Runnable
 {
-  public EventListener$5(bhas parambhas, String paramString, bgkd parambgkd) {}
+  public EventListener$5(bhez parambhez, String paramString, bgok parambgok) {}
   
   public void run()
   {
     this.this$0.a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Bgkd.a();
+    this.jdField_a_of_type_Bgok.a();
   }
 }
 

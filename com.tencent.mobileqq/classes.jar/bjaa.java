@@ -1,23 +1,108 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
-import cooperation.qzone.report.lp.LpReportInfo_dc00321;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bjaa
-  implements View.OnClickListener
 {
-  public bjaa(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
+  public static Map<String, String> a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bjan jdField_a_of_type_Bjan = new bjab(this);
   
-  public void onClick(View paramView)
+  static
   {
-    if (!this.a.b)
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public bjaa(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private boolean a(JSONObject paramJSONObject)
+  {
+    for (;;)
     {
-      if (1 == this.a.c) {
-        LpReportInfo_dc00321.report(8, 129, 0, false, false, null);
+      try
+      {
+        paramJSONObject = paramJSONObject.getJSONArray("readerUrls");
+        int i;
+        if (paramJSONObject == null)
+        {
+          i = 0;
+          if (i == 0)
+          {
+            bjbl.a("ReaderUrlConfigDataHelper", "jsonDataToTabItemData ,size=0");
+            return false;
+          }
+        }
+        else
+        {
+          i = paramJSONObject.length();
+          continue;
+        }
+        jdField_a_of_type_JavaUtilMap.clear();
+        int j = 0;
+        if (j >= i) {
+          break;
+        }
+        JSONObject localJSONObject = paramJSONObject.getJSONObject(j);
+        Iterator localIterator = localJSONObject.keys();
+        if (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          if (!TextUtils.isEmpty(str)) {
+            jdField_a_of_type_JavaUtilMap.put(str, localJSONObject.getString(str));
+          }
+        }
+        else
+        {
+          j += 1;
+        }
       }
-      this.a.a(false, false);
-      this.a.b();
+      catch (Exception paramJSONObject)
+      {
+        bjbl.a("ReaderUrlConfigDataHelper", paramJSONObject.getMessage());
+        return false;
+      }
     }
+    return true;
+  }
+  
+  private void b()
+  {
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    str = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("CGI_RESPONSE", 0).getString("SP_URL_CONFIG_DATA" + str, "");
+    if (TextUtils.isEmpty(str)) {
+      return;
+    }
+    try
+    {
+      a(new JSONObject(str));
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      bjbl.a("ReaderUrlConfigDataHelper", "getQQReaderUrlConfigDataFromDB," + localJSONException.getMessage());
+    }
+  }
+  
+  private void c()
+  {
+    bjcd.a(bjcd.c, this.jdField_a_of_type_Bjan);
+  }
+  
+  public void a()
+  {
+    b();
+    c();
   }
 }
 

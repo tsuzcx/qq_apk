@@ -2,7 +2,7 @@ import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.qphone.base.util.QLog;
 
 class oix
-  implements ulb
+  implements upk
 {
   oix(oiw paramoiw, long paramLong, PublishVideoEntry paramPublishVideoEntry) {}
   

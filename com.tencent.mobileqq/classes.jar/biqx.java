@@ -1,49 +1,21 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
 
 final class biqx
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  biqx(Runnable paramRunnable) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  biqu jdField_a_of_type_Biqu;
+  biqw jdField_a_of_type_Biqw;
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  biqx(Context paramContext, biqw parambiqw, biqu parambiqu)
   {
-    if (paramPluginManagerClient == null) {}
-    try
-    {
-      ThreadManager.post(this.a, 5, null, false);
-      return;
-    }
-    catch (Exception paramPluginManagerClient) {}
-    if (paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("qqfav", 2, "qqfav.apk already installed.");
-      }
-      biqv.a().set(true);
-      try
-      {
-        ThreadManager.post(this.a, 5, null, false);
-        return;
-      }
-      catch (Exception paramPluginManagerClient)
-      {
-        return;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "installing plugin qqfav.apk");
-    }
-    paramPluginManagerClient.installPlugin("qqfav.apk", new biqy(this));
-    return;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Biqw = parambiqw;
+    this.jdField_a_of_type_Biqu = parambiqu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biqx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,8 @@
-public class abso
+import com.tencent.qphone.base.remote.ToServiceMsg;
+
+public abstract interface abso
 {
-  public String a;
-  public String b;
-  
-  public abso(String paramString1, String paramString2)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
+  public abstract ToServiceMsg a();
 }
 
 

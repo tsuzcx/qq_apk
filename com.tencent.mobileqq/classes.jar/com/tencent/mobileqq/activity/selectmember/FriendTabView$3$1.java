@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ajut;
+import ajzi;
 import android.view.View;
 
 public class FriendTabView$3$1
   implements Runnable
 {
-  public FriendTabView$3$1(ajut paramajut, View paramView) {}
+  public FriendTabView$3$1(ajzi paramajzi, View paramView) {}
   
   public void run()
   {

@@ -2,9 +2,9 @@ import android.content.Context;
 import com.tencent.common.app.AppInterface;
 
 final class syi
-  extends amni
+  extends amrx
 {
-  syi(alvc paramalvc, String paramString, AppInterface paramAppInterface, Context paramContext, int paramInt, boolean paramBoolean) {}
+  syi(alzr paramalzr, String paramString, AppInterface paramAppInterface, Context paramContext, int paramInt, boolean paramBoolean) {}
   
   public int a()
   {
@@ -13,8 +13,8 @@ final class syi
   
   public void a(Object paramObject)
   {
-    if (this.jdField_a_of_type_Alvc != null) {
-      this.jdField_a_of_type_Alvc.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Alzr != null) {
+      this.jdField_a_of_type_Alzr.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
     }
     syb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
@@ -23,11 +23,11 @@ final class syi
   
   public void b(Object paramObject)
   {
-    if (this.jdField_a_of_type_Alvc != null) {
-      this.jdField_a_of_type_Alvc.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Alzr != null) {
+      this.jdField_a_of_type_Alzr.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
     }
     if (this.jdField_a_of_type_Boolean) {
-      syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
+      syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
     }
   }
   

@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import bcws;
+import bdbb;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
@@ -27,7 +27,7 @@ public abstract class ComponentHeaderBase
   extends FrameLayout
   implements pxj
 {
-  bcws jdField_a_of_type_Bcws;
+  bdbb jdField_a_of_type_Bdbb;
   public ComponentNotIntrest a;
   public qbs a;
   rqj jdField_a_of_type_Rqj;
@@ -59,7 +59,7 @@ public abstract class ComponentHeaderBase
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559964, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559963, this, true);
   }
   
   public void a() {}
@@ -71,7 +71,7 @@ public abstract class ComponentHeaderBase
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131371222));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131371241));
   }
   
   public void a(Object paramObject)
@@ -165,10 +165,10 @@ public abstract class ComponentHeaderBase
     owy.a().a((List)localObject1);
   }
   
-  public void setLogic(rqj paramrqj, bcws parambcws)
+  public void setLogic(rqj paramrqj, bdbb parambdbb)
   {
     this.jdField_a_of_type_Rqj = paramrqj;
-    this.jdField_a_of_type_Bcws = parambcws;
+    this.jdField_a_of_type_Bdbb = parambdbb;
   }
 }
 

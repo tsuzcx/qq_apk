@@ -1,24 +1,42 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
 import com.tencent.qphone.base.util.QLog;
 
-class ahtj
-  extends BroadcastReceiver
+public class ahtj
+  extends awhw
 {
-  ahtj(ahti paramahti) {}
+  private ahtj(PhoneContactFragment paramPhoneContactFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private void g(boolean paramBoolean)
   {
-    if (paramIntent.getBooleanExtra("recording_time_out", false))
-    {
-      QQToast.a(this.a.mRuntime.a(), 2131699370, 0).a();
-      QLog.e("FaceUnblockCameraJsApiPlugin", 1, "FaceUnlock record timeout!");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactFragment", 2, String.format("refreshResult [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    paramContext = paramIntent.getStringExtra("target_media_url");
-    ahti.a(this.a, paramContext);
+    if (this.a.c)
+    {
+      if (this.a.a != null) {
+        this.a.a.a(this.a.b(), paramBoolean, null);
+      }
+      if (paramBoolean) {
+        this.a.c();
+      }
+      this.a.c = false;
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactFragment", 2, String.format("onHideContact [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    this.a.c();
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactFragment", 2, String.format("onQueryBindState [%s, %s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) }));
+    }
+    g(paramBoolean1);
   }
 }
 

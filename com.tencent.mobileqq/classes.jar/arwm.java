@@ -1,12 +1,13 @@
+import java.util.concurrent.atomic.AtomicBoolean;
+
 class arwm
-  implements bdjb
+  implements afjt
 {
   arwm(arwl paramarwl) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public boolean a(int paramInt)
   {
-    arwl.a(this.a, bdiz.a(paramInt));
-    arwl.a(this.a).height = arwl.a(this.a);
+    return (assg.c.get()) && (paramInt == 0);
   }
 }
 

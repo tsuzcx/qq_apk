@@ -1,31 +1,16 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahxh
-  implements View.OnClickListener
+class ahxh
+  implements DialogInterface.OnClickListener
 {
-  public ahxh(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ahxh(ahww paramahww) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    xmh.a(this.a.a);
-    xmh.a(this.a.a.a);
-    paramView = new ArrayList();
-    int i = 0;
-    while (i < this.a.a.a.size())
-    {
-      paramView.add(((ahyq)this.a.a.a.get(i)).a);
-      i += 1;
+    if (paramInt == 0) {
+      ahww.a(this.a);
     }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
-    this.a.getActivity().setResult(-1, localIntent);
-    this.a.getActivity().finish();
   }
 }
 

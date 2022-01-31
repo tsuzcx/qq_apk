@@ -1,30 +1,20 @@
-import android.os.Message;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class auju
-  extends MqqHandler
+class auju
+  implements aupv
 {
-  public auju(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  auju(aujt paramaujt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
+    if ((aujr.a(this.a.jdField_a_of_type_Aujr) != null) && (aujr.a(this.a.jdField_a_of_type_Aujr).a != null)) {
+      this.a.jdField_a_of_type_Auqc.a(this.a.jdField_a_of_type_JavaUtilList, 2, aujr.a(this.a.jdField_a_of_type_Aujr).a.a);
     }
-    do
-    {
-      return;
-      MultiCardRecommendFragment.e(this.a);
-      sendEmptyMessageDelayed(3, 500L);
-      return;
-      MultiCardRecommendFragment.a(this.a, MultiCardRecommendFragment.b(this.a));
-      MultiCardRecommendFragment.e(this.a);
-      return;
-      MultiCardRecommendFragment.d(this.a);
-      return;
-    } while (MultiCardRecommendFragment.a(this.a) == null);
-    MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
+    this.a.jdField_a_of_type_Auqc.a();
+    if (aujr.a(this.a.jdField_a_of_type_Aujr) != null) {
+      aujr.a(this.a.jdField_a_of_type_Aujr).a(false, null, false);
+    }
   }
 }
 

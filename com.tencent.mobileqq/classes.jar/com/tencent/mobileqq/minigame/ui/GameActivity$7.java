@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import alpo;
+import alud;
 import android.widget.Toast;
 
 class GameActivity$7
@@ -10,7 +10,7 @@ class GameActivity$7
   
   public void run()
   {
-    Toast.makeText(this.this$0, alpo.a(2131705390), 0).show();
+    Toast.makeText(this.this$0, alud.a(2131705402), 0).show();
   }
 }
 

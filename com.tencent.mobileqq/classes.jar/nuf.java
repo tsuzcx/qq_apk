@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 
 public final class nuf
-  implements aanz
+  implements aaso
 {
   nuf(AppInterface paramAppInterface) {}
   
@@ -18,7 +18,7 @@ public final class nuf
     do
     {
       return;
-      paramView = paramView.getTag(2131364184);
+      paramView = paramView.getTag(2131364186);
     } while (paramView == null);
     ThreadManagerV2.executeOnSubThread(new EcshopAdHandler.3.1(this, paramView));
   }

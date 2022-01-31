@@ -1,42 +1,22 @@
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 class asam
-  extends asan
+  implements URLDrawable.URLDrawableListener
 {
-  public ImageView a;
-  public TextView a;
+  asam(asal paramasal) {}
   
-  public asam(View paramView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_Int = asag.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368169));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379141));
-    paramView.setTag(this);
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void a(String paramString1, String paramString2, bcws parambcws)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    Object localObject = paramString2;
-    if (paramString2 == null) {
-      localObject = paramString1;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(new baig((CharSequence)localObject, 2));
-    localObject = parambcws.a(1, paramString1);
-    paramString2 = (String)localObject;
-    if (localObject == null)
-    {
-      localObject = bdda.a();
-      paramString2 = (String)localObject;
-      if (!parambcws.a())
-      {
-        parambcws.a(paramString1, 1, false);
-        paramString2 = (String)localObject;
-      }
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
+    paramURLDrawable.setBounds(bdhj.a(paramURLDrawable, 36, 100, this.a.a));
+    asal.a(this.a).setImageDrawable(paramURLDrawable);
   }
 }
 

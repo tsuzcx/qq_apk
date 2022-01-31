@@ -1,17 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-
-public class bnhg
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bnhg
 {
-  public bnhg(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    CameraCaptureButtonLayout.a(this.a, f);
-  }
+  public abstract void W();
 }
 
 

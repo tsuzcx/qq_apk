@@ -1,14 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
 
-class ataz
-  implements DialogInterface.OnClickListener
+public class ataz
+  implements atbd
 {
-  ataz(atax paramatax, bdfq parambdfq) {}
+  public ataz(HuayangLoadbackgroudActivity paramHuayangLoadbackgroudActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Bdfq.dismiss();
+    Intent localIntent = new Intent(atav.d(HuayangLoadbackgroudActivity.a(this.a)));
+    localIntent.putExtra("key_state", 4);
+    localIntent.putExtra("key_progress", paramInt);
+    localIntent.putExtra("key_totalSize", 100L);
+    this.a.sendBroadcast(localIntent);
+  }
+  
+  public void a(boolean paramBoolean, Throwable paramThrowable)
+  {
+    this.a.finish();
   }
 }
 

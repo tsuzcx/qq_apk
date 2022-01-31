@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.activity;
 
-import alpo;
+import alud;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bbet;
-import bbeu;
+import bbjc;
+import bbjd;
 import java.io.File;
 
 public class TroopBarPublishActivity$16
@@ -18,17 +18,17 @@ public class TroopBarPublishActivity$16
     {
       this.this$0.t();
       this.this$0.s = false;
-      this.this$0.g.setText(alpo.a(2131715612));
+      this.this$0.g.setText(alud.a(2131715624));
       this.this$0.g.setTextColor(-65536);
-      this.this$0.b.setOnClickListener(new bbet(this));
+      this.this$0.b.setOnClickListener(new bbjc(this));
       return;
     }
     this.this$0.s = false;
     this.this$0.g.setText("");
-    this.this$0.g.setCompoundDrawablesWithIntrinsicBounds(2130847756, 0, 0, 0);
+    this.this$0.g.setCompoundDrawablesWithIntrinsicBounds(2130847829, 0, 0, 0);
     this.this$0.H = this.a;
     this.this$0.a.a = new File(this.a).length();
-    this.this$0.b.setOnClickListener(new bbeu(this));
+    this.this$0.b.setOnClickListener(new bbjd(this));
     this.this$0.a(TroopBarPublishActivity.c(this.this$0), true);
   }
 }

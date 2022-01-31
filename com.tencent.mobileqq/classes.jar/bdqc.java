@@ -1,143 +1,111 @@
 public class bdqc
-  implements alkr
 {
-  protected void handlePendantAuth(boolean paramBoolean, Object paramObject) {}
+  private static String a = "3g.qq.com";
   
-  protected void onApolloDressChange(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onAuthResponse(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onChangeUserApolloStatus(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetApolloSign(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetExploreMsg(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetGameCenterPubAccountFeeds(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetGameCenterPubAccountGetFriends(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetGameKey(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetGameOnlineCount(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetMyTroopEffect(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetZanCount(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onJDCheckRsp(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onJDCodeRsp(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onJDHongbaoRsp(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onPokeAuth(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onQueryApolloPandora(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onQueryUserApolloAction(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onQuickUpdateGetUrl(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onQuickUpdateSync(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onSetColorNick(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  protected void onSetUserFlag(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onSetZanCount(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public static int a(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
   {
-    switch (paramInt)
+    if (paramInt1 < 128)
     {
-    case 4: 
-    case 11: 
-    case 12: 
-    case 15: 
-    case 19: 
-    case 20: 
-    case 24: 
-    case 30: 
-    default: 
-      return;
-    case 1: 
-      handlePendantAuth(paramBoolean, paramObject);
-      return;
-    case 3: 
-      onChangeUserApolloStatus(paramBoolean, paramObject);
-      return;
-    case 5: 
-      onAuthResponse(paramBoolean, paramObject);
-      return;
-    case 2: 
-      onApolloDressChange(paramBoolean, paramObject);
-      return;
-    case 6: 
-      onGetZanCount(paramBoolean, paramObject);
-      return;
-    case 7: 
-      onSetZanCount(paramBoolean, paramObject);
-      return;
-    case 8: 
-      onQueryApolloPandora(paramBoolean, paramObject);
-      return;
-    case 9: 
-      onQueryUserApolloAction(paramBoolean, paramObject);
-      return;
-    case 16: 
-      onQuickUpdateSync(paramBoolean, paramObject);
-      return;
-    case 17: 
-      onQuickUpdateGetUrl(paramBoolean, paramObject);
-      return;
-    case 10: 
-      onGetApolloSign(paramBoolean, paramObject);
-      return;
-    case 13: 
-      onJDHongbaoRsp(paramBoolean, paramObject);
-      return;
-    case 14: 
-      onJDCheckRsp(paramBoolean, paramObject);
-      return;
-    case 18: 
-      onJDCodeRsp(paramBoolean, paramObject);
-      return;
-    case 21: 
-      onGetGameKey(paramBoolean, paramObject);
-      return;
-    case 22: 
-      onSetUserFlag(paramBoolean, paramObject);
-      return;
-    case 23: 
-      onPokeAuth(paramBoolean, paramObject);
-      return;
-    case 25: 
-      onGetGameOnlineCount(paramBoolean, paramObject);
-      return;
-    case 26: 
-      onGetMyTroopEffect(paramBoolean, paramObject);
-      return;
-    case 29: 
-      onGetGameCenterPubAccountFeeds(paramBoolean, paramObject);
-      return;
-    case 31: 
-      onGetGameCenterPubAccountGetFriends(paramBoolean, paramObject);
-      return;
-    case 28: 
-      onGetExploreMsg(paramBoolean, paramObject);
-      return;
+      paramArrayOfByte[(0 + paramInt2)] = ((byte)paramInt1);
+      return 1;
     }
-    paramObject = (Object[])paramObject;
-    if ((paramObject != null) && (paramObject.length > 1))
+    if (paramInt1 < 2048)
     {
-      onSetColorNick(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
+      paramArrayOfByte[(paramInt2 + 0)] = ((byte)(paramInt1 >> 6 & 0x1F | 0xC0));
+      paramArrayOfByte[(paramInt2 + 1)] = ((byte)(paramInt1 & 0x3F | 0x80));
+      return 2;
     }
-    onSetColorNick(paramBoolean, 0, "");
+    if (paramInt1 < 65536)
+    {
+      paramArrayOfByte[(paramInt2 + 0)] = ((byte)(paramInt1 >> 12 & 0xF | 0xE0));
+      paramArrayOfByte[(paramInt2 + 1)] = ((byte)(paramInt1 >> 6 & 0x3F | 0x80));
+      paramArrayOfByte[(paramInt2 + 2)] = ((byte)(paramInt1 & 0x3F | 0x80));
+      return 3;
+    }
+    if (paramInt1 < 2097152)
+    {
+      paramArrayOfByte[(paramInt2 + 0)] = ((byte)(paramInt1 >> 18 & 0x7 | 0xF0));
+      paramArrayOfByte[(paramInt2 + 1)] = ((byte)(paramInt1 >> 12 & 0x3F | 0x80));
+      paramArrayOfByte[(paramInt2 + 2)] = ((byte)(paramInt1 >> 6 & 0x3F | 0x80));
+      paramArrayOfByte[(paramInt2 + 3)] = ((byte)(paramInt1 & 0x3F | 0x80));
+      return 4;
+    }
+    return 0;
   }
   
-  protected void onWeatherGet(boolean paramBoolean, Object paramObject) {}
+  public static String a(String paramString, boolean paramBoolean)
+  {
+    paramString = paramString.toCharArray();
+    byte[] arrayOfByte = new byte[paramString.length * 4];
+    int j = 0;
+    int k = 0;
+    if (j < paramString.length)
+    {
+      int m;
+      int i;
+      if ((paramString[j] == '%') && (j + 2 < paramString.length))
+      {
+        m = 1;
+        int n = 0;
+        if (m < 3)
+        {
+          if ((paramString[(j + m)] <= '9') && (paramString[(j + m)] >= '0')) {
+            i = n * 16 + (paramString[(j + m)] - '0');
+          }
+          for (;;)
+          {
+            m += 1;
+            n = i;
+            break;
+            if ((paramString[(j + m)] <= 'F') && (paramString[(j + m)] >= 'A'))
+            {
+              i = n * 16 + (paramString[(j + m)] - 'A' + 10);
+            }
+            else
+            {
+              i = n;
+              if (paramString[(j + m)] <= 'f')
+              {
+                i = n;
+                if (paramString[(j + m)] >= 'a') {
+                  i = n * 16 + (paramString[(j + m)] - 'a' + 10);
+                }
+              }
+            }
+          }
+        }
+        arrayOfByte[k] = ((byte)n);
+        j += 2;
+        i = k + 1;
+      }
+      for (;;)
+      {
+        j += 1;
+        k = i;
+        break;
+        if (paramBoolean)
+        {
+          i = k + a(paramString[j], arrayOfByte, k);
+        }
+        else
+        {
+          m = k + 1;
+          arrayOfByte[k] = ((byte)(paramString[j] >> '\b'));
+          i = m + 1;
+          arrayOfByte[m] = ((byte)paramString[j]);
+        }
+      }
+    }
+    if (paramBoolean) {}
+    try
+    {
+      paramString = bdqa.b(arrayOfByte, 0, k);
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return new String(arrayOfByte, 0, k);
+    return null;
+  }
 }
 
 

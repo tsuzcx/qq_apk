@@ -1,134 +1,54 @@
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import android.os.SystemClock;
-import android.support.v4.util.MQLruCache;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashSet;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import java.util.HashMap;
 
-class axxa
-  extends AsyncTask<Void, Bitmap, Bitmap>
+public class axxa
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  
-  public axxa(axwz paramaxwz, String paramString1, String paramString2, String paramString3)
+  public static void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("msgType", String.valueOf(paramInt1));
+    localHashMap.put("idType", String.valueOf(paramInt2));
+    azri.a(BaseApplication.getContext()).a(null, "OrderMediaMsgAddTimeout", false, 0L, 0L, localHashMap, "");
   }
   
-  private Bitmap a(File paramFile)
+  public static void a(int paramInt, long paramLong)
   {
-    Bitmap localBitmap1 = null;
-    Bitmap localBitmap2 = null;
-    if (paramFile.exists()) {
-      localBitmap2 = localBitmap1;
-    }
-    try
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("totalSize", String.valueOf(paramInt));
+    localHashMap.put("totalCost", String.valueOf(paramLong));
+    azri.a(BaseApplication.getContext()).a(null, "OrderMediaMsgCompleteInfo", true, paramLong, paramInt, localHashMap, "");
+  }
+  
+  public static void a(int paramInt, boolean paramBoolean)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("msgType", String.valueOf(paramInt));
+    azri localazri = azri.a(BaseApplication.getContext());
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      localBitmap1 = SafeBitmapFactory.decodeFile(paramFile.getAbsolutePath());
-      localBitmap2 = localBitmap1;
-      if (localBitmap1 == null)
-      {
-        localBitmap2 = localBitmap1;
-        paramFile.delete();
-        localBitmap2 = localBitmap1;
-      }
-      return localBitmap2;
+      localazri.a(null, "OrderMediaMsgSendTimeout", paramBoolean, 0L, 0L, localHashMap, "");
+      return;
     }
-    catch (OutOfMemoryError paramFile) {}
-    return localBitmap2;
   }
   
-  protected Bitmap a(Void... paramVarArgs)
+  public static void b(int paramInt1, int paramInt2)
   {
-    Object localObject1 = null;
-    paramVarArgs = null;
-    boolean bool2 = true;
-    Object localObject2 = axwz.a();
-    if (localObject2 != null)
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("totalSize", String.valueOf(paramInt1));
+    localHashMap.put("mediaSize", String.valueOf(paramInt2));
+    azri localazri = azri.a(BaseApplication.getContext());
+    if (paramInt2 > 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      localObject1 = new File((File)localObject2, this.jdField_a_of_type_JavaLangString);
-      boolean bool1 = bool2;
-      if (!((File)localObject1).exists())
-      {
-        if (!TextUtils.isEmpty(this.b))
-        {
-          localObject2 = a(new File((File)localObject2, this.b));
-          if (localObject2 != null) {
-            publishProgress(new Bitmap[] { localObject2 });
-          }
-        }
-        bool1 = bool2;
-        if (this.c != null)
-        {
-          if ((axwz.a(this.jdField_a_of_type_Axwz) > 3L) && (Math.abs(SystemClock.uptimeMillis() - axwz.a(this.jdField_a_of_type_Axwz)) > 60000L)) {
-            axwz.a(this.jdField_a_of_type_Axwz, 0L);
-          }
-          bool1 = bool2;
-          if (axwz.a(this.jdField_a_of_type_Axwz) < 3L) {
-            bool1 = axwz.a(this.jdField_a_of_type_Axwz, this.c, (File)localObject1);
-          }
-        }
-      }
-      if (bool1) {
-        paramVarArgs = a((File)localObject1);
-      }
-      if ((!bool1) || (paramVarArgs == null)) {
-        break label253;
-      }
-      axwz.a(this.jdField_a_of_type_Axwz, 0L);
-      localObject1 = paramVarArgs;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.richstatus.img", 2, "decodeBitmap finish with " + localObject1 + ", " + axwz.a(this.jdField_a_of_type_Axwz));
-      }
-      return localObject1;
-      label253:
-      localObject1 = paramVarArgs;
-      if (!TextUtils.isEmpty(this.c))
-      {
-        localObject1 = paramVarArgs;
-        if (axwz.b(this.jdField_a_of_type_Axwz) == 3L)
-        {
-          axwz.a(this.jdField_a_of_type_Axwz, SystemClock.uptimeMillis());
-          localObject1 = paramVarArgs;
-        }
-      }
-    }
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    if (paramBitmap != null) {
-      BaseApplicationImpl.sImageCache.put(axwz.a(this.jdField_a_of_type_Axwz) + this.jdField_a_of_type_JavaLangString, paramBitmap, (byte)0);
-    }
-    axwz.a(this.jdField_a_of_type_Axwz).remove(this.jdField_a_of_type_JavaLangString);
-    if (axwz.a(this.jdField_a_of_type_Axwz) != null) {
-      axwz.a(this.jdField_a_of_type_Axwz).a(this.jdField_a_of_type_JavaLangString, this.c, paramBitmap, 1);
-    }
-  }
-  
-  protected void a(Bitmap... paramVarArgs)
-  {
-    paramVarArgs = paramVarArgs[0];
-    BaseApplicationImpl.sImageCache.put(axwz.a(this.jdField_a_of_type_Axwz) + this.b, paramVarArgs, (byte)0);
-    if (axwz.a(this.jdField_a_of_type_Axwz) != null) {
-      axwz.a(this.jdField_a_of_type_Axwz).a(this.jdField_a_of_type_JavaLangString, this.c, paramVarArgs, 0);
+      localazri.a(null, "OrderMediaMsgMultiSeperate", bool, 0L, paramInt1, localHashMap, "");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axxa
  * JD-Core Version:    0.7.0.1
  */

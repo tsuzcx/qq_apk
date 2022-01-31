@@ -1,24 +1,8 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-class bgnz
-  extends Handler
+public abstract interface bgnz
 {
-  public bgnz(bgnx parambgnx)
-  {
-    super(Looper.getMainLooper());
-  }
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.e();
-  }
+  public abstract void b();
 }
 
 

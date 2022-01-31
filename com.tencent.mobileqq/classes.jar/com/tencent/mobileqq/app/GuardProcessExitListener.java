@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.app.Foreground;
-import ymk;
+import yqz;
 
 public abstract class GuardProcessExitListener
   extends BroadcastReceiver
@@ -60,7 +60,7 @@ public abstract class GuardProcessExitListener
   
   protected String a()
   {
-    return ymk.a();
+    return yqz.a();
   }
   
   public void a(boolean paramBoolean)

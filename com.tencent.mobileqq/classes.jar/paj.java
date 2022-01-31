@@ -46,10 +46,10 @@ public class paj
   
   public paj(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment)
   {
-    this.jdField_a_of_type_Int = bcwh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getActivity(), 150.0F);
-    this.b = aekt.a(3.0F, paramReadInJoyPicWaterFallFragment.getResources());
-    this.c = aekt.a(58.5F, paramReadInJoyPicWaterFallFragment.getResources());
-    this.d = aekt.a(226.0F, paramReadInJoyPicWaterFallFragment.getResources());
+    this.jdField_a_of_type_Int = bdaq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getActivity(), 150.0F);
+    this.b = aepi.a(3.0F, paramReadInJoyPicWaterFallFragment.getResources());
+    this.c = aepi.a(58.5F, paramReadInJoyPicWaterFallFragment.getResources());
+    this.d = aepi.a(226.0F, paramReadInJoyPicWaterFallFragment.getResources());
   }
   
   private void a(BaseArticleInfo paramBaseArticleInfo)
@@ -83,7 +83,7 @@ public class paj
     Object localObject1 = (BaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     if (paramozw.itemView.getLayoutParams() == null)
     {
-      localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, aekt.a(314.0F, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getResources()));
+      localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, aepi.a(314.0F, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getResources()));
       paramozw.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
     }
     paramozw.jdField_a_of_type_AndroidWidgetTextView.setText(((BaseArticleInfo)localObject1).mTitle);
@@ -100,7 +100,7 @@ public class paj
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
       paramozw.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      localObject1 = baul.a((String)localObject1);
+      localObject1 = bayu.a((String)localObject1);
       paramozw.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
       return;
     }
@@ -143,19 +143,19 @@ public class paj
       if (((BaseArticleInfo)localObject1).mGalleryFeedsInfo.uint32_is_account_derelict.get() != 1) {
         break label844;
       }
-      parampac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadImageWithRing.setImageResource(2130845836);
+      parampac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadImageWithRing.setImageResource(2130845909);
       label261:
       if (((BaseArticleInfo)localObject1).mSocialFeedInfo == null) {
         break label969;
       }
       parampac.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      localObject2 = bjxj.a(((BaseArticleInfo)localObject1).mSocialFeedInfo.b, 999000L, "99.9万", "0");
-      parampac.jdField_b_of_type_AndroidWidgetTextView.setText((String)localObject2 + alpo.a(2131713363));
+      localObject2 = bkbq.a(((BaseArticleInfo)localObject1).mSocialFeedInfo.b, 999000L, "99.9万", "0");
+      parampac.jdField_b_of_type_AndroidWidgetTextView.setText((String)localObject2 + alud.a(2131713375));
       if (((BaseArticleInfo)localObject1).mGalleryPicNumber <= 1) {
         break label981;
       }
       parampac.c.setVisibility(0);
-      parampac.c.setText(String.valueOf(((BaseArticleInfo)localObject1).mGalleryPicNumber) + alpo.a(2131713265));
+      parampac.c.setText(String.valueOf(((BaseArticleInfo)localObject1).mGalleryPicNumber) + alud.a(2131713277));
       label385:
       if (((BaseArticleInfo)localObject1).mGalleryFeedsInfo == null) {
         break label1025;
@@ -168,7 +168,7 @@ public class paj
       }
       parampac.jdField_a_of_type_AndroidViewView.setVisibility(0);
       parampac.d.setText((CharSequence)localObject2);
-      localObject2 = baul.a(str);
+      localObject2 = bayu.a(str);
       parampac.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
       localObject2 = opn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getActivity(), ReadInJoyPicWaterFallFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment), 3, paramInt, (ArticleInfo)localObject1);
     }
@@ -208,7 +208,7 @@ public class paj
         }
         parampac.jdField_b_of_type_AndroidViewView.setVisibility(0);
         parampac.e.setText((CharSequence)localObject2);
-        localObject1 = baul.a((String)localObject1);
+        localObject1 = bayu.a((String)localObject1);
         parampac.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
         return;
         if ((((FrameLayout.LayoutParams)localObject2).height > 0) && (((FrameLayout.LayoutParams)localObject2).height == ((BaseArticleInfo)localObject1).waterFallPic.c)) {
@@ -226,7 +226,7 @@ public class paj
           continue;
         }
         localObject3 = URLDrawable.URLDrawableOptions.obtain();
-        i = aekt.a(12.0F, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getResources());
+        i = aepi.a(12.0F, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getResources());
         ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = i;
         ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = i;
         try
@@ -240,7 +240,7 @@ public class paj
         }
       }
       break label261;
-      parampac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadImageWithRing.setImageResource(2130845836);
+      parampac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadImageWithRing.setImageResource(2130845909);
       break label261;
       label969:
       parampac.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -296,12 +296,12 @@ public class paj
     default: 
       return null;
     case 1: 
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getActivity()).inflate(2131560088, null);
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getActivity()).inflate(2131560087, null);
       paramViewGroup = new pac(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment, paramViewGroup);
       paramViewGroup.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getActivity();
       return paramViewGroup;
     }
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getActivity()).inflate(2131560089, null);
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getActivity()).inflate(2131560088, null);
     paramViewGroup = new ozw(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment, paramViewGroup);
     paramViewGroup.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getActivity();
     return paramViewGroup;
@@ -323,10 +323,10 @@ public class paj
       if (j > 0) {
         break label275;
       }
-      if (azgq.jdField_a_of_type_Int <= 0) {
+      if (azkz.jdField_a_of_type_Int <= 0) {
         break label244;
       }
-      i = azgq.jdField_a_of_type_Int;
+      i = azkz.jdField_a_of_type_Int;
       QLog.d("ReadInJoyPicWaterFallFragment", 1, "getRecyclerView width error, getScreenWidth : " + i + ", layoutWidth : " + j);
     }
     for (;;)

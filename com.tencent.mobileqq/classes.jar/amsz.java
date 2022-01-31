@@ -1,23 +1,33 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class amsz
-  implements amtl
+class amsz
+  implements MediaPlayer.OnPreparedListener
 {
-  public void a() {}
+  amsz(amsu paramamsu) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(ARCommonConfigInfo paramARCommonConfigInfo) {}
-  
-  public void a(ArConfigInfo paramArConfigInfo) {}
-  
-  public void a(ArEffectConfig paramArEffectConfig) {}
-  
-  public void b() {}
+  public void onPrepared(MediaPlayer paramMediaPlayer)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + amsu.b(this.a));
+      }
+      this.a.a.seekTo(0);
+      amsu.b(this.a, true);
+      if (amsu.b(this.a))
+      {
+        this.a.a.start();
+        amsu.c(this.a, false);
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      paramMediaPlayer.printStackTrace();
+    }
+  }
 }
 
 

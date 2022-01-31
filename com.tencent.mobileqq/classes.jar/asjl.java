@@ -1,12 +1,18 @@
-import android.app.Activity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import java.io.File;
 
-public abstract interface asjl
+public class asjl
 {
-  public abstract void a(MessageRecord paramMessageRecord, Activity paramActivity);
-  
-  public abstract void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity, int paramInt);
+  public static void a(File paramFile)
+  {
+    if ((paramFile == null) || (paramFile.exists())) {}
+    do
+    {
+      return;
+      paramFile = paramFile.getParentFile();
+    } while ((paramFile == null) || (paramFile.exists()));
+    a(paramFile);
+    paramFile.mkdirs();
+  }
 }
 
 

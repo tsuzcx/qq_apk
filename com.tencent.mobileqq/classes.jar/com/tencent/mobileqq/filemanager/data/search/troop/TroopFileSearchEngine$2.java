@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.filemanager.data.search.troop;
 
-import aqyo;
-import aqzg;
-import bbrm;
+import arcx;
+import ardp;
+import bbvv;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopFileSearchEngine$2
   implements Runnable
 {
-  public TroopFileSearchEngine$2(aqzg paramaqzg) {}
+  public TroopFileSearchEngine$2(ardp paramardp) {}
   
   public void run()
   {
-    bbrm localbbrm = bbrm.a();
-    aqzg.a(this.this$0, localbbrm.a(aqzg.a(this.this$0), aqzg.a(this.this$0), 0));
-    if (aqzg.b(this.this$0))
+    bbvv localbbvv = bbvv.a();
+    ardp.a(this.this$0, localbbvv.a(ardp.a(this.this$0), ardp.a(this.this$0), 0));
+    if (ardp.b(this.this$0))
     {
       QLog.i("TroopFileSearchEngine<QFile>", 4, "collectContactInfos. need do search. execSearch.");
-      aqzg.a(this.this$0);
-      aqzg.a(this.this$0, aqzg.a(this.this$0).b());
-      aqzg.a(this.this$0, aqzg.a(this.this$0));
+      ardp.a(this.this$0);
+      ardp.a(this.this$0, ardp.a(this.this$0).b());
+      ardp.a(this.this$0, ardp.a(this.this$0));
     }
   }
 }

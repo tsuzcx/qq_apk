@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.webviewplugin;
 
-import begu;
+import beld;
 
 public class SocialWeeklyWebViewPlugin$1
   implements Runnable
 {
-  public SocialWeeklyWebViewPlugin$1(begu parambegu, String paramString) {}
+  public SocialWeeklyWebViewPlugin$1(beld parambeld, String paramString) {}
   
   public void run()
   {
-    begu.a(this.this$0, begu.b(this.this$0, this.a));
+    beld.a(this.this$0, beld.b(this.this$0, this.a));
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.gdtad.adapter;
 
-import aahy;
+import aamn;
 import java.util.HashMap;
 
 public class GdtThreadManagerAdapter$1
   extends HashMap<Integer, Integer>
 {
-  public GdtThreadManagerAdapter$1(aahy paramaahy)
+  public GdtThreadManagerAdapter$1(aamn paramaamn)
   {
     put(Integer.valueOf(3), Integer.valueOf(16));
     put(Integer.valueOf(4), Integer.valueOf(128));

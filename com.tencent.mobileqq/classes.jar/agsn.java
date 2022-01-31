@@ -1,7 +1,17 @@
-public class agsn
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class agsn
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
+  agsn(agse paramagse) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!this.a.N) {
+      agse.c(this.a);
+    }
+  }
 }
 
 

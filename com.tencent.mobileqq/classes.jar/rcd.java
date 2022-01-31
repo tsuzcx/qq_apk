@@ -59,7 +59,7 @@ public class rcd
   
   private VideoInfo.EntranceDownloadInfo a()
   {
-    SharedPreferences localSharedPreferences = bjxj.a(this.jdField_c_of_type_JavaLangString);
+    SharedPreferences localSharedPreferences = bkbq.a(this.jdField_c_of_type_JavaLangString);
     if ((localSharedPreferences != null) && (localSharedPreferences.getBoolean("key_has_entrance_download_info", false)))
     {
       VideoInfo.EntranceDownloadInfo localEntranceDownloadInfo = new VideoInfo.EntranceDownloadInfo();
@@ -79,7 +79,7 @@ public class rcd
   
   private VideoInfo a()
   {
-    Object localObject = bjxj.a(this.jdField_c_of_type_JavaLangString);
+    Object localObject = bkbq.a(this.jdField_c_of_type_JavaLangString);
     VideoInfo localVideoInfo;
     if ((localObject != null) && (((SharedPreferences)localObject).getBoolean("key_has_video_info", false)))
     {
@@ -250,7 +250,7 @@ public class rcd
               if (QLog.isColorLevel()) {
                 QLog.d("Q.readinjoy.4tab", 2, "reportForVideoEntranceRedDotExposure has finished, r5: " + localJSONObject.toString());
               }
-              i = bjxj.e();
+              i = bkbq.e();
               if (i != 1) {
                 break;
               }
@@ -319,7 +319,7 @@ public class rcd
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)
     {
-      localObject = bjxj.a(this.jdField_c_of_type_JavaLangString);
+      localObject = bkbq.a(this.jdField_c_of_type_JavaLangString);
       if (localObject != null) {
         ((SharedPreferences)localObject).edit().putString("VIDEO_VID", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString).putString("VIDEO_ARTICLE_ID", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_g_of_type_JavaLangString).putString("VIDEO_PUB_ACCOUNT_UIN", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.j).putString("VIDEO_PUB_ACCOUNT_NAME", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.k).putString("VIDEO_THIRD_ACTION", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.m).putString("VIDEO_THIRD_ICON", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.n).putString("VIDEO_THIRD_NAME", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.o).putString("VIDEO_TITLE", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_c_of_type_JavaLangString).putString("VIDEO_SUMMARY", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_d_of_type_JavaLangString).putString("VIDEO_COVER", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_b_of_type_JavaLangString).putString("VIDEO_H5_URL", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.f).putString("VIDEO_URL", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.p).putInt("VIDEO_WIDTH", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_b_of_type_Int).putInt("VIDEO_HEIGHT", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_c_of_type_Int).putInt("VIDEO_TIME", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_d_of_type_Int).putInt("VIDEO_ARTICLE_BUSITYPE", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int).putInt("VIDEO_FEED_TYPE", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_g_of_type_Int).putLong("VIDEO_FEED_ID", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_d_of_type_Long).putLong("VIDEO_XG_FILE_SIZE", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_b_of_type_Long).putString("VIDEO_CREATE_TIME", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.e).putBoolean("key_is_use_gif", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_g_of_type_Boolean).putString("key_gif_url", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.q).putBoolean("key_is_show_cover", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.h).putBoolean("key_has_video_info", true).apply();
       }
@@ -346,7 +346,7 @@ public class rcd
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)
     {
-      localObject = bjxj.a(this.jdField_c_of_type_JavaLangString);
+      localObject = bkbq.a(this.jdField_c_of_type_JavaLangString);
       if (localObject != null) {
         ((SharedPreferences)localObject).edit().remove("VIDEO_VID").remove("VIDEO_ARTICLE_ID").remove("VIDEO_PUB_ACCOUNT_UIN").remove("VIDEO_PUB_ACCOUNT_NAME").remove("VIDEO_THIRD_ACTION").remove("VIDEO_THIRD_ICON").remove("VIDEO_THIRD_NAME").remove("VIDEO_TITLE").remove("VIDEO_SUMMARY").remove("VIDEO_COVER").remove("VIDEO_H5_URL").remove("VIDEO_URL").remove("VIDEO_WIDTH").remove("VIDEO_HEIGHT").remove("VIDEO_TIME").remove("VIDEO_ARTICLE_BUSITYPE").remove("VIDEO_FEED_TYPE").remove("VIDEO_FEED_ID").remove("VIDEO_XG_FILE_SIZE").remove("VIDEO_CREATE_TIME").remove("key_is_use_gif").remove("key_gif_url").remove("key_is_show_cover").remove("key_has_video_info").apply();
       }
@@ -373,7 +373,7 @@ public class rcd
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$EntranceDownloadInfo != null)
     {
-      SharedPreferences localSharedPreferences = bjxj.a(this.jdField_c_of_type_JavaLangString);
+      SharedPreferences localSharedPreferences = bkbq.a(this.jdField_c_of_type_JavaLangString);
       if (localSharedPreferences != null) {
         localSharedPreferences.edit().putString("key_icon_url", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$EntranceDownloadInfo.jdField_a_of_type_JavaLangString).putString("key_small_icon_url", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$EntranceDownloadInfo.jdField_b_of_type_JavaLangString).putBoolean("key_is_use_gif", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$EntranceDownloadInfo.jdField_a_of_type_Boolean).putString("key_common_data", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$EntranceDownloadInfo.jdField_c_of_type_JavaLangString).putInt("key_jump_type", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$EntranceDownloadInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.jdField_a_of_type_Int).putString("key_jump_url", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$EntranceDownloadInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.jdField_a_of_type_JavaLangString).putString("key_jump_bundle", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$EntranceDownloadInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.jdField_b_of_type_JavaLangString).putString("key_jump_schema", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$EntranceDownloadInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.jdField_c_of_type_JavaLangString).putBoolean("key_has_entrance_download_info", true).apply();
       }
@@ -384,7 +384,7 @@ public class rcd
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$EntranceDownloadInfo != null)
     {
-      SharedPreferences localSharedPreferences = bjxj.a(this.jdField_c_of_type_JavaLangString);
+      SharedPreferences localSharedPreferences = bkbq.a(this.jdField_c_of_type_JavaLangString);
       if (localSharedPreferences != null) {
         localSharedPreferences.edit().remove("key_icon_url").remove("key_small_icon_url").remove("key_is_use_gif").remove("key_common_data").remove("key_jump_type").remove("key_jump_url").remove("key_jump_schema").remove("key_jump_bundle").remove("key_has_entrance_download_info").apply();
       }

@@ -1,23 +1,29 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.Properties;
+import android.widget.Filter;
+import android.widget.Filter.FilterResults;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import java.util.List;
 
-public class ajoe
+class ajoe
+  extends Filter
 {
-  private static int a = 10000;
+  ajoe(ajod paramajod) {}
   
-  public static void a(int paramInt)
+  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
   {
-    a = paramInt;
+    paramCharSequence = new Filter.FilterResults();
+    paramCharSequence.values = this.a.a.a;
+    paramCharSequence.count = this.a.a.a.size();
+    return paramCharSequence;
   }
   
-  public static void a(String paramString, Properties paramProperties)
+  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
   {
-    Properties localProperties = paramProperties;
-    if (paramProperties == null) {
-      localProperties = new Properties();
+    if (paramFilterResults.count > 0)
+    {
+      this.a.notifyDataSetChanged();
+      return;
     }
-    localProperties.setProperty("shortvideo_business_type", "" + a);
-    azly.a(VideoEnvironment.a()).reportKVEvent(paramString, localProperties);
+    this.a.notifyDataSetInvalidated();
   }
 }
 

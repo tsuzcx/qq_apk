@@ -1,27 +1,11 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectGuidePicActivity;
+import com.tencent.mobileqq.data.TroopFeedItem;
 
 public class bcsk
-  implements View.OnTouchListener
 {
-  public bcsk(TroopPicEffectGuidePicActivity paramTroopPicEffectGuidePicActivity) {}
+  int jdField_a_of_type_Int;
+  TroopFeedItem jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if (i == 0) {
-      paramView.setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      if ((i == 1) || (i == 3)) {
-        paramView.setAlpha(1.0F);
-      }
-    }
-  }
+  public bcsk(bcsf parambcsf) {}
 }
 
 

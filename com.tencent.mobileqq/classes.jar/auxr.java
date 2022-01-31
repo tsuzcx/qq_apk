@@ -1,22 +1,33 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import java.lang.ref.WeakReference;
 
 public class auxr
-  implements URLDrawable.URLDrawableListener
+  implements ServiceConnection
 {
-  public auxr(StoryPlayController paramStoryPlayController, avby paramavby) {}
+  private WeakReference<auxq> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public auxr(auxp paramauxp, auxq paramauxq)
   {
-    if (this.jdField_a_of_type_Avby != null) {
-      this.jdField_a_of_type_Avby.a(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight(), true);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramauxq);
+  }
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    auxp.a(this.jdField_a_of_type_Auxp, lzb.a(paramIBinder));
+    paramComponentName = (auxq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramComponentName != null) {
+      paramComponentName.bw();
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    auxp.a(this.jdField_a_of_type_Auxp, null);
+    paramComponentName = (auxq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramComponentName != null) {
+      paramComponentName.bx();
     }
   }
 }

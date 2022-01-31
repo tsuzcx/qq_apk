@@ -1,11 +1,11 @@
 package com.tencent.qqmini.proxyimpl;
 
-import anxn;
+import aobw;
 
 class ColorNotePlugin$2
   implements Runnable
 {
-  ColorNotePlugin$2(ColorNotePlugin paramColorNotePlugin, anxn paramanxn) {}
+  ColorNotePlugin$2(ColorNotePlugin paramColorNotePlugin, aobw paramaobw) {}
   
   public void run()
   {

@@ -1,23 +1,21 @@
-import android.content.Intent;
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aedf
   implements View.OnClickListener
 {
-  public aedf(TroopRequestActivity paramTroopRequestActivity) {}
+  public aedf(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog, long paramLong1, int paramInt, long paramLong2, long paramLong3, String paramString) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, AccountDetailActivity.class);
-    paramView.putExtra("uin", this.a.a.req_uin.get() + "");
-    paramView.putExtra("source", 112);
-    this.a.startActivity(paramView);
-    azmj.b(this.a.app, "P_CliOper", "Grp_public", "", "oper", "Clk_invite", 0, 0, "", "", "", this.a.a.req_uin.get() + "");
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.finish();
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_Amdu.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopName, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTags, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mPoiId, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mRichFingerMemo);
   }
 }
 

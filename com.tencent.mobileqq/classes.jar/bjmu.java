@@ -1,38 +1,59 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import cooperation.qzone.networkedmodule.QzoneModuleConst;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import cooperation.qzone.util.NetworkState;
+import java.util.List;
 
 public class bjmu
-  extends MSFServlet
+  extends bjmj
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public bjmu(QzoneModuleManager paramQzoneModuleManager) {}
+  
+  private void a()
   {
-    if (paramFromServiceMsg != null) {
-      bjmt.a().c(paramFromServiceMsg.getResultCode());
-    }
-    while (!QLog.isColorLevel()) {
+    if (!NetworkState.isWifiConn())
+    {
+      QLog.w("QzoneModuleManager", 1, "isWifiConn:false,so stop update.");
       return;
     }
-    QLog.d("QzoneOnlineTimeServlet", 2, "fromServiceMsg==msg");
+    QzoneModuleManager.access$008(this.a);
+    for (;;)
+    {
+      if (QzoneModuleManager.access$000(this.a) < QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size())
+      {
+        String str = (String)QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.get(QzoneModuleManager.access$000(this.a));
+        if (this.a.checkIfNeedUpdate(str)) {
+          this.a.updateModule(str, this);
+        }
+      }
+      else
+      {
+        if (QzoneModuleManager.access$000(this.a) != QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size()) {
+          break;
+        }
+        QLog.i("QzoneModuleManager", 1, "updateAllModules completed--totalModules:" + QzoneModuleManager.access$000(this.a));
+        return;
+      }
+      QzoneModuleManager.access$008(this.a);
+    }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onDownloadCanceled(String paramString)
   {
-    paramIntent = paramIntent.getSerializableExtra("list");
-    QLog.d("QzoneOnlineTimeServlet", 1, "uin:" + getAppRuntime().getLongAccountUin());
-    bjms localbjms = new bjms(getAppRuntime().getLongAccountUin(), (ArrayList)paramIntent);
-    byte[] arrayOfByte = localbjms.encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null) {
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localbjms.uniKey());
-    paramPacket.putSendData(paramIntent);
+    super.onDownloadCanceled(paramString);
+    a();
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    super.onDownloadFailed(paramString);
+    a();
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    super.onDownloadSucceed(paramString);
+    a();
   }
 }
 

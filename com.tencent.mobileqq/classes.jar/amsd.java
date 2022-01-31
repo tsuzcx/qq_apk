@@ -1,87 +1,52 @@
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.applets.data.AppletItem;
 
 public class amsd
-  implements amtc
 {
-  public amsd(ArConfigService paramArConfigService) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
   
-  public void a(int paramInt1, int paramInt2)
+  public amsd a(int paramInt)
   {
-    if (ArConfigService.b(this.a) != null) {
-      try
-      {
-        int j = ArConfigService.b(this.a).beginBroadcast();
-        int i = 0;
-        for (;;)
-        {
-          if (i >= j) {
-            break label106;
-          }
-          try
-          {
-            ((amuu)ArConfigService.b(this.a).getBroadcastItem(i)).a(paramInt1, paramInt2);
-            i += 1;
-          }
-          catch (RemoteException localRemoteException)
-          {
-            for (;;)
-            {
-              localRemoteException.printStackTrace();
-            }
-          }
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onProgress error:" + localException.getMessage());
-        }
-      }
-    }
-    label106:
-    ArConfigService.b(this.a).finishBroadcast();
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public amsd a(long paramLong)
   {
-    if (ArConfigService.b(this.a) != null) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        int j = ArConfigService.b(this.a).beginBroadcast();
-        i = 0;
-        if (i >= j) {
-          break label129;
-        }
-        if (paramBoolean) {}
-        try
-        {
-          ((amuu)ArConfigService.b(this.a).getBroadcastItem(i)).a(paramInt);
-        }
-        catch (RemoteException localRemoteException)
-        {
-          localRemoteException.printStackTrace();
-        }
-        ((amuu)ArConfigService.b(this.a).getBroadcastItem(i)).b(paramInt, 0);
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onFinish error:" + localException.getMessage());
-        }
-      }
-      return;
-      label129:
-      ArConfigService.b(this.a).finishBroadcast();
-      return;
-      i += 1;
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public amsd a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public AppletItem a()
+  {
+    return new AppletItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, null);
+  }
+  
+  public void a(String paramString)
+  {
+    this.c = paramString;
+  }
+  
+  public amsd b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public amsd b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
   }
 }
 

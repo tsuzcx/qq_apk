@@ -1,6 +1,15 @@
-public abstract interface bldu
+import com.tencent.common.app.AppInterface;
+
+class bldu
+  extends bkzv
 {
-  public abstract void a(bldt parambldt);
+  bldu(blds paramblds, AppInterface paramAppInterface) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    blds.a(this.jdField_a_of_type_Blds).a(paramBoolean1, paramBoolean2);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+  }
 }
 
 

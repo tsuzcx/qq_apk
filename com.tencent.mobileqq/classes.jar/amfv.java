@@ -1,33 +1,19 @@
-import AccostSvc.MsgItem;
-import java.util.ArrayList;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-class amfv
+public class amfv
+  implements BusinessObserver
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<MsgItem> a;
-  public byte[] a;
-  public long b;
-  public String b;
-  public long c;
-  public long d;
-  public long e;
+  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle) {}
   
-  public amfv(long paramLong1, int paramInt, long paramLong2, long paramLong3, ArrayList<MsgItem> paramArrayList, String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-    this.c = paramLong3;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public amfv(long paramLong, ArrayList<MsgItem> paramArrayList)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, paramBundle.getInt("msgType", 0), paramBundle);
   }
 }
 

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
 
 class odg
-  implements bhue
+  implements bhyl
 {
   odg(odf paramodf, int paramInt, VideoInfo paramVideoInfo) {}
   
@@ -15,7 +15,7 @@ class odg
     int i = 0;
     if (paramInt == this.jdField_a_of_type_Int)
     {
-      QQToast.a(odf.a(this.jdField_a_of_type_Odf), 0, 2131695685, 0).a();
+      QQToast.a(odf.a(this.jdField_a_of_type_Odf), 0, 2131695687, 0).a();
       odf.a(this.jdField_a_of_type_Odf).d(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
       if ((paramObject == null) || (!(paramObject instanceof DislikeInfo))) {
         break label349;

@@ -1,76 +1,47 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewParent;
+import java.io.File;
+import java.util.ArrayList;
 
-public class xte
-  implements xsx
+class xte
+  extends xtb
 {
-  protected final float a;
-  protected int a;
-  protected final xtb a;
-  protected final xtd a;
-  protected final float b;
+  xte(xtc paramxtc, xtk paramxtk, File paramFile) {}
   
-  public xte(xtd paramxtd, float paramFloat1, float paramFloat2)
+  public void onFailure(String paramString)
   {
-    this.jdField_a_of_type_Xtd = paramxtd;
-    this.jdField_a_of_type_Xtb = new xtb();
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
+    this.jdField_a_of_type_Xtk.onFailure(paramString);
   }
   
-  public void a(xsx paramxsx)
+  public void onFinish(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Xtd.jdField_a_of_type_Xtc.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 2)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
+    if (this.jdField_a_of_type_JavaIoFile.exists()) {
+      this.jdField_a_of_type_JavaIoFile.delete();
     }
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    xtc localxtc = this.jdField_a_of_type_Xtd.jdField_a_of_type_Xtc;
-    if (localxtc.jdField_a_of_type_Int != paramMotionEvent.getPointerId(0)) {
-      this.jdField_a_of_type_Xtd.a(this.jdField_a_of_type_Xtd.jdField_a_of_type_Xsw);
-    }
-    View localView;
-    xsy localxsy;
-    do
+    int i = 0;
+    while (i < this.jdField_a_of_type_Xtc.b.size())
     {
-      return true;
-      localView = this.jdField_a_of_type_Xtd.a();
-      localxsy = this.jdField_a_of_type_Xtd.jdField_a_of_type_Xsy;
-    } while (!localxsy.a(localView, this.jdField_a_of_type_Xtb, paramMotionEvent));
-    float f2 = this.jdField_a_of_type_Xtb.b;
-    if (this.jdField_a_of_type_Xtb.jdField_a_of_type_Boolean == localxtc.jdField_a_of_type_Boolean) {}
-    for (float f1 = this.jdField_a_of_type_Float;; f1 = this.b)
-    {
-      f1 = f2 / f1;
-      f2 = this.jdField_a_of_type_Xtb.jdField_a_of_type_Float + f1;
-      if (((!localxtc.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Xtb.jdField_a_of_type_Boolean) || (f2 > localxtc.jdField_a_of_type_Float)) && ((localxtc.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Xtb.jdField_a_of_type_Boolean) || (f2 < localxtc.jdField_a_of_type_Float))) {
-        break;
+      File localFile = new File((String)this.jdField_a_of_type_Xtc.b.get(i));
+      if (localFile.exists()) {
+        localFile.delete();
       }
-      localxsy.a(localView, localxtc.jdField_a_of_type_Float, paramMotionEvent);
-      this.jdField_a_of_type_Xtd.a(this.jdField_a_of_type_Xtd.jdField_a_of_type_Xsz);
-      return true;
+      i += 1;
     }
-    if (localView.getParent() != null) {
-      localView.getParent().requestDisallowInterceptTouchEvent(true);
-    }
-    long l = paramMotionEvent.getEventTime() - paramMotionEvent.getHistoricalEventTime(0);
-    if (l > 0L) {
-      this.jdField_a_of_type_Xtd.jdField_a_of_type_Float = (f1 / (float)l);
-    }
-    localxsy.a(localView, f2);
-    return true;
+    this.jdField_a_of_type_Xtc.b = new ArrayList();
+    this.jdField_a_of_type_Xtk.onFinish(paramBoolean);
   }
   
-  public boolean b(MotionEvent paramMotionEvent)
+  public void onProgress(String paramString)
   {
-    this.jdField_a_of_type_Xtd.a(this.jdField_a_of_type_Xtd.jdField_a_of_type_Xsw);
-    return false;
+    this.jdField_a_of_type_Xtk.onProgress(paramString);
+  }
+  
+  public void onStart()
+  {
+    this.jdField_a_of_type_Xtk.onStart();
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    this.jdField_a_of_type_Xtk.onSuccess(paramString);
   }
 }
 

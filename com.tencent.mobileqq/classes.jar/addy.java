@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class addy
-  implements bern
+  implements appn
 {
-  public addy(MainFragment paramMainFragment) {}
+  public addy(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void a()
-  {
-    MainFragment.c(this.a);
-  }
+  public void a(int paramInt) {}
+  
+  public void b(int paramInt) {}
 }
 
 

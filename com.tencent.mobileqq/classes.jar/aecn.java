@@ -1,14 +1,19 @@
+import android.app.Dialog;
 import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
 public class aecn
-  extends akee
+  implements View.OnClickListener
 {
-  public View a;
-  public RelativeLayout a;
-  public TextView a;
-  public TextView b;
+  public aecn(TroopDisbandActivity paramTroopDisbandActivity, Dialog paramDialog) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+  }
 }
 
 

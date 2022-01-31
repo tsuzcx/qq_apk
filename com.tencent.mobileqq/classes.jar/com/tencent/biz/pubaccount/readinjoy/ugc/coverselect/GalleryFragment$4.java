@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.coverselect;
 
 import android.graphics.Bitmap;
-import xmn;
+import xqw;
 
 class GalleryFragment$4
   implements Runnable
@@ -10,7 +10,7 @@ class GalleryFragment$4
   
   public void run()
   {
-    Bitmap localBitmap = xmn.a(this.a);
+    Bitmap localBitmap = xqw.a(this.a);
     GalleryFragment.a(this.this$0, localBitmap);
   }
 }

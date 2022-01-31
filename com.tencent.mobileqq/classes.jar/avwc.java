@@ -1,93 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.olympic.OlympicManager;
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
 
 public class avwc
-  implements avwh
+  implements avzl
 {
-  public avwc(OlympicManager paramOlympicManager) {}
+  public avwc(OCRResultActivity paramOCRResultActivity) {}
   
-  public void a(String paramString1, String paramString2, Object paramObject, int paramInt, String paramString3)
+  public void a(int paramInt, avzm paramavzm)
   {
-    if ((paramObject == null) || (!(paramObject instanceof String[]))) {}
-    do
+    if ((!TextUtils.isEmpty(OCRResultActivity.b(this.a))) && (!OCRResultActivity.b(this.a).equals(paramavzm.b)))
     {
-      for (;;)
-      {
-        return;
-        avxz.b("OlympicManager", new Object[] { "onDownloadFinish, url=", paramString1, ", md5=", paramString2, ", errCode=", Integer.valueOf(paramInt) });
-        if (paramInt == 0) {
-          this.a.a(paramString1, 0, true);
-        }
-        String[] arrayOfString = (String[])paramObject;
-        String str = arrayOfString[0];
-        if ("shuayishua".equals(str))
-        {
-          int i = Integer.valueOf(arrayOfString[1]).intValue();
-          if (QLog.isColorLevel()) {
-            QLog.i("OlympicManager", 2, "onDownloadFinish.type=shuayishuaurl=" + paramString1 + ",md5=" + paramString2 + ",userData=" + paramObject + ",errCode=" + paramInt + ",filePath=" + paramString3);
-          }
-          paramString1 = OlympicManager.a(this.a);
-          if ((paramInt == 0) && (paramString1 != null) && (paramString1.id == i)) {
-            OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
-          }
-        }
-        else if ("shuayishua_anim".equals(str))
-        {
-          if (paramInt == 0) {
-            try
-            {
-              OlympicManager.a(this.a);
-              paramString1 = avwf.a(paramString2);
-              bdcs.a(paramString3, paramString1, false);
-              if (QLog.isColorLevel()) {
-                QLog.d("OlympicManager", 2, "un compressZip shuayishua_anim success.destDir=" + paramString1);
-              }
-              paramString1 = OlympicManager.a(this.a);
-              if ((paramString1 == null) || (paramString1.id != -1)) {
-                continue;
-              }
-              OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
-              return;
-            }
-            catch (Exception paramString1)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("OlympicManager", 2, "un compressZip shuayishua_anim failed: " + paramString1.getMessage());
-                }
-              }
-            }
-          }
-        }
-        else if ("ActConfig".equals(str))
-        {
-          paramObject = arrayOfString[1];
-          avxz.a("OlympicManager", new Object[] { "mDownloadListener.onDownloadFinish, type=", str, ", itemType=", paramObject, ", url=", paramString1, ", md5=", paramString2, ", errCode=", Integer.valueOf(paramInt), ", filePath=", paramString3 });
-          if (("TorchAnim".equals(paramObject)) && (paramInt == 0)) {
-            try
-            {
-              OlympicManager.a(this.a);
-              paramString1 = avwf.a(paramString2);
-              bdcs.a(paramString3, paramString1, false);
-              if (QLog.isColorLevel())
-              {
-                QLog.d("OlympicManager", 2, "un compressZip TorchAnim success.destDir=" + paramString1);
-                return;
-              }
-            }
-            catch (Exception paramString1) {}
-          }
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("OlympicManager", 2, "un compressZip TorchAnim failed: " + paramString1.getMessage());
+      OCRResultActivity.b(this.a, paramavzm.b);
+      OCRResultActivity.a(this.a, false);
+    }
   }
-  
-  public void a(String paramString1, String paramString2, Object paramObject, long paramLong1, long paramLong2) {}
 }
 
 

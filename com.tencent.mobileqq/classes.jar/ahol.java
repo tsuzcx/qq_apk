@@ -1,41 +1,29 @@
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import mqq.os.MqqHandler;
 
 public class ahol
-  extends alsi
+  extends MqqHandler
 {
-  public ahol(DeviceFragment paramDeviceFragment) {}
+  public ahol(NotificationView paramNotificationView) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    DeviceFragment localDeviceFragment = this.a;
-    if (paramInt1 != 0) {}
-    for (boolean bool = true;; bool = false)
+    switch (paramMessage.what)
     {
-      localDeviceFragment.c = bool;
-      this.a.a.d();
-      this.a.a.notifyDataSetChanged();
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_Ahoi == null);
+      this.a.i();
+      this.a.jdField_a_of_type_Ahoi.a = bafj.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a.jdField_a_of_type_Ahoi.notifyDataSetChanged();
       return;
     }
-  }
-  
-  protected void b(int paramInt1, int paramInt2)
-  {
-    if (this.a.a == null) {
-      return;
-    }
-    DeviceFragment localDeviceFragment = this.a;
-    if (paramInt1 != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localDeviceFragment.d = bool;
-      this.a.a.e();
-      this.a.a.a(this.a.d, aljq.A);
-      this.a.a.notifyDataSetChanged();
-      return;
-    }
+    this.a.j();
   }
 }
 

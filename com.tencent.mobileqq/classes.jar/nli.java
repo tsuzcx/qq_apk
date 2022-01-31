@@ -56,10 +56,10 @@ public class nli
     paramVerticalPagerView.setMode(2);
     PublicAccountAdvertisementActivity.a(this.a).setVisibility(0);
     PublicAccountAdvertisementActivity.c(this.a, System.currentTimeMillis());
-    azmj.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8008F68", "0X8008F68", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, PublicAccountAdvertisementActivity.a(this.a) + "", "" + PublicAccountAdvertisementActivity.a(this.a).a.d, PublicAccountAdvertisementActivity.a(this.a).a.b);
+    azqs.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8008F68", "0X8008F68", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, PublicAccountAdvertisementActivity.a(this.a) + "", "" + PublicAccountAdvertisementActivity.a(this.a).a.d, PublicAccountAdvertisementActivity.a(this.a).a.b);
     paramVerticalPagerView = BaseApplicationImpl.getApplication().getRuntime();
     if ((paramVerticalPagerView instanceof ToolAppRuntime)) {
-      astr.a().a(PublicAccountAdvertisementActivity.a(this.a), this.a, (AppInterface)((ToolAppRuntime)paramVerticalPagerView).onGetSubRuntime("imax"));
+      asya.a().a(PublicAccountAdvertisementActivity.a(this.a), this.a, (AppInterface)((ToolAppRuntime)paramVerticalPagerView).onGetSubRuntime("imax"));
     }
     PublicAccountAdvertisementActivity.b(this.a, 0);
   }

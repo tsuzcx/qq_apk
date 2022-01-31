@@ -1,12 +1,12 @@
 package dov.com.qq.im.story.mode;
 
-import bmdi;
+import bmhu;
 import com.tencent.qg.sdk.QGRenderer.QGEventListener;
 
 public class StoryEffectTextMode$18
   implements Runnable
 {
-  public StoryEffectTextMode$18(bmdi parambmdi, QGRenderer.QGEventListener paramQGEventListener) {}
+  public StoryEffectTextMode$18(bmhu parambmhu, QGRenderer.QGEventListener paramQGEventListener) {}
   
   public void run()
   {

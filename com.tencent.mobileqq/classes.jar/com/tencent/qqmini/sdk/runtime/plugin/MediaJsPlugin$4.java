@@ -1,19 +1,19 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgkd;
-import bhab;
+import bgok;
+import bhei;
 import com.tencent.qqmini.sdk.core.widget.media.CoverVideoView;
 
 class MediaJsPlugin$4
   implements Runnable
 {
-  MediaJsPlugin$4(MediaJsPlugin paramMediaJsPlugin, int paramInt, bgkd parambgkd) {}
+  MediaJsPlugin$4(MediaJsPlugin paramMediaJsPlugin, int paramInt, bgok parambgok) {}
   
   public void run()
   {
-    if ((bhab.a(MediaJsPlugin.access$800(this.this$0)).a(this.val$videoPlayerId) instanceof CoverVideoView))
+    if ((bhei.a(MediaJsPlugin.access$800(this.this$0)).a(this.val$videoPlayerId) instanceof CoverVideoView))
     {
-      bhab.a(MediaJsPlugin.access$900(this.this$0)).a(this.val$videoPlayerId);
+      bhei.a(MediaJsPlugin.access$900(this.this$0)).a(this.val$videoPlayerId);
       this.val$req.a();
       return;
     }

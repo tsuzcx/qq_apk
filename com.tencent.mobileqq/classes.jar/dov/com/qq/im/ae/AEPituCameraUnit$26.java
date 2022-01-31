@@ -1,21 +1,21 @@
 package dov.com.qq.im.ae;
 
-import bkle;
-import bkph;
+import bkpl;
+import bkto;
 import dov.com.qq.im.ae.mode.AECaptureMode;
 
 public class AEPituCameraUnit$26
   implements Runnable
 {
-  public AEPituCameraUnit$26(bkle parambkle) {}
+  public AEPituCameraUnit$26(bkpl parambkpl) {}
   
   public void run()
   {
-    bkph localbkph = bkle.a(this.this$0);
-    if (bkle.b(this.this$0) == AECaptureMode.NORMAL) {}
+    bkto localbkto = bkpl.a(this.this$0);
+    if (bkpl.b(this.this$0) == AECaptureMode.NORMAL) {}
     for (boolean bool = true;; bool = false)
     {
-      localbkph.c(bool);
+      localbkto.c(bool);
       return;
     }
   }

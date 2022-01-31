@@ -1,37 +1,23 @@
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.OvershootInterpolator;
+import com.tencent.mobileqq.activity.JDHongbaoActivity;
 
 public class adew
-  extends uto
+  extends OvershootInterpolator
 {
-  public adew(NearbyActivity paramNearbyActivity, String paramString)
-  {
-    super(paramString);
-  }
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public adew(JDHongbaoActivity paramJDHongbaoActivity) {}
+  
+  public float getInterpolation(float paramFloat)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    if ((!this.jdField_a_of_type_Boolean) && (paramFloat > 0.7D))
     {
-      localStringBuilder = new StringBuilder().append("startLocation end, errCode=").append(paramInt).append(" lbsInfo=").append(paramSosoLbsInfo).append(", info.location=");
-      if (paramSosoLbsInfo == null) {
-        break label103;
-      }
+      this.jdField_a_of_type_Boolean = true;
+      JDHongbaoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity).setBackgroundColor(-16777216);
+      JDHongbaoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity).startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity.a);
     }
-    label103:
-    for (SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;; localSosoLocation = null)
-    {
-      QLog.d("nearby.heart_beat", 2, localSosoLocation);
-      if ((!this.a.isFinishing()) && (!this.a.c))
-      {
-        this.a.c = false;
-        this.a.a.a(1, paramSosoLbsInfo);
-      }
-      return;
-    }
+    return (float)(1.0D - Math.pow(2.718281828459045D, 5.0F * -paramFloat) * Math.cos(8.0F * paramFloat));
   }
 }
 

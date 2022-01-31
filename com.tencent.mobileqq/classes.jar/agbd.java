@@ -1,64 +1,106 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.qphone.base.util.QLog;
 
 public class agbd
-  extends aekw
+  implements VideoPlayerCallback
 {
-  public agbd(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  public agbd(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
+  
+  public void onCapFrame(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap) {}
+  
+  public void onDownloadComplete(long paramLong) {}
+  
+  public void onDownloadProgress(long paramLong1, long paramLong2) {}
+  
+  public void onLoopBack(long paramLong1, long paramLong2)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoRealItemBuilder", 2, "playShortVideoByPath, onLoopBack, id = " + paramLong1);
+    }
+    MessageForShortVideo localMessageForShortVideo = bdew.a().a(Long.valueOf(paramLong1));
+    this.a.a(localMessageForShortVideo, paramLong2);
   }
   
-  protected aekx a()
-  {
-    return new agbe(this);
-  }
+  public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
   
-  protected View a(MessageRecord paramMessageRecord, aekx paramaekx, View paramView, LinearLayout paramLinearLayout, aeov paramaeov)
+  public void onPlayProgress(long paramLong1, long paramLong2) {}
+  
+  public void onStateChange(long paramLong, int paramInt)
   {
-    paramaekx = (agbe)paramaekx;
-    paramaekx = paramView;
-    if (paramView == null)
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoRealItemBuilder", 2, "onStateChange , state =  " + paramInt + ", msgUniseq = " + paramLong);
+    }
+    if (paramInt == 4)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558821, null);
-      paramaekx = (TextView)paramView.findViewById(2131367282);
-      paramaekx.setMovementMethod(null);
-      paramaekx.setGravity(17);
-      paramaekx = paramView;
-      if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      localObject = bdew.a().a(Long.valueOf(paramLong));
+      if ((localObject != null) && (!bdew.a().a(Long.valueOf(paramLong))))
       {
-        paramaekx = (TextView)paramView.findViewById(2131367627);
-        paramLinearLayout = (TextView)paramView.findViewById(2131367628);
-        paramaekx.setBackgroundColor(2130842174);
-        paramLinearLayout.setBackgroundColor(2130842174);
-        paramaekx = paramView;
+        ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8008E51", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject, this.a.jdField_a_of_type_AndroidContentContext);
+        if (!bdew.a().b(Long.valueOf(((MessageForShortVideo)localObject).uniseq)))
+        {
+          bdew.a().a(Long.valueOf(((MessageForShortVideo)localObject).uniseq));
+          ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8008E50", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject, this.a.jdField_a_of_type_AndroidContentContext);
+        }
+        bdew.a().a(Long.valueOf(paramLong), true);
       }
     }
-    paramView = (TextView)paramaekx.findViewById(2131367282);
-    if ((paramMessageRecord.istroop == 1) && (nav.a().a(paramMessageRecord.senderuin)))
-    {
-      paramView.setTextColor(nav.d);
-      return paramaekx;
+    Object localObject = this.a.a(paramLong);
+    if (localObject == null) {
+      if (QLog.isColorLevel()) {
+        QLog.w("ShortVideoRealItemBuilder", 2, "holder == null, msgUniseq = " + paramLong);
+      }
     }
-    paramView.setTextColor(paramaekx.getResources().getColorStateList(2131165500));
-    return paramaekx;
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
-  
-  public bdlb[] a(View paramView)
-  {
-    return null;
+    label219:
+    MessageForShortVideo localMessageForShortVideo;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              break label219;
+              break label219;
+              break label219;
+              do
+              {
+                return;
+              } while (paramInt == 5);
+              if ((paramInt != 7) && (paramInt != 8)) {
+                break;
+              }
+              ShortVideoRealItemBuilder.a(this.a).removeCallbacksAndMessages(null);
+              ((agbi)localObject).a.setVisibility(0);
+              this.a.a((agbi)localObject);
+            } while (paramInt != 8);
+            localObject = bdew.a().a(Long.valueOf(paramLong));
+          } while (localObject == null);
+          this.a.a((MessageForShortVideo)localObject, ((MessageForShortVideo)localObject).videoFileTime * 1000);
+          return;
+          if (paramInt != 4) {
+            break;
+          }
+          ShortVideoRealItemBuilder.a(this.a).removeCallbacksAndMessages(null);
+          this.a.b((agbi)localObject);
+          localObject = bdew.a().a(Long.valueOf(paramLong));
+        } while (localObject == null);
+        this.a.a((MessageForShortVideo)localObject, 0L);
+        return;
+      } while (paramInt != 1);
+      localMessageForShortVideo = bdew.a().a(Long.valueOf(paramLong));
+    } while (localMessageForShortVideo == null);
+    ((agbi)localObject).a.setVisibility(0);
+    this.a.c(localMessageForShortVideo, (agbi)localObject);
   }
 }
 

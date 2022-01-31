@@ -1,10 +1,20 @@
-import cooperation.qzone.LocalMultiProcConfig;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import cooperation.qqreader.ReaderSplashImpl.3.1;
 
 public class bizr
+  implements EnterCallback
 {
-  public static String a()
+  bizr(bizo parambizo) {}
+  
+  public void onCloseLoadingView() {}
+  
+  public void onEnterComplete() {}
+  
+  public void onShowLoadingView(View paramView)
   {
-    return LocalMultiProcConfig.getString("QzoneFamousSpaceSp", bizt.a().a, "https://h5.qzone.qq.com/vpage/cover/{uin}/vpage-index?screenWidth={screenWidth}&qua={qua}&_proxy=1&_wv=1029&bottom={bottom}");
+    bizo.a(this.a).runOnUiThread(new ReaderSplashImpl.3.1(this, paramView));
   }
 }
 

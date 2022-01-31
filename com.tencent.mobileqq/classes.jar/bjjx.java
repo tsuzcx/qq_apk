@@ -1,18 +1,30 @@
-import android.content.Context;
+import org.json.JSONObject;
 
-final class bjjx
-  implements bjlm
+public class bjjx
 {
-  bjjx(Context paramContext, bjjz parambjjz, bjjy parambjjy) {}
+  public int a = -1;
+  public String a;
   
-  public void onQzonePluginClientReady(bjjt parambjjt)
+  public static String a(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
   {
-    if (parambjjt == null)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      bjlk.a(this.jdField_a_of_type_AndroidContentContext, this);
-      return;
+      localJSONObject.put("iItemId", paramInt1);
+      localJSONObject.put("strTextColor", paramString1);
+      localJSONObject.put("strAndBgUrl", paramString2);
+      localJSONObject.put("strIosBgUrl", paramString3);
+      localJSONObject.put("strFrameZip", paramString4);
+      localJSONObject.put("iFrameRate", paramInt2);
+      return localJSONObject.toString();
     }
-    parambjjt.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bjjz, this.jdField_a_of_type_Bjjy);
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        paramString1.printStackTrace();
+      }
+    }
   }
 }
 

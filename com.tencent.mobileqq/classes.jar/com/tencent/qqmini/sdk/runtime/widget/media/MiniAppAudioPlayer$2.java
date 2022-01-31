@@ -1,33 +1,33 @@
 package com.tencent.qqmini.sdk.runtime.widget.media;
 
 import android.media.MediaPlayer;
-import bhge;
+import bhkl;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 public class MiniAppAudioPlayer$2
   implements Runnable
 {
-  public MiniAppAudioPlayer$2(bhge parambhge) {}
+  public MiniAppAudioPlayer$2(bhkl parambhkl) {}
   
   public void run()
   {
-    if (bhge.a(this.this$0) == null) {}
+    if (bhkl.a(this.this$0) == null) {}
     for (;;)
     {
       return;
       try
       {
-        bhge.a(this.this$0).start();
-        bhge.a(this.this$0, 2);
-        if (bhge.a(this.this$0) > 0)
+        bhkl.a(this.this$0).start();
+        bhkl.a(this.this$0, 2);
+        if (bhkl.a(this.this$0) > 0)
         {
-          this.this$0.b(bhge.a(this.this$0));
+          this.this$0.b(bhkl.a(this.this$0));
           return;
         }
       }
       catch (Exception localException)
       {
-        bhge.a(this.this$0, 1, 0);
+        bhkl.a(this.this$0, 1, 0);
         QMLog.d("MiniAppAudioPlayer", "mStartRunnable....." + localException);
       }
     }

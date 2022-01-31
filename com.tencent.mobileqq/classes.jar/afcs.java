@@ -1,75 +1,75 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import com.tencent.mobileqq.data.IntimateInfo;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.widget.ListView;
 
-class afcs
-  extends ased
+public class afcs
 {
-  afcs(afco paramafco) {}
+  private int a = -1;
+  private int b = -1;
   
-  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject)
+  private void a(QQAppInterface paramQQAppInterface, ListView paramListView, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos");
+      QLog.d("ListViewExposeLogic", 2, "reportListItemMessage : exposeItemIndex -> " + paramInt);
     }
-    if ((this.a.jdField_a_of_type_Auip != null) && (this.a.jdField_a_of_type_Auip.a() == 1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, in card mode, return");
-      }
-    }
-    do
+    if (paramInt >= 0)
     {
-      return;
-      if (this.a.jdField_a_of_type_Auip != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mViewDelegate == null :" + afco.a(this.a));
-      }
-    } while (afco.a(this.a));
-    paramObject = null;
-    if ((paramBoolean) && (paramHashMap != null))
-    {
-      long l1 = 0L;
-      try
+      Object localObject = paramListView.getAdapter();
+      if ((localObject != null) && (paramInt < ((ListAdapter)localObject).getCount()))
       {
-        long l2 = Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue();
-        l1 = l2;
-      }
-      catch (NumberFormatException paramObject)
-      {
-        for (;;)
+        localObject = ((ListAdapter)localObject).getItem(paramInt);
+        if ((localObject instanceof MessageRecord))
         {
-          QLog.e("intimate_relationship", 2, "valueOf string err ");
+          localObject = (MessageRecord)localObject;
+          afcq.a(paramListView.getContext(), paramQQAppInterface, (MessageRecord)localObject, 1);
         }
       }
     }
-    for (paramHashMap = (IntimateInfo)paramHashMap.get(Long.valueOf(l1));; paramHashMap = paramObject)
-    {
-      if (paramHashMap == null) {
-        break label272;
-      }
-      paramObject = afco.a(this.a).obtainMessage();
-      paramObject.what = 0;
-      paramObject.obj = paramHashMap;
-      afco.a(this.a).removeMessages(0);
-      afco.a(this.a).sendMessage(paramObject);
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mode: " + this.a.jdField_a_of_type_Auip.a());
-      break;
-      QLog.e("intimate_relationship", 2, "onGetGroupIntimateInfos failed !");
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, ListView paramListView)
+  {
+    int j = paramListView.mFirstPosition;
+    int k = paramListView.getChildCount();
+    if (QLog.isColorLevel()) {
+      QLog.d("ListViewExposeLogic", 2, "reportExposeOnShowFirst : curFirstPosition -> " + j + ", childCount -> " + k);
     }
-    label272:
-    paramHashMap = afco.a(this.a).obtainMessage();
-    paramHashMap.what = 1;
-    paramHashMap.obj = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693726);
-    afco.a(this.a).sendMessage(paramHashMap);
+    int i = j;
+    while (i < j + k)
+    {
+      a(paramQQAppInterface, paramListView, i);
+      i += 1;
+    }
+    this.a = paramListView.mFirstPosition;
+    this.b = paramListView.getChildCount();
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface, ListView paramListView)
+  {
+    int j = paramListView.mFirstPosition;
+    int k = paramListView.getChildCount();
+    if ((j == this.a) && (this.b == k)) {
+      return;
+    }
+    int i = -1;
+    if (j < this.a) {
+      i = j;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ListViewExposeLogic", 2, "handleListViewScroll : curExposeItemIndex -> " + i + ", curFirstPosition -> " + j + ", childCount -> " + k);
+      }
+      this.a = j;
+      this.b = k;
+      a(paramQQAppInterface, paramListView, i);
+      return;
+      if (j + k > this.a + this.b) {
+        i = j + k - 1;
+      }
+    }
   }
 }
 

@@ -1,63 +1,32 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.ViewStub;
-import dov.com.qq.im.ae.camera.ui.watermark.WatermarkEditView;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class bkul
-  extends blbl
+class bkul
+  extends Handler
 {
-  private static boolean jdField_a_of_type_Boolean;
-  private WatermarkEditView jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView;
-  
-  public bkul(Activity paramActivity, View paramView, blbm paramblbm)
+  bkul(bkuh parambkuh, Looper paramLooper)
   {
-    super(paramActivity, paramView, paramblbm);
+    super(paramLooper);
   }
   
-  private void d()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView == null)
-    {
-      ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363906);
-      if (localViewStub != null)
-      {
-        localViewStub.inflate();
-        this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView = ((WatermarkEditView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363905));
-        this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.a(this.jdField_a_of_type_AndroidAppActivity);
-      }
-    }
-    if (this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView != null) {
-      this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.a();
-    }
-  }
-  
-  public Object a(int paramInt, Object... paramVarArgs)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return Boolean.valueOf(false);
-    }
-    return Boolean.valueOf(jdField_a_of_type_Boolean);
-  }
-  
-  protected void a() {}
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    switch (paramInt)
+    switch (paramMessage.what)
     {
     default: 
       return;
-    case 589825: 
-      d();
-      jdField_a_of_type_Boolean = true;
+    case 1: 
+      zaj.a("mystatus_shoot", "comp_recomm", 0, 0, new String[0]);
+      paramMessage = paramMessage.getData();
+      int i = paramMessage.getInt("sceneLvOne");
+      paramMessage = paramMessage.getString("sceneName");
+      this.a.a(i, paramMessage, true);
       return;
     }
-    if ((this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView != null) && (this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.getVisibility() == 0)) {
-      this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.setVisibility(8);
-    }
-    jdField_a_of_type_Boolean = false;
+    zaj.a("mystatus_shoot", "exp_recomm", 0, 0, new String[0]);
+    this.a.d();
   }
 }
 

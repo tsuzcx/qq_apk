@@ -1,20 +1,9 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class aeqm
-  extends AnimatorListenerAdapter
+public abstract interface aeqm
 {
-  aeqm(aeql paramaeql) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.d();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.d();
-  }
+  public abstract void a(ChatMessage paramChatMessage, CompoundButton paramCompoundButton, boolean paramBoolean);
 }
 
 

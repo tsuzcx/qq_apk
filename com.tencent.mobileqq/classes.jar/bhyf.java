@@ -1,8 +1,14 @@
-import android.os.Bundle;
+import android.widget.PopupWindow.OnDismissListener;
 
-public abstract interface bhyf
+class bhyf
+  implements PopupWindow.OnDismissListener
 {
-  public abstract boolean a(String paramString, Bundle paramBundle);
+  bhyf(bhyd parambhyd) {}
+  
+  public void onDismiss()
+  {
+    this.a.a(1.0F);
+  }
 }
 
 

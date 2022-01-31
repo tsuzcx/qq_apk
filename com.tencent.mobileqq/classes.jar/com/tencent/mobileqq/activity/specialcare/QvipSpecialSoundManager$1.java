@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import akal;
+import akfa;
 import android.content.Context;
 import java.io.File;
 
 class QvipSpecialSoundManager$1
   implements Runnable
 {
-  QvipSpecialSoundManager$1(QvipSpecialSoundManager paramQvipSpecialSoundManager, akal paramakal) {}
+  QvipSpecialSoundManager$1(QvipSpecialSoundManager paramQvipSpecialSoundManager, akfa paramakfa) {}
   
   public void run()
   {

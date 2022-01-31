@@ -1,33 +1,56 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class ahnh
-  implements bhqd
+public class ahnh
+  extends alrl
 {
-  ahnh(ahnd paramahnd, boolean paramBoolean, TroopInfo paramTroopInfo, bhpy parambhpy) {}
+  public ahnh(SystemMsgListView paramSystemMsgListView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
   {
-    if (!bdee.g(this.jdField_a_of_type_Ahnd.jdField_a_of_type_AndroidContentContext)) {
-      QQToast.a(this.jdField_a_of_type_Ahnd.jdField_a_of_type_AndroidContentContext, 1, 2131692397, 0).a();
+    if (paramBoolean) {
+      SystemMsgListView.a(this.a).b(paramLong);
     }
-    for (;;)
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      if (!(paramObject instanceof ArrayList)) {
+        break label76;
+      }
+    }
+    label76:
+    for (paramObject = (ArrayList)paramObject;; paramObject = null)
     {
-      this.jdField_a_of_type_Bhpy.e();
+      if ((paramObject != null) && (paramObject.size() > 0))
+      {
+        paramObject = paramObject.iterator();
+        while (paramObject.hasNext())
+        {
+          Object localObject = paramObject.next();
+          if ((localObject instanceof Long)) {
+            SystemMsgListView.a(this.a).b(((Long)localObject).longValue());
+          }
+        }
+      }
       return;
-      paramView = (alkk)this.jdField_a_of_type_Ahnd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, 1);
-        azmj.b(this.jdField_a_of_type_Ahnd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808D", "0X800808D", 0, 0, "", "", "", "");
-      }
-      else
-      {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, 0);
-        azmj.b(this.jdField_a_of_type_Ahnd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808C", "0X800808C", 0, 0, "", "", "", "");
-      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {}
+    try
+    {
+      long l = Long.parseLong(paramString);
+      SystemMsgListView.a(this.a).b(l);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

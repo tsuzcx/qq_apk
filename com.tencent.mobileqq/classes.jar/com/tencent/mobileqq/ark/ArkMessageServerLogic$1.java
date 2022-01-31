@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ark;
 
-import ankf;
-import ankp;
-import ankq;
+import anoo;
+import anoy;
+import anoz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class ArkMessageServerLogic$1
   implements Runnable
 {
-  public ArkMessageServerLogic$1(ankq paramankq) {}
+  public ArkMessageServerLogic$1(anoz paramanoz) {}
   
   public void run()
   {
@@ -37,7 +37,7 @@ public final class ArkMessageServerLogic$1
           ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, ark sso is null");
           break;
         }
-      } while (((ankf)localObject).a("ArkAppPanel.List", 10000, 0, new ankp(this)));
+      } while (((anoo)localObject).a("ArkAppPanel.List", 10000, 0, new anoy(this)));
       ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, fail send sso request");
     }
   }

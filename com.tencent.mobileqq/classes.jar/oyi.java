@@ -40,7 +40,7 @@ public class oyi
           Object localObject = new Bundle();
           ((Bundle)localObject).putString("floating_window_rowkey", str1);
           ((Bundle)localObject).putString("float_layer_article_url", str2);
-          bjxq.a(this.jdField_a_of_type_AndroidAppActivity, 5, 1, (Bundle)localObject, 0);
+          bkbx.a(this.jdField_a_of_type_AndroidAppActivity, 5, 1, (Bundle)localObject, 0);
           if (this.jdField_a_of_type_AndroidAppActivity != null)
           {
             localObject = ors.a(this.jdField_a_of_type_AndroidAppActivity);

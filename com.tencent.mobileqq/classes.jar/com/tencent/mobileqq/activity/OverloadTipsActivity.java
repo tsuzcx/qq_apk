@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import adhp;
-import adhq;
+import adme;
+import admf;
 import android.content.Intent;
 import android.os.Bundle;
-import bdcd;
-import bdfq;
+import bdgm;
+import bdjz;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class OverloadTipsActivity
   extends BaseActivity
 {
-  private bdfq a;
+  private bdjz a;
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559399);
+    super.setContentView(2131559398);
     if ((getIntent() != null) && (getIntent().getExtras() != null)) {}
     for (paramBundle = getIntent().getExtras().getString("msg");; paramBundle = null)
     {
@@ -29,11 +29,11 @@ public class OverloadTipsActivity
         this.a.dismiss();
       }
       this.a = null;
-      this.a = bdcd.a(this, 230);
-      this.a.setContentView(2131558920);
-      this.a.setTitle(null).setMessage(paramBundle).setPositiveButton(2131695095, new adhp(this));
+      this.a = bdgm.a(this, 230);
+      this.a.setContentView(2131558919);
+      this.a.setTitle(null).setMessage(paramBundle).setPositiveButton(2131695097, new adme(this));
       this.a.setTextContentDescription(paramBundle);
-      this.a.setOnKeyListener(new adhq(this));
+      this.a.setOnKeyListener(new admf(this));
       this.a.show();
       return false;
     }

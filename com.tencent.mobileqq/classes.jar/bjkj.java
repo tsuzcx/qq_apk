@@ -1,65 +1,80 @@
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import NS_USER_ACTION_REPORT.ItemInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
+import cooperation.qzone.mobilereport.MobileReportManager.ReportTask.1;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
 
 public class bjkj
-  implements ServiceConnection
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection;
+  private final HashMap<bjki, ArrayList<ItemInfo>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
-  public bjkj(bjki parambjki, ServiceConnection paramServiceConnection, Context paramContext, int paramInt)
+  private static String a()
   {
-    this.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    switch (bdin.b(BaseApplicationImpl.getContext()))
+    {
+    default: 
+      return "UNKNOW";
+    case 1: 
+      return "WIFI";
+    case 4: 
+      return "4G";
+    case 3: 
+      return "3G";
+    }
+    return "2G";
   }
   
-  public void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
+  private void a(bjki parambjki, ItemInfo paramItemInfo)
   {
     do
     {
-      try
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
       {
-        this.jdField_a_of_type_AndroidContentContext.getApplicationContext().unbindService(this);
-        if (QLog.isColorLevel()) {
-          QLog.i("QZonePluginManger", 2, "onServiceConnected, " + this);
+        ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(parambjki);
+        ArrayList localArrayList1 = localArrayList2;
+        if (localArrayList2 == null) {
+          localArrayList1 = new ArrayList();
         }
-        this.jdField_a_of_type_AndroidContentServiceConnection.onServiceConnected(???, paramIBinder);
-      }
-      catch (Exception localException)
-      {
-        synchronized (bjki.a(this.jdField_a_of_type_Bjki))
+        localArrayList1.add(paramItemInfo);
+        this.jdField_a_of_type_JavaUtilHashMap.put(parambjki, localArrayList1);
+        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
         {
-          do
-          {
-            paramIBinder = (bjkj)bjki.a(this.jdField_a_of_type_Bjki).poll();
-            if (paramIBinder == null) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("QZonePluginManger", 2, "continue process");
-            }
-            bjki.a(this.jdField_a_of_type_Bjki, paramIBinder, 300);
-            return;
-            localException = localException;
-          } while (!QLog.isColorLevel());
-          QLog.i("QZonePluginManger", 2, "unbindService, " + this);
+          if (QLog.isDevelopLevel()) {
+            QLog.d("MobileReport.Manager", 4, "start report!!!");
+          }
+          ThreadManager.post(new MobileReportManager.ReportTask.1(this), 2, null, true);
+          return;
         }
       }
-      bjki.a(this.jdField_a_of_type_Bjki, false);
-    } while (!QLog.isColorLevel());
-    QLog.i("QZonePluginManger", 2, "queue empty");
+    } while (!QLog.isDevelopLevel());
+    QLog.d("MobileReport.Manager", 4, "wait to report...");
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  private void a(HashMap<bjki, ArrayList<ItemInfo>> paramHashMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZonePluginManger", 2, "onServiceDisconnected, " + this);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    ArrayList localArrayList = new ArrayList();
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext())
+    {
+      Object localObject = (Map.Entry)paramHashMap.next();
+      bjkl localbjkl = new bjkl(null);
+      localbjkl.a((bjki)((Map.Entry)localObject).getKey());
+      localObject = ((ArrayList)((Map.Entry)localObject).getValue()).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localbjkl.a((ItemInfo)((Iterator)localObject).next());
+      }
+      localArrayList.add(localbjkl.a());
     }
-    this.jdField_a_of_type_AndroidContentServiceConnection.onServiceDisconnected(paramComponentName);
+    azbs.a(localAppRuntime, new bjkm(null).a(localAppRuntime.getLongAccountUin()).a(a()).a(), localArrayList);
   }
 }
 

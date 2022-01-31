@@ -1,16 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.widget.EditText;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureSegmentView;
+import dov.com.qq.im.ptv.LightWeightSoDownloadUnit.4;
 
-class bmgu
-  implements DialogInterface.OnDismissListener
+public class bmgu
+  implements DialogInterface.OnCancelListener
 {
-  bmgu(bmgo parambmgo, bmui parambmui) {}
+  public bmgu(LightWeightSoDownloadUnit.4 param4) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Bmgo.a.a(0);
-    bmgo.a(this.jdField_a_of_type_Bmgo).setText(this.jdField_a_of_type_Bmui.a());
+    this.a.this$0.a.setCameraPermissionResult(false);
   }
 }
 

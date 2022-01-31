@@ -1,8 +1,54 @@
-import android.support.annotation.NonNull;
+import android.os.FileObserver;
+import com.tencent.mobileqq.activity.richmedia.state.RMFileEventNotify.1;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ajtk
+public class ajtk
+  extends FileObserver
 {
-  public abstract void a(@NonNull ajto paramajto);
+  private boolean a;
+  
+  private void a()
+  {
+    if (!this.a)
+    {
+      this.a = true;
+      RMVideoStateMgr.a().a(new RMFileEventNotify.1(this));
+    }
+  }
+  
+  public void onEvent(int paramInt, String paramString)
+  {
+    if ((paramInt & 0x20) == 32) {
+      if (QLog.isColorLevel()) {
+        QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][OPEN]  path=" + paramString);
+      }
+    }
+    do
+    {
+      return;
+      if ((paramInt & 0x400) == 1024)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE_SELF]  path=" + paramString);
+        }
+        a();
+        return;
+      }
+      if ((paramInt & 0x200) == 512)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE]  path=" + paramString);
+        }
+        a();
+        return;
+      }
+    } while ((paramInt & 0x8) != 8);
+    if (QLog.isColorLevel()) {
+      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][CLOSE_WRITE]  path=" + paramString);
+    }
+    a();
+  }
 }
 
 

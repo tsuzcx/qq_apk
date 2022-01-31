@@ -1,12 +1,25 @@
-class xgk
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+
+public class xgk
+  implements xdy
 {
-  final int jdField_a_of_type_Int;
-  final xgl jdField_a_of_type_Xgl;
+  public xgk(DoodleLayout paramDoodleLayout) {}
   
-  public xgk(xgl paramxgl, int paramInt)
+  public void a(Bitmap paramBitmap, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Xgl = paramxgl;
-    this.jdField_a_of_type_Int = paramInt;
+    if (this.a.a != null) {
+      this.a.a.a(paramBitmap, paramBoolean);
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (this.a.a != null)
+    {
+      wxe.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
+      this.a.a.a(paramArrayOfByte);
+    }
   }
 }
 

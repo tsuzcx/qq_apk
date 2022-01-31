@@ -1,30 +1,34 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.AutoPlayImageView;
-import com.tencent.image.QQLiveDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class wmv
-  implements URLDrawable.URLDrawableListener
+class wmv
+  extends QQUIEventReceiver<wms, vdl>
 {
-  public wmv(AutoPlayImageView paramAutoPlayImageView) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public wmv(@NonNull wms paramwms)
   {
-    if (AutoPlayImageView.a(this.a) == 2) {
-      if ((paramURLDrawable != null) && ((paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
-        ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).pause();
-      }
+    super(paramwms);
+  }
+  
+  public void a(@NonNull wms paramwms, @NonNull vdl paramvdl)
+  {
+    if ((paramvdl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvdl.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramvdl.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramwms.jdField_a_of_type_JavaLangString)))
+    {
+      wxe.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramvdl);
+      paramwms.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramvdl.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+      wms.a(paramwms).e();
+      wms.a(paramwms).c();
+      wms.a(paramwms).d();
+      wms.a(paramwms).a();
     }
-    while ((AutoPlayImageView.a(this.a) != 3) || (paramURLDrawable == null) || (!(paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
-      return;
-    }
-    ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).recyleAndKeepPostion();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdl.class;
   }
 }
 

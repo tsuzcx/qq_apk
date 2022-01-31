@@ -1,29 +1,14 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.net.Uri;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
 
 public class bbkk
+  implements bbkd
 {
-  public int a;
-  public String a;
-  public ArrayList<bbkk> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  public bbkk(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public bbkk() {}
-  
-  public bbkk(String paramString1, String paramString2)
+  public void a(Uri paramUri)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = ((Integer)bbkj.a().get(paramString)).intValue();
+    this.a.a = paramUri;
   }
 }
 

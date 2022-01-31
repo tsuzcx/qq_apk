@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
 import android.text.TextUtils;
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.utils.DomainUtil;
 import org.json.JSONException;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 class MiniAppUIJsPlugin$7
   implements Runnable
 {
-  MiniAppUIJsPlugin$7(MiniAppUIJsPlugin paramMiniAppUIJsPlugin, bgkd parambgkd) {}
+  MiniAppUIJsPlugin$7(MiniAppUIJsPlugin paramMiniAppUIJsPlugin, bgok parambgok) {}
   
   public void run()
   {

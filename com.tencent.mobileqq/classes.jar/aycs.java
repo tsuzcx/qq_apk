@@ -1,25 +1,17 @@
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class aycs
-  implements Comparator<ayij>
+public class aycs
+  implements DialogInterface.OnClickListener
 {
-  aycs(aycr paramaycr) {}
+  public aycs(SignatureEditFragment paramSignatureEditFragment) {}
   
-  public int a(ayij paramayij1, ayij paramayij2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramayij2.a[2] - paramayij1.a[2];
-    if (i != 0) {}
-    int j;
-    do
-    {
-      return i;
-      j = paramayij1.a[0] - paramayij2.a[0];
-      i = j;
-    } while (j != 0);
-    paramayij1 = paramayij1.c.substring(paramayij1.a[0] + paramayij1.a[1]);
-    paramayij2 = paramayij2.c.substring(paramayij2.a[0] + paramayij2.a[1]);
-    return ChnToSpell.a(paramayij1, 2).compareTo(ChnToSpell.a(paramayij2, 2));
+    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_know", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    paramDialogInterface.dismiss();
   }
 }
 

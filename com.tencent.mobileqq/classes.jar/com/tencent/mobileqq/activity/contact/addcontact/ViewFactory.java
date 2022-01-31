@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
@@ -38,7 +38,7 @@ public class ViewFactory
     case 80000003: 
       return 2131689722;
     }
-    return 2131720567;
+    return 2131720579;
   }
   
   private View a(Context paramContext)
@@ -47,14 +47,14 @@ public class ViewFactory
     localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
     localLinearLayout.setOrientation(1);
     TextView localTextView = new TextView(paramContext);
-    localTextView.setText(alpo.a(2131716842));
+    localTextView.setText(alud.a(2131716854));
     localTextView.setTextSize(0, paramContext.getResources().getDimension(2131298848));
     localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131298207), 0, 0);
-    localTextView.setTextColor(paramContext.getResources().getColor(2131166976));
+    localTextView.setTextColor(paramContext.getResources().getColor(2131166978));
     paramContext = new LinearLayout.LayoutParams(-2, -2);
     paramContext.gravity = 1;
     localLinearLayout.addView(localTextView, paramContext);
-    localLinearLayout.setContentDescription(alpo.a(2131716843));
+    localLinearLayout.setContentDescription(alud.a(2131716855));
     return localLinearLayout;
   }
   

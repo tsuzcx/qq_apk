@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.apollo.script;
 
-import akwi;
-import akwl;
-import akwr;
-import akwt;
+import alax;
+import alba;
+import albg;
+import albi;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingDeque;
 
 public class SpriteTaskHandler$1
   implements Runnable
 {
-  public SpriteTaskHandler$1(akwr paramakwr) {}
+  public SpriteTaskHandler$1(albg paramalbg) {}
   
   public void run()
   {
-    SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)akwr.a(this.this$0).pollLast();
-    akwi localakwi = akwt.a(akwr.a(this.this$0).a());
-    if ((localakwi != null) && (localSpriteTaskParam != null))
+    SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)albg.a(this.this$0).pollLast();
+    alax localalax = albi.a(albg.a(this.this$0).a());
+    if ((localalax != null) && (localSpriteTaskParam != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("cmshow_scripted_SpriteTaskHandler", 2, new Object[] { "[addTask] not play current task, actionId:", Integer.valueOf(localSpriteTaskParam.f), ",but delay play" });
       }
-      localakwi.a(localSpriteTaskParam);
+      localalax.a(localSpriteTaskParam);
     }
   }
 }

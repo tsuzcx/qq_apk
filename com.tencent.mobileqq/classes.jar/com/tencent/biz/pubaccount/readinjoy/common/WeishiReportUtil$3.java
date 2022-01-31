@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import bjxj;
+import bkbq;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -21,7 +21,7 @@ public final class WeishiReportUtil$3
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg == null) {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.parse();
     }
-    String str = new ron(null, null, null, null).a("folder_status", osm.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing)).a("algorithm_id", osm.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing)).a("reddot_style", osm.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData)).a("is_jump_to_video_content", Integer.valueOf(bjxj.L(ors.a()))).a("EnterType", osm.c(this.jdField_a_of_type_Int)).a().a();
+    String str = new ron(null, null, null, null).a("folder_status", osm.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing)).a("algorithm_id", osm.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing)).a("reddot_style", osm.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData)).a("is_jump_to_video_content", Integer.valueOf(bkbq.L(ors.a()))).a("EnterType", osm.c(this.jdField_a_of_type_Int)).a().a();
     osm.a(osm.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), osm.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "0X8009290", str);
   }
 }

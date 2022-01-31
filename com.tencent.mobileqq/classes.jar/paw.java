@@ -3,7 +3,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ScrollView;
 
 public class paw
-  implements bhwl
+  implements bias
 {
   public paw(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   

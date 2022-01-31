@@ -1,29 +1,8 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
-
-public class vme
-  extends Subscriber.SingleEventSubscriberNoRefect<ukn>
+public abstract interface vme
 {
-  vlz a;
+  public abstract void a();
   
-  public vme(@NonNull vlz paramvlz)
-  {
-    this.a = paramvlz;
-  }
-  
-  protected void a(@NonNull ukn paramukn)
-  {
-    if ((paramukn.b != null) && (paramukn.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)) {
-      vlz.a(this.a, paramukn.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramukn.b.mVid, paramukn.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return ukn.class;
-  }
+  public abstract void b();
 }
 
 

@@ -5,7 +5,7 @@ import java.util.List;
 public class rpq
 {
   private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private List<bhwf> jdField_a_of_type_JavaUtilList;
+  private List<biam> jdField_a_of_type_JavaUtilList;
   
   public float a(int paramInt)
   {
@@ -15,7 +15,7 @@ public class rpq
     {
       f1 = f2;
       if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-        f1 = ((bhwf)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a();
+        f1 = ((biam)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a();
       }
     }
     return f1;

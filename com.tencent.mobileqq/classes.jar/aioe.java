@@ -1,19 +1,37 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 
-class aioe
-  implements army
+public class aioe
 {
-  aioe(aiob paramaiob) {}
+  PhotoCropActivity jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity;
+  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  
+  public aioe(PhotoCropActivity paramPhotoCropActivity)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity = paramPhotoCropActivity;
+  }
   
   public void a()
   {
-    this.a.b();
+    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
+    {
+      bhuf localbhuf = (bhuf)bhus.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, null);
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      {
+        localbhuf.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], 1);
+        i += 1;
+      }
+      localbhuf.c(2131690648);
+      localbhuf.a(new aiof(this, localbhuf));
+      localbhuf.show();
+    }
   }
   
-  public void b()
+  public void a(int paramInt) {}
+  
+  public void a(String[] paramArrayOfString)
   {
-    ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
   }
 }
 

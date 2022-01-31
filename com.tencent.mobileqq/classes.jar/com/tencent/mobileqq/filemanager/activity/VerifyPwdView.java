@@ -11,13 +11,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import aqiw;
-import aqix;
-import aqnl;
-import aqns;
-import aqse;
-import armz;
-import bdee;
+import aqnf;
+import aqng;
+import aqru;
+import aqsb;
+import aqwn;
+import arri;
+import bdin;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -32,8 +32,8 @@ public class VerifyPwdView
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aqix jdField_a_of_type_Aqix;
-  private aqnl jdField_a_of_type_Aqnl = new aqiw(this);
+  private aqng jdField_a_of_type_Aqng;
+  private aqru jdField_a_of_type_Aqru = new aqnf(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private BaseFileAssistantActivity jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity;
   private View b;
@@ -64,8 +64,8 @@ public class VerifyPwdView
   
   private void f()
   {
-    if (this.jdField_a_of_type_Aqix != null) {
-      this.jdField_a_of_type_Aqix.a();
+    if (this.jdField_a_of_type_Aqng != null) {
+      this.jdField_a_of_type_Aqng.a();
     }
     InputMethodManager localInputMethodManager = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getSystemService("input_method");
     if (localInputMethodManager.isActive()) {
@@ -73,54 +73,54 @@ public class VerifyPwdView
     }
   }
   
-  public View a(ViewGroup paramViewGroup, aqix paramaqix)
+  public View a(ViewGroup paramViewGroup, aqng paramaqng)
   {
-    this.jdField_a_of_type_Aqix = paramaqix;
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getSystemService("layout_inflater")).inflate(2131560685, null).findViewById(2131379472);
+    this.jdField_a_of_type_Aqng = paramaqng;
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getSystemService("layout_inflater")).inflate(2131560703, null).findViewById(2131379530);
     return this.jdField_a_of_type_AndroidViewView;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Aqnl != null)
+    if (this.jdField_a_of_type_Aqru != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aqnl);
-      this.jdField_a_of_type_Aqix = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aqru);
+      this.jdField_a_of_type_Aqng = null;
     }
   }
   
   public void b()
   {
-    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131376332);
+    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131376386);
     if (localView != null) {
       localView.setVisibility(8);
     }
-    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131379475);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131375537));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372496));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131379473));
+    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131379533);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131375588));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372516));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131379531));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380145));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380203));
     if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843917);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843989);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aqnl);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aqru);
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a() != true) {
         break;
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
       return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843916);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843988);
     }
-    if (bdee.d(BaseApplicationImpl.getContext()))
+    if (bdin.d(BaseApplicationImpl.getContext()))
     {
       c();
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
       return;
     }
-    armz.a(BaseApplicationImpl.getContext().getString(2131694764));
+    arri.a(BaseApplicationImpl.getContext().getString(2131694766));
   }
   
   public void onClick(View paramView)

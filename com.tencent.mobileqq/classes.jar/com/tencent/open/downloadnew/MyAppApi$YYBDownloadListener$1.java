@@ -2,22 +2,22 @@ package com.tencent.open.downloadnew;
 
 import android.os.Handler;
 import android.os.Looper;
-import bfkb;
-import bfko;
-import bflb;
-import bflc;
+import bfok;
+import bfox;
+import bfpk;
+import bfpl;
 
 public class MyAppApi$YYBDownloadListener$1
   implements Runnable
 {
-  public MyAppApi$YYBDownloadListener$1(bflb parambflb, DownloadInfo paramDownloadInfo) {}
+  public MyAppApi$YYBDownloadListener$1(bfpk parambfpk, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Bflb.a.a != null) && (this.jdField_a_of_type_Bflb.a.a.isShowing())) {
-      this.jdField_a_of_type_Bflb.a.a.dismiss();
+    if ((this.jdField_a_of_type_Bfpk.a.a != null) && (this.jdField_a_of_type_Bfpk.a.a.isShowing())) {
+      this.jdField_a_of_type_Bfpk.a.a.dismiss();
     }
-    bfkb.a().c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    bfok.a().c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
     new Handler(Looper.getMainLooper()).postAtTime(new MyAppApi.YYBDownloadListener.1.1(this), 1000L);
   }
 }

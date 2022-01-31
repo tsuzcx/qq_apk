@@ -1,40 +1,33 @@
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import cooperation.comic.VipComicJumpActivity;
+import org.json.JSONObject;
 
-public class ajhb
-  implements ajgw
+class ajhb
+  implements View.OnClickListener
 {
-  public View a;
-  public TabDragAnimationView a;
-  private boolean a;
+  ajhb(ajgb paramajgb, String paramString) {}
   
-  public ajhb(TabDragAnimationView paramTabDragAnimationView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, int paramInt, View paramView)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView == null) || (this.jdField_a_of_type_AndroidViewView == null) || (!this.jdField_a_of_type_AndroidViewView.equals(paramView))) {}
-    do
+    paramView = new JSONObject();
+    try
     {
+      paramView.put("from", "20");
+      label17:
+      Intent localIntent = new Intent(ajgb.a(this.jdField_a_of_type_Ajgb), VipComicJumpActivity.class);
+      localIntent.putExtra("options", paramView.toString());
+      ajgb.a(this.jdField_a_of_type_Ajgb).startActivity(localIntent);
+      binc.a(ajgb.a(this.jdField_a_of_type_Ajgb).getAppInterface(), "100007", "2", "40040", this.jdField_a_of_type_JavaLangString, new String[0]);
+      azqs.a(ajgb.a(this.jdField_a_of_type_Ajgb).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 2, 0, "", "", "", "");
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TabDragListener", 2, "drag detect x=" + paramFloat1 + ",y=" + paramFloat2 + ",dragType=" + paramInt);
-      }
-      if ((paramInt == 1) || (paramInt == 2))
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
-        }
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.a(paramFloat1, paramFloat2, false);
-        return;
-      }
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.b();
+    }
+    catch (Exception localException)
+    {
+      break label17;
+    }
   }
 }
 

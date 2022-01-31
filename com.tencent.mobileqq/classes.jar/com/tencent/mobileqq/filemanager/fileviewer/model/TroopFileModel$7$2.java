@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import ardn;
-import argq;
+import arhw;
+import arkz;
 import com.tencent.mobileqq.data.MessageForTroopFile;
 import com.tencent.mobileqq.data.MessageRecord;
 

@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgnf;
+import bgrm;
 
 class InternalJSPlugin$7
   implements Runnable
@@ -9,7 +9,7 @@ class InternalJSPlugin$7
   
   public void run()
   {
-    bgnf.a(this.this$0.mContext, "当前版本下载能力暂不可用", 0).a();
+    bgrm.a(this.this$0.mContext, "当前版本下载能力暂不可用", 0).a();
   }
 }
 

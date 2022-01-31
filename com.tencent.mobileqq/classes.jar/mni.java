@@ -41,9 +41,9 @@ public class mni
       if (QLog.isColorLevel()) {
         QLog.d("VideoInviteUIFull", 2, "startVideo phone is calling!");
       }
-      String str1 = a(2131695915);
-      String str2 = a(2131695918);
-      PopupDialog.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getApplicationContext(), 230, str2, str1, 2131690648, 2131694951, new mnj(this), null);
+      String str1 = a(2131695917);
+      String str2 = a(2131695920);
+      PopupDialog.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getApplicationContext(), 230, str2, str1, 2131690648, 2131694953, new mnj(this), null);
       bool = true;
     }
     return bool;
@@ -110,7 +110,7 @@ public class mni
     switch (paramView.getId())
     {
     default: 
-    case 2131372730: 
+    case 2131372756: 
     case 2131362956: 
     case 2131362968: 
       do
@@ -186,7 +186,7 @@ public class mni
   {
     if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131372730, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131372756, false);
       this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131362968, false);
     }
   }
@@ -286,27 +286,27 @@ public class mni
   public void d()
   {
     super.d();
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.setContentView(2131559651);
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.setContentView(2131559650);
     this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getWindow().addFlags(2097152);
     this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getWindow().addFlags(128);
     this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getWindow().clearFlags(524288);
     this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getWindow().clearFlags(1024);
     this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.b();
     if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.findViewById(2131372770).setVisibility(0);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.findViewById(2131372796).setVisibility(0);
     }
     if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel != null)
     {
       this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.f();
       this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.a(-1046L);
     }
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel = ((QavPanel)super.a(2131372773));
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131559608);
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel = ((QavPanel)super.a(2131372799));
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131559607);
     this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.e();
     this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_c_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.a(2131362962));
     this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.a(2131362965));
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetTextView.setText(2131721345);
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetTextView.setText(2131721358);
     this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a();
     Object localObject;
     label411:
@@ -319,7 +319,7 @@ public class mni
       if (!this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {
         break label866;
       }
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131372730, super.a(2131690321), this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_Lid.C);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131372756, super.a(2131690321), this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_Lid.C);
       this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131362956, super.a(2131690303), this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_Lid.C);
       localObject = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_JavaLangString + super.a(2131690319);
       mww.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_AndroidWidgetTextView, (String)localObject);
@@ -344,11 +344,11 @@ public class mni
     label958:
     for (int j = 2;; j = 3)
     {
-      azmj.b(null, "CliOper", "", "", "0X8009ED8", "0X8009ED8", i, j, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8009ED8", "0X8009ED8", i, j, "", "", "", "");
       this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(true);
       this.jdField_a_of_type_Mbl = mbl.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      new mmi((RelativeLayout)a(2131372865)).a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity);
-      if (alnq.a() >= 17.0F)
+      new mmi((RelativeLayout)a(2131372891)).a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity);
+      if (alsf.a() >= 17.0F)
       {
         localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
         if (this.jdField_c_of_type_Int <= 540)
@@ -379,11 +379,11 @@ public class mni
       }
       this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131362968, 4);
       this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131362967, 0);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetTextView.setText(2131696400);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.setAcceptDrawableTop(super.a().getDrawable(2130841602));
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetTextView.setText(2131696402);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.setAcceptDrawableTop(super.a().getDrawable(2130841615));
       break;
       label866:
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131372730, super.a(2131690321));
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131372756, super.a(2131690321));
       this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131362956, super.a(2131690303));
       localObject = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_JavaLangString + super.a(2131690319);
       mww.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_AndroidWidgetTextView, (String)localObject);

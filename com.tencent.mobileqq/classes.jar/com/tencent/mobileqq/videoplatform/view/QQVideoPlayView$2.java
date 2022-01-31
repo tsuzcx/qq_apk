@@ -15,8 +15,8 @@ class QQVideoPlayView$2
     this.this$0.mBufferPanel.setVisibility(8);
     QQVideoPlayView.access$100(this.this$0).setVisibility(0);
     QQVideoPlayView.access$200(this.this$0).setVisibility(8);
-    this.this$0.mPlayButton.setImageResource(2130850089);
-    TextView localTextView = (TextView)QQVideoPlayView.access$100(this.this$0).findViewById(2131365826);
+    this.this$0.mPlayButton.setImageResource(2130850162);
+    TextView localTextView = (TextView)QQVideoPlayView.access$100(this.this$0).findViewById(2131365828);
     if (localTextView != null) {
       localTextView.setText(this.val$erroText);
     }

@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AddAccountActivity;
+import android.os.Bundle;
 
-public class abxb
-  implements DialogInterface.OnDismissListener
+public abstract class abxb
+  implements yrb
 {
-  public abxb(AddAccountActivity paramAddAccountActivity) {}
+  protected abstract void a(boolean paramBoolean, Bundle paramBundle);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void callback(Bundle paramBundle)
   {
-    AddAccountActivity.c(this.a, false);
+    paramBundle = paramBundle.getBundle("key_result");
+    if (paramBundle != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(bool, paramBundle);
+      return;
+    }
   }
 }
 

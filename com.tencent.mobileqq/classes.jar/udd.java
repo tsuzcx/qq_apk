@@ -1,29 +1,12 @@
-import android.view.View;
-import android.view.ViewStub;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class udd
-  extends ucz
+class udd
+  implements DialogInterface.OnClickListener
 {
-  public void a(ViewStub paramViewStub)
-  {
-    if (paramViewStub != null)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramViewStub.inflate();
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new ude(this));
-    }
-  }
+  udd(udb paramudb) {}
   
-  public void a(Object paramObject, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Int = paramInt;
-    if (a())
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

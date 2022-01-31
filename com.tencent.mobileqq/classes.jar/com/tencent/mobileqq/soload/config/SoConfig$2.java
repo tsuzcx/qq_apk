@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.soload.config;
 
-import ajaf;
+import ajeu;
 
 class SoConfig$2
   implements Runnable
@@ -11,7 +11,7 @@ class SoConfig$2
   {
     synchronized ()
     {
-      ajaf.a(this.this$0, SoConfig.access$100());
+      ajeu.a(this.this$0, SoConfig.access$100());
       return;
     }
   }

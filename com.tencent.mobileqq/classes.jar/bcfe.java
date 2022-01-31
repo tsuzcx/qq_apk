@@ -1,23 +1,41 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class bcfe
-  implements bcwt
+public class bcfe
+  extends bcex<bcdy>
 {
-  bcfe(bcfc parambcfc) {}
+  public View a;
+  public ImageView a;
+  public RoundCornerImageView a;
+  public URLDrawable a;
+  public MessageProgressView a;
+  public ImageView b;
+  public ImageView c;
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public bcfe(View paramView)
   {
-    if ((paramBitmap != null) && (bcfc.a(this.a) != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, String.format("onDecodeTaskCompleted uin=%s", new Object[] { paramString }));
-      }
-      if (!TextUtils.isEmpty(paramString)) {
-        bcfc.a(this.a).b(paramString);
-      }
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131367706);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131367708));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.a = 1;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(10);
+    this.b = ((ImageView)paramView.findViewById(2131367711));
+    this.c = ((ImageView)paramView.findViewById(2131367709));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367707));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = ((MessageProgressView)paramView.findViewById(2131367710));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(10.0F, false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDisplayInTextView(aepi.a(17.0F, paramView.getResources()), -1);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(new bcff(this));
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(4);
+    this.b.setVisibility(4);
   }
 }
 

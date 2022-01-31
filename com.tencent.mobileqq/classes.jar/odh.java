@@ -3,7 +3,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
 public class odh
-  implements aarc
+  implements aavr
 {
   public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
   {
@@ -13,7 +13,7 @@ public class odh
         QLog.d("GameWebReportLoad", 2, "handleEvent type=" + paramLong);
       }
       paramString = new Bundle();
-      ymk.a().a(140, paramString);
+      yqz.a().a(140, paramString);
     }
     return false;
   }

@@ -1,87 +1,24 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
 
-public class xgp
-  extends bhyb
+public abstract interface xgp
 {
-  public static final TroopBarPOI a;
-  protected LayoutInflater a;
-  protected ArrayList<TroopBarPOI> a;
-  protected TroopBarPOI b;
+  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
   
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI = new TroopBarPOI("-1", "", alpo.a(2131711370), 0, "", 0, "");
-  }
+  public abstract void a(String paramString);
   
-  public xgp(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-  }
+  public abstract void a(xhv paramxhv);
   
-  public void a(ArrayList<TroopBarPOI> paramArrayList, TroopBarPOI paramTroopBarPOI)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    if (paramTroopBarPOI != null) {
-      this.b = new TroopBarPOI(paramTroopBarPOI);
-    }
-  }
+  public abstract void a(byte[] paramArrayOfByte);
   
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
+  public abstract void b(int paramInt1, int paramInt2);
   
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
+  public abstract void b(int paramInt, Object paramObject);
   
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
+  public abstract void f();
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    TroopBarPOI localTroopBarPOI;
-    if (paramView == null)
-    {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561527, null);
-      paramViewGroup = new xgq();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376322));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369298));
-      paramView.setTag(paramViewGroup);
-      localTroopBarPOI = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopBarPOI.c);
-      paramViewGroup = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
-      if (!localTroopBarPOI.equals(this.b)) {
-        break label135;
-      }
-    }
-    label135:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      paramViewGroup.setVisibility(paramInt);
-      paramView.setContentDescription(localTroopBarPOI.c);
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
-      return paramView;
-      paramViewGroup = (xgq)paramView.getTag();
-      break;
-    }
-  }
+  public abstract void g();
+  
+  public abstract void i();
 }
 
 

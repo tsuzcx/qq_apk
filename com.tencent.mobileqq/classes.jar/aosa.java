@@ -3,34 +3,32 @@ import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class aosa
-  extends aofy<aory>
+  extends aokh<aory>
 {
   public int a()
   {
-    return 432;
+    return 553;
   }
   
   @NonNull
   public aory a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchRichConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
     return new aory();
   }
   
   @Nullable
-  public aory a(aogf[] paramArrayOfaogf)
+  public aory a(aoko[] paramArrayOfaoko)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchRichConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
     {
+      aory localaory = aory.a(paramArrayOfaoko[0].a);
       if (QLog.isColorLevel()) {
-        QLog.d("SearchRichConfProcessor", 2, "onParsed " + paramArrayOfaogf.length);
+        QLog.d("TogetherEntryConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
       }
-      return aory.a(paramArrayOfaogf[0]);
+      return localaory;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherEntryConfProcessor", 2, "onParsed is null");
     }
     return null;
   }
@@ -43,31 +41,22 @@ public class aosa
   public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.e("SearchRichConfProcessor", 2, "onReqFailed " + paramInt);
+      QLog.d("TogetherEntryConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
     }
   }
   
   public void a(aory paramaory)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramaory == null) {
-        break label49;
-      }
-    }
-    label49:
-    for (paramaory = paramaory.toString();; paramaory = " empty")
-    {
-      QLog.d("SearchRichConfProcessor", 2, paramaory);
-      ayop.a().a();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherEntryConfProcessor", 2, "onUpdate " + paramaory.toString());
     }
   }
   
   public int b()
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherEntryConfProcessor", 2, "migrateOldVersion");
+    }
     return 0;
   }
   

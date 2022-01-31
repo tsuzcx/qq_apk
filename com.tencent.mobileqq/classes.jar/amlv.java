@@ -1,83 +1,33 @@
-import com.tencent.mobileqq.app.NewUpgradeConfig;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 
-public class amlv
-  implements Manager
+class amlv
+  implements bavp
 {
-  private final QQAppInterface a;
+  amlv(amlp paramamlp, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public amlv(QQAppInterface paramQQAppInterface)
+  public void a(bavr parambavr, bavq parambavq)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public static amlv a(QQAppInterface paramQQAppInterface)
-  {
-    return (amlv)paramQQAppInterface.getManager(189);
-  }
-  
-  public boolean a()
-  {
-    if (amlp.a().a() == 4) {}
-    for (boolean bool = true;; bool = false)
+    try
     {
+      parambavr = parambavr.a.getWupBuffer();
+      parambavq = new structmsg.RspSystemMsgRead();
+      parambavq.mergeFrom(parambavr);
+      int i = parambavq.head.result.get();
       if (QLog.isColorLevel()) {
-        QLog.d("UpgradeManager", 2, new Object[] { "hasNewApkDownloaded: invoked. ", " hasDl: ", Boolean.valueOf(bool) });
+        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
       }
-      return bool;
+      return;
+    }
+    catch (Exception parambavr)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", parambavr);
     }
   }
-  
-  public boolean a(UpgradeDetailWrapper paramUpgradeDetailWrapper)
-  {
-    if ((paramUpgradeDetailWrapper == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog == null)) {}
-    int i;
-    int j;
-    int k;
-    long l1;
-    long l2;
-    do
-    {
-      return false;
-      i = bdiv.aO(this.a.getApp(), this.a.c());
-      j = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.c;
-      k = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.d;
-      l1 = bdiv.k(this.a.getApp(), this.a.c());
-      l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("UpgradeManager", 2, new Object[] { "needShowDownloadDialog: invoked. ", " downloadDialogMaxTimes: ", Integer.valueOf(j), " downloadDialogShownTimes: ", Integer.valueOf(i), " downloadDialogDayRate: ", Integer.valueOf(k), " downloadDialogShownTimestamp: ", Long.valueOf(l1), " now: ", Long.valueOf(l2) });
-      }
-    } while ((i >= j) || (l2 - l1 < k * 86400000L));
-    return true;
-  }
-  
-  public boolean b(UpgradeDetailWrapper paramUpgradeDetailWrapper)
-  {
-    if ((paramUpgradeDetailWrapper == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog == null)) {}
-    int i;
-    int j;
-    int k;
-    long l1;
-    long l2;
-    do
-    {
-      return false;
-      i = bdiv.aP(this.a.getApp(), this.a.c());
-      j = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.e;
-      k = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.f;
-      l1 = bdiv.l(this.a.getApp(), this.a.c());
-      l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("UpgradeManager", 2, new Object[] { "needShowInstallDialog: invoked. ", " installDialogMaxTimes: ", Integer.valueOf(j), " installDialogShownTimes: ", Integer.valueOf(i), " installDialogDayRate: ", Integer.valueOf(k), " installDialogShownTimestamp: ", Long.valueOf(l1), " now: ", Long.valueOf(l2) });
-      }
-    } while ((i >= j) || (l2 - l1 < k * 86400000L));
-    return true;
-  }
-  
-  public void onDestroy() {}
 }
 
 

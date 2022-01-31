@@ -1,13 +1,25 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class bnak
+  implements View.OnClickListener
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView b;
+  bnak(bnaj parambnaj, bnam parambnam) {}
   
-  bnak(bnaj parambnaj) {}
+  public void onClick(View paramView)
+  {
+    if (!this.jdField_a_of_type_Bnam.a()) {
+      this.jdField_a_of_type_Bnam.b();
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bnaj.a != null) {
+        this.jdField_a_of_type_Bnaj.a.a(this.jdField_a_of_type_Bnaj);
+      }
+      return;
+      this.jdField_a_of_type_Bnam.c();
+    }
+  }
 }
 
 

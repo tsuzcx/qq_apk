@@ -1,23 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
 public class acue
-  extends awlr
+  implements bfah
 {
-  public acue(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public acue(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt)
+  public void a(BaseResp paramBaseResp)
   {
-    if ((!TextUtils.equals(paramString, this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)) || (this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqDataCard == null)) {}
-    while (paramInt != 0) {
+    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
       return;
     }
-    this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel = paramPersonalityLabel;
-    this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqDataCard.vPersonalityLabelV2 = paramArrayOfByte;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.a.jdField_a_of_type_Awmk, true, new String[] { "map_key_personality_label_board" });
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      ybk.a(1, 2131720031);
+      return;
+    }
+    ybk.a(2, 2131720050);
   }
 }
 

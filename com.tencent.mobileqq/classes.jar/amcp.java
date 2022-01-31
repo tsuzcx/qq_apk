@@ -1,19 +1,33 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ShortVideoUpInfo;
+import mqq.manager.Manager;
 
 public class amcp
-  implements ThreadFactory
+  implements Manager
 {
-  private final AtomicInteger a = new AtomicInteger(1);
+  private awgf a;
   
-  public Thread newThread(Runnable paramRunnable)
+  public amcp(QQAppInterface paramQQAppInterface)
   {
-    paramRunnable = new Thread(paramRunnable, "Automator_" + this.a.getAndIncrement());
-    if (paramRunnable.getPriority() != 10) {
-      paramRunnable.setPriority(10);
-    }
-    return paramRunnable;
+    this.a = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
   }
+  
+  public ShortVideoUpInfo a(String paramString)
+  {
+    return (ShortVideoUpInfo)this.a.a(ShortVideoUpInfo.class, paramString);
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = false;
+    paramString = a(paramString);
+    if (paramString != null) {
+      bool = this.a.b(paramString);
+    }
+    return bool;
+  }
+  
+  public void onDestroy() {}
 }
 
 

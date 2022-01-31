@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.widget.banner;
 
-import aanv;
-import aekt;
+import aask;
+import aepi;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.support.v4.view.PagerAdapter;
@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import aqdm;
+import aqhv;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
@@ -39,7 +39,7 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
-import xod;
+import xsm;
 
 public class BannerAdapter
   extends PagerAdapter
@@ -70,13 +70,13 @@ public class BannerAdapter
   {
     View localView = paramView;
     if (paramView == null) {
-      localView = LayoutInflater.from(paramActivity).inflate(2131559834, null);
+      localView = LayoutInflater.from(paramActivity).inflate(2131559833, null);
     }
-    paramView = (KanDianUrlRoundCornerImageView)localView.findViewById(2131368594);
-    int i = xod.a(paramActivity, 3.0F);
+    paramView = (KanDianUrlRoundCornerImageView)localView.findViewById(2131368605);
+    int i = xsm.a(paramActivity, 3.0F);
     paramView.setCorner(i);
-    TextView localTextView1 = (TextView)localView.findViewById(2131378967);
-    TextView localTextView2 = (TextView)localView.findViewById(2131378985);
+    TextView localTextView1 = (TextView)localView.findViewById(2131379025);
+    TextView localTextView2 = (TextView)localView.findViewById(2131379043);
     localTextView2.setText(paramqnf.d);
     if (TextUtils.isEmpty(paramqnf.d))
     {
@@ -84,7 +84,7 @@ public class BannerAdapter
       if ((!TextUtils.isEmpty(paramqnf.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramqnf.jdField_a_of_type_JavaLangString)))
       {
         localTextView1.setText(paramqnf.jdField_b_of_type_JavaLangString);
-        localTextView1.setBackgroundDrawable(aqdm.a(Utils.parseColor(paramqnf.jdField_a_of_type_JavaLangString), i, 0.0F, i, 0.0F));
+        localTextView1.setBackgroundDrawable(aqhv.a(Utils.parseColor(paramqnf.jdField_a_of_type_JavaLangString), i, 0.0F, i, 0.0F));
       }
       if (this.jdField_c_of_type_Int != jdField_b_of_type_Int) {
         break label198;
@@ -149,7 +149,7 @@ public class BannerAdapter
   public String a(String paramString)
   {
     Resources localResources = BaseApplicationImpl.getApplication().getResources();
-    int i = localResources.getDisplayMetrics().widthPixels - aekt.a(30.0F, localResources);
+    int i = localResources.getDisplayMetrics().widthPixels - aepi.a(30.0F, localResources);
     return ors.a(paramString, i, (int)(i * 0.424242D));
   }
   
@@ -201,7 +201,7 @@ public class BannerAdapter
         localObject = new qq_ad_get.QQAdGetRsp.AdInfo();
         ((qq_ad_get.QQAdGetRsp.AdInfo)localObject).report_info.trace_info.aid.set(localqnf.jdField_a_of_type_Long);
         ((qq_ad_get.QQAdGetRsp.AdInfo)localObject).report_info.thirdparty_monitor_urls.api_click_monitor_url.set(localqnf.a(localqnf.jdField_a_of_type_JavaUtilList));
-        aanv.a(1, 1, (qq_ad_get.QQAdGetRsp.AdInfo)localObject);
+        aask.a(1, 1, (qq_ad_get.QQAdGetRsp.AdInfo)localObject);
       }
       return;
       localObject = (qnj)localqnf;
@@ -263,7 +263,7 @@ public class BannerAdapter
         qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = new qq_ad_get.QQAdGetRsp.AdInfo();
         localAdInfo.report_info.trace_info.aid.set(localqnf.jdField_a_of_type_Long);
         localAdInfo.report_info.thirdparty_monitor_urls.api_exposure_monitor_url.set(localqnf.a(localqnf.jdField_b_of_type_JavaUtilList));
-        aanv.a(0, 1, localAdInfo);
+        aask.a(0, 1, localAdInfo);
       }
       return;
       label151:

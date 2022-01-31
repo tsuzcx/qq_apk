@@ -1,110 +1,80 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class biyd
-  extends biyb
+  extends Dialog
 {
-  public long a;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n;
+  Context jdField_a_of_type_AndroidContentContext = null;
+  Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable = null;
+  TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = null;
   
-  public void a(Bundle paramBundle)
+  public biyd(Context paramContext)
   {
-    super.a(paramBundle);
-    this.e = paramBundle.getString("_mqqpay_payapi_serialnumber");
-    this.f = paramBundle.getString("_mqqpay_payapi_callbackscheme");
-    this.g = paramBundle.getString("_mqqpay_payapi_pubacc");
-    this.h = paramBundle.getString("_mqqpay_payapi_pubacchint");
-    this.i = paramBundle.getString("_mqqpay_payapi_tokenid");
-    this.j = paramBundle.getString("_mqqpay_payapi_nonce");
-    this.jdField_a_of_type_Long = paramBundle.getLong("_mqqpay_payapi_timeStamp");
-    this.k = paramBundle.getString("_mqqpay_payapi_bargainorId");
-    this.l = paramBundle.getString("_mqqpay_payapi_sigType");
-    this.m = paramBundle.getString("_mqqpay_payapi_sig");
-    this.n = paramBundle.getString("_mqqpay_payapi_packageName");
-  }
-  
-  public void a(String paramString)
-  {
-    this.c = "browser";
-    this.d = "pay";
-    this.jdField_a_of_type_Int = 1;
+    super(paramContext, 2131755804);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560632, null);
+    setContentView(paramContext);
+    Object localObject = getWindow();
+    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
+    localLayoutParams.width = -1;
+    localLayoutParams.height = -1;
+    ((Window)localObject).setAttributes(localLayoutParams);
+    setCanceledOnTouchOutside(false);
+    localObject = (TextView)paramContext.findViewById(2131368624);
+    if (localObject != null)
+    {
+      ((TextView)localObject).setVisibility(0);
+      ((TextView)localObject).setText(2131690623);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131368670));
     try
     {
-      paramString = new JSONObject(paramString);
-      JSONObject localJSONObject = paramString.optJSONObject("action");
-      if (localJSONObject != null)
+      if (this.jdField_a_of_type_AndroidWidgetTextView != null)
       {
-        String str = localJSONObject.optString("name");
-        if (str != null)
-        {
-          if (!str.equals("pay")) {
-            return;
-          }
-          this.e = localJSONObject.optString("identifier");
-          localJSONObject = paramString.optJSONObject("application");
-          if (localJSONObject != null)
-          {
-            this.jdField_a_of_type_JavaLangString = localJSONObject.optString("appId");
-            this.b = localJSONObject.optString("sdkVersion");
-            this.n = localJSONObject.optString("pkgName");
-            this.f = localJSONObject.optString("urlScheme");
-          }
-          paramString = paramString.optJSONObject("params");
-          if (paramString != null)
-          {
-            this.i = paramString.optString("tokenId");
-            this.jdField_a_of_type_Long = paramString.optLong("timeStamp");
-            this.j = paramString.optString("nonce");
-            this.k = paramString.optString("bargainorId");
-            this.l = "HMAC-SHA1";
-            this.m = paramString.optString("sig");
-            return;
-          }
-        }
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131714526));
       }
+      label143:
+      if (QLog.isColorLevel()) {
+        QLog.d("SignatureLoadingDialog", 2, "enter into SignatureLoading");
+      }
+      return;
     }
-    catch (JSONException paramString)
+    catch (Exception paramContext)
     {
-      paramString.printStackTrace();
+      break label143;
     }
   }
   
-  public boolean a()
+  public void dismiss()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    while ((TextUtils.isEmpty(this.c)) || ((!this.c.equals("native")) && (!this.c.equals("browser"))) || (TextUtils.isEmpty(this.n)) || ((!this.c.equals("browser")) && (TextUtils.isEmpty(this.f))) || (TextUtils.isEmpty(this.i)) || (TextUtils.isEmpty(this.k)) || (TextUtils.isEmpty(this.j)) || (TextUtils.isEmpty(this.m)) || (TextUtils.isEmpty(this.l)) || (this.jdField_a_of_type_Long <= 0L) || (TextUtils.isEmpty(this.e))) {
-      return false;
+    super.dismiss();
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
     }
-    return true;
   }
   
-  public String toString()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder(128);
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append("&sn=" + this.e);
-    localStringBuilder.append("&cs=" + this.f);
-    localStringBuilder.append("&pa=" + this.g);
-    localStringBuilder.append("&pah=" + this.h);
-    localStringBuilder.append("&ti=" + this.i);
-    localStringBuilder.append("&ne=" + this.j);
-    localStringBuilder.append("&ts=" + this.jdField_a_of_type_Long);
-    localStringBuilder.append("&bi=" + this.k);
-    localStringBuilder.append("&st=" + this.l);
-    localStringBuilder.append("&sg=" + this.m);
-    localStringBuilder.append("&pn=" + this.n);
-    return localStringBuilder.toString();
+    super.onWindowFocusChanged(paramBoolean);
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839229));
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds((Drawable)this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable, null, null, null);
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
+    }
   }
 }
 

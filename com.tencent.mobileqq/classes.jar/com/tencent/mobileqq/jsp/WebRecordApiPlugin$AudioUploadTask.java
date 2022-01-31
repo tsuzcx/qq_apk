@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.jsp;
 
-import alpo;
+import alud;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import arof;
+import arso;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.troop.data.AudioInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -51,7 +51,7 @@ public class WebRecordApiPlugin$AudioUploadTask
       this.jdField_a_of_type_Int = 0;
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo == null) || (!arof.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path)))
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo == null) || (!arso.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("WebRecordApiPlugin", 2, "Audio is null!");
@@ -102,7 +102,7 @@ public class WebRecordApiPlugin$AudioUploadTask
         catch (JSONException localJSONException1) {}
         localObject4 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(16711690);
         localObject1 = localObject4;
-        ((JSONObject)localObject5).put("msg", alpo.a(2131717270));
+        ((JSONObject)localObject5).put("msg", alud.a(2131717282));
         localObject2 = localObject4;
         localObject1 = localObject4;
         if (!QLog.isColorLevel()) {

@@ -3,20 +3,20 @@ package com.tencent.mobileqq.copyprompt;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import aowg;
+import apap;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class CopyPromptHelper$4
   implements Runnable
 {
-  public CopyPromptHelper$4(aowg paramaowg) {}
+  public CopyPromptHelper$4(apap paramapap) {}
   
   public void run()
   {
-    if ((aowg.a(this.this$0) != null) && (aowg.a(this.this$0).getParent() != null))
+    if ((apap.a(this.this$0) != null) && (apap.a(this.this$0).getParent() != null))
     {
-      ((RelativeLayout)aowg.a(this.this$0).c.findViewById(2131364137)).removeView(aowg.a(this.this$0));
-      aowg.a(this.this$0, null);
+      ((RelativeLayout)apap.a(this.this$0).c.findViewById(2131364139)).removeView(apap.a(this.this$0));
+      apap.a(this.this$0, null);
     }
   }
 }

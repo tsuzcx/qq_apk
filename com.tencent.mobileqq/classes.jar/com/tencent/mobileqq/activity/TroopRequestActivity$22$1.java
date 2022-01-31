@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import aedb;
-import ahlb;
+import aehq;
+import ahpq;
 
 public class TroopRequestActivity$22$1
   implements Runnable
 {
-  public TroopRequestActivity$22$1(aedb paramaedb, int paramInt) {}
+  public TroopRequestActivity$22$1(aehq paramaehq, int paramInt) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Ahlb.a(this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.a);
+    this.this$0.jdField_a_of_type_Ahpq.a(this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.a);
   }
 }
 

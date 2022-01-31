@@ -1,14 +1,14 @@
 public class lev
 {
-  @atcn(a="w")
+  @atgw(a="w")
   public int a;
-  @atcn(a="exp")
+  @atgw(a="exp")
   public String a;
-  @atcn(a="h")
+  @atgw(a="h")
   public int b;
-  @atcn(a="url")
+  @atgw(a="url")
   public String b;
-  @atcn(a="md5")
+  @atgw(a="md5")
   public String c;
 }
 

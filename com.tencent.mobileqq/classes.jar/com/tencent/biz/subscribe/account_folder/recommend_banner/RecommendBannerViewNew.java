@@ -21,26 +21,26 @@ import com.tencent.mobileqq.pb.PBStringField;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.app.AppRuntime;
-import xxl;
-import xyf;
-import xyl;
-import xyn;
-import xyp;
-import xze;
-import yej;
-import yel;
-import yvu;
+import ybu;
+import yco;
+import ycu;
+import ycw;
+import ycy;
+import ydn;
+import yiw;
+import yiy;
+import zaj;
 
 public class RecommendBannerViewNew
   extends LinearLayout
-  implements View.OnClickListener, yel
+  implements View.OnClickListener, yiy
 {
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private xyn jdField_a_of_type_Xyn;
-  private xyp jdField_a_of_type_Xyp;
+  private ycw jdField_a_of_type_Ycw;
+  private ycy jdField_a_of_type_Ycy;
   private boolean jdField_a_of_type_Boolean;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -59,85 +59,121 @@ public class RecommendBannerViewNew
   
   private void a(int paramInt)
   {
-    if (paramInt < this.jdField_a_of_type_Xyn.getItemCount())
+    if (paramInt < this.jdField_a_of_type_Ycw.getItemCount())
     {
-      this.jdField_a_of_type_Xyn.a(paramInt);
-      if ((!this.jdField_a_of_type_Xyn.c()) && (!this.jdField_a_of_type_Xyn.b()) && (this.jdField_a_of_type_Xyp != null)) {
-        this.jdField_a_of_type_Xyp.a();
+      this.jdField_a_of_type_Ycw.a(paramInt);
+      if ((!this.jdField_a_of_type_Ycw.c()) && (!this.jdField_a_of_type_Ycw.b()) && (this.jdField_a_of_type_Ycy != null)) {
+        this.jdField_a_of_type_Ycy.a();
       }
       a();
     }
   }
   
-  public ArrayList<Class> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(RecommendFeedbackEvent.class);
-    return localArrayList;
-  }
-  
   public void a()
   {
-    if ((this.jdField_a_of_type_Xyn.b()) && (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 0))
+    if ((this.jdField_a_of_type_Ycw.b()) && (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 0))
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
   }
   
-  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<xze> paramList, boolean paramBoolean)
+  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<ydn> paramList, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Xyn != null)
+    if (this.jdField_a_of_type_Ycw != null)
     {
-      this.jdField_a_of_type_Xyn.d(paramBoolean);
-      this.jdField_a_of_type_Xyn.a(paramStEntry, paramList);
+      this.jdField_a_of_type_Ycw.d(paramBoolean);
+      this.jdField_a_of_type_Ycw.a(paramStEntry, paramList);
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollToPosition(0);
     }
   }
   
   protected void a(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = xxl.a();
+    this.jdField_a_of_type_Boolean = ybu.a();
     setOrientation(1);
-    inflate(paramContext, 2131558732, this);
+    inflate(paramContext, 2131558731, this);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131363076));
     paramContext = new LinearLayoutManager(paramContext);
     paramContext.setOrientation(0);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new xyf());
-    this.jdField_a_of_type_Xyn = new xyn(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    this.jdField_a_of_type_Xyn.b(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Xyn.c(true);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Xyn);
-    this.jdField_a_of_type_Xyn.a(new xyl(this));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368728));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131365360);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375437));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375393));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375394));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new yco());
+    this.jdField_a_of_type_Ycw = new ycw(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
+    this.jdField_a_of_type_Ycw.b(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Ycw.c(true);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Ycw);
+    this.jdField_a_of_type_Ycw.a(new ycu(this));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368742));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131365362);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375488));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375444));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375445));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838777));
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838722));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838778));
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838723));
       this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-9211021);
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-10132123);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-10132123);
     }
   }
   
-  public void a(SimpleBaseEvent paramSimpleBaseEvent)
+  public ArrayList<Class> getEventClass()
   {
-    if ((!(paramSimpleBaseEvent instanceof RecommendFeedbackEvent)) || (this.jdField_a_of_type_Xyn == null)) {}
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(RecommendFeedbackEvent.class);
+    return localArrayList;
+  }
+  
+  protected void onAttachedToWindow()
+  {
+    super.onAttachedToWindow();
+    yiw.a().a(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    if ((this.jdField_a_of_type_Ycw != null) && (this.jdField_a_of_type_Ycy != null))
+    {
+      if ((this.jdField_a_of_type_Ycw.a()) || (this.jdField_a_of_type_Ycw.b())) {
+        break label99;
+      }
+      this.jdField_a_of_type_Ycy.a();
+    }
+    for (;;)
+    {
+      a();
+      zaj.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "auth_discover", "change_clk", 0, 0, new String[0]);
+      return;
+      label99:
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollToPosition(0);
+    }
+  }
+  
+  protected void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+    yiw.a().b(this);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if ((!(paramSimpleBaseEvent instanceof RecommendFeedbackEvent)) || (this.jdField_a_of_type_Ycw == null)) {}
     label188:
     for (;;)
     {
       return;
       int i = 0;
       int j;
-      if (i < this.jdField_a_of_type_Xyn.a().size()) {
-        if ((((RecommendFeedbackEvent)paramSimpleBaseEvent).type == 1) && (((RecommendFeedbackEvent)paramSimpleBaseEvent).user != null) && (TextUtils.equals(((xze)this.jdField_a_of_type_Xyn.a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), ((RecommendFeedbackEvent)paramSimpleBaseEvent).user.id.get()))) {
+      if (i < this.jdField_a_of_type_Ycw.a().size()) {
+        if ((((RecommendFeedbackEvent)paramSimpleBaseEvent).type == 1) && (((RecommendFeedbackEvent)paramSimpleBaseEvent).user != null) && (TextUtils.equals(((ydn)this.jdField_a_of_type_Ycw.a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), ((RecommendFeedbackEvent)paramSimpleBaseEvent).user.id.get()))) {
           j = i;
         }
       }
@@ -151,7 +187,7 @@ public class RecommendBannerViewNew
         if ((((RecommendFeedbackEvent)paramSimpleBaseEvent).type == 2) && (((RecommendFeedbackEvent)paramSimpleBaseEvent).feed != null))
         {
           j = i;
-          if (TextUtils.equals(((xze)this.jdField_a_of_type_Xyn.a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get(), ((RecommendFeedbackEvent)paramSimpleBaseEvent).feed.id.get())) {}
+          if (TextUtils.equals(((ydn)this.jdField_a_of_type_Ycw.a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get(), ((RecommendFeedbackEvent)paramSimpleBaseEvent).feed.id.get())) {}
         }
         else
         {
@@ -163,45 +199,9 @@ public class RecommendBannerViewNew
     }
   }
   
-  protected void onAttachedToWindow()
+  public void setPresenter(ycy paramycy)
   {
-    super.onAttachedToWindow();
-    yej.a().a(this);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    if ((this.jdField_a_of_type_Xyn != null) && (this.jdField_a_of_type_Xyp != null))
-    {
-      if ((this.jdField_a_of_type_Xyn.a()) || (this.jdField_a_of_type_Xyn.b())) {
-        break label101;
-      }
-      this.jdField_a_of_type_Xyp.a();
-    }
-    for (;;)
-    {
-      a();
-      yvu.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "auth_discover", "change_clk", 0, 0, new String[0]);
-      return;
-      label101:
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollToPosition(0);
-    }
-  }
-  
-  protected void onDetachedFromWindow()
-  {
-    super.onDetachedFromWindow();
-    yej.a().b(this);
-  }
-  
-  public void setPresenter(xyp paramxyp)
-  {
-    this.jdField_a_of_type_Xyp = paramxyp;
+    this.jdField_a_of_type_Ycy = paramycy;
   }
 }
 

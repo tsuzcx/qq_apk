@@ -1,37 +1,20 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class acht
-  implements aelc
+  implements View.OnClickListener
 {
-  public acht(ChatHistory paramChatHistory) {}
+  public acht(BaseChatPie paramBaseChatPie) {}
   
-  public void a(AudioPlayer paramAudioPlayer)
+  public void onClick(View paramView)
   {
-    this.a.p();
-    if (this.a.jdField_a_of_type_Acio != null) {
-      this.a.jdField_a_of_type_Acio.d();
-    }
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.dismissDialog(230);
+    zdv.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
   }
-  
-  public void a(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.b(2131695363);
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
-  }
-  
-  public void b(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.setVolumeControlStream(paramInt);
-  }
-  
-  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 

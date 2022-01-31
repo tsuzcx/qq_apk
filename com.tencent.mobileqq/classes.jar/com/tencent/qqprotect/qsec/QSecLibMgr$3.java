@@ -1,15 +1,15 @@
 package com.tencent.qqprotect.qsec;
 
-import bhkn;
+import bhou;
 
 public class QSecLibMgr$3
   implements Runnable
 {
-  public QSecLibMgr$3(bhkn parambhkn) {}
+  public QSecLibMgr$3(bhou parambhou) {}
   
   public void run()
   {
-    bhkn.d(this.this$0);
+    bhou.d(this.this$0);
   }
 }
 

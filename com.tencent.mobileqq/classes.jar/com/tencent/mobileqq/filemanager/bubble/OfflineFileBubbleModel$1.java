@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.bubble;
 
-import aqrg;
-import aroa;
+import aqvp;
+import arsj;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class OfflineFileBubbleModel$1
   implements Runnable
 {
-  public OfflineFileBubbleModel$1(aqrg paramaqrg, FileManagerEntity paramFileManagerEntity) {}
+  public OfflineFileBubbleModel$1(aqvp paramaqvp, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    aroa.b(this.a);
+    arsj.b(this.a);
   }
 }
 

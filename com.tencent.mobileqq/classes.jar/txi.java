@@ -1,17 +1,18 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StTagInfo;
 
 class txi
   implements View.OnClickListener
 {
-  txi(txe paramtxe) {}
+  txi(txh paramtxh, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StTagInfo paramStTagInfo) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.a() instanceof Activity)) {
-      ((Activity)this.a.a()).finish();
-    }
+    tzw.a(16, 2, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, 2, 0);
+    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagId.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get());
   }
 }
 

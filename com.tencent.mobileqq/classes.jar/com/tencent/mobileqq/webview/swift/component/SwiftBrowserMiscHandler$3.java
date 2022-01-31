@@ -2,29 +2,29 @@ package com.tencent.mobileqq.webview.swift.component;
 
 import android.graphics.Bitmap;
 import android.os.Environment;
-import bczk;
-import bduw;
-import bedv;
-import bedx;
+import bddt;
+import bdzf;
+import beie;
+import beig;
 import java.io.File;
 
 public class SwiftBrowserMiscHandler$3
   implements Runnable
 {
-  public SwiftBrowserMiscHandler$3(bedv parambedv, Bitmap paramBitmap, bedx parambedx) {}
+  public SwiftBrowserMiscHandler$3(beie parambeie, Bitmap paramBitmap, beig parambeig) {}
   
   public void run()
   {
     Object localObject = "";
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      localObject = new File(bduw.a(Environment.getExternalStorageDirectory() + "/tencent/MobileQQ/ShareScreenShots"));
+      localObject = new File(bdzf.a(Environment.getExternalStorageDirectory() + "/tencent/MobileQQ/ShareScreenShots"));
       String str = "ShareScreenShot_" + System.currentTimeMillis() + ".jpg";
-      localObject = bczk.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject, str);
+      localObject = bddt.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject, str);
       this.this$0.a = true;
     }
-    if (this.jdField_a_of_type_Bedx != null) {
-      this.jdField_a_of_type_Bedx.a((String)localObject);
+    if (this.jdField_a_of_type_Beig != null) {
+      this.jdField_a_of_type_Beig.a((String)localObject);
     }
   }
 }

@@ -1,33 +1,38 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.fragment.DeleteFaceFragment;
-import com.tencent.mobileqq.fragment.DeleteFaceFragment.2.1.1;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface.OnClickListener;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import com.tencent.qphone.base.util.QLog;
 
-public class asbc
-  extends avqt
+class asbc
+  implements View.OnClickListener
 {
-  asbc(asbb paramasbb) {}
+  asbc(asau paramasau, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.a.a.getActivity() != null)
+    this.jdField_a_of_type_Asau.hideSoftInputFromWindow();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Asau, 0);
+    }
+    if (asau.a(this.jdField_a_of_type_Asau))
     {
-      DeleteFaceFragment.a(this.a.a).postDelayed(new DeleteFaceFragment.2.1.1(this), 500L);
+      asau.a(this.jdField_a_of_type_Asau).removeView(asau.a(this.jdField_a_of_type_Asau));
+      asau.a(this.jdField_a_of_type_Asau, false);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Asau.isShowing()) {
+        this.jdField_a_of_type_Asau.dismiss();
+      }
       return;
     }
-    QLog.e("DeleteFaceFragment", 1, "delete success, activity is null");
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.e("DeleteFaceFragment", 1, "delete face error");
-    if (this.a.a.getActivity() != null)
+    catch (Exception paramView)
     {
-      QQToast.a(this.a.a.getActivity(), 1, this.a.a.getString(2131692193), 0).b(this.a.a.a());
-      return;
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Forward.NewVersion.Dialog", 2, Log.getStackTraceString(paramView));
     }
-    QLog.e("DeleteFaceFragment", 1, "delete falied, activity is null");
   }
 }
 

@@ -1,68 +1,86 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamworkforgroup.TroopTeamWorkFileSearchDialog.6.1;
-import com.tencent.mobileqq.troop.widget.CountdownTimeTask;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
 public class bahj
-  implements TextWatcher
+  implements alpg
 {
-  bahj(bahd parambahd) {}
+  public void a(int paramInt) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void a(String paramString1, String paramString2, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void c(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.a.d) {
-      this.a.d = false;
+    switch (paramInt)
+    {
     }
     do
     {
-      return;
-      if (paramEditable == null) {}
-      for (paramEditable = ""; paramEditable.trim().equals(""); paramEditable = paramEditable.toString())
+      do
       {
-        this.a.c();
-        return;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      if (!bdee.g(this.a.jdField_a_of_type_AndroidAppActivity))
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask != null)
+        do
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.b();
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = null;
-        }
-        this.a.b();
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            return;
+                          } while (paramObject == null);
+                          b((TeamWorkFileImportInfo)paramObject);
+                          return;
+                        } while (paramObject == null);
+                        paramObject = (Object[])paramObject;
+                      } while (paramObject.length != 2);
+                      a((String)paramObject[0], (TeamWorkFileImportInfo)paramObject[1]);
+                      return;
+                    } while (paramObject == null);
+                    a((TeamWorkFileImportInfo)paramObject);
+                    return;
+                  } while (paramObject == null);
+                  paramObject = (Object[])paramObject;
+                } while (paramObject.length != 1);
+                a(((Integer)paramObject[0]).intValue());
+                return;
+              } while (paramObject == null);
+              paramObject = (Object[])paramObject;
+            } while (paramObject.length != 1);
+            if (((Integer)paramObject[0]).intValue() > 0) {}
+            for (paramBoolean = true;; paramBoolean = false)
+            {
+              a(paramBoolean);
+              return;
+            }
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 3);
+        a((String)paramObject[0], (String)paramObject[1], (TeamWorkFileImportInfo)paramObject[2]);
         return;
-      }
-      this.a.c = false;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask == null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = new CountdownTimeTask(new TroopTeamWorkFileSearchDialog.6.1(this), 800);
-        ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask, 5, null, true);
-        return;
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.a() > 0L)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.a();
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("TroopTeamWorkFileSearchDialog", 2, "!!!!!! 这是个什么情况,逻辑出错了 !!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((!this.a.d) || ((this.a.d) && (this.a.jdField_b_of_type_Int <= 0)))
-    {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      return;
-    }
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    c((TeamWorkFileImportInfo)paramObject[0]);
   }
 }
 

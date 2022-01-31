@@ -9,7 +9,7 @@ class oqe
   
   public void onClick(ViewBase paramViewBase)
   {
-    paramViewBase = new pzy(this.jdField_a_of_type_Oqd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_Oqd.jdField_a_of_type_Bcws, this.jdField_a_of_type_Oqd.jdField_a_of_type_Rqj);
+    paramViewBase = new pzy(this.jdField_a_of_type_Oqd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_Oqd.jdField_a_of_type_Bdbb, this.jdField_a_of_type_Oqd.jdField_a_of_type_Rqj);
     paramViewBase.a(this.jdField_a_of_type_Oqd.jdField_a_of_type_Pgd);
     paramViewBase.a(this.jdField_a_of_type_Oqd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
     paramViewBase.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView());

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.gamecenter.anim;
 
-import asgq;
+import askz;
 
 public class FullPopAnimLowVersion$6
   implements Runnable
 {
-  public FullPopAnimLowVersion$6(asgq paramasgq) {}
+  public FullPopAnimLowVersion$6(askz paramaskz) {}
   
   public void run()
   {
-    asgq.d(this.this$0);
+    askz.d(this.this$0);
   }
 }
 

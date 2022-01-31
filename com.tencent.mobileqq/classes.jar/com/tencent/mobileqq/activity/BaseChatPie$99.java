@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import akwk;
+import alaz;
 
 class BaseChatPie$99
   implements Runnable
@@ -10,7 +10,7 @@ class BaseChatPie$99
   public void run()
   {
     this.this$0.aw();
-    akwk.a(this.this$0.a, "receipt_msg", false);
+    alaz.a(this.this$0.a, "receipt_msg", false);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.richstatus;
 
-import axze;
-import axzg;
+import aydn;
+import aydp;
 
 public class SignatureHistoryFragment$DataAdapter$2$1
   implements Runnable
 {
-  public SignatureHistoryFragment$DataAdapter$2$1(axzg paramaxzg, int paramInt1, int paramInt2) {}
+  public SignatureHistoryFragment$DataAdapter$2$1(aydp paramaydp, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    SignatureHistoryFragment.a(this.jdField_a_of_type_Axzg.a.a, this.jdField_a_of_type_Int, this.b, true);
+    SignatureHistoryFragment.a(this.jdField_a_of_type_Aydp.a.a, this.jdField_a_of_type_Int, this.b, true);
   }
 }
 

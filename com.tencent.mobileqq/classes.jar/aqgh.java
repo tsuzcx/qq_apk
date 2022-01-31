@@ -1,26 +1,67 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqgh
-  implements Animation.AnimationListener
+  extends aqgg
 {
-  public aqgh(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
+  public final String b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  aqgh(aqgi paramaqgi, int paramInt)
   {
-    if ((Face2FaceFriendBubbleView.a(this.a) == 2) || (Face2FaceFriendBubbleView.a(this.a) == 3) || (Face2FaceFriendBubbleView.a(this.a) == 4))
-    {
-      Face2FaceFriendBubbleView.a(this.a).startAnimation(Face2FaceFriendBubbleView.a(this.a));
-      return;
-    }
-    Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+    super(paramaqgi, paramInt);
+    this.jdField_b_of_type_JavaLangString = "ExtendFriendLimitChatIdleStateHandler";
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(int paramInt)
+  {
+    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "requestMatch id" + paramInt);
+    Object localObject = new aqcl();
+    ((aqcl)localObject).jdField_b_of_type_Int = paramInt;
+    this.a.a(101, (aqcl)localObject);
+    localObject = (aqbe)this.a.a.a(127);
+    if (localObject != null)
+    {
+      int i = aqfk.a(this.a.a);
+      ((aqbe)localObject).a(this.a.a.getCurrentAccountUin(), i, paramInt);
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  void a(boolean paramBoolean)
+  {
+    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onCancelMatchMsg 取消匹配: " + paramBoolean);
+  }
+  
+  void a(boolean paramBoolean, int paramInt, aqcl paramaqcl, String paramString)
+  {
+    if ((paramBoolean) && (paramaqcl != null))
+    {
+      QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onCSRequestMsg 请求匹配 " + paramInt + paramaqcl.toString());
+      return;
+    }
+    paramaqcl = paramString;
+    if (paramString == null) {
+      paramaqcl = "";
+    }
+    QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onCSRequestMsg 请求匹配失败 suc:" + paramBoolean + " ret:" + paramInt + " errMsg : " + paramaqcl);
+  }
+  
+  void a(boolean paramBoolean, aqcl paramaqcl)
+  {
+    if (paramaqcl == null)
+    {
+      QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg null indo");
+      return;
+    }
+    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg ");
+    if (paramBoolean)
+    {
+      a(paramaqcl.jdField_b_of_type_JavaLangString, paramaqcl.jdField_a_of_type_JavaLangString, paramaqcl.jdField_a_of_type_ArrayOfByte);
+      c(paramaqcl);
+      a(paramaqcl.jdField_b_of_type_JavaLangString, paramaqcl.e);
+      return;
+    }
+    QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg ");
+  }
 }
 
 

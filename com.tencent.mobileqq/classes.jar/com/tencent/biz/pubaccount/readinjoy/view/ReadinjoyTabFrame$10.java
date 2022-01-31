@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import azmz;
+import azri;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -13,7 +13,7 @@ class ReadinjoyTabFrame$10
   public void run()
   {
     if (this.a.getActivity() != null) {
-      azmz.a(BaseApplication.getContext()).a(null, "FragmentOnStartError", true, NetConnInfoCenter.getServerTimeMillis() - ReadinjoyTabFrame.a(this.this$0), 0L, null, "", true);
+      azri.a(BaseApplication.getContext()).a(null, "FragmentOnStartError", true, NetConnInfoCenter.getServerTimeMillis() - ReadinjoyTabFrame.a(this.this$0), 0L, null, "", true);
     }
   }
 }

@@ -10,7 +10,7 @@ public class dd
   {
     if ((paramList != null) && (paramList.size() > 0) && (paramString != null))
     {
-      ((allz)paramQQAppInterface.a(8)).a((ArrayList)paramList, "printer", paramString.getBytes(), Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue());
+      ((alqo)paramQQAppInterface.a(8)).a((ArrayList)paramList, "printer", paramString.getBytes(), Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue());
       return true;
     }
     return false;

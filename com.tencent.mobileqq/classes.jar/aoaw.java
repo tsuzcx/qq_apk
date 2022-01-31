@@ -1,42 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.graphics.Point;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.colornote.anim.MusicDanceImageView;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.1;
+import com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.2;
+import com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.3;
 
 public class aoaw
-  implements Animator.AnimatorListener
+  implements aoan
 {
-  public aoaw(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aoan jdField_a_of_type_Aoan;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    paramAnimator = (LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams();
-    if (!this.a.a())
-    {
-      paramAnimator.leftMargin = bcwh.a(this.a.getContext(), 14.5F);
-      paramAnimator.rightMargin = 0;
-    }
-    ColorNoteSmallScreenRelativeLayout.a(this.a).setLayoutParams(paramAnimator);
-    ColorNoteSmallScreenRelativeLayout.a(this.a).setVisibility(0);
-    ((LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams()).leftMargin = bcwh.a(this.a.getContext(), 13.5F);
-    ColorNoteSmallScreenRelativeLayout.a(this.a).x = this.a.g();
-    paramAnimator = this.a;
-    if (ColorNoteSmallScreenRelativeLayout.a(this.a).x < 0) {}
-    for (int i = 0;; i = 1)
-    {
-      ColorNoteSmallScreenRelativeLayout.b(paramAnimator, i);
-      return;
-    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.CameraOpenErrorCallbackForward.1(this, paramInt));
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void a(aoaj paramaoaj)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.CameraOpenErrorCallbackForward.3(this, paramaoaj));
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.CameraOpenErrorCallbackForward.2(this, paramInt));
+  }
 }
 
 

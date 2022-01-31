@@ -10,7 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class qrg
-  extends biac<qnz>
+  extends biej<qnz>
 {
   public View a;
   public ImageView a;
@@ -18,8 +18,8 @@ public class qrg
   public qrg(qrf paramqrf, ViewGroup paramViewGroup, int paramInt)
   {
     super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)b(2131368739));
-    this.jdField_a_of_type_AndroidViewView = b(2131370081);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)b(2131368753));
+    this.jdField_a_of_type_AndroidViewView = b(2131370100);
   }
   
   protected URL a(String paramString)

@@ -1,6 +1,6 @@
 public abstract interface bewc
 {
-  public abstract bewj a(String paramString);
+  public abstract void a();
 }
 
 

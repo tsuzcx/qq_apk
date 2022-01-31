@@ -1,47 +1,30 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.observer.ServerNotifyObserver;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aegl
-  extends ServerNotifyObserver
+  implements View.OnClickListener
 {
-  public aegl(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public aegl(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onReceiveVerifyCode(String paramString1, int paramInt, String paramString2, byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    this.a.b = false;
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
-      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131721263), 0).a();
-    }
-    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey(paramString1);
-    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString().length() > 4)) {
-      VerifyCodeActivity.a(this.a, true);
-    }
-    if (paramArrayOfByte != null)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bcwc.a(paramArrayOfByte, 0, paramArrayOfByte.length));
-      this.a.a(false);
-      return;
-    }
-    Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131721258), 1).show();
-  }
-  
-  public void onVerifyClose()
-  {
-    this.a.finish();
+    paramView = new Bundle();
+    paramView.putString(bdun.e, alud.a(2131716001));
+    paramView.putString(bdun.f, "CJCLUBT");
+    paramView.putString(bdun.d, "1450000516");
+    paramView.putInt(bdun.b, 3);
+    paramView.putString(bdun.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
+    paramView.putString(bdun.g, "svip");
+    paramView.putString(bdun.a, this.a.app.getCurrentAccountUin());
+    bdun.a(this.a.app, this.a, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aegl
  * JD-Core Version:    0.7.0.1
  */

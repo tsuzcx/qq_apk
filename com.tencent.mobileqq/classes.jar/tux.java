@@ -1,15 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.comment.QCircleCommentItemView;
+import com.tencent.biz.qqcircle.widgets.QCircleCommentPraiseLayout;
 
-class tux
-  implements DialogInterface.OnClickListener
+public class tux
+  implements ucq
 {
-  tux(tuw paramtuw) {}
+  public tux(QCircleCommentItemView paramQCircleCommentItemView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_Tuu.a.a().b(tuk.a(this.a.jdField_a_of_type_Tuu.a), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
-    tuk.b(this.a.jdField_a_of_type_Tuu.a, true);
+    yhn localyhn;
+    QCircleCommentPraiseLayout localQCircleCommentPraiseLayout;
+    if (QCircleCommentItemView.a(this.a) != null)
+    {
+      localyhn = QCircleCommentItemView.a(this.a);
+      localQCircleCommentPraiseLayout = QCircleCommentItemView.a(this.a);
+      if (!paramBoolean) {
+        break label58;
+      }
+    }
+    label58:
+    for (int i = 14;; i = 15)
+    {
+      localyhn.a(localQCircleCommentPraiseLayout, i, QCircleCommentItemView.a(this.a), QCircleCommentItemView.a(this.a));
+      return;
+    }
   }
 }
 

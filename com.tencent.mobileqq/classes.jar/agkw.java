@@ -1,53 +1,92 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Set;
+import mqq.manager.Manager;
 
-class agkw
-  extends almw
+public class agkw
+  implements Manager
 {
-  agkw(agkt paramagkt) {}
+  public int a;
+  public Set<String> a;
+  boolean a;
+  public int b;
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public agkw()
   {
-    paramObject = (ArrayList)paramObject;
-    int i = paramObject.indexOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    if ((i != -1) && (paramBoolean))
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public static int a(Context paramContext, String paramString)
+  {
+    return paramContext.getSharedPreferences("PhotoListConfig" + paramString, 0).getInt("k_version", 0);
+  }
+  
+  public static agkw a(QQAppInterface paramQQAppInterface)
+  {
+    agkw localagkw = (agkw)paramQQAppInterface.getManager(215);
+    localagkw.a(paramQQAppInterface);
+    return localagkw;
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt)
+  {
+    paramContext.getSharedPreferences("PhotoListConfig" + paramString, 0).edit().putInt("k_version", paramInt).apply();
+  }
+  
+  @TargetApi(14)
+  private void a(QQAppInterface paramQQAppInterface)
+  {
+    try
     {
-      if (((Boolean)paramObject.get(i + 1)).booleanValue()) {
-        this.a.b(false, false);
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000)
+      if (!this.jdField_a_of_type_Boolean)
       {
-        paramObject = ((almv)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        if ((paramObject != null) && (paramObject.discussionName != null))
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramObject.discussionName;
-          this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, paramObject.uin, this.a.e);
-        }
+        this.jdField_a_of_type_Boolean = true;
+        paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("PhotoListConfig" + paramQQAppInterface.getCurrentAccountUin(), 0);
+        this.jdField_a_of_type_Int = paramQQAppInterface.getInt("k_s", 0);
+        this.b = paramQQAppInterface.getInt("k_w", 0);
+        this.jdField_a_of_type_JavaUtilSet = paramQQAppInterface.getStringSet("k_b_l", null);
+        paramQQAppInterface = new StringBuilder("init ");
+        paramQQAppInterface.append("size:").append(this.jdField_a_of_type_Int).append(" width:").append(this.b).append(" black:").append(this.jdField_a_of_type_JavaUtilSet);
+        QLog.i("PhotoListConfig", 1, paramQQAppInterface.toString());
       }
+      return;
     }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000))
+    finally
     {
-      paramString = ((almv)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(paramString);
-      if ((paramString != null) && (paramString.discussionName != null))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramString.discussionName;
-        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, paramString.uin, this.a.e);
-      }
+      paramQQAppInterface = finally;
+      throw paramQQAppInterface;
     }
   }
   
-  protected void b(boolean paramBoolean, String paramString)
+  @TargetApi(14)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, Set<String> paramSet)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) {
-      this.a.I();
+    try
+    {
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      this.jdField_a_of_type_JavaUtilSet = paramSet;
+      paramQQAppInterface.getApp().getSharedPreferences("PhotoListConfig" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putInt("k_s", paramInt1).putInt("k_w", paramInt2).putStringSet("k_b_l", paramSet).apply();
+      paramQQAppInterface = new StringBuilder("updateConfig ");
+      paramQQAppInterface.append("size:").append(this.jdField_a_of_type_Int).append(" width:").append(this.b).append(" black:").append(paramSet);
+      QLog.i("PhotoListConfig", 1, paramQQAppInterface.toString());
+      return;
+    }
+    finally
+    {
+      paramQQAppInterface = finally;
+      throw paramQQAppInterface;
     }
   }
+  
+  public void onDestroy() {}
 }
 
 

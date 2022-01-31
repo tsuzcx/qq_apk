@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby;
 
-import asyy;
-import auru;
+import atdh;
+import auwd;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class NearbyProxy$3
   implements Runnable
 {
-  public NearbyProxy$3(auru paramauru) {}
+  public NearbyProxy$3(auwd paramauwd) {}
   
   public void run()
   {
-    ((asyy)this.this$0.a.getManager(306)).a();
+    ((atdh)this.this$0.a.getManager(306)).a();
   }
 }
 

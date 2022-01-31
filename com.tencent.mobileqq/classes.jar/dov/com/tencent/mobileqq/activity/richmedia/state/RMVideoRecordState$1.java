@@ -1,12 +1,12 @@
 package dov.com.tencent.mobileqq.activity.richmedia.state;
 
-import bndd;
+import bnhp;
 import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
 public class RMVideoRecordState$1
   implements Runnable
 {
-  public RMVideoRecordState$1(bndd parambndd, RMVideoStateMgr paramRMVideoStateMgr) {}
+  public RMVideoRecordState$1(bnhp parambnhp, RMVideoStateMgr paramRMVideoStateMgr) {}
   
   public void run()
   {

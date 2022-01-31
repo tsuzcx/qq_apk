@@ -5,8 +5,8 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.text.Layout;
 import android.util.AttributeSet;
-import baig;
-import bjwp;
+import bamp;
+import bkaw;
 import com.etrump.mixlayout.ETTextView;
 import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
 import fj;
@@ -78,7 +78,7 @@ public class ExtendFriendGradientTextView
   
   public void setETContent(String paramString)
   {
-    super.setTextMsg(new baig(bjwp.d(paramString), 3, 24));
+    super.setTextMsg(new bamp(bkaw.d(paramString), 3, 24));
   }
   
   public void setFold(boolean paramBoolean)

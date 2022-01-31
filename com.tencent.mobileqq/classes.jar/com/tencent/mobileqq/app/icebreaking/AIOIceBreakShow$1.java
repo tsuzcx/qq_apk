@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.icebreaking;
 
-import amfi;
-import amfl;
+import amjx;
+import amka;
 import com.tencent.qphone.base.util.QLog;
 
 class AIOIceBreakShow$1
@@ -20,7 +20,7 @@ class AIOIceBreakShow$1
     {
       QLog.d("AIOIceBreakShow", 1, String.format("markEnteredFlag, type = %s, uin = %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
       return;
-      if (amfl.d(this.jdField_a_of_type_Int))
+      if (amka.d(this.jdField_a_of_type_Int))
       {
         AIOIceBreakShow.a(this.this$0).b(this.jdField_a_of_type_JavaLangString);
         AIOIceBreakShow.a(this.this$0).d();

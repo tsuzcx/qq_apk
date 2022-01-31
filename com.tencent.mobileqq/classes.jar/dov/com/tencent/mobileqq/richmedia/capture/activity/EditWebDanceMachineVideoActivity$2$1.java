@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.richmedia.capture.activity;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
 
 class EditWebDanceMachineVideoActivity$2$1
@@ -12,14 +12,14 @@ class EditWebDanceMachineVideoActivity$2$1
   {
     String str = "";
     if (this.jdField_a_of_type_Int == -1) {
-      str = alpo.a(2131704318);
+      str = alud.a(2131704330);
     }
     for (;;)
     {
       QQToast.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity$2.this$0, 1, str, 0).a();
       return;
       if (this.jdField_a_of_type_Int == -2) {
-        str = alpo.a(2131704336);
+        str = alud.a(2131704348);
       }
     }
   }

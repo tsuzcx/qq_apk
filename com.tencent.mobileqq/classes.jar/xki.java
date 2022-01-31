@@ -1,233 +1,295 @@
 import android.content.Context;
 import android.content.res.Resources;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class xki
-  implements xkk
+  extends BaseAdapter
 {
-  public static final String[] a;
-  private AppInterface a;
-  public boolean a;
-  public boolean b;
+  protected static int a;
+  protected static int b;
+  protected static int c;
+  protected Context a;
+  protected GridView a;
+  protected ArrayList<xkl> a;
+  protected xkl a;
+  protected boolean a;
+  protected ArrayList<xkl> b;
   
-  static
+  public xki(Context paramContext, GridView paramGridView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "vivo X20A" };
-  }
-  
-  public xki(AppInterface paramAppInterface, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetGridView = paramGridView;
     this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
+    paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
+    jdField_a_of_type_Int = aepi.a(80.0F, paramContext);
+    jdField_b_of_type_Int = aepi.a(10.0F, paramContext);
+    c = aepi.a(5.0F, paramContext);
+    this.jdField_a_of_type_AndroidWidgetGridView.setColumnWidth(jdField_a_of_type_Int);
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList.add(xkl.jdField_a_of_type_Xkl);
+    if (!paramBoolean1) {
+      this.jdField_b_of_type_JavaUtilArrayList.add(xkl.jdField_b_of_type_Xkl);
+    }
+    if (paramBoolean2) {
+      this.jdField_b_of_type_JavaUtilArrayList.add(xkl.c);
+    }
   }
   
-  public void a(@NonNull ArrayList<xkl> paramArrayList, @NonNull Context paramContext)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Doodle_Strokes_CfgLineLayerStrokeStrategy", 2, "createHorizontalStroke");
+    return this.jdField_b_of_type_JavaUtilArrayList.size();
+  }
+  
+  public int a(xkl paramxkl)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramxkl);
     }
-    if (this.jdField_a_of_type_Boolean) {
-      paramArrayList.add(new xkl(paramContext.getResources().getDrawable(2130846262), 1, 0));
-    }
-    Iterator localIterator;
-    Object localObject1;
-    Object localObject9;
-    xkl localxkl2;
-    Object localObject10;
-    Object localObject3;
-    Object localObject11;
-    Object localObject2;
-    Object localObject12;
-    xkl localxkl1;
-    Object localObject4;
-    Object localObject5;
-    Object localObject6;
-    Object localObject7;
-    Object localObject8;
-    int i;
-    if (this.b)
+    return -1;
+  }
+  
+  public xkl a()
+  {
+    return this.jdField_a_of_type_Xkl;
+  }
+  
+  public void a()
+  {
+    int j = 0;
+    int i = j;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      localIterator = null;
-      localObject1 = null;
-      localObject9 = null;
-      localxkl2 = null;
-      localObject10 = null;
-      localObject3 = null;
-      localObject11 = null;
-      localObject2 = null;
-      localObject12 = null;
-      localxkl1 = null;
-      boolean bool = azgk.e();
-      localObject4 = localObject12;
-      localObject5 = localObject11;
-      localObject6 = localObject10;
-      localObject7 = localObject9;
-      localObject8 = localIterator;
-      if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+      i = j;
+      if (this.jdField_a_of_type_JavaUtilArrayList.contains(xkl.c))
       {
-        localObject4 = localObject12;
-        localObject5 = localObject11;
-        localObject6 = localObject10;
-        localObject7 = localObject9;
-        localObject8 = localIterator;
-        if (bool)
-        {
-          localObject4 = PtvTemplateManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).b();
-          if ((localObject4 != null) && (!((ArrayList)localObject4).isEmpty()))
-          {
-            localIterator = ((ArrayList)localObject4).iterator();
-            do
-            {
-              localObject4 = localxkl1;
-              localObject5 = localObject2;
-              localObject6 = localObject3;
-              localObject7 = localxkl2;
-              localObject8 = localObject1;
-              if (!localIterator.hasNext()) {
-                break;
-              }
-              localObject4 = (PtvTemplateManager.DoodleInfo)localIterator.next();
-            } while (("doodle_highlighter".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName)) && (Build.VERSION.SDK_INT < 18));
-            i = Integer.valueOf(((PtvTemplateManager.DoodleInfo)localObject4).doodleId).intValue();
-            if ("doodle_image_family".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
-            {
-              localObject4 = new xkl(paramContext.getResources().getDrawable(2130844590), 2, i);
-              localObject2 = localObject3;
-              localObject3 = localObject1;
-              localObject1 = localObject4;
-            }
-          }
-        }
+        this.jdField_a_of_type_JavaUtilArrayList.remove(xkl.c);
+        this.jdField_b_of_type_JavaUtilArrayList.remove(xkl.c);
+        i = 1;
       }
+    }
+    if (i != 0) {
+      notifyDataSetChanged();
+    }
+  }
+  
+  public void a(ArrayList<xkl> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (paramArrayList != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(0, this.jdField_b_of_type_JavaUtilArrayList);
+    int i = getCount();
+    this.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(i);
+    paramArrayList = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams();
+    int j = jdField_a_of_type_Int;
+    paramArrayList.width = ((i - 1) * jdField_b_of_type_Int + j * i + this.jdField_a_of_type_AndroidWidgetGridView.getPaddingLeft() + this.jdField_a_of_type_AndroidWidgetGridView.getPaddingRight());
+    this.jdField_a_of_type_AndroidWidgetGridView.setLayoutParams(paramArrayList);
+  }
+  
+  public void a(xkl paramxkl)
+  {
+    this.jdField_a_of_type_Xkl = paramxkl;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    xkl localxkl = (xkl)getItem(paramInt);
+    if (localxkl == null) {
+      return null;
+    }
+    TextView localTextView;
+    Object localObject;
+    if (paramView == null)
+    {
+      localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+      localTextView.setGravity(17);
+      localTextView.setSingleLine();
+      localTextView.setTextSize(12.0F);
+      localTextView.setLayoutParams(new AbsListView.LayoutParams(jdField_a_of_type_Int, jdField_a_of_type_Int));
+      localTextView.setPadding(c, jdField_b_of_type_Int, c, 0);
+      localTextView.setEllipsize(TextUtils.TruncateAt.END);
+      localObject = localTextView;
+      localTextView.setText(localxkl.jdField_b_of_type_JavaLangString);
+      if (localxkl.jdField_b_of_type_Int != 0) {
+        break label213;
+      }
+      localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130846207, 0, 0);
+      if (localxkl.equals(this.jdField_a_of_type_Xkl)) {
+        localTextView.getCompoundDrawables()[1].setColorFilter(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166394), PorterDuff.Mode.MULTIPLY);
+      }
+      localTextView.setTag(null);
     }
     for (;;)
     {
-      localObject4 = localObject3;
-      localObject3 = localObject2;
-      localObject2 = localObject1;
-      localObject1 = localObject4;
-      break;
-      if ("doodle_image_mouth".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
+      label648:
+      label673:
+      if (localxkl.equals(this.jdField_a_of_type_Xkl))
       {
-        localxkl1 = new xkl(paramContext.getResources().getDrawable(2130844591), 2, i);
-        localObject4 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-      }
-      else if ("doodle_image_xin".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
-      {
-        localObject4 = new xkl(paramContext.getResources().getDrawable(2130844592), 2, i);
-        localObject3 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject4;
-      }
-      else if ("doodle_highlighter".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
-      {
-        localObject4 = new xkl(paramContext.getResources().getDrawable(2130844589), 2, i);
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-      }
-      else if ("doodle_fireworks".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
-      {
-        localxkl2 = new xkl(paramContext.getResources().getDrawable(2130844588), 2, i);
-        localObject4 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-        continue;
-        localObject4 = localObject12;
-        localObject5 = localObject11;
-        localObject6 = localObject10;
-        localObject7 = localObject9;
-        localObject8 = localIterator;
-        if (QLog.isColorLevel())
+        localTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166394));
+        return localObject;
+        localTextView = (TextView)paramView;
+        localObject = paramView;
+        break;
+        label213:
+        if (localxkl.jdField_b_of_type_Int == 1)
         {
-          QLog.d("Doodle_Strokes_CfgLineLayerStrokeStrategy", 2, "createHorizontalStroke doodleInfo is NUll !");
-          localObject8 = localIterator;
-          localObject7 = localObject9;
-          localObject6 = localObject10;
-          localObject5 = localObject11;
-          localObject4 = localObject12;
-        }
-        i = 0;
-        while (i < 4)
-        {
-          paramArrayList.add(new xkl(paramContext.getResources().getDrawable(xkl.b[i]), 0, xkl.a[i]));
-          i += 1;
-        }
-        paramArrayList.add(new xkl(paramContext.getResources().getDrawable(2130846254), 0, -1));
-        int k = 0;
-        paramContext = jdField_a_of_type_ArrayOfJavaLangString;
-        int m = paramContext.length;
-        i = 0;
-        int j = k;
-        if (i < m)
-        {
-          if (paramContext[i].equals(Build.MODEL)) {
-            j = 1;
+          localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130846211, 0, 0);
+          if (localxkl.equals(this.jdField_a_of_type_Xkl)) {
+            localTextView.getCompoundDrawables()[1].setColorFilter(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166394), PorterDuff.Mode.MULTIPLY);
           }
+          localTextView.setTag(null);
+        }
+        else if (localxkl.jdField_b_of_type_Int == 2)
+        {
+          localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130846204, 0, 0);
+          if ((this.jdField_a_of_type_Xkl != null) && (this.jdField_a_of_type_Xkl.jdField_b_of_type_Int == 2)) {
+            localTextView.getCompoundDrawables()[1].setColorFilter(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166394), PorterDuff.Mode.MULTIPLY);
+          }
+          localTextView.setTag(null);
         }
         else
         {
-          if (j == 0) {
-            break label714;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("CfgLineLayerStrokeStrategy", 2, "createHorizontalStroke black model " + Build.MODEL);
-          }
-        }
-        for (;;)
-        {
-          return;
-          i += 1;
-          break;
-          label714:
-          if (localObject8 != null) {
-            paramArrayList.add(localObject8);
-          }
-          if (localObject7 != null) {
-            paramArrayList.add(localObject7);
-          }
-          if (localObject6 != null) {
-            paramArrayList.add(localObject6);
-          }
-          if (localObject5 != null) {
-            paramArrayList.add(localObject5);
-          }
-          if (localObject4 != null)
+          Resources localResources;
+          if (localxkl.jdField_b_of_type_Int == 4)
           {
-            paramArrayList.add(localObject4);
-            return;
-            i = 0;
-            while (i < xkl.a.length)
+            paramView = null;
+            paramInt = (int)bdgz.a(this.jdField_a_of_type_AndroidContentContext, 36.0F);
+            if (localxkl.jdField_a_of_type_Int > 0)
             {
-              if (xkl.a[i] != -9576193) {
-                paramArrayList.add(new xkl(paramContext.getResources().getDrawable(xkl.b[i]), 0, xkl.a[i]));
+              paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(localxkl.jdField_a_of_type_Int);
+              paramView.setBounds(0, 0, paramInt, paramInt);
+              localTextView.setCompoundDrawables(null, paramView, null, null);
+            }
+            for (;;)
+            {
+              if (!localxkl.equals(this.jdField_a_of_type_Xkl)) {
+                break label648;
               }
-              i += 1;
+              localTextView.getCompoundDrawables()[1].setColorFilter(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166395), PorterDuff.Mode.SRC_ATOP);
+              break;
+              localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+              for (;;)
+              {
+                try
+                {
+                  paramViewGroup = localxkl.g;
+                  if (TextUtils.isEmpty(paramViewGroup)) {
+                    continue;
+                  }
+                  localFile = new File(paramViewGroup);
+                  if ((!localFile.exists()) || (!localFile.isFile())) {
+                    continue;
+                  }
+                  long l = localFile.length();
+                  if (l <= 0L) {
+                    continue;
+                  }
+                }
+                catch (Exception paramView)
+                {
+                  File localFile;
+                  byte[] arrayOfByte;
+                  paramView = localResources.getDrawable(2130847008);
+                  continue;
+                  boolean bool = false;
+                  continue;
+                  paramView = localResources.getDrawable(2130847008);
+                  continue;
+                  paramView = localResources.getDrawable(2130847008);
+                  continue;
+                }
+                try
+                {
+                  arrayOfByte = bdhb.b(localFile);
+                  paramViewGroup = paramView;
+                  if (arrayOfByte != null) {
+                    paramViewGroup = Drawable.createFromStream(new ByteArrayInputStream(arrayOfByte), "voiceChangeIcon");
+                  }
+                }
+                catch (Exception paramViewGroup)
+                {
+                  paramViewGroup.printStackTrace();
+                  paramViewGroup = paramView;
+                }
+              }
+              paramView = paramViewGroup;
+              if (paramViewGroup == null)
+              {
+                paramView = URLDrawable.URLDrawableOptions.obtain();
+                paramView.mFailedDrawable = localResources.getDrawable(2130847008);
+                paramView.mLoadingDrawable = localResources.getDrawable(2130847008);
+                paramView = URLDrawable.getDrawable(localFile, paramView);
+                if ("drawable not null: " + paramView == null) {
+                  break label673;
+                }
+                bool = true;
+                QLog.e("blessVoiceIcon", 1, new Object[] { Boolean.valueOf(bool) });
+              }
+              paramView.setBounds(0, 0, paramInt, paramInt);
+              localTextView.setCompoundDrawables(null, paramView, null, null);
+            }
+          }
+          else
+          {
+            if (localxkl.equals(this.jdField_a_of_type_Xkl)) {
+              localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130846206, 0, 0);
+            }
+            for (;;)
+            {
+              localTextView.setTag(localxkl);
+              break;
+              localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130846205, 0, 0);
             }
           }
         }
       }
-      else
-      {
-        localObject4 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-      }
     }
+    if ((localxkl.jdField_b_of_type_Int == 2) && (this.jdField_a_of_type_Xkl != null) && (this.jdField_a_of_type_Xkl.jdField_b_of_type_Int == 2))
+    {
+      localTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166394));
+      return localObject;
+    }
+    localTextView.setTextColor(-1);
+    localTextView.getCompoundDrawables()[1].clearColorFilter();
+    return localObject;
   }
 }
 

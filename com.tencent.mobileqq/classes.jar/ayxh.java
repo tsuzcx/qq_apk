@@ -1,22 +1,28 @@
-import com.tencent.mobileqq.servlet.LoginVerifyServlet.3;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
+import android.os.Build.VERSION;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
 
-public class ayxh
-  implements HostnameVerifier
+class ayxh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ayxh(LoginVerifyServlet.3 param3, URL paramURL) {}
+  ayxh(ayxg paramayxg) {}
   
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  public void onGlobalLayout()
   {
-    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaNetURL.getHost(), paramSSLSession);
-    if (!bool) {
-      QLog.d("LoginVerifyServlet", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.jdField_a_of_type_JavaNetURL.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
+    if (ayxg.a(this.a) != null)
+    {
+      if (Build.VERSION.SDK_INT >= 16) {
+        ayxg.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      }
+      ViewGroup.LayoutParams localLayoutParams = ayxg.a(this.a).getLayoutParams();
+      if (localLayoutParams != null)
+      {
+        localLayoutParams.height = ((int)(ayxg.a(this.a).getWidth() / 2.3F));
+        ayxg.a(this.a).requestLayout();
+      }
     }
-    return bool;
   }
 }
 

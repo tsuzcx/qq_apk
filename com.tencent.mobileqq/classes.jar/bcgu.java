@@ -1,17 +1,16 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.logic.HomeworkTroopController.2;
+
 public class bcgu
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  public bcgu(HomeworkTroopController.2 param2) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.this$0.a();
+  }
 }
 
 

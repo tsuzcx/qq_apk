@@ -13,8 +13,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bdcb;
-import bhtf;
+import bdgk;
+import bhxm;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
@@ -145,7 +145,7 @@ public class ReadInJoyXListView
       int n = Aladdin.getConfig(189).getIntegerFromString("banner_refresh_length", 0);
       if (n > 0)
       {
-        float f1 = bdcb.d() / 160.0F;
+        float f1 = bdgk.d() / 160.0F;
         setOverScrollHeight((int)(n * f1));
         m = k;
       }
@@ -198,8 +198,8 @@ public class ReadInJoyXListView
     if (paramInt != 3)
     {
       this.jdField_g_of_type_Boolean = false;
-      if ((getAdapter() instanceof bhtf)) {
-        setAdapter(((bhtf)getAdapter()).getWrappedAdapter());
+      if ((getAdapter() instanceof bhxm)) {
+        setAdapter(((bhxm)getAdapter()).getWrappedAdapter());
       }
       for (;;)
       {
@@ -273,7 +273,7 @@ public class ReadInJoyXListView
     paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.ReadInJoyXListView);
     this.jdField_d_of_type_Boolean = paramContext.getBoolean(1, false);
     paramContext.recycle();
-    this.jdField_f_of_type_Int = ((int)bdcb.j());
+    this.jdField_f_of_type_Int = ((int)bdgk.j());
     this.jdField_i_of_type_Int = getLayerType();
   }
   

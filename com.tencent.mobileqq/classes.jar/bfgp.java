@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.widget.QQToast;
+import eipc.EIPCResult;
 
 class bfgp
-  implements DialogInterface.OnClickListener
+  extends QIPCModule
 {
-  bfgp(bfgm parambfgm, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bfgp(bfgo parambfgo, String paramString)
   {
-    bfgm.a(this.jdField_a_of_type_Bfgm, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("QIPC_SHOW_TOAST_ACTION".equals(paramString)) {
+      QQToast.a(BaseApplicationImpl.context, alud.a(2131711580), 1).a();
+    }
+    return null;
   }
 }
 

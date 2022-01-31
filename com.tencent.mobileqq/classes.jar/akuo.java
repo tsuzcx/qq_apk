@@ -1,36 +1,18 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.game.WebGameFakeView;
 
-class akuo
-  implements aknu
+public class akuo
+  implements View.OnClickListener
 {
-  akuo(akun paramakun) {}
+  public akuo(WebGameFakeView paramWebGameFakeView, ImageView paramImageView) {}
   
-  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  public void onClick(View paramView)
   {
-    akun localakun = this.a;
-    if (akun.a(this.a).jdField_b_of_type_Boolean)
-    {
-      paramStartCheckParam = akun.a(this.a).e;
-      akun.a(localakun, paramStartCheckParam);
-      if (!"message".equals(akun.a(this.a).f)) {
-        break label101;
-      }
-    }
-    label101:
-    for (int i = 1;; i = 0)
-    {
-      VipUtils.a(null, "cmshow", "Apollo", "download_confirm", i, 3, new String[] { String.valueOf(akun.a(this.a).jdField_b_of_type_Int) });
-      return;
-      paramStartCheckParam = akun.a(this.a).d;
-      break;
-    }
-  }
-  
-  public void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    if (akun.a(this.a) != null) {
-      akun.a(this.a).c(-10001, akun.a(this.a).jdField_b_of_type_JavaLangString);
+    aktr.a().a(null);
+    if (aktr.a().a() <= 1) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
   }
 }

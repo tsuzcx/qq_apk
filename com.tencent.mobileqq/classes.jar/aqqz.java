@@ -1,38 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
-class aqqz
-  extends aqnl
+public class aqqz
+  implements Cloneable
 {
-  aqqz(aqqy paramaqqy) {}
+  public int a;
+  public View a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public int b;
+  public TextView b;
+  public int c;
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    Object localObject = this.a.a(paramInt + "", paramString, paramLong2 + "");
-    FileManagerEntity localFileManagerEntity = aqqy.a(this.a).a().a(paramLong2, paramLong1, paramString, paramInt);
-    if ((localObject != null) && (localFileManagerEntity != null))
-    {
-      localObject = ((arlo)localObject).a();
-      if (localObject != null) {
-        ((arln)localObject).a(0, paramInt, paramString, (int)(localFileManagerEntity.fProgress * 100.0F), new Bundle());
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    paramString2 = this.a.a(paramInt1 + "", paramString1, paramLong2 + "");
-    FileManagerEntity localFileManagerEntity = aqqy.a(this.a).a().a(paramLong2, paramLong1, paramString1, paramInt1);
-    QLog.i("FMObserver<FileAssistant>", 1, "offline file download is finish. isSuc[" + paramBoolean + "sessionId[" + paramLong2 + "]");
-    if ((paramString2 != null) && (localFileManagerEntity != null) && (paramString2.a() != null)) {
-      paramString2.a().a(paramBoolean, paramInt1, paramString1, new Bundle());
-    }
-    if (paramString2 != null) {
-      this.a.b(paramString2);
-    }
-  }
+  public aqqz(aqqx paramaqqx) {}
 }
 
 

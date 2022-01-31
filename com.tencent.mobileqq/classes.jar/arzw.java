@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardShortVideoOption;
+import android.net.Uri;
 
-public class arzw
-  implements View.OnClickListener
+class arzw
+  implements asqy
 {
-  public arzw(ForwardShortVideoOption paramForwardShortVideoOption) {}
+  arzw(arzt paramarzt) {}
   
-  public void onClick(View paramView)
+  public void a(Uri paramUri) {}
+  
+  public void a(String paramString1, String paramString2, long paramLong)
   {
-    if (this.a.a != null) {
-      ForwardShortVideoOption.a(this.a);
-    }
+    this.a.a = arzt.a(this.a, paramString2, paramLong);
   }
 }
 

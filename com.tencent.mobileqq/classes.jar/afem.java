@@ -1,153 +1,51 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class afem
+  implements affa
 {
-  private amle jdField_a_of_type_Amle;
-  protected String a;
-  private final ArrayList<afeq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final ArrayList<afeq> b = new ArrayList();
-  private final ArrayList<afep> c = new ArrayList();
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public afem(String paramString, long paramLong)
+  public afem(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Amle = new afen(this, 3, true, true, paramLong, true, true, "ArkAppLocationManager");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
+    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   }
   
-  public static boolean a()
+  private void a()
   {
-    boolean bool2 = true;
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    boolean bool1 = bool2;
-    if (localBaseActivity != null)
-    {
-      bool1 = bool2;
-      if (Build.VERSION.SDK_INT >= 23) {
-        if ((localBaseActivity.checkSelfPermission("android.permission.ACCESS_COARSE_LOCATION") != 0) || (localBaseActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)) {
-          break label68;
-        }
-      }
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+      allx.a(false, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, new afen(this));
     }
-    label68:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      ArkAppCenter.c("GetArkLocPermission", "CheckPermission is = " + bool1);
-      return bool1;
-    }
+    ((aknt)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(211)).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Aeqo);
+    algk.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ((aknt)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(211)).a(1, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
   }
   
-  public void a()
+  public void a(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    synchronized (this.b)
-    {
-      this.b.clear();
-      SosoInterface.b(this.jdField_a_of_type_Amle);
-      return;
-      localObject1 = finally;
-      throw localObject1;
-    }
-  }
-  
-  public void a(afep paramafep, boolean paramBoolean)
-  {
-    if (paramafep == null) {
+    case 11: 
+    default: 
       return;
     }
-    synchronized (this.c)
-    {
-      this.c.add(paramafep);
-      if (paramBoolean)
-      {
-        c();
-        return;
-      }
-    }
-    SosoInterface.a(this.jdField_a_of_type_Amle);
+    a();
   }
   
-  public void a(afeq paramafeq)
+  public int[] a()
   {
-    if (paramafeq == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramafeq);
-      c();
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    if ((this.b.size() == 0) && (this.c.size() == 0)) {
-      SosoInterface.b(this.jdField_a_of_type_Amle);
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-      ??? = localArrayList.iterator();
-      if (((Iterator)???).hasNext()) {
-        ((afeq)((Iterator)???).next()).a();
-      }
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
-    }
-  }
-  
-  public void b(afeq paramafeq)
-  {
-    if (paramafeq == null) {
-      return;
-    }
-    synchronized (this.b)
-    {
-      this.b.add(paramafeq);
-      c();
-      return;
-    }
-  }
-  
-  protected void c()
-  {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (!a())
-    {
-      localBaseActivity.requestPermissions(new afeo(this, localBaseActivity), 1, new String[] { "android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION" });
-      return;
-    }
-    grant();
-  }
-  
-  @QQPermissionDenied(1)
-  @TargetApi(23)
-  public void denied()
-  {
-    SosoInterface.a(this.jdField_a_of_type_Amle);
-    ArkAppCenter.c("GetArkLocPermission", "CheckPermission location is denied");
-  }
-  
-  @QQPermissionGrant(1)
-  @TargetApi(23)
-  public void grant()
-  {
-    SosoInterface.a(this.jdField_a_of_type_Amle);
-    ArkAppCenter.c("GetArkLocPermission", "CheckPermission location is granted ");
+    return new int[] { 11, 6 };
   }
 }
 

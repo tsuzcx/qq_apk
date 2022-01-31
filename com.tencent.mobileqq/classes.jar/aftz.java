@@ -1,26 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aftz
-  implements View.OnClickListener
+class aftz
+  extends afuf
 {
-  public aftz(QQStoryItemBuilder paramQQStoryItemBuilder) {}
-  
-  public void onClick(View paramView)
+  aftz(afpy paramafpy)
   {
-    afuf localafuf = (afuf)aekt.a(paramView);
-    if (paramView == localafuf.jdField_a_of_type_AndroidWidgetFrameLayout) {
-      this.a.b(localafuf);
-    }
-    for (;;)
-    {
-      azmj.b(this.a.a, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "5", "", "");
-      return;
-      if (paramView == localafuf.jdField_a_of_type_AndroidWidgetRelativeLayout) {
-        this.a.a(localafuf);
-      }
-    }
+    super(paramafpy, null);
+  }
+  
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afyg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

@@ -1,66 +1,43 @@
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import mqq.util.WeakReference;
 
 public class adky
+  extends ClickableSpan
 {
-  public static void a(Activity paramActivity, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
+  public String a;
+  public WeakReference<NotificationActivity> a;
+  
+  public adky(String paramString, WeakReference<NotificationActivity> paramWeakReference)
   {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.setClass(paramActivity, paramClass);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    paramActivity.startActivityForResult(localIntent, paramInt);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_MqqUtilWeakReference = paramWeakReference;
   }
   
-  public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  public void onClick(View paramView)
   {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
+    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)
+    {
+      paramView = (NotificationActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
+      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      paramView.startActivity(localIntent);
     }
-    localIntent.setClass(paramContext, paramClass);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    paramContext.startActivity(localIntent);
   }
   
-  public static void a(Context paramContext, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    a(paramContext, null, paramClass, paramClass1);
-  }
-  
-  public static void a(Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
-  {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.setClass(BaseApplicationImpl.getApplication(), paramClass);
-    localIntent.addFlags(268435456);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    BaseApplicationImpl.getApplication().startActivity(localIntent);
-  }
-  
-  public static void a(Fragment paramFragment, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
-  {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.setClass(paramFragment.getActivity(), paramClass);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    paramFragment.startActivityForResult(localIntent, paramInt);
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adky
  * JD-Core Version:    0.7.0.1
  */

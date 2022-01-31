@@ -5,14 +5,14 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
-import bgho;
-import bgie;
-import bgjm;
-import bgkd;
-import bgkk;
-import bgkx;
-import bglo;
-import bhab;
+import bglv;
+import bgml;
+import bgnt;
+import bgok;
+import bgor;
+import bgpe;
+import bgpv;
+import bhei;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -36,17 +36,17 @@ public class ImageViewJsPlugin
   
   private int getPageWebViewId()
   {
-    return bgie.a(this.mMiniAppContext).a();
+    return bgml.a(this.mMiniAppContext).a();
   }
   
   private int getWindowHeight()
   {
-    return bgie.a(this.mMiniAppContext).b();
+    return bgml.a(this.mMiniAppContext).b();
   }
   
   private void insertImageView(JSONObject paramJSONObject1, String paramString1, int paramInt1, int paramInt2, String paramString2, Boolean paramBoolean, JSONObject paramJSONObject2, boolean paramBoolean1)
   {
-    CoverView localCoverView = bhab.a(this.mMiniAppContext).a(paramInt2);
+    CoverView localCoverView = bhei.a(this.mMiniAppContext).a(paramInt2);
     Object localObject = localCoverView;
     if (localCoverView == null)
     {
@@ -54,7 +54,7 @@ public class ImageViewJsPlugin
       ((CoverView)localObject).setContentDescription(paramInt2 + "_" + paramInt1);
       ((CoverView)localObject).setParentId(paramInt1);
       ((CoverView)localObject).setFixed(paramBoolean1);
-      bhab.a(this.mMiniAppContext).a(paramInt1, paramInt2, (CoverView)localObject, paramBoolean1);
+      bhei.a(this.mMiniAppContext).a(paramInt1, paramInt2, (CoverView)localObject, paramBoolean1);
     }
     int i;
     int j;
@@ -111,7 +111,7 @@ public class ImageViewJsPlugin
         ((CoverView)localObject).setPadding(paramJSONObject1.optInt(3, 0), paramJSONObject1.optInt(0, 0), paramJSONObject1.optInt(1, 0), paramJSONObject1.optInt(2, 0));
       }
       ((CoverView)localObject).setBorderRadius((float)paramJSONObject2.optDouble("borderRadius", 0.0D) * this.density);
-      if ((bglo.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https"))))
+      if ((bgpv.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https"))))
       {
         try
         {
@@ -141,11 +141,11 @@ public class ImageViewJsPlugin
         Log.w("ImageViewJsPlugin", "insertImageView: failed to parse color " + paramJSONObject1, localException);
         i = j;
         continue;
-        paramJSONObject1 = bgjm.a().a(paramString2);
-        if (!bglo.a(paramJSONObject1)) {
+        paramJSONObject1 = bgnt.a().a(paramString2);
+        if (!bgpv.a(paramJSONObject1)) {
           try
           {
-            paramJSONObject1 = bgkx.a(paramJSONObject1);
+            paramJSONObject1 = bgpe.a(paramJSONObject1);
             if (paramJSONObject1 != null) {
               ((CoverImageView)localObject).setImageBitmap(paramJSONObject1);
             }
@@ -159,11 +159,11 @@ public class ImageViewJsPlugin
     }
   }
   
-  public void insertImageView(bgkd parambgkd)
+  public void insertImageView(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject1 = new JSONObject(parambgok.b);
       int i = localJSONObject1.optInt("viewId");
       int j = localJSONObject1.optInt("parentId");
       String str1 = localJSONObject1.optString("iconPath");
@@ -175,46 +175,46 @@ public class ImageViewJsPlugin
         JSONObject localJSONObject3 = localJSONObject1.optJSONObject("style");
         boolean bool = localJSONObject1.optBoolean("fixed", false);
         new JSONObject().put("viewId", i);
-        bgkk.a(new ImageViewJsPlugin.1(this, localJSONObject2, str2, j, i, str1, localBoolean, localJSONObject3, bool));
+        bgor.a(new ImageViewJsPlugin.1(this, localJSONObject2, str2, j, i, str1, localBoolean, localJSONObject3, bool));
         return;
       }
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("ImageViewJsPlugin", parambgkd.a + " error.", localJSONException);
+      QMLog.e("ImageViewJsPlugin", parambgok.a + " error.", localJSONException);
     }
   }
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    super.onCreate(parambgho);
+    super.onCreate(parambglv);
     this.density = DisplayUtil.getDensity(this.mContext);
   }
   
   public void removeImageView(int paramInt)
   {
-    bhab.a(this.mMiniAppContext).a(paramInt);
+    bhei.a(this.mMiniAppContext).a(paramInt);
   }
   
-  public void removeImageView(bgkd parambgkd)
+  public void removeImageView(bgok parambgok)
   {
     try
     {
-      bgkk.a(new ImageViewJsPlugin.3(this, new JSONObject(parambgkd.b)));
+      bgor.a(new ImageViewJsPlugin.3(this, new JSONObject(parambgok.b)));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("ImageViewJsPlugin", parambgkd.a + " error.", localJSONException);
+      QMLog.e("ImageViewJsPlugin", parambgok.a + " error.", localJSONException);
     }
   }
   
-  public void updateImageView(bgkd parambgkd)
+  public void updateImageView(bgok parambgok)
   {
     try
     {
-      Object localObject = new JSONObject(parambgkd.b);
+      Object localObject = new JSONObject(parambgok.b);
       int i = ((JSONObject)localObject).optInt("viewId");
       String str = ((JSONObject)localObject).optString("iconPath");
       JSONObject localJSONObject1 = ((JSONObject)localObject).optJSONObject("position");
@@ -224,20 +224,20 @@ public class ImageViewJsPlugin
         JSONObject localJSONObject2 = ((JSONObject)localObject).optJSONObject("style");
         localObject = ((JSONObject)localObject).optString("data");
         new JSONObject().put("viewId", i);
-        bgkk.a(new ImageViewJsPlugin.2(this, localJSONObject1, (String)localObject, i, str, localBoolean, localJSONObject2));
+        bgor.a(new ImageViewJsPlugin.2(this, localJSONObject1, (String)localObject, i, str, localBoolean, localJSONObject2));
         return;
       }
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("ImageViewJsPlugin", parambgkd.a + " error.", localJSONException);
+      QMLog.e("ImageViewJsPlugin", parambgok.a + " error.", localJSONException);
     }
   }
   
   public void updateImageView(JSONObject paramJSONObject1, String paramString1, int paramInt, String paramString2, Boolean paramBoolean, JSONObject paramJSONObject2)
   {
-    paramString1 = bhab.a(this.mMiniAppContext).a(paramInt);
+    paramString1 = bhei.a(this.mMiniAppContext).a(paramInt);
     int i;
     if ((paramString1 instanceof CoverImageView))
     {
@@ -267,7 +267,7 @@ public class ImageViewJsPlugin
         }
         paramString1.setBorderRadius((float)paramJSONObject2.optDouble("borderRadius", 0.0D) * this.density);
       }
-      if (!bglo.a(paramString2))
+      if (!bgpv.a(paramString2))
       {
         if ((!paramString2.startsWith("http")) && (!paramString2.startsWith("https"))) {
           break label380;
@@ -298,11 +298,11 @@ public class ImageViewJsPlugin
       }
       return;
       label380:
-      paramJSONObject1 = bgjm.a().a(paramString2);
-      if (!bglo.a(paramJSONObject1)) {
+      paramJSONObject1 = bgnt.a().a(paramString2);
+      if (!bgpv.a(paramJSONObject1)) {
         try
         {
-          paramJSONObject1 = bgkx.a(paramJSONObject1);
+          paramJSONObject1 = bgpe.a(paramJSONObject1);
           if (paramJSONObject1 != null) {
             ((CoverImageView)paramString1).setImageBitmap(paramJSONObject1);
           }

@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import dov.com.qq.im.capture.view.QIMCommonLoadingView;
 
-class blqz
-  extends uto
+public class blqz
 {
-  blqz(blqy paramblqy, String paramString)
-  {
-    super(paramString);
-  }
+  int jdField_a_of_type_Int;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
+  QIMCommonLoadingView jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  ImageView d;
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    super.onLocationFinish(paramInt, paramSosoLbsInfo);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      wsv.b("PasterDataManager", "onLocationUpdate() latitude=" + paramSosoLbsInfo.a.a + " longitude=" + paramSosoLbsInfo.a.b);
-      blqw.a(this.a.jdField_a_of_type_Blqw, true);
-      blqw.a(this.a.jdField_a_of_type_Blqw, this.a.jdField_a_of_type_Boolean);
-      this.a.jdField_a_of_type_Blqw.a(null);
-      return;
-    }
-    wsv.b("PasterDataManager", "onLocationUpdate() error");
-  }
+  public blqz(blqy paramblqy) {}
 }
 
 

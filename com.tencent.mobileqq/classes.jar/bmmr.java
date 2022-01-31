@@ -1,28 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoGame.GameResultItem;
 
-class bmmr
-  extends AnimatorListenerAdapter
+public final class bmmr
+  implements Parcelable.Creator<EditVideoGame.GameResultItem>
 {
-  bmmr(bmmn parambmmn) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public EditVideoGame.GameResultItem a(Parcel paramParcel)
   {
-    wsv.b(bmmk.a, "scaleAnimator cancel!");
+    return new EditVideoGame.GameResultItem(paramParcel);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public EditVideoGame.GameResultItem[] a(int paramInt)
   {
-    wsv.b(bmmk.a, "scaleAnimator end!");
-    this.a.w = 1.0F;
-    this.a.j = false;
-    this.a.a.k();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    wsv.b(bmmk.a, "scaleAnimator start!");
-    this.a.j = true;
+    return new EditVideoGame.GameResultItem[paramInt];
   }
 }
 

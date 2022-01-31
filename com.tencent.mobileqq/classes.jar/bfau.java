@@ -1,59 +1,72 @@
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.agent.OpenAuthorityFragment.13.1;
-import com.tencent.open.model.GetVirtualListResult;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
+import android.os.Bundle;
+import java.io.File;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class bfau
-  extends bfnj
+  implements bfal
 {
-  public bfau(OpenAuthorityFragment paramOpenAuthorityFragment) {}
-  
-  protected void a(boolean paramBoolean, int paramInt)
+  private void a(Document paramDocument, Bundle paramBundle)
   {
-    QLog.d("OpenAuthorityFragment", 1, new Object[] { "-->onDeleteVirtual isSuccess=", Boolean.valueOf(paramBoolean), ", code=", Integer.valueOf(paramInt) });
-    if (paramBoolean) {
-      return;
+    NodeList localNodeList = paramDocument.getElementsByTagName("ModifyPwdUrls");
+    paramDocument = new Bundle();
+    if ((localNodeList != null) && (localNodeList.getLength() >= 1))
+    {
+      localNodeList = localNodeList.item(0).getChildNodes();
+      int i = 0;
+      while (i < localNodeList.getLength())
+      {
+        Object localObject = localNodeList.item(i);
+        if ((localObject instanceof Element))
+        {
+          String str = ((Element)localObject).getAttribute("Name");
+          localObject = ((Element)localObject).getAttribute("Url");
+          if ((str != null) && (localObject != null) && (!str.equals("")) && (!((String)localObject).equals(""))) {
+            paramDocument.putString(str, (String)localObject);
+          }
+        }
+        i += 1;
+      }
+      paramBundle.putBundle("ModifyPwdUrls", paramDocument);
     }
-    this.a.m();
-    OpenAuthorityFragment.a(this.a, alpo.a(2131708233) + paramInt, false);
   }
   
-  protected void a(boolean paramBoolean, int paramInt, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse)
+  public bfas a(String paramString)
   {
-    QLog.d("OpenAuthorityFragment", 1, new Object[] { "-->onDoAuthorize isSuccess=", Boolean.valueOf(paramBoolean), ", code=", Integer.valueOf(paramInt) });
-    arzy.a("KEY_AUTHORIZE_REQUEST", this.a.jdField_a_of_type_Bfmm, paramBoolean);
-    if ((paramBoolean) && (paramAuthorizeResponse != null))
+    paramString = new File(paramString);
+    Object localObject1 = DocumentBuilderFactory.newInstance();
+    try
     {
-      Message localMessage = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-      localMessage.what = 1;
-      localMessage.obj = paramAuthorizeResponse;
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(localMessage);
-      return;
+      paramString = ((DocumentBuilderFactory)localObject1).newDocumentBuilder().parse(paramString);
+      Object localObject2 = paramString.getDocumentElement();
+      localObject1 = new Bundle();
+      localObject2 = ((Element)localObject2).getAttribute("Version");
+      int i = -1;
+      try
+      {
+        int j = Integer.parseInt((String)localObject2);
+        i = j;
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          localThrowable.printStackTrace();
+        }
+      }
+      ((Bundle)localObject1).putInt("version", i);
+      a(paramString, (Bundle)localObject1);
+      return new bfat((Bundle)localObject1);
     }
-    if ((paramAuthorizeResponse != null) && (!TextUtils.isEmpty(paramAuthorizeResponse.msg.get())))
+    catch (Exception paramString)
     {
-      OpenAuthorityFragment.a(this.a, paramAuthorizeResponse.msg.get() + alpo.a(2131708230) + paramInt, false);
-      return;
+      paramString.printStackTrace();
     }
-    OpenAuthorityFragment.a(this.a, alpo.a(2131708232) + paramInt, false);
-  }
-  
-  public void a(boolean paramBoolean, GetVirtualListResult paramGetVirtualListResult)
-  {
-    QLog.d("OpenAuthorityFragment", 1, new Object[] { "-->onGetVirtualList isSuccess=", Boolean.valueOf(paramBoolean) });
-    if (OpenAuthorityFragment.a(this.a))
-    {
-      QLog.e("OpenAuthorityFragment", 1, " activity is isInvalid");
-      return;
-    }
-    arzy.a("KEY_GET_VIRTUAL_LIST_D24", this.a.jdField_a_of_type_Bfmm, paramBoolean);
-    this.a.getActivity().runOnUiThread(new OpenAuthorityFragment.13.1(this, paramBoolean, paramGetVirtualListResult));
+    return null;
   }
 }
 

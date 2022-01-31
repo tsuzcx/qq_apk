@@ -1,22 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
-
 public class aigz
-  implements DialogInterface.OnClickListener
 {
-  public aigz(BindNumberActivity paramBindNumberActivity) {}
+  public String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aigz(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindNumberActivity", 2, "new user guild confirm unbind");
-    }
-    this.a.a("dc00898", "0X8009F16", 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(this.a.jdField_a_of_type_JavaLangString, this.a.c, 0, this.a.jdField_a_of_type_Boolean, this.a.b);
-    this.a.a(2131719773, 1000L, true);
+    this.a = paramString;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("keyword = ").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 

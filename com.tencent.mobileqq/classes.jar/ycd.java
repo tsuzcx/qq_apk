@@ -1,37 +1,15 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.subscribe.event.CommentListShowStateEvent;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
 
-class ycd
-  implements tzz
+public class ycd
+  implements View.OnClickListener
 {
-  ycd(ybx paramybx, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  public ycd(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ybx.a(this.jdField_a_of_type_Ybx, null);
-    if (ybx.a(this.jdField_a_of_type_Ybx) != null)
-    {
-      ybx.a(this.jdField_a_of_type_Ybx).b(null);
-      if ((ybx.d(this.jdField_a_of_type_Ybx)) && (ybx.b(this.jdField_a_of_type_Ybx) != null)) {
-        ybx.b(this.jdField_a_of_type_Ybx).setText(ybx.a(this.jdField_a_of_type_Ybx).a());
-      }
-      yhn.a().a(ybx.a(this.jdField_a_of_type_Ybx), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply, ybx.a(this.jdField_a_of_type_Ybx).a());
-      ybx.a(this.jdField_a_of_type_Ybx).a("");
-    }
-    if ((ybx.e(this.jdField_a_of_type_Ybx)) && (ybx.a(this.jdField_a_of_type_Ybx) != 0L))
-    {
-      ybx.a(this.jdField_a_of_type_Ybx, false);
-      ybx.d(this.jdField_a_of_type_Ybx, false);
-    }
-    if (ybx.a(this.jdField_a_of_type_Ybx) != null) {
-      ybx.a(this.jdField_a_of_type_Ybx).j();
-    }
-    if ((this.jdField_a_of_type_Ybx.a != null) && (this.jdField_a_of_type_Ybx.a.getVisibility() == 8)) {
-      yej.a().a(new CommentListShowStateEvent(false));
-    }
+    FollowedRecommendBannerView.a(this.a);
   }
 }
 

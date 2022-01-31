@@ -1,23 +1,41 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import android.text.TextUtils;
+import java.util.ArrayList;
 
 public class xti
-  implements Animator.AnimatorListener
 {
-  public xti(RotateCircleImageView paramRotateCircleImageView) {}
+  public int a;
+  public String a;
+  public ArrayList<Object> a;
+  public xtk a;
+  public String[] a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public xti() {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public xti(String[] paramArrayOfString, String paramString, xtk paramxtk)
   {
-    RotateCircleImageView.a(this.a).start();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Xtk = paramxtk;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public String toString()
+  {
+    String str1;
+    if (this.jdField_a_of_type_ArrayOfJavaLangString == null)
+    {
+      str1 = "null";
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        break label86;
+      }
+    }
+    label86:
+    for (String str2 = "null";; str2 = TextUtils.join(",", this.jdField_a_of_type_JavaUtilArrayList.toArray()))
+    {
+      return "FFmpegCommandUnit{ cmdType :" + this.jdField_a_of_type_Int + "\n cmd: " + str1 + "\n output: " + this.jdField_a_of_type_JavaLangString + "\n arguments: " + str2;
+      str1 = TextUtils.join(" ", this.jdField_a_of_type_ArrayOfJavaLangString);
+      break;
+    }
+  }
 }
 
 

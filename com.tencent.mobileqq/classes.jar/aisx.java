@@ -1,16 +1,19 @@
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-class aisx
-  extends aist
+public class aisx
+  extends aira
 {
-  aisx(aisw paramaisw) {}
-  
-  public void a(int paramInt)
+  aisx(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if (((paramInt == 1) || (paramInt == 10)) && (this.a.a.a != null)) {
-      this.a.a.a.dismiss();
-    }
+    super(paramNewPhotoListActivity);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.mPhotoCommonData.a = 6291456;
+    paramIntent.putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", true);
   }
 }
 

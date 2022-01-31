@@ -1,10 +1,18 @@
-import cooperation.qzone.model.BusinessAlbumInfo;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.QzoneTranslucentBrowserFragment;
 
 public class bjgi
+  implements View.OnClickListener
 {
-  public static String a(int paramInt)
+  public bjgi(QzoneTranslucentBrowserFragment paramQzoneTranslucentBrowserFragment) {}
+  
+  public void onClick(View paramView)
   {
-    return BusinessAlbumInfo.a(paramInt);
+    if (this.a.a() != null) {
+      this.a.a().finish();
+    }
   }
 }
 

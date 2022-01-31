@@ -29,7 +29,7 @@ public class qbu
     if ((this.jdField_a_of_type_Qbs.a == null) || (this.jdField_a_of_type_Qbs.a.a() == null) || (this.jdField_a_of_type_Qbs.a.a().mSocialFeedInfo == null) || (this.jdField_a_of_type_Qbs.a.a().mSocialFeedInfo.jdField_a_of_type_Qmw == null)) {
       return;
     }
-    Object localObject = oqu.g + bdbi.encodeToString(String.valueOf(paramLong).getBytes(), 2);
+    Object localObject = oqu.g + bdfr.encodeToString(String.valueOf(paramLong).getBytes(), 2);
     ors.a(paramContext, (String)localObject);
     if (QLog.isColorLevel()) {
       QLog.d("CommonBasicComponent", 2, "personal url =" + (String)localObject);

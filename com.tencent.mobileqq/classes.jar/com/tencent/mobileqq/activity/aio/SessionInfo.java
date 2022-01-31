@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aemb;
-import aepu;
+import aeqq;
+import aeuj;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -10,10 +10,10 @@ import android.os.Parcelable.Creator;
 public class SessionInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<SessionInfo> CREATOR = new aepu();
+  public static final Parcelable.Creator<SessionInfo> CREATOR = new aeuj();
   public int a;
   public long a;
-  public aemb a;
+  public aeqq a;
   private Bundle a;
   public String a;
   public boolean a;

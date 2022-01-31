@@ -1,11 +1,28 @@
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
+
 class avkw
-  implements bhqf
+  implements URLDrawable.URLDrawableListener
 {
-  avkw(avkg paramavkg) {}
+  avkw(avkt paramavkt) {}
   
-  public void onDismiss()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    avkg.a(this.a, this.a.c, false);
+    paramURLDrawable = paramURLDrawable.getCurrDrawable();
+    if ((paramURLDrawable instanceof RegionDrawable))
+    {
+      paramURLDrawable = ((RegionDrawable)paramURLDrawable).getBitmap();
+      avkt.a(this.a).setImageBitmap(paramURLDrawable);
+      avkt.a(this.a).setVisibility(0);
+    }
   }
 }
 

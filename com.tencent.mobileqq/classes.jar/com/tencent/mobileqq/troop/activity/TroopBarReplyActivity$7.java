@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bhoc;
+import bhsj;
 
 class TroopBarReplyActivity$7
   implements Runnable
@@ -9,7 +9,7 @@ class TroopBarReplyActivity$7
   
   public void run()
   {
-    bhoc.a(this.this$0.a);
+    bhsj.a(this.this$0.a);
     TroopBarReplyActivity.a(this.this$0);
   }
 }

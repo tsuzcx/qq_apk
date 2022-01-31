@@ -1,24 +1,30 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
 import java.util.List;
 
-public class ayll
-  extends ayle
+public abstract class ayll
+  implements aynt
 {
-  ayjk a(ahea paramahea, List<ayjl> paramList, String paramString1, boolean paramBoolean, String paramString2)
+  protected String a;
+  protected List<aynu> a;
+  
+  public ayll(List<aynu> paramList, String paramString)
   {
-    ayrc.a(80);
-    return new ayiq(paramahea, paramList, paramString1, paramBoolean);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  ayjl a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  public int a()
   {
-    return null;
+    return 3;
   }
   
-  ayjl a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  public List<aynu> a()
   {
-    return new ayir(paramrecord, paramString, paramCharSequence);
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

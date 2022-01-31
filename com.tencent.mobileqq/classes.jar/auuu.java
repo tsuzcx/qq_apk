@@ -1,15 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.NearbyFakeActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class auuu
-  implements DialogInterface.OnClickListener
+public class auuu
+  extends Handler
 {
-  auuu(auus paramauus) {}
+  public auuu(NearbyFakeActivity paramNearbyFakeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a.dismiss();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("NearbyFakeActivity", 2, "procPreload time out");
+      }
+      NearbyFakeActivity.a(this.a, 1);
+    }
   }
 }
 

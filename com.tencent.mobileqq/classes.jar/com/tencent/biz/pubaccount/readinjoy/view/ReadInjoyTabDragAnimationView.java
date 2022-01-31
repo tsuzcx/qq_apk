@@ -99,7 +99,7 @@ public class ReadInjoyTabDragAnimationView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130848869);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130848942);
   }
   
   public void a(int paramInt)

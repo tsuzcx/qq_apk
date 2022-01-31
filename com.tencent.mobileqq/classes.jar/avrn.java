@@ -1,31 +1,47 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.widget.OCRBottomTabView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.ilive_feeds_write.DelFeedRsp;
+import com.tencent.qphone.base.util.QLog;
 
-public class avrn
-  implements TextWatcher
+final class avrn
+  implements avdh
 {
-  public avrn(OCRResultActivity paramOCRResultActivity) {}
+  avrn(avrq paramavrq, String paramString) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramEditable.toString().trim().length() == 0)
-    {
-      this.a.c.setEnabled(false);
-      this.a.d.setEnabled(false);
-      this.a.b.setEnabled(false);
-      return;
+    boolean bool = true;
+    if (paramInt == 0) {
+      paramBundle = new ilive_feeds_write.DelFeedRsp();
     }
-    this.a.c.setEnabled(true);
-    this.a.d.setEnabled(true);
-    this.a.b.setEnabled(true);
+    for (;;)
+    {
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramInt = paramBundle.ret.get();
+        if (paramInt == 0)
+        {
+          if (this.jdField_a_of_type_Avrq != null) {
+            this.jdField_a_of_type_Avrq.a(bool, this.jdField_a_of_type_JavaLangString);
+          }
+          return;
+        }
+        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, ret=" + paramInt + ",msg=" + paramBundle.err_msg.get().toStringUtf8());
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, e=" + paramArrayOfByte.toString());
+        continue;
+      }
+      bool = false;
+      continue;
+      QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

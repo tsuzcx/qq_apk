@@ -1,30 +1,18 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-
-public class bjxp
+public abstract interface bjxp
 {
-  public static final boolean a(AppInterface paramAppInterface, Context paramContext, Bundle paramBundle, DialogInterface.OnDismissListener paramOnDismissListener, int paramInt)
-  {
-    if (paramBundle == null) {
-      return false;
-    }
-    paramAppInterface = new Intent();
-    paramAppInterface.putExtra("share_data", paramBundle);
-    paramAppInterface.putExtra("readinjoy_launch_style", 2);
-    paramAppInterface.putExtra("readinjoy_launch_source", 11);
-    paramAppInterface.putExtra("channel_id", 9999);
-    azmj.b(null, "CliOper", "", "", "0X80059F4", "0X80059F4", 0, 0, "", "", "", "");
-    bjxj.a((Activity)paramContext, paramAppInterface, paramInt, paramOnDismissListener);
-    return true;
-  }
+  public abstract String a();
+  
+  public abstract void a(int paramInt, String paramString1, String paramString2);
+  
+  public abstract void d(boolean paramBoolean);
+  
+  public abstract void j();
+  
+  public abstract void setBannerHeight(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjxp
  * JD-Core Version:    0.7.0.1
  */

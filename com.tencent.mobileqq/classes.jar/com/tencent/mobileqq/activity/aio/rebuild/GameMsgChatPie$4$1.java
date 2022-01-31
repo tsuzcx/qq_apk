@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aglv;
-import aglz;
+import agqk;
+import agqo;
 import android.text.TextUtils;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class GameMsgChatPie$4$1
   implements Runnable
 {
-  public GameMsgChatPie$4$1(aglz paramaglz, String paramString) {}
+  public GameMsgChatPie$4$1(agqo paramagqo, String paramString) {}
   
   public void run()
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      QQToast.a(this.jdField_a_of_type_Aglz.a.a, this.jdField_a_of_type_JavaLangString, 1).a();
+      QQToast.a(this.jdField_a_of_type_Agqo.a.a, this.jdField_a_of_type_JavaLangString, 1).a();
     }
   }
 }

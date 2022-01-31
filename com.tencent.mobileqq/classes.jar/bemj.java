@@ -1,6 +1,16 @@
-public abstract interface bemj
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
+
+public class bemj
+  implements auxq
 {
-  public abstract void a(boolean paramBoolean);
+  public bemj(WerewolvesHostInterface paramWerewolvesHostInterface) {}
+  
+  public void bw()
+  {
+    this.a.mGameRoomAVController.c();
+  }
+  
+  public void bx() {}
 }
 
 

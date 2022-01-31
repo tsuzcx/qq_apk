@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.fragment;
 
-import bckv;
+import bcpe;
 
 class TroopRobotFragment$2
   implements Runnable
 {
-  TroopRobotFragment$2(TroopRobotFragment paramTroopRobotFragment, bckv parambckv) {}
+  TroopRobotFragment$2(TroopRobotFragment paramTroopRobotFragment, bcpe parambcpe) {}
   
   public void run()
   {

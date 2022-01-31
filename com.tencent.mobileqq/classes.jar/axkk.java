@@ -1,14 +1,37 @@
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
+
 public class axkk
+  extends alwx
 {
-  public int a;
-  public String a;
-  public String b;
+  public axkk(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
-  public axkk(int paramInt, String paramString1, String paramString2)
+  public void a(long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    if (ReceiptMessageDetailFragment.b(this.a) == paramLong)
+    {
+      if (paramInt != 0) {
+        break label78;
+      }
+      QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c succ");
+      ReceiptMessageDetailFragment.a(this.a, 0, 0, false);
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+      if (this.a.isAdded())
+      {
+        ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(4);
+        ReceiptMessageDetailFragment.a(this.a, 1, true);
+      }
+    }
+    label78:
+    do
+    {
+      return;
+      QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c fail with reply codes: " + paramInt);
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+    } while (!this.a.isAdded());
+    ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(5);
   }
 }
 

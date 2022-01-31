@@ -1,6 +1,6 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -15,7 +15,7 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.widget.StatusView;
 import com.tencent.component.network.utils.NetworkUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -24,16 +24,17 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import tqb;
 
 public class QCircleStatusView
-  extends BaseWidgetView
+  extends StatusView
 {
   private int jdField_a_of_type_Int = 16;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString = getResources().getString(2131701852);
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int = Color.parseColor("#03081A");
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int c = Color.parseColor("#03081A");
+  private String jdField_b_of_type_JavaLangString = getResources().getString(2131701864);
   
   public QCircleStatusView(Context paramContext)
   {
@@ -55,7 +56,7 @@ public class QCircleStatusView
     }
   }
   
-  private void e()
+  private void g()
   {
     if (Build.VERSION.SDK_INT < 16) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(null);
@@ -72,24 +73,24 @@ public class QCircleStatusView
   
   public int a()
   {
-    return 2131560533;
+    return 2131560534;
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375908));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368757));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368815));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378719));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378648));
-    setHintImageFilePath(tqb.g + "qcircle_feed_error.png");
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375961));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368770));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368830));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378773));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378702));
+    setHintImageFilePath(tqb.i + "qcircle_feed_error.png");
   }
   
   public void a(Object paramObject) {}
   
   public void a(String paramString)
   {
-    a(paramString, this.jdField_a_of_type_Int, this.c);
+    a(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
@@ -111,7 +112,7 @@ public class QCircleStatusView
   
   public void b(String paramString)
   {
-    setHintImageFilePath(tqb.g + "qcircle_feed_empty.png");
+    setHintImageFilePath(tqb.i + "qcircle_feed_empty.png");
     a(paramString);
   }
   
@@ -122,7 +123,7 @@ public class QCircleStatusView
   
   public void c(String paramString)
   {
-    setHintImageFilePath(tqb.g + "qcircle_feed_error.png");
+    setHintImageFilePath(tqb.i + "qcircle_feed_error.png");
     String str;
     if (!NetworkUtils.isNetworkAvailable(BaseApplication.getContext()))
     {
@@ -135,9 +136,9 @@ public class QCircleStatusView
       }
     }
     label68:
-    for (int i = 2131694764;; i = 2131720466)
+    for (int i = 2131694766;; i = 2131720478)
     {
-      str = alpo.a(i);
+      str = alud.a(i);
       a(str);
       return;
       i = 0;
@@ -147,17 +148,17 @@ public class QCircleStatusView
   
   public void d()
   {
-    setHintImageFilePath(tqb.g + "qcircle_feed_empty.png");
-    a(alpo.a(2131698290));
+    setHintImageFilePath(tqb.i + "qcircle_feed_empty.png");
+    a(alud.a(2131698293));
     if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    e();
+    g();
   }
   
   public void d(String paramString)
   {
-    setHintImageFilePath(tqb.g + "qcircle_feed_error.png");
+    setHintImageFilePath(tqb.i + "qcircle_feed_error.png");
     String str;
     if (!NetworkUtils.isNetworkAvailable(BaseApplication.getContext()))
     {
@@ -170,17 +171,43 @@ public class QCircleStatusView
       }
     }
     label88:
-    for (int i = 2131694764;; i = 2131720466)
+    for (int i = 2131694766;; i = 2131720478)
     {
-      str = alpo.a(i);
+      str = alud.a(i);
       a(str);
       if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       }
-      e();
+      g();
       return;
       i = 0;
       break;
+    }
+  }
+  
+  public void e(String paramString)
+  {
+    if (this.jdField_b_of_type_AndroidWidgetImageView != null)
+    {
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      if (paramString.equals(this.jdField_a_of_type_JavaLangString)) {}
+    }
+    try
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130850260);
+      localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130850260);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getFileDrawable(paramString, localURLDrawableOptions));
+      this.jdField_a_of_type_JavaLangString = paramString;
+      a(true);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
     }
   }
   
@@ -206,7 +233,7 @@ public class QCircleStatusView
   {
     String str = paramString;
     if (paramString == null) {
-      str = this.jdField_a_of_type_JavaLangString;
+      str = this.jdField_b_of_type_JavaLangString;
     }
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {

@@ -1,34 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetShareGroupListReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
-public class who
-  extends QQUIEventReceiver<whl, wio>
+class who
+  extends avvb
 {
-  public who(@NonNull whl paramwhl)
-  {
-    super(paramwhl);
-  }
+  who(whn paramwhn) {}
   
-  public void a(@NonNull whl paramwhl, @NonNull wio paramwio)
+  protected void a(Object paramObject)
   {
-    if (paramwio.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if ((paramObject != null) && ((paramObject instanceof oidb_0x791.RedDotInfo)))
     {
-      wsv.b("Q.qqstory.memories.MemoriesProfilePresenter", "update share group total count. %d.", Integer.valueOf(paramwio.jdField_a_of_type_Int));
-      whl.b(paramwhl, paramwio.jdField_a_of_type_Int);
-      if (paramwhl.a != null)
+      paramObject = (oidb_0x791.RedDotInfo)paramObject;
+      if (paramObject.uint32_appid.get() == 21)
       {
-        paramwhl.a.shareGroupCount = whl.b(paramwhl);
-        ThreadManager.post(new MemoriesProfilePresenter.GetShareGroupListReceiver.1(this, paramwhl), 5, null, false);
+        int i = paramObject.uint32_number.get();
+        int j = paramObject.uint32_last_time.get();
+        this.a.a.a(i, j);
       }
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wio.class;
   }
 }
 

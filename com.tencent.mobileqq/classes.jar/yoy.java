@@ -1,77 +1,44 @@
-import android.os.Bundle;
-import android.widget.Button;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
+import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class yoy
-  extends ypl
+class yoy
+  implements zac<CertifiedAccountWrite.StDoLikeRsp>
 {
-  public yoy(MoveFileActivity paramMoveFileActivity) {}
+  yoy(yox paramyox) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List<bbnr> paramList, Bundle paramBundle)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
   {
-    this.a.a(true);
-    if ((!paramBoolean1) || (paramList == null)) {
+    RelativeFeedItemView.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView, true);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoLikeRsp == null))
+    {
+      QQToast.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.getContext(), 1, paramString, 0).a();
       return;
     }
-    MoveFileActivity.a(this.a, paramInt3);
-    MoveFileActivity.a(this.a, paramBoolean2);
-    paramBoolean1 = paramBundle.getBoolean("isFirstPage");
-    paramByteStringMicro = paramList.iterator();
-    while (paramByteStringMicro.hasNext())
+    int i;
+    String str;
+    if (paramStDoLikeRsp.like.status.get() == 1)
     {
-      paramBundle = (bbnr)paramByteStringMicro.next();
-      if (MoveFileActivity.a(this.a).c.get(paramBundle.b) == null)
-      {
-        paramBundle.a = UUID.randomUUID();
-        MoveFileActivity.a(this.a).c.put(paramBundle.b, paramBundle);
+      i = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.likeInfo.count.get() + 1;
+      str = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+      if (paramStDoLikeRsp.like.status.get() != 1) {
+        break label270;
       }
     }
-    if (paramBoolean1)
+    label270:
+    for (paramString = "like";; paramString = "cancel_like")
     {
-      MoveFileActivity.a(this.a).clear();
-      if (!MoveFileActivity.c(this.a).equals("/"))
-      {
-        paramByteStringMicro = new bbnr();
-        paramByteStringMicro.c = alpo.a(2131707281);
-        paramByteStringMicro.b = "/";
-        paramByteStringMicro.d = true;
-        paramByteStringMicro.f = -1;
-        MoveFileActivity.a(this.a).add(paramByteStringMicro);
-      }
-    }
-    MoveFileActivity.b(this.a, paramInt1);
-    if (!MoveFileActivity.c(this.a).equals("/"))
-    {
-      paramInt1 = paramList.size() - 1;
-      if (paramInt1 >= 0)
-      {
-        if (!((bbnr)paramList.get(paramInt1)).b.equals(MoveFileActivity.c(this.a))) {
-          break label389;
-        }
-        if (MoveFileActivity.a(this.a) == -1)
-        {
-          MoveFileActivity.c(this.a, paramInt1 + MoveFileActivity.a(this.a).size() - 1);
-          MoveFileActivity.a(this.a).setEnabled(true);
-          MoveFileActivity.a(this.a).setBackgroundResource(2130839128);
-          MoveFileActivity.a(this.a).setTextAppearance(this.a.getActivity(), 2131755335);
-        }
-      }
-      MoveFileActivity.a(this.a).addAll(MoveFileActivity.a(this.a).size() - 1, paramList);
-    }
-    for (;;)
-    {
-      MoveFileActivity.a(this.a).notifyDataSetChanged();
+      zaj.a(str, "auth_feeds", paramString, 0, 0, new String[] { "", RelativeFeedItemView.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView) + "", this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+      yiw.a().a(new PraisedUpdateEvents(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get(), paramStDoLikeRsp.like.status.get(), i));
       return;
-      label389:
-      paramInt1 -= 1;
+      i = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.likeInfo.count.get() - 1;
       break;
-      MoveFileActivity.a(this.a).addAll(paramList);
     }
   }
 }

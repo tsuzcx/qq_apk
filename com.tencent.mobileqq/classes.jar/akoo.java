@@ -1,68 +1,57 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import mqq.app.MobileQQ;
 
 public class akoo
-  extends RecyclerView.Adapter<akop>
+  extends bead
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private List<akon> jdField_a_of_type_JavaUtilList;
+  WeakReference<QQAppInterface> a;
+  WeakReference<akon> b;
   
-  public akoo(Context paramContext, List<akon> paramList)
+  public akoo(QQAppInterface paramQQAppInterface, akon paramakon)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramakon);
   }
   
-  public akop a(ViewGroup paramViewGroup, int paramInt)
+  public void onDone(beae parambeae)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 1)) {
-      return new akop(this, this.jdField_a_of_type_AndroidViewView);
+    Object localObject = (QQAppInterface)this.a.get();
+    akon localakon = (akon)this.b.get();
+    if ((localObject == null) || (localakon == null) || (parambeae == null) || (parambeae.a() == null) || (parambeae.jdField_a_of_type_JavaUtilMap == null)) {
+      return;
     }
-    return new akop(this, LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558832, paramViewGroup, false));
-  }
-  
-  public void a(akop paramakop, int paramInt)
-  {
-    if (getItemViewType(paramInt) == 0)
+    super.onDone(parambeae);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloManager", 2, new Object[] { "mDownload403Listener [onDoneFile] httpCode: ", Integer.valueOf(parambeae.f), ", status: ", Integer.valueOf(parambeae.a()), ",task.currUrl:", parambeae.c });
+    }
+    if (parambeae.jdField_a_of_type_Int == 0)
     {
-      akon localakon = (akon)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramakop.a.setText(localakon.jdField_a_of_type_JavaLangString);
-      paramakop.a.setTextColor(Color.parseColor(akoe.c[localakon.jdField_a_of_type_Int]));
+      localObject = ((QQAppInterface)localObject).getApplication().getSharedPreferences("apollo_sp", 0).edit();
+      ((SharedPreferences.Editor)localObject).putLong(parambeae.c + "_lastModifiedTime", parambeae.i);
+      long l2 = 0L;
+      File localFile = (File)parambeae.jdField_a_of_type_JavaUtilMap.get(parambeae.c);
+      long l1 = l2;
+      if (localFile != null)
+      {
+        l1 = l2;
+        if (localFile.exists())
+        {
+          l1 = localFile.lastModified();
+          ((SharedPreferences.Editor)localObject).putLong(parambeae.c, l1);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloManager", 2, new Object[] { "mDownload403Listener [onDoneFile] lastModifiedTime:", Long.valueOf(parambeae.i), ",file sd lastModifiedTime:", Long.valueOf(l1) });
+      }
+      ((SharedPreferences.Editor)localObject).commit();
     }
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    notifyItemInserted(getItemCount() - 1);
-  }
-  
-  public void a(List<akon> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return this.jdField_a_of_type_JavaUtilList.size() + 1;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == getItemCount() - 1)) {
-      return 1;
-    }
-    return 0;
+    localakon.a(parambeae.jdField_a_of_type_Int, parambeae.f);
   }
 }
 

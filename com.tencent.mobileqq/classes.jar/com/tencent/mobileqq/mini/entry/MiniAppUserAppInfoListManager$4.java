@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.entry;
 
 import NS_COMM.COMM.StCommonExt;
-import alpo;
+import alud;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
@@ -27,7 +27,7 @@ class MiniAppUserAppInfoListManager$4
       return;
     }
     QLog.e("MiniAppUserAppInfoListManager", 1, "sendSetUserAppTopRequest, failed to set top!");
-    QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131707216), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131707228), 0).a();
   }
 }
 

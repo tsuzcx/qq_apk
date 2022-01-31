@@ -2,9 +2,9 @@ package cooperation.qqdataline.ipc;
 
 import android.content.Context;
 import android.content.Intent;
-import aqxj;
-import arni;
-import biqi;
+import arbs;
+import arrr;
+import biup;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -16,7 +16,7 @@ import mqq.app.MobileQQ;
 public class DatalineRemoteManager$8
   implements Runnable
 {
-  public DatalineRemoteManager$8(biqi parambiqi, FileManagerEntity paramFileManagerEntity, ForwardFileInfo paramForwardFileInfo) {}
+  public DatalineRemoteManager$8(biup parambiup, FileManagerEntity paramFileManagerEntity, ForwardFileInfo paramForwardFileInfo) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class DatalineRemoteManager$8
     Object localObject;
     if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 1))
     {
-      if (!arni.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())) {
+      if (!arrr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())) {
         break label163;
       }
       localObject = new FileInfo();
@@ -34,7 +34,7 @@ public class DatalineRemoteManager$8
       ((FileInfo)localObject).e(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a());
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(localObject);
-      aqxj.a(localArrayList);
+      arbs.a(localArrayList);
       localIntent.putExtra("clicked_file_hashcode", ((FileInfo)localObject).hashCode());
     }
     for (;;)

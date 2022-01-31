@@ -3,11 +3,11 @@ import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class aooa
-  extends aofy<aonz>
+  extends aokh<aonz>
 {
   public int a()
   {
-    return 585;
+    return 614;
   }
   
   @NonNull
@@ -17,20 +17,10 @@ public class aooa
   }
   
   @Nullable
-  public aonz a(aogf[] paramArrayOfaogf)
+  public aonz a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
-    {
-      aonz localaonz = aonz.a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
-      }
-      return localaonz;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed is null");
-    }
-    return null;
+    QLog.i("LebaQzoneStyleProcessor", 1, "[onParsed] config");
+    return aonz.a(paramArrayOfaoko);
   }
   
   public Class<aonz> a()
@@ -40,23 +30,16 @@ public class aooa
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
+    QLog.i("LebaQzoneStyleProcessor", 1, "[onReqFailed] failCode=" + paramInt);
   }
   
   public void a(aonz paramaonz)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "onUpdate " + paramaonz.toString());
-    }
+    QLog.i("LebaQzoneStyleProcessor", 1, "[onUpdate]");
   }
   
   public int b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "migrateOldVersion");
-    }
     return 0;
   }
   

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agoj;
+import agsy;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 
 public class NearbyChatPie$6
   implements Runnable
 {
-  public NearbyChatPie$6(agoj paramagoj) {}
+  public NearbyChatPie$6(agsy paramagsy) {}
   
   public void run()
   {
     Intent localIntent = this.this$0.a.getIntent();
     localIntent.putExtra("uintype", 0);
-    agoj.a(this.this$0, localIntent);
+    agsy.a(this.this$0, localIntent);
   }
 }
 

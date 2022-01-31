@@ -1,48 +1,49 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StQQGroup;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import java.util.List;
-
 public class yks
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private List<CertifiedAccountMeta.StQQGroup> jdField_a_of_type_JavaUtilList;
+  private volatile int jdField_a_of_type_Int = 0;
+  private ylc jdField_a_of_type_Ylc;
   
-  public yks(List<CertifiedAccountMeta.StQQGroup> paramList)
+  public void a()
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    a(-1);
   }
   
-  public int getItemCount()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt))
+    this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Ylc != null) {}
+    switch (paramInt)
     {
-      paramViewHolder = (ykt)paramViewHolder;
-      if (paramViewHolder != null) {
-        paramViewHolder.a((CertifiedAccountMeta.StQQGroup)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-      }
+    case 0: 
+    default: 
+      return;
+    case -1: 
+      this.jdField_a_of_type_Ylc.d();
+      return;
+    case 1: 
+      this.jdField_a_of_type_Ylc.b();
+      return;
+    case 2: 
+      this.jdField_a_of_type_Ylc.a();
+      return;
     }
+    this.jdField_a_of_type_Ylc.c();
   }
   
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  public void a(ylc paramylc)
   {
-    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558719, paramViewGroup, false);
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() == 1)) {
-      paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    }
-    return new ykt(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView, paramViewGroup);
+    this.jdField_a_of_type_Ylc = paramylc;
+    a(this.jdField_a_of_type_Int);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == -1;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int == 1;
   }
 }
 

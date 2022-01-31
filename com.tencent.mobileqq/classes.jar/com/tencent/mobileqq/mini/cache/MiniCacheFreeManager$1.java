@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.cache;
 
-import alpo;
+import alud;
 import android.app.Activity;
-import bdcd;
-import bdfq;
+import bdgm;
+import bdjz;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
 
@@ -22,11 +22,11 @@ final class MiniCacheFreeManager$1
       return;
       try
       {
-        bdfq localbdfq = bdcd.a(this.val$activity, 230, null, this.val$dialogContext, alpo.a(2131710602), alpo.a(2131710603), new MiniCacheFreeManager.1.1(this), new MiniCacheFreeManager.1.2(this));
-        localbdfq.setCanceledOnTouchOutside(false);
+        bdjz localbdjz = bdgm.a(this.val$activity, 230, null, this.val$dialogContext, alud.a(2131710614), alud.a(2131710615), new MiniCacheFreeManager.1.1(this), new MiniCacheFreeManager.1.2(this));
+        localbdjz.setCanceledOnTouchOutside(false);
         if ((this.val$activity != null) && (!this.val$activity.isFinishing()))
         {
-          localbdfq.show();
+          localbdjz.show();
           return;
         }
       }

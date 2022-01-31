@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class ador
-  implements DialogInterface.OnDismissListener
+  implements Handler.Callback
 {
-  public ador(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
+  public ador(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.finish();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.c();
+    }
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class MyStoryEntry
-  extends awbv
+  extends awge
 {
   public String createTime;
   public long duration;
   public int state;
-  @awdj
+  @awhs
   public int uid;
 }
 

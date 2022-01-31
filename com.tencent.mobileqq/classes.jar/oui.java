@@ -12,7 +12,7 @@ public class oui
   implements AladdinConfigHandler
 {
   private static final Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private static boolean jdField_a_of_type_Boolean = ((Boolean)bjxj.a("readinjjoy_feeds_card_whitelist", Boolean.valueOf(false))).booleanValue();
+  private static boolean jdField_a_of_type_Boolean = ((Boolean)bkbq.a("readinjjoy_feeds_card_whitelist", Boolean.valueOf(false))).booleanValue();
   
   static
   {
@@ -106,7 +106,7 @@ public class oui
           bool = true;
           label153:
           jdField_a_of_type_Boolean = bool;
-          bjxj.a("readinjjoy_feeds_card_whitelist", Boolean.valueOf(bool));
+          bkbq.a("readinjjoy_feeds_card_whitelist", Boolean.valueOf(bool));
         }
       }
     }
@@ -117,7 +117,7 @@ public class oui
       break label153;
       if (TextUtils.equals(str, "kandian_feeds_card_whitelist_bid"))
       {
-        bjxj.a("default_feeds_proteus_offline_bid", (String)localObject2);
+        bkbq.a("default_feeds_proteus_offline_bid", (String)localObject2);
         new sft().a("default_feeds");
         localObject1 = localObject2;
       }

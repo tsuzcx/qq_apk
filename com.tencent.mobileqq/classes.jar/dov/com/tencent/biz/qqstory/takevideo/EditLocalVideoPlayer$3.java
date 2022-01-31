@@ -1,12 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.widget.ImageView;
-import bmeo;
+import bmja;
 
 public class EditLocalVideoPlayer$3
   implements Runnable
 {
-  public EditLocalVideoPlayer$3(bmeo parambmeo) {}
+  public EditLocalVideoPlayer$3(bmja parambmja) {}
   
   public void run()
   {

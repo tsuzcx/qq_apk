@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.weishi_new.view;
 
 import android.os.Handler;
 import android.view.View;
-import bdkf;
+import bdoo;
 import tlo;
 import tnu;
 
@@ -19,7 +19,7 @@ public class RedDotBubblePopupWindow$1
     int i = tnu.a(this.this$0).getMeasuredWidth();
     int j = tnu.a(this.this$0).getMeasuredHeight();
     tlo.d("RedDotBubblePopupWindow", "popupWidth:" + i + " popupHeight:" + j + "   location[0]:" + arrayOfInt[0] + " location[1]:" + arrayOfInt[1] + " getWidth:" + this.a.getWidth() + " getHeight:" + this.a.getHeight());
-    this.this$0.showAtLocation(this.a, 0, arrayOfInt[0] + this.a.getWidth() / 2 - i / 2, arrayOfInt[1] + this.a.getHeight() + bdkf.a(2.0F));
+    this.this$0.showAtLocation(this.a, 0, arrayOfInt[0] + this.a.getWidth() / 2 - i / 2, arrayOfInt[1] + this.a.getHeight() + bdoo.a(2.0F));
     this.this$0.a.postDelayed(new RedDotBubblePopupWindow.1.1(this), 3000L);
   }
 }

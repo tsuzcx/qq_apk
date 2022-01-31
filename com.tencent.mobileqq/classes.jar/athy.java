@@ -1,28 +1,23 @@
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
+import org.json.JSONObject;
 
 public class athy
-  extends alox
+  implements QQPermissionCallback
 {
-  public athy(ListenTogetherManager paramListenTogetherManager) {}
+  public athy(MediaApiPlugin paramMediaApiPlugin, JSONObject paramJSONObject, boolean paramBoolean, AppActivity paramAppActivity) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QLog.i("ListenTogether.Manager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
-    if (paramBoolean)
-    {
-      String str = atii.a(2, String.valueOf(paramObject));
-      if (ListenTogetherManager.a(this.a).equals(str))
-      {
-        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
-        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
-        athl.b(ListenTogetherManager.a(this.a), String.valueOf(paramObject), false);
-        this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
-        this.a.a(2, String.valueOf(paramObject), false);
-      }
-    }
+    QLog.d(MediaApiPlugin.a, 1, "User requestPermissions WRITE_EXTERNAL_STORAGE denied");
+    bdgm.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Boolean);
   }
 }
 

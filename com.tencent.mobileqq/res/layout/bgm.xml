@@ -59,7 +59,7 @@
             <com.qzone.component.StrokeTextView android:gravity="center" android:id="@id/m9p" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_marginTop="130.0dip" android:layout_marginBottom="130.0dip" />
         </RelativeLayout>
     </RelativeLayout>
-    <ViewStub android:layout_gravity="bottom|center" android:id="@id/mnk" android:layout="@layout/cjd" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:layout_gravity="bottom|center" android:id="@id/moz" android:layout="@layout/cjw" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <ViewStub android:layout_gravity="bottom|center" android:id="@id/hxp" android:layout="@layout/bvu" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:layout_gravity="bottom|center" android:id="@id/mnj" android:layout="@layout/cjc" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:layout_gravity="bottom|center" android:id="@id/moy" android:layout="@layout/cjv" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </FrameLayout>

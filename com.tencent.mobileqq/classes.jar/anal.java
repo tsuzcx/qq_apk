@@ -1,12 +1,6 @@
-class anal
+public abstract interface anal
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  int b;
-  int c;
-  int d;
-  int e;
-  int f;
+  public abstract void a(boolean paramBoolean);
 }
 
 

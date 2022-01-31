@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.structmsg.widget;
 
-import aipo;
-import aipp;
+import aiud;
+import aiue;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import azvy;
-import azvz;
+import baah;
+import baai;
 
 public class CountdownTextView
   extends TextView
 {
-  private aipo jdField_a_of_type_Aipo = new aipo();
-  private aipp jdField_a_of_type_Aipp;
+  private aiud jdField_a_of_type_Aiud = new aiud();
+  private aiue jdField_a_of_type_Aiue;
   
   public CountdownTextView(Context paramContext)
   {
@@ -31,19 +31,19 @@ public class CountdownTextView
   
   public void a()
   {
-    aipo localaipo = this.jdField_a_of_type_Aipo;
-    if (localaipo != null) {
-      localaipo.b(this.jdField_a_of_type_Aipp);
+    aiud localaiud = this.jdField_a_of_type_Aiud;
+    if (localaiud != null) {
+      localaiud.b(this.jdField_a_of_type_Aiue);
     }
   }
   
-  public void a(long paramLong, azvz paramazvz)
+  public void a(long paramLong, baai parambaai)
   {
-    aipo localaipo = this.jdField_a_of_type_Aipo;
-    if (localaipo != null)
+    aiud localaiud = this.jdField_a_of_type_Aiud;
+    if (localaiud != null)
     {
-      this.jdField_a_of_type_Aipp = new azvy(this, paramLong, paramazvz);
-      localaipo.a(this.jdField_a_of_type_Aipp);
+      this.jdField_a_of_type_Aiue = new baah(this, paramLong, parambaai);
+      localaiud.a(this.jdField_a_of_type_Aiue);
     }
   }
   

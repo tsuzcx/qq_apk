@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -12,12 +12,12 @@ import android.media.MediaFormat;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.text.TextUtils;
-import azfp;
-import bdar;
-import bdje;
-import bgjd;
-import bgjm;
-import bgkk;
+import azjy;
+import bdfa;
+import bdnn;
+import bgnk;
+import bgnt;
+import bgor;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
@@ -40,8 +40,8 @@ import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xmx;
-import xot;
+import xrg;
+import xtc;
 
 public class VideoJsProxyImpl
   extends VideoJsProxy
@@ -58,7 +58,7 @@ public class VideoJsProxyImpl
   private String FFMPEG_ADDITIONAL_PARAM = QzoneConfig.getInstance().getConfig("qqminiapp", "miniFfmpegVideoCompressParam", "-profile:v main -crf 29");
   private long chooseVideoMaxDuration = QzoneConfig.getInstance().getConfig("qqminiapp", "miniAppChooseVideoMaxDuration", 600000L);
   private long chooseVideoMaxSize = QzoneConfig.getInstance().getConfig("qqminiapp", "miniAppChooseVideoMaxSize", 1610612736L);
-  private xot ffmpeg;
+  private xtc ffmpeg;
   private Activity mActivity;
   private BroadcastReceiver mAvatarReceiver = new VideoJsProxyImpl.3(this);
   private boolean mAvatarReceiverRegistered;
@@ -94,9 +94,9 @@ public class VideoJsProxyImpl
   private void execCommand(String paramString1, String paramString2, LocalMediaInfo paramLocalMediaInfo, int paramInt)
   {
     if (this.ffmpeg == null) {
-      this.ffmpeg = xot.a(BaseApplicationImpl.getApplication());
+      this.ffmpeg = xtc.a(BaseApplicationImpl.getApplication());
     }
-    showLoading(alpo.a(2131716678));
+    showLoading(alud.a(2131716690));
     long l1 = System.currentTimeMillis();
     long l2 = paramLocalMediaInfo.mDuration;
     QLog.i("VideoJsPlugin", 2, "execCommand: " + paramString1 + " " + l1);
@@ -147,7 +147,7 @@ public class VideoJsProxyImpl
   {
     Bitmap localBitmap = null;
     if (!TextUtils.isEmpty(paramString)) {
-      localBitmap = ShortVideoUtils.a(null, bgjm.a().a(paramString));
+      localBitmap = ShortVideoUtils.a(null, bgnt.a().a(paramString));
     }
     return localBitmap;
   }
@@ -171,7 +171,7 @@ public class VideoJsProxyImpl
       } while (localIntent.resolveActivity(paramActivity.getPackageManager()) == null);
       localFile = createVideoFile(paramActivity);
     } while (localFile == null);
-    bgjd.a().a(new VideoJsProxyImpl.8(this, localFile, paramBoolean1));
+    bgnk.a().a(new VideoJsProxyImpl.8(this, localFile, paramBoolean1));
     localIntent.putExtra("output", FileProvider7Helper.getUriForFile(paramActivity, localFile));
     int i;
     if (paramInt >= 1)
@@ -208,7 +208,7 @@ public class VideoJsProxyImpl
     localIntent.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
     localIntent.putExtra("PhotoConst.IS_PREVIEW_VIDEO", false);
     paramActivity.startActivity(localIntent);
-    bdar.anim(paramActivity, false, true);
+    bdfa.anim(paramActivity, false, true);
   }
   
   private void handleJsCallBack(String paramString, long paramLong, LocalMediaInfo paramLocalMediaInfo, int paramInt)
@@ -222,7 +222,7 @@ public class VideoJsProxyImpl
       localJSONObject.put("size", paramLong);
       localJSONObject.put("height", paramLocalMediaInfo.mediaHeight);
       localJSONObject.put("width", paramLocalMediaInfo.mediaWidth);
-      localJSONObject.put("__plugin_ready__", new File(azfp.a(MobileQQ.getContext())).exists());
+      localJSONObject.put("__plugin_ready__", new File(azjy.a(MobileQQ.getContext())).exists());
       handleNativeResponseOk(paramInt, "chooseVideo", localJSONObject);
       return;
     }
@@ -464,10 +464,10 @@ public class VideoJsProxyImpl
     //   433: invokespecial 199	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl:startCompress	(Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;Z)V
     //   436: return
     //   437: aload_0
-    //   438: invokestatic 391	bgjm:a	()Lbgjm;
+    //   438: invokestatic 391	bgnt:a	()Lbgnt;
     //   441: aload 4
     //   443: getfield 641	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
-    //   446: invokevirtual 657	bgjm:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   446: invokevirtual 657	bgnt:e	(Ljava/lang/String;)Ljava/lang/String;
     //   449: aload 4
     //   451: getfield 647	com/tencent/mobileqq/activity/photo/LocalMediaInfo:fileSize	J
     //   454: aload 4
@@ -658,9 +658,9 @@ public class VideoJsProxyImpl
     //   33: invokestatic 734	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   36: iconst_0
     //   37: ireturn
-    //   38: invokestatic 391	bgjm:a	()Lbgjm;
+    //   38: invokestatic 391	bgnt:a	()Lbgnt;
     //   41: ldc_w 738
-    //   44: invokevirtual 741	bgjm:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   44: invokevirtual 741	bgnt:b	(Ljava/lang/String;)Ljava/lang/String;
     //   47: astore 6
     //   49: new 254	java/io/File
     //   52: dup
@@ -718,9 +718,9 @@ public class VideoJsProxyImpl
     //   160: aload 7
     //   162: astore 8
     //   164: aload_2
-    //   165: invokestatic 391	bgjm:a	()Lbgjm;
+    //   165: invokestatic 391	bgnt:a	()Lbgnt;
     //   168: aload_1
-    //   169: invokevirtual 657	bgjm:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   169: invokevirtual 657	bgnt:e	(Ljava/lang/String;)Ljava/lang/String;
     //   172: putfield 519	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbnailPath	Ljava/lang/String;
     //   175: aload 7
     //   177: ifnull +8 -> 185
@@ -952,7 +952,7 @@ public class VideoJsProxyImpl
           localObject = paramLocalMediaInfo.path.substring(i + 1);
           continue;
         }
-        str = bgjm.a().b((String)localObject);
+        str = bgnt.a().b((String)localObject);
         localObject = new File(str);
         if (((File)localObject).exists()) {
           ((File)localObject).delete();
@@ -1071,11 +1071,11 @@ public class VideoJsProxyImpl
         if ("saveVideoToPhotosAlbum".equals(paramString1))
         {
           paramString2 = paramString2.optString("filePath");
-          if (bdje.a(paramString2))
+          if (bdnn.a(paramString2))
           {
             handleNativeResponseFail(paramInt, paramString1, null, "fail file not exists");
           }
-          else if (xmx.a(paramActivity, bgjm.a().a(paramString2), getSaveVideoFilePath()))
+          else if (xrg.a(paramActivity, bgnt.a().a(paramString2), getSaveVideoFilePath()))
           {
             handleNativeResponseOk(paramInt, paramString1, null);
           }
@@ -1105,7 +1105,7 @@ public class VideoJsProxyImpl
       }
       i = paramString2.optInt("maxDuration");
       if (localJSONArray.length() == 2) {
-        bgkk.a(new VideoJsProxyImpl.2(this, paramActivity, i, bool1, bool2));
+        bgor.a(new VideoJsProxyImpl.2(this, paramActivity, i, bool1, bool2));
       }
       for (;;)
       {

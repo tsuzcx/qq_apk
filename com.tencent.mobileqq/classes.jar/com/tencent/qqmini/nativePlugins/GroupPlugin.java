@@ -1,12 +1,12 @@
 package com.tencent.qqmini.nativePlugins;
 
-import alpo;
+import alud;
 import android.content.Intent;
 import android.text.TextUtils;
-import awbw;
-import awbx;
-import bgho;
-import bgkd;
+import awgf;
+import awgg;
+import bglv;
+import bgok;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -40,19 +40,19 @@ public class GroupPlugin
     paramBaseActivity.overridePendingTransition(2130771997, 0);
   }
   
-  private void gotoSelectMembers(bgkd parambgkd, String paramString1, int paramInt, String paramString2)
+  private void gotoSelectMembers(bgok parambgok, String paramString1, int paramInt, String paramString2)
   {
-    MiniAppController.getInstance().setActivityResultListener(new GroupPlugin.1(this, parambgkd));
+    MiniAppController.getInstance().setActivityResultListener(new GroupPlugin.1(this, parambgok));
     BaseActivity localBaseActivity = (BaseActivity)this.mMiniAppContext.a();
     if ((TroopInfo)localBaseActivity.getAppInterface().getEntityManagerFactory().createEntityManager().a(TroopInfo.class, paramString1) != null)
     {
       gotoSelectMembers(paramInt, paramString2, localBaseActivity, paramString1);
       return;
     }
-    parambgkd.a(alpo.a(2131705734));
+    parambgok.a(alud.a(2131705746));
   }
   
-  public void getMultiMemList(bgkd parambgkd)
+  public void getMultiMemList(bgok parambgok)
   {
     Object localObject = null;
     int j = 0;
@@ -60,22 +60,22 @@ public class GroupPlugin
     {
       try
       {
-        localJSONObject = new JSONObject(parambgkd.b).optJSONObject("data").optJSONObject("data");
+        localJSONObject = new JSONObject(parambgok.b).optJSONObject("data").optJSONObject("data");
         if (localJSONObject != null) {
           continue;
         }
         str = null;
       }
-      catch (Exception parambgkd)
+      catch (Exception parambgok)
       {
         JSONObject localJSONObject;
         String str;
         if (!QLog.isColorLevel()) {
           return;
         }
-        QLog.i("GroupPlugin", 2, "===>onInvoke exception", parambgkd);
+        QLog.i("GroupPlugin", 2, "===>onInvoke exception", parambgok);
         return;
-        parambgkd.a(alpo.a(2131705735));
+        parambgok.a(alud.a(2131705747));
         return;
         if (localJSONObject != null) {
           continue;
@@ -91,7 +91,7 @@ public class GroupPlugin
       }
       if ((TextUtils.isEmpty((CharSequence)localObject)) || (j < 1) || (j > 3))
       {
-        parambgkd.a(alpo.a(2131705736));
+        parambgok.a(alud.a(2131705748));
         return;
         str = localJSONObject.optString("title");
         continue;
@@ -103,7 +103,7 @@ public class GroupPlugin
       }
       else if (j == 1)
       {
-        gotoSelectMembers(parambgkd, (String)localObject, i, str);
+        gotoSelectMembers(parambgok, (String)localObject, i, str);
         return;
       }
     }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import aiqx;
+import aivm;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class QWalletPushManager$1
@@ -10,8 +10,8 @@ public final class QWalletPushManager$1
   
   public void run()
   {
-    if (aiqx.a(this.a)) {
-      aiqx.a(this.a);
+    if (aivm.a(this.a)) {
+      aivm.a(this.a);
     }
   }
 }

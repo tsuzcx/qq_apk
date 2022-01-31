@@ -1,15 +1,15 @@
 package com.tencent.biz.qqcircle.bizparts;
 
-import ttn;
+import tuc;
 
 public class QCircleTopAuthPart$1
   implements Runnable
 {
-  public QCircleTopAuthPart$1(ttn paramttn) {}
+  public QCircleTopAuthPart$1(tuc paramtuc) {}
   
   public void run()
   {
-    ttn.a(this.this$0, false);
+    tuc.a(this.this$0, false);
   }
 }
 

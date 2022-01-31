@@ -21,64 +21,64 @@ public class sgq
   
   public View a(ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Yst == null) {
-      this.jdField_a_of_type_Yst = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559511, paramViewGroup, false));
+    if (this.jdField_a_of_type_Yxi == null) {
+      this.jdField_a_of_type_Yxi = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559510, paramViewGroup, false));
     }
-    return (View)this.jdField_a_of_type_Yst;
+    return (View)this.jdField_a_of_type_Yxi;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Yst == null) {
+    if (this.jdField_a_of_type_Yxi == null) {
       return;
     }
-    this.jdField_a_of_type_Yst.a(0L);
-    this.jdField_a_of_type_Yst.aw_();
+    this.jdField_a_of_type_Yxi.a(0L);
+    this.jdField_a_of_type_Yxi.at_();
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
     super.a(paramInt, paramBoolean);
-    if (this.jdField_a_of_type_Yst == null) {
+    if (this.jdField_a_of_type_Yxi == null) {
       return;
     }
     if (paramInt == 100)
     {
-      this.jdField_a_of_type_Yst.b(0L);
+      this.jdField_a_of_type_Yxi.b(0L);
       return;
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Yst.aw_();
+      this.jdField_a_of_type_Yxi.at_();
       return;
     }
-    this.jdField_a_of_type_Yst.c(0L);
+    this.jdField_a_of_type_Yxi.c(0L);
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Yst == null) {
+    if (this.jdField_a_of_type_Yxi == null) {
       return;
     }
-    this.jdField_a_of_type_Yst.a(0L);
+    this.jdField_a_of_type_Yxi.a(0L);
   }
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_Yst == null) {
+    if (this.jdField_a_of_type_Yxi == null) {
       return;
     }
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
     {
-      this.jdField_a_of_type_Yst.a(0, paramString);
+      this.jdField_a_of_type_Yxi.a(0, paramString);
       return;
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Yst.a(0);
+      this.jdField_a_of_type_Yxi.a(0);
       return;
     }
-    this.jdField_a_of_type_Yst.a(2);
+    this.jdField_a_of_type_Yxi.a(2);
   }
 }
 

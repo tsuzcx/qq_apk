@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-
 public class arrq
-  implements army
 {
-  public arrq(SendBottomBar paramSendBottomBar) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b = 1;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
+  private String e;
   
-  public void a()
+  public arrq()
   {
-    this.a.c();
+    this.jdField_a_of_type_JavaLangString = "share_file";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = true;
   }
-  
-  public void b() {}
 }
 
 

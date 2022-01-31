@@ -5,18 +5,18 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.text.TextUtils;
-import bckh;
-import bclo;
-import bcqi;
-import bcqn;
-import bcqo;
-import bcqp;
-import bcqq;
-import bcqs;
-import bcuq;
-import bcwh;
-import bcxb;
-import bdda;
+import bcoq;
+import bcpx;
+import bcur;
+import bcuw;
+import bcux;
+import bcuy;
+import bcuz;
+import bcvb;
+import bcyz;
+import bdaq;
+import bdbk;
+import bdhj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -26,33 +26,33 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopGiftAnimationController$5
   implements Runnable
 {
-  public TroopGiftAnimationController$5(bcqi parambcqi, MessageForDeliverGiftTips paramMessageForDeliverGiftTips) {}
+  public TroopGiftAnimationController$5(bcur parambcur, MessageForDeliverGiftTips paramMessageForDeliverGiftTips) {}
   
   public void run()
   {
-    bcqi.a(this.this$0, System.currentTimeMillis());
+    bcur.a(this.this$0, System.currentTimeMillis());
     Object localObject2;
     Object localObject1;
-    if (bcqi.a(this.this$0) != null)
+    if (bcur.a(this.this$0) != null)
     {
-      this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.this$0.a(String.valueOf(this.a.senderUin), new bcqn(this));
-      localObject2 = bclo.a(this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.this$0.a(String.valueOf(this.a.senderUin), new bcuw(this));
+      localObject2 = bcpx.a(this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       if (!TextUtils.isEmpty(this.a.receiverHead))
       {
         localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = bcwh.a(BaseApplicationImpl.getContext(), 70.0F);
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = bcwh.a(BaseApplicationImpl.getContext(), 70.0F);
-        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = bcxb.a(1, 3);
-        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = bcxb.a(1, 3);
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = bdaq.a(BaseApplicationImpl.getContext(), 70.0F);
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = bdaq.a(BaseApplicationImpl.getContext(), 70.0F);
+        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = bdbk.a(1, 3);
+        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = bdbk.a(1, 3);
         localObject1 = URLDrawable.getDrawable(this.a.receiverHead, (URLDrawable.URLDrawableOptions)localObject1);
         if (((URLDrawable)localObject1).getStatus() != 1)
         {
-          ((URLDrawable)localObject1).setDownloadListener(new bcqo(this, (URLDrawable)localObject1));
+          ((URLDrawable)localObject1).setDownloadListener(new bcux(this, (URLDrawable)localObject1));
           ((URLDrawable)localObject1).startDownload();
         }
-        ((URLDrawable)localObject1).setURLDrawableListener(new bcqp(this, (URLDrawable)localObject1));
+        ((URLDrawable)localObject1).setURLDrawableListener(new bcuy(this, (URLDrawable)localObject1));
         this.this$0.b = ((Drawable)localObject1);
-        localObject1 = bclo.a((Drawable)localObject1);
+        localObject1 = bcpx.a((Drawable)localObject1);
       }
     }
     for (;;)
@@ -67,24 +67,24 @@ public class TroopGiftAnimationController$5
         {
           localObject1 = URLDrawable.URLDrawableOptions.obtain();
           localObject1 = URLDrawable.getDrawable(this.a.senderAvatarUrl, (URLDrawable.URLDrawableOptions)localObject1);
-          ((URLDrawable)localObject1).setDecodeHandler(bcuq.a);
+          ((URLDrawable)localObject1).setDecodeHandler(bcyz.a);
           if ((((URLDrawable)localObject1).getStatus() == 1) && (((URLDrawable)localObject1).getCurrDrawable() != null))
           {
-            localObject1 = bdda.a(((URLDrawable)localObject1).getCurrDrawable());
+            localObject1 = bdhj.a(((URLDrawable)localObject1).getCurrDrawable());
             if (TextUtils.isEmpty(this.a.receiveAvatarUrl)) {
               break label563;
             }
             localObject2 = URLDrawable.URLDrawableOptions.obtain();
             localObject2 = URLDrawable.getDrawable(this.a.receiveAvatarUrl, (URLDrawable.URLDrawableOptions)localObject2);
-            ((URLDrawable)localObject2).setDecodeHandler(bcuq.a);
+            ((URLDrawable)localObject2).setDecodeHandler(bcyz.a);
             if ((((URLDrawable)localObject2).getStatus() != 1) || (((URLDrawable)localObject2).getCurrDrawable() == null)) {
               break label552;
             }
-            localObject2 = bdda.a(((URLDrawable)localObject2).getCurrDrawable());
+            localObject2 = bdhj.a(((URLDrawable)localObject2).getCurrDrawable());
             localObject3 = localObject1;
             localObject1 = localObject2;
             localObject2 = localObject3;
-            str = bckh.a(this.a);
+            str = bcoq.a(this.a);
           }
         }
       }
@@ -98,23 +98,23 @@ public class TroopGiftAnimationController$5
           localObject3 = BitmapFactory.decodeFile(str + "/avatar/avatar_anim_res.png");
           this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopGiftAnimationController.5.5(this, str, (Bitmap)localObject2, (Bitmap)localObject1, (Bitmap)localObject3), 300L);
           return;
-          this.this$0.b = this.this$0.a(String.valueOf(this.a.receiverUin), new bcqq(this));
-          localObject1 = bclo.a(this.this$0.b);
+          this.this$0.b = this.this$0.a(String.valueOf(this.a.receiverUin), new bcuz(this));
+          localObject1 = bcpx.a(this.this$0.b);
           break;
-          if ((bcqi.a(this.this$0) == null) || (!(bcqi.a(this.this$0) instanceof bcqs))) {
+          if ((bcur.a(this.this$0) == null) || (!(bcur.a(this.this$0) instanceof bcvb))) {
             break label617;
           }
-          localObject1 = (bcqs)bcqi.a(this.this$0);
-          localObject2 = ((bcqs)localObject1).a(String.valueOf(this.a.senderUin), this.a.frienduin);
-          localObject1 = ((bcqs)localObject1).a(String.valueOf(this.a.receiverUin), this.a.frienduin);
+          localObject1 = (bcvb)bcur.a(this.this$0);
+          localObject2 = ((bcvb)localObject1).a(String.valueOf(this.a.senderUin), this.a.frienduin);
+          localObject1 = ((bcvb)localObject1).a(String.valueOf(this.a.receiverUin), this.a.frienduin);
           break;
           ((URLDrawable)localObject1).startDownload();
-          localObject1 = bdda.a();
+          localObject1 = bdhj.a();
           break label279;
           localObject1 = null;
           break label279;
           ((URLDrawable)localObject2).startDownload();
-          localObject2 = bdda.a();
+          localObject2 = bdhj.a();
           break label338;
           localObject3 = null;
           localObject2 = localObject1;
@@ -123,9 +123,9 @@ public class TroopGiftAnimationController$5
           if (localObject2 != null) {
             break label614;
           }
-          localObject2 = bdda.a();
+          localObject2 = bdhj.a();
           if (localObject1 == null) {
-            localObject1 = bdda.a();
+            localObject1 = bdhj.a();
           }
         }
         catch (OutOfMemoryError localOutOfMemoryError)

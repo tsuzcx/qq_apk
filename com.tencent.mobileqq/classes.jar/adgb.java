@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.Leba;
 
 public class adgb
-  implements DialogInterface.OnClickListener
+  extends avvb
 {
-  public adgb(NotificationActivity paramNotificationActivity) {}
+  public adgb(Leba paramLeba) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(Object paramObject)
   {
-    NotificationActivity.b(this.a, 0);
-    this.a.finish();
+    Leba.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adgb
  * JD-Core Version:    0.7.0.1
  */

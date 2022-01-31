@@ -1,45 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.ParticipleView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-
-public class benk
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface benk
 {
-  public benk(ParticipleView paramParticipleView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    long l = System.currentTimeMillis();
-    paramValueAnimator = ParticipleView.a(this.a).iterator();
-    int i = 1;
-    if (paramValueAnimator.hasNext())
-    {
-      beno localbeno = (beno)paramValueAnimator.next();
-      float f = Math.min((float)(l - beno.a(localbeno)) / ParticipleView.a(this.a), 1.0F);
-      beno.a(localbeno, f);
-      if (f < 1.0F) {
-        i = 0;
-      }
-      for (;;)
-      {
-        break;
-        paramValueAnimator.remove();
-      }
-    }
-    if (i != 0)
-    {
-      ParticipleView.a(this.a).cancel();
-      ParticipleView.a(this.a, null);
-      ParticipleView.a(this.a).clear();
-      if (QLog.isColorLevel()) {
-        QLog.d("ParticipleView", 2, "selectedAnimation end cancel");
-      }
-    }
-    this.a.invalidate();
-  }
+  public abstract void a();
 }
 
 

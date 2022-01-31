@@ -1,42 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.ims.AlertReport.ButtonAction;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.activity.Leba;
 
 public class adfv
-  implements DialogInterface.OnClickListener
+  implements ViewSwitcher.ViewFactory
 {
-  public adfv(NotificationActivity paramNotificationActivity, int paramInt, String paramString) {}
+  public adfv(Leba paramLeba) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public View makeView()
   {
-    try
-    {
-      paramDialogInterface = new AlertReport.ButtonAction();
-      paramDialogInterface.uint32_cmd.set(1);
-      paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
-      paramDialogInterface.str_package_name.set(bhim.c());
-      paramDialogInterface.uint32_app_id.set(AppSetting.a());
-      mzy.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
-      azmj.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007535", "0X8007535", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
-    }
+    ImageView localImageView = new ImageView(this.a.a());
+    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    return localImageView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adfv
  * JD-Core Version:    0.7.0.1
  */

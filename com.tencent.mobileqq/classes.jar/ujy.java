@@ -1,26 +1,23 @@
-import java.io.File;
-
-class ujy
-  implements Comparable<ujy>
+public class ujy
+  extends ujw
 {
-  public final long a;
-  public final File a;
+  public int d = -1;
+  public int e = -1;
   
-  public ujy(ujx paramujx, File paramFile)
+  public ujy() {}
+  
+  public ujy(uij paramuij)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Long = paramFile.lastModified();
+    super(paramuij);
   }
   
-  public int a(ujy paramujy)
+  public String toString()
   {
-    if (this.jdField_a_of_type_Long < paramujy.jdField_a_of_type_Long) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_Long == paramujy.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return 1;
+    StringBuilder localStringBuilder = new StringBuilder("TreeGatherConfig =[");
+    localStringBuilder.append(" mStartGatherLevel=").append(this.d);
+    localStringBuilder.append(" mEndGatherLevel=").append(this.e);
+    localStringBuilder.append("] ");
+    return localStringBuilder.toString() + super.toString();
   }
 }
 

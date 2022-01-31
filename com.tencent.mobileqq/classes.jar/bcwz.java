@@ -1,36 +1,28 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+
 class bcwz
-  extends alox
+  implements DialogInterface.OnClickListener
 {
-  private bcwz(bcww parambcww) {}
+  bcwz(bcwy parambcwy) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(paramBoolean, 1, paramString, 0);
-  }
-  
-  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(paramBoolean, 11, paramString, 0);
-  }
-  
-  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(paramBoolean1, 16, paramString, paramInt);
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(paramBoolean1, 32, paramString, paramInt);
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(paramBoolean, 4, paramString, 0);
+    paramDialogInterface = String.format("https://qun.qq.com/qunpay/gifts/buy.html?_bid=2204&_wvSb=1&from=7&troopUin=%s", new Object[] { this.a.a.b });
+    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
+    localIntent.putExtra("selfSet_leftViewText", alud.a(2131716088));
+    localIntent.putExtra("hide_more_button", true);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("url", this.a.a.a(paramDialogInterface));
+    this.a.a.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcwz
  * JD-Core Version:    0.7.0.1
  */

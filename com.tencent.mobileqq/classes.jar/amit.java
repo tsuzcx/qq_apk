@@ -1,37 +1,27 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateDiscuss;
+import com.tencent.qphone.base.util.QLog;
 
-class amit
-  implements View.OnTouchListener
+public class amit
+  extends alrl
 {
-  amit(amip paramamip, ImageView paramImageView) {}
+  private amit(UpdateDiscuss paramUpdateDiscuss) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean)
   {
-    int i;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
-    {
-      if (paramMotionEvent.getAction() != 1) {
-        break label45;
-      }
-      i = 255;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label51;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "updateDiscussionList: " + paramBoolean);
     }
-    for (;;)
+    if (!paramBoolean)
     {
-      return false;
-      label45:
-      i = 127;
-      break;
-      label51:
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
+      this.a.a(6);
+      return;
     }
+    this.a.a.a.edit().putBoolean("isDiscussionlistok", true).commit();
+    this.a.a.notifyUI(3, true, Integer.valueOf(3));
+    this.a.a(7);
   }
 }
 

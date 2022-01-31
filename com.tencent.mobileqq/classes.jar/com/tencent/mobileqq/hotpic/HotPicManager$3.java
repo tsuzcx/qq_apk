@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.hotpic;
 
-import asps;
+import asub;
 
 public class HotPicManager$3
   implements Runnable
 {
-  public HotPicManager$3(asps paramasps) {}
+  public HotPicManager$3(asub paramasub) {}
   
   public void run()
   {

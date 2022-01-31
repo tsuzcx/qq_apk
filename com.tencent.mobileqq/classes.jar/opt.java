@@ -47,7 +47,7 @@ public class opt
   
   public static int a()
   {
-    Object localObject1 = ajeu.a().a;
+    Object localObject1 = ajjj.a().a;
     if (localObject1 == null) {
       return 2147483647;
     }
@@ -65,7 +65,7 @@ public class opt
     {
       localObject2 = (RecentUserBaseData)((List)localObject1).get(i);
       if (localObject2 == null) {}
-      while ((((RecentUserBaseData)localObject2).mUser == null) || (((RecentUserBaseData)localObject2).mUser.getType() != 1008) || (!TextUtils.equals(((RecentUserBaseData)localObject2).mUser.uin, aljq.aS)))
+      while ((((RecentUserBaseData)localObject2).mUser == null) || (((RecentUserBaseData)localObject2).mUser.getType() != 1008) || (!TextUtils.equals(((RecentUserBaseData)localObject2).mUser.uin, alof.aS)))
       {
         i += 1;
         break;
@@ -115,7 +115,7 @@ public class opt
     do
     {
       return;
-      localMessageRecord = localQQAppInterface.a().b(aljq.aS, 1008);
+      localMessageRecord = localQQAppInterface.a().b(alof.aS, 1008);
     } while ((localMessageRecord == null) || (localMessageRecord.isread) || (localMessageRecord.extLong != 1));
     ThreadManager.post(new KandianDailyReportUtils.1(localMessageRecord, localQQAppInterface), 8, null, false);
     a(1, "0X8009867", localMessageRecord);
@@ -133,7 +133,7 @@ public class opt
   
   private static void a(int paramInt, String paramString, MessageRecord paramMessageRecord)
   {
-    String str4 = syb.a(aljq.aS) + "";
+    String str4 = syb.a(alof.aS) + "";
     Object localObject3 = null;
     String str1 = null;
     KandianRedDotInfo localKandianRedDotInfo = KandianRedDotInfo.createRedDotFromMessageRecord(paramMessageRecord, "kandian_daily_red_pnt");
@@ -160,7 +160,7 @@ public class opt
       int i;
       for (;;)
       {
-        if (syb.b(aljq.aS) > 0) {}
+        if (syb.b(alof.aS) > 0) {}
         for (i = 1;; i = 0)
         {
           str3 = KandianDailyManager.jdField_a_of_type_JavaLangString;
@@ -340,7 +340,7 @@ public class opt
   
   public static String b()
   {
-    return "" + bjxj.a("readinjoy_daily_mode_channel_id", Integer.valueOf(41505));
+    return "" + bkbq.a("readinjoy_daily_mode_channel_id", Integer.valueOf(41505));
   }
   
   private static Map<String, String> b()
@@ -353,7 +353,7 @@ public class opt
     if (localObject == null) {
       return localHashMap;
     }
-    localObject = ((QQAppInterface)localObject).a().b(aljq.aS, 1008);
+    localObject = ((QQAppInterface)localObject).a().b(alof.aS, 1008);
     if (localObject == null) {
       return localHashMap;
     }

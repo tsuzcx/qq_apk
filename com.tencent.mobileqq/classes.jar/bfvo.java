@@ -1,27 +1,56 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qidian.proto.mobileqq_qidian.ConfigCorpSimpleInfo;
+import java.util.List;
 
 public class bfvo
+  extends bfvx
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
+  public static final int MSG_ON_ENTER_ROOM = 1;
+  public static final int MSG_ON_ERROR = 2;
+  public static final int MSG_ON_USER_AUDIO_AVAILABLE = 5;
+  public static final int MSG_ON_USER_ENTER = 3;
+  public static final int MSG_ON_USER_EXIT = 4;
+  public static final int MSG_ON_USER_SPEAKING = 6;
+  public static final int MSG_ON_USER_UPDATE = 7;
   
-  public bfvo(mobileqq_qidian.ConfigCorpSimpleInfo paramConfigCorpSimpleInfo)
+  public void onEnterRoom() {}
+  
+  public void onError(int paramInt) {}
+  
+  public void onUserAudioAvailable(bfvc parambfvc, boolean paramBoolean) {}
+  
+  public void onUserEnter(bfvc parambfvc) {}
+  
+  public void onUserExit(bfvc parambfvc) {}
+  
+  public void onUserSpeaking(bfvc parambfvc, boolean paramBoolean) {}
+  
+  public void onUserUpdate(List<bfvc> paramList) {}
+  
+  public void update(int paramInt, Object... paramVarArgs)
   {
-    if (paramConfigCorpSimpleInfo.str_corp_name.has()) {
-      this.a = paramConfigCorpSimpleInfo.str_corp_name.get();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      onEnterRoom();
+      return;
+    case 2: 
+      onError(((Integer)paramVarArgs[0]).intValue());
+      return;
+    case 3: 
+      onUserEnter((bfvc)paramVarArgs[0]);
+      return;
+    case 4: 
+      onUserExit((bfvc)paramVarArgs[0]);
+      return;
+    case 5: 
+      onUserAudioAvailable((bfvc)paramVarArgs[0], ((Boolean)paramVarArgs[1]).booleanValue());
+      return;
+    case 6: 
+      onUserSpeaking((bfvc)paramVarArgs[0], ((Boolean)paramVarArgs[1]).booleanValue());
+      return;
     }
-    if (paramConfigCorpSimpleInfo.str_short_name.has()) {
-      this.b = paramConfigCorpSimpleInfo.str_short_name.get();
-    }
-    if (paramConfigCorpSimpleInfo.str_detail_desc.has()) {
-      this.c = paramConfigCorpSimpleInfo.str_detail_desc.get();
-    }
-    if (paramConfigCorpSimpleInfo.str_click_url.has()) {
-      this.d = paramConfigCorpSimpleInfo.str_click_url.get();
-    }
+    onUserUpdate((List)paramVarArgs[0]);
   }
 }
 

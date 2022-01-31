@@ -1,44 +1,15 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.util.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class tvo
+class tvo
+  implements DialogInterface.OnClickListener
 {
-  private List<tvr> jdField_a_of_type_JavaUtilList;
-  private Map<String, tvq> jdField_a_of_type_JavaUtilMap;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private WeakReference<tvs> jdField_a_of_type_MqqUtilWeakReference;
-  private AtomicInteger b;
+  tvo(tvl paramtvl) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.b = new AtomicInteger(0);
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      tvr localtvr = (tvr)localIterator.next();
-      tvt.a().a(localtvr.a, new tvp(this, localtvr, i));
-    }
-  }
-  
-  public void a(tvr paramtvr)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramtvr);
-  }
-  
-  public void a(tvs paramtvs)
-  {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramtvs);
+    this.a.jdField_a_of_type_Tvj.a.a().c(tuz.a(this.a.jdField_a_of_type_Tvj.a), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+    tuz.b(this.a.jdField_a_of_type_Tvj.a, true);
   }
 }
 

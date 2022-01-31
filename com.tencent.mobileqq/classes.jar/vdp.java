@@ -1,11 +1,25 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class vdp
-  extends unf
+  extends uli
 {
-  public vdp(qqstory_service.RspReportEvil paramRspReportEvil)
+  private vhw a;
+  public boolean a;
+  
+  public vdp(ErrorMessage paramErrorMessage)
   {
-    super(paramRspReportEvil.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+  }
+  
+  public vdp(boolean paramBoolean)
+  {
+    this(new ErrorMessage());
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public vhw a()
+  {
+    return this.jdField_a_of_type_Vhw;
   }
 }
 

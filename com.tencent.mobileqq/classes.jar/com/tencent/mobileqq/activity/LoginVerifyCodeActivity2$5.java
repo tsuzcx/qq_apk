@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bepp;
+import bety;
 
 class LoginVerifyCodeActivity2$5
   implements Runnable

@@ -1,58 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
 
 public class ahja
-  extends alox
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public ahja(ConnectionsExplorationFragment paramConnectionsExplorationFragment) {}
+  public ahja(TroopView paramTroopView) {}
   
-  protected void onAddFriend(String paramString)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onAddFriend " + paramString);
-    }
-    ConnectionsExplorationFragment.a(this.a, false, true);
-  }
-  
-  protected void onAddReqStatesChanged(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onAddReqStatesChanged isSuccess=" + paramBoolean + " " + paramString);
-    }
-    ConnectionsExplorationFragment.a(this.a, false, true);
-  }
-  
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onCancelMayKnowRecommend isSuccess=" + paramBoolean + " " + paramString);
-    }
-    ConnectionsExplorationFragment.a(this.a, false, true);
-  }
-  
-  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onCancelMayKnowRecommend isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean) {
-      ConnectionsExplorationFragment.a(this.a, false, true);
-    }
-    while (paramInt1 != 1205) {
+    if (babd.a()) {}
+    while (paramInt != 1) {
       return;
     }
-    ConnectionsExplorationFragment.a(this.a, false, false);
+    TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
   }
   
-  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  public void onPageSelected(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onGetMayKnowRecommend isSuccess=" + paramBoolean);
+    if (babd.a()) {
+      return;
     }
-    if (paramBoolean) {
-      ConnectionsExplorationFragment.a(this.a, false, false);
-    }
+    TroopView.a(this.a, paramInt);
   }
 }
 

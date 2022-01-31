@@ -1,45 +1,28 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 class bamm
-  implements ITransactionCallback
+  extends bamo
 {
-  bamm(baml parambaml) {}
+  private bamw a;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  bamm(@NonNull String paramString, int paramInt1, int paramInt2)
   {
-    this.a.d = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms");
-    }
-    this.a.jdField_a_of_type_Baoj.a = paramArrayOfByte;
-    if (this.a.b != -1) {
-      this.a.a(paramInt, "uploadImgError");
-    }
+    super(2, paramString);
+    this.a = new bamw(paramInt1, paramInt2, 1);
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  float a(@NonNull Paint paramPaint)
   {
-    this.a.d = SystemClock.uptimeMillis();
+    float f = this.a.a().getBounds().width();
     if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms ,fileSize:" + this.a.q);
+      QLog.d("NickWrapper", 2, "getWidth normal span width " + f);
     }
-    if (this.a.jdField_a_of_type_Wyp.b.equals(this.a.jdField_a_of_type_Wyr.a))
-    {
-      this.a.jdField_a_of_type_Wyp.a = this.a.d;
-      if (this.a.b != -1) {
-        this.a.aR_();
-      }
-    }
+    return f;
   }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
 }
 
 

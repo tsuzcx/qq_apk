@@ -35,7 +35,7 @@ public class BannerAdapter
       do
       {
         return;
-        paramLinearLayout = (KandianUrlImageView)paramLinearLayout.findViewById(2131365316);
+        paramLinearLayout = (KandianUrlImageView)paramLinearLayout.findViewById(2131365318);
         localObject = paramLinearLayout.getLayoutParams();
         ((ViewGroup.LayoutParams)localObject).width = this.jdField_a_of_type_Int;
         ((ViewGroup.LayoutParams)localObject).height = this.b;
@@ -67,7 +67,7 @@ public class BannerAdapter
   
   public LinearLayout a(int paramInt, DiscoveryBannerInfo paramDiscoveryBannerInfo)
   {
-    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560151, null);
+    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560150, null);
     a(localLinearLayout, paramInt, paramDiscoveryBannerInfo);
     return localLinearLayout;
   }

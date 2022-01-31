@@ -1,41 +1,41 @@
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.widget.RoundImageView;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-public class aogz
+class aogz
+  implements URLDrawable.URLDrawableListener
 {
-  private boolean a;
+  aogz(aogx paramaogx, RoundImageView paramRoundImageView, apby paramapby, String paramString) {}
   
-  public static aogz a(String paramString)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
-      return null;
-      try
-      {
-        aogz localaogz = new aogz();
-        if (new JSONObject(paramString).optInt("showTakeSameEntrance", 0) == 1) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localaogz.a = bool;
-          return localaogz;
-        }
-        if (!QLog.isColorLevel()) {}
-      }
-      catch (Exception paramString) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("CommentDanmakuRender", 2, "onLoadCanceled : " + this.jdField_a_of_type_JavaLangString);
     }
-    QLog.e("PttAutoChangeProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
   }
   
-  public boolean a()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return this.a;
+    if (QLog.isColorLevel()) {
+      QLog.d("CommentDanmakuRender", 2, "onLoadFailed : " + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(paramURLDrawable);
+      this.jdField_a_of_type_Apby.c(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aogz
  * JD-Core Version:    0.7.0.1
  */

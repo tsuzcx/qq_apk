@@ -1,159 +1,104 @@
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.text.TextUtils;
+import android.os.Build.VERSION;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.6;
-import com.tencent.qphone.base.util.QLog;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import mqq.os.MqqHandler;
+import android.view.Window;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.widget.DispatchActionMoveScrollView;
 
 public class bcax
-  extends bcal<bcbd, bbzy>
 {
+  private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private aoim jdField_a_of_type_Aoim;
+  private bcba jdField_a_of_type_Bcba;
+  private bcbb jdField_a_of_type_Bcbb;
+  private bcbc jdField_a_of_type_Bcbc;
+  private bhuf jdField_a_of_type_Bhuf;
+  private IphonePickerView jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
+  private int jdField_b_of_type_Int;
+  private bcbc jdField_b_of_type_Bcbc;
+  private int c;
   
-  public bcax(XMediaEditor paramXMediaEditor, Context paramContext)
+  public bcax(Context paramContext, aoim paramaoim)
   {
-    super(paramXMediaEditor);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_Aoim = paramaoim;
   }
   
-  public bcbd a(ViewGroup paramViewGroup)
+  public aoim a()
   {
-    paramViewGroup = new bcbd(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561332, paramViewGroup, false));
-    QLog.i("xmediaEditor", 1, "onCreateViewHolder. vh hash=" + paramViewGroup.hashCode());
-    paramViewGroup.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new bcay(this));
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a() != 0) {
-      paramViewGroup.itemView.setPadding(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0);
-    }
-    return paramViewGroup;
+    return this.jdField_a_of_type_Aoim;
   }
   
-  public String a(String paramString)
+  public void a()
   {
-    paramString = (paramString + "a").split("\n");
-    if (paramString.length > 0)
+    if (this.jdField_a_of_type_Bhuf == null)
     {
-      paramString = paramString[(paramString.length - 1)];
-      if (Pattern.compile("^[1-9]\\d*[、,，.)）]\\d+").matcher(paramString).find()) {
-        return "";
-      }
-      paramString = Pattern.compile("^[1-9]\\d*[、,，.)）]").matcher(paramString);
-      if (paramString.find())
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561005, null));
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(this.jdField_a_of_type_Aoim);
+      this.jdField_a_of_type_Bhuf = bhuf.c(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_Bhuf.d(true);
+      this.jdField_a_of_type_Bhuf.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView, null);
+      Object localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_Bhuf.findViewById(2131361924);
+      ((DispatchActionMoveScrollView)localObject).a = true;
+      ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
+      if (Build.VERSION.SDK_INT >= 11)
       {
-        String str = paramString.group();
-        paramString = str.substring(0, str.length() - 1);
-        str = str.substring(str.length() - 1);
-        int i = Integer.parseInt(paramString);
-        return i + 1 + str;
-      }
-    }
-    return "";
-  }
-  
-  public void a(View paramView, bcbd parambcbd) {}
-  
-  public void a(bcbd parambcbd)
-  {
-    super.b(parambcbd);
-  }
-  
-  public void a(bcbd parambcbd, bbzy parambbzy, int paramInt)
-  {
-    QLog.i("xmediaEditor", 1, "Text onBindViewHolder. vh hash=" + parambcbd.hashCode() + ", mData.position:" + parambbzy.jdField_c_of_type_Int + ", text:" + parambbzy.jdField_a_of_type_JavaLangString);
-    if (parambcbd.jdField_a_of_type_AndroidTextTextWatcher != null)
-    {
-      QLog.i("xmediaEditor", 1, "removeTextChangedListener, mData.position:" + parambbzy.jdField_c_of_type_Int + ", text:" + parambbzy.jdField_a_of_type_JavaLangString + ",Listener:" + parambcbd.jdField_a_of_type_AndroidTextTextWatcher.toString());
-      parambcbd.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(parambcbd.jdField_a_of_type_AndroidTextTextWatcher);
-      parambcbd.jdField_a_of_type_AndroidTextTextWatcher = null;
-    }
-    switch (paramInt)
-    {
-    default: 
-      parambcbd.jdField_a_of_type_AndroidWidgetEditText.setVisibility(8);
-      parambcbd.jdField_a_of_type_AndroidWidgetTextView.setText(parambbzy.jdField_a_of_type_JavaLangString);
-      if (TextUtils.isEmpty(parambbzy.jdField_a_of_type_JavaLangString))
-      {
-        parambcbd.itemView.setVisibility(8);
-        parambcbd.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        return;
-      }
-      break;
-    case 0: 
-      parambcbd.jdField_a_of_type_AndroidWidgetEditText.setVisibility(0);
-      parambcbd.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      parambcbd.jdField_a_of_type_AndroidWidgetEditText.setText(parambbzy.jdField_a_of_type_JavaLangString);
-      QLog.i("xmediaEditor", 1, "mData.position:" + parambbzy.jdField_c_of_type_Int + ", text:" + parambbzy.jdField_a_of_type_JavaLangString);
-      parambcbd.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(null);
-      parambcbd.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new bcaz(this, parambcbd));
-      parambcbd.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new bcba(this, parambcbd));
-      parambcbd.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new bcbb(this, parambbzy, parambcbd));
-      parambcbd.jdField_a_of_type_AndroidTextTextWatcher = new bcbc(this, parambcbd, parambbzy);
-      QLog.i("xmediaEditor", 1, "addTextChangedListener, mData.position:" + parambbzy.jdField_c_of_type_Int + ", text:" + parambbzy.jdField_a_of_type_JavaLangString + ",Listener:" + parambcbd.jdField_a_of_type_AndroidTextTextWatcher.toString());
-      parambcbd.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(parambcbd.jdField_a_of_type_AndroidTextTextWatcher);
-      if (parambbzy.jdField_a_of_type_Boolean)
-      {
-        parambcbd.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
-        parambcbd.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
-        ThreadManager.getUIHandler().post(new TextItem.6(this, parambcbd, parambbzy));
-      }
-      while (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a()) {
-        if ((((bbzy)parambcbd.jdField_a_of_type_Bbzp).jdField_c_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter().getItemCount() == 2))
-        {
-          parambcbd.jdField_a_of_type_AndroidWidgetEditText.setHint(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b());
-          return;
-          parambcbd.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-          parambcbd.jdField_a_of_type_AndroidWidgetEditText.setFocusable(false);
-          parambcbd.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
-        }
-        else
-        {
-          parambcbd.jdField_a_of_type_AndroidWidgetEditText.setHint("");
-          return;
+        localObject = this.jdField_a_of_type_Bhuf.getWindow();
+        if (localObject != null) {
+          ((Window)localObject).setFlags(16777216, 16777216);
         }
       }
-      if ((((bbzy)parambcbd.jdField_a_of_type_Bbzp).jdField_c_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter().getItemCount() == 1))
-      {
-        parambcbd.jdField_a_of_type_AndroidWidgetEditText.setHint(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b());
-        return;
-      }
-      parambcbd.jdField_a_of_type_AndroidWidgetEditText.setHint("");
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(new bcay(this));
+      this.jdField_a_of_type_Bhuf.a(new bcaz(this));
+    }
+    if (!this.jdField_a_of_type_Bhuf.isShowing())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.c);
+    }
+    try
+    {
+      this.jdField_a_of_type_Bhuf.show();
       return;
     }
-    parambcbd.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    parambcbd.itemView.setVisibility(0);
+    catch (Exception localException) {}
   }
   
-  public void b(bcbd parambcbd)
+  public void a(int paramInt1, int paramInt2)
   {
-    super.a(parambcbd);
-    bbzy localbbzy = (bbzy)parambcbd.jdField_a_of_type_Bbzp;
-    if (parambcbd.jdField_a_of_type_AndroidTextTextWatcher != null)
+    switch (paramInt1)
     {
-      parambcbd.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(parambcbd.jdField_a_of_type_AndroidTextTextWatcher);
-      QLog.i("xmediaEditor", 2, "onViewRecycled, position:" + ((bbzy)parambcbd.jdField_a_of_type_Bbzp).jdField_c_of_type_Int + ", text:" + localbbzy.jdField_a_of_type_JavaLangString + ",Listener:" + parambcbd.jdField_a_of_type_AndroidTextTextWatcher.toString());
-      parambcbd.jdField_a_of_type_AndroidTextTextWatcher = null;
-    }
-    parambcbd.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(null);
-    if (!localbbzy.jdField_c_of_type_Boolean) {
-      localbbzy.jdField_a_of_type_Int = parambcbd.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
     }
     for (;;)
     {
-      parambcbd.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-      parambcbd.jdField_a_of_type_AndroidWidgetEditText.setFocusable(false);
-      parambcbd.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
+      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null) {
+        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(paramInt1, paramInt2);
+      }
       return;
-      localbbzy.jdField_c_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = paramInt2;
+      continue;
+      this.jdField_b_of_type_Int = paramInt2;
+      continue;
+      this.c = paramInt2;
+    }
+  }
+  
+  public void a(bcba parambcba)
+  {
+    this.jdField_a_of_type_Bcba = parambcba;
+  }
+  
+  public void a(bcbb parambcbb)
+  {
+    this.jdField_a_of_type_Bcbb = parambcbb;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Bhuf != null) && (this.jdField_a_of_type_Bhuf.isShowing())) {
+      this.jdField_a_of_type_Bhuf.dismiss();
     }
   }
 }

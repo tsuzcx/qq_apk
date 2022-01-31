@@ -9,9 +9,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bmol;
-import bmtb;
-import wsv;
+import bmsx;
+import bmxn;
+import wxe;
 
 @TargetApi(14)
 public class ElasticImageView
@@ -71,7 +71,7 @@ public class ElasticImageView
   
   private ValueAnimator a(float paramFloat1, float paramFloat2, long paramLong)
   {
-    return bmol.a(paramLong, paramFloat1, paramFloat2, new bmtb(this));
+    return bmsx.a(paramLong, paramFloat1, paramFloat2, new bmxn(this));
   }
   
   private void a()
@@ -98,7 +98,7 @@ public class ElasticImageView
     if (paramFloat <= 0.0F) {
       return;
     }
-    wsv.b("ElasticImageView", "updateMatrix:" + paramFloat);
+    wxe.b("ElasticImageView", "updateMatrix:" + paramFloat);
     this.jdField_a_of_type_AndroidGraphicsMatrix.set(this.jdField_b_of_type_AndroidGraphicsMatrix);
     this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.g, this.h);
     this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.jdField_e_of_type_Float, this.jdField_f_of_type_Float, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
@@ -159,7 +159,7 @@ public class ElasticImageView
     label388:
     for (;;)
     {
-      wsv.b("ElasticImageView", "drawableWidth:" + k + ",drawableHeight:" + j + ",AvaliableWidth:" + this.jdField_c_of_type_Int + ",AvaliableHeight:" + this.jdField_d_of_type_Int + ",scaleValue:" + f1);
+      wxe.b("ElasticImageView", "drawableWidth:" + k + ",drawableHeight:" + j + ",AvaliableWidth:" + this.jdField_c_of_type_Int + ",AvaliableHeight:" + this.jdField_d_of_type_Int + ",scaleValue:" + f1);
       this.jdField_a_of_type_Float = f1;
       this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float * 0.9F);
       this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float * 0.5F);
@@ -221,7 +221,7 @@ public class ElasticImageView
     this.i = (this.jdField_f_of_type_Int * 2);
     this.jdField_c_of_type_Int = (this.jdField_e_of_type_Int * 2);
     this.jdField_d_of_type_Int = (this.jdField_f_of_type_Int * 2);
-    wsv.b("ElasticImageView", "ImageViewWidth:" + this.jdField_a_of_type_Int + ",ImageViewHeight:" + this.jdField_b_of_type_Int + ",centerX:" + this.jdField_e_of_type_Int + ",centerY:" + this.jdField_f_of_type_Int + ",AvaliableWidth:" + this.jdField_c_of_type_Int + ",AvaliableHeight:" + this.jdField_d_of_type_Int);
+    wxe.b("ElasticImageView", "ImageViewWidth:" + this.jdField_a_of_type_Int + ",ImageViewHeight:" + this.jdField_b_of_type_Int + ",centerX:" + this.jdField_e_of_type_Int + ",centerY:" + this.jdField_f_of_type_Int + ",AvaliableWidth:" + this.jdField_c_of_type_Int + ",AvaliableHeight:" + this.jdField_d_of_type_Int);
     d();
     this.jdField_d_of_type_Float = this.jdField_a_of_type_Float;
     b(this.jdField_d_of_type_Float);

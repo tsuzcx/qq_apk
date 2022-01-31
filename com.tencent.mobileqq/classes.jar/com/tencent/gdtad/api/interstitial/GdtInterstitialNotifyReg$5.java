@@ -1,12 +1,12 @@
 package com.tencent.gdtad.api.interstitial;
 
-import aakc;
+import aaor;
 import java.lang.ref.WeakReference;
 
 public class GdtInterstitialNotifyReg$5
   implements Runnable
 {
-  public GdtInterstitialNotifyReg$5(aakc paramaakc, WeakReference paramWeakReference) {}
+  public GdtInterstitialNotifyReg$5(aaor paramaaor, WeakReference paramWeakReference) {}
   
   public void run()
   {

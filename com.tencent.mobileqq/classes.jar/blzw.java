@@ -1,8 +1,26 @@
-import android.support.annotation.NonNull;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.animation.Transformation;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
-abstract interface blzw<K, V>
+public class blzw
+  implements bdoh<Float>
 {
-  public abstract void a(@NonNull blzt<K, V> paramblzt);
+  public blzw(AdvancedProviderView paramAdvancedProviderView, QIMProviderContainerView paramQIMProviderContainerView, View paramView) {}
+  
+  @TargetApi(11)
+  public void a(bdob<Float> parambdob, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  {
+    paramFloat = paramFloat1.floatValue();
+    if (this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView != null) {
+      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setBackGroundAlpha(paramFloat);
+    }
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
+    }
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, paramFloat);
+  }
 }
 
 

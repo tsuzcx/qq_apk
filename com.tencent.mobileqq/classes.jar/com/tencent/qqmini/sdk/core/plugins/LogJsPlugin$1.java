@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgho;
-import bgkp;
-import bgmu;
+import bglv;
+import bgow;
+import bgrb;
 
 class LogJsPlugin$1
   implements Runnable
@@ -11,7 +11,7 @@ class LogJsPlugin$1
   
   public void run()
   {
-    bgkp.a(this.this$0.mMiniAppContext.a(), 230, "重启后生效", null, 2131694326, 2131694350, new LogJsPlugin.1.1(this), null).show();
+    bgow.a(this.this$0.mMiniAppContext.a(), 230, "重启后生效", null, 2131694328, 2131694352, new LogJsPlugin.1.1(this), null).show();
   }
 }
 

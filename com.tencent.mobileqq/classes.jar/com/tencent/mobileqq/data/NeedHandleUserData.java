@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class NeedHandleUserData
-  extends awbv
+  extends awge
 {
   public int type;
-  @awdj
+  @awhs
   public String uin;
 }
 

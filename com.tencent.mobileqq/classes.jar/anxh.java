@@ -1,16 +1,45 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
 
 class anxh
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  anxh(anxf paramanxf, BaseActivity paramBaseActivity) {}
+  anxh(anxd paramanxd, anxn paramanxn) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    anxf.a(this.jdField_a_of_type_Anxf, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    azmj.a(this.jdField_a_of_type_Anxf.a, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 23, 0, "", "", "", "");
+    if ((this.jdField_a_of_type_Anxd.d != null) && (this.jdField_a_of_type_Anxd.e != null))
+    {
+      this.jdField_a_of_type_Anxd.d.setVisibility(4);
+      this.jdField_a_of_type_Anxd.e.setVisibility(0);
+      paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_Anxd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
+      paramAnimator.jdField_a_of_type_Long = -1L;
+      this.jdField_a_of_type_Anxd.a("show pendant, " + this.jdField_a_of_type_Anxd.jdField_a_of_type_Long);
+      paramAnimator.b();
+    }
+    if (this.jdField_a_of_type_Anxd.c != null) {
+      this.jdField_a_of_type_Anxd.c.setVisibility(0);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if ((this.jdField_a_of_type_Anxd.d != null) && (this.jdField_a_of_type_Anxd.e != null))
+    {
+      this.jdField_a_of_type_Anxd.d.setVisibility(0);
+      this.jdField_a_of_type_Anxd.e.setVisibility(4);
+      paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_Anxd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
+      this.jdField_a_of_type_Anxd.a("stop show pendant, " + this.jdField_a_of_type_Anxd.jdField_a_of_type_Long);
+      paramAnimator.jdField_a_of_type_Long = this.jdField_a_of_type_Anxd.jdField_a_of_type_Long;
+      paramAnimator.a();
+    }
+    if ((this.jdField_a_of_type_Anxd.c != null) && (TextUtils.isEmpty(this.jdField_a_of_type_Anxn.e))) {
+      this.jdField_a_of_type_Anxd.c.setVisibility(4);
+    }
   }
 }
 

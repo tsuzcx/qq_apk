@@ -1,22 +1,61 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.Comparator;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.TriangleView;
 
-class ahnr
-  implements Comparator<MayKnowRecommend>
+public class ahnr
 {
-  ahnr(ahnp paramahnp) {}
+  public ImageView a;
+  public TextView a;
+  public TriangleView a;
+  public ImageView b;
+  public TextView b;
   
-  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
+  public ahnr(View paramView)
   {
-    long l1 = paramMayKnowRecommend1.cardDisplayTimestamp;
-    long l2 = paramMayKnowRecommend2.cardDisplayTimestamp;
-    if (l1 < l2) {
-      return 1;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371121));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371118));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371122));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371120));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView = ((TriangleView)paramView.findViewById(2131378285));
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setSelected(true);
     }
-    if (l1 == l2) {
-      return 0;
+    if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
+      this.jdField_b_of_type_AndroidWidgetImageView.setSelected(true);
     }
-    return -1;
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setSelected(true);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setSelected(true);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView.setVisibility(0);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setSelected(false);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
+      this.jdField_b_of_type_AndroidWidgetImageView.setSelected(false);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setSelected(false);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setSelected(false);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView.setVisibility(4);
+    }
   }
 }
 

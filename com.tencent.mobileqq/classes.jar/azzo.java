@@ -1,101 +1,214 @@
+import android.content.Context;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
+
 public class azzo
-  extends azzf
+  extends azus
+  implements View.OnClickListener
 {
-  private azzf jdField_a_of_type_Azzf;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private azzf[] jdField_a_of_type_ArrayOfAzzf;
-  private int f;
+  public String S;
+  public String T;
+  public String U;
+  public int k;
+  public int l;
   
-  public azzo(azzf... paramVarArgs)
+  public azzo()
   {
-    super(0, 0, 0);
-    this.jdField_a_of_type_ArrayOfAzzf = paramVarArgs;
-    this.jdField_a_of_type_ArrayOfInt = new int[paramVarArgs.length];
-    int i = 0;
-    int j = 0;
-    if (i < paramVarArgs.length)
-    {
-      if (i == 0) {
-        this.jdField_a_of_type_ArrayOfInt[i] = 0;
-      }
-      for (;;)
-      {
-        j += paramVarArgs[i].jdField_c_of_type_Int;
-        i += 1;
-        break;
-        this.jdField_a_of_type_ArrayOfInt[i] = j;
-      }
-    }
-    this.jdField_c_of_type_Int = j;
-    if (paramVarArgs.length > 0) {
-      this.jdField_a_of_type_Azzf = paramVarArgs[this.f];
-    }
+    this.a = "textButton";
+    b(32);
+    c(32);
   }
   
-  public void a()
+  private LinearLayout a(Context paramContext)
   {
-    super.a();
-    this.f = 0;
-    if (this.jdField_a_of_type_ArrayOfAzzf.length > 0) {
-      this.jdField_a_of_type_Azzf = this.jdField_a_of_type_ArrayOfAzzf[this.f];
-    }
+    paramContext = new LinearLayout(paramContext);
+    paramContext.setOrientation(0);
+    paramContext.setGravity(16);
+    paramContext.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
+    paramContext.setId(2131379034);
+    return paramContext;
   }
   
-  protected void a(int paramInt, float paramFloat)
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    if ((this.f + 1 < this.jdField_a_of_type_ArrayOfAzzf.length) && (paramInt > this.jdField_a_of_type_ArrayOfInt[(this.f + 1)]))
-    {
-      this.jdField_a_of_type_Azzf.b();
-      azzf[] arrayOfazzf = this.jdField_a_of_type_ArrayOfAzzf;
-      i = this.f + 1;
-      this.f = i;
-      this.jdField_a_of_type_Azzf = arrayOfazzf[i];
-    }
-    this.d = this.jdField_a_of_type_Azzf.d;
-    int i = paramInt - this.jdField_a_of_type_ArrayOfInt[this.f];
-    float f1 = i / this.jdField_a_of_type_Azzf.jdField_c_of_type_Int;
-    if (this.jdField_a_of_type_Azzf.e == 1) {
-      f1 = i * i / (this.jdField_a_of_type_Azzf.jdField_c_of_type_Int * this.jdField_a_of_type_Azzf.jdField_c_of_type_Int);
+    if (paramView != null) {
+      paramContext = (azzp)paramView.getTag();
     }
     for (;;)
     {
-      this.jdField_a_of_type_Azzf.a(i, f1);
-      if ((this.jdField_a_of_type_Azzf.d & 0x1) != 0)
+      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTag(this);
+      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTextColor(c());
+      paramContext.jdField_a_of_type_AndroidWidgetTextView.requestLayout();
+      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTypeface(Typeface.DEFAULT, d());
+      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTextSize(b() / 2);
+      if (!TextUtils.isEmpty(this.S)) {
+        paramContext.jdField_a_of_type_AndroidWidgetTextView.setText(this.S);
+      }
+      try
       {
-        this.jdField_a_of_type_Float = this.jdField_a_of_type_Azzf.jdField_a_of_type_Float;
-        this.jdField_b_of_type_Float = this.jdField_a_of_type_Azzf.jdField_b_of_type_Float;
+        if (!TextUtils.isEmpty(this.T))
+        {
+          paramBundle = URLDrawable.getDrawable(this.T, this.k, this.k, null, null);
+          paramBundle.setAutoDownload(true);
+          paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+        }
+        if (!TextUtils.isEmpty(this.U))
+        {
+          paramBundle = URLDrawable.getDrawable(this.U, this.l, this.l, null, null);
+          paramBundle.setAutoDownload(true);
+          paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+        }
       }
-      if ((this.jdField_a_of_type_Azzf.d & 0x10) != 0) {
-        this.jdField_b_of_type_Float = this.jdField_a_of_type_Azzf.jdField_b_of_type_Float;
-      }
-      if ((this.jdField_a_of_type_Azzf.d & 0x2) != 0) {
-        this.jdField_c_of_type_Float = this.jdField_a_of_type_Azzf.jdField_c_of_type_Float;
-      }
-      if ((this.jdField_a_of_type_Azzf.d & 0x4) != 0) {
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_Azzf.jdField_a_of_type_Int;
-      }
-      if ((this.jdField_a_of_type_Azzf.d & 0x8) != 0) {
-        this.jdField_b_of_type_Int = this.jdField_a_of_type_Azzf.jdField_b_of_type_Int;
-      }
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.jdField_a_of_type_Azzf.e == 2)
+      catch (Exception paramContext)
       {
-        f1 = i / this.jdField_a_of_type_Azzf.jdField_c_of_type_Int;
-        f1 *= (2.0F - f1);
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("StructMsg", 2, " URLDrawable.exception illegal url : " + paramContext.getMessage());
+          }
+        }
       }
+      if ((this.c != null) && (!this.c.equals("")))
+      {
+        paramView.setClickable(true);
+        paramView.setOnClickListener(this);
+      }
+      return paramView;
+      paramView = new azzp(this);
+      paramView.jdField_a_of_type_AndroidWidgetLinearLayout = a(paramContext);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
+      paramView.b = new ImageView(paramContext);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
+      paramContext = new LinearLayout.LayoutParams(-2, -2);
+      paramContext.gravity = 16;
+      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView.jdField_a_of_type_AndroidWidgetImageView, paramContext);
+      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView.jdField_a_of_type_AndroidWidgetTextView, paramContext);
+      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView.b, paramContext);
+      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(paramView);
+      paramBundle = paramView.jdField_a_of_type_AndroidWidgetLinearLayout;
+      paramContext = paramView;
+      paramView = paramBundle;
     }
   }
   
-  public void d()
+  public String a()
   {
-    super.d();
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfAzzf.length)
+    return "TextButton";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.S = azah.a(paramObjectInput.readUTF(), false);
+    this.T = azah.a(paramObjectInput.readUTF(), false);
+    this.U = azah.a(paramObjectInput.readUTF(), false);
+    this.b = azah.a(paramObjectInput.readUTF(), false);
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    if (this.S == null)
     {
-      this.jdField_a_of_type_ArrayOfInt[i] = ((int)(System.currentTimeMillis() - this.jdField_b_of_type_Long));
-      i += 1;
+      str = "";
+      paramObjectOutput.writeUTF(str);
+      if (this.T != null) {
+        break label86;
+      }
+      str = "";
+      label32:
+      paramObjectOutput.writeUTF(str);
+      if (this.U != null) {
+        break label94;
+      }
+      str = "";
+      label49:
+      paramObjectOutput.writeUTF(str);
+      if (this.b != null) {
+        break label102;
+      }
     }
+    label86:
+    label94:
+    label102:
+    for (String str = "";; str = this.b)
+    {
+      paramObjectOutput.writeUTF(str);
+      return;
+      str = azah.a(this.S, false);
+      break;
+      str = this.T;
+      break label32;
+      str = this.U;
+      break label49;
+    }
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, this.a);
+    if (!TextUtils.isEmpty(this.S)) {
+      paramXmlSerializer.attribute(null, "text", this.S);
+    }
+    if (!TextUtils.isEmpty(this.T)) {
+      paramXmlSerializer.attribute(null, "leftImage", this.T);
+    }
+    if (!TextUtils.isEmpty(this.U)) {
+      paramXmlSerializer.attribute(null, "rightImage", this.U);
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      paramXmlSerializer.attribute(null, "url", this.b);
+    }
+    paramXmlSerializer.endTag(null, this.a);
+  }
+  
+  public boolean a(azwj paramazwj)
+  {
+    if (paramazwj == null) {
+      return true;
+    }
+    this.b = paramazwj.a("url");
+    this.T = paramazwj.a("leftImage");
+    this.U = paramazwj.a("rightImage");
+    this.S = azah.a(paramazwj.a("text"), false);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 26;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.k = paramInt;
+  }
+  
+  public int c()
+  {
+    return -16777216;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.l = paramInt;
+  }
+  
+  public int d()
+  {
+    return 0;
   }
 }
 

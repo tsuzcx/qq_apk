@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class TroopAioKeyBlackRule
-  extends awbv
+  extends awge
 {
-  @awdj
+  @awhs
   public String mBlackUinKeywordRuleId;
 }
 

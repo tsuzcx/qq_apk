@@ -1,28 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
-class arhf
-  implements View.OnClickListener
+public final class arhf
+  extends WebChromeClient
 {
-  arhf(argq paramargq, int paramInt) {}
+  private final IHostInterface.IWebClient a;
   
-  public void onClick(View paramView)
+  private arhf(IHostInterface.IWebClient paramIWebClient)
   {
-    if (this.jdField_a_of_type_Argq.a != null)
-    {
-      if (this.jdField_a_of_type_Int != 1) {
-        break label79;
-      }
-      azmj.b(null, "dc00898", "", "", "0X800A745", "0X800A745", aroo.c(this.jdField_a_of_type_Argq.e()), 0, "", "", "", "");
-      if (this.jdField_a_of_type_Argq.a.c()) {
-        this.jdField_a_of_type_Argq.a.b();
-      }
+    this.a = paramIWebClient;
+  }
+  
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  {
+    if ((this.a == null) || (!this.a.onConsoleMessage(paramConsoleMessage.message(), paramConsoleMessage.lineNumber(), paramConsoleMessage.sourceId()))) {
+      return super.onConsoleMessage(paramConsoleMessage);
     }
-    label79:
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
+    return true;
+  }
+  
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  {
+    if ((this.a == null) || (!this.a.onJsPrompt(paramWebView, paramString1, paramString2, paramString3))) {
+      return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
     }
-    this.jdField_a_of_type_Argq.a.g();
+    if (paramJsPromptResult != null) {
+      paramJsPromptResult.cancel();
+    }
+    return true;
   }
 }
 

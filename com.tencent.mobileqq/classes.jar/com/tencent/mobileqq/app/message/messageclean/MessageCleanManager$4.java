@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.app.message.messageclean;
 
-import amhq;
-import amhy;
+import ammf;
+import ammn;
 import java.util.Iterator;
 import java.util.List;
 
 public class MessageCleanManager$4
   implements Runnable
 {
-  public MessageCleanManager$4(amhy paramamhy, List paramList) {}
+  public MessageCleanManager$4(ammn paramammn, List paramList) {}
   
   public void run()
   {
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
-      amhq localamhq = (amhq)localIterator.next();
-      amhy.a(this.this$0, localamhq);
+      ammf localammf = (ammf)localIterator.next();
+      ammn.a(this.this$0, localammf);
     }
   }
 }

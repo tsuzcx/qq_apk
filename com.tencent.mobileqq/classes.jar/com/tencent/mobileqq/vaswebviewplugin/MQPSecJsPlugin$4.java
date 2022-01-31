@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
-import bebx;
-import becq;
-import behj;
+import begg;
+import begz;
+import bels;
 import com.tencent.mobileqq.widget.QQToast;
 
 class MQPSecJsPlugin$4
@@ -13,9 +13,9 @@ class MQPSecJsPlugin$4
   
   public void run()
   {
-    bebx localbebx = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-    if ((localbebx != null) && ((localbebx instanceof behj))) {
-      QQToast.a(this.this$0.activity, this.this$0.activity.getString(2131692397), 0).b(((behj)localbebx).b());
+    begg localbegg = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
+    if ((localbegg != null) && ((localbegg instanceof bels))) {
+      QQToast.a(this.this$0.activity, this.this$0.activity.getString(2131692398), 0).b(((bels)localbegg).b());
     }
   }
 }

@@ -1,19 +1,25 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
 public class xkc
-  implements AdapterView.OnItemSelectedListener
+  implements xkb
 {
-  public xkc(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public xkc(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a()
   {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
+    this.a.a.c(true);
   }
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public void a(xkl paramxkl)
+  {
+    this.a.b(paramxkl);
+  }
+  
+  public void b()
+  {
+    this.a.a();
+  }
 }
 
 

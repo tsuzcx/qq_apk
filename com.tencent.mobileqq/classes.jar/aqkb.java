@@ -1,36 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aqkb
-  implements View.OnClickListener
+class aqkb
+  implements DialogInterface.OnClickListener
 {
-  public aqkb(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  aqkb(aqjz paramaqjz) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramView == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseCloudFileTabView.b, 2, "qfilebaserecenttabview del error, tag is null");
-      }
-      return;
-    }
-    WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)paramView.getTag();
-    if (localWeiYunFileInfo != null)
-    {
-      if (this.a.a != null) {
-        this.a.a.a(null);
-      }
-      QfileBaseCloudFileTabView.a(this.a).a().a(localWeiYunFileInfo);
-    }
-    this.a.a.a(Integer.valueOf(-1));
-    paramView.setVisibility(4);
-    this.a.setListFooter();
-    this.a.aB_();
+    aqjz.a(this.a).dismiss();
   }
 }
 

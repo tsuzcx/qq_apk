@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar;
 
-import amti;
-import amtj;
-import amtk;
+import amxx;
+import amxy;
+import amxz;
 
 class FramePerformanceMonitor$CurrentRunnable
   implements Runnable
@@ -31,8 +31,8 @@ class FramePerformanceMonitor$CurrentRunnable
       {
         localException.printStackTrace();
       }
-      amtk localamtk = FramePerformanceMonitor.a(this.this$0).a();
-      FramePerformanceMonitor.a(this.this$0).a(localamtk);
+      amxz localamxz = FramePerformanceMonitor.a(this.this$0).a();
+      FramePerformanceMonitor.a(this.this$0).a(localamxz);
       Thread.sleep(FramePerformanceMonitor.a(this.this$0));
     }
   }

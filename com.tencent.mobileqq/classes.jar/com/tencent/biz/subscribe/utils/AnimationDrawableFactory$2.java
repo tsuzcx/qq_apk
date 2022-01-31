@@ -8,14 +8,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import ygq;
-import ygr;
-import ygu;
+import yld;
+import yle;
+import ylh;
 
 public class AnimationDrawableFactory$2
   implements Runnable
 {
-  public AnimationDrawableFactory$2(ygq paramygq, boolean paramBoolean, String paramString, int paramInt, ygu paramygu) {}
+  public AnimationDrawableFactory$2(yld paramyld, boolean paramBoolean, String paramString, int paramInt, ylh paramylh) {}
   
   public void run()
   {
@@ -24,13 +24,13 @@ public class AnimationDrawableFactory$2
     if (this.jdField_a_of_type_Boolean)
     {
       localObject1 = localObject2;
-      if (ygq.a(this.this$0) != null)
+      if (yld.a(this.this$0) != null)
       {
         localObject1 = localObject2;
-        if (ygq.a(this.this$0).get(this.jdField_a_of_type_JavaLangString) != null)
+        if (yld.a(this.this$0).get(this.jdField_a_of_type_JavaLangString) != null)
         {
           QLog.i("AnimationDrawableFactory", 2, "animationDrawable use cache" + this.jdField_a_of_type_JavaLangString);
-          localObject1 = (AnimationDrawable)ygq.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
+          localObject1 = (AnimationDrawable)yld.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
         }
       }
     }
@@ -52,7 +52,7 @@ public class AnimationDrawableFactory$2
             localObject2 = localObject1;
             if (localObject3.length > 0)
             {
-              Arrays.sort((Object[])localObject3, new ygr(this));
+              Arrays.sort((Object[])localObject3, new yle(this));
               int j = this.jdField_a_of_type_Int / localObject3.length;
               QLog.i("AnimationDrawableFactory", 2, "createFromDirectory perDuration=" + j);
               localObject1 = new AnimationDrawable();
@@ -68,16 +68,16 @@ public class AnimationDrawableFactory$2
                 localObject2 = localObject3[i];
                 try
                 {
-                  localObject2 = ygq.a(this.this$0, (File)localObject2);
+                  localObject2 = yld.a(this.this$0, (File)localObject2);
                   if (localObject2 != null) {
                     ((AnimationDrawable)localObject1).addFrame(new BitmapDrawable((Bitmap)localObject2), j);
                   }
-                  ygq.a(this.this$0).put(this.jdField_a_of_type_JavaLangString, localObject1);
+                  yld.a(this.this$0).put(this.jdField_a_of_type_JavaLangString, localObject1);
                 }
                 catch (OutOfMemoryError localOutOfMemoryError)
                 {
-                  while (this.jdField_a_of_type_Ygu == null) {}
-                  this.jdField_a_of_type_Ygu.a();
+                  while (this.jdField_a_of_type_Ylh == null) {}
+                  this.jdField_a_of_type_Ylh.a();
                   QLog.e("AnimationDrawableFactory", 2, "createFromDirectory OutOfMemoryError");
                 }
                 i += 1;
@@ -88,15 +88,15 @@ public class AnimationDrawableFactory$2
       }
     }
     label343:
-    while (this.jdField_a_of_type_Ygu == null) {
+    while (this.jdField_a_of_type_Ylh == null) {
       return;
     }
     if (localOutOfMemoryError != null)
     {
-      this.jdField_a_of_type_Ygu.a(localOutOfMemoryError);
+      this.jdField_a_of_type_Ylh.a(localOutOfMemoryError);
       return;
     }
-    this.jdField_a_of_type_Ygu.a();
+    this.jdField_a_of_type_Ylh.a();
   }
 }
 

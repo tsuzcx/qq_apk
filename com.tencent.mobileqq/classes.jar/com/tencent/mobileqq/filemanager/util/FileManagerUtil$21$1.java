@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import aqsc;
-import arnu;
-import arnz;
+import aqwl;
+import arsd;
+import arsi;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -55,8 +55,8 @@ class FileManagerUtil$21$1
         if (QLog.isColorLevel()) {
           QLog.i("CHECK_FILE_EXISTED", 1, "cann't find exsited file,entity[" + this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName + "]");
         }
-        if (this.this$0.jdField_a_of_type_Arnz != null) {
-          this.this$0.jdField_a_of_type_Arnz.a(false);
+        if (this.this$0.jdField_a_of_type_Arsi != null) {
+          this.this$0.jdField_a_of_type_Arsi.a(false);
         }
         return;
         if (this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA != null)
@@ -97,7 +97,7 @@ class FileManagerUtil$21$1
         localObject = localFileManagerEntity;
         continue;
       }
-      arnu.a().execute(new FileManagerUtil.21.1.1(this, (FileManagerEntity)localObject));
+      arsd.a().execute(new FileManagerUtil.21.1.1(this, (FileManagerEntity)localObject));
       return;
       localObject = null;
     }

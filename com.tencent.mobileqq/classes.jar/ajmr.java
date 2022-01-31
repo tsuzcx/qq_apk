@@ -1,25 +1,13 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Inherited;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class ajmr
-  implements azdk
-{
-  public ajmr(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "single tap focus " + paramBoolean1);
-    }
-    ajnh.a(paramBoolean1);
-    if (paramBoolean1)
-    {
-      NewFlowCameraActivity.h(this.a, true);
-      return;
-    }
-    this.a.a.g();
-  }
-}
+@Inherited
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.TYPE})
+public @interface ajmr {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

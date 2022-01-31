@@ -1,25 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.15.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
 
-public class ahbz
-  implements DialogInterface.OnClickListener
+public final class ahbz
+  implements Parcelable.Creator<ZhituResponse>
 {
-  public ahbz(ClassificationSearchActivity paramClassificationSearchActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ZhituResponse a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      ThreadManager.post(new ClassificationSearchActivity.15.1(this), 10, null, true);
-      return;
-    }
-    paramDialogInterface.dismiss();
+    return new ZhituResponse(paramParcel);
+  }
+  
+  public ZhituResponse[] a(int paramInt)
+  {
+    return new ZhituResponse[paramInt];
   }
 }
 

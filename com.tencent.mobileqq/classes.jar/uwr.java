@@ -1,16 +1,12 @@
-class uwr
-  extends aljr
+public class uwr
 {
-  uwr(uwn paramuwn) {}
+  public final int a;
+  public final String a;
   
-  protected void a(int paramInt)
+  public uwr(int paramInt, String paramString)
   {
-    if (paramInt == 1)
-    {
-      wsv.b(uwn.b() + ".VASH", "Friend Cache Inited!");
-      uwn.h = true;
-      this.a.a.notifyDataSetChanged();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import aewe;
-import aewg;
-import aewj;
-import aewp;
+import afat;
+import afav;
+import afay;
+import afbe;
 import com.tencent.qphone.base.util.QLog;
 
 class LoadDataJob$UnmarshallJob
   implements Runnable
 {
   private int jdField_a_of_type_Int = -1;
-  private aewe jdField_a_of_type_Aewe;
+  private afat jdField_a_of_type_Afat;
   private byte[] jdField_a_of_type_ArrayOfByte;
   
-  public LoadDataJob$UnmarshallJob(LoadDataJob paramLoadDataJob, int paramInt, byte[] paramArrayOfByte, aewe paramaewe)
+  public LoadDataJob$UnmarshallJob(LoadDataJob paramLoadDataJob, int paramInt, byte[] paramArrayOfByte, afat paramafat)
   {
     this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Aewe = paramaewe;
+    this.jdField_a_of_type_Afat = paramafat;
     this.jdField_a_of_type_Int = paramInt;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aewe == null) {
+    if (this.jdField_a_of_type_Afat == null) {
       return;
     }
     if (this.jdField_a_of_type_ArrayOfByte == null)
     {
-      this.jdField_a_of_type_Aewe.a(this.jdField_a_of_type_Int, null);
+      this.jdField_a_of_type_Afat.a(this.jdField_a_of_type_Int, null);
       return;
     }
     try
@@ -35,8 +35,8 @@ class LoadDataJob$UnmarshallJob
       Object localObject = this.this$0.a(this.jdField_a_of_type_ArrayOfByte);
       if (localObject != null)
       {
-        localObject = (aewp)aewp.a.a((aewg)localObject);
-        this.jdField_a_of_type_Aewe.a(this.jdField_a_of_type_Int, (aewp)localObject);
+        localObject = (afbe)afbe.a.a((afav)localObject);
+        this.jdField_a_of_type_Afat.a(this.jdField_a_of_type_Int, (afbe)localObject);
         return;
       }
     }
@@ -45,7 +45,7 @@ class LoadDataJob$UnmarshallJob
       if (QLog.isColorLevel()) {
         QLog.d("UnmarshallJob", 2, "unmarshall  exception:" + this.this$0.a);
       }
-      this.jdField_a_of_type_Aewe.a(this.jdField_a_of_type_Int, null);
+      this.jdField_a_of_type_Afat.a(this.jdField_a_of_type_Int, null);
     }
   }
 }

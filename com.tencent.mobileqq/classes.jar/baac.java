@@ -1,8 +1,15 @@
-public abstract interface baac
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.PAVideoView;
+
+public class baac
 {
-  public abstract void d();
-  
-  public abstract void e();
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public PAVideoView a;
+  public TextView b;
 }
 
 

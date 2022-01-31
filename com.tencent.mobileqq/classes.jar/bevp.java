@@ -1,11 +1,6 @@
-import MWIFI.SCGet3rdCloudCheck;
-
-public class bevp
-  implements ambj
+public abstract interface bevp
 {
-  public void a(int paramInt) {}
-  
-  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
+  public abstract void a();
 }
 
 

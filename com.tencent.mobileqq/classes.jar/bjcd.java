@@ -1,26 +1,23 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import android.support.annotation.NonNull;
+import com.tencent.util.Pair;
+import cooperation.qqreader.net.BusinessTask;
 
-public class bjcd
-  implements URLDrawable.URLDrawableListener
+public final class bjcd
 {
-  public bjcd(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  public static final Pair<Integer, Integer> a = new Pair(Integer.valueOf(1154), Integer.valueOf(1));
+  public static final Pair<Integer, Integer> b = new Pair(Integer.valueOf(1529), Integer.valueOf(2));
+  public static final Pair<Integer, Integer> c = new Pair(Integer.valueOf(1201), Integer.valueOf(1));
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull bjan parambjan)
   {
-    QLog.w("QzoneVerticalVideoDownloadActivity", 1, "onLoadFialed");
+    a(paramPair, parambjan, false);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull bjan parambjan, boolean paramBoolean)
   {
-    QzoneVerticalVideoDownloadActivity.access$100(this.a).setImageDrawable(paramURLDrawable);
+    paramPair = new BusinessTask("ZzConfigDataTask", paramPair);
+    paramPair.a(parambjan, paramBoolean);
+    paramPair.a();
   }
 }
 

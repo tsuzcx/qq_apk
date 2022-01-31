@@ -1,16 +1,12 @@
-public class aznf
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
+
+public abstract interface aznf
 {
-  public int a;
-  public long a;
-  public String a = "";
-  public int b;
-  public long b;
-  public String b = "";
-  public int c;
+  public abstract void a(int paramInt, SoConfig.SoInfo paramSoInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aznf
  * JD-Core Version:    0.7.0.1
  */

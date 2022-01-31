@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import bepp;
-import bjxj;
+import bety;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.common.app.AppInterface;
@@ -44,7 +44,7 @@ public class FastWebShareUtils$3
       scx.a((Context)localObject1, (String)localObject2, i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
       sdn.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, -1, false);
       return;
-      if (bjxj.t(ors.a()) == 1)
+      if (bkbq.t(ors.a()) == 1)
       {
         localObject2 = WXShareHelper.a();
         str1 = scx.a(this.this$0);

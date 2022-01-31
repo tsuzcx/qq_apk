@@ -1,8 +1,8 @@
 package com.tencent.gdtad.api.interstitial;
 
-import aaiq;
-import aakd;
-import aanp;
+import aanf;
+import aaos;
+import aase;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,10 +10,10 @@ import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtHandler.Options;
 
 public class GdtInterstitialParams
-  extends aaiq
+  extends aanf
   implements Parcelable
 {
-  public static final Parcelable.Creator<GdtInterstitialParams> CREATOR = new aakd();
+  public static final Parcelable.Creator<GdtInterstitialParams> CREATOR = new aaos();
   public int a;
   public GdtHandler.Options a;
   public boolean a;
@@ -30,7 +30,7 @@ public class GdtInterstitialParams
     this.jdField_a_of_type_Int = -2147483648;
     if (paramParcel == null)
     {
-      aanp.d("GdtInterstitialParams", "GdtInterstitialParams(Parcel in) error");
+      aase.d("GdtInterstitialParams", "GdtInterstitialParams(Parcel in) error");
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = ((GdtHandler.Options)paramParcel.readParcelable(GdtHandler.Options.class.getClassLoader()));
@@ -71,7 +71,7 @@ public class GdtInterstitialParams
   {
     if (paramParcel == null)
     {
-      aanp.d("GdtInterstitialParams", "writeToParcel error");
+      aase.d("GdtInterstitialParams", "writeToParcel error");
       return;
     }
     paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options, paramInt);

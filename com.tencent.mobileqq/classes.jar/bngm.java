@@ -1,18 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class bngm
-  implements Parcelable.Creator<FilterCategoryItem>
+class bngm
+  implements View.OnClickListener
 {
-  public FilterCategoryItem a(Parcel paramParcel)
-  {
-    return new FilterCategoryItem(paramParcel);
-  }
+  bngm(bngl parambngl) {}
   
-  public FilterCategoryItem[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new FilterCategoryItem[paramInt];
+    if (!bngl.a(this.a).f)
+    {
+      bngl.a(this.a);
+      return;
+    }
+    if (bngl.a(this.a).p)
+    {
+      bflz.a().a(2131718658);
+      bngl.a(this.a).p = false;
+      bngl.a(this.a).setSelected(false);
+      bngl.a(this.a).m = false;
+      bngl.a(this.a).d(3008);
+      return;
+    }
+    bflz.a().a(2131718660);
+    bngl.a(this.a).p = true;
+    bngl.a(this.a).setSelected(true);
+    bngl.a(this.a).m = true;
+    bngl.a(this.a).d(3007);
   }
 }
 

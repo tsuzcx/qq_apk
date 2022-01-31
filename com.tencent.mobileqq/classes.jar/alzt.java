@@ -1,10 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.List;
 
-public final class alzt
-  implements DialogInterface.OnClickListener
+public class alzt
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public long a;
+  public List<PublicAccountInfo> a;
+  public boolean a;
 }
 
 

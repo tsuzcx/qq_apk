@@ -1,4 +1,20 @@
-public class bgpa {}
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.core.utils.FileInfo;
+
+public final class bgpa
+  implements Parcelable.Creator<FileInfo>
+{
+  public FileInfo a(Parcel paramParcel)
+  {
+    return new FileInfo(paramParcel, null);
+  }
+  
+  public FileInfo[] a(int paramInt)
+  {
+    return new FileInfo[paramInt];
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

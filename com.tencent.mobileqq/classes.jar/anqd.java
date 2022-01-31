@@ -1,51 +1,16 @@
-import android.os.Build.VERSION;
-import android.os.MessageQueue.IdleHandler;
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class anqd
-  implements MessageQueue.IdleHandler
+class anqd
+  implements DialogInterface.OnDismissListener
 {
-  public anqd(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
+  anqd(anqc paramanqc, bhuf parambhuf) {}
   
-  public boolean queueIdle()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (azcw.d(azcw.b)) {
-      this.a.a(true);
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-      DynamicAvatarRecordActivity.a(this.a);
-      if (Build.VERSION.SDK_INT < 14) {
-        this.a.jdField_a_of_type_Bdfq = bdcd.a(this.a, 230).setMessage(alpo.a(2131703948)).setPositiveButton(this.a.getString(2131694205), new anqe(this));
-      }
-      try
-      {
-        this.a.jdField_a_of_type_Bdfq.setCancelable(false);
-        this.a.jdField_a_of_type_Bdfq.show();
-        if (QLog.isColorLevel()) {
-          QLog.i("PEAK_CAMERA", 2, "Added camera view.");
-        }
-        return false;
-        this.a.a(false);
-      }
-      catch (WindowManager.BadTokenException localBadTokenException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("DynamicAvatarRecordActivity", 2, "", localBadTokenException);
-          }
-        }
-      }
-    }
+    this.jdField_a_of_type_Bhuf.dismiss();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearData actionsheet is closed", new Object[0]));
   }
 }
 

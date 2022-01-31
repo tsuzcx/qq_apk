@@ -1,40 +1,40 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import aweh;
-import awei;
-import awtj;
-import awtk;
-import awtw;
-import azmj;
-import azmz;
-import azqa;
-import azqb;
-import azwd;
-import bamr;
-import bamy;
-import baoc;
-import baps;
-import bapv;
-import bapw;
-import bapy;
-import baqv;
-import baqw;
+import awiq;
+import awir;
+import awxs;
+import awxt;
+import awyf;
+import azqs;
+import azri;
+import azuj;
+import azuk;
+import baam;
+import bara;
 import barh;
-import bari;
-import bark;
-import basb;
-import basj;
-import basp;
-import batw;
+import basl;
 import baub;
-import baug;
-import bawo;
-import bawq;
-import baxd;
-import baxg;
-import baxu;
-import bdcs;
+import baue;
+import bauf;
+import bauh;
+import bave;
+import bavf;
+import bavq;
+import bavr;
+import bavt;
+import bawk;
+import baws;
+import bawy;
+import bayf;
+import bayk;
+import bayp;
+import bbax;
+import bbaz;
+import bbbm;
+import bbbp;
+import bbcd;
+import bdhb;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -60,11 +60,11 @@ import tencent.im.cs.cmd0x346.cmd0x346.DownloadSuccReq;
 import tencent.im.cs.cmd0x346.cmd0x346.ReqBody;
 
 public class C2CPttDownloadProcessor
-  extends bamr
-  implements bapw, bapy, Runnable
+  extends bara
+  implements bauf, bauh, Runnable
 {
-  protected azwd a;
-  private baug jdField_a_of_type_Baug;
+  protected baam a;
+  private bayp jdField_a_of_type_Bayp;
   private MessageForPtt jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
   String[] jdField_a_of_type_ArrayOfJavaLangString = null;
   private long jdField_c_of_type_Long;
@@ -73,27 +73,27 @@ public class C2CPttDownloadProcessor
   String e;
   private String f;
   
-  public C2CPttDownloadProcessor(batw parambatw, baub parambaub)
+  public C2CPttDownloadProcessor(bayf parambayf, bayk parambayk)
   {
-    super(parambatw, parambaub);
+    super(parambayf, parambayk);
     this.jdField_a_of_type_JavaUtilList = ((ProxyIpManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(3)).getProxyIp(4);
-    this.jdField_a_of_type_Azwd = ((azwd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(17));
+    this.jdField_a_of_type_Baam = ((baam)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(17));
   }
   
   private File a(long paramLong1, long paramLong2)
   {
-    Object localObject = azqa.a(paramLong1, paramLong2);
+    Object localObject = azuj.a(paramLong1, paramLong2);
     if (QLog.isColorLevel()) {
       QLog.d("BaseTransProcessor", 2, "try get stream info " + paramLong1 + " " + paramLong2 + " " + localObject);
     }
     if (localObject != null)
     {
-      azqb localazqb = (azqb)((Map.Entry)localObject).getValue();
-      if (localazqb != null)
+      azuk localazuk = (azuk)((Map.Entry)localObject).getValue();
+      if (localazuk != null)
       {
-        azqa.a((String)((Map.Entry)localObject).getKey());
-        localazqb.a(false);
-        localObject = localazqb.a();
+        azuj.a((String)((Map.Entry)localObject).getKey());
+        localazuk.a(false);
+        localObject = localazuk.a();
         if ((localObject != null) && (((File)localObject).exists())) {
           return localObject;
         }
@@ -106,8 +106,8 @@ public class C2CPttDownloadProcessor
   {
     int j = 17;
     cmd0x346.DownloadSuccReq localDownloadSuccReq = new cmd0x346.DownloadSuccReq();
-    localDownloadSuccReq.uint64_uin.set(Long.parseLong(this.jdField_a_of_type_Baub.jdField_b_of_type_JavaLangString));
-    localDownloadSuccReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Baub.e));
+    localDownloadSuccReq.uint64_uin.set(Long.parseLong(this.jdField_a_of_type_Bayk.jdField_b_of_type_JavaLangString));
+    localDownloadSuccReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Bayk.e));
     cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
     localReqBody.uint32_cmd.set(1000);
     localReqBody.uint32_seq.set(0);
@@ -166,7 +166,7 @@ public class C2CPttDownloadProcessor
               if (!this.jdField_c_of_type_Boolean) {
                 continue;
               }
-              baoc.a().a().a(0);
+              basl.a().a().a(0);
             }
             if (QLog.isDevelopLevel()) {
               QLog.d("SPD", 4, "c2c directDownloadIfCan error");
@@ -192,7 +192,7 @@ public class C2CPttDownloadProcessor
         }
         i = 1;
         continue;
-        baoc.a().a(16, this.f);
+        basl.a().a(16, this.f);
         continue;
         f(3);
       }
@@ -210,11 +210,11 @@ public class C2CPttDownloadProcessor
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_FailCode", String.valueOf(paramInt));
-      azmz localazmz = azmz.a(com.tencent.mobileqq.mqsafeedit.BaseApplication.getContext());
+      azri localazri = azri.a(com.tencent.mobileqq.mqsafeedit.BaseApplication.getContext());
       if (paramInt == 0) {}
       for (boolean bool = true;; bool = false)
       {
-        localazmz.a(null, "C2CPTTDirectUrl", bool, 0L, 0L, localHashMap, null);
+        localazri.a(null, "C2CPTTDirectUrl", bool, 0L, 0L, localHashMap, null);
         return;
       }
       return;
@@ -229,28 +229,28 @@ public class C2CPttDownloadProcessor
     if ("pttcenter".equals(this.jdField_d_of_type_JavaLangString)) {
       str = "PttCenterSvr.pb_pttCenter_CMD_REQ_DOWNLOAD_SUCC-1000";
     }
-    barh localbarh;
+    bavq localbavq;
     for (;;)
     {
       cmd0x346.ReqBody localReqBody = a();
-      localbarh = new barh();
-      localbarh.jdField_a_of_type_JavaLangString = str;
-      localbarh.jdField_a_of_type_ArrayOfByte = localReqBody.toByteArray();
-      localbarh.jdField_c_of_type_Int = 1;
-      localbarh.jdField_a_of_type_Int = 30000;
-      localbarh.jdField_b_of_type_Int = 1;
-      localbarh.jdField_a_of_type_Barg = this;
+      localbavq = new bavq();
+      localbavq.jdField_a_of_type_JavaLangString = str;
+      localbavq.jdField_a_of_type_ArrayOfByte = localReqBody.toByteArray();
+      localbavq.jdField_c_of_type_Int = 1;
+      localbavq.jdField_a_of_type_Int = 30000;
+      localbavq.jdField_b_of_type_Int = 1;
+      localbavq.jdField_a_of_type_Bavp = this;
       if (e()) {
         break;
       }
-      a(9366, "illegal app", null, this.jdField_a_of_type_Bamy);
+      a(9366, "illegal app", null, this.jdField_a_of_type_Barh);
       d();
       return;
       if ("ftn".equals(this.jdField_d_of_type_JavaLangString)) {
         str = "OfflineFilleHandleSvr.pb_ftnPtt_CMD_REQ_DOWNLOAD_SUCC-1000";
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager().a(localbarh);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager().a(localbavq);
   }
   
   QQMessageFacade.Message a(MessageForPtt paramMessageForPtt)
@@ -259,8 +259,8 @@ public class C2CPttDownloadProcessor
     try
     {
       paramMessageForPtt.serial();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Baub.jdField_a_of_type_Int, paramMessageForPtt.uniseq, paramMessageForPtt.msgData);
-      paramMessageForPtt = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString, 0);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bayk.jdField_a_of_type_Int, paramMessageForPtt.uniseq, paramMessageForPtt.msgData);
+      paramMessageForPtt = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString, 0);
       return paramMessageForPtt;
     }
     catch (Exception localException)
@@ -274,64 +274,64 @@ public class C2CPttDownloadProcessor
     return null;
   }
   
-  public void a(baqv parambaqv, baqw parambaqw)
+  public void a(bave parambave, bavf parambavf)
   {
-    if ((parambaqv == null) || (parambaqw == null)) {}
+    if ((parambave == null) || (parambavf == null)) {}
     do
     {
       do
       {
         return;
-      } while (!(parambaqv instanceof baps));
-      parambaqv = (baps)parambaqv;
-      parambaqv.jdField_a_of_type_Long += parambaqw.jdField_c_of_type_Long;
-    } while (0L != parambaqv.jdField_b_of_type_Long);
-    parambaqw.jdField_c_of_type_Long = 0L;
-    parambaqw = "bytes=" + parambaqv.jdField_a_of_type_Long + "-";
-    parambaqv.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
+      } while (!(parambave instanceof baub));
+      parambave = (baub)parambave;
+      parambave.jdField_a_of_type_Long += parambavf.jdField_c_of_type_Long;
+    } while (0L != parambave.jdField_b_of_type_Long);
+    parambavf.jdField_c_of_type_Long = 0L;
+    parambavf = "bytes=" + parambave.jdField_a_of_type_Long + "-";
+    parambave.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
   }
   
-  public void a(baqw parambaqw)
+  public void a(bavf parambavf)
   {
-    this.jdField_a_of_type_Barz.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-    a(parambaqw, false, "actRichMediaNetMonitor_pttDown", this.jdField_a_of_type_Baub.e);
+    this.jdField_a_of_type_Bawi.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+    a(parambavf, false, "actRichMediaNetMonitor_pttDown", this.jdField_a_of_type_Bayk.e);
   }
   
-  public void a(bari parambari, barh parambarh)
+  public void a(bavr parambavr, bavq parambavq)
   {
-    a(null, parambari.a, parambari.a.getWupBuffer());
+    a(null, parambavr.a, parambavr.a.getWupBuffer());
   }
   
-  public void a(bawo parambawo, baxd parambaxd)
+  public void a(bbax parambbax, bbbm parambbbm)
   {
-    this.jdField_a_of_type_Bawo = null;
-    if (parambaxd != null)
+    this.jdField_a_of_type_Bbax = null;
+    if (parambbbm != null)
     {
       int i = 0;
-      while (i < parambaxd.jdField_a_of_type_JavaUtilList.size())
+      while (i < parambbbm.jdField_a_of_type_JavaUtilList.size())
       {
-        parambawo = (baxg)parambaxd.jdField_a_of_type_JavaUtilList.get(i);
+        parambbax = (bbbp)parambbbm.jdField_a_of_type_JavaUtilList.get(i);
         if (QLog.isColorLevel()) {
-          b("procUrl", parambawo.toString());
+          b("procUrl", parambbax.toString());
         }
-        this.i = parambawo.jdField_d_of_type_Boolean;
+        this.i = parambbax.jdField_d_of_type_Boolean;
         if (QLog.isColorLevel()) {
           QLog.e("http_sideway", 2, "C2CPttDownProcessor.onBusiProtoResp:isSendByQuickHttp=" + this.i);
         }
-        a(this.jdField_a_of_type_Bamy, parambawo);
-        if (parambawo.jdField_c_of_type_Int == 0)
+        a(this.jdField_a_of_type_Barh, parambbax);
+        if (parambbax.jdField_c_of_type_Int == 0)
         {
-          this.jdField_c_of_type_JavaLangString = parambawo.jdField_a_of_type_JavaLangString;
-          this.jdField_a_of_type_Baoj.i = this.jdField_c_of_type_JavaLangString;
-          if ((parambawo.jdField_b_of_type_JavaLangString != null) && (parambawo.jdField_b_of_type_JavaLangString.length() > 0)) {
-            this.jdField_b_of_type_JavaLangString = parambawo.jdField_b_of_type_JavaLangString;
+          this.jdField_c_of_type_JavaLangString = parambbax.jdField_a_of_type_JavaLangString;
+          this.jdField_a_of_type_Bass.i = this.jdField_c_of_type_JavaLangString;
+          if ((parambbax.jdField_b_of_type_JavaLangString != null) && (parambbax.jdField_b_of_type_JavaLangString.length() > 0)) {
+            this.jdField_b_of_type_JavaLangString = parambbax.jdField_b_of_type_JavaLangString;
           }
-          this.jdField_a_of_type_JavaUtilArrayList = a(parambawo.jdField_b_of_type_JavaUtilArrayList, parambawo.jdField_a_of_type_JavaUtilArrayList);
+          this.jdField_a_of_type_JavaUtilArrayList = a(parambbax.jdField_b_of_type_JavaUtilArrayList, parambbax.jdField_a_of_type_JavaUtilArrayList);
           if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
           {
-            parambawo = basj.a(this.jdField_c_of_type_JavaLangString);
-            if (parambawo != null) {
-              this.jdField_a_of_type_JavaUtilArrayList.add(parambawo);
+            parambbax = baws.a(this.jdField_c_of_type_JavaLangString);
+            if (parambbax != null) {
+              this.jdField_a_of_type_JavaUtilArrayList.add(parambbax);
             }
           }
           if (this.jdField_j_of_type_Boolean)
@@ -451,7 +451,7 @@ public class C2CPttDownloadProcessor
   public void a(boolean paramBoolean)
   {
     boolean bool = true;
-    if ((!paramBoolean) && (basb.b(this.jdField_j_of_type_Int))) {
+    if ((!paramBoolean) && (bawk.b(this.jdField_j_of_type_Int))) {
       break label17;
     }
     label17:
@@ -468,13 +468,13 @@ public class C2CPttDownloadProcessor
       i = 2;
       this.m = (i | j);
       l1 = (System.nanoTime() - this.k) / 1000000L;
-      localObject = this.jdField_d_of_type_Bamy.a(1) + ";" + this.jdField_a_of_type_Bamy.a(2) + ";" + this.jdField_b_of_type_Bamy.a(3) + ";" + this.jdField_c_of_type_Bamy.a(4);
+      localObject = this.jdField_d_of_type_Barh.a(1) + ";" + this.jdField_a_of_type_Barh.a(2) + ";" + this.jdField_b_of_type_Barh.a(3) + ";" + this.jdField_c_of_type_Barh.a(4);
       this.jdField_a_of_type_JavaUtilHashMap.put("param_step", localObject);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_fromUin", this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_uuid", this.jdField_a_of_type_Baub.e);
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_fromUin", this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_uuid", this.jdField_a_of_type_Bayk.e);
       this.jdField_a_of_type_JavaUtilHashMap.put("param_writtenSize", String.valueOf(this.jdField_b_of_type_Long));
       this.jdField_a_of_type_JavaUtilHashMap.put("param_quickHttp", String.valueOf(this.i));
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_pttOpt", String.valueOf(awtk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_c_of_type_Boolean)));
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_pttOpt", String.valueOf(awxt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_c_of_type_Boolean)));
       if (QLog.isColorLevel()) {
         QLog.d("BaseTransProcessor", 2, "totle=" + this.jdField_a_of_type_Long + " written=" + this.jdField_b_of_type_Long);
       }
@@ -496,7 +496,7 @@ public class C2CPttDownloadProcessor
       try
       {
         b(true, l1);
-        azmz.a(com.tencent.qphone.base.util.BaseApplication.getContext()).a(null, b(), true, l1, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "");
+        azri.a(com.tencent.qphone.base.util.BaseApplication.getContext()).a(null, b(), true, l1, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "");
         l();
       }
       catch (Exception localException)
@@ -505,7 +505,7 @@ public class C2CPttDownloadProcessor
         label467:
         long l3;
         long l2;
-        baug localbaug;
+        bayp localbayp;
         if (!QLog.isColorLevel()) {
           continue;
         }
@@ -518,7 +518,7 @@ public class C2CPttDownloadProcessor
       if (localObject == null) {
         break;
       }
-      awtw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramBoolean, this.jdField_j_of_type_Int, this.jdField_a_of_type_Baug, (MessageForPtt)localObject);
+      awyf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramBoolean, this.jdField_j_of_type_Int, this.jdField_a_of_type_Bayp, (MessageForPtt)localObject);
       return;
       i = 1;
       break label62;
@@ -529,15 +529,15 @@ public class C2CPttDownloadProcessor
       }
       this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", String.valueOf(this.jdField_j_of_type_Int));
       this.jdField_a_of_type_JavaUtilHashMap.put("param_errorDesc", this.jdField_j_of_type_JavaLangString);
-      if ((this.jdField_a_of_type_Baqv instanceof baps))
+      if ((this.jdField_a_of_type_Bave instanceof baub))
       {
-        localObject = basj.a(((baps)this.jdField_a_of_type_Baqv).jdField_a_of_type_JavaLangString);
+        localObject = baws.a(((baub)this.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString);
         if (localObject != null) {
-          this.jdField_a_of_type_JavaUtilHashMap.put("param_reqIp", ((basp)localObject).jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_JavaUtilHashMap.put("param_reqIp", ((bawy)localObject).jdField_a_of_type_JavaLangString);
         }
       }
       b(false, l1);
-      azmz.a(com.tencent.qphone.base.util.BaseApplication.getContext()).a(null, b(), false, l1, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
+      azri.a(com.tencent.qphone.base.util.BaseApplication.getContext()).a(null, b(), false, l1, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
       if ((this.jdField_j_of_type_Int == -9527) && (this.jdField_j_of_type_JavaLangString != null) && (this.jdField_j_of_type_JavaLangString.equals("H_400_-5103017")))
       {
         if (this.jdField_d_of_type_Long > this.jdField_c_of_type_Long)
@@ -551,40 +551,40 @@ public class C2CPttDownloadProcessor
           ((HashMap)localObject).put("PttOff", String.valueOf(l3));
           ((HashMap)localObject).put("OutOfTimeReason", String.valueOf(256));
           ((HashMap)localObject).put("param_FailCode", String.valueOf(l2));
-          azmz.a(com.tencent.qphone.base.util.BaseApplication.getContext()).a(null, "actC2CPTTOutOfTime", false, 0L, 0L, (HashMap)localObject, null);
+          azri.a(com.tencent.qphone.base.util.BaseApplication.getContext()).a(null, "actC2CPTTOutOfTime", false, 0L, 0L, (HashMap)localObject, null);
         }
-        if (this.jdField_a_of_type_Baub.jdField_a_of_type_JavaLangObject != null)
+        if (this.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangObject != null)
         {
-          if (this.jdField_a_of_type_Baub.jdField_a_of_type_Int != 0) {
+          if (this.jdField_a_of_type_Bayk.jdField_a_of_type_Int != 0) {
             continue;
           }
           localObject = "0X80059B2";
-          localbaug = (baug)this.jdField_a_of_type_Baub.jdField_a_of_type_JavaLangObject;
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", (String)localObject, (String)localObject, bark.a(localbaug.jdField_a_of_type_Int, localbaug.jdField_b_of_type_Int), 0, "", "", "", "8.3.3");
+          localbayp = (bayp)this.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangObject;
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", (String)localObject, (String)localObject, bavt.a(localbayp.jdField_a_of_type_Int, localbayp.jdField_b_of_type_Int), 0, "", "", "", "8.3.5");
         }
       }
     }
   }
   
-  public void aS_()
+  public void aP_()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.extFlag == -1L) {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.extFlag = 0L;
     }
-    if (this.jdField_a_of_type_Baug.jdField_a_of_type_Int == 6)
+    if (this.jdField_a_of_type_Bayp.jdField_a_of_type_Int == 6)
     {
       localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
       ((MessageForPtt)localObject).extFlag |= 1L;
     }
-    super.aS_();
+    super.aP_();
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_Baub.jdField_a_of_type_Int == 0) {}
+    if (this.jdField_a_of_type_Bayk.jdField_a_of_type_Int == 0) {}
     for (int i = 1;; i = 4)
     {
-      bark.a((QQAppInterface)localObject, i, false, 2);
-      if (!this.jdField_a_of_type_Baub.h.equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath))
+      bavt.a((QQAppInterface)localObject, i, false, 2);
+      if (!this.jdField_a_of_type_Bayk.h.equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath))
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath = this.jdField_a_of_type_Baub.h;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath = this.jdField_a_of_type_Bayk.h;
         a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
       }
       f();
@@ -599,27 +599,27 @@ public class C2CPttDownloadProcessor
   
   void b(String paramString)
   {
-    baps localbaps = new baps();
-    localbaps.jdField_a_of_type_Bapx = this;
-    localbaps.jdField_a_of_type_Bapy = this;
-    localbaps.jdField_a_of_type_JavaLangString = paramString;
-    localbaps.jdField_a_of_type_Int = 0;
-    localbaps.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilArrayList;
-    localbaps.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Baub.h;
-    localbaps.e = String.valueOf(this.jdField_a_of_type_Baub.jdField_a_of_type_Long);
-    localbaps.g = this.jdField_a_of_type_Baub.jdField_a_of_type_Int;
-    localbaps.f = this.jdField_a_of_type_Baub.jdField_b_of_type_Int;
-    localbaps.jdField_a_of_type_Long = 0L;
-    localbaps.k = true;
-    localbaps.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
-    localbaps.l = true;
-    localbaps.jdField_a_of_type_Bapw = this;
-    localbaps.jdField_d_of_type_JavaLangString = this.e;
-    localbaps.jdField_d_of_type_Boolean = true;
+    baub localbaub = new baub();
+    localbaub.jdField_a_of_type_Baug = this;
+    localbaub.jdField_a_of_type_Bauh = this;
+    localbaub.jdField_a_of_type_JavaLangString = paramString;
+    localbaub.jdField_a_of_type_Int = 0;
+    localbaub.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilArrayList;
+    localbaub.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bayk.h;
+    localbaub.e = String.valueOf(this.jdField_a_of_type_Bayk.jdField_a_of_type_Long);
+    localbaub.g = this.jdField_a_of_type_Bayk.jdField_a_of_type_Int;
+    localbaub.f = this.jdField_a_of_type_Bayk.jdField_b_of_type_Int;
+    localbaub.jdField_a_of_type_Long = 0L;
+    localbaub.k = true;
+    localbaub.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
+    localbaub.l = true;
+    localbaub.jdField_a_of_type_Bauf = this;
+    localbaub.jdField_d_of_type_JavaLangString = this.e;
+    localbaub.jdField_d_of_type_Boolean = true;
     if (this.f != null)
     {
-      localbaps.jdField_c_of_type_Long = 120000L;
-      localbaps.jdField_c_of_type_Int = 0;
+      localbaub.jdField_c_of_type_Long = 120000L;
+      localbaub.jdField_c_of_type_Int = 0;
     }
     Object localObject2 = null;
     Object localObject1 = localObject2;
@@ -630,46 +630,46 @@ public class C2CPttDownloadProcessor
         localObject1 = Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray());
       }
     }
-    paramString = basj.a(paramString);
-    b("httpDown", "RespDomain: " + paramString + " ipList:" + (String)localObject1 + " uuid:" + this.jdField_a_of_type_Baub.e + " downOffset:" + localbaps.jdField_a_of_type_Long);
+    paramString = baws.a(paramString);
+    b("httpDown", "RespDomain: " + paramString + " ipList:" + (String)localObject1 + " uuid:" + this.jdField_a_of_type_Bayk.e + " downOffset:" + localbaub.jdField_a_of_type_Long);
     if (!f()) {
       return;
     }
-    this.jdField_a_of_type_Baqv = localbaps;
+    this.jdField_a_of_type_Bave = localbaub;
     n();
-    this.jdField_a_of_type_Bapv.a(localbaps);
+    this.jdField_a_of_type_Baue.a(localbaub);
   }
   
   public int c()
   {
     super.c();
-    b("uiParam", this.jdField_a_of_type_Baub.toString());
-    Object localObject1 = this.jdField_a_of_type_Baub.e;
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Baub.jdField_a_of_type_Int, this.jdField_a_of_type_Baub.jdField_a_of_type_Long);
+    b("uiParam", this.jdField_a_of_type_Bayk.toString());
+    Object localObject1 = this.jdField_a_of_type_Bayk.e;
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bayk.jdField_a_of_type_Int, this.jdField_a_of_type_Bayk.jdField_a_of_type_Long);
     if ((localObject2 != null) && (((MessageRecord)localObject2).getPttStreamFlag() == 10001)) {
       this.h = true;
     }
-    if ((localObject1 == null) || (((String)localObject1).equals("")) || (((String)localObject1).equals("null")) || (bdcs.c((String)localObject1)) || (((String)localObject1).startsWith("http://")))
+    if ((localObject1 == null) || (((String)localObject1).equals("")) || (((String)localObject1).equals("null")) || (bdhb.c((String)localObject1)) || (((String)localObject1).startsWith("http://")))
     {
       b(9302, a(new Exception("uuid illegal " + (String)localObject1)));
       d();
       return -1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt = ((MessageForPtt)this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    this.jdField_a_of_type_Baug = ((baug)this.jdField_a_of_type_Baub.jdField_a_of_type_JavaLangObject);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt = ((MessageForPtt)this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    this.jdField_a_of_type_Bayp = ((bayp)this.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangObject);
     this.jdField_c_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.msgTime;
     this.jdField_d_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.msgRecTime;
     int i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType;
-    if ((this.jdField_a_of_type_Baub.h == null) || (!bdcs.c(this.jdField_a_of_type_Baub.i))) {
+    if ((this.jdField_a_of_type_Bayk.h == null) || (!bdhb.c(this.jdField_a_of_type_Bayk.i))) {
       if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath.equals(""))) {
         break label383;
       }
     }
     label383:
-    for (this.jdField_a_of_type_Baub.h = a("c2c", (String)localObject1, i);; this.jdField_a_of_type_Baub.h = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath)
+    for (this.jdField_a_of_type_Bayk.h = a("c2c", (String)localObject1, i);; this.jdField_a_of_type_Bayk.h = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath)
     {
-      this.e = (this.jdField_a_of_type_Baub.h + "~tmp");
-      localObject1 = a(this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid, this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq);
+      this.e = (this.jdField_a_of_type_Bayk.h + "~tmp");
+      localObject1 = a(this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid, this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq);
       if (localObject1 != null)
       {
         localObject2 = new File(this.e);
@@ -685,11 +685,11 @@ public class C2CPttDownloadProcessor
   public void d()
   {
     super.d();
-    if (this.jdField_a_of_type_Baub.jdField_a_of_type_Aweh != null)
+    if (this.jdField_a_of_type_Bayk.jdField_a_of_type_Awiq != null)
     {
-      awei localawei = new awei();
-      localawei.jdField_a_of_type_Int = -1;
-      this.jdField_a_of_type_Baub.jdField_a_of_type_Aweh.a(localawei);
+      awir localawir = new awir();
+      localawir.jdField_a_of_type_Int = -1;
+      this.jdField_a_of_type_Bayk.jdField_a_of_type_Awiq.a(localawir);
       return;
     }
     d(2005);
@@ -698,23 +698,23 @@ public class C2CPttDownloadProcessor
   public void e()
   {
     super.e();
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url = MessageForPtt.getMsgFilePath(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, this.jdField_a_of_type_Baub.h);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url = MessageForPtt.getMsgFilePath(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, this.jdField_a_of_type_Bayk.h);
     this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fileSize = this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.urlAtServer = this.jdField_a_of_type_Baub.e;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.urlAtServer = this.jdField_a_of_type_Bayk.e;
     Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    if ((localObject != null) && (this.jdField_a_of_type_Baub.e != null) && (this.jdField_a_of_type_Baub.e.equals(((QQMessageFacade.Message)localObject).pttUrl))) {
-      ((QQMessageFacade.Message)localObject).pttUrl = this.jdField_a_of_type_Baub.h;
+    if ((localObject != null) && (this.jdField_a_of_type_Bayk.e != null) && (this.jdField_a_of_type_Bayk.e.equals(((QQMessageFacade.Message)localObject).pttUrl))) {
+      ((QQMessageFacade.Message)localObject).pttUrl = this.jdField_a_of_type_Bayk.h;
     }
-    if (this.jdField_a_of_type_Azwd.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt))
+    if (this.jdField_a_of_type_Baam.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt))
     {
-      azmj.b(null, "dc00898", "", "", "0X8009DF6", "0X8009DF6", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Azwd.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt, 2);
+      azqs.b(null, "dc00898", "", "", "0X8009DF6", "0X8009DF6", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Baam.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt, 2);
     }
-    if (this.jdField_a_of_type_Baub.jdField_a_of_type_Aweh != null)
+    if (this.jdField_a_of_type_Bayk.jdField_a_of_type_Awiq != null)
     {
-      localObject = new awei();
-      ((awei)localObject).jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Baub.jdField_a_of_type_Aweh.a((awei)localObject);
+      localObject = new awir();
+      ((awir)localObject).jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Bayk.jdField_a_of_type_Awiq.a((awir)localObject);
       return;
     }
     d(2003);
@@ -722,35 +722,35 @@ public class C2CPttDownloadProcessor
   
   void f()
   {
-    this.jdField_a_of_type_Bamy.a();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Baub.jdField_a_of_type_Int, this.jdField_a_of_type_Baub.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Barh.a();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bayk.jdField_a_of_type_Int, this.jdField_a_of_type_Bayk.jdField_a_of_type_Long);
     if ((localObject != null) && ((localObject instanceof MessageForPtt)))
     {
       this.jdField_d_of_type_JavaLangString = ((MessageForPtt)localObject).storageSource;
-      localObject = new bawo();
-      bawq localbawq = new bawq();
-      localbawq.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Baub.jdField_b_of_type_JavaLangString;
-      localbawq.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString;
-      localbawq.e = this.jdField_a_of_type_Baub.jdField_d_of_type_JavaLangString;
-      localbawq.f = this.jdField_a_of_type_Baub.jdField_a_of_type_Int;
-      localbawq.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Baub.e;
-      localbawq.jdField_b_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-      localbawq.jdField_a_of_type_Boolean = this.jdField_a_of_type_Baub.jdField_b_of_type_Boolean;
+      localObject = new bbax();
+      bbaz localbbaz = new bbaz();
+      localbbaz.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bayk.jdField_b_of_type_JavaLangString;
+      localbbaz.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString;
+      localbbaz.e = this.jdField_a_of_type_Bayk.jdField_d_of_type_JavaLangString;
+      localbbaz.f = this.jdField_a_of_type_Bayk.jdField_a_of_type_Int;
+      localbbaz.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bayk.e;
+      localbbaz.jdField_b_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+      localbbaz.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bayk.jdField_b_of_type_Boolean;
       MessageForPtt localMessageForPtt = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
-      localbawq.jdField_a_of_type_Int = localMessageForPtt.voiceType;
-      localbawq.jdField_c_of_type_Int = localMessageForPtt.autoToText;
-      if (1008 == localbawq.f) {
-        localbawq.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.busiType;
+      localbbaz.jdField_a_of_type_Int = localMessageForPtt.voiceType;
+      localbbaz.jdField_c_of_type_Int = localMessageForPtt.autoToText;
+      if (1008 == localbbaz.f) {
+        localbbaz.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.busiType;
       }
-      localbawq.jdField_d_of_type_Int = this.jdField_a_of_type_Baub.g;
-      ((bawo)localObject).jdField_a_of_type_Baxv = this;
-      ((bawo)localObject).jdField_a_of_type_JavaLangString = "c2c_ptt_dw";
-      ((bawo)localObject).jdField_a_of_type_JavaUtilList.add(localbawq);
-      ((bawo)localObject).jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager();
+      localbbaz.jdField_d_of_type_Int = this.jdField_a_of_type_Bayk.g;
+      ((bbax)localObject).jdField_a_of_type_Bbce = this;
+      ((bbax)localObject).jdField_a_of_type_JavaLangString = "c2c_ptt_dw";
+      ((bbax)localObject).jdField_a_of_type_JavaUtilList.add(localbbaz);
+      ((bbax)localObject).jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager();
       if (e()) {
         break label284;
       }
-      a(9366, "illegal app", null, this.jdField_a_of_type_Bamy);
+      a(9366, "illegal app", null, this.jdField_a_of_type_Barh);
       d();
     }
     label284:
@@ -761,30 +761,30 @@ public class C2CPttDownloadProcessor
       b("findDbRec", "not found");
       break;
       if (QLog.isColorLevel()) {
-        b("requestStart", ((bawo)localObject).toString());
+        b("requestStart", ((bbax)localObject).toString());
       }
     } while (!f());
-    this.jdField_a_of_type_Bawo = ((bawo)localObject);
-    baxu.a((bawo)localObject);
+    this.jdField_a_of_type_Bbax = ((bbax)localObject);
+    bbcd.a((bbax)localObject);
   }
   
   void g()
   {
-    this.jdField_b_of_type_Bamy.a();
+    this.jdField_b_of_type_Barh.a();
     String str = this.jdField_c_of_type_JavaLangString;
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
       this.jdField_b_of_type_JavaLangString = "grouptalk.c2c.qq.com";
     }
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
-      str = basj.a(str, ((basp)this.jdField_a_of_type_JavaUtilArrayList.get(0)).a(str));
+      str = baws.a(str, ((bawy)this.jdField_a_of_type_JavaUtilArrayList.get(0)).a(str));
       this.jdField_a_of_type_JavaUtilArrayList.remove(0);
     }
     for (;;)
     {
       a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaLangString);
       b(str);
-      baoc.a().a().a(basj.a(str), 0);
+      basl.a().a().a(baws.a(str), 0);
       return;
       str = a(str);
     }
@@ -792,54 +792,54 @@ public class C2CPttDownloadProcessor
   
   public void n()
   {
-    if ((this.jdField_a_of_type_Baqv != null) && ((this.jdField_a_of_type_Baqv instanceof baps))) {
-      ((baps)this.jdField_a_of_type_Baqv).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype("pttCd", ((baps)this.jdField_a_of_type_Baqv).jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Bave != null) && ((this.jdField_a_of_type_Bave instanceof baub))) {
+      ((baub)this.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype("pttCd", ((baub)this.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void onResp(baqw parambaqw)
+  public void onResp(bavf parambavf)
   {
-    super.onResp(parambaqw);
-    bamy localbamy;
+    super.onResp(parambavf);
+    barh localbarh;
     boolean bool;
     if (this.f != null)
     {
-      localbamy = this.jdField_d_of_type_Bamy;
+      localbarh = this.jdField_d_of_type_Barh;
       ThreadManager.getSubThreadHandler().removeCallbacks(this);
       StringBuilder localStringBuilder = new StringBuilder().append(" result:");
-      if (parambaqw.jdField_a_of_type_Int != 0) {
+      if (parambavf.jdField_a_of_type_Int != 0) {
         break label194;
       }
       bool = true;
       label48:
       b("onHttpResp", bool);
-      if (parambaqw.jdField_a_of_type_Int != 0) {
+      if (parambavf.jdField_a_of_type_Int != 0) {
         break label199;
       }
       bool = true;
       label73:
-      a(localbamy, parambaqw, bool);
-      this.jdField_a_of_type_Long = parambaqw.jdField_a_of_type_Long;
+      a(localbarh, parambavf, bool);
+      this.jdField_a_of_type_Long = parambavf.jdField_a_of_type_Long;
       if (this.jdField_a_of_type_Long <= 0L) {
-        this.jdField_a_of_type_Long = (parambaqw.jdField_b_of_type_Long + parambaqw.jdField_a_of_type_Baqv.jdField_a_of_type_Long);
+        this.jdField_a_of_type_Long = (parambavf.jdField_b_of_type_Long + parambavf.jdField_a_of_type_Bave.jdField_a_of_type_Long);
       }
-      this.jdField_b_of_type_Long += parambaqw.jdField_c_of_type_Long;
-      if (parambaqw.jdField_a_of_type_Int != 0) {
+      this.jdField_b_of_type_Long += parambavf.jdField_c_of_type_Long;
+      if (parambavf.jdField_a_of_type_Int != 0) {
         break label204;
       }
       h();
       e();
-      this.jdField_a_of_type_Barz.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-      a(parambaqw, true, "actRichMediaNetMonitor_pttDown", this.jdField_a_of_type_Baub.e);
+      this.jdField_a_of_type_Bawi.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+      a(parambavf, true, "actRichMediaNetMonitor_pttDown", this.jdField_a_of_type_Bayk.e);
       if (this.f != null) {
         f(0);
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Baqv = null;
+      this.jdField_a_of_type_Bave = null;
       return;
-      localbamy = this.jdField_b_of_type_Bamy;
+      localbarh = this.jdField_b_of_type_Barh;
       break;
       label194:
       bool = false;
@@ -853,10 +853,10 @@ public class C2CPttDownloadProcessor
         b(false);
         return;
       }
-      if ((parambaqw.jdField_b_of_type_Int == 9364) && (this.l < 3))
+      if ((parambavf.jdField_b_of_type_Int == 9364) && (this.l < 3))
       {
         b("[netChg]", "failed.but net change detect.so retry");
-        this.jdField_a_of_type_Baqv = null;
+        this.jdField_a_of_type_Bave = null;
         this.l += 1;
         m();
         f();
@@ -868,13 +868,13 @@ public class C2CPttDownloadProcessor
   
   public void run()
   {
-    if (this.jdField_a_of_type_Baqv != null)
+    if (this.jdField_a_of_type_Bave != null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("SPD", 2, "Direct download failed overtime = " + this.f);
       }
-      this.jdField_a_of_type_Bapv.b(this.jdField_a_of_type_Baqv);
-      this.jdField_a_of_type_Baqv = null;
+      this.jdField_a_of_type_Baue.b(this.jdField_a_of_type_Bave);
+      this.jdField_a_of_type_Bave = null;
     }
     b(true);
   }

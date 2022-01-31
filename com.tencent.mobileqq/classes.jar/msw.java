@@ -28,7 +28,7 @@ class msw
       msa.a(this.jdField_a_of_type_Msr.a, this.b);
       return;
     }
-    paramView = aekt.a(new Intent(BaseApplicationImpl.getApplication(), SplashActivity.class), new int[] { 2 });
+    paramView = aepi.a(new Intent(BaseApplicationImpl.getApplication(), SplashActivity.class), new int[] { 2 });
     paramView.putExtra("uin", this.jdField_a_of_type_Msr.a.a().a().d);
     paramView.putExtra("uintype", 0);
     paramView.putExtra("uinname", this.jdField_a_of_type_Msr.a.a().a().e);

@@ -1,47 +1,24 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ahpa
-  extends alvc
+  implements View.OnClickListener
 {
-  public ahpa(PublicAccountFragment paramPublicAccountFragment) {}
+  public ahpa(ShowExternalTroopListActivity paramShowExternalTroopListActivity, ImageView paramImageView) {}
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onUnfollowPublicAccount errCode: " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.i();
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onUpdateUserFollowList errCode: " + paramInt + " isFinish:" + paramBoolean);
-    }
-    if (paramBoolean)
+    bddf.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_JavaLangString, 0);
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.app;
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_Boolean) {}
+    for (paramView = "0";; paramView = "1")
     {
-      if (PublicAccountFragment.a(this.a))
-      {
-        if (this.a.a != null) {
-          this.a.a.a(this.a.b(), true, null);
-        }
-        PublicAccountFragment.a(this.a, false);
-      }
-      this.a.i();
-    }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onFollowPublicAccount errCode: " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.i();
+      azqs.b(localQQAppInterface, "P_CliOper", "Grp_join", "", "person_data", "Clk_user", 0, 0, str, paramView, "", "");
+      return;
     }
   }
 }

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.theme.diy;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Process;
-import azmz;
-import baks;
+import azri;
+import bapb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class ThemeDIYActivity$7
-  implements baks
+  implements bapb
 {
   ThemeDIYActivity$7(ThemeDIYActivity paramThemeDIYActivity) {}
   
@@ -31,7 +31,7 @@ class ThemeDIYActivity$7
       ((HashMap)localObject).put("param_vipType", String.valueOf(this.this$0.isVip));
       ((HashMap)localObject).put("param_opType", String.valueOf(paramInt1));
       ((HashMap)localObject).put("param_isDiy", String.valueOf(this.this$0.isDIYThemeBefore));
-      azmz.a(this.this$0.mContext).a(this.this$0.app.getAccount(), "ThemeDiyStyleLogicCallback", false, 1L, 0L, (HashMap)localObject, "", false);
+      azri.a(this.this$0.mContext).a(this.this$0.app.getAccount(), "ThemeDiyStyleLogicCallback", false, 1L, 0L, (HashMap)localObject, "", false);
       label136:
       if ((13 == paramInt1) && (paramBundle != null))
       {
@@ -57,7 +57,7 @@ class ThemeDIYActivity$7
         return 1;
         if (paramInt2 == 8)
         {
-          this.this$0.mHandler.sendMessage(Message.obtain(this.this$0.mHandler, 25, alpo.a(2131715290) + paramInt1));
+          this.this$0.mHandler.sendMessage(Message.obtain(this.this$0.mHandler, 25, alud.a(2131715302) + paramInt1));
           QLog.e("ThemeDIYActivity", 1, "mSaveStyleCallback, OPERATE_KEY_DOWN_BG Error, pageIndex:" + paramInt1);
           return 0;
           if ((14 == paramInt1) && (paramBundle != null))
@@ -118,7 +118,7 @@ class ThemeDIYActivity$7
             }
             else if (paramInt2 == 8)
             {
-              this.this$0.mHandler.sendMessage(Message.obtain(this.this$0.mHandler, 26, alpo.a(2131715277)));
+              this.this$0.mHandler.sendMessage(Message.obtain(this.this$0.mHandler, 26, alud.a(2131715289)));
               QLog.e("ThemeDIYActivity", 1, "StyleCallBack:save theme false, error type == " + paramInt2);
             }
           }

@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
-import bgmn;
+import bgqu;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 
 class BaseJsPluginEngine$4$1

@@ -3,14 +3,14 @@ package com.tencent.mobileqq.troop.utils;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.util.MQLruCache;
-import bcgy;
-import bcha;
+import bclh;
+import bclj;
 import java.util.LinkedList;
 
 public class RollangleImageView$ImageCache$1
   implements Runnable
 {
-  public RollangleImageView$ImageCache$1(bcgy parambcgy) {}
+  public RollangleImageView$ImageCache$1(bclh parambclh) {}
   
   public void run()
   {
@@ -26,25 +26,25 @@ public class RollangleImageView$ImageCache$1
         label19:
         synchronized (this.this$0)
         {
-          if (bcgy.a(this.this$0) == null) {
+          if (bclh.a(this.this$0) == null) {
             return;
           }
         }
         if (localObject2 != null) {
-          bcgy.a(this.this$0).poll();
+          bclh.a(this.this$0).poll();
         }
-        if (bcgy.a(this.this$0).isEmpty()) {
+        if (bclh.a(this.this$0).isEmpty()) {
           return;
         }
-        bcha localbcha = (bcha)bcgy.a(this.this$0).peek();
-        ??? = RollangleImageView.a(localbcha.jdField_a_of_type_JavaLangString);
-        Object localObject3 = localbcha;
+        bclj localbclj = (bclj)bclh.a(this.this$0).peek();
+        ??? = RollangleImageView.a(localbclj.jdField_a_of_type_JavaLangString);
+        Object localObject3 = localbclj;
         if (??? == null) {
           continue;
         }
-        RollangleImageView.a.put("troopfileimage://" + localbcha.jdField_a_of_type_JavaLangString, ???);
-        bcgy.a(this.this$0).obtainMessage(0, new Object[] { localbcha.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView, localbcha.jdField_a_of_type_JavaLangString, ??? }).sendToTarget();
-        localObject3 = localbcha;
+        RollangleImageView.a.put("troopfileimage://" + localbclj.jdField_a_of_type_JavaLangString, ???);
+        bclh.a(this.this$0).obtainMessage(0, new Object[] { localbclj.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView, localbclj.jdField_a_of_type_JavaLangString, ??? }).sendToTarget();
+        localObject3 = localbclj;
       }
       catch (InterruptedException localInterruptedException)
       {

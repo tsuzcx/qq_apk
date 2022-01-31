@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.red;
 
-import ajaf;
+import ajeu;
 
 class QWRedConfig$1
   implements Runnable
@@ -11,7 +11,7 @@ class QWRedConfig$1
   {
     synchronized (QWRedConfig.access$000(this.this$0))
     {
-      ajaf.a(this.this$0, QWRedConfig.access$100(this.this$0));
+      ajeu.a(this.this$0, QWRedConfig.access$100(this.this$0));
       return;
     }
   }

@@ -1,26 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-
 public class abwv
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public abwv(AccountManageActivity paramAccountManageActivity) {}
+  public final int a;
+  public final Class<? extends abwy> a;
+  public final String a;
+  public final int b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public abwv(String paramString, int paramInt1, int paramInt2, Class<? extends abwy> paramClass)
   {
-    SettingCloneUtil.writeValue(this.a, this.a.app.getCurrentAccountUin(), null, "qqsetting_subaccount_notify", paramBoolean);
-    ((azyu)this.a.app.getManager(61)).a(this.a.app);
-    paramCompoundButton = this.a.app;
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
-    {
-      azmj.b(paramCompoundButton, "dc00898", "", "", "0X800AC3A", "0X800AC3A", 0, 0, i + "", "", "", "");
-      return;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
   }
 }
 

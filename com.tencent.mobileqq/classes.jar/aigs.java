@@ -1,25 +1,16 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View.OnClickListener;
 
-public abstract interface aigs
+class aigs
+  implements View.OnClickListener
 {
-  public abstract View a();
+  aigs(aigp paramaigp) {}
   
-  public abstract ImageView a();
-  
-  public abstract TextView a();
-  
-  public abstract QQAppInterface a();
-  
-  public abstract View b();
-  
-  public abstract TextView b();
-  
-  public abstract TextView c();
-  
-  public abstract TextView d();
+  public void onClick(View paramView)
+  {
+    this.a.a = null;
+    this.a.dismiss();
+  }
 }
 
 

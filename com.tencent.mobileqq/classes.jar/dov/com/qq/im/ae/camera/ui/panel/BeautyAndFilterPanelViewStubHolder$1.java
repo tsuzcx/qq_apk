@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import axkr;
-import bktt;
+import axpa;
+import bkya;
 
 public class BeautyAndFilterPanelViewStubHolder$1
   implements Runnable
 {
-  public BeautyAndFilterPanelViewStubHolder$1(bktt parambktt, axkr paramaxkr) {}
+  public BeautyAndFilterPanelViewStubHolder$1(bkya parambkya, axpa paramaxpa) {}
   
   public void run()
   {
     if (this.a != null) {
-      this.a.a(bktt.a(this.this$0));
+      this.a.a(bkya.a(this.this$0));
     }
   }
 }

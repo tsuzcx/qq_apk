@@ -1,57 +1,112 @@
-import NS_MINI_INTERFACE.INTERFACE.StGetFormIdReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetFormIdRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.launcher.model.ApkgBaseInfo;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import java.io.File;
+import java.util.HashMap;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class bgyu
-  extends bgzp
+  extends ApkgBaseInfo
 {
-  private INTERFACE.StGetFormIdReq a = new INTERFACE.StGetFormIdReq();
+  public HashMap<String, String> a;
+  public JSONObject a;
   
-  public bgyu(String paramString)
+  public bgyu(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo)
   {
-    this.a.appid.set(paramString);
+    super(paramString, paramMiniAppBaseInfo);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  protected String a()
+  public static bgyu a(String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo)
   {
-    return "mini_app_userapp";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
+    if ((TextUtils.isEmpty(paramString1)) || (!new File(paramString1).exists())) {
       return null;
     }
-    INTERFACE.StGetFormIdRsp localStGetFormIdRsp = new INTERFACE.StGetFormIdRsp();
-    try
+    paramString1 = new bgyu(paramString1, paramMiniAppInfo);
+    paramString1.init(paramString2);
+    return paramString1;
+  }
+  
+  private static HashMap<String, String> a(JSONArray paramJSONArray)
+  {
+    HashMap localHashMap = new HashMap();
+    if (paramJSONArray != null)
     {
-      localStGetFormIdRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetFormIdRsp != null)
+      int i = 0;
+      while (i < paramJSONArray.length())
       {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("formId", localStGetFormIdRsp.formId.get());
-        return paramArrayOfByte;
+        Object localObject = paramJSONArray.optJSONObject(i);
+        if (localObject != null)
+        {
+          String str = ((JSONObject)localObject).optString("name");
+          localObject = ((JSONObject)localObject).optString("root");
+          if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
+            localHashMap.put(str, localObject);
+          }
+        }
+        i += 1;
       }
-      QMLog.d("GetFormIdRequest", "onResponse fail.rsp = null");
-      return null;
     }
-    catch (Exception paramArrayOfByte)
+    return localHashMap;
+  }
+  
+  public void a(MiniAppInfo paramMiniAppInfo, String paramString, bgyt parambgyt)
+  {
+    bgyk.a(paramMiniAppInfo, this, paramString, parambgyt);
+  }
+  
+  public String getRootPath(String paramString)
+  {
+    if (bgpv.a(paramString)) {
+      return "";
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      QMLog.d("GetFormIdRequest", "onResponse fail." + paramArrayOfByte);
+      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
+        return (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      }
+      if (this.jdField_a_of_type_JavaUtilHashMap.containsValue(paramString)) {
+        return paramString;
+      }
     }
+    return "";
+  }
+  
+  public String getWorkerPath(String paramString1, String paramString2)
+  {
     return null;
   }
   
-  protected byte[] a()
+  public void init(String paramString)
   {
-    return this.a.toByteArray();
+    if (paramString != null) {}
+    for (;;)
+    {
+      try
+      {
+        this.mConfigStr = bgpc.b(new File(getApkgFolderPath() + "/" + paramString, "game.json"));
+        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(this.mConfigStr);
+        JSONArray localJSONArray = this.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("subpackages");
+        paramString = localJSONArray;
+        if (localJSONArray == null) {
+          paramString = this.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("subPackages");
+        }
+        this.jdField_a_of_type_JavaUtilHashMap = a(paramString);
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
+      this.mConfigStr = bgpc.b(new File(getApkgFolderPath(), "game.json"));
+    }
   }
   
-  protected String b()
+  public boolean isUrlResReady(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo)
   {
-    return "GetFormId";
+    return false;
   }
 }
 

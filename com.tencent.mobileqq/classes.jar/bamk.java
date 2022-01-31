@@ -1,66 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
-import com.tencent.mobileqq.activity.photo.AppVideoDecoder;
-import com.tencent.mobileqq.activity.photo.FlowThumbDecoder;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.ThumbDecoder;
-import com.tencent.mobileqq.activity.photo.VideoDecoder;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import android.graphics.Paint;
+import android.support.annotation.NonNull;
 
-public class bamk
-  extends bame
+class bamk
+  extends bamo
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  bamk(@NonNull String paramString)
   {
-    return new File(paramDownloadParams.url.getFile());
+    super(0, paramString);
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  float a(@NonNull Paint paramPaint)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-    if (!LocalMediaInfo.class.isInstance(paramDownloadParams.tag)) {
-      throw new RuntimeException("Decode info is invalide");
-    }
-    paramURLDrawableHandler = (LocalMediaInfo)paramDownloadParams.tag;
-    for (;;)
-    {
-      try
-      {
-        paramFile = paramDownloadParams.url.getRef();
-        if ("VIDEO".equals(paramFile))
-        {
-          paramFile = new VideoDecoder(localBaseApplicationImpl, paramURLDrawableHandler);
-          paramFile = AlbumThumbManager.getInstance(localBaseApplicationImpl).getThumb(paramDownloadParams.url, paramFile, paramDownloadParams);
-          if ((paramFile == null) || (paramURLDrawableHandler == null)) {
-            break;
-          }
-          paramURLDrawableHandler.thumbSize = paramFile.getByteCount();
-          return paramFile;
-        }
-        if ("FLOW_THUMB".equals(paramFile))
-        {
-          paramFile = new FlowThumbDecoder(localBaseApplicationImpl, paramURLDrawableHandler);
-          continue;
-        }
-        if (!"APP_VIDEO".equals(paramFile)) {
-          break label153;
-        }
-      }
-      catch (NumberFormatException paramFile)
-      {
-        throw new RuntimeException("Decode type is invalid");
-      }
-      paramFile = new AppVideoDecoder(localBaseApplicationImpl, paramURLDrawableHandler);
-      continue;
-      label153:
-      paramFile = new ThumbDecoder(localBaseApplicationImpl, paramURLDrawableHandler);
-    }
-    return paramFile;
+    return paramPaint.measureText(a());
   }
 }
 

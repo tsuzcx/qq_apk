@@ -1,25 +1,11 @@
-import com.tencent.qphone.base.util.QLog;
-
-class bfnd
-  implements bfnk
+public class bfnd
 {
-  bfnd(bfna parambfna, bfnk parambfnk) {}
-  
-  public void a()
-  {
-    QLog.d("OpenSdkVirtualManager", 1, "updatePreAuthFromServer onSuccess");
-    this.jdField_a_of_type_Bfnk.a();
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "updatePreAuthFromServer onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
-    this.jdField_a_of_type_Bfnk.a(paramInt, paramString);
-  }
+  public static final String a = bfbm.a().f();
+  public static final String b = bfbm.a().f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfnd
  * JD-Core Version:    0.7.0.1
  */

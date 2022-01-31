@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import amou;
+import amtj;
 import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class ARTransferDoorLogicManager$11
   implements Runnable
 {
-  public ARTransferDoorLogicManager$11(amou paramamou) {}
+  public ARTransferDoorLogicManager$11(amtj paramamtj) {}
   
   public void run()
   {

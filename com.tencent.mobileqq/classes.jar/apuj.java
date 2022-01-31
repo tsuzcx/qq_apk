@@ -1,9 +1,8 @@
-import com.tencent.image.URLImageView;
+import java.util.List;
 
-public class apuj
-  extends aprv
+public abstract interface apuj
 {
-  public URLImageView[] a;
+  public abstract List<apwv> a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

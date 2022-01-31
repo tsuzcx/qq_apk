@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bjxj;
+import bkbq;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
@@ -17,7 +17,7 @@ public final class VideoFeedsFirstVideoRecommendationManager$1
   
   public void run()
   {
-    int i = bjxj.e();
+    int i = bkbq.e();
     if ((this.a instanceof VideoInfo))
     {
       localObject = (VideoInfo)this.a;

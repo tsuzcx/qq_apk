@@ -24,21 +24,21 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import ydp;
-import yds;
-import ydw;
-import yej;
-import yel;
-import yem;
-import yho;
-import yko;
-import ykp;
-import ykq;
-import yvu;
+import yhy;
+import yib;
+import yif;
+import yiw;
+import yiy;
+import yiz;
+import ymb;
+import ypb;
+import ypc;
+import ypd;
+import zaj;
 
 public class RelativePersonalBottomView
-  extends BaseWidgetView<ydw>
-  implements yel
+  extends BaseWidgetView<yif>
+  implements yiy
 {
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   private RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
@@ -47,9 +47,9 @@ public class RelativePersonalBottomView
   private SubscribePersonalBottomOpusFragment jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment;
   private String jdField_a_of_type_JavaLangString;
   private List<SubscribeBaseBottomPersonalFragment> jdField_a_of_type_JavaUtilList;
-  private ydp jdField_a_of_type_Ydp;
-  private ydw jdField_a_of_type_Ydw;
-  private ykq jdField_a_of_type_Ykq;
+  private yhy jdField_a_of_type_Yhy;
+  private yif jdField_a_of_type_Yif;
+  private ypd jdField_a_of_type_Ypd;
   private RadioButton b;
   
   public RelativePersonalBottomView(@NonNull Context paramContext)
@@ -57,12 +57,12 @@ public class RelativePersonalBottomView
     super(paramContext);
   }
   
-  public RelativePersonalBottomView(Context paramContext, ydp paramydp)
+  public RelativePersonalBottomView(Context paramContext, yhy paramyhy)
   {
     this(paramContext);
     setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_Ydp = paramydp;
-    yej.a().a(this);
+    this.jdField_a_of_type_Yhy = paramyhy;
+    yiw.a().a(this);
   }
   
   private void b()
@@ -77,31 +77,31 @@ public class RelativePersonalBottomView
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new yko(this));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new ykp(this));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new ypb(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new ypc(this));
   }
   
   private void d()
   {
-    if (yho.a().a(this.jdField_a_of_type_JavaLangString))
+    if (ymb.a().a(this.jdField_a_of_type_JavaLangString))
     {
       if (this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment == null)
       {
         this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment = new SubscribePersonalBottomDraftsFragment();
-        if ((this.jdField_a_of_type_Ydw != null) && ((this.jdField_a_of_type_Ydw.a instanceof yem)))
+        if ((this.jdField_a_of_type_Yif != null) && ((this.jdField_a_of_type_Yif.a instanceof yiz)))
         {
-          yem localyem = (yem)this.jdField_a_of_type_Ydw.a;
-          this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment.a(localyem.jdField_a_of_type_JavaLangString, localyem);
+          yiz localyiz = (yiz)this.jdField_a_of_type_Yif.a;
+          this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment.a(localyiz.jdField_a_of_type_JavaLangString, localyiz);
         }
       }
       if (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment))
       {
-        yvu.b(this.jdField_a_of_type_JavaLangString, "auth_pubish", "exp_draft", 0, 0, new String[0]);
+        zaj.b(this.jdField_a_of_type_JavaLangString, "auth_pubish", "exp_draft", 0, 0, new String[0]);
         this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment);
         this.b.setVisibility(0);
-        this.jdField_a_of_type_Ykq.notifyDataSetChanged();
+        this.jdField_a_of_type_Ypd.notifyDataSetChanged();
       }
-      this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130838705));
+      this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130838706));
     }
     for (;;)
     {
@@ -112,7 +112,7 @@ public class RelativePersonalBottomView
       {
         this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment);
         this.b.setVisibility(8);
-        this.jdField_a_of_type_Ykq.notifyDataSetChanged();
+        this.jdField_a_of_type_Ypd.notifyDataSetChanged();
         this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(null);
       }
     }
@@ -120,12 +120,12 @@ public class RelativePersonalBottomView
   
   private void e()
   {
-    if ((this.jdField_a_of_type_Ydw != null) && ((this.jdField_a_of_type_Ydw.a instanceof yem)))
+    if ((this.jdField_a_of_type_Yif != null) && ((this.jdField_a_of_type_Yif.a instanceof yiz)))
     {
-      Object localObject = (yem)this.jdField_a_of_type_Ydw.a;
-      if (((((yem)localObject).jdField_a_of_type_JavaUtilList == null) || (((yem)localObject).jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment)) && (this.jdField_a_of_type_Ydp != null))
+      Object localObject = (yiz)this.jdField_a_of_type_Yif.a;
+      if (((((yiz)localObject).jdField_a_of_type_JavaUtilList == null) || (((yiz)localObject).jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment)) && (this.jdField_a_of_type_Yhy != null))
       {
-        localObject = this.jdField_a_of_type_Ydp.a().a().a().getChildAt(0);
+        localObject = this.jdField_a_of_type_Yhy.getParentAdapter().a().a().getChildAt(0);
         ThreadManager.getUIHandler().post(new RelativePersonalBottomView.4(this, (View)localObject));
       }
     }
@@ -137,48 +137,35 @@ public class RelativePersonalBottomView
   
   public int a()
   {
-    return 2131558716;
-  }
-  
-  public ArrayList<Class> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(SubDraftChangeEvent.class);
-    localArrayList.add(SubscribeFeedsEvent.class);
-    return localArrayList;
+    return 2131558715;
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131375712));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131371445));
-    this.b = ((RadioButton)paramView.findViewById(2131365464));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131375763));
+    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131371464));
+    this.b = ((RadioButton)paramView.findViewById(2131365466));
     this.b.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramView.findViewById(2131371710));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramView.findViewById(2131371730));
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOffscreenPageLimit(1);
-    this.jdField_a_of_type_Ykq = new ykq(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
+    this.jdField_a_of_type_Ypd = new ypd(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
     b();
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Ykq);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Ypd);
     c();
   }
   
-  public void a(SimpleBaseEvent paramSimpleBaseEvent)
+  public void a(yif paramyif)
   {
-    ThreadManager.getUIHandler().post(new RelativePersonalBottomView.3(this, paramSimpleBaseEvent));
-  }
-  
-  public void a(ydw paramydw)
-  {
-    if ((paramydw != null) && ((paramydw.a instanceof yem)))
+    if ((paramyif != null) && ((paramyif.a instanceof yiz)))
     {
-      this.jdField_a_of_type_Ydw = paramydw;
-      paramydw = (yem)paramydw.a;
+      this.jdField_a_of_type_Yif = paramyif;
+      paramyif = (yiz)paramyif.a;
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((SubscribeBaseBottomPersonalFragment)localIterator.next()).a(paramydw.jdField_a_of_type_JavaLangString, paramydw);
+        ((SubscribeBaseBottomPersonalFragment)localIterator.next()).a(paramyif.jdField_a_of_type_JavaLangString, paramyif);
       }
       e();
-      if (paramydw.b) {
+      if (paramyif.b) {
         d();
       }
     }
@@ -192,16 +179,29 @@ public class RelativePersonalBottomView
     return 0;
   }
   
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(SubDraftChangeEvent.class);
+    localArrayList.add(SubscribeFeedsEvent.class);
+    return localArrayList;
+  }
+  
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    yej.a().a(this);
+    yiw.a().a(this);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    yej.a().b(this);
+    yiw.a().b(this);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    ThreadManager.getUIHandler().post(new RelativePersonalBottomView.3(this, paramSimpleBaseEvent));
   }
 }
 

@@ -1,14 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class agew
-  implements DialogInterface.OnDismissListener
+  extends aget
 {
-  agew(aget paramaget) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public agew(QQAppInterface paramQQAppInterface)
   {
-    aget.a(this.a, null);
+    super(paramQQAppInterface);
   }
 }
 

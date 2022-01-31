@@ -2,7 +2,7 @@ import android.content.SharedPreferences.Editor;
 import com.tencent.biz.subscribe.comment.EmoView;
 
 class tdi
-  implements ydj
+  implements yhs
 {
   tdi(tdf paramtdf) {}
   

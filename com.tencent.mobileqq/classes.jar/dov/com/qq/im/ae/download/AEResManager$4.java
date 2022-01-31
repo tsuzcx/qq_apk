@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.download;
 
-import bkwi;
+import blap;
 
 public class AEResManager$4
   implements Runnable
 {
-  public AEResManager$4(bkwi parambkwi) {}
+  public AEResManager$4(blap paramblap) {}
   
   public void run()
   {
-    bkwi.a(this.this$0);
+    blap.a(this.this$0);
   }
 }
 

@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.OutputStream;
 
 public class qjt
-  extends bame
+  extends baqn
 {
   public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {

@@ -1,16 +1,17 @@
-import android.graphics.Canvas;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.BaseExpandableListAdapter;
 
-public abstract interface bhzv
+public abstract class bhzv
+  extends BaseExpandableListAdapter
 {
-  public abstract void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean);
+  public abstract int a();
   
-  public abstract void a(View paramView);
+  public abstract void a(View paramView, int paramInt);
   
-  public abstract void b(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean);
-  
-  public abstract void b(View paramView);
+  public boolean a()
+  {
+    return false;
+  }
 }
 
 

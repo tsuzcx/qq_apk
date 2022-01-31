@@ -1,26 +1,54 @@
-import android.text.TextUtils;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.util.List;
 
-public class azvw
+class azvw
+  implements View.OnClickListener
 {
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  azvw(azvv paramazvv) {}
   
-  public azvw(azvv paramazvv, azsa paramazsa)
+  public void onClick(View paramView)
   {
-    if (paramazsa == null) {
+    if (azvv.a(this.a) == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramazsa.a("c");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = paramazsa.a("r");
+    for (;;)
+    {
+      int i;
+      try
+      {
+        int j = Integer.parseInt(String.valueOf(paramView.getTag()));
+        i = 0;
+        if (i >= this.a.a.size()) {
+          break;
+        }
+        paramView = (View)azvv.a(this.a).get(i);
+        if (paramView == null) {
+          break label156;
+        }
+        if (i != j)
+        {
+          azus localazus = (azus)this.a.a.get(i);
+          if ((localazus != null) && ((localazus instanceof azvx))) {
+            ((azvx)localazus).a();
+          } else {
+            paramView.setVisibility(8);
+          }
+        }
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+      paramView = (azus)this.a.a.get(i);
+      if ((paramView != null) && ((paramView instanceof azvx))) {
+        ((azvx)paramView).b();
+      }
+      label156:
+      i += 1;
     }
-    this.b = ayvy.a(azqu.a(paramazsa), false);
-  }
-  
-  public azvw(azvv paramazvv, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
   }
 }
 

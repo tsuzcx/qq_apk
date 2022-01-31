@@ -1,17 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
-
-public class bmbp
-  implements View.OnTouchListener
+public abstract class bmbp
 {
-  public bmbp(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return this.a.a(paramView, paramMotionEvent);
-  }
+  public abstract boolean a(int paramInt1, int paramInt2);
 }
 
 

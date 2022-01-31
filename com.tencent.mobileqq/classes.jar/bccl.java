@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.logic.HomeworkTroopController.2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
-public class bccl
-  implements View.OnClickListener
+class bccl
+  implements DialogInterface.OnClickListener
 {
-  public bccl(HomeworkTroopController.2 param2) {}
+  bccl(bcck parambcck) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.this$0.a();
+    this.a.a.a(this.a.a.a);
+    if (ReciteRecordLayout.a(this.a.a) != null) {
+      ReciteRecordLayout.a(this.a.a).f();
+    }
   }
 }
 

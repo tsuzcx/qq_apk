@@ -1,8 +1,6 @@
-public class ansa
+public abstract interface ansa
 {
-  public int a;
-  public String a;
-  public int b;
+  public abstract boolean a(int paramInt);
 }
 
 

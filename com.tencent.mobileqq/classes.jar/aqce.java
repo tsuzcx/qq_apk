@@ -1,13 +1,27 @@
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView;
 
 public class aqce
-  implements aqcj
+  extends RecyclerView.ViewHolder
 {
-  public aqce(PullToRefreshBase paramPullToRefreshBase) {}
+  private ExtendFriendCampusVerifyTipsView a;
   
-  public void a()
+  public aqce(View paramView, aqib paramaqib)
   {
-    PullToRefreshBase.a(this.a);
+    super(paramView);
+    this.a = ((ExtendFriendCampusVerifyTipsView)paramView);
+    this.a.setOnClickListener(paramaqib);
+  }
+  
+  public void a(aqcx paramaqcx, int paramInt)
+  {
+    if ((paramaqcx instanceof aqcf))
+    {
+      paramaqcx = (aqcf)paramaqcx;
+      this.a.setTipsType(paramaqcx.a);
+      this.a.setPadding(0, paramInt, 0, 0);
+    }
   }
 }
 

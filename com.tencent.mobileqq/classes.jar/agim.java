@@ -1,26 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agim
-  extends agij
+class agim
+  implements DialogInterface.OnClickListener
 {
-  public String b;
+  agim(aghx paramaghx) {}
   
-  public agim(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null) {
-      this.b = paramRedPacketInfo.resPath;
-    }
-  }
-  
-  public boolean a()
-  {
-    return !TextUtils.isEmpty(this.b);
+    this.a.e();
   }
 }
 

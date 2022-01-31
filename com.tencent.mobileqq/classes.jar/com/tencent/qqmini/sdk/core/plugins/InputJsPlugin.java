@@ -12,14 +12,14 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bghn;
-import bgho;
-import bgid;
-import bgkd;
-import bgki;
-import bgkk;
-import bglm;
-import bgln;
+import bglu;
+import bglv;
+import bgmk;
+import bgok;
+import bgop;
+import bgor;
+import bgpt;
+import bgpu;
 import com.tencent.qqmini.sdk.core.widget.KeyboardLayout;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
@@ -38,29 +38,29 @@ public class InputJsPlugin
   private static final String TAG = "NetworkJsPlugin";
   private long lastShowInputTime;
   private KeyboardLayout mKeyboardLayout;
-  private bgln mListener = new InputJsPlugin.4(this);
-  private bglm mSoftKeyboardStateHelper;
+  private bgpu mListener = new InputJsPlugin.4(this);
+  private bgpt mSoftKeyboardStateHelper;
   
-  private void handleHideKeyboard(bgkd parambgkd, KeyboardLayout paramKeyboardLayout)
+  private void handleHideKeyboard(bgok parambgok, KeyboardLayout paramKeyboardLayout)
   {
     try
     {
       EditText localEditText = paramKeyboardLayout.a();
-      JSONObject localJSONObject = bgki.a("hideKeyboard", null);
-      parambgkd.a.a(parambgkd.jdField_b_of_type_Int, localJSONObject.toString());
+      JSONObject localJSONObject = bgop.a("hideKeyboard", null);
+      parambgok.a.a(parambgok.jdField_b_of_type_Int, localJSONObject.toString());
       if (paramKeyboardLayout.getVisibility() != 8) {
         paramKeyboardLayout.setVisibility(8);
       }
       hideSoftInput(paramKeyboardLayout.getContext(), localEditText);
       return;
     }
-    catch (Exception parambgkd)
+    catch (Exception parambgok)
     {
-      QMLog.e("NetworkJsPlugin", "hideKeyboard exception", parambgkd);
+      QMLog.e("NetworkJsPlugin", "hideKeyboard exception", parambgok);
     }
   }
   
-  private void handleShowKeyboard(bgkd parambgkd, KeyboardLayout paramKeyboardLayout)
+  private void handleShowKeyboard(bgok parambgok, KeyboardLayout paramKeyboardLayout)
   {
     try
     {
@@ -68,36 +68,36 @@ public class InputJsPlugin
       if (paramKeyboardLayout.getVisibility() != 0) {
         paramKeyboardLayout.setVisibility(0);
       }
-      paramKeyboardLayout.setParam(parambgkd.jdField_b_of_type_JavaLangString);
+      paramKeyboardLayout.setParam(parambgok.jdField_b_of_type_JavaLangString);
       EditText localEditText = paramKeyboardLayout.a();
       Button localButton = paramKeyboardLayout.a();
       showSoftInput(localContext, localEditText);
-      localEditText.addTextChangedListener(new InputJsPlugin.5(this, parambgkd));
-      localEditText.setOnEditorActionListener(new InputJsPlugin.6(this, localEditText, parambgkd, paramKeyboardLayout, localContext));
-      localButton.setOnClickListener(new InputJsPlugin.7(this, localEditText, parambgkd, paramKeyboardLayout, localContext));
-      parambgkd.a(bgki.a("showKeyboard", null));
+      localEditText.addTextChangedListener(new InputJsPlugin.5(this, parambgok));
+      localEditText.setOnEditorActionListener(new InputJsPlugin.6(this, localEditText, parambgok, paramKeyboardLayout, localContext));
+      localButton.setOnClickListener(new InputJsPlugin.7(this, localEditText, parambgok, paramKeyboardLayout, localContext));
+      parambgok.a(bgop.a("showKeyboard", null));
       return;
     }
-    catch (Exception parambgkd)
+    catch (Exception parambgok)
     {
-      QMLog.e("NetworkJsPlugin", "showKeyboard exception", parambgkd);
+      QMLog.e("NetworkJsPlugin", "showKeyboard exception", parambgok);
     }
   }
   
-  private void handleUpdateKeyboard(bgkd parambgkd, KeyboardLayout paramKeyboardLayout)
+  private void handleUpdateKeyboard(bgok parambgok, KeyboardLayout paramKeyboardLayout)
   {
     try
     {
       paramKeyboardLayout = paramKeyboardLayout.a();
-      paramKeyboardLayout.setText(new JSONObject(parambgkd.jdField_b_of_type_JavaLangString).optString("value", ""));
+      paramKeyboardLayout.setText(new JSONObject(parambgok.jdField_b_of_type_JavaLangString).optString("value", ""));
       paramKeyboardLayout.setSelection(paramKeyboardLayout.getText().length());
-      paramKeyboardLayout = bgki.a("updateKeyboard", null);
-      parambgkd.a.a(parambgkd.jdField_b_of_type_Int, paramKeyboardLayout.toString());
+      paramKeyboardLayout = bgop.a("updateKeyboard", null);
+      parambgok.a.a(parambgok.jdField_b_of_type_Int, paramKeyboardLayout.toString());
       return;
     }
-    catch (Exception parambgkd)
+    catch (Exception parambgok)
     {
-      QMLog.e("NetworkJsPlugin", "updateKeyboard exception", parambgkd);
+      QMLog.e("NetworkJsPlugin", "updateKeyboard exception", parambgok);
     }
   }
   
@@ -142,7 +142,7 @@ public class InputJsPlugin
     }
     for (;;)
     {
-      this.mSoftKeyboardStateHelper = new bglm(localViewGroup);
+      this.mSoftKeyboardStateHelper = new bgpt(localViewGroup);
       this.mSoftKeyboardStateHelper.a(this.mListener);
       return this.mKeyboardLayout;
       label144:
@@ -155,9 +155,9 @@ public class InputJsPlugin
     }
   }
   
-  public void hideKeyboard(bgkd parambgkd)
+  public void hideKeyboard(bgok parambgok)
   {
-    bgkk.a(new InputJsPlugin.3(this, parambgkd));
+    bgor.a(new InputJsPlugin.3(this, parambgok));
   }
   
   public void hideKeyboardUI()
@@ -174,11 +174,11 @@ public class InputJsPlugin
     }
   }
   
-  public boolean onInterceptJsEvent(bgkd parambgkd)
+  public boolean onInterceptJsEvent(bgok parambgok)
   {
     if (!this.mIsMiniGame)
     {
-      this.mMiniAppContext.a(bgid.a(parambgkd, 2));
+      this.mMiniAppContext.a(bgmk.a(parambgok, 2));
       return true;
     }
     return false;
@@ -189,22 +189,22 @@ public class InputJsPlugin
     hideKeyboardUI();
   }
   
-  public void setKeyboardValue(bgkd parambgkd) {}
+  public void setKeyboardValue(bgok parambgok) {}
   
-  public void showKeyboard(bgkd parambgkd)
+  public void showKeyboard(bgok parambgok)
   {
     if (System.currentTimeMillis() - this.lastShowInputTime > 1000L)
     {
       this.lastShowInputTime = System.currentTimeMillis();
-      bgkk.a(new InputJsPlugin.1(this, parambgkd));
+      bgor.a(new InputJsPlugin.1(this, parambgok));
     }
   }
   
-  public void updateInput(bgkd parambgkd) {}
+  public void updateInput(bgok parambgok) {}
   
-  public void updateKeyboard(bgkd parambgkd)
+  public void updateKeyboard(bgok parambgok)
   {
-    bgkk.a(new InputJsPlugin.2(this, parambgkd));
+    bgor.a(new InputJsPlugin.2(this, parambgok));
   }
 }
 

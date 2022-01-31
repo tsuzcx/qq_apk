@@ -1,54 +1,72 @@
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class bkea
-  extends Binder
-  implements bkdz
+public class bkea
 {
-  public bkea()
+  public static List<bkgn> a()
   {
-    attachInterface(this, "cooperation.wadl.ipc.IWadlServiceCallBack");
+    ArrayList localArrayList = new ArrayList();
+    bkgn localbkgn = new bkgn();
+    localbkgn.b = 1;
+    localbkgn.jdField_a_of_type_Int = 339;
+    localArrayList.add(localbkgn);
+    localbkgn = new bkgn();
+    localbkgn.b = 1;
+    localbkgn.jdField_a_of_type_Int = 340;
+    localArrayList.add(localbkgn);
+    localbkgn = new bkgn();
+    localbkgn.b = 1;
+    localbkgn.jdField_a_of_type_Int = 341;
+    localArrayList.add(localbkgn);
+    return localArrayList;
   }
   
-  public static bkdz a(IBinder paramIBinder)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2)
   {
-    if (paramIBinder == null) {
-      return null;
+    bkgq localbkgq = new bkgq();
+    long l = System.currentTimeMillis() / 1000L;
+    localbkgq.b = (String.valueOf(paramQQAppInterface.getCurrentAccountUin()) + '_' + l);
+    localbkgq.d = paramInt;
+    localbkgq.jdField_e_of_type_Int = 1;
+    localbkgq.g = String.valueOf(paramString1);
+    localbkgq.jdField_a_of_type_Long = l;
+    localbkgq.jdField_a_of_type_Int = 1;
+    localbkgq.jdField_e_of_type_JavaLangString = "tianshu.31";
+    localbkgq.i = "";
+    localbkgq.l = paramString2;
+    bkgp.a().a(localbkgq);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("TianshuAdUtils", 2, "url empty");
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.wadl.ipc.IWadlServiceCallBack");
-    if ((localIInterface != null) && ((localIInterface instanceof bkdz))) {
-      return (bkdz)localIInterface;
-    }
-    return new bkeb(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    do
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.wadl.ipc.IWadlServiceCallBack");
-      return true;
-    }
-    paramParcel1.enforceInterface("cooperation.wadl.ipc.IWadlServiceCallBack");
-    paramParcel2 = paramParcel1.readString();
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(paramParcel2, paramParcel1);
-      return true;
-    }
+      return;
+      if (MiniAppLauncher.isMiniAppUrl(paramString))
+      {
+        MiniAppLauncher.startMiniApp(paramContext, paramString, paramInt, null);
+        return;
+      }
+      if ((!paramString.startsWith("mqqapi://")) || (paramQQAppInterface == null)) {
+        break;
+      }
+      paramQQAppInterface = bdib.a(paramQQAppInterface, paramContext, paramString);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.c();
+    return;
+    paramQQAppInterface = new Intent(paramContext, QQBrowserActivity.class);
+    paramQQAppInterface.putExtra("url", paramString);
+    paramContext.startActivity(paramQQAppInterface);
   }
 }
 

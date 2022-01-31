@@ -1,11 +1,31 @@
-import android.widget.ImageView;
+import android.content.Context;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class xkh
+public class xkh
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView b;
+  public static xkl a(Context paramContext, String paramString)
+  {
+    paramContext = xkl.a(paramContext);
+    if (paramContext != null)
+    {
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext())
+      {
+        xkl localxkl = (xkl)paramContext.next();
+        if (TextUtils.equals(paramString, localxkl.a)) {
+          return localxkl;
+        }
+      }
+    }
+    return null;
+  }
   
-  xkh(xkg paramxkg) {}
+  public static boolean a(Context paramContext)
+  {
+    return !TextUtils.isEmpty(bdea.a(paramContext, "qqstory_savedMusicList"));
+  }
 }
 
 

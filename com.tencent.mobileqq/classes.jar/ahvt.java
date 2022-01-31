@@ -1,15 +1,63 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
-
-public class ahvt
-  implements DialogInterface.OnClickListener
+public final class ahvt
 {
-  public ahvt(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, acje paramacje) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private static boolean m(int paramInt)
   {
-    this.jdField_a_of_type_Acje.a(false);
+    return paramInt == -3;
+  }
+  
+  private static boolean n(int paramInt)
+  {
+    return paramInt == -2;
+  }
+  
+  private static boolean o(int paramInt)
+  {
+    return paramInt == -1;
+  }
+  
+  private static boolean p(int paramInt)
+  {
+    return paramInt < 0;
+  }
+  
+  private static boolean q(int paramInt)
+  {
+    return paramInt == 0;
+  }
+  
+  private static boolean r(int paramInt)
+  {
+    return paramInt == 1;
+  }
+  
+  private static boolean s(int paramInt)
+  {
+    return paramInt == 2;
+  }
+  
+  private static boolean t(int paramInt)
+  {
+    return paramInt == 3;
+  }
+  
+  private static boolean u(int paramInt)
+  {
+    return paramInt == 4;
+  }
+  
+  private static boolean v(int paramInt)
+  {
+    return paramInt == 5;
+  }
+  
+  private static boolean w(int paramInt)
+  {
+    return paramInt > 2;
+  }
+  
+  private static boolean x(int paramInt)
+  {
+    return paramInt >= 1;
   }
 }
 

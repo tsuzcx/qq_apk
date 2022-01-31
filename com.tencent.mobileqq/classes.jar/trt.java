@@ -1,40 +1,87 @@
-import java.util.List;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.requests.QCircleGetTaskCenterListRequest;
+import com.tencent.biz.qqcircle.widgets.QCircleTaskItemView;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import qqcircle.TaskCenterReader.TaskRecord;
 
 public class trt
+  extends yhy<TaskCenterReader.TaskRecord>
 {
-  private int jdField_a_of_type_Int;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   private String jdField_a_of_type_JavaLangString;
-  private List<String> jdField_a_of_type_JavaUtilList;
+  private int[] jdField_a_of_type_ArrayOfInt = { 2130843689, 2130843690, 2130843691, 2130843692, 2130843693, 2130843694, 2130843695, 2130843696, 2130843697, 2130843698 };
   
-  public trt(List<String> paramList, int paramInt)
+  public trt(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramBundle);
   }
   
-  public int a()
+  private RelativeLayout a()
   {
-    return this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560597, null));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369698));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378824));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new tru(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, ImmersiveUtils.a(60.0F)));
+    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
   }
   
-  public String a()
+  public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return getDataNumber();
   }
   
-  public List<String> a()
+  public int getViewTypeCount()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return 1;
   }
   
-  public void a(String paramString)
+  public void loadData(yii paramyii)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramyii.d())
+    {
+      paramyii = new QCircleGetTaskCenterListRequest(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      paramyii.setEnableCache(true);
+      VSNetworkHelper.a().a(getContext(), paramyii, new trv(this));
+    }
   }
   
-  public boolean a()
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    return (this.jdField_a_of_type_Int > 0) || ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0));
+    if (!bhrz.a(paramInt, getDataList())) {
+      ((QCircleTaskItemView)paramViewHolder.itemView).setData(getDataList().get(paramInt));
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new yhx(this, new QCircleTaskItemView(paramViewGroup.getContext()));
+  }
+  
+  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
+  {
+    setDatas(null);
+  }
+  
+  public void onPrepareParams(Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+      addFixViewOccupySpaceAtTop(a(), ImmersiveUtils.a(60.0F));
+    }
   }
 }
 

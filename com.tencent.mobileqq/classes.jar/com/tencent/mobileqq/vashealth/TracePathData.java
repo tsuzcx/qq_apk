@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vashealth;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class TracePathData
-  extends awbv
+  extends awge
 {
   public static final String TABLE_NAME = "TracePathData";
   public double distance;
   public long endTime;
   public int isStop;
-  @awdj
+  @awhs
   public long startTime;
   public int stepsGoal;
   public int totalSteps;

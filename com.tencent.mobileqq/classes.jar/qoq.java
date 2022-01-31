@@ -8,7 +8,7 @@ public class qoq
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bdcd.a(this.a, paramArrayOfString, paramArrayOfInt);
+    bdgm.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)

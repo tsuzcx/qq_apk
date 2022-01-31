@@ -1,16 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class avnd
-  implements auyz
+class avnd
+  implements View.OnClickListener
 {
-  avnd(avnh paramavnh, String paramString) {}
+  avnd(avmf paramavmf) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
-    if (this.jdField_a_of_type_Avnh != null) {
-      this.jdField_a_of_type_Avnh.a(false, this.jdField_a_of_type_JavaLangString);
-    }
+    avmf.c(this.a);
   }
 }
 

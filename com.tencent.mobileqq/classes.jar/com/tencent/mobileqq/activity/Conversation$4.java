@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import azgq;
+import azkz;
 import com.tencent.mobileqq.fpsreport.FPSSwipListView;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 
@@ -12,7 +12,7 @@ class Conversation$4
   public void run()
   {
     if (Conversation.a(this.this$0) != null) {
-      Conversation.a(this.this$0).scrollTo(0, -azgq.a(50.0F));
+      Conversation.a(this.this$0).scrollTo(0, -azkz.a(50.0F));
     }
     if (this.this$0.a != null)
     {

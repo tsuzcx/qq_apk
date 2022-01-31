@@ -1,6 +1,6 @@
 public abstract interface bhfx
 {
-  public abstract void onStartPreview(boolean paramBoolean);
+  public abstract void a();
 }
 
 

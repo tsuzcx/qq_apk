@@ -1,34 +1,80 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class acqb
-  implements Animation.AnimationListener
+  extends alpa
 {
-  public acqb(DiscussionMemberActivity paramDiscussionMemberActivity, TranslateAnimation paramTranslateAnimation1, Dialog paramDialog, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
+  public acqb(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
+    if ((paramInt2 != 0) && (TextUtils.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, paramString1)))
     {
-      this.jdField_a_of_type_AndroidAppDialog.show();
-      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
-      DiscussionMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity).setVisibility(8);
+      if ((!this.a.isFinishing()) && (this.a.isResume()))
+      {
+        paramString1 = paramString2;
+        if (TextUtils.isEmpty(paramString2)) {
+          paramString1 = this.a.getResources().getString(2131695087);
+        }
+        QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
+      }
+      ChatSettingForTroop.m(this.a);
     }
-    while (paramAnimation != this.b) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.requestLayout();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    boolean bool = true;
+    super.a(paramBoolean, paramString1, paramString2, paramString3, paramInt);
+    if (TextUtils.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, paramString1))
+    {
+      this.a.p();
+      if (!paramBoolean) {
+        break label171;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopName = true;
+      this.a.a(paramString2);
+      if ((this.a.isResume()) && (this.a.e))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop = false;
+        bcpx.a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, this.a, new acqc(this));
+        this.a.e = false;
+      }
+      paramString1 = this.a;
+      if ((this.a.d) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop)) {
+        break label166;
+      }
+      paramBoolean = bool;
+      ChatSettingForTroop.b(paramString1, paramBoolean);
+    }
+    label166:
+    label171:
+    do
+    {
+      return;
+      paramBoolean = false;
+      break;
+      if (paramInt == 1328) {
+        ChatSettingForTroop.n(this.a);
+      }
+      paramString1 = paramString3;
+      if (TextUtils.isEmpty(paramString3)) {
+        paramString1 = alud.a(2131702131);
+      }
+      QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopName = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.getTroopName();
+        this.a.e();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.chatopttroop", 2, paramString1);
+  }
 }
 
 

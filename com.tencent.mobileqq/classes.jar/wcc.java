@@ -1,8 +1,14 @@
-import android.view.View;
+import android.widget.TextView;
 
-public abstract interface wcc
+class wcc
+  implements upa
 {
-  public abstract void a(View paramView, wiu paramwiu);
+  wcc(wcb paramwcb) {}
+  
+  public void a(String paramString, int paramInt)
+  {
+    wcb.a(this.a).setText(alud.a(2131716321) + paramInt + "%");
+  }
 }
 
 

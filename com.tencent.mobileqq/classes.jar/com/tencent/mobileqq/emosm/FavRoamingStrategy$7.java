@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.emosm;
 
-import apiu;
-import apkf;
-import bdee;
+import apnd;
+import apoo;
+import bdin;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class FavRoamingStrategy$7
   implements Runnable
 {
-  public FavRoamingStrategy$7(apiu paramapiu) {}
+  public FavRoamingStrategy$7(apnd paramapnd) {}
   
   public void run()
   {
-    if ((this.this$0.a == null) || (!bdee.d(this.this$0.a.getApp()))) {
+    if ((this.this$0.a == null) || (!bdin.d(this.this$0.a.getApp()))) {
       return;
     }
-    ((apkf)this.this$0.a.getManager(103)).b();
+    ((apoo)this.this$0.a.getManager(103)).b();
   }
 }
 

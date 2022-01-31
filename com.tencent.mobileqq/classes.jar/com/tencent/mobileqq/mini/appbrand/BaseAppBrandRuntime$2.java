@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand;
 
-import bepp;
+import bety;
 
 class BaseAppBrandRuntime$2
   implements Runnable

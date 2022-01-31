@@ -1,8 +1,9 @@
-import android.graphics.PointF;
-
 public abstract interface xbx
+  extends xam
 {
-  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
+  public abstract xoe a(int paramInt);
+  
+  public abstract void a(int paramInt);
 }
 
 

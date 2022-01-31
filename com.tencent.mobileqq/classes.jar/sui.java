@@ -9,8 +9,8 @@ class sui
   public void onClick(View paramView)
   {
     nrt.a(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B6F", "0X8005B6F", 0, 0, "", "", "", "", false);
-    azmj.b(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642D", "0X800642D", 0, 0, "", "", "", "");
-    adkx.a(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_AndroidAppActivity, swy.a(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_AndroidAppActivity), null, null);
+    azqs.b(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642D", "0X800642D", 0, 0, "", "", "", "");
+    adpm.a(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_AndroidAppActivity, swy.a(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_AndroidAppActivity), null, null);
     suk.b(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
   }
 }

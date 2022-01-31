@@ -1,22 +1,16 @@
-import android.support.v7.widget.RecyclerView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import dov.com.qq.im.ae.camera.AEVideoCaptureResult;
 
-class bksm
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface bksm
 {
-  bksm(bksk parambksk) {}
+  public abstract void a(int paramInt);
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    paramCompoundButton = bksk.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      paramCompoundButton.setVisibility(i);
-      return;
-    }
-  }
+  public abstract void a(axqw paramaxqw);
+  
+  public abstract void a(AEVideoCaptureResult paramAEVideoCaptureResult);
+  
+  public abstract void m();
+  
+  public abstract void n();
 }
 
 

@@ -24,7 +24,7 @@ public class otu
   private static Set<String> b()
   {
     HashSet localHashSet = new HashSet();
-    Object localObject = (String)bjxj.a("native_feeds_aladdin_keys", "");
+    Object localObject = (String)bkbq.a("native_feeds_aladdin_keys", "");
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return localHashSet;
     }
@@ -51,7 +51,7 @@ public class otu
       {
         String str2 = (String)paramString.get(str1);
         QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-        bjxj.a("native_feeds_aladdin_keys", str2);
+        bkbq.a("native_feeds_aladdin_keys", str2);
       }
     }
     return true;

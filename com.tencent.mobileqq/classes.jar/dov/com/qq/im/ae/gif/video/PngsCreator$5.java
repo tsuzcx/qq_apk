@@ -4,30 +4,30 @@ import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
 import android.os.Handler;
 import android.os.Looper;
-import bkxq;
-import blaq;
-import blav;
+import blbx;
+import blex;
+import blfc;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.filter.BaseFilter;
 
 public class PngsCreator$5
   implements Runnable
 {
-  public PngsCreator$5(blaq paramblaq) {}
+  public PngsCreator$5(blex paramblex) {}
   
   public void run()
   {
-    blaq.a(this.this$0).b();
-    if (blaq.a(this.this$0) != null) {
-      blaq.a(this.this$0).release();
+    blex.a(this.this$0).b();
+    if (blex.a(this.this$0) != null) {
+      blex.a(this.this$0).release();
     }
     int[] arrayOfInt = new int[1];
-    arrayOfInt[0] = blaq.a(this.this$0);
+    arrayOfInt[0] = blex.a(this.this$0);
     GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-    blaq.a(this.this$0).clearGLSLSelf();
-    blaq.a(this.this$0).b();
-    blaq.a(this.this$0).clear();
-    blaq.a(this.this$0).getLooper().quit();
+    blex.a(this.this$0).clearGLSLSelf();
+    blex.a(this.this$0).b();
+    blex.a(this.this$0).clear();
+    blex.a(this.this$0).getLooper().quit();
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.model;
 
-import amqs;
-import anbw;
+import amvh;
+import angf;
 
 public class UniformGLRenderManagerImpl$1
   implements Runnable
 {
-  public UniformGLRenderManagerImpl$1(anbw paramanbw, amqs paramamqs) {}
+  public UniformGLRenderManagerImpl$1(angf paramangf, amvh paramamvh) {}
   
   public void run()
   {

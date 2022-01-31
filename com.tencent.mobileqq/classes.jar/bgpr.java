@@ -1,223 +1,106 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Process;
-import android.os.RemoteException;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.CmdProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.shell.ILaunchManager;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
-import com.tencent.qqmini.sdk.log.QMLog;
-
 public class bgpr
 {
-  private static bgpr jdField_a_of_type_Bgpr;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private static char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
   
-  public static bgpr a()
+  public static String a(String paramString)
   {
-    if (jdField_a_of_type_Bgpr == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    try
     {
-      if (jdField_a_of_type_Bgpr == null) {
-        jdField_a_of_type_Bgpr = new bgpr();
-      }
-      return jdField_a_of_type_Bgpr;
+      paramString = a(paramString, "SHA1");
+      return paramString;
     }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
   }
   
-  public void a(String paramString, Bundle paramBundle, MiniCmdCallback paramMiniCmdCallback)
+  /* Error */
+  private static String a(String paramString1, String paramString2)
   {
-    int j = 2;
-    int i = -1;
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    QMLog.i("MiniAppCmdServlet", "sendCmd cmd=" + paramString);
-    if ((paramBundle == null) || ("cmd_exit_qq".equals(paramString))) {
-      Process.killProcess(Process.myPid());
-    }
-    for (;;)
+    // Byte code:
+    //   0: new 44	java/io/BufferedInputStream
+    //   3: dup
+    //   4: new 46	java/io/FileInputStream
+    //   7: dup
+    //   8: aload_0
+    //   9: invokespecial 50	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   12: invokespecial 53	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   15: astore_0
+    //   16: sipush 4096
+    //   19: newarray byte
+    //   21: astore_3
+    //   22: aload_1
+    //   23: invokestatic 59	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   26: astore_1
+    //   27: aload_0
+    //   28: aload_3
+    //   29: invokevirtual 65	java/io/InputStream:read	([B)I
+    //   32: istore_2
+    //   33: iload_2
+    //   34: ifle +28 -> 62
+    //   37: aload_1
+    //   38: aload_3
+    //   39: iconst_0
+    //   40: iload_2
+    //   41: invokevirtual 69	java/security/MessageDigest:update	([BII)V
+    //   44: goto -17 -> 27
+    //   47: astore_3
+    //   48: aload_0
+    //   49: astore_1
+    //   50: aload_3
+    //   51: astore_0
+    //   52: aload_1
+    //   53: ifnull +7 -> 60
+    //   56: aload_1
+    //   57: invokevirtual 72	java/io/InputStream:close	()V
+    //   60: aload_0
+    //   61: athrow
+    //   62: aload_0
+    //   63: ifnull +7 -> 70
+    //   66: aload_0
+    //   67: invokevirtual 72	java/io/InputStream:close	()V
+    //   70: aload_1
+    //   71: invokevirtual 76	java/security/MessageDigest:digest	()[B
+    //   74: invokestatic 79	bgpr:a	([B)Ljava/lang/String;
+    //   77: areturn
+    //   78: astore_0
+    //   79: goto -9 -> 70
+    //   82: astore_1
+    //   83: goto -23 -> 60
+    //   86: astore_0
+    //   87: aconst_null
+    //   88: astore_1
+    //   89: goto -37 -> 52
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	92	0	paramString1	String
+    //   0	92	1	paramString2	String
+    //   32	9	2	i	int
+    //   21	18	3	arrayOfByte	byte[]
+    //   47	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   16	27	47	finally
+    //   27	33	47	finally
+    //   37	44	47	finally
+    //   66	70	78	java/io/IOException
+    //   56	60	82	java/io/IOException
+    //   0	16	86	finally
+  }
+  
+  public static String a(byte[] paramArrayOfByte)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 2);
+    int i = 0;
+    while (i < paramArrayOfByte.length)
     {
-      Object localObject1 = (CmdProxy)ProxyManager.get(CmdProxy.class);
-      if (localObject1 == null) {
-        break;
-      }
-      ((CmdProxy)localObject1).handleMiniAppCmd(paramString, paramBundle, paramMiniCmdCallback);
-      return;
-      if ("cmd_update_baselib".equals(paramString))
-      {
-        if (paramBundle != null) {
-          paramBundle.getString("version");
-        }
-        bgrl.a().b(new bgps(this, paramMiniCmdCallback, paramString));
-      }
-      else if ("cmd_upload_ark_share_image".equals(paramString))
-      {
-        if (paramBundle == null) {
-          QMLog.e("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
-        }
-      }
-      else if ("cmd_share_ark_async_message".equals(paramString))
-      {
-        if (paramBundle == null) {
-          QMLog.e("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
-        }
-      }
-      else if ("cmd_dc_report_log_key_data".equals(paramString))
-      {
-        bgxv.a(paramBundle);
-      }
-      else
-      {
-        Object localObject3;
-        if ("cmd_rebind_engine_channel".equals(paramString))
-        {
-          if (paramBundle != null) {
-            i = paramBundle.getInt("bundle_key_app_type", -1);
-          }
-          QMLog.i("MiniAppCmdServlet", "[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:" + i);
-          if ((i == 0) || (i == 1))
-          {
-            localObject1 = new Bundle();
-            localObject3 = bgrx.a();
-            if (i == 1) {}
-            for (i = 2;; i = 3)
-            {
-              for (;;)
-              {
-                ((Bundle)localObject1).putParcelable("engineChannel", ((bgrx)localObject3).a(i));
-                if (paramMiniCmdCallback == null) {
-                  break;
-                }
-                try
-                {
-                  paramMiniCmdCallback.onCmdResult(true, (Bundle)localObject1);
-                }
-                catch (RemoteException localRemoteException1)
-                {
-                  QMLog.e("MiniAppCmdServlet", "cmd response exception. cmd=" + paramString, localRemoteException1);
-                }
-              }
-              break;
-            }
-          }
-        }
-        else if ("cmd_rebind_engine_channel_new".equals(paramString))
-        {
-          if (paramBundle != null) {
-            i = paramBundle.getInt("bundle_key_app_type", -1);
-          }
-          QMLog.i("MiniAppCmdServlet", "[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:" + i);
-          if ((i == 0) || (i == 1))
-          {
-            Bundle localBundle = new Bundle();
-            localObject3 = bgrx.a();
-            if (i == 1) {}
-            for (i = j;; i = 3)
-            {
-              for (;;)
-              {
-                localBundle.putParcelable("engineChannel", ((bgrx)localObject3).a(i));
-                if (paramMiniCmdCallback == null) {
-                  break;
-                }
-                try
-                {
-                  paramMiniCmdCallback.onCmdResult(true, localBundle);
-                }
-                catch (RemoteException localRemoteException2)
-                {
-                  QMLog.e("MiniAppCmdServlet", "cmd response exception. cmd=" + paramString, localRemoteException2);
-                }
-              }
-              break;
-            }
-          }
-        }
-        else if ("cmd_update_pull_down_entry_list".equals(paramString))
-        {
-          if (paramBundle == null) {
-            QMLog.e("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
-          }
-        }
-        else
-        {
-          String str1;
-          if ("launch_report".equals(paramString))
-          {
-            if (paramBundle != null) {
-              try
-              {
-                paramBundle.setClassLoader(bgyg.class.getClassLoader());
-                MiniAppInfo localMiniAppInfo1 = (MiniAppInfo)paramBundle.getParcelable("app_config");
-                localObject3 = paramBundle.getString("sub_action");
-                str1 = paramBundle.getString("path");
-                String str2 = paramBundle.getString("reserves");
-                String str3 = paramBundle.getString("reserves2");
-                bgyg.a(localMiniAppInfo1, paramBundle.getString("app_type"), str1, paramBundle.getString("action_type"), (String)localObject3, str2, str3, null, null, null, null);
-              }
-              catch (Exception localException1) {}
-            }
-          }
-          else if ("launch_report2".equals(paramString))
-          {
-            if (paramBundle != null)
-            {
-              paramBundle.setClassLoader(bgxl.class.getClassLoader());
-              MiniAppInfo localMiniAppInfo2 = (MiniAppInfo)paramBundle.getParcelable("app_config");
-              localObject3 = paramBundle.getString("sub_action");
-              str1 = paramBundle.getString("path");
-              bgxl.a((String)localObject3, paramBundle.getString("reserves"), str1, localMiniAppInfo2);
-            }
-            else
-            {
-              QMLog.e("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
-            }
-          }
-          else if ("record_duration".equals(paramString))
-          {
-            if (paramBundle != null) {
-              try
-              {
-                paramBundle.setClassLoader(bgyg.class.getClassLoader());
-                bgyg.a((MiniAppInfo)paramBundle.getParcelable("app_config"), paramBundle.getLong("add_duration_ms"));
-              }
-              catch (Exception localException2) {}
-            }
-          }
-          else
-          {
-            Object localObject2;
-            if ("cmd_update_app_for_mini_game".equals(paramString))
-            {
-              QMLog.d("MiniAppCmdServlet", "handleUpdateAppForMiniGame() called with: bundle = [" + paramBundle + "]");
-              if (paramBundle == null) {
-                break;
-              }
-              localObject2 = (MiniAppInfo)paramBundle.getParcelable("key_app_info");
-              if ((localObject2 != null) && (AppLoaderFactory.g().getMiniAppEnv().getContext() != null) && ((AppLoaderFactory.g().getMiniAppEnv().getContext() instanceof Activity)))
-              {
-                AppLoaderFactory.g().getLaunchManager().stopMiniApp((MiniAppInfo)localObject2);
-                AppLoaderFactory.g().getLaunchManager().startMiniApp((Activity)AppLoaderFactory.g().getMiniAppEnv().getContext(), (MiniAppInfo)localObject2, null, null);
-                continue;
-              }
-              QMLog.e("MiniAppCmdServlet", "handleUpdateAppForMiniGame miniAppInfo = " + localObject2 + " activity = " + AppLoaderFactory.g().getMiniAppEnv().getContext());
-              continue;
-            }
-            if (("cmd_on_preload_game_baselib".equals(paramString)) && (paramBundle != null))
-            {
-              localObject2 = paramBundle.getString("bundle_key_process_name", null);
-              localObject3 = paramBundle.getString("bundle_key_preload_game_baselib_version", null);
-              AppLoaderFactory.g().getLaunchManager().onPreloadBaseLib((String)localObject2, (String)localObject3);
-            }
-          }
-        }
-      }
+      localStringBuilder.append(a[((paramArrayOfByte[i] & 0xF0) >>> 4)]);
+      localStringBuilder.append(a[(paramArrayOfByte[i] & 0xF)]);
+      i += 1;
     }
+    return localStringBuilder.toString();
   }
 }
 

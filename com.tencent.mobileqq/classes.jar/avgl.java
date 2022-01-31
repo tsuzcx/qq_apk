@@ -1,22 +1,6 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-
-class avgl
-  implements Handler.Callback
+public abstract interface avgl
 {
-  avgl(avgk paramavgk) {}
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      avgk.a(this.a);
-    }
-  }
+  public abstract boolean a(avgi paramavgi, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
 }
 
 

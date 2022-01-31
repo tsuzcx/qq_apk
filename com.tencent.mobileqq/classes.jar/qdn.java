@@ -44,7 +44,7 @@ public class qdn
     for (int i = this.jdField_a_of_type_Int;; i = Color.parseColor("#F8F8F8"))
     {
       paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(aekt.a(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.getResources()));
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(aepi.a(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.getResources()));
       this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
       return;
     }

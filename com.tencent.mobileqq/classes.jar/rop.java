@@ -3,7 +3,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 class rop
-  implements azhm
+  implements azlv
 {
   final int jdField_a_of_type_Int;
   final long jdField_a_of_type_Long;
@@ -37,32 +37,32 @@ class rop
     }
   }
   
-  public azhn a(int paramInt1, int paramInt2)
+  public azlw a(int paramInt1, int paramInt2)
   {
     int i = 30;
-    azhn localazhn = new azhn();
+    azlw localazlw = new azlw();
     File localFile = new File(this.jdField_a_of_type_JavaLangString);
     if (localFile.exists()) {
       localFile.delete();
     }
-    localazhn.jdField_a_of_type_JavaIoFile = localFile;
+    localazlw.jdField_a_of_type_JavaIoFile = localFile;
     long l = ror.a(paramInt1, paramInt2);
     int j = ror.a(paramInt1, paramInt2);
-    localazhn.jdField_a_of_type_Int = ((int)l);
+    localazlw.jdField_a_of_type_Int = ((int)l);
     paramInt2 = Math.min(paramInt1, paramInt2);
-    localazhn.jdField_a_of_type_Float = (j / paramInt2);
+    localazlw.jdField_a_of_type_Float = (j / paramInt2);
     paramInt1 = i;
     if (this.jdField_b_of_type_Int <= 30) {
       paramInt1 = this.jdField_b_of_type_Int;
     }
-    localazhn.jdField_b_of_type_Int = paramInt1;
-    localazhn.jdField_b_of_type_Boolean = a();
-    localazhn.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    localazhn.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+    localazlw.jdField_b_of_type_Int = paramInt1;
+    localazlw.jdField_b_of_type_Boolean = a();
+    localazlw.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    localazlw.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
     if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressTask", 2, "CompressTask, step: getEncodeConfig()\n  sourceShortEdge:" + paramInt2 + ", dstResolution:" + j + ", scaleRate:" + localazhn.jdField_a_of_type_Float + "\n  targetVideoBitRate:" + localazhn.jdField_a_of_type_Int + ", videoFrameRate:" + localazhn.jdField_b_of_type_Int + "\n setRotation:" + localazhn.jdField_b_of_type_Boolean + ", beginTime:" + localazhn.jdField_a_of_type_Long + ", endTime:" + localazhn.jdField_b_of_type_Long);
+      QLog.d("VideoCompressTask", 2, "CompressTask, step: getEncodeConfig()\n  sourceShortEdge:" + paramInt2 + ", dstResolution:" + j + ", scaleRate:" + localazlw.jdField_a_of_type_Float + "\n  targetVideoBitRate:" + localazlw.jdField_a_of_type_Int + ", videoFrameRate:" + localazlw.jdField_b_of_type_Int + "\n setRotation:" + localazlw.jdField_b_of_type_Boolean + ", beginTime:" + localazlw.jdField_a_of_type_Long + ", endTime:" + localazlw.jdField_b_of_type_Long);
     }
-    return localazhn;
+    return localazlw;
   }
   
   public void a() {}

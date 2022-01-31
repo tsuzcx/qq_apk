@@ -1,17 +1,21 @@
-import android.view.View;
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class aikh
-  implements bhpq
+public class aikh
+  implements DialogInterface.OnClickListener
 {
-  aikh(aikg paramaikg) {}
+  public aikh(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void b(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof aiki))) {
-      ((aiki)paramView).a.setImageDrawable(null);
+    if (!this.a.a()) {
+      ((bdug)this.a.app.a(71)).a(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Bdrg.a, -1);
     }
+    VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "faceAddon", "0X80088EE", "", 1, 0, 0, null, "", "");
+    azqs.b(this.a.app, "CliOper", "", "", "0X8005FDB", "0X8005FDB", 0, 0, String.valueOf(this.a.jdField_a_of_type_Long), "", "", "");
   }
 }
 

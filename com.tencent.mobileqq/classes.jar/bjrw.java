@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import cooperation.qzone.video.QzoneLiveVideoGpuProxyActivity;
-import cooperation.qzone.video.QzoneLiveVideoPluginProxyActivity;
-import cooperation.qzone.video.QzoneLiveVideoTransparentActivity;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.RelativeLayout;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bjrw
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static Class<? extends PluginProxyActivity> a(String paramString)
+  public bjrw(QZoneShareActivity paramQZoneShareActivity, RelativeLayout paramRelativeLayout) {}
+  
+  public void onGlobalLayout()
   {
-    if (QzoneLiveVideoPluginProxyActivity.a(QzoneLiveVideoPluginProxyActivity.a(), paramString)) {
-      return QzoneLiveVideoTransparentActivity.class;
+    int i = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+    if (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) - i > 150) {
+      this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.c.setVisibility(0);
     }
-    return QzoneLiveVideoGpuProxyActivity.class;
+    for (;;)
+    {
+      QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, i);
+      return;
+      if ((i - QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) > 150) && (!this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.d)) {
+        this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.c.setVisibility(4);
+      }
+    }
   }
 }
 

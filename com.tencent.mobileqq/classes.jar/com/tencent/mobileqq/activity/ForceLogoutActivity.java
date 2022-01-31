@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import acsn;
-import aljq;
+import acxc;
+import alof;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -10,21 +10,21 @@ import com.tencent.mobileqq.app.BaseActivity;
 
 public class ForceLogoutActivity
   extends BaseActivity
-  implements aljq
+  implements alof
 {
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559107);
+    super.setContentView(2131559106);
     paramBundle = getIntent().getStringExtra("title");
     String str = getIntent().getStringExtra("msg");
     if ((paramBundle != null) && (paramBundle.length() > 0)) {
-      ((TextView)findViewById(2131378556)).setText(paramBundle);
+      ((TextView)findViewById(2131378610)).setText(paramBundle);
     }
     if ((str != null) && (str.length() > 0)) {
-      ((TextView)findViewById(2131378557)).setText(str);
+      ((TextView)findViewById(2131378611)).setText(str);
     }
-    ((Button)findViewById(2131363470)).setOnClickListener(new acsn(this));
+    ((Button)findViewById(2131363472)).setOnClickListener(new acxc(this));
     return true;
   }
   

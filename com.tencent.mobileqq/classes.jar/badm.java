@@ -1,26 +1,6 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class badm
-  implements View.OnClickListener
+public abstract interface badm<T extends badg>
 {
-  badm(badl parambadl, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Badl, 1);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Badl.isShowing()) {
-        this.jdField_a_of_type_Badl.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
-  }
+  public abstract int c();
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
@@ -19,12 +19,12 @@ public class VideofeedsUserGuideController$4
     if (localTranslateAnimation != null)
     {
       rlo.a(this.this$0).setVisibility(0);
-      rlo.a(this.this$0).findViewById(2131379379).setVisibility(0);
-      rlo.a(this.this$0).findViewById(2131379373).setVisibility(0);
-      rlo.a(this.this$0).findViewById(2131379374).setVisibility(0);
+      rlo.a(this.this$0).findViewById(2131379437).setVisibility(0);
+      rlo.a(this.this$0).findViewById(2131379431).setVisibility(0);
+      rlo.a(this.this$0).findViewById(2131379432).setVisibility(0);
       rlo.a(this.this$0).bringToFront();
       ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)rlo.a(this.this$0).getLayoutParams();
-      localMarginLayoutParams.setMargins(0, 0, 0, aekt.a(187.0F, rlo.a(this.this$0).getResources()));
+      localMarginLayoutParams.setMargins(0, 0, 0, aepi.a(187.0F, rlo.a(this.this$0).getResources()));
       rlo.a(this.this$0).setLayoutParams(localMarginLayoutParams);
       rlo.a(this.this$0).startAnimation(localTranslateAnimation);
     }

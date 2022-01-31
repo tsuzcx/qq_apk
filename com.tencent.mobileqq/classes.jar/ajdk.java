@@ -1,29 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-class ajdk
-  implements View.OnClickListener
+public class ajdk
+  implements OnCompositionLoadedListener
 {
-  private ajdj jdField_a_of_type_Ajdj;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  public ajdk(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  ajdk(ajdj paramajdj, MqqHandler paramMqqHandler)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    this.jdField_a_of_type_Ajdj = paramajdj;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Ajdj.jdField_a_of_type_JavaLangString + " on close");
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    if (DrawRedpacketPannelPreviewFragment.d(this.a) != null) {
+      DrawRedpacketPannelPreviewFragment.d(this.a).setImageDrawable(localLottieDrawable);
     }
-    paramView = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(201);
-    paramView.obj = this.jdField_a_of_type_Ajdj;
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramView);
-    this.jdField_a_of_type_Ajdj.jdField_a_of_type_Ajdh.onClose();
   }
 }
 

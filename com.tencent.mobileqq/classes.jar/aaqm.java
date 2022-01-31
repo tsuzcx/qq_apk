@@ -1,8 +1,6 @@
-import android.view.View;
-
 public abstract interface aaqm
 {
-  public abstract void a(View paramView);
+  public abstract void a(Object... paramVarArgs);
 }
 
 

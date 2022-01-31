@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.message;
 
-import abot;
-import amfy;
-import amjd;
-import amjk;
-import awbw;
-import awbx;
+import abti;
+import amkn;
+import amns;
+import amnz;
+import awgf;
+import awgg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -19,7 +19,7 @@ import java.util.Map;
 public class DatalineMessageManager$3
   implements Runnable
 {
-  public DatalineMessageManager$3(amfy paramamfy, DataLineMsgSet paramDataLineMsgSet) {}
+  public DatalineMessageManager$3(amkn paramamkn, DataLineMsgSet paramDataLineMsgSet) {}
   
   public void run()
   {
@@ -28,7 +28,7 @@ public class DatalineMessageManager$3
     int i;
     if (this.this$0.a().a(this.a) > 0)
     {
-      localObject1 = abot.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
+      localObject1 = abti.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
       if (!this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.containsKey(localObject1)) {
         break label406;
       }
@@ -65,13 +65,13 @@ public class DatalineMessageManager$3
           ((QQMessageFacade.Message)localObject2).counter = i;
           ((QQMessageFacade.Message)localObject2).hasReply = bool;
           this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a((QQMessageFacade.Message)localObject2);
-          this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.put(abot.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int), localObject2);
+          this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.put(abti.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int), localObject2);
         }
       }
       Object localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
       localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localObject2 = ((amjk)localObject2).a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
-      ((awbw)localObject1).a();
+      localObject2 = ((amnz)localObject2).a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
+      ((awgf)localObject1).a();
       if (localObject2 != null) {
         this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localObject2);
       }

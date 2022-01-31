@@ -12,12 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bgkd;
-import bhep;
-import bhgl;
-import bhgm;
-import bhgn;
-import bhhf;
+import bgok;
+import bhiw;
+import bhks;
+import bhkt;
+import bhku;
+import bhlm;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.utils.DisplayUtil;
 import java.lang.ref.WeakReference;
@@ -37,7 +37,7 @@ public class MiniAppLivePusher
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private bhhf jdField_a_of_type_Bhhf;
+  private bhlm jdField_a_of_type_Bhlm;
   private Object jdField_a_of_type_JavaLangObject;
   private Runnable jdField_a_of_type_JavaLangRunnable = new MiniAppLivePusher.1(this);
   public String a;
@@ -107,7 +107,7 @@ public class MiniAppLivePusher
   
   private void a()
   {
-    this.jdField_a_of_type_JavaLangObject = bhep.a("com.tencent.rtmp.ui.TXCloudVideoView", bhep.a(new Class[] { Context.class }), new Object[] { getContext() });
+    this.jdField_a_of_type_JavaLangObject = bhiw.a("com.tencent.rtmp.ui.TXCloudVideoView", bhiw.a(new Class[] { Context.class }), new Object[] { getContext() });
     if (this.jdField_a_of_type_JavaLangObject == null)
     {
       QMLog.e("MiniAppLivePusher", "tXCloudVideoView is null?! ");
@@ -131,8 +131,8 @@ public class MiniAppLivePusher
     this.jdField_a_of_type_Boolean = true;
     setTag("MiniAppLivePusher");
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559349, null);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131372494));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559348, null);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131372514));
     addView(this.jdField_a_of_type_AndroidViewView);
   }
   
@@ -234,29 +234,29 @@ public class MiniAppLivePusher
     //   16	36	64	finally
   }
   
-  private void b(bgkd parambgkd, JSONObject paramJSONObject)
+  private void b(bgok parambgok, JSONObject paramJSONObject)
   {
     if ((QMLog.isColorLevel()) && (paramJSONObject != null)) {
       QMLog.d("MiniAppLivePusher", "initLivePusher params = " + paramJSONObject.toString());
     }
     b();
-    this.jdField_a_of_type_Bhhf = new bhhf(getContext());
-    this.jdField_a_of_type_Bhhf.a(this.jdField_a_of_type_JavaLangObject, a(paramJSONObject));
-    this.jdField_a_of_type_Bhhf.a(new bhgl(this, parambgkd));
-    this.jdField_a_of_type_Bhhf.a(new bhgm(this, parambgkd));
+    this.jdField_a_of_type_Bhlm = new bhlm(getContext());
+    this.jdField_a_of_type_Bhlm.a(this.jdField_a_of_type_JavaLangObject, a(paramJSONObject));
+    this.jdField_a_of_type_Bhlm.a(new bhks(this, parambgok));
+    this.jdField_a_of_type_Bhlm.a(new bhkt(this, parambgok));
   }
   
-  public void a(bgkd parambgkd, JSONObject paramJSONObject)
+  public void a(bgok parambgok, JSONObject paramJSONObject)
   {
     if ((QMLog.isColorLevel()) && (paramJSONObject != null)) {
       QMLog.d("MiniAppLivePusher", "initLivePusherSettings json: " + paramJSONObject.toString());
     }
     a();
-    b(parambgkd, paramJSONObject);
+    b(parambgok, paramJSONObject);
   }
   
   /* Error */
-  public void a(String paramString, bgkd parambgkd, JSONObject paramJSONObject)
+  public void a(String paramString, bgok parambgok, JSONObject paramJSONObject)
   {
     // Byte code:
     //   0: ldc 80
@@ -270,7 +270,7 @@ public class MiniAppLivePusher
     //   19: invokevirtual 371	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   22: invokestatic 374	com/tencent/qqmini/sdk/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   25: aload_0
-    //   26: getfield 217	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:jdField_a_of_type_Bhhf	Lbhhf;
+    //   26: getfield 217	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:jdField_a_of_type_Bhlm	Lbhlm;
     //   29: ifnull +133 -> 162
     //   32: ldc_w 410
     //   35: aload_1
@@ -296,9 +296,9 @@ public class MiniAppLivePusher
     //   78: aload 10
     //   80: invokevirtual 430	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   83: pop
-    //   84: invokestatic 435	bgjm:a	()Lbgjm;
+    //   84: invokestatic 435	bgnt:a	()Lbgnt;
     //   87: aload 10
-    //   89: invokevirtual 438	bgjm:g	(Ljava/lang/String;)Ljava/lang/String;
+    //   89: invokevirtual 438	bgnt:g	(Ljava/lang/String;)Ljava/lang/String;
     //   92: astore 11
     //   94: ldc_w 440
     //   97: invokestatic 446	com/tencent/qqmini/sdk/core/proxy/ProxyManager:get	(Ljava/lang/Class;)Ljava/lang/Object;
@@ -309,7 +309,7 @@ public class MiniAppLivePusher
     //   109: aconst_null
     //   110: aload 11
     //   112: bipush 60
-    //   114: new 448	bhgo
+    //   114: new 448	bhkv
     //   117: dup
     //   118: aload_0
     //   119: aload 9
@@ -319,17 +319,17 @@ public class MiniAppLivePusher
     //   126: aload_3
     //   127: aload_1
     //   128: aload 12
-    //   130: invokespecial 451	bhgo:<init>	(Lcom/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher;Ljava/lang/String;Ljava/lang/String;Lbgkd;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;Lcom/tencent/qqmini/sdk/core/proxy/DownloaderProxy;)V
+    //   130: invokespecial 451	bhkv:<init>	(Lcom/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher;Ljava/lang/String;Ljava/lang/String;Lbgok;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;Lcom/tencent/qqmini/sdk/core/proxy/DownloaderProxy;)V
     //   133: invokevirtual 455	com/tencent/qqmini/sdk/core/proxy/DownloaderProxy:download	(Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;ILcom/tencent/qqmini/sdk/core/proxy/DownloaderProxy$DownloadListener;)Z
     //   136: pop
     //   137: ldc_w 457
     //   140: aconst_null
-    //   141: invokestatic 462	bgki:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   141: invokestatic 462	bgop:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
     //   144: astore_1
     //   145: aload_2
-    //   146: getfield 467	bgkd:a	Lbghn;
+    //   146: getfield 467	bgok:a	Lbglu;
     //   149: aload_2
-    //   150: getfield 469	bgkd:b	I
+    //   150: getfield 469	bgok:b	I
     //   153: aload_1
     //   154: invokevirtual 370	org/json/JSONObject:toString	()Ljava/lang/String;
     //   157: invokeinterface 474 3 0
@@ -342,19 +342,19 @@ public class MiniAppLivePusher
     //   174: iconst_1
     //   175: putfield 312	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:jdField_b_of_type_Boolean	Z
     //   178: aload_0
-    //   179: getfield 217	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:jdField_a_of_type_Bhhf	Lbhhf;
+    //   179: getfield 217	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:jdField_a_of_type_Bhlm	Lbhlm;
     //   182: aload_1
     //   183: aload_3
-    //   184: invokevirtual 479	bhhf:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lbhgp;
+    //   184: invokevirtual 479	bhlm:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lbhkw;
     //   187: pop
     //   188: ldc_w 457
     //   191: aconst_null
-    //   192: invokestatic 462	bgki:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   192: invokestatic 462	bgop:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
     //   195: astore_1
     //   196: aload_2
-    //   197: getfield 467	bgkd:a	Lbghn;
+    //   197: getfield 467	bgok:a	Lbglu;
     //   200: aload_2
-    //   201: getfield 469	bgkd:b	I
+    //   201: getfield 469	bgok:b	I
     //   204: aload_1
     //   205: invokevirtual 370	org/json/JSONObject:toString	()Ljava/lang/String;
     //   208: invokeinterface 474 3 0
@@ -373,19 +373,19 @@ public class MiniAppLivePusher
     //   239: invokevirtual 488	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   242: pop
     //   243: aload_0
-    //   244: getfield 217	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:jdField_a_of_type_Bhhf	Lbhhf;
+    //   244: getfield 217	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:jdField_a_of_type_Bhlm	Lbhlm;
     //   247: aload_1
     //   248: aload_3
-    //   249: invokevirtual 479	bhhf:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lbhgp;
+    //   249: invokevirtual 479	bhlm:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lbhkw;
     //   252: pop
     //   253: ldc_w 457
     //   256: aconst_null
-    //   257: invokestatic 462	bgki:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   257: invokestatic 462	bgop:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
     //   260: astore_1
     //   261: aload_2
-    //   262: getfield 467	bgkd:a	Lbghn;
+    //   262: getfield 467	bgok:a	Lbglu;
     //   265: aload_2
-    //   266: getfield 469	bgkd:b	I
+    //   266: getfield 469	bgok:b	I
     //   269: aload_1
     //   270: invokevirtual 370	org/json/JSONObject:toString	()Ljava/lang/String;
     //   273: invokeinterface 474 3 0
@@ -432,15 +432,15 @@ public class MiniAppLivePusher
     //   363: ldc_w 457
     //   366: iload 5
     //   368: aload_2
-    //   369: invokevirtual 502	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:a	(Ljava/lang/String;ZLbgkd;)V
+    //   369: invokevirtual 502	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:a	(Ljava/lang/String;ZLbgok;)V
     //   372: return
     //   373: aload_1
     //   374: ldc_w 504
     //   377: invokevirtual 112	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   380: ifeq +364 -> 744
-    //   383: invokestatic 435	bgjm:a	()Lbgjm;
+    //   383: invokestatic 435	bgnt:a	()Lbgnt;
     //   386: ldc_w 506
-    //   389: invokevirtual 508	bgjm:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   389: invokevirtual 508	bgnt:b	(Ljava/lang/String;)Ljava/lang/String;
     //   392: astore_1
     //   393: aload_3
     //   394: ldc_w 510
@@ -457,9 +457,9 @@ public class MiniAppLivePusher
     //   421: invokevirtual 371	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   424: invokestatic 374	com/tencent/qqmini/sdk/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   427: aload_0
-    //   428: getfield 217	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:jdField_a_of_type_Bhhf	Lbhhf;
+    //   428: getfield 217	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:jdField_a_of_type_Bhlm	Lbhlm;
     //   431: aload_1
-    //   432: invokevirtual 518	bhhf:a	(Ljava/lang/String;)I
+    //   432: invokevirtual 518	bhlm:a	(Ljava/lang/String;)I
     //   435: istore 4
     //   437: ldc 80
     //   439: new 359	java/lang/StringBuilder
@@ -477,9 +477,9 @@ public class MiniAppLivePusher
     //   471: dup
     //   472: invokespecial 524	org/json/JSONObject:<init>	()V
     //   475: astore 9
-    //   477: invokestatic 435	bgjm:a	()Lbgjm;
+    //   477: invokestatic 435	bgnt:a	()Lbgnt;
     //   480: aload_1
-    //   481: invokevirtual 526	bgjm:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   481: invokevirtual 526	bgnt:e	(Ljava/lang/String;)Ljava/lang/String;
     //   484: astore_3
     //   485: aload_3
     //   486: astore_1
@@ -503,12 +503,12 @@ public class MiniAppLivePusher
     //   524: putfield 535	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   527: ldc_w 457
     //   530: aload 9
-    //   532: invokestatic 462	bgki:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   532: invokestatic 462	bgop:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
     //   535: astore_1
     //   536: aload_2
-    //   537: getfield 467	bgkd:a	Lbghn;
+    //   537: getfield 467	bgok:a	Lbglu;
     //   540: aload_2
-    //   541: getfield 469	bgkd:b	I
+    //   541: getfield 469	bgok:b	I
     //   544: aload_1
     //   545: invokevirtual 370	org/json/JSONObject:toString	()Ljava/lang/String;
     //   548: invokeinterface 474 3 0
@@ -540,12 +540,12 @@ public class MiniAppLivePusher
     //   608: ldc_w 457
     //   611: aconst_null
     //   612: ldc_w 544
-    //   615: invokestatic 547	bgki:a	(Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)Lorg/json/JSONObject;
+    //   615: invokestatic 547	bgop:a	(Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)Lorg/json/JSONObject;
     //   618: astore_1
     //   619: aload_2
-    //   620: getfield 467	bgkd:a	Lbghn;
+    //   620: getfield 467	bgok:a	Lbglu;
     //   623: aload_2
-    //   624: getfield 469	bgkd:b	I
+    //   624: getfield 469	bgok:b	I
     //   627: aload_1
     //   628: invokevirtual 370	org/json/JSONObject:toString	()Ljava/lang/String;
     //   631: invokeinterface 474 3 0
@@ -556,12 +556,12 @@ public class MiniAppLivePusher
     //   644: ldc_w 457
     //   647: aconst_null
     //   648: ldc_w 549
-    //   651: invokestatic 547	bgki:a	(Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)Lorg/json/JSONObject;
+    //   651: invokestatic 547	bgop:a	(Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)Lorg/json/JSONObject;
     //   654: astore_1
     //   655: aload_2
-    //   656: getfield 467	bgkd:a	Lbghn;
+    //   656: getfield 467	bgok:a	Lbglu;
     //   659: aload_2
-    //   660: getfield 469	bgkd:b	I
+    //   660: getfield 469	bgok:b	I
     //   663: aload_1
     //   664: invokevirtual 370	org/json/JSONObject:toString	()Ljava/lang/String;
     //   667: invokeinterface 474 3 0
@@ -572,12 +572,12 @@ public class MiniAppLivePusher
     //   682: ldc_w 457
     //   685: aconst_null
     //   686: ldc_w 551
-    //   689: invokestatic 547	bgki:a	(Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)Lorg/json/JSONObject;
+    //   689: invokestatic 547	bgop:a	(Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)Lorg/json/JSONObject;
     //   692: astore_1
     //   693: aload_2
-    //   694: getfield 467	bgkd:a	Lbghn;
+    //   694: getfield 467	bgok:a	Lbglu;
     //   697: aload_2
-    //   698: getfield 469	bgkd:b	I
+    //   698: getfield 469	bgok:b	I
     //   701: aload_1
     //   702: invokevirtual 370	org/json/JSONObject:toString	()Ljava/lang/String;
     //   705: invokeinterface 474 3 0
@@ -585,12 +585,12 @@ public class MiniAppLivePusher
     //   713: ldc_w 457
     //   716: aconst_null
     //   717: ldc_w 553
-    //   720: invokestatic 547	bgki:a	(Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)Lorg/json/JSONObject;
+    //   720: invokestatic 547	bgop:a	(Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)Lorg/json/JSONObject;
     //   723: astore_1
     //   724: aload_2
-    //   725: getfield 467	bgkd:a	Lbghn;
+    //   725: getfield 467	bgok:a	Lbglu;
     //   728: aload_2
-    //   729: getfield 469	bgkd:b	I
+    //   729: getfield 469	bgok:b	I
     //   732: aload_1
     //   733: invokevirtual 370	org/json/JSONObject:toString	()Ljava/lang/String;
     //   736: invokeinterface 474 3 0
@@ -608,8 +608,8 @@ public class MiniAppLivePusher
     //   767: getfield 56	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
     //   770: invokevirtual 561	android/os/Handler:removeCallbacks	(Ljava/lang/Runnable;)V
     //   773: aload_0
-    //   774: getfield 217	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:jdField_a_of_type_Bhhf	Lbhhf;
-    //   777: invokevirtual 562	bhhf:b	()V
+    //   774: getfield 217	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:jdField_a_of_type_Bhlm	Lbhlm;
+    //   777: invokevirtual 562	bhlm:b	()V
     //   780: new 128	org/json/JSONObject
     //   783: dup
     //   784: invokespecial 524	org/json/JSONObject:<init>	()V
@@ -629,12 +629,12 @@ public class MiniAppLivePusher
     //   812: putfield 535	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   815: ldc_w 457
     //   818: aload_1
-    //   819: invokestatic 462	bgki:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   819: invokestatic 462	bgop:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
     //   822: astore_1
     //   823: aload_2
-    //   824: getfield 467	bgkd:a	Lbghn;
+    //   824: getfield 467	bgok:a	Lbglu;
     //   827: aload_2
-    //   828: getfield 469	bgkd:b	I
+    //   828: getfield 469	bgok:b	I
     //   831: aload_1
     //   832: invokevirtual 370	org/json/JSONObject:toString	()Ljava/lang/String;
     //   835: invokeinterface 474 3 0
@@ -650,19 +650,19 @@ public class MiniAppLivePusher
     //   857: invokevirtual 542	org/json/JSONException:printStackTrace	()V
     //   860: goto -45 -> 815
     //   863: aload_0
-    //   864: getfield 217	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:jdField_a_of_type_Bhhf	Lbhhf;
+    //   864: getfield 217	com/tencent/qqmini/sdk/runtime/widget/media/MiniAppLivePusher:jdField_a_of_type_Bhlm	Lbhlm;
     //   867: aload_1
     //   868: aload_3
-    //   869: invokevirtual 479	bhhf:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lbhgp;
+    //   869: invokevirtual 479	bhlm:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lbhkw;
     //   872: pop
     //   873: ldc_w 457
     //   876: aconst_null
-    //   877: invokestatic 462	bgki:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   877: invokestatic 462	bgop:a	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
     //   880: astore_1
     //   881: aload_2
-    //   882: getfield 467	bgkd:a	Lbghn;
+    //   882: getfield 467	bgok:a	Lbglu;
     //   885: aload_2
-    //   886: getfield 469	bgkd:b	I
+    //   886: getfield 469	bgok:b	I
     //   889: aload_1
     //   890: invokevirtual 370	org/json/JSONObject:toString	()Ljava/lang/String;
     //   893: invokeinterface 474 3 0
@@ -673,7 +673,7 @@ public class MiniAppLivePusher
     //   start	length	slot	name	signature
     //   0	903	0	this	MiniAppLivePusher
     //   0	903	1	paramString	String
-    //   0	903	2	parambgkd	bgkd
+    //   0	903	2	parambgok	bgok
     //   0	903	3	paramJSONObject	JSONObject
     //   435	245	4	i	int
     //   323	44	5	bool1	boolean
@@ -692,12 +692,12 @@ public class MiniAppLivePusher
     //   487	522	899	org/json/JSONException
   }
   
-  public void a(String paramString, boolean paramBoolean, bgkd parambgkd)
+  public void a(String paramString, boolean paramBoolean, bgok parambgok)
   {
-    if (this.jdField_a_of_type_Bhhf == null) {
+    if (this.jdField_a_of_type_Bhlm == null) {
       return;
     }
-    this.jdField_a_of_type_Bhhf.a(paramBoolean, new bhgn(this, paramString, parambgkd));
+    this.jdField_a_of_type_Bhlm.a(paramBoolean, new bhku(this, paramString, parambgok));
   }
   
   public void a(JSONObject paramJSONObject)
@@ -705,8 +705,8 @@ public class MiniAppLivePusher
     if ((QMLog.isColorLevel()) && (paramJSONObject != null)) {
       QMLog.d("MiniAppLivePusher", "updateLivePusherSetting params = " + paramJSONObject.toString());
     }
-    if (this.jdField_a_of_type_Bhhf != null) {
-      this.jdField_a_of_type_Bhhf.a(a(paramJSONObject));
+    if (this.jdField_a_of_type_Bhlm != null) {
+      this.jdField_a_of_type_Bhlm.a(a(paramJSONObject));
     }
   }
   

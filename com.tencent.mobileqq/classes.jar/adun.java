@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 
 public class adun
+  implements View.OnClickListener
 {
-  public int a;
-  String jdField_a_of_type_JavaLangString;
-  public boolean a;
+  public adun(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
   
-  public adun(SoundAndVibrateActivity paramSoundAndVibrateActivity, int paramInt, String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a.onBackEvent();
   }
 }
 

@@ -1,18 +1,22 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class arux
-  implements army
+  implements DialogInterface.OnClickListener
 {
-  arux(aruw paramaruw) {}
+  arux(arut paramarut) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    cx.b(this.a.a.a, 0);
+    if (paramInt == 1) {
+      this.a.c();
+    }
+    paramDialogInterface.dismiss();
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arux
  * JD-Core Version:    0.7.0.1
  */

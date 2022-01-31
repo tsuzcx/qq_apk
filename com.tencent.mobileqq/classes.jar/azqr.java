@@ -1,27 +1,40 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.ClipboardManager;
-import android.view.View;
+import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_rsp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
 
-final class azqr
-  implements bhqd
+class azqr
+  extends avvd
 {
-  azqr(String paramString, Context paramContext) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  protected void e(boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof mobile_get_qzone_public_msg_rsp)))
     {
+      int i = azqp.a().decrementAndGet();
+      azqp.a(0);
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      localAppRuntime.getPreferences().edit().putInt(localAppRuntime.getAccount() + "_" + "qzone_xp_req_left", i).apply();
+      azqp.b(((mobile_get_qzone_public_msg_rsp)paramBundle).next_req_tmstamp);
+      if (QLog.isColorLevel()) {
+        QLog.i("QZoneReport", 2, "next req time: " + azqp.b() + ", left: " + i);
+      }
+      azqs.b(null, "CliOper", "", "", "0X800915D", "0X800915D", 0, 0, "", "", "", "");
     }
     for (;;)
     {
-      azqq.a().dismiss();
+      azqp.a().set(false);
+      BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(azqp.a());
       return;
-      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      continue;
-      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
+      azqp.c();
+      if (QLog.isColorLevel()) {
+        QLog.w("QZoneReport", 2, "qzone report failed");
+      }
     }
   }
 }

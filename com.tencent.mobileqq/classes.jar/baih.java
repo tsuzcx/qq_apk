@@ -1,20 +1,78 @@
-import android.text.Spannable;
-import android.text.Spannable.Factory;
+import android.app.Activity;
+import java.lang.ref.WeakReference;
+import java.net.URLDecoder;
+import org.json.JSONObject;
 
-final class baih
-  extends Spannable.Factory
+public class baih
+  implements alpg
 {
-  public Spannable newSpannable(CharSequence paramCharSequence)
+  public WeakReference<Activity> a;
+  
+  public baih(Activity paramActivity)
   {
-    if ((!baig.b) && ((paramCharSequence instanceof baig))) {
-      try
-      {
-        baig localbaig = (baig)((baig)paramCharSequence).clone();
-        return localbaig;
-      }
-      catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    this.a = new WeakReference(paramActivity);
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(String paramString1, String paramString2) {}
+  
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
     }
-    return super.newSpannable(paramCharSequence);
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+              } while (paramObject == null);
+              paramObject = (Object[])paramObject;
+            } while (paramObject.length != 2);
+            a((String)paramObject[0], (String)paramObject[1]);
+            return;
+            a();
+            return;
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 1);
+        try
+        {
+          paramObject = (JSONObject)paramObject[0];
+          String str = paramObject.optString("url");
+          paramInt = paramObject.optInt("ret");
+          paramObject = URLDecoder.decode(str, "UTF-8");
+          if ((paramInt == 0) && (paramObject.length() > 0))
+          {
+            a(paramBoolean, paramObject);
+            return;
+          }
+        }
+        catch (Exception paramObject)
+        {
+          paramObject.printStackTrace();
+          a(paramObject.toString(), "");
+          return;
+        }
+        a(paramInt + "", "");
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    a(((Integer)paramObject[0]).intValue());
   }
 }
 

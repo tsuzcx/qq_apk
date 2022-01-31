@@ -1,23 +1,22 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aqko
+public abstract interface aqko
 {
-  public int a;
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  FileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo;
-  AsyncImageView jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-  EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
-  public int b;
-  ImageView b;
+  public abstract QQAppInterface a();
   
-  public aqko(aqkn paramaqkn) {}
+  public abstract void a();
+  
+  public abstract void a(aqkt paramaqkt);
+  
+  public abstract boolean a(aqkt paramaqkt, int paramInt);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

@@ -1,14 +1,22 @@
 import android.view.View;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.vas.avatar.VasFaceManager;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
 
-public abstract interface bere
+public class bere
+  extends URLDrawableDownListener.Adapter
 {
-  public abstract View a();
+  public bere(NewStyleDropdownView paramNewStyleDropdownView) {}
   
-  public abstract void a();
-  
-  public abstract void a(float paramFloat, int paramInt);
-  
-  public abstract boolean a();
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    paramView = paramURLDrawable.getCurrDrawable();
+    if ((paramView instanceof ApngDrawable)) {
+      VasFaceManager.a(null, (ApngDrawable)paramView);
+    }
+  }
 }
 
 

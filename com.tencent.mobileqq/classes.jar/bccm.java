@@ -1,11 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+
 class bccm
-  implements bcgm
+  implements DialogInterface.OnClickListener
 {
-  bccm(bccj parambccj) {}
+  bccm(bcck parambcck) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(bcgk.b(paramInt));
+    this.a.a.c();
+    if (ReciteRecordLayout.a(this.a.a) != null) {
+      ReciteRecordLayout.a(this.a.a).e();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

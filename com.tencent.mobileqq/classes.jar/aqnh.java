@@ -1,36 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-class aqnh
-  implements View.OnClickListener
+public class aqnh
 {
-  aqnh(aqng paramaqng) {}
-  
-  public void onClick(View paramView)
-  {
-    aelt localaelt = (aelt)aekt.a(paramView);
-    int i;
-    ChatMessage localChatMessage;
-    if (localaelt != null)
-    {
-      i = -1;
-      localChatMessage = arni.a(localaelt.a);
-      if (!this.a.a(localChatMessage)) {
-        break label50;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      this.a.a(paramView, localaelt, localChatMessage, i);
-      return;
-      label50:
-      if (this.a.b(localChatMessage)) {
-        i = 1;
-      }
-    }
-  }
+  public int a;
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public AsyncImageView a;
+  public Object a;
+  public boolean a;
+  public int b;
+  public ImageView b;
+  public ImageView c;
 }
 
 

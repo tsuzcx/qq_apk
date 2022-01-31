@@ -283,7 +283,7 @@ public class orf
       }
       for (;;)
       {
-        localObject2 = bdbi.decode(paramString.getBytes(), 0);
+        localObject2 = bdfr.decode(paramString.getBytes(), 0);
         i2 = localObject2[0];
         localObject1 = null;
         if (i2 != 0) {
@@ -445,7 +445,7 @@ public class orf
         d();
         jdField_b_of_type_JavaUtilList.clear();
       }
-      bjxj.a(d, Integer.valueOf(jdField_a_of_type_Int));
+      bkbq.a(d, Integer.valueOf(jdField_a_of_type_Int));
       QLog.d(jdField_b_of_type_JavaLangString, 2, "update version " + jdField_a_of_type_Int);
     }
     paramString = paramString.optString(i);
@@ -454,13 +454,13 @@ public class orf
   
   private void c()
   {
-    jdField_a_of_type_Int = ((Integer)bjxj.a(d, Integer.valueOf(0))).intValue();
+    jdField_a_of_type_Int = ((Integer)bkbq.a(d, Integer.valueOf(0))).intValue();
     QLog.d(jdField_b_of_type_JavaLangString, 2, "local version " + jdField_a_of_type_Int);
     try
     {
-      jdField_a_of_type_OrgJsonJSONObject = new JSONObject((String)bjxj.a(f, ""));
-      jdField_b_of_type_OrgJsonJSONObject = new JSONObject((String)bjxj.a(g, ""));
-      jdField_c_of_type_OrgJsonJSONObject = new JSONObject((String)bjxj.a(e, ""));
+      jdField_a_of_type_OrgJsonJSONObject = new JSONObject((String)bkbq.a(f, ""));
+      jdField_b_of_type_OrgJsonJSONObject = new JSONObject((String)bkbq.a(g, ""));
+      jdField_c_of_type_OrgJsonJSONObject = new JSONObject((String)bkbq.a(e, ""));
       return;
     }
     catch (Exception localException)
@@ -482,9 +482,9 @@ public class orf
     do
     {
       return;
-      bjxj.a(f, jdField_a_of_type_OrgJsonJSONObject.toString());
+      bkbq.a(f, jdField_a_of_type_OrgJsonJSONObject.toString());
     } while ((jdField_c_of_type_OrgJsonJSONObject == null) || (jdField_c_of_type_OrgJsonJSONObject.length() == 0));
-    bjxj.a(e, jdField_c_of_type_OrgJsonJSONObject.toString());
+    bkbq.a(e, jdField_c_of_type_OrgJsonJSONObject.toString());
   }
   
   private static String f()
@@ -550,7 +550,7 @@ public class orf
           byte[] arrayOfByte = new byte[localObject.length + 1];
           arrayOfByte[0] = 1;
           System.arraycopy(localObject, 0, arrayOfByte, 1, localObject.length);
-          localObject = new String(bdbi.encode(arrayOfByte, 0));
+          localObject = new String(bdfr.encode(arrayOfByte, 0));
           if (jdField_c_of_type_OrgJsonJSONObject != null)
           {
             jdField_c_of_type_OrgJsonJSONObject.put(str, localObject);
@@ -598,7 +598,7 @@ public class orf
           byte[] arrayOfByte = new byte[localObject.length + 1];
           arrayOfByte[0] = 0;
           System.arraycopy(localObject, 0, arrayOfByte, 1, localObject.length);
-          localObject = new String(bdbi.encode(arrayOfByte, 0));
+          localObject = new String(bdfr.encode(arrayOfByte, 0));
           if (jdField_c_of_type_OrgJsonJSONObject != null)
           {
             jdField_c_of_type_OrgJsonJSONObject.put(str, localObject);
@@ -644,7 +644,7 @@ public class orf
           paramArticleInfo = new byte[paramArticleSummary.length + 1];
           paramArticleInfo[0] = 2;
           System.arraycopy(paramArticleSummary, 0, paramArticleInfo, 1, paramArticleSummary.length);
-          paramArticleSummary = new String(bdbi.encode(paramArticleInfo, 0));
+          paramArticleSummary = new String(bdfr.encode(paramArticleInfo, 0));
           if (jdField_c_of_type_OrgJsonJSONObject != null)
           {
             jdField_c_of_type_OrgJsonJSONObject.put(str, paramArticleSummary);

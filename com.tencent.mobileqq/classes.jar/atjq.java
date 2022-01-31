@@ -1,31 +1,51 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
-import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qphone.base.util.MD5;
+import org.json.JSONObject;
 
-class atjq
-  implements ValueAnimator.AnimatorUpdateListener
+public class atjq
+  implements ayvn
 {
-  atjq(atjn paramatjn, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8) {}
+  public atjq(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(String paramString)
   {
-    if (!this.jdField_a_of_type_Atjn.b)
+    if (paramString == null)
     {
-      paramValueAnimator.cancel();
-      this.jdField_a_of_type_Atjn.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-4}" });
       return;
     }
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = (int)(this.jdField_a_of_type_Int + (this.b - this.jdField_a_of_type_Int) * f1 + 0.5F);
-    int j = (int)(this.c + (this.d - this.c) * f1 + 0.5F);
-    int k = (int)(this.e + (this.f - this.e) * f1 + 0.5F);
-    float f2 = this.g;
-    int m = (int)(f1 * (this.h - this.g) + f2 + 0.5F);
-    this.jdField_a_of_type_Atjn.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(i, j);
-    this.jdField_a_of_type_Atjn.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(k, m);
-    this.jdField_a_of_type_Atjn.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
-    this.jdField_a_of_type_Atjn.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
+    JSONObject localJSONObject = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        byte[] arrayOfByte = bdhb.a(paramString);
+        if (arrayOfByte == null) {
+          break;
+        }
+        localJSONObject.put("code", 0);
+        StringBuilder localStringBuilder = new StringBuilder("data:");
+        if (awkr.a(paramString))
+        {
+          str = "image/gif;";
+          localStringBuilder.append(str);
+          localStringBuilder.append("base64,");
+          localStringBuilder.append(bdfr.encodeToString(arrayOfByte, 0));
+          localJSONObject.put("imgData", localStringBuilder);
+          localJSONObject.put("md5", MD5.toMD5(arrayOfByte));
+          localJSONObject.put("imagePath", paramString);
+          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
+        return;
+      }
+      String str = "image/jpg;";
+    }
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
   }
 }
 

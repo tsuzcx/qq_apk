@@ -1,14 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
 class beem
-  implements DialogInterface.OnClickListener
+  extends beep
 {
-  beem(beei parambeei, int paramInt, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  beem(beej parambeej)
   {
-    beei.a(this.jdField_a_of_type_Beei, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    super(parambeej, null);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "old shouldInterceptRequest");
+    }
+    return a(paramWebView, paramString);
   }
 }
 

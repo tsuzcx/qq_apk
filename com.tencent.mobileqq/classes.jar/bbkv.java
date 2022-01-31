@@ -1,96 +1,16 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class bbkv
+  implements bbkz
 {
-  public long a;
-  public long b;
+  public bbkv(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
   
-  public bbkv()
+  public void a(Bitmap paramBitmap)
   {
-    a();
-  }
-  
-  public bbkv(bbkv parambbkv)
-  {
-    a(parambbkv);
-  }
-  
-  public String a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("shmsgseq", this.a);
-      localJSONObject.put("uniseq", this.b);
-      return localJSONObject.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-  }
-  
-  public void a()
-  {
-    this.a = -1L;
-    this.b = -1L;
-  }
-  
-  public void a(bbkv parambbkv)
-  {
-    if (parambbkv != null)
-    {
-      this.a = parambbkv.a;
-      this.b = parambbkv.b;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.a = paramString.getLong("shmsgseq");
-      this.b = paramString.getLong("uniseq");
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.a != -1L;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return (paramLong != -1L) && ((this.a == -1L) || (this.a > paramLong));
-  }
-  
-  public boolean a(long paramLong1, long paramLong2)
-  {
-    if (a(paramLong1))
-    {
-      this.a = paramLong1;
-      this.b = paramLong2;
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(bbkv parambbkv)
-  {
-    if (parambbkv == null) {
-      return false;
-    }
-    return a(parambbkv.a, parambbkv.b);
+    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bfah);
+    WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
   }
 }
 

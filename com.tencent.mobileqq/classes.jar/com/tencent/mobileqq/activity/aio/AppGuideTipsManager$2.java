@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aeky;
-import bdem;
+import aepn;
+import bdiv;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class AppGuideTipsManager$2
   implements Runnable
 {
-  public AppGuideTipsManager$2(aeky paramaeky) {}
+  public AppGuideTipsManager$2(aepn paramaepn) {}
   
   public void run()
   {
-    aeky.b(this.this$0, bdem.a(aeky.a(this.this$0).getApp(), "com.tencent.tim"));
+    aepn.b(this.this$0, bdiv.a(aepn.a(this.this$0).getApp(), "com.tencent.tim"));
   }
 }
 

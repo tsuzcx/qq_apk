@@ -1,17 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import android.app.Activity;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioUploadCallback.1;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioUploadCallback.2;
 
 public class bces
-  implements DialogInterface.OnClickListener
+  implements bkda
 {
-  public bces(VisitorTroopCardFragment paramVisitorTroopCardFragment, boolean paramBoolean) {}
+  public bcdx a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bces(bcep parambcep, bcdx parambcdx)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      bcfj.a(2, new Object());
-    }
+    this.jdField_a_of_type_Bcdx = parambcdx;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Bcdx.g = 3;
+    this.jdField_a_of_type_Bcdx.c(paramString);
+    ((Activity)bcep.a(this.jdField_a_of_type_Bcep)).runOnUiThread(new AudioItem.AudioUploadCallback.1(this));
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_Bcdx.g = 2;
+    ((Activity)bcep.a(this.jdField_a_of_type_Bcep)).runOnUiThread(new AudioItem.AudioUploadCallback.2(this));
   }
 }
 

@@ -1,54 +1,23 @@
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.os.Handler;
+import android.os.Message;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.widget.CustomHorizontalScrollView;
 
 public class bbno
-  extends DefaultHandler
+  extends Handler
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  protected String e;
+  public bbno(NewTroopContactView paramNewTroopContactView) {}
   
-  public bbno(bbnl parambbnl) {}
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.e != null)
+    switch (paramMessage.what)
     {
-      paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-      if (!this.e.equals("title")) {
-        break label46;
-      }
-      if (bdje.a(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = paramArrayOfChar;
-      }
-    }
-    label46:
-    while (!this.e.equals("summary")) {
+    default: 
       return;
     }
-    this.c = paramArrayOfChar;
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    this.e = null;
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    if (paramString2.equals("picture")) {
-      this.b = paramAttributes.getValue("cover");
-    }
-    for (;;)
-    {
-      this.e = paramString2;
-      return;
-      if (paramString2.equals("msg")) {
-        this.d = paramAttributes.getValue("url");
-      }
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
   }
 }
 

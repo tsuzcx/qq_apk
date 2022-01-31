@@ -1,112 +1,54 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.view.View;
 
 public class aocg
-  extends aofy<aoch>
 {
-  private static boolean a;
-  private static boolean b;
+  private float jdField_a_of_type_Float;
+  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
+  private View jdField_a_of_type_AndroidViewView;
+  private float b;
   
-  public static boolean e()
+  public aocg(View paramView)
   {
-    aoch localaoch = (aoch)aogj.a().a(579);
-    if ((localaoch != null) && (!TextUtils.isEmpty(localaoch.a))) {
-      a = "1".equals(localaoch.a);
-    }
-    return a;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
   }
   
-  public static boolean f()
+  private void b()
   {
-    aoch localaoch = (aoch)aogj.a().a(579);
-    if ((localaoch != null) && (!TextUtils.isEmpty(localaoch.b))) {
-      b = "1".equals(localaoch.b);
-    }
-    return b;
-  }
-  
-  public int a()
-  {
-    return 579;
-  }
-  
-  @NonNull
-  public aoch a(int paramInt)
-  {
-    return new aoch();
-  }
-  
-  public aoch a(String paramString)
-  {
-    try
+    this.jdField_a_of_type_AndroidViewView.setPivotX(this.jdField_a_of_type_Float);
+    this.jdField_a_of_type_AndroidViewView.setPivotY(this.b);
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 1.0F, 0.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 1.0F, 0.0F });
+    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
     {
-      Object localObject = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject).optString("IsImageImmersiveEnable");
-      localObject = ((JSONObject)localObject).optString("IsVideoImmersiveEnable");
-      if (QLog.isColorLevel()) {
-        QLog.e("ImmersiveConfProcessor", 2, "ImmersiveConfBean, isImgEnable:" + paramString + ", isVdoEnable:" + (String)localObject);
-      }
-      paramString = new aoch(paramString.trim(), ((String)localObject).trim());
-      return paramString;
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.setDuration(500L);
     }
-    catch (JSONException paramString)
+  }
+  
+  public void a()
+  {
+    b();
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+  }
+  
+  public void a(aofp paramaofp, boolean paramBoolean, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
     {
-      paramString.printStackTrace();
+      Animator localAnimator = xyc.a(this.jdField_a_of_type_AndroidViewView, (int)this.jdField_a_of_type_Float + paramInt, (int)this.b, this.jdField_a_of_type_AndroidViewView.getHeight() / 2, 1.0F);
+      localAnimator.addListener(new aoch(this, paramaofp, paramBoolean));
+      localAnimator.setDuration(300L);
+      localAnimator.start();
     }
-    return null;
-  }
-  
-  @Nullable
-  public aoch a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
-    {
-      aoch localaoch = a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ImmersiveConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
-      }
-      return localaoch;
-    }
-    return new aoch();
-  }
-  
-  public Class<aoch> a()
-  {
-    return aoch.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aoch paramaoch)
-  {
-    if (paramaoch != null)
-    {
-      if (TextUtils.isEmpty(paramaoch.a)) {
-        a = "1".equals(paramaoch.a);
-      }
-      if (TextUtils.isEmpty(paramaoch.b)) {
-        b = "1".equals(paramaoch.b);
-      }
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

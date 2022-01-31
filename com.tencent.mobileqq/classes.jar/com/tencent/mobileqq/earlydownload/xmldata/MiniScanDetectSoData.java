@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import aphq;
+import aplz;
 
 public class MiniScanDetectSoData
   extends XmlData
 {
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public boolean block_user_download;
   
   public String getSharedPreferencesName()

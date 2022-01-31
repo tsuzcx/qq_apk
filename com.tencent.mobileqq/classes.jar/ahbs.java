@@ -1,19 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public class ahbs
-  implements bhwu
+class ahbs
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public ahbs(AddContactsView paramAddContactsView) {}
+  ahbs(ahbr paramahbr) {}
   
-  public void a(View paramView)
+  public int getSpanSize(int paramInt)
   {
-    AddContactsView.a(this.a, false);
-  }
-  
-  public void b(View paramView)
-  {
-    AddContactsView.a(this.a, true);
+    switch (this.a.getItemViewType(paramInt))
+    {
+    case 1: 
+    default: 
+      return 1;
+    }
+    return 3;
   }
 }
 

@@ -28,13 +28,13 @@ class mbi
       }
     } while (this.jdField_a_of_type_Mbc.jdField_a_of_type_Mbh == null);
     int i;
-    switch (((bdip)paramView).a.action)
+    switch (((bdmy)paramView).a.action)
     {
     default: 
       this.jdField_a_of_type_Mbc.jdField_a_of_type_Int = ((int)paramLong);
       if ((paramLong == 2L) || (paramLong == 3L)) {
         if (!WXShareHelper.a().a()) {
-          i = 2131721478;
+          i = 2131721491;
         }
       }
       break;
@@ -63,7 +63,7 @@ class mbi
         if (WXShareHelper.a().b()) {
           break label392;
         }
-        i = 2131721479;
+        i = 2131721492;
         continue;
       }
       QLog.w("ShareChat", 1, "onItemClick, mChoosedChannel[" + this.jdField_a_of_type_Mbc.jdField_a_of_type_Int + "], position[" + paramInt + "], id[" + paramLong + "], seq[" + this.jdField_a_of_type_Long + "], mChoosedLinkType[" + this.jdField_a_of_type_Mbc.b + "]");

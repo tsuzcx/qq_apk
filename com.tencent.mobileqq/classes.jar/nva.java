@@ -21,7 +21,7 @@ public class nva
   {
     int i = 0;
     nva localnva = new nva();
-    if (!bdje.a(paramString)) {}
+    if (!bdnn.a(paramString)) {}
     for (;;)
     {
       try

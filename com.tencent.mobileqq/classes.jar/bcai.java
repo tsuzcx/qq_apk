@@ -1,22 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
 
-class bcai
-  extends BroadcastReceiver
+public class bcai
+  implements View.OnFocusChangeListener
 {
-  bcai(bcag parambcag) {}
+  public bcai(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    paramContext = paramIntent.getAction();
-    if ("com.tencent.mobileqq.activity.ai.audiopanel.startrecord_action".equals(paramContext)) {
-      this.a.b(bcag.a(this.a));
-    }
-    while (!"com.tencent.mobileqq.troop.homework.xmediaeditor.ui.action_play_video".equals(paramContext)) {
+    paramView = this.a;
+    if (!paramBoolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.jdField_a_of_type_Boolean = bool;
+      if (paramBoolean)
+      {
+        this.a.l = true;
+        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewInputMethodGuard.a());
+      }
       return;
     }
-    this.a.b(bcag.a(this.a));
   }
 }
 

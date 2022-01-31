@@ -13,16 +13,16 @@ public class nhx
     if (QLog.isColorLevel()) {
       QLog.d("AccountDetailBaseInfoModel", 2, "saveAccountDetailToDBAndCache");
     }
-    awbw localawbw = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    awgf localawgf = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
     if ((paramAccountDetail != null) && (paramAccountDetail.getId() != -1L)) {
-      if (!localawbw.a(paramAccountDetail)) {
-        localawbw.a(AccountDetail.class);
+      if (!localawgf.a(paramAccountDetail)) {
+        localawgf.a(AccountDetail.class);
       }
     }
     for (;;)
     {
-      localawbw.a();
-      paramQQAppInterface = (aluw)paramQQAppInterface.getManager(56);
+      localawgf.a();
+      paramQQAppInterface = (alzl)paramQQAppInterface.getManager(56);
       if ((paramQQAppInterface != null) && (paramAccountDetail != null))
       {
         paramQQAppInterface.a(paramAccountDetail);
@@ -31,7 +31,7 @@ public class nhx
         }
       }
       return;
-      localawbw.a(paramAccountDetail);
+      localawgf.a(paramAccountDetail);
     }
   }
   

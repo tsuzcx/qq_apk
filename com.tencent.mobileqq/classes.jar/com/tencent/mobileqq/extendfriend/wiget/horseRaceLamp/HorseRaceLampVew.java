@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,10 +10,10 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
-import aqer;
-import aqes;
-import aqet;
-import aqeu;
+import aqja;
+import aqjb;
+import aqjc;
+import aqjd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -27,9 +27,9 @@ public class HorseRaceLampVew
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = 3;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private aqer jdField_a_of_type_Aqer;
-  private aqeu jdField_a_of_type_Aqeu;
-  private ArrayList<aqes> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private aqja jdField_a_of_type_Aqja;
+  private aqjd jdField_a_of_type_Aqjd;
+  private ArrayList<aqjb> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = 15;
@@ -69,7 +69,7 @@ public class HorseRaceLampVew
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        ((aqes)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramInt);
+        ((aqjb)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramInt);
         i += 1;
       }
     }
@@ -79,7 +79,7 @@ public class HorseRaceLampVew
   {
     setFocusableInTouchMode(true);
     paramContext = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    this.jdField_a_of_type_Int = (-aekt.a(0.02F * this.jdField_b_of_type_Int, paramContext.getApp().getResources()));
+    this.jdField_a_of_type_Int = (-aepi.a(0.02F * this.jdField_b_of_type_Int, paramContext.getApp().getResources()));
     if (this.jdField_a_of_type_Int == 0)
     {
       QLog.e("HorseRaceLampVew + horserace", 2, "mMovespeed is 0");
@@ -134,15 +134,15 @@ public class HorseRaceLampVew
             localObject = localView.getTag();
             n = k;
             i = m;
-            if ((localObject instanceof aqet))
+            if ((localObject instanceof aqjc))
             {
               m += 1;
-              localObject = (aqet)localObject;
+              localObject = (aqjc)localObject;
               n = k;
               i = m;
               if (localView.getWidth() != 0)
               {
-                ((aqet)localObject).c(localView.getMeasuredWidth());
+                ((aqjc)localObject).c(localView.getMeasuredWidth());
                 n = k + 1;
                 i = m;
               }
@@ -157,7 +157,7 @@ public class HorseRaceLampVew
         i = i1;
         while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          ((aqes)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b();
+          ((aqjb)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b();
           i += 1;
         }
         this.jdField_a_of_type_Boolean = true;
@@ -178,11 +178,11 @@ public class HorseRaceLampVew
             localView.setVisibility(0);
           }
           localObject = localView.getTag();
-          if ((localObject instanceof aqet))
+          if ((localObject instanceof aqjc))
           {
-            localObject = (aqet)localObject;
-            j = ((aqet)localObject).a();
-            k = ((aqet)localObject).b();
+            localObject = (aqjc)localObject;
+            j = ((aqjc)localObject).a();
+            k = ((aqjc)localObject).b();
             localView.setX(j);
             localView.setY(k);
           }
@@ -268,15 +268,15 @@ public class HorseRaceLampVew
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, this.jdField_b_of_type_Int);
   }
   
-  public void setAdapter(aqeu paramaqeu)
+  public void setAdapter(aqjd paramaqjd)
   {
-    this.jdField_a_of_type_Aqeu = paramaqeu;
+    this.jdField_a_of_type_Aqjd = paramaqjd;
     d();
   }
   
-  public void setTagClickListner(aqer paramaqer)
+  public void setTagClickListner(aqja paramaqja)
   {
-    this.jdField_a_of_type_Aqer = paramaqer;
+    this.jdField_a_of_type_Aqja = paramaqja;
   }
 }
 

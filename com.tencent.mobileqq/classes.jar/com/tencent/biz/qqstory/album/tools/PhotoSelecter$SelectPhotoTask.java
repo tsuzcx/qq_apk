@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import ufx;
-import ufy;
-import ufz;
-import wsv;
+import ukg;
+import ukh;
+import uki;
+import wxe;
 
 public class PhotoSelecter$SelectPhotoTask
   implements Runnable
@@ -18,8 +18,8 @@ public class PhotoSelecter$SelectPhotoTask
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
   Context jdField_a_of_type_AndroidContentContext;
-  List<ufy> jdField_a_of_type_JavaUtilList;
-  ufx jdField_a_of_type_Ufx;
+  List<ukh> jdField_a_of_type_JavaUtilList;
+  ukg jdField_a_of_type_Ukg;
   long b;
   
   public void run()
@@ -66,7 +66,7 @@ public class PhotoSelecter$SelectPhotoTask
       localObject1 = new ArrayList();
       localObject2 = localArrayList.iterator();
       while (((Iterator)localObject2).hasNext()) {
-        ((ArrayList)localObject1).add(((ufy)((Iterator)localObject2).next()).jdField_a_of_type_Uer);
+        ((ArrayList)localObject1).add(((ukh)((Iterator)localObject2).next()).jdField_a_of_type_Uja);
       }
     }
     Object localObject3;
@@ -75,7 +75,7 @@ public class PhotoSelecter$SelectPhotoTask
       localObject1 = PhotoSelecter.a;
       localObject3 = new StringBuilder().append("round = ");
       k = i + 1;
-      wsv.b((String)localObject1, i);
+      wxe.b((String)localObject1, i);
       j = 0;
       i = k;
     }
@@ -87,8 +87,8 @@ public class PhotoSelecter$SelectPhotoTask
         if (!((Iterator)localObject3).hasNext()) {
           break;
         }
-        localObject1 = (ufy)((Iterator)localObject3).next();
-      } while (((ufy)localObject1).jdField_a_of_type_Int != 1);
+        localObject1 = (ukh)((Iterator)localObject3).next();
+      } while (((ukh)localObject1).jdField_a_of_type_Int != 1);
       for (;;)
       {
         if (localObject1 == null)
@@ -100,7 +100,7 @@ public class PhotoSelecter$SelectPhotoTask
         }
         if (localArrayList.size() == 0)
         {
-          ((ufy)localObject1).jdField_a_of_type_Int = 2;
+          ((ukh)localObject1).jdField_a_of_type_Int = 2;
           localArrayList.add(localObject1);
           label410:
           j += 1;
@@ -109,15 +109,15 @@ public class PhotoSelecter$SelectPhotoTask
         localObject3 = localArrayList.iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          Bitmap localBitmap1 = ((ufy)((Iterator)localObject3).next()).a(this.jdField_a_of_type_AndroidContentContext);
-          Bitmap localBitmap2 = ((ufy)localObject1).a(this.jdField_a_of_type_AndroidContentContext);
+          Bitmap localBitmap1 = ((ukh)((Iterator)localObject3).next()).a(this.jdField_a_of_type_AndroidContentContext);
+          Bitmap localBitmap2 = ((ukh)localObject1).a(this.jdField_a_of_type_AndroidContentContext);
           long l1 = System.currentTimeMillis();
-          double d = ufz.a(localBitmap1, localBitmap2);
+          double d = uki.a(localBitmap1, localBitmap2);
           long l2 = this.jdField_a_of_type_Long;
           this.jdField_a_of_type_Long = (System.currentTimeMillis() - l1 + l2);
           this.b += 1L;
           if (d >= 0.7D) {
-            ((ufy)localObject1).jdField_a_of_type_Int = 3;
+            ((ukh)localObject1).jdField_a_of_type_Int = 3;
           }
         }
         for (k = 1;; k = 0)
@@ -127,12 +127,12 @@ public class PhotoSelecter$SelectPhotoTask
             j += 1;
             break;
           }
-          ((ufy)localObject1).jdField_a_of_type_Int = 2;
+          ((ukh)localObject1).jdField_a_of_type_Int = 2;
           localArrayList.add(localObject1);
           break label410;
-          wsv.b(PhotoSelecter.a, "compare total time = " + this.jdField_a_of_type_Long + " compareTimes = " + this.b);
-          wsv.b(PhotoSelecter.a, "single compare time = " + this.jdField_a_of_type_Long / this.b);
-          this.jdField_a_of_type_Ufx.a((ArrayList)localObject1);
+          wxe.b(PhotoSelecter.a, "compare total time = " + this.jdField_a_of_type_Long + " compareTimes = " + this.b);
+          wxe.b(PhotoSelecter.a, "single compare time = " + this.jdField_a_of_type_Long / this.b);
+          this.jdField_a_of_type_Ukg.a((ArrayList)localObject1);
           return;
         }
         localObject1 = null;

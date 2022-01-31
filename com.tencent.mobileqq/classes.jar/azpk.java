@@ -1,47 +1,27 @@
-import com.tencent.mobileqq.startup.step.InitMagnifierSDK;
-import com.tencent.qapmsdk.base.listener.IMemoryCellingListener;
-import com.tencent.qapmsdk.memory.DumpMemInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
-
 public class azpk
-  implements IMemoryCellingListener
 {
-  public void onAfterDump()
-  {
-    QLog.i("QAPM_QQ_Impl", 1, "Celling onAfterDump ");
-  }
-  
-  @NotNull
-  public List<String> onBeforeDump(@NotNull String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramString = DumpMemInfoHandler.generateHprof(paramString);
-    boolean bool = ((Boolean)paramString[0]).booleanValue();
-    if ((bool) && (paramString[1] != null)) {
-      localArrayList.add((String)paramString[1]);
-    }
-    QLog.i("QAPM_QQ_Impl", 1, "Celling onBeforeDump " + bool);
-    return localArrayList;
-  }
-  
-  public void onBeforeUploadJson()
-  {
-    QLog.i("QAPM_QQ_Impl", 1, "Celling onBeforeUploadJson");
-  }
-  
-  public boolean onCanDump(long paramLong)
-  {
-    InitMagnifierSDK.a(paramLong);
-    return false;
-  }
-  
-  public void onLowMemory(long paramLong)
-  {
-    amfn.a().a(paramLong);
-  }
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
+  public String p = "";
+  public String q = "";
+  public String r = "";
+  public String s = "";
+  public String t = "";
+  public String u = "";
+  public String v = "";
 }
 
 

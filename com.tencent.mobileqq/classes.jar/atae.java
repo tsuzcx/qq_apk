@@ -1,34 +1,23 @@
 import android.os.Bundle;
-import java.util.concurrent.CountDownLatch;
+import com.tencent.qphone.base.util.QLog;
 
 class atae
-  implements asvc
+  implements mug
 {
-  atae(atad paramatad, asuy paramasuy, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
+  atae(atad paramatad, String paramString) {}
   
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public void a(int paramInt)
   {
-    if (paramBoolean)
-    {
-      paramString = new Bundle();
-      paramString.putString("authid", this.jdField_a_of_type_Asuy.a().b);
-      paramString.putString("authKey", this.jdField_a_of_type_Asuy.a().jdField_a_of_type_JavaLangString);
-      paramString.putLong("accountUpdateTime", this.jdField_a_of_type_Asuy.a().jdField_a_of_type_Long);
-      paramString.putString("payToken", this.jdField_a_of_type_Asuy.a().c);
-      Bundle localBundle = new Bundle();
-      localBundle.putBundle("data", paramString);
-      localBundle.putBoolean("isSuccess", true);
-      localBundle.putInt("code", paramInt);
-      this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = localBundle;
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupVideoManager", 2, "start slientDownloadPlugin onResult:" + paramInt);
     }
-    for (;;)
+    mtz.a().a();
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-      return;
-      paramString = new Bundle();
-      paramString.putBoolean("isSuccess", false);
-      paramString.putInt("code", paramInt);
-      this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = paramString;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("roomCodeType", 1);
+      localBundle.putLong("roomid", Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue());
+      atad.a(this.jdField_a_of_type_Atad, localBundle, 1001L);
     }
   }
 }

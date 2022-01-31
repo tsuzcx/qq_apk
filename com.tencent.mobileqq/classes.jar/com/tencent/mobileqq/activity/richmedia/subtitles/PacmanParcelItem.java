@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import ajqg;
+import ajuv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class PacmanParcelItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<PacmanParcelItem> CREATOR = new ajqg();
+  public static final Parcelable.Creator<PacmanParcelItem> CREATOR = new ajuv();
   public float a;
   public int a;
   public int b;

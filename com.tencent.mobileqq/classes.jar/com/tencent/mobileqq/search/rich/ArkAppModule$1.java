@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.search.rich;
 
-import aynv;
-import aynw;
+import ayse;
+import aysf;
 import java.lang.ref.WeakReference;
 
 public class ArkAppModule$1
   implements Runnable
 {
-  public ArkAppModule$1(aynv paramaynv, long paramLong, String paramString) {}
+  public ArkAppModule$1(ayse paramayse, long paramLong, String paramString) {}
   
   public void run()
   {
-    if (aynv.a(this.this$0) != null)
+    if (ayse.a(this.this$0) != null)
     {
-      aynw localaynw = (aynw)aynv.a(this.this$0).get();
-      if (localaynw != null) {
-        localaynw.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+      aysf localaysf = (aysf)ayse.a(this.this$0).get();
+      if (localaysf != null) {
+        localaysf.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
       }
     }
   }

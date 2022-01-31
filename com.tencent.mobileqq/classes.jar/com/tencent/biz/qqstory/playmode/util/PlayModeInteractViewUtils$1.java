@@ -2,19 +2,19 @@ package com.tencent.biz.qqstory.playmode.util;
 
 import android.widget.FrameLayout;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import vhh;
-import xrq;
-import xsb;
-import xsc;
+import vlq;
+import xvz;
+import xwk;
+import xwl;
 
 public final class PlayModeInteractViewUtils$1
   implements Runnable
 {
-  public PlayModeInteractViewUtils$1(xsc paramxsc, xsb paramxsb, FrameLayout paramFrameLayout, xrq paramxrq, int paramInt, StoryVideoItem paramStoryVideoItem) {}
+  public PlayModeInteractViewUtils$1(xwl paramxwl, xwk paramxwk, FrameLayout paramFrameLayout, xvz paramxvz, int paramInt, StoryVideoItem paramStoryVideoItem) {}
   
   public void run()
   {
-    vhh.a(this.jdField_a_of_type_Xsc, this.jdField_a_of_type_Xsb, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Xrq, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, true);
+    vlq.a(this.jdField_a_of_type_Xwl, this.jdField_a_of_type_Xwk, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Xvz, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, true);
   }
 }
 

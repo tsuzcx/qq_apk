@@ -1,12 +1,22 @@
-final class azed
-  extends azef
+public class azed
 {
-  public double a(int paramInt1, int paramInt2)
+  public volatile int a = 0;
+  public int b;
+  public int c = 0;
+  public int d;
+  
+  public String a()
   {
-    if (paramInt1 > paramInt2) {
-      return paramInt2 / (paramInt1 + paramInt2);
+    switch (this.a)
+    {
+    default: 
+      return "UNKNOWN_STATUS";
+    case 0: 
+      return "CONFIG_REQUEST_OK";
+    case 1: 
+      return "CONFIG_START_SERVLET";
     }
-    return paramInt1 / (paramInt1 + paramInt2);
+    return "CONFIG_SEND_REQ";
   }
 }
 

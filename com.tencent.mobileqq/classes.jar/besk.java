@@ -1,20 +1,24 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.AbsListView.LayoutParams;
-import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
 
 public class besk
-  extends RecyclerView.ViewHolder
+  implements View.OnLayoutChangeListener
 {
-  final SimpleMonthView a;
+  public besk(ProfileCardExtendFriendView paramProfileCardExtendFriendView) {}
   
-  public besk(View paramView, besl parambesl)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    super(paramView);
-    this.a = ((SimpleMonthView)paramView);
-    this.a.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-    this.a.setClickable(true);
-    this.a.setOnDayClickListener(parambesl);
+    if (!ProfileCardExtendFriendView.a(this.a)) {
+      this.a.removeOnLayoutChangeListener(this);
+    }
+    while ((!ProfileCardExtendFriendView.a(this.a)) || (!ProfileCardExtendFriendView.b(this.a)) || (ProfileCardExtendFriendView.a(this.a) != 0) || (ProfileCardExtendFriendView.b(this.a) != 0)) {
+      return;
+    }
+    ProfileCardExtendFriendView.a(this.a, Math.max(paramInt4 - paramInt2, paramInt8 - paramInt6));
+    ProfileCardExtendFriendView.b(this.a, Math.min(paramInt4 - paramInt2, paramInt8 - paramInt6));
+    this.a.removeOnLayoutChangeListener(this);
+    ProfileCardExtendFriendView.a(this.a);
   }
 }
 

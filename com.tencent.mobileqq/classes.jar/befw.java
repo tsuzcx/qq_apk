@@ -1,17 +1,14 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
 
 class befw
   implements View.OnClickListener
 {
-  befw(befv parambefv) {}
+  befw(beft parambeft) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "" });
-    }
+    this.a.a(false, 0, 0);
   }
 }
 

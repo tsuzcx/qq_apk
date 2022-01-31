@@ -1,47 +1,15 @@
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
 
 public class yqu
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
+  public yqu(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public yqu(JSONObject paramJSONObject, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("goodsWord");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("gifUrl");
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("pngUrl");
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("packageID");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("quantity");
-    this.jdField_c_of_type_Int = paramJSONObject.optInt("playRule");
-    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("selectedWording");
-    this.jdField_d_of_type_Int = paramJSONObject.optInt("giftValue");
-    this.jdField_e_of_type_Int = paramJSONObject.optInt("giftID");
-    this.f = paramJSONObject.optInt("giftPrice");
-    this.jdField_c_of_type_Boolean = paramJSONObject.optBoolean("isFreeGift");
-    this.h = paramJSONObject.optInt("addTime");
-    this.i = paramJSONObject.optInt("freegiftlimit");
-    this.g = paramInt;
-    this.j = paramJSONObject.optInt("svip");
-    this.k = paramJSONObject.optInt("year_svip");
-    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("svip_logo");
+    EditUniqueTitleActivity.a(this.a);
   }
 }
 

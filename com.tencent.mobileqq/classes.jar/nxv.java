@@ -4,7 +4,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import java.lang.ref.WeakReference;
 
 final class nxv
-  implements anrf
+  implements anvo
 {
   nxv(WeakReference paramWeakReference, boolean paramBoolean, String paramString1, String paramString2) {}
   
@@ -13,7 +13,7 @@ final class nxv
     int i = 1;
     if (nxu.a() == paramInt1)
     {
-      anrt.a().a(paramInt1);
+      anwc.a().a(paramInt1);
       nxu.a(-1);
       if ((2 != paramInt2) && (1 != paramInt2)) {
         break label123;

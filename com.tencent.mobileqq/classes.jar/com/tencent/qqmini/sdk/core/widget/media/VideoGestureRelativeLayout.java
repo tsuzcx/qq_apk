@@ -4,17 +4,17 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.widget.FrameLayout;
-import bgpb;
-import bgpc;
-import bgpd;
+import bgti;
+import bgtj;
+import bgtk;
 
 public class VideoGestureRelativeLayout
   extends FrameLayout
 {
   private int jdField_a_of_type_Int = 0;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private bgpc jdField_a_of_type_Bgpc;
-  private bgpd jdField_a_of_type_Bgpd;
+  private bgtj jdField_a_of_type_Bgtj;
+  private bgtk jdField_a_of_type_Bgtk;
   private boolean jdField_a_of_type_Boolean;
   private int b = 1;
   
@@ -32,15 +32,15 @@ public class VideoGestureRelativeLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Bgpd = new bgpd(this, this);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, this.jdField_a_of_type_Bgpd);
+    this.jdField_a_of_type_Bgtk = new bgtk(this, this);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, this.jdField_a_of_type_Bgtk);
     this.jdField_a_of_type_AndroidViewGestureDetector.setIsLongpressEnabled(false);
-    setOnTouchListener(new bgpb(this));
+    setOnTouchListener(new bgti(this));
   }
   
-  public void setVideoGestureListener(bgpc parambgpc)
+  public void setVideoGestureListener(bgtj parambgtj)
   {
-    this.jdField_a_of_type_Bgpc = parambgpc;
+    this.jdField_a_of_type_Bgtj = parambgtj;
   }
 }
 

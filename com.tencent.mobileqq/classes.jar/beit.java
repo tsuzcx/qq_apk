@@ -1,22 +1,46 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.FrameLayout;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.screendetect.ScreenShotFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 class beit
-  extends Handler
+  implements bddy<String>
 {
-  beit(beis parambeis, Looper paramLooper)
+  beit(beir parambeir) {}
+  
+  public String a(Bitmap paramBitmap)
   {
-    super(paramLooper);
+    String str = bddt.a() + System.currentTimeMillis() + ".jpg";
+    auex.a(paramBitmap, str, Bitmap.CompressFormat.JPEG, 100, true);
+    return str;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(Exception paramException)
   {
-    if (paramMessage.what == 1) {
-      this.a.a(0.0F, 0 - beis.a(this.a).getHeight(), true);
+    QLog.e("SwiftBrowserShareMenuHandler", 1, "onScreenShotError , error is " + paramException.getMessage());
+    if (this.a.a.a() == null)
+    {
+      QLog.e("SwiftBrowserShareMenuHandler", 1, "screen long shot onScreenShotError, activity is null");
+      return;
     }
-    super.handleMessage(paramMessage);
+    QQToast.a(this.a.a.a(), 2131719539, 0).a();
+  }
+  
+  public void a(String paramString, Bitmap paramBitmap)
+  {
+    if (this.a.a.a() == null)
+    {
+      QLog.e("SwiftBrowserShareMenuHandler", 1, "screen long shot error, activity is null");
+      return;
+    }
+    paramBitmap = new Intent();
+    paramBitmap.putExtra("public_fragment_window_feature", 1);
+    paramBitmap.putExtra("screen_path", paramString);
+    paramBitmap.putExtra("is_web_screen_long_shot", true);
+    adpn.a(this.a.a.a(), paramBitmap, PublicTransFragmentActivity.class, ScreenShotFragment.class);
   }
 }
 

@@ -25,9 +25,9 @@ public class ryx
     label176:
     for (int i = localViewGroup.getHeight() - localView.getTop();; i = 0)
     {
-      int j = xee.b(this.a.this$0, 16.0F);
+      int j = xin.b(this.a.this$0, 16.0F);
       int k = this.a.this$0.getWindow().getDecorView().getHeight();
-      int m = xee.b(this.a.this$0, 48.0F);
+      int m = xin.b(this.a.this$0, 48.0F);
       FastWebActivity.a(this.a.this$0, FastWebActivity.b(this.a.this$0), j, k - i - m, false, false, paramString, 100000000);
       FastWebActivity.f(this.a.this$0, true);
       FastWebActivity.d(this.a.this$0, paramInt);

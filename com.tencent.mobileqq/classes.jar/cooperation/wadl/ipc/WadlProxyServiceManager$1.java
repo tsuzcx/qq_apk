@@ -1,18 +1,18 @@
 package cooperation.wadl.ipc;
 
-import bfnq;
-import bkee;
+import bfrz;
+import bkil;
 
 public class WadlProxyServiceManager$1
   implements Runnable
 {
-  public WadlProxyServiceManager$1(bkee parambkee) {}
+  public WadlProxyServiceManager$1(bkil parambkil) {}
   
   public void run()
   {
     if (this.this$0.a)
     {
-      bfnq.c("WadlProxyServiceManager", "##@reset mServiceConnecting");
+      bfrz.c("WadlProxyServiceManager", "##@reset mServiceConnecting");
       this.this$0.a = false;
     }
   }

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afqr;
-import afrc;
-import afrf;
+import afvg;
+import afvr;
+import afvu;
 import android.app.Activity;
-import aptm;
-import aube;
-import azmj;
+import apxv;
+import aufn;
+import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
@@ -14,22 +14,22 @@ import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 public class MarketFaceItemBuilder$7$1
   implements Runnable
 {
-  public MarketFaceItemBuilder$7$1(afrc paramafrc) {}
+  public MarketFaceItemBuilder$7$1(afvr paramafvr) {}
   
   public void run()
   {
-    Object localObject = (aube)this.a.jdField_a_of_type_Afqr.a.getManager(14);
-    if (this.a.jdField_a_of_type_Afrf.a != null) {
-      ((aube)localObject).a(this.a.jdField_a_of_type_Afrf.a.a.epId);
+    Object localObject = (aufn)this.a.jdField_a_of_type_Afvg.a.getManager(14);
+    if (this.a.jdField_a_of_type_Afvu.a != null) {
+      ((aufn)localObject).a(this.a.jdField_a_of_type_Afvu.a.a.epId);
     }
-    if (this.a.jdField_a_of_type_Afrf.a != null) {
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.a.jdField_a_of_type_Afqr.b, this.a.jdField_a_of_type_Afqr.a.getAccount(), 12, String.valueOf(this.a.jdField_a_of_type_Afrf.a.a.epId), false, false);
+    if (this.a.jdField_a_of_type_Afvu.a != null) {
+      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.a.jdField_a_of_type_Afvg.b, this.a.jdField_a_of_type_Afvg.a.getAccount(), 12, String.valueOf(this.a.jdField_a_of_type_Afvu.a.a.epId), false, false);
     }
-    QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_Afqr.a;
-    if (this.a.jdField_a_of_type_Afrf.a == null) {}
-    for (localObject = "";; localObject = this.a.jdField_a_of_type_Afrf.a.a.epId)
+    QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_Afvg.a;
+    if (this.a.jdField_a_of_type_Afvu.a == null) {}
+    for (localObject = "";; localObject = this.a.jdField_a_of_type_Afvu.a.a.epId)
     {
-      azmj.b(localQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007188", 0, 0, (String)localObject, "", "", "");
+      azqs.b(localQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007188", 0, 0, (String)localObject, "", "", "");
       return;
     }
   }

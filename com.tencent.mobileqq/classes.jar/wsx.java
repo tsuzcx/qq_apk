@@ -1,16 +1,6 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-
-final class wsx
-  implements uni<wsy, unf>
+public abstract interface wsx
 {
-  public void a(@NonNull wsy paramwsy, @Nullable unf paramunf, @NonNull ErrorMessage paramErrorMessage)
-  {
-    if (paramErrorMessage.isFail()) {
-      wsv.b("Q.qqstory.MonitorReport", "send monitor fail %s", paramErrorMessage);
-    }
-  }
+  public abstract void a();
 }
 
 

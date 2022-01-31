@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class PhoneNumInfo
-  extends awbv
+  extends awge
 {
-  @awdj
+  @awhs
   public String phoneNum;
   public String uin;
 }

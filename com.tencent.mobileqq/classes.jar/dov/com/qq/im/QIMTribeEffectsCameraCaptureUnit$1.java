@@ -1,16 +1,16 @@
 package dov.com.qq.im;
 
-import aekt;
+import aepi;
 import android.app.Activity;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
-import bkjw;
+import bkod;
 import oip;
 
 public class QIMTribeEffectsCameraCaptureUnit$1
   implements Runnable
 {
-  public QIMTribeEffectsCameraCaptureUnit$1(bkjw parambkjw, Activity paramActivity) {}
+  public QIMTribeEffectsCameraCaptureUnit$1(bkod parambkod, Activity paramActivity) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class QIMTribeEffectsCameraCaptureUnit$1
       BitmapDrawable localBitmapDrawable = oip.a(this.a);
       if (localBitmapDrawable != null)
       {
-        int i = aekt.a(36.0F, this.this$0.a.getResources());
+        int i = aepi.a(36.0F, this.this$0.a.getResources());
         localBitmapDrawable.setBounds(0, 0, i, i);
         this.a.runOnUiThread(new QIMTribeEffectsCameraCaptureUnit.1.1(this, localBitmapDrawable));
       }

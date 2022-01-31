@@ -12,7 +12,7 @@ class TextPreviewMenu$3
   
   public void run()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.a.findViewById(2131371576);
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.a.findViewById(2131371595);
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localRelativeLayout.getLayoutParams();
     localLayoutParams.height = this.a.a.getHeight();
     localRelativeLayout.setLayoutParams(localLayoutParams);

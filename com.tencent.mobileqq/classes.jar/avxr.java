@@ -1,30 +1,11 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
-class avxr
-  implements azby
+public class avxr
 {
-  avxr(avxp paramavxp, AppInterface paramAppInterface) {}
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Avxp.jdField_a_of_type_ArrayOfInt[3] = paramInt;
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    QLog.w(avxp.jdField_a_of_type_JavaLangString, 1, "onDownloadProgress, index[3], bDownloadSuc[" + paramBoolean1 + "]");
-    int[] arrayOfInt = this.jdField_a_of_type_Avxp.jdField_a_of_type_ArrayOfInt;
-    if (paramBoolean1) {}
-    for (paramInt = 100;; paramInt = -1)
-    {
-      arrayOfInt[3] = paramInt;
-      if (this.jdField_a_of_type_Avxp.a() == 100) {
-        avxp.a(this.jdField_a_of_type_Avxp, "onDownloadProgress1", this.jdField_a_of_type_ComTencentCommonAppAppInterface, false);
-      }
-      return;
-    }
-  }
+  public int a;
+  public long a;
+  public OcrRecogResult a;
+  public String a;
 }
 
 

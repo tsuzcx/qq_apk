@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bepp;
+import bety;
 
 class VerifyPhoneNumActivity$7
   implements Runnable
@@ -13,8 +13,8 @@ class VerifyPhoneNumActivity$7
     {
       if ((VerifyPhoneNumActivity.a(this.this$0) == null) && (!this.this$0.isFinishing()))
       {
-        VerifyPhoneNumActivity.a(this.this$0, new bepp(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
-        VerifyPhoneNumActivity.a(this.this$0).c(2131695088);
+        VerifyPhoneNumActivity.a(this.this$0, new bety(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+        VerifyPhoneNumActivity.a(this.this$0).c(2131695090);
       }
       if ((VerifyPhoneNumActivity.a(this.this$0) != null) && (!VerifyPhoneNumActivity.a(this.this$0).isShowing())) {
         VerifyPhoneNumActivity.a(this.this$0).show();

@@ -2,8 +2,8 @@ package com.tencent.biz.qqstory.database;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import awbv;
-import awdg;
+import awge;
+import awhp;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -13,12 +13,12 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import nbp;
 import org.json.JSONException;
 import org.json.JSONObject;
-import uha;
-import wsv;
+import ulj;
+import wxe;
 
 public class CommentEntry
-  extends awbv
-  implements uha
+  extends awge
+  implements ulj
 {
   public static final int COMMENT_TYPE_CAPTURE_TOGETHER = 5;
   public static final int COMMENT_TYPE_COMMON = 0;
@@ -45,7 +45,7 @@ public class CommentEntry
   public int commentId = (int)(this.fakeId / 1000L - 1400000000.0D);
   public int commentType = 0;
   public String content;
-  @awdg
+  @awhp
   private JSONObject extraJson;
   public String extras;
   public long fakeId = System.currentTimeMillis();
@@ -149,7 +149,7 @@ public class CommentEntry
     {
       for (;;)
       {
-        wsv.c("CommentEntry", "getExtraJson error", localException);
+        wxe.c("CommentEntry", "getExtraJson error", localException);
         this.extraJson = new JSONObject();
       }
     }
@@ -177,7 +177,7 @@ public class CommentEntry
     }
     catch (JSONException paramString)
     {
-      wsv.c("PublishVideoEntry", "putStringExtra error", paramString);
+      wxe.c("PublishVideoEntry", "putStringExtra error", paramString);
     }
     return false;
   }

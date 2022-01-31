@@ -1,38 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.vas.FriendCloneSettingFragment;
+
 public class bdss
+  implements DialogInterface.OnCancelListener
 {
-  public final String a;
-  public final String b;
-  public final String c;
+  public bdss(FriendCloneSettingFragment paramFriendCloneSettingFragment) {}
   
-  public bdss()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a = "0";
-    this.b = "";
-    this.c = "";
-  }
-  
-  public bdss(String paramString1, String paramString2, String paramString3)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
+    if (this.a.a != null) {
+      this.a.a.finish();
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
-    }
-    paramObject = (bdss)paramObject;
-    return this.b.equals(paramObject.b);
-  }
-  
-  public String toString()
-  {
-    return "WallpaperConfig{itemId='" + this.a + '\'' + ", imgPath='" + this.b + '\'' + ", videoPath='" + this.c + '\'' + '}';
   }
 }
 

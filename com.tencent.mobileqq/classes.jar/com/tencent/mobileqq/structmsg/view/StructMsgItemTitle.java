@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.structmsg.view;
 
 import android.widget.TextView;
-import azql;
+import azuu;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
 public class StructMsgItemTitle
-  extends azql
+  extends azuu
 {
   public boolean c;
   public boolean d;
@@ -52,7 +52,7 @@ public class StructMsgItemTitle
   
   public int c()
   {
-    return 2131378985;
+    return 2131379043;
   }
   
   public int e()

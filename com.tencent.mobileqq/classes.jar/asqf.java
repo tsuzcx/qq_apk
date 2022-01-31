@@ -1,32 +1,106 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.hotpic.HotVideoData;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
+import com.tencent.mobileqq.haoliyou.JefsClass;
+import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Locale;
 
-class asqf
-  implements asqy
+public class asqf
+  implements anvs
 {
-  asqf(asqe paramasqe, HotVideoData paramHotVideoData, asqh paramasqh, URLDrawable paramURLDrawable) {}
+  public asqf(JefsClass paramJefsClass, WeakReference paramWeakReference, JefsClass.CancelableRunnable paramCancelableRunnable, int paramInt, String paramString) {}
   
-  public void a(asqz paramasqz)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
   {
-    if (paramasqz.jdField_a_of_type_Boolean)
+    Object localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (QLog.isColorLevel()) {
+      QLog.d("TeleScreen|JefsClass", 2, String.format(Locale.CHINA, "onReceive: success: %b, jump: %d, err_code: %d, err_msg: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString }));
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable == null) {
+      return;
+    }
+    if (localObject == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramasqz.a();
-      if (this.jdField_a_of_type_Asqh.a() == this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData)
+      anwc.a().a(this.jdField_a_of_type_Int, -3);
+      QLog.i("TeleScreen|JefsClass", 1, "context is null");
+      if (this.jdField_a_of_type_JavaLangString == null) {}
+      for (paramString = "";; paramString = this.jdField_a_of_type_JavaLangString)
       {
-        this.jdField_a_of_type_Asqh.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setAutoDownload(true);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+        azqs.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "", "1", paramString, "");
+        return;
       }
     }
-    do
+    if ((paramBoolean) && (paramInt1 == 1))
     {
+      JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManagerHotPicPageView", 2, "onFileDownloadFailed:" + this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex + " GetUrlFailed msg:" + paramasqz.jdField_a_of_type_JavaLangString);
+    }
+    if ((!paramBoolean) || (paramInt1 == 0)) {}
+    for (;;)
+    {
+      try
+      {
+        if (!(localObject instanceof Activity)) {
+          break label491;
+        }
+        paramString = (Activity)localObject;
+        if ((paramString == null) || (paramString.isFinishing())) {
+          break label317;
+        }
+        QLog.i("TeleScreen|JefsClass", 1, "leave QQ jump other app , act.isFinishing() == false");
+        localObject = bdgm.a(paramString, 0, null, "即将离开QQ\n打开其他应用", paramString.getString(2131690648), paramString.getString(2131721454), new asqg(this), new asqh(this));
+        if ((paramString instanceof BaseActivity))
+        {
+          ((BaseActivity)paramString).setJumpDialog((Dialog)localObject);
+          ((bdjz)localObject).show();
+          return;
+        }
       }
-    } while (this.jdField_a_of_type_Asqh.a() != this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
-    this.jdField_a_of_type_Asqh.a(-10);
+      catch (Throwable paramString)
+      {
+        QLog.e("TeleScreen|JefsClass", 1, paramString, new Object[0]);
+        JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+        return;
+      }
+      if ((paramString instanceof BasePluginActivity))
+      {
+        ((BasePluginActivity)paramString).setJumpDialog((Dialog)localObject);
+        continue;
+        label317:
+        if (BaseApplicationImpl.sProcessId != 1)
+        {
+          if (JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass) == null) {
+            JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, new asqo(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, null));
+          }
+          paramString = new IntentFilter("com.tencent.mobileqq.telescreen.action_run");
+          paramString.addAction("com.tencent.mobileqq.telescreen.action_remove");
+          BaseApplicationImpl.context.registerReceiver(JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass), paramString);
+        }
+        paramString = new Intent();
+        paramString.putExtra("big_brother_source_key", this.jdField_a_of_type_JavaLangString);
+        paramString.putExtra("key_id", JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable));
+        paramString.putExtra("key_process_id", BaseApplicationImpl.processName);
+        paramString.putExtra("key_callback_id", this.jdField_a_of_type_Int);
+        paramString.putExtra("public_fragment_window_feature", 1);
+        adpn.a(paramString, PublicTransFragmentActivity.class, JumpConfirmFragment.class);
+        QLog.i("TeleScreen|JefsClass", 1, "leave QQ jump other app , act == null && act.isFinishing() == true");
+        return;
+        anwc.a().a(this.jdField_a_of_type_Int, -2);
+        return;
+        label491:
+        paramString = null;
+      }
+    }
   }
 }
 

@@ -1,50 +1,37 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.biz.troop.file.MoveFileActivity;
+import android.os.Build.VERSION;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 
 public class ypb
-  implements TextWatcher
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public ypb(MoveFileActivity paramMoveFileActivity, EditText paramEditText, zcc paramzcc) {}
+  public ypb(RelativePersonalBottomView paramRelativePersonalBottomView) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    TextView localTextView = this.jdField_a_of_type_Zcc.getBtnight();
-    if (bcjk.b(paramEditable))
-    {
-      localTextView.setEnabled(false);
-      localTextView.setTextColor(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getResources().getColor(2131165576));
+    if (RelativePersonalBottomView.a(this.a).getId() == paramInt) {
+      RelativePersonalBottomView.a(this.a).setCurrentItem(0);
+    }
+    while (RelativePersonalBottomView.b(this.a).getId() != paramInt) {
       return;
     }
-    localTextView.setEnabled(true);
-    localTextView.setTextColor(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getResources().getColor(2131165571));
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt3 > 0)
+    if (Build.VERSION.SDK_INT >= 23) {}
+    for (boolean bool = amrk.a(this.a.getContext());; bool = true)
     {
-      paramCharSequence = paramCharSequence.toString();
-      String str = bcjk.b(paramCharSequence);
-      if ((paramCharSequence == null) || (paramCharSequence.equals(str))) {
-        break label57;
+      if (!bool)
+      {
+        bdgm.b((PublicFragmentActivity)this.a.getContext());
+        RelativePersonalBottomView.a(this.a).getChildAt(0).performClick();
+        return;
       }
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(str);
-    }
-    label57:
-    while (!this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean) {
+      RelativePersonalBottomView.a(this.a).setCurrentItem(1);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean = false;
   }
 }
 

@@ -1,45 +1,23 @@
-import QC.UniBusiCommItemAidInfo;
-import QC.UniBusiGetOneItemWithCheckRsp;
-import QC.UniBusiSimpleItemDetail;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.GlowCountRecyclerView;
 
-class awpp
-  implements awpu
+public class awpp
 {
-  awpp(awpn paramawpn) {}
-  
-  public void a(boolean paramBoolean, UniBusiGetOneItemWithCheckRsp paramUniBusiGetOneItemWithCheckRsp)
-  {
-    if (awpn.a(this.a) == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramBoolean) {
-          break label195;
-        }
-        if ((paramUniBusiGetOneItemWithCheckRsp == null) || (paramUniBusiGetOneItemWithCheckRsp.stDetail == null)) {
-          break;
-        }
-      } while (paramUniBusiGetOneItemWithCheckRsp.stDetail.itemId != awpn.a(this.a).itemId);
-      if (paramUniBusiGetOneItemWithCheckRsp.ret == 0)
-      {
-        awpn.a(this.a, false);
-        this.a.b();
-        return;
-      }
-    } while (!awpn.a(this.a));
-    awpn.a(this.a, awpn.a(this.a), awpn.a(this.a).stAidInfo.androidAid, awpn.a(this.a).stAidInfo.payType, awpn.a(this.a).stAidInfo.errMsg, awpn.a(this.a).stAidInfo.month);
-    return;
-    awpn.a(this.a, false);
-    QQToast.a(awpn.a(this.a), alpo.a(2131715509), 0).a();
-    awpn.a(this.a, null);
-    awpn.a(this.a, -1);
-    return;
-    label195:
-    this.a.b();
-  }
+  public long a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public GlowCountRecyclerView a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  View c;
+  public ImageView c;
+  public View d;
+  public ImageView d;
+  View e;
 }
 
 

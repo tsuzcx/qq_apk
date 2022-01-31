@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alpo;
-import bdcd;
-import bdfq;
+import alud;
+import bdgm;
+import bdjz;
 
 class LogJsPlugin$2
   implements Runnable
@@ -11,7 +11,7 @@ class LogJsPlugin$2
   
   public void run()
   {
-    bdcd.a(this.this$0.jsPluginEngine.getActivityContext(), 230, alpo.a(2131706746), null, 2131690648, 2131694951, new LogJsPlugin.2.1(this), null).show();
+    bdgm.a(this.this$0.jsPluginEngine.getActivityContext(), 230, alud.a(2131706758), null, 2131690648, 2131694953, new LogJsPlugin.2.1(this), null).show();
   }
 }
 

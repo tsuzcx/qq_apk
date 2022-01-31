@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.newfriend.connections;
 
-import alro;
+import alwd;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.ArrayList;

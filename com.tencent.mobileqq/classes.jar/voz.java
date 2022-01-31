@@ -1,110 +1,107 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.DiscoverBannerPlayInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class voz
-  extends voy
+  extends vpr
+  implements urr<vff, vhd>
 {
-  private voy a;
+  private int jdField_a_of_type_Int;
+  private DiscoverBannerPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceDiscoverBannerPlayInfo;
+  private String jdField_a_of_type_JavaLangString = "Q.qqstory.player.data.DiscoverBannerPlayPageLoader";
+  private vpm jdField_a_of_type_Vpm;
+  private vps jdField_a_of_type_Vps;
   
-  public Activity a()
+  public voz(DiscoverBannerPlayInfo paramDiscoverBannerPlayInfo)
   {
-    return this.a.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceDiscoverBannerPlayInfo = paramDiscoverBannerPlayInfo;
+    this.jdField_a_of_type_Vpm = new vpm(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceDiscoverBannerPlayInfo.bannerId);
   }
   
-  public OpenPlayerBuilder.Data a()
+  private void a(DiscoverBannerVideoEntry paramDiscoverBannerVideoEntry)
   {
-    return this.a.a();
-  }
-  
-  public XViewPager a()
-  {
-    return this.a.a();
-  }
-  
-  public String a(String paramString)
-  {
-    return this.a.a(paramString);
-  }
-  
-  public vld a()
-  {
-    return this.a.a();
-  }
-  
-  public vlg a()
-  {
-    return this.a.a();
-  }
-  
-  public voq a()
-  {
-    return this.a.a();
-  }
-  
-  public voy a()
-  {
-    return this.a;
-  }
-  
-  public vpj a()
-  {
-    return this.a.a();
-  }
-  
-  public void a()
-  {
-    this.a.a();
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    this.a.a(paramIntent);
-  }
-  
-  public void a(uhn paramuhn)
-  {
-    this.a.a(paramuhn);
-  }
-  
-  public void a(vno paramvno)
-  {
-    this.a.a(paramvno);
-  }
-  
-  public void a(voy paramvoy)
-  {
-    if (this.a != null) {
-      throw new IllegalStateException("Base context already set");
+    vpn localvpn = new vpn(this.jdField_a_of_type_Vpm);
+    localvpn.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramDiscoverBannerVideoEntry != null)
+    {
+      paramDiscoverBannerVideoEntry = paramDiscoverBannerVideoEntry.bannerInfoList.iterator();
+      while (paramDiscoverBannerVideoEntry.hasNext())
+      {
+        DiscoverBannerVideoEntry.BannerInfo localBannerInfo = (DiscoverBannerVideoEntry.BannerInfo)paramDiscoverBannerVideoEntry.next();
+        localvpn.jdField_a_of_type_JavaUtilList.add(localBannerInfo.jdField_a_of_type_JavaLangString);
+        localvpn.jdField_a_of_type_JavaUtilMap.put(localBannerInfo.jdField_a_of_type_JavaLangString, localBannerInfo.b);
+      }
     }
-    this.a = paramvoy;
+    this.jdField_a_of_type_Vps.b(new ErrorMessage(), Collections.singletonList(localvpn), true);
   }
   
-  public void a(vpr paramvpr)
+  public List<vpt> a(List<vpm> paramList)
   {
-    this.a.a(paramvpr);
+    return null;
   }
   
-  public boolean a()
+  public vpp a()
   {
-    return this.a.a();
+    return new vpp(this.jdField_a_of_type_Vpm, null, null);
   }
   
-  public void b(uhn paramuhn)
+  public void a() {}
+  
+  public void a(int paramInt, vps paramvps)
   {
-    this.a.b(paramuhn);
+    this.jdField_a_of_type_Vps = paramvps;
+    paramvps = ((uvg)uwa.a(22)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceDiscoverBannerPlayInfo.bannerId);
+    if ((paramvps != null) && (paramvps.bannerInfoList.size() == paramvps.totalCount) && (paramvps.totalCount > 0))
+    {
+      wxe.a(this.jdField_a_of_type_JavaLangString, "get group data from cache, count:%d", Integer.valueOf(paramvps.totalCount));
+      a(paramvps);
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
+    a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceDiscoverBannerPlayInfo.bannerId, "");
   }
   
-  public void b(vno paramvno)
+  public void a(String paramString1, String paramString2)
   {
-    this.a.b(paramvno);
+    this.jdField_a_of_type_Int += 1;
+    xqq.a(paramString1);
+    vff localvff = new vff();
+    localvff.b = paramString1;
+    localvff.c = paramString2;
+    urp.a().a(localvff, this);
   }
   
-  public boolean b()
+  public void a(@NonNull vff paramvff, @Nullable vhd paramvhd, @NonNull ErrorMessage paramErrorMessage)
   {
-    return this.a.b();
+    if ((paramErrorMessage.isFail()) || (paramvhd == null))
+    {
+      wxe.a(this.jdField_a_of_type_JavaLangString, "get banner info back failed. bannerId =%s ", paramvff.b);
+      this.jdField_a_of_type_Vps.a(paramErrorMessage, null, false);
+      return;
+    }
+    paramErrorMessage = (uvg)uwa.a(22);
+    paramErrorMessage.a(paramvff.b, paramvhd);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "saved banner info to db. bannerId = " + paramvff.b);
+    }
+    if ((paramvhd.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int > 10))
+    {
+      a(paramErrorMessage.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceDiscoverBannerPlayInfo.bannerId));
+      return;
+    }
+    a(paramvff.b, paramvhd.jdField_a_of_type_JavaLangString);
   }
+  
+  public void b() {}
 }
 
 

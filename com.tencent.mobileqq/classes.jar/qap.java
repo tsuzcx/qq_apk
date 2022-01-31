@@ -19,9 +19,9 @@ public class qap
   TextView a;
   TextView b;
   
-  public qap(Context paramContext, bcws parambcws, rqj paramrqj)
+  public qap(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()
@@ -37,16 +37,16 @@ public class qap
     localLinearLayout.setOnClickListener(new qaq(this));
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() >= 2))
     {
-      RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560029, localLinearLayout, false);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localRelativeLayout.findViewById(2131377884));
-      this.b = ((TextView)localRelativeLayout.findViewById(2131370702));
+      RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560028, localLinearLayout, false);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localRelativeLayout.findViewById(2131377938));
+      this.b = ((TextView)localRelativeLayout.findViewById(2131370721));
       Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
       if (localObject != null)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(((DisplayMetrics)localObject).widthPixels / 2);
         this.b.setMaxWidth(((DisplayMetrics)localObject).widthPixels / 4);
       }
-      localObject = (LinearLayout)localRelativeLayout.findViewById(2131364772);
+      localObject = (LinearLayout)localRelativeLayout.findViewById(2131364773);
       int i = 0;
       while (i < 2)
       {
@@ -54,10 +54,10 @@ public class qap
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
         localLayoutParams.weight = 1.0F;
         if (i < 1) {
-          localLayoutParams.rightMargin = aekt.a(0.75F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          localLayoutParams.rightMargin = aepi.a(0.75F, this.jdField_a_of_type_AndroidContentContext.getResources());
         }
         if (i > 0) {
-          localLayoutParams.leftMargin = aekt.a(0.75F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          localLayoutParams.leftMargin = aepi.a(0.75F, this.jdField_a_of_type_AndroidContentContext.getResources());
         }
         localComponentTopicItemMulti.setLayoutParams(localLayoutParams);
         ((LinearLayout)localObject).addView(localComponentTopicItemMulti);

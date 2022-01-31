@@ -1,11 +1,17 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.slideshow.ConvertRunnable;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import java.lang.ref.WeakReference;
 
-abstract interface xmk
+public class xmk
 {
-  public abstract void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public static int a = 3;
+  public long a;
+  public ConvertRunnable a;
+  public SlideItemInfo a;
+  public WeakReference<xml> a;
+  public int b;
+  public long b;
+  public int c;
 }
 
 

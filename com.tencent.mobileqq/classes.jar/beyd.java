@@ -1,13 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout;
 
-public class beyd
-  implements DialogInterface.OnClickListener
+class beyd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public beyd(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
+  beyd(beyb parambeyb, float paramFloat1, float paramFloat2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = paramValueAnimator.floatValue();
+    float f3 = this.b;
+    float f4 = this.jdField_a_of_type_Float;
+    this.jdField_a_of_type_Beyb.a.setAlpha(f2 * (f3 - f4) + f1);
+  }
 }
 
 

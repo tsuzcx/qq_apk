@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.forward;
 
 import android.view.WindowManager;
-import arwl;
+import asau;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
 public class ForwardNewVersionDialog$8
   implements Runnable
 {
-  public ForwardNewVersionDialog$8(arwl paramarwl) {}
+  public ForwardNewVersionDialog$8(asau paramasau) {}
   
   public void run()
   {
-    arwl.a(this.this$0).addView(arwl.a(this.this$0), arwl.a(this.this$0));
-    arwl.a(this.this$0, true);
-    arwl.a(this.this$0).post(new ForwardNewVersionDialog.8.1(this));
+    asau.a(this.this$0).addView(asau.a(this.this$0), asau.a(this.this$0));
+    asau.a(this.this$0, true);
+    asau.a(this.this$0).post(new ForwardNewVersionDialog.8.1(this));
   }
 }
 

@@ -1,22 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
+import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bfkw
-  implements DialogInterface.OnCancelListener
+class bfkw
+  implements ITMAssistantExchangeURLListenner
 {
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  bfkw(bfkv parambfkv) {}
   
-  public bfkw(bfko parambfko, String paramString1, String paramString2)
+  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = bfip.a(paramString1, "NEWYYB");
-    this.b = paramString2;
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_Bfko.a(this.b);
-    bfip.a("720", this.jdField_a_of_type_JavaLangString, this.b);
+    bflp.b("DownloadResolver", "onExchangedURLSucceed --- ");
+    if ((paramBoolean) && (??? != null) && (???.size() > 0))
+    {
+      ??? = ???.iterator();
+      while (???.hasNext())
+      {
+        Object localObject1 = ???.next();
+        if ((localObject1 instanceof AppSimpleDetail))
+        {
+          int i = ((AppSimpleDetail)localObject1).versionCode;
+          if (i > 0) {
+            bfkv.a(this.a).put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
+          }
+        }
+      }
+    }
+    synchronized (bfkv.a(this.a))
+    {
+      bfkv.a(this.a).notify();
+      return;
+    }
   }
 }
 

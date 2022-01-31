@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.richmedia.dc;
 
-import axot;
-import axow;
-import axox;
+import axtc;
+import axtf;
+import axtg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class DCShortVideo$4
   implements Runnable
 {
-  public DCShortVideo$4(axot paramaxot, AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString) {}
+  public DCShortVideo$4(axtc paramaxtc, AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
-    Object localObject = new axox();
-    this.this$0.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, (axow)localObject);
+    Object localObject = new axtg();
+    this.this$0.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, (axtf)localObject);
     if (QLog.isDevelopLevel()) {
-      QLog.d("DCShortVideo", 4, "[reportSave]shortVideoType=" + ((axox)localObject).f + ",uinType = " + ((axox)localObject).b + ",groupMemCount = " + ((axox)localObject).c + ",age = " + ((axox)localObject).d + ",gender = " + ((axox)localObject).e + ",reprotHour = " + ((axox)localObject).g + ",netType = " + ((axox)localObject).h);
+      QLog.d("DCShortVideo", 4, "[reportSave]shortVideoType=" + ((axtg)localObject).f + ",uinType = " + ((axtg)localObject).b + ",groupMemCount = " + ((axtg)localObject).c + ",age = " + ((axtg)localObject).d + ",gender = " + ((axtg)localObject).e + ",reprotHour = " + ((axtg)localObject).g + ",netType = " + ((axtg)localObject).h);
     }
-    localObject = new DataReport.ReportTask("ShortVideo.Save", ((axox)localObject).a("ShortVideo.Save"));
+    localObject = new DataReport.ReportTask("ShortVideo.Save", ((axtg)localObject).a("ShortVideo.Save"));
     DataReport.a().a((DataReport.ReportTask)localObject);
   }
 }

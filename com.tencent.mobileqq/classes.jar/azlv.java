@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.statistics.LocalCrashCollector;
-import java.io.File;
-import java.util.Comparator;
-
-public class azlv
-  implements Comparator<File>
+public abstract interface azlv
 {
-  public azlv(LocalCrashCollector paramLocalCrashCollector) {}
+  public abstract azlw a(int paramInt1, int paramInt2);
   
-  public int a(File paramFile1, File paramFile2)
-  {
-    long l = paramFile1.lastModified() - paramFile2.lastModified();
-    if (l > 0L) {
-      return -1;
-    }
-    if (l < 0L) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(Throwable paramThrowable);
+  
+  public abstract void b();
 }
 
 

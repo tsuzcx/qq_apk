@@ -1,18 +1,8 @@
-import com.tencent.image.URLDrawableHandler;
-
-public class baue
+public abstract interface baue
 {
-  public int a;
-  public URLDrawableHandler a;
-  public String a;
+  public abstract void a(bave parambave);
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUrlFromMsg:" + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",mStartDownOffset:" + this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
-  }
+  public abstract void b(bave parambave);
 }
 
 

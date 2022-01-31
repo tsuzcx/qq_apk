@@ -26,7 +26,7 @@ import org.json.JSONObject;
 
 public class sts
   extends BaseAdapter
-  implements bcwt
+  implements bdbc
 {
   public static int a;
   public static int b;
@@ -34,7 +34,7 @@ public class sts
   public static int d;
   private static int e;
   private float jdField_a_of_type_Float;
-  private ajfa jdField_a_of_type_Ajfa;
+  private ajjp jdField_a_of_type_Ajjp;
   private Context jdField_a_of_type_AndroidContentContext;
   private Resources jdField_a_of_type_AndroidContentResResources;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
@@ -69,7 +69,7 @@ public class sts
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
     this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
-    this.jdField_a_of_type_Ajfa = new ajfa(paramQQAppInterface, this, false);
+    this.jdField_a_of_type_Ajjp = new ajjp(paramQQAppInterface, this, false);
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297839);
     this.jdField_b_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297841);
     this.jdField_c_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297840);
@@ -83,7 +83,7 @@ public class sts
     Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
     if (localBitmap == null)
     {
-      paramstt.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Ajfa.a(1008, paramString));
+      paramstt.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Ajjp.a(1008, paramString));
       return;
     }
     paramstt.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
@@ -93,7 +93,7 @@ public class sts
   {
     if (!this.jdField_a_of_type_JavaUtilHashSet.isEmpty())
     {
-      azmj.b(null, "CliOper", "", "", "0X8006110", "0X8006110", 0, this.jdField_a_of_type_JavaUtilHashSet.size(), 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8006110", "0X8006110", 0, this.jdField_a_of_type_JavaUtilHashSet.size(), 0, "", "", "", "");
       Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
       for (;;)
       {
@@ -121,15 +121,15 @@ public class sts
     }
     label128:
     if (this.f > 0) {
-      azmj.b(null, "CliOper", "", "", "0X8006154", "0X8006154", 0, this.f, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8006154", "0X8006154", 0, this.f, 0, "", "", "", "");
     }
     if (this.jdField_b_of_type_Boolean) {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006431", "0X8006431", 0, 0, "", "", "", "");
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006431", "0X8006431", 0, 0, "", "", "", "");
     }
     this.jdField_a_of_type_JavaUtilHashSet.clear();
     this.jdField_a_of_type_JavaUtilHashSet = null;
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = null;
-    this.jdField_a_of_type_Ajfa.a();
+    this.jdField_a_of_type_Ajjp.a();
     this.jdField_a_of_type_AndroidViewLayoutInflater = null;
     this.jdField_a_of_type_ComTencentWidgetXListView = null;
     this.jdField_a_of_type_JavaUtilHashMap.clear();
@@ -217,15 +217,15 @@ public class sts
       if (j == jdField_a_of_type_Int)
       {
         localObject = new stt(this);
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560212, null);
-        ((stt)localObject).jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131377188));
-        ((stt)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377202));
-        ((stt)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377207));
-        ((stt)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375579));
-        ((stt)localObject).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131379267));
-        ((stt)localObject).c = ((TextView)paramView.findViewById(2131366189));
-        ((stt)localObject).jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370201));
-        ((stt)localObject).jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370180));
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560211, null);
+        ((stt)localObject).jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131377242));
+        ((stt)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377256));
+        ((stt)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377261));
+        ((stt)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375630));
+        ((stt)localObject).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131379325));
+        ((stt)localObject).c = ((TextView)paramView.findViewById(2131366191));
+        ((stt)localObject).jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370220));
+        ((stt)localObject).jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370199));
         ((stt)localObject).jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         ((stt)localObject).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, paramView);
         ((stt)localObject).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
@@ -278,12 +278,12 @@ public class sts
         if (j != jdField_b_of_type_Int) {
           break label1196;
         }
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559849, null);
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559848, null);
         break label334;
       }
       if (j == jdField_a_of_type_Int)
       {
-        paramViewGroup.setTag(2131377194, Integer.valueOf(paramInt));
+        paramViewGroup.setTag(2131377248, Integer.valueOf(paramInt));
         localObject = (stt)paramViewGroup.getTag();
         localsut = (sut)getItem(paramInt);
         if (this.jdField_a_of_type_JavaUtilHashSet != null) {
@@ -298,12 +298,12 @@ public class sts
           if (!TextUtils.isEmpty(paramView))
           {
             ((stt)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
-            ((stt)localObject).jdField_b_of_type_AndroidWidgetTextView.setText(ajgs.a().a(localsut.jdField_a_of_type_JavaLangString, localsut.jdField_a_of_type_Long));
+            ((stt)localObject).jdField_b_of_type_AndroidWidgetTextView.setText(ajlh.a().a(localsut.jdField_a_of_type_JavaLangString, localsut.jdField_a_of_type_Long));
             if (localsut.jdField_b_of_type_Int <= 0) {
               break label870;
             }
             paramInt = 3;
-            bhro.a(((stt)localObject).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, paramInt, localsut.jdField_b_of_type_Int, 2130849732, 99, null);
+            bhvv.a(((stt)localObject).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, paramInt, localsut.jdField_b_of_type_Int, 2130849805, 99, null);
             if (localsut.jdField_a_of_type_JavaUtilList.size() <= 0) {
               break label972;
             }
@@ -312,16 +312,16 @@ public class sts
               break label875;
             }
             ((stt)localObject).c.setMaxLines(1);
-            ((stt)localObject).c.setText(new baig(localsuu.c.replaceFirst("^\\s+", ""), 3, 20));
-            ((stt)localObject).jdField_a_of_type_AndroidViewViewGroup.setTag(2131377191, Integer.valueOf(localsut.jdField_b_of_type_Int));
-            ((stt)localObject).jdField_a_of_type_AndroidViewViewGroup.setTag(2131377200, localsut.jdField_a_of_type_JavaLangString);
-            ((stt)localObject).jdField_a_of_type_AndroidViewViewGroup.setTag(2131377193, paramView);
-            ((stt)localObject).jdField_a_of_type_AndroidViewViewGroup.setTag(2131377192, Integer.valueOf(jdField_c_of_type_Int));
+            ((stt)localObject).c.setText(new bamp(localsuu.c.replaceFirst("^\\s+", ""), 3, 20));
+            ((stt)localObject).jdField_a_of_type_AndroidViewViewGroup.setTag(2131377245, Integer.valueOf(localsut.jdField_b_of_type_Int));
+            ((stt)localObject).jdField_a_of_type_AndroidViewViewGroup.setTag(2131377254, localsut.jdField_a_of_type_JavaLangString);
+            ((stt)localObject).jdField_a_of_type_AndroidViewViewGroup.setTag(2131377247, paramView);
+            ((stt)localObject).jdField_a_of_type_AndroidViewViewGroup.setTag(2131377246, Integer.valueOf(jdField_c_of_type_Int));
             ((stt)localObject).jdField_a_of_type_AndroidViewViewGroup.setTag(localsut);
-            ((stt)localObject).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131377191, localsut);
-            ((stt)localObject).jdField_a_of_type_AndroidWidgetButton.setTag(2131377200, localsut.jdField_a_of_type_JavaLangString);
-            ((stt)localObject).jdField_a_of_type_AndroidWidgetButton.setTag(2131377193, paramView);
-            ((stt)localObject).jdField_b_of_type_AndroidWidgetButton.setTag(2131377200, localsut.jdField_a_of_type_JavaLangString);
+            ((stt)localObject).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131377245, localsut);
+            ((stt)localObject).jdField_a_of_type_AndroidWidgetButton.setTag(2131377254, localsut.jdField_a_of_type_JavaLangString);
+            ((stt)localObject).jdField_a_of_type_AndroidWidgetButton.setTag(2131377247, paramView);
+            ((stt)localObject).jdField_b_of_type_AndroidWidgetButton.setTag(2131377254, localsut.jdField_a_of_type_JavaLangString);
             paramViewGroup.setTag(-3, Integer.valueOf((int)(this.jdField_c_of_type_Float + this.jdField_d_of_type_Float)));
           }
         }
@@ -348,12 +348,12 @@ public class sts
           else if (localsuu.jdField_a_of_type_Int == 2)
           {
             ((stt)localObject).c.setMaxLines(1);
-            ((stt)localObject).c.setText(2131696974);
+            ((stt)localObject).c.setText(2131696976);
           }
           else
           {
             ((stt)localObject).c.setMaxLines(1);
-            ((stt)localObject).c.setText(2131696975);
+            ((stt)localObject).c.setText(2131696977);
             continue;
             if ((QLog.isColorLevel()) && (QLog.isColorLevel())) {
               QLog.w("SubscriptFeedsNewAdapter", 2, "getView feed.mItems.size() == 0, is error!!");
@@ -363,22 +363,22 @@ public class sts
       }
       label972:
       paramView = (stu)getItem(paramInt);
-      ((TextView)paramViewGroup.findViewById(2131370761)).setText(paramView.jdField_a_of_type_JavaLangString);
-      ((ImageView)paramViewGroup.findViewById(2131370760)).setImageDrawable(paramView.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      localObject = (DragTextView)paramViewGroup.findViewById(2131379267);
+      ((TextView)paramViewGroup.findViewById(2131370780)).setText(paramView.jdField_a_of_type_JavaLangString);
+      ((ImageView)paramViewGroup.findViewById(2131370779)).setImageDrawable(paramView.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      localObject = (DragTextView)paramViewGroup.findViewById(2131379325);
       ((DragTextView)localObject).setDragViewType(0, paramViewGroup);
       if (paramView.jdField_a_of_type_Int > 0) {}
       for (paramInt = 3;; paramInt = 0)
       {
-        bhro.a((TextView)localObject, paramInt, paramView.jdField_a_of_type_Int, 2130849732, 99, null);
+        bhvv.a((TextView)localObject, paramInt, paramView.jdField_a_of_type_Int, 2130849805, 99, null);
         if (paramView.jdField_a_of_type_Int > 0) {
           paramViewGroup.findViewById(2131362838).setVisibility(8);
         }
-        localObject = (ViewGroup)paramViewGroup.findViewById(2131370759);
-        ((ViewGroup)localObject).setTag(2131377192, Integer.valueOf(jdField_d_of_type_Int));
-        ((ViewGroup)localObject).setTag(2131377396, paramView.jdField_b_of_type_JavaLangString);
-        ((ViewGroup)localObject).setTag(2131375191, Integer.valueOf(paramView.jdField_b_of_type_Int));
-        ((ViewGroup)localObject).setTag(2131375192, Integer.valueOf(paramView.jdField_a_of_type_Int));
+        localObject = (ViewGroup)paramViewGroup.findViewById(2131370778);
+        ((ViewGroup)localObject).setTag(2131377246, Integer.valueOf(jdField_d_of_type_Int));
+        ((ViewGroup)localObject).setTag(2131377450, paramView.jdField_b_of_type_JavaLangString);
+        ((ViewGroup)localObject).setTag(2131375242, Integer.valueOf(paramView.jdField_b_of_type_Int));
+        ((ViewGroup)localObject).setTag(2131375243, Integer.valueOf(paramView.jdField_a_of_type_Int));
         ((ViewGroup)localObject).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         break;
       }

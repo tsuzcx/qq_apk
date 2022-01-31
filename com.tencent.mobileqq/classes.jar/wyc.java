@@ -1,27 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-public class wyc
-  implements Animator.AnimatorListener
+class wyc
+  implements xjl<Boolean, xjr>
 {
-  public wyc(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
+  wyc(wyb paramwyb) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public Void a(Boolean paramBoolean, xjr paramxjr)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 2130772038);
+    if (paramBoolean.booleanValue())
+    {
+      wxe.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(paramxjr.b.size(), paramxjr.jdField_a_of_type_JavaUtilList.size())));
+      this.a.a.setEnabled(true);
+    }
+    for (;;)
+    {
+      return null;
+      wxe.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + paramxjr.jdField_a_of_type_Int);
+      QQToast.a(this.a.a(), 1, alud.a(2131704038) + paramxjr.jdField_a_of_type_Int, 1);
+    }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 2130772038);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

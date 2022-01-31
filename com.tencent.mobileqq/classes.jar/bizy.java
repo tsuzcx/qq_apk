@@ -1,16 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class bizy
-  extends Handler
+class bizy
+  implements INetInfoHandler
 {
-  public bizy(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
+  bizy(bizx parambizx) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
   {
-    this.a.a(this.a.a, paramMessage);
+    bizx.a(this.a);
   }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    bizx.a(this.a);
+  }
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 

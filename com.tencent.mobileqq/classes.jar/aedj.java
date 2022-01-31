@@ -1,56 +1,89 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aedj
-  implements bhqd
+  extends Handler
 {
-  public aedj(TroopRequestActivity paramTroopRequestActivity, bhpy parambhpy) {}
+  public aedj(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    int i = 20011;
-    switch (paramInt)
+    if (paramMessage.what == 1) {
+      this.a.f();
+    }
+    do
     {
-    default: 
-      this.jdField_a_of_type_Bhpy.dismiss();
       return;
-    }
-    if (bdee.d(BaseApplication.getContext())) {
-      paramInt = i;
-    }
-    for (;;)
-    {
-      try
+      if (paramMessage.what == 2)
       {
-        switch (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get())
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_OWNER_NAME");
+        }
+        this.a.a(2, this.a.a.getTroopOwnerName(), this.a.a.isFetchedTroopOwnerUin());
+        return;
+      }
+      if (paramMessage.what == 4)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_INFO");
+        }
+        if ((this.a.a.dwGroupFlagExt & 0x800) != 0L) {
+          this.a.a(7, this.a.a.troopAuthenticateInfo, false);
+        }
+        this.a.a(2, this.a.a.troopOwnerNick, this.a.a.isFetchedTroopOwnerUin());
+        if ((this.a.a.troopOwnerNick == null) && (!TextUtils.isEmpty(this.a.a.troopowneruin))) {
+          TroopInfoActivity.c(this.a);
+        }
+        this.a.k();
+        if (!TextUtils.isEmpty(this.a.a.mRichFingerMemo)) {}
+        for (paramMessage = this.a.a.mRichFingerMemo;; paramMessage = this.a.getResources().getString(2131696639))
         {
-        case 1: 
-        case 22: 
-          long l = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get();
-          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app.getCurrentAccountUin();
-          yzg.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.s, String.valueOf(l), paramView, paramInt, null);
+          this.a.a(6, paramMessage, this.a.a.isOwnerOrAdim());
+          if (this.a.a.troopClass != null) {
+            break;
+          }
+          TroopInfoActivity.d(this.a);
+          return;
         }
       }
-      catch (Exception paramView)
+      if (paramMessage.what == 5)
       {
-        paramView.printStackTrace();
-        continue;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_CLASS");
+        }
+        this.a.a(4, this.a.a.troopClass, this.a.a.isOwnerOrAdim());
+        return;
       }
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "report", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.t, "", "");
-      break;
-      paramInt = 20009;
-      continue;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131694766, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.getTitleBarHeight());
-      continue;
-      paramInt = i;
-    }
+      if (paramMessage.what == 6)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_TAGS");
+        }
+        paramMessage = TroopInfoActivity.a(this.a, this.a.a);
+        this.a.a(8, paramMessage, true, 2, true);
+        return;
+      }
+      if (paramMessage.what == 7)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_INTEREST");
+        }
+        paramMessage = new ArrayList();
+        if (!TextUtils.isEmpty(this.a.a.tribeName)) {
+          paramMessage.add(this.a.a.tribeName);
+        }
+        this.a.a(9, paramMessage, true, 1, true);
+        TroopInfoActivity.e(this.a);
+        return;
+      }
+    } while (paramMessage.what != 8);
+    TroopInfoActivity.e(this.a);
   }
 }
 

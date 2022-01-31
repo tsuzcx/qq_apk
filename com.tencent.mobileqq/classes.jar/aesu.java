@@ -1,24 +1,64 @@
-import android.animation.TypeEvaluator;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.data.IntimateInfo.DNAInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class aesu
-  implements TypeEvaluator
+  extends ClickableSpan
 {
-  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
+  aesu(aesk paramaesk, IntimateInfo.DNAInfo paramDNAInfo) {}
+  
+  public void onClick(View paramView)
   {
+    azqs.b(null, "dc00898", "", "", "0X800A20A ", "0X800A20A ", 0, 0, "", "", "", "");
+    QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A20A");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl))
+    {
+      QLog.e("intimate_relationship", 2, "linkUrl is empty");
+      return;
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimController", 2, "AlphaEvaluator value: " + paramFloat);
+      QLog.d("intimate_relationship", 2, String.format("click scheme: %s, scheme: %s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkWording, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl }));
     }
-    if ((paramFloat >= 0.0F) && (paramFloat <= 0.02985074626865672D)) {
-      return Double.valueOf(paramFloat * 0.5D / 0.02985074626865672D);
+    paramView = bdib.a(this.jdField_a_of_type_Aesk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aesk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
+    if (paramView != null)
+    {
+      paramView.c();
+      return;
     }
-    if ((paramFloat > 0.02985074626865672D) && (paramFloat <= 0.9253731343283582D)) {
-      return Double.valueOf(0.5D);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl.toLowerCase().startsWith("mqzone://"))
+    {
+      bjdt.c(this.jdField_a_of_type_Aesk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
+      return;
     }
-    if ((paramFloat > 0.9253731343283582D) && (paramFloat <= 1.0F)) {
-      return Double.valueOf((1.0F - paramFloat) * 0.5D / 0.07462686567164178D);
+    afgx.a(this.jdField_a_of_type_Aesk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
+    try
+    {
+      int j = Color.parseColor("#4D94FF");
+      paramTextPaint.setColor(j);
+      int i = j;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo != null)
+      {
+        i = j;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkColor)) {
+          i = Color.parseColor(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkColor);
+        }
+      }
+      paramTextPaint.setColor(i);
+      return;
     }
-    return Double.valueOf(0.0D);
+    catch (IllegalArgumentException paramTextPaint)
+    {
+      QLog.e("intimate_relationship", 2, " color parse err");
+    }
   }
 }
 

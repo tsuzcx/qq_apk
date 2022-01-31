@@ -76,7 +76,7 @@ public class pot
       return;
     }
     QLog.d("OnCommentClickListener", 1, "openCommentComponent");
-    olt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, null, 9, alpo.a(2131708219), null, false, null, false, null, 1);
+    olt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, null, 9, alud.a(2131708231), null, false, null, false, null, 1);
   }
 }
 

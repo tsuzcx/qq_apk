@@ -1,19 +1,16 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.listentogether.ui.MusicPanelView;
 
-public abstract interface atpk
+public class atpk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(LocationRoom.Venue paramVenue);
+  public atpk(MusicPanelView paramMusicPanelView) {}
   
-  public abstract void a(LatLng paramLatLng);
-  
-  public abstract void a(LatLng paramLatLng, float paramFloat, List<String> paramList);
-  
-  public abstract void a(boolean paramBoolean, Point paramPoint);
-  
-  public abstract void a(boolean paramBoolean, atpl paramatpl);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    MusicPanelView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+  }
 }
 
 

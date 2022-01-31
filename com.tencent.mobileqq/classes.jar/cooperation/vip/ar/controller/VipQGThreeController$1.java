@@ -1,20 +1,20 @@
 package cooperation.vip.ar.controller;
 
-import bfsy;
-import bfsz;
-import bkal;
+import bfxf;
+import bfxg;
+import bkes;
 
 public class VipQGThreeController$1
   implements Runnable
 {
-  public VipQGThreeController$1(bkal parambkal) {}
+  public VipQGThreeController$1(bkes parambkes) {}
   
   public void run()
   {
-    if (bfsz.a("VipQGThreeController load QG So")) {
-      bkal.a(this.this$0).a();
+    if (bfxg.a("VipQGThreeController load QG So")) {
+      bkes.a(this.this$0).a();
     }
-    bfsz.a("1018", true, bkal.a(this.this$0));
+    bfxg.a("1018", true, bkes.a(this.this$0));
   }
 }
 

@@ -1,15 +1,23 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 class asdy
-  extends nac
+  implements DialogInterface.OnClickListener
 {
-  asdy(asdx paramasdx) {}
+  asdy(asdt paramasdt, int paramInt, String paramString) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, String.format("sendFriendRelationRedpointClickEvent, errorCode: %d", new Object[] { Integer.valueOf(paramInt) }));
+    if (paramInt == 1)
+    {
+      asdt.a(asdt.a(this.jdField_a_of_type_Asdt), "shareToQQ", asdt.a(this.jdField_a_of_type_Asdt), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      ndq.a(asdt.a(this.jdField_a_of_type_Asdt), 0, "", "");
+      if (asdt.a(this.jdField_a_of_type_Asdt) != null) {
+        asdt.a(this.jdField_a_of_type_Asdt).b(1);
+      }
+      asdt.a(this.jdField_a_of_type_Asdt).moveTaskToBack(true);
     }
   }
 }

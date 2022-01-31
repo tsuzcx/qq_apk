@@ -1,24 +1,37 @@
-import android.graphics.Bitmap;
-import android.media.MediaCodec;
-import android.media.MediaExtractor;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class xfj
+class xfj
+  implements View.OnTouchListener
 {
-  public int a;
-  public long a;
-  public MediaCodec a;
-  public MediaExtractor a;
-  public ArrayList<String> a = new ArrayList();
-  public xfg a;
-  public xfk a;
-  public long[] a;
-  public int b;
-  public long b;
-  public ArrayList<Bitmap> b = new ArrayList();
-  public long[] b;
-  public int c;
-  public int d;
+  private final int jdField_a_of_type_Int = 10;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
+  
+  xfj(xfh paramxfh) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    paramMotionEvent.getX();
+    float f = paramMotionEvent.getY();
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+    case 0: 
+    case 2: 
+      do
+      {
+        return false;
+        this.b = ((int)f);
+        this.jdField_a_of_type_Boolean = false;
+        return false;
+      } while (Math.abs(f - this.b) <= 10.0F);
+      this.jdField_a_of_type_Boolean = true;
+      return false;
+    }
+    return this.jdField_a_of_type_Boolean;
+  }
 }
 
 

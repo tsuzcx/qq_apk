@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import abol;
-import alpo;
+import abta;
+import alud;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.SubAccountInfo;
@@ -17,7 +17,7 @@ class AssociatedAccountActivity$5
     if (this.this$0.isFinishing()) {
       return;
     }
-    Object localObject2 = new StringBuilder(alpo.a(2131701155)).append(this.this$0.getString(2131720570));
+    Object localObject2 = new StringBuilder(alud.a(2131701167)).append(this.this$0.getString(2131720582));
     int i;
     Object localObject1;
     if (this.a != null)
@@ -31,7 +31,7 @@ class AssociatedAccountActivity$5
       localArrayList.addAll(this.this$0.a);
       Iterator localIterator = localArrayList.iterator();
       while (localIterator.hasNext()) {
-        i -= ((abol)localObject1).a(((SubAccountInfo)localIterator.next()).subuin, 7000);
+        i -= ((abta)localObject1).a(((SubAccountInfo)localIterator.next()).subuin, 7000);
       }
       localArrayList.clear();
     }

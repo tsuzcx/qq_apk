@@ -1,17 +1,17 @@
 package com.tencent.biz.lebasearch;
 
-import alkr;
+import alpg;
 import android.os.Bundle;
-import ymk;
+import yqz;
 
 final class Utils$2
   implements Runnable
 {
-  Utils$2(ymk paramymk, Bundle paramBundle, alkr paramalkr) {}
+  Utils$2(yqz paramyqz, Bundle paramBundle, alpg paramalpg) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ymk.a(17, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Alkr);
+    this.jdField_a_of_type_Yqz.a(17, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Alpg);
   }
 }
 

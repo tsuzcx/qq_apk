@@ -10,14 +10,14 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import xsp;
-import xst;
+import xwy;
+import xxc;
 
 public class RecyclerViewWithHeaderFooter
   extends RecyclerView
 {
   private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private xst jdField_a_of_type_Xst;
+  private xxc jdField_a_of_type_Xxc;
   public boolean a;
   private final List<View> b = new ArrayList();
   
@@ -73,17 +73,17 @@ public class RecyclerViewWithHeaderFooter
     }
     else
     {
-      localObject = new xsp(paramAdapter);
+      localObject = new xwy(paramAdapter);
       paramAdapter = this.jdField_a_of_type_JavaUtilList.iterator();
       while (paramAdapter.hasNext()) {
-        ((xsp)localObject).a((View)paramAdapter.next());
+        ((xwy)localObject).a((View)paramAdapter.next());
       }
       paramAdapter = this.b.iterator();
       while (paramAdapter.hasNext()) {
-        ((xsp)localObject).b((View)paramAdapter.next());
+        ((xwy)localObject).b((View)paramAdapter.next());
       }
-      if (this.jdField_a_of_type_Xst != null) {
-        ((xsp)localObject).a(this.jdField_a_of_type_Xst);
+      if (this.jdField_a_of_type_Xxc != null) {
+        ((xwy)localObject).a(this.jdField_a_of_type_Xxc);
       }
     }
     super.setAdapter((RecyclerView.Adapter)localObject);

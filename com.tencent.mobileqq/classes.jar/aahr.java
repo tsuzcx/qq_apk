@@ -1,34 +1,64 @@
-import com.tencent.ad.tangram.log.AdLogAdapter;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class aahr
-  implements AdLogAdapter
+public class aahr
 {
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  public int a;
+  public FrameLayout a;
+  public GameCenterVideoViewController a;
+  public String a;
+  public Map<Integer, View> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  
+  public aahr(GameCenterVideoViewController paramGameCenterVideoViewController, FrameLayout paramFrameLayout, Map<Integer, View> paramMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2, paramThrowable);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = paramGameCenterVideoViewController;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
   }
   
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2, paramThrowable);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("id", this.jdField_a_of_type_Int);
+      localJSONObject.put("x", this.jdField_c_of_type_Int);
+      localJSONObject.put("y", this.jdField_b_of_type_Int);
+      localJSONObject.put("vid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("url", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("streamType", this.d);
+      localJSONObject.put("protocol", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("mute", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.b());
+      localJSONObject.put("total", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.b());
+      localJSONObject.put("current", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.a());
+      localJSONObject.put("autoPlay", this.jdField_b_of_type_Boolean);
+      localJSONObject.put("isFullScreen", this.jdField_c_of_type_Boolean);
+      return localJSONObject.toString();
     }
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2, paramThrowable);
-    }
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2, paramThrowable);
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
 }

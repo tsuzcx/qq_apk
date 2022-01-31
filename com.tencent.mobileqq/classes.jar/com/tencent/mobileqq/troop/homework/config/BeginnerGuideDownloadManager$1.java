@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.homework.config;
 
 import android.os.Handler;
-import bbut;
+import bbzc;
 import com.tencent.qphone.base.util.QLog;
 
 public class BeginnerGuideDownloadManager$1
   implements Runnable
 {
-  public BeginnerGuideDownloadManager$1(bbut parambbut, Handler paramHandler, int paramInt, boolean paramBoolean) {}
+  public BeginnerGuideDownloadManager$1(bbzc parambbzc, Handler paramHandler, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((!bbut.a(this.this$0, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean)) && (QLog.isColorLevel())) {
+    if ((!bbzc.a(this.this$0, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean)) && (QLog.isColorLevel())) {
       QLog.d("BeginnerGuideDownloadManager", 2, "postDownload return false");
     }
   }

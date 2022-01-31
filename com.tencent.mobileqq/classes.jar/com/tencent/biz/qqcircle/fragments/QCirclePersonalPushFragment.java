@@ -1,98 +1,109 @@
 package com.tencent.biz.qqcircle.fragments;
 
-import alpo;
+import alud;
 import android.arch.lifecycle.MutableLiveData;
-import com.tencent.biz.qqcircle.component.ComponentPageView;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.component.QCircleComponentPageView;
+import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
 import com.tencent.biz.qqcircle.widgets.QCircleStatusView;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
+import com.tencent.biz.subscribe.event.SimpleBaseEvent;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
 import java.util.ArrayList;
 import java.util.List;
-import trl;
-import tvm;
-import two;
-import tzf;
-import tzm;
-import yeb;
+import trq;
+import tvw;
+import txf;
+import ubq;
+import ubz;
+import yii;
+import yiw;
+import yiy;
 
 public class QCirclePersonalPushFragment
   extends QCirclePersonalBaseBottomFragment
+  implements yiy
 {
-  private void a(tzm<List<FeedCloudMeta.StFeed>> paramtzm)
+  private void a(ubz<List<FeedCloudMeta.StFeed>> paramubz)
   {
-    if (paramtzm == null)
+    if (paramubz == null)
     {
       QLog.e(jdField_a_of_type_JavaLangString, 1, "handleFeedDataRsp return unexpected data！");
       return;
     }
-    boolean bool = paramtzm.a();
+    boolean bool = paramubz.a();
     int i;
-    switch (paramtzm.a())
+    switch (paramubz.a())
     {
     default: 
       i = 0;
     }
-    while ((i != 0) && (this.jdField_a_of_type_Trl != null))
+    while ((i != 0) && (this.jdField_a_of_type_Trq != null))
     {
-      this.jdField_a_of_type_Trl.a(true, bool);
+      this.jdField_a_of_type_Trq.a(true, bool);
       return;
       QLog.e(jdField_a_of_type_JavaLangString, 1, "handleFeedDataRsp() return empty data");
-      if ((paramtzm.b()) && (this.jdField_a_of_type_Trl != null) && (this.jdField_a_of_type_Trl.getItemCount() > 0))
+      if ((paramubz.b()) && (this.jdField_a_of_type_Trq != null) && (this.jdField_a_of_type_Trq.getItemCount() > 0))
       {
-        this.jdField_a_of_type_Trl.a().a(bool);
+        this.jdField_a_of_type_Trq.getLoadInfo().a(bool);
         i = 1;
       }
       else
       {
-        if (this.jdField_a_of_type_Tvm != null)
+        if (this.jdField_a_of_type_Tvw != null)
         {
-          paramtzm = getString(2131698302);
-          this.jdField_a_of_type_Tvm.a().a().b(paramtzm);
+          paramubz = getString(2131698305);
+          ((QCircleStatusView)this.jdField_a_of_type_Tvw.a().a()).b(paramubz);
           f();
           i = 1;
           continue;
-          if (paramtzm.a() == null) {}
-          for (paramtzm = alpo.a(2131720466);; paramtzm = paramtzm.a())
+          if (paramubz.a() == null) {}
+          for (paramubz = alud.a(2131720478);; paramubz = paramubz.a())
           {
-            QLog.e(jdField_a_of_type_JavaLangString, 1, "handleFeedDataRsp() return error！errMsg:" + paramtzm);
-            if ((this.jdField_a_of_type_Trl == null) || (this.jdField_a_of_type_Trl.getItemCount() <= 0)) {
-              break label247;
+            QLog.e(jdField_a_of_type_JavaLangString, 1, "handleFeedDataRsp() return error！errMsg:" + paramubz);
+            if ((this.jdField_a_of_type_Trq == null) || (this.jdField_a_of_type_Trq.getItemCount() <= 0)) {
+              break label250;
             }
-            QQToast.a(BaseApplicationImpl.getContext(), 1, paramtzm, 1).a();
+            QQToast.a(BaseApplicationImpl.getContext(), 1, paramubz, 1).a();
             i = 1;
             break;
           }
-          label247:
-          if (this.jdField_a_of_type_Tvm != null)
+          label250:
+          if (this.jdField_a_of_type_Tvw != null)
           {
-            this.jdField_a_of_type_Tvm.a().a().c(paramtzm);
+            ((QCircleStatusView)this.jdField_a_of_type_Tvw.a().a()).c(paramubz);
             f();
             i = 1;
             continue;
             i = 0;
             continue;
-            ArrayList localArrayList = (ArrayList)paramtzm.a();
-            if (this.jdField_a_of_type_Trl != null)
+            ArrayList localArrayList = (ArrayList)paramubz.a();
+            if (this.jdField_a_of_type_Trq != null)
             {
-              if (paramtzm.b()) {
-                this.jdField_a_of_type_Trl.a(localArrayList);
+              if (paramubz.b()) {
+                this.jdField_a_of_type_Trq.addAll(localArrayList);
               }
               for (;;)
               {
-                if (this.jdField_a_of_type_Tvm != null)
+                if (this.jdField_a_of_type_Tvw != null)
                 {
-                  this.jdField_a_of_type_Tvm.a().a().setVisibility(8);
-                  this.jdField_a_of_type_Tvm.a().a().setVisibility(0);
+                  ((QCircleStatusView)this.jdField_a_of_type_Tvw.a().a()).setVisibility(8);
+                  this.jdField_a_of_type_Tvw.a().a().setVisibility(0);
                 }
-                this.jdField_a_of_type_Trl.a().a(bool);
+                this.jdField_a_of_type_Trq.getLoadInfo().a(bool);
                 i = 1;
                 break;
-                this.jdField_a_of_type_Trl.a(localArrayList);
-                this.jdField_a_of_type_Trl.Q_();
+                this.jdField_a_of_type_Trq.setDatas(localArrayList);
+                this.jdField_a_of_type_Trq.a();
               }
             }
           }
@@ -104,17 +115,23 @@ public class QCirclePersonalPushFragment
   
   protected void a()
   {
-    if (this.jdField_a_of_type_Trl != null)
+    if (this.jdField_a_of_type_Trq != null)
     {
       ExtraTypeInfo localExtraTypeInfo = new ExtraTypeInfo();
       localExtraTypeInfo.pageType = 9;
-      this.jdField_a_of_type_Trl.a(localExtraTypeInfo);
+      this.jdField_a_of_type_Trq.a(localExtraTypeInfo);
     }
     if (a() != null)
     {
-      this.jdField_a_of_type_Tzf = ((tzf)a(a(), null, tzf.class));
-      this.jdField_a_of_type_Tzf.c().observe(a(), new two(this));
+      this.jdField_a_of_type_Ubq = ((ubq)a(a(), null, ubq.class));
+      this.jdField_a_of_type_Ubq.c().observe(a(), new txf(this));
     }
+  }
+  
+  public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  {
+    super.a(paramLayoutInflater, paramViewGroup, paramBundle);
+    yiw.a().a(this);
   }
   
   public boolean a()
@@ -124,8 +141,70 @@ public class QCirclePersonalPushFragment
   
   protected void b()
   {
-    if (this.jdField_a_of_type_Tzf != null) {
-      this.jdField_a_of_type_Tzf.b(this.b);
+    if (this.jdField_a_of_type_Ubq != null) {
+      this.jdField_a_of_type_Ubq.c(this.b);
+    }
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(QCircleFeedEvent.class);
+    return localArrayList;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    yiw.a().b(this);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if (((paramSimpleBaseEvent instanceof QCircleFeedEvent)) && (((QCircleFeedEvent)paramSimpleBaseEvent).mState == 3))
+    {
+      paramSimpleBaseEvent = ((QCircleFeedEvent)paramSimpleBaseEvent).mTargetId;
+      if (!TextUtils.isEmpty(paramSimpleBaseEvent)) {
+        break label34;
+      }
+    }
+    label134:
+    for (;;)
+    {
+      return;
+      label34:
+      if (this.jdField_a_of_type_Trq != null)
+      {
+        ArrayList localArrayList = this.jdField_a_of_type_Trq.getDataList();
+        if (localArrayList == null) {
+          break;
+        }
+        int i = 0;
+        int j = localArrayList.size();
+        if (i < j) {
+          if (!paramSimpleBaseEvent.equals(((FeedCloudMeta.StFeed)localArrayList.get(i)).id.get())) {}
+        }
+        for (;;)
+        {
+          if (i < 0) {
+            break label134;
+          }
+          try
+          {
+            this.jdField_a_of_type_Trq.delete(i);
+            this.jdField_a_of_type_Trq.notifyItemRemoved(i);
+            return;
+          }
+          catch (Throwable paramSimpleBaseEvent)
+          {
+            QLog.e(jdField_a_of_type_JavaLangString, 1, "onReceiveEvent() delete local feed error!", paramSimpleBaseEvent);
+            return;
+          }
+          i += 1;
+          break;
+          i = -1;
+        }
+      }
     }
   }
 }

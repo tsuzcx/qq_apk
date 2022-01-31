@@ -1,57 +1,34 @@
-import com.tencent.mobileqq.app.GroupIconHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
+import android.app.Dialog;
+import android.content.res.Resources;
+import android.util.SparseArray;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import java.util.List;
 
-class bcwy
-  extends almw
+public class bcwy
+  extends bcoc
 {
-  private bcwy(bcww parambcww) {}
+  public bcwy(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void a(int paramInt1, int paramInt2, String paramString, List<bcon> paramList)
   {
-    if (bcww.a(this.a) == null) {
+    if (this.a.isFinishing()) {
       return;
     }
-    String str;
-    int i;
-    if (this.a.jdField_a_of_type_Bcwv != null)
+    paramString = (bcop)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(this.a.jdField_a_of_type_Int);
+    if ((paramString == null) || (paramString.jdField_a_of_type_Int == 0)) {}
+    for (paramInt2 = 30; paramInt1 >= paramInt2; paramInt2 = paramString.jdField_a_of_type_Int)
     {
-      if (!GroupIconHelper.a(paramString)) {
-        break label223;
-      }
-      str = GroupIconHelper.b(paramString);
-      i = 1001;
+      this.a.a(this.a.jdField_a_of_type_JavaLangString);
+      return;
     }
-    for (;;)
-    {
-      paramString = this.a.a(i, paramString, 0, (byte)3);
-      if ((paramBoolean1) && (paramString != null)) {
-        if (i != 1001) {
-          break label185;
-        }
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqhead.FaceDecoderImpl", 2, "====faceDecoderImpl onUpdateDiscussionFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + str + ",type: " + i + ",style: " + -1);
-        }
-        if ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) || (this.a.b >= this.a.jdField_a_of_type_Int)) {
-          break;
-        }
-        this.a.e();
-        return;
-        label185:
-        this.a.jdField_a_of_type_Bcwv.onDecodeTaskCompleted(this.a.b + this.a.jdField_a_of_type_JavaUtilLinkedList.size(), i, str, paramString);
-      }
-      label223:
-      i = 101;
-      str = paramString;
-    }
+    this.a.c();
+    bdgm.a(this.a, 230, this.a.getResources().getString(2131698178), this.a.getResources().getString(2131698177), this.a.getResources().getString(2131690648), this.a.getResources().getString(2131698180), new bcwz(this), new bcxa(this)).show();
+    bcwu.a("gold_bean", "gap");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcwy
  * JD-Core Version:    0.7.0.1
  */

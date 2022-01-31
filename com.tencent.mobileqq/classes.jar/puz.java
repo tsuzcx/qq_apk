@@ -141,7 +141,7 @@ public class puz
         {
           int i = paramFromServiceMsg.getWupBuffer().length - 4;
           paramException = new byte[i];
-          bdlr.a(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+          bdqa.a(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
           paramFromServiceMsg.putWupBuffer(paramException);
           paramException = paramFromServiceMsg.getWupBuffer();
         }

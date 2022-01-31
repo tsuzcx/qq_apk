@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import ajpq;
+import ajuf;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class BarrageParcelItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<BarrageParcelItem> CREATOR = new ajpq();
+  public static final Parcelable.Creator<BarrageParcelItem> CREATOR = new ajuf();
   public float a;
   public int a;
   public int b;

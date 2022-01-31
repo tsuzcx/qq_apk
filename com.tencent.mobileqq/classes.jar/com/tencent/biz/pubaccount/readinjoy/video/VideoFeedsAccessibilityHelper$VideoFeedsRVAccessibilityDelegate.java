@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import alpo;
+import alud;
 import android.support.v4.view.accessibility.AccessibilityEventCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.view.accessibility.AccessibilityRecordCompat;
@@ -21,7 +21,7 @@ public class VideoFeedsAccessibilityHelper$VideoFeedsRVAccessibilityDelegate
   {
     super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
     AccessibilityEventCompat.asRecord(paramAccessibilityEvent).setItemCount(0);
-    paramView.setContentDescription(alpo.a(2131716568));
+    paramView.setContentDescription(alud.a(2131716580));
   }
   
   public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)

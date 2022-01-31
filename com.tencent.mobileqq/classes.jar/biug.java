@@ -1,12 +1,16 @@
-public abstract interface biug
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qqdataline.DatalineBridgeActivity;
+
+public class biug
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a();
+  public biug(DatalineBridgeActivity paramDatalineBridgeActivity) {}
   
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.finish();
+  }
 }
 
 

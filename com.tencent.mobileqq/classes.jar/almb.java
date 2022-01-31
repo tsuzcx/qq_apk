@@ -1,58 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
-class almb
-  implements aqwz
+public class almb
 {
-  almb(allz paramallz, long paramLong) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    armz.c(BaseApplicationImpl.getContext().getString(2131692767));
-    ((allz)this.jdField_a_of_type_Allz.app.a(8)).OnSessionComplete(this.jdField_a_of_type_Long, 41, paramInt);
-  }
-  
-  public void a(Object paramObject)
-  {
-    Object localObject = (String)paramObject;
-    paramObject = (allz)this.jdField_a_of_type_Allz.app.a(8);
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      paramObject.OnSessionComplete(this.jdField_a_of_type_Long, 0, -999);
-    }
-    DataLineMsgRecord localDataLineMsgRecord;
-    do
-    {
-      do
-      {
-        return;
-        int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_Long);
-        localDataLineMsgRecord = this.jdField_a_of_type_Allz.app.a().a(i).a(this.jdField_a_of_type_Long);
-      } while (localDataLineMsgRecord == null);
-      localDataLineMsgRecord.serverPath = ((String)localObject);
-      localDataLineMsgRecord.nOpType = 1;
-      localDataLineMsgRecord.bIsSended = true;
-      localDataLineMsgRecord.bIsTransfering = false;
-      if (localDataLineMsgRecord.entityID != 0L)
-      {
-        localObject = this.jdField_a_of_type_Allz.app.a().a(localDataLineMsgRecord.entityID);
-        if (localObject != null)
-        {
-          ((FileManagerEntity)localObject).status = 1;
-          ((FileManagerEntity)localObject).Uuid = localDataLineMsgRecord.serverPath;
-        }
-      }
-    } while (!paramObject.a(localDataLineMsgRecord));
-    paramObject.a(localDataLineMsgRecord);
-  }
+  public allz a;
+  public View a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public RedTouch a;
+  public ImageView b;
+  public RelativeLayout b;
+  public TextView b;
+  public ImageView c;
+  public RelativeLayout c;
+  public TextView c;
+  public ImageView d;
+  public ImageView e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     almb
  * JD-Core Version:    0.7.0.1
  */

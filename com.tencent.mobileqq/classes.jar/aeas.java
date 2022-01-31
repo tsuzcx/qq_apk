@@ -1,26 +1,24 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
 public class aeas
   implements View.OnClickListener
 {
-  public aeas(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aeas(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
   public void onClick(View paramView)
   {
-    this.a.c = false;
-    this.a.t = "";
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.a.d != 22) {
-      this.a.b.setVisibility(0);
+    if (this.a.jdField_a_of_type_Beft != null)
+    {
+      this.a.jdField_a_of_type_Beft.jdField_a_of_type_Bejk.d = false;
+      this.a.jdField_a_of_type_Beft.jdField_a_of_type_Bejk.a = Boolean.valueOf(true);
+      if (this.a.jdField_a_of_type_Bejh != null) {
+        this.a.jdField_a_of_type_Bejh.l();
+      }
     }
-    if (this.a.jdField_a_of_type_Aecg != null) {
-      this.a.jdField_a_of_type_Aecg.a();
-    }
+    this.a.onClick(this.a.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView);
+    this.a.a(0);
   }
 }
 

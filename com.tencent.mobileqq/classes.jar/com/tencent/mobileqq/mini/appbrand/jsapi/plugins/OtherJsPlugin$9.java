@@ -12,7 +12,7 @@ class OtherJsPlugin$9
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690904), 5000).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690905), 5000).a();
   }
 }
 

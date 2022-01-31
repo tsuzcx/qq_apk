@@ -1,26 +1,11 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-
 class wvw
-  implements View.OnTouchListener
+  implements xsr<wrz>
 {
-  wvw(wvv paramwvv) {}
+  wvw(wvq paramwvq) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public wrz a()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
-      continue;
-      this.a.a.setTextColor(Color.parseColor("#ffffff"));
-    }
+    return new wrz();
   }
 }
 

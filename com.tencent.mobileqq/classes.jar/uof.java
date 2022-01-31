@@ -1,14 +1,29 @@
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class uof
-  extends ugz
+class uof
+  extends SimpleJob<Void>
 {
-  public int a;
-  public View a;
-  public ViewGroup a;
+  uof(uoe paramuoe, String paramString)
+  {
+    super(paramString);
+  }
   
-  public uof(uoe paramuoe) {}
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    boolean bool = xrg.a(500L);
+    if (this.a.a(bool)) {
+      uoe.a(this.a, bool);
+    }
+    return null;
+  }
+  
+  public int getJobType()
+  {
+    return 4;
+  }
 }
 
 

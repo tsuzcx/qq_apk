@@ -1,5 +1,5 @@
 public class nxd
-  extends bjxt
+  extends bkca
 {
   protected void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
   {

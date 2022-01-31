@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.text.DynamicTextItem.TextMap;
+import com.tribe.async.dispatch.Dispatcher;
+import dov.com.qq.im.capture.mode.CaptureModeController;
 
-public final class blta
-  implements Parcelable.Creator<DynamicTextItem.TextMap>
+public class blta
+  implements axqu
 {
-  public DynamicTextItem.TextMap a(Parcel paramParcel)
-  {
-    return new DynamicTextItem.TextMap(paramParcel);
-  }
+  public blta(CaptureModeController paramCaptureModeController) {}
   
-  public DynamicTextItem.TextMap[] a(int paramInt)
+  public void a()
   {
-    return new DynamicTextItem.TextMap[paramInt];
+    umc.a().dispatch(new bmhm(2, true));
   }
 }
 

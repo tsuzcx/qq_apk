@@ -1,98 +1,63 @@
-import android.annotation.SuppressLint;
-import android.text.TextUtils;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StRemoveUserCloudStorageReq;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StRemoveUserCloudStorageRsp;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.manager.InstalledEngine;
-import com.tencent.qqmini.sdk.utils.DebugUtil;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
+import org.json.JSONObject;
 
-@SuppressLint({"WrongConstant"})
 public class bhdy
+  extends bhdw
 {
-  private static volatile bhdy jdField_a_of_type_Bhdy;
-  public static final String[] a;
-  private int jdField_a_of_type_Int = 3;
-  private InstalledEngine jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine;
-  private boolean jdField_a_of_type_Boolean;
+  private CloudStorage.StRemoveUserCloudStorageReq a = new CloudStorage.StRemoveUserCloudStorageReq();
   
-  static
+  public bhdy(String[] paramArrayOfString, String paramString)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "native_lame_mp3", "c++_shared", "saturn", "traeimp-rtmp", "txffmpeg", "liteavsdk" };
-  }
-  
-  public bhdy()
-  {
-    Iterator localIterator = bgrt.a(this.jdField_a_of_type_Int).iterator();
-    while (localIterator.hasNext())
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
     {
-      InstalledEngine localInstalledEngine = (InstalledEngine)localIterator.next();
-      if (localInstalledEngine.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine = localInstalledEngine;
-      }
+      String str = paramArrayOfString[i];
+      this.a.keyList.add(str);
+      i += 1;
     }
+    this.a.appid.set(paramString);
   }
   
-  public static bhdy a()
+  protected String a()
   {
-    if (jdField_a_of_type_Bhdy == null) {}
+    return "mini_app_cloudstorage";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    CloudStorage.StRemoveUserCloudStorageRsp localStRemoveUserCloudStorageRsp = new CloudStorage.StRemoveUserCloudStorageRsp();
     try
     {
-      if (jdField_a_of_type_Bhdy == null) {
-        jdField_a_of_type_Bhdy = new bhdy();
+      localStRemoveUserCloudStorageRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStRemoveUserCloudStorageRsp != null) {
+        return new JSONObject();
       }
-      return jdField_a_of_type_Bhdy;
+      QMLog.d("ProtoBufRequest", "onResponse fail.rsp = null");
+      return null;
     }
-    finally {}
-  }
-  
-  private String a(InstalledEngine paramInstalledEngine)
-  {
-    if ((paramInstalledEngine != null) && (paramInstalledEngine.jdField_a_of_type_Boolean)) {
-      return paramInstalledEngine.jdField_b_of_type_JavaLangString;
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
     }
     return null;
   }
   
-  public boolean a()
+  protected byte[] a()
   {
-    return a("native_lame_mp3");
+    return this.a.toByteArray();
   }
   
-  protected boolean a(String paramString)
+  protected String b()
   {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine == null) || (TextUtils.isEmpty(paramString))) {
-      QMLog.e("MiniAppSoLoader", "[MiniEng]load so " + paramString + " from " + this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine);
-    }
-    String str2;
-    String str1;
-    do
-    {
-      return false;
-      str2 = a(this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine);
-      str1 = str2 + File.separator + "lib" + paramString + ".so";
-      QMLog.i("MiniAppSoLoader", "[MiniEng]load so " + paramString + " from " + str1);
-    } while (TextUtils.isEmpty(str2));
-    try
-    {
-      System.load(str1);
-      if (this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine.jdField_b_of_type_Int == 1) {
-        this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine.jdField_b_of_type_Int = 3;
-      }
-      QMLog.i("MiniAppSoLoader", "[MiniEng] load " + str1 + " success.");
-      return true;
-    }
-    catch (Throwable paramString)
-    {
-      QMLog.e("MiniAppSoLoader", "[MiniEng] load " + str1 + " fail: " + DebugUtil.getPrintableStackTrace(paramString), paramString);
-      this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine.jdField_b_of_type_Int = 2;
-    }
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return "RemoveUserCloudStorage";
   }
 }
 

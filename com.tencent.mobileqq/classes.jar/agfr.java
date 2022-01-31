@@ -1,17 +1,23 @@
-public class agfr
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForTroopStory;
+
+class agfr
+  implements bhuk
 {
-  public int a;
-  boolean a = false;
-  boolean b = false;
-  boolean c = false;
-  public boolean d = false;
-  boolean e = false;
-  boolean f = false;
-  boolean g = false;
-  boolean h = false;
-  boolean i = false;
-  boolean j = false;
-  boolean k = false;
+  agfr(agfq paramagfq, MessageForTroopStory paramMessageForTroopStory, bhuf parambhuf) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      xpr.a(this.jdField_a_of_type_Agfq.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory).f();
+    }
+  }
 }
 
 

@@ -29,7 +29,7 @@ class rij
       }
       rig.a(this.jdField_a_of_type_Rig).w.setVisibility(8);
       paramAnimator = new GradientDrawable();
-      paramAnimator.setCornerRadius(aekt.a(8.0F, rig.a(this.jdField_a_of_type_Rig).getResources()));
+      paramAnimator.setCornerRadius(aepi.a(8.0F, rig.a(this.jdField_a_of_type_Rig).getResources()));
       paramAnimator.setColor(Color.parseColor("#E6FFFFFF"));
       rig.a(this.jdField_a_of_type_Rig).v.setBackgroundDrawable(paramAnimator);
       rig.a(this.jdField_a_of_type_Rig, false, false);
@@ -73,7 +73,7 @@ class rij
           paramAnimator = rig.a(this.jdField_a_of_type_Rig).a();
         }
         if (this.jdField_a_of_type_Rig.a() == 0) {
-          rig.a(this.jdField_a_of_type_Rig, rig.a(this.jdField_a_of_type_Rig).j, paramAnimator, aekt.a(5.2F, rig.a(this.jdField_a_of_type_Rig).getResources()), 75, 1);
+          rig.a(this.jdField_a_of_type_Rig, rig.a(this.jdField_a_of_type_Rig).j, paramAnimator, aepi.a(5.2F, rig.a(this.jdField_a_of_type_Rig).getResources()), 75, 1);
         }
       }
       return;

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import android.text.TextUtils;
-import awbw;
-import awbx;
+import awgf;
+import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;

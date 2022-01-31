@@ -1,43 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
 
-public class wyt
-  extends JobSegment<Bitmap, Bitmap>
+public final class wyt
+  implements Parcelable.Creator<EditTakePhotoSource>
 {
-  public int a;
-  
-  public wyt()
+  public EditTakePhotoSource a(Parcel paramParcel)
   {
-    this.a = 10;
+    return new EditTakePhotoSource(paramParcel);
   }
   
-  public wyt(int paramInt)
+  public EditTakePhotoSource[] a(int paramInt)
   {
-    this.a = paramInt;
-  }
-  
-  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
-  {
-    if (paramBitmap == null) {
-      return null;
-    }
-    bdjc.a(paramBitmap, paramInt);
-    return paramBitmap;
-  }
-  
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
-  {
-    long l = System.currentTimeMillis();
-    paramJobContext = a(paramBitmap, this.a, false);
-    wsv.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
-    if (paramJobContext == null)
-    {
-      super.notifyError(new BitmapError("BlurJobSegment", 7));
-      return;
-    }
-    super.notifyResult(paramJobContext);
+    return new EditTakePhotoSource[paramInt];
   }
 }
 

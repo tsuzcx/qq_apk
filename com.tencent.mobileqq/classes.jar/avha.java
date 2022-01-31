@@ -1,13 +1,18 @@
-class avha
-  implements aurq
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+
+public abstract interface avha
 {
-  avha(avgk paramavgk) {}
+  public abstract int a();
   
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.a.c(paramBoolean);
-    this.a.t = paramBoolean;
-  }
+  public abstract void a();
+  
+  public abstract void a(Comments.Comment paramComment);
+  
+  public abstract void b();
+  
+  public abstract void b(Comments.Comment paramComment);
+  
+  public abstract void c();
 }
 
 

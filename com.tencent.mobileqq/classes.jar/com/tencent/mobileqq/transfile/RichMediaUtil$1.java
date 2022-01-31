@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import basj;
+import baws;
 import java.util.TimerTask;
 
 public final class RichMediaUtil$1
@@ -10,7 +10,7 @@ public final class RichMediaUtil$1
   
   public void run()
   {
-    basj.a(this.a, false, null);
+    baws.a(this.a, false, null);
   }
 }
 

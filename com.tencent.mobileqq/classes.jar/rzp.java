@@ -25,7 +25,7 @@ public class rzp
     if (paramInteger.intValue() == 14)
     {
       ((ClipboardManager)this.a.getSystemService("clipboard")).setText(FastWebActivity.a(this.a).mArticleContentUrl);
-      xxb.a(2, 2131691362);
+      ybk.a(2, 2131691363);
       localFastWebActivity = this.a;
       if (FastWebActivity.d(this.a))
       {
@@ -106,8 +106,8 @@ public class rzp
         }
         else if (paramInteger.intValue() == 28)
         {
-          bacb.a(1, 2);
-          bacb.a(FastWebActivity.a(this.a).mArticleContentUrl, FastWebActivity.a(this.a).mTitle);
+          bagk.a(1, 2);
+          bagk.a(FastWebActivity.a(this.a).mArticleContentUrl, FastWebActivity.a(this.a).mTitle);
         }
         else if (paramInteger.intValue() == 32)
         {
@@ -117,7 +117,7 @@ public class rzp
               QLog.d(FastWebActivity.a(this.a), 2, "mColorNoteController ：add colorNote");
               FastWebActivity.a(this.a).e();
               if (!FastWebActivity.a(this.a).a()) {
-                QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690904), 5000).a();
+                QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690905), 5000).a();
               }
             }
             else
@@ -130,7 +130,7 @@ public class rzp
         {
           if ((FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a).c()))
           {
-            QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690908), 5000).a();
+            QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690909), 5000).a();
             FastWebActivity.a(this.a).f();
             QLog.d(FastWebActivity.a(this.a), 2, "mColorNoteController ： delete colorNote");
           }

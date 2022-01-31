@@ -21,7 +21,7 @@ class IntimateTitleSwitchView$4
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.currentScore >= this.this$0.d) {
         break label111;
       }
-      this.this$0.e.setText(2131693746);
+      this.this$0.e.setText(2131693748);
     }
     for (;;)
     {
@@ -30,22 +30,22 @@ class IntimateTitleSwitchView$4
       }
       return;
       label111:
-      this.this$0.e.setText(2131693745);
+      this.this$0.e.setText(2131693747);
       continue;
       label126:
       if (this.this$0.jdField_a_of_type_Int == 2)
       {
         if (this.this$0.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.currentScore < this.this$0.d) {
-          this.this$0.e.setText(2131693744);
+          this.this$0.e.setText(2131693746);
         } else {
-          this.this$0.e.setText(2131693743);
+          this.this$0.e.setText(2131693745);
         }
       }
       else if (this.this$0.jdField_a_of_type_Int == 1) {
         if (this.this$0.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.currentScore < this.this$0.d) {
-          this.this$0.e.setText(2131693748);
+          this.this$0.e.setText(2131693750);
         } else {
-          this.this$0.e.setText(2131693747);
+          this.this$0.e.setText(2131693749);
         }
       }
     }

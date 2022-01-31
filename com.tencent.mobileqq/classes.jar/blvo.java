@@ -1,295 +1,227 @@
-import android.graphics.PointF;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.view.View;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.paster.QIMInformationPasterManager.1;
+import dov.com.qq.im.capture.paster.QIMInformationPasterManager.2;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
+@TargetApi(16)
 public class blvo
-  extends blvp
+  extends blqj
 {
-  @Nullable
-  private OrientationHelper jdField_a_of_type_AndroidSupportV7WidgetOrientationHelper;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  @Nullable
-  private OrientationHelper b;
+  private static File jdField_a_of_type_JavaIoFile = new File(blzq.a(), "information_paster");
+  private static String jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaIoFile.getPath() + File.separator;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  public blvs a;
+  private WeakReference<RelativeLayout> jdField_a_of_type_JavaLangRefWeakReference;
+  private ConcurrentLinkedQueue<bmvz> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   
-  private float a(RecyclerView.LayoutManager paramLayoutManager, OrientationHelper paramOrientationHelper)
+  public blvo()
   {
-    Object localObject1 = null;
-    int i = 2147483647;
-    int i1 = paramLayoutManager.getChildCount();
-    if (i1 == 0) {
-      return 1.0F;
-    }
-    int k = 0;
-    Object localObject2 = null;
-    int m = -2147483648;
-    View localView;
-    int n;
-    if (k < i1)
-    {
-      localView = paramLayoutManager.getChildAt(k);
-      n = paramLayoutManager.getPosition(localView);
-      if (n != -1) {}
-    }
-    for (;;)
-    {
-      k += 1;
-      break;
-      int j = i;
-      if (n < i)
-      {
-        j = n;
-        localObject2 = localView;
-      }
-      if (n > m)
-      {
-        m = n;
-        i = j;
-        localObject1 = localView;
-        continue;
-        if ((localObject2 == null) || (localObject1 == null)) {
-          return 1.0F;
-        }
-        j = Math.min(paramOrientationHelper.getDecoratedStart(localObject2), paramOrientationHelper.getDecoratedStart(localObject1));
-        j = Math.max(paramOrientationHelper.getDecoratedEnd(localObject2), paramOrientationHelper.getDecoratedEnd(localObject1)) - j;
-        if (j == 0) {
-          return 1.0F;
-        }
-        return j * 1.0F / (m - i + 1);
-      }
-      else
-      {
-        i = j;
-      }
-    }
+    this.jdField_a_of_type_Blvs = null;
+    this.jdField_a_of_type_Blvs = new blvs(this);
   }
   
-  private int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt)
+  public static String a()
   {
-    if (this.jdField_a_of_type_ArrayOfInt == null) {
-      return -1;
-    }
-    int n = this.jdField_a_of_type_ArrayOfInt.length;
-    if (n == -1) {
-      return -1;
-    }
-    int j = 2147483647;
-    int i = 0;
-    int k = -1;
-    Object localObject;
-    if (i < n)
-    {
-      localObject = this.jdField_a_of_type_ArrayOfInt;
-      localObject[i] -= paramInt;
-      int m = Math.abs(this.jdField_a_of_type_ArrayOfInt[i]);
-      if (m >= j) {
-        break label109;
-      }
-      k = i;
-      j = m;
-    }
-    label109:
-    for (;;)
-    {
-      i += 1;
-      break;
-      localObject = paramLayoutManager.getChildAt(k);
-      if (localObject == null) {
-        return -1;
-      }
-      return paramLayoutManager.getPosition((View)localObject);
-    }
+    return jdField_a_of_type_JavaLangString;
   }
   
-  private int a(RecyclerView.LayoutManager paramLayoutManager, OrientationHelper paramOrientationHelper, int paramInt1, int paramInt2)
+  public static String a(bmvz parambmvz)
   {
-    int[] arrayOfInt = a(paramInt1, paramInt2);
-    float f = a(paramLayoutManager, paramOrientationHelper);
-    if (f <= 0.0F) {
-      return 0;
-    }
-    if (Math.abs(arrayOfInt[0]) > Math.abs(arrayOfInt[1])) {}
-    for (paramInt1 = arrayOfInt[0]; paramInt1 > 0; paramInt1 = arrayOfInt[1]) {
-      return (int)Math.floor(paramInt1 / f);
-    }
-    return (int)Math.ceil(paramInt1 / f);
+    parambmvz = parambmvz.g + "_" + parambmvz.f + ".zip";
+    return new File(jdField_a_of_type_JavaIoFile, parambmvz).getPath();
   }
   
-  private int a(@NonNull RecyclerView.LayoutManager paramLayoutManager, @NonNull View paramView, OrientationHelper paramOrientationHelper)
+  public static String b(bmvz parambmvz)
   {
-    int j = paramOrientationHelper.getDecoratedStart(paramView);
-    int k = paramOrientationHelper.getDecoratedMeasurement(paramView) / 2;
-    if (paramLayoutManager.getClipToPadding()) {}
-    for (int i = paramOrientationHelper.getStartAfterPadding() + paramOrientationHelper.getTotalSpace() / 2;; i = paramOrientationHelper.getEnd() / 2) {
-      return k + j - i;
-    }
+    return jdField_a_of_type_JavaLangString + parambmvz.g + "_" + parambmvz.f + File.separator + parambmvz.g;
   }
   
-  @NonNull
-  private OrientationHelper a(@NonNull RecyclerView.LayoutManager paramLayoutManager)
+  private boolean d(bmvz parambmvz)
   {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetOrientationHelper == null) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetOrientationHelper = OrientationHelper.createVerticalHelper(paramLayoutManager);
-    }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetOrientationHelper;
-  }
-  
-  @Nullable
-  private View a(RecyclerView.LayoutManager paramLayoutManager, OrientationHelper paramOrientationHelper)
-  {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    int n = paramLayoutManager.getChildCount();
-    if (n == 0) {}
-    int j;
-    int i;
-    int k;
-    label54:
-    do
+    if (jdField_a_of_type_JavaIoFile != null)
     {
-      return localObject2;
-      if (!paramLayoutManager.getClipToPadding()) {
-        break;
-      }
-      j = paramOrientationHelper.getStartAfterPadding() + paramOrientationHelper.getTotalSpace() / 2;
-      i = 2147483647;
-      this.jdField_a_of_type_ArrayOfInt = new int[n];
-      k = 0;
-      localObject2 = localObject1;
-    } while (k >= n);
-    localObject2 = paramLayoutManager.getChildAt(k);
-    int m = paramOrientationHelper.getDecoratedStart((View)localObject2);
-    int i1 = paramOrientationHelper.getDecoratedMeasurement((View)localObject2) / 2 + m;
-    m = Math.abs(i1 - j);
-    this.jdField_a_of_type_ArrayOfInt[k] = (i1 - j);
-    if (m < i)
-    {
-      localObject1 = localObject2;
-      i = m;
-    }
-    for (;;)
-    {
-      k += 1;
-      break label54;
-      j = paramOrientationHelper.getEnd() / 2;
-      break;
-    }
-  }
-  
-  @NonNull
-  private OrientationHelper b(@NonNull RecyclerView.LayoutManager paramLayoutManager)
-  {
-    if (this.b == null) {
-      this.b = OrientationHelper.createHorizontalHelper(paramLayoutManager);
-    }
-    return this.b;
-  }
-  
-  public int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2)
-  {
-    int j = paramLayoutManager.getItemCount();
-    if (j == 0) {
-      paramInt2 = -1;
-    }
-    label197:
-    label203:
-    do
-    {
-      return paramInt2;
-      Object localObject = a(paramLayoutManager);
-      if (localObject == null) {
-        return -1;
-      }
-      int k = paramLayoutManager.getPosition((View)localObject);
-      if (k == -1) {
-        return -1;
-      }
-      localObject = ((LinearLayoutManager)paramLayoutManager).computeScrollVectorForPosition(j - 1);
-      if (localObject == null) {
-        return -1;
-      }
-      int[] arrayOfInt = a(paramInt1, paramInt2);
       int i;
-      if (paramLayoutManager.canScrollHorizontally())
+      boolean bool1;
+      label44:
+      String str;
+      if (!jdField_a_of_type_JavaIoFile.exists())
       {
-        i = a(paramLayoutManager, b(paramLayoutManager), paramInt1, 0);
-        paramInt1 = i;
-        if (((PointF)localObject).x < 0.0F) {
-          paramInt1 = -i;
+        jdField_a_of_type_JavaIoFile.mkdirs();
+        String[] arrayOfString = jdField_a_of_type_JavaIoFile.list();
+        if (arrayOfString == null) {
+          break label229;
         }
-        i = paramInt1;
-        if (paramInt1 == 0)
-        {
-          int m = a(paramLayoutManager, arrayOfInt[0]);
-          i = paramInt1;
-          if (m != -1) {
-            return m;
-          }
-        }
-      }
-      else
-      {
+        int j = arrayOfString.length;
         i = 0;
-      }
-      if (paramLayoutManager.canScrollVertically())
-      {
-        paramInt2 = a(paramLayoutManager, a(paramLayoutManager), 0, paramInt2);
-        paramInt1 = paramInt2;
-        if (((PointF)localObject).y < 0.0F) {
-          paramInt1 = -paramInt2;
+        bool1 = false;
+        bool2 = bool1;
+        if (i >= j) {
+          break label232;
         }
-        if (!paramLayoutManager.canScrollVertically()) {
-          break label197;
+        str = arrayOfString[i];
+        bool2 = bool1;
+        if (str.startsWith(parambmvz.g))
+        {
+          if (!str.endsWith(".zip")) {
+            break label151;
+          }
+          bdhb.a(jdField_a_of_type_JavaIoFile + str, false);
+          bool2 = bool1;
         }
       }
       for (;;)
       {
-        if (paramInt1 != 0) {
-          break label203;
+        i += 1;
+        bool1 = bool2;
+        break label44;
+        if (jdField_a_of_type_JavaIoFile.isDirectory()) {
+          break;
         }
-        return -1;
-        paramInt1 = 0;
+        jdField_a_of_type_JavaIoFile.delete();
+        jdField_a_of_type_JavaIoFile.mkdirs();
         break;
-        paramInt1 = i;
+        label151:
+        if (str.endsWith(parambmvz.f))
+        {
+          bool2 = true;
+        }
+        else
+        {
+          bool2 = bool1;
+          if (!str.endsWith("png"))
+          {
+            bool2 = bool1;
+            if (!str.endsWith("tmp"))
+            {
+              bdhb.a(jdField_a_of_type_JavaLangString + str, false);
+              bool2 = bool1;
+            }
+          }
+        }
       }
-      paramInt2 = k + paramInt1;
-      paramInt1 = paramInt2;
-      if (paramInt2 < 0) {
-        paramInt1 = 0;
-      }
-      paramInt2 = paramInt1;
-    } while (paramInt1 < j);
-    return j - 1;
+      label229:
+      boolean bool2 = false;
+      label232:
+      return bool2;
+    }
+    return false;
   }
   
-  public View a(RecyclerView.LayoutManager paramLayoutManager)
+  public void a()
   {
-    if (paramLayoutManager.canScrollVertically()) {
-      return a(paramLayoutManager, a(paramLayoutManager));
-    }
-    if (paramLayoutManager.canScrollHorizontally()) {
-      return a(paramLayoutManager, b(paramLayoutManager));
-    }
-    return null;
+    this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
   }
   
-  public int[] a(@NonNull RecyclerView.LayoutManager paramLayoutManager, @NonNull View paramView)
+  public void a(bmvz parambmvz, blvr paramblvr)
   {
-    int[] arrayOfInt = new int[2];
-    if (paramLayoutManager.canScrollHorizontally()) {
-      arrayOfInt[0] = a(paramLayoutManager, paramView, b(paramLayoutManager));
-    }
-    while (paramLayoutManager.canScrollVertically())
+    if (!bdin.g(this.jdField_a_of_type_AndroidContentContext))
     {
-      arrayOfInt[1] = a(paramLayoutManager, paramView, a(paramLayoutManager));
-      return arrayOfInt;
-      arrayOfInt[0] = 0;
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMInformationPasterManager", 2, "network is unavailable");
+      }
+      return;
     }
-    arrayOfInt[1] = 0;
-    return arrayOfInt;
+    ThreadManager.postImmediately(new QIMInformationPasterManager.1(this, parambmvz, paramblvr), null, true);
+  }
+  
+  public void a(DoodleEmojiItem paramDoodleEmojiItem)
+  {
+    paramDoodleEmojiItem = paramDoodleEmojiItem.mInfoItemList.iterator();
+    while (paramDoodleEmojiItem.hasNext())
+    {
+      bmvz localbmvz = (bmvz)paramDoodleEmojiItem.next();
+      if ((localbmvz.b == 1) && (!a(localbmvz))) {
+        a(localbmvz, new blvq(this));
+      }
+    }
+  }
+  
+  public void a(List<bmvz> paramList)
+  {
+    ThreadManager.postImmediately(new QIMInformationPasterManager.2(this, paramList), null, true);
+  }
+  
+  public boolean a(bmvz parambmvz)
+  {
+    if (TextUtils.isEmpty(parambmvz.e)) {
+      if (parambmvz.a != 7) {}
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+          return true;
+        } while (!d(parambmvz));
+        localObject = b(parambmvz);
+        if (QLog.isColorLevel()) {
+          QLog.d("QIMInformationPasterManager", 2, "checkDir:" + (String)localObject);
+        }
+        localObject = new File((String)localObject);
+      } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
+      localObject = ((File)localObject).list();
+    } while ((localObject == null) || (localObject.length != bmwa.a(parambmvz)));
+    return true;
+  }
+  
+  public void b() {}
+  
+  public boolean b(bmvz parambmvz)
+  {
+    return this.jdField_a_of_type_Blvs.a(parambmvz.e);
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+    {
+      RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localRelativeLayout != null)
+      {
+        localRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+        this.jdField_a_of_type_JavaLangRefWeakReference = null;
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+      }
+    }
+  }
+  
+  public boolean c(bmvz parambmvz)
+  {
+    boolean bool = false;
+    try
+    {
+      File localFile = new File(jdField_a_of_type_JavaLangString + parambmvz.g + "_" + parambmvz.f);
+      if (!localFile.exists()) {
+        localFile.mkdir();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMInformationPasterManager", 2, "unzipDir:" + localFile.getAbsolutePath());
+      }
+      ndr.a(new File(a(parambmvz)), localFile.getAbsolutePath() + File.separator);
+      bool = true;
+    }
+    catch (Exception parambmvz)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QIMInformationPasterManager", 2, parambmvz, new Object[0]);
+    }
+    return bool;
+    return false;
   }
 }
 

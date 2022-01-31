@@ -1,17 +1,17 @@
 package cooperation.qzone.webviewplugin;
 
-import bjmn;
-import bjmp;
-import bjux;
+import bjqu;
+import bjqw;
+import bjze;
 
 public class QzoneVideoTabJsPlugin$4
   implements Runnable
 {
-  public QzoneVideoTabJsPlugin$4(bjux parambjux) {}
+  public QzoneVideoTabJsPlugin$4(bjze parambjze) {}
   
   public void run()
   {
-    bjmn.a().a().n();
+    bjqu.a().a().n();
   }
 }
 

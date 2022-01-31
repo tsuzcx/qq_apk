@@ -1,20 +1,18 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.biz.troopgift.RadioButtonIndicator;
 
-class yve
-  implements Downloader.DownloadListener
+public class yve
+  extends RadioButton
 {
-  yve(yvc paramyvc, yum paramyum, String paramString) {}
-  
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult) {}
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public yve(RadioButtonIndicator paramRadioButtonIndicator, Context paramContext)
   {
-    yvc.a(this.jdField_a_of_type_Yvc, this.jdField_a_of_type_Yum, yuz.a().b(this.jdField_a_of_type_JavaLangString));
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    return true;
   }
 }
 

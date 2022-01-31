@@ -1,57 +1,34 @@
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
 
 public class ahis
-  extends almw
+  implements ahvd
 {
-  public ahis(SystemMsgListView paramSystemMsgListView) {}
+  public ahis(TroopView paramTroopView) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (paramBoolean) {
-      SystemMsgListView.a(this.a).b(paramLong);
+    if (TroopView.a(this.a) != null) {
+      TroopView.a(this.a).a(paramInt1, paramInt2);
     }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean) {
-      if (!(paramObject instanceof ArrayList)) {
-        break label76;
-      }
-    }
-    label76:
-    for (paramObject = (ArrayList)paramObject;; paramObject = null)
-    {
-      if ((paramObject != null) && (paramObject.size() > 0))
+    if (paramInt1 >= paramInt2) {
+      if (!TroopView.a(this.a))
       {
-        paramObject = paramObject.iterator();
-        while (paramObject.hasNext())
-        {
-          Object localObject = paramObject.next();
-          if ((localObject instanceof Long)) {
-            SystemMsgListView.a(this.a).b(((Long)localObject).longValue());
-          }
+        TroopView.a(this.a, true);
+        if (this.a.a != null) {
+          this.a.a.a(TroopView.a(this.a));
         }
       }
-      return;
     }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {}
-    try
+    do
     {
-      long l = Long.parseLong(paramString);
-      SystemMsgListView.a(this.a).b(l);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+      do
+      {
+        return;
+      } while (!TroopView.a(this.a));
+      TroopView.a(this.a, false);
+    } while (this.a.a == null);
+    this.a.a.a(TroopView.a(this.a));
   }
 }
 

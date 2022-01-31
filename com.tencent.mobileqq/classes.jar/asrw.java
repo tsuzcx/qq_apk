@@ -1,21 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import com.tencent.mobileqq.widget.SquareImageView;
 
-class asrw
-  implements DialogInterface.OnClickListener
+public class asrw
+  extends RecyclerView.ViewHolder
 {
-  asrw(asrp paramasrp) {}
+  public ImageView a;
+  public TextView a;
+  public SquareImageView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public asrw(FontBubblePanelView paramFontBubblePanelView, View paramView)
   {
-    asrp.jdField_a_of_type_Boolean = false;
-    asrp.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), false);
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.b(-11);
-    QLog.d("PresenceInterfaceImpl", 2, "User disallowed downd");
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131366692));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370977));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379226));
   }
 }
 

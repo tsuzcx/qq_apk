@@ -1,9 +1,11 @@
-import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
-public class ajjt
-  extends azbp
+class ajjt
+  extends ajjn
 {
-  public ajjt(CameraPreviewNew paramCameraPreviewNew) {}
+  public RelativeLayout a;
+  public ImageView c;
 }
 
 

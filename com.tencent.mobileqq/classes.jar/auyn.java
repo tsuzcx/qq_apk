@@ -1,18 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
+import android.view.View;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class auyn
-  implements Parcelable.Creator<LocationInfo>
+public class auyn
+  implements auzs
 {
-  public LocationInfo a(Parcel paramParcel)
+  public auyn(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  
+  public void a(View paramView)
   {
-    return new LocationInfo(paramParcel);
+    this.a.f();
+    azqs.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_more", 0, 0, "", "", "", "");
   }
   
-  public LocationInfo[] a(int paramInt)
+  public void a(View paramView, auzv paramauzv)
   {
-    return new LocationInfo[paramInt];
+    if (paramauzv.jdField_a_of_type_Boolean) {
+      QQToast.a(this.a, 1, alud.a(2131705501), 1).a();
+    }
+    do
+    {
+      return;
+      GameRoomInviteActivity.a(this.a, paramauzv.jdField_a_of_type_JavaLangString, paramauzv.jdField_a_of_type_Int);
+      paramauzv.jdField_a_of_type_Boolean = true;
+      this.a.a.a(paramView, paramauzv.jdField_a_of_type_Boolean);
+      if (paramauzv.jdField_a_of_type_Int == 1)
+      {
+        azqs.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
+        return;
+      }
+    } while (paramauzv.jdField_a_of_type_Int != 0);
+    azqs.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
   }
 }
 

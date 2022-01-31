@@ -12,7 +12,7 @@ public class ptb
   
   public void invalidateDrawable(@NonNull Drawable paramDrawable)
   {
-    paramDrawable = new ysi(paramDrawable);
+    paramDrawable = new ywx(paramDrawable);
     this.jdField_a_of_type_AndroidTextSpannableString.setSpan(paramDrawable, 0, 1, 17);
     NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
   }

@@ -1,41 +1,18 @@
-public class alka
-  implements alkr
+import com.tencent.qphone.base.util.QLog;
+
+class alka
+  extends alkf
 {
-  protected void a() {}
+  alka(aljx paramaljx) {}
   
-  protected void a(Object paramObject) {}
-  
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
-      a(paramObject);
-      return;
-    case 3: 
-      a();
-      return;
-    case 4: 
-      b(paramBoolean, paramObject);
-      return;
-    }
-    a(paramBoolean);
+    QLog.d("ApolloGameUtil", 2, " onFailure  the http retcode = " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alka
  * JD-Core Version:    0.7.0.1
  */

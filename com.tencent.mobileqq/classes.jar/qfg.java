@@ -269,7 +269,7 @@ public class qfg
         }
         localBiuCommentInfo = (SocializeFeedsInfo.BiuCommentInfo)localList.get(i);
         l = localBiuCommentInfo.jdField_a_of_type_JavaLangLong.longValue();
-        paramqmw = bdbt.b((QQAppInterface)ors.a(), String.valueOf(l), true);
+        paramqmw = bdgc.b((QQAppInterface)ors.a(), String.valueOf(l), true);
         paramSpannableStringBuilder = "@" + paramqmw;
         paramqmw = paramSpannableStringBuilder;
         if (localBiuCommentInfo.c == 1) {
@@ -299,7 +299,7 @@ public class qfg
         break;
       }
       label329:
-      paramqmw = new SpannableStringBuilder(new baig(localStringBuilder, 7, 16));
+      paramqmw = new SpannableStringBuilder(new bamp(localStringBuilder, 7, 16));
       paramSpannableStringBuilder = ((List)localObject).iterator();
       while (paramSpannableStringBuilder.hasNext())
       {
@@ -315,7 +315,7 @@ public class qfg
       if (!TextUtils.isEmpty(paramqmw.jdField_a_of_type_JavaLangString)) {
         try
         {
-          localSpannableStringBuilder.append(new baig(ayvy.b(paramqmw.jdField_a_of_type_JavaLangString), 7, 16));
+          localSpannableStringBuilder.append(new bamp(azah.b(paramqmw.jdField_a_of_type_JavaLangString), 7, 16));
         }
         catch (Exception paramqmw)
         {
@@ -354,7 +354,7 @@ public class qfg
   public static Pair<Integer, Integer> b()
   {
     Resources localResources = BaseApplicationImpl.getApplication().getResources();
-    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - aekt.a(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131298578)));
+    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - aepi.a(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131298578)));
   }
   
   public static boolean b(int paramInt)

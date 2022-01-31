@@ -1,29 +1,17 @@
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-public class ausk
-  extends bamu
+final class ausk
+  implements Comparator<autj>
 {
-  private NearbyAppInterface a;
-  
-  public ausk(NearbyAppInterface paramNearbyAppInterface)
+  public int a(autj paramautj1, autj paramautj2)
   {
-    super(paramNearbyAppInterface);
-    this.a = paramNearbyAppInterface;
-  }
-  
-  public bamw a(baub parambaub)
-  {
-    if (parambaub == null) {}
-    do
-    {
-      return null;
-      if ((parambaub.b == 8) || (parambaub.b == 64) || (parambaub.b == 21)) {
-        return new baqs(this, parambaub);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.richmedia.TransFileController", 2, parambaub.toString());
-    return null;
+    if (paramautj1.a < paramautj2.a) {
+      return -1;
+    }
+    if (paramautj1.a > paramautj2.a) {
+      return 1;
+    }
+    return 0;
   }
 }
 

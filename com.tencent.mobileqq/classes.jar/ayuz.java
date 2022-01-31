@@ -1,54 +1,45 @@
-import EncounterSvc.UserData;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
 
-public class ayuz
-  extends zdf
+class ayuz
+  implements Comparator<aynq>
 {
-  static String[] jdField_a_of_type_ArrayOfJavaLangString = { "EncounterSvc", "NeighborSvc", "VisitorSvc" };
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  public UserData[] a;
+  ayuz(ayuy paramayuy) {}
   
-  public ayuz(AppInterface paramAppInterface)
+  public int a(aynq paramaynq1, aynq paramaynq2)
   {
-    this.jdField_a_of_type_ArrayOfEncounterSvcUserData = new UserData[2];
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-  }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if ("EncounterSvc.ReqGetEncounter".equals(paramFromServiceMsg.getServiceCmd())) {
-      return alsw.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramFromServiceMsg, paramToServiceMsg, this);
+    int i = -1;
+    paramaynq1 = (aype)paramaynq1;
+    paramaynq2 = (aype)paramaynq2;
+    alto localalto = (alto)this.a.a.getManager(51);
+    boolean bool1 = localalto.b((String)paramaynq1.a());
+    boolean bool2 = localalto.b((String)paramaynq2.a());
+    if ((!bool1) && (!bool2))
+    {
+      bool1 = localalto.d((String)paramaynq1.a());
+      bool2 = localalto.d((String)paramaynq2.a());
+      if ((!bool1) && (!bool2)) {
+        return paramaynq2.f() - paramaynq1.f();
+      }
+      if (bool1 != bool2)
+      {
+        if (bool2) {
+          return -1;
+        }
+        return 1;
+      }
+      return paramaynq2.f() - paramaynq1.f();
     }
-    if ("NeighborSvc.ReqGetPoint".equals(paramFromServiceMsg.getServiceCmd())) {
-      return alsw.a(this, paramFromServiceMsg, paramToServiceMsg);
+    if (bool1 != bool2)
+    {
+      if (bool2) {}
+      for (;;)
+      {
+        return i;
+        i = 1;
+      }
     }
-    if ("VisitorSvc.ReqFavorite".equals(paramFromServiceMsg.getServiceCmd())) {
-      alsw.a(paramFromServiceMsg, paramToServiceMsg);
-    }
-    return super.a(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    String str = paramToServiceMsg.getServiceCmd();
-    if ("EncounterSvc.ReqGetEncounter".equals(str)) {
-      return alsw.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramToServiceMsg, paramUniPacket, this);
-    }
-    if ("NeighborSvc.ReqGetPoint".equals(str)) {
-      return alsw.a(this, paramToServiceMsg, paramUniPacket);
-    }
-    if ("VisitorSvc.ReqFavorite".equals(paramToServiceMsg.getServiceCmd())) {
-      return alsw.a(paramToServiceMsg, paramUniPacket);
-    }
-    return false;
-  }
-  
-  public String[] a()
-  {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return paramaynq2.f() - paramaynq1.f();
   }
 }
 

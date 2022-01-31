@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
-import awbw;
-import awbx;
-import awby;
+import awgf;
+import awgg;
+import awgh;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -26,15 +26,15 @@ class MiniAppUserAppInfoListManager$11
       if (this.val$needCheckDbData) {
         MiniAppUserAppInfoListManager.access$1200(this.this$0, (AppInterface)localObject1, this.val$appInfoList);
       }
-      awbw localawbw = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-      if (localawbw == null) {
+      awgf localawgf = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+      if (localawgf == null) {
         continue;
       }
-      localObject1 = localawbw.a();
+      localObject1 = localawgf.a();
       if (localObject1 != null) {}
       try
       {
-        ((awby)localObject1).a();
+        ((awgh)localObject1).a();
         localStringBuilder = new StringBuilder();
         Iterator localIterator = this.val$appInfoList.iterator();
         int i = 1;
@@ -44,7 +44,7 @@ class MiniAppUserAppInfoListManager$11
           localMiniAppInfo.position = i;
           MiniAppEntity localMiniAppEntity = new MiniAppEntity(localMiniAppInfo);
           localMiniAppEntity.setStatus(1000);
-          MiniAppUserAppInfoListManager.access$1100(this.this$0, localawbw, localMiniAppEntity);
+          MiniAppUserAppInfoListManager.access$1100(this.this$0, localawgf, localMiniAppEntity);
           i += 1;
           localStringBuilder.append(localMiniAppInfo.name).append(", ");
         }
@@ -60,14 +60,14 @@ class MiniAppUserAppInfoListManager$11
           QLog.d("MiniAppUserAppInfoListManager", 2, new Object[] { "saveMiniAppInfoList : ", localStringBuilder.toString() });
         }
         if (localObject1 != null) {
-          ((awby)localObject1).c();
+          ((awgh)localObject1).c();
         }
         return;
       }
       finally
       {
         if (localObject1 != null) {
-          ((awby)localObject1).b();
+          ((awgh)localObject1).b();
         }
       }
     }

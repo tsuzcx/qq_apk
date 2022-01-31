@@ -31,7 +31,7 @@ public class teh
   
   public static teh a()
   {
-    return (teh)aogj.a().a(447);
+    return (teh)aoks.a().a(447);
   }
   
   public void a(String paramString)

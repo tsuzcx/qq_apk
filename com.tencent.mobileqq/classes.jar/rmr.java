@@ -44,7 +44,7 @@ public abstract class rmr
   public int a;
   protected Activity a;
   private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new rmt(this);
-  private Handler jdField_a_of_type_AndroidOsHandler = new bhow(this.jdField_a_of_type_AndroidOsHandler$Callback);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bhtd(this.jdField_a_of_type_AndroidOsHandler$Callback);
   private View jdField_a_of_type_AndroidViewView;
   @Nullable
   protected ViewGroup a;
@@ -110,49 +110,49 @@ public abstract class rmr
     this.jdField_b_of_type_Int = paramInt;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131364642));
-    this.jdField_e_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131379680));
+    this.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131364644));
+    this.jdField_e_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131379738));
     this.jdField_l_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_d_of_type_AndroidViewViewGroup.getParent());
     this.jdField_c_of_type_Int = this.jdField_l_of_type_AndroidViewViewGroup.indexOfChild(this.jdField_d_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout = ((VideoFeedsGestureLayout)paramView.findViewById(2131367125));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131364890));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout = ((VideoFeedsGestureLayout)paramView.findViewById(2131367135));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131364892));
     this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131363038));
     this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363039);
-    this.jdField_b_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131368320));
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131376277));
+    this.jdField_b_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131368331));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131376331));
     this.jdField_j_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131363395));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364956));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378173));
-    this.jdField_k_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131366986));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366987));
-    this.jdField_g_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131379597));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379826));
-    this.jdField_k_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377973));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379713));
-    this.n = ((ViewGroup)paramView.findViewById(2131379623));
-    this.jdField_m_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379715));
-    this.jdField_l_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366988));
-    this.jdField_i_of_type_AndroidViewViewGroup = ((LinearLayout)paramView.findViewById(2131364338));
-    this.jdField_h_of_type_AndroidViewViewGroup = ((LinearLayout)paramView.findViewById(2131366985));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372057));
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = bdkf.b(50.0F);
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = bdkf.b(50.0F);
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365818));
-    this.jdField_f_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131372058));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371417));
-    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366332));
-    this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369078));
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131379621);
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131370844);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364958));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378227));
+    this.jdField_k_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131366996));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366997));
+    this.jdField_g_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131379655));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379884));
+    this.jdField_k_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378027));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379771));
+    this.n = ((ViewGroup)paramView.findViewById(2131379681));
+    this.jdField_m_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379773));
+    this.jdField_l_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366998));
+    this.jdField_i_of_type_AndroidViewViewGroup = ((LinearLayout)paramView.findViewById(2131364340));
+    this.jdField_h_of_type_AndroidViewViewGroup = ((LinearLayout)paramView.findViewById(2131366995));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372077));
+    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = bdoo.b(50.0F);
+    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = bdoo.b(50.0F);
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365820));
+    this.jdField_f_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131372078));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371436));
+    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366334));
+    this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369096));
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131379679);
+    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131370863);
     this.jdField_d_of_type_AndroidViewView.setAlpha(otp.a());
-    this.jdField_m_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131366711));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366697));
-    this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366700));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131366705));
-    this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366707));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366704));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131366721));
-    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131366696));
+    this.jdField_m_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131366721));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366707));
+    this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366710));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131366715));
+    this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366717));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366714));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131366731));
+    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131366706));
     if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
       this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
     }
@@ -168,9 +168,9 @@ public abstract class rmr
   private int a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return 2130842611;
+      return 2130842624;
     }
-    return 2130842612;
+    return 2130842625;
   }
   
   private void a()
@@ -500,7 +500,7 @@ public abstract class rmr
     b(paramVideoInfo);
     c();
     b();
-    if (bngs.b())
+    if (bnle.b())
     {
       if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.b(this.jdField_a_of_type_AndroidAppActivity))
       {
@@ -580,8 +580,8 @@ public abstract class rmr
     {
       this.jdField_b_of_type_AndroidWidgetSeekBar.setVisibility(8);
       this.jdField_h_of_type_AndroidViewViewGroup.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(a(2130841444));
-      if ((bngs.b()) && (!this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.b(this.jdField_a_of_type_AndroidAppActivity))) {
+      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(a(2130841445));
+      if ((bnle.b()) && (!this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.b(this.jdField_a_of_type_AndroidAppActivity))) {
         rna.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_j_of_type_AndroidViewViewGroup);
       }
     }
@@ -594,7 +594,7 @@ public abstract class rmr
       continue;
       this.jdField_b_of_type_AndroidWidgetSeekBar.setVisibility(0);
       this.jdField_h_of_type_AndroidViewViewGroup.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(a(2130841445));
+      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(a(2130841446));
       this.jdField_j_of_type_AndroidViewViewGroup.setPadding(0, 0, 0, 0);
     }
   }
@@ -666,7 +666,7 @@ public abstract class rmr
       ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
       ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
       localObject1 = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a(), (URLDrawable.URLDrawableOptions)localObject1);
-      ((URLDrawable)localObject1).setDecodeHandler(bcuq.w);
+      ((URLDrawable)localObject1).setDecodeHandler(bcyz.w);
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
     }
@@ -713,12 +713,12 @@ public abstract class rmr
     switch (paramView.getId())
     {
     default: 
-    case 2131370844: 
-    case 2131366986: 
-    case 2131364338: 
-    case 2131372057: 
-    case 2131366721: 
-    case 2131366696: 
+    case 2131370863: 
+    case 2131366996: 
+    case 2131364340: 
+    case 2131372077: 
+    case 2131366731: 
+    case 2131366706: 
       do
       {
         do

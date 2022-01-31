@@ -1,97 +1,123 @@
-import android.content.res.Resources;
 import android.os.Bundle;
-import com.tencent.open.agent.SwitchAccountActivity;
+import com.tencent.open.agent.BindGroupActivity;
+import com.tencent.open.agent.BindGroupActivity.4.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import mqq.observer.SSOAccountObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bfcv
-  extends SSOAccountObserver
+  implements bckx
 {
-  public bfcv(SwitchAccountActivity paramSwitchAccountActivity) {}
+  public bfcv(BindGroupActivity paramBindGroupActivity) {}
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.a.e();
-    String str = paramBundle.getString("error");
-    try
+    switch (paramInt)
     {
-      paramInt1 = paramBundle.getInt("code");
-      bfix.a().a("agent_login", this.a.jdField_a_of_type_Long, 0L, 0L, paramInt1, Long.parseLong(paramString), "1000069", "ret: " + paramInt2 + " | error: " + str);
-      if (paramInt2 == -1000) {
-        this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.a, this.a.getResources().getString(2131695063));
-      }
-      for (;;)
-      {
-        paramInt1 = paramBundle.getInt("code");
-        QLog.d("SwitchAccountActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bfdz.a(paramString) + " | ret : " + paramInt2 + " - error: " + str + " | code: " + paramInt1);
-        return;
-        if ((paramInt2 == 1) || (paramInt2 == -1004))
-        {
-          this.a.b();
-        }
-        else
-        {
-          Object localObject1 = (ErrMsg)paramBundle.getParcelable("lastError");
-          if (localObject1 == null) {
-            break;
-          }
-          localObject1 = ((ErrMsg)localObject1).getMessage();
-          Object localObject3;
-          if (localObject1 != null)
-          {
-            localObject3 = localObject1;
-            if (((String)localObject1).length() != 0) {}
-          }
-          else
-          {
-            localObject3 = this.a.getString(2131721201);
-          }
-          this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.a, (String)localObject3);
-        }
-      }
     }
-    catch (Exception localException)
+    do
     {
-      for (;;)
-      {
-        continue;
-        Object localObject2 = null;
-      }
-    }
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    if ((!paramBundle.getBoolean("fake_callback")) && (paramInt == 4096)) {
-      bfjq.a(paramString, System.currentTimeMillis());
-    }
-    this.a.e();
-    String str = null;
-    if (paramInt == 4096) {
-      str = new String(paramArrayOfByte);
-    }
-    this.a.a(paramString, str, paramBundle);
-    paramInt = paramBundle.getInt("code");
-    QLog.d("SwitchAccountActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bfdz.a(paramString) + " | ret : success | code: " + paramInt);
-    try
-    {
-      bfix.a().a("agent_login", this.a.jdField_a_of_type_Long, 0L, 0L, 0, Long.parseLong(paramString), "1000069", null);
       return;
-    }
-    catch (Exception paramString)
+    } while (paramJSONObject == null);
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("SwitchAccountActivity", 2, "report login error : " + paramString.toString());
+      try
+      {
+        paramInt = ((Integer)paramJSONObject.get("retcode")).intValue();
+        paramJSONObject = (JSONObject)paramJSONObject.get("result");
+        if ((paramInt != 0) || (paramJSONObject == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("BindGroupActivity", 2, "checkApiState onResult. retCode = " + paramInt + "\n");
+        }
+        paramBundle = (JSONObject)paramJSONObject.get("basics");
+        Object localObject2;
+        if (paramBundle != null)
+        {
+          paramBundle = (JSONArray)paramBundle.get("datas");
+          if (paramBundle != null)
+          {
+            paramInt = 0;
+            if (paramInt < paramBundle.length())
+            {
+              localObject2 = (JSONObject)paramBundle.get(paramInt);
+              str = (String)((JSONObject)localObject2).get("name");
+              i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
+              localObject1 = (String)((JSONObject)localObject2).get("api");
+              localObject2 = (String)((JSONObject)localObject2).get("msg");
+              if (!QLog.isColorLevel()) {
+                break label717;
+              }
+              QLog.i("BindGroupActivity", 2, "checkApiState onResult, basics name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg = " + (String)localObject2 + "\n");
+              break label717;
+            }
+          }
+        }
+        paramBundle = (JSONObject)paramJSONObject.get("friendlink");
+        if (paramBundle != null)
+        {
+          paramBundle = (JSONArray)paramBundle.get("datas");
+          if (paramBundle != null)
+          {
+            paramInt = 0;
+            if (paramInt < paramBundle.length())
+            {
+              localObject2 = (JSONObject)paramBundle.get(paramInt);
+              str = (String)((JSONObject)localObject2).get("name");
+              i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
+              localObject1 = (String)((JSONObject)localObject2).get("api");
+              localObject2 = (String)((JSONObject)localObject2).get("msg");
+              if (("bind_group".equals(localObject1)) && (i != 1)) {
+                this.a.runOnUiThread(new BindGroupActivity.4.1(this));
+              }
+              if (!QLog.isColorLevel()) {
+                break label724;
+              }
+              QLog.i("BindGroupActivity", 2, "checkApiState onResult, friendlink name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg= " + (String)localObject2 + "\n");
+              break label724;
+            }
+          }
+        }
+        paramInt = ((Integer)paramJSONObject.get("appid")).intValue();
+        if (QLog.isColorLevel()) {
+          QLog.i("BindGroupActivity", 2, "checkApiState onResult, appid =" + paramInt + "\n");
+        }
+        paramJSONObject = (JSONObject)paramJSONObject.get("qqpay");
+        if (paramJSONObject == null) {
+          break;
+        }
+        paramJSONObject = (JSONArray)paramJSONObject.get("datas");
+        if (paramJSONObject == null) {
+          break;
+        }
+        paramInt = 0;
+        if (paramInt >= paramJSONObject.length()) {
+          break;
+        }
+        Object localObject1 = (JSONObject)paramJSONObject.get(paramInt);
+        paramBundle = (String)((JSONObject)localObject1).get("name");
+        int i = ((Integer)((JSONObject)localObject1).get("state")).intValue();
+        String str = (String)((JSONObject)localObject1).get("api");
+        localObject1 = (String)((JSONObject)localObject1).get("msg");
+        if (QLog.isColorLevel()) {
+          QLog.i("BindGroupActivity", 2, "checkApiState onResult, qqpay name = " + paramBundle + " state = " + i + " api = " + str + " msg= " + (String)localObject1 + "\n");
+        }
+        paramInt += 1;
+        continue;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+      }
+      catch (Exception paramJSONObject) {}
+      QLog.d("BindGroupActivity", 2, "checkApiState onResult " + paramJSONObject.toString());
+      return;
+      label717:
+      paramInt += 1;
+      continue;
+      label724:
+      paramInt += 1;
     }
-  }
-  
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
-  {
-    this.a.e();
-    paramInt = paramBundle.getInt("code");
-    QLog.d("SwitchAccountActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bfdz.a(paramString) + " | ret : on_user_cancel | code: " + paramInt);
   }
 }
 

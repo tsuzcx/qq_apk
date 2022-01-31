@@ -149,7 +149,7 @@ public class mlf
         if (f()) {
           this.jdField_a_of_type_Mqm = new mqm();
         }
-        paramAVActivity = bdcb.h();
+        paramAVActivity = bdgk.h();
         QLog.i("QavVideoRecordUICtrl", 1, "QavVideoRecordUICtrl manufacture=" + paramAVActivity);
         if (("OPPO".equalsIgnoreCase(paramAVActivity)) || ("vivo".equalsIgnoreCase(paramAVActivity))) {
           this.jdField_e_of_type_Boolean = true;
@@ -215,13 +215,13 @@ public class mlf
       if (paramLong >= 0L)
       {
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QavVideoRecordUICtrl.7(this), 1000L);
-        mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131696244);
+        mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131696246);
         mqj.a("0X8008AB0");
       }
       else if (paramLong < 0L)
       {
         a(3, true);
-        mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131696219);
+        mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131696221);
         this.jdField_a_of_type_ComTencentAvVideoController.F();
       }
     }
@@ -246,15 +246,15 @@ public class mlf
   
   private void a(VideoAppInterface paramVideoAppInterface)
   {
-    LayoutInflater.from((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).inflate(2131559655, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379754));
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375486));
-    this.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375485));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377645));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375471));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375468);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375467);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375466);
+    LayoutInflater.from((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).inflate(2131559654, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379812));
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375537));
+    this.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375536));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377699));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375522));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375519);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375518);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375517);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams());
     this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageButton.getLayoutParams());
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
@@ -267,14 +267,14 @@ public class mlf
       this.jdField_d_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(2142109487);
     }
     this.jdField_c_of_type_AndroidWidgetRelativeLayout.setWillNotDraw(false);
-    this.jdField_a_of_type_Int = aekt.a(51.0F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
-    this.jdField_b_of_type_JavaLangString = ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131696232);
-    this.jdField_c_of_type_JavaLangString = ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131696228);
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView = ((QavRecordButtonView)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131375458));
+    this.jdField_a_of_type_Int = aepi.a(51.0F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+    this.jdField_b_of_type_JavaLangString = ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131696234);
+    this.jdField_c_of_type_JavaLangString = ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131696230);
+    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView = ((QavRecordButtonView)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131375509));
     this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.setListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131375474));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131375473));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131375525));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131375524));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     if (AudioHelper.a(0) == 1)
     {
@@ -295,7 +295,7 @@ public class mlf
       return;
     }
     this.jdField_a_of_type_ComTencentAvVideoController.a().B = false;
-    mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131696220);
+    mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131696222);
     this.jdField_a_of_type_ComTencentAvVideoController.F();
     n();
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -331,13 +331,13 @@ public class mlf
         return;
       } while (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).i);
       if (this.jdField_e_of_type_Boolean) {}
-      for (paramInt = 2131696234;; paramInt = 2131696233)
+      for (paramInt = 2131696236;; paramInt = 2131696235)
       {
         QQToast.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getString(paramInt), 0).a();
         return;
       }
     } while (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).i);
-    mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131696219);
+    mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131696221);
   }
   
   public static boolean k()
@@ -391,8 +391,8 @@ public class mlf
       QLog.i("QavVideoRecordUICtrl", 2, "doExpandAnim");
     }
     this.jdField_h_of_type_Boolean = true;
-    aekt.a(7.5F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
-    aekt.a(64.0F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+    aepi.a(7.5F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+    aepi.a(64.0F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
     b(2131297734);
     b(2131297731);
     b(2131297731);
@@ -504,8 +504,8 @@ public class mlf
     {
       c();
       long l = (System.currentTimeMillis() - this.jdField_b_of_type_Long) / 1000L;
-      azmj.b(null, "CliOper", "", "", "0X800863B", "0X800863B", 0, 0, String.valueOf(l), "", "", "");
-      azmz.a(BaseApplicationImpl.getContext()).a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "av_record_click_end", true, l, 0L, null, "", false);
+      azqs.b(null, "CliOper", "", "", "0X800863B", "0X800863B", 0, 0, String.valueOf(l), "", "", "");
+      azri.a(BaseApplicationImpl.getContext()).a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "av_record_click_end", true, l, 0L, null, "", false);
       return;
     }
     this.jdField_a_of_type_ComTencentAvVideoController.a().a.clear();
@@ -513,7 +513,7 @@ public class mlf
     if (!f())
     {
       if (localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        mdd.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696214);
+        mdd.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696216);
       }
       j = 0;
       QLog.d("QavVideoRecordUICtrl", 1, "start record, api not support");
@@ -530,7 +530,7 @@ public class mlf
         {
           localObject = (lju)localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3);
           if (((FaceItem)((lju)localObject).a() != null) && (((lju)localObject).a()) && (localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
-            mdd.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696224);
+            mdd.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696226);
           }
         }
         mqj.a("0X800863A");
@@ -553,7 +553,7 @@ public class mlf
             if (this.jdField_a_of_type_ComTencentAvVideoController.b(this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaLangString) == 5) {
               mqj.a("0X8008AB6");
             }
-            for (j = 2131696222;; j = 2131696221)
+            for (j = 2131696224;; j = 2131696223)
             {
               if (localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
                 break label1192;
@@ -567,7 +567,7 @@ public class mlf
           if (!i())
           {
             if (localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-              mdd.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696227);
+              mdd.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696229);
             }
             j = 0;
             QLog.d("QavVideoRecordUICtrl", 1, "start record, isPerformanceSupport==false");
@@ -577,7 +577,7 @@ public class mlf
           if ((this.jdField_a_of_type_ComTencentAvVideoController.a().C) && (this.jdField_a_of_type_ComTencentAvVideoController.a().t < 735))
           {
             QLog.d("QavVideoRecordUICtrl", 1, "start record, friend's old version not support record in same time");
-            mdd.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696225);
+            mdd.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696227);
             j = 0;
             break;
           }
@@ -585,7 +585,7 @@ public class mlf
           {
             QLog.d("QavVideoRecordUICtrl", 1, "start record, last encode not stop");
             if (localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-              mdd.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696223);
+              mdd.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696225);
             }
             j = 0;
             break;
@@ -613,7 +613,7 @@ public class mlf
                 }
               }
               label801:
-              for (j = 2131696247;; j = 2131696246)
+              for (j = 2131696249;; j = 2131696248)
               {
                 mdd.a((VideoAppInterface)localObject, 1022, j);
                 j = 0;
@@ -649,7 +649,7 @@ public class mlf
                   if (j == 0) {
                     break label931;
                   }
-                  mdd.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696248);
+                  mdd.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696250);
                   j = 0;
                   QLog.d("QavVideoRecordUICtrl", 1, "start record, usingZimu");
                   mqj.a("0X8008AD2");
@@ -662,13 +662,13 @@ public class mlf
           if ((localAVActivity.jdField_a_of_type_Mpe != null) && (localAVActivity.jdField_a_of_type_Mpe.a()))
           {
             j = 0;
-            mdd.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696245);
+            mdd.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696247);
             break;
           }
           if (mpw.a() < 31457280L)
           {
             if (localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-              mdd.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696239);
+              mdd.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696241);
             }
             j = 0;
             QLog.d("QavVideoRecordUICtrl", 1, "start record, STORAGE_LEFT_MIN_SIZE not enough");
@@ -773,11 +773,11 @@ public class mlf
   int a()
   {
     int j = 0;
-    boolean bool = bngs.b();
+    boolean bool = bnle.b();
     if (c())
     {
       if (bool) {
-        j = bngs.b((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+        j = bnle.b((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
       }
     }
     else {
@@ -1048,14 +1048,14 @@ public class mlf
       if (j == 3)
       {
         a(4, false);
-        mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696218);
+        mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696220);
       }
       for (;;)
       {
         m();
         return;
         a(9, false);
-        mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696217);
+        mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696219);
       }
     case 4: 
       a(3);
@@ -1092,7 +1092,7 @@ public class mlf
     }
     Object localObject;
     int j;
-    if ((this.jdField_c_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0) && (!b()) && (!bngs.b()))
+    if ((this.jdField_c_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0) && (!b()) && (!bnle.b()))
     {
       localObject = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI;
       j = c();
@@ -1104,7 +1104,7 @@ public class mlf
     }
     for (;;)
     {
-      localObject = (RedPacketGameView)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131372806);
+      localObject = (RedPacketGameView)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131372832);
       if (localObject != null) {
         ((RedPacketGameView)localObject).setScoreMarginTop(a(paramBoolean));
       }
@@ -1182,11 +1182,11 @@ public class mlf
             paramInt2 = j + 1;
             QLog.d("QavVideoRecordUICtrl", 1, "doNeedStartRecord height+1");
             QLog.d("QavVideoRecordUICtrl", 1, "doNeedStartRecord rW=" + paramInt1 + ", rH=" + paramInt2);
-            axqz localaxqz = new axqz(this.jdField_d_of_type_JavaLangString, paramInt1, paramInt2, 5120000, 1, false, 0);
-            localaxqz.a(EGL14.eglGetCurrentContext());
+            axvi localaxvi = new axvi(this.jdField_d_of_type_JavaLangString, paramInt1, paramInt2, 5120000, 1, false, 0);
+            localaxvi.a(EGL14.eglGetCurrentContext());
             if (this.jdField_a_of_type_Mqm != null)
             {
-              this.jdField_a_of_type_Mqm.a(localaxqz, this);
+              this.jdField_a_of_type_Mqm.a(localaxvi, this);
               mqj.a();
               return new int[] { paramInt1, paramInt2 };
             }
@@ -1414,7 +1414,7 @@ public class mlf
       label111:
       this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams.height = j;
       this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = j;
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = aekt.a(15.0F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = aepi.a(15.0F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
       if (this.jdField_d_of_type_AndroidWidgetRelativeLayout != null) {
         this.jdField_d_of_type_AndroidWidgetRelativeLayout.setLayoutParams(this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams);
       }
@@ -1536,10 +1536,10 @@ public class mlf
     case 0: 
     case 180: 
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-      localLayoutParams.setMargins(aekt.a(10.0F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()), 0, 0, 0);
+      localLayoutParams.setMargins(aepi.a(10.0F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()), 0, 0, 0);
       localLayoutParams.addRule(2, 0);
-      localLayoutParams.addRule(1, 2131375458);
-      localLayoutParams.addRule(6, 2131375458);
+      localLayoutParams.addRule(1, 2131375509);
+      localLayoutParams.addRule(6, 2131375509);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
       if (paramInt == 0)
       {
@@ -1555,8 +1555,8 @@ public class mlf
       }
     }
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    localLayoutParams.setMargins(aekt.a(-12.5F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()), 0, 0, aekt.a(32.5F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
-    localLayoutParams.addRule(2, 2131375458);
+    localLayoutParams.setMargins(aepi.a(-12.5F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()), 0, 0, aepi.a(32.5F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
+    localLayoutParams.addRule(2, 2131375509);
     localLayoutParams.addRule(1, 0);
     localLayoutParams.addRule(6, 0);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
@@ -1620,9 +1620,9 @@ public class mlf
       {
         mqj.a("0X8008AC8");
         return;
-        mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696230);
+        mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696232);
       }
-      mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696229);
+      mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696231);
       mqj.a("0X8008AC9");
       return;
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(15, 2000L);
@@ -1723,8 +1723,8 @@ public class mlf
       {
         c();
         l = this.jdField_a_of_type_Long / 1000L;
-        azmj.b(null, "CliOper", "", "", "0X800863C", "0X800863C", 0, 0, String.valueOf(l), "", "", "");
-        azmz.a(BaseApplicationImpl.getContext()).a("", "av_record_timeout", true, l, 0L, null, "", false);
+        azqs.b(null, "CliOper", "", "", "0X800863C", "0X800863C", 0, 0, String.valueOf(l), "", "", "");
+        azri.a(BaseApplicationImpl.getContext()).a("", "av_record_timeout", true, l, 0L, null, "", false);
         return true;
       }
       this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.setProgress(l, this.jdField_a_of_type_Long);
@@ -1744,7 +1744,7 @@ public class mlf
         m();
         continue;
         if (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-          mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696231);
+          mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696233);
         }
       }
     }
@@ -1823,14 +1823,14 @@ public class mlf
     a(b(), this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI, false);
     b(true);
     if (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131696250);
+      mdd.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131696252);
     }
     this.jdField_a_of_type_ComTencentAvVideoController.a().C = false;
     n();
     ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(163) });
     long l = (System.currentTimeMillis() - this.jdField_c_of_type_Long) / 1000L;
-    azmj.b(null, "CliOper", "", "", "0X800863E", "0X800863E", 0, 0, "", String.valueOf(l), "", "");
-    azmz.a(BaseApplicationImpl.getContext()).a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "av_record_cancel", true, l, 0L, null, "", false);
+    azqs.b(null, "CliOper", "", "", "0X800863E", "0X800863E", 0, 0, "", String.valueOf(l), "", "");
+    azri.a(BaseApplicationImpl.getContext()).a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "av_record_cancel", true, l, 0L, null, "", false);
     c(1);
   }
   

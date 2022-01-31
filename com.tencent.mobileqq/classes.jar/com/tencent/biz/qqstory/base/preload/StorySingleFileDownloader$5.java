@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.base.preload;
 
-import ujq;
-import ujr;
+import unz;
+import uoa;
 
 public class StorySingleFileDownloader$5
   implements Runnable
 {
-  public StorySingleFileDownloader$5(ujq paramujq, ujr paramujr, String paramString, int paramInt) {}
+  public StorySingleFileDownloader$5(unz paramunz, uoa paramuoa, String paramString, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ujr.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Uoa.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

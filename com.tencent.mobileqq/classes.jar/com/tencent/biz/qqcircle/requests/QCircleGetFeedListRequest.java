@@ -21,7 +21,7 @@ import feedcloud.FeedCloudRead.StGetFeedListRsp;
 import java.util.List;
 import qqcircle.QQCircleFeedBase.StFeedListBusiReqData;
 import tra;
-import trv;
+import tsa;
 
 public class QCircleGetFeedListRequest
   extends QCircleBaseRequest
@@ -103,7 +103,7 @@ public class QCircleGetFeedListRequest
     this.mRequest.busiReqData.set(ByteStringMicro.copyFrom(paramString3.toByteArray()));
   }
   
-  public QCircleGetFeedListRequest(trv paramtrv, String paramString, FeedCloudMeta.StGPSV2 paramStGPSV2)
+  public QCircleGetFeedListRequest(tsa paramtsa, String paramString, FeedCloudMeta.StGPSV2 paramStGPSV2)
   {
     this.mIsTabRequest = true;
     this.mRequest = new FeedCloudRead.StGetFeedListReq();
@@ -112,13 +112,13 @@ public class QCircleGetFeedListRequest
     }
     this.mRequest.listNum.set(this.mListNum);
     this.mRequest.from.set(0);
-    this.mRequest.source.set(paramtrv.c());
+    this.mRequest.source.set(paramtsa.b());
     this.mTabRequest = new FeedCloudRead.StGetFeedListReq();
     try
     {
       this.mTabRequest.mergeFrom(this.mRequest.toByteArray());
       paramString = new QQCircleFeedBase.StFeedListBusiReqData();
-      paramString.tabAttachInfo.set(paramtrv.b());
+      paramString.tabAttachInfo.set(paramtsa.b());
       if (paramStGPSV2 != null) {
         paramString.gpsInfo.set(paramStGPSV2);
       }

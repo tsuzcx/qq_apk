@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import apwa;
-import awei;
-import awey;
-import awfd;
+import aqaj;
+import awir;
+import awjh;
+import awjm;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmotionDownGIFCallback$1
   implements Runnable
 {
-  public EmotionDownGIFCallback$1(apwa paramapwa, awei paramawei) {}
+  public EmotionDownGIFCallback$1(aqaj paramaqaj, awir paramawir) {}
   
   public void run()
   {
@@ -18,22 +18,22 @@ public class EmotionDownGIFCallback$1
     }
     if ((this.a != null) && (this.a.jdField_b_of_type_JavaLangString != null))
     {
-      awfd localawfd = new awfd();
-      localawfd.jdField_a_of_type_Int = this.a.jdField_a_of_type_Int;
-      localawfd.jdField_a_of_type_JavaLangObject = this.a;
-      localawfd.jdField_a_of_type_Boolean = this.a.jdField_a_of_type_Boolean;
+      awjm localawjm = new awjm();
+      localawjm.jdField_a_of_type_Int = this.a.jdField_a_of_type_Int;
+      localawjm.jdField_a_of_type_JavaLangObject = this.a;
+      localawjm.jdField_a_of_type_Boolean = this.a.jdField_a_of_type_Boolean;
       if (this.a.jdField_a_of_type_Int != 0)
       {
-        if (this.a.jdField_a_of_type_Awey == null)
+        if (this.a.jdField_a_of_type_Awjh == null)
         {
-          awey localawey = new awey();
-          localawey.jdField_b_of_type_JavaLangString = (this.a.jdField_b_of_type_Int + "_" + this.a.jdField_a_of_type_JavaLangString);
-          localawey.jdField_a_of_type_JavaLangString = "onDownload";
-          this.a.jdField_a_of_type_Awey = localawey;
+          awjh localawjh = new awjh();
+          localawjh.jdField_b_of_type_JavaLangString = (this.a.jdField_b_of_type_Int + "_" + this.a.jdField_a_of_type_JavaLangString);
+          localawjh.jdField_a_of_type_JavaLangString = "onDownload";
+          this.a.jdField_a_of_type_Awjh = localawjh;
         }
-        localawfd.jdField_a_of_type_Awey = this.a.jdField_a_of_type_Awey;
+        localawjm.jdField_a_of_type_Awjh = this.a.jdField_a_of_type_Awjh;
       }
-      this.this$0.a(this.a.jdField_a_of_type_Int, localawfd);
+      this.this$0.a(this.a.jdField_a_of_type_Int, localawjm);
     }
   }
 }

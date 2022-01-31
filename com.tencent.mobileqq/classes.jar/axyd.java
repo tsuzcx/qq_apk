@@ -1,79 +1,192 @@
+import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 public class axyd
-  extends alye
 {
-  private axyd(SignTextEditFragment paramSignTextEditFragment) {}
+  protected int a;
+  private long jdField_a_of_type_Long;
+  public Rect a;
+  private String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  public boolean b;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  public boolean c;
+  private int jdField_d_of_type_Int;
+  private String jdField_d_of_type_JavaLangString;
+  private boolean jdField_d_of_type_Boolean;
+  private int jdField_e_of_type_Int;
+  private boolean jdField_e_of_type_Boolean;
+  private boolean f;
+  private boolean g;
+  private boolean h;
+  private boolean i;
   
-  protected void e(boolean paramBoolean, Object paramObject)
+  private axyd()
   {
-    if (paramObject == null) {
-      SignTextEditFragment.a(this.a, 2);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_c_of_type_Boolean = true;
+  }
+  
+  public static axyd a()
+  {
+    return axyf.a();
+  }
+  
+  public int a()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public Rect a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRect;
+  }
+  
+  public String a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
     }
-    for (;;)
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    Bundle localBundle = paramIntent.getExtras();
+    this.jdField_d_of_type_Boolean = localBundle.getBoolean("IS_APP_SHARE_PIC", false);
+    this.jdField_e_of_type_Boolean = localBundle.getBoolean("extra.IS_APOLLO");
+    this.jdField_a_of_type_JavaLangString = localBundle.getString("extra.GROUP_UIN");
+    this.jdField_b_of_type_JavaLangString = localBundle.getString("extra.GROUP_CODE");
+    this.f = localBundle.getBoolean("extra.IS_FROM_MULTI_MSG");
+    this.jdField_a_of_type_Long = localBundle.getLong("key_multi_forward_seq", 0L);
+    this.jdField_b_of_type_Int = localBundle.getInt("forward_source_uin_type", -1);
+    this.jdField_c_of_type_JavaLangString = localBundle.getString("uin");
+    this.jdField_d_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    boolean bool;
+    if (TextUtils.isEmpty(localBundle.getString("babyq_video_type")))
     {
+      bool = false;
+      this.g = bool;
+      this.jdField_a_of_type_Int = localBundle.getInt("extra.EXTRA_ENTRANCE");
+      if ((!this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int != 4) && (!localBundle.getBoolean("is_one_item"))) {
+        break label272;
+      }
+      bool = true;
+      label168:
+      this.h = bool;
+      if (!paramIntent.getBooleanExtra("extra.IS_FROM_CHAT_FILE_HISTORY", false)) {
+        break label277;
+      }
+    }
+    label272:
+    label277:
+    for (int j = 1;; j = 0)
+    {
+      this.jdField_c_of_type_Int = j;
+      this.jdField_d_of_type_Int = localBundle.getInt("extra.AIO_CURRENT_PANEL_STATE", -3321);
+      this.jdField_e_of_type_Int = localBundle.getInt("extra.MOBILE_QQ_PROCESS_ID", -2147483648);
+      this.i = localBundle.getBoolean("extra.IS_FROM_CHAT_FILE_HISTORY", false);
+      this.jdField_a_of_type_Boolean = localBundle.getBoolean("is_ReplyMsg_From_Same_Session", true);
+      this.jdField_c_of_type_Boolean = localBundle.getBoolean(biqe.jdField_b_of_type_JavaLangString, true);
+      this.jdField_b_of_type_Boolean = localBundle.getBoolean(biqe.jdField_a_of_type_JavaLangString);
       return;
-      paramObject = (Bundle)paramObject;
-      int i = paramObject.getInt("param_searchResult", 0);
-      paramObject = (ArrayList)paramObject.getSerializable("param_topicInfoList");
-      if ((paramObject == null) || (paramObject.size() <= 0)) {
-        if (i == 0) {
-          SignTextEditFragment.a(this.a, 3);
-        }
-      }
-      while (this.a.jdField_a_of_type_Akgz.a(paramObject, true))
-      {
-        this.a.jdField_a_of_type_Akgz.notifyDataSetChanged();
-        return;
-        SignTextEditFragment.a(this.a, 2);
-        continue;
-        SignTextEditFragment.a(this.a, 4);
-      }
+      bool = true;
+      break;
+      bool = false;
+      break label168;
     }
   }
   
-  protected void f(boolean paramBoolean, Object paramObject)
+  public void a(Rect paramRect)
   {
-    if (paramObject == null)
-    {
-      SignTextEditFragment.a(this.a, 2);
-      return;
-    }
-    Object localObject = (Bundle)paramObject;
-    int j = ((Bundle)localObject).getInt("param_atIndex");
-    int k = ((Bundle)localObject).getInt("param_atKeyLen");
-    paramObject = ((Bundle)localObject).getString("param_atKey");
-    long l = ((Bundle)localObject).getLong("param_reqTs");
-    localObject = (ArrayList)((Bundle)localObject).getSerializable("param_topicInfoList");
-    int i;
-    if (localObject == null)
-    {
-      i = 0;
-      if (QLog.isColorLevel()) {
-        QLog.i("SignTextEditFragment", 2, String.format("onGetTopicWithKey[%b,%d] key=[%s] [atIndex=%d, keyLen=%d],reqTs=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), paramObject, Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l) }));
-      }
-      if ((localObject != null) && (((List)localObject).size() > 0)) {
-        break label240;
-      }
-      SignTextEditFragment.a(this.a, 3);
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_Akgz.a((List)localObject, false)) {
-        this.a.jdField_a_of_type_Akgz.notifyDataSetChanged();
-      }
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setTag(new Object[] { Integer.valueOf(j), Integer.valueOf(k), paramObject, Long.valueOf(l) });
-      return;
-      i = ((List)localObject).size();
-      break;
-      label240:
-      SignTextEditFragment.a(this.a, 4);
-    }
+    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_d_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_e_of_type_Boolean;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String c()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public boolean c()
+  {
+    return this.f;
+  }
+  
+  public int d()
+  {
+    return this.jdField_d_of_type_Int;
+  }
+  
+  public String d()
+  {
+    return this.jdField_d_of_type_JavaLangString;
+  }
+  
+  public boolean d()
+  {
+    return this.g;
+  }
+  
+  public int e()
+  {
+    return this.jdField_e_of_type_Int;
+  }
+  
+  public boolean e()
+  {
+    return this.h;
+  }
+  
+  public boolean f()
+  {
+    return this.i;
+  }
+  
+  public boolean g()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int != -1);
+  }
+  
+  public boolean h()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

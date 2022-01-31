@@ -1,21 +1,6 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.settings.QGSettingFragment;
-
-public class vyj
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface vyj
 {
-  public vyj(QGSettingFragment paramQGSettingFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      QGSettingFragment.a(true);
-      return;
-    }
-    QGSettingFragment.a(false);
-  }
+  public abstract void a(vyi paramvyi, int paramInt);
 }
 
 

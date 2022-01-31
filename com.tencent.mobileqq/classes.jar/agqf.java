@@ -1,15 +1,18 @@
 class agqf
-  implements bhyj
+  implements aepd
 {
-  agqf(agot paramagot) {}
+  agqf(agps paramagps) {}
   
-  public void a()
+  public void a(ahan paramahan)
   {
-    if ((!this.a.al) && (this.a.am))
-    {
-      this.a.al = true;
-      syp.a("SUBSCRIPT_AIO_COST", null);
-    }
+    ((atpj)this.a.a(32)).a(1, paramahan);
+    ((afgf)this.a.a(43)).b(1, paramahan);
+  }
+  
+  public void b(ahan paramahan)
+  {
+    ((atpj)this.a.a(32)).b(1, paramahan);
+    ((afgf)this.a.a(43)).a(1, paramahan);
   }
 }
 

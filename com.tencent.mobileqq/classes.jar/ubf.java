@@ -1,26 +1,24 @@
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.app.Activity;
+import android.content.res.Resources;
+import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
 
 public class ubf
-  implements bhqd
+  implements Animator.AnimatorListener
 {
-  public ubf(QCircleFollowView paramQCircleFollowView, bhpy parambhpy) {}
+  public ubf(QCircleSlidBottomView paramQCircleSlidBottomView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (!ytg.a("showUnFollowUserActionSheetClick")) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView) != null) {
-        QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView).a();
-      }
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.b(false);
+    if (this.a.getContext() != null) {
+      tra.a((Activity)this.a.getContext(), this.a.getResources().getColor(2131166179));
     }
   }
 }

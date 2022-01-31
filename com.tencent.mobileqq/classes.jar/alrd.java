@@ -1,31 +1,19 @@
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import java.util.Comparator;
-
 public class alrd
-  implements Comparator<aovj>
 {
-  private boolean a(aovj paramaovj)
+  public int a;
+  public String a;
+  public String b = "";
+  public String c = "0";
+  public String d = "";
+  
+  alrd()
   {
-    return (paramaovj != null) && (paramaovj.a != null);
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public int a(aovj paramaovj1, aovj paramaovj2)
+  public String toString()
   {
-    if ((a(paramaovj1)) && (a(paramaovj2))) {
-      if (paramaovj1.a.sPriority <= paramaovj2.a.sPriority) {}
-    }
-    do
-    {
-      return 1;
-      if (paramaovj1.a.sPriority < paramaovj2.a.sPriority) {
-        return -1;
-      }
-      return 0;
-      if (a(paramaovj1)) {
-        return -1;
-      }
-    } while (a(paramaovj2));
-    return 0;
+    return "DPCXMLParseInfo: key=" + this.jdField_a_of_type_JavaLangString + ",value=" + this.b + ",weight=" + this.jdField_a_of_type_Int + ",taskId=" + this.c + ",testType=" + this.d;
   }
 }
 

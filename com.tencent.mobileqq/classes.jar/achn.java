@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class achn
-  implements DialogInterface.OnClickListener
+  implements aglh
 {
-  public achn(ChatHistory paramChatHistory) {}
+  public achn(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    if (this.a.K) {
+      this.a.be();
+    }
+    ((affo)this.a.a.a(7)).b(this.a.hashCode());
+  }
 }
 
 

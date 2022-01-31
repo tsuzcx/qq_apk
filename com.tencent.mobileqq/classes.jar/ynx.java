@@ -1,231 +1,414 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StShare;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.media.MediaMetadataRetriever;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
-import com.tencent.biz.troop.VideoCombineHelper.CombineTask.3;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView;
+import com.tencent.biz.subscribe.widget.SubScribePersonalSharedCardView;
+import com.tencent.biz.subscribe.widget.SubscribeMultiPicSharedCardView;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.1;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.10;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.5;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.6;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.7;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.8;
+import com.tencent.biz.subscribe.widget.SubscribeVideoSharedCardView;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.utils.Md5Utils;
 import java.io.File;
-import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class ynx
-  extends yok
+  extends syq
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString;
-  List<String> jdField_a_of_type_JavaUtilList;
-  String b;
+  public static final String a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bfah jdField_a_of_type_Bfah;
+  private AbsSubscribeShareCardView jdField_a_of_type_ComTencentBizSubscribeWidgetAbsSubscribeShareCardView;
+  private ydo jdField_a_of_type_Ydo;
+  private ynu jdField_a_of_type_Ynu;
+  private Activity jdField_b_of_type_AndroidAppActivity;
+  private final String jdField_b_of_type_JavaLangString = "https://h5.qzone.qq.com/subscription/jump?_wv=3&_proxy=1&schema=";
+  private final String c = alof.aX + "subscribe_card/";
+  private String d;
   
-  public ynx(yol paramyol, String paramString1, List<String> paramList, String paramString2, String paramString3)
+  static
   {
-    super(paramyol, paramString1, paramList);
-    this.jdField_a_of_type_JavaLangString = paramString3;
-    Object localObject;
-    this.b = localObject;
-    this.jdField_a_of_type_JavaUtilList = paramString2;
-    this.jdField_a_of_type_Yok = new yoi(paramyol, paramString1, paramList);
+    jdField_a_of_type_JavaLangString = alof.aX + "subscribe_shared_card/";
   }
   
-  public File a(File paramFile, String paramString, ynu paramynu)
+  public ynx(Activity paramActivity)
   {
-    Object localObject = new MediaMetadataRetriever();
-    ((MediaMetadataRetriever)localObject).setDataSource(paramFile.getAbsolutePath());
-    String str1 = ((MediaMetadataRetriever)localObject).extractMetadata(18);
-    String str2 = ((MediaMetadataRetriever)localObject).extractMetadata(19);
-    ((MediaMetadataRetriever)localObject).release();
-    localObject = paramFile.getParent() + File.separator + "wording.png";
-    String str3 = paramFile.getParent() + File.separator + "vmw.mp4";
+    this.jdField_b_of_type_AndroidAppActivity = paramActivity;
+    if (this.jdField_a_of_type_Syv == null) {
+      this.jdField_a_of_type_Syv = new syv();
+    }
+    paramActivity = ThreadManager.newFreeHandlerThread("subscribe_create_card", 0);
+    paramActivity.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramActivity.getLooper());
+    this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeQRCodeShareHelper.1(this));
+  }
+  
+  private AbsSubscribeShareCardView a()
+  {
+    if ((this.jdField_a_of_type_Ydo != null) && (this.jdField_a_of_type_Ydo.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null)) {
+      switch (this.jdField_a_of_type_Ydo.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType)
+      {
+      }
+    }
+    do
+    {
+      return null;
+      return new SubscribeVideoSharedCardView(this.jdField_b_of_type_AndroidAppActivity);
+      return new SubscribeMultiPicSharedCardView(this.jdField_b_of_type_AndroidAppActivity);
+      if (this.jdField_a_of_type_Ydo.jdField_a_of_type_Int == 1) {
+        return new SubScribePersonalSharedCardView(this.jdField_b_of_type_AndroidAppActivity);
+      }
+      if (this.jdField_a_of_type_Ydo.jdField_a_of_type_Int == 3) {
+        return new SubscribeVideoSharedCardView(this.jdField_b_of_type_AndroidAppActivity);
+      }
+    } while (this.jdField_a_of_type_Ydo.jdField_a_of_type_Int != 4);
+    return new SubscribeMultiPicSharedCardView(this.jdField_b_of_type_AndroidAppActivity);
+  }
+  
+  private String a()
+  {
+    if ((this.jdField_a_of_type_Ydo != null) && (this.jdField_a_of_type_Ydo.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null))
+    {
+      switch (this.jdField_a_of_type_Ydo.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType)
+      {
+      case 7003: 
+      case 7004: 
+      default: 
+        return "";
+      case 7000: 
+      case 7001: 
+        return c();
+      }
+      return b();
+    }
+    return "";
+  }
+  
+  /* Error */
+  private String a(android.content.Context paramContext, String paramString)
+  {
+    // Byte code:
+    //   0: new 136	java/io/File
+    //   3: dup
+    //   4: aload_2
+    //   5: invokespecial 139	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore_3
+    //   9: aload_3
+    //   10: invokevirtual 143	java/io/File:exists	()Z
+    //   13: ifne +7 -> 20
+    //   16: aconst_null
+    //   17: astore_2
+    //   18: aload_2
+    //   19: areturn
+    //   20: aload_1
+    //   21: ldc 145
+    //   23: aload_3
+    //   24: invokestatic 151	com/tencent/smtt/utils/FileProvider:getUriForFile	(Landroid/content/Context;Ljava/lang/String;Ljava/io/File;)Landroid/net/Uri;
+    //   27: astore_3
+    //   28: aload_1
+    //   29: ldc 153
+    //   31: aload_3
+    //   32: iconst_1
+    //   33: invokevirtual 159	android/content/Context:grantUriPermission	(Ljava/lang/String;Landroid/net/Uri;I)V
+    //   36: aload_3
+    //   37: ifnull -19 -> 18
+    //   40: aload_3
+    //   41: invokevirtual 162	android/net/Uri:toString	()Ljava/lang/String;
+    //   44: areturn
+    //   45: astore_1
+    //   46: aconst_null
+    //   47: astore_3
+    //   48: ldc 164
+    //   50: aload_1
+    //   51: invokevirtual 167	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   54: invokestatic 173	wxe:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   57: aload_1
+    //   58: invokevirtual 176	java/lang/Exception:printStackTrace	()V
+    //   61: goto -25 -> 36
+    //   64: astore_1
+    //   65: goto -17 -> 48
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	68	0	this	ynx
+    //   0	68	1	paramContext	android.content.Context
+    //   0	68	2	paramString	String
+    //   8	40	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   20	28	45	java/lang/Exception
+    //   28	36	64	java/lang/Exception
+  }
+  
+  private String a(String paramString)
+  {
+    bdhb.c(paramString + ".nomedia");
+    if ((this.jdField_a_of_type_Ydo != null) && (this.jdField_a_of_type_Ydo.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (this.jdField_a_of_type_Ydo.a() != null))
+    {
+      switch (this.jdField_a_of_type_Ydo.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType)
+      {
+      case 7003: 
+      case 7004: 
+      default: 
+        return "";
+      case 7000: 
+      case 7001: 
+        return paramString + ((CertifiedAccountMeta.StFeed)this.jdField_a_of_type_Ydo.a().get()).id.get() + ".png";
+      }
+      return paramString + Md5Utils.getMD5(this.jdField_a_of_type_Ydo.a().poster.id.get()) + ".png";
+    }
+    return "";
+  }
+  
+  private void a(int paramInt)
+  {
+    if (b())
+    {
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetAbsSubscribeShareCardView.a();
+      this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeQRCodeShareHelper.8(this, paramInt));
+    }
+  }
+  
+  private void a(AbsSubscribeShareCardView paramAbsSubscribeShareCardView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null) {
+      e();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.isShowing()) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
+    ThreadManager.getUIHandler().post(new SubscribeQRCodeShareHelper.3(this, paramAbsSubscribeShareCardView));
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_AndroidAppActivity != null)
+    {
+      if (!paramBoolean) {
+        break label64;
+      }
+      if (this.jdField_a_of_type_Ynu == null) {
+        this.jdField_a_of_type_Ynu = new ynu(this.jdField_b_of_type_AndroidAppActivity, "卡片生成中...");
+      }
+      if ((!this.jdField_a_of_type_Ynu.isShowing()) && (!this.jdField_b_of_type_AndroidAppActivity.isFinishing())) {
+        this.jdField_a_of_type_Ynu.show();
+      }
+    }
+    label64:
+    while ((this.jdField_a_of_type_Ynu == null) || (!this.jdField_a_of_type_Ynu.isShowing()) || (this.jdField_b_of_type_AndroidAppActivity.isFinishing())) {
+      return;
+    }
+    this.jdField_a_of_type_Ynu.dismiss();
+  }
+  
+  private String b()
+  {
+    Object localObject2 = "";
+    CertifiedAccountRead.StGetMainPageRsp localStGetMainPageRsp = ybo.a();
+    Object localObject1 = localObject2;
+    if (localStGetMainPageRsp != null)
+    {
+      localObject1 = localObject2;
+      if (localStGetMainPageRsp.share != null) {
+        localObject1 = localStGetMainPageRsp.share.shorturl.get();
+      }
+    }
+    localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {}
     try
     {
-      int i = Integer.parseInt(str1);
-      int j = Integer.parseInt(str2);
-      long l = System.currentTimeMillis();
-      a(i, j, paramString, (String)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d(".troop.trace_video_combine", 2, "createWatermarkPng time = " + (System.currentTimeMillis() - l));
-      }
-      a().c.add(new File((String)localObject));
-      this.jdField_a_of_type_Ynm.jdField_a_of_type_Xot.a((String)localObject, paramFile.getAbsolutePath(), str3, i, j, new yoe(this, paramynu, str3));
+      localObject2 = new StringBuilder("https://h5.qzone.qq.com/subscription/jump?_wv=3&_proxy=1&schema=");
+      ((StringBuilder)localObject2).append(URLEncoder.encode(yod.a(this.jdField_a_of_type_Ydo.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), this.jdField_a_of_type_Ydo.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_Ydo.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.icon.get()), "UTF-8"));
+      localObject2 = ((StringBuilder)localObject2).toString();
+      return localObject2;
     }
-    catch (Exception paramFile)
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
+      localUnsupportedEncodingException.printStackTrace();
+    }
+    return localObject1;
+  }
+  
+  private boolean b()
+  {
+    int i;
+    if (!WXShareHelper.a().a()) {
+      i = 2131721491;
+    }
+    for (;;)
+    {
+      if (i != -1)
       {
-        QLog.e(".troop.VideoCombineHelper", 2, "combineWording failed!", paramFile);
-      }
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    String str;
-    ynw localynw;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      str = a() + File.separator + "v.ts";
-      localynw = a();
-      if (localynw.b) {
-        this.jdField_a_of_type_Yol.b(this);
-      }
-    }
-    else
-    {
-      return;
-    }
-    a(this.jdField_a_of_type_JavaUtilList, str, new yny(this, localynw));
-  }
-  
-  public void a(List<String> paramList, String paramString, ynu paramynu)
-  {
-    if ((paramList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      paramynu.a(null, false, "videoFiles empty!");
-      return;
-    }
-    if (paramList.size() == 1)
-    {
-      paramynu.a((String)this.jdField_a_of_type_JavaUtilList.get(0), true, "combineVideos Success size = 1");
-      return;
-    }
-    try
-    {
-      long l = System.currentTimeMillis();
-      paramList = new File(paramString);
-      a(this.jdField_a_of_type_JavaUtilList, paramList.getAbsolutePath(), new yoc(this, l, paramynu, paramList));
-      return;
-    }
-    catch (Exception paramList)
-    {
-      QLog.e(".troop.VideoCombineHelper", 2, "combineVideos failed", paramList);
-    }
-  }
-  
-  public void a(List<String> paramList, String paramString, yoh paramyoh)
-  {
-    Object localObject1 = new File(paramString);
-    if ((((File)localObject1).exists()) && (((File)localObject1).length() > 0L))
-    {
-      paramyoh.a(true);
-      return;
-    }
-    localObject1 = new ArrayList();
-    this.jdField_a_of_type_Ynm.jdField_a_of_type_Long = System.currentTimeMillis();
-    StringBuffer localStringBuffer = new StringBuffer("concat:");
-    int i = 0;
-    if (i < paramList.size())
-    {
-      localObject2 = (String)paramList.get(i);
-      Object localObject3 = new File((String)localObject2);
-      Object localObject4 = ((File)localObject3).getName().split("\\.");
-      localObject3 = ((File)localObject3).getAbsoluteFile().getParent() + File.separator + localObject4[0] + ".ts";
-      localStringBuffer.append((String)localObject3);
-      if (i != paramList.size() - 1) {
-        localStringBuffer.append("|");
-      }
-      localObject4 = new File((String)localObject3);
-      if ((((File)localObject4).exists()) && (((File)localObject4).length() > 0L)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (!((File)localObject4).getParentFile().exists()) {
-          ((File)localObject4).getParentFile().mkdirs();
+        ybk.a(0, i);
+        return false;
+        if (!WXShareHelper.a().b()) {
+          i = 2131721492;
         }
-        localObject4 = new xoz();
-        ((xoz)localObject4).jdField_a_of_type_Int = 5;
-        ((xoz)localObject4).jdField_a_of_type_JavaUtilArrayList = new VideoCombineHelper.CombineTask.3(this, (String)localObject2, (String)localObject3);
-        ((xoz)localObject4).jdField_a_of_type_Xpb = new yod(this, paramyoh);
-        ((ArrayList)localObject1).add(localObject4);
       }
+      else
+      {
+        return true;
+      }
+      i = -1;
     }
-    paramList = new File(paramString);
-    paramString = paramList.getName().split("\\.");
-    paramList = paramList.getParent() + File.separator + paramString[0] + ".ts";
-    paramString = new xoz();
-    Object localObject2 = new ArrayList();
-    ((ArrayList)localObject2).add("-y");
-    ((ArrayList)localObject2).add("-i");
-    ((ArrayList)localObject2).add(localStringBuffer.toString());
-    ((ArrayList)localObject2).add("-c");
-    ((ArrayList)localObject2).add("copy");
-    ((ArrayList)localObject2).add(paramList);
-    paramString.jdField_a_of_type_ArrayOfJavaLangString = ((String[])((ArrayList)localObject2).toArray(new String[0]));
-    paramString.jdField_a_of_type_Xpb = paramyoh;
-    ((ArrayList)localObject1).add(paramString);
-    if (this.jdField_a_of_type_Ynm.jdField_a_of_type_Xot.a()) {
+  }
+  
+  private String c()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Ydo.h())) {
       try
       {
-        this.jdField_a_of_type_Ynm.jdField_a_of_type_Xot.b((ArrayList)localObject1);
-        return;
+        Object localObject = new StringBuilder("https://h5.qzone.qq.com/subscription/jump?_wv=3&_proxy=1&schema=");
+        ((StringBuilder)localObject).append(URLEncoder.encode(yod.a(this.jdField_a_of_type_Ydo.a()), "UTF-8"));
+        localObject = ((StringBuilder)localObject).toString();
+        return localObject;
       }
-      catch (FFmpegCommandAlreadyRunningException paramList)
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
-        paramList.printStackTrace();
-        return;
-      }
-      catch (IOException paramList)
-      {
-        paramList.printStackTrace();
-        return;
+        localUnsupportedEncodingException.printStackTrace();
+        return "";
       }
     }
-    try
+    return this.jdField_a_of_type_Ydo.h();
+  }
+  
+  private boolean c()
+  {
+    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetAbsSubscribeShareCardView != null)
     {
-      this.jdField_a_of_type_Ynm.jdField_a_of_type_Xot.a((ArrayList)localObject1);
+      String str = a(this.c);
+      if (!TextUtils.isEmpty(str))
+      {
+        if (new File(str).exists())
+        {
+          QLog.d("SubscribeQRCodeShareHelper", 4, "save file  is exit");
+          return true;
+        }
+        Bitmap localBitmap = this.jdField_a_of_type_ComTencentBizSubscribeWidgetAbsSubscribeShareCardView.a();
+        if (localBitmap != null) {
+          return auex.a(localBitmap, str, Bitmap.CompressFormat.JPEG, 80, true);
+        }
+      }
+    }
+    return false;
+  }
+  
+  private boolean d()
+  {
+    return (WXShareHelper.a().a() != null) && (WXShareHelper.a().a().getWXAppSupportAPI() >= 654314752);
+  }
+  
+  private void e()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(this.jdField_b_of_type_AndroidAppActivity);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Integer.valueOf(2));
+    localArrayList.add(Integer.valueOf(3));
+    localArrayList.add(Integer.valueOf(4));
+    localArrayList.add(Integer.valueOf(5));
+    localArrayList.add(Integer.valueOf(31));
+    ShareActionSheetBuilder localShareActionSheetBuilder = this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder;
+    syv localsyv = this.jdField_a_of_type_Syv;
+    localShareActionSheetBuilder.setActionSheetItems(a(new List[] { localArrayList }, localsyv));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(alud.a(2131720511));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(this);
+    a(new yob(this));
+  }
+  
+  private boolean e()
+  {
+    return Build.VERSION.SDK_INT >= 24;
+  }
+  
+  private void f()
+  {
+    boolean bool = true;
+    if (Build.VERSION.SDK_INT >= 23) {
+      bool = amrk.a(this.jdField_b_of_type_AndroidAppActivity);
+    }
+    if (!bool)
+    {
+      bdgm.b(this.jdField_b_of_type_AndroidAppActivity);
       return;
     }
-    catch (FFmpegCommandAlreadyRunningException paramList)
-    {
-      paramList.printStackTrace();
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetAbsSubscribeShareCardView.a();
+    this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeQRCodeShareHelper.5(this));
+  }
+  
+  private void g()
+  {
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetAbsSubscribeShareCardView.a();
+    this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeQRCodeShareHelper.6(this));
+  }
+  
+  private void h()
+  {
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetAbsSubscribeShareCardView.a();
+    this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeQRCodeShareHelper.7(this));
+  }
+  
+  private void i()
+  {
+    if (this.jdField_a_of_type_Bfah != null) {
       return;
     }
-    catch (IOException paramList)
+    this.jdField_a_of_type_Bfah = new yoc(this);
+    WXShareHelper.a().a(this.jdField_a_of_type_Bfah);
+  }
+  
+  public void a(ydo paramydo)
+  {
+    if (Build.VERSION.SDK_INT >= 23) {}
+    for (boolean bool = amrk.a(this.jdField_b_of_type_AndroidAppActivity);; bool = true)
     {
-      paramList.printStackTrace();
+      if (!bool)
+      {
+        bdgm.b(this.jdField_b_of_type_AndroidAppActivity);
+        return;
+      }
+      if ((paramydo == null) || (!bdin.g(this.jdField_b_of_type_AndroidAppActivity)))
+      {
+        QQToast.a(this.jdField_b_of_type_AndroidAppActivity, 1, 2131717840, 1).a();
+        QLog.d("SubscribeQRCodeShareHelper", 4, "failed to create card code because shareInfoBean is empty");
+        return;
+      }
+      this.jdField_a_of_type_Ydo = paramydo;
+      a(true);
+      this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeQRCodeShareHelper.2(this));
+      return;
     }
   }
   
-  public boolean a(int paramInt1, int paramInt2, String paramString1, String paramString2)
+  public void d()
   {
-    boolean bool = false;
-    try
-    {
-      Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(localBitmap);
-      Paint localPaint1 = new Paint();
-      localPaint1.setColor(-1);
-      localPaint1.setTextSize(30.0F);
-      localPaint1.setTextAlign(Paint.Align.CENTER);
-      Rect localRect = new Rect();
-      localPaint1.getTextBounds(paramString1, 0, paramString1.length(), localRect);
-      Paint localPaint2 = new Paint();
-      localPaint2.setColor(-16777216);
-      RectF localRectF = new RectF();
-      localRectF.top = (paramInt2 - localRect.height() - 15 - 15);
-      localRectF.left = ((paramInt1 - localRect.width()) / 2 - 15);
-      localRectF.bottom = (localRectF.top + localRect.height() + 15);
-      localRectF.right = (localRectF.left + localRect.width() + 30);
-      localCanvas.drawRoundRect(localRectF, 8.0F, 8.0F, localPaint2);
-      localCanvas.drawText(paramString1, paramInt1 / 2, paramInt2 - 15 - localRect.height() / 2, localPaint1);
-      xmn.a(localBitmap, Bitmap.CompressFormat.PNG, 100, paramString2);
-      xmn.a(localBitmap);
-      bool = true;
-    }
-    catch (Throwable paramString1)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(".troop.VideoCombineHelper", 2, "createWatermarkByWording", paramString1);
-    }
-    return bool;
-    return false;
+    WXShareHelper.a().b(this.jdField_a_of_type_Bfah);
+    this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeQRCodeShareHelper.10(this));
+    a(false);
   }
 }
 

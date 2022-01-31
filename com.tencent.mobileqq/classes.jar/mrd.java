@@ -53,7 +53,7 @@ public class mrd
   {
     this.jdField_a_of_type_Llm = null;
     this.jdField_a_of_type_Llm = llq.a(paramLong, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString);
-    paramString = (GamePlayView)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559561, null);
+    paramString = (GamePlayView)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559560, null);
     if (this.jdField_a_of_type_Llm == null)
     {
       QLog.w("ZimuViewProxy", 1, "creatARZimuTask, fail");

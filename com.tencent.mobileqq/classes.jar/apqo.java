@@ -1,78 +1,53 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-public class apqo
+class apqo
+  implements aled
 {
-  int jdField_a_of_type_Int = 0;
-  public appt a;
-  apqa jdField_a_of_type_Apqa;
-  BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  EmoticonMainPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
-  public String a;
-  boolean jdField_a_of_type_Boolean = false;
-  int b;
-  public boolean b = false;
-  public int c;
-  boolean c = true;
-  public boolean d = false;
-  boolean e = false;
-  boolean f = false;
-  boolean g = false;
-  boolean h = false;
-  boolean i = false;
+  apqo(apqh paramapqh, int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, int paramInt2, boolean paramBoolean, String paramString2, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public apqo() {}
-  
-  public apqo(EmoticonMainPanel paramEmoticonMainPanel)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = paramEmoticonMainPanel;
-    if (paramEmoticonMainPanel != null)
-    {
-      paramEmoticonMainPanel = paramEmoticonMainPanel.a();
-      if (paramEmoticonMainPanel != null)
+    paramString = new Bundle();
+    int i;
+    if (paramBoolean) {
+      if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
       {
-        this.jdField_a_of_type_Appt = paramEmoticonMainPanel.jdField_a_of_type_Appt;
-        this.jdField_a_of_type_Boolean = paramEmoticonMainPanel.h;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        this.c = paramEmoticonMainPanel.k;
-        this.jdField_a_of_type_Apqa = EmoticonPanelController.a(paramEmoticonMainPanel);
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-        this.i = EmoticonPanelController.a(paramEmoticonMainPanel);
+        paramArrayOfInt = ((aknx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        if (paramArrayOfInt == null) {
+          break label231;
+        }
+        i = paramArrayOfInt.apolloVipFlag;
+        paramInt2 = paramArrayOfInt.apolloVipLevel;
       }
     }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel == null) {}
-    EmoticonPanelController localEmoticonPanelController;
-    do
+    for (;;)
     {
+      paramString.putInt("apollo_apolloVipFlag", i);
+      paramString.putInt("apollo_apolloVipLevel", paramInt2);
+      paramString.putBoolean("apollo_is_super_yellow", aknx.c());
+      paramString.putInt("apollo_result", 0);
+      paramString.putInt("apollo_partnerRoleId", paramInt1);
+      paramString.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
+      paramString.putInt("apollo_previewAction", this.jdField_b_of_type_Int);
+      paramString.putBoolean("apollo_previewOnFrame", this.jdField_a_of_type_Boolean);
+      paramString.putString("apollo_id", this.jdField_b_of_type_JavaLangString);
+      paramString.putString("title", this.c);
+      paramString.putString("subTitle", this.d);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
       return;
-      localEmoticonPanelController = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a();
-    } while (localEmoticonPanelController == null);
-    this.h = false;
-    localEmoticonPanelController.jdField_a_of_type_Apqo = this;
-    localEmoticonPanelController.jdField_a_of_type_Appt = this.jdField_a_of_type_Appt;
-    localEmoticonPanelController.h = this.jdField_a_of_type_Boolean;
-    localEmoticonPanelController.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    localEmoticonPanelController.k = this.c;
-    EmoticonPanelController.a(localEmoticonPanelController, this.jdField_a_of_type_Apqa);
-    localEmoticonPanelController.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-    EmoticonPanelController.a(localEmoticonPanelController, this.i);
-    localEmoticonPanelController.a(this.jdField_a_of_type_Int);
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel == null) || (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a() == null)) {
+      paramString.putInt("apollo_result", 1);
+      paramString.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
       return;
+      label231:
+      paramInt2 = 0;
+      i = 0;
     }
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a().a();
   }
 }
 

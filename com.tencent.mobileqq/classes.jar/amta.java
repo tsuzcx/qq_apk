@@ -1,168 +1,100 @@
-import android.graphics.Rect;
-import android.graphics.RectF;
-import com.tencent.mobileqq.ar.DrawView2;
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
 
 public class amta
+  implements amwm
 {
-  public float a;
-  public int a;
-  public Rect a;
-  public RectF a;
-  public String a;
-  public boolean a;
-  public float[] a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public String e;
-  public boolean e;
-  public String f;
-  public String g;
-  public String h;
+  public static int a;
+  private long jdField_a_of_type_Long;
+  private amtb jdField_a_of_type_Amtb;
+  private amwk jdField_a_of_type_Amwk;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = 0;
+  private boolean jdField_b_of_type_Boolean = true;
   
-  public static RectF a(Rect paramRect, float[] paramArrayOfFloat)
+  static
   {
-    if ((paramRect == null) || (paramArrayOfFloat == null) || (paramArrayOfFloat.length < 180))
-    {
-      paramRect = null;
-      return paramRect;
-    }
-    paramArrayOfFloat = (float[])paramArrayOfFloat.clone();
-    float[] arrayOfFloat1 = new float[2];
-    float[] arrayOfFloat2 = new float[2];
-    float[] arrayOfFloat3 = new float[2];
-    float[] arrayOfFloat4 = new float[2];
-    arrayOfFloat1[0] = paramArrayOfFloat[12];
-    arrayOfFloat1[1] = paramArrayOfFloat[13];
-    arrayOfFloat2[0] = paramArrayOfFloat[28];
-    arrayOfFloat2[1] = paramArrayOfFloat[29];
-    arrayOfFloat3[0] = paramArrayOfFloat[64];
-    arrayOfFloat3[1] = paramArrayOfFloat[65];
-    arrayOfFloat4[0] = (arrayOfFloat1[0] + arrayOfFloat2[0] - arrayOfFloat3[0]);
-    arrayOfFloat4[1] = (arrayOfFloat1[1] + arrayOfFloat2[1] - arrayOfFloat3[1]);
-    float f2 = Math.min(paramRect.left, arrayOfFloat4[0]);
-    float f3 = Math.max(paramRect.right, arrayOfFloat4[0]);
-    float f4 = Math.min(paramRect.top, arrayOfFloat4[1]);
-    float f5 = Math.max(paramRect.bottom, arrayOfFloat4[1]);
-    float f1 = DrawView2.c / DrawView2.d;
-    float f6 = Math.max(DrawView2.a, DrawView2.b);
-    float f7 = Math.min(DrawView2.a, DrawView2.b);
-    if (f1 > f7 / f6) {}
-    for (f1 = DrawView2.c / f7;; f1 = DrawView2.d / f6)
-    {
-      float f8 = (f1 * f7 - DrawView2.c) / 2.0F;
-      f7 = (f7 * f1 - DrawView2.c) / 2.0F;
-      paramArrayOfFloat = new RectF(f2 * f1 - f8, f4 * f1 - (f1 * f6 - DrawView2.d) / 2.0F, f3 * f1 - f7, f5 * f1 - (f1 * f6 - DrawView2.d) / 2.0F);
-      paramRect = paramArrayOfFloat;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("DrawView", 2, "mapFaceRect2Screen  result = " + paramArrayOfFloat.toString());
-      return paramArrayOfFloat;
-    }
+    jdField_a_of_type_Int = 8;
   }
   
-  public static RectF a(RectF paramRectF)
+  public amta(Context paramContext)
   {
-    float f4 = 40.0F;
-    if (paramRectF == null) {
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DrawView", 2, "faceRect  result = " + paramRectF.toString());
-    }
-    if ((paramRectF.left == 0.0F) && (paramRectF.top == 0.0F) && (paramRectF.right == 0.0F)) {
-      return new RectF(DrawView2.c / 2 - 210, DrawView2.d / 2 - 210, DrawView2.c / 2 + 210, DrawView2.d / 2 + 210);
-    }
-    float f3 = paramRectF.left;
-    float f5 = paramRectF.right;
-    float f1 = paramRectF.top;
-    float f2 = paramRectF.bottom;
-    f3 = (f3 + f5) / 2.0F;
-    f2 = (f1 + f2) / 2.0F;
-    f1 = f3 * (DrawView2.c / 480);
-    f2 *= DrawView2.d / 856;
-    float f6 = f1 - 210.0F;
-    f3 = f2 - 210.0F;
-    float f7 = f1 + 210.0F;
-    f5 = f2 + 210.0F;
-    if (QLog.isColorLevel()) {
-      QLog.d("DrawView", 2, "mapMigObjectRect2Screen1  result = " + f6 + "   ：" + f3 + "  ：" + f7 + "  ：" + f5);
-    }
-    f2 = f7;
-    f1 = f6;
-    if (f6 < 40.0F)
-    {
-      f2 = f7 - f6 + 40.0F;
-      f1 = 40.0F;
-    }
-    if (f3 < 40.0F) {}
-    for (f3 = f5 - f3 + 40.0F;; f3 = f5)
-    {
-      if (f2 > DrawView2.c - 40)
-      {
-        f6 = DrawView2.c - 40 - (f2 - f1);
-        f5 = DrawView2.c - 40;
-      }
-      for (;;)
-      {
-        f2 = f3;
-        f1 = f4;
-        if (f3 > DrawView2.d - 40)
-        {
-          f1 = DrawView2.d - 40 - (f3 - f4);
-          f2 = DrawView2.d - 40;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("DrawView", 2, "mapMigObjectRect2Screen1  result = " + f6 + "   ：" + f1 + "  ：" + f5 + "  ：" + f2);
-        }
-        f4 = f5;
-        f3 = f6;
-        if ((f6 + f5) / 2.0F < DrawView2.c / 2 - 125)
-        {
-          f3 = DrawView2.c / 2 - 125 - 210;
-          f4 = DrawView2.c / 2 - 125 + 210;
-        }
-        f6 = f4;
-        f5 = f3;
-        if ((f3 + f4) / 2.0F > DrawView2.c / 2 + 125)
-        {
-          f5 = DrawView2.c / 2 + 125 - 210;
-          f6 = DrawView2.c / 2 + 125 + 210;
-        }
-        f4 = f2;
-        f3 = f1;
-        if ((f1 + f2) / 2.0F < DrawView2.d / 2 - 417)
-        {
-          f3 = DrawView2.d / 2 - 417 - 210;
-          f4 = DrawView2.d / 2 - 417 + 210;
-        }
-        f2 = f4;
-        f1 = f3;
-        if ((f3 + f4) / 2.0F > DrawView2.d / 2 + 417)
-        {
-          f1 = DrawView2.d / 2 + 417 - 210;
-          f2 = DrawView2.d / 2 + 417 + 210;
-        }
-        paramRectF = new RectF(f5, f1, f6, f2);
-        if (QLog.isColorLevel()) {
-          QLog.d("DrawView", 2, "mapMigObjectRect2Screen3  result = " + paramRectF.toString());
-        }
-        return paramRectF;
-        f5 = f2;
-        f6 = f1;
-      }
-      f4 = f3;
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Amwk = new amwk();
   }
   
-  public RectF a()
+  private void b(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    return this.a;
+    long l;
+    if (this.jdField_a_of_type_Long != 0L)
+    {
+      l = System.currentTimeMillis();
+      if (l - this.jdField_a_of_type_Long >= 1000L) {}
+    }
+    label35:
+    label241:
+    do
+    {
+      return;
+      this.jdField_a_of_type_Long = l;
+      if (paramFloat2 > jdField_a_of_type_Int) {}
+      for (int i = 1;; i = 2)
+      {
+        if (QLog.isDebugVersion()) {
+          QLog.d("ARPhonePoseDetectManager", 1, "ARPhonePoseDetectManager current value:=" + this.jdField_b_of_type_Int + ";nextPhonepose:=" + i);
+        }
+        if (this.jdField_b_of_type_Int == i) {
+          break;
+        }
+        QLog.i("ARPhonePoseDetectManager", 1, "detectPhonePose. data = " + paramFloat1 + "," + paramFloat2 + "," + paramFloat3 + "," + paramLong + ", mPhonePose = " + this.jdField_b_of_type_Int + ", phonePose = " + i);
+        if ((i == 2) && (this.jdField_b_of_type_Boolean)) {
+          this.jdField_b_of_type_Boolean = false;
+        }
+        this.jdField_b_of_type_Int = i;
+        if (this.jdField_a_of_type_Amtb == null) {
+          break;
+        }
+        if (this.jdField_b_of_type_Int != 1) {
+          break label241;
+        }
+        this.jdField_a_of_type_Amtb.a(true);
+        return;
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        break label35;
+      }
+    } while (this.jdField_b_of_type_Int != 2);
+    this.jdField_a_of_type_Amtb.a(false);
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Amwk.a(this.jdField_a_of_type_AndroidContentContext, this);
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Amwk.b();
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    b(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  public void a(amtb paramamtb)
+  {
+    this.jdField_a_of_type_Amtb = paramamtb;
+  }
+  
+  public void a(float[] paramArrayOfFloat) {}
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Amwk.c();
+    this.jdField_b_of_type_Int = 0;
   }
 }
 

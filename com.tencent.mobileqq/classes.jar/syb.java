@@ -111,7 +111,7 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public class syb
 {
   private static volatile int jdField_a_of_type_Int = -1;
-  static bdfq jdField_a_of_type_Bdfq;
+  static bdjz jdField_a_of_type_Bdjz;
   private static Object jdField_a_of_type_JavaLangObject = new Object();
   private static String jdField_a_of_type_JavaLangString = "tag_delete_oldkandian_flag";
   private static WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
@@ -164,10 +164,10 @@ public class syb
         do
         {
           return k;
-          localObject = (aluw)paramQQAppInterface.getManager(56);
+          localObject = (alzl)paramQQAppInterface.getManager(56);
           k = j;
         } while (localObject == null);
-        Object localObject = ((aluw)localObject).b(paramString);
+        Object localObject = ((alzl)localObject).b(paramString);
         if (localObject != null)
         {
           if (((PublicAccountInfo)localObject).extendType == 2) {
@@ -184,7 +184,7 @@ public class syb
             i = -4;
           }
         }
-        paramQQAppInterface = (alne)paramQQAppInterface.getManager(69);
+        paramQQAppInterface = (alrt)paramQQAppInterface.getManager(69);
         k = i;
       } while (paramQQAppInterface == null);
       k = i;
@@ -204,7 +204,7 @@ public class syb
   
   public static int a(String paramString)
   {
-    Object localObject1 = ajeu.a().a;
+    Object localObject1 = ajjj.a().a;
     int j;
     if (localObject1 == null)
     {
@@ -264,7 +264,7 @@ public class syb
   
   public static String a()
   {
-    return "8.3.3,3,4515";
+    return "8.3.5,3,4555";
   }
   
   public static String a(ArticleInfo paramArticleInfo, pgr parampgr)
@@ -298,7 +298,7 @@ public class syb
     }
     for (;;)
     {
-      return ayvy.b(paramArticleInfo);
+      return azah.b(paramArticleInfo);
       label145:
       localObject1 = localObject2;
       if (paramArticleInfo.msgBoxBriefPreFixType != 2) {
@@ -426,7 +426,7 @@ public class syb
     String str = paramString;
     if (!TextUtils.isEmpty(paramString))
     {
-      paramQQAppInterface = (aluw)paramQQAppInterface.getManager(56);
+      paramQQAppInterface = (alzl)paramQQAppInterface.getManager(56);
       str = paramString;
       if (paramQQAppInterface != null)
       {
@@ -448,7 +448,7 @@ public class syb
     if (!TextUtils.isEmpty(paramString))
     {
       str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      localObject1 = bdiv.q(BaseApplicationImpl.getApplication(), str);
+      localObject1 = bdne.q(BaseApplicationImpl.getApplication(), str);
       if (localObject1 == null) {
         break label123;
       }
@@ -465,7 +465,7 @@ public class syb
         if (localSkinData != null)
         {
           paramString = nbv.a(paramString, "_kdSkinID=" + localSkinData.id);
-          if (bdiv.v(BaseApplicationImpl.getApplication(), str)) {
+          if (bdne.v(BaseApplicationImpl.getApplication(), str)) {
             localObject1 = nbv.a(paramString, "_kdSkinVoice=1");
           }
         }
@@ -699,7 +699,7 @@ public class syb
         return;
       }
       localObject = new syd(paramActivity, paramQQAppInterface, paramProfileParams);
-      localObject = bjao.a(paramQQAppInterface, paramProfileParams.a(), (alkr)localObject);
+      localObject = bjev.a(paramQQAppInterface, paramProfileParams.a(), (alpg)localObject);
       if (localObject != null)
       {
         if (!a(paramActivity, (OpenID)localObject, paramQQAppInterface, paramProfileParams)) {}
@@ -719,14 +719,14 @@ public class syb
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    boolean bool = ((Boolean)bdiv.a(paramContext, paramQQAppInterface.getCurrentAccountUin(), "config_tim_team_is_web", Boolean.valueOf(false))).booleanValue();
-    String str = (String)bdiv.a(paramContext, paramQQAppInterface.getCurrentAccountUin(), "config_tim_team_url", "https://m.q.qq.com/a/p/1109953074?s=pages%2Fnotification%2Findex%3FenterType%3DqqMiniHelper");
+    boolean bool = ((Boolean)bdne.a(paramContext, paramQQAppInterface.getCurrentAccountUin(), "config_tim_team_is_web", Boolean.valueOf(false))).booleanValue();
+    String str = (String)bdne.a(paramContext, paramQQAppInterface.getCurrentAccountUin(), "config_tim_team_url", "https://m.q.qq.com/a/p/1109953074?s=pages%2Fnotification%2Findex%3FenterType%3DqqMiniHelper");
     if ((!bool) && (MiniAppLauncher.isMiniAppUrl(str))) {
       MiniAppLauncher.startMiniApp(paramContext, str, 1043, null);
     }
     for (;;)
     {
-      paramQQAppInterface.a().a(aljq.aV, 1008, true, true);
+      paramQQAppInterface.a().a(alof.aV, 1008, true, true);
       return;
       Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
       localIntent.putExtra("url", str);
@@ -806,7 +806,7 @@ public class syb
   {
     if (paramBoolean)
     {
-      String str = oqu.k + bdbi.encodeToString(paramString.getBytes(), 0);
+      String str = oqu.k + bdfr.encodeToString(paramString.getBytes(), 0);
       paramIntent = new Intent(paramActivity, PublicAccountBrowser.class);
       paramIntent.putExtra("url", str);
       paramActivity.startActivityForResult(paramIntent, paramInt1);
@@ -838,7 +838,7 @@ public class syb
     if ((paramQQAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    if (aljq.aR.equals(paramString))
+    if (alof.aR.equals(paramString))
     {
       KandianSubscribeManager.a(paramContext, 3);
       return;
@@ -904,20 +904,20 @@ public class syb
     b(paramAppInterface, paramContext, paramString, -1);
   }
   
-  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString, alvc paramalvc)
+  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString, alzr paramalzr)
   {
-    a(paramAppInterface, paramContext, paramString, paramalvc, true, 0);
+    a(paramAppInterface, paramContext, paramString, paramalzr, true, 0);
   }
   
   @Deprecated
-  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString, alvc paramalvc, int paramInt)
+  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString, alzr paramalzr, int paramInt)
   {
     if ((paramAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString))) {
       return;
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)paramAppInterface;
-    localQQAppInterface.addObserver(new amnh(new sym(paramalvc, paramString, paramAppInterface, paramContext), localQQAppInterface));
-    amnm.a(localQQAppInterface, true, paramString, 0);
+    localQQAppInterface.addObserver(new amrw(new sym(paramalzr, paramString, paramAppInterface, paramContext), localQQAppInterface));
+    amsb.a(localQQAppInterface, true, paramString, 0);
     if ((paramAppInterface instanceof QQAppInterface)) {
       paramAppInterface = (QQAppInterface)paramAppInterface;
     }
@@ -934,17 +934,17 @@ public class syb
     }
   }
   
-  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString, alvc paramalvc, boolean paramBoolean)
+  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString, alzr paramalzr, boolean paramBoolean)
   {
-    a(paramAppInterface, paramContext, paramString, paramalvc, paramBoolean, 0);
+    a(paramAppInterface, paramContext, paramString, paramalzr, paramBoolean, 0);
   }
   
-  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString, alvc paramalvc, boolean paramBoolean, int paramInt)
+  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString, alzr paramalzr, boolean paramBoolean, int paramInt)
   {
-    a(paramAppInterface, paramContext, paramString, paramalvc, paramBoolean, paramInt, false);
+    a(paramAppInterface, paramContext, paramString, paramalzr, paramBoolean, paramInt, false);
   }
   
-  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString, alvc paramalvc, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString, alzr paramalzr, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
     if ((paramAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString))) {
       return;
@@ -961,19 +961,19 @@ public class syb
       Object localObject;
       if ((!(paramAppInterface instanceof QQAppInterface)) || (paramBoolean2))
       {
-        paramalvc = new amnh(new syi(paramalvc, paramString, paramAppInterface, paramContext, paramInt, paramBoolean1));
-        paramContext = new PublicAccountIntent(paramContext.getApplicationContext(), amnj.class);
-        paramContext.a(paramalvc);
+        paramalzr = new amrw(new syi(paramalzr, paramString, paramAppInterface, paramContext, paramInt, paramBoolean1));
+        paramContext = new PublicAccountIntent(paramContext.getApplicationContext(), amry.class);
+        paramContext.a(paramalzr);
         paramContext.putExtra("BUNDLE_PUBLIC_ACCOUNT_CMD", "newFollow");
         paramContext.putExtra("BUNDLE_PUBLIC_ACCOUNT_UIN", paramString);
         paramContext.putExtra("BUNDLE_PUBLIC_ACCOUNT_IS_FOLLOW", true);
         paramContext.putExtra("BUNDLE_PUBLIC_ACCOUNT_SOURCE", paramInt);
         paramAppInterface.startServlet(paramContext);
         return;
-        localObject = (aluw)paramAppInterface.getManager(56);
+        localObject = (alzl)paramAppInterface.getManager(56);
         if (localObject != null)
         {
-          localObject = ((aluw)localObject).a(paramString);
+          localObject = ((alzl)localObject).a(paramString);
           if ((localObject == null) || (a(((AccountDetail)localObject).accountFlag) == -4))
           {
             paramBoolean2 = false;
@@ -991,7 +991,7 @@ public class syb
         try
         {
           localFollowRequest.uin.set((int)Long.parseLong(paramString));
-          ((NewIntent)localObject).setObserver(new syj(paramalvc, paramString, paramBoolean1, paramContext, paramAppInterface, paramInt));
+          ((NewIntent)localObject).setObserver(new syj(paramalzr, paramString, paramBoolean1, paramContext, paramAppInterface, paramInt));
           ((NewIntent)localObject).putExtra("data", localFollowRequest.toByteArray());
           paramAppInterface.startServlet((NewIntent)localObject);
           return;
@@ -1028,7 +1028,7 @@ public class syb
     if (paramRecentBaseData != null) {
       paramRecentUser.putExtra("serviceUnReadNumber", paramRecentBaseData.mUnreadNum);
     }
-    xxk.a(paramActivity, 9004, paramRecentUser);
+    ybt.a(paramActivity, 9004, paramRecentUser);
     if (QLog.isColorLevel()) {
       QLog.d("RecentUtil", 2, "enterServiceAccountFolderActivityFromMsgTab");
     }
@@ -1047,23 +1047,23 @@ public class syb
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt, long paramLong, boolean paramBoolean)
   {
-    bhpy localbhpy = (bhpy)bhql.a(paramContext, null);
-    localbhpy.a(paramContext.getResources().getString(2131696568));
-    localbhpy.a(2131691561, 3);
+    bhuf localbhuf = (bhuf)bhus.a(paramContext, null);
+    localbhuf.a(paramContext.getResources().getString(2131696570));
+    localbhuf.a(2131691562, 3);
     if (paramString.equals("2010741172")) {
-      localbhpy.b(2131695692);
+      localbhuf.b(2131695694);
     }
-    localbhpy.c(2131690648);
-    localbhpy.a(new syh(paramQQAppInterface, paramString, paramInt, paramLong, paramBoolean, paramContext, localbhpy));
-    localbhpy.show();
+    localbhuf.c(2131690648);
+    localbhuf.a(new syh(paramQQAppInterface, paramString, paramInt, paramLong, paramBoolean, paramContext, localbhuf));
+    localbhuf.show();
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, boolean paramBoolean, alvc paramalvc)
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, boolean paramBoolean, alzr paramalzr)
   {
-    a(paramQQAppInterface, paramContext, paramString, paramBoolean, paramalvc, false);
+    a(paramQQAppInterface, paramContext, paramString, paramBoolean, paramalzr, false);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, boolean paramBoolean1, alvc paramalvc, boolean paramBoolean2)
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, boolean paramBoolean1, alzr paramalzr, boolean paramBoolean2)
   {
     if ((paramQQAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString))) {
       return;
@@ -1071,23 +1071,23 @@ public class syb
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
     paramContext = null;
     NewIntent localNewIntent = null;
-    Object localObject3 = (aluw)paramQQAppInterface.getManager(56);
+    Object localObject3 = (alzl)paramQQAppInterface.getManager(56);
     Object localObject1 = localNewIntent;
     Object localObject2;
     if (localObject3 != null)
     {
-      localObject2 = ((aluw)localObject3).a(paramString);
-      ((aluw)localObject3).b(paramString);
+      localObject2 = ((alzl)localObject3).a(paramString);
+      ((alzl)localObject3).b(paramString);
       paramContext = (Context)localObject2;
       localObject1 = localNewIntent;
       if (localObject2 == null)
       {
-        localObject3 = (alne)paramQQAppInterface.getManager(69);
+        localObject3 = (alrt)paramQQAppInterface.getManager(69);
         paramContext = (Context)localObject2;
         localObject1 = localNewIntent;
         if (localObject3 != null)
         {
-          localObject1 = ((alne)localObject3).a(paramString);
+          localObject1 = ((alrt)localObject3).a(paramString);
           paramContext = (Context)localObject2;
         }
       }
@@ -1117,7 +1117,7 @@ public class syb
           if (localObject1 != null) {
             break label337;
           }
-          paramContext = new syk(paramalvc, paramString, paramBoolean1, localBaseApplication, localObject1, paramQQAppInterface);
+          paramContext = new syk(paramalzr, paramString, paramBoolean1, localBaseApplication, localObject1, paramQQAppInterface);
           localNewIntent.putExtra("data", ((mobileqq_mp.UnFollowRequest)localObject2).toByteArray());
           localNewIntent.setObserver(paramContext);
           paramQQAppInterface.startServlet(localNewIntent);
@@ -1138,11 +1138,11 @@ public class syb
     if (localObject1 == null) {}
     for (;;)
     {
-      paramContext = new amnh(new syl(localObject1, paramQQAppInterface, paramString, paramalvc, paramBoolean1, localBaseApplication), paramQQAppInterface);
+      paramContext = new amrw(new syl(localObject1, paramQQAppInterface, paramString, paramalzr, paramBoolean1, localBaseApplication), paramQQAppInterface);
       paramContext.a(paramQQAppInterface);
       paramQQAppInterface.removeObserver(paramContext);
       paramQQAppInterface.addObserver(paramContext);
-      amnm.a(paramQQAppInterface, false, paramString, 0);
+      amsb.a(paramQQAppInterface, false, paramString, 0);
       return;
       localObject1 = paramContext;
     }
@@ -1157,7 +1157,7 @@ public class syb
     if (paramChatMessage.mExJsonObject != null) {
       str = paramChatMessage.mExJsonObject.optString("report_key_bytes_oac_msg_extend");
     }
-    amnk.a(paramQQAppInterface, paramChatMessage.senderuin, 0, 6, paramChatMessage.msgId, str);
+    amrz.a(paramQQAppInterface, paramChatMessage.senderuin, 0, 6, paramChatMessage.msgId, str);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, MessageForStructing paramMessageForStructing, int paramInt)
@@ -1258,7 +1258,7 @@ public class syb
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean)
   {
     Object localObject;
-    if (bjxj.a(paramQQAppInterface))
+    if (bkbq.a(paramQQAppInterface))
     {
       localObject = (KandianMergeManager)paramQQAppInterface.getManager(162);
       paramQQAppInterface = paramString1;
@@ -1303,20 +1303,20 @@ public class syb
             ??? = paramQQAppInterface.a().a();
             if (??? != null)
             {
-              localObject2 = ((amjk)???).b(aljq.ay, 1008);
+              localObject2 = ((amnz)???).b(alof.ay, 1008);
               if (localObject2 != null)
               {
-                ((amjk)???).b((RecentUser)localObject2);
+                ((amnz)???).b((RecentUser)localObject2);
                 ??? = paramQQAppInterface.getHandler(Conversation.class);
                 if (??? != null) {
                   ((MqqHandler)???).sendEmptyMessage(1009);
                 }
               }
             }
-            ??? = (aluw)paramQQAppInterface.getManager(56);
+            ??? = (alzl)paramQQAppInterface.getManager(56);
             if (??? != null)
             {
-              ((aluw)???).c(aljq.ay);
+              ((alzl)???).c(alof.ay);
               paramQQAppInterface = paramQQAppInterface.getHandler(PublicAccountFragment.class);
               if (paramQQAppInterface != null) {
                 paramQQAppInterface.sendEmptyMessage(0);
@@ -1545,7 +1545,7 @@ public class syb
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
     boolean bool = false;
-    if (bjxj.e(paramQQAppInterface)) {
+    if (bkbq.e(paramQQAppInterface)) {
       if ((paramInt == -2000) || (paramInt == -1000)) {
         bool = true;
       }
@@ -1716,7 +1716,7 @@ public class syb
   
   public static int b(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface = (aluw)paramQQAppInterface.getManager(56);
+    paramQQAppInterface = (alzl)paramQQAppInterface.getManager(56);
     if (paramQQAppInterface != null)
     {
       paramQQAppInterface = paramQQAppInterface.b(paramString);
@@ -1735,7 +1735,7 @@ public class syb
   {
     int i = 0;
     int k = 0;
-    Object localObject1 = ajeu.a().a;
+    Object localObject1 = ajjj.a().a;
     if (localObject1 == null) {}
     int j;
     do
@@ -1761,7 +1761,7 @@ public class syb
       k = i;
       if (!TextUtils.equals(((RecentUserBaseData)localObject2).mUser.uin, paramString))
       {
-        if (!TextUtils.equals(((RecentUserBaseData)localObject2).mUser.uin, aljq.C)) {
+        if (!TextUtils.equals(((RecentUserBaseData)localObject2).mUser.uin, alof.C)) {
           break label215;
         }
         k = i;
@@ -1782,12 +1782,12 @@ public class syb
   
   private static MessageForStructing b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    MessageForStructing localMessageForStructing = (MessageForStructing)ayvw.a(-2011);
-    localMessageForStructing.structingMsg = azqu.a();
+    MessageForStructing localMessageForStructing = (MessageForStructing)azaf.a(-2011);
+    localMessageForStructing.structingMsg = azvd.a();
     localMessageForStructing.structingMsg.mMsgServiceID = 142;
     localMessageForStructing.selfuin = paramQQAppInterface.c();
-    localMessageForStructing.frienduin = aljq.az;
-    localMessageForStructing.senderuin = aljq.az;
+    localMessageForStructing.frienduin = alof.az;
+    localMessageForStructing.senderuin = alof.az;
     localMessageForStructing.istroop = 1008;
     localMessageForStructing.issend = 1;
     localMessageForStructing.isread = true;
@@ -1824,7 +1824,7 @@ public class syb
     if ((paramMessageForStructing == null) || (!(paramMessageForStructing instanceof MessageForStructing)) || (!paramMessageForStructing.isread)) {
       return null;
     }
-    MessageForStructing localMessageForStructing = (MessageForStructing)ayvw.a(paramMessageForStructing.msgtype);
+    MessageForStructing localMessageForStructing = (MessageForStructing)azaf.a(paramMessageForStructing.msgtype);
     localMessageForStructing.copyStructingMsg(paramMessageForStructing);
     localMessageForStructing.issend = 1;
     localMessageForStructing.isread = true;
@@ -1858,14 +1858,14 @@ public class syb
   
   public static String b()
   {
-    String str1 = amkv.b();
+    String str1 = ampk.b();
     JSONObject localJSONObject = new JSONObject();
     for (;;)
     {
       try
       {
         localObject1 = ors.f();
-        localObject2 = bdcb.d(BaseApplication.getContext());
+        localObject2 = bdgk.d(BaseApplication.getContext());
         if (localObject1 == null) {
           continue;
         }
@@ -1881,7 +1881,7 @@ public class syb
       localJSONObject.put("adcode", str1);
       localJSONObject.put("deviceCode", localObject1);
       localJSONObject.put("macAddress", localObject2);
-      str2 = bdcb.f();
+      str2 = bdgk.f();
       if ((!TextUtils.isEmpty(str2)) && (str2.length() == 16)) {
         localJSONObject.put("android_id", str2);
       }
@@ -1903,7 +1903,7 @@ public class syb
       }
       else
       {
-        return bdbi.encodeToString((byte[])localObject2, 2);
+        return bdfr.encodeToString((byte[])localObject2, 2);
       }
       label225:
       if (localObject2 == null) {}
@@ -1956,7 +1956,7 @@ public class syb
         }
         if (paramBaseArticleInfo.mFeedType == 28)
         {
-          paramQQAppInterface = new StringBuilder(alpo.a(2131709140));
+          paramQQAppInterface = new StringBuilder(alud.a(2131709152));
           if (paramBaseArticleInfo.hotWordInfo.a == null) {
             break label311;
           }
@@ -2057,7 +2057,7 @@ public class syb
     NewIntent localNewIntent = new NewIntent(paramContext, nrz.class);
     localNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.3.3,3,4515");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.3.5,3,4555");
     localGetPublicAccountDetailInfoRequest.seqno.set(0);
     localGetPublicAccountDetailInfoRequest.version.set(1);
     try
@@ -2189,7 +2189,7 @@ public class syb
       } while (localObject == null);
       localObject = ((Conversation)localObject).a();
     } while (localObject == null);
-    if (((uwn)localObject).getMode() != 1) {}
+    if (((vaw)localObject).getMode() != 1) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
@@ -2234,28 +2234,28 @@ public class syb
   
   protected static final void c(Activity paramActivity, QQAppInterface paramQQAppInterface, ProfileParams paramProfileParams)
   {
-    if (jdField_a_of_type_Bdfq != null)
+    if (jdField_a_of_type_Bdjz != null)
     {
-      jdField_a_of_type_Bdfq.dismiss();
-      jdField_a_of_type_Bdfq = null;
+      jdField_a_of_type_Bdjz.dismiss();
+      jdField_a_of_type_Bdjz = null;
     }
     paramQQAppInterface = new sye(paramActivity, paramProfileParams, paramQQAppInterface);
     paramProfileParams = new syf(paramActivity, paramProfileParams);
-    jdField_a_of_type_Bdfq = bdcd.a(paramActivity, 230);
-    jdField_a_of_type_Bdfq.setMessage(2131695720);
-    jdField_a_of_type_Bdfq.setTitle(2131692310);
-    jdField_a_of_type_Bdfq.setNegativeButton(2131690648, paramQQAppInterface);
-    jdField_a_of_type_Bdfq.setPositiveButton(2131719919, paramQQAppInterface);
-    jdField_a_of_type_Bdfq.setOnCancelListener(paramProfileParams);
+    jdField_a_of_type_Bdjz = bdgm.a(paramActivity, 230);
+    jdField_a_of_type_Bdjz.setMessage(2131695722);
+    jdField_a_of_type_Bdjz.setTitle(2131692311);
+    jdField_a_of_type_Bdjz.setNegativeButton(2131690648, paramQQAppInterface);
+    jdField_a_of_type_Bdjz.setPositiveButton(2131719931, paramQQAppInterface);
+    jdField_a_of_type_Bdjz.setOnCancelListener(paramProfileParams);
     if ((paramActivity != null) && (!paramActivity.isFinishing())) {}
     try
     {
-      jdField_a_of_type_Bdfq.show();
+      jdField_a_of_type_Bdjz.show();
       return;
     }
     catch (Exception paramActivity) {}
-    jdField_a_of_type_Bdfq.dismiss();
-    jdField_a_of_type_Bdfq = null;
+    jdField_a_of_type_Bdjz.dismiss();
+    jdField_a_of_type_Bdjz = null;
     return;
   }
   

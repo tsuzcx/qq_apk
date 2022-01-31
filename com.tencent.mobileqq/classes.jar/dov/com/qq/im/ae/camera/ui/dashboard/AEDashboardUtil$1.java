@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.ui.dashboard;
 
-import bkse;
-import bksv;
+import bkwl;
+import bkxc;
 
 public final class AEDashboardUtil$1
   implements Runnable
 {
-  public AEDashboardUtil$1(bksv parambksv) {}
+  public AEDashboardUtil$1(bkxc parambkxc) {}
   
   public void run()
   {
-    bkse.a(this.a);
+    bkwl.a(this.a);
   }
 }
 

@@ -1,16 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
-class arfo
-  implements View.OnClickListener
+public final class arfo
 {
-  arfo(arfh paramarfh, FileManagerEntity paramFileManagerEntity) {}
+  private final Class jdField_a_of_type_JavaLangClass;
+  private final Object jdField_a_of_type_JavaLangObject;
   
-  public void onClick(View paramView)
+  public arfo(Object paramObject, Class paramClass)
   {
-    azmj.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
-    aroo.a(this.jdField_a_of_type_Arfh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Arfh.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+  }
+  
+  public Class a()
+  {
+    return this.jdField_a_of_type_JavaLangClass;
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
   }
 }
 

@@ -52,7 +52,7 @@ public class oon
     {
       paramView.setOnClickListener(new ooo(this, paramomt, paramContext));
       return paramView;
-      paramView = LayoutInflater.from(paramContext).inflate(2131560147, null);
+      paramView = LayoutInflater.from(paramContext).inflate(2131560146, null);
     }
   }
   

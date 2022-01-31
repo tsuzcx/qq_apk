@@ -1,53 +1,50 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.ttpic.baseutils.log.LogUtils;
-import com.tencent.ttpic.openapi.offlineset.utils.IHttpClient;
-import com.tencent.ttpic.openapi.offlineset.utils.IResponseListener;
-import dov.com.qq.im.ae.play.UrlConHttpClient.1;
-import dov.com.qq.im.ae.play.UrlConHttpClient.2;
-import java.util.concurrent.Executor;
+import android.text.InputFilter;
+import android.text.Spanned;
 
-public class bled
-  implements IHttpClient
+class bled
+  implements InputFilter
 {
-  private static final String jdField_a_of_type_JavaLangString = bled.class.getSimpleName();
-  private IResponseListener jdField_a_of_type_ComTencentTtpicOpenapiOfflinesetUtilsIResponseListener;
+  private int jdField_a_of_type_Int = 32;
   
-  private void a(int paramInt, String paramString1, String paramString2)
+  public bled(blds paramblds) {}
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiOfflinesetUtilsIResponseListener != null) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiOfflinesetUtilsIResponseListener.response(paramInt, 1, paramString1, paramString2);
+    if (paramCharSequence.equals("\n")) {
+      return "";
     }
-  }
-  
-  public void download(int paramInt, String paramString1, String paramString2, String paramString3)
-  {
-    LogUtils.i(jdField_a_of_type_JavaLangString, "开始下载文件:" + paramString2);
-    if (TextUtils.isEmpty(paramString2))
+    for (;;)
     {
-      LogUtils.e(jdField_a_of_type_JavaLangString, "downUrl 无效：" + paramString2);
-      return;
+      char c;
+      if ((paramInt1 <= this.jdField_a_of_type_Int) && (paramInt2 < paramSpanned.length()))
+      {
+        c = paramSpanned.charAt(paramInt2);
+        paramInt1 += blds.a(this.jdField_a_of_type_Blds, c);
+        paramInt2 += 1;
+      }
+      else
+      {
+        if (paramInt1 > this.jdField_a_of_type_Int) {
+          return paramSpanned.subSequence(0, paramInt2 - 1);
+        }
+        paramInt3 = 0;
+        paramInt2 = paramInt1;
+        paramInt1 = paramInt3;
+        while ((paramInt2 <= this.jdField_a_of_type_Int) && (paramInt1 < paramCharSequence.length()))
+        {
+          c = paramCharSequence.charAt(paramInt1);
+          paramInt2 = blds.a(this.jdField_a_of_type_Blds, c) + paramInt2;
+          paramInt1 += 1;
+        }
+        paramInt3 = paramInt1;
+        if (paramInt2 > this.jdField_a_of_type_Int) {
+          paramInt3 = paramInt1 - 1;
+        }
+        return paramCharSequence.subSequence(0, paramInt3);
+        paramInt1 = 0;
+        paramInt2 = 0;
+      }
     }
-    AsyncTask.THREAD_POOL_EXECUTOR.execute(new UrlConHttpClient.2(this, paramString2, paramString3, paramInt, paramString1));
-  }
-  
-  public void get(int paramInt, String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2))
-    {
-      LogUtils.e(jdField_a_of_type_JavaLangString, "url 无效：" + paramString2);
-      return;
-    }
-    LogUtils.i(jdField_a_of_type_JavaLangString, "GET 请求：" + paramString2);
-    AsyncTask.THREAD_POOL_EXECUTOR.execute(new UrlConHttpClient.1(this, paramString2, paramInt, paramString1));
-  }
-  
-  public void post(int paramInt, String paramString1, String paramString2) {}
-  
-  public void setResponseListener(IResponseListener paramIResponseListener)
-  {
-    LogUtils.i(jdField_a_of_type_JavaLangString, "setResponseListener ");
-    this.jdField_a_of_type_ComTencentTtpicOpenapiOfflinesetUtilsIResponseListener = paramIResponseListener;
   }
 }
 

@@ -514,7 +514,7 @@ public class nbv
   
   public static void a(String paramString1, String paramString2)
   {
-    yzu.d(paramString2);
+    zej.d(paramString2);
     ndq.a(paramString1);
     if (QLog.isColorLevel()) {
       QLog.d("HtmlCheckUpdate", 2, new Object[] { "dealVerifyErroFile fileDir:", paramString1, " mBussinessId:", paramString2 });
@@ -615,12 +615,12 @@ public class nbv
     localReqBody.uint32_platform.set(3);
     if ((paramHashMap != null) && (paramHashMap.size() > 0))
     {
-      QLog.d("HtmlCheckUpdate", 1, String.format("check update, QQ Version: %s", new Object[] { "8.3.3.4515" }));
+      QLog.d("HtmlCheckUpdate", 1, String.format("check update, QQ Version: %s", new Object[] { "8.3.5.4555" }));
       if (QLog.isColorLevel()) {
         QLog.d("OfflineCheck", 2, "send check" + paramHashMap.toString());
       }
     }
-    localReqBody.str_qver.set(ByteStringMicro.copyFrom("8.3.3.4515".getBytes()));
+    localReqBody.str_qver.set(ByteStringMicro.copyFrom("8.3.5.4555".getBytes()));
     localReqBody.str_osrelease.set(ByteStringMicro.copyFrom(Build.VERSION.RELEASE.getBytes()));
     i = ndk.a(paramAppRuntime.getApplication());
     localReqBody.int32_network.set(i);

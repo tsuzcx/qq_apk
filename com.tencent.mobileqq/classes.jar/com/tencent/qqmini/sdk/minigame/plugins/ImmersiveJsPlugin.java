@@ -6,9 +6,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import bgho;
-import bgkd;
-import bgki;
+import bglv;
+import bgok;
+import bgop;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
@@ -50,23 +50,23 @@ public class ImmersiveJsPlugin
     }
   }
   
-  public boolean onInterceptJsEvent(bgkd parambgkd)
+  public boolean onInterceptJsEvent(bgok parambgok)
   {
     if (!this.mIsMiniGame)
     {
-      parambgkd.b();
+      parambgok.b();
       return true;
     }
-    return super.onInterceptJsEvent(parambgkd);
+    return super.onInterceptJsEvent(parambgok);
   }
   
-  public String setMenuStyle(bgkd parambgkd)
+  public String setMenuStyle(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       if (this.mMiniAppContext.a() == null) {
-        return bgki.a(parambgkd.a, null, "activity not exist").toString();
+        return bgop.a(parambgok.a, null, "activity not exist").toString();
       }
     }
     catch (Throwable localThrowable)
@@ -79,20 +79,20 @@ public class ImmersiveJsPlugin
       if ((!TextUtils.isEmpty((CharSequence)localObject)) && (("light".equals(localObject)) || ("dark".equals(localObject))))
       {
         AppLoaderFactory.g().getMiniAppEnv().setMenuStyle((String)localObject);
-        return parambgkd.a();
+        return parambgok.a();
       }
-      return parambgkd.a("invalid style " + (String)localObject);
+      return parambgok.a("invalid style " + (String)localObject);
     }
   }
   
-  public String setStatusBarStyle(bgkd parambgkd)
+  public String setStatusBarStyle(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       localActivity = this.mMiniAppContext.a();
       if (localActivity == null) {
-        return bgki.a(parambgkd.a, null, "activity not exist").toString();
+        return bgop.a(parambgok.a, null, "activity not exist").toString();
       }
     }
     catch (Throwable localThrowable)
@@ -106,9 +106,9 @@ public class ImmersiveJsPlugin
       if ((!TextUtils.isEmpty((CharSequence)localObject)) && (("white".equals(localObject)) || ("black".equals(localObject))))
       {
         localActivity.runOnUiThread(new ImmersiveJsPlugin.1(this, localActivity, (String)localObject));
-        return parambgkd.a();
+        return parambgok.a();
       }
-      return parambgkd.a("invalid style " + (String)localObject);
+      return parambgok.a("invalid style " + (String)localObject);
     }
   }
 }

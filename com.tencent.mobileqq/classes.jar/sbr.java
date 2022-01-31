@@ -53,7 +53,7 @@ class sbr
   
   private boolean a()
   {
-    return !bdem.a(BaseApplicationImpl.getContext(), "com.tencent.reading").equals("0");
+    return !bdiv.a(BaseApplicationImpl.getContext(), "com.tencent.reading").equals("0");
   }
   
   public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)

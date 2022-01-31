@@ -1,6 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+
 public class ajoa
+  implements DialogInterface.OnClickListener
 {
-  public static final String a = alpo.a(2131712756) + ugx.a + alpo.a(2131712757);
+  public ajoa(LoginView paramLoginView) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
+  }
 }
 
 

@@ -1,28 +1,37 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.5.1;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.5.2;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aerj
-  extends View
+  implements ajal
 {
-  aerj(aerh paramaerh, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public aerj(CustomizeStrategyFactory.SkinRedPacketStrategy.1 param1) {}
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.5.1(this));
+    paramPathResult = paramPathResult.folderPath;
+    if (paramInt == 0) {}
+    try
+    {
+      paramPathResult = paramPathResult + File.separator;
+      this.a.a.specailBackgroundAnimInfo = AnimationView.AnimationInfo.loadFromFolder(paramPathResult + "anim_bg");
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "TYPE_SPECAIL_ANIM specailBackgroundAnimInfo=" + this.a.a.specailBackgroundAnimInfo);
+      }
+      CustomizeStrategyFactory.a().a(this.a.a);
+      return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.5.2(this));
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
     }
-    return true;
   }
 }
 

@@ -2,7 +2,7 @@ package dov.com.qq.im.ae.play;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
-import blfg;
+import bljn;
 
 class AEPlayShowPageView$3
   implements Runnable
@@ -11,7 +11,7 @@ class AEPlayShowPageView$3
   
   public void run()
   {
-    blfg.a("AEPlayShowPart", "in........");
+    bljn.a("AEPlayShowPart", "in........");
     if (AEPlayShowPageView.a(this.this$0) != null)
     {
       View localView = AEPlayShowPageView.a(this.this$0).findViewByPosition(this.a);

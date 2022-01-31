@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="host,cookieKey")
 public class PreloadCookie
-  extends awbv
+  extends awge
 {
   public String cookieKey;
   public long hitCount;

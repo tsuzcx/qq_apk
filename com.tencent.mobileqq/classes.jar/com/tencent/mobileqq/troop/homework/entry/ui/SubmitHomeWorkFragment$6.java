@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
 import android.widget.EditText;
-import bhoc;
+import bhsj;
 import com.tencent.qphone.base.util.QLog;
 
 class SubmitHomeWorkFragment$6
@@ -16,7 +16,7 @@ class SubmitHomeWorkFragment$6
       QLog.d("SubmitHomeWorkFragment", 2, "弹起键盘");
     }
     if (localEditText != null) {
-      bhoc.a(localEditText);
+      bhsj.a(localEditText);
     }
   }
 }

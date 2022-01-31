@@ -1,58 +1,60 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqLikeFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class utj
+  extends uub
 {
-  public final int a;
-  public final int b;
-  public final int c;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  int b = -1;
   
-  public utj(int paramInt1, int paramInt2)
+  public utj(String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = 1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public utj(int paramInt1, int paramInt2, int paramInt3)
+  public String a()
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    return utg.b;
   }
   
-  public static utj a(SosoInterface.SosoLocation paramSosoLocation)
+  public uuc a(byte[] paramArrayOfByte)
   {
-    if (paramSosoLocation != null) {
-      return new utj((int)(paramSosoLocation.a * 1000000.0D), (int)(paramSosoLocation.b * 1000000.0D));
-    }
-    return new utj(0, 0);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    qqstory_service.RspLikeFeed localRspLikeFeed = new qqstory_service.RspLikeFeed();
+    try
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (utj)paramObject;
-      if (this.a != paramObject.a) {
-        return false;
-      }
-    } while (this.b == paramObject.b);
-    return false;
+      localRspLikeFeed.mergeFrom(paramArrayOfByte);
+      return new utk(localRspLikeFeed);
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      wxe.d("Q.qqstory:FeedLikeDataProvider", "" + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public int hashCode()
+  protected byte[] a()
   {
-    return this.a * 31 + this.b;
-  }
-  
-  public String toString()
-  {
-    return "GpsMsg{latitude=" + this.a + ", longitude=" + this.b + '}';
+    qqstory_service.ReqLikeFeed localReqLikeFeed = new qqstory_service.ReqLikeFeed();
+    localReqLikeFeed.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    PBUInt32Field localPBUInt32Field = localReqLikeFeed.operation;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 2)
+    {
+      localPBUInt32Field.set(i);
+      localReqLikeFeed.source.set(this.jdField_a_of_type_Int);
+      if (this.b != -1) {
+        localReqLikeFeed.type.set(this.b);
+      }
+      return localReqLikeFeed.toByteArray();
+    }
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amrs;
+import amwh;
 import android.graphics.SurfaceTexture;
 
 public class OnlineVideoARRenderable$3
   implements Runnable
 {
-  public OnlineVideoARRenderable$3(amrs paramamrs) {}
+  public OnlineVideoARRenderable$3(amwh paramamwh) {}
   
   public void run()
   {
-    if (amrs.a(this.this$0)) {}
+    if (amwh.a(this.this$0)) {}
     try
     {
-      amrs.a(this.this$0).updateTexImage();
-      amrs.a(this.this$0).getTransformMatrix(amrs.a(this.this$0));
+      amwh.a(this.this$0).updateTexImage();
+      amwh.a(this.this$0).getTransformMatrix(amwh.a(this.this$0));
       return;
     }
     catch (Exception localException)

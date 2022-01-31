@@ -1,21 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import org.json.JSONObject;
 
 public class atiy
-  implements DialogInterface.OnClickListener
+  implements spj
 {
-  public atiy(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager, atjn paramatjn) {}
+  public atiy(UiApiPlugin paramUiApiPlugin) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.c();
-    this.jdField_a_of_type_Atjn.b(false);
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
-    }
+    this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
   }
 }
 

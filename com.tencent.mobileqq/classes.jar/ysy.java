@@ -1,21 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.PopupWindow;
+import android.os.Bundle;
 
 class ysy
-  implements View.OnTouchListener
+  implements yrb
 {
   ysy(ysx paramysx) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void callback(Bundle paramBundle)
   {
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.a.a.dismiss();
-      return true;
-    }
-    return false;
+    this.a.a.a.b();
   }
 }
 

@@ -26,7 +26,7 @@ public class llj
   public static ljv a(VideoAppInterface paramVideoAppInterface)
   {
     paramVideoAppInterface = ((lju)paramVideoAppInterface.a(3)).a();
-    long l = ayvc.a();
+    long l = ayzl.a();
     paramVideoAppInterface = paramVideoAppInterface.iterator();
     while (paramVideoAppInterface.hasNext())
     {

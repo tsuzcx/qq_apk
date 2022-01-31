@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import aanv;
-import aekt;
-import alpo;
+import aask;
+import aepi;
+import alud;
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
@@ -20,8 +20,8 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
-import bdiv;
-import bjxj;
+import bdne;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
 import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.SkinPullRefreshHeader;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -98,11 +98,11 @@ public class SlideActiveAnimController
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView = paramReadInJoyXListView;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.a(new rxo(this));
-    this.jdField_d_of_type_AndroidViewView = paramActivity.findViewById(2131379430);
-    this.jdField_a_of_type_AndroidViewView = paramActivity.findViewById(2131376969);
+    this.jdField_d_of_type_AndroidViewView = paramActivity.findViewById(2131379488);
+    this.jdField_a_of_type_AndroidViewView = paramActivity.findViewById(2131377023);
     this.jdField_a_of_type_AndroidViewView = paramView1;
     this.jdField_b_of_type_AndroidViewView = paramView2;
-    this.jdField_c_of_type_AndroidViewView = paramActivity.findViewById(2131372976);
+    this.jdField_c_of_type_AndroidViewView = paramActivity.findViewById(2131373002);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoySlideAnimLayout = paramReadInjoySlideAnimLayout;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoySlideAnimLayout.setVisibility(4);
     this.jdField_a_of_type_Int = paramActivity.getResources().getDimensionPixelSize(2131298665);
@@ -117,7 +117,7 @@ public class SlideActiveAnimController
     String str;
     if ((localObject instanceof BaseActivity))
     {
-      bdiv.v((Context)localObject, ((BaseActivity)localObject).getCurrentAccountUin());
+      bdne.v((Context)localObject, ((BaseActivity)localObject).getCurrentAccountUin());
       str = ((qiu)((BaseActivity)localObject).app.getManager(270)).a();
       localObject = new orz();
     }
@@ -142,7 +142,7 @@ public class SlideActiveAnimController
         paramString.printStackTrace();
         continue;
       }
-      nrt.a(null, "CliOper", "", "", "0X800969B", "0X800969B", 0, 0, bjxj.a("default_feeds_proteus_offline_bid"), "", "", ((orz)localObject).a(), false);
+      nrt.a(null, "CliOper", "", "", "0X800969B", "0X800969B", 0, 0, bkbq.a("default_feeds_proteus_offline_bid"), "", "", ((orz)localObject).a(), false);
       return;
       paramInt = 1;
       continue;
@@ -403,7 +403,7 @@ public class SlideActiveAnimController
     if (l1 > 0L) {}
     try
     {
-      nrt.a(null, "CliOper", "", "", "0X800A1A6", "0X800A1A6", 0, 0, bjxj.a("default_feeds_proteus_offline_bid"), "", "", new orz().a("duration", (int)l1).a(), false);
+      nrt.a(null, "CliOper", "", "", "0X800A1A6", "0X800A1A6", 0, 0, bkbq.a("default_feeds_proteus_offline_bid"), "", "", new orz().a("duration", (int)l1).a(), false);
       return;
     }
     catch (JSONException localJSONException)
@@ -416,7 +416,7 @@ public class SlideActiveAnimController
   {
     j();
     this.i = this.jdField_a_of_type_AndroidViewView.getHeight();
-    this.jdField_b_of_type_Int = (aekt.a(210.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()) - this.i);
+    this.jdField_b_of_type_Int = (aepi.a(210.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()) - this.i);
   }
   
   public void a(SkinPullRefreshHeader paramSkinPullRefreshHeader)
@@ -441,8 +441,8 @@ public class SlideActiveAnimController
       {
         if (f())
         {
-          paramSkinPullRefreshHeader.a(true, alpo.a(2131714573));
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoySlideAnimLayout.setMessage(true, alpo.a(2131714570));
+          paramSkinPullRefreshHeader.a(true, alud.a(2131714585));
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoySlideAnimLayout.setMessage(true, alud.a(2131714582));
           s();
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.c();
         }
@@ -456,8 +456,8 @@ public class SlideActiveAnimController
         q();
       }
     } while (!f());
-    paramSkinPullRefreshHeader.a(true, alpo.a(2131714572));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoySlideAnimLayout.setMessage(true, alpo.a(2131714571));
+    paramSkinPullRefreshHeader.a(true, alud.a(2131714584));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoySlideAnimLayout.setMessage(true, alud.a(2131714583));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.b();
     return;
     if (f())
@@ -709,7 +709,7 @@ public class SlideActiveAnimController
         long l1 = paramAnimator.adId.longValue();
         ((qq_ad_get.QQAdGetRsp.AdInfo)localObject).report_info.trace_info.aid.set(l1);
         ((qq_ad_get.QQAdGetRsp.AdInfo)localObject).report_info.thirdparty_monitor_urls.api_exposure_monitor_url.set(paramAnimator.getUrls(paramAnimator.adExposureReports));
-        aanv.a(0, 1, (qq_ad_get.QQAdGetRsp.AdInfo)localObject);
+        aask.a(0, 1, (qq_ad_get.QQAdGetRsp.AdInfo)localObject);
         return;
       }
       catch (NumberFormatException paramAnimator)

@@ -1,46 +1,69 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.SpannableString;
-import android.text.TextWatcher;
-import android.text.style.ForegroundColorSpan;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.support.annotation.Nullable;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
 class bldh
-  implements TextWatcher
+  implements bmeo<blaj>
 {
-  bldh(bldg parambldg) {}
+  bldh(bldg parambldg, blbt paramblbt) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(@Nullable blaj paramblaj)
   {
-    int i = 0;
-    int j = paramEditable.length();
-    paramEditable = String.format("%d/%d", new Object[] { Integer.valueOf(j), Integer.valueOf(bldg.a(this.a)) });
-    if (j > bldg.a(this.a))
-    {
-      paramEditable = new SpannableString(paramEditable);
-      int k = String.valueOf(j).length();
-      paramEditable.setSpan(new ForegroundColorSpan(Color.parseColor("#12b7f5")), 0, k, 33);
-      bldg.a(this.a).setText(paramEditable);
-      paramEditable = bldg.a(this.a);
-      if (j <= 0) {
-        break label132;
-      }
-    }
+    QLog.d("AEGIFChunkPreviewFragment", 4, "On observe material download state");
+    if ((paramblaj == null) || (blda.a(this.jdField_a_of_type_Bldg.a) == null)) {}
+    label360:
     for (;;)
     {
-      paramEditable.setVisibility(i);
       return;
-      bldg.a(this.a).setText(paramEditable);
-      break;
-      label132:
-      i = 8;
+      int i = this.jdField_a_of_type_Blbt.jdField_a_of_type_Int + 1;
+      for (;;)
+      {
+        if (i >= blda.a(this.jdField_a_of_type_Bldg.a).size()) {
+          break label360;
+        }
+        blca localblca = (blca)blda.a(this.jdField_a_of_type_Bldg.a).get(i);
+        if ((localblca != null) && (localblca.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null) && (localblca.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id.equals(paramblaj.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id)))
+        {
+          if (localblca.jdField_b_of_type_Int != paramblaj.jdField_a_of_type_Int) {
+            localblca.jdField_b_of_type_Int = paramblaj.jdField_a_of_type_Int;
+          }
+          if (localblca.jdField_b_of_type_Int != 2) {
+            break;
+          }
+          localblca.jdField_b_of_type_JavaLangString = blac.a().a(localblca.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
+          QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "Downloaded material", "path===" + localblca.jdField_b_of_type_JavaLangString });
+          paramblaj = new bler();
+          paramblaj.jdField_a_of_type_Int = i;
+          paramblaj.jdField_a_of_type_JavaLangString = localblca.jdField_b_of_type_JavaLangString;
+          if ((localblca.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null) && ((localblca.jdField_a_of_type_JavaLangString == null) || (localblca.jdField_a_of_type_JavaLangString.equals("")))) {
+            if (localblca.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.additionalFields.get("savename") != null)
+            {
+              paramblaj.jdField_b_of_type_JavaLangString = "";
+              paramblaj.c = ((String)localblca.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.additionalFields.get("savename"));
+            }
+          }
+          for (;;)
+          {
+            blda.a(this.jdField_a_of_type_Bldg.a).a(paramblaj);
+            localblca.jdField_a_of_type_Int = 12;
+            blda.a(this.jdField_a_of_type_Bldg.a).notifyItemChanged(i);
+            return;
+            paramblaj.jdField_b_of_type_JavaLangString = "";
+            paramblaj.c = "";
+            continue;
+            if (localblca.jdField_a_of_type_JavaLangString == null) {
+              paramblaj.jdField_b_of_type_JavaLangString = "";
+            } else {
+              paramblaj.jdField_b_of_type_JavaLangString = localblca.jdField_a_of_type_JavaLangString;
+            }
+          }
+        }
+        i += 1;
+      }
     }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

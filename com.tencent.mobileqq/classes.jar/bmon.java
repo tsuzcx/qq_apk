@@ -1,33 +1,34 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-
-final class bmon
-  implements Animator.AnimatorListener
+public class bmon
 {
-  bmon(bmoo parambmoo, ValueAnimator paramValueAnimator) {}
+  public int a;
+  public long a;
+  public boolean a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public boolean equals(Object paramObject)
   {
-    if (this.jdField_a_of_type_Bmoo != null) {
-      this.jdField_a_of_type_Bmoo.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (bmon)paramObject;
+      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+        return false;
+      }
+    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
+    return false;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public int hashCode()
   {
-    if (this.jdField_a_of_type_Bmoo != null) {
-      this.jdField_a_of_type_Bmoo.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
+    return this.jdField_a_of_type_Int * 31 + (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public String toString()
   {
-    if (this.jdField_a_of_type_Bmoo != null) {
-      this.jdField_a_of_type_Bmoo.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
+    return "EditBehavior{hasMusic=" + this.jdField_a_of_type_Boolean + ", musicType=" + this.jdField_a_of_type_Int + ", musicId=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

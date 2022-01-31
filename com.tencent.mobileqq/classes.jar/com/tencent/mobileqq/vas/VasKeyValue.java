@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vas;
 
-import awbv;
+import awge;
 
 public class VasKeyValue
-  extends awbv
+  extends awge
 {
   public static final String COLUMN_KEY = "key";
   public static final String COLUMN_VALUE = "value";

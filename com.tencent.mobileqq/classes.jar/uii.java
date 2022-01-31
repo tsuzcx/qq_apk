@@ -1,25 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-
-class uii
-  extends SimpleJob<Object>
+public class uii
+  extends uij
 {
-  uii(uid paramuid, String paramString1, String paramString2, uim paramuim)
-  {
-    super(paramString1);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public uii(int paramInt)
   {
-    uid.a(this.jdField_a_of_type_Uid, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Uim);
-    return null;
-  }
-  
-  public int getJobType()
-  {
-    return 4;
+    super(paramInt);
+    this.g = 6;
   }
 }
 

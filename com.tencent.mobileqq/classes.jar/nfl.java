@@ -3,7 +3,7 @@ import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class nfl
-  implements alkr
+  implements alpg
 {
   public nfl(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
@@ -22,9 +22,9 @@ public class nfl
       StringBuilder localStringBuilder = new StringBuilder();
       if (paramBoolean)
       {
-        paramObject = this.a.getString(2131696458);
+        paramObject = this.a.getString(2131696460);
         localStringBuilder.append(paramObject);
-        localStringBuilder.append(this.a.getString(2131696456));
+        localStringBuilder.append(this.a.getString(2131696458));
         localStringBuilder.append(this.a.c);
         if (!paramBoolean) {
           break label233;
@@ -48,11 +48,11 @@ public class nfl
       this.a.a = paramObject.getBoolean("isOpen");
       this.a.c = paramObject.getString("name");
       if (this.a.c != null) {
-        this.a.b = this.a.getString(2131696518, new Object[] { this.a.c });
+        this.a.b = this.a.getString(2131696520, new Object[] { this.a.c });
       }
       LebaSearchMoreInfoActivity.a(this.a);
       return;
-      paramObject = this.a.getString(2131696457);
+      paramObject = this.a.getString(2131696459);
       break;
       paramInt = 1;
       break label104;

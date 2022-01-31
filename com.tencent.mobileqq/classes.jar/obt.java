@@ -37,8 +37,8 @@ public class obt
       if ((paramView != null) && (paramView.a() != null))
       {
         paramArticleInfo = this.jdField_a_of_type_Obq.a();
-        paramView.a().setTag(2131369009, paramArticleInfo);
-        paramView.setTag(2131379913, localpgq);
+        paramView.a().setTag(2131369027, paramArticleInfo);
+        paramView.setTag(2131379971, localpgq);
         paramView.setTag(this);
       }
       this.jdField_a_of_type_AndroidViewView = paramView;
@@ -88,10 +88,10 @@ public class obt
       localObject = ((TemplateBean)localObject).getStyleName();
       if (localViewBean != null)
       {
-        paramrjk.o = bcwh.a(this.jdField_a_of_type_Obq.a(), 8.0F);
-        paramrjk.p = bcwh.a(this.jdField_a_of_type_Obq.a(), 8.0F);
-        paramrjk.q = bcwh.a(this.jdField_a_of_type_Obq.a(), 8.0F);
-        paramrjk.r = bcwh.a(this.jdField_a_of_type_Obq.a(), 8.0F);
+        paramrjk.o = bdaq.a(this.jdField_a_of_type_Obq.a(), 8.0F);
+        paramrjk.p = bdaq.a(this.jdField_a_of_type_Obq.a(), 8.0F);
+        paramrjk.q = bdaq.a(this.jdField_a_of_type_Obq.a(), 8.0F);
+        paramrjk.r = bdaq.a(this.jdField_a_of_type_Obq.a(), 8.0F);
       }
     } while (!((String)localObject).equals("ReadInjoy_ad_video_cell_new_division"));
     paramrjk.q = 0;
@@ -104,11 +104,11 @@ public class obt
     View localView = pxi.a(paramInt2, localObject, paramInt1, paramView, this.jdField_a_of_type_Obq.a(), this.jdField_a_of_type_Obq.a(), this.jdField_a_of_type_Obq.a());
     if (localView != null)
     {
-      localView.setTag(2131379913, localObject);
+      localView.setTag(2131379971, localObject);
       if (QLog.isColorLevel()) {
         QLog.d("AdHandler", 2, "CellFactory.getView = " + localView.getTag().getClass().getSimpleName());
       }
-      localView.setTag(2131369009, this.jdField_a_of_type_Obq.a());
+      localView.setTag(2131369027, this.jdField_a_of_type_Obq.a());
       if (paramArticleInfo == null)
       {
         if (QLog.isColorLevel()) {
@@ -178,7 +178,7 @@ public class obt
       localObject1 = localObject2;
       if ((this.jdField_a_of_type_AndroidViewView instanceof ProteusItemView))
       {
-        localObject1 = (pgq)this.jdField_a_of_type_AndroidViewView.getTag(2131379913);
+        localObject1 = (pgq)this.jdField_a_of_type_AndroidViewView.getTag(2131379971);
         if (localObject1 == null) {
           break label124;
         }
@@ -206,7 +206,7 @@ public class obt
     Object localObject;
     if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ProteusItemView)))
     {
-      paramView = (pgq)this.jdField_a_of_type_AndroidViewView.getTag(2131379913);
+      paramView = (pgq)this.jdField_a_of_type_AndroidViewView.getTag(2131379971);
       if (paramView != null)
       {
         localObject = paramView.a();

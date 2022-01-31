@@ -1,171 +1,140 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.support.v4.util.MQLruCache;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.TroopAioTopADInfo;
+import com.tencent.mobileqq.troop.widget.TroopAioFeedsCenterView;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
-import java.util.LinkedList;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-public class bcgy
+class bcgy
+  implements Animation.AnimationListener
 {
-  private static bcgy jdField_a_of_type_Bcgy;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bcgz(this, BaseApplication.getContext().getMainLooper());
-  private LinkedList<bcha> jdField_a_of_type_JavaUtilLinkedList;
-  public boolean a;
+  bcgy(bcgx parambcgx) {}
   
-  public static bcgy a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (jdField_a_of_type_Bcgy == null) {
-      jdField_a_of_type_Bcgy = new bcgy();
-    }
-    return jdField_a_of_type_Bcgy;
-  }
-  
-  public Bitmap a(String paramString, RollangleImageView paramRollangleImageView)
-  {
-    try
+    this.a.i = false;
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class).obtainMessage(68).sendToTarget();
+    if (this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation == paramAnimation)
     {
-      paramString = (Bitmap)RollangleImageView.a.get("troopfileimage://" + paramString);
-      return paramString;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  /* Error */
-  public void a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 40	bcgy:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: ifnonnull +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: getfield 40	bcgy:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   18: invokevirtual 72	java/util/LinkedList:clear	()V
-    //   21: aload_0
-    //   22: aconst_null
-    //   23: putfield 40	bcgy:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   26: goto -15 -> 11
-    //   29: astore_1
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aload_1
-    //   33: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	34	0	this	bcgy
-    //   6	2	1	localLinkedList	LinkedList
-    //   29	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	29	finally
-    //   14	26	29	finally
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilLinkedList != null) {
-        this.jdField_a_of_type_JavaUtilLinkedList.clear();
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      if (this.a.jdField_a_of_type_AndroidViewView != null)
+      {
+        if (this.a.jdField_a_of_type_Bbqg != null) {}
+        bcgx.a(this.a);
+        this.a.notifyObservers(Integer.valueOf(123322));
+        this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
       }
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
+      if (this.a.jdField_a_of_type_Bbqg != null) {
+        this.a.jdField_a_of_type_Bbqg.d = false;
+      }
+      if (this.a.jdField_b_of_type_Boolean)
+      {
+        this.a.d(true);
+        this.a.jdField_b_of_type_Boolean = false;
+      }
+      if (this.a.e)
+      {
+        if (bdin.d(BaseApplication.getContext())) {
+          break label247;
+        }
+        QQToast.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 1, ((FragmentActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131698038), 1).b(((FragmentActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDimensionPixelSize(2131298914) - (int)bdgz.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 5.0F));
+      }
     }
-    finally {}
+    for (;;)
+    {
+      return;
+      label247:
+      bcls localbcls = (bcls)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(133);
+      String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      if (!TextUtils.isEmpty(str))
+      {
+        TroopAioTopADInfo localTroopAioTopADInfo = localbcls.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        Object localObject;
+        if (localTroopAioTopADInfo != null)
+        {
+          if (!TextUtils.isEmpty(localTroopAioTopADInfo.jumpUrl)) {
+            break label430;
+          }
+          paramAnimation = localTroopAioTopADInfo.backgroundUrl;
+          localObject = bdib.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), paramAnimation);
+          if (localObject == null) {
+            break label439;
+          }
+          ((bdhk)localObject).c();
+        }
+        for (;;)
+        {
+          azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "notice_center", "Clk_Promote", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localTroopAioTopADInfo.adId + "", "", "");
+          localbcls.a(str);
+          this.a.d = false;
+          return;
+          label430:
+          paramAnimation = localTroopAioTopADInfo.jumpUrl;
+          break;
+          label439:
+          if (paramAnimation.startsWith("http"))
+          {
+            localObject = new Intent((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), QQBrowserActivity.class);
+            ((Intent)localObject).putExtra("url", URLUtil.guessUrl(paramAnimation));
+            ((FragmentActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity((Intent)localObject);
+          }
+        }
+        if (this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation == paramAnimation)
+        {
+          if ((this.a.jdField_a_of_type_AndroidViewView != null) && (this.a.jdField_a_of_type_Bbqg != null))
+          {
+            this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+            this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+            bcgx.b(this.a);
+            this.a.notifyObservers(Integer.valueOf(123322));
+            if ((this.a.c) && (this.a.jdField_a_of_type_AndroidViewView != null) && ((this.a.jdField_a_of_type_AndroidViewView instanceof TroopAioFeedsCenterView)))
+            {
+              if (!this.a.d) {
+                break label651;
+              }
+              this.a.jdField_a_of_type_Bbru.b();
+            }
+          }
+          while (this.a.jdField_a_of_type_AndroidViewView != null)
+          {
+            this.a.jdField_a_of_type_AndroidViewView.requestFocus();
+            return;
+            label651:
+            if (this.a.f)
+            {
+              ((TroopAioFeedsCenterView)this.a.jdField_a_of_type_AndroidViewView).a();
+              this.a.f = false;
+            }
+            else
+            {
+              this.a.c = false;
+              ((TroopAioFeedsCenterView)this.a.jdField_a_of_type_AndroidViewView).a(true);
+            }
+          }
+        }
+      }
+    }
   }
   
-  /* Error */
-  public Bitmap b(String paramString, RollangleImageView paramRollangleImageView)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: getstatic 46	com/tencent/mobileqq/troop/utils/RollangleImageView:a	Landroid/support/v4/util/MQLruCache;
-    //   5: new 48	java/lang/StringBuilder
-    //   8: dup
-    //   9: invokespecial 49	java/lang/StringBuilder:<init>	()V
-    //   12: ldc 51
-    //   14: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: aload_1
-    //   18: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   24: invokevirtual 65	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   27: checkcast 67	android/graphics/Bitmap
-    //   30: astore_3
-    //   31: aload_3
-    //   32: ifnull +9 -> 41
-    //   35: aload_3
-    //   36: astore_1
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: aload_1
-    //   40: areturn
-    //   41: aload_0
-    //   42: getfield 40	bcgy:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   45: ifnonnull +14 -> 59
-    //   48: aload_0
-    //   49: new 69	java/util/LinkedList
-    //   52: dup
-    //   53: invokespecial 77	java/util/LinkedList:<init>	()V
-    //   56: putfield 40	bcgy:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   59: aload_0
-    //   60: getfield 40	bcgy:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   63: invokevirtual 81	java/util/LinkedList:isEmpty	()Z
-    //   66: ifeq +17 -> 83
-    //   69: new 83	com/tencent/mobileqq/troop/utils/RollangleImageView$ImageCache$1
-    //   72: dup
-    //   73: aload_0
-    //   74: invokespecial 86	com/tencent/mobileqq/troop/utils/RollangleImageView$ImageCache$1:<init>	(Lbcgy;)V
-    //   77: iconst_5
-    //   78: aconst_null
-    //   79: iconst_1
-    //   80: invokestatic 92	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   83: new 94	bcha
-    //   86: dup
-    //   87: invokespecial 95	bcha:<init>	()V
-    //   90: astore_3
-    //   91: aload_3
-    //   92: aload_2
-    //   93: putfield 98	bcha:jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView	Lcom/tencent/mobileqq/troop/utils/RollangleImageView;
-    //   96: aload_3
-    //   97: aload_1
-    //   98: putfield 101	bcha:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   101: aload_0
-    //   102: getfield 40	bcgy:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   105: aload_3
-    //   106: invokevirtual 105	java/util/LinkedList:add	(Ljava/lang/Object;)Z
-    //   109: pop
-    //   110: aconst_null
-    //   111: astore_1
-    //   112: goto -75 -> 37
-    //   115: astore_1
-    //   116: aload_0
-    //   117: monitorexit
-    //   118: aload_1
-    //   119: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	120	0	this	bcgy
-    //   0	120	1	paramString	String
-    //   0	120	2	paramRollangleImageView	RollangleImageView
-    //   30	76	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	31	115	finally
-    //   41	59	115	finally
-    //   59	83	115	finally
-    //   83	110	115	finally
+    this.a.i = true;
   }
 }
 

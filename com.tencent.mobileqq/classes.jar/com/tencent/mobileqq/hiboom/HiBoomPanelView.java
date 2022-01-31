@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.hiboom;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -18,10 +18,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import asnw;
-import asnx;
-import asof;
-import asog;
+import assf;
+import assg;
+import asso;
+import assp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -42,29 +42,29 @@ public class HiBoomPanelView
   public Handler a;
   GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
   RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  public asof a;
+  public asso a;
   public BaseChatPie a;
   
   static
   {
-    jdField_a_of_type_JavaLangString = alpo.a(2131705857);
+    jdField_a_of_type_JavaLangString = alud.a(2131705869);
     Resources localResources = BaseApplicationImpl.sApplication.getResources();
     b = localResources.getDisplayMetrics().widthPixels / 4;
     jdField_a_of_type_Int = b;
-    c = aekt.a(2.0F, localResources);
-    d = aekt.a(11.0F, localResources);
+    c = aepi.a(2.0F, localResources);
+    d = aepi.a(11.0F, localResources);
   }
   
   public HiBoomPanelView(Context arg1, BaseChatPie paramBaseChatPie)
   {
     super(???);
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = null;
-    this.jdField_a_of_type_Asof = null;
+    this.jdField_a_of_type_Asso = null;
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
     setClipToPadding(false);
     b();
-    paramBaseChatPie = (asnx)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(219);
+    paramBaseChatPie = (assg)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(219);
     synchronized (paramBaseChatPie.jdField_a_of_type_JavaLangObject)
     {
       paramBaseChatPie.jdField_a_of_type_AndroidOsHandler = this.jdField_a_of_type_AndroidOsHandler;
@@ -72,7 +72,7 @@ public class HiBoomPanelView
     }
   }
   
-  asog a(int paramInt)
+  assp a(int paramInt)
   {
     int j = this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.findFirstVisibleItemPosition();
     int k = this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.findLastVisibleItemPosition();
@@ -83,10 +83,10 @@ public class HiBoomPanelView
       if (localObject != null)
       {
         localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject);
-        if ((localObject instanceof asog))
+        if ((localObject instanceof assp))
         {
-          localObject = (asog)localObject;
-          if (this.jdField_a_of_type_Asof.a(((asog)localObject).jdField_a_of_type_Int) == paramInt) {
+          localObject = (assp)localObject;
+          if (this.jdField_a_of_type_Asso.a(((assp)localObject).jdField_a_of_type_Int) == paramInt) {
             return localObject;
           }
         }
@@ -103,113 +103,113 @@ public class HiBoomPanelView
   
   public void a()
   {
-    asnx localasnx = (asnx)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(219);
-    if (!localasnx.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    assg localassg = (assg)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(219);
+    if (!localassg.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      localasnx.b();
+      localassg.b();
       return;
     }
-    this.jdField_a_of_type_Asof.a(localasnx.jdField_a_of_type_JavaUtilVector, localasnx.b, localasnx.jdField_c_of_type_JavaUtilVector);
+    this.jdField_a_of_type_Asso.a(localassg.jdField_a_of_type_JavaUtilVector, localassg.b, localassg.jdField_c_of_type_JavaUtilVector);
   }
   
-  public void a(asog paramasog, int paramInt)
+  public void a(assp paramassp, int paramInt)
   {
-    if (!paramasog.jdField_a_of_type_Boolean) {
+    if (!paramassp.jdField_a_of_type_Boolean) {
       return;
     }
     if (paramInt == -1)
     {
-      paramasog.itemView.setContentDescription(alpo.a(2131705860));
-      paramasog.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      paramasog.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      paramasog.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.setVisibility(8);
-      paramasog.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramasog.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setVisibility(8);
-      paramasog.b.setVisibility(0);
-      paramasog.b.setImageResource(2130846626);
+      paramassp.itemView.setContentDescription(alud.a(2131705872));
+      paramassp.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramassp.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      paramassp.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.setVisibility(8);
+      paramassp.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramassp.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setVisibility(8);
+      paramassp.b.setVisibility(0);
+      paramassp.b.setImageResource(2130846699);
       if (!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getBoolean("hiboom_red_dot_show", false))
       {
-        paramasog.c.setVisibility(0);
+        paramassp.c.setVisibility(0);
         return;
       }
-      paramasog.c.setVisibility(8);
+      paramassp.c.setVisibility(8);
       return;
     }
-    paramasog.b.setVisibility(8);
-    paramasog.c.setVisibility(8);
-    Object localObject = (asnx)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(219);
-    if (asnx.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    paramassp.b.setVisibility(8);
+    paramassp.c.setVisibility(8);
+    Object localObject = (assg)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(219);
+    if (assg.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      paramasog.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      asnw localasnw = ((asnx)localObject).a(paramInt);
-      if (((asnx)localObject).b.contains(Integer.valueOf(paramInt)))
+      paramassp.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      assf localassf = ((assg)localObject).a(paramInt);
+      if (((assg)localObject).b.contains(Integer.valueOf(paramInt)))
       {
-        paramasog.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.jdField_a_of_type_Boolean = false;
-        paramasog.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramasog.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846632);
-        paramasog.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131705856));
+        paramassp.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.jdField_a_of_type_Boolean = false;
+        paramassp.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramassp.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846705);
+        paramassp.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131705868));
       }
-      while (localasnw.jdField_a_of_type_Boolean)
+      while (localassf.jdField_a_of_type_Boolean)
       {
-        paramasog.itemView.setContentDescription(localasnw.jdField_a_of_type_JavaLangString + alpo.a(2131705855));
-        paramasog.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.setVisibility(8);
-        paramasog.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        paramasog.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setVisibility(0);
-        paramasog.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setHiBoom(localasnw.jdField_a_of_type_Int, 0, asnx.jdField_a_of_type_Asnq);
-        String str = asnx.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
+        paramassp.itemView.setContentDescription(localassf.jdField_a_of_type_JavaLangString + alud.a(2131705867));
+        paramassp.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.setVisibility(8);
+        paramassp.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        paramassp.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setVisibility(0);
+        paramassp.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setHiBoom(localassf.jdField_a_of_type_Int, 0, assg.jdField_a_of_type_Asrz);
+        String str = assg.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
         localObject = str;
         if (TextUtils.isEmpty(str)) {
-          localObject = localasnw.jdField_a_of_type_JavaLangString;
+          localObject = localassf.jdField_a_of_type_JavaLangString;
         }
-        paramasog.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setText((CharSequence)localObject);
+        paramassp.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setText((CharSequence)localObject);
         return;
-        if (((asnx)localObject).jdField_c_of_type_JavaUtilVector.contains(Integer.valueOf(paramInt)))
+        if (((assg)localObject).jdField_c_of_type_JavaUtilVector.contains(Integer.valueOf(paramInt)))
         {
-          paramasog.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.jdField_a_of_type_Boolean = false;
-          paramasog.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          paramasog.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846631);
-          paramasog.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131705858));
+          paramassp.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.jdField_a_of_type_Boolean = false;
+          paramassp.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+          paramassp.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846704);
+          paramassp.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131705870));
         }
         else
         {
-          paramasog.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.jdField_a_of_type_Boolean = true;
-          paramasog.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+          paramassp.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.jdField_a_of_type_Boolean = true;
+          paramassp.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
         }
       }
-      paramasog.itemView.setContentDescription(alpo.a(2131705859));
-      paramasog.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.setVisibility(0);
-      paramasog.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramasog.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setVisibility(8);
-      if (localasnw.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-        paramasog.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localasnw.jdField_a_of_type_AndroidGraphicsBitmap);
+      paramassp.itemView.setContentDescription(alud.a(2131705871));
+      paramassp.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.setVisibility(0);
+      paramassp.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramassp.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setVisibility(8);
+      if (localassf.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+        paramassp.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localassf.jdField_a_of_type_AndroidGraphicsBitmap);
       }
-      while (localasnw.b)
+      while (localassf.b)
       {
-        paramasog.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.a();
-        paramasog.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.setProgress(localasnw.c);
+        paramassp.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.a();
+        paramassp.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.setProgress(localassf.c);
         return;
-        paramasog.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846627);
+        paramassp.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846700);
       }
-      paramasog.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.b();
+      paramassp.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.b();
       return;
     }
-    paramasog.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    paramasog.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.setVisibility(8);
-    paramasog.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    paramasog.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setVisibility(8);
+    paramassp.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    paramassp.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.setVisibility(8);
+    paramassp.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    paramassp.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setVisibility(8);
   }
   
   public void a(boolean paramBoolean)
   {
-    asnx localasnx = (asnx)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(219);
+    assg localassg = (assg)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(219);
     if (paramBoolean)
     {
       if (QLog.isColorLevel()) {
         QLog.d("HiBoomFont.HiBoomPanelView", 2, "hiboom panel visible");
       }
-      synchronized (localasnx.jdField_a_of_type_JavaLangObject)
+      synchronized (localassg.jdField_a_of_type_JavaLangObject)
       {
-        localasnx.jdField_a_of_type_AndroidOsHandler = this.jdField_a_of_type_AndroidOsHandler;
+        localassg.jdField_a_of_type_AndroidOsHandler = this.jdField_a_of_type_AndroidOsHandler;
         a();
         return;
       }
@@ -233,8 +233,8 @@ public class HiBoomPanelView
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, localLayoutParams);
-    this.jdField_a_of_type_Asof = new asof(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Asof);
+    this.jdField_a_of_type_Asso = new asso(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Asso);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -247,10 +247,10 @@ public class HiBoomPanelView
       return false;
       a();
       continue;
-      asog localasog = a(paramMessage.arg1);
-      if (localasog != null)
+      assp localassp = a(paramMessage.arg1);
+      if (localassp != null)
       {
-        localasog.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.setProgress(paramMessage.arg2);
+        localassp.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.setProgress(paramMessage.arg2);
         continue;
         int i = paramMessage.arg1;
         paramMessage = a(i);

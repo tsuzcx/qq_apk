@@ -1,122 +1,40 @@
-import NS_NEW_MOBILE_REPORT.AccessReqHead;
-import NS_NEW_MOBILE_REPORT.AccessRspHead;
-import NS_NEW_MOBILE_REPORT.Terminal;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.utils.QQRecorder;
+import java.lang.ref.WeakReference;
 
-public class bkdq
-  extends QzoneExternalRequest
+class bkdq
+  extends Handler
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static String b = "";
-  private static String c = "";
-  private AccessReqHead jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead;
+  bkdq(bkdp parambkdp) {}
   
-  public bkdq(long paramLong, ArrayList<String> paramArrayList)
+  public void handleMessage(Message paramMessage)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead = new AccessReqHead();
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.loginType = 1;
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uin = paramLong;
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal = new Terminal();
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.imei = String.valueOf(a());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.macAddress = String.valueOf(c());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.androidId = String.valueOf(bdcb.f());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.imsi = String.valueOf(b());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.mode = String.valueOf(bdcb.i());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.manufacture = String.valueOf(bdcb.h());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.qimei = String.valueOf(UserAction.getQIMEI());
-    if (QLog.isColorLevel()) {
-      QLog.d("YYBInstallPackageReportRequest", 1, "YYBInstallPackageReportRequest qimei=" + this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.qimei);
-    }
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uniqueId = String.valueOf(bfin.c());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uninstallPkgList = new ArrayList();
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uninstallPkgList.addAll(paramArrayList);
-  }
-  
-  public static AccessRspHead a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
-  {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+    switch (paramMessage.what)
+    {
     }
     do
     {
-      return paramArrayOfByte;
-      paramArrayOfInt = (AccessRspHead)decode(paramArrayOfByte, "NewMobileReport", paramArrayOfInt);
-      paramArrayOfByte = paramArrayOfInt;
-    } while (paramArrayOfInt != null);
-    return null;
-  }
-  
-  public static String a()
-  {
-    if ((jdField_a_of_type_JavaLangString != null) && (jdField_a_of_type_JavaLangString.length() > 0)) {
-      return jdField_a_of_type_JavaLangString;
-    }
-    try
-    {
-      jdField_a_of_type_JavaLangString = bhoi.a("b94d1a");
-      label27:
-      return jdField_a_of_type_JavaLangString;
-    }
-    catch (Exception localException)
-    {
-      break label27;
-    }
-  }
-  
-  public static String b()
-  {
-    if ((b != null) && (b.length() > 0)) {
-      return b;
-    }
-    try
-    {
-      b = bhoi.b("b94d1a");
-      label27:
-      return b;
-    }
-    catch (Exception localException)
-    {
-      break label27;
-    }
-  }
-  
-  public static String c()
-  {
-    if ((c != null) && (c.length() > 0)) {
-      return c;
-    }
-    try
-    {
-      c = bhoi.c("b94d1a");
-      label27:
-      return c;
-    }
-    catch (Exception localException)
-    {
-      break label27;
-    }
-  }
-  
-  public String getCmdString()
-  {
-    return "MobileReport.NewMobileReport";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead;
-  }
-  
-  public String uniKey()
-  {
-    return "NewMobileReport";
+      do
+      {
+        do
+        {
+          return;
+          if (bkdp.a(this.a) != null) {
+            bkdp.a(this.a).a(1, bkdp.a(this.a));
+          }
+        } while (!(paramMessage.obj instanceof String));
+        paramMessage = (String)paramMessage.obj;
+        this.a.d(paramMessage);
+        this.a.c(paramMessage);
+        return;
+        bkdp.a(this.a).c();
+        bdfi.b(2131230744, false);
+      } while (this.a.a == null);
+      paramMessage = (Context)this.a.a.get();
+    } while (paramMessage == null);
+    bdfi.a(paramMessage, false);
   }
 }
 

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.vip.lianghao.net;
 
-import bdxw;
-import bdyb;
-import bdyc;
+import becf;
+import beck;
+import becl;
 
 public class CheckRegisterLiangHao$2
   implements Runnable
 {
-  public CheckRegisterLiangHao$2(bdyb parambdyb, bdyc parambdyc, bdxw parambdxw) {}
+  public CheckRegisterLiangHao$2(beck parambeck, becl parambecl, becf parambecf) {}
   
   public void run()
   {
-    bdyc localbdyc = this.jdField_a_of_type_Bdyc;
-    String str = bdyb.a(this.this$0);
-    if ((this.jdField_a_of_type_Bdxw != null) && (this.jdField_a_of_type_Bdxw.a)) {}
+    becl localbecl = this.jdField_a_of_type_Becl;
+    String str = beck.a(this.this$0);
+    if ((this.jdField_a_of_type_Becf != null) && (this.jdField_a_of_type_Becf.a)) {}
     for (boolean bool = true;; bool = false)
     {
-      localbdyc.a(str, bool);
+      localbecl.a(str, bool);
       return;
     }
   }

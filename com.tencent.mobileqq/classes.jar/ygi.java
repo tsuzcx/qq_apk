@@ -1,26 +1,37 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.qphone.base.util.QLog;
 
 class ygi
-  implements Animator.AnimatorListener
+  implements AbsListView.OnScrollListener
 {
-  ygi(ygg paramygg, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  ygi(ygg paramygg) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramAnimator = (FrameLayout.LayoutParams)ygg.b(this.jdField_a_of_type_Ygg).getLayoutParams();
-    paramAnimator.height = this.jdField_a_of_type_Int;
-    paramAnimator.width = this.b;
-    paramAnimator.setMargins(this.c, this.d, 0, 0);
+    if ((paramInt3 > 0) && (paramAbsListView.getFirstVisiblePosition() + paramInt2 >= paramInt3))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0) && (!ygg.a(this.jdField_a_of_type_Ygg)) && (!ygg.b(this.jdField_a_of_type_Ygg)))
+    {
+      QLog.i(ygg.a(), 1, "onLastItemVisible");
+      ygg.a(this.jdField_a_of_type_Ygg, ygg.a(this.jdField_a_of_type_Ygg).a(ygg.a(this.jdField_a_of_type_Ygg)));
+      if (ygg.a(this.jdField_a_of_type_Ygg) != null)
+      {
+        ygg.a(this.jdField_a_of_type_Ygg).a(ygg.a(this.jdField_a_of_type_Ygg), true);
+        ygg.a(this.jdField_a_of_type_Ygg, true);
+      }
+    }
+  }
 }
 
 

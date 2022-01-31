@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apqz;
+import apvi;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmoticonPanelMallHelper$2
   implements Runnable
 {
-  public EmoticonPanelMallHelper$2(apqz paramapqz) {}
+  public EmoticonPanelMallHelper$2(apvi paramapvi) {}
   
   public void run()
   {

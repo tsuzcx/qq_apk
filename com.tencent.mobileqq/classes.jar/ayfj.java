@@ -1,62 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import java.util.HashMap;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
-class ayfj
-  implements bhtk
+public final class ayfj
+  extends Editable.Factory
 {
-  ayfj(ayfi paramayfi, HorizontalListView paramHorizontalListView) {}
-  
-  public void a()
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    int i = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getCurrentX();
-    long l1 = bdcb.k();
-    long l2 = bcwh.a(this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getContext(), 13.5F);
-    float f = Math.round((float)(i + (l1 - l2)) / this.jdField_a_of_type_Ayfi.jdField_a_of_type_Float);
-    i = 0;
-    for (;;)
-    {
-      if ((i < f) && (i < this.jdField_a_of_type_Ayfi.jdField_a_of_type_JavaUtilList.size()))
-      {
-        aykc localaykc = (aykc)this.jdField_a_of_type_Ayfi.jdField_a_of_type_JavaUtilList.get(i);
-        aydx localaydx;
-        JSONObject localJSONObject;
-        if (aydw.b.containsKey(localaykc))
-        {
-          localaydx = (aydx)aydw.b.get(localaykc);
-          if (!localaydx.jdField_a_of_type_Boolean)
-          {
-            localaydx.jdField_a_of_type_Boolean = true;
-            localJSONObject = new JSONObject();
-          }
-        }
-        try
-        {
-          localJSONObject.put("project", aynt.a());
-          localJSONObject.put("event_src", "client");
-          localJSONObject.put("get_src", "web");
-          localJSONObject.put("obj_lct", localaydx.jdField_a_of_type_Int);
-          localJSONObject.put("extra_info", localaykc.b);
-          localJSONObject.put("tepl", localaykc.f);
-          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          aynt.a(localQQAppInterface, new ReportModelDC02528().module("all_result").action("exp_item").obj1(localaykc.a + "").obj2(localaykc.j).ver1(localaydx.jdField_a_of_type_JavaLangString).ver2(aynt.a(this.jdField_a_of_type_Ayfi.jdField_a_of_type_Int)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + aydw.a));
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            QLog.e(ayfi.jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
-          }
-        }
-      }
+    if ((paramCharSequence instanceof bamz)) {
+      return (Editable)paramCharSequence;
     }
+    return new bamz(paramCharSequence, 1, 20);
   }
 }
 

@@ -1,16 +1,11 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.VipTagView;
-
 public class awsj
-  implements bdjy<Float>
 {
-  public awsj(VipTagView paramVipTagView) {}
-  
-  public void a(bdjs<Float> parambdjs, float paramFloat, Float paramFloat1, Transformation paramTransformation)
-  {
-    VipTagView.a(this.a, paramFloat1.floatValue());
-    this.a.invalidate();
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
 }
 
 

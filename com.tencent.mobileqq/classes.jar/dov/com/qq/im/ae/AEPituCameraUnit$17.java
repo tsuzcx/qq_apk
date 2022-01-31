@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae;
 
-import bkle;
+import bkpl;
 
 public class AEPituCameraUnit$17
   implements Runnable
 {
-  public AEPituCameraUnit$17(bkle parambkle) {}
+  public AEPituCameraUnit$17(bkpl parambkpl) {}
   
   public void run()
   {
-    if (!bkle.c(this.this$0)) {
-      bkle.a(this.this$0, bkle.b(this.this$0));
+    if (!bkpl.c(this.this$0)) {
+      bkpl.a(this.this$0, bkpl.b(this.this$0));
     }
   }
 }

@@ -1,22 +1,14 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class bbjw
-  implements Comparator<Map.Entry<String, bbjy>>
+public class bbjw
 {
-  bbjw(bbjv parambbjv) {}
+  protected ImageView a;
+  protected TextView a;
+  protected ImageView b;
+  protected TextView b;
   
-  public int a(Map.Entry<String, bbjy> paramEntry1, Map.Entry<String, bbjy> paramEntry2)
-  {
-    float f = ((bbjy)paramEntry2.getValue()).a() - ((bbjy)paramEntry1.getValue()).a();
-    if (f > 0.0F) {
-      return 1;
-    }
-    if (f < 0.0F) {
-      return -1;
-    }
-    return 0;
-  }
+  protected bbjw(bbjv parambbjv) {}
 }
 
 

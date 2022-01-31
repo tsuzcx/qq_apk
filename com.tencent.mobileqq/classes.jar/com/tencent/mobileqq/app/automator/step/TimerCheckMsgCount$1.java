@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import abol;
-import bjxj;
+import abta;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDoingSomething;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.HotChatManager;
@@ -20,8 +20,8 @@ class TimerCheckMsgCount$1
     this.this$0.a.app.a().l();
     ((HotChatManager)this.this$0.a.app.getManager(60)).b();
     this.this$0.a.app.a().c();
-    if (!bjxj.n(this.this$0.a.app)) {}
-    while (!((Boolean)bjxj.a("kandian_report_user_apps_switch", Boolean.valueOf(false))).booleanValue())
+    if (!bkbq.n(this.this$0.a.app)) {}
+    while (!((Boolean)bkbq.a("kandian_report_user_apps_switch", Boolean.valueOf(false))).booleanValue())
     {
       return;
       try

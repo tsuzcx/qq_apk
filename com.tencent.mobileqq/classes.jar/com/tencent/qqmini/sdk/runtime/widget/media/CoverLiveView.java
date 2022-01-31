@@ -6,8 +6,8 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
-import bghl;
-import bgkd;
+import bgls;
+import bgok;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
@@ -39,14 +39,14 @@ public class CoverLiveView
     return false;
   }
   
-  public void a(bgkd parambgkd, JSONObject paramJSONObject)
+  public void a(bgok parambgok, JSONObject paramJSONObject)
   {
-    this.a.a(parambgkd, paramJSONObject);
+    this.a.a(parambgok, paramJSONObject);
   }
   
-  public void a(String paramString, bgkd parambgkd, JSONObject paramJSONObject)
+  public void a(String paramString, bgok parambgok, JSONObject paramJSONObject)
   {
-    this.a.a(paramString, parambgkd, paramJSONObject);
+    this.a.a(paramString, parambgok, paramJSONObject);
   }
   
   public void a(JSONObject paramJSONObject)
@@ -64,9 +64,9 @@ public class CoverLiveView
     this.a.setAtyRef(paramWeakReference);
   }
   
-  public void setBaseRuntime(bghl parambghl)
+  public void setBaseRuntime(bgls parambgls)
   {
-    this.a.jdField_a_of_type_Bghl = parambghl;
+    this.a.jdField_a_of_type_Bgls = parambgls;
   }
   
   public void setData(String paramString)

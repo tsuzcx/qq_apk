@@ -1,33 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-
-class avxa
-  extends Handler
+public abstract interface avxa
 {
-  private WeakReference<avwn> a;
+  public abstract void a();
   
-  public avxa(avwn paramavwn)
-  {
-    this.a = new WeakReference(paramavwn);
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public void handleMessage(Message paramMessage)
-  {
-    avwn localavwn = (avwn)this.a.get();
-    if (localavwn == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 100: 
-      avwn.a(localavwn, (avxc)paramMessage.obj);
-      return;
-    }
-    avwn.a(localavwn);
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 

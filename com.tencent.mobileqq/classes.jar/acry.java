@@ -1,109 +1,67 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import com.tencent.widget.AdapterView;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.35.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class acry
-  implements bhqp
+  extends alrl
 {
-  public acry(EmosmActivity paramEmosmActivity) {}
+  public acry(Conversation paramConversation) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void a()
   {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    label10:
-    EmoticonPackage localEmoticonPackage;
-    label244:
-    do
+    this.a.a(9, null, -2147483648);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_onDelDiscussion");
+    }
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  {
+    this.a.a(8, Long.toString(paramLong), 3000);
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
     {
-      int i;
-      do
-      {
-        break label10;
-        do
-        {
-          return;
-        } while (this.a.jdField_a_of_type_Bepp.isShowing());
-        i = paramInt - this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeaderViewsCount();
-      } while (i < 0);
-      localEmoticonPackage = (EmoticonPackage)this.a.jdField_a_of_type_Apkp.getItem(i);
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        this.a.jdField_a_of_type_Apkp.a(i);
-        this.a.jdField_a_of_type_Apkp.notifyDataSetChanged();
-        paramAdapterView = this.a.jdField_a_of_type_Apkp.a();
-        if ((paramAdapterView != null) && (paramAdapterView.size() > 0)) {
-          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-        }
-        for (;;)
-        {
-          paramInt = 0;
-          if (paramAdapterView != null) {
-            paramInt = paramAdapterView.size();
-          }
-          this.a.setTitle(String.format(this.a.getResources().getString(2131692330), new Object[] { Integer.valueOf(paramInt) }));
-          if (!this.a.jdField_a_of_type_Apkp.a(i)) {
-            break;
-          }
-          if (this.a.jdField_b_of_type_Int != 1) {
-            break label244;
-          }
-          azmj.b(this.a.app, "dc00898", "", "", "0X800AB11", "0X800AB11", 0, 0, "", "", "", "");
-          return;
-          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-        }
-        azmj.b(this.a.app, "dc00898", "", "", "0X800AB17", "0X800AB17", 0, 0, "", "", "", "");
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_updateDiscussionInfo");
       }
-    } while (!apih.a(this.a));
-    this.a.jdField_a_of_type_Boolean = true;
-    paramAdapterView = localEmoticonPackage.epId;
-    boolean bool1 = false;
-    if (localEmoticonPackage.jobType == 2)
-    {
-      paramAdapterView = localEmoticonPackage.kinId;
-      bool1 = true;
+      this.a.a(0L);
     }
-    paramView = null;
-    if (localEmoticonPackage.jobType == 4)
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
     {
-      paramView = new Intent();
-      paramView.putExtra("EXTRA_KEY_IS_SMALL_EMOTICON", true);
-    }
-    boolean bool2;
-    if (localEmoticonPackage.jobType == 4)
-    {
-      bool2 = true;
-      if (1 != this.a.getIntent().getExtras().getInt("emojimall_src", 3)) {
-        break label494;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onChangeDiscussionName");
       }
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.app.getAccount(), 8, paramAdapterView, bool1, paramView, bool2);
+      this.a.a(8, paramString, 3000);
     }
-    for (;;)
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "conversation onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramBoolean2 + ", " + paramString + "]");
+    }
+    if (paramBoolean1) {
+      this.a.a(new Conversation.35.1(this, paramString));
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
     {
-      azmj.b(this.a.app, "CliOper", "", "", "ep_mall", "Clk_ep_mine_detail", 0, 0, localEmoticonPackage.epId, "", "", "");
-      if (this.a.jdField_b_of_type_Int != 1) {
-        break label530;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onQuitDiscussion");
       }
-      azmj.b(this.a.app, "dc00898", "", "", "0X800AB0E", "0X800AB0E", 0, 0, "", "", "", "");
-      return;
-      bool2 = false;
-      break;
-      label494:
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.app.getAccount(), 4, paramAdapterView, bool1, paramView, bool2);
+      this.a.a(8, paramString, 3000);
     }
-    label530:
-    azmj.b(this.a.app, "dc00898", "", "", "0X800AB13", "0X800AB13", 0, 0, "", "", "", "");
   }
 }
 

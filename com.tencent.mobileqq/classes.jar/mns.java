@@ -92,7 +92,7 @@ public class mns
           this.a.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaUtilArrayList.set(i, localObject1);
           this.a.jdField_a_of_type_ComTencentAvVideoController.a().c();
           this.a.a("onDoubleTap", 0, this.a.q);
-          azmj.b(null, "CliOper", "", "", "0X8009F61", "0X8009F61", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X8009F61", "0X8009F61", 0, 0, "", "", "", "");
           ((AVActivity)this.a.jdField_a_of_type_AndroidContentContext).a(4, false);
           return true;
         }
@@ -113,7 +113,7 @@ public class mns
       if (!VideoLayerUI.c(this.a)) {
         return true;
       }
-      azmj.b(null, "CliOper", "", "", "0X8009F60", "0X8009F60", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8009F60", "0X8009F60", 0, 0, "", "", "", "");
       ((AVActivity)this.a.jdField_a_of_type_AndroidContentContext).a(3, false);
     }
     return super.onDoubleTap(???);

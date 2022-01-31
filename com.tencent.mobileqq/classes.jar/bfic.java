@@ -1,11 +1,4 @@
-import org.json.JSONObject;
-
-public abstract interface bfic
-{
-  public abstract void a(Exception paramException);
-  
-  public abstract void a(JSONObject paramJSONObject);
-}
+public abstract interface bfic {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

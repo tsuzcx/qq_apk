@@ -1,9 +1,9 @@
 class rkg
-  implements bhqg
+  implements bhun
 {
   rkg(rkd paramrkd) {}
   
-  public void as_()
+  public void ap_()
   {
     if (rkd.c(this.a))
     {

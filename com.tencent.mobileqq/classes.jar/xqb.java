@@ -1,44 +1,21 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
 public class xqb
-  implements ViewPager.OnPageChangeListener
 {
-  public xqb(EmptySupportViewPager paramEmptySupportViewPager) {}
+  public View a;
+  public View b;
   
-  public void onPageScrollStateChanged(int paramInt)
+  public xqb(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    if (this.a.a != null)
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView.findViewById(2131379660);
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
   {
-    if (this.a.a != null)
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
-      }
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (this.a.a != null)
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new xqc(this));
   }
 }
 

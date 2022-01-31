@@ -1,50 +1,73 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import android.content.Context;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.manager.Manager;
 
-class yau
-  extends GestureDetector.SimpleOnGestureListener
+public class yau
+  implements Manager
 {
-  private yau(yan paramyan) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private yaw jdField_a_of_type_Yaw;
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public yau(QQAppInterface paramQQAppInterface)
   {
-    float f1 = paramMotionEvent2.getY() - yan.a(this.a);
-    if (yan.b(this.a) < yan.c(this.a)) {
-      return false;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_Yaw != null) {
+      this.jdField_a_of_type_Yaw.a();
     }
-    if ((f1 > 0.0F) && (yan.d(this.a) < yan.e(this.a)))
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_Yaw != null) {
+      this.jdField_a_of_type_Yaw.b();
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Yaw != null)
     {
-      f2 = yan.d(this.a);
-      f1 = Math.abs(f1) + f2;
-      localyan = this.a;
-      if (f1 > yan.e(this.a))
-      {
-        i = yan.e(this.a);
-        yan.b(localyan, i);
-      }
+      this.jdField_a_of_type_Yaw.c();
+      this.jdField_a_of_type_Yaw = null;
     }
-    while ((f1 >= 0.0F) || (yan.d(this.a) <= yan.f(this.a))) {
-      for (;;)
-      {
-        float f2;
-        if (yan.a(this.a) != null)
-        {
-          yan.a(this.a).getLayoutParams().height = yan.d(this.a);
-          yan.a(this.a).requestLayout();
-        }
-        return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-        i = (int)f1;
-      }
-    }
-    f1 = yan.d(this.a) - Math.abs(f1);
-    yan localyan = this.a;
-    if (f1 < yan.f(this.a)) {}
-    for (int i = yan.f(this.a);; i = (int)f1)
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
     {
-      yan.b(localyan, i);
-      break;
+    case 1: 
+    default: 
+      return;
+    case 2: 
+      b();
+      return;
+    case 3: 
+      c();
+      return;
     }
+    a();
+  }
+  
+  public void a(Context paramContext, ScannerParams paramScannerParams)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if ((paramScannerParams.f) && (!paramScannerParams.d) && (this.jdField_a_of_type_Yaw == null)) {
+      this.jdField_a_of_type_Yaw = new yaw(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
   }
 }
 

@@ -19,8 +19,8 @@ public class qvf
     if ((paramView == null) || (FollowingListFragment.a(this.b) == null) || (FollowingListFragment.a(this.b).a() == null) || (FollowingListFragment.a(this.b).a().isEmpty())) {
       return;
     }
-    paramView = (CheckBox)paramView.findViewById(2131364254);
-    paramView.setBackgroundResource(2130848829);
+    paramView = (CheckBox)paramView.findViewById(2131364256);
+    paramView.setBackgroundResource(2130848902);
     if (FollowingListFragment.a(this.b).a().contains(paramResultRecord.a()))
     {
       paramView.setEnabled(false);

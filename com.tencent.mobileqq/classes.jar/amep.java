@@ -1,8 +1,6 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
-
 public abstract interface amep
 {
-  public abstract void a(FullMessageSearchResult paramFullMessageSearchResult);
+  public abstract void a(Object paramObject);
 }
 
 

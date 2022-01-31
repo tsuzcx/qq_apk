@@ -1,8 +1,17 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface arnv
+class arnv
+  implements View.OnClickListener
 {
-  public abstract void a(Bitmap paramBitmap);
+  arnv(arnq paramarnq) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.a.a() != null) {
+      this.a.a.a().a();
+    }
+  }
 }
 
 

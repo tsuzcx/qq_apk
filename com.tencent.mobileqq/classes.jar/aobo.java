@@ -1,83 +1,133 @@
-import android.app.Activity;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Message;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.AdvancedTipsBar;
+import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
 public class aobo
-  extends GestureDetector.SimpleOnGestureListener
+  implements Manager
 {
-  public aobo(SwipePostTableLayout paramSwipePostTableLayout) {}
+  QQAppInterface a;
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public aobo(QQAppInterface paramQQAppInterface)
   {
-    int i = 0;
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    ColorNote localColorNote;
-    if ((SwipePostTableLayout.a(this.a) != null) && (SwipePostTableLayout.a(this.a).getColorNote() != null)) {
-      localColorNote = SwipePostTableLayout.a(this.a).getColorNote();
-    }
-    for (boolean bool = SwipePostTableLayout.a(this.a).a(localColorNote.getServiceType(), localColorNote.getSubType());; bool = false)
-    {
-      float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-      float f2 = paramMotionEvent1.getY();
-      float f3 = paramMotionEvent2.getY();
-      if ((f1 == 0.0F) || (!this.a.jdField_a_of_type_Boolean) || (paramFloat1 < 200.0F)) {
-        return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      }
-      f2 = Math.abs((f2 - f3) / f1);
-      if ((SwipePostTableLayout.a(this.a) == null) || (SwipePostTableLayout.a(this.a).a())) {
-        i = 1;
-      }
-      if ((f1 < 0.0F) && (f2 < 0.5F))
-      {
-        if (!bool) {
-          break label276;
-        }
-        if (i == 0) {
-          break label254;
-        }
-        this.a.jdField_a_of_type_Aobj.sendEmptyMessage(1);
-        this.a.postInvalidate();
-      }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_Aobn != null) {
-          this.a.jdField_a_of_type_Aobn.a();
-        }
-        return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-        label254:
-        SwipePostTableLayout.a(this.a, true);
-        SwipePostTableLayout.a(this.a).a();
-        break;
-        label276:
-        if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-        {
-          this.a.c = true;
-          if (i != 0)
-          {
-            this.a.d();
-          }
-          else
-          {
-            SwipePostTableLayout.b(this.a, true);
-            SwipePostTableLayout.a(this.a).a();
-          }
-        }
-        else if (i != 0)
-        {
-          this.a.d();
-        }
-        else
-        {
-          SwipePostTableLayout.b(this.a, true);
-          SwipePostTableLayout.a(this.a).a();
-        }
-      }
-    }
+    this.a = paramQQAppInterface;
   }
+  
+  public static aobo a(QQAppInterface paramQQAppInterface)
+  {
+    return (aobo)paramQQAppInterface.getManager(157);
+  }
+  
+  private void a(BaseActivity paramBaseActivity)
+  {
+    Intent localIntent = bdie.a(this.a.getApp());
+    if (BaseActivity.sTopActivity != null)
+    {
+      BaseActivity.sTopActivity.startActivity(localIntent);
+      return;
+    }
+    paramBaseActivity.startActivity(localIntent);
+  }
+  
+  private void b(ajgb paramajgb, Message paramMessage)
+  {
+    paramajgb.a(18, 2);
+    paramajgb.a(18, paramMessage);
+    azqs.a(this.a, "dc00898", "", "", "0X8009EDE", "0X8009EDE", 23, 0, "", "", "", "");
+  }
+  
+  private boolean c()
+  {
+    long l = bdne.c(this.a.c());
+    return System.currentTimeMillis() - l < aoov.a().a();
+  }
+  
+  public void a()
+  {
+    long l = System.currentTimeMillis();
+    bdne.b(this.a.c(), l);
+  }
+  
+  public void a(ajgb paramajgb)
+  {
+    paramajgb.a(18, 0);
+    paramajgb.a(-1, null);
+  }
+  
+  public void a(ajgb paramajgb, Message paramMessage)
+  {
+    if (b())
+    {
+      b(paramajgb, paramMessage);
+      return;
+    }
+    a(paramajgb);
+  }
+  
+  public void a(ajgb paramajgb, View paramView)
+  {
+    paramView = (TipsBar)paramView;
+    a(paramajgb, null, paramView);
+    paramajgb.a(paramView);
+    if (b())
+    {
+      paramView.setVisibility(0);
+      return;
+    }
+    paramView.setVisibility(8);
+  }
+  
+  public void a(ajgb paramajgb, BaseActivity paramBaseActivity, TipsBar paramTipsBar)
+  {
+    String str1 = aoov.a().a();
+    String str2 = aoov.a().b();
+    paramTipsBar.setTipsIcon(this.a.getApp().getResources().getDrawable(2130841037));
+    paramTipsBar.setTipsText(str1);
+    paramTipsBar.a().setClickable(false);
+    paramTipsBar.setButtonText(str2);
+    paramTipsBar.a(true);
+    if ((paramTipsBar instanceof AdvancedTipsBar)) {
+      ((AdvancedTipsBar)paramTipsBar).a();
+    }
+    paramTipsBar.a().setBackgroundResource(0);
+    paramTipsBar.setCloseListener(new aobp(this, paramajgb));
+    if (paramBaseActivity != null) {
+      paramTipsBar.setOriginalOnClickListener(new aobq(this, paramBaseActivity));
+    }
+    paramTipsBar.setVisibility(8);
+  }
+  
+  public boolean a()
+  {
+    boolean bool = QQNotificationManager.getInstance().areNotificationsEnabled(BaseApplicationImpl.getContext());
+    if (QLog.isColorLevel()) {
+      QLog.d("NotificationBannerManager", 2, new Object[] { "systemNotificationEnabled: invoked. ", " enable: ", Boolean.valueOf(bool) });
+    }
+    return bool;
+  }
+  
+  public boolean b()
+  {
+    boolean bool1 = aoov.a().a();
+    boolean bool2 = a();
+    boolean bool3 = c();
+    if (QLog.isColorLevel()) {
+      QLog.d("NotificationBannerManager", 2, new Object[] { "bannerVisible: invoked. ", " confVisible: ", Boolean.valueOf(bool1), " systemNotificationEnabled: ", Boolean.valueOf(bool2), " limitedByDuration: ", Boolean.valueOf(bool3) });
+    }
+    return (bool1) && (!bool2) && (!bool3);
+  }
+  
+  public void onDestroy() {}
 }
 
 

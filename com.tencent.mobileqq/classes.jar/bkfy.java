@@ -1,12 +1,8 @@
-import com.tencent.weiyun.utils.Singleton;
+import cooperation.vip.jsoninflate.model.AlumBasicData;
 
-final class bkfy
-  extends Singleton<bkfx, Void>
+public abstract interface bkfy
 {
-  protected bkfx a(Void paramVoid)
-  {
-    return new bkfx(null);
-  }
+  public abstract void a(AlumBasicData paramAlumBasicData);
 }
 
 

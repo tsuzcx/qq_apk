@@ -1,33 +1,25 @@
-import java.util.LinkedList;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 
-public class aukj<T>
+public class aukj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private List<T> a = new LinkedList();
+  public aukj(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7) {}
   
-  public int a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return this.a.size();
-  }
-  
-  public T a()
-  {
-    if (this.a.size() == 0) {
-      return null;
-    }
-    return this.a.remove(0);
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(T paramT)
-  {
-    if (!this.a.contains(paramT)) {
-      this.a.add(paramT);
-    }
+    float f1 = paramValueAnimator.getAnimatedFraction();
+    paramValueAnimator = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramValueAnimator.leftMargin = (this.jdField_a_of_type_Int + Math.round((0.0F - this.jdField_a_of_type_Int) * f1));
+    paramValueAnimator.topMargin = (this.b + Math.round((this.c - this.b) * f1));
+    paramValueAnimator.width = (this.d + Math.round((this.e - this.d) * f1));
+    int i = this.f;
+    paramValueAnimator.height = (Math.round(f1 * (this.g - this.f)) + i);
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
   }
 }
 

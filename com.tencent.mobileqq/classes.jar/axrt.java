@@ -1,4 +1,7 @@
-class axrt {}
+public abstract interface axrt
+{
+  public abstract void a(String paramString);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

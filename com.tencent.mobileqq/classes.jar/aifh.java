@@ -1,68 +1,12 @@
-import android.os.Build.VERSION;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class aifh
-  implements View.OnKeyListener, TextView.OnEditorActionListener
+  implements DialogInterface.OnDismissListener
 {
-  private aifh(aifb paramaifb) {}
+  aifh(aife paramaife) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    return false;
-  }
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramKeyEvent.getKeyCode() == 67)
-    {
-      bool1 = bool2;
-      if (paramKeyEvent.getAction() == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "on delete, start: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() + ", end: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() + ", span: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373095));
-        }
-        if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() != 0) || (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() != 0)) {
-          break label243;
-        }
-        bool1 = bool2;
-        if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373095) != null)
-        {
-          paramKeyEvent = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getCompoundDrawables();
-          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(paramKeyEvent[0], null, paramKeyEvent[2], paramKeyEvent[3]);
-          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131373095, null);
-          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
-          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMinHeight(aekt.a(36.0F, paramView.getResources()));
-          this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = null;
-          bool1 = true;
-        }
-      }
-    }
-    label243:
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373095) == null);
-        bool1 = bool2;
-      } while (Build.VERSION.SDK_INT < 21);
-      bool1 = bool2;
-    } while (aekt.a(36.0F, paramView.getResources()) != this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getMinHeight());
-    paramInt = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getMeasuredHeight();
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMinHeight(paramInt);
-    return false;
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

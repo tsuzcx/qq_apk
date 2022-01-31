@@ -1,21 +1,15 @@
-import android.database.DataSetObserver;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class adcb
-  extends DataSetObserver
+  implements DialogInterface.OnDismissListener
 {
-  public adcb(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public adcb(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onChanged()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    TextView localTextView = LebaListMgrActivity.a(this.a);
-    if (LebaListMgrActivity.a(this.a).getCount() > 0) {}
-    for (int i = 0;; i = 8)
-    {
-      localTextView.setVisibility(i);
-      return;
-    }
+    this.a.a(FriendProfileMoreInfoActivity.a(this.a), false);
   }
 }
 

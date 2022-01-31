@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -44,19 +44,19 @@ public class VideoFeedsFollowTextView
     if (paramBoolean)
     {
       if (paramVideoInfo.e()) {}
-      for (paramVideoInfo = alpo.a(2131716601);; paramVideoInfo = alpo.a(2131716588))
+      for (paramVideoInfo = alud.a(2131716613);; paramVideoInfo = alud.a(2131716600))
       {
         setText(paramVideoInfo);
-        setBackgroundDrawable(rha.a(getContext(), 2130842736));
+        setBackgroundDrawable(rha.a(getContext(), 2130842749));
         setCompoundDrawables(null, null, null, null);
         return;
       }
     }
     if (paramVideoInfo.e()) {}
-    for (paramVideoInfo = alpo.a(2131716623);; paramVideoInfo = alpo.a(2131716610))
+    for (paramVideoInfo = alud.a(2131716635);; paramVideoInfo = alud.a(2131716622))
     {
       setText(paramVideoInfo);
-      setBackgroundDrawable(rha.a(getContext(), 2130842590));
+      setBackgroundDrawable(rha.a(getContext(), 2130842603));
       return;
     }
   }

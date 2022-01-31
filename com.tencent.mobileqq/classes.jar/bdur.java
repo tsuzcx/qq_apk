@@ -1,24 +1,20 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiUiPlugin;
+import java.lang.ref.WeakReference;
 
-public class bdur
-  extends EmojiUiPlugin
+class bdur<E>
+  extends WeakReference<bdup<E>>
+  implements bdup<E>
 {
-  public void OnActivityCreate()
+  public bdur(bdup<E> parambdup)
   {
-    this.mActivityType = 2;
-    super.OnActivityCreate();
+    super(parambdup);
   }
   
-  public void OnActivityPause()
+  public void a(E paramE, Object paramObject)
   {
-    super.OnActivityPause();
-    this.mRuntime.a().loadUrl("javascript:var webviewEvent = document.createEvent('Events');webviewEvent.initEvent('webviewobserve');webviewEvent.name = 'stopAudio';document.dispatchEvent(webviewEvent);");
-  }
-  
-  public long getPluginBusiness()
-  {
-    return 8L;
+    bdup localbdup = (bdup)get();
+    if (localbdup != null) {
+      localbdup.a(paramE, paramObject);
+    }
   }
 }
 

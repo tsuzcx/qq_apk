@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import ajsa;
+import ajwp;
 
 class CameraGLSurfaceView$1
   implements Runnable
 {
-  CameraGLSurfaceView$1(CameraGLSurfaceView paramCameraGLSurfaceView, ajsa paramajsa) {}
+  CameraGLSurfaceView$1(CameraGLSurfaceView paramCameraGLSurfaceView, ajwp paramajwp) {}
   
   public void run()
   {

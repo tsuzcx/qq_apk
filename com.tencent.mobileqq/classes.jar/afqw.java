@@ -1,40 +1,17 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 
 final class afqw
-  implements DialogInterface.OnClickListener
+  implements afug
 {
-  afqw(Emoticon paramEmoticon, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    boolean bool;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4)
-    {
-      bool = true;
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
-      if (afqr.a != null)
-      {
-        if (7 != this.jdField_a_of_type_Int) {
-          break label80;
-        }
-        afqr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, afqr.a.frienduin, "ep_mall", "Clk_pkg_forward", 0);
-      }
+    paramQQAppInterface = ((MessageForUniteGrayTip)paramChatMessage).tipParam;
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.b == 655384)) {
+      return 110;
     }
-    label80:
-    while (6 != this.jdField_a_of_type_Int)
-    {
-      return;
-      bool = false;
-      break;
-    }
-    afqr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, afqr.a.frienduin, "ep_mall", "Clk_collect_more", 0);
+    return 64;
   }
 }
 

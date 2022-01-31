@@ -2,8 +2,8 @@ package com.tencent.mobileqq.ocr.view.gesture.control;
 
 import android.view.View;
 import android.widget.OverScroller;
-import avvi;
-import avvw;
+import avzr;
+import awaf;
 import com.tencent.mobileqq.ocr.view.gesture.animation.AnimationEngine;
 
 class GestureController$LocalAnimationEngine
@@ -45,7 +45,7 @@ class GestureController$LocalAnimationEngine
         f = GestureController.a(this.this$0).a();
         if ((Float.isNaN(this.this$0.jdField_a_of_type_Float)) || (Float.isNaN(this.this$0.jdField_b_of_type_Float)) || (Float.isNaN(GestureController.a(this.this$0))) || (Float.isNaN(GestureController.b(this.this$0))))
         {
-          avvw.a(this.this$0.c, this.this$0.jdField_a_of_type_Avvt, this.this$0.jdField_b_of_type_Avvt, f);
+          awaf.a(this.this$0.c, this.this$0.jdField_a_of_type_Awac, this.this$0.jdField_b_of_type_Awac, f);
           bool1 = bool3;
           if (!this.this$0.b()) {
             this.this$0.a(false);
@@ -58,7 +58,7 @@ class GestureController$LocalAnimationEngine
           this.this$0.f();
         }
         return bool1;
-        avvw.a(this.this$0.c, this.this$0.jdField_a_of_type_Avvt, this.this$0.jdField_a_of_type_Float, this.this$0.jdField_b_of_type_Float, this.this$0.jdField_b_of_type_Avvt, GestureController.a(this.this$0), GestureController.b(this.this$0), f);
+        awaf.a(this.this$0.c, this.this$0.jdField_a_of_type_Awac, this.this$0.jdField_a_of_type_Float, this.this$0.jdField_b_of_type_Float, this.this$0.jdField_b_of_type_Awac, GestureController.a(this.this$0), GestureController.b(this.this$0), f);
         break;
       }
       bool1 = false;

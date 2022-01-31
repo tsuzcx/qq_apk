@@ -1,56 +1,60 @@
-import android.support.v4.view.ViewCompat;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView;
-import com.tencent.mobileqq.activity.contacts.view.HeaderScrollView;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-public class ahrj
+class ahrj
+  implements Comparator<ahrl>
 {
-  public static boolean a(View paramView)
+  ahrj(ahri paramahri) {}
+  
+  public int a(ahrl paramahrl1, ahrl paramahrl2)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramView instanceof HeaderScrollView)) {
-      if (!((HeaderScrollView)paramView).b()) {
-        bool1 = true;
-      }
-    }
+    if ((paramahrl1 == null) && (paramahrl2 == null)) {}
+    int j;
+    int k;
     do
     {
       do
       {
-        View localView;
-        do
+        return 0;
+        if ((paramahrl1 == null) && (paramahrl2 != null)) {
+          return -1;
+        }
+        if ((paramahrl1 != null) && (paramahrl2 == null)) {
+          return 1;
+        }
+        paramahrl1 = paramahrl1.b;
+        paramahrl2 = paramahrl2.b;
+      } while ((paramahrl1 == null) && (paramahrl2 == null));
+      if ((paramahrl1 == null) && (paramahrl2 != null)) {
+        return -1;
+      }
+      if ((paramahrl1 != null) && (paramahrl2 == null)) {
+        return 1;
+      }
+      j = paramahrl1.length();
+      k = paramahrl2.length();
+      int m = Math.min(j, k);
+      int i = 0;
+      while (i < m)
+      {
+        char c1 = paramahrl1.charAt(i);
+        char c2 = paramahrl2.charAt(i);
+        if (c1 != c2)
         {
-          for (;;)
-          {
-            return bool1;
-            bool1 = false;
+          paramahrl1 = ChnToSpell.a(c1);
+          paramahrl2 = ChnToSpell.a(c2);
+          if (paramahrl1.jdField_a_of_type_Int == paramahrl2.jdField_a_of_type_Int) {
+            return paramahrl1.jdField_a_of_type_JavaLangString.compareTo(paramahrl2.jdField_a_of_type_JavaLangString);
           }
-          if (!(paramView instanceof ViewGroup)) {
-            break;
-          }
-          localView = ((ViewGroup)paramView).getChildAt(1);
-          if ((localView == null) || (!(localView instanceof HeaderScrollView))) {
-            break label116;
-          }
-          bool1 = bool2;
-        } while (!((HeaderScrollView)localView).b());
-        return false;
-        if (!(paramView instanceof AbsListView)) {
-          break label116;
+          return paramahrl1.jdField_a_of_type_Int - paramahrl2.jdField_a_of_type_Int;
         }
-        paramView = (AbsListView)paramView;
-        if (paramView.getChildCount() <= 0) {
-          break;
-        }
-        bool1 = bool2;
-      } while (paramView.getFirstVisiblePosition() > 0);
-      bool1 = bool2;
-    } while (paramView.getChildAt(0).getTop() < paramView.getPaddingTop());
-    return false;
-    label116:
-    return ViewCompat.canScrollVertically(paramView, -1);
+        i += 1;
+      }
+      if (j < k) {
+        return -1;
+      }
+    } while (j <= k);
+    return 1;
   }
 }
 

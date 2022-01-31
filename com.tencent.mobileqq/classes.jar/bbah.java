@@ -1,44 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.cs.cmd0x352.cmd0x352.ReqBody;
+import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgReq;
 
 public class bbah
-  extends ulp
+  extends bbal
 {
-  public String a;
-  public ukt a;
-  
-  public bbah(String paramString)
+  void a(int paramInt, bbbi parambbbi, cmd0x352.ReqBody paramReqBody)
   {
-    this.jdField_a_of_type_Ukt = new ukt();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    parambbbi = (bbbg)parambbbi;
+    cmd0x352.TryUpImgReq localTryUpImgReq = new cmd0x352.TryUpImgReq();
+    localTryUpImgReq.uint64_file_id.set(paramInt);
+    localTryUpImgReq.setHasFlag(true);
+    localTryUpImgReq.uint64_src_uin.set(Long.valueOf(parambbbi.jdField_c_of_type_JavaLangString).longValue());
+    localTryUpImgReq.uint64_file_size.set(parambbbi.jdField_a_of_type_Long);
+    localTryUpImgReq.bytes_file_md5.set(ByteStringMicro.copyFrom(parambbbi.jdField_a_of_type_ArrayOfByte));
+    localTryUpImgReq.bytes_file_name.set(ByteStringMicro.copyFromUtf8(parambbbi.jdField_a_of_type_JavaLangString));
+    localTryUpImgReq.uint32_src_term.set(5);
+    localTryUpImgReq.bool_address_book.set(parambbbi.jdField_c_of_type_Boolean);
+    localTryUpImgReq.uint32_platform_type.set(9);
+    localTryUpImgReq.uint32_bu_type.set(1);
+    localTryUpImgReq.bool_pic_original.set(parambbbi.b);
+    localTryUpImgReq.uint32_pic_width.set(parambbbi.jdField_c_of_type_Int);
+    localTryUpImgReq.uint32_pic_height.set(parambbbi.d);
+    localTryUpImgReq.uint32_pic_type.set(parambbbi.jdField_a_of_type_Int);
+    localTryUpImgReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(baws.a()));
+    localTryUpImgReq.bool_reject_tryfast.set(true);
+    paramReqBody.rpt_msg_tryup_img_req.add(localTryUpImgReq);
   }
   
-  private void c()
+  public void a(bbax parambbax)
   {
-    baub localbaub = new baub();
-    localbaub.jdField_a_of_type_Awfy = new bbai(this);
-    localbaub.i = this.jdField_a_of_type_JavaLangString;
-    localbaub.jdField_a_of_type_Boolean = true;
-    localbaub.jdField_b_of_type_Int = 327681;
-    QQStoryContext.a();
-    localbaub.jdField_b_of_type_JavaLangString = QQStoryContext.a().c();
-    localbaub.c = "";
-    localbaub.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    QQStoryContext.a();
-    QQStoryContext.a().a().a(localbaub);
-  }
-  
-  protected void a()
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!xmx.c(this.jdField_a_of_type_JavaLangString)))
+    if ((parambbax != null) && (parambbax.jdField_a_of_type_JavaUtilList != null) && (parambbax.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
     {
-      wsv.d("tribe_publish_TribeVideoFileObject", "end composite success but file not exist:%s", new Object[] { this.jdField_a_of_type_JavaLangString });
-      super.notifyResult(new ErrorMessage(940006, String.format("end composite success but file not exist:%s", new Object[] { this.jdField_a_of_type_JavaLangString })));
-      return;
+      bavq localbavq = new bavq();
+      localbavq.jdField_a_of_type_JavaLangString = "LongConn.ArtisticFilter";
+      localbavq.jdField_a_of_type_ArrayOfByte = a(parambbax.jdField_a_of_type_JavaUtilList);
+      localbavq.jdField_a_of_type_JavaLangObject = parambbax;
+      localbavq.jdField_a_of_type_Bavp = this;
+      a(parambbax, localbavq);
     }
-    c();
   }
 }
 

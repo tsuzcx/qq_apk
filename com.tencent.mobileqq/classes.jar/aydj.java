@@ -1,12 +1,16 @@
-public abstract interface aydj
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+
+public class aydj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(long paramLong);
+  public aydj(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract long b();
-  
-  public abstract long c();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    azqs.b(null, "dc00898", "", "", "0X800A98D", "0X800A98D", 2, 0, "0", "0", "", "");
+  }
 }
 
 

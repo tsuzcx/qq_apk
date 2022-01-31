@@ -1,49 +1,425 @@
-import PUSHAPI.PushRsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import cooperation.qqreader.js.JsCallParams;
+import cooperation.qqreader.proxy.ReaderJsCallback;
+import cooperation.qqreader.proxy.ReaderJsPluginProxy;
+import cooperation.qqreader.ui.ReaderContentPageActivity;
+import cooperation.qqreader.ui.ReaderHomePageActivity;
+import cooperation.qqreader.utils.QRDebugEnvUrlUtils;
+import java.util.Arrays;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bjae
-  extends QzoneExternalRequest
+  extends VasWebviewJsPlugin
+  implements befm
 {
-  private long jdField_a_of_type_Long;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "JSRoot", "JSToast", "JSBookDir", "JSPublicAccount", "JSTopRightButton", "JSTittlebarAction", "JSPay", "JSPublicAccountUtil", "JSRedTouch", "JSBookDetailForQQ", "JSbookshelf", "JSContent", "readonline", "JSPopupList", "JSTypeface" };
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bjah jdField_a_of_type_Bjah = new bjah(this);
+  private JsBridgeListener jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener;
+  private ReaderJsCallback jdField_a_of_type_CooperationQqreaderProxyReaderJsCallback = new bjaf(this);
+  private ReaderJsPluginProxy jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy;
   private String jdField_a_of_type_JavaLangString;
-  private long b;
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
   
-  public bjae(long paramLong1, long paramLong2, String paramString1, long paramLong3, String paramString2)
+  private void a(JsBridgeListener paramJsBridgeListener, String paramString)
   {
-    super.setHostUin(paramLong1);
-    super.setLoginUserId(paramLong1);
-    super.setRefer(paramString1);
-    this.jdField_a_of_type_Long = paramLong2;
-    this.b = paramLong3;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.needCompress = false;
+    paramJsBridgeListener = new JSONObject(paramString).optString("callback");
+    if (!TextUtils.isEmpty(paramJsBridgeListener))
+    {
+      paramString = new JSONObject();
+      paramString.put("graylevel", bizv.a());
+      paramString.put("is_update_newstyle", bizv.a());
+      paramString.put("result", 0);
+      paramString.put("message", "success");
+      callJs(paramJsBridgeListener, new String[] { paramString.toString() });
+    }
   }
   
-  public String getCmdString()
+  private void a(Object paramObject)
   {
-    return "wns.pushrsp";
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener.a(paramObject);
+    }
   }
   
-  public byte[] getEncodedUniParameter()
+  private void a(String paramString)
   {
-    PushRsp localPushRsp = new PushRsp();
-    localPushRsp.ptime = this.jdField_a_of_type_Long;
-    localPushRsp.is_bgd = 0;
-    localPushRsp.sUID = "<JIEHEBAN>";
-    localPushRsp.flag = this.b;
-    localPushRsp.Mark = this.jdField_a_of_type_JavaLangString;
-    return bihk.a(localPushRsp);
+    try
+    {
+      boolean bool = new JSONObject(paramString).getBoolean("visible");
+      paramString = Message.obtain();
+      paramString.what = 109;
+      paramString.obj = Boolean.valueOf(bool);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  public JceStruct getReq()
+  private void a(String paramString, int paramInt)
   {
-    return null;
+    Object localObject1 = new JSONObject(paramString);
+    paramString = ((JSONObject)localObject1).getString("book_name");
+    String str1 = ((JSONObject)localObject1).getString("chapter_name");
+    String str2 = ((JSONObject)localObject1).getString("nbid");
+    localObject1 = ((JSONObject)localObject1).optString("callback");
+    Object localObject2 = this.mRuntime.a();
+    if ((localObject2 instanceof ReaderHomePageActivity)) {
+      localObject2 = (ReaderHomePageActivity)localObject2;
+    }
+    switch (paramInt)
+    {
+    case 5: 
+    case 7: 
+    default: 
+      return;
+    case 4: 
+      ((ReaderHomePageActivity)localObject2).a(paramString, str1, str2);
+      return;
+    case 6: 
+      ((ReaderHomePageActivity)localObject2).b(paramString, str1, str2);
+      return;
+    }
+    boolean bool = ((ReaderHomePageActivity)localObject2).a(paramString, str1, str2);
+    paramString = new JSONObject();
+    if (bool) {}
+    for (paramInt = 0;; paramInt = 1)
+    {
+      paramString.put("result", paramInt);
+      callJs((String)localObject1, new String[] { paramString.toString() });
+      return;
+    }
   }
   
-  public String uniKey()
+  private void a(JSONObject paramJSONObject)
   {
-    return "wns.pushrsp";
+    if (paramJSONObject == null) {
+      return;
+    }
+    Log.i("ReaderJsPlugin", "registerWebSearch");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("callback");
+  }
+  
+  private static boolean a(String[] paramArrayOfString, String paramString)
+  {
+    return Arrays.asList(paramArrayOfString).contains(paramString);
+  }
+  
+  private void b(String paramString)
+  {
+    Intent localIntent = new Intent(this.mRuntime.a(), ReaderContentPageActivity.class);
+    localIntent.putExtras(biyw.a(localIntent, 2));
+    localIntent.putExtra("url", paramString);
+    this.mRuntime.a().startActivity(localIntent);
+  }
+  
+  private void b(String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (bizc.a().a())
+    {
+      bjbl.e("ReaderJsPlugin", "pluginHandleJS ->  handleJsCall");
+      a(paramString1, paramString2, paramString3, paramVarArgs);
+      return;
+    }
+    bjbl.e("ReaderJsPlugin", "js plugin is not ready...");
+    if ((("JSbookshelf".equals(paramString2)) && ("openLocalBook".equals(paramString3))) || (("readonline".equals(paramString2)) && ("readbook".equals(paramString3))))
+    {
+      c(paramString1, paramString2, paramString3, paramVarArgs);
+      return;
+    }
+    this.jdField_a_of_type_Bjah.a(paramString1, paramString2, paramString3, paramVarArgs);
+  }
+  
+  private void b(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
+    {
+      paramJSONObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(114, paramJSONObject);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramJSONObject);
+    }
+  }
+  
+  private void c(String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    Intent localIntent = new Intent(this.mRuntime.a(), ReaderContentPageActivity.class);
+    localIntent.putExtra("is_to_splash_activity", true);
+    localIntent.putExtra("splash_pending_js_param", new JsCallParams(paramString1, paramString2, paramString3, paramVarArgs));
+    this.mRuntime.a().startActivity(localIntent);
+  }
+  
+  public bjae a(Handler paramHandler)
+  {
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    return this;
+  }
+  
+  public void a(TextView paramTextView)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
+      return;
+    }
+    if (paramString1.trim().length() == 0)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
+    if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 8) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bjag(this));
+  }
+  
+  void a(String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy == null)
+    {
+      bjbl.d("ReaderJsPlugin", "create a new js plugin");
+      this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy = bizc.a().a(this.jdField_a_of_type_CooperationQqreaderProxyReaderJsCallback);
+    }
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy != null)
+    {
+      this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy.setHandler(this.jdField_a_of_type_AndroidOsHandler);
+      this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy.call(paramString1, paramString2, paramString3, paramVarArgs);
+      bjbl.d("ReaderJsPlugin", "create a new js ,method=" + paramString3);
+    }
+    do
+    {
+      return;
+      bjbl.a("ReaderJsPlugin", "handleJsCall mJsPlugin is null!");
+    } while (!QRDebugEnvUrlUtils.isDebugEnv());
+    Toast.makeText(BaseApplicationImpl.getApplication(), "ReaderRunTime 未创建！", 0).show();
+  }
+  
+  boolean a()
+  {
+    if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof ReaderHomePageActivity))) {
+      return ((ReaderHomePageActivity)this.mRuntime.a()).c();
+    }
+    return false;
+  }
+  
+  public boolean b()
+  {
+    boolean bool = true;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":\"0\"}" });
+    }
+    for (;;)
+    {
+      Log.i("ReaderJsPlugin", "registerWebSearch callWebSearch=" + bool);
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public String[] getMultiNameSpace()
+  {
+    return jdField_a_of_type_ArrayOfJavaLangString;
+  }
+  
+  public Object handleEvent(String paramString, long paramLong)
+  {
+    return super.handleEvent(paramString, paramLong);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    bjbl.e("ReaderJsPlugin", "handleJsRequest, url=" + paramString1 + " ,pakName=" + paramString2 + " ,method=" + paramString3);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener = paramJsBridgeListener;
+    if (!a(jdField_a_of_type_ArrayOfJavaLangString, paramString2)) {}
+    while ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3))) {
+      return false;
+    }
+    if ("JSTittlebarAction".equals(paramString2))
+    {
+      if ("setLoadingVisible".equals(paramString3))
+      {
+        if (paramVarArgs.length > 0)
+        {
+          a(paramVarArgs[0]);
+          a(null);
+        }
+        return true;
+      }
+      if ("addDeskShortcutEvent".equals(paramString3))
+      {
+        this.jdField_a_of_type_Boolean = true;
+        return true;
+      }
+      if ("setChannelTabAlpha".equals(paramString3))
+      {
+        if (paramVarArgs.length > 0) {
+          a(null);
+        }
+        return true;
+      }
+    }
+    else if ("JSContent".equals(paramString2))
+    {
+      if ("registerWebSearch".equals(paramString3))
+      {
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+        try
+        {
+          a(new JSONObject(paramVarArgs[0]));
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            bjbl.a("ReaderJsPlugin", "Failed to parse json str,json=" + paramVarArgs[0]);
+          }
+        }
+      }
+      if ("showRedPoint".equals(paramString3))
+      {
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+        try
+        {
+          b(new JSONObject(paramVarArgs[0]));
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            bjbl.a("ReaderJsPlugin", "Failed to parse json str,json=" + paramVarArgs[0]);
+          }
+        }
+      }
+      if ("openDetailMore".equals(paramString3))
+      {
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+          b(paramVarArgs[0]);
+        }
+        return true;
+      }
+    }
+    else
+    {
+      if ("JSbookshelf".equals(paramString2))
+      {
+        if ("getGrayUpdateData".equals(paramString3))
+        {
+          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+          try
+          {
+            a(paramJsBridgeListener, paramVarArgs[0]);
+            return true;
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            for (;;)
+            {
+              bjbl.e("ReaderJsPlugin", paramJsBridgeListener.getMessage());
+            }
+          }
+        }
+        if ("addColorfulTab".equals(paramString3))
+        {
+          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+          try
+          {
+            a(paramVarArgs[0], 4);
+            return true;
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            for (;;)
+            {
+              bjbl.e("ReaderJsPlugin", paramJsBridgeListener.getMessage());
+            }
+          }
+        }
+        if ("removeColorfulTab".equals(paramString3))
+        {
+          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+          try
+          {
+            a(paramVarArgs[0], 6);
+            return true;
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            for (;;)
+            {
+              bjbl.e("ReaderJsPlugin", paramJsBridgeListener.getMessage());
+            }
+          }
+        }
+        if (!"isExitsInColorfulTab".equals(paramString3)) {
+          break label584;
+        }
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+        try
+        {
+          a(paramVarArgs[0], 8);
+          return true;
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            bjbl.e("ReaderJsPlugin", paramJsBridgeListener.getMessage());
+          }
+        }
+      }
+      if (("JSTopRightButton".equals(paramString2)) && ("showRightButton".equals(paramString3)))
+      {
+        if (paramVarArgs.length > 1)
+        {
+          a(paramVarArgs[0], paramVarArgs[1]);
+          a(null);
+        }
+        return true;
+      }
+    }
+    label584:
+    b(paramString1, paramString2, paramString3, paramVarArgs);
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy != null) {
+      this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy.onCreate();
+    }
+    this.jdField_a_of_type_Bjah.a();
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy != null) {
+      this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy.onDestroy();
+    }
+    this.jdField_a_of_type_Bjah.b();
   }
 }
 

@@ -1,25 +1,61 @@
-class aowy
-  implements aozd<aoxh>
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
+public class aowy
+  extends aokh<aowx>
 {
-  aowy(aowx paramaowx) {}
-  
-  public int a(aoxh paramaoxh, long paramLong)
+  public static aowx a()
   {
-    if (paramaoxh == null) {}
-    do
-    {
-      return -1;
-      paramLong = paramaoxh.d() - paramLong;
-      if (paramLong == 0L) {
-        return 0;
-      }
-    } while (paramLong <= 0L);
-    return 1;
+    return (aowx)aoks.a().a(521);
+  }
+  
+  public int a()
+  {
+    return 521;
+  }
+  
+  @NonNull
+  public aowx a(int paramInt)
+  {
+    return new aowx();
+  }
+  
+  @Nullable
+  public aowx a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aowx.a(paramArrayOfaoko);
+    }
+    return null;
+  }
+  
+  public Class<aowx> a()
+  {
+    return aowx.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aowx paramaowx) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aowy
  * JD-Core Version:    0.7.0.1
  */

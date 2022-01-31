@@ -1,165 +1,219 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
-import com.tencent.mobileqq.matchchat.MatchChatMsgUtil.1;
-import com.tencent.mobileqq.matchchat.RecentMatchChatListItem;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Paint;
+import android.util.Log;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class atwl
 {
-  public static int a(QQAppInterface paramQQAppInterface)
+  public int a;
+  private atwn a;
+  public ArrayList<atwn> a;
+  @Deprecated
+  public int b;
+  public ArrayList<atwp> b;
+  private int c;
+  private int d;
+  
+  public atwl(int paramInt1, int paramInt2, ArrayList<atwn> paramArrayList)
   {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      do
-      {
-        return 0;
-        if (a(paramQQAppInterface)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("MatchChatMsgUtil", 2, "isMatchChatRedPointSwitchOn false");
-      return 0;
-      if (a(paramQQAppInterface, "matchchat_redpoint_show")) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("MatchChatMsgUtil", 2, "isRedPointShow false");
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.size();
+    }
     return 0;
-    Object localObject = paramQQAppInterface.a(1044).a(aljq.aU, 1044);
-    if (localObject == null)
+  }
+  
+  public int a(int paramInt)
+  {
+    return b(paramInt);
+  }
+  
+  public List<atwn> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Atwn = null;
+  }
+  
+  public void a(Paint paramPaint1, Paint paramPaint2, int paramInt)
+  {
+    a(paramPaint1, paramPaint2, paramInt, false, false);
+  }
+  
+  public void a(Paint paramPaint1, Paint paramPaint2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_b_of_type_JavaUtilArrayList.clear();
+    this.c = 0;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      QLog.i("MatchChatMsgUtil", 1, "getMatchChatRedPointNum null");
-      return 0;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        atwn localatwn = (atwn)localIterator.next();
+        localatwn.a(paramPaint1, paramPaint2, paramInt, paramBoolean1, paramBoolean2);
+        this.c += localatwn.a();
+        this.jdField_b_of_type_JavaUtilArrayList.addAll(localatwn.jdField_a_of_type_JavaUtilArrayList);
+      }
     }
-    localObject = ((List)localObject).iterator();
-    String str;
-    int j;
-    for (int i = 0; ((Iterator)localObject).hasNext(); i = paramQQAppInterface.a().a(str, j) + i)
-    {
-      MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-      str = localMessageRecord.senderuin;
-      j = localMessageRecord.istroop;
+  }
+  
+  public void a(atwl paramatwl)
+  {
+    this.jdField_a_of_type_Int = paramatwl.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = paramatwl.jdField_b_of_type_Int;
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     }
-    return i;
-  }
-  
-  public static Intent a(Context paramContext)
-  {
-    paramContext = new Intent(paramContext, PublicFragmentActivity.class);
-    paramContext.putExtra("uintype", 1044);
-    paramContext.putExtra("uin", aljq.aU);
-    paramContext.putExtra("public_fragment_class", MatchChatMsgListFragment.class.getName());
-    paramContext.addFlags(268435456);
-    return paramContext;
-  }
-  
-  public static Intent a(Context paramContext, String paramString, int paramInt)
-  {
-    paramContext = new Intent(paramContext, ChatActivity.class);
-    paramContext.putExtra("uin", paramString);
-    paramContext.putExtra("uintype", 1044);
-    paramContext.putExtra("entrance", paramInt);
-    paramContext.addFlags(268435456);
-    return paramContext;
-  }
-  
-  public static BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    int i = a(paramQQAppInterface);
-    QLog.i("MatchChatMsgUtil", 1, "getMatchChatRedPointAppInfo num = " + i);
-    paramQQAppInterface = new BusinessInfoCheckUpdate.AppInfo();
-    paramQQAppInterface.path.set(paramString);
-    paramQQAppInterface.num.set(i);
-    paramQQAppInterface.type.set(2);
-    paramQQAppInterface.iNewFlag.set(1);
-    return paramQQAppInterface;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
     for (;;)
     {
-      return;
-      Object localObject = paramQQAppInterface.a(1044).a(aljq.aU, 1044);
-      if (localObject == null)
+      Iterator localIterator = paramatwl.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        QLog.i("MatchChatMsgUtil", 1, "clearMatchChatMessageBox null");
-        return;
+        atwn localatwn = (atwn)localIterator.next();
+        this.jdField_a_of_type_JavaUtilArrayList.add(localatwn.a());
       }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-        if (QLog.isColorLevel()) {
-          QLog.i("MatchChatMsgUtil", 1, "clearMatchChatMessageBox, delete uin = " + localMessageRecord.senderuin);
-        }
-        String str = localMessageRecord.senderuin;
-        int i = localMessageRecord.istroop;
-        paramQQAppInterface.a().a(str, i);
-      }
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
     }
+    this.c = paramatwl.b();
+    Log.d("Lyric", "copy -> mType : " + this.jdField_a_of_type_Int);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, RecentMatchChatListItem paramRecentMatchChatListItem, boolean paramBoolean)
+  public boolean a()
   {
-    if ((paramQQAppInterface == null) || (paramRecentMatchChatListItem == null)) {}
-    int i;
-    do
+    return (this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0);
+  }
+  
+  public int b()
+  {
+    return this.c;
+  }
+  
+  public int b(int paramInt)
+  {
+    if (paramInt < 0)
     {
-      return;
-      i = paramQQAppInterface.a().a(paramRecentMatchChatListItem.a(), paramRecentMatchChatListItem.a());
-      if (paramBoolean) {
-        paramQQAppInterface.a().a(aljq.aU, 1044, paramRecentMatchChatListItem.a(), paramQQAppInterface.getCurrentAccountUin());
+      Log.w("Lyric", "findLineNoByStartTime -> illegal time");
+      return -1;
+    }
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0))
+    {
+      Log.w("Lyric", "findLineNoByStartTime -> lyric is empty");
+      return -1;
+    }
+    if ((this.jdField_a_of_type_Atwn != null) && (this.jdField_a_of_type_Atwn.jdField_a_of_type_Long < paramInt) && (this.jdField_a_of_type_Atwn.jdField_a_of_type_Long + this.jdField_a_of_type_Atwn.b > paramInt)) {
+      return this.d;
+    }
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    int k = localArrayList.size();
+    int j = 0;
+    if (j < k)
+    {
+      atwn localatwn = (atwn)localArrayList.get(j);
+      if (localatwn == null) {}
+      while (localatwn.jdField_a_of_type_Long <= paramInt)
+      {
+        j += 1;
+        break;
       }
-    } while (i <= 0);
-    paramQQAppInterface.a().a(paramRecentMatchChatListItem.a(), paramRecentMatchChatListItem.a(), true, false);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
-  {
-    if (paramQQAppInterface == null) {
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("MatchChatMsgUtil", 2, "saveRedPointShow key =" + paramString + " value =" + paramString);
+    for (paramInt = j - 1;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (paramInt < 0) {
+        i = 0;
+      }
+      if (j == k) {}
+      for (paramInt = k - 1;; paramInt = i)
+      {
+        this.d = paramInt;
+        this.jdField_a_of_type_Atwn = ((atwn)localArrayList.get(paramInt));
+        return paramInt;
+      }
     }
-    bdiv.a(paramQQAppInterface.getAccount(), "match_chat_config_sp").edit().putBoolean(paramString, paramBoolean).apply();
   }
   
-  public static void a(RedTouch paramRedTouch, QQAppInterface paramQQAppInterface)
+  public int c()
   {
-    ThreadManagerV2.excute(new MatchChatMsgUtil.1(paramQQAppInterface, paramRedTouch), 16, null, false);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return true;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (paramQQAppInterface == null) {
-      return false;
+    if (a()) {
+      return 0;
     }
-    return bdiv.a(paramQQAppInterface.getAccount(), "match_chat_config_sp").getBoolean(paramString, false);
+    atwn localatwn = (atwn)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    long l = localatwn.jdField_a_of_type_Long;
+    return (int)(localatwn.b + l);
+  }
+  
+  public int c(int paramInt)
+  {
+    int i;
+    if (paramInt < 0)
+    {
+      Log.w("Lyric", "findEndLineByStartTime -> illegal time");
+      i = 0;
+      return i;
+    }
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localArrayList == null)
+    {
+      Log.w("Lyric", "findEndLineByStartTime -> sentence data not found");
+      return -1;
+    }
+    int k = localArrayList.size();
+    int j = 0;
+    if (j < k)
+    {
+      atwn localatwn = (atwn)localArrayList.get(j);
+      if (localatwn == null) {}
+      while (paramInt > localatwn.jdField_a_of_type_Long)
+      {
+        j += 1;
+        break;
+      }
+    }
+    for (paramInt = j - 1;; paramInt = 0)
+    {
+      i = paramInt;
+      if (paramInt < 0) {
+        i = 0;
+      }
+      if (j != k) {
+        break;
+      }
+      return k - 1;
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return null;
+    }
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      atwn localatwn = (atwn)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      localStringBuilder.append(i);
+      localStringBuilder.append(":");
+      localStringBuilder.append(localatwn.jdField_a_of_type_Long);
+      localStringBuilder.append(":");
+      localStringBuilder.append(localatwn.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(":");
+      localStringBuilder.append(localatwn.b + localatwn.jdField_a_of_type_Long);
+      localStringBuilder.append("\n");
+      i += 1;
+    }
+    return localStringBuilder.toString();
   }
 }
 

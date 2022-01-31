@@ -1,47 +1,17 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.PeakAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
 
 public class aytt
-  extends aytu
+  extends ayuf
 {
-  PeakAppInterface a;
-  
-  public aytt(PeakAppInterface paramPeakAppInterface)
+  public aytt(GroupSearchEngine paramGroupSearchEngine, ayug paramayug, String paramString, int paramInt)
   {
-    this.a = paramPeakAppInterface;
+    super(paramGroupSearchEngine, paramayug, paramString, paramInt);
   }
   
-  public AppInterface a()
+  public aynt a(List<aynu> paramList, String paramString)
   {
-    return this.a;
-  }
-  
-  protected void a()
-  {
-    try
-    {
-      super.a();
-      a(new bkvl(this.a));
-      super.b();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    a(paramToServiceMsg, null, aywv.class);
-  }
-  
-  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    super.a(paramBoolean, paramToServiceMsg, paramFromServiceMsg, null);
+    return new aynh(paramList, paramString);
   }
 }
 

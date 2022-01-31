@@ -1,24 +1,67 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class vlb
 {
-  public ErrorMessage a;
-  public List<vle> a;
-  public boolean a;
-  public ErrorMessage b;
-  public boolean b;
-  public boolean c;
-  
-  public vlb()
+  public static void a(Context paramContext, String paramString, vld paramvld, bety parambety)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    ThreadManager.getUIHandler().post(new StoryShareEncryptHelper.2(paramString, parambety, paramContext, paramvld));
   }
   
-  public String toString()
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
   {
-    return "Data{upErrorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", isUpEnd=" + this.jdField_a_of_type_Boolean + ", mGroupInfoList=" + this.jdField_a_of_type_JavaUtilList + ", isDownEnd=" + this.jdField_b_of_type_Boolean + ", isFastData=" + this.c + ", downErrorMessage=" + this.jdField_b_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
+    paramString = paramString.split("&");
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String[] arrayOfString = paramString[i].split("=");
+      if (arrayOfString.length == 2) {
+        paramHashMap.put(arrayOfString[0], arrayOfString[1]);
+      }
+      i += 1;
+    }
+  }
+  
+  public static void a(HashMap<String, String> paramHashMap)
+  {
+    HashMap<String, String> localHashMap = null;
+    Iterator localIterator = paramHashMap.keySet().iterator();
+    paramHashMap = localHashMap;
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if ((!str.equals("src_type")) && (!str.equals("version")) && (!str.equals("from_leba")) && (!str.equals("leba_resid")) && (!str.equals("config_res_plugin_item_name")) && (!str.equals("redtouch_click_timestamp")) && (!str.equals("lebaVersion")) && (!str.equals("redid")))
+      {
+        localHashMap = paramHashMap;
+        if (QLog.isColorLevel())
+        {
+          if (paramHashMap != null) {
+            break label144;
+          }
+          paramHashMap = new StringBuilder();
+        }
+        for (;;)
+        {
+          paramHashMap.append(str);
+          localHashMap = paramHashMap;
+          localIterator.remove();
+          paramHashMap = localHashMap;
+          break;
+          label144:
+          paramHashMap.append('|');
+        }
+      }
+    }
+    if ((paramHashMap != null) && (QLog.isColorLevel())) {
+      QLog.d("Q.qqstory.share.trans.helper", 2, "remove attrs:" + paramHashMap);
+    }
   }
 }
 

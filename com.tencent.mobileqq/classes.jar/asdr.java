@@ -1,18 +1,15 @@
-public abstract interface asdr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class asdr
+  implements DialogInterface.OnClickListener
 {
-  public abstract String a();
+  asdr(asdo paramasdo, bdjz parambdjz) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void aT_();
-  
-  public abstract String b();
-  
-  public abstract void b();
-  
-  public abstract void b(String paramString);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bdjz.dismiss();
+  }
 }
 
 

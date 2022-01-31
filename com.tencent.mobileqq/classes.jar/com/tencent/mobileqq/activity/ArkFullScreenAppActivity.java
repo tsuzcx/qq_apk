@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import abzl;
-import abzm;
-import abzn;
-import abzo;
-import abzp;
-import abzq;
-import afdt;
-import afdw;
-import alpo;
+import acea;
+import aceb;
+import acec;
+import aced;
+import acee;
+import acef;
+import afii;
+import afil;
+import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -25,14 +25,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anjs;
-import anjv;
-import ankt;
-import anlb;
-import anmp;
-import bdfk;
-import bhpy;
-import bhql;
+import anob;
+import anoe;
+import anpc;
+import anpk;
+import anqy;
+import bdjt;
+import bhuf;
+import bhus;
 import com.tencent.ark.open.ArkAppCacheMgr;
 import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
@@ -63,32 +63,32 @@ public class ArkFullScreenAppActivity
 {
   private static ArrayList<Bundle> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private int jdField_a_of_type_Int = 0;
-  private afdw jdField_a_of_type_Afdw = new abzl(this);
+  private afil jdField_a_of_type_Afil = new acea(this);
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bdfk jdField_a_of_type_Bdfk;
+  private bdjt jdField_a_of_type_Bdjt;
   ArkAppView jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
   protected ArkTopGestureLayout a;
-  private Stack<bdfk> jdField_a_of_type_JavaUtilStack = new Stack();
+  private Stack<bdjt> jdField_a_of_type_JavaUtilStack = new Stack();
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
   private int d;
   
-  private afdt a(bdfk parambdfk)
+  private afii a(bdjt parambdjt)
   {
-    afdt localafdt = new afdt();
-    parambdfk.jdField_a_of_type_Afdt = localafdt;
+    afii localafii = new afii();
+    parambdjt.jdField_a_of_type_Afii = localafii;
     int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getWidth();
     int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getHeight();
     if (QLog.isColorLevel()) {
       QLog.d("ArkFullScreenAppActivity", 2, "create App: w=" + i + ",h=" + j);
     }
-    localafdt.a(parambdfk.jdField_a_of_type_JavaLangString, parambdfk.b, parambdfk.c, parambdfk.d, anjs.a(), parambdfk.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    localafdt.setFixSize(i, j);
-    localafdt.setMaxSize(i, j);
-    localafdt.setMinSize(i, j);
-    localafdt.a(this.jdField_a_of_type_Afdw);
-    return localafdt;
+    localafii.a(parambdjt.jdField_a_of_type_JavaLangString, parambdjt.b, parambdjt.c, parambdjt.d, anob.a(), parambdjt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    localafii.setFixSize(i, j);
+    localafii.setMaxSize(i, j);
+    localafii.setMinSize(i, j);
+    localafii.a(this.jdField_a_of_type_Afil);
+    return localafii;
   }
   
   public static Intent a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat)
@@ -126,9 +126,9 @@ public class ArkFullScreenAppActivity
         QLog.i("ArkFullScreenAppActivity", 1, "buildForwardIntent send message parameter error: " + paramContext.getMessage());
         return null;
       }
-      Object localObject3 = String.format(alpo.a(2131701054), new Object[] { localObject2 });
+      Object localObject3 = String.format(alud.a(2131701066), new Object[] { localObject2 });
       paramMap = a(paramString4, paramMap);
-      paramString4 = bdfk.a(paramString2, paramString1, (String)localObject1, paramString3, paramFloat, null, null);
+      paramString4 = bdjt.a(paramString2, paramString1, (String)localObject1, paramString3, paramFloat, null, null);
       paramString4.putBoolean("forward_ark_app_direct", false);
       paramString4.putString("forward_ark_app_name", paramString2);
       paramString4.putString("forward_ark_app_view", paramString1);
@@ -169,7 +169,7 @@ public class ArkFullScreenAppActivity
   
   public static Intent a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, float paramFloat)
   {
-    anmp.a(true);
+    anqy.a(true);
     return a(paramContext, paramString1, paramString2, paramString3, paramString4, paramString5, paramFloat, ArkAppCacheMgr.getApplicationFromManifest(paramString2, "0.0.0.1"));
   }
   
@@ -208,9 +208,9 @@ public class ArkFullScreenAppActivity
         QLog.i("ArkFullScreenAppActivity", 1, "buildForwardIntent send message parameter error: " + paramContext.getMessage());
         return null;
       }
-      String str1 = String.format(alpo.a(2131701056), new Object[] { localObject });
+      String str1 = String.format(alud.a(2131701068), new Object[] { localObject });
       str2 = a(paramString4);
-      paramString4 = bdfk.a(paramString2, paramString1, paramMap, paramString3, paramFloat, null, null);
+      paramString4 = bdjt.a(paramString2, paramString1, paramMap, paramString3, paramFloat, null, null);
       paramString4.putBoolean("forward_ark_app_direct", false);
       paramString4.putString("forward_ark_app_name", paramString2);
       paramString4.putString("forward_ark_app_view", paramString1);
@@ -309,7 +309,7 @@ public class ArkFullScreenAppActivity
     if ((paramActivity == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
       return;
     }
-    paramString1 = bdfk.a(paramString1, paramString2, "0.0.0.1", paramString3, anjs.a(), null, null);
+    paramString1 = bdjt.a(paramString1, paramString2, "0.0.0.1", paramString3, anob.a(), null, null);
     paramString1.putInt("sourceType", 0);
     paramString2 = new Intent(paramActivity, ArkFullScreenAppActivity.class);
     paramString2.putExtras(paramString1);
@@ -321,7 +321,7 @@ public class ArkFullScreenAppActivity
   
   public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat, String paramString5, int paramInt)
   {
-    paramString1 = bdfk.a(paramString1, paramString2, paramString3, paramString4, anjs.a(), paramString5, null);
+    paramString1 = bdjt.a(paramString1, paramString2, paramString3, paramString4, anob.a(), paramString5, null);
     paramString1.putInt("sourceType", paramInt);
     if (QLog.isColorLevel()) {
       QLog.d("ArkFullScreenAppActivity", 2, "startFullScreenApp:" + paramString1);
@@ -333,17 +333,17 @@ public class ArkFullScreenAppActivity
   
   private void a(Bundle paramBundle)
   {
-    bdfk localbdfk = new bdfk(paramBundle);
+    bdjt localbdjt = new bdjt(paramBundle);
     this.jdField_a_of_type_Int = paramBundle.getInt("sourceType", 0);
-    paramBundle = a(localbdfk);
-    this.jdField_a_of_type_JavaUtilStack.push(localbdfk);
-    this.jdField_a_of_type_Bdfk = localbdfk;
+    paramBundle = a(localbdjt);
+    this.jdField_a_of_type_JavaUtilStack.push(localbdjt);
+    this.jdField_a_of_type_Bdjt = localbdjt;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.initArkView(paramBundle, false);
-    if (localbdfk != null)
+    if (localbdjt != null)
     {
-      setTitle(localbdfk.e);
+      setTitle(localbdjt.e);
       if (1 == this.jdField_a_of_type_Int) {
-        anjv.a(this.app, localbdfk.jdField_a_of_type_JavaLangString, "ArkFullEnterFromAppManage", 1, 0, 0L, 0L, 0L, null, null);
+        anoe.a(this.app, localbdjt.jdField_a_of_type_JavaLangString, "ArkFullEnterFromAppManage", 1, 0, 0L, 0L, 0L, null, null);
       }
     }
     if (this.jdField_a_of_type_JavaUtilStack.size() > 1) {
@@ -352,7 +352,7 @@ public class ArkFullScreenAppActivity
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("ArkFullScreenAppActivity", 2, "init: " + localbdfk.jdField_a_of_type_JavaLangString + ", " + this.jdField_a_of_type_JavaUtilStack.size());
+        QLog.i("ArkFullScreenAppActivity", 2, "init: " + localbdjt.jdField_a_of_type_JavaLangString + ", " + this.jdField_a_of_type_JavaUtilStack.size());
       }
       return;
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -377,19 +377,19 @@ public class ArkFullScreenAppActivity
     Iterator localIterator = this.jdField_a_of_type_JavaUtilStack.iterator();
     while (localIterator.hasNext())
     {
-      afdt localafdt = ((bdfk)localIterator.next()).jdField_a_of_type_Afdt;
-      if (localafdt != null) {
-        localafdt.doOnEvent(2);
+      afii localafii = ((bdjt)localIterator.next()).jdField_a_of_type_Afii;
+      if (localafii != null) {
+        localafii.doOnEvent(2);
       }
     }
     this.jdField_a_of_type_JavaUtilStack.clear();
   }
   
-  public Intent a(afdt paramafdt)
+  public Intent a(afii paramafii)
   {
     try
     {
-      Object localObject1 = paramafdt.getViewShare();
+      Object localObject1 = paramafii.getViewShare();
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         return null;
       }
@@ -410,26 +410,26 @@ public class ArkFullScreenAppActivity
           if (localNode.getChildNodes().getLength() > 0)
           {
             localObject1 = localObject2;
-            if (!ankt.a(localNode.getFirstChild(), (JSONObject)localObject2)) {
+            if (!anpc.a(localNode.getFirstChild(), (JSONObject)localObject2)) {
               localObject1 = new JSONObject();
             }
           }
         }
-        paramafdt = paramafdt.getAppName();
+        paramafii = paramafii.getAppName();
         localObject1 = ((JSONObject)localObject1).toString();
-        float f = anjs.a();
+        float f = anob.a();
         localObject2 = MessageForArkApp.getConfigFromXml(localDocument);
         if (QLog.isColorLevel()) {
           QLog.i("ArkApp", 2, "ArkFullScreenApp config getShareMsg:" + (String)localObject2);
         }
-        paramafdt = a(this, str, paramafdt, (String)localObject1, (String)localObject2, f);
-        return paramafdt;
+        paramafii = a(this, str, paramafii, (String)localObject1, (String)localObject2, f);
+        return paramafii;
       }
     }
-    catch (Exception paramafdt)
+    catch (Exception paramafii)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("ArkFullScreenAppActivity", 1, "getShareMsg send message parameter error: " + paramafdt.getMessage());
+        QLog.i("ArkFullScreenAppActivity", 1, "getShareMsg send message parameter error: " + paramafii.getMessage());
       }
       return null;
     }
@@ -438,21 +438,21 @@ public class ArkFullScreenAppActivity
   
   public void a()
   {
-    bhpy localbhpy = (bhpy)bhql.a(this, null);
-    localbhpy.a(getString(2131720057), 0);
-    localbhpy.a(new abzq(this, localbhpy));
-    localbhpy.c(2131690648);
-    localbhpy.show();
+    bhuf localbhuf = (bhuf)bhus.a(this, null);
+    localbhuf.a(getString(2131720069), 0);
+    localbhuf.a(new acef(this, localbhuf));
+    localbhuf.c(2131690648);
+    localbhuf.show();
   }
   
-  public void a(afdt paramafdt, String paramString)
+  public void a(afii paramafii, String paramString)
   {
-    if ((this.jdField_a_of_type_Bdfk != null) && (this.jdField_a_of_type_Bdfk.jdField_a_of_type_Afdt == paramafdt))
+    if ((this.jdField_a_of_type_Bdjt != null) && (this.jdField_a_of_type_Bdjt.jdField_a_of_type_Afii == paramafii))
     {
-      this.jdField_a_of_type_Bdfk.e = paramString;
+      this.jdField_a_of_type_Bdjt.e = paramString;
       setTitle(paramString);
     }
-    bdfk localbdfk;
+    bdjt localbdjt;
     do
     {
       return;
@@ -460,28 +460,28 @@ public class ArkFullScreenAppActivity
       while (!localIterator.hasNext()) {
         localIterator = this.jdField_a_of_type_JavaUtilStack.iterator();
       }
-      localbdfk = (bdfk)localIterator.next();
-    } while ((localbdfk == null) || (localbdfk.jdField_a_of_type_Afdt != paramafdt));
-    localbdfk.e = paramString;
+      localbdjt = (bdjt)localIterator.next();
+    } while ((localbdjt == null) || (localbdjt.jdField_a_of_type_Afii != paramafii));
+    localbdjt.e = paramString;
   }
   
-  public void a(afdt paramafdt, boolean paramBoolean)
+  public void a(afii paramafii, boolean paramBoolean)
   {
     int j = 0;
     Iterator localIterator = this.jdField_a_of_type_JavaUtilStack.iterator();
     while (localIterator.hasNext())
     {
-      bdfk localbdfk = (bdfk)localIterator.next();
-      if ((localbdfk != null) && (localbdfk.jdField_a_of_type_Afdt == paramafdt))
+      bdjt localbdjt = (bdjt)localIterator.next();
+      if ((localbdjt != null) && (localbdjt.jdField_a_of_type_Afii == paramafii))
       {
-        localbdfk.jdField_a_of_type_Boolean = paramBoolean;
-        if (this.jdField_a_of_type_Bdfk == localbdfk)
+        localbdjt.jdField_a_of_type_Boolean = paramBoolean;
+        if (this.jdField_a_of_type_Bdjt == localbdjt)
         {
-          if ((!localbdfk.jdField_a_of_type_Afdt.checkShare()) || (!localbdfk.jdField_a_of_type_Boolean)) {
+          if ((!localbdjt.jdField_a_of_type_Afii.checkShare()) || (!localbdjt.jdField_a_of_type_Boolean)) {
             break label102;
           }
           i = 1;
-          paramafdt = this.rightViewImg;
+          paramafii = this.rightViewImg;
           if (i == 0) {
             break label107;
           }
@@ -492,7 +492,7 @@ public class ArkFullScreenAppActivity
     label107:
     for (int i = j;; i = 4)
     {
-      paramafdt.setVisibility(i);
+      paramafii.setVisibility(i);
       return;
       i = 0;
       break;
@@ -501,12 +501,12 @@ public class ArkFullScreenAppActivity
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((paramInt2 == -1) && (paramInt1 == 100) && (this.jdField_a_of_type_Bdfk != null))
+    if ((paramInt2 == -1) && (paramInt1 == 100) && (this.jdField_a_of_type_Bdjt != null))
     {
-      anjv.a(this.app, "FullScreenClickOper", this.jdField_a_of_type_Bdfk.jdField_a_of_type_JavaLangString, null, anjv.e, 0, 0);
-      anjv.a(this.app, this.jdField_a_of_type_Bdfk.jdField_a_of_type_JavaLangString, "FullScreenShareSuccess", 0, 0, 0L, 0L, 0L, "", "");
+      anoe.a(this.app, "FullScreenClickOper", this.jdField_a_of_type_Bdjt.jdField_a_of_type_JavaLangString, null, anoe.e, 0, 0);
+      anoe.a(this.app, this.jdField_a_of_type_Bdjt.jdField_a_of_type_JavaLangString, "FullScreenShareSuccess", 0, 0, 0L, 0L, 0L, "", "");
       if (1 == this.jdField_a_of_type_Int) {
-        anjv.a(this.app, this.jdField_a_of_type_Bdfk.jdField_a_of_type_JavaLangString, "ArkFullShareFromAppManage", 1, 0, 0L, 0L, 0L, null, null);
+        anoe.a(this.app, this.jdField_a_of_type_Bdjt.jdField_a_of_type_JavaLangString, "ArkFullShareFromAppManage", 1, 0, 0L, 0L, 0L, null, null);
       }
     }
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
@@ -535,34 +535,34 @@ public class ArkFullScreenAppActivity
     ((NavBarCommon)this.vg).a(true);
     this.leftView.setText("");
     this.leftView.setMinWidth(MessageForArkApp.dp2px(35.0F));
-    localObject = (RelativeLayout)findViewById(2131375812);
+    localObject = (RelativeLayout)findViewById(2131375863);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840100);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840101);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(15);
-    localLayoutParams.addRule(1, 2131368613);
+    localLayoutParams.addRule(1, 2131368624);
     ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new abzm(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aceb(this));
     int i = MessageForArkApp.dp2px(6.0F);
     this.jdField_a_of_type_AndroidWidgetImageView.setPadding(i, 0, i, 0);
-    this.rightViewImg = ((ImageView)findViewById(2131368627));
+    this.rightViewImg = ((ImageView)findViewById(2131368638));
     this.rightViewImg.setBackgroundDrawable(null);
     setLayerType(this.rightViewImg);
     this.rightViewImg.setVisibility(4);
-    this.rightViewImg.setImageResource(2130840102);
-    this.rightViewImg.setContentDescription(alpo.a(2131701052));
-    this.rightViewImg.setOnClickListener(new abzn(this));
+    this.rightViewImg.setImageResource(2130840103);
+    this.rightViewImg.setContentDescription(alud.a(2131701064));
+    this.rightViewImg.setOnClickListener(new acec(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)findViewById(2131362815));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setBorderType(0);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setCallback(new abzo(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setCallback(new aced(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.post(new ArkFullScreenAppActivity.5(this, paramBundle));
     if (QLog.isColorLevel()) {
       QLog.d("ArkFullScreenAppActivity", 2, "doOnCreate:" + paramBundle);
     }
-    findViewById(2131375812);
-    anjv.a(this.app, "ShowView", paramBundle.getString("appName"), null, anjv.h, 0, 0);
-    anlb.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
+    findViewById(2131375863);
+    anoe.a(this.app, "ShowView", paramBundle.getString("appName"), null, anoe.h, 0, 0);
+    anpk.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler)))
     {
       this.jdField_a_of_type_ComTencentMobileqqArkArkTopGestureLayout = new ArkTopGestureLayout(this);
@@ -570,19 +570,19 @@ public class ArkFullScreenAppActivity
     }
     if (ThemeUtil.isInNightMode(this.app))
     {
-      paramBundle = (RelativeLayout)findViewById(2131377989);
-      LayoutInflater.from(this).inflate(2131560084, paramBundle);
+      paramBundle = (RelativeLayout)findViewById(2131378043);
+      LayoutInflater.from(this).inflate(2131560083, paramBundle);
     }
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("show_as_card", false);
     this.b = getIntent().getIntExtra("card_height", 0);
     if ((this.jdField_a_of_type_Boolean) && (this.b > 0))
     {
-      findViewById(2131375812).setVisibility(8);
+      findViewById(2131375863).setVisibility(8);
       paramBundle = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLayoutParams();
       paramBundle.addRule(12);
       paramBundle.height = this.b;
       this.titleRoot.setBackgroundResource(0);
-      this.titleRoot.setOnClickListener(new abzp(this));
+      this.titleRoot.setOnClickListener(new acee(this));
     }
     return true;
   }
@@ -634,8 +634,8 @@ public class ArkFullScreenAppActivity
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_Bdfk != null) {
-      anjv.a(this.app, "FullScreenClickOper", this.jdField_a_of_type_Bdfk.jdField_a_of_type_JavaLangString, null, anjv.jdField_a_of_type_Int, 0, 0);
+    if (this.jdField_a_of_type_Bdjt != null) {
+      anoe.a(this.app, "FullScreenClickOper", this.jdField_a_of_type_Bdjt.jdField_a_of_type_JavaLangString, null, anoe.jdField_a_of_type_Int, 0, 0);
     }
     if (QLog.isColorLevel()) {
       QLog.i("ArkFullScreenAppActivity", 2, "onBackEvent: " + this.jdField_a_of_type_JavaUtilStack.size());
@@ -651,15 +651,15 @@ public class ArkFullScreenAppActivity
       }
       return super.onBackEvent();
     }
-    afdt localafdt = ((bdfk)this.jdField_a_of_type_JavaUtilStack.pop()).jdField_a_of_type_Afdt;
-    if (localafdt != null) {
-      localafdt.doOnEvent(2);
+    afii localafii = ((bdjt)this.jdField_a_of_type_JavaUtilStack.pop()).jdField_a_of_type_Afii;
+    if (localafii != null) {
+      localafii.doOnEvent(2);
     }
-    this.jdField_a_of_type_Bdfk = ((bdfk)this.jdField_a_of_type_JavaUtilStack.peek());
-    if (this.jdField_a_of_type_Bdfk != null)
+    this.jdField_a_of_type_Bdjt = ((bdjt)this.jdField_a_of_type_JavaUtilStack.peek());
+    if (this.jdField_a_of_type_Bdjt != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.initArkView(this.jdField_a_of_type_Bdfk.jdField_a_of_type_Afdt);
-      setTitle(this.jdField_a_of_type_Bdfk.e);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.initArkView(this.jdField_a_of_type_Bdjt.jdField_a_of_type_Afii);
+      setTitle(this.jdField_a_of_type_Bdjt.e);
     }
     if (this.jdField_a_of_type_JavaUtilStack.size() > 1) {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);

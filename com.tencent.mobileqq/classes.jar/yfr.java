@@ -1,13 +1,15 @@
-import java.util.concurrent.ThreadFactory;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
 
-public final class yfr
-  implements ThreadFactory
+class yfr
+  implements ykh<Object>
 {
-  public Thread newThread(Runnable paramRunnable)
+  yfr(yfp paramyfp, zac paramzac) {}
+  
+  public void a(Object... paramVarArgs)
   {
-    paramRunnable = new Thread(paramRunnable);
-    paramRunnable.setName("pre-loader-pool-" + paramRunnable.getId());
-    return paramRunnable;
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
+      this.jdField_a_of_type_Zac.a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (CertifiedAccountRead.StGetFeedDetailRsp)paramVarArgs[3]);
+    }
   }
 }
 

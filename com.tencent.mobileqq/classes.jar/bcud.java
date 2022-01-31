@@ -1,14 +1,24 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.troopAddFrd.TroopRecommendFriendFragment;
 
-class bcud
-  implements FilenameFilter
+public class bcud
+  implements ahkx
 {
-  bcud(bcua parambcua, String paramString) {}
+  public bcud(TroopRecommendFriendFragment paramTroopRecommendFriendFragment) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
+    if (!(paramViewHolder instanceof bctx)) {
+      return;
+    }
+    paramView = ((bctx)paramViewHolder).a;
+    bcpx.a(TroopRecommendFriendFragment.a(this.a), TroopRecommendFriendFragment.a(this.a), paramView.a, TroopRecommendFriendFragment.a(this.a), TroopRecommendFriendFragment.a(this.a));
+  }
+  
+  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    return false;
   }
 }
 

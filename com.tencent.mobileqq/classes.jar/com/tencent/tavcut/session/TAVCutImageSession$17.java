@@ -7,21 +7,20 @@ import com.tencent.weseevideo.composition.image.WSImageRender;
 class TAVCutImageSession$17
   implements Runnable
 {
-  TAVCutImageSession$17(TAVCutImageSession paramTAVCutImageSession) {}
+  TAVCutImageSession$17(TAVCutImageSession paramTAVCutImageSession, int paramInt) {}
   
   public void run()
   {
-    DurationUtil.start("TAVCutImageSession release");
-    int i = 0;
-    while (i < TAVCutImageSession.access$300(this.this$0).size())
-    {
-      int j = TAVCutImageSession.access$300(this.this$0).keyAt(i);
-      ((WSImageRender)TAVCutImageSession.access$300(this.this$0).get(j)).release();
-      i += 1;
+    if (TAVCutImageSession.access$200(this.this$0).get(this.val$index) == null) {
+      return;
     }
-    TAVCutImageSession.access$300(this.this$0).clear();
-    TAVCutImageSession.access$200(this.this$0).clear();
-    DurationUtil.end("TAVCutImageSession release");
+    if ((this.this$0.renderChainManagers.get(this.val$index) == null) || (TAVCutImageSession.access$300(this.this$0).get(this.val$index) == null))
+    {
+      DurationUtil.start("initRenderEnvironment");
+      TAVCutImageSession.access$500(this.this$0, this.val$index);
+      DurationUtil.end("initRenderEnvironment");
+    }
+    ((WSImageRender)TAVCutImageSession.access$300(this.this$0).get(this.val$index)).render(new TAVCutImageSession.17.1(this));
   }
 }
 

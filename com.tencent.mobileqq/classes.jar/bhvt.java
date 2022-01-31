@@ -1,27 +1,45 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.widget.CountDownProgressBar;
 
 public class bhvt
+  extends Handler
 {
-  public float a;
-  public int a;
-  public BitmapDrawable a;
-  public Drawable a;
-  public URLDrawable a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  public bhvt(CountDownProgressBar paramCountDownProgressBar) {}
   
-  public bhvt() {}
-  
-  public bhvt(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
-    this.b = paramInt2;
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
+      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
+      return;
+      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
+      if (CountDownProgressBar.a(this.a) <= (float)CountDownProgressBar.a(this.a)) {
+        break;
+      }
+      CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
+      this.a.invalidate();
+    } while (CountDownProgressBar.a(this.a) == null);
+    CountDownProgressBar.a(this.a).a();
+    return;
+    CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
+    if (CountDownProgressBar.b(this.a) >= (float)CountDownProgressBar.b(this.a))
+    {
+      CountDownProgressBar.b(this.a, 0.0F);
+      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) - 1);
+    }
+    for (;;)
+    {
+      this.a.invalidate();
+      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
+      return;
+      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) + CountDownProgressBar.a(this.a));
+    }
   }
 }
 

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import adzc;
-import bcln;
+import aedr;
+import bcpw;
 
 public class TroopInfoActivity$29$1
   implements Runnable
 {
-  public TroopInfoActivity$29$1(adzc paramadzc, bcln parambcln) {}
+  public TroopInfoActivity$29$1(aedr paramaedr, bcpw parambcpw) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bcln.d == 0)
+    if (this.jdField_a_of_type_Bcpw.d == 0)
     {
-      TroopInfoActivity.b(this.jdField_a_of_type_Adzc.a);
+      TroopInfoActivity.b(this.jdField_a_of_type_Aedr.a);
       return;
     }
-    TroopInfoActivity.i(this.jdField_a_of_type_Adzc.a);
+    TroopInfoActivity.i(this.jdField_a_of_type_Aedr.a);
   }
 }
 

@@ -1,21 +1,40 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadLogInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadLogListener;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-
-class bfkg
-  implements ITMAssistantDownloadLogListener
+public class bfkg
 {
-  SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
+  public boolean e;
+  public boolean f;
   
-  bfkg(bfkb parambfkb) {}
-  
-  public void onLog(ArrayList<TMAssistantDownloadLogInfo> paramArrayList)
+  public bfkg(String paramString1, String paramString2)
   {
-    if ((paramArrayList == null) && (QLog.isColorLevel())) {
-      QLog.i("DownloadManager_", 2, "logList is null");
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+  }
+  
+  public bfkg(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_d_of_type_JavaLangString = paramString4;
+    this.jdField_d_of_type_Boolean = paramBoolean;
   }
 }
 

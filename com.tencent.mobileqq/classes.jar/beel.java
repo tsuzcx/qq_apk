@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler.5.1;
+import android.net.Uri;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-public class beel
-  implements DialogInterface.OnClickListener
+class beel
+  extends beep
 {
-  beel(beei parambeei, int paramInt, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  beel(beej parambeej)
   {
-    ThreadManager.excute(new SwiftBrowserShareMenuHandler.5.1(this), 128, null, false);
-    beei.a(this.jdField_a_of_type_Beei, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    super(parambeej, null);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "new shouldInterceptRequest");
+    }
+    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
   }
 }
 

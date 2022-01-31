@@ -1,43 +1,20 @@
-import android.app.Dialog;
-import android.os.Handler;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class agqg
-  extends bfvh
+  implements View.OnClickListener
 {
-  agqg(agot paramagot) {}
+  agqg(agps paramagps) {}
   
-  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public void onClick(View paramView)
   {
-    if ((!paramBoolean) || (paramHashMap == null))
-    {
-      this.a.E(2);
-      this.a.a.sendEmptyMessageDelayed(10, 3000L);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "mQimStatusOnClickListener.onClick: invoked. info: v = " + paramView);
     }
-    if (((Integer)paramHashMap.get("result")).intValue() == 0)
-    {
-      this.a.E(1);
-      this.a.a.sendEmptyMessageDelayed(10, 3000L);
-      return;
-    }
-    this.a.ao = true;
-    this.a.bH();
-    if ((agot.a(this.a) != null) && (agot.a(this.a).isShowing())) {
-      agot.a(this.a).dismiss();
-    }
-    this.a.bI();
-  }
-  
-  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
-  {
-    if ((!paramBoolean) || (paramHashMap == null)) {
-      return;
-    }
-    this.a.ar = true;
-    this.a.aq = ((Boolean)paramHashMap.get("result")).booleanValue();
-    this.a.bH();
-    this.a.bI();
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X80087E6");
+    aglv.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

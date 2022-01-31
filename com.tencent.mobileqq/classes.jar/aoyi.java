@@ -1,57 +1,45 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aoyi
 {
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private final aoww jdField_a_of_type_Aoww;
-  private final Rect b = new Rect();
+  private Map<String, Long> a = new HashMap();
   
-  public aoyi(aoww paramaoww)
+  public static aoyi a(aoko[] paramArrayOfaoko)
   {
-    this.jdField_a_of_type_Aoww = paramaoww;
-  }
-  
-  private boolean a(Canvas paramCanvas, aoxh paramaoxh, aoxq paramaoxq, aoyh paramaoyh)
-  {
-    paramaoxq = this.jdField_a_of_type_Aoww.a(paramaoxh, paramaoxq);
-    if (paramaoxq == null) {
-      return false;
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0)) {
+      return null;
     }
-    int i = paramCanvas.save();
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, (int)paramaoxh.f(), (int)paramaoxh.g());
-    this.b.set((int)paramaoxh.b(), (int)paramaoxh.c(), (int)paramaoxh.d(), (int)paramaoxh.e());
-    paramCanvas.drawBitmap(paramaoxq, this.jdField_a_of_type_AndroidGraphicsRect, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.restoreToCount(i);
-    return true;
-  }
-  
-  private void b(Canvas paramCanvas, aoxh paramaoxh, aoxq paramaoxq, aoyh paramaoyh)
-  {
-    int i = paramCanvas.save();
-    paramaoyh.a(paramCanvas, paramaoxh, paramaoxq, paramaoxh.h(), paramaoxh.i());
-    paramCanvas.restoreToCount(i);
-  }
-  
-  public void a(Canvas paramCanvas, aoxh paramaoxh, aoxq paramaoxq, aoyh paramaoyh)
-  {
-    if (paramCanvas == null) {}
-    do
+    localaoyi = new aoyi();
+    try
     {
-      return;
-      if (!paramaoxh.e()) {
-        break;
+      paramArrayOfaoko = new JSONObject(paramArrayOfaoko[0].a);
+      Iterator localIterator = paramArrayOfaoko.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localaoyi.a.put(str, Long.valueOf(paramArrayOfaoko.getLong(str)));
       }
-    } while (a(paramCanvas, paramaoxh, paramaoxq, paramaoyh));
-    aoyg.a(false);
-    b(paramCanvas, paramaoxh, paramaoxq, paramaoyh);
+      return localaoyi;
+    }
+    catch (JSONException paramArrayOfaoko)
+    {
+      QLog.e("TencentDocPreviewConfigBean", 1, paramArrayOfaoko.getLocalizedMessage(), paramArrayOfaoko);
+    }
+  }
+  
+  public Map<String, Long> a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoyi
  * JD-Core Version:    0.7.0.1
  */

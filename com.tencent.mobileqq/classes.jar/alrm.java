@@ -1,66 +1,149 @@
-import SWEET_NEW_BASE.sweet_req_comm;
-import SWEET_NEW_PAIR.sweet_pair_check_rsp;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class alrm
-  extends alko
+  extends MSFServlet
 {
-  public alrm(QQAppInterface paramQQAppInterface)
+  private byte[] a(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    super(paramQQAppInterface);
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(1274);
+    localOIDBSSOPkg.uint32_service_type.set(7);
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramArrayOfString1.length * 2 + 4 + paramArrayOfString2.length * 4);
+    int n = paramArrayOfString1.length;
+    int i = (byte)(n >> 8 & 0xFF);
+    int j = (byte)(n & 0xFF);
+    byte[] arrayOfByte = new byte[paramArrayOfString1.length * 2];
+    int i1 = 0;
+    int i2 = paramArrayOfString1.length;
+    n = 0;
+    long l;
+    while (n < i2)
+    {
+      l = Long.parseLong(paramArrayOfString1[n]);
+      arrayOfByte[i1] = ((byte)(int)(l >> 8 & 0xFF));
+      arrayOfByte[(i1 + 1)] = ((byte)(int)(l & 0xFF));
+      i1 += 2;
+      n += 1;
+    }
+    n = paramArrayOfString2.length;
+    int k = (byte)(n >> 8 & 0xFF);
+    int m = (byte)(n & 0xFF);
+    i1 = 0;
+    paramArrayOfString1 = new byte[n * 4];
+    i2 = paramArrayOfString2.length;
+    n = 0;
+    while (n < i2)
+    {
+      l = Long.parseLong(paramArrayOfString2[n]);
+      paramArrayOfString1[(i1 + 3)] = ((byte)(int)(0xFF & l));
+      paramArrayOfString1[(i1 + 2)] = ((byte)(int)(l >> 8 & 0xFF));
+      paramArrayOfString1[(i1 + 1)] = ((byte)(int)(l >> 16 & 0xFF));
+      paramArrayOfString1[i1] = ((byte)(int)(l >> 24 & 0xFF));
+      i1 += 4;
+      n += 1;
+    }
+    localByteBuffer.put(new byte[] { i, j }).put(arrayOfByte).put(new byte[] { k, m }).put(paramArrayOfString1);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localByteBuffer.array()));
+    paramArrayOfString1 = localOIDBSSOPkg.toByteArray();
+    paramArrayOfString2 = ByteBuffer.allocate(paramArrayOfString1.length + 4);
+    paramArrayOfString2.putInt(paramArrayOfString1.length + 4);
+    paramArrayOfString2.put(paramArrayOfString1);
+    return paramArrayOfString2.array();
   }
   
-  private void a(long paramLong)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if ((this.app != null) && (paramLong > 0L))
+    int j = paramIntent.getIntExtra("key_cmd", -1);
+    paramFromServiceMsg.isSuccess();
+    Bundle localBundle = new Bundle();
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    switch (j)
     {
-      SharedPreferences localSharedPreferences = this.app.getPreferences();
-      if (localSharedPreferences != null) {
-        localSharedPreferences.edit().putLong("love_uin_for_current_user", paramLong).apply();
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.app != null)
-    {
-      SharedPreferences localSharedPreferences = this.app.getPreferences();
-      if (localSharedPreferences != null) {
-        localSharedPreferences.edit().putInt("love_state_for_current_uin" + this.app.c(), paramInt).apply();
-      }
-    }
-    notifyUI(1, true, Integer.valueOf(paramInt));
-  }
-  
-  public void a(boolean paramBoolean, sweet_pair_check_rsp paramsweet_pair_check_rsp)
-  {
-    if ((paramBoolean) && (paramsweet_pair_check_rsp != null)) {
-      if (paramsweet_pair_check_rsp.host_state != 3) {
-        break label42;
-      }
-    }
-    label42:
-    for (int i = 1;; i = 0)
-    {
-      a(i);
-      if (paramsweet_pair_check_rsp.req_comm != null) {
-        a(paramsweet_pair_check_rsp.req_comm.loveuin);
-      }
+    default: 
       return;
     }
+    for (;;)
+    {
+      try
+      {
+        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        byte[] arrayOfByte = new byte[paramFromServiceMsg.getInt() - 4];
+        paramFromServiceMsg.get(arrayOfByte);
+        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom(arrayOfByte);
+        if (paramFromServiceMsg.uint32_result.get() == 0)
+        {
+          bool = true;
+          paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
+          if (bool)
+          {
+            arrayOfByte = new byte[2];
+            paramFromServiceMsg.get(arrayOfByte);
+            int k = bdeu.a(arrayOfByte, 0);
+            int i = 0;
+            if (i < k)
+            {
+              arrayOfByte = new byte[4];
+              paramFromServiceMsg.get(arrayOfByte);
+              localArrayList2.add(String.valueOf(bdeu.a(arrayOfByte, 0)));
+              arrayOfByte = new byte[2];
+              paramFromServiceMsg.get(arrayOfByte);
+              long l = bdeu.a(arrayOfByte, 0);
+              arrayOfByte = new byte[2];
+              paramFromServiceMsg.get(arrayOfByte);
+              l = bdeu.a(arrayOfByte, 0);
+              arrayOfByte = new byte[2];
+              paramFromServiceMsg.get(arrayOfByte);
+              arrayOfByte = new byte[bdeu.a(arrayOfByte, 0)];
+              paramFromServiceMsg.get(arrayOfByte);
+              localArrayList1.add(new String(arrayOfByte, "utf-8"));
+              i += 1;
+              continue;
+            }
+          }
+          localBundle.putStringArrayList("nickname_list", (ArrayList)localArrayList1);
+          localBundle.putStringArrayList("uin_list", (ArrayList)localArrayList2);
+          notifyObserver(paramIntent, j, bool, localBundle, xzl.class);
+          return;
+        }
+      }
+      catch (Exception paramIntent)
+      {
+        paramIntent.printStackTrace();
+        return;
+      }
+      boolean bool = false;
+    }
   }
   
-  protected Class<? extends alkr> observerClass()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return alrn.class;
+    int i = paramIntent.getIntExtra("key_cmd", -1);
+    String str = null;
+    switch (i)
+    {
+    }
+    for (paramIntent = str;; paramIntent = str)
+    {
+      if (paramIntent != null) {
+        paramPacket.setSSOCommand(paramIntent);
+      }
+      return;
+      str = "OidbSvc.0x4fa_7";
+      paramPacket.putSendData(a(paramIntent.getStringArrayExtra("field_id"), paramIntent.getStringArrayExtra("uin_list")));
+    }
   }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

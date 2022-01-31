@@ -3,7 +3,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.pull2refresh.XRecyclerView;
 
 public class ovw
-  implements bibd
+  implements bifk
 {
   public ovw(ReadInJoyDynamicChannelFragment paramReadInJoyDynamicChannelFragment) {}
   

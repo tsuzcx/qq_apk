@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import acex;
-import aljq;
+import acjm;
+import alof;
 import android.app.Activity;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -21,10 +21,10 @@ public class WeishiManager$1
     {
       return;
       SessionInfo localSessionInfo = new SessionInfo();
-      localSessionInfo.jdField_a_of_type_JavaLangString = aljq.aQ;
+      localSessionInfo.jdField_a_of_type_JavaLangString = alof.aQ;
       localSessionInfo.jdField_a_of_type_Int = 1008;
-      acex.a(oye.a(this.this$0), localSessionInfo);
-      oye.a(this.this$0).a().c(aljq.aQ, 1008);
+      acjm.a(oye.a(this.this$0), localSessionInfo);
+      oye.a(this.this$0).a().c(alof.aQ, 1008);
     } while (!(this.a instanceof ReadInJoyChannelActivity));
     ((ReadInJoyChannelActivity)this.a).b();
   }

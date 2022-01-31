@@ -1,20 +1,36 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
 
 public class ahvg
+  implements Handler.Callback
 {
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public Object a;
-  public String a;
-  public TextView b;
-  public TextView c;
+  public ahvg(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
   
-  public ahvg(ahvc paramahvc) {}
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == SimpleCheckableSlidingIndicator.d)
+    {
+      if (this.a.getScrollX() == SimpleCheckableSlidingIndicator.a(this.a))
+      {
+        SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.a);
+        if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
+          SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
+        }
+        SimpleCheckableSlidingIndicator.a(this.a).removeMessages(SimpleCheckableSlidingIndicator.d);
+      }
+    }
+    else {
+      return false;
+    }
+    SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.c);
+    if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
+      SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
+    }
+    SimpleCheckableSlidingIndicator.b(this.a, this.a.getScrollX());
+    SimpleCheckableSlidingIndicator.a(this.a).sendEmptyMessageDelayed(SimpleCheckableSlidingIndicator.d, 50L);
+    return false;
+  }
 }
 
 

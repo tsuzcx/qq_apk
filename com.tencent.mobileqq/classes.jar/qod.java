@@ -21,7 +21,7 @@ public class qod
   public static ArrayList<Intent> a()
   {
     ArrayList localArrayList = new ArrayList();
-    SharedPreferences localSharedPreferences = bjxj.a(ors.a(), true, false);
+    SharedPreferences localSharedPreferences = bkbq.a(ors.a(), true, false);
     int i = 1;
     while (i <= 2)
     {
@@ -122,7 +122,7 @@ public class qod
     String str2;
     try
     {
-      localSharedPreferences = bjxj.a(ors.a(), true, true);
+      localSharedPreferences = bkbq.a(ors.a(), true, true);
       localEditor = localSharedPreferences.edit();
       localObject = a();
       localArrayList = new ArrayList();
@@ -563,7 +563,7 @@ public class qod
   {
     String str = paramBundle.getString("mTaskID", "");
     c(paramBundle);
-    paramBundle = bjxj.a(ors.a(), true, true);
+    paramBundle = bkbq.a(ors.a(), true, true);
     SharedPreferences.Editor localEditor = paramBundle.edit();
     boolean bool2 = false;
     int i = 1;

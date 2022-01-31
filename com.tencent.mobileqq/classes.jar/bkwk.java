@@ -1,8 +1,6 @@
 public abstract interface bkwk
 {
-  public abstract void a(bkwh parambkwh, long paramLong1, long paramLong2);
-  
-  public abstract void a(bkwh parambkwh, String paramString, boolean paramBoolean, int paramInt);
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

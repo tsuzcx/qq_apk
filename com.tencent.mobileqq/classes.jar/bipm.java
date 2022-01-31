@@ -1,21 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
-
-public class bipm
-  implements DialogInterface.OnClickListener
+public abstract class bipm
 {
-  public bipm(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    QlinkShareJumpActivity.a(this.a, false);
-    this.a.finish();
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bipm
  * JD-Core Version:    0.7.0.1
  */

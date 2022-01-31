@@ -22,7 +22,7 @@ public class ois
     }
     localBundle.putInt("edit_video_type", 10013);
     localBundle.putInt("key_ability_flag", 3);
-    localBundle.putInt("key_max_duration", bjxj.f(BaseApplicationImpl.getApplication().getRuntime()));
+    localBundle.putInt("key_max_duration", bkbq.f(BaseApplicationImpl.getApplication().getRuntime()));
     return localBundle;
   }
   
@@ -42,18 +42,18 @@ public class ois
     }
     if (a().c())
     {
-      QQToast.a(paramActivity, 0, 2131720119, 0).a();
+      QQToast.a(paramActivity, 0, 2131720131, 0).a();
       return;
     }
-    boolean bool = bnob.b(a());
-    if (!axld.a())
+    boolean bool = bnsn.b(a());
+    if (!axpm.a())
     {
       b(paramActivity);
       return;
     }
-    if ((!bool) && (!bdee.g(paramActivity)))
+    if ((!bool) && (!bdin.g(paramActivity)))
     {
-      QQToast.a(paramActivity, 2131719266, 0).a();
+      QQToast.a(paramActivity, 2131719278, 0).a();
       return;
     }
     a();
@@ -64,10 +64,10 @@ public class ois
     }
     Intent localIntent = new Intent(paramActivity, CaptureQmcfSoDownloadActivity.class);
     localIntent.putExtras(a(paramBundle));
-    localIntent.putExtra("pendingIntentClass", bkjq.class.getName());
+    localIntent.putExtra("pendingIntentClass", bknx.class.getName());
     localIntent.putExtra("pendingIntentRequest", paramByte);
     localIntent.putExtra("pendingIntentAllWait", true);
-    CaptureQmcfSoDownloadActivity.a(paramActivity, bkjy.class.getName(), localIntent.getExtras(), paramByte);
+    CaptureQmcfSoDownloadActivity.a(paramActivity, bkof.class.getName(), localIntent.getExtras(), paramByte);
   }
   
   public static void a(Context paramContext)
@@ -80,18 +80,18 @@ public class ois
     localBundle.putBoolean("enable_local_video", false);
     if (a().c())
     {
-      QQToast.a(paramContext, 0, 2131720119, 0).a();
+      QQToast.a(paramContext, 0, 2131720131, 0).a();
       return;
     }
-    boolean bool = bnob.b(a());
-    if (!axld.a())
+    boolean bool = bnsn.b(a());
+    if (!axpm.a())
     {
       b(paramContext);
       return;
     }
-    if ((!bool) && (!bdee.g(paramContext)))
+    if ((!bool) && (!bdin.g(paramContext)))
     {
-      QQToast.a(paramContext, 2131719266, 0).a();
+      QQToast.a(paramContext, 2131719278, 0).a();
       return;
     }
     a();
@@ -107,18 +107,18 @@ public class ois
   {
     if (a().c())
     {
-      QQToast.a(paramContext, 0, 2131720119, 0).a();
+      QQToast.a(paramContext, 0, 2131720131, 0).a();
       return;
     }
-    boolean bool = bnob.b(a());
-    if (!axld.a())
+    boolean bool = bnsn.b(a());
+    if (!axpm.a())
     {
       b(paramContext);
       return;
     }
-    if ((!bool) && (!bdee.g(paramContext)))
+    if ((!bool) && (!bdin.g(paramContext)))
     {
-      QQToast.a(paramContext, 2131719266, 0).a();
+      QQToast.a(paramContext, 2131719278, 0).a();
       return;
     }
     a();
@@ -127,20 +127,20 @@ public class ois
       QIMCameraCaptureActivity.a(paramContext, a(paramBundle));
       return;
     }
-    CaptureQmcfSoDownloadActivity.a(paramContext, bkjq.class.getName(), a(paramBundle), true);
+    CaptureQmcfSoDownloadActivity.a(paramContext, bknx.class.getName(), a(paramBundle), true);
   }
   
   public static void a(sxe paramsxe, Context paramContext, Bundle paramBundle, byte paramByte)
   {
-    boolean bool = bnob.b(paramsxe.mRuntime.a());
-    if (!axld.a())
+    boolean bool = bnsn.b(paramsxe.mRuntime.a());
+    if (!axpm.a())
     {
       b(paramContext);
       return;
     }
-    if ((!bool) && (!bdee.g(paramContext)))
+    if ((!bool) && (!bdin.g(paramContext)))
     {
-      QQToast.a(paramContext, 2131719266, 0).a();
+      QQToast.a(paramContext, 2131719278, 0).a();
       return;
     }
     paramsxe.m();
@@ -151,7 +151,7 @@ public class ois
     }
     paramContext = new Intent(paramContext, CaptureQmcfSoDownloadActivity.class);
     paramContext.putExtras(a(paramBundle));
-    paramContext.putExtra("pendingIntentClass", bkjq.class.getName());
+    paramContext.putExtra("pendingIntentClass", bknx.class.getName());
     paramContext.putExtra("pendingIntentRequest", paramByte);
     paramContext.putExtra("pendingIntentAllWait", true);
     paramsxe.startActivityForResult(paramContext, paramByte);
@@ -159,12 +159,12 @@ public class ois
   
   private static boolean a()
   {
-    return azgk.a(a(), BaseApplicationImpl.getContext());
+    return azkt.a(a(), BaseApplicationImpl.getContext());
   }
   
   private static void b(Context paramContext)
   {
-    bdcd.a(paramContext, 230).setMessage(alpo.a(2131713131)).setPositiveButton(2131694951, new oit()).show();
+    bdgm.a(paramContext, 230).setMessage(alud.a(2131713143)).setPositiveButton(2131694953, new oit()).show();
   }
 }
 

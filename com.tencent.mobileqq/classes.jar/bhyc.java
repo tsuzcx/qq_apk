@@ -1,6 +1,8 @@
-abstract interface bhyc
+import android.view.View;
+
+public abstract interface bhyc
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void a(View paramView);
 }
 
 

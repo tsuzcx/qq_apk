@@ -2,12 +2,12 @@ package com.tencent.qqmini.sdk.runtime.plugin;
 
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import bghn;
-import bgho;
-import bgid;
-import bgkd;
-import bgki;
-import bgkz;
+import bglu;
+import bglv;
+import bgmk;
+import bgok;
+import bgop;
+import bgpg;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,16 +24,16 @@ public class CanvasJsPlugin
   public static final String EVENT_TO_TEMP_FILE_PATH = "canvasToTempFilePath";
   public static final String EVENT_UPDATE_CANVAS = "updateCanvas";
   
-  public void doInterceptJsEvent(bgkd parambgkd)
+  public void doInterceptJsEvent(bgok parambgok)
   {
-    this.mMiniAppContext.a(bgid.a(parambgkd, 2));
+    this.mMiniAppContext.a(bgmk.a(parambgok, 2));
   }
   
-  public String measureText(bgkd parambgkd)
+  public String measureText(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
       Paint localPaint = new Paint(1);
       String str = localJSONObject.optString("fontFamily");
       if ("normal".equals(localJSONObject.optString("fontStyle"))) {
@@ -46,9 +46,9 @@ public class CanvasJsPlugin
       try
       {
         localJSONObject.put("width", f);
-        localJSONObject = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, localJSONObject);
-        if ((parambgkd.jdField_a_of_type_Bghn != null) && (localJSONObject != null)) {
-          parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, bgkz.a(localJSONObject, "errMsg", parambgkd.jdField_a_of_type_JavaLangString + ":complete").toString());
+        localJSONObject = bgop.a(parambgok.jdField_a_of_type_JavaLangString, localJSONObject);
+        if ((parambgok.jdField_a_of_type_Bglu != null) && (localJSONObject != null)) {
+          parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, bgpg.a(localJSONObject, "errMsg", parambgok.jdField_a_of_type_JavaLangString + ":complete").toString());
         }
         return localJSONObject.toString();
       }
@@ -61,9 +61,9 @@ public class CanvasJsPlugin
       }
       return "";
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
-      parambgkd.printStackTrace();
+      parambgok.printStackTrace();
     }
   }
 }

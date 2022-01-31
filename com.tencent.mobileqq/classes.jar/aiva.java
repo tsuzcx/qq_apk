@@ -1,13 +1,29 @@
-import android.text.InputFilter;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
-public abstract interface aiva
+class aiva
+  implements ThreadExcutor.IThreadListener
 {
-  public abstract String a(CopyOnWriteArrayList<String> paramCopyOnWriteArrayList, boolean paramBoolean);
+  aiva(aiux paramaiux, List paramList, Map paramMap, Bundle paramBundle) {}
   
-  public abstract boolean a(String paramString);
+  public void onAdded() {}
   
-  public abstract InputFilter[] a(int paramInt);
+  public void onPostRun()
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      beae localbeae = new beae(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilMap, UUID.randomUUID().toString());
+      localbeae.a(this.jdField_a_of_type_AndroidOsBundle);
+      if (this.jdField_a_of_type_Aiux.a != null) {
+        this.jdField_a_of_type_Aiux.a.a(localbeae, aiux.a(this.jdField_a_of_type_Aiux), null);
+      }
+    }
+  }
+  
+  public void onPreRun() {}
 }
 
 

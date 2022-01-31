@@ -69,19 +69,19 @@ public class phg
   private SparseArray<WeakReference<phh>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   
-  public phg(awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public phg(awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(null, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(null, paramawgf, paramExecutorService, parampuz, paramHandler);
   }
   
-  public phg(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public phg(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
   }
   
   private int a()
   {
-    switch (bdee.a(BaseApplication.getContext()))
+    switch (bdin.a(BaseApplication.getContext()))
     {
     case 0: 
     default: 
@@ -382,7 +382,7 @@ public class phg
   
   private int b()
   {
-    switch (bdee.a(BaseApplication.getContext()))
+    switch (bdin.a(BaseApplication.getContext()))
     {
     case 0: 
     default: 
@@ -648,16 +648,16 @@ public class phg
         l1 = paramToServiceMsg.leftBtmRedPntPulseMaxCnt.get();
         long l2 = paramToServiceMsg.firstScnRedPntPulseMaxCnt.get();
         long l3 = paramToServiceMsg.AIOPulseMaxCnt.get();
-        bjxj.a(ors.a(), l1, l2, l3);
+        bkbq.a(ors.a(), l1, l2, l3);
       }
       if ((paramToServiceMsg.lastRecvMsgDuration.has()) && (paramToServiceMsg.lastSendMsgDuration.has())) {
-        bjxj.a((int)paramToServiceMsg.lastRecvMsgDuration.get(), (int)paramToServiceMsg.lastSendMsgDuration.get());
+        bkbq.a((int)paramToServiceMsg.lastRecvMsgDuration.get(), (int)paramToServiceMsg.lastSendMsgDuration.get());
       }
       if ((paramToServiceMsg.pulseTimerDuration.has()) && (paramToServiceMsg.pulseTimerDuration.get() != 12345678L)) {
         oxp.a().b((int)paramToServiceMsg.pulseTimerDuration.get());
       }
       if (paramToServiceMsg.leftBtmRedCntMaxForExitAIO.has()) {
-        bjxj.f((int)paramToServiceMsg.leftBtmRedCntMaxForExitAIO.get());
+        bkbq.f((int)paramToServiceMsg.leftBtmRedCntMaxForExitAIO.get());
       }
       if ((paramToServiceMsg.uint64_main_video_tab_red.has()) && (paramToServiceMsg.uint64_main_video_tab_red.get() > 0L)) {
         ((KandianMergeManager)ors.a().getManager(162)).a(new KandianRedDotInfo("kandian_video_tab_reddot_info"));
@@ -744,12 +744,12 @@ public class phg
     localReqBody.uint32_app_bitmap.set(3);
     Object localObject = localReqBody.uint32_is_concise_mode;
     int i;
-    if (azib.b())
+    if (azmk.b())
     {
       i = 1;
       ((PBUInt32Field)localObject).set(i);
       localReqBody.uint32_privacy_status.set(syz.b());
-      if (!bjxj.j()) {
+      if (!bkbq.j()) {
         break label223;
       }
       localReqBody.uint32_kandian_mode.set(3);
@@ -776,7 +776,7 @@ public class phg
       i = 0;
       break;
       label223:
-      if (bjxj.i()) {
+      if (bkbq.i()) {
         localReqBody.uint32_kandian_mode.set(2);
       } else {
         localReqBody.uint32_kandian_mode.set(1);
@@ -841,10 +841,10 @@ public class phg
     {
       long l = Long.parseLong(paramString);
       paramString = new byte[9];
-      bdlr.a(paramString, 0, l);
+      bdqa.a(paramString, 0, l);
       paramString[4] = 0;
-      bdlr.a(paramString, 5, (short)1);
-      bdlr.a(paramString, 7, jdField_a_of_type_Int);
+      bdqa.a(paramString, 5, (short)1);
+      bdqa.a(paramString, 7, jdField_a_of_type_Int);
       paramString = pvb.a("OidbSvc.0x480_9", 1152, 9, paramString);
       paramString.extraData.putBoolean("reqFromReadinjoyHandler", true);
       a(paramString);
@@ -866,12 +866,12 @@ public class phg
     {
       long l = Long.parseLong(paramString);
       paramString = new byte[13];
-      bdlr.a(paramString, 0, l);
+      bdqa.a(paramString, 0, l);
       paramString[4] = 0;
-      bdlr.a(paramString, 5, (short)1);
-      bdlr.a(paramString, 7, jdField_a_of_type_Int);
-      bdlr.a(paramString, 9, (short)2);
-      bdlr.a(paramString, 11, (short)paramInt);
+      bdqa.a(paramString, 5, (short)1);
+      bdqa.a(paramString, 7, jdField_a_of_type_Int);
+      bdqa.a(paramString, 9, (short)2);
+      bdqa.a(paramString, 11, (short)paramInt);
       paramString = pvb.a("OidbSvc.0x4ff_9", 1279, 9, paramString);
       paramString.extraData.putBoolean("reqFromReadinjoyHandler", true);
       a(paramString);

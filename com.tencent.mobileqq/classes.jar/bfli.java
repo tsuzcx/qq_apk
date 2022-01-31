@@ -1,11 +1,23 @@
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import java.util.ArrayList;
-
-public abstract interface bfli
+public class bfli
+  extends bflj
 {
-  public abstract void a(String paramString);
+  private String n;
   
-  public abstract void a(ArrayList<ApkUpdateDetail> paramArrayList);
+  public static bfli a()
+  {
+    return new bfli();
+  }
+  
+  public bfli a(String paramString)
+  {
+    this.n = paramString;
+    return this;
+  }
+  
+  public String a()
+  {
+    return b() + "|" + c() + "|" + this.n;
+  }
 }
 
 

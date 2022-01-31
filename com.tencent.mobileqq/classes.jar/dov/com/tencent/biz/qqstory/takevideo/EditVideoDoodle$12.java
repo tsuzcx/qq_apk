@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import alpo;
-import bmhd;
+import alud;
+import bmlp;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class EditVideoDoodle$12
   implements Runnable
 {
-  public EditVideoDoodle$12(bmhd parambmhd) {}
+  public EditVideoDoodle$12(bmlp parambmlp) {}
   
   public void run()
   {
-    QQToast.a(this.this$0.a(), alpo.a(2131704280), 0).a();
+    QQToast.a(this.this$0.a(), alud.a(2131704292), 0).a();
   }
 }
 

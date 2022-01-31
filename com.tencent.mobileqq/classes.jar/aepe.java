@@ -1,12 +1,6 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class aepe
+public abstract interface aepe
 {
-  public int a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView b;
+  public abstract void a(int paramInt1, String paramString, int paramInt2);
 }
 
 

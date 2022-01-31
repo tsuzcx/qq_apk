@@ -1,31 +1,45 @@
-import android.os.Build.VERSION;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
 public class augy
 {
-  public static void a()
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  
+  public augy(String paramString1, String paramString2, MsgBackupUserData paramMsgBackupUserData, int paramInt)
   {
-    if (Build.VERSION.SDK_INT > 25)
-    {
-      Runtime.getRuntime().gc();
-      Runtime.getRuntime().gc();
-      Runtime.getRuntime().runFinalization();
-    }
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < 2)
-      {
-        ArrayList localArrayList = new ArrayList();
-        do
-        {
-          localArrayList.add(new WeakReference(new byte[100]));
-        } while (((WeakReference)localArrayList.get((int)(Math.random() * localArrayList.size()))).get() != null);
-        i += 1;
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public MsgBackupUserData a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupConfirmQrRsp--");
+    localStringBuilder.append(",token:").append(this.jdField_a_of_type_JavaLangString).append(",encryptKey:").append(this.b).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

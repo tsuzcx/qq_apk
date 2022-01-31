@@ -1,52 +1,15 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity.6.1;
+import java.util.ArrayList;
 
-class yaa
-  implements yvn<CertifiedAccountRead.StGetFeedListRsp>
+public class yaa
+  implements ybh
 {
-  yaa(xzz paramxzz, yeb paramyeb) {}
+  public yaa(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedListRsp paramStGetFeedListRsp)
+  public void a(ArrayList<ybe> paramArrayList)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if ((paramBoolean) && (paramLong == 0L))
-    {
-      if ((!this.jdField_a_of_type_Yeb.c()) && (!this.jdField_a_of_type_Yeb.d())) {
-        break label122;
-      }
-      paramString = this.jdField_a_of_type_Xzz;
-      localList = paramStGetFeedListRsp.vecFeed.get();
-      localStCommonExt = paramStGetFeedListRsp.extInfo;
-      if (paramStGetFeedListRsp.isFinish.get() != 1) {
-        break label117;
-      }
-      paramBoolean = bool1;
-      paramString.a(localList, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
-      this.jdField_a_of_type_Xzz.b("share_key_continue_feeds", new ydw(paramStGetFeedListRsp.vecFeed.get()));
-    }
-    label117:
-    label122:
-    while (!this.jdField_a_of_type_Yeb.e()) {
-      for (;;)
-      {
-        return;
-        paramBoolean = false;
-      }
-    }
-    paramString = this.jdField_a_of_type_Xzz;
-    List localList = paramStGetFeedListRsp.vecFeed.get();
-    COMM.StCommonExt localStCommonExt = paramStGetFeedListRsp.extInfo;
-    if (paramStGetFeedListRsp.isFinish.get() == 1) {}
-    for (paramBoolean = bool2;; paramBoolean = false)
-    {
-      paramString.b(localList, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
-      return;
-    }
+    this.a.runOnUiThread(new QRLoginMgrActivity.6.1(this, paramArrayList));
   }
 }
 

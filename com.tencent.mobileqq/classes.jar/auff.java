@@ -1,99 +1,73 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForLongTextMsg;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class auff
+class auff
+  implements awkh
 {
-  public static aufc a;
+  MessageForLongTextMsg jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg;
   
-  private static HashMap<String, String> a()
+  auff(aufc paramaufc, QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, alwx paramalwx) {}
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    HashMap localHashMap = new HashMap();
-    if (a != null)
+    return null;
+  }
+  
+  public void a(awki paramawki) {}
+  
+  public void b(awki paramawki)
+  {
+    try
     {
-      aufh.a("MsgBackup_MsgBackupReporter", "mReportContainer = %s", new Object[] { a });
-      localHashMap.put("bizType", String.valueOf(a.jdField_a_of_type_Int));
-      localHashMap.put("platForm", String.valueOf(a.jdField_b_of_type_Int));
-      localHashMap.put("requestStatus", String.valueOf(a.jdField_a_of_type_Boolean));
-      localHashMap.put("errorCode", String.valueOf(a.jdField_c_of_type_Int));
-      localHashMap.put("totalCost", String.valueOf(a.jdField_a_of_type_Long));
-      localHashMap.put("averageSpeed", String.valueOf(a.jdField_a_of_type_Double));
-      localHashMap.put("totalSessionCount", String.valueOf(a.jdField_b_of_type_Long));
-      localHashMap.put("finishedSessionCount", String.valueOf(a.jdField_c_of_type_Long));
-      localHashMap.put("resSessionContains", String.valueOf(a.jdField_d_of_type_Long));
-      localHashMap.put("resTotalSize", String.valueOf(a.e));
-      localHashMap.put("dbTotalSize", String.valueOf(a.f));
-      localHashMap.put("resRequestCount", String.valueOf(a.g));
-      localHashMap.put("resRequestFailedCount", String.valueOf(a.h));
-      localHashMap.put("resRequestCancelCount", String.valueOf(a.i));
-      localHashMap.put("resTrivialCount", String.valueOf(a.j));
-      localHashMap.put("resTrivialFailedCount", String.valueOf(a.k));
-      localHashMap.put("resTrivialCancelCount", String.valueOf(a.l));
-      localHashMap.put("dbRequestCount", String.valueOf(a.m));
-      localHashMap.put("dbRequestFailedCount", String.valueOf(a.n));
-      localHashMap.put("dbRequestCancelCount", String.valueOf(a.o));
-      localHashMap.put("udpDetected", String.valueOf(a.jdField_b_of_type_Boolean));
-      localHashMap.put("connectType", String.valueOf(a.jdField_d_of_type_Int));
-      localHashMap.put("connectElipse", String.valueOf(a.p));
-      localHashMap.put("sessionReadyAllTimes", String.valueOf(a.q));
-      localHashMap.put("fileFailedCount", String.valueOf(a.r));
-      localHashMap.put("fileErrorList", String.valueOf(a.jdField_a_of_type_JavaUtilArrayList));
+      if (paramawki.jdField_a_of_type_Int == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MixedMsgManager", 2, "step3: sendLongTextMsg pack upload cost: " + (System.currentTimeMillis() - aufc.a(this.jdField_a_of_type_Aufc)) + ",mResid:" + paramawki.c);
+        }
+        AbsShareMsg localAbsShareMsg = acjm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
+        localAbsShareMsg.mResid = paramawki.c;
+        localAbsShareMsg.mFileName = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+        localAbsShareMsg.multiMsgFlag = 1;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg = ((MessageForLongTextMsg)azaf.a(-1051));
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.structingMsg = localAbsShareMsg;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.frienduin = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.istroop = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.selfuin = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.selfuin;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.senderuin = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.senderuin;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.isread = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.isread;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.time = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.time;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.msgseq = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgseq;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.msgUid = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgUid;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.shmsgseq = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.shmsgseq;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.issend = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.issend;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.uniseq = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.mAnimFlag = true;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.longMsgCount = 1;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.longMsgIndex = 0;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.longMsgId = ((short)(int)this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.shmsgseq);
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.saveExtInfoToExtStr("long_text_msg_resid", paramawki.c);
+        nav.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg);
+        ((axwx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(326)).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg, this.jdField_a_of_type_Alwx);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("MixedMsgManager", 2, "upload multi msg pack failed, result.errStr=" + paramawki.b + ",result.errStr=" + paramawki.jdField_a_of_type_JavaLangString);
+      }
+      aufc.a(this.jdField_a_of_type_Aufc, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true, "upload longMsg pack fail: errCode = " + paramawki.b);
+      return;
     }
-    return localHashMap;
-  }
-  
-  public static void a()
-  {
-    if (a == null)
+    catch (Exception paramawki)
     {
-      a = new aufc();
-      a.a();
-      a.jdField_b_of_type_Int = 4;
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupReporter", 2, "report() called with: key = [" + paramString + "]");
-    }
-    azmj.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupReporter", 2, "report() called with: key = [" + paramString + "], fromType = [" + paramInt + "]");
-    }
-    azmj.b(null, "dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupReporter", 2, "report() called with: key = [" + paramString + "], fromType = [" + paramInt1 + "], reservedFromType = [" + paramInt2 + "]");
-    }
-    azmj.b(null, "dc00898", "", "", paramString, paramString, paramInt1, 0, String.valueOf(paramInt2), "", "", "");
-  }
-  
-  public static void b()
-  {
-    if (a != null)
-    {
-      a.a();
-      a = null;
-    }
-  }
-  
-  public static void c()
-  {
-    if (a != null)
-    {
-      HashMap localHashMap = a();
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      azmz.a(BaseApplicationImpl.getContext()).a(str, "MsgBackup_MsgBackupReporter", true, 0L, 0L, localHashMap, null);
-      b();
+      if (QLog.isColorLevel()) {
+        QLog.d("MixedMsgManager", 2, "upload multi msg pack failed, catch exception", paramawki);
+      }
+      aufc.a(this.jdField_a_of_type_Aufc, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true, "sendStructLongMsg fail: exception" + paramawki.getMessage());
     }
   }
 }

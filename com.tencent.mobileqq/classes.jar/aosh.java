@@ -1,86 +1,132 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.util.WeakReference;
 
 public class aosh
-  implements aoga<String>
+  extends aokh<aosf>
 {
-  public String a;
-  public ArrayList<aosi> a;
-  private String b = "place_holder";
-  private String c = "data";
-  private String d = "topic_id";
-  private String e = "topic_name";
+  public static String a;
+  private WeakReference<bkek> a;
   
-  public aosh()
+  static
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_JavaLangString = "{\n    \"switch\":1,\n    \"match\":[\n        {\n            \"key\":\"花木兰\",\n            \"resUrl\":\"https://d3g.qq.com/sngapp/app/update/20191028162616_9505/libai_dae.zip\",\n            \"md5\":\"52b1ab75bbd04aef4eb889cc6b625dad\"\n        },\n        {\n            \"key\":\"miku\",\n            \"resUrl\":\"https://d3g.qq.com/sngapp/app/update/20191029174146_1019/miku_fbx.zip\",\n            \"md5\":\"f957c6847f06e485a021ed81d5b5024a\"\n        },\n        {\n            \"key\":\"莓莓蛋糕\",\n            \"resUrl\":\"https://d3g.qq.com/sngapp/app/update/20191107111004_5856/cake_dae.zip\",\n            \"md5\":\"4fe9009093acbea20a65f281958879eb\"\n        }\n    ],\n    \"blackList\":\"SLA-AL00\"\n}";
   }
   
-  public void a(String paramString)
+  private void a(boolean paramBoolean, aosf paramaosf, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (TextUtils.isEmpty(paramString))
+    bkfe.a().b(paramaosf);
+    if (this.jdField_a_of_type_MqqUtilWeakReference == null)
     {
-      QLog.e("SigTopicConfig", 1, "SigTopic config content is empty");
+      QLog.e("VipARConfProcessor", 1, "load config listener = null");
       return;
     }
-    for (;;)
+    bkek localbkek = (bkek)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localbkek == null)
     {
+      QLog.e("VipARConfProcessor", 1, "load config vipARConfigListener = null");
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramString2 = paramaosf;
+      if (paramaosf == null) {
+        paramString2 = new aosf();
+      }
+      QLog.i("VipARConfProcessor", 1, "notifyListener isSuccess : " + paramBoolean + " refer  = " + paramString1 + " data  = " + paramString2.toString());
+      localbkek.a(paramString2);
+      return;
+    }
+    QLog.i("VipARConfProcessor", 1, "notifyListener fail :  refer  = " + paramString1 + " error = " + paramString2);
+    localbkek.a(paramString2);
+  }
+  
+  public int a()
+  {
+    return 499;
+  }
+  
+  @NonNull
+  public aosf a(int paramInt)
+  {
+    QLog.e("VipARConfProcessor", 1, "migrateOldOrDefaultContent: " + paramInt);
+    return new aosf();
+  }
+  
+  @Nullable
+  public aosf a(aoko[] paramArrayOfaoko)
+  {
+    if (paramArrayOfaoko != null) {
       try
       {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        paramString = localJSONObject.optJSONArray(this.c);
-        this.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.b, alpo.a(2131714538));
-        if (paramString == null) {
-          break;
+        if (paramArrayOfaoko.length > 0)
+        {
+          int j = paramArrayOfaoko.length;
+          int i = 0;
+          while (i < j)
+          {
+            aoko localaoko = paramArrayOfaoko[i];
+            if (localaoko != null)
+            {
+              aosf localaosf = aosf.a(localaoko.jdField_a_of_type_JavaLangString);
+              if (QLog.isColorLevel()) {
+                QLog.d("VipARConfProcessor", 2, "onParsed " + localaoko.jdField_a_of_type_JavaLangString);
+              }
+              if (localaosf != null) {
+                return localaosf;
+              }
+            }
+            i += 1;
+          }
         }
-        i = 0;
-        if (i >= paramString.length()) {
-          break;
-        }
-        localJSONObject = paramString.getJSONObject(i);
-        localaosi = new aosi();
-        localaosi.jdField_a_of_type_Int = localJSONObject.optInt(this.d);
-        localaosi.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.e);
-        if (!TextUtils.isEmpty(localaosi.jdField_a_of_type_JavaLangString)) {
-          break label193;
-        }
-        if (!QLog.isColorLevel()) {
-          break label198;
-        }
-        QLog.e("SigTopicConfig", 2, new Object[] { "SigTopic config parse has invalid item,index=", Integer.valueOf(i) });
+        return new aosf();
       }
-      catch (JSONException paramString)
+      catch (Exception paramArrayOfaoko)
       {
-        int i;
-        aosi localaosi;
-        QLog.e("SigTopicConfig", 1, "SigTopic config parse exception", paramString);
-        return;
+        paramArrayOfaoko.printStackTrace();
+        QLog.e("VipARConfProcessor", 1, "onParsed Exception = " + paramArrayOfaoko.getMessage());
       }
-      if (j != 0) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localaosi);
-      }
-      i += 1;
-      continue;
-      label193:
-      int j = 1;
-      continue;
-      label198:
-      j = 0;
     }
   }
   
-  public String toString()
+  public Class<aosf> a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      return "recommend title is " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_a_of_type_JavaUtilArrayList.toString();
+    return aosf.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.e("VipARConfProcessor", 1, "onReqFailed: " + paramInt);
+    a(false, null, "onReqFailed", " failCode = " + paramInt);
+  }
+  
+  public void a(aosf paramaosf)
+  {
+    if ((QLog.isColorLevel()) && (paramaosf != null)) {
+      QLog.i("VipARConfProcessor", 2, "onUpdate: " + paramaosf.toString());
     }
-    return "";
+    if (paramaosf != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(bool, paramaosf, "onUpdate", " error bean = null");
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

@@ -11,9 +11,9 @@ public class myo
 {
   protected int a;
   protected long a;
-  protected amab a;
+  protected ameq a;
   protected Context a;
-  public bepp a;
+  public bety a;
   protected QQAppInterface a;
   protected Runnable a;
   protected String a;
@@ -23,7 +23,7 @@ public class myo
   public myo(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString, myr parammyr)
   {
     this.jdField_a_of_type_JavaLangRunnable = new JoinGroupHandler.2(this);
-    this.jdField_a_of_type_Amab = new myq(this);
+    this.jdField_a_of_type_Ameq = new myq(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_Int = paramInt;
@@ -33,7 +33,7 @@ public class myo
   
   private void a(int paramInt1, int paramInt2)
   {
-    new beqa(this.jdField_a_of_type_AndroidContentContext).a(paramInt1, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914), 0, paramInt2);
+    new beuj(this.jdField_a_of_type_AndroidContentContext).a(paramInt1, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914), 0, paramInt2);
   }
   
   private void a(TroopInfo paramTroopInfo)
@@ -45,7 +45,7 @@ public class myo
       this.jdField_a_of_type_Myr.b();
       return;
     }
-    a(2131721045, 1);
+    a(2131721057, 1);
     this.jdField_a_of_type_Myr.a();
   }
   
@@ -53,7 +53,7 @@ public class myo
   {
     try
     {
-      if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing()))
+      if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing()))
       {
         long l1 = System.currentTimeMillis();
         long l2 = this.b;
@@ -62,7 +62,7 @@ public class myo
           ThreadManager.getUIHandlerV2().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
           return;
         }
-        this.jdField_a_of_type_Bepp.dismiss();
+        this.jdField_a_of_type_Bety.dismiss();
         return;
       }
     }
@@ -76,15 +76,15 @@ public class myo
   {
     try
     {
-      alzf localalzf = (alzf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+      amdu localamdu = (amdu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
       this.jdField_a_of_type_Long = paramLong;
-      localalzf.a(paramLong, 8390784);
+      localamdu.a(paramLong, 8390784);
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      a(2131720539, 0);
+      a(2131720551, 0);
       this.jdField_a_of_type_Myr.a();
     }
   }
@@ -93,14 +93,14 @@ public class myo
   {
     try
     {
-      if (this.jdField_a_of_type_Bepp == null)
+      if (this.jdField_a_of_type_Bety == null)
       {
-        this.jdField_a_of_type_Bepp = new bepp(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
-        this.jdField_a_of_type_Bepp.c(2131695088);
-        this.jdField_a_of_type_Bepp.c(false);
-        this.jdField_a_of_type_Bepp.setOnDismissListener(new myp(this));
+        this.jdField_a_of_type_Bety = new bety(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
+        this.jdField_a_of_type_Bety.c(2131695090);
+        this.jdField_a_of_type_Bety.c(false);
+        this.jdField_a_of_type_Bety.setOnDismissListener(new myp(this));
       }
-      this.jdField_a_of_type_Bepp.show();
+      this.jdField_a_of_type_Bety.show();
       this.b = System.currentTimeMillis();
       return;
     }
@@ -112,14 +112,14 @@ public class myo
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amab);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ameq);
   }
   
   public void a(long paramLong)
   {
-    if (!bdee.d(this.jdField_a_of_type_AndroidContentContext))
+    if (!bdin.d(this.jdField_a_of_type_AndroidContentContext))
     {
-      a(2131694764, 0);
+      a(2131694766, 0);
       this.jdField_a_of_type_Myr.a();
       return;
     }
@@ -135,7 +135,7 @@ public class myo
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amab);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ameq);
     ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     a(true);
   }

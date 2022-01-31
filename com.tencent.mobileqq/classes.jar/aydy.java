@@ -1,26 +1,77 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class aydy
-  implements Manager
+class aydy
+  implements EIPCResultCallback
 {
-  public static final String a;
-  public static final String b = alpo.a(2131714054);
-  public static final String c = alpo.a(2131714053);
-  public static final String d = alpo.a(2131714056);
-  int jdField_a_of_type_Int = -1;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  aydy(aydw paramaydw) {}
   
-  static
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    jdField_a_of_type_JavaLangString = alpo.a(2131714055);
-  }
-  
-  public aydy(QQAppInterface paramQQAppInterface) {}
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    Object localObject = paramEIPCResult.data;
+    if (localObject == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            switch (((Bundle)localObject).getInt("notify_type"))
+            {
+            case 6: 
+            case 7: 
+            default: 
+              return;
+            case 4: 
+              paramEIPCResult = ((Bundle)localObject).getSerializable("my_signature");
+            }
+          } while (!(paramEIPCResult instanceof RichStatus));
+          aydw.c(this.a);
+          localObject = new ArrayList();
+          ((ArrayList)localObject).add(Integer.valueOf(5));
+          ((ArrayList)localObject).add(paramEIPCResult);
+          this.a.notifyObservers(localObject);
+          return;
+          localObject = new HashMap();
+          ((HashMap)localObject).put("change_status_callback_data", paramEIPCResult.data);
+          i = paramEIPCResult.data.getInt("result");
+          int j = paramEIPCResult.data.getInt("type");
+          aydw.d(this.a);
+          paramEIPCResult = new ArrayList();
+          paramEIPCResult.add(Integer.valueOf(6));
+          paramEIPCResult.add(Integer.valueOf(i));
+          paramEIPCResult.add(localObject);
+          paramEIPCResult.add(Integer.valueOf(j));
+          this.a.notifyObservers(paramEIPCResult);
+          return;
+          ((Bundle)localObject).getLong("bid");
+          paramEIPCResult = ((Bundle)localObject).getString("scid");
+        } while (TextUtils.isEmpty(paramEIPCResult));
+        i = ((Bundle)localObject).getInt("download_result");
+      } while ((!paramEIPCResult.startsWith("signature.sticker.")) || (i != 0));
+      paramEIPCResult = paramEIPCResult.substring("signature.sticker.".length(), paramEIPCResult.length() - 4);
+    } while (!TextUtils.isDigitsOnly(paramEIPCResult));
+    int i = Integer.parseInt(paramEIPCResult);
+    aydw.e(this.a);
+    paramEIPCResult = new ArrayList();
+    paramEIPCResult.add(Integer.valueOf(7));
+    paramEIPCResult.add(Integer.valueOf(i));
+    this.a.notifyObservers(paramEIPCResult);
+    return;
+    i = ((Bundle)localObject).getInt("key_history_signature_num");
+    aydw.f(this.a);
+    paramEIPCResult = new ArrayList();
+    paramEIPCResult.add(Integer.valueOf(8));
+    paramEIPCResult.add(Integer.valueOf(i));
+    this.a.notifyObservers(paramEIPCResult);
   }
 }
 

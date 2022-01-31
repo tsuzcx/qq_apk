@@ -1,67 +1,65 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.danmaku.core.DanmakuManager;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoxc
-  implements Handler.Callback
+  extends aokh<aoxb>
 {
-  private WeakReference<DanmakuManager> a;
-  
-  private aoxc(DanmakuManager paramDanmakuManager)
+  public static aoxb a()
   {
-    this.a = new WeakReference(paramDanmakuManager);
+    return (aoxb)aoks.a().a(342);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public int a()
   {
-    DanmakuManager localDanmakuManager = (DanmakuManager)this.a.get();
-    if (localDanmakuManager == null) {
-      return false;
+    return 342;
+  }
+  
+  @NonNull
+  public aoxb a(int paramInt)
+  {
+    return new aoxb();
+  }
+  
+  @Nullable
+  public aoxb a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aoxb.a(paramArrayOfaoko);
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 1: 
-      DanmakuManager.a(localDanmakuManager, paramMessage);
-      DanmakuManager.a(localDanmakuManager);
-      return false;
-    case 2: 
-      DanmakuManager.a(localDanmakuManager);
-      return false;
-    case 4: 
-      DanmakuManager.b(localDanmakuManager);
-      return false;
-    case 3: 
-      DanmakuManager.c(localDanmakuManager);
-      return false;
-    case 5: 
-      DanmakuManager.b(localDanmakuManager, paramMessage);
-      return false;
-    case 6: 
-      DanmakuManager.d(localDanmakuManager);
-      return false;
-    case 7: 
-      DanmakuManager.e(localDanmakuManager);
-      return false;
-    case 8: 
-      DanmakuManager.f(localDanmakuManager);
-      return false;
-    case 9: 
-      DanmakuManager.g(localDanmakuManager);
-      return false;
-    case 10: 
-      DanmakuManager.h(localDanmakuManager);
-      return false;
-    }
-    DanmakuManager.i(localDanmakuManager);
+    return null;
+  }
+  
+  public Class<aoxb> a()
+  {
+    return aoxb.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("TencentDocAIOShowGuideDialogProcessor", 1, "TENCENT_DOC_AIO_SHOW_GUIDE_DIALOG failed, resultCode:" + paramInt);
+  }
+  
+  public void a(aoxb paramaoxb) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
     return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoxc
  * JD-Core Version:    0.7.0.1
  */

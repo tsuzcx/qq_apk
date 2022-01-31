@@ -1,30 +1,14 @@
-import android.content.Context;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
-
-public class bjec
-  extends Scroller
+public abstract class bjec
 {
-  public int a;
+  public static bjec a = new bjed();
   
-  public bjec(Context paramContext, Interpolator paramInterpolator)
-  {
-    super(paramContext, paramInterpolator);
-  }
+  public abstract int a();
   
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
+  public abstract String a();
   
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public String toString()
   {
-    startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+    return a() + ':' + a();
   }
 }
 

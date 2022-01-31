@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewG
 import com.tencent.qphone.base.util.QLog;
 
 public class ruo
-  extends alox
+  extends altm
 {
   public ruo(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
   

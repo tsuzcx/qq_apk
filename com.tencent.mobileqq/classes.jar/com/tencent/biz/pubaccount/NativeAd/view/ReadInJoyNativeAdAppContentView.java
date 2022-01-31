@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.NativeAd.view;
 
-import aaqp;
+import aave;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import beav;
+import befe;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
@@ -24,7 +24,7 @@ import nph;
 public class ReadInJoyNativeAdAppContentView
   extends FrameLayout
 {
-  private aaqp jdField_a_of_type_Aaqp;
+  private aave jdField_a_of_type_Aave;
   private Context jdField_a_of_type_AndroidContentContext;
   private ReadInJoyNativeAdAppVideoView jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView;
   private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
@@ -66,7 +66,7 @@ public class ReadInJoyNativeAdAppContentView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    inflate(paramContext, 2131559880, this);
+    inflate(paramContext, 2131559879, this);
     d();
     b(paramContext);
   }
@@ -75,9 +75,9 @@ public class ReadInJoyNativeAdAppContentView
   {
     AppInterface localAppInterface = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
     this.jdField_a_of_type_ComTencentBizUiTouchWebView = ((TouchWebView)findViewById(2131362686));
-    this.jdField_a_of_type_Aaqp = new nph(this, paramContext, a(), a(), localAppInterface);
-    this.jdField_a_of_type_Aaqp.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    new beav(this.jdField_a_of_type_Aaqp).a(null, localAppInterface, a());
+    this.jdField_a_of_type_Aave = new nph(this, paramContext, a(), a(), localAppInterface);
+    this.jdField_a_of_type_Aave.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
+    new befe(this.jdField_a_of_type_Aave).a(null, localAppInterface, a());
   }
   
   private void d()
@@ -93,8 +93,8 @@ public class ReadInJoyNativeAdAppContentView
     if (this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView != null) {
       this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.a();
     }
-    if (this.jdField_a_of_type_Aaqp != null) {
-      this.jdField_a_of_type_Aaqp.c();
+    if (this.jdField_a_of_type_Aave != null) {
+      this.jdField_a_of_type_Aave.c();
     }
   }
   

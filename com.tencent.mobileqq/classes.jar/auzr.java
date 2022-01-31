@@ -1,37 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
 
-final class auzr
-  implements URLDrawable.URLDrawableListener
+public class auzr
+  implements View.OnClickListener
 {
-  auzr(String paramString1, auzu paramauzu, String paramString2, String paramString3, String paramString4, QQAppInterface paramQQAppInterface) {}
+  public auzr(RecentUserInvitePanel paramRecentUserInvitePanel) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    paramURLDrawable = bcwc.b(BaseApplicationImpl.getApplication().getResources(), 2130844842);
-    WXShareHelper.a().a(new auzt(this));
-    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
-    new auzx().h("video").i("playpage_fw_suc").a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    Bitmap localBitmap = auzi.a(paramURLDrawable);
-    paramURLDrawable = localBitmap;
-    if (localBitmap == null) {
-      paramURLDrawable = bcwc.b(BaseApplicationImpl.getApplication().getResources(), 2130844842);
+    if (this.a.a != null) {
+      this.a.a.a(paramView);
     }
-    WXShareHelper.a().a(new auzs(this));
-    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
-    new auzx().h("video").i("playpage_fw_suc").a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

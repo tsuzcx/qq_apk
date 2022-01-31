@@ -1,23 +1,24 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
 public class adoj
-  implements zdq
+  extends alpq
 {
-  WeakReference<QQSettingMe> a;
+  public adoj(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public adoj(QQSettingMe paramQQSettingMe)
+  protected void onCardLabelUpdate(boolean paramBoolean, Object paramObject)
   {
-    this.a = new WeakReference(paramQQSettingMe);
-  }
-  
-  public int a()
-  {
-    QQSettingMe localQQSettingMe = (QQSettingMe)this.a.get();
-    if (localQQSettingMe != null) {
-      return localQQSettingMe.a();
+    if (paramBoolean)
+    {
+      this.a.setResult(-1);
+      this.a.b(2131720598);
     }
-    return 0;
+    for (;;)
+    {
+      this.a.a = false;
+      this.a.finish();
+      return;
+      this.a.b(2131720596);
+    }
   }
 }
 

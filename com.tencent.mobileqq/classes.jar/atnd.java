@@ -1,13 +1,17 @@
-import android.view.View;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-class atnd
+public class atnd
+  implements DialogInterface.OnClickListener
 {
-  View a;
-  public TextView a;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  public View c;
+  public atnd(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ListenTogetherOverlayFragment.a(this.a).finish();
+  }
 }
 
 

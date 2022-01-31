@@ -2,10 +2,10 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
 import android.content.IntentFilter;
-import bghn;
-import bgho;
-import bgkd;
-import bgki;
+import bglu;
+import bglv;
+import bgok;
+import bgop;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
@@ -20,37 +20,37 @@ public class BatteryJsPlugin
   private boolean isCharging;
   private BatteryJsPlugin.PowerConnectionReceiver mPowerConnectionReceiver = new BatteryJsPlugin.PowerConnectionReceiver(this);
   
-  public String getBatteryInfo(bgkd parambgkd)
+  public String getBatteryInfo(bgok parambgok)
   {
     Object localObject = new JSONObject();
     try
     {
       ((JSONObject)localObject).put("level", (int)(this.batteryPct * 100.0F));
       ((JSONObject)localObject).put("isCharging", this.isCharging);
-      localObject = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, (JSONObject)localObject).toString();
-      if ("getBatteryInfo".equals(parambgkd.jdField_a_of_type_JavaLangString)) {
-        parambgkd.jdField_a_of_type_Bghn.a(parambgkd.b, (String)localObject);
+      localObject = bgop.a(parambgok.jdField_a_of_type_JavaLangString, (JSONObject)localObject).toString();
+      if ("getBatteryInfo".equals(parambgok.jdField_a_of_type_JavaLangString)) {
+        parambgok.jdField_a_of_type_Bglu.a(parambgok.b, (String)localObject);
       }
       return localObject;
     }
     catch (Throwable localThrowable)
     {
       QMLog.e("BatteryJsPlugin", localThrowable.getMessage(), localThrowable);
-      if ("getBatteryInfo".equals(parambgkd.jdField_a_of_type_JavaLangString))
+      if ("getBatteryInfo".equals(parambgok.jdField_a_of_type_JavaLangString))
       {
-        String str = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, null).toString();
-        parambgkd.jdField_a_of_type_Bghn.a(parambgkd.b, str);
+        String str = bgop.b(parambgok.jdField_a_of_type_JavaLangString, null).toString();
+        parambgok.jdField_a_of_type_Bglu.a(parambgok.b, str);
       }
     }
     return "";
   }
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    super.onCreate(parambgho);
-    parambgho = new IntentFilter();
-    parambgho.addAction("android.intent.action.BATTERY_CHANGED");
-    this.mContext.registerReceiver(this.mPowerConnectionReceiver, parambgho);
+    super.onCreate(parambglv);
+    parambglv = new IntentFilter();
+    parambglv.addAction("android.intent.action.BATTERY_CHANGED");
+    this.mContext.registerReceiver(this.mPowerConnectionReceiver, parambglv);
   }
   
   public void onDestroy()

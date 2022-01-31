@@ -1,15 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment.1.1;
 
-class asgz
-  extends AnimatorListenerAdapter
+public class asgz
+  implements beoy
 {
-  asgz(asgx paramasgx) {}
+  public asgz(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
-    asgx.a(this.a).sendEmptyMessage(2);
+    azqs.b(QQSettingChatOperationFragment.a(this.a), "CliOper", "", "", "Setting_tab", "Clean_chat_log", 0, 0, "0", "0", "", "");
+    azqs.b(null, "dc00898", "", "", "0X800A0C4", "0X800A0C4", 0, 0, "", "", "", "");
+    if (!this.a.getActivity().isFinishing()) {
+      QQSettingChatOperationFragment.a(this.a, true);
+    }
+    ThreadManagerV2.excute(new QQSettingChatOperationFragment.1.1(this), 64, null, true);
   }
 }
 

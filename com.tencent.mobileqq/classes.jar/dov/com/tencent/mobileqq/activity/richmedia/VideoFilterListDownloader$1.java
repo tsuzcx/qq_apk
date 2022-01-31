@@ -1,32 +1,32 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
 import android.os.Bundle;
-import baps;
-import bapv;
-import bncl;
-import bngf;
+import baub;
+import baue;
+import bngx;
+import bnkr;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import lel;
 
 public class VideoFilterListDownloader$1
   implements Runnable
 {
-  public VideoFilterListDownloader$1(bncl parambncl, FilterDesc paramFilterDesc) {}
+  public VideoFilterListDownloader$1(bngx parambngx, FilterDesc paramFilterDesc) {}
   
   public void run()
   {
-    baps localbaps = new baps();
-    localbaps.jdField_a_of_type_Bapx = this.this$0.a;
-    localbaps.jdField_a_of_type_JavaLangString = this.a.resurl;
-    localbaps.jdField_a_of_type_Int = 0;
-    localbaps.c = (bngf.b + this.a.name + ".zip");
-    localbaps.a(this.a);
-    localbaps.jdField_a_of_type_Bapy = this.this$0;
+    baub localbaub = new baub();
+    localbaub.jdField_a_of_type_Baug = this.this$0.a;
+    localbaub.jdField_a_of_type_JavaLangString = this.a.resurl;
+    localbaub.jdField_a_of_type_Int = 0;
+    localbaub.c = (bnkr.b + this.a.name + ".zip");
+    localbaub.a(this.a);
+    localbaub.jdField_a_of_type_Bauh = this.this$0;
     if (this.a.bundle == null) {
       this.a.bundle = new Bundle();
     }
     this.a.bundle.putLong("requestStartTime", System.currentTimeMillis());
-    lel.a().a(localbaps);
+    lel.a().a(localbaub);
   }
 }
 

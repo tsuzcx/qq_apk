@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ajvp;
+import akae;
 
 public class SelectMemberActivity$16$1
   implements Runnable
 {
-  public SelectMemberActivity$16$1(ajvp paramajvp) {}
+  public SelectMemberActivity$16$1(akae paramakae) {}
   
   public void run()
   {

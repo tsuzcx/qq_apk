@@ -1,9 +1,4 @@
-import android.view.View;
-
-public abstract interface bhqe
-{
-  public abstract void a(View paramView, int paramInt, String paramString);
-}
+class bhqe {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

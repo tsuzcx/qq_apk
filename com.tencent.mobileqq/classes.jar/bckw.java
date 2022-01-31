@@ -1,74 +1,123 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0xce5.Oidb_0xce5.RobotInfo;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashMap<Ljava.lang.String;Ljava.lang.Object;>;
+import java.util.concurrent.Executor;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bckw
+  extends bfmd<HashMap<String, Object>, Void, JSONObject>
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private String e;
+  protected int a;
+  protected Bundle a;
+  protected bckx a;
+  protected boolean a;
   
-  public static bckw a(Oidb_0xce5.RobotInfo paramRobotInfo)
+  public bckw(String paramString1, String paramString2, bckx parambckx, int paramInt, Bundle paramBundle)
   {
-    if (paramRobotInfo != null)
-    {
-      bckw localbckw = new bckw();
-      localbckw.jdField_a_of_type_Long = paramRobotInfo.robot_uin.get();
-      localbckw.jdField_a_of_type_JavaLangString = paramRobotInfo.name.get();
-      localbckw.jdField_a_of_type_Int = paramRobotInfo.status.get();
-      localbckw.jdField_b_of_type_JavaLangString = paramRobotInfo.desc.get();
-      localbckw.jdField_b_of_type_Int = paramRobotInfo.enabled_groups.get();
-      localbckw.jdField_c_of_type_JavaLangString = paramRobotInfo.welcome_msg.get();
-      localbckw.jdField_d_of_type_JavaLangString = paramRobotInfo.call_name.get();
-      localbckw.jdField_c_of_type_Int = paramRobotInfo.show_invite.get();
-      localbckw.jdField_d_of_type_Int = paramRobotInfo.offline.get();
-      localbckw.e = paramRobotInfo.verify.get();
-      return localbckw;
-    }
-    return null;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected void a(int paramInt)
-  {
+    super(paramString1, paramString2);
+    this.jdField_a_of_type_Bckx = parambckx;
     this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public boolean a()
+  public bckw(String paramString1, String paramString2, bckx parambckx, int paramInt, Bundle paramBundle, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Int == 1;
+    super(paramString1, paramString2);
+    this.jdField_a_of_type_Bckx = parambckx;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public String b()
+  protected JSONObject a(HashMap<String, Object>... paramVarArgs)
   {
-    return this.jdField_b_of_type_JavaLangString;
+    if (isCancelled()) {
+      return null;
+    }
+    Object localObject = paramVarArgs[0];
+    if (((((HashMap)localObject).get("CONTEXT") instanceof Context)) && ((((HashMap)localObject).get("BUNDLE") instanceof Bundle)))
+    {
+      paramVarArgs = (Context)((HashMap)localObject).get("CONTEXT");
+      localObject = (Bundle)((HashMap)localObject).get("BUNDLE");
+    }
+    for (;;)
+    {
+      try
+      {
+        Bundle localBundle = new Bundle();
+        String str1 = ((Bundle)localObject).getString("Cookie");
+        String str2 = ((Bundle)localObject).getString("Referer");
+        String str3 = ((Bundle)localObject).getString("Host");
+        if (str1 != null)
+        {
+          localBundle.putString("Cookie", str1);
+          ((Bundle)localObject).remove("Cookie");
+        }
+        if (str2 != null)
+        {
+          localBundle.putString("Referer", str2);
+          ((Bundle)localObject).remove("Referer");
+        }
+        if (str3 != null)
+        {
+          localBundle.putString("Host", str3);
+          ((Bundle)localObject).remove(str3);
+        }
+        localObject = new JSONObject(ndd.a(paramVarArgs, this.jdField_a_of_type_JavaLangString, this.b, (Bundle)localObject, localBundle));
+        paramVarArgs = (HashMap<String, Object>[])localObject;
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          paramVarArgs = (HashMap<String, Object>[])localObject;
+          if (((JSONObject)localObject).getInt("retcode") == 0) {
+            paramVarArgs = ((JSONObject)localObject).getJSONObject("result");
+          }
+        }
+      }
+      catch (IOException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        paramVarArgs = null;
+        continue;
+      }
+      catch (JSONException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        paramVarArgs = null;
+        continue;
+      }
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+      }
+      return paramVarArgs;
+      paramVarArgs = null;
+    }
   }
   
-  public boolean b()
+  @SuppressLint({"InlinedApi", "NewApi"})
+  public void a(HashMap<String, Object> paramHashMap)
   {
-    return this.jdField_d_of_type_Int == 1;
+    Executor localExecutor = a();
+    if (localExecutor != null)
+    {
+      executeOnExecutor(localExecutor, new HashMap[] { paramHashMap });
+      return;
+    }
+    execute(new HashMap[] { paramHashMap });
   }
   
-  public String toString()
+  protected void a(JSONObject paramJSONObject)
   {
-    return "robot_uin:" + this.jdField_a_of_type_Long + " name:" + this.jdField_a_of_type_JavaLangString + " status:" + this.jdField_a_of_type_Int + " desc:" + this.jdField_b_of_type_JavaLangString + " enabled_groups:" + this.jdField_b_of_type_Int + " welcome_msg:" + this.jdField_c_of_type_JavaLangString + " call_name:" + this.jdField_d_of_type_JavaLangString + " show_invite:" + this.jdField_c_of_type_Int + " offline:" + this.jdField_d_of_type_Int + " verify:" + this.e;
+    if (isCancelled()) {}
+    while (this.jdField_a_of_type_Bckx == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bckx.a(paramJSONObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

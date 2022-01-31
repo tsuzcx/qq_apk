@@ -7,14 +7,14 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.qphone.base.util.QLog;
 
 class qyc
-  extends baua
+  extends bayj
 {
   qyc(qyb paramqyb) {}
   
   public void handleMessage(Message paramMessage)
   {
-    baoj localbaoj = (baoj)paramMessage.obj;
-    if ((localbaoj == null) || (localbaoj.jdField_b_of_type_Int != 24) || (localbaoj.c != 54)) {}
+    bass localbass = (bass)paramMessage.obj;
+    if ((localbass == null) || (localbass.jdField_b_of_type_Int != 24) || (localbass.c != 54)) {}
     do
     {
       do
@@ -22,7 +22,7 @@ class qyc
         do
         {
           return;
-        } while ((qyb.a(this.a) == null) || (qyb.a(this.a).jdField_a_of_type_Long != localbaoj.jdField_b_of_type_Long));
+        } while ((qyb.a(this.a) == null) || (qyb.a(this.a).jdField_a_of_type_Long != localbass.jdField_b_of_type_Long));
         switch (paramMessage.what)
         {
         case 1004: 
@@ -35,7 +35,7 @@ class qyc
       this.a.a.a();
       return;
     } while (this.a.a == null);
-    this.a.a.a((float)localbaoj.e * 100.0F / (float)localbaoj.jdField_a_of_type_Long);
+    this.a.a.a((float)localbass.e * 100.0F / (float)localbass.jdField_a_of_type_Long);
     return;
     if (QLog.isColorLevel()) {
       QLog.d("VideoUploadController", 2, "mVideoTransProcessorHandler send finished!");
@@ -45,7 +45,7 @@ class qyc
     {
       try
       {
-        paramMessage.mergeFrom(localbaoj.jdField_a_of_type_ArrayOfByte);
+        paramMessage.mergeFrom(localbass.jdField_a_of_type_ArrayOfByte);
         i = paramMessage.int32_retcode.get();
         if (QLog.isColorLevel()) {
           QLog.d("VideoUploadController", 2, "mVideoTransProcessorHandler rsp.errorCode:" + i);
@@ -53,7 +53,7 @@ class qyc
         if (i != 0) {
           continue;
         }
-        qyb.a(this.a, localbaoj.f);
+        qyb.a(this.a, localbass.f);
         if (paramMessage.bytes_download_url.has()) {
           qyb.b(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
         }
@@ -92,7 +92,7 @@ class qyc
       i = 0;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("VideoUploadController", 2, "mVideoTransProcessorHandler send error:" + localbaoj.g);
+      QLog.d("VideoUploadController", 2, "mVideoTransProcessorHandler send error:" + localbass.g);
     }
     qyb.a(this.a, 1004, null, null, null);
     qyb.a(this.a, null);
@@ -100,7 +100,7 @@ class qyc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qyc
  * JD-Core Version:    0.7.0.1
  */

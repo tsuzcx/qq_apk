@@ -11,8 +11,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import blkn;
-import blko;
+import bloz;
+import blpa;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
@@ -22,7 +22,7 @@ public class AEEditorColorSelectorView
   extends FrameLayout
 {
   private final int jdField_a_of_type_Int = Color.parseColor("#ffffffff");
-  private blko jdField_a_of_type_Blko;
+  private blpa jdField_a_of_type_Blpa;
   private final LinkedHashMap<Integer, ImageView> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   private final int b = Color.parseColor("#ff2b2b2b");
   private final int c = Color.parseColor("#fffb5151");
@@ -65,13 +65,13 @@ public class AEEditorColorSelectorView
   
   private void a()
   {
-    Object localObject1 = (ImageView)findViewById(2131366657);
-    Object localObject2 = (ImageView)findViewById(2131366653);
-    ImageView localImageView1 = (ImageView)findViewById(2131366654);
-    ImageView localImageView2 = (ImageView)findViewById(2131366658);
-    ImageView localImageView3 = (ImageView)findViewById(2131366656);
-    ImageView localImageView4 = (ImageView)findViewById(2131366655);
-    ImageView localImageView5 = (ImageView)findViewById(2131366652);
+    Object localObject1 = (ImageView)findViewById(2131366667);
+    Object localObject2 = (ImageView)findViewById(2131366663);
+    ImageView localImageView1 = (ImageView)findViewById(2131366664);
+    ImageView localImageView2 = (ImageView)findViewById(2131366668);
+    ImageView localImageView3 = (ImageView)findViewById(2131366666);
+    ImageView localImageView4 = (ImageView)findViewById(2131366665);
+    ImageView localImageView5 = (ImageView)findViewById(2131366662);
     this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localObject1);
     this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(this.b), localObject2);
     this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(this.c), localImageView1);
@@ -86,14 +86,14 @@ public class AEEditorColorSelectorView
       int i = ((Integer)((Map.Entry)localObject2).getKey()).intValue();
       localObject2 = (ImageView)((Map.Entry)localObject2).getValue();
       ((ImageView)localObject2).setImageDrawable(a(false, i));
-      ((ImageView)localObject2).setOnClickListener(new blkn(this, i));
+      ((ImageView)localObject2).setOnClickListener(new bloz(this, i));
     }
   }
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Blko != null) {
-      this.jdField_a_of_type_Blko.a(paramInt);
+    if (this.jdField_a_of_type_Blpa != null) {
+      this.jdField_a_of_type_Blpa.a(paramInt);
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
     while (localIterator.hasNext())
@@ -111,13 +111,13 @@ public class AEEditorColorSelectorView
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    View.inflate(getContext(), 2131560582, this);
+    View.inflate(getContext(), 2131560599, this);
     a();
   }
   
-  public void setColorSelectedListener(blko paramblko)
+  public void setColorSelectedListener(blpa paramblpa)
   {
-    this.jdField_a_of_type_Blko = paramblko;
+    this.jdField_a_of_type_Blpa = paramblpa;
   }
   
   public void setSelectedColor(int paramInt)

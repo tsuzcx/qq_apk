@@ -1,14 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Intent;
 
-class arhv
-  implements View.OnClickListener
+public class arhv
 {
-  arhv(arhu paramarhu) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int c;
   
-  public void onClick(View paramView)
+  public arhv a(Intent paramIntent)
   {
-    this.a.m();
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("targetUin");
+    this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("srcDiscGroup");
+    this.jdField_a_of_type_Int = paramIntent.getIntExtra("peerType", 0);
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("rootEntrace", true);
+    this.jdField_b_of_type_Int = paramIntent.getIntExtra("busiType", 0);
+    this.c = paramIntent.getIntExtra("enterfrom", 0);
+    return this;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

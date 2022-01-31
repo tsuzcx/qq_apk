@@ -1,103 +1,50 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.net.URL;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class bcnr
-  implements URLDrawableDownListener
+public class bcnr
 {
-  bcnr(bcnq parambcnq, ImageProgressCircle paramImageProgressCircle, URLImageView paramURLImageView) {}
+  public static bcnr a;
+  public alpa a;
+  public QQAppInterface a;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public bcnr()
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadCancelled urlStr : " + paramView);
-    azmj.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_cancel", 0, 1, 0, paramView, "", "", "");
+    this.jdField_a_of_type_Alpa = new bcns(this);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public static bcnr a(QQAppInterface paramQQAppInterface)
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
+    if (jdField_a_of_type_Bcnr == null) {
+      b(paramQQAppInterface);
     }
-    if (paramThrowable == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
+    for (;;)
     {
-      QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadFailed urlStr : " + paramView + "; errorMsg : " + paramURLDrawable);
-      azmj.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
-      return;
+      return jdField_a_of_type_Bcnr;
+      if (jdField_a_of_type_Bcnr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != paramQQAppInterface)
+      {
+        if (jdField_a_of_type_Bcnr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+          jdField_a_of_type_Bcnr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(jdField_a_of_type_Bcnr.jdField_a_of_type_Alpa);
+        }
+        jdField_a_of_type_Bcnr = null;
+        b(paramQQAppInterface);
+      }
     }
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
+    if ((jdField_a_of_type_Bcnr != null) && (jdField_a_of_type_Bcnr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == paramQQAppInterface))
     {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    if (paramInterruptedException == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramInterruptedException.getMessage())
-    {
-      QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadInterrupted urlStr : " + paramView + "; errorMsg : " + paramURLDrawable);
-      azmj.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
-      return;
+      paramQQAppInterface.removeObserver(jdField_a_of_type_Bcnr.jdField_a_of_type_Alpa);
+      jdField_a_of_type_Bcnr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+      jdField_a_of_type_Bcnr = null;
     }
   }
   
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  private static void b(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
-    if ((this.jdField_a_of_type_Bcnq.a != null) && (this.jdField_a_of_type_Bcnq.a.get() != null)) {
-      ((TextView)this.jdField_a_of_type_Bcnq.a.get()).setText(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.a());
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_Bcnq.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    if ((this.jdField_a_of_type_Bcnq.a != null) && (this.jdField_a_of_type_Bcnq.a.get() != null)) {
-      ((TextView)this.jdField_a_of_type_Bcnq.a.get()).setVisibility(8);
-    }
-    this.jdField_a_of_type_Bcnq.a = null;
-    this.jdField_a_of_type_Bcnq.c = false;
-    azmj.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
+    jdField_a_of_type_Bcnr = new bcnr();
+    jdField_a_of_type_Bcnr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    paramQQAppInterface.addObserver(jdField_a_of_type_Bcnr.jdField_a_of_type_Alpa);
   }
 }
 

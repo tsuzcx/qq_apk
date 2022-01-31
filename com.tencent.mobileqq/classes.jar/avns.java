@@ -1,59 +1,33 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
+import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.BounceScrollView;
 
-public class avns
-  extends avlt
+class avns
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public avns(Context paramContext, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, paramQQAppInterface);
-  }
+  avns(avnl paramavnl) {}
   
-  public int a(avma paramavma)
+  public void onGlobalLayout()
   {
-    return 5;
-  }
-  
-  public View a(ViewGroup paramViewGroup, avma paramavma)
-  {
-    paramViewGroup = (avnt)paramavma;
-    paramavma = new TextView(this.a);
-    paramavma.setTextColor(this.a.getResources().getColor(2131165307));
-    paramavma.setTextSize(1, 16.0F);
-    paramavma.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    paramViewGroup.g = paramavma;
-    return paramavma;
-  }
-  
-  public avma a()
-  {
-    return new avnt(this);
-  }
-  
-  public void f(avma paramavma)
-  {
-    paramavma = (avnt)paramavma;
-    Object localObject = (avob)paramavma.a;
-    String str = ((avob)localObject).n;
-    localObject = bdjl.a(this.a, ((avob)localObject).a, str);
-    if (TextUtils.isEmpty((CharSequence)localObject))
+    Object localObject = new Rect();
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getRootView().getHeight() - ((Rect)localObject).bottom;
+    if (i <= 0) {}
+    int j;
+    do
     {
-      paramavma.g.setVisibility(8);
       return;
-    }
-    paramavma.g.setVisibility(0);
-    if ((localObject instanceof SpannableString)) {
-      paramavma.g.setMovementMethod(LinkMovementMethod.getInstance());
-    }
-    paramavma.g.setText((CharSequence)localObject);
+      j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getScrollY();
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getCurrentFocus();
+    } while ((localObject == null) || (!(localObject instanceof EditText)) || (((View)localObject).getParent() == null));
+    int k = ((ViewGroup)((View)localObject).getParent()).getBottom();
+    int m = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getMeasuredHeight();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.smoothScrollBy(0, k + i - m - j);
   }
 }
 

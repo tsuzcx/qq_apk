@@ -1,32 +1,25 @@
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.QZLog;
+import com.tencent.biz.subscribe.event.FollowUpdateEvent;
 
 public class bjvg
-  extends bjts
 {
-  public static String a;
-  public static String b = "setPGCNavViewSetting";
-  
-  static
+  public static void a(Context paramContext, FollowUpdateEvent paramFollowUpdateEvent)
   {
-    jdField_a_of_type_JavaLangString = "Qzone";
+    if (paramFollowUpdateEvent != null) {
+      a(paramContext, paramFollowUpdateEvent.useId, paramFollowUpdateEvent.followStatus);
+    }
   }
   
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public static void a(Context paramContext, String paramString, int paramInt)
   {
-    if ((!paramString2.equals(jdField_a_of_type_JavaLangString)) || (!b.equals(paramString3))) {
-      return false;
+    if ((paramContext == null) || (paramString == null)) {
+      return;
     }
-    QZLog.i("QzoneHomePageJsPlugin", 4, "navigation url:" + paramString1 + " pkgName:" + paramString2 + " method:" + paramString3 + " jsonString:" + paramVarArgs[0]);
-    paramJsBridgeListener = new Intent("JsCallReflushNavigationBar");
-    paramJsBridgeListener.putExtra("navigationBar", paramVarArgs[0]);
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().sendBroadcast(paramJsBridgeListener);
-    }
-    return true;
+    Intent localIntent = new Intent("action.qzone_public_account_follow");
+    localIntent.putExtra("followed", paramInt);
+    localIntent.putExtra("uin", paramString);
+    paramContext.sendBroadcast(localIntent, "com.tencent.qzone.permission.notify");
   }
 }
 

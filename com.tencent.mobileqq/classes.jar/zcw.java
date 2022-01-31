@@ -1,28 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.biz.widgets.TabLayout;
-import java.io.PrintStream;
+import android.os.Bundle;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.DownloadListener;
 
 public class zcw
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DownloadListener
 {
-  public zcw(TabLayout paramTabLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView, int paramInt5) {}
+  public zcw(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, TouchWebView paramTouchWebView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    System.out.println("value = " + f);
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int - this.b)
-    {
-      paramValueAnimator = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.getChildAt(this.c + i);
-      if (paramValueAnimator != null) {
-        paramValueAnimator.setTranslationX(this.d * f);
-      }
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewBase", 2, "start UniformDownloadActivity");
     }
-    this.jdField_a_of_type_AndroidViewView.setTranslationX(f * -this.e);
+    String str = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("_filesize", paramLong);
+    localBundle.putString("param_user_agent", paramString2);
+    localBundle.putString("param_content_des", paramString3);
+    localBundle.putString("param_mime_type", paramString4);
+    localBundle.putString("param_refer_url", str);
+    aqvk.a(this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity, paramString1, localBundle);
   }
 }
 

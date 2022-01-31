@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agjp;
-import agkb;
-import agkc;
+import agoe;
+import agoq;
+import agor;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class CmGameChatPie$ChatPieMsgListener$3
   implements Runnable
 {
-  public CmGameChatPie$ChatPieMsgListener$3(agkb paramagkb, agjp paramagjp, String paramString) {}
+  public CmGameChatPie$ChatPieMsgListener$3(agoq paramagoq, agoe paramagoe, String paramString) {}
   
   public void run()
   {
-    agjp.a(this.jdField_a_of_type_Agjp, this.jdField_a_of_type_JavaLangString, null, 1);
-    if ((this.jdField_a_of_type_Agjp.a != null) && (this.jdField_a_of_type_Agjp.a() != null)) {
-      this.jdField_a_of_type_Agjp.a(this.jdField_a_of_type_Agjp.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agjp.a().c(), agjp.a(this.jdField_a_of_type_Agjp).jdField_a_of_type_JavaLangString, 1);
+    agoe.a(this.jdField_a_of_type_Agoe, this.jdField_a_of_type_JavaLangString, null, 1);
+    if ((this.jdField_a_of_type_Agoe.a != null) && (this.jdField_a_of_type_Agoe.a() != null)) {
+      this.jdField_a_of_type_Agoe.a(this.jdField_a_of_type_Agoe.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agoe.a().c(), agoe.a(this.jdField_a_of_type_Agoe).jdField_a_of_type_JavaLangString, 1);
     }
   }
 }

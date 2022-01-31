@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.troop.createNewTroop.RelationTroopEntity;
+import java.util.ArrayList;
 
 class bbqw
-  implements aqte
+  implements bcha
 {
-  bbqw(bbqt parambbqt, TroopFileTransferManager.Item paramItem) {}
+  bbqw(bbqu parambbqu, bbrc parambbrc) {}
   
-  public void a() {}
-  
-  public void b()
+  public void a(ArrayList<bcgz> paramArrayList)
   {
-    aqsz.a(new aret(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(bbqt.e(this.jdField_a_of_type_Bbqt))));
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramArrayList.size())
+    {
+      RelationTroopEntity localRelationTroopEntity = new RelationTroopEntity();
+      localRelationTroopEntity.troopInfo = ((bcgz)paramArrayList.get(i)).a;
+      localArrayList.add(localRelationTroopEntity);
+      i += 1;
+    }
+    this.jdField_a_of_type_Bbrc.a(localArrayList);
   }
 }
 

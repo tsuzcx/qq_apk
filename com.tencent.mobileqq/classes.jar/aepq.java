@@ -1,100 +1,48 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothClass;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothHeadset;
+import android.bluetooth.BluetoothProfile;
+import android.bluetooth.BluetoothProfile.ServiceListener;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import java.util.List;
 
 public class aepq
-  extends bdqc
+  implements BluetoothProfile.ServiceListener
 {
-  public aepq(PokePanel paramPokePanel) {}
+  public aepq(AudioPlayer paramAudioPlayer, String paramString, int paramInt, BluetoothAdapter paramBluetoothAdapter) {}
   
-  protected void onPokeAuth(boolean paramBoolean, Object paramObject)
+  public void onServiceConnected(int paramInt, BluetoothProfile paramBluetoothProfile)
   {
-    Object localObject = (Bundle)paramObject;
-    if (((Bundle)localObject).getInt("fromType") != 0) {
-      return;
-    }
-    int j = ((Bundle)localObject).getInt("id");
-    int i = ((Bundle)localObject).getInt("feeType");
-    String str1 = "free";
-    if (i == 4)
+    Object localObject;
+    if (paramInt == 1)
     {
-      str1 = "vip";
-      label47:
-      if (!paramBoolean) {
-        break label160;
+      paramBluetoothProfile = (BluetoothHeadset)paramBluetoothProfile;
+      localObject = paramBluetoothProfile.getConnectedDevices();
+      if ((localObject == null) || (((List)localObject).size() <= 0)) {
+        break label87;
       }
-      paramObject = ((Bundle)localObject).getString("name");
-      localObject = ((Bundle)localObject).getString("minVersion");
-      acex.a(PokePanel.a(this.a), BaseApplicationImpl.getContext(), PokePanel.a(this.a), 126, j, paramObject, (String)localObject);
-      if (true == afsw.a) {
-        afsw.a = false;
+      localObject = (BluetoothDevice)((List)localObject).get(0);
+      if (localObject != null) {
+        break label76;
       }
-      label106:
-      if (!paramBoolean) {
-        break label421;
-      }
+      paramInt = 0;
+      AudioPlayer.a(paramInt);
     }
-    label160:
-    label419:
-    label421:
-    for (i = 0;; i = 1)
+    for (;;)
     {
-      VasWebviewUtil.reportCommercialDrainage("", "poke", "send", "", 0, i, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
+      AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.closeProfileProxy(1, paramBluetoothProfile);
       return;
-      if (i != 5) {
-        break label47;
-      }
-      str1 = "svip";
-      break label47;
-      long l = ((Bundle)localObject).getLong("result");
-      localObject = ((Bundle)localObject).getString("msg");
-      paramObject = (Bundle)paramObject;
-      this.a.a = paramObject.getInt("id", 0);
-      String str2 = alpo.a(2131708706);
-      if (l == 0L)
-      {
-        this.a.b = 1;
-        if (true != afsw.a) {
-          break;
-        }
-        afsw.a = false;
-        return;
-      }
-      if (l == 4002L)
-      {
-        this.a.b = 2;
-        paramObject = alpo.a(2131708709);
-        localObject = str2;
-      }
-      for (;;)
-      {
-        if (l == 0L) {
-          break label419;
-        }
-        afsw.a(PokePanel.a(this.a), (Activity)this.a.getContext(), paramObject, (String)localObject, this.a.a, this.a.b);
-        VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTip", "", 0, 0, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
-        break;
-        if (l == 5002L)
-        {
-          this.a.b = 4;
-          paramObject = alpo.a(2131708708);
-          localObject = str2;
-        }
-        else
-        {
-          this.a.b = 1;
-          str2 = alpo.a(2131708707);
-          QLog.e("Q.aio.PokePanel", 1, "vas poke auth fail, result: " + l);
-          paramObject = localObject;
-          localObject = str2;
-        }
-      }
-      break label106;
+      label76:
+      paramInt = ((BluetoothDevice)localObject).getBluetoothClass().getDeviceClass();
+      break;
+      label87:
+      AudioPlayer.a(0);
     }
   }
+  
+  public void onServiceDisconnected(int paramInt) {}
 }
 
 

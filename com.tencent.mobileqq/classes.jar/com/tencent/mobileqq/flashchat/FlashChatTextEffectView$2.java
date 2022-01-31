@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.flashchat;
 
-import arsf;
+import arwo;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
 
 final class FlashChatTextEffectView$2
   implements Runnable
 {
-  FlashChatTextEffectView$2(arsf paramarsf) {}
+  FlashChatTextEffectView$2(arwo paramarwo) {}
   
   public void run()
   {

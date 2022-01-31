@@ -1,62 +1,45 @@
-import android.graphics.drawable.Drawable;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.Canvas;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-public class xdm
+public final class xdm
+  extends xeh
 {
-  public Drawable a;
-  public String a;
-  public xdn a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  
-  public xdm()
+  public xdm(DoodleView paramDoodleView)
   {
-    this.jdField_a_of_type_Xdn = new xdn();
+    super(paramDoodleView);
   }
+  
+  public String a()
+  {
+    return "EmptyLayer";
+  }
+  
+  public void a() {}
+  
+  protected void a(Canvas paramCanvas) {}
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Xdn == null) {
-      this.jdField_a_of_type_Xdn = new xdn();
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(this.e);
-      int i = localJSONObject.getInt("align");
-      Object localObject = localJSONObject.getJSONArray("picture_margin");
-      int j = ((JSONArray)localObject).getInt(0);
-      int k = ((JSONArray)localObject).getInt(1);
-      int m = ((JSONArray)localObject).getInt(2);
-      int n = ((JSONArray)localObject).getInt(3);
-      localObject = localJSONObject.getString("text_color");
-      int i1 = localJSONObject.getInt("text_size");
-      int i2 = localJSONObject.getInt("picture_width");
-      int i3 = localJSONObject.getInt("picture_height");
-      int i4 = localJSONObject.getInt("standard_width");
-      int i5 = localJSONObject.getInt("standard_height");
-      this.jdField_a_of_type_Xdn.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Xdn.jdField_a_of_type_ArrayOfInt = new int[] { j, k, m, n };
-      this.jdField_a_of_type_Xdn.jdField_a_of_type_JavaLangString = ((String)localObject);
-      this.jdField_a_of_type_Xdn.b = i1;
-      this.jdField_a_of_type_Xdn.c = i2;
-      this.jdField_a_of_type_Xdn.d = i3;
-      this.jdField_a_of_type_Xdn.e = i4;
-      this.jdField_a_of_type_Xdn.f = i5;
-      return true;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    return true;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
     return false;
   }
   
-  public String toString()
+  public void b(Canvas paramCanvas) {}
+  
+  public boolean b(MotionEvent paramMotionEvent)
   {
-    return "Item{thumbUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", desc='" + this.c + '\'' + ", imageUrl='" + this.d + '\'' + ", imageDrawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + ", layoutJson='" + this.e + '\'' + ", params=" + this.jdField_a_of_type_Xdn + '}';
+    wxe.b("EmptyLayer", "EmptyLayer handle touch event.");
+    return false;
+  }
+  
+  public boolean c(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

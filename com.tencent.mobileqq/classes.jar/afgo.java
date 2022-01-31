@@ -1,22 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import com.tencent.mobileqq.activity.aio.helper.TroopRobotHelper.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class afgo
-  implements bhqd
+public class afgo
+  implements bcrs
 {
-  afgo(afgn paramafgn, MessageForDeviceFile paramMessageForDeviceFile, bhpy parambhpy) {}
+  afgo(afgn paramafgn) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(String paramString)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      this.jdField_a_of_type_Afgn.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
+    ThreadManager.getUIHandler().post(new TroopRobotHelper.1.1(this));
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import adjr;
+import adog;
 import android.text.TextUtils;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class ProfileCardMoreActivity$7$1
   implements Runnable
 {
-  public ProfileCardMoreActivity$7$1(adjr paramadjr) {}
+  public ProfileCardMoreActivity$7$1(adog paramadog) {}
   
   public void run()
   {

@@ -40,8 +40,8 @@ public class QQVasH5PayBrowserActivity
   public boolean showPreview()
   {
     boolean bool = super.showPreview();
-    getWindow().setBackgroundDrawableResource(2131167138);
-    findViewById(2131363457).setBackgroundResource(2131167138);
+    getWindow().setBackgroundDrawableResource(2131167140);
+    findViewById(2131363457).setBackgroundResource(2131167140);
     return bool;
   }
 }

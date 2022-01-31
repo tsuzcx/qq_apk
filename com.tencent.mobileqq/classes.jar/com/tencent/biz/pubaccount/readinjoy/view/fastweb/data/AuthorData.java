@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.data;
 
-import alpo;
-import bjxj;
+import alud;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
@@ -76,14 +76,14 @@ public class AuthorData
           localJSONObject.put("timestamp_text", this.d);
           if (this.jdField_a_of_type_Long > 0L)
           {
-            localJSONObject.put("read_amount_text", alpo.a(2131717265) + bjxj.a(this.jdField_a_of_type_Long, 99990000L, "9999万+", ""));
+            localJSONObject.put("read_amount_text", alud.a(2131717277) + bkbq.a(this.jdField_a_of_type_Long, 99990000L, "9999万+", ""));
             if ((this.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Boolean))
             {
               if (!this.jdField_a_of_type_Boolean) {
                 break label314;
               }
               localJSONObject.put("selected_status", "1");
-              localJSONObject.put("button_status", alpo.a(2131717267));
+              localJSONObject.put("button_status", alud.a(2131717279));
             }
             Object localObject1 = this.W;
             if (localObject1 != null) {
@@ -133,7 +133,7 @@ public class AuthorData
       continue;
       label314:
       localJSONObject.put("selected_status", "0");
-      localJSONObject.put("button_status", alpo.a(2131717268));
+      localJSONObject.put("button_status", alud.a(2131717280));
       continue;
       label338:
       QLog.d("AuthorData", 2, "merge result: " + localJSONObject.toString());

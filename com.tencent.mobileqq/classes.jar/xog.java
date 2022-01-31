@@ -1,17 +1,17 @@
 public class xog
 {
-  bepp a;
+  protected int a = 48000;
+  protected int b = 1;
+  protected int c = 1;
+  protected int d = 48000;
+  protected int e = 1;
+  protected int f = 1;
   
-  xog(bepp parambepp)
-  {
-    this.a = parambepp;
-  }
+  public void a() {}
   
-  public void a()
+  public byte[] a(int paramInt1, int paramInt2)
   {
-    if ((this.a != null) && (this.a.isShowing())) {
-      this.a.dismiss();
-    }
+    return null;
   }
 }
 

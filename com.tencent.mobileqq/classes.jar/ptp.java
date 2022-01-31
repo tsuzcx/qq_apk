@@ -18,7 +18,7 @@ import java.util.List;
 
 public class ptp
   extends BaseAdapter
-  implements bhqp
+  implements bhuw
 {
   private int jdField_a_of_type_Int;
   private Resources jdField_a_of_type_AndroidContentResResources;
@@ -108,10 +108,10 @@ public class ptp
     }
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559841, paramViewGroup, false);
-      paramViewGroup = new aybv();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376507));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376508));
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559840, paramViewGroup, false);
+      paramViewGroup = new ayge();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376561));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376562));
       paramView.setTag(paramViewGroup);
       paramView.setFocusable(true);
     }
@@ -123,7 +123,7 @@ public class ptp
       }
       QLog.e("NativeShareView", 2, "ShareActionSheetBuilder.ActionSheetItemAdapter.getView() getItem(" + paramInt + ") == null !!!");
       return paramView;
-      paramViewGroup = (aybv)paramView.getTag();
+      paramViewGroup = (ayge)paramView.getTag();
     }
     paramView.setId(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.id);
     Object localObject1 = paramViewGroup.jdField_a_of_type_AndroidWidgetTextView;

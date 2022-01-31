@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
 import android.app.Activity;
-import bghl;
-import bghv;
+import bgls;
+import bgmc;
 import com.tencent.qqmini.sdk.core.widget.NavigationBar;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
@@ -11,14 +11,14 @@ import com.tencent.qqmini.sdk.utils.ImmersiveUtils;
 import java.lang.ref.WeakReference;
 
 class EmbeddedVideoJsPlugin$4
-  implements bghv<Void>
+  implements bgmc<Void>
 {
   EmbeddedVideoJsPlugin$4(EmbeddedVideoJsPlugin paramEmbeddedVideoJsPlugin, WeakReference paramWeakReference) {}
   
-  public Void perform(bghl parambghl)
+  public Void perform(bgls parambgls)
   {
-    parambghl = parambghl.a();
-    if (!(parambghl instanceof AppBrandPageContainer)) {
+    parambgls = parambgls.a();
+    if (!(parambgls instanceof AppBrandPageContainer)) {
       QMLog.d("Action", "Page is invalid");
     }
     int i;
@@ -27,7 +27,7 @@ class EmbeddedVideoJsPlugin$4
       do
       {
         return null;
-        i = ((AppBrandPageContainer)parambghl).a().a().a();
+        i = ((AppBrandPageContainer)parambgls).a().a().a();
         if (i != -1) {
           break;
         }

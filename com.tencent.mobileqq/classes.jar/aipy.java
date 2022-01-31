@@ -1,13 +1,18 @@
-import java.util.Comparator;
+import mqq.app.QQPermissionCallback;
 
 class aipy
-  implements Comparator<aipv>
+  implements QQPermissionCallback
 {
-  aipy(aipw paramaipw) {}
+  aipy(aipx paramaipx) {}
   
-  public int a(aipv paramaipv1, aipv paramaipv2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return (int)(paramaipv2.a - paramaipv1.a);
+    bdgm.a(this.a.a.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    aipw.a(this.a.a);
   }
 }
 

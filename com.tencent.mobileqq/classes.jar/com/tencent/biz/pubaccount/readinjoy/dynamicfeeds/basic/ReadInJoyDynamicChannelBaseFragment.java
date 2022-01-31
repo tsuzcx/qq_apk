@@ -7,8 +7,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import biau;
-import biaz;
+import bifb;
+import bifg;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
@@ -29,7 +29,7 @@ import sfq;
 
 public abstract class ReadInJoyDynamicChannelBaseFragment
   extends ReadInJoyBaseFragment
-  implements biaz, ova, ove
+  implements bifg, ova, ove
 {
   protected int a;
   public XRecyclerView a;
@@ -181,9 +181,9 @@ public abstract class ReadInJoyDynamicChannelBaseFragment
     if (!((RecyclerViewWithHeaderFooter)localObject).a(paramView)) {
       ((RecyclerViewWithHeaderFooter)localObject).a(paramView);
     }
-    localObject = (biau)((RecyclerViewWithHeaderFooter)localObject).getAdapter();
-    if (!((biau)localObject).a(paramView)) {
-      ((biau)localObject).a(paramView);
+    localObject = (bifb)((RecyclerViewWithHeaderFooter)localObject).getAdapter();
+    if (!((bifb)localObject).a(paramView)) {
+      ((bifb)localObject).a(paramView);
     }
     b();
   }
@@ -215,7 +215,7 @@ public abstract class ReadInJoyDynamicChannelBaseFragment
     QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "removeHeader.");
     RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a();
     localRecyclerViewWithHeaderFooter.b(paramView);
-    ((biau)localRecyclerViewWithHeaderFooter.getAdapter()).b(paramView);
+    ((bifb)localRecyclerViewWithHeaderFooter.getAdapter()).b(paramView);
     b();
   }
   

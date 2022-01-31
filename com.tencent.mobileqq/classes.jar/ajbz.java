@@ -1,24 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
 
-class ajbz
-  implements View.OnClickListener
+public class ajbz
+  implements aere
 {
-  ajbz(ajbm paramajbm) {}
+  public ajbz(RedPacketManager paramRedPacketManager, IRedPacket.OnGetSkinListener paramOnGetSkinListener) {}
   
-  public void onClick(View paramView)
+  public void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    this.a.a(-1, null);
-    if (amlp.a().a() == 4)
-    {
-      azmj.b(ajbm.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, amlo.b(), amlp.b(), amlp.a(), "1");
-      amlp.a().a(ajbm.a(this.a));
-      return;
-    }
-    azmj.b(ajbm.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, amlo.b(), amlp.b(), amlp.a(), "1");
-    UpgradeDetailActivity.a(ajbm.a(this.a), amlp.a().a(), true, true, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener.onGetSkin(paramRedPacketInfo);
   }
 }
 

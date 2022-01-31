@@ -1,19 +1,41 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
+import android.graphics.Rect;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleImageView;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class agxr
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements agxs
 {
-  public agxr(BlessActivity paramBlessActivity, RelativeLayout paramRelativeLayout) {}
+  public agxr(StickerBubbleListView paramStickerBubbleListView) {}
   
-  public void onGlobalLayout()
+  public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight());
-    BlessActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getWidth());
-    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity);
+    if (((paramView instanceof StickerBubbleImageView)) && (paramView.getVisibility() == 0))
+    {
+      ((StickerBubbleImageView)paramView).a();
+      if ((StickerBubbleListView.a(this.a) == null) || (StickerBubbleListView.a(this.a).get() != paramView)) {
+        StickerBubbleListView.a(this.a, new WeakReference((StickerBubbleImageView)paramView));
+      }
+      paramView = (View)paramView.getParent();
+      View localView = (View)paramView.getParent();
+      if (StickerBubbleListView.a(this.a) == null) {
+        StickerBubbleListView.a(this.a, new Rect());
+      }
+      Rect localRect = StickerBubbleListView.a(this.a);
+      int i = localView.getLeft();
+      int j = paramView.getLeft();
+      int k = localView.getTop();
+      int m = paramView.getTop();
+      int n = localView.getLeft();
+      int i1 = paramView.getRight();
+      int i2 = localView.getTop();
+      localRect.set(i + j, k + m, n + i1, paramView.getBottom() + i2);
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleListView", 2, "notifyItemViewTouchDown with rect: " + StickerBubbleListView.a(this.a));
+      }
+    }
   }
 }
 

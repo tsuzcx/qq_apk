@@ -8,9 +8,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import awoi;
-import awoj;
-import awol;
+import awsr;
+import awss;
+import awsu;
 import com.tencent.common.app.AppInterface;
 import com.tencent.commonsdk.cache.QQLruCache;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -33,9 +33,9 @@ public class PraiseManager
   implements Manager
 {
   public Context a;
-  public QQLruCache<Integer, awoi> a;
+  public QQLruCache<Integer, awsr> a;
   public QQAppInterface a;
-  public final List<WeakReference<awoj>> a;
+  public final List<WeakReference<awss>> a;
   public final Vector<Integer> a;
   public final List<String> b;
   
@@ -89,24 +89,24 @@ public class PraiseManager
     return 0;
   }
   
-  public awoi a(int paramInt, boolean paramBoolean, String paramString)
+  public awsr a(int paramInt, boolean paramBoolean, String paramString)
   {
     Object localObject;
     if (paramInt <= 0) {
       localObject = null;
     }
-    awoi localawoi;
+    awsr localawsr;
     do
     {
       return localObject;
-      localawoi = (awoi)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(paramInt));
-      if (localawoi == null) {
+      localawsr = (awsr)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(paramInt));
+      if (localawsr == null) {
         break;
       }
-      localObject = localawoi;
+      localObject = localawsr;
     } while (!QLog.isColorLevel());
     QLog.d("PraiseManager", 2, "get praise info from cache, id=" + paramInt + " from:" + paramString);
-    return localawoi;
+    return localawsr;
     if (!this.jdField_a_of_type_JavaUtilVector.contains(Integer.valueOf(paramInt)))
     {
       if (QLog.isColorLevel()) {
@@ -158,17 +158,17 @@ public class PraiseManager
   void a(int paramInt, boolean paramBoolean, String paramString)
   {
     String str = a(paramInt).getAbsolutePath();
-    awoi localawoi = awoi.a(paramInt, str + File.separator + "config.json");
+    awsr localawsr = awsr.a(paramInt, str + File.separator + "config.json");
     Boolean localBoolean = null;
-    if (localawoi != null)
+    if (localawsr != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("PraiseManager", 2, "createPraiseInfo from local, id=" + paramInt + " from:" + paramString);
       }
-      localawoi.jdField_c_of_type_JavaLangString = (str + File.separator + "whiteBlackImg.png");
-      localawoi.d = (str + File.separator + "colorImg.png");
-      localawoi.e = (str + File.separator + "goldImg.png");
-      if (!b(localawoi)) {
+      localawsr.jdField_c_of_type_JavaLangString = (str + File.separator + "whiteBlackImg.png");
+      localawsr.d = (str + File.separator + "colorImg.png");
+      localawsr.e = (str + File.separator + "goldImg.png");
+      if (!b(localawsr)) {
         if (paramBoolean) {
           a(paramInt, paramString);
         }
@@ -184,9 +184,9 @@ public class PraiseManager
       return;
       localBoolean = Boolean.valueOf(false);
       continue;
-      if (a(localawoi))
+      if (a(localawsr))
       {
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(Integer.valueOf(paramInt), localawoi);
+        this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(Integer.valueOf(paramInt), localawsr);
         localBoolean = Boolean.valueOf(true);
       }
       else
@@ -202,7 +202,7 @@ public class PraiseManager
     }
   }
   
-  public void a(awoj paramawoj)
+  public void a(awss paramawss)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
@@ -210,11 +210,11 @@ public class PraiseManager
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if ((localWeakReference != null) && (localWeakReference.get() == paramawoj)) {
+        if ((localWeakReference != null) && (localWeakReference.get() == paramawss)) {
           return;
         }
       }
-      this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramawoj));
+      this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramawss));
       return;
     }
   }
@@ -291,7 +291,7 @@ public class PraiseManager
     //   134: invokevirtual 249	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   137: astore_1
     //   138: iload 5
-    //   140: invokestatic 254	aekt:a	()Ljava/lang/StringBuilder;
+    //   140: invokestatic 254	aepi:a	()Ljava/lang/StringBuilder;
     //   143: aload_1
     //   144: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   147: getstatic 258	java/io/File:separator	Ljava/lang/String;
@@ -299,7 +299,7 @@ public class PraiseManager
     //   153: ldc_w 260
     //   156: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   162: invokestatic 263	awoi:a	(ILjava/lang/String;)Lawoi;
+    //   162: invokestatic 263	awsr:a	(ILjava/lang/String;)Lawsr;
     //   165: astore_2
     //   166: aload_2
     //   167: ifnull +144 -> 311
@@ -317,7 +317,7 @@ public class PraiseManager
     //   197: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   200: invokestatic 173	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   203: aload_2
-    //   204: invokestatic 254	aekt:a	()Ljava/lang/StringBuilder;
+    //   204: invokestatic 254	aepi:a	()Ljava/lang/StringBuilder;
     //   207: aload_1
     //   208: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   211: getstatic 258	java/io/File:separator	Ljava/lang/String;
@@ -325,9 +325,9 @@ public class PraiseManager
     //   217: ldc_w 267
     //   220: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   223: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   226: putfield 270	awoi:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   226: putfield 270	awsr:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   229: aload_2
-    //   230: invokestatic 254	aekt:a	()Ljava/lang/StringBuilder;
+    //   230: invokestatic 254	aepi:a	()Ljava/lang/StringBuilder;
     //   233: aload_1
     //   234: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   237: getstatic 258	java/io/File:separator	Ljava/lang/String;
@@ -335,9 +335,9 @@ public class PraiseManager
     //   243: ldc_w 272
     //   246: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   249: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   252: putfield 274	awoi:d	Ljava/lang/String;
+    //   252: putfield 274	awsr:d	Ljava/lang/String;
     //   255: aload_2
-    //   256: invokestatic 254	aekt:a	()Ljava/lang/StringBuilder;
+    //   256: invokestatic 254	aepi:a	()Ljava/lang/StringBuilder;
     //   259: aload_1
     //   260: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   263: getstatic 258	java/io/File:separator	Ljava/lang/String;
@@ -345,14 +345,14 @@ public class PraiseManager
     //   269: ldc_w 276
     //   272: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   275: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   278: putfield 278	awoi:e	Ljava/lang/String;
+    //   278: putfield 278	awsr:e	Ljava/lang/String;
     //   281: aload_0
     //   282: aload_2
-    //   283: invokevirtual 281	com/tencent/mobileqq/profile/like/PraiseManager:b	(Lawoi;)Z
+    //   283: invokevirtual 281	com/tencent/mobileqq/profile/like/PraiseManager:b	(Lawsr;)Z
     //   286: ifeq +25 -> 311
     //   289: aload_0
     //   290: aload_2
-    //   291: invokevirtual 301	com/tencent/mobileqq/profile/like/PraiseManager:a	(Lawoi;)Z
+    //   291: invokevirtual 301	com/tencent/mobileqq/profile/like/PraiseManager:a	(Lawsr;)Z
     //   294: ifeq +17 -> 311
     //   297: aload_0
     //   298: getfield 46	com/tencent/mobileqq/profile/like/PraiseManager:jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache	Lcom/tencent/commonsdk/cache/QQLruCache;
@@ -414,29 +414,29 @@ public class PraiseManager
     //   357	359	356	finally
   }
   
-  boolean a(awoi paramawoi)
+  boolean a(awsr paramawsr)
   {
     Object localObject1 = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject1).inDensity = 320;
     ((BitmapFactory.Options)localObject1).inTargetDensity = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi;
-    Object localObject2 = BubbleManager.a(paramawoi.jdField_c_of_type_JavaLangString, (BitmapFactory.Options)localObject1);
+    Object localObject2 = BubbleManager.a(paramawsr.jdField_c_of_type_JavaLangString, (BitmapFactory.Options)localObject1);
     if (localObject2 == null) {}
     do
     {
       return false;
-      paramawoi.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject2);
-      localObject2 = BubbleManager.a(paramawoi.d, (BitmapFactory.Options)localObject1);
+      paramawsr.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject2);
+      localObject2 = BubbleManager.a(paramawsr.d, (BitmapFactory.Options)localObject1);
     } while (localObject2 == null);
-    paramawoi.b = ((Bitmap)localObject2);
-    paramawoi.jdField_c_of_type_AndroidGraphicsBitmap = BubbleManager.a(paramawoi.e, (BitmapFactory.Options)localObject1);
-    localObject1 = a(paramawoi.jdField_a_of_type_Int).getAbsolutePath();
+    paramawsr.b = ((Bitmap)localObject2);
+    paramawsr.jdField_c_of_type_AndroidGraphicsBitmap = BubbleManager.a(paramawsr.e, (BitmapFactory.Options)localObject1);
+    localObject1 = a(paramawsr.jdField_a_of_type_Int).getAbsolutePath();
     localObject2 = (String)localObject1 + File.separator + "dynamicImg.png";
     if (new File((String)localObject2).exists()) {
-      paramawoi.f = ((String)localObject2);
+      paramawsr.f = ((String)localObject2);
     }
     localObject1 = (String)localObject1 + File.separator + "goldDynamicImg.png";
     if (new File((String)localObject1).exists()) {
-      paramawoi.g = ((String)localObject1);
+      paramawsr.g = ((String)localObject1);
     }
     return true;
   }
@@ -460,32 +460,32 @@ public class PraiseManager
     return true;
   }
   
-  public boolean a(Set<Integer> paramSet, awoj paramawoj)
+  public boolean a(Set<Integer> paramSet, awss paramawss)
   {
     if ((paramSet == null) || (paramSet.isEmpty())) {
       return true;
     }
-    awol localawol = new awol(this);
-    localawol.b = paramSet.size();
-    localawol.jdField_a_of_type_Awoj = paramawoj;
-    paramawoj = paramSet.iterator();
-    while (paramawoj.hasNext())
+    awsu localawsu = new awsu(this);
+    localawsu.b = paramSet.size();
+    localawsu.jdField_a_of_type_Awss = paramawss;
+    paramawss = paramSet.iterator();
+    while (paramawss.hasNext())
     {
-      int i = ((Integer)paramawoj.next()).intValue();
+      int i = ((Integer)paramawss.next()).intValue();
       if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(i)) == null)
       {
-        a(localawol);
+        a(localawsu);
         a(i, true, "from_load_all");
       }
       else
       {
-        localawol.jdField_a_of_type_Int += 1;
+        localawsu.jdField_a_of_type_Int += 1;
       }
     }
-    return localawol.jdField_a_of_type_Int == paramSet.size();
+    return localawsu.jdField_a_of_type_Int == paramSet.size();
   }
   
-  public void b(awoj paramawoj)
+  public void b(awss paramawss)
   {
     List localList = this.jdField_a_of_type_JavaUtilList;
     Object localObject = null;
@@ -497,7 +497,7 @@ public class PraiseManager
         if (localIterator.hasNext())
         {
           WeakReference localWeakReference = (WeakReference)localIterator.next();
-          if ((localWeakReference != null) && (localWeakReference.get() == paramawoj)) {
+          if ((localWeakReference != null) && (localWeakReference.get() == paramawss)) {
             localObject = localWeakReference;
           }
         }
@@ -511,9 +511,9 @@ public class PraiseManager
     }
   }
   
-  boolean b(awoi paramawoi)
+  boolean b(awsr paramawsr)
   {
-    return (new File(paramawoi.jdField_c_of_type_JavaLangString).exists()) && (new File(paramawoi.d).exists());
+    return (new File(paramawsr.jdField_c_of_type_JavaLangString).exists()) && (new File(paramawsr.d).exists());
   }
   
   public void onDestroy()

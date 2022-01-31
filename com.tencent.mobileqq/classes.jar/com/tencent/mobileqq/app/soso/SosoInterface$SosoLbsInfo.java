@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.soso;
 
-import amlh;
+import ampw;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class SosoInterface$SosoLbsInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<SosoLbsInfo> CREATOR = new amlh();
+  public static final Parcelable.Creator<SosoLbsInfo> CREATOR = new ampw();
   public long a;
   public SosoInterface.SosoAttribute a;
   public SosoInterface.SosoLocation a;

@@ -30,7 +30,7 @@ public class qbx
   public void onClick(View paramView)
   {
     ors.a = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary.a.a.a();
-    paramView = oqu.k + bdbi.encodeToString(String.valueOf(this.jdField_a_of_type_JavaLangString).getBytes(), 2);
+    paramView = oqu.k + bdfr.encodeToString(String.valueOf(this.jdField_a_of_type_JavaLangString).getBytes(), 2);
     ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary.getContext(), paramView);
   }
   

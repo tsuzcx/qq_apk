@@ -5,11 +5,11 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.drawable.Drawable;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import bdkf;
-import bixy;
-import bjzt;
-import bjzu;
-import bjzy;
+import bdoo;
+import bjcf;
+import bkea;
+import bkeb;
+import bkef;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.Conversation;
@@ -24,13 +24,13 @@ import cooperation.vip.pb.TianShuAccess.AdItem;
 public class TianshuBigInsertPage$4$1
   implements Runnable
 {
-  public TianshuBigInsertPage$4$1(bjzy parambjzy, PreloadManager.PathResult paramPathResult) {}
+  public TianshuBigInsertPage$4$1(bkef parambkef, PreloadManager.PathResult paramPathResult) {}
   
   public void run()
   {
     QLog.d("TianshuBigInsertPage", 2, "show insert page...");
-    bixy.a(bjzu.a(this.jdField_a_of_type_Bjzy.a));
-    bjzu.a(this.jdField_a_of_type_Bjzy.a).addView(bjzu.a(this.jdField_a_of_type_Bjzy.a));
+    bjcf.a(bkeb.a(this.jdField_a_of_type_Bkef.a));
+    bkeb.a(this.jdField_a_of_type_Bkef.a).addView(bkeb.a(this.jdField_a_of_type_Bkef.a));
     Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
     localObject1 = URLDrawable.getFileDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$PathResult.filePath, (URLDrawable.URLDrawableOptions)localObject1);
     try
@@ -39,14 +39,14 @@ public class TianshuBigInsertPage$4$1
       ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
       BitmapFactory.decodeFile(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$PathResult.filePath, (BitmapFactory.Options)localObject2);
       QLog.d("TianshuBigInsertPage", 2, "bitmap w: " + ((BitmapFactory.Options)localObject2).outWidth + ", h: " + ((BitmapFactory.Options)localObject2).outHeight);
-      int i = bdkf.a();
+      int i = bdoo.a();
       i = (int)(((BitmapFactory.Options)localObject2).outHeight * 1.0F / ((BitmapFactory.Options)localObject2).outWidth * i);
       if (i > 0)
       {
         QLog.d("TianshuBigInsertPage", 2, "calc height: " + i);
-        localObject2 = bjzu.a(this.jdField_a_of_type_Bjzy.a).getLayoutParams();
+        localObject2 = bkeb.a(this.jdField_a_of_type_Bkef.a).getLayoutParams();
         ((ViewGroup.LayoutParams)localObject2).height = i;
-        bjzu.a(this.jdField_a_of_type_Bjzy.a).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        bkeb.a(this.jdField_a_of_type_Bkef.a).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       }
     }
     catch (Throwable localThrowable)
@@ -56,10 +56,10 @@ public class TianshuBigInsertPage$4$1
         localThrowable.printStackTrace();
       }
     }
-    bjzu.a(this.jdField_a_of_type_Bjzy.a).setBackgroundDrawable((Drawable)localObject1);
-    bjzu.a(bjzu.b(this.jdField_a_of_type_Bjzy.a));
-    if ((bjzu.a(this.jdField_a_of_type_Bjzy.a) != null) && (bjzu.a(this.jdField_a_of_type_Bjzy.a).a() != null) && (bjzu.a(this.jdField_a_of_type_Bjzy.a).a().app != null) && (bjzu.a(this.jdField_a_of_type_Bjzy.a) != null)) {
-      bjzt.a(bjzu.a(this.jdField_a_of_type_Bjzy.a).a().app, 101, String.valueOf(bjzu.a(this.jdField_a_of_type_Bjzy.a).iAdId.get()), bjzu.a(this.jdField_a_of_type_Bjzy.a).traceinfo.get());
+    bkeb.a(this.jdField_a_of_type_Bkef.a).setBackgroundDrawable((Drawable)localObject1);
+    bkeb.a(bkeb.b(this.jdField_a_of_type_Bkef.a));
+    if ((bkeb.a(this.jdField_a_of_type_Bkef.a) != null) && (bkeb.a(this.jdField_a_of_type_Bkef.a).a() != null) && (bkeb.a(this.jdField_a_of_type_Bkef.a).a().app != null) && (bkeb.a(this.jdField_a_of_type_Bkef.a) != null)) {
+      bkea.a(bkeb.a(this.jdField_a_of_type_Bkef.a).a().app, 101, String.valueOf(bkeb.a(this.jdField_a_of_type_Bkef.a).iAdId.get()), bkeb.a(this.jdField_a_of_type_Bkef.a).traceinfo.get());
     }
   }
 }

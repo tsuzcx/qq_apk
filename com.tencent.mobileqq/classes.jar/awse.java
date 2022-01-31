@@ -1,10 +1,33 @@
-import com.tencent.image.URLImageView;
+import android.os.Handler;
+import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
+import com.tencent.upload.uinterface.data.UpsImageUploadResult;
 
-class awse
+public class awse
+  extends awuk
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public awse(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3)
+  {
+    super(paramLong, paramString1, paramArrayOfByte, paramString2);
+  }
   
-  awse(awsd paramawsd) {}
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    switch (paramInt)
+    {
+    default: 
+    case 1001: 
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
+      } while (a() == null);
+      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a());
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
+    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(24, a());
+    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage(paramVarArgs);
+  }
 }
 
 

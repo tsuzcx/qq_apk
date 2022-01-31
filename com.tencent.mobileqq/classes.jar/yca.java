@@ -1,20 +1,8 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.subscribe.comment.CommentPresenter.5.1;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class yca
-  implements View.OnLayoutChangeListener
+public abstract interface yca
 {
-  yca(ybx paramybx) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    QLog.d(ybx.a(), 2, "OnLayoutChangeListener scrollToReplyView start mScrollToTargetReply" + ybx.c(this.a));
-    if ((ybx.a(this.a) != null) && (ybx.c(this.a))) {
-      ybx.a(this.a, new CommentPresenter.5.1(this));
-    }
-  }
+  public abstract void a(List<ydn> paramList, boolean paramBoolean);
 }
 
 

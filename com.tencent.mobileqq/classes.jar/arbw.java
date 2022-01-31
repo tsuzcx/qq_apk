@@ -1,40 +1,58 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.PrinterDefaultActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-
-final class arbw
-  implements View.OnClickListener
+public class arbw
 {
-  arbw(String paramString, ardn paramardn) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b = true;
+  public int c;
+  public String c;
+  public boolean c = false;
+  public int d;
+  public int e;
+  public int f;
   
-  public void onClick(View paramView)
+  public static int a(int paramInt)
   {
-    paramView = (allz)((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a(8);
-    if (!arof.b(this.jdField_a_of_type_JavaLangString)) {}
-    for (;;)
+    switch (paramInt)
     {
-      return;
-      if (paramView.jdField_a_of_type_Df.a(arni.a(this.jdField_a_of_type_JavaLangString)))
-      {
-        Activity localActivity = this.jdField_a_of_type_Ardn.getActivity();
-        if (!paramView.jdField_a_of_type_Df.a()) {
-          localActivity.startActivity(new Intent(localActivity, PrinterDefaultActivity.class));
-        }
-        while (this.jdField_a_of_type_Ardn.b())
-        {
-          long l = this.jdField_a_of_type_Ardn.a().b();
-          arni.a(this.jdField_a_of_type_Ardn.a(), l);
-          return;
-          paramView.jdField_a_of_type_Aluh.a((BaseActivity)localActivity, this.jdField_a_of_type_JavaLangString);
-        }
-      }
+    case 1: 
+    case 12: 
+    case 13: 
+    case 14: 
+    case 15: 
+    case 16: 
+    case 17: 
+    case 18: 
+    case 19: 
+    case 20: 
+    case 21: 
+    case 22: 
+    default: 
+      return 2131692504;
+    case 2: 
+      return 2131692572;
+    case 3: 
+      return 2131692495;
+    case 4: 
+      return 2131692475;
+    case 5: 
+      return 2131692512;
+    case 6: 
+      return 2131692518;
+    case 7: 
+      return 2131692503;
+    case 8: 
+      return 2131692530;
+    case 11: 
+      return 2131692529;
+    case 9: 
+      return 2131692516;
+    case 10: 
+      return 2131692515;
     }
+    return 2131692491;
   }
 }
 

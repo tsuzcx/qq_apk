@@ -1,16 +1,37 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.listentogether.data.ISong;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class atkm
+  extends QIPCModule
 {
-  MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  ISong jdField_a_of_type_ComTencentMobileqqListentogetherDataISong;
+  private static atkm a;
   
-  public atkm(QQMusicPlayService paramQQMusicPlayService, MediaPlayer paramMediaPlayer, ISong paramISong)
+  private atkm(String paramString)
   {
-    this.jdField_a_of_type_AndroidMediaMediaPlayer = paramMediaPlayer;
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong = paramISong;
+    super(paramString);
+  }
+  
+  public static atkm a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new atkm("JubaoIPCServer");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("JubaoIPCServer", 2, "jubaoIpcServer onCall= " + paramString + ",callbackId = " + paramInt);
+    }
+    return null;
   }
 }
 

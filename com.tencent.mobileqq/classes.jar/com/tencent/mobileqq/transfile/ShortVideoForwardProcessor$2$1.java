@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.transfile;
 
-import basv;
-import basw;
+import baxe;
+import baxf;
 
 public class ShortVideoForwardProcessor$2$1
   implements Runnable
 {
-  public ShortVideoForwardProcessor$2$1(basw parambasw, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public ShortVideoForwardProcessor$2$1(baxf parambaxf, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Basw.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
+    this.jdField_a_of_type_Baxf.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
   }
 }
 

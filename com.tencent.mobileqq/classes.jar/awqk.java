@@ -1,17 +1,8 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import android.graphics.Bitmap;
 
-public class awqk
-  implements bdjy<Rect>
+public abstract interface awqk
 {
-  public awqk(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
-  
-  public void a(bdjs<Rect> parambdjs, float paramFloat, Rect paramRect, Transformation paramTransformation)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
-  }
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

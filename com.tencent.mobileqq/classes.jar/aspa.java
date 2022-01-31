@@ -1,71 +1,119 @@
-import android.annotation.TargetApi;
-import android.graphics.Matrix;
-import android.graphics.Path;
-import android.graphics.PathMeasure;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Interpolator;
-import android.view.animation.Transformation;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForPubAccount;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.app.AppRuntime;
 
-class aspa
-  extends Animation
+public class aspa
+  extends QIPCModule
 {
-  public float a;
-  public int a;
-  public PathMeasure a;
-  public View a;
-  public Interpolator a;
-  public asoz a;
-  public aspb a;
-  public float b;
+  private static volatile aspa a;
   
-  @TargetApi(11)
-  public aspa(Path paramPath, float paramFloat, View paramView1, View paramView2, asoz paramasoz)
+  public aspa(String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(paramPath, false);
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
-    this.jdField_a_of_type_AndroidViewView = paramView2;
-    this.jdField_b_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Asoz = paramasoz;
-    paramView1.setLayerType(2, null);
+    super(paramString);
   }
   
-  private static float a(int paramInt, float paramFloat)
+  public static aspa a()
   {
-    switch (paramInt)
+    if (a == null) {}
+    try
     {
-    default: 
-      return (float)Math.pow(paramFloat, 2.0D);
-    case 1: 
-      if (paramFloat < 0.8D) {
-        return 0.0F;
+      if (a == null) {
+        a = new aspa("QQGameIPCModule");
       }
-      return 5.0F * paramFloat - 4.0F;
+      return a;
     }
-    return 0.5F * paramFloat + 0.5F;
+    finally {}
   }
   
-  @TargetApi(11)
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    Object localObject = paramTransformation.getMatrix();
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getMatrix(this.jdField_a_of_type_Float * paramFloat, (Matrix)localObject, 1);
-    float f;
-    if (Build.VERSION.SDK_INT >= 11)
+    paramBundle = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramBundle == null) || (!(paramBundle instanceof QQAppInterface))) {}
+    do
     {
-      localObject = this.jdField_a_of_type_AndroidViewView;
-      f = this.jdField_b_of_type_Float;
-      asoz localasoz = this.jdField_a_of_type_Asoz;
-      ((View)localObject).setRotation(f * paramFloat * asoz.jdField_b_of_type_Float);
-    }
-    if (this.jdField_a_of_type_Asoz.jdField_b_of_type_Boolean)
-    {
-      f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(paramFloat);
-      this.jdField_a_of_type_AndroidViewView.setScaleX(this.jdField_a_of_type_Asoz.c * f);
-      this.jdField_a_of_type_AndroidViewView.setScaleY(f * this.jdField_a_of_type_Asoz.c);
-    }
-    paramTransformation.setAlpha(1.0F - a(this.jdField_a_of_type_Int, paramFloat));
+      return null;
+      Object localObject;
+      if ("findMessage".equals(paramString)) {
+        for (;;)
+        {
+          int i;
+          try
+          {
+            paramBundle = ((QQAppInterface)paramBundle).a().a("2747277822", 1008, 10);
+            if ((paramBundle == null) || (paramBundle.size() <= 0)) {
+              break;
+            }
+            paramString = new ArrayList();
+            i = paramBundle.size() - 1;
+            if (i >= 0)
+            {
+              localObject = (MessageRecord)paramBundle.get(i);
+              if (("2747277822".equals(((MessageRecord)localObject).frienduin)) && (((localObject instanceof MessageForArkApp)) || ((localObject instanceof MessageForPubAccount)) || ((localObject instanceof MessageForStructing))))
+              {
+                localObject = QQGameMsgInfo.parseMessageRecord((MessageRecord)localObject);
+                if (localObject != null) {
+                  paramString.add(localObject);
+                }
+              }
+              if (paramString.size() != 3) {}
+            }
+            else
+            {
+              paramBundle = new Bundle();
+              paramBundle.putSerializable("key_get_msg", paramString);
+              callbackResult(paramInt, EIPCResult.createSuccessResult(paramBundle));
+              return null;
+            }
+          }
+          catch (Throwable paramString)
+          {
+            paramString.printStackTrace();
+            return null;
+          }
+          i -= 1;
+        }
+      }
+      if ("getGameMsg".equals(paramString))
+      {
+        paramBundle = (asmu)paramBundle.getManager(358);
+        localObject = paramBundle.a();
+        paramString = new ArrayList();
+        if (localObject != null) {
+          paramString.addAll(paramBundle.a());
+        }
+        paramBundle = new Bundle();
+        paramBundle.putSerializable("key_get_game_msg", paramString);
+        callbackResult(paramInt, EIPCResult.createSuccessResult(paramBundle));
+        return null;
+      }
+      if ("doOnResume".equals(paramString))
+      {
+        ((asmu)paramBundle.getManager(358)).a(0);
+        ((QQAppInterface)paramBundle).a().a("2747277822", 1008, true, true);
+        return null;
+      }
+      if ("doOnDestory".equals(paramString))
+      {
+        ((asmu)paramBundle.getManager(358)).a(0);
+        return null;
+      }
+    } while (!"getGameMsgUrl".equals(paramString));
+    paramString = (asmu)paramBundle.getManager(358);
+    paramBundle = new Bundle();
+    paramBundle.putString("key_get_msg_list_url", paramString.a());
+    callbackResult(paramInt, EIPCResult.createSuccessResult(paramBundle));
+    return null;
   }
 }
 

@@ -1,19 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
 
-class alyv
-  extends bakk
+public class alyv
+  extends aluc
 {
-  alyv(alyu paramalyu) {}
-  
-  public boolean a(bakf parambakf)
+  protected void a()
   {
-    String str = ThemeUtil.getCurrentThemeId();
-    if (!parambakf.a().equals(str)) {
-      QQToast.a(this.a.app.getApplication(), alpo.a(2131715295), 4000).a();
+    super.a();
+    if (this.d >= alua.a().a / 12000L)
+    {
+      CoreService.stopTempService();
+      this.a.c();
+      this.d = 0L;
     }
-    return false;
+  }
+  
+  protected void a(String paramString)
+  {
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
+    {
+      localGuardManager.a(i, paramString);
+      return;
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.b();
+    CoreService.startTempService();
   }
 }
 

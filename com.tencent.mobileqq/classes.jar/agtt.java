@@ -1,33 +1,14 @@
-import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecBarAdapter.ImgUpdateListener.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.os.Handler;
 
-public class agtt
-  implements aguj
+class agtt
+  implements nrr
 {
-  public agtq a;
+  agtt(agts paramagts) {}
   
-  public agtt(agtq paramagtq)
+  public void a()
   {
-    this.a = paramagtq;
-  }
-  
-  public void a(List<agtk> paramList, String paramString1, String paramString2)
-  {
-    if (this.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecBarAdapter", 2, "data=" + paramList.size());
-      }
-      agtq.a(this.a);
-      ThreadManager.getUIHandler().post(new StickerRecBarAdapter.ImgUpdateListener.1(this, paramString1, paramList, paramString2));
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("StickerRecBarAdapter", 2, "mAdapter is null");
+    agti.b(this.a.a, false);
+    this.a.a.a.sendEmptyMessage(1);
   }
 }
 

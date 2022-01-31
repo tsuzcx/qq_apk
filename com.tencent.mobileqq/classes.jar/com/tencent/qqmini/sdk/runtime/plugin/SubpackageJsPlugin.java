@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgkd;
-import bgki;
-import bgrb;
+import bgok;
+import bgop;
+import bgvi;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONObject;
@@ -15,23 +15,23 @@ public class SubpackageJsPlugin
   private static final String TAG = "SubpackageJsPlugin";
   private AtomicInteger subpackageTaskId = new AtomicInteger(0);
   
-  public String createLoadSubPackageTask(bgkd parambgkd)
+  public String createLoadSubPackageTask(bgok parambgok)
   {
     try
     {
-      String str = new JSONObject(parambgkd.b).optString("moduleName");
+      String str = new JSONObject(parambgok.b).optString("moduleName");
       int i = this.subpackageTaskId.getAndIncrement();
       JSONObject localJSONObject = new JSONObject();
-      bgrb.a().a(this.mApkgInfo, this.mMiniAppInfo, str, new SubpackageJsPlugin.1(this, i, str, parambgkd));
+      bgvi.a().a(this.mApkgInfo, this.mMiniAppInfo, str, new SubpackageJsPlugin.1(this, i, str, parambgok));
       localJSONObject.put("loadTaskId", i);
-      str = bgki.a(parambgkd.a, localJSONObject).toString();
+      str = bgop.a(parambgok.a, localJSONObject).toString();
       return str;
     }
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
     }
-    return bgki.b(parambgkd.a, new JSONObject()).toString();
+    return bgop.b(parambgok.a, new JSONObject()).toString();
   }
 }
 

@@ -1,18 +1,19 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class akcw
+final class akcw
+  implements DialogInterface.OnClickListener
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public ImageView b;
-  public ImageView c;
-  public ImageView d;
-  public ImageView e;
+  akcw(boolean paramBoolean, BaseActivity paramBaseActivity) {}
   
-  public akcw(akcv paramakcv) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    }
+  }
 }
 
 

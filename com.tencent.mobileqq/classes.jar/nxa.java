@@ -21,7 +21,7 @@ public class nxa
   private nxa()
   {
     oxs.a(this);
-    bjxs.a().a(this.jdField_a_of_type_Nxd);
+    bkbz.a().a(this.jdField_a_of_type_Nxd);
   }
   
   private int a(String paramString)
@@ -66,17 +66,17 @@ public class nxa
   private JSONObject a()
   {
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("proteus_bid", bjxj.a("default_feeds_proteus_offline_bid"));
-    localJSONObject.put("cpu_type", bdcb.g());
-    localJSONObject.put("cpu_frequency", bdcb.a());
-    localJSONObject.put("cache_memory", bdcb.d());
-    localJSONObject.put("device_model", bdcb.d());
-    localJSONObject.put("os_version", bdcb.e());
+    localJSONObject.put("proteus_bid", bkbq.a("default_feeds_proteus_offline_bid"));
+    localJSONObject.put("cpu_type", bdgk.g());
+    localJSONObject.put("cpu_frequency", bdgk.a());
+    localJSONObject.put("cache_memory", bdgk.d());
+    localJSONObject.put("device_model", bdgk.d());
+    localJSONObject.put("os_version", bdgk.e());
     if (NetworkState.isWifiConn()) {}
     for (int i = 1;; i = 2)
     {
       localJSONObject.put("network_type", i);
-      localJSONObject.put("package_name", "8.3.3.4515");
+      localJSONObject.put("package_name", "8.3.5.4555");
       return localJSONObject;
     }
   }
@@ -88,7 +88,7 @@ public class nxa
   
   public static boolean a()
   {
-    boolean bool = ((Boolean)bjxj.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(true))).booleanValue();
+    boolean bool = ((Boolean)bkbq.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(true))).booleanValue();
     QLog.d("ReadInJoyDropFrameHelper", 1, "ReadInJoyDropFrameHelper | Report enable :" + bool);
     return bool;
   }

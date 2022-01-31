@@ -1,12 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.util.FaceInfo;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.trooponline.widget.RoundTextView;
 
-public abstract interface bcwp
+public class bcwp
 {
-  public abstract void a(AppInterface paramAppInterface, FaceInfo paramFaceInfo);
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public bcwr a;
+  public RoundTextView a;
+  public String a;
+  public StringBuilder a;
   
-  public abstract void a(FaceInfo paramFaceInfo, Bitmap paramBitmap);
+  public bcwp(bcwm parambcwm) {}
 }
 
 

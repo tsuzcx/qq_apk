@@ -1,13 +1,30 @@
+import android.text.TextUtils;
+
 public class alrn
-  implements alkr
 {
-  public void a(Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public static String a(String paramString)
   {
-    if (paramInt == 1) {
-      a(paramObject);
+    String str2 = "";
+    String str1 = str2;
+    int i;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      i = paramString.lastIndexOf("diydoutu@");
+      str1 = str2;
+      if (i >= 0) {
+        str1 = paramString.substring(i, paramString.length());
+      }
     }
+    paramString = str1;
+    if (!TextUtils.isEmpty(str1))
+    {
+      i = str1.lastIndexOf(".");
+      paramString = str1;
+      if (i >= 0) {
+        paramString = str1.substring(0, i);
+      }
+    }
+    return paramString;
   }
 }
 

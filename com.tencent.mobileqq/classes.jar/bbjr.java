@@ -1,17 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.AbsNewTroopBaseView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
 
 public class bbjr
-  extends AnimatorListenerAdapter
+  implements bhtv
 {
-  public bbjr(NewTroopCreateActivity paramNewTroopCreateActivity) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public bbjr(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView.a(this.a.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size() - 1))
+    {
+      paramInt = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size();
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a(paramInt, false);
     }
   }
 }

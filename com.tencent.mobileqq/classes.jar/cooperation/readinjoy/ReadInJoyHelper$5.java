@@ -1,6 +1,6 @@
 package cooperation.readinjoy;
 
-import bjxj;
+import bkbq;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import nrt;
@@ -16,7 +16,7 @@ public final class ReadInJoyHelper$5
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      bjxj.a(localJSONObject);
+      bkbq.a(localJSONObject);
       nrt.a(null, this.jdField_a_of_type_MqqAppAppRuntime.getAccount(), "0X8009662", "0X8009662", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", localJSONObject.toString(), false);
       return;
     }

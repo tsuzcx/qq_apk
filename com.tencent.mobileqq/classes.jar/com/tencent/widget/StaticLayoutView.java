@@ -8,13 +8,13 @@ import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import aper;
+import apja;
 
 public class StaticLayoutView
   extends View
 {
   private Layout jdField_a_of_type_AndroidTextLayout;
-  aper jdField_a_of_type_Aper;
+  apja jdField_a_of_type_Apja;
   
   public StaticLayoutView(Context paramContext)
   {
@@ -75,10 +75,10 @@ public class StaticLayoutView
           if (i == 1) {
             localObject1[0].onClick(this);
           }
-          if ((localObject1[0] instanceof aper)) {
-            ((aper)localObject1[0]).a(false);
+          if ((localObject1[0] instanceof apja)) {
+            ((apja)localObject1[0]).a(false);
           }
-          this.jdField_a_of_type_Aper = null;
+          this.jdField_a_of_type_Apja = null;
           postInvalidate();
         }
         for (;;)
@@ -86,19 +86,19 @@ public class StaticLayoutView
           return true;
           if (i == 0)
           {
-            if ((localObject1[0] instanceof aper))
+            if ((localObject1[0] instanceof apja))
             {
-              ((aper)localObject1[0]).a(true);
-              this.jdField_a_of_type_Aper = ((aper)localObject1[0]);
+              ((apja)localObject1[0]).a(true);
+              this.jdField_a_of_type_Apja = ((apja)localObject1[0]);
             }
             postInvalidate();
           }
         }
       }
-      if (((i == 1) || (i == 3)) && (this.jdField_a_of_type_Aper != null))
+      if (((i == 1) || (i == 3)) && (this.jdField_a_of_type_Apja != null))
       {
-        this.jdField_a_of_type_Aper.a(false);
-        this.jdField_a_of_type_Aper = null;
+        this.jdField_a_of_type_Apja.a(false);
+        this.jdField_a_of_type_Apja = null;
         postInvalidate();
       }
     }

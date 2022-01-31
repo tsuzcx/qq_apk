@@ -1,9 +1,9 @@
 package com.tencent.qqmini.nativePlugins;
 
 import android.os.Bundle;
-import bdcs;
-import bgjm;
-import bgkd;
+import bdhb;
+import bgnt;
+import bgok;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
@@ -18,19 +18,19 @@ public class GroupCheckInUploadPlugin
   implements EIPCResultCallback
 {
   public static final String TAG = "GroupCheckInUploadPlugin";
-  private bgkd req;
+  private bgok req;
   
-  public void checkinUploadRes(bgkd parambgkd)
+  public void checkinUploadRes(bgok parambgok)
   {
     for (int i = 1;; i = 0) {
       for (;;)
       {
         try
         {
-          this.req = parambgkd;
-          JSONObject localJSONObject = new JSONObject(parambgkd.b).optJSONObject("data");
+          this.req = parambgok;
+          JSONObject localJSONObject = new JSONObject(parambgok.b).optJSONObject("data");
           QMLog.d("GroupCheckInUploadPlugin", "data: " + localJSONObject);
-          str1 = bgjm.a().a(localJSONObject.optString("filePath"));
+          str1 = bgnt.a().a(localJSONObject.optString("filePath"));
           if (localJSONObject.optInt("isVideo") != 1) {
             break;
           }
@@ -38,11 +38,11 @@ public class GroupCheckInUploadPlugin
           if (i == 0) {
             continue;
           }
-          String str2 = bgjm.a().a(localJSONObject.optString("cover"));
-          if (!bdcs.a(str1)) {
+          String str2 = bgnt.a().a(localJSONObject.optString("cover"));
+          if (!bdhb.a(str1)) {
             break label244;
           }
-          if (!bdcs.a(str2)) {
+          if (!bdhb.a(str2)) {
             return;
           }
           localBundle.putString("BUNDLE_NAME_FILEPATH", str1);
@@ -57,15 +57,15 @@ public class GroupCheckInUploadPlugin
         {
           String str1;
           Bundle localBundle;
-          QMLog.e("GroupCheckInUploadPlugin", "checkinUploadRes(). Failed to parse jsonParams=" + parambgkd.b);
+          QMLog.e("GroupCheckInUploadPlugin", "checkinUploadRes(). Failed to parse jsonParams=" + parambgok.b);
           continue;
           QIPCClientHelper.getInstance().callServer("Module_CheckInServer", "ACTION_UPLOAD_PIC", localBundle, this);
           continue;
         }
         QMLog.i("Demo", "checkin_uploadRes succeed");
-        parambgkd.a();
+        parambgok.a();
         return;
-        if (bdcs.a(str1)) {
+        if (bdhb.a(str1)) {
           localBundle.putString("BUNDLE_NAME_FILEPATH", str1);
         } else {
           label244:

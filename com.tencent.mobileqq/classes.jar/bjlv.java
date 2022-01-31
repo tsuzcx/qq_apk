@@ -1,24 +1,14 @@
-import android.os.IInterface;
-import cooperation.qzone.plugin.PluginRecord;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
-public abstract interface bjlv
-  extends IInterface
+public class bjlv
+  implements bjmi
 {
-  public abstract PluginRecord a(String paramString);
+  public bjlv(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
   
-  public abstract void a();
-  
-  public abstract void a(bjka parambjka, int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract boolean a(String paramString, bjkd parambjkd, int paramInt);
-  
-  public abstract boolean b(String paramString);
-  
-  public abstract boolean c(String paramString);
+  public void a()
+  {
+    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusic(this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

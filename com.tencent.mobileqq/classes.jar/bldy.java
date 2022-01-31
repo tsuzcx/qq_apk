@@ -1,8 +1,23 @@
-public abstract interface bldy
+import android.app.Dialog;
+import android.app.FragmentManager;
+
+class bldy
+  implements blfb
 {
-  public abstract void a(String paramString, int paramInt);
+  bldy(blds paramblds, String paramString) {}
   
-  public abstract void a(String paramString, boolean paramBoolean);
+  public void a()
+  {
+    blds.a(this.jdField_a_of_type_Blds).dismiss();
+    this.jdField_a_of_type_Blds.getFragmentManager().popBackStack();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Blds.a.a(this.jdField_a_of_type_JavaLangString, paramString);
+    blds.a(this.jdField_a_of_type_Blds).dismiss();
+    this.jdField_a_of_type_Blds.getFragmentManager().popBackStack();
+  }
 }
 
 

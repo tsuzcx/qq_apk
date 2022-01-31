@@ -1,18 +1,16 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-
 public class bdtf
-  implements TouchWebView.OnScrollChangedListener
 {
-  public bdtf(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  public int a;
+  public boolean a;
+  public int b;
+  public int c;
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public bdtf(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3)
   {
-    if (this.a.a != null) {
-      this.a.a.scrollBy(0, paramInt2 - paramInt4);
-    }
+    this.b = paramInt1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramInt2;
+    this.jdField_a_of_type_Int = paramInt3;
   }
 }
 

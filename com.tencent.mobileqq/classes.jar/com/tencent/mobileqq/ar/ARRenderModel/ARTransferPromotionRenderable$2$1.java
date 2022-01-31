@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amoo;
-import amrb;
+import amtd;
+import amvq;
 import com.tencent.qphone.base.util.QLog;
 
 class ARTransferPromotionRenderable$2$1
@@ -11,9 +11,9 @@ class ARTransferPromotionRenderable$2$1
   
   public void run()
   {
-    if ((amrb.a(this.a.this$0) != null) && (amrb.a(this.a.this$0).a()))
+    if ((amvq.a(this.a.this$0) != null) && (amvq.a(this.a.this$0).a()))
     {
-      amrb.a(this.a.this$0).b();
+      amvq.a(this.a.this$0).a();
       QLog.d("ARTransferPromotionRenderable", 2, "mRepeatCheckRunnable run ");
     }
   }

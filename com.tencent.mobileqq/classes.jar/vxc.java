@@ -1,49 +1,51 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Context;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
 public class vxc
-  extends QQUIEventReceiver<vwo, vhz>
 {
-  public vxc(@NonNull vwo paramvwo)
+  static volatile vxc jdField_a_of_type_Vxc;
+  Context jdField_a_of_type_AndroidContentContext;
+  vxd jdField_a_of_type_Vxd;
+  
+  private vxc(Context paramContext)
   {
-    super(paramvwo);
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
   }
   
-  public void a(@NonNull vwo paramvwo, @NonNull vhz paramvhz)
+  public static vxc a(Context paramContext)
   {
-    if (!TextUtils.equals(paramvhz.b, String.valueOf(paramvwo.hashCode()))) {
-      return;
-    }
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramvwo.a()).a();
-    if (localVideoViewVideoHolder != null) {
-      localVideoViewVideoHolder.c(false);
-    }
-    paramvwo.l();
-    if (paramvhz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (jdField_a_of_type_Vxc == null) {}
+    try
     {
-      wsv.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramvhz.jdField_a_of_type_JavaLangString);
-      if (paramvhz.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
-      {
-        vhx.a().a(paramvwo.b(), paramvhz.jdField_a_of_type_JavaLangString);
-        return;
+      if (jdField_a_of_type_Vxc == null) {
+        jdField_a_of_type_Vxc = new vxc(paramContext);
       }
-      vhx.a().a(paramvwo.b(), paramvhz.jdField_a_of_type_JavaLangString, paramvhz.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramvwo.hashCode());
-      return;
+      return jdField_a_of_type_Vxc;
     }
-    wsv.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131707260), 0).a();
+    finally {}
   }
   
-  public Class acceptEventClass()
+  public vxd a()
   {
-    return vhz.class;
+    if (this.jdField_a_of_type_Vxd == null) {
+      this.jdField_a_of_type_Vxd = new vxd();
+    }
+    return this.jdField_a_of_type_Vxd;
+  }
+  
+  public void a()
+  {
+    TVK_SDKMgr.setOnLogListener(a());
+  }
+  
+  public void a(Context paramContext)
+  {
+    TVK_SDKMgr.initSdk(paramContext.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+  }
+  
+  public boolean a()
+  {
+    return TVK_SDKMgr.isInstalled(null);
   }
 }
 

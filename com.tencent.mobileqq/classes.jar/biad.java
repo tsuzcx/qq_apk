@@ -1,88 +1,44 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.widget.ProgressPieView;
 
-public abstract class biad<M, VH extends biac<M>>
-  extends RecyclerView.Adapter<biac<M>>
+public class biad
+  extends Handler
 {
-  protected Context a;
-  protected View a;
-  protected biaa a;
-  protected biab a;
-  protected View b;
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean;
   
-  public biad(Context paramContext)
+  public biad(ProgressPieView paramProgressPieView) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public abstract VH a(ViewGroup paramViewGroup, int paramInt);
-  
-  public void a(View paramView)
-  {
-    if (paramView == null)
+    if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b > this.jdField_a_of_type_Int)
     {
-      Log.w("HeaderAndFooterAdapter", "add the footer view is null");
+      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.b - 1);
+      sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
+    }
+    do
+    {
       return;
-    }
-    this.b = paramView;
-    notifyDataSetChanged();
-  }
-  
-  public abstract void a(VH paramVH, int paramInt);
-  
-  public final biac b(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (paramInt == 1024) {
-      paramViewGroup = new biac(this.jdField_a_of_type_AndroidViewView);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Biaa != null) {
-        paramViewGroup.itemView.setOnClickListener(new biae(this, paramViewGroup));
+      if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b < this.jdField_a_of_type_Int)
+      {
+        int i = this.jdField_a_of_type_ComTencentWidgetProgressPieView.b + this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Int;
+        if (i <= this.jdField_a_of_type_Int) {
+          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
+        }
+        for (;;)
+        {
+          sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
+          return;
+          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_Int);
+        }
       }
-      if (this.jdField_a_of_type_Biab != null) {
-        paramViewGroup.itemView.setOnLongClickListener(new biaf(this, paramViewGroup));
-      }
-      return paramViewGroup;
-      if (paramInt == 1025) {
-        paramViewGroup = new biac(this.b);
-      } else {
-        paramViewGroup = a(paramViewGroup, paramInt);
-      }
-    }
-  }
-  
-  public final void b(biac parambiac, int paramInt)
-  {
-    switch (parambiac.getItemViewType())
-    {
-    default: 
-      a(parambiac, paramInt);
-    }
-  }
-  
-  public int c()
-  {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      i = 1;
-    }
-    int j = i;
-    if (this.b != null) {
-      j = i + 1;
-    }
-    return j;
-  }
-  
-  public int d()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return 0;
-    }
-    return 1;
+      removeMessages(0);
+    } while (!this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setVisibility(4);
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setShowImage(false);
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

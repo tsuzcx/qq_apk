@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.util;
 
 import android.content.Context;
 import android.content.IntentFilter;
-import anrq;
-import becq;
+import anvz;
+import begz;
 import com.tencent.biz.pubaccount.readinjoy.config.beans.AchillesParams;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -15,7 +15,7 @@ public class AchillesFragmentUtils
 {
   private static AchillesFragmentUtils.InstallBroadcastReceiver jdField_a_of_type_ComTencentBizPubaccountUtilAchillesFragmentUtils$InstallBroadcastReceiver;
   private static String jdField_a_of_type_JavaLangString;
-  private static WeakReference<becq> jdField_a_of_type_JavaLangRefWeakReference;
+  private static WeakReference<begz> jdField_a_of_type_JavaLangRefWeakReference;
   
   public static void a(String paramString1, String paramString2, String paramString3, AchillesParams paramAchillesParams)
   {
@@ -34,7 +34,7 @@ public class AchillesFragmentUtils
     }
   }
   
-  public static boolean a(String paramString1, String paramString2, becq parambecq)
+  public static boolean a(String paramString1, String paramString2, begz parambegz)
   {
     boolean bool3 = false;
     bool1 = false;
@@ -49,7 +49,7 @@ public class AchillesFragmentUtils
       if (paramString1 != null)
       {
         bool2 = bool3;
-        bool1 = anrq.b(paramString1);
+        bool1 = anvz.b(paramString1);
       }
       bool2 = bool1;
       if (jdField_a_of_type_ComTencentBizPubaccountUtilAchillesFragmentUtils$InstallBroadcastReceiver == null)
@@ -70,7 +70,7 @@ public class AchillesFragmentUtils
         BaseApplication.getContext().registerReceiver(jdField_a_of_type_ComTencentBizPubaccountUtilAchillesFragmentUtils$InstallBroadcastReceiver, paramString1);
       }
       bool2 = bool1;
-      jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambecq);
+      jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambegz);
     }
     catch (Exception paramString1)
     {

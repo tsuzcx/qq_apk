@@ -1,27 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class aczf
-  extends Handler
+  extends aqbl
 {
-  public aczf(GroupManagerActivity paramGroupManagerActivity) {}
+  public aczf(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "mWaitingDialogControlHandler operationFinished = " + GroupManagerActivity.b(this.a));
+      QLog.d("FriendProfileCardActivity", 2, String.format("ProfileCardExtendFriendView onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
     }
-    GroupManagerActivity.b(this.a, true);
-    if (GroupManagerActivity.b(this.a))
-    {
-      this.a.a(true);
-      return;
+    if ((paramBoolean) && (paramInt == 2)) {
+      this.a.a(0L, null, null, false);
     }
-    paramMessage = GroupManagerActivity.a(this.a).obtainMessage(0);
-    GroupManagerActivity.a(this.a).sendMessageDelayed(paramMessage, 60000L);
-    GroupManagerActivity.c(this.a, true);
   }
 }
 

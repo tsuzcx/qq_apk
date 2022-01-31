@@ -1,32 +1,26 @@
-import com.tencent.biz.qqstory.model.item.AddressItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.POI;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetPOIList;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
 
 public class uev
-  extends unf
+  extends ClickableSpan
 {
-  List<AddressItem> a = new ArrayList();
+  public uev(QCirclePushAsyncTextView paramQCirclePushAsyncTextView) {}
   
-  public uev(qqstory_service.RspBatchGetPOIList paramRspBatchGetPOIList)
+  public void onClick(@NonNull View paramView)
   {
-    super(paramRspBatchGetPOIList.result);
-    paramRspBatchGetPOIList = paramRspBatchGetPOIList.poi_list.get();
-    if (paramRspBatchGetPOIList != null)
-    {
-      paramRspBatchGetPOIList = paramRspBatchGetPOIList.iterator();
-      while (paramRspBatchGetPOIList.hasNext())
-      {
-        qqstory_service.POI localPOI = (qqstory_service.POI)paramRspBatchGetPOIList.next();
-        AddressItem localAddressItem = AddressItem.getAddressFromProtoObject(localPOI.address);
-        localAddressItem.poiType = localPOI.poi_type.get();
-        this.a.add(localAddressItem);
-      }
+    if (QCirclePushAsyncTextView.a(this.a) != null) {
+      QCirclePushAsyncTextView.a(this.a).b();
     }
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(-16777216);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

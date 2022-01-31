@@ -1,13 +1,25 @@
-import dov.com.qq.im.aeeditor.module.clip.image.AEEditorImageClipFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
+import com.tencent.ttpic.videoshelf.utils.TTPTLogger;
+import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
+import java.io.File;
 
 public class blhk
-  implements bllr
+  implements DialogInterface.OnCancelListener
 {
-  public blhk(AEEditorImageClipFragment paramAEEditorImageClipFragment) {}
+  public blhk(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
   
-  public void a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    AEEditorImageClipFragment.a(this.a, true);
+    AEVideoShelfPreviewFragment.a(this.a).cancelSave();
+    paramDialogInterface = new File(AEVideoShelfPreviewFragment.a(this.a).getOutputVideoPath());
+    if (paramDialogInterface.exists())
+    {
+      TTPTLogger.i(AEVideoShelfPreviewFragment.b(), "delete temp silent video");
+      paramDialogInterface.delete();
+    }
+    AEVideoShelfPreviewFragment.a(this.a, true);
   }
 }
 

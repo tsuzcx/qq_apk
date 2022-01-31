@@ -1,26 +1,16 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.graphics.Bitmap;
 
 public class ammf
-  extends ayts
 {
-  BrowserAppInterface a;
-  
-  public ammf(BrowserAppInterface paramBrowserAppInterface)
-  {
-    this.a = paramBrowserAppInterface;
-  }
-  
-  public AppInterface a()
-  {
-    return this.a;
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    super.b(paramToServiceMsg, null, atfx.class);
-  }
+  public int a;
+  public long a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

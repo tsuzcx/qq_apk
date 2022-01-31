@@ -11,25 +11,25 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import axnc;
-import bdkf;
-import bfsz;
-import bkil;
-import bkjt;
-import bkju;
-import blmj;
-import blmk;
-import blon;
-import bloo;
-import blop;
-import blor;
-import blov;
-import bloz;
-import blxr;
-import bmcy;
-import bmda;
-import bmdi;
-import bnoa;
+import axrl;
+import bdoo;
+import bfxg;
+import bkms;
+import bkoa;
+import bkob;
+import blqv;
+import blqw;
+import blsz;
+import blta;
+import bltb;
+import bltd;
+import blth;
+import bltl;
+import bmcd;
+import bmhk;
+import bmhm;
+import bmhu;
+import bnsm;
 import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -44,98 +44,98 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
-import uht;
-import wta;
+import umc;
+import wxj;
 
 public class CaptureModeController
-  implements ViewPager.OnPageChangeListener, axnc, blmk
+  implements ViewPager.OnPageChangeListener, axrl, blqw
 {
   protected int a;
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   public ViewGroup a;
-  public bkil a;
-  private blon jdField_a_of_type_Blon;
-  private bmcy jdField_a_of_type_Bmcy;
+  public bkms a;
+  private blsz jdField_a_of_type_Blsz;
+  private bmhk jdField_a_of_type_Bmhk;
   private CaptureModeAdapter jdField_a_of_type_DovComQqImCaptureAdapterCaptureModeAdapter;
-  private HashMap<Integer, blon> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<blmj> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private HashMap<Integer, blsz> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private List<blqv> jdField_a_of_type_JavaUtilList = new ArrayList();
   public boolean a;
   private boolean b;
   
-  public CaptureModeController(bkil parambkil)
+  public CaptureModeController(bkms parambkms)
   {
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Bkil = parambkil;
+    this.jdField_a_of_type_Bkms = parambkms;
   }
   
   public Activity a()
   {
-    return this.jdField_a_of_type_Bkil.a();
+    return this.jdField_a_of_type_Bkms.a();
   }
   
-  public blon a()
+  public blsz a()
   {
-    return this.jdField_a_of_type_Blon;
+    return this.jdField_a_of_type_Blsz;
   }
   
-  public blor a()
+  public bltd a()
   {
-    if ((this.jdField_a_of_type_Bkil instanceof bkjt)) {}
-    for (blor localblor1 = (blor)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(0));; localblor1 = (blor)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(1)))
+    if ((this.jdField_a_of_type_Bkms instanceof bkoa)) {}
+    for (bltd localbltd1 = (bltd)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(0));; localbltd1 = (bltd)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(1)))
     {
-      blor localblor2 = localblor1;
-      if (localblor1 == null) {
-        localblor2 = new blor(this);
+      bltd localbltd2 = localbltd1;
+      if (localbltd1 == null) {
+        localbltd2 = new bltd(this);
       }
-      return localblor2;
+      return localbltd2;
     }
   }
   
-  public blov a()
+  public blth a()
   {
-    blov localblov2 = (blov)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2));
-    blov localblov1 = localblov2;
-    if (localblov2 == null) {
-      localblov1 = new blov(this);
+    blth localblth2 = (blth)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2));
+    blth localblth1 = localblth2;
+    if (localblth2 == null) {
+      localblth1 = new blth(this);
     }
-    return localblov1;
+    return localblth1;
   }
   
-  public bloz a()
+  public bltl a()
   {
-    bloz localbloz2 = (bloz)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(4));
-    bloz localbloz1 = localbloz2;
-    if (localbloz2 == null) {
-      localbloz1 = new bloz(this);
+    bltl localbltl2 = (bltl)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(4));
+    bltl localbltl1 = localbltl2;
+    if (localbltl2 == null) {
+      localbltl1 = new bltl(this);
     }
-    return localbloz1;
+    return localbltl1;
   }
   
-  public bmcy a()
+  public bmhk a()
   {
-    return this.jdField_a_of_type_Bmcy;
+    return this.jdField_a_of_type_Bmhk;
   }
   
-  public bmdi a()
+  public bmhu a()
   {
-    bmdi localbmdi2 = (bmdi)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(5));
-    bmdi localbmdi1 = localbmdi2;
-    if (localbmdi2 == null) {
-      localbmdi1 = new bmdi(this);
+    bmhu localbmhu2 = (bmhu)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(5));
+    bmhu localbmhu1 = localbmhu2;
+    if (localbmhu2 == null) {
+      localbmhu1 = new bmhu(this);
     }
-    return localbmdi1;
+    return localbmhu1;
   }
   
   public void a()
   {
-    Object localObject2 = this.jdField_a_of_type_Bkil.a().getIntent().getIntegerArrayListExtra("support_intent_mode");
+    Object localObject2 = this.jdField_a_of_type_Bkms.a().getIntent().getIntegerArrayListExtra("support_intent_mode");
     Object localObject1;
     if (localObject2 != null)
     {
       localObject1 = new ArrayList();
       localObject2 = ((ArrayList)localObject2).iterator();
       while (((Iterator)localObject2).hasNext()) {
-        ((ArrayList)localObject1).add(Integer.valueOf(blop.a(((Integer)((Iterator)localObject2).next()).intValue())));
+        ((ArrayList)localObject1).add(Integer.valueOf(bltb.a(((Integer)((Iterator)localObject2).next()).intValue())));
       }
     }
     long l;
@@ -146,24 +146,24 @@ public class CaptureModeController
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Integer)((Iterator)localObject1).next();
-        blon localblon = blop.a(((Integer)localObject2).intValue(), this);
-        if (localblon.b())
+        blsz localblsz = bltb.a(((Integer)localObject2).intValue(), this);
+        if (localblsz.b())
         {
-          this.jdField_a_of_type_JavaUtilList.add(new blmj(((Integer)localObject2).intValue()));
-          this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, localblon);
+          this.jdField_a_of_type_JavaUtilList.add(new blqv(((Integer)localObject2).intValue()));
+          this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, localblsz);
         }
       }
-      localObject1 = this.jdField_a_of_type_Bkil.a();
+      localObject1 = this.jdField_a_of_type_Bkms.a();
     }
     if (QLog.isColorLevel()) {
       QLog.d("CaptureModeController", 2, "initCaptureMode use = " + (System.currentTimeMillis() - l));
     }
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_Bkil.c();
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_Bkms.c();
     if ((this.jdField_a_of_type_Int == 5) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(5)))) {
       this.jdField_a_of_type_Int = 0;
     }
-    this.jdField_a_of_type_Bkil.b = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Blon = ((blon)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int)));
+    this.jdField_a_of_type_Bkms.b = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Blsz = ((blsz)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int)));
     this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(7));
   }
   
@@ -175,32 +175,32 @@ public class CaptureModeController
   
   public void a(View paramView, RelativeLayout paramRelativeLayout, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131363948));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131363950));
     if (paramBoolean)
     {
       ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.getParent()).removeView(this.jdField_a_of_type_AndroidViewViewGroup);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-      localLayoutParams.topMargin = bdkf.a(8.0F);
+      localLayoutParams.topMargin = bdoo.a(8.0F);
       localLayoutParams.addRule(10, -1);
       localLayoutParams.addRule(12, 0);
       paramRelativeLayout.addView(this.jdField_a_of_type_AndroidViewViewGroup, localLayoutParams);
-      paramRelativeLayout = (ImageView)paramView.findViewById(2131376015);
+      paramRelativeLayout = (ImageView)paramView.findViewById(2131376068);
       if (paramRelativeLayout != null) {
         paramRelativeLayout.setVisibility(0);
       }
-      paramRelativeLayout = (ImageView)paramView.findViewById(2131376013);
+      paramRelativeLayout = (ImageView)paramView.findViewById(2131376066);
       if (paramRelativeLayout != null) {
         paramRelativeLayout.setVisibility(0);
       }
     }
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramView.findViewById(2131363943));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramView.findViewById(2131363945));
     int j = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels;
     int k = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;
     int i = j;
-    if (bnoa.a(j, k)) {
+    if (bnsm.a(j, k)) {
       i = k * 9 / 16;
     }
-    i = (i - bdkf.a(53.0F)) / 2;
+    i = (i - bdoo.a(53.0F)) / 2;
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setPadding(i, 0, i, 0);
     this.jdField_a_of_type_DovComQqImCaptureAdapterCaptureModeAdapter = new CaptureModeAdapter(paramView.getContext());
     this.jdField_a_of_type_DovComQqImCaptureAdapterCaptureModeAdapter.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int);
@@ -210,94 +210,94 @@ public class CaptureModeController
     this.jdField_a_of_type_DovComQqImCaptureAdapterCaptureModeAdapter.a(this);
     paramRelativeLayout = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
     while (paramRelativeLayout.hasNext()) {
-      ((blon)((Map.Entry)paramRelativeLayout.next()).getValue()).a(paramView);
+      ((blsz)((Map.Entry)paramRelativeLayout.next()).getValue()).a(paramView);
     }
     paramBoolean = this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(5));
     boolean bool = this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(7));
     if ((paramBoolean) || (bool))
     {
-      this.jdField_a_of_type_Bmcy = new bmcy();
-      this.jdField_a_of_type_Bmcy.a();
-      if ((this.jdField_a_of_type_Bkil.a() instanceof EffectsCameraCaptureView))
+      this.jdField_a_of_type_Bmhk = new bmhk();
+      this.jdField_a_of_type_Bmhk.a();
+      if ((this.jdField_a_of_type_Bkms.a() instanceof EffectsCameraCaptureView))
       {
-        paramRelativeLayout = (EffectsCameraCaptureView)this.jdField_a_of_type_Bkil.a();
+        paramRelativeLayout = (EffectsCameraCaptureView)this.jdField_a_of_type_Bkms.a();
         paramRelativeLayout.setFilterInitedListener(this);
         if (paramRelativeLayout.a == null) {
           break label527;
         }
-        uht.a().dispatch(new bmda(2, true));
+        umc.a().dispatch(new bmhm(2, true));
       }
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_JavaUtilList.size() == 1) && ((((blmj)this.jdField_a_of_type_JavaUtilList.get(0)).a() == 0) || (((blmj)this.jdField_a_of_type_JavaUtilList.get(0)).a() == 10)))
+      if ((this.jdField_a_of_type_JavaUtilList.size() == 1) && ((((blqv)this.jdField_a_of_type_JavaUtilList.get(0)).a() == 0) || (((blqv)this.jdField_a_of_type_JavaUtilList.get(0)).a() == 10)))
       {
-        ((ImageView)paramView.findViewById(2131363944)).setVisibility(4);
+        ((ImageView)paramView.findViewById(2131363946)).setVisibility(4);
         this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setVisibility(4);
         this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
-        this.jdField_a_of_type_Bkil.v();
+        this.jdField_a_of_type_Bkms.v();
       }
       return;
       label527:
-      paramRelativeLayout.setOnSurfaceCreatedListener(new bloo(this));
+      paramRelativeLayout.setOnSurfaceCreatedListener(new blta(this));
     }
   }
   
   public void a(View paramView, RelativeLayout paramRelativeLayout1, boolean paramBoolean, RelativeLayout paramRelativeLayout2)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131363948));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131363950));
     if (paramBoolean)
     {
       ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.getParent()).removeView(this.jdField_a_of_type_AndroidViewViewGroup);
       paramRelativeLayout2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-      paramRelativeLayout2.topMargin = bdkf.a(8.0F);
+      paramRelativeLayout2.topMargin = bdoo.a(8.0F);
       paramRelativeLayout2.addRule(10, -1);
       paramRelativeLayout2.addRule(12, 0);
       paramRelativeLayout1.addView(this.jdField_a_of_type_AndroidViewViewGroup, paramRelativeLayout2);
-      paramRelativeLayout1 = (ImageView)paramView.findViewById(2131376015);
+      paramRelativeLayout1 = (ImageView)paramView.findViewById(2131376068);
       if (paramRelativeLayout1 != null) {
         paramRelativeLayout1.setVisibility(0);
       }
-      paramRelativeLayout1 = (ImageView)paramView.findViewById(2131376013);
+      paramRelativeLayout1 = (ImageView)paramView.findViewById(2131376066);
       if (paramRelativeLayout1 != null) {
         paramRelativeLayout1.setVisibility(0);
       }
     }
-    while ((this.jdField_a_of_type_JavaUtilList.size() == 1) && (((blmj)this.jdField_a_of_type_JavaUtilList.get(0)).a() == 0))
+    while ((this.jdField_a_of_type_JavaUtilList.size() == 1) && (((blqv)this.jdField_a_of_type_JavaUtilList.get(0)).a() == 0))
     {
-      ((ImageView)paramView.findViewById(2131363944)).setVisibility(4);
+      ((ImageView)paramView.findViewById(2131363946)).setVisibility(4);
       this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setVisibility(4);
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
-      this.jdField_a_of_type_Bkil.v();
+      this.jdField_a_of_type_Bkms.v();
       return;
       ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.getParent()).removeView(this.jdField_a_of_type_AndroidViewViewGroup);
       paramRelativeLayout1 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-      paramRelativeLayout1.topMargin = bdkf.a(0.0F);
-      paramRelativeLayout1.bottomMargin = bdkf.a(0.0F);
+      paramRelativeLayout1.topMargin = bdoo.a(0.0F);
+      paramRelativeLayout1.bottomMargin = bdoo.a(0.0F);
       paramRelativeLayout1.addRule(10, 0);
       paramRelativeLayout1.addRule(12, -1);
       paramRelativeLayout2.addView(this.jdField_a_of_type_AndroidViewViewGroup, paramRelativeLayout1);
       this.jdField_a_of_type_AndroidViewViewGroup.bringToFront();
-      paramRelativeLayout1 = (ImageView)paramView.findViewById(2131376015);
+      paramRelativeLayout1 = (ImageView)paramView.findViewById(2131376068);
       if (paramRelativeLayout1 != null) {
         paramRelativeLayout1.setVisibility(8);
       }
-      paramRelativeLayout1 = (ImageView)paramView.findViewById(2131376013);
+      paramRelativeLayout1 = (ImageView)paramView.findViewById(2131376066);
       if (paramRelativeLayout1 != null) {
         paramRelativeLayout1.setVisibility(8);
       }
     }
-    ((ImageView)paramView.findViewById(2131363944)).setVisibility(0);
+    ((ImageView)paramView.findViewById(2131363946)).setVisibility(0);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setVisibility(0);
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
   }
   
   public void a(boolean paramBoolean)
   {
-    if (bfsz.b.get()) {
-      uht.a().dispatch(new bmda(1, paramBoolean));
+    if (bfxg.b.get()) {
+      umc.a().dispatch(new bmhm(1, paramBoolean));
     }
-    uht.a().dispatch(new bmda(3, true));
+    umc.a().dispatch(new bmhm(3, true));
   }
   
   public boolean a(int paramInt)
@@ -307,7 +307,7 @@ public class CaptureModeController
   
   public void b()
   {
-    this.jdField_a_of_type_Blon.c();
+    this.jdField_a_of_type_Blsz.c();
   }
   
   public void b(boolean paramBoolean)
@@ -316,12 +316,12 @@ public class CaptureModeController
     if (QLog.isColorLevel()) {
       QLog.d("CaptureModeController", 2, new Object[] { "setSegmentModeEnabled, ", Boolean.valueOf(paramBoolean) });
     }
-    if ((this.jdField_a_of_type_Bkil instanceof bkjt))
+    if ((this.jdField_a_of_type_Bkms instanceof bkoa))
     {
-      if ((this.jdField_a_of_type_Bkil instanceof bkju)) {
+      if ((this.jdField_a_of_type_Bkms instanceof bkob)) {
         paramBoolean = false;
       }
-      ((bkjt)this.jdField_a_of_type_Bkil).a.setEnableSegment(paramBoolean);
+      ((bkoa)this.jdField_a_of_type_Bkms).a.setEnableSegment(paramBoolean);
       return;
     }
     int i = this.jdField_a_of_type_DovComQqImCaptureAdapterCaptureModeAdapter.a(0);
@@ -350,7 +350,7 @@ public class CaptureModeController
   public void c()
   {
     this.b = false;
-    this.jdField_a_of_type_Blon.d();
+    this.jdField_a_of_type_Blsz.d();
   }
   
   public void c(boolean paramBoolean)
@@ -370,7 +370,7 @@ public class CaptureModeController
   
   public void d()
   {
-    this.jdField_a_of_type_Blon.e();
+    this.jdField_a_of_type_Blsz.e();
   }
   
   public void d(boolean paramBoolean)
@@ -390,11 +390,11 @@ public class CaptureModeController
   
   public void e()
   {
-    this.jdField_a_of_type_Blon.f();
-    if (this.jdField_a_of_type_Bmcy != null)
+    this.jdField_a_of_type_Blsz.f();
+    if (this.jdField_a_of_type_Bmhk != null)
     {
-      this.jdField_a_of_type_Bmcy.b();
-      this.jdField_a_of_type_Bmcy = null;
+      this.jdField_a_of_type_Bmhk.b();
+      this.jdField_a_of_type_Bmhk = null;
     }
   }
   
@@ -402,27 +402,27 @@ public class CaptureModeController
   {
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(this.jdField_a_of_type_DovComQqImCaptureAdapterCaptureModeAdapter.a(this.jdField_a_of_type_Int));
     if ((this.b) && (this.jdField_a_of_type_Int == 7)) {}
-    blmj localblmj;
+    blqv localblqv;
     do
     {
       do
       {
         return;
       } while (this.jdField_a_of_type_JavaUtilList.size() <= 0);
-      localblmj = (blmj)this.jdField_a_of_type_JavaUtilList.get(0);
-    } while (this.jdField_a_of_type_Int != localblmj.a());
+      localblqv = (blqv)this.jdField_a_of_type_JavaUtilList.get(0);
+    } while (this.jdField_a_of_type_Int != localblqv.a());
     onPageSelected(0);
   }
   
   public void g()
   {
     Object localObject = a();
-    if ((localObject != null) && (((blov)localObject).b != null)) {
-      ((blov)localObject).b.bringToFront();
+    if ((localObject != null) && (((blth)localObject).b != null)) {
+      ((blth)localObject).b.bringToFront();
     }
     localObject = a();
-    if ((localObject != null) && (((bloz)localObject).a != null)) {
-      ((bloz)localObject).a.a().bringToFront();
+    if ((localObject != null) && (((bltl)localObject).a != null)) {
+      ((bltl)localObject).a.a().bringToFront();
     }
     if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
       this.jdField_a_of_type_AndroidViewViewGroup.bringToFront();
@@ -443,15 +443,15 @@ public class CaptureModeController
   public void onPageSelected(int paramInt)
   {
     this.jdField_a_of_type_DovComQqImCaptureAdapterCaptureModeAdapter.b(paramInt);
-    blmj localblmj = (blmj)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    int i = localblmj.a();
+    blqv localblqv = (blqv)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    int i = localblqv.a();
     if ((i == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_Boolean)) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("CaptureModeController", 2, new Object[] { "onPageSelected, mLastCaptureMode:", Integer.valueOf(this.jdField_a_of_type_Int), " current:", Integer.valueOf(i) });
     }
-    this.jdField_a_of_type_Blon.a(false);
+    this.jdField_a_of_type_Blsz.a(false);
     switch (this.jdField_a_of_type_Int)
     {
     case 3: 
@@ -460,12 +460,12 @@ public class CaptureModeController
     case 9: 
     default: 
       label160:
-      this.jdField_a_of_type_Blon = ((blon)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i)));
+      this.jdField_a_of_type_Blsz = ((blsz)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i)));
       int j = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Bkil.b = i;
+      this.jdField_a_of_type_Bkms.b = i;
       this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Bkil.a(j, this.jdField_a_of_type_Blon);
-      this.jdField_a_of_type_Blon.a(true);
+      this.jdField_a_of_type_Bkms.a(j, this.jdField_a_of_type_Blsz);
+      this.jdField_a_of_type_Blsz.a(true);
       switch (i)
       {
       }
@@ -473,39 +473,39 @@ public class CaptureModeController
     }
     for (;;)
     {
-      wta.a("video_shoot_navi", "clk_mode", 0, 0, new String[] { String.valueOf(localblmj.a()) });
+      wxj.a("video_shoot_navi", "clk_mode", 0, 0, new String[] { String.valueOf(localblqv.a()) });
       if (!QLog.isColorLevel()) {
         break;
       }
       QLog.i("CaptureModeController", 2, "onPageSelected:" + paramInt);
       return;
-      this.jdField_a_of_type_Bkil.a(false, true);
+      this.jdField_a_of_type_Bkms.a(false, true);
       break label160;
-      this.jdField_a_of_type_Bkil.d(false);
+      this.jdField_a_of_type_Bkms.d(false);
       break label160;
-      this.jdField_a_of_type_Bkil.h(false);
+      this.jdField_a_of_type_Bkms.h(false);
       break label160;
-      this.jdField_a_of_type_Bkil.g(false);
+      this.jdField_a_of_type_Bkms.g(false);
       break label160;
-      this.jdField_a_of_type_Bkil.i(false);
+      this.jdField_a_of_type_Bkms.i(false);
       break label160;
-      this.jdField_a_of_type_Bkil.f(false);
+      this.jdField_a_of_type_Bkms.f(false);
       break label160;
-      this.jdField_a_of_type_Bkil.d(false);
+      this.jdField_a_of_type_Bkms.d(false);
       break label160;
-      this.jdField_a_of_type_Bkil.a(true, true);
+      this.jdField_a_of_type_Bkms.a(true, true);
       continue;
-      this.jdField_a_of_type_Bkil.d(true);
+      this.jdField_a_of_type_Bkms.d(true);
       continue;
-      this.jdField_a_of_type_Bkil.f(true);
+      this.jdField_a_of_type_Bkms.f(true);
       continue;
-      this.jdField_a_of_type_Bkil.h(true);
+      this.jdField_a_of_type_Bkms.h(true);
       continue;
-      this.jdField_a_of_type_Bkil.g(true);
+      this.jdField_a_of_type_Bkms.g(true);
       continue;
-      this.jdField_a_of_type_Bkil.i(true);
+      this.jdField_a_of_type_Bkms.i(true);
       continue;
-      this.jdField_a_of_type_Bkil.d(false);
+      this.jdField_a_of_type_Bkms.d(false);
     }
   }
 }

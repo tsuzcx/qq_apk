@@ -1,13 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.util.Log;
+import com.tencent.TMG.sdk.AVRoomMulti.RequestViewListCompleteCallback;
+import com.tencent.TMG.sdk.AVView;
 
-public final class akxh
-  implements EIPCResultCallback
+class akxh
+  implements AVRoomMulti.RequestViewListCompleteCallback
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  akxh(akxb paramakxb) {}
+  
+  public void OnComplete(String[] paramArrayOfString, AVView[] paramArrayOfAVView, int paramInt1, int paramInt2, String paramString)
   {
-    QLog.i("CmShow_CmShowRenderView", 1, "openCmShowStore CmShow code:" + paramEIPCResult.code);
+    Log.d("CmGameAvHandler", "RequestViewListCompleteCallback.OnComplete result: " + paramInt2 + paramString);
   }
 }
 

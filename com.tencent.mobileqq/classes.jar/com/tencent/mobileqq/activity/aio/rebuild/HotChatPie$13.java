@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agmy;
-import alzf;
+import agrn;
+import amdu;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -10,19 +10,19 @@ import java.util.ArrayList;
 public class HotChatPie$13
   implements Runnable
 {
-  public HotChatPie$13(agmy paramagmy) {}
+  public HotChatPie$13(agrn paramagrn) {}
   
   public void run()
   {
-    alzf localalzf = (alzf)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if (localalzf != null)
+    amdu localamdu = (amdu)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if (localamdu != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d(this.this$0.jdField_a_of_type_JavaLangString + "Q.hotchat.aio_post_red_point", 2, "send_oidb_0x8c9_2");
       }
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(Long.valueOf(1105933138L));
-      localalzf.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localArrayList, true);
+      localamdu.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localArrayList, true);
     }
   }
 }

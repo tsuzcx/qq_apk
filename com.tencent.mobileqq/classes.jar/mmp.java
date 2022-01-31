@@ -10,7 +10,7 @@ class mmp
   {
     if (this.a.a.a != null)
     {
-      this.a.a.a.setViewEnable(2131372730, false);
+      this.a.a.a.setViewEnable(2131372756, false);
       this.a.a.a.setViewEnable(2131362956, false);
       this.a.a.a.setViewEnable(2131362968, false);
       this.a.a.a.setViewEnable(2131362967, false);

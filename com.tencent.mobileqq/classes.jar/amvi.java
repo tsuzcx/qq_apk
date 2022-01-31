@@ -1,75 +1,21 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
-class amvi
-  implements amvg
+public abstract interface amvi
 {
-  private IBinder a;
+  public abstract void a();
   
-  amvi(IBinder paramIBinder)
-  {
-    this.a = paramIBinder;
-  }
+  public abstract void a(ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject);
   
-  public void a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
+  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, amvj paramamvj);
   
-  public void a(int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
+  public abstract void a(String paramString, int paramInt);
   
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
+  public abstract void b(String paramString, int paramInt);
   
-  public void b()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
+  public abstract void c(String paramString, int paramInt);
+  
+  public abstract void d(String paramString, int paramInt);
 }
 
 

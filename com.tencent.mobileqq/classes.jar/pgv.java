@@ -30,9 +30,9 @@ public class pgv
     jdField_a_of_type_JavaLangString = pgv.class.getSimpleName();
   }
   
-  public pgv(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public pgv(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
   }
   
   private void a(boolean paramBoolean, long paramLong, List<RecommendFollowInfo> paramList)

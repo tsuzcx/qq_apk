@@ -1,43 +1,23 @@
-import android.support.annotation.NonNull;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multicard.MultiCardRootLayout;
+import java.lang.ref.WeakReference;
 
 public class auof
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
+  public auof(MultiCardRootLayout paramMultiCardRootLayout) {}
   
-  public auof()
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString.contains("icon");
+    if ((MultiCardRootLayout.a(this.a)) && (MultiCardRootLayout.a(this.a) != null))
+    {
+      auoi localauoi = (auoi)MultiCardRootLayout.a(this.a).get();
+      if (localauoi != null) {
+        localauoi.a(this.a);
+      }
     }
-    return false;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("GrayTipHighlightItemInfo{");
-    localStringBuilder.append("old_key:").append(this.jdField_a_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("old_start:").append(this.jdField_b_of_type_Int).append(", ");
-    localStringBuilder.append("id:").append(this.jdField_b_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("start:").append(this.jdField_c_of_type_Int).append(", ");
-    localStringBuilder.append("end:").append(this.jdField_d_of_type_Int).append(", ");
-    localStringBuilder.append("key:").append(this.jdField_c_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("url:").append(this.jdField_d_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

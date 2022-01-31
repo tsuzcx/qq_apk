@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import android.os.Message;
-import bdbx;
+import bdgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
@@ -13,7 +13,7 @@ class ChatSettingForTroop$22
   
   public void run()
   {
-    int i = bdbx.a(this.this$0.app.getCurrentAccountUin(), "troop_game_feed", this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+    int i = bdgg.a(this.this$0.app.getCurrentAccountUin(), "troop_game_feed", this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
     Message localMessage = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(19);
     localMessage.arg1 = i;
     localMessage.sendToTarget();

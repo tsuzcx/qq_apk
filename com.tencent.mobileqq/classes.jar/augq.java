@@ -1,37 +1,16 @@
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
-import com.tencent.widget.ListView;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime.InterceptKickListener;
+import mqq.app.AppRuntime.KickParams;
 
-public class augq
-  extends auhr
+class augq
+  implements AppRuntime.InterceptKickListener
 {
-  public augq(MultiAIOItemFragment paramMultiAIOItemFragment, bhpo parambhpo, ListView paramListView) {}
+  augq(augo paramaugo) {}
   
-  public void b(int paramInt)
+  public void onInterceptKicked(AppRuntime.KickParams paramKickParams)
   {
-    super.b(paramInt);
-    boolean bool;
-    switch (paramInt)
-    {
-    default: 
-      bool = false;
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpo.onScrollStateChanged(this.jdField_a_of_type_ComTencentWidgetListView, paramInt);
-      if ((this.jdField_a_of_type_ComTencentWidgetListView instanceof ChatXListView))
-      {
-        ChatXListView localChatXListView = (ChatXListView)this.jdField_a_of_type_ComTencentWidgetListView;
-        int[] arrayOfInt = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
-        localChatXListView.setDisableLayout(bool, arrayOfInt[0], arrayOfInt[1]);
-      }
-      return;
-      bool = false;
-      paramInt = 1;
-      continue;
-      paramInt = 2;
-      bool = true;
+    if (augo.a(this.a).get()) {
+      augo.a(this.a, paramKickParams);
     }
   }
 }

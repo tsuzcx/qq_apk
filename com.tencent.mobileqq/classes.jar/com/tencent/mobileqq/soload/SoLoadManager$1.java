@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.soload;
 
-import azij;
-import azip;
+import azms;
+import azmy;
 
 public class SoLoadManager$1
   implements Runnable
 {
-  public SoLoadManager$1(azip paramazip, azij paramazij) {}
+  public SoLoadManager$1(azmy paramazmy, azms paramazms) {}
   
   public void run()
   {
-    azip.a(this.this$0, this.a, null);
+    azmy.a(this.this$0, this.a, null);
   }
 }
 

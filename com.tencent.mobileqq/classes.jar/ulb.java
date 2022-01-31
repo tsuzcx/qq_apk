@@ -1,6 +1,31 @@
-public abstract interface ulb
+import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
+import android.view.View;
+import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
+
+class ulb
+  implements RecyclerView.OnChildAttachStateChangeListener
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  ulb(ukt paramukt) {}
+  
+  public void onChildViewAttachedToWindow(View paramView)
+  {
+    paramView = (ukl)ukt.a(this.a).getChildViewHolder(paramView);
+    if ((paramView != null) && (paramView == ukt.a(this.a)))
+    {
+      paramView.b();
+      wxe.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "attach from window , start play!");
+    }
+  }
+  
+  public void onChildViewDetachedFromWindow(View paramView)
+  {
+    paramView = (ukl)ukt.a(this.a).getChildViewHolder(paramView);
+    if ((paramView != null) && (paramView == ukt.a(this.a)))
+    {
+      paramView.c();
+      wxe.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "detach from window , stop play!");
+    }
+  }
 }
 
 

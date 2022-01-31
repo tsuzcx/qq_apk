@@ -1,579 +1,266 @@
-import android.app.Activity;
-import android.net.Uri;
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.Window;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.math.BigInteger;
-import java.net.URLDecoder;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
-public class akpq
+class akpq
+  extends BaseAdapter
 {
-  public static int a;
-  private static boolean jdField_a_of_type_Boolean;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "http", "https", "GameRes", "GameSandBox" };
-  private static int b;
-  private static int c;
+  int jdField_a_of_type_Int;
+  Context jdField_a_of_type_AndroidContentContext;
+  List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public static int a(int paramInt)
+  public akpq(akpm paramakpm, Context paramContext)
   {
-    Object localObject = akro.a(paramInt);
-    if (localObject != null)
-    {
-      localObject = ((aktr)localObject).a();
-      if (localObject != null) {
-        return ((CmGameInitParams)localObject).mSrc;
-      }
-    }
-    return 0;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public static int a(String paramString)
+  public void a(List<Integer> paramList, int paramInt)
   {
-    int i = 0;
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      i = new JSONObject(paramString).optInt("xyRootSrc");
-      return i;
+    if (QLog.isColorLevel()) {
+      QLog.i("ApolloResponseManager", 2, "new actions:" + paramList.toString());
     }
-    catch (Throwable paramString)
-    {
-      QLog.e("ApolloGameTool", 1, paramString, new Object[0]);
-    }
-    return 0;
-  }
-  
-  public static String a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    try
-    {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("page_id=").append(paramInt1).append("&").append("module_id=").append(paramInt2).append("&").append("action_type=").append(paramInt3).append("&").append("action_id=").append(paramInt4).append("&").append("item_id=").append(paramInt5).append("&").append("action_source=").append(paramInt6).append("&").append("platform=").append("android").append("&").append("ext3=").append(System.currentTimeMillis() / 1000L);
-      localObject = ((StringBuilder)localObject).toString();
-      return localObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloGameTool", 1, localThrowable, new Object[0]);
-    }
-    return "";
-  }
-  
-  /* Error */
-  public static String a(android.graphics.Bitmap paramBitmap, int paramInt)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore_2
-    //   5: aload_0
-    //   6: ifnull +128 -> 134
-    //   9: new 125	java/io/ByteArrayOutputStream
-    //   12: dup
-    //   13: sipush 1024
-    //   16: invokespecial 128	java/io/ByteArrayOutputStream:<init>	(I)V
-    //   19: astore_3
-    //   20: aload_3
-    //   21: astore_2
-    //   22: aload_0
-    //   23: getstatic 134	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   26: iload_1
-    //   27: aload_3
-    //   28: invokevirtual 140	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   31: pop
-    //   32: aload_3
-    //   33: astore_2
-    //   34: aload_3
-    //   35: invokevirtual 144	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   38: iconst_2
-    //   39: invokestatic 150	bdbi:encodeToString	([BI)Ljava/lang/String;
-    //   42: astore_0
-    //   43: aload_0
-    //   44: astore_2
-    //   45: aload_3
-    //   46: ifnull +13 -> 59
-    //   49: aload_3
-    //   50: invokevirtual 153	java/io/ByteArrayOutputStream:flush	()V
-    //   53: aload_3
-    //   54: invokevirtual 156	java/io/ByteArrayOutputStream:close	()V
-    //   57: aload_0
-    //   58: astore_2
-    //   59: aload_2
-    //   60: areturn
-    //   61: astore_2
-    //   62: aload_2
-    //   63: invokevirtual 159	java/io/IOException:printStackTrace	()V
-    //   66: aload_0
-    //   67: areturn
-    //   68: astore_0
-    //   69: aconst_null
-    //   70: astore_3
-    //   71: aload_3
-    //   72: astore_2
-    //   73: aload_0
-    //   74: invokevirtual 160	java/lang/Exception:printStackTrace	()V
-    //   77: aload 4
-    //   79: astore_2
-    //   80: aload_3
-    //   81: ifnull -22 -> 59
-    //   84: aload_3
-    //   85: invokevirtual 153	java/io/ByteArrayOutputStream:flush	()V
-    //   88: aload_3
-    //   89: invokevirtual 156	java/io/ByteArrayOutputStream:close	()V
-    //   92: aconst_null
-    //   93: areturn
-    //   94: astore_0
-    //   95: aload_0
-    //   96: invokevirtual 159	java/io/IOException:printStackTrace	()V
-    //   99: aconst_null
-    //   100: areturn
-    //   101: astore_0
-    //   102: aconst_null
-    //   103: astore_2
-    //   104: aload_2
-    //   105: ifnull +11 -> 116
-    //   108: aload_2
-    //   109: invokevirtual 153	java/io/ByteArrayOutputStream:flush	()V
-    //   112: aload_2
-    //   113: invokevirtual 156	java/io/ByteArrayOutputStream:close	()V
-    //   116: aload_0
-    //   117: athrow
-    //   118: astore_2
-    //   119: aload_2
-    //   120: invokevirtual 159	java/io/IOException:printStackTrace	()V
-    //   123: goto -7 -> 116
-    //   126: astore_0
-    //   127: goto -23 -> 104
-    //   130: astore_0
-    //   131: goto -60 -> 71
-    //   134: aconst_null
-    //   135: astore_3
-    //   136: aload_2
-    //   137: astore_0
-    //   138: goto -95 -> 43
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	141	0	paramBitmap	android.graphics.Bitmap
-    //   0	141	1	paramInt	int
-    //   4	56	2	localObject1	Object
-    //   61	2	2	localIOException1	java.io.IOException
-    //   72	41	2	localObject2	Object
-    //   118	19	2	localIOException2	java.io.IOException
-    //   19	117	3	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   1	77	4	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   49	57	61	java/io/IOException
-    //   9	20	68	java/lang/Exception
-    //   84	92	94	java/io/IOException
-    //   9	20	101	finally
-    //   108	116	118	java/io/IOException
-    //   22	32	126	finally
-    //   34	43	126	finally
-    //   73	77	126	finally
-    //   22	32	130	java/lang/Exception
-    //   34	43	130	java/lang/Exception
-  }
-  
-  public static String a(String paramString)
-  {
-    return akpe.a + "/" + paramString;
-  }
-  
-  public static String a(String paramString1, int paramInt, String paramString2, boolean paramBoolean)
-  {
-    Object localObject3 = null;
-    Object localObject4 = null;
+    this.jdField_a_of_type_Int = paramInt;
     Object localObject1;
-    Object localObject2;
-    if (!TextUtils.isEmpty(paramString1))
+    int j;
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      try
+      this.jdField_a_of_type_JavaUtilList.clear();
+      localObject2 = (aliw)this.jdField_a_of_type_Akpm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+      localObject4 = (aknx)this.jdField_a_of_type_Akpm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+      localObject3 = new ArrayList();
+      localObject1 = new ArrayList();
+      i = paramList.size();
+      paramInt = 0;
+      if (paramInt < i)
       {
-        if (paramString1.length() > 4096)
-        {
-          if (!QLog.isColorLevel()) {
-            break label738;
-          }
-          QLog.d("ApolloGameTool", 2, "[urlToPath] too long " + paramString1.substring(0, 100));
-          return null;
-        }
-        localObject1 = URLDecoder.decode(paramString1, "UTF-8");
-        paramString1 = (String)localObject1;
-      }
-      catch (Throwable paramString2)
-      {
+        j = ((Integer)paramList.get(paramInt)).intValue();
+        ApolloActionData localApolloActionData = ((aliw)localObject2).a(j);
+        if (localApolloActionData == null) {}
         for (;;)
         {
-          int i;
-          String str;
-          int j;
-          label151:
-          QLog.e("ApolloGameTool", 1, paramString2, new Object[0]);
-          localObject1 = paramString1;
-          localObject2 = localObject4;
-        }
-      }
-      try
-      {
-        i = paramString1.indexOf("://");
-        localObject1 = paramString1;
-        localObject2 = localObject4;
-        if (i == -1) {
-          break label577;
-        }
-        if (!paramBoolean) {
-          break label725;
-        }
-        localObject1 = Uri.parse(paramString1);
-        str = ((Uri)localObject1).getHost();
-        j = ((Uri)localObject1).getPort();
-        if (j == 0) {
-          break label719;
-        }
-        localObject1 = paramString1.replace(":" + j, "");
-      }
-      catch (Throwable paramString2)
-      {
-        break label680;
-        localObject1 = paramString1;
-        break label151;
-        break label217;
-      }
-      paramString1 = (String)localObject1;
-      localObject2 = localObject1;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (!TextUtils.isEmpty(str))
-        {
-          localObject2 = localObject1;
-          paramString1 = str + "/";
-          localObject2 = localObject1;
-          if (!((String)localObject1).contains(paramString1)) {
+          paramInt += 1;
+          break;
+          if ((localApolloActionData.feeType == 9) && ((((aknx)localObject4).a == null) || (!((aknx)localObject4).a.containsKey(Integer.valueOf(localApolloActionData.actionId)))))
+          {
+            if (!((aknx)this.jdField_a_of_type_Akpm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).b(this.jdField_a_of_type_Akpm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) {
+              QLog.e("ApolloResponseManager", 1, "remove vip data:" + localApolloActionData.actionName + ",id:" + j);
+            }
+          }
+          else if ((localApolloActionData.feeType != 1) && ((localApolloActionData.isShow == 0) || (((aknx)localObject4).a == null) || (!((aknx)localObject4).a.containsKey(Integer.valueOf(localApolloActionData.actionId)))))
+          {
+            QLog.e("ApolloResponseManager", 1, "remove " + localApolloActionData.feeType + " data:" + localApolloActionData.actionName + ",id:" + j);
             continue;
           }
-          localObject2 = localObject1;
-          paramString1 = ((String)localObject1).replace(paramString1, "");
+          ((List)localObject1).add(localApolloActionData);
         }
-        label217:
-        localObject1 = paramString1;
-        localObject2 = paramString1;
-        if (paramString1.contains("?"))
-        {
-          localObject2 = paramString1;
-          j = paramString1.indexOf("?");
-          if (j == 0) {
-            break;
-          }
-          localObject1 = paramString1;
-          if (j != -1)
-          {
-            localObject2 = paramString1;
-            localObject1 = paramString1.substring(0, j);
-          }
-        }
-        localObject2 = localObject1;
-        paramString1 = ((String)localObject1).substring(0, i);
-        localObject2 = localObject1;
-        if (TextUtils.isEmpty(paramString1)) {
-          continue;
-        }
-        localObject2 = localObject1;
-        localObject3 = jdField_a_of_type_ArrayOfJavaLangString;
-        localObject2 = localObject1;
-        j = localObject3.length;
-        i = 0;
-        if (i >= j) {
-          continue;
-        }
-        localObject2 = localObject1;
-        if (!paramString1.equals(localObject3[i])) {
-          continue;
-        }
-        localObject2 = localObject1;
-        str = a(String.valueOf(paramInt));
-        localObject2 = localObject1;
-        localObject3 = ((String)localObject1).replace(paramString1 + "://", "");
-        paramString1 = (String)localObject3;
-        localObject2 = localObject1;
-        if (!TextUtils.isEmpty(paramString2))
-        {
-          localObject2 = localObject1;
-          paramString1 = paramString2 + "/" + (String)localObject3;
-        }
-        localObject2 = localObject1;
-        if (TextUtils.isEmpty(str)) {
-          continue;
-        }
-        localObject2 = localObject1;
-        if (TextUtils.isEmpty(paramString1)) {
-          continue;
-        }
-        localObject2 = localObject1;
-        paramString1 = new File(str + "/" + paramString1);
-        localObject2 = localObject1;
-        paramString2 = new File(str);
-        localObject2 = localObject1;
-        if (!paramString1.exists()) {
-          continue;
-        }
-        localObject2 = localObject1;
-        if (!paramString1.isFile()) {
-          continue;
-        }
-        localObject2 = localObject1;
-        paramString2 = paramString2.getCanonicalPath();
-        localObject2 = localObject1;
-        paramString1 = paramString1.getCanonicalPath();
-        localObject2 = localObject1;
-        if (TextUtils.isEmpty(paramString2)) {
-          continue;
-        }
-        localObject2 = localObject1;
-        if (TextUtils.isEmpty(paramString1)) {
-          continue;
-        }
-        localObject2 = localObject1;
-        paramBoolean = paramString1.startsWith(paramString2);
-        if (!paramBoolean) {
-          continue;
-        }
-        localObject2 = paramString1;
       }
-      catch (Throwable paramString2)
+      if (((List)localObject1).size() < 2) {
+        QLog.e("ApolloResponseManager", 1, "invalid data size:" + ((List)localObject1).size());
+      }
+    }
+    else
+    {
+      return;
+    }
+    Collections.sort((List)localObject1, this.jdField_a_of_type_Akpm.jdField_a_of_type_JavaUtilComparator);
+    Object localObject2 = new Random();
+    int i = ((List)localObject1).size() - 1;
+    paramInt = 0;
+    if (paramInt < 2)
+    {
+      if (i <= 1)
       {
-        label577:
-        paramString1 = (String)localObject2;
-        label680:
-        continue;
-        localObject2 = localObject4;
-        continue;
+        this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(paramInt)).actionId));
+        ((List)localObject3).add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(paramInt)).feeType));
       }
-      localObject3 = localObject2;
-      if (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        paramInt += 1;
         break;
-      }
-      QLog.d("ApolloGameTool", 2, "[urlToPath] " + (String)localObject1 + " " + (String)localObject2);
-      return localObject2;
-      localObject2 = localObject1;
-      paramString1 = ((String)localObject1).replace(str, "");
-      continue;
-      localObject2 = localObject1;
-      if (QLog.isColorLevel())
-      {
-        localObject2 = localObject1;
-        QLog.d("ApolloGameTool", 2, "[urlToPath] path leak");
-      }
-      paramString1 = null;
-      continue;
-      i += 1;
-      continue;
-      label719:
-      label725:
-      localObject1 = paramString1;
-      localObject2 = localObject4;
-    }
-    label738:
-    return localObject3;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    for (;;)
-    {
-      int i;
-      String str;
-      try
-      {
-        paramString1 = new JSONObject(paramString1);
-        String[] arrayOfString = akpf.jdField_a_of_type_ArrayOfJavaLangString;
-        int j = arrayOfString.length;
-        i = 0;
-        if (i >= j) {
-          break label183;
-        }
-        str = arrayOfString[i];
-        if (!paramString1.has(str)) {
-          break label201;
-        }
-        Object localObject = paramString1.opt(str);
-        if ((localObject == null) || (localObject.toString().equals(paramString2))) {
-          break label201;
-        }
-        if ((localObject instanceof String))
+        if (((List)localObject1).get(paramInt) != null)
         {
-          paramString1.put(str, paramString2);
-          if (!QLog.isColorLevel()) {
-            break label201;
+          j = ((ApolloActionData)((List)localObject1).get(paramInt)).feeType;
+          if (j == 1)
+          {
+            int k;
+            do
+            {
+              j = ((Random)localObject2).nextInt(i - paramInt + 1) + paramInt;
+              k = ((ApolloActionData)((List)localObject1).get(j)).actionId;
+            } while (this.jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(k)));
+            this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(k));
+            ((List)localObject3).add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(j)).feeType));
           }
-          QLog.e("ApolloGameTool", 2, "[filterSSOPara] " + localObject + " " + paramString2);
-          break label201;
-        }
-        if ((localObject instanceof Integer))
-        {
-          paramString1.put(str, Integer.parseInt(paramString2));
-          continue;
-        }
-        if (!(localObject instanceof Long)) {
-          continue;
+          else
+          {
+            this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(paramInt)).actionId));
+            ((List)localObject3).add(Integer.valueOf(j));
+          }
         }
       }
-      catch (Throwable paramString1)
-      {
-        QLog.e("ApolloGameTool", 1, new Object[0]);
-        return null;
+    }
+    notifyDataSetChanged();
+    Object localObject4 = String.valueOf(this.jdField_a_of_type_Akpm.jdField_a_of_type_JavaLangString);
+    paramInt = ApolloUtil.b(this.jdField_a_of_type_Akpm.jdField_a_of_type_Int);
+    i = this.jdField_a_of_type_Int;
+    if (paramList.size() > 0)
+    {
+      localObject1 = String.valueOf(paramList.get(0));
+      if (((List)localObject3).size() <= 0) {
+        break label867;
       }
-      paramString1.put(str, Long.parseLong(paramString2));
-      continue;
-      label183:
-      paramString1.put("from", "android.H5");
-      paramString1 = paramString1.toString();
-      return paramString1;
-      label201:
-      i += 1;
+      localObject2 = String.valueOf(((List)localObject3).get(0));
+      label777:
+      if (paramList.size() <= 1) {
+        break label874;
+      }
+      paramList = String.valueOf(paramList.get(1));
+      label798:
+      if (((List)localObject3).size() <= 1) {
+        break label880;
+      }
     }
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_Boolean = false;
-    b = 0;
-    c = 0;
-    jdField_a_of_type_Int = 0;
-  }
-  
-  private static void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    switch (paramInt1)
+    label867:
+    label874:
+    label880:
+    for (Object localObject3 = String.valueOf(((List)localObject3).get(1));; localObject3 = "0")
     {
-    }
-    do
-    {
+      VipUtils.a(null, "cmshow", "Apollo", "quickresponsepv", (String)localObject4, paramInt, i, new String[] { localObject1, localObject2, paramList, localObject3 });
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameTool", 2, "set aio white " + paramInt2);
-      }
-      if (paramInt2 == 0)
-      {
-        akpd.a("CMGamePlusPanel", -akpe.c);
-        return;
-      }
-    } while (paramInt2 != 1);
-    akpd.a("CMGamePlusPanel", akpe.c);
-  }
-  
-  public static void a(Activity paramActivity)
-  {
-    if ((paramActivity != null) && (!paramActivity.isFinishing()))
-    {
-      paramActivity = paramActivity.getWindow();
-      if (paramActivity != null) {
-        paramActivity.getDecorView().setSystemUiVisibility(5894);
-      }
+      localObject1 = "0";
+      break;
+      localObject2 = "0";
+      break label777;
+      paramList = "0";
+      break label798;
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  public int getCount()
   {
-    if (paramQQAppInterface == null) {
-      QLog.e("ApolloGameTool", 1, "app is null");
-    }
-    do
-    {
-      return;
-      paramQQAppInterface = (bdpx)paramQQAppInterface.a(71);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.d();
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public static void a(String paramString, JSONArray paramJSONArray)
+  public Object getItem(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("ApolloGameTool", 1, "bitmap is null");
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources();
+    int i = ((Integer)getItem(paramInt)).intValue();
+    Object localObject2;
+    Object localObject3;
+    if (paramView == null)
+    {
+      paramViewGroup = new akpp(this.jdField_a_of_type_Akpm);
+      paramView = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      ((LinearLayout)paramView).setOrientation(1);
+      localObject2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      ((LinearLayout)localObject2).setBackgroundResource(2130838488);
+      ((LinearLayout)localObject2).setOrientation(0);
+      localObject3 = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+      int j = aepi.a(28.0F, (Resources)localObject1);
+      Object localObject4 = new LinearLayout.LayoutParams(j, j);
+      ((LinearLayout.LayoutParams)localObject4).leftMargin = aepi.a(2.2F, (Resources)localObject1);
+      ((LinearLayout.LayoutParams)localObject4).gravity = 16;
+      ((LinearLayout)localObject2).addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
+      localObject4 = new TextView(this.jdField_a_of_type_AndroidContentContext);
+      ((TextView)localObject4).setTextSize(11.0F);
+      ((TextView)localObject4).setMaxLines(1);
+      ((TextView)localObject4).setIncludeFontPadding(false);
+      ((TextView)localObject4).setGravity(1);
+      ((TextView)localObject4).setTextColor(((Resources)localObject1).getColor(2131166910));
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+      localLayoutParams.gravity = 16;
+      ((LinearLayout)localObject2).addView((View)localObject4, localLayoutParams);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localObject3);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject4);
+      localObject3 = new View(this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = ((View)localObject3);
+      ((LinearLayout)paramView).addView((View)localObject2);
+      ((LinearLayout)paramView).addView((View)localObject3);
+      paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
+      paramView.setTag(2131362662, Integer.valueOf(i));
+      paramView.setTag(2131362663, Integer.valueOf(this.jdField_a_of_type_Int));
+      localObject2 = paramViewGroup.jdField_a_of_type_AndroidViewView;
+      float f;
+      if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1)
+      {
+        f = 8.0F;
+        label333:
+        ((View)localObject2).setMinimumHeight(aepi.a(f, (Resources)localObject1));
+      }
       try
       {
-        paramString = new StringBuilder(new BigInteger(paramString).toString(2)).reverse().toString();
-        int k = paramString.length();
-        int i = 0;
-        if (i < 64)
+        localObject2 = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
+        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Resources)localObject1).getDrawable(2130838425);
+        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Resources)localObject1).getDrawable(2130838427);
+        localObject1 = new URL("apollo_gif", "", String.valueOf(i));
+        localObject3 = new File(afia.a(i));
+        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setTag(Integer.valueOf(i));
+        if (((File)localObject3).exists())
         {
-          if (i < k)
-          {
-            j = paramString.charAt(i) - '0';
-            a(i, j, 0);
-            i += 1;
-          }
+          localObject1 = URLDrawable.getDrawable((File)localObject3, (URLDrawable.URLDrawableOptions)localObject2);
+          paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
         }
-        else {
-          return;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("ApolloGameTool", 1, paramString, new Object[0]);
-      }
-      int j = 0;
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return !TextUtils.isEmpty(paramString);
-  }
-  
-  public static String b(String paramString)
-  {
-    String str = paramString;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        str = paramString.replace("\\", "\\\\").replace("'", "\\'");
-      }
-      return str;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloGameTool", 1, localThrowable, new Object[0]);
-    }
-    return paramString;
-  }
-  
-  public static String c(String paramString)
-  {
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("extendInfo"))
+        for (;;)
         {
-          paramString = new JSONObject(paramString.optString("extendInfo"));
-          if (paramString.has("bk_share_url"))
+          label454:
+          localObject1 = ((aliw)this.jdField_a_of_type_Akpm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(i);
+          if (localObject1 != null)
           {
-            paramString = paramString.optString("bk_share_url");
-            return paramString;
+            localObject1 = ((ApolloActionData)localObject1).actionName;
+            paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
           }
+          paramView.setOnClickListener(this.jdField_a_of_type_Akpm.jdField_a_of_type_AndroidViewView$OnClickListener);
+          return paramView;
+          paramViewGroup = (akpp)paramView.getTag();
+          break;
+          f = 5.0F;
+          break label333;
+          localObject1 = URLDrawable.getDrawable((URL)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
+          ((URLDrawable)localObject1).setTag(Integer.valueOf(i));
+          paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
         }
       }
+      catch (Throwable localThrowable)
+      {
+        break label454;
+      }
     }
-    catch (Throwable paramString)
-    {
-      QLog.e("ApolloGameTool", 1, paramString, new Object[0]);
-    }
-    return null;
   }
 }
 

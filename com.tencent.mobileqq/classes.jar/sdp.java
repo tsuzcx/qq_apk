@@ -60,8 +60,8 @@ public class sdp
         paramString1 = BitmapFactory.decodeFile(paramString1);
         k = paramString1.getWidth();
         m = paramString1.getHeight();
-        int n = aekt.a(0.5F, localResources);
-        int i = aekt.a(90.0F, localResources);
+        int n = aepi.a(0.5F, localResources);
+        int i = aepi.a(90.0F, localResources);
         j = Math.max(paramInt, k);
         localBitmap = Bitmap.createBitmap(j, m + n + i, Bitmap.Config.ARGB_8888);
         localCanvas = new Canvas(localBitmap);
@@ -79,13 +79,13 @@ public class sdp
           paramInt = m + n;
           localPaint.setColor(-1);
           localCanvas.drawRect(0.0F, paramInt, j, paramInt + i, localPaint);
-          localCanvas.drawBitmap(BitmapFactory.decodeResource(localResources, 2130841338), aekt.a(13.0F, localResources), aekt.a(25.0F, localResources) + paramInt, localPaint);
+          localCanvas.drawBitmap(BitmapFactory.decodeResource(localResources, 2130841339), aepi.a(13.0F, localResources), aepi.a(25.0F, localResources) + paramInt, localPaint);
           localPaint.setColor(-16777216);
-          localPaint.setTextSize(aekt.a(2, 18, localResources));
-          localCanvas.drawText("QQ看点", aekt.a(60.0F, localResources), aekt.a(42.0F, localResources) + paramInt, localPaint);
+          localPaint.setTextSize(aepi.a(2, 18, localResources));
+          localCanvas.drawText("QQ看点", aepi.a(60.0F, localResources), aepi.a(42.0F, localResources) + paramInt, localPaint);
           localPaint.setColor(Color.parseColor("#777777"));
-          localPaint.setTextSize(aekt.a(2, 14, localResources));
-          localCanvas.drawText(localResources.getString(2131695751), aekt.a(60.0F, localResources), aekt.a(61.0F, localResources) + paramInt, localPaint);
+          localPaint.setTextSize(aepi.a(2, 14, localResources));
+          localCanvas.drawText(localResources.getString(2131695753), aepi.a(60.0F, localResources), aepi.a(61.0F, localResources) + paramInt, localPaint);
           paramString1 = "https://post.mp.qq.com/tmpl/default/client/article/html/jump.html?action=openUrl&url=" + URLEncoder.encode(paramString2, "UTF-8");
           localObject = new HashMap();
           ((HashMap)localObject).put("url", paramString1);
@@ -98,7 +98,7 @@ public class sdp
             continue;
           }
           ((HashMap)localObject).put("param_errorCode", "0");
-          azmz.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actReadInJoyShortenUrl", true, 0L, 0L, (HashMap)localObject, "");
+          azri.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actReadInJoyShortenUrl", true, 0L, 0L, (HashMap)localObject, "");
           paramString1 = Uri.parse(paramString2);
         }
       }
@@ -160,16 +160,16 @@ public class sdp
           if (QLog.isColorLevel()) {
             QLog.d("ScreenShotImageUtil", 2, "generateScreenShotImageWithQRCode->use new qrCode:" + paramString2);
           }
-          paramString1 = bctc.a(paramString2, localResources, aekt.a(80.0F, localResources), 0, false);
+          paramString1 = bcxl.a(paramString2, localResources, aepi.a(80.0F, localResources), 0, false);
           paramString2 = paramString1;
           if (paramString1 == null)
           {
             if (QLog.isColorLevel()) {
               QLog.d("ScreenShotImageUtil", 2, "generateScreenShotImageWithQRCode->use old kandian qrCode!");
             }
-            paramString2 = BitmapFactory.decodeResource(localResources, 2130841344);
+            paramString2 = BitmapFactory.decodeResource(localResources, 2130841345);
           }
-          localCanvas.drawBitmap(paramString2, j - aekt.a(5.0F, localResources) - paramString2.getWidth(), aekt.a(5.0F, localResources) + paramInt, localPaint);
+          localCanvas.drawBitmap(paramString2, j - aepi.a(5.0F, localResources) - paramString2.getWidth(), aepi.a(5.0F, localResources) + paramInt, localPaint);
           paramString2 = a(localBitmap, paramString3);
           paramString1 = localBitmap;
           if (QLog.isDevelopLevel()) {
@@ -194,7 +194,7 @@ public class sdp
       if (TextUtils.isEmpty(str))
       {
         ((HashMap)localObject).put("param_errorCode", "1");
-        azmz.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actReadInJoyShortenUrl", false, 0L, 0L, (HashMap)localObject, "");
+        azri.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actReadInJoyShortenUrl", false, 0L, 0L, (HashMap)localObject, "");
         paramString1 = null;
       }
       else if (str.equals(paramString1))
@@ -216,8 +216,8 @@ public class sdp
     // Byte code:
     //   0: new 340	java/io/File
     //   3: dup
-    //   4: getstatic 346	aljq:cz	Ljava/lang/String;
-    //   7: invokestatic 350	bduw:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   4: getstatic 346	alof:cz	Ljava/lang/String;
+    //   7: invokestatic 350	bdzf:a	(Ljava/lang/String;)Ljava/lang/String;
     //   10: invokespecial 353	java/io/File:<init>	(Ljava/lang/String;)V
     //   13: astore_3
     //   14: aload_3
@@ -239,7 +239,7 @@ public class sdp
     //   50: new 67	java/lang/StringBuilder
     //   53: dup
     //   54: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   57: getstatic 346	aljq:cz	Ljava/lang/String;
+    //   57: getstatic 346	alof:cz	Ljava/lang/String;
     //   60: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   63: aload_1
     //   64: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -248,7 +248,7 @@ public class sdp
     //   71: ldc_w 375
     //   74: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   77: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   80: invokestatic 350	bduw:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   80: invokestatic 350	bdzf:a	(Ljava/lang/String;)Ljava/lang/String;
     //   83: astore 4
     //   85: new 340	java/io/File
     //   88: dup

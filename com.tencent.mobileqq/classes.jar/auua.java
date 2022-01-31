@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-
-public class auua
-  implements DialogInterface.OnClickListener
+public abstract class auua
 {
-  public auua(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public void a(long paramLong1, long paramLong2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    auux.a(this.a, 10);
-    GameRoomInviteActivity.b(this.a);
-  }
+  public void a(auub paramauub) {}
 }
 
 

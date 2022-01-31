@@ -2,83 +2,48 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-public class aokh
-  extends aofy<aokg>
+public abstract class aokh<T>
 {
-  private static aokg a;
+  public abstract int a();
   
-  public static aokg a()
-  {
-    aokg localaokg2 = (aokg)aogj.a().a(524);
-    aokg localaokg1 = localaokg2;
-    if (localaokg2 == null) {
-      localaokg1 = aokg.a();
-    }
-    return localaokg1;
-  }
-  
-  public int a()
-  {
-    return 524;
-  }
+  public abstract Class<T> a();
   
   @NonNull
-  public aokg a(int paramInt)
+  public abstract T a(int paramInt);
+  
+  public void a()
   {
-    if (a != null) {
-      return a;
-    }
     if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkConfProcessor", 2, "migrateOldOrDefaultContent ");
+      QLog.d("IQConfigProcessor", 2, "onReqNoReceive: type=" + a());
     }
-    a = aokg.a();
-    return a;
+  }
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(T paramT);
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public abstract int b();
+  
+  public int b(int paramInt)
+  {
+    return paramInt;
   }
   
   @Nullable
-  public aokg a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
-    {
-      paramArrayOfaogf = aokg.a(paramArrayOfaogf[0].a);
-      a = null;
-      return paramArrayOfaogf;
-    }
-    return aokg.a();
-  }
+  public abstract T b(aoko[] paramArrayOfaoko);
   
-  public Class<aokg> a()
-  {
-    return aokg.class;
-  }
+  public abstract boolean b();
   
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MutualMarkConfProcessor", 2, "onReqFailed failCode:" + paramInt);
-    }
-  }
+  public abstract boolean c();
   
-  public void a(aokg paramaokg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MutualMarkConfProcessor", 2, "onUpdate newConf:" + paramaokg);
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
+  public boolean d()
   {
     return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

@@ -1,13 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public abstract class avnp
-  extends avlt
+class avnp
+  implements TextWatcher
 {
-  public avnp(Context paramContext, QQAppInterface paramQQAppInterface)
+  avnp(avnl paramavnl) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    super(paramContext, paramQQAppInterface);
+    auwz.a(this.a.a, 30);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

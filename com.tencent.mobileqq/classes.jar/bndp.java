@@ -1,35 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.util.Property;
 
-public class bndp
+class bndp
+  extends Property<bndn, Integer>
 {
-  private bndq jdField_a_of_type_Bndq;
-  private ConcurrentHashMap<Integer, bndt> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  
-  public bndt a(int paramInt)
+  bndp(bndn parambndn, Class paramClass, String paramString)
   {
-    return (bndt)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    super(paramClass, paramString);
   }
   
-  public void a(bndt parambndt)
+  public Integer a(bndn parambndn)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FrameAdapter", 2, "addFrame, index=" + parambndt.a);
+    if (parambndn != null) {
+      return Integer.valueOf(bndn.a(parambndn));
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(parambndt.a), parambndt);
-    if (this.jdField_a_of_type_Bndq != null) {
-      this.jdField_a_of_type_Bndq.a();
+    return Integer.valueOf(0);
+  }
+  
+  public void a(bndn parambndn, Integer paramInteger)
+  {
+    if (parambndn != null) {
+      bndn.a(parambndn, paramInteger.intValue());
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
   }
 }
 

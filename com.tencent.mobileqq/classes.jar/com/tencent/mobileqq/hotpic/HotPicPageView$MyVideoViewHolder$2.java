@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.hotpic;
 
-import asqh;
+import asuq;
 
 public class HotPicPageView$MyVideoViewHolder$2
   implements Runnable
 {
-  public HotPicPageView$MyVideoViewHolder$2(asqh paramasqh, int paramInt) {}
+  public HotPicPageView$MyVideoViewHolder$2(asuq paramasuq, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Asqh.b(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Asuq.b(this.jdField_a_of_type_Int);
   }
 }
 

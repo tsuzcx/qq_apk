@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
+import bgok;
 
 class InternalJSPlugin$3
   implements InternalJSPlugin.openUrlCallback
 {
-  InternalJSPlugin$3(InternalJSPlugin paramInternalJSPlugin, bgkd parambgkd) {}
+  InternalJSPlugin$3(InternalJSPlugin paramInternalJSPlugin, bgok parambgok) {}
   
   public void openResult(boolean paramBoolean, String paramString)
   {

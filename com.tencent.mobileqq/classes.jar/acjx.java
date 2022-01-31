@@ -1,52 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acjx
-  extends allb
+public final class acjx
+  implements DialogInterface.OnClickListener
 {
-  public acjx(ChatSettingActivity paramChatSettingActivity) {}
+  public acjx(aclo paramaclo, int paramInt, acln paramacln) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    if (this.jdField_a_of_type_Aclo.a)
     {
-      if ((paramBoolean) && (paramObject != null))
-      {
-        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.b(this.a).equals(paramObject.uin)))
-        {
-          String str = bdbt.a(this.a.app, ChatSettingActivity.b(this.a));
-          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.f(this.a)))) {
-            ChatSettingActivity.c(this.a, str);
-          }
-        }
-        if ((this.a.f != null) && (!TextUtils.isEmpty(ChatSettingActivity.b(this.a))) && (ChatSettingActivity.b(this.a).equals(paramObject.uin))) {
-          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.b(this.a)), this.a.f);
-        }
+      if (this.jdField_a_of_type_Int != 2) {
+        break label59;
+      }
+      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "2", "", "", "");
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Acln != null) {
+        this.jdField_a_of_type_Acln.a();
       }
       return;
-    }
-  }
-  
-  protected void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.d != null) && (paramBoolean2 != this.a.d.a()))
-    {
-      this.a.d.setOnCheckedChangeListener(null);
-      this.a.d.setChecked(paramBoolean2);
-      this.a.d.setOnCheckedChangeListener(this.a);
-    }
-  }
-  
-  protected void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.d != null) && (paramBoolean2 != this.a.d.a()))
-    {
-      this.a.d.setOnCheckedChangeListener(null);
-      this.a.d.setChecked(paramBoolean2);
-      this.a.d.setOnCheckedChangeListener(this.a);
+      label59:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        azqs.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "2", "", "", "");
+      }
     }
   }
 }

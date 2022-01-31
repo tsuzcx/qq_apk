@@ -1,28 +1,28 @@
-public abstract class arlo
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class arlo
+  implements View.OnClickListener
 {
-  private arln a;
+  arlo(arkz paramarkz, int paramInt) {}
   
-  public static String a(String paramString1, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramString2);
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramString3);
-    return localStringBuilder.toString();
-  }
-  
-  public arln a()
-  {
-    return this.a;
-  }
-  
-  public abstract String a();
-  
-  public void a(arln paramarln)
-  {
-    this.a = paramarln;
+    if (this.jdField_a_of_type_Arkz.a != null)
+    {
+      if (this.jdField_a_of_type_Int != 1) {
+        break label79;
+      }
+      azqs.b(null, "dc00898", "", "", "0X800A745", "0X800A745", arsx.c(this.jdField_a_of_type_Arkz.e()), 0, "", "", "", "");
+      if (this.jdField_a_of_type_Arkz.a.c()) {
+        this.jdField_a_of_type_Arkz.a.b();
+      }
+    }
+    label79:
+    while (this.jdField_a_of_type_Int != 2) {
+      return;
+    }
+    this.jdField_a_of_type_Arkz.a.g();
   }
 }
 

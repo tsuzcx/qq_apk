@@ -1,24 +1,23 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Comparator;
 
-class asvv
-  implements mug
+final class asvv
+  implements Comparator<File>
 {
-  asvv(asvu paramasvu, String paramString) {}
-  
-  public void a(int paramInt)
+  private int a(long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoManager", 2, "start slientDownloadPlugin onResult:" + paramInt);
+    if (paramLong1 < paramLong2) {
+      return -1;
     }
-    mtz.a().a();
-    if (paramInt == 1)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("roomCodeType", 1);
-      localBundle.putLong("roomid", Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue());
-      asvu.a(this.jdField_a_of_type_Asvu, localBundle, 1001L);
+    if (paramLong1 == paramLong2) {
+      return 0;
     }
+    return 1;
+  }
+  
+  public int a(File paramFile1, File paramFile2)
+  {
+    return a(paramFile1.lastModified(), paramFile2.lastModified());
   }
 }
 

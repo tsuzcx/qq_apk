@@ -1,56 +1,17 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.qphone.base.util.QLog;
 
-final class agsc
-  implements DialogInterface.OnClickListener
+class agsc
+  implements View.OnClickListener
 {
-  agsc(AbsShareMsg paramAbsShareMsg, FragmentActivity paramFragmentActivity, Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  agsc(agrn paramagrn, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatActivity", 2, "qbShowWpaResultDialog back");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
-      {
-        paramDialogInterface = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("appid");
-        if (paramDialogInterface != null) {
-          arys.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, true, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("callback_type"), Long.parseLong(paramDialogInterface));
-        }
-      }
-      ndq.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8004B56", "0X8004B56", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
-      return;
-    }
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8004B55", "0X8004B55", 0, 0, "", "", "", "");
-    if (!(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity instanceof SplashActivity))
-    {
-      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
-      paramDialogInterface.putExtra("tab_index", MainFragment.b);
-      paramDialogInterface.addFlags(67108864);
-      paramDialogInterface.addFlags(268435456);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
-      return;
-    }
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a().R();
+    paramView = ((HotChatManager)this.jdField_a_of_type_Agrn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60)).a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Agrn.jdField_a_of_type_Aluw.a(paramView);
   }
 }
 

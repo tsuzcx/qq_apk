@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.report;
 
 import NS_MINI_REPORT.REPORT.SingleDcData;
-import bgya;
+import bhch;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.List;
@@ -9,21 +9,21 @@ import java.util.List;
 public class MiniProgramReporter$3
   implements Runnable
 {
-  public MiniProgramReporter$3(bgya parambgya, REPORT.SingleDcData paramSingleDcData) {}
+  public MiniProgramReporter$3(bhch parambhch, REPORT.SingleDcData paramSingleDcData) {}
   
   public void run()
   {
     if (this.a.dcid.get() == 4) {
-      bgya.a(this.this$0).add(this.a);
+      bhch.a(this.this$0).add(this.a);
     }
     for (;;)
     {
-      bgya.a(this.this$0);
+      bhch.a(this.this$0);
       return;
       if (this.a.dcid.get() == 9) {
-        bgya.b(this.this$0).add(this.a);
+        bhch.b(this.this$0).add(this.a);
       } else {
-        QMLog.e("MiniProgramReporter", " should not report by dcReport " + bgya.a(this.a));
+        QMLog.e("MiniProgramReporter", " should not report by dcReport " + bhch.a(this.a));
       }
     }
   }

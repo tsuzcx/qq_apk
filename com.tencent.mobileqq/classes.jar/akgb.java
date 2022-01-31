@@ -1,44 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.SimpleTextView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import java.util.HashMap;
+import java.util.List;
 
 class akgb
-  extends bhxd
+  implements akfb
 {
-  akgb(akfy paramakfy, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  akgb(akga paramakga, String paramString) {}
   
-  public View a(int paramInt, Object paramObject, bhxc parambhxc, View.OnClickListener paramOnClickListener)
+  public void a(boolean paramBoolean)
   {
-    parambhxc = super.a(paramInt, paramObject, parambhxc, paramOnClickListener);
-    if ((parambhxc instanceof SimpleTextView)) {
-      parambhxc.setTag(paramObject);
-    }
-    return parambhxc;
-  }
-  
-  public void a(int paramInt, Object paramObject, bhxc[] paramArrayOfbhxc)
-  {
-    paramInt = 0;
-    if ((paramArrayOfbhxc == null) || (paramArrayOfbhxc.length <= 0)) {}
-    for (;;)
+    if (paramBoolean) {}
+    try
     {
+      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Akga.mRuntime.a().getCurrentAccountUin();
+      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
+      akga.a(this.jdField_a_of_type_Akga, this.jdField_a_of_type_JavaLangString, (List)localObject);
       return;
-      if (paramArrayOfbhxc.length < 0)
+    }
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      try
       {
-        paramArrayOfbhxc[0].b = 0;
-        paramArrayOfbhxc[0].a = 0;
-        paramInt = 1;
+        akga.a(this.jdField_a_of_type_Akga, this.jdField_a_of_type_JavaLangString, null);
+        return;
       }
-      while (paramInt < paramArrayOfbhxc.length)
+      catch (Exception localException2)
       {
-        paramArrayOfbhxc[paramInt].b = -1;
-        paramArrayOfbhxc[paramInt].a = -1;
-        paramInt += 1;
+        localException2.printStackTrace();
       }
     }
+    akga.a(this.jdField_a_of_type_Akga, this.jdField_a_of_type_JavaLangString, null);
+    return;
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aduw;
-import aova;
-import aovf;
-import bkbz;
+import adzl;
+import aozj;
+import aozo;
+import bkgg;
 import com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -25,17 +25,17 @@ public class GetSplashConfig
     if (QLog.isColorLevel()) {
       QLog.i("PushBannerConfig", 2, String.format(Locale.getDefault(), "GetSplashConfig config: %s", new Object[] { localObject }));
     }
-    aova.a(this.a.app, this.a.app.getCurrentAccountUin());
-    aovf.a(this.a.app, this.a.app.c());
+    aozj.a(this.a.app, this.a.app.getCurrentAccountUin());
+    aozo.a(this.a.app, this.a.app.c());
     ((lwp)this.a.app.getManager(254)).a = true;
     ShortVideoResourceManager.a(this.a.app, 1);
-    aova.e(this.a.app, this.a.app.getCurrentAccountUin());
-    aova.f(this.a.app, this.a.app.getCurrentAccountUin());
+    aozj.e(this.a.app, this.a.app.getCurrentAccountUin());
+    aozj.f(this.a.app, this.a.app.getCurrentAccountUin());
     localObject = (OlympicManager)this.a.app.getManager(167);
     OlympicServlet.a(this.a.app, ((OlympicManager)localObject).b());
     AladdinConfigServlet.a(this.a.app, this.a.app.c());
-    bkbz.a().a(this.a.app);
-    this.a.app.a().addObserver(new aduw());
+    bkgg.a().a(this.a.app);
+    this.a.app.a().addObserver(new adzl());
     this.a.app.a(1);
     return 7;
   }

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/kqo" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip"
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:textSize="28.0dip" android:textColor="@color/fl" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/kqn" android:background="@drawable/bkl" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="3.0dip" android:maxLength="1" android:textCursorDrawable="@drawable/bkk" />
-    <TextView android:textSize="28.0dip" android:textColor="@color/fl" android:layout_gravity="center_vertical" android:id="@id/kqp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="*华" />
+    <include android:id="@id/idz" layout="@layout/is" />
+    <ImageView android:layout_gravity="center" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="105.0dip" android:src="@drawable/hvs" />
+    <TextView android:textSize="18.0sp" android:textColor="@color/skin_black" android:layout_gravity="center_horizontal" android:id="@id/md_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="29.0dip" android:text="@string/b01" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/skin_chat_nick" android:layout_gravity="center_horizontal" android:id="@id/kbr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/whp" />
+    <TextView android:id="@id/mt8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="29.0dip" android:layout_marginRight="15.0dip" android:text="@string/io6" style="@style/b9" />
 </LinearLayout>

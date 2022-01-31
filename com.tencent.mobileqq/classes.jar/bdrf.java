@@ -1,23 +1,17 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
 public class bdrf
 {
-  public ImageView a;
-  RelativeLayout a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  
-  public bdrf(RelativeLayout paramRelativeLayout)
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLayout.findViewById(2131377884));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLayout.findViewById(2131377128));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramRelativeLayout.findViewById(2131368600));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramRelativeLayout.findViewById(2131368601));
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public int e;
+  public int f;
 }
 
 

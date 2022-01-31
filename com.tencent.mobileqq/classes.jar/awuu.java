@@ -1,38 +1,15 @@
-import android.text.TextUtils;
+import android.graphics.drawable.Drawable;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
 public class awuu
+  implements bdoh<Integer>
 {
-  private static String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      return null;
-      switch (paramInt2)
-      {
-      default: 
-        switch (paramInt2)
-        {
-        }
-        break;
-      }
-    }
-    return "0X8009E09";
-    return "0X8009E06";
-    return "0X8009E07";
-    return "0X8009E08";
-    return "0X8009E0A";
-    return "0X8009E0B";
-  }
+  public awuu(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
   
-  public static void a(int paramInt1, int paramInt2)
+  public void a(bdob<Integer> parambdob, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    String str = a(paramInt1, paramInt2);
-    if (!TextUtils.isEmpty(str)) {
-      azmj.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
-    }
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(paramInteger.intValue());
   }
 }
 

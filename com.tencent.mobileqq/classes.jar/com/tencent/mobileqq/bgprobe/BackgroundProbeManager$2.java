@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.bgprobe;
 
-import anrc;
+import anvl;
 
 public final class BackgroundProbeManager$2
   implements Runnable
 {
-  public BackgroundProbeManager$2(anrc paramanrc) {}
+  public BackgroundProbeManager$2(anvl paramanvl) {}
   
   public void run()
   {
-    anrc.b(this.a);
+    anvl.b(this.a);
   }
 }
 

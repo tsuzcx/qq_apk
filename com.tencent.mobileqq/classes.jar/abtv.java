@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import msf.msgsvc.msg_svc.RoutingHead;
 
-class abtv
-  implements View.OnClickListener
+public abstract interface abtv
 {
-  abtv(abtt paramabtt) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    this.a.a.d();
-    abtt.a(this.a);
-  }
+  public abstract boolean a();
+  
+  public abstract boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface);
+  
+  public abstract int b();
 }
 
 

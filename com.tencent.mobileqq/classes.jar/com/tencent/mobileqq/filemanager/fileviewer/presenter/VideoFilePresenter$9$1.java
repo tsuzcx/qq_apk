@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import aris;
-import arjg;
-import arke;
+import arnb;
+import arnp;
+import aron;
 
 public class VideoFilePresenter$9$1
   implements Runnable
 {
-  public VideoFilePresenter$9$1(arjg paramarjg) {}
+  public VideoFilePresenter$9$1(arnp paramarnp) {}
   
   public void run()
   {
-    this.a.a.a.a(aris.a(this.a.a));
-    aris.b(this.a.a);
-    this.a.a.a.d(aris.a(this.a.a));
+    this.a.a.a.a(arnb.a(this.a.a));
+    arnb.b(this.a.a);
+    this.a.a.a.d(arnb.a(this.a.a));
   }
 }
 

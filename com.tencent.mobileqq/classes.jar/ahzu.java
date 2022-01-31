@@ -1,13 +1,10 @@
-import android.os.Bundle;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
 class ahzu
-  implements bepk
 {
-  ahzu(ahzt paramahzt) {}
-  
-  public void a(Bundle paramBundle) {}
-  
-  public void b(Bundle paramBundle) {}
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

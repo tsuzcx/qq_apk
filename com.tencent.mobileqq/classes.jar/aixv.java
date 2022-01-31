@@ -1,17 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import java.util.Map;
 
-public class aixv
-  implements View.OnClickListener
+public abstract interface aixv
 {
-  public aixv(ChooseItemView paramChooseItemView, View.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-  }
+  public abstract void a(String paramString, Map<String, String> paramMap);
 }
 
 

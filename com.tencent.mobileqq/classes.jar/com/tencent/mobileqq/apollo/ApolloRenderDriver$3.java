@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import albu;
+import algj;
 
 class ApolloRenderDriver$3
   extends IApolloRunnableTask
@@ -14,7 +14,7 @@ class ApolloRenderDriver$3
   
   public void run()
   {
-    this.this$0.a.a(albu.a());
+    this.this$0.a.a(algj.a());
   }
 }
 

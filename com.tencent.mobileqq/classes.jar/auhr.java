@@ -1,11 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
+
 public class auhr
-  implements auhn
+  implements DialogInterface.OnClickListener
 {
-  public void a(int paramInt) {}
+  public auhr(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
   
-  public void a(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void b(int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().setResult(1001);
+      this.a.getActivity().finish();
+    }
+  }
 }
 
 

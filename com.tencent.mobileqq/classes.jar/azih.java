@@ -1,30 +1,43 @@
+import android.hardware.Camera;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+
 public class azih
+  extends PreviewContext
+  implements SurfaceHolder.Callback, azhv
 {
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
-  
-  public String a()
+  public azih(azho paramazho, int paramInt1, int paramInt2)
   {
-    if (azio.a()) {
-      return this.jdField_b_of_type_JavaLangString;
-    }
-    return this.jdField_a_of_type_JavaLangString;
+    super(paramazho, paramInt1, paramInt2);
   }
   
-  public boolean a(azih paramazih)
+  public void a(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    if (paramazih == null) {}
-    while ((this.jdField_b_of_type_Boolean != paramazih.jdField_b_of_type_Boolean) || (!ajaf.c(this.jdField_a_of_type_JavaLangString, paramazih.jdField_a_of_type_JavaLangString)) || (!ajaf.c(this.jdField_b_of_type_JavaLangString, paramazih.jdField_b_of_type_JavaLangString))) {
-      return false;
-    }
-    return true;
+    getPreviewFrame(paramArrayOfByte, paramCamera);
   }
   
-  public String toString()
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    return "LoadOptions{isLoadLastSuccWhenFail=" + this.jdField_b_of_type_Boolean + ", old32Bit='" + this.jdField_a_of_type_JavaLangString + '\'' + ", old64Bit='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    this.mCamera.a(paramInt1, paramInt2, paramInt3);
+    this.mCamera.a(null, paramSurfaceHolder, this, true);
+  }
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    this.mCamera.a();
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (this.mCamera != null)
+    {
+      this.mCamera.b();
+      this.mCamera.b(true);
+      if (this.mActivtiyDestory) {
+        this.mCamera = null;
+      }
+    }
   }
 }
 

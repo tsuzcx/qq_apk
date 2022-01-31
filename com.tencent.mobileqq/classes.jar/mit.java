@@ -9,7 +9,7 @@ public class mit
   
   public void onClick(View paramView)
   {
-    azmj.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_video", 0, 0, this.a.b, "", "", "");
+    azqs.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_video", 0, 0, this.a.b, "", "", "");
     this.a.d(2);
   }
 }

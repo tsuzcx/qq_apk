@@ -1,25 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import java.util.List;
 
 public class wiu
+  extends uli
 {
-  public StoryVideoItem a;
+  public int a;
   public String a;
+  public List<LikeEntry> a;
   public boolean a;
-  public boolean b = true;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
   
-  public wiu(String paramString, StoryVideoItem paramStoryVideoItem)
+  public wiu(ErrorMessage paramErrorMessage, String paramString)
   {
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
   
-  public boolean equals(Object paramObject)
+  public String toString()
   {
-    if ((paramObject instanceof wiu)) {
-      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((wiu)paramObject).jdField_a_of_type_JavaLangString);
-    }
-    return false;
+    return "GetLikeListEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isForDetail=" + this.jdField_a_of_type_Boolean + ", mType=" + this.jdField_a_of_type_Int + ", mLikeCount=" + this.b + ", mHasLike=" + this.c + ", mLikeEntryList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

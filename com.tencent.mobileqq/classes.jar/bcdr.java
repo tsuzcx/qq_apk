@@ -1,12 +1,6 @@
-import java.util.List;
-
-public class bcdr
+public abstract interface bcdr
 {
-  public String a;
-  public List<ahyq> a;
-  public boolean a;
-  public int[] a;
-  public String[] a;
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

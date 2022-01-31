@@ -1,22 +1,15 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import com.tencent.biz.subscribe.event.CommentListShowStateEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
 
-class ycc
-  implements DialogInterface.OnShowListener
+public class ycc
+  implements View.OnClickListener
 {
-  ycc(ybx paramybx, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  public ycc(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (ybx.a(this.jdField_a_of_type_Ybx) != null) {
-      ybx.a(this.jdField_a_of_type_Ybx).a(paramDialogInterface);
-    }
-    paramDialogInterface = yhn.a().a(ybx.a(this.jdField_a_of_type_Ybx), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
-    ybx.a(this.jdField_a_of_type_Ybx).a(paramDialogInterface);
-    yej.a().a(new CommentListShowStateEvent(true));
+    FollowedRecommendBannerView.a(this.a);
   }
 }
 

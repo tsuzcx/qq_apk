@@ -1,6 +1,17 @@
-class aldg
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+
+public class aldg
+  extends akve
 {
-  private static final alde a = new alde(null);
+  public aldg(ApolloGameActivity paramApolloGameActivity) {}
+  
+  public void a(boolean paramBoolean, long paramLong, Object paramObject)
+  {
+    if (ApolloGameActivity.a(this.a) != null) {
+      ApolloGameActivity.a(this.a).a(paramBoolean, paramLong);
+    }
+  }
 }
 
 

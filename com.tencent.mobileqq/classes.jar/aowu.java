@@ -1,62 +1,61 @@
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.reflect.Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aowu
-  implements aowt
+  extends aokh<aowt>
 {
-  private Handler a;
-  
-  public Resources a()
+  public static aowt a()
   {
-    return BaseApplicationImpl.getApplication().getResources();
+    return (aowt)aoks.a().a(486);
   }
   
-  public Handler a()
+  public int a()
   {
-    if (this.a == null) {
-      this.a = new Handler(Looper.getMainLooper());
-    }
-    return this.a;
+    return 486;
   }
   
-  public Object a(Class<?> paramClass, String paramString, Object paramObject)
+  @NonNull
+  public aowt a(int paramInt)
   {
-    try
-    {
-      paramClass = paramClass.getDeclaredField(paramString);
-      paramClass.setAccessible(true);
-      paramClass = paramClass.get(paramObject);
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
+    return new aowt();
+  }
+  
+  @Nullable
+  public aowt a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aowt.a(paramArrayOfaoko);
     }
     return null;
   }
   
-  public boolean a()
+  public Class<aowt> a()
   {
-    return false;
+    return aowt.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aowt paramaowt) {}
+  
+  public int b()
+  {
+    return 0;
   }
   
   public boolean b()
   {
-    return Build.VERSION.SDK_INT >= 26;
+    return false;
   }
   
   public boolean c()
   {
-    return Build.VERSION.SDK_INT >= 11;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aowu
  * JD-Core Version:    0.7.0.1
  */

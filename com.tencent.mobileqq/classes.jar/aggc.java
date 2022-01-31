@@ -1,46 +1,49 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class aggc
+  implements Animator.AnimatorListener
 {
-  private static int a;
-  public ConcurrentHashMap<Long, aggf> a;
+  private aggc(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  static
-  {
-    jdField_a_of_type_Int = 900000;
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  private aggc()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  public static final aggc a()
-  {
-    return agge.a();
-  }
-  
-  public aggf a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
-      return (aggf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+    if (UnlimitedBladeWorks.a(this.a).a)
+    {
+      if (UnlimitedBladeWorks.a(this.a) != 2.0D) {
+        break label55;
+      }
+      UnlimitedBladeWorks.a(this.a);
+      UnlimitedBladeWorks.a(this.a, 5);
     }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(" LongVideoUrlCacheManager", 2, "LongVideoUrlCacheManager,clearCache");
+    for (;;)
+    {
+      UnlimitedBladeWorks.a(this.a).setImageDrawable(null);
+      return;
+      label55:
+      UnlimitedBladeWorks.b(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
+      UnlimitedBladeWorks.a(this.a).a(UnlimitedBladeWorks.a(this.a));
+      UnlimitedBladeWorks.a(this.a).a(new aggd(this));
+      UnlimitedBladeWorks.a(this.a).c();
+      UnlimitedBladeWorks.a(this.a, 1);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
   
-  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new aggf(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
+    if (UnlimitedBladeWorks.a(this.a))
+    {
+      UnlimitedBladeWorks.a(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
+      return;
+    }
+    UnlimitedBladeWorks.a(this.a).setImageBitmap(UnlimitedBladeWorks.a(this.a));
   }
 }
 

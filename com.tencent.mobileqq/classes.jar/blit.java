@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
-
-public class blit
-  implements DialogInterface.OnClickListener
+class blit
 {
-  public blit(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a().a(this.a.getActivity());
-  }
+  public static blis a = new blis();
 }
 
 

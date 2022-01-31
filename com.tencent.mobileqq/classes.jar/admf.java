@@ -1,37 +1,19 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemNewFriendMsgData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.OverloadTipsActivity;
 
 public class admf
-  implements alti
+  implements DialogInterface.OnKeyListener
 {
-  public admf(QQLSActivity paramQQLSActivity) {}
+  public admf(OverloadTipsActivity paramOverloadTipsActivity) {}
   
-  public void ao_() {}
-  
-  public void b() {}
-  
-  public void j_(int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 0) && (this.a.a.a().size() > 0))
-    {
-      Iterator localIterator = this.a.a.a().iterator();
-      while (localIterator.hasNext())
-      {
-        RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
-        if ((localRecentBaseData instanceof RecentItemNewFriendMsgData))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQLSActivity", 2, "Need to delete RecentItemNewFriendMsgData");
-          }
-          this.a.a.a().remove(localRecentBaseData);
-          this.a.b();
-        }
-      }
+    if (paramInt == 4) {
+      this.a.finish();
     }
+    return false;
   }
 }
 

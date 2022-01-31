@@ -1,17 +1,17 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
 
-class ahtc
-  implements View.OnClickListener
+public class ahtc
+  extends altm
 {
-  ahtc(ahta paramahta, DialogInterface.OnClickListener paramOnClickListener) {}
+  public ahtc(DeviceFragment paramDeviceFragment) {}
   
-  public void onClick(View paramView)
+  protected void onPullIpad()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ahta, 1);
+    if (this.a.a == null) {
+      return;
     }
+    this.a.a.e();
+    this.a.a.notifyDataSetChanged();
   }
 }
 

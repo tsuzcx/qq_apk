@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class RecommendContact
-  extends awbv
+  extends awge
 {
   public String contactName;
   public boolean isRead;
-  @awdj
+  @awhs
   public String key;
   public String mobileCode;
   public String mobileNo;

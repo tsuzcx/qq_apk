@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.app.FriendListHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
 public class alow
+  extends BroadcastReceiver
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
+  private alow(BaseActivity2 paramBaseActivity2) {}
   
-  public alow(FriendListHandler paramFriendListHandler)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
+    {
+      BaseActivity2.mAppForground = false;
+      GesturePWDUtils.setAppForground(paramContext, BaseActivity2.mAppForground);
+    }
+    while (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
+      return;
+    }
+    BaseActivity2.mAppForground = GesturePWDUtils.isAppOnForegroundByTasks(paramContext);
+    GesturePWDUtils.setAppForground(paramContext, BaseActivity2.mAppForground);
   }
 }
 

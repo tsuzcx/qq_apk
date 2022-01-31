@@ -1,38 +1,90 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class andx
-  implements andy
+class andx
+  implements andu
 {
-  private andx(andw paramandw) {}
+  andx(andw paramandw, andz paramandz, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public void a(long paramLong1, long paramLong2)
   {
-    if (!anfp.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.CONNECTION_TYPE")) {
-      return false;
+    if (this.jdField_a_of_type_Andz != null) {
+      this.jdField_a_of_type_Andz.a(andw.a(this.jdField_a_of_type_Andw, paramLong1, 0));
     }
-    if (!AppNetConnInfo.isNetSupport()) {
-      paramVariantWrapper.SetString("none");
+  }
+  
+  public void a(boolean paramBoolean, andv paramandv)
+  {
+    QLog.i("AREngine_ARResourceManagerTools", 1, "onARResourceDownloadComplete result" + paramBoolean);
+    if (this.jdField_a_of_type_Andz != null) {
+      this.jdField_a_of_type_Andz.a(paramandv.jdField_a_of_type_Int, paramBoolean);
     }
-    for (;;)
+    if (paramBoolean)
     {
-      return true;
-      if (AppNetConnInfo.isWifiConn())
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      for (;;)
       {
-        paramVariantWrapper.SetString("wifi");
-      }
-      else if (AppNetConnInfo.isMobileConn())
-      {
-        int i = AppNetConnInfo.getMobileInfo();
-        if (i == 0) {
-          paramVariantWrapper.SetString("none");
-        } else if (-1 == i) {
-          paramVariantWrapper.SetString("other");
-        } else {
-          paramVariantWrapper.SetString("cellular");
+        if (localIterator.hasNext())
+        {
+          localandv = (andv)localIterator.next();
+          if (!localandv.jdField_a_of_type_JavaLangString.equals(paramandv.jdField_a_of_type_JavaLangString)) {
+            continue;
+          }
+          if (paramandv.jdField_a_of_type_Boolean) {}
+          try
+          {
+            System.currentTimeMillis();
+            if (paramandv.jdField_a_of_type_Int == 6)
+            {
+              new File(paramandv.c);
+              anea.a(paramandv.c, andq.b());
+            }
+            for (;;)
+            {
+              QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerModelDownloadComplete  ");
+              this.b.remove(localandv);
+              QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerModelDownloadComplete  remove " + localandv.jdField_a_of_type_JavaLangString);
+              break;
+              if (paramandv.jdField_a_of_type_Int != 7) {
+                break label268;
+              }
+              anea.a(paramandv.c, andq.a(paramandv.b));
+            }
+            return;
+          }
+          catch (Exception localException)
+          {
+            new File(paramandv.c).delete();
+            QLog.i("AREngine_ARResourceManagerTools", 1, "Download end. uncompressZip error. url = ");
+            if (this.jdField_a_of_type_Andz != null) {
+              this.jdField_a_of_type_Andz.a(false);
+            }
+            this.jdField_a_of_type_Andw.a();
+            QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerAllDownloadComplete  ");
+          }
         }
       }
+      label268:
+      while (this.b.size() != 0) {
+        for (;;)
+        {
+          andv localandv;
+          File localFile = new File(paramandv.c);
+          anea.a(paramandv.c, localFile.getParentFile().getAbsolutePath() + File.separator + paramandv.b + File.separator);
+        }
+      }
+      if (this.jdField_a_of_type_Andz != null) {
+        this.jdField_a_of_type_Andz.a(true);
+      }
+      this.jdField_a_of_type_Andw.a();
+      return;
     }
+    if (this.jdField_a_of_type_Andz != null) {
+      this.jdField_a_of_type_Andz.a(false);
+    }
+    this.jdField_a_of_type_Andw.a();
   }
 }
 

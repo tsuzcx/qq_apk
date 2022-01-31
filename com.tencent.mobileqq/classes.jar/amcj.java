@@ -1,72 +1,107 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
 
 public class amcj
-  extends amch
+  implements alpg
 {
-  public amcj(QQAppInterface paramQQAppInterface, amcg paramamcg)
-  {
-    super(paramQQAppInterface, paramamcg, AppletsAccountInfo.class);
-  }
+  protected void a(int paramInt, Bundle paramBundle) {}
   
-  public AppletsAccountInfo a(String paramString)
-  {
-    return (AppletsAccountInfo)a(paramString);
-  }
+  protected void a(int paramInt, String paramString) {}
   
-  protected String a(awbv paramawbv)
-  {
-    return ((AppletsAccountInfo)paramawbv).uin;
-  }
+  protected void a(Object paramObject) {}
   
-  public void a(AppletsAccountInfo paramAppletsAccountInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletAccountCache", 2, "saveAppletsAccount AppletsAccount = " + paramAppletsAccountInfo);
-    }
-    a(paramAppletsAccountInfo);
-    this.jdField_a_of_type_Amcg.c();
-  }
+  protected void a(boolean paramBoolean, int paramInt, String paramString) {}
   
-  protected void b() {}
+  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString) {}
   
-  public void c()
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void b(int paramInt, Bundle paramBundle) {}
+  
+  protected void b(int paramInt, String paramString) {}
+  
+  protected void b(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    List localList = ((awbw)localObject).a(AppletsAccountInfo.class);
-    ((awbw)localObject).a();
-    if (localList != null)
+    String str = null;
+    Object localObject2 = null;
+    Object localObject1 = null;
+    int i = -1;
+    switch (paramInt)
     {
-      d();
-      localObject = localList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)((Iterator)localObject).next();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(String.valueOf(localAppletsAccountInfo.uin), localAppletsAccountInfo);
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("doInit size = ");
-      if (localList != null) {
-        break label118;
-      }
-    }
-    label118:
-    for (int i = 0;; i = localList.size())
-    {
-      QLog.d("AppletAccountCache", 2, i);
+    default: 
       return;
+    case 1: 
+      b(paramInt, (Bundle)paramObject);
+      return;
+    case 2: 
+      a(paramInt, (Bundle)paramObject);
+      return;
+    case 3: 
+      i = 0;
+      str = "";
+      localObject1 = str;
+      paramInt = i;
+      if (paramBoolean)
+      {
+        paramObject = (Bundle)paramObject;
+        localObject1 = str;
+        paramInt = i;
+        if (paramObject != null)
+        {
+          paramInt = paramObject.getInt("status");
+          localObject1 = paramObject.getString("wording");
+        }
+      }
+      a(paramBoolean, paramInt, (String)localObject1);
+      return;
+    case 4: 
+      if (paramBoolean)
+      {
+        paramObject = (Bundle)paramObject;
+        if (paramObject != null)
+        {
+          paramInt = paramObject.getInt(AuthDevRenameActivity.i);
+          localObject1 = paramObject.getByteArray(AuthDevRenameActivity.h);
+          paramObject = paramObject.getString(AuthDevRenameActivity.f);
+        }
+      }
+      break;
     }
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    for (;;)
+    {
+      a(paramBoolean, paramInt, (byte[])localObject1, paramObject);
+      return;
+      a(paramBoolean, (Bundle)paramObject);
+      return;
+      b(paramBoolean, (Bundle)paramObject);
+      return;
+      localObject1 = (Bundle)paramObject;
+      paramObject = str;
+      if (localObject1 != null)
+      {
+        i = ((Bundle)localObject1).getInt("ret_code", -1);
+        paramObject = ((Bundle)localObject1).getString("err_msg");
+      }
+      a(i, paramObject);
+      return;
+      localObject1 = (Bundle)paramObject;
+      paramObject = localObject2;
+      if (localObject1 != null)
+      {
+        i = ((Bundle)localObject1).getInt("ret_code", -1);
+        paramObject = ((Bundle)localObject1).getString("err_msg");
+      }
+      b(i, paramObject);
+      return;
+      a(paramObject);
+      return;
+      paramInt = -1;
+      str = null;
+      paramObject = localObject1;
+      localObject1 = str;
+    }
   }
 }
 

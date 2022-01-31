@@ -12,11 +12,11 @@ class er
   @SuppressLint({"NewApi"})
   public void onClick(View paramView)
   {
-    if (2131365075 == paramView.getId())
+    if (2131365077 == paramView.getId())
     {
       paramView = new es(this);
       et localet = new et(this);
-      bdcd.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131694030), this.jdField_a_of_type_AndroidContentContext.getString(2131694009), 2131690648, 2131694049, paramView, localet).show();
+      bdgm.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131694032), this.jdField_a_of_type_AndroidContentContext.getString(2131694011), 2131690648, 2131694051, paramView, localet).show();
     }
   }
 }

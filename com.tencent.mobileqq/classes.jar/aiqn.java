@@ -1,121 +1,71 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.PublicQuickPayManager.1;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aiqn
-  implements Manager
+  extends aiqf
 {
-  public Context a;
-  private bdhj jdField_a_of_type_Bdhj;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public aiqn(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
-  }
-  
-  private void a(aiqp paramaiqp, int paramInt, String paramString1, String paramString2, String paramString3)
-  {
-    if (paramaiqp != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("retCode", paramInt);
-      localBundle.putString("retMsg", paramString1);
-      localBundle.putString("payTime", paramString2);
-      localBundle.putString("orderId", paramString3);
-      paramaiqp.a(localBundle);
-    }
-  }
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private ImageView b;
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bdhj != null) && (this.jdField_a_of_type_Bdhj.isShowing())) {
-      this.jdField_a_of_type_Bdhj.dismiss();
-    }
-    this.jdField_a_of_type_Bdhj = bdcd.a(this.jdField_a_of_type_AndroidContentContext, alpo.a(2131709200), "", alpo.a(2131709201), new aiqo(this), null, null);
-    this.jdField_a_of_type_Bdhj.show();
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.b = null;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
   }
   
-  public boolean a(String paramString, JSONObject paramJSONObject, aiqp paramaiqp)
+  public void a(int paramInt)
   {
-    if ((paramJSONObject == null) || (TextUtils.isEmpty(paramString)))
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(paramInt);
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (paramInt == 0) {
+      b(8);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("PublicQuickPayManager", 2, "jsonParams=" + paramJSONObject + ", puin=" + paramString);
-      }
-      return false;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
+      ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365828)).setText(paramString);
     }
-    if (!((aitd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245)).a(paramString))
-    {
-      a();
-      a(paramaiqp, -4, "auth failed!", null, null);
-      return false;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372258));
+    this.b = ((ImageView)paramView.findViewById(2131372257));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131372259));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
     }
-    String str1 = paramJSONObject.optString("appId");
-    paramString = paramJSONObject.optString("orderId");
-    Object localObject = paramJSONObject.optString("expireTime");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appId", str1);
-    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject)))
-    {
-      if (Long.parseLong((String)localObject) <= NetConnInfoCenter.getServerTimeMillis() / 1000L)
-      {
-        a();
-        a(paramaiqp, -6, "expireTime overdue", null, null);
-        return false;
-      }
-      paramaiqp = new PublicQuickPayManager.1(this, new Handler(), paramaiqp, paramString);
-      localBundle.putParcelable("_qwallet_payresult_receiver", paramaiqp);
-      paramString = "";
-      try
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("tokenId", paramJSONObject.optString("tokenId"));
-        String str2 = paramJSONObject.optString("bargainor_id", "0");
-        paramJSONObject = paramJSONObject.optString("channel", "other");
-        ((JSONObject)localObject).put("appInfo", "appid#" + str1 + "|bargainor_id#" + str2 + "|channel#" + paramJSONObject);
-        paramJSONObject = ((JSONObject)localObject).toString();
-        paramString = paramJSONObject;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
-      }
-      localBundle.putString("payparmas_json", paramString);
-      localBundle.putInt("payparmas_paytype", 9);
-      localBundle.putLong("vacreport_key_seq", VACDReportUtil.a(null, "qqwallet", "publicpaymsg.pay.result", "payinvoke", null, 0, null));
-      localBundle.putInt("pay_requestcode", 9);
-      PayBridgeActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseActivity.sTopActivity, paramaiqp, 9, localBundle);
-      if (QLog.isColorLevel()) {
-        QLog.e("PublicQuickPayManager", 2, "open OpenPayActivity success");
-      }
-      return true;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("PublicQuickPayManager", 2, "publicQuickPay parameters parse error");
-    }
-    a();
-    a(paramaiqp, -4, "params parse error", null, null);
     return false;
   }
   
-  public void onDestroy() {}
+  public void b(int paramInt)
+  {
+    if (this.b != null) {
+      this.b.setVisibility(paramInt);
+    }
+  }
 }
 
 

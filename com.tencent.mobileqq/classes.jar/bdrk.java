@@ -1,46 +1,33 @@
-import android.os.Handler;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-
-class bdrk
-  implements Observer
+public class bdrk
+  extends apws
 {
-  bdrk(bdrj parambdrj) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    if ((paramObject instanceof ArrayList))
-    {
-      paramObservable = (ArrayList)paramObject;
-      switch (((Integer)paramObservable.get(0)).intValue())
-      {
-      default: 
-        return;
-      }
-      paramObservable = (RichStatus)paramObservable.get(1);
-      bdrj.a(this.a, paramObservable);
-      if (bdrj.a(this.a).plainText != null)
-      {
-        paramObject = axzn.a().b;
-        if (paramObject != null)
-        {
-          paramObject.plainText = ((ArrayList)bdrj.a(this.a).plainText.clone());
-          paramObject.topics.clear();
-          paramObject.topics.addAll(bdrj.a(this.a).topics);
-        }
-      }
-      if (paramObservable != null) {
-        bdrj.b(this.a).copyFrom(paramObservable);
-      }
-      bdrj.a(this.a).a().sendEmptyMessage(10003);
-      axzn.a().deleteObserver(bdrj.a(this.a));
-      return;
-    }
-    bdrj.a(this.a).a().sendEmptyMessage(10003);
-  }
+  public static int a = 1;
+  public static int b = 2;
+  public static int c = 3;
+  public static int d = 4;
+  public static int e = 5;
+  public static int f = 6;
+  public static int g = 7;
+  public static int h = 8;
+  public static int i;
+  public static int j = 1;
+  public static int k = 6;
+  public static int l = 1;
+  public static int m = 2;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public int n;
+  public int o;
+  public int p;
+  public int q;
+  public int r;
+  public int s;
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import avod;
+import avsm;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -12,7 +12,7 @@ class NearbyPeopleProfileActivity$1
   public void run()
   {
     if ((this.this$0.a.a != null) && (this.this$0.a.a.equals(this.this$0.app.getCurrentAccountUin()))) {
-      ((avod)this.this$0.app.getManager(160)).a(false);
+      ((avsm)this.this$0.app.getManager(160)).a(false);
     }
   }
 }

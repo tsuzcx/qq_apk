@@ -1,23 +1,16 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-class wvl
-  implements uni<vbf, vcz>
+public class wvl
 {
-  wvl(wvj paramwvj) {}
+  public List<LocalMediaInfo> a = new ArrayList();
   
-  public void a(@NonNull vbf paramvbf, @Nullable vcz paramvcz, @NonNull ErrorMessage paramErrorMessage)
+  private wvl(@NonNull List<LocalMediaInfo> paramList)
   {
-    wsv.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramvcz != null))
-    {
-      wsv.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramvcz.toString());
-      paramvbf = new uqm(paramvcz.a, paramvcz.c, paramvcz.d, paramvcz.e, paramvcz.f, paramvbf.d, paramvbf.e);
-      this.a.a(0, paramvbf);
-      return;
-    }
-    wsv.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
+    xqq.a(paramList);
+    this.a = paramList;
   }
 }
 

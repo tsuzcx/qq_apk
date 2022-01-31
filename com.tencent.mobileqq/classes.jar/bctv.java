@@ -1,12 +1,6 @@
-import java.util.ArrayList;
-
-public class bctv
+public abstract interface bctv
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.util;
 
 import android.app.Activity;
 import android.content.Intent;
-import bdbi;
+import bdfr;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -42,7 +42,7 @@ public class PublicAccountH5AbilityPlugin$5
         int m = ((JSONObject)localObject2).optInt("ugcPushType");
         try
         {
-          str1 = new String(bdbi.decode((String)localObject1, 0));
+          str1 = new String(bdfr.decode((String)localObject1, 0));
           localObject1 = str1;
         }
         catch (Exception localException)

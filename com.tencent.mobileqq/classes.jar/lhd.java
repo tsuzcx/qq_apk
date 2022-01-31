@@ -224,7 +224,7 @@ class lhd
                               return;
                               if (paramIntent.getAction().equals("tencent.video.q2v.GroupInfoChanged"))
                               {
-                                paramContext = bdfb.a(paramIntent.getExtras());
+                                paramContext = bdjk.a(paramIntent.getExtras());
                                 this.a.a(new Object[] { Integer.valueOf(169), paramContext });
                                 return;
                               }

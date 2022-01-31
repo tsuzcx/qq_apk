@@ -1,14 +1,21 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahuk
-  implements ahzz
+class ahuk
+  extends altm
 {
-  public ahuk(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  ahuk(ahuf paramahuf) {}
   
-  public void a(MotionEvent paramMotionEvent)
+  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a.a(paramMotionEvent);
+    if (QLog.isColorLevel()) {
+      QLog.d("CTEntryMng", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      ahuf.a(this.a, true);
+      ahuf.a(this.a);
+    }
   }
 }
 

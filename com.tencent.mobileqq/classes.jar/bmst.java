@@ -1,18 +1,20 @@
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel;
+import dov.com.qq.im.capture.text.DynamicTextItem;
 
-public class bmst
-  implements army
+public abstract interface bmst
 {
-  public bmst(EditTextPanel paramEditTextPanel, DynamicTextConfigManager paramDynamicTextConfigManager, DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean) {}
+  public abstract void a();
   
-  public void a()
-  {
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean, EditTextPanel.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextPanel));
-  }
+  public abstract void a(int paramInt);
   
-  public void b() {}
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(DynamicTextItem paramDynamicTextItem, boolean paramBoolean1, int paramInt, boolean paramBoolean2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

@@ -1,23 +1,8 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-
-public class alpo
+public abstract interface alpo
 {
-  public static BaseApplicationImpl a = BaseApplicationImpl.sApplication;
+  public abstract void b(byte[] paramArrayOfByte);
   
-  public static String a(int paramInt)
-  {
-    try
-    {
-      String str = a.getResources().getString(paramInt);
-      return str;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return "";
-  }
+  public abstract void d();
 }
 
 

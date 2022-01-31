@@ -1,6 +1,12 @@
-public abstract interface agst
+class agst
+  extends ameq
 {
-  public abstract void a(agss paramagss);
+  agst(agso paramagso) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    agso.a(this.a, paramBoolean, paramObject);
+  }
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.biz.ui;
 
-import ysv;
-import ysw;
+import yxk;
+import yxl;
 
 public class PopupMenu$1$1
   implements Runnable
 {
-  public PopupMenu$1$1(ysw paramysw) {}
+  public PopupMenu$1$1(yxl paramyxl) {}
   
   public void run()
   {

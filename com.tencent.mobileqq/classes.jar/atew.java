@@ -1,14 +1,27 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Set;
 
-public class atew
-  implements ytc
+class atew
+  extends altm
 {
-  public atew(UiApiPlugin paramUiApiPlugin) {}
+  atew(ateu paramateu) {}
   
-  public void a()
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    this.a.dispatchJsEvent("qbrowserPullDown", null, null);
-    this.a.h = true;
+    QLog.i("FetchOpenIdManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    if ((paramBoolean) && (paramObject != null))
+    {
+      long l = ((Long)paramObject).longValue();
+      paramObject = ateu.a(this.a).keySet().toArray();
+      int i = paramObject.length - 1;
+      while (i >= 0)
+      {
+        Long localLong = (Long)paramObject[i];
+        this.a.a(localLong.longValue(), l);
+        i -= 1;
+      }
+    }
   }
 }
 

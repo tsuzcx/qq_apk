@@ -1,53 +1,41 @@
-import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
 
 public class vow
-  extends vpr
-  implements View.OnClickListener
 {
-  public vow(@NonNull ViewGroup paramViewGroup)
+  private vpk jdField_a_of_type_Vpk;
+  private vpm jdField_a_of_type_Vpm;
+  private vpo jdField_a_of_type_Vpo = new vox(this);
+  public vqi a;
+  private wcn jdField_a_of_type_Wcn;
+  private vpo b = new voy(this);
+  
+  public void a(MsgTabPlayInfo paramMsgTabPlayInfo)
   {
-    super(paramViewGroup);
-    this.a.findViewById(2131368009).setOnClickListener(this);
-    this.a.findViewById(2131377715).setOnClickListener(this);
+    this.jdField_a_of_type_Vqi = new vqi(new vpz(paramMsgTabPlayInfo));
+    this.jdField_a_of_type_Wcn = new wcn(this.jdField_a_of_type_Vqi);
+    this.jdField_a_of_type_Wcn.b();
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public void a(HomeFeedPlayInfo paramHomeFeedPlayInfo)
   {
-    return paramViewGroup;
+    this.jdField_a_of_type_Vqi = new vqi(new vpf(paramHomeFeedPlayInfo));
+    this.jdField_a_of_type_Wcn = new wcn(this.jdField_a_of_type_Vqi);
   }
   
-  public void a(int paramInt1, int paramInt2, @NonNull vpk paramvpk, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  public void onClickTestDown(View paramView)
   {
-    super.a(paramInt1, paramInt2, paramvpk, paramStoryPlayerGroupHolder);
-    if (bngs.a)
-    {
-      paramStoryPlayerGroupHolder = (RelativeLayout.LayoutParams)this.a.findViewById(2131368009).getLayoutParams();
-      paramStoryPlayerGroupHolder.topMargin = (xod.a(this.a.getContext(), 5.0F) + 114);
-      this.a.findViewById(2131368009).setLayoutParams(paramStoryPlayerGroupHolder);
-    }
-    a().a(this, paramInt1, paramInt2, paramvpk);
+    this.jdField_a_of_type_Vqi.a(this.b);
+    this.jdField_a_of_type_Vqi.b(this.jdField_a_of_type_Vpo);
+    this.jdField_a_of_type_Vqi.a(this.jdField_a_of_type_Vpm, 2, 1, null);
   }
   
-  public void a(boolean paramBoolean)
+  public void onClickTestUp(View paramView)
   {
-    super.a(paramBoolean);
-    a().a(this, paramBoolean);
-  }
-  
-  protected void b()
-  {
-    super.b();
-    a().a(this);
-  }
-  
-  public void onClick(View paramView)
-  {
-    a().a(this, paramView);
+    this.jdField_a_of_type_Vqi.b(this.b);
+    this.jdField_a_of_type_Vqi.a(this.jdField_a_of_type_Vpo);
+    this.jdField_a_of_type_Vqi.a(this.jdField_a_of_type_Vpm, 0, 1, null);
   }
 }
 

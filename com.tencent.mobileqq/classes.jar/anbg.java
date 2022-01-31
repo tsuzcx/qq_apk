@@ -1,19 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArLBSActivity;
-
-public final class anbg
-  implements Parcelable.Creator<ArLBSActivity>
+public abstract interface anbg
 {
-  public ArLBSActivity a(Parcel paramParcel)
-  {
-    return new ArLBSActivity(paramParcel);
-  }
+  public abstract void a(int paramInt, anbq paramanbq, long paramLong);
   
-  public ArLBSActivity[] a(int paramInt)
-  {
-    return new ArLBSActivity[paramInt];
-  }
+  public abstract void a(anbi paramanbi);
+  
+  public abstract void a(anbj paramanbj);
+  
+  public abstract void a(anbk paramanbk);
+  
+  public abstract void a(anbl paramanbl);
+  
+  public abstract void a(anbs paramanbs);
+  
+  public abstract void b(anbj paramanbj);
 }
 
 

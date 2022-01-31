@@ -1,26 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import java.util.ArrayList;
 
 public class yrh
-  implements DialogInterface.OnClickListener
+  extends aluu
 {
-  public yrh(TroopGiftPanel paramTroopGiftPanel) {}
+  public yrh(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, ArrayList<String> paramArrayList)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (paramInt == 1)
-    {
-      bdqe.a(this.a.a, "mvip.n.a.qlw_forsvip", "CJCLUBT", 3, false, true);
-      azmj.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_sure_click", 0, 0, "", "", "", "");
-    }
-    while (paramInt != 0) {
-      return;
-    }
-    azmj.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_cancel_click", 0, 0, "", "", "", "");
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 1050);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { paramString, paramArrayOfByte, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayList });
+    localBundle.putSerializable("observer_type", Integer.valueOf(5));
+    this.a.a(3, localBundle);
+  }
+  
+  public void a(boolean paramBoolean, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("seq", this.a.f);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putStringArrayList("uins", paramArrayList1);
+    localBundle.putStringArrayList("tinyIds", paramArrayList2);
+    this.a.a(102, localBundle);
   }
 }
 

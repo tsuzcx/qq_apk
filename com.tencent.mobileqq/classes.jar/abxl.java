@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-public class abxl
-  implements bepr
+class abxl
+  extends JobSegment<auef, auef>
 {
-  public abxl(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  abxl(abxj paramabxj, String paramString, int paramInt) {}
   
-  public void a()
+  protected void a(JobContext paramJobContext, auef paramauef)
   {
-    this.a.onBackPressed();
-    AddFriendLogicActivity.a(this.a).a(null);
+    auek.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new abxm(this, this));
   }
 }
 

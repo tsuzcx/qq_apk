@@ -1,27 +1,21 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-class agel
-  implements View.OnClickListener
+public class agel
+  extends aeqi
 {
-  agel(agej paramagej, AIOShortVideoData paramAIOShortVideoData) {}
+  public ProgressBar a;
+  public TextView a;
+  public AsyncImageView a;
+  public TextView b;
+  public View c;
+  public TextView c;
+  public View d;
+  public TextView d;
   
-  public void onClick(View paramView)
-  {
-    agej.a(this.jdField_a_of_type_Agej, agej.a(this.jdField_a_of_type_Agej), alpo.a(2131700423));
-    boolean bool = azbu.a().a();
-    paramView = agej.b(this.jdField_a_of_type_Agej);
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.g;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.e;
-    if (bool) {}
-    for (int i = 1;; i = 0)
-    {
-      DanceMachineQQBrowserActivity.a(paramView, j, str, i, -999, 1, 0, null);
-      return;
-    }
-  }
+  public agel(ageh paramageh) {}
 }
 
 

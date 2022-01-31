@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import com.tencent.YTFace.model.FaceStatus;
 
-public final class anbi
-  implements Parcelable.Creator<ArVideoResourceInfo>
+public class anbi
 {
-  public ArVideoResourceInfo a(Parcel paramParcel)
-  {
-    return new ArVideoResourceInfo(paramParcel);
-  }
+  public int a = 3000;
+  public FaceStatus[] a;
   
-  public ArVideoResourceInfo[] a(int paramInt)
+  public String toString()
   {
-    return new ArVideoResourceInfo[paramInt];
+    return "ARCloudRecogReqFaceInfo{timeout = " + this.a + '}';
   }
 }
 

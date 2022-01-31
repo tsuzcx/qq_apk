@@ -1,14 +1,4 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class anks
-{
-  public ImageView a;
-  public TextView a;
-  public String a;
-  public ImageView b;
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anks

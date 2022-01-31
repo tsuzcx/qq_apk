@@ -1,29 +1,16 @@
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.os.Handler;
+import dov.com.qq.im.capture.view.StoryToastView;
 
 public class bmbt
   extends AnimatorListenerAdapter
 {
-  public bmbt(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public bmbt(StoryToastView paramStoryToastView) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation deleteView 140ms translate end");
-    }
-    this.a.a.d = 4;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a.a = SystemClock.uptimeMillis();
-    this.a.a.b = 140L;
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation deleteView begin");
-    }
+    StoryToastView.a(this.a).sendEmptyMessageDelayed(1, 1500L);
   }
 }
 

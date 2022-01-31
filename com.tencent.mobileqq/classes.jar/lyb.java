@@ -6,7 +6,7 @@ import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class lyb
-  implements bevy
+  implements bfah
 {
   public lyb(RedPacketShareFragment.3.1 param1) {}
   

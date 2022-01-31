@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import adhz;
-import aovt;
+import admo;
+import apac;
 
 public class PermisionPrivacyActivity$16$1
   implements Runnable
 {
-  public PermisionPrivacyActivity$16$1(adhz paramadhz, aovt paramaovt, boolean paramBoolean) {}
+  public PermisionPrivacyActivity$16$1(admo paramadmo, apac paramapac, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aovt.a(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Apac.a(this.jdField_a_of_type_Boolean);
   }
 }
 

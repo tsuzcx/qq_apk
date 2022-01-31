@@ -1,44 +1,49 @@
-import android.os.Message;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
 
 public class apzh
-  extends baua
+  extends apzi
 {
-  public apzh(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  private int c = 4;
+  private int d = 27;
   
-  public void handleMessage(Message paramMessage)
+  public apzh(Context paramContext, apuc paramapuc, int paramInt, boolean paramBoolean)
   {
-    baoj localbaoj = (baoj)paramMessage.obj;
-    switch (paramMessage.what)
+    super(paramContext, paramapuc, paramInt);
+    a(paramBoolean);
+  }
+  
+  private int a(int[] paramArrayOfInt)
+  {
+    return (paramArrayOfInt.length + this.d - 1) / this.d;
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-    case 1004: 
-    default: 
-      return;
-    case 1003: 
-      if (localbaoj.b == 23)
-      {
-        ExtendFriendEditFragment.a(this.a, ((baqs)localbaoj.a).o);
-        if (QLog.isColorLevel()) {
-          QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload success. url = " + ExtendFriendEditFragment.a(this.a));
-        }
-        if (this.a.a != null)
-        {
-          this.a.a.a(ExtendFriendEditFragment.a(this.a));
-          ExtendFriendEditFragment.a(this.a, this.a.a.a());
-        }
-      }
-      aqcx.a().d(true, 0);
+      this.c = 5;
+      this.d = 34;
       return;
     }
-    if ((localbaoj.b == 23) && (QLog.isColorLevel())) {
-      QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload fail.");
+    this.c = 4;
+    this.d = 27;
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public int b()
+  {
+    return a(this.jdField_a_of_type_ArrayOfInt);
+  }
+  
+  protected void c()
+  {
+    if (this.jdField_a_of_type_Apui != null) {
+      this.jdField_a_of_type_Apui.a(this.c, 7);
     }
-    ExtendFriendEditFragment.a(this.a).dismiss();
-    QQToast.a(ExtendFriendEditFragment.a(this.a), alpo.a(2131704653), 0).a();
-    aqcx.a().d(false, 0);
   }
 }
 

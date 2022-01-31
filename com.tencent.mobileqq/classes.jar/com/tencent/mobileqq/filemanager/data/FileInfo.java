@@ -3,15 +3,15 @@ package com.tencent.mobileqq.filemanager.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aqxo;
-import arni;
+import arbx;
+import arrr;
 import com.tencent.mm.vfs.VFSFile;
 import java.io.FileNotFoundException;
 
 public class FileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FileInfo> CREATOR = new aqxo();
+  public static final Parcelable.Creator<FileInfo> CREATOR = new arbx();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
@@ -63,7 +63,7 @@ public class FileInfo
     d(paramString.getName());
     a(paramString.length());
     b(paramString.lastModified());
-    b(arni.a(this.jdField_b_of_type_JavaLangString));
+    b(arrr.a(this.jdField_b_of_type_JavaLangString));
     c("");
     a("");
   }

@@ -1,41 +1,32 @@
-import android.graphics.PointF;
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.BaseButton;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
 
 public class bmgl
-  implements bmlq
+  extends AnimatorListenerAdapter
 {
-  public bmgl(bmgj parambmgj) {}
+  public bmgl(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
   
-  public void a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    QQToast.a(bmgj.a(this.a), "最多可以圈10个好友哦", 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim  140ms end");
+    }
+    atlr.a();
+    this.a.a.setImageResource(2130844062);
+    this.a.a.setOnTouchListener(null);
+    this.a.a.setOnTouchListener(new bmgm(this));
+    this.a.b.setStateful(true);
+    this.a.b.setOnClickListener(new bmgn(this));
   }
   
-  public void a(bmlp parambmlp)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (parambmlp.a == 0)
-    {
-      f1 = parambmlp.b.x;
-      f2 = parambmlp.s;
-      f3 = -parambmlp.u;
-      if (f1 + f2 + f3 >= parambmlp.u / 2.0F)
-      {
-        bmgj.a(this.a).a(1, f3 + parambmlp.s);
-        return;
-      }
-      wsv.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "at label can not be reversed because it will be beyond layer.");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim start");
     }
-    float f1 = parambmlp.b.x;
-    float f2 = parambmlp.s;
-    float f3 = parambmlp.u;
-    if (f1 + f2 + f3 <= bmgj.a(this.a).getWidth() - parambmlp.u / 2.0F)
-    {
-      bmgj.a(this.a).a(0, f3 + parambmlp.s);
-      return;
-    }
-    wsv.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "at label can not be reversed because it will be beyond layer.");
   }
 }
 

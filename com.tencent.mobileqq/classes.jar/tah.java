@@ -289,7 +289,7 @@ public class tah
   {
     String str1 = "sp_key_prefix_last_wakeup_ts_" + paramSneakyParams.getPackageName() + "_" + paramInt;
     String str2 = "sp_key_prefix_remain_wake_up_count_" + paramSneakyParams.getPackageName() + "_" + paramInt;
-    long l1 = ((Long)bjxj.a(str1, Long.valueOf(0L))).longValue();
+    long l1 = ((Long)bkbq.a(str1, Long.valueOf(0L))).longValue();
     long l2 = System.currentTimeMillis();
     double d = (l2 - l1) * 1.0D / 60000.0D;
     int i = paramSneakyParams.getDebounceIntervalMinutes(paramInt);
@@ -304,7 +304,7 @@ public class tah
       QLog.i("SneakyCallback", 1, "[checkInterval] less than " + i + " minutes for occasionType=" + paramInt);
       return false;
     }
-    int j = ((Integer)bjxj.a(str2, Integer.valueOf(paramSneakyParams.getMaximumWakeUpTimes(paramInt)))).intValue();
+    int j = ((Integer)bkbq.a(str2, Integer.valueOf(paramSneakyParams.getMaximumWakeUpTimes(paramInt)))).intValue();
     if ((l2 - l1) * 1.0D / 86400000.0D > 1.0D)
     {
       i = 1;
@@ -313,11 +313,11 @@ public class tah
         break label397;
       }
       QLog.i("SneakyCallback", 1, "[checkInterval] more than one day for occasionType=" + paramInt);
-      bjxj.a(str2, Integer.valueOf(paramSneakyParams.getMaximumWakeUpTimes(paramInt) - 1));
+      bkbq.a(str2, Integer.valueOf(paramSneakyParams.getMaximumWakeUpTimes(paramInt) - 1));
     }
     for (;;)
     {
-      bjxj.a(str1, Long.valueOf(l2));
+      bkbq.a(str1, Long.valueOf(l2));
       return true;
       i = 0;
       break;
@@ -325,7 +325,7 @@ public class tah
       if (j <= 0) {
         break label417;
       }
-      bjxj.a(str2, Integer.valueOf(j - 1));
+      bkbq.a(str2, Integer.valueOf(j - 1));
     }
     label417:
     return false;
@@ -412,7 +412,7 @@ public class tah
   {
     try
     {
-      boolean bool = aowf.a(paramSneakyParams.getPackageName(), BaseApplicationImpl.getContext());
+      boolean bool = apao.a(paramSneakyParams.getPackageName(), BaseApplicationImpl.getContext());
       if (bool) {
         return true;
       }

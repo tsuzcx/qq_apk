@@ -1,19 +1,15 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
-class aimp
-  implements army
+public class aimp
+  implements DialogInterface.OnClickListener
 {
-  aimp(aiml paramaiml) {}
+  public aimp(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b();
-  }
-  
-  public void b()
-  {
-    ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+    this.a.finish();
   }
 }
 

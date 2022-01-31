@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import aevq;
-import aycc;
+import afaf;
+import aygl;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class DoodlePanel$5$1
   implements Runnable
 {
-  public DoodlePanel$5$1(aevq paramaevq, int paramInt) {}
+  public DoodlePanel$5$1(afaf paramafaf, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aevq.a.d();
-    if (this.jdField_a_of_type_Int == aycc.d)
+    this.jdField_a_of_type_Afaf.a.d();
+    if (this.jdField_a_of_type_Int == aygl.d)
     {
-      this.jdField_a_of_type_Aevq.a.c();
+      this.jdField_a_of_type_Afaf.a.c();
       return;
     }
-    QQToast.a(this.jdField_a_of_type_Aevq.a.getContext(), 2131689946, 0).b(DoodlePanel.a(this.jdField_a_of_type_Aevq.a).a());
+    QQToast.a(this.jdField_a_of_type_Afaf.a.getContext(), 2131689946, 0).b(DoodlePanel.a(this.jdField_a_of_type_Afaf.a).a());
   }
 }
 

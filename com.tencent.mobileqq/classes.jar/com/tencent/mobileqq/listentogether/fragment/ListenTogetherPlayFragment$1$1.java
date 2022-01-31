@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.listentogether.fragment;
 
-import atiz;
+import atni;
 import com.tencent.mobileqq.listentogether.data.ISong;
 
 public class ListenTogetherPlayFragment$1$1
   implements Runnable
 {
-  public ListenTogetherPlayFragment$1$1(atiz paramatiz, String paramString, int paramInt1, int paramInt2) {}
+  public ListenTogetherPlayFragment$1$1(atni paramatni, String paramString, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Atiz.a.a.d())) {
-      ListenTogetherPlayFragment.a(this.jdField_a_of_type_Atiz.a, this.jdField_a_of_type_Int, this.b, false);
+    if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Atni.a.a.d())) {
+      ListenTogetherPlayFragment.a(this.jdField_a_of_type_Atni.a, this.jdField_a_of_type_Int, this.b, false);
     }
   }
 }

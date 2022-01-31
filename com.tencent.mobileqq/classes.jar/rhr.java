@@ -20,9 +20,9 @@ class rhr
     if (22 == paramInteger.intValue())
     {
       localObject = new syw();
-      ((syw)localObject).label = rhf.a(this.jdField_a_of_type_Rhf).getResources().getString(2131696892);
+      ((syw)localObject).label = rhf.a(this.jdField_a_of_type_Rhf).getResources().getString(2131696894);
       ((syw)localObject).iconNeedBg = true;
-      ((syw)localObject).icon = 2130842765;
+      ((syw)localObject).icon = 2130842778;
       ((syw)localObject).action = a(paramInteger.intValue());
       ((syw)localObject).argus = "";
       return localObject;
@@ -30,8 +30,8 @@ class rhr
     if (121 == paramInteger.intValue())
     {
       localObject = new syw();
-      ((syw)localObject).label = alpo.a(2131716583);
-      ((syw)localObject).icon = 2130842270;
+      ((syw)localObject).label = alud.a(2131716595);
+      ((syw)localObject).icon = 2130842283;
       ((syw)localObject).iconNeedBg = true;
       ((syw)localObject).action = a(paramInteger.intValue());
       ((syw)localObject).argus = "";
@@ -44,9 +44,9 @@ class rhr
       localsyw.iconNeedBg = false;
       localsyw.action = 24;
       localsyw.argus = "";
-      localObject = bdda.b();
+      localObject = bdhj.b();
       if (!TextUtils.isEmpty(rhf.a(this.jdField_a_of_type_Rhf).j)) {
-        paramInteger = bcxb.a(rhf.a(this.jdField_a_of_type_Rhf), 1, rhf.a(this.jdField_a_of_type_Rhf).j, 3, (Drawable)localObject, (Drawable)localObject);
+        paramInteger = bdbk.a(rhf.a(this.jdField_a_of_type_Rhf), 1, rhf.a(this.jdField_a_of_type_Rhf).j, 3, (Drawable)localObject, (Drawable)localObject);
       }
       for (;;)
       {
@@ -61,7 +61,7 @@ class rhr
           for (paramInteger = new URL("http://pub.idqqimg.com/pc/misc/files/20191114/1014c7cfd33e4333b818ceecc0885938.png");; paramInteger = new URL(rhf.a(this.jdField_a_of_type_Rhf).n))
           {
             paramInteger = URLDrawable.getDrawable(paramInteger, localURLDrawableOptions);
-            paramInteger.setDecodeHandler(bcuq.a);
+            paramInteger.setDecodeHandler(bcyz.a);
             break;
           }
         }

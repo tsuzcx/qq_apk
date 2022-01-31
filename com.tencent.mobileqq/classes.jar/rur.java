@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
 
 public class rur
-  implements bhyj
+  implements bicq
 {
   public rur(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
   

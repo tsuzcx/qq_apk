@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bckx;
-import bclg;
+import bcpg;
+import bcpp;
 import java.lang.ref.WeakReference;
 
 public class TroopRobotManager$3
   implements Runnable
 {
-  public TroopRobotManager$3(bckx parambckx) {}
+  public TroopRobotManager$3(bcpg parambcpg) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bclg localbclg = (bclg)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbclg != null) {
-        localbclg.a(this.this$0.d, this.this$0.b, this.this$0.jdField_a_of_type_Boolean);
+      bcpp localbcpp = (bcpp)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbcpp != null) {
+        localbcpp.a(this.this$0.d, this.this$0.b, this.this$0.jdField_a_of_type_Boolean);
       }
     }
   }

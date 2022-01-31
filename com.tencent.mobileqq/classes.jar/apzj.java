@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.NativeGifFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class apzj
-  implements DialogInterface.OnClickListener
 {
-  public apzj(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static AbstractGifImage a(File paramFile, int paramInt, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    try
+    {
+      if (NativeGifFactory.isUseNewGif()) {
+        return new apzl(paramFile, paramInt, paramBoolean);
+      }
+      paramFile = new apzk(paramFile, paramInt, paramBoolean);
+      return paramFile;
+    }
+    catch (IOException paramFile)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("VoiceGifFactory", 2, "getVoiceGifObject exception. msg:" + paramFile.getMessage());
+      }
+    }
+    return null;
   }
 }
 

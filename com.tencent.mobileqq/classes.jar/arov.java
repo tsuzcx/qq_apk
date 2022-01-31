@@ -1,18 +1,14 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
-
-final class arov
-  implements army
+public final class arov
 {
-  arov(Activity paramActivity, Intent paramIntent) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  boolean b;
   
-  public void a()
+  public arov()
   {
-    arum.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, ForwardRecentTranslucentActivity.class, 103);
+    this.a = 1;
   }
-  
-  public void b() {}
 }
 
 

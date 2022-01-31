@@ -1,23 +1,37 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
 
 public class aeba
-  implements View.OnClickListener
+  extends Handler
 {
-  public aeba(TroopMemberListActivity paramTroopMemberListActivity, int paramInt1, int paramInt2) {}
-  
-  public void onClick(View paramView)
+  public aeba(TextPreviewSettingActivity paramTextPreviewSettingActivity, Looper paramLooper)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, TroopMemberListActivity.class);
-    paramView.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b);
-    paramView.putExtra("param_from", 15);
-    paramView.putExtra("param_seq_days", TroopMemberListActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
-    paramView.putExtra("param_seq_name", TroopMemberListActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
-    paramView.putExtra("TROOP_INFO_MEMBER_NUM", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.startActivityForResult(paramView, 4);
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "dc00899", "Grp_mber", "", "mber_list", "clk_inacentry", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, "" + this.b, "", "");
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ImageView localImageView = (ImageView)this.a.findViewById(2131366686);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        localImageView.setImageDrawable(TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a)));
+        return;
+      } while (!(paramMessage.obj instanceof Drawable));
+      localImageView.setImageDrawable((Drawable)paramMessage.obj);
+      return;
+    } while (!(paramMessage.obj instanceof Bitmap));
+    localImageView.setImageBitmap((Bitmap)paramMessage.obj);
   }
 }
 

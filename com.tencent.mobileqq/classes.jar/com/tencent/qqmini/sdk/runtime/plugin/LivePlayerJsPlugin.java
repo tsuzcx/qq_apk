@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgie;
-import bgkd;
-import bgkk;
+import bgml;
+import bgok;
+import bgor;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
@@ -19,65 +19,65 @@ public class LivePlayerJsPlugin
   
   private int getPageWebViewId()
   {
-    return bgie.a(this.mMiniAppContext).a();
+    return bgml.a(this.mMiniAppContext).a();
   }
   
-  public void insertLivePlayer(bgkd parambgkd)
+  public void insertLivePlayer(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject1 = new JSONObject(parambgok.b);
       int i = localJSONObject1.optInt("livePlayerId");
       JSONObject localJSONObject2 = new JSONObject();
       localJSONObject2.put("containerId", i);
-      bgkk.a(new LivePlayerJsPlugin.1(this, i, localJSONObject1, parambgkd, localJSONObject2));
+      bgor.a(new LivePlayerJsPlugin.1(this, i, localJSONObject1, parambgok, localJSONObject2));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("LivePlayerJsPlugin", parambgkd.a + " error.", localJSONException);
+      QMLog.e("LivePlayerJsPlugin", parambgok.a + " error.", localJSONException);
     }
   }
   
-  public void operateLivePlayer(bgkd parambgkd)
+  public void operateLivePlayer(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       String str = localJSONObject.optString("type");
-      bgkk.a(new LivePlayerJsPlugin.4(this, localJSONObject.optInt("livePlayerId"), str, parambgkd, localJSONObject));
+      bgor.a(new LivePlayerJsPlugin.4(this, localJSONObject.optInt("livePlayerId"), str, parambgok, localJSONObject));
       return;
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
-      parambgkd.printStackTrace();
+      parambgok.printStackTrace();
     }
   }
   
-  public void removeLivePlayer(bgkd parambgkd)
+  public void removeLivePlayer(bgok parambgok)
   {
     try
     {
-      bgkk.a(new LivePlayerJsPlugin.3(this, new JSONObject(parambgkd.b).optInt("livePlayerId"), parambgkd));
+      bgor.a(new LivePlayerJsPlugin.3(this, new JSONObject(parambgok.b).optInt("livePlayerId"), parambgok));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("LivePlayerJsPlugin", parambgkd.a + " error.", localJSONException);
+      QMLog.e("LivePlayerJsPlugin", parambgok.a + " error.", localJSONException);
     }
   }
   
-  public void updateLivePlayer(bgkd parambgkd)
+  public void updateLivePlayer(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
-      bgkk.a(new LivePlayerJsPlugin.2(this, localJSONObject.optInt("livePlayerId"), localJSONObject, parambgkd));
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
+      bgor.a(new LivePlayerJsPlugin.2(this, localJSONObject.optInt("livePlayerId"), localJSONObject, parambgok));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("LivePlayerJsPlugin", parambgkd.a + " error.", localJSONException);
+      QMLog.e("LivePlayerJsPlugin", parambgok.a + " error.", localJSONException);
     }
   }
 }

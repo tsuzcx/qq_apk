@@ -51,7 +51,7 @@ public class TroopLocationModifyActivity
     if (i == 0)
     {
       if (bool) {
-        QQToast.a(this, 2131721129, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131721141, 0).b(getTitleBarHeight());
       }
       for (;;)
       {
@@ -62,20 +62,20 @@ public class TroopLocationModifyActivity
         setResult(-1, localIntent);
         finish();
         break;
-        QQToast.a(this, 2131721134, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131721146, 0).b(getTitleBarHeight());
       }
     }
     if (i == 1002) {
-      str = getString(2131721142);
+      str = getString(2131721154);
     }
     for (;;)
     {
       QQToast.a(this, str, 0).b(getTitleBarHeight());
       break;
       if (bool) {
-        str = getString(2131721128);
+        str = getString(2131721140);
       } else {
-        str = getString(2131721133);
+        str = getString(2131721145);
       }
     }
   }

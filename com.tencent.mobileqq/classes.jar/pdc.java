@@ -36,7 +36,7 @@ public abstract class pdc
     return this.jdField_a_of_type_Rqj.a();
   }
   
-  public final bcws a()
+  public final bdbb a()
   {
     return this.jdField_a_of_type_Rqj.a();
   }

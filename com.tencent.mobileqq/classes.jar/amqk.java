@@ -1,54 +1,87 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore;
+import com.tencent.mobileqq.app.NewUpgradeConfig;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import mqq.manager.Manager;
 
 public class amqk
-  extends Handler
+  implements Manager
 {
-  private WeakReference<VideoEncoderCore> a;
+  private final QQAppInterface a;
   
-  public amqk(Looper paramLooper, VideoEncoderCore paramVideoEncoderCore)
+  public amqk(QQAppInterface paramQQAppInterface)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramVideoEncoderCore);
+    this.a = paramQQAppInterface;
   }
   
-  public void handleMessage(Message paramMessage)
+  public static amqk a(QQAppInterface paramQQAppInterface)
   {
-    if (this.a != null) {}
-    for (VideoEncoderCore localVideoEncoderCore = (VideoEncoderCore)this.a.get();; localVideoEncoderCore = null)
+    return (amqk)paramQQAppInterface.getManager(189);
+  }
+  
+  public boolean a()
+  {
+    if (amqe.a().a() == 4) {}
+    for (boolean bool = true;; bool = false)
     {
-      switch (paramMessage.what)
-      {
+      if (QLog.isColorLevel()) {
+        QLog.d("UpgradeManager", 2, new Object[] { "hasNewApkDownloaded: invoked. ", " hasDl: ", Boolean.valueOf(bool) });
       }
-      do
-      {
-        do
-        {
-          return;
-        } while (localVideoEncoderCore == null);
-        paramMessage = (Object[])paramMessage.obj;
-        try
-        {
-          VideoEncoderCore.a(localVideoEncoderCore, (byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.e("VideoEncoderCore", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
-        }
-      } while (VideoEncoderCore.a(localVideoEncoderCore) == null);
-      VideoEncoderCore.a(localVideoEncoderCore).a(3);
-      return;
+      return bool;
     }
   }
+  
+  public boolean a(UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  {
+    if ((paramUpgradeDetailWrapper == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog == null)) {}
+    int i;
+    int j;
+    int k;
+    long l1;
+    long l2;
+    do
+    {
+      return false;
+      i = bdne.aO(this.a.getApp(), this.a.c());
+      j = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.c;
+      k = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.d;
+      l1 = bdne.k(this.a.getApp(), this.a.c());
+      l2 = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("UpgradeManager", 2, new Object[] { "needShowDownloadDialog: invoked. ", " downloadDialogMaxTimes: ", Integer.valueOf(j), " downloadDialogShownTimes: ", Integer.valueOf(i), " downloadDialogDayRate: ", Integer.valueOf(k), " downloadDialogShownTimestamp: ", Long.valueOf(l1), " now: ", Long.valueOf(l2) });
+      }
+    } while ((i >= j) || (l2 - l1 < k * 86400000L));
+    return true;
+  }
+  
+  public boolean b(UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  {
+    if ((paramUpgradeDetailWrapper == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog == null)) {}
+    int i;
+    int j;
+    int k;
+    long l1;
+    long l2;
+    do
+    {
+      return false;
+      i = bdne.aP(this.a.getApp(), this.a.c());
+      j = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.e;
+      k = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.f;
+      l1 = bdne.l(this.a.getApp(), this.a.c());
+      l2 = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("UpgradeManager", 2, new Object[] { "needShowInstallDialog: invoked. ", " installDialogMaxTimes: ", Integer.valueOf(j), " installDialogShownTimes: ", Integer.valueOf(i), " installDialogDayRate: ", Integer.valueOf(k), " installDialogShownTimestamp: ", Long.valueOf(l1), " now: ", Long.valueOf(l2) });
+      }
+    } while ((i >= j) || (l2 - l1 < k * 86400000L));
+    return true;
+  }
+  
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqk
  * JD-Core Version:    0.7.0.1
  */

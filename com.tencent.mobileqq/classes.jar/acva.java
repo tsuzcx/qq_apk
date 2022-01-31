@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import java.util.Comparator;
 
 public class acva
-  implements View.OnClickListener
+  implements Comparator<acuy>
 {
-  public acva(FriendProfileCardActivity paramFriendProfileCardActivity, TextView paramTextView) {}
+  private acva(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void onClick(View paramView)
+  public int a(acuy paramacuy1, acuy paramacuy2)
   {
-    ((bdqa)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getManager(235)).a(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.g(1);
-    azmj.b(null, "dc00898", "", "", "qq_vip", "0X800A615", 0, 0, "", "", "", "");
+    return paramacuy1.c.compareToIgnoreCase(paramacuy2.c);
   }
 }
 

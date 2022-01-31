@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import addn;
-import ajik;
+import adic;
+import ajmz;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -13,8 +13,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class GuideBaseFragment
   extends Fragment
 {
-  protected addn a;
-  protected ajik a;
+  protected adic a;
+  protected ajmz a;
   public BaseActivity a;
   public QQAppInterface a;
   public String a;
@@ -25,7 +25,7 @@ public class GuideBaseFragment
   public GuideBaseFragment(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Addn = new addn();
+    this.jdField_a_of_type_Adic = new adic();
   }
   
   public Dialog a(int paramInt)
@@ -40,9 +40,9 @@ public class GuideBaseFragment
   
   public void a(int paramInt, Dialog paramDialog) {}
   
-  public void a(ajik paramajik)
+  public void a(ajmz paramajmz)
   {
-    this.jdField_a_of_type_Ajik = paramajik;
+    this.jdField_a_of_type_Ajmz = paramajmz;
   }
   
   public void a(Intent paramIntent) {}

@@ -1,23 +1,23 @@
 package dov.com.qq.im.story.mode;
 
-import bmdi;
-import bmdm;
+import bmhu;
+import bmhy;
 import java.util.Set;
 
 public class StoryEffectTextMode$13$2
   implements Runnable
 {
-  public StoryEffectTextMode$13$2(bmdm parambmdm, int paramInt) {}
+  public StoryEffectTextMode$13$2(bmhy parambmhy, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bmdm.jdField_a_of_type_Bmdi.c) {}
+    if (this.jdField_a_of_type_Bmhy.jdField_a_of_type_Bmhu.c) {}
     do
     {
       return;
-      bmdi.a(this.jdField_a_of_type_Bmdm.jdField_a_of_type_Bmdi).remove(this.jdField_a_of_type_Bmdm.jdField_a_of_type_JavaLangString);
-    } while (!this.jdField_a_of_type_Bmdm.jdField_a_of_type_Boolean);
-    bmdi.a(this.jdField_a_of_type_Bmdm.jdField_a_of_type_Bmdi, this.jdField_a_of_type_Bmdm.jdField_a_of_type_Uqf, this.jdField_a_of_type_Int);
+      bmhu.a(this.jdField_a_of_type_Bmhy.jdField_a_of_type_Bmhu).remove(this.jdField_a_of_type_Bmhy.jdField_a_of_type_JavaLangString);
+    } while (!this.jdField_a_of_type_Bmhy.jdField_a_of_type_Boolean);
+    bmhu.a(this.jdField_a_of_type_Bmhy.jdField_a_of_type_Bmhu, this.jdField_a_of_type_Bmhy.jdField_a_of_type_Uuo, this.jdField_a_of_type_Int);
   }
 }
 

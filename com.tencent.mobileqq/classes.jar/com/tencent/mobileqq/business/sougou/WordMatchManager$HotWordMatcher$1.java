@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.business.sougou;
 
-import anuf;
-import anug;
+import anyo;
+import anyp;
 import java.lang.ref.WeakReference;
 
 class WordMatchManager$HotWordMatcher$1
@@ -13,9 +13,9 @@ class WordMatchManager$HotWordMatcher$1
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a != null) && (this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a.a != null))
     {
-      anuf localanuf = (anuf)this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a.a.get();
-      if (localanuf != null) {
-        localanuf.a(this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a.b, this.jdField_a_of_type_ArrayOfComTencentMobileqqBusinessSougouWordMatchManager$HotWordItem);
+      anyo localanyo = (anyo)this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a.a.get();
+      if (localanyo != null) {
+        localanyo.a(this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a.b, this.jdField_a_of_type_ArrayOfComTencentMobileqqBusinessSougouWordMatchManager$HotWordItem);
       }
     }
     this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.dispatchNextTask();

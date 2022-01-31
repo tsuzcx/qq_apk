@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.database;
 
 import android.text.TextUtils;
-import awbv;
-import awdj;
-import uha;
+import awge;
+import awhs;
+import ulj;
 
 public class MemoryInfoEntry
-  extends awbv
-  implements uha
+  extends awge
+  implements ulj
 {
   public String cookie = "";
   public int isEnd = -1;
@@ -15,7 +15,7 @@ public class MemoryInfoEntry
   public long maxCollectionIndex = -1L;
   public long seq = -1L;
   public int timeZone = -1;
-  @awdj
+  @awhs
   public String unionId = "";
   
   public MemoryInfoEntry() {}

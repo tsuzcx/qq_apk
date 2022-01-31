@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 import java.util.List;
 
 public class ayps
-  extends aypw
+  extends aypn
 {
-  public ayps(GroupSearchEngine paramGroupSearchEngine, aypx paramaypx, String paramString, int paramInt)
+  aynt a(ahip paramahip, List<aynu> paramList, String paramString1, boolean paramBoolean, String paramString2)
   {
-    super(paramGroupSearchEngine, paramaypx, paramString, paramInt);
+    ayvl.a(90);
+    return new aymx(paramahip, paramList, paramString1);
   }
   
-  public ayjk a(List<ayjl> paramList, String paramString)
+  aynu a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
   {
-    return new ayjd(paramList, paramString, GroupSearchEngine.a(this.a));
+    return null;
+  }
+  
+  aynu a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  {
+    return new aymy(paramrecord, paramString, paramCharSequence);
   }
 }
 

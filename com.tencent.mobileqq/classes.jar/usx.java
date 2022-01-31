@@ -1,51 +1,65 @@
-import com.tencent.biz.qqstory.database.PromoteTaskEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.PromoteTask;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.List;
 
 public class usx
+  extends xvy<CommentEntry>
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public long d;
-  public long e;
+  boolean jdField_a_of_type_Boolean;
   
-  public static usx a(qqstory_service.PromoteTask paramPromoteTask)
+  public usx(int paramInt, List<CommentEntry> paramList, boolean paramBoolean)
   {
-    usx localusx = new usx();
-    localusx.jdField_a_of_type_Long = paramPromoteTask.uint64_taskid.get();
-    localusx.jdField_a_of_type_Int = paramPromoteTask.uint32_promote_type.get();
-    localusx.jdField_a_of_type_JavaLangString = paramPromoteTask.bytes_union_id.get().toStringUtf8();
-    localusx.jdField_b_of_type_JavaLangString = paramPromoteTask.bytes_feed_id.get().toStringUtf8();
-    localusx.jdField_b_of_type_Long = paramPromoteTask.uint64_limit_count.get();
-    localusx.c = paramPromoteTask.uint64_minimal_video_count.get();
-    localusx.d = paramPromoteTask.uint64_expire_time.get();
-    return localusx;
+    super(paramList, paramBoolean);
+    boolean bool;
+    this.jdField_a_of_type_Boolean = bool;
   }
   
-  public PromoteTaskEntry a()
+  public void a(int paramInt, CommentEntry paramCommentEntry, wtq paramwtq)
   {
-    PromoteTaskEntry localPromoteTaskEntry = new PromoteTaskEntry();
-    localPromoteTaskEntry.taskId = this.jdField_a_of_type_Long;
-    localPromoteTaskEntry.type = this.jdField_a_of_type_Int;
-    localPromoteTaskEntry.unionId = this.jdField_a_of_type_JavaLangString;
-    localPromoteTaskEntry.feedId = this.jdField_b_of_type_JavaLangString;
-    localPromoteTaskEntry.limitPromoteCount = this.jdField_b_of_type_Long;
-    localPromoteTaskEntry.minimalVideoCount = this.c;
-    localPromoteTaskEntry.expireTime = this.d;
-    localPromoteTaskEntry.promoteCount = this.e;
-    return localPromoteTaskEntry;
-  }
-  
-  public String toString()
-  {
-    return "PromoteTaskItem{taskId=" + this.jdField_a_of_type_Long + ", type=" + this.jdField_a_of_type_Int + ", unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", limitPromoteCount=" + this.jdField_b_of_type_Long + ", minimalVideoCount=" + this.c + ", expireTime=" + this.d + ", promoteCount=" + this.e + '}';
+    if (paramCommentEntry == null) {
+      wxe.e("FeedCommentLego", "FeedComment getView. data is null.");
+    }
+    Object localObject2;
+    Object localObject1;
+    do
+    {
+      do
+      {
+        return;
+        localObject2 = (TextView)paramwtq.a(2131364542);
+        paramwtq = paramCommentEntry.commentId + paramCommentEntry.feedId + paramCommentEntry.status;
+        localObject1 = utv.a().a(paramwtq);
+        if ((localObject1 != null) && (this.jdField_a_of_type_Boolean))
+        {
+          ((TextView)localObject2).setText((CharSequence)localObject1);
+          ((TextView)localObject2).setSpannableFactory(bamp.a);
+          ((TextView)localObject2).setOnTouchListener(ust.a(this.jdField_a_of_type_Ust));
+          return;
+        }
+        localObject1 = wix.a(this.jdField_a_of_type_Ust.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ust.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, paramCommentEntry, ust.a(this.jdField_a_of_type_Ust));
+        if (QQStoryContext.a()) {
+          ((SpannableStringBuilder)localObject1).setSpan(new ForegroundColorSpan(this.jdField_a_of_type_Ust.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166400)), 0, ((SpannableStringBuilder)localObject1).length(), 33);
+        }
+        ((TextView)localObject2).setText((CharSequence)localObject1);
+        ((TextView)localObject2).setSpannableFactory(bamp.a);
+        ((TextView)localObject2).setOnTouchListener(ust.a(this.jdField_a_of_type_Ust));
+        uwm localuwm = (uwm)uwa.a(2);
+        localObject2 = localuwm.b(paramCommentEntry.authorUnionId);
+        if (!paramCommentEntry.isReply()) {
+          break;
+        }
+        paramCommentEntry = localuwm.b(paramCommentEntry.replierUnionId);
+      } while ((localObject2 == null) || (!((QQUserUIItem)localObject2).isAvailable()) || (paramCommentEntry == null) || (!paramCommentEntry.isAvailable()));
+      utv.a().a(paramwtq, (CharSequence)localObject1);
+      return;
+    } while ((localObject2 == null) || (!((QQUserUIItem)localObject2).isAvailable()));
+    utv.a().a(paramwtq, (CharSequence)localObject1);
   }
 }
 

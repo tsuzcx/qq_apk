@@ -10,7 +10,7 @@ class SimpleFilePresenter$1$1$2
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131720789, 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131720801, 0).a();
   }
 }
 

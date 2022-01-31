@@ -177,8 +177,8 @@ public class XposedHelpers
     }
     catch (NoSuchMethodError paramVarArgs)
     {
-      paramClass = paramClass.getDeclaredConstructors();
-      int j = paramClass.length;
+      paramVarArgs = paramClass.getDeclaredConstructors();
+      int j = paramVarArgs.length;
       int i = 0;
       for (;;)
       {
@@ -189,7 +189,7 @@ public class XposedHelpers
           }
           throw new NullPointerException();
         }
-        paramVarArgs = paramClass[i];
+        paramClass = paramVarArgs[i];
         i += 1;
       }
       paramClass = new NoSuchMethodError((String)localObject);

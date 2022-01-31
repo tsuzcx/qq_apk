@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vip.diy;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -11,12 +11,12 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import apek;
-import bdww;
+import apit;
+import bebf;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.widget.VoteViewV2;
-import wsv;
-import xod;
+import wxe;
+import xsm;
 
 public class TemplateLikeView
   extends VoteViewV2
@@ -43,14 +43,14 @@ public class TemplateLikeView
   public TemplateLikeView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131380030));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369132));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380040));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131380088));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369150));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380098));
   }
   
   public int a()
   {
-    return 2131561826;
+    return 2131561844;
   }
   
   public void a(int paramInt)
@@ -59,30 +59,30 @@ public class TemplateLikeView
     if (this.g == 1) {
       if (this.jdField_a_of_type_AndroidWidgetTextView != null)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getContext().getResources().getColor(2131166975));
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getContext().getResources().getColor(2131166975));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getContext().getResources().getColor(2131166977));
+        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getContext().getResources().getColor(2131166977));
       }
     }
     while (this.jdField_a_of_type_AndroidWidgetTextView == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getContext().getResources().getColor(2131167057));
-    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getContext().getResources().getColor(2131167057));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getContext().getResources().getColor(2131167059));
+    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getContext().getResources().getColor(2131167059));
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, apek paramapek, boolean paramBoolean3)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, apit paramapit, boolean paramBoolean3)
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramapek, paramBoolean3);
-    paramapek = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    super.a(paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramapit, paramBoolean3);
+    paramapit = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
     ViewGroup.LayoutParams localLayoutParams = this.jdField_b_of_type_AndroidViewViewGroup.getLayoutParams();
-    this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Int + this.jdField_b_of_type_Int + this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(alpo.a(2131715194) + this.jdField_b_of_type_AndroidWidgetTextView.getText().toString()) + xod.a(getContext(), 30.0F)));
-    paramapek.width = this.jdField_c_of_type_Int;
+    this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Int + this.jdField_b_of_type_Int + this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(alud.a(2131715206) + this.jdField_b_of_type_AndroidWidgetTextView.getText().toString()) + xsm.a(getContext(), 30.0F)));
+    paramapit.width = this.jdField_c_of_type_Int;
     localLayoutParams.width = this.jdField_c_of_type_Int;
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramapek);
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramapit);
     this.jdField_b_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
-    paramapek = super.getLayoutParams();
-    paramapek.width = this.jdField_c_of_type_Int;
-    super.setLayoutParams(paramapek);
+    paramapit = super.getLayoutParams();
+    paramapit.width = this.jdField_c_of_type_Int;
+    super.setLayoutParams(paramapit);
     if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
       this.jdField_a_of_type_ComTencentImageURLDrawable.invalidateSelf();
     }
@@ -91,13 +91,13 @@ public class TemplateLikeView
   public void invalidateDrawable(@NonNull Drawable paramDrawable)
   {
     super.invalidateDrawable(paramDrawable);
-    wsv.e("zhiqiang", "invalidateDrawable");
+    wxe.e("zhiqiang", "invalidateDrawable");
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    wsv.b("zhiqiang", "draw +++++++++++");
+    wxe.b("zhiqiang", "draw +++++++++++");
   }
   
   public void setContainerLayoutParams(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -106,7 +106,7 @@ public class TemplateLikeView
     this.jdField_a_of_type_Int = paramInt3;
     ViewGroup.LayoutParams localLayoutParams1 = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
     ViewGroup.LayoutParams localLayoutParams2 = this.jdField_b_of_type_AndroidViewViewGroup.getLayoutParams();
-    this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Int + this.jdField_b_of_type_Int + this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(alpo.a(2131715196) + this.e) + xod.a(getContext(), 30.0F)));
+    this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Int + this.jdField_b_of_type_Int + this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(alud.a(2131715208) + this.e) + xsm.a(getContext(), 30.0F)));
     this.d = paramInt2;
     localLayoutParams1.width = this.jdField_c_of_type_Int;
     localLayoutParams1.height = this.d;
@@ -123,7 +123,7 @@ public class TemplateLikeView
     }
     this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
     if ((paramURLDrawable != null) && (paramURLDrawable.getStatus() != 1)) {
-      paramURLDrawable.setURLDrawableListener(new bdww(this));
+      paramURLDrawable.setURLDrawableListener(new bebf(this));
     }
     this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(paramURLDrawable);
     this.jdField_b_of_type_AndroidViewViewGroup.setBackgroundDrawable(paramURLDrawable);

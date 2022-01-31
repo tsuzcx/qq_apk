@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import apbm;
+import apfv;
 
 class NewRuntime$1
   implements Runnable
@@ -9,7 +9,7 @@ class NewRuntime$1
   
   public void run()
   {
-    apbm.a(false);
+    apfv.a(false);
   }
 }
 

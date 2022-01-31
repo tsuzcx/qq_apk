@@ -1,123 +1,108 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.NetworkState;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.webview.ui.WebViewTopTabView;
 import org.json.JSONObject;
 
 public class begd
+  extends beft
 {
-  public int a;
-  public long a;
-  public String a;
-  private AtomicInteger a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "html";
-  public String k = NetworkState.getAPN();
-  public String l = "QQ";
-  public String m = bizf.a();
-  public String n = "Android";
-  
-  public begd()
+  public begd(bejh parambejh)
   {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    super(parambejh);
   }
   
-  public JSONObject a()
+  public int a(RadioGroup paramRadioGroup)
   {
-    label423:
-    for (;;)
+    if ((paramRadioGroup != null) && ((paramRadioGroup instanceof WebViewTopTabView)))
     {
-      try
+      int i = 0;
+      while (i < paramRadioGroup.getChildCount())
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("uin", this.jdField_a_of_type_Long);
-        String str = this.jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-        {
-          int i2 = this.jdField_a_of_type_JavaLangString.indexOf('?');
-          i1 = i2;
-          if (i2 < 0) {
-            i1 = this.jdField_a_of_type_JavaLangString.length();
-          }
-          str = this.jdField_a_of_type_JavaLangString.substring(0, i1);
+        if (((RadioButton)paramRadioGroup.getChildAt(i)).isChecked()) {
+          return i;
         }
-        localJSONObject.put("url", this.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("path", str);
-        localJSONObject.put("errordomain", this.jdField_b_of_type_JavaLangString);
-        localJSONObject.put("errorcode", this.jdField_c_of_type_JavaLangString);
-        localJSONObject.put("httpstatus", this.jdField_d_of_type_JavaLangString);
-        localJSONObject.put("userip", this.jdField_e_of_type_JavaLangString);
-        localJSONObject.put("serverip", this.jdField_f_of_type_JavaLangString);
-        localJSONObject.put("port", this.g);
-        localJSONObject.put("dnsresult", this.h);
-        localJSONObject.put("apn", this.k);
-        localJSONObject.put("timecost", this.jdField_a_of_type_Int / 1000.0F);
-        localJSONObject.put("app", this.l);
-        localJSONObject.put("appversion", this.m);
-        localJSONObject.put("platform", this.n);
-        localJSONObject.put("sampling", this.jdField_f_of_type_Int);
-        localJSONObject.put("usewns", this.jdField_a_of_type_Boolean);
-        int i1 = this.jdField_b_of_type_Int;
-        if (i1 != 1000) {
-          if (i1 == 0)
-          {
-            break label423;
-            localJSONObject.put("wnscode", i1);
-            localJSONObject.put("detail", this.i);
-            localJSONObject.put("usecache", this.jdField_b_of_type_Boolean);
-            localJSONObject.put("cachehasdata", this.jdField_c_of_type_Boolean);
-            localJSONObject.put("cacheupdatepolicy", this.jdField_c_of_type_Int);
-            localJSONObject.put("cacheupdatetimecost", this.jdField_d_of_type_Int / 1000.0F);
-            localJSONObject.put("serviceversion", this.jdField_e_of_type_Int);
-            localJSONObject.put("webso3_type", this.j);
-            localJSONObject.put("datasize", this.jdField_b_of_type_Long);
-            return localJSONObject;
-          }
-          else
-          {
-            i1 = this.jdField_b_of_type_Int;
-            i1 += 300000;
-            continue;
-          }
-        }
-        i1 = 0;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("HybridWebReporter", 1, localException, new Object[0]);
-        return null;
+        i += 1;
       }
     }
+    return -1;
   }
   
-  public void a()
+  public void a(bega parambega)
   {
-    this.jdField_e_of_type_Int = 0;
-    this.j = "html";
-    this.jdField_b_of_type_Long = 0L;
+    int i = -1;
+    if (parambega != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView = new WebViewTopTabView(BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonNum(parambega.jdField_b_of_type_Int, parambega.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonText(parambega.jdField_a_of_type_ArrayOfJavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonBackgroundResource(2130850184, 2130850185, 2130850186);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonTextColorStateList(2131167183);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setLeftAndRightPaddingByDp(10);
+      a(this.jdField_a_of_type_Bejk.v);
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeAllViews();
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView, new RelativeLayout.LayoutParams(-2, -1));
+      if (this.jdField_a_of_type_Bejh.a.getIntent().getBooleanExtra("topTabSwitchFragment", false))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setOnCheckedChangeListener(new bege(this));
+        if (((QQBrowserActivity)this.jdField_a_of_type_Bejh.a).jdField_b_of_type_Int != -1) {
+          this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setSelectedTab(((QQBrowserActivity)this.jdField_a_of_type_Bejh.a).jdField_b_of_type_Int);
+        }
+      }
+      else
+      {
+        if (this.jdField_a_of_type_Bekh != null) {
+          this.jdField_a_of_type_Bekh.a(parambega.jdField_b_of_type_JavaLangString, true);
+        }
+        localTouchWebView = this.jdField_a_of_type_Bejh.a();
+        if ((localTouchWebView != null) && (!TextUtils.isEmpty(parambega.jdField_a_of_type_JavaLangString)))
+        {
+          str = "ok";
+          if (!TextUtils.isEmpty(parambega.jdField_b_of_type_JavaLangString)) {
+            break label337;
+          }
+          str = "the subTabCallback isEmpty";
+          localJSONObject = new JSONObject();
+        }
+      }
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        try
+        {
+          TouchWebView localTouchWebView;
+          String str;
+          JSONObject localJSONObject;
+          localJSONObject.put("code", i);
+          localJSONObject.put("message", str);
+          localTouchWebView.callJs(parambega.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+          return;
+          localException1 = localException1;
+          localException1.printStackTrace();
+          continue;
+          this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setSelectedTab(this.jdField_a_of_type_Bejh.a.getIntent().getIntExtra("topTabSelectIndex", 0));
+        }
+        catch (Exception localException2)
+        {
+          localException2.printStackTrace();
+          continue;
+        }
+        label337:
+        i = 0;
+      }
+    }
   }
 }
 

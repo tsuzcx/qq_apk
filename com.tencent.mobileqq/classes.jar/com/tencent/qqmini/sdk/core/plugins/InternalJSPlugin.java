@@ -10,14 +10,14 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import bgho;
-import bgjw;
-import bgkd;
-import bgkk;
-import bgld;
-import bglq;
-import bgnf;
-import bgte;
+import bglv;
+import bgod;
+import bgok;
+import bgor;
+import bgpk;
+import bgpx;
+import bgrm;
+import bgxl;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
@@ -41,16 +41,16 @@ public class InternalJSPlugin
   private ArrayList<String> openUrlDomainWhiteList;
   private String privateOpenUrlDomainWhiteList;
   
-  private void confirmOpenAppDetailPage(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, bgkd parambgkd)
+  private void confirmOpenAppDetailPage(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, bgok parambgok)
   {
-    paramActivity.runOnUiThread(new InternalJSPlugin.8(this, paramActivity, paramString3, paramString4, paramString1, paramString2, parambgkd));
+    paramActivity.runOnUiThread(new InternalJSPlugin.8(this, paramActivity, paramString3, paramString4, paramString1, paramString2, parambgok));
   }
   
   private void getOpenUrlDomainWhiteList()
   {
     if (this.openUrlDomainWhiteList == null)
     {
-      String str1 = bglq.a("qqminiapp", "domainWhiteList", "tucao.qq.com,mobile.qzone.qq.com");
+      String str1 = bgpx.a("qqminiapp", "domainWhiteList", "tucao.qq.com,mobile.qzone.qq.com");
       if ((str1 != null) && (!str1.equals(this.privateOpenUrlDomainWhiteList)))
       {
         QMLog.i("InternalJSPlugin", "getOpenUrlDomainWhiteList:" + str1);
@@ -82,12 +82,12 @@ public class InternalJSPlugin
     }
   }
   
-  private void onOpenThirdApp(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, bgkd parambgkd)
+  private void onOpenThirdApp(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, bgok parambgok)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)))
     {
       QMLog.d("InternalJSPlugin", "onOpenThridApp - appid : " + paramString1 + "; packageName : " + paramString2 + "; appName : " + paramString3);
-      parambgkd.a("invalid parameter");
+      parambgok.a("invalid parameter");
       return;
     }
     PackageManager localPackageManager = paramActivity.getPackageManager();
@@ -97,7 +97,7 @@ public class InternalJSPlugin
       {
         if (localPackageManager.getPackageInfo(paramString2, 1) != null)
         {
-          paramActivity.runOnUiThread(new InternalJSPlugin.5(this, paramActivity, paramString3, paramString5, localPackageManager, paramString2, parambgkd));
+          paramActivity.runOnUiThread(new InternalJSPlugin.5(this, paramActivity, paramString3, paramString5, localPackageManager, paramString2, parambgok));
           return;
         }
       }
@@ -107,59 +107,59 @@ public class InternalJSPlugin
         if ((paramString5 == null) || (!paramString5.isGooglePlayVersion())) {
           break label355;
         }
-        if (bglq.a("qqminiapp", "mini_app_google_play_download_switch", 0) != 1) {
+        if (bgpx.a("qqminiapp", "mini_app_google_play_download_switch", 0) != 1) {
           break label333;
         }
         i = 1;
         j = i;
         if (i == 0)
         {
-          bgkk.a(new InternalJSPlugin.7(this));
+          bgor.a(new InternalJSPlugin.7(this));
           j = i;
         }
         if ((paramInt == 1) || (j == 0)) {
           break label339;
         }
-        confirmOpenAppDetailPage(paramActivity, paramString1, paramString2, paramString3, paramString4, parambgkd);
+        confirmOpenAppDetailPage(paramActivity, paramString1, paramString2, paramString3, paramString4, parambgok);
         return;
         paramString5 = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
         if ((paramString5 == null) || (!paramString5.isGooglePlayVersion())) {
           break label361;
         }
-        if (bglq.a("qqminiapp", "mini_app_google_play_download_switch", 0) == 1)
+        if (bgpx.a("qqminiapp", "mini_app_google_play_download_switch", 0) == 1)
         {
           i = 1;
           j = i;
           if (i == 0)
           {
-            bgkk.a(new InternalJSPlugin.6(this));
+            bgor.a(new InternalJSPlugin.6(this));
             j = i;
           }
           if ((paramInt == 1) || (j == 0)) {
             break label317;
           }
-          confirmOpenAppDetailPage(paramActivity, paramString1, paramString2, paramString3, paramString4, parambgkd);
+          confirmOpenAppDetailPage(paramActivity, paramString1, paramString2, paramString3, paramString4, parambgok);
           return;
         }
       }
       catch (Exception paramActivity)
       {
         QMLog.d("InternalJSPlugin", "open app err", paramActivity);
-        parambgkd.a("open app err");
+        parambgok.a("open app err");
         return;
       }
       int i = 0;
       continue;
       label317:
       QMLog.d("InternalJSPlugin", "only open");
-      parambgkd.a("app not installed");
+      parambgok.a("app not installed");
       return;
       label333:
       i = 0;
       continue;
       label339:
       QMLog.d("InternalJSPlugin", "only open");
-      parambgkd.a("app not installed");
+      parambgok.a("app not installed");
       return;
       label355:
       int j = 1;
@@ -175,7 +175,7 @@ public class InternalJSPlugin
     while (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).downloadApp(paramContext, this.mMiniAppInfo, paramString1, paramString2, paramString3, paramString4)) {
       return;
     }
-    bgnf.a(paramContext, 0, "暂不支持在" + QUAUtil.getApplicationName(paramContext) + "中下载应用", 1);
+    bgrm.a(paramContext, 0, "暂不支持在" + QUAUtil.getApplicationName(paramContext) + "中下载应用", 1);
   }
   
   private static void saveToMiniAppStorage(Context paramContext, String paramString1, String paramString2, String paramString3)
@@ -186,13 +186,13 @@ public class InternalJSPlugin
     ThreadManager.b().post(new InternalJSPlugin.9(paramContext, paramString1, paramString2, paramString3));
   }
   
-  public void getQua(bgkd parambgkd)
+  public void getQua(bgok parambgok)
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("qua", QUAUtil.getPlatformQUA());
-      parambgkd.a(localJSONObject);
+      parambgok.a(localJSONObject);
       return;
     }
     catch (JSONException localJSONException)
@@ -204,17 +204,17 @@ public class InternalJSPlugin
     }
   }
   
-  public void getStoreAppList(bgkd parambgkd)
+  public void getStoreAppList(bgok parambgok)
   {
     if (TextUtils.isEmpty(""))
     {
-      parambgkd.a("no dataCacheKey at app.json");
+      parambgok.a("no dataCacheKey at app.json");
       return;
     }
-    ThreadManager.b().post(new InternalJSPlugin.1(this, parambgkd));
+    ThreadManager.b().post(new InternalJSPlugin.1(this, parambgok));
   }
   
-  public void launchApplication(bgkd parambgkd)
+  public void launchApplication(bgok parambgok)
   {
     int i = -1;
     QMLog.e("InternalJSPlugin", "openapp");
@@ -222,7 +222,7 @@ public class InternalJSPlugin
     {
       try
       {
-        Object localObject = new JSONObject(parambgkd.b).optJSONObject("extInfo");
+        Object localObject = new JSONObject(parambgok.b).optJSONObject("extInfo");
         String str1 = ((JSONObject)localObject).optString("appConnectId");
         String str2 = ((JSONObject)localObject).optString("appPackagename");
         localObject = ((JSONObject)localObject).optString("appParameter", "");
@@ -236,18 +236,18 @@ public class InternalJSPlugin
           QMLog.d("InternalJSPlugin", "API_LAUNCH_APP  realscene : " + j + "   scene:" + i);
           if ((this.mMiniAppContext != null) && (this.mMiniAppContext.a() != null))
           {
-            ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getNativeAppInfoForJump(this.mMiniAppContext.a().appId, str1, str2, i, new InternalJSPlugin.4(this, (String)localObject, parambgkd, str1, str2));
+            ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getNativeAppInfoForJump(this.mMiniAppContext.a().appId, str1, str2, i, new InternalJSPlugin.4(this, (String)localObject, parambgok, str1, str2));
             return;
           }
           QMLog.e("InternalJSPlugin", "launchApplication error, appBrandRuntime or getApkgInfo is null.");
-          parambgkd.a("appBrandRuntime or getApkgInfo is null.");
+          parambgok.a("appBrandRuntime or getApkgInfo is null.");
           return;
         }
       }
       catch (Exception localException)
       {
-        QMLog.e("InternalJSPlugin", parambgkd.a + " error,", localException);
-        parambgkd.b();
+        QMLog.e("InternalJSPlugin", parambgok.a + " error,", localException);
+        parambgok.b();
         return;
       }
       i = j;
@@ -257,51 +257,51 @@ public class InternalJSPlugin
     }
   }
   
-  public void notifyNative(bgkd parambgkd)
+  public void notifyNative(bgok parambgok)
   {
     try
     {
-      if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateEntryList(parambgkd.b))
+      if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateEntryList(parambgok.b))
       {
-        bgnf.a(this.mMiniAppContext.a(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中更新下拉列表", 1);
-        parambgkd.b();
+        bgrm.a(this.mMiniAppContext.a(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中更新下拉列表", 1);
+        parambgok.b();
         return;
       }
-      parambgkd.a();
+      parambgok.a();
       return;
     }
     catch (Exception localException)
     {
       QMLog.e("InternalJSPlugin", "notifyNative", localException);
       localException.printStackTrace();
-      parambgkd.b();
+      parambgok.b();
     }
   }
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    super.onCreate(parambgho);
+    super.onCreate(parambglv);
     getOpenUrlDomainWhiteList();
   }
   
-  public void openUrl(bgkd parambgkd)
+  public void openUrl(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       String str = localJSONObject.optString("url");
       if ((TextUtils.isEmpty(str)) || ("null".equals(str)))
       {
-        parambgkd.a("url error");
+        parambgok.a("url error");
         return;
       }
-      openUrl(localJSONObject, new InternalJSPlugin.2(this, parambgkd));
+      openUrl(localJSONObject, new InternalJSPlugin.2(this, parambgok));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("InternalJSPlugin", parambgkd.a + " error,", localJSONException);
-      parambgkd.b();
+      QMLog.e("InternalJSPlugin", parambgok.a + " error,", localJSONException);
+      parambgok.b();
     }
   }
   
@@ -476,7 +476,7 @@ public class InternalJSPlugin
     }
   }
   
-  public void private_openUrl(bgkd parambgkd)
+  public void private_openUrl(bgok parambgok)
   {
     Object localObject1;
     String str2;
@@ -484,12 +484,12 @@ public class InternalJSPlugin
     Object localObject2;
     try
     {
-      localObject1 = new JSONObject(parambgkd.b);
+      localObject1 = new JSONObject(parambgok.b);
       QMLog.d("InternalJSPlugin", "API_PRIVATE_OPENURL " + localObject1);
       str2 = ((JSONObject)localObject1).optString("url");
       if (TextUtils.isEmpty(str2))
       {
-        parambgkd.a("url is empty");
+        parambgok.a("url is empty");
         return;
       }
       boolean bool = ((JSONObject)localObject1).optBoolean("__skipDomainCheck__", false);
@@ -500,18 +500,18 @@ public class InternalJSPlugin
       }
       if (!this.mApkgInfo.a(str1, false))
       {
-        parambgkd.a("url is not https");
+        parambgok.a("url is not https");
         return;
       }
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      QMLog.e("InternalJSPlugin", "private_openUrl", parambgkd);
+      QMLog.e("InternalJSPlugin", "private_openUrl", parambgok);
       return;
     }
     if ((this.openUrlDomainWhiteList != null) && (!this.openUrlDomainWhiteList.contains(((DomainConfig)localObject2).host)))
     {
-      parambgkd.a("url domain not configured.");
+      parambgok.a("url domain not configured.");
       return;
     }
     label154:
@@ -531,18 +531,18 @@ public class InternalJSPlugin
           QMLog.e("InternalJSPlugin", "startComplainAndCallback, url = " + "");
           localUnsupportedEncodingException.printStackTrace();
         }
-        parambgkd.a("url error");
+        parambgok.a("url error");
         return;
       }
       if (!TextUtils.isEmpty(str2))
       {
-        str1 = bgte.a().a();
+        str1 = bgxl.a().a();
         localObject2 = str1;
         if (str1 == null) {
           localObject2 = "";
         }
-        str1 = str2.replace("{openid}", (CharSequence)localObject2).replace("{clientVersion}", localMiniAppProxy.getAppVersion()).replace("{platform}", "Android").replace("{osVersion}", String.valueOf(Build.VERSION.SDK_INT)).replace("{netType}", bgld.a(this.mContext)).replace("{avatar}", (CharSequence)localObject1);
-        localObject2 = bgte.a().b();
+        str1 = str2.replace("{openid}", (CharSequence)localObject2).replace("{clientVersion}", localMiniAppProxy.getAppVersion()).replace("{platform}", "Android").replace("{osVersion}", String.valueOf(Build.VERSION.SDK_INT)).replace("{netType}", bgpk.a(this.mContext)).replace("{avatar}", (CharSequence)localObject1);
+        localObject2 = bgxl.a().b();
         localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           localObject1 = "";
@@ -555,7 +555,7 @@ public class InternalJSPlugin
         ((Intent)localObject2).putExtra("hide_operation_bar", true);
         ((Intent)localObject2).putExtra("url", (String)localObject1);
         localMiniAppProxy.startBrowserActivity(this.mMiniAppContext.a(), (Intent)localObject2);
-        parambgkd.a();
+        parambgok.a();
         if (!((String)localObject1).startsWith("https://tucao.qq.com/qq_miniprogram")) {
           return;
         }
@@ -564,7 +564,7 @@ public class InternalJSPlugin
         return;
       }
     }
-    openUrl((JSONObject)localObject1, new InternalJSPlugin.3(this, parambgkd));
+    openUrl((JSONObject)localObject1, new InternalJSPlugin.3(this, parambgok));
   }
 }
 

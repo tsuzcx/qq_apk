@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afvi;
-import afvj;
+import afzx;
+import afzy;
 import java.lang.ref.WeakReference;
 
 public class SSODataRequest$1$1
   implements Runnable
 {
-  public SSODataRequest$1$1(afvj paramafvj, int paramInt1, int paramInt2, String paramString) {}
+  public SSODataRequest$1$1(afzy paramafzy, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
-    afvi localafvi = (afvi)this.jdField_a_of_type_Afvj.a.get();
-    if (localafvi == null) {
+    afzx localafzx = (afzx)this.jdField_a_of_type_Afzy.a.get();
+    if (localafzx == null) {
       return;
     }
-    localafvi.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    localafzx.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

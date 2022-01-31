@@ -1,27 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import com.tencent.intervideo.nowproxy.NowLive;
-import com.tencent.qphone.base.util.QLog;
 
-class aszk
-  extends BroadcastReceiver
+public class aszk
 {
-  aszk(asyy paramasyy) {}
+  public long a;
+  public Intent a;
+  public String a;
+  public String b = "";
+  public String c = "";
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aszk(aszh paramaszh)
   {
-    paramContext = paramIntent.getAction();
-    if ("mqq.intent.action.ACCOUNT_EXPIRED".equals(paramContext))
-    {
-      QLog.i("XProxy|NowProxy", 1, "accountReceiver, expired");
-      NowLive.killPluginProcess();
-    }
-    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext)) {
-      return;
-    }
-    QLog.i("XProxy|NowProxy", 1, "accountReceiver, kicked");
-    NowLive.killPluginProcess();
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

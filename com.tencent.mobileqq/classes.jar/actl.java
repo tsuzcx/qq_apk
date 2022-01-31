@@ -1,26 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
 public class actl
-  extends BroadcastReceiver
+  extends Handler
 {
-  public actl(ForwardRecentActivity paramForwardRecentActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (!this.a.isFinishing())
-    {
-      this.a.finish();
-      QLog.i("ForwardOption.ForwardEntranceActivity", 1, "ForwardRecentActivity has finished by broadcastReceiver.");
-    }
-  }
+  public actl(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     actl
  * JD-Core Version:    0.7.0.1
  */

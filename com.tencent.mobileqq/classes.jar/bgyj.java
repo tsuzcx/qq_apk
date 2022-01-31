@@ -1,66 +1,59 @@
-import NS_MINI_INTERFACE.INTERFACE.StCheckNavigateRightReq;
-import NS_MINI_INTERFACE.INTERFACE.StCheckNavigateRightRsp;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.os.Bundle;
+import android.os.RemoteException;
+import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bgyj
-  extends bgzp
+class bgyj
+  implements bgyt
 {
-  private INTERFACE.StCheckNavigateRightReq a = new INTERFACE.StCheckNavigateRightReq();
+  bgyj(bgye parambgye, MiniAppInfo paramMiniAppInfo) {}
   
-  public bgyj(String paramString1, String paramString2)
+  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
   {
-    this.a.appId.set(paramString1);
-    this.a.targetAppId.set(paramString2);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StCheckNavigateRightRsp localStCheckNavigateRightRsp = new INTERFACE.StCheckNavigateRightRsp();
-    try
+    Object localObject = (List)bgye.a(this.jdField_a_of_type_Bgye).get(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId);
+    if (localObject != null)
     {
-      localStCheckNavigateRightRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStCheckNavigateRightRsp != null)
+      paramMiniAppInfo = new Bundle();
+      paramMiniAppInfo.putFloat("PROGRESS", paramFloat);
+      paramMiniAppInfo.putLong("TOTAL_SIZE", paramLong);
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        paramArrayOfByte = new JSONObject();
-        int i = localStCheckNavigateRightRsp.actionCode.get();
-        paramArrayOfByte.put("action_code", i);
-        paramArrayOfByte.put("skip_local_check", localStCheckNavigateRightRsp.skipLocalCheck.get());
-        if (i == 0) {
-          paramArrayOfByte.put("reason", localStCheckNavigateRightRsp.wording.get());
-        } else {
-          paramArrayOfByte.put("wording", localStCheckNavigateRightRsp.wording.get());
+        MiniCmdCallback localMiniCmdCallback = (MiniCmdCallback)((Iterator)localObject).next();
+        if (localMiniCmdCallback != null) {
+          try
+          {
+            localMiniCmdCallback.onCmdResult(false, paramMiniAppInfo);
+          }
+          catch (RemoteException localRemoteException) {}
         }
       }
     }
-    catch (Exception paramArrayOfByte)
+  }
+  
+  public void onInitGpkgInfo(int paramInt, bgyu parambgyu, String paramString)
+  {
+    QMLog.d("ApkgMainProcessManager", "onInitGpkgInfo load gpkg in main process end " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+    parambgyu = (List)bgye.a(this.jdField_a_of_type_Bgye).remove(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId);
+    if (parambgyu != null)
     {
-      QMLog.d("GetNewBaseLibRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      parambgyu = parambgyu.iterator();
+      while (parambgyu.hasNext())
+      {
+        paramString = (MiniCmdCallback)parambgyu.next();
+        if (paramString != null) {
+          try
+          {
+            paramString.onCmdResult(true, new Bundle());
+          }
+          catch (RemoteException paramString) {}
+        }
+      }
     }
-    QMLog.d("GetNewBaseLibRequest", "onResponse fail.rsp = null");
-    return null;
-    return paramArrayOfByte;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "CheckNavigateRight";
   }
 }
 

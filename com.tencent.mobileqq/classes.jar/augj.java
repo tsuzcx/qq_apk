@@ -1,30 +1,20 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import java.util.List;
 
-public class augj
-  implements auie
+public abstract interface augj
 {
-  public augj(MultiAIOFragment paramMultiAIOFragment) {}
+  public abstract augw a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity);
   
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "Indicator onPageScrollStateChanged() called with: state = [" + paramInt + "]");
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      MultiAIOFragment.a(this.a, MultiAIOFragment.a(this.a).a());
-      return;
-    case 1: 
-      MultiAIOFragment.b(this.a);
-      return;
-    }
-    MultiAIOFragment.b(this.a);
-  }
+  public abstract String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity);
+  
+  public abstract void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList);
+  
+  public abstract boolean a(MessageRecord paramMessageRecord);
+  
+  public abstract boolean a(MsgBackupResEntity paramMsgBackupResEntity);
+  
+  public abstract void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList);
 }
 
 

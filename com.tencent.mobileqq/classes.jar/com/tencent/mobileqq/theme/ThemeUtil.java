@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.theme;
 
-import aemb;
-import alyu;
+import aeqq;
+import amdj;
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -21,21 +21,21 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
-import apih;
-import azib;
-import azmz;
-import baiy;
-import bajq;
-import bajt;
-import bakh;
-import bakl;
-import bakm;
-import bdcs;
-import bdou;
-import bdqk;
-import bdrp;
-import bdsc;
-import bdsd;
+import apmq;
+import azmk;
+import azri;
+import banh;
+import banz;
+import baoc;
+import baoq;
+import baou;
+import baov;
+import bdhb;
+import bdtd;
+import bdut;
+import bdvy;
+import bdwl;
+import bdwm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivity;
@@ -151,14 +151,14 @@ public class ThemeUtil
     curThemeId = getCurrentThemeId();
     lastThemeId = "";
     refLock = new Object();
-    mReceiver = new bakl();
+    mReceiver = new baou();
   }
   
   public static void adjustThemeStatusBar(Window paramWindow)
   {
     boolean bool = true;
     if ((isCustomTheme(true)) && (ImmersiveUtils.isSupporImmersive() != 0) && (ImmersiveUtils.c())) {
-      if (isColorDark(paramWindow.getDecorView().getResources().getColor(2131166957))) {
+      if (isColorDark(paramWindow.getDecorView().getResources().getColor(2131166959))) {
         break label47;
       }
     }
@@ -279,7 +279,7 @@ public class ThemeUtil
               break label201;
             }
             localObject1 = localObject1[(localObject1.length - 3)];
-            if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (apih.a((String)localObject1)))
+            if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (apmq.a((String)localObject1)))
             {
               localBundle.putString("themeId", (String)localObject1);
               localBundle.putString("version", "20000000");
@@ -794,7 +794,7 @@ public class ThemeUtil
       localObject2 = paramAppInterface;
     } while (!QLog.isColorLevel());
     long l = localSharedPreferences.getLong("themeSetTimeKey", 0L);
-    QLog.d("Theme.ThemeUtil", 2, "getUserCurrentThemeVersion,uin=" + baiy.a((String)localObject1, 2) + ",currentThemeVersion=" + paramAppInterface + ", oldTime=" + l);
+    QLog.d("Theme.ThemeUtil", 2, "getUserCurrentThemeVersion,uin=" + banh.a((String)localObject1, 2) + ",currentThemeVersion=" + paramAppInterface + ", oldTime=" + l);
     return paramAppInterface;
   }
   
@@ -844,7 +844,7 @@ public class ThemeUtil
       Collections.sort((List)localObject3);
       localObject4 = (String)((List)localObject3).get(((List)localObject3).size() - 1);
       localObject3 = ((SharedPreferences)localObject2).getString("currentThemeVersion", "0");
-      if (bdou.a("6.0", "8.3.3"))
+      if (bdtd.a("6.0", "8.3.5"))
       {
         localObject2 = (String)((Map)localObject1).get(localObject4);
         localObject1 = localObject2;
@@ -852,7 +852,7 @@ public class ThemeUtil
         {
           localObject1 = localObject2;
           if ((paramAppInterface instanceof QQAppInterface)) {
-            ((alyu)((QQAppInterface)paramAppInterface).a(14)).a((String)localObject2, (String)localObject3, false);
+            ((amdj)((QQAppInterface)paramAppInterface).a(14)).a((String)localObject2, (String)localObject3, false);
           }
         }
       }
@@ -1013,7 +1013,7 @@ public class ThemeUtil
         QLog.e("Theme.ThemeUtil", 1, "initTheme: engine is not ready");
         return;
       }
-      paramQQAppInterface = (alyu)localQQAppInterface.a(14);
+      paramQQAppInterface = (amdj)localQQAppInterface.a(14);
       if ((paramQQAppInterface != null) && (!paramQQAppInterface.b.compareAndSet(true, false)))
       {
         QLog.e("Theme.ThemeUtil", 1, "initTheme: had send auth");
@@ -1024,8 +1024,8 @@ public class ThemeUtil
       localObject = paramQQAppInterface.getString("themeId");
       String str = getUserThemeIDForReset(localQQAppInterface);
       QLog.i("Theme.ThemeUtil", 1, "initTheme,userThemeId=" + str + ",engine currentThemeId=" + (String)localObject + ", enginePath=" + paramQQAppInterface.getString("themePath"));
-      ThemeSwitcher.a(localQQAppInterface, str, "206", new bakm(localQQAppInterface));
-      paramQQAppInterface = (bdqk)localQQAppInterface.a(103);
+      ThemeSwitcher.a(localQQAppInterface, str, "206", new baov(localQQAppInterface));
+      paramQQAppInterface = (bdut)localQQAppInterface.a(103);
       if (!paramQQAppInterface.b.get()) {
         paramQQAppInterface.a(localQQAppInterface, true);
       }
@@ -1078,7 +1078,7 @@ public class ThemeUtil
     {
       return false;
       arrayOfFloat = new float[3];
-      Color.colorToHSV(paramContext.getResources().getColor(2131166363), arrayOfFloat);
+      Color.colorToHSV(paramContext.getResources().getColor(2131166365), arrayOfFloat);
     } while (arrayOfFloat[2] >= 0.5F);
     return true;
   }
@@ -1106,7 +1106,7 @@ public class ThemeUtil
   
   public static boolean isFixTheme(String paramString)
   {
-    return ("1103".equals(paramString)) || (azib.a(paramString));
+    return ("1103".equals(paramString)) || (azmk.a(paramString));
   }
   
   public static boolean isGoldenTheme()
@@ -1166,7 +1166,7 @@ public class ThemeUtil
       }
     }
     label36:
-    for (str = getUserCurrentThemeId(paramAppRuntime); (azib.a(str)) && ("3064".equals(str)); str = getCurrentThemeId()) {
+    for (str = getUserCurrentThemeId(paramAppRuntime); (azmk.a(str)) && ("3064".equals(str)); str = getCurrentThemeId()) {
       return true;
     }
     return false;
@@ -1239,7 +1239,7 @@ public class ThemeUtil
       Object localObject4;
       try
       {
-        localObject3 = bdcs.a((File)localObject5, -1);
+        localObject3 = bdhb.a((File)localObject5, -1);
         bool1 = bool3;
         if (localObject3 == null) {
           break;
@@ -1261,7 +1261,7 @@ public class ThemeUtil
         if (isThemeIsAnimate)
         {
           localObject2 = new Bundle();
-          if (bakh.a((Bundle)localObject2))
+          if (baoq.a((Bundle)localObject2))
           {
             bool1 = bool2;
             if (((Bundle)localObject2).getBoolean("dynamic_switch", true))
@@ -1374,7 +1374,7 @@ public class ThemeUtil
     }
     label23:
     for (str = getUserCurrentThemeId(paramAppRuntime);; str = getCurrentThemeId()) {
-      return azib.a(str);
+      return azmk.a(str);
     }
   }
   
@@ -1383,7 +1383,7 @@ public class ThemeUtil
     if (QLog.isColorLevel()) {
       QLog.d("Theme.ThemeUtil", 2, "isSimpleAndOtherThemeSwitch lastThemeId  = " + lastThemeId + ", curThemeId = " + curThemeId);
     }
-    return ((azib.a(lastThemeId)) || (azib.a(curThemeId))) && (!curThemeId.equals(lastThemeId));
+    return ((azmk.a(lastThemeId)) || (azmk.a(curThemeId))) && (!curThemeId.equals(lastThemeId));
   }
   
   public static boolean isSimpleColrThemeStateBarUseWhite(String paramString)
@@ -1395,7 +1395,7 @@ public class ThemeUtil
   {
     if (paramBoolean) {}
     for (String str = getUserCurrentThemeId(null);; str = getCurrentThemeId()) {
-      return azib.b(str);
+      return azmk.b(str);
     }
   }
   
@@ -1415,27 +1415,27 @@ public class ThemeUtil
   
   public static void previewAIOTheme(Context paramContext, String paramString)
   {
-    Object localObject = bdsd.a;
-    localObject = ((bdsd)localObject).getDir(paramContext, ((bdsd)localObject).getScid(99999));
+    Object localObject = bdwm.a;
+    localObject = ((bdwm)localObject).getDir(paramContext, ((bdwm)localObject).getScid(99999));
     if ((TextUtils.isEmpty(paramString)) || ("clear".equals(paramString)))
     {
-      bajq.a().b("", 0);
+      banz.a().b("", 0);
       return;
     }
     try
     {
-      bdcs.a(paramString, "/storage/emulated/0/tencent/skin/aioTmp", false);
+      bdhb.a(paramString, "/storage/emulated/0/tencent/skin/aioTmp", false);
       paramString = new File("/storage/emulated/0/tencent/skin/aioTmp", "theme.zip");
       if (new File(paramString.getAbsolutePath()).exists()) {
-        bdcs.a(paramString.getAbsolutePath(), "/storage/emulated/0/tencent/skin/aioTmp", false);
+        bdhb.a(paramString.getAbsolutePath(), "/storage/emulated/0/tencent/skin/aioTmp", false);
       }
       paramString = new File("/storage/emulated/0/tencent/skin/aioTmp", "androidXH.zip");
       if (new File(paramString.getAbsolutePath()).exists())
       {
         if (new File((String)localObject).exists()) {
-          bdcs.a((String)localObject);
+          bdhb.a((String)localObject);
         }
-        bdcs.a(paramString.getAbsolutePath(), (String)localObject, false);
+        bdhb.a(paramString.getAbsolutePath(), (String)localObject, false);
       }
     }
     catch (Exception paramString)
@@ -1452,7 +1452,7 @@ public class ThemeUtil
     }
     if (new File((String)localObject).exists())
     {
-      bajq.a().b((String)localObject, 99999);
+      banz.a().b((String)localObject, 99999);
       QQToast.a(paramContext, "AIO主题切换成功", 0).a();
       return;
     }
@@ -1460,17 +1460,17 @@ public class ThemeUtil
   
   public static void previewPlayerSkin(Context paramContext, String paramString)
   {
-    bdsc localbdsc = bdsc.a;
-    paramContext = localbdsc.getDir(paramContext, localbdsc.getScid(99999));
+    bdwl localbdwl = bdwl.a;
+    paramContext = localbdwl.getDir(paramContext, localbdwl.getScid(99999));
     if ((TextUtils.isEmpty(paramString)) || ("clear".equals(paramString)))
     {
-      bajt.a().a("", 0);
+      baoc.a().a("", 0);
       return;
     }
     try
     {
-      bdcs.a(paramString, paramContext, false);
-      bajt.a().a(paramContext, 99999);
+      bdhb.a(paramString, paramContext, false);
+      baoc.a().a(paramContext, 99999);
       return;
     }
     catch (IOException paramContext)
@@ -1562,13 +1562,13 @@ public class ThemeUtil
     ((SharedPreferences.Editor)localObject2).putString("currentThemeVersion", paramString2);
     ((SharedPreferences.Editor)localObject2).putInt("user_switch_theme_times", i);
     boolean bool2 = ((SharedPreferences.Editor)localObject2).commit();
-    QLog.d("Theme.ThemeUtil", 1, "setCurrentThemeIdVersion,uin=" + baiy.a((String)localObject1, 2) + ",oldUsrThemeId=" + str + ",set new themeId=" + paramString1 + ",set new version=" + paramString2 + ", userSwitchThemeTimes=" + i + ",commitSuss=" + bool1 + ", oldTime=" + l2 + ", commitSussOld:" + bool2);
+    QLog.d("Theme.ThemeUtil", 1, "setCurrentThemeIdVersion,uin=" + banh.a((String)localObject1, 2) + ",oldUsrThemeId=" + str + ",set new themeId=" + paramString1 + ",set new version=" + paramString2 + ", userSwitchThemeTimes=" + i + ",commitSuss=" + bool1 + ", oldTime=" + l2 + ", commitSussOld:" + bool2);
     try
     {
       paramString2 = new HashMap();
       paramString2.put("param_themeId", paramString1);
       paramString2.put("param_singleSp", String.valueOf(bool1));
-      azmz.a(paramAppRuntime.getApplication().getApplicationContext()).a((String)localObject1, "VipSetCurrentThemeIdVersion", bool1, 1L, 0L, paramString2, "", false);
+      azri.a(paramAppRuntime.getApplication().getApplicationContext()).a((String)localObject1, "VipSetCurrentThemeIdVersion", bool1, 1L, 0L, paramString2, "", false);
       label474:
       return Boolean.valueOf(bool1);
     }
@@ -1767,7 +1767,7 @@ public class ThemeUtil
     }
     try
     {
-      bdrp.b(Integer.parseInt(paramIntent));
+      bdvy.b(Integer.parseInt(paramIntent));
       return true;
     }
     catch (NumberFormatException paramIntent)
@@ -1785,11 +1785,11 @@ public class ThemeUtil
     {
       Object localObject = new File("/storage/emulated/0/tencent/skin/effect");
       if (((File)localObject).exists()) {
-        bdcs.a(((File)localObject).getAbsolutePath());
+        bdhb.a(((File)localObject).getAbsolutePath());
       }
       localObject = "/storage/emulated/0/tencent/skin/effect" + "/" + System.currentTimeMillis();
-      bdcs.a(paramString2, (String)localObject, false);
-      aemb.a(paramContext, paramString1, null, (String)localObject + "/aioImage");
+      bdhb.a(paramString2, (String)localObject, false);
+      aeqq.a(paramContext, paramString1, null, (String)localObject + "/aioImage");
       paramContext = paramQQAppInterface.getHandler(ChatActivity.class);
       if (paramContext != null) {
         paramContext.sendMessage(paramContext.obtainMessage(60, new BitmapDrawable()));

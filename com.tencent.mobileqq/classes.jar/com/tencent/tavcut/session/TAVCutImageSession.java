@@ -4,16 +4,19 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.SparseArray;
+import com.tencent.tavcut.aekit.AEKitModel;
 import com.tencent.tavcut.bean.CropConfig;
 import com.tencent.tavcut.bean.TextEditorData;
 import com.tencent.tavcut.exporter.ImageExportConfig;
 import com.tencent.tavcut.exporter.ImageExporter;
 import com.tencent.tavcut.view.TAVCutImageView;
 import com.tencent.tavsticker.model.TAVSticker;
+import com.tencent.weseevideo.composition.VideoRenderChainManager;
 import com.tencent.weseevideo.composition.builder.MediaBuilderFactory;
 import com.tencent.weseevideo.composition.image.WSImageRender;
 import com.tencent.weseevideo.editor.sticker.StickerController;
 import com.tencent.weseevideo.model.MediaModel;
+import com.tencent.weseevideo.model.effect.MediaEffectModel;
 import com.tencent.weseevideo.model.effect.StickerModel;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -40,14 +43,26 @@ public class TAVCutImageSession
     runOnMainThread(new TAVCutImageSession.4(this, paramInt, localStickerController), true);
   }
   
+  private void setOverlayImageInternal(MediaModel paramMediaModel, VideoRenderChainManager paramVideoRenderChainManager, String paramString)
+  {
+    AEKitModel localAEKitModel2 = paramMediaModel.getMediaEffectModel().getAeKitModel();
+    AEKitModel localAEKitModel1 = localAEKitModel2;
+    if (localAEKitModel2 == null) {
+      localAEKitModel1 = new AEKitModel();
+    }
+    localAEKitModel1.setOverlayImagePath(paramString);
+    paramMediaModel.getMediaEffectModel().setAeKitModel(localAEKitModel1);
+    updateRenderChain(paramVideoRenderChainManager, paramMediaModel.getMediaEffectModel());
+  }
+  
   public void addSticker(int paramInt, @NonNull StickerModel paramStickerModel)
   {
-    runTask(new TAVCutImageSession.14(this, paramInt, paramStickerModel));
+    runTask(new TAVCutImageSession.15(this, paramInt, paramStickerModel));
   }
   
   public void applyCurrentSticker(int paramInt)
   {
-    runTask(new TAVCutImageSession.15(this, paramInt));
+    runTask(new TAVCutImageSession.16(this, paramInt));
   }
   
   public ImageExporter getExporter(ImageExportConfig paramImageExportConfig)
@@ -90,7 +105,7 @@ public class TAVCutImageSession
   
   public void release()
   {
-    runTask(new TAVCutImageSession.17(this));
+    runTask(new TAVCutImageSession.18(this));
     super.release();
   }
   
@@ -101,32 +116,32 @@ public class TAVCutImageSession
   
   public void removeAIFilter(int paramInt)
   {
-    runTask(new TAVCutImageSession.12(this, paramInt));
+    runTask(new TAVCutImageSession.13(this, paramInt));
   }
   
   public void render(int paramInt)
   {
-    runTask(new TAVCutImageSession.16(this, paramInt));
+    runTask(new TAVCutImageSession.17(this, paramInt));
   }
   
   public void setAEKitAIFilter(int paramInt1, @Nullable String paramString, float paramFloat1, HashMap<String, String> paramHashMap, int paramInt2, float paramFloat2)
   {
-    runTask(new TAVCutImageSession.9(this, paramInt1, paramString, paramFloat1, paramHashMap, paramInt2, paramFloat2));
+    runTask(new TAVCutImageSession.10(this, paramInt1, paramString, paramFloat1, paramHashMap, paramInt2, paramFloat2));
   }
   
   public void setAIFilter(int paramInt, HashMap<String, String> paramHashMap)
   {
-    runTask(new TAVCutImageSession.10(this, paramInt, paramHashMap));
+    runTask(new TAVCutImageSession.11(this, paramInt, paramHashMap));
   }
   
   public void setAIFilterAlpha(int paramInt, float paramFloat)
   {
-    runTask(new TAVCutImageSession.11(this, paramInt, paramFloat));
+    runTask(new TAVCutImageSession.12(this, paramInt, paramFloat));
   }
   
   public void setCrop(int paramInt, CropConfig paramCropConfig)
   {
-    runTask(new TAVCutImageSession.13(this, paramInt, paramCropConfig));
+    runTask(new TAVCutImageSession.14(this, paramInt, paramCropConfig));
   }
   
   public void setImagePaths(List<String> paramList)
@@ -147,6 +162,11 @@ public class TAVCutImageSession
   public void setMediaModels(List<MediaModel> paramList)
   {
     this.mediaModels = paramList;
+  }
+  
+  public void setOverlayImage(int paramInt, @Nullable String paramString)
+  {
+    runTask(new TAVCutImageSession.9(this, paramInt, paramString));
   }
   
   public void setTAVCutImageView(int paramInt, TAVCutImageView paramTAVCutImageView)

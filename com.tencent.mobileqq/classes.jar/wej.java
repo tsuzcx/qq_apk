@@ -1,37 +1,68 @@
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.DeleteStoryVideoEventReceiver.1;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
+import mqq.os.MqqHandler;
+
 public class wej
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, uvf>
 {
-  private int jdField_a_of_type_Int = -1;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
-  
-  public wej(String paramString, boolean paramBoolean)
+  public wej(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public wej(String paramString, boolean paramBoolean, int paramInt)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull uvf paramuvf)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) && ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != 0));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    wem localwem = new wem();
-    localwem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localwem.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    if (this.jdField_a_of_type_Int != -1) {
-      localwem.c = this.jdField_a_of_type_Int;
+    if (!paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString.equals(paramuvf.c)) {}
+    while ((!paramuvf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) || (TextUtils.isEmpty(paramuvf.d)) || (!((uvn)uwa.a(19)).a(paramuvf.d).contains(paramuvf.jdField_a_of_type_JavaLangString))) {
+      return;
     }
-    ung.a().a(localwem, new wek(this, paramBoolean));
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "get delete event. groupId=" + paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString + ", feedId=" + paramuvf.d);
+    }
+    ShareGroupItem localShareGroupItem;
+    if (paramQQStoryShareGroupProfileActivity.a != null)
+    {
+      localShareGroupItem = paramQQStoryShareGroupProfileActivity.a;
+      int i = localShareGroupItem.videoCount - 1;
+      localShareGroupItem.videoCount = i;
+      if (i == 0)
+      {
+        ThreadManager.getUIHandler().postDelayed(new QQStoryShareGroupProfileActivity.DeleteStoryVideoEventReceiver.1(this, paramQQStoryShareGroupProfileActivity), 400L);
+        return;
+      }
+    }
+    if (paramQQStoryShareGroupProfileActivity.isResume())
+    {
+      if (paramuvf.jdField_b_of_type_Boolean)
+      {
+        localShareGroupItem = ((wfw)uwa.a(7)).a(paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString);
+        if ((localShareGroupItem != null) && (localShareGroupItem.headerUnionIdList.contains(paramuvf.jdField_b_of_type_JavaLangString))) {
+          QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, true);
+        }
+      }
+      paramQQStoryShareGroupProfileActivity.b(false);
+      return;
+    }
+    if (paramuvf.jdField_b_of_type_Boolean)
+    {
+      paramQQStoryShareGroupProfileActivity.jdField_b_of_type_Boolean = true;
+      paramQQStoryShareGroupProfileActivity.c = true;
+      return;
+    }
+    paramQQStoryShareGroupProfileActivity.jdField_b_of_type_Boolean = true;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uvf.class;
   }
 }
 

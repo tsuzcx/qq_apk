@@ -1,69 +1,36 @@
 import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import mqq.app.AppRuntime;
 
 public class bdwo
+  extends bdwi
 {
-  public String a(Context paramContext)
+  public static bdwo a = new bdwo();
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, bdts parambdts, boolean paramBoolean)
   {
-    paramContext = paramContext.getDir("lib", 0).getAbsolutePath();
-    if (paramContext.endsWith(File.separator)) {
-      return paramContext + "kcsdk_4.4.7.3661.jar";
-    }
-    return paramContext + File.separator + "kcsdk_4.4.7.3661.jar";
+    a.download(paramQQAppInterface, "qqVipLevel." + paramInt, parambdts, paramBoolean);
   }
   
-  public void a()
+  public static boolean a(Context paramContext, int paramInt)
   {
-    try
-    {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(1004L, "kcsdk_4_4_7_3661", "KC.TMSManager");
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    String str = "qqVipLevel." + paramInt;
+    return new File(a.getDir(paramContext, str)).exists();
   }
   
-  public void a(Context paramContext, int paramInt)
+  public long getBID()
   {
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      try
-      {
-        String str = paramContext.getDir("lib", 0).getAbsolutePath();
-        paramContext = bdwm.a().b(paramContext);
-        if (bdkd.a(paramContext, str, "kcsdk_4.4.7.3661.jar"))
-        {
-          QLog.d("KC.TMSManager", 1, "unzip succ");
-          bdwm.a(bdwm.a());
-          return;
-        }
-        QLog.e("KC.TMSManager", 1, new Object[] { "unzip error, libDir=" + str, " zipPath=" + paramContext });
-        continue;
-        QLog.e("KC.TMSManager", 1, "error: " + paramInt);
-      }
-      finally {}
-    }
+    return 41L;
   }
   
-  public String b(Context paramContext)
+  protected String getRootDir()
   {
-    paramContext = paramContext.getFilesDir().getAbsolutePath();
-    if (paramContext.endsWith(File.separator)) {
-      return paramContext + "libtmsdualcore.zip";
-    }
-    return paramContext + File.separator + "libtmsdualcore.zip";
+    return "qqlevel_icon";
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "qqVipLevel.";
   }
 }
 

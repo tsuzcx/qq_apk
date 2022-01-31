@@ -1,43 +1,61 @@
-import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aoyv
+  extends aokh<aoyu>
 {
-  private long a;
-  private long b;
-  private long c;
-  
-  public long a()
+  public static aoyu a()
   {
-    return this.a;
+    return (aoyu)aoks.a().a(344);
   }
   
-  public void a()
+  public int a()
   {
-    this.a = 0L;
-    this.b = 0L;
+    return 344;
   }
   
-  public long b()
+  @NonNull
+  public aoyu a(int paramInt)
   {
-    this.b = (SystemClock.uptimeMillis() - this.c);
-    this.a += this.b;
-    b();
-    return this.b;
+    return new aoyu();
   }
   
-  public void b()
+  @Nullable
+  public aoyu a(aoko[] paramArrayOfaoko)
   {
-    this.c = SystemClock.uptimeMillis();
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aoyu.a(paramArrayOfaoko);
+    }
+    return null;
   }
   
-  public long c()
+  public Class<aoyu> a()
   {
-    return this.b;
+    return aoyu.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aoyu paramaoyu) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoyv
  * JD-Core Version:    0.7.0.1
  */

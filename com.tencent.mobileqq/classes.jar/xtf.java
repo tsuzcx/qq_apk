@@ -1,14 +1,17 @@
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
-
-public final class xtf
-  extends SparseArray<RotateCircleImageView.BorderStyle>
+class xtf
+  extends xtb
 {
-  public xtf(int paramInt)
+  xtf(xtc paramxtc, xtk paramxtk) {}
+  
+  public void onFailure(String paramString)
   {
-    super(paramInt);
-    append(0, RotateCircleImageView.BorderStyle.STILL);
-    append(1, RotateCircleImageView.BorderStyle.ROTATE);
+    wxe.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onFail: " + paramString);
+    this.jdField_a_of_type_Xtk.onFailure(paramString);
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    wxe.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onSuccess: " + paramString);
   }
 }
 

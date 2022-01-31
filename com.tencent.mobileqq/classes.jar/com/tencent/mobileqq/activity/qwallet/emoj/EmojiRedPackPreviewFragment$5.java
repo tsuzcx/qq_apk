@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import alpo;
+import alud;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import baul;
+import bayu;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -29,15 +29,15 @@ class EmojiRedPackPreviewFragment$5
         this.this$0.sendBtn.setVisibility(0);
         this.this$0.viewOpenAnim.setVisibility(0);
         Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = baul.a;
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = baul.a;
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = bayu.a;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = bayu.a;
         ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
         localObject = URLDrawable.getFileDrawable(this.val$gifPath, (URLDrawable.URLDrawableOptions)localObject);
         this.this$0.previewImg.setImageDrawable((Drawable)localObject);
         AbstractGifImage.resumeAll();
         return;
       }
-      this.this$0.tips.setText(alpo.a(2131704399));
+      this.this$0.tips.setText(alud.a(2131704411));
       this.this$0.reCaptureBtn.setVisibility(0);
       this.this$0.numberProbar.setVisibility(8);
       this.this$0.sendBtn.setVisibility(8);

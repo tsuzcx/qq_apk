@@ -1,42 +1,43 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.Fragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.wifi.QWifiListFragment;
-import com.tencent.mobileqq.wifi.QWifiSecurityFragment;
-import com.wifisdk.ui.api.BaseFragImplManager;
-import com.wifisdk.ui.fragments.BaseFragmentImpl;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class bevr
-  extends BaseFragImplManager
+  extends Handler
 {
-  public void finishFragImpl(BaseFragmentImpl paramBaseFragmentImpl)
-  {
-    paramBaseFragmentImpl = paramBaseFragmentImpl.getFragment();
-    if (paramBaseFragmentImpl != null)
-    {
-      paramBaseFragmentImpl = paramBaseFragmentImpl.getActivity();
-      if (paramBaseFragmentImpl != null) {
-        paramBaseFragmentImpl.finish();
-      }
-    }
-  }
+  public bevr(TabBarView paramTabBarView) {}
   
-  public void switchFragImpl(Context paramContext, int paramInt1, int paramInt2, Intent paramIntent)
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject = null;
-    if (paramInt2 == 1) {
-      localObject = new QWifiListFragment();
-    }
-    while (localObject == null)
+    switch (paramMessage.what)
     {
+    default: 
       return;
-      if (paramInt2 == 2) {
-        localObject = new QWifiSecurityFragment();
+    case 0: 
+      this.a.a = 0.0F;
+      paramMessage = this.a;
+      paramMessage.a = ((float)(paramMessage.a + 0.1D));
+      this.a.invalidate();
+      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      if (this.a.a < 1.0F)
+      {
+        paramMessage = this.a;
+        paramMessage.a = ((float)(paramMessage.a + 0.1D));
+        this.a.invalidate();
+        sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
+        return;
       }
+      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(2), 10L);
+      return;
     }
-    PublicFragmentActivity.a(paramContext, paramIntent, localObject.getClass());
+    TabBarView.a(this.a, this.a.o, this.a.n);
+    this.a.a = 1.0F;
+    TabBarView.b(this.a, this.a.o, this.a.n);
+    this.a.o = this.a.n;
+    this.a.invalidate();
+    TabBarView.a(this.a);
   }
 }
 

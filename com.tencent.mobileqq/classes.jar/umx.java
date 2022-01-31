@@ -1,23 +1,8 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
-
-public class umx
+public abstract interface umx
 {
-  public static Intent a(Context paramContext, int paramInt, String paramString)
-  {
-    return QQStoryMemoriesActivity.a(paramContext, paramInt, paramString);
-  }
+  public abstract int a(String paramString1, String paramString2, long paramLong);
   
-  public static void a(Context paramContext, int paramInt, long paramLong)
-  {
-    QQStoryMemoriesActivity.a(paramContext, paramInt, paramLong);
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString)
-  {
-    paramContext.startActivity(a(paramContext, paramInt, paramString));
-  }
+  public abstract void a(uml paramuml);
 }
 
 

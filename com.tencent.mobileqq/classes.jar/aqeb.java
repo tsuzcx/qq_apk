@@ -1,8 +1,6 @@
 public abstract interface aqeb
 {
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void b();
+  public abstract void a();
 }
 
 

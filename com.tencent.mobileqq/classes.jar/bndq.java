@@ -1,6 +1,15 @@
-public abstract interface bndq
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+
+class bndq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  bndq(bndn parambndn) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.invalidateSelf();
+  }
 }
 
 

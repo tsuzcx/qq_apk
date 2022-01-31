@@ -1,36 +1,74 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ajmk
-  extends amle
+  extends ajlr
 {
-  public ajmk(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public boolean a;
+  
+  public ajmk(Context paramContext)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this(paramContext, false);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public ajmk(Context paramContext, boolean paramBoolean)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131698112);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      this.a.a = paramSosoLbsInfo.a.a;
-      this.a.b = paramSosoLbsInfo.a.b;
-      if (QLog.isColorLevel()) {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() latitude=" + this.a.a + " longitude=" + this.a.b);
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.optLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.optLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.optString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.optInt("color");
+      this.jdField_a_of_type_Boolean = paramArrayOfByte.optBoolean("isToAll");
+      if (this.jdField_a_of_type_Bbpe == null) {
+        this.jdField_a_of_type_Bbpe = new bbpe();
       }
-      if (NewFlowCameraActivity.a(this.a) != null) {
-        NewFlowCameraActivity.d(this.a);
+      this.jdField_a_of_type_Bbpe.a(paramArrayOfByte.getString("messageNavInfo"));
+      return;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      localJSONObject.put("isToAll", this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_Bbpe != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbpe.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
       }
     }
-    do
-    {
-      return;
-      this.a.a = 0.0D;
-      this.a.b = 0.0D;
-    } while (!QLog.isColorLevel());
-    QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() error");
   }
 }
 

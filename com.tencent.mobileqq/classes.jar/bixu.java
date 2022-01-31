@@ -1,23 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
 
-class bixu
-  implements View.OnClickListener
+public abstract interface bixu
 {
-  bixu(bixs parambixs) {}
-  
-  public void onClick(View paramView)
-  {
-    if (bixs.a(this.a))
-    {
-      if (bixs.b(this.a)) {
-        this.a.dismiss();
-      }
-      if (bixs.b(this.a) != null) {
-        bixs.b(this.a).onClick(paramView);
-      }
-    }
-  }
+  public abstract boolean a(int paramInt, Bundle paramBundle);
 }
 
 

@@ -1,121 +1,64 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class agfs
-  implements aenl
+  extends aepl
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private agfw jdField_a_of_type_Agfw;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MessageForShortVideo jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-  private String jdField_a_of_type_JavaLangString;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private int b;
-  private int c;
-  
-  public agfs(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo, agfw paramagfw, long paramLong, int paramInt1, int paramInt2)
+  public agfs(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
-    this.jdField_a_of_type_Agfw = paramagfw;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
   }
   
-  public void a()
+  protected aepm a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin;
-    long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq;
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, l);
-    if ((localObject != null) && ((localObject instanceof bamr))) {
-      ((bamr)localObject).a();
-    }
-    localObject = new View(BaseApplicationImpl.getApplication());
-    aenj localaenj = aenj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (localaenj != null) {
-      localaenj.a((View)localObject, this);
-    }
-    localObject = ayyu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, 1);
-    if (localObject != null) {
-      ayyu.a((ayzo)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
+    return new agft(this);
   }
   
-  public void a(View paramView, baoj parambaoj, int paramInt1, int paramInt2)
+  protected View a(MessageRecord paramMessageRecord, aepm paramaepm, View paramView, LinearLayout paramLinearLayout, aetk paramaetk)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq != parambaoj.jdField_b_of_type_Long)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("carverW GetUrlAction", 2, " handleMessage return file.uniseq=" + parambaoj.jdField_b_of_type_Long);
+    paramaepm = (agft)paramaepm;
+    paramaepm = paramView;
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558820, null);
+      paramaepm = (TextView)paramView.findViewById(2131367292);
+      paramaepm.setMovementMethod(null);
+      paramaepm.setGravity(17);
+      paramaepm = paramView;
+      if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      {
+        paramaepm = (TextView)paramView.findViewById(2131367637);
+        paramLinearLayout = (TextView)paramView.findViewById(2131367638);
+        paramaepm.setBackgroundColor(2130842187);
+        paramLinearLayout.setBackgroundColor(2130842187);
+        paramaepm = paramView;
       }
     }
-    do
+    paramView = (TextView)paramaepm.findViewById(2131367292);
+    if ((paramMessageRecord.istroop == 1) && (nav.a().a(paramMessageRecord.senderuin)))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  if (QLog.isColorLevel()) {
-                    QLog.d("carverW GetUrlAction", 2, " handleMessage what==" + paramInt1 + ", arg1:" + paramInt2 + " fileType=" + parambaoj.jdField_b_of_type_Int + " status=" + parambaoj.d + " msg.id=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-                  }
-                } while ((parambaoj.jdField_b_of_type_Int != 6) && (parambaoj.jdField_b_of_type_Int != 17) && (parambaoj.jdField_b_of_type_Int != 9) && (parambaoj.jdField_b_of_type_Int != 20));
-                switch (parambaoj.d)
-                {
-                case 2004: 
-                default: 
-                  return;
-                case 2002: 
-                  if (QLog.isColorLevel()) {
-                    QLog.d("carverW GetUrlAction", 2, "STATUS_RECV_PROCESS: get url finished urls=" + parambaoj.c + " domain =" + parambaoj.u + " mMsg=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-                  }
-                  break;
-                }
-              } while (parambaoj.c == null);
-              this.jdField_a_of_type_ArrayOfJavaLangString = parambaoj.c;
-              this.jdField_a_of_type_JavaLangString = parambaoj.u;
-              paramInt1 = 0;
-              while (paramInt1 < 1)
-              {
-                if (!bdje.a(this.jdField_a_of_type_JavaLangString))
-                {
-                  paramView = new StringBuilder();
-                  String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-                  arrayOfString[paramInt1] = (arrayOfString[paramInt1] + "&txhost=" + this.jdField_a_of_type_JavaLangString);
-                }
-                paramInt1 += 1;
-              }
-            } while (!QLog.isColorLevel());
-            QLog.d("carverW GetUrlAction", 2, "handleMessage STATUS_RECV_FINISHED");
-            return;
-            this.jdField_a_of_type_Int = parambaoj.g;
-          } while (!QLog.isColorLevel());
-          QLog.d("carverW GetUrlAction", 2, "handleMessage STATUS_RECV_ERROR  error = " + this.jdField_a_of_type_Int);
-          return;
-          this.jdField_a_of_type_Int = parambaoj.g;
-        } while (!QLog.isColorLevel());
-        QLog.d("carverW GetUrlAction", 2, "handleMessage STATUS_FILE_UNSAFE  error = " + this.jdField_a_of_type_Int);
-        return;
-        this.jdField_a_of_type_Int = parambaoj.g;
-      } while (!QLog.isColorLevel());
-      QLog.d("carverW GetUrlAction", 2, "handleMessage STATUS_FILE_EXPIRED  error = " + this.jdField_a_of_type_Int);
-      return;
-    } while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (!MessageForShortVideo.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo)) || (this.jdField_a_of_type_Agfw == null));
-    paramView = ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
-    this.jdField_a_of_type_Agfw.a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c, paramView, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, parambaoj.jdField_b_of_type_Int);
+      paramView.setTextColor(nav.d);
+      return paramaepm;
+    }
+    paramView.setTextColor(paramaepm.getResources().getColorStateList(2131165500));
+    return paramaepm;
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  public bdpk[] a(View paramView)
+  {
+    return null;
   }
 }
 

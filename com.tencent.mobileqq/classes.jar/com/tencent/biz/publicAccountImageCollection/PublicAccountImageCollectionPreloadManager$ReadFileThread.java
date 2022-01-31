@@ -1,6 +1,6 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import aljq;
+import alof;
 import android.support.v4.util.MQLruCache;
 import com.tencent.mobileqq.ac.ArticleComment.GetPhotoCollectionInfoResponse;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +23,7 @@ class PublicAccountImageCollectionPreloadManager$ReadFileThread
     {
       try
       {
-        localFileInputStream = new FileInputStream(aljq.cN + this.a);
+        localFileInputStream = new FileInputStream(alof.cN + this.a);
         localObject1 = null;
       }
       catch (Exception localException1)

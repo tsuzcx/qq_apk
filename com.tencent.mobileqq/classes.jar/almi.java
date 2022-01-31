@@ -1,33 +1,28 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.DataMigrationService;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.view.ApolloMainViewBinder.1;
+import com.tencent.mobileqq.apollo.view.ApolloMainViewBinder.1.1.1;
 
 public class almi
-  extends Handler
+  implements Animation.AnimationListener
 {
-  public almi(DataMigrationService paramDataMigrationService) {}
+  public almi(ApolloMainViewBinder.1.1.1 param1) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = paramMessage.arg1;
-    paramMessage = (Intent)paramMessage.obj;
-    if (paramMessage == null)
-    {
-      this.a.stopSelf(i);
-      return;
-    }
-    if ("com.tencent.mobileqq.action.MIGRATION_DATA".equals(paramMessage.getAction()))
-    {
-      DataMigrationService.a(this.a, paramMessage, i);
-      return;
-    }
-    this.a.stopSelf(i);
+    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.a.a.a.b.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.a.a.a.jdField_a_of_type_Almb.a = null;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     almi
  * JD-Core Version:    0.7.0.1
  */

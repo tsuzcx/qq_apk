@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import agot;
+import agti;
 import android.text.TextUtils;
-import azmj;
-import azqj;
-import azsg;
-import azsj;
+import azqs;
+import azus;
+import azwp;
+import azws;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -19,27 +19,27 @@ import org.json.JSONObject;
 public class StructMsgItemButton$3$2
   implements Runnable
 {
-  public StructMsgItemButton$3$2(azsj paramazsj, azsg paramazsg, StructMsgForGeneralShare paramStructMsgForGeneralShare, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
+  public StructMsgItemButton$3$2(azws paramazws, azwp paramazwp, StructMsgForGeneralShare paramStructMsgForGeneralShare, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
   
   public void run()
   {
     long l = NetConnInfoCenter.getServerTime();
     int j = -1;
     int i = j;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Azsg.Q)) {}
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Azwp.Q)) {}
     try
     {
-      i = Integer.parseInt(this.jdField_a_of_type_Azsj.jdField_a_of_type_Azsg.Q);
-      if (agot.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      i = Integer.parseInt(this.jdField_a_of_type_Azws.jdField_a_of_type_Azwp.Q);
+      if (agti.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
       {
         j = 1;
-        nrt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, "0X80055C8", "0X80055C8", i, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.msgId), this.jdField_a_of_type_Azsg.c, Integer.toString(j), false);
+        nrt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, "0X80055C8", "0X80055C8", i, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.msgId), this.jdField_a_of_type_Azwp.c, Integer.toString(j), false);
         j = 0;
         if (this.jdField_a_of_type_Boolean) {
           j = 1;
         }
-        Object localObject1 = new StringBuilder().append("MSGID=").append(Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.msgId)).append(";TEPLATEID=").append(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(azqj.a(this.jdField_a_of_type_Azsg.b));
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, "0X8005D4A", "0X8005D4A", i, j, ((StringBuilder)localObject1).toString(), "", "", "");
+        Object localObject1 = new StringBuilder().append("MSGID=").append(Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.msgId)).append(";TEPLATEID=").append(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(azus.a(this.jdField_a_of_type_Azwp.b));
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, "0X8005D4A", "0X8005D4A", i, j, ((StringBuilder)localObject1).toString(), "", "", "");
         if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message == null) {}
         String str;
         do

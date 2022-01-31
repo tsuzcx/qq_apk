@@ -1,101 +1,107 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Paint;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVVideoCtrl;
+import com.tencent.TMG.utils.QLog;
 
 public class aknm
 {
-  public static int a(Paint paramPaint)
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SurfaceHolder.Callback jdField_a_of_type_AndroidViewSurfaceHolder$Callback = new aknn(this);
+  public SurfaceView a;
+  
+  public aknm(Context paramContext, int paramInt)
   {
-    return (int)(1.0F + paramPaint.measureText(alpo.a(2131700673)));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static void a(int paramInt1, int paramInt2, akno paramakno, Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
+  AVVideoCtrl a()
   {
-    a(null, paramInt1, paramInt2, paramakno, paramContext, paramString1, paramString2, paramBoolean);
+    AVContext localAVContext = alhb.a(this.jdField_a_of_type_AndroidContentContext).a();
+    if (localAVContext != null) {
+      return localAVContext.getVideoCtrl();
+    }
+    return null;
   }
   
-  public static void a(akno paramakno, Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
+  public void a()
   {
-    if (paramakno != null) {
-      a(paramakno.a(), paramakno.b(), paramakno, paramContext, paramString1, paramString2, paramBoolean);
-    }
-  }
-  
-  public static void a(String paramString1, int paramInt1, int paramInt2, akno paramakno, Context paramContext, String paramString2, String paramString3, boolean paramBoolean)
-  {
-    if ((paramakno == null) || (paramContext == null) || (TextUtils.isEmpty(paramString3))) {
-      return;
-    }
-    if (paramString3.length() > 12) {
-      paramString3 = paramString3.substring(0, 11) + "...";
-    }
-    for (;;)
+    WindowManager localWindowManager = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
+    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
+    localLayoutParams.width = 1;
+    localLayoutParams.height = 1;
+    localLayoutParams.flags = 776;
+    localLayoutParams.format = -3;
+    localLayoutParams.windowAnimations = 0;
+    localLayoutParams.gravity = 51;
+    try
     {
-      int i = paramInt1;
-      if (paramInt1 == 0) {
-        i = paramakno.a();
-      }
-      paramInt1 = paramInt2;
-      if (paramInt2 == 0) {
-        paramInt1 = paramakno.b();
-      }
-      long l = System.currentTimeMillis();
-      ArrayList localArrayList = new ArrayList();
-      aknn localaknn1 = new aknn(paramakno.a(), bdcb.a(), i, paramInt1, paramString2, paramString3);
-      float f1 = i;
-      localaknn1.a = f1;
-      localaknn1.e = f1;
-      localaknn1.jdField_b_of_type_Float = 0.0F;
-      localaknn1.f = 0.0F;
-      localaknn1.c = (-i / 4000.0F);
-      localaknn1.jdField_d_of_type_Float = 0.0F;
-      localaknn1.jdField_h_of_type_Float = 1.0F;
-      localaknn1.g = (17.0F * paramContext.getResources().getDisplayMetrics().scaledDensity);
-      localaknn1.jdField_b_of_type_Boolean = true;
-      localaknn1.jdField_b_of_type_JavaLangString = paramString1;
-      Random localRandom = new Random();
-      paramInt2 = 0;
-      while (paramInt2 < 5)
+      if (this.jdField_a_of_type_AndroidViewSurfaceView == null)
       {
-        aknn localaknn2 = new aknn(paramakno.a(), bdcb.a(), i, paramInt1, paramString2, paramString3);
-        localaknn2.c = (-i / (3000.0F - paramInt2 * 500));
-        localaknn2.jdField_d_of_type_Float = 0.0F;
-        int j = localRandom.nextInt(3);
-        localaknn2.jdField_d_of_type_Int = ((int)(new float[] { 0.6F, 0.8F, 1.0F }[j] * 255.0F));
-        localaknn2.g = (new int[] { 14, 14, 12, 12, 12 }[paramInt2] * paramContext.getResources().getDisplayMetrics().scaledDensity);
-        localaknn2.jdField_h_of_type_Float = aknj.a(localaknn1, localaknn2);
-        f1 = i * localRandom.nextFloat() + i / 2;
-        localaknn2.a = f1;
-        localaknn2.e = f1;
-        f1 = paramInt1;
-        float f2 = aknj.a(localaknn2.g);
-        float f3 = localaknn2.jdField_h_of_type_Int * 2;
-        f1 = (paramInt1 - (f1 * 0.28F + f2 + f3)) * localRandom.nextFloat();
-        localaknn2.jdField_b_of_type_Float = f1;
-        localaknn2.f = f1;
-        localaknn2.jdField_b_of_type_Boolean = true;
-        localaknn2.jdField_b_of_type_JavaLangString = paramString1;
-        localArrayList.add(localaknn2);
-        paramInt2 += 1;
+        this.jdField_a_of_type_AndroidViewSurfaceView = new SurfaceView(this.jdField_a_of_type_AndroidContentContext);
+        SurfaceHolder localSurfaceHolder = this.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
+        localSurfaceHolder.addCallback(this.jdField_a_of_type_AndroidViewSurfaceHolder$Callback);
+        localSurfaceHolder.setType(3);
+        this.jdField_a_of_type_AndroidViewSurfaceView.setZOrderMediaOverlay(true);
+        localWindowManager.addView(this.jdField_a_of_type_AndroidViewSurfaceView, localLayoutParams);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloBarrageUtil", 2, "bulkApolloBarrages use:" + (System.currentTimeMillis() - l));
-      }
-      localArrayList.add(localaknn1);
-      paramakno.a(localArrayList, paramBoolean);
+      QLog.e("AVCameraCaptureModel", 0, "memoryLeak initCameraPreview");
       return;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      for (;;)
+      {
+        localWindowManager.updateViewLayout(this.jdField_a_of_type_AndroidViewSurfaceView, localLayoutParams);
+        if (QLog.isColorLevel()) {
+          QLog.d("AVCameraCaptureModel", 0, "add camera surface view fail: IllegalStateException." + localIllegalStateException);
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AVCameraCaptureModel", 0, "add camera surface view fail." + localException);
+        }
+      }
+    }
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_AndroidViewSurfaceView == null)) {
+      return;
+    }
+    WindowManager localWindowManager = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
+    try
+    {
+      localWindowManager.removeView(this.jdField_a_of_type_AndroidViewSurfaceView);
+      this.jdField_a_of_type_AndroidViewSurfaceView = null;
+      QLog.e("AVCameraCaptureModel", 0, "memoryLeak unInitCameraaPreview");
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("AVCameraCaptureModel", 0, "remove camera view fail.", localException);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aknm
  * JD-Core Version:    0.7.0.1
  */

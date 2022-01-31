@@ -1,27 +1,25 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.util.HeadRequest;
 
-final class bdcf
-  implements DialogInterface.OnClickListener
+public final class bdcf
+  implements Parcelable.Creator<HeadRequest>
 {
-  bdcf(Activity paramActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public HeadRequest a(Parcel paramParcel)
   {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
-      this.a.startActivity(paramDialogInterface);
-    }
+    HeadRequest localHeadRequest = new HeadRequest();
+    localHeadRequest.a(paramParcel);
+    return localHeadRequest;
+  }
+  
+  public HeadRequest[] a(int paramInt)
+  {
+    return new HeadRequest[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdcf
  * JD-Core Version:    0.7.0.1
  */

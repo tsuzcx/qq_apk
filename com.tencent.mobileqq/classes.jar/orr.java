@@ -8,22 +8,22 @@ import java.util.Date;
 
 public class orr
 {
-  public static final String a = alpo.a(2131713112);
-  public static final String b = alpo.a(2131713316);
-  public static final String c = alpo.a(2131713351);
-  public static final String d = alpo.a(2131713096);
-  public static final String e = alpo.a(2131713467);
-  public static final String f = alpo.a(2131713366);
-  public static final String g = alpo.a(2131713208);
-  public static final String h = alpo.a(2131713132);
-  public static final String i = alpo.a(2131713126);
-  public static final String j = alpo.a(2131713445);
-  public static final String k = alpo.a(2131713357);
-  public static final String l = alpo.a(2131713146);
-  public static final String m = alpo.a(2131713162);
-  public static final String n = alpo.a(2131713168);
-  public static final String o = alpo.a(2131713143);
-  public static final String p = alpo.a(2131713311);
+  public static final String a = alud.a(2131713124);
+  public static final String b = alud.a(2131713328);
+  public static final String c = alud.a(2131713363);
+  public static final String d = alud.a(2131713108);
+  public static final String e = alud.a(2131713479);
+  public static final String f = alud.a(2131713378);
+  public static final String g = alud.a(2131713220);
+  public static final String h = alud.a(2131713144);
+  public static final String i = alud.a(2131713138);
+  public static final String j = alud.a(2131713457);
+  public static final String k = alud.a(2131713369);
+  public static final String l = alud.a(2131713158);
+  public static final String m = alud.a(2131713174);
+  public static final String n = alud.a(2131713180);
+  public static final String o = alud.a(2131713155);
+  public static final String p = alud.a(2131713323);
   
   public static long a()
   {

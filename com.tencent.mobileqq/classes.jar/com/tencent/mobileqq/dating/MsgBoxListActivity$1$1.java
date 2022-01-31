@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.dating;
 
-import apdy;
-import avpu;
+import apih;
+import avud;
 import java.util.List;
 
 public class MsgBoxListActivity$1$1
   implements Runnable
 {
-  public MsgBoxListActivity$1$1(apdy paramapdy, List paramList) {}
+  public MsgBoxListActivity$1$1(apih paramapih, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Apdy.a.a.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Apih.a.a.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

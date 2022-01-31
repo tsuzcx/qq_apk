@@ -1,11 +1,4 @@
-import android.view.View;
-
-public abstract interface bhwu
-{
-  public abstract void a(View paramView);
-  
-  public abstract void b(View paramView);
-}
+public class bhwu {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

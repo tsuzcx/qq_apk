@@ -1,29 +1,15 @@
-import com.tencent.ark.ArkEnvironmentManager.Log;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-final class anmr
-  implements ArkEnvironmentManager.Log
+class anmr
+  implements anmy
 {
-  public void d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-  }
+  anmr(anmq paramanmq) {}
   
-  public void e(String paramString1, String paramString2)
+  public void a(boolean paramBoolean)
   {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, full update result, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.a.jdField_a_of_type_Anmw.a }));
+    if (paramBoolean) {}
+    this.a.jdField_a_of_type_Anmy.a(paramBoolean);
   }
 }
 

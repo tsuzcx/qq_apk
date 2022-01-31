@@ -2,10 +2,10 @@ package com.tencent.mobileqq.tts;
 
 import android.app.Application;
 import android.content.Context;
-import baiy;
-import bctp;
-import bdcv;
-import bfhi;
+import banh;
+import bcxy;
+import bdhe;
+import bflr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -25,7 +25,7 @@ public class SilkStreamPlayer
   private static long jdField_a_of_type_Long;
   private Application jdField_a_of_type_AndroidAppApplication = BaseApplicationImpl.sApplication;
   private Context jdField_a_of_type_AndroidContentContext;
-  private bctp jdField_a_of_type_Bctp;
+  private bcxy jdField_a_of_type_Bcxy;
   private SilkStreamPlayer.SilkStreamPlayerThread jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread;
   private InputStream jdField_a_of_type_JavaIoInputStream;
   private String jdField_a_of_type_JavaLangString;
@@ -37,7 +37,7 @@ public class SilkStreamPlayer
   public SilkStreamPlayer(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = baiy.e(paramString1).replaceAll("/", " ");
+    this.jdField_a_of_type_JavaLangString = banh.e(paramString1).replaceAll("/", " ");
     this.b = paramString2;
     this.d = paramString3;
   }
@@ -72,11 +72,11 @@ public class SilkStreamPlayer
         ((JSONObject)localObject1).put("uin", Long.valueOf(this.b));
         ((JSONObject)localObject1).put("sendUin", Long.valueOf(this.c));
         ((JSONObject)localObject1).put("text", this.jdField_a_of_type_JavaLangString);
-        ((JSONObject)localObject1).put("textmd5", bfhi.d(this.jdField_a_of_type_JavaLangString));
+        ((JSONObject)localObject1).put("textmd5", bflr.d(this.jdField_a_of_type_JavaLangString));
         long l = jdField_a_of_type_Long;
         jdField_a_of_type_Long = 1L + l;
         ((JSONObject)localObject1).put("seq", l);
-        ((JSONObject)localObject1).put("clientVersion", "AND_" + AppSetting.a() + "_" + "8.3.3");
+        ((JSONObject)localObject1).put("clientVersion", "AND_" + AppSetting.a() + "_" + "8.3.5");
         ((JSONObject)localObject1).put("net", ndd.a());
         DataOutputStream localDataOutputStream = new DataOutputStream(this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.getOutputStream());
         localDataOutputStream.write(new String(((JSONObject)localObject1).toString().getBytes(), "utf-8").getBytes());
@@ -106,7 +106,7 @@ public class SilkStreamPlayer
   private boolean a(byte[] paramArrayOfByte)
   {
     boolean bool2 = true;
-    byte[] arrayOfByte = bdcv.a("02232153494C4B5F5633");
+    byte[] arrayOfByte = bdhe.a("02232153494C4B5F5633");
     int i = 1;
     for (;;)
     {
@@ -139,9 +139,9 @@ public class SilkStreamPlayer
     ThreadManagerV2.excute(this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread, 128, null, true);
   }
   
-  public void a(bctp parambctp)
+  public void a(bcxy parambcxy)
   {
-    this.jdField_a_of_type_Bctp = parambctp;
+    this.jdField_a_of_type_Bcxy = parambcxy;
   }
   
   public void a(String paramString)
@@ -161,15 +161,15 @@ public class SilkStreamPlayer
       SilkStreamPlayer.SilkStreamPlayerThread.a(this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread, false);
       this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread = null;
     }
-    this.jdField_a_of_type_Bctp = null;
-    if (this.jdField_a_of_type_Bctp != null) {
-      this.jdField_a_of_type_Bctp.c();
+    this.jdField_a_of_type_Bcxy = null;
+    if (this.jdField_a_of_type_Bcxy != null) {
+      this.jdField_a_of_type_Bcxy.c();
     }
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Bctp = null;
+    this.jdField_a_of_type_Bcxy = null;
   }
 }
 

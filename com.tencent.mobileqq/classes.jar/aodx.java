@@ -1,17 +1,12 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
 public class aodx
-  implements View.OnClickListener
+  extends aodu
 {
-  public aodx(IphonePickerView paramIphonePickerView) {}
-  
-  public void onClick(View paramView)
+  public void a(aodk paramaodk, int paramInt, boolean paramBoolean)
   {
-    if (IphonePickerView.a(this.a) != null) {
-      IphonePickerView.a(this.a).a();
-    }
+    super.a(paramaodk, paramInt, paramBoolean);
+    paramaodk.b.setBackgroundResource(2130839073);
   }
 }
 

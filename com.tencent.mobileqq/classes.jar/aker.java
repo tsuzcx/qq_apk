@@ -1,50 +1,25 @@
-import android.content.Context;
-import android.support.v4.view.ViewCompat;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import java.util.List;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aker<T>
-  extends apkp<T>
-  implements View.OnClickListener
+public class aker
+  extends ambf
 {
-  private DragSortListView a;
+  public aker(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
   
-  public aker(Context paramContext, List<T> paramList, DragSortListView paramDragSortListView)
+  public void a(Object paramObject)
   {
-    super(paramContext, paramList);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView = paramDragSortListView;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560967, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
     }
-    paramViewGroup.setVisibility(0);
-    paramViewGroup.findViewById(2131376497).setVisibility(8);
-    paramView = (TextView)paramViewGroup.findViewById(2131367334);
-    Groups localGroups = (Groups)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramView.setText(localGroups.group_name);
-    ViewCompat.setImportantForAccessibility(paramViewGroup.findViewById(2131367338), 1);
-    paramViewGroup.setContentDescription(localGroups.group_name + alpo.a(2131705721));
-    if ((bhou.m()) && (AppSetting.c)) {
-      paramViewGroup.setOnClickListener(this);
+    if (paramObject != null) {
+      this.a.stopTitleProgress();
     }
-    return paramViewGroup;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (AppSetting.c) {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.f();
+    switch (((Integer)paramObject).intValue())
+    {
+    default: 
+      return;
     }
+    QQSpecialCareSettingActivity.a(this.a);
   }
 }
 

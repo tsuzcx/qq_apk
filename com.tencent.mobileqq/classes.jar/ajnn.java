@@ -1,28 +1,26 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
 
-class ajnn
-  implements bhtl
+public class ajnn
+  implements View.OnClickListener
 {
-  ajnn(ajnj paramajnj) {}
+  public ajnn(LoginView paramLoginView) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state: " + paramInt);
+    if ((this.a.b != null) && (this.a.b.isShown())) {
+      this.a.b.setVisibility(8);
     }
-    if (paramInt == 4097)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state is idle.");
-      }
-      this.a.b = this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 400L);
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
+    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("");
+    LoginView.c(this.a);
+    libsafeedit.clearPassBuffer();
+    LoginView.d(this.a);
   }
 }
 

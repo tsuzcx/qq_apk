@@ -1,69 +1,73 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class aorw
+  extends aokh<aorx>
 {
-  private int a;
-  private int b;
-  private int c = 1;
-  
-  public static aorw a(aogf paramaogf)
+  public int a()
   {
-    aorw localaorw = new aorw();
-    if (paramaogf != null) {
+    return 535;
+  }
+  
+  @NonNull
+  public aorx a(int paramInt)
+  {
+    return new aorx();
+  }
+  
+  @Nullable
+  public aorx a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
+    {
+      aorx localaorx = aorx.a(paramArrayOfaoko[0].a);
       if (QLog.isColorLevel()) {
-        QLog.d("SearchHotWordConfBean", 2, "parse taskid->" + paramaogf.jdField_a_of_type_Int + " content->" + paramaogf.jdField_a_of_type_JavaLangString);
+        QLog.d("TogetherBusinessConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
       }
+      return localaorx;
     }
-    try
-    {
-      paramaogf = new JSONObject(paramaogf.jdField_a_of_type_JavaLangString);
-      localaorw.a(paramaogf.optInt("hotword_switch_message", 0));
-      localaorw.b(paramaogf.optInt("hotword_switch_contact", 0));
-      localaorw.c(paramaogf.optInt("hotword_switch_dongtai", 1));
-      return localaorw;
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherBusinessConfProcessor", 2, "onParsed is null");
     }
-    catch (Exception paramaogf)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SearchHotWordConfBean", 2, "parse error->" + paramaogf.toString());
-    }
-    return localaorw;
+    return null;
   }
   
-  void a(int paramInt)
+  public Class<aorx> a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return aorx.class;
   }
   
-  public boolean a()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_Int == 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherBusinessConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
   }
   
-  void b(int paramInt)
+  public void a(aorx paramaorx)
   {
-    this.b = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherBusinessConfProcessor", 2, "onUpdate " + paramaorx.toString());
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherBusinessConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
   }
   
   public boolean b()
   {
-    return this.b == 1;
-  }
-  
-  void c(int paramInt)
-  {
-    this.c = paramInt;
+    return false;
   }
   
   public boolean c()
   {
-    return this.c == 1;
-  }
-  
-  public String toString()
-  {
-    return String.format("mHotWordSwitchTabMessage:%d, mHotWordSwitchTabContact:%d, mHotWordSwitchTabDongtai:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
+    return true;
   }
 }
 

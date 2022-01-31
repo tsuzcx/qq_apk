@@ -1,27 +1,16 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCirclePushRankTopView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import qqcircle.QQCircleDitto.StItemContainer;
+import com.tencent.biz.qqcircle.widgets.QCircleBaseInputPopupWindow.1.1;
 
 public class ucf
-  implements View.OnClickListener
+  implements ygb
 {
-  public ucf(QCirclePushRankTopView paramQCirclePushRankTopView) {}
+  ucf(uce paramuce) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView)
   {
-    if (this.a.a() != null)
-    {
-      paramView = tqr.a(((QQCircleDitto.StItemContainer)this.a.a()).urlInfo.get(), "RankItemUrl");
-      if (bdje.a(paramView)) {
-        QLog.w("QCirclePushRankTopView", 1, "rank url is empty");
-      }
-      tyj.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 9, 4L);
-      tqs.a(this.a.getContext(), paramView);
+    if (this.a.isShowing()) {
+      uce.a(this.a).runOnUiThread(new QCircleBaseInputPopupWindow.1.1(this));
     }
   }
 }

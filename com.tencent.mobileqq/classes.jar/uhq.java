@@ -1,18 +1,6 @@
-import android.support.annotation.Nullable;
-import com.tribe.async.async.FutureListener.SimpleFutureListener;
-import com.tribe.async.async.JobController.DoneEvent;
-import com.tribe.async.async.Worker;
-import com.tribe.async.dispatch.Dispatcher;
-
-class uhq
-  extends FutureListener.SimpleFutureListener<Progress, Result>
+public abstract interface uhq
 {
-  uhq(uhp paramuhp, Worker paramWorker) {}
-  
-  public void onFutureDone(@Nullable Result paramResult)
-  {
-    uht.a().dispatch(new JobController.DoneEvent(this.jdField_a_of_type_ComTribeAsyncAsyncWorker));
-  }
+  public abstract void a();
 }
 
 

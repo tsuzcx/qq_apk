@@ -13,7 +13,7 @@ public class luc
   
   public luc(Context paramContext, int paramInt)
   {
-    bhnt.a(paramContext);
+    bhsa.a(paramContext);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.k = paramInt;
     a(false);

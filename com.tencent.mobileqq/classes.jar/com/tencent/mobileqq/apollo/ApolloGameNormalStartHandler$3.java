@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo;
 
-import akjg;
-import akjh;
-import algv;
+import aknv;
+import aknw;
+import allk;
 
 public class ApolloGameNormalStartHandler$3
   implements Runnable
 {
   public void run()
   {
-    if (akjg.a(this.this$0) == null) {
-      akjg.a(this.this$0, new algv(this.a));
+    if (aknv.a(this.this$0) == null) {
+      aknv.a(this.this$0, new allk(this.a));
     }
-    akjg.a(this.this$0).a(new akjh(this));
-    akjg.a(this.this$0).show();
+    aknv.a(this.this$0).a(new aknw(this));
+    aknv.a(this.this$0).show();
   }
 }
 

@@ -1,36 +1,41 @@
+import android.content.Context;
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-public class bagl
-  implements bhvu
+final class bagl
+  implements bhuk
 {
-  public bagl(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  bagl(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, bhuf parambhuf, QQAppInterface paramQQAppInterface, Context paramContext, String paramString, bago parambago) {}
   
-  public void a(bhvt parambhvt)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i;
-    switch (parambhvt.a)
+    switch (paramInt)
     {
-    case 2131364362: 
-    default: 
-      i = 0;
     }
-    for (;;)
+    do
     {
-      azmj.b(this.a.app, "dc00898", "", "", "0X8009C65", "0X8009C65", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "" + i);
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g = 2;
+        this.jdField_a_of_type_Bhuf.dismiss();
+        paramView = bagk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContext.getString(2131720691), true);
+        if (this.jdField_a_of_type_Bago != null) {
+          this.jdField_a_of_type_Bago.a(paramView);
+        }
+      } while (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d());
+      bajr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8009ED1");
       return;
-      badt.a(this.a.app, "0X800993B");
-      badt.a(this.a.app, this.a, 1, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
-      i = 1;
-      continue;
-      badt.a(this.a.app, "0X800993C");
-      badt.a(this.a.app, this.a, 2, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
-      i = 2;
-      continue;
-      badt.a(this.a.app, "0X800993C");
-      badt.a(this.a.app, this.a, 3, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
-      i = 3;
-    }
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g = 0;
+      ((bagw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(120)).e(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      this.jdField_a_of_type_Bhuf.dismiss();
+      paramView = bagk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContext.getString(2131720691), true);
+      if (this.jdField_a_of_type_Bago != null) {
+        this.jdField_a_of_type_Bago.a(paramView);
+      }
+    } while (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d());
+    bajr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8009ED2");
   }
 }
 

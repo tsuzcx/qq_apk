@@ -1,29 +1,51 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.graphics.RectF;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-final class berx
-  implements Animation.AnimationListener
+public final class berx
 {
-  berx(View paramView1, View paramView2) {}
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  public bamp a;
+  private List<RectF> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private List<bamp> b = new ArrayList();
   
-  public void onAnimationEnd(Animation paramAnimation)
+  private berx(bamp parambamp)
   {
-    paramAnimation = new beqk(this.a);
-    paramAnimation.setDuration(berw.a());
-    paramAnimation.setFillAfter(true);
-    this.a.startAnimation(paramAnimation);
-    this.a.setVisibility(0);
-    this.b.clearAnimation();
-    this.b.setVisibility(4);
+    this.jdField_a_of_type_Bamp = parambamp;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  private void a(RectF paramRectF, bamp parambamp)
   {
-    this.a.clearAnimation();
-    this.a.setVisibility(4);
+    int j;
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      int i = 0;
+      j = i;
+      if (!localIterator.hasNext()) {
+        break label63;
+      }
+      if (!paramRectF.equals((RectF)localIterator.next())) {
+        break label91;
+      }
+      i = 1;
+    }
+    label63:
+    label91:
+    for (;;)
+    {
+      break;
+      j = 0;
+      if (j == 0)
+      {
+        this.jdField_a_of_type_JavaUtilList.add(paramRectF);
+        this.b.add(parambamp);
+      }
+      return;
+    }
   }
 }
 

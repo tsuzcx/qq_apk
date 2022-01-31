@@ -1,23 +1,18 @@
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.BubbleImageView;
 
-class afvc
-  extends afys
+public class afvc
+  extends aeqi
 {
+  public ajxp a;
   protected ViewGroup a;
-  protected ImageView a;
-  protected TextView a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   protected ETTextView a;
-  protected BubbleImageView a;
   protected TextView b;
-  protected ETTextView b;
-  protected TextView c;
-  public int e;
+  public ETTextView b;
   
-  afvc(afus paramafus) {}
+  public afvc(afuw paramafuw) {}
 }
 
 

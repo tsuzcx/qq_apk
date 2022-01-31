@@ -1,18 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import java.util.ArrayList;
+import com.tencent.image.URLImageView;
 
 class aiox
-  implements View.OnClickListener
 {
-  aiox(aiow paramaiow) {}
+  public URLImageView a;
   
-  public void onClick(View paramView)
-  {
-    AIOLongShotHelper.a(this.a.mActivity, (String)aiow.a(this.a).selectedPhotoList.get(0), new aioy(this));
-    AIOLongShotHelper.a("0X8009DEE");
-  }
+  private aiox(aiov paramaiov) {}
 }
 
 

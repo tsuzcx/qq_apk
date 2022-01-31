@@ -1,14 +1,25 @@
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import feedcloud.FeedCloudMeta.StFeed;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-public class tru
+class tru
+  implements View.OnClickListener
 {
-  public int a;
-  public ExtraTypeInfo a;
-  public FeedCloudMeta.StFeed a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  tru(trt paramtrt) {}
+  
+  public void onClick(View paramView)
+  {
+    if (trt.a(this.a) != null)
+    {
+      if (bdnn.a(trt.a(this.a))) {
+        QLog.w("QCircleTaskCenterAdapter", 1, "task center url is empty");
+      }
+      tqs.a(trt.a(this.a), trt.a(this.a));
+      tzv.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 8, 2L);
+    }
+  }
 }
 
 

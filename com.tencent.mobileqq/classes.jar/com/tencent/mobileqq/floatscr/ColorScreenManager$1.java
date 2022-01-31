@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.floatscr;
 
-import arsi;
-import arsj;
-import bdqg;
+import arwr;
+import arws;
+import bdup;
 import com.tencent.qphone.base.util.QLog;
 
 public class ColorScreenManager$1
   implements Runnable
 {
-  public ColorScreenManager$1(arsj paramarsj, int paramInt, bdqg parambdqg) {}
+  public ColorScreenManager$1(arws paramarws, int paramInt, bdup parambdup) {}
   
   public void run()
   {
     String str = "colorScreen.android." + this.jdField_a_of_type_Int;
-    this.this$0.a(str, this.jdField_a_of_type_Bdqg, null);
-    arsi localarsi = this.this$0.a(this.jdField_a_of_type_Int);
-    if (localarsi == null)
+    this.this$0.a(str, this.jdField_a_of_type_Bdup, null);
+    arwr localarwr = this.this$0.a(this.jdField_a_of_type_Int);
+    if (localarwr == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ColorScreenManager", 1, "getLocalConfig return null, go to download");
@@ -23,7 +23,7 @@ public class ColorScreenManager$1
       this.this$0.a(this.jdField_a_of_type_Int);
       return;
     }
-    this.this$0.a(str, localarsi);
+    this.this$0.a(str, localarwr);
   }
 }
 

@@ -66,7 +66,7 @@ public class msb
       this.jdField_a_of_type_Msq.jdField_e_of_type_Int = msc.a(this.jdField_a_of_type_Msq.i, this.jdField_a_of_type_Msq.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_Msq.jdField_f_of_type_JavaLangString);
     }
     if ((!this.jdField_a_of_type_Msq.jdField_b_of_type_Boolean) && (paramBoolean)) {
-      azmz.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "avRedPacketFinGameSuc", true, 0L, 0L, null, "");
+      azri.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "avRedPacketFinGameSuc", true, 0L, 0L, null, "");
     }
     paramString1 = new StringBuilder().append("onGameEnd, startUin[").append(str1).append("->").append(this.jdField_a_of_type_Msq.jdField_a_of_type_JavaLangString).append("], playUin[").append(str2).append("->").append(this.jdField_a_of_type_Msq.jdField_b_of_type_JavaLangString).append("], mStarter[").append(this.jdField_a_of_type_Msq.jdField_b_of_type_Boolean).append("], score[").append(this.jdField_a_of_type_Msq.jdField_a_of_type_Int).append("/").append(this.jdField_a_of_type_Msq.jdField_b_of_type_Int).append("], Emoji[").append(this.jdField_a_of_type_Msq.jdField_c_of_type_Int).append("/").append(this.jdField_a_of_type_Msq.jdField_d_of_type_Int).append("], money[").append(this.jdField_a_of_type_Msq.i).append("], playerGetRedbagResultCode[").append(this.jdField_a_of_type_Msq.jdField_e_of_type_JavaLangString).append("], playerGetRedbagResultState[").append(this.jdField_a_of_type_Msq.jdField_f_of_type_JavaLangString).append("], isSucc[").append(this.jdField_a_of_type_Msq.jdField_a_of_type_Boolean).append("], exceptionType[").append(this.jdField_a_of_type_Msq.jdField_f_of_type_Int).append("], mRedbagErrorType[").append(this.jdField_a_of_type_Msq.jdField_e_of_type_Int).append("], mRedbagId[").append(this.jdField_a_of_type_Msq.jdField_c_of_type_JavaLangString).append("], mAuthKey[");
     if (paramString4 == null) {}
@@ -76,7 +76,7 @@ public class msb
       localmrt.b(this.jdField_a_of_type_Msq);
       if ((this.jdField_a_of_type_Msq.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Msq.a()))
       {
-        paramString1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696253);
+        paramString1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696255);
         msp.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Msq.jdField_b_of_type_JavaLangString, 0, paramString1);
       }
       if (this.jdField_a_of_type_Msq.jdField_b_of_type_Boolean) {

@@ -1,25 +1,19 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import mqq.app.QQPermissionCallback;
+import android.opengl.GLES20;
 
 class amwi
-  implements QQPermissionCallback
+  implements anfd
 {
-  amwi(amwd paramamwd) {}
+  amwi(amwh paramamwh) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a()
   {
-    paramArrayOfString = new amwl();
-    paramArrayOfString.a = 2;
-    amxd.a(this.a.a.recognitions, amwd.a(this.a), paramArrayOfString);
-    if (amwd.a(this.a) != null) {
-      amwd.a(this.a).a(0, amwd.a(this.a));
-    }
-    amwd.a(this.a, null);
+    GLES20.glUniform1i(amwh.a(this.a), amwh.b(this.a));
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(int paramInt)
   {
-    this.a.grant();
+    amwh.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
+    amwp.a("glGetUniformLocation uDisplayType");
   }
 }
 

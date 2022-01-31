@@ -1,148 +1,162 @@
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.util.PlayModeInteractViewUtils.1;
 
 public class vlq
-  extends vli
 {
-  private final MsgTabPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo;
-  private final List<utx> jdField_a_of_type_JavaUtilList;
-  
-  public vlq(MsgTabPlayInfo paramMsgTabPlayInfo)
+  public static void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem, xwj paramxwj, float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo = paramMsgTabPlayInfo;
-    uuq localuuq = (uuq)vhj.a().getManager(251);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (paramMsgTabPlayInfo.source == 0) {
-      uvv.a(localuuq.a().b(), this.jdField_a_of_type_JavaUtilList, paramMsgTabPlayInfo.nodeUnionId);
+    if (paramInt == ((Integer)paramxwj.a().getTag(2131373884)).intValue())
+    {
+      vee.a(paramString, paramStoryVideoItem.mVid, (int)paramFloat);
+      new StringBuilder().append(paramxwj.a()[0]).append(";").append(String.valueOf((int)paramFloat));
     }
   }
   
-  public static vhg a(List<vhg> paramList)
+  public static void a(xwl paramxwl, xwk paramxwk, FrameLayout paramFrameLayout, xvz paramxvz, int paramInt, StoryVideoItem paramStoryVideoItem)
   {
-    Object localObject1 = null;
-    Object localObject2 = localObject1;
+    if (paramStoryVideoItem == null)
+    {
+      wxe.c("Q.qqstory.PlayModeInteractViewUtils", "preparePollView error!", new IllegalArgumentException("storyVideoItem is null"));
+      return;
+    }
+    wxe.a("Q.qqstory.PlayModeInteractViewUtils", "preparePollView %s index = %d", paramStoryVideoItem.mVid, Integer.valueOf(paramInt));
+    paramFrameLayout.setVisibility(4);
+    if (paramStoryVideoItem.getInteractLayout() == null)
+    {
+      wxe.b("Q.qqstory.PlayModeInteractViewUtils", "preparePollView %s don't have poll view layout", paramStoryVideoItem.mVid);
+      return;
+    }
+    paramFrameLayout.removeAllViews();
+    paramxvz.a(false);
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+    new FrameLayout.LayoutParams(-2, -2);
+    paramFrameLayout.addView(paramxvz.a(), localLayoutParams);
+    paramFrameLayout.forceLayout();
+    b(paramxwl, paramxwk, paramFrameLayout, paramxvz, paramInt, paramStoryVideoItem, false);
+  }
+  
+  public static void a(xwl paramxwl, xwk paramxwk, xvz paramxvz, StoryVideoItem paramStoryVideoItem)
+  {
+    if (paramStoryVideoItem == null) {
+      wxe.c("Q.qqstory.PlayModeInteractViewUtils", "bindPollView error! holder is null!", new IllegalArgumentException("arg storyVideoItem is null"));
+    }
+    while (!(paramxvz instanceof xwj)) {
+      return;
+    }
+    b(paramxwl, paramxwk, paramxvz, paramStoryVideoItem);
+  }
+  
+  public static void b(xwl paramxwl, xwk paramxwk, FrameLayout paramFrameLayout, xvz paramxvz, int paramInt, StoryVideoItem paramStoryVideoItem)
+  {
+    wxe.a("Q.qqstory.PlayModeInteractViewUtils", "showPollView %s index = %d", paramStoryVideoItem.mVid, Integer.valueOf(paramInt));
+    b(paramxwl, paramxwk, paramFrameLayout, paramxvz, paramInt, paramStoryVideoItem, true);
+  }
+  
+  private static void b(xwl paramxwl, xwk paramxwk, FrameLayout paramFrameLayout, xvz paramxvz, int paramInt, StoryVideoItem paramStoryVideoItem, boolean paramBoolean)
+  {
+    uxj localuxj = paramStoryVideoItem.getInteractLayout();
+    if (localuxj == null) {
+      wxe.b("Q.qqstory.PlayModeInteractViewUtils", "onInitPollView video has no poll attributes, not a poll video item");
+    }
+    View localView;
     int i;
-    if (paramList != null)
+    int j;
+    int k;
+    int m;
+    float f1;
+    float f2;
+    float f3;
+    do
     {
-      localObject2 = localObject1;
-      if (paramList.size() > 0)
+      return;
+      wxe.b("Q.qqstory.PlayModeInteractViewUtils", "initPollView %d", Integer.valueOf(paramInt));
+      localView = paramxvz.a();
+      localView.setTag(2131373884, Integer.valueOf(paramInt));
+      i = localuxj.b;
+      j = localuxj.c;
+      k = localuxj.d;
+      m = localuxj.e;
+      f1 = localuxj.f;
+      f2 = localuxj.g;
+      f3 = localuxj.h;
+      String[] arrayOfString = localuxj.a;
+      if ((arrayOfString == null) || (arrayOfString.length == 0))
       {
-        int j = paramList.size();
-        i = 0;
-        localObject1 = null;
-        if (i >= j) {
-          break label100;
-        }
-        localObject2 = (vhg)paramList.get(i);
-        if (!((vhg)localObject2).b) {
-          break label60;
-        }
+        wxe.c("Q.qqstory.PlayModeInteractViewUtils", "onInitPollView poll [contents] attributes illegal or missing!");
+        return;
       }
+      wxe.b("Q.qqstory.PlayModeInteractViewUtils", "[%d]Using json poll layout screen_size(%d, %d) poll_size(%d, %d) center(%.1f, %.1f) rotation(%.1f)", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f3) });
+      paramxvz.a(arrayOfString);
+      if (paramFrameLayout.getWidth() != 0) {
+        break;
+      }
+    } while (!paramBoolean);
+    paramFrameLayout.post(new PlayModeInteractViewUtils.1(paramxwl, paramxwk, paramFrameLayout, paramxvz, paramInt, paramStoryVideoItem));
+    return;
+    paramInt = paramFrameLayout.getWidth();
+    int n = paramFrameLayout.getHeight();
+    paramxvz.a(localuxj.b, localuxj.c, paramInt, n, localuxj.d, localuxj.e, localuxj.f, localuxj.g, localuxj.h);
+    paramxvz.a();
+    a(paramxwl, paramxwk, paramxvz, paramStoryVideoItem);
+    localView.setVisibility(0);
+    paramFrameLayout.setVisibility(0);
+    wxe.b("Q.qqstory.PlayModeInteractViewUtils", "onInitPollView src=(w=%d, h=%d), poll=(x=%.2f, y=%.2f, w=%d, h=%d), r=%.2f, dst(%d, %d)", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(k), Integer.valueOf(m), Float.valueOf(f3), Integer.valueOf(paramInt), Integer.valueOf(n) });
+    wxe.a("Q.qqstory.PlayModeInteractViewUtils", "onInitPollView view(%d, %d) parent(%d, %d)", Integer.valueOf(localView.getLeft()), Integer.valueOf(localView.getTop()), Integer.valueOf(paramFrameLayout.getLeft()), Integer.valueOf(paramFrameLayout.getRight()));
+  }
+  
+  private static void b(xwl paramxwl, xwk paramxwk, xvz paramxvz, StoryVideoItem paramStoryVideoItem)
+  {
+    wxe.b("Q.qqstory.PlayModeInteractViewUtils", "bindRateView, vid=%s, rateResult=%s, totalScore=%s, totalCount=%s", paramStoryVideoItem.mVid, Integer.valueOf(paramStoryVideoItem.mRateResult), Long.valueOf(paramStoryVideoItem.mTotalScore), Integer.valueOf(paramStoryVideoItem.mTotalRateCount));
+    if (!(paramxvz instanceof xwj)) {
+      return;
     }
-    return localObject2;
-    label60:
-    if (localObject1 == null) {
-      localObject1 = localObject2;
-    }
-    for (;;)
+    paramxvz = (xwj)paramxvz;
+    boolean bool = TextUtils.equals(paramStoryVideoItem.mOwnerUid, QQStoryContext.a().b());
+    if (paramStoryVideoItem.mRateResult > 0)
     {
-      i += 1;
-      break;
-      if ((localObject1.jdField_a_of_type_Boolean) && (!((vhg)localObject2).jdField_a_of_type_Boolean))
+      paramxvz.b(false);
+      paramxvz.a(paramStoryVideoItem.mRateResult);
+      paramxvz.a(null);
+      if (paramStoryVideoItem.mTotalRateCount > 0)
       {
-        return (vhg)paramList.get(i);
-        label100:
-        return localObject1;
+        paramxvz.a(true);
+        paramxvz.a(paramStoryVideoItem.mTotalScore, paramStoryVideoItem.mTotalRateCount);
+        if (bool)
+        {
+          paramxvz.a(paramxwk, true);
+          return;
+        }
+        paramxvz.a(null, false);
+        return;
       }
+      paramxvz.a(false);
+      return;
     }
+    if (StoryVideoItem.isFakeVid(paramStoryVideoItem.mVid))
+    {
+      paramxvz.b(false);
+      paramxvz.a(0.0F);
+      paramxvz.a(null);
+      paramxvz.a(false);
+      return;
+    }
+    paramxvz.b(true);
+    paramxvz.a(0.0F);
+    paramxvz.a(paramxwl);
+    if ((bool) && (paramStoryVideoItem.mTotalRateCount > 0))
+    {
+      paramxvz.a(true);
+      paramxvz.a(paramStoryVideoItem.mTotalScore, paramStoryVideoItem.mTotalRateCount);
+      paramxvz.a(paramxwk, true);
+      return;
+    }
+    paramxvz.a(false);
   }
-  
-  public List<vlk> a(List<vld> paramList)
-  {
-    ArrayList localArrayList = new ArrayList(1);
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localArrayList.add(new vls((vlr)paramList.next()));
-    }
-    return localArrayList;
-  }
-  
-  public vlg a()
-  {
-    Object localObject = new vlr(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.nodeUnionId);
-    ((vlr)localObject).jdField_a_of_type_Utx = ((uuq)QQStoryContext.a().getManager(251)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.nodeUnionId);
-    vlg localvlg = new vlg((vld)localObject, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mStartVid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mStartVideoFeedId);
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mVids != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mVids.isEmpty()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mFeedIdMap != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mFeedIdMap.isEmpty()))
-    {
-      localObject = new vle((vld)localObject);
-      ((vle)localObject).jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mVids;
-      ((vle)localObject).jdField_a_of_type_JavaUtilMap = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mFeedIdMap;
-      localvlg.a = ((vle)localObject);
-    }
-    return localvlg;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt, vlj paramvlj)
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.source == 1)
-    {
-      localObject = ((uhu)vhj.a().getManager(197)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.uin);
-      if (localObject == null) {
-        break label112;
-      }
-      ((utx)localObject).f = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.source;
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
-    }
-    for (;;)
-    {
-      localObject = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((List)localObject).add(vlr.a((utx)localIterator.next()));
-      }
-      label112:
-      wsv.d("Q.qqstory.player.data.MsgTabPlayPageLoader", "no data for header group");
-    }
-    paramvlj.a(new ErrorMessage(), (List)localObject, true);
-  }
-  
-  public boolean a(vle paramvle)
-  {
-    if ((paramvle == null) || (!paramvle.d()))
-    {
-      wsv.c("Q.qqstory.player.data.MsgTabPlayPageLoader", "needSyncVidList. need sync");
-      return true;
-    }
-    xmh.a(paramvle.jdField_a_of_type_Vld instanceof vlr);
-    vlr localvlr = (vlr)paramvle.jdField_a_of_type_Vld;
-    if (localvlr.jdField_a_of_type_Boolean)
-    {
-      wsv.a("Q.qqstory.player.data.MsgTabPlayPageLoader", "won't needSyncVidList. groupId %s is end", localvlr.a());
-      return false;
-    }
-    int i = localvlr.jdField_a_of_type_Int;
-    if (paramvle.jdField_a_of_type_Int != i) {
-      wsv.a("Q.qqstory.player.data.MsgTabPlayPageLoader", "needSyncVidList() groupId %s, position not match: %d != %d", localvlr.a(), Integer.valueOf(paramvle.jdField_a_of_type_Int), Integer.valueOf(i));
-    }
-    if ((i < 0) || (paramvle.jdField_a_of_type_JavaUtilList.size() - i < 10))
-    {
-      wsv.b("Q.qqstory.player.data.MsgTabPlayPageLoader", "needSyncVidList. need sync postion=%d, vidlist.size=%d, group=%s", Integer.valueOf(i), Integer.valueOf(paramvle.jdField_a_of_type_JavaUtilList.size()), paramvle);
-      return true;
-    }
-    wsv.b("Q.qqstory.player.data.MsgTabPlayPageLoader", "needSyncVidList. not need sync postion=%d, vidlist.size=%d, group=%s", Integer.valueOf(i), Integer.valueOf(paramvle.jdField_a_of_type_JavaUtilList.size()), paramvle);
-    return false;
-  }
-  
-  public void b() {}
 }
 
 

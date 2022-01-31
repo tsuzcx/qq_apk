@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.10;
 import com.tencent.qphone.base.util.QLog;
 
-class asvz
-  implements INetEventHandler
+public class asvz
+  implements DialogInterface.OnClickListener
 {
-  asvz(asvu paramasvu) {}
+  public asvz(PresenceInterfaceImpl.10 param10) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (asvu.a(this.a) == null) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupVideoManager", 2, "onNetChangeEvent connect:" + paramBoolean + " isMSFConnect:" + asvu.a(this.a).e);
-      }
-    } while (!paramBoolean);
-    this.a.a(false);
+    QLog.d("PresenceInterfaceImpl", 2, "user click button");
   }
 }
 

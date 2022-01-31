@@ -1,63 +1,22 @@
-public final class ahre
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+
+public class ahre
+  extends RecyclerView.ItemDecoration
 {
-  private static boolean m(int paramInt)
+  private int a;
+  
+  public ahre(int paramInt)
   {
-    return paramInt == -3;
+    this.a = paramInt;
   }
   
-  private static boolean n(int paramInt)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    return paramInt == -2;
-  }
-  
-  private static boolean o(int paramInt)
-  {
-    return paramInt == -1;
-  }
-  
-  private static boolean p(int paramInt)
-  {
-    return paramInt < 0;
-  }
-  
-  private static boolean q(int paramInt)
-  {
-    return paramInt == 0;
-  }
-  
-  private static boolean r(int paramInt)
-  {
-    return paramInt == 1;
-  }
-  
-  private static boolean s(int paramInt)
-  {
-    return paramInt == 2;
-  }
-  
-  private static boolean t(int paramInt)
-  {
-    return paramInt == 3;
-  }
-  
-  private static boolean u(int paramInt)
-  {
-    return paramInt == 4;
-  }
-  
-  private static boolean v(int paramInt)
-  {
-    return paramInt == 5;
-  }
-  
-  private static boolean w(int paramInt)
-  {
-    return paramInt > 2;
-  }
-  
-  private static boolean x(int paramInt)
-  {
-    return paramInt >= 1;
+    paramRect.right = this.a;
   }
 }
 

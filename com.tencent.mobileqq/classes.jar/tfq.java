@@ -3,7 +3,7 @@ import android.view.ViewGroup;
 
 public class tfq
 {
-  public static biac<stFeed> a(int paramInt, ViewGroup paramViewGroup, tbb paramtbb)
+  public static biej<stFeed> a(int paramInt, ViewGroup paramViewGroup, tbb paramtbb)
   {
     switch (paramInt)
     {

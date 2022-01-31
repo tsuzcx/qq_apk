@@ -1,18 +1,10 @@
-public class bjna
+public abstract interface bjna
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b = "";
-  public String c = "";
-  public String d = "";
+  public abstract void a();
   
-  public bjna()
-  {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(float paramFloat1, float paramFloat2);
 }
 
 

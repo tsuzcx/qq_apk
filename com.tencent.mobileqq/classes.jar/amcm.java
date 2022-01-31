@@ -1,26 +1,68 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import java.util.ArrayList;
+import java.util.List;
 
-class amcm
-  implements Comparator<Map.Entry<String, awbv>>
+public class amcm
+  implements alpg
 {
-  amcm(amcl paramamcl) {}
+  protected void a() {}
   
-  public int a(Map.Entry<String, awbv> paramEntry1, Map.Entry<String, awbv> paramEntry2)
+  protected void a(boolean paramBoolean) {}
+  
+  protected void a(boolean paramBoolean, List<Long> paramList) {}
+  
+  protected void a(boolean paramBoolean, List<Long> paramList, int paramInt) {}
+  
+  protected void b(boolean paramBoolean, List<Long> paramList) {}
+  
+  protected void b(boolean paramBoolean, List<Long> paramList, int paramInt) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramEntry1 = ((String)paramEntry1.getKey()).split("&")[1];
-    int i = Integer.parseInt(paramEntry1.split("-")[0]);
-    int j = Integer.parseInt(paramEntry1.split("-")[1]);
-    paramEntry1 = ((String)paramEntry2.getKey()).split("&")[1];
-    int k = Integer.parseInt(paramEntry1.split("-")[0]);
-    int m = Integer.parseInt(paramEntry1.split("-")[1]);
-    if (i > k) {
-      return 1;
+    int j = 0;
+    int i;
+    if (paramObject != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      if ((paramObject instanceof long[])) {
+        paramObject = (long[])paramObject;
+      }
+      Object[] arrayOfObject;
+      for (i = 0;; i = ((Integer)arrayOfObject[1]).intValue())
+      {
+        int k = paramObject.length;
+        while (j < k)
+        {
+          localArrayList.add(Long.valueOf(paramObject[j]));
+          j += 1;
+        }
+        arrayOfObject = (Object[])paramObject;
+        paramObject = (long[])arrayOfObject[0];
+      }
+      paramObject = localArrayList;
     }
-    if (i == k) {
-      return j - m;
+    for (;;)
+    {
+      switch (paramInt)
+      {
+      default: 
+        return;
+      case 1: 
+        a(paramBoolean);
+        return;
+      case 2: 
+        a(paramBoolean, paramObject);
+        a(paramBoolean, paramObject, i);
+        return;
+      case 3: 
+        b(paramBoolean, paramObject);
+        b(paramBoolean, paramObject, i);
+        return;
+      }
+      a();
+      return;
+      paramObject = null;
+      i = 0;
     }
-    return -1;
   }
 }
 

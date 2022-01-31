@@ -1,78 +1,82 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aopb
-  implements aoga<String>
+  extends aokh<aopa>
 {
-  public String a;
-  public HashMap<String, aopc> a;
-  
-  public aopb()
+  public static boolean e()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashMap.put("*", new aopc(this));
-    this.jdField_a_of_type_JavaLangString = "";
+    aopa localaopa = (aopa)aoks.a().a(613);
+    if (localaopa != null) {}
+    for (boolean bool = localaopa.a();; bool = false)
+    {
+      QLog.d("OpenSdkD55Processor", 1, new Object[] { "isSwitchOpen = ", Boolean.valueOf(bool) });
+      return bool;
+    }
   }
   
-  public void a(String paramString)
+  public int a()
   {
-    int i;
-    Object localObject2;
-    aopc localaopc;
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      if (localJSONObject.length() == 0) {
-        return;
-      }
-      this.jdField_a_of_type_JavaLangString = paramString;
-      paramString = localJSONObject.names();
-      i = 0;
-      if (i >= paramString.length()) {
-        break label212;
-      }
-      localObject1 = paramString.getString(i).trim().toLowerCase();
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label213;
-      }
-      localObject2 = localJSONObject.optJSONObject((String)localObject1);
-      localaopc = new aopc(this);
-      localaopc.c = ((JSONObject)localObject2).getInt("CellNetAutoDownloadSize");
-      localaopc.b = ((JSONObject)localObject2).getInt("CellNetWarningSize");
-      localaopc.a = ((JSONObject)localObject2).getInt("WiFiNetAutoDownloadSize");
-      if (!((String)localObject1).contains(",")) {
-        this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, localaopc);
-      }
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("", 1, QLog.getStackTraceString(paramString));
-      return;
-    }
-    Object localObject1 = ((String)localObject1).split(",");
-    int j = 0;
+    return 613;
+  }
+  
+  @NonNull
+  public aopa a(int paramInt)
+  {
+    return new aopa();
+  }
+  
+  @Nullable
+  public aopa a(aoko[] paramArrayOfaoko)
+  {
+    int i = 0;
+    if (paramArrayOfaoko == null) {}
     for (;;)
     {
-      if (j < localObject1.length)
-      {
-        localObject2 = localObject1[j].trim().toLowerCase();
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, localaopc);
-        }
-      }
-      else
-      {
-        label212:
-        label213:
-        i += 1;
+      QLog.d("OpenSdkD55Processor", 1, new Object[] { "onParsed confFiles.length=", Integer.valueOf(i) });
+      if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0)) {
         break;
       }
-      j += 1;
+      new aopa();
+      return aopa.a(paramArrayOfaoko);
+      i = paramArrayOfaoko.length;
     }
+    return null;
+  }
+  
+  public Class<aopa> a()
+  {
+    return aopa.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aopa paramaopa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenSdkD55Processor", 2, "onUpdate " + paramaopa.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

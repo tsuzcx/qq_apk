@@ -1,8 +1,8 @@
 package com.tencent.biz.webviewplugin;
 
-import becq;
+import begz;
 import com.tencent.qphone.base.util.QLog;
-import zbx;
+import zgm;
 
 class WebSoPlugin$2$1
   implements Runnable

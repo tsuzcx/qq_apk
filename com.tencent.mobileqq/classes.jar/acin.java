@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class acin
+  implements bett
 {
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  public String a;
-  boolean jdField_a_of_type_Boolean;
-  public String b;
+  public acin(BaseChatPie paramBaseChatPie) {}
   
-  protected acin(ChatHistory paramChatHistory) {}
+  public void a(Bundle paramBundle)
+  {
+    this.a.a.b(false);
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    this.a.a.b(true);
+  }
 }
 
 

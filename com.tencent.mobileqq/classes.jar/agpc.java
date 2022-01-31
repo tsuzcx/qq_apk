@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agpc
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  agpc(agot paramagot) {}
+  agpc(agoz paramagoz) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) {
-      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8004EFC", "0X8004EFC", 0, 0, "", "", "" + this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId, "");
-    }
-    this.a.x();
+    paramDialogInterface.dismiss();
+    bdhb.d(this.a.g);
+    this.a.g = "";
   }
 }
 

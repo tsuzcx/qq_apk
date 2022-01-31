@@ -1,85 +1,39 @@
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Intent;
+import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
-public abstract class arhg
-  extends arhm
+public final class arhg
+  extends WebViewClient
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final IHostInterface.IWebClient jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient;
   
-  public arhg(QQAppInterface paramQQAppInterface, Context paramContext)
+  private arhg(Context paramContext, IHostInterface.IWebClient paramIWebClient)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient = paramIWebClient;
   }
   
-  protected abstract int a();
-  
-  protected abstract long a();
-  
-  public SessionInfo a()
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
-  
-  public ChatMessage a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-  }
-  
-  protected abstract String a();
-  
-  public void a(SessionInfo paramSessionInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-  }
-  
-  public void a(ChatMessage paramChatMessage)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected abstract String b();
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    String str = a();
-    long l = a();
-    if (bdcs.b(b())) {
-      return false;
+    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient == null) || (!this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient.onPageFinished(paramWebView, paramString))) {
+      super.onPageFinished(paramWebView, paramString);
     }
-    int i = a();
-    if ((i == 2) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1) && (i == 8))) {
-      return false;
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient == null) || (!this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient.shouldOverrideUrlLoading(paramWebView, paramString)))
+    {
+      paramWebView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserDelegationActivity.class);
+      paramWebView.putExtra("param_force_internal_browser", true);
+      paramWebView.putExtra("url", paramString);
+      aemu.a(this.jdField_a_of_type_AndroidContentContext, paramWebView, paramString);
     }
-    if (arni.a(str) != 2) {
-      return false;
-    }
-    if (!arni.a()) {
-      return false;
-    }
-    if ((!TextUtils.isEmpty(str)) && (l > 0L) && (l > ((aqpu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317)).a(bcgk.a(str)).b)) {
-      return true;
-    }
-    return l > 1048576L;
+    return true;
   }
 }
 

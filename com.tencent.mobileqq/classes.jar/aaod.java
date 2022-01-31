@@ -1,22 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.ad.tangram.Ad;
+import android.content.Context;
 
-public class aaod
+final class aaod
 {
-  public static void a(int paramInt, String paramString1, String paramString2)
-  {
-    aaob.a("http://t.gdt.qq.com/conv/src/50/conv?" + "click_id={$clickid$}&product_id={$appid$}&conv_type={$convtype$}&conv_time={$convtime$}".replace("{$clickid$}", paramString1).replace("{$appid$}", paramString2).replace("{$convtype$}", new StringBuilder().append(paramInt).append("").toString()).replace("{$convtime$}", new StringBuilder().append(System.currentTimeMillis() / 1000L).append("").toString()));
-  }
+  public int a = -2147483648;
+  public int b = -2147483648;
+  public int c = -2147483648;
+  public int d = -2147483648;
   
-  public static void a(Ad paramAd, int paramInt)
+  public aaod(Context paramContext, int paramInt1, int paramInt2)
   {
-    if (TextUtils.isEmpty(paramAd.getUrlForEffect()))
+    if ((paramInt1 <= 0) || (paramInt2 <= 0))
     {
-      aanp.d("GdtTraceReporter", String.format("report %d error", new Object[] { Integer.valueOf(paramInt) }));
+      aase.d("GdtBannerViewWithLetterStyle", "constructor");
       return;
     }
-    aanp.b("GdtTraceReporter", String.format("report %d", new Object[] { Integer.valueOf(paramInt) }));
-    aaob.a(paramAd.getUrlForEffect().replaceAll("__CLICK_ID__", paramAd.getTraceId()).replaceAll("__ACTION_ID__", String.valueOf(paramInt)));
+    this.a = Double.valueOf(0.02892561983471075D * paramInt1).intValue();
+    this.b = Double.valueOf(0.02666666666666667D * paramInt2).intValue();
+    this.c = Double.valueOf(0.06666666666666667D * paramInt2).intValue();
+    this.d = Double.valueOf(0.16D * paramInt2).intValue();
   }
 }
 

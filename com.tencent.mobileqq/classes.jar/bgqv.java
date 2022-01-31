@@ -1,13 +1,10 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.json.JSONArray;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface bgqv
+public class bgqv
 {
-  String a();
+  public JSONArray a;
+  public boolean a;
+  public boolean b;
 }
 
 

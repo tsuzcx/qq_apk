@@ -1,27 +1,75 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
+import java.io.File;
+import java.util.Map;
 
-public class uwz
-  implements View.OnClickListener
+class uwz
+  extends uya
 {
-  public uwz(MsgTabStoryNodeView paramMsgTabStoryNodeView, Context paramContext) {}
-  
-  public void onClick(View paramView)
+  uwz(uwy paramuwy, umx paramumx)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeView.a.isShown()) {}
-    for (int i = 1;; i = 0)
+    super(paramumx);
+  }
+  
+  protected uyd a(uyc... paramVarArgs)
+  {
+    uyd localuyd = super.a(paramVarArgs);
+    paramVarArgs = paramVarArgs[0];
+    String str;
+    if (localuyd.jdField_a_of_type_Int == 0) {
+      str = paramVarArgs.b.substring(0, paramVarArgs.b.length() - 4);
+    }
+    try
     {
-      wta.a("msg_tab", "clk_all", 0, i, new String[0]);
-      paramView = bdds.a(QQStoryContext.a(), this.jdField_a_of_type_AndroidContentContext, "qqstory://qstory/open?from=msgTab");
-      xmh.a(paramView);
-      if (paramView != null) {
-        paramView.c();
+      xrg.d(str);
+      label42:
+      int i = ndr.a(paramVarArgs.b, str);
+      if (i == 0)
+      {
+        if (uwy.a(str, false)) {
+          try
+          {
+            paramVarArgs = this.a.a(new File(str, "config.json"));
+            if (paramVarArgs != null)
+            {
+              wxe.d("FileDownloadTask", "parse config file success !");
+              this.a.a.put(str, paramVarArgs);
+              return localuyd;
+            }
+          }
+          catch (Exception paramVarArgs)
+          {
+            for (;;)
+            {
+              wxe.c("FileDownloadTask", "parse config failed", paramVarArgs);
+              paramVarArgs = null;
+            }
+            wxe.e("FileDownloadTask", "parse config failed : %s, %s", new Object[] { str, "config.json" });
+            return new uyd(localuyd.jdField_a_of_type_Uyc, -1, "illegal config file");
+          }
+        }
+        wxe.e("FileDownloadTask", "unzip success, but this is an illegal filter folder : %s", new Object[] { str });
+        return new uyd(localuyd.jdField_a_of_type_Uyc, -1, "illegal folder");
       }
+      wxe.e("FileDownloadTask", "download success, but unzip failed : %d", new Object[] { Integer.valueOf(i) });
+      return new uyd(localuyd.jdField_a_of_type_Uyc, i, "unzip failed");
+    }
+    catch (Exception localException)
+    {
+      break label42;
+    }
+  }
+  
+  protected void a(uyd arg1)
+  {
+    wxe.a("FileDownloadTask", "downloadConfigFile onPostExecute : %s", ???);
+    if (???.jdField_a_of_type_Int == 0) {
+      wxe.d("FileDownloadTask", "get filter resource success : %s", new Object[] { ???.jdField_a_of_type_Uyc.jdField_a_of_type_JavaLangString });
+    }
+    synchronized (this.a.b)
+    {
+      uwy.a(this.a, null);
+      this.a.d();
       return;
+      wxe.d("FileDownloadTask", "get filter resource failed : %d : %s : %s", new Object[] { Integer.valueOf(???.jdField_a_of_type_Int), ???.jdField_a_of_type_JavaLangString, ???.jdField_a_of_type_Uyc.jdField_a_of_type_JavaLangString });
     }
   }
 }

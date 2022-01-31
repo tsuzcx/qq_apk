@@ -1,20 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import com.tencent.mobileqq.data.PhoneContactAdd;
 
 public class avuw
-  extends AnimatorListenerAdapter
+  extends avun
 {
-  public avuw(ScanOcrView paramScanOcrView, int paramInt) {}
+  public PhoneContactAdd a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public avuw(PhoneContactAdd paramPhoneContactAdd)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.b) {
-      ScanOcrView.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView, this.jdField_a_of_type_Int + 1);
-    }
-    if (this.jdField_a_of_type_Int == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.c();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataPhoneContactAdd = paramPhoneContactAdd;
+    this.jdField_a_of_type_Long = paramPhoneContactAdd.timestamp;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

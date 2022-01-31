@@ -1,54 +1,43 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import java.util.LinkedList;
-import java.util.List;
+import android.graphics.Color;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 public class blju
-  extends RecyclerView.Adapter<bljw>
+  extends FrameLayout
 {
-  private final int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bljx jdField_a_of_type_Bljx;
-  private List<bljv> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private int jdField_a_of_type_Int = Color.parseColor("#BABABA");
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private int b = -1;
   
-  public blju(@NonNull Context paramContext, @Nullable bljx parambljx)
+  public blju(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bljx = parambljx;
-    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131296270);
+    super(paramContext);
+    a(paramContext);
   }
   
-  @NonNull
-  public bljw a(@NonNull ViewGroup paramViewGroup, int paramInt)
+  private void a(Context paramContext)
   {
-    return new bljw(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558533, paramViewGroup, false), this.jdField_a_of_type_Bljx, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 15.0F);
+    addView(this.jdField_a_of_type_AndroidWidgetTextView);
   }
   
-  public List<bljv> a()
+  public TextView a()
   {
-    return new LinkedList(this.jdField_a_of_type_JavaUtilList);
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
   
-  public void a(@NonNull bljw parambljw, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    parambljw.a((bljv)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
-  }
-  
-  public void a(@NonNull List<bljv> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (paramBoolean) {}
+    for (int i = this.b;; i = this.jdField_a_of_type_Int)
+    {
+      localTextView.setTextColor(i);
+      return;
+    }
   }
 }
 

@@ -1,31 +1,12 @@
-import android.text.TextUtils;
-import io.flutter.plugin.common.BinaryMessenger;
-import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodCodec;
-
-public abstract class arsl
-  extends arsk
+public class arsl
 {
-  MethodChannel a;
+  int a;
+  int b;
   
-  public arsl(String paramString, BinaryMessenger paramBinaryMessenger)
+  public String toString()
   {
-    super(paramString, paramBinaryMessenger);
-    MethodCodec localMethodCodec = a();
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalArgumentException("channelName must not be empty");
-    }
-    if (localMethodCodec == null) {
-      throw new IllegalArgumentException("methodCodec must not be null");
-    }
-    this.a = new MethodChannel(paramBinaryMessenger, paramString, a());
-    this.a.setMethodCallHandler(a());
+    return "Type [type1=" + this.a + ", type2=" + this.b + "]";
   }
-  
-  public abstract MethodChannel.MethodCallHandler a();
-  
-  public abstract MethodCodec a();
 }
 
 

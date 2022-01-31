@@ -1,21 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import com.tencent.qphone.base.util.QLog;
 
-class atou
-  implements View.OnClickListener
+public class atou
+  extends BroadcastReceiver
 {
-  atou(atop paramatop, atof paramatof) {}
+  private atou(QQMusicPlayService paramQQMusicPlayService) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Atop.jdField_a_of_type_Atof.a()) {}
-    while (paramView.isSelected()) {
-      return;
+    if (paramIntent != null)
+    {
+      QLog.d("QQMusicPlay.QQMusicPlayService", 1, "QQMusicPlayBroadcastReceiver onReceive,action:" + paramIntent.getAction());
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("QQMusicPlay_exit_action"))))
+      {
+        if (QQMusicPlayService.a(this.a) == null) {
+          break label150;
+        }
+        QQMusicPlayService.a(this.a).sendEmptyMessage(11);
+      }
     }
-    this.jdField_a_of_type_Atop.a(paramView);
-    this.jdField_a_of_type_Atop.jdField_a_of_type_Int = 3;
-    atof.a(this.jdField_a_of_type_Atop.jdField_a_of_type_Atof, Integer.valueOf(3));
-    azmj.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 1, 0, "0", "0", "0", "");
+    return;
+    label150:
+    this.a.stopSelf();
   }
 }
 

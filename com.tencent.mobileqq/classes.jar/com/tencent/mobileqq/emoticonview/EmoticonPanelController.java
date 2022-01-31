@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
-import aljq;
-import alpo;
+import alof;
+import alud;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -17,35 +17,35 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import apjf;
-import apnw;
-import apou;
-import appt;
-import appv;
-import apqa;
-import apqf;
-import apql;
-import apqm;
-import apqn;
-import apqo;
-import apqq;
-import apqu;
-import apqz;
-import aprf;
-import aprg;
-import aprl;
-import aprm;
-import apro;
-import apsm;
-import apsn;
-import apsp;
-import apsr;
-import apuk;
-import asot;
-import aube;
-import azmj;
-import bdjd;
-import bdje;
+import apno;
+import apsf;
+import aptd;
+import apuc;
+import apue;
+import apuj;
+import apuo;
+import apuu;
+import apuv;
+import apuw;
+import apux;
+import apuz;
+import apvd;
+import apvi;
+import apvo;
+import apvp;
+import apvu;
+import apvv;
+import apvx;
+import apwv;
+import apww;
+import apwy;
+import apxa;
+import apyt;
+import astc;
+import aufn;
+import azqs;
+import bdnm;
+import bdnn;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -64,7 +64,7 @@ import java.util.List;
 import mqq.app.MobileQQ;
 
 public class EmoticonPanelController
-  implements ViewPager.OnPageChangeListener, apsn
+  implements ViewPager.OnPageChangeListener, apww
 {
   public static boolean a;
   public static int b;
@@ -76,19 +76,19 @@ public class EmoticonPanelController
   View jdField_a_of_type_AndroidViewView;
   public ImageView a;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public appt a;
-  private appv jdField_a_of_type_Appv;
-  private apqa jdField_a_of_type_Apqa;
-  private apqf jdField_a_of_type_Apqf;
-  public apqo a;
-  private apqq jdField_a_of_type_Apqq;
-  private apqu jdField_a_of_type_Apqu;
-  private apqz jdField_a_of_type_Apqz;
-  private aprf jdField_a_of_type_Aprf;
-  private aprg jdField_a_of_type_Aprg;
-  public aprl a;
-  private apuk jdField_a_of_type_Apuk;
-  public asot a;
+  public apuc a;
+  private apue jdField_a_of_type_Apue;
+  private apuj jdField_a_of_type_Apuj;
+  private apuo jdField_a_of_type_Apuo;
+  public apux a;
+  private apuz jdField_a_of_type_Apuz;
+  private apvd jdField_a_of_type_Apvd;
+  private apvi jdField_a_of_type_Apvi;
+  private apvo jdField_a_of_type_Apvo;
+  private apvp jdField_a_of_type_Apvp;
+  public apvu a;
+  private apyt jdField_a_of_type_Apyt;
+  public astc a;
   public BaseChatPie a;
   public QQAppInterface a;
   private EmoticonMainPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
@@ -97,7 +97,7 @@ public class EmoticonPanelController
   public QQViewPager a;
   List<EmoticonPackage> jdField_a_of_type_JavaUtilList = new ArrayList();
   private int[] jdField_a_of_type_ArrayOfInt;
-  public List<apsm> b;
+  public List<apwv> b;
   public boolean b;
   int c;
   public boolean c;
@@ -127,21 +127,21 @@ public class EmoticonPanelController
     this.jdField_d_of_type_Boolean = true;
     this.jdField_c_of_type_Int = 0;
     this.jdField_g_of_type_Boolean = false;
-    this.jdField_a_of_type_Asot = new asot("emoticon_panel", "com.tencent.mobileqq:tool");
+    this.jdField_a_of_type_Astc = new astc("emoticon_panel", "com.tencent.mobileqq:tool");
     this.jdField_g_of_type_Int = 0;
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = paramEmoticonMainPanel;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Apqo = new apqo(paramEmoticonMainPanel);
+    this.jdField_a_of_type_Apux = new apux(paramEmoticonMainPanel);
     this.jdField_e_of_type_Int = paramContext.getResources().getConfiguration().orientation;
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
     this.i = false;
-    this.jdField_a_of_type_Appv = new appv(this);
-    this.jdField_a_of_type_Apqq = ((apqq)a(1));
-    this.jdField_a_of_type_Apqu = ((apqu)a(2));
-    this.jdField_a_of_type_Apqf = ((apqf)a(3));
-    this.jdField_a_of_type_Aprg = ((aprg)a(4));
-    this.jdField_a_of_type_Apqz = ((apqz)a(5));
-    this.jdField_a_of_type_Aprf = ((aprf)a(6));
+    this.jdField_a_of_type_Apue = new apue(this);
+    this.jdField_a_of_type_Apuz = ((apuz)a(1));
+    this.jdField_a_of_type_Apvd = ((apvd)a(2));
+    this.jdField_a_of_type_Apuo = ((apuo)a(3));
+    this.jdField_a_of_type_Apvp = ((apvp)a(4));
+    this.jdField_a_of_type_Apvi = ((apvi)a(5));
+    this.jdField_a_of_type_Apvo = ((apvo)a(6));
   }
   
   private void a(long paramLong, int paramInt)
@@ -163,7 +163,7 @@ public class EmoticonPanelController
     }
     SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("clubContentVersion", 0);
     if (localSharedPreferences.getBoolean("force_to_recommend_panel_sp", false)) {
-      if ((localObject == null) || ((((List)localObject).size() > jdField_d_of_type_Int) && (((apsm)((List)localObject).get(jdField_d_of_type_Int)).jdField_a_of_type_Int == 8)))
+      if ((localObject == null) || ((((List)localObject).size() > jdField_d_of_type_Int) && (((apwv)((List)localObject).get(jdField_d_of_type_Int)).jdField_a_of_type_Int == 8)))
       {
         jdField_b_of_type_Int = jdField_d_of_type_Int;
         m = jdField_d_of_type_Int;
@@ -183,7 +183,7 @@ public class EmoticonPanelController
     }
     for (;;)
     {
-      bdjd.a("AIO_EmoticonPanel_EnterSecond", null);
+      bdnm.a("AIO_EmoticonPanel_EnterSecond", null);
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonPanelController", 2, "[Performance] switchTabMode to , duration:" + (System.currentTimeMillis() - paramLong) + ",mSecondTabInited:" + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.i);
       }
@@ -212,21 +212,21 @@ public class EmoticonPanelController
       e(m);
       if ((this.jdField_e_of_type_Boolean) && (m == 0))
       {
-        localObject = (apsm)((List)localObject).get(m);
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.b((apsm)localObject);
+        localObject = (apwv)((List)localObject).get(m);
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.b((apwv)localObject);
       }
     }
   }
   
   private int b(String paramString)
   {
-    return this.jdField_a_of_type_Apqz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_b_of_type_JavaUtilList);
+    return this.jdField_a_of_type_Apvi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_b_of_type_JavaUtilList);
   }
   
   private void r()
   {
     int n = 0;
-    if (this.jdField_a_of_type_Apuk == null)
+    if (this.jdField_a_of_type_Apyt == null)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
       {
@@ -235,41 +235,41 @@ public class EmoticonPanelController
         {
           GestureDetector localGestureDetector = ((TopGestureLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c).getGestureDetector();
           m = n;
-          if ((localGestureDetector instanceof apuk))
+          if ((localGestureDetector instanceof apyt))
           {
             m = 1;
-            this.jdField_a_of_type_Apuk = ((apuk)localGestureDetector);
+            this.jdField_a_of_type_Apyt = ((apyt)localGestureDetector);
           }
         }
         if (m == 0)
         {
-          this.jdField_a_of_type_Apuk = new apuk(this.jdField_a_of_type_AndroidContentContext, ((TopGestureLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c).getGestureListener(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
-          ((TopGestureLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c).setGestureDetector(this.jdField_a_of_type_Apuk);
+          this.jdField_a_of_type_Apyt = new apyt(this.jdField_a_of_type_AndroidContentContext, ((TopGestureLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c).getGestureListener(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+          ((TopGestureLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c).setGestureDetector(this.jdField_a_of_type_Apyt);
         }
       }
       return;
     }
-    this.jdField_a_of_type_Apuk.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Apuk.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Apuk.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.getBottom();
+    this.jdField_a_of_type_Apyt.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_Apyt.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_Apyt.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.getBottom();
   }
   
   public int a(int paramInt)
   {
-    if (this.jdField_a_of_type_Aprl == null) {
+    if (this.jdField_a_of_type_Apvu == null) {
       return 0;
     }
-    return this.jdField_a_of_type_Aprl.a(paramInt);
+    return this.jdField_a_of_type_Apvu.a(paramInt);
   }
   
   public int a(String paramString)
   {
-    return this.jdField_a_of_type_Apqz.a(paramString, this.jdField_b_of_type_JavaUtilList, jdField_a_of_type_Boolean);
+    return this.jdField_a_of_type_Apvi.a(paramString, this.jdField_b_of_type_JavaUtilList, jdField_a_of_type_Boolean);
   }
   
-  public <T extends apou> T a(int paramInt)
+  public <T extends aptd> T a(int paramInt)
   {
-    return this.jdField_a_of_type_Appv.a(paramInt);
+    return this.jdField_a_of_type_Apue.a(paramInt);
   }
   
   public EmoticonMainPanel a()
@@ -279,40 +279,40 @@ public class EmoticonPanelController
   
   public void a()
   {
-    this.jdField_a_of_type_Appv.a(1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.findViewById(2131379848));
+    this.jdField_a_of_type_Apue.a(1);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.findViewById(2131379906));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter = new EmotionPanelViewPagerAdapter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Appt, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_g_of_type_Int, this.h);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.jdField_c_of_type_Boolean = this.jdField_a_of_type_Apqo.jdField_b_of_type_Boolean;
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter = new EmotionPanelViewPagerAdapter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Apuc, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_g_of_type_Int, this.h);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.jdField_c_of_type_Boolean = this.jdField_a_of_type_Apux.jdField_b_of_type_Boolean;
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.jdField_a_of_type_ArrayOfInt = this.jdField_a_of_type_ArrayOfInt;
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.jdField_d_of_type_Boolean = a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.findViewById(2131365711));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.findViewById(2131364763);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx = ((HorizontalListViewEx)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.findViewById(2131377334));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.findViewById(2131365713));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.findViewById(2131364764);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx = ((HorizontalListViewEx)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.findViewById(2131377388));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx;
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.setOnItemClickListener(this.jdField_a_of_type_Apqz.a);
-    this.jdField_a_of_type_Aprl = new aprl(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_g_of_type_Int);
-    this.jdField_a_of_type_Aprl.a(b());
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.setOnItemClickListener(this.jdField_a_of_type_Apvi.a);
+    this.jdField_a_of_type_Apvu = new apvu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_g_of_type_Int);
+    this.jdField_a_of_type_Apvu.a(b());
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.setTabAnimateEnable(b());
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.setAdapter(this.jdField_a_of_type_Aprl);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.findViewById(2131365678));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.setAdapter(this.jdField_a_of_type_Apvu);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.findViewById(2131365680));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165587));
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165586));
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.findViewById(2131377299).setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165585));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.findViewById(2131377353).setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165585));
     this.jdField_e_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Apqo.jdField_c_of_type_Int != -1)
+    if (this.jdField_a_of_type_Apux.jdField_c_of_type_Int != -1)
     {
-      g(this.jdField_a_of_type_Apqo.jdField_c_of_type_Int);
-      if (!((apjf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(334)).c()) {
+      g(this.jdField_a_of_type_Apux.jdField_c_of_type_Int);
+      if (!((apno)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(334)).c()) {
         break label389;
       }
     }
     label389:
     for (jdField_d_of_type_Int = 3;; jdField_d_of_type_Int = 2)
     {
-      this.jdField_a_of_type_Appv.a(2);
+      this.jdField_a_of_type_Apue.a(2);
       return;
-      a(this.jdField_a_of_type_Apqo.jdField_a_of_type_JavaLangString);
+      a(this.jdField_a_of_type_Apux.jdField_a_of_type_JavaLangString);
       break;
     }
   }
@@ -341,7 +341,7 @@ public class EmoticonPanelController
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Aprg.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Apvp.a(paramInt1, paramInt2);
   }
   
   void a(int paramInt, String paramString)
@@ -353,12 +353,12 @@ public class EmoticonPanelController
     r();
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_g_of_type_Boolean = false;
     long l1 = System.currentTimeMillis();
-    Object localObject = (apjf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(334);
+    Object localObject = (apno)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(334);
     int n;
-    if ((localObject != null) && (this.jdField_a_of_type_Aprl != null) && (((apjf)localObject).c()) && (paramInt == this.jdField_a_of_type_Aprl.a(11)))
+    if ((localObject != null) && (this.jdField_a_of_type_Apvu != null) && (((apno)localObject).c()) && (paramInt == this.jdField_a_of_type_Apvu.a(11)))
     {
       n = 1;
-      if (apro.c(this.jdField_c_of_type_Int)) {
+      if (apvx.c(this.jdField_c_of_type_Int)) {
         break label388;
       }
       if (paramInt < 2) {
@@ -393,7 +393,7 @@ public class EmoticonPanelController
         }
         for (;;)
         {
-          new QueryTask(new apqm(this, paramInt), new apqn(this, l1)).a(paramString);
+          new QueryTask(new apuv(this, paramInt), new apuw(this, l1)).a(paramString);
           VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "ep_mall", "show_mine", "", 0, 0, 0, "", "", "");
           return;
           n = 0;
@@ -441,7 +441,7 @@ public class EmoticonPanelController
       paramCanvas.put("panelMode", "2");
       paramCanvas.put("duration", String.valueOf(l1));
       ThreadManager.post(new EmoticonPanelController.5(this, m, l1, paramCanvas), 5, null, true);
-      bdjd.a("AIO_EmoticonPanel_OpenDuration", null);
+      bdnm.a("AIO_EmoticonPanel_OpenDuration", null);
       if (QLog.isColorLevel())
       {
         QLog.d("EmoticonPanelController", 2, "[Performance] dispatchDraw over, duration=" + l1 + ",openCondition=" + m + ",panelMode=" + "2");
@@ -458,10 +458,10 @@ public class EmoticonPanelController
     }
   }
   
-  public void a(appt paramappt)
+  public void a(apuc paramapuc)
   {
-    this.jdField_a_of_type_Appt = paramappt;
-    this.jdField_a_of_type_Apqo.jdField_a_of_type_Appt = paramappt;
+    this.jdField_a_of_type_Apuc = paramapuc;
+    this.jdField_a_of_type_Apux.jdField_a_of_type_Apuc = paramapuc;
   }
   
   public void a(String paramString)
@@ -470,7 +470,7 @@ public class EmoticonPanelController
       QLog.d("EmoticonPanelController", 2, "initEmoticonView 1");
     }
     a(jdField_b_of_type_Int, paramString);
-    this.jdField_a_of_type_Apqq.i();
+    this.jdField_a_of_type_Apuz.i();
   }
   
   public void a(boolean paramBoolean)
@@ -496,46 +496,46 @@ public class EmoticonPanelController
   
   public void b()
   {
-    if (this.jdField_a_of_type_Appt != null) {
-      this.jdField_a_of_type_Appt.b();
+    if (this.jdField_a_of_type_Apuc != null) {
+      this.jdField_a_of_type_Apuc.b();
     }
-    apsm localapsm;
+    apwv localapwv;
     if ((this.jdField_b_of_type_JavaUtilList != null) && (jdField_b_of_type_Int >= 0) && (jdField_b_of_type_Int < this.jdField_b_of_type_JavaUtilList.size()))
     {
-      localapsm = (apsm)this.jdField_b_of_type_JavaUtilList.get(jdField_b_of_type_Int);
-      if (localapsm.jdField_a_of_type_Int != 7) {
+      localapwv = (apwv)this.jdField_b_of_type_JavaUtilList.get(jdField_b_of_type_Int);
+      if (localapwv.jdField_a_of_type_Int != 7) {
         break label106;
       }
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A845", "0X800A845", 1, 0, "", "", "", "");
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A845", "0X800A845", 1, 0, "", "", "", "");
     }
     label106:
-    while (localapsm.jdField_a_of_type_Int != 10) {
+    while (localapwv.jdField_a_of_type_Int != 10) {
       return;
     }
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A845", "0X800A845", 2, 0, "", "", "", "");
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A845", "0X800A845", 2, 0, "", "", "", "");
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Aprf.b(paramInt);
+    this.jdField_a_of_type_Apvo.b(paramInt);
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Apqo.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Apux.jdField_b_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.jdField_c_of_type_Boolean = this.jdField_a_of_type_Apqo.jdField_b_of_type_Boolean;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.jdField_c_of_type_Boolean = this.jdField_a_of_type_Apux.jdField_b_of_type_Boolean;
     }
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Apqq.a();
+    return this.jdField_a_of_type_Apuz.a();
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Appv.a(5);
+    this.jdField_a_of_type_Apue.a(5);
   }
   
   public void c(int paramInt)
@@ -565,8 +565,8 @@ public class EmoticonPanelController
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonPanelController", 2, "[Performance] reopen in aio, duration=" + (System.currentTimeMillis() - l1));
       }
-      this.jdField_a_of_type_Aprg.l();
-      File localFile = new File(aljq.bS);
+      this.jdField_a_of_type_Apvp.l();
+      File localFile = new File(alof.bS);
       if (!localFile.exists())
       {
         boolean bool = localFile.mkdirs();
@@ -585,17 +585,17 @@ public class EmoticonPanelController
   
   public void c(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Appv.a(4, -1, paramBoolean);
+    this.jdField_a_of_type_Apue.a(4, -1, paramBoolean);
   }
   
   public boolean c()
   {
-    return this.jdField_a_of_type_Apqq.c();
+    return this.jdField_a_of_type_Apuz.c();
   }
   
   public void d()
   {
-    bdjd.a(null, "AIO_EmoticonPanel_OnResume");
+    bdnm.a(null, "AIO_EmoticonPanel_OnResume");
     this.j = true;
     if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.getVisibility() == 0) && (this.jdField_c_of_type_Boolean))
     {
@@ -613,12 +613,12 @@ public class EmoticonPanelController
     }
     for (;;)
     {
-      this.jdField_a_of_type_Appv.a(6);
-      bdjd.a("AIO_EmoticonPanel_OnResume", null);
+      this.jdField_a_of_type_Apue.a(6);
+      bdnm.a("AIO_EmoticonPanel_OnResume", null);
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.isShown())
       {
-        if ((apro.c(this.jdField_c_of_type_Int)) && (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("mobileQQ", 0).getString("LAST_ADD_EMO_PACKAGE", ""))))
+        if ((apvx.c(this.jdField_c_of_type_Int)) && (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("mobileQQ", 0).getString("LAST_ADD_EMO_PACKAGE", ""))))
         {
           if (QLog.isColorLevel()) {
             QLog.d("EmoticonPanelController", 2, "download in market, initEmoticonView");
@@ -626,7 +626,7 @@ public class EmoticonPanelController
           a(0, null);
         }
         q();
-        this.jdField_a_of_type_Apqf.k();
+        this.jdField_a_of_type_Apuo.k();
       }
     }
   }
@@ -640,10 +640,10 @@ public class EmoticonPanelController
       return;
     }
     long l1 = System.currentTimeMillis();
-    bdjd.a(null, "AIO_EmoticonPanel_EnterSecond");
+    bdnm.a(null, "AIO_EmoticonPanel_EnterSecond");
     if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.i)
     {
-      this.jdField_a_of_type_Apqz.a(this.k, new apql(this, paramInt, l1));
+      this.jdField_a_of_type_Apvi.a(this.k, new apuu(this, paramInt, l1));
       return;
     }
     a(l1, paramInt);
@@ -652,10 +652,10 @@ public class EmoticonPanelController
   public void d(boolean paramBoolean)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.i) {}
-    while (this.jdField_a_of_type_Apqa == null) {
+    while (this.jdField_a_of_type_Apuj == null) {
       return;
     }
-    this.jdField_b_of_type_JavaUtilList = this.jdField_a_of_type_Apqa.a(paramBoolean, this.jdField_a_of_type_Apqo.jdField_d_of_type_Boolean);
+    this.jdField_b_of_type_JavaUtilList = this.jdField_a_of_type_Apuj.a(paramBoolean, this.jdField_a_of_type_Apux.jdField_d_of_type_Boolean);
   }
   
   public void e()
@@ -664,7 +664,7 @@ public class EmoticonPanelController
       return;
     }
     this.j = false;
-    this.jdField_a_of_type_Appv.a(7);
+    this.jdField_a_of_type_Apue.a(7);
   }
   
   public void e(int paramInt)
@@ -672,16 +672,16 @@ public class EmoticonPanelController
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonPanelController", 2, "showPanelByTabIndex tabIndex = " + paramInt);
     }
-    apsm localapsm = null;
+    apwv localapwv = null;
     List localList = this.jdField_b_of_type_JavaUtilList;
     if (paramInt < localList.size()) {
-      localapsm = (apsm)localList.get(paramInt);
+      localapwv = (apwv)localList.get(paramInt);
     }
-    if (localapsm != null)
+    if (localapwv != null)
     {
-      this.jdField_a_of_type_Aprf.a(localapsm);
+      this.jdField_a_of_type_Apvo.a(localapwv);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(paramInt, false);
-      this.jdField_a_of_type_Apqf.a(localapsm);
+      this.jdField_a_of_type_Apuo.a(localapwv);
     }
   }
   
@@ -690,9 +690,9 @@ public class EmoticonPanelController
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonPanelController", 2, "OnDestory");
     }
-    this.jdField_a_of_type_Appv.a(8);
+    this.jdField_a_of_type_Apue.a(8);
     HorizontalListViewEx.a();
-    apnw.a().a();
+    apsf.a().a();
     if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter != null) {
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.a();
     }
@@ -712,18 +712,18 @@ public class EmoticonPanelController
         }
         ThreadManagerV2.excute(new EmoticonPanelController.3(this, (SharedPreferences)localObject), 64, null, true);
       }
-      localObject = (aube)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
+      localObject = (aufn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
       if (localObject != null) {
-        ((aube)localObject).f();
+        ((aufn)localObject).f();
       }
     }
-    this.jdField_a_of_type_Asot.d();
-    this.jdField_a_of_type_Appt = null;
-    if ((this.jdField_a_of_type_Apuk != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c != null))
+    this.jdField_a_of_type_Astc.d();
+    this.jdField_a_of_type_Apuc = null;
+    if ((this.jdField_a_of_type_Apyt != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c != null))
     {
       localObject = (TopGestureLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c;
       GestureDetector localGestureDetector = ((TopGestureLayout)localObject).getGestureDetector();
-      if ((localGestureDetector instanceof apuk))
+      if ((localGestureDetector instanceof apyt))
       {
         ThreadManagerV2.getUIHandlerV2().post(new EmoticonPanelController.4(this, (TopGestureLayout)localObject, localGestureDetector));
         com.tencent.mobileqq.emoticon.EmojiStickerManager.jdField_a_of_type_Boolean = false;
@@ -731,7 +731,7 @@ public class EmoticonPanelController
         this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.p(false);
       }
       ((TopGestureLayout)localObject).restoreGestureDetector();
-      this.jdField_a_of_type_Apuk = null;
+      this.jdField_a_of_type_Apyt = null;
     }
   }
   
@@ -755,57 +755,57 @@ public class EmoticonPanelController
     int m = 0;
     label101:
     Object localObject2;
-    aprm localaprm;
+    apvv localapvv;
     if (m < n)
     {
-      localObject2 = (apsm)localList.get(m);
-      localaprm = new aprm();
-      localaprm.jdField_a_of_type_Int = ((apsm)localObject2).jdField_a_of_type_Int;
-      if (((apsm)localObject2).jdField_a_of_type_Int == 8) {
-        localObject1 = alpo.a(2131704432);
+      localObject2 = (apwv)localList.get(m);
+      localapvv = new apvv();
+      localapvv.jdField_a_of_type_Int = ((apwv)localObject2).jdField_a_of_type_Int;
+      if (((apwv)localObject2).jdField_a_of_type_Int == 8) {
+        localObject1 = alud.a(2131704444);
       }
     }
     for (;;)
     {
-      localaprm.jdField_b_of_type_JavaLangString = ((String)localObject1);
-      localArrayList.add(localaprm);
+      localapvv.jdField_b_of_type_JavaLangString = ((String)localObject1);
+      localArrayList.add(localapvv);
       m += 1;
       break label101;
-      if (((apsm)localObject2).jdField_a_of_type_Int == 9)
+      if (((apwv)localObject2).jdField_a_of_type_Int == 9)
       {
-        localObject1 = alpo.a(2131704434);
+        localObject1 = alud.a(2131704446);
       }
-      else if (((apsm)localObject2).jdField_a_of_type_Int == 4)
+      else if (((apwv)localObject2).jdField_a_of_type_Int == 4)
       {
-        localObject1 = alpo.a(2131704456);
+        localObject1 = alud.a(2131704468);
       }
-      else if (((apsm)localObject2).jdField_a_of_type_Int == 7)
+      else if (((apwv)localObject2).jdField_a_of_type_Int == 7)
       {
-        localObject1 = alpo.a(2131704455);
+        localObject1 = alud.a(2131704467);
       }
-      else if ((((apsm)localObject2).jdField_a_of_type_Int == 6) || (((apsm)localObject2).jdField_a_of_type_Int == 10))
+      else if ((((apwv)localObject2).jdField_a_of_type_Int == 6) || (((apwv)localObject2).jdField_a_of_type_Int == 10))
       {
-        if (((apsm)localObject2).jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null)
+        if (((apwv)localObject2).jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null)
         {
-          EmoticonPackage localEmoticonPackage = ((apsm)localObject2).jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
-          localObject2 = localEmoticonPackage.name + alpo.a(2131704475);
+          EmoticonPackage localEmoticonPackage = ((apwv)localObject2).jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
+          localObject2 = localEmoticonPackage.name + alud.a(2131704487);
           localObject1 = localObject2;
           if (localEmoticonPackage.status != 2) {
-            localObject1 = (String)localObject2 + alpo.a(2131704477);
+            localObject1 = (String)localObject2 + alud.a(2131704489);
           }
-          localaprm.jdField_a_of_type_JavaLangString = localEmoticonPackage.epId;
-          localaprm.jdField_b_of_type_Int = localEmoticonPackage.subType;
+          localapvv.jdField_a_of_type_JavaLangString = localEmoticonPackage.epId;
+          localapvv.jdField_b_of_type_Int = localEmoticonPackage.subType;
           if (localEmoticonPackage.status == 2) {}
           for (boolean bool = true;; bool = false)
           {
-            localaprm.jdField_a_of_type_Boolean = bool;
+            localapvv.jdField_a_of_type_Boolean = bool;
             break;
           }
         }
       }
-      else if (((apsm)localObject2).jdField_a_of_type_Int == 11)
+      else if (((apwv)localObject2).jdField_a_of_type_Int == 11)
       {
-        localObject1 = alpo.a(2131704420);
+        localObject1 = alud.a(2131704432);
         continue;
         if (localArrayList.size() > 0)
         {
@@ -813,7 +813,7 @@ public class EmoticonPanelController
             this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.resetCurrentX(paramInt);
           }
           this.jdField_d_of_type_Boolean = true;
-          this.jdField_a_of_type_Aprl.a(localArrayList);
+          this.jdField_a_of_type_Apvu.a(localArrayList);
         }
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.i = true;
         if (!QLog.isColorLevel()) {
@@ -827,7 +827,7 @@ public class EmoticonPanelController
   
   public void g()
   {
-    this.jdField_a_of_type_Apqz.i();
+    this.jdField_a_of_type_Apvi.i();
   }
   
   public void g(int paramInt)
@@ -838,50 +838,50 @@ public class EmoticonPanelController
     jdField_b_of_type_Int = a(paramInt);
     a(jdField_b_of_type_Int, null);
     this.i = true;
-    this.jdField_a_of_type_Apqq.i();
+    this.jdField_a_of_type_Apuz.i();
   }
   
   public void h()
   {
-    this.jdField_a_of_type_Apqz.k();
+    this.jdField_a_of_type_Apvi.k();
   }
   
   public void i()
   {
-    this.jdField_a_of_type_Apqz.j();
+    this.jdField_a_of_type_Apvi.j();
   }
   
   void j()
   {
-    this.jdField_a_of_type_Appv.a(9);
+    this.jdField_a_of_type_Apue.a(9);
   }
   
   void k()
   {
     this.jdField_g_of_type_Boolean = true;
-    apsp.a().a();
-    apsr.a().a();
-    this.jdField_a_of_type_Appv.a(10);
+    apwy.a().a();
+    apxa.a().a();
+    this.jdField_a_of_type_Apue.a(10);
   }
   
   public void l()
   {
-    this.jdField_a_of_type_Aprg.j();
+    this.jdField_a_of_type_Apvp.j();
   }
   
   public void m()
   {
-    this.jdField_a_of_type_Apqq.m();
+    this.jdField_a_of_type_Apuz.m();
   }
   
   public void n()
   {
-    this.jdField_a_of_type_Apqq.n();
+    this.jdField_a_of_type_Apuz.n();
   }
   
   public void o()
   {
-    this.jdField_a_of_type_Aprg.k();
+    this.jdField_a_of_type_Apvp.k();
   }
   
   public void onPageScrollStateChanged(int paramInt) {}
@@ -891,17 +891,17 @@ public class EmoticonPanelController
   public void onPageSelected(int paramInt)
   {
     long l1 = System.currentTimeMillis();
-    bdjd.a(null, "AIO_EmoticonPanel_PageScroll");
+    bdnm.a(null, "AIO_EmoticonPanel_PageScroll");
     Object localObject = this.jdField_b_of_type_JavaUtilList;
     if (localObject == null) {
       return;
     }
-    localObject = (apsm)((List)localObject).get(paramInt);
+    localObject = (apwv)((List)localObject).get(paramInt);
     int m;
     if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.b((apsm)localObject);
-      if (((apsm)localObject).jdField_a_of_type_Int != 7) {
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.b((apwv)localObject);
+      if (((apwv)localObject).jdField_a_of_type_Int != 7) {
         break label325;
       }
       m = 1;
@@ -910,12 +910,12 @@ public class EmoticonPanelController
     {
       label69:
       if (m > 0) {
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x800a572", "0x800a572", 0, 0, m + "", m + "", m + "", "");
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x800a572", "0x800a572", 0, 0, m + "", m + "", m + "", "");
       }
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonPanelController", 2, "onPageSelected, position=" + paramInt + "panelInfo = " + localObject);
       }
-      this.jdField_a_of_type_Aprf.b((apsm)localObject);
+      this.jdField_a_of_type_Apvo.b((apwv)localObject);
       if (jdField_b_of_type_Int != paramInt)
       {
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.setSelection(paramInt);
@@ -926,42 +926,42 @@ public class EmoticonPanelController
       for (;;)
       {
         jdField_b_of_type_Int = paramInt;
-        this.jdField_a_of_type_Appv.a(3, paramInt, false);
-        bdjd.a("AIO_EmoticonPanel_PageScroll", null);
+        this.jdField_a_of_type_Apue.a(3, paramInt, false);
+        bdnm.a("AIO_EmoticonPanel_PageScroll", null);
         if (!QLog.isColorLevel()) {
           break;
         }
         QLog.d("EmoticonPanelController", 2, "[Performance] onPageSelected, handle duration=" + (System.currentTimeMillis() - l1));
         return;
         label325:
-        if ((((apsm)localObject).jdField_a_of_type_Int == 5) || (((apsm)localObject).jdField_a_of_type_Int == 4))
+        if ((((apwv)localObject).jdField_a_of_type_Int == 5) || (((apwv)localObject).jdField_a_of_type_Int == 4))
         {
           m = 2;
           break label69;
         }
-        if (((apsm)localObject).jdField_a_of_type_Int == 11)
+        if (((apwv)localObject).jdField_a_of_type_Int == 11)
         {
           m = 3;
           break label69;
         }
-        if (((apsm)localObject).jdField_a_of_type_Int == 8)
+        if (((apwv)localObject).jdField_a_of_type_Int == 8)
         {
           m = 4;
           break label69;
         }
-        if (((apsm)localObject).jdField_a_of_type_Int == 9)
+        if (((apwv)localObject).jdField_a_of_type_Int == 9)
         {
           m = 5;
           break label69;
         }
-        if ((((apsm)localObject).jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null) || (bdje.a(((apsm)localObject).jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId))) {
+        if ((((apwv)localObject).jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null) || (bdnn.a(((apwv)localObject).jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId))) {
           break label524;
         }
         m = 6;
         break label69;
-        if ((localObject != null) && (((apsm)localObject).jdField_a_of_type_Int == 8))
+        if ((localObject != null) && (((apwv)localObject).jdField_a_of_type_Int == 8))
         {
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005813", 0, 0, "", paramInt + "", "", "");
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005813", 0, 0, "", paramInt + "", "", "");
           if (QLog.isColorLevel()) {
             QLog.d("EmoticonPanelController", 2, "view times report. cur page:" + paramInt);
           }
@@ -985,8 +985,8 @@ public class EmoticonPanelController
         if (QLog.isColorLevel()) {
           QLog.d("EmoticonPanelController", 2, "onMeasure: oldWidth=" + n + " newWidth=" + m);
         }
-        apsr.a().a();
-        apsr.jdField_a_of_type_Int = m;
+        apxa.a().a();
+        apxa.jdField_a_of_type_Int = m;
         localEmotionPanelViewPagerAdapter = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter;
         if (m / localDisplayMetrics.widthPixels >= 0.66F) {
           break label146;
@@ -1005,7 +1005,7 @@ public class EmoticonPanelController
   
   public void q()
   {
-    this.jdField_a_of_type_Apqu.j();
+    this.jdField_a_of_type_Apvd.j();
   }
 }
 

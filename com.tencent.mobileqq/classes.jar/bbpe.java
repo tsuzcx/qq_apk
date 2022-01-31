@@ -1,39 +1,14 @@
-import java.util.UUID;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bbpe
 {
-  public int a;
   public long a;
-  public String a;
-  public UUID a;
-  public boolean a;
-  public int b;
   public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public int e;
-  public long e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
-  public String j;
   
   public bbpe()
   {
-    this.jdField_b_of_type_Int = 7;
+    a();
   }
   
   public bbpe(bbpe parambbpe)
@@ -41,36 +16,81 @@ public class bbpe
     a(parambbpe);
   }
   
+  public String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("shmsgseq", this.a);
+      localJSONObject.put("uniseq", this.b);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  public void a()
+  {
+    this.a = -1L;
+    this.b = -1L;
+  }
+  
   public void a(bbpe parambbpe)
   {
-    this.jdField_b_of_type_Int = 7;
     if (parambbpe != null)
     {
-      this.jdField_a_of_type_JavaUtilUUID = parambbpe.jdField_a_of_type_JavaUtilUUID;
-      this.jdField_a_of_type_Int = parambbpe.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Long = parambbpe.jdField_a_of_type_Long;
-      this.jdField_b_of_type_Long = parambbpe.jdField_b_of_type_Long;
-      this.jdField_b_of_type_Int = parambbpe.jdField_b_of_type_Int;
-      this.jdField_c_of_type_Int = parambbpe.jdField_c_of_type_Int;
-      this.jdField_c_of_type_Long = parambbpe.jdField_c_of_type_Long;
-      this.jdField_d_of_type_Long = parambbpe.jdField_d_of_type_Long;
-      this.jdField_a_of_type_JavaLangString = parambbpe.jdField_a_of_type_JavaLangString;
-      this.jdField_b_of_type_JavaLangString = parambbpe.jdField_b_of_type_JavaLangString;
-      this.jdField_c_of_type_JavaLangString = parambbpe.jdField_c_of_type_JavaLangString;
-      this.jdField_d_of_type_JavaLangString = parambbpe.jdField_d_of_type_JavaLangString;
-      this.jdField_e_of_type_Int = parambbpe.jdField_e_of_type_Int;
-      this.f = parambbpe.f;
-      this.jdField_g_of_type_Int = parambbpe.jdField_g_of_type_Int;
-      this.jdField_e_of_type_JavaLangString = parambbpe.jdField_e_of_type_JavaLangString;
-      this.jdField_g_of_type_JavaLangString = parambbpe.jdField_g_of_type_JavaLangString;
-      this.jdField_h_of_type_Int = parambbpe.jdField_h_of_type_Int;
-      this.jdField_h_of_type_JavaLangString = parambbpe.jdField_h_of_type_JavaLangString;
-      this.jdField_i_of_type_JavaLangString = parambbpe.jdField_i_of_type_JavaLangString;
-      this.jdField_b_of_type_Boolean = parambbpe.jdField_b_of_type_Boolean;
-      this.j = parambbpe.j;
-      this.jdField_i_of_type_Int = parambbpe.jdField_i_of_type_Int;
-      this.jdField_c_of_type_Boolean = parambbpe.jdField_c_of_type_Boolean;
+      this.a = parambbpe.a;
+      this.b = parambbpe.b;
     }
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.a = paramString.getLong("shmsgseq");
+      this.b = paramString.getLong("uniseq");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.a != -1L;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    return (paramLong != -1L) && ((this.a == -1L) || (this.a > paramLong));
+  }
+  
+  public boolean a(long paramLong1, long paramLong2)
+  {
+    if (a(paramLong1))
+    {
+      this.a = paramLong1;
+      this.b = paramLong2;
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(bbpe parambbpe)
+  {
+    if (parambbpe == null) {
+      return false;
+    }
+    return a(parambbpe.a, parambbpe.b);
   }
 }
 

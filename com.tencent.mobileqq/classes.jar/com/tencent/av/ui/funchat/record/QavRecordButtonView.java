@@ -73,7 +73,7 @@ public class QavRecordButtonView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130841874);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130841887);
     super.setOnTouchListener(new mqe(this));
   }
   
@@ -156,10 +156,10 @@ public class QavRecordButtonView
         continue;
         if (paramBoolean)
         {
-          super.setContentDescription(getResources().getString(2131696242));
+          super.setContentDescription(getResources().getString(2131696244));
           continue;
           if (paramBoolean) {
-            super.setContentDescription(getResources().getString(2131696243));
+            super.setContentDescription(getResources().getString(2131696245));
           }
           this.jdField_a_of_type_Float = 0.0F;
         }

@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-
 public class bayq
-  implements DialogInterface.OnClickListener
 {
-  public bayq(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public int a;
+  public long a;
+  public bayl a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
 }
 
 

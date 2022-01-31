@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class atpa
-  implements DialogInterface.OnDismissListener
+final class atpa
+  implements bauf
 {
-  atpa(atoz paramatoz) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(bave parambave, bavf parambavf)
   {
-    this.a.a.finish();
+    if ((parambave == null) || (parambavf == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(parambave instanceof baub));
+      parambave = (baub)parambave;
+      parambave.jdField_a_of_type_Long += parambavf.c;
+      parambavf.c = 0L;
+      parambavf = "bytes=" + parambave.jdField_a_of_type_Long + "-";
+      parambave.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
+      parambavf = parambave.jdField_a_of_type_JavaLangString;
+      if (parambavf.contains("range="))
+      {
+        String str = parambavf.substring(0, parambavf.lastIndexOf("range="));
+        parambave.jdField_a_of_type_JavaLangString = (str + "range=" + parambave.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ListenTogether.downloader", 2, "IBreakDownFix, " + parambavf);
   }
 }
 

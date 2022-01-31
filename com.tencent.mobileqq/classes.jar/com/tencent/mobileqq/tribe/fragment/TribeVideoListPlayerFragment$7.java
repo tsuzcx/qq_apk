@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.tribe.fragment;
 
 import android.net.Uri;
-import bazz;
+import bbei;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import ndd;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 class TribeVideoListPlayerFragment$7
   implements Runnable
 {
-  TribeVideoListPlayerFragment$7(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, boolean paramBoolean, bazz parambazz, long paramLong1, long paramLong2) {}
+  TribeVideoListPlayerFragment$7(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, boolean paramBoolean, bbei parambbei, long paramLong1, long paramLong2) {}
   
   public void run()
   {
@@ -19,11 +19,11 @@ class TribeVideoListPlayerFragment$7
     JSONObject localJSONObject;
     if (this.jdField_a_of_type_Boolean)
     {
-      l = this.jdField_a_of_type_Bazz.jdField_a_of_type_Long;
-      if ((this.jdField_a_of_type_Bazz.b != 0) || (this.b != 0L) || (l <= 0L)) {
+      l = this.jdField_a_of_type_Bbei.jdField_a_of_type_Long;
+      if ((this.jdField_a_of_type_Bbei.b != 0) || (this.b != 0L) || (l <= 0L)) {
         break label265;
       }
-      this.jdField_a_of_type_Bazz.b = 1;
+      this.jdField_a_of_type_Bbei.b = 1;
       localJSONObject = new JSONObject();
     }
     for (;;)
@@ -37,14 +37,14 @@ class TribeVideoListPlayerFragment$7
         }
         str = "1";
         localJSONObject.put("bf", str);
-        if (l < this.jdField_a_of_type_Bazz.jdField_a_of_type_Long - 100L) {
+        if (l < this.jdField_a_of_type_Bbei.jdField_a_of_type_Long - 100L) {
           continue;
         }
         str = "1";
         localJSONObject.put("ef", str);
         localJSONObject.put("pp", "3");
-        localJSONObject.put("pa", "" + this.jdField_a_of_type_Bazz.b);
-        str = this.jdField_a_of_type_Bazz.i + "&video=" + Uri.encode(localJSONObject.toString());
+        localJSONObject.put("pa", "" + this.jdField_a_of_type_Bbei.b);
+        str = this.jdField_a_of_type_Bbei.i + "&video=" + Uri.encode(localJSONObject.toString());
         ndd.a(BaseApplicationImpl.getContext(), str, null, "GET", null, null);
         return;
       }
@@ -59,17 +59,17 @@ class TribeVideoListPlayerFragment$7
       }
       l = this.jdField_a_of_type_Long;
       break;
-      if ((this.jdField_a_of_type_Bazz.b != 0) && (this.b > 0L) && (l > 0L))
+      if ((this.jdField_a_of_type_Bbei.b != 0) && (this.b > 0L) && (l > 0L))
       {
-        this.jdField_a_of_type_Bazz.b = 2;
+        this.jdField_a_of_type_Bbei.b = 2;
         break label48;
       }
-      if ((this.jdField_a_of_type_Bazz.b != 0) && (this.b == 0L) && (l > 0L))
+      if ((this.jdField_a_of_type_Bbei.b != 0) && (this.b == 0L) && (l > 0L))
       {
-        this.jdField_a_of_type_Bazz.b = 3;
+        this.jdField_a_of_type_Bbei.b = 3;
         break label48;
       }
-      this.jdField_a_of_type_Bazz.b = 4;
+      this.jdField_a_of_type_Bbei.b = 4;
       break label48;
       str = "0";
       continue;

@@ -1,6 +1,6 @@
 package cooperation.qzone.contentbox;
 
-import bjel;
+import bjis;
 import cooperation.qzone.contentbox.model.MQMsg;
 import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
 import java.util.ArrayList;

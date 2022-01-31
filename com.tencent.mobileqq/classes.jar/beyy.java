@@ -1,17 +1,33 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.BindGroupFragment;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
 
 public class beyy
-  implements View.OnClickListener
+  implements Application.ActivityLifecycleCallbacks
 {
-  public beyy(BindGroupFragment paramBindGroupFragment) {}
+  public beyy(ShareActionSheetV2 paramShareActionSheetV2) {}
   
-  public void onClick(View paramView)
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity)
   {
-    BindGroupFragment.a(this.a).finish();
+    if (paramActivity == this.a.a)
+    {
+      ShareActionSheetV2.a(this.a);
+      ShareActionSheetV2.b(this.a);
+    }
   }
+  
+  public void onActivityPaused(Activity paramActivity) {}
+  
+  public void onActivityResumed(Activity paramActivity) {}
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity) {}
+  
+  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

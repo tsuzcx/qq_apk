@@ -1,8 +1,17 @@
-public class bbpv
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.URLThemeImageView;
+
+class bbpv
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int b;
+  public ViewGroup a;
+  public ImageView a;
+  public TextView a;
+  public URLThemeImageView a;
+  public TextView b;
+  
+  bbpv(bbpo parambbpo) {}
 }
 
 

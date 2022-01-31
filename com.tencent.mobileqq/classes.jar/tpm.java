@@ -50,24 +50,24 @@ public class tpm
     int i;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(tpk.a()).inflate(2131559460, paramViewGroup, false);
+      paramView = LayoutInflater.from(tpk.a()).inflate(2131559459, paramViewGroup, false);
       paramViewGroup = new tpn(this);
       localObject1 = paramView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject1).height = ((tpk.b() - aekt.a(110.0F, tpk.a().getResources())) / 3);
+      ((ViewGroup.LayoutParams)localObject1).height = ((tpk.b() - aepi.a(110.0F, tpk.a().getResources())) / 3);
       paramView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       if (QLog.isColorLevel()) {
         QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "height of item is" + ((ViewGroup.LayoutParams)localObject1).height);
       }
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131375420));
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131375471));
       localObject2 = paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject2).width = ((tpk.c() - aekt.a(2.0F, tpk.a().getResources())) / 2);
+      ((ViewGroup.LayoutParams)localObject2).width = ((tpk.c() - aepi.a(2.0F, tpk.a().getResources())) / 2);
       ((ViewGroup.LayoutParams)localObject2).height = (((ViewGroup.LayoutParams)localObject2).width * 9 / 16);
       paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
       if (QLog.isColorLevel()) {
         QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "height of image is" + ((ViewGroup.LayoutParams)localObject2).height);
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375436));
-      if (((ViewGroup.LayoutParams)localObject1).height - ((ViewGroup.LayoutParams)localObject2).height - aekt.a(40.0F, tpk.a().getResources()) > aekt.a(16.0F, tpk.a().getResources()))
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375487));
+      if (((ViewGroup.LayoutParams)localObject1).height - ((ViewGroup.LayoutParams)localObject2).height - aepi.a(40.0F, tpk.a().getResources()) > aepi.a(16.0F, tpk.a().getResources()))
       {
         i = 2;
         if (QLog.isColorLevel()) {

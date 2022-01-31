@@ -9,10 +9,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import bebk;
-import beey;
-import besa;
-import bngs;
+import beft;
+import bejh;
+import bewj;
+import bnle;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -22,7 +22,7 @@ import mqq.app.AppRuntime;
 import oyr;
 import oys;
 import rdm;
-import xod;
+import xsm;
 
 public class ReadInJoyAdIMAXBrowserFragment
   extends WebViewFragment
@@ -46,40 +46,40 @@ public class ReadInJoyAdIMAXBrowserFragment
   
   private void i()
   {
-    bngs.a(getActivity());
-    if (bngs.b()) {
-      bngs.c(getActivity());
+    bnle.a(getActivity());
+    if (bnle.b()) {
+      bnle.c(getActivity());
     }
-    if (bngs.b()) {}
-    for (int i = bngs.b(getActivity());; i = 0)
+    if (bnle.b()) {}
+    for (int i = bnle.b(getActivity());; i = 0)
     {
-      if (this.jdField_a_of_type_Beey.jdField_a_of_type_Bebk.a != null) {
-        this.jdField_a_of_type_Beey.jdField_a_of_type_Bebk.a.setVisibility(8);
+      if (this.jdField_a_of_type_Bejh.jdField_a_of_type_Beft.a != null) {
+        this.jdField_a_of_type_Bejh.jdField_a_of_type_Beft.a.setVisibility(8);
       }
-      if (this.jdField_a_of_type_Beey.d != null) {
+      if (this.jdField_a_of_type_Bejh.d != null) {
         b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131296550), 0);
       }
-      if (this.jdField_a_of_type_Beey.c == null) {
+      if (this.jdField_a_of_type_Bejh.c == null) {
         return;
       }
-      int j = xod.a(getActivity(), 30.0F);
+      int j = xsm.a(getActivity(), 30.0F);
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getActivity());
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842530);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842543);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(j, j);
       localLayoutParams.addRule(10);
       localLayoutParams.addRule(9);
-      localLayoutParams.leftMargin = xod.a(getActivity(), 15.0F);
-      localLayoutParams.topMargin = (xod.a(getActivity(), 15.0F) + i);
-      this.jdField_a_of_type_Beey.c.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
+      localLayoutParams.leftMargin = xsm.a(getActivity(), 15.0F);
+      localLayoutParams.topMargin = (xsm.a(getActivity(), 15.0F) + i);
+      this.jdField_a_of_type_Bejh.c.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new oyr(this));
       this.b = new ImageView(getActivity());
-      this.b.setBackgroundResource(2130842532);
+      this.b.setBackgroundResource(2130842545);
       localLayoutParams = new RelativeLayout.LayoutParams(j, j);
       localLayoutParams.addRule(10);
       localLayoutParams.addRule(11);
-      localLayoutParams.rightMargin = xod.a(getActivity(), 15.0F);
-      localLayoutParams.topMargin = (i + xod.a(getActivity(), 15.0F));
-      this.jdField_a_of_type_Beey.c.addView(this.b, localLayoutParams);
+      localLayoutParams.rightMargin = xsm.a(getActivity(), 15.0F);
+      localLayoutParams.topMargin = (i + xsm.a(getActivity(), 15.0F));
+      this.jdField_a_of_type_Bejh.c.addView(this.b, localLayoutParams);
       this.b.setOnClickListener(a());
       return;
     }
@@ -93,12 +93,12 @@ public class ReadInJoyAdIMAXBrowserFragment
     }
     getWebView().setVerticalScrollBarEnabled(false);
     getWebView().setHorizontalScrollBarEnabled(false);
-    if ((this.jdField_a_of_type_Beey != null) && (this.jdField_a_of_type_Beey.jdField_a_of_type_Besa != null)) {
-      this.jdField_a_of_type_Beey.jdField_a_of_type_Besa.a(false);
+    if ((this.jdField_a_of_type_Bejh != null) && (this.jdField_a_of_type_Bejh.jdField_a_of_type_Bewj != null)) {
+      this.jdField_a_of_type_Bejh.jdField_a_of_type_Bewj.a(false);
     }
-    if ((this.jdField_a_of_type_Beey != null) && (this.jdField_a_of_type_Beey.d != null))
+    if ((this.jdField_a_of_type_Bejh != null) && (this.jdField_a_of_type_Bejh.d != null))
     {
-      paramBundle = this.jdField_a_of_type_Beey.d.findViewById(2131364796);
+      paramBundle = this.jdField_a_of_type_Bejh.d.findViewById(2131364797);
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
@@ -118,11 +118,11 @@ public class ReadInJoyAdIMAXBrowserFragment
   
   public int c(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Beey != null)
+    if (this.jdField_a_of_type_Bejh != null)
     {
-      this.jdField_a_of_type_Beey.jdField_a_of_type_Befb.D = true;
-      this.jdField_a_of_type_Beey.jdField_a_of_type_Befb.f = true;
-      this.jdField_a_of_type_Befb.n = true;
+      this.jdField_a_of_type_Bejh.jdField_a_of_type_Bejk.D = true;
+      this.jdField_a_of_type_Bejh.jdField_a_of_type_Bejk.f = true;
+      this.jdField_a_of_type_Bejk.n = true;
     }
     rdm.a(a());
     return super.c(paramBundle);

@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingBaseSection;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
 
-public class anzx
-  implements anzu
+public final class anzx
+  implements Parcelable.Creator<BusinessCard>
 {
-  public anzx(ColorNoteSettingBaseSection paramColorNoteSettingBaseSection) {}
-  
-  public void a()
+  public BusinessCard a(Parcel paramParcel)
   {
-    this.a.a();
+    return new BusinessCard(paramParcel);
+  }
+  
+  public BusinessCard[] a(int paramInt)
+  {
+    return new BusinessCard[paramInt];
   }
 }
 

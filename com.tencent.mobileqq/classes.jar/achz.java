@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public class achz
-  implements Animation.AnimationListener
+  implements benw
 {
-  public achz(ChatHistory paramChatHistory, View paramView, int paramInt) {}
+  public achz(BaseChatPie paramBaseChatPie) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.a.startActivity(paramClickableColorSpanTextView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

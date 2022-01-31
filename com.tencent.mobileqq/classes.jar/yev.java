@@ -1,27 +1,52 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
 
 public class yev
-  implements ycg
+  extends yiu
 {
-  public yev(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
+  private RelativePersonalBottomView jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
+  private yif jdField_a_of_type_Yif;
   
-  public void a(int paramInt)
+  public yev(Bundle paramBundle)
   {
-    SubscribeHybirdFragment.a(this.a).a(paramInt);
+    super(paramBundle);
   }
   
-  public void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString)
+  public int a()
   {
-    if ((paramStGetFeedDetailRsp == null) || (paramStGetFeedDetailRsp.feed.get() == null))
-    {
-      QQToast.a(this.a.a(), alpo.a(2131715021), 0).a();
-      return;
+    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
+      return this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.b();
     }
-    SubscribeHybirdFragment.a(this.a, paramStGetFeedDetailRsp, paramLong, paramString);
+    return 0;
+  }
+  
+  protected BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy)
+  {
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView = new RelativePersonalBottomView(paramViewGroup.getContext(), paramyhy);
+    return this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
+  }
+  
+  public void loadData(yii paramyii) {}
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.a(this.jdField_a_of_type_Yif);
+    }
+  }
+  
+  public void onPrepareParams(Bundle paramBundle) {}
+  
+  public void setShareData(String paramString, yif paramyif)
+  {
+    super.setShareData(paramString, paramyif);
+    this.jdField_a_of_type_Yif = paramyif;
+    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.a(paramyif);
+    }
   }
 }
 

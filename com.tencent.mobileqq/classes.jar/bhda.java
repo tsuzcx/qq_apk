@@ -1,156 +1,61 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.webkit.ValueCallback;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeReq;
+import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeRsp;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.core.service.AppBrandWebviewService.2;
-import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebView;
-import java.io.File;
-import java.io.IOException;
-import org.json.JSONException;
+import com.tencent.qqmini.sdk.utils.JSONConverter;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class bhda
-  extends bhcv
+  extends bhdw
 {
-  private bhdk jdField_a_of_type_Bhdk;
-  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
-  protected boolean a;
+  private MiniAppStore.StGetFirstPageByTypeReq a = new MiniAppStore.StGetFirstPageByTypeReq();
   
-  public bhda(bgho parambgho, bhdk parambhdk)
+  public bhda(int paramInt)
   {
-    super(parambgho);
-    this.jdField_a_of_type_Boolean = true;
-    a(parambhdk);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = new WebView(parambgho.a());
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.addJavascriptInterface(this, "WeixinJSCore");
-    parambgho = this.jdField_a_of_type_ComTencentSmttSdkWebView.getSettings();
-    parambgho.setSupportZoom(false);
-    parambgho.setJavaScriptEnabled(true);
-    parambgho.setCacheMode(2);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(new bhdb(this));
-    a(Integer.valueOf(3));
+    this.a.uiPageType.set(paramInt);
   }
   
-  public int a()
+  protected String a()
   {
-    return 0;
+    return "store_app_client";
   }
   
-  public String a(bgjw parambgjw)
+  public JSONObject a(byte[] paramArrayOfByte)
   {
-    if (parambgjw == null) {
-      return "";
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    JSONObject localJSONObject = new JSONObject();
+    MiniAppStore.StGetFirstPageByTypeRsp localStGetFirstPageByTypeRsp = new MiniAppStore.StGetFirstPageByTypeRsp();
     try
     {
-      localJSONObject.put("appId", parambgjw.appId);
-      localJSONObject.put("icon", parambgjw.iconUrl);
-      localJSONObject.put("nickname", "testuser");
-      parambgjw = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.QUA='V1_AND_SQ_8.1.3_0_RDM_B';", new Object[] { parambgjw.mConfigStr, localJSONObject.toString() });
-      parambgjw = parambgjw + "__qqConfig.debug=true;";
-      return parambgjw + "if (typeof WeixinJSBridge != 'undefined' && typeof WeixinJSBridge.subscribeHandler == 'function') {WeixinJSBridge.subscribeHandler('onWxConfigReady')};";
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      localStGetFirstPageByTypeRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetFirstPageByTypeRsp != null)
       {
-        localJSONException.printStackTrace();
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("data", JSONConverter.convert2JSONArray(localStGetFirstPageByTypeRsp.vecAppInfo.get()).toString());
+        paramArrayOfByte.put("dataType", "string");
+        return paramArrayOfByte;
       }
+      QMLog.d("GetFirstPageByTypeRequest", "onResponse fail.rsp = null");
+      return null;
     }
-  }
-  
-  public String a(boolean paramBoolean)
-  {
-    try
+    catch (Exception paramArrayOfByte)
     {
-      Object localObject = new JSONObject();
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("USER_DATA_PATH", "qqfile://usr");
-      ((JSONObject)localObject).put("env", localJSONObject);
-      ((JSONObject)localObject).put("preload", paramBoolean);
-      ((JSONObject)localObject).put("useXWebVideo", this.jdField_a_of_type_Boolean);
-      localObject = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = %1$s; Object.assign(__qqConfig, __tempConfig); ", new Object[] { localObject });
-      QMLog.d("miniapp-embedded", "service enableEmbeddedVideo : " + this.jdField_a_of_type_Boolean);
-      return localObject;
+      QMLog.d("GetFirstPageByTypeRequest", "onResponse fail." + paramArrayOfByte);
     }
-    catch (Exception localException)
-    {
-      QMLog.e("AppBrandWebviewService", "getJsDefaultConfig failed: ", localException);
-    }
-    return "";
+    return null;
   }
   
-  public void a(int paramInt, String paramString)
+  protected byte[] a()
   {
-    a(String.format("WeixinJSBridge.invokeCallbackHandler(%d, %s)", new Object[] { Integer.valueOf(paramInt), paramString }), null);
+    return this.a.toByteArray();
   }
   
-  public void a(bgjw parambgjw)
+  protected String b()
   {
-    if (parambgjw == null) {
-      return;
-    }
-    b(a(parambgjw));
-    String str = "";
-    try
-    {
-      parambgjw = bgkv.b(new File(parambgjw.a()));
-      c(parambgjw);
-      return;
-    }
-    catch (IOException parambgjw)
-    {
-      for (;;)
-      {
-        parambgjw.printStackTrace();
-        parambgjw = str;
-      }
-    }
-  }
-  
-  public void a(bhbb parambhbb) {}
-  
-  public void a(bhdk parambhdk)
-  {
-    this.jdField_a_of_type_Bhdk = parambhdk;
-  }
-  
-  public void a(String paramString, ValueCallback paramValueCallback)
-  {
-    a(paramString, paramValueCallback, null);
-  }
-  
-  public void a(String paramString1, ValueCallback paramValueCallback, String paramString2)
-  {
-    if (Thread.currentThread() == Looper.getMainLooper().getThread())
-    {
-      if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {
-        this.jdField_a_of_type_ComTencentSmttSdkWebView.evaluateJavascript(paramString1, bhej.a(paramValueCallback));
-      }
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(new AppBrandWebviewService.2(this, paramString1, paramValueCallback));
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt)
-  {
-    QMLog.d("AppBrandWebviewService", "evaluateSubscribeJS  eventName=" + paramString1);
-    paramString1 = "WeixinJSBridge.subscribeHandler(\"" + paramString1 + "\"," + paramString2 + "," + paramInt + "," + 0 + ")";
-    if (!a()) {
-      return;
-    }
-    a(paramString1, null);
-  }
-  
-  public void b()
-  {
-    a(a(true));
-    AppLoaderFactory.g().getMiniAppEnv().getBaselibLoader().loadBaselib(AppLoaderFactory.g().getMiniAppEnv().getContext(), new bhdc(this));
+    return "GetFirstPageByType";
   }
 }
 

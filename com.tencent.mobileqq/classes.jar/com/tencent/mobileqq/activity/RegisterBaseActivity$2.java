@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import adpq;
-import bdcd;
-import bdfq;
+import aduf;
+import bdgm;
+import bdjz;
 
 public class RegisterBaseActivity$2
   implements Runnable
@@ -11,11 +11,11 @@ public class RegisterBaseActivity$2
   
   public void run()
   {
-    bdfq localbdfq = bdcd.a(this.this$0, 230);
-    localbdfq.setTitle(this.a);
-    localbdfq.setMessage(this.b);
-    localbdfq.setPositiveButton(2131720409, new adpq(this));
-    localbdfq.show();
+    bdjz localbdjz = bdgm.a(this.this$0, 230);
+    localbdjz.setTitle(this.a);
+    localbdjz.setMessage(this.b);
+    localbdjz.setPositiveButton(2131720421, new aduf(this));
+    localbdjz.show();
   }
 }
 

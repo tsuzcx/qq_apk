@@ -1,6 +1,14 @@
-public abstract interface blls
+import dov.com.qq.im.aeeditor.module.clip.image.AEEditorImageClipFragment;
+
+public class blls
+  implements blqe
 {
-  public abstract void a(int paramInt);
+  public blls(AEEditorImageClipFragment paramAEEditorImageClipFragment) {}
+  
+  public void a(int paramInt)
+  {
+    AEEditorImageClipFragment.c(this.a, paramInt);
+  }
 }
 
 

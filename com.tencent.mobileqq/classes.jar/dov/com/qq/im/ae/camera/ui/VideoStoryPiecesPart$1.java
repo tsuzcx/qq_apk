@@ -1,23 +1,23 @@
 package dov.com.qq.im.ae.camera.ui;
 
-import aekt;
+import aepi;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-import bkpi;
+import bktp;
 import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
 
 public class VideoStoryPiecesPart$1
   implements Runnable
 {
-  public VideoStoryPiecesPart$1(bkpi parambkpi) {}
+  public VideoStoryPiecesPart$1(bktp parambktp) {}
   
   public void run()
   {
-    Drawable localDrawable = bkpi.a(this.this$0).getResources().getDrawable(2130848639);
-    int i = aekt.a(36.0F, bkpi.b(this.this$0).getResources());
+    Drawable localDrawable = bktp.a(this.this$0).getResources().getDrawable(2130848712);
+    int i = aepi.a(36.0F, bktp.b(this.this$0).getResources());
     localDrawable.setBounds(0, 0, i, i);
-    bkpi.a(this.this$0).setImageDrawable(localDrawable);
+    bktp.a(this.this$0).setImageDrawable(localDrawable);
   }
 }
 

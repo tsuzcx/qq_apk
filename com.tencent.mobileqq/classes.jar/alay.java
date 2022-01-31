@@ -1,26 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
-
-class alay
-  implements aklp
+public class alay
+  extends alas
 {
-  alay(alax paramalax, String paramString) {}
+  private int b;
   
-  public void a(boolean paramBoolean, String paramString1, List<aklm> paramList, String paramString2)
+  public alay(int paramInt1, int paramInt2, alba paramalba)
   {
-    QLog.i("ApolloPluginRscLoader", 1, "downloadApolloRes onDownLoadFinish success:" + paramBoolean);
-    if (paramBoolean)
-    {
-      if (this.jdField_a_of_type_Alax.jdField_a_of_type_JavaIoFile.exists())
-      {
-        this.jdField_a_of_type_Alax.jdField_a_of_type_Alap.a(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_Alax.jdField_a_of_type_Int + alpo.a(2131700869));
-        return;
-      }
-      this.jdField_a_of_type_Alax.jdField_a_of_type_Alap.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Alax.jdField_a_of_type_Int + alpo.a(2131700880));
-      return;
-    }
-    this.jdField_a_of_type_Alax.jdField_a_of_type_Alap.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Alax.jdField_a_of_type_Int + alpo.a(2131700877));
+    super(paramInt1, paramalba);
+    this.b = paramInt2;
+  }
+  
+  public akrw a(long paramLong, String paramString1, String paramString2)
+  {
+    return null;
   }
 }
 

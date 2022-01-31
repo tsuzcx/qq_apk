@@ -1,77 +1,38 @@
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.graphics.Bitmap;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.widget.XListView;
 
 public class ahia
-  extends ahgy
-  implements View.OnClickListener
+  implements aybr
 {
-  public ahia(Context paramContext, QQAppInterface paramQQAppInterface, akgy paramakgy, avqe paramavqe)
-  {
-    super(paramContext, paramQQAppInterface, paramakgy, paramavqe);
-  }
+  public ahia(SearchBaseFragment paramSearchBaseFragment) {}
   
-  private void a(TextView paramTextView, avqe paramavqe)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if ((paramavqe == null) || (!(paramavqe instanceof avql))) {}
-    do
-    {
-      return;
-      paramavqe = (avql)paramavqe;
-    } while ((paramavqe.jdField_a_of_type_JavaUtilArrayList == null) || (paramavqe.jdField_a_of_type_JavaUtilArrayList.size() == 0));
-    String str = this.jdField_a_of_type_AndroidContentContext.getString(2131699556);
-    paramTextView.setVisibility(0);
-    paramTextView.setText(str);
-    if (paramavqe.jdField_a_of_type_Boolean)
-    {
-      paramTextView.setPadding(0, bdkf.a(16.0F), 0, bdkf.a(6.0F));
-      return;
-    }
-    paramTextView.setPadding(0, bdkf.a(16.0F), 0, bdkf.a(6.0F));
-  }
-  
-  public View a(int paramInt, View paramView)
-  {
-    View localView;
-    Object localObject;
-    if ((paramView == null) || (!(paramView.getTag() instanceof ahib)))
-    {
-      paramView = new ahib();
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561103, null);
-      paramView.a = ((TextView)localView.findViewById(2131377312));
-      localView.setTag(paramView);
-      localObject = paramView;
-    }
+    if ((paramBitmap == null) || (paramInt2 == 201)) {}
     for (;;)
     {
-      c(((ahib)localObject).a);
-      a(((ahib)localObject).a, this.jdField_a_of_type_Avqe);
-      localView.setOnClickListener(this);
-      return localView;
-      localObject = (ahib)paramView.getTag();
-      localView = paramView;
+      return;
+      if ((this.a.e == 0) && (this.a.a != null))
+      {
+        int i = this.a.a.getChildCount();
+        paramInt2 = 0;
+        while (paramInt2 < i)
+        {
+          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
+          if ((paramBitmap != null) && ((paramBitmap instanceof ahid)))
+          {
+            paramBitmap = (ahid)paramBitmap;
+            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
+              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+            }
+          }
+          paramInt2 += 1;
+        }
+      }
     }
   }
-  
-  public void c(View paramView)
-  {
-    if (paramView == null) {
-      return;
-    }
-    if (ThemeUtil.isDefaultTheme())
-    {
-      paramView.setBackgroundResource(2130839216);
-      return;
-    }
-    paramView.setBackgroundResource(2130849570);
-  }
-  
-  public void onClick(View paramView) {}
 }
 
 

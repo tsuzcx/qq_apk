@@ -1,133 +1,88 @@
-import android.graphics.Matrix;
-import android.graphics.RectF;
+import android.support.annotation.NonNull;
 
 public class bmnu
+  extends bmnh
+  implements blwi
 {
-  private static final Matrix a = new Matrix();
+  private blwf a;
   
-  public static bmoq a(RectF paramRectF1, RectF paramRectF2)
+  public bmnu(@NonNull bmnj parambmnj)
   {
-    bmoq localbmoq = new bmoq(0.0F, 0.0F, 1.0F, 0.0F);
-    if (paramRectF1.equals(paramRectF2)) {
-      return localbmoq;
-    }
-    localbmoq.c = Math.max(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
-    RectF localRectF = new RectF();
-    a.setScale(localbmoq.c, localbmoq.c, paramRectF2.centerX(), paramRectF2.centerY());
-    a.mapRect(localRectF, paramRectF2);
-    localbmoq.a += paramRectF1.centerX() - localRectF.centerX();
-    float f = localbmoq.b;
-    localbmoq.b = (paramRectF1.centerY() - localRectF.centerY() + f);
-    return localbmoq;
+    super(parambmnj);
+    this.jdField_a_of_type_Blwf = new blwf();
+    this.jdField_a_of_type_Blwf.a(this);
+    this.jdField_a_of_type_Blwf.a().a(this.jdField_a_of_type_Bmnj.a);
   }
   
-  public static bmoq a(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
+  public void a()
   {
-    bmoq localbmoq = new bmoq(0.0F, 0.0F, 1.0F, 0.0F);
-    if (paramRectF2.contains(paramRectF1)) {}
-    RectF localRectF;
+    this.jdField_a_of_type_Blwf.a(this.jdField_a_of_type_Bmor.a());
+  }
+  
+  public boolean a()
+  {
+    return b();
+  }
+  
+  public void aW_()
+  {
+    this.jdField_a_of_type_Blwf.a().b();
+  }
+  
+  public void aX_()
+  {
+    b();
+  }
+  
+  public void a_(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_Blwf.d();
+    }
     do
     {
-      return localbmoq;
-      if ((paramRectF2.width() < paramRectF1.width()) && (paramRectF2.height() < paramRectF1.height())) {
-        localbmoq.c = Math.min(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
-      }
-      localRectF = new RectF();
-      a.setScale(localbmoq.c, localbmoq.c, paramFloat1, paramFloat2);
-      a.mapRect(localRectF, paramRectF2);
-      if (localRectF.width() < paramRectF1.width()) {
-        localbmoq.a += paramRectF1.centerX() - localRectF.centerX();
-      }
-      while (localRectF.height() < paramRectF1.height())
-      {
-        paramFloat1 = localbmoq.b;
-        localbmoq.b = (paramRectF1.centerY() - localRectF.centerY() + paramFloat1);
-        return localbmoq;
-        if (localRectF.left > paramRectF1.left) {
-          localbmoq.a += paramRectF1.left - localRectF.left;
-        } else if (localRectF.right < paramRectF1.right) {
-          localbmoq.a += paramRectF1.right - localRectF.right;
-        }
-      }
-      if (localRectF.top > paramRectF1.top)
-      {
-        paramFloat1 = localbmoq.b;
-        localbmoq.b = (paramRectF1.top - localRectF.top + paramFloat1);
-        return localbmoq;
-      }
-    } while (localRectF.bottom >= paramRectF1.bottom);
-    paramFloat1 = localbmoq.b;
-    localbmoq.b = (paramRectF1.bottom - localRectF.bottom + paramFloat1);
-    return localbmoq;
+      return;
+      this.jdField_a_of_type_Blwf.a();
+      this.jdField_a_of_type_Blwf.a().a(true, this.jdField_a_of_type_Bmor.getActivity());
+    } while (!(paramObject instanceof bmmc));
+    paramObject = (bmmc)paramObject;
+    this.jdField_a_of_type_Blwf.a().a(paramObject.jdField_a_of_type_Bmnv, paramObject.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Blwf.e();
   }
   
-  public static void a(RectF paramRectF1, RectF paramRectF2)
+  public void b()
   {
-    paramRectF2.offset(paramRectF1.centerX() - paramRectF2.centerX(), paramRectF1.centerY() - paramRectF2.centerY());
+    this.jdField_a_of_type_Bmnj.a(4, this.jdField_a_of_type_Blwf.a().a());
   }
   
-  public static void a(RectF paramRectF1, RectF paramRectF2, float paramFloat)
+  protected boolean b()
   {
-    a(paramRectF1, paramRectF2, paramFloat, paramFloat, paramFloat, paramFloat);
+    boolean bool = false;
+    if (this.jdField_a_of_type_Blwf.a())
+    {
+      this.jdField_a_of_type_Bmnj.a(0);
+      bool = true;
+    }
+    return bool;
   }
   
-  public static void a(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void c()
   {
-    if ((paramRectF1.isEmpty()) || (paramRectF2.isEmpty())) {
+    bmnj localbmnj = this.jdField_a_of_type_Bmnj;
+    if (this.jdField_a_of_type_Bmnj.a()) {}
+    for (String str = "2";; str = "1")
+    {
+      localbmnj.a("change_poi", 0, 0, new String[] { str });
+      wxk.a("0X80076D0");
+      wxk.b("0X80075E5");
+      b();
       return;
     }
-    float f2 = paramFloat1;
-    float f1 = paramFloat3;
-    if (paramRectF1.width() < paramFloat1 + paramFloat3)
-    {
-      f1 = 0.0F;
-      f2 = 0.0F;
-    }
-    paramFloat3 = paramFloat2;
-    paramFloat1 = paramFloat4;
-    if (paramRectF1.height() < paramFloat2 + paramFloat4)
-    {
-      paramFloat1 = 0.0F;
-      paramFloat3 = 0.0F;
-    }
-    paramFloat2 = paramRectF1.width();
-    paramFloat4 = paramRectF1.height();
-    paramFloat2 = Math.min((paramFloat2 - f2 - f1) / paramRectF2.width(), (paramFloat4 - paramFloat3 - paramFloat1) / paramRectF2.height());
-    paramRectF2.set(0.0F, 0.0F, paramRectF2.width() * paramFloat2, paramFloat2 * paramRectF2.height());
-    paramRectF2.offset(paramRectF1.centerX() + (f2 - f1) / 2.0F - paramRectF2.centerX(), paramRectF1.centerY() + (paramFloat3 - paramFloat1) / 2.0F - paramRectF2.centerY());
   }
   
-  public static bmoq b(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
-  {
-    bmoq localbmoq = new bmoq(0.0F, 0.0F, 1.0F, 0.0F);
-    if (paramRectF2.contains(paramRectF1)) {}
-    RectF localRectF;
-    do
-    {
-      return localbmoq;
-      if ((paramRectF2.width() < paramRectF1.width()) || (paramRectF2.height() < paramRectF1.height())) {
-        localbmoq.c = Math.max(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
-      }
-      localRectF = new RectF();
-      a.setScale(localbmoq.c, localbmoq.c, paramFloat1, paramFloat2);
-      a.mapRect(localRectF, paramRectF2);
-      if (localRectF.left > paramRectF1.left) {
-        localbmoq.a += paramRectF1.left - localRectF.left;
-      }
-      while (localRectF.top > paramRectF1.top)
-      {
-        paramFloat1 = localbmoq.b;
-        localbmoq.b = (paramRectF1.top - localRectF.top + paramFloat1);
-        return localbmoq;
-        if (localRectF.right < paramRectF1.right) {
-          localbmoq.a += paramRectF1.right - localRectF.right;
-        }
-      }
-    } while (localRectF.bottom >= paramRectF1.bottom);
-    paramFloat1 = localbmoq.b;
-    localbmoq.b = (paramRectF1.bottom - localRectF.bottom + paramFloat1);
-    return localbmoq;
-  }
+  public void z_() {}
 }
 
 

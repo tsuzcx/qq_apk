@@ -3,8 +3,8 @@ package com.tencent.mobileqq.ocr;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Message;
-import avrh;
-import bhow;
+import avvq;
+import bhtd;
 
 class OCRPerformFragment$2
   implements Runnable
@@ -13,7 +13,7 @@ class OCRPerformFragment$2
   
   public void run()
   {
-    Bitmap localBitmap = avrh.a(OCRPerformFragment.a(this.this$0), this.this$0.getResources().getDisplayMetrics());
+    Bitmap localBitmap = avvq.a(OCRPerformFragment.a(this.this$0), this.this$0.getResources().getDisplayMetrics());
     this.this$0.a.obtainMessage(100, localBitmap).sendToTarget();
   }
 }

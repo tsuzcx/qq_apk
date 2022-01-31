@@ -1,19 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler.5.1;
 
-class beiu
-  implements Animation.AnimationListener
+public class beiu
+  implements DialogInterface.OnClickListener
 {
-  beiu(beis parambeis) {}
+  beiu(beir parambeir, int paramInt, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    beis.a(this.a, true);
+    ThreadManager.excute(new SwiftBrowserShareMenuHandler.5.1(this), 128, null, false);
+    beir.a(this.jdField_a_of_type_Beir, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,91 +1,30 @@
-import android.app.Dialog;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.HashMap;
-import java.util.Map;
+import java.nio.ByteBuffer;
 
 public class vxx
-  extends vux
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private utg jdField_a_of_type_Utg;
-  private vpk jdField_a_of_type_Vpk;
-  private boolean c;
+  int jdField_a_of_type_Int;
+  public long a;
+  ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
+  public boolean a;
+  public boolean b;
   
-  public Map<Subscriber, String> a()
+  public vxx()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(new vxz(this), "");
-    return localHashMap;
+    a();
   }
   
-  public boolean a(View paramView)
+  public void a()
   {
-    if (!super.a(paramView)) {
-      return false;
-    }
-    if (this.jdField_a_of_type_Vpk == null) {
-      return false;
-    }
-    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_Vpk.a();
-    paramView = xqr.a(this.jdField_a_of_type_Vuu.b(), localStoryVideoItem.mOwnerUid, "4", localStoryVideoItem.mVid, 3, localStoryVideoItem.mWsSchema);
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)this.jdField_a_of_type_Vuu.a()).a();
-    if (paramView != null)
-    {
-      if (localVideoViewVideoHolder != null) {
-        localVideoViewVideoHolder.c(true);
-      }
-      paramView.setOnDismissListener(new vxy(this, localVideoViewVideoHolder));
-    }
-    if (xoo.a(this.jdField_a_of_type_Vuu.b())) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      wta.a("weishi_share", "link_click", 0, 0, new String[] { paramView, localStoryVideoItem.mOwnerUid, "", localStoryVideoItem.mVid });
-      return true;
-    }
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaNioByteBuffer = null;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
   }
   
-  public void b(vuy paramvuy, vpk paramvpk)
+  public String toString()
   {
-    this.jdField_a_of_type_Vpk = paramvpk;
-    StoryVideoItem localStoryVideoItem = paramvpk.a();
-    this.jdField_a_of_type_Utg = localStoryVideoItem.getOALinkInfo();
-    if ((this.jdField_a_of_type_Utg == null) || (this.jdField_a_of_type_Utg.jdField_a_of_type_Int != 6))
-    {
-      this.jdField_a_of_type_Vuu.k();
-      return;
-    }
-    this.jdField_a_of_type_Vuu.j();
-    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramvpk.jdField_a_of_type_JavaLangString)) {
-      this.c = false;
-    }
-    for (;;)
-    {
-      paramvpk = this.jdField_a_of_type_Utg.b;
-      String str1 = this.jdField_a_of_type_Utg.c;
-      String str2 = this.jdField_a_of_type_Utg.d;
-      wsv.a("WeiShiFlowBannerVideoInfoController", "WeiShiFlowBannerVideoInfoController doOnBind, title:%s, body:%s, picUrl:%s", paramvpk, str1, str2);
-      paramvuy.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramvuy.b.setVisibility(0);
-      paramvuy.b.setTypeface(null, 0);
-      paramvuy.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      vuu.a(str2, paramvuy.jdField_a_of_type_AndroidWidgetImageView, paramvuy.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramvuy.jdField_a_of_type_Int, paramvuy.jdField_a_of_type_Int);
-      paramvuy.b.setText(paramvpk);
-      paramvuy.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
-      if (!this.c) {
-        break;
-      }
-      wta.a("weishi_share", "link_exp", 0, 0, new String[] { "", localStoryVideoItem.mOwnerUid, "", localStoryVideoItem.mVid });
-      return;
-      this.c = true;
-      this.jdField_a_of_type_JavaLangString = paramvpk.jdField_a_of_type_JavaLangString;
-    }
+    return "FrameInfo{buffer=" + this.jdField_a_of_type_Int + ", data=" + this.jdField_a_of_type_JavaNioByteBuffer + ", presentationTimeUs=" + this.jdField_a_of_type_Long + ", endOfStream=" + this.jdField_a_of_type_Boolean + ", representationChanged=" + this.b + '}';
   }
 }
 

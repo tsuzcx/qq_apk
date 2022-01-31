@@ -1,104 +1,106 @@
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.copyprompt.CopyPromptHelper.4;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 public class apap
-  extends ImageSpan
+  implements affa, View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  public String a;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new apaq(this);
+  private View jdField_a_of_type_AndroidViewView;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new CopyPromptHelper.4(this);
   
-  public apap(Context paramContext, int paramInt, String paramString)
+  public apap(BaseChatPie paramBaseChatPie)
   {
-    super(paramContext, paramInt, 1);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  public apap(Context paramContext, int paramInt1, String paramString, int paramInt2)
+  private View a(String paramString)
   {
-    super(paramContext, paramInt1, 1);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt2;
+    View localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext).inflate(2131559456, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c, false);
+    ((TextView)localView.findViewById(2131372375)).setText(new bamp(paramString, 3, 16));
+    paramString = new RelativeLayout.LayoutParams(-2, -2);
+    paramString.addRule(9);
+    paramString.addRule(2, 2131368344);
+    paramString.leftMargin = aepi.a(14.0F, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getResources());
+    ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131364139)).addView(localView, paramString);
+    return localView;
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  private boolean a()
   {
-    paramCharSequence = getDrawable();
-    if (paramCharSequence == null) {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131364229).getVisibility() == 0;
+  }
+  
+  private void b()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(320);
+    if ((localObject instanceof apat))
+    {
+      localObject = ((apat)localObject).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("CopyPromptHelper", 2, "handlePrompt content : " + (String)localObject);
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        a();
+        this.jdField_a_of_type_AndroidViewView = a((String)localObject);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
+        nad[] arrayOfnad = new nad[1];
+        arrayOfnad[0] = new nad(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c, new apar(this, arrayOfnad));
+        this.jdField_a_of_type_AndroidViewView.setOnClickListener(new apas(this, (String)localObject));
+      }
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
       return;
-    }
-    if (((paramCharSequence instanceof URLDrawable)) && (((URLDrawable)paramCharSequence).getStatus() == 1)) {
-      paramCharSequence.setBounds(0, 0, paramCharSequence.getIntrinsicWidth() / 2, paramCharSequence.getIntrinsicHeight() / 2);
-    }
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.a(this);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+      return;
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    } while (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx == null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
   }
   
-  public Drawable getDrawable()
+  public int[] a()
   {
-    if (this.jdField_a_of_type_JavaLangString != null)
-    {
-      Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      if (this.jdField_a_of_type_Int > 0)
-      {
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_a_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.jdField_a_of_type_Int;
-      }
-      URLDrawable localURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("UrlCenterImageSpan.getDrawable. url:").append(this.jdField_a_of_type_JavaLangString).append(" drawable:");
-        if (localURLDrawable == null) {
-          break label117;
-        }
-      }
-      label117:
-      for (localObject = localURLDrawable.getIntrinsicWidth() + "";; localObject = null)
-      {
-        QLog.e(".troop.send_gift", 2, (String)localObject);
-        return localURLDrawable;
-      }
-    }
-    return super.getDrawable();
+    return new int[] { 2, 11 };
   }
   
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  public void onClick(View paramView)
   {
-    paramCharSequence = getDrawable();
-    if (paramCharSequence == null) {
-      return 0;
+    if (!a()) {
+      b();
     }
-    if (((paramCharSequence instanceof URLDrawable)) && (((URLDrawable)paramCharSequence).getStatus() == 1)) {
-      paramCharSequence.setBounds(0, 0, paramCharSequence.getIntrinsicWidth() / 2, paramCharSequence.getIntrinsicHeight() / 2);
-    }
-    paramCharSequence = paramCharSequence.getBounds();
-    if (paramFontMetricsInt != null)
-    {
-      paramPaint = paramPaint.getFontMetricsInt();
-      paramInt2 = paramPaint.bottom - paramPaint.top;
-      int i = paramCharSequence.bottom - paramCharSequence.top;
-      paramInt1 = i / 2 - paramInt2 / 4;
-      i /= 2;
-      paramInt2 = paramInt2 / 4 + i;
-      paramFontMetricsInt.ascent = (-paramInt2);
-      paramFontMetricsInt.top = (-paramInt2);
-      paramFontMetricsInt.bottom = paramInt1;
-      paramFontMetricsInt.descent = paramInt1;
-    }
-    return paramCharSequence.right;
   }
 }
 

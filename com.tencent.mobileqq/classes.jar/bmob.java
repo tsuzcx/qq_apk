@@ -1,42 +1,90 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.widget.XPanelContainer;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.reactive.SimpleObserver;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
 
 class bmob
-  implements bltb
+  extends SimpleObserver<bnaz>
 {
-  bmob(bmnw parambmnw) {}
+  bmob(bmnz parambmnz, bnaz parambnaz) {}
   
-  public void a(View paramView, DynamicTextItem paramDynamicTextItem, int paramInt)
+  public void a(bnaz parambnaz)
   {
-    if ((paramDynamicTextItem != null) && (paramInt > -1))
+    super.onNext(parambnaz);
+    this.jdField_a_of_type_Bmnz.a(5);
+    parambnaz = this.jdField_a_of_type_Bnaz.a;
+    wxe.b("EditVideoSave", "publishParam = " + parambnaz);
+    Intent localIntent1;
+    int j;
+    int i;
+    if (this.jdField_a_of_type_Bmnz.jdField_a_of_type_Bmor.getActivity() != null)
     {
-      paramView = paramDynamicTextItem.a(paramInt);
-      if (paramView != null)
+      localIntent1 = this.jdField_a_of_type_Bmnz.jdField_a_of_type_Bmor.getActivity().getIntent();
+      if (localIntent1 == null) {
+        break label318;
+      }
+      j = localIntent1.getIntExtra("sv_total_frame_count", 0);
+      i = localIntent1.getIntExtra("sv_total_record_time", 0);
+    }
+    for (;;)
+    {
+      Intent localIntent2 = SaveVideoActivity.a(this.jdField_a_of_type_Bmnz.jdField_a_of_type_Bmor.a(), parambnaz.b, i, j, this.jdField_a_of_type_Bmnz.jdField_a_of_type_Bmnj.a.a());
+      bmnz.a(this.jdField_a_of_type_Bmnz, parambnaz.b);
+      localIntent2.putExtra("mediacodec_encode_enable", true);
+      boolean bool;
+      if (parambnaz.e != 0)
       {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.length());
-        if (!paramView.equals(blst.a(paramDynamicTextItem.c(), paramInt))) {
-          break label139;
+        bool = true;
+        localIntent2.putExtra("video_edit_flag", bool);
+        if (localIntent1 != null) {
+          localIntent2.putExtra("qqstory_slide_show_scene", localIntent1.getIntExtra("qqstory_slide_show_scene", -1));
         }
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(bmnw.a(this.a));
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelectAllOnFocus(true);
-        if (this.a.jdField_a_of_type_AndroidWidgetEditText.hasFocus()) {
-          this.a.jdField_a_of_type_AndroidWidgetEditText.selectAll();
+        if (this.jdField_a_of_type_Bmnz.jdField_a_of_type_Int != 47) {
+          break label296;
         }
+        this.jdField_a_of_type_Bmnz.jdField_a_of_type_Bmor.getActivity().startActivityForResult(localIntent2, 222);
       }
       for (;;)
       {
-        if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) {
-          this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(34);
+        this.jdField_a_of_type_Bmnz.jdField_a_of_type_Float = 5.0F;
+        this.jdField_a_of_type_Bmnz.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Bmnz.b = (50000.0F / (float)parambnaz.a);
+        if (this.jdField_a_of_type_Bmnz.b == 0.0F) {
+          this.jdField_a_of_type_Bmnz.b = 1.0F;
         }
+        this.jdField_a_of_type_Bmnz.d();
         return;
-        label139:
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(null);
+        bool = false;
+        break;
+        label296:
+        this.jdField_a_of_type_Bmnz.jdField_a_of_type_Bmor.getActivity().startActivityForResult(localIntent2, 111);
       }
+      label318:
+      i = 0;
+      j = 0;
     }
-    this.a.a(false);
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    wxe.d("EditVideoSave", "saveVideo cancel !");
+    this.jdField_a_of_type_Bmnz.jdField_a_of_type_Bmnj.a(0);
+    this.jdField_a_of_type_Bmnz.j();
+    QQToast.a(this.jdField_a_of_type_Bmnz.jdField_a_of_type_Bmor.a(), alud.a(2131704219), 0).a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    wxe.e("EditVideoSave", "saveVideo error ：" + paramError);
+    this.jdField_a_of_type_Bmnz.jdField_a_of_type_Bmnj.a(0);
+    QQToast.a(this.jdField_a_of_type_Bmnz.jdField_a_of_type_Bmor.a(), 1, alud.a(2131704128) + paramError, 0).a();
+    this.jdField_a_of_type_Bmnz.j();
   }
 }
 

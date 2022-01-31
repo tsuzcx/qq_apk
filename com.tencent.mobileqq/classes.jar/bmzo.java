@@ -1,14 +1,8 @@
 public abstract interface bmzo
 {
-  public abstract void a(int paramInt);
+  public abstract void a(bmzn parambmzn);
   
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d(int paramInt);
+  public abstract void a(bmzn parambmzn, int paramInt);
 }
 
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="13.0dip" />
-    <solid android:color="#ffffbca4" />
-</shape>
+    <item android:state_checked="true" android:drawable="@drawable/eqg" />
+    <item android:state_checked="false" android:drawable="@drawable/eqf" />
+    <item android:drawable="@drawable/eqf" />
+</selector>

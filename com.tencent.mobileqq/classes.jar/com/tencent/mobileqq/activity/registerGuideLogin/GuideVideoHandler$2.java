@@ -80,9 +80,9 @@ public class GuideVideoHandler$2
     //   156: aload 10
     //   158: invokevirtual 117	android/media/MediaMetadataRetriever:release	()V
     //   161: aload_0
-    //   162: getfield 119	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lajim;
+    //   162: getfield 119	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lajnb;
     //   165: iconst_0
-    //   166: invokestatic 124	ajim:a	(Lajim;Z)Z
+    //   166: invokestatic 124	ajnb:a	(Lajnb;Z)Z
     //   169: pop
     //   170: return
     //   171: aload_0
@@ -178,9 +178,9 @@ public class GuideVideoHandler$2
     //   353: aload 10
     //   355: invokevirtual 117	android/media/MediaMetadataRetriever:release	()V
     //   358: aload_0
-    //   359: getfield 119	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lajim;
+    //   359: getfield 119	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lajnb;
     //   362: iconst_0
-    //   363: invokestatic 124	ajim:a	(Lajim;Z)Z
+    //   363: invokestatic 124	ajnb:a	(Lajnb;Z)Z
     //   366: pop
     //   367: return
     //   368: astore 8
@@ -210,9 +210,9 @@ public class GuideVideoHandler$2
     //   420: aload 7
     //   422: invokevirtual 117	android/media/MediaMetadataRetriever:release	()V
     //   425: aload_0
-    //   426: getfield 119	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lajim;
+    //   426: getfield 119	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lajnb;
     //   429: iconst_0
-    //   430: invokestatic 124	ajim:a	(Lajim;Z)Z
+    //   430: invokestatic 124	ajnb:a	(Lajnb;Z)Z
     //   433: pop
     //   434: return
     //   435: astore 7
@@ -254,9 +254,9 @@ public class GuideVideoHandler$2
     //   505: aload 10
     //   507: invokevirtual 117	android/media/MediaMetadataRetriever:release	()V
     //   510: aload_0
-    //   511: getfield 119	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lajim;
+    //   511: getfield 119	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lajnb;
     //   514: iconst_0
-    //   515: invokestatic 124	ajim:a	(Lajim;Z)Z
+    //   515: invokestatic 124	ajnb:a	(Lajnb;Z)Z
     //   518: pop
     //   519: return
     //   520: astore 7
@@ -285,9 +285,9 @@ public class GuideVideoHandler$2
     //   568: aload 10
     //   570: invokevirtual 117	android/media/MediaMetadataRetriever:release	()V
     //   573: aload_0
-    //   574: getfield 119	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lajim;
+    //   574: getfield 119	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lajnb;
     //   577: iconst_0
-    //   578: invokestatic 124	ajim:a	(Lajim;Z)Z
+    //   578: invokestatic 124	ajnb:a	(Lajnb;Z)Z
     //   581: pop
     //   582: aload 7
     //   584: athrow

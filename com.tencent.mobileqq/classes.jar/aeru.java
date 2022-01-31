@@ -1,14 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
-class aeru
-  implements View.OnClickListener
+public class aeru
 {
-  aeru(aert paramaert) {}
+  public long a;
+  public String a;
   
-  public void onClick(View paramView)
+  public boolean a()
   {
-    this.a.b();
+    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MutualMarkPushGrayTipInfo{");
+    localStringBuilder.append("notifyTime:").append(this.jdField_a_of_type_Long).append(", ");
+    localStringBuilder.append("grayTipTemplate:").append(this.jdField_a_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

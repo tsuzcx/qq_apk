@@ -1,16 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class bmom
-  implements ValueAnimator.AnimatorUpdateListener
+class bmom
+  implements DialogInterface.OnClickListener
 {
-  bmom(bmoo parambmoo) {}
+  bmom(bmoj parambmoj) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a != null) {
-      this.a.a(paramValueAnimator);
-    }
+    bmoj.a(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

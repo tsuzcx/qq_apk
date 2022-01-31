@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
 
 public class ajyp
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public ajyp(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public ajyp(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.finish();
+    if ((bdin.d(this.a.jdField_a_of_type_AndroidContentContext)) && (this.a.c) && (this.a.isResume()))
+    {
+      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    }
   }
 }
 

@@ -1,10 +1,19 @@
-public abstract interface akjy
+class akjy
+  implements bhxs
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  akjy(akjt paramakjt) {}
+  
+  public void onScrollStateChanged(int paramInt)
+  {
+    if (paramInt != 4097) {
+      return;
+    }
+    this.a.e();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akjy
  * JD-Core Version:    0.7.0.1
  */

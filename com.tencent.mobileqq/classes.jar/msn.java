@@ -17,7 +17,7 @@ class msn
       return;
     }
     if (parammew.jdField_a_of_type_Int == 1) {
-      mdd.a(this.jdField_a_of_type_Msm.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696277);
+      mdd.a(this.jdField_a_of_type_Msm.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696279);
     }
     for (;;)
     {
@@ -25,7 +25,7 @@ class msn
       parammew.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
       return;
       if (parammew.jdField_a_of_type_Int == 2) {
-        mdd.a(this.jdField_a_of_type_Msm.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696276);
+        mdd.a(this.jdField_a_of_type_Msm.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696278);
       }
     }
   }
@@ -42,8 +42,8 @@ class msn
         return;
       } while (!localmrt.a());
       i = parammex.a().getId();
-    } while ((i != 2131695810) && (i != 2131695811));
-    if (i == 2131695810) {
+    } while ((i != 2131695812) && (i != 2131695813));
+    if (i == 2131695812) {
       this.jdField_a_of_type_Msm.jdField_a_of_type_Int = parammex.jdField_a_of_type_Int;
     }
     parammex.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
@@ -56,7 +56,7 @@ class msn
     if ((!this.jdField_a_of_type_Msm.a()) || (localAVActivity == null)) {
       return;
     }
-    mdd.a(this.jdField_a_of_type_Msm.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696272);
+    mdd.a(this.jdField_a_of_type_Msm.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696274);
     parammey.jdField_b_of_type_Boolean = true;
     parammey.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
@@ -67,7 +67,7 @@ class msn
     if ((!this.jdField_a_of_type_Msm.a()) || (localAVActivity == null)) {
       return;
     }
-    mdd.a(this.jdField_a_of_type_Msm.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696274);
+    mdd.a(this.jdField_a_of_type_Msm.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696276);
     parammey.jdField_b_of_type_Boolean = true;
     parammey.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
@@ -79,7 +79,7 @@ class msn
     while ((localmrt.a == null) || (localmrt.a.a == null) || (localmrt.a.a.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Msm.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().j) || (this.jdField_a_of_type_Msm.a() == null) || (!this.jdField_a_of_type_Msm.a())) {
       return;
     }
-    mdd.a(this.jdField_a_of_type_Msm.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696273);
+    mdd.a(this.jdField_a_of_type_Msm.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696275);
     parammey.jdField_b_of_type_Boolean = true;
     parammey.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }

@@ -1,23 +1,26 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.annotation.SuppressLint;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeProvider;
+import com.tencent.biz.qrcode.CustomAccessibilityDelegate.1;
 
+@SuppressLint({"NewApi"})
 public class xye
-  implements yhe
+  extends View.AccessibilityDelegate
 {
-  public xye(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new CustomAccessibilityDelegate.1(this);
+  private xyf jdField_a_of_type_Xyf;
   
-  public void a(boolean paramBoolean)
+  public xye(View paramView, xyf paramxyf)
   {
-    String str2 = RecommendBannerFeedItemView.a(this.a).poster.id.get();
-    StringBuilder localStringBuilder = new StringBuilder().append("recom_");
-    if (paramBoolean) {}
-    for (String str1 = "cancel";; str1 = "dislike")
-    {
-      yvu.a(str2, "auth_page", str1, 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
-      return;
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Xyf = paramxyf;
+  }
+  
+  public AccessibilityNodeProvider getAccessibilityNodeProvider(View paramView)
+  {
+    return new xyg(this);
   }
 }
 

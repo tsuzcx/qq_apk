@@ -1,22 +1,61 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.Iterator;
+import java.util.List;
 
-class acvh
-  implements DialogInterface.OnClickListener
+public class acvh
+  implements View.OnClickListener
 {
-  acvh(acvg paramacvg) {}
+  public acvh(EditActivity paramEditActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.o();
-    azmj.b(this.a.a.app, "CliOper", "", "", "P_prof", "Pp_send_msg", ProfileActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h), 0, Integer.toString(ProfileActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), Integer.toString(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.k), "", "");
-    if (this.a.a.a.b) {
-      new azmo(this.a.a.app).a("dc00899").b("Grp_mem_card").c("page").d("msg_clk").a(new String[] { this.a.a.a.jdField_a_of_type_JavaLangString }).a();
+    this.a.e();
+    if (this.a.jdField_a_of_type_Int == 105)
+    {
+      paramView = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText();
+      if (paramView != null)
+      {
+        paramView = paramView.toString().trim();
+        if (paramView.length() != 0) {
+          break label71;
+        }
+      }
+      label71:
+      apoo localapoo;
+      CustomEmotionData localCustomEmotionData;
+      do
+      {
+        QQToast.a(this.a, this.a.getString(2131692109), 0).a();
+        return;
+        Object localObject;
+        while (!((Iterator)localObject).hasNext())
+        {
+          do
+          {
+            if (EditActivity.a(this.a, paramView))
+            {
+              QQToast.a(this.a, this.a.getString(2131692110), 0).a();
+              return;
+            }
+            localObject = (apon)this.a.app.getManager(149);
+            localapoo = (apoo)this.a.app.getManager(103);
+            localObject = ((apon)localObject).a();
+          } while ((EditActivity.a(this.a) == -1) || (localObject == null));
+          localObject = ((List)localObject).iterator();
+        }
+        localCustomEmotionData = (CustomEmotionData)((Iterator)localObject).next();
+      } while (EditActivity.a(this.a) != localCustomEmotionData.emoId);
+      EditActivity.c(this.a);
+      localapoo.a(localCustomEmotionData, paramView);
+      return;
     }
+    EditActivity.b(this.a);
   }
 }
 

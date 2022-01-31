@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import apbu;
-import apcd;
+import apgd;
+import apgm;
 
 public class DBFixDialogUI$8
   implements Runnable
 {
-  public DBFixDialogUI$8(apbu paramapbu, int paramInt) {}
+  public DBFixDialogUI$8(apgd paramapgd, int paramInt) {}
   
   public void run()
   {
-    if (this.a == apcd.d) {
-      apbu.c(this.this$0);
+    if (this.a == apgm.d) {
+      apgd.c(this.this$0);
     }
-    while (this.a != apcd.e) {
+    while (this.a != apgm.e) {
       return;
     }
-    apbu.d(this.this$0);
+    apgd.d(this.this$0);
   }
 }
 

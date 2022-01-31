@@ -1,13 +1,13 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bmrd;
+import bmvp;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
-import wsv;
+import wxe;
 
 public class PersonalityOperator$1
   implements Runnable
 {
-  public PersonalityOperator$1(bmrd parambmrd, VideoMaterial paramVideoMaterial) {}
+  public PersonalityOperator$1(bmvp parambmvp, VideoMaterial paramVideoMaterial) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class PersonalityOperator$1
     this.this$0.a(this.a.getId());
     this.this$0.a(this.this$0.a, this.this$0.b, 1.0D);
     long l2 = System.currentTimeMillis();
-    wsv.b("PersonalityOperator", "setVideoFilter " + this.a.getId() + " t:" + (l2 - l1));
+    wxe.b("PersonalityOperator", "setVideoFilter " + this.a.getId() + " t:" + (l2 - l1));
   }
 }
 

@@ -1,24 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.widget.RadioGroup;
-import com.tencent.mobileqq.fragment.SimpleDebugFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class asde
-  implements best
+class asde
+  implements DialogInterface.OnClickListener
 {
-  public asde(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
+  asde(asdb paramasdb) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (this.a.c) {
+      bfhz.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "51", "0", false);
     }
-    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
-    {
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentSimpleDebugFragment.getActivity().finish();
+    ascq.a(this.a.jdField_a_of_type_AndroidAppActivity, true, "addToQQFavorites", this.a.b);
   }
 }
 

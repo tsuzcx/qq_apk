@@ -7,7 +7,7 @@ public class meb
 {
   public static void a()
   {
-    azmj.b(null, "dc00898", "", "", "0X8006F88", "0X8006F88", 0, 0, "", "", "", "");
+    azqs.b(null, "dc00898", "", "", "0X8006F88", "0X8006F88", 0, 0, "", "", "", "");
   }
   
   static void a(int paramInt1, int paramInt2, long paramLong, String paramString, int paramInt3)
@@ -32,10 +32,10 @@ public class meb
       str2 = String.valueOf(paramInt3);
       String str3 = String.valueOf(paramLong);
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        azmj.b(null, "dc00898", "", "", (String)localObject, (String)localObject, paramInt2, 0, str2, "", str3, paramString);
+        azqs.b(null, "dc00898", "", "", (String)localObject, (String)localObject, paramInt2, 0, str2, "", str3, paramString);
       }
       if (!TextUtils.isEmpty(str1)) {
-        azmj.b(null, "dc00898", "", "", str1, str1, paramInt2, 0, str2, "", str3, paramString);
+        azqs.b(null, "dc00898", "", "", str1, str1, paramInt2, 0, str2, "", str3, paramString);
       }
       return;
       str1 = "0X8007F37";
@@ -71,7 +71,7 @@ public class meb
     for (;;)
     {
       if (!TextUtils.isEmpty(str)) {
-        azmj.b(null, "dc00898", "", "", str, str, 0, 0, "", "", String.valueOf(paramLong), "");
+        azqs.b(null, "dc00898", "", "", str, str, 0, 0, "", "", String.valueOf(paramLong), "");
       }
       return;
       str = "0X8007F2B";
@@ -176,14 +176,14 @@ public class meb
     if (paramBoolean) {}
     for (int i = 1;; i = -1)
     {
-      azmj.b(null, "dc00898", "", "", paramString, paramString, 0, i, "", "", String.valueOf(paramLong), "");
+      azqs.b(null, "dc00898", "", "", paramString, paramString, 0, i, "", "", String.valueOf(paramLong), "");
       return;
     }
   }
   
   static void b()
   {
-    azmj.b(null, "dc00898", "", "", "0X8006F8F", "0X8006F8F", 0, 0, "", "", "", "");
+    azqs.b(null, "dc00898", "", "", "0X8006F8F", "0X8006F8F", 0, 0, "", "", "", "");
   }
   
   static void b(Context paramContext, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
@@ -197,7 +197,7 @@ public class meb
       if (ljs.a(paramContext))
       {
         i = j;
-        if (azbx.a().c()) {
+        if (azgg.a().c()) {
           i = 1;
         }
       }

@@ -1,139 +1,253 @@
-import com.tencent.mobileqq.location.data.LocationRoom;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.leba.table.LebaBannerLogic.1;
+import com.tencent.mobileqq.leba.widget.LebaRoundLayout;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class atll
+  implements View.OnClickListener
 {
-  private static String b = "LocationDataHandler";
-  private String jdField_a_of_type_JavaLangString;
-  private final List<atlm> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final Map<atlh, LocationRoom> jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
+  private Context jdField_a_of_type_AndroidContentContext;
+  public FrameLayout a;
+  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
   
-  atll(String paramString)
+  public atll(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public LocationRoom a(atlh paramatlh)
+  private void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    QLog.i("Q.lebatab.LebaBannerLogic", 1, String.format("jump jumpUrl:%s ,jumpType:%s ,appId:%s ", new Object[] { paramString1, paramString2, paramString3 }));
+    try
     {
-      LocationRoom localLocationRoom2 = (LocationRoom)this.jdField_a_of_type_JavaUtilMap.get(paramatlh);
-      LocationRoom localLocationRoom1 = localLocationRoom2;
-      if (localLocationRoom2 == null)
+      if ("url".equals(paramString2))
       {
-        localLocationRoom1 = new LocationRoom(paramatlh, this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_JavaUtilMap.put(paramatlh, localLocationRoom1);
+        paramQQAppInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        paramQQAppInterface.putExtra("url", paramString1);
+        this.jdField_a_of_type_AndroidContentContext.startActivity(paramQQAppInterface);
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(b, 2, "getLocationRoom: invoked. mLocationRoomMap size: " + this.jdField_a_of_type_JavaUtilMap.size() + " locationRoom: " + localLocationRoom1);
+      paramQQAppInterface = bdib.a(paramQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString1);
+      if (paramQQAppInterface != null)
+      {
+        paramQQAppInterface.c();
+        return;
       }
-      return localLocationRoom1;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.i("Q.lebatab.LebaBannerLogic", 1, "jump exception ", paramQQAppInterface);
+      return;
+    }
+    QLog.i("Q.lebatab.LebaBannerLogic", 1, "jumpAction jAction == null");
+  }
+  
+  private void a(String paramString1, String paramString2, String paramString3, List<String> paramList, int paramInt)
+  {
+    int i = 0;
+    if ((paramList != null) && (paramList.size() > 0)) {}
+    for (paramList = (String)paramList.get(0);; paramList = null)
+    {
+      if ("url".equals(paramString2))
+      {
+        i = 1;
+        if (paramInt != 1) {
+          break label113;
+        }
+        paramString2 = atlk.a("banner_exp");
+        paramString2.jdField_b_of_type_Int = i;
+        paramString2.a = paramString3;
+        paramString2.jdField_b_of_type_JavaLangString = paramList;
+        paramString2.e = paramString1;
+        azpt.a(null, paramString2);
+      }
+      label113:
+      while (paramInt != 2)
+      {
+        return;
+        if ("scheme".equals(paramString2))
+        {
+          i = 2;
+          break;
+        }
+        if (!"miniapp".equals(paramString2)) {
+          break;
+        }
+        i = 3;
+        break;
+      }
+      paramString2 = atlk.a("banner_clk");
+      paramString2.jdField_b_of_type_Int = i;
+      paramString2.a = paramString3;
+      paramString2.jdField_b_of_type_JavaLangString = paramList;
+      paramString2.e = paramString1;
+      azpt.a(null, paramString2);
+      return;
+    }
+  }
+  
+  private void a(AppRuntime paramAppRuntime, BusinessInfoCheckUpdate.AppInfo paramAppInfo, View paramView)
+  {
+    ((LebaRoundLayout)paramView.findViewById(2131363769)).a = bdoo.a(16.0F);
+    Object localObject = (LinearLayout)paramView.findViewById(2131369708);
+    if (ThemeUtil.isNowThemeIsNight(paramAppRuntime, false, null))
+    {
+      ((LinearLayout)localObject).setBackgroundResource(2130840284);
+      if ((((LinearLayout)localObject).getTag() == null) || (!(((LinearLayout)localObject).getTag() instanceof RedTouch))) {
+        break label240;
+      }
+      paramView = (RedTouch)((LinearLayout)localObject).getTag();
+    }
+    for (;;)
+    {
+      if (paramAppInfo.red_display_info == null) {
+        break label293;
+      }
+      localObject = paramAppInfo.red_display_info.red_type_info.get().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)((Iterator)localObject).next();
+        if ((localRedTypeInfo.red_type.get() == 5) || (localRedTypeInfo.red_type.get() == 4)) {
+          try
+          {
+            JSONObject localJSONObject = new JSONObject(localRedTypeInfo.red_desc.get());
+            localJSONObject.put("cr", String.format("#%06X", new Object[] { Integer.valueOf(0xFFFFFF & this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166910)) }));
+            localRedTypeInfo.red_desc.set(localJSONObject.toString());
+          }
+          catch (Exception localException)
+          {
+            QLog.i("Q.lebatab.LebaBannerLogic", 1, "parse json exception", localException);
+          }
+        }
+      }
+      ((LinearLayout)localObject).setBackgroundResource(2130839217);
+      break;
+      label240:
+      paramView = paramView.findViewById(2131369618);
+      paramView = new RedTouch(this.jdField_a_of_type_AndroidContentContext, paramView).c(bdoo.b(5.0F)).b(bdoo.b(1.0F)).a(3).a();
+      ((LinearLayout)localObject).setTag(paramView);
+    }
+    label293:
+    paramView.a(paramAppInfo);
+    if ((!this.jdField_a_of_type_JavaUtilHashSet.contains(Integer.valueOf(paramAppInfo.uiAppId.get()))) && (paramAppInfo.iNewFlag.get() != 0))
+    {
+      this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(paramAppInfo.uiAppId.get()));
+      ((axlx)paramAppRuntime.getManager(36)).a(paramAppInfo.uiAppId.get(), 30);
+      paramAppRuntime = paramAppInfo.buffer.get();
+      paramAppInfo = paramAppInfo.missions.get();
+      QLog.i("Q.lebatab.LebaBannerLogic", 1, String.format("reportExposure buffer = %s missions = %s", new Object[] { paramAppRuntime, paramAppInfo }));
+    }
+    try
+    {
+      paramAppRuntime = new JSONObject(paramAppRuntime);
+      a(paramAppRuntime.optString("_jump_url"), paramAppRuntime.optString("_jump_type"), paramAppRuntime.optString("_app_id"), paramAppInfo, 1);
+      if (AppSetting.c) {
+        bczz.a(paramView, paramView.a(), Button.class.getName());
+      }
+      return;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      for (;;)
+      {
+        QLog.i("Q.lebatab.LebaBannerLogic", 1, "parse json exception", paramAppRuntime);
+      }
     }
   }
   
   public void a()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null)
     {
-      this.jdField_a_of_type_JavaUtilMap.clear();
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setPadding(0, 0, 0, 0);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilHashSet.clear();
+  }
+  
+  public void c()
+  {
+    ThreadManager.getUIHandler().post(new LebaBannerLogic.1(this));
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null) {
+      QLog.i("Q.lebatab.LebaBannerLogic", 1, "onClick mRootLayout == null");
+    }
+    long l;
+    AppRuntime localAppRuntime;
+    do
+    {
       return;
-    }
-  }
-  
-  void a(int paramInt, String paramString)
-  {
-    paramString = new atlh(paramInt, paramString);
-    LocationRoom localLocationRoom = a(paramString);
-    if (localLocationRoom != null)
+      l = System.currentTimeMillis();
+      a();
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(localAppRuntime instanceof QQAppInterface));
+    paramView = (axlx)localAppRuntime.getManager(36);
+    if (paramView != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((atlm)localIterator.next()).a(paramString, localLocationRoom.a(), localLocationRoom.c());
-      }
-    }
-  }
-  
-  void a(atlh paramatlh)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      paramatlh = (LocationRoom)this.jdField_a_of_type_JavaUtilMap.get(paramatlh);
-      if ((paramatlh != null) && (paramatlh.a() != null)) {
-        paramatlh.a().a();
-      }
-      return;
-    }
-  }
-  
-  void a(atlh paramatlh, int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramatlh)) {
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      Object localObject1 = paramView.a(0, "100000");
+      if ((localObject1 != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.get() != 0) && (((BusinessInfoCheckUpdate.AppInfo)localObject1).exposure_max.get() >= 0))
       {
-        this.jdField_a_of_type_JavaUtilMap.remove(paramatlh);
-        ??? = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (((Iterator)???).hasNext()) {
-          ((atlm)((Iterator)???).next()).b(paramatlh, paramInt);
+        String str1 = ((BusinessInfoCheckUpdate.AppInfo)localObject1).buffer.get();
+        localObject1 = ((BusinessInfoCheckUpdate.AppInfo)localObject1).missions.get();
+        QLog.i("Q.lebatab.LebaBannerLogic", 1, String.format("onClick buffer = %s missions = %s time = %d", new Object[] { str1, localObject1, Long.valueOf(System.currentTimeMillis() - l) }));
+        try
+        {
+          Object localObject2 = new JSONObject(str1);
+          str1 = ((JSONObject)localObject2).optString("_jump_url");
+          String str2 = ((JSONObject)localObject2).optString("_jump_type");
+          localObject2 = ((JSONObject)localObject2).optString("_app_id");
+          a((QQAppInterface)localAppRuntime, str1, str2, (String)localObject2);
+          a(str1, str2, (String)localObject2, (List)localObject1, 2);
+          paramView.a(100000, 31);
+          return;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            QLog.i("Q.lebatab.LebaBannerLogic", 1, "parse json exception ", localException);
+          }
         }
       }
-    }
-  }
-  
-  void a(atlh paramatlh, int paramInt1, int paramInt2)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((atlm)localIterator.next()).a(paramatlh, paramInt1, paramInt2);
-    }
-  }
-  
-  void a(atlh paramatlh, LocationRoom.Venue paramVenue, List<atlf> paramList)
-  {
-    LocationRoom localLocationRoom = a(paramatlh);
-    localLocationRoom.a(paramVenue);
-    localLocationRoom.a(paramList);
-    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramList.hasNext()) {
-      ((atlm)paramList.next()).a(paramatlh, paramVenue, localLocationRoom.c());
-    }
-  }
-  
-  public void a(atlm paramatlm)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramatlm);
+      QLog.i("Q.lebatab.LebaBannerLogic", 1, "onClick appInfo no new");
       return;
     }
-  }
-  
-  void b(atlh paramatlh, int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      this.jdField_a_of_type_JavaUtilMap.remove(paramatlh);
-      ??? = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (((Iterator)???).hasNext()) {
-        ((atlm)((Iterator)???).next()).a(paramatlh, paramInt);
-      }
-    }
-  }
-  
-  public void b(atlm paramatlm)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramatlm)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramatlm);
-      }
-      return;
-    }
+    QLog.i("Q.lebatab.LebaBannerLogic", 1, "onClick redTouchManager == null");
   }
 }
 

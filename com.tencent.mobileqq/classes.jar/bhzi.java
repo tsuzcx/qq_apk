@@ -1,39 +1,87 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 
-class bhzi
-  extends Handler
+public class bhzi
+  extends BaseAdapter
 {
-  bhzi(bhzh parambhzh) {}
+  private int jdField_a_of_type_Int = 1;
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
+  private int b;
   
-  bhzi(bhzh parambhzh, Handler paramHandler)
+  public bhzi(BaseAdapter paramBaseAdapter, int paramInt)
   {
-    super(paramHandler.getLooper());
+    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
+    if (paramInt > 0) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null) {
+        this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(new bhzj(this));
+      }
+      return;
+      paramInt = 1;
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public int a()
   {
-    switch (paramMessage.what)
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public BaseAdapter a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = b();
+    if (paramInt < 0)
     {
-    default: 
-      throw new RuntimeException("Unknown message " + paramMessage);
-    case 1: 
-      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onShowPress(this.a.jdField_a_of_type_AndroidViewMotionEvent);
-    }
-    do
-    {
-      return;
-      this.a.a();
-      return;
-    } while (this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null);
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(this.a.jdField_a_of_type_AndroidViewMotionEvent);
+      this.b = 0;
       return;
     }
-    this.a.b = true;
+    if (paramInt >= i)
+    {
+      this.b = (i - 1);
+      return;
+    }
+    this.b = paramInt;
+  }
+  
+  public int b()
+  {
+    int i = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
+    int j = i / this.jdField_a_of_type_Int;
+    if (i % this.jdField_a_of_type_Int != 0) {}
+    for (i = 1;; i = 0) {
+      return i + j;
+    }
+  }
+  
+  public int getCount()
+  {
+    int i = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
+    if ((this.b + 1) * this.jdField_a_of_type_Int > i) {
+      return i % this.jdField_a_of_type_Int;
+    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItem(this.b * this.jdField_a_of_type_Int + paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemId(this.b * this.jdField_a_of_type_Int + paramInt);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(this.b * this.jdField_a_of_type_Int + paramInt, paramView, paramViewGroup);
   }
 }
 

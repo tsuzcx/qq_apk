@@ -9,7 +9,7 @@ import NS_MINI_AD.MiniAppAd.UserInfo;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdku;
+import bdpd;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -52,7 +52,7 @@ public class MiniRewardedVideoAdServlet
           continue;
         }
         localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bdku.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bdpd.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         if (!paramFromServiceMsg.isSuccess()) {
           continue;
@@ -164,7 +164,7 @@ public class MiniRewardedVideoAdServlet
                     localObject1 = new byte[4];
                   }
                   paramPacket.setSSOCommand("LightAppSvc.mini_app_ad.GetAd");
-                  paramPacket.putSendData(bdku.a((byte[])localObject1));
+                  paramPacket.putSendData(bdpd.a((byte[])localObject1));
                   paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
                   super.onSend(paramIntent, paramPacket);
                   return;

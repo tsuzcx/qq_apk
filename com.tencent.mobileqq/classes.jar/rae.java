@@ -424,7 +424,7 @@ public class rae
   
   public static JSONObject a()
   {
-    if (!bhou.j()) {
+    if (!bhtb.j()) {
       return null;
     }
     for (;;)
@@ -493,9 +493,9 @@ public class rae
   
   private static void a()
   {
-    if (bdwm.a().a()) {
-      if (bdee.b(BaseApplicationImpl.getApplication()) == 0) {
-        bdwm.a().a(new raf(), false);
+    if (beav.a().a()) {
+      if (bdin.b(BaseApplicationImpl.getApplication()) == 0) {
+        beav.a().a(new raf(), false);
       }
     }
     while (!QLog.isColorLevel())
@@ -522,56 +522,56 @@ public class rae
     //   9: astore_2
     //   10: aload_1
     //   11: ldc_w 462
-    //   14: invokestatic 466	bdcb:a	()Ljava/lang/String;
+    //   14: invokestatic 466	bdgk:a	()Ljava/lang/String;
     //   17: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   20: pop
     //   21: aload_1
     //   22: astore_2
     //   23: aload_1
     //   24: ldc_w 468
-    //   27: invokestatic 470	bdcb:b	()Ljava/lang/String;
+    //   27: invokestatic 470	bdgk:b	()Ljava/lang/String;
     //   30: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   33: pop
     //   34: aload_1
     //   35: astore_2
     //   36: aload_1
     //   37: ldc_w 472
-    //   40: invokestatic 475	bdcb:a	()J
+    //   40: invokestatic 475	bdgk:a	()J
     //   43: invokevirtual 478	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   46: pop
     //   47: aload_1
     //   48: astore_2
     //   49: aload_1
     //   50: ldc_w 480
-    //   53: invokestatic 482	bdcb:b	()I
+    //   53: invokestatic 482	bdgk:b	()I
     //   56: invokevirtual 398	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   59: pop
     //   60: aload_1
     //   61: astore_2
     //   62: aload_1
     //   63: ldc_w 484
-    //   66: invokestatic 486	bdcb:a	()I
+    //   66: invokestatic 486	bdgk:a	()I
     //   69: invokevirtual 398	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   72: pop
     //   73: aload_1
     //   74: astore_2
     //   75: aload_1
     //   76: ldc_w 488
-    //   79: invokestatic 490	bdcb:d	()Ljava/lang/String;
+    //   79: invokestatic 490	bdgk:d	()Ljava/lang/String;
     //   82: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   85: pop
     //   86: aload_1
     //   87: astore_2
     //   88: aload_1
     //   89: ldc_w 492
-    //   92: invokestatic 494	bdcb:e	()Ljava/lang/String;
+    //   92: invokestatic 494	bdgk:e	()Ljava/lang/String;
     //   95: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   98: pop
     //   99: aload_1
     //   100: astore_2
     //   101: aload_1
     //   102: ldc_w 496
-    //   105: invokestatic 499	bdcb:h	()Ljava/lang/String;
+    //   105: invokestatic 499	bdgk:h	()Ljava/lang/String;
     //   108: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   111: pop
     //   112: aload_1
@@ -585,26 +585,26 @@ public class rae
     //   126: astore_2
     //   127: aload_1
     //   128: ldc_w 508
-    //   131: invokestatic 510	bdcb:c	()Ljava/lang/String;
+    //   131: invokestatic 510	bdgk:c	()Ljava/lang/String;
     //   134: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   137: pop
     //   138: aload_1
     //   139: astore_2
     //   140: aload_1
     //   141: ldc_w 512
-    //   144: invokestatic 514	bdcb:d	()J
+    //   144: invokestatic 514	bdgk:d	()J
     //   147: invokevirtual 478	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   150: pop
     //   151: aload_1
     //   152: astore_2
     //   153: aload_1
     //   154: ldc_w 516
-    //   157: invokestatic 518	bdcb:e	()J
+    //   157: invokestatic 518	bdgk:e	()J
     //   160: invokevirtual 478	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   163: pop
     //   164: aload_1
     //   165: astore_2
-    //   166: invokestatic 521	bdcb:a	()[J
+    //   166: invokestatic 521	bdgk:a	()[J
     //   169: astore_3
     //   170: aload_1
     //   171: astore_2

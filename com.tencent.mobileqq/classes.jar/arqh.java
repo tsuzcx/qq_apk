@@ -1,20 +1,14 @@
-public abstract interface arqh
+public class arqh
 {
-  public abstract void a();
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public long b;
+  public String b;
+  public byte[] b;
+  public long c;
+  public long d;
 }
 
 

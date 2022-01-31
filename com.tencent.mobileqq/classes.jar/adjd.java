@@ -1,47 +1,19 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import mqq.app.QQPermissionCallback;
 
 public class adjd
-  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener
+  implements QQPermissionCallback
 {
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public adjd(NearbyActivity paramNearbyActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return false;
+    bdgm.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return false;
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
+    this.a.a();
   }
 }
 

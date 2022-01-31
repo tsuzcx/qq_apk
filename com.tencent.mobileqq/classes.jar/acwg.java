@@ -1,41 +1,57 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class acwg
-  implements bhpo
+  extends alrq
 {
-  public acwg(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public acwg(EmosmActivity paramEmosmActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    FriendProfileCardActivity.a(this.a, paramInt1);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (this.a.jdField_a_of_type_Int != paramInt) {
-      this.a.jdField_a_of_type_Int = paramInt;
-    }
-    switch (paramInt)
-    {
-    default: 
-      abqw.a().a("vas_profilecard_list");
-    }
-    for (;;)
-    {
-      if (FriendProfileCardActivity.a(this.a) != null) {
-        FriendProfileCardActivity.a(this.a).a(paramInt);
+    if (paramInt == 1) {
+      if (paramBoolean)
+      {
+        paramObject = (EmoticonResp)paramObject;
+        this.a.a(paramObject.delEpId);
+        this.a.b();
+        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.e();
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.onScrollStateChanged(paramAbsListView, paramInt);
-      }
+    }
+    label119:
+    do
+    {
+      do
+      {
+        return;
+        this.a.a();
+        EmosmActivity.a(this.a, (EmoticonResp)paramObject);
+        break;
+        if (paramInt != 2) {
+          break label119;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("EmosmActivity", 2, "emoticon fetch:" + paramBoolean);
+        }
+      } while (!paramBoolean);
+      this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
       return;
-      abqw.a().a("vas_profilecard_list", false);
+    } while (paramInt != 17);
+    if (paramBoolean)
+    {
+      paramObject = ((EmoticonResp)paramObject).ids.iterator();
+      while (paramObject.hasNext())
+      {
+        Integer localInteger = (Integer)paramObject.next();
+        this.a.a(localInteger.intValue());
+      }
     }
+    this.a.a();
+    EmosmActivity.a(this.a, (EmoticonResp)paramObject);
+    this.a.b();
   }
 }
 

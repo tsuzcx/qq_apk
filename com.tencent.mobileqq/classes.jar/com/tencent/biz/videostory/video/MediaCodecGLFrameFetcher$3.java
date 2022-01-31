@@ -3,27 +3,27 @@ package com.tencent.biz.videostory.video;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
-import ywa;
-import ywb;
-import ywf;
+import zap;
+import zaq;
+import zau;
 
 public class MediaCodecGLFrameFetcher$3
   implements Runnable
 {
-  public MediaCodecGLFrameFetcher$3(ywb paramywb) {}
+  public MediaCodecGLFrameFetcher$3(zaq paramzaq) {}
   
   public void run()
   {
-    if (ywb.a(this.this$0) == null) {
+    if (zaq.a(this.this$0) == null) {
       return;
     }
-    ywb.a(this.this$0).updateTexImage();
-    GLES20.glViewport(0, 0, ywb.a(this.this$0), ywb.b(this.this$0));
-    ywb.a(this.this$0).a(ywb.a(this.this$0), ywb.c(this.this$0));
-    if ((ywb.a(this.this$0) != null) && (!ywb.a(this.this$0).isRecycled())) {
-      ywb.a(this.this$0).recycle();
+    zaq.a(this.this$0).updateTexImage();
+    GLES20.glViewport(0, 0, zaq.a(this.this$0), zaq.b(this.this$0));
+    zaq.a(this.this$0).a(zaq.a(this.this$0), zaq.c(this.this$0));
+    if ((zaq.a(this.this$0) != null) && (!zaq.a(this.this$0).isRecycled())) {
+      zaq.a(this.this$0).recycle();
     }
-    ywb.a(this.this$0, ywa.a(ywb.c(this.this$0), ywb.a(this.this$0), ywb.b(this.this$0)));
+    zaq.a(this.this$0, zap.a(zaq.c(this.this$0), zaq.a(this.this$0), zaq.b(this.this$0)));
   }
 }
 

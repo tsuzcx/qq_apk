@@ -1,64 +1,145 @@
-import android.content.Context;
 import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.mobileqq.datareportviewer.ReportData;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.util.DisplayMetrics;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class apdc
-  extends BaseAdapter
 {
-  public apdc(DataReportViewer paramDataReportViewer) {}
+  private final int jdField_a_of_type_Int;
+  private final LinkedList<Bitmap> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private int b;
+  private int c;
+  private int d;
   
-  public int getCount()
+  public apdc()
   {
-    return this.a.a.size();
+    DisplayMetrics localDisplayMetrics = apaz.a().a().a().getDisplayMetrics();
+    int i = localDisplayMetrics.widthPixels;
+    this.jdField_a_of_type_Int = (localDisplayMetrics.heightPixels * i * 8);
   }
   
-  public Object getItem(int paramInt)
+  private void b(Bitmap paramBitmap)
   {
-    return this.a.a.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    this.jdField_a_of_type_JavaUtilLinkedList.remove(paramBitmap);
+    if (paramBitmap != null)
     {
-      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131559474, paramViewGroup, false);
-      paramViewGroup = new apdd(this.a, paramView);
-      paramView.setTag(paramViewGroup);
+      this.b -= paramBitmap.getRowBytes() * paramBitmap.getHeight();
+      if ((!paramBitmap.isRecycled()) && (!apaz.a().a().c())) {
+        paramBitmap.recycle();
+      }
     }
+  }
+  
+  public int a()
+  {
+    return this.b;
+  }
+  
+  public Bitmap a(int paramInt1, int paramInt2)
+  {
+    this.c += 1;
+    Object localObject1 = null;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+    Object localObject2;
+    if (localIterator.hasNext())
+    {
+      Bitmap localBitmap = (Bitmap)localIterator.next();
+      if ((localBitmap.getWidth() >= paramInt1) && (localBitmap.getHeight() >= paramInt2)) {
+        if (localObject1 == null) {
+          localObject2 = localBitmap;
+        }
+      }
+      for (;;)
+      {
+        localObject1 = localObject2;
+        break;
+        localObject2 = localBitmap;
+        if (localObject1.getHeight() * localObject1.getWidth() < localBitmap.getHeight() * localBitmap.getWidth()) {
+          localObject2 = localObject1;
+        }
+      }
+    }
+    if (localObject1 != null)
+    {
+      this.jdField_a_of_type_JavaUtilLinkedList.remove(localObject1);
+      this.b -= localObject1.getRowBytes() * localObject1.getHeight();
+      return localObject1;
+    }
+    try
+    {
+      this.d += 1;
+      localObject2 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_4444);
+      return localObject2;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      apds.a("BitmapCacheManager", "create bitmap out of memory", localOutOfMemoryError);
+    }
+    return localObject1;
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+    while (localIterator.hasNext())
+    {
+      Bitmap localBitmap = (Bitmap)localIterator.next();
+      if ((localBitmap != null) && (!localBitmap.isRecycled()) && (!apaz.a().a().c())) {
+        localBitmap.recycle();
+      }
+    }
+    this.jdField_a_of_type_JavaUtilLinkedList.clear();
+    this.b = 0;
+    this.c = 0;
+    this.d = 0;
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {}
     for (;;)
     {
-      ReportData localReportData = (ReportData)this.a.a.get(paramInt);
-      paramViewGroup.a.setText(localReportData.table);
-      paramViewGroup.b.setText(localReportData.mainAction);
-      paramViewGroup.c.setText(localReportData.subAction);
-      paramViewGroup.d.setText(localReportData.actionName);
-      paramViewGroup.e.setText(String.valueOf(localReportData.opType));
-      paramViewGroup.f.setText(String.valueOf(localReportData.result));
-      paramViewGroup.g.setText(localReportData.r2);
-      paramViewGroup.h.setText(localReportData.r3);
-      paramViewGroup.i.setText(localReportData.r4);
-      paramViewGroup.j.setText(localReportData.r5);
-      if (!localReportData.isLightBlueBg) {
-        break;
+      return;
+      this.b += paramBitmap.getRowBytes() * paramBitmap.getHeight();
+      this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramBitmap);
+      while (this.b > this.jdField_a_of_type_Int)
+      {
+        paramBitmap = null;
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        if (localIterator.hasNext())
+        {
+          Bitmap localBitmap2 = (Bitmap)localIterator.next();
+          Bitmap localBitmap1;
+          if (paramBitmap == null) {
+            localBitmap1 = localBitmap2;
+          }
+          for (;;)
+          {
+            paramBitmap = localBitmap1;
+            break;
+            localBitmap1 = localBitmap2;
+            if (paramBitmap.getHeight() * paramBitmap.getWidth() < localBitmap2.getHeight() * localBitmap2.getWidth()) {
+              localBitmap1 = paramBitmap;
+            }
+          }
+        }
+        if (paramBitmap != null) {
+          b(paramBitmap);
+        }
       }
-      paramView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166486));
-      return paramView;
-      paramViewGroup = (apdd)paramView.getTag();
     }
-    paramView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167192));
-    return paramView;
+  }
+  
+  public int b()
+  {
+    return this.c;
+  }
+  
+  public int c()
+  {
+    return this.d;
   }
 }
 

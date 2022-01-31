@@ -1,9 +1,9 @@
 package com.tencent.open.appstore.report;
 
 import android.text.TextUtils;
-import bfgg;
-import bfgx;
-import bfhg;
+import bfkp;
+import bflg;
+import bflp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.open.downloadnew.DownloadInfo;
 
@@ -19,18 +19,18 @@ public final class AppCenterReporter$3
     do
     {
       return;
-      Object localObject = bfgg.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
+      Object localObject = bfkp.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
       if (localObject != null)
       {
-        bfhg.b("AppCenterReporter", ">reportDownloadError " + ((DownloadInfo)localObject).w + "|" + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w);
+        bflp.b("AppCenterReporter", ">reportDownloadError " + ((DownloadInfo)localObject).w + "|" + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w);
         this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w = ((DownloadInfo)localObject).w;
       }
       localObject = BaseApplicationImpl.getApplication().getQQProcessName();
       bool = TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w);
-      bfhg.b("AppCenterReporter", ">reportDownloadError " + bool + "|" + (String)localObject + "|" + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w + "|");
+      bflp.b("AppCenterReporter", ">reportDownloadError " + bool + "|" + (String)localObject + "|" + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w + "|");
     } while (!bool);
-    bfhg.b("AppCenterReporter", "[reportDownloadError] errorCode=" + this.jdField_a_of_type_Int + ",errorMsg=" + this.jdField_a_of_type_JavaLangString);
-    bfgx.a(3006, bfgx.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo) + "|" + bfgx.b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo) + "|" + this.jdField_a_of_type_Int + "|" + this.jdField_a_of_type_JavaLangString);
+    bflp.b("AppCenterReporter", "[reportDownloadError] errorCode=" + this.jdField_a_of_type_Int + ",errorMsg=" + this.jdField_a_of_type_JavaLangString);
+    bflg.a(3006, bflg.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo) + "|" + bflg.b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo) + "|" + this.jdField_a_of_type_Int + "|" + this.jdField_a_of_type_JavaLangString);
   }
 }
 

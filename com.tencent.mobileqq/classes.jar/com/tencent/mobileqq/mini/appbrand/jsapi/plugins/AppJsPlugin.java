@@ -227,7 +227,7 @@ public class AppJsPlugin
     //   414: getfield 191	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/AppJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
     //   417: getfield 197	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:activityContext	Lcom/tencent/mobileqq/app/BaseActivity;
     //   420: aload 7
-    //   422: invokestatic 209	bhpe:a	(Landroid/content/Context;Ljava/lang/String;)Landroid/content/pm/PackageInfo;
+    //   422: invokestatic 209	bhtl:a	(Landroid/content/Context;Ljava/lang/String;)Landroid/content/pm/PackageInfo;
     //   425: astore 6
     //   427: aload 6
     //   429: ifnull +142 -> 571

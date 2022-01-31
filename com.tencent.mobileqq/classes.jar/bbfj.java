@@ -1,64 +1,21 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity.2.1;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity.2.2;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.widget.PublishItemBar;
 
 public class bbfj
-  implements bhuy
+  implements Animation.AnimationListener
 {
-  public bbfj(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
+  public bbfj(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.c(l);
-      return;
-    }
+    this.a.a.clearAnimation();
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    paramListView = (PullRefreshHeader)paramView;
-    long l;
-    if (this.a.jdField_a_of_type_Long == 0L)
-    {
-      l = System.currentTimeMillis();
-      paramListView.a(l);
-      if (!bdee.g(this.a.getActivity())) {
-        break label97;
-      }
-      this.a.a(0, true);
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopBarPublishLocationSelectActivity.2.1(this), 300L);
-    }
-    for (;;)
-    {
-      ((acmr)paramView.getTag()).a = true;
-      return true;
-      l = this.a.jdField_a_of_type_Long;
-      break;
-      label97:
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopBarPublishLocationSelectActivity.2.2(this), 300L);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.b(l);
-      return;
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

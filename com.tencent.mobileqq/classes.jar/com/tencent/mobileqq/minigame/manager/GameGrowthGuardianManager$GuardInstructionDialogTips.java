@@ -15,7 +15,7 @@ class GameGrowthGuardianManager$GuardInstructionDialogTips
   
   protected GameGrowthGuardianManager.DialogAction getPositiveDialogAction()
   {
-    return new GameGrowthGuardianManager.DialogAction(2131694593, new GameGrowthGuardianManager.GuardInstructionDialogTips.1(this));
+    return new GameGrowthGuardianManager.DialogAction(2131694595, new GameGrowthGuardianManager.GuardInstructionDialogTips.1(this));
   }
   
   protected String getReportSubActionType()

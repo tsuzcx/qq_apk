@@ -1,6 +1,10 @@
 public abstract interface akxl
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract int a();
+  
+  public abstract akrw a(String paramString1, String paramString2, int paramInt1, int paramInt2);
+  
+  public abstract void a();
 }
 
 

@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import beey;
+import bejh;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
@@ -26,8 +26,8 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
       return i;
     }
     getActivity().getWindow().setFlags(1024, 1024);
-    this.jdField_a_of_type_Beey.a.setVisibility(8);
-    this.jdField_a_of_type_Befb.a = true;
+    this.jdField_a_of_type_Bejh.a.setVisibility(8);
+    this.jdField_a_of_type_Bejk.a = true;
     D();
     g(false);
     return i;
@@ -37,12 +37,12 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
   public int d(Bundle paramBundle)
   {
     int i = super.d(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131167138);
-    if ((this.jdField_a_of_type_Beey.jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
-      ((RefreshView)this.jdField_a_of_type_Beey.jdField_c_of_type_AndroidViewViewGroup).a(false);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131167140);
+    if ((this.jdField_a_of_type_Bejh.jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
+      ((RefreshView)this.jdField_a_of_type_Bejh.jdField_c_of_type_AndroidViewViewGroup).a(false);
     }
-    if (this.jdField_a_of_type_Beey.jdField_c_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_Beey.jdField_c_of_type_AndroidViewView.setVisibility(8);
+    if (this.jdField_a_of_type_Bejh.jdField_c_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_Bejh.jdField_c_of_type_AndroidViewView.setVisibility(8);
     }
     if (this.jdField_a_of_type_ComTencentBizUiTouchWebView.getX5WebViewExtension() != null) {}
     for (;;)

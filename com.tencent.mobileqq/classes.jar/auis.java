@@ -1,28 +1,37 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
 
 public class auis
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public auis(MultiCardFragment paramMultiCardFragment, auje paramauje, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
+  public auis(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    if (this.jdField_a_of_type_Auje == null) {
+    paramInt = aujh.a().a();
+    if (1 == paramInt)
+    {
+      this.a.l();
+      if (this.a.a) {
+        aujo.a("0X800A253", 3);
+      }
+    }
+    while (2 != paramInt)
+    {
+      return;
+      aujo.a("0X800A253", 1);
       return;
     }
-    float f2 = 1.0F - (1.0F - this.jdField_a_of_type_Float) * f1;
-    this.jdField_a_of_type_Auje.a.setScaleX(f2);
-    this.jdField_a_of_type_Auje.a.setScaleY(f2);
-    this.jdField_a_of_type_Auje.a.setTranslationX(0.0F);
-    this.jdField_a_of_type_Auje.a.setTranslationY(this.b * f1);
-    paramValueAnimator = this.jdField_a_of_type_Auje.a.getLayoutParams();
-    float f3 = this.c;
-    paramValueAnimator.height = ((int)((1.0F - f1 * (1.0F - this.d)) / f2 * f3));
-    this.jdField_a_of_type_Auje.a.requestLayout();
+    if (this.a.d) {
+      aujo.a("0X800A244", 2);
+    }
+    for (;;)
+    {
+      this.a.l();
+      return;
+      aujo.a("0X800A244", 1);
+    }
   }
 }
 

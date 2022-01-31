@@ -1,52 +1,28 @@
-import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class adlv
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public adlv(QQLSActivity paramQQLSActivity) {}
+  public adlv(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      if ((QQLSActivity.a(this.a) != null) && (QQLSActivity.b(this.a) != null) && (QQLSActivity.a(this.a, QQLSActivity.b(this.a), QQLSActivity.a(this.a), paramMotionEvent)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQLSActivity", 2, "singlelist  click doble");
-        }
-        if (QQLSActivity.a(this.a) != null)
-        {
-          QQLSActivity.a(this.a, QQLSActivity.a(this.a));
-          QQLSActivity.a(this.a, true);
-        }
-        QQLSActivity.a(this.a, MotionEvent.obtain(paramMotionEvent));
-      }
-    }
-    for (;;)
+    if (NotifyPushSettingActivity.a(this.a) == null)
     {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.e("QQLSActivity", 2, "singlelist  click once");
-      }
-      if (QQLSActivity.a(this.a)) {
-        QQLSActivity.b(this.a).setText(2131699450);
-      }
-      for (;;)
-      {
-        paramView = QQLSActivity.a(this.a).obtainMessage(5);
-        QQLSActivity.a(this.a).sendMessageDelayed(paramView, 500L);
-        break;
-        QQLSActivity.b(this.a).setText(2131699449);
-      }
-      if (paramMotionEvent.getAction() == 1) {
-        QQLSActivity.b(this.a, MotionEvent.obtain(paramMotionEvent));
-      }
+      NotifyPushSettingActivity.a(this.a, new admb(this.a, this.a.app, NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a)));
+      admb.a(NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a));
     }
+    if (NotifyPushSettingActivity.a(this.a))
+    {
+      int i = (int)NetConnInfoCenter.getServerTime();
+      int j = SettingCloneUtil.readValueForInt(this.a.getApplicationContext(), null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", 2147483647);
+      NotifyPushSettingActivity.a(this.a).a(j - i);
+    }
+    NotifyPushSettingActivity.a(this.a).show();
   }
 }
 

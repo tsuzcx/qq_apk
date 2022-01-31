@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
+import awge;
 
 public class Sqlite
-  extends awbv
+  extends awge
 {
   public String tbl_name;
   

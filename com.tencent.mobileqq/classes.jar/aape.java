@@ -1,106 +1,120 @@
+import android.app.Activity;
+import android.app.Application;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
 import android.view.View;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
 
 public class aape
+  extends Dialog
 {
-  public View a;
-  private WeakReference<aapf> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<WeakReference<aapf>> jdField_a_of_type_JavaUtilList;
+  private aapm jdField_a_of_type_Aapm;
+  private aaqa jdField_a_of_type_Aaqa;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private Intent b;
   
-  private int a(WeakReference<aapf> paramWeakReference)
+  public aape(@NonNull Context paramContext)
   {
-    int j;
-    if ((paramWeakReference == null) || (paramWeakReference.get() == null))
-    {
-      j = -1;
-      return j;
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
-        break label71;
-      }
-      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (localWeakReference != null)
-      {
-        j = i;
-        if (localWeakReference.get() == paramWeakReference.get()) {
-          break;
-        }
-      }
-      i += 1;
-    }
-    label71:
-    return -1;
-  }
-  
-  private aapf a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (aapf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    return null;
+    super(paramContext, 16973834);
+    this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
   }
   
   private void a()
   {
-    if (a() != null) {
-      a().b();
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-  }
-  
-  private boolean b(WeakReference<aapf> paramWeakReference)
-  {
-    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {}
-    while (a(paramWeakReference) != -1) {
-      return false;
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramWeakReference);
-    return true;
-  }
-  
-  private boolean c(WeakReference<aapf> paramWeakReference)
-  {
-    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {}
-    int i;
+    this.b = this.jdField_a_of_type_AndroidAppActivity.getIntent();
+    this.jdField_a_of_type_AndroidAppActivity.setIntent(this.jdField_a_of_type_AndroidContentIntent);
+    Object localObject = this.jdField_a_of_type_AndroidContentIntent.getExtras();
+    if (localObject == null) {}
     do
     {
-      return false;
-      i = a(paramWeakReference);
-    } while (i == -1);
-    this.jdField_a_of_type_JavaUtilList.remove(i);
-    return true;
+      return;
+      localObject = ((Bundle)localObject).getSerializable("data");
+    } while (!(localObject instanceof GdtMotiveVideoPageData));
+    this.jdField_a_of_type_Aapm = new aapm((GdtMotiveVideoPageData)GdtMotiveVideoPageData.class.cast(localObject));
   }
   
-  public void a(WeakReference<aapf> paramWeakReference)
+  private void b()
   {
-    if ((paramWeakReference == null) || (paramWeakReference.get() == a()))
+    this.jdField_a_of_type_Aaqa = new aaqa(new aapf(this), this.jdField_a_of_type_Aapm, true);
+    Object localObject1 = getWindow();
+    if (Build.VERSION.SDK_INT >= 28)
     {
-      aanp.a("GdtVideoCommonView", "MutiVideoManager play return: " + paramWeakReference);
+      localObject2 = ((Window)localObject1).getAttributes();
+      ((WindowManager.LayoutParams)localObject2).layoutInDisplayCutoutMode = 1;
+      ((Window)localObject1).setAttributes((WindowManager.LayoutParams)localObject2);
+    }
+    ((Window)localObject1).setFlags(1024, 1024);
+    ((Window)localObject1).setVolumeControlStream(3);
+    localObject1 = (ViewGroup)((Window)localObject1).getDecorView();
+    ((ViewGroup)localObject1).setSystemUiVisibility(7942);
+    if (Build.VERSION.SDK_INT >= 19) {
+      ((ViewGroup)localObject1).setOnSystemUiVisibilityChangeListener(new aapg(this, (ViewGroup)localObject1));
+    }
+    Object localObject2 = this.jdField_a_of_type_Aaqa.a(LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity), (ViewGroup)localObject1);
+    setContentView((View)localObject2);
+    setOnDismissListener(new aaph(this));
+    ((ViewGroup)localObject1).getViewTreeObserver().addOnGlobalLayoutListener(new aapi(this, (ViewGroup)localObject1, (View)localObject2));
+    this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new aapj(this);
+    this.jdField_a_of_type_AndroidAppActivity.getApplication().registerActivityLifecycleCallbacks(this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks);
+    this.jdField_a_of_type_Aaqa.h();
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+  }
+  
+  public void onBackPressed()
+  {
+    if (this.jdField_a_of_type_Aaqa.c()) {
       return;
     }
-    a();
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-    b(paramWeakReference);
+    super.onBackPressed();
   }
   
-  public boolean a(WeakReference<aapf> paramWeakReference)
+  protected void onCreate(Bundle paramBundle)
   {
-    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {}
-    do
-    {
-      return false;
-      c(paramWeakReference);
-    } while (this.jdField_a_of_type_JavaUtilList.size() <= 0);
-    paramWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilList.iterator().next();
-    if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
-      ((aapf)paramWeakReference.get()).a();
+    super.onCreate(paramBundle);
+    a();
+    b();
+  }
+  
+  public void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+  }
+  
+  protected void onStart()
+  {
+    super.onStart();
+    this.jdField_a_of_type_Aaqa.f();
+  }
+  
+  protected void onStop()
+  {
+    super.onStop();
+    this.jdField_a_of_type_Aaqa.e();
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    aase.a("GdtMotiveVideoDialog", "onWindowFocusChanged() called with: hasFocus = [" + paramBoolean + "]");
+    if ((paramBoolean) && (Build.VERSION.SDK_INT >= 19)) {
+      getWindow().getDecorView().setSystemUiVisibility(7942);
     }
-    return true;
   }
 }
 

@@ -1,40 +1,84 @@
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-class yza
-  implements bhvu
+public class yza
+  extends aokh<yyz>
 {
-  yza(yyu paramyyu, String paramString) {}
-  
-  public void a(bhvt parambhvt)
+  private void a(String paramString1, String paramString2)
   {
-    JSONObject localJSONObject = new JSONObject();
-    switch (parambhvt.a)
+    QLog.d("Q.videostory.config.VSEntranceStyleProcessor", 2, "onUpdate() apply new style config");
+    if (!TextUtils.isEmpty(paramString2))
     {
-    default: 
-      return;
-    case 0: 
-      try
+      yyw.a().a("KEY_BOOLEAN_APPLY_STYLE_CONFIG", Boolean.valueOf(true));
+      yyw.a().a("KEY_VS_ENTRANCE_STYLE_MD5", paramString1);
+      yyw.a().a("KEY_VS_ENTRANCE_STYLE_CONTENT", paramString2);
+    }
+  }
+  
+  public int a()
+  {
+    return 473;
+  }
+  
+  public Class<yyz> a()
+  {
+    return yyz.class;
+  }
+  
+  @NonNull
+  public yyz a(int paramInt)
+  {
+    return new yyz();
+  }
+  
+  @Nullable
+  public yyz a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      QLog.i("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      yyz localyyz = yyz.a(paramArrayOfaoko[0].a);
+      if (localyyz == null)
       {
-        localJSONObject.put("index", 0);
-        this.jdField_a_of_type_Yyu.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
+        QLog.e("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed error!");
+        return null;
       }
-      catch (Exception parambhvt)
+      String str = (String)yyw.a().a("KEY_VS_ENTRANCE_STYLE_MD5", "");
+      if ((!TextUtils.isEmpty(localyyz.b())) && (!localyyz.b().equals(str)))
       {
-        parambhvt.printStackTrace();
-        return;
+        yzo.a().a(localyyz);
+        a(localyyz.b(), paramArrayOfaoko[0].a);
       }
+      return localyyz;
     }
-    try
-    {
-      localJSONObject.put("index", 1);
-      this.jdField_a_of_type_Yyu.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      return;
+    QLog.e("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed conf content is null!");
+    return null;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(yyz paramyyz)
+  {
+    if (paramyyz != null) {
+      QLog.i("Q.videostory.config.VSEntranceStyleProcessor", 2, "onUpdate:" + paramyyz.toString());
     }
-    catch (Exception parambhvt)
-    {
-      parambhvt.printStackTrace();
-    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

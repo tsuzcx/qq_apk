@@ -1,29 +1,77 @@
-import android.support.annotation.NonNull;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 public class bgvp
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private String jdField_a_of_type_JavaLangString = "";
+  private static Map<Long, Long> a = new HashMap();
   
-  public float a()
+  private static View.OnClickListener a(View paramView)
   {
-    return this.jdField_a_of_type_Float;
+    if (paramView == null) {
+      return null;
+    }
+    try
+    {
+      Field localField = View.class.getDeclaredField("mListenerInfo");
+      if (localField == null) {
+        break label96;
+      }
+      localField.setAccessible(true);
+      paramView = localField.get(paramView);
+      localField = paramView.getClass().getDeclaredField("mOnClickListener");
+      if ((localField == null) || (paramView == null)) {
+        break label96;
+      }
+      localField.setAccessible(true);
+      paramView = (View.OnClickListener)localField.get(paramView);
+    }
+    catch (Throwable paramView)
+    {
+      for (;;)
+      {
+        QMLog.e("BannerAdViolationManage", "getOnClickListenerReflected", paramView);
+        paramView = null;
+      }
+    }
+    QMLog.d("BannerAdViolationManage", "getOnClickListenerReflected: listener = " + paramView);
+    return paramView;
   }
   
-  public String a()
+  public static void a(String paramString, long paramLong, View paramView)
   {
-    return (int)(this.jdField_a_of_type_Float * 100.0F) + "%";
+    QMLog.d("BannerAdViolationManage", "scheduleViolationDetectTask() called with: miniAppId = [" + paramString + "], aid = [" + paramLong + "], view = [" + paramView + "]");
+    if ((TextUtils.isEmpty(paramString)) || (paramView == null)) {
+      return;
+    }
+    a.put(Long.valueOf(paramLong), Long.valueOf(System.currentTimeMillis()));
+    float[] arrayOfFloat = new float[2];
+    paramView.setOnTouchListener(new bgvq(arrayOfFloat));
+    paramView.setOnClickListener(new bgvr(a(paramView), paramLong, paramView, arrayOfFloat, paramString));
+    QMLog.d("BannerAdViolationManage", "scheduleViolationDetectTask: end");
   }
   
-  public boolean a()
+  private static void b(String paramString, long paramLong1, int paramInt, long paramLong2)
   {
-    return (this.jdField_a_of_type_Float > 0.0F) && (this.jdField_a_of_type_Float < 1.0F);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "LoadingStatus {progress=" + this.jdField_a_of_type_Float + "} ";
+    QMLog.d("BannerAdViolationManage", "handleViolationReport() called with: miniAppId = [" + paramString + "], aid = [" + paramLong1 + "], clickArea = [" + paramInt + "], expoClickInterval = [" + paramLong2 + "]");
+    if ((paramInt > 0) && (paramInt < 11) && (paramLong2 > 0L))
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString).append('|').append(paramLong1).append('|').append(paramInt).append('|').append(paramLong2).append('|').append(System.currentTimeMillis()).append('|').append("Android").append('|').append("");
+      paramString = ((StringBuilder)localObject).toString();
+      QMLog.d("BannerAdViolationManage", "handleViolationReport: report one record " + paramString);
+      localObject = new Bundle();
+      ((Bundle)localObject).putStringArray("data", new String[] { paramString });
+      ((Bundle)localObject).putString("log_key", "dc05439");
+      bgtu.a().a("cmd_dc_report_log_key_data", (Bundle)localObject, null);
+      return;
+    }
+    QMLog.w("BannerAdViolationManage", "invalid report record clickArea = " + paramInt + ", expoClickInterval = " + paramLong2);
   }
 }
 

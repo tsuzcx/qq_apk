@@ -1,20 +1,14 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-public class adgz
-  implements View.OnClickListener
+class adgz
 {
-  public adgz(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(this.a, TroopAssisSettingActivity.class);
-    this.a.startActivity(paramView);
-    azmj.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_msginfor_grp", 0, 0, "", "", "", "");
-  }
+  adgz(adgy paramadgy) {}
 }
 
 

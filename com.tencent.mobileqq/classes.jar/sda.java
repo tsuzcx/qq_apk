@@ -103,7 +103,7 @@ public class sda
       localBundle2.putString("req_create_time", orr.a(paramBaseArticleInfo.mTime));
       localBundle2.putString("brief_key", paramBaseArticleInfo.mTitle);
       localBundle2.putInt("req_type", 140);
-      localBundle1.putByteArray("STRUCT_MSG_BYTES", ((StructMsgForGeneralShare)azqu.a(localBundle2)).getBytes());
+      localBundle1.putByteArray("STRUCT_MSG_BYTES", ((StructMsgForGeneralShare)azvd.a(localBundle2)).getBytes());
       return localBundle1;
       if (paramrjk.jdField_f_of_type_Int == 6)
       {

@@ -1,23 +1,64 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.graphics.Bitmap;
+import android.opengl.GLES20;
+import android.opengl.GLUtils;
+import cooperation.qzone.util.QZLog;
 
 public class bjnq
-  implements View.OnClickListener
 {
-  public bjnq(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public void onClick(View paramView)
+  public static int a(Bitmap paramBitmap, boolean paramBoolean)
   {
-    bjcl.a().a(QZoneShareActivity.a, paramView);
-    this.a.a(false);
-    paramView = new Intent(BaseApplication.getContext(), SelectMemberActivity.class);
-    paramView.putExtra("param_only_friends", true);
-    paramView.putExtra("param_min", 1);
-    this.a.startActivityForResult(paramView, 1000);
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
+    if (arrayOfInt[0] == 0)
+    {
+      QZLog.e("TextureUtil", "glGenTextures: fail 0 ");
+      return 0;
+    }
+    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
+    {
+      QZLog.e("TextureUtil", "loadTexture: bitmap  == null || isRecycled");
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+      return 0;
+    }
+    GLES20.glBindTexture(3553, arrayOfInt[0]);
+    if (paramBoolean)
+    {
+      GLES20.glTexParameteri(3553, 10241, 9728);
+      GLES20.glTexParameteri(3553, 10240, 9728);
+    }
+    for (;;)
+    {
+      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
+      GLES20.glGenerateMipmap(3553);
+      GLES20.glBindTexture(3553, 0);
+      return arrayOfInt[0];
+      GLES20.glTexParameteri(3553, 10241, 9728);
+      GLES20.glTexParameteri(3553, 10240, 9729);
+    }
+  }
+  
+  public static void a(int paramInt)
+  {
+    GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
+    GLES20.glFinish();
+  }
+  
+  public static void a(bjnl parambjnl)
+  {
+    if (parambjnl == null) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < parambjnl.size())
+      {
+        bjnm localbjnm = (bjnm)parambjnl.valueAt(i);
+        if (localbjnm != null) {
+          localbjnm.b();
+        }
+        i += 1;
+      }
+    }
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import advt;
-import azyu;
+import aeai;
+import badd;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SubLoginActivity$9$1
   implements Runnable
 {
-  public SubLoginActivity$9$1(advt paramadvt, String paramString) {}
+  public SubLoginActivity$9$1(aeai paramaeai, String paramString) {}
   
   public void run()
   {
-    azyu localazyu = (azyu)this.jdField_a_of_type_Advt.a.app.getManager(61);
-    if (localazyu != null) {
-      localazyu.a(this.jdField_a_of_type_JavaLangString, 0, "");
+    badd localbadd = (badd)this.jdField_a_of_type_Aeai.a.app.getManager(61);
+    if (localbadd != null) {
+      localbadd.a(this.jdField_a_of_type_JavaLangString, 0, "");
     }
   }
 }

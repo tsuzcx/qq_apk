@@ -1,22 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
-import com.tencent.mobileqq.widget.IndexView;
+import android.view.View.OnClickListener;
 
-public class aiih
-  implements DialogInterface.OnDismissListener
+class aiih
+  implements View.OnClickListener
 {
-  public aiih(NewStyleCountryActivity paramNewStyleCountryActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  aiih(aiie paramaiie) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    NewStyleCountryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity).setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.a.a = null;
+    this.a.dismiss();
   }
 }
 

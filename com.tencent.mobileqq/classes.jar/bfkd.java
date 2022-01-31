@@ -1,18 +1,25 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadManager.17;
+import com.tencent.open.appcommon.now.download.local.DownloadNativeApi.1;
 
 public class bfkd
   implements DialogInterface.OnClickListener
 {
-  public bfkd(DownloadManager.17 param17) {}
+  public bfkd(DownloadNativeApi.1 param1) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bfjy.r, false);
-    bfju.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
-    paramDialogInterface.dismiss();
+    try
+    {
+      paramDialogInterface.dismiss();
+      label6:
+      bfkb.a(this.a.this$0).onDownloadCancel(this.a.a);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
   }
 }
 

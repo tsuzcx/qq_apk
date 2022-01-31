@@ -1,45 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.pluginbridge.BridgeHelper;
-import cooperation.pluginbridge.BridgePluginInstallActivity;
+import cooperation.comic.ui.QQComicFragment;
 
 public class bint
-  extends BroadcastReceiver
+  implements behs
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bint(QQComicFragment paramQQComicFragment) {}
+  
+  public Object a(int paramInt)
   {
-    paramIntent = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("BridgeHelper", 2, "action:" + paramIntent);
-    }
-    if (("bridge.plugin.onresume.broadcast".equals(paramIntent)) || ("bridge.onresume.broadcast".equals(paramIntent))) {}
-    try
+    switch (paramInt)
     {
-      paramContext.unregisterReceiver(BridgeHelper.a());
-      BridgeHelper.a(null);
-      if (BridgeHelper.a() != null)
-      {
-        BridgeHelper.a().dismiss();
-        BridgeHelper.a(null);
-      }
-      if ((paramContext instanceof BridgePluginInstallActivity))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("BridgeHelper", 2, "Activity finish!");
-        }
-        ((BridgePluginInstallActivity)paramContext).finish();
-      }
-      return;
+    default: 
+      return null;
     }
-    catch (Exception paramIntent)
-    {
-      for (;;)
-      {
-        paramIntent.printStackTrace();
-      }
-    }
+    return new binu(this.a);
   }
 }
 

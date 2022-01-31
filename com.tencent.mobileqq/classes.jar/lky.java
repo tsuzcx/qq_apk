@@ -78,7 +78,7 @@ final class lky
         if (!TextUtils.isEmpty(paramMessage))
         {
           lek.a("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TO_SERVER detail = " + paramMessage);
-          azlj.a(null, "dc03209", paramMessage);
+          azps.a(null, "dc03209", paramMessage);
           lkx.e();
         }
       } while ((lkx.a() == null) || (lkx.a().size() == 0));
@@ -87,7 +87,7 @@ final class lky
       paramMessage = lkx.b();
       lek.b("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TEMP_RECORD_TO_SERVER detail = " + paramMessage);
     } while (TextUtils.isEmpty(paramMessage));
-    azlj.a(null, "dc03209", paramMessage);
+    azps.a(null, "dc03209", paramMessage);
     lkx.f();
     return false;
   }

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqpa;
-import aqsk;
-import armd;
-import arni;
-import ayvc;
+import aqtj;
+import aqwt;
+import arqm;
+import arrr;
+import ayzl;
 import com.tencent.commonsdk.util.HexUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -13,19 +13,19 @@ import java.io.UnsupportedEncodingException;
 public class FileManagerRSWorker$9
   implements Runnable
 {
-  public FileManagerRSWorker$9(aqsk paramaqsk) {}
+  public FileManagerRSWorker$9(aqwt paramaqwt) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "running OfflineFileHitReq:" + ayvc.a());
+      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "running OfflineFileHitReq:" + ayzl.a());
     }
-    armd localarmd = new armd();
-    localarmd.jdField_a_of_type_JavaLangString = this.this$0.e;
-    localarmd.jdField_a_of_type_Long = this.this$0.d;
-    this.this$0.jdField_a_of_type_ArrayOfByte = arni.d(this.this$0.jdField_b_of_type_JavaLangString);
-    this.this$0.jdField_b_of_type_ArrayOfByte = arni.a(this.this$0.jdField_b_of_type_JavaLangString);
-    this.this$0.c = arni.c(this.this$0.jdField_b_of_type_JavaLangString);
+    arqm localarqm = new arqm();
+    localarqm.jdField_a_of_type_JavaLangString = this.this$0.e;
+    localarqm.jdField_a_of_type_Long = this.this$0.d;
+    this.this$0.jdField_a_of_type_ArrayOfByte = arrr.d(this.this$0.jdField_b_of_type_JavaLangString);
+    this.this$0.jdField_b_of_type_ArrayOfByte = arrr.a(this.this$0.jdField_b_of_type_JavaLangString);
+    this.this$0.c = arrr.c(this.this$0.jdField_b_of_type_JavaLangString);
     if ((this.this$0.jdField_a_of_type_ArrayOfByte == null) || (this.this$0.jdField_b_of_type_ArrayOfByte == null) || (this.this$0.c == null))
     {
       this.this$0.a(null, 0);
@@ -33,14 +33,14 @@ public class FileManagerRSWorker$9
     }
     this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSha3 = HexUtil.bytes2HexStr(this.this$0.c);
     this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.str10Md5 = HexUtil.bytes2HexStr(this.this$0.jdField_a_of_type_ArrayOfByte);
-    localarmd.c = this.this$0.jdField_a_of_type_ArrayOfByte;
-    localarmd.d = this.this$0.jdField_b_of_type_ArrayOfByte;
-    localarmd.e = this.this$0.c;
+    localarqm.c = this.this$0.jdField_a_of_type_ArrayOfByte;
+    localarqm.d = this.this$0.jdField_b_of_type_ArrayOfByte;
+    localarqm.e = this.this$0.c;
     try
     {
-      localarmd.jdField_b_of_type_ArrayOfByte = arni.a(this.this$0.jdField_b_of_type_JavaLangString).getBytes("utf-8");
-      localarmd.jdField_a_of_type_ArrayOfByte = this.this$0.jdField_b_of_type_JavaLangString.getBytes("utf-8");
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localarmd, aqsk.a(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      localarqm.jdField_b_of_type_ArrayOfByte = arrr.a(this.this$0.jdField_b_of_type_JavaLangString).getBytes("utf-8");
+      localarqm.jdField_a_of_type_ArrayOfByte = this.this$0.jdField_b_of_type_JavaLangString.getBytes("utf-8");
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localarqm, aqwt.a(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
       return;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)

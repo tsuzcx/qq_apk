@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.launch;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ class AppBrandLaunchManager$8
   public void run()
   {
     QLog.e("miniapp-process_AppBrandLaunchManager", 1, "启动失败, scene未知" + this.val$appConfig.toString());
-    QQToast.a(AppBrandLaunchManager.access$100(this.this$0), alpo.a(2131700971), 2000).a();
+    QQToast.a(AppBrandLaunchManager.access$100(this.this$0), alud.a(2131700983), 2000).a();
   }
 }
 

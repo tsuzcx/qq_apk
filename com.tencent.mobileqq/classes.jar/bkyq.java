@@ -1,93 +1,17 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import java.util.List;
-import javax.annotation.Nonnull;
-
 public class bkyq
-  extends RecyclerView.Adapter<bkys>
+  extends bmes
 {
-  private static List<bkxw> jdField_a_of_type_JavaUtilList;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  private bmen<bkyr> a = new bmen();
+  private bmen<Boolean> b = new bmen();
   
-  public bkyq(Context paramContext, RecyclerView paramRecyclerView)
+  public bmen<bkyr> a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    a();
-    this.jdField_a_of_type_JavaLangString = ((bkxw)jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).jdField_a_of_type_JavaLangString;
-    this.b = ((bkxw)jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).b;
+    return this.a;
   }
   
-  private void a()
-  {
-    jdField_a_of_type_JavaUtilList = bkxv.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @NonNull
-  public bkys a(@NonNull ViewGroup paramViewGroup, int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
-      this.jdField_a_of_type_AndroidContentContext = paramViewGroup.getContext();
-    }
-    return new bkys(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558548, paramViewGroup, false));
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = ((bkxw)jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
-    this.b = ((bkxw)jdField_a_of_type_JavaUtilList.get(paramInt)).b;
-  }
-  
-  public void a(TextView paramTextView)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-  }
-  
-  public void a(@NonNull bkys parambkys, int paramInt)
-  {
-    parambkys.a(((bkxw)jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString);
-    if (paramInt == this.jdField_a_of_type_Int) {
-      parambkys.a(true);
-    }
-    for (;;)
-    {
-      parambkys.itemView.setOnClickListener(new bkyr(this, paramInt, parambkys));
-      return;
-      parambkys.a(false);
-    }
-  }
-  
-  @Nonnull
-  public String b()
+  public bmen<Boolean> b()
   {
     return this.b;
-  }
-  
-  public int getItemCount()
-  {
-    return jdField_a_of_type_JavaUtilList.size();
   }
 }
 

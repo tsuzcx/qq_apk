@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import aclf;
-import bcnc;
+import acpu;
+import bcrl;
 import java.util.ArrayList;
 
 public class ChatSettingForTroop$33$1
   implements Runnable
 {
-  public ChatSettingForTroop$33$1(aclf paramaclf, ArrayList paramArrayList) {}
+  public ChatSettingForTroop$33$1(acpu paramacpu, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if (ChatSettingForTroop.a(this.jdField_a_of_type_Aclf.a) != null) {
-      ChatSettingForTroop.a(this.jdField_a_of_type_Aclf.a).a(this.jdField_a_of_type_Aclf.a.app, this.jdField_a_of_type_JavaUtilArrayList);
+    if (ChatSettingForTroop.a(this.jdField_a_of_type_Acpu.a) != null) {
+      ChatSettingForTroop.a(this.jdField_a_of_type_Acpu.a).a(this.jdField_a_of_type_Acpu.a.app, this.jdField_a_of_type_JavaUtilArrayList);
     }
   }
 }

@@ -1,28 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class bnfh
-  extends BroadcastReceiver
+class bnfh
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public bnfh(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  bnfh(bnfg parambnfg) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onReceive ===>" + paramContext);
-    }
-    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
-    {
-      if ((this.a.a != null) && (this.a.a.isPlaying())) {
-        this.a.h = true;
-      }
-      this.a.j();
-    }
+    bnfg.a(this.a).g = paramBoolean;
   }
 }
 

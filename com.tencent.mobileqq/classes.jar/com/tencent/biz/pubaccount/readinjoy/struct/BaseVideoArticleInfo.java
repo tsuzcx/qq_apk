@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
-import awbv;
-import awdg;
+import awge;
+import awhp;
 import com.tencent.mobileqq.pb.CodedInputStreamMicro;
 import com.tencent.mobileqq.pb.CodedOutputStreamMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -25,7 +25,7 @@ import qnu;
 import rka;
 
 public class BaseVideoArticleInfo
-  extends awbv
+  extends awge
   implements Parcelable, Cloneable, Comparable<BaseVideoArticleInfo>
 {
   public static final Parcelable.Creator<BaseVideoArticleInfo> CREATOR = new qkl();
@@ -35,10 +35,10 @@ public class BaseVideoArticleInfo
   public long algorithmID;
   public String articleContentUrl;
   public long articleID;
-  @awdg
+  @awhp
   public List<BaseVideoArticleInfo> articleList;
   public byte[] articleListBytes;
-  @awdg
+  @awhp
   public List<Readinjoy.ArticleSummary> articleListObj;
   public int articleStyle;
   public byte[] businessInfo;
@@ -47,7 +47,7 @@ public class BaseVideoArticleInfo
   public int commentCount;
   public int feedsType;
   public boolean isUgc;
-  @awdg
+  @awhp
   public List<SimpleChannelInfo> labelList;
   public String pagePicUrl;
   public String pushContext;
@@ -64,10 +64,10 @@ public class BaseVideoArticleInfo
   public String title;
   public int uptime;
   public int videoCount;
-  @awdg
+  @awhp
   public qnu videoData;
   public byte[] videoDataBytes;
-  @awdg
+  @awhp
   public Readinjoy.VideoData videoDataObj;
   public int videoPlayCount;
   public String videoReportInfo;

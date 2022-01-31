@@ -1,9 +1,19 @@
-public class bcgr
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+
+class bcgr
+  extends BroadcastReceiver
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
+  bcgr(bcgq parambcgq) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = paramIntent.getStringExtra("callback");
+    QLog.d("TroopReceiver", 4, paramContext);
+    this.a.e(paramContext);
+  }
 }
 
 

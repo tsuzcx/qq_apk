@@ -1,11 +1,6 @@
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
-
-class ayhu
-{
-  long jdField_a_of_type_Long;
-  DiscussionMemberInfo jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo;
-  String jdField_a_of_type_JavaLangString;
-}
+public abstract interface ayhu
+  extends bdbc
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

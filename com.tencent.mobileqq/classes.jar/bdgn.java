@@ -1,40 +1,44 @@
+import android.app.Dialog;
 import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.WindowManager;
 
-class bdgn
+final class bdgn
   implements View.OnClickListener
 {
-  bdgn(bdgl parambdgl, DialogInterface.OnClickListener paramOnClickListener) {}
+  bdgn(DialogInterface.OnClickListener paramOnClickListener1, Dialog paramDialog, DialogInterface.OnClickListener paramOnClickListener2) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bdgl.hideSoftInputFromWindow();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
-    {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdgl, 0);
-      if (this.jdField_a_of_type_Bdgl.c)
-      {
-        if (!this.jdField_a_of_type_Bdgl.jdField_a_of_type_Boolean) {
-          break label93;
-        }
-        this.jdField_a_of_type_Bdgl.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bdgl.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-      }
-    }
+    if (paramView.getId() == 2131365258) {}
     for (;;)
     {
-      this.jdField_a_of_type_Bdgl.c = false;
-      label93:
       try
       {
-        if (this.jdField_a_of_type_Bdgl.isShowing()) {
-          this.jdField_a_of_type_Bdgl.dismiss();
+        if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+          this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_AndroidAppDialog, 0);
+        }
+        if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
+          this.jdField_a_of_type_AndroidAppDialog.dismiss();
         }
         return;
       }
       catch (Exception paramView) {}
-      this.jdField_a_of_type_Bdgl.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bdgl.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+      if (paramView.getId() == 2131365264)
+      {
+        if (this.b != null) {
+          this.b.onClick(this.jdField_a_of_type_AndroidAppDialog, 1);
+        }
+        try
+        {
+          if (this.jdField_a_of_type_AndroidAppDialog.isShowing())
+          {
+            this.jdField_a_of_type_AndroidAppDialog.dismiss();
+            return;
+          }
+        }
+        catch (Exception paramView) {}
+      }
     }
   }
 }

@@ -1,16 +1,58 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.capture.view.QIMSlidingTabView;
+import android.graphics.Typeface;
+import java.util.ArrayList;
+import java.util.List;
 
 public class blwz
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public blwz(QIMSlidingTabView paramQIMSlidingTabView) {}
+  float jdField_a_of_type_Float = 0.0F;
+  int jdField_a_of_type_Int;
+  Typeface jdField_a_of_type_AndroidGraphicsTypeface = null;
+  ArrayList<blwv> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  boolean jdField_a_of_type_Boolean = false;
+  float jdField_b_of_type_Float = 0.0F;
+  int jdField_b_of_type_Int = 0;
+  boolean jdField_b_of_type_Boolean = false;
+  float jdField_c_of_type_Float = 0.0F;
+  int jdField_c_of_type_Int = 0;
+  float d = 0.0F;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public blwz()
   {
-    QIMSlidingTabView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public blwx a(int paramInt, List<String> paramList)
+  {
+    blwx localblwx = new blwx(paramInt, paramList);
+    localblwx.jdField_a_of_type_JavaUtilArrayList.clear();
+    localblwx.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.jdField_a_of_type_AndroidGraphicsTypeface != null) {
+      localblwx.a(this.jdField_a_of_type_AndroidGraphicsTypeface);
+    }
+    localblwx.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Boolean) {
+      blwx.a(localblwx, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_b_of_type_Int);
+    }
+    blwx.a(localblwx, this.jdField_b_of_type_Boolean, this.d, this.jdField_c_of_type_Int);
+    if (!paramList.isEmpty()) {
+      localblwx.a(0, (String)paramList.get(0));
+    }
+    return localblwx;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(Typeface paramTypeface)
+  {
+    this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
+  }
+  
+  public void a(blwv paramblwv)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramblwv);
   }
 }
 

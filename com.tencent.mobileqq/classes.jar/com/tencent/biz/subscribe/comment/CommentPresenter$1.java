@@ -1,16 +1,16 @@
 package com.tencent.biz.subscribe.comment;
 
-import ybx;
-import ydd;
+import ygg;
+import yhm;
 
 public class CommentPresenter$1
   implements Runnable
 {
-  public CommentPresenter$1(ybx paramybx) {}
+  public CommentPresenter$1(ygg paramygg) {}
   
   public void run()
   {
-    ybx.a(this.this$0).notifyDataSetChanged();
+    ygg.a(this.this$0).notifyDataSetChanged();
   }
 }
 

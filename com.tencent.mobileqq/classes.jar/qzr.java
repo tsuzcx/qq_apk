@@ -137,7 +137,7 @@ class qzr
     //   284: getfield 14	qzr:jdField_a_of_type_Qzp	Lqzp;
     //   287: invokestatic 42	qzp:a	(Lqzp;)Landroid/app/Activity;
     //   290: aload 5
-    //   292: invokestatic 164	bdem:a	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   292: invokestatic 164	bdiv:a	(Landroid/content/Context;Ljava/lang/String;)Z
     //   295: istore_3
     //   296: aload 5
     //   298: invokestatic 170	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -200,7 +200,7 @@ class qzr
     //   418: istore 4
     //   420: goto -102 -> 318
     //   423: invokestatic 225	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   426: invokestatic 230	bdee:b	(Landroid/content/Context;)I
+    //   426: invokestatic 230	bdin:b	(Landroid/content/Context;)I
     //   429: iconst_1
     //   430: if_icmpne +54 -> 484
     //   433: iconst_1

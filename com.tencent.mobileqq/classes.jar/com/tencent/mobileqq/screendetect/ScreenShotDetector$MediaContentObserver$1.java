@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.screendetect;
 
-import aybn;
+import ayfw;
 
 public class ScreenShotDetector$MediaContentObserver$1
   implements Runnable
 {
-  public ScreenShotDetector$MediaContentObserver$1(aybn paramaybn) {}
+  public ScreenShotDetector$MediaContentObserver$1(ayfw paramayfw) {}
   
   public void run()
   {
-    ScreenShotDetector.a(this.a.a, aybn.a(this.a));
+    ScreenShotDetector.a(this.a.a, ayfw.a(this.a));
   }
 }
 

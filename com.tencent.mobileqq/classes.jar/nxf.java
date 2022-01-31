@@ -26,7 +26,7 @@ public class nxf
   private ReadInJoyNavigationGridview jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview;
   protected oxe a;
   private boolean jdField_a_of_type_Boolean = true;
-  public final int e = bdkf.a(5.0F);
+  public final int e = bdoo.a(5.0F);
   
   public nxf(ViewGroup paramViewGroup, ReadInJoyNavigationGridview paramReadInJoyNavigationGridview, ImageView paramImageView)
   {

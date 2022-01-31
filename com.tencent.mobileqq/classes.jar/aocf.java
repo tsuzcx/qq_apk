@@ -1,13 +1,8 @@
-public class aocf
+import com.tencent.mobileqq.colornote.data.ColorNote;
+
+public abstract interface aocf
 {
-  public String a = "";
-  
-  public aocf() {}
-  
-  public aocf(String paramString)
-  {
-    this.a = paramString;
-  }
+  public abstract ColorNote getColorNote();
 }
 
 

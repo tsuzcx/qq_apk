@@ -46,7 +46,7 @@ public class ReadInJoySelectPositionFragment
     this.vg.a(true);
     setTitle("城市");
     if (ThemeUtil.isInNightMode(ors.a())) {
-      View.inflate(getActivity(), 2131560084, this.titleRoot);
+      View.inflate(getActivity(), 2131560083, this.titleRoot);
     }
   }
   
@@ -70,8 +70,8 @@ public class ReadInJoySelectPositionFragment
   {
     if (this.mContentView != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131364281));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetWordNavView = ((WordNavView)this.mContentView.findViewById(2131368208));
+      this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131364283));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetWordNavView = ((WordNavView)this.mContentView.findViewById(2131368219));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetWordNavView.setOnTouchingWordChangedListener(new pap(this));
       this.jdField_a_of_type_Pim = new pim(getActivity());
       c();
@@ -177,7 +177,7 @@ public class ReadInJoySelectPositionFragment
   
   public int getContentLayoutId()
   {
-    return 2131560110;
+    return 2131560109;
   }
   
   public void onResume()

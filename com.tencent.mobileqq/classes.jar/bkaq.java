@@ -1,19 +1,34 @@
-import android.text.TextUtils;
+import com.tencent.biz.ui.TouchWebView;
+import cooperation.qzone.webviewwrapper.IWebviewListener;
 
-public class bkaq
-  extends bfsv
+class bkaq
+  implements bkan
 {
-  public void i(String paramString1, String paramString2)
+  bkaq(bkap parambkap, IWebviewListener paramIWebviewListener) {}
+  
+  public void a()
   {
-    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains("onRenderFrame"))) {
+    if (bkap.a(this.jdField_a_of_type_Bkap) == null) {}
+    do
+    {
       return;
+      if (bkap.a(this.jdField_a_of_type_Bkap).getVisibility() != 0) {
+        bkap.a(this.jdField_a_of_type_Bkap).setVisibility(0);
+      }
+    } while (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener == null);
+    this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onPageFinished();
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener != null) {
+      this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onReceiveError(paramInt, paramString1, paramString2);
     }
-    super.i(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bkaq
  * JD-Core Version:    0.7.0.1
  */

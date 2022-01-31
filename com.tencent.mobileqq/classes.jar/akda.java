@@ -1,10 +1,16 @@
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class akda
+  implements DialogInterface.OnClickListener
 {
-  public int a = 1;
-  public ImageView a;
-  public String a;
+  public akda(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.s();
+  }
 }
 
 

@@ -1,68 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.telephony.TelephonyManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class acdg
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public acdg(BaseChatPie paramBaseChatPie) {}
+  public acdg(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt1, int paramInt2) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "receive action_recv_video_request");
-      }
-      this.a.j(2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a("", null, "");
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("AddFriendVerifyActivity", 2, "reportClickEvent action: 0X80077B4  sourceId = " + this.jdField_a_of_type_Int + " subSourceId = " + this.b);
     }
-    do
-    {
-      return;
-      if ("android.intent.action.PHONE_STATE".equals(paramContext))
-      {
-        paramContext = (TelephonyManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("phone");
-        if (paramContext.getCallState() == 1)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "receive action_phone_state_changed|call_state_ringing");
-          }
-          this.a.j(2);
-        }
-        if (paramContext.getCallState() == 1)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "receive action_phone_state_changed|call_state_ringing");
-          }
-          paramIntent = MediaPlayerManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          if (paramIntent.a()) {
-            paramIntent.a(false);
-          }
-        }
-        this.a.d(paramContext.getCallState());
-        return;
-      }
-      if ((BaseChatPie.i() == 1) && ("vivo_smart_shot_enter".equals(paramContext)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("vivo", 2, "receive action_vivo_smart_shot_enter");
-        }
-        BaseChatPie.a(this.a, Boolean.valueOf(false));
-        return;
-      }
-    } while (!"com.huawei.hwmultidisplay.action.WINDOW_CAST_MODE".equals(paramContext));
-    boolean bool = paramIntent.getBooleanExtra("mode", false);
-    QLog.d("WindowsCastReceiver", 1, "onReceive mode = " + bool);
-    if (bool) {}
-    for (int i = 1;; i = 0)
-    {
-      bdaa.a = i;
-      return;
+    if (bdeu.b(AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))) {
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X8008275", "0X8008275", 0, 0, "", "", "", "");
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
     }
   }
 }

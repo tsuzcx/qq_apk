@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.minigame.plugins;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import bgwc;
+import bhaj;
 
 class OpenDataJsPlugin$8$3
   implements DialogInterface.OnCancelListener
@@ -11,8 +11,8 @@ class OpenDataJsPlugin$8$3
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE share cancel");
-    bgwc.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE share cancel");
+    bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE share cancel");
+    bhaj.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE share cancel");
   }
 }
 

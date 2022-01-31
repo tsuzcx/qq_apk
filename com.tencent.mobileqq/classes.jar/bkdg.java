@@ -1,18 +1,20 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import android.app.Activity;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
 
-class bkdg
-  implements View.OnKeyListener
+public class bkdg
+  implements QQPermissionCallback
 {
-  bkdg(bkdd parambkdd) {}
+  public bkdg(TroopHWJsPlugin paramTroopHWJsPlugin, Activity paramActivity, int paramInt) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((paramKeyEvent.getAction() == 0) && (paramInt == 4)) {
-      this.a.d();
-    }
-    return false;
+    bdgm.a(this.jdField_a_of_type_AndroidAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.c = TroopHWJsPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
   }
 }
 

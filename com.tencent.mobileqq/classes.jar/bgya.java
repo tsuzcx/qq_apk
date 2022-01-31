@@ -1,433 +1,302 @@
-import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.SingleDcData;
-import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.StDataReportReq;
-import NS_MINI_REPORT.REPORT.SingleDcData;
-import NS_MINI_REPORT.REPORT.StDcReportReq;
-import NS_MINI_REPORT.REPORT.StThirdDcReportReq;
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.mobileqq.triton.sdk.IQQEnv;
+import com.tencent.mobileqq.triton.sdk.callback.DialogCallback;
+import com.tencent.mobileqq.triton.sdk.download.ITDownloadListener;
+import com.tencent.mobileqq.triton.sdk.game.MiniGameInfo;
+import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.report.MiniProgramReporter.3;
-import com.tencent.qqmini.sdk.report.MiniProgramReporter.4;
-import com.tencent.qqmini.sdk.report.MiniProgramReporter.5;
-import com.tencent.qqmini.sdk.report.MiniProgramReporter.6;
-import com.tencent.qqmini.sdk.report.MiniProgramReporter.7;
-import com.tencent.qqmini.sdk.utils.JSONUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.minigame.GameRuntimeLoader;
+import com.tencent.qqmini.sdk.minigame.utils.TTHandleThread;
+import com.tencent.qqmini.sdk.utils.ColorUtils;
+import com.tencent.qqmini.sdk.utils.GameWnsUtils;
+import com.tencent.qqmini.sdk.utils.LiuHaiUtils;
+import com.tencent.qqmini.sdk.utils.MiniSDKConst;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
+import java.io.File;
+import java.util.Set;
+import org.json.JSONObject;
 
 public class bgya
+  implements IQQEnv
 {
-  private static final bgya jdField_a_of_type_Bgya = new bgya();
-  private long jdField_a_of_type_Long = System.currentTimeMillis();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private List<APP_REPORT_TRANSFER.SingleDcData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long = System.currentTimeMillis();
-  private List<APP_REPORT_TRANSFER.SingleDcData> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private long jdField_c_of_type_Long = System.currentTimeMillis();
-  private List<REPORT.SingleDcData> jdField_c_of_type_JavaUtilList = new ArrayList();
-  private List<REPORT.SingleDcData> d = new ArrayList();
-  private List<APP_REPORT_TRANSFER.SingleDcData> e = new ArrayList();
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "vivo Xplay5A", "vivo X7", "vivo X7Plus", "OPPO R9 Plusm A" };
+  private GameRuntimeLoader jdField_a_of_type_ComTencentQqminiSdkMinigameGameRuntimeLoader;
   
-  private bgya()
+  public bgya(GameRuntimeLoader paramGameRuntimeLoader)
   {
-    HandlerThread localHandlerThread = new HandlerThread("mini_program_report");
-    localHandlerThread.setPriority(10);
-    localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+    this.jdField_a_of_type_ComTencentQqminiSdkMinigameGameRuntimeLoader = paramGameRuntimeLoader;
   }
   
-  public static bgya a()
+  public static boolean a()
   {
-    return jdField_a_of_type_Bgya;
+    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion();
   }
   
-  private void a(byte[] paramArrayOfByte, List<APP_REPORT_TRANSFER.SingleDcData> paramList)
+  public int blackScreenDetectInterval()
   {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).dataReport(paramArrayOfByte, new bgyc(this, paramList));
-    }
+    return GameWnsUtils.getGameErrorBlackDetectInterval();
   }
   
-  private void a(byte[] paramArrayOfByte, List<REPORT.SingleDcData> paramList, String paramString1, String paramString2)
+  public void cleanCache()
   {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).report(paramArrayOfByte, paramString1, paramString2, new bgyb(this, paramList));
-    }
-  }
-  
-  private boolean a()
-  {
-    return System.currentTimeMillis() - this.jdField_a_of_type_Long > TimeUnit.SECONDS.toMillis(600L);
-  }
-  
-  private static String b(REPORT.SingleDcData paramSingleDcData)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramSingleDcData != null) {
-      localStringBuilder.append(JSONUtils.convert2JSON(paramSingleDcData));
-    }
-    return localStringBuilder.toString();
-  }
-  
-  private void d()
-  {
-    if (!this.d.isEmpty())
-    {
-      ArrayList localArrayList = new ArrayList(this.d);
-      this.d.clear();
-      byte[] arrayOfByte = bgxz.a(localArrayList).toByteArray();
-      if (arrayOfByte.length > 0) {
-        a(arrayOfByte, localArrayList, "mini_app_dcreport", "ThirdDcReport");
-      }
-    }
-  }
-  
-  private void e()
-  {
-    if (!this.e.isEmpty())
-    {
-      ArrayList localArrayList = new ArrayList(this.e);
-      this.e.clear();
-      byte[] arrayOfByte = bgxz.a(localArrayList).toByteArray();
-      if (arrayOfByte.length > 0) {
-        a(arrayOfByte, localArrayList);
-      }
-    }
-  }
-  
-  private void f()
-  {
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    ArrayList localArrayList;
-    Object localObject2;
-    Object localObject1;
-    if (!this.jdField_b_of_type_JavaUtilList.isEmpty())
-    {
-      localArrayList = new ArrayList(this.jdField_b_of_type_JavaUtilList);
-      this.jdField_b_of_type_JavaUtilList.clear();
-      localObject2 = bgxz.a(localArrayList);
-      if (localObject2 != null) {
-        localObject1 = null;
-      }
-    }
     try
     {
-      localObject2 = ((APP_REPORT_TRANSFER.StDataReportReq)localObject2).toByteArray();
-      localObject1 = localObject2;
+      bgnc.a(bgxl.a().a(), this.jdField_a_of_type_ComTencentQqminiSdkMinigameGameRuntimeLoader.getGameInfoManager().a(), false);
+      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QMLog.e("MiniProgramReporter", "performReportLaunchDcDataToServer", localException);
-      }
-      if (localObject1.length > 262144) {
-        break label104;
-      }
-      a((byte[])localObject1, localArrayList);
-      return;
-      label104:
-      i = localObject1.length / 262144 + 1;
-      k = localArrayList.size() / i;
-      QMLog.d("MiniProgramReporter", "performReportLaunchDcDataToServer: split into " + i + " count");
-      j = 0;
-      i = k;
+      bhaj.a().e("QQEnvImp", "cleanCache exception", localException);
     }
-    if (localObject1 == null) {}
-    for (;;)
+  }
+  
+  public boolean download(String paramString, ITDownloadListener paramITDownloadListener)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    String str = bgnt.a().g(paramString);
+    ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramString, null, str, 30, new bgyb(this, paramITDownloadListener, paramString, str));
+    bhaj.a().i("[download]", "from:" + paramString + ", to:" + str);
+    return true;
+  }
+  
+  public boolean enableOpengles3()
+  {
+    boolean bool2 = false;
+    String str = Build.MODEL;
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int k = arrayOfString.length;
+    int i = 0;
+    int j = 1;
+    while (i < k)
     {
-      return;
-      int i;
-      int k;
-      int j;
-      while (i <= localArrayList.size())
-      {
-        if ((j < i) && (j >= 0) && (i <= localArrayList.size()))
-        {
-          localObject1 = localArrayList.subList(j, i);
-          APP_REPORT_TRANSFER.StDataReportReq localStDataReportReq = bgxz.a((List)localObject1);
-          if (localStDataReportReq != null) {
-            a(localStDataReportReq.toByteArray(), (List)localObject1);
-          }
-        }
-        int m = i + k;
-        if (m > localArrayList.size())
-        {
-          m = localArrayList.size();
-          j = i;
-          i = m;
-        }
-        else
-        {
-          j = i;
-          i = m;
-        }
+      if (str.equalsIgnoreCase(arrayOfString[i])) {
+        j = 0;
+      }
+      i += 1;
+    }
+    boolean bool1 = bool2;
+    if (GameWnsUtils.enableOpengles3())
+    {
+      bool1 = bool2;
+      if (j != 0) {
+        bool1 = true;
       }
     }
+    return bool1;
   }
   
-  private void g()
+  public int frameNoChangeLimit()
   {
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
-    ArrayList localArrayList;
-    Object localObject2;
-    Object localObject1;
-    if (!this.jdField_c_of_type_JavaUtilList.isEmpty())
+    return GameWnsUtils.getFrameNoChangeLimit();
+  }
+  
+  public boolean gameErrorDialogEnable()
+  {
+    return (GameWnsUtils.getGameErrorDialogEnable()) && (!GameWnsUtils.getGameErrorDialogIsBlack());
+  }
+  
+  public String getAppId()
+  {
+    return this.jdField_a_of_type_ComTencentQqminiSdkMinigameGameRuntimeLoader.getGameInfoManager().a();
+  }
+  
+  public String getBaseEnginePath()
+  {
+    return this.jdField_a_of_type_ComTencentQqminiSdkMinigameGameRuntimeLoader.getLibVersionManager().a();
+  }
+  
+  public int getBenchmarkLevel()
+  {
+    return bgou.a();
+  }
+  
+  public Drawable getDrawable(Context paramContext, String paramString, MiniGameInfo paramMiniGameInfo)
+  {
+    MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+    if (!TextUtils.isEmpty(paramString))
     {
-      localArrayList = new ArrayList(this.jdField_c_of_type_JavaUtilList);
-      this.jdField_c_of_type_JavaUtilList.clear();
-      localObject2 = bgxz.a(localArrayList);
-      if (localObject2 != null) {
-        localObject1 = null;
+      if (bhan.a(paramString)) {
+        return localMiniAppProxy.getDrawable(paramContext, paramString, 0, 0, new ColorDrawable(0));
       }
+      return localMiniAppProxy.getDrawable(paramContext, getResPath(paramString, "", paramMiniGameInfo), 0, 0, new ColorDrawable(0));
     }
-    try
+    return null;
+  }
+  
+  public String getGameConfig(MiniGameInfo paramMiniGameInfo, String paramString)
+  {
+    if ((paramMiniGameInfo == null) || (paramMiniGameInfo.gameConfigJson == null) || (TextUtils.isEmpty(paramString))) {}
+    do
     {
-      localObject2 = ((REPORT.StDcReportReq)localObject2).toByteArray();
-      localObject1 = localObject2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QMLog.e("MiniProgramReporter", "performReportToServer", localException);
-      }
-      if (localObject1.length > 262144) {
-        break label108;
-      }
-      a((byte[])localObject1, localArrayList, "mini_app_apireport", "DcReport");
-      return;
-      label108:
-      i = localObject1.length / 262144 + 1;
-      k = localArrayList.size() / i;
-      QMLog.d("MiniProgramReporter", "performReportToServer: split into " + i + " count");
-      j = 0;
-      i = k;
-    }
-    if (localObject1 == null) {}
-    for (;;)
-    {
-      return;
-      int i;
-      int k;
-      int j;
-      while (i <= localArrayList.size())
-      {
-        if ((j < i) && (j >= 0) && (i <= localArrayList.size()))
-        {
-          localObject1 = localArrayList.subList(j, i);
-          REPORT.StDcReportReq localStDcReportReq = bgxz.a((List)localObject1);
-          if (localStDcReportReq != null) {
-            a(localStDcReportReq.toByteArray(), (List)localObject1, "mini_app_apireport", "DcReport");
-          }
-        }
-        int m = i + k;
-        if (m > localArrayList.size())
-        {
-          m = localArrayList.size();
-          j = i;
-          i = m;
-        }
-        else
-        {
-          j = i;
-          i = m;
-        }
-      }
-    }
+      return null;
+      paramMiniGameInfo = paramMiniGameInfo.gameConfigJson.opt(paramString);
+    } while (paramMiniGameInfo == null);
+    return paramMiniGameInfo.toString();
   }
   
-  private void h()
+  public String getGameEnvVersion()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    ArrayList localArrayList;
-    Object localObject2;
-    Object localObject1;
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_JavaUtilList.clear();
-      localObject2 = bgxz.a(localArrayList);
-      if (localObject2 != null) {
-        localObject1 = null;
-      }
+    MiniAppInfo localMiniAppInfo = this.jdField_a_of_type_ComTencentQqminiSdkMinigameGameRuntimeLoader.getMiniAppInfo();
+    if (localMiniAppInfo != null) {
+      return localMiniAppInfo.getVerTypeStr();
     }
-    try
-    {
-      localObject2 = ((APP_REPORT_TRANSFER.StDataReportReq)localObject2).toByteArray();
-      localObject1 = localObject2;
+    return "release";
+  }
+  
+  public String getGlobalConfig()
+  {
+    return "self = GameGlobal = __TT__GLOBAL__ = global = window = this;\nself.__ttObjdec__ = {};\nself.wx = self.wx || {};\nself.WeixinNativeBuffer = Triton.WeixinNativeBuffer;\nvar __wxConfig = __wxConfig || {};\n__wxConfig.env = {};\n__wxConfig.env.USER_DATA_PATH = '" + MiniSDKConst.STR_WXFILE + "usr';\n__wxConfig.platform = 'android';\n__wxConfig.QUA = '" + QUAUtil.getPlatformQUA() + "';\nwx.env = __wxConfig.env;\nvar __qqConfig = __wxConfig || {};\n";
+  }
+  
+  public Set<String> getLogBlackList()
+  {
+    return bhal.b();
+  }
+  
+  public Set<String> getLogWhiteList()
+  {
+    return bhal.a();
+  }
+  
+  public String getPlatformName()
+  {
+    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName();
+  }
+  
+  public String getPlatformVersion()
+  {
+    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();
+  }
+  
+  public String getResPath(String paramString1, String paramString2, MiniGameInfo paramMiniGameInfo)
+  {
+    return bgnt.a().a(paramString1);
+  }
+  
+  public String getTmpFilePath(MiniGameInfo paramMiniGameInfo, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QMLog.e("MiniProgramReporter", "performReportToServer", localException);
-      }
-      if (localObject1.length > 262144) {
-        break label104;
-      }
-      a((byte[])localObject1, localArrayList);
-      return;
-      label104:
-      i = localObject1.length / 262144 + 1;
-      k = localArrayList.size() / i;
-      QMLog.d("MiniProgramReporter", "performReportToServer: split into " + i + " count");
-      j = 0;
-      i = k;
+    if ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) {
+      return bgnt.a().g(paramString);
     }
-    if (localObject1 == null) {}
-    for (;;)
-    {
-      return;
-      int i;
-      int k;
-      int j;
-      while (i <= localArrayList.size())
-      {
-        if ((j < i) && (j >= 0) && (i <= localArrayList.size()))
-        {
-          localObject1 = localArrayList.subList(j, i);
-          APP_REPORT_TRANSFER.StDataReportReq localStDataReportReq = bgxz.a((List)localObject1);
-          if (localStDataReportReq != null) {
-            a(localStDataReportReq.toByteArray(), (List)localObject1);
-          }
-        }
-        int m = i + k;
-        if (m > localArrayList.size())
-        {
-          m = localArrayList.size();
-          j = i;
-          i = m;
-        }
-        else
-        {
-          j = i;
-          i = m;
-        }
-      }
+    return bgnt.a().b(paramString);
+  }
+  
+  public String getWxFilePath(String paramString)
+  {
+    return bgnt.a().e(paramString);
+  }
+  
+  public boolean isDebug()
+  {
+    return a();
+  }
+  
+  public boolean isNotchValid()
+  {
+    return LiuHaiUtils.isLiuHaiUseValid();
+  }
+  
+  public int jsErrorDetectInterval()
+  {
+    return GameWnsUtils.getGameJsErrorDetectInterval();
+  }
+  
+  public void killSelf(Context paramContext)
+  {
+    bhaj.a().e("QQEnvImp", "minigame kill self!");
+    if ((paramContext instanceof Activity)) {
+      ((Activity)paramContext).finish();
     }
+    Process.killProcess(Process.myPid());
   }
   
-  private void i()
+  public int noPresentDurationLimit()
   {
-    if ((a()) || (this.jdField_a_of_type_JavaUtilList.size() >= 64)) {
-      h();
-    }
-    if ((System.currentTimeMillis() - this.jdField_c_of_type_Long > TimeUnit.SECONDS.toMillis(600L)) || (this.jdField_c_of_type_JavaUtilList.size() >= 64)) {
-      g();
-    }
-    if (this.d.size() >= 1) {
-      d();
-    }
-    if (this.e.size() >= 1) {
-      e();
-    }
+    return GameWnsUtils.getNoPresentDurationLimit();
   }
   
-  public Handler a()
+  public int noPresentTouchLimit()
   {
-    return this.jdField_a_of_type_AndroidOsHandler;
+    return GameWnsUtils.getNoPresentTouchLimit();
   }
   
-  public String a(String paramString)
+  public int parseColor(String paramString)
   {
-    return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    return ColorUtils.parseColor(paramString);
   }
   
-  public void a()
+  public void postRunable(Runnable paramRunnable)
   {
-    k = 64;
-    i = 10;
-    try
-    {
-      j = bglq.a("qqminiapp", "mini_app_report_time_threshold", 10);
-      i = j;
-      int m = bglq.a("qqminiapp", "mini_app_report_count_threshold", 64);
-      i = m;
-      k = j;
-      j = i;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int j = k;
-        k = i;
-      }
-    }
-    if ((System.currentTimeMillis() - this.jdField_b_of_type_Long > TimeUnit.SECONDS.toMillis(k * 60)) || (this.jdField_b_of_type_JavaUtilList.size() >= j) || (this.jdField_a_of_type_Boolean))
-    {
-      c();
-      this.jdField_a_of_type_Boolean = false;
-    }
+    TTHandleThread.a().c(paramRunnable);
   }
   
-  public void a(APP_REPORT_TRANSFER.SingleDcData paramSingleDcData)
+  public void postRunableDelayed(Runnable paramRunnable, long paramLong)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new MiniProgramReporter.4(this, paramSingleDcData));
+    TTHandleThread.a().a(paramRunnable, paramLong);
   }
   
-  public void a(REPORT.SingleDcData paramSingleDcData)
+  public int presentDetectInterval()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new MiniProgramReporter.3(this, paramSingleDcData));
+    return GameWnsUtils.getGamePresentDetectInterval();
   }
   
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
-  }
-  
-  public void a(Collection<? extends REPORT.SingleDcData> paramCollection)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new MiniProgramReporter.5(this, paramCollection));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new MiniProgramReporter.7(this));
-  }
-  
-  public void b(APP_REPORT_TRANSFER.SingleDcData paramSingleDcData)
+  public String readFileToString(File paramFile)
   {
     try
     {
-      this.jdField_b_of_type_JavaUtilList.add(paramSingleDcData);
-      a();
+      paramFile = bgpc.b(paramFile);
+      return paramFile;
+    }
+    catch (Exception paramFile) {}
+    return null;
+  }
+  
+  public void reportDC04266(int paramInt, String paramString)
+  {
+    bhck.a(bgmb.a(), paramInt, paramString, "1");
+    this.jdField_a_of_type_ComTencentQqminiSdkMinigameGameRuntimeLoader.getReportManager().a();
+  }
+  
+  public void reportDC04902(String paramString, long paramLong)
+  {
+    if (paramString != null)
+    {
+      if (!paramString.equals("game_start")) {
+        break label28;
+      }
+      bhcc.a(this.jdField_a_of_type_ComTencentQqminiSdkMinigameGameRuntimeLoader.getMiniAppInfoForReport().appId);
+    }
+    label28:
+    while ((paramString.equals("game_end")) || (!paramString.equals("draw_frame"))) {
       return;
     }
-    finally
-    {
-      paramSingleDcData = finally;
-      throw paramSingleDcData;
-    }
+    bhcc.a(paramLong);
   }
   
-  public void b(Collection<? extends APP_REPORT_TRANSFER.SingleDcData> paramCollection)
+  public void showGameErrorDialog(Context paramContext, DialogCallback paramDialogCallback)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new MiniProgramReporter.6(this, paramCollection));
+    paramContext = bgow.a(paramContext, 230, null, GameWnsUtils.getGameErrorDialogContent(), "取消", "确定", new bgyc(this, paramDialogCallback), new bgyd(this, paramDialogCallback));
+    paramContext.setCanceledOnTouchOutside(false);
+    paramContext.show();
+    bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkMinigameGameRuntimeLoader.getGameInfoManager().a(), 1024, "1");
   }
   
-  public void c()
+  public void updateDisplayFrameTime(long paramLong, boolean paramBoolean)
   {
-    f();
+    bhcc.a(paramLong, paramBoolean);
   }
 }
 

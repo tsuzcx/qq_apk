@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bajk;
+import bant;
 
 class QQLevelJsPlugin$1
-  extends bajk
+  extends bant
 {
   QQLevelJsPlugin$1(QQLevelJsPlugin paramQQLevelJsPlugin, String paramString) {}
   

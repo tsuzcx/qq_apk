@@ -1,21 +1,38 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
 
 public class avas
-  implements DialogInterface.OnClickListener
+  implements View.OnKeyListener
 {
-  public avas(ShortVideoCommentsView paramShortVideoCommentsView, Activity paramActivity) {}
+  public avas(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    ausq.a(this.jdField_a_of_type_AndroidAppActivity, 302);
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.bindphone", 2, "openBindPhonePage");
+    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0)) {
+      if (ChooseInterestTagActivity.a(this.a).getText() == null)
+      {
+        paramView = "";
+        if (TextUtils.isEmpty(paramView))
+        {
+          ChooseInterestTagActivity.a(this.a).fullScroll(66);
+          ChooseInterestTagActivity.a(this.a, ChooseInterestTagActivity.d(this.a) + 1);
+        }
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a, "playpage_phone_clk");
+    for (;;)
+    {
+      return false;
+      paramView = ChooseInterestTagActivity.a(this.a).getText().toString();
+      break;
+      if ((paramInt == 66) && (paramKeyEvent.getAction() == 0)) {
+        bhsj.b(ChooseInterestTagActivity.a(this.a));
+      }
+    }
   }
 }
 

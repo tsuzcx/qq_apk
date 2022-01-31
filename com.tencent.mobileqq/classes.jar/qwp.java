@@ -45,8 +45,8 @@ public class qwp
   
   private void d()
   {
-    URL localURL = bdar.generateAlbumVideoThumbURL(this.jdField_a_of_type_Qnz.b, null);
-    this.jdField_a_of_type_Qnz.e = bame.d(localURL.toString());
+    URL localURL = bdfa.generateAlbumVideoThumbURL(this.jdField_a_of_type_Qnz.b, null);
+    this.jdField_a_of_type_Qnz.e = baqn.d(localURL.toString());
     if (new File(this.jdField_a_of_type_Qnz.e).exists())
     {
       f();
@@ -55,7 +55,7 @@ public class qwp
     this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(localURL, null);
     if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1)
     {
-      a(bdda.b(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()), this.jdField_a_of_type_Qnz.e);
+      a(bdhj.b(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()), this.jdField_a_of_type_Qnz.e);
       return;
     }
     this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new qww(this));
@@ -92,7 +92,7 @@ public class qwp
     if (QLog.isColorLevel()) {
       QLog.d("RIJUGC.SelectVideoPresenter", 2, "not found the select video...");
     }
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131694842, 1).a();
+    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131694844, 1).a();
   }
   
   private void f()

@@ -1,30 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class agik
-  extends agij
+class agik
+  implements DialogInterface.OnKeyListener
 {
-  public Bitmap a;
-  public AnimationView.AnimationInfo a;
+  agik(aghx paramaghx) {}
   
-  public agik(String paramString)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
+    if (paramInt == 4)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.specialBackground;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.specailBackgroundAnimInfo;
+      this.a.n = true;
+      aghx.a(this.a).dismiss();
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null) || (this.jdField_a_of_type_AndroidGraphicsBitmap != null);
+    return false;
   }
 }
 

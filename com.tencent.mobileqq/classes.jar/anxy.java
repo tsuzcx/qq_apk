@@ -1,29 +1,16 @@
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.colornote.anim.EnterExitAnimHelper.1.1;
-import mqq.os.MqqHandler;
+import android.animation.AnimatorListenerAdapter;
 
-public class anxy
-  implements Animator.AnimatorListener
+class anxy
+  extends AnimatorListenerAdapter
 {
-  anxy(anxx paramanxx, aobg paramaobg, boolean paramBoolean) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
+  anxy(anxw paramanxw) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Aobg != null) {
-      this.jdField_a_of_type_Aobg.onColorNoteAnimFinish();
-    }
-    if ((this.jdField_a_of_type_Boolean) && ((paramAnimator instanceof xto))) {
-      ThreadManager.getUIHandler().postDelayed(new EnterExitAnimHelper.1.1(this, paramAnimator), 200L);
-    }
+    super.onAnimationEnd(paramAnimator);
+    anxw.a(this.a, null);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

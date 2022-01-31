@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.videoceiling;
 
-import aanp;
+import aase;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -26,25 +26,25 @@ public class GdtVideoCeilingScrollVIew
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    aanp.b("GdtVideoCeilingScrollVIew", "dispatchTouchEvent");
+    aase.b("GdtVideoCeilingScrollVIew", "dispatchTouchEvent");
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    aanp.b("GdtVideoCeilingScrollVIew", "onInterceptTouchEvent");
+    aase.b("GdtVideoCeilingScrollVIew", "onInterceptTouchEvent");
     return false;
   }
   
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    aanp.b("GdtVideoCeilingScrollVIew", "onScrollChanged: t -> " + paramInt2 + ", oldt -> " + paramInt4 + ", l -> " + paramInt1 + ", oldl -> " + paramInt3);
+    aase.b("GdtVideoCeilingScrollVIew", "onScrollChanged: t -> " + paramInt2 + ", oldt -> " + paramInt4 + ", l -> " + paramInt1 + ", oldl -> " + paramInt3);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    aanp.b("GdtVideoCeilingScrollVIew", "onTouchEvent");
+    aase.b("GdtVideoCeilingScrollVIew", "onTouchEvent");
     return false;
   }
 }

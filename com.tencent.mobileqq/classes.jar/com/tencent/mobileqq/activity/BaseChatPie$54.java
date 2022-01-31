@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.content.Context;
 import android.os.Build;
-import bers;
+import bewb;
 import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$54
@@ -20,19 +20,19 @@ class BaseChatPie$54
         QLog.i(this.this$0.jdField_a_of_type_JavaLangString, 1, "volueme state err" + Build.MANUFACTURER + Build.MODEL);
       }
     }
-    while (((this.a != 2) && (this.a != 0)) || (this.this$0.jdField_a_of_type_Bers == null) || (!this.this$0.jdField_a_of_type_Bers.isShowing()) || (this.this$0.jdField_a_of_type_Bers.getWindow() == null))
+    while (((this.a != 2) && (this.a != 0)) || (this.this$0.jdField_a_of_type_Bewb == null) || (!this.this$0.jdField_a_of_type_Bewb.isShowing()) || (this.this$0.jdField_a_of_type_Bewb.getWindow() == null))
     {
       do
       {
         return;
-      } while ((this.this$0.jdField_a_of_type_Bers != null) && (this.this$0.jdField_a_of_type_Bers.isShowing()));
-      this.this$0.jdField_a_of_type_Bers = new bers(this.this$0.jdField_a_of_type_AndroidContentContext);
-      this.this$0.jdField_a_of_type_Bers.a(this.this$0.jdField_a_of_type_AndroidContentContext.getString(2131698849));
-      this.this$0.jdField_a_of_type_Bers.show();
+      } while ((this.this$0.jdField_a_of_type_Bewb != null) && (this.this$0.jdField_a_of_type_Bewb.isShowing()));
+      this.this$0.jdField_a_of_type_Bewb = new bewb(this.this$0.jdField_a_of_type_AndroidContentContext);
+      this.this$0.jdField_a_of_type_Bewb.a(this.this$0.jdField_a_of_type_AndroidContentContext.getString(2131698861));
+      this.this$0.jdField_a_of_type_Bewb.show();
       return;
     }
-    this.this$0.jdField_a_of_type_Bers.dismiss();
-    this.this$0.jdField_a_of_type_Bers = null;
+    this.this$0.jdField_a_of_type_Bewb.dismiss();
+    this.this$0.jdField_a_of_type_Bewb = null;
   }
 }
 

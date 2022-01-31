@@ -1,8 +1,31 @@
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.pic.PicShareToWX;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
+
 public class awjo
+  implements bfah
 {
-  public static String a = "precover_ipc_action_get_resource";
-  public static String b = "precover_ipc_action_req_download";
-  public static String c = "precover_ipc_action_query_download_progress";
+  public awjo(PicShareToWX paramPicShareToWX, int paramInt) {}
+  
+  public void a(BaseResp paramBaseResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicShareToWX", 1, "onWXShareResp resp.errCode = " + paramBaseResp.errCode + ", fromType = " + this.jdField_a_of_type_Int);
+    }
+    if (paramBaseResp.errCode == 0)
+    {
+      PicShareToWX.a(this.jdField_a_of_type_Int, true);
+      PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX, true, 0, 1);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      PicShareToWX.a(this.jdField_a_of_type_Int, false);
+      PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX, false, paramBaseResp.errCode, 1);
+    }
+  }
 }
 
 

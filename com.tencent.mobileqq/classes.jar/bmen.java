@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
-
-public final class bmen
-  implements Parcelable.Creator<EditLocalPhotoSource>
+public class bmen<T>
+  extends bmej<T>
 {
-  public EditLocalPhotoSource a(Parcel paramParcel)
+  public void a(T paramT)
   {
-    return new EditLocalPhotoSource(paramParcel);
+    super.a(paramT);
   }
   
-  public EditLocalPhotoSource[] a(int paramInt)
+  public void b(T paramT)
   {
-    return new EditLocalPhotoSource[paramInt];
+    super.b(paramT);
   }
 }
 

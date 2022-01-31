@@ -1,96 +1,69 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.biz.now.NowVideoLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class azsz
-  extends azqk
 {
-  private QQAppInterface a;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private LinkedList<azta> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   
-  protected int b()
+  public azsz(int paramInt, long paramLong)
   {
-    return 18;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  public static String a(List<azta> paramList)
   {
-    Object localObject1 = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemLayout18", 2, "getView.");
-    }
-    paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-    paramContext.getResources();
-    if ((paramBundle instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramBundle);
-    }
-    Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    paramBundle = null;
-    if (((Iterator)localObject2).hasNext())
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      azqj localazqj = (azqj)((Iterator)localObject2).next();
-      if (!"live".equals(localazqj.a)) {
-        break label255;
-      }
-      paramBundle = (azrs)localazqj;
-    }
-    label247:
-    label255:
-    for (;;)
-    {
-      break;
-      if (paramBundle == null)
+      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("HH点mm分ss");
+      int i = paramList.size();
+      localStringBuilder.ensureCapacity((((azta)paramList.get(0)).jdField_a_of_type_JavaLangObject.toString().length() + 20) * i);
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("StructMsgItemLayout18", 2, "getView itemLive is null.");
-        }
+        azta localazta = (azta)paramList.next();
+        localStringBuilder.append("[").append(localSimpleDateFormat.format(new Date(localazta.jdField_a_of_type_Long))).append(":").append(localazta.jdField_a_of_type_JavaLangObject.toString()).append("]");
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public List<azta> a(Object arg1)
+  {
+    Object localObject1 = new azta();
+    ((azta)localObject1).jdField_a_of_type_Long = System.currentTimeMillis();
+    ((azta)localObject1).jdField_a_of_type_JavaLangObject = ???;
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    {
+      this.jdField_a_of_type_JavaUtilLinkedList.addLast(localObject1);
+      if (this.jdField_a_of_type_JavaUtilLinkedList.size() < this.jdField_a_of_type_Int) {
         return null;
       }
-      if (paramView != null)
+      azta localazta = (azta)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
+      if (((azta)localObject1).jdField_a_of_type_Long - localazta.jdField_a_of_type_Long < this.jdField_a_of_type_Long)
       {
-        paramContext = (azta)paramView.getTag();
-        localObject2 = null;
-        localObject1 = paramView;
-        paramView = paramContext;
-        paramContext = (Context)localObject2;
-        if (paramView != null) {
-          break label247;
-        }
-        paramView = new azta();
-        paramView.jdField_a_of_type_Azrs = paramBundle;
-        paramView.jdField_a_of_type_ComTencentBizNowNowVideoLayout = paramContext;
-      }
-      for (;;)
-      {
-        ((View)localObject1).setTag(paramView);
-        paramView = ((View)localObject1).findViewById(2131377083);
-        if (paramView != null) {
-          paramView.setOnClickListener(paramBundle.a);
-        }
-        if (paramContext != null) {
-          paramContext.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message);
-        }
+        localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedList);
         return localObject1;
-        localObject2 = paramBundle.a(paramContext, null, null);
-        paramContext = (NowVideoLayout)((View)localObject2).findViewById(2131377083);
-        paramContext.a();
-        paramView = (View)localObject1;
-        localObject1 = localObject2;
-        break;
-        paramContext = paramView.jdField_a_of_type_ComTencentBizNowNowVideoLayout;
       }
     }
+    this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+    return null;
   }
   
-  public String b()
+  public void a()
   {
-    return "Layout18";
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    {
+      this.jdField_a_of_type_JavaUtilLinkedList.clear();
+      return;
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.protocol;
 
 import android.os.Bundle;
-import bdlr;
+import bdqa;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -34,8 +34,8 @@ public class ReadInJoyMSFService$2
         {
           long l = this.a.getWupBuffer().length;
           localObject = new byte[(int)l + 4];
-          bdlr.a((byte[])localObject, 0, 4L + l);
-          bdlr.a((byte[])localObject, 4, this.a.getWupBuffer(), (int)l);
+          bdqa.a((byte[])localObject, 0, 4L + l);
+          bdqa.a((byte[])localObject, 4, this.a.getWupBuffer(), (int)l);
           this.a.putWupBuffer((byte[])localObject);
           i = j;
           if (QLog.isColorLevel())

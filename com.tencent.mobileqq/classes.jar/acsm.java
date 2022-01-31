@@ -1,12 +1,27 @@
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.AppRuntime;
 
 class acsm
+  implements DialogInterface.OnClickListener
 {
-  acsk jdField_a_of_type_Acsk;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  String jdField_a_of_type_JavaLangString;
-  
   acsm(acsl paramacsl) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.a.a.a() != null)
+    {
+      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
+      this.a.a.a().startActivity(localIntent);
+    }
+    paramDialogInterface.dismiss();
+  }
 }
 
 

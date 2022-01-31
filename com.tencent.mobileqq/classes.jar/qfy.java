@@ -13,7 +13,7 @@ class qfy
       qfw.a(this.a, new qhj(qfw.a(this.a).getContext()));
       qfw.a(this.a).a(paramString);
       qfw.a(this.a).a(RIJRedPacketManager.a().d());
-      qfw.a(this.a).showAsDropDown(qfw.a(this.a), 0, bdkf.a(6.0F));
+      qfw.a(this.a).showAsDropDown(qfw.a(this.a), 0, bdoo.a(6.0F));
     }
   }
 }

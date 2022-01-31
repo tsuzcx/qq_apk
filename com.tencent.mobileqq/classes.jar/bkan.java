@@ -1,32 +1,12 @@
-import com.tencent.qg.sdk.invoke.BaseJsModule;
-import com.tencent.qg.sdk.invoke.InvokeCallback;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
-public class bkan
-  extends BaseJsModule
+public abstract interface bkan
 {
-  public bkan(bkal parambkal) {}
+  public abstract void a();
   
-  public String getModuleName()
-  {
-    return "VipQGModel";
-  }
-  
-  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
-  {
-    if ("notifyJsInvokeFinish".equalsIgnoreCase(paramString))
-    {
-      QLog.i("VipQGModel", 1, "handleJsRequest: notifyJsInvokeFinish");
-      this.a.a("getDeviceSize", new float[] { bdkf.a(), bdkf.b() });
-      return true;
-    }
-    return false;
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bkan
  * JD-Core Version:    0.7.0.1
  */

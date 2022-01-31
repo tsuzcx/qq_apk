@@ -1,18 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import mqq.os.MqqHandler;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class addc
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public addc(LoginInfoActivity paramLoginInfoActivity, FrameLayout paramFrameLayout) {}
+  public addc(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).removeMessages(20200313);
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Enter_sendmsg", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131695437), "qqsetting_enter_sendmsg_key", paramBoolean);
+      return;
+    }
   }
 }
 

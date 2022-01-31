@@ -1,18 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.WordingItem;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21.1.1;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
 
-public final class ajqv
-  implements Parcelable.Creator<WordingItem>
+public class ajqv
+  implements ajtc
 {
-  public WordingItem a(Parcel paramParcel)
-  {
-    return new WordingItem(paramParcel);
-  }
+  public ajqv(NewFlowCameraActivity.21.1.1 param1) {}
   
-  public WordingItem[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new WordingItem[paramInt];
+    if (paramInt == 0)
+    {
+      NewFlowCameraActivity.b(this.a.a.a.this$0, true);
+      if (this.a.a.a.this$0.d.getVisibility() == 0)
+      {
+        this.a.a.a.this$0.d.setVisibility(8);
+        this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
+      }
+      return;
+    }
+    NewFlowCameraActivity.b(this.a.a.a.this$0, false);
+    this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
   }
 }
 

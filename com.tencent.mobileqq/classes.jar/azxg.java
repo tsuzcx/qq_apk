@@ -1,69 +1,50 @@
-import com.tencent.mobileqq.app.GuardProcessExitListener;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.animation.DecelerateInterpolator;
+import com.tencent.qphone.base.util.QLog;
 
 class azxg
-  extends GuardProcessExitListener
+  implements View.OnTouchListener
 {
-  azxg(azxf paramazxf) {}
+  azxg(azxe paramazxe, View paramView) {}
   
-  public String a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return "com.tencent.mobileqq:live";
-  }
-  
-  /* Error */
-  public void a(boolean paramBoolean)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 10	azxg:a	Lazxf;
-    //   4: invokestatic 25	azxf:a	(Lazxf;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   7: ifnull +48 -> 55
-    //   10: aload_0
-    //   11: getfield 10	azxg:a	Lazxf;
-    //   14: invokestatic 25	azxf:a	(Lazxf;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   17: invokevirtual 31	com/tencent/shadow/dynamic/host/DynamicPluginManager:getManagerImpl	()Lcom/tencent/shadow/dynamic/host/PluginManager;
-    //   20: instanceof 33
-    //   23: ifeq +32 -> 55
-    //   26: aload_0
-    //   27: getfield 10	azxg:a	Lazxf;
-    //   30: invokestatic 25	azxf:a	(Lazxf;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   33: invokevirtual 31	com/tencent/shadow/dynamic/host/DynamicPluginManager:getManagerImpl	()Lcom/tencent/shadow/dynamic/host/PluginManager;
-    //   36: checkcast 33	com/tencent/mobileqq/intervideo/shadow/PluginProcessKiller
-    //   39: astore_2
-    //   40: aload_2
-    //   41: invokeinterface 36 1 0
-    //   46: aload_0
-    //   47: getfield 10	azxg:a	Lazxf;
-    //   50: aconst_null
-    //   51: invokestatic 39	azxf:a	(Lazxf;Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   54: pop
-    //   55: return
-    //   56: astore_2
-    //   57: aload_0
-    //   58: getfield 10	azxg:a	Lazxf;
-    //   61: aconst_null
-    //   62: invokestatic 39	azxf:a	(Lazxf;Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   65: pop
-    //   66: return
-    //   67: astore_2
-    //   68: aload_0
-    //   69: getfield 10	azxg:a	Lazxf;
-    //   72: aconst_null
-    //   73: invokestatic 39	azxf:a	(Lazxf;Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   76: pop
-    //   77: aload_2
-    //   78: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	azxg
-    //   0	79	1	paramBoolean	boolean
-    //   39	2	2	localPluginProcessKiller	com.tencent.mobileqq.intervideo.shadow.PluginProcessKiller
-    //   56	1	2	localIllegalArgumentException	java.lang.IllegalArgumentException
-    //   67	11	2	localObject	java.lang.Object
-    // Exception table:
-    //   from	to	target	type
-    //   40	46	56	java/lang/IllegalArgumentException
-    //   40	46	67	finally
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (!this.jdField_a_of_type_Azxe.b)
+      {
+        this.jdField_a_of_type_Azxe.b = true;
+        ObjectAnimator localObjectAnimator = (ObjectAnimator)paramView.getTag(2131373559);
+        paramMotionEvent = localObjectAnimator;
+        if (localObjectAnimator == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("StructMsgItemLayout12", 2, "animator is null");
+          }
+          paramMotionEvent = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 0.9F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 0.95F }) });
+          paramMotionEvent.setInterpolator(new DecelerateInterpolator(2.0F));
+          paramMotionEvent.setDuration(100L);
+          paramView.setTag(2131373559, paramMotionEvent);
+        }
+        paramMotionEvent.start();
+      }
+      return true;
+      this.jdField_a_of_type_Azxe.a.onClick(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Azxe.b = false;
+      paramView = (ObjectAnimator)paramView.getTag(2131373559);
+      if (paramView != null) {
+        paramView.reverse();
+      }
+    }
   }
 }
 

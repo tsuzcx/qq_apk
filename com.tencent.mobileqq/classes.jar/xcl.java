@@ -1,24 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
 
-class xcl
-  implements Animation.AnimationListener
+public class xcl
+  implements Animator.AnimatorListener
 {
-  xcl(xck paramxck) {}
+  public xcl(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_Xcf != null) {
-      this.a.a.jdField_a_of_type_Xcf.a(null);
-    }
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772038);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772038);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

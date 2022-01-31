@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
-import awbv;
-import awbw;
-import awbx;
+import awge;
+import awgf;
+import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -28,7 +28,7 @@ class MiniAppLocalSearchManager$2
         Object localObject2 = MiniAppLocalSearchEntity.class.getSimpleName();
         Object localObject3 = this.val$netResult.appId;
         String str = this.val$netResult.appId;
-        localObject2 = ((awbw)localObject1).a(MiniAppLocalSearchEntity.class, (String)localObject2, false, "appId = ?", new String[] { localObject3 }, null, null, null, str);
+        localObject2 = ((awgf)localObject1).a(MiniAppLocalSearchEntity.class, (String)localObject2, false, "appId = ?", new String[] { localObject3 }, null, null, null, str);
         if ((localObject2 != null) && (((List)localObject2).size() > 0))
         {
           localObject2 = ((List)localObject2).iterator();
@@ -37,7 +37,7 @@ class MiniAppLocalSearchManager$2
             localObject3 = (MiniAppLocalSearchEntity)((Iterator)localObject2).next();
             QLog.i("MiniAppLocalSearchManager", 2, "updateDataDbFromNetResult  : " + this.val$netResult.desc);
             ((MiniAppLocalSearchEntity)localObject3).desc = this.val$netResult.desc;
-            MiniAppLocalSearchManager.access$100(this.this$0, (awbw)localObject1, (awbv)localObject3);
+            MiniAppLocalSearchManager.access$100(this.this$0, (awgf)localObject1, (awge)localObject3);
           }
         }
       }

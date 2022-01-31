@@ -1,9 +1,15 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface bmmz
+class bmmz
+  implements View.OnClickListener
 {
-  public abstract void a(List<bmmw> paramList, DoodleView paramDoodleView);
+  bmmz(bmmx parambmmx) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.a(0);
+  }
 }
 
 

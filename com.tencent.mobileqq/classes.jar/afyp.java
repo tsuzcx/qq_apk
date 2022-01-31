@@ -1,15 +1,17 @@
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class afyp
+public class afyp
   implements DialogInterface.OnClickListener
 {
-  afyp(afyl paramafyl, MessageForText paramMessageForText) {}
+  public afyp(QQStoryItemBuilder paramQQStoryItemBuilder, Context paramContext, ChatMessage paramChatMessage) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    acex.a(this.jdField_a_of_type_Afyl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afyl.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afyl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.uniseq);
+    acjm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.gdtad.views.image;
 
-import aapv;
-import aapx;
-import aapy;
-import aapz;
+import aauk;
+import aaum;
+import aaun;
+import aauo;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.text.TextUtils;
@@ -15,14 +15,14 @@ import java.lang.ref.WeakReference;
 public class GdtGifImageView
   extends URLImageView
 {
-  aapx jdField_a_of_type_Aapx;
+  aaum jdField_a_of_type_Aaum;
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<aapz> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<aauo> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
-  aapx jdField_b_of_type_Aapx;
+  aaum jdField_b_of_type_Aaum;
   private String jdField_b_of_type_JavaLangString;
   
-  public GdtGifImageView(Context paramContext, String paramString1, String paramString2, WeakReference<aapz> paramWeakReference)
+  public GdtGifImageView(Context paramContext, String paramString1, String paramString2, WeakReference<aauo> paramWeakReference)
   {
     super(paramContext);
     this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
@@ -31,11 +31,11 @@ public class GdtGifImageView
     this.jdField_b_of_type_JavaLangString = paramString2;
     if (!TextUtils.isEmpty(paramString2))
     {
-      this.jdField_a_of_type_Aapx = new aapy(this);
-      new aapv(paramString2, new WeakReference(this.jdField_a_of_type_Aapx)).a();
+      this.jdField_a_of_type_Aaum = new aaun(this);
+      new aauk(paramString2, new WeakReference(this.jdField_a_of_type_Aaum)).a();
     }
-    this.jdField_b_of_type_Aapx = new aapy(this);
-    paramContext = new aapv(paramString1, new WeakReference(this.jdField_b_of_type_Aapx));
+    this.jdField_b_of_type_Aaum = new aaun(this);
+    paramContext = new aauk(paramString1, new WeakReference(this.jdField_b_of_type_Aaum));
     paramContext.a();
     setImageDrawable(paramContext.a());
     URLDrawable.resume();

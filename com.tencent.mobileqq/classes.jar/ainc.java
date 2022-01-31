@@ -1,22 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ainc
-  implements DialogInterface.OnClickListener
+public class ainc
+  implements ailh
 {
-  ainc(aimu paramaimu) {}
+  public ainc(PhoneFrameActivity paramPhoneFrameActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public View a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
-    if (((NewPhotoPreviewActivity)this.a.mActivity).sendBtn != null) {
-      ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(true);
-    }
+    return this.a.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public ImageView a()
+  {
+    return this.a.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView a()
+  {
+    return this.a.leftView;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.app;
+  }
+  
+  public View b()
+  {
+    return this.a.b;
+  }
+  
+  public TextView b()
+  {
+    return this.a.rightViewText;
+  }
+  
+  public TextView c()
+  {
+    return this.a.centerView;
+  }
+  
+  public TextView d()
+  {
+    return this.a.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 

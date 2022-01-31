@@ -1,55 +1,95 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.QCallRecord;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.MD5;
+import java.util.Map;
 
 public class awwf
-  extends BaseAdapter
 {
-  public List<QCallRecord> a;
+  public int a;
+  public String a;
+  public Map<Integer, String> a;
+  public int b;
+  public int c;
+  public int d;
   
-  public awwf(QCallDetailActivity paramQCallDetailActivity)
+  public awwf(int paramInt1, int paramInt2, Map<Integer, String> paramMap)
   {
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.d = paramInt2;
+    if (this.jdField_a_of_type_JavaUtilMap != null)
+    {
+      paramMap = new StringBuilder();
+      paramMap.append(paramInt1);
+      paramInt1 = 0;
+      while (paramInt1 <= 4)
+      {
+        String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt1));
+        if (str != null) {
+          paramMap.append(str);
+        }
+        paramInt1 += 1;
+      }
+      this.jdField_a_of_type_JavaLangString = paramMap.toString();
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaLangString = MD5.toMD5(this.jdField_a_of_type_JavaLangString);
+      }
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public Object getItem(int paramInt)
+  private String b(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (((QCallRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt)).type == QCallRecord.TYPE_DATE) {
-      return QCallRecord.TYPE_DATE;
+    Object localObject = null;
+    int i = 1;
+    while ((TextUtils.isEmpty((CharSequence)localObject)) && (i < 5))
+    {
+      localObject = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf((paramInt + i) % 5));
+      i += 1;
     }
-    return QCallRecord.TYPE_REALRECORD;
+    return localObject;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public String a()
   {
-    return paramView;
+    Object localObject = null;
+    if (this.jdField_a_of_type_JavaUtilMap != null)
+    {
+      String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(1));
+      localObject = str;
+      if (TextUtils.isEmpty(str)) {
+        localObject = b(1);
+      }
+    }
+    return localObject;
   }
   
-  public int getViewTypeCount()
+  public String a(int paramInt)
   {
-    return 3;
+    Object localObject = null;
+    if (this.jdField_a_of_type_JavaUtilMap != null) {
+      if (paramInt > 100) {
+        break label51;
+      }
+    }
+    label51:
+    for (paramInt = 3;; paramInt = 2)
+    {
+      String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      localObject = str;
+      if (TextUtils.isEmpty(str)) {
+        localObject = b(paramInt);
+      }
+      return localObject;
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool = false;
+    if ((paramObject instanceof awwf)) {
+      bool = bdeu.a(((awwf)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+    }
+    return bool;
   }
 }
 

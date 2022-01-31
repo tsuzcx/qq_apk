@@ -204,19 +204,19 @@ public class ppz
       {
         QLog.d(jdField_a_of_type_JavaLangString, 1, "container.getVisibility() == View.GONE");
         localContainer.setVisibility(0);
-        aekt.a(jdField_a_of_type_JavaLangString, "", new IllegalArgumentException("container.getVisibility() == View.GONE"));
+        aepi.a(jdField_a_of_type_JavaLangString, "", new IllegalArgumentException("container.getVisibility() == View.GONE"));
       }
     } while (paramProteusItemView.getVisibility() != 8);
     QLog.d(jdField_a_of_type_JavaLangString, 1, "proteusItemView.getVisibility() == View.GONE");
     paramProteusItemView.setVisibility(0);
-    aekt.a(jdField_a_of_type_JavaLangString, "", new IllegalArgumentException("proteusItemView.getVisibility() == View.GONE"));
+    aepi.a(jdField_a_of_type_JavaLangString, "", new IllegalArgumentException("proteusItemView.getVisibility() == View.GONE"));
   }
   
   public int a()
   {
     if (c == 2147483647)
     {
-      aekt.a(jdField_a_of_type_JavaLangString, "", new IllegalArgumentException(alpo.a(2131703954)));
+      aepi.a(jdField_a_of_type_JavaLangString, "", new IllegalArgumentException(alud.a(2131703966)));
       return this.b - 140 + 1;
     }
     return c - 140 + 1;
@@ -241,7 +241,7 @@ public class ppz
     }
     if ((localInteger.intValue() < 140) || (localInteger.intValue() >= this.b))
     {
-      aekt.a(jdField_a_of_type_JavaLangString, "", new IllegalArgumentException(alpo.a(2131703955)));
+      aepi.a(jdField_a_of_type_JavaLangString, "", new IllegalArgumentException(alud.a(2131703967)));
       return 140;
     }
     return localInteger.intValue();
@@ -250,7 +250,7 @@ public class ppz
   public ProteusItemView a(VafContext paramVafContext, int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
     Object localObject2 = null;
-    bhxr.a("DynamicPTS.getView");
+    biby.a("DynamicPTS.getView");
     Object localObject1 = localObject2;
     for (;;)
     {
@@ -283,7 +283,7 @@ public class ppz
       {
         Object localObject3;
         QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[] { "getView" });
-        aekt.a(jdField_a_of_type_JavaLangString, "getView:", new IllegalArgumentException(paramBaseArticleInfo.proteusItemsData, localException));
+        aepi.a(jdField_a_of_type_JavaLangString, "getView:", new IllegalArgumentException(paramBaseArticleInfo.proteusItemsData, localException));
         continue;
       }
       localObject2 = localObject1;
@@ -297,7 +297,7 @@ public class ppz
         QLog.e(jdField_a_of_type_JavaLangString, 1, "getView gone : " + paramBaseArticleInfo);
         a((ProteusItemView)localObject2);
       }
-      bhxr.a();
+      biby.a();
       return localObject2;
       localObject3 = "";
     }
@@ -392,24 +392,24 @@ public class ppz
     return "";
   }
   
-  public void a(ProteusItemView paramProteusItemView, int paramInt1, BaseArticleInfo paramBaseArticleInfo, VafContext paramVafContext, bcws parambcws, rqj paramrqj, pgd parampgd, int paramInt2)
+  public void a(ProteusItemView paramProteusItemView, int paramInt1, BaseArticleInfo paramBaseArticleInfo, VafContext paramVafContext, bdbb parambdbb, rqj paramrqj, pgd parampgd, int paramInt2)
   {
-    bhxr.a("DynamicPTS.bindData");
+    biby.a("DynamicPTS.bindData");
     long l1 = System.currentTimeMillis();
     Object localObject2 = paramProteusItemView.a();
     TemplateBean localTemplateBean = a(paramBaseArticleInfo);
     if (paramProteusItemView.a() == null)
     {
-      bhxr.a();
+      biby.a();
       QLog.d(jdField_a_of_type_JavaLangString, 1, "proteusItemView.getContainer == null bindData : " + paramBaseArticleInfo + " adapterViewType : " + paramInt1);
       a(paramProteusItemView, paramVafContext, localTemplateBean);
-      bhxr.a();
+      biby.a();
       return;
     }
     if (paramInt1 == 140)
     {
       a(paramProteusItemView);
-      bhxr.a();
+      biby.a();
       return;
     }
     b(paramProteusItemView);
@@ -425,18 +425,18 @@ public class ppz
         localObject1 = localObject2;
         if (!localTemplateBean.equals(localObject2))
         {
-          bhxr.a("DynamicPTS.bindData.reuseView");
+          biby.a("DynamicPTS.bindData.reuseView");
           localObject1 = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean);
           if (localObject1 != null)
           {
-            ((Container)localObject1).setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841380));
+            ((Container)localObject1).setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841381));
             paramProteusItemView.d();
             paramProteusItemView.a((Container)localObject1);
             opy.a((Container)localObject1, null, localTemplateBean);
           }
           paramBaseArticleInfo.mProteusTemplateBean = localTemplateBean;
           localObject1 = null;
-          bhxr.a();
+          biby.a();
         }
       }
     }
@@ -445,14 +445,14 @@ public class ppz
     paramProteusItemView.setTemplateBean(localTemplateBean);
     if (localTemplateBean != null)
     {
-      bhxr.a("DynamicPTS.bindData.compareWithOldTemplateBean");
+      biby.a("DynamicPTS.bindData.compareWithOldTemplateBean");
       opy.a((Container)localObject2, (TemplateBean)localObject1, localTemplateBean);
-      bhxr.a();
+      biby.a();
     }
-    bhxr.a("DynamicPTS.bindData.bindView");
+    biby.a("DynamicPTS.bindData.bindView");
     this.jdField_a_of_type_Pmc.a(paramInt1, (Container)localObject2, parampgd, paramInt2);
-    bhxr.a();
-    opy.a(paramInt1, (Container)localObject2, paramVafContext, parambcws, paramrqj, parampgd, paramBaseArticleInfo);
+    biby.a();
+    opy.a(paramInt1, (Container)localObject2, paramVafContext, parambdbb, paramrqj, parampgd, paramBaseArticleInfo);
     a(parampgd, paramVafContext);
     opy.a((Container)localObject2, parampgd, localTemplateBean);
     long l2 = System.currentTimeMillis();
@@ -461,7 +461,7 @@ public class ppz
     for (paramProteusItemView = localTemplateBean.getStyleName();; paramProteusItemView = "")
     {
       srq.a(paramBaseArticleInfo, paramProteusItemView, "DynamicPTS.bindData", l2 - l1);
-      bhxr.a();
+      biby.a();
       return;
     }
   }

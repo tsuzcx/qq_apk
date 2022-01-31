@@ -1,31 +1,29 @@
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.contact.SimpleTextView;
+import com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView;
+import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
 
-public abstract interface akml
-  extends akni
+public class akml
+  extends akmp
 {
-  public abstract void bulkApolloBarrages(String paramString1, String paramString2, boolean paramBoolean);
-  
-  public abstract int getHeight();
-  
-  public abstract int getInitHeight();
-  
-  public abstract long getLuaState();
-  
-  public abstract akkw getRenderImpl();
-  
-  public abstract int getWidth();
-  
-  public abstract ApolloRenderDriver getWorker();
-  
-  public abstract void removeAllApolloBarrages(boolean paramBoolean);
-  
-  public abstract void setBubbleType(int paramInt);
-  
-  public abstract void setVisibility(int paramInt);
+  public LinearLayout a;
+  public URLImageView a;
+  public SimpleTextView a;
+  public MutualMarkIconsView a;
+  public OnlineStatusView a;
+  public StringBuilder a;
+  public boolean a;
+  public ImageView b;
+  public URLImageView b;
+  public boolean b;
+  public ImageView c;
+  public ImageView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akml
  * JD-Core Version:    0.7.0.1
  */

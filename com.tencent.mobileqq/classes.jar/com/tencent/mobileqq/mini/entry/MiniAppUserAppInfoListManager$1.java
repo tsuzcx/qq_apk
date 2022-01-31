@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.mini.entry;
 
-import amng;
-import aokd;
+import amrv;
+import aoom;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
 class MiniAppUserAppInfoListManager$1
-  extends amng
+  extends amrv
 {
   MiniAppUserAppInfoListManager$1(MiniAppUserAppInfoListManager paramMiniAppUserAppInfoListManager) {}
   
   public void onGetAppletsPushUnreadInfo(Object paramObject)
   {
-    if ((aokd.h()) && ((paramObject instanceof MiniAppRedDotEntity)))
+    if ((aoom.h()) && ((paramObject instanceof MiniAppRedDotEntity)))
     {
       paramObject = (MiniAppRedDotEntity)paramObject;
       this.this$0.setMiniAppPushRedDotData(paramObject);

@@ -1,33 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class acze
-  implements bhqd
+  extends bdon
 {
-  public acze(GroupManagerActivity paramGroupManagerActivity, byte paramByte) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public acze(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.c();
-    if (paramInt == 0)
-    {
-      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).setDragEnabled(true);
-      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(this.jdField_a_of_type_Byte));
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupManagerActivity", 2, "DeleteFriendGroup :" + this.jdField_a_of_type_Byte + ", " + GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity));
-      }
-      if (!GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity)) {
-        break label110;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(2131693332);
-    }
-    label110:
-    while (GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity) == null) {
-      return;
-    }
-    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).notifyDataSetChanged();
+    super(paramInt);
+  }
+  
+  public void a()
+  {
+    bddf.a(this.a, this.a.app.getCurrentAccountUin(), "inside.myCardButton", 1, 3, 1, "", true);
+    azqs.b(this.a.app, "CliOper", "", "", "card_mall", "0X8004DBF", 0, 0, "", "", "", "");
+    VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "defaultcard", "click_card_mine", "", 1, 0, 0, "", "", "");
+    this.a.b(2);
   }
 }
 

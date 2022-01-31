@@ -18,15 +18,15 @@ public class oae
     QQAppInterface localQQAppInterface;
     if (paramBoolean)
     {
-      QQToast.a(this.a.getBaseContext(), 2, 2131719039, 2000).a();
-      ReadInJoySettingActivity.a(this.a).setText(2131719038);
+      QQToast.a(this.a.getBaseContext(), 2, 2131719051, 2000).a();
+      ReadInJoySettingActivity.a(this.a).setText(2131719050);
       if (!paramBoolean) {
         break label149;
       }
       i = 1;
-      bjxj.e(i);
-      bjxj.a(paramBoolean);
-      bjxj.a(true);
+      bkbq.e(i);
+      bkbq.a(paramBoolean);
+      bkbq.a(true);
       localQQAppInterface = this.a.a;
       if (!paramBoolean) {
         break label154;
@@ -44,8 +44,8 @@ public class oae
     {
       nrt.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
       return;
-      QQToast.a(this.a.getBaseContext(), 2, 2131719037, 2000).a();
-      ReadInJoySettingActivity.a(this.a).setText(2131719041);
+      QQToast.a(this.a.getBaseContext(), 2, 2131719049, 2000).a();
+      ReadInJoySettingActivity.a(this.a).setText(2131719053);
       break;
       i = 0;
       break label51;

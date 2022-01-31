@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import bjxj;
+import bkbq;
 import nrt;
 import ntd;
 import ors;
@@ -13,7 +13,7 @@ class ReadInJoyListViewGroup$32
   public void run()
   {
     if (this.this$0.a == 40677) {
-      nrt.a(null, "CliOper", "", "", "0X8009295", "0X8009295", 0, 0, bjxj.a("default_feeds_proteus_offline_bid"), "", "", ors.b(this.this$0.a), false);
+      nrt.a(null, "CliOper", "", "", "0X8009295", "0X8009295", 0, 0, bkbq.a("default_feeds_proteus_offline_bid"), "", "", ors.b(this.this$0.a), false);
     }
     for (;;)
     {
@@ -21,7 +21,7 @@ class ReadInJoyListViewGroup$32
         nrt.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "0", "", ntd.a(this.this$0.a, null), false);
       }
       return;
-      nrt.a(null, "CliOper", "", "", "0X80066F9", "0X80066F9", 0, 0, bjxj.a("default_feeds_proteus_offline_bid"), "", "", ors.b(this.this$0.a), false);
+      nrt.a(null, "CliOper", "", "", "0X80066F9", "0X80066F9", 0, 0, bkbq.a("default_feeds_proteus_offline_bid"), "", "", ors.b(this.this$0.a), false);
     }
   }
 }

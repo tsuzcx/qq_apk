@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class PubAccountAssistantData
-  extends awbv
+  extends awge
 {
   public int mDistance;
   public long mLastDraftTime;
   public long mLastMsgTime;
   public int mType;
-  @awdj
+  @awhs
   public String mUin;
 }
 

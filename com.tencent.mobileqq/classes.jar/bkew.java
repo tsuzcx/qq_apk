@@ -1,35 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Process;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
 
-class bkew
-  extends Handler
+public class bkew
 {
-  public bkew(Looper paramLooper)
+  public int a;
+  public String a;
+  public EGLConfig a;
+  public EGLContext a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  
+  public bkew()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public void handleMessage(Message paramMessage)
+  @NonNull
+  public String toString()
   {
-    if (paramMessage.what == 0) {
-      bkev.a(0);
-    }
-    while ((paramMessage.what != 1) || (!bkev.a()) || (TextUtils.isEmpty(bkev.a())) || (TextUtils.isEmpty(bkev.b()))) {
-      return;
-    }
-    String str1 = bkev.a();
-    String str2 = bkev.b();
-    int i = bkev.a();
-    int j = bkev.b();
-    String str3 = bkev.a(BaseApplicationImpl.getApplication());
-    Process.setThreadPriority(10);
-    bkev.a((QQAppInterface)paramMessage.obj, str1, str2, i, j, str3);
-    bkev.b();
+    return " width = " + this.jdField_a_of_type_Int + " height = " + this.jdField_b_of_type_Int + " isNeedOffScreen = " + this.jdField_a_of_type_Boolean + " resUrl = " + this.jdField_a_of_type_JavaLangString + " resFilePath = " + this.jdField_b_of_type_JavaLangString + " resMD5 = " + this.c;
   }
 }
 

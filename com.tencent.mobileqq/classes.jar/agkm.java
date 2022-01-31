@@ -1,53 +1,108 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.smartdevice.SmartDevicePluginProxyActivity;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
 
-class agkm
-  implements View.OnClickListener
+public abstract class agkm
+  extends Binder
+  implements agkl
 {
-  agkm(agkk paramagkk) {}
-  
-  public void onClick(View paramView)
+  public agkm()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(aljq.y))
-    {
-      if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue())
-      {
-        this.a.I();
-        return;
-      }
-      paramView = new Intent();
-      paramView.putExtra("nickname", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
-      paramView.putExtra("bitmap", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (byte)2, false));
-      localObject = BaseApplicationImpl.getApplication().getSharedPreferences("smartdevice_entry", 4).getString("square_url_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "");
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        paramView.putExtra("url", (String)localObject);
-      }
-      for (;;)
-      {
-        bjxx.a().a(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView, "com.tencent.device.activities.DeviceSquareActivity", 0, null, SmartDevicePluginProxyActivity.class);
-        return;
-        paramView.putExtra("url", "https://qzs.qq.com/open/mobile/iot_public_device_2/html/devDiscover.html");
-      }
+    attachInterface(this, "com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+  }
+  
+  public static agkl a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    paramView = (zpa)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
-    Object localObject = paramView.a(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
-    if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue())
-    {
-      if (agkk.a(this.a)) {
-        paramView.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, (DeviceInfo)localObject, false);
-      }
-      this.a.I();
-      return;
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+    if ((localIInterface != null) && ((localIInterface instanceof agkl))) {
+      return (agkl)localIInterface;
     }
-    paramView.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, (DeviceInfo)localObject, false);
+    return new agkn(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    boolean bool;
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+      l1 = paramParcel1.readLong();
+      paramInt1 = paramParcel1.readInt();
+      paramInt2 = paramParcel1.readInt();
+      i = paramParcel1.readInt();
+      paramParcel2 = paramParcel1.readString();
+      if (paramParcel1.readByte() != 0) {}
+      for (bool = true;; bool = false)
+      {
+        a(l1, paramInt1, paramInt2, i, paramParcel2, bool);
+        return true;
+      }
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+      a((AIORichMediaData[])paramParcel1.createTypedArray(AIORichMediaData.CREATOR), paramParcel1.readInt());
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+      l1 = paramParcel1.readLong();
+      paramInt1 = paramParcel1.readInt();
+      paramInt2 = paramParcel1.readInt();
+      i = paramParcel1.readInt();
+      long l2 = paramParcel1.readLong();
+      if (paramParcel1.readByte() == 1) {}
+      for (bool = true;; bool = false)
+      {
+        a(l1, paramInt1, paramInt2, i, l2, bool);
+        return true;
+      }
+    case 4: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+      a();
+      return true;
+    case 5: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+      b();
+      return true;
+    case 6: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+      c();
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("IAIOImageProviderCallBack", 2, "carverW onTransact -> case TRANSACTION_notifyVideoURL");
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+    long l1 = paramParcel1.readLong();
+    paramInt2 = paramParcel1.readInt();
+    int i = paramParcel1.readInt();
+    paramParcel2 = paramParcel1.readString();
+    int j = paramParcel1.readInt();
+    String[] arrayOfString = new String[j];
+    paramInt1 = 0;
+    while (paramInt1 < j)
+    {
+      arrayOfString[paramInt1] = paramParcel1.readString();
+      paramInt1 += 1;
+    }
+    a(l1, paramInt2, i, paramParcel2, arrayOfString, paramParcel1.readString(), (MessageForShortVideo)paramParcel1.readParcelable(MessageForShortVideo.class.getClassLoader()), paramParcel1.readInt());
+    return true;
   }
 }
 

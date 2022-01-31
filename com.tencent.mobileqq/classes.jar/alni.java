@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.app.FaceDownloader;
+import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
 
-public class alni
+public abstract interface alni
 {
-  public int a;
-  public int b = -2147483648;
+  public abstract void a(ApolloPanelGuideView paramApolloPanelGuideView);
   
-  public alni(FaceDownloader paramFaceDownloader)
-  {
-    this.jdField_a_of_type_Int = -2147483648;
-  }
+  public abstract void b(ApolloPanelGuideView paramApolloPanelGuideView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alni
  * JD-Core Version:    0.7.0.1
  */

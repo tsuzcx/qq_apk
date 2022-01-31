@@ -1,33 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-
 public class amkt
-  extends oxe
-  implements owq, owr, ows
 {
-  public void a() {}
+  public int a;
+  public String a;
+  public int b;
   
-  public void a(MessageRecord paramMessageRecord)
+  public amkt(String paramString, int paramInt1, int paramInt2)
   {
-    c();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
-  
-  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
-  {
-    c();
-  }
-  
-  public void b()
-  {
-    c();
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    c();
-  }
-  
-  public void c() {}
 }
 
 

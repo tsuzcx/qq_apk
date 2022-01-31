@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgho;
-import bgif;
-import bgkd;
+import bglv;
+import bgmm;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
@@ -11,17 +11,17 @@ public class NativeFeatureJsPlugin
 {
   private static final String TAG = "NativeFeatureJsPlugin";
   
-  public void invokeNativePlugin(bgkd parambgkd)
+  public void invokeNativePlugin(bgok parambgok)
   {
     try
     {
-      String str = new JSONObject(parambgkd.b).optString("api_name", null);
-      this.mMiniAppContext.a(bgif.a(parambgkd, str));
+      String str = new JSONObject(parambgok.b).optString("api_name", null);
+      this.mMiniAppContext.a(bgmm.a(parambgok, str));
       return;
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      QMLog.e("NativeFeatureJsPlugin", "invokeNativePlugin err", parambgkd);
+      QMLog.e("NativeFeatureJsPlugin", "invokeNativePlugin err", parambgok);
     }
   }
 }

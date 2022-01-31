@@ -1,88 +1,47 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.TroopInviteStatusFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.StructMsgObserver.1;
+import com.tencent.mobileqq.activity.StructMsgObserver.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.util.Observable;
+import java.util.Observer;
 
 public class adzl
-  extends amab
+  implements Observer
 {
-  public adzl(TroopInviteStatusFragment paramTroopInviteStatusFragment) {}
-  
-  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, ArrayList<String> paramArrayList, int paramInt4)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInviteStatusFragment", 2, "onGetGroupInviteStatus success:" + paramBoolean + " group_members_num:" + paramInt2 + " group_friends_num:" + paramInt3 + " friends_uins:" + paramArrayList + " status:" + paramInt4);
-    }
-    if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
-    if (this.a.jdField_a_of_type_Bepp != null) {
-      this.a.jdField_a_of_type_Bepp.dismiss();
-    }
-    if (paramBoolean) {}
-    for (;;)
+    if (!aemu.a) {}
+    do
     {
-      synchronized (this.a)
+      do
       {
-        this.a.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-        this.a.jdField_b_of_type_Int = paramInt3;
-        this.a.jdField_a_of_type_Int = paramInt2;
-        this.a.jdField_c_of_type_Int = paramInt4;
-        paramInt1 = paramInt4;
-        if (paramInt4 == 5)
+        do
         {
-          paramInt1 = paramInt4;
-          if (this.a.jdField_b_of_type_Boolean)
+          do
           {
-            paramInt1 = paramInt4;
-            if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)
-            {
-              paramInt1 = paramInt4;
-              if (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing())
-              {
-                this.a.jdField_b_of_type_Boolean = false;
-                this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
-                paramInt1 = paramInt4;
-              }
-            }
-          }
-        }
-        if (paramInt1 != 6) {
-          if (this.a.jdField_a_of_type_Boolean)
-          {
-            paramArrayList = "1";
-            bdaj.a("Grp_AIO", "invite", "in_exp", 0, 0, new String[] { paramArrayList, String.valueOf(paramInt1) });
-            TroopInviteStatusFragment.a(this.a);
             return;
-          }
-        }
-      }
-      switch (paramInt1)
-      {
-      default: 
-        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, alpo.a(2131715852), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight()).show();
-        paramInt1 = paramInt4;
-        break;
-      case 1282: 
-      case 1283: 
-      case 1284: 
-      case 1285: 
-        synchronized (this.a)
-        {
-          this.a.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-          this.a.jdField_b_of_type_Int = paramInt3;
-          this.a.jdField_a_of_type_Int = paramInt2;
-          this.a.jdField_c_of_type_Int = 6;
-          paramInt1 = 6;
-        }
-        paramArrayList = "2";
-        continue;
-        bdaj.a("Grp_AIO", "invite", "in_past", 0, 0, new String[0]);
-      }
-    }
+            if (!(paramObject instanceof MessageForStructing)) {
+              break;
+            }
+            paramObject = (MessageForStructing)paramObject;
+            paramObservable = paramObject.structingMsg;
+          } while ((paramObject.isSend()) || (!aemu.a(paramObservable)));
+          paramObject = paramObservable.mMsgUrl;
+          str1 = paramObservable.currentAccountUin;
+          str2 = paramObservable.uin;
+          ThreadManager.post(new StructMsgObserver.1(this, paramObject, paramObservable.uinType, str1, str2), 5, null, false);
+          return;
+        } while (!(paramObject instanceof MessageForText));
+        paramObservable = (MessageForText)paramObject;
+      } while ((paramObservable.isSend()) || (TextUtils.isEmpty(paramObservable.msg)));
+      paramObject = aemu.c(paramObservable.msg);
+    } while (TextUtils.isEmpty(paramObject));
+    String str1 = paramObservable.frienduin;
+    String str2 = paramObservable.selfuin;
+    ThreadManager.post(new StructMsgObserver.2(this, paramObject, paramObservable.istroop, str2, str1), 5, null, false);
   }
 }
 

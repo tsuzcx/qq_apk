@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-
-public class agrv
-  implements aeko
+class agrv
+  implements bcro
 {
-  public agrv(TroopChatPie paramTroopChatPie) {}
+  agrv(agrn paramagrn) {}
   
-  public void a(agvy paramagvy)
+  public void a(boolean paramBoolean, String paramString)
   {
-    ((atlc)this.a.a(33)).a(1, paramagvy);
-    ((afbq)this.a.a(43)).b(1, paramagvy);
-  }
-  
-  public void b(agvy paramagvy)
-  {
-    ((atlc)this.a.a(33)).b(1, paramagvy);
-    ((afbq)this.a.a(43)).a(1, paramagvy);
+    if ((paramBoolean) && (this.a.g.equals(paramString)))
+    {
+      this.a.X = true;
+      paramString = (afgn)this.a.a(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
+    }
+    do
+    {
+      return;
+      this.a.X = false;
+      paramString = (afgn)this.a.a(23);
+    } while (paramString == null);
+    paramString.a(false);
   }
 }
 

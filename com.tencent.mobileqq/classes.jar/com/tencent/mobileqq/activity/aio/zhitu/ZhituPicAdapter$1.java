@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import agwq;
-import agxf;
-import agxh;
+import ahbf;
+import ahbu;
+import ahbw;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import azmj;
-import bdcs;
+import azqs;
+import bdhb;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.photo.SendPhotoTask;
 import com.tencent.qphone.base.util.QLog;
@@ -18,14 +18,14 @@ import java.util.ArrayList;
 public class ZhituPicAdapter$1
   implements Runnable
 {
-  public ZhituPicAdapter$1(agxf paramagxf, agxh paramagxh) {}
+  public ZhituPicAdapter$1(ahbu paramahbu, ahbw paramahbw) {}
   
   public void run()
   {
     Object localObject3;
     if (!this.a.jdField_b_of_type_Boolean)
     {
-      localObject3 = agwq.a(agxf.a(this.this$0)).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
+      localObject3 = ahbf.a(ahbu.a(this.this$0)).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
       if (!(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof BitmapDrawable)) {
         break label462;
       }
@@ -49,17 +49,17 @@ public class ZhituPicAdapter$1
               ((File)localObject3).getParentFile().mkdirs();
               ((File)localObject3).createNewFile();
             }
-            boolean bool = bdcs.a((Bitmap)localObject1, ((File)localObject3).getAbsolutePath());
+            boolean bool = bdhb.a((Bitmap)localObject1, ((File)localObject3).getAbsolutePath());
             if (!bool) {
               break;
             }
             localObject1 = localObject3;
-            if (agwq.a(agxf.a(this.this$0)).a() != 7220) {
+            if (ahbf.a(ahbu.a(this.this$0)).a() != 7220) {
               break label318;
             }
             this.a.jdField_b_of_type_JavaLangString = ((File)localObject1).getAbsolutePath();
-            agwq.a(agxf.a(this.this$0)).f(this.a);
-            azmj.b(agxf.a(this.this$0), "dc00898", "", "", "0X8008C72", "0X8008C72", agwq.a(agwq.a(agxf.a(this.this$0)).a()), 0, "", "", "", "");
+            ahbf.a(ahbu.a(this.this$0)).f(this.a);
+            azqs.b(ahbu.a(this.this$0), "dc00898", "", "", "0X8008C72", "0X8008C72", ahbf.a(ahbf.a(ahbu.a(this.this$0)).a()), 0, "", "", "", "");
             return;
           }
           catch (IOException localIOException)
@@ -69,13 +69,13 @@ public class ZhituPicAdapter$1
           }
           catch (OutOfMemoryError localOutOfMemoryError1)
           {
-            agwq.a(localOutOfMemoryError1);
+            ahbf.a(localOutOfMemoryError1);
             return;
           }
           if (this.a.jdField_b_of_type_JavaLangString == null) {
             try
             {
-              Object localObject2 = agwq.a(agxf.a(this.this$0)).a(this.a);
+              Object localObject2 = ahbf.a(ahbu.a(this.this$0)).a(this.a);
               if (localObject2 == null) {
                 break;
               }
@@ -86,27 +86,27 @@ public class ZhituPicAdapter$1
               for (;;)
               {
                 QLog.e("ZhituManager", 1, "oom when save bitmap");
-                agwq.a(localOutOfMemoryError2);
+                ahbf.a(localOutOfMemoryError2);
                 localFile = null;
               }
             }
           }
         }
-        localFile = agwq.a(agxf.a(this.this$0)).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
-        bdcs.d(this.a.jdField_b_of_type_JavaLangString, localFile.getAbsolutePath());
+        localFile = ahbf.a(ahbu.a(this.this$0)).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
+        bdhb.d(this.a.jdField_b_of_type_JavaLangString, localFile.getAbsolutePath());
         continue;
         localObject3 = new Intent();
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(localFile.getAbsolutePath());
         ((Intent)localObject3).putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
         ((Intent)localObject3).putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1044);
-        ((Intent)localObject3).putExtra("uin", agxf.a(this.this$0).jdField_a_of_type_JavaLangString);
-        ((Intent)localObject3).putExtra("uintype", agxf.a(this.this$0).jdField_a_of_type_Int);
-        ((Intent)localObject3).putExtra("troop_uin", agxf.a(this.this$0).jdField_b_of_type_JavaLangString);
+        ((Intent)localObject3).putExtra("uin", ahbu.a(this.this$0).jdField_a_of_type_JavaLangString);
+        ((Intent)localObject3).putExtra("uintype", ahbu.a(this.this$0).jdField_a_of_type_Int);
+        ((Intent)localObject3).putExtra("troop_uin", ahbu.a(this.this$0).jdField_b_of_type_JavaLangString);
         ((Intent)localObject3).putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
         ((Intent)localObject3).putExtra("send_in_background", true);
         ((Intent)localObject3).putExtra("PhotoConst.SINGLE_PHOTO_PATH", localArrayList);
-        new SendPhotoTask(agxf.a(this.this$0), (Intent)localObject3, null).run();
+        new SendPhotoTask(ahbu.a(this.this$0), (Intent)localObject3, null).run();
       }
     }
   }

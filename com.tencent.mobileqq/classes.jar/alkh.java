@@ -1,31 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import android.support.annotation.NonNull;
+import java.util.Map;
 
-public class alkh
-  extends BroadcastReceiver
+public abstract interface alkh
 {
-  private alkh(BaseActivity2 paramBaseActivity2) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-    {
-      BaseActivity2.mAppForground = false;
-      GesturePWDUtils.setAppForground(paramContext, BaseActivity2.mAppForground);
-    }
-    while (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
-      return;
-    }
-    BaseActivity2.mAppForground = GesturePWDUtils.isAppOnForegroundByTasks(paramContext);
-    GesturePWDUtils.setAppForground(paramContext, BaseActivity2.mAppForground);
-  }
+  public abstract void a(int paramInt, @NonNull Map<String, String> paramMap, @NonNull byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alkh
  * JD-Core Version:    0.7.0.1
  */

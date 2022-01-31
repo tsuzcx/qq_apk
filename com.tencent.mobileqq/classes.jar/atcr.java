@@ -1,13 +1,10 @@
-public class atcr
+public abstract interface atcr
 {
-  public double a;
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(long paramLong1, long paramLong2, int paramInt);
 }
 
 

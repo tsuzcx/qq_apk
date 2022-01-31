@@ -1,17 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class adyt
-  implements DialogInterface.OnClickListener
+  extends ClickableSpan
 {
-  public adyt(TroopInfoActivity paramTroopInfoActivity, boolean paramBoolean) {}
+  public adyt(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      azmj.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
-    }
+    SoundAndVibrateActivity.a(this.a);
+    VipUtils.a(this.a.app, "Vip_SpecialCare", "0X80049EE", "0X80049EE", 0, 1, null);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setColor(this.a.getResources().getColor(2131166911));
   }
 }
 

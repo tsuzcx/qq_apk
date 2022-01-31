@@ -1,25 +1,15 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.ttpic.videoshelf.ui.VideoShelfPlayView;
-import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.BaseVMPeakActivity;
 
-public class bldc
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class bldc
+  implements View.OnClickListener
 {
-  public bldc(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
+  bldc(blda paramblda) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      AEVideoShelfPreviewFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
-    {
-      AEVideoShelfPreviewFragment.a(this.a).updateVideoSize(AEVideoShelfPreviewFragment.a(this.a).getVideoWidth(), AEVideoShelfPreviewFragment.a(this.a).getVideoHeight());
-      return;
-      AEVideoShelfPreviewFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
+    blda.a(this.a).finish();
   }
 }
 

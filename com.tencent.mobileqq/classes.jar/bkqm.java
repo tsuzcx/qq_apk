@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
-
 class bkqm
-  implements DialogInterface.OnClickListener
+  implements bkqb
 {
-  bkqm(bkqk parambkqk) {}
+  bkqm(bkql parambkql) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(float paramFloat)
   {
-    bkqk.a(this.a).smoothScrollToPosition(bkqk.a);
-    bkqk.b = bkqk.a;
+    this.a.a.a(paramFloat);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.a.a(paramInt);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    this.a.a.a(paramInt, paramBoolean);
   }
 }
 

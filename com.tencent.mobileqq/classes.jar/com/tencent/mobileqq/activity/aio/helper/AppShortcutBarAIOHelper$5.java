@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import aezp;
+import afee;
 
 public class AppShortcutBarAIOHelper$5
   implements Runnable
 {
-  public AppShortcutBarAIOHelper$5(aezp paramaezp) {}
+  public AppShortcutBarAIOHelper$5(afee paramafee) {}
   
   public void run()
   {

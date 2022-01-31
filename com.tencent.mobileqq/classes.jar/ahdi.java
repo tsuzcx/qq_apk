@@ -1,15 +1,10 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 public final class ahdi
+  implements DialogInterface.OnClickListener
 {
-  public static String a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return "1";
-    }
-    if (paramInt == 1) {
-      return "2";
-    }
-    return "";
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

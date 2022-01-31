@@ -1,13 +1,19 @@
-import SummaryCard.CondFitUser;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface allp
+class allp
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt);
+  allp(alln paramalln) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     allp
  * JD-Core Version:    0.7.0.1
  */

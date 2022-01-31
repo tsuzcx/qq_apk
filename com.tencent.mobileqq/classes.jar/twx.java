@@ -1,40 +1,71 @@
-import android.arch.lifecycle.MutableLiveData;
-import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.qqcircle.fragments.QCircleHybirdFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudCommon.StCommonExt;
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
+import mqq.util.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class twx
-  implements yvn<FeedCloudRead.StGetFeedListRsp>
+public class twx
+  extends BroadcastReceiver
 {
-  twx(twv paramtwv, QCircleGetFeedListRequest paramQCircleGetFeedListRequest, boolean paramBoolean) {}
+  private WeakReference<QCircleHybirdFragment> a;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
+  public twx(QCircleHybirdFragment paramQCircleHybirdFragment)
   {
-    boolean bool = true;
-    QLog.d("QCircleContentModel", 1, "getSingleFeed onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean);
-    yeb localyeb;
-    if (paramStGetFeedListRsp != null)
+    this.a = new WeakReference(paramQCircleHybirdFragment);
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = (QCircleHybirdFragment)this.a.get();
+    Object localObject;
+    if ((paramContext != null) && (paramIntent != null))
     {
-      twv.a(this.jdField_a_of_type_Twv).a(paramStGetFeedListRsp.feedAttchInfo.get());
-      twv.a(this.jdField_a_of_type_Twv).b(paramStGetFeedListRsp.adAttchInfo.get());
-      localyeb = twv.a(this.jdField_a_of_type_Twv);
-      if (paramStGetFeedListRsp.isFinish.get() != 1) {
-        break label227;
+      localObject = paramIntent.getAction();
+      if (!TextUtils.equals((CharSequence)localObject, "action_update_web_user_follow_state")) {
+        break label96;
       }
     }
-    label227:
-    for (paramBoolean = bool;; paramBoolean = false)
+    for (;;)
     {
-      localyeb.a(paramBoolean);
-      if (paramStGetFeedListRsp.extInfo.has()) {
-        this.jdField_a_of_type_Twv.a((FeedCloudCommon.StCommonExt)paramStGetFeedListRsp.extInfo.get());
+      try
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("uin", paramIntent.getStringExtra("uin"));
+        ((JSONObject)localObject).put("followstate", paramIntent.getIntExtra("followstate", 0));
+        if (paramContext.getWebView() != null) {
+          paramContext.getWebView().callJs(WebViewPlugin.toJsScript("updateQCircleFollowState", (JSONObject)localObject, null));
+        }
+        return;
       }
-      twv.a(this.jdField_a_of_type_Twv).postValue(new trw(paramLong, paramString, paramStGetFeedListRsp, this.jdField_a_of_type_Boolean));
-      this.jdField_a_of_type_Twv.a().a(4);
-      return;
+      catch (JSONException paramContext)
+      {
+        paramContext.printStackTrace();
+        return;
+      }
+      label96:
+      if (TextUtils.equals((CharSequence)localObject, "action_update_web_tag_follow_state")) {
+        try
+        {
+          localObject = new JSONObject();
+          ((JSONObject)localObject).put("tagId", paramIntent.getStringExtra("tagId"));
+          ((JSONObject)localObject).put("followstate", paramIntent.getIntExtra("followstate", 0));
+          if (paramContext.getWebView() != null)
+          {
+            paramContext.getWebView().callJs(WebViewPlugin.toJsScript("updateQCircleTagFollowState", (JSONObject)localObject, null));
+            return;
+          }
+        }
+        catch (Exception paramContext)
+        {
+          QLog.e(QCircleHybirdFragment.d(), 1, "update tag follow state error.", paramContext);
+        }
+      }
     }
   }
 }

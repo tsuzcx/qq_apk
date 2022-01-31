@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.event;
 
-import aekt;
+import aepi;
 import android.util.SparseArray;
 import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
@@ -61,7 +61,7 @@ public class ItemShowDispatcher
         }
         catch (RuntimeException paramAbsListView)
         {
-          aekt.a("FastWebActivityCheckAdOutOfBounds", "adPos:" + paramInt4, paramAbsListView);
+          aepi.a("FastWebActivityCheckAdOutOfBounds", "adPos:" + paramInt4, paramAbsListView);
         }
       }
     }
@@ -614,7 +614,7 @@ public class ItemShowDispatcher
         }
         catch (RuntimeException paramAbsListView)
         {
-          aekt.a("FastWebActivityCheckAdOutOfBounds", "adPos:" + paramInt3, paramAbsListView);
+          aepi.a("FastWebActivityCheckAdOutOfBounds", "adPos:" + paramInt3, paramAbsListView);
         }
       }
     }
@@ -645,7 +645,7 @@ public class ItemShowDispatcher
     }
     catch (RuntimeException paramAbsListView)
     {
-      aekt.a("FastWebActivityCheckAdOutOfBounds", "adPos:" + paramInt4, paramAbsListView);
+      aepi.a("FastWebActivityCheckAdOutOfBounds", "adPos:" + paramInt4, paramAbsListView);
     }
     return false;
   }

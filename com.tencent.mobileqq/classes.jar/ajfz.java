@@ -1,39 +1,33 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-class ajfz
-  extends amni
+public class ajfz
 {
-  ajfz(ajfx paramajfx, RecentBaseData paramRecentBaseData, QQAppInterface paramQQAppInterface) {}
+  public int a;
+  public View a;
+  public boolean a;
+  public int b;
   
-  public int a()
+  public ajfz(int paramInt1, int paramInt2)
   {
-    return 5;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public void a(Object paramObject)
+  public static boolean a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentPubAccHelper", 2, "unfollow success");
-    }
-    ajfx.a(this.jdField_a_of_type_Ajfx, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
-    ((bcic)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
-    ajfx.b(this.jdField_a_of_type_Ajfx, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return paramInt >= 2;
   }
   
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
+  public boolean a()
   {
-    ajfx.a(this.jdField_a_of_type_Ajfx, 2131695727);
+    return this.b >= 2;
   }
   
-  public void b(boolean paramBoolean, Object paramObject)
+  public String toString()
   {
-    ajfx.a(this.jdField_a_of_type_Ajfx);
+    StringBuffer localStringBuffer = new StringBuffer(20);
+    localStringBuffer.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.b).append(",").append(this.jdField_a_of_type_Boolean).append(",").append(this.jdField_a_of_type_AndroidViewView).append("]");
+    return localStringBuffer.toString();
   }
 }
 

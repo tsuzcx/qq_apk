@@ -21,13 +21,13 @@ public class obu
       if (paramInt1 == 200)
       {
         if ((TextUtils.equals(str1, "ad_guide_area")) && (!TextUtils.isEmpty(str2))) {
-          bjxj.a("sp_key_ad_soft_total_area", str2.trim());
+          bkbq.a("sp_key_ad_soft_total_area", str2.trim());
         }
         if ((TextUtils.equals(str1, "ad_max_num")) && (!TextUtils.isEmpty(str2))) {
-          bjxj.a("sp_key_ad_soft_ad_max", str2.trim());
+          bkbq.a("sp_key_ad_soft_ad_max", str2.trim());
         }
         if ((TextUtils.equals(str1, "kd_max_num")) && (!TextUtils.isEmpty(str2))) {
-          bjxj.a("sp_key_ad_soft_kd_max", str2.trim());
+          bkbq.a("sp_key_ad_soft_kd_max", str2.trim());
         }
       }
     }
@@ -38,9 +38,9 @@ public class obu
   {
     if (paramInt == 200)
     {
-      bjxj.a("sp_key_ad_soft_total_area", "0");
-      bjxj.a("sp_key_ad_soft_ad_max", "25");
-      bjxj.a("sp_key_ad_soft_kd_max", "25");
+      bkbq.a("sp_key_ad_soft_total_area", "0");
+      bkbq.a("sp_key_ad_soft_ad_max", "25");
+      bkbq.a("sp_key_ad_soft_kd_max", "25");
     }
   }
 }

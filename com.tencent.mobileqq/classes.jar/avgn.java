@@ -1,29 +1,6 @@
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
-
-class avgn
-  implements URLDrawable.URLDrawableListener
+public abstract interface avgn
 {
-  avgn(avgk paramavgk) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = paramURLDrawable.getCurrDrawable();
-    if ((paramURLDrawable instanceof RegionDrawable))
-    {
-      paramURLDrawable = ((RegionDrawable)paramURLDrawable).getBitmap();
-      avgk.a(this.a).setImageBitmap(paramURLDrawable);
-      avgk.a(this.a).setVisibility(0);
-    }
-  }
+  public abstract void a(avgi paramavgi);
 }
 
 

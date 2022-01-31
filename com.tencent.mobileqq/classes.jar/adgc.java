@@ -1,30 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.30.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class adgc
-  implements DialogInterface.OnClickListener
+  extends avva
 {
-  public adgc(NotificationActivity paramNotificationActivity) {}
+  public adgc(Leba paramLeba) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    QLog.i("NotificationActivity", 1, "setNegativeButton.onClick: invoked.  isDialogShow: " + NotificationActivity.a(this.a));
-    paramDialogInterface = new Intent("qqplayer_exit_action");
-    this.a.sendBroadcast(paramDialogInterface);
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("password", null);
-    this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
-    this.a.finish();
+    if ((!paramBoolean1) || (paramInt == 2)) {}
+    for (;;)
+    {
+      return;
+      if (Leba.b(this.a))
+      {
+        ArrayList localArrayList = new ArrayList();
+        alvr.a(localArrayList, aieq.a().a(this.a.a));
+        this.a.a(new Leba.30.1(this, localArrayList));
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.i("Q.lebatab.leba", 2, "onGameCenterMsgReceive, " + Leba.c(this.a));
+        return;
+        aieq.a |= 0x2;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adgc
  * JD-Core Version:    0.7.0.1
  */

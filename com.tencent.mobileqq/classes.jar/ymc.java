@@ -1,16 +1,16 @@
-import android.widget.ProgressBar;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ymc
+class ymc
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ProgressBar jdField_b_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
+  ymc(ymb paramymb, ymm paramymm, String paramString, bhuf parambhuf) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Ymm.a(false, this.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_Bhuf.dismiss();
+  }
 }
 
 

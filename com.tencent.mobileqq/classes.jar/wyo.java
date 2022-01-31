@@ -1,78 +1,46 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.EditPicSave.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class wyo
-  extends bdvu
+  extends SimpleObserver<xlb>
 {
-  public wyo(ArtFilterManager paramArtFilterManager) {}
+  wyo(wym paramwym) {}
   
-  public void onDone(bdvv parambdvv)
+  public void a(xlb paramxlb)
   {
-    long l2 = -1L;
-    super.onDone(parambdvv);
-    Object localObject2 = parambdvv.a();
-    if (localObject2 == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArtFilterManager", 2, "download bundle null");
-      }
-    }
-    String str;
-    Object localObject1;
-    do
+    super.onNext(paramxlb);
+    this.a.a(40);
+    paramxlb = paramxlb.a.b;
+    wxe.b("EditPicSave", "picPath = " + paramxlb);
+    if (this.a.jdField_a_of_type_Xby.getActivity() != null)
     {
-      return;
-      str = ((Bundle)localObject2).getString("url");
-      localObject1 = ((Bundle)localObject2).getString("md5");
-      localObject2 = ((Bundle)localObject2).getString("path");
-      if ((str != null) && (localObject1 != null) && (localObject2 != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ArtFilterManager", 2, "download bundle parms null");
-    return;
-    if (parambdvv.a == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArtFilterManager", 2, "[onDone] download finished " + str);
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        this.a.a((String)localObject2);
-      }
+      ThreadManager.post(new EditPicSave.2.1(this, paramxlb), 5, this.a.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
+      this.a.jdField_a_of_type_Int = 40;
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.b = 10;
+      this.a.f();
     }
-    for (;;)
-    {
-      localObject1 = (bavr)ArtFilterManager.a(this.a).getManager(193);
-      localObject2 = new File((String)localObject2);
-      long l1 = l2;
-      if (parambdvv.a == 0)
-      {
-        l1 = l2;
-        if (((File)localObject2).exists()) {
-          l1 = ((File)localObject2).length();
-        }
-      }
-      ((bavr)localObject1).a(str, l1);
-      return;
-      if (((String)localObject1).equalsIgnoreCase(this.a.a((String)localObject2)))
-      {
-        this.a.a((String)localObject2);
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArtFilterManager", 2, "[onDone] checkMd5 failed: " + (String)localObject2);
-        }
-        bdcs.d((String)localObject2);
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("ArtFilterManager", 2, "[onDone] downloadFile failed: " + parambdvv.a);
-        }
-      }
-    }
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    wxe.d("EditPicSave", "saveVideo cancel !");
+    this.a.jdField_a_of_type_Xan.a(0);
+    this.a.g();
+    QQToast.a(this.a.jdField_a_of_type_Xby.a(), alud.a(2131704083), 0).a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    wxe.e("EditPicSave", "saveVideo error ：" + paramError);
+    this.a.jdField_a_of_type_Xan.a(0);
+    QQToast.a(this.a.jdField_a_of_type_Xby.a(), 1, alud.a(2131704084) + paramError, 0).a();
+    this.a.g();
   }
 }
 

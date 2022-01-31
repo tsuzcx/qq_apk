@@ -1,50 +1,27 @@
-import java.util.HashMap;
-import org.xml.sax.Attributes;
-import org.xml.sax.Locator;
-import org.xml.sax.helpers.DefaultHandler;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.widget.QQBlurView;
 
 class ahac
-  extends DefaultHandler
+  implements View.OnAttachStateChangeListener
 {
   ahac(ahab paramahab) {}
   
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
+  public void onViewAttachedToWindow(View paramView) {}
   
-  public void endDocument() {}
-  
-  public void endElement(String paramString1, String paramString2, String paramString3) {}
-  
-  public void endPrefixMapping(String paramString) {}
-  
-  public void ignorableWhitespace(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
-  
-  public void processingInstruction(String paramString1, String paramString2) {}
-  
-  public void setDocumentLocator(Locator paramLocator) {}
-  
-  public void skippedEntity(String paramString) {}
-  
-  public void startDocument() {}
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  public void onViewDetachedFromWindow(View paramView)
   {
-    if (paramString3.equals("config")) {
-      this.a.a.clear();
+    if (ahab.a(this.a) != null) {
+      ahab.a(this.a).d();
     }
-    while (!paramString3.equals("value")) {
-      return;
-    }
-    int i = Integer.parseInt(paramAttributes.getValue("termType"));
-    try
+    if (ahab.a(this.a) != null)
     {
-      int j = Integer.parseInt(paramAttributes.getValue("icon"));
-      this.a.a.put(Integer.valueOf(i), Integer.valueOf(j));
-      return;
+      ahab.a(this.a).c();
+      ahab.a(this.a, null);
     }
-    catch (Exception paramString1) {}
+    ahab.a(this.a).removeOnAttachStateChangeListener(this);
   }
-  
-  public void startPrefixMapping(String paramString1, String paramString2) {}
 }
 
 

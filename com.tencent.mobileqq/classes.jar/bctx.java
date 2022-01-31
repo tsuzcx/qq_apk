@@ -1,17 +1,15 @@
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
+import android.content.Context;
+import android.view.View;
 
 public class bctx
+  extends ahkz
 {
-  public long a;
-  public ResultReceiver a;
-  public bctw a;
-  public String a;
-  public long b;
-  public String b;
-  private long c;
+  public bcty a;
   
-  public bctx(SnapshotService paramSnapshotService) {}
+  public bctx(Context paramContext, View paramView)
+  {
+    super(paramContext, paramView);
+  }
 }
 
 

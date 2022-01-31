@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import alpo;
+import alud;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import azbx;
+import azgg;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.EffectOperateManager;
@@ -74,8 +74,8 @@ public class EffectToolbar
     localArrayList.add(localObject);
     localObject = new mkj();
     ((mkj)localObject).jdField_a_of_type_JavaLangString = "0";
-    ((mkj)localObject).b = String.valueOf(2130841837);
-    ((mkj)localObject).d = alpo.a(2131704372);
+    ((mkj)localObject).b = String.valueOf(2130841850);
+    ((mkj)localObject).d = alud.a(2131704384);
     localArrayList.add(localObject);
     this.mPtvTemplateInfoMap.clear();
     localObject = this.mPendantManager.a(null);
@@ -86,7 +86,7 @@ public class EffectToolbar
       if ((!bool) || (AEFilterSupport.a())) {
         break label284;
       }
-      bool = azbx.a().c();
+      bool = azgg.a().c();
     }
     label284:
     for (;;)
@@ -250,9 +250,9 @@ public class EffectToolbar
   
   private void updateEarbackBtn()
   {
-    int i = 2130841950;
+    int i = 2130841963;
     if (this.mApp.a().a().az) {
-      i = 2130841951;
+      i = 2130841964;
     }
     this.mEarbackBtn.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
   }
@@ -263,9 +263,9 @@ public class EffectToolbar
     {
       this.mUIInfo = new mej();
       this.mUIInfo.d = 1;
-      this.mUIInfo.f = 2131559641;
-      this.mUIInfo.e = 2130841929;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131696385);
+      this.mUIInfo.f = 2131559640;
+      this.mUIInfo.e = 2130841942;
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131696387);
     }
     return this.mUIInfo;
   }
@@ -273,7 +273,7 @@ public class EffectToolbar
   public String getUnableInfo()
   {
     if (this.mActivity.get() != null) {
-      return ((AVActivity)this.mActivity.get()).getResources().getString(2131695933);
+      return ((AVActivity)this.mActivity.get()).getResources().getString(2131695935);
     }
     return "";
   }
@@ -324,7 +324,7 @@ public class EffectToolbar
   {
     this.mPendantManager = ((lkt)this.mApp.a(2));
     this.mObserver = new mfy(this);
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131367793));
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131367803));
     this.mListView.setStayDisplayOffsetZero(true);
     this.mTemplateList = addItem_with_Double_Video_type();
     this.mAdapter = new mjk(this.mApp, paramAVActivity, this.mTemplateList, this.mListView);
@@ -333,7 +333,7 @@ public class EffectToolbar
     this.mAdapter.a(this);
     this.mListView.setAdapter(this.mAdapter);
     setLastItem();
-    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131364101));
+    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131364103));
     this.mEarbackBtn.setOnClickListener(this);
     lkp.c();
   }

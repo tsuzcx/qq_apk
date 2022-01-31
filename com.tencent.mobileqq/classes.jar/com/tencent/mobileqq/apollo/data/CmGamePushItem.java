@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import java.io.Serializable;
 
 public class CmGamePushItem
-  extends awbv
+  extends awge
   implements Serializable
 {
   public static final int CMGAME_PUSH_FRAMEWORK_PROMOTION = 1;
@@ -15,7 +15,7 @@ public class CmGamePushItem
   public int end_ts;
   public boolean isShow;
   public int is_show_red;
-  @awdj
+  @awhs
   public String msg_id;
   public int msg_type;
   public int send_time;

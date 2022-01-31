@@ -1,28 +1,80 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
+import android.view.View;
 
-class wqt
-  extends SimpleJob<Object>
+public abstract class wqt
+  implements wqu
 {
-  wqt(wqs paramwqs, String paramString, StoryVideoItem paramStoryVideoItem, List paramList)
+  protected Activity a;
+  
+  public Activity a()
   {
-    super(paramString);
+    return this.a;
   }
   
-  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
+  public View a(int paramInt)
   {
-    synchronized (wqs.a(this.jdField_a_of_type_Wqs))
-    {
-      this.jdField_a_of_type_Wqs.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
-      this.jdField_a_of_type_Wqs.jdField_a_of_type_Wqu = new wqu(this.jdField_a_of_type_Wqs.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-      this.jdField_a_of_type_Wqs.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-      this.jdField_a_of_type_Wqs.b();
-      return null;
+    Activity localActivity = this.a;
+    if (localActivity != null) {
+      return localActivity.findViewById(paramInt);
     }
+    wxe.e(getClass().getSimpleName(), "findViewById can not access after detach");
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    Activity localActivity = this.a;
+    if (localActivity != null)
+    {
+      localActivity.setContentView(paramInt);
+      return;
+    }
+    wxe.e(getClass().getSimpleName(), "setContentView can not access after detach");
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(int paramInt, Intent paramIntent)
+  {
+    Activity localActivity = this.a;
+    if (localActivity != null)
+    {
+      localActivity.setResult(paramInt, paramIntent);
+      return;
+    }
+    wxe.e(getClass().getSimpleName(), "finish can not access after detach");
+  }
+  
+  public void a(@NonNull Activity paramActivity)
+  {
+    this.a = paramActivity;
+  }
+  
+  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    this.a = null;
+  }
+  
+  public void e()
+  {
+    Activity localActivity = this.a;
+    if (localActivity != null)
+    {
+      localActivity.finish();
+      return;
+    }
+    wxe.e(getClass().getSimpleName(), "finish can not access after detach");
   }
 }
 

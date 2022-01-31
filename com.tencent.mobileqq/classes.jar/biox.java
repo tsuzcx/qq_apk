@@ -1,36 +1,27 @@
-import android.app.Dialog;
-import android.view.Window;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.gmersdk_warper.GMEAVEngineWalper.2.1;
 
 public class biox
+  implements bipf
 {
-  private static void b(String paramString)
+  biox(biov parambiov) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    Dialog localDialog = new Dialog(BaseApplicationImpl.getApplication(), 2131755801);
-    localDialog.getWindow().setType(2003);
-    localDialog.setContentView(2131558920);
-    TextView localTextView = (TextView)localDialog.findViewById(2131365235);
-    if (localTextView != null) {
-      localTextView.setText("dump文件保存地址");
+    if (paramInt == 0) {
+      QLog.e("AVEngineWalper", 1, "enter room successfully!!!");
     }
-    localTextView = (TextView)localDialog.findViewById(2131365231);
-    if ((localTextView != null) && (paramString != null)) {
-      localTextView.setText(paramString);
-    }
-    localTextView = (TextView)localDialog.findViewById(2131365220);
-    if (localTextView != null)
+    for (;;)
     {
-      localTextView.setText(2131690648);
-      localTextView.setOnClickListener(new bioz(localDialog));
+      if (this.a.a != null) {
+        this.a.a.b(paramInt, paramString);
+      }
+      new Handler(Looper.getMainLooper()).postDelayed(new GMEAVEngineWalper.2.1(this), 500L);
+      return;
+      QLog.e("AVEngineWalper", 1, "enter room failed. result=" + paramInt + ", errorInfo=" + paramString);
     }
-    localTextView = (TextView)localDialog.findViewById(2131365226);
-    if (localTextView != null)
-    {
-      localTextView.setText(2131691602);
-      localTextView.setOnClickListener(new bipa(localDialog, paramString));
-    }
-    localDialog.show();
   }
 }
 

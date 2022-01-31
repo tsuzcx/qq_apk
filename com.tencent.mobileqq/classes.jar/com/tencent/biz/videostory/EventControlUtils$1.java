@@ -1,12 +1,12 @@
 package com.tencent.biz.videostory;
 
 import java.util.TimerTask;
-import ytf;
+import yxu;
 
 public final class EventControlUtils$1
   extends TimerTask
 {
-  public EventControlUtils$1(ytf paramytf) {}
+  public EventControlUtils$1(yxu paramyxu) {}
   
   public void run()
   {

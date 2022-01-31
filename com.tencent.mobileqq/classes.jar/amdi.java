@@ -1,7 +1,13 @@
+import com.tencent.common.app.AppInterface;
+import java.util.List;
+
 public class amdi
+  implements alpf
 {
-  public int a;
-  public String a;
+  public List<String> a(AppInterface paramAppInterface)
+  {
+    return null;
+  }
 }
 
 

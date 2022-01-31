@@ -4,9 +4,9 @@ import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImage
 public class pxw
   extends pxv
 {
-  public pxw(Context paramContext, bcws parambcws, rqj paramrqj)
+  public pxw(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl g()

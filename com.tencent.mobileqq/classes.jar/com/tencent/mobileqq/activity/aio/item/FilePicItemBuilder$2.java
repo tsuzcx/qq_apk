@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afhq;
+import afmf;
 
 public class FilePicItemBuilder$2
   implements Runnable
 {
-  public FilePicItemBuilder$2(afhq paramafhq) {}
+  public FilePicItemBuilder$2(afmf paramafmf) {}
   
   public void run()
   {

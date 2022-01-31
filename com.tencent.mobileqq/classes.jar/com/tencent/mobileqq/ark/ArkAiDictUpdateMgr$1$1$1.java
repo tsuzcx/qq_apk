@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ark;
 
-import anid;
-import anie;
+import anmm;
+import anmn;
 
 public class ArkAiDictUpdateMgr$1$1$1
   implements Runnable
 {
-  public ArkAiDictUpdateMgr$1$1$1(anie paramanie) {}
+  public ArkAiDictUpdateMgr$1$1$1(anmn paramanmn) {}
   
   public void run()
   {

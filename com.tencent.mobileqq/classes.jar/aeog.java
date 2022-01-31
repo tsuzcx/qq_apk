@@ -1,39 +1,17 @@
-import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
 
-class aeog
-  implements bhqd
+public class aeog
+  implements View.OnClickListener
 {
-  aeog(aenv paramaenv, String paramString) {}
+  public aeog(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    aenv.a(this.jdField_a_of_type_Aenv).dismiss();
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        aenv.a(this.jdField_a_of_type_Aenv, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (aenv.a(this.jdField_a_of_type_Aenv))
-      {
-        aenv.b(this.jdField_a_of_type_Aenv);
-        return;
-      }
-      aenv.c(this.jdField_a_of_type_Aenv);
-      return;
-    } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-    if (aenv.a(this.jdField_a_of_type_Aenv))
-    {
-      aenv.b(this.jdField_a_of_type_Aenv);
-      return;
-    }
-    aenv.c(this.jdField_a_of_type_Aenv);
+    azqs.b(this.a.app, "CliOper", "", "", "0X8004E0A", "0X8004E0A", 0, 0, "", "", "", "");
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 

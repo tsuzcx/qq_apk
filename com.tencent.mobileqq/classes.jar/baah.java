@@ -1,22 +1,26 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
 
 public class baah
-  extends azyx
+  extends aiue
 {
-  protected SpriteGLView a;
-  
-  public azzd a()
+  public baah(CountdownTextView paramCountdownTextView, long paramLong, baai parambaai)
   {
-    return this.a;
+    super(paramLong);
   }
   
-  public void aP_() {}
-  
-  public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
+  public void b()
   {
-    this.e = paramInt1;
-    this.f = paramInt2;
-    b();
+    if (this.jdField_a_of_type_Baai != null) {
+      this.jdField_a_of_type_Baai.a();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.a();
+  }
+  
+  public void b(long paramLong)
+  {
+    if (this.jdField_a_of_type_Baai != null) {
+      this.jdField_a_of_type_Baai.a(paramLong);
+    }
   }
 }
 

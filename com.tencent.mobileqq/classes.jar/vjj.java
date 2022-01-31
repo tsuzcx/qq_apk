@@ -1,15 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class vjj
-  implements View.OnTouchListener
+class vjj
+  extends vim
 {
-  public vjj(StoryPlayerFragment paramStoryPlayerFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  vjj(vji paramvji, StoryVideoItem paramStoryVideoItem, vko paramvko)
   {
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Vko.a = ((String)a("result"));
     return true;
   }
 }

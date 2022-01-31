@@ -16,14 +16,14 @@ public class ryw
       if (FastWebActivity.a(this.a).getVisibility() == 0) {
         break label55;
       }
-      FastWebActivity.a(this.a).setImageResource(2130848864);
+      FastWebActivity.a(this.a).setImageResource(2130848937);
     }
     for (;;)
     {
       FastWebActivity.h(this.a);
       return;
       label55:
-      FastWebActivity.a(this.a).setImageResource(2130848918);
+      FastWebActivity.a(this.a).setImageResource(2130848991);
     }
   }
 }

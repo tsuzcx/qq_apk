@@ -1,48 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.LayoutParams;
+import java.util.Comparator;
 
 public class vvx
-  extends QQUIEventReceiver<vvu, vpi>
+  implements Comparator<View>
 {
-  private WeakReference<vvb> a;
-  
-  public vvx(@NonNull vvu paramvvu)
+  public int a(View paramView1, View paramView2)
   {
-    super(paramvvu);
-  }
-  
-  public void a(vvb paramvvb)
-  {
-    this.a = new WeakReference(paramvvb);
-  }
-  
-  public void a(@NonNull vvu paramvvu, @NonNull vpi paramvpi)
-  {
-    if (paramvpi.jdField_a_of_type_Boolean) {
-      if ((paramvpi.jdField_a_of_type_JavaLangString != null) && (this.a != null))
-      {
-        paramvvu = (vvb)this.a.get();
-        if (paramvvu != null) {
-          paramvvu.b(paramvpi.jdField_a_of_type_JavaLangString);
-        }
-      }
-    }
-    do
+    paramView1 = (XViewPager.LayoutParams)paramView1.getLayoutParams();
+    paramView2 = (XViewPager.LayoutParams)paramView2.getLayoutParams();
+    if (paramView1.a != paramView2.a)
     {
-      do
-      {
-        return;
-        wsv.e(this.TAG, "StoryVideoDownloadResultReceiver, onEvent download failed, vid:%s", new Object[] { paramvpi.jdField_a_of_type_JavaLangString });
-      } while (this.a == null);
-      paramvvu = (vvb)this.a.get();
-    } while (paramvvu == null);
-    paramvvu.d();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vpi.class;
+      if (paramView1.a) {
+        return 1;
+      }
+      return -1;
+    }
+    return paramView1.b - paramView2.b;
   }
 }
 

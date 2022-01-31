@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-class bkng
-  implements DialogInterface.OnClickListener
+public class bkng
+  implements CosFunHelper.CountDownListener
 {
-  bkng(bknd parambknd) {}
+  public bkng(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCountDownEnd()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
-    if (((bkml)this.a.a.get()).b != null) {
-      ((bkml)this.a.a.get()).b.setClickable(true);
-    }
+    QIMEffectCameraCaptureUnit.a(this.a);
+  }
+  
+  public void onCountDownStart(VideoMaterial paramVideoMaterial)
+  {
+    QIMEffectCameraCaptureUnit.a(this.a, paramVideoMaterial.getTipsDrawable());
   }
 }
 

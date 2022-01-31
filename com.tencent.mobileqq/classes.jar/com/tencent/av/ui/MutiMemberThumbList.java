@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -27,7 +27,7 @@ public class MutiMemberThumbList
   private final String jdField_a_of_type_JavaLangString = "%d名成员被邀请";
   private final ArrayList<lfu> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private volatile boolean jdField_a_of_type_Boolean;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 2131372735, 2131372736, 2131372737, 2131372738, 2131372739, 2131372740, 2131372741 };
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131372761, 2131372762, 2131372763, 2131372764, 2131372765, 2131372766, 2131372767 };
   private int jdField_b_of_type_Int = -1;
   private long jdField_b_of_type_Long = -1L;
   private final String jdField_b_of_type_JavaLangString = "%d+";
@@ -57,7 +57,7 @@ public class MutiMemberThumbList
   
   private void b()
   {
-    addView(LayoutInflater.from(getContext()).inflate(2131559595, null));
+    addView(LayoutInflater.from(getContext()).inflate(2131559594, null));
     this.jdField_a_of_type_Boolean = false;
   }
   
@@ -105,7 +105,7 @@ public class MutiMemberThumbList
   
   public void setMoreInfoDrawableColor(String paramString)
   {
-    int i = aekt.a(32.0F, getResources());
+    int i = aepi.a(32.0F, getResources());
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable();
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setShape(1);
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(Color.parseColor(paramString));

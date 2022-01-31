@@ -1,45 +1,50 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import java.util.List;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
 
-public class wlp
-  extends uhw<wli, wev>
+class wlp
+  extends vii
 {
-  public wlp(wli paramwli)
+  wlp(wln paramwln) {}
+  
+  public void a()
   {
-    super(paramwli);
+    super.a();
+    StoryMemoriesFragment.a(this.a.a, null);
   }
   
-  public void a(@NonNull wli paramwli, @NonNull wev paramwev)
+  public void a(int paramInt)
   {
-    Object localObject = paramwli.a(paramwev.jdField_a_of_type_JavaLangString);
-    if (localObject == null)
+    super.a(paramInt);
+    boolean bool = QQStoryContext.a().b(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
+    int i;
+    int j;
+    String str1;
+    if (StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVip)
     {
-      wsv.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramwev.jdField_a_of_type_JavaLangString });
+      i = 1;
+      j = StoryMemoriesFragment.a(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_Int);
+      if (!bool) {
+        break label124;
+      }
+      str1 = "1";
+      label76:
+      if (i != 1) {
+        break label131;
+      }
+    }
+    label131:
+    for (String str2 = "1";; str2 = "2")
+    {
+      wxj.a("memory", "share_suc", j, paramInt, new String[] { str1, str2, "", "" });
       return;
+      i = 0;
+      break;
+      label124:
+      str1 = "2";
+      break label76;
     }
-    if (!(localObject instanceof wmg))
-    {
-      wsv.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramwev.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    localObject = (wmg)localObject;
-    if (paramwev.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      ((wmg)localObject).c(paramwev.jdField_a_of_type_JavaUtilList, false);
-      ((VideoListFeedItem)((wmg)localObject).a).updateVideoInfo(paramwev.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
-      wsv.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video update after count:%d", paramwev.jdField_a_of_type_JavaLangString, Integer.valueOf(((wmg)localObject).a().size()));
-    }
-    wli.a(paramwli).a((wmg)localObject);
   }
-  
-  public Class acceptEventClass()
-  {
-    return wev.class;
-  }
-  
-  public void b(@NonNull wli paramwli, @NonNull wev paramwev) {}
 }
 
 

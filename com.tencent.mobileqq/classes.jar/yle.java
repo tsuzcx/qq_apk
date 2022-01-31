@@ -1,6 +1,16 @@
-public abstract interface yle
+import com.tencent.biz.subscribe.utils.AnimationDrawableFactory.2;
+import java.io.File;
+import java.util.Comparator;
+
+public class yle
+  implements Comparator<File>
 {
-  public abstract void a(String paramString1, String paramString2);
+  public yle(AnimationDrawableFactory.2 param2) {}
+  
+  public int a(File paramFile1, File paramFile2)
+  {
+    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
+  }
 }
 
 

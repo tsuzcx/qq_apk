@@ -153,27 +153,27 @@ public class tks
       int k;
       if (localObject == null)
       {
-        k = ydg.a(str);
+        k = yhp.a(str);
         paramCallback = (Drawable.Callback)localObject;
         if (k > -1)
         {
           paramCallback = (Drawable.Callback)localObject;
-          if (k < ydg.b.length) {
-            paramCallback = ycw.a(k, BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density, BaseApplicationImpl.getContext(), null);
+          if (k < yhp.b.length) {
+            paramCallback = yhf.a(k, BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density, BaseApplicationImpl.getContext(), null);
           }
         }
       }
       localObject = paramCallback;
       if (paramCallback == null)
       {
-        k = ydg.c(str);
+        k = yhp.c(str);
         tlo.b("emotion", "emotion code:" + str + ",index:" + k);
         localObject = paramCallback;
         if (k > -1)
         {
           localObject = paramCallback;
-          if (k < ydg.c.length) {
-            localObject = ycw.b(k, BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density, BaseApplicationImpl.getContext(), null);
+          if (k < yhp.c.length) {
+            localObject = yhf.b(k, BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density, BaseApplicationImpl.getContext(), null);
           }
         }
       }

@@ -1,161 +1,127 @@
-import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.search.activity.MessageSearchDetailActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class ayjp
-  extends ayjm
+public abstract class ayjp<M extends aynr, V extends aywb>
+  extends ayjo<M, V>
 {
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private FullMessageSearchResult.SearchResultItem jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private String jdField_a_of_type_JavaLangString;
-  private CharSequence jdField_b_of_type_JavaLangCharSequence;
+  private List<aynx> jdField_a_of_type_JavaUtilList;
+  private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString;
+  private int c;
+  private int d;
+  private int e;
   
-  public ayjp(QQAppInterface paramQQAppInterface, String paramString, FullMessageSearchResult.SearchResultItem paramSearchResultItem)
+  public ayjp(ListView paramListView, bdbb parambdbb, FullMessageSearchResult.SearchResultItem paramSearchResultItem, String paramString, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem = paramSearchResultItem;
-    int i;
-    if (paramSearchResultItem.user.getType() == 3000)
-    {
-      i = ((almv)paramQQAppInterface.getManager(53)).a(paramSearchResultItem.user.uin);
-      if (i <= 0) {
-        this.jdField_b_of_type_JavaLangString = "";
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_b_of_type_JavaLangString = String.valueOf(i);
-  }
-  
-  public CharSequence a()
-  {
-    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
-      this.jdField_a_of_type_JavaLangCharSequence = bdbt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.uin, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType());
-    }
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(View paramView)
-  {
-    aydx localaydx;
-    QQAppInterface localQQAppInterface;
-    JSONObject localJSONObject;
-    if (((paramView.getContext() instanceof UniteSearchActivity)) && (aydw.b.containsKey(this)))
-    {
-      localaydx = (aydx)aydw.b.get(this);
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localJSONObject = new JSONObject();
-    }
+    super(paramListView, parambdbb);
     try
     {
-      localJSONObject.put("project", aynt.a());
-      localJSONObject.put("event_src", "client");
-      localJSONObject.put("obj_lct", localaydx.jdField_a_of_type_Int);
-      localJSONObject.put("get_src", "native");
-      aynt.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localaydx.jdField_a_of_type_Long + "").obj2(localaydx.jdField_b_of_type_JavaLangString).ver1(localaydx.jdField_a_of_type_JavaLangString).ver2(aynt.a(UniteSearchActivity.d)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + aydw.jdField_a_of_type_Long));
-      if (this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.size() == 1)
-      {
-        ajgm.jdField_a_of_type_Boolean = true;
-        ajgm.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = (MessageRecord)this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageList.get(0);
-        ajgm.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.uin, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType(), bdbt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.uin, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType()), false);
-        alxr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-        ayrd.a(this.jdField_a_of_type_JavaLangString, 40, paramView, false);
-        ayrd.a(this.jdField_a_of_type_JavaLangString, 40, 0, paramView);
-        return;
-      }
+      this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem = paramSearchResultItem;
+      this.jdField_a_of_type_JavaLangString = paramSearchResultItem.user.uin;
+      this.e = paramSearchResultItem.user.getType();
+      this.jdField_b_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      return;
     }
-    catch (JSONException localJSONException)
+    catch (NullPointerException paramListView)
     {
       for (;;)
       {
-        QLog.e("MessageSearchResultModel", 2, "e = " + localJSONException);
-        continue;
-        MessageSearchDetailActivity.a(paramView.getContext(), a(), this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem);
+        QLog.e("Q.uniteSearch.BaseMvpAdapter", 1, new Object[] { "BaseMvpMessageAdapter init e:", paramListView.toString() });
       }
     }
   }
   
-  public boolean a()
+  private void a(MessageRecord paramMessageRecord)
   {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType() == 3000) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
-      return ayrd.a(this.jdField_b_of_type_JavaLangString);
-    }
-    return "";
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.uin;
-  }
-  
-  public int c()
-  {
-    switch (this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType())
+    if (paramMessageRecord.msgtype == -2011)
     {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageSearchResultModel", 2, "Face type is illegal. type = " + this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType());
-      }
-    case 0: 
-      return 1;
-    case 1: 
-      return 4;
-    }
-    return 101;
-  }
-  
-  public CharSequence c()
-  {
-    int i;
-    if (this.jdField_b_of_type_JavaLangCharSequence == null)
-    {
-      i = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.size();
-      if (i != 1) {
-        break label60;
+      AbsStructMsg localAbsStructMsg = azvd.a(paramMessageRecord.msgData);
+      if ((localAbsStructMsg != null) && ((localAbsStructMsg instanceof AbsShareMsg)))
+      {
+        paramMessageRecord.msg = ((AbsShareMsg)localAbsStructMsg).mContentTitle;
+        if ((TextUtils.isEmpty(paramMessageRecord.msg)) && ((localAbsStructMsg instanceof AbsStructMsg))) {
+          paramMessageRecord.msg = ((AbsShareMsg)localAbsStructMsg).mMsgBrief;
+        }
       }
     }
-    label60:
-    SpannableStringBuilder localSpannableStringBuilder;
-    for (this.jdField_b_of_type_JavaLangCharSequence = ayrd.a(((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageList.get(0)).msg, this.jdField_a_of_type_JavaLangString);; this.jdField_b_of_type_JavaLangCharSequence = localSpannableStringBuilder)
-    {
-      return this.jdField_b_of_type_JavaLangCharSequence;
-      localSpannableStringBuilder = new SpannableStringBuilder(i + alpo.a(2131707045) + "\"");
-      localSpannableStringBuilder.append(ayrd.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString));
-      localSpannableStringBuilder.append("\"").append("相关记录");
+  }
+  
+  private void b()
+  {
+    if ((this.d - this.c == this.jdField_b_of_type_Int) && (this.jdField_a_of_type_Int == 0)) {
+      a();
     }
   }
   
-  public CharSequence d()
+  public void a()
   {
-    return null;
+    label177:
+    for (;;)
+    {
+      try
+      {
+        int j = this.jdField_a_of_type_JavaUtilList.size();
+        int i;
+        if (j + 50 < this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.size())
+        {
+          i = j + 50;
+          if (j < i)
+          {
+            MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.e, ((Long)this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.get(j)).longValue());
+            if (localMessageRecord == null) {
+              break label177;
+            }
+            a(localMessageRecord);
+            if (localMessageRecord.msg == null) {
+              break label177;
+            }
+            this.jdField_a_of_type_JavaUtilList.add(new aynx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user, localMessageRecord));
+            break label177;
+          }
+        }
+        else
+        {
+          i = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.size();
+          continue;
+        }
+        j += 1;
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        QLog.e("Q.uniteSearch.BaseMvpAdapter", 1, new Object[] { "initData e:", localNullPointerException.toString() });
+        super.a(this.jdField_a_of_type_JavaUtilList);
+        return;
+      }
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.c = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.d = paramInt3;
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    super.onScrollStateChanged(paramAbsListView, paramInt);
+    b();
   }
 }
 

@@ -1,20 +1,16 @@
-public class aznq
-  extends aznp
+public abstract class aznq
 {
-  public long c = 0L;
-  boolean e = false;
-  public int j = 80;
-  public int k = 70;
-  public int l = 5;
-  public int m;
+  public Object a;
+  public boolean a;
   
-  public aznq(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  protected aznq(Object paramObject)
   {
-    super(paramFloat1, paramInt1, paramInt2, paramFloat2, paramInt3, paramInt4, paramInt5, paramInt6, false);
-    this.l = (paramInt1 % 1000);
-    this.k = (paramInt1 / 1000 % 1000);
-    this.j = (paramInt1 / 1000 / 1000 % 1000);
+    this.a = paramObject;
   }
+  
+  protected abstract void a();
+  
+  protected abstract void a(aznp paramaznp);
 }
 
 

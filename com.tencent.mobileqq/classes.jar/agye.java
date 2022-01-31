@@ -1,16 +1,72 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.Properties;
+import android.content.Context;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-public class agye
+public abstract class agye
+  implements agxz
 {
-  public static void a(String paramString, Properties paramProperties)
+  public URLDrawable.URLDrawableOptions a()
   {
-    azly.a(VideoEnvironment.a()).reportKVEvent(paramString, paramProperties);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mExtraInfo = this;
+    return localURLDrawableOptions;
   }
   
-  public static void a(String paramString, Properties paramProperties, int paramInt)
+  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
-    azly.a(VideoEnvironment.a()).reportTimeKVEvent(paramString, paramProperties, paramInt);
+    if (paramURL == null) {
+      return null;
+    }
+    paramURL = URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
+    paramURL.setTag(new int[] { 0, 0, (int)paramURLDrawableOptions.mGifRoundCorner });
+    return paramURL;
+  }
+  
+  public URL a()
+  {
+    try
+    {
+      URL localURL1 = new URL("sticker_recommended_pic", "fromAIO", ((agyp)this).f());
+      if (localURL1 == null)
+      {
+        QLog.e("SimpleRemoteEmoticon", 1, "getURL url = null");
+        return null;
+      }
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      URL localURL2;
+      for (;;)
+      {
+        QLog.e("SimpleRemoteEmoticon", 1, "getURL create url exception e = " + localMalformedURLException.getMessage());
+        localURL2 = null;
+      }
+      return localURL2;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface) {}
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public String c()
+  {
+    return "z-";
   }
 }
 

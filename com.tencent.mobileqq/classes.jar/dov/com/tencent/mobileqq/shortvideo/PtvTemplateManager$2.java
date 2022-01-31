@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bdcs;
+import bdhb;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -9,7 +9,7 @@ final class PtvTemplateManager$2
 {
   public void run()
   {
-    bdcs.a(PtvTemplateManager.a.getPath() + File.separator, this.a, this.b);
+    bdhb.a(PtvTemplateManager.a.getPath() + File.separator, this.a, this.b);
     if (QLog.isColorLevel()) {
       QLog.i("PtvTemplateManager", 2, "save Config to file finish.");
     }

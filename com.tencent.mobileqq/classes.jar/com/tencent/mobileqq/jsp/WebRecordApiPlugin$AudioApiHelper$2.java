@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.jsp;
 
-import atfv;
-import bczr;
+import atke;
+import bdea;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,7 +11,7 @@ import java.util.Date;
 public class WebRecordApiPlugin$AudioApiHelper$2
   implements Runnable
 {
-  public WebRecordApiPlugin$AudioApiHelper$2(atfv paramatfv, String paramString) {}
+  public WebRecordApiPlugin$AudioApiHelper$2(atke paramatke, String paramString) {}
   
   public void run()
   {
@@ -41,7 +41,7 @@ public class WebRecordApiPlugin$AudioApiHelper$2
               if (((Date)localObject2).before(((Calendar)localObject3).getTime()))
               {
                 localObject1[i].delete();
-                bczr.a(this.jdField_a_of_type_Atfv.a, str);
+                bdea.a(this.jdField_a_of_type_Atke.a, str);
               }
               i += 1;
             }
@@ -57,7 +57,7 @@ public class WebRecordApiPlugin$AudioApiHelper$2
       }
       long l = System.currentTimeMillis();
       localObject1 = new SimpleDateFormat("yyyyMMdd").format(new Date(l));
-      bczr.a(this.jdField_a_of_type_Atfv.a, "LAST_DELETE_TIME", (String)localObject1);
+      bdea.a(this.jdField_a_of_type_Atke.a, "LAST_DELETE_TIME", (String)localObject1);
     }
   }
 }

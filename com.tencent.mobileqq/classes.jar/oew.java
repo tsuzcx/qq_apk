@@ -35,7 +35,7 @@ class oew
       if (oev.b(this.a).size() <= 0)
       {
         paramGiftServiceBean = new GiftServiceBean();
-        paramGiftServiceBean.t = alpo.a(2131705654);
+        paramGiftServiceBean.t = alud.a(2131705666);
         paramGiftServiceBean.v = "0";
         oev.b(this.a).add(paramGiftServiceBean);
       }

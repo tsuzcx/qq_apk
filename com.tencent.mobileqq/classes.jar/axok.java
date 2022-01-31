@@ -1,8 +1,12 @@
-public abstract interface axok
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import java.util.ArrayList;
+
+public class axok
 {
-  public abstract void a(long paramLong, axoj paramaxoj);
-  
-  public abstract void a(boolean paramBoolean, long paramLong, axoj paramaxoj, axoi paramaxoi, int paramInt);
+  public int a;
+  public azcw a;
+  public PtvTemplateManager.PtvTemplateInfo a;
+  public ArrayList<axoj> a = new ArrayList();
 }
 
 

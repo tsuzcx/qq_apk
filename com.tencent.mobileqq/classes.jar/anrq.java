@@ -1,68 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import java.util.ArrayList;
-import javax.annotation.Nonnull;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
 
 public class anrq
+  implements CompoundButton.OnCheckedChangeListener
 {
-  @android.support.annotation.Nullable
-  public static ArrayList<RockDownloadInfo> a(@NonNull RockDownloadInfo paramRockDownloadInfo)
-  {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return anrl.a(localRockDownloaderTask);
-  }
+  public anrq(ArkAuthorityInfoActivity paramArkAuthorityInfoActivity, int paramInt) {}
   
-  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable anrk paramanrk)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    localRockDownloaderTask.setQueryAPKListener(paramanrk);
-    anrl.b(localRockDownloaderTask);
-  }
-  
-  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable RockDownloadListener paramRockDownloadListener)
-  {
-    if (!bdee.a(BaseApplicationImpl.context))
+    paramCompoundButton = ArkAuthorityInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity);
+    String str1 = ArkAuthorityInfoActivity.a()[this.jdField_a_of_type_Int];
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity.app.getCurrentAccountUin();
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
-      if (paramRockDownloadListener != null)
-      {
-        paramRockDownloadListener.onDownloadFail(paramRockDownloadInfo, alpo.a(2131713873), 10009);
-        paramRockDownloadListener.onDownloadFinish(paramRockDownloadInfo);
-      }
+      anke.a(paramCompoundButton, str1, str2, i);
       return;
     }
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    localRockDownloaderTask.setRockDownloadListener(paramRockDownloadListener);
-    anrl.a(localRockDownloaderTask);
-  }
-  
-  public static boolean a(@Nonnull RockDownloadInfo paramRockDownloadInfo)
-  {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return anrl.b(localRockDownloaderTask);
-  }
-  
-  public static boolean b(@Nonnull RockDownloadInfo paramRockDownloadInfo)
-  {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return anrl.a(localRockDownloaderTask);
   }
 }
 

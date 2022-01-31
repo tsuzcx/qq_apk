@@ -1,115 +1,47 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.tencent.qqmini.sdk.core.widget.NavigationBar;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
 import org.json.JSONObject;
 
-public class bhjm
+class bhjm
+  implements bgmc<Void>
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 3600L;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<bhkb> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<String> b = new ArrayList();
+  bhjm(bhjl parambhjl, String paramString) {}
   
-  public bhjm(JSONObject paramJSONObject)
+  public Void a(bgls parambgls)
   {
-    if (paramJSONObject != null) {}
+    parambgls = parambgls.a();
+    if (!(parambgls instanceof AppBrandPageContainer)) {
+      QMLog.d("Action", "Page is invalid");
+    }
     for (;;)
     {
-      int i;
+      return null;
+      parambgls = (AppBrandPageContainer)parambgls;
+      Object localObject = parambgls.a();
+      if ((localObject != null) && (((AppBrandPage)localObject).a() != null)) {
+        ((AppBrandPage)localObject).a().a((byte)0);
+      }
       try
       {
-        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("type");
-        long l = paramJSONObject.getLong("interval");
-        if ((l > 0L) && (l < 604800L)) {
-          this.jdField_a_of_type_Long = l;
-        }
-        Object localObject = paramJSONObject.getJSONArray("filter");
-        if (localObject != null)
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("htmlId", this.jdField_a_of_type_Bhjl.a.a);
+        ((JSONObject)localObject).put("src", this.jdField_a_of_type_JavaLangString);
+        int i = bgml.a(InnerWebView.a(this.jdField_a_of_type_Bhjl.a)).a();
+        if ((parambgls.a() != null) && (parambgls.a().a() != null))
         {
-          i = 0;
-          if (i < ((JSONArray)localObject).length())
-          {
-            JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-            if (localJSONObject == null) {
-              break label248;
-            }
-            this.jdField_a_of_type_JavaUtilList.add(new bhkb(localJSONObject));
-            break label248;
-          }
+          parambgls.a().a().a("onWebviewStartLoad", ((JSONObject)localObject).toString(), i);
+          return null;
         }
-        if (paramJSONObject.has("rpt"))
-        {
-          paramJSONObject = paramJSONObject.getJSONObject("rpt");
-          if (paramJSONObject != null)
-          {
-            i = paramJSONObject.getInt("id");
-            if (i > 100000)
-            {
-              this.jdField_a_of_type_Int = i;
-              paramJSONObject = paramJSONObject.getJSONArray("fields");
-              if (paramJSONObject != null)
-              {
-                i = j;
-                if (i < paramJSONObject.length())
-                {
-                  localObject = paramJSONObject.getString(i);
-                  if ((localObject != null) && (!((String)localObject).isEmpty())) {
-                    this.b.add(localObject);
-                  }
-                  i += 1;
-                  continue;
-                }
-              }
-            }
-          }
-        }
-        return;
       }
-      catch (JSONException paramJSONObject)
+      catch (Exception parambgls)
       {
-        paramJSONObject.printStackTrace();
+        QMLog.e("Action", "onPageStarted error." + parambgls);
       }
-      label248:
-      i += 1;
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public List<String> a()
-  {
-    return this.b;
-  }
-  
-  public boolean a(Object paramObject)
-  {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        bhkb localbhkb = (bhkb)localIterator.next();
-        if (!localbhkb.a()) {
-          return false;
-        }
-        if (!localbhkb.a(paramObject)) {
-          return false;
-        }
-      }
-      return true;
-    }
-    return false;
+    return null;
   }
 }
 

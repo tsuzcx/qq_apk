@@ -1,41 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.os.Bundle;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import java.util.ArrayList;
 
-final class bixz
-  implements WtTicketPromise
+class bixz
+  extends ayeh
 {
-  bixz(biya parambiya, String paramString) {}
+  private bixz(bixv parambixv) {}
   
-  public void Done(Ticket paramTicket)
+  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RichStatus> paramArrayList, boolean paramBoolean3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QWalletUtils", 2, "get pskey async success!");
-    }
-    if (this.jdField_a_of_type_Biya != null) {
-      this.jdField_a_of_type_Biya.a(0, new String[] { bixy.a(paramTicket, this.jdField_a_of_type_JavaLangString) });
-    }
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QWalletUtils", 2, "preGetKey. PSk Failed!!!");
-    }
-    if (this.jdField_a_of_type_Biya != null) {
-      this.jdField_a_of_type_Biya.a(-1, new String[] { paramErrMsg.getMessage() });
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QWalletUtils", 2, "preGetKey. PSk Timeout!");
-    }
-    if (this.jdField_a_of_type_Biya != null) {
-      this.jdField_a_of_type_Biya.a(-1, new String[] { paramErrMsg.getMessage() });
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("isSuccess", paramBoolean1);
+    localBundle.putInt("start", paramInt1);
+    localBundle.putInt("end", paramInt2);
+    localBundle.putBoolean("over", paramBoolean2);
+    localBundle.putSerializable("data", paramArrayList);
+    localBundle.putBoolean("isAddFromCard", paramBoolean3);
+    localBundle.putInt("which_method", 0);
+    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 5, localBundle);
   }
 }
 

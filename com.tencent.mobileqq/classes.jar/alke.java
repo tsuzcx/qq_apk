@@ -1,29 +1,10 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class alke
-  implements View.OnSystemUiVisibilityChangeListener
+public abstract interface alke
 {
-  public alke(BaseActivity paramBaseActivity) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
-  {
-    if (paramInt == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      BaseActivity.mIsInMultiScreen = bool;
-      this.a.onMultiWindowModeChanged(BaseActivity.mIsInMultiScreen);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("qqBaseActivity", 4, "onSystemUiVisibilityChange:" + paramInt + ",Activity name:" + getClass().getName());
-      }
-      return;
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alke
  * JD-Core Version:    0.7.0.1
  */

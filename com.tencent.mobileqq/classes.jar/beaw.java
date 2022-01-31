@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.webview.WebViewTitleStyle;
-
-public final class beaw
-  implements Parcelable.Creator<WebViewTitleStyle>
+public abstract interface beaw
 {
-  public WebViewTitleStyle a(Parcel paramParcel)
-  {
-    return new WebViewTitleStyle(paramParcel);
-  }
-  
-  public WebViewTitleStyle[] a(int paramInt)
-  {
-    return new WebViewTitleStyle[paramInt];
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
 }
 
 

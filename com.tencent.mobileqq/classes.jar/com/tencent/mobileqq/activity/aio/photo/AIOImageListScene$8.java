@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import agdf;
-import ages;
-import aget;
-import agfq;
+import aghu;
+import agjh;
+import agji;
+import agkf;
 
 public class AIOImageListScene$8
   implements Runnable
 {
-  public AIOImageListScene$8(aget paramaget, long paramLong, boolean paramBoolean) {}
+  public AIOImageListScene$8(agji paramagji, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
     if (this.this$0.a != null)
     {
-      agfq localagfq = this.this$0.a.a();
+      agkf localagkf = this.this$0.a.a();
       if (this.this$0.a.a(this.jdField_a_of_type_Long) != null) {
         this.this$0.h();
       }
-      if ((this.jdField_a_of_type_Boolean) && (localagfq != null) && (this.jdField_a_of_type_Long == localagfq.a.f)) {
-        agdf.a(aget.r(this.this$0));
+      if ((this.jdField_a_of_type_Boolean) && (localagkf != null) && (this.jdField_a_of_type_Long == localagkf.a.f)) {
+        aghu.a(agji.r(this.this$0));
       }
     }
   }

@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
 import android.os.Handler;
-import aswh;
-import aswv;
-import aswy;
+import ataq;
+import atbe;
+import atbh;
 
 public class HuayangPluginNewDownloader$2
   implements Runnable
 {
-  public HuayangPluginNewDownloader$2(aswv paramaswv) {}
+  public HuayangPluginNewDownloader$2(atbe paramatbe) {}
   
   public void run()
   {
     try
     {
-      aswv.a(this.this$0);
+      atbe.a(this.this$0);
       return;
     }
     catch (Throwable localThrowable)
     {
-      aswy.a("3228166");
-      aswh.a(new RuntimeException("huayangPluginManager downloadException", localThrowable));
+      atbh.a("3228166");
+      ataq.a(new RuntimeException("huayangPluginManager downloadException", localThrowable));
       return;
     }
     finally
     {
-      aswv.a(this.this$0).removeCallbacks(aswv.a(this.this$0));
-      aswv.a(this.this$0, false);
+      atbe.a(this.this$0).removeCallbacks(atbe.a(this.this$0));
+      atbe.a(this.this$0, false);
     }
   }
 }

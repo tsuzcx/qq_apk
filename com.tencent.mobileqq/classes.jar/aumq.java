@@ -1,16 +1,9 @@
-import com.tencent.mobileqq.music.QQPlayerService;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class aumq
-  implements aobe
+public abstract interface aumq
 {
-  public aumq(QQPlayerService paramQQPlayerService) {}
-  
-  public void onServiceSyncSucc(boolean paramBoolean)
-  {
-    if ((QQPlayerService.b()) && (QQPlayerService.a(this.a) != null) && (!QQPlayerService.a(this.a).c())) {
-      QQPlayerService.a(this.a).e();
-    }
-  }
+  public abstract void b(View paramView, MotionEvent paramMotionEvent);
 }
 
 

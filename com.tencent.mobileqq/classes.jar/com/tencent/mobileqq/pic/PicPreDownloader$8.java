@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.pic;
 
-import awes;
-import awfc;
+import awjb;
+import awjl;
 
 class PicPreDownloader$8
   implements Runnable
 {
-  PicPreDownloader$8(PicPreDownloader paramPicPreDownloader, awfc paramawfc) {}
+  PicPreDownloader$8(PicPreDownloader paramPicPreDownloader, awjl paramawjl) {}
   
   public void run()
   {
-    awes.a(this.a, this.this$0.a);
+    awjb.a(this.a, this.this$0.a);
   }
 }
 

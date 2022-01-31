@@ -1,14 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-class avkq
-  implements DialogInterface.OnClickListener
+public class avkq
+  implements View.OnClickListener
 {
-  avkq(avkm paramavkm, bdfq parambdfq) {}
+  public avkq(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bdfq.dismiss();
+    if ((this.a.b != null) && (!this.a.isFinishing()))
+    {
+      this.a.b.dismiss();
+      this.a.b = null;
+    }
+    this.a.a(300L);
+    azqs.b(this.a.app, "CliOper", "", "", "0X8004BB0", "0X8004BB0", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,48 +1,36 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.Iterator;
 import java.util.List;
 
-public class wao
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vag>
+public final class wao
+  extends QQUIEventReceiver<wah, vcp>
 {
-  public wao(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public wao(@NonNull wah paramwah)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super(paramwah);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vag paramvag)
+  public void a(@NonNull wah paramwah, @NonNull vcp paramvcp)
   {
-    if (!paramQQStoryShareGroupProfileActivity.g) {}
-    wbb localwbb;
-    Object localObject1;
-    do
+    if ((paramvcp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvcp.jdField_a_of_type_JavaUtilList != null) && (paramwah.a != null))
     {
-      return;
-      Object localObject2 = null;
-      localwbb = paramQQStoryShareGroupProfileActivity.a.a;
-      Iterator localIterator = paramQQStoryShareGroupProfileActivity.a.a.a.iterator();
-      do
+      paramvcp = paramvcp.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramvcp.hasNext())
       {
-        localObject1 = localObject2;
-        if (!localIterator.hasNext()) {
-          break;
+        uxd localuxd = (uxd)paramvcp.next();
+        if (TextUtils.equals(paramwah.a.b, localuxd.a)) {
+          paramwah.i();
         }
-        localObject1 = (HotSortVideoEntry)localIterator.next();
-      } while (!((HotSortVideoEntry)localObject1).storyId.equals(paramvag.a));
-    } while (localObject1 == null);
-    ((HotSortVideoEntry)localObject1).viewCount += 1;
-    ((uqy)urr.a(25)).a((HotSortVideoEntry)localObject1);
-    localwbb.a((HotSortVideoEntry)localObject1);
-    paramQQStoryShareGroupProfileActivity.d = true;
+      }
+    }
   }
   
   public Class acceptEventClass()
   {
-    return vag.class;
+    return vcp.class;
   }
 }
 

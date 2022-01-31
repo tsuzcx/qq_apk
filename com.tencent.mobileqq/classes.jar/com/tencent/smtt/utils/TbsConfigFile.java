@@ -272,8 +272,8 @@ public class TbsConfigFile
     //   6: istore_1
     //   7: aload_0
     //   8: invokespecial 92	com/tencent/smtt/utils/TbsConfigFile:getConfigFile	()Ljava/io/File;
-    //   11: astore 5
-    //   13: aload 5
+    //   11: astore 6
+    //   13: aload 6
     //   15: ifnonnull +44 -> 59
     //   18: iconst_0
     //   19: ifeq +11 -> 30
@@ -302,21 +302,21 @@ public class TbsConfigFile
     //   62: dup
     //   63: new 100	java/io/FileInputStream
     //   66: dup
-    //   67: aload 5
+    //   67: aload 6
     //   69: invokespecial 103	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   72: invokespecial 106	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   75: astore_3
     //   76: new 108	java/util/Properties
     //   79: dup
     //   80: invokespecial 109	java/util/Properties:<init>	()V
-    //   83: astore 6
-    //   85: aload 6
+    //   83: astore 5
+    //   85: aload 5
     //   87: aload_3
     //   88: invokevirtual 112	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   91: aload_0
     //   92: iconst_0
     //   93: putfield 42	com/tencent/smtt/utils/TbsConfigFile:mForceUseSystemWebview	Z
-    //   96: aload 6
+    //   96: aload 5
     //   98: ldc 11
     //   100: aload_0
     //   101: getfield 42	com/tencent/smtt/utils/TbsConfigFile:mForceUseSystemWebview	Z
@@ -326,7 +326,7 @@ public class TbsConfigFile
     //   111: aload_0
     //   112: iconst_0
     //   113: putfield 44	com/tencent/smtt/utils/TbsConfigFile:mForceUseSystemWebview_result	Z
-    //   116: aload 6
+    //   116: aload 5
     //   118: ldc 14
     //   120: aload_0
     //   121: getfield 44	com/tencent/smtt/utils/TbsConfigFile:mForceUseSystemWebview_result	Z
@@ -337,11 +337,11 @@ public class TbsConfigFile
     //   134: dup
     //   135: new 146	java/io/FileOutputStream
     //   138: dup
-    //   139: aload 5
+    //   139: aload 6
     //   141: invokespecial 147	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   144: invokespecial 150	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   147: astore_2
-    //   148: aload 6
+    //   148: aload 5
     //   150: aload_2
     //   151: aconst_null
     //   152: invokevirtual 154	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
@@ -461,10 +461,10 @@ public class TbsConfigFile
     //   284	12	4	localObject8	Object
     //   303	1	4	localThrowable2	Throwable
     //   310	1	4	localThrowable3	Throwable
-    //   11	187	5	localFile	File
+    //   83	115	5	localProperties	java.util.Properties
     //   281	6	5	localObject9	Object
     //   292	6	5	localObject10	Object
-    //   83	66	6	localProperties	java.util.Properties
+    //   11	129	6	localFile	File
     // Exception table:
     //   from	to	target	type
     //   22	30	44	java/lang/Exception

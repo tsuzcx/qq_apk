@@ -1,18 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.lbs.BusinessBuff;
+import android.text.TextUtils;
 
-public final class ayuv
-  implements Parcelable.Creator<BusinessBuff>
+public class ayuv
 {
-  public BusinessBuff a(Parcel paramParcel)
+  public int a;
+  public String a;
+  
+  public ayuv(String paramString, int paramInt)
   {
-    return new BusinessBuff(paramParcel);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public BusinessBuff[] a(int paramInt)
+  public boolean a(String paramString)
   {
-    return new BusinessBuff[paramInt];
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return this.jdField_a_of_type_JavaLangString.equals(paramString);
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("keyword:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" status:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,26 +1,84 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
-import mqq.app.AppRuntime;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecCacheEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.List;
+import org.apache.http.Header;
 
 class agyg
-  implements DialogInterface.OnClickListener
+  implements URLDrawableDownListener
 {
   agyg(agyf paramagyf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (this.a.a.getActivity() != null)
-    {
-      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
-      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
-      this.a.a.getActivity().startActivity(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "drawableListener onLoadCancelled");
     }
-    paramDialogInterface.dismiss();
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    agyf.a(this.a, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.e("StickerRecBarAdapter", 2, "drawableListener onLoadFialed:" + paramURLDrawable.getURL(), paramThrowable);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "drawableListener onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    l2 = -1L;
+    try
+    {
+      Object localObject = paramURLDrawable.getHeader("report_key_start_download");
+      l1 = l2;
+      if (localObject != null)
+      {
+        localObject = ((Header)localObject).getValue();
+        l1 = l2;
+        if (localObject != null)
+        {
+          l1 = Long.parseLong((String)localObject);
+          long l3 = System.currentTimeMillis();
+          l1 = l3 - l1;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        long l1 = l2;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("StickerRecBarAdapter", 2, "onLoadSuccessed:get start download time");
+          l1 = l2;
+        }
+      }
+    }
+    agyf.a(this.a, paramURLDrawable, l1);
+    paramView = paramView.getTag();
+    if (agyv.b((agxz)paramView))
+    {
+      paramView = (agyp)paramView;
+      if ((agyv.b(paramView)) && (!agyf.a(this.a).contains(paramView.j())))
+      {
+        agyf.a(this.a).add(paramView.j());
+        paramURLDrawable = paramView.l();
+        agyf.a(this.a).add(new StickerRecCacheEntity(paramURLDrawable, System.currentTimeMillis(), paramView.j()));
+      }
+    }
   }
 }
 

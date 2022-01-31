@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.listentogether;
 
-import athq;
-import azmz;
+import atlz;
+import azri;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 
 public class ListenTogetherHandler$1
   implements Runnable
 {
-  public ListenTogetherHandler$1(athq paramathq, long paramLong1, long paramLong2, int paramInt, long paramLong3) {}
+  public ListenTogetherHandler$1(atlz paramatlz, long paramLong1, long paramLong2, int paramInt, long paramLong3) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ListenTogetherHandler$1
     localHashMap.put("requestInterval", String.valueOf(this.b));
     localHashMap.put("reportType", String.valueOf(this.jdField_a_of_type_Int));
     localHashMap.put("interval", String.valueOf(this.c));
-    azmz.a(BaseApplicationImpl.getContext()).a("", "listen_together_seek_adjust", true, 0L, 0L, localHashMap, "", false);
+    azri.a(BaseApplicationImpl.getContext()).a("", "listen_together_seek_adjust", true, 0L, 0L, localHashMap, "", false);
   }
 }
 

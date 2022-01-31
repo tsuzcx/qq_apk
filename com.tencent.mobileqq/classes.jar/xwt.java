@@ -1,10 +1,25 @@
-public abstract interface xwt
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
+import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import friendlist.GetOnlineInfoResp;
+import mqq.os.MqqHandler;
+
+public class xwt
+  extends altm
 {
-  public abstract void a(xwv paramxwv);
+  public xwt(StoryQIMBadgeView paramStoryQIMBadgeView) {}
   
-  public abstract void b(xwv paramxwv);
-  
-  public abstract void c(xwv paramxwv);
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  {
+    super.onGetOnlineInfoByUinOrMobile(paramBoolean, paramLong, paramString, paramGetOnlineInfoResp);
+    if ((StoryQIMBadgeView.a(this.a) == null) || (paramGetOnlineInfoResp == null) || (TextUtils.isEmpty(StoryQIMBadgeView.a(this.a).qq))) {}
+    while ((!paramBoolean) || (!bdeu.a(StoryQIMBadgeView.a(this.a).qq, paramString))) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new StoryQIMBadgeView.1.1(this, paramGetOnlineInfoResp, paramString));
+  }
 }
 
 

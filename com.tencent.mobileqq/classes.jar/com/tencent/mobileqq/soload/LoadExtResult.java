@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.soload;
 
 import android.text.TextUtils;
-import azif;
-import bdee;
+import azmo;
+import bdin;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +18,7 @@ public class LoadExtResult
 {
   private int downloadSoNum;
   private int failIndex;
-  public azif failInfo;
+  public azmo failInfo;
   private boolean isFirstlyLoad = true;
   private String reportStr = "";
   private int resCode;
@@ -113,7 +113,7 @@ public class LoadExtResult
       if ((!isDownloadNetworkErr(this.failInfo.jdField_a_of_type_Int, this.failInfo.b)) && (!isGetConfigNetworkErr(this.failInfo.jdField_a_of_type_Int, this.failInfo.b))) {
         break label164;
       }
-      int i = bdee.b(BaseApplicationImpl.getApplication());
+      int i = bdin.b(BaseApplicationImpl.getApplication());
       if (QLog.isColorLevel()) {
         QLog.i("LoadExtResult", 2, "[getDelayAyncTime]curNetType:" + i);
       }

@@ -1,17 +1,8 @@
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-public class aheg
-  implements ahqs
+public abstract interface aheg
 {
-  public aheg(TroopView paramTroopView) {}
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == SimpleCheckableSlidingIndicator.a) {
-      TroopView.a(this.a);
-    }
-  }
+  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
 }
 
 

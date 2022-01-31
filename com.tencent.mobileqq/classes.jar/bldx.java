@@ -1,18 +1,16 @@
-import android.graphics.Rect;
-
-public class bldx
+class bldx
+  implements blee
 {
-  public Rect a;
-  public float[] a;
+  bldx(blds paramblds) {}
   
-  public bldx(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public int a()
-  {
-    return Math.abs(this.a.left - this.a.right) * Math.abs(this.a.top - this.a.bottom);
+    if (blds.a(this.a))
+    {
+      blds.a(this.a, paramBoolean1, paramBoolean2);
+      return;
+    }
+    blds.b(this.a, paramBoolean1, paramBoolean2);
   }
 }
 

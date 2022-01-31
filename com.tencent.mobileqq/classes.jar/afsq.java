@@ -1,29 +1,18 @@
-import android.os.SystemClock;
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForPokeEmo;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class afsq
-  implements bhqd
+  extends afuf
 {
-  afsq(afsp paramafsp, MessageForPokeEmo paramMessageForPokeEmo, bhpy parambhpy) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  afsq(afpy paramafpy)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      long l;
-      do
-      {
-        return;
-        l = SystemClock.uptimeMillis();
-      } while (l - this.jdField_a_of_type_Afsp.c < 500L);
-      this.jdField_a_of_type_Afsp.c = l;
-      acex.b(this.jdField_a_of_type_Afsp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afsp.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afsp.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPokeEmo.uniseq);
-    }
+    super(paramafpy, null);
+  }
+  
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ShortVideoRealItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

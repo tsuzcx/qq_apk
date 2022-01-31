@@ -1,8 +1,7 @@
-import android.graphics.Bitmap;
-
-public abstract interface bfie
+public class bfie
 {
-  public abstract void a(String paramString, Bitmap paramBitmap);
+  public long a;
+  public String a;
 }
 
 

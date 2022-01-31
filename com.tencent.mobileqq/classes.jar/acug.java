@@ -1,26 +1,22 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.view.View;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
 public class acug
-  extends VasQuickUpdateManager.CallBacker
+  implements bhuk
 {
-  public acug(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public acug(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bhuf parambhuf) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((VipProfileCardDiyActivity.a(paramLong, paramString1, this.a.a.a.diyTextFontId)) && (paramInt1 == 0))
+    this.jdField_a_of_type_Bhuf.dismiss();
+    switch (paramInt)
     {
-      paramString1 = this.a.b.obtainMessage();
-      paramString1.what = 5;
-      paramString1.obj = this.a.a.a;
-      paramString1.arg1 = 0;
-      paramString1.arg2 = 17;
-      this.a.b.sendMessage(paramString1);
-      paramVasQuickUpdateManager.removeCallBacker(this);
+    default: 
+      return;
     }
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "P_CliOper", "Grp_discuss", "", "0X80040ED", "0X80040ED", 0, 0, "", "", "", "");
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X8006623", "0X8006623", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.f();
   }
 }
 

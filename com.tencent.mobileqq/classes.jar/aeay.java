@@ -1,22 +1,55 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeay
-  implements View.OnTouchListener
+  extends bead
 {
-  public aeay(TroopMemberListActivity paramTroopMemberListActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aeay(TextPreviewActivity paramTextPreviewActivity, String paramString1, String paramString2)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.j();
-      paramView = this.a.n;
-      this.a.a("Clk_find", paramView, "");
+    super(paramString1, paramString2);
+  }
+  
+  public void onCancel(beae parambeae)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambeae);
     }
-    return true;
+    super.onCancel(parambeae);
+  }
+  
+  public void onDone(beae parambeae)
+  {
+    super.onDone(parambeae);
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onDone| task:" + parambeae);
+    }
+    if (parambeae.b()) {}
+    do
+    {
+      return;
+      if (parambeae.a() == -1)
+      {
+        parambeae = new Message();
+        parambeae.what = 17;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambeae);
+        return;
+      }
+      parambeae = this.a.jdField_a_of_type_Fx.a(this.a.e);
+    } while (parambeae == null);
+    Message localMessage = new Message();
+    localMessage.what = 18;
+    localMessage.obj = parambeae;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public boolean onStart(beae parambeae)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onStart| task:" + parambeae);
+    }
+    return super.onStart(parambeae);
   }
 }
 

@@ -31,8 +31,8 @@ public class syq
 {
   private int jdField_a_of_type_Int = -1;
   public Activity a;
-  private bhow jdField_a_of_type_Bhow;
-  private bhwb jdField_a_of_type_Bhwb = new sys(this);
+  private bhtd jdField_a_of_type_Bhtd;
+  private biai jdField_a_of_type_Biai = new sys(this);
   public ShareActionSheetBuilder a;
   private rpq jdField_a_of_type_Rpq;
   private swc jdField_a_of_type_Swc;
@@ -55,7 +55,7 @@ public class syq
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new stb(this.jdField_a_of_type_AndroidAppActivity);
     }
     this.jdField_a_of_type_Tac = new tac(paramAppInterface);
-    this.jdField_a_of_type_Bhow = new bhow(this);
+    this.jdField_a_of_type_Bhtd = new bhtd(this);
   }
   
   public static List<Integer> a()
@@ -127,9 +127,9 @@ public class syq
   {
     this.jdField_a_of_type_Syu = paramsyu;
     if (this.jdField_a_of_type_Int == -1) {
-      this.jdField_a_of_type_Int = ((Integer)bjxj.a("readinjoy_font_size_index_sp" + ors.a(), Integer.valueOf(2))).intValue();
+      this.jdField_a_of_type_Int = ((Integer)bkbq.a("readinjoy_font_size_index_sp" + ors.a(), Integer.valueOf(2))).intValue();
     }
-    this.jdField_a_of_type_Rpq = new rps(this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater()).a(this.jdField_a_of_type_Bhwb).a(this.jdField_a_of_type_Int).a().a(this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView());
+    this.jdField_a_of_type_Rpq = new rps(this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater()).a(this.jdField_a_of_type_Biai).a(this.jdField_a_of_type_Int).a().a(this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView());
   }
   
   public boolean a()
@@ -169,7 +169,7 @@ public class syq
     if (this.jdField_a_of_type_Rpq != null) {
       this.jdField_a_of_type_Rpq.a();
     }
-    this.jdField_a_of_type_Bhow.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Bhtd.removeCallbacksAndMessages(null);
     a();
   }
   
@@ -185,7 +185,7 @@ public class syq
     }
     catch (ActivityNotFoundException paramString)
     {
-      xxb.a(1, 2131695731);
+      ybk.a(1, 2131695733);
     }
   }
   
@@ -199,7 +199,7 @@ public class syq
       Bitmap localBitmap2 = sdp.a(this.jdField_a_of_type_AndroidAppActivity.getWindow(), localBitmap1);
       if (localBitmap2 != null)
       {
-        QQToast.a(BaseApplicationImpl.getContext(), 0, 2131695749, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298914));
+        QQToast.a(BaseApplicationImpl.getContext(), 0, 2131695751, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298914));
         ThreadManager.executeOnFileThread(new ReadInJoyShareHelper.3(this, localBitmap2));
       }
       localBitmap1.recycle();
@@ -210,7 +210,7 @@ public class syq
   public void c(String paramString)
   {
     ((ClipboardManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("clipboard")).setText(paramString);
-    xxb.a(2, 2131691362);
+    ybk.a(2, 2131691363);
   }
   
   public void d(String paramString)
@@ -222,7 +222,7 @@ public class syq
   {
     if (TextUtils.isEmpty(paramString))
     {
-      xxb.a(1, 2131695752);
+      ybk.a(1, 2131695754);
       return;
     }
     paramString = EditPicActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramString, true, true, true, true, true, 4);
@@ -271,7 +271,7 @@ public class syq
         bool = false;
         break;
         this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
-        paramAdapterView = (syw)((bdip)paramAdapterView).a;
+        paramAdapterView = (syw)((bdmy)paramAdapterView).a;
         paramInt = paramAdapterView.action;
       } while (this.jdField_a_of_type_Syt == null);
       if (paramAdapterView.a)

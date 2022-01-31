@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.text.TextPaint;
@@ -16,8 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdbi;
-import bdkf;
+import bdfr;
+import bdoo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
@@ -236,14 +236,14 @@ public class ComponentHeaderFriendRecommend
     if (i > 0) {
       return orr.a(i, true);
     }
-    return alpo.a(2131702649);
+    return alud.a(2131702661);
   }
   
   private void b(long paramLong)
   {
     if (this.jdField_a_of_type_Qbs.a())
     {
-      String str = oqu.k + bdbi.encodeToString(String.valueOf(paramLong).getBytes(), 2);
+      String str = oqu.k + bdfr.encodeToString(String.valueOf(paramLong).getBytes(), 2);
       ors.a(getContext(), str);
     }
     for (;;)
@@ -298,12 +298,12 @@ public class ComponentHeaderFriendRecommend
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559965, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559964, this, true);
   }
   
   public void a(long paramLong)
   {
-    String str1 = oqu.g + bdbi.encodeToString(String.valueOf(paramLong).getBytes(), 2);
+    String str1 = oqu.g + bdfr.encodeToString(String.valueOf(paramLong).getBytes(), 2);
     ors.a(getContext(), str1);
     ArticleInfo localArticleInfo = this.jdField_a_of_type_Qbs.a.a();
     ors.a = localArticleInfo;
@@ -338,21 +338,21 @@ public class ComponentHeaderFriendRecommend
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131375209));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131375213));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131375260));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131375264));
     this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = new ReadInJoyHeadImageView[4];
-    this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView[0] = ((ReadInJoyHeadImageView)findViewById(2131375196));
-    this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView[1] = ((ReadInJoyHeadImageView)findViewById(2131375197));
-    this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView[2] = ((ReadInJoyHeadImageView)findViewById(2131375198));
-    this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView[3] = ((ReadInJoyHeadImageView)findViewById(2131375199));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)findViewById(2131375212));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375206));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375203));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375211));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363588));
+    this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView[0] = ((ReadInJoyHeadImageView)findViewById(2131375247));
+    this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView[1] = ((ReadInJoyHeadImageView)findViewById(2131375248));
+    this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView[2] = ((ReadInJoyHeadImageView)findViewById(2131375249));
+    this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView[3] = ((ReadInJoyHeadImageView)findViewById(2131375250));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)findViewById(2131375263));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375257));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375254));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375262));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363590));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView = ((RingAvatarView)findViewById(2131375168));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368906));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView = ((RingAvatarView)findViewById(2131375219));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368924));
   }
   
   public void a(Object paramObject)
@@ -412,29 +412,29 @@ public class ComponentHeaderFriendRecommend
     Object localObject = (LinearLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetLinearLayout.getLayoutParams();
     if ((this.jdField_a_of_type_Qbs.i()) || (c()))
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingLeft(), aekt.a(15.0F, getResources()), this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingRight(), aekt.a(12.0F, getResources()));
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setPadding(this.jdField_b_of_type_AndroidWidgetLinearLayout.getPaddingLeft(), aekt.a(15.0F, getResources()), this.jdField_b_of_type_AndroidWidgetLinearLayout.getPaddingRight(), this.jdField_b_of_type_AndroidWidgetLinearLayout.getPaddingBottom());
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingLeft(), aepi.a(15.0F, getResources()), this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingRight(), aepi.a(12.0F, getResources()));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setPadding(this.jdField_b_of_type_AndroidWidgetLinearLayout.getPaddingLeft(), aepi.a(15.0F, getResources()), this.jdField_b_of_type_AndroidWidgetLinearLayout.getPaddingRight(), this.jdField_b_of_type_AndroidWidgetLinearLayout.getPaddingBottom());
       ((LinearLayout.LayoutParams)localObject).gravity = 48;
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     }
     for (;;)
     {
-      localObject = (LinearLayout)findViewById(2131375208);
+      localObject = (LinearLayout)findViewById(2131375259);
       if ((((LinearLayout)localObject).getLayoutParams() instanceof RelativeLayout.LayoutParams))
       {
         localObject = (RelativeLayout.LayoutParams)((LinearLayout)localObject).getLayoutParams();
         if (!a()) {
           break;
         }
-        ((RelativeLayout.LayoutParams)localObject).setMargins(bdkf.a(12.0F), 0, bdkf.a(12.0F), 0);
+        ((RelativeLayout.LayoutParams)localObject).setMargins(bdoo.a(12.0F), 0, bdoo.a(12.0F), 0);
       }
       return;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingLeft(), aekt.a(7.5F, getResources()), this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingRight(), aekt.a(7.5F, getResources()));
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setPadding(this.jdField_b_of_type_AndroidWidgetLinearLayout.getPaddingLeft(), aekt.a(7.5F, getResources()), this.jdField_b_of_type_AndroidWidgetLinearLayout.getPaddingRight(), this.jdField_b_of_type_AndroidWidgetLinearLayout.getPaddingBottom());
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingLeft(), aepi.a(7.5F, getResources()), this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingRight(), aepi.a(7.5F, getResources()));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setPadding(this.jdField_b_of_type_AndroidWidgetLinearLayout.getPaddingLeft(), aepi.a(7.5F, getResources()), this.jdField_b_of_type_AndroidWidgetLinearLayout.getPaddingRight(), this.jdField_b_of_type_AndroidWidgetLinearLayout.getPaddingBottom());
       ((LinearLayout.LayoutParams)localObject).gravity = 16;
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    ((RelativeLayout.LayoutParams)localObject).setMargins(bdkf.a(12.0F), 0, bdkf.a(2.25F), 0);
+    ((RelativeLayout.LayoutParams)localObject).setMargins(bdoo.a(12.0F), 0, bdoo.a(2.25F), 0);
   }
   
   public boolean b()
@@ -455,7 +455,7 @@ public class ComponentHeaderFriendRecommend
           b(((Long)paramView.get(0)).longValue());
         }
       }
-    case 2131375212: 
+    case 2131375263: 
       do
       {
         return;
@@ -505,13 +505,13 @@ public class ComponentHeaderFriendRecommend
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
       this.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(true);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131702678));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131702690));
       return;
     }
     if ((localArticleInfo.isNeedShowBtnWhenFollowed) && (localSocializeFeedsInfo.h == 2))
     {
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131702714));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131702726));
       this.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(false);
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       return;

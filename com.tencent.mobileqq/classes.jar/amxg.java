@@ -1,17 +1,47 @@
-public class amxg
+import com.tencent.qphone.base.util.QLog;
+
+class amxg
+  implements andm
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  amxg(amxf paramamxf, String paramString, andm paramandm) {}
   
-  public String toString()
+  public void a()
   {
-    return "StarInfo{faceID=" + this.jdField_a_of_type_Int + ", uin=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", pinyin_name='" + this.b + '\'' + ", wiki='" + this.c + '\'' + ", wikiTitle='" + this.d + '\'' + ", wikiURL='" + this.e + '\'' + ", confidence='" + this.jdField_a_of_type_Float + '\'' + '}';
+    if (this.jdField_a_of_type_Andm != null) {
+      this.jdField_a_of_type_Andm.a();
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Andm != null) {
+      this.jdField_a_of_type_Andm.a(paramLong1, paramLong2);
+    }
+  }
+  
+  public void a(boolean paramBoolean, andn paramandn)
+  {
+    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + paramandn.d + ", filename = " + paramandn.c + ", url = " + paramandn.jdField_a_of_type_JavaLangString);
+    if (paramBoolean) {
+      if (!amxf.a(this.jdField_a_of_type_Amxf, paramandn.c, paramandn.b))
+      {
+        amxf.a(this.jdField_a_of_type_Amxf, paramandn.c);
+        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
+      }
+    }
+    while (this.jdField_a_of_type_Andm == null)
+    {
+      return;
+      if ((!paramandn.d.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Amxf.a(paramandn.d, paramandn.c, paramandn.b) != 0)) {}
+    }
+    this.jdField_a_of_type_Andm.a(paramBoolean, paramandn);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Andm != null) {
+      this.jdField_a_of_type_Andm.b();
+    }
   }
 }
 

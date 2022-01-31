@@ -1,93 +1,81 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tribe.async.async.JobContext;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
+import dov.com.qq.im.capture.view.QIMCommonLoadingView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView;
+import java.util.List;
 
 public class bmxc
-  extends bmxd<bmwn, bmwn>
+  extends RecyclerView.Adapter<bmxd>
 {
-  protected void a(JobContext paramJobContext, bmwn parambmwn)
+  public arwp a;
+  public DynamicTextConfigManager a;
+  public List<DynamicTextConfigManager.DynamicTextConfigBean> a;
+  
+  public bmxc(EditTextEffectView paramEditTextEffectView, arwp paramarwp)
   {
-    int i = xod.b(BaseApplication.getContext());
-    int j = xod.c(BaseApplication.getContext()) * 720 / i;
-    i = j;
-    if (j % 2 != 0) {
-      i = j + 1;
-    }
-    Object localObject = parambmwn.jdField_a_of_type_Bmwt.a;
-    paramJobContext = (JobContext)localObject;
-    if (!parambmwn.jdField_a_of_type_Bmwt.c)
+    this.jdField_a_of_type_Arwp = paramarwp;
+    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager = ((DynamicTextConfigManager)blqr.a(7));
+  }
+  
+  public bmxd a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new bmxd(LayoutInflater.from(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView.getContext()).inflate(2131561438, paramViewGroup, false), this.jdField_a_of_type_Arwp);
+  }
+  
+  public void a(bmxd parambmxd, int paramInt)
+  {
+    Object localObject = (DynamicTextConfigManager.DynamicTextConfigBean)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    parambmxd.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean = ((DynamicTextConfigManager.DynamicTextConfigBean)localObject);
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)parambmxd.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localMarginLayoutParams.leftMargin = EditTextEffectView.b;
+    localMarginLayoutParams.bottomMargin = EditTextEffectView.jdField_a_of_type_Int;
+    localMarginLayoutParams.topMargin = EditTextEffectView.c;
+    parambmxd.b.setVisibility(8);
+    if (((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id == this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView.d)
     {
-      paramJobContext = (JobContext)localObject;
-      if (parambmwn.jdField_a_of_type_Bmwt.jdField_b_of_type_Boolean) {
-        paramJobContext = parambmwn.jdField_a_of_type_Bmwt.jdField_b_of_type_JavaLangString;
+      parambmxd.c.setVisibility(0);
+      parambmxd.jdField_a_of_type_AndroidWidgetImageView.setImageResource(((DynamicTextConfigManager.DynamicTextConfigBean)localObject).iconDrawableId);
+      if (!this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a((DynamicTextConfigManager.DynamicTextConfigBean)localObject)) {
+        break label193;
       }
-    }
-    try
-    {
-      localObject = bdda.a(paramJobContext, new BitmapFactory.Options());
-      if (localObject == null)
-      {
-        wsv.d("Q.qqstory.publish.edit.MakeStoryPicSegment", "aioBitmap is null please check!");
-        super.notifyError(new BitmapError("Q.qqstory.publish.edit.MakeStoryPicSegment", 0));
-        return;
-      }
-    }
-    catch (OutOfMemoryError paramJobContext)
-    {
-      wsv.b("Q.qqstory.publish.edit.MakeStoryPicSegment", "decodeFileWithBufferedStream failed", paramJobContext);
-      super.notifyError(new BitmapError("Q.qqstory.publish.edit.MakeStoryPicSegment", 6));
-      return;
-    }
-    if ((parambmwn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.d != ((Bitmap)localObject).getHeight()) || (parambmwn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c != ((Bitmap)localObject).getWidth())) {}
-    for (j = 1;; j = 0)
-    {
-      if (((Bitmap)localObject).getWidth() <= 720)
-      {
-        paramJobContext = (JobContext)localObject;
-        if (((Bitmap)localObject).getHeight() <= i) {
-          break;
-        }
-      }
-      float f = Math.min(720 / ((Bitmap)localObject).getWidth(), i / ((Bitmap)localObject).getHeight());
-      localObject = xmn.a((Bitmap)localObject, f, true);
-      wsv.a("Q.qqstory.publish.edit.MakeStoryPicSegment", "scale by %s, aioBitmap=%s", Float.valueOf(f), localObject);
-      paramJobContext = (JobContext)localObject;
-      if (localObject != null) {
-        break;
-      }
-      notifyError(new BitmapError("resizeBitmapByScale failed", -1));
-      return;
-    }
-    wsv.b("Q.qqstory.publish.edit.MakeStoryPicSegment", "current bitmap size " + paramJobContext.getWidth() + ", " + paramJobContext.getHeight());
-    if (j != 0) {
-      paramJobContext = xmn.c(paramJobContext, 720, i, false, true);
+      parambmxd.d.setVisibility(8);
     }
     for (;;)
     {
-      if (paramJobContext == null)
-      {
-        notifyError(new BitmapError("fillBitmapEdge failed", -1));
-        return;
+      parambmxd.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setVisibility(8);
+      parambmxd.jdField_a_of_type_Int = paramInt;
+      localObject = blxf.a(((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id);
+      if (localObject == null) {
+        break label204;
       }
-      if (paramJobContext.getHeight() % 2 == 0)
-      {
-        localObject = paramJobContext;
-        if (paramJobContext.getWidth() % 2 == 0) {}
-      }
-      else
-      {
-        localObject = Bitmap.createScaledBitmap(paramJobContext, paramJobContext.getWidth() >> 1 << 1, paramJobContext.getHeight() >> 1 << 1, false);
-      }
-      paramJobContext = bmxg.a(parambmwn.jdField_a_of_type_Int, parambmwn.jdField_b_of_type_JavaLangString, ".jpg");
-      xmn.a((Bitmap)localObject, paramJobContext);
-      ((Bitmap)localObject).recycle();
-      parambmwn.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = paramJobContext;
-      super.notifyResult(parambmwn);
+      parambmxd.jdField_a_of_type_AndroidViewView.setContentDescription(alud.a(2131704093) + (String)localObject + alud.a(2131704094));
       return;
+      parambmxd.c.setVisibility(8);
+      break;
+      label193:
+      parambmxd.d.setVisibility(0);
     }
+    label204:
+    parambmxd.jdField_a_of_type_AndroidViewView.setContentDescription(null);
+  }
+  
+  public void a(List<DynamicTextConfigManager.DynamicTextConfigBean> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

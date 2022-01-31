@@ -1,6 +1,19 @@
-public abstract interface bnkx
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
+
+public final class bnkx
+  implements Parcelable.Creator<FilterCategory>
 {
-  public abstract void a();
+  public FilterCategory a(Parcel paramParcel)
+  {
+    return new FilterCategory(paramParcel);
+  }
+  
+  public FilterCategory[] a(int paramInt)
+  {
+    return new FilterCategory[paramInt];
+  }
 }
 
 

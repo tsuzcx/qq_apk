@@ -1,10 +1,25 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
 
-public abstract interface ycg
+public class ycg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(int paramInt);
+  private View jdField_a_of_type_AndroidViewView;
   
-  public abstract void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString);
+  private ycg(FollowedRecommendBannerView paramFollowedRecommendBannerView, View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+  }
 }
 
 

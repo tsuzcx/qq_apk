@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import alpo;
+import alud;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
@@ -20,21 +20,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import apgg;
-import bcuq;
-import bezj;
-import bfbh;
-import bfbi;
-import bfbj;
-import bfbk;
-import bfbl;
-import bfbm;
-import bfbn;
-import bfbo;
-import bfbp;
-import bfbq;
-import bfbr;
-import bfbu;
+import apkp;
+import bcyz;
+import bfds;
+import bffq;
+import bffr;
+import bffs;
+import bfft;
+import bffu;
+import bffv;
+import bffw;
+import bffx;
+import bffy;
+import bffz;
+import bfga;
+import bfgd;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLDrawableDownListener.Adapter;
@@ -64,15 +64,15 @@ public class OpenCardContainer
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   protected RelativeLayout a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bfbo jdField_a_of_type_Bfbo;
-  private bfbq jdField_a_of_type_Bfbq;
-  public bfbr a;
+  private bffx jdField_a_of_type_Bffx;
+  private bffz jdField_a_of_type_Bffz;
+  public bfga a;
   protected URLDrawableDownListener.Adapter a;
   public AnyScaleTypeImageView a;
   public OpenAuthorityAccountView a;
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
   private String jdField_a_of_type_JavaLangString = "";
-  protected List<bfbp> a;
+  protected List<bffy> a;
   public boolean a;
   protected final int b;
   private View jdField_b_of_type_AndroidViewView;
@@ -86,17 +86,17 @@ public class OpenCardContainer
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131691561 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130839328 };
-    jdField_c_of_type_ArrayOfInt = new int[] { 2131370179 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131691562 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130839329 };
+    jdField_c_of_type_ArrayOfInt = new int[] { 2131370198 };
   }
   
   public OpenCardContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new bfbh(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bfbi(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bffq(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bffr(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     new DisplayMetrics();
     paramAttributeSet = getResources().getDisplayMetrics();
@@ -111,7 +111,7 @@ public class OpenCardContainer
     localObject3 = null;
     try
     {
-      Object localObject1 = new apgg(0, this.jdField_b_of_type_Int, 100);
+      Object localObject1 = new apkp(0, this.jdField_b_of_type_Int, 100);
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject1);
       localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject1);
@@ -162,8 +162,8 @@ public class OpenCardContainer
     }
     ValueAnimator localValueAnimator1 = ValueAnimator.ofInt(new int[] { 0, paramInt1 });
     ValueAnimator localValueAnimator2 = ValueAnimator.ofInt(new int[] { 0, paramInt2 });
-    localValueAnimator1.addUpdateListener(new bfbl(this, paramImageView));
-    localValueAnimator1.addListener(new bfbm(this, paramImageView));
+    localValueAnimator1.addUpdateListener(new bffu(this, paramImageView));
+    localValueAnimator1.addListener(new bffv(this, paramImageView));
     localValueAnimator1.setDuration(300L);
     localValueAnimator2.setDuration(300L);
     paramImageView = new AnimatorSet();
@@ -183,7 +183,7 @@ public class OpenCardContainer
         return;
         try
         {
-          Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840084);
+          Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840085);
           URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
           localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject1);
           localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject1);
@@ -203,7 +203,7 @@ public class OpenCardContainer
           }
           if (paramString != null)
           {
-            paramString.setDecodeHandler(bcuq.a);
+            paramString.setDecodeHandler(bcyz.a);
             if (paramString.getStatus() == 2) {
               paramString.restartDownload();
             }
@@ -259,8 +259,8 @@ public class OpenCardContainer
     if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
       ImmersiveUtils.a(false, ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getWindow());
     }
-    if (((this.jdField_a_of_type_AndroidContentContext instanceof PublicFragmentActivityForOpenSDK)) && (this.jdField_a_of_type_Bfbq != null)) {
-      this.jdField_a_of_type_Bfbq.a();
+    if (((this.jdField_a_of_type_AndroidContentContext instanceof PublicFragmentActivityForOpenSDK)) && (this.jdField_a_of_type_Bffz != null)) {
+      this.jdField_a_of_type_Bffz.a();
     }
     for (;;)
     {
@@ -278,14 +278,14 @@ public class OpenCardContainer
   
   public long a()
   {
-    if ((bfbr.a(this.jdField_a_of_type_Bfbr) != null) && (bfbr.a(this.jdField_a_of_type_Bfbr).size() > 0))
+    if ((bfga.a(this.jdField_a_of_type_Bfga) != null) && (bfga.a(this.jdField_a_of_type_Bfga).size() > 0))
     {
-      Iterator localIterator = bfbr.a(this.jdField_a_of_type_Bfbr).iterator();
+      Iterator localIterator = bfga.a(this.jdField_a_of_type_Bfga).iterator();
       while (localIterator.hasNext())
       {
-        bfbu localbfbu = (bfbu)localIterator.next();
-        if (localbfbu.jdField_a_of_type_Boolean) {
-          return localbfbu.jdField_a_of_type_Long;
+        bfgd localbfgd = (bfgd)localIterator.next();
+        if (localbfgd.jdField_a_of_type_Boolean) {
+          return localbfgd.jdField_a_of_type_Long;
         }
       }
     }
@@ -330,7 +330,7 @@ public class OpenCardContainer
     return localStringBuilder.toString();
   }
   
-  public List<bfbp> a()
+  public List<bffy> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
@@ -416,7 +416,7 @@ public class OpenCardContainer
     }
   }
   
-  public boolean a(List<bezj> paramList, String paramString)
+  public boolean a(List<bfds> paramList, String paramString)
   {
     int i = 0;
     Object localObject = paramList;
@@ -451,17 +451,17 @@ public class OpenCardContainer
       paramString = ((List)localObject).iterator();
       while (paramString.hasNext())
       {
-        localObject = (bezj)paramString.next();
-        bfbp localbfbp = new bfbp();
-        localbfbp.jdField_b_of_type_JavaLangString = ((bezj)localObject).jdField_b_of_type_JavaLangString;
-        localbfbp.jdField_a_of_type_Int = ((bezj)localObject).jdField_a_of_type_Int;
-        localbfbp.jdField_b_of_type_Int = ((bezj)localObject).jdField_b_of_type_Int;
-        localbfbp.jdField_a_of_type_Boolean = ((bezj)localObject).jdField_a_of_type_Boolean;
-        localbfbp.jdField_a_of_type_JavaLangString = ((bezj)localObject).jdField_a_of_type_JavaLangString;
+        localObject = (bfds)paramString.next();
+        bffy localbffy = new bffy();
+        localbffy.jdField_b_of_type_JavaLangString = ((bfds)localObject).jdField_b_of_type_JavaLangString;
+        localbffy.jdField_a_of_type_Int = ((bfds)localObject).jdField_a_of_type_Int;
+        localbffy.jdField_b_of_type_Int = ((bfds)localObject).jdField_b_of_type_Int;
+        localbffy.jdField_a_of_type_Boolean = ((bfds)localObject).jdField_a_of_type_Boolean;
+        localbffy.jdField_a_of_type_JavaLangString = ((bfds)localObject).jdField_a_of_type_JavaLangString;
         if (QLog.isColorLevel()) {
-          paramList.append("--> Permission p, api: ").append(localbfbp.jdField_b_of_type_JavaLangString).append(" | flag: ").append(localbfbp.jdField_a_of_type_Int).append(" | id: ").append(localbfbp.jdField_b_of_type_Int).append(" | isNew: ").append(localbfbp.jdField_a_of_type_Boolean).append(" | title: ").append(localbfbp.jdField_a_of_type_JavaLangString).append("\n");
+          paramList.append("--> Permission p, api: ").append(localbffy.jdField_b_of_type_JavaLangString).append(" | flag: ").append(localbffy.jdField_a_of_type_Int).append(" | id: ").append(localbffy.jdField_b_of_type_Int).append(" | isNew: ").append(localbffy.jdField_a_of_type_Boolean).append(" | title: ").append(localbffy.jdField_a_of_type_JavaLangString).append("\n");
         }
-        this.jdField_a_of_type_JavaUtilList.add(localbfbp);
+        this.jdField_a_of_type_JavaUtilList.add(localbffy);
       }
       if (!QLog.isColorLevel()) {
         break;
@@ -474,11 +474,11 @@ public class OpenCardContainer
     if (QLog.isColorLevel()) {
       QLog.d("OpenCardContainer", 2, "--> has not been authority.");
     }
-    paramList = alpo.a(2131708235);
+    paramList = alud.a(2131708247);
     label375:
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      paramString = (bfbp)this.jdField_a_of_type_JavaUtilList.get(i);
+      paramString = (bffy)this.jdField_a_of_type_JavaUtilList.get(i);
       if (i >= this.jdField_a_of_type_JavaUtilList.size() - 1) {
         break label452;
       }
@@ -521,11 +521,11 @@ public class OpenCardContainer
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362224));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362225));
     this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView = ((OpenAuthorityAccountView)super.findViewById(2131361881));
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setOnClickListener(new bfbj(this));
+    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setOnClickListener(new bffs(this));
     this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362227));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131367035));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131377965));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131377966));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131367045));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131378019));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131378020));
     this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362703));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362705));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362710));
@@ -533,14 +533,14 @@ public class OpenCardContainer
     this.jdField_b_of_type_AndroidViewView.setFocusable(true);
     this.jdField_b_of_type_AndroidViewView.setFocusableInTouchMode(true);
     this.jdField_b_of_type_AndroidViewView.requestFocus();
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131364925);
-    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131379992);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)super.findViewById(2131379993));
-    this.jdField_a_of_type_Bfbr = new bfbr(this, this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Bfbr);
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131364927);
+    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131380050);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)super.findViewById(2131380051));
+    this.jdField_a_of_type_Bfga = new bfga(this, this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Bfga);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setOverScrollFlingMode(2);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemClickListener(new bfbk(this));
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemClickListener(new bfft(this));
   }
   
   public void setAdImageByURL(AnyScaleTypeImageView paramAnyScaleTypeImageView, String paramString)
@@ -552,7 +552,7 @@ public class OpenCardContainer
     }
     try
     {
-      paramAnyScaleTypeImageView = new apgg(0, this.jdField_b_of_type_Int, 100);
+      paramAnyScaleTypeImageView = new apkp(0, this.jdField_b_of_type_Int, 100);
       localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = paramAnyScaleTypeImageView;
       localURLDrawableOptions.mFailedDrawable = paramAnyScaleTypeImageView;
@@ -612,19 +612,19 @@ public class OpenCardContainer
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void setOnAccountEventListener(bfbn parambfbn)
+  public void setOnAccountEventListener(bffw parambffw)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setAccountEventListener(parambfbn);
+    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setAccountEventListener(parambffw);
   }
   
-  public void setOnUpdateStatusBarListener(bfbq parambfbq)
+  public void setOnUpdateStatusBarListener(bffz parambffz)
   {
-    this.jdField_a_of_type_Bfbq = parambfbq;
+    this.jdField_a_of_type_Bffz = parambffz;
   }
   
-  public void setOndeleteVirtualListener(bfbo parambfbo)
+  public void setOndeleteVirtualListener(bffx parambffx)
   {
-    this.jdField_a_of_type_Bfbo = parambfbo;
+    this.jdField_a_of_type_Bffx = parambffx;
   }
 }
 

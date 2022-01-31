@@ -1,82 +1,80 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop.MyTroopObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class akbq
-  implements MediaPlayer.OnPreparedListener
+  extends ameq
 {
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  boolean jdField_a_of_type_Boolean;
+  public akbq(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  public akbq(akbl paramakbl, JSONObject paramJSONObject, String paramString, boolean paramBoolean)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.c();
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt1 != 2) {
+          break;
+        }
+      } while (paramInt2 != 0);
+      this.a.c();
+      return;
+    } while ((paramInt1 != 9) || (paramInt2 != 0));
+    this.a.c();
   }
   
-  public void a()
+  protected void a(String paramString1, String paramString2)
   {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
-      this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
-      this.jdField_a_of_type_Akbl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-      return;
-    }
-    catch (Exception localException1)
-    {
-      akbl.a(this.jdField_a_of_type_Akbl, "-->handleJsRequest exception:" + localException1.toString());
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("code", 2);
-        localJSONObject.put("errorMessage", "exception");
-        this.jdField_a_of_type_Akbl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
+    if (TroopDiscussionTroop.a(this.a) != null) {
+      TroopDiscussionTroop.a(this.a).a();
     }
   }
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  protected void a(boolean paramBoolean)
   {
-    if (akbl.a(this.jdField_a_of_type_Akbl).a()) {}
-    try
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        akbl.a(this.jdField_a_of_type_Akbl, "-->play failed");
-        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Akbl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        return;
-        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 0);
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopDiscussionTroop", 2, "onUpdateTroopList " + paramBoolean);
     }
-    catch (Exception paramMediaPlayer)
-    {
-      akbl.a(this.jdField_a_of_type_Akbl, "-->handleJsRequest exception:" + paramMediaPlayer.toString());
-      try
-      {
-        paramMediaPlayer = new JSONObject();
-        paramMediaPlayer.put("code", 2);
-        paramMediaPlayer.put("errorMessage", "exception");
-        this.jdField_a_of_type_Akbl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
-        return;
-      }
-      catch (Exception paramMediaPlayer)
-      {
-        paramMediaPlayer.printStackTrace();
-      }
+    if (paramBoolean) {
+      ThreadManager.getUIHandler().postDelayed(new TroopDiscussionTroop.MyTroopObserver.1(this), 500L);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
+  {
+    if (paramBoolean) {
+      this.a.c();
     }
   }
 }

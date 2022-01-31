@@ -1,29 +1,103 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.text.TextUtils;
+import android.util.SparseArray;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class askc
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public askc(TextHeaderView paramTextHeaderView, Activity paramActivity, MessageRecord paramMessageRecord, MessageForStructing paramMessageForStructing) {}
+  int jdField_a_of_type_Int = -1;
+  SparseArray<URLDrawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private List<String> jdField_a_of_type_JavaUtilList;
   
-  public void onClick(View paramView)
+  public askc(List<String> paramList)
   {
-    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public String a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt >= 0)) {
+      return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public String a(String paramString)
+  {
+    String str;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "";
+    }
+    do
     {
-      paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      paramView.putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(paramView, 0);
-      paramView = asjc.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 0);
-      aact.a(akro.a(), "769", "205019", paramView, "76901", "1", "160", new String[] { asjc.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "", "20" });
-      ((bdpx)akro.a().getBusinessHandler(71)).a(3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("pa_msgId"), TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+      return str;
+      if (paramString.startsWith("//")) {
+        return "file:/" + paramString;
+      }
+      str = paramString;
+    } while (!paramString.startsWith("/"));
+    return "file://" + paramString;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView != null) {
+      return paramView;
+    }
+    String str = a(a(paramInt));
+    URLDrawable localURLDrawable = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("BigImageAdapter", 2, "getView position=" + paramInt + ",cache=" + localURLDrawable + ",url=" + str);
+    }
+    paramView = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
+    if ((localURLDrawable != null) && (localURLDrawable.getStatus() == 1)) {
+      paramView.setImageDrawable(localURLDrawable);
+    }
+    for (;;)
+    {
+      paramView.setContentDescription(alud.a(2131708533) + paramInt);
+      return paramView;
+      if (!TextUtils.isEmpty(str))
+      {
+        int i = paramViewGroup.getWidth();
+        int j = paramViewGroup.getHeight();
+        paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
+        paramViewGroup.mRequestWidth = i;
+        paramViewGroup.mRequestHeight = j;
+        paramViewGroup.mLoadingDrawable = bayu.a;
+        paramViewGroup = URLDrawable.getDrawable(str, paramViewGroup);
+        switch (paramViewGroup.getStatus())
+        {
+        default: 
+          paramViewGroup.setTag(Integer.valueOf(1));
+          paramViewGroup.startDownload();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("BigImageAdapter", 2, "getView position=" + paramInt + ",parentWidth=" + i + ",parentHeight=" + j);
+        }
+        paramView.setImageDrawable(paramViewGroup);
+      }
     }
   }
 }

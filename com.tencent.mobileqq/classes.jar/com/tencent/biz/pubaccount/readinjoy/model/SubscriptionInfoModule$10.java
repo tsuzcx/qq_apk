@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import ajgm;
+import ajlb;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bjxj;
+import bkbq;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -27,11 +27,11 @@ public class SubscriptionInfoModule$10
       {
         localsut.b = 0;
         int i = syb.b((QQAppInterface)this.this$0.a, localsut.a);
-        ajgm.b((QQAppInterface)this.this$0.a, localsut.a, i);
+        ajlb.b((QQAppInterface)this.this$0.a, localsut.a, i);
         ((QQAppInterface)this.this$0.a).a().c(localsut.a, 1008);
       }
     }
-    localObject = bjxj.a(this.this$0.a, true, true).edit();
+    localObject = bkbq.a(this.this$0.a, true, true).edit();
     ((SharedPreferences.Editor)localObject).putBoolean("subscribe_unread_clear_status", false);
     ((SharedPreferences.Editor)localObject).commit();
     phd.a(this.this$0, false);

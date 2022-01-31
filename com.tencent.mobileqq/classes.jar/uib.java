@@ -1,58 +1,28 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
+import com.tencent.biz.qqcircle.widgets.multiTouchImage.PhotoViewAttacher;
 
 public class uib
+  implements GestureDetector.OnDoubleTapListener
 {
-  public long a;
-  public String a;
-  public byte[] a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public uib(PhotoViewAttacher paramPhotoViewAttacher) {}
   
-  public uib()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ArrayOfByte = new byte[1];
-  }
-  
-  public void a()
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("t", this.jdField_a_of_type_Long);
-      localJSONObject.put("ak", bdcv.a(this.jdField_a_of_type_ArrayOfByte));
-      ((urk)urr.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", localJSONObject.toString());
-      wsv.a("Q.qqstory.publish:VideoServerInfoManager", "save -> %s", localJSONObject);
-      return;
+    if (PhotoViewAttacher.a(this.a) != null) {
+      PhotoViewAttacher.a(this.a).a();
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis())
-    {
-      wsv.b("Q.qqstory.publish:VideoServerInfoManager", "server inf validate %s", this);
-      return true;
-    }
-    wsv.d("Q.qqstory.publish:VideoServerInfoManager", "server inf invalidate %s", new Object[] { this });
     return false;
   }
   
-  public boolean b()
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    return this.jdField_a_of_type_Long <= NetConnInfoCenter.getServerTimeMillis() + 600000L;
+    return false;
   }
   
-  public String toString()
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    return "ServerInfo{, userIp='" + this.jdField_a_of_type_JavaLangString + '\'' + ", serverIp1='" + this.b + '\'' + ", serverIp2='" + this.c + '\'' + ", backupServerIp1='" + this.d + '\'' + ", backupServerIp2='" + this.e + '\'' + ", expireTime=" + this.jdField_a_of_type_Long + "" + '\'' + '}';
+    return false;
   }
 }
 

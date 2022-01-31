@@ -1,278 +1,29 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.mobileqq.ptt.player.AmrPlayer;
-import com.tencent.mobileqq.ptt.player.SilkPlayer;
-import com.tencent.mobileqq.utils.VoicePlayer.1;
-import com.tencent.mobileqq.utils.VoicePlayer.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bdks
-  implements awtu
+class bdks
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private awtt jdField_a_of_type_Awtt;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new VoicePlayer.1(this);
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<bdkt> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  int jdField_a_of_type_Int;
   
-  public bdks(Context paramContext, int paramInt)
+  public bdks(bdkn parambdkn, int paramInt)
   {
-    this.jdField_a_of_type_Awtt = new AmrPlayer(paramContext, paramInt);
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public bdks(String paramString, Handler paramHandler)
+  public void onClick(View paramView)
   {
-    this(paramString, paramHandler, 0);
-  }
-  
-  public bdks(String paramString, Handler paramHandler, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    if (paramInt == 0) {
-      this.jdField_a_of_type_Awtt = new AmrPlayer();
-    }
-    for (this.jdField_b_of_type_Int = 2;; this.jdField_b_of_type_Int = 3)
+    if (this.jdField_a_of_type_Bdkn.a != null)
     {
-      this.jdField_a_of_type_Int = 1;
-      return;
-      this.jdField_a_of_type_Awtt = new SilkPlayer();
-    }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    int i = 0;
-    int j = 0;
-    if (this.jdField_b_of_type_Boolean) {
-      bdaz.a(this.jdField_a_of_type_AndroidContentContext, false);
-    }
-    if (paramBoolean) {}
-    for (this.jdField_a_of_type_Int = 8;; this.jdField_a_of_type_Int = 4)
-    {
-      if (this.jdField_a_of_type_Awtt != null)
-      {
-        i = j;
-        if (this.jdField_a_of_type_Int == 4) {
-          i = this.jdField_a_of_type_Awtt.b();
-        }
-        this.jdField_a_of_type_Awtt.e();
-        this.jdField_a_of_type_Awtt = null;
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((bdkt)localIterator.next()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, i);
-      }
-    }
-  }
-  
-  private int b()
-  {
-    if (this.jdField_a_of_type_Awtt != null) {
-      return this.jdField_a_of_type_Awtt.a();
-    }
-    return 0;
-  }
-  
-  private int c()
-  {
-    if (this.jdField_a_of_type_Awtt != null) {
-      return this.jdField_a_of_type_Awtt.b();
-    }
-    return 0;
-  }
-  
-  private void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.VoicePlayer", 2, "onCompletion duration=" + c() + " current=" + b() + " enableEndBuffer=" + this.jdField_a_of_type_Boolean + " thread=" + Thread.currentThread().getName());
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_AndroidOsHandler != null)
-      {
-        this.jdField_a_of_type_Int = 7;
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new VoicePlayer.2(this), 500L);
-        return;
-      }
-      a(false);
-      return;
-    }
-    a(false);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    g();
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(awts paramawts)
-  {
-    if (a()) {
-      ((SilkPlayer)this.jdField_a_of_type_Awtt).a(paramawts);
-    }
-  }
-  
-  public void a(awtt paramawtt, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.VoicePlayer", 2, "onError what=" + paramInt1 + " extra=" + paramInt2);
-    }
-    a(true);
-  }
-  
-  public void a(bdkt parambdkt)
-  {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parambdkt)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(parambdkt);
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Awtt != null) && ((this.jdField_a_of_type_Awtt instanceof SilkPlayer));
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if (this.jdField_a_of_type_AndroidContentContext != null) {
-      this.jdField_b_of_type_Boolean = true;
-    }
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void b() {}
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Awtt.b(paramInt);
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return false;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    return true;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      try
-      {
-        this.jdField_a_of_type_Int = 2;
-        if (this.jdField_b_of_type_Int != 1)
-        {
-          this.jdField_a_of_type_Awtt.a(this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_Awtt.g();
-        }
-        this.jdField_a_of_type_Awtt.a(this);
-        this.jdField_a_of_type_Awtt.a();
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-          a(true);
-        }
-      }
-      if (this.jdField_b_of_type_Boolean) {
-        bdaz.a(this.jdField_a_of_type_AndroidContentContext, true);
-      }
-      QLog.d("Q.profilecard.VoicePlayer", 2, "start to play...  for test time=" + System.currentTimeMillis());
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
-      }
-      return;
-      if (this.jdField_a_of_type_Int == 3)
-      {
-        this.jdField_a_of_type_Int = 2;
-        this.jdField_a_of_type_Awtt.a();
-        if (this.jdField_b_of_type_Boolean) {
-          bdaz.a(this.jdField_a_of_type_AndroidContentContext, true);
-        }
-        QLog.d("Q.profilecard.VoicePlayer", 2, "continue to play... for test time=" + System.currentTimeMillis());
-      }
-    }
-  }
-  
-  public void d()
-  {
-    if ((this.jdField_a_of_type_Awtt instanceof AmrPlayer))
-    {
-      this.jdField_a_of_type_Int = 2;
-      ((AmrPlayer)this.jdField_a_of_type_Awtt).b();
-      if (this.jdField_b_of_type_Boolean) {
-        bdaz.a(this.jdField_a_of_type_AndroidContentContext, true);
-      }
-      QLog.d("Q.profilecard.VoicePlayer", 2, "continue to play... for test time=" + System.currentTimeMillis());
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
-      }
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Int == 7) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_b_of_type_Boolean) {
-        bdaz.a(this.jdField_a_of_type_AndroidContentContext, false);
-      }
-      this.jdField_a_of_type_Int = 3;
-      this.jdField_a_of_type_Awtt.f();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((bdkt)localIterator.next()).b(this.jdField_a_of_type_JavaLangString, c(), b());
-      }
-    }
-  }
-  
-  public void f()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      bdaz.a(this.jdField_a_of_type_AndroidContentContext, false);
-    }
-    this.jdField_a_of_type_Int = 6;
-    if (this.jdField_a_of_type_Awtt != null)
-    {
-      this.jdField_a_of_type_Awtt.c();
-      this.jdField_a_of_type_Awtt.e();
-      this.jdField_a_of_type_Awtt = null;
+      this.jdField_a_of_type_Bdkn.a.onClick(this.jdField_a_of_type_Bdkn, this.jdField_a_of_type_Bdkn.a(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_Bdkn.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdks
  * JD-Core Version:    0.7.0.1
  */

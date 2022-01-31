@@ -1,25 +1,19 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class agbm
-  implements afgh
+  implements Animator.AnimatorListener
 {
-  public agbm(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  public agbm(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void a()
-  {
-    UnlimitedBladeWorks.a(this.a).b = true;
-    UnlimitedBladeWorks.a(this.a).a = false;
-    if (UnlimitedBladeWorks.a(this.a) != null)
-    {
-      UnlimitedBladeWorks.a(this.a).a();
-      if (UnlimitedBladeWorks.b(this.a))
-      {
-        HapticManager.a().c(UnlimitedBladeWorks.a(this.a));
-        UnlimitedBladeWorks.a(this.a, 0);
-      }
-    }
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

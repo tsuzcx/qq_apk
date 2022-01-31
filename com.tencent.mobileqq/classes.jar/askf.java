@@ -1,25 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.1.1;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public class askf
-  implements EIPCResultCallback
+class askf
+  extends RecyclerView.ViewHolder
 {
-  public askf(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  askf(askd paramaskd, View paramView)
   {
-    this.a.k = (System.currentTimeMillis() - this.a.a);
-    if (paramEIPCResult.code == 0)
-    {
-      paramEIPCResult = paramEIPCResult.data;
-      if (paramEIPCResult != null) {
-        ThreadManagerV2.getUIHandlerV2().post(new QQGameFeedWebFragment.1.1(this, paramEIPCResult));
-      }
-    }
+    super(paramView);
+  }
+  
+  public String toString()
+  {
+    return super.toString();
   }
 }
 

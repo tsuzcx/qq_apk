@@ -1,29 +1,20 @@
-public class akzy
-  implements Comparable
+import android.content.Context;
+
+public abstract class akzy
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
+  abstract int a(Context paramContext);
   
-  public int compareTo(Object paramObject)
+  abstract String a();
+  
+  abstract void a();
+  
+  void a(String paramString1, String paramString2, akzz paramakzz)
   {
-    paramObject = (akzy)paramObject;
-    if (this.d < paramObject.d) {
-      return 1;
+    if (("destroy".equals(paramString2)) && (paramakzz != null))
+    {
+      a();
+      paramakzz.a(this);
     }
-    if (this.d > paramObject.d) {
-      return -1;
-    }
-    return 0;
   }
 }
 

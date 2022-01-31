@@ -1,24 +1,19 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
-import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
-import com.tencent.mobileqq.ocr.ui.SearchResultViewPagerAdapter;
+import com.tencent.mobileqq.data.ContactBinded;
 
 public class avug
-  implements ViewPager.OnPageChangeListener
+  extends avun
 {
-  public avug(SearchResultFragment paramSearchResultFragment) {}
+  public ContactBinded a;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public avug(ContactBinded paramContactBinded)
   {
-    this.a.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setCurrentTab(paramInt);
-    if (this.a.jdField_a_of_type_Int != paramInt) {
-      this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter.a(paramInt);
-    }
-    this.a.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataContactBinded = paramContactBinded;
+    this.jdField_a_of_type_Long = paramContactBinded.timestamp;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataContactBinded.isReaded;
   }
 }
 

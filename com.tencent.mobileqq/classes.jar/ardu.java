@@ -1,57 +1,51 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 public class ardu
+  implements ayqp<aynu, aywd>
 {
-  public static int a(int paramInt)
+  public void a(aynu paramaynu, aywd paramaywd)
   {
-    int j = 9;
-    int i = j;
-    switch (paramInt)
+    if ((paramaywd.a() != null) && (!TextUtils.isEmpty(paramaynu.a())))
     {
-    default: 
-      i = j;
+      paramaywd.a().setVisibility(0);
+      paramaywd.a().setText(paramaynu.a());
+    }
+    if ((paramaywd.b() != null) && (!TextUtils.isEmpty(paramaynu.b())))
+    {
+      paramaywd.b().setVisibility(0);
+      paramaywd.b().setText(paramaynu.b());
+    }
+    if ((paramaywd.c() != null) && (!TextUtils.isEmpty(paramaynu.c())))
+    {
+      paramaywd.c().setVisibility(0);
+      paramaywd.c().setText(paramaynu.c());
+    }
+    if ((paramaynu.d() == null) && (paramaywd.d() != null)) {
+      paramaywd.d().setVisibility(8);
+    }
+    if ((paramaywd.d() != null) && (paramaynu.d() != null))
+    {
+      paramaywd.d().setVisibility(0);
+      paramaywd.d().setText(paramaynu.d());
+    }
+    AsyncImageView localAsyncImageView = (AsyncImageView)paramaywd.b();
+    Object localObject = (ardt)paramaynu;
+    String str = ((ardt)localObject).c();
+    localObject = ((ardt)localObject).d();
+    if (bdhb.b(str)) {
+      arrr.a(localAsyncImageView, str, arrr.a((String)localObject));
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QFileBrowserUtils", 1, "getVideoQRReportFromType: reportFromType[" + i + "]");
+      paramaywd = paramaywd.a();
+      if (paramaywd != null) {
+        paramaywd.setOnClickListener(new ardv(this, paramaynu));
       }
-      return i;
-      i = 8;
-      continue;
-      i = 7;
-      continue;
-      i = 6;
-      continue;
-      i = 5;
-      continue;
-      i = 4;
-    }
-  }
-  
-  public static void a(long paramLong)
-  {
-    int i;
-    if (paramLong < 51200L) {
-      i = 1;
-    }
-    for (;;)
-    {
-      azmj.b(null, "dc00898", "", "", "0X800ADC0", "0X800ADC0", i, 0, "", "", "", "");
       return;
-      if (paramLong < 102400L) {
-        i = 2;
-      } else if (paramLong < 512000L) {
-        i = 3;
-      } else if (paramLong < 1024000L) {
-        i = 4;
-      } else if (paramLong < 3072000L) {
-        i = 5;
-      } else if (paramLong < 10240000L) {
-        i = 6;
-      } else {
-        i = 7;
-      }
+      localAsyncImageView.setDefaultImage(arrr.b((String)localObject));
     }
   }
 }

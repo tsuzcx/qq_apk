@@ -1,23 +1,50 @@
 public final class aaom
 {
-  public final int a;
-  public final long a;
-  final String jdField_a_of_type_JavaLangString;
-  final Throwable jdField_a_of_type_JavaLangThrowable;
-  final String b;
+  private static volatile boolean a;
   
-  private aaom(String paramString1, String paramString2, int paramInt, long paramLong)
+  public static int a(int paramInt)
   {
-    this(paramString1, paramString2, paramInt, paramLong, null);
+    switch (paramInt)
+    {
+    case -5: 
+    case -4: 
+    case -3: 
+    case -1: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+    default: 
+      return 1;
+    case 0: 
+      return 0;
+    case -2: 
+      return 3;
+    case -6: 
+      return 6;
+    case -7: 
+      return 13;
+    }
+    return 207;
   }
   
-  private aaom(String paramString1, String paramString2, int paramInt, long paramLong, Throwable paramThrowable)
+  public static void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+    aase.b("GdtArkUtil", String.format("init %b", new Object[] { Boolean.valueOf(a) }));
+    if (a) {
+      return;
+    }
+    try
+    {
+      if (a) {
+        return;
+      }
+    }
+    finally {}
+    a = true;
+    anqy.a(true);
+    anqy.a();
   }
 }
 

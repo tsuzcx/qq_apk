@@ -1,32 +1,13 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
 
-final class bcvh
-  implements DownloadParams.DecodeHandler
+public class bcvh
+  implements badp
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public bcvh(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "mRoundCornerDecoder---------------");
-    }
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return bdda.b(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+    this.a.b(TroopGiftToAllSurfaceView.a(this.a));
   }
 }
 

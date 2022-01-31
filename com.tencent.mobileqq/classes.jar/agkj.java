@@ -1,70 +1,244 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IBinder.DeathRecipient;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.RemoteException;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
-class agkj
-  implements bhqd
+public abstract class agkj
+  extends Binder
+  implements agki, IBinder.DeathRecipient
 {
-  agkj(agkd paramagkd, bhpy parambhpy) {}
+  public agkl a;
   
-  public void OnClick(View paramView, int paramInt)
+  protected agkj()
   {
-    this.jdField_a_of_type_Bhpy.cancel();
-    switch (paramInt)
-    {
+    attachInterface(this, "com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+  }
+  
+  public static agki a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    do
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+    if ((localIInterface != null) && ((localIInterface instanceof agki))) {
+      return (agki)localIInterface;
+    }
+    return new agkk(paramIBinder);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PEAK", 2, "binder destoryed");
+    }
+    this.a = null;
+  }
+  
+  public void a(agkl paramagkl)
+  {
+    try
     {
-      do
-      {
-        return;
-        paramView = this.jdField_a_of_type_Agkd.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      } while ((this.jdField_a_of_type_Agkd.a() == null) || (this.jdField_a_of_type_Agkd.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (TextUtils.isEmpty(paramView)) || (this.jdField_a_of_type_Agkd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null));
+      paramagkl.asBinder().linkToDeath(this, 0);
+      this.a = paramagkl;
+      return;
+    }
+    catch (RemoteException paramagkl)
+    {
+      binderDied();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public void binderDied()
+  {
+    a();
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    boolean bool = false;
+    switch (paramInt1)
+    {
+    default: 
+    case 1598968902: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 17: 
+    case 18: 
+    case 4: 
+    case 5: 
       try
       {
-        localObject1 = yzg.b(paramView, yzg.b(2));
-        if (QLog.isColorLevel()) {
-          QLog.i(this.jdField_a_of_type_Agkd.jdField_a_of_type_JavaLangString, 2, "openMoreOptions uin:" + paramView + " uinCode:" + (String)localObject1);
-        }
-        localObject2 = this.jdField_a_of_type_Agkd.a();
-        Object localObject3 = new ArrayList();
-        if (localObject2 != null) {
-          ((List)localObject3).addAll((Collection)localObject2);
-        }
-        localObject2 = yzg.a(paramView, this.jdField_a_of_type_Agkd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 21002, 10, (List)localObject3);
-        localObject3 = ((String)localObject2).replaceAll(paramView, (String)localObject1);
-        Bundle localBundle = yzg.a(this.jdField_a_of_type_Agkd.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-        if (QLog.isColorLevel()) {
-          QLog.i(this.jdField_a_of_type_Agkd.jdField_a_of_type_JavaLangString, 2, "openMoreOptions safetyReport reportMsgOrg: " + (String)localObject2 + "  reportMsg: " + (String)localObject3);
-        }
-        yzg.a(this.jdField_a_of_type_Agkd.a(), paramView, (String)localObject1, null, null, this.jdField_a_of_type_Agkd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 21002, (String)localObject3, localBundle);
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
       }
-      catch (Throwable paramView)
+      catch (RuntimeException paramParcel1)
       {
-        for (;;)
-        {
-          QLog.e(this.jdField_a_of_type_Agkd.jdField_a_of_type_JavaLangString, 1, "openMoreOptions safetyReport error" + paramView.getMessage());
-        }
+        paramParcel1.printStackTrace();
+        throw paramParcel1;
       }
-      azmj.b(this.jdField_a_of_type_Agkd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80091A4", "0X80091A4", 0, 0, "", "", "", "");
-      return;
-      paramView = this.jdField_a_of_type_Agkd.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    } while ((this.jdField_a_of_type_Agkd.a() == null) || (this.jdField_a_of_type_Agkd.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (TextUtils.isEmpty(paramView)) || (this.jdField_a_of_type_Agkd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null));
-    Object localObject1 = (aoei)this.jdField_a_of_type_Agkd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(125);
-    Object localObject2 = ((aoel)this.jdField_a_of_type_Agkd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(269)).b();
-    if (localObject2 == null) {}
-    for (paramInt = 24;; paramInt = ((aoeh)localObject2).j)
-    {
-      ((aoei)localObject1).a(paramView, this.jdField_a_of_type_Agkd.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Agkd.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, this.jdField_a_of_type_Agkd.jdField_a_of_type_ComTencentMobileqqConfessConfessInfo, paramInt);
-      this.jdField_a_of_type_Agkd.a(0, aoeh.h, 0);
-      return;
+      paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      b(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a((MessageForShortVideo)paramParcel1.readParcelable(MessageForShortVideo.class.getClassLoader()));
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(agkm.a(paramParcel1.readStrongBinder()));
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      paramParcel1 = a(paramParcel1.readLong(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      else
+      {
+        paramParcel2.writeInt(0);
+      }
+      break;
+    case 6: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 7: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readLong(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 8: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readString(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 9: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      paramParcel1 = a(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      else
+      {
+        paramParcel2.writeInt(0);
+      }
+      break;
+    case 10: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      b(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 11: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      c(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 20: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      localObject = new long[paramParcel1.readInt()];
+      paramParcel1.readLongArray((long[])localObject);
+      a((long[])localObject);
+      paramParcel2.writeNoException();
+      return true;
+    case 24: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      d(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 13: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      e(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 14: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      paramParcel1 = a(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      else
+      {
+        paramParcel2.writeInt(0);
+      }
+      break;
+    case 15: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      c();
+      paramParcel2.writeNoException();
+      return true;
+    case 16: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readBundle());
+      paramParcel2.writeNoException();
+      return true;
+    case 19: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      paramInt1 = a(paramParcel1.readLong(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 21: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      b(paramParcel1.readString(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 22: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      paramParcel1 = a(paramParcel1.readString(), paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeString(paramParcel1);
+      return true;
     }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+    paramInt1 = paramParcel1.readInt();
+    paramInt2 = paramParcel1.readInt();
+    Object localObject = paramParcel1.readString();
+    String str1 = paramParcel1.readString();
+    String str2 = paramParcel1.readString();
+    paramParcel1 = paramParcel1.readString();
+    if (paramInt2 == 1) {
+      bool = true;
+    }
+    a(paramInt1, bool, (String)localObject, str1, str2, paramParcel1);
+    paramParcel2.writeNoException();
+    return true;
+    return true;
+    return true;
+    return true;
   }
 }
 

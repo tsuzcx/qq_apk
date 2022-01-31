@@ -1,17 +1,30 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Activity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 class afoc
-  extends afpq
+  extends ClickableSpan
 {
-  afoc(aflj paramaflj)
+  afoc(afnq paramafnq) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramaflj, null);
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      paramView = bhuf.a(this.a.jdField_a_of_type_AndroidContentContext);
+      paramView.b(2131720910);
+      paramView.c(2131690648);
+      paramView.a(new afod(this));
+      paramView.a(new afoe(this, paramView));
+      paramView.show();
+      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
+    }
   }
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return new afwe(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    paramTextPaint.setColor(-12541697);
   }
 }
 

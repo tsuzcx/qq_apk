@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.control;
 
-import awbw;
-import awby;
-import blmf;
+import awgf;
+import awgh;
+import blqr;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.app.automator.ParallGroup;
@@ -17,7 +17,7 @@ import java.util.List;
 public class UpdateAllFullMusicInfoTask
   extends ParallGroup
 {
-  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)blmf.a(2);
+  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)blqr.a(2);
   private ArrayList<FlowMusic> jdField_a_of_type_JavaUtilArrayList;
   private List<FlowMusic> jdField_a_of_type_JavaUtilList = new ArrayList();
   private ArrayList<FlowMusic> b = new ArrayList();
@@ -48,10 +48,10 @@ public class UpdateAllFullMusicInfoTask
   {
     if (!this.b.isEmpty())
     {
-      awby localawby = this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a.a();
+      awgh localawgh = this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a.a();
       try
       {
-        localawby.a();
+        localawgh.a();
         Iterator localIterator = this.b.iterator();
         while (localIterator.hasNext())
         {
@@ -61,9 +61,9 @@ public class UpdateAllFullMusicInfoTask
       }
       finally
       {
-        localawby.b();
+        localawgh.b();
       }
-      localawby.b();
+      localawgh.b();
     }
     if (this.jdField_a_of_type_JavaUtilArrayList != null) {
       this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(4, true, this.jdField_a_of_type_JavaUtilArrayList);

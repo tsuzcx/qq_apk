@@ -2,7 +2,7 @@ import android.widget.TextView;
 import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
 
 public class ntu
-  extends alvc
+  extends alzr
 {
   public ntu(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
   
@@ -12,7 +12,7 @@ public class ntu
     {
       if ((paramBoolean) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramString)))
       {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131701639));
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131701651));
         this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
         this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
       }
@@ -20,9 +20,9 @@ public class ntu
     else {
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131701618));
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131701630));
     this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846565);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846638);
   }
 }
 

@@ -1,580 +1,104 @@
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.graphics.Bitmap;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.support.v4.app.NotificationCompat.Builder;
-import android.text.TextUtils;
-import android.widget.RemoteViews;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.commonsdk.util.notification.SdkInfoUtil;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
 
 public class aqwi
+  extends aqwb
 {
-  private static aqwi jdField_a_of_type_Aqwi;
-  private static QQNotificationManager jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager;
-  public static String a;
-  private int jdField_a_of_type_Int = 278;
-  private long jdField_a_of_type_Long;
-  private aqwk jdField_a_of_type_Aqwk;
+  private aqru a;
   
-  static
+  public aqwi(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_JavaLangString = "UniformDownloadNfn<FileAssistant>";
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Aqru = new aqwj(this);
+    paramQQAppInterface.a().addObserver(this.jdField_a_of_type_Aqru);
   }
   
-  private aqwi()
+  private aqwk a(long paramLong, boolean paramBoolean)
   {
-    try
-    {
-      jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager = QQNotificationManager.getInstance();
-      this.jdField_a_of_type_Aqwk = new aqwk(this, BaseApplicationImpl.getContext());
-      this.jdField_a_of_type_Long = 123456L;
-      return;
+    aqwc localaqwc = a(paramLong);
+    if (localaqwc == null) {
+      return null;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+    if ((localaqwc instanceof aqwk)) {
+      return (aqwk)localaqwc;
     }
-  }
-  
-  private int a()
-  {
-    try
-    {
-      int i = this.jdField_a_of_type_Int;
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "genNID : notificationId[" + i + "]");
-      this.jdField_a_of_type_Int += 1;
-      if (this.jdField_a_of_type_Int > 377)
-      {
-        this.jdField_a_of_type_Int = 278;
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "genNID : notificationId is reach to the max Id.");
-      }
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private long a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return this.jdField_a_of_type_Long - 30L;
-    }
-    if (1 == paramInt) {
-      return this.jdField_a_of_type_Long - 20L;
-    }
-    if (2 == paramInt) {
-      return this.jdField_a_of_type_Long - 10L;
-    }
-    if (3 == paramInt) {
-      return this.jdField_a_of_type_Long;
-    }
-    return System.currentTimeMillis();
-  }
-  
-  public static aqwi a()
-  {
-    if (jdField_a_of_type_Aqwi == null) {
-      jdField_a_of_type_Aqwi = new aqwi();
-    }
-    return jdField_a_of_type_Aqwi;
-  }
-  
-  private int b()
-  {
-    return (int)(System.currentTimeMillis() & 0xFFFFFFF);
-  }
-  
-  public int a(arpl paramarpl, Bundle paramBundle, long paramLong, int paramInt)
-  {
-    if (-1 == paramInt)
-    {
-      paramInt = a();
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + paramLong + "]. attachDownloader.notificationId = " + paramInt);
-    }
-    while (paramarpl != null)
-    {
-      paramarpl.a(new aqwj(this, ThreadManager.getSubThreadHandler().getLooper(), paramInt, paramBundle, paramLong), false);
-      return paramInt;
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + paramLong + "]. attachDownloader.here will using notificationid,maybe is not uinform id");
-    }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + paramLong + "]. attachDownloader.dler = null. notificationId = " + paramInt);
-    return paramInt;
-  }
-  
-  public Notification a(Bundle paramBundle)
-  {
-    Object localObject1 = new NotificationCompat.Builder(BaseApplication.getContext());
-    if ((SdkInfoUtil.isOreo()) && (SdkInfoUtil.isTargetSDKOreo())) {
-      ((NotificationCompat.Builder)localObject1).setChannelId("CHANNEL_ID_OTHER");
-    }
-    localObject1 = ((NotificationCompat.Builder)localObject1).build();
-    if (paramBundle != null)
-    {
-      Object localObject2 = paramBundle.getString("_notify_param_ContentTitle");
-      ((Notification)localObject1).icon = 2130843908;
-      paramBundle = new RemoteViews(BaseApplication.getContext().getPackageName(), 2131560672);
-      paramBundle.setImageViewResource(2131371260, 2130843904);
-      paramBundle.setTextViewText(2131371269, (CharSequence)localObject2);
-      paramBundle.setProgressBar(2131371254, 100, 0, false);
-      paramBundle.setViewVisibility(2131371259, 8);
-      paramBundle.setViewVisibility(2131371255, 8);
-      paramBundle.setTextColor(2131371269, -7829368);
-      paramBundle.setTextColor(2131371259, -7829368);
-      paramBundle.setTextColor(2131371256, -7829368);
-      float f1 = this.jdField_a_of_type_Aqwk.a();
-      if (this.jdField_a_of_type_Aqwk.a() <= 0.0F)
-      {
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. initNotification param error. getTextSize failed. set defualt value:14");
-        f1 = 14.0F;
-      }
-      paramBundle.setFloat(2131371259, "setTextSize", f1);
-      paramBundle.setFloat(2131371256, "setTextSize", f1);
-      float f2 = this.jdField_a_of_type_Aqwk.b();
-      f1 = f2;
-      if (f2 <= 0.0F)
-      {
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. initNotification param error. getTitleSize failed. set defualt value:16");
-        f1 = 16.0F;
-      }
-      paramBundle.setFloat(2131371269, "setTextSize", f1);
-      localObject2 = BaseApplication.getContext().getApplicationInfo();
-      if ((localObject2 != null) && (((ApplicationInfo)localObject2).targetSdkVersion < 10) && (Build.VERSION.SDK_INT > 10)) {}
-      try
-      {
-        int i = this.jdField_a_of_type_Aqwk.a().intValue();
-        paramBundle.setInt(2131371261, "setBackgroundColor", (i & 0xFF000000) + (-1 - i));
-        ((Notification)localObject1).contentView = paramBundle;
-        return localObject1;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
-    }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. getNfn param error, NF");
     return null;
   }
   
-  protected void a(int paramInt)
+  public String a(FileManagerEntity paramFileManagerEntity, int paramInt)
   {
-    if (jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
-      jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel(jdField_a_of_type_JavaLangString, paramInt);
+    if (paramFileManagerEntity.Uuid == null)
+    {
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  download. uuid = null nSession[" + paramFileManagerEntity.nSessionId + "]");
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 50, new Object[] { paramFileManagerEntity });
+      return null;
     }
+    int i = a(paramFileManagerEntity.fileName);
+    if (-1 == i)
+    {
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  download. can not getThumb of file:" + paramFileManagerEntity.fileName);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 50, new Object[] { paramFileManagerEntity });
+      return null;
+    }
+    String str = paramFileManagerEntity.Uuid.replace("/", "");
+    a();
+    str = arqx.a().d() + a(paramInt, str);
+    if (bdhb.b(str) == true)
+    {
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb] Id[" + paramFileManagerEntity.nSessionId + "] thumb Downloaded:" + str);
+      return str;
+    }
+    aqwk localaqwk = new aqwk(paramFileManagerEntity);
+    localaqwk.jdField_a_of_type_Int = paramInt;
+    localaqwk.b = i;
+    a(localaqwk, str);
+    QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb] download  nSession[" + paramFileManagerEntity.nSessionId + "], ThumbDownloadId[" + localaqwk.jdField_a_of_type_Long + "]");
+    return null;
   }
   
-  protected void a(int paramInt, Notification paramNotification, Bundle paramBundle1, Bundle paramBundle2)
+  public void a(long paramLong, arah paramarah) {}
+  
+  public void a(long paramLong, bdpx parambdpx)
   {
-    if ((paramNotification == null) || (paramBundle1 == null) || (paramBundle2 == null)) {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. nfnUPDATE, param error. mId = " + paramInt);
-    }
-    label295:
-    label307:
-    label319:
-    for (;;)
-    {
-      return;
-      paramNotification.tickerText = (BaseApplication.getContext().getString(2131721169) + " " + paramBundle1.getString("_notify_param_Filename"));
-      paramNotification.contentView.setImageViewResource(2131371260, 2130843904);
-      int i = paramBundle2.getInt("_START_WAITING_");
-      if (1 == i)
-      {
-        paramNotification.contentView.setTextViewText(2131371256, BaseApplication.getContext().getString(2131721170));
-        paramNotification.contentView.setViewVisibility(2131371255, 0);
-        paramNotification.contentView.setViewVisibility(2131371259, 8);
-        paramNotification.contentView.setProgressBar(2131371254, 100, 0, false);
-        paramNotification.flags = 34;
-        paramBundle2 = new Intent("com.tencent.mobileqq.UniformDownloadNfn.PAUSE");
-        paramBundle2.setPackage(MobileQQ.getContext().getPackageName());
-        paramBundle2.putExtra("_PARAM_EXTRA", paramBundle1);
-        paramBundle2.putExtra("param_notifyid", paramInt);
-        paramBundle1 = PendingIntent.getBroadcast(BaseApplication.getContext(), b(), paramBundle2, 134217728);
-        if (1 != i) {
-          break label295;
-        }
-        paramNotification.when = a(2);
-        label243:
-        if (Build.VERSION.SDK_INT >= 11) {
-          break label307;
-        }
-        paramNotification.contentIntent = paramBundle1;
-      }
-      for (;;)
-      {
-        if (jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager == null) {
-          break label319;
-        }
-        try
-        {
-          jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.notify(jdField_a_of_type_JavaLangString, paramInt, paramNotification);
-          return;
-        }
-        catch (Exception paramNotification)
-        {
-          paramNotification.printStackTrace();
-          return;
-        }
-        paramNotification.contentView.setTextViewText(2131371256, "0%");
-        break;
-        paramNotification.when = a(3);
-        break label243;
-        paramNotification.contentView.setOnClickPendingIntent(2131371261, paramBundle1);
-      }
-    }
+    parambdpx.c = 0;
   }
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void a(long paramLong, boolean paramBoolean, int paramInt, String paramString, arah paramarah)
   {
-    if (paramBundle == null)
+    aqwk localaqwk = a(paramLong, false);
+    if (localaqwk == null)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. sendPauseNotification param error, NF id:" + paramInt);
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onDownloadCompleted no this session");
       return;
     }
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. sendPauseNotification, NF id:" + paramInt);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_PROGRESS_", paramBundle.getInt("_notify_param_Progress"));
-    Notification localNotification = a(paramBundle);
-    if (localNotification != null)
+    if (paramBoolean)
     {
-      c(paramInt, localNotification, paramBundle, localBundle);
-      aqwa.a().b(paramBundle.getString("_notify_param_Url"));
-      return;
+      localaqwk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = paramString;
+      arrr.e(localaqwk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localaqwk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. sendPauseNotification failed to getNfn, NF id:" + paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramBoolean, 50, new Object[] { localaqwk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(localaqwk.jdField_a_of_type_Int) });
+    super.a(paramLong, paramBoolean, paramInt, paramString, paramarah);
   }
   
-  protected void a(int paramInt, Bundle paramBundle1, Bundle paramBundle2)
+  public boolean a(long paramLong, arah paramarah)
   {
-    if ((paramBundle1 == null) || (paramBundle2 == null))
+    paramarah = a(paramLong, false);
+    if (paramarah == null)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. nfnSUCESS, param error. mId = " + paramInt);
-      return;
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onGetDownloadUrl no this session");
+      return false;
     }
-    if (jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
-      jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel(jdField_a_of_type_JavaLangString, paramInt);
-    }
-    Notification localNotification = a(paramBundle1);
-    String str1 = paramBundle2.getString("_FILE_PATH_");
-    paramBundle2.getLong("_FILE_SIZE_");
-    int i = paramBundle2.getInt("_NEW_N_ID_");
-    String str2 = paramBundle2.getString("_PKG_NAME_");
-    localNotification.tickerText = (BaseApplication.getContext().getString(2131721163) + " " + paramBundle1.getString("_notify_param_Filename"));
-    Object localObject = paramBundle1.getBundle("_notify_param_userdata");
-    paramBundle2 = "";
-    if (localObject != null) {
-      paramBundle2 = ((Bundle)localObject).getString("big_brother_source_key", "");
-    }
-    Bitmap localBitmap = null;
-    localObject = BaseApplication.getContext().getString(2131721165);
-    if (arpg.a(str1) != null)
-    {
-      localBitmap = arpg.a(str1);
-      localObject = BaseApplication.getContext().getString(2131721164);
-    }
-    if (localBitmap == null)
-    {
-      int j = arni.b(str1);
-      if (j != 0)
-      {
-        localNotification.contentView.setImageViewResource(2131371260, j);
-        label236:
-        localNotification.contentView.setImageViewResource(2131371260, 2130843906);
-      }
-    }
-    for (;;)
-    {
-      localNotification.contentView.setViewVisibility(2131371259, 0);
-      localNotification.contentView.setViewVisibility(2131371255, 8);
-      localNotification.contentView.setTextViewText(2131371259, (CharSequence)localObject);
-      localNotification.flags = 16;
-      localObject = new Intent("com.tencent.mobileqq.UniformDownloadNfn.INSTALL");
-      ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
-      ((Intent)localObject).putExtra("_PARAM_FILEPATH", str1);
-      ((Intent)localObject).putExtra("_PARAM_DL_SUC_NEW_NID", i);
-      ((Intent)localObject).putExtra("param_notifyid", paramInt);
-      if (!TextUtils.isEmpty(paramBundle2)) {
-        ((Intent)localObject).putExtra("big_brother_source_key", paramBundle2);
-      }
-      if (str2 != null) {
-        ((Intent)localObject).putExtra("_PARAM_PKGNAME", str2);
-      }
-      localNotification.contentIntent = PendingIntent.getBroadcast(BaseApplication.getContext(), b(), (Intent)localObject, 134217728);
-      paramBundle2 = new Intent("com.tencent.mobileqq.UniformDownloadNfn.BEDEL");
-      paramBundle2.setPackage(MobileQQ.getContext().getPackageName());
-      paramBundle2.putExtra("_PARAM_DL_SUC_NEW_NID", i);
-      if (str2 != null) {
-        paramBundle2.putExtra("_PARAM_PKGNAME", str2);
-      }
-      localNotification.deleteIntent = PendingIntent.getBroadcast(BaseApplication.getContext(), b(), paramBundle2, 134217728);
-      localNotification.when = a(0);
-      if (jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager == null) {
-        break;
-      }
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. NF_SUC, NF. newNId = " + i + " url:" + paramBundle1.getString("_notify_param_Url"));
-      try
-      {
-        jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.notify(jdField_a_of_type_JavaLangString, i, localNotification);
-        return;
-      }
-      catch (Exception paramBundle1)
-      {
-        paramBundle1.printStackTrace();
-        return;
-      }
-      localNotification.contentView.setImageViewResource(2131371260, 2130843906);
-      break label236;
-      localNotification.contentView.setImageViewBitmap(2131371260, localBitmap);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramarah.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramarah.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramLong);
+    return true;
   }
   
-  protected void b(int paramInt, Notification paramNotification, Bundle paramBundle1, Bundle paramBundle2)
-  {
-    if ((paramNotification == null) || (paramBundle1 == null) || (paramBundle2 == null)) {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. nfnUPDATE, param error. mId = " + paramInt);
-    }
-    for (;;)
-    {
-      return;
-      paramNotification.tickerText = null;
-      paramNotification.contentView.setImageViewResource(2131371260, 2130843904);
-      paramNotification.contentView.setViewVisibility(2131371259, 8);
-      paramNotification.contentView.setViewVisibility(2131371255, 0);
-      int i = paramBundle2.getInt("_FILE_PROGRESS_");
-      paramNotification.contentView.setProgressBar(2131371254, 100, i, false);
-      paramNotification.contentView.setTextViewText(2131371256, "" + i + "%");
-      paramNotification.flags = 34;
-      paramBundle2 = new Intent("com.tencent.mobileqq.UniformDownloadNfn.PAUSE");
-      paramBundle2.setPackage(MobileQQ.getContext().getPackageName());
-      paramBundle2.putExtra("_PARAM_EXTRA", paramBundle1);
-      paramBundle2.putExtra("param_notifyid", paramInt);
-      paramBundle1 = PendingIntent.getBroadcast(BaseApplication.getContext(), b(), paramBundle2, 134217728);
-      paramNotification.when = a(3);
-      if (Build.VERSION.SDK_INT < 11) {
-        paramNotification.contentIntent = paramBundle1;
-      }
-      while (jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null)
-      {
-        try
-        {
-          jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.notify(jdField_a_of_type_JavaLangString, paramInt, paramNotification);
-          return;
-        }
-        catch (Exception paramNotification)
-        {
-          paramNotification.printStackTrace();
-          return;
-        }
-        paramNotification.contentView.setOnClickPendingIntent(2131371261, paramBundle1);
-      }
-    }
-  }
-  
-  public void b(int paramInt, Bundle paramBundle)
-  {
-    if (paramBundle == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. sendStartAndWatingNotification param error, NF id:" + paramInt);
-      return;
-    }
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. sendStartAndWatingNotification, NF id:" + paramInt);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_PROGRESS_", 0);
-    localBundle.putInt("_START_WAITING_", 1);
-    Notification localNotification = a(paramBundle);
-    if (localNotification != null)
-    {
-      a(paramInt, localNotification, paramBundle, localBundle);
-      aqwa.a().a(paramBundle.getString("_notify_param_Url"), paramBundle.getString("_notify_param_Filename"), paramBundle.getString("_notify_param_ContentTitle", ""), paramBundle.getLong("_notify_param_Filesize"), paramBundle.getBundle("_notify_param_userdata"), paramInt, true);
-      return;
-    }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. sendStartAndWatingNotification failed to getNfn, NF id:" + paramInt);
-  }
-  
-  protected void c(int paramInt, Notification paramNotification, Bundle paramBundle1, Bundle paramBundle2)
-  {
-    if ((paramNotification == null) || (paramBundle1 == null) || (paramBundle2 == null))
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. nfnPUASE, param error. mId = " + paramInt);
-      return;
-    }
-    if (jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
-      jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel(jdField_a_of_type_JavaLangString, paramInt);
-    }
-    paramNotification.tickerText = null;
-    int i = paramBundle2.getInt("_FILE_PROGRESS_");
-    paramNotification.contentView.setImageViewResource(2131371260, 2130843907);
-    paramNotification.contentView.setViewVisibility(2131371259, 0);
-    paramNotification.contentView.setViewVisibility(2131371255, 8);
-    paramNotification.contentView.setTextViewText(2131371259, BaseApplication.getContext().getString(2131721168));
-    paramNotification.contentView.setProgressBar(2131371254, 100, i, false);
-    paramNotification.contentView.setTextViewText(2131371256, "" + i + "%");
-    paramNotification.flags = 16;
-    paramBundle2 = new Intent("com.tencent.mobileqq.UniformDownloadNfn.DO_DOWNLOAD");
-    paramBundle2.setPackage(MobileQQ.getContext().getPackageName());
-    paramBundle2.putExtra("_PARAM_EXTRA", paramBundle1);
-    paramBundle2.putExtra("param_notifyid", paramInt);
-    paramBundle2 = PendingIntent.getBroadcast(BaseApplication.getContext(), b(), paramBundle2, 134217728);
-    paramNotification.when = a(1);
-    if (Build.VERSION.SDK_INT < 11) {
-      paramNotification.contentIntent = paramBundle2;
-    }
-    for (;;)
-    {
-      paramBundle2 = new Intent("com.tencent.mobileqq.UniformDownloadNfn.BEDEL");
-      paramBundle2.putExtra("_PARAM_EXTRA", paramBundle1);
-      paramBundle2.setPackage(MobileQQ.getContext().getPackageName());
-      paramNotification.deleteIntent = PendingIntent.getBroadcast(BaseApplication.getContext(), b(), paramBundle2, 134217728);
-      if (jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager == null) {
-        break;
-      }
-      try
-      {
-        jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.notify(jdField_a_of_type_JavaLangString, paramInt, paramNotification);
-        return;
-      }
-      catch (Exception paramNotification)
-      {
-        paramNotification.printStackTrace();
-        return;
-      }
-      paramNotification.contentView.setOnClickPendingIntent(2131371261, paramBundle2);
-    }
-  }
-  
-  public void c(int paramInt, Bundle paramBundle)
-  {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. sendCancelNotification, NF id:" + paramInt);
-    a(paramInt);
-    if (paramBundle != null) {
-      aqwa.a().b(paramBundle.getString("_notify_param_Url"));
-    }
-  }
-  
-  protected void d(int paramInt, Notification paramNotification, Bundle paramBundle1, Bundle paramBundle2)
-  {
-    if ((paramNotification == null) || (paramBundle1 == null) || (paramBundle2 == null))
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. nfnFAILED, param error. mId = " + paramInt);
-      return;
-    }
-    if (jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
-      jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel(jdField_a_of_type_JavaLangString, paramInt);
-    }
-    paramNotification.contentView.setViewVisibility(2131371255, 8);
-    int i = paramBundle2.getInt("_FILE_ERR_CODE_");
-    if (2 == i)
-    {
-      paramNotification.tickerText = BaseApplication.getContext().getString(2131721167);
-      paramNotification.contentView.setTextViewText(2131371259, BaseApplication.getContext().getString(2131721167));
-      label115:
-      paramNotification.contentView.setImageViewResource(2131371260, 2130843905);
-      paramNotification.contentView.setViewVisibility(2131371259, 0);
-      paramNotification.contentView.setTextViewText(2131371256, " ");
-      paramNotification.flags = 16;
-      paramBundle2 = new Intent("com.tencent.mobileqq.UniformDownloadNfn.TRY_DOWNLOAD");
-      paramBundle2.setPackage(MobileQQ.getContext().getPackageName());
-      paramBundle2.putExtra("_PARAM_EXTRA", paramBundle1);
-      paramBundle2.putExtra("param_notifyid", paramInt);
-      paramBundle2 = PendingIntent.getBroadcast(BaseApplication.getContext(), b(), paramBundle2, 134217728);
-      paramNotification.when = a(1);
-      if (Build.VERSION.SDK_INT >= 11) {
-        break label397;
-      }
-      paramNotification.contentIntent = paramBundle2;
-    }
-    for (;;)
-    {
-      paramBundle2 = new Intent("com.tencent.mobileqq.UniformDownloadNfn.BEDEL");
-      paramBundle2.setPackage(MobileQQ.getContext().getPackageName());
-      paramBundle2.putExtra("_PARAM_EXTRA", paramBundle1);
-      paramNotification.deleteIntent = PendingIntent.getBroadcast(BaseApplication.getContext(), b(), paramBundle2, 134217728);
-      if (jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager == null) {
-        break;
-      }
-      try
-      {
-        jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.notify(jdField_a_of_type_JavaLangString, paramInt, paramNotification);
-        return;
-      }
-      catch (Exception paramNotification)
-      {
-        paramNotification.printStackTrace();
-        return;
-      }
-      paramNotification.tickerText = (BaseApplication.getContext().getString(2131721166) + " " + paramBundle1.getString("_notify_param_Filename"));
-      paramNotification.contentView.setTextViewText(2131371259, arpl.a(i) + alpo.a(2131716265));
-      break label115;
-      label397:
-      paramNotification.contentView.setOnClickPendingIntent(2131371261, paramBundle2);
-    }
-  }
-  
-  protected void e(int paramInt, Notification paramNotification, Bundle paramBundle1, Bundle paramBundle2)
-  {
-    if ((paramNotification == null) || (paramBundle1 == null) || (paramBundle2 == null)) {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. nfnRESUME, param error. mId = " + paramInt);
-    }
-    for (;;)
-    {
-      return;
-      if (jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
-        jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel(jdField_a_of_type_JavaLangString, paramInt);
-      }
-      paramNotification.tickerText = null;
-      paramNotification.contentView.setImageViewResource(2131371260, 2130843904);
-      paramNotification.contentView.setViewVisibility(2131371259, 8);
-      paramNotification.contentView.setViewVisibility(2131371255, 0);
-      int i = paramBundle2.getInt("_FILE_PROGRESS_");
-      paramNotification.contentView.setProgressBar(2131371254, 100, i, false);
-      paramNotification.contentView.setTextViewText(2131371256, BaseApplication.getContext().getString(2131721170));
-      paramNotification.flags = 34;
-      paramBundle2 = new Intent("com.tencent.mobileqq.UniformDownloadNfn.PAUSE");
-      paramBundle2.setPackage(MobileQQ.getContext().getPackageName());
-      paramBundle2.putExtra("_PARAM_EXTRA", paramBundle1);
-      paramBundle2.putExtra("param_notifyid", paramInt);
-      paramBundle1 = PendingIntent.getBroadcast(BaseApplication.getContext(), b(), paramBundle2, 134217728);
-      paramNotification.when = a(2);
-      if (Build.VERSION.SDK_INT < 11) {
-        paramNotification.contentIntent = paramBundle1;
-      }
-      while (jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null)
-      {
-        try
-        {
-          jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.notify(jdField_a_of_type_JavaLangString, paramInt, paramNotification);
-          return;
-        }
-        catch (Exception paramNotification)
-        {
-          paramNotification.printStackTrace();
-          return;
-        }
-        paramNotification.contentView.setOnClickPendingIntent(2131371261, paramBundle1);
-      }
-    }
-  }
+  public void b(long paramLong, arah paramarah) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqwi
  * JD-Core Version:    0.7.0.1
  */

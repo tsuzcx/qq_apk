@@ -1,38 +1,11 @@
-import android.view.MotionEvent;
-
-public class azes
+public abstract class azes
+  implements azeq
 {
-  final float jdField_a_of_type_Float;
-  final int jdField_a_of_type_Int;
-  final long jdField_a_of_type_Long;
-  final float[] jdField_a_of_type_ArrayOfFloat;
-  final int[] jdField_a_of_type_ArrayOfInt;
-  final float jdField_b_of_type_Float;
-  final int jdField_b_of_type_Int;
-  final float[] jdField_b_of_type_ArrayOfFloat;
-  final int c;
+  public void a(int paramInt) {}
   
-  public azes(MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_Int = paramMotionEvent.getActionMasked();
-    this.jdField_b_of_type_Int = paramMotionEvent.getPointerCount();
-    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_b_of_type_Int];
-    this.jdField_a_of_type_ArrayOfFloat = new float[this.jdField_b_of_type_Int];
-    this.jdField_b_of_type_ArrayOfFloat = new float[this.jdField_b_of_type_Int];
-    int i = 0;
-    while (i < this.jdField_b_of_type_Int)
-    {
-      this.jdField_a_of_type_ArrayOfInt[i] = paramMotionEvent.getPointerId(i);
-      this.jdField_a_of_type_ArrayOfFloat[i] = paramMotionEvent.getX(i);
-      this.jdField_b_of_type_ArrayOfFloat[i] = paramMotionEvent.getY(i);
-      i += 1;
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    i = paramMotionEvent.getActionIndex();
-    this.c = paramMotionEvent.getPointerId(i);
-    this.jdField_a_of_type_Float = paramMotionEvent.getX(i);
-    this.jdField_b_of_type_Float = paramMotionEvent.getY(i);
-  }
+  public void a(int paramInt, azej paramazej) {}
+  
+  public void b(int paramInt, azej paramazej) {}
 }
 
 

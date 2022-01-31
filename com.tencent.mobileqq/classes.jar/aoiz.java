@@ -1,78 +1,66 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.confess.ConfessInfo;
 
 public class aoiz
-  extends aofy<aoiy>
+  implements alpg
 {
-  public int a()
-  {
-    return 528;
-  }
+  public void a(aoiq paramaoiq) {}
   
-  @NonNull
-  public aoiy a(int paramInt)
-  {
-    return new aoiy();
-  }
+  public void a(String paramString, int paramInt1, int paramInt2) {}
   
-  @Nullable
-  public aoiy a(aogf[] paramArrayOfaogf)
+  public void a(boolean paramBoolean1, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2) {}
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void a(boolean paramBoolean, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, ConfessInfo paramConfessInfo) {}
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
+    switch (paramInt)
     {
-      aoiy localaoiy = aoiy.a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceManageConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
-      }
-      return localaoiy;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public Class<aoiy> a()
-  {
-    return aoiy.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(aoiy paramaoiy)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "onUpdate " + paramaoiy.toString());
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return;
+                  a(paramBoolean, paramObject);
+                  return;
+                  b(paramBoolean, paramObject);
+                  return;
+                } while ((paramObject == null) || (!(paramObject instanceof Object[])));
+                paramObject = (Object[])paramObject;
+              } while ((paramObject == null) || (paramObject.length != 6));
+              a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), (String)paramObject[4], (ConfessInfo)paramObject[5]);
+              return;
+            } while ((paramObject == null) || (!(paramObject instanceof aoiq)));
+            a((aoiq)paramObject);
+            return;
+          } while (!(paramObject instanceof Object[]));
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length < 7);
+        a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Boolean)paramObject[6]).booleanValue());
+        return;
+      } while (!(paramObject instanceof Object[]));
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length < 3);
+    a((String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoiz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
 import android.text.TextUtils;
-import bgkd;
-import bgki;
-import bgtp;
-import bgun;
-import bgut;
-import bgwc;
+import bgok;
+import bgop;
+import bgxw;
+import bgyu;
+import bgza;
+import bhaj;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONException;
@@ -20,11 +20,11 @@ public class SubpackageJsPlugin
   private static final String TAG = "SubpackageJsPlugin";
   private AtomicInteger subpackageTaskId = new AtomicInteger(0);
   
-  public String createLoadSubPackageTask(bgkd parambgkd)
+  public String createLoadSubPackageTask(bgok parambgok)
   {
     try
     {
-      localObject1 = new JSONObject(parambgkd.b);
+      localObject1 = new JSONObject(parambgok.b);
       i = this.subpackageTaskId.getAndIncrement();
       if (localObject1 != null)
       {
@@ -46,7 +46,7 @@ public class SubpackageJsPlugin
           Object localObject1;
           ((JSONObject)localObject1).put("loadTaskId", i);
           ((JSONObject)localObject1).put("state", "fail");
-          return bgki.b(parambgkd.a, (JSONObject)localObject1).toString();
+          return bgop.b(parambgok.a, (JSONObject)localObject1).toString();
           localThrowable = localThrowable;
           localJSONObject = new JSONObject();
         }
@@ -60,21 +60,21 @@ public class SubpackageJsPlugin
         }
       }
       label103:
-      Object localObject2 = bgtp.a(this.mMiniAppContext);
+      Object localObject2 = bgxw.a(this.mMiniAppContext);
       if (localObject2 != null) {
-        localObject2 = ((bgut)localObject2).a();
+        localObject2 = ((bgza)localObject2).a();
       }
       for (;;)
       {
         if (localObject2 != null)
         {
-          bgwc.a().i("SubpackageJsPlugin", "start loadSubPackage:" + localJSONObject + ", gameId:" + ((bgun)localObject2).appId + ", gameName:" + ((bgun)localObject2).apkgName);
-          ((bgun)localObject2).a(this.mMiniAppInfo, localJSONObject, new SubpackageJsPlugin.1(this, localJSONObject, i, parambgkd));
+          bhaj.a().i("SubpackageJsPlugin", "start loadSubPackage:" + localJSONObject + ", gameId:" + ((bgyu)localObject2).appId + ", gameName:" + ((bgyu)localObject2).apkgName);
+          ((bgyu)localObject2).a(this.mMiniAppInfo, localJSONObject, new SubpackageJsPlugin.1(this, localJSONObject, i, parambgok));
           localJSONObject = new JSONObject();
           try
           {
             localJSONObject.put("loadTaskId", i);
-            return bgki.a(parambgkd.a, localJSONObject).toString();
+            return bgop.a(parambgok.a, localJSONObject).toString();
             localObject2 = null;
           }
           catch (JSONException localJSONException2)
@@ -87,7 +87,7 @@ public class SubpackageJsPlugin
         }
       }
     }
-    return bgki.a(parambgkd.a, null, "found no miniGamePkg error").toString();
+    return bgop.a(parambgok.a, null, "found no miniGamePkg error").toString();
   }
 }
 

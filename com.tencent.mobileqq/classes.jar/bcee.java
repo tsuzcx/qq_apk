@@ -1,119 +1,71 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
 
 public class bcee
+  extends JobSegment<bced, bced>
 {
   private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private ArrayList<bcea> jdField_a_of_type_JavaUtilArrayList;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
   
-  public bcee()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-  }
-  
-  public bcee(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ArrayList<bcea> paramArrayList)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Long = (System.currentTimeMillis() + paramInt1 * 1000);
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt3;
-    this.jdField_c_of_type_Int = (paramInt4 * 1000);
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public bcea a(long paramLong)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      bcea localbcea = (bcea)localIterator.next();
-      if (localbcea.a() == paramLong) {
-        return localbcea;
-      }
-    }
-    return null;
-  }
-  
-  public ArrayList<bcea> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public List<Long> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(Long.valueOf(((bcea)localIterator.next()).a()));
-    }
-    return localArrayList;
-  }
-  
-  public void a(int paramInt)
+  public bcee(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(long paramLong)
+  protected void a(JobContext paramJobContext, bced parambced)
   {
-    this.jdField_c_of_type_Long = paramLong;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      bcea localbcea = (bcea)localIterator.next();
-      if ((localbcea.a() != paramLong) && (localbcea.a() == 0)) {
-        return false;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment start. info status=", Integer.valueOf(parambced.g) });
     }
-    return true;
+    bced.b();
+    try
+    {
+      String str = TroopHWJsPlugin.a(-1, parambced.a, this.jdField_a_of_type_Int, null);
+      if (arso.b(str)) {}
+      for (parambced.c = str;; parambced.c = parambced.a)
+      {
+        QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment. in path=", parambced.a, ", out path=", parambced.c });
+        if (isCanceled()) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment notifyResult. info status=", Integer.valueOf(parambced.g) });
+        }
+        notifyResult(parambced);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.e("CompressImageSegment", 2, "CompressImageSegment failed.");
+        }
+      }
+      return;
+    }
+    catch (Exception paramJobContext)
+    {
+      QLog.e("CompressImageSegment", 1, "CompressImageSegment Exception: ", paramJobContext);
+      notifyError(new Error("101"));
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e("CompressImageSegment", 1, "CompressImageSegment error. OutOfMemoryError");
+      URLDrawable.clearMemoryCache();
+      System.gc();
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        a(paramJobContext, parambced);
+        return;
+      }
+      notifyError(new Error("-1"));
+    }
   }
   
-  public int b()
+  public void onCancel()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public long b()
-  {
-    return this.jdField_c_of_type_Long;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public int c()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_b_of_type_Long = paramInt;
+    notifyError(new Error("c_1000"));
   }
 }
 

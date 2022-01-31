@@ -1,8 +1,16 @@
-public abstract interface xyx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+
+public class xyx
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public xyx(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.finish();
+  }
 }
 
 

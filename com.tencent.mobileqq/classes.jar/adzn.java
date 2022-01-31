@@ -1,82 +1,154 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.RspBody;
 
 public class adzn
-  extends amab
+  extends amdg
 {
-  public adzn(TroopLowCreditLevelNotifyActivity paramTroopLowCreditLevelNotifyActivity) {}
+  public adzn(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  protected void a(oidb_0xaf4.RspBody paramRspBody, int paramInt)
+  protected void b(boolean paramBoolean, bade parambade)
   {
-    if (paramRspBody.group_id.has())
+    if (QLog.isColorLevel())
     {
-      paramRspBody = String.valueOf(paramRspBody.group_id.get());
-      if (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramRspBody)) {
-        break label119;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList troopUin not match. rsp uin=" + paramRspBody + ", current uin=" + this.a.jdField_a_of_type_JavaLangString);
+      QLog.d("SUB_ACCOUNT", 2, "SubAccountBindActivity.onBindSubAccount() isSucc=" + paramBoolean);
+      if (parambade != null) {
+        QLog.d("SUB_ACCOUNT", 2, "SubAccountBindActivity.onBindSubAccount() mainAccount=" + parambade.jdField_b_of_type_JavaLangString + " subAccount=" + parambade.c + " errType=" + parambade.jdField_a_of_type_Int + " errMsg=" + parambade.jdField_a_of_type_JavaLangString);
       }
     }
-    label119:
-    do
+    this.a.e();
+    Object localObject2;
+    if (paramBoolean)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList group_id lost. current uin=" + this.a.jdField_a_of_type_JavaLangString);
+      this.a.c(this.a.getString(2131720400));
+      bact.a(this.a.app);
+      this.a.getActivity().setTitle("");
+      this.a.finish();
+      if ((QLog.isColorLevel()) && (parambade != null))
+      {
+        localObject2 = new StringBuilder().append("onBindSubAccount:");
+        if (!paramBoolean) {
+          break label873;
+        }
       }
-      this.a.d();
-      paramRspBody = this.a.a(1101236949L);
-    } while (paramRspBody == null);
-    this.a.a(paramRspBody);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramBoolean);
     }
-    if (!this.a.jdField_a_of_type_JavaLangString.equals(paramLong + "")) {}
-    do
+    label873:
+    for (Object localObject1 = "..success";; localObject1 = "...failed..")
     {
+      QLog.d("SUB_ACCOUNT", 2, (String)localObject1 + " ...errorMsg = " + parambade.jdField_a_of_type_JavaLangString + "...errorType = " + parambade.jdField_a_of_type_Int);
       do
       {
-        do
+        return;
+      } while (parambade == null);
+      switch (parambade.jdField_a_of_type_Int)
+      {
+      default: 
+        localObject2 = this.a.getString(2131720389);
+        localObject1 = localObject2;
+        if (parambade != null)
         {
-          do
+          localObject1 = localObject2;
+          if (!TextUtils.isEmpty(parambade.jdField_a_of_type_JavaLangString)) {
+            localObject1 = parambade.jdField_a_of_type_JavaLangString;
+          }
+        }
+        this.a.b((String)localObject1);
+        break;
+      case 1002: 
+        bacu.a(this.a.app, this.a);
+        break;
+      case 1003: 
+        this.a.b(this.a.getString(2131720390));
+        break;
+      case 1004: 
+        switch (parambade.jdField_b_of_type_Int)
+        {
+        default: 
+          localObject2 = parambade.jdField_a_of_type_JavaLangString;
+          localObject1 = localObject2;
+          if (TextUtils.isEmpty((CharSequence)localObject2))
           {
-            return;
-            this.a.d();
-          } while (!paramBoolean);
-          localObject = (TroopManager)this.a.app.getManager(52);
-        } while (localObject == null);
-        localObject = ((TroopManager)localObject).b(this.a.jdField_a_of_type_JavaLangString);
-      } while (localObject == null);
-      paramLong = ((TroopInfo)localObject).troopCreditLevel;
-      if (QLog.isColorLevel()) {
-        QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramLong);
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onBindSubAccount:bind error happen but msg is null shit, ");
+            }
+            localObject1 = this.a.getString(2131720389);
+          }
+          this.a.b((String)localObject1);
+          break;
+        case 1200: 
+        case 1214: 
+        case 1215: 
+          localObject1 = this.a.getString(2131720440);
+          localObject2 = this.a.getString(2131720392);
+          this.a.a((String)localObject1, (String)localObject2, new adzo(this, parambade));
+          break;
+        case 1218: 
+          if (!TextUtils.isEmpty(parambade.jdField_a_of_type_JavaLangString)) {
+            break;
+          }
+          localObject1 = this.a.app.getApp().getResources().getString(2131719363);
+          this.a.b((String)localObject1);
+          break;
+        case 1232: 
+          if (!TextUtils.isEmpty(parambade.jdField_a_of_type_JavaLangString)) {
+            break;
+          }
+          localObject1 = this.a.app.getApp().getResources().getString(2131720393);
+          this.a.b((String)localObject1);
+          break;
+        case 1233: 
+          if (!TextUtils.isEmpty(parambade.jdField_a_of_type_JavaLangString)) {
+            break;
+          }
+          localObject1 = this.a.app.getApp().getResources().getString(2131720383);
+          this.a.b((String)localObject1);
+          break;
+        case 1240: 
+          if (!TextUtils.isEmpty(parambade.jdField_a_of_type_JavaLangString)) {
+            break;
+          }
+          localObject1 = this.a.app.getApp().getResources().getString(2131720396);
+          this.a.b((String)localObject1);
+          break;
+        case 1241: 
+          if (!TextUtils.isEmpty(parambade.jdField_a_of_type_JavaLangString)) {
+            break;
+          }
+          localObject1 = this.a.app.getApp().getResources().getString(2131720382);
+          this.a.b((String)localObject1);
+          break;
+        case 1242: 
+          if (!TextUtils.isEmpty(parambade.jdField_a_of_type_JavaLangString)) {
+            break;
+          }
+          localObject1 = this.a.app.getApp().getResources().getString(2131720398);
+          this.a.b((String)localObject1);
+        }
+        break;
+      case 1011: 
+        localObject2 = this.a.getString(2131720389);
+        localObject1 = localObject2;
+        if (parambade != null)
+        {
+          localObject1 = localObject2;
+          if (!TextUtils.isEmpty(parambade.jdField_a_of_type_JavaLangString)) {
+            localObject1 = parambade.jdField_a_of_type_JavaLangString;
+          }
+        }
+        this.a.b((String)localObject1);
+        localObject1 = new Intent(this.a, SubLoginActivity.class);
+        ((Intent)localObject1).putExtra("subuin", parambade.c);
+        ((Intent)localObject1).putExtra("fromWhere", this.a.jdField_b_of_type_JavaLangString);
+        this.a.startActivity((Intent)localObject1);
+        break;
       }
-    } while (paramLong == 2L);
-    if (paramLong == 1L)
-    {
-      localObject = bdcd.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131720796)).setMessage(alpo.a(2131715860));
-      ((bdfq)localObject).setPositiveButton(2131697986, new adzo(this));
-      ((bdfq)localObject).setNegativeButton("", null);
-      ((bdfq)localObject).setCancelable(false);
-      ((bdfq)localObject).show();
-      return;
     }
-    Object localObject = bdcd.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131720796)).setMessage(alpo.a(2131715861));
-    ((bdfq)localObject).setPositiveButton(2131697986, new adzp(this));
-    ((bdfq)localObject).setNegativeButton("", null);
-    ((bdfq)localObject).setCancelable(false);
-    ((bdfq)localObject).show();
   }
 }
 

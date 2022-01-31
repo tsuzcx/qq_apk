@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ymi
-  implements DialogInterface.OnClickListener
+final class ymi
+  implements View.OnClickListener
 {
-  public ymi(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  ymi(ymm paramymm, String paramString, bhuf parambhuf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    this.jdField_a_of_type_Ymm.a(false, this.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_Bhuf.dismiss();
   }
 }
 

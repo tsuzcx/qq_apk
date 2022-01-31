@@ -1,51 +1,65 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.15;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import VIP.AIOKeyWordReq;
+import VIP.AIOSendReq;
+import VIP.AIOSendRes;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class ayyj
-  implements bapx
+  extends zhu
 {
-  public ayyj(PtvTemplateManager.15 param15) {}
-  
-  public void onResp(baqw parambaqw)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "onResp url: " + this.a.a.doodleUrl + " resultcode: " + parambaqw.c);
-    }
-    this.a.a.doodleUsable = this.a.this$0.a(this.a.a, false);
-    if (this.a.a.doodleUsable) {}
-    try
+    if ((amfh.a.equals(paramToServiceMsg.getServiceCmd())) || (amfh.b.equals(paramToServiceMsg.getServiceCmd())))
     {
-      ndr.a(new File(PtvTemplateManager.b, this.a.a.doodleName), PtvTemplateManager.c);
-      if (parambaqw.jdField_a_of_type_Int == 0)
-      {
-        Object localObject = this.a.this$0.a();
-        if (localObject != null)
-        {
-          localObject = (bavr)((QQAppInterface)localObject).getManager(193);
-          if (((bavr)localObject).a()) {
-            ((bavr)localObject).a(this.a.a.doodleUrl, parambaqw.jdField_a_of_type_Long);
-          }
-        }
+      if (paramFromServiceMsg == null) {
+        return null;
       }
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+      paramToServiceMsg = new UniPacket(true);
+      try
       {
-        if (QLog.isColorLevel()) {
-          localIOException.printStackTrace();
-        }
+        paramToServiceMsg.setEncodeName("utf-8");
+        paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+        paramToServiceMsg = (AIOSendRes)paramToServiceMsg.getByClass("response", new AIOSendRes());
+        return paramToServiceMsg;
+      }
+      catch (RuntimeException paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
+        return null;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        return null;
+      }
+    }
+    return null;
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramUniPacket.setServantName("VIP.AIOSendTipsServer.AIOSendTipsObj");
+    if (amfh.a.equals(paramToServiceMsg.getServiceCmd()))
+    {
+      paramUniPacket.setFuncName("CheckPopGrayStips");
+      paramUniPacket.put("request", (AIOSendReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
+    }
+    for (;;)
+    {
+      return true;
+      if (amfh.b.equals(paramToServiceMsg.getServiceCmd()))
+      {
+        paramUniPacket.setFuncName("getUserKeyWordStips");
+        paramUniPacket.put("request", (AIOKeyWordReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
       }
     }
   }
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
+  public String[] a()
+  {
+    return new String[] { "AIOSendSvc" };
+  }
 }
 
 

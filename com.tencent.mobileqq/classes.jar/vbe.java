@@ -1,54 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFriendStoryFeedVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFriendStoryFeedVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.widget.ARMapHongBaoListView;
 
-public class vbe
-  extends unk<vcy>
+class vbe
+  implements View.OnLayoutChangeListener
 {
-  public String a = "";
-  public String b = "";
-  public int c;
+  vbe(vaw paramvaw, uvt paramuvt) {}
   
-  public String a()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    return ume.a("StorySvc.homepage_feed_loadmore_720");
-  }
-  
-  public unf a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspFriendStoryFeedVideoList localRspFriendStoryFeedVideoList = new qqstory_service.RspFriendStoryFeedVideoList();
-    try
+    wxe.b(vaw.b(), "onLayoutChange");
+    if ((paramInt4 - paramInt2 > 0) && (paramInt3 - paramInt1 > 0) && ((this.jdField_a_of_type_Vaw.d) || (this.jdField_a_of_type_Vaw.e)) && (!this.jdField_a_of_type_Vaw.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.mForStory))
     {
-      localRspFriendStoryFeedVideoList.mergeFrom(paramArrayOfByte);
-      return new vcy(localRspFriendStoryFeedVideoList);
+      wxe.b(vaw.b(), "first show node, showStoryNode");
+      if (this.jdField_a_of_type_Vaw.d)
+      {
+        this.jdField_a_of_type_Vaw.d = false;
+        this.jdField_a_of_type_Uvt.b("first_show_node", Boolean.valueOf(false));
+      }
+      this.jdField_a_of_type_Vaw.e = false;
+      if (this.jdField_a_of_type_Vaw.a()) {
+        this.jdField_a_of_type_Vaw.jdField_a_of_type_Vai.a("exp_story", 4);
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wsv.d("Q.qqstory:GetFeedVideoListRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqFriendStoryFeedVideoList localReqFriendStoryFeedVideoList = new qqstory_service.ReqFriendStoryFeedVideoList();
-    if (!TextUtils.isEmpty(this.a)) {
-      localReqFriendStoryFeedVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localReqFriendStoryFeedVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    localReqFriendStoryFeedVideoList.pull_type.set(this.c);
-    return localReqFriendStoryFeedVideoList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetFeedVideoListRequest{, feedId='" + this.b + '\'' + ", startCookie='" + this.a + '\'' + ", pullType=" + this.c + '}';
   }
 }
 

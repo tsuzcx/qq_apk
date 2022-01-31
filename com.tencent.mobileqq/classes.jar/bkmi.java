@@ -1,39 +1,48 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.NumberCheckBox;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
 public class bkmi
-  extends RecyclerView.ViewHolder
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public bkmh a;
-  public URLDrawable a;
-  public NumberCheckBox a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public ImageView d;
-  public ImageView e;
+  private static String a;
+  private static String b;
   
-  public bkmi(bkme parambkme, View paramView)
+  public static String a()
   {
-    super(paramView);
-    this.b = ((ImageView)paramView.findViewById(2131371876));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371837));
-    this.c = ((ImageView)paramView.findViewById(2131368523));
-    this.d = ((ImageView)paramView.findViewById(2131371881));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371878);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131371879));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371882));
-    this.e = ((ImageView)paramView.findViewById(2131371807));
-    if (this.e != null) {
-      this.e.setVisibility(8);
+    if (a != null) {
+      return a;
     }
+    Object localObject1 = BaseApplicationImpl.sApplication.getExternalFilesDir(null);
+    if (localObject1 == null) {}
+    for (localObject1 = BaseApplicationImpl.sApplication.getFilesDir().getAbsolutePath();; localObject1 = ((File)localObject1).getAbsolutePath())
+    {
+      Object localObject2 = localObject1;
+      if (!((String)localObject1).endsWith("/")) {
+        localObject2 = (String)localObject1 + "/";
+      }
+      a = (String)localObject2;
+      return localObject2;
+    }
+  }
+  
+  public static String a(long paramLong)
+  {
+    return b(paramLong) + "disk_file_cache" + "/";
+  }
+  
+  public static String b()
+  {
+    if (b != null) {
+      return b;
+    }
+    String str = a();
+    str = str + "Tencent" + "/" + "weiyun" + "/";
+    b = str;
+    return str;
+  }
+  
+  private static String b(long paramLong)
+  {
+    return b() + paramLong + "/";
   }
 }
 

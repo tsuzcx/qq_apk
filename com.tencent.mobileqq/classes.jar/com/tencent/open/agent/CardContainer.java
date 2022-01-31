@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import alpo;
+import alud;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
@@ -18,15 +18,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import apgg;
-import bcwh;
-import bexn;
-import beze;
-import bezf;
-import bezg;
-import bezh;
-import bezi;
-import bezj;
+import apkp;
+import bdaq;
+import bfbw;
+import bfdn;
+import bfdo;
+import bfdp;
+import bfdq;
+import bfdr;
+import bfds;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLDrawableDownListener.Adapter;
@@ -62,7 +62,7 @@ public class CardContainer
   public AnyScaleTypeImageView a;
   protected FixedBounceScrollView a;
   public AuthorityAccountView a;
-  protected List<bezj> a;
+  protected List<bfds> a;
   public boolean a;
   protected final int b;
   protected ImageView b;
@@ -82,8 +82,8 @@ public class CardContainer
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new beze(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bezf(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bfdn(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bfdo(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     new DisplayMetrics();
     paramAttributeSet = getResources().getDisplayMetrics();
@@ -98,7 +98,7 @@ public class CardContainer
     localObject3 = null;
     try
     {
-      Object localObject1 = new apgg(0, this.jdField_b_of_type_Int, 100);
+      Object localObject1 = new apkp(0, this.jdField_b_of_type_Int, 100);
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject1);
       localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject1);
@@ -149,9 +149,9 @@ public class CardContainer
     }
     ValueAnimator localValueAnimator1 = ValueAnimator.ofInt(new int[] { 0, paramInt1 });
     ValueAnimator localValueAnimator2 = ValueAnimator.ofInt(new int[] { 0, paramInt2 });
-    localValueAnimator1.addUpdateListener(new bezg(this, paramImageView));
-    localValueAnimator1.addListener(new bezh(this, paramImageView));
-    localValueAnimator2.addUpdateListener(new bezi(this));
+    localValueAnimator1.addUpdateListener(new bfdp(this, paramImageView));
+    localValueAnimator1.addListener(new bfdq(this, paramImageView));
+    localValueAnimator2.addUpdateListener(new bfdr(this));
     localValueAnimator1.setDuration(300L);
     localValueAnimator2.setDuration(300L);
     paramImageView = new AnimatorSet();
@@ -228,7 +228,7 @@ public class CardContainer
     return localStringBuilder.toString();
   }
   
-  public List<bezj> a()
+  public List<bfds> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
@@ -279,7 +279,7 @@ public class CardContainer
     QLog.i("showAppInfo", 1, "showAppInfo appName = " + paramString, new RuntimeException("ShowAppInfoStack"));
     setVisibility(0);
     if ((!TextUtils.isEmpty(paramString)) && (getTag() != null)) {
-      ((TextView)findViewById(2131362218)).setText(alpo.a(2131701821) + paramString + alpo.a(2131701820));
+      ((TextView)findViewById(2131362218)).setText(alud.a(2131701833) + paramString + alud.a(2131701832));
     }
     if (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView != null) {
       this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.setAppInfo(paramString, paramBitmap);
@@ -355,19 +355,19 @@ public class CardContainer
       SdkAuthorize.AuthItem localAuthItem = (SdkAuthorize.AuthItem)((Iterator)localObject).next();
       if (localAuthItem.is_new.get() != 0)
       {
-        bezj localbezj = new bezj();
-        localbezj.jdField_b_of_type_JavaLangString = localAuthItem.api_list.get();
-        localbezj.jdField_a_of_type_Int = localAuthItem.default_flag.get();
-        localbezj.jdField_b_of_type_Int = localAuthItem.id.get();
+        bfds localbfds = new bfds();
+        localbfds.jdField_b_of_type_JavaLangString = localAuthItem.api_list.get();
+        localbfds.jdField_a_of_type_Int = localAuthItem.default_flag.get();
+        localbfds.jdField_b_of_type_Int = localAuthItem.id.get();
         if (localAuthItem.is_new.get() == 0) {}
         for (bool = false;; bool = true)
         {
-          localbezj.jdField_a_of_type_Boolean = bool;
-          localbezj.jdField_a_of_type_JavaLangString = localAuthItem.title.get();
+          localbfds.jdField_a_of_type_Boolean = bool;
+          localbfds.jdField_a_of_type_JavaLangString = localAuthItem.title.get();
           if (QLog.isColorLevel()) {
-            paramGetAuthApiListResponse.append("--> Permission p, api: ").append(localbezj.jdField_b_of_type_JavaLangString).append(" | flag: ").append(localbezj.jdField_a_of_type_Int).append(" | id: ").append(localbezj.jdField_b_of_type_Int).append(" | isNew: ").append(localbezj.jdField_a_of_type_Boolean).append(" | title: ").append(localbezj.jdField_a_of_type_JavaLangString).append("\n");
+            paramGetAuthApiListResponse.append("--> Permission p, api: ").append(localbfds.jdField_b_of_type_JavaLangString).append(" | flag: ").append(localbfds.jdField_a_of_type_Int).append(" | id: ").append(localbfds.jdField_b_of_type_Int).append(" | isNew: ").append(localbfds.jdField_a_of_type_Boolean).append(" | title: ").append(localbfds.jdField_a_of_type_JavaLangString).append("\n");
           }
-          this.jdField_a_of_type_JavaUtilList.add(localbezj);
+          this.jdField_a_of_type_JavaUtilList.add(localbfds);
           break;
         }
       }
@@ -394,9 +394,9 @@ public class CardContainer
     paramGetAuthApiListResponse = "";
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      localObject = (bezj)this.jdField_a_of_type_JavaUtilList.get(i);
+      localObject = (bfds)this.jdField_a_of_type_JavaUtilList.get(i);
       if (getTag() != null) {}
-      for (paramGetAuthApiListResponse = paramGetAuthApiListResponse + "· 获得你与QQ通讯录绑定的电话号码";; paramGetAuthApiListResponse = paramGetAuthApiListResponse + "· " + ((bezj)localObject).jdField_a_of_type_JavaLangString)
+      for (paramGetAuthApiListResponse = paramGetAuthApiListResponse + "· 获得你与QQ通讯录绑定的电话号码";; paramGetAuthApiListResponse = paramGetAuthApiListResponse + "· " + ((bfds)localObject).jdField_a_of_type_JavaLangString)
       {
         paramGetAuthApiListResponse = paramGetAuthApiListResponse + "\n";
         i += 1;
@@ -427,16 +427,16 @@ public class CardContainer
     this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362223));
     this.e = ((TextView)super.findViewById(2131362219));
     this.e.setVisibility(8);
-    this.f = ((TextView)super.findViewById(2131371383));
+    this.f = ((TextView)super.findViewById(2131371402));
     this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView = ((AuthorityAccountView)super.findViewById(2131361881));
     this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362904));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView = ((FixedBounceScrollView)super.findViewById(2131362915));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.setMaxHeight(bcwh.a(this.jdField_a_of_type_AndroidContentContext, 102.0F));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.setMaxHeight(bdaq.a(this.jdField_a_of_type_AndroidContentContext, 102.0F));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.setNeedDisallowIntercept(true);
     this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362227));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131367035));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131377965));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131377966));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131367045));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131378019));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131378020));
   }
   
   public void setAdImageByURL(AnyScaleTypeImageView paramAnyScaleTypeImageView, String paramString)
@@ -448,7 +448,7 @@ public class CardContainer
     }
     try
     {
-      paramAnyScaleTypeImageView = new apgg(0, this.jdField_b_of_type_Int, 100);
+      paramAnyScaleTypeImageView = new apkp(0, this.jdField_b_of_type_Int, 100);
       localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = paramAnyScaleTypeImageView;
       localURLDrawableOptions.mFailedDrawable = paramAnyScaleTypeImageView;
@@ -501,10 +501,10 @@ public class CardContainer
     }
   }
   
-  public void setChangeAccountListener(bexn parambexn)
+  public void setChangeAccountListener(bfbw parambfbw)
   {
     if (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView != null) {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.setChangeAccountListener(parambexn);
+      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.setChangeAccountListener(parambfbw);
     }
   }
 }

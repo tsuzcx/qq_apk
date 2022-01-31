@@ -1,31 +1,26 @@
-import android.app.Activity;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import java.util.List;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.mobileqq.widget.QQToast;
 
 class vny
   implements View.OnClickListener
 {
-  vny(vnx paramvnx) {}
+  vny(vnu paramvnu) {}
   
   public void onClick(View paramView)
   {
-    paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
-    if (paramView != null) {
-      paramView.d = 2;
-    }
-    this.a.a().finish();
-    String str = "";
-    paramView = str;
-    if (this.a.jdField_a_of_type_Int >= 0)
+    paramView = vnu.a(this.a).a();
+    if (!bdin.g(paramView))
     {
-      paramView = str;
-      if (this.a.jdField_a_of_type_Int < this.a.jdField_a_of_type_JavaUtilList.size()) {
-        paramView = ((vpk)this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_Int)).a;
-      }
+      QQToast.a(paramView, 1, 2131694766, 0).a();
+      return;
     }
-    wta.a("play_video", "clk_quit", 0, 0, new String[] { "", "", "", paramView });
+    wxe.d("Q.qqstory.playernew.StoryPlayerImpl", "updateData error, retry, requestGroupData, currentInfo = %s", new Object[] { vnu.a(this.a) });
+    vnu.a(this.a).setVisibility(0);
+    vnu.a(this.a).removeCallbacks(vnu.a(this.a));
+    vnu.a(this.a).postDelayed(vnu.a(this.a), 500L);
   }
 }
 

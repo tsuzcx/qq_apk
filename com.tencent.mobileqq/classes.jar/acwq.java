@@ -1,15 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.Iterator;
+import java.util.List;
 
 public class acwq
-  implements DialogInterface.OnClickListener
+  implements aufy<List<EmoticonPackage>>
 {
-  public acwq(FriendProfileImageActivity paramFriendProfileImageActivity, String paramString1, String paramString2) {}
+  public acwq(EmosmActivity paramEmosmActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(List<EmoticonPackage> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a(this.jdField_a_of_type_JavaLangString, this.b);
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      this.a.g.setVisibility(8);
+    }
+    do
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramList.next();
+        if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
+          this.a.c = true;
+        }
+      }
+    } while (this.a.c);
+    this.a.g.setVisibility(8);
   }
 }
 

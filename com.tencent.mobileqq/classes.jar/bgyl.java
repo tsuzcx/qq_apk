@@ -1,54 +1,23 @@
-import NS_MINI_INTERFACE.INTERFACE.StCheckSessionReq;
-import NS_MINI_INTERFACE.INTERFACE.StCheckSessionRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bgyl
-  extends bgzp
+final class bgyl
+  implements bgyt
 {
-  private INTERFACE.StCheckSessionReq a = new INTERFACE.StCheckSessionReq();
+  bgyl(MiniAppInfo paramMiniAppInfo, bgyt parambgyt) {}
   
-  public bgyl(String paramString)
+  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
   {
-    this.a.appid.set(paramString);
-  }
-  
-  protected String a()
-  {
-    return "mini_program_auth";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    if (this.jdField_a_of_type_Bgyt != null) {
+      this.jdField_a_of_type_Bgyt.onDownloadGpkgProgress(paramMiniAppInfo, paramFloat, paramLong);
     }
-    INTERFACE.StCheckSessionRsp localStCheckSessionRsp = new INTERFACE.StCheckSessionRsp();
-    try
-    {
-      localStCheckSessionRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStCheckSessionRsp != null) {
-        return new JSONObject();
-      }
-      QMLog.d("ProtoBufRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
   }
   
-  public byte[] a()
+  public void onInitGpkgInfo(int paramInt, bgyu parambgyu, String paramString)
   {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "CheckSession";
+    bgye.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+    if (this.jdField_a_of_type_Bgyt != null) {
+      this.jdField_a_of_type_Bgyt.onInitGpkgInfo(paramInt, parambgyu, paramString);
+    }
   }
 }
 

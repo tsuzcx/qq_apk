@@ -1,78 +1,54 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 
-class amuw
-  implements amuu
+public class amuw
 {
-  private IBinder a;
+  private int jdField_a_of_type_Int;
+  BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
   
-  amuw(IBinder paramIBinder)
+  public amuw(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a = paramIBinder;
+    this.jdField_a_of_type_JavaIoBufferedInputStream = new BufferedInputStream(new FileInputStream(paramString));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = 0;
+    if ((this.c != 8) && (this.c != 16)) {
+      throw new RuntimeException(String.format("bit deepth must be 8 or 16, current is %s", new Object[] { Integer.valueOf(this.c) }));
+    }
   }
   
-  public void a(int paramInt)
+  public void a()
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
+    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null) {}
     try
     {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
+      this.jdField_a_of_type_JavaIoBufferedInputStream.close();
       return;
     }
-    finally
+    catch (IOException localIOException)
     {
-      localParcel2.recycle();
-      localParcel1.recycle();
+      localIOException.printStackTrace();
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public byte[] a(long paramLong)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+    int i = (int)(this.jdField_a_of_type_Int * paramLong / 1000L) * this.b * (this.c / 8);
+    byte[] arrayOfByte1 = new byte[i];
+    byte[] arrayOfByte2 = new byte[i];
+    i = this.jdField_a_of_type_JavaIoBufferedInputStream.read(arrayOfByte1, this.d, i);
+    if (i != -1) {
+      System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, i);
     }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    QLog.d("AudioGenerator", 4, String.format("read index:%s, len: %s", new Object[] { Integer.valueOf(this.e), Integer.valueOf(i) }));
+    return arrayOfByte2;
   }
 }
 

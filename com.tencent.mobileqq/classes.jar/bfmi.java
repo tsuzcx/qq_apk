@@ -1,18 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton;
+import android.database.Cursor;
+import android.os.Parcel;
 
-public class bfmi
-  implements DialogInterface.OnClickListener
+final class bfmi
+  implements bfnq<bfmh>
 {
-  public bfmi(ApkFileDownloadButton paramApkFileDownloadButton, DownloadInfo paramDownloadInfo) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.h();
-    ApkFileDownloadButton.a(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-    bfgx.b(bfgz.a().a("400").k(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.a).j("5").l(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.c).m(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.d).a(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.h).b(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.f).g(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.e));
+    return 1;
+  }
+  
+  public bfmh a(Cursor paramCursor)
+  {
+    try
+    {
+      String str1 = paramCursor.getString(paramCursor.getColumnIndex("urlKey"));
+      String str2 = paramCursor.getString(paramCursor.getColumnIndex("ETag"));
+      long l1 = paramCursor.getLong(paramCursor.getColumnIndex("lastModify"));
+      long l2 = paramCursor.getLong(paramCursor.getColumnIndex("cacheTime"));
+      Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("response"));
+      paramCursor = Parcel.obtain();
+      paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
+      paramCursor.setDataPosition(0);
+      localObject = paramCursor.readString();
+      paramCursor.recycle();
+      paramCursor = new bfmh(str1, str2, l1, l2, (String)localObject);
+      return paramCursor;
+    }
+    catch (Exception paramCursor)
+    {
+      paramCursor.printStackTrace();
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public bfnr[] a()
+  {
+    return new bfnr[] { new bfnr("urlKey", "TEXT"), new bfnr("ETag", "TEXT"), new bfnr("lastModify", "INTEGER"), new bfnr("cacheTime", "INTEGER"), new bfnr("response", "BLOB") };
   }
 }
 

@@ -1,252 +1,272 @@
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class arty
+  extends aruf
+  implements artw
 {
-  private static long a(String paramString, Map<String, Integer> paramMap1, Map<String, Integer> paramMap2)
+  public static String a;
+  long jdField_a_of_type_Long = 0L;
+  private artx jdField_a_of_type_Artx;
+  private boolean jdField_a_of_type_Boolean;
+  private Object d = new Object();
+  
+  static
   {
-    if ((paramMap1 == null) || (paramMap2 == null)) {
-      return 0L;
-    }
-    if ((!paramMap1.containsKey(paramString)) || (!paramMap2.containsKey(paramString)))
-    {
-      QLog.d("QFlutter.Reporter", 1, String.format("%s not contains", new Object[] { paramString }));
-      return 0L;
-    }
-    long l = ((Integer)paramMap1.get(paramString)).intValue();
-    return ((Integer)paramMap2.get(paramString)).intValue() - l;
+    jdField_a_of_type_JavaLangString = "UniformDownloaderAppBaby<FileAssistant>";
   }
   
-  private static String a()
+  public arty(long paramLong)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (localAppRuntime != null) {
-      return localAppRuntime.getAccount();
-    }
-    return "";
+    super(paramLong);
   }
   
-  public static void a(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  private void a()
   {
-    HashMap localHashMap;
-    if (a())
+    String str = artu.a(1);
+    QQAppInterface localQQAppInterface = araj.a().a();
+    if (localQQAppInterface != null)
     {
-      localHashMap = new HashMap();
-      localHashMap.put("errCode", String.valueOf(paramInt));
-      localHashMap.put("launchCost", String.valueOf(paramLong1));
-      localHashMap.put("installCost", String.valueOf(paramLong2));
-      localHashMap.put("loadAssetCost", String.valueOf(paramLong3));
-      localHashMap.put("loadEngineCost", String.valueOf(paramLong4));
-      if (!paramBoolean1) {
-        break label276;
-      }
-      str = "1";
-      localHashMap.put("isPreloadProcess", str);
-      if (!paramBoolean2) {
-        break label283;
-      }
-      str = "1";
-      label105:
-      localHashMap.put("isLocalEngineExist", str);
-      if (!paramBoolean3) {
-        break label290;
-      }
-      str = "1";
-      label124:
-      localHashMap.put("isLocalAppExist", str);
-      if ((!paramBoolean3) && (!paramBoolean2)) {
-        break label297;
-      }
-    }
-    label276:
-    label283:
-    label290:
-    label297:
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("isLocalExist", str);
-      localHashMap.put("flutterUin", a());
-      azmz.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_launch_result_v2", true, 0L, 0L, localHashMap, "", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QFlutter.Reporter", 2, String.format("reportLaunchResult, errCode: %s, launchCost: %s, installCost: %s,loadAssetCost: %s, loadEngineCost: %s, isPreloadProcess: %s, isLocalEngineExist: %s, isLocalAppExist: %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
-      }
-      return;
-      str = "0";
-      break;
-      str = "0";
-      break label105;
-      str = "0";
-      break label124;
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (a())
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("pagePath", paramString);
-      azmz.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_exception", true, 0L, 0L, localHashMap, "", false);
-    }
-  }
-  
-  public static void a(String paramString, int paramInt, double paramDouble)
-  {
-    if (a())
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("pagePath", paramString);
-      localHashMap.put("fps", String.valueOf(paramInt));
-      localHashMap.put("dropRate", String.valueOf(paramDouble));
-      azmz.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_fps", true, 0L, 0L, localHashMap, "", false);
-    }
-  }
-  
-  public static void a(String paramString, long paramLong)
-  {
-    if (a())
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("pagePath", paramString);
-      localHashMap.put("cost", String.valueOf(paramLong));
-      azmz.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_page_render_cost", true, 0L, 0L, localHashMap, "", false);
-    }
-  }
-  
-  public static void a(boolean paramBoolean1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean2)
-  {
-    HashMap localHashMap;
-    if (a())
-    {
-      localHashMap = new HashMap();
-      if (!paramBoolean1) {
-        break label202;
-      }
-      str = "1";
-      localHashMap.put("errCode", str);
-      if (!paramBoolean2) {
-        break label209;
-      }
-    }
-    label202:
-    label209:
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("isPreloadProcess", str);
-      localHashMap.put("totalCost", String.valueOf(paramLong1));
-      localHashMap.put("toolCost", String.valueOf(paramLong2));
-      localHashMap.put("launchCost", String.valueOf(paramLong3));
-      localHashMap.put("openPageCost", String.valueOf(paramLong4));
-      localHashMap.put("flutterUin", a());
-      azmz.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_first_frame", true, 0L, 0L, localHashMap, "", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QFlutter.Reporter", 2, String.format("reportFirstFrameCost, isFirstLaunch: %s, totalCost: %s, toolCost: %s,launchCost: %s, openPageCost: %s, isPreloadProcess: %s", new Object[] { Boolean.valueOf(paramBoolean1), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Boolean.valueOf(paramBoolean2) }));
-      }
-      return;
-      str = "0";
-      break;
-    }
-  }
-  
-  public static void a(boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if (!a()) {
+      arrr.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", this.jdField_a_of_type_Long, "", "", "", "", 1, str, 0L, h() * this.b, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+      arrr.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 1, str, 0L, h() * this.b, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+      azrh.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-0");
       return;
     }
-    HashMap localHashMap = new HashMap();
-    if (paramBoolean1)
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].report failed - 9");
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    synchronized (this.d)
     {
-      str = "1";
-      label24:
-      localHashMap.put("errCode", str);
-      localHashMap.put("cost", String.valueOf(paramLong));
-      if (!paramBoolean2) {
-        break label140;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      return;
+    }
+  }
+  
+  private boolean b()
+  {
+    synchronized (this.d)
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
+    }
+  }
+  
+  private int i()
+  {
+    int i = arub.a().a(this.jdField_c_of_type_Long, this.jdField_c_of_type_JavaLangString, this.b, new artz(this));
+    if (i == 0) {
+      a(true);
+    }
+    return i;
+  }
+  
+  public int a()
+  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    QQAppInterface localQQAppInterface = araj.a().a();
+    if (localQQAppInterface != null) {
+      azrh.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Start_download_2-3_3-0");
+    }
+    if (!a())
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start. not inited");
+      a();
+      if (this.jdField_a_of_type_Artx != null) {
+        this.jdField_a_of_type_Artx.a(1, artu.a(1), null);
       }
-      str = "1";
-      label54:
-      localHashMap.put("isLocalEngineExist", str);
-      if (!paramBoolean3) {
-        break label147;
+      i = -1;
+      return i;
+    }
+    if (!bdin.d(BaseApplication.getContext()))
+    {
+      c(5);
+      str = artu.a(2);
+      if (localQQAppInterface != null)
+      {
+        arrr.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", this.jdField_a_of_type_Long, "", "", "", "", 2, str, 0L, h() * this.b, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+        arrr.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 2, str, 0L, h() * this.b, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+        azrh.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-0");
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Artx != null) {
+          this.jdField_a_of_type_Artx.a(2, str, null);
+        }
+        return -1;
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].report failed - 8");
       }
     }
-    label140:
-    label147:
-    for (String str = "1";; str = "0")
+    int i = e();
+    if (2 == i)
     {
-      localHashMap.put("isLocalAppExist", str);
-      azmz.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_download_cost", true, 0L, 0L, localHashMap, "", false);
-      if (!QLog.isColorLevel()) {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start. is runing");
+      return 0;
+    }
+    if ((1 != i) && (6 != i))
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start. before status is error:" + i);
+      return -1;
+    }
+    a(0);
+    if (1 == i)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start download. AddDownloadToAppBabySdk");
+      i();
+    }
+    int j;
+    for (;;)
+    {
+      j = arub.a().a(this.jdField_c_of_type_JavaLangString);
+      if (j != 0) {
         break;
       }
-      QLog.d("QFlutter.Reporter", 1, String.format("reportDownloadCost: %s", new Object[] { Long.valueOf(paramLong) }));
-      return;
-      str = "0";
-      break label24;
-      str = "0";
-      break label54;
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start. ST:" + i + " PGR:" + h());
+      c(2);
+      return j;
+      if ((6 == i) && (!arub.a().a(this.jdField_c_of_type_JavaLangString)))
+      {
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] resume download and start it. sdk is not this download, AddDownloadToAppBabySdk");
+        i();
+      }
     }
-  }
-  
-  public static void a(boolean paramBoolean1, boolean paramBoolean2, Map<String, Integer> paramMap)
-  {
-    if ((!a()) || (paramMap == null))
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start failed. ST:" + i + " PGR:" + h());
+    c(5);
+    String str = artu.a(5);
+    if (localQQAppInterface != null)
     {
-      QLog.d("QFlutter.Reporter", 1, "reportMemoryIncrement, don't need report or mBeforeMemoryInfo == null");
-      return;
+      arrr.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", this.jdField_a_of_type_Long, "", "", "", "", 5, str, 0L, h() * this.b, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+      arrr.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 5, str, 0L, h() * this.b, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+      azrh.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-0");
     }
-    int i = Build.VERSION.SDK_INT;
-    long l1 = bdcb.d() / 1024L / 1024L;
-    float f = (float)Runtime.getRuntime().maxMemory() / 1024.0F / 1024.0F;
-    Object localObject = bdcb.a(BaseApplicationImpl.getContext());
-    long l2 = a("summary.total-pss", paramMap, (Map)localObject);
-    long l3 = a("summary.java-heap", paramMap, (Map)localObject);
-    long l4 = a("summary.native-heap", paramMap, (Map)localObject);
-    long l5 = a("summary.graphics", paramMap, (Map)localObject);
-    long l6 = a("summary.code", paramMap, (Map)localObject);
-    long l7 = a("summary.private-other", paramMap, (Map)localObject);
-    localObject = bdcb.l();
-    HashMap localHashMap = new HashMap();
-    if (paramBoolean1) {}
-    for (paramMap = "1";; paramMap = "0")
+    for (;;)
     {
-      localHashMap.put("isFirstLoad", paramMap);
-      localHashMap.put("sdkVersion", String.valueOf(i));
-      localHashMap.put("resolution", localObject);
-      localHashMap.put("totalMemory", String.valueOf(l1));
-      localHashMap.put("maxMemory", String.valueOf(f));
-      localHashMap.put("totalPss", String.valueOf(l2));
-      localHashMap.put("javaPss", String.valueOf(l3));
-      localHashMap.put("nativePss", String.valueOf(l4));
-      localHashMap.put("graphicsPss", String.valueOf(l5));
-      localHashMap.put("codePss", String.valueOf(l6));
-      localHashMap.put("otherPss", String.valueOf(l7));
-      if (!paramBoolean2) {
+      i = j;
+      if (this.jdField_a_of_type_Artx == null) {
         break;
       }
-      azmz.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_enter_memory_increment", true, 0L, 0L, localHashMap, "", false);
-      return;
+      this.jdField_a_of_type_Artx.a(5, null, null);
+      return j;
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].report failed - 8");
     }
-    azmz.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_exit_memory_increment", true, 0L, 0L, localHashMap, "", false);
   }
   
-  public static boolean a()
+  public int a(artx paramartx)
   {
-    return arsx.a().b();
+    this.jdField_a_of_type_Artx = paramartx;
+    return 0;
   }
   
-  public static void b(String paramString)
+  public int a(String paramString, Bundle paramBundle)
   {
-    if (a())
+    return super.a(paramString, paramBundle);
+  }
+  
+  public int b()
+  {
+    int i = e();
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] stop. ST:" + i + " PGR:" + h());
+    c(7);
+    return arub.a().c(this.jdField_c_of_type_JavaLangString);
+  }
+  
+  public int c()
+  {
+    if (!a())
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("pagePath", paramString);
-      azmz.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_pv", true, 0L, 0L, localHashMap, "", false);
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] pause. not inited");
+      a();
+      if (this.jdField_a_of_type_Artx != null) {
+        this.jdField_a_of_type_Artx.a(1, artu.a(1), null);
+      }
+      i = -1;
+      return i;
     }
+    boolean bool = b();
+    int i = e();
+    if ((1 == i) || (!bool))
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] waiting and pause. ST:" + i + " PGR:" + h() + "(inited)");
+      c(3);
+      if (this.jdField_a_of_type_Artx != null) {
+        this.jdField_a_of_type_Artx.c(h(), null);
+      }
+      return 0;
+    }
+    if ((3 == i) || (7 == i))
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] pause. had be paused");
+      return 0;
+    }
+    int j = arub.a().b(this.jdField_c_of_type_JavaLangString);
+    if (j == 0)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] pause. ST:" + i + " PGR:" + h());
+      c(3);
+      return j;
+    }
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] pause failed. ST:" + i + " PGR:" + h());
+    c(5);
+    String str = artu.a(15);
+    QQAppInterface localQQAppInterface = araj.a().a();
+    if (localQQAppInterface != null)
+    {
+      arrr.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", this.jdField_a_of_type_Long, "", "", "", "", 15, str, 0L, h() * this.b, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+      arrr.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 15, str, 0L, h() * this.b, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+      azrh.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-0");
+    }
+    for (;;)
+    {
+      i = j;
+      if (this.jdField_a_of_type_Artx == null) {
+        break;
+      }
+      this.jdField_a_of_type_Artx.a(15, null, null);
+      return j;
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].report failed - 8");
+    }
+  }
+  
+  public int d()
+  {
+    int i = 0;
+    if (!a())
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] resume. not inited");
+      a();
+      if (this.jdField_a_of_type_Artx != null) {
+        this.jdField_a_of_type_Artx.a(1, artu.a(1), null);
+      }
+      i = -1;
+    }
+    do
+    {
+      return i;
+      int j = e();
+      if ((6 == j) || (2 == j) || (4 == j))
+      {
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] resume. had be resumed");
+        return 0;
+      }
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] resume. ST:" + j + " PGR:" + h());
+      c(6);
+    } while (this.jdField_a_of_type_Artx == null);
+    this.jdField_a_of_type_Artx.d(h(), null);
+    return 0;
+  }
+  
+  public int e()
+  {
+    return super.e();
+  }
+  
+  public int f()
+  {
+    return 0;
   }
 }
 

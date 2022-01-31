@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bkcz;
+import bkhg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
@@ -14,9 +14,9 @@ public class QzoneTiantaiTranslucentBrowserActivity
   extends QQTranslucentBrowserActivity
 {
   private static volatile long jdField_a_of_type_Long;
-  private bkcz jdField_a_of_type_Bkcz;
+  private bkhg jdField_a_of_type_Bkhg;
   
-  private bkcz a()
+  private bkhg a()
   {
     Intent localIntent = getIntent();
     if (localIntent != null)
@@ -24,11 +24,11 @@ public class QzoneTiantaiTranslucentBrowserActivity
       switch (localIntent.getIntExtra("translucent_controller", 0))
       {
       default: 
-        return new bkcz(this);
+        return new bkhg(this);
       }
-      return new bkcz(this);
+      return new bkhg(this);
     }
-    return new bkcz(this);
+    return new bkhg(this);
   }
   
   public static void a(QQAppInterface paramQQAppInterface)
@@ -67,14 +67,14 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public void a(WebView paramWebView, String paramString)
   {
     super.a(paramWebView, paramString);
-    if (this.jdField_a_of_type_Bkcz != null) {
-      this.jdField_a_of_type_Bkcz.e();
+    if (this.jdField_a_of_type_Bkhg != null) {
+      this.jdField_a_of_type_Bkhg.e();
     }
   }
   
   public void doOnBackPressed()
   {
-    if ((this.jdField_a_of_type_Bkcz != null) && (this.jdField_a_of_type_Bkcz.a())) {
+    if ((this.jdField_a_of_type_Bkhg != null) && (this.jdField_a_of_type_Bkhg.a())) {
       super.doOnBackPressed();
     }
   }
@@ -82,8 +82,8 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    if (this.jdField_a_of_type_Bkcz != null) {
-      this.jdField_a_of_type_Bkcz.a();
+    if (this.jdField_a_of_type_Bkhg != null) {
+      this.jdField_a_of_type_Bkhg.a();
     }
     return bool;
   }
@@ -91,30 +91,30 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bkcz != null) {
-      this.jdField_a_of_type_Bkcz.d();
+    if (this.jdField_a_of_type_Bkhg != null) {
+      this.jdField_a_of_type_Bkhg.d();
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Bkcz != null) {
-      this.jdField_a_of_type_Bkcz.b();
+    if (this.jdField_a_of_type_Bkhg != null) {
+      this.jdField_a_of_type_Bkhg.b();
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Bkcz != null) {
-      this.jdField_a_of_type_Bkcz.c();
+    if (this.jdField_a_of_type_Bkhg != null) {
+      this.jdField_a_of_type_Bkhg.c();
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bkcz = a();
+    this.jdField_a_of_type_Bkhg = a();
     super.onCreate(paramBundle);
   }
 }

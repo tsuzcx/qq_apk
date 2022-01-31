@@ -1,8 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public abstract interface alev
+public class alev
+  extends bead
 {
-  public abstract void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3);
+  public alev(ApolloCardWindow paramApolloCardWindow) {}
+  
+  public void onDoneFile(beae parambeae)
+  {
+    if (parambeae == null) {
+      return;
+    }
+    try
+    {
+      ??? = parambeae.a().getString("path");
+      String str = parambeae.a().getString("url");
+      parambeae = this.a.a((String)???);
+      str = bflr.d(str);
+      synchronized (ApolloCardWindow.a)
+      {
+        ApolloCardWindow.a.put(str, parambeae);
+        return;
+      }
+      return;
+    }
+    catch (Exception parambeae)
+    {
+      QLog.e("ApolloCardWindow", 1, "onDoneFile error:", parambeae);
+    }
+  }
 }
 
 

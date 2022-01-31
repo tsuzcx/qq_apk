@@ -1,15 +1,10 @@
-class aqva
-  extends aqus
+import android.os.Bundle;
+
+public abstract interface aqva
 {
-  public aqva(aqug paramaqug)
-  {
-    super(paramaqug);
-  }
+  public abstract void a(String paramString, Bundle paramBundle);
   
-  protected String a()
-  {
-    return "StateRefuseByPC";
-  }
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 

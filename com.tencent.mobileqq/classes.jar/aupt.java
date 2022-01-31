@@ -1,137 +1,98 @@
+import android.app.Dialog;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface.OnKeyListener;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.multimsg.save.FileSaveProgressView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import mqq.app.MobileQQ;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aupt
+  extends Dialog
+  implements View.OnClickListener
 {
-  public static HashSet a = new HashSet();
+  private DialogInterface.OnKeyListener jdField_a_of_type_AndroidContentDialogInterface$OnKeyListener = new aupu(this);
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  public aupv a;
+  private FileSaveProgressView jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView;
   
-  public static aups a(AppInterface paramAppInterface)
+  public aupt(@NonNull Context paramContext)
   {
-    aups localaups = new aups();
-    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
-    paramAppInterface = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4);
-    localaups.jdField_a_of_type_Boolean = paramAppInterface.getBoolean("isShowCard", false);
-    localaups.jdField_b_of_type_Boolean = paramAppInterface.getBoolean("isShowList", false);
-    localaups.jdField_a_of_type_Long = paramAppInterface.getLong("expireTime", 0L);
-    localaups.jdField_a_of_type_JavaLangString = paramAppInterface.getString("entranceJumpUrl", "");
-    localaups.jdField_b_of_type_JavaLangString = paramAppInterface.getString("entranceJumpUrlForHost", "");
-    localaups.c = paramAppInterface.getString("entranceJumpUrlForGuest", "");
-    if (QLog.isColorLevel()) {
-      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.getConfig config.expireTime=" + localaups.jdField_a_of_type_Boolean + "  config.isShowList=" + localaups.jdField_b_of_type_Boolean + "  config.expireTime=" + localaups.jdField_a_of_type_Long + "  config.entranceJumpUrl=" + localaups.jdField_a_of_type_JavaLangString + "  config.entranceJumpUrlForHost=" + localaups.jdField_b_of_type_JavaLangString + "  config.entranceJumpUrlForGuest=" + localaups.c);
-    }
-    return localaups;
+    super(paramContext, 2131755185);
+    a(paramContext);
   }
   
-  public static String a(int paramInt, String... paramVarArgs)
+  private void a()
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= paramInt)) {
-      return "";
-    }
-    return paramVarArgs[paramInt];
+    setCanceledOnTouchOutside(false);
+    setOnKeyListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnKeyListener);
   }
   
-  public static void a(AppInterface paramAppInterface, aups paramaups)
+  private void a(@NonNull Context paramContext)
   {
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559103, null);
+    setContentView(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView = ((FileSaveProgressView)paramContext.findViewById(2131376116));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131363909));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    a();
+  }
+  
+  private void b()
+  {
+    if (isShowing()) {
+      if (this.jdField_a_of_type_Aupv != null) {
+        this.jdField_a_of_type_Aupv.a();
+      }
+    }
     try
     {
-      String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
-      paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4).edit().putBoolean("isShowCard", paramaups.jdField_a_of_type_Boolean).putBoolean("isShowList", paramaups.jdField_b_of_type_Boolean).putLong("expireTime", paramaups.jdField_a_of_type_Long).putString("entranceJumpUrl", paramaups.jdField_a_of_type_JavaLangString).putString("entranceJumpUrlForHost", paramaups.jdField_b_of_type_JavaLangString).putString("entranceJumpUrlForGuest", paramaups.c).commit();
-      if (QLog.isColorLevel()) {
-        QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.saveConfig config.expireTime=" + paramaups.jdField_a_of_type_Boolean + "  config.isShowList=" + paramaups.jdField_b_of_type_Boolean + "  config.expireTime=" + paramaups.jdField_a_of_type_Long + "  config.entranceJumpUrl=" + paramaups.jdField_a_of_type_JavaLangString + "  config.entranceJumpUrlForHost=" + paramaups.jdField_b_of_type_JavaLangString + "  config.entranceJumpUrlForGuest=" + paramaups.c);
-      }
+      super.cancel();
       return;
     }
-    finally
+    catch (Throwable localThrowable)
     {
-      paramAppInterface = finally;
-      throw paramAppInterface;
+      while (!QLog.isColorLevel()) {}
+      QLog.d("FileSaveDialog", 2, "cancel dialog exception: " + localThrowable.getMessage());
     }
   }
   
-  public static void a(AppInterface paramAppInterface, String paramString)
+  public void a(int paramInt)
   {
-    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
-    paramAppInterface = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4);
-    str = "has_insert_face_score_msg_" + paramString;
-    paramAppInterface.edit().putBoolean(str, true).commit();
-    if (QLog.isColorLevel()) {
-      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.setHasInsertMsgFlag uin=" + paramString);
+    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView.setProgress(paramInt);
     }
   }
   
-  public static void a(MessageRecord paramMessageRecord, String paramString, boolean paramBoolean)
+  public void a(aupv paramaupv)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q..troop.faceScore", 2, "setFaceScoreFlag, msg = " + paramMessageRecord + "  key=" + paramString + " flag=" + paramBoolean);
-    }
-    if (paramMessageRecord == null) {
+    this.jdField_a_of_type_Aupv = paramaupv;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
       return;
     }
-    for (;;)
+    b();
+  }
+  
+  public void show()
+  {
+    if (!isShowing()) {}
+    try
     {
-      try
-      {
-        if (TextUtils.isEmpty(paramMessageRecord.extStr))
-        {
-          localJSONObject = new JSONObject();
-          localJSONObject.put(paramString, paramBoolean);
-          paramMessageRecord.extStr = localJSONObject.toString();
-          paramMessageRecord.extLong |= 0x1;
-          return;
-        }
-      }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-        return;
-      }
-      JSONObject localJSONObject = new JSONObject(paramMessageRecord.extStr);
-      localJSONObject.put(paramString, paramBoolean);
-      paramMessageRecord.extStr = localJSONObject.toString();
+      super.show();
+      return;
     }
-  }
-  
-  public static void a(String paramString1, String paramString2, String... paramVarArgs)
-  {
-    azmj.b(null, "dc00899", "grp_lbs", paramString2, "face_score", paramString1, 0, 0, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, String paramString)
-  {
-    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
-    boolean bool = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4).getBoolean("has_insert_face_score_msg_" + paramString, false);
-    if (QLog.isColorLevel()) {
-      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.getHasInsertMsgFlag uin=" + paramString + "  flag=" + bool);
-    }
-    return bool;
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord, String paramString)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q..troop.faceScore", 2, "getFaceScoreFlag, msg = " + paramMessageRecord + "  key=" + paramString);
-    }
-    if (paramMessageRecord == null) {
-      return false;
-    }
-    if ((paramMessageRecord.extStr != null) && ((paramMessageRecord.extLong & 0x1) == 1) && (paramMessageRecord.extStr.contains(paramString)) && (paramMessageRecord.getExtInfoFromExtStr(paramString).equals("true"))) {}
-    for (;;)
+    catch (Throwable localThrowable)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q..troop.faceScore.FaceScoreUtils", 2, "isFaceScoreGrayTips, ret=" + bool + ", mr=" + paramMessageRecord);
-      }
-      return bool;
-      bool = false;
+      while (!QLog.isColorLevel()) {}
+      QLog.d("FileSaveDialog", 2, "show dialog exception: " + localThrowable.getMessage());
     }
   }
 }

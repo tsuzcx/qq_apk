@@ -1,31 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hiboom.FontBubble;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
 
 public class asop
+  extends Handler
 {
-  private static AtomicInteger a;
-  public int a;
-  public FontBubble a;
+  public asop(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  static
+  public void handleMessage(Message paramMessage)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
-  }
-  
-  public asop(FontBubble paramFontBubble)
-  {
-    this.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble = paramFontBubble;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("FontBubbleManager", 1, "setFontBubble: " + this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.fontId + "," + this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.bubbleId);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+    case 2: 
+      this.a.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2, (String)paramMessage.obj);
+      return;
     }
-    ((alxl)paramQQAppInterface.a(13)).a(this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.fontId, this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.bubbleId, this.jdField_a_of_type_Int);
+    QQGameFeedWebFragment.a(this.a).setVisibility(8);
   }
 }
 

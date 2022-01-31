@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import apjs;
-import awbw;
+import apob;
+import awgf;
 import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmoticonFromGroupDBManager$2
   implements Runnable
 {
-  public EmoticonFromGroupDBManager$2(apjs paramapjs, int paramInt, EmoticonFromGroupEntity paramEmoticonFromGroupEntity) {}
+  public EmoticonFromGroupDBManager$2(apob paramapob, int paramInt, EmoticonFromGroupEntity paramEmoticonFromGroupEntity) {}
   
   public void run()
   {

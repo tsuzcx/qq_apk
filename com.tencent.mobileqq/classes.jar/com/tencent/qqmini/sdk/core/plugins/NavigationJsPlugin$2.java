@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bgkd;
+import bgok;
 
 class NavigationJsPlugin$2
   extends ResultReceiver
 {
-  NavigationJsPlugin$2(NavigationJsPlugin paramNavigationJsPlugin, Handler paramHandler, bgkd parambgkd)
+  NavigationJsPlugin$2(NavigationJsPlugin paramNavigationJsPlugin, Handler paramHandler, bgok parambgok)
   {
     super(paramHandler);
   }

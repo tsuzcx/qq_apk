@@ -1,70 +1,21 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.RecommendActivityViewHolder.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-
 public class uxq
-  extends uxn
 {
-  public static final void b(utx paramutx)
-  {
-    ThreadManager.post(new RecommendActivityViewHolder.1(paramutx), 8, null, true);
-  }
+  @xrk(a="unionID")
+  public String a;
+  @xrk(a="feedID")
+  public String b;
+  @xrk(a="vid")
+  public String c;
+  @xrk(a="fwReason")
+  public String d;
+  @xrk(a="isNewFw")
+  public String e;
+  public String f;
+  public String g;
   
-  public void a()
+  public boolean a()
   {
-    this.itemView.setTag(2131373799, null);
-  }
-  
-  public void a(utx paramutx)
-  {
-    super.a(paramutx);
-    vhj.b(this.jdField_a_of_type_AndroidWidgetImageView, paramutx.jdField_b_of_type_JavaLangString, true, (int)bdcq.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 50.0F));
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    String str;
-    int i;
-    if (TextUtils.isEmpty(paramutx.c))
-    {
-      str = alpo.a(2131713646);
-      localTextView.setText(str);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.c.setVisibility(0);
-      if (paramutx.jdField_b_of_type_Int <= 0) {
-        break label247;
-      }
-      i = 1;
-      label92:
-      a(1, i);
-      if (QLog.isColorLevel()) {
-        QLog.e("zivonchen", 2, "FollowPersonViewHolder userItem = " + paramutx.c + ", faceDrawable = " + paramutx.jdField_b_of_type_JavaLangString);
-      }
-      str = (String)this.itemView.getTag(2131373799);
-      if (!TextUtils.equals(paramutx.jdField_a_of_type_JavaLangString, str)) {
-        switch (paramutx.jdField_a_of_type_Int)
-        {
-        default: 
-          str = "unknown";
-        }
-      }
-    }
-    for (;;)
-    {
-      wta.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramutx.jdField_a_of_type_JavaLangString, str });
-      this.itemView.setTag(2131373799, paramutx.jdField_a_of_type_JavaLangString);
-      return;
-      str = paramutx.c;
-      break;
-      label247:
-      i = 0;
-      break label92;
-      str = "2";
-      continue;
-      str = "3";
-    }
+    return "1".equals(this.e);
   }
 }
 

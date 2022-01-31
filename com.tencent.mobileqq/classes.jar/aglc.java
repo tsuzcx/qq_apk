@@ -1,24 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.qphone.base.util.QLog;
 
-class aglc
+public class aglc
   implements DialogInterface.OnClickListener
 {
-  aglc(agla paramagla, String paramString) {}
+  public aglc(PhotoListPanel paramPhotoListPanel) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((almv)this.jdField_a_of_type_Agla.a.a.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Agla.a.a.a().a();
-    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.b(localRecentUser);
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
     }
-    ((almt)this.jdField_a_of_type_Agla.a.a.a(6)).a();
-    this.jdField_a_of_type_Agla.a.I();
   }
 }
 

@@ -1,26 +1,24 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class azjn
-  implements QQPermissionCallback
+class azjn
+  implements View.OnClickListener
 {
-  public azjn(azjq paramazjq, Activity paramActivity) {}
+  azjn(azjh paramazjh) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    bdcd.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Azjq);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (this.jdField_a_of_type_Azjq != null) {
-      this.jdField_a_of_type_Azjq.a();
+    azjh.a(this.a, azjh.a(this.a));
+    azjh.b(this.a, System.currentTimeMillis());
+    if (azjh.a(this.a) - azjh.b(this.a) < 300L) {
+      return;
     }
+    azjh.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azjn
  * JD-Core Version:    0.7.0.1
  */

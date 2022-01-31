@@ -44,7 +44,7 @@ public class oeg
       if ((((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAd.getGdtAdLoader().a().a.pos_ads_info.get(0)).ads_info == null) || (((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAd.getGdtAdLoader().a().a.pos_ads_info.get(0)).ads_info.get(0) == null)) {
         return null;
       }
-      localObject = aano.a((qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAd.getGdtAdLoader().a().a.pos_ads_info.get(0)).ads_info.get(0));
+      localObject = aasd.a((qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAd.getGdtAdLoader().a().a.pos_ads_info.get(0)).ads_info.get(0));
       paramGdtAd = localObject;
     } while (localObject != null);
     return null;
@@ -76,7 +76,7 @@ public class oeg
   {
     Object localObject1 = new qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo();
     ((qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo)localObject1).share_rate.set(paramInt2);
-    ((qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo)localObject1).share_check.set(aaih.a(paramLong2, paramLong3, paramInt2));
+    ((qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo)localObject1).share_check.set(aamw.a(paramLong2, paramLong3, paramInt2));
     Object localObject2 = new qq_ad_get.QQAdGet.PositionInfo.PositionExt();
     ((qq_ad_get.QQAdGet.PositionInfo.PositionExt)localObject2).share_info.set((MessageMicro)localObject1);
     ((qq_ad_get.QQAdGet.PositionInfo.PositionExt)localObject2).deep_link_version.set(1);
@@ -101,8 +101,8 @@ public class oeg
   {
     try
     {
-      paramString1 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString1)));
-      GdtMotiveVideoPageData localGdtMotiveVideoPageData = aanm.a(paramString1, aanm.a(paramInt1));
+      paramString1 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString1)));
+      GdtMotiveVideoPageData localGdtMotiveVideoPageData = aasb.a(paramString1, aasb.a(paramInt1));
       if (localGdtMotiveVideoPageData != null)
       {
         String str = paramActivity.getIntent().getStringExtra("big_brother_ref_source_key");
@@ -131,15 +131,15 @@ public class oeg
     }
   }
   
-  public void a(Activity paramActivity, String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, aaip paramaaip)
+  public void a(Activity paramActivity, String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, aane paramaane)
   {
     try
     {
-      Object localObject = new aaky();
-      ((aaky)localObject).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = a(Long.parseLong(akro.a().getCurrentAccountUin()), paramString, paramLong1, paramLong2, paramInt1, paramInt2);
-      ((aaky)localObject).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = a(true, paramActivity);
-      localObject = new GdtMotiveVideoAd((aaky)localObject);
-      ((GdtMotiveVideoAd)localObject).setListener(new WeakReference(paramaaip));
+      Object localObject = new aapn();
+      ((aapn)localObject).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = a(Long.parseLong(akwd.a().getCurrentAccountUin()), paramString, paramLong1, paramLong2, paramInt1, paramInt2);
+      ((aapn)localObject).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = a(true, paramActivity);
+      localObject = new GdtMotiveVideoAd((aapn)localObject);
+      ((GdtMotiveVideoAd)localObject).setListener(new WeakReference(paramaane));
       ((GdtMotiveVideoAd)localObject).load(paramActivity);
       if (QLog.isColorLevel()) {
         QLog.d("MotiveAdUtils", 2, "getMotiveAd : posId = " + paramString + "publicId = " + paramLong1 + "articleId = " + paramLong2 + "sourceFrom = " + paramInt1 + "shareRate = " + paramInt2);

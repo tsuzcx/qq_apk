@@ -80,7 +80,7 @@ public class lkx
     {
       localStringBuilder.append("Android").append('|');
       localStringBuilder.append(String.valueOf(Build.VERSION.SDK_INT)).append('|');
-      localStringBuilder.append("8.3.3").append('|');
+      localStringBuilder.append("8.3.5").append('|');
       localStringBuilder.append(Build.MANUFACTURER).append('|');
       localStringBuilder.append(Build.MODEL).append('|');
       localStringBuilder.append(a("9", "0", paramMap)).append('|');
@@ -420,7 +420,7 @@ public class lkx
   
   public static long c()
   {
-    return bdcb.d() / 1024L / 1024L;
+    return bdgk.d() / 1024L / 1024L;
   }
   
   private static String c()
@@ -435,8 +435,8 @@ public class lkx
   {
     try
     {
-      long l1 = bdcb.e() / 1024L / 1024L;
-      long l2 = bdcb.a(Process.myPid()) / 1024L / 1024L;
+      long l1 = bdgk.e() / 1024L / 1024L;
+      long l2 = bdgk.a(Process.myPid()) / 1024L / 1024L;
       a(22, l1);
       a(23, l2);
       return;

@@ -1,33 +1,16 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
 
 public class beci
-  implements View.OnLongClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public beci(WebViewFragment paramWebViewFragment) {}
+  public beci(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
   
-  public boolean onLongClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!this.a.jdField_a_of_type_Beeh.a("web_view_long_click", true))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
-      }
-      return true;
-    }
-    if (!this.a.jdField_a_of_type_Beeh.a("image_long_click", false))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
-      }
-      return false;
-    }
-    beds localbeds = (beds)this.a.jdField_a_of_type_Bedf.a(8);
-    if ((localbeds != null) && (localbeds.a(paramView))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if (!LiangHaoBuyFragment.a(this.a)) {
+      LiangHaoBuyFragment.b(this.a);
     }
   }
 }

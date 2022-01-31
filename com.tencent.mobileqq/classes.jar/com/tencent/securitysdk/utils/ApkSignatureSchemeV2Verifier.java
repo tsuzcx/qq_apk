@@ -1,7 +1,7 @@
 package com.tencent.securitysdk.utils;
 
 import android.util.Pair;
-import bhme;
+import bhql;
 import java.io.RandomAccessFile;
 import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
@@ -11,11 +11,11 @@ public class ApkSignatureSchemeV2Verifier
 {
   public static long a(ByteBuffer paramByteBuffer, long paramLong)
   {
-    long l = bhme.a(paramByteBuffer);
+    long l = bhql.a(paramByteBuffer);
     if (l >= paramLong) {
       throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("ZIP Central Directory offset out of range: " + l + ". ZIP End of Central Directory offset: " + paramLong);
     }
-    if (bhme.b(paramByteBuffer) + l != paramLong) {
+    if (bhql.b(paramByteBuffer) + l != paramLong) {
       throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("ZIP Central Directory is not immediately followed by End of Central Directory");
     }
     return l;
@@ -23,7 +23,7 @@ public class ApkSignatureSchemeV2Verifier
   
   public static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile)
   {
-    paramRandomAccessFile = bhme.a(paramRandomAccessFile);
+    paramRandomAccessFile = bhql.a(paramRandomAccessFile);
     if (paramRandomAccessFile == null) {
       throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("Not an APK file: ZIP End of Central Directory record not found");
     }
@@ -161,7 +161,7 @@ public class ApkSignatureSchemeV2Verifier
       Pair localPair = a(paramString);
       ByteBuffer localByteBuffer = (ByteBuffer)localPair.first;
       long l = ((Long)localPair.second).longValue();
-      if (bhme.a(paramString, l)) {
+      if (bhql.a(paramString, l)) {
         throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("ZIP64 APK not supported");
       }
       a((ByteBuffer)a(paramString, a(localByteBuffer, l)).first);

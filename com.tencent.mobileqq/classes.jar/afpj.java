@@ -1,17 +1,16 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
 
-class afpj
-  extends afpq
+public class afpj
+  implements View.OnTouchListener
 {
-  afpj(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  public afpj(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new agal(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    return true;
   }
 }
 

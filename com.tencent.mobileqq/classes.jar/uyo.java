@@ -1,58 +1,17 @@
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.2.1;
 
 public class uyo
+  implements urr<uzk, uzl>
 {
-  private static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
+  uyo(uyl paramuyl) {}
   
-  @Nullable
-  public static vbu a(String paramString, List<vbu> paramList)
+  public void a(@NonNull uzk paramuzk, @Nullable uzl paramuzl, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      vbu localvbu = (vbu)paramList.next();
-      if (paramString.equals(localvbu.a)) {
-        return localvbu;
-      }
-    }
-    return null;
-  }
-  
-  public static void a(@NonNull List<String> paramList, boolean paramBoolean)
-  {
-    wsv.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "send request : %s", paramList.toString());
-    if (paramBoolean)
-    {
-      localObject = paramList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        Long localLong = (Long)a.get(str);
-        if ((localLong != null) && (System.currentTimeMillis() - localLong.longValue() < 60000L))
-        {
-          ((Iterator)localObject).remove();
-          wsv.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "remove same request for feed info:%s", str);
-        }
-        else
-        {
-          a.put(str, Long.valueOf(System.currentTimeMillis()));
-        }
-      }
-    }
-    if (paramList.size() == 0) {
-      return;
-    }
-    wsv.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "request for feed info:%s", paramList);
-    Object localObject = new vbt(paramList);
-    ung.a().a((unk)localObject, new uyp(paramList));
+    this.a.b.post(new MsgTabNodeListLoader.2.1(this, paramuzk, paramuzl, paramErrorMessage));
   }
 }
 

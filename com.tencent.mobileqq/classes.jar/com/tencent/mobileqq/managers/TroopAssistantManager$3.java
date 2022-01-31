@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.managers;
 
-import atwd;
-import awbw;
+import auam;
+import awgf;
 import com.tencent.mobileqq.data.TroopAssistantData;
 
 public class TroopAssistantManager$3
   implements Runnable
 {
-  public TroopAssistantManager$3(atwd paramatwd, awbw paramawbw, TroopAssistantData paramTroopAssistantData) {}
+  public TroopAssistantManager$3(auam paramauam, awgf paramawgf, TroopAssistantData paramTroopAssistantData) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Awbw.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData);
+    this.jdField_a_of_type_Awgf.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData);
   }
 }
 

@@ -1,8 +1,16 @@
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailGenTask;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-public abstract interface bbsv
+class bbsv
+  implements bezx
 {
-  public abstract void a(String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask);
+  bbsv(bbsn parambbsn, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 2) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    }
+  }
 }
 
 

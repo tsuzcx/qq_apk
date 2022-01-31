@@ -1,47 +1,72 @@
-import android.app.Activity;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Vector;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class bbtz
-  implements View.OnKeyListener
+public class bbtz
 {
-  private bbtz(bbtx parambbtx) {}
+  public bbub a;
+  private Comparator<bbud> a;
+  public Vector<bbud> a;
+  public AtomicBoolean a;
+  public boolean a;
   
-  public void a()
+  public bbtz()
   {
-    Activity localActivity = this.a.a();
-    if (localActivity != null)
-    {
-      this.a.a().finish();
-      localActivity.overridePendingTransition(2130772036, 2130772233);
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_JavaUtilVector = new Vector();
+    this.jdField_a_of_type_JavaUtilComparator = new bbua(this);
   }
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(String paramString)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramInt)
+    int i = 0;
+    for (;;)
     {
-    default: 
-      bool1 = false;
-    }
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-      switch (paramKeyEvent.getAction())
+      try
       {
-      case 0: 
-      default: 
-        break;
-      case 1: 
-        bool1 = bool2;
+        paramString = new JSONObject(paramString);
+        Object localObject = paramString.optJSONArray("effectSwitch");
+        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+        {
+          if (((JSONArray)localObject).getJSONObject(0).optInt("androidSwitch") == 1)
+          {
+            bool = true;
+            this.jdField_a_of_type_Boolean = bool;
+          }
+        }
+        else
+        {
+          paramString = paramString.optJSONArray("grayMsgList");
+          if ((paramString != null) && (paramString.length() > 0))
+          {
+            if (i < paramString.length())
+            {
+              localObject = paramString.getJSONObject(i);
+              bbud localbbud = new bbud();
+              localbbud.a((JSONObject)localObject);
+              this.jdField_a_of_type_JavaUtilVector.add(localbbud);
+              i += 1;
+              continue;
+            }
+            Collections.sort(this.jdField_a_of_type_JavaUtilVector, this.jdField_a_of_type_JavaUtilComparator);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopEnterEffect.Config", 2, "config mergeFromJSON enable = " + this.jdField_a_of_type_Boolean + " graytips: " + this.jdField_a_of_type_JavaUtilVector.size());
+          }
+          return;
+        }
       }
-    } while (paramKeyEvent.isCanceled());
-    a();
-    return true;
+      catch (Exception paramString)
+      {
+        QLog.e("TroopEnterEffect.Config", 1, "mergeFromJSON error: " + paramString.getMessage());
+        return;
+      }
+      boolean bool = false;
+    }
   }
 }
 

@@ -1,51 +1,39 @@
-import com.tencent.av.service.LBSInfo;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import cooperation.qqreader.QRBridgeActivity;
 
 public class aodd
-  extends alqy
+  implements aocw
 {
-  public aodd(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  private Bundle a;
   
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  public aodd() {}
+  
+  public aodd(Bundle paramBundle)
   {
-    Object localObject = null;
-    if (paramBoolean) {
-      localObject = paramLBSInfo.a();
+    this.a = paramBundle;
+  }
+  
+  public void a(Context paramContext, ColorNote paramColorNote)
+  {
+    Intent localIntent = new Intent(paramContext, QRBridgeActivity.class);
+    localIntent.putExtra("readtype", "16");
+    localIntent.putExtra("stay", "1");
+    if (this.a != null) {
+      localIntent.putExtras(this.a);
     }
-    if (localObject != null)
+    paramColorNote = paramColorNote.getSubType().split("_");
+    if (paramColorNote.length > 1)
     {
-      paramLBSInfo = (LBSInfo)localObject;
-      if (localObject.length == 4) {}
-    }
-    else
-    {
-      paramLBSInfo = new String[4];
-      paramLBSInfo[0] = "-1";
-      paramLBSInfo[1] = "-1";
-      paramLBSInfo[2] = "-1";
-      paramLBSInfo[3] = "-1";
-    }
-    if (!"-1".equals(paramLBSInfo[0]))
-    {
-      paramLBSInfo[3] = "0";
-      this.a.a.a(paramLBSInfo);
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        localObject = this.a.a.b(paramLBSInfo);
-        this.a.a.a(0, (String)localObject);
-        this.a.a.b(paramLBSInfo);
-        this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(this.a.a.c((String)localObject));
+      localIntent.putExtra("nbid", paramColorNote[0]);
+      if (paramColorNote[0].startsWith("-")) {
+        localIntent.putExtra("isLocal", true);
       }
-      ConditionSearchFriendActivity.a(this.a, 1);
-      ConditionSearchFriendActivity.a(this.a);
-      this.a.c = true;
-      this.a.d = false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearchFriendActivity", 2, "onGetUserLocation|isSuccess : " + paramBoolean + ", mIsFirstReqLocation : " + this.a.jdField_b_of_type_Boolean + ", locationCodes[0] : " + paramLBSInfo[0]);
-    }
+    localIntent.addFlags(268435456);
+    paramContext.startActivity(localIntent);
   }
 }
 

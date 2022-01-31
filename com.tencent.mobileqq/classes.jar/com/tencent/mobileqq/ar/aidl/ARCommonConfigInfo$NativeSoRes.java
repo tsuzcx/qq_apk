@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import amuk;
+import amyz;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ARCommonConfigInfo$NativeSoRes
   implements Parcelable
 {
-  public static final Parcelable.Creator<NativeSoRes> CREATOR = new amuk();
+  public static final Parcelable.Creator<NativeSoRes> CREATOR = new amyz();
   public long a;
   public String a;
   public String b = "";

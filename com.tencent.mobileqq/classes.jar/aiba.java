@@ -1,23 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
 
-class aiba
-  implements DialogInterface.OnClickListener
+public class aiba
+  extends alpa
 {
-  aiba(aiak paramaiak, String paramString) {}
+  public aiba(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(Object paramObject)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent(this.jdField_a_of_type_Aiak.a, SearchContactsActivity.class);
-    paramDialogInterface.putExtra("from_key", 0);
-    paramDialogInterface.putExtra("fromType", 13);
-    paramDialogInterface.putExtra("start_search_key", this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.putExtra("auto_add_and_prohibit_auto_search", true);
-    this.jdField_a_of_type_Aiak.a.startActivity(paramDialogInterface);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

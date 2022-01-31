@@ -1,36 +1,18 @@
-import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.wifisdk.TMSDKCustomConfig.IThreadPoolManager;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.widget.SlideDownFrameLayout;
 
-final class bevl
-  implements TMSDKCustomConfig.IThreadPoolManager
+public class bevl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void addTask(int paramInt, Runnable paramRunnable, String paramString)
-  {
-    ThreadManagerV2.excute(paramRunnable, 16, null, false);
-  }
+  public bevl(SlideDownFrameLayout paramSlideDownFrameLayout) {}
   
-  public void addTypeTask(Runnable paramRunnable, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = 16;
-    if (paramInt == 3) {
-      i = 64;
-    }
-    for (;;)
-    {
-      ThreadManagerV2.excute(paramRunnable, i, null, false);
-      return;
-      if (paramInt == 4) {
-        i = 128;
-      } else if (paramInt == 2) {
-        i = 32;
-      }
-    }
-  }
-  
-  public Looper getSubThreadLooper()
-  {
-    return ThreadManagerV2.getSubThreadLooper();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    SlideDownFrameLayout.a(this.a).a().setY(f);
+    SlideDownFrameLayout.a(this.a).a(f, SlideDownFrameLayout.a(this.a).a().getHeight());
   }
 }
 

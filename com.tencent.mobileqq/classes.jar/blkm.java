@@ -1,31 +1,24 @@
-public class blkm
-  extends bllc
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.SmartFilterReqItem;
+import com.tencent.common.app.AppInterface;
+import java.util.ArrayList;
+
+class blkm
+  implements bllh
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  private String d;
-  private String e;
+  blkm(blkl paramblkl, AppInterface paramAppInterface, blkn paramblkn, blle paramblle) {}
   
-  public blkm(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_Int = paramInt;
-    this.e = paramString5;
+    bljn.b(blkl.a(), "proxy onProcessFailed: errCode=" + paramInt);
+    if (this.jdField_a_of_type_Blkn != null) {
+      this.jdField_a_of_type_Blkn.a(paramInt, this.jdField_a_of_type_Blle.a());
+    }
   }
   
-  public int a()
+  public void a(ArrayList<SmartFilterReqItem> paramArrayList)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    bljn.b(blkl.a(), "proxy onDataReadyForRequest");
+    blkl.a(this.jdField_a_of_type_Blkl, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramArrayList);
   }
 }
 

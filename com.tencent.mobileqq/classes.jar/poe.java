@@ -83,7 +83,7 @@ public class poe
       l = paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw.jdField_a_of_type_Long;
       break;
       label172:
-      localpjo.a("ReadInjoy_biu_small_pgc_cell").a(paramBaseArticleInfo, alpo.a(2131711605));
+      localpjo.a("ReadInjoy_biu_small_pgc_cell").a(paramBaseArticleInfo, alud.a(2131711617));
     }
   }
   
@@ -140,7 +140,7 @@ public class poe
       return;
       label207:
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.setMargins(bdkf.a(12.0F), 0, bdkf.a(12.0F), 0);
+      localLayoutParams.setMargins(bdoo.a(12.0F), 0, bdoo.a(12.0F), 0);
     }
   }
   

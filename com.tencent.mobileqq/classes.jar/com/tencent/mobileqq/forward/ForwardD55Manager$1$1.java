@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.forward;
 
-import arua;
-import arve;
-import arvf;
+import aryj;
+import arzn;
+import arzo;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import tencent.im.oidb.oidb_0xd55.RspBody;
 
 public class ForwardD55Manager$1$1
   implements Runnable
 {
-  public ForwardD55Manager$1$1(arvf paramarvf, byte[] paramArrayOfByte, int paramInt) {}
+  public ForwardD55Manager$1$1(arzo paramarzo, byte[] paramArrayOfByte, int paramInt) {}
   
   public void run()
   {
-    arua localarua = new arua();
+    aryj localaryj = new aryj();
     oidb_0xd55.RspBody localRspBody = ForwardUtils.a(this.jdField_a_of_type_ArrayOfByte);
     if (localRspBody != null) {
-      arua.a(localRspBody, this.jdField_a_of_type_Arvf.jdField_a_of_type_JavaLangString, localarua);
+      aryj.a(localRspBody, this.jdField_a_of_type_Arzo.jdField_a_of_type_JavaLangString, localaryj);
     }
-    arve.a(this.jdField_a_of_type_Arvf.jdField_a_of_type_Arve, this.jdField_a_of_type_Int);
-    arve.a(this.jdField_a_of_type_Arvf.jdField_a_of_type_Arve, localarua);
-    this.jdField_a_of_type_Arvf.jdField_a_of_type_Arve.a(this.jdField_a_of_type_Arvf.jdField_a_of_type_Long, localarua);
+    arzn.a(this.jdField_a_of_type_Arzo.jdField_a_of_type_Arzn, this.jdField_a_of_type_Int);
+    arzn.a(this.jdField_a_of_type_Arzo.jdField_a_of_type_Arzn, localaryj);
+    this.jdField_a_of_type_Arzo.jdField_a_of_type_Arzn.a(this.jdField_a_of_type_Arzo.jdField_a_of_type_Long, localaryj);
   }
 }
 

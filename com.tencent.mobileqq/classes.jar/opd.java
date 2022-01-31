@@ -3,13 +3,13 @@ import android.content.res.Resources;
 import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
 
 public class opd
-  implements bhrf
+  implements bhvm
 {
   public opd(NativeCommentTextView paramNativeCommentTextView) {}
   
   public void a()
   {
-    this.a.setBackgroundColor(NativeCommentTextView.a(this.a).getResources().getColor(2131167192));
+    this.a.setBackgroundColor(NativeCommentTextView.a(this.a).getResources().getColor(2131167194));
   }
 }
 

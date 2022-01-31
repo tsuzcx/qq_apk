@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class aciy
-  implements army
+  implements DialogInterface.OnClickListener
 {
-  public aciy(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aqns paramaqns) {}
+  public aciy(BaseChatPie paramBaseChatPie) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        this.jdField_a_of_type_Aqns.b(localFileManagerEntity);
-      }
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
     }
   }
-  
-  public void b() {}
 }
 
 

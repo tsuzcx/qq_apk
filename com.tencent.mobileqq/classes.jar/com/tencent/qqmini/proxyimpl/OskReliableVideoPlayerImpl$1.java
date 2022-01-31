@@ -1,13 +1,13 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bgno;
+import bgrv;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IMediaPlayer.OnLoopStartListener;
 
 class OskReliableVideoPlayerImpl$1
   implements IMediaPlayer.OnLoopStartListener
 {
-  OskReliableVideoPlayerImpl$1(OskReliableVideoPlayerImpl paramOskReliableVideoPlayerImpl, bgno parambgno) {}
+  OskReliableVideoPlayerImpl$1(OskReliableVideoPlayerImpl paramOskReliableVideoPlayerImpl, bgrv parambgrv) {}
   
   public void onLoopStart(IMediaPlayer paramIMediaPlayer)
   {

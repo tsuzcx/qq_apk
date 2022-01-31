@@ -1,24 +1,21 @@
-import android.animation.TypeEvaluator;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import java.util.List;
 
 class aesr
-  implements TypeEvaluator
+  implements View.OnClickListener
 {
-  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
+  aesr(aesk paramaesk) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdditionalAnimController", 2, "AlphaEvaluator value: " + paramFloat);
+    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      return;
     }
-    if ((paramFloat >= 0.0F) && (paramFloat <= 0.02985074626865672D)) {
-      return Double.valueOf(paramFloat * 0.5D / 0.02985074626865672D);
-    }
-    if ((paramFloat > 0.02985074626865672D) && (paramFloat <= 0.9253731343283582D)) {
-      return Double.valueOf(0.5D);
-    }
-    if ((paramFloat > 0.9253731343283582D) && (paramFloat <= 1.0F)) {
-      return Double.valueOf((1.0F - paramFloat) * 0.5D / 0.07462686567164178D);
-    }
-    return Double.valueOf(0.0D);
+    TroopWithCommonFriendsFragment.a(this.a.jdField_a_of_type_JavaLangString);
+    TroopWithCommonFriendsFragment.a(paramView.getContext(), 2);
+    azqs.b(null, "dc00898", "", "", "0X800AD22", "0X800AD22", 0, 0, "0", "0", "", "");
   }
 }
 

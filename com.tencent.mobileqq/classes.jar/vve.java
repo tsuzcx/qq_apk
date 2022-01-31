@@ -1,18 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class vve
-  implements DialogInterface.OnDismissListener
+  implements vwb
 {
-  vve(vvc paramvvc, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  vve(vva paramvva, StoryVideoItem paramStoryVideoItem) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void b(vwa paramvwa)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
-    vvc.a(this.jdField_a_of_type_Vvc).a = vvc.a(this.jdField_a_of_type_Vvc).a();
+    if (this.jdField_a_of_type_Vva.isCanceled()) {}
+    do
+    {
+      return;
+      wxe.a(this.jdField_a_of_type_Vva.a.jdField_a_of_type_JavaLangString, "onCompletion, [videoView], current state = %s", VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Vva.a.c]);
+    } while (!VideoViewVideoHolder.b(this.jdField_a_of_type_Vva.a, 12));
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Vva.a, 12);
+    this.jdField_a_of_type_Vva.a.d = 1;
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Vva.a).a(this.jdField_a_of_type_Vva.a, paramvwa, VideoViewVideoHolder.b(this.jdField_a_of_type_Vva.a));
+    wxj.c("video_ope", "play_finish", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid, "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
   }
 }
 

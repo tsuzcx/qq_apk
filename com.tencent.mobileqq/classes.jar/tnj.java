@@ -9,7 +9,7 @@ public class tnj
   
   public tnj(ViewGroup paramViewGroup, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    super(paramViewGroup, 2131559867, paramWSVerticalPageFragment);
+    super(paramViewGroup, 2131559866, paramWSVerticalPageFragment);
     b();
   }
   

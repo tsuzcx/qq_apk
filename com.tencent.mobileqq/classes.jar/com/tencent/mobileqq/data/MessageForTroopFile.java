@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import alpo;
-import ammq;
+import alud;
+import amrf;
 
 public class MessageForTroopFile
   extends ChatMessage
@@ -28,7 +28,7 @@ public class MessageForTroopFile
   {
     try
     {
-      TroopFileData localTroopFileData = (TroopFileData)ammq.a(this.msgData);
+      TroopFileData localTroopFileData = (TroopFileData)amrf.a(this.msgData);
       if (localTroopFileData != null)
       {
         this.url = localTroopFileData.fileUrl;
@@ -46,7 +46,7 @@ public class MessageForTroopFile
         this.height = localTroopFileData.height;
         this.duration = localTroopFileData.duration;
       }
-      this.msg = alpo.a(2131706952);
+      this.msg = alud.a(2131706964);
       return;
     }
     catch (Exception localException)
@@ -61,7 +61,7 @@ public class MessageForTroopFile
   
   public String getSummaryMsg()
   {
-    return alpo.a(2131707001) + this.fileName;
+    return alud.a(2131707013) + this.fileName;
   }
   
   public boolean isSupportReply()
@@ -98,7 +98,7 @@ public class MessageForTroopFile
     localTroopFileData.duration = this.duration;
     try
     {
-      this.msgData = ammq.a(localTroopFileData);
+      this.msgData = amrf.a(localTroopFileData);
       return;
     }
     catch (Exception localException)

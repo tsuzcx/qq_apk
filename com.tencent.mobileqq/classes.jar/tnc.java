@@ -106,7 +106,7 @@ public class tnc
   
   protected int b()
   {
-    return 2131559875;
+    return 2131559874;
   }
   
   protected void b()
@@ -133,12 +133,12 @@ public class tnc
   
   protected void e()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)a(2131379508));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)a(2131379509));
-    this.c = a(2131379513);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)a(2131379507));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379511));
-    this.b = a(2131379510);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)a(2131379566));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)a(2131379567));
+    this.c = a(2131379571);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)a(2131379565));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379569));
+    this.b = a(2131379568);
     this.b.setOnClickListener(new tnd(this));
   }
   

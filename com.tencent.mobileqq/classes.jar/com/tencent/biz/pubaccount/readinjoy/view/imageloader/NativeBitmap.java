@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Build.VERSION;
-import azmz;
+import azri;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -33,7 +33,7 @@ public class NativeBitmap
         localHashMap.put("model", Build.MODEL);
         localHashMap.put("androidVersion", Build.VERSION.SDK);
         localHashMap.put("brand", Build.BRAND);
-        azmz.a(BaseApplicationImpl.getApplication()).a(null, "readinjoy.loadso", false, 0L, 0L, localHashMap, null);
+        azri.a(BaseApplicationImpl.getApplication()).a(null, "readinjoy.loadso", false, 0L, 0L, localHashMap, null);
       }
       return;
     }

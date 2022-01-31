@@ -1,176 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.image.GifDrawable;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.StateListDrawable;
 
-public class axsm
+class axsm
 {
-  private QQAppInterface a;
+  private final Drawable a;
+  private final Drawable b;
   
-  public axsm(QQAppInterface paramQQAppInterface)
+  axsm(Context paramContext)
   {
-    this.a = paramQQAppInterface;
+    paramContext = paramContext.getResources();
+    this.a = paramContext.getDrawable(2130837549);
+    this.b = paramContext.getDrawable(2130837553);
   }
   
-  public static boolean a(int paramInt)
+  private Drawable a(Drawable paramDrawable)
   {
-    return (paramInt == -2000) || (paramInt == -2022) || (paramInt == -1035) || (paramInt == -1036);
+    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
   }
   
-  public static boolean b(int paramInt)
+  private Drawable b(Drawable paramDrawable)
   {
-    return (paramInt == 1004) || (paramInt == 1005) || (paramInt == 2005) || (paramInt == 5001) || (paramInt == 5002);
+    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
+    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
+    return paramDrawable;
   }
   
-  public int a(MessageRecord paramMessageRecord)
+  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    if (paramMessageRecord != null)
-    {
-      paramMessageRecord = this.a.a().a(paramMessageRecord.frienduin, paramMessageRecord.uniseq);
-      if ((paramMessageRecord instanceof bamw)) {
-        return (int)((bamw)paramMessageRecord).c();
-      }
-    }
-    return -1;
+    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
+    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
+    return paramDrawable;
   }
   
-  protected void a(MessageForShortVideo paramMessageForShortVideo)
+  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
   {
-    azap localazap = new azap(this.a, this.a.getApplication(), paramMessageForShortVideo, null);
-    azao.a().a(paramMessageForShortVideo.uniseq, localazap);
-  }
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord == null) || (this.a == null)) {}
-    for (;;)
-    {
-      return;
-      long l = System.currentTimeMillis();
-      if (((paramMessageRecord instanceof MessageForMixedMsg)) || ((paramMessageRecord instanceof MessageForLightVideo))) {
-        this.a.a().b(paramMessageRecord, this.a.getAccount());
-      }
-      while (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("addMsg cost:").append(System.currentTimeMillis() - l).append(" uniseq = ").append(paramMessageRecord.uniseq).append(", msgtype = ").append(paramMessageRecord.msgtype);
-        QLog.d("MediaMsgController", 2, localStringBuilder.toString());
-        return;
-        ((alxl)this.a.a(13)).a(paramMessageRecord);
-        this.a.a().a(paramMessageRecord, this.a.getCurrentAccountUin());
-      }
-    }
-  }
-  
-  public void a(MessageRecord paramMessageRecord, alsi paramalsi, axsq paramaxsq)
-  {
-    if (paramMessageRecord == null) {
-      return;
-    }
-    if (paramaxsq != null) {
-      paramaxsq.a(paramMessageRecord);
-    }
-    this.a.a().b(paramMessageRecord, paramalsi);
-  }
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord != null) && (paramMessageRecord.extraflag == 32768)) {
-      return true;
-    }
-    int i;
-    if ((paramMessageRecord instanceof MessageForShortVideo)) {
-      i = ((MessageForShortVideo)paramMessageRecord).videoFileStatus;
-    }
-    for (;;)
-    {
-      return b(i);
-      if (((paramMessageRecord instanceof MessageForPic)) && (((MessageForPic)paramMessageRecord).size <= 0L))
-      {
-        int j = a(paramMessageRecord);
-        i = j;
-        if (j == -1) {
-          return true;
-        }
-      }
-      else
-      {
-        i = 0;
-      }
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
-      return false;
-      File localFile = new File(paramString);
-      if ((localFile.exists()) && (GifDrawable.isGifFile(localFile)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MediaMsgController", 2, "isDoutuPic gifFile");
-        }
-        return true;
-      }
-      i = bilx.a(paramString);
-    } while ((i != 2000) && (i != 3));
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaMsgController", 2, new Object[] { "isDoutuPic imageType:", Integer.valueOf(i) });
-    }
-    return true;
-  }
-  
-  public int b(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null)
-    {
-      paramMessageRecord = this.a.a().a(paramMessageRecord.frienduin, paramMessageRecord.uniseq);
-      if (!(paramMessageRecord instanceof bamw)) {}
-    }
-    for (int i = ((bamw)paramMessageRecord).e();; i = -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MediaMsgController", 2, new Object[] { "getUploadProgress:", Integer.valueOf(i) });
-      }
-      return i;
-    }
-  }
-  
-  public boolean b(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForShortVideo))
-    {
-      MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)paramMessageRecord;
-      if ((localMessageForShortVideo.busiType == 0) && (localMessageForShortVideo.videoFileStatus != 998) && (TextUtils.isEmpty(localMessageForShortVideo.md5)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MediaMsgController", 2, "isVideoNeedPreCompress is true, " + paramMessageRecord.uniseq);
-        }
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public boolean c(MessageRecord paramMessageRecord)
-  {
-    boolean bool = false;
-    if (b(paramMessageRecord))
-    {
-      bool = true;
-      a((MessageForShortVideo)paramMessageRecord);
-    }
-    return bool;
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
+    localStateListDrawable.addState(new int[0], paramDrawable1);
+    return localStateListDrawable;
   }
 }
 

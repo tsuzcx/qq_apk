@@ -1,33 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
+import android.widget.TextView;
 
-public class avmj
-  implements bhpo
+class avmj
+  extends bcoc
 {
-  public avmj(NearbyMomentFragment paramNearbyMomentFragment) {}
+  avmj(avmf paramavmf) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(long paramLong)
   {
-    int i = 0;
-    if (paramInt == 0)
+    if (paramLong > 0L)
     {
-      paramInt = i;
-      if (NearbyMomentFragment.a(this.a).getLastVisiblePosition() == NearbyMomentFragment.a(this.a).getCount() - 1)
-      {
-        paramAbsListView = NearbyMomentFragment.a(this.a).getChildAt(NearbyMomentFragment.a(this.a).getLastVisiblePosition() - NearbyMomentFragment.a(this.a).getFirstVisiblePosition());
-        paramInt = i;
-        if (NearbyMomentFragment.a(this.a).getHeight() >= paramAbsListView.getBottom()) {
-          paramInt = 1;
-        }
-      }
-      if (paramInt != 0) {
-        NearbyMomentFragment.a(this.a);
-      }
+      avmf.c(this.a).setText(String.format(alud.a(2131707663), new Object[] { Long.valueOf(paramLong) }));
+      return;
     }
+    avmf.c(this.a).setText(alud.a(2131707761));
   }
 }
 

@@ -1,33 +1,33 @@
 package com.tencent.biz.videostory.config;
 
-import aogj;
+import aoks;
 import com.tencent.qphone.base.util.QLog;
-import yuh;
-import yui;
-import yuo;
-import yuq;
-import yvc;
+import yyw;
+import yyx;
+import yzd;
+import yzf;
+import yzr;
 
 public class VSConfigManager$1
   implements Runnable
 {
-  public VSConfigManager$1(yuh paramyuh) {}
+  public VSConfigManager$1(yyw paramyyw) {}
   
   public void run()
   {
-    Object localObject = (yui)aogj.a().a(411);
+    Object localObject = (yyx)aoks.a().a(411);
     if (localObject != null) {
-      QLog.i("Q.videostory.config.VSConfigManager", 2, "init load conf:" + ((yui)localObject).toString());
+      QLog.i("Q.videostory.config.VSConfigManager", 2, "init load conf:" + ((yyx)localObject).toString());
     }
-    localObject = (yuq)aogj.a().a(463);
+    localObject = (yzf)aoks.a().a(463);
     if (QLog.isColorLevel()) {
       QLog.d("Q.videostory.config.VSConfigManager", 2, "init load VSSubscribeConfBean : " + localObject);
     }
-    localObject = (yuo)aogj.a().a(595);
+    localObject = (yzd)aoks.a().a(595);
     if (QLog.isColorLevel()) {
       QLog.d("Q.videostory.config.VSConfigManager", 2, "init load VSStickyNoteConfBean : " + localObject);
     }
-    yvc.a().a();
+    yzr.a().a();
   }
 }
 

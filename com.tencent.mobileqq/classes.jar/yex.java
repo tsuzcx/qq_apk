@@ -1,15 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
-public class yex
+class yex
   implements View.OnClickListener
 {
-  public yex(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
+  yex(yew paramyew) {}
   
   public void onClick(View paramView)
   {
-    this.a.onBackEvent();
+    if ((!yxv.a("SUB_ENTER_FLOAT_MODE")) && (yew.a(this.a) != null)) {
+      yew.a(this.a).a();
+    }
   }
 }
 

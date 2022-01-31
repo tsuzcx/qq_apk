@@ -1,89 +1,41 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.annotation.TargetApi;
+import android.graphics.Rect;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Vector;
 
-public class afja
-  extends VasQuickUpdateManager.CallBacker
+class afja
+  implements ArkViewImplement.LoadCallback
 {
-  public afja(afij paramafij) {}
+  afja(afiz paramafiz, MessageForArkApp paramMessageForArkApp, afiv paramafiv) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  @TargetApi(14)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    int i = 1;
-    String str;
-    if (paramLong == 21L)
+    onLoadState(paramInt1);
+  }
+  
+  @TargetApi(14)
+  public void onLoadState(int paramInt)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer.getContainerRect();
+    float f = anob.a();
+    int i = (int)((((Rect)localObject).right - ((Rect)localObject).left) * f);
+    int j = (int)((((Rect)localObject).bottom - ((Rect)localObject).top) * f);
+    localObject = this.jdField_a_of_type_Afiv.a.getLayoutParams();
+    StringBuilder localStringBuilder = new StringBuilder("ArkFold.onLoadFinish arkContainer rect(");
+    localStringBuilder.append(i).append(",").append(j).append(")").append(", arkView layout rect(").append(((ViewGroup.LayoutParams)localObject).width).append(",").append(((ViewGroup.LayoutParams)localObject).height).append(")").append(", init mArkWidth=").append(afiz.a(this.jdField_a_of_type_Afiz)).append(", load state=").append(paramInt).append(", app=").append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName);
+    QLog.i("ArkAppItemBuilder", 1, localStringBuilder.toString());
+    if ((anob.a) && (paramInt == 1) && (Math.abs(((ViewGroup.LayoutParams)localObject).width - afiz.a(this.jdField_a_of_type_Afiz)) > 5))
     {
-      paramString3 = "";
-      paramString2 = Integer.valueOf(0);
-      if (!paramString1.startsWith("poke.item.effect.")) {
-        break label245;
-      }
-      str = paramString1.substring("poke.item.effect.".length(), paramString1.length());
-      paramVasQuickUpdateManager = Integer.valueOf(str);
-      paramString2 = paramVasQuickUpdateManager;
-      paramString3 = str;
-      if (!afsw.c.contains(paramVasQuickUpdateManager)) {
-        break label337;
-      }
-      afsw.c.remove(paramVasQuickUpdateManager);
-      paramString3 = str;
-      paramString2 = paramVasQuickUpdateManager;
-      paramInt2 = 1;
-    }
-    for (;;)
-    {
-      if ((!TextUtils.isEmpty(paramString3)) && (paramInt2 != 0) && (!afsw.c.contains(paramString2)) && (!afsw.c.contains(paramString2)))
-      {
-        if (afsw.a("bubble", paramString2.intValue())) {
-          break label318;
-        }
-        paramInt2 = 1;
-        label142:
-        if (afsw.a("/normal.png", paramString2.intValue())) {
-          break label324;
-        }
-        label155:
-        boolean bool = afsw.b.contains(paramString2);
-        paramString3 = this.a.a;
-        if ((paramInt2 == 0) || (i == 0) || (!bool)) {
-          break label330;
-        }
-      }
-      label318:
-      label324:
-      label330:
-      for (paramString2 = alpo.a(2131705663);; paramString2 = "")
-      {
-        bdkd.a(paramString3, paramString2);
-        if (QLog.isColorLevel()) {
-          QLog.d("GivingHeart", 2, "vas poke download id: " + paramString1 + " , errorcode: " + paramInt1);
-        }
-        return;
-        label245:
-        if (!paramString1.startsWith("poke.item.res.")) {
-          break label337;
-        }
-        str = paramString1.substring("poke.item.res.".length(), paramString1.length());
-        paramVasQuickUpdateManager = Integer.valueOf(str);
-        paramString2 = paramVasQuickUpdateManager;
-        paramString3 = str;
-        if (!afsw.d.contains(paramVasQuickUpdateManager)) {
-          break label337;
-        }
-        afsw.d.remove(paramVasQuickUpdateManager);
-        paramString3 = str;
-        paramString2 = paramVasQuickUpdateManager;
-        paramInt2 = 1;
-        break;
-        paramInt2 = 0;
-        break label142;
-        i = 0;
-        break label155;
-      }
-      label337:
-      paramInt2 = 0;
+      QLog.d("ArkAppItemBuilder", 1, new Object[] { "ArkFold.onLoadFinish setViewRect(", Integer.valueOf(afiz.a(this.jdField_a_of_type_Afiz)), ",", Integer.valueOf(j), ")" });
+      this.jdField_a_of_type_Afiv.a.setFixSize(afiz.a(this.jdField_a_of_type_Afiz), -1);
+      this.jdField_a_of_type_Afiv.a.setMaxSize(afiz.a(this.jdField_a_of_type_Afiz), -1);
+      this.jdField_a_of_type_Afiv.a.setMinSize(afiz.a(this.jdField_a_of_type_Afiz), -1);
+      this.jdField_a_of_type_Afiv.a.setViewRect(afiz.a(this.jdField_a_of_type_Afiz), j);
     }
   }
 }

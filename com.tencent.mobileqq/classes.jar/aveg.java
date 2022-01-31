@@ -1,58 +1,148 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
-import com.tencent.mobileqq.nearby.now.view.widget.TopicViewItem;
-import java.util.List;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aveg
-  extends BaseAdapter
 {
-  public aveg(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
+  public static int a;
+  public static long a;
+  public static String a;
+  public static String b;
+  public static String c;
+  public static String d;
+  boolean a;
+  protected int b;
+  boolean b;
+  protected int c;
+  protected int d;
+  protected String e = "";
+  protected String f = "";
+  protected String g = "";
+  protected String h = "";
+  protected String i = "";
+  protected String j = "";
+  protected String k = "";
+  protected String l = "";
+  protected String m = "";
+  protected String n = "";
+  protected String o = "";
+  protected String p = "";
   
-  public int getCount()
+  static
   {
-    if ((StartLiveTopicLabelListView.a(this.a) == null) || (StartLiveTopicLabelListView.a(this.a).size() == 0)) {
-      return 0;
+    jdField_a_of_type_JavaLangString = "";
+    jdField_b_of_type_JavaLangString = "";
+    jdField_c_of_type_JavaLangString = "";
+    jdField_d_of_type_JavaLangString = "";
+  }
+  
+  public aveg()
+  {
+    this.jdField_c_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  public aveg a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return this;
+  }
+  
+  public aveg a(String paramString)
+  {
+    this.e = paramString;
+    return this;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("charm_level", 0));
     }
-    return StartLiveTopicLabelListView.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    if (this.jdField_b_of_type_Boolean) {
+      this.m = ("" + auwq.a(paramQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
+    }
+    long l1 = System.currentTimeMillis() - jdField_a_of_type_Long;
+    if (l1 % 1000L > 500L) {}
+    for (l1 = (int)l1 / 1000 + 1;; l1 = (int)l1 / 1000)
     {
-      paramViewGroup = new avej(this.a, null);
-      paramView = new TopicViewItem(StartLiveTopicLabelListView.a(this.a));
-      paramView.setTag(paramViewGroup);
-      paramViewGroup.a = ((String)StartLiveTopicLabelListView.a(this.a).get(paramInt));
-      if (!alpo.a(2131714729).equals(paramViewGroup.a)) {
-        break label133;
-      }
-      paramView.setBackgroundResource(StartLiveTopicLabelListView.a(this.a));
-      ((TopicViewItem)paramView).setTextColor(StartLiveTopicLabelListView.b(this.a));
+      this.e = (l1 + "");
+      this.f = jdField_c_of_type_JavaLangString;
+      this.g = jdField_b_of_type_JavaLangString;
+      this.h = jdField_a_of_type_JavaLangString;
+      this.i = (ndd.a() + "");
+      azqs.b(paramQQAppInterface, "dc02676", "grp_lbs", this.l, this.j, this.k, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.m, this.n, this.o, this.p + "|" + this.e + "|" + this.f + "|" + this.g + "|" + this.h + "|" + this.i);
+      return;
     }
-    for (;;)
+  }
+  
+  public aveg b()
+  {
+    this.jdField_b_of_type_Boolean = true;
+    return this;
+  }
+  
+  public aveg b(String paramString)
+  {
+    this.f = paramString;
+    return this;
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (paramQQAppInterface != null)) {
+      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("charm_level", 0));
+    }
+    if ((this.jdField_b_of_type_Boolean) && (paramQQAppInterface != null))
     {
-      paramView.setOnClickListener(new aveh(this));
-      ((TopicViewItem)paramView).setText(paramViewGroup.a);
-      return paramView;
-      paramViewGroup = (avej)paramView.getTag();
-      break;
-      label133:
-      paramView.setBackgroundResource(StartLiveTopicLabelListView.c(this.a));
-      ((TopicViewItem)paramView).setTextColor(StartLiveTopicLabelListView.d(this.a));
+      this.jdField_b_of_type_Boolean = true;
+      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("gender", 0));
     }
+    this.i = (ndd.a() + "");
+    azqs.b(paramQQAppInterface, "dc02676", "grp_lbs", this.l, this.j, this.k, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.m, this.n, this.o, this.p + "|" + this.e + "|" + this.f + "|" + this.g + "|" + this.h + "|" + this.i);
+  }
+  
+  public aveg c(String paramString)
+  {
+    this.g = paramString;
+    return this;
+  }
+  
+  public aveg d(String paramString)
+  {
+    this.h = paramString;
+    return this;
+  }
+  
+  public aveg e(String paramString)
+  {
+    this.m = paramString;
+    return this;
+  }
+  
+  public aveg f(String paramString)
+  {
+    this.n = paramString;
+    return this;
+  }
+  
+  public aveg g(String paramString)
+  {
+    this.p = paramString;
+    return this;
+  }
+  
+  public aveg h(String paramString)
+  {
+    this.j = paramString;
+    return this;
+  }
+  
+  public aveg i(String paramString)
+  {
+    this.k = paramString;
+    return this;
   }
 }
 

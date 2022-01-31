@@ -1,33 +1,32 @@
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
 public class aeap
   implements View.OnClickListener
 {
-  public aeap(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aeap(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.d == 15) && (TroopMemberListActivity.a(this.a).size() > 0))
-    {
-      paramView = new Intent();
-      paramView.putExtra("param_deleted_uins", TroopMemberListActivity.a(this.a));
-      this.a.setResult(-1, paramView);
-      if ((this.a.e == null) || (!this.a.e.equals(this.a.app.getCurrentAccountUin()))) {
-        break label159;
-      }
+    int i = TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).getIntExtra("key_team_work_edit_type", -1);
+    if ((i != 1) && (i != 2)) {
+      i = this.a.a;
     }
-    label159:
-    for (int i = 0;; i = 1)
-    {
-      azmj.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.b, "" + i, "1", TroopMemberListActivity.a(this.a).toString());
-      this.a.finish();
-      return;
+    paramView = this.a.f();
+    String str = this.a.a().b();
+    Intent localIntent = new Intent(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a), TeamWorkAuthorizeSettingFragment.class);
+    if (!TextUtils.isEmpty(str)) {
+      localIntent.putExtra("team_work_name", str);
     }
+    localIntent.putExtra("team_work_pad_url", paramView);
+    localIntent.putExtra("team_work_pad_list_type", this.a.d);
+    PublicFragmentActivity.a(this.a.getActivity(), localIntent, TeamWorkAuthorizeSettingFragment.class);
+    this.a.a(14);
   }
 }
 

@@ -4,16 +4,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.ViewGroup;
-import bgho;
-import bgkd;
-import bgnw;
+import bglv;
+import bgok;
+import bgsd;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class MiniGameUIJsPlugin$3
   implements Runnable
 {
-  MiniGameUIJsPlugin$3(MiniGameUIJsPlugin paramMiniGameUIJsPlugin, bgkd parambgkd) {}
+  MiniGameUIJsPlugin$3(MiniGameUIJsPlugin paramMiniGameUIJsPlugin, bgok parambgok) {}
   
   public void run()
   {
@@ -28,7 +28,7 @@ class MiniGameUIJsPlugin$3
         if (MiniGameUIJsPlugin.access$100(this.this$0) != null) {
           break label110;
         }
-        MiniGameUIJsPlugin.access$102(this.this$0, new bgnw((Context)localObject, (ViewGroup)((Activity)localObject).findViewById(16908290)));
+        MiniGameUIJsPlugin.access$102(this.this$0, new bgsd((Context)localObject, (ViewGroup)((Activity)localObject).findViewById(16908290)));
       }
       for (;;)
       {

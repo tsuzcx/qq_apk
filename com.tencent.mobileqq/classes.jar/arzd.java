@@ -1,44 +1,31 @@
+import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.manager.Manager;
+import java.net.URL;
 
-public class arzd
-  implements Manager
+class arzd
+  extends awkf
 {
-  private arve jdField_a_of_type_Arve;
-  private Map<String, Map<String, Object>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  arzd(arzc paramarzc, MessageForPic paramMessageForPic) {}
   
-  public arzd()
+  public void a(int paramInt, awjm paramawjm)
   {
-    QLog.d("SDK_SHARE.ForwardSdkStatusManager", 1, "--> init");
-    this.jdField_a_of_type_Arve = new arve();
+    if (this.jdField_a_of_type_Arzc.jdField_a_of_type_Arzh != null) {
+      this.jdField_a_of_type_Arzc.jdField_a_of_type_Arzh.b();
+    }
+    baqn.d(bayu.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, 1, null).toString().toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardBaseOption", 2, "DownloadBigPic finish");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
+      aryv.a(this.jdField_a_of_type_Arzc.jdField_a_of_type_Aryv, agjb.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic), this.jdField_a_of_type_Arzc.jdField_a_of_type_JavaLangString);
+    }
   }
   
-  public arve a()
-  {
-    return this.jdField_a_of_type_Arve;
-  }
-  
-  public Map<String, Object> a(String paramString)
-  {
-    return (Map)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-  }
-  
-  public void a(String paramString, Map<String, Object> paramMap)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramMap);
-  }
-  
-  public void onDestroy()
-  {
-    QLog.d("SDK_SHARE.ForwardSdkStatusManager", 1, "--> onDestroy");
-    this.jdField_a_of_type_Arve.a();
-  }
+  public void a_(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arzd
  * JD-Core Version:    0.7.0.1
  */

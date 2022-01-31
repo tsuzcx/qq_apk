@@ -50,13 +50,13 @@ public abstract class shz
   
   protected void a()
   {
-    this.d = ((int)bdcb.i());
-    this.e = ((int)bdcb.j());
+    this.d = ((int)bdgk.i());
+    this.e = ((int)bdgk.j());
     Object localObject = (LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater");
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)localObject).inflate(2131559910, null);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364770));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378233));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378232));
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)localObject).inflate(2131559909, null);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364771));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378287));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378286));
     localObject = a((LayoutInflater)localObject);
     if (localObject != null) {
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView((View)localObject);
@@ -97,7 +97,7 @@ public abstract class shz
       }
       for (;;)
       {
-        i = arrayOfInt[1] + paramView.getHeight() + bdkf.a(4.0F);
+        i = arrayOfInt[1] + paramView.getHeight() + bdoo.a(4.0F);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
         this.jdField_a_of_type_AndroidWidgetImageView.setPadding(0, 0, k, 0);
@@ -112,7 +112,7 @@ public abstract class shz
     }
     for (;;)
     {
-      i = arrayOfInt[1] - this.c - bdkf.a(4.0F);
+      i = arrayOfInt[1] - this.c - bdoo.a(4.0F);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetImageView.setPadding(0, 0, k, 0);

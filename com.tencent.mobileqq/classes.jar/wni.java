@@ -1,16 +1,16 @@
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
 
-final class wni
-  implements wos
+public class wni
+  extends wnd
 {
-  wni(WeakReference paramWeakReference) {}
-  
-  public void a(String paramString)
+  public wni()
   {
-    paramString = (wnk)this.a.get();
-    if (paramString != null) {
-      paramString.a(Integer.valueOf(((Integer)((urk)urr.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue()));
-    }
+    super("memory_publish", null);
+  }
+  
+  public static boolean a(wnd paramwnd)
+  {
+    return TextUtils.equals("memory_publish", paramwnd.a);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aekt;
+import aepi;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +10,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.Window;
-import bdah;
-import bdjd;
+import bdeq;
+import bdnm;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadRegulator;
 import com.tencent.mobileqq.startup.step.SetSplash;
@@ -50,14 +50,14 @@ public class ChatActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     ThreadRegulator.a().a(1);
-    bdjd.b(null, "AIO_Start_cost");
+    bdnm.b(null, "AIO_Start_cost");
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnCreate strat ");
     }
-    bdah.a(true);
+    bdeq.a(true);
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    if (aekt.a(this, this.app, true, getIntent())) {
+    if (aepi.a(this, this.app, true, getIntent())) {
       return false;
     }
     if (this.jdField_a_of_type_AndroidViewView != null) {
@@ -113,12 +113,12 @@ public class ChatActivity
   public void doOnNewIntent(Intent paramIntent)
   {
     ThreadRegulator.a().a(1);
-    bdjd.b(null, "AIO_Start_cost");
+    bdnm.b(null, "AIO_Start_cost");
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnNewIntent start ");
     }
     super.doOnNewIntent(paramIntent);
-    if (aekt.a(this, this.app, false, getIntent())) {}
+    if (aepi.a(this, this.app, false, getIntent())) {}
     for (;;)
     {
       return;
@@ -243,10 +243,10 @@ public class ChatActivity
   public boolean showPreview()
   {
     SetSplash.a(this, null, true);
-    getWindow().setFeatureInt(7, 2131558961);
+    getWindow().setFeatureInt(7, 2131558960);
     try
     {
-      this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131366414).getParent());
+      this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131366416).getParent());
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return true;
     }

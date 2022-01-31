@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bdcd;
-import becq;
+import bdgm;
+import begz;
 import mqq.app.QQPermissionCallback;
 
 class QWalletCommonJsPlugin$5
@@ -11,7 +11,7 @@ class QWalletCommonJsPlugin$5
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bdcd.a(this.this$0.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
+    bdgm.a(this.this$0.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
     this.this$0.callJs(QWalletCommonJsPlugin.access$200(this.this$0), new String[] { "{'result':-1, 'msg': 'no permission to read contact number'}" });
   }
   

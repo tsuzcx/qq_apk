@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aefb;
+import aejq;
 
 class TroopTransferActivity$TroopMemberListAdapter$1$1
   implements Runnable

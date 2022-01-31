@@ -13,7 +13,7 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.StateSet;
 import android.view.View;
-import bnoa;
+import bnsm;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -42,14 +42,14 @@ public class BaseButton
   public BaseButton(Context paramContext)
   {
     super(paramContext);
-    this.jdField_c_of_type_Int = bnoa.a(10.0F);
+    this.jdField_c_of_type_Int = bnsm.a(10.0F);
     a();
   }
   
   public BaseButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_c_of_type_Int = bnoa.a(10.0F);
+    this.jdField_c_of_type_Int = bnsm.a(10.0F);
     a();
   }
   

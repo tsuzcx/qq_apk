@@ -1,9 +1,8 @@
-import android.os.Bundle;
-
-public final class bale
+public abstract interface bale
 {
-  public final Bundle a = new Bundle();
-  public Object a;
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class arjm
-  implements View.OnClickListener
+  implements aris
 {
-  arjm(arjh paramarjh) {}
+  arjm(arjk paramarjk) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.a.a() != null) {
-      this.a.a.a().a();
-    }
+    this.a.a(true, arqo.a(this.a.a.a()), this.a.c(), new arjn(this));
+  }
+  
+  public void b()
+  {
+    arjk.b(this.a);
   }
 }
 

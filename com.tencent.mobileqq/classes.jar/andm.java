@@ -1,33 +1,12 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import com.tencent.qphone.base.util.QLog;
-
-public class andm
-  implements MiniAppLauncher.MiniAppLaunchListener
+public abstract interface andm
 {
-  public andm(QRScanEntryView paramQRScanEntryView, String paramString1, String paramString2) {}
+  public abstract void a();
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBoolean)
-    {
-      paramBundle = new Intent();
-      paramBundle.putExtra("detectType", 2);
-      paramBundle.putExtra("scannerResult", this.jdField_a_of_type_JavaLangString.trim());
-      paramBundle.putExtra("filePath", this.b);
-      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).setResult(13, paramBundle);
-      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).finish();
-      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).overridePendingTransition(0, 0);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("AREngine_QRScanEntryView", 2, "onLaunchResult 2 false");
-    }
-    ((anbp)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_Anbc).b(false);
-  }
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(boolean paramBoolean, andn paramandn);
+  
+  public abstract void b();
 }
 
 

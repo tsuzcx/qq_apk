@@ -1,19 +1,20 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
 
-class adle
-  implements View.OnClickListener
+public class adle
+  extends alpq
 {
-  adle(adlb paramadlb, SharedPreferences paramSharedPreferences, String paramString) {}
+  public adle(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  public void onClick(View paramView)
+  protected void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
-    this.jdField_a_of_type_Adlb.a.a.sendEmptyMessageDelayed(1010, 1000L);
+    if (paramBoolean1)
+    {
+      SettingCloneUtil.writeValue(this.a.app.getApp(), paramString2, null, "qqsetting_pcactive_key", true);
+      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
+    }
   }
 }
 

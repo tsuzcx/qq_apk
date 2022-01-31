@@ -1,31 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
-import java.util.Collections;
+import android.view.View;
 
 class xaq
-  implements uni<vbh, vdb>
+  implements bhuk
 {
-  xaq(xak paramxak, WeakReference paramWeakReference) {}
+  xaq(xan paramxan, bhuf parambhuf) {}
   
-  public void a(@NonNull vbh paramvbh, @Nullable vdb paramvdb, @NonNull ErrorMessage paramErrorMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramvdb == null)
+    switch (paramInt)
     {
-      paramvbh = (xax)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramvbh != null) {
-        paramvbh.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
-      }
-      return;
     }
-    paramvbh = (xax)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramvbh != null)
+    for (;;)
     {
-      paramvbh.a(0, paramvdb.a);
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
+      this.jdField_a_of_type_Xan.c();
     }
-    wsv.c("DoodleEmojiManager", "requestPoiFaces callback is null");
   }
 }
 

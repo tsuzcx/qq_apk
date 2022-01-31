@@ -42,12 +42,12 @@ public class oda
     super(paramView, paramActivity, 1);
     this.jdField_a_of_type_Long = -2147483648L;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.d = ((ViewGroup)paramView.findViewById(2131367565));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131367566));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131367563));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376516));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView = ((MultiVideoAdFooterView)paramView.findViewById(2131370824));
-    this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView = ((MultiVideoAdFooterView)paramView.findViewById(2131370825));
+    this.d = ((ViewGroup)paramView.findViewById(2131367575));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131367576));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131367573));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376570));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView = ((MultiVideoAdFooterView)paramView.findViewById(2131370843));
+    this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView = ((MultiVideoAdFooterView)paramView.findViewById(2131370844));
     if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     }
@@ -167,8 +167,8 @@ public class oda
       {
       default: 
         return;
-      case 2131367563: 
-      case 2131367564: 
+      case 2131367573: 
+      case 2131367574: 
         oee.a(localAdvertisementInfo, 2, this.jdField_a_of_type_Rng.a());
         szl.b(this.jdField_a_of_type_AndroidAppActivity, localAdvertisementInfo, null, 3, false, null);
         ocz.a(this.jdField_a_of_type_AndroidAppActivity, noy.aq, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);

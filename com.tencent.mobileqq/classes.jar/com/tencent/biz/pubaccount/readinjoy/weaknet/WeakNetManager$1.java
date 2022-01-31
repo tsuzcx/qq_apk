@@ -19,7 +19,7 @@ public class WeakNetManager$1
     srs.a(this.this$0, null);
     if (srr.a())
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 1, 2131719101, 1).a();
+      QQToast.a(BaseApplicationImpl.sApplication, 1, 2131719113, 1).a();
       try
       {
         srr.a("0X8009D08", ors.a().a("loading_time", String.valueOf(this.a)).a());

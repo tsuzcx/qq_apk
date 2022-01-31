@@ -1,818 +1,355 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.MQLruCache;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.concurrent.ConcurrentHashMap;
+import java.io.FileNotFoundException;
+import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import mqq.manager.ProxyIpManager;
 
 public class baul
+  extends bark
 {
-  public static int a;
-  public static Bitmap.Config a;
-  public static final Drawable a;
-  public static File a;
-  private static boolean a;
-  public static int b;
-  public static Bitmap.Config b;
-  public static final Drawable b;
-  private static boolean b;
-  public static int c;
-  private static int d;
-  private static int e;
-  private static int f;
-  private static int g;
-  private static int h;
-  private static int i;
-  private static int j;
-  private static int k;
-  private static int l;
-  private static int m;
-  
-  static
+  public baul(bayf parambayf, bayk parambayk)
   {
-    jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
-    jdField_b_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.RGB_565;
-    jdField_a_of_type_Int = 921600;
-    e = 45;
-    f = 135;
-    g = 45;
-    h = 135;
-    i = e;
-    j = f;
-    k = g;
-    l = h;
-    jdField_b_of_type_Int = 45;
-    c = 135;
-    m = -1;
-    jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
-    jdField_b_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(1073741824);
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    jdField_b_of_type_Int = (int)bdcq.a(localBaseApplication, 45.0F);
-    c = (int)bdcq.a(localBaseApplication, 135.0F);
-    d = localBaseApplication.getResources().getDisplayMetrics().densityDpi;
+    super(parambayf, parambayk);
+    this.jdField_a_of_type_JavaUtilList = ((ProxyIpManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(3)).getProxyIp(4);
   }
   
-  public static int a()
+  private void b(boolean paramBoolean)
   {
-    b();
-    return m;
-  }
-  
-  public static int a(String paramString)
-  {
-    return bdda.b(paramString);
-  }
-  
-  public static int a(String paramString, boolean paramBoolean)
-  {
-    int n = 65537;
-    if ("chatthumb".equals(paramString)) {}
-    for (;;)
+    if (!paramBoolean) {
+      d(1001);
+    }
+    this.jdField_a_of_type_Bass.a();
+    if ((this.jdField_a_of_type_ArrayOfByte == null) && (!h()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatImageDownloader", 2, "getFileSizeType protocol:" + paramString + ",output_type:" + n);
-      }
-      return n;
-      if ("chatimg".equals(paramString))
-      {
-        if (paramBoolean) {
-          n = 1;
-        } else {
-          n = 131075;
-        }
-      }
-      else if ("chatraw".equals(paramString)) {
-        n = 131075;
-      }
-    }
-  }
-  
-  public static int a(boolean paramBoolean)
-  {
-    
-    if (paramBoolean) {
-      return l;
-    }
-    return j;
-  }
-  
-  public static Bitmap a()
-  {
-    Bitmap localBitmap1 = null;
-    if (BaseApplicationImpl.sImageHashMap != null) {
-      localBitmap1 = (Bitmap)BaseApplicationImpl.sImageHashMap.get("static://CommonProgress");
-    }
-    Bitmap localBitmap2 = localBitmap1;
-    if (localBitmap1 == null)
-    {
-      localBitmap1 = bcwc.a(BaseApplicationImpl.getContext().getResources(), 2130839223);
-      localBitmap2 = localBitmap1;
-      if (localBitmap1 != null)
-      {
-        localBitmap2 = localBitmap1;
-        if (BaseApplicationImpl.sImageHashMap != null)
-        {
-          BaseApplicationImpl.sImageHashMap.put("static://CommonProgress", localBitmap1);
-          localBitmap2 = localBitmap1;
-        }
-      }
-    }
-    return localBitmap2;
-  }
-  
-  public static Drawable a()
-  {
-    Bitmap localBitmap1 = null;
-    if (BaseApplicationImpl.sImageHashMap != null) {
-      localBitmap1 = (Bitmap)BaseApplicationImpl.sImageHashMap.get("static://CommonFailedDrawable");
-    }
-    Bitmap localBitmap2 = localBitmap1;
-    if (localBitmap1 == null)
-    {
-      localBitmap1 = bcwc.a(BaseApplicationImpl.getContext().getResources(), 2130837968);
-      localBitmap2 = localBitmap1;
-      if (localBitmap1 != null)
-      {
-        localBitmap2 = localBitmap1;
-        if (BaseApplicationImpl.sImageHashMap != null)
-        {
-          BaseApplicationImpl.sImageHashMap.put("static://CommonFailedDrawable", localBitmap1);
-          localBitmap2 = localBitmap1;
-        }
-      }
-    }
-    if (localBitmap2 != null) {
-      return new BitmapDrawable(localBitmap2);
-    }
-    return new ColorDrawable();
-  }
-  
-  public static Drawable a(int paramInt)
-  {
-    Bitmap localBitmap1 = null;
-    if (BaseApplicationImpl.sImageHashMap != null) {
-      localBitmap1 = (Bitmap)BaseApplicationImpl.sImageHashMap.get(String.valueOf(paramInt));
-    }
-    Bitmap localBitmap2 = localBitmap1;
-    if (localBitmap1 == null)
-    {
-      localBitmap1 = bcwc.a(BaseApplicationImpl.getContext().getResources(), paramInt);
-      localBitmap2 = localBitmap1;
-      if (localBitmap1 != null)
-      {
-        localBitmap2 = localBitmap1;
-        if (BaseApplicationImpl.sImageHashMap != null)
-        {
-          BaseApplicationImpl.sImageHashMap.put(String.valueOf(paramInt), localBitmap1);
-          localBitmap2 = localBitmap1;
-        }
-      }
-    }
-    if (localBitmap2 != null) {
-      return new BitmapDrawable(localBitmap2);
-    }
-    return new ColorDrawable();
-  }
-  
-  public static URLDrawable a(awfj paramawfj, int paramInt)
-  {
-    return a(paramawfj, paramInt, null, null);
-  }
-  
-  public static URLDrawable a(awfj paramawfj, int paramInt, String paramString, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
-  {
-    boolean bool2 = true;
-    if (paramawfj == null) {
-      return null;
-    }
-    paramString = URLDrawable.getDrawable(a(paramawfj, paramInt, paramString), paramURLDrawableOptions);
-    paramString.setTag(paramawfj);
-    if (paramawfj.isSendFromLocal()) {}
-    for (;;)
-    {
-      return paramString;
-      if (!awet.jdField_b_of_type_Boolean) {
-        break;
-      }
-      paramString.setAutoDownload(true);
-    }
-    boolean bool3 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131695480), "qqsetting_auto_receive_pic_key", true);
-    boolean bool1 = bool2;
-    if (bdee.b(BaseApplication.getContext()) != 1) {
-      if (!bool3) {
-        break label102;
-      }
-    }
-    label102:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      paramString.setAutoDownload(bool1);
-      break;
-    }
-  }
-  
-  public static URLDrawable a(String paramString)
-  {
-    return a(paramString, 0, 0, null, null, false, 0.0F);
-  }
-  
-  public static URLDrawable a(String paramString, int paramInt1, int paramInt2)
-  {
-    return a(paramString, paramInt1, paramInt2, null, null, false, 0.0F);
-  }
-  
-  public static URLDrawable a(String paramString, int paramInt1, int paramInt2, Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    return a(paramString, paramInt1, paramInt2, paramDrawable1, paramDrawable2, false, 0.0F);
-  }
-  
-  public static URLDrawable a(String paramString, int paramInt1, int paramInt2, Drawable paramDrawable1, Drawable paramDrawable2, boolean paramBoolean, float paramFloat)
-  {
-    try
-    {
-      paramDrawable1 = a(new URL(paramString), paramInt1, paramInt2, paramDrawable1, paramDrawable2, paramBoolean, paramFloat);
-      return paramDrawable1;
-    }
-    catch (MalformedURLException paramDrawable1)
-    {
-      throw new IllegalArgumentException("illegal url format: " + paramString);
-    }
-  }
-  
-  public static URLDrawable a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    return a(paramString, 0, 0, paramDrawable1, paramDrawable2, false, 0.0F);
-  }
-  
-  public static URLDrawable a(URL paramURL)
-  {
-    return a(paramURL, 0, 0, null, null, false, 0.0F);
-  }
-  
-  public static URLDrawable a(URL paramURL, int paramInt1, int paramInt2)
-  {
-    return a(paramURL, paramInt1, paramInt2, null, null, false, 0.0F);
-  }
-  
-  public static URLDrawable a(URL paramURL, int paramInt1, int paramInt2, Drawable paramDrawable1, Drawable paramDrawable2, boolean paramBoolean)
-  {
-    return a(paramURL, paramInt1, paramInt2, paramDrawable1, paramDrawable2, paramBoolean, 0.0F);
-  }
-  
-  public static URLDrawable a(URL paramURL, int paramInt1, int paramInt2, Drawable paramDrawable1, Drawable paramDrawable2, boolean paramBoolean, float paramFloat)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = paramInt1;
-    localURLDrawableOptions.mRequestHeight = paramInt2;
-    localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
-    localURLDrawableOptions.mFailedDrawable = paramDrawable2;
-    localURLDrawableOptions.mPlayGifImage = paramBoolean;
-    localURLDrawableOptions.mGifRoundCorner = paramFloat;
-    return URLDrawable.getDrawable(paramURL, localURLDrawableOptions);
-  }
-  
-  public static URLDrawable a(URL paramURL, Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    return a(paramURL, 0, 0, paramDrawable1, paramDrawable2, false, 0.0F);
-  }
-  
-  private static String a(aweq paramaweq)
-  {
-    if (paramaweq == null) {
-      return null;
-    }
-    switch (paramaweq.jdField_b_of_type_Int)
-    {
-    default: 
-      return null;
-    case 0: 
-    case 1000: 
-    case 1001: 
-    case 1004: 
-    case 1005: 
-    case 1006: 
-    case 1008: 
-    case 1009: 
-    case 1020: 
-    case 1023: 
-    case 1024: 
-    case 10002: 
-    case 10004: 
-    case 10008: 
-      return "C2C";
-    case 1: 
-      return "Troup";
-    }
-    return "Disscussion";
-  }
-  
-  private static String a(aweq paramaweq, int paramInt)
-  {
-    int n;
-    String str;
-    if (paramInt == 65537)
-    {
-      n = 1;
-      str = null;
-      if (paramInt != 65537) {
-        break label63;
-      }
-      str = "chatthumb";
-      label19:
-      switch (paramaweq.jdField_b_of_type_Int)
-      {
-      }
-    }
-    label63:
-    do
-    {
-      return str;
-      n = 0;
-      break;
-      if (paramInt == 1)
-      {
-        str = "chatimg";
-        break label19;
-      }
-      if (paramInt != 131075) {
-        break label19;
-      }
-      str = "chatraw";
-      break label19;
-      return "favimage";
-    } while (paramaweq.d >= 3);
-    if (n != 0) {
-      return "lbsthumb";
-    }
-    return "lbsimg";
-  }
-  
-  public static URL a(aweu paramaweu, int paramInt, String paramString)
-  {
-    if (paramaweu == null) {
-      return null;
-    }
-    String str1 = paramaweu.f;
-    label48:
-    String str2;
-    if ((str1 != null) && (!"null".equals(str1)) && (!"".equals(str1)))
-    {
-      if (paramaweu.jdField_b_of_type_Boolean) {
-        paramInt = 1;
-      }
-      if (paramString == null) {
-        break label184;
-      }
-      str2 = str1;
-      if (str1 != null) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        str1 = "holyshit_" + System.currentTimeMillis();
-        str2 = str1;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("URLDrawableHelper", 2, "getURL file == null" + paramaweu.toString());
-          str2 = str1;
-        }
-        if (paramString == null) {
-          break label200;
-        }
-        paramaweu = new URL(paramString, null, str2);
-        return paramaweu;
-      }
-      catch (MalformedURLException paramaweu)
-      {
-        label184:
-        paramaweu.printStackTrace();
-        return null;
-      }
-      if ((paramaweu.jdField_b_of_type_Int == 8000) && (paramInt == 65537))
-      {
-        if (azls.a())
-        {
-          str1 = paramaweu.k;
-          break;
-        }
-        str1 = paramaweu.h;
-        break;
-      }
-      str1 = paramaweu.g;
-      break;
-      paramString = a(paramaweu, paramInt);
-      break label48;
-      label200:
-      paramaweu = null;
-    }
-  }
-  
-  public static URL a(awfj paramawfj, int paramInt)
-  {
-    return a(paramawfj, paramInt, null);
-  }
-  
-  public static URL a(awfj paramawfj, int paramInt, String paramString)
-  {
-    if (paramawfj == null) {
-      return null;
-    }
-    if (paramawfj.isSendFromLocal()) {
-      return a(paramawfj.getPicUploadInfo(), paramInt, paramString);
-    }
-    return a(paramawfj.getPicDownloadInfo(), paramInt, paramString);
-  }
-  
-  public static URL a(awfl paramawfl, int paramInt, String paramString)
-  {
-    if (paramawfl == null) {
-      return null;
-    }
-    if (paramawfl.d < 4) {}
-    for (String str2 = a(paramawfl);; str2 = null)
-    {
-      String str3 = a(paramawfl, paramInt);
-      if ((paramawfl.jdField_b_of_type_Int == 8000) && (paramInt == 65537)) {}
-      for (String str1 = paramawfl.h;; str1 = "") {
-        for (;;)
-        {
-          if (str1 != null) {}
-          try
-          {
-            if (("".equals(str1)) && (QLog.isColorLevel())) {
-              QLog.e("URLDrawableHelper", 2, "getURL file == null" + paramawfl.toString());
-            }
-            if (paramString != null)
-            {
-              paramawfl = new URL(paramString, str2, str1);
-              return paramawfl;
-              if ((paramawfl.f != null) && (!"".equals(paramawfl.f)))
-              {
-                str1 = paramawfl.f;
-                continue;
-              }
-              if ((paramawfl.a != null) && (!"".equals(paramawfl.a)))
-              {
-                str1 = paramawfl.a;
-                continue;
-              }
-              if ((paramawfl.g != null) && (!"".equals(paramawfl.g))) {
-                str1 = paramawfl.g;
-              }
-            }
-            else
-            {
-              if (str3 == null) {
-                break;
-              }
-              paramawfl = new URL(str3, str2, str1);
-              return paramawfl;
-            }
-          }
-          catch (MalformedURLException paramawfl)
-          {
-            paramawfl.printStackTrace();
-            return null;
-          }
-        }
-      }
-    }
-  }
-  
-  public static URL a(String paramString, int paramInt)
-  {
-    String str = "chatimg";
-    if (paramInt == 65537) {
-      str = "chatthumb";
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString = new URL(str, null, paramString);
-        return paramString;
-      }
-      catch (MalformedURLException paramString)
-      {
-        paramString.printStackTrace();
-      }
-      if (paramInt == 1) {
-        str = "chatimg";
-      } else if (paramInt == 131075) {
-        str = "chatraw";
-      }
-    }
-    return null;
-  }
-  
-  public static void a()
-  {
-    for (;;)
-    {
-      try
-      {
-        boolean bool = jdField_a_of_type_Boolean;
-        if (bool) {
-          return;
-        }
-        String[] arrayOfString = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_pic_thumb_size.name(), "135|135").split("\\|");
-        if (arrayOfString.length == 2)
-        {
-          n = Integer.valueOf(arrayOfString[0]).intValue();
-          if ((n >= 45) && (n <= 198)) {
-            f = n;
-          }
-          n = Integer.valueOf(arrayOfString[1]).intValue();
-          if ((n >= 45) && (n <= 198)) {
-            h = n;
-          }
-        }
-        float f1 = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics().density;
-        j = (int)(f * f1);
-        l = (int)(h * f1);
-        i = (int)(e * f1);
-        k = (int)(f1 * g);
-        if (j == 0)
-        {
-          n = f;
-          j = n;
-          if (l != 0) {
-            break label267;
-          }
-          n = h;
-          l = n;
-          if (i != 0) {
-            break label274;
-          }
-          n = e;
-          i = n;
-          if (k != 0) {
-            break label281;
-          }
-          n = g;
-          k = n;
-          jdField_a_of_type_Boolean = true;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.i("URLDrawableHelper", 2, j + "|" + l);
-          continue;
-        }
-        n = j;
-      }
-      finally {}
-      continue;
-      label267:
-      int n = l;
-      continue;
-      label274:
-      n = i;
-      continue;
-      label281:
-      n = k;
-    }
-  }
-  
-  public static void a(URLDrawable paramURLDrawable, String paramString, boolean paramBoolean)
-  {
-    String str = paramURLDrawable.getURL().toString();
-    if ((paramURLDrawable.getStatus() != 1) && (bame.b(str))) {}
-    try
-    {
-      paramURLDrawable.downloadImediatly();
+      d();
       return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("URLDrawableHelper", 2, "downloadImediatly decode OOM,currentAccountUin=" + paramString + ",d.getURL=" + paramURLDrawable.getURL());
-    }
-  }
-  
-  public static boolean a()
-  {
-    return AppNetConnInfo.isMobileConn();
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    boolean bool1 = AppNetConnInfo.isMobileConn();
-    boolean bool2 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131695480), "qqsetting_auto_receive_pic_key", true);
-    return (bool1) && (!bool2);
-  }
-  
-  public static boolean a(Context paramContext, awfj paramawfj, int paramInt)
-  {
-    return bame.a(a(paramawfj, paramInt).toString()) != null;
-  }
-  
-  public static int b(boolean paramBoolean)
-  {
-    
-    if (paramBoolean) {
-      return k;
-    }
-    return i;
-  }
-  
-  public static Drawable b()
-  {
-    Bitmap localBitmap1 = null;
-    if (BaseApplicationImpl.sImageHashMap != null) {
-      localBitmap1 = (Bitmap)BaseApplicationImpl.sImageHashMap.get("static://CommonLoadingDrawable");
-    }
-    Bitmap localBitmap2 = localBitmap1;
-    if (localBitmap1 == null)
-    {
-      localBitmap1 = bcwc.a(BaseApplicationImpl.getContext().getResources(), 2130837965);
-      localBitmap2 = localBitmap1;
-      if (localBitmap1 != null)
+    if (this.jdField_a_of_type_JavaIoRandomAccessFile == null) {
+      try
       {
-        localBitmap2 = localBitmap1;
-        if (BaseApplicationImpl.sImageHashMap != null)
+        this.jdField_a_of_type_JavaIoRandomAccessFile = new RandomAccessFile(this.jdField_a_of_type_Bayk.i, "r");
+        if (this.jdField_a_of_type_JavaIoRandomAccessFile == null)
         {
-          BaseApplicationImpl.sImageHashMap.put("static://CommonLoadingDrawable", localBitmap1);
-          localBitmap2 = localBitmap1;
+          b(9303, "read file error");
+          d();
+          return;
+        }
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        for (;;)
+        {
+          localFileNotFoundException.printStackTrace();
+          this.jdField_a_of_type_JavaIoRandomAccessFile = null;
         }
       }
     }
-    if (localBitmap2 != null) {
-      return new BitmapDrawable(localBitmap2);
-    }
-    return new ColorDrawable();
+    f();
   }
   
-  public static URLDrawable b(awfj paramawfj, int paramInt)
+  private int d()
   {
-    URLDrawable localURLDrawable = URLDrawable.getDrawable(a(paramawfj, 65537));
-    localURLDrawable.setTargetDensity(d);
-    int n;
-    URL localURL;
-    if (localURLDrawable.getStatus() == 1)
+    b("uiParam", this.jdField_a_of_type_Bayk.toString());
+    String str = this.jdField_a_of_type_Bayk.i;
+    if ((str == null) || ("".equals(str)))
     {
-      n = 1;
-      localURL = a(paramawfj, paramInt);
-      if (n == 0) {
-        break label68;
+      b(9302, a(new Exception("filePath null")));
+      d();
+      return -1;
+    }
+    if (str != null)
+    {
+      File localFile = new File(str);
+      if (!localFile.exists())
+      {
+        b(9042, a(new Exception("sendFile not exist " + str)));
+        d();
+        return -1;
+      }
+      if (!localFile.canRead())
+      {
+        b(9070, a(new Exception("sendFile not readable " + this.jdField_a_of_type_Bass.jdField_c_of_type_JavaLangString)));
+        d();
+        return -1;
+      }
+      this.e = "amr";
+      long l = localFile.length();
+      this.jdField_a_of_type_Bass.a = l;
+      this.q = l;
+      if (l <= 0L)
+      {
+        b(9071, a(new Exception("file size 0 " + str)));
+        d();
+        return -1;
       }
     }
-    label68:
-    for (localURLDrawable = URLDrawable.getDrawable(localURL, -1, -1, localURLDrawable, null, true);; localURLDrawable = URLDrawable.getDrawable(localURL, -1, -1, true))
+    return 0;
+  }
+  
+  protected String a(byte[] paramArrayOfByte)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    bawy localbawy = (bawy)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+    localStringBuilder.append("http://");
+    localStringBuilder.append(localbawy.jdField_a_of_type_JavaLangString);
+    if (localbawy.jdField_a_of_type_Int != 80)
     {
-      localURLDrawable.setTargetDensity(d);
-      localURLDrawable.setTag(paramawfj);
-      return localURLDrawable;
-      n = 0;
-      break;
+      localStringBuilder.append(":");
+      localStringBuilder.append(localbawy.jdField_a_of_type_Int);
     }
+    localStringBuilder.append("/qqcommfileupload?ver=");
+    localStringBuilder.append(100);
+    localStringBuilder.append("&ukey=");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append("&filekey=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("&filesize=");
+    localStringBuilder.append(this.q);
+    localStringBuilder.append("&bmd5=");
+    localStringBuilder.append(MD5.toMD5(paramArrayOfByte));
+    localStringBuilder.append("&range=");
+    localStringBuilder.append(this.s);
+    localStringBuilder.append("&voice_codec=0");
+    paramArrayOfByte = a(localStringBuilder.toString(), this.jdField_a_of_type_JavaUtilArrayList);
+    barf.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilArrayList);
+    return paramArrayOfByte;
   }
   
-  /* Error */
-  public static void b()
+  public void a(bbax parambbax, bbbm parambbbm)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 500	baul:jdField_b_of_type_Boolean	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +7 -> 15
-    //   11: ldc 2
-    //   13: monitorexit
-    //   14: return
-    //   15: invokestatic 403	com/tencent/mobileqq/app/DeviceProfileManager:a	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
-    //   18: getstatic 503	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:aio_config	Lcom/tencent/mobileqq/app/DeviceProfileManager$DpcNames;
-    //   21: invokevirtual 412	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:name	()Ljava/lang/String;
-    //   24: ldc_w 505
-    //   27: invokevirtual 417	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   30: ldc_w 419
-    //   33: invokevirtual 423	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   36: astore_2
-    //   37: aload_2
-    //   38: arraylength
-    //   39: istore_0
-    //   40: iload_0
-    //   41: ifle +15 -> 56
-    //   44: aload_2
-    //   45: iconst_0
-    //   46: aaload
-    //   47: invokestatic 428	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   50: invokevirtual 431	java/lang/Integer:intValue	()I
-    //   53: putstatic 61	baul:m	I
-    //   56: iconst_1
-    //   57: putstatic 500	baul:jdField_b_of_type_Boolean	Z
-    //   60: invokestatic 129	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   63: ifeq -52 -> 11
-    //   66: ldc_w 345
-    //   69: iconst_2
-    //   70: new 133	java/lang/StringBuilder
-    //   73: dup
-    //   74: invokespecial 135	java/lang/StringBuilder:<init>	()V
-    //   77: ldc_w 507
-    //   80: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   83: getstatic 61	baul:m	I
-    //   86: invokevirtual 146	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   89: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   92: invokestatic 443	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   95: goto -84 -> 11
-    //   98: astore_2
-    //   99: ldc 2
-    //   101: monitorexit
-    //   102: aload_2
-    //   103: athrow
-    //   104: astore_2
-    //   105: invokestatic 129	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   108: ifeq +13 -> 121
-    //   111: ldc_w 345
-    //   114: iconst_2
-    //   115: ldc_w 509
-    //   118: invokestatic 443	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   121: iconst_m1
-    //   122: putstatic 61	baul:m	I
-    //   125: goto -69 -> 56
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   39	2	0	n	int
-    //   6	2	1	bool	boolean
-    //   36	9	2	arrayOfString	String[]
-    //   98	5	2	localObject	Object
-    //   104	1	2	localException	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   3	7	98	finally
-    //   15	40	98	finally
-    //   44	56	98	finally
-    //   56	95	98	finally
-    //   105	121	98	finally
-    //   121	125	98	finally
-    //   44	56	104	java/lang/Exception
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    return SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131695480), "qqsetting_auto_receive_pic_key", true);
-  }
-  
-  public static int c(boolean paramBoolean)
-  {
-    
-    if (paramBoolean) {
-      return h;
-    }
-    return f;
-  }
-  
-  public static Drawable c()
-  {
-    Bitmap localBitmap1 = null;
-    if (BaseApplicationImpl.sImageCache != null) {
-      localBitmap1 = (Bitmap)BaseApplicationImpl.sImageCache.get("static://CommonFailedDrawable_sticker");
-    }
-    Bitmap localBitmap2 = localBitmap1;
-    if (localBitmap1 == null)
+    this.jdField_a_of_type_Bbax = null;
+    if (parambbbm != null)
     {
-      localBitmap1 = bcwc.a(BaseApplicationImpl.getContext().getResources(), 2130844076);
-      localBitmap2 = localBitmap1;
-      if (localBitmap1 != null)
+      int i = 0;
+      if (i < parambbbm.jdField_a_of_type_JavaUtilList.size())
       {
-        localBitmap2 = localBitmap1;
-        if (BaseApplicationImpl.sImageCache != null)
+        parambbax = (bbbq)parambbbm.jdField_a_of_type_JavaUtilList.get(i);
+        if (QLog.isColorLevel()) {
+          b("procUrl", parambbax.toString());
+        }
+        this.i = parambbax.d;
+        if (QLog.isColorLevel()) {
+          QLog.e("http_sideway", 2, "JSPttUpProcessor.onBusiProtoResp:isSendByQuickHttp=" + this.i);
+        }
+        a(this.jdField_a_of_type_Barh, parambbax);
+        if (parambbax.jdField_c_of_type_Int == 0)
         {
-          BaseApplicationImpl.sImageCache.put("static://CommonFailedDrawable_sticker", localBitmap1);
-          localBitmap2 = localBitmap1;
+          if (parambbax.jdField_a_of_type_Boolean) {
+            this.jdField_f_of_type_JavaLangString = parambbax.jdField_a_of_type_JavaLangString;
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            this.jdField_f_of_type_JavaLangString = parambbax.jdField_a_of_type_JavaLangString;
+            this.m = parambbax.b;
+            this.jdField_a_of_type_JavaUtilArrayList = parambbax.jdField_a_of_type_JavaUtilArrayList;
+            this.s = 0L;
+            this.jdField_t_of_type_Long = parambbax.jdField_a_of_type_Int;
+            sxb.c(this.jdField_f_of_type_JavaLangString);
+            aN_();
+          }
+        }
+        d();
+      }
+    }
+  }
+  
+  public void aP_()
+  {
+    super.aP_();
+    b(false);
+  }
+  
+  public int c()
+  {
+    super.c();
+    return d();
+  }
+  
+  void d()
+  {
+    super.d();
+    d(1005);
+    a(false);
+  }
+  
+  void e()
+  {
+    super.e();
+    d(1003);
+    a(true);
+  }
+  
+  void f()
+  {
+    this.jdField_a_of_type_Barh.a();
+    bbax localbbax = new bbax();
+    bbbh localbbbh = new bbbh();
+    localbbbh.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bayk.b;
+    localbbbh.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString;
+    localbbbh.e = this.jdField_a_of_type_Bayk.jdField_d_of_type_JavaLangString;
+    localbbbh.jdField_f_of_type_Int = this.jdField_a_of_type_Bayk.jdField_a_of_type_Int;
+    localbbbh.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+    localbbbh.b = ((int)this.q);
+    localbbbh.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    localbbbh.jdField_c_of_type_Int = 0;
+    localbbbh.jdField_a_of_type_Int = 1;
+    localbbbh.jdField_d_of_type_Int = this.jdField_a_of_type_Bayk.n;
+    localbbax.jdField_a_of_type_Bbce = this;
+    localbbax.jdField_a_of_type_JavaLangString = "c2c_ptt_up";
+    localbbax.jdField_a_of_type_JavaUtilList.add(localbbbh);
+    localbbax.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getProtoReqManager();
+    if (!e())
+    {
+      a(9366, "illegal app", null, this.jdField_a_of_type_Barh);
+      d();
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        b("requestStart", localbbax.toString());
+      }
+    } while (!f());
+    this.jdField_a_of_type_Bbax = localbbax;
+    bbcd.a(localbbax);
+  }
+  
+  protected void n()
+  {
+    if ((this.jdField_a_of_type_Bave != null) && ((this.jdField_a_of_type_Bave instanceof baub))) {
+      ((baub)this.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype("pttCu", ((baub)this.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onResp(bavf parambavf)
+  {
+    Object localObject1 = null;
+    super.onResp(parambavf);
+    this.jdField_a_of_type_Bave = null;
+    int i = parambavf.jdField_c_of_type_Int;
+    for (;;)
+    {
+      long l2;
+      try
+      {
+        if (parambavf.jdField_a_of_type_Int != 0) {
+          break label505;
+        }
+        if (parambavf.jdField_a_of_type_JavaUtilHashMap.get("User-ReturnCode") == null) {
+          break label579;
+        }
+        l3 = Long.parseLong((String)parambavf.jdField_a_of_type_JavaUtilHashMap.get("User-ReturnCode"));
+        if ((l3 != 0L) && (l3 != 9223372036854775807L))
+        {
+          a(this.b, parambavf, false);
+          a(-9527, null, a(i, l3), this.b);
+          d();
+          return;
+        }
+        str2 = (String)parambavf.jdField_a_of_type_JavaUtilHashMap.get("Range");
+        if (str2 == null) {
+          break label587;
         }
       }
+      catch (Exception parambavf)
+      {
+        String str2;
+        String str1;
+        a(9343, baqo.a(new Exception("decode unknown exception")), "", this.b);
+        d();
+        return;
+      }
+      try
+      {
+        i = Integer.parseInt(str2);
+        l1 = i;
+        l2 = l1;
+        if (l1 == 9223372036854775807L)
+        {
+          str1 = (String)parambavf.jdField_a_of_type_JavaUtilHashMap.get("X-Range");
+          localObject1 = str1;
+          l2 = l1;
+          if (str1 == null) {}
+        }
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+      try
+      {
+        i = Integer.parseInt(str1);
+        l2 = i;
+        localObject1 = str1;
+      }
+      catch (Exception localException1)
+      {
+        localException1.printStackTrace();
+        l2 = 9223372036854775807L;
+        Object localObject2 = localException2;
+        continue;
+        b("decodeHttpResp", "from " + this.s + " to " + l2 + " userReturnCode:" + l3);
+        if (l2 > this.s) {
+          break label420;
+        }
+        if (this.jdField_t_of_type_Int >= 3) {
+          break label460;
+        }
+        b("procHttpRespBody", "server offset rollback");
+        this.jdField_t_of_type_Int += 1;
+        this.jdField_a_of_type_Bass.e = l2;
+        this.s = l2;
+        a(this.b, parambavf, true);
+        if (l2 >= this.q) {
+          break label500;
+        }
+        aN_();
+        return;
+        a(this.b, parambavf, false);
+        a(-9527, "", a(this.h, this.jdField_f_of_type_Int), this.b);
+        d();
+        return;
+        e();
+        return;
+      }
+      if (l2 == 9223372036854775807L)
+      {
+        a(this.b, parambavf, false);
+        a(-9527, "no header range:" + str2 + " x-range:" + localObject1, a(this.h, this.g), this.b);
+        bavt.b(true);
+        d();
+        return;
+      }
+      label420:
+      label460:
+      label500:
+      label505:
+      if ((parambavf.b == 9364) && (this.l < 3))
+      {
+        b("[netChg]", "failed.but net change detect.so retry");
+        this.l += 1;
+        m();
+        f();
+        return;
+      }
+      a(this.b, parambavf, false);
+      b(parambavf.b, parambavf.jdField_a_of_type_JavaLangString);
+      d();
+      return;
+      label579:
+      long l3 = 9223372036854775807L;
+      continue;
+      label587:
+      long l1 = 9223372036854775807L;
     }
-    if (localBitmap2 != null) {
-      return new BitmapDrawable(localBitmap2);
-    }
-    return new ColorDrawable();
-  }
-  
-  public static int d(boolean paramBoolean)
-  {
-    
-    if (paramBoolean) {
-      return g;
-    }
-    return e;
   }
 }
 

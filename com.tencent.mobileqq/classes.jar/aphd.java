@@ -1,60 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.PrecoverData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-public class aphd
-  extends apgu
+class aphd
+  implements View.OnClickListener
 {
-  public aphd(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.early.precover", paramQQAppInterface);
-  }
+  aphd(aphc paramaphc, WindowManager paramWindowManager) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return 10045;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return PrecoverData.class;
-  }
-  
-  public String a()
-  {
-    return "actEarlyPrecover";
-  }
-  
-  public void a(XmlData paramXmlData)
-  {
-    super.a(paramXmlData);
-    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof PrecoverData))) {
-      QLog.d("PrecoverHandler", 2, new Object[] { "doOnServerResp, xmlData=", paramXmlData });
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public String b()
-  {
-    return "prd";
-  }
-  
-  public boolean i()
-  {
-    File localFile = new File(c());
-    return (localFile != null) && (localFile.exists());
-  }
-  
-  public boolean j()
-  {
-    File localFile = new File(d());
-    return (localFile != null) && (localFile.exists());
+    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Aphc.a.a);
   }
 }
 

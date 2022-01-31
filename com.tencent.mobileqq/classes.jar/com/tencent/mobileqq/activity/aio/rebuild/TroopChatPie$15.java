@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity.aio.rebuild;
 
 import android.os.Handler;
 import android.os.Message;
-import bcjl;
-import bcjr;
+import bcnu;
+import bcoa;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -14,9 +14,9 @@ class TroopChatPie$15
   
   public void run()
   {
-    bcjr localbcjr = ((bcjl)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a);
+    bcoa localbcoa = ((bcnu)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a);
     Message localMessage = this.this$0.b.obtainMessage(2);
-    localMessage.obj = localbcjr;
+    localMessage.obj = localbcoa;
     this.this$0.b.sendMessage(localMessage);
   }
 }

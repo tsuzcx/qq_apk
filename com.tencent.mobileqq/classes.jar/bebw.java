@@ -1,34 +1,34 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.webview.swift.UnVisibleWebViewFragment;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class bebw
-  implements View.OnLongClickListener
+class bebw
+  extends MqqHandler
 {
-  public bebw(UnVisibleWebViewFragment paramUnVisibleWebViewFragment) {}
+  bebw(bebv parambebv) {}
   
-  public boolean onLongClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (!this.a.jdField_a_of_type_Beeh.a("web_view_long_click", true))
+    switch (paramMessage.what)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
-      }
-      return true;
+    default: 
+    case 104: 
+      do
+      {
+        return;
+        paramMessage = (String)paramMessage.obj;
+        if ((this.a.jdField_a_of_type_Axmf != null) && (!TextUtils.isEmpty(paramMessage)))
+        {
+          this.a.jdField_a_of_type_Axmf.a(paramMessage);
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(bebv.jdField_a_of_type_JavaLangString, 2, "captcha sig is empty");
+      return;
     }
-    if (!this.a.jdField_a_of_type_Beeh.a("image_long_click", false))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
-      }
-      return false;
-    }
-    beds localbeds = (beds)this.a.jdField_a_of_type_Bedf.a(8);
-    if ((localbeds != null) && (localbeds.a(paramView))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    bebv.a(this.a).finish();
   }
 }
 

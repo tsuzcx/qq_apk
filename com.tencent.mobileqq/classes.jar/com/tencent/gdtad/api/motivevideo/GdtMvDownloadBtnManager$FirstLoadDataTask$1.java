@@ -1,6 +1,6 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aanp;
+import aase;
 import java.lang.ref.WeakReference;
 
 class GdtMvDownloadBtnManager$FirstLoadDataTask$1
@@ -10,7 +10,7 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask$1
   
   public void run()
   {
-    aanp.a("FirstLoadDataTask", "run() called");
+    aase.a("FirstLoadDataTask", "run() called");
     if (GdtMvDownloadBtnManager.FirstLoadDataTask.a(this.this$0)) {}
     GdtMvDownloadBtnManager localGdtMvDownloadBtnManager;
     do

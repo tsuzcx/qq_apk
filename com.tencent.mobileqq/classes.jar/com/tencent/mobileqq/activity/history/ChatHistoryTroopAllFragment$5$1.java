@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import agzc;
+import ahdr;
 import android.view.View;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -23,7 +23,7 @@ class ChatHistoryTroopAllFragment$5$1
       }
       return;
     }
-    agzc localagzc = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Agzc;
+    ahdr localahdr = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Ahdr;
     List localList = this.jdField_a_of_type_JavaUtilList;
     boolean bool;
     label115:
@@ -33,11 +33,11 @@ class ChatHistoryTroopAllFragment$5$1
     if (this.jdField_a_of_type_JavaUtilList.size() < 20)
     {
       bool = true;
-      i1 = localagzc.a(localList, bool);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Agzc.getCount() > 0)
+      i1 = localahdr.a(localList, bool);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Ahdr.getCount() > 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Agzc.getItem(0)).shmsgseq;
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.b = ((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Agzc.getItem(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Agzc.getCount() - 1)).shmsgseq;
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Ahdr.getItem(0)).shmsgseq;
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.b = ((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Ahdr.getItem(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Ahdr.getCount() - 1)).shmsgseq;
       }
       if ((i1 == 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() <= 0)) {
         break label497;
@@ -58,11 +58,11 @@ class ChatHistoryTroopAllFragment$5$1
     for (int k = m;; k = 0)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.hideOverScrollHeaderView();
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Agzc.b, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Agzc.c);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Agzc.getCount() == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Ahdr.b, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Ahdr.c);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Ahdr.getCount() == 0) {
         this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setEmptyView(ChatHistoryTroopAllFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0));
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Agzc.notifyDataSetChanged();
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$5.this$0.jdField_a_of_type_Ahdr.notifyDataSetChanged();
       if (j == 0) {
         break;
       }

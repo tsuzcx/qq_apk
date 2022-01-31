@@ -1,25 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
-class aqeg
-  implements Animation.AnimationListener
+public class aqeg
+  implements View.OnTouchListener
 {
-  aqeg(aqef paramaqef) {}
+  public aqeg(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(500);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setAnimationListener(new aqeh(this));
-    this.a.c.startAnimation(paramAnimation);
+    int i = paramMotionEvent.getAction();
+    if (i == 0) {
+      ExtendFriendProfileEditFragment.a(this.a).setVisibility(0);
+    }
+    while ((i != 1) && (i != 3)) {
+      return false;
+    }
+    ExtendFriendProfileEditFragment.a(this.a).setVisibility(8);
+    return false;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

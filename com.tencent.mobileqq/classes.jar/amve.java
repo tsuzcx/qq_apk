@@ -1,91 +1,145 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.sveffects.SLog;
+import java.nio.FloatBuffer;
 
-public abstract class amve
-  extends Binder
-  implements amvd
+public class amve
 {
+  private static final FloatBuffer jdField_a_of_type_JavaNioFloatBuffer = GlUtil.createFloatBuffer(jdField_a_of_type_ArrayOfFloat);
+  public static float[] a;
+  private static final FloatBuffer jdField_b_of_type_JavaNioFloatBuffer = GlUtil.createFloatBuffer(jdField_b_of_type_ArrayOfFloat);
+  public static final float[] b;
+  protected int a;
+  private final String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  protected int b;
+  private final String jdField_b_of_type_JavaLangString;
+  public int c = 3553;
+  protected int d = 101;
+  private int e;
+  
+  static
+  {
+    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+    jdField_b_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+  }
+  
   public amve()
   {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+    this("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", "precision mediump float;\n\nvarying vec2 vTextureCoord;\nuniform sampler2D uTexture;\n\nvoid main() {\n    gl_FragColor = texture2D(uTexture, vTextureCoord);\n}\n");
   }
   
-  public static amvd a(IBinder paramIBinder)
+  public amve(String paramString1, String paramString2)
   {
-    if (paramIBinder == null) {
-      return null;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = 3553;
+    this.d = 101;
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    if (paramInt < 0) {
+      SLog.e("GPUBaseFilter", new RuntimeException("Unable to locate '" + paramString + "' in program"));
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof amvd))) {
-      return (amvd)localIInterface;
-    }
-    return new amvf(paramIBinder);
   }
   
-  public IBinder asBinder()
+  public static void a(String paramString)
   {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    for (;;)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-      a(paramParcel1.readLong(), paramParcel1.readLong());
-      paramParcel2.writeNoException();
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-      a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-    ArConfigInfo localArConfigInfo;
-    ArEffectConfig localArEffectConfig;
-    if (paramParcel1.readInt() != 0)
-    {
-      localArConfigInfo = (ArConfigInfo)ArConfigInfo.CREATOR.createFromParcel(paramParcel1);
-      if (paramParcel1.readInt() == 0) {
-        break label219;
+      int i = GLES20.glGetError();
+      if (i == 0) {
+        break;
       }
-      localArEffectConfig = (ArEffectConfig)ArEffectConfig.CREATOR.createFromParcel(paramParcel1);
-      label178:
-      if (paramParcel1.readInt() == 0) {
-        break label225;
-      }
-    }
-    label219:
-    label225:
-    for (paramParcel1 = (ARCommonConfigInfo)ARCommonConfigInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(localArConfigInfo, localArEffectConfig, paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
-      localArConfigInfo = null;
-      break;
-      localArEffectConfig = null;
-      break label178;
+      SLog.e("GPUBaseFilter", new RuntimeException(paramString + ": glError " + i));
     }
   }
+  
+  public int a()
+  {
+    return this.e;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.e = GlUtil.createProgram(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    if (this.e == 0) {
+      SLog.e("GPUBaseFilter", new RuntimeException("failed creating program " + getClass().getSimpleName()));
+    }
+    this.jdField_a_of_type_Boolean = true;
+    b();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public void a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    a("onDrawFrame start");
+    int m = a();
+    float[] arrayOfFloat = paramArrayOfFloat1;
+    if (paramArrayOfFloat1 == null)
+    {
+      arrayOfFloat = new float[16];
+      Matrix.setIdentityM(arrayOfFloat, 0);
+    }
+    paramArrayOfFloat1 = paramArrayOfFloat2;
+    if (paramArrayOfFloat2 == null)
+    {
+      paramArrayOfFloat1 = new float[16];
+      Matrix.setIdentityM(paramArrayOfFloat1, 0);
+    }
+    GLES20.glUseProgram(m);
+    a("glUseProgram");
+    int i = GLES20.glGetAttribLocation(m, "aPosition");
+    a(i, "aPosition");
+    int j = GLES20.glGetAttribLocation(m, "aTextureCoord");
+    a(j, "aTextureCoord");
+    int k = GLES20.glGetUniformLocation(m, "uMVPMatrix");
+    a(k, "uMVPMatrix");
+    m = GLES20.glGetUniformLocation(m, "uTextureMatrix");
+    a(m, "uTextureMatrix");
+    GLES20.glVertexAttribPointer(i, 2, 5126, false, 8, jdField_a_of_type_JavaNioFloatBuffer);
+    a("glVertexAttribPointer aPosition");
+    GLES20.glEnableVertexAttribArray(i);
+    a("glEnableVertexAttribArray mPositionHandle");
+    GLES20.glVertexAttribPointer(j, 2, 5126, false, 8, jdField_b_of_type_JavaNioFloatBuffer);
+    a("glVertexAttribPointer mTextureHandle");
+    GLES20.glEnableVertexAttribArray(j);
+    a("glEnableVertexAttribArray mTextureHandle");
+    GLES20.glUniformMatrix4fv(k, 1, false, paramArrayOfFloat1, 0);
+    GLES20.glUniformMatrix4fv(m, 1, false, arrayOfFloat, 0);
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(this.c, paramInt);
+    e();
+    GLES20.glDrawArrays(5, 0, 4);
+    a("glDrawArrays");
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(this.c, 0);
+  }
+  
+  protected void b() {}
+  
+  public void c()
+  {
+    SLog.d("GPUBaseFilter", "destroy");
+    this.jdField_a_of_type_Boolean = false;
+    GLES20.glDeleteProgram(this.e);
+    this.e = 0;
+    d();
+  }
+  
+  protected void d() {}
+  
+  protected void e() {}
 }
 
 

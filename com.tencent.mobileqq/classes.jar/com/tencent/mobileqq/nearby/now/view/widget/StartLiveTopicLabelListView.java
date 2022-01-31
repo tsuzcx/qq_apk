@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
-import aveg;
-import avei;
+import avip;
+import avir;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
 import mww;
@@ -13,15 +13,15 @@ import mww;
 public class StartLiveTopicLabelListView
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int = 2130845027;
+  private int jdField_a_of_type_Int = 2130845099;
   private Context jdField_a_of_type_AndroidContentContext;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new aveg(this);
-  private avei jdField_a_of_type_Avei;
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new avip(this);
+  private avir jdField_a_of_type_Avir;
   private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
   private final String jdField_a_of_type_JavaLangString = "TopicLabelListView";
   private List<String> jdField_a_of_type_JavaUtilList;
   private int b = -1;
-  private int c = 2130845026;
+  private int c = 2130845098;
   private int d = -1;
   
   public StartLiveTopicLabelListView(Context paramContext)

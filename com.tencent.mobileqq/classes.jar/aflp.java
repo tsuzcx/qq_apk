@@ -1,22 +1,16 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceText;
 
 class aflp
-  extends afpq
+  implements DialogInterface.OnClickListener
 {
-  aflp(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  aflp(aflo paramaflo, MessageForDeviceText paramMessageForDeviceText) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new afhy(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
-  
-  protected boolean a()
-  {
-    return false;
+    ((zxz)this.jdField_a_of_type_Aflo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a(this.jdField_a_of_type_Aflo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aflo.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aflo.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceText);
   }
 }
 

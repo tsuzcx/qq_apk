@@ -1,120 +1,297 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ahco
+  extends WebViewPlugin
 {
-  public static final String a;
-  private static int[] jdField_a_of_type_ArrayOfInt = { 80000000 };
-  private static int[] jdField_b_of_type_ArrayOfInt = { 80000001 };
-  private static int[] jdField_c_of_type_ArrayOfInt = { 80000002 };
-  private static int[] d = { 80000003 };
-  private static int[] e = { 80000000, 80000001, 80000002, 80000004, 80000003 };
-  private static int[] f = { 80000002, 80000003 };
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private ahcq jdField_a_of_type_Ahcq;
-  alox jdField_a_of_type_Alox = new ahcp(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString = null;
-  private String jdField_c_of_type_JavaLangString;
+  private static String a;
+  public BroadcastReceiver a;
   
-  static
+  public ahco()
   {
-    jdField_a_of_type_JavaLangString = ahco.class.getName();
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ahcp(this);
+    this.mPluginNameSpace = "bless";
   }
   
-  public ahco(QQAppInterface paramQQAppInterface)
+  public void a(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_c_of_type_JavaLangString = bdes.a(paramQQAppInterface.getApplication());
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  final void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Alox, true);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(ahcq paramahcq)
-  {
-    this.jdField_a_of_type_Ahcq = paramahcq;
-  }
-  
-  public void a(String paramString, int[] paramArrayOfInt, double paramDouble1, double paramDouble2, boolean paramBoolean, int paramInt)
-  {
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(paramString, this.jdField_c_of_type_JavaLangString, 3, this.jdField_a_of_type_Int, paramArrayOfInt, paramDouble1, paramDouble2, paramBoolean, paramInt, this.jdField_a_of_type_Long);
-  }
-  
-  public boolean a(String paramString, int paramInt1, double paramDouble1, double paramDouble2, int paramInt2)
-  {
-    a();
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt1;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    switch (paramInt1)
-    {
-    default: 
-      localObject1 = localObject2;
-    }
-    while (localObject1 == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "warning! wrong request type = " + paramInt1);
-      }
-      return false;
-      localObject1 = jdField_a_of_type_ArrayOfInt;
-      continue;
-      localObject1 = jdField_b_of_type_ArrayOfInt;
-      continue;
-      localObject1 = jdField_c_of_type_ArrayOfInt;
-      continue;
-      localObject1 = d;
-      continue;
-      localObject1 = e;
-      continue;
-      localObject1 = f;
-    }
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(paramString, this.jdField_c_of_type_JavaLangString, 3, this.jdField_a_of_type_Int, (int[])localObject1, paramDouble1, paramDouble2, true, paramInt2, this.jdField_a_of_type_Long);
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "searchFriend nextPage = " + this.jdField_a_of_type_Int);
+      QLog.d("BlessJsApiPlugin", 2, "onActivityResult, requestCode:" + paramInt1 + "，resultCode：" + paramInt2);
     }
-    return true;
-  }
-  
-  final void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alox);
+    if ((paramInt1 != 11000) || (paramIntent == null)) {}
+    String str;
+    do
+    {
+      do
+      {
+        return;
+        str = paramIntent.getStringExtra("arg_callback");
+      } while (TextUtils.isEmpty(str));
+      if (paramInt2 != -1) {
+        break;
+      }
+      paramIntent = paramIntent.getStringExtra("arg_result_json");
+    } while (paramIntent == null);
+    try
+    {
+      paramIntent = new JSONObject(paramIntent);
+      paramIntent.put("retCode", 0);
+      paramIntent = paramIntent.toString();
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessJsApiPlugin", 2, "startNewPTVActivity" + " result:" + ReadInJoyDeliverUGCActivity.a(paramIntent));
+      }
+      callJs(str, new String[] { paramIntent });
+      return;
     }
+    catch (Exception paramIntent)
+    {
+      return;
+    }
+    try
+    {
+      paramIntent = new JSONObject();
+      paramIntent.put("retCode", -1);
+      paramIntent = paramIntent.toString();
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessJsApiPlugin", 2, "startNewPTVActivity" + " result:" + paramIntent);
+      }
+      callJs(str, new String[] { paramIntent });
+      return;
+    }
+    catch (Exception paramIntent) {}
   }
   
-  public void c()
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    if ((paramLong == 8589934600L) && (paramMap != null))
+    {
+      int i = ((Integer)paramMap.get("requestCode")).intValue();
+      if (i == 11000)
+      {
+        int j = ((Integer)paramMap.get("resultCode")).intValue();
+        a((Intent)paramMap.get("data"), i, j);
+        return true;
+      }
+    }
+    return super.handleEvent(paramString, paramLong, paramMap);
   }
   
-  public void d()
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    this.jdField_a_of_type_Ahcq = null;
-    this.jdField_a_of_type_Int = 0;
-    b();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessJsApiPlugin", 2, "Call BlessJsApiPlugin handleJsRequest, url" + paramString1 + " pkgName:" + paramString2);
+    }
+    if ("bless".equals(paramString2))
+    {
+      if ("GSBase64Encode".equals(paramString3))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BlessJsApiPlugin", 2, "Call Bless Api GSBaze64Encode, args:" + paramVarArgs);
+        }
+        if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {}
+      }
+      for (;;)
+      {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          paramString1 = paramJsBridgeListener.optString("need_encode_string");
+          paramJsBridgeListener = paramJsBridgeListener.optString("callback");
+          if (!TextUtils.isEmpty(paramJsBridgeListener))
+          {
+            paramString1 = auwx.a(paramString1);
+            paramString2 = new JSONObject();
+            paramString2.put("encoded_string", paramString1);
+            callJs(paramJsBridgeListener, new String[] { paramString2.toString() });
+          }
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          continue;
+        }
+        if ("getBlessConfig".equals(paramString3))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("BlessJsApiPlugin", 2, "Call Bless Api getBlessConfig, args:" + paramVarArgs);
+          }
+          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+            try
+            {
+              paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+              if (TextUtils.isEmpty(paramJsBridgeListener)) {
+                continue;
+              }
+              paramString1 = ahcr.i();
+              paramString2 = new JSONObject();
+              paramString2.put("bless_config", paramString1);
+              callJs(paramJsBridgeListener, new String[] { paramString2.toString() });
+            }
+            catch (JSONException paramJsBridgeListener)
+            {
+              paramJsBridgeListener.printStackTrace();
+            }
+          }
+        }
+        else if ("sendBlessText".equals(paramString3))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("BlessJsApiPlugin", 2, "Call Bless Api sendBlessText, args:" + paramVarArgs);
+          }
+          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+            try
+            {
+              paramString1 = new JSONObject(paramVarArgs[0]);
+              paramJsBridgeListener = paramString1.optString("callback");
+              paramString1 = paramString1.optString("blesswords");
+              if (TextUtils.isEmpty(paramJsBridgeListener)) {
+                continue;
+              }
+              ahcq.a(this.mRuntime.a(), paramString1, paramJsBridgeListener);
+            }
+            catch (JSONException paramJsBridgeListener)
+            {
+              paramJsBridgeListener.printStackTrace();
+            }
+          }
+        }
+        else if ("sendBlessPtv".equals(paramString3))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("BlessJsApiPlugin", 2, "Call Ptv Api sendBlessPtv, args:" + paramVarArgs);
+          }
+          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+            try
+            {
+              Object localObject = new JSONObject(paramVarArgs[0]);
+              paramJsBridgeListener = ((JSONObject)localObject).optString("callback");
+              paramString1 = ((JSONObject)localObject).optString("supportvideo");
+              paramString2 = ((JSONObject)localObject).optString("supportphoto");
+              paramString3 = ((JSONObject)localObject).optString("cameramode");
+              paramVarArgs = ((JSONObject)localObject).optString("supportDD");
+              String str1 = ((JSONObject)localObject).optString("unfoldDD");
+              String str2 = ((JSONObject)localObject).optString("DDCategoryName");
+              String str3 = ((JSONObject)localObject).optString("DDItemID");
+              String str4 = ((JSONObject)localObject).optString("supportFilter");
+              String str5 = ((JSONObject)localObject).optString("unfoldFilter");
+              String str6 = ((JSONObject)localObject).optString("filterCategoryName");
+              localObject = ((JSONObject)localObject).optString("filterItemID");
+              if (TextUtils.isEmpty(paramJsBridgeListener)) {
+                continue;
+              }
+              AppInterface localAppInterface = this.mRuntime.a();
+              Activity localActivity = this.mRuntime.a();
+              jdField_a_of_type_JavaLangString = paramJsBridgeListener;
+              ahcq.a(localAppInterface, localActivity, paramString1, paramString2, paramString3, paramVarArgs, str1, str2, str3, str4, str5, str6, (String)localObject, paramJsBridgeListener);
+            }
+            catch (JSONException paramJsBridgeListener)
+            {
+              paramJsBridgeListener.printStackTrace();
+            }
+          }
+        }
+        else
+        {
+          boolean bool;
+          if ("isSupportPTV".equals(paramString3))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("BlessJsApiPlugin", 2, "Call Bless Api isSupportPTV, args:" + paramVarArgs);
+            }
+            if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+              try
+              {
+                paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+                if (TextUtils.isEmpty(paramJsBridgeListener)) {
+                  continue;
+                }
+                bool = ahcq.c(this.mRuntime.a());
+                paramString1 = new JSONObject();
+                paramString1.put("is_support_ptv", bool);
+                callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+              }
+              catch (JSONException paramJsBridgeListener)
+              {
+                paramJsBridgeListener.printStackTrace();
+              }
+            }
+          }
+          else if ("isMobileSupportPTV".equals(paramString3))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("BlessJsApiPlugin", 2, "Call Bless Api isMobileSupportPTV, args:" + paramVarArgs);
+            }
+            if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+              try
+              {
+                paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+                if (TextUtils.isEmpty(paramJsBridgeListener)) {
+                  continue;
+                }
+                bool = ahcq.a(this.mRuntime.a());
+                paramString1 = new JSONObject();
+                paramString1.put("is_mobile_support_ptv", bool);
+                callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+              }
+              catch (JSONException paramJsBridgeListener)
+              {
+                paramJsBridgeListener.printStackTrace();
+              }
+            }
+          }
+          else if ("isMobileSupportPendant".equals(paramString3))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("BlessJsApiPlugin", 2, "Call Bless Api isMobileSupportPendant, args:" + paramVarArgs);
+            }
+            if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+              try
+              {
+                paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+                if (!TextUtils.isEmpty(paramJsBridgeListener))
+                {
+                  bool = ahcq.b(this.mRuntime.a());
+                  paramString1 = new JSONObject();
+                  paramString1.put("is_support_DynamicDecoration", bool);
+                  callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+                }
+              }
+              catch (JSONException paramJsBridgeListener)
+              {
+                paramJsBridgeListener.printStackTrace();
+              }
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.mobileqq.BlessJsApiPlugin");
+    this.mRuntime.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    this.mRuntime.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
 }
 

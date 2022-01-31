@@ -1,23 +1,25 @@
-import android.view.View;
-import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
 
-class bhfk
-  implements bgog
+public class bhfk
+  implements Animator.AnimatorListener
 {
-  bhfk(bhfj parambhfj, bgob parambgob, String paramString) {}
+  public bhfk(AppBrandPage paramAppBrandPage, bgmk parambgmk) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Bgob.dismiss();
-    paramView = this.jdField_a_of_type_Bgob.a(paramInt);
-    if ("发送给朋友".equals(paramView)) {
-      InnerWebView.a(this.jdField_a_of_type_Bhfj.a, this.jdField_a_of_type_JavaLangString);
-    }
-    while (!"保存到手机".equals(paramView)) {
-      return;
-    }
-    InnerWebView.b(this.jdField_a_of_type_Bhfj.a, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bgmk.b();
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Bgmk.a();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

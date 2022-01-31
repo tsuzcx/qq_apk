@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import bbux;
-import bbwv;
+import bbzg;
+import bcbe;
 import com.tencent.biz.troopgift.absMultiViewPager;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
@@ -24,7 +24,7 @@ public class GuideViewPager
   extends absMultiViewPager
   implements View.OnClickListener, GifDrawable.OnGIFPlayOnceListener
 {
-  private bbwv a;
+  private bcbe a;
   
   public GuideViewPager(Context paramContext)
   {
@@ -58,40 +58,40 @@ public class GuideViewPager
   
   public View a(int paramInt)
   {
-    bbux localbbux = (bbux)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561333, null);
-    Object localObject = (ImageView)localRelativeLayout.findViewById(2131366983);
+    bbzg localbbzg = (bbzg)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561351, null);
+    Object localObject = (ImageView)localRelativeLayout.findViewById(2131366993);
     ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131363188);
-    ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131366961);
+    ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131366971);
     ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131361894);
-    if (localbbux.jdField_a_of_type_Boolean) {
-      if (!TextUtils.isEmpty(localbbux.jdField_a_of_type_JavaLangString))
+    if (localbbzg.jdField_a_of_type_Boolean) {
+      if (!TextUtils.isEmpty(localbbzg.jdField_a_of_type_JavaLangString))
       {
-        setBitmapByPath((ImageView)localObject, localbbux.jdField_a_of_type_JavaLangString);
+        setBitmapByPath((ImageView)localObject, localbbzg.jdField_a_of_type_JavaLangString);
         ((ImageView)localObject).setVisibility(0);
       }
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(localbbux.c))
+      if (!TextUtils.isEmpty(localbbzg.c))
       {
-        localImageView2.setImageDrawable(a(localbbux.c));
+        localImageView2.setImageDrawable(a(localbbzg.c));
         localImageView2.setVisibility(0);
         localImageView2.setOnClickListener(this);
       }
       return localRelativeLayout;
-      if (!TextUtils.isEmpty(localbbux.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(localbbzg.jdField_a_of_type_JavaLangString))
       {
-        setBitmapByPath(localImageView3, localbbux.jdField_a_of_type_JavaLangString);
+        setBitmapByPath(localImageView3, localbbzg.jdField_a_of_type_JavaLangString);
         localImageView3.setVisibility(0);
       }
-      if (!TextUtils.isEmpty(localbbux.b))
+      if (!TextUtils.isEmpty(localbbzg.b))
       {
-        localObject = a(localbbux.b);
+        localObject = a(localbbzg.b);
         if ((((URLDrawable)localObject).getCurrDrawable() instanceof GifDrawable)) {
           ((GifDrawable)((URLDrawable)localObject).getCurrDrawable()).setGIFPlayOnceListener(this);
         }
-        localImageView1.setImageDrawable(a(localbbux.b));
+        localImageView1.setImageDrawable(a(localbbzg.b));
         localImageView1.setVisibility(0);
       }
     }
@@ -105,8 +105,8 @@ public class GuideViewPager
     do
     {
       return;
-    } while (this.jdField_a_of_type_Bbwv == null);
-    this.jdField_a_of_type_Bbwv.a();
+    } while (this.jdField_a_of_type_Bcbe == null);
+    this.jdField_a_of_type_Bcbe.a();
   }
   
   public void onPlayOnce()
@@ -114,9 +114,9 @@ public class GuideViewPager
     ThreadManager.getUIHandler().post(new GuideViewPager.2(this));
   }
   
-  public void setOnActionBtnClickListener(bbwv parambbwv)
+  public void setOnActionBtnClickListener(bcbe parambcbe)
   {
-    this.jdField_a_of_type_Bbwv = parambbwv;
+    this.jdField_a_of_type_Bcbe = parambcbe;
   }
 }
 

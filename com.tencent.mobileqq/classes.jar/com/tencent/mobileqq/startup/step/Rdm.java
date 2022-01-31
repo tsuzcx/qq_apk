@@ -2,9 +2,9 @@ package com.tencent.mobileqq.startup.step;
 
 import android.os.Looper;
 import android.os.SystemClock;
-import atqu;
-import azly;
-import azmz;
+import atvd;
+import azqh;
+import azri;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -25,12 +25,12 @@ public class Rdm
       return;
     }
     long l = SystemClock.uptimeMillis();
-    azly localazly = azly.a(BaseApplicationImpl.sApplication);
-    localazly.a(false);
-    localazly.initMtaConfig(AppSetting.c(), "AGU36HSC29K4");
-    localazly.b("MTA_" + paramString1.replace(':', '_'));
+    azqh localazqh = azqh.a(BaseApplicationImpl.sApplication);
+    localazqh.a(false);
+    localazqh.initMtaConfig(AppSetting.c(), "AGU36HSC29K4");
+    localazqh.b("MTA_" + paramString1.replace(':', '_'));
     if (!paramString1.endsWith(":openSdk")) {
-      localazly.a(paramString2);
+      localazqh.a(paramString2);
     }
     QLog.d("AutoMonitor", 1, "MTA, cost=" + (SystemClock.uptimeMillis() - l) + " results: true");
   }
@@ -66,12 +66,12 @@ public class Rdm
       {
         if ((BaseApplicationImpl.sProcessId == 1) || (BaseApplicationImpl.sProcessId == 7))
         {
-          Thread.setDefaultUncaughtExceptionHandler(new atqu());
-          azmz.a(BaseApplicationImpl.sApplication).c((String)localObject1);
+          Thread.setDefaultUncaughtExceptionHandler(new atvd());
+          azri.a(BaseApplicationImpl.sApplication).c((String)localObject1);
           Object localObject2 = localObject1;
           if (!str.endsWith(":openSdk"))
           {
-            azmz.a(BaseApplicationImpl.sApplication).a((String)localObject1);
+            azri.a(BaseApplicationImpl.sApplication).a((String)localObject1);
             localObject2 = localObject1;
           }
           localObject1 = new Rdm.1(this, str);

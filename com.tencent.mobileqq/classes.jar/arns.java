@@ -1,13 +1,14 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 
-final class arns
-  implements bhqd
+class arns
+  implements View.OnClickListener
 {
-  arns(bhpy parambhpy) {}
+  arns(arnq paramarnq) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.cancel();
+    arrr.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Arki.d());
   }
 }
 

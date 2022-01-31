@@ -352,7 +352,7 @@ class CanvasView$2$1
     //   715: invokevirtual 210	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
     //   718: astore 14
     //   720: aload 14
-    //   722: invokestatic 216	bdcs:a	(Ljava/lang/String;)Ljava/io/File;
+    //   722: invokestatic 216	bdhb:a	(Ljava/lang/String;)Ljava/io/File;
     //   725: astore 13
     //   727: new 218	java/io/FileOutputStream
     //   730: dup

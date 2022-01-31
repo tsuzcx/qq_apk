@@ -1,47 +1,54 @@
+import java.util.ArrayList;
+
 public class aqbt
-  extends aqbr
 {
-  public aqbt(aqbq paramaqbq, aqbb paramaqbb)
-  {
-    super(paramaqbq, paramaqbb);
-    this.jdField_a_of_type_Int = 2;
-  }
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<aqcv> a;
+  public int b;
+  public String b;
+  public ArrayList<aqcw> b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public void a(int paramInt)
+  public String toString()
   {
-    super.a(paramInt);
-    this.jdField_a_of_type_Aqbb.a();
-    this.jdField_a_of_type_Aqbb.a().a(paramInt);
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    super.a(paramInt1, paramInt2);
-    switch (paramInt1)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{friendUin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{age: ").append(this.jdField_b_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{constellation: ").append(this.c).append("}");
+    localStringBuilder.append("{city: ").append(this.d).append("}");
+    localStringBuilder.append("{school: ").append(this.e).append("}");
+    localStringBuilder.append("{constel:").append(this.c).append("}");
+    localStringBuilder.append("{company:").append(this.f).append("}");
+    localStringBuilder.append("{mGender: ").append(this.jdField_a_of_type_Int).append("}");
+    localStringBuilder.append("{mDeclaration: ").append(this.g).append("}");
+    localStringBuilder.append("{mVoiceUrl: ").append(this.h).append("}");
+    localStringBuilder.append("{mVoiceDuration: ").append(this.jdField_b_of_type_Int).append("}");
+    localStringBuilder.append("{signWords: ").append(this.i).append("}");
+    if (this.jdField_a_of_type_JavaUtilArrayList == null)
     {
-    default: 
-      return false;
-    case 103: 
-      this.jdField_a_of_type_Aqbb.a().a();
-    case 104: 
-      this.jdField_a_of_type_Aqbq.a(0, paramInt2);
-    case 105: 
-      for (;;)
-      {
-        return true;
-        this.jdField_a_of_type_Aqbq.a(0, paramInt2);
+      localStringBuilder.append("{personalTags: is empty ").append("}");
+      localStringBuilder.append("{popular: ").append(this.jdField_a_of_type_Long).append("}");
+      if (this.jdField_b_of_type_JavaUtilArrayList != null) {
+        break label323;
       }
+      localStringBuilder.append("{schoolInfo: is empty ").append("}");
     }
-    this.jdField_a_of_type_Aqbb.a().a();
-    this.jdField_a_of_type_Aqbq.a(0, paramInt2);
-    this.jdField_a_of_type_Aqbq.b(paramInt1, paramInt2);
-    return false;
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_Aqbb.a().a();
+    for (;;)
+    {
+      return localStringBuilder.toString();
+      localStringBuilder.append("{personalTags:size  ").append(this.jdField_a_of_type_JavaUtilArrayList.size()).append("}");
+      break;
+      label323:
+      localStringBuilder.append("{schoolInfo:size  ").append(this.jdField_b_of_type_JavaUtilArrayList.size()).append("}");
+    }
   }
 }
 

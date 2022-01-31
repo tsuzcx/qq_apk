@@ -1,112 +1,78 @@
-import android.graphics.Canvas;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.Join;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import android.graphics.Typeface;
-import android.support.annotation.NonNull;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class blso
-  extends DynamicTextItem
+  implements Cloneable
 {
-  private float jdField_a_of_type_Float;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private float jdField_b_of_type_Float;
-  private TextPaint jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
+  public int a;
+  public String a;
+  public List<MusicItemInfo> a;
+  public boolean a;
+  public boolean b = true;
   
-  public blso(int paramInt, @NonNull List<String> paramList, Typeface paramTypeface)
+  public blso() {}
+  
+  public blso(JSONObject paramJSONObject)
   {
-    super(paramInt, paramList);
-    if (paramTypeface != null)
-    {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
-      this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+    if (paramJSONObject.has("categoryName")) {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("categoryName");
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-      this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(aekt.a(22.0F, BaseApplicationImpl.getContext().getResources()));
-      this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-      this.jdField_b_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-      this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
-      this.jdField_b_of_type_AndroidTextTextPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_b_of_type_AndroidTextTextPaint.setStrokeJoin(Paint.Join.ROUND);
-      this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(aekt.a(22.0F, BaseApplicationImpl.getContext().getResources()));
-      this.jdField_b_of_type_AndroidTextTextPaint.setColor(-16777216);
-      this.jdField_b_of_type_AndroidTextTextPaint.setStrokeWidth(aekt.a(6.0F, BaseApplicationImpl.getContext().getResources()));
-      if (!paramList.isEmpty()) {
-        a(0, (String)paramList.get(0));
-      }
-      return;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
-      this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
+    if (paramJSONObject.has("tagid")) {
+      this.jdField_a_of_type_Int = paramJSONObject.getInt("tagid");
     }
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    super.a(paramInt, paramString);
-    String str = super.b(paramInt);
-    paramString = str;
-    if (TextUtils.isEmpty(str)) {
-      paramString = "　　";
+    if (paramJSONObject.has("enabled")) {
+      this.b = paramJSONObject.getBoolean("enabled");
     }
-    paramInt = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(alpo.a(2131701535));
-    this.jdField_b_of_type_AndroidTextStaticLayout = blui.a(paramString, 0, paramString.length(), this.jdField_a_of_type_AndroidTextTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, 2);
-    this.jdField_a_of_type_AndroidTextStaticLayout = blui.a(paramString, 0, paramString.length(), this.jdField_b_of_type_AndroidTextTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, 2);
-    this.jdField_a_of_type_Float = super.a(this.jdField_b_of_type_AndroidTextStaticLayout);
-    this.jdField_b_of_type_Float = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    if (this.jdField_b_of_type_AndroidTextStaticLayout != null)
+    this.jdField_a_of_type_Boolean = "1".equals(paramJSONObject.optString("random_position"));
+    if (paramJSONObject.has("content"))
     {
-      paramCanvas.save();
-      this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-      this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-      if (b(0))
+      paramJSONObject = paramJSONObject.getJSONArray("content");
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramJSONObject.length())
       {
-        this.jdField_a_of_type_AndroidGraphicsRectF.left = 0.0F;
-        this.jdField_a_of_type_AndroidGraphicsRectF.top = 0.0F;
-        this.jdField_a_of_type_AndroidGraphicsRectF.right = super.a(this.jdField_b_of_type_AndroidTextStaticLayout);
-        this.jdField_a_of_type_AndroidGraphicsRectF.bottom = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
-        paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+        MusicItemInfo localMusicItemInfo = new MusicItemInfo(paramJSONObject.optString(i));
+        localMusicItemInfo.mTagName = this.jdField_a_of_type_JavaLangString;
+        if (localMusicItemInfo.isWsBanner()) {}
+        localArrayList.add(localMusicItemInfo);
+        i += 1;
       }
-      paramCanvas.restore();
+      this.jdField_a_of_type_JavaUtilList = localArrayList;
     }
   }
   
-  public boolean a()
+  public blso a()
   {
-    return true;
+    try
+    {
+      blso localblso = (blso)super.clone();
+      return localblso;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      localCloneNotSupportedException.printStackTrace();
+    }
+    return null;
   }
   
-  public float b()
+  public MusicItemInfo a(int paramInt)
   {
-    return this.jdField_b_of_type_Float;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        MusicItemInfo localMusicItemInfo = (MusicItemInfo)localIterator.next();
+        if (localMusicItemInfo.mItemId == paramInt) {
+          return localMusicItemInfo;
+        }
+      }
+    }
+    return null;
   }
 }
 

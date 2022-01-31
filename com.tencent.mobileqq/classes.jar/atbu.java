@@ -1,147 +1,154 @@
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgIPCClient;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 
-public class atbu
-  implements View.OnClickListener
+class atbu
+  implements atao
 {
-  aekq jdField_a_of_type_Aekq = aekq.a();
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
-  MiniMsgUserParam jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  atbu(atbp paramatbp) {}
   
-  public atbu(Activity paramActivity, String paramString1, String paramString2, MiniMsgUserParam paramMiniMsgUserParam)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam = paramMiniMsgUserParam;
-    this.b = paramString2;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if ((atbp.a(this.a).isFinishing()) && (!this.a.jdField_a_of_type_Boolean)) {}
+    do
     {
-      this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2131562813, null);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      String str = bcgh.a("", this.jdField_a_of_type_JavaLangString, 0);
-      bame.a(str);
-      Object localObject2 = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370554);
-      URLImageView localURLImageView = (URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370555);
-      Object localObject1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370556);
-      localObject2 = (RelativeLayout.LayoutParams)((RelativeLayout)localObject2).getLayoutParams();
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localURLImageView.getLayoutParams();
-      localObject1 = (RelativeLayout.LayoutParams)((TextView)localObject1).getLayoutParams();
-      int i = bdkf.b(32.0F);
-      int j = bdkf.b(28.0F);
-      ((RelativeLayout.LayoutParams)localObject2).width = i;
-      ((RelativeLayout.LayoutParams)localObject2).height = j;
-      i = bdkf.b(24.0F);
-      localLayoutParams.width = i;
-      localLayoutParams.height = i;
-      localLayoutParams.leftMargin = bdkf.b(4.0F);
-      localURLImageView.setPadding(0, 0, 0, 0);
-      localURLImageView.setBackgroundDrawable(null);
-      localURLImageView.setImageDrawable(URLDrawable.getDrawable(str, null));
-      if (AppSetting.c) {
-        bcvq.b(this.jdField_a_of_type_AndroidViewView, false);
+      return;
+      if ((!atbp.a(this.a)) || (this.a.jdField_a_of_type_Boolean)) {
+        break;
       }
-      this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)this.jdField_a_of_type_AndroidAppActivity.getApplicationContext().getSystemService("window"));
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
-      if (QLog.isColorLevel()) {
-        QLog.d("WatchTogetherMiniAioHelper", 0, "is activity window focused " + this.jdField_a_of_type_AndroidAppActivity.hasWindowFocus());
-      }
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.positionX;
-      j = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.positionY;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 1002;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.format = 1;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 40;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 51;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = i;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = j;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = -2;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = -2;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.token = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getWindowToken();
-      this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam != null)
+    } while ((paramInt != 8) && (paramInt != 7));
+    atbp.a(this.a).finish();
+    this.a.jdField_a_of_type_Bety.dismiss();
+    return;
+    atbp.a(this.a, paramInt);
+    atbp.a(this.a).setVisibility(8);
+    atbp.a(this.a).setVisibility(8);
+    atbp.a(this.a).setVisibility(8);
+    switch (paramInt)
     {
-      MiniMsgIPCClient.getInstance();
-      MiniMsgIPCClient.register(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.businessName, BaseApplicationImpl.getApplication().getQQProcessName());
-      MiniMsgIPCClient.getInstance().syncGetUnread();
-      MiniMsgIPCClient.getInstance();
-      MiniMsgIPCClient.onProcessForeGround(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.businessName);
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam != null)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.accessType == 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.entryType == 0))
+    default: 
+      return;
+    case 0: 
+      atbp.a(this.a).setVisibility(4);
+      atbp.a(this.a, paramBundle.getLong("key_totalSize", 0L));
+      if (atbp.b(this.a))
       {
-        aiel localaiel = MiniMsgIPCClient.getInstance().getBusinessInfo(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.businessName);
-        if (localaiel != null)
-        {
-          int[] arrayOfInt = ((aiej)this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.unreadCallback).a();
-          if (arrayOfInt != null)
-          {
-            localaiel.c = arrayOfInt[0];
-            localaiel.d = arrayOfInt[1];
-          }
+        atbp.a(this.a).setVisibility(0);
+        atbp.a(this.a).setVisibility(0);
+        atbp.a(this.a).setText(alud.a(2131706050));
+        localObject = alud.a(2131706053);
+        paramBundle = (Bundle)localObject;
+        if (atbp.a(this.a) != 0L) {
+          paramBundle = (String)localObject + "(" + aszu.a(atbp.a(this.a)) + ")";
+        }
+        atbp.a(this.a).setText(paramBundle);
+        atbp.a(this.a).setOnClickListener(new atbv(this));
+      }
+      Log.i("huiyin.loading", "checkVersion? " + atbp.b(this.a) + "checkversion ok " + atbp.a(this.a));
+      return;
+    case 1: 
+      atbp.a(this.a).setVisibility(0);
+      paramInt = paramBundle.getInt("key_progress", 0);
+      atbp.a(this.a, paramBundle.getLong("key_totalSize", 0L));
+      atbp.a(this.a).setProgress(paramInt);
+      paramBundle = aszu.a(atbp.a(this.a) * paramInt / 100L);
+      localObject = aszu.a(atbp.a(this.a));
+      atbp.b(this.a).setText(paramBundle + "/" + (String)localObject);
+      Log.i("huiyin.loading", "downloading... " + paramInt);
+      return;
+    case 2: 
+      atbp.a(this.a).setVisibility(0);
+      atbp.b(this.a).setText(alud.a(2131706054));
+      paramBundle = Message.obtain();
+      paramBundle.arg1 = 10;
+      atbp.a(this.a).sendMessage(paramBundle);
+      Log.i("huiyin.loading", "download complete");
+      if (atbp.b(this.a) != 0L)
+      {
+        localObject = atbp.a(this.a).opType("huiyin").opName("plugin_download_loading_view");
+        if (!bdin.h(atbp.a(this.a).getApplicationContext())) {
+          break label670;
         }
       }
-      MiniMsgIPCClient.getInstance();
-      MiniMsgIPCClient.onProcessBackground(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.businessName);
-    }
-  }
-  
-  public void d() {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam == null) {
+      for (paramBundle = "3";; paramBundle = "2")
+      {
+        ((IVPluginDataReporter)localObject).d1(paramBundle).d2(String.valueOf(System.currentTimeMillis() - atbp.b(this.a))).d3(String.valueOf(this.a.jdField_a_of_type_Boolean)).report();
+        atcg.a.a(50, null);
+        return;
+      }
+    case 3: 
+      atcg.a.a(41, null);
+      atbp.a(this.a).setVisibility(4);
+      atbp.a(this.a).setVisibility(0);
+      localObject = alud.a(2131706052);
+      paramBundle = (Bundle)localObject;
+      if (atbp.a(this.a) != 0L) {
+        paramBundle = (String)localObject + "(" + aszu.a(atbp.a(this.a)) + ")";
+      }
+      atbp.a(this.a).setText(paramBundle);
+      if (!bdin.g(atbp.a(this.a).getApplicationContext()))
+      {
+        atbp.a(this.a).setVisibility(0);
+        atbp.a(this.a).setText(alud.a(2131706047));
+      }
+      atbp.a(this.a).opType("huiyin").opName("download_result").d1("1").d2(String.valueOf(bdin.a(atbp.a(this.a).getApplicationContext()))).report();
+      atbp.a(this.a).setOnClickListener(new atbw(this));
+      Log.i("huiyin.loading", "download fail");
+      return;
+    case 5: 
+    case 7: 
+      atbp.a(this.a).setVisibility(4);
+      localObject = alud.a(2131706046);
+      paramBundle = (Bundle)localObject;
+      if (atbp.a(this.a) != 0L) {
+        paramBundle = (String)localObject + "(" + aszu.a(atbp.a(this.a)) + ")";
+      }
+      atbp.a(this.a).setText(paramBundle);
+      atbp.a(this.a).setOnClickListener(new atbx(this));
+      Log.i("huiyin.loading", "preload or load fail");
+      atbp.a(this.a).opType("huiyin").opName("launch_result").d1("1").report();
+      atcg.a.a(51, null);
+      return;
+    case 4: 
+      atbp.a(this.a).setVisibility(0);
+      atbp.b(this.a).setText(alud.a(2131706051));
+      return;
+    case 6: 
+      atbp.a(this.a).setVisibility(0);
+      atbp.b(this.a, 90);
+      atbp.a(this.a).setProgress(90);
+      atbp.b(this.a).setText(alud.a(2131706048));
+      Log.i("huiyin.loading", "load complete");
+      return;
+    case 9: 
+      label670:
+      if (this.a.jdField_a_of_type_Bety != null) {
+        this.a.jdField_a_of_type_Bety.dismiss();
+      }
+      atbp.a(this.a).finish();
+      atcg.a.a(61, null);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback.onOpenMiniAIOCallback();
+    atbp.a(this.a).setVisibility(0);
+    atbp.b(this.a, 100);
+    atbp.a(this.a).setProgress(100);
+    Log.i("huiyin.loading", "launch complete");
+    atbp.a(this.a).finish();
+    Object localObject = atbp.a(this.a).opType("huiyin").opName("launch_result").d1("0").d2(String.valueOf(System.currentTimeMillis() - atbp.c(this.a)));
+    if (this.a.jdField_a_of_type_Boolean) {}
+    for (paramBundle = "1";; paramBundle = "2")
+    {
+      ((IVPluginDataReporter)localObject).d4(paramBundle).report();
+      atcg.a.a(60, String.valueOf(System.currentTimeMillis() - atbp.c(this.a)));
+      return;
     }
-    paramView = new Intent();
-    paramView.putExtra("key_mini_need_update_unread", true);
-    paramView.putExtra("key_mini_msgtab_businame", this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.businessName);
-    paramView.putExtra("key_mini_msgtab_type", this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.filterMsgType);
-    paramView.putExtra("key_mini_msgtab_need_full_screen", this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.isNeedFullScreen);
-    paramView.putExtra("key_mini_msgtab_isneed_back_conversation", this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.isNeedBackConversation);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.isNeedBackConversation) {
-      paramView.putExtra("key_mini_msgtab_back_pending_intent", this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.backConversationIntent);
-    }
-    MiniChatActivity.a(this.jdField_a_of_type_AndroidAppActivity, 1, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

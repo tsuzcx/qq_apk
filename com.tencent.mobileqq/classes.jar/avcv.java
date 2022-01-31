@@ -1,26 +1,38 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.LocalMediaInfo;
 
-class avcv
-  implements auxx
+public final class avcv
+  implements Parcelable.Creator<LocalMediaInfo>
 {
-  avcv(avcs paramavcs) {}
-  
-  public void a(Comments.Comment paramComment, int paramInt)
+  public LocalMediaInfo a(Parcel paramParcel)
   {
-    if (avcs.a(this.a) != null)
-    {
-      if (paramInt == 0)
-      {
-        avcs.a(this.a).b(paramComment);
-        avcs.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131696849));
-        azmj.b(null, "dc02676", "grp_lbs", "", "comment", "delete_comment", 0, 0, "", "", "", "");
-      }
-    }
-    else {
-      return;
-    }
-    avcs.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131696848));
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    localLocalMediaInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localLocalMediaInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_d_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.jdField_e_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.h = paramParcel.readInt();
+    localLocalMediaInfo.i = paramParcel.readInt();
+    localLocalMediaInfo.j = paramParcel.readInt();
+    localLocalMediaInfo.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramParcel.readInt());
+    localLocalMediaInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localLocalMediaInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localLocalMediaInfo.jdField_c_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.jdField_d_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.g = paramParcel.readInt();
+    localLocalMediaInfo.f = paramParcel.readInt();
+    return localLocalMediaInfo;
+  }
+  
+  public LocalMediaInfo[] a(int paramInt)
+  {
+    return new LocalMediaInfo[0];
   }
 }
 

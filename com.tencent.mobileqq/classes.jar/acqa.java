@@ -1,12 +1,14 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class acqa
+  implements awrr
 {
-  public int a = 1;
-  public ImageView a;
-  TextView a;
-  public String a;
+  public acqa(ChatSettingForTroop paramChatSettingForTroop) {}
+  
+  public void a(String paramString)
+  {
+    azqs.b(this.a.app, "grp_set", "", "", "grp_data", "grp_set_copy", 0, 0, paramString, "", "", "");
+  }
 }
 
 

@@ -1,35 +1,14 @@
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class yff
-  extends yei
+class yff
+  implements View.OnClickListener
 {
-  public yff(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, Bundle paramBundle)
-  {
-    super(paramBundle);
-  }
+  yff(yfe paramyfe) {}
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, ydp paramydp)
+  public void onClick(View paramView)
   {
-    return SubscribePersonalDetailFragment.a(this.a);
-  }
-  
-  public void a(Bundle paramBundle) {}
-  
-  public void a(yeb paramyeb)
-  {
-    if ((paramyeb.c()) || (paramyeb.d()))
-    {
-      if ((SubscribePersonalDetailFragment.a(this.a) != null) && (SubscribePersonalDetailFragment.a(this.a).b() == 1))
-      {
-        SubDraftChangeEvent localSubDraftChangeEvent = new SubDraftChangeEvent();
-        yej.a().a(localSubDraftChangeEvent);
-      }
-      SubscribePersonalDetailFragment.a(this.a, paramyeb);
-    }
+    this.a.dismiss();
   }
 }
 

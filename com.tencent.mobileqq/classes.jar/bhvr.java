@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.CirclePageIndicator.SavedState;
 
-class bhvr
-  implements View.OnClickListener
+public final class bhvr
+  implements Parcelable.Creator<CirclePageIndicator.SavedState>
 {
-  bhvr(bhvq parambhvq) {}
-  
-  public void onClick(View paramView)
+  public CirclePageIndicator.SavedState a(Parcel paramParcel)
   {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
-    }
+    return new CirclePageIndicator.SavedState(paramParcel, null);
+  }
+  
+  public CirclePageIndicator.SavedState[] a(int paramInt)
+  {
+    return new CirclePageIndicator.SavedState[paramInt];
   }
 }
 

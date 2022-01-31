@@ -1,59 +1,156 @@
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.util.QZLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
-class bnbi
+public class bnbi
+  extends bnbp<bnaz, bnaz>
 {
-  private int jdField_a_of_type_Int;
-  private final Class<? extends bmiv> jdField_a_of_type_JavaLangClass;
-  private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private final int b;
-  private final int c;
+  private final int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private final WeakReference<bmnt> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  private bnbi(int paramInt1, int paramInt2, int paramInt3, Class<? extends bmiv> paramClass)
+  public bnbi()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  static bnbi a(int paramInt1, int paramInt2, int paramInt3, Class<? extends bmiv> paramClass)
+  public bnbi(String paramString, bmnt parambmnt, int paramInt)
   {
-    return new bnbi(paramInt1, paramInt2, paramInt3, paramClass);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambmnt);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_Boolean = false;
   }
   
-  Class<? extends bmiv> a()
+  private void a(bnaz parambnaz, boolean paramBoolean, String paramString)
   {
-    return this.jdField_a_of_type_JavaLangClass;
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilSet.size() > 0)
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {}
+    for (File localFile = new File(paramString);; localFile = null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
+      Object localObject2;
+      int i;
+      if ((paramBoolean) && (localFile != null) && (localFile.exists()) && (localFile.isFile()) && (localFile.length() > 0L))
       {
-        Integer localInteger = (Integer)localIterator.next();
-        LpReportInfo_pf00064.allReport(this.jdField_a_of_type_Int, this.b, localInteger.intValue());
-        QZLog.d("QzoneEditPictureAndVide", 2, new Object[] { "performReport ", toString() + " with " + localInteger });
+        localObject2 = this.jdField_a_of_type_JavaLangString;
+        Object localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = bnbs.a(parambnaz.jdField_a_of_type_Int, parambnaz.jdField_b_of_type_JavaLangString, ".jpg");
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          localObject2 = new File((String)localObject1);
+          if (localFile.renameTo((File)localObject2))
+          {
+            wxe.d("Q.qqstory.publish.edit.GenerateThumbSegment", "copy thumb file to upload dir success : %s", new Object[] { ((File)localObject2).getPath() });
+            parambnaz.jdField_a_of_type_JavaLangString = ((String)localObject1);
+            parambnaz.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = ((String)localObject1);
+            i = 1;
+          }
+        }
+      }
+      while (i != 0)
+      {
+        wxe.b("Q.qqstory.publish.edit.GenerateThumbSegment", "generate thumb success ...");
+        super.notifyResult(parambnaz);
+        return;
+        if (this.jdField_a_of_type_JavaLangString == null)
+        {
+          wxe.d("Q.qqstory.publish.edit.GenerateThumbSegment", "copy failed : use the origin instead : origin %s, target %s", new Object[] { localFile.getPath(), ((File)localObject2).getPath() });
+          parambnaz.jdField_a_of_type_JavaLangString = paramString;
+          parambnaz.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = paramString;
+          i = 1;
+        }
+        else
+        {
+          wxe.d("Q.qqstory.publish.edit.GenerateThumbSegment", "copy thumb file to upload dir failed : origin %s, target %s", new Object[] { localFile.getPath(), ((File)localObject2).getPath() });
+          i = 0;
+          continue;
+          parambnaz.jdField_a_of_type_JavaLangString = paramString;
+          parambnaz.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = paramString;
+          i = 1;
+          continue;
+          i = 0;
+        }
+      }
+      wxe.b("Q.qqstory.publish.edit.GenerateThumbSegment", "generate thumb failed ...");
+      super.notifyError(new ErrorMessage(-1, "GenerateThumbTask error"));
+      return;
+    }
+  }
+  
+  protected void a(JobContext paramJobContext, bnaz parambnaz)
+  {
+    wxe.a("Q.qqstory.publish.edit.GenerateThumbSegment", "start generate thumb ... mVideoIndex = %d", Integer.valueOf(this.jdField_a_of_type_Int));
+    bnbh localbnbh = parambnaz.jdField_a_of_type_Bnbh;
+    int i = localbnbh.c;
+    if (parambnaz.jdField_a_of_type_Int == 1) {
+      i = 0;
+    }
+    if (this.jdField_b_of_type_Boolean)
+    {
+      paramJobContext = new bnbj(localbnbh.jdField_a_of_type_Int, localbnbh.jdField_b_of_type_Int, localbnbh.jdField_a_of_type_JavaLangString, localbnbh.jdField_a_of_type_Float, localbnbh.jdField_a_of_type_Boolean, i, localbnbh.jdField_a_of_type_Double, localbnbh.jdField_b_of_type_Double, localbnbh.jdField_b_of_type_JavaLangString, parambnaz.jdField_a_of_type_Int, localbnbh.jdField_b_of_type_Boolean);
+      if (paramJobContext.a(new Void[0]).intValue() == 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        a(parambnaz, bool, paramJobContext.jdField_a_of_type_JavaLangString);
+        return;
       }
     }
-    LpReportInfo_pf00064.allReport(this.jdField_a_of_type_Int, this.b, this.c);
-    QZLog.d("QzoneEditPictureAndVide", 2, "performReport " + toString());
-  }
-  
-  void a(Set<Integer> paramSet)
-  {
-    this.jdField_a_of_type_JavaUtilSet.addAll(paramSet);
-  }
-  
-  public String toString()
-  {
-    return "QzoneEditPictureReportModel{actionType=" + this.jdField_a_of_type_Int + ", subActionType=" + this.b + ", reserve=" + this.c + '}';
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      paramJobContext = (bmnt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    }
+    while (paramJobContext != null)
+    {
+      Bitmap localBitmap = paramJobContext.a(this.jdField_a_of_type_Int);
+      if (localBitmap != null)
+      {
+        try
+        {
+          String str2 = this.jdField_a_of_type_JavaLangString;
+          String str1 = str2;
+          if (str2 == null) {
+            str1 = bnbs.a(parambnaz.jdField_a_of_type_Int, parambnaz.jdField_b_of_type_JavaLangString, ".jpg");
+          }
+          i = new bnbj(localBitmap, str1, localbnbh.jdField_a_of_type_Int, localbnbh.jdField_b_of_type_Int, i, localbnbh.jdField_a_of_type_Float, localbnbh.jdField_a_of_type_Double, localbnbh.jdField_b_of_type_Double, parambnaz.jdField_a_of_type_Int).a(new Void[0]).intValue();
+          paramJobContext.a(localBitmap);
+          if (i != 0) {
+            break label327;
+          }
+          parambnaz.jdField_a_of_type_JavaLangString = str1;
+          parambnaz.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = str1;
+          wxe.d("Q.qqstory.publish.edit.GenerateThumbSegment", "generate %d thumb success ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+          super.notifyResult(parambnaz);
+          return;
+        }
+        finally
+        {
+          paramJobContext.a(localBitmap);
+        }
+        paramJobContext = null;
+        continue;
+        label327:
+        wxe.d("Q.qqstory.publish.edit.GenerateThumbSegment", "generate %d thumb failed ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+        super.notifyError(new ErrorMessage(-1, alud.a(2131705643) + this.jdField_a_of_type_Int));
+      }
+      else
+      {
+        wxe.d("Q.qqstory.publish.edit.GenerateThumbSegment", "generate %d thumb failed ... EditVideoPlayerExport generateVideoFrameBitmap return null", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+        super.notifyError(new ErrorMessage(-1, alud.a(2131705645) + this.jdField_a_of_type_Int));
+        return;
+      }
+    }
+    wxe.d("Q.qqstory.publish.edit.GenerateThumbSegment", "generate %d thumb failed ... can not find EditVideoPlayerExport", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    super.notifyError(new ErrorMessage(-1, alud.a(2131705642) + this.jdField_a_of_type_Int));
   }
 }
 

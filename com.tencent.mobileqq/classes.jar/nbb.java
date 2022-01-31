@@ -30,13 +30,13 @@ class nbb
       }
       this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(291, 1000L);
       return false;
-      i = 2131696528;
-      continue;
-      i = 2131696529;
-      continue;
       i = 2131696530;
       continue;
       i = 2131696531;
+      continue;
+      i = 2131696532;
+      continue;
+      i = 2131696533;
     }
   }
 }

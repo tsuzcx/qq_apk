@@ -1,35 +1,22 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
-public class yik
-  implements SeekBar.OnSeekBarChangeListener
+class yik
+  extends RecyclerView.OnScrollListener
 {
-  public yik(VideoPlayerView paramVideoPlayerView) {}
+  yik(yij paramyij) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (VideoPlayerView.a(this.a)) {
-      yte.a("setSeekBar", 100L, new yil(this, paramSeekBar));
-    }
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    VideoPlayerView.a(this.a, true);
-    VideoPlayerView.b(this.a, true);
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (this.a.a() != null)
-    {
-      QLog.d("VideoPlayerView", 1, "seek onStopTrackingTouch seekBar progress" + paramSeekBar.getProgress());
-      this.a.a((int)(paramSeekBar.getProgress() / (this.a.a.getMax() * 1.0F) * (float)this.a.a().b()));
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (paramInt2 > 0) {
+      this.a.h();
     }
-    VideoPlayerView.a(this.a, false);
-    VideoPlayerView.b(this.a, false);
   }
 }
 

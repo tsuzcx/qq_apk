@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.gallery.picocr;
 
-import asfm;
-import asfn;
-import bdcs;
+import asjv;
+import asjw;
+import bdhb;
 import com.tencent.qphone.base.util.QLog;
 
 public class PicOcrManager$2$1
   implements Runnable
 {
-  public PicOcrManager$2$1(asfm paramasfm) {}
+  public PicOcrManager$2$1(asjv paramasjv) {}
   
   public void run()
   {
-    bdcs.d(this.a.a.c);
+    bdhb.d(this.a.a.c);
     if (QLog.isColorLevel()) {
       QLog.d("PicOcrManager", 2, "clear path!");
     }

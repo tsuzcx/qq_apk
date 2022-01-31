@@ -24,6 +24,15 @@ public class AEEditorFilterBean
     return localAEEditorFilterBean;
   }
   
+  public static AEEditorFilterBean createComicsFilterInstance()
+  {
+    AEEditorFilterBean localAEEditorFilterBean = new AEEditorFilterBean();
+    localAEEditorFilterBean.type = AEEditorFilterBean.FilterID.Comics;
+    localAEEditorFilterBean.sid = "lut_comics";
+    localAEEditorFilterBean.picUrl = "https://down.qq.com/shadow_qqcamera/LUTFilterResource/cover/comic_cover@3x.png";
+    return localAEEditorFilterBean;
+  }
+  
   public static AEEditorFilterBean createNonFilterInstance()
   {
     AEEditorFilterBean localAEEditorFilterBean = new AEEditorFilterBean();

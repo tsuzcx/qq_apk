@@ -1,5 +1,6 @@
 import android.text.TextUtils;
 import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.qqcircle.QCircleInitBean.QCircleActionBean;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.mobileqq.pb.PBStringField;
 import feedcloud.FeedCloudMeta.StFeed;
@@ -10,6 +11,7 @@ import qqcircle.QQCircleFeedBase.StFeedListBusiReqData;
 public class tqo
 {
   private int jdField_a_of_type_Int;
+  private QCircleInitBean.QCircleActionBean jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean$QCircleActionBean;
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
   private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
   private FeedCloudMeta.StTagInfo jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo;
@@ -28,6 +30,12 @@ public class tqo
       this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = new ExtraTypeInfo();
     }
     this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.sourceType = paramInt;
+    return this;
+  }
+  
+  public tqo a(QCircleInitBean.QCircleActionBean paramQCircleActionBean)
+  {
+    this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean$QCircleActionBean = paramQCircleActionBean;
     return this;
   }
   

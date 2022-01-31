@@ -1,46 +1,72 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.webviewplugin.BusinessReportPlugin.1;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
 public class yyp
-  extends WebViewPlugin
 {
-  private Handler a;
-  public boolean a;
+  private int a;
+  private int b;
   
-  public yyp()
+  public yyp(int paramInt1, int paramInt2)
   {
-    this.mPluginNameSpace = "JD_REPORT";
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public void a(String paramString)
+  public static yyp a(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    try
+    switch (paramInt)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new BusinessReportPlugin.1(this, paramString));
+    default: 
+      return new yyp(0, -1);
+    case 0: 
+      return new yyp(0, 0);
+    case 1: 
+      return new yyp(0, -1);
+    }
+    return new yyp(0, -2);
+  }
+  
+  public static yyp b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return new yyp(1, -1);
+    case 3: 
+      return new yyp(1, 0);
+    case 1: 
+      return new yyp(1, -1);
+    }
+    return new yyp(1, -2);
+  }
+  
+  public void a(View paramView)
+  {
+    if (this.a == 0) {
+      switch (this.b)
+      {
+      default: 
+        paramView.setPivotX(this.b);
+      }
+    }
+    while (this.a != 1)
+    {
+      return;
+      paramView.setPivotX(paramView.getWidth() * 0.5F);
+      return;
+      paramView.setPivotX(paramView.getWidth());
       return;
     }
-    catch (Exception paramString)
+    switch (this.b)
     {
-      QLog.e("BusinessReporter", 1, "Report Error:" + paramString);
+    default: 
+      paramView.setPivotY(this.b);
+      return;
+    case -1: 
+      paramView.setPivotY(paramView.getHeight() * 0.5F);
+      return;
     }
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_Boolean = ntv.a(paramString);
-  }
-  
-  public Object handleEvent(String paramString, long paramLong)
-  {
-    if (paramLong == 8L) {
-      a(paramString);
-    }
-    return null;
+    paramView.setPivotY(paramView.getHeight());
   }
 }
 

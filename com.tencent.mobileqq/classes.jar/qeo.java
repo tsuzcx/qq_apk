@@ -37,7 +37,7 @@ public class qeo
     if (paramBoolean)
     {
       this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131702667));
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131702679));
       this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(false);
       localArticleInfo.mSocialFeedInfo.h = 2;
       localArticleInfo.isNeedShowBtnWhenFollowed = true;
@@ -47,7 +47,7 @@ public class qeo
       oxb.a().b();
       return;
       this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131702672));
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131702684));
       this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(true);
       localArticleInfo.mSocialFeedInfo.h = 1;
     }

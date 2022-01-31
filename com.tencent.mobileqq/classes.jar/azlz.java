@@ -1,53 +1,10 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
-public class azlz
-  extends aofy<azma>
+public abstract interface azlz
 {
-  public int a()
-  {
-    return 577;
-  }
+  public abstract void ab_();
   
-  @NonNull
-  public azma a(int paramInt)
-  {
-    return new azma();
-  }
+  public abstract void f();
   
-  @Nullable
-  public azma a(aogf[] paramArrayOfaogf)
-  {
-    azma localazma = new azma();
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null)) {
-      azma.a(localazma, paramArrayOfaogf[0].a);
-    }
-    return localazma;
-  }
-  
-  public Class<azma> a()
-  {
-    return azma.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(azma paramazma) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public abstract void g();
 }
 
 

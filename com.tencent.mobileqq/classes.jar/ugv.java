@@ -1,45 +1,40 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
+import android.view.View;
+import android.view.ViewStub;
+import com.tencent.biz.qqcircle.widgets.QCircleRockeyPopupView;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
 
 public class ugv
-  extends QQUIEventReceiver<ugu, uej>
+  extends uga
 {
-  public ugv(@NonNull ugu paramugu)
+  private static final String jdField_a_of_type_JavaLangString = ugv.class.getSimpleName();
+  private QCircleRockeyPopupView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRockeyPopupView;
+  
+  public void a(ViewStub paramViewStub)
   {
-    super(paramugu);
+    if (paramViewStub != null)
+    {
+      this.jdField_a_of_type_AndroidViewView = paramViewStub.inflate();
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRockeyPopupView = ((QCircleRockeyPopupView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372553));
+    }
   }
   
-  public void a(@NonNull ugu paramugu, @NonNull uej paramuej)
+  public void a(Object paramObject, int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramuej.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Int = paramInt;
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
     {
-      wsv.a("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "on receiver scan data ,error! code = %d", Integer.valueOf(paramuej.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode));
-      paramugu.d();
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      ugu.a(paramugu).a(bool1);
-      return;
-      wsv.a("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "on receiver scan data ,size = %d", Integer.valueOf(paramuej.jdField_a_of_type_JavaUtilList.size()));
-      bool1 = bool2;
-      if (paramugu.a(paramuej.jdField_a_of_type_JavaUtilList))
+      FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject;
+      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mDataPosition = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mFeed = ((FeedCloudMeta.StFeed)paramObject);
+      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mPlayScene = 1;
+      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRockeyPopupView != null)
       {
-        bool1 = bool2;
-        if (paramuej.jdField_a_of_type_JavaUtilList.size() > 0) {
-          bool1 = true;
-        }
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRockeyPopupView.setFeedId(localStFeed.id.get());
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRockeyPopupView.setPageType(1);
       }
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uej.class;
   }
 }
 

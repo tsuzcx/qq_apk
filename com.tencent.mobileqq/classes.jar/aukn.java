@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aukn
-  implements aukp
+  implements View.OnClickListener
 {
-  QQAppInterface a;
+  public aukn(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public aukn(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public void a(auld paramauld, HashMap<String, ArrayList<MessageRecord>> paramHashMap, aukq paramaukq) {}
-  
-  public boolean a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
     }
-    return true;
+    this.a.getActivity().finish();
   }
 }
 

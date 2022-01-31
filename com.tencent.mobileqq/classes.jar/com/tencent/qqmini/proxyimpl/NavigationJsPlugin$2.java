@@ -1,13 +1,13 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.os.Bundle;
-import bgkd;
+import bgok;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
 class NavigationJsPlugin$2
   implements MiniAppLauncher.MiniAppLaunchListener
 {
-  NavigationJsPlugin$2(NavigationJsPlugin paramNavigationJsPlugin, bgkd parambgkd) {}
+  NavigationJsPlugin$2(NavigationJsPlugin paramNavigationJsPlugin, bgok parambgok) {}
   
   public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {

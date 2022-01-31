@@ -1,19 +1,8 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.widget.FixSizeImageView;
+import android.widget.TextView;
 
-class ahmq
-  extends RecyclerView.ViewHolder
+public class ahmq
 {
-  public FixSizeImageView a;
-  public FixSizeImageView b;
-  
-  public ahmq(ahmo paramahmo, View paramView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)paramView.findViewById(2131367506));
-    this.b = ((FixSizeImageView)paramView.findViewById(2131370067));
-  }
+  public TextView a;
 }
 
 

@@ -1,12 +1,7 @@
-import java.util.List;
-
-public abstract interface vkm
+public class vkm
+  extends vkn
 {
-  public abstract List<String> a();
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
+  public String a;
 }
 
 

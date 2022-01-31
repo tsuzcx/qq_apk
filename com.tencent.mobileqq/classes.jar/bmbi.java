@@ -1,27 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonCornerLayout;
+import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
 
 public class bmbi
-  extends AnimatorListenerAdapter
+  extends bltq
 {
-  public bmbi(LightWeightCaptureButtonCornerLayout paramLightWeightCaptureButtonCornerLayout) {}
+  public bmbi(QIMPtvTemplateProviderView paramQIMPtvTemplateProviderView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner captureView 190ms all end ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
+      QLog.d("PtvTemplateProviderView", 2, "onFaceUUpdate!");
     }
-    this.a.jdField_a_of_type_Bmcc.d = 1;
+    this.a.g();
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void g()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner captureView begin  ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
+      QLog.d("PtvTemplateProviderView", 2, "onSegmentModeUpdate!");
     }
+    this.a.a(false);
   }
 }
 

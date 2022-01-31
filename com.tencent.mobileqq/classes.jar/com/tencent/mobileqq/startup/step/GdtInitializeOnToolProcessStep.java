@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import aake;
+import aaot;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +22,7 @@ final class GdtInitializeOnToolProcessStep
       a("GdtInitializeOnToolProcessStep", "doStep", null);
       long l = System.currentTimeMillis();
       ThreadManager.excute(new GdtInitializeOnToolProcessStep.1(this), 16, null, true);
-      aake.a().a(BaseApplicationImpl.getContext());
+      aaot.a().a(BaseApplicationImpl.getContext());
       a("GdtInitializeOnToolProcessStep", "doStep durationMillis:" + (System.currentTimeMillis() - l), null);
       return true;
     }

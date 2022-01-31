@@ -1,10 +1,37 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.qphone.base.util.QLog;
+
 public class agbq
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public agbq(SixCombolEffectView paramSixCombolEffectView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
+      return;
+    }
+    SixCombolEffectView.a(this.a).start();
+    this.a.a();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (SixCombolEffectView.a(this.a)) {}
+    do
+    {
+      return;
+      SixCombolEffectView.jdField_a_of_type_Int = 1;
+    } while (!QLog.isColorLevel());
+    QLog.w("SixCombolEffectView", 2, "Animation 1 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+  }
 }
 
 

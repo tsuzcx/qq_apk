@@ -1,89 +1,86 @@
-import android.accounts.AbstractAccountAuthenticator;
-import android.accounts.Account;
-import android.accounts.AccountAuthenticatorResponse;
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
 public class aowc
-  extends AbstractAccountAuthenticator
+  extends aokh<aowb>
 {
-  private Context a;
-  
-  public aowc(Context paramContext)
+  public int a()
   {
-    super(paramContext);
-    this.a = paramContext;
+    return 460;
   }
   
-  public Bundle addAccount(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, String paramString1, String paramString2, String[] paramArrayOfString, Bundle paramBundle)
+  @NonNull
+  public aowb a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "addAccount");
+      QLog.e("TroopRobotConfProcessor", 2, "migrateOldOrDefaultContent ");
     }
-    paramAccountAuthenticatorResponse = new Bundle();
-    paramAccountAuthenticatorResponse.putInt("errorCode", 6);
-    paramAccountAuthenticatorResponse.putString("errorMessage", "Manually add account is unsupported");
-    return paramAccountAuthenticatorResponse;
+    return new aowb();
   }
   
-  public Bundle confirmCredentials(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, Bundle paramBundle)
+  @Nullable
+  public aowb a(aoko[] paramArrayOfaoko)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "onfirmCredentials");
+      QLog.d("TroopRobotConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopRobotConfProcessor", 2, "onParsed " + paramArrayOfaoko.length);
+      }
+      return aowb.a(paramArrayOfaoko[0]);
     }
     return null;
   }
   
-  public Bundle editProperties(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, String paramString)
+  public Class<aowb> a()
   {
-    return null;
+    return aowb.class;
   }
   
-  public Bundle getAccountRemovalAllowed(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount)
+  public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "getAccountRemovalAllowed");
+      QLog.e("TroopRobotConfProcessor", 2, "onReqFailed " + paramInt);
     }
-    if ("Success".equals(BaseApplicationImpl.sInjectResult)) {
-      aovt.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), paramAccount);
-    }
-    return super.getAccountRemovalAllowed(paramAccountAuthenticatorResponse, paramAccount);
   }
   
-  public Bundle getAuthToken(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String paramString, Bundle paramBundle)
+  public void a(aowb paramaowb)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "getAuthToken");
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramaowb == null) {
+        break label58;
+      }
     }
-    return null;
+    label58:
+    for (String str = paramaowb.toString();; str = " empty")
+    {
+      QLog.d("TroopRobotConfProcessor", 2, str);
+      if (paramaowb != null) {
+        bclg.a(paramaowb.a(), paramaowb.a());
+      }
+      return;
+    }
   }
   
-  public String getAuthTokenLabel(String paramString)
+  public int b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "getAuthTokenLabel");
-    }
-    return "QQ通讯录同步@Authenticator";
+    return 0;
   }
   
-  public Bundle hasFeatures(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String[] paramArrayOfString)
+  public boolean b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "hasFeatures");
-    }
-    return null;
+    return false;
   }
   
-  public Bundle updateCredentials(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String paramString, Bundle paramBundle)
+  public boolean c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "getAuthToken");
-    }
-    return null;
+    return true;
   }
 }
 

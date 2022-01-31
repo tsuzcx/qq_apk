@@ -1,12 +1,6 @@
 public abstract interface bgrw
 {
-  public abstract void a();
-  
-  public abstract void a(float paramFloat, String paramString);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract void a(bgrq parambgrq);
 }
 
 

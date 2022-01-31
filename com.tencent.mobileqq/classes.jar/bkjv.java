@@ -1,36 +1,40 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.CameraFocusView;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
+import com.tencent.mobileqq.app.BaseActivity;
+import cooperation.weiyun.WeiyunMagnifierSDK.LeakListener.1;
+import cooperation.weiyun.WeiyunMagnifierSDK.LeakListener.2;
+import java.util.ArrayList;
+import java.util.List;
 
-class bkjv
-  extends axkq
+public class bkjv
+  implements abvf
 {
-  public bkjv(bkju parambkju, CameraFocusView paramCameraFocusView)
+  public List<String> a(String paramString)
   {
-    super(paramCameraFocusView);
+    if (BaseActivity.sTopActivity != null) {
+      BaseActivity.sTopActivity.runOnUiThread(new WeiyunMagnifierSDK.LeakListener.1(this, paramString));
+    }
+    paramString = new ArrayList(4);
+    paramString.add(abvc.b());
+    paramString.add(abvc.a());
+    paramString.addAll(abvc.b());
+    return paramString;
   }
   
-  protected void a(CameraCaptureView paramCameraCaptureView, float paramFloat1, float paramFloat2)
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    super.a(paramCameraCaptureView, paramFloat1, paramFloat2 - paramCameraCaptureView.getTop());
+    if (BaseActivity.sTopActivity != null) {
+      BaseActivity.sTopActivity.runOnUiThread(new WeiyunMagnifierSDK.LeakListener.2(this, paramString1, paramBoolean, paramString2));
+    }
   }
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  public boolean a(LeakInspector.InspectUUID paramInspectUUID)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("GLGestureListener", 2, "event : (" + paramMotionEvent.getX() + "," + paramMotionEvent.getY() + ")");
-      QLog.d("GLGestureListener", 2, "view : (" + bkju.a(this.a).getLeft() + "," + bkju.a(this.a).getRight() + "," + bkju.a(this.a).getTop() + "," + bkju.a(this.a).getBottom() + ")");
-    }
-    if ((paramMotionEvent.getX() > bkju.a(this.a).getRight() / 2) || (paramMotionEvent.getY() < bkju.a(this.a).getTop()) || (paramMotionEvent.getY() > bkju.a(this.a).getBottom()))
-    {
-      QLog.d("GLGestureListener", 2, "touch out");
-      return false;
-    }
-    QLog.d("GLGestureListener", 2, "touch in");
-    return super.onTouchEvent(paramMotionEvent, paramBoolean);
+    return this.a.a(paramInspectUUID);
+  }
+  
+  public boolean a(Object paramObject)
+  {
+    return false;
   }
 }
 

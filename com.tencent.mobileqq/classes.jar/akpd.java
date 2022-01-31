@@ -1,101 +1,80 @@
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.apollo.game.ApolloGameConfig.1;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public class akpd
+public final class akpd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  static {}
+  public akpd(ApolloRender paramApolloRender, View paramView) {}
   
-  public static int a(String paramString)
+  public void onGlobalLayout()
   {
-    int i = -1;
-    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
-    if (localSharedPreferences != null) {
-      i = localSharedPreferences.getInt(paramString, -1);
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow == null) || (!this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mShowEditWindow)) {
+      QLog.e("rogersxiao", 2, "render.mEditWindow return");
     }
-    return i;
-  }
-  
-  public static int a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    int j = -1;
-    if (paramQQAppInterface != null)
+    do
     {
-      paramQQAppInterface = (akji)paramQQAppInterface.getManager(153);
-      int i;
-      if ("aio.city.game".equals(paramString))
-      {
-        i = j;
-        if (paramQQAppInterface != null)
-        {
-          if (!paramQQAppInterface.d) {
-            break label45;
-          }
-          i = akpe.d;
-        }
+      return;
+      localObject = new Rect();
+      this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame((Rect)localObject);
+      i = (int)bdgk.l();
+      j = ((Rect)localObject).bottom;
+      int k = ((Rect)localObject).top;
+      ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidViewView.getContext());
+      if (i - (j - k) >= 200) {
+        break;
       }
-      label45:
-      do
+    } while (!ApolloRender.sIsKeyBoardShow);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.dismiss();
+    ApolloRender.sIsKeyBoardDissmiss = true;
+    return;
+    int i = ((Rect)localObject).bottom - this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight();
+    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
+    int j = ((SharedPreferences)localObject).getInt("sp_key_apollo_keyboard_height", 0);
+    if ((this.jdField_a_of_type_AndroidViewView.getContext() instanceof Activity))
+    {
+      if (((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).isFinishing())
       {
-        do
-        {
-          do
-          {
-            for (;;)
-            {
-              return i;
-              i = -1;
-            }
-            i = j;
-          } while (!"drawer.game".equals(paramString));
-          i = j;
-        } while (paramQQAppInterface == null);
-        i = j;
-      } while (!paramQQAppInterface.e);
-      return akpe.b;
+        QLog.e("sava_ApolloRender", 1, "showKeyBorad activity is isFinishing");
+        return;
+      }
+      if ((Build.VERSION.SDK_INT >= 17) && (((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).isDestroyed()))
+      {
+        QLog.e("sava_ApolloRender", 1, "showKeyBorad activity is destroy");
+        return;
+      }
     }
-    QLog.e("ApolloGameConfig", 1, "app is null");
-    return -1;
-  }
-  
-  public static String a(String paramString)
-  {
-    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getString(paramString, "");
-    }
-    return "";
-  }
-  
-  public static void a()
-  {
-    ThreadManager.post(new ApolloGameConfig.1(), 8, null, true);
-  }
-  
-  public static boolean a(String paramString, int paramInt)
-  {
-    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
-    if (localSharedPreferences != null)
+    if (j != i) {}
+    try
     {
-      localSharedPreferences.edit().putInt(paramString, paramInt).apply();
-      return true;
+      ((SharedPreferences)localObject).edit().putInt("sp_key_apollo_keyboard_height", i).commit();
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView.getRootView(), 0, 0, i);
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.update(0, i, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight());
+      ApolloRender.sIsKeyBoardDissmiss = false;
+      if (ApolloRender.sIsKeyBoardDissmiss)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView.getRootView(), 0, 0, i);
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.update(0, i, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight());
+        ApolloRender.sIsKeyBoardDissmiss = false;
+      }
     }
-    return false;
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
-    if (localSharedPreferences != null)
+    catch (Exception localException)
     {
-      localSharedPreferences.edit().putString(paramString1, paramString2).apply();
-      return true;
+      for (;;)
+      {
+        QLog.e("sava_ApolloRender", 1, localException, new Object[0]);
+      }
     }
-    return false;
+    ApolloRender.sIsKeyBoardShow = true;
   }
 }
 

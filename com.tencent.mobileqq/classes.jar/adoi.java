@@ -1,29 +1,61 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adoi
-  extends amle
+  extends alpq
 {
-  public adoi(QQSettingMe paramQQSettingMe, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public adoi(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  
+  protected void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if ((paramBoolean1) && (paramBoolean2 != this.a.d.a()))
+    {
+      this.a.d.setOnCheckedChangeListener(null);
+      this.a.d.setChecked(paramBoolean2);
+      this.a.d.setOnCheckedChangeListener(this.a);
+    }
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected void onImpeach(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
+    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(paramString)) {
+      return;
     }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    this.a.f();
+    if (paramBoolean)
     {
-      paramInt = (int)(paramSosoLbsInfo.a.a * 1000000.0D);
-      int i = (int)(paramSosoLbsInfo.a.b * 1000000.0D);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "onLocationFinish latitude:" + paramInt + ",longtitude:" + i);
+      this.a.a(2131690676, 2);
+      return;
+    }
+    this.a.a(2131690674, 1);
+  }
+  
+  protected void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2 != this.a.d.a()))
+    {
+      this.a.d.setOnCheckedChangeListener(null);
+      this.a.d.setChecked(paramBoolean2);
+      this.a.d.setOnCheckedChangeListener(this.a);
+    }
+  }
+  
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
+  {
+    if (((paramBoolean) && (paramInt == 0)) || ((!paramBoolean) && (paramInt == 34))) {}
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_AndroidOsBundle == null) {
+        this.a.jdField_a_of_type_AndroidOsBundle = new Bundle();
       }
-      akch.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, i, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+      if (paramCard != null) {
+        this.a.jdField_a_of_type_AndroidOsBundle.putShort("key_personality_label_switch", paramCard.switch_disable_personality_label);
+      }
+      return;
+      this.a.a(2131695607, 1);
     }
   }
 }

@@ -9,8 +9,8 @@ import android.util.TypedValue;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
-import apqe;
-import apur;
+import apun;
+import apza;
 import com.tencent.common.config.AppSetting;
 
 public class EmoticonPagerRadioGroup
@@ -43,12 +43,12 @@ public class EmoticonPagerRadioGroup
   {
     float f1 = 13.0F;
     float f2 = 10.0F;
-    apqe localapqe = new apqe(this, getContext());
+    apun localapun = new apun(this, getContext());
     Resources localResources;
     if (paramInt == 2)
     {
-      localapqe.setButtonDrawable(2130846603);
-      localapqe.setGravity(17);
+      localapun.setButtonDrawable(2130846676);
+      localapun.setGravity(17);
       localResources = super.getContext().getResources();
       if (paramInt != 2) {
         break label209;
@@ -63,25 +63,25 @@ public class EmoticonPagerRadioGroup
       int i = (int)TypedValue.applyDimension(1, 3.0F, localResources.getDisplayMetrics());
       localLayoutParams.leftMargin = i;
       localLayoutParams.rightMargin = i;
-      localapqe.setLayoutParams(localLayoutParams);
-      localapqe.setClickable(true);
+      localapun.setLayoutParams(localLayoutParams);
+      localapun.setClickable(true);
       if ((AppSetting.c) && (paramInt != 3) && (paramInt != 2))
       {
-        localapqe.setClickable(false);
-        localapqe.setFocusable(false);
+        localapun.setClickable(false);
+        localapun.setFocusable(false);
       }
-      return localapqe;
+      return localapun;
       if (paramInt == 3)
       {
-        localapqe.setButtonDrawable(2130846604);
+        localapun.setButtonDrawable(2130846677);
         break;
       }
       if (paramInt == 4)
       {
-        localapqe.setButtonDrawable(2130838495);
+        localapun.setButtonDrawable(2130838496);
         break;
       }
-      localapqe.setButtonDrawable(2130839458);
+      localapun.setButtonDrawable(2130839459);
       break;
       label209:
       if (paramInt == 3) {
@@ -132,7 +132,7 @@ public class EmoticonPagerRadioGroup
     {
       RadioButton localRadioButton = (RadioButton)super.getChildAt(0);
       if (!paramBoolean) {
-        localRadioButton.setButtonDrawable(2130839458);
+        localRadioButton.setButtonDrawable(2130839459);
       }
       localRadioButton = (RadioButton)super.getChildAt(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem());
       if (localRadioButton != null) {
@@ -155,8 +155,8 @@ public class EmoticonPagerRadioGroup
     if (!this.jdField_a_of_type_Boolean)
     {
       removeAllViews();
-      int k = apur.h;
-      int m = Math.max(apur.h, paramInt);
+      int k = apza.h;
+      int m = Math.max(apza.h, paramInt);
       super.addView(this.jdField_b_of_type_AndroidWidgetRadioButton);
       int i = 0;
       while (i < m)
@@ -205,7 +205,7 @@ public class EmoticonPagerRadioGroup
       if (!this.jdField_a_of_type_Boolean) {
         break label372;
       }
-      j = apur.h;
+      j = apza.h;
       k = this.jdField_a_of_type_Int;
       if (((this.jdField_b_of_type_Int != j) || (paramInt != j - 1)) && (paramInt != 0)) {
         break label232;

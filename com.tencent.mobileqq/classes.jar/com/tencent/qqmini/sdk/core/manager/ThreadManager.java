@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.core.manager;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
-import bgjs;
+import bgnz;
 
 public class ThreadManager
 {
@@ -29,9 +29,9 @@ public class ThreadManager
     finally {}
   }
   
-  public static void a(Runnable paramRunnable, int paramInt, bgjs parambgjs, boolean paramBoolean)
+  public static void a(Runnable paramRunnable, int paramInt, bgnz parambgnz, boolean paramBoolean)
   {
-    new Thread(new ThreadManager.Job(paramRunnable, parambgjs)).start();
+    new Thread(new ThreadManager.Job(paramRunnable, parambgnz)).start();
   }
   
   public static Handler b()

@@ -1,18 +1,53 @@
 import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.RequiresApi;
+import com.tencent.youtufacetrack.YoutuFaceTracker;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class asxm
-  implements View.OnClickListener
+public class asxm
 {
-  asxm(asxl paramasxl) {}
+  protected asxe a;
+  public asxw a;
+  public YoutuFaceTracker a;
+  public AtomicInteger a;
+  protected String[] a;
   
-  public void onClick(View paramView)
+  public asxm()
   {
-    this.a.a.c = "download";
-    asxg.a(this.a.a).opType("huiyin").opName("plugin_download_click").d1(String.valueOf(bdee.a(asxg.a(this.a.a).getApplicationContext()))).report();
-    asxg.a(this.a.a, false);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "libopencv_world.so", "libYTCommon.so", "libYTFaceTrackPro2.so", "libYTAGReflectLiveCheck.so", "libYTPoseDetect.so" };
+  }
+  
+  @RequiresApi(api=18)
+  public static asxm a(int paramInt, Intent paramIntent, asxw paramasxw)
+  {
+    return new asxr(paramIntent, paramasxw);
+  }
+  
+  public int a(Context paramContext, String paramString)
+  {
+    return -1;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Asxe != null) {
+      this.jdField_a_of_type_Asxe.a();
+    }
+    if (this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker != null)
+    {
+      this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker.destroy();
+      this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker = null;
+      YoutuFaceTracker.GlobalRelease();
+    }
+  }
+  
+  public void a(boolean paramBoolean, Activity paramActivity) {}
+  
+  public boolean a(String paramString)
+  {
+    return false;
   }
 }
 

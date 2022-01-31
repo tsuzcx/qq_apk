@@ -1,39 +1,20 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import java.util.HashMap;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
 
-class akbm
-  implements akam
+public class akbm
+  extends akit
 {
-  akbm(akbl paramakbl, String paramString) {}
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public ImageView b;
+  public TextView b;
   
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    try
-    {
-      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Akbl.mRuntime.a().getCurrentAccountUin();
-      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
-      akbl.a(this.jdField_a_of_type_Akbl, this.jdField_a_of_type_JavaLangString, (List)localObject);
-      return;
-    }
-    catch (Exception localException1)
-    {
-      localException1.printStackTrace();
-      try
-      {
-        akbl.a(this.jdField_a_of_type_Akbl, this.jdField_a_of_type_JavaLangString, null);
-        return;
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
-    }
-    akbl.a(this.jdField_a_of_type_Akbl, this.jdField_a_of_type_JavaLangString, null);
-    return;
-  }
+  public akbm(akbj paramakbj) {}
 }
 
 

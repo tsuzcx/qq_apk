@@ -4,7 +4,7 @@ import java.io.File;
 import mqq.app.MobileQQ;
 
 class tqa
-  implements tvv
+  implements twi
 {
   tqa(tpz paramtpz) {}
   

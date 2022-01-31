@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import alws;
+import ambh;
 
 class TroopNotifyAndRecommendView$11
   implements Runnable

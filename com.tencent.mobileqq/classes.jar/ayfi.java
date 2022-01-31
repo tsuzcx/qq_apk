@@ -1,153 +1,94 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
+import android.view.MotionEvent;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.HorizontalListView;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayfi
-  extends BaseAdapter
+  extends LinkMovementMethod
 {
-  public static final String a;
-  public float a;
-  public int a;
-  public long a;
-  public ayjz a;
-  public HorizontalListView a;
-  public List<ayka> a;
-  public float b;
-  public int b;
+  private static ayfi jdField_a_of_type_Ayfi;
+  ayfg jdField_a_of_type_Ayfg;
+  boolean jdField_a_of_type_Boolean;
   
-  static
+  public static MovementMethod a()
   {
-    jdField_a_of_type_JavaLangString = ayfi.class.getSimpleName();
-  }
-  
-  public ayfi(ayjz paramayjz, int paramInt, HorizontalListView paramHorizontalListView)
-  {
-    this.jdField_a_of_type_Ayjz = paramayjz;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = paramHorizontalListView;
-    paramHorizontalListView.setOnScrollListener(new ayfj(this, paramHorizontalListView));
-  }
-  
-  public ayka a(int paramInt)
-  {
-    return (ayka)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public List<ayka> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(List<ayka> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
+    if (jdField_a_of_type_Ayfi == null) {
+      jdField_a_of_type_Ayfi = new ayfi();
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Ayjz.m)) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    return jdField_a_of_type_Ayfi;
   }
   
-  public long getItemId(int paramInt)
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((paramInt == this.jdField_a_of_type_JavaUtilList.size()) && (!TextUtils.isEmpty(this.jdField_a_of_type_Ayjz.m))) {
-      return 2;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    switch (getItemViewType(paramInt))
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0) || (i == 3))
     {
-    default: 
-      return paramView;
-    case 1: 
-      localObject1 = (aykc)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      float f;
-      if (paramView == null)
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      Object localObject = paramTextView.getLayout();
+      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
+      localObject = (ayfg[])paramSpannable.getSpans(j, j, ayfg.class);
+      if (QLog.isColorLevel()) {
+        QLog.i("StateColorMovementMethod", 2, String.format("onTouch action[%d] links=[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(localObject.length) }));
+      }
+      if (localObject.length != 0)
       {
-        paramViewGroup = new aysi(paramViewGroup, 0);
-        paramView = paramViewGroup.a();
-        paramView.setTag(paramViewGroup);
-        f = this.jdField_a_of_type_Ayjz.jdField_a_of_type_Int;
-        f = (float)(bdcb.k() - bcwh.a(paramView.getContext(), 13.5F)) / (f + 0.5F);
-        this.jdField_a_of_type_Float = (bcwh.a(this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getContext(), 3.0F) + f);
-        switch (((aykc)localObject1).jdField_a_of_type_Ayjv.jdField_a_of_type_Int)
+        this.jdField_a_of_type_Boolean = false;
+        paramSpannable = localObject[0];
+        if (i == 1)
         {
-        default: 
-          this.jdField_b_of_type_Float = (f * 136.0F / 220.0F);
+          if (this.jdField_a_of_type_Ayfg != null)
+          {
+            this.jdField_a_of_type_Ayfg.a(paramTextView, false);
+            this.jdField_a_of_type_Ayfg = null;
+          }
+          paramSpannable.onClick(paramTextView);
+        }
+        for (;;)
+        {
+          return true;
+          if (i == 0)
+          {
+            paramSpannable.a(paramTextView, true);
+            this.jdField_a_of_type_Ayfg = paramSpannable;
+          }
+          else if ((i == 3) && (this.jdField_a_of_type_Ayfg != null))
+          {
+            this.jdField_a_of_type_Ayfg.a(paramTextView, false);
+            this.jdField_a_of_type_Ayfg = null;
+          }
         }
       }
-      for (;;)
-      {
-        paramViewGroup.a().setLayoutParams(new LinearLayout.LayoutParams((int)f, -2));
-        ((aykc)localObject1).a(paramViewGroup);
-        paramViewGroup.a().measure(1073741824, 0);
-        this.jdField_b_of_type_Int = Math.max(paramViewGroup.a().getMeasuredHeight(), this.jdField_b_of_type_Int);
-        this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLayoutParams().height = this.jdField_b_of_type_Int;
-        this.jdField_a_of_type_Long = ((aykc)localObject1).jdField_a_of_type_Long;
-        return paramView;
-        paramViewGroup = (aysi)paramView.getTag();
-        break;
-        this.jdField_b_of_type_Float = (f * 136.0F / 220.0F);
-        continue;
-        this.jdField_b_of_type_Float = f;
-        continue;
-        this.jdField_b_of_type_Float = (228.0F * f / 162.0F);
-        continue;
-        this.jdField_b_of_type_Float = f;
+      if (i != 1) {
+        break label312;
       }
-    }
-    Object localObject1 = paramView;
-    if (paramView == null) {
-      localObject1 = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559690, paramViewGroup, false);
-    }
-    Object localObject2 = new FrameLayout.LayoutParams(-1, (int)this.jdField_b_of_type_Float);
-    ((FrameLayout.LayoutParams)localObject2).topMargin = bcwh.a(paramViewGroup.getContext(), 6.0F);
-    paramView = (LinearLayout)((View)localObject1).findViewById(2131364735);
-    paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    localObject2 = (ImageView)((View)localObject1).findViewById(2131370719);
-    TextView localTextView = (TextView)((View)localObject1).findViewById(2131370744);
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
-    {
-      paramView.setBackgroundResource(2130839208);
-      localTextView.setTextColor(Color.parseColor("#4A4A4A"));
-      ((ImageView)localObject2).setImageResource(2130841979);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        paramTextView.performClick();
+      }
     }
     for (;;)
     {
-      localTextView.setText(this.jdField_a_of_type_Ayjz.jdField_a_of_type_JavaLangCharSequence);
-      ((View)localObject1).setOnClickListener(new ayfk(this, paramViewGroup));
-      return localObject1;
-      paramView.setBackgroundResource(2130839207);
-      localTextView.setTextColor(Color.parseColor("#737373"));
-      ((ImageView)localObject2).setImageResource(2130841978);
+      if (this.jdField_a_of_type_Ayfg != null)
+      {
+        this.jdField_a_of_type_Ayfg.a(paramTextView, false);
+        this.jdField_a_of_type_Ayfg = null;
+      }
+      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+      label312:
+      if (i == 0) {
+        this.jdField_a_of_type_Boolean = true;
+      } else if (i == 3) {
+        this.jdField_a_of_type_Boolean = false;
+      }
     }
   }
 }

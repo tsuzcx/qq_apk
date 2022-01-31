@@ -1,32 +1,17 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 
-class yac
-  extends RecyclerView.OnScrollListener
+public class yac
+  implements DialogInterface.OnClickListener
 {
-  yac(xzz paramxzz) {}
+  public yac(QRLoginMgrActivity paramQRLoginMgrActivity, ybe paramybe) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((this.a.a instanceof StaggeredGridLayoutManager))
-    {
-      paramRecyclerView = (StaggeredGridLayoutManager)this.a.a;
-      int[] arrayOfInt = new int[paramRecyclerView.getColumnCountForAccessibility(null, null)];
-      paramRecyclerView.findFirstVisibleItemPositions(arrayOfInt);
-      if ((this.a.b(arrayOfInt[0]) <= 0) && (!xzz.b(this.a)))
-      {
-        xzz.a(this.a, true);
-        paramRecyclerView.invalidateSpanAssignments();
-      }
-      if (arrayOfInt[0] > 2) {
-        xzz.a(this.a, false);
-      }
-    }
+    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, false, this.jdField_a_of_type_Ybe.a);
+    azqs.b(null, "dc00898", "", "", "0X800A474", "0X800A474", this.jdField_a_of_type_Ybe.c, 0, "", "", "", "");
   }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 

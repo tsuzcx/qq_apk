@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vashealth;
 
 import android.text.TextUtils;
-import bepp;
+import bety;
 import com.tencent.mobileqq.jsp.MediaApiPlugin;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -72,8 +72,8 @@ class HealthBusinessPlugin$3
       }
       finally
       {
-        if (this.this$0.jdField_a_of_type_Bepp.isShowing()) {
-          this.this$0.jdField_a_of_type_Bepp.dismiss();
+        if (this.this$0.jdField_a_of_type_Bety.isShowing()) {
+          this.this$0.jdField_a_of_type_Bety.dismiss();
         }
       }
     }

@@ -1,10 +1,16 @@
-import android.support.annotation.NonNull;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.CircleProgress;
-
-public abstract interface bnhl
+public class bnhl
 {
-  public abstract boolean a(@NonNull TextView paramTextView, @NonNull CircleProgress paramCircleProgress, long paramLong, float paramFloat);
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  
+  public String toString()
+  {
+    return "RMVideoClipSpec: " + this.a + "," + this.b + "," + this.c + "," + this.d + "," + this.e + "," + this.f;
+  }
 }
 
 

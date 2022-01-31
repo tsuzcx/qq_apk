@@ -1,23 +1,25 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.11.1;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class acqy
-  extends allb
+public final class acqy
+  implements Comparator<PhoneContact>
 {
-  public acqy(EditInfoActivity paramEditInfoActivity) {}
-  
-  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    if (!this.a.j) {}
-    do
+    boolean bool1 = TextUtils.isEmpty(paramPhoneContact1.pinyinFirst);
+    boolean bool2 = TextUtils.isEmpty(paramPhoneContact2.pinyinFirst);
+    if ((bool1) || (bool2))
     {
-      return;
-      this.a.j = false;
-      this.a.runOnUiThread(new EditInfoActivity.11.1(this, paramBoolean, paramCard));
-    } while (!QLog.isColorLevel());
-    QLog.d("EditInfoActivity", 2, String.format("onGetDetailInfo, isSuccess: %s, resultCode:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
+      if ((bool1) && (bool2)) {
+        return 0;
+      }
+      if (bool2) {
+        return -1;
+      }
+      return 1;
+    }
+    return paramPhoneContact1.pinyinFirst.toLowerCase().charAt(0) - paramPhoneContact2.pinyinFirst.toLowerCase().charAt(0);
   }
 }
 

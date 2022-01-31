@@ -88,7 +88,7 @@ public class MultiVideoMembersListviewAvtivity
   
   public void c()
   {
-    String str = String.format(super.getResources().getString(2131695994), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.c().size()) });
+    String str = String.format(super.getResources().getString(2131695996), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.c().size()) });
     if (this.b != null) {
       this.b.setText(str);
     }
@@ -99,7 +99,7 @@ public class MultiVideoMembersListviewAvtivity
     super.onCreate(paramBundle);
     this.jdField_a_of_type_Boolean = super.getIntent().getBooleanExtra("KEY_ISFORGVIDEO", false);
     if (this.jdField_a_of_type_Boolean) {
-      super.setContentView(2131559580);
+      super.setContentView(2131559579);
     }
     for (;;)
     {
@@ -112,7 +112,7 @@ public class MultiVideoMembersListviewAvtivity
       }
       super.finish();
       return;
-      super.setContentView(2131559593);
+      super.setContentView(2131559592);
     }
     this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
     if (this.jdField_a_of_type_ComTencentAvVideoController == null)
@@ -126,10 +126,10 @@ public class MultiVideoMembersListviewAvtivity
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(super.getApplicationContext());
     a();
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Lhe);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369338));
-    this.b = ((TextView)super.findViewById(2131370213));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369356));
+    this.b = ((TextView)super.findViewById(2131370232));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131370136));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131370155));
     this.jdField_a_of_type_Mji = new mji(this);
     if (super.getIntent().getIntExtra("needDataSimple", 0) == 1) {}
     for (paramBundle = this.jdField_a_of_type_ComTencentAvVideoController.e();; paramBundle = this.jdField_a_of_type_ComTencentAvVideoController.c())
@@ -146,7 +146,7 @@ public class MultiVideoMembersListviewAvtivity
       Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, new mje(this));
     }
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Mji);
-    paramBundle = String.format(super.getResources().getString(2131695994), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
+    paramBundle = String.format(super.getResources().getString(2131695996), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
     this.b.setText(paramBundle);
     this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new mjf(this);
     this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);

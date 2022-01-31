@@ -1,35 +1,19 @@
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.2;
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
+import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
 
 public class anrp
-  extends anrk
+  implements View.OnClickListener
 {
-  public anrp(RockDownloaderManager.2 param2) {}
+  public anrp(ArkAppListActivity paramArkAppListActivity, String paramString) {}
   
-  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RockDownloaderManager", 2, new Object[] { "onFail: RockDownloadInfo=", paramRockDownloadInfo, " errorMsg=", paramString, " errorCode=", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(ArrayList<RockDownloadInfo> paramArrayList)
-  {
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)paramArrayList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloaderManager", 2, new Object[] { "onSuccess:", localRockDownloadInfo });
-      }
-      boolean bool = anrq.b(localRockDownloadInfo);
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloaderManager", 2, new Object[] { "install success=", Boolean.valueOf(bool) });
-      }
-    }
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity, ArkAuthorityInfoActivity.class);
+    paramView.putExtra("intent_extra_authority_app_name", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity.startActivity(paramView);
   }
 }
 

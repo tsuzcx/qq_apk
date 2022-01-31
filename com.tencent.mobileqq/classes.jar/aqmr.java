@@ -1,44 +1,30 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
+import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.widget.XListView;
+import java.util.List;
 
 public class aqmr
-  extends aroh
+  implements yuf
 {
-  public aqmr(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView) {}
+  public aqmr(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a()
+  public void a(List<arnw> paramList)
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().s();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().t();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.stopTitleProgress();
+    if (paramList != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_JavaUtilList = paramList;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Yun = new yun(paramList, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Yun.e = (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.e + "/");
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Yun.jdField_b_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_b_of_type_Long;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Yun.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Yun.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_b_of_type_JavaLangString;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Yun.c = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.c;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Yun.d = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.d;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Yun.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Yun.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.f, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Short);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Yun);
+    }
   }
 }
 

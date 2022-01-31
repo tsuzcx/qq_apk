@@ -1,126 +1,112 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForSafeGrayTips;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class agsd
+  implements bfml
 {
-  public static MessageForReplyText.SourceMsgInfo a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, int paramInt, long paramLong, String paramString)
+  int jdField_a_of_type_Int = 1;
+  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<akjh> b;
+  WeakReference<XListView> c;
+  WeakReference<PullRefreshHeader> d;
+  WeakReference<TextView> e;
+  
+  public agsd(Context paramContext, XListView paramXListView, akjh paramakjh, PullRefreshHeader paramPullRefreshHeader, TextView paramTextView, int paramInt)
   {
-    if (paramChatMessage == null) {
-      return null;
-    }
-    paramQQAppInterface = new MessageForReplyText.SourceMsgInfo();
-    paramQQAppInterface.origUid = paramChatMessage.msgUid;
-    paramQQAppInterface.mSourceMsgSeq = paramChatMessage.shmsgseq;
-    paramQQAppInterface.mSourceMsgSenderUin = Long.parseLong(paramChatMessage.senderuin);
-    paramQQAppInterface.setUniSeq(paramChatMessage.uniseq, true);
-    paramQQAppInterface.mSourceMsgTime = ((int)paramChatMessage.time);
-    paramQQAppInterface.mSourceSummaryFlag = 1;
-    paramQQAppInterface.mType = paramInt;
-    paramQQAppInterface.mAtInfoStr = paramChatMessage.getExtInfoFromExtStr(ayvj.i);
-    Object localObject = nav.a(paramChatMessage);
-    if (!TextUtils.isEmpty(((naw)localObject).b)) {
-      paramQQAppInterface.mAnonymousNickName = ((naw)localObject).b;
-    }
-    for (;;)
-    {
-      if (((paramChatMessage instanceof MessageForFile)) && (paramQQAppInterface.mSourceMsgSenderUin == 0L) && (paramChatMessage.issend != 1) && (!TextUtils.isEmpty(paramChatMessage.frienduin))) {
-        paramQQAppInterface.mSourceMsgSenderUin = Long.parseLong(paramChatMessage.frienduin);
-      }
-      paramQQAppInterface.mSourceMsgToUin = paramLong;
-      paramQQAppInterface.mSourceMsgTroopName = paramString;
-      try
-      {
-        if (!(paramChatMessage instanceof MessageForMixedMsg)) {
-          break;
-        }
-        paramQQAppInterface.mSourceMsgText = MessageForMixedMsg.getReplySummary(paramChatMessage);
-        return paramQQAppInterface;
-      }
-      catch (Exception paramChatMessage)
-      {
-        paramQQAppInterface.mSourceMsgText = "";
-        return paramQQAppInterface;
-      }
-      if ((paramQQAppInterface.mSourceMsgSenderUin == 50000000L) || (paramQQAppInterface.mSourceMsgSenderUin == 1000000L))
-      {
-        localObject = bcid.a(paramChatMessage);
-        if (localObject != null) {
-          paramQQAppInterface.mAnonymousNickName = ((bcie)localObject).c;
-        }
-      }
-    }
-    if ((paramChatMessage instanceof MessageForStructing))
-    {
-      paramQQAppInterface.mSourceMsgText = MessageForStructing.getReplySummary(paramChatMessage);
-      return paramQQAppInterface;
-    }
-    if ((paramChatMessage instanceof MessageForArkApp))
-    {
-      paramQQAppInterface.mSourceMsgText = MessageForArkApp.getReplySummary(paramChatMessage);
-      return paramQQAppInterface;
-    }
-    paramQQAppInterface.mSourceMsgText = paramChatMessage.getSummaryMsg();
-    return paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.c = new WeakReference(paramXListView);
+    this.b = new WeakReference(paramakjh);
+    this.d = new WeakReference(paramPullRefreshHeader);
+    this.e = new WeakReference(paramTextView);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static MessageRecord a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
+  public void a(Exception paramException)
   {
-    paramQQAppInterface = paramQQAppInterface.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramSourceMsgInfo.mSourceMsgSeq, 0L);
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.hotchat.aio_post_list_req", 2, paramException.getMessage());
+    }
+    paramException = (PullRefreshHeader)this.d.get();
+    if ((paramException != null) && (paramException.getVisibility() == 0)) {
+      paramException.a(1);
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.hotchat.aio_post_list_req", 2, "result " + paramJSONObject);
+    }
+    XListView localXListView = (XListView)this.c.get();
+    if (localXListView == null) {}
+    akjh localakjh;
+    do
     {
-      int i = 0;
-      while (i < paramQQAppInterface.size())
+      do
       {
-        paramSessionInfo = (MessageRecord)paramQQAppInterface.get(i);
-        if ((!abot.a(paramSessionInfo)) && (!(paramSessionInfo instanceof MessageForSafeGrayTips))) {
-          return paramSessionInfo;
+        do
+        {
+          return;
+          localObject = (TextView)this.e.get();
+        } while (localObject == null);
+        localakjh = (akjh)this.b.get();
+      } while (localakjh == null);
+      if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode") == 0)) {
+        break;
+      }
+      if (localXListView.getVisibility() == 8) {
+        ((TextView)localObject).setText(alud.a(2131705974));
+      }
+      paramJSONObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (paramJSONObject == null);
+    QQToast.a(paramJSONObject, 1, alud.a(2131705976), 0).a();
+    localakjh.a();
+    return;
+    ((TextView)localObject).setVisibility(8);
+    localXListView.setVisibility(0);
+    Object localObject = paramJSONObject.optJSONObject("result");
+    label193:
+    int j;
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      localakjh.b(((JSONObject)localObject).optJSONArray("posts"));
+      j = paramJSONObject.optInt("retcode");
+      paramJSONObject = (PullRefreshHeader)this.d.get();
+      if ((paramJSONObject != null) && (paramJSONObject.getVisibility() == 0)) {
+        if (j != 0) {
+          break label315;
         }
-        i += 1;
       }
     }
-    return null;
-  }
-  
-  public static MessageRecord a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong1, long paramLong2)
-  {
-    paramQQAppInterface = paramQQAppInterface.a().b(paramString, paramInt, paramLong1, paramLong2);
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
+    label315:
+    for (int i = 0;; i = 1)
     {
-      paramInt = 0;
-      while (paramInt < paramQQAppInterface.size())
-      {
-        paramString = (MessageRecord)paramQQAppInterface.get(paramInt);
-        if ((!abot.b(paramString)) && (!(paramString instanceof MessageForSafeGrayTips))) {
-          return paramString;
-        }
-        paramInt += 1;
+      paramJSONObject.a(i);
+      localXListView.springBackOverScrollHeaderView();
+      if (j != 0) {
+        break;
       }
+      agrn.i = System.currentTimeMillis();
+      return;
+      if (((JSONObject)localObject).optInt("isend") == 0)
+      {
+        localakjh.a(((JSONObject)localObject).optJSONArray("posts"));
+        localakjh.a();
+        break label193;
+      }
+      paramJSONObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramJSONObject != null) {
+        QQToast.a(paramJSONObject, 2, alud.a(2131705966), 0).a();
+      }
+      localakjh.a();
+      return;
     }
-    return null;
-  }
-  
-  public static MessageRecord b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
-  {
-    return a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramSourceMsgInfo.mSourceMsgTime, paramSourceMsgInfo.origUid);
-  }
-  
-  public static MessageRecord c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
-  {
-    if (paramSessionInfo.jdField_a_of_type_Int == 0) {
-      return b(paramQQAppInterface, paramSessionInfo, paramSourceMsgInfo);
-    }
-    return a(paramQQAppInterface, paramSessionInfo, paramSourceMsgInfo);
   }
 }
 

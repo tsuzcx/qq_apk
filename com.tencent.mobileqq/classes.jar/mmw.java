@@ -103,16 +103,16 @@ public class mmw
     do
     {
       return;
-      int i = bdyi.a();
-      String str = bdyi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt, i, null);
+      int i = becr.a();
+      String str = becr.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt, i, null);
       File localFile = new File(str);
       int j = this.a.jdField_a_of_type_Lid.d;
       if ((localFile != null) && (localFile.exists()) && (this.a.jdField_a_of_type_Lid.g != 4) && ((j == 1) || (j == 0)) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null))
       {
         if (this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView == null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView = bdyi.a((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+          this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView = becr.a((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
         }
-        if (bdyi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getApplicationContext(), this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView, str, i, null, paramInt, false))
+        if (becr.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getApplicationContext(), this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView, str, i, null, paramInt, false))
         {
           this.a.a(true);
           ImmersiveUtils.a(false, this.a.getWindow());

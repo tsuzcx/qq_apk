@@ -1,26 +1,18 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class acuw
-  implements bhqh
+  implements View.OnTouchListener
 {
-  public acuw(FriendProfileCardActivity paramFriendProfileCardActivity, bhpy parambhpy, int paramInt) {}
+  public acuw(DiscussionMemberActivity paramDiscussionMemberActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    View localView1 = this.jdField_a_of_type_Bhpy.a.findViewById(this.jdField_a_of_type_Int);
-    if (localView1 == null) {}
-    for (localView1 = null;; localView1 = localView1.findViewById(2131361915))
-    {
-      View localView2 = FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, localView1, 5, 5, 7, 5);
-      if (localView1 != null) {
-        new RedTouch(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, localView2).a(53).a().a(bcyw.a());
-      }
-      this.jdField_a_of_type_Bhpy.a(null);
-      return;
-    }
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

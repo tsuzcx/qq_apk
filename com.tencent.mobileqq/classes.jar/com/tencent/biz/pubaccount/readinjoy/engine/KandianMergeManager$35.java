@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Base64;
-import bjxj;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.struct.MySelfNormalItemRedPointInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -18,14 +18,14 @@ class KandianMergeManager$35
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = bjxj.a(KandianMergeManager.a(this.this$0), true, false).edit();
+    SharedPreferences.Editor localEditor = bkbq.a(KandianMergeManager.a(this.this$0), true, false).edit();
     Object localObject = new ByteArrayOutputStream();
     try
     {
       new ObjectOutputStream((OutputStream)localObject).writeObject(this.a);
       localObject = new String(Base64.encode(((ByteArrayOutputStream)localObject).toByteArray(), 0));
       localEditor.putString("kandian_myself_red_point" + this.a.itemId, (String)localObject);
-      bjxj.a(localEditor, true);
+      bkbq.a(localEditor, true);
       return;
     }
     catch (IOException localIOException)

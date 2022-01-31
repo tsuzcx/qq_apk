@@ -11,7 +11,7 @@ class ruj
   
   public void a(pdc parampdc)
   {
-    bhxr.a("ReadInJoyBaseAdapter.Viewtype " + this.jdField_a_of_type_Int);
+    biby.a("ReadInJoyBaseAdapter.Viewtype " + this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Ruh.a(this.jdField_a_of_type_Int)) {
       if ((opy.a(this.jdField_a_of_type_Ruh.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) && (this.jdField_a_of_type_Ruh.c != 56))
       {
@@ -26,7 +26,7 @@ class ruj
     if (parampdc.a(this.jdField_a_of_type_Int)) {
       this.jdField_a_of_type_JavaLangObject = parampdc.a(this.b, null, this.jdField_a_of_type_AndroidViewViewGroup);
     }
-    bhxr.a();
+    biby.a();
   }
 }
 

@@ -1,29 +1,15 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
 
 class bnci
-  extends xos
+  implements ansr
 {
-  bnci(bncg parambncg, String paramString1, PeakActivity paramPeakActivity, String paramString2, String paramString3, PublishVideoEntry paramPublishVideoEntry) {}
+  bnci(bnce parambnce) {}
   
-  public void onFailure(String paramString)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    bncg.a(this.jdField_a_of_type_Bncg, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SaveVideoActivity", 2, "combine music finish: " + paramBoolean);
+    if (bnce.a(this.a) != null) {
+      bnce.a(this.a).a(paramString1, 101, paramString2, paramBitmap);
     }
-    bdcs.d(this.jdField_a_of_type_JavaLangString);
-    if (paramBoolean)
-    {
-      bncg.a(this.jdField_a_of_type_Bncg, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.b, this.c, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-      return;
-    }
-    bncg.a(this.jdField_a_of_type_Bncg, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
   }
 }
 

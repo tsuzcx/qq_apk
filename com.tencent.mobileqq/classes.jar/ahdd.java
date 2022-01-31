@@ -1,24 +1,16 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
 public class ahdd
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ahdd(SearchBaseActivity paramSearchBaseActivity) {}
+  public ahdd(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText()))
-    {
-      this.a.setResult(0);
-      this.a.finish();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), false);
+    paramDialogInterface.dismiss();
+    BlessSelectMemberActivity.a(this.a, null);
   }
 }
 

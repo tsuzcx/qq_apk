@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import com.tencent.biz.qqcircle.fragments.QCirclePersonalDetailFragment;
 
 public class txb
-  implements View.OnClickListener
+  implements yia<trn>
 {
-  public txb(QCircleContentOperationView paramQCircleContentOperationView) {}
+  public txb(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment) {}
   
-  public void onClick(View paramView)
+  public void a(yii paramyii, trn paramtrn)
   {
-    QCircleContentOperationView.a(this.a);
+    if ((paramyii.d()) && (QCirclePersonalDetailFragment.a(this.a) != null))
+    {
+      QCirclePersonalDetailFragment.a(this.a).a(QCirclePersonalDetailFragment.a(this.a), false);
+      QCirclePersonalDetailFragment.a(this.a).b(QCirclePersonalDetailFragment.a(this.a), false);
+    }
   }
 }
 

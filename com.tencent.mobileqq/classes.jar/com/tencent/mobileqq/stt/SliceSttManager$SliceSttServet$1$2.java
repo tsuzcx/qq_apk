@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.stt;
 
-import azwa;
-import azwb;
-import azwc;
-import azwf;
+import baaj;
+import baak;
+import baal;
+import baao;
 
 public class SliceSttManager$SliceSttServet$1$2
   implements Runnable
 {
-  public SliceSttManager$SliceSttServet$1$2(azwc paramazwc) {}
+  public SliceSttManager$SliceSttServet$1$2(baal parambaal) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_Azwa.a.a(false, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    this.a.a.jdField_a_of_type_Baaj.a.a(false, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
   }
 }
 

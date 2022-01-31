@@ -48,7 +48,7 @@ public class oxb
         break;
       }
       localoxe = (oxe)((Iterator)???).next();
-    } while (!(localoxe instanceof amkt));
+    } while (!(localoxe instanceof ampi));
     for (;;)
     {
       synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
@@ -552,7 +552,7 @@ public class oxb
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
       if (localIterator.hasNext()) {
-        ((oxe)localIterator.next()).ax_();
+        ((oxe)localIterator.next()).au_();
       }
     }
   }

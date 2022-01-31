@@ -1,44 +1,21 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class aeiz
+  implements View.OnTouchListener
 {
-  public static long a(long paramLong)
-  {
-    Calendar localCalendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
-    localCalendar.setTimeInMillis(paramLong);
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    return localCalendar.getTimeInMillis();
-  }
+  public aeiz(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public static String a(long paramLong, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
-    {
-      paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE).format(new Date(paramLong));
-      return paramString;
+    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
+    if (paramMotionEvent != null) {
+      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     }
-    catch (Exception paramString) {}
-    return "";
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return a(paramLong, "yyyy-MM-dd");
-  }
-  
-  private static boolean a(long paramLong, String paramString)
-  {
-    Date localDate = new Date(paramLong);
-    paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE);
-    return paramString.format(localDate).equals(paramString.format(new Date(NetConnInfoCenter.getServerTimeMillis())));
+    return false;
   }
 }
 

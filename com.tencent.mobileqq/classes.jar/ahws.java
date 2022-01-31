@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
-class ahws
-  implements arld
+public class ahws
+  extends RecyclerView.ViewHolder
 {
-  ahws(ahwr paramahwr) {}
+  TextView a;
   
-  public void a(int paramInt1, int paramInt2)
+  ahws(View paramView)
   {
-    if ((paramInt1 == 3) && (paramInt2 == 0)) {
-      azmj.b(this.a.a.a, "dc00898", "", "", "0X800A0BE", "0X800A0BE", 3, 0, "", "", "", "");
-    }
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131379162));
   }
 }
 

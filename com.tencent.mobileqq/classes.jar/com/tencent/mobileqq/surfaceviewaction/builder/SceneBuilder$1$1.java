@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.surfaceviewaction.builder;
 
-import azzb;
-import azzp;
-import azzy;
+import badk;
+import bady;
+import baeh;
 
 class SceneBuilder$1$1
   implements Runnable
@@ -11,8 +11,8 @@ class SceneBuilder$1$1
   
   public void run()
   {
-    azzb localazzb = azzp.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.this$0, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Azzd, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Azzy.a(localazzb);
+    badk localbadk = bady.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.this$0, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Badm, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Baeh.a(localbadk);
   }
 }
 

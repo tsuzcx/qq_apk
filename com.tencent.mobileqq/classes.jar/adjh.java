@@ -1,10 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
-public final class adjh
+public class adjh
   implements DialogInterface.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public adjh(NearbyActivity paramNearbyActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
+  }
 }
 
 

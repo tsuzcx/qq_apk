@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Handler;
-import azmj;
-import bdee;
+import azqs;
+import bdin;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.service.RecvMsg;
@@ -138,7 +138,7 @@ class SmallScreenMultiVideoControlUI$1
       if (this.a.d != 2) {
         break;
       }
-      azmj.b(null, "CliOper", "", "", "0X800441E", "0X800441E", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X800441E", "0X800441E", 0, 0, "", "", "", "");
       return;
       if (!QLog.isColorLevel()) {
         break;
@@ -236,7 +236,7 @@ class SmallScreenMultiVideoControlUI$1
         this.a.a(false, false, false);
         return;
       }
-      if ((!bdee.h((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get())) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().a() == -1) && (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().ap)) {
+      if ((!bdin.h((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get())) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().a() == -1) && (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().ap)) {
         break;
       }
     } while (this.a.e >= 4);
@@ -348,13 +348,13 @@ class SmallScreenMultiVideoControlUI$1
     paramArrayOfString = paramArrayOfString[0];
     this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramArrayOfString, String.valueOf(this.a.a()), this.a.d);
     if (i == 1) {
-      this.a.jdField_a_of_type_AndroidContentResResources.getString(2131695985);
+      this.a.jdField_a_of_type_AndroidContentResResources.getString(2131695987);
     }
     for (;;)
     {
       this.a.a(Long.valueOf(paramString).longValue(), 82, true, -1);
       return;
-      String.format(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131695984), new Object[] { Integer.valueOf(i) });
+      String.format(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131695986), new Object[] { Integer.valueOf(i) });
     }
   }
   

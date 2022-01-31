@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.startup.step;
 
-import ajfw;
-import azjg;
+import ajkl;
+import aznp;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppActivity;
 import mqq.app.AppRuntime;
-import zdi;
+import zhx;
 
 public class LoadData
   extends Step
@@ -15,11 +15,11 @@ public class LoadData
     boolean bool2 = true;
     AppActivity localAppActivity = this.mDirector.a;
     long l = System.currentTimeMillis();
-    zdi.a = l;
+    zhx.a = l;
     if (localAppActivity != null)
     {
-      if (zdi.a(BaseApplicationImpl.sApplication)) {
-        ajfw.a(BaseApplicationImpl.sApplication, true);
+      if (zhx.a(BaseApplicationImpl.sApplication)) {
+        ajkl.a(BaseApplicationImpl.sApplication, true);
       }
     }
     else {

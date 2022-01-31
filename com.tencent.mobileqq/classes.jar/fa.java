@@ -32,7 +32,7 @@ public class fa
     int i = 1;
     Object localObject = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-    aroa.a(paramString, (BitmapFactory.Options)localObject);
+    arsj.a(paramString, (BitmapFactory.Options)localObject);
     ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
     int j = ((BitmapFactory.Options)localObject).outHeight;
     paramInt1 = ((BitmapFactory.Options)localObject).outWidth / paramInt1;
@@ -50,7 +50,7 @@ public class fa
       ((BitmapFactory.Options)localObject).inSampleSize = paramInt1;
       try
       {
-        localObject = aroa.a(paramString, (BitmapFactory.Options)localObject);
+        localObject = arsj.a(paramString, (BitmapFactory.Options)localObject);
         return localObject;
       }
       catch (Exception localException)

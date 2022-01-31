@@ -1,18 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public final class apig
+public abstract interface apig
 {
-  public static aphr a(QQAppInterface paramQQAppInterface, apik paramapik, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return new apiu(paramQQAppInterface, paramapik);
-    case 0: 
-      return new apiu(paramQQAppInterface, paramapik);
-    }
-    return new aphs(paramQQAppInterface, paramapik);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

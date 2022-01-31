@@ -116,8 +116,8 @@ import tencent.im.oidb.articlesummary.articlesummary.WeishiUGInfo;
 import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
 
 public abstract class rqj
-  extends ysj
-  implements View.OnClickListener, View.OnLongClickListener, bhum, rkc, rkw, rpu
+  extends ywy
+  implements View.OnClickListener, View.OnLongClickListener, bhyt, rkc, rkw, rpu
 {
   public static float a;
   public static int a;
@@ -129,7 +129,7 @@ public abstract class rqj
   private static int j;
   private static int jdField_k_of_type_Int;
   public long a;
-  private alxv jdField_a_of_type_Alxv = new rre(this);
+  private amck jdField_a_of_type_Amck = new rre(this);
   public Activity a;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   protected Drawable a;
@@ -137,9 +137,9 @@ public abstract class rqj
   private SparseArray<pdc> jdField_a_of_type_AndroidUtilSparseArray;
   protected LayoutInflater a;
   private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
-  public bhpo a;
-  private bhtq jdField_a_of_type_Bhtq;
-  private bhtw jdField_a_of_type_Bhtw;
+  public bhtv a;
+  private bhxx jdField_a_of_type_Bhxx;
+  private bhyd jdField_a_of_type_Bhyd;
   protected VideoPreDownloadMgr a;
   public ReadInJoyXListView a;
   private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new put();
@@ -178,7 +178,7 @@ public abstract class rqj
   public long b;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   private AnimationSet jdField_b_of_type_AndroidViewAnimationAnimationSet;
-  private bhpo jdField_b_of_type_Bhpo = new rqv(this);
+  private bhtv jdField_b_of_type_Bhtv = new rqv(this);
   private ArrayList<rpx> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   public HashSet<String> b;
   public List<BaseArticleInfo> b;
@@ -186,7 +186,7 @@ public abstract class rqj
   public boolean b;
   public int c;
   private long jdField_c_of_type_Long = -1L;
-  private bhpo jdField_c_of_type_Bhpo = new rqw(this);
+  private bhtv jdField_c_of_type_Bhtv = new rqw(this);
   public boolean c;
   protected int d;
   private long d;
@@ -236,7 +236,7 @@ public abstract class rqj
     this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
     this.jdField_b_of_type_JavaUtilHashSet = new HashSet();
     this.jdField_i_of_type_Int = -1;
-    this.jdField_a_of_type_Bhpo = new rqu(this);
+    this.jdField_a_of_type_Bhtv = new rqu(this);
     this.jdField_a_of_type_Rrt = new rqx(this);
     this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new rqy(this);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
@@ -1013,7 +1013,7 @@ public abstract class rqj
     {
       paramrjk = paramListView.getChildAt(paramrjk.jdField_a_of_type_Int + paramListView.getHeaderViewsCount() - paramListView.getFirstVisiblePosition());
       if (paramrjk != null) {
-        return paramrjk.getBottom() - aekt.a(175.0F, paramListView.getResources());
+        return paramrjk.getBottom() - aepi.a(175.0F, paramListView.getResources());
       }
     }
     return 0;
@@ -1074,7 +1074,7 @@ public abstract class rqj
       localBundle1.putLong("VIDEO_FEED_ID", paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmc.jdField_a_of_type_JavaLangLong.longValue());
       localBundle1.putInt("VIDEO_FEED_TYPE", paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmc.b.intValue());
       localBundle1.putString("VIDEO_TITLE", ((qmy)paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw.jdField_b_of_type_JavaUtilArrayList.get(0)).jdField_e_of_type_JavaLangString);
-      localBundle1.putBoolean("IS_FROM_READINJOY_VIDEO_CHANNEL", bjxj.a(this.jdField_d_of_type_Int));
+      localBundle1.putBoolean("IS_FROM_READINJOY_VIDEO_CHANNEL", bkbq.a(this.jdField_d_of_type_Int));
       if (paramrjk.jdField_f_of_type_Int != 1) {
         break label1438;
       }
@@ -1136,7 +1136,7 @@ public abstract class rqj
       localBundle2.putString("title", paramBaseArticleInfo.mTitle);
       localBundle2.putString("req_create_time", orr.a(paramBaseArticleInfo.mTime));
       localBundle2.putString("brief_key", paramBaseArticleInfo.mTitle);
-      localBundle1.putByteArray("STRUCT_MSG_BYTES", ((StructMsgForGeneralShare)azqu.a(localBundle2)).getBytes());
+      localBundle1.putByteArray("STRUCT_MSG_BYTES", ((StructMsgForGeneralShare)azvd.a(localBundle2)).getBytes());
       localBundle1.putString("VIDEO_SUBS_TEXT", paramBaseArticleInfo.mVideoArticleSubsText);
       localBundle1.putString("VIDEO_SUBS_COLOR", paramBaseArticleInfo.mVideoArticleSubsColor);
       localBundle1.putString("KEY_VIDEO_JSON_LIST", paramBaseArticleInfo.mJsonVideoList);
@@ -1395,7 +1395,7 @@ public abstract class rqj
       }
       if ((paramBaseArticleInfo.mChannelID == 56L) && (ors.s()))
       {
-        i1 = bcwh.a(BaseApplicationImpl.getApplication().getApplicationContext(), 8.0F);
+        i1 = bdaq.a(BaseApplicationImpl.getApplication().getApplicationContext(), 8.0F);
         localrjk.o = i1;
         localrjk.p = i1;
         localrjk.q = i1;
@@ -1413,7 +1413,7 @@ public abstract class rqj
       QLog.d("ReadInJoyBaseAdapter", 2, "preloadImg start:" + paramInt1 + " count:" + paramInt2);
     }
     long l1 = System.currentTimeMillis();
-    if (!bdee.h(this.jdField_a_of_type_AndroidAppActivity)) {
+    if (!bdin.h(this.jdField_a_of_type_AndroidAppActivity)) {
       return;
     }
     ArrayList localArrayList = new ArrayList(this.jdField_b_of_type_JavaUtilList);
@@ -1447,7 +1447,7 @@ public abstract class rqj
     int i2;
     if (ors.s())
     {
-      i1 = bcwh.a(a(), 8.0F);
+      i1 = bdaq.a(a(), 8.0F);
       if (!paramBoolean) {
         break label79;
       }
@@ -1458,7 +1458,7 @@ public abstract class rqj
     {
       paramView.setPadding(i2, i3, i1, i4);
       return;
-      i1 = bcwh.a(a(), 3.0F);
+      i1 = bdaq.a(a(), 3.0F);
       break;
       label79:
       i2 = i1 / 2;
@@ -1656,7 +1656,7 @@ public abstract class rqj
     if (TextUtils.isEmpty(paramArticleInfo.mArticleFriendLikeText)) {}
     try
     {
-      localObject = ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), paramInt, bdee.h(null), (String)localObject, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), 0, ors.d(), paramArticleInfo);
+      localObject = ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), paramInt, bdin.h(null), (String)localObject, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), 0, ors.d(), paramArticleInfo);
       if ((paramMap != null) && (paramMap.entrySet() != null))
       {
         paramMap = paramMap.entrySet().iterator();
@@ -1671,7 +1671,7 @@ public abstract class rqj
     }
     catch (Exception paramMap)
     {
-      aekt.a("ReadInJoyBaseAdapter", "reportClickEvent", new IllegalArgumentException(paramMap));
+      aepi.a("ReadInJoyBaseAdapter", "reportClickEvent", new IllegalArgumentException(paramMap));
       paramMap = null;
     }
     for (;;)
@@ -1691,8 +1691,8 @@ public abstract class rqj
   
   private void a(BaseArticleInfo paramBaseArticleInfo, TextView paramTextView1, View paramView, TextView paramTextView2, KandianUrlImageView paramKandianUrlImageView)
   {
-    int i1 = bjxj.d();
-    boolean bool2 = bjxj.q();
+    int i1 = bkbq.d();
+    boolean bool2 = bkbq.q();
     paramTextView1.setMaxLines(i1);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramTextView1.getLayoutParams();
     float f1;
@@ -1700,7 +1700,7 @@ public abstract class rqj
     if (bool2)
     {
       f1 = 5.0F;
-      localLayoutParams.bottomMargin = aekt.a(f1, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      localLayoutParams.bottomMargin = aepi.a(f1, this.jdField_a_of_type_AndroidAppActivity.getResources());
       if (bool2) {
         break label186;
       }
@@ -1747,14 +1747,14 @@ public abstract class rqj
     QLog.d("ReadInJoyBaseAdapter", 2, "innerConfigTwoItemVideoUI setCommentCountText");
     paramKandianUrlImageView.setVisibility(8);
     paramTextView2.setVisibility(0);
-    rdm.a(paramTextView2, paramBaseArticleInfo.getCommentCount(), alpo.a(2131713304), "0");
+    rdm.a(paramTextView2, paramBaseArticleInfo.getCommentCount(), alud.a(2131713316), "0");
   }
   
   private void a(KandianUrlImageView paramKandianUrlImageView, ImageView paramImageView, BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean)
   {
     boolean bool;
     URL localURL;
-    if ((paramBaseArticleInfo.isUseGif) && (bdee.h(this.jdField_a_of_type_AndroidAppActivity)))
+    if ((paramBaseArticleInfo.isUseGif) && (bdin.h(this.jdField_a_of_type_AndroidAppActivity)))
     {
       bool = true;
       paramBaseArticleInfo.isShowGif = bool;
@@ -1811,7 +1811,7 @@ public abstract class rqj
   {
     Object localObject = null;
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bdda.b();
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bdhj.b();
     }
     if ((ors.w(paramBaseArticleInfo)) || ((paramBaseArticleInfo.busiType == 1) && (!AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo))))
     {
@@ -1888,7 +1888,7 @@ public abstract class rqj
         break label329;
       }
       paramBaseArticleInfo = URLDrawable.getDrawable(paramBaseArticleInfo, localURLDrawableOptions);
-      paramBaseArticleInfo.setDecodeHandler(bcuq.a);
+      paramBaseArticleInfo.setDecodeHandler(bcyz.a);
       paramReadInJoyHeadImageView.setImageDrawable(paramBaseArticleInfo);
       paramReadInJoyHeadImageView.setVisibility(0);
       return;
@@ -1935,7 +1935,7 @@ public abstract class rqj
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    paramString = oqu.jdField_k_of_type_JavaLangString + bdbi.encodeToString(String.valueOf(paramString).getBytes(), 2);
+    paramString = oqu.jdField_k_of_type_JavaLangString + bdfr.encodeToString(String.valueOf(paramString).getBytes(), 2);
     ors.a(a(), paramString);
   }
   
@@ -1994,7 +1994,7 @@ public abstract class rqj
   private boolean a(AbsListView paramAbsListView)
   {
     float f1 = paramAbsListView.getFlingVelocity();
-    float f2 = (float)bdcb.j();
+    float f2 = (float)bdgk.j();
     return (f1 > 0.0F) && (f1 > f2 * 1.0F);
   }
   
@@ -2065,7 +2065,7 @@ public abstract class rqj
         ((Bundle)localObject1).putLong("VIDEO_PLAY_POSITION", this.jdField_a_of_type_Rjg.a());
         ((Bundle)localObject1).putString("VIDEO_ARTICLE_ID", ((qlk)localObject2).jdField_g_of_type_JavaLangString);
         ((Bundle)localObject1).putString("VIDEO_TITLE", ((qlk)localObject2).jdField_a_of_type_JavaLangString);
-        ((Bundle)localObject1).putBoolean("IS_FROM_READINJOY_VIDEO_CHANNEL", bjxj.a(this.jdField_d_of_type_Int));
+        ((Bundle)localObject1).putBoolean("IS_FROM_READINJOY_VIDEO_CHANNEL", bkbq.a(this.jdField_d_of_type_Int));
         if (paramrjk.jdField_f_of_type_Int != 1) {
           break label971;
         }
@@ -2114,7 +2114,7 @@ public abstract class rqj
         ((Bundle)localObject3).putString("req_create_time", orr.a(paramBaseArticleInfo.mTime));
         ((Bundle)localObject3).putString("brief_key", ((qlk)localObject2).jdField_a_of_type_JavaLangString);
         ((Bundle)localObject3).putInt("req_type", 140);
-        ((Bundle)localObject1).putByteArray("STRUCT_MSG_BYTES", ((StructMsgForGeneralShare)azqu.a((Bundle)localObject3)).getBytes());
+        ((Bundle)localObject1).putByteArray("STRUCT_MSG_BYTES", ((StructMsgForGeneralShare)azvd.a((Bundle)localObject3)).getBytes());
         ((Bundle)localObject1).putString("KEY_VIDEO_JSON_LIST", paramBaseArticleInfo.mJsonVideoList);
         return localObject1;
         ((Bundle)localObject1).putString("VIDEO_PUB_ACCOUNT_UIN", ((qlk)localObject2).jdField_e_of_type_JavaLangString);
@@ -2166,7 +2166,7 @@ public abstract class rqj
       }
       i2 = 0;
       str1 = ors.d(paramArticleInfo);
-      str2 = ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), paramInt, i1, i2, bdee.h(null), str1, paramArticleInfo.mStrCircleId, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), paramArticleInfo);
+      str2 = ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), paramInt, i1, i2, bdin.h(null), str1, paramArticleInfo.mStrCircleId, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), paramArticleInfo);
       if ((!b(paramArticleInfo)) && (!i(paramArticleInfo)) && (!j(paramArticleInfo)) && (!k(paramArticleInfo))) {
         break label243;
       }
@@ -2406,7 +2406,7 @@ public abstract class rqj
   
   private boolean d()
   {
-    if (!bjxj.a(this.jdField_d_of_type_Int)) {}
+    if (!bkbq.a(this.jdField_d_of_type_Int)) {}
     String str;
     do
     {
@@ -2415,7 +2415,7 @@ public abstract class rqj
         do
         {
           return false;
-        } while (!bdee.g(this.jdField_a_of_type_AndroidAppActivity));
+        } while (!bdin.g(this.jdField_a_of_type_AndroidAppActivity));
         str = ors.a(this.jdField_c_of_type_Long);
       } while (ors.jdField_d_of_type_JavaLangString.equals(str));
       if (ors.jdField_b_of_type_JavaLangString.equals(str)) {
@@ -2446,9 +2446,9 @@ public abstract class rqj
   private int e()
   {
     if (ors.s()) {
-      return bcwh.a(a(), 14.0F);
+      return bdaq.a(a(), 14.0F);
     }
-    return bcwh.a(a(), 6.0F);
+    return bdaq.a(a(), 6.0F);
   }
   
   public static boolean e(ArticleInfo paramArticleInfo)
@@ -2593,10 +2593,10 @@ public abstract class rqj
   private void q()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseAdapter", 2, "cpu:" + bdcb.b() + " mem:" + bdcb.d() + " fre:" + bdcb.a());
+      QLog.d("ReadInJoyBaseAdapter", 2, "cpu:" + bdgk.b() + " mem:" + bdgk.d() + " fre:" + bdgk.a());
     }
-    int i1 = bdcb.b();
-    long l1 = bdcb.d();
+    int i1 = bdgk.b();
+    long l1 = bdgk.d();
     if ((i1 >= 4) && (l1 >= 1610612736.0D))
     {
       jdField_j_of_type_Int = 6;
@@ -2643,8 +2643,8 @@ public abstract class rqj
   
   private void t()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.a(this.jdField_a_of_type_Bhpo);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.a(this.jdField_b_of_type_Bhpo);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.a(this.jdField_a_of_type_Bhtv);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.a(this.jdField_b_of_type_Bhtv);
   }
   
   private void u()
@@ -2678,7 +2678,7 @@ public abstract class rqj
   
   private void v()
   {
-    if (!bdee.h(this.jdField_a_of_type_AndroidAppActivity)) {}
+    if (!bdin.h(this.jdField_a_of_type_AndroidAppActivity)) {}
     try
     {
       Object localObject = this.jdField_a_of_type_Rjg.a();
@@ -2747,25 +2747,25 @@ public abstract class rqj
     return localAnimationSet;
   }
   
-  public bcws a()
+  public bdbb a()
   {
     return null;
   }
   
-  public bhtq a()
+  public bhxx a()
   {
-    if (this.jdField_a_of_type_Bhtq == null) {
-      this.jdField_a_of_type_Bhtq = new bhtq(this.jdField_a_of_type_AndroidAppActivity);
+    if (this.jdField_a_of_type_Bhxx == null) {
+      this.jdField_a_of_type_Bhxx = new bhxx(this.jdField_a_of_type_AndroidAppActivity);
     }
-    return this.jdField_a_of_type_Bhtq;
+    return this.jdField_a_of_type_Bhxx;
   }
   
-  public bhtw a()
+  public bhyd a()
   {
-    if (this.jdField_a_of_type_Bhtw == null) {
-      this.jdField_a_of_type_Bhtw = new bhtw(this.jdField_a_of_type_AndroidAppActivity);
+    if (this.jdField_a_of_type_Bhyd == null) {
+      this.jdField_a_of_type_Bhyd = new bhyd(this.jdField_a_of_type_AndroidAppActivity);
     }
-    return this.jdField_a_of_type_Bhtw;
+    return this.jdField_a_of_type_Bhyd;
   }
   
   public ArticleInfo a()
@@ -2904,8 +2904,8 @@ public abstract class rqj
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.b();
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-    this.jdField_a_of_type_Bhtq = null;
-    this.jdField_a_of_type_Bhtw = null;
+    this.jdField_a_of_type_Bhxx = null;
+    this.jdField_a_of_type_Bhyd = null;
     if (this.jdField_c_of_type_Int == 56) {
       raa.a().a();
     }
@@ -2940,7 +2940,7 @@ public abstract class rqj
         localObject1 = ((ProteusItemView)localObject1).a();
         if (localObject1 != null)
         {
-          localObject1 = (rpw)((Container)localObject1).getTag(2131375271);
+          localObject1 = (rpw)((Container)localObject1).getTag(2131375322);
           if ((localObject1 == null) || (!((rpw)localObject1).a())) {}
         }
       }
@@ -2967,7 +2967,7 @@ public abstract class rqj
             localObject2 = ((ProteusItemView)localObject2).a();
             if (localObject2 != null)
             {
-              localObject2 = (rpw)((Container)localObject2).getTag(2131375271);
+              localObject2 = (rpw)((Container)localObject2).getTag(2131375322);
               if ((localObject2 != null) && (localObject2 != localObject1)) {
                 ((rpw)localObject2).b();
               }
@@ -3162,9 +3162,9 @@ public abstract class rqj
     if (paramArrayList.size() > 0) {
       localBaseArticleInfo = (BaseArticleInfo)paramArrayList.get(0);
     }
-    int i1 = 2131700042;
+    int i1 = 2131700054;
     if (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo)) {
-      i1 = 2131700043;
+      i1 = 2131700055;
     }
     if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {
       QQToast.a(this.jdField_a_of_type_AndroidAppActivity, -1, this.jdField_a_of_type_AndroidAppActivity.getString(i1), 0).b(((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight());
@@ -3221,7 +3221,7 @@ public abstract class rqj
           break label213;
         }
         paramArrayList.put("folder_status", 1);
-        azmj.b(null, "CliOper", "", "", "0X8007060", "0X8007060", 0, 0, "", "", "", paramArrayList.toString());
+        azqs.b(null, "CliOper", "", "", "0X8007060", "0X8007060", 0, 0, "", "", "", paramArrayList.toString());
         return;
       }
       catch (JSONException paramArrayList)
@@ -3247,10 +3247,10 @@ public abstract class rqj
   {
     if ((paramView != null) && (paramArticleInfo != null) && (paramArrayList != null))
     {
-      Object localObject = paramView.getTag(2131369009);
+      Object localObject = paramView.getTag(2131369027);
       if ((localObject != null) && ((localObject instanceof Animation)))
       {
-        localObject = (Animation)paramView.getTag(2131369009);
+        localObject = (Animation)paramView.getTag(2131369027);
         ((Animation)localObject).setAnimationListener(new rrd(this, paramView, paramArticleInfo, paramInt, paramArrayList));
         paramView.startAnimation((Animation)localObject);
       }
@@ -3285,7 +3285,7 @@ public abstract class rqj
           break label225;
         }
         if (i2 < this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildCount()) {
-          if (localObject != ((pgd)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(i2).getTag(2131379913)).a()) {}
+          if (localObject != ((pgd)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(i2).getTag(2131379971)).a()) {}
         }
         for (paramAdvertisementInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(i2);; paramAdvertisementInfo = null)
         {
@@ -3298,7 +3298,7 @@ public abstract class rqj
           for (;;)
           {
             localObject = new rrc(this, (BaseArticleInfo)localObject, i1);
-            Animation localAnimation = (Animation)paramAdvertisementInfo.getTag(2131369009);
+            Animation localAnimation = (Animation)paramAdvertisementInfo.getTag(2131369027);
             if (localAnimation == null) {
               break;
             }
@@ -3606,7 +3606,7 @@ public abstract class rqj
     //   259: bipush 10
     //   261: bipush 10
     //   263: bipush 10
-    //   265: invokestatic 2765	xod:a	(Landroid/view/View;IIII)V
+    //   265: invokestatic 2765	xsm:a	(Landroid/view/View;IIII)V
     //   268: aload_1
     //   269: getfield 2760	pdl:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
     //   272: aload_1
@@ -3670,11 +3670,11 @@ public abstract class rqj
     //   394: aload_1
     //   395: getfield 2795	pdl:jdField_d_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   398: ldc_w 2796
-    //   401: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   401: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   404: invokevirtual 2720	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   407: aload_0
     //   408: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   411: invokestatic 1254	bdee:h	(Landroid/content/Context;)Z
+    //   411: invokestatic 1254	bdin:h	(Landroid/content/Context;)Z
     //   414: ifeq +132 -> 546
     //   417: aload_1
     //   418: getfield 2798	pdl:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
@@ -3725,7 +3725,7 @@ public abstract class rqj
     //   522: invokestatic 2804	rdm:b	(J)Ljava/lang/String;
     //   525: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   528: ldc_w 2805
-    //   531: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   531: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   534: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   537: invokevirtual 865	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   540: invokevirtual 2720	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
@@ -3753,19 +3753,19 @@ public abstract class rqj
     //   589: aload_0
     //   590: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   593: invokevirtual 1568	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   596: invokestatic 610	aekt:a	(FLandroid/content/res/Resources;)I
+    //   596: invokestatic 610	aepi:a	(FLandroid/content/res/Resources;)I
     //   599: invokevirtual 2816	android/widget/TextView:setCompoundDrawablePadding	(I)V
     //   602: aload_1
     //   603: getfield 2795	pdl:jdField_d_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   606: iconst_0
     //   607: invokevirtual 1611	android/widget/TextView:setVisibility	(I)V
-    //   610: invokestatic 2819	bdvr:a	()I
+    //   610: invokestatic 2819	beaa:a	()I
     //   613: iconst_1
     //   614: if_icmpne +34 -> 648
     //   617: aload_1
     //   618: getfield 2795	pdl:jdField_d_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   621: ldc_w 2820
-    //   624: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   624: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   627: invokevirtual 2720	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   630: aload_1
     //   631: getfield 2822	pdl:jdField_e_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
@@ -3776,7 +3776,7 @@ public abstract class rqj
     //   643: iconst_0
     //   644: invokevirtual 2793	android/view/View:setBackgroundColor	(I)V
     //   647: return
-    //   648: invokestatic 2824	bjxj:v	()Z
+    //   648: invokestatic 2824	bkbq:v	()Z
     //   651: ifeq +280 -> 931
     //   654: aload_0
     //   655: getfield 2825	rqj:jdField_h_of_type_Boolean	Z
@@ -3784,11 +3784,11 @@ public abstract class rqj
     //   661: aload_1
     //   662: getfield 2735	pdl:jdField_a_of_type_Int	I
     //   665: ifne +266 -> 931
-    //   668: invokestatic 2827	bjxj:d	()Ljava/lang/String;
+    //   668: invokestatic 2827	bkbq:d	()Ljava/lang/String;
     //   671: astore 5
-    //   673: invokestatic 2829	bjxj:e	()Ljava/lang/String;
+    //   673: invokestatic 2829	bkbq:e	()Ljava/lang/String;
     //   676: astore 6
-    //   678: invokestatic 2831	bjxj:f	()Ljava/lang/String;
+    //   678: invokestatic 2831	bkbq:f	()Ljava/lang/String;
     //   681: astore 7
     //   683: aload 5
     //   685: invokestatic 449	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -3827,7 +3827,7 @@ public abstract class rqj
     //   756: aload_0
     //   757: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   760: invokevirtual 1568	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   763: invokestatic 610	aekt:a	(FLandroid/content/res/Resources;)I
+    //   763: invokestatic 610	aepi:a	(FLandroid/content/res/Resources;)I
     //   766: invokevirtual 2816	android/widget/TextView:setCompoundDrawablePadding	(I)V
     //   769: aload_0
     //   770: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
@@ -3842,12 +3842,12 @@ public abstract class rqj
     //   791: aload_0
     //   792: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   795: invokevirtual 1568	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   798: invokestatic 610	aekt:a	(FLandroid/content/res/Resources;)I
+    //   798: invokestatic 610	aepi:a	(FLandroid/content/res/Resources;)I
     //   801: ldc_w 2843
     //   804: aload_0
     //   805: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   808: invokevirtual 1568	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   811: invokestatic 610	aekt:a	(FLandroid/content/res/Resources;)I
+    //   811: invokestatic 610	aepi:a	(FLandroid/content/res/Resources;)I
     //   814: invokevirtual 2848	android/graphics/drawable/Drawable:setBounds	(IIII)V
     //   817: aload_1
     //   818: getfield 2822	pdl:jdField_e_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
@@ -4030,7 +4030,7 @@ public abstract class rqj
     //   195: bipush 10
     //   197: bipush 10
     //   199: bipush 10
-    //   201: invokestatic 2765	xod:a	(Landroid/view/View;IIII)V
+    //   201: invokestatic 2765	xsm:a	(Landroid/view/View;IIII)V
     //   204: aload_1
     //   205: getfield 2883	pdm:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
     //   208: aload_1
@@ -4157,11 +4157,11 @@ public abstract class rqj
     //   469: aload_1
     //   470: getfield 2900	pdm:jdField_d_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   473: ldc_w 2796
-    //   476: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   476: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   479: invokevirtual 2720	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   482: aload_0
     //   483: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   486: invokestatic 1254	bdee:h	(Landroid/content/Context;)Z
+    //   486: invokestatic 1254	bdin:h	(Landroid/content/Context;)Z
     //   489: ifeq +199 -> 688
     //   492: aload_1
     //   493: getfield 2901	pdm:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
@@ -4213,7 +4213,7 @@ public abstract class rqj
     //   596: invokestatic 2908	rdm:d	(I)Ljava/lang/String;
     //   599: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   602: ldc_w 2909
-    //   605: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   605: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   608: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   611: invokevirtual 865	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   614: invokevirtual 2720	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
@@ -4240,7 +4240,7 @@ public abstract class rqj
     //   664: invokestatic 2804	rdm:b	(J)Ljava/lang/String;
     //   667: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   670: ldc_w 2805
-    //   673: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   673: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   676: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   679: invokevirtual 865	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   682: invokevirtual 2720	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
@@ -4268,19 +4268,19 @@ public abstract class rqj
     //   731: aload_0
     //   732: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   735: invokevirtual 1568	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   738: invokestatic 610	aekt:a	(FLandroid/content/res/Resources;)I
+    //   738: invokestatic 610	aepi:a	(FLandroid/content/res/Resources;)I
     //   741: invokevirtual 2816	android/widget/TextView:setCompoundDrawablePadding	(I)V
     //   744: aload_1
     //   745: getfield 2900	pdm:jdField_d_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   748: iconst_0
     //   749: invokevirtual 1611	android/widget/TextView:setVisibility	(I)V
-    //   752: invokestatic 2819	bdvr:a	()I
+    //   752: invokestatic 2819	beaa:a	()I
     //   755: iconst_1
     //   756: if_icmpne +34 -> 790
     //   759: aload_1
     //   760: getfield 2900	pdm:jdField_d_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   763: ldc_w 2820
-    //   766: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   766: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   769: invokevirtual 2720	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   772: aload_1
     //   773: getfield 2910	pdm:jdField_e_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
@@ -4291,7 +4291,7 @@ public abstract class rqj
     //   785: iconst_0
     //   786: invokevirtual 2793	android/view/View:setBackgroundColor	(I)V
     //   789: return
-    //   790: invokestatic 2824	bjxj:v	()Z
+    //   790: invokestatic 2824	bkbq:v	()Z
     //   793: ifeq +280 -> 1073
     //   796: aload_0
     //   797: getfield 2825	rqj:jdField_h_of_type_Boolean	Z
@@ -4299,11 +4299,11 @@ public abstract class rqj
     //   803: aload_1
     //   804: getfield 2885	pdm:jdField_a_of_type_Int	I
     //   807: ifne +266 -> 1073
-    //   810: invokestatic 2827	bjxj:d	()Ljava/lang/String;
+    //   810: invokestatic 2827	bkbq:d	()Ljava/lang/String;
     //   813: astore 5
-    //   815: invokestatic 2829	bjxj:e	()Ljava/lang/String;
+    //   815: invokestatic 2829	bkbq:e	()Ljava/lang/String;
     //   818: astore 6
-    //   820: invokestatic 2831	bjxj:f	()Ljava/lang/String;
+    //   820: invokestatic 2831	bkbq:f	()Ljava/lang/String;
     //   823: astore 7
     //   825: aload 5
     //   827: invokestatic 449	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -4342,7 +4342,7 @@ public abstract class rqj
     //   898: aload_0
     //   899: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   902: invokevirtual 1568	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   905: invokestatic 610	aekt:a	(FLandroid/content/res/Resources;)I
+    //   905: invokestatic 610	aepi:a	(FLandroid/content/res/Resources;)I
     //   908: invokevirtual 2816	android/widget/TextView:setCompoundDrawablePadding	(I)V
     //   911: aload_0
     //   912: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
@@ -4357,12 +4357,12 @@ public abstract class rqj
     //   933: aload_0
     //   934: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   937: invokevirtual 1568	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   940: invokestatic 610	aekt:a	(FLandroid/content/res/Resources;)I
+    //   940: invokestatic 610	aepi:a	(FLandroid/content/res/Resources;)I
     //   943: ldc_w 2843
     //   946: aload_0
     //   947: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   950: invokevirtual 1568	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   953: invokestatic 610	aekt:a	(FLandroid/content/res/Resources;)I
+    //   953: invokestatic 610	aepi:a	(FLandroid/content/res/Resources;)I
     //   956: invokevirtual 2848	android/graphics/drawable/Drawable:setBounds	(IIII)V
     //   959: aload_1
     //   960: getfield 2910	pdm:jdField_e_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
@@ -4487,7 +4487,7 @@ public abstract class rqj
     //   49: aload_0
     //   50: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   53: ldc_w 2923
-    //   56: invokestatic 1224	bcwh:a	(Landroid/content/Context;F)I
+    //   56: invokestatic 1224	bdaq:a	(Landroid/content/Context;F)I
     //   59: putfield 1685	android/view/ViewGroup$LayoutParams:height	I
     //   62: aload_1
     //   63: getfield 2922	pdo:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView	Lcom/tencent/biz/pubaccount/readinjoy/view/KandianUrlImageView;
@@ -4541,7 +4541,7 @@ public abstract class rqj
     //   177: invokestatic 666	orr:a	(JZ)Ljava/lang/String;
     //   180: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   183: ldc_w 2942
-    //   186: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   186: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   189: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   192: invokevirtual 865	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   195: astore 4
@@ -4550,10 +4550,10 @@ public abstract class rqj
     //   201: invokespecial 855	java/lang/StringBuilder:<init>	()V
     //   204: aload 5
     //   206: getfield 2943	com/tencent/biz/pubaccount/readinjoy/struct/VideoColumnInfo:jdField_b_of_type_Int	I
-    //   209: invokestatic 2945	bjxj:b	(I)Ljava/lang/String;
+    //   209: invokestatic 2945	bkbq:b	(I)Ljava/lang/String;
     //   212: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   215: ldc_w 2946
-    //   218: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   218: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   221: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   224: invokevirtual 865	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   227: astore 6
@@ -4564,7 +4564,7 @@ public abstract class rqj
     //   238: getfield 2947	com/tencent/biz/pubaccount/readinjoy/struct/VideoColumnInfo:jdField_c_of_type_Int	I
     //   241: invokevirtual 1242	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   244: ldc_w 2948
-    //   247: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   247: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   250: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   253: invokevirtual 865	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   256: astore 7
@@ -4604,7 +4604,7 @@ public abstract class rqj
     //   339: aload_0
     //   340: invokevirtual 1300	rqj:a	()Landroid/app/Activity;
     //   343: fconst_2
-    //   344: invokestatic 1224	bcwh:a	(Landroid/content/Context;F)I
+    //   344: invokestatic 1224	bdaq:a	(Landroid/content/Context;F)I
     //   347: invokevirtual 2963	com/tencent/biz/pubaccount/readinjoy/view/KanDianUrlRoundCornerImageView:setCorner	(I)V
     //   350: aload_0
     //   351: aload_1
@@ -4757,11 +4757,11 @@ public abstract class rqj
     //   668: aload_1
     //   669: getfield 2985	pdo:g	Landroid/widget/TextView;
     //   672: ldc_w 2986
-    //   675: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   675: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   678: invokevirtual 2720	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   681: aload_0
     //   682: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   685: invokestatic 1254	bdee:h	(Landroid/content/Context;)Z
+    //   685: invokestatic 1254	bdin:h	(Landroid/content/Context;)Z
     //   688: ifeq +278 -> 966
     //   691: aload_1
     //   692: getfield 2987	pdo:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
@@ -4788,7 +4788,7 @@ public abstract class rqj
     //   736: aload_0
     //   737: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   740: ldc_w 2990
-    //   743: invokestatic 1224	bcwh:a	(Landroid/content/Context;F)I
+    //   743: invokestatic 1224	bdaq:a	(Landroid/content/Context;F)I
     //   746: putfield 1685	android/view/ViewGroup$LayoutParams:height	I
     //   749: aload_1
     //   750: getfield 2922	pdo:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView	Lcom/tencent/biz/pubaccount/readinjoy/view/KandianUrlImageView;
@@ -4857,7 +4857,7 @@ public abstract class rqj
     //   903: invokestatic 3002	rdm:c	(I)Ljava/lang/String;
     //   906: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   909: ldc_w 3003
-    //   912: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   912: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   915: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   918: invokevirtual 865	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   921: invokevirtual 2720	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
@@ -4872,7 +4872,7 @@ public abstract class rqj
     //   942: invokestatic 2804	rdm:b	(J)Ljava/lang/String;
     //   945: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   948: ldc_w 3004
-    //   951: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   951: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   954: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   957: invokevirtual 865	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   960: invokevirtual 2720	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
@@ -4900,19 +4900,19 @@ public abstract class rqj
     //   1009: aload_0
     //   1010: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   1013: invokevirtual 1568	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   1016: invokestatic 610	aekt:a	(FLandroid/content/res/Resources;)I
+    //   1016: invokestatic 610	aepi:a	(FLandroid/content/res/Resources;)I
     //   1019: invokevirtual 2816	android/widget/TextView:setCompoundDrawablePadding	(I)V
     //   1022: aload_1
     //   1023: getfield 2985	pdo:g	Landroid/widget/TextView;
     //   1026: iconst_0
     //   1027: invokevirtual 1611	android/widget/TextView:setVisibility	(I)V
-    //   1030: invokestatic 2819	bdvr:a	()I
+    //   1030: invokestatic 2819	beaa:a	()I
     //   1033: iconst_1
     //   1034: if_icmpne +42 -> 1076
     //   1037: aload_1
     //   1038: getfield 2985	pdo:g	Landroid/widget/TextView;
     //   1041: ldc_w 3005
-    //   1044: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   1044: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   1047: invokevirtual 2720	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   1050: aload_1
     //   1051: getfield 3006	pdo:h	Landroid/widget/TextView;
@@ -4927,7 +4927,7 @@ public abstract class rqj
     //   1071: iconst_0
     //   1072: invokevirtual 2793	android/view/View:setBackgroundColor	(I)V
     //   1075: return
-    //   1076: invokestatic 2824	bjxj:v	()Z
+    //   1076: invokestatic 2824	bkbq:v	()Z
     //   1079: ifeq +296 -> 1375
     //   1082: aload_0
     //   1083: getfield 2825	rqj:jdField_h_of_type_Boolean	Z
@@ -4935,11 +4935,11 @@ public abstract class rqj
     //   1089: aload_1
     //   1090: getfield 2977	pdo:jdField_a_of_type_Int	I
     //   1093: ifne +282 -> 1375
-    //   1096: invokestatic 2827	bjxj:d	()Ljava/lang/String;
+    //   1096: invokestatic 2827	bkbq:d	()Ljava/lang/String;
     //   1099: astore 5
-    //   1101: invokestatic 2829	bjxj:e	()Ljava/lang/String;
+    //   1101: invokestatic 2829	bkbq:e	()Ljava/lang/String;
     //   1104: astore 6
-    //   1106: invokestatic 2831	bjxj:f	()Ljava/lang/String;
+    //   1106: invokestatic 2831	bkbq:f	()Ljava/lang/String;
     //   1109: astore 7
     //   1111: aload 5
     //   1113: invokestatic 449	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -4978,7 +4978,7 @@ public abstract class rqj
     //   1184: aload_0
     //   1185: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   1188: invokevirtual 1568	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   1191: invokestatic 610	aekt:a	(FLandroid/content/res/Resources;)I
+    //   1191: invokestatic 610	aepi:a	(FLandroid/content/res/Resources;)I
     //   1194: invokevirtual 2816	android/widget/TextView:setCompoundDrawablePadding	(I)V
     //   1197: aload_0
     //   1198: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
@@ -4993,12 +4993,12 @@ public abstract class rqj
     //   1219: aload_0
     //   1220: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   1223: invokevirtual 1568	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   1226: invokestatic 610	aekt:a	(FLandroid/content/res/Resources;)I
+    //   1226: invokestatic 610	aepi:a	(FLandroid/content/res/Resources;)I
     //   1229: ldc_w 2843
     //   1232: aload_0
     //   1233: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   1236: invokevirtual 1568	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   1239: invokestatic 610	aekt:a	(FLandroid/content/res/Resources;)I
+    //   1239: invokestatic 610	aepi:a	(FLandroid/content/res/Resources;)I
     //   1242: invokevirtual 2848	android/graphics/drawable/Drawable:setBounds	(IIII)V
     //   1245: aload_1
     //   1246: getfield 3006	pdo:h	Landroid/widget/TextView;
@@ -5112,7 +5112,7 @@ public abstract class rqj
     parampdp.jdField_f_of_type_AndroidViewView.setOnClickListener(null);
     parampdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
     parampdp.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = ((BaseArticleInfo)paramBaseArticleInfo.mSubArtilceList.get(0));
-    parampdp.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167192));
+    parampdp.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167194));
     a(parampdp.jdField_a_of_type_AndroidViewViewGroup, parampdp.jdField_b_of_type_AndroidViewViewGroup);
     paramBaseArticleInfo = parampdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
     a(paramBaseArticleInfo, parampdp.jdField_c_of_type_AndroidWidgetTextView, parampdp.jdField_b_of_type_AndroidViewView, parampdp.jdField_a_of_type_AndroidWidgetTextView, parampdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
@@ -5360,7 +5360,7 @@ public abstract class rqj
     //   315: aload 6
     //   317: ldc_w 3146
     //   320: invokevirtual 3149	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   323: invokestatic 3154	bdem:a	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   323: invokestatic 3154	bdiv:a	(Landroid/content/Context;Ljava/lang/String;)Z
     //   326: ifeq +592 -> 918
     //   329: aload_1
     //   330: getfield 1824	pdq:i	Landroid/widget/TextView;
@@ -5490,7 +5490,7 @@ public abstract class rqj
     //   606: aload_0
     //   607: invokevirtual 1300	rqj:a	()Landroid/app/Activity;
     //   610: ldc_w 1567
-    //   613: invokestatic 1224	bcwh:a	(Landroid/content/Context;F)I
+    //   613: invokestatic 1224	bdaq:a	(Landroid/content/Context;F)I
     //   616: invokevirtual 2816	android/widget/TextView:setCompoundDrawablePadding	(I)V
     //   619: aload_0
     //   620: invokevirtual 1300	rqj:a	()Landroid/app/Activity;
@@ -5501,7 +5501,7 @@ public abstract class rqj
     //   634: aload_0
     //   635: invokevirtual 1300	rqj:a	()Landroid/app/Activity;
     //   638: ldc_w 3184
-    //   641: invokestatic 1224	bcwh:a	(Landroid/content/Context;F)I
+    //   641: invokestatic 1224	bdaq:a	(Landroid/content/Context;F)I
     //   644: istore_3
     //   645: aload 4
     //   647: iconst_0
@@ -5529,7 +5529,7 @@ public abstract class rqj
     //   686: aload_2
     //   687: invokevirtual 1618	com/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo:getCommentCount	()I
     //   690: ldc_w 3187
-    //   693: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   693: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   696: invokestatic 3190	rdm:a	(Landroid/widget/TextView;ILjava/lang/String;)V
     //   699: aload_1
     //   700: getfield 3182	pdq:jdField_c_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
@@ -5555,11 +5555,11 @@ public abstract class rqj
     //   740: aload_1
     //   741: getfield 3193	pdq:jdField_f_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   744: ldc_w 3194
-    //   747: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   747: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   750: invokevirtual 2720	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   753: aload_0
     //   754: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   757: invokestatic 1254	bdee:h	(Landroid/content/Context;)Z
+    //   757: invokestatic 1254	bdin:h	(Landroid/content/Context;)Z
     //   760: ifeq +447 -> 1207
     //   763: aload_1
     //   764: getfield 3196	pdq:jdField_d_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
@@ -5596,7 +5596,7 @@ public abstract class rqj
     //   829: invokestatic 3002	rdm:c	(I)Ljava/lang/String;
     //   832: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   835: ldc_w 3200
-    //   838: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   838: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   841: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   844: invokevirtual 865	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   847: invokevirtual 2720	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
@@ -5722,7 +5722,7 @@ public abstract class rqj
     //   1127: aload_0
     //   1128: invokevirtual 1300	rqj:a	()Landroid/app/Activity;
     //   1131: fconst_0
-    //   1132: invokestatic 1224	bcwh:a	(Landroid/content/Context;F)I
+    //   1132: invokestatic 1224	bdaq:a	(Landroid/content/Context;F)I
     //   1135: invokevirtual 2816	android/widget/TextView:setCompoundDrawablePadding	(I)V
     //   1138: aload_0
     //   1139: invokevirtual 1300	rqj:a	()Landroid/app/Activity;
@@ -5748,7 +5748,7 @@ public abstract class rqj
     //   1183: invokestatic 2804	rdm:b	(J)Ljava/lang/String;
     //   1186: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1189: ldc_w 3219
-    //   1192: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   1192: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   1195: invokevirtual 859	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1198: invokevirtual 865	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1201: invokevirtual 2720	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
@@ -5776,19 +5776,19 @@ public abstract class rqj
     //   1250: aload_0
     //   1251: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   1254: invokevirtual 1568	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   1257: invokestatic 610	aekt:a	(FLandroid/content/res/Resources;)I
+    //   1257: invokestatic 610	aepi:a	(FLandroid/content/res/Resources;)I
     //   1260: invokevirtual 2816	android/widget/TextView:setCompoundDrawablePadding	(I)V
     //   1263: aload_1
     //   1264: getfield 3193	pdq:jdField_f_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   1267: iconst_0
     //   1268: invokevirtual 1611	android/widget/TextView:setVisibility	(I)V
-    //   1271: invokestatic 2819	bdvr:a	()I
+    //   1271: invokestatic 2819	beaa:a	()I
     //   1274: iconst_1
     //   1275: if_icmpne +44 -> 1319
     //   1278: aload_1
     //   1279: getfield 3193	pdq:jdField_f_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   1282: ldc_w 3220
-    //   1285: invokestatic 1623	alpo:a	(I)Ljava/lang/String;
+    //   1285: invokestatic 1623	alud:a	(I)Ljava/lang/String;
     //   1288: invokevirtual 2720	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   1291: aload_1
     //   1292: getfield 3221	pdq:g	Landroid/widget/TextView;
@@ -5803,7 +5803,7 @@ public abstract class rqj
     //   1312: iconst_0
     //   1313: invokevirtual 2793	android/view/View:setBackgroundColor	(I)V
     //   1316: goto -520 -> 796
-    //   1319: invokestatic 2824	bjxj:v	()Z
+    //   1319: invokestatic 2824	bkbq:v	()Z
     //   1322: ifeq +300 -> 1622
     //   1325: aload_0
     //   1326: getfield 2825	rqj:jdField_h_of_type_Boolean	Z
@@ -5811,11 +5811,11 @@ public abstract class rqj
     //   1332: aload_1
     //   1333: getfield 1311	pdq:jdField_a_of_type_Int	I
     //   1336: ifne +286 -> 1622
-    //   1339: invokestatic 2827	bjxj:d	()Ljava/lang/String;
+    //   1339: invokestatic 2827	bkbq:d	()Ljava/lang/String;
     //   1342: astore 5
-    //   1344: invokestatic 2829	bjxj:e	()Ljava/lang/String;
+    //   1344: invokestatic 2829	bkbq:e	()Ljava/lang/String;
     //   1347: astore 6
-    //   1349: invokestatic 2831	bjxj:f	()Ljava/lang/String;
+    //   1349: invokestatic 2831	bkbq:f	()Ljava/lang/String;
     //   1352: astore 7
     //   1354: aload 5
     //   1356: invokestatic 449	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -5854,7 +5854,7 @@ public abstract class rqj
     //   1427: aload_0
     //   1428: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   1431: invokevirtual 1568	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   1434: invokestatic 610	aekt:a	(FLandroid/content/res/Resources;)I
+    //   1434: invokestatic 610	aepi:a	(FLandroid/content/res/Resources;)I
     //   1437: invokevirtual 2816	android/widget/TextView:setCompoundDrawablePadding	(I)V
     //   1440: aload_0
     //   1441: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
@@ -5869,12 +5869,12 @@ public abstract class rqj
     //   1462: aload_0
     //   1463: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   1466: invokevirtual 1568	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   1469: invokestatic 610	aekt:a	(FLandroid/content/res/Resources;)I
+    //   1469: invokestatic 610	aepi:a	(FLandroid/content/res/Resources;)I
     //   1472: ldc_w 2843
     //   1475: aload_0
     //   1476: getfield 247	rqj:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   1479: invokevirtual 1568	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   1482: invokestatic 610	aekt:a	(FLandroid/content/res/Resources;)I
+    //   1482: invokestatic 610	aepi:a	(FLandroid/content/res/Resources;)I
     //   1485: invokevirtual 2848	android/graphics/drawable/Drawable:setBounds	(IIII)V
     //   1488: aload_1
     //   1489: getfield 3221	pdq:g	Landroid/widget/TextView;
@@ -5986,12 +5986,12 @@ public abstract class rqj
     parampdv.jdField_a_of_type_AndroidWidgetTextView.setText(localBaseArticleInfo.mTitle);
     parampdv.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
     parampdv.jdField_b_of_type_AndroidWidgetTextView.setText(rdm.c(localBaseArticleInfo.mVideoPlayCount));
-    paramBaseArticleInfo = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842758);
-    paramInt = bdkf.b(8.0F);
+    paramBaseArticleInfo = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842771);
+    paramInt = bdoo.b(8.0F);
     paramBaseArticleInfo.setBounds(0, 0, paramInt, paramInt);
     parampdv.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(paramBaseArticleInfo, null, null, null);
-    parampdv.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(bdkf.b(3.0F));
-    rdm.a(parampdv.jdField_c_of_type_AndroidWidgetTextView, localBaseArticleInfo.getCommentCount(), alpo.a(2131713116), "0");
+    parampdv.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(bdoo.b(3.0F));
+    rdm.a(parampdv.jdField_c_of_type_AndroidWidgetTextView, localBaseArticleInfo.getCommentCount(), alud.a(2131713128), "0");
     URL localURL = localBaseArticleInfo.getVideoCoverUrlWithSmartCut(true);
     a(parampdv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localURL, false);
     parampdv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setTag(parampdv);
@@ -6003,8 +6003,8 @@ public abstract class rqj
     parampdv.jdField_e_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
     parampdv.jdField_f_of_type_AndroidWidgetTextView.setText(rdm.c(localBaseArticleInfo.mVideoPlayCount));
     parampdv.jdField_f_of_type_AndroidWidgetTextView.setCompoundDrawables(paramBaseArticleInfo, null, null, null);
-    parampdv.jdField_f_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(bdkf.b(3.0F));
-    rdm.a(parampdv.g, localBaseArticleInfo.getCommentCount(), alpo.a(2131713105), "0");
+    parampdv.jdField_f_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(bdoo.b(3.0F));
+    rdm.a(parampdv.g, localBaseArticleInfo.getCommentCount(), alud.a(2131713117), "0");
     paramBaseArticleInfo = localBaseArticleInfo.getVideoCoverUrlWithSmartCut(true);
     a(parampdv.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramBaseArticleInfo, false);
     parampdv.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setTag(parampdv);
@@ -6030,7 +6030,7 @@ public abstract class rqj
         b();
         this.jdField_a_of_type_Rjg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr);
         this.jdField_a_of_type_Rjg.a(this.jdField_a_of_type_Qzy);
-        if (bjxj.a(this.jdField_d_of_type_Int)) {
+        if (bkbq.a(this.jdField_d_of_type_Int)) {
           this.jdField_a_of_type_Rjg.a(0);
         }
       }
@@ -6046,11 +6046,11 @@ public abstract class rqj
   
   public void a(rjk paramrjk)
   {
-    if ((this.jdField_a_of_type_Bhtq != null) && (this.jdField_a_of_type_Bhtq.isShowing())) {
-      this.jdField_a_of_type_Bhtq.dismiss();
+    if ((this.jdField_a_of_type_Bhxx != null) && (this.jdField_a_of_type_Bhxx.isShowing())) {
+      this.jdField_a_of_type_Bhxx.dismiss();
     }
-    if ((this.jdField_a_of_type_Bhtw != null) && (this.jdField_a_of_type_Bhtw.isShowing())) {
-      this.jdField_a_of_type_Bhtw.dismiss();
+    if ((this.jdField_a_of_type_Bhyd != null) && (this.jdField_a_of_type_Bhyd.isShowing())) {
+      this.jdField_a_of_type_Bhyd.dismiss();
     }
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ReadInJoyBaseAdapter.28(this, paramrjk), 1000L);
   }
@@ -6188,7 +6188,7 @@ public abstract class rqj
             this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.e();
             this.jdField_k_of_type_Boolean = true;
           }
-          if (bjxj.j()) {
+          if (bkbq.j()) {
             nrt.a(null, "", "0X8008B68", "0X8008B68", 0, 0, "", "", "", ntd.a(null, null, paramBaseArticleInfo.mVideoVid, paramBaseArticleInfo.innerUniqueID, a(), null), false);
           }
           return;
@@ -6461,7 +6461,7 @@ public abstract class rqj
         nxu.b(this.jdField_a_of_type_AndroidAppActivity, paramArticleInfo1.videoJumpChannelID, paramArticleInfo1.videoJumpChannelName, paramArticleInfo1.videoJumpChannelType, 5, paramArticleInfo2);
       }
     }
-    if (bjxj.d(BaseApplicationImpl.getApplication().getRuntime()) == 1)
+    if (bkbq.d(BaseApplicationImpl.getApplication().getRuntime()) == 1)
     {
       nxu.a(this.jdField_a_of_type_AndroidAppActivity, paramArticleInfo2, paramArticleInfo1, true);
       b(localrjk, paramArticleInfo1);
@@ -6602,7 +6602,7 @@ public abstract class rqj
       do
       {
         return;
-      } while ((!bdee.g(this.jdField_a_of_type_AndroidAppActivity)) || (this.jdField_a_of_type_Rjg == null) || (paramAbsListView == null));
+      } while ((!bdin.g(this.jdField_a_of_type_AndroidAppActivity)) || (this.jdField_a_of_type_Rjg == null) || (paramAbsListView == null));
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, paramInt);
     } while (!QLog.isColorLevel());
@@ -6633,7 +6633,7 @@ public abstract class rqj
       i2 = 0;
       nrt.a(null, "CliOper", "", "", "0X80066FA", "0X80066FA", 0, 0, "", Long.toString(paramBaseArticleInfo.mArticleID), Integer.toString(paramBaseArticleInfo.mStrategyId), ors.b(paramBaseArticleInfo.mAlgorithmID, ors.a(paramBaseArticleInfo), this.jdField_c_of_type_Int, i1), false);
       nrt.a("0X80066FA", "", "", Long.toString(paramBaseArticleInfo.mArticleID), Integer.toString(paramBaseArticleInfo.mStrategyId), ors.b(paramBaseArticleInfo.mAlgorithmID, ors.a(paramBaseArticleInfo), this.jdField_c_of_type_Int, i1));
-      localron = new ron(ors.a(paramBaseArticleInfo.mAlgorithmID, ors.a(paramBaseArticleInfo), i3, i1, i2, bdee.h(this.jdField_a_of_type_AndroidAppActivity), str1, paramBaseArticleInfo.mStrCircleId, paramBaseArticleInfo.innerUniqueID, ors.f(paramBaseArticleInfo), 409409, (ArticleInfo)paramBaseArticleInfo));
+      localron = new ron(ors.a(paramBaseArticleInfo.mAlgorithmID, ors.a(paramBaseArticleInfo), i3, i1, i2, bdin.h(this.jdField_a_of_type_AndroidAppActivity), str1, paramBaseArticleInfo.mStrCircleId, paramBaseArticleInfo.innerUniqueID, ors.f(paramBaseArticleInfo), 409409, (ArticleInfo)paramBaseArticleInfo));
       localron.a(this.jdField_a_of_type_Rkb, paramBaseArticleInfo.mArticleID).a(this.jdField_a_of_type_Rkb).g(ntd.jdField_a_of_type_Int).h(409409).j(paramBaseArticleInfo.mVideoAdsJumpType).k(paramBaseArticleInfo.mVideoAdsSource).a(Boolean.valueOf(ors.w(paramBaseArticleInfo))).a(paramBaseArticleInfo.videoReportInfo);
       if (i3 != 0) {
         break label535;
@@ -6659,10 +6659,10 @@ public abstract class rqj
       if (this.jdField_c_of_type_Int != 40677) {
         break label586;
       }
-      localron.b(paramBaseArticleInfo.mVideoAdsJumpType).a(xoo.a(this.jdField_a_of_type_AndroidAppActivity));
+      localron.b(paramBaseArticleInfo.mVideoAdsJumpType).a(xsx.a(this.jdField_a_of_type_AndroidAppActivity));
       localron.i(2);
       nrt.a(null, "CliOper", "", paramBaseArticleInfo.mSubscribeID, "0X8009293", "0X8009293", 0, 0, Long.toString(paramBaseArticleInfo.mFeedId), Long.toString(paramBaseArticleInfo.mArticleID), Integer.toString(paramBaseArticleInfo.mStrategyId), localron.a().a(), false);
-      nrt.a("0X8009293", paramBaseArticleInfo.mSubscribeID, Long.toString(paramBaseArticleInfo.mFeedId), Long.toString(paramBaseArticleInfo.mArticleID), Integer.toString(paramBaseArticleInfo.mStrategyId), ors.a(paramBaseArticleInfo.mAlgorithmID, ors.a(paramBaseArticleInfo), i3, i1, i2, bdee.h(this.jdField_a_of_type_AndroidAppActivity), str1, paramBaseArticleInfo.mStrCircleId, paramBaseArticleInfo.innerUniqueID, ors.f(paramBaseArticleInfo), 409409, (ArticleInfo)paramBaseArticleInfo));
+      nrt.a("0X8009293", paramBaseArticleInfo.mSubscribeID, Long.toString(paramBaseArticleInfo.mFeedId), Long.toString(paramBaseArticleInfo.mArticleID), Integer.toString(paramBaseArticleInfo.mStrategyId), ors.a(paramBaseArticleInfo.mAlgorithmID, ors.a(paramBaseArticleInfo), i3, i1, i2, bdin.h(this.jdField_a_of_type_AndroidAppActivity), str1, paramBaseArticleInfo.mStrCircleId, paramBaseArticleInfo.innerUniqueID, ors.f(paramBaseArticleInfo), 409409, (ArticleInfo)paramBaseArticleInfo));
       return;
       i1 = 0;
       break;
@@ -6683,7 +6683,7 @@ public abstract class rqj
     }
     String str2 = szp.b(this.jdField_c_of_type_Int);
     nrt.a(null, "CliOper", "", paramBaseArticleInfo.mSubscribeID, str2, str2, 0, 0, Long.toString(paramBaseArticleInfo.mFeedId), Long.toString(paramBaseArticleInfo.mArticleID), Integer.toString(paramBaseArticleInfo.mStrategyId), a(localron.a().a(), paramrjk.jdField_a_of_type_JavaUtilMap), false);
-    nrt.a(str2, paramBaseArticleInfo.mSubscribeID, Long.toString(paramBaseArticleInfo.mFeedId), Long.toString(paramBaseArticleInfo.mArticleID), Integer.toString(paramBaseArticleInfo.mStrategyId), ors.a(paramBaseArticleInfo.mAlgorithmID, ors.a(paramBaseArticleInfo), i3, i1, i2, bdee.h(this.jdField_a_of_type_AndroidAppActivity), str1, paramBaseArticleInfo.mStrCircleId, paramBaseArticleInfo.innerUniqueID, ors.f(paramBaseArticleInfo), 409409, (ArticleInfo)paramBaseArticleInfo));
+    nrt.a(str2, paramBaseArticleInfo.mSubscribeID, Long.toString(paramBaseArticleInfo.mFeedId), Long.toString(paramBaseArticleInfo.mArticleID), Integer.toString(paramBaseArticleInfo.mStrategyId), ors.a(paramBaseArticleInfo.mAlgorithmID, ors.a(paramBaseArticleInfo), i3, i1, i2, bdin.h(this.jdField_a_of_type_AndroidAppActivity), str1, paramBaseArticleInfo.mStrCircleId, paramBaseArticleInfo.innerUniqueID, ors.f(paramBaseArticleInfo), 409409, (ArticleInfo)paramBaseArticleInfo));
   }
   
   public void b(rpx paramrpx)
@@ -6781,7 +6781,7 @@ public abstract class rqj
           if ((!ors.a(((BaseArticleInfo)localObject).mArticleContentUrl, ((BaseArticleInfo)localObject).mChannelID, (ArticleInfo)localObject)) && (!ors.a((BaseArticleInfo)localObject)) && (!a(i3, ((BaseArticleInfo)localObject).mArticleID)))
           {
             localObject = ((BaseArticleInfo)localObject).mArticleContentUrl;
-            if (zak.a((String)localObject)) {
+            if (zez.a((String)localObject)) {
               PreloadManager.a().a((String)localObject);
             }
           }
@@ -6821,7 +6821,7 @@ public abstract class rqj
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    bhxr.a("ReadInJoyBaseAdapter.getView");
+    biby.a("ReadInJoyBaseAdapter.getView");
     System.currentTimeMillis();
     a(b(paramInt), paramInt);
     BaseArticleInfo localBaseArticleInfo = b(paramInt);
@@ -6836,7 +6836,7 @@ public abstract class rqj
       a(localBaseArticleInfo, localpgq, System.currentTimeMillis(), paramInt);
       paramViewGroup = super.a(paramViewGroup, paramInt);
       TextHook.updateFont(paramView);
-      bhxr.a();
+      biby.a();
       return paramViewGroup;
     }
     if ((a() instanceof ReadInJoyChannelActivity)) {
@@ -6877,7 +6877,7 @@ public abstract class rqj
   
   public void h()
   {
-    if ((!bjxj.A(a())) || (!bjxj.B(a()))) {
+    if ((!bkbq.A(a())) || (!bkbq.B(a()))) {
       return;
     }
     int i1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getFirstVisiblePosition();
@@ -6929,7 +6929,7 @@ public abstract class rqj
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.video_" + this.jdField_c_of_type_Int, 2, "ReadInJoyBaseAdapter doOnResume()");
       }
-      if (bjxj.k()) {
+      if (bkbq.k()) {
         r();
       }
       this.p = true;
@@ -6966,13 +6966,13 @@ public abstract class rqj
       if ((pid.a() == 2) && (pid.b(a(), (String)localObject) > 0))
       {
         localObject = (SensorManager)a().getSystemService("sensor");
-        alxv localalxv = this.jdField_a_of_type_Alxv;
+        amck localamck = this.jdField_a_of_type_Amck;
         Sensor localSensor = ((SensorManager)localObject).getDefaultSensor(1);
         i1 = i2;
-        if (aznu.a().a()) {
+        if (azsd.a().a()) {
           i1 = 2;
         }
-        ((SensorManager)localObject).registerListener(localalxv, localSensor, i1);
+        ((SensorManager)localObject).registerListener(localamck, localSensor, i1);
       }
     } while (!ProteusParserWithHotReload.getInstance().isSupportHotReload());
     ProteusParserWithHotReload.getInstance().addHotReloadChangedObserver(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewParseProteusParserWithHotReload$IHotReloadChangedObserver);
@@ -6992,13 +6992,13 @@ public abstract class rqj
         QLog.d("Q.readinjoy.video_" + this.jdField_c_of_type_Int, 2, "ReadInJoyBaseAdapter doOnPause()");
       }
       this.jdField_a_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_Bhtq != null) && (this.jdField_a_of_type_Bhtq.isShowing())) {
-        this.jdField_a_of_type_Bhtq.dismiss();
+      if ((this.jdField_a_of_type_Bhxx != null) && (this.jdField_a_of_type_Bhxx.isShowing())) {
+        this.jdField_a_of_type_Bhxx.dismiss();
       }
-      this.jdField_l_of_type_Int = bdee.b(this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_l_of_type_Int = bdin.b(this.jdField_a_of_type_AndroidAppActivity);
       this.jdField_a_of_type_Svj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView, 5);
       w();
-      if ((!bjxj.p()) && (opy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "default_feeds")))
+      if ((!bkbq.p()) && (opy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "default_feeds")))
       {
         QLog.d("ReadInJoyBaseAdapter", 2, "hasRefresh notifyDataSetChanged");
         notifyDataSetChanged();
@@ -7027,7 +7027,7 @@ public abstract class rqj
       if (this.jdField_a_of_type_Rpx != null) {
         this.jdField_a_of_type_Rpx.b();
       }
-      ((SensorManager)a().getSystemService("sensor")).unregisterListener(this.jdField_a_of_type_Alxv);
+      ((SensorManager)a().getSystemService("sensor")).unregisterListener(this.jdField_a_of_type_Amck);
     } while (!ProteusParserWithHotReload.getInstance().isSupportHotReload());
     ProteusParserWithHotReload.getInstance().removeHotReloadChangedObserver(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewParseProteusParserWithHotReload$IHotReloadChangedObserver);
   }
@@ -7121,7 +7121,7 @@ public abstract class rqj
             if ((rdm.c()) && (!AdvertisementInfo.isAdvertisementInfo((BaseArticleInfo)localObject2))) {}
             for (int i1 = 1;; i1 = 0)
             {
-              if (((this.jdField_a_of_type_Qzy.a()) || (bjxj.a(a()) <= 0)) && (i1 == 0)) {
+              if (((this.jdField_a_of_type_Qzy.a()) || (bkbq.a(a()) <= 0)) && (i1 == 0)) {
                 break label541;
               }
               if (localObject2 == null) {
@@ -7228,13 +7228,13 @@ public abstract class rqj
                             if (!AdvertisementInfo.isAdvertisementInfo((BaseArticleInfo)localObject1)) {
                               break label1394;
                             }
-                            if ((this.jdField_a_of_type_Bhtq != null) && (this.jdField_a_of_type_Bhtq.isShowing())) {
-                              this.jdField_a_of_type_Bhtq.dismiss();
+                            if ((this.jdField_a_of_type_Bhxx != null) && (this.jdField_a_of_type_Bhxx.isShowing())) {
+                              this.jdField_a_of_type_Bhxx.dismiss();
                             }
-                            this.jdField_a_of_type_Bhtw.a(i1, this.jdField_c_of_type_Int, ors.a((BaseArticleInfo)localObject1), ((AdvertisementInfo)localObject1).mAdDislikeInfos);
-                            this.jdField_a_of_type_Bhtw.a(paramView, (bhtu)localObject2);
-                            this.jdField_a_of_type_Bhtw.a(new rqq(this, (BaseArticleInfo)localObject1));
-                            this.jdField_a_of_type_Bhtw.setOnDismissListener(new rqr(this));
+                            this.jdField_a_of_type_Bhyd.a(i1, this.jdField_c_of_type_Int, ors.a((BaseArticleInfo)localObject1), ((AdvertisementInfo)localObject1).mAdDislikeInfos);
+                            this.jdField_a_of_type_Bhyd.a(paramView, (bhyb)localObject2);
+                            this.jdField_a_of_type_Bhyd.a(new rqq(this, (BaseArticleInfo)localObject1));
+                            this.jdField_a_of_type_Bhyd.setOnDismissListener(new rqr(this));
                             if ((this.jdField_a_of_type_Rjg == null) || (!this.jdField_a_of_type_Rjg.b())) {
                               break;
                             }
@@ -7244,7 +7244,7 @@ public abstract class rqj
                             if ((this.jdField_a_of_type_AndroidAppActivity instanceof PluginBaseActivity))
                             {
                               localJSONObject.put("folder_status", 1);
-                              azmj.b(null, "CliOper", "", "", "0X800705F", "0X800705F", 0, 0, "", "", "", localJSONObject.toString());
+                              azqs.b(null, "CliOper", "", "", "0X800705F", "0X800705F", 0, 0, "", "", "", localJSONObject.toString());
                             }
                           }
                         }
@@ -7254,12 +7254,12 @@ public abstract class rqj
                           {
                             localJSONException.printStackTrace();
                             continue;
-                            if ((this.jdField_a_of_type_Bhtw != null) && (this.jdField_a_of_type_Bhtw.isShowing())) {
-                              this.jdField_a_of_type_Bhtw.dismiss();
+                            if ((this.jdField_a_of_type_Bhyd != null) && (this.jdField_a_of_type_Bhyd.isShowing())) {
+                              this.jdField_a_of_type_Bhyd.dismiss();
                             }
-                            this.jdField_a_of_type_Bhtq.a(i1, this.jdField_c_of_type_Int, ors.a((BaseArticleInfo)localObject1), ((BaseArticleInfo)localObject1).mDislikeInfos, ((BaseArticleInfo)localObject1).innerUniqueID);
-                            this.jdField_a_of_type_Bhtq.a(paramView, (bhtu)localObject2);
-                            this.jdField_a_of_type_Bhtq.setOnDismissListener(new rqt(this));
+                            this.jdField_a_of_type_Bhxx.a(i1, this.jdField_c_of_type_Int, ors.a((BaseArticleInfo)localObject1), ((BaseArticleInfo)localObject1).mDislikeInfos, ((BaseArticleInfo)localObject1).innerUniqueID);
+                            this.jdField_a_of_type_Bhxx.a(paramView, (bhyb)localObject2);
+                            this.jdField_a_of_type_Bhxx.setOnDismissListener(new rqt(this));
                           }
                         }
                       }
@@ -7315,14 +7315,14 @@ public abstract class rqj
         szl.a(this.jdField_a_of_type_AndroidAppActivity, (ArticleInfo)paramView, this, 56, true, null);
         return;
         Object localObject4;
-        if (paramView.getId() == 2131369355)
+        if (paramView.getId() == 2131369373)
         {
           localObject3 = (ArticleInfo)((pdp)paramView.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
           localObject1 = ((pdp)paramView.getTag()).jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID;
           localObject2 = localObject3;
           localObject4 = localObject2;
           localObject2 = localObject1;
-          if (paramView.getId() != 2131369355) {
+          if (paramView.getId() != 2131369373) {
             break label1910;
           }
         }
@@ -7337,7 +7337,7 @@ public abstract class rqj
           localObject4 = localObject1;
           break;
         }
-        if (paramView.getId() == 2131367293) {
+        if (paramView.getId() == 2131367303) {
           localObject1 = ((pdv)paramView.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
         }
         for (localObject2 = ((pdv)paramView.getTag()).jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID;; localObject2 = ((pdv)paramView.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID)
@@ -7364,14 +7364,14 @@ public abstract class rqj
         }
         if (((BaseArticleInfo)localObject1).isVideoItemForWeishiJump())
         {
-          if (xoo.a(this.jdField_a_of_type_AndroidAppActivity)) {
+          if (xsx.a(this.jdField_a_of_type_AndroidAppActivity)) {
             tam.a(this.jdField_a_of_type_AndroidAppActivity, "video_type_videopublic");
           }
           for (;;)
           {
             b((rjk)localObject3, (BaseArticleInfo)localObject1);
             return;
-            QQToast.a(this.jdField_a_of_type_AndroidAppActivity, -1, 2131718867, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298914));
+            QQToast.a(this.jdField_a_of_type_AndroidAppActivity, -1, 2131718879, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298914));
             tam.b(this.jdField_a_of_type_AndroidAppActivity, "video_type_videopublic");
           }
         }
@@ -7379,7 +7379,7 @@ public abstract class rqj
         return;
         localObject1 = (BaseArticleInfo)paramView.getTag();
       } while (localObject1 == null);
-      if (paramView.getId() == 2131369355) {}
+      if (paramView.getId() == 2131369373) {}
       for (boolean bool = true;; bool = false)
       {
         b(bool, (BaseArticleInfo)localObject1);

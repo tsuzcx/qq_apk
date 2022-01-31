@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import allq;
-import axzt;
-import azmz;
+import alqf;
+import ayec;
+import azri;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -15,7 +15,7 @@ import protocol.KQQConfig.GetResourceRespInfo;
 public class ConfigHandler$6
   implements Runnable
 {
-  public ConfigHandler$6(allq paramallq, String paramString, axzt paramaxzt, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public ConfigHandler$6(alqf paramalqf, String paramString, ayec paramayec, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   public void run()
   {
@@ -28,10 +28,10 @@ public class ConfigHandler$6
     }
     String str;
     if (i == 0) {
-      if (this.jdField_a_of_type_Axzt.a((File)localObject1, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer))
+      if (this.jdField_a_of_type_Ayec.a((File)localObject1, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer))
       {
         this.this$0.notifyUI(7, true, Integer.valueOf(102));
-        localObject1 = azmz.a(BaseApplication.getContext());
+        localObject1 = azri.a(BaseApplication.getContext());
         localObject2 = new HashMap();
         ((HashMap)localObject2).put("result", String.valueOf(i));
         ((HashMap)localObject2).put("version", String.valueOf(this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer));
@@ -44,7 +44,7 @@ public class ConfigHandler$6
     }
     for (;;)
     {
-      ((azmz)localObject1).a(str, "RichStatusAction", bool, 0L, 0L, (HashMap)localObject2, "");
+      ((azri)localObject1).a(str, "RichStatusAction", bool, 0L, 0L, (HashMap)localObject2, "");
       return;
       this.this$0.notifyUI(7, false, Integer.valueOf(-3));
       break;

@@ -1,22 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-
-class blou
-  implements View.OnClickListener
+public abstract interface blou
 {
-  blou(blor paramblor) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    if (blor.a(this.a))
-    {
-      this.a.a.y();
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), alpo.a(2131714074), 0).a();
-  }
+  public abstract int b();
+  
+  public abstract int c();
+  
+  public abstract int d();
+  
+  public abstract int e();
 }
 
 

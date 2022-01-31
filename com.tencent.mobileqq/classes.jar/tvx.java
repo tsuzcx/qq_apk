@@ -1,105 +1,176 @@
-import com.tencent.biz.qqcircle.events.QCircleFakeFeed;
-import cooperation.qzone.LbsDataV2.PoiInfo;
-import cooperation.qzone.model.LabelInfo;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.biz.qqcircle.component.ComponentBaseFragment;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
 
 public class tvx
+  implements Application.ActivityLifecycleCallbacks
 {
-  private QCircleFakeFeed a = new QCircleFakeFeed();
+  private View jdField_a_of_type_AndroidViewView;
+  private ComponentBaseFragment jdField_a_of_type_ComTencentBizQqcircleComponentComponentBaseFragment;
+  private final LinkedHashMap<String, tvv> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   
-  public QCircleFakeFeed a()
+  public tvx(ComponentBaseFragment paramComponentBaseFragment, View paramView)
   {
-    return this.a;
+    this.jdField_a_of_type_ComTencentBizQqcircleComponentComponentBaseFragment = paramComponentBaseFragment;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public tvx a(int paramInt)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    QCircleFakeFeed.a(this.a, paramInt);
-    return this;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (tvv)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      if (localObject != null) {
+        ((tvv)localObject).a(paramInt1, paramInt2, paramIntent);
+      }
+    }
   }
   
-  public tvx a(long paramLong)
+  public void a(Configuration paramConfiguration)
   {
-    QCircleFakeFeed.a(this.a, paramLong);
-    return this;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (tvv)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      if (localObject != null) {
+        ((tvv)localObject).a(paramConfiguration);
+      }
+    }
   }
   
-  public tvx a(LbsDataV2.PoiInfo paramPoiInfo)
+  public void a(View paramView)
   {
-    QCircleFakeFeed.a(this.a, paramPoiInfo);
-    return this;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public tvx a(String paramString)
+  public void a(String paramString, Object paramObject)
   {
-    QCircleFakeFeed.a(this.a, paramString);
-    return this;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      ((tvv)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str)).a(paramString, paramObject);
+    }
   }
   
-  public tvx a(ArrayList<String> paramArrayList)
+  public void a(List<tvv> paramList)
   {
-    QCircleFakeFeed.a(this.a, paramArrayList);
-    return this;
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      tvv localtvv = (tvv)paramList.next();
+      localtvv.a(this.jdField_a_of_type_ComTencentBizQqcircleComponentComponentBaseFragment, this.jdField_a_of_type_AndroidViewView, this);
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localtvv.getClass().getSimpleName(), localtvv);
+    }
   }
   
-  public tvx b(int paramInt)
+  public boolean a()
   {
-    QCircleFakeFeed.b(this.a, paramInt);
-    return this;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (tvv)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      if ((localObject != null) && (((tvv)localObject).a())) {
+        return true;
+      }
+    }
+    return false;
   }
   
-  public tvx b(String paramString)
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    QCircleFakeFeed.b(this.a, paramString);
-    return this;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (tvv)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      if (localObject != null)
+      {
+        ((tvv)localObject).onActivityCreated(paramActivity, paramBundle);
+        ((tvv)localObject).a(this.jdField_a_of_type_AndroidViewView);
+      }
+    }
   }
   
-  public tvx b(ArrayList<LabelInfo> paramArrayList)
+  public void onActivityDestroyed(Activity paramActivity)
   {
-    QCircleFakeFeed.b(this.a, paramArrayList);
-    return this;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (tvv)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      if (localObject != null) {
+        ((tvv)localObject).onActivityDestroyed(paramActivity);
+      }
+    }
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    this.jdField_a_of_type_ComTencentBizQqcircleComponentComponentBaseFragment = null;
   }
   
-  public tvx c(int paramInt)
+  public void onActivityPaused(Activity paramActivity)
   {
-    QCircleFakeFeed.c(this.a, paramInt);
-    return this;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (tvv)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      if (localObject != null) {
+        ((tvv)localObject).onActivityPaused(paramActivity);
+      }
+    }
   }
   
-  public tvx c(String paramString)
+  public void onActivityResumed(Activity paramActivity)
   {
-    QCircleFakeFeed.c(this.a, paramString);
-    return this;
+    paramActivity = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    while (paramActivity.hasNext())
+    {
+      Object localObject = (String)paramActivity.next();
+      localObject = (tvv)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      if (localObject != null) {
+        ((tvv)localObject).onActivityResumed(this.jdField_a_of_type_ComTencentBizQqcircleComponentComponentBaseFragment.getActivity());
+      }
+    }
   }
   
-  public tvx d(int paramInt)
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity)
   {
-    QCircleFakeFeed.d(this.a, paramInt);
-    return this;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (tvv)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      if (localObject != null) {
+        ((tvv)localObject).onActivityStarted(paramActivity);
+      }
+    }
   }
   
-  public tvx d(String paramString)
+  public void onActivityStopped(Activity paramActivity)
   {
-    QCircleFakeFeed.d(this.a, paramString);
-    return this;
-  }
-  
-  public tvx e(String paramString)
-  {
-    QCircleFakeFeed.e(this.a, paramString);
-    return this;
-  }
-  
-  public tvx f(String paramString)
-  {
-    QCircleFakeFeed.f(this.a, paramString);
-    return this;
-  }
-  
-  public tvx g(String paramString)
-  {
-    QCircleFakeFeed.g(this.a, paramString);
-    return this;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (tvv)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      if (localObject != null) {
+        ((tvv)localObject).onActivityStopped(paramActivity);
+      }
+    }
   }
 }
 

@@ -1,192 +1,134 @@
-import android.annotation.TargetApi;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Arrays;
 
 public class ayvd
-  implements SharedPreferences.Editor
 {
-  private SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public ayvd(ayvc paramayvc) {}
-  
-  private void a()
+  static boolean a(int paramInt, long[][] paramArrayOfLong, long[] paramArrayOfLong1, long[] paramArrayOfLong2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, boolean[] paramArrayOfBoolean1, boolean[] paramArrayOfBoolean2, long[] paramArrayOfLong3)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = ayvc.a(this.jdField_a_of_type_Ayvc).edit();
-    if ((ayvc.a(this.jdField_a_of_type_Ayvc) != null) && (ayvc.a(this.jdField_a_of_type_Ayvc).size() > 0))
+    paramArrayOfBoolean1[paramInt] = true;
+    int i = 0;
+    if (i < paramArrayOfLong2.length)
     {
-      Iterator localIterator = ayvc.a(this.jdField_a_of_type_Ayvc).keySet().iterator();
-      while (localIterator.hasNext())
+      if ((paramArrayOfBoolean2[i] != 0) || (paramArrayOfLong[paramInt][i] <= 0L)) {}
+      for (;;)
       {
-        String str = (String)localIterator.next();
-        Object localObject = ayvc.a(this.jdField_a_of_type_Ayvc).get(str);
-        if ((localObject instanceof Long)) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str, ((Long)localObject).longValue());
-        } else if ((localObject instanceof String)) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString(str, (String)localObject);
-        } else if ((localObject instanceof Boolean)) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean(str, ((Boolean)localObject).booleanValue());
-        } else if ((localObject instanceof Integer)) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt(str, ((Integer)localObject).intValue());
-        } else if ((localObject instanceof Float)) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putFloat(str, ((Float)localObject).floatValue());
-        }
-      }
-    }
-  }
-  
-  @TargetApi(9)
-  public void apply()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      if (Build.VERSION.SDK_INT < 9) {
-        try
+        i += 1;
+        break;
+        long l = paramArrayOfLong1[paramInt] + paramArrayOfLong2[i] - paramArrayOfLong[paramInt][i];
+        if (l == 0L)
         {
-          a();
-          if (this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit())
+          paramArrayOfBoolean2[i] = true;
+          int j = paramArrayOfInt2[i];
+          if ((j == -1) || (a(j, paramArrayOfLong, paramArrayOfLong1, paramArrayOfLong2, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfBoolean1, paramArrayOfBoolean2, paramArrayOfLong3)))
           {
-            ayvc.a(this.jdField_a_of_type_Ayvc).clear();
-            return;
+            paramArrayOfInt2[i] = paramInt;
+            paramArrayOfInt1[paramInt] = i;
+            return true;
           }
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.d(ayvc.a(), 2, "AsyncEditor commit fail!");
-          return;
         }
-        catch (OutOfMemoryError localOutOfMemoryError)
+        else if (l < paramArrayOfLong3[i])
         {
-          if (QLog.isColorLevel()) {
-            QLog.w(ayvc.a(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
-          }
-          this.jdField_a_of_type_Boolean = true;
-          return;
+          paramArrayOfLong3[i] = l;
         }
-        catch (Exception localException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w(ayvc.a(), 2, "commit Exception ! ", localException);
-          }
-          this.jdField_a_of_type_Boolean = true;
-          return;
-        }
-      } else {
-        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
       }
     }
+    return false;
   }
   
-  public SharedPreferences.Editor clear()
+  public static int[] a(long[][] paramArrayOfLong, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = true;
-    ayvc.a(this.jdField_a_of_type_Ayvc).clear();
-    return this;
-  }
-  
-  public boolean commit()
-  {
-    boolean bool1;
-    if (this.jdField_a_of_type_Boolean)
+    long[] arrayOfLong1 = new long[paramInt1];
+    long[] arrayOfLong2 = new long[paramInt2];
+    long[] arrayOfLong3 = new long[paramInt2];
+    int[] arrayOfInt1 = new int[paramInt1];
+    int[] arrayOfInt2 = new int[paramInt2];
+    Arrays.fill(arrayOfLong1, -9223372036854775808L);
+    Arrays.fill(arrayOfLong2, 0L);
+    int i = 0;
+    int j;
+    while (i < paramInt1)
     {
-      this.jdField_a_of_type_Boolean = false;
-      try
+      j = 0;
+      while (j < paramInt2)
       {
-        a();
-        boolean bool2 = this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
-        if (bool2)
-        {
-          ayvc.a(this.jdField_a_of_type_Ayvc).clear();
-          return bool2;
+        if ((paramArrayOfLong[i][j] > 0L) && (paramArrayOfLong[i][j] > arrayOfLong1[i])) {
+          arrayOfLong1[i] = paramArrayOfLong[i][j];
         }
-        bool1 = bool2;
-        if (!QLog.isColorLevel()) {
-          return bool1;
-        }
-        QLog.d(ayvc.a(), 2, "AsyncEditor commit fail!");
-        return bool2;
+        j += 1;
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w(ayvc.a(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
-        }
-        this.jdField_a_of_type_Boolean = true;
-        return false;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w(ayvc.a(), 2, "commit Exception ! ", localException);
-        }
-        this.jdField_a_of_type_Boolean = true;
-        return false;
-      }
+      i += 1;
     }
-    else
+    Arrays.fill(arrayOfInt1, -1);
+    Arrays.fill(arrayOfInt2, -1);
+    i = 0;
+    if (i < paramInt1)
     {
-      bool1 = false;
+      boolean[] arrayOfBoolean1 = new boolean[paramInt1];
+      boolean[] arrayOfBoolean2 = new boolean[paramInt2];
+      Arrays.fill(arrayOfLong3, 9223372036854775807L);
+      Arrays.fill(arrayOfBoolean1, false);
+      Arrays.fill(arrayOfBoolean2, false);
+      for (;;)
+      {
+        long l1;
+        if (!a(i, paramArrayOfLong, arrayOfLong1, arrayOfLong2, arrayOfInt1, arrayOfInt2, arrayOfBoolean1, arrayOfBoolean2, arrayOfLong3))
+        {
+          l1 = 9223372036854775807L;
+          j = 0;
+          if (j < paramInt2)
+          {
+            long l2;
+            if (arrayOfBoolean2[j] != 0) {
+              l2 = l1;
+            }
+            for (;;)
+            {
+              j += 1;
+              l1 = l2;
+              break;
+              l2 = l1;
+              if (arrayOfLong3[j] < l1) {
+                l2 = arrayOfLong3[j];
+              }
+            }
+          }
+          if ((l1 != 9223372036854775807L) && (l1 != 0L)) {}
+        }
+        else
+        {
+          i += 1;
+          break;
+        }
+        j = 0;
+        while (j <= i)
+        {
+          if (arrayOfBoolean1[j] != 0) {
+            arrayOfLong1[j] -= l1;
+          }
+          j += 1;
+        }
+        j = 0;
+        if (j < paramInt2)
+        {
+          if (arrayOfBoolean2[j] != 0) {
+            arrayOfLong2[j] += l1;
+          }
+          for (;;)
+          {
+            j += 1;
+            break;
+            arrayOfLong3[j] -= l1;
+          }
+        }
+        Arrays.fill(arrayOfBoolean1, false);
+        Arrays.fill(arrayOfBoolean2, false);
+      }
     }
-    return bool1;
-  }
-  
-  public SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    ayvc.a(this.jdField_a_of_type_Ayvc).put(paramString, Boolean.valueOf(paramBoolean));
-    return this;
-  }
-  
-  public SharedPreferences.Editor putFloat(String paramString, float paramFloat)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    ayvc.a(this.jdField_a_of_type_Ayvc).put(paramString, Float.valueOf(paramFloat));
-    return this;
-  }
-  
-  public SharedPreferences.Editor putInt(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    ayvc.a(this.jdField_a_of_type_Ayvc).put(paramString, Integer.valueOf(paramInt));
-    return this;
-  }
-  
-  public SharedPreferences.Editor putLong(String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    ayvc.a(this.jdField_a_of_type_Ayvc).put(paramString, Long.valueOf(paramLong));
-    return this;
-  }
-  
-  public SharedPreferences.Editor putString(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    ayvc.a(this.jdField_a_of_type_Ayvc).put(paramString1, paramString2);
-    return this;
-  }
-  
-  @Deprecated
-  public SharedPreferences.Editor putStringSet(String paramString, Set<String> paramSet)
-  {
-    return this;
-  }
-  
-  public SharedPreferences.Editor remove(String paramString)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    ayvc.a(this.jdField_a_of_type_Ayvc).remove(paramString);
-    return this;
+    return arrayOfInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayvd
  * JD-Core Version:    0.7.0.1
  */

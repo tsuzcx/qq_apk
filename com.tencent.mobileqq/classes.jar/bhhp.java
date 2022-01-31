@@ -1,23 +1,16 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.qqmini.sdk.task.MainThreadTask.1;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.OnLoadBaselibListener;
 
-public abstract class bhhp
-  extends bhhn
+class bhhp
+  implements BaselibLoader.OnLoadBaselibListener
 {
-  public bhhp(Context paramContext, bgqg parambgqg)
+  bhhp(bhhk parambhhk) {}
+  
+  public void onResult(int paramInt, String paramString, BaselibLoader.BaselibContent paramBaselibContent)
   {
-    super(paramContext, 3, parambgqg);
-  }
-  
-  public abstract void a();
-  
-  public void d() {}
-  
-  public void f()
-  {
-    d();
-    this.b.post(new MainThreadTask.1(this));
+    if ((paramInt == 0) && (paramBaselibContent != null)) {
+      this.a.a(paramBaselibContent.waServiceJsStr, paramBaselibContent.waServicePath);
+    }
   }
 }
 

@@ -27,22 +27,22 @@ public class pgo
 {
   private String a;
   
-  public pgo(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public pgo(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
     this.jdField_a_of_type_JavaLangString = "ReadInJoyDraftboxModule";
   }
   
   private List<ReadInJoyDraftboxItem> a()
   {
-    List localList = this.jdField_a_of_type_Awbw.a(ReadInJoyDraftboxItem.class);
+    List localList = this.jdField_a_of_type_Awgf.a(ReadInJoyDraftboxItem.class);
     if ((localList != null) && (localList.size() > 0))
     {
       Iterator localIterator = localList.iterator();
       while (localIterator.hasNext())
       {
         ReadInJoyDraftboxItem localReadInJoyDraftboxItem = (ReadInJoyDraftboxItem)localIterator.next();
-        localReadInJoyDraftboxItem.firstPicData = ((ReadInJoyDraftboxItem.PicData)bden.a(localReadInJoyDraftboxItem.firstPic, ReadInJoyDraftboxItem.PicData.CREATOR));
+        localReadInJoyDraftboxItem.firstPicData = ((ReadInJoyDraftboxItem.PicData)bdiw.a(localReadInJoyDraftboxItem.firstPic, ReadInJoyDraftboxItem.PicData.CREATOR));
       }
     }
     return localList;
@@ -77,18 +77,18 @@ public class pgo
           if ((str == null) || (str.length() != 0) || (paramReadInJoyDraftboxContent == null) || (paramReadInJoyDraftboxContent.adapterList == null) || (paramReadInJoyDraftboxContent.adapterList.size() <= 0) || (((ReadInJoyDraftboxItem.PicData)paramReadInJoyDraftboxContent.adapterList.get(0)).a == -1) || (paramReadInJoyDraftboxContent.articleType == 3)) {
             break label359;
           }
-          localReadInJoyDraftboxItem.title = alpo.a(2131713128);
+          localReadInJoyDraftboxItem.title = alud.a(2131713140);
         }
-        localReadInJoyDraftboxItem.content = bden.a(paramReadInJoyDraftboxContent);
+        localReadInJoyDraftboxItem.content = bdiw.a(paramReadInJoyDraftboxContent);
         localReadInJoyDraftboxItem.firstPic = null;
         paramReadInJoyDraftboxContent = paramReadInJoyDraftboxContent.adapterList;
         if ((paramReadInJoyDraftboxContent != null) && (paramReadInJoyDraftboxContent.size() > 0)) {
-          localReadInJoyDraftboxItem.firstPic = bden.a((ReadInJoyDraftboxItem.PicData)paramReadInJoyDraftboxContent.get(0));
+          localReadInJoyDraftboxItem.firstPic = bdiw.a((ReadInJoyDraftboxItem.PicData)paramReadInJoyDraftboxContent.get(0));
         }
         if (!a(localReadInJoyDraftboxItem)) {
           continue;
         }
-        localReadInJoyDraftboxItem = (ReadInJoyDraftboxItem)this.jdField_a_of_type_Awbw.a(ReadInJoyDraftboxItem.class, "time = ?", new String[] { paramLong + "" });
+        localReadInJoyDraftboxItem = (ReadInJoyDraftboxItem)this.jdField_a_of_type_Awgf.a(ReadInJoyDraftboxItem.class, "time = ?", new String[] { paramLong + "" });
         if (QLog.isColorLevel())
         {
           str = this.jdField_a_of_type_JavaLangString;
@@ -209,15 +209,15 @@ public class pgo
         localObject = ReadInJoyUserInfoModule.a();
         break label666;
       }
-      str2 = ayvy.b(localBiuCommentInfo.jdField_a_of_type_JavaLangString);
+      str2 = azah.b(localBiuCommentInfo.jdField_a_of_type_JavaLangString);
       continue;
       if (localBiuCommentInfo.jdField_a_of_type_JavaLangString == null) {}
-      for (String str1 = "";; str1 = ayvy.b(localBiuCommentInfo.jdField_a_of_type_JavaLangString))
+      for (String str1 = "";; str1 = azah.b(localBiuCommentInfo.jdField_a_of_type_JavaLangString))
       {
         localStringBuilder.append(str1);
         break;
       }
-      paramList = new SpannableStringBuilder(new baig(localStringBuilder, 3, 20));
+      paramList = new SpannableStringBuilder(new bamp(localStringBuilder, 3, 20));
       paramContext = localArrayList.iterator();
       while (paramContext.hasNext())
       {
@@ -246,7 +246,7 @@ public class pgo
         localReadInJoyDraftboxContent1 = localReadInJoyDraftboxContent2;
         if (localReadInJoyDraftboxItem.content.length > 0)
         {
-          localReadInJoyDraftboxContent2 = (ReadInJoyDraftboxItem.ReadInJoyDraftboxContent)bden.a(localReadInJoyDraftboxItem.content, ReadInJoyDraftboxItem.ReadInJoyDraftboxContent.CREATOR);
+          localReadInJoyDraftboxContent2 = (ReadInJoyDraftboxItem.ReadInJoyDraftboxContent)bdiw.a(localReadInJoyDraftboxItem.content, ReadInJoyDraftboxItem.ReadInJoyDraftboxContent.CREATOR);
           localReadInJoyDraftboxContent1 = localReadInJoyDraftboxContent2;
           if (QLog.isColorLevel())
           {
@@ -261,7 +261,7 @@ public class pgo
   
   public ReadInJoyDraftboxItem a(long paramLong)
   {
-    ReadInJoyDraftboxItem localReadInJoyDraftboxItem = (ReadInJoyDraftboxItem)this.jdField_a_of_type_Awbw.a(ReadInJoyDraftboxItem.class, paramLong);
+    ReadInJoyDraftboxItem localReadInJoyDraftboxItem = (ReadInJoyDraftboxItem)this.jdField_a_of_type_Awgf.a(ReadInJoyDraftboxItem.class, paramLong);
     String str2;
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
@@ -277,7 +277,7 @@ public class pgo
     {
       QLog.d(str2, 2, str1);
       if ((localReadInJoyDraftboxItem != null) && (localReadInJoyDraftboxItem.firstPic != null)) {
-        localReadInJoyDraftboxItem.firstPicData = ((ReadInJoyDraftboxItem.PicData)bden.a(localReadInJoyDraftboxItem.firstPic, ReadInJoyDraftboxItem.PicData.CREATOR));
+        localReadInJoyDraftboxItem.firstPicData = ((ReadInJoyDraftboxItem.PicData)bdiw.a(localReadInJoyDraftboxItem.firstPic, ReadInJoyDraftboxItem.PicData.CREATOR));
       }
       return localReadInJoyDraftboxItem;
     }
@@ -307,7 +307,7 @@ public class pgo
   
   public boolean a()
   {
-    boolean bool = this.jdField_a_of_type_Awbw.a(ReadInJoyDraftboxItem.class);
+    boolean bool = this.jdField_a_of_type_Awgf.a(ReadInJoyDraftboxItem.class);
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "deleteAllDraftsFromDb: " + bool);
     }
@@ -317,7 +317,7 @@ public class pgo
   public boolean a(long paramLong)
   {
     Object localObject = a(paramLong);
-    localObject = Boolean.valueOf(this.jdField_a_of_type_Awbw.b((awbv)localObject));
+    localObject = Boolean.valueOf(this.jdField_a_of_type_Awgf.b((awge)localObject));
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "deleteDraftboxFromDb: " + paramLong + " : " + localObject);
     }

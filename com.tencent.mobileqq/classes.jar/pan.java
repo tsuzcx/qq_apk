@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
 
 public class pan
-  implements bhvv
+  implements biac
 {
   public pan(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
   

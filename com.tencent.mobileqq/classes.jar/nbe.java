@@ -6,7 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class nbe
-  implements aumt
+  implements aurc
 {
   nbe(nbd paramnbd) {}
   
@@ -35,7 +35,7 @@ class nbe
       ((JSONObject)localObject).put("state", paramInt);
       ArrayList localArrayList = new ArrayList();
       localArrayList.add("*.qq.com");
-      atda.a("qbrowserMusicStateChange", (JSONObject)localObject, localArrayList, null);
+      athj.a("qbrowserMusicStateChange", (JSONObject)localObject, localArrayList, null);
       return;
     }
     catch (JSONException localJSONException)

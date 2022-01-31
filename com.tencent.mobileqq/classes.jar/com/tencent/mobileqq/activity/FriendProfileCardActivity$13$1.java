@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import acuk;
+import acyz;
 import android.os.Message;
-import bhow;
+import bhtd;
 import com.tencent.mobileqq.data.Card;
 
 public class FriendProfileCardActivity$13$1
   implements Runnable
 {
-  public FriendProfileCardActivity$13$1(acuk paramacuk, Card paramCard) {}
+  public FriendProfileCardActivity$13$1(acyz paramacyz, Card paramCard) {}
   
   public void run()
   {
-    boolean bool = this.jdField_a_of_type_Acuk.a.a((int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet, this.jdField_a_of_type_ComTencentMobileqqDataCard.diyComplicatedInfo, this.jdField_a_of_type_ComTencentMobileqqDataCard.cardId);
-    Message localMessage = this.jdField_a_of_type_Acuk.a.b.obtainMessage(13, Boolean.valueOf(bool));
-    this.jdField_a_of_type_Acuk.a.b.sendMessage(localMessage);
+    boolean bool = this.jdField_a_of_type_Acyz.a.a((int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet, this.jdField_a_of_type_ComTencentMobileqqDataCard.diyComplicatedInfo, this.jdField_a_of_type_ComTencentMobileqqDataCard.cardId);
+    Message localMessage = this.jdField_a_of_type_Acyz.a.b.obtainMessage(13, Boolean.valueOf(bool));
+    this.jdField_a_of_type_Acyz.a.b.sendMessage(localMessage);
   }
 }
 

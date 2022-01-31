@@ -1,8 +1,8 @@
 package com.tencent.hotpatch;
 
-import aarn;
-import aarp;
-import alys;
+import aawc;
+import aawe;
+import amdh;
 import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
@@ -72,7 +72,7 @@ public class PatchResolveForDalvik
     return nativeResolvePatchClass(arrayOfString, arrayOfInt, paramInt);
   }
   
-  public static void a(Context paramContext, aarp paramaarp)
+  public static void a(Context paramContext, aawe paramaawe)
   {
     Object localObject;
     if (!jdField_a_of_type_Boolean)
@@ -87,32 +87,32 @@ public class PatchResolveForDalvik
         break label132;
       }
       jdField_a_of_type_Int = 609;
-      localObject = alys.a(BaseApplicationImpl.sApplication, 0);
+      localObject = amdh.a(BaseApplicationImpl.sApplication, 0);
       QLog.d("PatchLogTag", 1, "PatchResolveForDalvik tryResolvePatchClass unload as resolve lib load failed unloadResult=" + (String)localObject);
       if ("Success".equals(localObject))
       {
-        aarg.jdField_a_of_type_Int = 0;
-        aarg.jdField_a_of_type_JavaLangString = "";
+        aavv.jdField_a_of_type_Int = 0;
+        aavv.jdField_a_of_type_JavaLangString = "";
       }
     }
     for (;;)
     {
-      PatchReporter.reportPatchEvent(paramContext, "", "actPatchResolve", jdField_a_of_type_Int, paramaarp.b());
+      PatchReporter.reportPatchEvent(paramContext, "", "actPatchResolve", jdField_a_of_type_Int, paramaawe.b());
       return;
       jdField_a_of_type_Boolean = SoLoadUtilNew.loadSoByName(paramContext, "qq_patch");
       break;
       label132:
-      localObject = ((aarn)paramaarp.a()).a();
+      localObject = ((aawc)paramaawe.a()).a();
       int i = a((List)localObject, ((ArrayList)localObject).size());
       jdField_a_of_type_Int = i % 10 + 600;
       if (jdField_a_of_type_Int != 600)
       {
-        localObject = alys.a(BaseApplicationImpl.sApplication, 0);
+        localObject = amdh.a(BaseApplicationImpl.sApplication, 0);
         QLog.d("PatchLogTag", 1, "PatchResolveForDalvik tryResolvePatchClass unload as resolve patch class failed unloadResult=" + (String)localObject + ", resolveResult=" + i);
         if ("Success".equals(localObject))
         {
-          aarg.jdField_a_of_type_Int = 0;
-          aarg.jdField_a_of_type_JavaLangString = "";
+          aavv.jdField_a_of_type_Int = 0;
+          aavv.jdField_a_of_type_JavaLangString = "";
         }
       }
       else

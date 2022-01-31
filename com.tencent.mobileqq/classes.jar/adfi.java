@@ -1,27 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class adfi
-  implements DialogInterface.OnClickListener
+class adfi
+  implements aznz
 {
-  public adfi(NotificationActivity paramNotificationActivity) {}
+  adfi(adfh paramadfh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    azmj.a(this.a.app, "dc00898", "", "", "0X800AA17", "0X800AA17", 0, 0, "", "", NotificationActivity.b(this.a), "");
-    if (MiniAppSecurityUtil.checkMiniAppForLogin(NotificationActivity.c(this.a))) {
-      MiniAppLauncher.startMiniApp(this.a, NotificationActivity.c(this.a), 2098, null);
-    }
-    for (;;)
-    {
-      this.a.finish();
-      return;
-      QLog.e("NotificationActivity", 1, "MiniAppLauncher.startMiniApp error: fake app!");
-    }
+    QLog.i("JumpAction", 1, "system share.doShare show self dialog grant");
+    HashMap localHashMap = new HashMap();
+    azri.a(BaseApplication.getContext()).a("", "noSDPermissionShareSelftGrant", true, 0L, 0L, localHashMap, "");
+  }
+  
+  public void b()
+  {
+    QLog.i("JumpAction", 1, "system share.doShare show self dialog denied");
+    HashMap localHashMap = new HashMap();
+    azri.a(BaseApplication.getContext()).a("", "noSDPermissionShareSelftDeny", true, 0L, 0L, localHashMap, "");
+    this.a.a.finish();
   }
 }
 

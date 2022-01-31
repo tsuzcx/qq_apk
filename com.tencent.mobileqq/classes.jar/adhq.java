@@ -1,20 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.OverloadTipsActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class adhq
-  implements DialogInterface.OnKeyListener
+  implements Animation.AnimationListener
 {
-  public adhq(OverloadTipsActivity paramOverloadTipsActivity) {}
+  public adhq(LoginInfoActivity paramLoginInfoActivity, boolean paramBoolean, String paramString) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 4) {
-      this.a.finish();
-    }
-    return false;
+    LoginInfoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).setVisibility(4);
+    LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).clearAnimation();
+    LoginInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

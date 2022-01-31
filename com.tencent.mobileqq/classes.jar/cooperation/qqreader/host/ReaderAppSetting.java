@@ -1,13 +1,13 @@
 package cooperation.qqreader.host;
 
-import bizf;
+import bjdm;
 import com.tencent.common.config.AppSetting;
 
 public class ReaderAppSetting
 {
   public static String buildNum()
   {
-    return "4515";
+    return "4555";
   }
   
   public static boolean enableTalkBack()
@@ -17,7 +17,7 @@ public class ReaderAppSetting
   
   public static String getQUA()
   {
-    return bizf.a();
+    return bjdm.a();
   }
   
   public static boolean isDebugVersion()
@@ -27,7 +27,7 @@ public class ReaderAppSetting
   
   public static String subVersion()
   {
-    return "8.3.3";
+    return "8.3.5";
   }
 }
 

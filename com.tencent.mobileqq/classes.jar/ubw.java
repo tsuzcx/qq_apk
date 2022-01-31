@@ -1,15 +1,18 @@
-import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicLikePopWindow;
+import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
 
-public class ubw
-  implements tvv
+class ubw
+  implements zac<FeedCloudRead.StGetBusiInfoRsp>
 {
-  public ubw(QCirclePolymorphicLikePopWindow paramQCirclePolymorphicLikePopWindow, ubx paramubx) {}
+  ubw(ubv paramubv, QCircleGetTabListRequest paramQCircleGetTabListRequest) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
   {
-    if (paramBoolean) {
-      QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow, this.jdField_a_of_type_Ubx.a(), paramString);
-    }
+    boolean bool = VSNetworkHelper.a(paramString);
+    QLog.d("QCircleTabViewModel", 1, "requestTabData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isCache:" + bool);
+    this.jdField_a_of_type_Ubv.a(paramBoolean, paramLong, paramString, paramStGetBusiInfoRsp);
   }
 }
 

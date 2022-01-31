@@ -1,52 +1,93 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment.MediaUploadCallback.1;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment.MediaUploadCallback.2;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class bceg
-  implements alkr
+  implements bkda
 {
-  protected QQAppInterface a;
+  private float jdField_a_of_type_Float = 1.0F;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
   
-  public bceg(QQAppInterface paramQQAppInterface)
+  public bceg(bcef parambcef)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  protected void a(long paramLong) {}
-  
-  protected void a(long paramLong, boolean paramBoolean) {}
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt) {}
-  
-  protected void a(long paramLong1, boolean paramBoolean, long paramLong2, int paramInt) {}
-  
-  protected void b(long paramLong, boolean paramBoolean) {}
-  
-  protected void c(long paramLong, boolean paramBoolean) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
+    switch (bcef.a(parambcef))
     {
     default: 
-      return;
-    case 2: 
-      b(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Float = 1.0F;
       return;
     case 1: 
-      a(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
-      return;
-    case 3: 
-      paramObject = (Object[])paramObject;
-      a(((Long)paramObject[0]).longValue(), paramBoolean, ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
-      return;
-    case 4: 
-      paramObject = (Object[])paramObject;
-      a(((Long)paramObject[0]).longValue(), paramBoolean, ((Integer)paramObject[1]).intValue());
-      return;
-    case 5: 
-      c(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
+      this.jdField_a_of_type_Int = 10;
+      this.jdField_a_of_type_Float = 0.85F;
       return;
     }
-    a(((Long)((Object[])(Object[])paramObject)[0]).longValue());
+    this.jdField_a_of_type_Int = 95;
+    this.jdField_a_of_type_Float = 0.05F;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Bcef.isCanceled())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onProgress cancel. progress=", Integer.valueOf(paramInt) });
+      }
+      this.jdField_a_of_type_Bcef.onCancel();
+    }
+    long l;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onProgress. mediaType=", Integer.valueOf(bcef.a(this.jdField_a_of_type_Bcef)), ", info hash=", Integer.valueOf(bcef.a(this.jdField_a_of_type_Bcef).hashCode()), ", info status=", Integer.valueOf(bcef.a(this.jdField_a_of_type_Bcef).g), ", progress=", Integer.valueOf(paramInt) });
+      }
+      l = System.currentTimeMillis();
+      paramInt = this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float * paramInt);
+    } while ((paramInt >= 100) || (l - this.jdField_a_of_type_Long <= 500L));
+    this.jdField_a_of_type_Long = l;
+    ThreadManager.getUIHandler().post(new ImageInfo.UploadMediaSegment.MediaUploadCallback.2(this, paramInt));
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Bcef.isCanceled())
+    {
+      this.jdField_a_of_type_Bcef.onCancel();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onComplete. mediaType=", Integer.valueOf(bcef.a(this.jdField_a_of_type_Bcef)), ", info hash=", Integer.valueOf(bcef.a(this.jdField_a_of_type_Bcef).hashCode()), ", info status=", Integer.valueOf(bcef.a(this.jdField_a_of_type_Bcef).g) });
+    }
+    switch (bcef.a(this.jdField_a_of_type_Bcef))
+    {
+    }
+    while (!this.jdField_a_of_type_Bcef.isCanceled())
+    {
+      bcef.a(this.jdField_a_of_type_Bcef, bcef.a(this.jdField_a_of_type_Bcef));
+      return;
+      bcej localbcej = (bcej)bcef.a(this.jdField_a_of_type_Bcef);
+      localbcej.e = paramString;
+      ThreadManager.getUIHandler().post(new ImageInfo.UploadMediaSegment.MediaUploadCallback.1(this, localbcej));
+      continue;
+      bcef.a(this.jdField_a_of_type_Bcef).b = paramString;
+    }
+    this.jdField_a_of_type_Bcef.onCancel();
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(getClass().getSimpleName(), 2, new Object[] { "upload onError. errorCode=", Integer.valueOf(paramInt), ", info type=", Integer.valueOf(bcef.a(this.jdField_a_of_type_Bcef).b()), ", mediaType=", Integer.valueOf(bcef.a(this.jdField_a_of_type_Bcef)) });
+    }
+    if (bcef.a(this.jdField_a_of_type_Bcef) == 2)
+    {
+      bcef.b(this.jdField_a_of_type_Bcef, bcef.a(this.jdField_a_of_type_Bcef));
+      return;
+    }
+    bcef.a(this.jdField_a_of_type_Bcef, new Error("-3"));
   }
 }
 

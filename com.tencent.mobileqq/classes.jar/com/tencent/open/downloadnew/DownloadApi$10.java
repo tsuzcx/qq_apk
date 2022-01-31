@@ -1,6 +1,6 @@
 package com.tencent.open.downloadnew;
 
-import bfkb;
+import bfok;
 
 public final class DownloadApi$10
   implements Runnable
@@ -9,7 +9,7 @@ public final class DownloadApi$10
   
   public void run()
   {
-    bfkb.a().a(this.a);
+    bfok.a().a(this.a);
   }
 }
 

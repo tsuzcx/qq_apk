@@ -64,28 +64,28 @@ public class rjm
     if (paramInt1 == 123)
     {
       if (paramInt2 == 103) {
-        return alpo.a(2131716710) + paramInt1 + "-" + paramInt2;
+        return alud.a(2131716722) + paramInt1 + "-" + paramInt2;
       }
-      return alpo.a(2131716724) + paramInt1 + "-" + paramInt2;
+      return alud.a(2131716736) + paramInt1 + "-" + paramInt2;
     }
     if (paramInt1 == 122)
     {
       if (paramInt2 == 204) {
-        return alpo.a(2131716720) + paramInt1 + "-" + paramInt2;
+        return alud.a(2131716732) + paramInt1 + "-" + paramInt2;
       }
       if (paramInt2 == 202) {
-        return alpo.a(2131716713) + paramInt1 + "-" + paramInt2;
+        return alud.a(2131716725) + paramInt1 + "-" + paramInt2;
       }
-      return alpo.a(2131716700) + paramInt1 + "-" + paramInt2;
+      return alud.a(2131716712) + paramInt1 + "-" + paramInt2;
     }
     if (paramInt1 == 101)
     {
       if (paramInt2 == 80) {
-        return alpo.a(2131716712) + paramInt1 + "-" + paramInt2;
+        return alud.a(2131716724) + paramInt1 + "-" + paramInt2;
       }
-      return alpo.a(2131716702) + paramInt1 + "-" + paramInt2;
+      return alud.a(2131716714) + paramInt1 + "-" + paramInt2;
     }
-    return alpo.a(2131716708) + paramInt1 + "-" + paramInt2;
+    return alud.a(2131716720) + paramInt1 + "-" + paramInt2;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
@@ -8,7 +8,7 @@ import org.json.JSONObject;
 class DataJsPlugin$3
   implements AsyncResult
 {
-  DataJsPlugin$3(DataJsPlugin paramDataJsPlugin, bgkd parambgkd) {}
+  DataJsPlugin$3(DataJsPlugin paramDataJsPlugin, bgok parambgok) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {

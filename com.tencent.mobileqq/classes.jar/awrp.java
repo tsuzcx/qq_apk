@@ -1,18 +1,6 @@
-import android.graphics.PointF;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.profile.view.VipTagView;
-import com.tencent.mobileqq.widget.RatioLayout;
-
-public class awrp
-  implements bdjy<PointF>
+class awrp
 {
-  public awrp(ProfileTagView paramProfileTagView, VipTagView paramVipTagView) {}
-  
-  public void a(bdjs<PointF> parambdjs, float paramFloat, PointF paramPointF, Transformation paramTransformation)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, paramPointF.x, paramPointF.y);
-  }
+  private static final awrn a = new awrn(null);
 }
 
 

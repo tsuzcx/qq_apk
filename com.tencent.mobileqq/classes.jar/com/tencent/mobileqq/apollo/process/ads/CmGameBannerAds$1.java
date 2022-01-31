@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.ads;
 
-import akrr;
-import akrt;
+import akwg;
+import akwi;
 import android.app.Activity;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
@@ -11,20 +11,20 @@ import java.util.HashMap;
 public class CmGameBannerAds$1
   implements Runnable
 {
-  public CmGameBannerAds$1(akrr paramakrr, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
+  public CmGameBannerAds$1(akwg paramakwg, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
   
   public void run()
   {
     try
     {
-      Object localObject = (akrt)akrr.a(this.this$0).get(Integer.valueOf(this.a));
-      Activity localActivity = akrr.a(this.this$0);
-      if ((localObject != null) && (((akrt)localObject).a != null))
+      Object localObject = (akwi)akwg.a(this.this$0).get(Integer.valueOf(this.a));
+      Activity localActivity = akwg.a(this.this$0);
+      if ((localObject != null) && (((akwi)localObject).a != null))
       {
         if (localActivity == null) {
           return;
         }
-        localObject = (RelativeLayout.LayoutParams)((akrt)localObject).a.getLayoutParams();
+        localObject = (RelativeLayout.LayoutParams)((akwi)localObject).a.getLayoutParams();
         ((RelativeLayout.LayoutParams)localObject).leftMargin = this.b;
         ((RelativeLayout.LayoutParams)localObject).topMargin = this.c;
         ((RelativeLayout.LayoutParams)localObject).width = this.d;

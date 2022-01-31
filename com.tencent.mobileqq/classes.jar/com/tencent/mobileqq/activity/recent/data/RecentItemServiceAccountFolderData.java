@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ajgs;
+import ajlh;
 import android.content.Context;
 import android.content.res.Resources;
-import aova;
-import axho;
+import aozj;
+import axlx;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
@@ -46,9 +46,9 @@ public class RecentItemServiceAccountFolderData
       this.mDisplayTime = localssp.a(paramQQAppInterface);
       this.mUnreadNum = localssp.b();
       Manager localManager = paramQQAppInterface.getManager(36);
-      if ((localManager instanceof axho))
+      if ((localManager instanceof axlx))
       {
-        int i = ((axho)localManager).a("104000.104001", 100);
+        int i = ((axlx)localManager).a("104000.104001", 100);
         if (i > 0) {
           this.mUnreadNum += i;
         }
@@ -66,7 +66,7 @@ public class RecentItemServiceAccountFolderData
       if (this.mDisplayTime == 0L) {
         break label673;
       }
-      this.mShowTime = ajgs.a().a(a(), this.mDisplayTime);
+      this.mShowTime = ajlh.a().a(a(), this.mDisplayTime);
       label280:
       this.mReportKeyBytesOacMsgxtend = localssp.b();
       this.mLastMsg = localssp.a(paramQQAppInterface);
@@ -79,7 +79,7 @@ public class RecentItemServiceAccountFolderData
         break label694;
       }
       this.mMsgExtroInfo = localssp.c();
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131167006);
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131167008);
     }
     for (;;)
     {
@@ -103,7 +103,7 @@ public class RecentItemServiceAccountFolderData
         break label35;
       }
       QLog.d("RecentItemServiceAccountFolderData", 1, "canDelete:" + bool + ", mMenuFlag:" + this.mMenuFlag + " tryResetServiceAccountFolderDeleteFlag = " + tryResetServiceAccountFolderDeleteFlag);
-      aova.c(paramQQAppInterface, paramQQAppInterface.c());
+      aozj.c(paramQQAppInterface, paramQQAppInterface.c());
       tryResetServiceAccountFolderDeleteFlag += 1;
       break label35;
       label657:

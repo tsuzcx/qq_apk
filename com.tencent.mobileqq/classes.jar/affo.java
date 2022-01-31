@@ -1,314 +1,124 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.item.RoundRectRelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.RoundRectUrlImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo;
-import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo.ImageItem;
-import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo.VideoItem;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class affo
-  extends BaseBubbleBuilder
+  implements affa
 {
-  private static final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private static final Drawable b;
-  private static final int c = bdkf.b(180.0F);
-  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new affp(this);
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  Map<Integer, Intent> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  static
+  affo(BaseChatPie paramBaseChatPie)
   {
-    jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(-1);
-    b = new ColorDrawable(-1);
-    b.setBounds(0, 0, bdkf.a(), c);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  public affo(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public Intent a(int paramInt)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    return (Intent)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
   }
   
-  private void a(URLImageView paramURLImageView, String paramString, Drawable paramDrawable)
+  public void a()
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramURLImageView.setImageDrawable(paramDrawable);
-      paramURLImageView.setTag("");
-    }
-    while (paramString.equals((String)paramURLImageView.getTag())) {
-      return;
-    }
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = paramDrawable;
-    localURLDrawableOptions.mFailedDrawable = paramDrawable;
-    localURLDrawableOptions.mGifRoundCorner = bdkf.b(2.0F);
-    localURLDrawableOptions.mUseSharpPImage = true;
-    localURLDrawableOptions.mExtraInfo = paramString;
-    localURLDrawableOptions.mPlayGifImage = true;
-    paramURLImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
-    paramURLImageView.setTag(paramString);
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 0;
-  }
-  
-  public aelt a()
-  {
-    return new affq();
-  }
-  
-  public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, aeov paramaeov)
-  {
-    paramaeov = super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramaeov);
-    affq localaffq = (affq)paramaeov.getTag();
-    localaffq.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setHeadIconVisible(false);
-    if ((localaffq.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a != null) && (localaffq.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.getVisibility() == 0)) {}
-    for (paramInt2 = bdkf.b(33.0F);; paramInt2 = 0)
-    {
-      paramView = (ViewGroup.MarginLayoutParams)affq.a(localaffq).getLayoutParams();
-      if (paramView.leftMargin != paramInt2)
-      {
-        paramView.leftMargin = paramInt2;
-        affq.a(localaffq).setLayoutParams(paramView);
+    int i;
+    if (Build.VERSION.SDK_INT >= 23) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0)) {
+        i = 1;
       }
-      StructMsgSubImageVideo.VideoItem localVideoItem;
-      try
-      {
-        paramView = (StructMsgSubImageVideo)((MessageForStructing)paramChatMessage).structingMsg;
-        if (paramView != null)
-        {
-          localVideoItem = paramView.getVideoItem();
-          if (localVideoItem == null)
-          {
-            paramViewGroup = paramView.getImageItem();
-            paramView = paramViewGroup;
-            if (paramViewGroup != null) {
-              break label188;
-            }
-          }
-        }
-        else
-        {
-          yid.a().b(localaffq, paramInt1);
-          paramaeov.setVisibility(8);
-          return paramaeov;
-        }
-      }
-      catch (Exception paramView)
-      {
-        for (;;)
-        {
-          Log.w("AutoVideoItemBuilder", "getView: ", paramView);
-          paramView = null;
-        }
-        paramView = null;
-        label188:
-        paramaeov.setVisibility(0);
-        if (localVideoItem == null) {
-          break label387;
-        }
-      }
-      localaffq.e = localVideoItem.width;
-      localaffq.f = localVideoItem.height;
-      localaffq.b = localVideoItem.videoUrl;
-      if (localaffq.f != 0) {}
-      for (paramInt2 = c * localaffq.e / localaffq.f;; paramInt2 = 0)
-      {
-        paramView = (RelativeLayout.LayoutParams)localaffq.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-        paramView.width = paramInt2;
-        localaffq.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(paramView);
-        affq.a(localaffq).setVisibility(8);
-        localaffq.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        affq.a(localaffq).setText(localVideoItem.title);
-        affq.a(localaffq, localVideoItem.schema);
-        a(localaffq.jdField_a_of_type_ComTencentImageURLImageView, localVideoItem.coverUrl, b);
-        yid.a().a(localaffq, paramInt1);
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && ("3046055438".equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))) {
-          nud.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage, paramaeov);
-        }
-        return paramaeov;
-        label387:
-        localaffq.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        affq.a(localaffq).setText(paramView.title);
-        affq.a(localaffq, paramView.schema);
-        if (TextUtils.isEmpty(paramView.imageUrl)) {
-          affq.a(localaffq).setVisibility(8);
-        }
-        for (;;)
-        {
-          yid.a().b(localaffq, paramInt1);
-          break;
-          affq.a(localaffq).setVisibility(0);
-          a(affq.a(localaffq), paramView.imageUrl, jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        }
-      }
-    }
-  }
-  
-  public View a(ChatMessage paramChatMessage, aelt paramaelt, View paramView, BaseChatItemLayout paramBaseChatItemLayout, aeov paramaeov)
-  {
-    paramChatMessage = paramView;
-    if (paramView == null)
-    {
-      paramBaseChatItemLayout = this.jdField_a_of_type_AndroidContentContext.getResources();
-      paramChatMessage = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      paramChatMessage.setId(2131364171);
-      paramChatMessage.setClickable(true);
-      paramView = new RelativeLayout.LayoutParams(-1, -2);
-      int i = paramBaseChatItemLayout.getDimensionPixelSize(2131298815);
-      paramView.setMargins(i, 0, i, 0);
-      paramView.addRule(1, 2131367808);
-      paramView.addRule(1, 2131364197);
-      paramChatMessage.setLayoutParams(paramView);
-      Object localObject2 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      ((RelativeLayout)localObject2).setId(2131364203);
-      paramChatMessage.addView((View)localObject2, new RelativeLayout.LayoutParams(-1, -2));
-      i = bdkf.b(2.0F);
-      paramView = new RoundRectUrlImageView(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setScaleType(ImageView.ScaleType.MATRIX);
-      paramView.setId(2131364204);
-      paramView.setAllRadius(i);
-      Object localObject1 = new RelativeLayout.LayoutParams(aekt.a(133.0F, paramBaseChatItemLayout), aekt.a(74.5F, paramBaseChatItemLayout));
-      ((RelativeLayout.LayoutParams)localObject1).setMargins(aekt.a(9.0F, paramBaseChatItemLayout), 0, 0, 0);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(11);
-      ((RelativeLayout)localObject2).addView(paramView, (ViewGroup.LayoutParams)localObject1);
-      localObject1 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      ((TextView)localObject1).setTextColor(-16777216);
-      ((TextView)localObject1).setTextSize(16.0F);
-      ((TextView)localObject1).setText(alpo.a(2131701230));
-      ((TextView)localObject1).setId(2131364205);
-      ((TextView)localObject1).setMinLines(1);
-      ((TextView)localObject1).setMaxLines(3);
-      ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
-      Object localObject3 = new RelativeLayout.LayoutParams(-1, -2);
-      ((RelativeLayout.LayoutParams)localObject3).addRule(0, paramView.getId());
-      ((RelativeLayout)localObject2).addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
-      localObject2 = new RoundRectRelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      localObject3 = new RelativeLayout.LayoutParams(-1, c);
-      ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131364203);
-      ((RelativeLayout.LayoutParams)localObject3).setMargins(0, aekt.a(10.0F, paramBaseChatItemLayout), 0, 0);
-      ((RoundRectRelativeLayout)localObject2).setBgColor(-16777216);
-      ((RoundRectRelativeLayout)localObject2).setAllRadius(i);
-      paramChatMessage.addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-      localObject3 = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-      ((URLImageView)localObject3).setId(2131364212);
-      ((URLImageView)localObject3).setScaleType(ImageView.ScaleType.FIT_XY);
-      Object localObject4 = new RelativeLayout.LayoutParams(-1, -1);
-      ((RelativeLayout.LayoutParams)localObject4).addRule(14);
-      ((RoundRectRelativeLayout)localObject2).addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
-      localObject4 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      ((TextView)localObject4).setBackgroundResource(2130837735);
-      ((TextView)localObject4).setTextColor(-1);
-      ((TextView)localObject4).setTextSize(12.0F);
-      ((TextView)localObject4).setText("13:25");
-      ((TextView)localObject4).setGravity(17);
-      Object localObject5 = new RelativeLayout.LayoutParams(aekt.a(43.0F, paramBaseChatItemLayout), aekt.a(21.0F, paramBaseChatItemLayout));
-      ((RelativeLayout.LayoutParams)localObject5).addRule(12);
-      ((RelativeLayout.LayoutParams)localObject5).addRule(11);
-      i = aekt.a(5.0F, paramBaseChatItemLayout);
-      ((RelativeLayout.LayoutParams)localObject5).setMargins(0, 0, i, i);
-      ((RoundRectRelativeLayout)localObject2).addView((View)localObject4, (ViewGroup.LayoutParams)localObject5);
-      localObject5 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      ((ImageView)localObject5).setBackgroundResource(2130837734);
-      ((ImageView)localObject5).setImageResource(2130847157);
-      i = aekt.a(17.0F, paramBaseChatItemLayout);
-      ((ImageView)localObject5).setPadding(i, i, i, i);
-      ((ImageView)localObject5).setScaleType(ImageView.ScaleType.FIT_CENTER);
-      i = aekt.a(50.0F, paramBaseChatItemLayout);
-      paramBaseChatItemLayout = new RelativeLayout.LayoutParams(i, i);
-      paramBaseChatItemLayout.addRule(13);
-      ((RoundRectRelativeLayout)localObject2).addView((View)localObject5, paramBaseChatItemLayout);
-      paramChatMessage.setTag(paramaelt);
-      paramChatMessage.setOnTouchListener(paramaeov);
-      paramChatMessage.setOnLongClickListener(paramaeov);
-      paramChatMessage.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramaelt = (affq)paramaelt;
-      affq.a(paramaelt, paramChatMessage);
-      paramaelt.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localObject2);
-      paramaelt.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localObject3);
-      paramaelt.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject5);
-      paramaelt.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject4);
-      affq.a(paramaelt, paramView);
-      affq.a(paramaelt, (TextView)localObject1);
-    }
-    return paramChatMessage;
-  }
-  
-  public String a(ChatMessage paramChatMessage)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (bdec.a(paramChatMessage.issend)) {
-      localStringBuilder.append("发出");
     }
     for (;;)
     {
-      localStringBuilder.append("视频按钮");
-      return localStringBuilder.toString();
-      localStringBuilder.append("发来");
+      if (i == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.requestPermissions(new affp(this), 3, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+        return;
+        i = 0;
+      }
+      else
+      {
+        b();
+        return;
+        i = 1;
+      }
     }
   }
   
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
+  public void a(int paramInt)
   {
-    super.a(paramInt, paramContext, paramChatMessage);
-    if (paramInt == 2131370842) {
-      super.d(paramChatMessage);
-    }
-    while (paramInt != 2131365069) {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 2: 
+      b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.hashCode());
       return;
     }
-    acex.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+    b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.hashCode());
   }
   
-  public void a(int paramInt, ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout, ViewGroup paramViewGroup)
+  public void a(int paramInt, Intent paramIntent)
   {
-    super.a(paramInt, paramChatMessage, paramBaseChatItemLayout, paramViewGroup);
+    int j = 0;
+    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramIntent);
+    if (QLog.isColorLevel())
+    {
+      if (paramIntent != null) {
+        break label54;
+      }
+      QLog.d("PhotoListHelper", 2, "setSelectedPhotoData null, code=" + paramInt);
+    }
+    label54:
+    while (!paramIntent.hasExtra("PhotoConst.SELECTED_PATHS")) {
+      return;
+    }
+    Object localObject = paramIntent.getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
+    paramIntent = paramIntent.getIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS");
+    StringBuilder localStringBuilder = new StringBuilder().append("setSelectedPhotoData checked size=");
+    if (localObject == null)
+    {
+      i = 0;
+      localObject = localStringBuilder.append(i).append(",checkedIndex size=");
+      if (paramIntent != null) {
+        break label153;
+      }
+    }
+    label153:
+    for (int i = j;; i = paramIntent.size())
+    {
+      QLog.d("PhotoListHelper", 2, i + ", code=" + paramInt);
+      return;
+      i = ((ArrayList)localObject).size();
+      break;
+    }
   }
   
-  public void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, aelt paramaelt, int paramInt1, int paramInt2)
+  public int[] a()
   {
-    super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramaelt, paramInt1, paramInt2);
-    paramChatMessage = paramContext.getResources();
-    paramaelt.a.setBackgroundResource(2130837733);
-    paramInt1 = aekt.a(10.0F, paramChatMessage);
-    paramInt2 = aekt.a(14.0F, paramChatMessage);
-    paramaelt.a.setPadding(paramInt1, paramInt2, paramInt1, paramInt2);
+    return new int[] { 2, 11 };
   }
   
-  public bdlb[] a(View paramView)
+  public void b()
   {
-    paramView = new bdkz();
-    super.c(paramView, this.jdField_a_of_type_AndroidContentContext);
-    super.e(paramView, this.jdField_a_of_type_AndroidContentContext);
-    a(paramView, this.jdField_a_of_type_AndroidContentContext);
-    return paramView.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.D())
+    {
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AC2E", "0X800AC2E", 2, 0, "", "", "", "");
+      return;
+    }
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AC2E", "0X800AC2E", 1, 0, "", "", "", "");
+    aetu.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, new Intent(), null);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoListHelper", 2, "removeSelectedPhotoData code=" + paramInt);
+    }
   }
 }
 

@@ -1,87 +1,55 @@
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQzoneFeed;
-import com.tencent.mobileqq.data.QzoneCommonIntent;
-import java.util.HashMap;
-import mqq.app.NewIntent;
+import com.tencent.mobileqq.data.MessageForText;
 
 class afuq
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-  boolean jdField_a_of_type_Boolean = this.jdField_b_of_type_Boolean;
-  
-  afuq(afun paramafun, boolean paramBoolean, int paramInt1, afur paramafur, String paramString, int paramInt2, MessageForQzoneFeed paramMessageForQzoneFeed) {}
+  afuq(afup paramafup) {}
   
   public void onClick(View paramView)
   {
-    int j = 1;
-    boolean bool;
-    label53:
-    int i;
-    label71:
-    Object localObject;
-    if (!this.jdField_a_of_type_Boolean)
+    aepi.n = true;
+    if (this.a.a()) {}
+    do
     {
-      bool = true;
-      this.jdField_a_of_type_Boolean = bool;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label316;
-      }
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_Afur.i.setText(afun.a(this.jdField_a_of_type_Int));
-      paramView = this.jdField_a_of_type_Afur.d;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label347;
-      }
-      i = 2130846979;
-      paramView.setImageResource(i);
-      long l = this.jdField_a_of_type_Afun.a.getLongAccountUin();
-      paramView = this.jdField_a_of_type_JavaLangString;
-      localObject = this.jdField_a_of_type_JavaLangString;
-      i = j;
-      if (this.jdField_a_of_type_Boolean) {
-        i = 0;
-      }
-      paramView = new bjey(Long.valueOf(l), paramView, (String)localObject, i, this.c);
-      paramView.a(100);
-      localObject = new QzoneCommonIntent(this.jdField_a_of_type_Afun.a.getApplication(), apbf.class);
-      Bundle localBundle = new Bundle();
-      localBundle.putBoolean("like_key", this.jdField_a_of_type_Boolean);
-      ((QzoneCommonIntent)localObject).putExtras(localBundle);
-      ((QzoneCommonIntent)localObject).setRequest(paramView);
-      this.jdField_a_of_type_Afun.a.startServlet((NewIntent)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.ulikeNum = this.jdField_a_of_type_Int;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.mapExt == null) {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.mapExt = new HashMap();
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.mapExt;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label353;
-      }
-    }
-    label316:
-    label347:
-    label353:
-    for (paramView = "1";; paramView = "0")
-    {
-      ((HashMap)localObject).put("isliked", paramView);
-      this.jdField_a_of_type_Afun.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed, false);
-      this.jdField_a_of_type_Afun.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.selfuin);
       return;
-      bool = false;
-      break;
-      this.jdField_a_of_type_Int -= 1;
-      this.jdField_a_of_type_Afur.i.setText(afun.a(this.jdField_a_of_type_Int));
-      break label53;
-      i = 2130846978;
-      break label71;
-    }
+      MessageForText localMessageForText = (MessageForText)aepi.a(paramView);
+      try
+      {
+        ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a().aN();
+        paramView = new Intent(paramView.getContext(), PoiMapActivity.class).putExtra("lat", localMessageForText.latitude).putExtra("lon", localMessageForText.longitude).putExtra("url", localMessageForText.url).putExtra("loc", localMessageForText.location).putExtra("uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+        ((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(paramView, 18);
+        i = 1;
+      }
+      catch (Exception paramView)
+      {
+        for (;;)
+        {
+          try
+          {
+            ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(new Intent("android.intent.action.VIEW", Uri.parse(localMessageForText.url)), 0);
+            i = 1;
+          }
+          catch (Exception paramView)
+          {
+            int i = 0;
+          }
+        }
+      }
+    } while ((i == 0) || ((!(this.a.jdField_a_of_type_AndroidContentContext instanceof SplashActivity)) && (!(this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))));
+    ((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).setCanLock(false);
   }
 }
 

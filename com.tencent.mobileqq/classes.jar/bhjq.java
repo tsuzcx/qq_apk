@@ -1,15 +1,34 @@
-import android.util.Pair;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebView.HitTestResult;
 
-final class bhjq
-  implements bhjr
+public class bhjq
+  implements View.OnLongClickListener
 {
-  public Pair<String, String> a(String paramString)
+  public bhjq(InnerWebView paramInnerWebView) {}
+  
+  public boolean onLongClick(View paramView)
   {
-    int i = paramString.indexOf(':');
-    if ((i <= 0) || (i >= paramString.length())) {
-      return null;
+    paramView = InnerWebView.a(this.a).getHitTestResult();
+    if ((paramView.getType() == 5) || (paramView.getType() == 8))
+    {
+      paramView = paramView.getExtra();
+      if (QMLog.isColorLevel()) {
+        QMLog.e("ProgressWebView", "onLongClick : " + paramView);
+      }
+      bgsi localbgsi = bgsi.a(InnerWebView.a(this.a).getContext());
+      localbgsi.a("发送给朋友", 7);
+      localbgsi.a("保存到手机", 7);
+      localbgsi.a("取消");
+      localbgsi.a(true);
+      localbgsi.a(new bhjr(this, localbgsi, paramView));
+      localbgsi.show();
+      return true;
     }
-    return new Pair(paramString.substring(0, i).trim(), paramString.substring(i + 1).trim());
+    return false;
   }
 }
 

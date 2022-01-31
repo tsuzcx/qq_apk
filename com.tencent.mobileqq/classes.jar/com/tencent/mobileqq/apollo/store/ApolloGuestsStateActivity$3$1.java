@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store;
 
-import akzb;
+import aldq;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.view.View;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class ApolloGuestsStateActivity$3$1
   implements Runnable
 {
-  public ApolloGuestsStateActivity$3$1(akzb paramakzb) {}
+  public ApolloGuestsStateActivity$3$1(aldq paramaldq) {}
   
   public void run()
   {

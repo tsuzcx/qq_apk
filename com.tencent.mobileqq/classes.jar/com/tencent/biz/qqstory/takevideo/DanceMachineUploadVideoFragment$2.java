@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.os.SystemClock;
-import bhoe;
+import bhsl;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class DanceMachineUploadVideoFragment$2

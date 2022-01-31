@@ -1,42 +1,20 @@
-import android.content.Context;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
 
 public class aduj
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aduj(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public aduj(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b(3);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.b);
-    if (this.a.a().booleanValue())
-    {
-      this.a.b();
-      paramView = ThemeUtil.getThemeVoiceRootPath();
-      if (paramView != null)
-      {
-        paramView = new File(paramView + File.separatorChar + "message.mp3");
-        if (paramView.exists())
-        {
-          this.a.b();
-          this.a.a(Uri.fromFile(paramView));
-        }
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.a.b();
-    this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
+    paramDialogInterface.dismiss();
+    RegisterChooseLoginActivity.a(this.a, false);
+    RegisterChooseLoginActivity.a(this.a, false);
+    azqs.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
+    azqs.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 2, 0, "", "", "", "");
+    azqs.a(this.a.app, "new_reg", "next_ask", "no_clk", "", 1, "");
   }
 }
 

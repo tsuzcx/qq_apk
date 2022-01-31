@@ -1,12 +1,27 @@
-class ahpn
-  implements azwv
+import android.content.Context;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+public class ahpn
+  extends ahkz
 {
-  ahpn(ahpm paramahpm) {}
+  public int a;
+  public long a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public String a;
+  public LinearLayout b;
+  public TextView b;
+  public String b;
   
-  public void a(boolean paramBoolean)
+  public ahpn(Context paramContext, View paramView)
   {
-    paramBoolean = this.a.a();
-    this.a.d(paramBoolean);
+    super(paramContext, paramView);
   }
 }
 

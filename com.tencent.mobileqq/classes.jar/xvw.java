@@ -1,14 +1,9 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
+import android.view.View;
+import com.tencent.biz.qqstory.view.widget.InnerListView;
 
-class xvw
-  extends xwa
+public abstract interface xvw
 {
-  xvw(xvv paramxvv) {}
-  
-  public void a()
-  {
-    ScannerActivity.a(this.a.a).b();
-  }
+  public abstract void a(InnerListView paramInnerListView, View paramView, int paramInt);
 }
 
 

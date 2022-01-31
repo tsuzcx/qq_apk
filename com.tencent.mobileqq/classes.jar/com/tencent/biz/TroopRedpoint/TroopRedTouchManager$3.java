@@ -1,6 +1,6 @@
 package com.tencent.biz.TroopRedpoint;
 
-import bdcs;
+import bdhb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +23,7 @@ public class TroopRedTouchManager$3
     {
       try
       {
-        bdcs.a((String)localObject1, this.a.toByteArray(), false);
+        bdhb.a((String)localObject1, this.a.toByteArray(), false);
         localObject1 = new StringBuilder("saveLocalFile==>");
         while (i < this.a.rpt_msg_reddot_info.size())
         {

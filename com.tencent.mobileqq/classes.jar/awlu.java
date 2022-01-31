@@ -1,18 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelZan;
-
 public final class awlu
-  implements Parcelable.Creator<PersonalityLabelZan>
+  extends awky
 {
-  public PersonalityLabelZan a(Parcel paramParcel)
+  protected int c()
   {
-    return new PersonalityLabelZan(paramParcel);
-  }
-  
-  public PersonalityLabelZan[] a(int paramInt)
-  {
-    return new PersonalityLabelZan[paramInt];
+    return 503;
   }
 }
 

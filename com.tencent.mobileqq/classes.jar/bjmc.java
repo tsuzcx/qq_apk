@@ -1,70 +1,18 @@
-import BOSSStrategyCenter.tAdvAppInfo;
-import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvReq;
-import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvRsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bjmc
-  extends QzoneExternalRequest
+  implements DialogInterface.OnClickListener
 {
-  JceStruct a;
+  public bjmc(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public bjmc(long paramLong, ArrayList<Integer> paramArrayList, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    MobileQbossAdvReq localMobileQbossAdvReq = new MobileQbossAdvReq();
-    localMobileQbossAdvReq.uiUin = paramLong;
-    ArrayList localArrayList = new ArrayList(paramArrayList.size());
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      Integer localInteger = (Integer)paramArrayList.next();
-      tAdvAppInfo localtAdvAppInfo = new tAdvAppInfo();
-      localtAdvAppInfo.app_id = localInteger.intValue();
-      localtAdvAppInfo.i_need_adv_cnt = 5;
-      localArrayList.add(localtAdvAppInfo);
-    }
-    localMobileQbossAdvReq.vecReqApp = localArrayList;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localMobileQbossAdvReq.iPullAsExposeOper = i;
-      localMobileQbossAdvReq.iReqFlag = 1;
-      this.a = localMobileQbossAdvReq;
-      return;
-    }
-  }
-  
-  public static MobileQbossAdvRsp a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    paramArrayOfByte = (MobileQbossAdvRsp)decode(paramArrayOfByte, "get");
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    bjmh.a(paramArrayOfByte);
-    return paramArrayOfByte;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.mobileqboss.get";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "get";
+    this.a.stopPlay();
+    QzoneWebMusicJsPlugin.access$300(this.a, "cancel");
+    paramDialogInterface.dismiss();
+    QzoneWebMusicJsPlugin.access$902(this.a, false);
   }
 }
 

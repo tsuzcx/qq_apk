@@ -1,28 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.format.Time;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import java.io.File;
+import java.io.FilenameFilter;
 
-class balx
-  implements View.OnClickListener
+public class balx
+  implements FilenameFilter
 {
-  balx(balv parambalv) {}
+  public balx(ShareAppLogHelper paramShareAppLogHelper) {}
   
-  public void onClick(View paramView)
+  public boolean accept(File paramFile, String paramString)
   {
-    switch (((balg)paramView.getTag()).b)
+    if ((!paramString.endsWith(".log")) && (!paramString.endsWith(".zip")) && (!paramString.endsWith(".qlog"))) {}
+    do
     {
-    }
-    for (;;)
-    {
-      this.a.dismiss();
-      return;
-      this.a.d();
-      continue;
-      this.a.e();
-      continue;
-      this.a.f();
-      continue;
-      this.a.g();
-    }
+      return false;
+      paramFile = ShareAppLogHelper.a(this.a, paramString);
+    } while ((paramFile == null) || (paramFile.toMillis(false) < ShareAppLogHelper.a(this.a).toMillis(false)) || (paramFile.toMillis(false) > ShareAppLogHelper.b(this.a).toMillis(false)));
+    return true;
   }
 }
 

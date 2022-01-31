@@ -1,36 +1,24 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troop.honor.widget.TroopHonorView;
-import java.util.List;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class aelr
-  implements alzv
+  implements DialogInterface.OnClickListener
 {
-  public BaseChatItemLayout a;
-  public String a;
+  public aelr(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  private aelr(BaseBubbleBuilder paramBaseBubbleBuilder) {}
-  
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramTroopMemberInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(paramTroopMemberInfo.memberuin)))
+    this.a.n();
+    if (!TextUtils.isEmpty(this.a.a())) {}
+    for (paramDialogInterface = "1";; paramDialogInterface = "0")
     {
-      paramTroopMemberInfo = ((bcbt)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.getManager(346)).a(paramTroopMemberInfo.honorList);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a != null))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setHonorList(paramTroopMemberInfo);
-        if ((paramTroopMemberInfo == null) || (paramTroopMemberInfo.size() <= 0)) {
-          break label108;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder);
-      }
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, ndd.a(), paramDialogInterface, "0");
+      this.a.finish();
+      return;
     }
-    return;
-    label108:
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setOnClickListener(null);
   }
 }
 

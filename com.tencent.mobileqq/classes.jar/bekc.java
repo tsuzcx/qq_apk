@@ -1,24 +1,16 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
+import java.util.ArrayList;
 
-@TargetApi(16)
 public class bekc
-  implements bhrf
 {
-  bekc(ContextMenuTextView paramContextMenuTextView) {}
+  public static int a;
+  public static ArrayList<String> a;
+  public static boolean a;
+  public static boolean b;
   
-  public void a()
+  static
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      ContextMenuTextView.a(this.a, null);
-    }
-    for (;;)
-    {
-      this.a.a = null;
-      return;
-      ContextMenuTextView.b(this.a, null);
-    }
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_Int = -1;
   }
 }
 

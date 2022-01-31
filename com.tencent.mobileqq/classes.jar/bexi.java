@@ -1,33 +1,18 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
 
 public class bexi
-  implements View.OnLayoutChangeListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bexi(AuthorityAccountView paramAuthorityAccountView, RelativeLayout paramRelativeLayout) {}
+  public bexi(FloatingScreenContainer paramFloatingScreenContainer, WindowManager.LayoutParams paramLayoutParams) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramInt1 = paramView.getHeight();
-    paramInt2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("AuthorityAccountView", 2, paramInt1 + " /  / " + paramInt2);
-    }
-    paramView = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    if (paramView == null) {
-      paramView = new RelativeLayout.LayoutParams(-1, -2);
-    }
-    for (;;)
-    {
-      paramView.addRule(12);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
-      return;
-      paramView.height = -2;
-    }
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.alpha = (paramValueAnimator.floatValue() * 1.0F + 0.0F);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
   }
 }
 

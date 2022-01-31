@@ -1,11 +1,30 @@
-class tuv
-  implements bhrf
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.subscribe.comment.CommentEditText;
+
+public class tuv
+  extends uce
 {
-  tuv(tuu paramtuu) {}
-  
-  public void a()
+  public tuv(Activity paramActivity)
   {
-    tuk.a(this.a.a, 63);
+    super(paramActivity);
+  }
+  
+  protected int a()
+  {
+    return 2131560520;
+  }
+  
+  protected void a(View paramView)
+  {
+    if (this.a != null) {
+      this.a.a();
+    }
+  }
+  
+  protected void b()
+  {
+    super.b();
   }
 }
 

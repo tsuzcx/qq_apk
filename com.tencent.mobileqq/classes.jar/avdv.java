@@ -1,14 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnDismissListener;
 
-class avdv
-  implements View.OnClickListener
+final class avdv
+  implements DialogInterface.OnCancelListener
 {
-  avdv(avcw paramavcw) {}
+  avdv(DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.e(paramView);
+    this.a.onDismiss(paramDialogInterface);
   }
 }
 

@@ -2,21 +2,21 @@ package com.tencent.mobileqq.activity.qwallet.widget;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import baul;
-import baum;
+import bayu;
+import bayv;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 import cooperation.qwallet.plugin.QWalletPicHelper;
 
 class HongBaoPanel$2
-  extends baum
+  extends bayv
 {
   HongBaoPanel$2(HongBaoPanel paramHongBaoPanel, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, Drawable paramDrawable) {}
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     super.onLoadSuccessed(paramURLDrawable);
-    paramURLDrawable = QWalletPicHelper.getDrawableForAIO(this.val$info.resPath, baul.a);
+    paramURLDrawable = QWalletPicHelper.getDrawableForAIO(this.val$info.resPath, bayu.a);
     HongBaoPanel.access$100(this.this$0).setImageDrawable(paramURLDrawable);
     ((URLDrawable)this.val$backDrawable).setURLDrawableListener(null);
   }

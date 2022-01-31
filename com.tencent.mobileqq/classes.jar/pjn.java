@@ -13,9 +13,9 @@ public class pjn
   private rvg jdField_a_of_type_Rvg;
   private piz b;
   
-  public pjn(Context paramContext, rrn paramrrn, bcws parambcws, rqj paramrqj, bhtq parambhtq, ListView paramListView)
+  public pjn(Context paramContext, rrn paramrrn, bdbb parambdbb, rqj paramrqj, bhxx parambhxx, ListView paramListView)
   {
-    this.jdField_a_of_type_Piz = new pji(paramContext, parambcws, paramrqj, paramListView, parambhtq);
+    this.jdField_a_of_type_Piz = new pji(paramContext, parambdbb, paramrqj, paramListView, parambhxx);
     this.b = new pja(paramContext, paramrrn, paramrqj);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }

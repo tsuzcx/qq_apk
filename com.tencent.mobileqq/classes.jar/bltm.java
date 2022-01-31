@@ -1,18 +1,15 @@
-import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class bltm
-  implements blsz
+  implements View.OnTouchListener
 {
   bltm(bltl parambltl) {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    String str = paramString;
-    if (paramInt == 0) {
-      str = bcjk.b(paramString);
-    }
-    return str;
+    return true;
   }
 }
 

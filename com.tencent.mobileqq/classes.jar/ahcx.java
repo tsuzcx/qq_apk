@@ -1,41 +1,56 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import com.tencent.widget.XListView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahcx
-  extends Handler
+  implements bbqo
 {
-  private WeakReference<PublicView> a;
+  public ahcx(BlessResultActivity paramBlessResultActivity) {}
   
-  public ahcx(PublicView paramPublicView)
+  public void a()
   {
-    this.a = new WeakReference(paramPublicView);
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadSuccess!");
+    }
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.g = this.a.b(this.a.d);
+    if (this.a.jdField_a_of_type_Bhsl.hasMessages(1003)) {
+      this.a.jdField_a_of_type_Bhsl.removeMessages(1003);
+    }
+    this.a.jdField_a_of_type_Bhsl.sendEmptyMessage(1001);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(long paramLong)
   {
-    PublicView localPublicView = (PublicView)this.a.get();
-    if (localPublicView == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadFail!");
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      PublicView.a(localPublicView).springBackOverScrollHeaderView();
-      return;
-    case 2: 
-      PublicView.a(localPublicView).springBackOverScrollHeaderView();
-      PublicView.a(localPublicView, 1, 2131720325);
-      return;
-    case 3: 
-      PublicView.a(localPublicView, true);
-      return;
+    if (this.a.jdField_a_of_type_Bhsl.hasMessages(1003)) {
+      this.a.jdField_a_of_type_Bhsl.removeMessages(1003);
     }
-    PublicView.b(localPublicView);
+    this.a.jdField_a_of_type_Bhsl.sendEmptyMessage(1003);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStart!");
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStop!");
+    }
+  }
+  
+  public void c(long paramLong)
+  {
+    long l = bdhb.a(this.a.jdField_a_of_type_Ahcy.a);
+    int i = (int)(100L * paramLong / l);
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadProcess! rawLen = " + l + ",offset = " + paramLong + ",process = " + i);
+    }
   }
 }
 

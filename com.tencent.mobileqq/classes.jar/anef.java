@@ -1,23 +1,22 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.3;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.3.3.1;
-
 public class anef
-  implements anfo
 {
-  public anef(ArkAppDeviceModule.ObserverMethod.3.3.1 param1) {}
-  
-  public void a(long paramLong)
+  public int a()
   {
-    ark.VariantWrapper localVariantWrapper = this.a.a.a.jdField_a_of_type_Andz.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
+    return 0;
   }
   
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  public void a() {}
+  
+  public void a(aneg paramaneg) {}
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
   {
-    andw.a(this.a.a.a.jdField_a_of_type_Andz.a, this.a.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    return false;
+  }
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    return false;
   }
 }
 

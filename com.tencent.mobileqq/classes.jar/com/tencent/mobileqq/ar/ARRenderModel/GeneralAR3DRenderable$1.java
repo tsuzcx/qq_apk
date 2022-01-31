@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amof;
-import amqu;
-import amrh;
+import amsu;
+import amvj;
+import amvw;
 
 public class GeneralAR3DRenderable$1
   implements Runnable
 {
-  public GeneralAR3DRenderable$1(amrh paramamrh) {}
+  public GeneralAR3DRenderable$1(amvw paramamvw) {}
   
   public void run()
   {
-    if (amrh.a(this.this$0) != 9) {}
+    if (amvw.a(this.this$0) != 9) {}
     do
     {
       return;
-      if (amrh.a(this.this$0) != null) {
-        amrh.a(this.this$0).b(0, 1);
+      if (amvw.a(this.this$0) != null) {
+        amvw.a(this.this$0).b(0, 1);
       }
-    } while (amrh.a(this.this$0) == null);
-    amrh.a(this.this$0).a();
+    } while (amvw.a(this.this$0) == null);
+    amvw.a(this.this$0).a();
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.utils;
 
 import android.app.Activity;
 import android.os.Bundle;
-import bfko;
+import bfox;
 
 public final class NewUpgradeDialog$7
   implements Runnable
@@ -11,7 +11,7 @@ public final class NewUpgradeDialog$7
   
   public void run()
   {
-    bfko.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, true, true);
+    bfox.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, true, true);
   }
 }
 

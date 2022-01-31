@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
 
 public class ror
 {
-  public static final String a = aljq.cA;
+  public static final String a = alof.cA;
   
   public static int a()
   {
@@ -86,7 +86,7 @@ public class ror
   {
     if (!TextUtils.isEmpty(paramString1))
     {
-      String str = bfhh.a(paramString1 + System.currentTimeMillis());
+      String str = bflq.a(paramString1 + System.currentTimeMillis());
       StringBuilder localStringBuilder = new StringBuilder(a());
       localStringBuilder.append(str);
       localStringBuilder.append(".");
@@ -101,7 +101,7 @@ public class ror
   
   public static boolean a()
   {
-    return bdcb.f();
+    return bdgk.f();
   }
   
   public static boolean a(int paramInt1, int paramInt2)

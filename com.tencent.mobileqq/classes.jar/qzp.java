@@ -78,7 +78,7 @@ public class qzp
       localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(i);
       if ((localObject1 != null) && ((localObject1 instanceof ProteusItemView)))
       {
-        localpgq = (pgq)((View)localObject1).getTag(2131379913);
+        localpgq = (pgq)((View)localObject1).getTag(2131379971);
         localObject2 = localpgq.a();
         if (((AdvertisementInfo.isAdvertisementInfo((BaseArticleInfo)localObject2)) && (localpgq.a() == 6)) || ((AdvertisementInfo.isAdvertisementInfo((BaseArticleInfo)localObject2)) && (localpgq.a() == 66)) || ((AdvertisementInfo.isAdvertisementInfo((BaseArticleInfo)localObject2)) && (localpgq.a() == 115)))
         {
@@ -160,7 +160,7 @@ public class qzp
           if (paramInt1 < this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildCount())
           {
             localView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(paramInt1);
-            paramrjn = localView.getTag(2131379913);
+            paramrjn = localView.getTag(2131379971);
             if ((!(paramrjn instanceof pgq)) || (((pgq)paramrjn).a() != paramrjk.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo) || (!(paramrjk.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo instanceof AdvertisementInfo))) {
               break label778;
             }
@@ -255,7 +255,7 @@ public class qzp
       if (paramInt1 < this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildCount())
       {
         paramrjn = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(paramInt1);
-        paramObject = paramrjn.getTag(2131379913);
+        paramObject = paramrjn.getTag(2131379971);
         if ((!(paramObject instanceof pgq)) || (((pgq)paramObject).a() != paramrjk.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo) || (!(paramrjn instanceof ProteusItemView))) {
           break label980;
         }
@@ -287,7 +287,7 @@ public class qzp
             break label914;
           }
           paramrjn = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(paramInt1);
-          paramObject = paramrjn.getTag(2131379913);
+          paramObject = paramrjn.getTag(2131379971);
           if (((paramObject instanceof pgq)) && (((pgq)paramObject).a() == paramrjk.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo) && ((paramrjn instanceof ProteusItemView)))
           {
             paramrjn = ((ProteusItemView)paramrjn).a().getVirtualView().findViewBaseByName("id_view_Ad_CompleteGudie");

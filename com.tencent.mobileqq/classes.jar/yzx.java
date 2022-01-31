@@ -1,41 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.jakewharton.disklrucache.DiskLruCache.Snapshot;
+import java.io.InputStream;
 
-class yzx
-  implements nbs
+public class yzx
 {
-  yzx(yzu paramyzu, JsBridgeListener paramJsBridgeListener) {}
+  private DiskLruCache.Snapshot jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot;
+  private InputStream jdField_a_of_type_JavaIoInputStream;
   
-  public void loaded(String paramString, int paramInt)
+  public yzx(yzw paramyzw) {}
+  
+  public InputStream a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject();
-        paramString.put("retcode", -1);
-        paramString.put("msg", "error");
-        this.jdField_a_of_type_Yzu.callJs(this.jdField_a_of_type_Yzu.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("OfflinePluginQQ", 2, "OfflinePlugin, batchCheckUpdate, JSONException :" + paramString);
-        return;
-      }
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 121;
-    localMessage.obj = new Object[] { this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener, paramString };
-    this.jdField_a_of_type_Yzu.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    return this.jdField_a_of_type_JavaIoInputStream;
   }
   
-  public void progress(int paramInt) {}
+  public void a(DiskLruCache.Snapshot paramSnapshot)
+  {
+    this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot = paramSnapshot;
+  }
+  
+  public void a(InputStream paramInputStream)
+  {
+    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
+  }
 }
 
 

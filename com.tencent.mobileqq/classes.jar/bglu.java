@@ -1,18 +1,12 @@
-import android.os.Looper;
+import android.webkit.ValueCallback;
 
-public final class bglu
+public abstract interface bglu
 {
-  public static final bglv a;
+  public abstract void a(int paramInt, String paramString);
   
-  static
-  {
-    if (Looper.getMainLooper() != null) {}
-    for (Looper localLooper = Looper.getMainLooper();; localLooper = Looper.myLooper())
-    {
-      a = new bglv(localLooper);
-      return;
-    }
-  }
+  public abstract void a(String paramString, ValueCallback paramValueCallback);
+  
+  public abstract void a(String paramString1, String paramString2, int paramInt);
 }
 
 

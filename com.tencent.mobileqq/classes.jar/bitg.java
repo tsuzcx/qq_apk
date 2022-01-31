@@ -1,24 +1,17 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bitg
-  extends bitw
+final class bitg
+  implements View.OnClickListener
 {
-  public bitg(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext)
-  {
-    super(paramContext);
-  }
+  bitg(Dialog paramDialog) {}
   
-  public void onBackPressed()
+  public void onClick(View paramView)
   {
-    if (this.a.a) {
-      super.onBackPressed();
+    if (this.a != null) {
+      this.a.dismiss();
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
   }
 }
 

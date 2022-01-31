@@ -1,17 +1,14 @@
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetCommentListRsp;
+
 class tun
-  implements ucl
+  implements zac<FeedCloudRead.StGetCommentListRsp>
 {
-  tun(tuk paramtuk) {}
+  tun(tuk paramtuk, FeedCloudMeta.StFeed paramStFeed, boolean paramBoolean) {}
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetCommentListRsp paramStGetCommentListRsp)
   {
-    if (paramInt == 1) {
-      tuk.a(this.a, 56);
-    }
-    while (paramInt <= 1) {
-      return;
-    }
-    tuk.a(this.a, 57);
+    tuk.a(this.jdField_a_of_type_Tuk, paramBoolean, paramLong, paramString, paramStGetCommentListRsp, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Boolean);
   }
 }
 

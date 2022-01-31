@@ -1,68 +1,87 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.business.qvip.QQLevelIconConfig;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class aoup
-  extends aofy<aouo>
+public class aoup
+  extends aouf<QQLevelIconConfig>
 {
-  public static void b()
+  public static QQLevelIconConfig c()
   {
-    QLog.d("TdsReaderView_TdsReaderConfigProcessor", 1, "initConfig");
-    aouo.a(false, (aouo)aogj.a().a(482));
+    QQLevelIconConfig localQQLevelIconConfig2 = (QQLevelIconConfig)aoks.a().a(542);
+    QQLevelIconConfig localQQLevelIconConfig1 = localQQLevelIconConfig2;
+    if (localQQLevelIconConfig2 == null) {
+      localQQLevelIconConfig1 = new QQLevelIconConfig();
+    }
+    return localQQLevelIconConfig1;
   }
   
   public int a()
   {
-    return 482;
+    return 542;
   }
   
   @NonNull
-  public aouo a(int paramInt)
+  public QQLevelIconConfig a()
   {
-    QLog.w("TdsReaderView_TdsReaderConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
-    return new aouo();
+    return new QQLevelIconConfig();
   }
   
-  @Nullable
-  public aouo a(aogf[] paramArrayOfaogf)
+  @NonNull
+  public QQLevelIconConfig a(aoko[] paramArrayOfaoko)
   {
-    return aouo.a(paramArrayOfaogf);
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLevelIconProcessor", 1, paramArrayOfaoko[0].a);
+    }
+    QQLevelIconConfig localQQLevelIconConfig = new QQLevelIconConfig();
+    paramArrayOfaoko = paramArrayOfaoko[0].a;
+    for (;;)
+    {
+      try
+      {
+        if (!TextUtils.isEmpty(paramArrayOfaoko))
+        {
+          paramArrayOfaoko = new JSONObject(paramArrayOfaoko);
+          if (paramArrayOfaoko.optInt("newguideswitch", 1) != 1) {
+            continue;
+          }
+          bool1 = true;
+          localQQLevelIconConfig.mIsEnableGuide = bool1;
+          bool1 = bool2;
+          if (paramArrayOfaoko.optInt("rushfeeswitch", 1) == 1) {
+            bool1 = true;
+          }
+          localQQLevelIconConfig.mIsNotifyPayment = bool1;
+          localQQLevelIconConfig.mNotifyPaymentText = paramArrayOfaoko.optString("rushfeetips", localQQLevelIconConfig.mNotifyPaymentText);
+          localQQLevelIconConfig.mExpiredNotifyPaymentText = paramArrayOfaoko.optString("expiredtips", localQQLevelIconConfig.mExpiredNotifyPaymentText);
+        }
+      }
+      catch (JSONException paramArrayOfaoko)
+      {
+        boolean bool1;
+        wxe.e("QQLevelIconProcessor", "QVipBigClubSVIP9Config onParsed exception :" + paramArrayOfaoko.getMessage());
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("QQLevelIconProcessor", 1, " : " + localQQLevelIconConfig.toString());
+      }
+      return localQQLevelIconConfig;
+      bool1 = false;
+    }
   }
   
-  public Class<aouo> a()
+  public Class<QQLevelIconConfig> a()
   {
-    return aouo.class;
+    return QQLevelIconConfig.class;
   }
   
-  public void a(int paramInt)
+  @NonNull
+  public QQLevelIconConfig b()
   {
-    QLog.e("TdsReaderView_TdsReaderConfigProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public void a(aouo paramaouo)
-  {
-    QLog.w("TdsReaderView_TdsReaderConfigProcessor", 1, "onUpdate");
-    aouo.a(true, paramaouo);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return new QQLevelIconConfig();
   }
 }
 

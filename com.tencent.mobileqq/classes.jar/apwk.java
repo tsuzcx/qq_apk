@@ -1,85 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class apwk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private byte[] jdField_a_of_type_ArrayOfByte = new byte[1];
-  private Map<String, Integer> b = new HashMap();
-  private Map<String, List<StructMsg.ButtonInfo>> c = new HashMap();
+  public apwk(EmotionKeywordLayout paramEmotionKeywordLayout) {}
   
-  public int a(String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    synchronized (this.jdField_a_of_type_ArrayOfByte)
-    {
-      if ((!TextUtils.isEmpty(paramString)) && (this.b.containsKey(paramString)))
-      {
-        int i = ((Integer)this.b.get(paramString)).intValue();
-        return i;
-      }
-      return -1;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionKeywordLayout", 2, "show:offset=" + f);
     }
-  }
-  
-  public long a(String paramString)
-  {
-    long l2 = -1L;
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    long l1 = l2;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        l1 = l2;
-        if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-          l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(paramString)).longValue();
-        }
-      }
-      return l1;
-    }
-    finally {}
-  }
-  
-  public List<StructMsg.ButtonInfo> a(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_ArrayOfByte)
-    {
-      if (this.c.containsKey(paramString))
-      {
-        paramString = (List)this.c.get(paramString);
-        return paramString;
-      }
-      return null;
-    }
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      synchronized (this.jdField_a_of_type_ArrayOfByte)
-      {
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
-        return;
-      }
-    }
-  }
-  
-  public void a(String paramString, List<StructMsg.ButtonInfo> paramList, int paramInt, long paramLong)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      synchronized (this.jdField_a_of_type_ArrayOfByte)
-      {
-        if (this.c.containsKey(paramString)) {
-          this.c.remove(paramString);
-        }
-        this.c.put(paramString, paramList);
-        this.b.put(paramString, Integer.valueOf(paramInt));
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
-        return;
-      }
+    if (EmotionKeywordLayout.a(this.a) != null) {
+      EmotionKeywordLayout.a(this.a).setTranslationY(f);
     }
   }
 }

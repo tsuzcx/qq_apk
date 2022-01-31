@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
@@ -8,10 +8,10 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-import xpb;
+import xtk;
 
 class VideoJsPlugin$6
-  implements xpb
+  implements xtk
 {
   VideoJsPlugin$6(VideoJsPlugin paramVideoJsPlugin, long paramLong1, String paramString1, LocalMediaInfo paramLocalMediaInfo, int paramInt, String paramString2, long paramLong2, AppBrandRuntime paramAppBrandRuntime) {}
   
@@ -70,7 +70,7 @@ class VideoJsPlugin$6
             i = (int)((float)(TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(j) + (1000.0D * d)) * 100.0F / (float)this.val$duration);
             if ((i < 100) && (this.val$runtime != null))
             {
-              VideoJsPlugin.access$900(this.this$0, this.val$runtime, alpo.a(2131716682) + i + "%");
+              VideoJsPlugin.access$900(this.this$0, this.val$runtime, alud.a(2131716694) + i + "%");
               return;
             }
           }

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afxu;
+import agcj;
 import android.app.Dialog;
 
 public class StructingMsgItemBuilder$17$1
   implements Runnable
 {
-  public StructingMsgItemBuilder$17$1(afxu paramafxu, Dialog paramDialog) {}
+  public StructingMsgItemBuilder$17$1(agcj paramagcj, Dialog paramDialog) {}
   
   public void run()
   {

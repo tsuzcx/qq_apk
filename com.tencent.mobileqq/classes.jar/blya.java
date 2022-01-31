@@ -1,68 +1,59 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.cropvideo.CropVideoActivity.CropUtils.1;
-import java.io.File;
+import android.text.Spanned;
+import android.text.TextUtils;
 
-public class blya
+class blya
+  extends bmsw
 {
-  public static void a(@NonNull String paramString1, @NonNull String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong1, long paramLong2, @NonNull ulb paramulb)
+  blya(blxx paramblxx, int paramInt)
   {
-    xmh.a(paramString1);
-    xmh.a(paramString2);
-    xmh.a(paramulb);
-    ThreadManager.newFreeThread(new CropVideoActivity.CropUtils.1(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramLong1, paramLong2, paramulb), "VideoCrop", 5).start();
+    super(paramInt);
   }
   
-  private static int b(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong1, long paramLong2)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    wsv.b("CropVideoActivity", "startCropVideo cropX: " + paramInt1 + ", cropY: " + paramInt2 + ", cropWidth: " + paramInt3 + ", cropHeight: " + paramInt4 + ", targetWidth: " + paramInt5 + ", targetHeight: " + paramInt6 + ", startTime: " + paramLong1 + ", endTime: " + paramLong2);
-    int i = paramInt5;
-    if (paramInt5 == -1) {
-      i = paramInt3;
-    }
-    paramInt5 = paramInt6;
-    if (paramInt6 == -1) {
-      paramInt5 = paramInt4;
-    }
-    if (paramLong1 < 0L)
+    String str1;
+    String str2;
+    int i;
+    if (this.jdField_a_of_type_Blxx.b() == 0)
     {
-      wsv.e("CropVideoActivity", "startCropVideo illegal start time!");
-      return -1;
+      str1 = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
+      str2 = bcnt.b(str1);
+      String[] arrayOfString = this.jdField_a_of_type_Blxx.a(str2).split("\n");
+      int m = arrayOfString.length;
+      int j = 0;
+      i = 0;
+      if (j < m)
+      {
+        int k = arrayOfString[j].length();
+        int n = k / 5;
+        if (k % 5 > 0) {}
+        for (k = 1;; k = 0)
+        {
+          i += k + n;
+          j += 1;
+          break;
+        }
+      }
+      if (!TextUtils.equals(paramCharSequence, "\n")) {
+        break label261;
+      }
+      i += 1;
     }
-    if ((paramLong1 >= paramLong2) && (paramLong2 >= 0L))
+    label261:
+    for (;;)
     {
-      wsv.e("CropVideoActivity", "startCropVideo illegal time!");
-      return -2;
+      if (i > 4)
+      {
+        if (!TextUtils.equals("", paramCharSequence)) {
+          a();
+        }
+        return "";
+      }
+      this.jdField_a_of_type_Int = (str1.length() - str2.length() + 20);
+      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+      this.jdField_a_of_type_Int = 20;
+      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
     }
-    paramInt6 = paramInt1;
-    if (paramInt1 % 2 != 0) {
-      paramInt6 = (paramInt1 + 1) / 2 * 2;
-    }
-    paramInt1 = paramInt2;
-    if (paramInt2 % 2 != 0) {
-      paramInt1 = (paramInt2 + 1) / 2 * 2;
-    }
-    paramInt2 = paramInt3;
-    if (paramInt3 % 16 != 0) {
-      paramInt2 = paramInt3 / 16 * 16;
-    }
-    paramInt3 = paramInt4;
-    if (paramInt4 % 16 != 0) {
-      paramInt3 = paramInt4 / 16 * 16;
-    }
-    if (i % 16 != 0) {
-      paramInt4 = i / 16;
-    }
-    if (paramInt5 % 16 != 0) {
-      paramInt4 = paramInt5 / 16;
-    }
-    paramString1 = new File(paramString1);
-    paramString2 = new blyb(paramString2, 2048000, paramLong1, paramLong2, false, true);
-    paramString2.a(paramInt6, paramInt1, paramInt2, paramInt3);
-    if ((new bnos().a(paramString1, paramString2, true)) && (paramString2.a == null)) {
-      return 0;
-    }
-    return -3;
   }
 }
 

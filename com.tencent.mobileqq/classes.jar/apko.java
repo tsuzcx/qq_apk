@@ -1,106 +1,81 @@
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import com.tencent.qphone.base.util.QLog;
 
 public class apko
-  extends RecyclerView.LayoutManager
+  extends BitmapDrawable
 {
-  private View.OnClickListener a;
+  public int a;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(2);
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   
-  public apko(View.OnClickListener paramOnClickListener)
+  public apko(Resources paramResources, Bitmap paramBitmap)
   {
-    this.a = paramOnClickListener;
+    super(paramResources, paramBitmap);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
   
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected Rect a(Rect paramRect)
   {
-    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    layoutDecorated(paramView, paramInt1 + localLayoutParams.leftMargin, paramInt2 + localLayoutParams.topMargin, paramInt3 - localLayoutParams.rightMargin, paramInt4 - localLayoutParams.bottomMargin);
-  }
-  
-  public RecyclerView.LayoutParams generateDefaultLayoutParams()
-  {
-    return new RecyclerView.LayoutParams(-2, -2);
-  }
-  
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
-  {
-    detachAndScrapAttachedViews(paramRecycler);
-    int i = getItemCount();
-    int m;
+    if (getBitmap() == null) {
+      return this.jdField_a_of_type_AndroidGraphicsRect;
+    }
+    int i = getBitmap().getHeight();
+    int k = getBitmap().getWidth();
+    if (paramRect == null) {
+      return new Rect(0, 0, k, i);
+    }
+    QLog.d("chatbg", 1, "dstRect = " + paramRect);
+    QLog.d("chatbg", 1, "img width = " + k + " img height = " + i);
+    if (this.jdField_a_of_type_Int < paramRect.height()) {
+      this.jdField_a_of_type_Int = paramRect.height();
+    }
     int j;
-    int k;
-    if (i > 3)
+    if (this.jdField_a_of_type_Int / paramRect.width() >= i / k)
     {
-      i = 3;
-      if (i >= 0)
-      {
-        paramState = paramRecycler.getViewForPosition(i);
-        addView(paramState);
-        measureChildWithMargins(paramState, 0, 0);
-        m = getWidth() - getDecoratedMeasuredWidth(paramState);
-        j = getHeight() - getDecoratedMeasuredHeight(paramState);
-        k = m / 2;
-        m /= 2;
-        a(paramState, k, j, getDecoratedMeasuredWidth(paramState) + m, getDecoratedMeasuredHeight(paramState) + j);
-        if (i == 3)
-        {
-          paramState.setScaleX(1.0F - (i - 1) * 0.1F);
-          paramState.setScaleY(1.0F - (i - 1) * 0.1F);
-          paramState.setTranslationY((i - 1) * paramState.getMeasuredHeight() / -10);
-          paramState.setAlpha(0.8F);
-        }
-        for (;;)
-        {
-          i -= 1;
-          break;
-          if (i > 0)
-          {
-            paramState.setScaleX(1.0F - i * 0.1F);
-            paramState.setScaleY(1.0F - i * 0.1F);
-            paramState.setTranslationY(paramState.getMeasuredHeight() * i / -10);
-            paramState.setAlpha(0.6F);
-          }
-          else if (this.a != null)
-          {
-            paramState.setOnClickListener(this.a);
-          }
-        }
+      j = paramRect.width() * i / this.jdField_a_of_type_Int;
+      k = (int)((k - j) * 0.5D);
+      if (this.jdField_a_of_type_Int > paramRect.height()) {
+        i = getBitmap().getHeight() * paramRect.height() / this.jdField_a_of_type_Int;
       }
     }
-    else
+    for (paramRect = new Rect(k, 0, j + k, i);; paramRect = new Rect(0, i, k, j + i))
     {
-      i -= 1;
-      if (i >= 0)
-      {
-        paramState = paramRecycler.getViewForPosition(i);
-        addView(paramState);
-        measureChildWithMargins(paramState, 0, 0);
-        m = getWidth() - getDecoratedMeasuredWidth(paramState);
-        j = getHeight() - getDecoratedMeasuredHeight(paramState);
-        k = m / 2;
-        m /= 2;
-        a(paramState, k, j, getDecoratedMeasuredWidth(paramState) + m, getDecoratedMeasuredHeight(paramState) + j);
-        if (i > 0)
-        {
-          paramState.setScaleX(1.0F - i * 0.1F);
-          paramState.setScaleY(1.0F - i * 0.1F);
-          paramState.setTranslationY(paramState.getMeasuredHeight() * i / -10);
-        }
-        for (;;)
-        {
-          i -= 1;
-          break;
-          if (this.a != null) {
-            paramState.setOnClickListener(this.a);
-          }
-        }
-      }
+      QLog.d("chatbg", 1, " result = " + paramRect + " chatWindowHeight " + this.jdField_a_of_type_Int);
+      return paramRect;
+      j = paramRect.height() * k / paramRect.width();
+      i = (int)((i - this.jdField_a_of_type_Int * k / paramRect.width()) * 0.5D);
     }
   }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    {
+      Rect localRect = getBounds();
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, localRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+  }
+  
+  public int getOpacity()
+  {
+    return 0;
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    this.jdField_a_of_type_AndroidGraphicsRect = a(getBounds());
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

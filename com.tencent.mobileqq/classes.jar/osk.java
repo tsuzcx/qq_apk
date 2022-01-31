@@ -170,7 +170,7 @@ public class osk
     //   50: new 154	java/lang/IllegalArgumentException
     //   53: dup
     //   54: invokespecial 155	java/lang/IllegalArgumentException:<init>	()V
-    //   57: invokestatic 160	aekt:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/RuntimeException;)V
+    //   57: invokestatic 160	aepi:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/RuntimeException;)V
     //   60: goto -17 -> 43
     //   63: astore_3
     //   64: aload_0

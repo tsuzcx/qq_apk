@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import alpo;
+import alud;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -29,7 +29,7 @@ class AppLoadingUI$13
             this.this$0.uiHandler.postDelayed(new AppLoadingUI.13.1(this), 1000L);
             return;
           }
-          str = alpo.a(2131700992);
+          str = alud.a(2131701004);
           continue;
         }
         Object localObject = null;

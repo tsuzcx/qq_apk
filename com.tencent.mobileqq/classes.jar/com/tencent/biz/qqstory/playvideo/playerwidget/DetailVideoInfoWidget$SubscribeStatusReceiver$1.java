@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.playvideo.playerwidget;
 
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import usd;
-import vwj;
+import uwm;
+import was;
 
 public class DetailVideoInfoWidget$SubscribeStatusReceiver$1
   implements Runnable
 {
-  public DetailVideoInfoWidget$SubscribeStatusReceiver$1(vwj paramvwj, usd paramusd, QQUserUIItem paramQQUserUIItem) {}
+  public DetailVideoInfoWidget$SubscribeStatusReceiver$1(was paramwas, uwm paramuwm, QQUserUIItem paramQQUserUIItem) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Usd.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+    this.jdField_a_of_type_Uwm.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
   }
 }
 

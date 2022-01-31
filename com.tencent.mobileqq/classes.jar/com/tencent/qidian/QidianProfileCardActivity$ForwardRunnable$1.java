@@ -1,6 +1,6 @@
 package com.tencent.qidian;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
 
 class QidianProfileCardActivity$ForwardRunnable$1
@@ -10,7 +10,7 @@ class QidianProfileCardActivity$ForwardRunnable$1
   
   public void run()
   {
-    QQToast.a(this.a, alpo.a(2131710131), 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a, alud.a(2131710143), 0).b(this.a.getTitleBarHeight());
   }
 }
 

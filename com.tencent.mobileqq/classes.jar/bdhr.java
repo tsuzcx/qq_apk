@@ -1,66 +1,57 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.os.Build;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
 
 class bdhr
-  implements SensorEventListener
+  implements wgu
 {
-  bdhr(bdhq parambdhq) {}
+  bdhr(bdhk parambdhk) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent arg1)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QQLSSensor", 4, "QQLSSensor onSensorChanged" + ???.values[0]);
-    }
-    if (bdhq.a(this.a) == null) {
-      return;
-    }
-    if (aekt.b())
+    paramString = xpk.a();
+    String str1 = ((Activity)this.a.a).getIntent().getStringExtra("from_type");
+    paramInt = ((Activity)this.a.a).getIntent().getIntExtra("capture_intent_mode", -1);
+    int i = ((Activity)this.a.a).getIntent().getIntExtra("firsttab", -1);
+    int j = ((Activity)this.a.a).getIntent().getIntExtra("secondtab", -1);
+    String str2 = ((Activity)this.a.a).getIntent().getStringExtra("itemid");
+    String str3 = ((Activity)this.a.a).getIntent().getStringExtra("story_game_id");
+    int k = ((Activity)this.a.a).getIntent().getIntExtra("key_finish_jump_to_page", 1);
+    String str4 = ((Activity)this.a.a).getIntent().getStringExtra("web_dispatch_event");
+    String str5 = ((Activity)this.a.a).getIntent().getStringExtra("story_capture_album_id");
+    Bundle localBundle = new Bundle();
+    if (TextUtils.equals(str1, "msgTab"))
     {
-      this.a.a = false;
-      return;
-    }
-    if (???.values[0] < bdhq.a(this.a)) {
-      bdhq.a(this.a, true);
+      localBundle.putInt("entrance_type", 103);
+      localBundle.putInt("key_finish_jump_to_page", k);
+      if (!TextUtils.isEmpty(str4)) {
+        localBundle.putString("web_dispatch_event", str4);
+      }
+      if (paramInt == -1) {
+        break label322;
+      }
+      paramString.a((Activity)this.a.a, localBundle, 2, paramInt, i, j, str2, str3, str5, true, 20000);
     }
     for (;;)
     {
-      ??? = Build.MODEL;
-      if (!aekt.a()) {
+      wxe.c("Q.qqstory.publish.JumpAction", "launchNewVideoTakeActivity by StoryPublishLauncher");
+      return;
+      if (TextUtils.equals(str1, "msgTabNew"))
+      {
+        localBundle.putInt("entrance_type", 119);
         break;
       }
-      if (bdhq.a(this.a).hasMessages(1)) {
-        bdhq.a(this.a).removeMessages(1);
-      }
-      bdhq.a(this.a).sendMessageDelayed(bdhq.a(this.a).obtainMessage(1), 150L);
-      return;
-      bdhq.a(this.a, false);
-    }
-    if ((???.equalsIgnoreCase("mi 3c")) || (???.equalsIgnoreCase("K-Touch W619")) || (???.equalsIgnoreCase("mi 3w")))
-    {
-      if (bdhq.a(this.a).hasMessages(1)) {
-        bdhq.a(this.a).removeMessages(1);
-      }
-      bdhq.a(this.a).sendMessageDelayed(bdhq.a(this.a).obtainMessage(1), 250L);
-      return;
-    }
-    synchronized (this.a)
-    {
-      if (bdhq.a(this.a) != null) {
-        bdhq.a(this.a).a(bdhq.a(this.a));
-      }
-      return;
+      localBundle.putInt("entrance_type", 15);
+      break;
+      label322:
+      paramString.a((Activity)this.a.a, localBundle, 20000);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdhr
  * JD-Core Version:    0.7.0.1
  */

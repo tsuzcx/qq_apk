@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awbv;
+import awge;
 import qnu;
 
 public class ArticleSummary
-  extends awbv
+  extends awge
 {
   public int adsJumpType;
   public String adsJumpUrl;

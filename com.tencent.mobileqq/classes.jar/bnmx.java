@@ -1,38 +1,21 @@
-import android.hardware.Camera;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
 
 public class bnmx
-  extends PreviewContext
-  implements SurfaceHolder.Callback, azdm
+  extends AnimatorListenerAdapter
 {
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    getPreviewFrame(paramArrayOfByte, paramCamera);
-  }
+  public bnmx(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout, boolean paramBoolean, float paramFloat) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.mCamera.a(paramInt1, paramInt2, paramInt3);
-    this.mCamera.a(null, paramSurfaceHolder, this, true);
-  }
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    this.mCamera.a();
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (this.mCamera != null)
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.mCamera.b();
-      this.mCamera.b(true);
-      if (this.mActivtiyDestory) {
-        this.mCamera = null;
-      }
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.a.e();
+      return;
     }
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.a.a(this.jdField_a_of_type_Float);
   }
 }
 

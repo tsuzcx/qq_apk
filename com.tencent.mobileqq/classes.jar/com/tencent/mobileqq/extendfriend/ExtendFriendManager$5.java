@@ -1,40 +1,40 @@
 package com.tencent.mobileqq.extendfriend;
 
-import apwx;
-import apxa;
-import apxb;
-import apxd;
-import aqbo;
+import aqbg;
+import aqbj;
+import aqbk;
+import aqbm;
+import aqfx;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class ExtendFriendManager$5
   implements Runnable
 {
-  public ExtendFriendManager$5(apwx paramapwx) {}
+  public ExtendFriendManager$5(aqbg paramaqbg) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendManagerLimitchat", 2, "checkToDownloadResource");
     }
-    if (!apwx.a(this.this$0)) {
+    if (!aqbg.a(this.this$0)) {
       QLog.d("ExtendFriendManagerLimitchat", 2, "checkToDownloadResource !inited");
     }
-    if (!aqbo.a())
+    if (!aqfx.a())
     {
-      if (apwx.a(this.this$0) == null) {
+      if (aqbg.a(this.this$0) == null) {
         QLog.d("ExtendFriendManagerLimitchat", 2, "mConfig  IS NOT READY");
       }
     }
     else {
       return;
     }
-    Object localObject = aqbo.a();
-    if (apwx.a(this.this$0).a != null)
+    Object localObject = aqfx.a();
+    if (aqbg.a(this.this$0).a != null)
     {
-      localObject = (apxb)apwx.a(this.this$0).a.get(localObject);
-      apwx.a(this.this$0).a((apxb)localObject);
+      localObject = (aqbk)aqbg.a(this.this$0).a.get(localObject);
+      aqbg.a(this.this$0).a((aqbk)localObject);
       return;
     }
     QLog.d("ExtendFriendManagerLimitchat", 2, " limitChatResList IS NOT READY");

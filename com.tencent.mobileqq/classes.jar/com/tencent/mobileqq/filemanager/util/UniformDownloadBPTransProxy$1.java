@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import arpf;
+import arto;
 
 public class UniformDownloadBPTransProxy$1
   implements Runnable
 {
-  public UniformDownloadBPTransProxy$1(arpf paramarpf, UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity) {}
+  public UniformDownloadBPTransProxy$1(arto paramarto, UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity) {}
   
   public void run()
   {
     try
     {
-      arpf.a(this.this$0, this.a, null);
+      arto.a(this.this$0, this.a, null);
       return;
     }
     catch (Exception localException)

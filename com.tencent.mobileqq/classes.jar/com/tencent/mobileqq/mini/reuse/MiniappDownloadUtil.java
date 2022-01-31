@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.reuse;
 
 import android.text.TextUtils;
-import bdcb;
+import bdgk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.DownloaderFactory;
 import com.tencent.component.network.downloader.DownloadRequest;
@@ -287,7 +287,7 @@ public class MiniappDownloadUtil
       {
         return false;
         localList = getRangeModePerfLevel();
-      } while ((localList != null) && (!localList.contains(Integer.valueOf(bdcb.f()))));
+      } while ((localList != null) && (!localList.contains(Integer.valueOf(bdgk.f()))));
       localList = getRangeModeNetworkLevel();
     } while ((localList != null) && (!localList.contains(Integer.valueOf(NetworkState.g().getNetworkType()))));
     return true;

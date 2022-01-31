@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.newshare.job;
 
-import vel;
-import vzc;
+import viu;
+import wdl;
 
 public class ShareGroupAvatarSaveFileJob$1
   implements Runnable
 {
-  public ShareGroupAvatarSaveFileJob$1(vel paramvel, vzc paramvzc) {}
+  public ShareGroupAvatarSaveFileJob$1(viu paramviu, wdl paramwdl) {}
   
   public void run()
   {
-    vel.a(this.this$0, vel.a(this.this$0, this.a));
+    viu.a(this.this$0, viu.a(this.this$0, this.a));
   }
 }
 

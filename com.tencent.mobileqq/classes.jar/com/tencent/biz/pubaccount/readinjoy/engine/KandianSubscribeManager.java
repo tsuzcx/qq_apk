@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import aekt;
-import aljq;
-import alsi;
+import aepi;
+import alof;
+import alwx;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -10,8 +10,8 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bdbq;
-import bdda;
+import bdfz;
+import bdhj;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -42,7 +42,7 @@ public class KandianSubscribeManager
   implements Manager
 {
   public static final String a;
-  private alsi jdField_a_of_type_Alsi = new owt(this);
+  private alwx jdField_a_of_type_Alwx = new owt(this);
   private KandianSubscribeManager.MsgBoxSetTopInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianSubscribeManager$MsgBoxSetTopInfo;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private List<owv> jdField_a_of_type_JavaUtilList = new LinkedList();
@@ -67,7 +67,7 @@ public class KandianSubscribeManager
     for (;;)
     {
       return paramDrawable;
-      Object localObject2 = ((QQMessageFacade)localObject1).b(aljq.aR, 1008);
+      Object localObject2 = ((QQMessageFacade)localObject1).b(alof.aR, 1008);
       if ((localObject2 != null) && (!((MessageRecord)localObject2).isread) && (((MessageRecord)localObject2).msgtype == -2011)) {
         try
         {
@@ -82,17 +82,17 @@ public class KandianSubscribeManager
             if (!TextUtils.isEmpty((CharSequence)localObject2))
             {
               paramQQAppInterface = paramQQAppInterface.a(1, "kd_dt_" + (String)localObject2, (byte)3, 0, 100, true);
-              Object localObject3 = (sex)bdbq.a(paramQQAppInterface);
+              Object localObject3 = (sex)bdfz.a(paramQQAppInterface);
               if (localObject3 != null)
               {
                 QLog.d(jdField_a_of_type_JavaLangString, 2, "getMergeIcon From cache ! key : " + paramQQAppInterface + ", tipUin : " + (String)localObject2);
                 return localObject3;
               }
-              localObject3 = bdda.a(paramDrawable);
+              localObject3 = bdhj.a(paramDrawable);
               if (localObject3 != null)
               {
-                localObject1 = new sex((Bitmap)localObject3, aekt.a(50.0F, (Resources)localObject1), (Resources)localObject1, (String)localObject2, 1);
-                bdbq.a(paramQQAppInterface, (Sizeable)localObject1);
+                localObject1 = new sex((Bitmap)localObject3, aepi.a(50.0F, (Resources)localObject1), (Resources)localObject1, (String)localObject2, 1);
+                bdfz.a(paramQQAppInterface, (Sizeable)localObject1);
                 return localObject1;
               }
             }
@@ -120,13 +120,13 @@ public class KandianSubscribeManager
     if (localQQAppInterface == null) {
       return null;
     }
-    MessageRecord localMessageRecord = localQQAppInterface.a().b(aljq.aR, 1008);
+    MessageRecord localMessageRecord = localQQAppInterface.a().b(alof.aR, 1008);
     if (localMessageRecord == null) {
       return null;
     }
     if ((localMessageRecord instanceof MessageForStructing))
     {
-      ors.a(aljq.aR, localQQAppInterface);
+      ors.a(alof.aR, localQQAppInterface);
       return KandianRedDotInfo.createRedDotFromMessageRecord(localMessageRecord, "kandian_dt_red_dot_info");
     }
     return null;
@@ -163,8 +163,8 @@ public class KandianSubscribeManager
   {
     paramMessageRecord.issend = 1;
     paramMessageRecord.isread = true;
-    paramMessageRecord.frienduin = aljq.aR;
-    paramMessageRecord.senderuin = aljq.aR;
+    paramMessageRecord.frienduin = alof.aR;
+    paramMessageRecord.senderuin = alof.aR;
     paramMessageRecord.istroop = 1008;
     paramMessageRecord.msg = paramString1;
     paramMessageRecord.time = paramLong;
@@ -173,9 +173,9 @@ public class KandianSubscribeManager
     paramMessageRecord.createMessageUniseq();
   }
   
-  public alsi a()
+  public alwx a()
   {
-    return this.jdField_a_of_type_Alsi;
+    return this.jdField_a_of_type_Alwx;
   }
   
   public void a()
@@ -228,7 +228,7 @@ public class KandianSubscribeManager
   
   public boolean a()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(aljq.aR, 1008);
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(alof.aR, 1008);
     return ((localMessageRecord instanceof MessageForStructing)) && (!localMessageRecord.isread);
   }
   

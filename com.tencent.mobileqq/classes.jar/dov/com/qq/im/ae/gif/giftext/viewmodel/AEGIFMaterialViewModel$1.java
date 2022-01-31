@@ -1,11 +1,11 @@
 package dov.com.qq.im.ae.gif.giftext.viewmodel;
 
-import bkzz;
+import bleg;
 
 public class AEGIFMaterialViewModel$1
   implements Runnable
 {
-  public AEGIFMaterialViewModel$1(bkzz parambkzz, String paramString) {}
+  public AEGIFMaterialViewModel$1(bleg parambleg, String paramString) {}
   
   public void run()
   {

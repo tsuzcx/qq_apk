@@ -1,19 +1,19 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.fragments.QCirclePersonalPushFragment;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.List;
 
-class txf
-  extends RecyclerView.OnScrollListener
+public class txf
+  implements Observer<ubz<List<FeedCloudMeta.StFeed>>>
 {
-  txf(txe paramtxe) {}
+  public txf(QCirclePersonalPushFragment paramQCirclePersonalPushFragment) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(@Nullable ubz<List<FeedCloudMeta.StFeed>> paramubz)
   {
-    if (paramInt == 0)
-    {
-      abqw.a().a("qcircle_content_page", false);
-      return;
-    }
-    abqw.a().a("qcircle_content_page");
+    QLog.d(QCirclePersonalPushFragment.a(), 4, "initViewData:getFeedListRequestRsp");
+    QCirclePersonalPushFragment.a(this.a, paramubz);
   }
 }
 

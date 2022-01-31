@@ -1,28 +1,37 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
-class xwh
-  extends BroadcastReceiver
+public class xwh
+  extends Handler
 {
-  xwh(xwg paramxwg) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public xwh(QQStoryLoadingView paramQQStoryLoadingView, Looper paramLooper)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("PreCallUpToolProc", 2, String.format("onReceive action=%s", new Object[] { paramContext }));
-    }
-    if (("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED".equals(paramContext)) && (TextUtils.equals(paramIntent.getStringExtra("from"), xwg.a(this.a))))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      if (xwg.a(this.a) != null) {
-        xwg.a(this.a).removeMessages(108);
-      }
-      if (xwg.a(this.a) != null) {
-        xwg.a(this.a).a();
+    default: 
+      return;
+    }
+    Object localObject = paramMessage.obj;
+    String str;
+    if (paramMessage.what == 8) {
+      str = "GONE";
+    }
+    for (;;)
+    {
+      wxe.a("QQStoryLoadingView", "%s => setVisibility => %s", localObject, str);
+      this.a.setVisibility(paramMessage.what);
+      return;
+      if (paramMessage.what == 0) {
+        str = "VISIBLE";
+      } else {
+        str = "INVISIBLE";
       }
     }
   }

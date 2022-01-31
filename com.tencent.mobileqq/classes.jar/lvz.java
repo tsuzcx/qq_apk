@@ -13,7 +13,7 @@ public class lvz
     if (QLog.isColorLevel()) {
       QLog.d("AV_rp_dc", 2, "reportNoEntranceByPtuSoFail");
     }
-    azmz.a(BaseApplicationImpl.getApplication()).a(null, "actAVRPPtuSoFail", true, 0L, 0L, null, "", true);
+    azri.a(BaseApplicationImpl.getApplication()).a(null, "actAVRPPtuSoFail", true, 0L, 0L, null, "", true);
   }
   
   public static void a(int paramInt)
@@ -23,7 +23,7 @@ public class lvz
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("invalidType", String.valueOf(paramInt));
-    azmz.a(BaseApplicationImpl.getApplication()).a(null, "actAVRPDetectInvalidExp", true, 0L, 0L, localHashMap, "", true);
+    azri.a(BaseApplicationImpl.getApplication()).a(null, "actAVRPDetectInvalidExp", true, 0L, 0L, localHashMap, "", true);
   }
   
   public static void a(int paramInt1, int paramInt2)
@@ -38,7 +38,7 @@ public class lvz
       localHashMap.put("resType", String.valueOf(paramInt1));
       localHashMap.put("downResult", String.valueOf(bool));
       localHashMap.put("errorCode", String.valueOf(paramInt2));
-      azmz.a(BaseApplicationImpl.getApplication()).a(null, "actResDownResult", bool, 0L, 0L, localHashMap, "", true);
+      azri.a(BaseApplicationImpl.getApplication()).a(null, "actResDownResult", bool, 0L, 0L, localHashMap, "", true);
       return;
     }
   }
@@ -55,7 +55,7 @@ public class lvz
     localHashMap.put("score", String.valueOf(paramFloat));
     localHashMap.put("mcount1", String.valueOf(paramInt4));
     localHashMap.put("mcount2", String.valueOf(paramInt5));
-    azmz.a(BaseApplicationImpl.getApplication()).a(null, "actAVEmojiHit", true, 0L, 0L, localHashMap, "", true);
+    azri.a(BaseApplicationImpl.getApplication()).a(null, "actAVEmojiHit", true, 0L, 0L, localHashMap, "", true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface)
@@ -70,7 +70,7 @@ public class lvz
       {
         paramQQAppInterface = new HashMap();
         paramQQAppInterface.put("configVersion", String.valueOf(i));
-        azmz.a(BaseApplicationImpl.getApplication()).a(null, "actConfigExistStatus", true, 0L, 0L, paramQQAppInterface, "", true);
+        azri.a(BaseApplicationImpl.getApplication()).a(null, "actConfigExistStatus", true, 0L, 0L, paramQQAppInterface, "", true);
       }
     } while (!QLog.isColorLevel());
     QLog.d("AV_rp_dc", 2, "reportConfigExistStatus localVersion = " + i);
@@ -88,7 +88,7 @@ public class lvz
       localHashMap.put("md5", paramString);
       localHashMap.put("model", Build.MODEL);
       localHashMap.put("version", String.valueOf(Build.VERSION.SDK_INT));
-      azmz.a(BaseApplicationImpl.getApplication()).a(null, "actIllegalAVRPRequest", true, 0L, 0L, localHashMap, "", true);
+      azri.a(BaseApplicationImpl.getApplication()).a(null, "actIllegalAVRPRequest", true, 0L, 0L, localHashMap, "", true);
     }
   }
   
@@ -97,7 +97,7 @@ public class lvz
     if (QLog.isColorLevel()) {
       QLog.d("AV_rp_dc", 2, "reportConfigReqResult success = " + paramBoolean);
     }
-    azmz.a(BaseApplicationImpl.getApplication()).a(null, "actAVConfigReqResult", paramBoolean, 0L, 0L, null, "", true);
+    azri.a(BaseApplicationImpl.getApplication()).a(null, "actAVConfigReqResult", paramBoolean, 0L, 0L, null, "", true);
   }
   
   public static void a(boolean paramBoolean, String paramString)
@@ -107,7 +107,7 @@ public class lvz
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("grayType", paramString);
-    azmz.a(BaseApplicationImpl.getApplication()).a(null, "actAVRPBtnGrayOrNot", paramBoolean, 0L, 0L, localHashMap, "", true);
+    azri.a(BaseApplicationImpl.getApplication()).a(null, "actAVRPBtnGrayOrNot", paramBoolean, 0L, 0L, localHashMap, "", true);
   }
   
   public static void a(boolean paramBoolean, String paramString1, String paramString2)
@@ -118,7 +118,7 @@ public class lvz
     HashMap localHashMap = new HashMap();
     localHashMap.put("errorCode1", paramString1);
     localHashMap.put("errorCode2", paramString2);
-    azmz.a(BaseApplicationImpl.getApplication()).a(null, "actAVSendRPResult", paramBoolean, 0L, 0L, localHashMap, "", true);
+    azri.a(BaseApplicationImpl.getApplication()).a(null, "actAVSendRPResult", paramBoolean, 0L, 0L, localHashMap, "", true);
   }
   
   public static void b(QQAppInterface paramQQAppInterface)
@@ -136,7 +136,7 @@ public class lvz
         {
           paramQQAppInterface = new HashMap();
           paramQQAppInterface.put("configVersion", String.valueOf(i));
-          azmz.a(BaseApplicationImpl.getApplication()).a(null, "actResExistStatus", true, 0L, 0L, paramQQAppInterface, "", true);
+          azri.a(BaseApplicationImpl.getApplication()).a(null, "actResExistStatus", true, 0L, 0L, paramQQAppInterface, "", true);
         }
       }
       while (QLog.isColorLevel())
@@ -155,7 +155,7 @@ public class lvz
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("errorCode", paramString);
-    azmz.a(BaseApplicationImpl.getApplication()).a(null, "actAVClickRPBtnResult", paramBoolean, 0L, 0L, localHashMap, "", true);
+    azri.a(BaseApplicationImpl.getApplication()).a(null, "actAVClickRPBtnResult", paramBoolean, 0L, 0L, localHashMap, "", true);
   }
   
   public static void b(boolean paramBoolean, String paramString1, String paramString2)
@@ -166,7 +166,7 @@ public class lvz
     HashMap localHashMap = new HashMap();
     localHashMap.put("errorCode1", paramString1);
     localHashMap.put("errorCode2", paramString2);
-    azmz.a(BaseApplicationImpl.getApplication()).a(null, "actAVGrabRPResult", paramBoolean, 0L, 0L, localHashMap, "", true);
+    azri.a(BaseApplicationImpl.getApplication()).a(null, "actAVGrabRPResult", paramBoolean, 0L, 0L, localHashMap, "", true);
   }
 }
 

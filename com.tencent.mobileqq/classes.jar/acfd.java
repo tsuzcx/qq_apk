@@ -1,44 +1,44 @@
-import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class acfd
-  extends avqu
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public SessionInfo a;
-  public WeakReference<QQAppInterface> a;
-  public boolean a;
+  public acfd(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  protected void b(boolean paramBoolean, Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed appRef==null");
-      }
-    }
-    QQAppInterface localQQAppInterface;
-    do
-    {
+    int j = 1;
+    if (!paramCompoundButton.isPressed()) {
       return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed app == null || sessionInfo == nul");
-    return;
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof AIONewestFeedRsp))) {
-      acex.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (AIONewestFeedRsp)paramBundle, this.jdField_a_of_type_Boolean);
     }
-    paramBundle = (acfd)acex.a().get(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    acex.a().remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    localQQAppInterface.unRegistObserver(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+    if (paramBoolean)
+    {
+      paramCompoundButton = "open_storyset";
+      wxj.a("dynamic_more", paramCompoundButton, 0, 0, new String[0]);
+      paramCompoundButton = new Integer[5];
+      paramCompoundButton[0] = Integer.valueOf(1);
+      if (!paramBoolean) {
+        break label106;
+      }
+    }
+    label106:
+    for (int i = 1;; i = 0)
+    {
+      paramCompoundButton[3] = Integer.valueOf(i);
+      this.a.app.a().a(paramCompoundButton);
+      paramCompoundButton = (ult)this.a.app.a(98);
+      i = j;
+      if (paramBoolean) {
+        i = 2;
+      }
+      paramCompoundButton.a(i);
+      return;
+      paramCompoundButton = "close_storyset";
+      break;
+    }
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
+import awge;
 
 public class ContactBinded
-  extends awbv
+  extends awge
 {
   public boolean isReaded;
   public long timestamp;

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.transfile;
 
-import bapp;
+import baty;
 
 public abstract class HttpInterfaceForTVK
 {
   public static int downLoadFileSync(String paramString1, String paramString2)
   {
-    return new bapp().a(paramString1, paramString2);
+    return new baty().a(paramString1, paramString2);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richstatus;
 
-import axxl;
-import axzt;
-import axzw;
+import aybu;
+import ayec;
+import ayef;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -13,11 +13,11 @@ class StatusManager$3$1$1
   
   public void run()
   {
-    if (axzt.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3$1.a.a) != null)
+    if (ayec.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3$1.a.a) != null)
     {
-      Iterator localIterator = axzt.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3$1.a.a).iterator();
+      Iterator localIterator = ayec.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3$1.a.a).iterator();
       while (localIterator.hasNext()) {
-        ((axxl)localIterator.next()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus, this.jdField_a_of_type_ComTencentMobileqqRichstatusTipsInfo);
+        ((aybu)localIterator.next()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus, this.jdField_a_of_type_ComTencentMobileqqRichstatusTipsInfo);
       }
     }
   }

@@ -1,19 +1,32 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public abstract class bbkt
+public class bbkt
+  implements bfah
 {
-  public static final int ITEM_TYPE_AUDIO = 2;
-  public static final int ITEM_TYPE_MUSIC = 3;
-  public static final int ITEM_TYPE_NONE = 0;
-  public static final int ITEM_TYPE_PIC = 1;
-  public static final int ITEM_TYPE_VIDEO = 4;
-  protected static final String TAG = "publish_mediaInfo";
+  public bbkt(TroopCreateLogicActivity paramTroopCreateLogicActivity) {}
   
-  public abstract String getJsonText();
-  
-  public abstract View getView(Context paramContext, View.OnClickListener paramOnClickListener);
+  public void a(BaseResp paramBaseResp)
+  {
+    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131720031, 1).a();
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131720050, 1).a();
+    }
+  }
 }
 
 

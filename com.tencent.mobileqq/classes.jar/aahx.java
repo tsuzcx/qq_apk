@@ -1,76 +1,242 @@
-import com.tencent.ad.tangram.canvas.resource.AdResourceAdapter;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.os.Handler;
+import android.view.ViewGroup;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.gamecenter.common.util.ScreenshotManager.1;
+import com.tencent.gamecenter.common.util.ScreenshotManager.2;
+import com.tencent.gamecenter.common.util.ScreenshotManager.3;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import java.io.File;
+import java.io.FileOutputStream;
+import org.json.JSONObject;
 
 public class aahx
-  implements AdResourceAdapter
 {
-  public int getAppDescViewId()
+  public static final String a;
+  public static final String b;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private boolean jdField_a_of_type_Boolean = aahi.b("gamecenter_shot_switch");
+  private boolean b;
+  
+  static
   {
-    return 2131362693;
+    jdField_a_of_type_JavaLangString = bdzf.a("Tencent/MobileQQ/gamecenter" + File.separator);
+    jdField_b_of_type_JavaLangString = bdzf.a(jdField_a_of_type_JavaLangString + "gamecenter_screenshot");
   }
   
-  public int getAppDownloadButtonViewId()
+  public static aahx a()
   {
-    return 2131365428;
+    return aahy.a();
   }
   
-  public int getAppLogoViewId()
+  private void a(Context paramContext, String paramString, aahz paramaahz)
   {
-    return 2131362706;
+    if (arso.a(jdField_b_of_type_JavaLangString + paramString)) {
+      ThreadManagerV2.executeOnFileThread(new ScreenshotManager.1(this, paramString, paramaahz));
+    }
   }
   
-  public int getAppNameViewId()
+  public void a()
   {
-    return 2131362707;
+    try
+    {
+      if (this.jdField_a_of_type_AndroidWidgetImageView.getParent() != null)
+      {
+        ((ViewGroup)this.jdField_a_of_type_AndroidWidgetImageView.getParent()).removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+        QLog.i("ScreenshotManager", 1, "forceRemoveMask call");
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ScreenshotManager", 1, "forceRemoveMask e=" + localThrowable.toString());
+    }
   }
   
-  public int getAppSizeViewId()
+  public void a(aahz paramaahz)
   {
-    return 2131362712;
+    if (arso.c(jdField_a_of_type_JavaLangString))
+    {
+      paramaahz.a(0, "delShotFile succ");
+      return;
+    }
+    paramaahz.a(-500, "delShotFile fail");
   }
   
-  public int getArkWindowLayoutId()
+  public void a(WebView paramWebView)
   {
-    return 2131559144;
+    if (!a(null)) {
+      return;
+    }
+    ThreadManagerV2.getUIHandlerV2().post(new ScreenshotManager.3(this, paramWebView));
   }
   
-  public int getBottomFixedButtonId()
+  public void a(WebView paramWebView, aahz paramaahz)
   {
-    return 2131367077;
+    if (!a(paramaahz)) {
+      return;
+    }
+    this.jdField_b_of_type_Boolean = true;
+    if ((this.jdField_a_of_type_AndroidWidgetImageView == null) || (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0))
+    {
+      paramaahz.a(0, "removeShotMask no visible");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenshotManager", 2, "removeShotMask call");
+    }
+    try
+    {
+      ((ViewGroup)paramWebView.getParent()).removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      paramaahz.a(0, "removeShotMask succ");
+      return;
+    }
+    catch (Throwable paramWebView)
+    {
+      paramaahz.a(-400, "removeShotMask fail");
+    }
   }
   
-  public int getCanvasContentId()
+  public void a(WebView paramWebView, String paramString, aahz paramaahz)
   {
-    return 2131363930;
+    if (!a(paramaahz)) {
+      return;
+    }
+    paramWebView.setDrawingCacheEnabled(true);
+    paramWebView.buildDrawingCache();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramWebView.getDrawingCache());
+    if (this.jdField_a_of_type_AndroidWidgetImageView == null)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramWebView.getContext());
+      this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    ThreadManagerV2.executeOnSubThread(new ScreenshotManager.2(this, paramString, paramaahz));
   }
   
-  public int getCanvasFixedButtonLayoutId()
+  public void a(String paramString, aahz paramaahz)
   {
-    return 2131559145;
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("switch", aahi.b("gamecenter_shot_switch"));
+      localJSONObject.put("fileExist", arso.a(jdField_a_of_type_JavaLangString + paramString));
+      paramaahz.a(0, localJSONObject.toString());
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramaahz.a(-700, "queryShotInfo error");
+    }
   }
   
-  public int getCanvasLayoutId()
+  public boolean a()
   {
-    return 2131559146;
+    return (this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0);
   }
   
-  public int getCloseViewId()
+  public boolean a(aahz paramaahz)
   {
-    return 2131364325;
+    if (!aahi.b("gamecenter_shot_switch"))
+    {
+      if (paramaahz != null) {
+        paramaahz.a(-1, "shot switch is false");
+      }
+      return false;
+    }
+    return true;
   }
   
-  public int getCommonFixedButtonContainerId()
+  public boolean a(Bitmap paramBitmap, String paramString)
   {
-    return 2131367076;
+    if (paramBitmap != null) {
+      try
+      {
+        paramString = jdField_b_of_type_JavaLangString + paramString;
+        xrg.a(jdField_a_of_type_JavaLangString);
+        paramString = new FileOutputStream(new File(paramString));
+        paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, paramString);
+        paramString.flush();
+        paramString.close();
+        return true;
+      }
+      catch (Exception paramBitmap)
+      {
+        QLog.e("ScreenshotManager", 1, "screenShot saveBitmap error=" + paramBitmap.toString());
+        return false;
+      }
+    }
+    return false;
   }
   
-  public int getFloatingProgressBarId()
+  public void b()
   {
-    return 2131366491;
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
   }
   
-  public int getTopFixedButtonId()
+  public void b(aahz paramaahz)
   {
-    return 2131367090;
+    QLog.i("ScreenshotManager", 1, "closeShot");
+    if (aahi.a("gamecenter_shot_switch", false))
+    {
+      this.jdField_a_of_type_Boolean = false;
+      paramaahz.a(0, "closeShot succ");
+      return;
+    }
+    paramaahz.a(-600, "closeShot fail");
+  }
+  
+  public void b(WebView paramWebView, String paramString, aahz paramaahz)
+  {
+    if (!a(paramaahz)) {
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      paramaahz.a(-300, "preloadMask not init");
+      a(paramWebView.getContext(), paramString, paramaahz);
+      QLog.e("ScreenshotManager", 1, "preloadMask not init");
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramWebView.getContext());
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_b_of_type_Boolean = false;
+    try
+    {
+      a();
+      paramString = new FrameLayout.LayoutParams(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      ((ViewGroup)paramWebView.getParent()).addView(this.jdField_a_of_type_AndroidWidgetImageView, paramString);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramaahz.a(0, "succ");
+      return;
+    }
+    catch (Throwable paramWebView)
+    {
+      QLog.e("ScreenshotManager", 1, "addShot error =" + paramWebView.toString());
+      paramaahz.a(-301, "add view error");
+    }
+  }
+  
+  public void c(aahz paramaahz)
+  {
+    QLog.i("ScreenshotManager", 1, "open");
+    if (aahi.a("gamecenter_shot_switch", true))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      paramaahz.a(0, "openShot succ");
+      return;
+    }
+    paramaahz.a(-600, "openShot fail");
   }
 }
 

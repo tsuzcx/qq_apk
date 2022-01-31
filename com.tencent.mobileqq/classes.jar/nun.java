@@ -25,7 +25,7 @@ import tencent.im.oidb.qqshop.qqshop.SQQSHPClientReq;
 public class nun
 {
   public static final String a;
-  public awbw a;
+  public awgf a;
   public ShopWebViewFragment a;
   Runnable jdField_a_of_type_JavaLangRunnable = new EcshopCacheTool.1(this);
   public Map<String, Friends> a;
@@ -47,7 +47,7 @@ public class nun
     this.c = new ConcurrentHashMap();
     this.d = new ConcurrentHashMap();
     this.b = new ConcurrentHashMap();
-    this.jdField_a_of_type_Awbw = paramAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_Awgf = paramAppInterface.getEntityManagerFactory().createEntityManager();
     this.jdField_a_of_type_Nup = ((nup)paramAppInterface.getBusinessHandler(0));
     ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, true);
   }
@@ -111,7 +111,7 @@ public class nun
   {
     qqshop.SQQSHPClientReq localSQQSHPClientReq = new qqshop.SQQSHPClientReq();
     localSQQSHPClientReq.msglistlen.set(paramInt);
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), atfx.class);
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), atkg.class);
     localNewIntent.putExtra("extra_cmd", "SQQShopFolderSvc.GetFolderInfo");
     localNewIntent.putExtra("extra_data", localSQQSHPClientReq.toByteArray());
     localNewIntent.putExtra("extra_timeout", 30000L);
@@ -121,7 +121,7 @@ public class nun
   
   public void a(AppRuntime paramAppRuntime, List<Long> paramList, double paramDouble1, double paramDouble2)
   {
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), atfx.class);
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), atkg.class);
     qqshop.SQQSHPClientReq localSQQSHPClientReq = new qqshop.SQQSHPClientReq();
     localSQQSHPClientReq.puinlist.addAll(paramList);
     if ((!TextUtils.isEmpty(paramAppRuntime.getAccount())) && (paramDouble1 != 0.0D) && (paramDouble2 != 0.0D))

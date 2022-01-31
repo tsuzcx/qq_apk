@@ -1,41 +1,31 @@
-import NS_MOBILE_PHOTO.operation_red_touch_req;
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CardProfile;
 
-public class awwz
-  extends MSFServlet
+class awwz
+  implements auvz
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAlbumRedDotServlet", 2, "resultcode:" + paramFromServiceMsg.getResultCode() + ",failMsg:" + paramFromServiceMsg.getBusinessFailMsg());
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("QzoneAlbumRedDotServlet", 2, "fromServiceMsg==msg");
-  }
+  awwz(awwy paramawwy, CardProfile paramCardProfile, ImageView paramImageView) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(String paramString, boolean paramBoolean)
   {
-    paramIntent = paramIntent.getSerializableExtra("req");
-    if ((paramIntent != null) && ((paramIntent instanceof operation_red_touch_req)))
+    this.jdField_a_of_type_Awwy.a(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile, this.jdField_a_of_type_AndroidWidgetImageView, paramBoolean);
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_Awwy.a;
+    String str1;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
     {
-      awwy localawwy = new awwy(getAppRuntime().getLongAccountUin(), (operation_red_touch_req)paramIntent);
-      byte[] arrayOfByte = localawwy.encode();
-      paramIntent = arrayOfByte;
-      if (arrayOfByte == null) {
-        paramIntent = new byte[4];
+      str1 = "1";
+      if (!paramBoolean) {
+        break label69;
       }
-      paramPacket.setTimeout(60000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + localawwy.uniKey());
-      paramPacket.putSendData(paramIntent);
+    }
+    label69:
+    for (String str2 = "2";; str2 = "1")
+    {
+      auvr.a(localQQAppInterface, "detail_like", paramString, str1, "", "", str2);
+      return;
+      str1 = "2";
+      break;
     }
   }
 }

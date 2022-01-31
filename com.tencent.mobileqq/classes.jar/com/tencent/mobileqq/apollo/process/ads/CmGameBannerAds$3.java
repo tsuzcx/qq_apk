@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.ads;
 
-import akrr;
-import akrt;
+import akwg;
+import akwi;
 import android.app.Activity;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
@@ -10,20 +10,20 @@ import java.util.HashMap;
 public class CmGameBannerAds$3
   implements Runnable
 {
-  public CmGameBannerAds$3(akrr paramakrr, int paramInt) {}
+  public CmGameBannerAds$3(akwg paramakwg, int paramInt) {}
   
   public void run()
   {
     try
     {
-      akrt localakrt = (akrt)akrr.a(this.this$0).get(Integer.valueOf(this.a));
-      Activity localActivity = akrr.a(this.this$0);
-      if ((localakrt != null) && (localakrt.a != null))
+      akwi localakwi = (akwi)akwg.a(this.this$0).get(Integer.valueOf(this.a));
+      Activity localActivity = akwg.a(this.this$0);
+      if ((localakwi != null) && (localakwi.a != null))
       {
         if (localActivity == null) {
           return;
         }
-        localakrt.a.setVisibility(8);
+        localakwi.a.setVisibility(8);
         return;
       }
     }

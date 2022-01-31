@@ -1,22 +1,18 @@
-import android.view.animation.ScaleAnimation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class acmf
-  extends ScaleAnimation
+  implements DialogInterface.OnClickListener
 {
-  public acmf(ContactBindedActivity paramContactBindedActivity, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, float paramFloat5, int paramInt2, float paramFloat6)
-  {
-    super(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramFloat5, paramInt2, paramFloat6);
-  }
+  public acmf(ChatHistory paramChatHistory) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramTransformation == null) {
-      return;
-    }
-    super.applyTransformation(paramFloat, paramTransformation);
-    paramTransformation.setAlpha(0.0F + 1.0F * paramFloat);
+    this.a.a.setEnabled(true);
+    this.a.c.dismiss();
   }
 }
 

@@ -1,47 +1,16 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class acnl
-  extends almg
+  implements bhuk
 {
-  public acnl(Conversation paramConversation) {}
+  public acnl(ChatHistoryFileActivity paramChatHistoryFileActivity, bhuf parambhuf) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.a(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, aljq.z, 6000);
+    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a(3, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.d)) || (this.jdField_a_of_type_Bhuf.isShowing())) {
+      this.jdField_a_of_type_Bhuf.dismiss();
     }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, aljq.A, 6000);
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
-  {
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
-    if (i == 0) {
-      this.a.a(9, aljq.z, 6003);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, aljq.A, 6003);
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, aljq.z, 6000);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, aljq.A, 6003);
   }
 }
 

@@ -25,7 +25,7 @@ public class ComponentContentPgcVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559960, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559959, this, true);
   }
   
   /* Error */
@@ -101,7 +101,7 @@ public class ComponentContentPgcVideo
     //   156: ldc 116
     //   158: aload_0
     //   159: invokevirtual 94	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:getResources	()Landroid/content/res/Resources;
-    //   162: invokestatic 121	aekt:a	(FLandroid/content/res/Resources;)I
+    //   162: invokestatic 121	aepi:a	(FLandroid/content/res/Resources;)I
     //   165: istore 4
     //   167: aload_0
     //   168: getfield 124	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView	Lcom/tencent/biz/pubaccount/readinjoy/view/KandianUrlImageView;

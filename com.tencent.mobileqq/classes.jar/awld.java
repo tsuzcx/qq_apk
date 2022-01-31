@@ -1,36 +1,10 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import java.util.HashSet;
-
-public class awld
-  implements Animator.AnimatorListener
+public final class awld
+  extends awky
 {
-  public awld(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, awlg paramawlg, View paramView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  protected int c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Awlg.a));
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.height = -2;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
+    return 516;
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Awlg.a));
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.height = -2;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

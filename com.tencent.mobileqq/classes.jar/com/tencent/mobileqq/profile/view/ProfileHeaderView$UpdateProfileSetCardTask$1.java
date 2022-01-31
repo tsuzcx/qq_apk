@@ -4,9 +4,9 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import awki;
-import awmk;
-import azmj;
+import awor;
+import awqt;
+import azqs;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -21,15 +21,15 @@ class ProfileHeaderView$UpdateProfileSetCardTask$1
     {
       if (this.a.jdField_a_of_type_JavaUtilHashMap != null)
       {
-        azmj.b(null, "CliOper", "", "", "card_mall", "0X80066D3", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "card_mall", "0X80066D3", 0, 0, "", "", "", "");
         View localView = (View)this.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_tips_set_card");
-        TextView localTextView = (TextView)localView.findViewById(2131367409);
-        ImageView localImageView = (ImageView)localView.findViewById(2131367395);
+        TextView localTextView = (TextView)localView.findViewById(2131367419);
+        ImageView localImageView = (ImageView)localView.findViewById(2131367405);
         Resources localResources = localView.getResources();
-        localTextView.setText(localResources.getString(2131720869));
-        localImageView.setContentDescription(localResources.getString(2131720869));
-        localView.setTag(new awki(29, "CLICK_BANNER"));
-        localView.setOnClickListener(this.a.jdField_a_of_type_Awmk.a);
+        localTextView.setText(localResources.getString(2131720881));
+        localImageView.setContentDescription(localResources.getString(2131720881));
+        localView.setTag(new awor(29, "CLICK_BANNER"));
+        localView.setOnClickListener(this.a.jdField_a_of_type_Awqt.a);
         this.a.b.set(true);
         ProfileHeaderView.a(this.a);
       }

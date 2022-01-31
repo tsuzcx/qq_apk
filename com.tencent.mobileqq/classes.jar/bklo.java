@@ -1,20 +1,42 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 
-class bklo
-  extends GestureDetector.SimpleOnGestureListener
+public class bklo
 {
-  private bklo(bkle parambkle) {}
+  private static baue jdField_a_of_type_Baue;
+  private static bdpy jdField_a_of_type_Bdpy = new bklp();
+  private static baue jdField_b_of_type_Baue;
+  private static bdpy jdField_b_of_type_Bdpy = new bklq();
   
-  public void onLongPress(MotionEvent paramMotionEvent)
+  public static baue a()
   {
-    if ((bkle.b(this.a) != AECaptureMode.GIF) && (System.currentTimeMillis() - bkle.a(this.a) > 5000L))
+    if (jdField_a_of_type_Baue == null) {}
+    try
     {
-      bkle.a(this.a).a(196614, new Object[0]);
-      bkle.a(this.a, System.currentTimeMillis());
-      this.a.d(0);
+      if (jdField_a_of_type_Baue == null)
+      {
+        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_a_of_type_Bdpy, 128);
+        localHttpCommunicator.a();
+        jdField_a_of_type_Baue = new bavh(localHttpCommunicator, true);
+      }
+      return jdField_a_of_type_Baue;
     }
+    finally {}
+  }
+  
+  public static baue b()
+  {
+    if (jdField_b_of_type_Baue == null) {}
+    try
+    {
+      if (jdField_b_of_type_Baue == null)
+      {
+        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_b_of_type_Bdpy, 128);
+        localHttpCommunicator.a();
+        jdField_b_of_type_Baue = new bavh(localHttpCommunicator, true);
+      }
+      return jdField_b_of_type_Baue;
+    }
+    finally {}
   }
 }
 

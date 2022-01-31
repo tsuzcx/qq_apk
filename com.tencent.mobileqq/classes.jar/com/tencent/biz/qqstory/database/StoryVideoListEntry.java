@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
+import awge;
 
 public class StoryVideoListEntry
-  extends awbv
+  extends awge
 {
   public static final int LIST_TYPE_COLLECTION = 5;
   public static final int LIST_TYPE_EXPIRE_USER = 6;

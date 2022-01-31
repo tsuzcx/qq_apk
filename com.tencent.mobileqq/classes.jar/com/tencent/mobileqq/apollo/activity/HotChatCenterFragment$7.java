@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.activity;
 
-import alpu;
+import aluj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class HotChatCenterFragment$7
@@ -10,7 +10,7 @@ class HotChatCenterFragment$7
   
   public void run()
   {
-    ((alpu)HotChatCenterFragment.a(this.this$0).a(35)).a(this.jdField_a_of_type_JavaLangString, 0, false, 4, this.jdField_a_of_type_Int);
+    ((aluj)HotChatCenterFragment.a(this.this$0).a(35)).a(this.jdField_a_of_type_JavaLangString, 0, false, 4, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,10 +1,18 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
-public abstract interface bnlh
+public class bnlh
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract MessageRecord a(bnlk parambnlk);
+  public bnlh(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
   
-  public abstract MessageRecord a(bnls parambnls);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a.setCenterScaleValue(f);
+  }
 }
 
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.hotpic;
 
-import asrp;
-import asru;
+import asvy;
+import aswd;
 import com.tencent.qphone.base.util.QLog;
 
 public class PresenceInterfaceImpl$4$1
   implements Runnable
 {
-  public PresenceInterfaceImpl$4$1(asru paramasru) {}
+  public PresenceInterfaceImpl$4$1(aswd paramaswd) {}
   
   public void run()
   {
-    asrp.a(this.a.jdField_a_of_type_Asrp, true);
-    asrp.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    this.a.jdField_a_of_type_Asrp.a.b(-11);
+    asvy.a(this.a.jdField_a_of_type_Asvy, true);
+    asvy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    this.a.jdField_a_of_type_Asvy.a.b(-11);
     QLog.d("PresenceInterfaceImpl", 2, "saveUserPermission false");
   }
 }

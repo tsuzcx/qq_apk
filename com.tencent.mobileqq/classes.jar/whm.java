@@ -1,26 +1,6 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import friendlist.GetOnlineInfoResp;
-
-class whm
-  extends alox
+public abstract interface whm
 {
-  whm(whl paramwhl) {}
-  
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
-  {
-    if ((!paramBoolean) || (this.a.a == null) || (paramGetOnlineInfoResp == null) || (!TextUtils.equals(paramString, this.a.a.qq))) {}
-    while (whl.a(this.a) == null) {
-      return;
-    }
-    paramString = whl.a(this.a);
-    if (paramGetOnlineInfoResp.eIconType == 11) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramString.b(paramBoolean);
-      return;
-    }
-  }
+  public abstract void a();
 }
 
 

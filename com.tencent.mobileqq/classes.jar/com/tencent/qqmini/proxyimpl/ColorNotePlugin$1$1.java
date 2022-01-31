@@ -2,7 +2,7 @@ package com.tencent.qqmini.proxyimpl;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import anxn;
+import aobw;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 class ColorNotePlugin$1$1

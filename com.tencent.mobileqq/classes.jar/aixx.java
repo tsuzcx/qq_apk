@@ -1,140 +1,89 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Array;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 
 public class aixx
-  extends aizc
 {
-  private StringBuilder a;
+  private static volatile aixx a;
   
-  public aixx(String paramString1, String paramString2)
+  private aixx()
   {
-    super(paramString1, paramString2);
+    ajaw.a().a();
   }
   
-  public String a()
+  public static aixx a()
   {
-    if (this.jdField_a_of_type_JavaLangStringBuilder == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
-  }
-  
-  public boolean a(aevb paramaevb, String paramString, float paramFloat, int paramInt)
-  {
-    if ((paramaevb == null) || (TextUtils.isEmpty(paramString))) {}
-    do
+    if (a == null) {}
+    try
     {
-      do
+      if (a == null) {
+        a = new aixx();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public int a(String paramString, int paramInt, String... paramVarArgs)
+  {
+    ajaw.a().a();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 0);
+    localBundle.putString("module", paramString);
+    localBundle.putInt("def_value", paramInt);
+    localBundle.putStringArray("sub_keys", paramVarArgs);
+    paramString = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getConfig", localBundle);
+    int i = paramInt;
+    if (paramString != null)
+    {
+      i = paramInt;
+      if (paramString.isSuccess())
       {
-        return false;
-        paramaevb = aiyp.a(paramaevb, 28, 28);
-        localObject1 = a(paramaevb);
-        aiyp.a(paramaevb);
-      } while (localObject1 == null);
-      Object localObject1 = a((float[][][][])localObject1);
-      paramaevb = new HashSet();
-      Object localObject2 = new LinkedList();
-      if (localObject1 != null)
-      {
-        paramInt = 0;
-        while (paramInt < this.jdField_a_of_type_JavaUtilList.size())
-        {
-          if ((localObject1.length > paramInt) && (localObject1[paramInt] > 0.01F))
-          {
-            ((List)localObject2).add(new aixz((String)this.jdField_a_of_type_JavaUtilList.get(paramInt), localObject1[paramInt]));
-            if ((localObject1[paramInt] > paramFloat) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
-              paramaevb.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
-            }
-          }
-          paramInt += 1;
+        i = paramInt;
+        if (paramString.data != null) {
+          i = paramString.data.getInt("res_get_value");
         }
       }
-      Collections.sort((List)localObject2, new aixy(this));
-      localObject1 = new StringBuilder();
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        aixz localaixz = (aixz)((Iterator)localObject2).next();
-        ((StringBuilder)localObject1).append(localaixz.jdField_a_of_type_JavaLangString + ":" + localaixz.jdField_a_of_type_Float + "\n");
-      }
-      this.jdField_a_of_type_JavaLangStringBuilder = ((StringBuilder)localObject1);
-      if (QLog.isColorLevel()) {
-        QLog.d("DrawClassifier.DefaultClassifier", 2, "recog result:" + ((StringBuilder)localObject1).toString());
-      }
-      if (paramaevb.contains(paramString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("DrawClassifier.DefaultClassifier", 2, "recognition succ:" + paramString);
-        }
-        return true;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("DrawClassifier.DefaultClassifier", 2, "recognition failed:" + paramString);
-    return false;
+    }
+    return i;
   }
   
-  public float[][][][] a(Bitmap paramBitmap)
+  public String a(String paramString)
   {
-    if (paramBitmap == null) {
-      return (float[][][][])null;
+    ajaw.a().a();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 2);
+    localBundle.putString("module", paramString);
+    paramString = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getConfig", localBundle);
+    if ((paramString != null) && (paramString.isSuccess()) && (paramString.data != null)) {
+      return paramString.data.getString("res_get_value");
     }
-    float[][][][] arrayOfFloat = (float[][][][])Array.newInstance(Float.TYPE, new int[] { 1, 28, 28, 1 });
-    int[] arrayOfInt1 = new int[784];
-    float[] arrayOfFloat1 = new float[arrayOfInt1.length];
-    int[] arrayOfInt2 = new int[784];
-    paramBitmap.getPixels(arrayOfInt2, 0, paramBitmap.getWidth(), 0, 0, 28, 28);
-    int i = 0;
-    while (i < arrayOfInt1.length)
+    return "";
+  }
+  
+  public String a(String paramString1, String paramString2, String... paramVarArgs)
+  {
+    ajaw.a().a();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 1);
+    localBundle.putString("module", paramString1);
+    localBundle.putString("def_value", paramString2);
+    localBundle.putStringArray("sub_keys", paramVarArgs);
+    paramVarArgs = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getConfig", localBundle);
+    paramString1 = paramString2;
+    if (paramVarArgs != null)
     {
-      arrayOfInt1[i] = 255;
-      i += 1;
-    }
-    i = 0;
-    while (i < arrayOfInt2.length)
-    {
-      arrayOfInt2[i] &= 0xFF;
-      i += 1;
-    }
-    i = 0;
-    while (i < arrayOfInt1.length)
-    {
-      arrayOfFloat1[i] = (1.0F - arrayOfInt1[i] / 255.0F);
-      i += 1;
-    }
-    int m = arrayOfFloat1.length;
-    i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
-    {
-      k = j;
-      if (arrayOfFloat1[i] != 0.0F) {
-        k = j + 1;
-      }
-      i += 1;
-    }
-    if (j < 40) {
-      return (float[][][][])null;
-    }
-    i = 0;
-    while (i < arrayOfFloat[0].length)
-    {
-      j = 0;
-      while (j < arrayOfFloat[0][i].length)
+      paramString1 = paramString2;
+      if (paramVarArgs.isSuccess())
       {
-        arrayOfFloat[0][i][j][0] = arrayOfFloat1[(i * 28 + j)];
-        j += 1;
+        paramString1 = paramString2;
+        if (paramVarArgs.data != null) {
+          paramString1 = paramVarArgs.data.getString("res_get_value");
+        }
       }
-      i += 1;
     }
-    return arrayOfFloat;
+    return paramString1;
   }
 }
 

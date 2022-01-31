@@ -1,17 +1,17 @@
-import com.tencent.component.network.utils.thread.ThreadPool.Job;
-import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import android.app.Activity;
+import mqq.app.QQPermissionCallback;
 
-public final class bjvc
-  implements ThreadPool.Job<Object>
+final class bjvc
+  implements QQPermissionCallback
 {
-  public bjvc(String paramString1, String paramString2) {}
+  bjvc(Activity paramActivity) {}
   
-  public Object run(ThreadPool.JobContext paramJobContext)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$000(this.a, this.b)), true);
-    return null;
+    bdgm.b(bjvb.a(this.a));
   }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

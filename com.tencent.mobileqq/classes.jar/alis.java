@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.data.ApolloActionPackage;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public abstract interface alis
+final class alis
+  implements BusinessObserver
 {
-  public abstract alja a(int paramInt);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(List<alja> paramList, List<ApolloActionPackage> paramList1, boolean paramBoolean);
-  
-  public abstract boolean a(int paramInt);
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloConfigDataReport", 2, new Object[] { "interceptReport onReceive isSuccess:", Boolean.valueOf(paramBoolean), ",bundle", paramBundle.toString() });
+    }
+  }
 }
 
 

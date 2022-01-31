@@ -1,21 +1,21 @@
 package com.tencent.biz.qqstory.utils;
 
-import xnp;
-import xnt;
+import xry;
+import xsc;
 
 public class PollWidgetUtils$WidgetWrapper$2
   implements Runnable
 {
-  public PollWidgetUtils$WidgetWrapper$2(xnt paramxnt) {}
+  public PollWidgetUtils$WidgetWrapper$2(xsc paramxsc) {}
   
   public void run()
   {
-    xnt localxnt = this.this$0;
-    if (!xnt.a(this.this$0)) {}
+    xsc localxsc = this.this$0;
+    if (!xsc.a(this.this$0)) {}
     for (boolean bool = true;; bool = false)
     {
-      xnt.a(localxnt, bool);
-      this.this$0.a.a(xnt.a(this.this$0));
+      xsc.a(localxsc, bool);
+      this.this$0.a.a(xsc.a(this.this$0));
       return;
     }
   }

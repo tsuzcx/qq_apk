@@ -3,8 +3,8 @@ package dov.com.qq.im.capture.music;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import bhow;
-import blpi;
+import bhtd;
+import bltu;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
@@ -13,10 +13,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class QQMusicPlayerScene
-  extends blpi
+  extends bltu
   implements Handler.Callback
 {
-  bhow jdField_a_of_type_Bhow = new bhow(Looper.getMainLooper(), this);
+  bhtd jdField_a_of_type_Bhtd = new bhtd(Looper.getMainLooper(), this);
   private Timer jdField_a_of_type_JavaUtilTimer;
   private TimerTask jdField_a_of_type_JavaUtilTimerTask;
   private boolean jdField_a_of_type_Boolean = true;

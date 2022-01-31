@@ -8,51 +8,51 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bgte;
-import bgyh;
-import bgyi;
-import bgyj;
-import bgyk;
-import bgyl;
-import bgym;
-import bgyn;
-import bgyo;
-import bgyp;
-import bgyq;
-import bgyr;
-import bgys;
-import bgyt;
-import bgyu;
-import bgyv;
-import bgyw;
-import bgyx;
-import bgyy;
-import bgyz;
-import bgza;
-import bgzb;
-import bgzc;
-import bgzd;
-import bgze;
-import bgzf;
-import bgzg;
-import bgzh;
-import bgzi;
-import bgzj;
-import bgzk;
-import bgzl;
-import bgzm;
-import bgzn;
-import bgzo;
-import bgzp;
-import bgzq;
-import bgzr;
-import bgzs;
-import bgzt;
-import bgzu;
-import bgzv;
-import bgzw;
-import bgzx;
-import bgzy;
+import bgxl;
+import bhco;
+import bhcp;
+import bhcq;
+import bhcr;
+import bhcs;
+import bhct;
+import bhcu;
+import bhcv;
+import bhcw;
+import bhcx;
+import bhcy;
+import bhcz;
+import bhda;
+import bhdb;
+import bhdc;
+import bhdd;
+import bhde;
+import bhdf;
+import bhdg;
+import bhdh;
+import bhdi;
+import bhdj;
+import bhdk;
+import bhdl;
+import bhdm;
+import bhdn;
+import bhdo;
+import bhdp;
+import bhdq;
+import bhdr;
+import bhds;
+import bhdt;
+import bhdu;
+import bhdv;
+import bhdw;
+import bhdx;
+import bhdy;
+import bhdz;
+import bhea;
+import bheb;
+import bhec;
+import bhed;
+import bhee;
+import bhef;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.core.auth.UserAuthInfo;
@@ -103,30 +103,30 @@ public class ChannelProxyDefault
     return i;
   }
   
-  private void handleRequest(bgzp parambgzp, AsyncResult paramAsyncResult)
+  private void handleRequest(bhdw parambhdw, AsyncResult paramAsyncResult)
   {
     MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
     try
     {
-      byte[] arrayOfByte = parambgzp.b();
-      QMLog.w("ChannelProxyDefault", "sendData " + parambgzp);
-      localMiniAppProxy.sendData(arrayOfByte, new ChannelProxyDefault.4(this, parambgzp, paramAsyncResult));
+      byte[] arrayOfByte = parambhdw.b();
+      QMLog.w("ChannelProxyDefault", "sendData " + parambhdw);
+      localMiniAppProxy.sendData(arrayOfByte, new ChannelProxyDefault.4(this, parambhdw, paramAsyncResult));
       return;
     }
-    catch (Exception parambgzp)
+    catch (Exception parambhdw)
     {
       do
       {
-        QMLog.e("ChannelProxyDefault", "handleRequest Exception", parambgzp);
+        QMLog.e("ChannelProxyDefault", "handleRequest Exception", parambhdw);
       } while (paramAsyncResult == null);
-      parambgzp = new JSONObject();
+      parambhdw = new JSONObject();
     }
     try
     {
-      parambgzp.put("retCode", -1);
-      parambgzp.put("errMsg", "数据编码错误");
+      parambhdw.put("retCode", -1);
+      parambhdw.put("errMsg", "数据编码错误");
       label94:
-      paramAsyncResult.onReceiveResult(false, parambgzp);
+      paramAsyncResult.onReceiveResult(false, parambhdw);
       return;
     }
     catch (Throwable localThrowable)
@@ -137,12 +137,12 @@ public class ChannelProxyDefault
   
   public void JudgeTiming(String paramString1, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4, String paramString2, int paramInt5, String paramString3, int paramInt6, COMM.StCommonExt paramStCommonExt, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzl(paramString1, paramInt1, paramInt2, paramInt3, paramLong, paramInt4, paramString2, paramInt5, paramString3, paramInt6, paramStCommonExt), paramAsyncResult);
+    handleRequest(new bhds(paramString1, paramInt1, paramInt2, paramInt3, paramLong, paramInt4, paramString2, paramInt5, paramString3, paramInt6, paramStCommonExt), paramAsyncResult);
   }
   
   public void ReportExecute(String paramString1, int paramInt, String paramString2, String paramString3, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzs(paramString1, paramInt, paramString2, paramString3), paramAsyncResult);
+    handleRequest(new bhdz(paramString1, paramInt, paramString2, paramString3), paramAsyncResult);
   }
   
   public boolean addPublicAccount(String paramString1, String paramString2, AsyncResult paramAsyncResult)
@@ -152,44 +152,44 @@ public class ChannelProxyDefault
   
   public void batchGetContact(ArrayList<String> paramArrayList, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgyh(paramArrayList), paramAsyncResult);
+    handleRequest(new bhco(paramArrayList), paramAsyncResult);
   }
   
   public void checkNavigateRight(String paramString1, String paramString2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgyj(paramString1, paramString2), paramAsyncResult);
+    handleRequest(new bhcq(paramString1, paramString2), paramAsyncResult);
   }
   
   public void checkOfferId(String paramString1, String paramString2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgyk(null, paramString1, paramString2), paramAsyncResult);
+    handleRequest(new bhcr(null, paramString1, paramString2), paramAsyncResult);
   }
   
   public void checkSession(String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgyl(paramString), paramAsyncResult);
+    handleRequest(new bhcs(paramString), paramAsyncResult);
   }
   
   public void dataReport(byte[] paramArrayOfByte, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgym(paramArrayOfByte), paramAsyncResult);
+    handleRequest(new bhct(paramArrayOfByte), paramAsyncResult);
   }
   
   public void downloadQQBrowser(String paramString) {}
   
   public void getAppInfoById(String paramString1, String paramString2, String paramString3, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgyp(null, paramString1, 1, 0, paramString2, paramString3), paramAsyncResult);
+    handleRequest(new bhcw(null, paramString1, 1, 0, paramString2, paramString3), paramAsyncResult);
   }
   
   public void getAppInfoByLink(String paramString, int paramInt, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgyq(paramString, paramInt), paramAsyncResult);
+    handleRequest(new bhcx(paramString, paramInt), paramAsyncResult);
   }
   
   public void getAuthList(String paramString, ChannelProxy.AuthListResult paramAuthListResult)
   {
-    paramString = new bgyr(null, paramString);
+    paramString = new bhcy(null, paramString);
     MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
     handleRequest(paramString, new ChannelProxyDefault.1(this, paramAuthListResult));
   }
@@ -201,27 +201,27 @@ public class ChannelProxyDefault
   
   public void getFormId(String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgyu(paramString), paramAsyncResult);
+    handleRequest(new bhdb(paramString), paramAsyncResult);
   }
   
   public void getFriendCloudStorage(String paramString, String[] paramArrayOfString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgyv(paramArrayOfString, paramString), paramAsyncResult);
+    handleRequest(new bhdc(paramArrayOfString, paramString), paramAsyncResult);
   }
   
   public void getGdtAd(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgyo(paramString1, paramInt, paramString2, paramString3, paramString4, paramHashMap), paramAsyncResult);
+    handleRequest(new bhcv(paramString1, paramInt, paramString2, paramString3, paramString4, paramHashMap), paramAsyncResult);
   }
   
   public void getGroupCloudStorage(String paramString1, String paramString2, String[] paramArrayOfString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgyw(paramArrayOfString, paramString2, paramString1), paramAsyncResult);
+    handleRequest(new bhdd(paramArrayOfString, paramString2, paramString1), paramAsyncResult);
   }
   
   public void getGroupShareInfo(String paramString1, String paramString2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzm(null, paramString1, paramString2), paramAsyncResult);
+    handleRequest(new bhdt(null, paramString1, paramString2), paramAsyncResult);
   }
   
   public IMediaPlayer getMediaPlayer()
@@ -236,47 +236,47 @@ public class ChannelProxyDefault
   
   public void getMidasConsumeResult(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString3, String paramString4, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzo(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramString3, paramString4), paramAsyncResult);
+    handleRequest(new bhdv(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramString3, paramString4), paramAsyncResult);
   }
   
   public void getMiniAppStoreAppList(int paramInt, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgyt(paramInt), paramAsyncResult);
+    handleRequest(new bhda(paramInt), paramAsyncResult);
   }
   
   public void getNativeAppInfoForJump(String paramString1, String paramString2, String paramString3, int paramInt, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgyy(null, paramString1, paramString2, paramString3, paramInt), paramAsyncResult);
+    handleRequest(new bhdf(null, paramString1, paramString2, paramString3, paramInt), paramAsyncResult);
   }
   
   public void getPhoneNumber(String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzy(paramString), paramAsyncResult);
+    handleRequest(new bhef(paramString), paramAsyncResult);
   }
   
   public void getPotentialFriendList(COMM.StCommonExt paramStCommonExt, String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgza(paramStCommonExt, paramString), paramAsyncResult);
+    handleRequest(new bhdh(paramStCommonExt, paramString), paramAsyncResult);
   }
   
   public void getRobotUin(String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzc(null, paramString), paramAsyncResult);
+    handleRequest(new bhdj(null, paramString), paramAsyncResult);
   }
   
   public void getSDKOpenKeyToken(COMM.StCommonExt paramStCommonExt, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzd(paramStCommonExt), paramAsyncResult);
+    handleRequest(new bhdk(paramStCommonExt), paramAsyncResult);
   }
   
   public void getShareInfo(MiniProgramShare.StAdaptShareInfoReq paramStAdaptShareInfoReq, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgze(paramStAdaptShareInfoReq), paramAsyncResult);
+    handleRequest(new bhdl(paramStAdaptShareInfoReq), paramAsyncResult);
   }
   
   public void getTcbTicket(String paramString1, String paramString2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzf(null, paramString1, paramString2), paramAsyncResult);
+    handleRequest(new bhdm(null, paramString1, paramString2), paramAsyncResult);
   }
   
   public ChannelProxy.SoLoaderOption getTissueSoLoaderOption()
@@ -286,37 +286,37 @@ public class ChannelProxyDefault
   
   public void getUserCloudStorage(String paramString, String[] paramArrayOfString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgys(paramArrayOfString, paramString), paramAsyncResult);
+    handleRequest(new bhcz(paramArrayOfString, paramString), paramAsyncResult);
   }
   
   public void getUserHealthData(String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzh(null, paramString), paramAsyncResult);
+    handleRequest(new bhdo(null, paramString), paramAsyncResult);
   }
   
   public void getUserInfo(String paramString1, boolean paramBoolean, String paramString2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzb(paramString1, paramBoolean, paramString2), paramAsyncResult);
+    handleRequest(new bhdi(paramString1, paramBoolean, paramString2), paramAsyncResult);
   }
   
   public void getUserInfoExtra(String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzi(paramString), paramAsyncResult);
+    handleRequest(new bhdp(paramString), paramAsyncResult);
   }
   
   public void getUserInfoOpenData(String paramString1, String paramString2, String[] paramArrayOfString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgyi(paramString1, paramString2, paramArrayOfString), paramAsyncResult);
+    handleRequest(new bhcp(paramString1, paramString2, paramArrayOfString), paramAsyncResult);
   }
   
   public void getUserInteractiveStorage(COMM.StCommonExt paramStCommonExt, String paramString, String[] paramArrayOfString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzj(paramStCommonExt, paramString, paramArrayOfString), paramAsyncResult);
+    handleRequest(new bhdq(paramStCommonExt, paramString, paramArrayOfString), paramAsyncResult);
   }
   
   public void getUserSetting(String paramString1, String paramString2, String paramString3, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzk(paramString1, paramString2, paramString3), paramAsyncResult);
+    handleRequest(new bhdr(paramString1, paramString2, paramString3), paramAsyncResult);
   }
   
   public void httpReport(Bundle paramBundle)
@@ -351,12 +351,12 @@ public class ChannelProxyDefault
   
   public void login(String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgyx(paramString), paramAsyncResult);
+    handleRequest(new bhde(paramString), paramAsyncResult);
   }
   
   public void modifyFriendInteractiveStorage(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, HashMap<String, String> paramHashMap, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzn(paramStCommonExt, paramString1, paramString2, paramString3, paramInt, paramString4, paramHashMap), paramAsyncResult);
+    handleRequest(new bhdu(paramStCommonExt, paramString1, paramString2, paramString3, paramInt, paramString4, paramHashMap), paramAsyncResult);
   }
   
   public boolean openGroup(Context paramContext, String paramString, AsyncResult paramAsyncResult)
@@ -377,22 +377,22 @@ public class ChannelProxyDefault
   
   public void queryCurrency(String paramString1, String paramString2, int paramInt1, int paramInt2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzq(null, paramString2, paramString1, paramInt1, paramInt2), paramAsyncResult);
+    handleRequest(new bhdx(null, paramString2, paramString1, paramInt1, paramInt2), paramAsyncResult);
   }
   
   public void removeUserCloudStorage(String paramString, String[] paramArrayOfString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzr(paramArrayOfString, paramString), paramAsyncResult);
+    handleRequest(new bhdy(paramArrayOfString, paramString), paramAsyncResult);
   }
   
   public void report(byte[] paramArrayOfByte, String paramString1, String paramString2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgyn(paramArrayOfByte, paramString1, paramString2), paramAsyncResult);
+    handleRequest(new bhcu(paramArrayOfByte, paramString1, paramString2), paramAsyncResult);
   }
   
   public void reportShare(COMM.StCommonExt paramStCommonExt, long paramLong, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzt(paramLong, paramString1, paramInt1, paramInt2, paramInt3, paramInt4, paramString2), paramAsyncResult);
+    handleRequest(new bhea(paramLong, paramString1, paramInt1, paramInt2, paramInt3, paramInt4, paramString2), paramAsyncResult);
   }
   
   public void setAuth(String paramString, UserAuthInfo paramUserAuthInfo, AsyncResult paramAsyncResult)
@@ -403,17 +403,17 @@ public class ChannelProxyDefault
       localStUserAuthInfo.desc.set(paramUserAuthInfo.desc);
     }
     localStUserAuthInfo.authState.set(paramUserAuthInfo.authState);
-    handleRequest(new bgzu(null, paramString, localStUserAuthInfo), paramAsyncResult);
+    handleRequest(new bheb(null, paramString, localStUserAuthInfo), paramAsyncResult);
   }
   
   public void setPersonalizeInfo(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzv(null, paramString1, paramString2, paramInt, paramString3, paramString4), paramAsyncResult);
+    handleRequest(new bhec(null, paramString1, paramString2, paramInt, paramString3, paramString4), paramAsyncResult);
   }
   
   public void setUserCloudStorage(String paramString, HashMap<String, String> paramHashMap, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzw(paramHashMap, paramString), paramAsyncResult);
+    handleRequest(new bhed(paramHashMap, paramString), paramAsyncResult);
   }
   
   public boolean startAddFriendActivity(Context paramContext, String paramString1, String paramString2)
@@ -438,7 +438,7 @@ public class ChannelProxyDefault
   
   public void transForRoomId(String paramString1, String paramString2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzg(paramString1, paramString2), paramAsyncResult);
+    handleRequest(new bhdn(paramString1, paramString2), paramAsyncResult);
   }
   
   public boolean updateBaseLib(String paramString, boolean paramBoolean1, boolean paramBoolean2, AsyncResult paramAsyncResult)
@@ -453,7 +453,7 @@ public class ChannelProxyDefault
         return false;
       }
     }
-    handleRequest(new bgyz(paramString, 0), paramAsyncResult);
+    handleRequest(new bhdg(paramString, 0), paramAsyncResult);
     return true;
   }
   
@@ -468,7 +468,7 @@ public class ChannelProxyDefault
   
   public void useUserApp(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, COMM.StCommonExt paramStCommonExt, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bgzx(paramStCommonExt, paramString1, paramInt1, paramInt2, paramString2, paramString3), paramAsyncResult);
+    handleRequest(new bhee(paramStCommonExt, paramString1, paramInt1, paramInt2, paramString2, paramString3), paramAsyncResult);
   }
   
   public void verifyPlugin(String paramString, ArrayList<PluginInfo> paramArrayList, AsyncResult paramAsyncResult) {}
@@ -548,10 +548,10 @@ public class ChannelProxyDefault
         localObject3 = str1;
         try
         {
-          bgte.a().a();
+          bgxl.a().a();
           localObject2 = localObject1;
           localObject3 = str1;
-          paramJSONObject = new String(bgte.a().a());
+          paramJSONObject = new String(bgxl.a().a());
           localObject2 = localObject1;
           localObject3 = str1;
           if (TextUtils.isEmpty(paramJSONObject)) {

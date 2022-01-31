@@ -1,18 +1,17 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
-final class aqdr
-  implements View.OnClickListener
+public class aqdr
+  implements DialogInterface.OnClickListener
 {
-  aqdr(Dialog paramDialog) {}
+  public aqdr(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    azmj.b(null, "dc00898", "", "", "kuolie", "0X80097DF", 0, 0, "", "", "", "");
-    if ((this.a != null) && (this.a.isShowing())) {
-      this.a.dismiss();
-    }
+    paramDialogInterface.dismiss();
+    ExtendFriendEditFragment.a(this.a).finish();
   }
 }
 

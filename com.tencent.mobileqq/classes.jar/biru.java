@@ -1,89 +1,223 @@
-import android.app.Activity;
 import android.content.Context;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.globalsearch.FavoriteSearchActivity;
-import java.util.HashMap;
+import cooperation.plugin.PluginPreInstaller.2;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
-import mqq.app.AppRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class biru
-  implements ayjk
 {
-  public static final String a;
-  public static final String b = alpo.a(2131705755);
-  private List<ayjl> a;
-  private String c;
+  private static final SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "qlink_plugin.apk" };
+  private static final String[] b = { "qqreaderplugin.apk", "comic_plugin.apk", "Photoplus.apk" };
+  private static final String[] c = { "qqhotspot_plugin.apk" };
+  private static final String[] d = new String[0];
+  private static final String[] e = { "qqreaderplugin.apk", "comic_plugin.apk" };
+  private Context jdField_a_of_type_AndroidContentContext;
+  private biqn jdField_a_of_type_Biqn;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new birv(this);
   
-  static
+  public biru(Context paramContext, biqn parambiqn, QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_JavaLangString = biru.class.getSimpleName();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Biqn = parambiqn;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    c();
   }
   
-  public biru(List<ayjl> paramList, String paramString)
+  private int a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.c = paramString;
+    return PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getInt("total_retried_times_" + paramString, 0);
   }
   
-  public int a()
+  private List<String> a()
   {
-    return 0;
-  }
-  
-  public String a()
-  {
-    return alpo.a(2131705761);
-  }
-  
-  public List<ayjl> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    Object localObject;
-    QQAppInterface localQQAppInterface;
-    JSONObject localJSONObject;
-    if (((paramView.getContext() instanceof UniteSearchActivity)) && (aydw.b.containsKey(this)))
+    int j = 0;
+    ArrayList localArrayList = new ArrayList();
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int k = arrayOfString.length;
+    int i = 0;
+    while (i < k)
     {
-      localObject = (aydx)aydw.b.get(this);
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localJSONObject = new JSONObject();
+      localArrayList.add(arrayOfString[i]);
+      i += 1;
     }
-    try
+    if (bdin.a(this.jdField_a_of_type_AndroidContentContext))
     {
-      localJSONObject.put("project", aynt.a());
-      localJSONObject.put("event_src", "client");
-      localJSONObject.put("obj_lct", ((aydx)localObject).jdField_a_of_type_Int);
-      localJSONObject.put("get_src", "native");
-      aynt.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(((aydx)localObject).jdField_a_of_type_Long + "").obj2(((aydx)localObject).b).ver1(((aydx)localObject).jdField_a_of_type_JavaLangString).ver2(aynt.a(UniteSearchActivity.d)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + aydw.jdField_a_of_type_Long));
-      localObject = (BaseActivity)paramView.getContext();
-      FavoriteSearchActivity.a((Context)localObject, this.c);
-      biqv.a((Activity)localObject, ((BaseActivity)localObject).getAppRuntime().getAccount(), 0L);
-      ayrd.a(this.c, 60, 0, paramView);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      arrayOfString = b;
+      k = arrayOfString.length;
+      i = 0;
+      if (i < k)
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
+        String str = arrayOfString[i];
+        if ((str.equals("Photoplus.apk")) && (bhtb.d())) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localArrayList.add(str);
+        }
       }
     }
+    if ((bdgk.e()) || (bdhb.a() <= 1.048576E+008F))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginPreInstaller", 2, "plugins " + Arrays.toString(e) + "filtered in low end phone");
+      }
+      arrayOfString = e;
+      k = arrayOfString.length;
+      i = j;
+      while (i < k)
+      {
+        localArrayList.remove(arrayOfString[i]);
+        i += 1;
+      }
+    }
+    return localArrayList;
   }
   
-  public String b()
+  private void a(String paramString, int paramInt1, int paramInt2)
   {
-    return this.c;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PluginPreInstaller", 4, "installPlugin plugin = " + paramString + ", totalTimes = " + paramInt1 + ", todayTimes = " + paramInt2);
+    }
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).edit();
+    Object localObject = new Date();
+    localObject = jdField_a_of_type_JavaTextSimpleDateFormat.format((Date)localObject);
+    localEditor.putInt("total_retried_times_" + paramString, paramInt1 + 1);
+    localEditor.putInt("today_retried_times_" + paramString, paramInt2 + 1);
+    localEditor.putString("last_retry_day_" + paramString, (String)localObject);
+    localEditor.commit();
+    this.jdField_a_of_type_Biqn.a(paramString, this.jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener, true);
+    if (("qqreaderplugin.apk".equals(paramString)) && (bizl.a(this.jdField_a_of_type_AndroidContentContext) == -1))
+    {
+      ThreadManager.post(new PluginPreInstaller.2(this), 5, null, false);
+      if (QLog.isColorLevel()) {
+        QLog.e("PluginPreInstaller", 2, "");
+      }
+    }
+    while (!"comic_plugin.apk".equals(paramString)) {
+      return;
+    }
+    bimq.a(1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  private int b(String paramString)
+  {
+    int i = 0;
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext);
+    Date localDate = new Date();
+    if (jdField_a_of_type_JavaTextSimpleDateFormat.format(localDate).equals(localSharedPreferences.getString("last_retry_day_" + paramString, ""))) {
+      i = localSharedPreferences.getInt("today_retried_times_" + paramString, 0);
+    }
+    return i;
+  }
+  
+  private void c()
+  {
+    if (!PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getString("plugin_pre_install_qq_version", "").equals(bdgk.c()))
+    {
+      SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).edit();
+      Iterator localIterator = a().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localEditor.remove("total_retried_times_" + str);
+      }
+      localEditor.commit();
+    }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      Iterator localIterator = a().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        try
+        {
+          if (this.jdField_a_of_type_Biqn.isPlugininstalled(str)) {
+            continue;
+          }
+          int i = a(str);
+          if (i >= 10) {
+            continue;
+          }
+          int j = b(str);
+          if (j >= 2) {
+            continue;
+          }
+          a(str, i, j);
+        }
+        catch (Exception localException) {}
+        if (QLog.isColorLevel()) {
+          QLog.e("PluginPreInstaller", 2, "preinstall plugin : " + str + " failed.", localException);
+        }
+      }
+    }
+    finally {}
+  }
+  
+  public void b()
+  {
+    for (;;)
+    {
+      int i;
+      try
+      {
+        if (AppNetConnInfo.isWifiConn())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("PluginPreInstaller", 2, "preinstall start,wifi_reinstall_only.");
+          }
+          String[] arrayOfString = d;
+          int j = arrayOfString.length;
+          i = 0;
+          if (i < j)
+          {
+            String str = arrayOfString[i];
+            try
+            {
+              if (!this.jdField_a_of_type_Biqn.isPlugininstalled(str))
+              {
+                a(str, a(str), b(str));
+              }
+              else if ("QQWifiPlugin.apk".equals(str))
+              {
+                Intent localIntent = new Intent("com.tencent.mobileqq.cooperation.plugin." + str);
+                localIntent.putExtra("plugin", str);
+                this.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
+              }
+            }
+            catch (Exception localException)
+            {
+              if (!QLog.isColorLevel()) {
+                break label193;
+              }
+            }
+            QLog.e("PluginPreInstaller", 2, "preinstall plugin : " + str + " failed.", localException);
+          }
+        }
+      }
+      finally {}
+      return;
+      label193:
+      i += 1;
+    }
   }
 }
 

@@ -1,19 +1,19 @@
 package dov.com.qq.im.ae.gif.video;
 
-import bkxq;
-import blaq;
+import blbx;
+import blex;
 
 public class PngsCreator$4
   implements Runnable
 {
-  public PngsCreator$4(blaq paramblaq, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
+  public PngsCreator$4(blex paramblex, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
   
   public void run()
   {
-    if (blaq.a(this.this$0) != null)
+    if (blex.a(this.this$0) != null)
     {
-      blaq.a(this.this$0).a(true);
-      blaq.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.d);
+      blex.a(this.this$0).a(true);
+      blex.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.d);
     }
   }
 }

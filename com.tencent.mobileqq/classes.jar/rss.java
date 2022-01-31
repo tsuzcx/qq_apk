@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 import com.tencent.widget.AbsListView;
 
 public class rss
-  implements bhpo
+  implements bhtv
 {
   public rss(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   

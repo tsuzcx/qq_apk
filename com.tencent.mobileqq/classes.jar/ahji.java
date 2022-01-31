@@ -1,14 +1,32 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.Comparator;
+import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.widget.ImageView;
 
 class ahji
-  implements Comparator<MayKnowRecommend>
+  implements bdbc
 {
-  ahji(ahjd paramahjd) {}
+  ahji(ahjh paramahjh) {}
   
-  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    return paramMayKnowRecommend2.timestamp - paramMayKnowRecommend1.timestamp;
+    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      paramInt2 = ahjh.a(this.a).getChildCount();
+      paramInt1 = 0;
+      while (paramInt1 < paramInt2)
+      {
+        Object localObject = ahjh.a(this.a).getChildViewHolder(ahjh.a(this.a).getChildAt(paramInt1));
+        if ((localObject instanceof ahjj))
+        {
+          localObject = (ahjj)localObject;
+          if (((ahjj)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) {
+            ((ahjj)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+          }
+        }
+        paramInt1 += 1;
+      }
+    }
   }
 }
 

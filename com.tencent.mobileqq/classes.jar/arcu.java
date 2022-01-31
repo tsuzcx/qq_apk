@@ -1,59 +1,130 @@
-import com.tencent.kwstudio.office.preview.IHostInterface.IDownloadListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.BitmapFactory.Options;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.List;
 
-public final class arcu
-  implements bapx
+public class arcu
+  extends ayrm
 {
-  private final IHostInterface.IDownloadListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener;
-  private final String jdField_a_of_type_JavaLangString;
+  private BitmapFactory.Options a = new BitmapFactory.Options();
   
-  private arcu(String paramString, IHostInterface.IDownloadListener paramIDownloadListener)
+  public arcu(bdbb parambdbb)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener = paramIDownloadListener;
+    super(parambdbb);
   }
   
-  public void onResp(baqw parambaqw)
+  public void a(aynu paramaynu, aywd paramaywd)
   {
-    int i = 0;
-    if (parambaqw.jdField_a_of_type_Int == 3) {}
-    label74:
-    label80:
-    for (;;)
-    {
+    paramaywd.a().setMaxWidth(800);
+    Object localObject = (arcp)paramaynu;
+    ImageView localImageView = paramaywd.b();
+    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    localImageView.setImageDrawable(null);
+    localImageView.setBackgroundDrawable(null);
+    if (((arcp)localObject).a == null) {
       return;
-      boolean bool;
-      if (parambaqw.jdField_a_of_type_Int == 0)
-      {
-        bool = true;
-        if (!bool) {
-          break label74;
-        }
+    }
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)((arcp)localObject).a.get(0);
+    int i = arrr.a(localFileManagerEntity.fileName);
+    if ((i == 0) || (i == 2))
+    {
+      if (bdhb.b(localFileManagerEntity.strThumbPath)) {
+        localObject = localFileManagerEntity.strThumbPath;
       }
       for (;;)
       {
-        if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener == null) {
-          break label80;
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramaywd.b().getHeight();
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramaywd.b().getWidth();
+        paramaywd = paramaywd.d();
+        if ((paramaywd != null) && (!TextUtils.isEmpty(paramaynu.d())))
+        {
+          paramaywd.setText(paramaynu.d());
+          paramaywd.setVisibility(0);
         }
-        if (bool) {
-          this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, parambaqw.jdField_a_of_type_Long, 1.0F);
+        paramaynu = arsj.a(localFileManagerEntity);
+        if (paramaynu == null) {
+          break;
         }
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadFinished(this.jdField_a_of_type_JavaLangString, bool, i);
+        paramaynu = URLDrawable.getDrawable(paramaynu, (URLDrawable.URLDrawableOptions)localObject);
+        if (paramaynu == null) {
+          localImageView.setImageDrawable(localImageView.getContext().getResources().getDrawable(2130843911));
+        }
+        localImageView.setImageDrawable(paramaynu);
         return;
-        bool = false;
-        break;
-        i = parambaqw.b;
+        if (bdhb.b(localFileManagerEntity.strLargeThumPath))
+        {
+          localObject = localFileManagerEntity.strLargeThumPath;
+        }
+        else
+        {
+          if (!bdhb.b(localFileManagerEntity.strFilePath)) {
+            break label266;
+          }
+          localObject = localFileManagerEntity.strFilePath;
+        }
       }
+      label266:
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localFileManagerEntity.getCloudType() == 1) {
+        localObject = ((QQAppInterface)localObject).a().a(localFileManagerEntity, 7);
+      }
+    }
+    for (;;)
+    {
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localImageView.setImageDrawable(BaseApplicationImpl.getContext().getResources().getDrawable(2130843911));
+        return;
+        if (localFileManagerEntity.getCloudType() == 2) {
+          localObject = ((QQAppInterface)localObject).a().a(localFileManagerEntity.WeiYunFileId, localFileManagerEntity.strLargeThumPath, 3, localFileManagerEntity);
+        }
+      }
+      else
+      {
+        localFileManagerEntity.strThumbPath = ((String)localObject);
+        break;
+        arrr.a(localImageView, localFileManagerEntity);
+        return;
+      }
+      localObject = "";
     }
   }
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2)
+  public void b(aynu paramaynu, aywd paramaywd)
   {
-    if (paramLong2 != 0L)
+    super.b(paramaynu, paramaywd);
+    if ((paramaywd.a() != null) && (!TextUtils.isEmpty(paramaynu.a())))
     {
-      float f = (float)paramLong1 / (float)paramLong2;
-      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener != null) {
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramLong2, f);
-      }
+      paramaywd.a().setVisibility(0);
+      paramaywd.a().setText(paramaynu.a());
+    }
+    if ((paramaywd.b() != null) && (!TextUtils.isEmpty(paramaynu.b())))
+    {
+      paramaywd.b().setVisibility(0);
+      paramaywd.b().setText(paramaynu.b());
+    }
+    if ((paramaywd.c() != null) && (!TextUtils.isEmpty(paramaynu.c())))
+    {
+      paramaywd.c().setVisibility(0);
+      paramaywd.c().setText(paramaynu.c());
+    }
+    if ((paramaynu.d() == null) && (paramaywd.d() != null)) {
+      paramaywd.d().setVisibility(8);
+    }
+    if ((paramaywd.d() != null) && (paramaynu.d() != null))
+    {
+      paramaywd.d().setVisibility(0);
+      paramaywd.d().setText(paramaynu.d());
     }
   }
 }

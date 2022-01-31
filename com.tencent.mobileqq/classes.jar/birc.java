@@ -1,28 +1,12 @@
-import android.app.Dialog;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qqfav.QfavLeakHelper.2.1;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public final class birc
-  implements View.OnClickListener
+class birc
+  implements FilenameFilter
 {
-  public void onClick(View paramView)
+  public boolean accept(File paramFile, String paramString)
   {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
-    QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131709981) + "/Tencent/MobileQQ/log/", 1).a();
-    paramView = ThreadManager.newFreeHandlerThread("Qfav-leaker", 10);
-    paramView.start();
-    paramView = paramView.getLooper();
-    if (paramView != null) {
-      new Handler(paramView).post(new QfavLeakHelper.2.1(this));
-    }
+    return paramString.endsWith(this.a);
   }
 }
 

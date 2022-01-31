@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import alpo;
+import alud;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.text.TextUtils;
-import awbv;
-import awdc;
-import awdg;
-import awdj;
-import bckr;
-import bcks;
+import awge;
+import awhl;
+import awhp;
+import awhs;
+import bcpa;
+import bcpb;
 import com.tencent.mobileqq.activity.photo.TroopClipPic;
 import com.tencent.mobileqq.app.GroupIconHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -47,7 +47,7 @@ import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 import tencent.im.oidb.cmd0x8f9.oidb_0x8f9.GroupFeedsRecord;
 
 public class TroopInfo
-  extends awbv
+  extends awge
   implements Serializable
 {
   public static final int ALLOW_HISTORY_MSG_READ_FOR_NEW_MEMBER = 4;
@@ -75,7 +75,7 @@ public class TroopInfo
   public static final int PAY_PRIVILEGE_GROUP_FEE = 64;
   public static final int PAY_PRIVILEGE_PAY_TO_JOIN_TROOP = 128;
   public static final int QIDIAN_PRIVATE_TROOP_FLAG = 32;
-  public static final String QIDIAN_TROOP_MEMBER_DEF_NICK = alpo.a(2131715838);
+  public static final String QIDIAN_TROOP_MEMBER_DEF_NICK = alud.a(2131715850);
   public static final int QZONE_TROOP_ENTRANCE = 131072;
   public static final int SET_DEFAULT_PIC = 1;
   public static final String TABLE_NAME = "TroopInfoV2";
@@ -141,7 +141,7 @@ public class TroopInfo
   public String joinTroopAnswer;
   public String joinTroopQuestion;
   public long lastMsgTime;
-  @awdc(a=0)
+  @awhl(a=0)
   public long lastShareLbsMsgUniseq;
   public String mAtOrReplyMeUins;
   HashMap<Integer, String> mCachedLevelMap;
@@ -167,10 +167,10 @@ public class TroopInfo
   public int mTroopFileVideoIsWhite;
   public long mTroopFileVideoReqInterval;
   public float mTroopNeedPayNumber = 0.0F;
-  @awdg
+  @awhp
   public List<TroopClipPic> mTroopPicList = new ArrayList(8);
   public String mTroopPicListJson = "";
-  @awdg
+  @awhp
   public Set<String> mTroopVerifyingPics = new HashSet();
   public int maxAdminNum;
   public int maxInviteMemNum;
@@ -206,7 +206,7 @@ public class TroopInfo
   public String troopname;
   public String troopowneruin;
   public int trooptype;
-  @awdj
+  @awhs
   public String troopuin;
   public long udwCmdUinRingtoneID;
   public String uin;
@@ -854,7 +854,7 @@ public class TroopInfo
   public String getAdminShow(Context paramContext)
   {
     if (TextUtils.isEmpty(this.adminNameShow)) {
-      return paramContext.getString(2131720939);
+      return paramContext.getString(2131720951);
     }
     return this.adminNameShow;
   }
@@ -863,12 +863,12 @@ public class TroopInfo
   {
     String str = "";
     if ((this.troopPrivilegeFlag & 0x6100000) == 0L) {
-      str = paramResources.getString(2131696960);
+      str = paramResources.getString(2131696962);
     }
     while (((this.troopPrivilegeFlag & 0x2000000) != 33554432L) && ((this.troopPrivilegeFlag & 0x4000000) != 67108864L) && ((this.troopPrivilegeFlag & 0x100000) != 1048576L)) {
       return str;
     }
-    return paramResources.getString(2131696961);
+    return paramResources.getString(2131696963);
   }
   
   public String getInviteModeWording(Resources paramResources)
@@ -881,7 +881,7 @@ public class TroopInfo
       if (((i != 1) && (i != 6)) || (isOnlyTroopMemberInviteOption())) {
         break label69;
       }
-      str = paramResources.getString(2131696965);
+      str = paramResources.getString(2131696967);
     }
     label69:
     do
@@ -890,13 +890,13 @@ public class TroopInfo
       i = this.cGroupOption;
       break;
       if ((this.troopPrivilegeFlag & 0x6100000) == 0L) {
-        return paramResources.getString(2131696964);
+        return paramResources.getString(2131696966);
       }
       if ((this.troopPrivilegeFlag & 0x100000) == 1048576L) {
-        return paramResources.getString(2131696965);
+        return paramResources.getString(2131696967);
       }
     } while (((this.troopPrivilegeFlag & 0x4000000) != 67108864L) && ((this.troopPrivilegeFlag & 0x2000000) != 33554432L));
-    return paramResources.getString(2131696966);
+    return paramResources.getString(2131696968);
   }
   
   public String getLatestMemo()
@@ -967,7 +967,7 @@ public class TroopInfo
   public String getOwnerShow(Context paramContext)
   {
     if (TextUtils.isEmpty(this.ownerNameShow)) {
-      return paramContext.getString(2131721101);
+      return paramContext.getString(2131721113);
     }
     return this.ownerNameShow;
   }
@@ -1454,7 +1454,7 @@ public class TroopInfo
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 1275	awbv:prewrite	()V
+    //   1: invokespecial 1275	awge:prewrite	()V
     //   4: new 1228	org/json/JSONArray
     //   7: dup
     //   8: invokespecial 1276	org/json/JSONArray:<init>	()V
@@ -1615,7 +1615,7 @@ public class TroopInfo
       try
       {
         group_feeds.GroupFeedsMessage localGroupFeedsMessage = (group_feeds.GroupFeedsMessage)paramGroupFeedsRecord.msg_feeds_content.get();
-        paramGroupFeedsRecord = bckr.a(String.valueOf(paramGroupFeedsRecord.uint32_feeds_type.get()), localGroupFeedsMessage.toByteArray(), true);
+        paramGroupFeedsRecord = bcpa.a(String.valueOf(paramGroupFeedsRecord.uint32_feeds_type.get()), localGroupFeedsMessage.toByteArray(), true);
         if (paramGroupFeedsRecord == null) {
           continue;
         }

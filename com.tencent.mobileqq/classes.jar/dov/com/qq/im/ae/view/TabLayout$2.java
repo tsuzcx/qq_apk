@@ -2,7 +2,7 @@ package dov.com.qq.im.ae.view;
 
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import blfn;
+import blju;
 import java.util.List;
 
 class TabLayout$2
@@ -13,7 +13,7 @@ class TabLayout$2
   public void run()
   {
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)TabLayout.a(this.this$0).getLayoutParams();
-    localLayoutParams.setMargins(((blfn)TabLayout.a(this.this$0).get(0)).getRight() / 2 - TabLayout.a(this.this$0).getWidth() / 2, 0, 0, 0);
+    localLayoutParams.setMargins(((blju)TabLayout.a(this.this$0).get(0)).getRight() / 2 - TabLayout.a(this.this$0).getWidth() / 2, 0, 0, 0);
     TabLayout.a(this.this$0).setLayoutParams(localLayoutParams);
   }
 }

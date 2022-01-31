@@ -1,10 +1,10 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.os.Bundle;
-import bghl;
-import bghn;
-import bghq;
-import bgqg;
+import bgls;
+import bglu;
+import bglx;
+import bgun;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.minigame.api.ApiUtil;
@@ -45,20 +45,20 @@ public class MiniSDKClientQIPCModule
   {
     Object localObject1 = AppRuntimeLoaderManager.g().getCurrentRunTimeLoader();
     if (localObject1 == null) {}
-    bghl localbghl;
+    bgls localbgls;
     ShareState localShareState;
     Object localObject2;
     for (;;)
     {
       return;
-      localbghl = ((bgqg)localObject1).getRuntime();
-      if (localbghl != null) {
+      localbgls = ((bgun)localObject1).getRuntime();
+      if (localbgls != null) {
         try
         {
-          localObject1 = localbghl.a();
+          localObject1 = localbgls.a();
           if (localObject1 != null)
           {
-            localShareState = localbghl.a();
+            localShareState = localbgls.a();
             if (localShareState != null) {
               if (paramBoolean)
               {
@@ -66,8 +66,8 @@ public class MiniSDKClientQIPCModule
                 if (localObject3 != null)
                 {
                   localObject3 = ((JSONObject)localObject3).toString();
-                  ((bghn)localObject1).a(localShareState.shareCallbackId, (String)localObject3);
-                  ThreadManager.getSubThreadHandler().post(new MiniSDKClientQIPCModule.1(this, localbghl));
+                  ((bglu)localObject1).a(localShareState.shareCallbackId, (String)localObject3);
+                  ThreadManager.getSubThreadHandler().post(new MiniSDKClientQIPCModule.1(this, localbgls));
                   return;
                 }
               }
@@ -90,7 +90,7 @@ public class MiniSDKClientQIPCModule
     for (Object localObject3 = ((JSONObject)localObject3).toString();; localObject3 = "")
     {
       localObject2.a(localShareState.shareCallbackId, (String)localObject3);
-      ThreadManager.getSubThreadHandler().post(new MiniSDKClientQIPCModule.2(this, localbghl));
+      ThreadManager.getSubThreadHandler().post(new MiniSDKClientQIPCModule.2(this, localbgls));
       return;
     }
   }

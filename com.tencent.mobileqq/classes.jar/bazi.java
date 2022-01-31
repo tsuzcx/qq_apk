@@ -1,26 +1,31 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 
-public abstract class bazi
-  extends RecyclerView.ViewHolder
+public class bazi
+  extends bazf
+  implements baze
 {
-  public int a;
-  public SeekBar a;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  public RelativeLayout b;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  ImageView d;
+  String a;
   
-  public bazi(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, View paramView)
+  public bazi(String paramString)
   {
-    super(paramView);
+    this.a = paramString;
+  }
+  
+  public Bitmap a(Bitmap paramBitmap)
+  {
+    int i = bayu.a(this.a);
+    if (i == 0) {
+      return b(paramBitmap);
+    }
+    Object localObject = new Matrix();
+    ((Matrix)localObject).setRotate(i, paramBitmap.getWidth() / 2.0F, paramBitmap.getHeight() / 2.0F);
+    localObject = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject, true);
+    if ((localObject == null) || (localObject == paramBitmap)) {
+      throw new OutOfMemoryError("OOM");
+    }
+    paramBitmap.recycle();
+    return b((Bitmap)localObject);
   }
 }
 

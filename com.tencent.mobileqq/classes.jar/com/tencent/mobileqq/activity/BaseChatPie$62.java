@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import acex;
+import acjm;
 import android.content.Context;
 import android.content.res.Resources;
-import apur;
+import apza;
 import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$62
@@ -13,13 +13,13 @@ class BaseChatPie$62
   
   public void run()
   {
-    acex.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
+    acjm.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
     try
     {
-      this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846583);
-      this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846584);
-      this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837914);
-      apur.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846656);
+      this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846657);
+      this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837915);
+      apza.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       return;
     }
     catch (Exception localException)

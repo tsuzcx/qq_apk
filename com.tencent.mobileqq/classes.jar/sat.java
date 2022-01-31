@@ -29,7 +29,7 @@ public class sat
   public sat(View paramView, BaseData paramBaseData)
   {
     super(paramView, paramBaseData);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368589));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368600));
     this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
   }
   
@@ -43,13 +43,13 @@ public class sat
     if (!a(paramInt1)) {
       return a(paramContext) - paramInt2 - paramInt3;
     }
-    return aekt.a(paramInt1, paramContext.getResources());
+    return aepi.a(paramInt1, paramContext.getResources());
   }
   
   private void a(URLDrawable paramURLDrawable)
   {
-    int i = aekt.a(this.d, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
-    int j = aekt.a(this.c, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
+    int i = aepi.a(this.d, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
+    int j = aepi.a(this.c, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
     if ((paramURLDrawable != null) && (paramURLDrawable.getStatus() == 1))
     {
       int k = paramURLDrawable.getCurrDrawable().getIntrinsicWidth();
@@ -67,7 +67,7 @@ public class sat
       QLog.d("Q.readinjoy.fast_web", 2, " refrshImageViewFromDrawable: " + k + " :: " + m);
       return;
     }
-    paramURLDrawable = new LinearLayout.LayoutParams(a(this.jdField_a_of_type_AndroidViewView.getContext()) - i - i, aekt.a(190.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources()));
+    paramURLDrawable = new LinearLayout.LayoutParams(a(this.jdField_a_of_type_AndroidViewView.getContext()) - i - i, aepi.a(190.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources()));
     paramURLDrawable.leftMargin = i;
     paramURLDrawable.rightMargin = i;
     paramURLDrawable.topMargin = j;
@@ -90,8 +90,8 @@ public class sat
     }
     paramBaseData2 = (ImageData)paramBaseData2;
     Object localObject = (ImageData)paramBaseData1;
-    int j = aekt.a(this.d, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
-    int k = aekt.a(this.c, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
+    int j = aepi.a(this.d, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
+    int k = aepi.a(this.c, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
     paramBaseData1 = URLDrawable.URLDrawableOptions.obtain();
     int m;
     int n;
@@ -121,7 +121,7 @@ public class sat
     {
       paramBaseData1.mLoadingDrawable = new ColorDrawable(-2565414);
       paramBaseData1.mPlayGifImage = true;
-      paramBaseData1.mUseSharpPImage = bhlt.a(this.jdField_a_of_type_AndroidViewView.getContext());
+      paramBaseData1.mUseSharpPImage = bhqa.a(this.jdField_a_of_type_AndroidViewView.getContext());
       paramBaseData1.mMemoryCacheKeySuffix = "fast_web";
       paramBaseData1 = URLDrawable.getDrawable(swu.a(sas.a(paramBaseData2.jdField_a_of_type_JavaLangString, paramBaseData2), 4), paramBaseData1);
       if (i != 0) {

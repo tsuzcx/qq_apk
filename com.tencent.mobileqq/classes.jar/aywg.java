@@ -1,96 +1,33 @@
-import MessageSvcPack.RequestPushStatus;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 public class aywg
-  extends zdf
+  extends ayxt
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "Push" };
-  private aoct jdField_a_of_type_Aoct;
+  protected TextView a;
+  protected URLImageView a;
   
-  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public aywg(View paramView)
   {
-    paramToServiceMsg = paramFromServiceMsg;
-    if (paramFromServiceMsg.getWupBuffer() == null) {
-      paramToServiceMsg = null;
-    }
-    return paramToServiceMsg;
+    super(paramView);
   }
   
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public URLImageView a()
   {
-    if (paramFromServiceMsg.getServiceCmd().equals("MessageSvc.PushNotify")) {
-      return b(paramToServiceMsg, paramFromServiceMsg);
-    }
-    return null;
+    return this.jdField_a_of_type_ComTencentImageURLImageView;
   }
   
-  public void a() {}
-  
-  public void a(aoct paramaoct)
+  protected void a()
   {
-    this.jdField_a_of_type_Aoct = paramaoct;
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131376803));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.b.findViewById(2131378010));
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public TextView e()
   {
-    paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
-    if (paramToServiceMsg.equals("MessageSvc.RequestPushStatus"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StatusPush", 2, "decodeRespMsg MessageSvc.RequestPushStatus uin:" + paramFromServiceMsg.getUin() + " at " + System.currentTimeMillis());
-      }
-      paramToServiceMsg = paramFromServiceMsg.getWupBuffer();
-      if (paramToServiceMsg != null) {}
-    }
-    do
-    {
-      do
-      {
-        return;
-        paramFromServiceMsg = new UniPacket();
-        paramFromServiceMsg.decode(paramToServiceMsg);
-        paramToServiceMsg = (RequestPushStatus)paramFromServiceMsg.getByClass("req_PushStatus", new RequestPushStatus());
-        paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("share", 0);
-        if (paramToServiceMsg.cStatus == 1)
-        {
-          paramFromServiceMsg.edit().putBoolean("is_pc_online" + paramToServiceMsg.lUin, true).commit();
-          return;
-        }
-        paramFromServiceMsg.edit().putBoolean("is_pc_online" + paramToServiceMsg.lUin, false).commit();
-        return;
-        if (!"CliNotifySvc.register".equals(paramToServiceMsg)) {
-          break;
-        }
-      } while ((!paramFromServiceMsg.isSuccess()) || (paramFromServiceMsg.extraData.getLong("pushId") != 128L));
-      return;
-      if ("baseSdk.Msf.NotifyResp".equals(paramToServiceMsg))
-      {
-        paramToServiceMsg = new Intent("tencent.notify.album");
-        paramToServiceMsg.putExtra("resp", paramFromServiceMsg);
-        BaseApplication.getContext().sendBroadcast(paramToServiceMsg, "com.tencent.msg.permission.pushnotify");
-        return;
-      }
-      paramToServiceMsg = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    } while (this.jdField_a_of_type_Aoct == null);
-    this.jdField_a_of_type_Aoct.a(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    return false;
-  }
-  
-  public String[] a()
-  {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 

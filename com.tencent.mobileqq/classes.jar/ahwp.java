@@ -1,16 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 
-public class ahwp
-  extends arqb
+class ahwp
+  implements ViewPager.OnPageChangeListener
 {
-  public ahwp(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  ahwp(ahwo paramahwo) {}
   
-  public void a(View paramView)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    azmj.b(this.a.a, "dc00898", "", "", "0X800A0BF", "0X800A0BF", 2, 0, "", "", "", "");
-    FileSearchActivity.a(this.a.getActivity(), 13, this.a.a());
+    EmoticonFromGroupEntity localEmoticonFromGroupEntity = ahwo.a(this.a).a(paramInt);
+    if (localEmoticonFromGroupEntity != null)
+    {
+      ahwo.a(this.a, localEmoticonFromGroupEntity);
+      ahwo.b(this.a, localEmoticonFromGroupEntity);
+    }
   }
 }
 

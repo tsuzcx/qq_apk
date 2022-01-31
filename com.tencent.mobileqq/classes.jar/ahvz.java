@@ -1,15 +1,28 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class ahvz
-  implements aulm
+public class ahvz
 {
-  ahvz(ahvy paramahvy) {}
+  private BaseActivity a;
   
-  public void a()
+  public ahvz(BaseActivity paramBaseActivity)
   {
-    this.a.jdField_a_of_type_Ault.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
-    this.a.jdField_a_of_type_Ault.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.v();
+    this.a = paramBaseActivity;
+  }
+  
+  public bhuf a(AdapterView.OnItemClickListener paramOnItemClickListener)
+  {
+    bhuf localbhuf = (bhuf)bhus.a(this.a, null);
+    GridView localGridView = (GridView)View.inflate(this.a, 2131562793, null);
+    localGridView.setBackgroundDrawable(this.a.getResources().getDrawable(2130837562));
+    localGridView.setAdapter(new ahwb(this, null));
+    localGridView.setOnItemClickListener(paramOnItemClickListener);
+    localbhuf.a(localGridView);
+    localbhuf.c(2131690648);
+    return localbhuf;
   }
 }
 

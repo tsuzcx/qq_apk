@@ -1,63 +1,66 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class adeq
-  extends altb
+  extends aluu
 {
-  public adeq(NearbyActivity paramNearbyActivity) {}
+  public adeq(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString)
-  {
-    QLog.d("nearby.check.auth", 1, "onCheckNearbyUserAuth isSuccess=" + paramBoolean + ", checkRet=" + paramInt + ", checkMsg=" + paramString + ", isFinishing=" + this.a.isFinishing() + ", isStopHeartBeat=" + this.a.c);
-    if ((paramBoolean) && (paramInt != 0)) {
-      if (!this.a.isFinishing()) {}
-    }
-    while ((this.a.isFinishing()) || (this.a.c))
-    {
-      do
-      {
-        return;
-        try
-        {
-          bdfq localbdfq = bdcd.a(this.a, 230);
-          localbdfq.setCancelable(false);
-          String str = paramString;
-          if (TextUtils.isEmpty(paramString)) {
-            str = alpo.a(2131707477);
-          }
-          localbdfq.setMessage(str);
-          localbdfq.setNegativeButton(alpo.a(2131707478), new ader(this));
-          localbdfq.show();
-          new azmo(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_exp").e(this.a.a.getCurrentAccountUin()).a();
-          return;
-        }
-        catch (Exception paramString) {}
-      } while (!QLog.isColorLevel());
-      QLog.d("nearby.NearbyActivity", 2, "onCheckNearbyUserAuth exp:" + paramString.toString());
-      return;
-    }
-    this.a.e();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("nearby.heart_beat", 2, "onNearbyHeartBeat:isSucc=" + paramBoolean + ", cmd=" + paramString + ", interval=" + paramLong);
+      QLog.i("HotChatAnnounceActivity", 2, "onSetUserCreateHotChatAnnounce.isSuccess=" + paramBoolean + ",result=" + paramInt + ", strErr=" + paramString2);
     }
-    if ("OidbSvc.0xafc_1".equals(paramString))
+    HotChatAnnounceActivity.a(this.a);
+    if ((paramBoolean) && (paramInt == 0))
     {
-      if (paramBoolean) {
-        this.a.n = paramLong;
-      }
-      if (!this.a.c)
+      paramString1 = ((HotChatManager)this.a.app.getManager(60)).a(this.a.a);
+      if (paramString1 != null)
       {
-        this.a.b.removeMessages(this.a.i);
-        this.a.b.sendEmptyMessageDelayed(this.a.i, this.a.n);
+        paramString1.memo = this.a.d;
+        paramString1.memoUrl = this.a.e;
+        paramString1.memoShowed = false;
       }
+      QQToast.a(this.a, 2, alud.a(2131705920), 0).b(this.a.getTitleBarHeight());
+      this.a.setResult(-1);
+      this.a.finish();
+      return;
     }
+    paramString1 = alud.a(2131705923);
+    if (paramInt == 1282) {
+      paramString1 = alud.a(2131705928);
+    }
+    QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatAnnounceActivity", 2, "onSetHotChatAnnounce.isSuccess=" + paramBoolean + ",result=" + paramInt + ", strErr=" + paramString);
+    }
+    HotChatAnnounceActivity.a(this.a);
+    if ((paramBoolean) && (paramInt == 0))
+    {
+      paramArrayOfByte = ((HotChatManager)this.a.app.getManager(60)).a(this.a.a);
+      if (paramArrayOfByte != null)
+      {
+        paramArrayOfByte.memo = this.a.d;
+        paramArrayOfByte.memoUrl = this.a.e;
+        paramArrayOfByte.memoShowed = false;
+      }
+      QQToast.a(this.a, 2, alud.a(2131705927), 0).b(this.a.getTitleBarHeight());
+      this.a.setResult(-1);
+      this.a.finish();
+      return;
+    }
+    paramArrayOfByte = alud.a(2131705921);
+    if (paramInt == 1288) {
+      paramArrayOfByte = alud.a(2131705925);
+    }
+    QQToast.a(this.a, 1, paramArrayOfByte, 0).b(this.a.getTitleBarHeight());
   }
 }
 

@@ -1,76 +1,56 @@
-import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.observer.SubAccountObserver;
+import mqq.observer.AccountObserver;
 
 public class adva
-  implements View.OnClickListener
+  extends AccountObserver
 {
-  public adva(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public adva(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void onClick(View paramView)
+  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    Object localObject = paramView.findViewById(2131364237);
-    if ((localObject != null) && (((View)localObject).getVisibility() == 0)) {}
-    azyr localazyr;
-    do
+    RegisterSendUpSms.c(this.a, paramInt1);
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterSendUpSms", 2, "onRegisterQuerySmsStatResp isSuccess=" + paramBoolean + ", code=" + paramInt1 + ", uin=" + paramString1 + ", nick=" + paramString2 + ", faceUrl=" + paramString3 + ", errmsg=" + paramString4);
+    }
+    if (paramInt1 == 4) {}
+    for (;;)
     {
-      do
+      RegisterSendUpSms.a(this.a, 0);
+      return;
+      RegisterSendUpSms.a(this.a).setEnabled(true);
+      if (paramInt1 == 0)
       {
-        return;
-        int i = ((Integer)paramView.getTag()).intValue();
-        paramView = (SimpleAccount)SubAccountBindActivity.a(this.a).get(i);
-        localObject = (azyu)this.a.app.getManager(61);
-        if (((azyu)localObject).a(paramView.getUin()))
-        {
-          this.a.c(this.a.getString(2131720388));
-          azyk.a(this.a.app);
-          this.a.setTitle("");
-          paramView = new Intent(this.a, SplashActivity.class);
-          paramView.putExtra("tab_index", MainFragment.b);
-          paramView.setFlags(67108864);
-          this.a.startActivity(paramView);
-          this.a.finish();
-          return;
-        }
-        if (((azyu)localObject).a() >= 2)
-        {
-          azyl.a(this.a.app, this.a);
-          return;
-        }
-        if (!paramView.isLogined())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onSelectAccountClick.onClick:add account");
-          }
-          localObject = new Intent(this.a, SubLoginActivity.class);
-          ((Intent)localObject).putExtra("subuin", paramView.getUin());
-          ((Intent)localObject).putExtra("fromWhere", this.a.b);
-          this.a.startActivity((Intent)localObject);
-          return;
-        }
-      } while (!this.a.c());
-      localObject = ((azyu)localObject).a(paramView.getUin());
-      this.a.a(2131720390);
-      if (TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = new advb(this, paramView);
-        this.a.getAppRuntime().getSubAccountKey(this.a.app.getAccount(), paramView.getUin(), (SubAccountObserver)localObject);
-        return;
+        RegisterSendUpSms.a(this.a).setText(alud.a(2131713757));
+        RegisterSendUpSms.a(this.a, paramString1);
+        RegisterSendUpSms.b(this.a, paramString2);
+        RegisterSendUpSms.c(this.a, paramString3);
+        RegisterSendUpSms.a(this.a);
+        continue;
       }
-      localazyr = (azyr)this.a.app.getManager(28);
-    } while (localazyr == null);
-    localazyr.a(paramView.getUin(), (String)localObject, this.a.b);
+      paramString1 = paramString4;
+      if (paramInt1 == -1) {}
+      try
+      {
+        paramString1 = new String(paramArrayOfByte, "utf-8");
+        paramArrayOfByte = paramString1;
+        if (TextUtils.isEmpty(paramString1)) {
+          paramArrayOfByte = this.a.getString(2131717536);
+        }
+        QQToast.a(this.a, paramArrayOfByte.trim(), 0).b(this.a.getTitleBarHeight());
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramArrayOfByte.printStackTrace();
+          paramString1 = paramString4;
+        }
+      }
+    }
   }
 }
 

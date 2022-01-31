@@ -1,24 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.QLog;
 
-class bini
-  implements DialogInterface.OnClickListener
+public class bini
+  extends RemoteCommand
 {
-  private String jdField_a_of_type_JavaLangString;
+  private boolean a;
   
-  private bini(bing parambing, String paramString)
+  public bini(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramString);
+    this.a = paramBoolean;
   }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    paramQQAppInterface = PluginCommunicationHandler.getInstance();
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.register(new bini("qqcomicemoticonipccmd", false));
     }
-    this.jdField_a_of_type_Bing.cancelInstall(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicEmoticonUploadRemoteCmd", 2, "onRemoteInvoke cannot get QQAppInterface");
+      }
+    }
+    do
+    {
+      do
+      {
+        return null;
+        localObject = (QQAppInterface)localObject;
+      } while (!"Remotecall_uploadEmoticon".equals(paramBundle.getString("qqcomicemoticonipccmd")));
+      localObject = (bing)((QQAppInterface)localObject).getManager(147);
+    } while (localObject == null);
+    ((bing)localObject).a(paramBundle, paramOnInvokeFinishLinstener);
+    return null;
+  }
+  
+  public boolean isSynchronized()
+  {
+    return this.a;
   }
 }
 

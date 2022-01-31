@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.widget.media;
 
 import android.util.Log;
-import bdje;
+import bdnn;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
@@ -18,7 +18,7 @@ class MiniAppCamera$5
     try
     {
       String str = MiniAppCamera.access$300(this.this$0, this.val$videoPath);
-      if (bdje.a(str))
+      if (bdnn.a(str))
       {
         Log.i("MiniAppCamera", "run: null video thumb path");
         MiniAppCamera.access$400(this.this$0, this.val$event, this.val$wc, this.val$callBackId);

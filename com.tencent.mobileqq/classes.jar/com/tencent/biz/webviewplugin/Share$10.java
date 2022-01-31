@@ -1,16 +1,16 @@
 package com.tencent.biz.webviewplugin;
 
-import badd;
-import zbj;
+import bahm;
+import zfy;
 
 public class Share$10
   implements Runnable
 {
-  public Share$10(zbj paramzbj) {}
+  public Share$10(zfy paramzfy) {}
   
   public void run()
   {
-    badd.a(this.this$0.n, this.this$0.a);
+    bahm.a(this.this$0.n, this.this$0.a);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.colornote;
 
-import anxn;
+import aobw;
 
 public class ColorNoteController$1
   implements Runnable
 {
-  public ColorNoteController$1(anxn paramanxn) {}
+  public ColorNoteController$1(aobw paramaobw) {}
   
   public void run()
   {
-    anxn.a(this.this$0, true);
+    aobw.a(this.this$0, true);
   }
 }
 

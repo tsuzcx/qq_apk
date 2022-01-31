@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import aksm;
-import aksn;
-import alcm;
+import akxb;
+import akxc;
+import alhb;
 import com.tencent.TMG.sdk.AVContext;
 import com.tencent.TMG.sdk.AVRoomMulti;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -12,12 +12,12 @@ import java.util.ArrayList;
 public class CmGameAvHandler$11
   implements Runnable
 {
-  public CmGameAvHandler$11(aksm paramaksm, Boolean paramBoolean) {}
+  public CmGameAvHandler$11(akxb paramakxb, Boolean paramBoolean) {}
   
   public void run()
   {
     if (this.a.booleanValue()) {
-      if (aksm.a(this.this$0).size() > 0)
+      if (akxb.a(this.this$0).size() > 0)
       {
         localObject = BaseApplicationImpl.getApplication().getRuntime();
         if ((localObject == null) || (!(localObject instanceof QQAppInterface))) {
@@ -32,9 +32,9 @@ public class CmGameAvHandler$11
         return;
       }
       localObject = ((QQAppInterface)localObject).c();
-      aksm.a(this.this$0, (String[])aksm.a(this.this$0).toArray(new String[aksm.a(this.this$0).size()]), (String)localObject);
+      akxb.a(this.this$0, (String[])akxb.a(this.this$0).toArray(new String[akxb.a(this.this$0).size()]), (String)localObject);
       return;
-      alcm.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new aksn(this));
+      alhb.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new akxc(this));
       return;
     }
   }

@@ -1,19 +1,6 @@
-import com.tencent.mobileqq.troop.homework.recite.ui.PinyinTextView;
-
-public class bbxc
+public abstract interface bbxc
 {
-  public float a;
-  public int a;
-  public float b;
-  
-  public bbxc(PinyinTextView paramPinyinTextView) {}
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.b = 0.0F;
-    this.jdField_a_of_type_Int = 0;
-  }
+  public abstract void a(String paramString, boolean paramBoolean, int paramInt, bbxa parambbxa);
 }
 
 

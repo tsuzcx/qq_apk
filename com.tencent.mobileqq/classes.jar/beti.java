@@ -1,16 +1,23 @@
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ProfileNameView;
 
-public final class beti
-  implements DialogInterface.OnClickListener
+public class beti
+  implements View.OnClickListener
 {
-  public beti(Context paramContext) {}
+  public beti(ProfileNameView paramProfileNameView, awqt paramawqt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    FloatingScreenPermission.requestPermission(this.a);
+    String str = bcos.a().a(this.jdField_a_of_type_Awqt.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+    localIntent.putExtra("url", str);
+    paramView.getContext().startActivity(localIntent);
+    azqs.b(null, "dc00898", "", "", "0X800A708", "0X800A708", 0, 0, "", "", "", "");
   }
 }
 

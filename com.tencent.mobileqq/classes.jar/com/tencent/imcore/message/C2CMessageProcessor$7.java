@@ -1,14 +1,14 @@
 package com.tencent.imcore.message;
 
-import abof;
-import azmz;
+import absu;
+import azri;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import java.util.HashMap;
 
 public class C2CMessageProcessor$7
   implements Runnable
 {
-  public C2CMessageProcessor$7(abof paramabof, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, String paramString4) {}
+  public C2CMessageProcessor$7(absu paramabsu, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, String paramString4) {}
   
   public void run()
   {
@@ -31,7 +31,7 @@ public class C2CMessageProcessor$7
     {
       l1 = 0L;
     }
-    azmz.a(BaseApplication.getContext()).a(null, "actPubAccMsgReceipt", true, l1, 0L, localHashMap, null);
+    azri.a(BaseApplication.getContext()).a(null, "actPubAccMsgReceipt", true, l1, 0L, localHashMap, null);
   }
 }
 

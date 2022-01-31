@@ -1,15 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.util.Pair;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 
-class atqd
-  implements View.OnClickListener
+public abstract interface atqd
 {
-  atqd(atpy paramatpy, View.OnClickListener paramOnClickListener) {}
+  public abstract Pair<atpq, LocationRoom.Venue> a();
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-  }
+  public abstract void a(atpq paramatpq, LocationRoom.Venue paramVenue, int paramInt1, boolean paramBoolean, int paramInt2);
 }
 
 

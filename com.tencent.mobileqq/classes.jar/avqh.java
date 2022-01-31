@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.data.NewFriendSubTitle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class avqh
-  extends avqe
+class avqh
+  implements avrg
 {
-  public NewFriendSubTitle a;
+  avqh(avqg paramavqg) {}
   
-  public avqh(NewFriendSubTitle paramNewFriendSubTitle)
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.a = paramNewFriendSubTitle;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    if (paramBoolean)
+    {
+      aveg localaveg = new aveg().h("data_card").i("feed_delete_suc").d("2").a(this.a.jdField_a_of_type_Avqc.a(this.a.jdField_a_of_type_Avqj)).b(paramString).c(String.valueOf(this.a.jdField_a_of_type_Avqc.a(this.a.jdField_a_of_type_Avqj)));
+      if (this.a.jdField_a_of_type_Avqc.jdField_a_of_type_Boolean) {}
+      for (paramString = "1";; paramString = "2")
+      {
+        localaveg.e(paramString).b(this.a.jdField_a_of_type_Avqc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        return;
+      }
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131701417), 0).a();
   }
 }
 

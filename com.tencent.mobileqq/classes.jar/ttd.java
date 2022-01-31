@@ -1,15 +1,21 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import feedcloud.FeedCloudMeta.StTagInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import feedcloud.FeedCloudMeta.StUser;
 
 class ttd
-  implements Observer<tzm<FeedCloudMeta.StTagInfo>>
+  implements View.OnClickListener
 {
-  ttd(ttc paramttc) {}
+  ttd(ttb paramttb, FeedCloudMeta.StUser paramStUser) {}
   
-  public void a(@Nullable tzm<FeedCloudMeta.StTagInfo> paramtzm)
+  public void onClick(View paramView)
   {
-    ttc.a(this.a, paramtzm);
+    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser);
+    if (paramView == ttb.a(this.jdField_a_of_type_Ttb))
+    {
+      tzs.a(71, 2, tsw.a(this.jdField_a_of_type_Ttb.a));
+      return;
+    }
+    tzs.a(72, 2, tsw.a(this.jdField_a_of_type_Ttb.a));
   }
 }
 

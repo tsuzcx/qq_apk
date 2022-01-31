@@ -5,7 +5,7 @@ import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.qphone.base.util.QLog;
 
 class nix
-  extends amni
+  extends amrx
 {
   nix(niw paramniw) {}
   

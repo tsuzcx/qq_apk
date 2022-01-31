@@ -1,10 +1,16 @@
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
-final class aldi
-  implements EIPCResultCallback
+public class aldi
+  implements DialogInterface.OnClickListener
 {
-  public void onCallback(EIPCResult paramEIPCResult) {}
+  public aldi(ApolloGameActivity paramApolloGameActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    mww.a(this.a);
+  }
 }
 
 

@@ -1,38 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
 public class aufa
 {
-  private boolean a;
-  
-  public static aufa a(String paramString)
-  {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
-    {
-      aufa localaufa = new aufa();
-      if (new JSONObject(paramString).optInt("isChatMigrateEnable", 0) == 1) {}
-      for (;;)
-      {
-        localaufa.a = bool;
-        return localaufa;
-        bool = false;
-      }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("MsgBackupConfigProcessor", 2, "MsgBackupConfigData parse error", paramString);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.a;
-  }
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  int jdField_c_of_type_Int;
+  String jdField_c_of_type_JavaLangString;
+  String d;
 }
 
 

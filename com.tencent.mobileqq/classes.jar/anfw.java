@@ -1,22 +1,6 @@
-import com.tencent.ark.ark.VariantWrapper;
-
-class anfw
-  implements afeq
+public abstract interface anfw
 {
-  anfw(anfv paramanfv, long paramLong) {}
-  
-  public void a()
-  {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Anfv.a(this.jdField_a_of_type_Long);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
-  }
-  
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    this.jdField_a_of_type_Anfv.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
-  }
+  public abstract boolean a(byte[] paramArrayOfByte);
 }
 
 

@@ -1,27 +1,27 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bgjm;
-import bgkd;
+import bgnt;
+import bgok;
 import java.io.File;
 import org.json.JSONObject;
 
 class FileJsPlugin$8
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$8(FileJsPlugin paramFileJsPlugin, String paramString, JSONObject paramJSONObject, bgkd parambgkd) {}
+  FileJsPlugin$8(FileJsPlugin paramFileJsPlugin, String paramString, JSONObject paramJSONObject, bgok parambgok) {}
   
   public String run()
   {
     if ((TextUtils.isEmpty(this.val$dirPath)) || (this.val$reqParamObj.isNull("dirPath"))) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "invalid path");
     }
-    if (bgjm.a().a(this.val$dirPath) == 2)
+    if (bgnt.a().a(this.val$dirPath) == 2)
     {
-      if (!TextUtils.isEmpty(bgjm.a().a(this.val$dirPath))) {
+      if (!TextUtils.isEmpty(bgnt.a().a(this.val$dirPath))) {
         return FileJsPlugin.access$100(this.this$0, this.val$req, null, "file already exists " + this.val$dirPath);
       }
-      String str = bgjm.a().c(this.val$dirPath);
+      String str = bgnt.a().c(this.val$dirPath);
       if ((!TextUtils.isEmpty(str)) && (new File(str).mkdirs())) {
         return FileJsPlugin.access$200(this.this$0, this.val$req, null);
       }

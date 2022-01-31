@@ -1,36 +1,18 @@
-import com.tencent.mobileqq.lyric.common.TimerTaskManager.InternalTaskEntry.1;
-import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
-import java.util.concurrent.ScheduledFuture;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
 
 public class atsa
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long = -9223372036854775808L;
-  private TimerTaskManager.TimerTaskRunnable jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new TimerTaskManager.InternalTaskEntry.1(this);
-  private String jdField_a_of_type_JavaLangString;
-  private ScheduledFuture<?> jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
+  public atsa(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
   
-  public static atsa a(TimerTaskManager.TimerTaskRunnable paramTimerTaskRunnable)
+  public void onClick(View paramView)
   {
-    atsa localatsa = new atsa();
-    TimerTaskManager.TimerTaskRunnable.a(paramTimerTaskRunnable, true);
-    localatsa.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable = paramTimerTaskRunnable;
-    return localatsa;
-  }
-  
-  public String toString()
-  {
-    boolean bool2 = false;
-    long l = this.jdField_a_of_type_Long;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable != null)
-    {
-      bool1 = bool2;
-      if (TimerTaskManager.TimerTaskRunnable.a(this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable)) {
-        bool1 = true;
-      }
-    }
-    return String.format("Period = %d; IsValid = %b;", new Object[] { Long.valueOf(l), Boolean.valueOf(bool1) });
+    this.jdField_a_of_type_AndroidAppActivity.setResult(0);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    azqs.b(null, "CliOper", "", "", "0X800A963", "0X800A963", 0, 0, "0", "0", "0", "");
   }
 }
 

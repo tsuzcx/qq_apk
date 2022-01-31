@@ -1,8 +1,6 @@
-import java.util.List;
-
-public abstract interface apsl
+public class apsl
 {
-  public abstract void a(List<apsj> paramList);
+  private static apsj a = new apsj();
 }
 
 

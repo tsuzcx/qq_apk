@@ -1,11 +1,47 @@
-import android.content.DialogInterface;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-final class bmcl
-  extends bdco
+public class bmcl
+  implements xtk
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bmcl(CropVideoActivity paramCropVideoActivity) {}
+  
+  public void onFailure(String paramString)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onFailure: " + paramString);
+    }
+    this.a.a.sendEmptyMessage(4);
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onFinish: " + paramBoolean);
+    }
+    this.a.a.sendEmptyMessage(3);
+  }
+  
+  public void onProgress(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onProgress: " + paramString);
+    }
+  }
+  
+  public void onStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onStart");
+    }
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onSuccess: " + paramString);
+    }
   }
 }
 

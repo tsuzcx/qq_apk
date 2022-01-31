@@ -6,11 +6,11 @@ import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
 import qqcircle.QQCircleFeedBase.StBusiInfoData;
 
 final class tqi
-  implements yvn<FeedCloudRead.StGetBusiInfoRsp>
+  implements zac<FeedCloudRead.StGetBusiInfoRsp>
 {
   public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
   {
-    QLog.i(tqg.c(), 1, "updateCircleInfo onReceive: isSuccess=" + paramBoolean + " retCode=" + paramLong);
+    QLog.i("QCircleGlobalInfo", 1, "updateCircleInfo onReceive: isSuccess=" + paramBoolean + " retCode=" + paramLong);
     if ((paramBoolean) && (paramLong == 0L))
     {
       paramString = paramStGetBusiInfoRsp.busiRspData.get();
@@ -26,7 +26,7 @@ final class tqi
     }
     catch (Exception paramString)
     {
-      QLog.e(tqg.c(), 1, "updateCircleInfo error", paramString);
+      QLog.e("QCircleGlobalInfo", 1, "updateCircleInfo error", paramString);
     }
   }
 }

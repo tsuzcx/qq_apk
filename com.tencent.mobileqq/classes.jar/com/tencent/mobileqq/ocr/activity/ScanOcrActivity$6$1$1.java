@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.activity;
 
-import avtf;
+import avxo;
 import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 class ScanOcrActivity$6$1$1

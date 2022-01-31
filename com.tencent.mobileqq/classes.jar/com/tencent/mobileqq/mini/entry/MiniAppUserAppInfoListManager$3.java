@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
 import NS_COMM.COMM.StCommonExt;
-import alpo;
-import aokd;
+import alud;
+import aoom;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -30,7 +30,7 @@ class MiniAppUserAppInfoListManager$3
       if (this.val$miniAppInfo.recommend == 1) {
         MiniAppUserAppInfoListManager.access$300(this.this$0, this.val$miniAppInfo);
       }
-      if (aokd.g())
+      if (aoom.g())
       {
         paramJSONObject = MiniAppUtils.getAppInterface();
         if (paramJSONObject != null) {
@@ -45,7 +45,7 @@ class MiniAppUserAppInfoListManager$3
       }
     }
     QLog.e("MiniAppUserAppInfoListManager", 1, "sendDelUserAppRequest, failed to delete miniapp!");
-    QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131707215), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131707227), 0).a();
   }
 }
 

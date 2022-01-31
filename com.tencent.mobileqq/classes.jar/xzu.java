@@ -1,29 +1,42 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
-class xzu
-  implements yic
+public class xzu
+  implements CompoundButton.OnCheckedChangeListener
 {
-  xzu(xzn paramxzn, CertifiedAccountMeta.StFeed paramStFeed) {}
+  public xzu(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  public void a(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    QLog.d(xzn.jdField_a_of_type_JavaLangString, 2, "count:" + paramInt);
-    if ((xzn.n(this.jdField_a_of_type_Xzn) != null) && (paramInt == 1))
-    {
-      if (yib.a().a(xzn.o(this.jdField_a_of_type_Xzn), "subscribe_sp_key_show_praise_guide") != 0) {
-        break label90;
-      }
-      if ((this.jdField_a_of_type_Xzn.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null) && (!this.jdField_a_of_type_Xzn.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a())) {
-        this.jdField_a_of_type_Xzn.f();
-      }
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginMgrActivity", 2, new Object[] { "qqmute onCheckedChanged:", Boolean.valueOf(paramBoolean) });
     }
-    label90:
-    while ((yib.a().a(xzn.p(this.jdField_a_of_type_Xzn), "subscribe_sp_key_show_follow_guide") != 0) || (xxl.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed))) {
+    if (!bdin.g(this.a))
+    {
+      QQToast.a(QRLoginMgrActivity.a(this.a), 1, 2131696590, 0).b(this.a.getTitleBarHeight());
+      if (!paramBoolean) {
+        bool = true;
+      }
+      paramCompoundButton.setChecked(bool);
       return;
     }
-    this.jdField_a_of_type_Xzn.e();
+    if (paramBoolean)
+    {
+      bdjz localbdjz = bdgm.a(QRLoginMgrActivity.a(this.a), 230);
+      localbdjz.setTitle(2131717614);
+      localbdjz.setMessage(2131717613);
+      localbdjz.setPositiveButton(2131694953, new xzv(this));
+      localbdjz.setNegativeButton(2131690648, new xzw(this, paramCompoundButton));
+      localbdjz.show();
+      azqs.b(null, "dc00898", "", "", "0X800A475", "0X800A475", 0, 0, "", "", "", "");
+      return;
+    }
+    ((ambq)this.a.app.a(10)).a(paramBoolean);
   }
 }
 

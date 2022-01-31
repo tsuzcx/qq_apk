@@ -1,6 +1,8 @@
 public abstract interface akrb
 {
-  public abstract void a(akrc paramakrc);
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(int paramInt, String paramString);
 }
 
 

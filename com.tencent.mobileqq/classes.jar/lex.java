@@ -18,12 +18,12 @@ public class lex
   public static int a(int paramInt)
   {
     AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    return aogj.a().a(paramInt, localAppInterface.getCurrentAccountUin());
+    return aoks.a().a(paramInt, localAppInterface.getCurrentAccountUin());
   }
   
   public static lew b(int paramInt)
   {
-    return (lew)aogj.a().a(paramInt);
+    return (lew)aoks.a().a(paramInt);
   }
   
   public Class<lew> a()
@@ -41,12 +41,12 @@ public class lex
   }
   
   @Nullable
-  protected lew a(aogf[] paramArrayOfaogf)
+  protected lew a(aoko[] paramArrayOfaoko)
   {
     lew locallew = new lew();
-    paramArrayOfaogf = a(this.jdField_a_of_type_JavaLangString, a(), paramArrayOfaogf);
-    if (paramArrayOfaogf != null) {
-      locallew.a(paramArrayOfaogf.jdField_a_of_type_Int, paramArrayOfaogf.jdField_a_of_type_JavaLangString);
+    paramArrayOfaoko = a(this.jdField_a_of_type_JavaLangString, a(), paramArrayOfaoko);
+    if (paramArrayOfaoko != null) {
+      locallew.a(paramArrayOfaoko.jdField_a_of_type_Int, paramArrayOfaoko.jdField_a_of_type_JavaLangString);
     }
     return locallew;
   }
@@ -114,7 +114,7 @@ public class lex
       lvz.a(true);
       return;
     case 276: 
-      bdex.a(paramlew.jdField_a_of_type_JavaLangString);
+      bdjg.a(paramlew.jdField_a_of_type_JavaLangString);
       return;
     case 287: 
       mvh.a(paramlew.jdField_a_of_type_JavaLangString);

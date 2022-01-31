@@ -1,21 +1,29 @@
-class ahpu
-  implements aubn
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+
+public class ahpu
+  implements View.OnClickListener
 {
-  ahpu(ahpq paramahpq) {}
+  public ahpu(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.c(false);
-    ahpq.a(this.a);
+    if (!(paramView.getTag() instanceof ahok)) {}
+    do
+    {
+      do
+      {
+        return;
+        paramView = (ahok)paramView.getTag();
+      } while (paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() != 2);
+      this.a.a(paramView);
+    } while (paramView.jdField_a_of_type_Int != 82);
+    azqs.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
   }
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt) {}
 }
 
 

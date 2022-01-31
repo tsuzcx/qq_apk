@@ -1,13 +1,13 @@
 package com.tencent.qidian.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class QidianPAForWpa
-  extends awbv
+  extends awge
 {
   public String kfuin = "";
-  @awdj
+  @awhs
   public String puin = "";
 }
 

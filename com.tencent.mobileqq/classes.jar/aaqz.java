@@ -1,58 +1,69 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.ad.tangram.ipc.AdIPCManager;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import java.io.File;
+import com.tencent.gdtad.aditem.GdtBaseAdItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 
 public class aaqz
-  extends URLDrawableParams
+  extends QIPCModule
 {
-  Context a;
+  private static volatile aaqz a;
   
-  public aaqz(Context paramContext, File paramFile)
+  private aaqz(String paramString)
   {
-    super(paramContext);
-    this.a = paramContext;
-    baul.a = paramFile;
-    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new banz(paramFile);
+    super(paramString);
   }
   
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  public static aaqz a()
   {
-    boolean bool = true;
-    if (("http".equals(paramString)) || ("https".equals(paramString)))
+    if (a == null) {}
+    try
     {
-      if (BaseApplicationImpl.sProcessId == 1) {}
+      if (a == null) {
+        a = new aaqz("gdt_ipc");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    aase.b("gdt_ipc", "Action  " + paramString);
+    if ("do_app_jump".equals(paramString))
+    {
+      if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+      {
+        paramString = (aasf)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(110);
+        paramBundle.setClassLoader(getClass().getClassLoader());
+        paramBundle = (GdtBaseAdItem)paramBundle.getParcelable("gdtBaseAdItem");
+        paramString.a(BaseApplicationImpl.getContext(), paramBundle);
+        callbackResult(paramInt, EIPCResult.createSuccessResult(null));
+      }
       for (;;)
       {
-        return new bapk(bool, paramObject);
-        bool = false;
+        return null;
+        callbackResult(paramInt, EIPCResult.createResult(-1, null));
       }
     }
-    return null;
-  }
-  
-  public String doGetLocalFilePath(String paramString)
-  {
-    return null;
-  }
-  
-  public ApngSoLoader getApngSoLoader()
-  {
-    return bdpr.a();
-  }
-  
-  public Drawable getDefaultLoadingDrawable()
-  {
-    return this.a.getResources().getDrawable(2130847294);
-  }
-  
-  public Drawable getDefualtFailedDrawable()
-  {
-    return this.a.getResources().getDrawable(2130847294);
+    AdIPCManager.Params localParams = new AdIPCManager.Params();
+    localParams.bundle = paramBundle;
+    paramString = AdIPCManager.INSTANCE.receive(paramString, localParams);
+    if (paramString == null) {
+      return null;
+    }
+    paramBundle = new EIPCResult();
+    if (paramString.success) {}
+    for (paramInt = 0;; paramInt = -102)
+    {
+      paramBundle.code = paramInt;
+      paramBundle.data = paramString.bundle;
+      return paramBundle;
+    }
   }
 }
 

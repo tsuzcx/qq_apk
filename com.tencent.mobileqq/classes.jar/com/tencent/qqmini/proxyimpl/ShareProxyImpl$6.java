@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
-import aljq;
-import bdcs;
+import alof;
+import bdhb;
 import java.io.File;
 
 class ShareProxyImpl$6
@@ -11,12 +11,12 @@ class ShareProxyImpl$6
   
   public void run()
   {
-    File localFile = new File(aljq.bd);
+    File localFile = new File(alof.bd);
     localFile.mkdirs();
     if (this.val$localPic.exists())
     {
       localFile = new File(localFile, this.val$fileName);
-      bdcs.a(this.val$localPic, localFile);
+      bdhb.a(this.val$localPic, localFile);
     }
   }
 }

@@ -1,10 +1,29 @@
-public class vre
+class vre
+  implements wkc
 {
-  public float a;
-  public int a;
-  public Object a;
-  public boolean a;
-  public float b;
+  vre(vrd paramvrd) {}
+  
+  public void a(int paramInt)
+  {
+    if ((paramInt == 1) && (vrd.a(this.a) != null) && (vrd.a(this.a).a != null))
+    {
+      if (vrd.a(this.a).a()) {
+        break label66;
+      }
+      if (vrd.a(this.a).a(true)) {
+        vrd.a(this.a).c();
+      }
+    }
+    label66:
+    do
+    {
+      return;
+      if (vrd.a(this.a).a(false)) {
+        vrd.b(this.a).c();
+      }
+    } while (!vrd.a(this.a).a(true));
+    vrd.a(this.a).c();
+  }
 }
 
 

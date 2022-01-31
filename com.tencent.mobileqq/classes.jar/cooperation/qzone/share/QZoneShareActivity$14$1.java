@@ -1,6 +1,6 @@
 package cooperation.qzone.share;
 
-import alpo;
+import alud;
 import android.content.res.Resources;
 import android.widget.TextView;
 import com.tencent.mobileqq.widget.QQToast;
@@ -21,15 +21,15 @@ class QZoneShareActivity$14$1
         if (this.jdField_a_of_type_Int <= 0) {
           break;
         }
-        String str = alpo.a(2131712711) + this.jdField_a_of_type_Int + alpo.a(2131712723);
-        int i = this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.getResources().getColor(2131166662);
+        String str = alud.a(2131712723) + this.jdField_a_of_type_Int + alud.a(2131712735);
+        int i = this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.getResources().getColor(2131166664);
         this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.setTextColor(i);
         this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.setText(str);
         if (this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.getVisibility() != 0) {
           this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.setVisibility(0);
         }
       } while (!this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.b);
-      QQToast.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0, 2131718698, 0).a();
+      QQToast.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0, 2131718710, 0).a();
       this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.b = false;
       return;
     } while (this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.getVisibility() == 8);

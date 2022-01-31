@@ -1,118 +1,37 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.search.rich.RichNodeRootLayout;
+import com.tencent.TMG.utils.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
-public abstract class ayor
-  implements ayoh
+public class ayor
+  extends ayod
 {
-  private View jdField_a_of_type_AndroidViewView;
-  public ayof a;
-  private RichNodeRootLayout jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout;
-  private View b;
+  public String a;
   
-  public ayor(ayof paramayof, Context paramContext)
+  public ayor(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    this.jdField_a_of_type_Ayof = paramayof;
-    a(paramContext);
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public final View a()
+  public ayor(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout;
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public abstract View a(Context paramContext);
-  
-  public View a(String paramString)
+  public void a(String paramString)
   {
-    return null;
-  }
-  
-  public ImageView a()
-  {
-    return null;
-  }
-  
-  public TextView a()
-  {
-    return null;
-  }
-  
-  public ayof a()
-  {
-    return this.jdField_a_of_type_Ayof;
-  }
-  
-  public String a()
-  {
-    ayof localayof = a();
-    if (localayof != null) {
-      return localayof.a();
-    }
-    return null;
-  }
-  
-  public void a(Context paramContext)
-  {
-    View localView = LayoutInflater.from(paramContext).inflate(2131561246, null, false);
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout = ((RichNodeRootLayout)localView.findViewById(2131375991));
-    this.b = localView.findViewById(2131365353);
-    this.jdField_a_of_type_AndroidViewView = a(paramContext);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout.addView(this.jdField_a_of_type_AndroidViewView);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.b != null)
+    try
     {
-      if (paramBoolean) {
-        this.b.setVisibility(0);
-      }
-    }
-    else {
+      this.a = new JSONObject(paramString).optString("title");
       return;
     }
-    this.b.setVisibility(8);
-  }
-  
-  public ImageView b()
-  {
-    return null;
-  }
-  
-  public TextView b()
-  {
-    return null;
-  }
-  
-  public void b(boolean paramBoolean) {}
-  
-  public TextView c()
-  {
-    return null;
-  }
-  
-  public TextView d()
-  {
-    return null;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Ayof = null;
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout = null;
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.b = null;
-  }
-  
-  public void f()
-  {
-    d();
+    catch (JSONException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(c, 0, paramString.toString());
+    }
   }
 }
 

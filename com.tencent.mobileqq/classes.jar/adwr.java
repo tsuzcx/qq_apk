@@ -1,23 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 
-public class adwr
-  implements avvc
+public abstract interface adwr
 {
-  public adwr(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public abstract void a(Editable paramEditable);
   
-  public void a(int paramInt, avvd paramavvd)
-  {
-    if ((paramavvd != null) && (!TextUtils.isEmpty(TextPreviewTranslateActivity.b(this.a))) && (!TextPreviewTranslateActivity.b(this.a).equals(paramavvd.b)))
-    {
-      TextPreviewTranslateActivity.b(this.a, paramavvd.b);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
-    }
-  }
+  public abstract void a(ResultRecord paramResultRecord);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adwr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.phone;
 
 import SecurityAccountServer.RespondQueryQQBindingStat;
-import aihd;
-import alpo;
+import ails;
+import alud;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import awdn;
-import bdee;
+import awhw;
+import bdin;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.text.SimpleDateFormat;
@@ -23,48 +23,48 @@ public class BindNumberFromPcActivity
 {
   public Button a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private awdn jdField_a_of_type_Awdn;
+  private awhw jdField_a_of_type_Awhw;
   public String a;
   private boolean jdField_a_of_type_Boolean;
   private Button jdField_b_of_type_AndroidWidgetButton;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private awdn jdField_b_of_type_Awdn;
+  private awhw jdField_b_of_type_Awhw;
   public String b;
   private String c;
   
   private void a()
   {
-    setTitle(alpo.a(2131701501));
+    setTitle(alud.a(2131701513));
     if (this.jdField_a_of_type_Boolean) {
-      setLeftButton(2131690884, null);
+      setLeftButton(2131690885, null);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371733));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371753));
     int i = this.jdField_a_of_type_JavaLangString.length();
     String str = this.jdField_a_of_type_JavaLangString.substring(0, i - 5) + "****" + this.jdField_a_of_type_JavaLangString.substring(i - 1);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString + " " + str);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371732));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getString(2131695161, new Object[] { this.c }));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371731));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371752));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getString(2131695163, new Object[] { this.c }));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371751));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131371730));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131371750));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
   private void b()
   {
-    if (!bdee.d(this))
+    if (!bdin.d(this))
     {
-      b(2131694829);
+      b(2131694831);
       return;
     }
-    if (this.jdField_a_of_type_Awdn == null)
+    if (this.jdField_a_of_type_Awhw == null)
     {
-      this.jdField_a_of_type_Awdn = new aihd(this);
-      this.app.registObserver(this.jdField_a_of_type_Awdn);
+      this.jdField_a_of_type_Awhw = new ails(this);
+      this.app.registObserver(this.jdField_a_of_type_Awhw);
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-    a(2131719773, 1000L, true);
+    a(2131719785, 1000L, true);
   }
   
   private void c()
@@ -78,7 +78,7 @@ public class BindNumberFromPcActivity
   {
     super.finish();
     if (this.jdField_a_of_type_Boolean) {
-      overridePendingTransition(2130771990, 2130772294);
+      overridePendingTransition(2130771990, 2130772295);
     }
   }
   
@@ -97,7 +97,7 @@ public class BindNumberFromPcActivity
     {
     default: 
       return;
-    case 2131371731: 
+    case 2131371751: 
       b();
       return;
     }
@@ -107,12 +107,12 @@ public class BindNumberFromPcActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131559417);
+    setContentView(2131559416);
     int i = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.d();
     paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a();
     if ((i != 5) || (paramBundle == null))
     {
-      a(alpo.a(2131701500), alpo.a(2131701503));
+      a(alud.a(2131701512), alud.a(2131701515));
       return;
     }
     this.jdField_b_of_type_JavaLangString = paramBundle.nationCode;
@@ -124,15 +124,15 @@ public class BindNumberFromPcActivity
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Awdn != null)
+    if (this.jdField_a_of_type_Awhw != null)
     {
-      this.app.unRegistObserver(this.jdField_a_of_type_Awdn);
-      this.jdField_a_of_type_Awdn = null;
+      this.app.unRegistObserver(this.jdField_a_of_type_Awhw);
+      this.jdField_a_of_type_Awhw = null;
     }
-    if (this.jdField_b_of_type_Awdn != null)
+    if (this.jdField_b_of_type_Awhw != null)
     {
-      this.app.unRegistObserver(this.jdField_b_of_type_Awdn);
-      this.jdField_b_of_type_Awdn = null;
+      this.app.unRegistObserver(this.jdField_b_of_type_Awhw);
+      this.jdField_b_of_type_Awhw = null;
     }
     super.onDestroy();
   }

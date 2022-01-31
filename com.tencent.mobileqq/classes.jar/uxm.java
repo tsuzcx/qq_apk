@@ -1,31 +1,19 @@
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-
-class uxm
-  extends uxf
+public class uxm
 {
-  public uxm(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup, 2131561491);
-  }
+  @xrk(a="oa_task_id")
+  public int a;
+  @xrk(a="bg_url")
+  public String a;
+  @xrk(a="is_comp_able")
+  public boolean a;
+  @xrk(a="comp_vid")
+  public String b;
+  @xrk(a="icon_url")
+  public String c;
   
-  public void a(String paramString)
+  public String toString()
   {
-    b(paramString);
-  }
-  
-  public void a(utx paramutx)
-  {
-    super.a(paramutx);
-    wsv.a("Q.qqstory.msgTab.WeiShiRecommendNodeViewHolder", "bindData %s", paramutx);
-    a(xoa.b(paramutx.g));
-    this.a.setNodeName(paramutx.c, 2130846129);
-  }
-  
-  protected void b(utx paramutx)
-  {
-    this.a.setDisplayState(6);
-    this.a.a(paramutx);
+    return "CompInfoBase{, comparedVid='" + this.b + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.c + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

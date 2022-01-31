@@ -31,7 +31,7 @@ public class oaj
     int j;
     try
     {
-      QQToast.a(this.a.getApplicationContext(), 2131719103, 0).a();
+      QQToast.a(this.a.getApplicationContext(), 2131719115, 0).a();
       paramArrayOfByte = this.a;
       if (this.b) {
         break label492;
@@ -75,8 +75,8 @@ public class oaj
       label192:
       if ((this.b) && (j == 1))
       {
-        QQToast.a(this.a.getApplicationContext(), 2131719105, 0).a();
-        bjxj.a("key_sp_is_readinjoy_youngster", Integer.valueOf(1));
+        QQToast.a(this.a.getApplicationContext(), 2131719117, 0).a();
+        bkbq.a("key_sp_is_readinjoy_youngster", Integer.valueOf(1));
         ReadInJoySettingActivity.d(this.a, true);
         return;
         QLog.d("ReadInJoySettingActivity", 2, "requestChangeYoungsterMode, value = " + this.b + "failed.");
@@ -84,12 +84,12 @@ public class oaj
       }
       if ((!this.b) && (j == 0))
       {
-        QQToast.a(this.a.getApplicationContext(), 2131719104, 0).a();
-        bjxj.a("key_sp_is_readinjoy_youngster", Integer.valueOf(2));
+        QQToast.a(this.a.getApplicationContext(), 2131719116, 0).a();
+        bkbq.a("key_sp_is_readinjoy_youngster", Integer.valueOf(2));
         ReadInJoySettingActivity.d(this.a, false);
         return;
       }
-      QQToast.a(this.a.getApplicationContext(), 2131719103, 0).a();
+      QQToast.a(this.a.getApplicationContext(), 2131719115, 0).a();
       paramArrayOfByte = this.a;
       if (j != 1) {
         break label519;
@@ -101,12 +101,12 @@ public class oaj
       ReadInJoySettingActivity.b(this.a).setChecked(ReadInJoySettingActivity.c(this.a));
       if (ReadInJoySettingActivity.c(this.a))
       {
-        bjxj.a("key_sp_is_readinjoy_youngster", Integer.valueOf(1));
+        bkbq.a("key_sp_is_readinjoy_youngster", Integer.valueOf(1));
         return;
       }
-      bjxj.a("key_sp_is_readinjoy_youngster", Integer.valueOf(2));
+      bkbq.a("key_sp_is_readinjoy_youngster", Integer.valueOf(2));
       return;
-      QQToast.a(this.a.getApplicationContext(), 2131719103, 0).a();
+      QQToast.a(this.a.getApplicationContext(), 2131719115, 0).a();
       paramArrayOfByte = this.a;
       if (!this.b)
       {

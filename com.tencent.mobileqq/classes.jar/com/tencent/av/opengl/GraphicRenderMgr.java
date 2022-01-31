@@ -1,6 +1,6 @@
 package com.tencent.av.opengl;
 
-import azgk;
+import azkt;
 import com.tencent.av.opengl.texture.YUVTexture;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.startup.step.UpdateAvSo;
@@ -48,8 +48,8 @@ public class GraphicRenderMgr
   {
     if (lsa.a())
     {
-      soloadedPTV = azgk.a();
-      ptuSoVersion = azgk.b();
+      soloadedPTV = azkt.a();
+      ptuSoVersion = azkt.b();
     }
     if (QLog.isColorLevel()) {
       QLog.w("GraphicRenderMgr", 1, "loadPtuSO, soloadedPTV[" + soloadedPTV + "], ptuSoVersion[" + ptuSoVersion + "], isSupported[" + lsa.a() + "]");

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.singtogether;
 
-import atal;
-import awbw;
-import awbx;
+import ateu;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -11,27 +11,27 @@ import java.util.List;
 public class FetchOpenIdManager$1
   implements Runnable
 {
-  public FetchOpenIdManager$1(atal paramatal, QQAppInterface paramQQAppInterface) {}
+  public FetchOpenIdManager$1(ateu paramateu, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    awbw localawbw = this.a.getEntityManagerFactory().createEntityManager();
-    Object localObject = localawbw.a(OpenIdItem.class, false, null, null, null, null, null, null);
+    awgf localawgf = this.a.getEntityManagerFactory().createEntityManager();
+    Object localObject = localawgf.a(OpenIdItem.class, false, null, null, null, null, null, null);
     if ((localObject != null) && (((List)localObject).size() > 0)) {
       localObject = ((List)localObject).iterator();
     }
     while (((Iterator)localObject).hasNext())
     {
       OpenIdItem localOpenIdItem = (OpenIdItem)((Iterator)localObject).next();
-      atal.a(this.this$0, localOpenIdItem.appId, localOpenIdItem.uin, localOpenIdItem.openId);
-      atal.a(this.this$0, localOpenIdItem, false);
+      ateu.a(this.this$0, localOpenIdItem.appId, localOpenIdItem.uin, localOpenIdItem.openId);
+      ateu.a(this.this$0, localOpenIdItem, false);
       continue;
       if (QLog.isColorLevel()) {
         QLog.d("FetchOpenIdManager", 2, "initOpenIdFromDB size is 0");
       }
     }
-    atal.a(this.this$0, 1);
-    localawbw.a();
+    ateu.a(this.this$0, 1);
+    localawgf.a();
   }
 }
 

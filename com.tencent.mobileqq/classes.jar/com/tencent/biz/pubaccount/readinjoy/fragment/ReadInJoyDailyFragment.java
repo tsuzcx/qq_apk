@@ -13,7 +13,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.view.Window;
-import bjxq;
+import bkbx;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
 import com.tencent.image.ApngImage;
@@ -158,7 +158,7 @@ public class ReadInJoyDailyFragment
     if (ThemeUtil.isNowThemeIsNight(ors.a(), false, null))
     {
       if (this.b == null) {
-        this.b = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131364973)).inflate();
+        this.b = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131364975)).inflate();
       }
       if (this.b != null) {
         this.b.setVisibility(0);
@@ -245,8 +245,8 @@ public class ReadInJoyDailyFragment
           QLog.d("ReadInJoyDailyFragment", 1, "openFloatingWindow is true");
           i = ((Bundle)localObject).getInt("floating_window_business");
           int j = ((Bundle)localObject).getInt("floating_window_scene");
-          bjxq.a(paramBundle, j, i, (Bundle)localObject, otf.b());
-          if ((j == 1) && ((i != 1) || (bjxq.a((Bundle)localObject)))) {
+          bkbx.a(paramBundle, j, i, (Bundle)localObject, otf.b());
+          if ((j == 1) && ((i != 1) || (bkbx.a((Bundle)localObject)))) {
             opt.a(32);
           }
         }
@@ -262,12 +262,12 @@ public class ReadInJoyDailyFragment
   {
     ouk.a();
     otf.b();
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559987, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559986, paramViewGroup, false);
     oxp.b(0, opt.a(), 0);
     otf.b();
     this.jdField_a_of_type_Nww = new nww(getActivity());
     this.jdField_a_of_type_Nww.a(otf.b());
-    paramLayoutInflater = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131375298);
+    paramLayoutInflater = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131375349);
     this.jdField_a_of_type_Nww.a(paramLayoutInflater);
     this.jdField_a_of_type_Nww.a();
     this.jdField_a_of_type_Nvp = new nvp(this.jdField_a_of_type_Nww.a());

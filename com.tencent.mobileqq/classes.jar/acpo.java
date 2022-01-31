@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.data.Card;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.ChatSettingForTroop.ClearChatRecordTask;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class acpo
-  extends allb
+  implements beoy
 {
-  public acpo(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public acpo(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
-    {
-      if ((paramBoolean) && (paramObject != null) && (DiscussionInfoCardActivity.a(this.a) != null)) {
-        DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
-      }
-      return;
-    }
+    ThreadManager.post(new ChatSettingForTroop.ClearChatRecordTask(this.a), 5, null, false);
+    bdes.a("Grp_set_new", "grpData_admin", "confirm_delRecord", 0, 0, new String[] { this.a.a.troopUin, bdes.a(this.a.a) });
   }
 }
 

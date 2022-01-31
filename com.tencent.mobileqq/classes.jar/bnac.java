@@ -1,126 +1,155 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import com.tencent.image.URLDrawable;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout.SlideShowAdapter.1;
-import java.net.URL;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.graphics.SurfaceTexture;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import android.util.Log;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+import java.util.Arrays;
 
-public class bnac
-  extends RecyclerView.Adapter<bnad>
-  implements xid
+class bnac
 {
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private List<SlideItemInfo> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private xix jdField_a_of_type_Xix;
+  private int jdField_a_of_type_Int;
+  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(this.jdField_a_of_type_ArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+  private final float[] jdField_a_of_type_ArrayOfFloat = { -1.0F, -1.0F, 0.0F, 0.0F, 0.0F, 1.0F, -1.0F, 0.0F, 1.0F, 0.0F, -1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
+  private int jdField_b_of_type_Int = -12345;
+  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
+  private int jdField_c_of_type_Int;
+  private float[] jdField_c_of_type_ArrayOfFloat = new float[16];
+  private int d;
+  private int e;
+  private int f;
   
-  public bnac(HorizontalAlumbListLayout paramHorizontalAlumbListLayout, Context paramContext, View.OnClickListener paramOnClickListener, xix paramxix)
+  public bnac()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Xix = paramxix;
+    this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_a_of_type_ArrayOfFloat).position(0);
+    Matrix.setIdentityM(this.jdField_c_of_type_ArrayOfFloat, 0);
   }
   
-  public bnad a(ViewGroup paramViewGroup, int paramInt)
+  private int a(int paramInt, String paramString)
   {
-    paramViewGroup = new bnad(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561510, paramViewGroup, false));
-    paramViewGroup.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(4);
-    paramViewGroup.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    return paramViewGroup;
+    int i = GLES20.glCreateShader(paramInt);
+    a("glCreateShader type=" + paramInt);
+    GLES20.glShaderSource(i, paramString);
+    GLES20.glCompileShader(i);
+    paramString = new int[1];
+    GLES20.glGetShaderiv(i, 35713, paramString, 0);
+    if (paramString[0] == 0)
+    {
+      Log.e("STextureRender", "Could not compile shader " + paramInt + ":");
+      Log.e("STextureRender", " " + GLES20.glGetShaderInfoLog(i));
+      GLES20.glDeleteShader(i);
+      return 0;
+    }
+    return i;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  private int a(String paramString1, String paramString2)
   {
-    Collections.swap(this.jdField_a_of_type_JavaUtilList, paramInt1, paramInt2);
-    notifyItemMoved(paramInt1, paramInt2);
-    if ((this.jdField_a_of_type_Int == paramInt1) || (this.jdField_a_of_type_Int == paramInt2)) {
-      if (this.jdField_a_of_type_Int != paramInt1) {
-        break label81;
-      }
-    }
-    label81:
-    for (this.jdField_a_of_type_Int = paramInt2;; this.jdField_a_of_type_Int = paramInt1)
+    int i = a(35633, paramString1);
+    if (i == 0) {}
+    int j;
+    do
     {
-      notifyItemChanged(paramInt1, Integer.valueOf(0));
-      notifyItemChanged(paramInt2, Integer.valueOf(0));
-      if (this.jdField_a_of_type_Xix != null) {
-        this.jdField_a_of_type_Xix.a(paramInt1, paramInt2);
-      }
-      return;
+      return 0;
+      j = a(35632, paramString2);
+    } while (j == 0);
+    int k = GLES20.glCreateProgram();
+    if (k == 0) {
+      Log.e("STextureRender", "Could not create program");
+    }
+    GLES20.glAttachShader(k, i);
+    a("glAttachShader");
+    GLES20.glAttachShader(k, j);
+    a("glAttachShader");
+    GLES20.glLinkProgram(k);
+    paramString1 = new int[1];
+    GLES20.glGetProgramiv(k, 35714, paramString1, 0);
+    if (paramString1[0] != 1)
+    {
+      Log.e("STextureRender", "Could not link program: ");
+      Log.e("STextureRender", GLES20.glGetProgramInfoLog(k));
+      GLES20.glDeleteProgram(k);
+      return 0;
+    }
+    return k;
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    if (paramInt < 0) {
+      throw new RuntimeException("Unable to locate '" + paramString + "' in program");
     }
   }
   
-  public void a(bnad parambnad, int paramInt)
+  public int a()
   {
-    SlideItemInfo localSlideItemInfo = (SlideItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    parambnad.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localSlideItemInfo);
-    if (localSlideItemInfo.jdField_a_of_type_JavaNetURL != null)
-    {
-      Object localObject = parambnad.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getDrawable();
-      if ((!(localObject instanceof URLDrawable)) || (!localSlideItemInfo.jdField_a_of_type_JavaNetURL.equals(((URLDrawable)localObject).getURL())))
-      {
-        localObject = baul.a(localSlideItemInfo.jdField_a_of_type_JavaNetURL, baul.b(), baul.a());
-        ((URLDrawable)localObject).setTag(localSlideItemInfo.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
-        parambnad.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable((Drawable)localObject);
-        parambnad.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setTag(localSlideItemInfo);
-      }
-    }
-    switch (localSlideItemInfo.jdField_b_of_type_Int)
-    {
-    }
-    while ((paramInt == this.jdField_a_of_type_Int) && (!parambnad.jdField_a_of_type_Boolean))
-    {
-      parambnad.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleX(0.94F);
-      parambnad.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleY(0.94F);
-      parambnad.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-      parambnad.jdField_a_of_type_AndroidWidgetTextView.post(new HorizontalAlumbListLayout.SlideShowAdapter.1(this, parambnad));
-      return;
-      parambnad.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      parambnad.jdField_b_of_type_AndroidWidgetTextView.setText(xiu.a(localSlideItemInfo.jdField_a_of_type_Long));
-      continue;
-      parambnad.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      if (localSlideItemInfo.jdField_a_of_type_Long > 0L) {
-        parambnad.jdField_b_of_type_AndroidWidgetTextView.setText(xiu.a(localSlideItemInfo.c - localSlideItemInfo.jdField_b_of_type_Long));
-      }
-    }
-    if (parambnad.jdField_a_of_type_Boolean)
-    {
-      parambnad.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleX(1.13F);
-      parambnad.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleY(1.13F);
-      parambnad.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(0.65F);
-      parambnad.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
-      return;
-    }
-    parambnad.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleX(1.0F);
-    parambnad.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleY(1.0F);
-    parambnad.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-    parambnad.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
+    return this.jdField_b_of_type_Int;
   }
   
-  public void a(List<SlideItemInfo> paramList)
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
+    this.jdField_a_of_type_Int = a("uniform mat4 uMVPMatrix;\nuniform mat4 uSTMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n}\n", "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform samplerExternalOES sTexture;\nvoid main() {\n    gl_FragColor = texture2D(sTexture, vTextureCoord);\n}\n");
+    if (this.jdField_a_of_type_Int == 0) {
+      throw new RuntimeException("failed creating program");
+    }
+    this.e = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "aPosition");
+    a(this.e, "aPosition");
+    this.f = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "aTextureCoord");
+    a(this.f, "aTextureCoord");
+    this.jdField_c_of_type_Int = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "uMVPMatrix");
+    a(this.jdField_c_of_type_Int, "uMVPMatrix");
+    this.d = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "uSTMatrix");
+    a(this.d, "uSTMatrix");
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenTextures(1, arrayOfInt, 0);
+    this.jdField_b_of_type_Int = arrayOfInt[0];
+    GLES20.glBindTexture(36197, this.jdField_b_of_type_Int);
+    a("glBindTexture mTextureID");
+    GLES20.glTexParameterf(36197, 10241, 9728.0F);
+    GLES20.glTexParameterf(36197, 10240, 9729.0F);
+    GLES20.glTexParameteri(36197, 10242, 33071);
+    GLES20.glTexParameteri(36197, 10243, 33071);
+    a("glTexParameter");
   }
   
-  public int getItemCount()
+  public void a(SurfaceTexture paramSurfaceTexture, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    a("onDrawFrame start");
+    Log.e("STextureRender", Arrays.toString(this.jdField_c_of_type_ArrayOfFloat));
+    Log.e("STextureRender", String.valueOf(paramBoolean));
+    GLES20.glClearColor(0.0F, 1.0F, 0.0F, 1.0F);
+    GLES20.glClear(16384);
+    GLES20.glUseProgram(this.jdField_a_of_type_Int);
+    a("glUseProgram");
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(36197, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+    GLES20.glVertexAttribPointer(this.e, 3, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
+    a("glVertexAttribPointer maPosition");
+    GLES20.glEnableVertexAttribArray(this.e);
+    a("glEnableVertexAttribArray maPositionHandle");
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(3);
+    GLES20.glVertexAttribPointer(this.f, 2, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
+    a("glVertexAttribPointer maTextureHandle");
+    GLES20.glEnableVertexAttribArray(this.f);
+    a("glEnableVertexAttribArray maTextureHandle");
+    Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
+    GLES20.glUniformMatrix4fv(this.jdField_c_of_type_Int, 1, false, this.jdField_b_of_type_ArrayOfFloat, 0);
+    GLES20.glUniformMatrix4fv(this.d, 1, false, this.jdField_c_of_type_ArrayOfFloat, 0);
+    GLES20.glDrawArrays(5, 0, 4);
+    a("glDrawArrays");
+    GLES20.glBindTexture(36197, 0);
+  }
+  
+  public void a(String paramString)
+  {
+    int i = GLES20.glGetError();
+    if (i != 0)
+    {
+      Log.e("STextureRender", paramString + ": glError " + i);
+      throw new RuntimeException(paramString + ": glError " + i);
+    }
   }
 }
 

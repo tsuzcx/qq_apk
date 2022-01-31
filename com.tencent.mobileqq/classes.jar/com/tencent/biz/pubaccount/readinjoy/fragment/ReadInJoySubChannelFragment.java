@@ -50,7 +50,7 @@ public class ReadInJoySubChannelFragment
     for (boolean bool = true;; bool = false)
     {
       QLog.d((String)localObject, 2, new Object[] { "initUI, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });
-      localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131375298);
+      localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131375349);
       this.jdField_a_of_type_Nwj = new nwj(getActivity());
       this.jdField_a_of_type_Nwj.a(this.jdField_a_of_type_Int);
       this.jdField_a_of_type_Nwj.b(this.jdField_b_of_type_Int);
@@ -150,7 +150,7 @@ public class ReadInJoySubChannelFragment
   {
     boolean bool = false;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getActivity());
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560030, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560029, paramViewGroup, false);
     a();
     paramLayoutInflater = jdField_a_of_type_JavaLangString;
     if (this.jdField_a_of_type_Nwj != null) {

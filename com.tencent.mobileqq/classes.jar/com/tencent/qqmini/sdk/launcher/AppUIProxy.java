@@ -4,16 +4,16 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.ViewGroup;
-import bghk;
-import bghl;
-import bgqd;
-import bgqg;
-import bgqj;
+import bglr;
+import bgls;
+import bguk;
+import bgun;
+import bguq;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 public class AppUIProxy
-  extends bgqj
+  extends bguq
 {
   private AppUIProxy.LoadingUI mLoadingUI;
   
@@ -23,7 +23,7 @@ public class AppUIProxy
       return;
     }
     this.mMainHandler.post(new AppUIProxy.1(this));
-    bghk.a(System.currentTimeMillis());
+    bglr.a(System.currentTimeMillis());
   }
   
   public void onCreate(Activity paramActivity, Bundle paramBundle, ViewGroup paramViewGroup)
@@ -51,7 +51,7 @@ public class AppUIProxy
   public void onRuntimeReady()
   {
     if (!this.mActivatedRuntimeLoader.dismissLoadingAfterLoaded()) {
-      this.mActivatedRuntimeLoader.addRuntimeStateObserver(new bgqd(this));
+      this.mActivatedRuntimeLoader.addRuntimeStateObserver(new bguk(this));
     }
     for (;;)
     {
@@ -61,7 +61,7 @@ public class AppUIProxy
     }
   }
   
-  public void resumeRuntime(bgqg parambgqg)
+  public void resumeRuntime(bgun parambgun)
   {
     if (this.mActivity == null) {
       QMLog.w("UIProxy", "Failed to resumeRuntime. Activity is null");
@@ -69,12 +69,12 @@ public class AppUIProxy
     do
     {
       return;
-      if (parambgqg == null)
+      if (parambgun == null)
       {
         QMLog.w("UIProxy", "Failed to resumeRuntime. runtime loader is null");
         return;
       }
-      this.mActivatedRuntimeLoader = parambgqg;
+      this.mActivatedRuntimeLoader = parambgun;
       this.mMiniAppInfo = this.mActivatedRuntimeLoader.getMiniAppInfo();
       this.mRuntime = this.mActivatedRuntimeLoader.getRuntime();
       hideLoading();

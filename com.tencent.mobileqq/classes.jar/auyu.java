@@ -1,97 +1,31 @@
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.FeedsProtocol.TopicCfg;
-import com.tencent.pb.now.ilive_feeds_read.TopicCfg;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class auyu
+  implements bemh<oidb_0x8e4.RspBody>
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private String d;
+  public auyu(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public static avnx a(List<ilive_feeds_read.TopicCfg> paramList, avnx paramavnx)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if ((paramList != null) && (!paramList.isEmpty()))
+    if (paramInt == 0)
     {
-      paramList = (ilive_feeds_read.TopicCfg)paramList.get(0);
-      paramavnx.a = new auyu();
-      paramavnx.a.d(paramList.jump_url.get());
-      paramavnx.a.b(paramList.topic_name.get());
-      paramavnx.a.a(paramList.topic_desc.get());
-      paramavnx.a.b(paramList.topic_parti_num.get());
-      paramavnx.a.c(paramList.topic_pic_url.get());
-      paramavnx.a.a(paramList.topic_tag.get());
-      paramavnx.a.c(paramList.topic_type.get());
+      paramRspBody = paramRspBody.poi_info;
+      String str = paramRspBody.bytes_uid.get().toStringUtf8();
+      this.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
     }
-    return paramavnx;
-  }
-  
-  public static VideoData a(List<FeedsProtocol.TopicCfg> paramList, VideoData paramVideoData)
-  {
-    if ((paramList != null) && (!paramList.isEmpty()))
+    do
     {
-      paramList = (FeedsProtocol.TopicCfg)paramList.get(0);
-      paramVideoData.a = new auyu();
-      paramVideoData.a.d(paramList.jump_url.get());
-      paramVideoData.a.b(paramList.topic_name.get());
-      paramVideoData.a.a(paramList.topic_desc.get());
-      paramVideoData.a.b(paramList.topic_parti_num.get());
-      paramVideoData.a.c(paramList.topic_pic_url.get());
-      paramVideoData.a.a(paramList.topic_tag.get());
-      paramVideoData.a.c(paramList.topic_type.get());
-    }
-    return paramVideoData;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String b()
-  {
-    return this.d;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void d(String paramString)
-  {
-    this.d = paramString;
+      return;
+      this.a.a(paramInt, paramRspBody, alud.a(2131705523));
+    } while (!QLog.isColorLevel());
+    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
   }
 }
 

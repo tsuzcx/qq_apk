@@ -2,12 +2,12 @@ package com.tencent.biz.qqcircle.comment;
 
 import feedcloud.FeedCloudMeta.StComment;
 import feedcloud.FeedCloudMeta.StReply;
-import tuk;
+import tuz;
 
 public class QCircleCommentPanelView$11
   implements Runnable
 {
-  public QCircleCommentPanelView$11(tuk paramtuk, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply) {}
+  public QCircleCommentPanelView$11(tuz paramtuz, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply) {}
   
   public void run()
   {

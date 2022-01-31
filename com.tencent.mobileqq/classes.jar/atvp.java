@@ -1,87 +1,78 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.recent.data.RecentItemPullActivePush;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class atvp
-  implements Manager
+  extends ameq
 {
-  public static String a;
-  public static String b = "extra_notify_msg";
-  public Intent a;
-  public RecentItemPullActivePush a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MessageForText jdField_a_of_type_ComTencentMobileqqDataMessageForText;
+  public atvp(LoginWelcomeManager paramLoginWelcomeManager) {}
   
-  static
+  protected void a(int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_JavaLangString = "QQ";
-  }
-  
-  public atvp(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush == null) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, String.format("onTroopManagerFailed result=%s", new Object[] { Integer.valueOf(paramInt2) }));
     }
-    return 1;
+    if (1 == paramInt1) {
+      QQToast.a(LoginWelcomeManager.a(this.a).getApp(), 4, 2131719237, 1).a();
+    }
+    LoginWelcomeManager.a(this.a).removeObserver(this);
+    this.a.b();
   }
   
-  public MessageForText a()
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush == null) {
-      return null;
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, String.format("onTroopManagerSuccess result=%s troopUin=%s", new Object[] { Integer.valueOf(paramInt2), paramString }));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText == null)
+    Bundle localBundle;
+    if (1 == paramInt1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText = ((MessageForText)ayvw.a(-1000));
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msgtype = -1000;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop = 9653;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.isread = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.senderuin = aljq.aw;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.frienduin = aljq.aw;
-      if (this.jdField_a_of_type_AndroidContentIntent != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(b);
+      QQToast.a(LoginWelcomeManager.a(this.a).getApp(), 5, 2131719238, 1).a();
+      localBundle = LoginWelcomeManager.a(this.a).getBundle("request");
+      localBundle.putString("uin", String.valueOf(paramString));
+      if (paramInt2 != 0) {
+        break label120;
       }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.time;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg.equals(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.mTitleName))) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.mTitleName;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time != this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.time) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.time;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForText;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush = null;
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush == null)
+    label120:
+    for (paramInt1 = i;; paramInt1 = 0)
     {
-      localObject = new RecentUser(aljq.aw, 9653);
-      ((RecentUser)localObject).msgType = -1000;
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush = new RecentItemPullActivePush((RecentUser)localObject);
+      localBundle.putInt("result", paramInt1);
+      LoginWelcomeManager.a(this.a).removeObserver(this);
+      this.a.b();
+      return;
     }
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    Object localObject = paramIntent.getStringExtra(b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.a((String)localObject, l);
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
   }
   
-  public void onDestroy() {}
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  {
+    if (paramBoolean)
+    {
+      paramString = LoginWelcomeManager.a(this.a).getBundle("request");
+      paramString.putString("uin", String.valueOf(paramLong));
+      paramString.putShort("option", paramTroopInfo.cGroupOption);
+      paramString.putString("name", paramTroopInfo.troopname);
+      if ((paramTroopInfo.cGroupOption != 4) && (paramTroopInfo.cGroupOption != 5)) {
+        break label114;
+      }
+      paramString.putString("answer", paramTroopInfo.joinTroopAnswer);
+      paramString.putString("question", paramTroopInfo.joinTroopQuestion);
+    }
+    for (;;)
+    {
+      this.a.b();
+      LoginWelcomeManager.a(this.a).removeObserver(this);
+      return;
+      label114:
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginWelcomeManager", 2, "onOIDB0X88D_1_Ret err");
+      }
+    }
+  }
 }
 
 

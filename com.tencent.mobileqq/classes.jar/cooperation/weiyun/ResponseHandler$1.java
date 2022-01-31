@@ -2,9 +2,9 @@ package cooperation.weiyun;
 
 import android.os.Bundle;
 import android.os.Process;
-import aslp;
-import aslq;
-import ayvc;
+import aspy;
+import aspz;
+import ayzl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 
@@ -16,14 +16,14 @@ public final class ResponseHandler$1
   public void run()
   {
     Process.setThreadPriority(10);
-    aslp localaslp = new aslp(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, -5023, 2424833, ayvc.a());
+    aspy localaspy = new aspy(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, -5023, 2424833, ayzl.a());
     Object localObject = new Bundle();
     ((Bundle)localObject).putInt("key_action", 1);
     ((Bundle)localObject).putString("key_action_DATA", this.d);
-    localaslp.a(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int + this.e.length(), (Bundle)localObject);
+    localaspy.a(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int + this.e.length(), (Bundle)localObject);
     localObject = new MessageForUniteGrayTip();
-    ((MessageForUniteGrayTip)localObject).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaslp);
-    aslq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject);
+    ((MessageForUniteGrayTip)localObject).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaspy);
+    aspz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject);
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aaky;
-import aanp;
-import aapa;
+import aapn;
+import aase;
+import aatp;
 
 public final class GdtMotiveVideoAd
   extends com.tencent.gdtad.api.GdtAd
 {
-  private aaky params;
+  private aapn params;
   
-  public GdtMotiveVideoAd(aaky paramaaky)
+  public GdtMotiveVideoAd(aapn paramaapn)
   {
-    super(paramaaky);
-    this.params = paramaaky;
+    super(paramaapn);
+    this.params = paramaapn;
   }
   
   public int getErrorCode(com.tencent.gdtad.aditem.GdtAd paramGdtAd, int paramInt1, int paramInt2, int paramInt3)
@@ -23,16 +23,16 @@ public final class GdtMotiveVideoAd
     }
     if ((paramGdtAd == null) || (!isValid()))
     {
-      aanp.d("GdtMotiveVideoAd", "getErrorCode error");
+      aase.d("GdtMotiveVideoAd", "getErrorCode error");
       return 1;
     }
-    if (aapa.a(paramGdtAd.getCreativeSize())) {
+    if (aatp.a(paramGdtAd.getCreativeSize())) {
       return 0;
     }
     return 7;
   }
   
-  protected aaky getParams()
+  protected aapn getParams()
   {
     return this.params;
   }

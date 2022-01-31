@@ -1,34 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import mqq.app.AppRuntime;
 
-class assj
-  implements TVK_IMediaPlayer.OnInfoListener
+final class assj
+  implements asrz
 {
-  assj(assd paramassd) {}
-  
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public String a()
   {
-    switch (paramInt)
+    return asry.b;
+  }
+  
+  public void a(int paramInt)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
+      ((VasQuickUpdateManager)((AppRuntime)localObject).getManager(184)).downloadItem(5L, "font.hifont.android." + paramInt, "HiBoomDownloader");
+      localObject = ((assg)((AppRuntime)localObject).getManager(219)).a(paramInt);
+      ((assf)localObject).b = true;
+      ((assf)localObject).c = 0;
     }
-    do
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video start buffering !");
-      }
-      if (assd.a(this.a) != null) {
-        assd.a(this.a).a(this.a.b, 0);
-      }
-      this.a.c = 6;
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video end buffering !");
-      }
-    } while (assd.a(this.a) == null);
-    assd.a(this.a).a(this.a.b, 1);
-    return false;
   }
 }
 

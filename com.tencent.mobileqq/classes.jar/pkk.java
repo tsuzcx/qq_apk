@@ -14,7 +14,7 @@ public class pkk
     localJSONObject1.put("id_info_wrapper", new JSONObject());
     pkm.b(paramBaseArticleInfo, localJSONObject1);
     JSONObject localJSONObject2 = new JSONObject();
-    localJSONObject2.put("summary_text", alpo.a(2131713269));
+    localJSONObject2.put("summary_text", alud.a(2131713281));
     localJSONObject1.put("id_summary", localJSONObject2);
     localJSONObject1.put("id_image_content", new JSONObject());
     localJSONObject2 = new JSONObject();

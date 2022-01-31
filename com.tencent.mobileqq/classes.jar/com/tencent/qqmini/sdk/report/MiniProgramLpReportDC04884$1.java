@@ -3,8 +3,8 @@ package com.tencent.qqmini.sdk.report;
 import NS_COMM.COMM.Entry;
 import NS_MINI_REPORT.REPORT.SingleDcData;
 import android.content.SharedPreferences;
-import bgxz;
-import bgya;
+import bhcg;
+import bhch;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -25,12 +25,12 @@ public final class MiniProgramLpReportDC04884$1
       QMLog.d("MiniProgramLpReportDC04", "reportApiReportcalled with args: " + this.a);
     }
     Object localObject = StorageUtil.getPreference().getString("version", "1.14.0.00225");
-    localObject = new ArrayList(Arrays.asList(new COMM.Entry[] { bgxz.a("appid", this.b), bgxz.a("miniapp_version", this.c), bgxz.a("baselib_version", (String)localObject), bgxz.a("apiResult", this.a) }));
+    localObject = new ArrayList(Arrays.asList(new COMM.Entry[] { bhcg.a("appid", this.b), bhcg.a("miniapp_version", this.c), bhcg.a("baselib_version", (String)localObject), bhcg.a("apiResult", this.a) }));
     if (!QUAUtil.isQQApp()) {
-      ((ArrayList)localObject).addAll(bgxz.a());
+      ((ArrayList)localObject).addAll(bhcg.a());
     }
-    localObject = bgxz.a(9, String.valueOf(6), (List)localObject, null);
-    bgya.a().a((REPORT.SingleDcData)localObject);
+    localObject = bhcg.a(9, String.valueOf(6), (List)localObject, null);
+    bhch.a().a((REPORT.SingleDcData)localObject);
   }
 }
 

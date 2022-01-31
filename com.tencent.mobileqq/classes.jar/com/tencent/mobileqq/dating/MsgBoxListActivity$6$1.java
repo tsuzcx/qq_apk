@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.dating;
 
-import alpo;
-import apea;
+import alud;
+import apij;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class MsgBoxListActivity$6$1
   implements Runnable
 {
-  public MsgBoxListActivity$6$1(apea paramapea, int paramInt) {}
+  public MsgBoxListActivity$6$1(apij paramapij, int paramInt) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Int == 0)
     {
-      QQToast.a(this.jdField_a_of_type_Apea.a, 2, alpo.a(2131707316), 1).a();
+      QQToast.a(this.jdField_a_of_type_Apij.a, 2, alud.a(2131707328), 1).a();
       return;
     }
-    QQToast.a(this.jdField_a_of_type_Apea.a, 1, alpo.a(2131707317), 1).a();
+    QQToast.a(this.jdField_a_of_type_Apij.a, 1, alud.a(2131707329), 1).a();
   }
 }
 

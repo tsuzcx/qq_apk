@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aekt;
-import aelz;
-import afiv;
-import afku;
-import afkv;
-import afkw;
+import aepi;
+import aeqo;
+import afnk;
+import afpj;
+import afpk;
+import afpl;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -19,7 +19,7 @@ import android.support.v4.app.FragmentActivity;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import bdda;
+import bdhj;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.app.utils.PokeBigResHandler;
@@ -36,8 +36,8 @@ public class GreatMoveCombolEffectView
 {
   public static boolean a;
   int jdField_a_of_type_Int = 0;
-  private aelz jdField_a_of_type_Aelz;
-  afkv jdField_a_of_type_Afkv;
+  private aeqo jdField_a_of_type_Aeqo;
+  afpk jdField_a_of_type_Afpk;
   private Context jdField_a_of_type_AndroidContentContext;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
@@ -45,7 +45,7 @@ public class GreatMoveCombolEffectView
   GreatMoveCombolEffectView.DecodeRunnable jdField_a_of_type_ComTencentMobileqqActivityAioItemGreatMoveCombolEffectView$DecodeRunnable;
   private ChatXListView jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
   private MessageForPoke jdField_a_of_type_ComTencentMobileqqDataMessageForPoke;
-  ArrayList<afkw> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  ArrayList<afpl> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Vector<Bitmap> jdField_a_of_type_JavaUtilVector = new Vector();
   int jdField_b_of_type_Int = 0;
   Handler jdField_b_of_type_AndroidOsHandler;
@@ -69,25 +69,25 @@ public class GreatMoveCombolEffectView
     a(paramContext);
   }
   
-  private afiv a()
+  private afnk a()
   {
     View localView;
-    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null) && (this.jdField_a_of_type_Aelz != null))
+    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null) && (this.jdField_a_of_type_Aeqo != null))
     {
-      int i = aekt.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.uniseq, this.jdField_a_of_type_Aelz);
-      localView = aekt.a(this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, i + 1);
+      int i = aepi.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.uniseq, this.jdField_a_of_type_Aeqo);
+      localView = aepi.a(this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, i + 1);
       if (localView != null) {}
     }
     else
     {
       return null;
     }
-    return (afiv)aekt.a(localView);
+    return (afnk)aepi.a(localView);
   }
   
-  private void a(afkv paramafkv)
+  private void a(afpk paramafpk)
   {
-    this.jdField_a_of_type_Afkv = paramafkv;
+    this.jdField_a_of_type_Afpk = paramafpk;
   }
   
   private void a(Context paramContext)
@@ -97,9 +97,9 @@ public class GreatMoveCombolEffectView
     {
       paramContext = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
       this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = paramContext.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
-      this.jdField_a_of_type_Aelz = paramContext.jdField_a_of_type_Aelz;
+      this.jdField_a_of_type_Aeqo = paramContext.jdField_a_of_type_Aeqo;
     }
-    setOnTouchListener(new afku(this));
+    setOnTouchListener(new afpj(this));
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     d();
     paramContext = new HandlerThread("decode");
@@ -148,14 +148,14 @@ public class GreatMoveCombolEffectView
     this.jdField_b_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGreatMoveCombolEffectView$DecodeRunnable);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGreatMoveCombolEffectView$DecodeRunnable = null;
     setVisibility(8);
-    if (this.jdField_a_of_type_Afkv != null)
+    if (this.jdField_a_of_type_Afpk != null)
     {
-      this.jdField_a_of_type_Afkv.a();
-      this.jdField_a_of_type_Afkv = null;
+      this.jdField_a_of_type_Afpk.a();
+      this.jdField_a_of_type_Afpk = null;
     }
   }
   
-  public void a(MessageForPoke paramMessageForPoke, afkv paramafkv)
+  public void a(MessageForPoke paramMessageForPoke, afpk paramafpk)
   {
     if ((jdField_a_of_type_Boolean) && (paramMessageForPoke != this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke)) {
       return;
@@ -163,10 +163,10 @@ public class GreatMoveCombolEffectView
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
     this.jdField_a_of_type_AndroidOsHandler.post(this);
-    paramMessageForPoke = (afkw)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
+    paramMessageForPoke = (afpl)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = bdda.a(paramMessageForPoke.jdField_a_of_type_JavaLangString, null);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = bdhj.a(paramMessageForPoke.jdField_a_of_type_JavaLangString, null);
       return;
     }
     catch (OutOfMemoryError paramMessageForPoke)
@@ -178,23 +178,23 @@ public class GreatMoveCombolEffectView
     }
   }
   
-  public void a(MessageForPoke paramMessageForPoke, boolean paramBoolean, afkv paramafkv)
+  public void a(MessageForPoke paramMessageForPoke, boolean paramBoolean, afpk paramafpk)
   {
     if (jdField_a_of_type_Boolean)
     {
-      paramafkv.a();
+      paramafpk.a();
       return;
     }
-    a(paramafkv);
+    a(paramafpk);
     setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke = paramMessageForPoke;
     this.jdField_b_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
     this.jdField_a_of_type_AndroidOsHandler.post(this);
-    paramMessageForPoke = (afkw)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
+    paramMessageForPoke = (afpl)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = bdda.a(paramMessageForPoke.jdField_a_of_type_JavaLangString, null);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = bdhj.a(paramMessageForPoke.jdField_a_of_type_JavaLangString, null);
       jdField_a_of_type_Boolean = true;
       return;
     }
@@ -212,17 +212,17 @@ public class GreatMoveCombolEffectView
   
   public void a(String paramString, int paramInt)
   {
-    afkw localafkw = new afkw(this);
-    localafkw.jdField_a_of_type_JavaLangString = paramString;
-    localafkw.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList.add(localafkw);
+    afpl localafpl = new afpl(this);
+    localafpl.jdField_a_of_type_JavaLangString = paramString;
+    localafpl.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList.add(localafpl);
   }
   
   public void b()
   {
     this.jdField_a_of_type_AndroidContentContext = null;
     this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = null;
-    this.jdField_a_of_type_Aelz = null;
+    this.jdField_a_of_type_Aeqo = null;
     a();
   }
   
@@ -269,9 +269,9 @@ public class GreatMoveCombolEffectView
           return;
         }
         localObject2 = new int[2];
-        ((afiv)localObject1).c.getLocationOnScreen((int[])localObject2);
+        ((afnk)localObject1).c.getLocationOnScreen((int[])localObject2);
         i = localObject2[1];
-        j = ((afiv)localObject1).c.getLayoutParams().height / 2;
+        j = ((afnk)localObject1).c.getLayoutParams().height / 2;
         super.draw(paramCanvas);
       } while ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()));
       int k = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
@@ -300,7 +300,7 @@ public class GreatMoveCombolEffectView
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGreatMoveCombolEffectView$DecodeRunnable == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGreatMoveCombolEffectView$DecodeRunnable = new GreatMoveCombolEffectView.DecodeRunnable(this, this.jdField_b_of_type_JavaUtilArrayList);
       }
-      afkw localafkw = (afkw)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      afpl localafpl = (afpl)this.jdField_a_of_type_JavaUtilArrayList.get(i);
       this.jdField_b_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGreatMoveCombolEffectView$DecodeRunnable);
       this.jdField_b_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGreatMoveCombolEffectView$DecodeRunnable);
       this.jdField_a_of_type_Int += 1;
@@ -317,7 +317,7 @@ public class GreatMoveCombolEffectView
       {
         this.jdField_a_of_type_AndroidGraphicsBitmap = a();
         invalidate();
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, localafkw.jdField_a_of_type_Int);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, localafpl.jdField_a_of_type_Int);
         return;
         label156:
         localBitmap.recycle();

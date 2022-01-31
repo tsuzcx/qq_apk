@@ -1,73 +1,64 @@
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
+import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bjrk
+  implements TextWatcher
 {
-  static volatile String a = null;
+  public bjrk(QZoneShareActivity paramQZoneShareActivity) {}
   
-  private static Object a(Object paramObject)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject1 = (WifiManager)BaseApplication.getContext().getSystemService("wifi");
-    if (localObject1 == null) {}
-    for (;;)
-    {
-      return paramObject;
+    if (((paramInt2 == 1) || (paramInt2 == 2)) && (paramInt3 == 0)) {
       try
       {
-        localObject1 = ((WifiManager)localObject1).getConnectionInfo();
-        if (localObject1 == null) {
-          continue;
-        }
-        return localObject1;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
+        QZoneShareActivity.b(this.a, QZoneShareActivity.a(this.a, paramCharSequence, paramInt1 + paramInt2));
+        if (QZoneShareActivity.b(this.a) == -1)
         {
-          Object localObject2 = null;
+          QZoneShareActivity.g(this.a);
+          return;
         }
+        QZoneShareActivity.c(this.a, paramInt1);
+        QZoneShareActivity.a(this.a, paramCharSequence.toString().substring(QZoneShareActivity.b(this.a), QZoneShareActivity.c(this.a) + paramInt2));
+        return;
+      }
+      catch (Exception paramCharSequence)
+      {
+        QZoneShareActivity.g(this.a);
       }
     }
   }
   
-  public static String a()
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (a == null) {}
-    try
+    this.a.a.removeTextChangedListener(this);
+    if (paramCharSequence == null)
     {
-      if (a == null) {
-        b();
-      }
-      if (("N/A".equals(a)) || ("00:00:00:00:00:00".equals(a)) || ("FF:FF:FF:FF:FF:FF".equalsIgnoreCase(a))) {
-        return null;
-      }
+      this.a.a.addTextChangedListener(this);
+      QZoneShareActivity.g(this.a);
+      return;
     }
-    finally {}
-    return a;
-  }
-  
-  public static String b()
-  {
-    for (;;)
+    if ((paramInt3 == 1) && (paramInt2 == 0) && (paramCharSequence.toString().substring(paramInt1, paramInt1 + 1).equals("@")))
     {
-      try
-      {
-        Object localObject1 = a("N/A");
-        if (localObject1 != "N/A")
-        {
-          String str = ((WifiInfo)localObject1).getBSSID();
-          localObject1 = str;
-          if (str == null) {
-            localObject1 = "N/A";
-          }
-          a = (String)localObject1;
-          return localObject1;
-        }
-      }
-      finally {}
-      Object localObject3 = null;
+      this.a.a(false);
+      this.a.g = true;
+      paramCharSequence = new Intent(BaseApplication.getContext(), SelectMemberActivity.class);
+      paramCharSequence.putExtra("param_only_friends", true);
+      paramCharSequence.putExtra("param_min", 1);
+      this.a.startActivityForResult(paramCharSequence, 1000);
     }
+    if (QZoneShareActivity.a(this.a, QZoneShareActivity.a(this.a), false)) {
+      this.a.a.getEditableText().delete(QZoneShareActivity.b(this.a), QZoneShareActivity.c(this.a));
+    }
+    QZoneShareActivity.g(this.a);
+    this.a.i();
+    this.a.a.addTextChangedListener(this);
   }
 }
 

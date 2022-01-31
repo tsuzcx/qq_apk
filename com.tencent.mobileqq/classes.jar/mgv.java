@@ -124,7 +124,7 @@ public class mgv
       if ((paramBoolean1) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(paramLong2), Integer.valueOf(3) });
       }
-      azmj.b(null, "CliOper", "", "", "0X8008B2C", "0X8008B2C", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8008B2C", "0X8008B2C", 0, 0, "", "", "", "");
       a();
       return;
       this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong1, paramInt1, paramLong2, paramInt2, false);
@@ -227,7 +227,7 @@ public class mgv
         QLog.d("MultiIncomingCallUICtr", 2, "Session already destroyed, id:" + this.jdField_a_of_type_Lid.jdField_c_of_type_JavaLangString + ", status = " + this.jdField_a_of_type_Lid.jdField_g_of_type_Int);
       }
       if (this.jdField_a_of_type_Mnc != null) {
-        this.jdField_a_of_type_Mnc.c(alpo.a(2131707387));
+        this.jdField_a_of_type_Mnc.c(alud.a(2131707399));
       }
     }
     label310:
@@ -272,7 +272,7 @@ public class mgv
           break label374;
         }
         this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, this.jdField_c_of_type_Int, this.jdField_a_of_type_Lid.jdField_g_of_type_Long, this.jdField_a_of_type_ArrayOfLong, false);
-        azmj.b(null, "CliOper", "", "", "0X8008B2B", "0X8008B2B", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8008B2B", "0X8008B2B", 0, 0, "", "", "", "");
       }
       int i = 1;
       if (this.jdField_a_of_type_Boolean) {
@@ -287,7 +287,7 @@ public class mgv
           QLog.d("MultiIncomingCallUICtr", 2, "acceptVideoRequest isDoubleVideoMeeting");
         }
         this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, 3, Long.valueOf(this.jdField_a_of_type_Lid.jdField_d_of_type_JavaLangString).longValue(), null, false);
-        azmj.b(null, "CliOper", "", "", "0X8008B2B", "0X8008B2B", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8008B2B", "0X8008B2B", 0, 0, "", "", "", "");
       }
       for (;;)
       {
@@ -296,9 +296,9 @@ public class mgv
         int j = mww.d(this.jdField_c_of_type_Int);
         this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, this.jdField_c_of_type_JavaLangString, i, j);
         if (this.jdField_a_of_type_Boolean) {
-          azmj.b(null, "CliOper", "", "", "0X8008B24", "0X8008B24", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X8008B24", "0X8008B24", 0, 0, "", "", "", "");
         } else {
-          azmj.b(null, "CliOper", "", "", "0X8008B27", "0X8008B27", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X8008B27", "0X8008B27", 0, 0, "", "", "", "");
         }
       }
     }
@@ -317,7 +317,7 @@ public class mgv
     long l2;
     if (this.jdField_a_of_type_Lid.R)
     {
-      azmj.b(null, "CliOper", "", "", "0X8008B25", "0X8008B25", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8008B25", "0X8008B25", 0, 0, "", "", "", "");
       if (!paramBoolean1) {
         break label317;
       }
@@ -339,7 +339,7 @@ public class mgv
           }
           this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), paramString, Boolean.valueOf(true) });
           return;
-          azmj.b(null, "CliOper", "", "", "0X8008B28", "0X8008B28", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X8008B28", "0X8008B28", 0, 0, "", "", "", "");
         }
       }
       catch (NumberFormatException localNumberFormatException)

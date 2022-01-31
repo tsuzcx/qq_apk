@@ -28,7 +28,7 @@ public class mou
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
     VideoAppInterface localVideoAppInterface = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     this.b = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
-    this.jdField_a_of_type_Int = aekt.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_a_of_type_Int = aepi.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
   private BitmapDrawable a(String paramString)
@@ -59,14 +59,14 @@ public class mou
       localView = paramLayoutInflater.inflate(paramInt2, paramViewGroup, false);
     }
     paramLayoutInflater = a(paramInt1);
-    paramView = localView.findViewById(2131367506);
-    paramViewGroup = (TextView)localView.findViewById(2131377552);
+    paramView = localView.findViewById(2131367516);
+    paramViewGroup = (TextView)localView.findViewById(2131377606);
     paramView.setVisibility(0);
     paramView.setBackgroundDrawable(a(paramLayoutInflater.a()));
-    paramViewGroup.setPadding(aekt.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    paramViewGroup.setPadding(aepi.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
     paramViewGroup.setText(paramLayoutInflater.a());
     paramViewGroup.setTextColor(-1);
-    paramViewGroup.setSpannableFactory(baig.a);
+    paramViewGroup.setSpannableFactory(bamp.a);
     return localView;
   }
   
@@ -102,7 +102,7 @@ public class mou
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return a(this.jdField_a_of_type_AndroidViewLayoutInflater, paramInt, paramView, paramViewGroup, 2131559634);
+    return a(this.jdField_a_of_type_AndroidViewLayoutInflater, paramInt, paramView, paramViewGroup, 2131559633);
   }
 }
 

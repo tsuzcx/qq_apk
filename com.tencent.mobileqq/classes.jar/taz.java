@@ -10,13 +10,13 @@ class taz
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
     tlo.c("813", "onLoadCanceled - " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841377);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841378);
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     tlo.d("813", "onLoadFialed - " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841377);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841378);
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)

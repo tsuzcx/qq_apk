@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.utils;
 
 import android.app.Activity;
-import bdfh;
+import bdjq;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class QQCustomArkDialog$4
   implements Runnable
 {
-  public QQCustomArkDialog$4(bdfh parambdfh) {}
+  public QQCustomArkDialog$4(bdjq parambdjq) {}
   
   public void run()
   {
-    if (!bdfh.b(this.this$0))
+    if (!bdjq.b(this.this$0))
     {
-      bdfh.a(this.this$0, true);
+      bdjq.a(this.this$0, true);
       if (QLog.isColorLevel()) {
         QLog.d("QQCustomArkDialog", 2, "overtime,show dialog right now");
       }
-      if (bdfh.a(this.this$0) == null) {
+      if (bdjq.a(this.this$0) == null) {
         break label76;
       }
     }
     label76:
-    for (Activity localActivity = (Activity)bdfh.a(this.this$0).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
+    for (Activity localActivity = (Activity)bdjq.a(this.this$0).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
     {
       this.this$0.show();
       return;

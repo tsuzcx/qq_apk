@@ -1,14 +1,43 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vda
-  extends unf
+  extends vce
+  implements urr<vdc, vdd>
 {
-  public qqstory_service.RspGetMusicListConfig a;
+  public List<String> a = new ArrayList();
   
-  public vda(qqstory_service.RspGetMusicListConfig paramRspGetMusicListConfig)
+  public vda(String paramString)
   {
-    super(paramRspGetMusicListConfig.result);
-    this.a = paramRspGetMusicListConfig;
+    this.a.add(paramString);
+  }
+  
+  public void a()
+  {
+    vdc localvdc = new vdc();
+    localvdc.c = 1;
+    localvdc.a = this.a;
+    urp.a().a(localvdc, this);
+  }
+  
+  public void a(@NonNull vdc paramvdc, @Nullable vdd paramvdd, @NonNull ErrorMessage paramErrorMessage)
+  {
+    paramvdc = new vdb(paramErrorMessage);
+    if ((paramErrorMessage.isSuccess()) && (paramvdd != null) && (paramvdd.a != null))
+    {
+      paramvdc.a = paramvdd.a;
+      b();
+    }
+    for (;;)
+    {
+      umc.a().dispatch(paramvdc);
+      return;
+      c();
+    }
   }
 }
 

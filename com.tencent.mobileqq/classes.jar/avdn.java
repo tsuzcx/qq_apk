@@ -1,21 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class avdn
-  implements View.OnTouchListener
+  extends nab
 {
-  avdn(avcw paramavcw) {}
+  avdn(avdj paramavdj, String paramString, avdq paramavdq) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131364537).setAlpha(0.5F);
+    if (paramInt != 0) {
+      QLog.i("getMediaDetailInfo", 1, "getMediaDetailInfo错误   errorCode=" + paramInt + ", data=" + paramArrayOfByte + ", mQueryString=" + this.jdField_a_of_type_JavaLangString);
     }
-    for (;;)
-    {
-      return false;
-      this.a.a.findViewById(2131364537).setAlpha(1.0F);
+    if (this.jdField_a_of_type_Avdq != null) {
+      this.jdField_a_of_type_Avdq.a(paramInt, paramArrayOfByte, paramBundle);
     }
   }
 }

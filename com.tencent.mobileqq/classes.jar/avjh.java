@@ -1,19 +1,32 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.app.Activity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
 
-class avjh
-  implements TextWatcher
+public class avjh
+  extends zje
 {
-  avjh(avjc paramavjc) {}
+  public avjh(PicBrowserActivity paramPicBrowserActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public zil a(Activity paramActivity, zir paramzir)
   {
-    ausq.a(this.a.e, 90);
+    return super.a(paramActivity, paramzir);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public zin a(Activity paramActivity, zir paramzir)
+  {
+    return new avjj((PicBrowserActivity)paramActivity, paramzir);
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public zir a(Activity paramActivity)
+  {
+    paramActivity = new avjp(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
+    paramActivity.a(this.a.jdField_b_of_type_Int);
+    return paramActivity;
+  }
+  
+  public zis a(Activity paramActivity, zir paramzir)
+  {
+    return null;
+  }
 }
 
 

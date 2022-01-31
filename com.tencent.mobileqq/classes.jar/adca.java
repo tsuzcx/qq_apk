@@ -1,8 +1,27 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
-public abstract interface adca
+public class adca
+  implements aoil
 {
-  public abstract void a(int paramInt, String paramString, Drawable paramDrawable, Object... paramVarArgs);
+  public adca(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  
+  public void a()
+  {
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {}
+    for (paramInt1 = 0;; paramInt1 = 1)
+    {
+      this.a.c = true;
+      this.a.a(paramInt1, true);
+      return;
+    }
+  }
 }
 
 

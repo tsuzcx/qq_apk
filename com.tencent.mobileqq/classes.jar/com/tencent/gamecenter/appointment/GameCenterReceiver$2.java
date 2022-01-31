@@ -1,11 +1,11 @@
 package com.tencent.gamecenter.appointment;
 
-import aacs;
+import aahh;
 import android.content.Intent;
 import android.text.TextUtils;
-import asjb;
-import bfnt;
-import bkdu;
+import asnk;
+import bfsc;
+import bkib;
 import com.tencent.common.app.BaseApplicationImpl;
 import cooperation.wadl.WadlProvider;
 import cooperation.wadl.ipc.WadlParams;
@@ -40,7 +40,7 @@ class GameCenterReceiver$2
                   do
                   {
                     return;
-                    bfnt.a().a();
+                    bfsc.a().a();
                     return;
                     synchronized (this.this$0.a)
                     {
@@ -52,32 +52,32 @@ class GameCenterReceiver$2
                         ((WadlResult)localObject2).b = 12;
                         localObject4 = this.this$0.a.iterator();
                         if (((Iterator)localObject4).hasNext()) {
-                          ((aacs)((Iterator)localObject4).next()).c((WadlResult)localObject2);
+                          ((aahh)((Iterator)localObject4).next()).c((WadlResult)localObject2);
                         }
                       }
                     }
                     return;
                   } while ((BaseApplicationImpl.sProcessId != 1) || (!WadlProvider.jdField_a_of_type_Boolean));
-                  ??? = bkdu.b(this.a.getStringExtra("appId"), WadlProvider.jdField_a_of_type_JavaLangString);
+                  ??? = bkib.b(this.a.getStringExtra("appId"), WadlProvider.jdField_a_of_type_JavaLangString);
                 } while (TextUtils.isEmpty((CharSequence)???));
-                asjb.a(this.a.getExtras(), (String)???);
+                asnk.a(this.a.getExtras(), (String)???);
                 return;
               } while ((BaseApplicationImpl.sProcessId != 1) || (!WadlProvider.jdField_a_of_type_Boolean));
-              ??? = bkdu.b(this.a.getStringExtra("appId"), WadlProvider.jdField_a_of_type_JavaLangString);
+              ??? = bkib.b(this.a.getStringExtra("appId"), WadlProvider.jdField_a_of_type_JavaLangString);
             } while (TextUtils.isEmpty((CharSequence)???));
-            asjb.a(0, (String)???);
+            asnk.a(0, (String)???);
             return;
           } while ((BaseApplicationImpl.sProcessId != 1) || (!WadlProvider.jdField_a_of_type_Boolean));
-          ??? = bkdu.b(this.a.getStringExtra("appId"), WadlProvider.jdField_a_of_type_JavaLangString);
+          ??? = bkib.b(this.a.getStringExtra("appId"), WadlProvider.jdField_a_of_type_JavaLangString);
         } while (TextUtils.isEmpty((CharSequence)???));
         ??? = new WadlParams((String)???, this.a.getStringExtra("pkgName"));
         ((WadlParams)???).q = "biz_src_zf_games";
-        asjb.a((WadlParams)???);
+        asnk.a((WadlParams)???);
         return;
       } while ((BaseApplicationImpl.sProcessId != 1) || (!WadlProvider.jdField_a_of_type_Boolean));
-      ??? = bkdu.b(this.a.getStringExtra("appId"), WadlProvider.jdField_a_of_type_JavaLangString);
+      ??? = bkib.b(this.a.getStringExtra("appId"), WadlProvider.jdField_a_of_type_JavaLangString);
     } while (TextUtils.isEmpty((CharSequence)???));
-    asjb.b(0, (String)???);
+    asnk.b(0, (String)???);
   }
 }
 

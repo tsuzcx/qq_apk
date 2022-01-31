@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.flashchat.FlashChatItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class arry
+final class arry
+  implements arrh
 {
-  public int a;
-  public FlashChatItem a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
+  arry(FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface) {}
+  
+  public void a()
+  {
+    arrr.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+  }
+  
+  public void b() {}
 }
 
 

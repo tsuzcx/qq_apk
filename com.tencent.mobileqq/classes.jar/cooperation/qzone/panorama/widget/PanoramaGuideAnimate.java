@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bjjk;
-import bjjl;
+import bjnr;
+import bjns;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,10 +21,10 @@ public class PanoramaGuideAnimate
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bjjk(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bjnr(this);
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bjjl jdField_a_of_type_Bjjl;
+  private bjns jdField_a_of_type_Bjns;
   private Timer jdField_a_of_type_JavaUtilTimer;
   private TimerTask jdField_a_of_type_JavaUtilTimerTask;
   private float b;
@@ -66,13 +66,13 @@ public class PanoramaGuideAnimate
     setOrientation(1);
     setGravity(1);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847074);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847147);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(100, 100);
     localLayoutParams.bottomMargin = 20;
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
     if (paramInt == 1) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718384));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718396));
     }
     for (;;)
     {
@@ -84,13 +84,13 @@ public class PanoramaGuideAnimate
       this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
       a();
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718385));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718397));
     }
   }
   
-  public void setOnAnimateListener(bjjl parambjjl)
+  public void setOnAnimateListener(bjns parambjns)
   {
-    this.jdField_a_of_type_Bjjl = parambjjl;
+    this.jdField_a_of_type_Bjns = parambjns;
   }
 }
 

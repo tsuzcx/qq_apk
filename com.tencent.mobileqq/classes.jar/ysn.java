@@ -1,30 +1,36 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class ysn
-  implements PopupWindow.OnDismissListener
+class ysn
+  implements ysj
 {
-  public ysn(CustomMenuBar paramCustomMenuBar, ImageView paramImageView, TextView paramTextView) {}
+  ysn(ysm paramysm, ysl paramysl) {}
   
-  public void onDismiss()
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842840);
-    if (CustomMenuBar.a()) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131165996));
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineVideos end! isSuccess:" + paramBoolean + " path = " + paramString1);
     }
-    for (;;)
+    File localFile = new File(paramString1);
+    if ((paramBoolean) && (localFile.exists()))
     {
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = true;
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable, 50L);
+      if (this.jdField_a_of_type_Ysl.a)
+      {
+        this.jdField_a_of_type_Ysm.jdField_a_of_type_Yta.b(this.jdField_a_of_type_Ysm);
+        return;
+      }
+      if (this.jdField_a_of_type_Ysm.jdField_a_of_type_JavaLangString != null)
+      {
+        l = System.currentTimeMillis();
+        this.jdField_a_of_type_Ysm.jdField_a_of_type_Ysb.a(paramString1, this.jdField_a_of_type_Ysm.jdField_a_of_type_JavaLangString, new yso(this, l));
+        return;
+      }
+      long l = System.currentTimeMillis();
+      this.jdField_a_of_type_Ysm.a(localFile, this.jdField_a_of_type_Ysm.b, new ysq(this, l));
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131165995));
     }
+    this.jdField_a_of_type_Ysm.d = paramString2;
+    this.jdField_a_of_type_Ysm.jdField_a_of_type_Yta.a(this.jdField_a_of_type_Ysm);
   }
 }
 

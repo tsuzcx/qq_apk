@@ -1,8 +1,19 @@
-public abstract interface ajrp
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class ajrp
+  implements ajwh
 {
-  public abstract void a(float paramFloat);
+  public ajrp(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void a_(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "onPictureToken path " + paramString);
+    }
+    this.a.a.b();
+    NewFlowCameraActivity.a(this.a, paramString, true);
+  }
 }
 
 

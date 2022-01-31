@@ -1,20 +1,15 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class acyf
-  implements TopGestureLayout.InterceptTouchEventListener
+class acyf
+  implements View.OnClickListener
 {
-  public acyf(GeneralSettingActivity paramGeneralSettingActivity) {}
+  acyf(acye paramacye) {}
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      return this.a.a.a(paramMotionEvent);
-    }
-    return true;
+    paramView = paramView.getTag();
+    acye.a(this.a, (akhv)paramView);
   }
 }
 

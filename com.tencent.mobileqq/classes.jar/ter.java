@@ -25,10 +25,10 @@ class ter
     tlo.b("WSUserBusiness", "[getServiceListenerWrapper] isFollow : " + i);
     if (i == 1)
     {
-      bfhq.a().a(2131721470);
+      bflz.a().a(2131721483);
       return;
     }
-    bfhq.a().a(2131721471);
+    bflz.a().a(2131721484);
   }
 }
 

@@ -1,24 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import java.io.File;
 
-public class ahcf
-  implements View.OnClickListener
+abstract interface ahcf
 {
-  public ahcf(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public abstract File a(String paramString);
   
-  public void onClick(View paramView)
-  {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) || (this.a.f == ClassificationSearchActivity.d))
-    {
-      ClassificationSearchActivity.a(this.a);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
-  }
+  public abstract String c();
 }
 
 

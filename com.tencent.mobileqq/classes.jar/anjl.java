@@ -1,14 +1,8 @@
-import android.os.HandlerThread;
-import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
-import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.wadl.ipc.WadlResult;
 
-public final class anjl
-  implements ArkEnvironmentManager.ThreadCreater
+abstract interface anjl
 {
-  public HandlerThread createHanderThread(String paramString)
-  {
-    return ThreadManager.newFreeHandlerThread(paramString, -1);
-  }
+  public abstract void a(WadlResult paramWadlResult);
 }
 
 

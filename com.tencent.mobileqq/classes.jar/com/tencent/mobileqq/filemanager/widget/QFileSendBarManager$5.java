@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.filemanager.widget;
 
 import android.annotation.SuppressLint;
-import arqk;
-import arqp;
+import arut;
+import aruy;
 
 public class QFileSendBarManager$5
   implements Runnable
 {
-  public QFileSendBarManager$5(arqk paramarqk) {}
+  public QFileSendBarManager$5(arut paramarut) {}
   
   @SuppressLint({"StaticFieldLeak"})
   public void run()
   {
-    new arqp(this).execute(new Void[0]);
+    new aruy(this).execute(new Void[0]);
   }
 }
 

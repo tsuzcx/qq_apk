@@ -50,7 +50,7 @@ public class mfx
       QLog.w("EffectToolbar", 1, "onEffectClick, path[" + (String)localObject3 + "], bSuc[" + bool + "], seq[" + paramLong + "]");
     }
     EffectToolbar.access$000(this.a, paramLong, parammkj.jdField_a_of_type_JavaLangString);
-    azmb.b((String)localObject2);
+    azqk.b((String)localObject2);
     localObject3 = ((VideoController)localObject1).a();
     int i = ((lid)localObject3).M;
     int j = ((lid)localObject3).E;

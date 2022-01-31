@@ -1,53 +1,19 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
 
 class amss
-  implements amzd
+  implements View.OnClickListener
 {
-  amss(amsq paramamsq, ARCommonConfigInfo.NativeSoRes paramNativeSoRes) {}
+  amss(amsq paramamsq) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    amzd localamzd = amsq.a(this.jdField_a_of_type_Amsq, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localamzd != null) {
-      localamzd.a();
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    amzd localamzd = amsq.a(this.jdField_a_of_type_Amsq, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localamzd != null) {
-      localamzd.a(paramLong1, paramLong2);
-    }
-  }
-  
-  public void a(boolean paramBoolean, amze paramamze)
-  {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a + ", filename = " + paramamze.c + ", url = " + paramamze.a);
-    if (paramBoolean) {
-      if (!amsq.a(this.jdField_a_of_type_Amsq, paramamze.c, paramamze.b))
-      {
-        amsq.a(this.jdField_a_of_type_Amsq, paramamze.c);
-        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
-      }
-    }
-    amzd localamzd;
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Amsq.a(paramamze.d, paramamze.c, paramamze.b) == 0) {}
-      localamzd = amsq.a(this.jdField_a_of_type_Amsq, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    } while (localamzd == null);
-    localamzd.a(paramBoolean, paramamze);
-  }
-  
-  public void b()
-  {
-    amzd localamzd = amsq.a(this.jdField_a_of_type_Amsq, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localamzd != null) {
-      localamzd.b();
-    }
+    this.a.dismiss();
+    paramView = new Intent(paramView.getContext(), PoiMapActivity.class).putExtra("lat", Double.toString(this.a.jdField_a_of_type_Anav.a * 1.0D / 1000000.0D)).putExtra("lon", Double.toString(this.a.jdField_a_of_type_Anav.b * 1.0D / 1000000.0D));
+    this.a.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
   }
 }
 

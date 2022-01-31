@@ -1,33 +1,51 @@
 package com.tencent.mobileqq.activity;
 
-import acos;
+import acth;
 import android.view.View;
 import android.widget.TextView;
 
 class ConversationTitleBtnCtrl$1$1
   implements Runnable
 {
-  ConversationTitleBtnCtrl$1$1(ConversationTitleBtnCtrl.1 param1, boolean paramBoolean) {}
+  ConversationTitleBtnCtrl$1$1(ConversationTitleBtnCtrl.1 param1, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (acos.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0) != null) {
-        acos.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0).setVisibility(0);
+    if (this.jdField_a_of_type_Int > 0) {
+      if (acth.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0) != null)
+      {
+        if (this.jdField_a_of_type_Int > 99)
+        {
+          acth.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0).setText("99+");
+          acth.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0).setVisibility(0);
+        }
       }
-      if (acos.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0) != null) {
-        acos.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0).setVisibility(8);
+      else if (acth.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0) != null) {
+        acth.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0).setVisibility(8);
       }
     }
+    label188:
     do
     {
+      do
+      {
+        return;
+        acth.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0).setText("" + this.jdField_a_of_type_Int);
+        break;
+        if (!this.jdField_a_of_type_Boolean) {
+          break label188;
+        }
+        if (acth.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0) != null) {
+          acth.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0).setVisibility(0);
+        }
+      } while (acth.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0) == null);
+      acth.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0).setVisibility(8);
       return;
-      if (acos.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0) != null) {
-        acos.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0).setVisibility(8);
+      if (acth.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0) != null) {
+        acth.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0).setVisibility(8);
       }
-    } while (acos.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0) == null);
-    acos.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0).setVisibility(8);
+    } while (acth.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0) == null);
+    acth.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationTitleBtnCtrl$1.this$0).setVisibility(8);
   }
 }
 

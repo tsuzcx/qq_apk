@@ -1,46 +1,68 @@
 import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.search.activity.PublicAcntSearchActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import java.util.List;
 
-class aynm
-  implements View.OnClickListener
+public class aynm
+  implements aynt
 {
-  aynm(aynf paramaynf, Context paramContext, aykk paramaykk) {}
+  public static final String a;
+  private int jdField_a_of_type_Int;
+  private final List<aynu> jdField_a_of_type_JavaUtilList;
+  private final String b;
   
-  public void onClick(View paramView)
+  static
   {
-    paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ayrd.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aykk.a.jdField_a_of_type_JavaLangString);
-    aydx localaydx;
-    JSONObject localJSONObject;
-    if (aydw.b.containsKey(this.jdField_a_of_type_Aykk))
-    {
-      localaydx = (aydx)aydw.b.get(this.jdField_a_of_type_Aykk);
-      localJSONObject = new JSONObject();
+    jdField_a_of_type_JavaLangString = alud.a(2131705753);
+  }
+  
+  public aynm(List<aynu> paramList, String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return ayhw.a("pref_fts_native_search_public_account_max_num", 3);
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Int == 12) {
+      return alud.a(2131705778) + swy.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext());
     }
-    try
-    {
-      localJSONObject.put("project", aynt.a());
-      localJSONObject.put("event_src", "client");
-      localJSONObject.put("obj_lct", localaydx.jdField_a_of_type_Int);
-      localJSONObject.put("get_src", "web");
-      aynt.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localaydx.jdField_a_of_type_Long + "").obj2(localaydx.b).ver1(localaydx.jdField_a_of_type_JavaLangString).ver2(aynt.a(this.jdField_a_of_type_Aykk.c)).ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + aydw.jdField_a_of_type_Long));
-      return;
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<aynu> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    ayvm.a(this.b, 50, 0, paramView);
+    Context localContext = paramView.getContext();
+    if ((localContext != null) && ((localContext instanceof BaseActivity))) {
+      azqs.b(((BaseActivity)localContext).app, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D1C", "0X8005D1C", 0, 1, 0, "0", "", this.b, "");
     }
-    catch (JSONException localJSONException)
+    if ((paramView.getContext() instanceof UniteSearchActivity))
     {
-      for (;;)
-      {
-        QLog.e("Q.uniteSearch.SearchTemplatePresenter", 2, "e = " + localJSONException);
-      }
+      ayvm.a("all_result", "clk_public_uin_more", new String[] { "" + this.b });
+      aysc.a(null, 0, this.jdField_a_of_type_Int, "0X8009D53", 0, 0, null, null);
     }
+    PublicAcntSearchActivity.a(paramView.getContext(), this.b, this.jdField_a_of_type_Int);
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

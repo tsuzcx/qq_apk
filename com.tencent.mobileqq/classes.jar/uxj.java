@@ -1,77 +1,98 @@
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.Nullable;
+import java.util.Arrays;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class uxj
-  extends uxb
 {
-  public uxj(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup);
-  }
+  public int a;
+  private final String a;
+  public final String[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public final int h;
   
-  protected String a(QQUserUIItem paramQQUserUIItem)
+  private uxj(JSONObject paramJSONObject)
   {
-    String str = super.a(paramQQUserUIItem);
-    paramQQUserUIItem = str;
-    if (str == null) {
-      paramQQUserUIItem = alpo.a(2131713636);
-    }
-    return paramQQUserUIItem;
-  }
-  
-  public void a()
-  {
-    this.a.setTag(2131373799, null);
-  }
-  
-  protected void a(String paramString)
-  {
-    c(paramString);
-  }
-  
-  protected void a(String paramString, boolean paramBoolean, utx paramutx)
-  {
-    if ((!TextUtils.isEmpty(paramutx.j)) && (!paramBoolean))
+    int j;
+    try
     {
-      this.a.setNodeName(paramString, paramutx.j);
-      return;
-    }
-    super.a(paramString, paramBoolean, paramutx);
-  }
-  
-  public void a(utx paramutx)
-  {
-    super.a(paramutx);
-    this.a.setDisplayState(2);
-    String str;
-    if (!TextUtils.equals((String)this.a.getTag(2131373799), paramutx.jdField_a_of_type_JavaLangString))
-    {
-      if ((paramutx.jdField_a_of_type_JavaUtilList == null) || (paramutx.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-        break label168;
-      }
-      str = ((uup)paramutx.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString;
-      Iterator localIterator = paramutx.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        uup localuup = (uup)localIterator.next();
-        if (!localuup.jdField_a_of_type_Boolean) {
-          str = localuup.jdField_a_of_type_JavaLangString;
-        }
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
+      this.jdField_a_of_type_Int = paramJSONObject.getInt("t");
+      this.h = paramJSONObject.getJSONObject("a").getInt("r");
+      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
+      this.b = localJSONArray.getInt(0);
+      this.c = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
+      this.d = localJSONArray.getInt(0);
+      this.e = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
+      this.f = localJSONArray.getInt(0);
+      this.g = localJSONArray.getInt(1);
+      paramJSONObject = paramJSONObject.getJSONArray("c");
+      j = paramJSONObject.length();
+      if (j < 1) {
+        throw new IllegalArgumentException("content length should more than 1");
       }
     }
-    for (;;)
+    catch (JSONException paramJSONObject)
     {
-      wta.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramutx.jdField_a_of_type_JavaLangString, "1", "", str });
-      this.a.setTag(2131373799, paramutx.jdField_a_of_type_JavaLangString);
-      return;
-      continue;
-      label168:
-      str = "";
+      throw new IllegalArgumentException(paramJSONObject);
     }
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
+    while (i < j)
+    {
+      this.jdField_a_of_type_ArrayOfJavaLangString[i] = paramJSONObject.optString(i, "(NULL)");
+      i += 1;
+    }
+  }
+  
+  public static uxj a(@Nullable String paramString)
+  {
+    try
+    {
+      paramString = a(new JSONObject(paramString));
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      wxe.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+      return null;
+    }
+    catch (NullPointerException paramString)
+    {
+      wxe.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+    }
+    return null;
+  }
+  
+  public static uxj a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      paramJSONObject = new uxj(paramJSONObject);
+      return paramJSONObject;
+    }
+    catch (IllegalArgumentException paramJSONObject)
+    {
+      wxe.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    return "PollLayout{type=" + this.jdField_a_of_type_Int + ", screenWidth=" + this.b + ", screenHeight=" + this.c + ", layoutWidth=" + this.d + ", layoutHeight=" + this.e + ", layoutCenterX=" + this.f + ", layoutCenterY=" + this.g + ", rotation=" + this.h + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
   }
 }
 

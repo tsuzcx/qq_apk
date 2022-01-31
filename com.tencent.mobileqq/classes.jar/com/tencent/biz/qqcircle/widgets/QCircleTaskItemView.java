@@ -8,7 +8,7 @@ import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import qqcircle.TaskCenterReader.TaskRecord;
-import ucx;
+import ufy;
 
 public class QCircleTaskItemView
   extends BaseWidgetView<TaskCenterReader.TaskRecord>
@@ -24,14 +24,14 @@ public class QCircleTaskItemView
   
   public int a()
   {
-    return 2131560579;
+    return 2131560596;
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.a = ((TextView)findViewById(2131378974));
-    this.b = ((TextView)findViewById(2131378972));
-    this.c = ((TextView)findViewById(2131378971));
+    this.a = ((TextView)findViewById(2131379032));
+    this.b = ((TextView)findViewById(2131379030));
+    this.c = ((TextView)findViewById(2131379029));
   }
   
   protected void a(TaskCenterReader.TaskRecord paramTaskRecord)
@@ -55,10 +55,10 @@ public class QCircleTaskItemView
     }
     label171:
     label177:
-    for (int i = 2130843532;; i = 0)
+    for (int i = 2130843547;; i = 0)
     {
       ((TextView)localObject).setBackgroundResource(i);
-      this.c.setOnClickListener(new ucx(this, paramTaskRecord));
+      this.c.setOnClickListener(new ufy(this, paramTaskRecord));
       return;
       localObject = "已";
       break;

@@ -1,55 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.StringTokenizer;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.CompletionListener.1;
+import mqq.util.WeakReference;
 
-public abstract class baex
+public class baex
+  implements MediaPlayer.OnCompletionListener
 {
-  public int a;
-  protected bafd a;
-  public QQAppInterface a;
-  public DataLineMsgRecord a;
-  public String a;
+  private WeakReference<VideoSprite> a;
   
-  public baex(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord, bafd parambafd)
+  private baex(VideoSprite paramVideoSprite)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord = paramDataLineMsgRecord;
-    this.jdField_a_of_type_JavaLangString = paramDataLineMsgRecord.frienduin;
-    this.jdField_a_of_type_Int = paramDataLineMsgRecord.istroop;
-    this.jdField_a_of_type_Bafd = parambafd;
+    this.a = new WeakReference(paramVideoSprite);
   }
   
-  public abstract String a();
-  
-  public boolean a()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    Object localObject = aotb.a().a();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null, or maybe has not recv");
-      }
-    }
-    String str;
+    paramMediaPlayer = (VideoSprite)this.a.get();
+    if (paramMediaPlayer == null) {}
     do
     {
-      while (!((StringTokenizer)localObject).hasMoreTokens())
+      return;
+      if (paramMediaPlayer.j)
       {
-        do
-        {
-          return false;
-          str = arof.a(a());
-          localObject = new StringTokenizer((String)localObject, "|");
-          if (((StringTokenizer)localObject).hasMoreTokens()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null");
-        return false;
+        paramMediaPlayer.b.b(new VideoSprite.CompletionListener.1(this, paramMediaPlayer));
+        return;
       }
-    } while (!str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken()));
-    return true;
+      paramMediaPlayer.g = false;
+      paramMediaPlayer.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    } while (paramMediaPlayer.jdField_a_of_type_Baej == null);
+    paramMediaPlayer.jdField_a_of_type_Baej.a();
   }
 }
 

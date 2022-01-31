@@ -1,13 +1,8 @@
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.StylePagerAdapter;
-import com.tencent.mobileqq.widget.ProfileCardScrollImageView;
-
 public class awnx
 {
-  public HiBoomTextView a;
-  public ProfileCardScrollImageView a;
-  
-  public awnx(VipProfileCardPreviewActivity.StylePagerAdapter paramStylePagerAdapter) {}
+  public static String a = "precover_ipc_action_get_resource";
+  public static String b = "precover_ipc_action_req_download";
+  public static String c = "precover_ipc_action_query_download_progress";
 }
 
 

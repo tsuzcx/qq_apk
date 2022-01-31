@@ -1,13 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment.8;
-
-public class blja
-  implements DialogInterface.OnDismissListener
+class blja
 {
-  public blja(AEEditorVideoEditFragment.8 param8) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  private static bliy a = new bliy(null);
 }
 
 

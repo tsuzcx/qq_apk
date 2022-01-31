@@ -5,7 +5,7 @@ import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisem
 import com.tencent.qphone.base.util.QLog;
 
 public class nle
-  implements bhqd
+  implements bhuk
 {
   public nle(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
@@ -20,18 +20,18 @@ public class nle
       }
       if (!TextUtils.isEmpty(paramView))
       {
-        if (!paramView.equals(this.a.getResources().getString(2131692824))) {
+        if (!paramView.equals(this.a.getResources().getString(2131692826))) {
           break label91;
         }
         PublicAccountAdvertisementActivity.d(this.a);
       }
     }
     label91:
-    while (!paramView.equals(this.a.getResources().getString(2131693470))) {
+    while (!paramView.equals(this.a.getResources().getString(2131693472))) {
       return;
     }
-    astr.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
-    azmj.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
+    asya.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
+    azqs.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
   }
 }
 

@@ -1,26 +1,11 @@
-import com.tencent.qqmini.sdk.runtime.core.page.PageWebview;
-
 class bhbn
-  implements bhay
+  implements bhbg
 {
-  bhbn(bhbi parambhbi) {}
+  private bhbn(bhbm parambhbm) {}
   
-  public void onStateChanged()
+  public void a(long paramLong, double paramDouble)
   {
-    PageWebview localPageWebview;
-    if (bhbi.a(this.a) != null)
-    {
-      localPageWebview = bhbi.a(this.a);
-      if (this.a.getCurrState() != bhbi.b(this.a)) {
-        break label43;
-      }
-    }
-    label43:
-    for (boolean bool = true;; bool = false)
-    {
-      localPageWebview.setPageJsLoadSucc(bool);
-      return;
-    }
+    this.a.a = paramDouble;
   }
 }
 

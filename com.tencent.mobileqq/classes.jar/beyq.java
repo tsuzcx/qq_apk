@@ -1,11 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Context;
+import android.os.Handler;
+import java.lang.ref.WeakReference;
 
 public class beyq
+  extends Handler
 {
-  public ImageView a;
-  public TextView a;
-  public String a;
+  WeakReference<Context> a;
+  
+  public beyq(Context paramContext)
+  {
+    this.a = new WeakReference(paramContext);
+  }
 }
 
 

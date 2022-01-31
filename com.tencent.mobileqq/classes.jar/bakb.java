@@ -1,10 +1,26 @@
-import android.os.Bundle;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Set;
 
-public abstract interface bakb
+class bakb
+  implements URLDrawable.DownloadListener
 {
-  public abstract void a(Bundle paramBundle);
+  bakb(baka parambaka, String paramString) {}
   
-  public abstract void b(Bundle paramBundle);
+  public void onFileDownloadFailed(int paramInt)
+  {
+    if (!baka.a(this.jdField_a_of_type_Baka).contains(this.jdField_a_of_type_JavaLangString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupPadTemplateAdapter", 2, "onFileDownloadFailed url: " + this.jdField_a_of_type_JavaLangString);
+      }
+      baka.a(this.jdField_a_of_type_Baka).add(this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

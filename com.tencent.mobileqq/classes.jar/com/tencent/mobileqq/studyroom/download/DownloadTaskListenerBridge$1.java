@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.studyroom.download;
 
-import azxk;
-import azxm;
+import babt;
+import babv;
 import com.tencent.hlyyb.downloader.DownloaderTask;
 
 public class DownloadTaskListenerBridge$1
   implements Runnable
 {
-  public DownloadTaskListenerBridge$1(azxk paramazxk, DownloaderTask paramDownloaderTask) {}
+  public DownloadTaskListenerBridge$1(babt parambabt, DownloaderTask paramDownloaderTask) {}
   
   public void run()
   {
-    if (azxk.a(this.this$0) != null) {
-      azxk.a(this.this$0).c(this.a);
+    if (babt.a(this.this$0) != null) {
+      babt.a(this.this$0).c(this.a);
     }
   }
 }

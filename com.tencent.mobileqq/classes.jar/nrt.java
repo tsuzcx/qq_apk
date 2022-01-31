@@ -27,7 +27,7 @@ public class nrt
       localObject = paramAccountDetail;
       if (paramAccountDetail == null)
       {
-        paramQQAppInterface = (aluw)paramQQAppInterface.getManager(56);
+        paramQQAppInterface = (alzl)paramQQAppInterface.getManager(56);
         localObject = paramAccountDetail;
         if (paramQQAppInterface != null)
         {
@@ -154,7 +154,7 @@ public class nrt
     paramString5 = a(paramString5);
     paramString6 = a(paramString6);
     paramString7 = a(paramString7);
-    azmj.b(paramQQAppInterface, "dc01160", "Pb_account_lifeservice", paramString1, paramString2.toUpperCase(), paramString3.toUpperCase(), paramInt1, paramInt2, paramString4, paramString5, paramString6, paramString7);
+    azqs.b(paramQQAppInterface, "dc01160", "Pb_account_lifeservice", paramString1, paramString2.toUpperCase(), paramString3.toUpperCase(), paramInt1, paramInt2, paramString4, paramString5, paramString6, paramString7);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, boolean paramBoolean)
@@ -166,7 +166,7 @@ public class nrt
       a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramString4, paramString5, paramString6, paramString7);
       return;
     }
-    azmj.b(paramQQAppInterface, "dc01160", "Pb_account_lifeservice", paramString1, paramString2.toUpperCase(), paramString3.toUpperCase(), paramInt1, paramInt2, paramString4, paramString5, paramString6, paramString7);
+    azqs.b(paramQQAppInterface, "dc01160", "Pb_account_lifeservice", paramString1, paramString2.toUpperCase(), paramString3.toUpperCase(), paramInt1, paramInt2, paramString4, paramString5, paramString6, paramString7);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
@@ -177,8 +177,8 @@ public class nrt
     paramString7 = a(paramString7);
     paramString8 = a(paramString8);
     paramString9 = a(paramString9);
-    azmj.b(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
-    azmj.b(paramQQAppInterface, "dc01160", "Pb_account_lifeservice", paramString3, paramString4.toUpperCase(), paramString5.toUpperCase(), paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    azqs.b(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    azqs.b(paramQQAppInterface, "dc01160", "Pb_account_lifeservice", paramString3, paramString4.toUpperCase(), paramString5.toUpperCase(), paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9, boolean paramBoolean)
@@ -190,8 +190,8 @@ public class nrt
       a(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
       return;
     }
-    azmj.b(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
-    azmj.b(paramQQAppInterface, "dc01160", "Pb_account_lifeservice", paramString3, paramString4.toUpperCase(), paramString5.toUpperCase(), paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    azqs.b(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    azqs.b(paramQQAppInterface, "dc01160", "Pb_account_lifeservice", paramString3, paramString4.toUpperCase(), paramString5.toUpperCase(), paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
   
   public static void a(String paramString1, String paramString2)
@@ -215,7 +215,7 @@ public class nrt
     localHashMap.put("d2", paramString4);
     localHashMap.put("d3", paramString5);
     localHashMap.put("d4", paramString6);
-    azmz.a(BaseApplication.getContext()).a(str, paramString1, true, 0L, 0L, localHashMap, "");
+    azri.a(BaseApplication.getContext()).a(str, paramString1, true, 0L, 0L, localHashMap, "");
     if (QLog.isColorLevel()) {
       QLog.d("reportPAinfoToLighthouse", 2, new Object[] { "reportPAinfoToLighthouse-->", "kandianT" + paramString1 + ", fromuin:" + str + ", touin:" + paramString2 + ", d1:" + paramString3 + ", d2:" + paramString4 + ", d3:" + paramString5 + ", d4:" + paramString6 });
     }
@@ -231,7 +231,7 @@ public class nrt
       try
       {
         localObject = new JSONObject(paramString);
-        ((JSONObject)localObject).put("version_standard", "8.3.3");
+        ((JSONObject)localObject).put("version_standard", "8.3.5");
         ((JSONObject)localObject).put("os_standard", "1");
         localObject = ((JSONObject)localObject).toString();
         return localObject;

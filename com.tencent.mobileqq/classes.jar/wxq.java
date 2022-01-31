@@ -1,36 +1,31 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity.1.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class wxq
-  implements ajxy
+  implements DialogInterface.OnKeyListener
 {
-  public wxq(EditWebVideoActivity paramEditWebVideoActivity) {}
+  public wxq(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
   
-  public void a(int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.runOnUiThread(new EditWebVideoActivity.1.1(this));
-  }
-  
-  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
-  {
-    int i = ((wxr)this.a.a).a;
-    EditWebVideoActivity.a(this.a, paramString1);
-    EditWebVideoActivity.a(this.a, paramArrayOfByte1);
-    EditWebVideoActivity.b(this.a, HexUtil.bytes2HexStr(EditWebVideoActivity.a(this.a)));
-    paramString1 = this.a;
-    if (i <= 0) {}
-    for (;;)
-    {
-      EditWebVideoActivity.a(paramString1, paramInt3);
-      EditWebVideoActivity.c(this.a, paramString2);
-      EditWebVideoActivity.b(this.a, paramArrayOfByte2);
-      EditWebVideoActivity.b(this.a, paramInt1);
-      EditWebVideoActivity.c(this.a, paramInt2);
-      EditWebVideoActivity.a(this.a).sendEmptyMessage(1002);
-      return;
-      paramInt3 = i;
+    if (paramInt == 84) {
+      return true;
     }
+    if (paramInt == 4)
+    {
+      this.a.a();
+      this.a.a();
+      paramDialogInterface = this.a.a;
+      paramKeyEvent = this.a.a;
+      paramDialogInterface.setResult(0);
+      this.a.a.finish();
+      DanceMachineUploadVideoFragment.a(this.a, false);
+      return true;
+    }
+    return false;
   }
 }
 

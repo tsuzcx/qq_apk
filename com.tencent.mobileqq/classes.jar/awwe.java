@@ -1,32 +1,10 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.QCallDetailActivity.9.1;
+import com.tencent.image.URLImageView;
 
 public class awwe
-  extends bdyp
 {
-  public awwe(QCallDetailActivity paramQCallDetailActivity) {}
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        paramObject = (Bundle)paramObject;
-      } while ((paramObject == null) || (TextUtils.isEmpty(QCallDetailActivity.a(this.a))) || (!QCallDetailActivity.a(this.a).equals(paramObject.getString("uin"))));
-      if (this.a.app != null) {
-        this.a.app.removeObserver(this);
-      }
-    } while (!paramBoolean);
-    this.a.runOnUiThread(new QCallDetailActivity.9.1(this));
-  }
+  public awwe(awwd paramawwd) {}
 }
 
 

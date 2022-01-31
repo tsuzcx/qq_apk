@@ -1,12 +1,12 @@
-import java.util.ArrayList;
-
 class bgwr
+  implements bgxi
 {
-  private int jdField_a_of_type_Int = 0;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int b = -1;
+  bgwr(bgwp parambgwp) {}
   
-  public bgwr(bgwp parambgwp) {}
+  public void a()
+  {
+    this.a.b();
+  }
 }
 
 

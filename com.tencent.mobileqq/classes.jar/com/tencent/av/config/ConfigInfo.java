@@ -1,7 +1,7 @@
 package com.tencent.av.config;
 
 import android.content.Context;
-import bdcv;
+import bdhe;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import lek;
@@ -72,7 +72,7 @@ public class ConfigInfo
       i = j;
     } while (!QLog.isDevelopLevel());
     QLog.w(TAG, 1, "getSharpConfigVersionFromFile fail, payloadBufTmp[" + paramContext + "]");
-    bdcv.b(TAG, localException);
+    bdhe.b(TAG, localException);
     return 0;
   }
   

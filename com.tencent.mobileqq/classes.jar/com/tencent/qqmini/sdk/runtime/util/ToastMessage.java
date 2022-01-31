@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.runtime.util;
 
-import bghl;
-import bgho;
-import bghv;
-import bhch;
+import bgls;
+import bglv;
+import bgmc;
+import bhgo;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
 import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
 
 public class ToastMessage
-  implements bghv<Boolean>
+  implements bgmc<Boolean>
 {
   public int a;
   public ToastMessage.Action a;
@@ -24,31 +24,31 @@ public class ToastMessage
     return new ToastMessage();
   }
   
-  public Boolean a(bghl parambghl)
+  public Boolean a(bgls parambgls)
   {
-    parambghl = parambghl.a();
-    if ((parambghl instanceof AppBrandPageContainer))
+    parambgls = parambgls.a();
+    if ((parambgls instanceof AppBrandPageContainer))
     {
-      parambghl = ((AppBrandPageContainer)parambghl).a();
-      if (parambghl != null)
+      parambgls = ((AppBrandPageContainer)parambgls).a();
+      if (parambgls != null)
       {
         if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeUtilToastMessage$Action == ToastMessage.Action.SHOW)
         {
-          parambghl.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
+          parambgls.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
           return Boolean.valueOf(true);
         }
         if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeUtilToastMessage$Action == ToastMessage.Action.UPDATE)
         {
-          parambghl.b(this.c);
+          parambgls.b(this.c);
           return Boolean.valueOf(true);
         }
         if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeUtilToastMessage$Action == ToastMessage.Action.HIDE)
         {
-          parambghl.c();
+          parambgls.c();
           return Boolean.valueOf(true);
         }
         if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeUtilToastMessage$Action == ToastMessage.Action.IS_SHOWING) {
-          return Boolean.valueOf(parambghl.d());
+          return Boolean.valueOf(parambgls.d());
         }
         QMLog.d("ToastMessage", "unknown action");
       }
@@ -56,28 +56,28 @@ public class ToastMessage
     for (;;)
     {
       return Boolean.valueOf(false);
-      if ((parambghl instanceof bhch))
+      if ((parambgls instanceof bhgo))
       {
-        parambghl = (bhch)parambghl;
-        if (parambghl != null)
+        parambgls = (bhgo)parambgls;
+        if (parambgls != null)
         {
           if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeUtilToastMessage$Action == ToastMessage.Action.SHOW)
           {
-            parambghl.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
+            parambgls.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
             return Boolean.valueOf(true);
           }
           if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeUtilToastMessage$Action == ToastMessage.Action.UPDATE)
           {
-            parambghl.b(this.c);
+            parambgls.b(this.c);
             return Boolean.valueOf(true);
           }
           if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeUtilToastMessage$Action == ToastMessage.Action.HIDE)
           {
-            parambghl.d();
+            parambgls.d();
             return Boolean.valueOf(true);
           }
           if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeUtilToastMessage$Action == ToastMessage.Action.IS_SHOWING) {
-            return Boolean.valueOf(parambghl.c());
+            return Boolean.valueOf(parambgls.c());
           }
           QMLog.d("ToastMessage", "unknown action");
         }
@@ -85,22 +85,22 @@ public class ToastMessage
     }
   }
   
-  public boolean a(bgho parambgho)
+  public boolean a(bglv parambglv)
   {
     this.jdField_a_of_type_ComTencentQqminiSdkRuntimeUtilToastMessage$Action = ToastMessage.Action.SHOW;
-    return ((Boolean)parambgho.a(this)).booleanValue();
+    return ((Boolean)parambglv.a(this)).booleanValue();
   }
   
-  public boolean b(bgho parambgho)
+  public boolean b(bglv parambglv)
   {
     this.jdField_a_of_type_ComTencentQqminiSdkRuntimeUtilToastMessage$Action = ToastMessage.Action.HIDE;
-    return ((Boolean)parambgho.a(this)).booleanValue();
+    return ((Boolean)parambglv.a(this)).booleanValue();
   }
   
-  public boolean c(bgho parambgho)
+  public boolean c(bglv parambglv)
   {
     this.jdField_a_of_type_ComTencentQqminiSdkRuntimeUtilToastMessage$Action = ToastMessage.Action.IS_SHOWING;
-    return ((Boolean)parambgho.a(this)).booleanValue();
+    return ((Boolean)parambglv.a(this)).booleanValue();
   }
 }
 

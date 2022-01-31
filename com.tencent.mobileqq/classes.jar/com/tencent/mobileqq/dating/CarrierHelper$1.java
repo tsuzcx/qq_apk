@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dating;
 
-import azmj;
+import azqs;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -19,9 +19,9 @@ class CarrierHelper$1
     {
       Integer localInteger = (Integer)localIterator.next();
       if (5 == localInteger.intValue()) {
-        azmj.b(CarrierHelper.a(this.this$0), "CliOper", "", "", "0X80052A4", "0X80052A4", CarrierHelper.a(this.this$0), 0, "", "", "", "");
+        azqs.b(CarrierHelper.a(this.this$0), "CliOper", "", "", "0X80052A4", "0X80052A4", CarrierHelper.a(this.this$0), 0, "", "", "", "");
       } else if ((CarrierHelper.a(this.this$0) == 2) || (CarrierHelper.a(this.this$0) == 1)) {
-        azmj.b(CarrierHelper.a(this.this$0), "CliOper", "", "", "0X80050D0", "0X80050D0", CarrierHelper.a(this.this$0), 0, String.valueOf(localInteger), "", "", "");
+        azqs.b(CarrierHelper.a(this.this$0), "CliOper", "", "", "0X80050D0", "0X80050D0", CarrierHelper.a(this.this$0), 0, String.valueOf(localInteger), "", "", "");
       }
     }
     CarrierHelper.a(this.this$0, true);

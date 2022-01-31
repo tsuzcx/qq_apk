@@ -1,6 +1,6 @@
 public abstract interface bkdo
 {
-  public abstract void a();
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 

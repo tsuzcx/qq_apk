@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import akzs;
-import akzz;
+import aleh;
+import aleo;
 import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Vector;
@@ -28,8 +28,8 @@ class ApolloJsPlugin$4$1
         str = "{\"result\":1, \"msg\": \"终端初始化错误\" }";
         continue;
         if (this.this$1.val$from == 0) {
-          if ((this.this$1.val$activity instanceof akzz)) {
-            str = ((akzz)this.this$1.val$activity).a(ApolloJsPlugin.access$400(this.this$1.this$0), this.this$1.val$param);
+          if ((this.this$1.val$activity instanceof aleo)) {
+            str = ((aleo)this.this$1.val$activity).a(ApolloJsPlugin.access$400(this.this$1.this$0), this.this$1.val$param);
           } else {
             str = "{\"result\":1, \"msg\": \"非商城页面\" }";
           }

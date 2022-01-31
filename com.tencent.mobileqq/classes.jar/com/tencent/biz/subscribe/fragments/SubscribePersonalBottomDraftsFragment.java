@@ -5,16 +5,16 @@ import android.support.v4.app.FragmentActivity;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.component.base.ComponentPageView;
 import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
-import yaj;
-import ydw;
-import yej;
-import yem;
+import yes;
+import yif;
+import yiw;
+import yiz;
 
 public class SubscribePersonalBottomDraftsFragment
   extends SubscribeBaseBottomPersonalFragment
 {
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private yaj jdField_a_of_type_Yaj;
+  private yes jdField_a_of_type_Yes;
   
   ExtraTypeInfo a()
   {
@@ -37,24 +37,24 @@ public class SubscribePersonalBottomDraftsFragment
   
   protected void a()
   {
-    this.jdField_a_of_type_Yaj = new yaj(null);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(this.jdField_a_of_type_Yaj);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.e();
-    this.jdField_a_of_type_Yaj.b();
-    if (this.jdField_a_of_type_Yem != null) {
-      this.jdField_a_of_type_Yaj.b("share_key_subscribe_opus", new ydw(this.jdField_a_of_type_Yem));
+    this.jdField_a_of_type_Yes = new yes(null);
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(this.jdField_a_of_type_Yes);
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.c();
+    this.jdField_a_of_type_Yes.a();
+    if (this.jdField_a_of_type_Yiz != null) {
+      this.jdField_a_of_type_Yes.setShareData("share_key_subscribe_opus", new yif(this.jdField_a_of_type_Yiz));
     }
   }
   
   public void a(int paramInt) {}
   
-  public void a(String paramString, yem paramyem)
+  public void a(String paramString, yiz paramyiz)
   {
     if ("share_key_subscribe_opus".equals(paramString))
     {
-      this.jdField_a_of_type_Yem = paramyem;
-      if (this.jdField_a_of_type_Yaj != null) {
-        this.jdField_a_of_type_Yaj.b("share_key_subscribe_opus", new ydw(this.jdField_a_of_type_Yem));
+      this.jdField_a_of_type_Yiz = paramyiz;
+      if (this.jdField_a_of_type_Yes != null) {
+        this.jdField_a_of_type_Yes.setShareData("share_key_subscribe_opus", new yif(this.jdField_a_of_type_Yiz));
       }
     }
   }
@@ -62,7 +62,7 @@ public class SubscribePersonalBottomDraftsFragment
   public void onResume()
   {
     super.onResume();
-    yej.a().a(new SubDraftChangeEvent());
+    yiw.a().a(new SubDraftChangeEvent());
   }
 }
 

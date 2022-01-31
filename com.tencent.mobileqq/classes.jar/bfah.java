@@ -1,21 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.GroupListOpenFrame;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-public class bfah
-  implements View.OnTouchListener
+public abstract interface bfah
 {
-  public bfah(GroupListOpenFrame paramGroupListOpenFrame) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.a.c();
-    }
-    return true;
-  }
+  public abstract void a(BaseResp paramBaseResp);
 }
 
 

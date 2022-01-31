@@ -1,54 +1,54 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
-import tencent.im.group.nearbybanner.nearbybanner.Banners;
-import tencent.im.group.nearbybanner.nearbybanner.RspBody;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 
-class ynd
-  implements BusinessObserver
+public class ynd
+  implements Handler.Callback
 {
-  ynd(ync paramync, Bundle paramBundle) {}
+  public ynd(VideoPlayerView paramVideoPlayerView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidOsBundle.remove("data");
-    if (!paramBoolean)
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_Ync.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-      return;
     }
-    paramBundle = paramBundle.getByteArray("data");
-    nearbybanner.RspBody localRspBody = new nearbybanner.RspBody();
-    try
+    label258:
+    do
     {
-      localRspBody.mergeFrom(paramBundle);
-      if ((localRspBody.uint32_result.get() != 0) && (!localRspBody.msg_banners.has()))
+      do
       {
-        this.jdField_a_of_type_Ync.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      this.jdField_a_of_type_Ync.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      paramBundle = (nearbybanner.Banners)localRspBody.msg_banners.get();
-      if (!paramBundle.rpt_banner_info.has())
-      {
-        this.jdField_a_of_type_Ync.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-        return;
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      this.jdField_a_of_type_Ync.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsBundle.putByteArray("data", paramBundle.toByteArray());
-    this.jdField_a_of_type_Ync.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+        return false;
+        if (VideoPlayerView.g(this.a)) {}
+        for (int i = paramMessage.arg2 - paramMessage.arg1;; i = paramMessage.arg1)
+        {
+          int j = i / 1000 / 60;
+          i = i / 1000 % 60;
+          if ((VideoPlayerView.a(this.a) != null) && (VideoPlayerView.a(this.a).a() > VideoPlayerView.a(this.a).b() / 2L) && (!VideoPlayerView.h(this.a))) {
+            VideoPlayerView.f(this.a);
+          }
+          if (VideoPlayerView.i(this.a)) {
+            break label258;
+          }
+          if (this.a.b != null) {
+            this.a.b.setText(String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }));
+          }
+          if ((VideoPlayerView.a(this.a) == null) || (!((Boolean)paramMessage.obj).booleanValue())) {
+            break;
+          }
+          VideoPlayerView.a(this.a).a(String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }), paramMessage.arg2, paramMessage.arg1);
+          return false;
+        }
+      } while ((VideoPlayerView.a(this.a) == null) || (!((Boolean)paramMessage.obj).booleanValue()));
+      VideoPlayerView.a(this.a).onVideoProgressUpdate(paramMessage.arg1);
+      return false;
+      VideoPlayerView.g(this.a);
+      return false;
+    } while (VideoPlayerView.d(this.a) == null);
+    VideoPlayerView.d(this.a).setVisibility(8);
+    return false;
   }
 }
 

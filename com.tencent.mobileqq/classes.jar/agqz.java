@@ -1,46 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class agqz
-  extends Handler
+class agqz
+  implements View.OnTouchListener
 {
-  public agqz(TroopChatPie paramTroopChatPie, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  agqz(agqq paramagqq) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
-    {
-    case 3: 
-    default: 
-    case 1: 
-    case 2: 
-    case 4: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a(null, false);
-          return;
-          paramMessage = paramMessage.obj;
-        } while (!(paramMessage instanceof bcjr));
-        this.a.a((bcjr)paramMessage);
-        return;
-      } while (TroopChatPie.j(this.a) == null);
-      TroopChatPie.k(this.a).a();
-      return;
-    }
-    String str = (String)paramMessage.obj;
-    int i = paramMessage.arg1;
-    QQToast.a(this.a.a, str, i).b(this.a.a.getTitleBarHeight());
+    return true;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.device.msg.data;
 
-import alpo;
-import ammq;
+import alud;
+import amrf;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -24,7 +24,7 @@ public class MessageForDevPtt
       return;
       try
       {
-        MessageForDevPtt.MessageForDevPttSerial localMessageForDevPttSerial = (MessageForDevPtt.MessageForDevPttSerial)ammq.a(this.msgData);
+        MessageForDevPtt.MessageForDevPttSerial localMessageForDevPttSerial = (MessageForDevPtt.MessageForDevPttSerial)amrf.a(this.msgData);
         if (localMessageForDevPttSerial == null) {
           continue;
         }
@@ -76,18 +76,18 @@ public class MessageForDevPtt
       if (this.fileSize > 0L)
       {
         if (isSendFromLocal()) {
-          return ((QQAppInterface)localObject).getApp().getString(2131691351);
+          return ((QQAppInterface)localObject).getApp().getString(2131691352);
         }
-        return alpo.a(2131706987);
+        return alud.a(2131706999);
       }
       if (this.fileSize == -1L)
       {
         if (isSendFromLocal()) {
-          return ((QQAppInterface)localObject).getApp().getString(2131691351);
+          return ((QQAppInterface)localObject).getApp().getString(2131691352);
         }
-        return alpo.a(2131706958);
+        return alud.a(2131706970);
       }
-      return alpo.a(2131706959);
+      return alud.a(2131706971);
     }
     return null;
   }
@@ -123,7 +123,7 @@ public class MessageForDevPtt
     localMessageForDevPttSerial.strFileKey2 = this.strFileKey2;
     try
     {
-      this.msgData = ammq.a(localMessageForDevPttSerial);
+      this.msgData = amrf.a(localMessageForDevPttSerial);
       return;
     }
     catch (Exception localException)

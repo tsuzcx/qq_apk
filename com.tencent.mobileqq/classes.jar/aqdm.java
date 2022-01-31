@@ -1,14 +1,21 @@
-import android.graphics.drawable.GradientDrawable;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
 
 public class aqdm
+  implements aqib
 {
-  public static GradientDrawable a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public aqdm(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
+  
+  public void a(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
   {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setColor(paramInt);
-    localGradientDrawable.setCornerRadii(new float[] { paramFloat1, paramFloat1, paramFloat2, paramFloat2, paramFloat3, paramFloat3, paramFloat4, paramFloat4 });
-    return localGradientDrawable;
+    ExtendFriendCampusVerifyTipsView.a(ExtendFriendCampusFragment.a(this.a), ExtendFriendCampusFragment.a(this.a));
+  }
+  
+  public void b(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
+  {
+    aqgz.a(ExtendFriendCampusFragment.a(this.a), false);
+    ExtendFriendCampusFragment.a(this.a).setVisibility(8);
   }
 }
 

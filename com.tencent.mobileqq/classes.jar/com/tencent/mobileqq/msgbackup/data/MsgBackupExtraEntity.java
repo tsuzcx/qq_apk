@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.msgbackup.data;
 
-import awbv;
+import awge;
 
 public class MsgBackupExtraEntity
-  extends awbv
+  extends awge
 {
   public static final String TABLE_NAME = "ex_info";
   public String name;

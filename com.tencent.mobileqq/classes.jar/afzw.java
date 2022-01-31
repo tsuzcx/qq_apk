@@ -1,21 +1,17 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.graphics.Bitmap;
+import java.lang.ref.WeakReference;
 
-public class afzw
-  extends aelt
+class afzw
+  implements aybs
 {
-  public ProgressBar a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
+  public WeakReference<afzu> a;
   
-  public afzw(afzs paramafzs) {}
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3)
+  {
+    if (this.a.get() != null) {
+      afzu.a((afzu)this.a.get(), paramInt1, paramInt2, paramBitmap, paramInt3);
+    }
+  }
 }
 
 

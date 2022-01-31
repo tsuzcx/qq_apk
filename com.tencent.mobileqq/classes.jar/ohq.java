@@ -2,17 +2,17 @@ public class ohq
 {
   public static int a()
   {
-    return ((Integer)bjxj.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0))).intValue();
+    return ((Integer)bkbq.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0))).intValue();
   }
   
   public static void a()
   {
-    bjxj.a("sp_key_biu_long_click_tips_count", Integer.valueOf(((Integer)bjxj.a("sp_key_biu_long_click_tips_count", Integer.valueOf(0))).intValue() + 1));
+    bkbq.a("sp_key_biu_long_click_tips_count", Integer.valueOf(((Integer)bkbq.a("sp_key_biu_long_click_tips_count", Integer.valueOf(0))).intValue() + 1));
   }
   
   public static int b()
   {
-    return ((Integer)bjxj.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1))).intValue();
+    return ((Integer)bkbq.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1))).intValue();
   }
 }
 

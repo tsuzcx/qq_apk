@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aiml;
+import aira;
 
 public class PhotoListLogicDefault$5
   implements Runnable
 {
-  public PhotoListLogicDefault$5(aiml paramaiml) {}
+  public PhotoListLogicDefault$5(aira paramaira) {}
   
   public void run()
   {

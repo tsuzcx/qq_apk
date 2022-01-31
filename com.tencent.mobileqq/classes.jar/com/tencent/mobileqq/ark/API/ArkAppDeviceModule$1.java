@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ark.API;
 
-import andw;
-import andy;
+import anif;
+import anih;
 import java.util.HashMap;
 
 public class ArkAppDeviceModule$1
-  extends HashMap<String, andy>
+  extends HashMap<String, anih>
 {
-  public ArkAppDeviceModule$1(andw paramandw)
+  public ArkAppDeviceModule$1(anif paramanif)
   {
-    put("GetModelName", andw.a(this.this$0));
-    put("GetScreenWidth", andw.a(this.this$0));
-    put("GetScreenHeight", andw.a(this.this$0));
-    put("GetPixelRatio", andw.a(this.this$0));
-    put("GetConnectionType", andw.a(this.this$0));
-    put("AttachEvent", andw.a(this.this$0));
-    put("DetachEvent", andw.a(this.this$0));
-    put("ScanCode", andw.a(this.this$0));
-    put("GetIdentifier", andw.a(this.this$0));
-    put("GetCurrentPosition", andw.a(this.this$0));
+    put("GetModelName", anif.a(this.this$0));
+    put("GetScreenWidth", anif.a(this.this$0));
+    put("GetScreenHeight", anif.a(this.this$0));
+    put("GetPixelRatio", anif.a(this.this$0));
+    put("GetConnectionType", anif.a(this.this$0));
+    put("AttachEvent", anif.a(this.this$0));
+    put("DetachEvent", anif.a(this.this$0));
+    put("ScanCode", anif.a(this.this$0));
+    put("GetIdentifier", anif.a(this.this$0));
+    put("GetCurrentPosition", anif.a(this.this$0));
   }
 }
 

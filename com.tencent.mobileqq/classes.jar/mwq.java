@@ -18,18 +18,18 @@ class mwq
       {
         String str = paramArrayOfString[i];
         if ("DEVICE_BLUETOOTHHEADSET".equals(str)) {
-          this.jdField_a_of_type_JavaUtilMap.put(str, new mwr(this, 2130841911, alpo.a(2131715417), str));
+          this.jdField_a_of_type_JavaUtilMap.put(str, new mwr(this, 2130841924, alud.a(2131715429), str));
         }
         for (;;)
         {
           i += 1;
           break;
           if ("DEVICE_EARPHONE".equals(str)) {
-            this.jdField_a_of_type_JavaUtilMap.put(str, new mwr(this, 2130841913, alpo.a(2131715418), str));
+            this.jdField_a_of_type_JavaUtilMap.put(str, new mwr(this, 2130841926, alud.a(2131715430), str));
           } else if ("DEVICE_SPEAKERPHONE".equals(str)) {
-            this.jdField_a_of_type_JavaUtilMap.put(str, new mwr(this, 2130841916, alpo.a(2131715421), str));
+            this.jdField_a_of_type_JavaUtilMap.put(str, new mwr(this, 2130841929, alud.a(2131715433), str));
           } else if ("DEVICE_WIREDHEADSET".equals(str)) {
-            this.jdField_a_of_type_JavaUtilMap.put(str, new mwr(this, 2130841918, alpo.a(2131715419), str));
+            this.jdField_a_of_type_JavaUtilMap.put(str, new mwr(this, 2130841931, alud.a(2131715431), str));
           }
         }
       }
@@ -52,7 +52,7 @@ class mwq
     {
       mwr localmwr = (mwr)this.jdField_a_of_type_JavaUtilMap.get("DEVICE_BLUETOOTHHEADSET");
       if (localmwr != null) {
-        localmwr.b = (alpo.a(2131715420) + paramString + "）");
+        localmwr.b = (alud.a(2131715432) + paramString + "）");
       }
     }
   }

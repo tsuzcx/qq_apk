@@ -1,22 +1,91 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
-import com.tencent.widget.XPanelContainer;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class aspr
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aspr(HotPicMainPanel paramHotPicMainPanel, int paramInt) {}
+  int jdField_a_of_type_Int;
+  aspr jdField_a_of_type_Aspr;
+  ArrayList<aspr> jdField_a_of_type_JavaUtilArrayList;
+  HashMap<Integer, Object> jdField_a_of_type_JavaUtilHashMap;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public aspr(int paramInt)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i == this.jdField_a_of_type_Int) {
-      AbstractGifImage.resumeAll();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  private String a(int paramInt)
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    int i = 0;
+    while (i < paramInt)
+    {
+      localStringBuilder2.append("\t");
+      i += 1;
     }
-    XPanelContainer.jdField_a_of_type_Int = i;
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.requestLayout();
+    localStringBuilder1.append(localStringBuilder2).append(aspq.a(this.jdField_a_of_type_Int)).append(":[\n");
+    localStringBuilder1.append(localStringBuilder2).append("\tfields").append(":[\n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Integer)localIterator.next();
+      String str = aspq.b(((Integer)localObject).intValue());
+      localObject = this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      localStringBuilder1.append(localStringBuilder2).append("\t\t").append(str).append(":").append(localObject).append("\n");
+    }
+    localStringBuilder1.append(localStringBuilder2).append("\t]").append("\n");
+    localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      localStringBuilder1.append(((aspr)localIterator.next()).a(paramInt + 1));
+    }
+    localStringBuilder1.append(localStringBuilder2).append("]").append("\n");
+    return localStringBuilder1.toString();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public aspr a()
+  {
+    return this.jdField_a_of_type_Aspr;
+  }
+  
+  public aspr a(aspr paramaspr)
+  {
+    this.jdField_a_of_type_Aspr = paramaspr;
+    this.jdField_a_of_type_Aspr.a(this);
+    return this;
+  }
+  
+  public ArrayList<aspr> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public HashMap<Integer, Object> a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramObject);
+  }
+  
+  public void a(aspr paramaspr)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramaspr);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 2;
   }
 }
 

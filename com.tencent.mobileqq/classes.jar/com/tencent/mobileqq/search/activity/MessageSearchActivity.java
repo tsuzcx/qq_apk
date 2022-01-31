@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.activity;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
@@ -23,7 +23,7 @@ public class MessageSearchActivity
   
   protected String a()
   {
-    return alpo.a(2131707042);
+    return alud.a(2131707054);
   }
 }
 

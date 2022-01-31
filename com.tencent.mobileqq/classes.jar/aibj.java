@@ -1,42 +1,21 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.8.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.9.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class aibj
-  implements alsp
+  extends yuc
 {
-  aibj(aiak paramaiak) {}
+  public aibj(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt)
   {
-    if ((this.a.a == null) || (this.a.a.app == null)) {
+    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
+    while (!paramBoolean) {
       return;
     }
-    QQAppInterface localQQAppInterface = this.a.a.app;
-    this.a.a(32, 16, Integer.valueOf(paramInt));
-    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
-    localQQAppInterface.getApp().sendBroadcast(localIntent);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("fetchUnReadCount", 4, String.format("MainAssistObserver消息tab, nUnreadCount[%s]", new Object[] { Integer.valueOf(paramInt) }));
-    }
-    oxp.a().a(paramInt);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SplashActivity", 4, String.format("onRefresh, needReGetUnread[%s], nUnReadCount[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
-    }
-    if ((!paramBoolean) && (paramInt >= 0))
-    {
-      a(paramInt);
-      return;
-    }
-    ThreadManager.executeOnSubThread(new MainAssistObserver.8.1(this));
+    ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryTroopFileFragment.9.1(this, paramLong1, paramLong2));
   }
 }
 

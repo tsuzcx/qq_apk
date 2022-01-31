@@ -1,18 +1,18 @@
 package cooperation.qzone.plugin;
 
-import azly;
-import bjkr;
+import azqh;
+import bjoy;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.Properties;
 
 public class QZonePluginDownloadConfig$1
   implements Runnable
 {
-  public QZonePluginDownloadConfig$1(bjkr parambjkr, String paramString, Properties paramProperties) {}
+  public QZonePluginDownloadConfig$1(bjoy parambjoy, String paramString, Properties paramProperties) {}
   
   public void run()
   {
-    azly.a(BaseApplicationImpl.getContext()).reportKVEvent(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilProperties);
+    azqh.a(BaseApplicationImpl.getContext()).reportKVEvent(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilProperties);
   }
 }
 

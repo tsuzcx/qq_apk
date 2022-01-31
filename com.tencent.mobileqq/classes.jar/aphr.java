@@ -1,248 +1,61 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emosm.BaseEmosmStrategy.1;
-import com.tencent.mobileqq.emosm.BaseEmosmStrategy.2;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.GridView;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class aphr
-  implements apiz
+public class aphr
+  extends apgp
 {
-  apik jdField_a_of_type_Apik;
-  apja jdField_a_of_type_Apja = null;
-  public QQAppInterface a;
-  public List<apsw> a;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
-  public boolean a;
-  public boolean b;
+  public ArrayList<aphq> a;
   
-  public aphr(QQAppInterface paramQQAppInterface, apik paramapik)
+  public static aphr a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Apik = paramapik;
-    this.jdField_a_of_type_Apja = new apja(paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 2131692075;
-  }
-  
-  public View a(int paramInt, View paramView, apis paramapis, appw paramappw)
-  {
-    return paramView;
-  }
-  
-  public apja a()
-  {
-    return this.jdField_a_of_type_Apja;
-  }
-  
-  public String a(appw paramappw)
-  {
-    return null;
-  }
-  
-  public List<appw> a(List<appw> paramList)
-  {
-    if (paramList == null) {
-      return null;
+    aphr localaphr = new aphr();
+    localaphr.jdField_a_of_type_JavaLangString = paramJSONObject.optString("group");
+    paramJSONObject = paramJSONObject.optJSONArray("configs");
+    localaphr.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramJSONObject.length());
+    int i = 0;
+    while (i < paramJSONObject.length())
+    {
+      aphq localaphq = aphq.a(paramJSONObject.optJSONObject(i));
+      localaphq.a = localaphr;
+      localaphr.jdField_a_of_type_JavaUtilArrayList.add(localaphq);
+      i += 1;
     }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    return localaphr;
+  }
+  
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      appw localappw = (appw)paramList.next();
-      Object localObject;
-      if ((localappw instanceof appi))
-      {
-        localObject = (appi)localappw;
-        if ((!TextUtils.isEmpty(((appi)localObject).h)) && (!((appi)localObject).h.equals("needUpload"))) {
-          localArrayList.add(localappw);
-        }
+      localJSONObject.put("group", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
+      JSONArray localJSONArray = new JSONArray();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        localJSONArray.put(((aphq)localIterator.next()).a());
       }
-      else if ((localappw instanceof apsw))
-      {
-        localObject = (apsw)localappw;
-        if ((!TextUtils.isEmpty(((apsw)localObject).h)) && (!((apsw)localObject).h.equals("needUpload"))) {
-          localArrayList.add(localappw);
-        }
-      }
-      else
-      {
-        localArrayList.add(localappw);
-      }
+      localJSONObject.put("configs", localJSONException);
     }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    switch (paramInt1)
+    catch (JSONException localJSONException)
     {
+      localJSONException.printStackTrace();
+      return localJSONObject;
     }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseEmosmStrategy", 2, "onActivityResult, PeakConstants.REQUEST_CODE_FOR_PHOTO_PREVIEW");
-      }
-      if (paramIntent == null) {
-        break;
-      }
-      paramIntent = paramIntent.getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
-      if (paramIntent != null)
-      {
-        ThreadManager.excute(new BaseEmosmStrategy.2(this, paramIntent), 64, null, false);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("BaseEmosmStrategy", 2, "onActivityResult, selected is empty");
-    return;
-    QLog.e("BaseEmosmStrategy", 1, "onActivityResult, PeakConstants.REQUEST_CODE_FOR_PHOTO_PREVIEW, data is null");
+    return localJSONObject;
   }
-  
-  public void a(Context paramContext, Intent paramIntent)
-  {
-    if (this.jdField_a_of_type_Apik == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        if ("com.tencent.mobileqq.action.refresh.emotiom".equals(paramContext))
-        {
-          this.jdField_a_of_type_Apik.e();
-          return;
-        }
-      } while (!"com.tencent.mobileqq.action.upload.emotiom".equals(paramContext));
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseEmosmStrategy", 2, "onReceive ACTION_UPLOAD_EMOTION");
-      }
-      paramContext = paramIntent.getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
-      if (paramContext != null)
-      {
-        ThreadManager.excute(new BaseEmosmStrategy.1(this, paramContext), 64, null, false);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("BaseEmosmStrategy", 2, "onReceive selected is empty");
-  }
-  
-  public void a(apia paramapia)
-  {
-    a().a(paramapia);
-  }
-  
-  public void a(GridView paramGridView, int paramInt, aptd paramaptd) {}
   
   public boolean a()
   {
     return false;
   }
-  
-  public boolean a(Activity paramActivity)
-  {
-    return false;
-  }
-  
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Apik == null) {
-      return;
-    }
-    Object localObject = a(this.jdField_a_of_type_Apik.jdField_a_of_type_JavaUtilList);
-    if (localObject == null) {
-      localObject = new ArrayList();
-    }
-    for (;;)
-    {
-      if ((((List)localObject).size() > 0) && (((appw)((List)localObject).get(0)).f == 1)) {
-        ((List)localObject).remove(0);
-      }
-      this.jdField_a_of_type_Apik.d((List)localObject);
-      return;
-    }
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Apik == null) {
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_Apik.jdField_a_of_type_JavaUtilList;
-    if (localObject == null) {
-      localObject = new ArrayList();
-    }
-    for (;;)
-    {
-      appw localappw;
-      if (a())
-      {
-        if (((List)localObject).size() <= 0) {
-          break label91;
-        }
-        if (((appw)((List)localObject).get(0)).f != 1)
-        {
-          localappw = new appw();
-          localappw.f = 1;
-          ((List)localObject).add(0, localappw);
-        }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Apik.d((List)localObject);
-        return;
-        label91:
-        localappw = new appw();
-        localappw.f = 1;
-        ((List)localObject).add(0, localappw);
-      }
-    }
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Apja.onDestroy();
-    this.jdField_a_of_type_Apik = null;
-  }
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aphr
  * JD-Core Version:    0.7.0.1
  */

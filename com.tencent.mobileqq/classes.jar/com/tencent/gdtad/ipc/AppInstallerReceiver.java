@@ -1,8 +1,8 @@
 package com.tencent.gdtad.ipc;
 
-import aalz;
-import aanp;
-import aaon;
+import aaqo;
+import aase;
+import aatc;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +19,7 @@ public class AppInstallerReceiver
   
   public static AppInstallerReceiver a()
   {
-    return aalz.a;
+    return aaqo.a;
   }
   
   public void a(Context paramContext)
@@ -31,7 +31,7 @@ public class AppInstallerReceiver
       localIntentFilter.addDataScheme("package");
       paramContext.registerReceiver(this, localIntentFilter);
       this.jdField_a_of_type_Boolean = true;
-      aanp.a("GdtAppOpenUtil", "regeist AppInstallerReceiver");
+      aase.a("GdtAppOpenUtil", "regeist AppInstallerReceiver");
     }
   }
   
@@ -50,10 +50,10 @@ public class AppInstallerReceiver
     }
     for (;;)
     {
-      aanp.a("GdtAppOpenUtil", "package added " + paramIntent);
+      aase.a("GdtAppOpenUtil", "package added " + paramIntent);
       if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramIntent))
       {
-        aaon.a(paramContext, (GdtBaseAdItem)this.jdField_a_of_type_JavaUtilMap.get(paramIntent));
+        aatc.a(paramContext, (GdtBaseAdItem)this.jdField_a_of_type_JavaUtilMap.get(paramIntent));
         this.jdField_a_of_type_JavaUtilMap.remove(paramIntent);
       }
       return;

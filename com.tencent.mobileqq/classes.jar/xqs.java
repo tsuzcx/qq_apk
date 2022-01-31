@@ -1,8 +1,37 @@
-import android.content.DialogInterface;
+import android.content.Context;
+import android.os.Handler;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
-public abstract interface xqs
+public final class xqs
 {
-  public abstract void a(DialogInterface paramDialogInterface, int paramInt);
+  private final xqt a;
+  
+  public xqs(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
+  {
+    this(paramContext, paramOnGestureListener, null);
+  }
+  
+  public xqs(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
+  {
+    this.a = new xqu(paramContext, paramOnGestureListener, paramHandler);
+  }
+  
+  public void a(int paramInt)
+  {
+    xqu.a(paramInt);
+  }
+  
+  public void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)
+  {
+    this.a.a(paramOnDoubleTapListener);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return this.a.a(paramMotionEvent);
+  }
 }
 
 

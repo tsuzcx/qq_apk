@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.paster;
 
 import android.text.TextUtils;
-import bdee;
-import blrc;
-import blrd;
-import blrg;
-import bmrn;
+import bdin;
+import blvo;
+import blvp;
+import blvs;
+import bmvz;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -14,15 +14,15 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class QIMInformationPasterManager$2
   implements Runnable
 {
-  public QIMInformationPasterManager$2(blrc paramblrc, List paramList) {}
+  public QIMInformationPasterManager$2(blvo paramblvo, List paramList) {}
   
   public void run()
   {
-    blrc.a(this.this$0).clear();
+    blvo.a(this.this$0).clear();
     if (QLog.isColorLevel()) {
       QLog.d("QIMInformationPasterManager", 2, "patch pull res");
     }
-    if (!bdee.g(blrc.a(this.this$0))) {
+    if (!bdin.g(blvo.a(this.this$0))) {
       if (QLog.isColorLevel()) {
         QLog.d("QIMInformationPasterManager", 2, "network is unavailable");
       }
@@ -31,22 +31,22 @@ public class QIMInformationPasterManager$2
     {
       return;
       Iterator localIterator = this.a.iterator();
-      bmrn localbmrn;
+      bmvz localbmvz;
       while (localIterator.hasNext())
       {
-        localbmrn = (bmrn)localIterator.next();
-        if ((!TextUtils.isEmpty(localbmrn.e)) && (!this.this$0.a(localbmrn)) && (localbmrn.b != 2)) {
-          blrc.a(this.this$0).add(localbmrn);
+        localbmvz = (bmvz)localIterator.next();
+        if ((!TextUtils.isEmpty(localbmvz.e)) && (!this.this$0.a(localbmvz)) && (localbmvz.b != 2)) {
+          blvo.a(this.this$0).add(localbmvz);
         }
       }
       if (QLog.isColorLevel()) {
-        QLog.d("QIMInformationPasterManager", 2, "need download size:" + blrc.a(this.this$0).size());
+        QLog.d("QIMInformationPasterManager", 2, "need download size:" + blvo.a(this.this$0).size());
       }
-      localIterator = blrc.a(this.this$0).iterator();
+      localIterator = blvo.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        localbmrn = (bmrn)localIterator.next();
-        this.this$0.a.a(localbmrn, new blrd(this));
+        localbmvz = (bmvz)localIterator.next();
+        this.this$0.a.a(localbmvz, new blvp(this));
       }
     }
   }

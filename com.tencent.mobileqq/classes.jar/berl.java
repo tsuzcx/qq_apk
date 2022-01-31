@@ -1,6 +1,8 @@
+import com.tencent.mobileqq.widget.OverScrollCallbackHorizontalListView;
+
 public abstract interface berl
 {
-  public abstract void onTabSelected(int paramInt1, int paramInt2);
+  public abstract void a(OverScrollCallbackHorizontalListView paramOverScrollCallbackHorizontalListView);
 }
 
 

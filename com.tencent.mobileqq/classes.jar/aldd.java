@@ -1,44 +1,20 @@
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class aldd
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  private aldn jdField_a_of_type_Aldn;
-  private aldo jdField_a_of_type_Aldo;
-  private aldq jdField_a_of_type_Aldq;
-  String jdField_a_of_type_JavaLangString;
-  int b = 30000;
+  public aldd(ApolloGameActivity paramApolloGameActivity, alkd paramalkd, int paramInt) {}
   
-  public aldb a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Aldq == null) {
-      this.jdField_a_of_type_Aldq = new aldm();
+    if (this.jdField_a_of_type_Alkd != null) {
+      this.jdField_a_of_type_Alkd.a(1);
     }
-    if (this.jdField_a_of_type_Aldo == null) {
-      this.jdField_a_of_type_Aldo = new aldl();
-    }
-    if (this.jdField_a_of_type_Aldn == null) {
-      this.jdField_a_of_type_Aldn = new alcz();
-    }
-    if (this.jdField_a_of_type_Int == 0) {
-      throw new IllegalArgumentException("appId required.");
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      throw new IllegalArgumentException("current account uid is required.");
-    }
-    return new aldb(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Aldq, this.jdField_a_of_type_Aldo, this.jdField_a_of_type_Aldn, null);
-  }
-  
-  public aldd a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public aldd a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    VipUtils.a(null, "cmshow", "Apollo", "sendToDesktopSusessful", 0, 1, new String[] { String.valueOf(this.jdField_a_of_type_Int) });
+    paramDialogInterface.dismiss();
   }
 }
 

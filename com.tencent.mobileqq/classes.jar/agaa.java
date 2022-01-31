@@ -1,16 +1,34 @@
-import android.view.MotionEvent;
+import android.os.SystemClock;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
+import com.tencent.mobileqq.data.MessageForScribble;
 
-class agaa
-  implements View.OnTouchListener
+public class agaa
+  implements bhuk
 {
-  agaa(afzx paramafzx, aeov paramaeov) {}
+  public agaa(ScribbleItemBuilder paramScribbleItemBuilder, View paramView, MessageForScribble paramMessageForScribble, bhuf parambhuf) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Aeov.onTouch(paramView, paramMotionEvent);
-    return false;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      long l;
+      do
+      {
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.c < 500L);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.c = l;
+      paramView = aery.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.a);
+      if (paramView != null) {
+        paramView.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder);
+      }
+      aygl.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
+    }
   }
 }
 

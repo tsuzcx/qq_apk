@@ -1,128 +1,72 @@
 import android.content.Context;
-import android.text.TextUtils;
-import android.widget.TextView;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import java.util.HashMap;
-import org.xmlpull.v1.XmlSerializer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare.1.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AccountNotMatchException;
+import mqq.os.MqqHandler;
 
-public class azve
-  extends azql
+public final class azve
+  implements View.OnClickListener
 {
-  public boolean c;
-  public boolean d = true;
-  public int k;
-  public int l = 48;
-  public int m = 1;
-  public int n = 1;
-  
-  public azve()
+  public void onClick(View paramView)
   {
-    this(null);
-  }
-  
-  public azve(String paramString)
-  {
-    super(paramString, "td");
-  }
-  
-  public TextView a(Context paramContext)
-  {
-    return new TextView(paramContext);
-  }
-  
-  public String a()
-  {
-    return "td";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.n = paramObjectInput.readInt();
-    this.l = paramObjectInput.readInt();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.n);
-    paramObjectOutput.writeInt(this.l);
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, this.a);
-    paramXmlSerializer.attribute(null, "weight", String.valueOf(this.n));
-    paramXmlSerializer.attribute(null, "align", String.valueOf(this.l));
-    paramXmlSerializer.endTag(null, this.a);
-    super.a(paramXmlSerializer);
-  }
-  
-  public boolean a(azsa paramazsa)
-  {
-    try
+    Object localObject2 = paramView.findViewById(2131377139);
+    if (localObject2 == null) {}
+    for (;;)
     {
-      Object localObject = paramazsa.a("weight");
-      if (localObject != null) {}
-      for (int i = Integer.parseInt((String)localObject);; i = 0)
+      return;
+      Object localObject1 = ((View)localObject2).getTag(2131377139);
+      if ((localObject1 != null) && ((localObject1 instanceof StructMsgForAudioShare)))
       {
-        this.n = i;
-        localObject = paramazsa.a("align");
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
-        }
-        localObject = ((String)localObject).split("\\|");
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("left", Integer.valueOf(3));
-        localHashMap.put("right", Integer.valueOf(5));
-        localHashMap.put("top", Integer.valueOf(48));
-        localHashMap.put("bottom", Integer.valueOf(80));
-        localHashMap.put("center", Integer.valueOf(17));
-        i = 0;
-        while (i < localObject.length)
+        localObject1 = (StructMsgForAudioShare)localObject1;
+        paramView = paramView.getTag();
+        if ((paramView != null) && ((paramView instanceof agcx)))
         {
-          if (!TextUtils.isEmpty(localObject[i]))
-          {
-            String str = localObject[i].toLowerCase();
-            if (localHashMap.containsKey(str))
-            {
-              int j = this.l;
-              this.l = (((Integer)localHashMap.get(str)).intValue() | j);
-            }
-          }
-          i += 1;
+          paramView = (agcx)paramView;
+          localObject2 = ((View)localObject2).getContext();
         }
       }
-      return super.a(paramazsa);
+      try
+      {
+        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(((StructMsgForAudioShare)localObject1).currentAccountUin);
+        if (((StructMsgForAudioShare)localObject1).msgId > 0L)
+        {
+          azqs.b(localQQAppInterface, "P_CliOper", "Pb_account_lifeservice", ((StructMsgForAudioShare)localObject1).uin, "mp_msg_msgpic_click", "aio_morpic_click", 0, 0, "", "", Long.toString(((StructMsgForAudioShare)localObject1).msgId), "");
+          ThreadManager.getSubThreadHandler().postDelayed(new StructMsgForAudioShare.1.1(this, (StructMsgForAudioShare)localObject1, localQQAppInterface), 0L);
+          AbsShareMsg.doReport(localQQAppInterface, (AbsShareMsg)localObject1);
+          if (localQQAppInterface == null) {
+            continue;
+          }
+          ndq.a(localQQAppInterface, "", "click", ((StructMsgForAudioShare)localObject1).mSourceAppid, ((StructMsgForAudioShare)localObject1).mMsgServiceID, ndq.a(paramView.a.a));
+          MediaPlayerManager.a(localQQAppInterface).a(true);
+        }
+      }
+      catch (AccountNotMatchException paramView)
+      {
+        for (;;)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.d("StructMsg", 4, paramView.getStackTrace().toString());
+          }
+        }
+      }
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      this.n = 1;
+    azqs.b(null, "CliOper", "", "", "0X800567A", "0X800567A", 0, 0, ((StructMsgForAudioShare)localObject1).mMsgServiceID + "", "", "", "");
+    azqs.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
+    azqs.b(null, "dc00898", "", "", "0X800A630", "0X800A630", 0, 0, "2", ForwardUtils.b(((StructMsgForAudioShare)localObject1).uinType), ((StructMsgForAudioShare)localObject1).mContentTitle, "");
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsg", 2, new Object[] { "音乐分享内容点击=", "0X800A630", ", mContentTitle=" + ((StructMsgForAudioShare)localObject1).mContentTitle, ", uinType=", ForwardUtils.b(((StructMsgForAudioShare)localObject1).uinType) });
     }
-  }
-  
-  public int b()
-  {
-    return this.m;
-  }
-  
-  protected int c()
-  {
-    return 2131378960;
-  }
-  
-  public int e()
-  {
-    if ((this.c) && (this.k != 0)) {
-      return -1;
-    }
-    return -16777216;
-  }
-  
-  public int f()
-  {
-    return 28;
+    StructMsgForAudioShare.onClickEvent((Context)localObject2, (StructMsgForAudioShare)localObject1);
   }
 }
 

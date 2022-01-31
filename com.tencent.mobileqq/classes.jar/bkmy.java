@@ -1,8 +1,20 @@
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
 
-public abstract interface bkmy
+class bkmy
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public abstract void a(boolean paramBoolean, LocalMediaInfo paramLocalMediaInfo);
+  bkmy(bkms parambkms) {}
+  
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      this.a.a(101);
+      return;
+    }
+    this.a.a(this.a.a, paramLocalMediaInfo);
+  }
 }
 
 

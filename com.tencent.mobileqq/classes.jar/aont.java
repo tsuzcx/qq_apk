@@ -1,84 +1,46 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aont
-  extends aofy<aons>
 {
-  @NonNull
-  public static aons a()
+  public static final String c = asne.jdField_a_of_type_JavaLangString + "GameCenterMsgBean";
+  public int a;
+  public String a;
+  public String b = asmw.c;
+  
+  public aont()
   {
-    aons localaons2 = (aons)aogj.a().a(550);
-    aons localaons1 = localaons2;
-    if (localaons2 == null) {
-      localaons1 = new aons();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "loadConfig(): bean = " + localaons1.toString());
-    }
-    return localaons1;
+    this.jdField_a_of_type_JavaLangString = asmw.b;
   }
   
-  public int a()
+  public static aont a(aoko[] paramArrayOfaoko)
   {
-    return 550;
-  }
-  
-  @NonNull
-  public aons a(int paramInt)
-  {
-    return new aons();
-  }
-  
-  @Nullable
-  public aons a(aogf[] paramArrayOfaogf)
-  {
-    return aons.a(paramArrayOfaogf);
-  }
-  
-  public Class a()
-  {
-    return aons.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(aons paramaons)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    aont localaont = new aont();
+    int i = 0;
+    for (;;)
     {
-      localObject = (QQAppInterface)localObject;
-      if (((QQAppInterface)localObject).a(347))
+      if (i < paramArrayOfaoko.length)
       {
-        ((aukl)((QQAppInterface)localObject).getManager(347)).a = paramaons;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onUpdate bean = " + paramaons.toString());
+        Object localObject = paramArrayOfaoko[i].jdField_a_of_type_JavaLangString;
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          localaont.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("gameMsgFuncSwitch");
+          localaont.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("gameMsgListUrl");
+          localaont.b = ((JSONObject)localObject).optString("gamePrefix");
+          QLog.i(c, 1, "[parse], mGraySwitch:" + localaont.jdField_a_of_type_Int + ",url:" + localaont.jdField_a_of_type_JavaLangString);
+          i += 1;
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            QLog.e(c, 1, localThrowable, new Object[0]);
+          }
         }
       }
     }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return localaont;
   }
 }
 

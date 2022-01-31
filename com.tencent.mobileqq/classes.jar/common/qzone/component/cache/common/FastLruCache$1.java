@@ -1,13 +1,13 @@
 package common.qzone.component.cache.common;
 
-import bihn;
+import bilu;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
 public class FastLruCache$1
   extends LinkedHashMap<K, V>
 {
-  public FastLruCache$1(bihn parambihn, int paramInt1, float paramFloat, boolean paramBoolean, int paramInt2)
+  public FastLruCache$1(bilu parambilu, int paramInt1, float paramFloat, boolean paramBoolean, int paramInt2)
   {
     super(paramInt1, paramFloat, paramBoolean);
   }

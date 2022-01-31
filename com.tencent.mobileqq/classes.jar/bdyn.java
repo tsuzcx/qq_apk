@@ -1,124 +1,152 @@
-import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBDoubleField;
+import com.tencent.mobileqq.pb.PBFixed32Field;
+import com.tencent.mobileqq.pb.PBFloatField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
+import com.tencent.mobileqq.vashealth.PathTraceManager.DataUploadTask;
+import com.tencent.mobileqq.vashealth.TracePathData;
+import com.tencent.mobileqq.vashealth.TracePointsData;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
+import tencent.im.pb.qqsport.QQSportsOrbit.OrbitPoint;
+import tencent.im.pb.qqsport.QQSportsOrbit.OrbitReq;
+import tencent.im.pb.qqsport.QQSportsOrbit.OrbitRsp;
 
-class bdyn
-  extends bdvu
+public class bdyn
+  implements BusinessObserver
 {
-  bdyn(bdyi parambdyi, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public bdyn(PathTraceManager.DataUploadTask paramDataUploadTask, JSONObject paramJSONObject, List paramList, TracePathData paramTracePathData, SharedPreferences paramSharedPreferences, QQSportsOrbit.OrbitReq paramOrbitReq) {}
   
-  public void onDone(bdvv parambdvv)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super.onDone(parambdvv);
-    if (QLog.isColorLevel()) {
-      QLog.d("VipFunCallManager", 2, "onDone, status=" + parambdvv.a() + ", task.errCode:" + parambdvv.jdField_a_of_type_Int + ", key=" + parambdvv.jdField_a_of_type_JavaLangString);
-    }
-    Bundle localBundle = parambdvv.a();
-    if (localBundle == null) {
-      QLog.e("VipFunCallManager", 1, "mDownloadListener onDone Err0, key:" + parambdvv.jdField_a_of_type_JavaLangString);
-    }
-    boolean bool;
-    label121:
-    do
+    PathTraceManager.DataUploadTask.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask, paramBoolean, paramInt);
+    int i;
+    if (paramBoolean)
     {
-      return;
-      if ((parambdvv.a() != 3) || (parambdvv.jdField_a_of_type_Int != 0)) {
-        break;
+      try
+      {
+        byte[] arrayOfByte = paramBundle.getByteArray("extra_data");
+        paramBundle = new QQSportsOrbit.OrbitRsp();
+        try
+        {
+          paramBundle.mergeFrom(arrayOfByte);
+          paramInt = paramBundle.lastNum.get();
+          if ((paramInt == -1) || (paramBundle.retCode.get() != 0))
+          {
+            this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", -10);
+            if (this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask.this$0.a == null) {
+              break label802;
+            }
+            paramBundle = Message.obtain();
+            paramBundle.what = 1;
+            paramBundle.obj = this.jdField_a_of_type_OrgJsonJSONObject;
+            this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask.this$0.a.sendMessage(paramBundle);
+            return;
+          }
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            QLog.e("PathTraceManager", 1, "[run] json fail" + localException.getMessage());
+            paramInt = -1;
+          }
+        }
+        if (paramInt >= this.jdField_a_of_type_JavaUtilList.size())
+        {
+          this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", 1);
+          if (this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask.this$0.a != null)
+          {
+            paramBundle = Message.obtain();
+            paramBundle.what = 1;
+            paramBundle.obj = this.jdField_a_of_type_OrgJsonJSONObject;
+            this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask.this$0.a.sendMessage(paramBundle);
+          }
+          this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask.this$0.a(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqVashealthTracePathData.startTime));
+          QLog.d("PathTraceManager", 1, "upload success");
+          PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask.this$0, null);
+          this.jdField_a_of_type_AndroidContentSharedPreferences.edit().clear().commit();
+          return;
+        }
       }
-      bool = true;
-      if (!bool) {
-        QLog.e("VipFunCallManager", 1, "mDownloadListener onDone fail, task.getStatus():" + parambdvv.a() + ", task.errCode:" + parambdvv.jdField_a_of_type_Int);
+      catch (Exception paramBundle)
+      {
+        QLog.e("PathTraceManager", 1, "[run] json fail" + paramBundle.getMessage());
+        return;
       }
-    } while (localBundle.getInt("dealType") == 0);
-    int i = localBundle.getInt("callId");
-    int j = localBundle.getInt("resourceType");
-    Object localObject = localBundle.getString("path");
-    if (localBundle.getBoolean("isExists", false)) {}
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
+        if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
+          i = paramInt;
+        }
+      }
+    }
     for (;;)
     {
-      if (!bool) {
-        QLog.e("VipFunCallManager", 1, "mDownloadListener onDone rename failure. path:" + (String)localObject);
-      }
-      if ((localBundle.getBoolean("isIPC")) && (this.a.jdField_a_of_type_Bdwb != null))
+      if (i < paramInt + 3000)
       {
-        localObject = new Bundle();
-        ((Bundle)localObject).putInt("fcStatus", 3);
-        ((Bundle)localObject).putInt("callId", i);
-        ((Bundle)localObject).putInt("srcType", localBundle.getInt("srcType"));
-        ((Bundle)localObject).putBoolean("result_boo", bool);
-        ((Bundle)localObject).putInt("resourceType", j);
-        this.a.jdField_a_of_type_Bdwb.a(i, parambdvv.a(), (Bundle)localObject);
+        paramBundle = new QQSportsOrbit.OrbitPoint();
+        paramBundle.latitude.set(((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).latitude);
+        paramBundle.longitude.set(((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).longitude);
+        paramBundle.timef.set((int)((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).time);
+        paramBundle.speedf.set(((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).speed);
+        paramBundle.accuracy.set(((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).accuracy);
+        paramBundle.step.set(((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).steps);
+        paramBundle.altitude.set((float)((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).altitude);
+        this.jdField_a_of_type_TencentImPbQqsportQQSportsOrbit$OrbitReq.tracePath.add(paramBundle);
+        if (i != this.jdField_a_of_type_JavaUtilList.size() - 1) {}
       }
-      if (9 != bdyi.a()) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VipFunCallManager", 2, "sendBroadcast :tencent.video.q2v.AnnimateDownloadFinish");
-      }
-      parambdvv = new Intent("tencent.video.q2v.AnnimateDownloadFinish");
-      parambdvv.putExtra("fun_call_id", i);
-      parambdvv.setPackage(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName());
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(parambdvv);
-      return;
-      bool = false;
-      break label121;
-      bool = bdcs.c((String)localObject + ".tmp", (String)localObject);
-    }
-  }
-  
-  public void onProgress(bdvv parambdvv)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipFunCallManager", 2, "onProgress, loaded=" + parambdvv.b + "percent=" + parambdvv.jdField_a_of_type_Float + ", key=" + parambdvv.jdField_a_of_type_JavaLangString);
-    }
-    Bundle localBundle1 = parambdvv.a();
-    if (localBundle1 == null) {
-      QLog.e("VipFunCallManager", 1, "mDownloadListener onProgress Err0, key:" + parambdvv.jdField_a_of_type_JavaLangString);
-    }
-    while ((localBundle1.getInt("dealType") == 0) || (!parambdvv.a().getBoolean("isIPC")) || (this.a.jdField_a_of_type_Bdwb == null)) {
-      return;
-    }
-    Bundle localBundle2 = new Bundle();
-    localBundle2.putInt("fcStatus", 2);
-    localBundle2.putInt("callId", localBundle1.getInt("callId"));
-    localBundle2.putInt("srcType", localBundle1.getInt("srcType"));
-    localBundle2.putInt("progress", (int)parambdvv.jdField_a_of_type_Float);
-    localBundle2.putInt("resourceType", localBundle1.getInt("resourceType"));
-    this.a.jdField_a_of_type_Bdwb.a(localBundle2);
-  }
-  
-  public boolean onStart(bdvv parambdvv)
-  {
-    Bundle localBundle = parambdvv.a();
-    if (localBundle == null) {
-      QLog.e("VipFunCallManager", 1, "mDownloadListener onStart Err0, key:" + parambdvv.jdField_a_of_type_JavaLangString);
-    }
-    int i;
-    boolean bool;
-    do
-    {
-      do
+      else
       {
-        return true;
-      } while (localBundle.getInt("dealType") == 0);
-      i = localBundle.getInt("resourceType");
-      bool = localBundle.getBoolean("isIPC");
-      if (QLog.isColorLevel()) {
-        QLog.d("VipFunCallManager", 2, "onStart, loaded=" + parambdvv.b + ", percent=" + parambdvv.jdField_a_of_type_Float + ", resType=" + i + ", isIPC=" + bool);
+        if (paramInt + 3000 >= this.jdField_a_of_type_JavaUtilList.size()) {
+          this.jdField_a_of_type_TencentImPbQqsportQQSportsOrbit$OrbitReq.isOver.set(1);
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_TencentImPbQqsportQQSportsOrbit$OrbitReq.num.set(paramInt + 1);
+          paramBundle = new NewIntent(BaseApplicationImpl.sApplication.getApplicationContext(), atkg.class);
+          paramBundle.putExtra("extra_cmd", PathTraceManager.DataUploadTask.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask));
+          paramBundle.putExtra("extra_data", PathTraceManager.a(this.jdField_a_of_type_TencentImPbQqsportQQSportsOrbit$OrbitReq.toByteArray()));
+          this.jdField_a_of_type_TencentImPbQqsportQQSportsOrbit$OrbitReq.tracePath.clear();
+          paramBundle.putExtra("extra_timeout", 15000);
+          paramBundle.setObserver(this);
+          BaseApplicationImpl.sApplication.getRuntime().startServlet(paramBundle);
+          return;
+          this.jdField_a_of_type_TencentImPbQqsportQQSportsOrbit$OrbitReq.isOver.set(0);
+        }
+        QLog.e("PathTraceManager", 1, "upload fail");
+        try
+        {
+          paramBundle = new JSONObject();
+          paramBundle.put("retCode", -10);
+          if (this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask.this$0.a != null)
+          {
+            Message localMessage = Message.obtain();
+            localMessage.what = 1;
+            localMessage.obj = paramBundle;
+            this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask.this$0.a.sendMessage(localMessage);
+            return;
+          }
+        }
+        catch (Exception paramBundle)
+        {
+          QLog.d("PathTraceManager", 1, "uploadfail:" + paramBundle.toString());
+        }
+        label802:
+        return;
       }
-    } while ((!bool) || (this.a.jdField_a_of_type_Bdwb == null));
-    parambdvv = new Bundle();
-    parambdvv.putInt("fcStatus", 1);
-    parambdvv.putInt("callId", localBundle.getInt("callId"));
-    parambdvv.putInt("srcType", localBundle.getInt("srcType"));
-    parambdvv.putInt("resourceType", i);
-    this.a.jdField_a_of_type_Bdwb.a(parambdvv);
-    return true;
+      i += 1;
+    }
   }
 }
 

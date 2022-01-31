@@ -304,14 +304,14 @@ public class pja
             if (!ors.a()) {
               break label758;
             }
-            paramrvg = bdbt.j((QQAppInterface)ors.a(), String.valueOf(l));
+            paramrvg = bdgc.j((QQAppInterface)ors.a(), String.valueOf(l));
             label335:
             String str3 = ors.d(paramrvg);
             if (str3 == null) {
               break label771;
             }
             paramrvg = new SpannableString(str3 + ":  " + str2);
-            paramrvg.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167138)), 0, str3.length(), 33);
+            paramrvg.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167140)), 0, str3.length(), 33);
             this.jdField_a_of_type_Rvg.d.setVisibility(0);
             this.jdField_a_of_type_Rvg.d.setText(str3 + ":  ");
             label454:
@@ -369,7 +369,7 @@ public class pja
       label715:
       paramInt = 8;
       break label130;
-      paramrvg = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841443);
+      paramrvg = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841444);
       this.jdField_a_of_type_Rvg.c.setCompoundDrawablesWithIntrinsicBounds(paramrvg, null, null, null);
       break label206;
       paramInt = 8;

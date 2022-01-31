@@ -1,19 +1,21 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import com.tencent.qphone.base.util.QLog;
 
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface awdc
+class awdc
+  extends awen
 {
-  int a() default 0;
+  awdc(awcx paramawcx) {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountPanel", 2, "onBatteryChanged updateOnlineStatusItem");
+    }
+    awcx.a(this.a).b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awdc
  * JD-Core Version:    0.7.0.1
  */

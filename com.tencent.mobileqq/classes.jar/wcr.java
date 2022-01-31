@@ -1,43 +1,20 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.settings.QGSettingFragment;
 
 public class wcr
-  extends SimpleJob<Void>
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public wcr(QQStoryMainController paramQQStoryMainController, String paramString)
-  {
-    super(paramString);
-  }
+  public wcr(QGSettingFragment paramQGSettingFragment) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    xmx.a(this.a.jdField_a_of_type_AndroidAppActivity);
-    ((ujl)urr.a(6)).c();
-    vst.a(this.a.jdField_a_of_type_AndroidAppActivity).a(this.a.jdField_a_of_type_AndroidAppActivity);
-    PngQuantUtils.a(QQStoryContext.a());
-    ((uhx)urr.a(4)).c();
-    bato.g();
-    ((urk)urr.a(10)).c();
-    wsv.d("QQStoryMainController", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(ukd.a()) });
-    vgv.a().a(this.a.jdField_a_of_type_AndroidAppActivity, 3);
-    wsv.b("QQStoryMainController", "queueIdle loadShortVideoSo start");
-    ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    wsv.b("QQStoryMainController", "queueIdle loadShortVideoSo end");
-    wsv.b("QQStoryMainController", "queueIdle startDownloadFilterSo start");
-    this.a.b = azgk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
-    wsv.b("QQStoryMainController", "queueIdle startDownloadFilterSo end");
-    wsv.b("QQStoryMainController", "queueIdle preloadFrameDrawable start");
-    QQStoryLoadingView.a(this.a.jdField_a_of_type_AndroidAppActivity);
-    wsv.b("QQStoryMainController", "queueIdle preloadFrameDrawable end");
-    return null;
+    if (paramBoolean)
+    {
+      QGSettingFragment.b(true);
+      return;
+    }
+    QGSettingFragment.b(false);
   }
 }
 

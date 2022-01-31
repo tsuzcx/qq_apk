@@ -1,9 +1,14 @@
-public class airp
+class airp
+  implements bezx
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  airp(airj paramairj, Runnable paramRunnable) {}
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
+  }
 }
 
 

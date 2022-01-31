@@ -1,96 +1,39 @@
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaExtractor;
-import android.media.MediaMuxer;
-import android.support.annotation.RequiresApi;
-import java.io.File;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import javax.annotation.Nullable;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-public class bkvg
+class bkvg
+  implements bmeo<Boolean>
 {
-  @Nullable
-  @RequiresApi(api=18)
-  public static String a(String paramString1, String paramString2, String paramString3)
+  bkvg(bkuy parambkuy) {}
+  
+  public void a(@Nullable Boolean paramBoolean)
   {
-    int j;
-    ByteBuffer localByteBuffer2;
-    MediaCodec.BufferInfo localBufferInfo1;
-    MediaCodec.BufferInfo localBufferInfo2;
-    for (;;)
+    if (paramBoolean == null) {}
+    do
     {
-      try
+      return;
+      if (bkuy.a(this.a).a())
       {
-        new File(paramString3).createNewFile();
-        localMediaExtractor = new MediaExtractor();
-        localMediaExtractor.setDataSource(paramString2);
-        paramString2 = new MediaExtractor();
-        paramString2.setDataSource(paramString1);
-        paramString1 = new MediaMuxer(paramString3, 0);
-        localMediaExtractor.selectTrack(0);
-        k = paramString1.addTrack(localMediaExtractor.getTrackFormat(0));
-        paramString2.selectTrack(0);
-        j = paramString1.addTrack(paramString2.getTrackFormat(0));
-        i = 0;
-        localByteBuffer1 = ByteBuffer.allocate(262144);
-        localByteBuffer2 = ByteBuffer.allocate(262144);
-        localBufferInfo1 = new MediaCodec.BufferInfo();
-        localBufferInfo2 = new MediaCodec.BufferInfo();
-        localMediaExtractor.seekTo(0L, 2);
-        paramString2.seekTo(0L, 2);
-        paramString1.start();
+        bkuy.a(this.a).setVisibility(8);
+        return;
       }
-      catch (IOException paramString1)
+      if (bkuy.a(this.a).b())
       {
-        MediaExtractor localMediaExtractor;
-        int k;
-        ByteBuffer localByteBuffer1;
-        blfg.a("AEVoiceVideoMergeUtil", "Mixer Error 1 " + paramString1.getMessage());
-        return null;
-        localBufferInfo1.presentationTimeUs = localMediaExtractor.getSampleTime();
-        localBufferInfo1.flags = localMediaExtractor.getSampleFlags();
-        paramString1.writeSampleData(k, localByteBuffer1, localBufferInfo1);
-        localMediaExtractor.advance();
-        continue;
+        if (!bkuy.a(this.a))
+        {
+          AEBottomListScrollView localAEBottomListScrollView = bkuy.a(this.a);
+          if (paramBoolean.booleanValue()) {}
+          for (int i = 0;; i = 4)
+          {
+            localAEBottomListScrollView.setVisibility(i);
+            return;
+          }
+        }
+        bkuy.a(this.a).setVisibility(8);
+        return;
       }
-      catch (Exception paramString1)
-      {
-        blfg.a("AEVoiceVideoMergeUtil", "Mixer Error 2 " + paramString1.getMessage());
-        return null;
-      }
-      if (i != 0) {
-        break label284;
-      }
-      localBufferInfo1.offset = 0;
-      localBufferInfo1.size = localMediaExtractor.readSampleData(localByteBuffer1, 0);
-      if ((localBufferInfo1.size >= 0) && (localBufferInfo2.size >= 0)) {
-        continue;
-      }
-      i = 1;
-      localBufferInfo1.size = 0;
-    }
-    label284:
-    int i = 0;
-    while (i == 0)
-    {
-      localBufferInfo2.offset = 0;
-      localBufferInfo2.size = paramString2.readSampleData(localByteBuffer2, 0);
-      if ((localBufferInfo1.size < 0) || (localBufferInfo2.size < 0))
-      {
-        i = 1;
-        localBufferInfo2.size = 0;
-      }
-      else
-      {
-        localBufferInfo2.presentationTimeUs = paramString2.getSampleTime();
-        localBufferInfo2.flags = paramString2.getSampleFlags();
-        paramString1.writeSampleData(j, localByteBuffer2, localBufferInfo2);
-        paramString2.advance();
-      }
-    }
-    paramString1.stop();
-    paramString1.release();
-    return paramString3;
+    } while (!bkuy.a(this.a).c());
+    bkuy.a(this.a).setVisibility(8);
   }
 }
 

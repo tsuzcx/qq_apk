@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import aekt;
+import aepi;
 import android.app.Activity;
 import com.tencent.qphone.base.util.QLog;
 import rjg;
@@ -18,7 +18,7 @@ public class ReadInJoyBaseAdapter$27
     if (QLog.isColorLevel()) {
       QLog.i("ReadInJoyBaseAdapter", 2, "setSelectionFromTop selectIndex:" + i);
     }
-    this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setSelectionFromTop(i, aekt.a(175.0F, this.this$0.jdField_a_of_type_AndroidAppActivity.getResources()));
+    this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setSelectionFromTop(i, aepi.a(175.0F, this.this$0.jdField_a_of_type_AndroidAppActivity.getResources()));
     if (this.this$0.jdField_a_of_type_Rjg.a() == 7)
     {
       this.this$0.a(this.b);

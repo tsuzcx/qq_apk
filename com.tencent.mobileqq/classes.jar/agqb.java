@@ -1,59 +1,64 @@
 import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qidian.data.QidianExternalInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 class agqb
-  extends alvc
+  extends bfzo
 {
-  agqb(agot paramagot) {}
+  agqb(agps paramagps) {}
   
-  public void a(int paramInt)
+  protected void d(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    this.a.D(paramInt);
-  }
-  
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0)
+    if (paramBoolean)
     {
-      if ((paramPublicAccountInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramPublicAccountInfo.getUin()))) {
-        this.a.b(1);
-      }
-    }
-    else {
+      this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
+      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131698551), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
       return;
     }
-    this.a.c(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
+    QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131698550), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  protected void e(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if (paramBoolean) {
-      this.a.c(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
-    }
-    if ((paramBoolean) && (!agot.d(this.a)))
+    if ((paramBoolean) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
     {
-      localObject = (aluw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
-      if (localObject == null) {
-        break label102;
+      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramHashMap.uin)))
+      {
+        paramHashMap = this.a.b.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        if (paramHashMap != null)
+        {
+          agps.a(this.a, true);
+          this.a.f.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+          agps.a(this.a).setOnClickListener(null);
+          agps.b(this.a).setOnClickListener(null);
+          this.a.h = paramHashMap;
+          this.a.a(paramHashMap);
+          if (acjl.S) {
+            this.a.f.setContentDescription(paramHashMap);
+          }
+          agps.a(this.a, true);
+        }
       }
     }
-    label102:
-    for (Object localObject = ((aluw)localObject).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);; localObject = null)
+    while (!QLog.isColorLevel())
     {
-      if ((localObject != null) && (this.a.o != null) && (!agot.e(this.a))) {
-        this.a.bt();
-      }
+      do
+      {
+        return;
+        agps.b(this.a, false);
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo not current curFriendUin");
       return;
     }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
-    }
+    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo fail");
   }
 }
 

@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import bepp;
+import bety;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.qwallet.widget.ImmersionBar;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -71,7 +71,7 @@ public class LoadingFragment
   b.b stateObserver = new c(this);
   Handler uiHandler;
   private com.tencent.mobileqq.microapp.widget.f x5Dialog;
-  private bepp x5LoadingDialog;
+  private bety x5LoadingDialog;
   
   static
   {
@@ -331,7 +331,7 @@ public class LoadingFragment
     com.tencent.mobileqq.microapp.app.b.a().addObserver(this.stateObserver);
     if (i == 0)
     {
-      this.x5LoadingDialog = new bepp(getActivity());
+      this.x5LoadingDialog = new bety(getActivity());
       this.x5LoadingDialog.setOnDismissListener(new b(this));
       this.x5Dialog = new com.tencent.mobileqq.microapp.widget.f(getActivity());
       this.x5Dialog.setOnDismissListener(this);

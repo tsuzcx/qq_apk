@@ -41,7 +41,7 @@ public class pwa
   private boolean b()
   {
     Object localObject = this.g + "/" + "pts_jsc_config.json";
-    boolean bool1 = bdcs.a(this.g + "/" + "libjsc.so");
+    boolean bool1 = bdhb.a(this.g + "/" + "libjsc.so");
     boolean bool2 = pwc.a((String)localObject);
     jdField_a_of_type_JavaLangString = pwc.b((String)localObject);
     localObject = new StringBuilder();

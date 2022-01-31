@@ -8,7 +8,7 @@ class QfileCloudFileTabView$7
   public void run()
   {
     QfileCloudFileTabView.a(this.this$0);
-    this.this$0.aB_();
+    this.this$0.ay_();
   }
 }
 

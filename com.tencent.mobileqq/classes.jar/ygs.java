@@ -1,12 +1,20 @@
-import java.io.File;
-import java.util.Comparator;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class ygs
-  implements Comparator<File>
+class ygs
+  implements View.OnClickListener
 {
-  public int a(File paramFile1, File paramFile2)
+  ygs(ygq paramygq, CertifiedAccountMeta.StComment paramStComment) {}
+  
+  public void onClick(View paramView)
   {
-    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
+    if (ygg.a(this.jdField_a_of_type_Ygq.a) != null)
+    {
+      ygg.a(this.jdField_a_of_type_Ygq.a, ygg.a(this.jdField_a_of_type_Ygq.a).a(ygg.a(this.jdField_a_of_type_Ygq.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment));
+      ygg.c(this.jdField_a_of_type_Ygq.a, true);
+    }
+    ygg.a(this.jdField_a_of_type_Ygq.a).dismiss();
   }
 }
 

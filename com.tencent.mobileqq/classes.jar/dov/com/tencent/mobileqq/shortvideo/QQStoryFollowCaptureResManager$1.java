@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bnlc;
+import bnpo;
 import java.io.File;
 
 public final class QQStoryFollowCaptureResManager$1
@@ -10,7 +10,7 @@ public final class QQStoryFollowCaptureResManager$1
   
   public void run()
   {
-    bnlc.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaLangString);
+    bnpo.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaLangString);
   }
 }
 

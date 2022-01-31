@@ -1,9 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
 
-public abstract interface avpp
+public class avpp
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(Dialog paramDialog, View paramView, avpo paramavpo);
+  public avpp(NearbyProfileFragment paramNearbyProfileFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

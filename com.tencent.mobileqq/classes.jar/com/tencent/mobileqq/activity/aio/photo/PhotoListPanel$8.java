@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aggs;
+import aglh;
 import java.util.ArrayList;
 
 class PhotoListPanel$8
@@ -14,7 +14,7 @@ class PhotoListPanel$8
       this.this$0.a.a();
     }
     this.this$0.b(this.jdField_a_of_type_JavaUtilArrayList, this.b, this.jdField_a_of_type_Boolean);
-    ayyu.b = System.currentTimeMillis();
+    azdd.b = System.currentTimeMillis();
   }
 }
 

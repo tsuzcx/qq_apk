@@ -1,50 +1,16 @@
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class atcd
-  implements HookMethodCallback
+  extends Handler
 {
-  private int a;
-  
-  public atcd(int paramInt)
+  atcd(atca paramatca, Looper paramLooper)
   {
-    this.a = paramInt;
+    super(paramLooper);
   }
   
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
-  {
-    if (paramMethodHookParam.throwable == null) {
-      return;
-    }
-    Throwable localThrowable;
-    if (paramMethodHookParam.throwable.getCause() != null) {
-      localThrowable = paramMethodHookParam.throwable.getCause();
-    }
-    while ((localThrowable instanceof OutOfMemoryError))
-    {
-      atcc.b();
-      try
-      {
-        paramMethodHookParam.result = JavaHookBridge.invokeOriginMethod(paramMethodHookParam.method, paramMethodHookParam.thisObject, paramMethodHookParam.args);
-        paramMethodHookParam.throwable = null;
-        atcc.a(true, this.a);
-        return;
-      }
-      catch (Exception paramMethodHookParam)
-      {
-        atcc.a(false, this.a);
-        return;
-        localThrowable = paramMethodHookParam.throwable;
-      }
-      catch (Error paramMethodHookParam)
-      {
-        atcc.a(false, this.a);
-      }
-    }
-  }
-  
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
+  public void handleMessage(Message paramMessage) {}
 }
 
 

@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment;
-
-public class blif
-  implements DialogInterface.OnClickListener
+public abstract interface blif
 {
-  public blif(AEEditorCommonEditFragment paramAEEditorCommonEditFragment) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a().a(this.a.getActivity());
-  }
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 

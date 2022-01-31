@@ -1,52 +1,48 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSmoothScroller;
-import android.support.v7.widget.RecyclerView.SmoothScroller.Action;
-import android.support.v7.widget.RecyclerView.State;
-import android.util.DisplayMetrics;
-import android.view.View;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Point;
+import com.tencent.widget.RangeButtonView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class bian
-  extends LinearSmoothScroller
+public class bian
 {
-  bian(bial parambial, Context paramContext, LinearLayoutManager paramLinearLayoutManager)
+  private List<biam> jdField_a_of_type_JavaUtilList;
+  
+  public bian(List<biam> paramList)
   {
-    super(paramContext);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public float calculateSpeedPerPixel(DisplayMetrics paramDisplayMetrics)
+  public void a(Canvas paramCanvas, Paint paramPaint)
   {
-    return bial.a(this.jdField_a_of_type_Bial) / paramDisplayMetrics.densityDpi;
-  }
-  
-  public int calculateTimeForDeceleration(int paramInt)
-  {
-    return super.calculateTimeForDeceleration(paramInt);
-  }
-  
-  public int calculateTimeForScrolling(int paramInt)
-  {
-    return super.calculateTimeForScrolling(paramInt);
-  }
-  
-  public PointF computeScrollVectorForPosition(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.computeScrollVectorForPosition(paramInt);
-  }
-  
-  public void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
-  {
-    paramView = bial.a(this.jdField_a_of_type_Bial, this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager, paramView);
-    int i = paramView[0];
-    int j = paramView[1];
-    int k = calculateTimeForDeceleration(Math.max(Math.abs(i), Math.abs(j)));
-    if (k > 0)
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (;;)
     {
-      paramAction.update(i, j, k, this.mDecelerateInterpolator);
       return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((biam)localIterator.next()).a(paramCanvas, paramPaint, this.jdField_a_of_type_ComTencentWidgetRangeButtonView.a);
+      }
     }
-    biar.a(bial.a(this.jdField_a_of_type_Bial));
+  }
+  
+  public void a(ArrayList<Integer> paramArrayList, int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < paramArrayList.size())
+      {
+        biam localbiam = (biam)this.jdField_a_of_type_JavaUtilList.get(i);
+        localbiam.a = new Point(((Integer)paramArrayList.get(i)).intValue() - (localbiam.a() >> 1), paramInt);
+        i += 1;
+      }
+    }
   }
 }
 

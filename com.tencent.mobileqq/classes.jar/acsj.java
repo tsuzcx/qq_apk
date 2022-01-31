@@ -1,23 +1,22 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.view.View;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class acsj
-  extends afyl
+  extends BroadcastReceiver
 {
-  public acsj(FontSettingActivity paramFontSettingActivity, QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public acsj(Conversation paramConversation) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    paramContext = paramIntent.getAction();
+    if (("android.intent.action.TIME_SET".equals(paramContext)) || ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) || ("android.intent.action.DATE_CHANGED".equals(paramContext))) {
+      ThreadManager.getSubThreadHandler().post(Conversation.a(this.a));
+    }
   }
-  
-  public void a(aelt paramaelt, ChatMessage paramChatMessage) {}
-  
-  public void b(View paramView) {}
 }
 
 

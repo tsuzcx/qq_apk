@@ -28,8 +28,8 @@ public class qgm
     paramViewGroup.mLoadingDrawable = ((Drawable)localObject);
     paramViewGroup = URLDrawable.getDrawable("http://pub.idqqimg.com/pc/misc/files/20200313/b37cb1e721304575af379f97ce72c115.png", paramViewGroup);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramViewGroup);
-    localObject = (TextView)a(2131380068);
-    paramViewGroup = (TextView)a(2131380065);
+    localObject = (TextView)a(2131380126);
+    paramViewGroup = (TextView)a(2131380123);
     ((TextView)localObject).setText(paramString1);
     paramString1 = URLDrawable.URLDrawableOptions.obtain();
     localObject = new ColorDrawable(0);
@@ -43,7 +43,7 @@ public class qgm
   
   View a(ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562504, paramViewGroup, false);
+    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562522, paramViewGroup, false);
   }
   
   protected void c()

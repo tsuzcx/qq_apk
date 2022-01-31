@@ -1,22 +1,29 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.TencentDocData;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class acnw
-  extends alxz
+class acnw
+  implements View.OnClickListener
 {
-  public acnw(Conversation paramConversation) {}
+  acnw(acnu paramacnu) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!this.a.f) {}
+    if ((paramView.getTag() instanceof String)) {}
     do
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, "VideoRedbag, onCheckRealNameRsp in conv");
+      paramView = (akib)paramView.getTag();
+      if ((paramView.a instanceof FileManagerEntity))
+      {
+        paramView = (FileManagerEntity)paramView.a;
+        this.a.a(paramView);
+        return;
       }
-    } while ((!paramBoolean) || (paramInt != azey.a));
-    bdcd.a(this.a.a(), 0, null, this.a.a(2131720123), 2131720125, 2131720124, new acnx(this), new acny(this)).show();
+    } while (!(paramView.a instanceof TencentDocData));
+    paramView = (TencentDocData)paramView.a;
+    this.a.a(paramView);
   }
 }
 

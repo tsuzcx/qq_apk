@@ -1,21 +1,42 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 
 public class acay
-  implements bhqd
+  extends alwx
 {
-  public acay(AssociatedAccountActivity paramAssociatedAccountActivity, bhpy parambhpy) {}
+  public acay(AccountManageActivity paramAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, String paramString, bade parambade)
   {
-    switch (paramInt)
+    if (this.a.isFinishing()) {}
+    bacu localbacu;
+    do
     {
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_Bhpy.cancel();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131690861));
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "dc00898", "", "", "0X800AC3E", "0X800AC3E", 0, 0, "", "", "", "");
+      for (;;)
+      {
+        return;
+        AccountManageActivity.a(this.a, false);
+        localbacu = (bacu)this.a.app.getManager(62);
+        if (parambade.a != 1) {
+          break;
+        }
+        if ((this.a.isResume()) && (bacu.a(this.a.app, "sub.uin.all")))
+        {
+          paramString = localbacu.a("sub.uin.all");
+          int j = paramString.size();
+          int i = 0;
+          while (i < j)
+          {
+            parambade = (Pair)paramString.get(i);
+            localbacu.a(this.a.app, this.a, parambade, new acaz(this, localbacu, parambade));
+            i += 1;
+          }
+        }
+      }
+    } while (!this.a.isResume());
+    localbacu.a(paramString, 1, true);
   }
 }
 

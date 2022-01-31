@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.minigame;
 
-import bgti;
-import bgtj;
-import bgtm;
+import bgxp;
+import bgxq;
+import bgxt;
 
 public class GameRuntime$3$1
   implements Runnable
 {
-  public GameRuntime$3$1(bgtm parambgtm) {}
+  public GameRuntime$3$1(bgxt parambgxt) {}
   
   public void run()
   {
-    bgtj.a(this.a.a).c();
+    bgxq.a(this.a.a).c();
   }
 }
 

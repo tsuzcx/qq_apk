@@ -1,14 +1,39 @@
-import android.view.animation.Interpolator;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.profile.CoverDetailFragment;
 
-final class awof
-  implements Interpolator
+public class awof
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public float getInterpolation(float paramFloat)
+  public awof(CoverDetailFragment paramCoverDetailFragment) {}
+  
+  public void onGlobalLayout()
   {
-    if (paramFloat <= 0.3333333F) {
-      return 0.0F;
+    if (Build.VERSION.SDK_INT >= 16) {
+      CoverDetailFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
-    return (paramFloat - 0.3333333F) * 1.5F;
+    for (;;)
+    {
+      Object localObject = this.a.getActivity().getResources().getDrawable(2130850137);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestWidth = CoverDetailFragment.a(this.a).getWidth();
+      localURLDrawableOptions.mRequestHeight = CoverDetailFragment.a(this.a).getHeight();
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
+      localObject = URLDrawable.getDrawable(CoverDetailFragment.a(this.a).d, localURLDrawableOptions);
+      ((URLDrawable)localObject).setURLDrawableListener(CoverDetailFragment.a(this.a));
+      CoverDetailFragment.a(this.a).setImageDrawable((Drawable)localObject);
+      CoverDetailFragment.b(this.a).setImageDrawable(this.a.a((Drawable)localObject));
+      return;
+      CoverDetailFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
   }
 }
 

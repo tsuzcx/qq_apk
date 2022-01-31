@@ -1,8 +1,28 @@
-import android.view.View;
+import java.util.ArrayList;
 
-public abstract interface ayay
+public class ayay
 {
-  public abstract void a(ayax paramayax, View paramView);
+  public int a;
+  public String a;
+  public ArrayList<ayay> a;
+  public boolean a;
+  public int b = 1;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  
+  public ayay(int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

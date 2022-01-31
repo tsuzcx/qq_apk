@@ -1,15 +1,17 @@
-import Wallet.AcsMsg;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
 
 public class aejv
+  extends awhw
 {
-  public long a;
-  public AcsMsg a;
-  public MessageRecord a;
+  public aejv(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  public String toString()
+  protected void a(boolean paramBoolean)
   {
-    return "QQReminderOrderModel{messageRecord=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord + ", acsMsg=" + this.jdField_a_of_type_WalletAcsMsg + ", orderTime=" + this.jdField_a_of_type_Long + '}';
+    if (paramBoolean)
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

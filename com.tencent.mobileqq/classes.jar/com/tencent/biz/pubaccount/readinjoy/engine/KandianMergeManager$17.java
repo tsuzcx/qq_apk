@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import acex;
-import aljq;
+import acjm;
+import alof;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class KandianMergeManager$17
@@ -12,9 +12,9 @@ class KandianMergeManager$17
   public void run()
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_JavaLangString = aljq.az;
+    localSessionInfo.jdField_a_of_type_JavaLangString = alof.az;
     localSessionInfo.jdField_a_of_type_Int = 1008;
-    acex.a(KandianMergeManager.a(this.this$0), localSessionInfo);
+    acjm.a(KandianMergeManager.a(this.this$0), localSessionInfo);
   }
 }
 

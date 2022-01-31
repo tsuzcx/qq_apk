@@ -1,30 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
+import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
-class xme
-  implements uni<vbw, vbx>
+public class xme
+  implements Comparator<RecentUser>
 {
-  xme(xmd paramxmd, JobContext paramJobContext, Integer paramInteger) {}
+  public xme(ShareToActivity paramShareToActivity) {}
   
-  public void a(@NonNull vbw paramvbw, @Nullable vbx paramvbx, @NonNull ErrorMessage paramErrorMessage)
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      wsv.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
-      return;
+    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
+      return -1;
     }
-    if ((paramErrorMessage.isFail()) || (paramvbx == null))
-    {
-      wsv.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
-      xmd.a(this.jdField_a_of_type_Xmd, paramErrorMessage);
-      return;
+    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
+      return 1;
     }
-    xmd.a(this.jdField_a_of_type_Xmd).a(paramvbx.jdField_a_of_type_JavaUtilList, paramvbx.jdField_a_of_type_JavaLangString, paramvbx.jdField_a_of_type_Boolean);
-    ((wkp)urr.a(11)).a(paramvbx.jdField_a_of_type_JavaUtilList);
-    paramvbw = xmd.a(this.jdField_a_of_type_Xmd).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-    xmd.a(this.jdField_a_of_type_Xmd, paramvbw);
+    return 0;
   }
 }
 

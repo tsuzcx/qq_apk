@@ -1,34 +1,28 @@
 import android.content.Context;
-import android.graphics.Color;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.view.View.MeasureSpec;
+import android.widget.FrameLayout;
+import com.tencent.widget.GridView;
 
 class agka
-  implements ViewTreeObserver.OnPreDrawListener
+  extends FrameLayout
 {
-  agka(agjp paramagjp, agkc paramagkc) {}
-  
-  public boolean onPreDraw()
+  public agka(agjx paramagjx, Context paramContext)
   {
-    agjp.a(this.jdField_a_of_type_Agjp).getViewTreeObserver().removeOnPreDrawListener(this);
-    if (this.jdField_a_of_type_Agkc.b == 1)
-    {
-      agjp.a(this.jdField_a_of_type_Agjp).setBackgroundDrawable(new apgh(Color.parseColor("#1fa4fc"), 5.0F, aekt.a(14.0F, this.jdField_a_of_type_Agjp.a.getResources()), aekt.a(14.0F, this.jdField_a_of_type_Agjp.a.getResources())));
-      agjp.b(this.jdField_a_of_type_Agjp).setBackgroundDrawable(new apgh(Color.parseColor("#1fa4fc"), 5.0F, agjp.b(this.jdField_a_of_type_Agjp).getMeasuredWidth(), agjp.b(this.jdField_a_of_type_Agjp).getMeasuredHeight()));
-      agjp.a(this.jdField_a_of_type_Agjp).setImageResource(2130839033);
+    super(paramContext);
+  }
+  
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int i = agjx.a(this.a).getPaddingLeft() + getPaddingLeft();
+    if (i != paramInt1) {
+      offsetLeftAndRight(i - paramInt1);
     }
-    for (;;)
-    {
-      agjp.a(this.jdField_a_of_type_Agjp).setBackgroundDrawable(new apgh(Color.parseColor("#b2b5bd"), 5.0F, agjp.a(this.jdField_a_of_type_Agjp).getMeasuredWidth(), agjp.a(this.jdField_a_of_type_Agjp).getMeasuredHeight()));
-      agjp.c(this.jdField_a_of_type_Agjp).setBackgroundDrawable(new apgh(Color.parseColor("#b2b5bd"), 5.0F, agjp.c(this.jdField_a_of_type_Agjp).getMeasuredWidth(), agjp.c(this.jdField_a_of_type_Agjp).getMeasuredHeight()));
-      return true;
-      agjp.a(this.jdField_a_of_type_Agjp).setBackgroundDrawable(new apgh(Color.parseColor("#ff5fb5"), 5.0F, aekt.a(14.0F, this.jdField_a_of_type_Agjp.a.getResources()), aekt.a(14.0F, this.jdField_a_of_type_Agjp.a.getResources())));
-      agjp.b(this.jdField_a_of_type_Agjp).setBackgroundDrawable(new apgh(Color.parseColor("#ff5fb5"), 5.0F, agjp.b(this.jdField_a_of_type_Agjp).getMeasuredWidth(), agjp.b(this.jdField_a_of_type_Agjp).getMeasuredHeight()));
-      agjp.a(this.jdField_a_of_type_Agjp).setImageResource(2130839032);
-    }
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  protected void onMeasure(int paramInt1, int paramInt2)
+  {
+    super.onMeasure(View.MeasureSpec.makeMeasureSpec(agjx.a(this.a).getMeasuredWidth() - agjx.a(this.a).getPaddingLeft() - agjx.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
   }
 }
 

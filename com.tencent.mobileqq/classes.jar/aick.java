@@ -1,17 +1,23 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class aick
+  implements View.OnClickListener
 {
-  public String a;
+  public aick(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public aick(String paramString)
+  public void onClick(View paramView)
   {
-    this.a = paramString;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("keyword = ").append(this.a);
-    return localStringBuilder.toString();
+    paramView = new ArrayList();
+    Iterator localIterator = this.a.a.b.iterator();
+    while (localIterator.hasNext()) {
+      paramView.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
+    }
+    ChatHistoryTroopMemberFragment.a(this.a, paramView);
   }
 }
 

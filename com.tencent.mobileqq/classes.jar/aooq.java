@@ -1,40 +1,84 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aooq
+  extends aokh<aoop>
 {
-  private int a;
+  private static aoop a;
   
-  public aooq()
+  public static aoop a()
   {
-    this.jdField_a_of_type_Int = 1;
+    aoop localaoop2 = (aoop)aoks.a().a(524);
+    aoop localaoop1 = localaoop2;
+    if (localaoop2 == null) {
+      localaoop1 = aoop.a();
+    }
+    return localaoop1;
   }
   
-  public static aooq a(aogf paramaogf)
+  public int a()
   {
-    aooq localaooq = new aooq();
-    if (paramaogf != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SysSuspiciousConfBean", 2, "parse taskid->" + paramaogf.jdField_a_of_type_Int + " content->" + paramaogf.jdField_a_of_type_JavaLangString);
-      }
-    }
-    try
-    {
-      localaooq.jdField_a_of_type_Int = new JSONObject(paramaogf.jdField_a_of_type_JavaLangString).optInt("suspiciousSwitch", 1);
-      return localaooq;
-    }
-    catch (JSONException paramaogf)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SysSuspiciousConfBean", 2, "parse error->" + paramaogf.toString());
-    }
-    return localaooq;
+    return 524;
   }
   
-  public boolean a()
+  @NonNull
+  public aoop a(int paramInt)
   {
-    return this.jdField_a_of_type_Int == 1;
+    if (a != null) {
+      return a;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    a = aoop.a();
+    return a;
+  }
+  
+  @Nullable
+  public aoop a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      paramArrayOfaoko = aoop.a(paramArrayOfaoko[0].a);
+      a = null;
+      return paramArrayOfaoko;
+    }
+    return aoop.a();
+  }
+  
+  public Class<aoop> a()
+  {
+    return aoop.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MutualMarkConfProcessor", 2, "onReqFailed failCode:" + paramInt);
+    }
+  }
+  
+  public void a(aoop paramaoop)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MutualMarkConfProcessor", 2, "onUpdate newConf:" + paramaoop);
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

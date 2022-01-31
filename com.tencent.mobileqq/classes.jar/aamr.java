@@ -1,47 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter;
+import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter.Params;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.views.videoimax.TransitionContext;
 
-class aamr
-  implements aaip
+public class aamr
+  implements AdVideoSpliceAdapter
 {
-  aamr(aamo paramaamo) {}
-  
-  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  public AdError show(AdVideoSpliceAdapter.Params paramParams)
   {
-    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
-      return paramGdtAd.getAd().getAId();
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
+    {
+      aase.d("GdtVideoSpliceAdapter", "show error");
+      return new AdError(4);
     }
-    return -2147483648L;
-  }
-  
-  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    aanp.b("GdtBaseBannerFragment", String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(this.a.getActivity().getApplicationContext(), String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
-  }
-  
-  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd, aaio paramaaio)
-  {
-    aanp.d("GdtBaseBannerFragment", "onAdFailedToLoad " + paramaaio.a());
-    Toast.makeText(this.a.getActivity().getApplicationContext(), "onAdFailedToLoad " + paramaaio.a(), 0).show();
-  }
-  
-  public void b(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    aanp.b("GdtBaseBannerFragment", String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(this.a.getActivity().getApplicationContext(), String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
-  }
-  
-  public void c(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    aanp.b("GdtBaseBannerFragment", String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(this.a.getActivity().getApplicationContext(), String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
-  }
-  
-  public void d(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    aanp.b("GdtBaseBannerFragment", String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(this.a.getActivity().getApplicationContext(), String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
+    aase.b("GdtVideoSpliceAdapter", "show");
+    new TransitionContext(paramParams).b();
+    return new AdError(0);
   }
 }
 

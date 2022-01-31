@@ -2,7 +2,7 @@ import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class nzx
-  implements bhqd
+  implements bhuk
 {
   public nzx(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   

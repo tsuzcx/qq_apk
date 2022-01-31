@@ -1,72 +1,93 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class upg
+class upg
+  implements xtk
 {
-  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private static HashSet<String> jdField_a_of_type_JavaUtilHashSet;
-  private static upg jdField_a_of_type_Upg;
+  private final int jdField_a_of_type_Int;
+  private final Object jdField_a_of_type_JavaLangObject;
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   
-  public static upg a()
+  public upg(Object paramObject, AtomicInteger paramAtomicInteger, int paramInt)
   {
-    if (jdField_a_of_type_Upg == null)
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onFailure(String paramString)
+  {
+    wxe.d(upd.a, "FFMPEGResponseCallback onFailure() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    int j = 0;
+    int k = 0;
+    int m = 0;
+    int i = 0;
+    wxe.d(upd.a, "FFMPEGResponseCallback onFinish() mTaskType = " + this.jdField_a_of_type_Int + " isSuccess = " + paramBoolean);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      jdField_a_of_type_Upg = new upg();
-      jdField_a_of_type_JavaUtilHashSet = new HashSet();
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      Iterator localIterator = ((uqo)urr.a(17)).a().iterator();
-      while (localIterator.hasNext())
+      this.jdField_a_of_type_JavaLangObject.notify();
+      switch (this.jdField_a_of_type_Int)
       {
-        CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
-        if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
-        {
-          jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
-          jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+      case 1: 
+        wxe.e(upd.a, "Undefined task type mTaskType = " + this.jdField_a_of_type_Int);
+        throw new RuntimeException("Undefined task in FFMPEGResponseCallback");
+      }
+    }
+    AtomicInteger localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+    if (paramBoolean)
+    {
+      label152:
+      localAtomicInteger.set(i);
+      for (;;)
+      {
+        label158:
+        return;
+        localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+        if (!paramBoolean) {
+          break;
         }
+        i = j;
+        label174:
+        localAtomicInteger.set(i);
+      }
+      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+      if (!paramBoolean) {
+        break label248;
       }
     }
-    return jdField_a_of_type_Upg;
-  }
-  
-  public int a(String paramString)
-  {
-    paramString = (Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString == null) {
-      return -1;
-    }
-    return paramString.intValue();
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_JavaUtilHashSet.clear();
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    Iterator localIterator = ((uqo)urr.a(17)).a().iterator();
-    while (localIterator.hasNext())
+    label248:
+    for (i = k;; i = 945001)
     {
-      CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
-      if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+      localAtomicInteger.set(i);
+      break label158;
+      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+      if (paramBoolean) {}
+      for (i = m;; i = 944004)
       {
-        jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
-        jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+        localAtomicInteger.set(i);
+        break;
       }
+      break;
+      i = 943004;
+      break label152;
+      i = 942004;
+      break label174;
     }
-    wsv.d("StoryFailCommentCacher", "update failed comments. size = %d.", new Object[] { Integer.valueOf(jdField_a_of_type_JavaUtilHashSet.size()) });
   }
   
-  public boolean a(String paramString)
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
   {
-    return jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+    wxe.c(upd.a, "onStart() mTaskType = " + this.jdField_a_of_type_Int);
   }
   
-  public void b()
+  public void onSuccess(String paramString)
   {
-    jdField_a_of_type_JavaUtilHashSet.clear();
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    jdField_a_of_type_Upg = null;
+    wxe.c(upd.a, "FFMPEGResponseCallback onSuccess() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
   }
 }
 

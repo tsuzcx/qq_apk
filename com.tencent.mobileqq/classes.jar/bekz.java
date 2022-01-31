@@ -1,6 +1,23 @@
-public abstract interface bekz
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+
+public class bekz
+  implements bela
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public bekz(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState, long paramLong) {}
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Int = 10005;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = false;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Bekm.d = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
+  }
 }
 
 

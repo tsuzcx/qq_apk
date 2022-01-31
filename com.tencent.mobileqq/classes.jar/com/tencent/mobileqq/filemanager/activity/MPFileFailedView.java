@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import allz;
+import alqo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aqic;
-import biqi;
+import aqml;
+import biup;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class MPFileFailedView
@@ -27,7 +27,7 @@ public class MPFileFailedView
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aqic jdField_a_of_type_Aqic;
+  private aqml jdField_a_of_type_Aqml;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   TextView b;
   TextView c;
@@ -39,24 +39,24 @@ public class MPFileFailedView
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public View a(ViewGroup paramViewGroup, aqic paramaqic, int paramInt1, int paramInt2)
+  public View a(ViewGroup paramViewGroup, aqml paramaqml, int paramInt1, int paramInt2)
   {
-    int k = 2131694532;
-    int m = 2130843923;
-    this.jdField_a_of_type_Aqic = paramaqic;
+    int k = 2131694534;
+    int m = 2130843995;
+    this.jdField_a_of_type_Aqml = paramaqml;
     this.c.setVisibility(8);
-    int i = 2131694535;
+    int i = 2131694537;
     int n;
     int j;
     switch (paramInt1)
     {
     default: 
-      k = 2131694511;
+      k = 2131694513;
       if (paramInt2 == 1)
       {
-        i = 2131694512;
+        i = 2131694514;
         paramInt2 = 0;
-        n = 2131694550;
+        n = 2131694552;
         j = i;
         i = paramInt2;
         paramInt2 = n;
@@ -82,57 +82,57 @@ public class MPFileFailedView
           this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
         }
         return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-        k = 2131694533;
-        paramInt2 = 2131694549;
-        m = 2130843928;
-        j = 2131694533;
+        k = 2131694535;
+        paramInt2 = 2131694551;
+        m = 2130844000;
+        j = 2131694535;
         i = 8;
         continue;
-        k = 2131694534;
-        paramInt2 = 2131694549;
-        m = 2130843928;
-        j = 2131694535;
+        k = 2131694536;
+        paramInt2 = 2131694551;
+        m = 2130844000;
+        j = 2131694537;
         i = 0;
         continue;
-        k = 2131694551;
-        m = 2130843926;
+        k = 2131694553;
+        m = 2130843998;
         i = 8;
-        paramInt2 = 2131694550;
-        j = 2131694535;
+        paramInt2 = 2131694552;
+        j = 2131694537;
         continue;
-        k = 2131694511;
+        k = 2131694513;
         if (paramInt2 == 1) {
-          i = 2131694512;
+          i = 2131694514;
         }
         for (;;)
         {
           n = 0;
           j = i;
-          paramInt2 = 2131694550;
+          paramInt2 = 2131694552;
           i = n;
           break;
           if (paramInt2 == 0) {
-            i = 2131694513;
+            i = 2131694515;
           }
         }
-        k = 2131694551;
-        m = 2130843926;
+        k = 2131694553;
+        m = 2130843998;
         i = 8;
-        paramInt2 = 2131694550;
-        j = 2131694535;
+        paramInt2 = 2131694552;
+        j = 2131694537;
         continue;
         i = 8;
-        m = 2130843927;
-        paramInt2 = 2131694550;
-        j = 2131694532;
+        m = 2130843999;
+        paramInt2 = 2131694552;
+        j = 2131694534;
       }
     case 2110: 
       label157:
-      m = 2130843928;
+      m = 2130844000;
       if (paramInt2 == 1)
       {
-        j = 2131694534;
-        i = 2131694535;
+        j = 2131694536;
+        i = 2131694537;
         paramInt2 = 0;
       }
       break;
@@ -142,85 +142,85 @@ public class MPFileFailedView
       k = j;
       j = i;
       i = paramInt2;
-      paramInt2 = 2131694549;
+      paramInt2 = 2131694551;
       break label157;
       if (paramInt2 == 0)
       {
-        j = 2131694533;
-        i = 2131694523;
+        j = 2131694535;
+        i = 2131694525;
         paramInt2 = 8;
         continue;
-        k = 2131694829;
+        k = 2131694831;
         i = 8;
-        j = 2131694829;
-        paramInt2 = 2131694550;
+        j = 2131694831;
+        paramInt2 = 2131694552;
         break label157;
-        k = 2131694546;
+        k = 2131694548;
         i = 8;
-        j = 2131694546;
-        paramInt2 = 2131694550;
+        j = 2131694548;
+        paramInt2 = 2131694552;
         break label157;
         i = 8;
-        m = 2130843927;
-        paramInt2 = 2131694550;
-        j = 2131694532;
+        m = 2130843999;
+        paramInt2 = 2131694552;
+        j = 2131694534;
         break label157;
-        k = 2131691453;
+        k = 2131691454;
         i = 8;
         m = 0;
-        paramInt2 = 2131694550;
-        j = 2131694535;
+        paramInt2 = 2131694552;
+        j = 2131694537;
         break label157;
         if (paramInt2 != 0) {
           break;
         }
-        i = 2131694513;
+        i = 2131694515;
         break;
       }
-      j = 2131694515;
-      i = 2131694535;
+      j = 2131694517;
+      i = 2131694537;
       paramInt2 = 8;
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Aqic = null;
+    this.jdField_a_of_type_Aqml = null;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131560686, null).findViewById(2131361798));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131367934));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377567));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377568));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377576));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363797));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131560704, null).findViewById(2131361798));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131367945));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377621));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377622));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377630));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363799));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    allz localallz = (allz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
+    alqo localalqo = (alqo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
     if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
     {
-      if (!this.jdField_a_of_type_AndroidWidgetButton.getText().toString().equalsIgnoreCase(getResources().getString(2131694549))) {
+      if (!this.jdField_a_of_type_AndroidWidgetButton.getText().toString().equalsIgnoreCase(getResources().getString(2131694551))) {
         break label90;
       }
-      this.jdField_a_of_type_Long = localallz.a().a(0);
+      this.jdField_a_of_type_Long = localalqo.a().a(0);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Aqic != null) {
-        this.jdField_a_of_type_Aqic.a(this.jdField_a_of_type_Long);
+      if (this.jdField_a_of_type_Aqml != null) {
+        this.jdField_a_of_type_Aqml.a(this.jdField_a_of_type_Long);
       }
       return;
       label90:
-      if (localallz.a().a()) {
-        this.jdField_a_of_type_Long = localallz.a().a(1);
+      if (localalqo.a().a()) {
+        this.jdField_a_of_type_Long = localalqo.a().a(1);
       } else {
-        this.jdField_a_of_type_Long = localallz.a().a(2);
+        this.jdField_a_of_type_Long = localalqo.a().a(2);
       }
     }
   }

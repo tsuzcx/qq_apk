@@ -14,7 +14,7 @@ import android.support.v4.util.MQLruCache;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageButton;
-import bcwc;
+import bdal;
 import com.tencent.common.app.BaseApplicationImpl;
 
 @TargetApi(14)
@@ -90,7 +90,7 @@ public class PressDarkImageButton
         {
           localObject1 = paramContext;
           localObject2 = paramContext;
-          this.jdField_a_of_type_AndroidGraphicsBitmap = bcwc.b(BaseApplicationImpl.getApplication().getResources(), 2130845966);
+          this.jdField_a_of_type_AndroidGraphicsBitmap = bdal.b(BaseApplicationImpl.getApplication().getResources(), 2130846039);
           localObject1 = paramContext;
           localObject2 = paramContext;
           if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)

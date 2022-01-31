@@ -1,28 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
-class arfn
-  implements View.OnClickListener
+public class arfn
+  extends BroadcastReceiver
 {
-  arfn(arfh paramarfh, int paramInt) {}
+  public arfn(FileBrowserActivity paramFileBrowserActivity) {}
   
-  public void onClick(View paramView)
+  @TargetApi(5)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Arfh.a != null)
+    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
     {
-      if (this.jdField_a_of_type_Int != 1) {
-        break label79;
-      }
-      azmj.b(null, "dc00898", "", "", "0X800A745", "0X800A745", aroo.c(this.jdField_a_of_type_Arfh.e()), 0, "", "", "", "");
-      if (this.jdField_a_of_type_Arfh.a.c()) {
-        this.jdField_a_of_type_Arfh.a.b();
-      }
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
     }
-    label79:
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
-    }
-    this.jdField_a_of_type_Arfh.a.g();
   }
 }
 

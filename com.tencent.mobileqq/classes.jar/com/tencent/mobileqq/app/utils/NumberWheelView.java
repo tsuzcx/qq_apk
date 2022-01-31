@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app.utils;
 
-import ammt;
-import ammu;
+import amri;
+import amrj;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import bhqr;
-import bhxx;
-import bhxy;
-import bhxz;
+import bhuy;
+import bice;
+import bicf;
+import bicg;
 import com.tencent.mobileqq.remind.widget.WheelTextView;
 import com.tencent.mobileqq.remind.widget.WheelView;
 import com.tencent.widget.AdapterView;
@@ -18,11 +18,11 @@ import java.util.List;
 
 public class NumberWheelView
   extends WheelView
-  implements bhqr, bhxx, bhxy, bhxz
+  implements bhuy, bice, bicf, bicg
 {
   public int a;
-  private ammt jdField_a_of_type_Ammt;
-  private ammu jdField_a_of_type_Ammu;
+  private amri jdField_a_of_type_Amri;
+  private amrj jdField_a_of_type_Amrj;
   private Context jdField_a_of_type_AndroidContentContext;
   private final int h = 0;
   private final int i = 36;
@@ -88,10 +88,10 @@ public class NumberWheelView
   public int a()
   {
     int i1 = getSelectedItemPosition();
-    if ((i1 < 0) || (i1 >= this.jdField_a_of_type_Ammt.a.size())) {
+    if ((i1 < 0) || (i1 >= this.jdField_a_of_type_Amri.a.size())) {
       return 0;
     }
-    return ((Integer)this.jdField_a_of_type_Ammt.a.get(i1)).intValue();
+    return ((Integer)this.jdField_a_of_type_Amri.a.get(i1)).intValue();
   }
   
   public void a(View paramView, int paramInt)
@@ -102,16 +102,16 @@ public class NumberWheelView
   public void a(VerticalGallery paramVerticalGallery)
   {
     this.jdField_a_of_type_Int = 1;
-    if (this.jdField_a_of_type_Ammu != null) {
-      this.jdField_a_of_type_Ammu.a(this, paramVerticalGallery);
+    if (this.jdField_a_of_type_Amrj != null) {
+      this.jdField_a_of_type_Amrj.a(this, paramVerticalGallery);
     }
   }
   
   public void b(VerticalGallery paramVerticalGallery)
   {
     this.jdField_a_of_type_Int = 1;
-    if (this.jdField_a_of_type_Ammu != null) {
-      this.jdField_a_of_type_Ammu.a(this, paramVerticalGallery);
+    if (this.jdField_a_of_type_Amrj != null) {
+      this.jdField_a_of_type_Amrj.a(this, paramVerticalGallery);
     }
   }
   
@@ -126,7 +126,7 @@ public class NumberWheelView
   
   public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i1 = this.jdField_a_of_type_Ammt.getCount();
+    int i1 = this.jdField_a_of_type_Amri.getCount();
     paramInt = 0;
     while (paramInt < i1)
     {
@@ -154,20 +154,20 @@ public class NumberWheelView
       this.p = paramInt2;
       this.q = paramInt1;
     }
-    while (this.jdField_a_of_type_Ammt == null)
+    while (this.jdField_a_of_type_Amri == null)
     {
-      this.jdField_a_of_type_Ammt = new ammt(this, this.jdField_a_of_type_AndroidContentContext, 36, this.p, this.q);
-      setAdapter(this.jdField_a_of_type_Ammt);
+      this.jdField_a_of_type_Amri = new amri(this, this.jdField_a_of_type_AndroidContentContext, 36, this.p, this.q);
+      setAdapter(this.jdField_a_of_type_Amri);
       return;
       this.q = paramInt2;
       this.p = paramInt1;
     }
-    this.jdField_a_of_type_Ammt.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Amri.a(paramInt1, paramInt2);
   }
   
-  public void setScrollStateListener(ammu paramammu)
+  public void setScrollStateListener(amrj paramamrj)
   {
-    this.jdField_a_of_type_Ammu = paramammu;
+    this.jdField_a_of_type_Amrj = paramamrj;
   }
   
   public void setValue(int paramInt)

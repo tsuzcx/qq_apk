@@ -2,11 +2,11 @@ package com.tencent.qqmini.sdk.core.cache;
 
 import android.text.TextUtils;
 import android.util.LruCache;
-import bgin;
-import bgiq;
-import bgiu;
-import bgiy;
-import bgja;
+import bgmu;
+import bgmx;
+import bgnb;
+import bgnf;
+import bgnh;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,17 +14,17 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Storage$2
   implements Runnable
 {
-  public Storage$2(bgiy parambgiy, String paramString1, String paramString2, bgja parambgja, String paramString3) {}
+  public Storage$2(bgnf parambgnf, String paramString1, String paramString2, bgnh parambgnh, String paramString3) {}
   
   public void run()
   {
-    ??? = bgiu.a(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((??? != null) && (((String)???).length() > 1048576) && (this.jdField_a_of_type_Bgja != null)) {
-      this.jdField_a_of_type_Bgja.onFailed(this.c, "size limit reached");
+    ??? = bgnb.a(this.jdField_a_of_type_JavaLangString, this.b);
+    if ((??? != null) && (((String)???).length() > 1048576) && (this.jdField_a_of_type_Bgnh != null)) {
+      this.jdField_a_of_type_Bgnh.onFailed(this.c, "size limit reached");
     }
-    if (bgiy.a(this.this$0) != null) {
-      if (bgiy.a(this.this$0).a()) {
-        bgiy.a(this.this$0);
+    if (bgnf.a(this.this$0) != null) {
+      if (bgnf.a(this.this$0).a()) {
+        bgnf.a(this.this$0);
       }
     }
     label361:
@@ -39,40 +39,40 @@ public class Storage$2
             if (this.this$0.a() * 1000L + ((String)???).length() > 10485760L)
             {
               QMLog.e("Storage", "exceeded the limit size");
-              if (this.jdField_a_of_type_Bgja != null) {
-                this.jdField_a_of_type_Bgja.onFailed(this.c, "exceeded the limit size");
+              if (this.jdField_a_of_type_Bgnh != null) {
+                this.jdField_a_of_type_Bgnh.onFailed(this.c, "exceeded the limit size");
               }
             }
-            bgiq localbgiq = bgiy.a(this.this$0).a(this.c);
-            if (localbgiq != null)
+            bgmx localbgmx = bgnf.a(this.this$0).a(this.c);
+            if (localbgmx != null)
             {
-              localbgiq.a(0, (String)???);
-              localbgiq.a();
+              localbgmx.a(0, (String)???);
+              localbgmx.a();
             }
-            if (bgiy.a(this.this$0) != null) {
-              bgiy.a(this.this$0).put(this.c, ???);
+            if (bgnf.a(this.this$0) != null) {
+              bgnf.a(this.this$0).put(this.c, ???);
             }
           }
-          synchronized (bgiy.a())
+          synchronized (bgnf.a())
           {
-            bgiy.a(this.this$0).trimToSize(10485760 / bgiy.a().keySet().size());
-            if (this.jdField_a_of_type_Bgja != null) {
-              this.jdField_a_of_type_Bgja.onSuccess(this.c, "ok");
+            bgnf.a(this.this$0).trimToSize(10485760 / bgnf.a().keySet().size());
+            if (this.jdField_a_of_type_Bgnh != null) {
+              this.jdField_a_of_type_Bgnh.onSuccess(this.c, "ok");
             }
           }
         }
         catch (Throwable localThrowable1)
         {
-          if (this.jdField_a_of_type_Bgja != null) {
-            this.jdField_a_of_type_Bgja.onFailed(this.c, localThrowable1.getMessage());
+          if (this.jdField_a_of_type_Bgnh != null) {
+            this.jdField_a_of_type_Bgnh.onFailed(this.c, localThrowable1.getMessage());
           }
           QMLog.e("Storage", localThrowable1.getMessage(), localThrowable1);
-          if (bgiy.a(this.this$0) == null) {
+          if (bgnf.a(this.this$0) == null) {
             continue;
           }
           try
           {
-            bgiy.a(this.this$0).a();
+            bgnf.a(this.this$0).a();
             return;
           }
           catch (Throwable localThrowable2)
@@ -83,13 +83,13 @@ public class Storage$2
         }
         finally
         {
-          if (bgiy.a(this.this$0) == null) {
+          if (bgnf.a(this.this$0) == null) {
             break label361;
           }
         }
         try
         {
-          bgiy.a(this.this$0).a();
+          bgnf.a(this.this$0).a();
           return;
         }
         catch (Throwable localThrowable3)
@@ -102,7 +102,7 @@ public class Storage$2
       throw localObject3;
       try
       {
-        bgiy.a(this.this$0).a();
+        bgnf.a(this.this$0).a();
         throw localObject2;
       }
       catch (Throwable localThrowable4)
@@ -113,8 +113,8 @@ public class Storage$2
         }
       }
       QMLog.e("Storage", "mDiskCache.isClosed(): ");
-    } while (this.jdField_a_of_type_Bgja == null);
-    this.jdField_a_of_type_Bgja.onFailed(this.c, "can not write");
+    } while (this.jdField_a_of_type_Bgnh == null);
+    this.jdField_a_of_type_Bgnh.onFailed(this.c, "can not write");
   }
 }
 

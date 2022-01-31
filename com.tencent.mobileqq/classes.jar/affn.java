@@ -1,19 +1,8 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import android.content.Intent;
 
-public class affn
-  extends aelt
+public abstract interface affn
 {
-  public TextView a;
-  public AutoStartProgressBar a;
-  public ArkAppLoadLayout a;
-  public ArkAppView a;
-  public String b;
-  public View c;
-  public View d;
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
 }
 
 

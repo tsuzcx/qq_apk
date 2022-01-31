@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import axpy;
-import axqc;
-import axqd;
+import axuh;
+import axul;
+import axum;
 import java.lang.ref.WeakReference;
 import javax.microedition.khronos.egl.EGLContext;
-import wsv;
+import wxe;
 
 public class FlowDecodeScreenSurfaceBase
 {
   protected int a;
-  private axqc jdField_a_of_type_Axqc;
-  private axqd jdField_a_of_type_Axqd = new axpy(this);
+  private axul jdField_a_of_type_Axul;
+  private axum jdField_a_of_type_Axum = new axuh(this);
   private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   protected int b;
   private int c = 2;
@@ -31,17 +31,17 @@ public class FlowDecodeScreenSurfaceBase
   
   public void a()
   {
-    wsv.b("FlowEdit_FlowDecodeScreenSurfaceBase", "release: ");
-    this.jdField_a_of_type_Axqc.b();
-    this.jdField_a_of_type_Axqc.c();
+    wxe.b("FlowEdit_FlowDecodeScreenSurfaceBase", "release: ");
+    this.jdField_a_of_type_Axul.b();
+    this.jdField_a_of_type_Axul.c();
   }
   
   public void c()
   {
-    wsv.b("FlowEdit_FlowDecodeScreenSurfaceBase", "start: ");
-    this.jdField_a_of_type_Axqc = new axqc(new WeakReference(this.jdField_a_of_type_Axqd));
-    this.jdField_a_of_type_Axqc.a();
-    this.jdField_a_of_type_Axqc.a(this.jdField_a_of_type_Int, this.b);
+    wxe.b("FlowEdit_FlowDecodeScreenSurfaceBase", "start: ");
+    this.jdField_a_of_type_Axul = new axul(new WeakReference(this.jdField_a_of_type_Axum));
+    this.jdField_a_of_type_Axul.a();
+    this.jdField_a_of_type_Axul.a(this.jdField_a_of_type_Int, this.b);
   }
 }
 

@@ -1,37 +1,55 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.RichStatusEditText;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class axxd
-  implements TextWatcher
+class axxd
+  extends alwx
 {
-  public axxd(EditActivity paramEditActivity) {}
+  axxd(axxb paramaxxb) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(boolean paramBoolean, long paramLong, alwy paramalwy)
   {
-    EditActivity.a = true;
-    azmj.b(this.a.app, "CliOper", "", "", "signiture", "set_clk_mdf", 0, 0, "", "", "", "");
-    if ((EditActivity.a(this.a).getSelectionStart() == 7) && (EditActivity.a(this.a).getText().toString().trim().length() == 7)) {
-      EditActivity.a(this.a).setSelection(paramEditable.length());
+    if (axxb.a(this.a) == null)
+    {
+      QLog.d(axxb.a, 1, new Object[] { "return because queue is null, isSuccess:", Boolean.valueOf(paramBoolean), " ,uniseq:", Long.valueOf(paramLong) });
+      return;
     }
-    EditActivity.a(this.a);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    QLog.d("EditActivity", 2, "beforeTextChanged CharSequence = " + paramCharSequence + ", start = " + paramInt1 + ", count = " + paramInt2 + ", after = " + paramInt3);
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    QLog.d("EditActivity", 2, "onTextChanged CharSequence = " + paramCharSequence + ", start = " + paramInt1 + ", count = " + paramInt3);
+    axww localaxww = (axww)axxb.a(this.a).peek();
+    if (localaxww != null) {
+      if ((paramLong == localaxww.jdField_a_of_type_Long) && (localaxww.c == 4))
+      {
+        localaxww.c = 5;
+        axxb.a(this.a).remove(localaxww);
+        if (localaxww.jdField_a_of_type_Alwx != null) {
+          localaxww.jdField_a_of_type_Alwx.a(paramBoolean, paramLong, paramalwy);
+        }
+        if (localaxww.jdField_a_of_type_Axwz != null) {
+          localaxww.jdField_a_of_type_Axwz.a(paramBoolean, paramLong);
+        }
+        if (localaxww.jdField_a_of_type_Boolean) {
+          azex.a().a(paramLong);
+        }
+        axxb.a(this.a).b(localaxww.jdField_a_of_type_Long);
+        if (QLog.isColorLevel())
+        {
+          paramalwy = new StringBuilder();
+          paramalwy.append("OrderSendObserver remove uniseq:").append(paramLong).append(", queue size:").append(axxb.a(this.a).size()).append(", mNeedCompress:").append(localaxww.jdField_a_of_type_Boolean).append(", issuccess:").append(paramBoolean);
+          QLog.d(axxb.a, 2, paramalwy.toString());
+        }
+      }
+    }
+    for (;;)
+    {
+      axxb.a(this.a);
+      return;
+      QLog.d(axxb.a, 1, new Object[] { "OrderSendObserver peekFirst but fail, status:", Integer.valueOf(localaxww.c), ", uniseq:", Long.valueOf(localaxww.jdField_a_of_type_Long) });
+      continue;
+      QLog.d(axxb.a, 1, new Object[] { "OrderSendObserver peekFirst is null. uniseq:", Long.valueOf(paramLong), ", issuccess:", Boolean.valueOf(paramBoolean) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axxd
  * JD-Core Version:    0.7.0.1
  */

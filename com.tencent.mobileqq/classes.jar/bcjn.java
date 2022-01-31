@@ -1,12 +1,23 @@
-public class bcjn
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+
+class bcjn
+  implements bdbc
 {
-  public long a;
-  public String a;
+  bcjn(bcjl parambcjl) {}
   
-  public bcjn(String paramString, long paramLong)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    if ((paramBitmap != null) && (bcjl.a(this.a) != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, String.format("onDecodeTaskCompleted uin=%s", new Object[] { paramString }));
+      }
+      if (!TextUtils.isEmpty(paramString)) {
+        bcjl.a(this.a).b(paramString);
+      }
+    }
   }
 }
 

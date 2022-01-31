@@ -1,54 +1,54 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import apgi;
-import aphq;
-import awbv;
+import apkr;
+import aplz;
+import awge;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 public abstract class XmlData
-  extends awbv
+  extends awge
 {
   public static final int STATE_LOADING = 2;
   public static final int STATE_NONE = 0;
   public static final int STATE_SUCCESS = 1;
-  @aphq(a=true, b=false)
+  @aplz(a=true, b=false)
   public String MD5;
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public boolean StoreBackup;
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public int Version;
   public long downSize;
-  @aphq(a=false, b=true)
+  @aplz(a=false, b=true)
   public boolean hasResDownloaded;
   public boolean isUserClick;
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public boolean load2G;
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public boolean load3G;
-  @aphq(a=false, b=true)
+  @aplz(a=false, b=true)
   public int loadState;
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public boolean loadWifi;
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public boolean net_2_2G;
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public boolean net_2_3G;
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public boolean net_2_wifi;
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public boolean notPreDownloadInLowEndPhone;
   public int reqLoadCount;
   public String strLog;
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public String strPkgName;
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public String strResName;
-  @aphq(a=true, b=false)
+  @aplz(a=true, b=false)
   public String strResURL_big;
-  @aphq(a=true, b=false)
+  @aplz(a=true, b=false)
   public String strResURL_small;
-  @aphq(a=false, b=true)
+  @aplz(a=false, b=true)
   public long tLoadFail;
   public long tStart;
   public long totalSize;
@@ -60,7 +60,7 @@ public abstract class XmlData
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    for (Class localClass = getClass(); localClass != awbv.class; localClass = localClass.getSuperclass())
+    for (Class localClass = getClass(); localClass != awge.class; localClass = localClass.getSuperclass())
     {
       Field[] arrayOfField = localClass.getDeclaredFields();
       int j = arrayOfField.length;
@@ -73,7 +73,7 @@ public abstract class XmlData
         {
           i += 1;
           break;
-          if (((Field)localObject).isAnnotationPresent(aphq.class))
+          if (((Field)localObject).isAnnotationPresent(aplz.class))
           {
             if (!((Field)localObject).isAccessible()) {
               ((Field)localObject).setAccessible(true);
@@ -102,14 +102,14 @@ public abstract class XmlData
     do
     {
       return;
-      arrayOfField = apgi.a(paramXmlData.getClass());
+      arrayOfField = apkr.a(paramXmlData.getClass());
     } while ((arrayOfField == null) || (arrayOfField.length == 0));
     int j = arrayOfField.length;
     int i = 0;
     while (i < j)
     {
       Field localField = arrayOfField[i];
-      if ((localField.isAnnotationPresent(aphq.class)) && (((aphq)localField.getAnnotation(aphq.class)).a())) {}
+      if ((localField.isAnnotationPresent(aplz.class)) && (((aplz)localField.getAnnotation(aplz.class)).a())) {}
       try
       {
         localField.set(this, localField.get(paramXmlData));

@@ -1,16 +1,19 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.automator.step.CleanCache.1;
+import java.io.File;
+import java.util.Comparator;
 
 public class amhq
+  implements Comparator<File>
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
+  public amhq(CleanCache.1 param1) {}
+  
+  public int a(File paramFile1, File paramFile2)
+  {
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 

@@ -1,27 +1,27 @@
 package dov.com.qq.im.ae;
 
-import bkle;
-import bmcv;
-import bngs;
+import bkpl;
+import bmhh;
+import bnle;
 
 public class AEPituCameraUnit$6
   implements Runnable
 {
-  public AEPituCameraUnit$6(bkle parambkle) {}
+  public AEPituCameraUnit$6(bkpl parambkpl) {}
   
   public void run()
   {
-    bngs.a();
-    bngs.a(bkle.a(this.this$0).a());
-    if (bngs.c()) {
-      bngs.b(bkle.a(this.this$0).a());
+    bnle.a();
+    bnle.a(bkpl.a(this.this$0).a());
+    if (bnle.c()) {
+      bnle.b(bkpl.a(this.this$0).a());
     }
     for (;;)
     {
-      bkle.e(this.this$0);
-      bkle.f(this.this$0);
+      bkpl.e(this.this$0);
+      bkpl.f(this.this$0);
       return;
-      bngs.c(bkle.a(this.this$0).a());
+      bnle.c(bkpl.a(this.this$0).a());
     }
   }
 }

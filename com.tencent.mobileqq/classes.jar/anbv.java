@@ -1,57 +1,43 @@
-import android.content.Context;
-import android.graphics.SurfaceTexture;
-import android.opengl.GLSurfaceView;
-import android.opengl.GLSurfaceView.Renderer;
-import android.util.Size;
-import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
-import java.nio.FloatBuffer;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface anbv
-  extends GLSurfaceView.Renderer
+public class anbv
 {
-  public abstract int a();
+  public float a;
+  public int a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public int c = -1;
   
-  public abstract long a();
+  public anbv()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+  }
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, SurfaceTexture paramSurfaceTexture, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
-  
-  public abstract void a(int paramInt, Object paramObject);
-  
-  public abstract void a(int paramInt, float[] paramArrayOfFloat);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(amqt paramamqt);
-  
-  public abstract void a(amqx paramamqx);
-  
-  public abstract void a(andf paramandf);
-  
-  public abstract void a(VideoRecordController paramVideoRecordController);
-  
-  public abstract void a(FloatBuffer paramFloatBuffer, Size paramSize);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(amqw paramamqw);
-  
-  public abstract boolean a(GLSurfaceView paramGLSurfaceView, Context paramContext);
-  
-  public abstract boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2);
-  
-  public abstract void b();
-  
-  public abstract void b(long paramLong);
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public String toString()
+  {
+    try
+    {
+      String str1 = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
+      return "ImageTag{imageId = " + this.jdField_a_of_type_JavaLangString + ", tagName = " + this.jdField_b_of_type_JavaLangString + ", tagConfidence = " + this.jdField_a_of_type_Int + ", tagConfidence_f = " + this.jdField_a_of_type_Float + ", need_check_lbs = " + this.jdField_b_of_type_Int + ", cdbRetCode = " + this.c + ", cdbRes = " + str1 + '}';
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ARCloudSceneRecogResult", 2, "toString error, msg:" + localException.getMessage());
+        }
+        String str2 = "";
+      }
+    }
+  }
 }
 
 

@@ -1,21 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import android.widget.RelativeLayout;
 
-class aevo
-  implements DialogInterface.OnClickListener
+public class aevo
 {
-  aevo(aevn paramaevn) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    DoodlePanel.a(this.a.a, false);
-  }
+  public RelativeLayout a;
 }
 
 

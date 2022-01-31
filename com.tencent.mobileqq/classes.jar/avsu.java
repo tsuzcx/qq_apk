@@ -1,10 +1,11 @@
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import java.util.List;
 
-public abstract interface avsu
+abstract interface avsu
 {
-  public abstract void a();
+  public abstract void a(RedTouchItem paramRedTouchItem, int paramInt);
   
-  public abstract void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong);
+  public abstract void a(List<RedTouchItem> paramList);
 }
 
 

@@ -1,13 +1,13 @@
 package dov.com.tencent.mobileqq.richmedia.capture.view;
 
-import bniz;
+import bnnl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class TvkVideoViewHelper$1
   implements Runnable
 {
-  public TvkVideoViewHelper$1(bniz parambniz) {}
+  public TvkVideoViewHelper$1(bnnl parambnnl) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class TvkVideoViewHelper$1
     if (QLog.isColorLevel()) {
       QLog.d("TvkVideoViewHelper", 2, "start play");
     }
-    bniz.a(this.this$0).start();
+    bnnl.a(this.this$0).start();
   }
 }
 

@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ayqd
-  implements aypy
+class ayqd
+  implements View.OnClickListener
 {
-  public ayqd(NetSearchEngine paramNetSearchEngine, List paramList) {}
+  ayqd(ayqc paramayqc, aynu paramaynu) {}
   
-  public void a(List paramList) {}
-  
-  public void a(List paramList, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    ayrd.a();
-    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).a.countDown();
-  }
-  
-  public void a(List paramList, ayqm paramayqm)
-  {
-    a(paramList, paramayqm.a);
+    this.jdField_a_of_type_Aynu.a(paramView);
   }
 }
 

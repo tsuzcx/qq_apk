@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.identification;
 
 import android.app.Activity;
-import asti;
+import asxr;
 import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 public class IdentificationPoseReflect$2
   implements Runnable
 {
-  public IdentificationPoseReflect$2(asti paramasti, Activity paramActivity) {}
+  public IdentificationPoseReflect$2(asxr paramasxr, Activity paramActivity) {}
   
   public void run()
   {

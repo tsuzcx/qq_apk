@@ -1,8 +1,17 @@
-import android.graphics.Bitmap;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
 
-public abstract interface bnec
+public class bnec
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(Bitmap paramBitmap);
+  public bnec(PickerContainer paramPickerContainer) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.setAlpha(PickerContainer.b(this.a).floatValue());
+    this.a.invalidate();
+  }
 }
 
 

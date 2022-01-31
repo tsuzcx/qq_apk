@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.vas;
 
-import aubp;
-import bdpd;
+import aufy;
+import bdtm;
 import java.lang.ref.WeakReference;
 
 class PobingDecoder$2
   implements Runnable
 {
-  PobingDecoder$2(PobingDecoder paramPobingDecoder, bdpd parambdpd) {}
+  PobingDecoder$2(PobingDecoder paramPobingDecoder, bdtm parambdtm) {}
   
   public void run()
   {
-    aubp localaubp = (aubp)this.this$0.a.get();
-    if (localaubp != null) {
-      localaubp.postQuery(this.a);
+    aufy localaufy = (aufy)this.this$0.a.get();
+    if (localaufy != null) {
+      localaufy.postQuery(this.a);
     }
   }
 }

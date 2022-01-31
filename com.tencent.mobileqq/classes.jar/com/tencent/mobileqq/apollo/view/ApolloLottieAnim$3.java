@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.view;
 
-import bdvv;
-import bdvx;
+import beae;
+import beag;
 
 class ApolloLottieAnim$3
   implements Runnable
 {
-  ApolloLottieAnim$3(ApolloLottieAnim paramApolloLottieAnim, bdvv parambdvv) {}
+  ApolloLottieAnim$3(ApolloLottieAnim paramApolloLottieAnim, beae parambeae) {}
   
   public void run()
   {
-    bdvx.a(this.a, null);
+    beag.a(this.a, null);
   }
 }
 

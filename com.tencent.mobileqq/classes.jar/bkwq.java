@@ -1,203 +1,145 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMCameraCaptureActivity;
-import java.util.LinkedList;
+import android.support.annotation.NonNull;
+import java.util.Arrays;
 import java.util.List;
 
 public class bkwq
 {
-  private static long a;
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
   
-  private static Bundle a(@Nullable Bundle paramBundle)
+  private void a()
   {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
+    double d4 = this.f * 1.0D / this.e;
+    double d5 = this.jdField_b_of_type_Int * 1.0D / this.jdField_a_of_type_Int;
+    double d2 = this.e;
+    double d3 = this.f;
+    double d1;
+    if (d4 > d5) {
+      d1 = d5 * d2;
     }
-    paramBundle = localBundle.getString("material_id");
-    if (!TextUtils.isEmpty(paramBundle))
-    {
-      paramBundle = paramBundle.split("\\^");
-      if (paramBundle.length == 2) {
-        localBundle.putString("KEY_CURRENT_SELECT_ID", paramBundle[1]);
-      }
-    }
-    localBundle.putInt("AECAMERA_MODE", 200);
-    localBundle.putInt("VIDEO_STORY_FROM_TYPE", bkwm.x.a());
-    localBundle.putInt("VIDEO_STORY_JUMP_TO_TYPE", 1);
-    localBundle.putInt("entrance_type", 120);
-    localBundle.putInt("edit_video_type", 10026);
-    localBundle.putInt("capture_intent_mode", 8);
-    return localBundle;
-  }
-  
-  public static void a(Activity paramActivity, int paramInt1, int paramInt2, atcr paramatcr)
-  {
-    if (b()) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("VIDEO_STORY_FROM_TYPE", paramInt2);
-    localBundle.putInt("AECAMERA_MODE", 200);
-    localBundle.putInt("ability_flag", 2);
-    localBundle.putInt("edit_video_type", 10023);
-    if (paramatcr != null)
-    {
-      localBundle.putBoolean("key_camera_prefer_id", paramatcr.jdField_a_of_type_Boolean);
-      localBundle.putBoolean("key_has_countdown", paramatcr.b);
-      localBundle.putBoolean("key_disable_face_detect", paramatcr.d);
-      localBundle.putBoolean("key_need_check_sensitive", paramatcr.c);
-      localBundle.putString("key_guide_image", paramatcr.jdField_a_of_type_JavaLangString);
-    }
-    QIMCameraCaptureActivity.a(paramActivity, localBundle, paramInt1);
-    paramActivity.overridePendingTransition(2130772232, 2130772038);
-  }
-  
-  public static void a(Activity paramActivity, int paramInt, Bundle paramBundle)
-  {
-    if (b()) {
-      return;
-    }
-    blbo.a().a("AECameraLauncher---launchAECameraUnit-begin");
-    xlb localxlb = xlb.a();
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putInt("entrance_type", paramInt);
-    localBundle.putInt("edit_video_type", 10023);
-    localBundle.putInt("capture_intent_mode", 8);
-    if (a(localBundle))
-    {
-      blfg.b("AECameraLauncher", "isOpenFrontFirst: true");
-      axky.a(1);
-    }
-    axky.a();
-    localxlb.a(paramActivity, localBundle, 20000);
-    paramActivity.overridePendingTransition(2130772232, 2130772038);
-    wta.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
-    blbo.a().a("AECameraLauncher---launchAECameraUnit-end");
-    blbo.a().a(false);
-    blbo.a().c();
-  }
-  
-  public static void a(Activity paramActivity, @Nullable Bundle paramBundle)
-  {
-    blfg.a("AECameraLauncher", "[AE Profiler] launchAECameraFromCircle");
-    paramBundle = a(paramBundle);
-    xlb.a().a(paramActivity, paramBundle, 20000);
-    paramActivity.overridePendingTransition(2130772232, 2130772038);
-  }
-  
-  public static void a(Context paramContext, Bundle paramBundle)
-  {
-    if (b()) {
-      return;
-    }
-    xlb localxlb = xlb.a();
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putInt("edit_video_type", 10023);
-    localBundle.putInt("capture_intent_mode", 8);
-    if (a(localBundle))
-    {
-      blfg.b("AECameraLauncher", "isOpenFrontFirst: true");
-      axky.a(1);
-    }
-    localxlb.a(paramContext, localBundle);
-    wta.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
-  }
-  
-  public static boolean a()
-  {
-    if (!ayyi.a()) {}
     for (;;)
     {
-      return false;
-      if ((bnob.b(xlb.a())) && (azgk.a(BaseApplicationImpl.getContext()) != 2)) {}
-      for (int i = 1; i != 0; i = 0) {
-        return true;
-      }
-    }
-  }
-  
-  private static boolean a(Activity paramActivity)
-  {
-    if (Build.VERSION.SDK_INT < 23) {
-      return false;
-    }
-    if (!ammv.a(paramActivity)) {}
-    for (int i = 1;; i = 0)
-    {
-      LinkedList localLinkedList = new LinkedList();
-      if (i != 0)
-      {
-        localLinkedList.add("android.permission.READ_EXTERNAL_STORAGE");
-        localLinkedList.add("android.permission.WRITE_EXTERNAL_STORAGE");
-      }
-      if (localLinkedList.size() <= 0) {
-        break;
-      }
-      paramActivity.requestPermissions((String[])localLinkedList.toArray(new String[0]), 1);
-      return true;
-    }
-  }
-  
-  private static boolean a(Bundle paramBundle)
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if (((axky.a()) || (paramBundle.getInt("VIDEO_STORY_JUMP_TO_TYPE", 0) == 0)) && ((paramBundle.getInt("AECAMERA_MODE") != 202) || (!anwv.d())))
-    {
-      bool1 = bool2;
-      if (paramBundle.getInt("AECAMERA_MODE") == 203)
-      {
-        bool1 = bool2;
-        if (!anwv.d()) {}
-      }
-    }
-    else
-    {
-      bool1 = true;
-    }
-    return bool1;
-  }
-  
-  public static void b(Activity paramActivity, @Nullable Bundle paramBundle)
-  {
-    if (!a(paramActivity))
-    {
-      if ((a()) && (Build.VERSION.SDK_INT >= 21)) {
-        a(paramActivity, paramBundle);
-      }
-    }
-    else {
+      this.k = ((int)d2);
+      this.l = ((int)d1);
       return;
+      d1 = d3;
+      if (d4 < d5)
+      {
+        d2 = 1.0D / d5 * d3;
+        d1 = d3;
+      }
     }
-    blfh.a(paramActivity, new Intent().putExtras(paramBundle));
   }
   
-  private static boolean b()
+  private String h()
   {
-    long l = System.currentTimeMillis();
-    QLog.d("AECameraLauncher", 2, "pre: " + a + " cur: " + l);
-    if (Math.abs(l - a) < 500L)
-    {
-      QLog.d("AECameraLauncher", 2, "isFastClick.");
-      a = l;
-      return true;
+    if (this.jdField_a_of_type_Boolean) {
+      return i();
     }
-    a = l;
-    return false;
+    return e();
+  }
+  
+  private String i()
+  {
+    if ((this.j != 0) && (this.i != 0)) {
+      return this.j + "*" + this.i;
+    }
+    return "none";
+  }
+  
+  public String a()
+  {
+    if ((this.jdField_b_of_type_Int != 0) && (this.jdField_a_of_type_Int != 0)) {
+      return this.jdField_b_of_type_Int + "*" + this.jdField_a_of_type_Int;
+    }
+    return "none";
+  }
+  
+  public List<String> a()
+  {
+    a();
+    return Arrays.asList(new String[] { "取景框大小: " + this.jdField_b_of_type_Int + "*" + this.jdField_a_of_type_Int, "设置的预览分辨率: " + this.d + "*" + this.c, "设置的照片分辨率: " + this.f + "*" + this.e, "普通渲染 & 截帧分辨率: " + this.h + "*" + this.g, "高清渲染 & 截帧分辨率: " + this.j + "*" + this.i, "大图拍照分辨率: " + this.l + "*" + this.k, "视频分辨率: " + this.n + "*" + this.m, "预览帧率: TODO" });
+  }
+  
+  public String b()
+  {
+    if ((this.d != 0) && (this.c != 0)) {
+      return this.d + "*" + this.c;
+    }
+    return "none";
+  }
+  
+  public String c()
+  {
+    if ((this.f != 0) && (this.e != 0)) {
+      return this.f + "*" + this.e;
+    }
+    return "none";
+  }
+  
+  public String d()
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      return h();
+    }
+    return f();
+  }
+  
+  public String e()
+  {
+    if ((this.h != 0) && (this.g != 0)) {
+      return this.h + "*" + this.g;
+    }
+    return "none";
+  }
+  
+  public String f()
+  {
+    a();
+    if ((this.l != 0) && (this.k != 0)) {
+      return this.l + "*" + this.k;
+    }
+    return "none";
+  }
+  
+  public String g()
+  {
+    if ((this.n != 0) && (this.m != 0)) {
+      return this.n + "*" + this.m;
+    }
+    return "none";
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    List localList = a();
+    int i2 = localList.size();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      localStringBuilder.append((String)localList.get(i1));
+      if (i1 < i2 - 1) {
+        localStringBuilder.append("\n");
+      }
+      i1 += 1;
+    }
+    return localStringBuilder.toString();
   }
 }
 

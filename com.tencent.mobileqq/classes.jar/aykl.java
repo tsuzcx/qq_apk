@@ -1,10 +1,13 @@
+import android.widget.TextView;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+
 public class aykl
 {
-  public int a;
-  public CharSequence a;
-  public String a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
   
-  public aykl(aykk paramaykk) {}
+  public aykl(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
 }
 
 

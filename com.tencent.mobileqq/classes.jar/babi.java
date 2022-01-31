@@ -1,29 +1,18 @@
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.mobileqq.tablequery.TableQueryViewer;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import kotlin.Metadata;
 
-public class babi
-  implements AdapterView.OnItemLongClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class babi
+  implements View.OnClickListener
 {
-  public babi(TableQueryViewer paramTableQueryViewer, Context paramContext) {}
+  babi(babh parambabh) {}
   
-  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public final void onClick(View paramView)
   {
-    paramAdapterView = ((babc)TableQueryViewer.a(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer).get(paramInt)).b;
-    paramView = (ClipboardManager)paramView.getContext().getSystemService("clipboard");
-    if ((paramView != null) && (!TextUtils.isEmpty(paramAdapterView)))
-    {
-      paramView.setPrimaryClip(ClipData.newPlainText("bigT", paramAdapterView));
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.getContext(), this.jdField_a_of_type_AndroidContentContext.getString(2131690516), 0).a();
-    }
-    return true;
+    this.a.dismiss();
+    azqs.b(babh.a(this.a).app, "dc00898", "", "", "0X800ADD6", "0X800ADD6", 0, 0, "", "", "", "");
   }
 }
 

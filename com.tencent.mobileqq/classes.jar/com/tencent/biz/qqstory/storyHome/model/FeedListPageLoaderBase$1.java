@@ -2,22 +2,22 @@ package com.tencent.biz.qqstory.storyHome.model;
 
 import com.tribe.async.async.ThreadOffFunction;
 import com.tribe.async.reactive.Stream;
-import wkj;
-import wkl;
-import wko;
+import wos;
+import wou;
+import wox;
 
 public class FeedListPageLoaderBase$1
   implements Runnable
 {
-  public FeedListPageLoaderBase$1(wkj paramwkj) {}
+  public FeedListPageLoaderBase$1(wos paramwos) {}
   
   public void run()
   {
-    if (wkj.a(this.this$0) != null) {
-      wkj.a(this.this$0).cancel();
+    if (wos.a(this.this$0) != null) {
+      wos.a(this.this$0).cancel();
     }
-    wkj.a(this.this$0, Stream.of(Integer.valueOf(this.this$0.a.a)).map(new ThreadOffFunction("Q.qqstory.home.data.FeedListPageLoaderBase", 2)).map(this.this$0.a(this.this$0.a)).map(this.this$0.a()));
-    wkj.a(this.this$0).subscribe(new wko(this.this$0));
+    wos.a(this.this$0, Stream.of(Integer.valueOf(this.this$0.a.a)).map(new ThreadOffFunction("Q.qqstory.home.data.FeedListPageLoaderBase", 2)).map(this.this$0.a(this.this$0.a)).map(this.this$0.a()));
+    wos.a(this.this$0).subscribe(new wox(this.this$0));
   }
 }
 

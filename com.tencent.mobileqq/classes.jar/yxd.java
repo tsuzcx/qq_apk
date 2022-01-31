@@ -1,18 +1,30 @@
+import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.biz.ui.CustomMenuBar;
 
-class yxd
-  implements View.OnClickListener
+public class yxd
+  implements View.OnTouchListener
 {
-  yxd(yxc paramyxc) {}
+  public yxd(CustomMenuBar paramCustomMenuBar, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (yxc.a(this.a) == null) {}
-    while (ytg.a(yxc.class.getName() + "clickPanel")) {
-      return;
+    switch (paramMotionEvent.getAction())
+    {
     }
-    this.a.a(false);
+    for (;;)
+    {
+      return false;
+      if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b)
+      {
+        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
+        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(4);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842853);
+      }
+    }
   }
 }
 

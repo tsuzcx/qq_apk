@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agot;
+import agti;
 import android.text.TextUtils;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -15,7 +15,7 @@ import nrc;
 public class PublicAccountChatPie$46
   implements Runnable
 {
-  public PublicAccountChatPie$46(agot paramagot) {}
+  public PublicAccountChatPie$46(agti paramagti) {}
   
   public void run()
   {

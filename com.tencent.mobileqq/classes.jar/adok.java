@@ -1,30 +1,21 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.QQSettingMe.WebPreloadTask;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adok
-  implements bdzz
+  implements View.OnClickListener
 {
-  public adok(QQSettingMe.WebPreloadTask paramWebPreloadTask, QQSettingMe paramQQSettingMe) {}
+  public adok(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe) != null)) {
-      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).a();
-    }
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    paramView = this.a.getIntent().getStringExtra("uin");
+    if ((paramView != null) && (paramView.equals(this.a.app.getCurrentAccountUin())))
     {
-      localStringBuilder = new StringBuilder().append("WebPreloadTask preloadWebProcess isProcessExist: ");
-      if (paramBoolean) {
-        break label64;
-      }
-    }
-    label64:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("QQSettingRedesign", 2, paramBoolean);
-      return;
+      ProfileLabelEditorActivity.a(this.a);
+      azqs.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "4", "", "", "");
     }
   }
 }

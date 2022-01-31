@@ -1,38 +1,18 @@
-import com.tencent.common.app.AppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
 
-class albh
+public final class albh
+  implements Parcelable.Creator<SpriteTaskParam>
 {
-  public int a;
-  public String a;
-  public final List<albi> a;
-  
-  public albh()
+  public SpriteTaskParam a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    return new SpriteTaskParam(paramParcel);
   }
   
-  public JSONObject a(String paramString, AppInterface paramAppInterface)
+  public SpriteTaskParam[] a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramAppInterface == null)) {
-      return null;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((albi)localIterator.next()).a(paramString, localJSONObject, paramAppInterface);
-    }
-    return localJSONObject;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mClientId:").append(this.jdField_a_of_type_Int).append(" mCmdSSOName:").append(this.jdField_a_of_type_JavaLangString).append(" mParameters:").append(this.jdField_a_of_type_JavaUtilList);
-    return localStringBuilder.toString();
+    return new SpriteTaskParam[paramInt];
   }
 }
 

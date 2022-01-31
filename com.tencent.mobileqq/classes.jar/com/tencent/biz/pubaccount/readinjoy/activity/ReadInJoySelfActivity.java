@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import alpo;
+import alud;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bdag;
-import bjxj;
+import bdep;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -64,7 +64,7 @@ public class ReadInJoySelfActivity
     for (int i = 0;; i = 1)
     {
       ((qzi)localObject1).a((String)localObject2, i);
-      this.b = bjxj.z(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.b = bkbq.z(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       setContentView(2131558451);
       d();
       localObject1 = getIntent();
@@ -78,7 +78,7 @@ public class ReadInJoySelfActivity
       ((Bundle)localObject2).putBoolean("show_type", this.b);
       ((Bundle)localObject2).putBoolean("redTouch", this.c);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.setArguments((Bundle)localObject2);
-      ((FragmentTransaction)localObject1).add(2131366780, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment);
+      ((FragmentTransaction)localObject1).add(2131366790, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment);
       ((FragmentTransaction)localObject1).show(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment);
       ((FragmentTransaction)localObject1).commit();
       return;
@@ -91,7 +91,7 @@ public class ReadInJoySelfActivity
     {
       hideTitleBar();
       setImmersiveStatus();
-      this.titleRoot = ((RelativeLayout)findViewById(2131377989));
+      this.titleRoot = ((RelativeLayout)findViewById(2131378043));
       if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
       {
         super.getWindow().addFlags(67108864);
@@ -107,8 +107,8 @@ public class ReadInJoySelfActivity
       }
       return;
     }
-    setTitle(alpo.a(2131713469));
-    this.leftView.setText(alpo.a(2131713244));
+    setTitle(alud.a(2131713481));
+    this.leftView.setText(alud.a(2131713256));
     a();
   }
   
@@ -125,7 +125,7 @@ public class ReadInJoySelfActivity
       if (!ThemeUtil.isInNightMode(this.app)) {
         break label156;
       }
-      if ((bdag.b()) || (bdag.d())) {
+      if ((bdep.b()) || (bdep.d())) {
         break label136;
       }
       this.mSystemBarComp.setStatusBarColor(-7829368);
@@ -133,7 +133,7 @@ public class ReadInJoySelfActivity
     for (;;)
     {
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130848925);
+      this.leftView.setBackgroundResource(2130848998);
       if (this.centerView != null) {
         this.centerView.setTextColor(-16777216);
       }
@@ -144,12 +144,12 @@ public class ReadInJoySelfActivity
       this.mSystemBarComp.setStatusBarDarkMode(true);
       continue;
       label156:
-      if ((Build.VERSION.SDK_INT >= 23) && (!bdag.b()) && (!bdag.d()))
+      if ((Build.VERSION.SDK_INT >= 23) && (!bdep.b()) && (!bdep.d()))
       {
         getWindow().getDecorView().setSystemUiVisibility(9216);
         this.mSystemBarComp.setStatusBarColor(-1);
       }
-      else if (!bdag.d())
+      else if (!bdep.d())
       {
         this.mSystemBarComp.setStatusBarColor(-2368549);
       }

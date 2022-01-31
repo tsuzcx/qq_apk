@@ -1,56 +1,33 @@
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecBarAdapter.ImgUpdateListener.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class agyi
-  implements bbmf
+  implements agyy
 {
-  public agyi(BlessResultActivity paramBlessResultActivity) {}
+  public agyf a;
   
-  public void a()
+  public agyi(agyf paramagyf)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadSuccess!");
-    }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.g = this.a.b(this.a.d);
-    if (this.a.jdField_a_of_type_Bhoe.hasMessages(1003)) {
-      this.a.jdField_a_of_type_Bhoe.removeMessages(1003);
-    }
-    this.a.jdField_a_of_type_Bhoe.sendEmptyMessage(1001);
+    this.a = paramagyf;
   }
   
-  public void a(long paramLong)
+  public void a(List<agxz> paramList, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadFail!");
+    if (this.a != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerRecBarAdapter", 2, "data=" + paramList.size());
+      }
+      agyf.a(this.a);
+      ThreadManager.getUIHandler().post(new StickerRecBarAdapter.ImgUpdateListener.1(this, paramString1, paramList, paramString2));
     }
-    if (this.a.jdField_a_of_type_Bhoe.hasMessages(1003)) {
-      this.a.jdField_a_of_type_Bhoe.removeMessages(1003);
+    while (!QLog.isColorLevel()) {
+      return;
     }
-    this.a.jdField_a_of_type_Bhoe.sendEmptyMessage(1003);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStart!");
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStop!");
-    }
-  }
-  
-  public void c(long paramLong)
-  {
-    long l = bdcs.a(this.a.jdField_a_of_type_Agyj.a);
-    int i = (int)(100L * paramLong / l);
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadProcess! rawLen = " + l + ",offset = " + paramLong + ",process = " + i);
-    }
+    QLog.d("StickerRecBarAdapter", 2, "mAdapter is null");
   }
 }
 

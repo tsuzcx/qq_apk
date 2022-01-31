@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.theme.ListenTogetherTheme;
 
-import bajt;
+import baoc;
 
 public class FloatViewSkin$4
   implements Runnable
 {
-  public FloatViewSkin$4(bajt parambajt) {}
+  public FloatViewSkin$4(baoc parambaoc) {}
   
   public void run()
   {
-    this.this$0.b(bajt.a(this.this$0));
+    this.this$0.b(baoc.a(this.this$0));
   }
 }
 

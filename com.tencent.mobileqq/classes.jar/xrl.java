@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
+import java.lang.reflect.Field;
 
-public class xrl
-  implements View.OnClickListener
+public final class xrl
 {
-  public xrl(InnerListView paramInnerListView, int paramInt) {}
+  public final int a;
+  public final String a;
+  public final Field a;
   
-  public void onClick(View paramView)
+  public xrl(String paramString, int paramInt, Field paramField)
   {
-    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
-      InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangReflectField = paramField;
+    paramField.setAccessible(true);
   }
 }
 

@@ -3,11 +3,13 @@ package com.tencent.qqmini.sdk.utils;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.text.TextUtils;
-import bgkv;
+import bgpc;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -611,77 +613,55 @@ public class AssetsUtil
     }
   }
   
-  public static boolean copyFileOrDir(Context paramContext, String paramString1, String paramString2)
+  public static boolean copyFileOrDir(Context paramContext, String paramString1, String paramString2, List<String> paramList)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    for (;;)
-    {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramList == null) || (paramList.size() <= 0)) {
       return false;
-      try
-      {
-        AssetManager localAssetManager = paramContext.getAssets();
-        String[] arrayOfString = localAssetManager.list(paramString1);
-        if ((arrayOfString != null) && (arrayOfString.length != 0))
-        {
-          localObject = new File(paramString2);
-          if (!((File)localObject).exists()) {
-            ((File)localObject).mkdir();
-          }
-          int j = arrayOfString.length;
-          i = 0;
-          if (i < j)
-          {
-            str = arrayOfString[i];
-            if (!TextUtils.isEmpty(str))
-            {
-              localObject = new File(paramString2, str);
-              if (!((File)localObject).exists()) {
-                ((File)localObject).getParentFile().mkdirs();
-              }
-              str = paramString1 + File.separator + str;
-              localObject = ((File)localObject).getAbsolutePath();
-              if (localAssetManager.list(str).length == 0)
-              {
-                if (copyAssetToFile(localAssetManager, str, (String)localObject)) {
-                  break label261;
-                }
-                QMLog.e("[mini] AssetsUtil", String.format("copyAssetToFile from=%s, to=%s fail", new Object[] { str, localObject }));
-                return false;
-              }
-            }
-          }
-        }
-      }
-      catch (Throwable paramContext)
-      {
-        for (;;)
-        {
-          Object localObject;
-          int i;
-          String str;
-          for (;;)
-          {
-            QMLog.e("[mini] AssetsUtil", String.format("copyFileOrDir assetsPath=%s, destPath=%s, exception", new Object[] { paramString1, paramString2 }), paramContext);
-            try
-            {
-              if (!new File(paramString2).exists()) {
-                break;
-              }
-              bgkv.a(paramString2, false);
-              return false;
-            }
-            catch (Throwable paramContext)
-            {
-              return false;
-            }
-          }
-          copyFileOrDir(paramContext, str, (String)localObject);
-          label261:
-          i += 1;
-        }
-      }
     }
-    return true;
+    try
+    {
+      paramContext = paramContext.getAssets();
+      Object localObject = new File(paramString2);
+      if (!((File)localObject).exists()) {
+        ((File)localObject).mkdir();
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        if (!TextUtils.isEmpty(str))
+        {
+          localObject = new File(paramString2, str);
+          if (!((File)localObject).exists()) {
+            ((File)localObject).getParentFile().mkdirs();
+          }
+          str = paramString1 + File.separator + str;
+          localObject = ((File)localObject).getAbsolutePath();
+          if (!copyAssetToFile(paramContext, str, (String)localObject))
+          {
+            QMLog.e("[mini] AssetsUtil", String.format("copyAssetToFile from=%s, to=%s fail", new Object[] { str, localObject }));
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+    catch (Throwable paramContext)
+    {
+      QMLog.e("[mini] AssetsUtil", String.format("copyFileOrDir assetsPath=%s, destPath=%s, exception", new Object[] { paramString1, paramString2 }), paramContext);
+    }
+    try
+    {
+      if (new File(paramString2).exists()) {
+        bgpc.a(paramString2, false);
+      }
+      label238:
+      return false;
+    }
+    catch (Throwable paramContext)
+    {
+      break label238;
+    }
   }
   
   public static void getAssetsSizeTotal(Context paramContext, String paramString, long[] paramArrayOfLong, boolean[] paramArrayOfBoolean)
@@ -727,7 +707,7 @@ public class AssetsUtil
   public static ArrayList<String> getJSConfigByPath(Context paramContext)
   {
     int j = 0;
-    paramContext = bgkv.a(paramContext, "mini/preload/preload.json");
+    paramContext = bgpc.a(paramContext, "mini/preload/preload.json");
     if (TextUtils.isEmpty(paramContext))
     {
       QMLog.e("minigame", "[Load Asset preload js Json]getJSConfig error, jsConfig file empty");
@@ -812,11 +792,11 @@ public class AssetsUtil
     //   72: return
     //   73: astore_0
     //   74: aload_0
-    //   75: invokevirtual 263	java/io/IOException:printStackTrace	()V
+    //   75: invokevirtual 278	java/io/IOException:printStackTrace	()V
     //   78: return
     //   79: astore_1
     //   80: aload_1
-    //   81: invokevirtual 263	java/io/IOException:printStackTrace	()V
+    //   81: invokevirtual 278	java/io/IOException:printStackTrace	()V
     //   84: goto -22 -> 62
     //   87: astore_0
     //   88: aconst_null

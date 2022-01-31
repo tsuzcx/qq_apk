@@ -33,7 +33,7 @@ public abstract class AbstractAlbumListFragment
   @TargetApi(14)
   private void initUI(View paramView)
   {
-    this.xListLayout = ((XFrameLayout)paramView.findViewById(2131369529));
+    this.xListLayout = ((XFrameLayout)paramView.findViewById(2131369547));
     this.xListLayout.setCornerRadiusAndMode(20, 5);
     this.mListView = ((XListView)paramView.findViewById(2131362464));
     this.mListView.setWrapByScroll(true);
@@ -67,7 +67,7 @@ public abstract class AbstractAlbumListFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560815, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560833, paramViewGroup, false);
     this.mAlbumListLogic = generateLogic();
     this.mAlbumListData = this.mAlbumListLogic.mAlbumListData;
     paramViewGroup = getActivity().getIntent();

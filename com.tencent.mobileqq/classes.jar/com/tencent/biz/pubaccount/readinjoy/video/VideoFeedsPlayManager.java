@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import aenj;
-import aenl;
+import aery;
+import aesa;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import bdje;
-import bjxj;
+import bdnn;
+import bkbq;
 import com.tencent.biz.pubaccount.VideoAdInfo;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
@@ -65,7 +65,7 @@ public class VideoFeedsPlayManager
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private aenl jdField_a_of_type_Aenl;
+  private aesa jdField_a_of_type_Aesa;
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler = new rfo(this, Looper.getMainLooper());
   private View jdField_a_of_type_AndroidViewView;
@@ -122,7 +122,7 @@ public class VideoFeedsPlayManager
     }
     for (;;)
     {
-      this.jdField_h_of_type_Boolean = bjxj.g(paramQQAppInterface);
+      this.jdField_h_of_type_Boolean = bkbq.g(paramQQAppInterface);
       return;
       f(false);
     }
@@ -199,7 +199,7 @@ public class VideoFeedsPlayManager
                 paramInt = i1;
                 while (paramInt < 1)
                 {
-                  if (!bdje.a(paramString)) {
+                  if (!bdnn.a(paramString)) {
                     paramArrayOfString[paramInt] = (paramArrayOfString[paramInt] + "&txhost=" + paramString);
                   }
                   paramInt += 1;
@@ -210,21 +210,21 @@ public class VideoFeedsPlayManager
               if (QLog.isColorLevel()) {
                 QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "handleMessage FileMsg.STATUS_RECV_ERROR");
               }
-              QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131720128, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
+              QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131720140, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
             } while (localrfs.jdField_a_of_type_Qyz == null);
             localrfs.jdField_a_of_type_Qyz.a(localrfs, 999, 997, null);
             return;
             if (QLog.isColorLevel()) {
               QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "handleMessage FileMsg.STATUS_FILE_UNSAFE");
             }
-            QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131720126, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
+            QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131720138, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
           } while (localrfs.jdField_a_of_type_Qyz == null);
           localrfs.jdField_a_of_type_Qyz.a(localrfs, 999, 997, null);
           return;
           if (QLog.isColorLevel()) {
             QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "handleMessage FileMsg.STATUS_FILE_EXPIRED");
           }
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131720127, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
+          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131720139, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
         } while (localrfs.jdField_a_of_type_Qyz == null);
         localrfs.jdField_a_of_type_Qyz.a(localrfs, 999, 997, null);
         return;
@@ -423,7 +423,7 @@ public class VideoFeedsPlayManager
         return;
       }
       paramrfs.jdField_a_of_type_AndroidViewView = ((View)localObject);
-      ((View)localObject).setId(2131375243);
+      ((View)localObject).setId(2131375294);
       paramrfs.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject, new ViewGroup.LayoutParams(-1, -1));
       b(paramrfs).a((IVideoViewBase)localObject);
       if (paramrfs.jdField_a_of_type_Qyz != null) {
@@ -1158,13 +1158,13 @@ public class VideoFeedsPlayManager
     rlb.a().b(this);
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      if (aenj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != null) {
-        aenj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_AndroidViewView, null);
+      if (aery.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != null) {
+        aery.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_AndroidViewView, null);
       }
       this.jdField_a_of_type_AndroidViewView = null;
     }
-    if (this.jdField_a_of_type_Aenl != null) {
-      this.jdField_a_of_type_Aenl = null;
+    if (this.jdField_a_of_type_Aesa != null) {
+      this.jdField_a_of_type_Aesa = null;
     }
     this.jdField_a_of_type_Rft = null;
     this.jdField_a_of_type_Rgn = null;

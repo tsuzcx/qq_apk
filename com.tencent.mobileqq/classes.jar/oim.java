@@ -23,9 +23,9 @@ public class oim
 {
   private oin a;
   
-  public oim(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public oim(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
   }
   
   private oidb_cmd0xe16.ReqBody a(RIJBiuAndCommentRequestData paramRIJBiuAndCommentRequestData, ArticleInfo paramArticleInfo)
@@ -36,7 +36,7 @@ public class oim
     oidb_cmd0xe16.CommentInfo localCommentInfo = new oidb_cmd0xe16.CommentInfo();
     if (!TextUtils.isEmpty(paramRIJBiuAndCommentRequestData.getContentString()))
     {
-      localCommentInfo.str_comment.set(new String(bdbi.decode(paramRIJBiuAndCommentRequestData.getContentString().getBytes(), 0)));
+      localCommentInfo.str_comment.set(new String(bdfr.decode(paramRIJBiuAndCommentRequestData.getContentString().getBytes(), 0)));
       if (paramRIJBiuAndCommentRequestData.getCommentType() == 2)
       {
         if (!TextUtils.isEmpty(paramRIJBiuAndCommentRequestData.getReplyUin())) {

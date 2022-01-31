@@ -1,25 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class acyb
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public acyb(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bdfq parambdfq) {}
+  public acyb(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Bdfq.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.getIntent();
-    paramDialogInterface.putExtra("delHead_fileid", FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity));
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.finish();
+    if (!this.a.isFinishing()) {
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acyb
  * JD-Core Version:    0.7.0.1
  */

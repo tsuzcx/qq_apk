@@ -1,56 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class avgd
-  extends Handler
+class avgd
+  implements avgl
 {
-  public avgd(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  avgd(avfx paramavfx, VideoData paramVideoData) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(avgi paramavgi, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 101: 
-    case 100: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a();
-          bhoh localbhoh = bhoh.b;
-          if ((localbhoh != null) && (localbhoh.a())) {
-            localbhoh.b(5);
-          }
-        } while (paramMessage.obj == null);
-        paramMessage = (NearbyPeopleCard)paramMessage.obj;
-        this.a.b = true;
-        this.a.a(paramMessage, true, false);
-        return;
-      } while (NearbyPeopleProfileActivity.a(this.a) == null);
-      NearbyPeopleProfileActivity.a(this.a).b();
-      return;
-    case 102: 
-      NearbyPeopleProfileActivity.a(this.a).a(paramMessage.arg1, paramMessage.arg2);
-      return;
-    case 202: 
-      NearbyPeopleProfileActivity.a(this.a).a(true);
-      this.a.a.sendEmptyMessageDelayed(203, 1500L);
-      return;
-    case 203: 
-      NearbyPeopleProfileActivity.a(this.a).a(false);
-      return;
-    case 204: 
-      this.a.a(this.a.getString(2131694720));
-      return;
-    case 207: 
-      this.a.a(alpo.a(2131707621));
-      return;
+    if (this.jdField_a_of_type_Avfx.a != null) {
+      this.jdField_a_of_type_Avfx.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, paramInt1, paramInt2, "use sdk play error");
     }
-    this.a.a();
+    return true;
   }
 }
 

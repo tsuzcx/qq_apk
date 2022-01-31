@@ -1,17 +1,12 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
 
-public class awow
+public abstract interface awow
 {
-  public long a;
-  public Drawable a;
-  public boolean a;
+  public abstract void a();
   
-  public awow(long paramLong, boolean paramBoolean, Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-  }
+  public abstract void a(PersonalityLabel paramPersonalityLabel, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void setNick(String paramString);
 }
 
 

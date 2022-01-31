@@ -1,6 +1,29 @@
-class bkwp
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
+public class bkwp
 {
-  private static bkwn a = new bkwn(null);
+  public String a;
+  public String b = "null";
+  public String c = "null";
+  
+  public bkwp(@NonNull String paramString)
+  {
+    this.a = paramString;
+  }
+  
+  public bkwp(@NonNull String paramString1, @Nullable String paramString2, @Nullable String paramString3)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "cmd=" + this.a + ", state=" + this.b + ", result=" + this.c;
+  }
 }
 
 

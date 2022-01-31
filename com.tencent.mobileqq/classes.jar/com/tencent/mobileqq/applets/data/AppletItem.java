@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.applets.data;
 
-import amnn;
+import amsc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class AppletItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<AppletItem> CREATOR = new amnn();
+  public static final Parcelable.Creator<AppletItem> CREATOR = new amsc();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;

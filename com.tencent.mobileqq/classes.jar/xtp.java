@@ -1,16 +1,34 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
 
-class xtp
-  implements ValueAnimator.AnimatorUpdateListener
+final class xtp
+  extends xtb
 {
-  xtp(xto paramxto, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
+  xtp(xtb paramxtb, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onFailure(String paramString)
   {
-    paramValueAnimator = (xtr)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setRevealClip(paramValueAnimator.a, paramValueAnimator.b, paramValueAnimator.c);
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
+    }
+    this.jdField_a_of_type_Xtb.onFailure(paramString);
+    if ((this.jdField_a_of_type_Xtb instanceof upi)) {
+      ((upi)this.jdField_a_of_type_Xtb).a(941004);
+    }
+    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 failed message：" + paramString);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 start");
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = this.b;
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 success cost：" + String.valueOf(l1 - l2) + "ms\n");
   }
 }
 

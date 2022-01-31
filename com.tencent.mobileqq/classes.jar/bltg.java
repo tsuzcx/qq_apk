@@ -1,17 +1,21 @@
-import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 class bltg
-  implements blsz
+  implements View.OnClickListener
 {
-  bltg(bltf parambltf) {}
+  bltg(bltd parambltd) {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      return bcjk.b(paramString);
+    if (bltd.a(this.a))
+    {
+      this.a.a.y();
+      return;
     }
-    return "";
+    QQToast.a(BaseApplicationImpl.getContext(), alud.a(2131714086), 0).a();
   }
 }
 

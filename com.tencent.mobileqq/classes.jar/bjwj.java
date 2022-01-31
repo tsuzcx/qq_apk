@@ -1,29 +1,11 @@
-import com.tencent.biz.ui.TouchWebView;
-import cooperation.qzone.webviewwrapper.IWebviewListener;
+import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import cooperation.qzone.video.QzoneWeishiFeedsGpuProxyActivity;
 
-class bjwj
-  implements bjwg
+public class bjwj
 {
-  bjwj(bjwi parambjwi, IWebviewListener paramIWebviewListener) {}
-  
-  public void a()
+  public static Class<? extends PluginProxyActivity> a(String paramString)
   {
-    if (bjwi.a(this.jdField_a_of_type_Bjwi) == null) {}
-    do
-    {
-      return;
-      if (bjwi.a(this.jdField_a_of_type_Bjwi).getVisibility() != 0) {
-        bjwi.a(this.jdField_a_of_type_Bjwi).setVisibility(0);
-      }
-    } while (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener == null);
-    this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onPageFinished();
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener != null) {
-      this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onReceiveError(paramInt, paramString1, paramString2);
-    }
+    return QzoneWeishiFeedsGpuProxyActivity.class;
   }
 }
 

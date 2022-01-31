@@ -1,37 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class bdgp
-  implements View.OnTouchListener
+final class bdgp
+  implements DialogInterface.OnClickListener
 {
-  bdgp(bdgl parambdgl) {}
+  bdgp(bdjz parambdjz) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839716);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130839716));
-    if (this.a.c)
-    {
-      bdgl.a(this.a);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label110;
-      }
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-    }
-    for (;;)
-    {
-      this.a.c = false;
-      paramView = this.a.getWindow().getAttributes();
-      paramView.y = 0;
-      this.a.getWindow().setAttributes(paramView);
-      return false;
-      label110:
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
-    }
+    this.a.dismiss();
   }
 }
 

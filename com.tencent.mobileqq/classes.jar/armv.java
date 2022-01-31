@@ -1,66 +1,118 @@
 import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.SpannableString;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.3;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
 public class armv
+  extends armt
+  implements View.OnClickListener, arkm
 {
-  public static void a(Context paramContext, int paramInt1, int paramInt2, army paramarmy)
+  protected long a;
+  protected boolean a;
+  
+  public armv(arki paramarki, Activity paramActivity)
   {
-    Object localObject = paramContext;
-    if (paramContext == null) {
-      localObject = BaseActivity.sTopActivity;
-    }
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
-      }
-      return;
-    }
-    a((Context)localObject, ((Context)localObject).getString(paramInt1), ((Context)localObject).getString(paramInt2), paramarmy);
+    super(paramarki, paramActivity);
   }
   
-  public static void a(Context paramContext, String paramString, int paramInt, army paramarmy)
+  public void a()
   {
-    Object localObject = paramContext;
-    if (paramContext == null) {
-      localObject = BaseActivity.sTopActivity;
-    }
-    if (localObject == null)
+    super.a();
+    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131692942);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(str, false, this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(false);
+    if ((!TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext())) || (this.jdField_a_of_type_Arki.c()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(true);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(false);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("PreviewVideoSimpleFilePresenter", 4, "executeOnNetWorkThread setCanPreview false-------------");
       }
-      return;
     }
-    a((Context)localObject, paramString, ((Context)localObject).getString(paramInt), paramarmy);
+    if ((this.jdField_a_of_type_Arki.a(this)) && (QLog.isColorLevel())) {
+      QLog.d("PreviewVideoSimpleFilePresenter", 2, "requestWhitelist 本地信息为空!!!!");
+    }
   }
   
-  public static void a(Context paramContext, String paramString, CharSequence paramCharSequence, army paramarmy)
+  public void a(String paramString1, String paramString2)
   {
-    armw localarmw = new armw(paramarmy);
-    paramarmy = new armx(paramarmy);
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("PreviewVideoSimpleFilePresenter", 2, "clickPlay url = " + paramString1 + ", cookie = " + paramString2);
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, VipVideoPlayActivity.class);
+      localIntent.putExtra("vtype", 2);
+      localIntent.putExtra("video_url", paramString1);
+      localIntent.putExtra("video_url_cookies", "FTN5K=" + paramString2);
+      localIntent.putExtra("screenOrientation", "portrait");
+      localIntent.putExtra("report_bus_type", "bus_type_troop_file_cloud_play");
+      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 100);
+    }
+    this.jdField_a_of_type_Arki.a(3);
+  }
+  
+  public void aE_()
+  {
+    if (bdin.h(BaseApplicationImpl.getContext())) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(BaseApplicationImpl.getContext().getString(2131692943));
+    }
+    while (this.jdField_a_of_type_Arki.i())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(false);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(false);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(BaseApplicationImpl.getContext().getString(2131692945));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(true);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(true);
+  }
+  
+  public void aF_()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(true);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(false);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PreviewVideoSimpleFilePresenter", 4, "executeOnNetWorkThread setCanPreview false-------------");
+    }
+    this.jdField_a_of_type_Arki.a(4);
+  }
+  
+  public void c() {}
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
     do
     {
-      new Handler(localLooper).post(new FMDialogUtil.3(paramContext, paramCharSequence, paramString, localarmw, paramarmy));
-      do
-      {
-        return;
-      } while (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()));
-      if ((paramCharSequence instanceof String))
-      {
-        bdcd.a(paramContext, 230, paramString, (String)paramCharSequence, 2131692475, 2131692479, localarmw, paramarmy).show();
-        return;
+      return;
+      if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 500L) {
+        break;
       }
-    } while (!(paramCharSequence instanceof SpannableString));
-    bdcd.a(paramContext, 230, paramString, paramCharSequence, 2131692475, 2131692479, localarmw, paramarmy).show();
+    } while (!QLog.isColorLevel());
+    QLog.d("PreviewVideoSimpleFilePresenter", 2, "click online preview video too fast");
+    return;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Arki.c())
+    {
+      QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131708811), 0).b(this.jdField_a_of_type_Arki.l());
+      return;
+    }
+    this.jdField_a_of_type_Arki.a(this);
   }
 }
 

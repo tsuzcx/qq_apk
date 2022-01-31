@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.book;
 
-import agzb;
+import ahdq;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,7 +11,7 @@ import android.widget.ScrollView;
 public class ResizeLayout
   extends ScrollView
 {
-  private agzb jdField_a_of_type_Agzb;
+  private ahdq jdField_a_of_type_Ahdq;
   private boolean jdField_a_of_type_Boolean = true;
   
   public ResizeLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -35,7 +35,7 @@ public class ResizeLayout
       return;
       super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
       if (paramInt2 > paramInt4) {}
-      for (this.jdField_a_of_type_Boolean = false; this.jdField_a_of_type_Agzb != null; this.jdField_a_of_type_Boolean = true)
+      for (this.jdField_a_of_type_Boolean = false; this.jdField_a_of_type_Ahdq != null; this.jdField_a_of_type_Boolean = true)
       {
         new Handler(Looper.getMainLooper()).postDelayed(new ResizeLayout.1(this, paramInt1, paramInt2, paramInt3, paramInt4), 50L);
         return;
@@ -51,9 +51,9 @@ public class ResizeLayout
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setOnResizeListener(agzb paramagzb)
+  public void setOnResizeListener(ahdq paramahdq)
   {
-    this.jdField_a_of_type_Agzb = paramagzb;
+    this.jdField_a_of_type_Ahdq = paramahdq;
   }
 }
 

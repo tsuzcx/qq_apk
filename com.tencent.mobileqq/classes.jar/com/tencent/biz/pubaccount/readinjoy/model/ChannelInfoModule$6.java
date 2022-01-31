@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import awbw;
+import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
 import pfi;
 

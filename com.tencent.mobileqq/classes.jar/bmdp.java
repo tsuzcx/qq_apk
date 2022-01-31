@@ -1,24 +1,11 @@
-import com.tencent.qg.sdk.QGRenderer.QGEventListener;
+import android.support.annotation.RestrictTo;
+import java.util.HashMap;
+import java.util.Map;
 
-class bmdp
-  implements QGRenderer.QGEventListener
+@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+public class bmdp
 {
-  bmdp(bmdi parambmdi) {}
-  
-  public void onCanvasCreated()
-  {
-    wsv.b("StoryEffectTextMode", "Event: Canvas was created");
-    bmdi.e(this.a, true);
-    bmdi.c(this.a, true);
-    bmdi.d(this.a);
-  }
-  
-  public void onDrawFrame()
-  {
-    if (bmdi.a(this.a) != null) {
-      bmdi.a(this.a).d();
-    }
-  }
+  private Map<String, Integer> a = new HashMap();
 }
 
 

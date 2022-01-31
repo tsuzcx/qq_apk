@@ -1,60 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build.VERSION;
 
-public class aouc
-  extends aofy<aoub>
+class aouc
+  implements aoth
 {
-  public static aoub a()
-  {
-    return (aoub)aogj.a().a(335);
-  }
+  aouc(aotz paramaotz) {}
   
-  public int a()
+  public void a(Context paramContext)
   {
-    return 335;
-  }
-  
-  @NonNull
-  public aoub a(int paramInt)
-  {
-    return new aoub();
-  }
-  
-  @Nullable
-  public aoub a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return aoub.a(paramArrayOfaogf);
+    Intent localIntent = new Intent();
+    localIntent.addFlags(268435456);
+    if (Build.VERSION.SDK_INT >= 9)
+    {
+      localIntent.setAction(aotz.a(this.a));
+      localIntent.setData(Uri.fromParts("package", paramContext.getPackageName(), null));
     }
-    return null;
-  }
-  
-  public Class<aoub> a()
-  {
-    return aoub.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("TencentDocSelectAddDocsProcessor", 1, "handleTencentDocUniversalEntry FILE_SELECT_ADD_DOCS failed, resultCode:" + paramInt);
-  }
-  
-  public void a(aoub paramaoub) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    for (;;)
+    {
+      paramContext.startActivity(localIntent);
+      return;
+      if (Build.VERSION.SDK_INT <= 8)
+      {
+        localIntent.setAction("android.intent.action.VIEW");
+        localIntent.setClassName("com.android.settings", aotz.a(this.a));
+        localIntent.putExtra("com.android.settings.ApplicationPkgName", paramContext.getPackageName());
+      }
+    }
   }
 }
 

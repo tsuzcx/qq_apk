@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.Switch;
 
 public class oai
-  extends alvc
+  extends alzr
 {
   public oai(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
@@ -16,8 +16,8 @@ public class oai
     }
     Object localObject = this.a;
     ((ReadInJoySettingActivity)localObject).jdField_a_of_type_Int -= 1;
-    if ((this.a.jdField_a_of_type_Int == 0) && (this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing())) {
-      this.a.jdField_a_of_type_Bepp.dismiss();
+    if ((this.a.jdField_a_of_type_Int == 0) && (this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing())) {
+      this.a.jdField_a_of_type_Bety.dismiss();
     }
     boolean bool;
     if (paramInt == this.a.b)
@@ -50,7 +50,7 @@ public class oai
       nrt.a(null, "CliOper", "", "", "0X800676D", "0X800676D", 0, 0, "", "", "", ors.c(), false);
       break label147;
       label202:
-      QQToast.a(this.a.getApplicationContext(), 2131700032, 0).a();
+      QQToast.a(this.a.getApplicationContext(), 2131700044, 0).a();
       this.a.c = true;
       ReadInJoySettingActivity.a(this.a).setChecked(bool);
       QLog.d("ReadInJoySettingActivity", 1, "handle setkandian recomm failed");

@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendSingleInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
+import java.util.Set;
 
-public final class ayuo
-  implements Parcelable.Creator<FriendSingleInfo>
+public class ayuo
+  extends aytg
 {
-  public FriendSingleInfo a(Parcel paramParcel)
+  private Comparator<aynq> a = new ayup(this);
+  
+  public ayuo(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
   {
-    return new FriendSingleInfo(paramParcel);
+    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
   }
   
-  public FriendSingleInfo[] a(int paramInt)
+  public Comparator<aynq> a()
   {
-    return new FriendSingleInfo[paramInt];
+    return this.a;
   }
 }
 

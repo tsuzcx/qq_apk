@@ -1,15 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView;
 
-class asgs
-  extends AnimatorListenerAdapter
+public class asgs
+  implements yxr
 {
-  asgs(asgq paramasgq) {}
+  public asgs(NowLiveFragment paramNowLiveFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    asgq.a(this.a).sendEmptyMessageDelayed(6, 500L);
+    this.a.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment$NowLiveWebView.refresh();
+    this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
   }
 }
 

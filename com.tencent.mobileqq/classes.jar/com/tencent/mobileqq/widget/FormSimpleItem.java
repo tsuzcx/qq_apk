@@ -17,13 +17,13 @@ import android.view.View.MeasureSpec;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import beln;
+import bepw;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.widget.MultiImageTextView;
 
 public class FormSimpleItem
   extends RelativeLayout
-  implements beln
+  implements bepw
 {
   protected static boolean b;
   private int jdField_a_of_type_Int;
@@ -350,34 +350,34 @@ public class FormSimpleItem
     if (paramBoolean)
     {
       if (jdField_b_of_type_Boolean) {
-        return paramResources.getDrawable(2130839253);
+        return paramResources.getDrawable(2130839254);
       }
-      return paramResources.getDrawable(2130849679);
+      return paramResources.getDrawable(2130849752);
     }
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130839253);
+      return paramResources.getDrawable(2130839254);
     case 0: 
       if (jdField_b_of_type_Boolean) {
-        return paramResources.getDrawable(2130839253);
+        return paramResources.getDrawable(2130839254);
       }
-      return paramResources.getDrawable(2130849679);
+      return paramResources.getDrawable(2130849752);
     case 1: 
       if (jdField_b_of_type_Boolean) {
-        return paramResources.getDrawable(2130839263);
+        return paramResources.getDrawable(2130839264);
       }
-      return paramResources.getDrawable(2130849693);
+      return paramResources.getDrawable(2130849766);
     case 2: 
       if (jdField_b_of_type_Boolean) {
-        return paramResources.getDrawable(2130839263);
+        return paramResources.getDrawable(2130839264);
       }
-      return paramResources.getDrawable(2130849693);
+      return paramResources.getDrawable(2130849766);
     }
     if (jdField_b_of_type_Boolean) {
-      return paramResources.getDrawable(2130839260);
+      return paramResources.getDrawable(2130839261);
     }
-    return paramResources.getDrawable(2130849684);
+    return paramResources.getDrawable(2130849757);
   }
   
   private boolean a()
@@ -390,15 +390,15 @@ public class FormSimpleItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getColorStateList(2131166901);
+      return paramResources.getColorStateList(2131166903);
     case 0: 
-      return paramResources.getColorStateList(2131166901);
+      return paramResources.getColorStateList(2131166903);
     case 2: 
-      return paramResources.getColorStateList(2131166975);
+      return paramResources.getColorStateList(2131166977);
     case 1: 
-      return paramResources.getColorStateList(2131166909);
+      return paramResources.getColorStateList(2131166911);
     }
-    return paramResources.getColorStateList(2131166989);
+    return paramResources.getColorStateList(2131166991);
   }
   
   public static void setNeedFocusBg(boolean paramBoolean)
@@ -714,7 +714,7 @@ public class FormSimpleItem
       this.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
       this.jdField_d_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
     }
-    this.jdField_d_of_type_AndroidWidgetTextView.setId(2131366743);
+    this.jdField_d_of_type_AndroidWidgetTextView.setId(2131366753);
     if (this.jdField_c_of_type_Boolean)
     {
       this.jdField_d_of_type_AndroidWidgetTextView.setSingleLine(true);
@@ -739,7 +739,7 @@ public class FormSimpleItem
     this.jdField_d_of_type_AndroidWidgetTextView.setMaxWidth(this.o);
     addView(this.jdField_d_of_type_AndroidWidgetTextView, localLayoutParams);
     this.jdField_a_of_type_ComTencentWidgetMultiImageTextView = new MultiImageTextView(getContext());
-    this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setId(2131366745);
+    this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setId(2131366755);
     this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setSingleLine(true);
     this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setTextColor(a(getResources(), this.m));
     i1 = getContext().getResources().getDimensionPixelSize(2131296662);

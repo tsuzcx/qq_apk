@@ -1,24 +1,20 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+
 class bmnm
-  implements utn
+  extends SimpleJob<Object>
 {
-  bmnm(bmni parambmni) {}
-  
-  public void a(boolean paramBoolean, utj paramutj)
+  bmnm(bmnj parambmnj, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
   {
-    wsv.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
-    if ((paramBoolean) && (paramutj != null) && (this.a.a != null)) {
-      this.a.a(paramutj.b, paramutj.a, this.a.a);
-    }
-    for (;;)
-    {
-      paramutj = (utk)urr.a(9);
-      if (paramutj != null) {
-        paramutj.b(this);
-      }
-      this.a.a = null;
-      return;
-      wsv.e("DoodleEmojiManager", "onLbsUpdate failed.");
-    }
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    wxj.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
   }
 }
 

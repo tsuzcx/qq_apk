@@ -24,7 +24,7 @@ public class pca
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("version", "8.3.3");
+      localJSONObject.put("version", "8.3.5");
       localJSONObject.put("error_code", paramInt);
       label25:
       if (this.a != null) {
@@ -43,7 +43,7 @@ public class pca
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("version", "8.3.3");
+      localJSONObject.put("version", "8.3.5");
       label17:
       if (this.a != null) {
         this.a.sendEmptyMessage(0);

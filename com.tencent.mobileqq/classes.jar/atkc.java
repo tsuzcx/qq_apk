@@ -1,30 +1,14 @@
-import com.tencent.mobileqq.listentogether.data.ISong;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
-public abstract interface atkc
+public class atkc
+  implements bctg
 {
-  public abstract int a();
+  public atkc(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public abstract void a();
-  
-  public abstract void a(atjz paramatjz);
-  
-  public abstract void a(atka paramatka);
-  
-  public abstract void a(atkb paramatkb);
-  
-  public abstract void a(atkd paramatkd);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(ISong paramISong);
-  
-  public abstract int b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
-  
-  public abstract boolean d();
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(paramLong) });
+  }
 }
 
 

@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.SparseArray;
-import bjxj;
+import bkbq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -52,7 +52,7 @@ public class SPEventReportSwitch
   {
     if (e == -1)
     {
-      SharedPreferences localSharedPreferences = bjxj.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
+      SharedPreferences localSharedPreferences = bkbq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
       if (localSharedPreferences == null) {}
       for (e = f;; e = localSharedPreferences.getInt("kd_tab_click_push_algo_id", f)) {
         return e;
@@ -171,7 +171,7 @@ public class SPEventReportSwitch
   
   public static void a(AppRuntime paramAppRuntime, String paramString)
   {
-    paramAppRuntime = bjxj.a(paramAppRuntime, true, true);
+    paramAppRuntime = bkbq.a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
       QLog.d("SPEventReportSwitch", 1, "failed to update sp updateTabClickGapInSeconds");
@@ -182,7 +182,7 @@ public class SPEventReportSwitch
       int i1 = Integer.parseInt(paramString);
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_tab_click_gap_in_seconds", i1);
-      bjxj.a(paramAppRuntime, true);
+      bkbq.a(paramAppRuntime, true);
       b = i1;
       return;
     }
@@ -197,7 +197,7 @@ public class SPEventReportSwitch
     boolean bool = true;
     if (m == -1)
     {
-      SharedPreferences localSharedPreferences = bjxj.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
+      SharedPreferences localSharedPreferences = bkbq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
       if (localSharedPreferences == null) {}
       for (m = n; m == 1; m = localSharedPreferences.getInt("kd_user_idle_report", n)) {
         return true;
@@ -282,7 +282,7 @@ public class SPEventReportSwitch
   {
     if (i == -1)
     {
-      SharedPreferences localSharedPreferences = bjxj.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
+      SharedPreferences localSharedPreferences = bkbq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
       if (localSharedPreferences == null) {}
       for (i = j;; i = localSharedPreferences.getInt("kd_fore_ground_gap_in_seconds", j)) {
         return i;
@@ -293,7 +293,7 @@ public class SPEventReportSwitch
   
   public static void b(AppRuntime paramAppRuntime, String paramString)
   {
-    paramAppRuntime = bjxj.a(paramAppRuntime, true, true);
+    paramAppRuntime = bkbq.a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
       QLog.d("SPEventReportSwitch", 1, "failed to update sp updateTabClickCountLimit");
@@ -304,7 +304,7 @@ public class SPEventReportSwitch
       int i1 = Integer.parseInt(paramString);
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_tab_click_count_limit", i1);
-      bjxj.a(paramAppRuntime, true);
+      bkbq.a(paramAppRuntime, true);
       c = i1;
       return;
     }
@@ -358,7 +358,7 @@ public class SPEventReportSwitch
   {
     if (k == -1)
     {
-      SharedPreferences localSharedPreferences = bjxj.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
+      SharedPreferences localSharedPreferences = bkbq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
       if (localSharedPreferences == null) {}
       for (k = l;; k = localSharedPreferences.getInt("kd_screen_switch_in_seconds", l)) {
         return k;
@@ -369,7 +369,7 @@ public class SPEventReportSwitch
   
   public static void c(AppRuntime paramAppRuntime, String paramString)
   {
-    paramAppRuntime = bjxj.a(paramAppRuntime, true, true);
+    paramAppRuntime = bkbq.a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
       QLog.d("SPEventReportSwitch", 1, "failed to update sp updateTabClickCountLimit");
@@ -380,7 +380,7 @@ public class SPEventReportSwitch
       int i1 = Integer.parseInt(paramString);
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_tab_click_push_algo_id", i1);
-      bjxj.a(paramAppRuntime, true);
+      bkbq.a(paramAppRuntime, true);
       e = i1;
       return;
     }
@@ -392,7 +392,7 @@ public class SPEventReportSwitch
   
   public static void d(AppRuntime paramAppRuntime, String paramString)
   {
-    paramAppRuntime = bjxj.a(paramAppRuntime, true, true);
+    paramAppRuntime = bkbq.a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
       QLog.d("SPEventReportSwitch", 1, "failed to update sp updateTabClickCountLimit");
@@ -403,7 +403,7 @@ public class SPEventReportSwitch
       int i1 = Integer.parseInt(paramString);
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_tab_click_forbid_report_time_in_seconds", i1);
-      bjxj.a(paramAppRuntime, true);
+      bkbq.a(paramAppRuntime, true);
       g = i1;
       return;
     }
@@ -415,7 +415,7 @@ public class SPEventReportSwitch
   
   public static void e(AppRuntime paramAppRuntime, String paramString)
   {
-    paramAppRuntime = bjxj.a(paramAppRuntime, true, true);
+    paramAppRuntime = bkbq.a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
       QLog.d("SPEventReportSwitch", 1, "failed to update sp updateTabClickCountLimit");
@@ -426,7 +426,7 @@ public class SPEventReportSwitch
       int i1 = Integer.parseInt(paramString);
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_fore_ground_gap_in_seconds", i1);
-      bjxj.a(paramAppRuntime, true);
+      bkbq.a(paramAppRuntime, true);
       i = i1;
       return;
     }
@@ -438,7 +438,7 @@ public class SPEventReportSwitch
   
   public static void f(AppRuntime paramAppRuntime, String paramString)
   {
-    paramAppRuntime = bjxj.a(paramAppRuntime, true, true);
+    paramAppRuntime = bkbq.a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
       QLog.d("SPEventReportSwitch", 1, "failed to update sp updateTabClickCountLimit");
@@ -449,7 +449,7 @@ public class SPEventReportSwitch
       int i1 = Integer.parseInt(paramString);
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_screen_switch_in_seconds", i1);
-      bjxj.a(paramAppRuntime, true);
+      bkbq.a(paramAppRuntime, true);
       k = i1;
       return;
     }
@@ -461,7 +461,7 @@ public class SPEventReportSwitch
   
   public static void g(AppRuntime paramAppRuntime, String paramString)
   {
-    paramAppRuntime = bjxj.a(paramAppRuntime, true, true);
+    paramAppRuntime = bkbq.a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
       QLog.d("SPEventReportSwitch", 1, "failed to update sp updateTabClickCountLimit");
@@ -472,7 +472,7 @@ public class SPEventReportSwitch
       int i1 = Integer.parseInt(paramString);
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_user_idle_report", i1);
-      bjxj.a(paramAppRuntime, true);
+      bkbq.a(paramAppRuntime, true);
       m = i1;
       return;
     }

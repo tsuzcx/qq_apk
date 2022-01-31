@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.RemoteException;
-import bdcs;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -81,7 +81,7 @@ public class AVRedPacketConfigManager$2
         {
           msp.a(this.this$0.jdField_a_of_type_JavaLangString);
           localObject = msp.b();
-          if (bdcs.b(this.jdField_a_of_type_JavaLangString)) {
+          if (bdhb.b(this.jdField_a_of_type_JavaLangString)) {
             continue;
           }
           QLog.w("AVRedPacketConfigManger", 1, "onDownloadFinish, !exist, mp4[" + (String)localObject + "]");

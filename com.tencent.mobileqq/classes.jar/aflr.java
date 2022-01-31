@@ -1,22 +1,28 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.widget.QQToast;
 
 class aflr
-  extends afpq
+  extends ClickableSpan
 {
-  aflr(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  aflr(aflo paramaflo) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new afxl(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
-  
-  protected boolean a()
-  {
-    return false;
+    if (!bdin.d(this.a.a))
+    {
+      QQToast.a(this.a.a, alud.a(2131703620), 2000).a();
+      return;
+    }
+    paramView = new Intent();
+    paramView.setFlags(268435456);
+    paramView.setAction("android.intent.action.VIEW");
+    paramView.putExtra("devlock_open_source", "SmartDeviceMsg");
+    paramView.setData(Uri.parse("mqqdevlock://devlock/open?"));
+    this.a.a.startActivity(paramView);
   }
 }
 

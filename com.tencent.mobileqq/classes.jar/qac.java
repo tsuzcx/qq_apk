@@ -9,9 +9,9 @@ public class qac<T extends View>
 {
   private Class<T> a;
   
-  qac(Context paramContext, bcws parambcws, rqj paramrqj, Class<T> paramClass)
+  qac(Context paramContext, bdbb parambdbb, rqj paramrqj, Class<T> paramClass)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
     this.jdField_a_of_type_JavaLangClass = paramClass;
   }
   

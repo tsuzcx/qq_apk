@@ -1,14 +1,20 @@
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class uvu
-  implements bemn
+class uvu
+  implements urr<vfc, vha>
 {
-  public uvu(StoryMsgNodeFrameLayout paramStoryMsgNodeFrameLayout) {}
+  uvu(uvt paramuvt, long paramLong) {}
   
-  public void a(String paramString)
+  public void a(@NonNull vfc paramvfc, @Nullable vha paramvha, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.a.a.setVisibility(4);
+    if (paramvha != null)
+    {
+      this.jdField_a_of_type_Uvt.b("qqstory_black_status", Integer.valueOf(paramvha.b));
+      this.jdField_a_of_type_Uvt.b("qqstory_black_status_update_interval", Integer.valueOf(paramvha.c));
+      this.jdField_a_of_type_Uvt.b("qqstory_black_status_last_update_time", Integer.valueOf((int)this.jdField_a_of_type_Long));
+    }
   }
 }
 

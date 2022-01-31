@@ -1,20 +1,34 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aehm
-  extends bhnr
+  implements View.OnClickListener
 {
-  public aehm(VisitorsActivity paramVisitorsActivity) {}
+  public aehm(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.f = false;
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.c.setVisibility(0);
+    paramView = (amdc)this.a.app.a(26);
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      if (!TextUtils.isEmpty(this.a.b)) {
+        localArrayList.add(Long.valueOf(Long.parseLong(this.a.b)));
+      }
+      paramView.a(localArrayList);
+      return;
+    }
+    catch (NumberFormatException paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.TroopRequestActivity", 2, "delete Stranger parseLong() error", paramView);
+    }
   }
 }
 

@@ -6,14 +6,14 @@ import com.tencent.av.ui.GAudioMembersCtrlActivity;
 public class mgl
   implements View.OnClickListener
 {
-  public mgl(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity, bhpy parambhpy) {}
+  public mgl(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity, bhuf parambhuf) {}
   
   public void onClick(View paramView)
   {
     boolean bool = false;
     if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().V) {
       if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
-        azmj.b(null, "CliOper", "", "", "0X8005C28", "0X8005C28", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8005C28", "0X8005C28", 0, 0, "", "", "", "");
       }
     }
     for (;;)
@@ -27,7 +27,7 @@ public class mgl
       this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.b();
       try
       {
-        this.jdField_a_of_type_Bhpy.dismiss();
+        this.jdField_a_of_type_Bhuf.dismiss();
         return;
       }
       catch (Throwable paramView)
@@ -36,12 +36,12 @@ public class mgl
       }
       if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000)
       {
-        azmj.b(null, "CliOper", "", "", "0X8005C23", "0X8005C23", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8005C23", "0X8005C23", 0, 0, "", "", "", "");
         continue;
         if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
-          azmj.b(null, "CliOper", "", "", "0X8005C27", "0X8005C27", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X8005C27", "0X8005C27", 0, 0, "", "", "", "");
         } else if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000) {
-          azmj.b(null, "CliOper", "", "", "0X8005C22", "0X8005C22", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X8005C22", "0X8005C22", 0, 0, "", "", "", "");
         }
       }
     }

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import agdi;
+import aghx;
 
 public class AIOGalleryScene$25
   implements Runnable
 {
-  public AIOGalleryScene$25(agdi paramagdi) {}
+  public AIOGalleryScene$25(aghx paramaghx) {}
   
   public void run()
   {
     if (this.this$0.n) {
       return;
     }
-    agdi localagdi = this.this$0;
-    localagdi.h += this.this$0.i;
+    aghx localaghx = this.this$0;
+    localaghx.h += this.this$0.i;
     if (this.this$0.h > 99)
     {
       this.this$0.h = 99;

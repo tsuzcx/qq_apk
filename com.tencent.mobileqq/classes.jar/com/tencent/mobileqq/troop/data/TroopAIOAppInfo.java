@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.troop.data;
 
 import android.text.TextUtils;
-import awbv;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.io.Serializable;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="appid,groupType")
 public class TroopAIOAppInfo
-  extends awbv
+  extends awge
   implements Serializable, Comparable<TroopAIOAppInfo>
 {
   static final long serialVersionUID = 1L;

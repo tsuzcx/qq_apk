@@ -1,37 +1,10 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class aezz
-  implements afal
+public abstract interface aezz
 {
-  private BaseChatPie a;
+  public abstract void a(int paramInt);
   
-  public aezz(BaseChatPie paramBaseChatPie)
-  {
-    this.a = paramBaseChatPie;
-  }
+  public abstract void f();
   
-  private void a()
-  {
-    if ((this.a != null) && (this.a.a != null)) {
-      ((ault)this.a.a.getManager(324)).onDestroy();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 11 };
-  }
+  public abstract void g();
 }
 
 

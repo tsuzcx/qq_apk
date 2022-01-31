@@ -1,24 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.qg.sdk.QGRenderer.QGEventListener;
 
 class bmib
-  implements ValueAnimator.AnimatorUpdateListener
+  implements QGRenderer.QGEventListener
 {
-  bmib(bmhz parambmhz, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
+  bmib(bmhu parambmhu) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCanvasCreated()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = (int)((this.jdField_a_of_type_Int - this.b) * f);
-    int j = this.b;
-    int k = (int)(f * (this.c - this.d));
-    int m = this.d;
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.leftMargin = (i + j);
-    paramValueAnimator.bottomMargin = (m + k);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    wxe.b("StoryEffectTextMode", "Event: Canvas was created");
+    bmhu.e(this.a, true);
+    bmhu.c(this.a, true);
+    bmhu.d(this.a);
+  }
+  
+  public void onDrawFrame()
+  {
+    if (bmhu.a(this.a) != null) {
+      bmhu.a(this.a).d();
+    }
   }
 }
 

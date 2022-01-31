@@ -1,8 +1,12 @@
-public class aufb
+import java.util.List;
+
+public abstract interface aufb
 {
-  public static final String a = bduw.a(aljq.aX + "msgbackup/");
-  public static final String b = a + "multimsg/";
-  public static final String c = a + "db/";
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(List<aned> paramList, long paramLong);
 }
 
 

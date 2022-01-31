@@ -1,17 +1,17 @@
 package com.tencent.kingkong;
 
-import abqf;
+import abuu;
 import android.os.Looper;
 
 public class UpdateManager$UpdateThread
   extends Thread
 {
-  private abqf a;
+  private abuu a;
   
   public void run()
   {
     Looper.prepare();
-    this.a = new abqf();
+    this.a = new abuu();
     Looper.loop();
   }
 }

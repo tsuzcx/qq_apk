@@ -1,25 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class avbr
-  implements avca
+public class avbr
+  extends alpd
 {
-  avbr(avbo paramavbo) {}
-  
-  public void a(avbz paramavbz)
+  public avbr(QQAppInterface paramQQAppInterface)
   {
-    if (this.a.jdField_a_of_type_Avbx != null) {
-      this.a.jdField_a_of_type_Avbx.a();
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-    paramavbz = avbo.a(this.a).a;
-    if (this.a.c()) {}
-    for (int i = 1;; i = 2)
-    {
-      auzy.a(paramavbz, i);
-      return;
-    }
+    super(paramQQAppInterface);
   }
+  
+  protected Class<? extends alpg> observerClass()
+  {
+    return avbs.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

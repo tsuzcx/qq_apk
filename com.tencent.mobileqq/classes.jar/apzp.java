@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 
 public class apzp
-  extends alxa
+  implements aufy<EmoticonPackage>
 {
-  public apzp(ExtendFriendFragment paramExtendFriendFragment) {}
+  public apzp(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
   
-  public void a(boolean paramBoolean)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ExtendFriendFragment", 2, String.format("onDataChange success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    if (paramEmoticonPackage == null)
+    {
+      AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 32);
+      return;
     }
-    ExtendFriendFragment.a(this.a);
+    AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, true);
   }
 }
 

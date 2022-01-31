@@ -1,12 +1,10 @@
-public abstract interface auls
+public class auls
 {
-  public abstract void a();
-  
-  public abstract void a(aulp paramaulp);
-  
-  public abstract void a(aulp paramaulp, int paramInt);
-  
-  public abstract void b(aulp paramaulp);
+  public float a;
+  public int a;
+  public Object a;
+  public boolean a;
+  public float b;
 }
 
 

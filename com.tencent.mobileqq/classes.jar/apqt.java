@@ -1,40 +1,25 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.33;
 
-class apqt
-  implements TextWatcher
+public class apqt
+  implements algq
 {
-  apqt(apqq paramapqq) {}
+  public apqt(MessengerService.IncomingHandler.33 param33) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(long paramLong, String paramString)
   {
-    Object localObject = this.a.a.a;
-    List localList = this.a.a.jdField_b_of_type_JavaUtilList;
-    if ((localObject != null) && (localList != null) && (EmoticonPanelController.jdField_b_of_type_Int >= 0) && (EmoticonPanelController.jdField_b_of_type_Int < localList.size()))
+    Bundle localBundle = new Bundle();
+    if (paramLong == 0L) {}
+    for (int i = 0;; i = 1)
     {
-      localObject = ((EmotionPanelViewPagerAdapter)localObject).a(EmoticonPanelController.jdField_b_of_type_Int);
-      if (localObject != null) {
-        if (TextUtils.isEmpty(paramEditable)) {
-          break label78;
-        }
-      }
-    }
-    label78:
-    for (boolean bool = true;; bool = false)
-    {
-      ((ImageButton)localObject).setEnabled(bool);
+      localBundle.putInt("result", i);
+      localBundle.putString("message", paramString);
+      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
       return;
     }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

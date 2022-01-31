@@ -15,8 +15,8 @@ class suf
   
   public void onClick(View paramView)
   {
-    azmj.b(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005732", "0X8005732", 0, 0, "", "", "", "");
-    azmj.b(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642F", "0X800642F", 0, 0, String.valueOf(this.jdField_a_of_type_Sue.jdField_a_of_type_Suc.jdField_a_of_type_Long), "", "", "");
+    azqs.b(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005732", "0X8005732", 0, 0, "", "", "", "");
+    azqs.b(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642F", "0X800642F", 0, 0, String.valueOf(this.jdField_a_of_type_Sue.jdField_a_of_type_Suc.jdField_a_of_type_Long), "", "", "");
     if (this.jdField_a_of_type_Sue.jdField_a_of_type_Suc != null)
     {
       paramView = String.valueOf(this.jdField_a_of_type_Sue.jdField_a_of_type_Suc.jdField_a_of_type_Long);
@@ -28,9 +28,9 @@ class suf
     }
     if (this.jdField_a_of_type_Sue.jdField_a_of_type_Suc.jdField_a_of_type_Int == 0)
     {
-      if (!bdee.d(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))
+      if (!bdin.d(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))
       {
-        QQToast.a(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_AndroidAppActivity, 2131694766, 0).b(((BaseActivity)this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight());
+        QQToast.a(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_AndroidAppActivity, 2131694768, 0).b(((BaseActivity)this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight());
         return;
       }
       this.jdField_a_of_type_Sue.a(2);

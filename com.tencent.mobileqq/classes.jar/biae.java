@@ -1,17 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.widget.ProgressPieView;
 
-class biae
-  implements View.OnClickListener
+public class biae
+  extends Handler
 {
-  biae(biad parambiad, biac parambiac) {}
+  long jdField_a_of_type_Long;
   
-  public void onClick(View paramView)
+  public biae(ProgressPieView paramProgressPieView) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    int i = this.jdField_a_of_type_Biac.getPosition();
-    if (i >= 0) {
-      this.jdField_a_of_type_Biad.a.a(this.jdField_a_of_type_Biac.itemView, i);
+    int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
+    if (i < this.jdField_a_of_type_ComTencentWidgetProgressPieView.a)
+    {
+      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
+      sendEmptyMessageDelayed(0, 1L);
+      return;
     }
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.a);
   }
 }
 

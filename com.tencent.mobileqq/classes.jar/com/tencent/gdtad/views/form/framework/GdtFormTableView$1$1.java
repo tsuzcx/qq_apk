@@ -1,12 +1,12 @@
 package com.tencent.gdtad.views.form.framework;
 
-import aapm;
+import aaub;
 import android.view.ViewTreeObserver;
 
 public class GdtFormTableView$1$1
   implements Runnable
 {
-  public GdtFormTableView$1$1(aapm paramaapm) {}
+  public GdtFormTableView$1$1(aaub paramaaub) {}
   
   public void run()
   {

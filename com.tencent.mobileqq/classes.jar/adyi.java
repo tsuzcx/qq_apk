@@ -1,8 +1,17 @@
-public class adyi
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+
+class adyi
+  extends AccessibilityDelegateCompat
 {
-  public long a;
-  public String a;
-  String b;
+  adyi(adyg paramadyg) {}
+  
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setSelected(false);
+  }
 }
 
 

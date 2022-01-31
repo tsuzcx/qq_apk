@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.gamecenter.message;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="fromTinyId,toTinyId")
 public class UinToTinyId
-  extends awbv
+  extends awge
 {
   private static final String TABLE_NAME = "friendUin_tinyId";
   public String extString;

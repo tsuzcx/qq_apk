@@ -1,8 +1,32 @@
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public abstract interface wcd
+public class wcd
+  extends QQUIEventReceiver<wcb, uow>
 {
-  public abstract void a(String paramString, int paramInt, View paramView, wiu paramwiu);
+  public wcd(@NonNull wcb paramwcb)
+  {
+    super(paramwcb);
+  }
+  
+  public void a(@NonNull wcb paramwcb, @NonNull uow paramuow)
+  {
+    if ((paramwcb.a == null) || (paramuow.a == null) || (!TextUtils.equals(paramwcb.a.a, paramuow.a.mVid))) {}
+    do
+    {
+      return;
+      paramwcb.i();
+      paramwcb = (vtv)paramwcb.a(vtv.class);
+    } while (paramwcb == null);
+    paramwcb.d();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uow.class;
+  }
 }
 
 

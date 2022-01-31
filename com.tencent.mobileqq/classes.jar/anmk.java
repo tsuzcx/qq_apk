@@ -1,8 +1,13 @@
-public abstract interface anmk
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.wordsegment.WordSegment.ILogCallback;
+
+final class anmk
+  implements WordSegment.ILogCallback
 {
-  public abstract void a();
-  
-  public abstract void a(String paramString);
+  public void OnLog(String paramString1, String paramString2)
+  {
+    ArkAppCenter.c("ArkApp.Dict.WordSegment." + paramString1, String.format("%s", new Object[] { paramString2 }));
+  }
 }
 
 

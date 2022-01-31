@@ -1,19 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
 
-public class awpb
-  implements DialogInterface.OnClickListener
+public final class awpb
+  implements Parcelable.Creator<PersonalityLabel>
 {
-  public awpb(StickyNotePublishFragment paramStickyNotePublishFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public PersonalityLabel a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
-    this.a.b.obtainMessage(3, "").sendToTarget();
-    azmj.b(null, "dc00898", "", "", "0X800AB31", "0X800AB31", 2, 0, "0", "0", "", "");
+    return new PersonalityLabel(paramParcel);
+  }
+  
+  public PersonalityLabel[] a(int paramInt)
+  {
+    return new PersonalityLabel[paramInt];
   }
 }
 

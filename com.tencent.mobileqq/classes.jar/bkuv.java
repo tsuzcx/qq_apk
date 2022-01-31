@@ -1,23 +1,40 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.Button;
-import com.tencent.ttpic.openapi.model.WMEditItem;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.6.1;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.6.2;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.6.3;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import mqq.os.MqqHandler;
 
-class bkuv
-  implements View.OnFocusChangeListener
+public class bkuv
+  implements blan
 {
-  bkuv(bkus parambkus, bkva parambkva, WMEditItem paramWMEditItem) {}
+  bkuv(bkur parambkur) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void a(blab paramblab, int paramInt)
   {
-    if (paramBoolean)
+    ThreadManager.getUIHandler().post(new AEBottomListAdapter.6.3(this, paramblab, paramInt));
+  }
+  
+  public void a(blab paramblab, boolean paramBoolean)
+  {
+    if ((!paramBoolean) || (bkur.a(this.a) == null))
     {
-      bkus.a(this.jdField_a_of_type_Bkus, this.jdField_a_of_type_Bkva.jdField_a_of_type_AndroidWidgetEditText, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
-      this.jdField_a_of_type_Bkva.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130837640);
-      this.jdField_a_of_type_Bkva.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      return;
+      ThreadManager.getUIHandler().post(new AEBottomListAdapter.6.1(this, paramblab));
+      if (!paramBoolean) {
+        break label126;
+      }
     }
-    this.jdField_a_of_type_Bkva.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    label126:
+    for (int i = 0;; i = 1)
+    {
+      zaj.a("record_decoration_download", zaj.a(i, System.currentTimeMillis() - paramblab.jdField_a_of_type_Long, paramblab.d, paramblab.b, paramblab.jdField_a_of_type_JavaLangString));
+      return;
+      if (this.a.a(bkur.a(this.a).a()) == bkur.a(this.a)) {
+        bkur.a(this.a, bkur.a(this.a));
+      }
+      ThreadManager.getUIHandler().post(new AEBottomListAdapter.6.2(this, paramblab));
+      break;
+    }
   }
 }
 

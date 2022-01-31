@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import accm;
-import accp;
+import achb;
+import ache;
 
 public class AutoLoginHelper$4$1
   implements Runnable
 {
-  public AutoLoginHelper$4$1(accp paramaccp) {}
+  public AutoLoginHelper$4$1(ache paramache) {}
   
   public void run()
   {
-    accm.a(this.a.a).a(2131717515, 1);
+    achb.a(this.a.a).a(2131717527, 1);
   }
 }
 

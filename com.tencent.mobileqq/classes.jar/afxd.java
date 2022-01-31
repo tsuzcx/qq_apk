@@ -1,33 +1,24 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class afxd
-  extends AnimatorListenerAdapter
+  extends RecyclerView.ViewHolder
 {
-  public afxd(SixCombolEffectView paramSixCombolEffectView) {}
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public ImageView b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public afxd(View paramView)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
-      return;
-    }
-    SixCombolEffectView.b(this.a).start();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    if (SixCombolEffectView.a(this.a)) {}
-    do
-    {
-      return;
-      SixCombolEffectView.jdField_a_of_type_Int = 2;
-    } while (!QLog.isColorLevel());
-    QLog.w("SixCombolEffectView", 2, "Animation 2 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372131));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372130));
+    this.b = ((ImageView)paramView.findViewById(2131372128));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131372132));
   }
 }
 

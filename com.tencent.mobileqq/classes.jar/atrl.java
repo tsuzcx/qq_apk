@@ -1,28 +1,36 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import java.util.List;
 
-public class atrl
-  implements URLDrawable.URLDrawableListener
+class atrl
+  implements atsk
 {
-  public atrl(LoginWelcomeManager paramLoginWelcomeManager) {}
+  atrl(atrk paramatrk, String paramString) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(List<LocationRoom.Venue> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "tryToShowCGLayer drawable onLoadSuccessed");
+    if ((atrk.a(this.jdField_a_of_type_Atrk) != null) && (atrk.a(this.jdField_a_of_type_Atrk).size() > 0)) {}
+    for (int i = 1;; i = 0)
+    {
+      atrk.a(this.jdField_a_of_type_Atrk, paramList);
+      this.jdField_a_of_type_Atrk.notifyDataSetChanged();
+      atrk.a(this.jdField_a_of_type_Atrk, TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+      if ((atrk.a(this.jdField_a_of_type_Atrk).size() > 0) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        if (i == 0) {
+          this.jdField_a_of_type_Atrk.a(0);
+        }
+      }
+      while (atrk.a(this.jdField_a_of_type_Atrk) == null) {
+        return;
+      }
+      paramList = atrk.a(this.jdField_a_of_type_Atrk);
+      if (atrk.a(this.jdField_a_of_type_Atrk).size() > 0) {}
+      for (i = 3;; i = 2)
+      {
+        paramList.a(i);
+        return;
+      }
     }
-    if (this.a.a != null) {
-      this.a.a.a(paramURLDrawable);
-    }
-    this.a.g();
   }
 }
 

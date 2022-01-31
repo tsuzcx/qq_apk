@@ -1,90 +1,85 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.config.AppSetting;
 
 public class aoju
-  extends aofy<aojv>
 {
-  public static boolean e()
+  public static int a(String paramString)
   {
-    if ((Build.VERSION.SDK_INT >= 26) && (Build.MODEL.toLowerCase().contains("vivo")))
+    if ((paramString == null) || (paramString.length() <= 0)) {}
+    String str;
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocaleConfProcessor", 2, "hide entrance for vivo");
+      return -1;
+      paramString = b(paramString);
+      str = bdqa.a("RESPCONDITION", paramString);
+      if (bdqa.a("RESPCONTENTTYPES", paramString).equals("PRELOAD")) {
+        return 3;
       }
-      return false;
-    }
-    aojv localaojv = (aojv)aogj.a().a(552);
-    if ((localaojv != null) && (!TextUtils.isEmpty(localaojv.a))) {
-      alrh.a = "1".equals(localaojv.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("LocaleConfProcessor", 2, new Object[] { "isLocaleEntranceEnable: ", Boolean.valueOf(alrh.a) });
-    }
-    if (!alrh.a()) {
-      return true;
-    }
-    return alrh.a;
+      if (str.equals("MANUAL")) {
+        return 0;
+      }
+      if (str.equals("AUTO")) {
+        return 1;
+      }
+    } while (!str.equals("SEMIAUTO"));
+    return 2;
   }
   
-  public int a()
+  public static aozp a(String paramString)
   {
-    return 552;
+    aozp localaozp = new aozp();
+    paramString = b(paramString);
+    localaozp.a = bdqa.a(bdqa.a("DESC", paramString));
+    localaozp.b = bdqa.a(bdqa.a("SUBJECT", paramString));
+    localaozp.c = bdqa.a("RESPCONDITION", paramString);
+    if ((!localaozp.c.equals("MANUAL")) && (!localaozp.c.equals("AUTO")) && (!localaozp.c.equals("SEMIAUTO"))) {
+      return null;
+    }
+    localaozp.d = bdqa.a("RESPDESC", paramString);
+    localaozp.e = bdqa.a("RESPCONTENTTYPES", paramString);
+    localaozp.f = bdqa.a("RESPDEST", paramString);
+    localaozp.g = bdqa.a("RESPCONTENTS", paramString);
+    localaozp.d = bdqa.a(localaozp.d);
+    localaozp.f = bdqa.a(localaozp.f).trim();
+    localaozp.g = bdqa.a(localaozp.g);
+    return localaozp;
   }
   
-  @NonNull
-  public aojv a(int paramInt)
+  public static String a(String paramString)
   {
-    return new aojv();
+    if ((paramString == null) || (paramString.length() <= 0)) {
+      return null;
+    }
+    return bdqa.a("RESPCONTENTTYPES", paramString);
   }
   
-  @Nullable
-  public aojv a(aogf[] paramArrayOfaogf)
+  public static aozp b(String paramString)
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    paramString = a(paramString);
+    if (paramString == null) {}
+    do
     {
-      aojv localaojv = aojv.a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("LocaleConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      return paramString;
+      if (paramString.c.equals("MANUAL"))
+      {
+        paramString.a(false);
+        return paramString;
       }
-      return localaojv;
+      if (paramString.c.equals("AUTO"))
+      {
+        paramString.a();
+        return paramString;
+      }
+    } while (!paramString.c.equals("SEMIAUTO"));
+    paramString.a();
+    return paramString;
+  }
+  
+  private static String b(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() <= 0)) {
+      return "";
     }
-    return new aojv();
-  }
-  
-  public Class<aojv> a()
-  {
-    return aojv.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aojv paramaojv)
-  {
-    if ((paramaojv != null) && (!TextUtils.isEmpty(paramaojv.a))) {
-      alrh.a = "1".equals(paramaojv.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("LocaleConfProcessor", 2, "onUpdate, isConfShowEntrance: " + alrh.a);
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return bdqa.a(bdqa.a(paramString, 0, "||QQNO||", aokb.a()), 0, "||LICENCE||", AppSetting.d());
   }
 }
 

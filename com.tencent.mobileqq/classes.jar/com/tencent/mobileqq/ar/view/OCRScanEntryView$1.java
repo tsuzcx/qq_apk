@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.view;
 
-import anbk;
 import android.app.Activity;
-import arof;
+import anft;
+import arso;
 import com.tencent.mobileqq.ocr.OCRPerformFragment;
 
 class OCRScanEntryView$1
@@ -12,8 +12,8 @@ class OCRScanEntryView$1
   
   public void run()
   {
-    String str = anbk.a().a();
-    if (arof.a(str)) {
+    String str = anft.a().a();
+    if (arso.a(str)) {
       OCRPerformFragment.a((Activity)this.this$0.a, str, 0, -1008, null);
     }
     OCRScanEntryView.a(this.this$0, false);

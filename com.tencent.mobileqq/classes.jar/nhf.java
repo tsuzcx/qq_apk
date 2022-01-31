@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
 import com.tencent.widget.AbsListView;
 
 class nhf
-  implements bhpo
+  implements bhtv
 {
   int jdField_a_of_type_Int;
   int b = (int)(2.0F * this.jdField_a_of_type_Ngw.jdField_a_of_type_Float);

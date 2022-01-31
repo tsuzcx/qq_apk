@@ -1,38 +1,109 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.BuddyUploadTaskExcuter.1;
-import java.util.concurrent.Executor;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
 public class aqqd
-  extends aqqt
+  implements arvg
 {
-  public long a;
-  private Bundle a;
-  public String a;
-  private long b;
-  public String b;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public aqqd(aqpv paramaqpv, MessageRecord paramMessageRecord)
+  public aqqd(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    super(paramaqpv);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    paramaqpv = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramaqpv);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
+    boolean bool = false;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -2147483648;
+    this.b = 2147483647;
+    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_Aqni.getChild(paramInt1, paramInt2);
+    if (localFileInfo == null) {}
+    do
+    {
+      return;
+      if (!arbs.a(localFileInfo)) {
+        bool = true;
+      }
+      this.jdField_a_of_type_Boolean = bool;
+    } while (!QfileLocalFilePicTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView, localFileInfo, this.jdField_a_of_type_Boolean));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.o();
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqqr paramaqqr)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "1");
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
-    arnu.a().execute(new QFileMsgForwardManager.BuddyUploadTaskExcuter.1(this, paramString, paramaqqr));
+    if (paramInt1 != paramInt3) {
+      return;
+    }
+    paramInt3 = Math.min(paramInt2, paramInt4);
+    int i = Math.max(paramInt2, paramInt4);
+    if (paramInt4 < paramInt2) {
+      this.b = Math.min(paramInt4, this.b);
+    }
+    for (;;)
+    {
+      paramInt2 = paramInt3;
+      while (paramInt2 <= i)
+      {
+        QfileLocalFilePicTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView, (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_Aqni.getChild(paramInt1, paramInt2), this.jdField_a_of_type_Boolean);
+        paramInt2 += 1;
+      }
+      this.jdField_a_of_type_Int = Math.max(paramInt4, this.jdField_a_of_type_Int);
+    }
+    paramInt2 = this.b;
+    QfileLocalFilePicTabView localQfileLocalFilePicTabView;
+    FileInfo localFileInfo;
+    boolean bool;
+    if (paramInt2 < paramInt3)
+    {
+      localQfileLocalFilePicTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView;
+      localFileInfo = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_Aqni.getChild(paramInt1, paramInt2);
+      if (!this.jdField_a_of_type_Boolean) {}
+      for (bool = true;; bool = false)
+      {
+        QfileLocalFilePicTabView.a(localQfileLocalFilePicTabView, localFileInfo, bool);
+        paramInt2 += 1;
+        break;
+      }
+    }
+    paramInt2 = i + 1;
+    if (paramInt2 <= this.jdField_a_of_type_Int)
+    {
+      localQfileLocalFilePicTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView;
+      localFileInfo = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_Aqni.getChild(paramInt1, paramInt2);
+      if (!this.jdField_a_of_type_Boolean) {}
+      for (bool = true;; bool = false)
+      {
+        QfileLocalFilePicTabView.a(localQfileLocalFilePicTabView, localFileInfo, bool);
+        paramInt2 += 1;
+        break;
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.o();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      URLDrawable.pause();
+      return;
+    }
+    URLDrawable.resume();
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.g()) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.h()))
+    {
+      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getSharedPreferences("LAST_CHOOSE_", 0).edit();
+      localEditor.putInt("GROUP", paramInt1);
+      localEditor.putInt("CHILD", (paramInt2 + 1) / 4);
+      localEditor.commit();
+    }
   }
 }
 

@@ -1,9 +1,9 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import awen;
-import batw;
-import baub;
-import bnlk;
+import awiw;
+import bayf;
+import bayk;
+import bnpw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -11,11 +11,11 @@ import com.tencent.mobileqq.data.MessageRecord;
 class BaseShortVideoOprerator$ForwardShortVideoTask
   implements Runnable
 {
-  bnlk a;
+  bnpw a;
   
-  public BaseShortVideoOprerator$ForwardShortVideoTask(BaseShortVideoOprerator paramBaseShortVideoOprerator, bnlk parambnlk)
+  public BaseShortVideoOprerator$ForwardShortVideoTask(BaseShortVideoOprerator paramBaseShortVideoOprerator, bnpw parambnpw)
   {
-    this.a = parambnlk;
+    this.a = parambnpw;
   }
   
   public void run()
@@ -24,41 +24,41 @@ class BaseShortVideoOprerator$ForwardShortVideoTask
     for (;;)
     {
       return;
-      bnlk localbnlk = this.a;
+      bnpw localbnpw = this.a;
       Object localObject;
       int i;
-      if (localbnlk.k == 3)
+      if (localbnpw.k == 3)
       {
-        localObject = this.this$0.a(localbnlk);
+        localObject = this.this$0.a(localbnpw);
         i = 1;
       }
       while (localObject != null)
       {
         this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
         long l = System.currentTimeMillis();
-        baub localbaub = new baub();
-        localbaub.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
-        localbaub.c = ((MessageRecord)localObject).frienduin;
-        localbaub.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
-        localbaub.jdField_b_of_type_Int = 20;
-        localbaub.jdField_a_of_type_JavaLangObject = localbnlk;
-        localbaub.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
-        localbaub.jdField_a_of_type_Boolean = true;
-        localbaub.e = 0;
-        localbaub.f = localbnlk.e;
-        localbaub.i = (localbnlk.h + "QQ_&_MoblieQQ_&_QQ" + localbnlk.i + "QQ_&_MoblieQQ_&_QQ" + localbnlk.j + "QQ_&_MoblieQQ_&_QQ" + localbnlk.g);
-        localbaub.jdField_a_of_type_Awfy = this.this$0;
-        localbaub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-        this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbaub);
+        bayk localbayk = new bayk();
+        localbayk.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
+        localbayk.c = ((MessageRecord)localObject).frienduin;
+        localbayk.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
+        localbayk.jdField_b_of_type_Int = 20;
+        localbayk.jdField_a_of_type_JavaLangObject = localbnpw;
+        localbayk.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
+        localbayk.jdField_a_of_type_Boolean = true;
+        localbayk.e = 0;
+        localbayk.f = localbnpw.e;
+        localbayk.i = (localbnpw.h + "QQ_&_MoblieQQ_&_QQ" + localbnpw.i + "QQ_&_MoblieQQ_&_QQ" + localbnpw.j + "QQ_&_MoblieQQ_&_QQ" + localbnpw.g);
+        localbayk.jdField_a_of_type_Awkh = this.this$0;
+        localbayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+        this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbayk);
         if (i != 0) {
           this.this$0.a((MessageRecord)localObject);
         }
-        awen.a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_JavaLangString, "doForwardShortVideo", "cost:" + (System.currentTimeMillis() - l));
-        awen.a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_JavaLangString, "doForwardShortVideo.start", "TransferRequest: " + localbaub.toString());
+        awiw.a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_JavaLangString, "doForwardShortVideo", "cost:" + (System.currentTimeMillis() - l));
+        awiw.a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_JavaLangString, "doForwardShortVideo.start", "TransferRequest: " + localbayk.toString());
         return;
-        if (localbnlk.k == 4)
+        if (localbnpw.k == 4)
         {
-          localObject = (MessageForShortVideo)localbnlk.jdField_a_of_type_JavaLangObject;
+          localObject = (MessageForShortVideo)localbnpw.jdField_a_of_type_JavaLangObject;
           i = 0;
         }
         else

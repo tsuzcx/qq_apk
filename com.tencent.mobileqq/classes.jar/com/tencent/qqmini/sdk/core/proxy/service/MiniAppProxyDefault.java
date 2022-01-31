@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.ResultReceiver;
 import android.util.Log;
-import bhif;
-import bhij;
+import bhmm;
+import bhmq;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.IChoosePhotoListner;
@@ -89,15 +89,15 @@ public class MiniAppProxyDefault
     return 0;
   }
   
-  public bhij getMoreItemSelectedListener()
+  public bhmq getMoreItemSelectedListener()
   {
     return new DefaultMoreItemSelectedListener();
   }
   
-  public ArrayList<MoreItem> getMoreItems(bhif parambhif)
+  public ArrayList<MoreItem> getMoreItems(bhmm parambhmm)
   {
-    parambhif.a("QQ", 2130840838).b("QQ空间", 2130840839).c("微信好友", 2130840840).d("微信朋友圈", 2130840841).e("关于", 2130840804).f("举报", 2130840837).g("调试", 2130840804).h("性能", 2130840804);
-    return parambhif.a();
+    parambhmm.a("QQ", 2130840839).b("QQ空间", 2130840840).c("微信好友", 2130840841).d("微信朋友圈", 2130840842).e("关于", 2130840805).f("举报", 2130840838).g("调试", 2130840805).h("性能", 2130840805);
+    return parambhmm.a();
   }
   
   public String getNickName()

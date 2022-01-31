@@ -1,27 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-
-class agor
-  implements View.OnClickListener
+public class agor
 {
-  agor(agoj paramagoj) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    aekt.n = true;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1001) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 10002)) {
-      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800514F", "0X800514F", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
-      aepf.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
-      return;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1010) {
-        azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049C6", "0X80049C6", 0, 0, "", "", "", "");
-      }
-    }
+    StringBuffer localStringBuffer = new StringBuffer("UserInfo{");
+    localStringBuffer.append("age=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", sex=").append(this.jdField_b_of_type_Int);
+    localStringBuffer.append(", nickName='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", province='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", city='").append(this.jdField_c_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", headPic='").append(this.d).append('\'');
+    localStringBuffer.append(", relationShip=").append(this.jdField_c_of_type_Int);
+    localStringBuffer.append(", uin='").append(this.e).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

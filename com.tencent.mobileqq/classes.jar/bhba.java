@@ -1,32 +1,14 @@
-public class bhba<E>
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bhba
+  implements DialogInterface.OnClickListener
 {
-  private bhax<T, E>.bhaz<T> jdField_a_of_type_Bhaz;
-  private E jdField_a_of_type_JavaLangObject;
-  private bhax<T, E>.bhaz<T> b;
+  bhba(bhaz parambhaz) {}
   
-  public bhba(bhax parambhax) {}
-  
-  public bhax<T, E>.bhaz<T> a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.jdField_a_of_type_Bhaz;
-  }
-  
-  public bhba a(bhax<T, E>.bhaz<T> parambhax)
-  {
-    this.jdField_a_of_type_Bhaz = parambhax;
-    return this;
-  }
-  
-  public bhba a(E paramE)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramE;
-    return this;
-  }
-  
-  public bhba b(bhax<T, E>.bhaz<T> parambhax)
-  {
-    this.b = parambhax;
-    return this;
+    bhaz.a(this.a);
   }
 }
 

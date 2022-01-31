@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import ahoh;
-import ahoi;
-import ahoj;
-import ahqn;
+import ahsw;
+import ahsx;
+import ahsy;
+import ahvc;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.graphics.Rect;
@@ -13,7 +13,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bhpo;
+import bhtv;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,12 +22,12 @@ import com.tencent.widget.AbsListView;
 
 public abstract class ContactsBaseFragment
   extends Fragment
-  implements ahqn, bhpo
+  implements ahvc, bhtv
 {
   public static Rect a;
   private int a;
-  protected ahoi a;
-  public ahoj a;
+  protected ahsx a;
+  public ahsy a;
   public BaseActivity a;
   public QQAppInterface a;
   public boolean a;
@@ -49,14 +49,14 @@ public abstract class ContactsBaseFragment
   
   public abstract void a();
   
-  public void a(ahoi paramahoi)
+  public void a(ahsx paramahsx)
   {
-    this.jdField_a_of_type_Ahoi = paramahoi;
+    this.jdField_a_of_type_Ahsx = paramahsx;
   }
   
-  public void a(ahoj paramahoj)
+  public void a(ahsy paramahsy)
   {
-    this.jdField_a_of_type_Ahoj = paramahoj;
+    this.jdField_a_of_type_Ahsy = paramahsy;
   }
   
   public void a(BaseActivity paramBaseActivity)
@@ -72,7 +72,7 @@ public abstract class ContactsBaseFragment
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract void av_();
+  public abstract void as_();
   
   public int b()
   {
@@ -147,7 +147,7 @@ public abstract class ContactsBaseFragment
     this.jdField_b_of_type_AndroidViewView = a(paramLayoutInflater, paramBundle);
     paramLayoutInflater = a();
     if ((paramLayoutInflater != null) && (Build.VERSION.SDK_INT >= 14)) {
-      paramLayoutInflater.setAccessibilityDelegate(new ahoh(this));
+      paramLayoutInflater.setAccessibilityDelegate(new ahsw(this));
     }
     if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean))
     {
@@ -168,8 +168,8 @@ public abstract class ContactsBaseFragment
     super.onDestroy();
     this.jdField_b_of_type_AndroidViewView = null;
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Ahoi != null) {
-      this.jdField_a_of_type_Ahoi.d(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Ahsx != null) {
+      this.jdField_a_of_type_Ahsx.d(this.jdField_a_of_type_Int);
     }
   }
   

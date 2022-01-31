@@ -1,56 +1,84 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.adapter.ForwardRecentItemView;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class acxp
-  extends alox
+  implements adwr
 {
-  public acxp(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public acxp(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  public void a(Editable paramEditable)
   {
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(paramString1)) || (!ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))) {}
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      this.a.a.setVisibility(8);
+    }
+    for (;;)
+    {
+      if (ForwardRecentActivity.a(this.a) != null) {
+        ForwardRecentActivity.a(this.a).a(paramEditable);
+      }
+      return;
+      this.a.a.setVisibility(0);
+    }
+  }
+  
+  public void a(ResultRecord paramResultRecord)
+  {
+    if (paramResultRecord == null) {}
     for (;;)
     {
       return;
-      if (paramBoolean)
+      ForwardRecentActivity.a(this.a, paramResultRecord.a, paramResultRecord.a());
+      int j = ForwardRecentActivity.a(this.a).getChildCount();
+      int i = 0;
+      while (i < j)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = paramString2;
-        return;
-      }
-      paramString1 = (aloz)this.a.app.getManager(51);
-      if (paramString1 == null) {}
-      for (paramString1 = null; (paramString1 != null) && (paramString1.remark != null) && (paramString1.isRemark == 1); paramString1 = paramString1.e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = paramString1.remark;
-        return;
+        Object localObject = ForwardRecentActivity.a(this.a).getChildAt(i);
+        if ((localObject instanceof ForwardRecentItemView))
+        {
+          localObject = (ForwardRecentItemView)localObject;
+          if ((((ForwardRecentItemView)localObject).a.b == paramResultRecord.b) && (((ForwardRecentItemView)localObject).a.a.equals(paramResultRecord.a))) {
+            ((ForwardRecentItemView)localObject).a(false);
+          }
+        }
+        i += 1;
       }
     }
   }
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(boolean paramBoolean)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a != null) && (ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))
+    if ((paramBoolean) && (ForwardRecentActivity.a(this.a) == null))
     {
-      localObject = (aloz)this.a.app.getManager(51);
-      if (localObject != null) {
-        break label90;
+      ForwardRecentActivity.a(this.a, ContactSearchFragment.a(7, 2097177, null, null, ForwardRecentActivity.a(this.a)));
+      Object localObject = new ArrayList();
+      Iterator localIterator = ForwardRecentActivity.a(this.a).values().iterator();
+      while (localIterator.hasNext()) {
+        ((List)localObject).add(((ResultRecord)localIterator.next()).a);
       }
-    }
-    label90:
-    for (Object localObject = null;; localObject = ((aloz)localObject).e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
-    {
-      if ((localObject != null) && (((Friends)localObject).remark != null) && (((Friends)localObject).isRemark == 1)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = ((Friends)localObject).remark;
-      }
-      return;
+      ForwardRecentActivity.a(this.a).a((List)localObject, (List)localObject);
+      localObject = this.a.getSupportFragmentManager().beginTransaction();
+      ((FragmentTransaction)localObject).add(2131375722, ForwardRecentActivity.a(this.a));
+      ((FragmentTransaction)localObject).commitAllowingStateLoss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acxp
  * JD-Core Version:    0.7.0.1
  */

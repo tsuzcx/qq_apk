@@ -1,163 +1,93 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.SafeModeUtil.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class zdi
+class zdi
+  extends BroadcastReceiver
 {
-  private static final int jdField_a_of_type_Int;
-  public static long a;
-  private static final CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch;
-  private static final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  public static long b;
+  public int a;
+  public String a;
+  public String b;
   
-  static
+  private zdi(zdg paramzdg) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((System.currentTimeMillis() & 1L) == 0L) {}
-    for (int i = 30;; i = 15)
-    {
-      jdField_a_of_type_Int = i;
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-      jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(2);
-      b = -1L;
-      return;
+    int i = paramIntent.getIntExtra("bc_seq", -1);
+    if (i < 0) {
+      if (QLog.isColorLevel()) {
+        QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence = " + i + "| wrong seq");
+      }
     }
-  }
-  
-  public static void a()
-  {
-    aogg.a().b();
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    if ((azmz.b) && (paramContext.getSharedPreferences("pref_safemode_not_exit", 4).getBoolean("key_not_exit_enable", false))) {}
-    SharedPreferences localSharedPreferences;
+    byte[] arrayOfByte;
     do
     {
       do
       {
         return;
-        localSharedPreferences = paramContext.getSharedPreferences("sp_safe_mode", 0);
-        switch (paramInt)
-        {
-        default: 
-          return;
-        case 1: 
-          paramInt = localSharedPreferences.getInt("key_count_crash", 0);
+        if (i == this.jdField_a_of_type_Int) {
+          break;
         }
-      } while (paramInt <= 0);
-      localSharedPreferences.edit().putInt("key_count_crash", 0).commit();
-    } while ((!a()) || (paramInt <= 3));
-    azmz.a(paramContext).a("", "exitSafeModeCrash", true, 0L, 0L, null, null);
+      } while (!QLog.isColorLevel());
+      QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence != seq | miss hit");
+      return;
+      paramContext = paramIntent.getExtras();
+      arrayOfByte = paramContext.getByteArray("bc_data");
+      i = paramIntent.getIntExtra("portal_type_key", -1);
+      if (arrayOfByte != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive data = null");
     return;
-    paramInt = localSharedPreferences.getInt("key_count_start_fail", 0);
-    if (paramInt > 0)
+    if (QLog.isColorLevel())
     {
-      localSharedPreferences.edit().putInt("key_count_start_fail", 0).commit();
-      if ((a()) && (paramInt > 3)) {
-        azmz.a(paramContext).a("", "exitSafeModeStart_" + jdField_a_of_type_Int, true, 0L, 0L, null, null);
+      if (i != 1009) {
+        break label286;
       }
-    }
-    aogg.a().a();
-  }
-  
-  public static void a(Context paramContext, Object paramObject)
-  {
-    if ((paramObject != null) && (paramObject.toString().contains("Activity")) && (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)))
-    {
-      paramObject = paramContext.getSharedPreferences("sp_safe_mode", 0);
-      int i = paramObject.getInt("key_count_start_fail", 0);
-      if ((i > 3) && (a())) {
-        azmz.a(paramContext).a("", "enterSafeModeStart_" + jdField_a_of_type_Int, true, 0L, 0L, null, null);
-      }
-      aogg.a().a = true;
-      aogg.a().b = true;
-      paramObject.edit().putInt("key_count_start_fail", i + 1).commit();
-      ThreadManager.getSubThreadHandler().postDelayed(new SafeModeUtil.1(paramContext), jdField_a_of_type_Int * 1000L);
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    Object localObject = paramContext.getSharedPreferences("sp_safe_mode", 0);
-    int i = ((SharedPreferences)localObject).getInt("key_count_crash", 0);
-    String str = ((SharedPreferences)localObject).getString("key_crash_info", "");
-    long l = ((SharedPreferences)localObject).getLong("key_crash_time", 0L);
-    localObject = ((SharedPreferences)localObject).edit();
-    if (str.equals(paramString)) {
-      if (Math.abs(System.currentTimeMillis() - l) > 21600000L)
-      {
-        ((SharedPreferences.Editor)localObject).putInt("key_count_crash", 1);
-        ((SharedPreferences.Editor)localObject).putLong("key_crash_time", System.currentTimeMillis());
-      }
+      paramContext = "REQ_TYPE_GET_HEAD returned";
     }
     for (;;)
     {
-      ((SharedPreferences.Editor)localObject).commit();
-      return;
-      if (i <= 3)
+      QLog.d("PortalManager.HbEventPlugin", 2, "DataReceiver.onReceive | " + i + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + paramContext);
+      switch (i)
       {
-        if ((i == 3) && (a())) {
-          azmz.a(paramContext).a("", "enterSafeModeCrash", true, 0L, 0L, null, null);
+      default: 
+        return;
+      }
+      this.jdField_a_of_type_Zdg.a(this.jdField_a_of_type_Int);
+      paramIntent = awni.b(arrayOfByte);
+      paramContext = paramIntent;
+      if (paramIntent == null) {
+        paramContext = new JSONObject();
+      }
+      try
+      {
+        paramContext.put("errorCode", -1);
+        paramContext = paramContext.toString();
+        this.jdField_a_of_type_Zdg.a(this.jdField_a_of_type_JavaLangString, new String[] { paramContext });
+        return;
+        label286:
+        paramContext = paramContext.toString();
+      }
+      catch (JSONException paramContext)
+      {
+        for (;;)
+        {
+          paramContext.printStackTrace();
+          paramContext = paramIntent;
         }
-        aogg.a().a(false);
-        ((SharedPreferences.Editor)localObject).putInt("key_count_crash", i + 1);
-        continue;
-        aogg.a().a(false);
-        ((SharedPreferences.Editor)localObject).putInt("key_count_crash", 1);
-        ((SharedPreferences.Editor)localObject).putString("key_crash_info", paramString);
-        ((SharedPreferences.Editor)localObject).putLong("key_crash_time", System.currentTimeMillis());
       }
     }
   }
-  
-  public static void a(String paramString) {}
-  
-  private static boolean a()
-  {
-    return true;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    boolean bool = false;
-    paramContext = paramContext.getSharedPreferences("sp_safe_mode", 0);
-    int i = paramContext.getInt("key_count_start_fail", 0);
-    int j = paramContext.getInt("key_count_crash", 0);
-    if ((i > 3) || (j > 3)) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public static void b()
-  {
-    try
-    {
-      jdField_a_of_type_JavaUtilConcurrentCountDownLatch.await(10000L, TimeUnit.MILLISECONDS);
-      return;
-    }
-    catch (InterruptedException localInterruptedException) {}
-  }
-  
-  public static void c()
-  {
-    jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-  }
-  
-  public static void d() {}
-  
-  public static void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zdi
  * JD-Core Version:    0.7.0.1
  */

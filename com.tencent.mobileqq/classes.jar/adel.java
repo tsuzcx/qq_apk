@@ -1,27 +1,15 @@
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
 public class adel
-  extends alox
+  implements View.OnClickListener
 {
-  public adel(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public adel(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
+  public void onClick(View paramView)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    MoveToGroupActivity.a(this.a);
-    if (paramString == null) {
-      QQToast.a(this.a, this.a.getString(2131694481), 0).b(this.a.getTitleBarHeight());
-    }
-    for (;;)
-    {
-      MoveToGroupActivity.b(this.a);
-      this.a.removeObserver(MoveToGroupActivity.a(this.a));
-      return;
-      QQToast.a(this.a, 2, this.a.getString(2131694483), 0).b(this.a.getTitleBarHeight());
-    }
+    HongbaoShowerActivity.a(this.a);
   }
 }
 

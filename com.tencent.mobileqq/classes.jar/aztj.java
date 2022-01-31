@@ -1,8 +1,12 @@
-import android.view.View;
+import android.content.Context;
 
-class aztj
+public class aztj
 {
-  View a;
+  public static void a() {}
+  
+  public static void a(Context paramContext) {}
+  
+  public static void b() {}
 }
 
 

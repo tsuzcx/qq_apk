@@ -1,36 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 
-class behv
-  extends nac
+public class behv
+  implements ThreadExcutor.IThreadListener
 {
-  behv(behr parambehr, behy parambehy) {}
+  public behv(SwiftBrowserCookieMonster paramSwiftBrowserCookieMonster) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Behy != null)
-    {
-      paramBundle = new oidb_0x8e4.RspBody();
-      if (paramArrayOfByte == null) {}
-    }
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_Behy.a(paramInt, paramBundle);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("WerewolvesHandler", 2, paramArrayOfByte.getMessage());
-        }
-      }
-    }
-  }
+  public void onAdded() {}
+  
+  public void onPostRun() {}
+  
+  public void onPreRun() {}
 }
 
 

@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity.30;
 
 public class acdd
-  implements bhys
+  implements DialogInterface.OnClickListener
 {
-  public acdd(BaseChatPie paramBaseChatPie) {}
+  public acdd(AddFriendVerifyActivity.30 param30) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
+    if (paramInt == 1)
     {
-      BaseChatPie.a(this.a);
-      BaseChatPie.b(this.a);
+      this.a.this$0.a.cancel();
+      this.a.this$0.finish();
     }
   }
 }

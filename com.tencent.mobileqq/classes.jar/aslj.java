@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aslj
+class aslj
+  implements View.OnClickListener
 {
-  public void a(MessageForUniteGrayTip paramMessageForUniteGrayTip)
+  aslj(aslg paramaslg) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(aslq.a, 2, "onPreAddedMsg");
-    }
+    aslg.e(this.a);
+    this.a.a(true);
   }
 }
 

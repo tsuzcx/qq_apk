@@ -1,22 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
 
 public class adda
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public adda(LoginInfoActivity paramLoginInfoActivity) {}
+  public adda(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    LoginInfoActivity.b(this.a).setVisibility(4);
-    LoginInfoActivity.b(this.a).clearAnimation();
+    PublicFragmentActivity.a(this.a.getActivity(), QQSettingAutoDownloadAndSaveFragment.class);
+    azqs.b(null, "CliOper", "", "", "0X800A2DB", "0X800A2DB", 0, 0, "", "", "", "");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

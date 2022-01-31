@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.jsp;
 
-import atcy;
-import badd;
-import becq;
+import athh;
+import bahm;
+import begz;
 import com.tencent.common.app.AppInterface;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 public class DocxApiPlugin$5
   implements Runnable
 {
-  public DocxApiPlugin$5(atcy paramatcy, ArrayList paramArrayList) {}
+  public DocxApiPlugin$5(athh paramathh, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class DocxApiPlugin$5
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      badd.a(this.this$0.mRuntime.a().getCurrentAccountUin(), badd.a(str), str);
+      bahm.a(this.this$0.mRuntime.a().getCurrentAccountUin(), bahm.a(str), str);
     }
   }
 }

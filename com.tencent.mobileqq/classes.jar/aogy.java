@@ -1,82 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.widget.RoundImageView;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class aogy
-  extends aofy<aogz>
+class aogy
+  implements ansr
 {
-  public int a()
-  {
-    return 574;
-  }
+  aogy(aogx paramaogx) {}
   
-  @NonNull
-  public aogz a(int paramInt)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    return new aogz();
-  }
-  
-  @Nullable
-  public aogz a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    paramString2 = (List)aogx.a(this.a).get(paramString1);
+    if ((paramString2 != null) && (paramString2.size() > 0))
     {
-      aogz localaogz = aogz.a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("AEPituCameraConfigProcessor", 2, "onParsed:" + paramArrayOfaogf[0].a);
+      paramString2 = paramString2.iterator();
+      while (paramString2.hasNext())
+      {
+        aohb localaohb = (aohb)paramString2.next();
+        if ((localaohb != null) && (localaohb.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView != null) && (localaohb.jdField_a_of_type_Apby != null))
+        {
+          localaohb.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageBitmap(paramBitmap);
+          localaohb.jdField_a_of_type_Apby.c(true);
+        }
       }
-      return localaogz;
     }
-    return null;
-  }
-  
-  public Class<aogz> a()
-  {
-    return aogz.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aogz paramaogz)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEPituCameraConfigProcessor", 2, "onUpdate: " + paramaogz.a());
-    }
-    ShortVideoUtils.a(paramaogz.a());
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public int b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEPituCameraConfigProcessor", 2, "onSend: " + paramInt + ", isOpen:" + ShortVideoUtils.g());
-    }
-    return super.b(paramInt);
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    aogx.a(this.a).remove(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aogy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,17 @@
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface afcf
+final class afcf
+  implements alrb
 {
-  public abstract View a();
-  
-  public abstract void a();
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void d();
-  
-  public abstract void j();
-  
-  public abstract void p();
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      afce.a(true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AIODrawerDpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
+    }
+  }
 }
 
 

@@ -1,23 +1,28 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class argb
-  implements areh
+final class argb
+  implements View.OnClickListener
 {
-  argb(arfz paramarfz) {}
+  argb(FileManagerEntity paramFileManagerEntity, arhw paramarhw) {}
   
-  public void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    if ((paramList != null) && (!paramList.isEmpty()))
+    try
     {
-      this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      this.a.f = paramString;
-      if (this.a.jdField_a_of_type_Ardn != null) {
-        this.a.jdField_a_of_type_Ardn.e();
+      paramView = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      paramView.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin);
+      arri.d(BaseActivity.sTopActivity.getString(2131692914));
+      if ((this.jdField_a_of_type_Arhw != null) && (this.jdField_a_of_type_Arhw.b())) {
+        arrr.a(paramView, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
       }
+      return;
     }
+    catch (Exception paramView) {}
   }
 }
 

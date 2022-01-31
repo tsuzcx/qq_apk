@@ -1,23 +1,42 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import common.config.service.QzoneConfig;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
 public class alsr
-  implements alkq
+  implements View.OnTouchListener
 {
-  private List<String> a = new ArrayList();
+  public alsr(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public List<String> a(AppInterface paramAppInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.isEmpty()) {
-      this.a.add("100077");
+    switch (paramMotionEvent.getAction())
+    {
     }
-    if (((paramAppInterface instanceof QQAppInterface)) && (QzoneConfig.getInstance().getConfig("qqminiapp", "settingMeMiniGameEnable", 1) == 1)) {
-      return this.a;
-    }
-    return null;
+    do
+    {
+      do
+      {
+        return false;
+      } while (!bacu.c(this.a.getActivity().app, false));
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(13, 200L);
+      return false;
+      if (!this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(13)) {
+        break;
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.clearAnimation();
+      }
+    } while (this.a.jdField_a_of_type_AndroidWidgetImageView == null);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    return false;
+    FrameHelperActivity.b(this.a);
+    return false;
   }
 }
 

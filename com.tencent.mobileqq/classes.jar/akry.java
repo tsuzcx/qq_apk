@@ -1,650 +1,400 @@
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import android.media.MediaPlayer;
+import android.graphics.Bitmap;
+import android.graphics.Paint.FontMetrics;
+import android.text.Layout.Alignment;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import android.webkit.URLUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-public class akry
-  implements aksz
+public abstract class akry
 {
-  public static List<akry> a;
-  private int jdField_a_of_type_Int;
-  private aksf jdField_a_of_type_Aksf;
-  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new akse(this);
-  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
+  private static TextPaint a;
+  private static HashMap<Float, Float> b = new HashMap();
+  private static HashMap<String, Integer> c = new HashMap();
+  protected HashMap<String, WeakReference<Bitmap>> a;
   
   static
   {
-    jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+    jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
   }
   
-  public akry(int paramInt1, int paramInt2, String arg3)
+  public akry()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    aktr localaktr = akro.a(paramInt2);
-    if (localaktr != null) {
-      localaktr.b(0);
-    }
-    if ("effect".equals(???)) {
-      if (localaktr != null) {
-        this.jdField_a_of_type_Aksf = new aksf(paramInt2);
-      }
-    }
-    for (;;)
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public static float a(float paramFloat)
+  {
+    Float localFloat = (Float)b.get(Float.valueOf(paramFloat));
+    Object localObject = localFloat;
+    if (localFloat == null)
     {
-      if (jdField_a_of_type_JavaUtilList != null) {}
-      synchronized (jdField_a_of_type_JavaUtilList)
+      if (paramFloat != jdField_a_of_type_AndroidTextTextPaint.getTextSize()) {
+        jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
+      }
+      localObject = jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+      float f1 = ((Paint.FontMetrics)localObject).descent;
+      float f2 = ((Paint.FontMetrics)localObject).ascent;
+      localObject = Float.valueOf(((Paint.FontMetrics)localObject).leading + (f1 - f2));
+      b.put(Float.valueOf(paramFloat), localObject);
+    }
+    return ((Float)localObject).floatValue();
+  }
+  
+  public static float a(aksc paramaksc1, aksc paramaksc2)
+  {
+    float f2 = 1.0F;
+    float f1 = f2;
+    if (paramaksc1 != null)
+    {
+      f1 = f2;
+      if (paramaksc2 != null)
       {
-        jdField_a_of_type_JavaUtilList.add(this);
-        this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
-        return;
-        QLog.e("CmGameAudioPlayer", 1, "can not create pool");
-        continue;
-        this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-        a(1);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new akrz(this));
+        f1 = a(paramaksc1.jdField_g_of_type_Float);
+        f2 = paramaksc1.h * 2;
+        f1 = (a(paramaksc2.jdField_g_of_type_Float) + paramaksc2.h * 2) / (f1 + f2);
       }
     }
+    return f1;
   }
   
-  private void a(aksy paramaksy, JSONObject paramJSONObject)
+  /* Error */
+  public Bitmap a(aksc paramaksc)
   {
-    if (paramaksy != null) {
-      paramaksy.a(paramJSONObject);
-    }
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 4
+    //   6: aload_1
+    //   7: ifnull +17 -> 24
+    //   10: aload_1
+    //   11: getfield 96	aksc:e	I
+    //   14: ifeq +10 -> 24
+    //   17: aload_1
+    //   18: getfield 99	aksc:f	I
+    //   21: ifne +7 -> 28
+    //   24: aconst_null
+    //   25: astore_3
+    //   26: aload_3
+    //   27: areturn
+    //   28: aload_0
+    //   29: aload_1
+    //   30: invokevirtual 101	akry:b	(Laksc;)Landroid/graphics/Bitmap;
+    //   33: astore_2
+    //   34: aload_2
+    //   35: ifnull +48 -> 83
+    //   38: aload_2
+    //   39: invokevirtual 107	android/graphics/Bitmap:isRecycled	()Z
+    //   42: ifne +41 -> 83
+    //   45: aload_2
+    //   46: astore_3
+    //   47: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   50: ifeq -24 -> 26
+    //   53: ldc 114
+    //   55: iconst_2
+    //   56: new 116	java/lang/StringBuilder
+    //   59: dup
+    //   60: invokespecial 117	java/lang/StringBuilder:<init>	()V
+    //   63: ldc 119
+    //   65: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: aload_1
+    //   69: getfield 126	aksc:jdField_a_of_type_JavaLangCharSequence	Ljava/lang/CharSequence;
+    //   72: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   75: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: invokestatic 137	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   81: aload_2
+    //   82: areturn
+    //   83: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   86: ifeq +31 -> 117
+    //   89: ldc 114
+    //   91: iconst_2
+    //   92: new 116	java/lang/StringBuilder
+    //   95: dup
+    //   96: invokespecial 117	java/lang/StringBuilder:<init>	()V
+    //   99: ldc 139
+    //   101: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: aload_1
+    //   105: getfield 126	aksc:jdField_a_of_type_JavaLangCharSequence	Ljava/lang/CharSequence;
+    //   108: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   111: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   114: invokestatic 137	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   117: new 141	android/graphics/Canvas
+    //   120: dup
+    //   121: invokespecial 142	android/graphics/Canvas:<init>	()V
+    //   124: astore 6
+    //   126: aload_1
+    //   127: getfield 96	aksc:e	I
+    //   130: aload_1
+    //   131: getfield 99	aksc:f	I
+    //   134: getstatic 148	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   137: invokestatic 152	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   140: astore_3
+    //   141: aload 6
+    //   143: aload_3
+    //   144: invokevirtual 156	android/graphics/Canvas:setBitmap	(Landroid/graphics/Bitmap;)V
+    //   147: aload 5
+    //   149: astore_2
+    //   150: aload_1
+    //   151: getfield 159	aksc:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   154: invokestatic 165	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   157: ifne +101 -> 258
+    //   160: aload_0
+    //   161: getfield 34	akry:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   164: aload_1
+    //   165: getfield 159	aksc:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   168: invokevirtual 45	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   171: checkcast 167	java/lang/ref/WeakReference
+    //   174: astore_2
+    //   175: aload_2
+    //   176: ifnull +12 -> 188
+    //   179: aload_2
+    //   180: invokevirtual 170	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   183: checkcast 103	android/graphics/Bitmap
+    //   186: astore 4
+    //   188: aload 4
+    //   190: astore_2
+    //   191: aload 4
+    //   193: ifnonnull +65 -> 258
+    //   196: aload 4
+    //   198: astore_2
+    //   199: new 172	java/io/File
+    //   202: dup
+    //   203: aload_1
+    //   204: getfield 159	aksc:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   207: invokespecial 175	java/io/File:<init>	(Ljava/lang/String;)V
+    //   210: invokevirtual 178	java/io/File:exists	()Z
+    //   213: ifeq +45 -> 258
+    //   216: new 180	java/io/BufferedInputStream
+    //   219: dup
+    //   220: new 182	java/io/FileInputStream
+    //   223: dup
+    //   224: aload_1
+    //   225: getfield 159	aksc:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   228: invokespecial 183	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   231: invokespecial 186	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   234: invokestatic 192	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   237: astore_2
+    //   238: aload_0
+    //   239: getfield 34	akry:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   242: aload_1
+    //   243: getfield 159	aksc:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   246: new 167	java/lang/ref/WeakReference
+    //   249: dup
+    //   250: aload_2
+    //   251: invokespecial 195	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   254: invokevirtual 73	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   257: pop
+    //   258: aload_2
+    //   259: ifnonnull +275 -> 534
+    //   262: aload_0
+    //   263: getfield 34	akry:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   266: ldc 197
+    //   268: invokevirtual 45	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   271: checkcast 167	java/lang/ref/WeakReference
+    //   274: astore 4
+    //   276: aload 4
+    //   278: ifnull +256 -> 534
+    //   281: aload 4
+    //   283: invokevirtual 170	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   286: checkcast 103	android/graphics/Bitmap
+    //   289: astore_2
+    //   290: aload_2
+    //   291: astore 4
+    //   293: aload_2
+    //   294: ifnonnull +36 -> 330
+    //   297: invokestatic 203	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   300: invokevirtual 209	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   303: ldc 210
+    //   305: aconst_null
+    //   306: invokestatic 214	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;ILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   309: astore 4
+    //   311: aload_0
+    //   312: getfield 34	akry:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   315: ldc 197
+    //   317: new 167	java/lang/ref/WeakReference
+    //   320: dup
+    //   321: aload 4
+    //   323: invokespecial 195	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   326: invokevirtual 73	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   329: pop
+    //   330: aload 4
+    //   332: invokevirtual 218	android/graphics/Bitmap:getNinePatchChunk	()[B
+    //   335: astore_2
+    //   336: aload_2
+    //   337: ifnull +84 -> 421
+    //   340: new 220	android/graphics/NinePatch
+    //   343: dup
+    //   344: aload 4
+    //   346: aload_2
+    //   347: aconst_null
+    //   348: invokespecial 223	android/graphics/NinePatch:<init>	(Landroid/graphics/Bitmap;[BLjava/lang/String;)V
+    //   351: astore_2
+    //   352: aload_2
+    //   353: ifnull +27 -> 380
+    //   356: aload_2
+    //   357: aload 6
+    //   359: new 225	android/graphics/Rect
+    //   362: dup
+    //   363: iconst_0
+    //   364: iconst_0
+    //   365: aload_1
+    //   366: getfield 96	aksc:e	I
+    //   369: aload_1
+    //   370: getfield 99	aksc:f	I
+    //   373: invokespecial 228	android/graphics/Rect:<init>	(IIII)V
+    //   376: aconst_null
+    //   377: invokevirtual 232	android/graphics/NinePatch:draw	(Landroid/graphics/Canvas;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
+    //   380: aload_3
+    //   381: astore_2
+    //   382: aload_1
+    //   383: getfield 235	aksc:jdField_a_of_type_AndroidTextStaticLayout	Landroid/text/StaticLayout;
+    //   386: ifnull +27 -> 413
+    //   389: aload 6
+    //   391: aload_1
+    //   392: getfield 237	aksc:jdField_g_of_type_Int	I
+    //   395: i2f
+    //   396: aload_1
+    //   397: getfield 88	aksc:h	I
+    //   400: i2f
+    //   401: invokevirtual 241	android/graphics/Canvas:translate	(FF)V
+    //   404: aload_1
+    //   405: getfield 235	aksc:jdField_a_of_type_AndroidTextStaticLayout	Landroid/text/StaticLayout;
+    //   408: aload 6
+    //   410: invokevirtual 246	android/text/StaticLayout:draw	(Landroid/graphics/Canvas;)V
+    //   413: aload_0
+    //   414: aload_1
+    //   415: aload_2
+    //   416: invokevirtual 249	akry:a	(Laksc;Landroid/graphics/Bitmap;)V
+    //   419: aload_2
+    //   420: areturn
+    //   421: aload 6
+    //   423: aload 4
+    //   425: new 225	android/graphics/Rect
+    //   428: dup
+    //   429: iconst_0
+    //   430: iconst_0
+    //   431: aload 4
+    //   433: invokevirtual 253	android/graphics/Bitmap:getWidth	()I
+    //   436: aload 4
+    //   438: invokevirtual 256	android/graphics/Bitmap:getHeight	()I
+    //   441: invokespecial 228	android/graphics/Rect:<init>	(IIII)V
+    //   444: new 225	android/graphics/Rect
+    //   447: dup
+    //   448: iconst_0
+    //   449: iconst_0
+    //   450: aload_1
+    //   451: getfield 96	aksc:e	I
+    //   454: aload_1
+    //   455: getfield 99	aksc:f	I
+    //   458: invokespecial 228	android/graphics/Rect:<init>	(IIII)V
+    //   461: aconst_null
+    //   462: invokevirtual 260	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
+    //   465: goto -85 -> 380
+    //   468: astore 4
+    //   470: aload_3
+    //   471: astore_2
+    //   472: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   475: ifeq -93 -> 382
+    //   478: ldc 114
+    //   480: iconst_2
+    //   481: aload 4
+    //   483: invokevirtual 263	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   486: invokestatic 265	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   489: aload_3
+    //   490: astore_2
+    //   491: goto -109 -> 382
+    //   494: astore 4
+    //   496: aload_2
+    //   497: astore_3
+    //   498: aload_3
+    //   499: astore_2
+    //   500: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   503: ifeq -121 -> 382
+    //   506: ldc 114
+    //   508: iconst_2
+    //   509: aload 4
+    //   511: invokevirtual 266	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   514: invokestatic 265	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   517: aload_3
+    //   518: astore_2
+    //   519: goto -137 -> 382
+    //   522: astore 4
+    //   524: goto -26 -> 498
+    //   527: astore 4
+    //   529: aload_2
+    //   530: astore_3
+    //   531: goto -61 -> 470
+    //   534: goto -244 -> 290
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	537	0	this	akry
+    //   0	537	1	paramaksc	aksc
+    //   33	497	2	localObject1	Object
+    //   25	506	3	localObject2	Object
+    //   4	433	4	localObject3	Object
+    //   468	14	4	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   494	16	4	localException1	java.lang.Exception
+    //   522	1	4	localException2	java.lang.Exception
+    //   527	1	4	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   1	147	5	localObject4	Object
+    //   124	298	6	localCanvas	android.graphics.Canvas
+    // Exception table:
+    //   from	to	target	type
+    //   141	147	468	java/lang/OutOfMemoryError
+    //   150	175	468	java/lang/OutOfMemoryError
+    //   179	188	468	java/lang/OutOfMemoryError
+    //   199	258	468	java/lang/OutOfMemoryError
+    //   262	276	468	java/lang/OutOfMemoryError
+    //   281	290	468	java/lang/OutOfMemoryError
+    //   297	330	468	java/lang/OutOfMemoryError
+    //   330	336	468	java/lang/OutOfMemoryError
+    //   340	352	468	java/lang/OutOfMemoryError
+    //   356	380	468	java/lang/OutOfMemoryError
+    //   421	465	468	java/lang/OutOfMemoryError
+    //   126	141	494	java/lang/Exception
+    //   141	147	522	java/lang/Exception
+    //   150	175	522	java/lang/Exception
+    //   179	188	522	java/lang/Exception
+    //   199	258	522	java/lang/Exception
+    //   262	276	522	java/lang/Exception
+    //   281	290	522	java/lang/Exception
+    //   297	330	522	java/lang/Exception
+    //   330	336	522	java/lang/Exception
+    //   340	352	522	java/lang/Exception
+    //   356	380	522	java/lang/Exception
+    //   421	465	522	java/lang/Exception
+    //   126	141	527	java/lang/OutOfMemoryError
   }
   
-  private void a(boolean paramBoolean)
+  public void a(aksc paramaksc)
   {
-    if (this.jdField_a_of_type_AndroidMediaAudioManager == null) {}
-    for (;;)
-    {
+    if ((paramaksc == null) || (TextUtils.isEmpty(paramaksc.jdField_a_of_type_JavaLangCharSequence)) || (paramaksc.jdField_a_of_type_Boolean)) {
       return;
-      if (paramBoolean) {}
-      for (int i = this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2); QLog.isColorLevel(); i = this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener))
-      {
-        QLog.d("CmGameAudioPlayer", 2, new Object[] { "[execAudioFocus], requestFocus:", Boolean.valueOf(paramBoolean), ",ret:", Integer.valueOf(i) });
-        return;
-      }
     }
+    if (jdField_a_of_type_AndroidTextTextPaint.getTextSize() != paramaksc.jdField_g_of_type_Float) {
+      jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramaksc.jdField_g_of_type_Float);
+    }
+    jdField_a_of_type_AndroidTextTextPaint.setColor(paramaksc.b);
+    String str = paramaksc.jdField_a_of_type_JavaLangCharSequence + "_" + Float.valueOf(paramaksc.jdField_g_of_type_Float);
+    Integer localInteger = (Integer)c.get(str);
+    Object localObject = localInteger;
+    if (localInteger == null)
+    {
+      localObject = Integer.valueOf((int)Math.ceil(StaticLayout.getDesiredWidth(paramaksc.jdField_a_of_type_JavaLangCharSequence, jdField_a_of_type_AndroidTextTextPaint)));
+      c.put(str, localObject);
+    }
+    localObject = new StaticLayout(paramaksc.jdField_a_of_type_JavaLangCharSequence, jdField_a_of_type_AndroidTextTextPaint, ((Integer)localObject).intValue(), Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, true);
+    paramaksc.e = (((StaticLayout)localObject).getWidth() + paramaksc.jdField_g_of_type_Int * 2);
+    paramaksc.f = (((StaticLayout)localObject).getHeight() + paramaksc.h * 2);
+    paramaksc.jdField_a_of_type_Boolean = true;
+    paramaksc.jdField_a_of_type_AndroidTextStaticLayout = ((StaticLayout)localObject);
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-  }
+  public abstract void a(aksc paramaksc, Bitmap paramBitmap);
   
-  public int a(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(paramInt);
-  }
-  
-  public String a()
-  {
-    try
-    {
-      MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
-      if (localMediaPlayer != null) {}
-      try
-      {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-        if (this.jdField_a_of_type_Aksf != null)
-        {
-          this.jdField_a_of_type_Aksf.c();
-          this.jdField_a_of_type_Aksf = null;
-          return null;
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        for (;;)
-        {
-          QLog.e("CmGameAudioPlayer", 1, localThrowable1, new Object[0]);
-        }
-      }
-      return null;
-    }
-    catch (Throwable localThrowable2)
-    {
-      QLog.e("CmGameAudioPlayer", 1, "audio destroy falied", localThrowable2);
-    }
-  }
-  
-  public JSONObject a(float paramFloat1, float paramFloat2, JSONObject paramJSONObject)
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      if (a() != 9) {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setVolume(paramFloat1, paramFloat2);
-      }
-    }
-    else {
-      return paramJSONObject;
-    }
-    QLog.e("CmGameAudioPlayer", 1, " volume in  state " + a());
-    return paramJSONObject;
-  }
-  
-  public JSONObject a(int paramInt, JSONObject paramJSONObject, aksy paramaksy)
-  {
-    int i;
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      i = a();
-      if ((i != 3) && (i != 5) && (i != 7) && (i != 10)) {
-        break label66;
-      }
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(new aksa(this, paramJSONObject, paramaksy));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(paramInt);
-    }
-    for (;;)
-    {
-      return null;
-      label66:
-      QLog.e("CmGameAudioPlayer", 1, " seek in  state " + i);
-    }
-  }
-  
-  public JSONObject a(aksy paramaksy, JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null) {
-      try
-      {
-        if (paramJSONObject.optInt("N_R_OBJ") == this.jdField_a_of_type_Int)
-        {
-          String str = paramJSONObject.optString("N_R_CMD");
-          if ("cs.audio_play.local".equals(str)) {
-            return b(paramJSONObject, paramaksy);
-          }
-          if ("cs.audio_autoplay.local".equals(str)) {
-            return b(paramJSONObject.optBoolean("autoplay"), paramJSONObject);
-          }
-          if ("cs.audio_load.local".equals(str)) {
-            return c(paramJSONObject, paramaksy);
-          }
-          if ("cs.audio_loop.local".equals(str)) {
-            return a(paramJSONObject.optBoolean("loop"), paramJSONObject);
-          }
-          if ("cs.audio_muted.local".equals(str)) {
-            return a(paramJSONObject.optBoolean("muted"), (float)paramJSONObject.optDouble("leftVolume"), (float)paramJSONObject.optDouble("rightVolume"), paramJSONObject);
-          }
-          if ("cs.audio_pause.local".equals(str)) {
-            return b(paramJSONObject);
-          }
-          if ("cs.audio_seek.local".equals(str)) {
-            return a(paramJSONObject.optInt("seek"), paramJSONObject, paramaksy);
-          }
-          if ("cs.audio_src.local".equals(str)) {
-            return a(paramJSONObject.optString("src"), paramJSONObject, paramaksy);
-          }
-          if ("cs.audio_preload.local".equals(str)) {
-            return c(paramJSONObject.optBoolean("preloaded"), paramJSONObject);
-          }
-          if ("cs.audio_volume.local".equals(str)) {
-            return a((float)paramJSONObject.optDouble("leftVolume"), (float)paramJSONObject.optDouble("rightVolume"), paramJSONObject);
-          }
-          if ("cs.audio_destroy.local".equals(str)) {
-            return b(paramaksy, paramJSONObject);
-          }
-          if ("cs.audio_onend.local".equals(str)) {
-            return e(paramJSONObject, paramaksy);
-          }
-          if ("cs.audio_ontimeupdate.local".equals(str)) {
-            return d(paramJSONObject);
-          }
-          if ("cs.audio_duration.local".equals(str)) {
-            return c(paramJSONObject);
-          }
-          if ("cs.audio_effect_resume.local".equals(str)) {
-            return f(paramJSONObject);
-          }
-          if ("cs.audio_stop.local".equals(str)) {
-            return e(paramJSONObject);
-          }
-          if ("cs.audio_attribute_get.local".equals(str)) {
-            return a(paramJSONObject);
-          }
-          if ("cs.audio_attribute_set.local".equals(str))
-          {
-            paramaksy = a(paramJSONObject, paramaksy);
-            return paramaksy;
-          }
-        }
-      }
-      catch (Throwable paramaksy)
-      {
-        QLog.e("CmGameAudioPlayer", 1, "audio failed", paramaksy);
-      }
-    }
-    return null;
-  }
-  
-  public JSONObject a(String paramString, JSONObject paramJSONObject, aksy paramaksy)
-  {
-    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (a() != 6) && (a() != 9))
-    {
-      try
-      {
-        this.c = 0;
-        aktr localaktr = akro.a();
-        if (localaktr != null)
-        {
-          String str2 = "";
-          String str1 = str2;
-          if (paramString != null)
-          {
-            str1 = str2;
-            if (paramString.startsWith("GameSandBox://")) {
-              str1 = "sandbox";
-            }
-          }
-          if (URLUtil.isNetworkUrl(paramString)) {}
-          for (;;)
-          {
-            this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-            a(1);
-            if (TextUtils.isEmpty(paramString)) {
-              break;
-            }
-            this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
-            a(2);
-            return paramJSONObject;
-            paramString = akpq.a(paramString, localaktr.a(), str1, false);
-          }
-        }
-        paramJSONObject.put("code", 2);
-        paramJSONObject.put("message", "src not exist " + paramString);
-        return paramJSONObject;
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("CmGameAudioPlayer", 1, paramString, new Object[0]);
-        if (paramJSONObject == null) {
-          return paramJSONObject;
-        }
-      }
-      try
-      {
-        paramJSONObject.put("code", 1);
-        paramJSONObject.put("message", "src error " + paramString.getMessage());
-        a(paramaksy, paramJSONObject);
-        return paramJSONObject;
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("CmGameAudioPlayer", 1, paramString, new Object[0]);
-        return paramJSONObject;
-      }
-    }
-    QLog.e("CmGameAudioPlayer", 1, " src in  state " + a());
-    return paramJSONObject;
-  }
-  
-  public JSONObject a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-      {
-        if (paramJSONObject.has("duration")) {
-          paramJSONObject.put("duration", this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration());
-        }
-        if (paramJSONObject.has("currentTime")) {
-          paramJSONObject.put("currentTime", this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition());
-        }
-        if (paramJSONObject.has("paused")) {
-          if (a() != 7) {
-            break label89;
-          }
-        }
-      }
-      label89:
-      for (boolean bool = true;; bool = false)
-      {
-        paramJSONObject.put("paused", bool);
-        return paramJSONObject;
-      }
-      return paramJSONObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("CmGameAudioPlayer", 1, localThrowable, new Object[0]);
-    }
-  }
-  
-  public JSONObject a(JSONObject paramJSONObject, aksy paramaksy)
-  {
-    try
-    {
-      if (paramJSONObject.has("src")) {
-        a(paramJSONObject.optString("src"), paramJSONObject, paramaksy);
-      }
-      if (paramJSONObject.has("loop")) {
-        a(paramJSONObject.optBoolean("loop"), paramJSONObject);
-      }
-      if (paramJSONObject.has("autoPlay")) {
-        b(paramJSONObject.optBoolean("autoPlay"), paramJSONObject);
-      }
-      if (paramJSONObject.has("volume")) {
-        a((float)paramJSONObject.optDouble("volume"), (float)paramJSONObject.optDouble("volume"), paramJSONObject);
-      }
-      if (paramJSONObject.has("muted")) {
-        a(paramJSONObject.optBoolean("muted"), (float)paramJSONObject.optDouble("volume"), (float)paramJSONObject.optDouble("volume"), paramJSONObject);
-      }
-      if (paramJSONObject.has("currentTime")) {
-        d(paramJSONObject, paramaksy);
-      }
-      return paramJSONObject;
-    }
-    catch (Throwable paramaksy)
-    {
-      QLog.e("CmGameAudioPlayer", 1, paramaksy, new Object[0]);
-    }
-    return paramJSONObject;
-  }
-  
-  public JSONObject a(boolean paramBoolean, float paramFloat1, float paramFloat2, JSONObject paramJSONObject)
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-      if (paramBoolean) {
-        localObject = a(0.0F, 0.0F, paramJSONObject);
-      }
-    }
-    do
-    {
-      return localObject;
-      return a(paramFloat1, paramFloat2, paramJSONObject);
-      localObject = paramJSONObject;
-    } while (this.jdField_a_of_type_Aksf == null);
-    Object localObject = this.jdField_a_of_type_Aksf;
-    if ((paramBoolean) || ((Float.compare(paramFloat1, 0.0F) == 0) && (Float.compare(paramFloat2, 0.0F) == 0))) {}
-    for (int i = 0;; i = 1)
-    {
-      ((aksf)localObject).a(i, BaseActivity.sTopActivity.getAppInterface());
-      return paramJSONObject;
-    }
-  }
-  
-  public JSONObject a(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    int i;
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      i = a();
-      if ((i == 1) || (i == 2) || (i == 6) || (i == 3) || (i == 5) || (i == 7) || (i == 10)) {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean);
-      }
-    }
-    else
-    {
-      return paramJSONObject;
-    }
-    QLog.e("CmGameAudioPlayer", 1, " loop in  state " + i);
-    return paramJSONObject;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public JSONObject b(aksy arg1, JSONObject paramJSONObject)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      }
-      if (this.jdField_a_of_type_Aksf != null) {
-        this.jdField_a_of_type_Aksf.c();
-      }
-      a(8);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      this.jdField_a_of_type_Aksf = null;
-      if (??? != null) {
-        ???.b(this);
-      }
-      if (jdField_a_of_type_JavaUtilList != null) {
-        synchronized (jdField_a_of_type_JavaUtilList)
-        {
-          jdField_a_of_type_JavaUtilList.remove(this);
-          return paramJSONObject;
-        }
-      }
-      return paramJSONObject;
-    }
-    catch (Throwable ???)
-    {
-      QLog.e("CmGameAudioPlayer", 1, "destroy failed", ???);
-    }
-  }
-  
-  public JSONObject b(JSONObject paramJSONObject)
-  {
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-        {
-          i = a();
-          if ((i == 5) || (i == 7) || (i == 10))
-          {
-            this.jdField_a_of_type_AndroidMediaMediaPlayer.pause();
-            a(7);
-            a(false);
-            return paramJSONObject;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("CmGameAudioPlayer", 1, " pause in  state " + a());
-          continue;
-        }
-        if (this.jdField_a_of_type_Aksf == null) {
-          continue;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("CmGameAudioPlayer", 1, "pause failed", localThrowable);
-        return paramJSONObject;
-      }
-      int i = paramJSONObject.optInt("id");
-      if (paramJSONObject.optBoolean("auto", true)) {
-        this.jdField_a_of_type_Aksf.a();
-      } else {
-        this.jdField_a_of_type_Aksf.a(i, null);
-      }
-    }
-  }
-  
-  public JSONObject b(JSONObject paramJSONObject, aksy paramaksy)
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      i = a();
-      if ((i == 3) || (i == 5) || (i == 7) || (i == 10))
-      {
-        a(true);
-        if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {}
-      }
-    }
-    while (this.jdField_a_of_type_Aksf == null) {
-      for (;;)
-      {
-        int i;
-        try
-        {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-          a(5);
-          if (this.c != 0) {
-            this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(this.c);
-          }
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new aksb(this));
-        }
-        catch (Throwable paramJSONObject)
-        {
-          QLog.e("CmGameAudioPlayer", 1, "audio play failed", paramJSONObject);
-          continue;
-        }
-        return null;
-        QLog.e("CmGameAudioPlayer", 1, " play in  state " + i);
-      }
-    }
-    a(true);
-    return this.jdField_a_of_type_Aksf.a(paramaksy, paramJSONObject);
-  }
-  
-  public JSONObject b(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return paramJSONObject;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public JSONObject c(JSONObject paramJSONObject)
-  {
-    int i;
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      if ((a() == 1) && (a() == 2) && (a() == 9)) {
-        break label69;
-      }
-      i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
-      if (paramJSONObject == null) {}
-    }
-    try
-    {
-      paramJSONObject.put("duration", i);
-      return paramJSONObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("CmGameAudioPlayer", 1, localThrowable, new Object[0]);
-      return paramJSONObject;
-    }
-    label69:
-    QLog.e("CmGameAudioPlayer", 1, " duration in  state " + a());
-    return paramJSONObject;
-  }
-  
-  public JSONObject c(JSONObject paramJSONObject, aksy paramaksy)
-  {
-    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && ((a() == 2) || (a() == 6)))
-    {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new aksc(this, paramJSONObject, paramaksy));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-    }
-    return null;
-  }
-  
-  public JSONObject c(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return paramJSONObject;
-  }
-  
-  public JSONObject d(JSONObject paramJSONObject)
-  {
-    int i;
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-      i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
-    }
-    try
-    {
-      paramJSONObject.put("currentTime", i);
-      return paramJSONObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("CmGameAudioPlayer", 1, localThrowable, new Object[0]);
-    }
-    return paramJSONObject;
-  }
-  
-  public JSONObject d(JSONObject paramJSONObject, aksy paramaksy)
-  {
-    int i;
-    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (a() != 9))
-    {
-      i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
-      if (paramJSONObject != null) {
-        if (paramJSONObject.has("currentTime")) {
-          this.c = paramJSONObject.optInt("currentTime");
-        }
-      }
-    }
-    try
-    {
-      paramJSONObject.put("currentTime", i);
-      return paramJSONObject;
-    }
-    catch (Throwable paramaksy)
-    {
-      QLog.e("CmGameAudioPlayer", 1, paramaksy, new Object[0]);
-    }
-    return paramJSONObject;
-  }
-  
-  public JSONObject e(JSONObject paramJSONObject)
-  {
-    if (this.jdField_a_of_type_Aksf != null)
-    {
-      this.jdField_a_of_type_Aksf.c(paramJSONObject.optInt("id"), null);
-      this.jdField_a_of_type_Aksf.a(paramJSONObject);
-    }
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-    }
-    return paramJSONObject;
-  }
-  
-  public JSONObject e(JSONObject paramJSONObject, aksy paramaksy)
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new aksd(this, paramaksy, paramJSONObject));
-    }
-    return null;
-  }
-  
-  public JSONObject f(JSONObject paramJSONObject)
-  {
-    if (this.jdField_a_of_type_Aksf != null)
-    {
-      if (paramJSONObject.optBoolean("audo", true)) {
-        this.jdField_a_of_type_Aksf.b();
-      }
-    }
-    else {
-      return paramJSONObject;
-    }
-    this.jdField_a_of_type_Aksf.b(paramJSONObject.optInt("id"), null);
-    return paramJSONObject;
-  }
+  public abstract Bitmap b(aksc paramaksc);
 }
 
 

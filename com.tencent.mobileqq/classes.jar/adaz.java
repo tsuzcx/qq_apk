@@ -1,22 +1,27 @@
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
-import com.tencent.mobileqq.data.KplCard;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class adaz
-  extends allb
+  implements OnCompositionLoadedListener
 {
-  public adaz(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  public adaz(FriendProfileCardActivity.ColorScreenLoader paramColorScreenLoader) {}
   
-  protected void onGetKplCard(boolean paramBoolean, Object paramObject)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("KPLProfileCardActivity", 2, "onGetKplCard, isSuccess=" + paramBoolean);
+    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
+      QLog.d("ColorScreenManager", 1, "onCompositionLoaded: composition= " + paramLottieComposition);
     }
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof KplCard)))
+    if (paramLottieComposition == null)
     {
-      KPLProfileCardActivity.a(this.a, (KplCard)paramObject);
-      this.a.a = ((KplCard)paramObject);
+      bdut.a(this.a.this$0.app, "individual_v2_colorscreen_parse_fail", "0", "", Integer.toString(this.a.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
+      bdus.a("individual_v2_colorscreen_parse_fail", "id:" + this.a.jdField_a_of_type_Int);
+      return;
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition = paramLottieComposition;
+    this.a.this$0.b.postDelayed(this.a, 500L);
   }
 }
 

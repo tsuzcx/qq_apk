@@ -1,56 +1,38 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-public abstract class woj
-  implements woq
+public class woj
 {
-  private Object jdField_a_of_type_JavaLangObject;
-  private wor jdField_a_of_type_Wor;
-  private wos jdField_a_of_type_Wos;
+  private ulq<wop> a;
   
-  public Object a()
+  public void a()
   {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public void a(wor paramwor)
-  {
-    this.jdField_a_of_type_Wor = paramwor;
-  }
-  
-  public void a(wos paramwos)
-  {
-    this.jdField_a_of_type_Wos = paramwos;
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  protected void b(ErrorMessage paramErrorMessage)
-  {
-    paramErrorMessage.extraMsg = a();
-    if (this.jdField_a_of_type_Wor != null)
+    try
     {
-      this.jdField_a_of_type_Wor.a(paramErrorMessage);
+      if (this.a != null)
+      {
+        this.a.a();
+        this.a = null;
+      }
       return;
     }
-    wsv.d("SimpleStep", a() + " errorCallBack is null.");
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public void d()
+  public void a(List<wop> paramList)
   {
-    if (this.jdField_a_of_type_Wos != null)
+    try
     {
-      this.jdField_a_of_type_Wos.a(a());
+      if (this.a == null) {
+        this.a = new ulq(new wol());
+      }
+      this.a.a(paramList);
       return;
     }
-    wsv.d("SimpleStep", a() + " finishCallBack is null.");
+    finally {}
   }
 }
 

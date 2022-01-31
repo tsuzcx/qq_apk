@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import amsk;
+import amwz;
 
 public class ArConfigService$ArConfigManagerStub$2
   implements Runnable
 {
-  public ArConfigService$ArConfigManagerStub$2(amsk paramamsk, ArConfigService paramArConfigService) {}
+  public ArConfigService$ArConfigManagerStub$2(amwz paramamwz, ArConfigService paramArConfigService) {}
   
   public void run()
   {

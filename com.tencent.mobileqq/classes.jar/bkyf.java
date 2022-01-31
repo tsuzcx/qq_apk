@@ -1,34 +1,47 @@
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
 
-class bkyf
-  implements bmac<String>
+public class bkyf
+  extends bktk
 {
-  bkyf(bkyc parambkyc, AEGIFOutlineTextView paramAEGIFOutlineTextView) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void a(@Nullable String paramString)
+  public bkyf(ViewStub paramViewStub)
   {
-    String str;
-    if (paramString != null)
+    super(paramViewStub);
+  }
+  
+  protected void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365927);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365929));
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692712);
+  }
+  
+  public void c()
+  {
+    if (a())
     {
-      str = paramString;
-      if (!paramString.equals("")) {}
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    else
-    {
-      str = alpo.a(2131700335);
-    }
-    paramString = this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.getLayoutParams();
-    if (str.indexOf('\n') > 0) {}
-    for (int i = bkyc.a(this.jdField_a_of_type_Bkyc) * 3 / 10;; i = bkyc.a(this.jdField_a_of_type_Bkyc) * 11 / 50)
-    {
-      paramString.height = i;
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setTextSize(bcwh.c(bkyc.a(this.jdField_a_of_type_Bkyc), 23.0F));
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineWidth(bcwh.a(bkyc.a(this.jdField_a_of_type_Bkyc), 2.0F));
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setText(str);
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setLayoutParams(paramString);
+  }
+  
+  public void d()
+  {
+    if (!a()) {
       return;
     }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

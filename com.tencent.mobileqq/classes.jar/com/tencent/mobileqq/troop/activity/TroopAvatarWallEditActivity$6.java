@@ -3,7 +3,7 @@ package com.tencent.mobileqq.troop.activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhpy;
+import bhuf;
 import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -13,12 +13,12 @@ import java.io.File;
 import java.net.URL;
 import ndi;
 import ndq;
-import xwb;
+import yak;
 
 class TroopAvatarWallEditActivity$6
   implements Runnable
 {
-  TroopAvatarWallEditActivity$6(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, URLDrawable paramURLDrawable, bhpy parambhpy) {}
+  TroopAvatarWallEditActivity$6(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, URLDrawable paramURLDrawable, bhuf parambhuf) {}
   
   public void run()
   {
@@ -47,9 +47,9 @@ class TroopAvatarWallEditActivity$6
         QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "saveTmpImage path = " + (String)localObject);
       }
       this.this$0.c = ((String)localObject);
-      bfrs.a = ndq.b(str1, new String[0]);
+      bfwb.a = ndq.b(str1, new String[0]);
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        if (xwb.a(Uri.parse("file://" + new File((String)localObject).getAbsolutePath()), this.this$0))
+        if (yak.a(Uri.parse("file://" + new File((String)localObject).getAbsolutePath()), this.this$0))
         {
           if (QLog.isColorLevel()) {
             QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "has QRCode ");
@@ -59,7 +59,7 @@ class TroopAvatarWallEditActivity$6
       }
       for (;;)
       {
-        bfrs.a = null;
+        bfwb.a = null;
         return;
         if (QLog.isColorLevel()) {
           QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "no QRCode ");

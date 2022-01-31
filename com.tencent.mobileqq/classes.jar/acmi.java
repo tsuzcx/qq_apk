@@ -1,21 +1,37 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
 
 public class acmi
-  extends FlingGestureHandler
+  implements aepr
 {
-  public acmi(ContactBindedActivity paramContactBindedActivity, Activity paramActivity)
+  public acmi(ChatHistory paramChatHistory) {}
+  
+  public void a(AudioPlayer paramAudioPlayer)
   {
-    super(paramActivity);
+    this.a.p();
+    if (this.a.jdField_a_of_type_Acnd != null) {
+      this.a.jdField_a_of_type_Acnd.d();
+    }
+    this.a.setVolumeControlStream(3);
+    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
   }
   
-  public void flingLToR()
+  public void a(AudioPlayer paramAudioPlayer, int paramInt)
   {
-    if (!this.a.a) {
-      super.flingLToR();
-    }
+    this.a.b(2131695365);
+    this.a.setVolumeControlStream(3);
+    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
   }
+  
+  public void b(AudioPlayer paramAudioPlayer, int paramInt)
+  {
+    this.a.setVolumeControlStream(paramInt);
+  }
+  
+  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 

@@ -1,26 +1,22 @@
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.SeekBar;
+import com.tencent.biz.qqcircle.widgets.BaseVideoView;
 
 public class ucb
-  extends ClickableSpan
+  implements yxu
 {
-  public ucb(QCirclePushAsyncTextView paramQCirclePushAsyncTextView) {}
+  public ucb(BaseVideoView paramBaseVideoView, SeekBar paramSeekBar) {}
   
-  public void onClick(@NonNull View paramView)
+  public void a()
   {
-    if (QCirclePushAsyncTextView.a(this.a) != null) {
-      QCirclePushAsyncTextView.a(this.a).a();
-    }
-  }
-  
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(-16777216);
-    paramTextPaint.setUnderlineText(false);
+    Message localMessage = Message.obtain();
+    localMessage.what = 1;
+    localMessage.arg1 = this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    localMessage.arg2 = ((int)this.jdField_a_of_type_ComTencentBizQqcircleWidgetsBaseVideoView.a().b());
+    localMessage.obj = Boolean.valueOf(false);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsBaseVideoView.a(this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress());
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsBaseVideoView.a().sendMessage(localMessage);
   }
 }
 

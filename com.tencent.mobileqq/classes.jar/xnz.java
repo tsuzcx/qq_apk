@@ -1,74 +1,40 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import dov.com.qq.im.QIMCameraCaptureActivity;
-import dov.com.tencent.biz.qqstory.takevideo.linker.LinkerSummaryView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
 public class xnz
+  extends urs<vge, vhr>
 {
-  public static Intent a(Intent paramIntent, Bundle paramBundle, Activity paramActivity)
+  xnz(xny paramxny) {}
+  
+  public void a(@NonNull vge paramvge, @Nullable vhr paramvhr, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (paramBundle == null) {
-      return paramIntent;
-    }
-    if (paramBundle.containsKey("ignorePersonalPublish")) {
-      paramIntent.putExtra("ignorePersonalPublish", paramBundle.getBoolean("ignorePersonalPublish"));
-    }
-    paramIntent.putExtra("troop_uin", paramBundle.getInt("troop_uin", 0));
-    paramIntent.putExtra("entrance_type", paramBundle.getInt("entrance_type"));
-    paramIntent.putExtra("shareGroupType", paramBundle.getString("shareGroupType"));
-    paramIntent.putExtra("shareGroupId", paramBundle.getString("shareGroupId"));
-    paramIntent.putExtra("shareGroupName", paramBundle.getString("shareGroupName"));
-    Object localObject;
-    if (paramBundle.getString("widgetinfo") != null)
+    wxe.b("EditVideoTagPresenter", "refresh onCmdRespond.");
+    if ((paramErrorMessage.isSuccess()) && (paramvhr != null))
     {
-      paramIntent.putExtra("qq_camera_scheme", bngr.a(paramBundle.getString("widgetinfo")));
-      paramIntent.putExtra("widgetinfo", paramBundle.getString("widgetinfo"));
-      localObject = paramBundle.getString("key_camera_material_name");
-      blfg.b("StoryIntentUtils", "passStoryRecordExtrasToIntent---takeSameName=" + (String)localObject);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label439;
+      wxe.a("EditVideoTagPresenter", "refresh onCmdRespond, refresh success:[%s]", paramvhr.toString());
+      paramvge = paramvhr.jdField_a_of_type_JavaUtilList;
+      if (paramvge.contains(xny.a(this.a)))
+      {
+        int i = paramvge.indexOf(xny.a(this.a));
+        xny.a(this.a, (xoe)paramvge.get(i));
+        xny.a(this.a).clear();
+        xny.a(this.a).addAll(paramvge);
+        xny.a(this.a, paramvhr.jdField_a_of_type_JavaLangString);
+        xny.a(this.a, paramvhr.b);
+        ThreadManager.executeOnSubThread(new EditVideoTagPresenter.1.1(this));
       }
-      paramIntent.putExtra("key_camera_material_name", (String)localObject);
-      paramIntent.putExtra("qq_camera_top_title", (String)localObject);
     }
     for (;;)
     {
-      paramIntent.putExtra("key_scheme_request_from_business_type", paramBundle.getString("key_scheme_request_from_business_type"));
-      if ((paramActivity instanceof QIMCameraCaptureActivity))
-      {
-        localObject = (ViewGroup)((QIMCameraCaptureActivity)paramActivity).a();
-        if ((localObject != null) && (((ViewGroup)localObject).findViewById(2131379617) != null))
-        {
-          localObject = (LinkerSummaryView)((ViewGroup)localObject).findViewById(2131379617);
-          if ((localObject == null) || (((LinkerSummaryView)localObject).jdField_a_of_type_Bmvb == null)) {
-            break;
-          }
-          paramIntent.putExtra("share_url_target_url", ((LinkerSummaryView)localObject).jdField_a_of_type_Bmvb.jdField_a_of_type_JavaLangString);
-          paramIntent.putExtra("share_url_name", ((LinkerSummaryView)localObject).jdField_a_of_type_Bmvb.b);
-          paramIntent.putExtra("share_url_text", ((LinkerSummaryView)localObject).jdField_a_of_type_Bmvb.c);
-          paramIntent.putExtra("share_url_thumb_url", ((LinkerSummaryView)localObject).jdField_a_of_type_Bmvb.d);
-          paramIntent.putExtra("struct_share_key_source_name", ((LinkerSummaryView)localObject).b);
-          paramIntent.putExtra("struct_share_key_source_icon", ((LinkerSummaryView)localObject).jdField_a_of_type_JavaLangString);
-        }
-      }
-      if (((paramActivity instanceof NewPhotoListActivity)) || ((paramActivity instanceof NewPhotoPreviewActivity)))
-      {
-        paramIntent.putExtra("share_url_target_url", paramBundle.getString("share_url_target_url"));
-        paramIntent.putExtra("share_url_name", paramBundle.getString("share_url_name"));
-        paramIntent.putExtra("share_url_text", paramBundle.getString("share_url_text"));
-        paramIntent.putExtra("share_url_thumb_url", paramBundle.getString("share_url_thumb_url"));
-        paramIntent.putExtra("struct_share_key_source_name", paramBundle.getString("struct_share_key_source_name"));
-        paramIntent.putExtra("struct_share_key_source_icon", paramBundle.getString("struct_share_key_source_icon"));
-      }
-      paramIntent.putExtra("video_tag_info", paramBundle.getString("video_tag_info"));
-      return paramIntent;
-      label439:
-      paramIntent.putExtra("qq_camera_top_title", "魔法视频");
+      xny.a(this.a).a(paramErrorMessage.errorCode, xny.a(this.a), this.a.a());
+      return;
+      xny.a(this.a, null);
+      break;
+      wxe.e("EditVideoTagPresenter", "refresh onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
     }
   }
 }

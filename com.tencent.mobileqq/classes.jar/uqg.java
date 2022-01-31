@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
-public final class uqg
-  implements Parcelable.Creator<DiscoverBannerVideoEntry.BannerInfo>
+public class uqg
+  implements upz
 {
-  public DiscoverBannerVideoEntry.BannerInfo a(Parcel paramParcel)
-  {
-    return new DiscoverBannerVideoEntry.BannerInfo(paramParcel);
-  }
+  public uqg(StoryVideoUploadTask paramStoryVideoUploadTask, uqf paramuqf) {}
   
-  public DiscoverBannerVideoEntry.BannerInfo[] a(int paramInt)
+  public void a(upy paramupy)
   {
-    return new DiscoverBannerVideoEntry.BannerInfo[paramInt];
+    this.jdField_a_of_type_Uqf.k = ((upt)paramupy).b;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
   }
 }
 

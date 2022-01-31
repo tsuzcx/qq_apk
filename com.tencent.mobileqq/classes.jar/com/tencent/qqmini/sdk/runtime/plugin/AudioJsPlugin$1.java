@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
 import android.util.Log;
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.core.model.SongInfo;
 import com.tencent.qqmini.sdk.core.proxy.MusicPlayerProxy;
 import com.tencent.qqmini.sdk.core.proxy.MusicPlayerProxy.MusicPlayerListener;

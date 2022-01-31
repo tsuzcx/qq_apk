@@ -1,106 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.QCallDetailActivity.1.1;
-import com.tencent.mobileqq.qcall.QCallDetailActivity.1.2;
-import com.tencent.qphone.base.util.QLog;
-import friendlist.GetOnlineInfoResp;
-import java.util.Map;
+import android.graphics.PointF;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.widget.RatioLayout;
 
 public class awvy
-  extends alox
+  implements bdoh<PointF>
 {
-  public awvy(QCallDetailActivity paramQCallDetailActivity) {}
+  public awvy(ProfileTagView paramProfileTagView, VipTagView paramVipTagView) {}
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public void a(bdob<PointF> parambdob, float paramFloat, PointF paramPointF, Transformation paramTransformation)
   {
-    if ((paramBoolean) && (TextUtils.equals(paramString, QCallDetailActivity.a(this.a))))
-    {
-      QCallDetailActivity.a(this.a);
-      this.a.runOnUiThread(new QCallDetailActivity.1.1(this));
-    }
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead isSuccess | " + paramBoolean + ", uin | " + paramString);
-    }
-    Object localObject;
-    if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000) && (!bdal.a(paramString, this.a.app.getCurrentAccountUin())))
-    {
-      localObject = (almv)this.a.app.getManager(53);
-      if (localObject != null) {
-        break label109;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead dm is null  ====");
-      }
-    }
-    label109:
-    do
-    {
-      do
-      {
-        return;
-        if (((almv)localObject).a(QCallDetailActivity.a(this.a)) != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead info is null ====");
-      return;
-      if (TextUtils.isEmpty(paramString))
-      {
-        QLog.i("QCallDetailActivity", 1, " === onUpdateCustomHead uin is null ====");
-        return;
-      }
-      localObject = ((almv)localObject).a(QCallDetailActivity.a(this.a));
-    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
-    this.a.a(QCallDetailActivity.a(this.a));
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    Object localObject;
-    if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000))
-    {
-      localObject = (almv)this.a.app.getManager(53);
-      if (localObject != null) {
-        break label52;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QCallDetailActivity", 2, " === onUpdateFriendInfo dm is null  ====");
-      }
-    }
-    label52:
-    do
-    {
-      DiscussionInfo localDiscussionInfo;
-      do
-      {
-        return;
-        localDiscussionInfo = ((almv)localObject).a(QCallDetailActivity.a(this.a));
-        if (localDiscussionInfo == null)
-        {
-          QLog.i("QCallDetailActivity", 1, " ===onUpdateFriendInfo info is null ====");
-          return;
-        }
-        if (TextUtils.isEmpty(paramString))
-        {
-          QLog.i("QCallDetailActivity", 1, " === onUpdateFriendInfo uin is null ====");
-          return;
-        }
-      } while (localDiscussionInfo.hasRenamed());
-      localObject = ((almv)localObject).a(QCallDetailActivity.a(this.a));
-    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
-    this.a.a(QCallDetailActivity.a(this.a));
-  }
-  
-  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    QCallDetailActivity.a(this.a);
-    this.a.runOnUiThread(new QCallDetailActivity.1.2(this));
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, paramPointF.x, paramPointF.y);
   }
 }
 

@@ -1,110 +1,16 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
+import com.tencent.mobileqq.apollo.IApolloRunnableTask;
 
-public class akrx
-  implements aksi
+public abstract interface akrx
 {
-  private aksy a;
+  public abstract void exeJsOnEngine(String paramString);
   
-  public akrx(aksy paramaksy)
-  {
-    this.a = paramaksy;
-  }
+  public abstract long getRenderThreadId();
   
-  public int a()
-  {
-    if (this.a == null) {
-      return 0;
-    }
-    return this.a.b;
-  }
+  public abstract long getRuntimeState();
   
-  public int a(int paramInt)
-  {
-    return 0;
-  }
+  public abstract boolean isJsRuntime();
   
-  public int a(akni paramakni, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat)
-  {
-    return 0;
-  }
-  
-  public int a(AppInterface paramAppInterface)
-  {
-    return 0;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmAudioManager", 2, "pause all music");
-    }
-    if (akry.a != null) {
-      synchronized (akry.a)
-      {
-        Iterator localIterator = akry.a.iterator();
-        while (localIterator.hasNext())
-        {
-          akry localakry = (akry)localIterator.next();
-          if ((localakry != null) && (localakry.b() == a())) {
-            localakry.b(new JSONObject());
-          }
-        }
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, AppInterface paramAppInterface) {}
-  
-  public void a(int paramInt, String paramString) {}
-  
-  public int b(int paramInt)
-  {
-    return 0;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmAudioManager", 2, "resume all music");
-    }
-  }
-  
-  public void b(int paramInt, String paramString) {}
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmAudioManager", 2, "destroy all music");
-    }
-    if (akry.a != null) {
-      synchronized (akry.a)
-      {
-        Iterator localIterator = akry.a.iterator();
-        while (localIterator.hasNext())
-        {
-          akry localakry = (akry)localIterator.next();
-          if ((localakry != null) && (localakry.b() == a()))
-          {
-            localakry.a();
-            localIterator.remove();
-          }
-        }
-      }
-    }
-    if (this.a != null)
-    {
-      this.a.a();
-      this.a = null;
-    }
-  }
-  
-  public void c(int paramInt, String paramString) {}
+  public abstract void runRenderTask(IApolloRunnableTask paramIApolloRunnableTask);
 }
 
 

@@ -1,18 +1,22 @@
-import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
 
 public class yfm
-  implements osj
+  implements Animation.AnimationListener
 {
-  public yfm(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
+  public yfm(CommentBottomBar paramCommentBottomBar, boolean paramBoolean) {}
   
-  public void a(String paramString1, String paramString2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.i("SubscribeVideoDetailFragment", 1, "sendUrlToUUIDRequest getUUID Success");
-    if (this.a.a != null) {
-      this.a.a.f(paramString2);
+    if (!this.jdField_a_of_type_Boolean) {
+      CommentBottomBar.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

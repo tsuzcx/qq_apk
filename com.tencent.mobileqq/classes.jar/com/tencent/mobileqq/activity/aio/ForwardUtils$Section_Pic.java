@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aenp;
+import aese;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
 public final class ForwardUtils$Section_Pic
   extends ForwardUtils.SectionBase
 {
-  public static final Parcelable.Creator<Section_Pic> CREATOR = new aenp();
+  public static final Parcelable.Creator<Section_Pic> CREATOR = new aese();
   public String a;
   public String b;
   

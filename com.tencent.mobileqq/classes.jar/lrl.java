@@ -193,7 +193,7 @@ public class lrl
     if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = new QQFilterRenderManager();
-      if (!azgk.a(BaseApplicationImpl.getContext())) {
+      if (!azkt.a(BaseApplicationImpl.getContext())) {
         break label69;
       }
       f();

@@ -1,30 +1,18 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
 
-class afjj
-  implements arnx
+public class afjj
+  extends GestureDetector.SimpleOnGestureListener
 {
-  afjj(afjb paramafjb, String paramString1, String paramString2, MessageRecord paramMessageRecord, String paramString3, bdvp parambdvp) {}
+  public afjj(ArkAppRootLayout paramArkAppRootLayout) {}
   
-  public void onClick(View paramView)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    paramView = new Bundle();
-    paramView.putString(bdqe.i, this.jdField_a_of_type_JavaLangString);
-    paramView.putString(bdqe.c, this.b);
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
-      paramView.putString(bdqe.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin);
+    if (ArkAppRootLayout.a(this.a) != null) {
+      ArkAppRootLayout.a(this.a).a();
     }
-    bdqe.a(this.jdField_a_of_type_Afjb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, paramView);
-    String str = this.c;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {}
-    for (paramView = "0";; paramView = "1")
-    {
-      VasWebviewUtil.reportVipKeywords(str, paramView, "1", this.jdField_a_of_type_Bdvp.a(this.jdField_a_of_type_Afjb.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), this.jdField_a_of_type_Afjb.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "", "", "");
-      return;
-    }
+    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 

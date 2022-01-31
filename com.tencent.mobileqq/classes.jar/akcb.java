@@ -1,25 +1,27 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.CheckBox;
+import android.graphics.Bitmap;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
 
 public class akcb
-  extends RecyclerView.ViewHolder
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RecentDynamicAvatarView jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView;
-  TextView b;
+  public akcb(TroopMemberListInnerFrame paramTroopMemberListInnerFrame, ViewGroup paramViewGroup) {}
   
-  public akcb(SessionClearFragment paramSessionClearFragment, View paramView)
+  public void onGlobalLayout()
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364254));
-    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131367808));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370958));
-    this.b = ((TextView)paramView.findViewById(2131376753));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.b);
+    Bitmap localBitmap = TroopMemberListInnerFrame.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.b);
+    if (localBitmap == null) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.b.setTag(localBitmap);
+    } while (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.a == null);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.a.notifyDataSetChanged();
   }
 }
 

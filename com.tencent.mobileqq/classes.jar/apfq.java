@@ -1,14 +1,10 @@
-class apfq
-  implements bhtl
+import com.tencent.mobileqq.data.QzoneCommonIntent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+
+public abstract interface apfq
 {
-  apfq(apfp paramapfp) {}
-  
-  public void onScrollStateChanged(int paramInt)
-  {
-    if (paramInt == 4097) {
-      azmj.b(apfp.a(this.a), "dc00898", "", "", "0X8007FAA", "0X8007FAA", 0, 0, "", "", "", "");
-    }
-  }
+  public abstract void a(MSFServlet paramMSFServlet, QzoneCommonIntent paramQzoneCommonIntent, FromServiceMsg paramFromServiceMsg);
 }
 
 

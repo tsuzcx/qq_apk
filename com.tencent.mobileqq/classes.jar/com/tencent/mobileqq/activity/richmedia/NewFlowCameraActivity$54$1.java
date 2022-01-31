@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajmx;
+import ajrm;
 
 public class NewFlowCameraActivity$54$1
   implements Runnable
 {
-  public NewFlowCameraActivity$54$1(ajmx paramajmx) {}
+  public NewFlowCameraActivity$54$1(ajrm paramajrm) {}
   
   public void run()
   {

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import alpo;
+import alud;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.widget.TextView;
-import azmj;
-import bdcb;
+import azqs;
+import bdgk;
 import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
@@ -27,7 +27,7 @@ class RedPacketVoiceFragment$3
     QQAppInterface localQQAppInterface;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.this$0.b.setText(alpo.a(2131713680));
+      this.this$0.b.setText(alud.a(2131713692));
       RedPacketVoiceFragment.a(this.this$0, this.jdField_a_of_type_JavaLangString);
       this.this$0.o();
       if (RedPacketVoiceFragment.a(this.this$0))
@@ -41,14 +41,14 @@ class RedPacketVoiceFragment$3
     label233:
     for (int i = 1;; i = 0)
     {
-      azmj.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.result", 0, i, this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title.length() + "", this.this$0.getActivity().app.getCurrentAccountUin(), bdcb.e() + "|" + bdcb.i(), "");
+      azqs.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.result", 0, i, this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title.length() + "", this.this$0.getActivity().app.getCurrentAccountUin(), bdgk.e() + "|" + bdgk.i(), "");
       this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView.c();
       if (RedPacketVoiceFragment.a(this.this$0) == null) {
         break;
       }
       RedPacketVoiceFragment.a(this.this$0).removeCallbacksAndMessages(null);
       return;
-      this.this$0.b.setText(this.this$0.getResources().getString(2131695802));
+      this.this$0.b.setText(this.this$0.getResources().getString(2131695804));
       break label51;
     }
   }

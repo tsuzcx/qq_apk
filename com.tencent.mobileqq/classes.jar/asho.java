@@ -1,26 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
 
-class asho
-  implements View.OnClickListener
+public class asho
+  implements CompoundButton.OnCheckedChangeListener
 {
-  asho(ashn paramashn, FeedsItemData paramFeedsItemData) {}
+  public asho(TempMsgSettingFragment paramTempMsgSettingFragment) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl.startsWith("mqqapi://miniapp/"))
-    {
-      MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Ashn.itemView.getContext(), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl, 2016, null);
-      return;
-    }
-    paramView = new Intent(this.jdField_a_of_type_Ashn.itemView.getContext(), QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl);
-    this.jdField_a_of_type_Ashn.itemView.getContext().startActivity(paramView);
+    ((auad)this.a.a.getManager(303)).a((short)-23308, paramBoolean, true);
+    azqs.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 1, 1, "", "", "", "");
   }
 }
 

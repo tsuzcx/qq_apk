@@ -1,348 +1,119 @@
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.IPicDownloadListener;
-import com.tencent.mobileqq.mqsafeedit.MD5;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.util.WebpSoLoader;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.MobileQQ;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.TbsListener;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class alpc
+  implements TbsListener
 {
-  public static Set<String> a = new HashSet();
+  public alpc(BrowserAppInterface paramBrowserAppInterface, SharedPreferences paramSharedPreferences, long paramLong) {}
   
-  public static int a(String paramString)
+  public void onDownloadFinish(int paramInt)
   {
-    String str2 = "0";
-    String str1 = str2;
-    int i;
-    if (!TextUtils.isEmpty(paramString))
+    QLog.d("TBS_update", 1, "tbs download finish result=" + paramInt);
+    if ((paramInt != 100) && (paramInt != 120) && (paramInt != 122))
     {
-      i = paramString.lastIndexOf("qto_");
-      str1 = str2;
-      if (i >= 0) {
-        str1 = paramString.substring("qto_".length() + i, paramString.length());
+      if (BrowserAppInterface.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
+      {
+        QbSdk.setTbsListener(null);
+        int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("tbs_download_count", 0);
+        long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("tbs_download_cost", 0L);
+        long l2 = System.currentTimeMillis();
+        long l3 = this.jdField_a_of_type_Long;
+        localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        localEditor.putInt("tbs_download_count", i + 1);
+        localEditor.putLong("tbs_download_cost", l1 + (l2 - l3));
+        localEditor.commit();
+        azqs.b(null, "P_CliOper", "BizTechReport", "", "web", "tbs_download_error", 0, 1, paramInt, "", "", "", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("TBS_update", 2, "tbs download aborted:" + paramInt);
+        }
+      }
+      SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      localEditor.putInt("tbs_download_complete", paramInt);
+      localEditor.remove("tbs_downloading");
+      localEditor.remove("tbs_download_progress");
+      localEditor.commit();
+      if (this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.jdField_a_of_type_Boolean) {
+        BrowserAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.jdField_a_of_type_AndroidContentIntent);
       }
     }
-    try
-    {
-      i = Integer.parseInt(str1);
-      return i;
-    }
-    catch (NumberFormatException paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FunyPicHelper", 2, paramString.getMessage());
-      }
-    }
-    return 0;
-  }
-  
-  public static String a(String paramString)
-  {
-    String str2 = "";
-    String str1 = str2;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      int i = paramString.lastIndexOf("qto_");
-      str1 = str2;
-      if (i >= 0) {
-        str1 = paramString.substring(i, paramString.length());
-      }
-    }
-    return str1;
-  }
-  
-  public static void a(Context paramContext, List<CustomEmotionData> paramList, AppInterface paramAppInterface, IPicDownloadListener paramIPicDownloadListener) {}
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
     do
     {
       return;
-      Object localObject1 = bdcs.a(new File(paramQQAppInterface.getApplication().getApplicationContext().getFilesDir(), bdmy.f.a));
-      Object localObject2 = "";
-      String str = "";
-      j = 1;
-      i = j;
-      localObject5 = str;
-      localObject6 = localObject2;
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        localObject3 = str;
-        localObject4 = localObject2;
-      }
-      try
-      {
-        localObject1 = new JSONObject((String)localObject1);
-        i = j;
-        localObject5 = str;
-        localObject6 = localObject2;
-        localObject3 = str;
-        localObject4 = localObject2;
-        if (((JSONObject)localObject1).has("data"))
-        {
-          localObject3 = str;
-          localObject4 = localObject2;
-          localObject1 = ((JSONObject)localObject1).getJSONObject("data");
-          i = j;
-          localObject5 = str;
-          localObject6 = localObject2;
-          localObject3 = str;
-          localObject4 = localObject2;
-          if (((JSONObject)localObject1).has("releaseZipInfo"))
-          {
-            localObject3 = str;
-            localObject4 = localObject2;
-            localObject1 = ((JSONObject)localObject1).getJSONArray("releaseZipInfo");
-            i = j;
-            localObject5 = str;
-            localObject6 = localObject2;
-            localObject3 = str;
-            localObject4 = localObject2;
-            if (((JSONArray)localObject1).length() > 0)
-            {
-              localObject3 = str;
-              localObject4 = localObject2;
-              JSONObject localJSONObject = ((JSONArray)localObject1).getJSONObject(0);
-              localObject1 = localObject2;
-              localObject3 = str;
-              localObject4 = localObject2;
-              if (localJSONObject.has("zipID"))
-              {
-                localObject3 = str;
-                localObject4 = localObject2;
-                localObject1 = localJSONObject.getString("zipID");
-              }
-              localObject2 = str;
-              localObject3 = str;
-              localObject4 = localObject1;
-              if (localJSONObject.has("img"))
-              {
-                localObject3 = str;
-                localObject4 = localObject1;
-                localObject2 = localJSONObject.getString("img");
-              }
-              i = j;
-              localObject5 = localObject2;
-              localObject6 = localObject1;
-              localObject3 = localObject2;
-              localObject4 = localObject1;
-              if (localJSONObject.has("type"))
-              {
-                localObject3 = localObject2;
-                localObject4 = localObject1;
-                i = localJSONObject.getInt("type");
-                localObject6 = localObject1;
-                localObject5 = localObject2;
-              }
-            }
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          i = j;
-          localObject5 = localObject3;
-          localObject6 = localObject4;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("FunyPicHelper", 2, localException.getMessage());
-            i = j;
-            localObject5 = localObject3;
-            localObject6 = localObject4;
-          }
-        }
-      }
-      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("funny_pic_info", 0);
-      if (!TextUtils.isEmpty(localObject6)) {
-        paramQQAppInterface.edit().putString("funnypic_count_sp_key", localObject6).commit();
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject5)) {
-        paramQQAppInterface.edit().putString("funnypic_name_sp_key", (String)localObject5).commit();
-      }
-      paramQQAppInterface.edit().putInt("funnypic_type_sp_key", i).commit();
+      azqs.b(null, "P_CliOper", "BizTechReport", "", "web", "tbs_download_ok", 0, 1, paramInt, "", "", "", "");
     } while (!QLog.isColorLevel());
-    QLog.d("FunyPicHelper", 2, "funnypic zipID->" + localObject6 + ";imgName -> " + (String)localObject5 + ";type -> " + i);
+    QLog.d("TBS_update", 2, "tbs download finished");
   }
   
-  public static void a(boolean paramBoolean, Context paramContext, List<CustomEmotionData> paramList, AppInterface paramAppInterface, IPicDownloadListener paramIPicDownloadListener)
+  public void onDownloadProgress(int paramInt)
   {
-    if ((paramContext == null) || (paramAppInterface == null) || (paramList == null) || (paramList.isEmpty())) {}
-    label124:
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("TBS_update", 2, "tbs download progress " + paramInt);
+    }
+  }
+  
+  public void onInstallFinish(int paramInt)
+  {
+    QLog.d("TBS_update", 1, "tbs download install finish result=" + paramInt);
+    if (paramInt == 200) {
+      return;
+    }
+    int i;
+    long l1;
+    long l2;
+    long l3;
+    SharedPreferences.Editor localEditor;
+    if (BrowserAppInterface.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
     {
-      bdwa localbdwa;
-      do
-      {
-        return;
-        if (!bdee.g(paramContext)) {
-          break;
-        }
-        localbdwa = ((bdvx)paramAppInterface.getManager(47)).a(1);
-      } while (localbdwa == null);
-      apke localapke = (apke)paramAppInterface.getManager(149);
-      apli localapli = (apli)paramAppInterface.getManager(141);
-      ArrayList localArrayList1 = new ArrayList();
-      ArrayList localArrayList2 = new ArrayList();
-      AtomicInteger localAtomicInteger1 = new AtomicInteger(paramList.size());
-      AtomicInteger localAtomicInteger2 = new AtomicInteger(0);
-      Iterator localIterator = paramList.iterator();
-      for (;;)
-      {
-        CustomEmotionData localCustomEmotionData;
-        if (localIterator.hasNext())
-        {
-          localCustomEmotionData = (CustomEmotionData)localIterator.next();
-          if (!TextUtils.isEmpty(localCustomEmotionData.url))
-          {
-            if (localbdwa.a(localCustomEmotionData.url) != null)
-            {
-              localAtomicInteger1.decrementAndGet();
-              continue;
-            }
-            paramList = aljq.bi;
-            boolean bool1 = false;
-            File localFile;
-            if ((localapli != null) && (localapli.a(localCustomEmotionData))) {
-              if ((!TextUtils.isEmpty(localCustomEmotionData.emoPath)) && (localCustomEmotionData.emoPath.startsWith(aljq.bi)))
-              {
-                paramList = localCustomEmotionData.emoPath;
-                localFile = new File(paramList);
-                if (!localFile.exists()) {
-                  break label753;
-                }
-                if (QLog.isColorLevel()) {
-                  QLog.d("FunyPicHelper", 2, "download path is exsit->" + paramList);
-                }
-                localAtomicInteger1.decrementAndGet();
-                localCustomEmotionData.emoPath = localFile.getAbsolutePath();
-                if ("needDownload".equals(localCustomEmotionData.RomaingType)) {
-                  localCustomEmotionData.RomaingType = "isUpdate";
-                }
-                if (bool1) {
-                  localCustomEmotionData.eId = "";
-                }
-                if ((TextUtils.isEmpty(localCustomEmotionData.md5)) && (!TextUtils.isEmpty(localCustomEmotionData.emoPath))) {
-                  localCustomEmotionData.md5 = HexUtil.bytes2HexStr(MD5.getFileMd5(localCustomEmotionData.emoPath));
-                }
-                if (paramBoolean) {
-                  localapke.b(localCustomEmotionData);
-                }
-                if (paramIPicDownloadListener != null) {
-                  paramIPicDownloadListener.onFileDone(localCustomEmotionData, true);
-                }
-                localArrayList1.add(localCustomEmotionData);
-                if (QLog.isColorLevel()) {
-                  QLog.d("FunyPicHelper", 2, "update funnyPic eId->" + localCustomEmotionData.eId + " emoPath->" + localCustomEmotionData.emoPath + " download->sucess");
-                }
-              }
-            }
-            for (;;)
-            {
-              if ((localAtomicInteger1.get() != 0) || (paramIPicDownloadListener == null)) {
-                break label903;
-              }
-              paramIPicDownloadListener.onDone(localArrayList1, localArrayList2);
-              break;
-              if (!TextUtils.isEmpty(localCustomEmotionData.md5))
-              {
-                paramList = localapli.a(localCustomEmotionData.md5);
-                break label234;
-              }
-              if (!TextUtils.isEmpty(localCustomEmotionData.resid))
-              {
-                paramList = paramList + ammj.a(localCustomEmotionData.resid);
-                break label234;
-              }
-              paramList = paramList + localCustomEmotionData.url.substring(localCustomEmotionData.url.lastIndexOf("/") + 1);
-              break label234;
-              if (localCustomEmotionData.url.contains("qto_"))
-              {
-                paramList = paramList + a(localCustomEmotionData.url);
-                break label234;
-              }
-              if (!TextUtils.isEmpty(a(localCustomEmotionData.eId)))
-              {
-                paramAppInterface = paramList + localCustomEmotionData.eId;
-                boolean bool2 = true;
-                paramList = paramAppInterface;
-                bool1 = bool2;
-                if (!QLog.isColorLevel()) {
-                  break label234;
-                }
-                QLog.d("FunyPicHelper", 2, "emotion is FunnyPic path download from server->" + localCustomEmotionData.eId);
-                paramList = paramAppInterface;
-                bool1 = bool2;
-                break label234;
-              }
-              paramList = paramList + localCustomEmotionData.resid;
-              break label234;
-              bdvv localbdvv = new bdvv(localCustomEmotionData.url, localFile);
-              localbdvv.p = false;
-              localbdvv.f = "emotion_pic";
-              localbdvv.b = 1;
-              paramList = "";
-              if (localCustomEmotionData.url.contains("qto_"))
-              {
-                paramAppInterface = a(localCustomEmotionData.url);
-                paramList = paramAppInterface;
-                if (!TextUtils.isEmpty(paramAppInterface))
-                {
-                  paramList = paramAppInterface;
-                  if (paramAppInterface.length() > "qto_".length() + 8)
-                  {
-                    paramList = paramAppInterface.substring(0, "qto_".length() + 8);
-                    a.add(paramList);
-                  }
-                }
-              }
-              localbdwa.a(localbdvv, new alpd(paramList, localFile, localCustomEmotionData, bool1, paramBoolean, localapke, paramIPicDownloadListener, localArrayList1, localArrayList2, paramContext, localAtomicInteger2, localAtomicInteger1), null);
-            }
-            continue;
-          }
-          if (paramIPicDownloadListener != null) {
-            paramIPicDownloadListener.onFileDone(localCustomEmotionData, false);
-          }
-          if (!TextUtils.isEmpty(localCustomEmotionData.RomaingType)) {
-            break label982;
-          }
-        }
-        for (paramList = "null";; paramList = localCustomEmotionData.RomaingType)
-        {
-          if (!QLog.isColorLevel()) {
-            break label989;
-          }
-          QLog.d("FunyPicHelper", 2, "checkLoadEmotionPic, url is null : " + localCustomEmotionData.resid + ", romaingType:" + paramList);
-          break label124;
-          break;
-        }
+      QbSdk.setTbsListener(null);
+      if ((paramInt == 232) || (paramInt == 220)) {
+        break label280;
       }
-    } while (paramIPicDownloadListener == null);
-    label234:
-    label753:
-    paramIPicDownloadListener.onDone(new ArrayList(), paramList);
-    label903:
-    label982:
-    label989:
-    return;
+      i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("tbs_download_count", 0);
+      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("tbs_download_cost", 0L);
+      l2 = System.currentTimeMillis();
+      l3 = this.jdField_a_of_type_Long;
+      localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      localEditor.putInt("tbs_download_count", i + 1);
+      localEditor.putLong("tbs_download_cost", l1 + (l2 - l3));
+      localEditor.commit();
+      azqs.b(null, "P_CliOper", "BizTechReport", "", "web", "tbs_install_error", 0, 1, paramInt, "", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("TBS_update", 2, "tbs install error:" + paramInt);
+      }
+    }
+    for (;;)
+    {
+      localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      localEditor.putInt("tbs_download_complete", paramInt);
+      localEditor.remove("tbs_downloading");
+      localEditor.remove("tbs_download_progress");
+      localEditor.commit();
+      if (!this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.jdField_a_of_type_Boolean) {
+        break;
+      }
+      BrowserAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.jdField_a_of_type_AndroidContentIntent);
+      return;
+      label280:
+      i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("tbs_download_count", 0);
+      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("tbs_download_cost", 0L);
+      l2 = System.currentTimeMillis();
+      l3 = this.jdField_a_of_type_Long;
+      localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      localEditor.remove("tbs_download_count");
+      localEditor.remove("tbs_download_cost");
+      localEditor.commit();
+      azqs.b(null, "P_CliOper", "BizTechReport", "", "web", "tbs_install_ok", 0, 1, paramInt, Long.toString(l1 + (l2 - l3)), Integer.toString(i + 1), "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("TBS_update", 2, "tbs install finished:" + paramInt);
+      }
+      WebpSoLoader.a(false);
+    }
   }
 }
 

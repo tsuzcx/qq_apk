@@ -5,18 +5,18 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bkon;
-import blfg;
+import bksu;
+import bljn;
 
 public class AECircleBroadcastReceiver
   extends BroadcastReceiver
 {
-  private bkon jdField_a_of_type_Bkon;
+  private bksu jdField_a_of_type_Bksu;
   private boolean jdField_a_of_type_Boolean;
   
-  public AECircleBroadcastReceiver(bkon parambkon)
+  public AECircleBroadcastReceiver(bksu parambksu)
   {
-    this.jdField_a_of_type_Bkon = parambkon;
+    this.jdField_a_of_type_Bksu = parambksu;
   }
   
   private IntentFilter a()
@@ -50,10 +50,10 @@ public class AECircleBroadcastReceiver
   {
     paramContext = paramIntent.getAction();
     paramIntent = paramIntent.getStringExtra("ae_camera_res_downloadfinish_path");
-    if (("new_qq_android_native_short_filter_".equals(paramContext)) && (this.jdField_a_of_type_Bkon != null))
+    if (("new_qq_android_native_short_filter_".equals(paramContext)) && (this.jdField_a_of_type_Bksu != null))
     {
-      this.jdField_a_of_type_Bkon.a(paramIntent);
-      blfg.a("AECircleBroadcastReceiver", "[onReceive]");
+      this.jdField_a_of_type_Bksu.a(paramIntent);
+      bljn.a("AECircleBroadcastReceiver", "[onReceive]");
     }
   }
 }

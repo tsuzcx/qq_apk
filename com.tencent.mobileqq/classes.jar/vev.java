@@ -1,128 +1,48 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vev
-  extends vfw
+  extends uro
 {
-  public static final String a;
-  public boolean a;
-  private final int[] a;
+  public List<vew> a;
   
-  static
+  public vev(ErrorMessage paramErrorMessage)
   {
-    jdField_a_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + ume.a(2131700053);
+    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public vev(StoryVideoItem paramStoryVideoItem, boolean paramBoolean, String paramString)
+  public vev(qqstory_service.RspBatchFeedLike paramRspBatchFeedLike)
   {
-    QQAppInterface localQQAppInterface = vhj.a();
-    usd localusd = (usd)urr.a(2);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.c = localQQAppInterface.getCurrentNickname();
-    String str;
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isPollVideo())
+    super(paramRspBatchFeedLike.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspBatchFeedLike = paramRspBatchFeedLike.feed_like_info_list.get().iterator();
+    while (paramRspBatchFeedLike.hasNext())
     {
-      str = this.c + alpo.a(2131707430);
-      this.jdField_d_of_type_JavaLangString = str;
-      this.f = paramStoryVideoItem.mOwnerUid;
-      this.e = localusd.a(this.f, false);
-      this.g = paramStoryVideoItem.mDoodleText;
-      str = paramString;
-      if (paramString == null) {
-        str = "";
-      }
-      this.h = str;
-      if (!paramStoryVideoItem.isMine()) {
-        break label363;
-      }
-      i = 0;
-      label137:
-      this.b = i;
-      this.c = localQQAppInterface.getCurrentNickname();
-      paramStoryVideoItem = localusd.b(this.f);
-      if ((paramStoryVideoItem != null) && (paramStoryVideoItem.isVip)) {
-        this.c = paramStoryVideoItem.nickName;
-      }
-      this.jdField_d_of_type_JavaLangString = a();
-      this.k = this.jdField_d_of_type_JavaLangString;
-      this.i = b();
-      this.j = ("#" + ugx.jdField_a_of_type_JavaLangString + "# " + a() + "（" + this.i + "）");
-      this.jdField_d_of_type_Int = 11;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label369;
-      }
-    }
-    label363:
-    label369:
-    for (this.jdField_d_of_type_Int = 4;; this.jdField_d_of_type_Int = 1)
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label377;
-      }
-      this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 38, 39, 40, 55, 45 };
-      return;
-      str = this.c + alpo.a(2131707431) + ugx.jdField_a_of_type_JavaLangString;
-      break;
-      i = 1;
-      break label137;
-    }
-    label377:
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 32, 33, 34, 54, 45 };
-  }
-  
-  protected String a(int paramInt)
-  {
-    int i = 3;
-    if (paramInt == 1)
-    {
-      str1 = this.e;
-      str2 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid;
-      str3 = this.f;
-      str4 = this.h;
-      paramInt = this.b;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (;;)
+      Object localObject = (qqstory_struct.FeedLikeInfo)paramRspBatchFeedLike.next();
+      vew localvew = new vew();
+      localvew.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedLikeInfo)localObject).feed_id.get().toStringUtf8();
+      localvew.b = ((qqstory_struct.FeedLikeInfo)localObject).has_like.get();
+      localvew.jdField_a_of_type_Int = ((qqstory_struct.FeedLikeInfo)localObject).like_total_count.get();
+      localvew.jdField_a_of_type_JavaUtilList = new ArrayList();
+      localObject = ((qqstory_struct.FeedLikeInfo)localObject).like_list.get().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d", new Object[] { str1, str2, str3, str4, Integer.valueOf(paramInt), Integer.valueOf(i) });
-        i = 1;
+        LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)((Iterator)localObject).next());
+        localLikeEntry.feedId = localvew.jdField_a_of_type_JavaLangString;
+        localvew.jdField_a_of_type_JavaUtilList.add(localLikeEntry);
       }
-    }
-    String str1 = jdField_a_of_type_JavaLangString;
-    String str2 = this.e;
-    String str3 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid;
-    String str4 = this.f;
-    String str5 = this.h;
-    int j = this.b;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      return String.format(str1, new Object[] { str2, str3, str4, str5, Integer.valueOf(j), Integer.valueOf(i), b(paramInt), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]) });
-      i = 1;
-    }
-  }
-  
-  protected void a(vge paramvge)
-  {
-    ute localute;
-    if ((paramvge instanceof vgf))
-    {
-      localute = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoGameInfo();
-      if (localute != null) {}
-    }
-    else
-    {
-      return;
-    }
-    paramvge = (vgf)paramvge;
-    paramvge.o = localute.b;
-    if (localute.a == 2) {}
-    for (paramvge.p = alpo.a(2131707432);; paramvge.p = (localute.c + alpo.a(2131707433)))
-    {
-      paramvge.jdField_d_of_type_JavaLangString = a();
-      return;
+      this.jdField_a_of_type_JavaUtilList.add(localvew);
     }
   }
 }

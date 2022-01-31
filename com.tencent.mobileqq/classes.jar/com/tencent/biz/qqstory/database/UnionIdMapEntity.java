@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class UnionIdMapEntity
-  extends awbv
+  extends awge
 {
   public String qq;
-  @awdj
+  @awhs
   public String unionId;
   
   public static String selectionQQ()

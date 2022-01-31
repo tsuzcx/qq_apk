@@ -1,87 +1,40 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import com.tencent.image.NativeGifIndex8;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
+import java.util.List;
 
-public class apvc
-  extends NativeGifIndex8
+class apvc
+  implements TextWatcher
 {
-  private boolean a = true;
-  private boolean b;
-  private boolean c;
+  apvc(apuz paramapuz) {}
   
-  public apvc(File paramFile, int paramInt, boolean paramBoolean)
+  public void afterTextChanged(Editable paramEditable)
   {
-    super(paramFile, paramBoolean, true, 0, 0, 0.0F);
-  }
-  
-  public void a()
-  {
-    this.a = true;
-  }
-  
-  public void b()
-  {
-    this.a = false;
-    this.b = true;
-  }
-  
-  public void doApplyNextFrame()
-  {
-    super.doApplyNextFrame();
-    if (this.c)
+    Object localObject = this.a.a.a;
+    List localList = this.a.a.jdField_b_of_type_JavaUtilList;
+    if ((localObject != null) && (localList != null) && (EmoticonPanelController.jdField_b_of_type_Int >= 0) && (EmoticonPanelController.jdField_b_of_type_Int < localList.size()))
     {
-      this.c = false;
-      this.b = false;
-    }
-  }
-  
-  public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
-  {
-    initHandlerAndRunnable();
-    if ((!this.a) && (this.mFirstFrameBitmap != null)) {
-      if (this.mFirstFrameBitmap != null) {
-        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
+      localObject = ((EmotionPanelViewPagerAdapter)localObject).a(EmoticonPanelController.jdField_b_of_type_Int);
+      if (localObject != null) {
+        if (TextUtils.isEmpty(paramEditable)) {
+          break label78;
+        }
       }
     }
-    do
+    label78:
+    for (boolean bool = true;; bool = false)
     {
-      return;
-      if (!this.b) {
-        break;
-      }
-      if (this.mFirstFrameBitmap != null) {
-        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
-      }
-      if (!sPaused)
-      {
-        executeNewTask();
-        return;
-      }
-    } while (this.mIsInPendingAction);
-    sPendingActions.add(new WeakReference(this));
-    this.mIsInPendingAction = true;
-    return;
-    super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
-  }
-  
-  public void getNextFrame()
-  {
-    try
-    {
-      if (this.b)
-      {
-        this.c = true;
-        super.reset();
-      }
-      super.getNextFrame();
+      ((ImageButton)localObject).setEnabled(bool);
       return;
     }
-    finally {}
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

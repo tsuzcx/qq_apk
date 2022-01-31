@@ -1,26 +1,27 @@
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.util.WeakReference;
 
 public class apew
-  extends mbk
+  implements DialogInterface.OnClickListener
 {
-  public static int a(Context paramContext, String paramString)
-  {
-    return a(paramContext, "TencentDocGrayTips_ShowTimes_" + paramString, 0);
-  }
+  public apew(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
   
-  public static long a(Context paramContext, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return a(paramContext, "TencentDocGrayTips_LastShowTime_" + paramString, 0L);
-  }
-  
-  public static void b(Context paramContext, String paramString, int paramInt)
-  {
-    a(paramContext, "TencentDocGrayTips_ShowTimes_" + paramString, paramInt);
-  }
-  
-  public static void b(Context paramContext, String paramString, long paramLong)
-  {
-    a(paramContext, "TencentDocGrayTips_LastShowTime_" + paramString, paramLong);
+    if (bdin.d(MessageForGrayTips.HightlightClickableSpan.access$100(this.a)))
+    {
+      paramDialogInterface.dismiss();
+      MessageForGrayTips.HightlightClickableSpan.access$300(this.a, (QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.a).get(), MessageForGrayTips.HightlightClickableSpan.access$200(this.a).mMsgActionData);
+      MessageForGrayTips.HightlightClickableSpan.access$300(this.a, (QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.a).get(), this.a.frienduin);
+      return;
+    }
+    QQToast.a(BaseApplication.getContext(), 1, 2131691543, 0).a();
   }
 }
 

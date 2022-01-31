@@ -8,7 +8,7 @@ public class bg
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bdcd.b(this.a);
+    bdgm.b(this.a);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}

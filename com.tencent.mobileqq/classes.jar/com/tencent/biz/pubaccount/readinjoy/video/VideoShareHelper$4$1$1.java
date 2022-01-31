@@ -18,14 +18,14 @@ public class VideoShareHelper$4$1$1
   {
     rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd).a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
     if ((rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd) instanceof BaseActivity)) {
-      QQToast.a(rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd), -1, rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd).getString(2131700042), 0).b(((BaseActivity)rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd)).getTitleBarHeight());
+      QQToast.a(rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd), -1, rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd).getString(2131700054), 0).b(((BaseActivity)rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd)).getTitleBarHeight());
     }
     for (;;)
     {
       rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd).a(rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd), this.a.jdField_a_of_type_Rkh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_JavaUtilArrayList);
       return;
       if ((rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd) instanceof PluginBaseActivity)) {
-        QQToast.a(rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd), -1, rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd).getString(2131700042), 0).b(((PluginBaseActivity)rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd)).g());
+        QQToast.a(rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd), -1, rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd).getString(2131700054), 0).b(((PluginBaseActivity)rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd)).g());
       }
     }
   }

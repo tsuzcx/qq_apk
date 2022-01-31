@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import akji;
-import akre;
-import akxe;
-import akxf;
-import akxg;
-import akxh;
-import akxi;
-import akxj;
-import akxk;
-import akxl;
-import akye;
-import alfz;
-import alga;
+import aknx;
+import akvt;
+import albt;
+import albu;
+import albv;
+import albw;
+import albx;
+import alby;
+import albz;
+import alca;
+import alct;
+import alko;
+import alkp;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -39,7 +39,7 @@ public class CmShowRenderView
   private static int jdField_a_of_type_Int;
   private static final HashMap<String, WeakReference<CmShowRenderView>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private static boolean jdField_a_of_type_Boolean;
-  private akye jdField_a_of_type_Akye;
+  private alct jdField_a_of_type_Alct;
   private String jdField_a_of_type_JavaLangString;
   private String b;
   
@@ -61,52 +61,52 @@ public class CmShowRenderView
     jdField_a_of_type_JavaUtilHashMap.put(toString(), new WeakReference(this));
   }
   
-  public static void a(int paramInt, akxk paramakxk)
+  public static void a(int paramInt, albz paramalbz)
   {
     QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "changeApolloStatus mode:", Integer.valueOf(paramInt) });
     Bundle localBundle = new Bundle();
     localBundle.putInt("mode", paramInt);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_change_mode", localBundle, new akxi(paramakxk));
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_change_mode", localBundle, new albx(paramalbz));
   }
   
-  public static void a(alga paramalga, int paramInt)
+  public static void a(alkp paramalkp, int paramInt)
   {
-    if (paramalga == null)
+    if (paramalkp == null)
     {
       QLog.e("CmShow_CmShowRenderView", 1, "initSdk cmSoLoadCompleteCallback == null");
       return;
     }
     jdField_a_of_type_Int = paramInt;
-    akre.a();
+    akvt.a();
     Bundle localBundle = new Bundle();
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_get_base_data", localBundle, new akxf(paramalga));
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_get_base_data", localBundle, new albu(paramalkp));
   }
   
   public static void a(String paramString)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("url", paramString);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_open_store", localBundle, new akxh());
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_open_store", localBundle, new albw());
   }
   
-  public static void a(String paramString1, String paramString2, akxl paramakxl, int paramInt)
+  public static void a(String paramString1, String paramString2, alca paramalca, int paramInt)
   {
-    if (paramakxl == null)
+    if (paramalca == null)
     {
       QLog.e("CmShow_CmShowRenderView", 1, "initSdk cmSoLoadCompleteCallback == null");
       return;
     }
-    akre.a();
+    akvt.a();
     Bundle localBundle = new Bundle();
     localBundle.putString("selfUin", paramString1);
     localBundle.putString("friendUin", paramString2);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_init_cmshow_data", localBundle, new akxg(paramString1, paramString2, paramakxl));
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_init_cmshow_data", localBundle, new albv(paramString1, paramString2, paramalca));
   }
   
   public static void a(ArrayList<String> paramArrayList, int[] paramArrayOfInt)
   {
     QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "preLoadRes uins:", paramArrayList });
-    akye.a(paramArrayList, paramArrayOfInt);
+    alct.a(paramArrayList, paramArrayOfInt);
   }
   
   public static void a(List<String> paramList)
@@ -120,7 +120,7 @@ public class CmShowRenderView
   
   public static boolean a(Context paramContext)
   {
-    return (akji.b(paramContext)) && (alfz.a()) && (jdField_a_of_type_Boolean);
+    return (aknx.b(paramContext)) && (alko.a()) && (jdField_a_of_type_Boolean);
   }
   
   private void b(List<String> paramList)
@@ -130,7 +130,7 @@ public class CmShowRenderView
       break label15;
     }
     label15:
-    while (this.jdField_a_of_type_Akye == null) {
+    while (this.jdField_a_of_type_Alct == null) {
       return;
     }
     Iterator localIterator = paramList.iterator();
@@ -161,20 +161,20 @@ public class CmShowRenderView
       if ((TextUtils.isEmpty(localObject2)) && (!TextUtils.isEmpty(paramList))) {
         break;
       }
-      this.jdField_a_of_type_Akye.a(localObject2, paramList);
+      this.jdField_a_of_type_Alct.a(localObject2, paramList);
       return;
     }
   }
   
   public int a(String paramString)
   {
-    return akxe.a(paramString);
+    return albt.a(paramString);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Akye != null) {
-      this.jdField_a_of_type_Akye.b();
+    if (this.jdField_a_of_type_Alct != null) {
+      this.jdField_a_of_type_Alct.b();
     }
   }
   
@@ -187,15 +187,15 @@ public class CmShowRenderView
     {
       return;
       QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "stopAction actionId:", Integer.valueOf(paramInt1), " actionSeqId:", Integer.valueOf(paramInt2) });
-    } while (this.jdField_a_of_type_Akye == null);
-    this.jdField_a_of_type_Akye.a(paramInt1, paramInt2);
+    } while (this.jdField_a_of_type_Alct == null);
+    this.jdField_a_of_type_Alct.a(paramInt1, paramInt2);
   }
   
-  public void a(akxj paramakxj, String paramString1, String paramString2, int paramInt)
+  public void a(alby paramalby, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_Akye = new akye(this, paramInt);
-    this.jdField_a_of_type_Akye.a(paramString1);
-    this.jdField_a_of_type_Akye.a(paramakxj);
+    this.jdField_a_of_type_Alct = new alct(this, paramInt);
+    this.jdField_a_of_type_Alct.a(paramString1);
+    this.jdField_a_of_type_Alct.a(paramalby);
   }
   
   public void a(CmShowRenderView.PlayActionConfig paramPlayActionConfig)
@@ -211,23 +211,23 @@ public class CmShowRenderView
       return;
     }
     QLog.i("CmShow_CmShowRenderView", 1, "playAction before");
-    this.jdField_a_of_type_Akye.a(paramPlayActionConfig);
+    this.jdField_a_of_type_Alct.a(paramPlayActionConfig);
     QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "playAction playActionConfig:", paramPlayActionConfig });
   }
   
   public void a(String paramString, int paramInt)
   {
     QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "changeSpriteModel mode:", Integer.valueOf(paramInt) });
-    if (this.jdField_a_of_type_Akye != null) {
-      this.jdField_a_of_type_Akye.a(paramString, paramInt);
+    if (this.jdField_a_of_type_Alct != null) {
+      this.jdField_a_of_type_Alct.a(paramString, paramInt);
     }
   }
   
   public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     QLog.d("CmShow_CmShowRenderView", 1, "updateAvatarParam");
-    if (this.jdField_a_of_type_Akye != null) {
-      this.jdField_a_of_type_Akye.a(paramString, paramInt1, paramInt2, paramInt3);
+    if (this.jdField_a_of_type_Alct != null) {
+      this.jdField_a_of_type_Alct.a(paramString, paramInt1, paramInt2, paramInt3);
     }
   }
   
@@ -246,8 +246,8 @@ public class CmShowRenderView
       }
       this.jdField_a_of_type_JavaLangString = paramString1;
       this.b = paramString2;
-    } while (this.jdField_a_of_type_Akye == null);
-    this.jdField_a_of_type_Akye.a(paramString1, paramString2, paramFloat, paramInt, paramBundle);
+    } while (this.jdField_a_of_type_Alct == null);
+    this.jdField_a_of_type_Alct.a(paramString1, paramString2, paramFloat, paramInt, paramBundle);
   }
   
   public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
@@ -259,30 +259,30 @@ public class CmShowRenderView
     {
       return;
       QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "showBubble uin:", ApolloUtil.d(paramString1), " bubbleText:", paramString2 });
-    } while (this.jdField_a_of_type_Akye == null);
-    this.jdField_a_of_type_Akye.a(paramString1, paramString2, paramInt1, paramInt2);
+    } while (this.jdField_a_of_type_Alct == null);
+    this.jdField_a_of_type_Alct.a(paramString1, paramString2, paramInt1, paramInt2);
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
     QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "hideAvatar uin", ApolloUtil.d(paramString), " show:", Boolean.valueOf(paramBoolean) });
-    if (this.jdField_a_of_type_Akye != null) {
-      this.jdField_a_of_type_Akye.a(paramString, paramBoolean);
+    if (this.jdField_a_of_type_Alct != null) {
+      this.jdField_a_of_type_Alct.a(paramString, paramBoolean);
     }
   }
   
   public void a(List<String> paramList, boolean paramBoolean)
   {
     QLog.d("CmShow_CmShowRenderView", 1, "disposeAvatar");
-    if (this.jdField_a_of_type_Akye != null) {
-      this.jdField_a_of_type_Akye.a(paramList, paramBoolean);
+    if (this.jdField_a_of_type_Alct != null) {
+      this.jdField_a_of_type_Alct.a(paramList, paramBoolean);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Akye != null) {
-      this.jdField_a_of_type_Akye.a();
+    if (this.jdField_a_of_type_Alct != null) {
+      this.jdField_a_of_type_Alct.a();
     }
   }
   
@@ -295,15 +295,15 @@ public class CmShowRenderView
     {
       return;
       QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "showBubble uin:", ApolloUtil.d(paramString) });
-    } while (this.jdField_a_of_type_Akye == null);
-    this.jdField_a_of_type_Akye.b(paramString);
+    } while (this.jdField_a_of_type_Alct == null);
+    this.jdField_a_of_type_Alct.b(paramString);
   }
   
   public void c()
   {
     QLog.d("CmShow_CmShowRenderView", 1, "onDestroy");
-    if (this.jdField_a_of_type_Akye != null) {
-      this.jdField_a_of_type_Akye.c();
+    if (this.jdField_a_of_type_Alct != null) {
+      this.jdField_a_of_type_Alct.c();
     }
     jdField_a_of_type_JavaUtilHashMap.remove(toString());
   }

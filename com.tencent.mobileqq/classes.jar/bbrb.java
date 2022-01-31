@@ -1,8 +1,17 @@
-public class bbrb
+import android.support.annotation.NonNull;
+
+class bbrb
+  implements Comparable<bbrb>
 {
-  public int a;
   public String a;
-  public int b;
+  public String b;
+  
+  bbrb(bbqu parambbqu) {}
+  
+  public int a(@NonNull bbrb parambbrb)
+  {
+    return this.b.compareTo(parambbrb.b);
+  }
 }
 
 

@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import mqq.os.MqqHandler;
-
-public class ahue
-  extends amjj
+public abstract interface ahue
 {
-  public ahue(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
-  
-  public void a()
-  {
-    this.a.a.sendEmptyMessage(41);
-  }
+  public abstract void a();
 }
 
 

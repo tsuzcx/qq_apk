@@ -11,7 +11,7 @@ class qvv
       return paramqvt.jdField_a_of_type_Int;
     }
     Friends localFriends = paramqvt.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    int k = bdbt.a(localFriends.detalStatusFlag, localFriends.iTermType);
+    int k = bdgc.a(localFriends.detalStatusFlag, localFriends.iTermType);
     int j;
     int i;
     if ((k != 6) && (k != 0))

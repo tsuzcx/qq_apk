@@ -1,39 +1,45 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.view.View;
+import android.view.animation.Animation;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class blzm
-  extends blzo
 {
-  @Nullable
-  private volatile Handler jdField_a_of_type_AndroidOsHandler;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private final ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(2, new blzn(this));
-  
-  public void a(Runnable paramRunnable)
+  public static Animator a(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(paramRunnable);
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt2, paramInt3 });
+    localValueAnimator.addUpdateListener(new blzn(paramInt1, paramView));
+    return localValueAnimator;
   }
   
-  public boolean a()
+  public static Animation a(View paramView, float paramFloat1, float paramFloat2)
   {
-    return Looper.getMainLooper().getThread() == Thread.currentThread();
+    return new bdob(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new blzo(paramView));
   }
   
-  public void b(Runnable paramRunnable)
+  public static void a(List<blzp> paramList, Animator.AnimatorListener paramAnimatorListener)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {}
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (paramList.size() > 0)
     {
-      if (this.jdField_a_of_type_AndroidOsHandler == null) {
-        this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        blzp localblzp = (blzp)paramList.next();
+        ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(localblzp.jdField_a_of_type_AndroidViewView, localblzp.jdField_a_of_type_JavaLangString, new float[] { localblzp.jdField_a_of_type_Float, localblzp.jdField_b_of_type_Float }).setDuration(localblzp.jdField_a_of_type_Long);
+        localObjectAnimator.setStartDelay(localblzp.jdField_b_of_type_Long);
+        localArrayList.add(localObjectAnimator);
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-      return;
+      paramList = new AnimatorSet();
+      paramList.playTogether(localArrayList);
+      paramList.addListener(paramAnimatorListener);
+      paramList.start();
     }
   }
 }

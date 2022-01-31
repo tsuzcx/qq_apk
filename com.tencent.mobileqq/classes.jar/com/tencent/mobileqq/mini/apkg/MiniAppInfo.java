@@ -21,7 +21,7 @@ import NS_MINI_INTERFACE.INTERFACE.StOperationInfo;
 import NS_MINI_INTERFACE.INTERFACE.StResourcePreCacheInfo;
 import NS_MINI_INTERFACE.INTERFACE.StSubPkgInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
-import aano;
+import aasd;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -454,7 +454,7 @@ public class MiniAppInfo
     }
     try
     {
-      paramJSONObject = from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(aano.a(new INTERFACE.StApiAppInfo(), paramJSONObject)));
+      paramJSONObject = from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(aasd.a(new INTERFACE.StApiAppInfo(), paramJSONObject)));
       return paramJSONObject;
     }
     catch (Exception paramJSONObject)

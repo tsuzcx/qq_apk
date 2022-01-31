@@ -1,126 +1,65 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class zbd
-  extends WebViewPlugin
+class zbd
+  extends Handler
 {
-  public static final String a = zbd.class.getSimpleName();
-  private static final String b = zbd.class.getName();
+  private WeakReference<zbb> a;
   
-  public zbd()
+  public zbd(zbb paramzbb, Looper paramLooper)
   {
-    this.mPluginNameSpace = a;
+    super(paramLooper);
+    this.a = new WeakReference(paramzbb);
   }
   
-  public static String a(MessageRecord paramMessageRecord)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramMessageRecord == null) {
-      return null;
-    }
-    JSONArray localJSONArray = new JSONArray();
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    for (;;)
+    Object localObject2 = null;
+    if (this.a.get() != null) {}
+    for (zbb localzbb = (zbb)this.a.get();; localzbb = null)
     {
-      try
+      Object localObject1 = localObject2;
+      if (paramMessage.obj != null)
       {
-        Object localObject;
-        if ((paramMessageRecord instanceof MessageForPtt))
-        {
-          localObject = (MessageForPtt)paramMessageRecord;
-          ((MessageForPtt)localObject).parse();
-          localJSONObject2.put("content", paramMessageRecord.msg + ",urlAtServer:" + ((MessageForPtt)localObject).urlAtServer);
-          localJSONObject2.put("contentType", "" + paramMessageRecord.msgtype);
-          localJSONObject2.put("time", "" + paramMessageRecord.time);
-          localJSONArray.put(0, localJSONObject2);
-          localJSONObject1.put("msgnum", "1");
-          localJSONObject1.put("contentlist", localJSONArray);
-          return localJSONObject1.toString();
-        }
-        if ((paramMessageRecord instanceof MessageForPic))
-        {
-          localObject = (MessageForPic)paramMessageRecord;
-          ((MessageForPic)localObject).parse();
-          localJSONObject2.put("content", ((MessageForPic)localObject).msg + ",uuid:" + ((MessageForPic)localObject).uuid);
-        }
-        else
-        {
-          localJSONObject2.put("content", paramMessageRecord.msg);
+        localObject1 = localObject2;
+        if ((paramMessage.obj instanceof zbc)) {
+          localObject1 = (zbc)paramMessage.obj;
         }
       }
-      catch (Exception paramMessageRecord)
+      switch (paramMessage.what)
       {
-        paramMessageRecord.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.i(b, 2, "getReportMessage:" + paramMessageRecord.getMessage());
+      }
+      for (;;)
+      {
+        super.handleMessage(paramMessage);
+        return;
+        if ((localzbb != null) && (localObject1 != null))
+        {
+          ((zbb)this.a.get()).d();
+          continue;
+          if ((localzbb != null) && (localObject1 != null))
+          {
+            ((zbb)this.a.get()).e();
+            continue;
+            if ((localzbb != null) && (localObject1 != null))
+            {
+              ((zbb)this.a.get()).c(((zbc)localObject1).a);
+              continue;
+              if ((localzbb != null) && (localObject1 != null))
+              {
+                ((zbb)this.a.get()).f();
+                continue;
+                if ((localzbb != null) && (localObject1 != null)) {
+                  ((zbb)this.a.get()).b(((zbc)localObject1).a);
+                }
+              }
+            }
+          }
         }
-        return "0";
       }
     }
-  }
-  
-  private boolean a()
-  {
-    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a().getIntent() == null)) {
-      return false;
-    }
-    return this.mRuntime.a().getIntent().getBooleanExtra("BSafeReportPost", false);
-  }
-  
-  private byte[] a()
-  {
-    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a().getIntent() == null)) {
-      return null;
-    }
-    return this.mRuntime.a().getIntent().getByteArrayExtra("SafeReportData");
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte)
-  {
-    CustomWebView localCustomWebView = this.mRuntime.a();
-    if (localCustomWebView == null) {
-      return;
-    }
-    try
-    {
-      localCustomWebView.postUrl(paramString, paramArrayOfByte);
-      localCustomWebView.requestFocus();
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if ((paramLong == 32L) && (a()))
-    {
-      a(paramString, a());
-      paramString = this.mRuntime.a(this.mRuntime.a());
-      if ((paramString != null) && ((paramString instanceof behk))) {
-        ((behk)paramString).b();
-      }
-      this.mRuntime.a().readyForLoadJs();
-      return true;
-    }
-    return false;
-  }
-  
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
-  {
-    super.onWebViewCreated(paramCustomWebView);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Paint.Align;
@@ -14,17 +14,17 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import atjk;
-import atjl;
-import atjm;
-import atjx;
+import atnt;
+import atnu;
+import atnv;
+import atog;
 
 public class FloatTextLayout
   extends FloatBaseLayout
-  implements View.OnClickListener, atjx
+  implements View.OnClickListener, atog
 {
   View a;
-  public atjm a;
+  public atnv a;
   boolean d = true;
   
   public FloatTextLayout(@NonNull Context paramContext)
@@ -35,42 +35,42 @@ public class FloatTextLayout
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560798, null);
-    this.jdField_a_of_type_Atjm = ((atjm)this.jdField_a_of_type_AndroidViewView.findViewById(2131369884));
-    this.jdField_a_of_type_Atjm.setStrokeColor(-1);
-    this.jdField_a_of_type_Atjm.setStrokeWidth(aekt.a(1.5F, getResources()));
-    ((TextView)this.jdField_a_of_type_Atjm).setTextColor(-8293377);
-    ((TextView)this.jdField_a_of_type_Atjm).getPaint().setFakeBoldText(true);
-    ((TextView)this.jdField_a_of_type_Atjm).setTextSize(1, 18.0F);
-    ((TextView)this.jdField_a_of_type_Atjm).setOnClickListener(this);
-    ((TextView)this.jdField_a_of_type_Atjm).setContentDescription(alpo.a(2131705018));
-    this.jdField_b_of_type_Int = aekt.a(40.0F, getResources());
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560816, null);
+    this.jdField_a_of_type_Atnv = ((atnv)this.jdField_a_of_type_AndroidViewView.findViewById(2131369903));
+    this.jdField_a_of_type_Atnv.setStrokeColor(-1);
+    this.jdField_a_of_type_Atnv.setStrokeWidth(aepi.a(1.5F, getResources()));
+    ((TextView)this.jdField_a_of_type_Atnv).setTextColor(-8293377);
+    ((TextView)this.jdField_a_of_type_Atnv).getPaint().setFakeBoldText(true);
+    ((TextView)this.jdField_a_of_type_Atnv).setTextSize(1, 18.0F);
+    ((TextView)this.jdField_a_of_type_Atnv).setOnClickListener(this);
+    ((TextView)this.jdField_a_of_type_Atnv).setContentDescription(alud.a(2131705030));
+    this.jdField_b_of_type_Int = aepi.a(40.0F, getResources());
     int i = (int)getResources().getDimension(2131297175);
     int j = getResources().getDisplayMetrics().widthPixels;
-    this.jdField_a_of_type_Int = ((int)(Math.min(j * 0.85F, j - aekt.a(16.0F, getResources())) - i));
-    this.jdField_a_of_type_Atjm.setLineMaxWidth(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = ((int)(Math.min(j * 0.85F, j - aepi.a(16.0F, getResources())) - i));
+    this.jdField_a_of_type_Atnv.setLineMaxWidth(this.jdField_a_of_type_Int);
     addView(this.jdField_a_of_type_AndroidViewView, new FrameLayout.LayoutParams(-2, this.jdField_b_of_type_Int));
-    this.jdField_a_of_type_Atjm.setOnSizeChangeListener(this);
+    this.jdField_a_of_type_Atnv.setOnSizeChangeListener(this);
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = this.jdField_b_of_type_Int;
   }
   
-  public int a(atjl paramatjl)
+  public int a(atnu paramatnu)
   {
-    if (paramatjl.jdField_a_of_type_Boolean) {
-      return paramatjl.jdField_a_of_type_Int + paramatjl.jdField_c_of_type_Int / 2;
+    if (paramatnu.jdField_a_of_type_Boolean) {
+      return paramatnu.jdField_a_of_type_Int + paramatnu.jdField_c_of_type_Int / 2;
     }
-    return paramatjl.jdField_a_of_type_Int - paramatjl.jdField_c_of_type_Int / 2 - this.jdField_a_of_type_Int;
+    return paramatnu.jdField_a_of_type_Int - paramatnu.jdField_c_of_type_Int / 2 - this.jdField_a_of_type_Int;
   }
   
-  public atjm a()
+  public atnv a()
   {
-    return this.jdField_a_of_type_Atjm;
+    return this.jdField_a_of_type_Atnv;
   }
   
-  public void a(atjl paramatjl)
+  public void a(atnu paramatnu)
   {
-    if (paramatjl == null) {}
+    if (paramatnu == null) {}
     label138:
     label143:
     label146:
@@ -79,18 +79,18 @@ public class FloatTextLayout
       return;
       Object localObject;
       int i;
-      if ((paramatjl.f) && (!paramatjl.g) && (!paramatjl.jdField_b_of_type_Boolean))
+      if ((paramatnu.f) && (!paramatnu.g) && (!paramatnu.jdField_b_of_type_Boolean))
       {
-        if (!paramatjl.jdField_c_of_type_Boolean) {
-          this.jdField_a_of_type_Atjm.setAlign(Paint.Align.CENTER);
+        if (!paramatnu.jdField_c_of_type_Boolean) {
+          this.jdField_a_of_type_Atnv.setAlign(Paint.Align.CENTER);
         }
       }
       else
       {
-        this.d = paramatjl.jdField_a_of_type_Boolean;
+        this.d = paramatnu.jdField_a_of_type_Boolean;
         localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
         i = ((FrameLayout.LayoutParams)localObject).gravity;
-        if (!paramatjl.jdField_c_of_type_Boolean) {
+        if (!paramatnu.jdField_c_of_type_Boolean) {
           break label143;
         }
         if (!this.d) {
@@ -106,10 +106,10 @@ public class FloatTextLayout
         ((FrameLayout.LayoutParams)localObject).gravity = i;
         this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         return;
-        if (paramatjl.jdField_a_of_type_Boolean) {}
+        if (paramatnu.jdField_a_of_type_Boolean) {}
         for (localObject = Paint.Align.RIGHT;; localObject = Paint.Align.LEFT)
         {
-          this.jdField_a_of_type_Atjm.setAlign((Paint.Align)localObject);
+          this.jdField_a_of_type_Atnv.setAlign((Paint.Align)localObject);
           break;
         }
         i = 3;
@@ -119,13 +119,13 @@ public class FloatTextLayout
     }
   }
   
-  public boolean a(atjl paramatjl)
+  public boolean a(atnu paramatnu)
   {
     boolean bool = true;
-    if (paramatjl == null) {
+    if (paramatnu == null) {
       return false;
     }
-    if ((paramatjl.f) && (!paramatjl.g) && (!paramatjl.jdField_b_of_type_Boolean)) {
+    if ((paramatnu.f) && (!paramatnu.g) && (!paramatnu.jdField_b_of_type_Boolean)) {
       if (a()) {}
     }
     for (;;)
@@ -139,33 +139,33 @@ public class FloatTextLayout
     }
   }
   
-  public int b(atjl paramatjl)
+  public int b(atnu paramatnu)
   {
-    return paramatjl.jdField_b_of_type_Int - this.jdField_b_of_type_Int / 2;
+    return paramatnu.jdField_b_of_type_Int - this.jdField_b_of_type_Int / 2;
   }
   
   public void b()
   {
     super.b();
-    if (this.jdField_a_of_type_Atjm != null)
+    if (this.jdField_a_of_type_Atnv != null)
     {
-      this.jdField_a_of_type_Atjm.setOnSizeChangeListener(null);
-      this.jdField_a_of_type_Atjm.c();
+      this.jdField_a_of_type_Atnv.setOnSizeChangeListener(null);
+      this.jdField_a_of_type_Atnv.c();
     }
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 != this.jdField_a_of_type_Int) && (this.jdField_a_of_type_Atjk != null)) {
-      this.jdField_a_of_type_Atjk.b(paramInt1, paramInt2);
+    if ((paramInt1 != this.jdField_a_of_type_Int) && (this.jdField_a_of_type_Atnt != null)) {
+      this.jdField_a_of_type_Atnt.b(paramInt1, paramInt2);
     }
   }
   
   public boolean b()
   {
     boolean bool = super.b();
-    if (this.jdField_a_of_type_Atjm != null) {
-      this.jdField_a_of_type_Atjm.c();
+    if (this.jdField_a_of_type_Atnv != null) {
+      this.jdField_a_of_type_Atnv.c();
     }
     return bool;
   }
@@ -174,15 +174,15 @@ public class FloatTextLayout
   {
     int i = (int)getResources().getDimension(2131297175);
     int j = getResources().getDisplayMetrics().widthPixels;
-    this.jdField_a_of_type_Int = ((int)(Math.min(j * 0.85F, j - aekt.a(16.0F, getResources())) - i));
-    this.jdField_a_of_type_Atjm.setLineMaxWidth(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = ((int)(Math.min(j * 0.85F, j - aepi.a(16.0F, getResources())) - i));
+    this.jdField_a_of_type_Atnv.setLineMaxWidth(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = this.jdField_a_of_type_Int;
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Atjk != null) {
-      this.jdField_a_of_type_Atjk.b();
+    if (this.jdField_a_of_type_Atnt != null) {
+      this.jdField_a_of_type_Atnt.b();
     }
   }
   

@@ -1,18 +1,34 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import android.os.SystemClock;
+import com.tribe.async.async.JobSegment;
 
-public class xlo
-  implements View.OnLongClickListener
+public abstract class xlo<IN, OUT>
+  extends JobSegment<IN, OUT>
 {
-  public xlo(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
+  protected long a;
+  private final String a;
+  private long b;
   
-  public boolean onLongClick(View paramView)
+  public xlo()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
-    }
-    return true;
+    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.publish.edit." + getClass().getSimpleName());
+  }
+  
+  public void call(IN paramIN)
+  {
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    super.call(paramIN);
+  }
+  
+  public void notifyError(Error paramError)
+  {
+    this.b = SystemClock.uptimeMillis();
+    super.notifyError(paramError);
+  }
+  
+  public void notifyResult(OUT paramOUT)
+  {
+    this.b = SystemClock.uptimeMillis();
+    super.notifyResult(paramOUT);
   }
 }
 

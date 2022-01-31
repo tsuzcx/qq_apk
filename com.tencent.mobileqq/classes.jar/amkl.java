@@ -1,89 +1,59 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.Display;
-import android.view.WindowManager;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.GrayTipsSpan;
+import com.tencent.mobileqq.data.MessageForGrayTips;
+import com.tencent.mobileqq.data.MessageForNewGrayTips;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.util.Calendar;
-import java.util.Map;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
 public class amkl
 {
-  public static final int a;
-  private static long a;
-  
-  static
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
-    jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("qqminiapp", "miniapp_able2show", 1);
-  }
-  
-  public static int a(Context paramContext)
-  {
-    return ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
-  }
-  
-  public static int a(Context paramContext, int paramInt)
-  {
-    return bcwh.a(paramContext, paramInt);
-  }
-  
-  private static long a()
-  {
-    long l = System.currentTimeMillis() / 1000L;
-    if ((jdField_a_of_type_Long != 0L) && (86400L + jdField_a_of_type_Long > l)) {
-      return jdField_a_of_type_Long;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    l = localCalendar.getTimeInMillis() / 1000L;
-    jdField_a_of_type_Long = l;
-    return l;
-  }
-  
-  public static String a(String paramString)
-  {
-    String str = "{" + paramString + "}";
-    paramString = "";
-    try
-    {
-      str = new JSONObject(str).get("metaData").toString();
-      paramString = str;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQDailyUtils", 2, localException, new Object[0]);
-    }
-    return paramString;
-    return "";
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return paramLong > a();
-  }
-  
-  public static boolean a(Map<String, String> paramMap)
-  {
-    if ((paramMap == null) || (paramMap.size() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQDailyUtils", 2, "param is null");
-      }
-      return false;
-    }
-    String str1 = (String)paramMap.get("appname");
-    String str2 = (String)paramMap.get("appview");
-    String str3 = (String)paramMap.get("appversion");
-    paramMap = (String)paramMap.get("metaData");
     if (QLog.isColorLevel()) {
-      QLog.d("QQDailyUtils", 2, "appName: " + str1 + "\nappView: " + str2 + "\nappVersion: " + str3 + "\nmetaData: " + paramMap);
+      QLog.d("AddMessageHelper", 2, "-----addDatingSafetyGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + bdeu.a(paramString2));
     }
-    return (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3)) && (!TextUtils.isEmpty(paramMap));
+    long l = ayzl.a();
+    MessageForGrayTips localMessageForGrayTips = (MessageForGrayTips)azaf.a(-1028);
+    localMessageForGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, -1028, paramInt, l);
+    localMessageForGrayTips.isread = true;
+    if (!alww.a(paramQQAppInterface, localMessageForGrayTips)) {
+      paramQQAppInterface.a().a(localMessageForGrayTips, paramQQAppInterface.getCurrentAccountUin());
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, ArrayList<GrayTipsSpan> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + bdeu.a(paramString2));
+    }
+    if ((paramBoolean1) && (abti.e(paramInt)) && (QLog.isColorLevel())) {
+      QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage faild : no troop uin");
+    }
+    long l = ayzl.a();
+    if (paramBoolean1) {}
+    for (int i = -5001;; i = -5000)
+    {
+      QQMessageFacade.Message localMessage = paramQQAppInterface.a().a(paramString1, paramInt);
+      MessageForNewGrayTips localMessageForNewGrayTips = (MessageForNewGrayTips)azaf.a(i);
+      localMessageForNewGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, i, paramInt, l);
+      if (localMessage != null) {
+        localMessageForNewGrayTips.shmsgseq = localMessage.shmsgseq;
+      }
+      localMessageForNewGrayTips.isread = paramBoolean3;
+      localMessageForNewGrayTips.spans = paramArrayList;
+      localMessageForNewGrayTips.updateMsgData();
+      if ((!paramBoolean2) || (!alww.a(paramQQAppInterface, localMessageForNewGrayTips, false))) {
+        paramQQAppInterface.a().a(localMessageForNewGrayTips, paramQQAppInterface.getCurrentAccountUin());
+      }
+      return;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    a(paramQQAppInterface, paramString1, paramString2, paramInt, null, paramBoolean1, paramBoolean2, true);
   }
 }
 

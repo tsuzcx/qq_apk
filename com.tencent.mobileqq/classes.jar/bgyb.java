@@ -1,22 +1,43 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.mobileqq.triton.sdk.download.ITDownloadListener;
+import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
+import java.io.File;
 import java.util.List;
-import org.json.JSONObject;
+import java.util.Map;
 
 class bgyb
-  implements AsyncResult
+  implements DownloaderProxy.DownloadListener
 {
-  bgyb(bgya parambgya, List paramList) {}
+  bgyb(bgya parambgya, ITDownloadListener paramITDownloadListener, String paramString1, String paramString2) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onDownloadFailed(int paramInt, String paramString)
   {
-    if (paramBoolean)
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener.onFail(this.jdField_a_of_type_JavaLangString, paramInt, null);
+    }
+  }
+  
+  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
+  
+  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener.onProgress(this.jdField_a_of_type_JavaLangString, paramLong2, paramFloat);
+    }
+  }
+  
+  public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
+  {
+    boolean bool = new File(this.b).exists();
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener != null)
     {
-      QMLog.d("MiniProgramReporter", "onDcReport() called with: isSuc = [true], ret = [" + paramJSONObject + "]");
+      if (bool) {
+        this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener.onSuccess(this.jdField_a_of_type_JavaLangString, paramInt, null, bgnt.a().e(this.b));
+      }
+    }
+    else {
       return;
     }
-    QMLog.e("MiniProgramReporter", "performReportViaSSO onDcReport: sso command failed, try again");
-    this.jdField_a_of_type_Bgya.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener.onFail(this.jdField_a_of_type_JavaLangString, 5, "target file not exists");
   }
 }
 

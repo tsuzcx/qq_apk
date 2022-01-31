@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.camera.ui.capture;
 
-import bkrq;
-import bkrs;
+import bkvx;
+import bkvz;
 import com.tencent.mobileqq.app.ThreadManager;
 import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 import mqq.os.MqqHandler;
@@ -9,11 +9,11 @@ import mqq.os.MqqHandler;
 public class VideoStoryCapturePart$10$1
   implements Runnable
 {
-  public VideoStoryCapturePart$10$1(bkrs parambkrs) {}
+  public VideoStoryCapturePart$10$1(bkvz parambkvz) {}
   
   public void run()
   {
-    bkrq.a(this.a.a).setOnFrameDraw(null);
+    bkvx.a(this.a.a).setOnFrameDraw(null);
     ThreadManager.getUIHandler().postDelayed(new VideoStoryCapturePart.10.1.1(this), 500L);
   }
 }

@@ -1,24 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-
-class aryb
-  implements DialogInterface.OnClickListener
+public class aryb
 {
-  aryb(arya paramarya, int paramInt, String paramString) {}
+  public int a;
+  public boolean a;
+  public boolean b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aryb(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramInt == 1)
-    {
-      arzk.a(arya.a(this.jdField_a_of_type_Arya), "shareToQQ", arya.a(this.jdField_a_of_type_Arya), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      ndq.a(arya.a(this.jdField_a_of_type_Arya), 0, "", "");
-      if (arya.a(this.jdField_a_of_type_Arya) != null) {
-        arya.a(this.jdField_a_of_type_Arya).b(1);
-      }
-      arya.a(this.jdField_a_of_type_Arya).moveTaskToBack(true);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 0;
   }
 }
 

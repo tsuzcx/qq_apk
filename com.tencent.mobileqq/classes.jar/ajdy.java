@@ -1,119 +1,43 @@
-import BOSSStrategyCenter.tAdvDesc;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.text.DecimalFormat;
 
 public class ajdy
 {
+  public static String a;
+  public static DecimalFormat a;
+  private static boolean a;
+  public static String b;
+  public static String c;
+  private static String d;
   public int a;
-  public tAdvDesc a;
-  public SparseArray<ajdz> a;
-  public String a;
+  public long a;
   public int b;
-  public String b;
-  public int c;
-  private int d;
+  public long b;
   
-  public ajdy(tAdvDesc paramtAdvDesc)
+  static
   {
-    this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc = paramtAdvDesc;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    a();
+    jdField_a_of_type_JavaLangString = "http://i.gtimg.cn/channel/exclusive_hb/socialpay_makehb_ani_";
+    jdField_b_of_type_JavaLangString = "http://i.gtimg.cn/channel/exclusive_hb/socialpay_aio_ani_";
+    c = jdField_a_of_type_JavaLangString;
+    d = jdField_b_of_type_JavaLangString;
+    jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#0.00");
   }
   
-  public static ajdy a(tAdvDesc paramtAdvDesc)
+  public static String a()
   {
-    if ((paramtAdvDesc == null) || (TextUtils.isEmpty(paramtAdvDesc.res_data))) {
-      return null;
-    }
-    switch (paramtAdvDesc.pattern_id)
+    if (!jdField_a_of_type_Boolean)
     {
-    default: 
-      return null;
-    case 1012: 
-      return new ajdy(paramtAdvDesc);
-    case 1108: 
-      return new bkca(paramtAdvDesc);
-    }
-    return new bkcc(paramtAdvDesc);
-  }
-  
-  public ajec a()
-  {
-    if ((this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc == null) || (TextUtils.isEmpty(this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data))) {
-      return null;
-    }
-    switch (this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.pattern_id)
-    {
-    default: 
-      return null;
-    case 1012: 
-      return new ajec();
-    case 1108: 
-      return new bkcb();
-    }
-    return new bkcf();
-  }
-  
-  protected void a()
-  {
-    if ((this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc == null) || (TextUtils.isEmpty(this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data)))
-    {
-      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
-      return;
-    }
-    String str1 = this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data;
-    try
-    {
-      Object localObject = new JSONObject(str1);
-      int i = ((JSONObject)localObject).optInt("res_type");
-      String str2 = ((JSONObject)localObject).optString("res_url");
-      String str3 = ((JSONObject)localObject).optString("res_url_md5");
-      int j = ((JSONObject)localObject).optInt("jump_type");
-      String str4 = ((JSONObject)localObject).optString("jump_url");
-      int k = ((JSONObject)localObject).optInt("WebViewPreloadFlag");
-      if (QLog.isColorLevel()) {
-        QLog.d("QbossADBannerManager", 2, "webViewPreloadFlag: " + k);
+      QQAppInterface localQQAppInterface = ajeu.a();
+      if (localQQAppInterface != null) {
+        d = ((aixs)localQQAppInterface.getManager(245)).a("hb_exclusive", jdField_b_of_type_JavaLangString, new String[] { "aio_red", "prefix" });
       }
-      this.jdField_a_of_type_Int = i;
-      this.jdField_b_of_type_Int = j;
-      this.jdField_a_of_type_JavaLangString = str4;
-      this.d = k;
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_traceinfo;
-      this.c = this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.task_id;
-      localObject = new ajdz();
-      ((ajdz)localObject).jdField_a_of_type_JavaLangString = str2;
-      ((ajdz)localObject).jdField_b_of_type_JavaLangString = str3;
-      ((ajdz)localObject).c = ajea.a().a(str2);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(1, localObject);
-      return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner parseJson error msg = " + localException.getMessage());
-      bjmf.a().a(2741, this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.task_id, 102, "json parseError exception = " + localException.getMessage() + " json string = " + str1);
-    }
+    return d;
   }
   
-  boolean a()
+  public String toString()
   {
-    return this.d == 1;
-  }
-  
-  public boolean b()
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
-    {
-      ajdz localajdz = (ajdz)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-      if ((localajdz == null) || (TextUtils.isEmpty(localajdz.c)) || (!localajdz.a())) {
-        return false;
-      }
-      i += 1;
-    }
-    return true;
+    return "SpecifyAnimInfo{aId=" + this.jdField_a_of_type_Int + ", minPrice=" + this.jdField_a_of_type_Long + ", maxPrice=" + this.jdField_b_of_type_Long + ", skinId=" + this.jdField_b_of_type_Int + '}';
   }
 }
 

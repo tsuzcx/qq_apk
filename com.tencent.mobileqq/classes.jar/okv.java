@@ -29,7 +29,7 @@ public class okv
   
   public static boolean a()
   {
-    long l = ((Long)bjxj.a("family_comment_card_hide_timestamp", Long.valueOf(-1L))).longValue();
+    long l = ((Long)bkbq.a("family_comment_card_hide_timestamp", Long.valueOf(-1L))).longValue();
     if (l == -1L)
     {
       QLog.d("ReadInJoyCommentHelper", 1, "shoudHideCommentView | false cuz never click hide btn ");

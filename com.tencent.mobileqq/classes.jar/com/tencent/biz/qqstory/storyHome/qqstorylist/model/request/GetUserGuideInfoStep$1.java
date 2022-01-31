@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.model.request;
 
-import wnx;
-import wnz;
-import wob;
+import wsg;
+import wsi;
+import wsk;
 
 public class GetUserGuideInfoStep$1
   implements Runnable
 {
-  public GetUserGuideInfoStep$1(wnx paramwnx, wob paramwob) {}
+  public GetUserGuideInfoStep$1(wsg paramwsg, wsk paramwsk) {}
   
   public void run()
   {
-    if (wnx.a(this.this$0) != null) {
-      wnx.a(this.this$0).a(this.a);
+    if (wsg.a(this.this$0) != null) {
+      wsg.a(this.this$0).a(this.a);
     }
   }
 }

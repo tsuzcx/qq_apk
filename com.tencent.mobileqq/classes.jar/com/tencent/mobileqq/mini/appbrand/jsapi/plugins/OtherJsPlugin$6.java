@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import anxn;
-import bdfq;
+import aobw;
+import bdjz;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 
 class OtherJsPlugin$6
   implements Runnable
 {
-  OtherJsPlugin$6(OtherJsPlugin paramOtherJsPlugin, anxn paramanxn) {}
+  OtherJsPlugin$6(OtherJsPlugin paramOtherJsPlugin, aobw paramaobw) {}
   
   public void run()
   {
-    bdfq localbdfq = new bdfq(this.this$0.jsPluginEngine.getActivityContext(), 2131755801);
-    localbdfq.setContentView(2131559295);
-    localbdfq.setMessage("是否将" + this.this$0.jsPluginEngine.getAppInfo().name + "添加到彩签？");
-    localbdfq.setPositiveButton("确定", new OtherJsPlugin.6.1(this));
-    localbdfq.setNegativeButton("取消", new OtherJsPlugin.6.2(this));
-    localbdfq.setCanceledOnTouchOutside(false);
-    localbdfq.show();
+    bdjz localbdjz = new bdjz(this.this$0.jsPluginEngine.getActivityContext(), 2131755801);
+    localbdjz.setContentView(2131559294);
+    localbdjz.setMessage("是否将" + this.this$0.jsPluginEngine.getAppInfo().name + "添加到彩签？");
+    localbdjz.setPositiveButton("确定", new OtherJsPlugin.6.1(this));
+    localbdjz.setNegativeButton("取消", new OtherJsPlugin.6.2(this));
+    localbdjz.setCanceledOnTouchOutside(false);
+    localbdjz.show();
   }
 }
 

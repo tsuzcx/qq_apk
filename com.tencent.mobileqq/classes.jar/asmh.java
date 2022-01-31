@@ -1,47 +1,108 @@
-import android.net.Uri;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.graphics.Color;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.ark.ArkTextureView;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.List;
 
-class asmh
-  implements asmp
+public class asmh
+  extends PagerAdapter
 {
-  asmh(asmg paramasmg, int paramInt, String paramString) {}
+  public asmh(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  public void a(Uri paramUri)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFaild= " + paramUri);
-    this.jdField_a_of_type_Asmg.a.finish();
+    paramViewGroup.removeView((View)paramObject);
   }
   
-  public void a(String paramString1, String paramString2, long paramLong)
+  public int getCount()
   {
-    QLog.d("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFinish= " + paramString1);
-    try
+    return QQGamePubAccountFragment.a(this.a).size() + 1;
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (paramInt < QQGamePubAccountFragment.a(this.a).size()) {}
+    for (MessageRecord localMessageRecord = (MessageRecord)QQGamePubAccountFragment.a(this.a).get(paramInt);; localMessageRecord = null)
     {
-      if (this.jdField_a_of_type_Int == 2)
+      asnu localasnu = asof.a(localMessageRecord, this.a.getActivity());
+      if (localasnu == null)
       {
-        paramString2 = new ArrayList();
-        paramString2.add(paramString1);
-        this.jdField_a_of_type_Asmg.a(paramString2, this.jdField_a_of_type_JavaLangString);
-        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("QQGamePubAccountFragment", 2, "headerView = null");
+        }
+        return null;
       }
-      if (this.jdField_a_of_type_Int == 4)
+      this.a.a.add(localasnu);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQGamePubAccountFragment", 2, "headerView = " + localasnu.getClass().getSimpleName());
+      }
+      RelativeLayout localRelativeLayout = new RelativeLayout(paramViewGroup.getContext());
+      if (((View)localasnu).getParent() != null) {
+        ((ViewGroup)((View)localasnu).getParent()).removeView((View)localasnu);
+      }
+      RelativeLayout.LayoutParams localLayoutParams3 = new RelativeLayout.LayoutParams(-1, -2);
+      localLayoutParams3.addRule(13, ((View)localasnu).getId());
+      TextView localTextView;
+      RelativeLayout.LayoutParams localLayoutParams1;
+      if (localMessageRecord != null)
       {
-        paramString2 = new ArrayList();
-        paramString2.add(paramString1);
-        this.jdField_a_of_type_Asmg.b(paramString2, this.jdField_a_of_type_JavaLangString);
-        return;
+        localTextView = new TextView(this.a.getActivity());
+        localTextView.setTextColor(-1);
+        localTextView.setTextSize(1, 10.0F);
+        localTextView.setBackgroundColor(Color.parseColor("#4D000000"));
+        localTextView.setText(bdns.a(this.a.getActivity(), 3, localMessageRecord.time * 1000L));
+        localTextView.setPadding(12, 0, 12, 0);
+        localTextView.setId(2131377854);
+        RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
+        localLayoutParams1 = localLayoutParams2;
+        if (localLayoutParams2 == null) {
+          localLayoutParams1 = new RelativeLayout.LayoutParams(-2, aepi.a(15.0F, this.a.getResources()));
+        }
+        localTextView.setGravity(17);
+        localLayoutParams1.addRule(14);
+        localLayoutParams1.addRule(10);
+        localTextView.bringToFront();
+      }
+      for (;;)
+      {
+        localRelativeLayout.addView((View)localasnu, localLayoutParams3);
+        if ((localTextView != null) && (localLayoutParams1 != null)) {
+          localRelativeLayout.addView(localTextView, localLayoutParams1);
+        }
+        paramViewGroup.addView(localRelativeLayout, localLayoutParams3);
+        localasnu.a(localMessageRecord, this.a.getActivity());
+        if (localMessageRecord == null) {
+          return localRelativeLayout;
+        }
+        if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForArkApp)))
+        {
+          paramViewGroup = (ArkTextureView)localasnu;
+          ((View)localasnu).setOnTouchListener(new asmi(this, paramViewGroup));
+        }
+        return localRelativeLayout;
+        localTextView = null;
+        localLayoutParams1 = null;
       }
     }
-    catch (Throwable paramString1)
-    {
-      QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq exception=", paramString1);
-      return;
-    }
-    if (this.jdField_a_of_type_Int == 3) {
-      this.jdField_a_of_type_Asmg.a(paramString1, this.jdField_a_of_type_JavaLangString);
-    }
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

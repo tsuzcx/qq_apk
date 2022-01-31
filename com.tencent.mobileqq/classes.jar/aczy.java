@@ -1,27 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-public class aczy
-  implements View.OnClickListener
+class aczy
+  implements bhum
 {
-  public aczy(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  aczy(aczv paramaczv) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    if (System.currentTimeMillis() - this.a.a < 2000L) {
-      return;
-    }
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (HongbaoShowerActivity.a(this.a) == 0) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      azmj.b(localQQAppInterface, "dc01440", "", "", "0X80077EA", "0X80077EA", 0, 0, paramView, "", "", "");
-      return;
-    }
+    azqs.b(this.a.a.app, "CliOper", "", "", "0X8008406", "0X8008406", 0, 0, "", "", "", "");
   }
 }
 

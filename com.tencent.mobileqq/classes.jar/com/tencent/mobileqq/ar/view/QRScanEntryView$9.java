@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import amuc;
+import amyr;
 
 class QRScanEntryView$9
   implements Runnable
@@ -10,7 +10,7 @@ class QRScanEntryView$9
   public void run()
   {
     if (!QRScanEntryView.b(this.this$0)) {
-      if (this.a > amuc.a().c) {
+      if (this.a > amyr.a().c) {
         break label54;
       }
     }

@@ -1,30 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
 
-class bhyy
-  extends Handler
+public class bhyy
+  extends ImageSpan
 {
-  public bhyy()
+  public bhyy(Drawable paramDrawable, int paramInt)
   {
-    super(Looper.getMainLooper());
+    super(paramDrawable, paramInt);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramMessage.obj == null);
-      paramMessage = ((WeakReference)paramMessage.obj).get();
-    } while ((paramMessage == null) || (!(paramMessage instanceof bhyv)));
-    ((bhyv)paramMessage).dismiss();
+    paramCharSequence = getDrawable();
+    paramPaint = paramPaint.getFontMetricsInt();
+    paramInt1 = paramPaint.descent;
+    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
+    paramInt2 = paramCharSequence.getBounds().bottom / 2;
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
 }
 

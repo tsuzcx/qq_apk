@@ -1,37 +1,32 @@
-import org.json.JSONObject;
-
 public class aksl
-  implements aksz
 {
-  private int a;
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public aksl()
+  public boolean equals(Object paramObject)
   {
-    int i = aksy.a;
-    aksy.a = i + 1;
-    this.a = i;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public JSONObject a(aksy paramaksy, JSONObject paramJSONObject)
-  {
-    if ("cs.audio_create.local".equals(paramJSONObject.optString("N_R_CMD")))
+    if ((paramObject == null) || (!(paramObject instanceof aksl))) {}
+    do
     {
-      paramJSONObject = new akry(paramJSONObject.optInt("N_R_OBJ"), paramJSONObject.optInt("id"), paramJSONObject.optString("type"));
-      if (paramaksy != null) {
-        paramaksy.a(paramJSONObject);
-      }
-    }
-    return null;
+      return false;
+      paramObject = (aksl)paramObject;
+    } while ((this.a != paramObject.a) || (this.b != paramObject.b) || (this.c != paramObject.c) || (this.d != paramObject.d) || (this.e != paramObject.e));
+    return true;
   }
   
-  public int c()
+  public String toString()
   {
-    return this.a;
+    StringBuilder localStringBuilder = new StringBuilder("{");
+    localStringBuilder.append("positionX:").append(this.a);
+    localStringBuilder.append(", positionY:").append(this.b);
+    localStringBuilder.append(", width:").append(this.c);
+    localStringBuilder.append(", height:").append(this.d);
+    localStringBuilder.append(", align:").append(this.e);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

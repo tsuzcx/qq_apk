@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.manager;
 
-import bgrx;
-import bgsa;
-import bgtd;
+import bgwe;
+import bgwh;
+import bgxk;
 
 public class EngineManager$EngineChannelReceiver$1
   implements Runnable
 {
-  public EngineManager$EngineChannelReceiver$1(bgsa parambgsa, EngineChannel paramEngineChannel) {}
+  public EngineManager$EngineChannelReceiver$1(bgwh parambgwh, EngineChannel paramEngineChannel) {}
   
   public void run()
   {
-    bgrx.a(this.jdField_a_of_type_Bgsa.a, bgtd.a().a, this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel);
+    bgwe.a(this.jdField_a_of_type_Bgwh.a, bgxk.a().a, this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel);
   }
 }
 

@@ -3,10 +3,10 @@ package cooperation.qzone.webviewplugin;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
-import becq;
-import bizm;
-import bjao;
-import bjsx;
+import begz;
+import bjdt;
+import bjev;
+import bjxe;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import org.json.JSONObject;
 public class QZoneSharePictureJsPlugin$7
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$7(bjsx parambjsx, JSONObject paramJSONObject, String paramString, becq parambecq) {}
+  public QZoneSharePictureJsPlugin$7(bjxe parambjxe, JSONObject paramJSONObject, String paramString, begz parambegz) {}
   
   public void run()
   {
@@ -37,11 +37,11 @@ public class QZoneSharePictureJsPlugin$7
           localBundle.putInt("req_type", 1);
           localBundle.putBoolean("key_need_save_draft", false);
           localBundle.putString("shareSource", str2);
-          int i = bizm.a(this.this$0.a, this.jdField_a_of_type_Becq, 5);
+          int i = bjdt.a(this.this$0.a, this.jdField_a_of_type_Begz, 5);
           if (!TextUtils.isEmpty(str1)) {
             localBundle.putString("summary", str1);
           }
-          bjao.a(this.jdField_a_of_type_Becq.a(), this.jdField_a_of_type_Becq.a(), localBundle, null, i);
+          bjev.a(this.jdField_a_of_type_Begz.a(), this.jdField_a_of_type_Begz.a(), localBundle, null, i);
           return;
         }
       }

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.structmsg;
 
 import android.util.Log;
-import azqi;
-import azsa;
+import azur;
+import azwj;
 import java.io.Externalizable;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -19,23 +19,23 @@ public class StructMsgSubImageVideo$VideoItem
   public String videoUrl;
   public int width;
   
-  private static VideoItem a(azsa paramazsa)
+  private static VideoItem a(azwj paramazwj)
   {
-    Iterator localIterator = paramazsa.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = paramazwj.jdField_a_of_type_JavaUtilList.iterator();
     Object localObject1 = null;
     Object localObject2 = null;
     Object localObject3;
     if (localIterator.hasNext())
     {
-      localObject3 = (azsa)localIterator.next();
-      if ("title".equals(((azsa)localObject3).b)) {
+      localObject3 = (azwj)localIterator.next();
+      if ("title".equals(((azwj)localObject3).b)) {
         localObject2 = localObject3;
       }
     }
     for (;;)
     {
       break;
-      if ("video".equals(((azsa)localObject3).b))
+      if ("video".equals(((azwj)localObject3).b))
       {
         localObject1 = localObject3;
         continue;
@@ -45,11 +45,11 @@ public class StructMsgSubImageVideo$VideoItem
           return null;
         }
         localObject3 = new VideoItem();
-        ((VideoItem)localObject3).schema = paramazsa.a("url");
+        ((VideoItem)localObject3).schema = paramazwj.a("url");
         if (localObject2 == null) {}
-        for (paramazsa = "";; paramazsa = localObject2.jdField_a_of_type_JavaLangString)
+        for (paramazwj = "";; paramazwj = localObject2.jdField_a_of_type_JavaLangString)
         {
-          ((VideoItem)localObject3).title = paramazsa;
+          ((VideoItem)localObject3).title = paramazwj;
           ((VideoItem)localObject3).coverUrl = localObject1.a("cover");
           ((VideoItem)localObject3).videoUrl = localObject1.a("url");
           try
@@ -58,9 +58,9 @@ public class StructMsgSubImageVideo$VideoItem
             ((VideoItem)localObject3).height = Integer.parseInt(localObject1.a("height"));
             return localObject3;
           }
-          catch (NumberFormatException paramazsa)
+          catch (NumberFormatException paramazwj)
           {
-            Log.w("StructMsgSubImageVideo", "parseVideoNode: wrong width or height param", paramazsa);
+            Log.w("StructMsgSubImageVideo", "parseVideoNode: wrong width or height param", paramazwj);
             return localObject3;
           }
         }
@@ -78,25 +78,25 @@ public class StructMsgSubImageVideo$VideoItem
     this.height = paramObjectInput.readInt();
   }
   
-  public void toXml(azqi paramazqi)
+  public void toXml(azur paramazur)
   {
-    paramazqi.startTag(null, "item");
-    paramazqi.attribute(null, "apptype", "10");
-    paramazqi.attribute(null, "type", "0");
-    paramazqi.attribute(null, "url", this.schema);
-    paramazqi.startTag(null, "title");
+    paramazur.startTag(null, "item");
+    paramazur.attribute(null, "apptype", "10");
+    paramazur.attribute(null, "type", "0");
+    paramazur.attribute(null, "url", this.schema);
+    paramazur.startTag(null, "title");
     if (this.title == null)
     {
       str = "";
-      paramazqi.text(str);
-      paramazqi.endTag(null, "title");
-      paramazqi.startTag(null, "video");
+      paramazur.text(str);
+      paramazur.endTag(null, "title");
+      paramazur.startTag(null, "video");
       if (this.coverUrl != null) {
         break label173;
       }
       str = "";
       label90:
-      paramazqi.attribute(null, "cover", str);
+      paramazur.attribute(null, "cover", str);
       if (this.videoUrl != null) {
         break label181;
       }
@@ -105,11 +105,11 @@ public class StructMsgSubImageVideo$VideoItem
     label181:
     for (String str = "";; str = this.videoUrl)
     {
-      paramazqi.attribute(null, "url", str);
-      paramazqi.attribute(null, "width", Integer.toString(this.width));
-      paramazqi.attribute(null, "height", Integer.toString(this.height));
-      paramazqi.endTag(null, "video");
-      paramazqi.endTag(null, "item");
+      paramazur.attribute(null, "url", str);
+      paramazur.attribute(null, "width", Integer.toString(this.width));
+      paramazur.attribute(null, "height", Integer.toString(this.height));
+      paramazur.endTag(null, "video");
+      paramazur.endTag(null, "item");
       return;
       str = this.title;
       break;

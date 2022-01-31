@@ -1,6 +1,6 @@
 package com.tencent.open.wadl;
 
-import bfnv;
+import bfse;
 import java.util.Map;
 
 public final class WadlJsBridgeCall$1
@@ -10,7 +10,7 @@ public final class WadlJsBridgeCall$1
   
   public void run()
   {
-    bfnv.a().put(this.a, new Boolean(false));
+    bfse.a().put(this.a, new Boolean(false));
   }
 }
 

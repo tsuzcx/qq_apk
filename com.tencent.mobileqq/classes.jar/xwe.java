@@ -1,27 +1,8 @@
-import android.view.View;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import mqq.app.AppActivity;
-
-class xwe
-  extends xwa
+public abstract interface xwe
 {
-  xwe(xwd paramxwd) {}
+  public abstract void a();
   
-  public void a()
-  {
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.i)
-    {
-      this.a.jdField_a_of_type_Xwj.a();
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e)
-    {
-      this.a.jdField_a_of_type_MqqAppAppActivity.finish();
-      return;
-    }
-    this.a.jdField_a_of_type_Xwj.b();
-  }
+  public abstract boolean a(boolean paramBoolean);
 }
 
 

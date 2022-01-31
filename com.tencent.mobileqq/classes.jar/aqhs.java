@@ -1,54 +1,117 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.widget.BubblePopupWindow;
+import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.os.Handler;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.extendfriend.utils.ExtendFriendVoicePlayer.2;
+import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aqhs
-  implements bera
 {
-  public aqhs(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new aqht(this);
+  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
+  private aqhu jdField_a_of_type_Aqhu;
+  private bdpb jdField_a_of_type_Bdpb;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  public aqhs(aqhu paramaqhu, BaseActivity paramBaseActivity)
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-    }
-    if (!this.a.b())
-    {
-      this.a.jdField_a_of_type_Aqxt.a(null);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-      paramView.setPressed(false);
-    }
-    do
-    {
-      return;
-      paramSlideDetectListView = paramView.findViewById(2131376497);
-      paramView = (FileInfo)this.a.jdField_a_of_type_Aqxt.getItem(paramInt);
-      this.a.jdField_a_of_type_Aqxt.a(paramView);
-    } while (paramSlideDetectListView == null);
-    paramView = (Button)paramSlideDetectListView.findViewById(2131365058);
-    paramView.setTag(Integer.valueOf(paramInt));
-    paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-    ((ShaderAnimLayout)paramSlideDetectListView).a();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaDim(paramSlideDetectListView.getLayoutParams().width, paramSlideDetectListView.getLayoutParams().height);
+    this.jdField_a_of_type_Aqhu = paramaqhu;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("audio"));
   }
   
-  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  public void a()
   {
-    paramSlideDetectListView = paramView.findViewById(2131376497);
-    this.a.jdField_a_of_type_Aqxt.a(null);
-    if (paramSlideDetectListView != null)
+    try
     {
-      ((ShaderAnimLayout)paramSlideDetectListView).e();
-      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131365058);
-      paramSlideDetectListView.setTag(null);
-      paramSlideDetectListView.setOnClickListener(null);
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_Bdpb != null)
+        {
+          this.jdField_a_of_type_Bdpb.f();
+          this.jdField_a_of_type_Bdpb = null;
+        }
+        b();
+        return;
+      }
+      return;
     }
-    LocalFileBrowserActivity.a(this.a);
+    catch (Exception localException)
+    {
+      QLog.e("ExtendFriendVoicePlayer", 1, "stop e=" + localException);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (!a(paramString)) {
+      ThreadManager.executeOnFileThread(new ExtendFriendVoicePlayer.2(this, paramString));
+    }
+  }
+  
+  public boolean a(String arg1)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
+      QLog.e("ExtendFriendVoicePlayer", 2, "playLocal file but activity isFinish");
+    }
+    String str;
+    for (;;)
+    {
+      return false;
+      str = ???;
+      try
+      {
+        if (!arso.a(???))
+        {
+          str = barl.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin(), MD5.toMD5(???), 23, null);
+          File localFile = new File(str);
+          if ((!localFile.exists()) || (localFile.length() <= 0L))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e("ExtendFriendVoicePlayer", 2, String.format("playLocal file not exist : %s", new Object[] { ??? }));
+            return false;
+          }
+        }
+      }
+      catch (Exception ???)
+      {
+        QLog.e("ExtendFriendVoicePlayer", 1, "playLocal", ???);
+        return false;
+      }
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Bdpb != null)
+      {
+        this.jdField_a_of_type_Bdpb.f();
+        this.jdField_a_of_type_Bdpb = null;
+      }
+      this.jdField_a_of_type_Bdpb = new bdpb(str, new Handler(), 1);
+      this.jdField_a_of_type_Bdpb.b();
+      this.jdField_a_of_type_Bdpb.a(this.jdField_a_of_type_Aqhu);
+      this.jdField_a_of_type_Bdpb.c();
+      if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
+        this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2);
+      }
+      return true;
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendVoicePlayer", 2, "abandonAudioFocus");
+    }
+    if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
+      this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
+    }
   }
 }
 

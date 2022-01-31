@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afqr;
-import afrf;
-import apnf;
-import aptm;
+import afvg;
+import afvu;
+import apro;
+import apxv;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import mqq.os.MqqHandler;
@@ -11,11 +11,11 @@ import mqq.os.MqqHandler;
 public class MarketFaceItemBuilder$10
   implements Runnable
 {
-  public MarketFaceItemBuilder$10(afqr paramafqr, afrf paramafrf, ChatMessage paramChatMessage) {}
+  public MarketFaceItemBuilder$10(afvg paramafvg, afvu paramafvu, ChatMessage paramChatMessage) {}
   
   public void run()
   {
-    boolean bool = this.this$0.a.a(this.jdField_a_of_type_Afrf.a.a, 8);
+    boolean bool = this.this$0.a.a(this.jdField_a_of_type_Afvu.a.a, 8);
     ThreadManager.getUIHandler().post(new MarketFaceItemBuilder.10.1(this, bool));
   }
 }

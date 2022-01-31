@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import armz;
+import arri;
 
 class SecurityPickproofActivity$2
   implements Runnable
@@ -13,7 +13,7 @@ class SecurityPickproofActivity$2
   public void run()
   {
     SecurityPickproofActivity.a(this.this$0, false);
-    armz.a(2131694829);
+    arri.a(2131694831);
     SecurityPickproofActivity.a(this.this$0).setText(SecurityPickproofActivity.a(this.this$0));
     SecurityPickproofActivity.b(this.this$0).setVisibility(0);
     SecurityPickproofActivity.a(this.this$0).setVisibility(0);

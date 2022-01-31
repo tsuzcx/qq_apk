@@ -1,76 +1,97 @@
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
-import com.tencent.biz.huiyin.ILiveProto.iLiveResponse;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
-import com.tencent.mobileqq.intervideo.huiyin.HuiyinUtilsImpl.3.1.1;
-import com.tencent.mobileqq.intervideo.huiyin.proto.FalcoLoginProto.LoginCheckRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import android.widget.Toast;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.observer.BusinessObserver;
+import java.lang.ref.WeakReference;
+import tencent.im.c2s.imax.IMaxService.RspBody;
 
 public class asyb
-  implements BusinessObserver
+  extends mzz
 {
-  asyb(asya paramasya) {}
+  int jdField_a_of_type_Int = 0;
+  nlo jdField_a_of_type_Nlo;
+  WeakReference<QQAppInterface> c;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public asyb(asya paramasya, int paramInt)
   {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public asyb(asya paramasya, nlo paramnlo, QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_Nlo = paramnlo;
+    this.c = new WeakReference(paramQQAppInterface);
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    paramBundle = new IMaxService.RspBody();
     if (QLog.isColorLevel()) {
-      QLog.i("huiyin", 2, "login rsp " + paramBoolean);
+      QLog.i("ImaxAdNetPresenter", 2, "errorCode == " + paramInt);
     }
-    Object localObject;
-    if (paramBoolean)
+    if (paramInt == 0)
     {
-      localObject = paramBundle.getByteArray("data");
-      paramBundle = new ILiveProto.iLiveResponse();
       try
       {
-        paramBundle.mergeFrom((byte[])localObject);
-        localObject = new FalcoLoginProto.LoginCheckRsp();
-        ((FalcoLoginProto.LoginCheckRsp)localObject).mergeFrom(paramBundle.ex.get().toByteArray());
-        this.a.a.jdField_a_of_type_Long = ((FalcoLoginProto.LoginCheckRsp)localObject).tinyid.get();
-        this.a.a.jdField_a_of_type_JavaLangString = ((FalcoLoginProto.LoginCheckRsp)localObject).a2_key.get();
-        this.a.a.jdField_b_of_type_JavaLangString = ((FalcoLoginProto.LoginCheckRsp)localObject).user_sig.get();
-        this.a.a.jdField_a_of_type_Boolean = ((FalcoLoginProto.LoginCheckRsp)localObject).is_not_registered.get();
-        this.a.a.jdField_a_of_type_ArrayOfByte = ((FalcoLoginProto.LoginCheckRsp)localObject).ex.get().toByteArray();
-        this.a.a.jdField_b_of_type_Boolean = false;
-        asxy.a(this.a.a).opType("huiyin").opName("loginresult").d1(String.valueOf(this.a.a.jdField_a_of_type_Long)).d2(String.valueOf(this.a.a.jdField_a_of_type_Boolean)).report();
-        Log.i("huiyin.login", "login ok " + this.a.a.jdField_a_of_type_Long + ", " + this.a.a.jdField_b_of_type_JavaLangString);
-        paramBundle = this.a.a.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramBundle.hasNext()) {
-          ((asyf)paramBundle.next()).a();
+        if (QLog.isColorLevel()) {
+          QLog.i("ImaxAdNetPresenter", 2, "request service success");
         }
-        this.a.a.jdField_a_of_type_JavaUtilList.clear();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if ((!paramBundle.has()) || (paramBundle.int32_ret.get() != 0)) {
+          return;
+        }
+        paramInt = paramBundle.int32_type.get();
+        if ((paramInt == 2) && (this.jdField_a_of_type_Int == 3))
+        {
+          Toast.makeText(BaseApplication.getContext(), alud.a(2131706132), 0).show();
+          return;
+        }
+        if (paramInt != 1) {
+          return;
+        }
+        if (paramBundle.int32_exposure_flag.get() != 1) {
+          break label264;
+        }
+        paramArrayOfByte = (QQAppInterface)this.c.get();
+        if (paramArrayOfByte == null)
+        {
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          QLog.d("ImaxAdNetPresenter", 2, "request EXPOSURE succ ,but app == null");
+          return;
+        }
       }
-      catch (InvalidProtocolBufferMicroException paramBundle)
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        paramBundle.printStackTrace();
+        paramArrayOfByte.printStackTrace();
         return;
       }
-      new Handler(Looper.getMainLooper()).postDelayed(new HuiyinUtilsImpl.3.1.1(this), 7200000L);
-      return;
-    }
-    if (paramBundle.containsKey("data_error_msg"))
-    {
-      localObject = paramBundle.getString("data_error_msg");
-      IVPluginDataReporter localIVPluginDataReporter = asxy.a(this.a.a).opType("huiyin").opName("login_fail");
-      paramBundle = (Bundle)localObject;
-      if (localObject == null) {
-        paramBundle = "null";
+      nlx.a().a(paramArrayOfByte, 1, this.jdField_a_of_type_Nlo);
+      this.jdField_a_of_type_Nlo.jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ImaxAdNetPresenter", 2, "do exposure Report");
       }
-      localIVPluginDataReporter.d1(paramBundle).report();
+      this.jdField_a_of_type_Asya.a(this.jdField_a_of_type_Nlo);
+      azqs.a(paramArrayOfByte, "dc00898", "", this.jdField_a_of_type_Nlo.jdField_a_of_type_Nlq.a, "0X8009129", "0X8009129", 0, 0, this.jdField_a_of_type_Nlo.jdField_a_of_type_Nlq.c, "", nmh.a(), this.jdField_a_of_type_Nlo.jdField_a_of_type_Nlq.b);
       return;
+      label264:
+      if (QLog.isColorLevel()) {
+        QLog.d("ImaxAdNetPresenter", 2, "exposure already limited");
+      }
     }
-    asxy.a(this.a.a).opType("huiyin").opName("login_fail").report();
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ImaxAdNetPresenter", 2, "request service fail");
+      }
+      if (this.jdField_a_of_type_Int == 3) {
+        Toast.makeText(BaseApplication.getContext(), alud.a(2131706131), 0).show();
+      }
+    }
   }
 }
 

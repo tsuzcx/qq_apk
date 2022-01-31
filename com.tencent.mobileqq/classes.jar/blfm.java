@@ -1,8 +1,25 @@
-public abstract interface blfm
+import android.support.annotation.Nullable;
+import android.view.View;
+
+class blfm
+  implements bmeo<Boolean>
 {
-  public abstract void a(int paramInt);
+  blfm(blfj paramblfj) {}
   
-  public abstract boolean a(int paramInt);
+  public void a(@Nullable Boolean paramBoolean)
+  {
+    if (paramBoolean == null) {}
+    while (!blfj.b(this.a)) {
+      return;
+    }
+    View localView = blfj.a(this.a);
+    if ((paramBoolean.booleanValue()) && (blfj.b(this.a))) {}
+    for (int i = 0;; i = 4)
+    {
+      localView.setVisibility(i);
+      return;
+    }
+  }
 }
 
 

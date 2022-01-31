@@ -1,19 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-public final class auyv
-  implements Parcelable.Creator<VideoData>
+public class auyv
 {
-  public VideoData a(Parcel paramParcel)
-  {
-    return new VideoData(paramParcel);
-  }
+  public String a;
+  public boolean a;
   
-  public VideoData[] a(int paramInt)
-  {
-    return new VideoData[paramInt];
-  }
+  auyv(GameRoomInviteActivity paramGameRoomInviteActivity) {}
 }
 
 

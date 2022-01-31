@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
-import aoka;
-import aokb;
+import aooj;
+import aook;
 import com.tencent.qqmini.sdk.core.proxy.WnsConfigProxy;
 import common.config.service.QzoneConfig;
 import java.util.List;
@@ -11,9 +11,9 @@ public class WnsConfigProxyImpl
 {
   public List<String> getApiReportConfig()
   {
-    aoka localaoka = aokb.a();
-    if (localaoka != null) {
-      return localaoka.a();
+    aooj localaooj = aook.a();
+    if (localaooj != null) {
+      return localaooj.a();
     }
     return null;
   }

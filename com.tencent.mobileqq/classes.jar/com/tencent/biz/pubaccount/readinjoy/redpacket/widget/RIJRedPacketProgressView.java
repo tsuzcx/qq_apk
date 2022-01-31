@@ -19,8 +19,8 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcwh;
-import bdee;
+import bdaq;
+import bdin;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.presseffect.PressEffectRelativeLayout;
@@ -61,17 +61,17 @@ public class RIJRedPacketProgressView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848861);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848934);
     this.jdField_b_of_type_AndroidWidgetImageView.setScaleX(0.0F);
     this.jdField_b_of_type_AndroidWidgetImageView.setScaleY(0.0F);
-    paramAttributeSet = new RelativeLayout.LayoutParams(bcwh.a(paramContext, 27.0F), bcwh.a(paramContext, 27.0F));
+    paramAttributeSet = new RelativeLayout.LayoutParams(bdaq.a(paramContext, 27.0F), bdaq.a(paramContext, 27.0F));
     paramAttributeSet.addRule(14);
     addView(this.jdField_b_of_type_AndroidWidgetImageView, paramAttributeSet);
     this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130848860);
+    this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130848933);
     this.jdField_c_of_type_AndroidWidgetImageView.setScaleX(0.0F);
     this.jdField_c_of_type_AndroidWidgetImageView.setScaleY(0.0F);
-    paramAttributeSet = new RelativeLayout.LayoutParams(bcwh.a(paramContext, 27.0F), bcwh.a(paramContext, 27.0F));
+    paramAttributeSet = new RelativeLayout.LayoutParams(bdaq.a(paramContext, 27.0F), bdaq.a(paramContext, 27.0F));
     paramAttributeSet.addRule(13);
     paramAttributeSet.bottomMargin = 1;
     addView(this.jdField_c_of_type_AndroidWidgetImageView, paramAttributeSet);
@@ -83,7 +83,7 @@ public class RIJRedPacketProgressView
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressBar, paramAttributeSet);
     startViewTransition(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressBar);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848864);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848937);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     paramAttributeSet = new RelativeLayout.LayoutParams(-2, -2);
     paramAttributeSet.addRule(13);
@@ -92,11 +92,11 @@ public class RIJRedPacketProgressView
     this.jdField_a_of_type_AndroidWidgetTextView.setScaleX(0.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setScaleY(0.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_Int + "/" + this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130848863);
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130848936);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 9.0F);
-    paramContext = new RelativeLayout.LayoutParams(bcwh.a(paramContext, 21.0F), bcwh.a(paramContext, 21.0F));
+    paramContext = new RelativeLayout.LayoutParams(bdaq.a(paramContext, 21.0F), bdaq.a(paramContext, 21.0F));
     paramContext.addRule(13);
     addView(this.jdField_a_of_type_AndroidWidgetTextView, paramContext);
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
@@ -133,7 +133,7 @@ public class RIJRedPacketProgressView
       i = 3;
       localorz1 = new orz();
       localorz2 = localorz1.a("icon_position", Integer.valueOf(paramInt)).a("icon_status", Integer.valueOf(i));
-      if (!bdee.h(BaseApplicationImpl.getContext())) {
+      if (!bdin.h(BaseApplicationImpl.getContext())) {
         break label136;
       }
     }
@@ -185,10 +185,10 @@ public class RIJRedPacketProgressView
     this.jdField_a_of_type_Qhi.a(paramString, paramInt1, paramInt2);
     if (paramInt3 == 1)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848861);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848934);
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848862);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848935);
   }
   
   public void b()
@@ -235,7 +235,7 @@ public class RIJRedPacketProgressView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    setMeasuredDimension(bcwh.a(getContext(), 27.0F), bcwh.a(getContext(), 27.0F));
+    setMeasuredDimension(bdaq.a(getContext(), 27.0F), bdaq.a(getContext(), 27.0F));
   }
   
   @SuppressLint({"SetTextI18n"})

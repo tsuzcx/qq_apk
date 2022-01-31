@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agot;
-import agpr;
-import alne;
-import alpo;
-import awbw;
-import awbx;
-import bfua;
+import agti;
+import agug;
+import alrt;
+import alud;
+import awgf;
+import awgg;
+import bfyh;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EqqDetail;
@@ -22,13 +22,13 @@ import java.util.List;
 public class PublicAccountChatPie$35$1
   implements Runnable
 {
-  public PublicAccountChatPie$35$1(agpr paramagpr) {}
+  public PublicAccountChatPie$35$1(agug paramagug) {}
   
   public void run()
   {
     Object localObject = this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    EqqDetail localEqqDetail = (EqqDetail)((awbw)localObject).a(EqqDetail.class, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    ((awbw)localObject).a();
+    EqqDetail localEqqDetail = (EqqDetail)((awgf)localObject).a(EqqDetail.class, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    ((awgf)localObject).a();
     if (localEqqDetail == null) {
       return;
     }
@@ -46,14 +46,14 @@ public class PublicAccountChatPie$35$1
         while (localIterator2.hasNext())
         {
           mobileqq_mp.ConfigInfo localConfigInfo = (mobileqq_mp.ConfigInfo)localIterator2.next();
-          if (localConfigInfo.title.get().equals(alpo.a(2131709138))) {
+          if (localConfigInfo.title.get().equals(alud.a(2131709150))) {
             localConfigInfo.state.set(1);
           }
         }
       }
       localEqqDetail.accountData = ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).toByteArray();
-      ((alne)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(69)).a(localEqqDetail);
-      this.a.a.jdField_a_of_type_Bfua.a(true);
+      ((alrt)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(69)).a(localEqqDetail);
+      this.a.a.jdField_a_of_type_Bfyh.a(true);
       return;
     }
     catch (Exception localException) {}

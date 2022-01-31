@@ -1,319 +1,148 @@
-import android.annotation.TargetApi;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.io.File;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
-@TargetApi(14)
 public class ujb
+  implements urr<ujd, uje>
 {
-  protected static uhb<String, ujc> a = new uhb(200);
+  private long jdField_a_of_type_Long;
+  private ErrorMessage jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
+  private HashMap<String, uiy> jdField_a_of_type_JavaUtilHashMap;
+  private List<ujd> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private ujc jdField_a_of_type_Ujc;
+  private HashMap<String, AddressItem> b = new HashMap();
   
-  public static File a(String paramString, int paramInt)
+  private void b()
   {
-    Object localObject2 = null;
-    QQStoryContext.a();
-    paramString = xlh.a(QQStoryContext.a(), paramString);
-    if ((paramString instanceof MessageForShortVideo)) {}
-    for (paramString = (MessageForShortVideo)paramString;; paramString = null)
+    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
     {
-      Object localObject1 = localObject2;
-      if (paramString != null)
-      {
-        if (paramInt != 0) {
-          break label74;
-        }
-        paramString = ShortVideoUtils.a(paramString, "mp4");
+      wxe.d("Q.qqstory.recommendAlbum.logic.BatchGetPoiListHandler", "handleResult. all request has finish timecost=%s, errorInfo=%s", new Object[] { Long.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage });
+      if (this.jdField_a_of_type_Ujc != null) {
+        this.jdField_a_of_type_Ujc.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage, this.b);
       }
-      for (;;)
+    }
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.size() == 0))
+    {
+      if (this.jdField_a_of_type_Ujc != null) {
+        this.jdField_a_of_type_Ujc.a(new ErrorMessage(-1, "BatchGetPoiListHandler no photo"), null);
+      }
+      return;
+    }
+    try
+    {
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      List localList1 = uio.a(this.jdField_a_of_type_JavaUtilHashMap);
+      if (localList1.size() == 0)
       {
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(paramString))
+        if (this.jdField_a_of_type_Ujc != null) {
+          this.jdField_a_of_type_Ujc.a(new ErrorMessage(-1, "BatchGetPoiListHandler gps error"), null);
+        }
+        return;
+      }
+    }
+    finally {}
+    int j = localObject.size() / 100;
+    int i = j;
+    if (localObject.size() % 100 > 0) {
+      i = j + 1;
+    }
+    for (;;)
+    {
+      if (j < i)
+      {
+        int m = j * 100;
+        if (m + 100 <= localObject.size()) {}
+        for (int k = m + 100;; k = localObject.size())
         {
-          paramString = new File(paramString);
-          localObject1 = localObject2;
-          if (paramString.exists()) {
-            localObject1 = paramString;
-          }
-        }
-        return localObject1;
-        label74:
-        if (paramInt == 2) {
-          paramString = ShortVideoUtils.a(paramString.thumbMD5, "jpg");
-        } else {
-          paramString = null;
+          wxe.d("Q.qqstory.recommendAlbum.logic.BatchGetPoiListHandler", "send last batch length=%d", new Object[] { Integer.valueOf(k - m) });
+          List localList2 = localObject.subList(m, k);
+          ujd localujd = new ujd();
+          localujd.a(localList2);
+          this.jdField_a_of_type_JavaUtilList.add(localujd);
+          urp.a().a(localujd, this);
+          j += 1;
+          break;
         }
       }
+      wxe.d("Q.qqstory.recommendAlbum.logic.BatchGetPoiListHandler", "sendRequest total=%d, batch count=%d", new Object[] { Integer.valueOf(localObject.size()), Integer.valueOf(i) });
+      return;
+      j = 0;
     }
   }
   
-  public static File a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(@NonNull HashMap<String, uiy> paramHashMap)
   {
-    StoryVideoItem localStoryVideoItem = ((uro)urr.a(5)).a(paramString);
-    if ((localStoryVideoItem != null) && (localStoryVideoItem.isMine())) {}
-    for (Object localObject = a(paramString, localStoryVideoItem.mCreateTime, paramInt, false, paramBoolean2);; localObject = a(paramString, paramInt, false, paramBoolean2))
-    {
-      File localFile = new File((String)localObject);
-      if (!localFile.exists()) {
-        break;
-      }
-      if (localStoryVideoItem != null) {
-        a(localStoryVideoItem, (String)localObject, paramInt);
-      }
-      return localFile;
-    }
-    if (localStoryVideoItem != null) {
-      switch (paramInt)
-      {
-      }
-    }
-    while ((xlh.a(paramString)) && (a(paramString, paramInt) != null))
-    {
-      return a(paramString, paramInt);
-      if (!TextUtils.isEmpty(localStoryVideoItem.mLocalVideoPath))
-      {
-        localObject = new File(localStoryVideoItem.mLocalVideoPath);
-        if (((File)localObject).exists())
-        {
-          return localObject;
-          if (!TextUtils.isEmpty(localStoryVideoItem.mVideoLocalThumbnailPath))
-          {
-            localObject = new File(localStoryVideoItem.mVideoLocalThumbnailPath);
-            if (((File)localObject).exists())
-            {
-              return localObject;
-              if (!TextUtils.isEmpty(localStoryVideoItem.mLocalMaskPath))
-              {
-                localObject = new File(localStoryVideoItem.mLocalMaskPath);
-                if (((File)localObject).exists()) {
-                  return localObject;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    if (paramBoolean1)
-    {
-      if ((localStoryVideoItem != null) && (localStoryVideoItem.isMine())) {}
-      for (paramString = a(paramString, localStoryVideoItem.mCreateTime, paramInt, true, paramBoolean2);; paramString = a(paramString, paramInt, true, paramBoolean2)) {
-        return new File(paramString);
-      }
-    }
-    return null;
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
   }
   
-  protected static String a(int paramInt)
+  public void a(ujc paramujc)
   {
-    switch (paramInt)
-    {
-    case 4: 
-    default: 
-      return ".file";
-    case 0: 
-      return ".mp4";
-    case 3: 
-      return ".png";
-    case 2: 
-      return "thumb.jpeg";
-    case 1: 
-      return "mask.png";
-    }
-    return "at.png";
+    this.jdField_a_of_type_Ujc = paramujc;
   }
   
-  public static String a(File paramFile)
-  {
-    if (paramFile.exists())
-    {
-      String str3 = paramFile.getParentFile().getAbsolutePath();
-      String str2 = paramFile.getName();
-      String str1;
-      if (str2.endsWith(".tmp")) {
-        str1 = str2.substring(0, str2.length() - ".tmp".length());
-      }
-      for (;;)
-      {
-        str1 = str3 + "/" + str1;
-        paramFile.renameTo(new File(str1));
-        return str1;
-        str1 = str2;
-        if (str2.endsWith(".stmp")) {
-          str1 = str2.substring(0, str2.length() - ".stmp".length());
-        }
-      }
-    }
-    return "";
-  }
-  
-  public static String a(String paramString)
+  public void a(@NonNull ujd paramujd, @Nullable uje paramuje, @NonNull ErrorMessage paramErrorMessage)
   {
     try
     {
-      paramString = a(MessageDigest.getInstance("MD5").digest(paramString.getBytes()));
-      return paramString;
-    }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      throw new IllegalStateException(paramString);
-    }
-  }
-  
-  public static String a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    return ugx.h + a(paramString, false, 0L) + "/" + b(paramString, paramInt, paramBoolean1, paramBoolean2);
-  }
-  
-  public static String a(String paramString, long paramLong, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (xlh.a(paramString)) {}
-    for (String str = ugx.h;; str = ugx.i) {
-      return str + a(paramString, true, paramLong) + "/" + b(paramString, paramLong, paramInt, paramBoolean1, paramBoolean2);
-    }
-  }
-  
-  public static String a(String paramString, boolean paramBoolean, long paramLong)
-  {
-    if (xlh.a(paramString)) {
-      localObject = StoryVideoItem.getCacheKey(paramString);
-    }
-    String str;
-    do
-    {
-      return localObject;
-      if (paramBoolean) {
-        return String.valueOf(paramLong);
-      }
-      str = b(paramString);
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    Object localObject = a(paramString);
-    a(paramString, (String)localObject);
-    return localObject;
-  }
-  
-  private static String a(byte[] paramArrayOfByte)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    int j = paramArrayOfByte.length;
-    int i = 0;
-    while (i < j)
-    {
-      localStringBuffer.append(String.format("%02x", new Object[] { Byte.valueOf(paramArrayOfByte[i]) }));
-      i += 1;
-    }
-    return localStringBuffer.toString();
-  }
-  
-  public static void a(StoryVideoItem paramStoryVideoItem, String paramString, int paramInt)
-  {
-    a(paramStoryVideoItem, paramString, paramInt, "");
-  }
-  
-  public static void a(StoryVideoItem paramStoryVideoItem, String paramString1, int paramInt, String paramString2)
-  {
-    uro localuro = (uro)urr.a(5);
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
+      this.jdField_a_of_type_JavaUtilList.remove(paramujd);
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null) && (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
       {
-        do
-        {
-          return;
-        } while (TextUtils.equals(paramStoryVideoItem.mLocalVideoPath, paramString1));
-        paramStoryVideoItem.mLocalVideoPath = paramString1;
-        if (!TextUtils.isEmpty(paramString2)) {
-          paramStoryVideoItem.mDownloadNetType = paramString2;
-        }
-        localuro.a(paramStoryVideoItem.mVid, paramStoryVideoItem);
+        b();
         return;
-      } while (TextUtils.equals(paramStoryVideoItem.mVideoLocalThumbnailPath, paramString1));
-      paramStoryVideoItem.mVideoLocalThumbnailPath = paramString1;
-      if (!TextUtils.isEmpty(paramString2)) {
-        paramStoryVideoItem.mDownloadNetType = paramString2;
       }
-      localuro.a(paramStoryVideoItem.mVid, paramStoryVideoItem);
-      return;
-    } while (TextUtils.equals(paramStoryVideoItem.mLocalMaskPath, paramString1));
-    paramStoryVideoItem.mLocalMaskPath = paramString1;
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramStoryVideoItem.mDownloadNetType = paramString2;
-    }
-    localuro.a(paramStoryVideoItem.mVid, paramStoryVideoItem);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    ujc localujc = new ujc();
-    localujc.a = paramString2;
-    a.a(paramString1, localujc);
-  }
-  
-  public static boolean a(File paramFile)
-  {
-    if (!paramFile.exists()) {}
-    while ((paramFile.getName().endsWith(".tmp")) || (paramFile.getName().endsWith(".stmp"))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static String b(String paramString)
-  {
-    paramString = (ujc)a.a(paramString);
-    if (paramString != null) {
-      return paramString.a;
-    }
-    return null;
-  }
-  
-  public static String b(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    String str = a(paramInt);
-    if (TextUtils.isEmpty(str)) {}
-    for (paramString = a(paramString, false, 0L);; paramString = a(paramString, false, 0L) + str)
-    {
-      str = paramString;
-      if (paramBoolean1)
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      if ((paramuje == null) || (paramErrorMessage.isFail()))
       {
-        if (!paramBoolean2) {
-          break;
-        }
-        str = paramString + ".stmp";
+        b();
+        return;
       }
-      return str;
     }
-    return paramString + ".tmp";
-  }
-  
-  public static String b(String paramString, long paramLong, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    String str2 = a(paramInt);
-    String str1 = a(paramString, true, paramLong);
-    paramString = str1;
-    if (!TextUtils.isEmpty(str2)) {
-      paramString = str1 + str2;
-    }
-    str1 = paramString;
-    if (paramBoolean1)
+    finally {}
+    paramErrorMessage = new HashMap(this.jdField_a_of_type_JavaUtilHashMap.size());
+    if (paramuje.jdField_a_of_type_JavaUtilList.size() > 0)
     {
-      if (paramBoolean2) {
-        str1 = paramString + ".stmp";
+      Iterator localIterator1 = paramuje.jdField_a_of_type_JavaUtilList.iterator();
+      for (;;)
+      {
+        if (!localIterator1.hasNext()) {
+          break label234;
+        }
+        AddressItem localAddressItem = (AddressItem)localIterator1.next();
+        Iterator localIterator2 = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+        if (localIterator2.hasNext())
+        {
+          uiy localuiy = (uiy)((Map.Entry)localIterator2.next()).getValue();
+          if (localuiy.jdField_a_of_type_Uke == null) {
+            break;
+          }
+          qqstory_struct.GpsMsg localGpsMsg = localuiy.jdField_a_of_type_Uke.a();
+          if ((localGpsMsg.lat.get() != localAddressItem.latitude) || (localGpsMsg.lng.get() != localAddressItem.longitude)) {
+            break;
+          }
+          paramErrorMessage.put(localuiy.jdField_a_of_type_JavaLangString, localAddressItem);
+        }
       }
     }
-    else {
-      return str1;
+    label234:
+    if (paramuje.jdField_a_of_type_JavaUtilList.size() != paramujd.a()) {
+      wxe.e("Q.qqstory.recommendAlbum.logic.BatchGetPoiListHandler", "handle poi request. request length=%d, rsp length=%d", new Object[] { Integer.valueOf(paramujd.a()), Integer.valueOf(paramuje.jdField_a_of_type_JavaUtilList.size()) });
     }
-    return paramString + ".tmp";
+    this.b.putAll(paramErrorMessage);
+    b();
   }
 }
 

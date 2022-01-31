@@ -1,6 +1,6 @@
-public abstract interface apse
+public abstract class apse
 {
-  public abstract void a(int paramInt);
+  public void a(int paramInt) {}
 }
 
 

@@ -1,13 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-
-public class bbvn
-  implements DialogInterface.OnClickListener
+public abstract interface bbvn
 {
-  public bbvn(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public abstract void c(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract int d();
+  
+  public abstract void d(int paramInt);
+  
+  public abstract int e();
 }
 
 

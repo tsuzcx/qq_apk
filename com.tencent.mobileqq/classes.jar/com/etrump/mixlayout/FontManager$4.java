@@ -1,6 +1,6 @@
 package com.etrump.mixlayout;
 
-import aloz;
+import alto;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import fx;
@@ -12,7 +12,7 @@ public class FontManager$4
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((aloz)this.this$0.a.getManager(51)).a(this.jdField_a_of_type_JavaLangString);
+    ExtensionInfo localExtensionInfo = ((alto)this.this$0.a.getManager(51)).a(this.jdField_a_of_type_JavaLangString);
     fx.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, localExtensionInfo, this.jdField_a_of_type_Int, this.b);
   }
 }

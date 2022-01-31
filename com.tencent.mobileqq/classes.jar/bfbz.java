@@ -1,10 +1,18 @@
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityActivity;
+import org.json.JSONObject;
 
-public abstract interface bfbz
+public class bfbz
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(Intent paramIntent);
+  public bfbz(AuthorityActivity paramAuthorityActivity, int paramInt, JSONObject paramJSONObject) {}
   
-  public abstract void a(bfdl parambfdl);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+  }
 }
 
 

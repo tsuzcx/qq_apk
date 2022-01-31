@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.app.Activity;
-import becq;
+import begz;
 import com.tencent.common.app.AppInterface;
 import java.util.HashMap;
 import ndd;

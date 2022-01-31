@@ -1,71 +1,34 @@
-import android.graphics.PointF;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
-
 public class xbv
-  implements wzr
 {
-  public xbv(DoodleEditView paramDoodleEditView) {}
+  public int a;
+  public long a;
+  public boolean a;
   
-  public void a(xeh paramxeh)
+  public boolean equals(Object paramObject)
   {
-    if ((paramxeh instanceof wzu))
-    {
-      paramxeh = (wzs)DoodleEditView.a(this.a).a("TextLayer");
-      if (paramxeh != null) {
-        paramxeh.a();
-      }
-    }
-    this.a.a.b();
-  }
-  
-  public void a(xeh paramxeh, int paramInt1, int paramInt2)
-  {
-    if ((paramxeh instanceof wzu))
-    {
-      wsv.b("DoodleEditView", "click the TextItem:" + paramxeh);
-      paramxeh = (wzs)DoodleEditView.a(this.a).a("TextLayer");
-      this.a.a.b();
-      if ((paramxeh != null) && (paramxeh.a != null))
-      {
-        paramxeh.d();
-        paramxeh.a.a();
-      }
-    }
-    wze localwze;
+    if (this == paramObject) {}
     do
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (!(paramxeh instanceof wzi));
-        wsv.b("DoodleEditView", "click the FaceAndTextItem:" + paramxeh);
-        paramxeh.d = false;
-        localwze = (wze)DoodleEditView.a(this.a).a("FaceLayer");
-        wzi localwzi = (wzi)paramxeh;
-        if (localwze != null) {
-          localwze.jdField_a_of_type_JavaUtilList.add(localwzi);
-        }
-        this.a.a.b();
-        this.a.setVisibility(8);
-      } while (DoodleEditView.a(this.a) == null);
-      if (!(paramxeh instanceof wzf)) {
-        break;
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-    } while ((localwze == null) || (localwze.jdField_a_of_type_Wzl == null));
-    localwze.jdField_a_of_type_Wzl.a((wzf)paramxeh);
-    return;
-    DoodleEditView.a(this.a).a(paramxeh);
+      paramObject = (xbv)paramObject;
+      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+        return false;
+      }
+    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
+    return false;
   }
   
-  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3)
+  public int hashCode()
   {
-    if (DoodleEditView.a(this.a) != null) {
-      DoodleEditView.a(this.a).a(paramBoolean1, paramFloat, paramInt1, paramInt2, paramPointF, paramBoolean2, paramInt3);
-    }
+    return this.jdField_a_of_type_Int * 31 + (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32);
+  }
+  
+  public String toString()
+  {
+    return "EditBehavior{hasMusic=" + this.jdField_a_of_type_Boolean + ", musicType=" + this.jdField_a_of_type_Int + ", musicId=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

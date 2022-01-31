@@ -1,17 +1,38 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class ajey
-  extends ajfh
+final class ajey
+  implements View.OnTouchListener
 {
-  public ImageView a;
-  public DragTextView a;
-  public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
-  public ImageView b;
-  public SingleLineTextView b;
+  private float b = 1.0F;
+  
+  ajey(float paramFloat) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.b = paramView.getAlpha();
+      paramView.setAlpha(this.a);
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      {
+        paramView.setAlpha(this.b);
+      }
+      else if (paramMotionEvent.getAction() == 2)
+      {
+        int i = (int)paramMotionEvent.getRawX();
+        int j = (int)paramMotionEvent.getRawY();
+        if (!ajeu.a(paramView, i, j)) {
+          paramView.setAlpha(1.0F);
+        }
+      }
+    }
+  }
 }
 
 

@@ -1,24 +1,24 @@
 package com.tencent.biz.troopgift;
 
 import android.widget.TextView;
-import yrr;
+import ywg;
 
 public class TroopGiftPanel$9$1
   implements Runnable
 {
-  public TroopGiftPanel$9$1(yrr paramyrr, int paramInt1, int paramInt2) {}
+  public TroopGiftPanel$9$1(ywg paramywg, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Yrr.a.b.setText(this.jdField_a_of_type_Int + "");
+    this.jdField_a_of_type_Ywg.a.b.setText(this.jdField_a_of_type_Int + "");
     if (this.b > 0)
     {
-      this.jdField_a_of_type_Yrr.a.c.setText("+" + this.b);
-      this.jdField_a_of_type_Yrr.a.c.setVisibility(0);
+      this.jdField_a_of_type_Ywg.a.c.setText("+" + this.b);
+      this.jdField_a_of_type_Ywg.a.c.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_Yrr.a.c.setText("");
-    this.jdField_a_of_type_Yrr.a.c.setVisibility(8);
+    this.jdField_a_of_type_Ywg.a.c.setText("");
+    this.jdField_a_of_type_Ywg.a.c.setVisibility(8);
   }
 }
 

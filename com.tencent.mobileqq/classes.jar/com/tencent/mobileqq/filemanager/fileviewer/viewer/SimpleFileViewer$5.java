@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
-import arca;
-import arcg;
+import argj;
+import argp;
 
 class SimpleFileViewer$5
   implements Runnable
 {
-  SimpleFileViewer$5(SimpleFileViewer paramSimpleFileViewer, String paramString, arcg paramarcg) {}
+  SimpleFileViewer$5(SimpleFileViewer paramSimpleFileViewer, String paramString, argp paramargp) {}
   
   public void run()
   {
-    arca localarca = arca.a();
-    SimpleFileViewer.a(this.this$0, localarca.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Arcg));
+    argj localargj = argj.a();
+    SimpleFileViewer.a(this.this$0, localargj.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Argp));
     SimpleFileViewer.a(this.this$0, null, SimpleFileViewer.a(this.this$0), true);
     SimpleFileViewer.a(this.this$0);
   }

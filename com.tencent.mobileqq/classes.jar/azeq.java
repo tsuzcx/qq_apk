@@ -1,12 +1,14 @@
-class azeq
+import java.util.ArrayList;
+
+public abstract interface azeq
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  boolean jdField_a_of_type_Boolean = false;
-  float b = 0.0F;
+  public abstract void a(int paramInt);
   
-  private azeq(azen paramazen) {}
+  public abstract void a(int paramInt, azej paramazej);
+  
+  public abstract void a(int paramInt, ArrayList<azej> paramArrayList);
+  
+  public abstract void b(int paramInt, azej paramazej);
 }
 
 

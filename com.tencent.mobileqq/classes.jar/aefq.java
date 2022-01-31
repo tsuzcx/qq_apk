@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aefq
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public aefq(UpgradeActivity paramUpgradeActivity) {}
+  public aefq(TroopMemberListActivity paramTroopMemberListActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    UpgradeActivity.a(this.a);
-    this.a.finish();
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
 import android.view.View;
-import arbk;
+import arft;
 
 public class FileBrowserMiniAIOHelper$1
   implements Runnable
 {
-  public FileBrowserMiniAIOHelper$1(arbk paramarbk) {}
+  public FileBrowserMiniAIOHelper$1(arft paramarft) {}
   
   public void run()
   {
-    if (arbk.a(this.this$0) != null) {
-      arbk.a(this.this$0).setVisibility(0);
+    if (arft.a(this.this$0) != null) {
+      arft.a(this.this$0).setVisibility(0);
     }
   }
 }

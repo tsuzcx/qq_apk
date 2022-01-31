@@ -1,34 +1,25 @@
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.widget.BubblePopupWindow;
 
-class bdfu
-  implements CompoundButton.OnCheckedChangeListener
+final class bdfu
+  extends TextView
 {
-  bdfu(bdfq parambdfq, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  bdfu(Context paramContext, BubblePopupWindow paramBubblePopupWindow)
   {
-    bdfq localbdfq;
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
-    {
-      paramCompoundButton = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-      localbdfq = this.jdField_a_of_type_Bdfq;
-      if (!paramBoolean) {
-        break label34;
-      }
-    }
-    label34:
-    for (int i = 1;; i = 0)
-    {
-      paramCompoundButton.onClick(localbdfq, i);
-      return;
-    }
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    boolean bool = super.performClick();
+    this.a.b();
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdfu
  * JD-Core Version:    0.7.0.1
  */

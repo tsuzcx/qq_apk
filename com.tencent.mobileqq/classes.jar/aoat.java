@@ -1,24 +1,18 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.AFCallbackForward.1;
 
 public class aoat
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Camera.AutoFocusCallback
 {
-  public aoat(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aoak jdField_a_of_type_Aoak;
+  private final aoaq jdField_a_of_type_Aoaq;
   
-  public void onGlobalLayout()
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
-    {
-      ColorNoteSmallScreenRelativeLayout.a(this.a);
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.AFCallbackForward.1(this, paramBoolean));
   }
 }
 

@@ -1,10 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 
-final class agen
-  implements DialogInterface.OnClickListener
+class agen
+  extends Handler
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  boolean jdField_a_of_type_Boolean = true;
+  
+  agen(agem paramagem) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == agem.a()) {}
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (paramMessage.what != agem.b()) {}
+    }
+  }
 }
 
 

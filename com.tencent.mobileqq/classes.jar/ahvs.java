@@ -1,17 +1,9 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
 
-public class ahvs
-  implements acje
+public abstract class ahvs
+  implements ahvw, ahvx
 {
-  public ahvs(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment) {}
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      bkfg.a(this.a.getActivity());
-    }
-    return false;
-  }
+  ahvs(CommonRefreshLayout paramCommonRefreshLayout) {}
 }
 
 

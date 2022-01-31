@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import ajsn;
+import ajxc;
 
 public class LbsFilterStatusManager$1
   implements Runnable
 {
-  public LbsFilterStatusManager$1(ajsn paramajsn, int paramInt, boolean paramBoolean) {}
+  public LbsFilterStatusManager$1(ajxc paramajxc, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    ajsn.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    ajxc.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
 }
 

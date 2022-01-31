@@ -1,36 +1,24 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.widget.ScrollView;
+import com.tencent.widget.XEditTextEx;
 
 public class awtl
-  extends bica
+  implements View.OnClickListener
 {
-  public int a(Context paramContext, long paramLong)
+  public awtl(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  
+  public void onClick(View paramView)
   {
-    this.b = bdee.a(BaseApplication.getContext());
-    if (!this.a) {
-      switch (this.b)
-      {
-      default: 
-        this.c = 4096;
-      }
-    }
-    for (;;)
-    {
-      if (paramLong < 102400L) {
-        this.c *= 4;
-      }
-      if (paramLong - this.c <= this.c / 2) {
-        this.c = ((int)paramLong);
-      }
-      return this.c;
-      this.c = 32768;
-      continue;
-      this.c = 32768;
-      continue;
-      this.c = 16384;
-      continue;
-      this.c = 8192;
-    }
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a).setVisibility(0);
+    StickyNotePublishFragment.a(this.a).requestFocus();
+    bhsj.a(StickyNotePublishFragment.a(this.a));
   }
 }
 

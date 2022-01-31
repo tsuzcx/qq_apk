@@ -1,12 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class atmn
-  implements DialogInterface.OnClickListener
+class atmn
+  implements EIPCResultCallback
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  atmn(atmm paramatmm) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    azmj.b(null, "CliOper", "", "", "0X800A97A", "0X800A97A", 0, 0, "", "0", "0", "");
+    int i = 0;
+    JSONObject localJSONObject;
+    if (!TextUtils.isEmpty(atmm.a(this.a))) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      if (paramEIPCResult.data.getBoolean("result")) {}
+      for (;;)
+      {
+        localJSONObject.put("result", i);
+        this.a.callJs(atmm.a(this.a), new String[] { localJSONObject.toString() });
+        return;
+        i = 1;
+      }
+      return;
+    }
+    catch (JSONException paramEIPCResult)
+    {
+      paramEIPCResult.printStackTrace();
+    }
   }
 }
 

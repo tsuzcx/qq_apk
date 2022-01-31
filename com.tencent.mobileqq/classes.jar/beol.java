@@ -1,16 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
 
+@TargetApi(16)
 public class beol
-  implements View.OnClickListener
+  implements bhvm
 {
-  public beol(ProfileCardMoreInfoView paramProfileCardMoreInfoView, View paramView) {}
+  beol(ContextMenuTextView paramContextMenuTextView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    awne.a().c(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (Build.VERSION.SDK_INT < 16) {
+      ContextMenuTextView.a(this.a, null);
+    }
+    for (;;)
+    {
+      this.a.a = null;
+      return;
+      ContextMenuTextView.b(this.a, null);
+    }
   }
 }
 

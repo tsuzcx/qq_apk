@@ -8,14 +8,14 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.Matrix;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bjdq;
-import bjds;
-import bjpl;
-import bjpv;
-import bjqi;
-import bjrp;
-import bjsx;
-import bjtw;
+import bjhx;
+import bjhz;
+import bjts;
+import bjuc;
+import bjup;
+import bjvw;
+import bjxe;
+import bjyd;
 import com.tencent.component.network.utils.Base64;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -30,7 +30,7 @@ import org.json.JSONArray;
 public class GifCoder
 {
   private static boolean jdField_a_of_type_Boolean;
-  private int jdField_a_of_type_Int = bjrp.b();
+  private int jdField_a_of_type_Int = bjvw.b();
   private long jdField_a_of_type_Long;
   private GifCoder.EncodingType jdField_a_of_type_CooperationQzoneUtilGifCoder$EncodingType = GifCoder.EncodingType.ENCODING_TYPE_SIMPLE_FAST;
   private final int jdField_b_of_type_Int = 0;
@@ -269,11 +269,11 @@ public class GifCoder
   
   public static void a()
   {
-    if (bjpl.a().a(bjpl.a, true)) {
+    if (bjts.a().a(bjts.a, true)) {
       try
       {
         System.loadLibrary("c++_shared");
-        a(bjpl.a().b(bjpl.a));
+        a(bjts.a().b(bjts.a));
         return;
       }
       catch (Throwable localThrowable)
@@ -284,7 +284,7 @@ public class GifCoder
         }
       }
     }
-    bjpl.a().a();
+    bjts.a().a();
   }
   
   private static boolean a()
@@ -292,7 +292,7 @@ public class GifCoder
     boolean[] arrayOfBoolean = new boolean[1];
     arrayOfBoolean[0] = false;
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    bjpl.a().b(new bjpv(arrayOfBoolean, localCountDownLatch));
+    bjts.a().b(new bjuc(arrayOfBoolean, localCountDownLatch));
     try
     {
       localCountDownLatch.await(30L, TimeUnit.SECONDS);
@@ -509,7 +509,7 @@ public class GifCoder
       str = (String)localIterator.next();
       if (this.jdField_c_of_type_Boolean)
       {
-        localObject2 = bjqi.a(str, (Bitmap)localObject1);
+        localObject2 = bjup.a(str, (Bitmap)localObject1);
         label98:
         if (localObject1 != null) {
           break label361;
@@ -520,7 +520,7 @@ public class GifCoder
     label361:
     for (;;)
     {
-      int j = bjqi.a(str);
+      int j = bjup.a(str);
       if (this.jdField_c_of_type_Boolean) {}
       for (;;)
       {
@@ -534,7 +534,7 @@ public class GifCoder
         }
         QLog.i("GifCoder", 1, "decode bitmap is NULL,decode pic = " + str);
         break;
-        localObject2 = bjqi.a(str, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, (Bitmap)localObject1);
+        localObject2 = bjup.a(str, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, (Bitmap)localObject1);
         break label98;
         localObject2 = a((Bitmap)localObject2, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, j, this.jdField_b_of_type_Boolean);
       }
@@ -587,12 +587,12 @@ public class GifCoder
       if (paramBoolean2)
       {
         localObject2 = paramJSONArray.optString(i);
-        if (!bjsx.a((String)localObject2))
+        if (!bjxe.a((String)localObject2))
         {
           QLog.e("GifCoder", 1, "file name is invalid. name=" + (String)localObject2);
           return false;
         }
-        localObject2 = bjdq.b().a((String)localObject2);
+        localObject2 = bjhx.b().a((String)localObject2);
         localObject3 = new File((String)localObject2);
         if (!((File)localObject3).exists())
         {
@@ -605,7 +605,7 @@ public class GifCoder
     {
       try
       {
-        localObject3 = bjtw.a((File)localObject3);
+        localObject3 = bjyd.a((File)localObject3);
         if ((localObject3 == null) || (((String)localObject3).length() == 0))
         {
           QLog.e("GifCoder", 1, "file is empty: " + (String)localObject2);

@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
+import bgok;
 
 public abstract interface IJsPlugin
   extends ILifeCycle
 {
-  public abstract boolean onInterceptJsEvent(bgkd parambgkd);
+  public abstract boolean onInterceptJsEvent(bgok parambgok);
 }
 
 

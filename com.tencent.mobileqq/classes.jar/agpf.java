@@ -1,19 +1,14 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agpf
-  implements nrs
+  implements DialogInterface.OnClickListener
 {
-  agpf(agpd paramagpd) {}
+  agpf(agoz paramagoz) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.aq = false;
-    this.a.a.bG();
-    this.a.a.bs();
-    amfw.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131698556), this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, false, true);
+    paramDialogInterface.dismiss();
   }
 }
 

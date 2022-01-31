@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import aroa;
+import arsj;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public final class FileManagerUtil$1
@@ -10,7 +10,7 @@ public final class FileManagerUtil$1
   
   public void run()
   {
-    aroa.a(this.a);
+    arsj.a(this.a);
   }
 }
 

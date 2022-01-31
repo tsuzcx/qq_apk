@@ -1,53 +1,17 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
 
 public class asht
-  extends ashp
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private ImageView b;
-  private TextView d;
-  private TextView e;
+  public asht(TempMsgSettingFragment paramTempMsgSettingFragment) {}
   
-  public asht(Context paramContext, View paramView, ViewGroup paramViewGroup)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super(paramContext, paramView, paramViewGroup);
-    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559126, paramViewGroup, false);
-    if (paramContext != null) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramContext);
-    }
-    this.b = ((ImageView)paramContext.findViewById(2131368129));
-    this.d = ((TextView)paramContext.findViewById(2131378959));
-    this.e = ((TextView)paramContext.findViewById(2131378835));
-  }
-  
-  public void a(FeedsItemData paramFeedsItemData)
-  {
-    super.a(paramFeedsItemData);
-    this.e.setText(paramFeedsItemData.title + "");
-    if (TextUtils.isEmpty(paramFeedsItemData.subTitle)) {
-      this.d.setVisibility(8);
-    }
-    for (;;)
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130846549);
-      localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130846549);
-      paramFeedsItemData = URLDrawable.getDrawable(paramFeedsItemData.coverImgUrl, localURLDrawableOptions);
-      this.b.setImageDrawable(paramFeedsItemData);
-      return;
-      this.d.setVisibility(0);
-      this.d.setText(paramFeedsItemData.subTitle + "");
-    }
+    ((auad)this.a.a.getManager(303)).a((short)-23168, paramBoolean, true);
+    azqs.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 6, 6, "", "", "", "");
   }
 }
 

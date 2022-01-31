@@ -1,16 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-
-public class aqgj
-  implements View.OnClickListener
+public abstract interface aqgj
 {
-  public aqgj(Face2FaceFriendDetailView paramFace2FaceFriendDetailView) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.d();
-  }
+  public abstract void a(int paramInt, aqcl paramaqcl, String paramString1, String paramString2);
 }
 
 

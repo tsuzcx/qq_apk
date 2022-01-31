@@ -1,21 +1,24 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.support.annotation.NonNull;
 
 public class bmew
+  implements bmev
 {
-  public static String a;
-  
-  public static boolean a(long paramLong, Context paramContext)
+  @NonNull
+  public <T extends bmes> T a(@NonNull Class<T> paramClass)
   {
-    a = alno.a + "QQEditPic" + File.separator;
-    paramContext = new File(a);
-    boolean bool1 = paramContext.mkdirs();
-    boolean bool2 = paramContext.isDirectory();
-    if (QLog.isColorLevel()) {
-      QLog.e("initDirs", 2, "thumbFilesDirPath=" + bool1 + " isdir=" + bool2);
+    try
+    {
+      bmes localbmes = (bmes)paramClass.newInstance();
+      return localbmes;
     }
-    return (bool1) || (bool2);
+    catch (InstantiationException localInstantiationException)
+    {
+      throw new RuntimeException("Cannot create an instance of " + paramClass, localInstantiationException);
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      throw new RuntimeException("Cannot create an instance of " + paramClass, localIllegalAccessException);
+    }
   }
 }
 

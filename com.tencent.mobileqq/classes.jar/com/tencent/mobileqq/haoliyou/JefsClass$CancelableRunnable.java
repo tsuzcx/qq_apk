@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.haoliyou;
 
-import asmb;
+import asqk;
 import com.tencent.mobileqq.bigbrother.WeakOuterRefRunnable;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,9 +16,9 @@ public class JefsClass$CancelableRunnable
     this.jdField_a_of_type_ComTencentMobileqqBigbrotherWeakOuterRefRunnable = paramWeakOuterRefRunnable;
   }
   
-  public asmb a()
+  public asqk a()
   {
-    return new asmb(this);
+    return new asqk(this);
   }
   
   public void a(int paramInt)

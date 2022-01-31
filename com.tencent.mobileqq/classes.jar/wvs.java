@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import android.widget.TextView;
 
-public class wvs
-  implements DialogInterface.OnDismissListener
+class wvs
+  implements upa
 {
-  public wvs(EditVideoGuide paramEditVideoGuide) {}
+  wvs(wvq paramwvq, TextView paramTextView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(String paramString, int paramInt)
   {
-    this.a.jdField_a_of_type_Int = 2;
-    this.a.b = 2;
-    this.a.jdField_a_of_type_Wwe.a(5);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131707914) + paramInt + "%");
   }
 }
 

@@ -1,18 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import kotlin.Metadata;
+import android.view.View;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
-final class azxb
-  implements DialogInterface.OnDismissListener
+public class azxb
 {
-  azxb(azwy paramazwy) {}
-  
-  public final void onDismiss(DialogInterface paramDialogInterface)
-  {
-    azwy.a(this.a).b((azwm)this.a);
-    azwy.a(this.a).a();
-  }
+  public View a;
+  public View b;
 }
 
 

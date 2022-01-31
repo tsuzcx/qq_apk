@@ -1,64 +1,56 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.fragment.HotChatFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class asbe
-  extends BroadcastReceiver
 {
-  public asbe(HotChatFragment paramHotChatFragment) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static int a(int paramInt, double paramDouble)
   {
-    if ((paramIntent != null) && ("com.tencent.mobileqq.get_banner_rect".equals(paramIntent.getAction())))
-    {
-      paramContext = paramIntent.getStringExtra("content");
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label31;
-      }
+    float f = 1.0F;
+    if (paramInt > 150) {
+      f = paramInt / 100;
     }
-    label31:
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramContext = new JSONObject(paramContext).getJSONObject("params").getJSONArray("bannerHeight");
-          if (paramContext != null)
-          {
-            float f = this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDisplayMetrics().density;
-            int j = paramContext.length();
-            this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-            int i = 0;
-            while (i < j)
-            {
-              paramIntent = paramContext.getJSONObject(i);
-              Rect localRect = new Rect();
-              localRect.top = ((int)(paramIntent.getInt("top") * f));
-              localRect.bottom = ((int)(paramIntent.getInt("bottom") * f));
-              this.a.jdField_a_of_type_JavaUtilArrayList.add(localRect);
-              i += 1;
-            }
-            this.a.d = true;
-            return;
-          }
-        }
-        catch (JSONException paramContext) {}
-      }
-    } while (!QLog.isDevelopLevel());
-    paramContext.printStackTrace();
+    if (paramDouble <= 1.5D) {
+      return (int)(f * 9.0F);
+    }
+    if (paramDouble <= 2.0D) {
+      return (int)(f * 9.0F);
+    }
+    return (int)(f * 4.0F);
+  }
+  
+  public static Drawable a(Bitmap paramBitmap)
+  {
+    Object localObject = null;
+    Bitmap localBitmap = bdhj.a(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+    paramBitmap = localObject;
+    if (localBitmap != null) {
+      paramBitmap = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), localBitmap);
+    }
+    return paramBitmap;
+  }
+  
+  public static Drawable a(Bitmap paramBitmap, double paramDouble)
+  {
+    Object localObject = null;
+    Bitmap localBitmap = bdhj.a(paramBitmap, a(0, paramDouble));
+    paramBitmap = localObject;
+    if (localBitmap != null) {
+      paramBitmap = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), localBitmap);
+    }
+    return paramBitmap;
+  }
+  
+  public static Drawable a(Drawable paramDrawable, double paramDouble)
+  {
+    return a(bdeb.a(paramDrawable), paramDouble);
+  }
+  
+  public static final boolean a(Intent paramIntent)
+  {
+    return (paramIntent != null) && (paramIntent.hasExtra("report")) && ("Music_gene_aio".equals(paramIntent.getStringExtra("report")));
   }
 }
 

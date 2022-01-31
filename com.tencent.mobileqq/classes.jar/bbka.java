@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.troop.createNewTroop.RelationFriendsTroopViewHelper.4.1;
-import com.tencent.widget.PinnedFooterExpandableListView;
-import java.util.ArrayList;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
-public class bbka
-  implements bbmt
+public final class bbka
+  extends Editable.Factory
 {
-  bbka(bbjz parambbjz) {}
-  
-  public void a(ArrayList<awbv> paramArrayList)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if (this.a.a != null) {
-      this.a.a.post(new RelationFriendsTroopViewHelper.4.1(this, paramArrayList));
+    if ((paramCharSequence instanceof bamz)) {
+      return (Editable)paramCharSequence;
     }
+    return new bamz(paramCharSequence, 3, 20);
   }
 }
 

@@ -1,267 +1,143 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.Login;
+import mqq.observer.SSOAccountObserver;
+import mqq.os.MqqHandler;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class bgkz
+  extends SSOAccountObserver
 {
-  private static Object a(Object paramObject)
-  {
-    Object localObject;
-    if ((paramObject instanceof JSONObject)) {
-      localObject = a((JSONObject)paramObject);
-    }
-    do
-    {
-      return localObject;
-      localObject = paramObject;
-    } while (!(paramObject instanceof JSONArray));
-    return a((JSONArray)paramObject);
-  }
+  public bgkz(Login paramLogin) {}
   
-  private static String a(List<String> paramList)
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return "";
+    if (1100 == paramInt1) {
+      Login.a(this.a, false);
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    if (i < paramList.size())
+    String str = paramBundle.getString("error");
+    try
     {
-      String str = (String)paramList.get(i);
-      if (TextUtils.isEmpty(str)) {}
+      int i = paramBundle.getInt("code");
+      bfng.a().a("agent_login", this.a.jdField_a_of_type_Long, 0L, 0L, i, Long.parseLong(paramString), "1000069", "ret: " + paramInt2 + " | error: " + str);
+      label87:
+      if (QLog.isColorLevel()) {
+        QLog.d("SSOAccountObserver", 2, "onFail:account=" + paramString + " action=" + paramInt1 + " ret=" + paramInt2);
+      }
+      Message localMessage = new Message();
+      paramInt1 = paramBundle.getInt("code");
+      if (paramInt2 == -1000) {
+        localMessage.what = 1;
+      }
       for (;;)
       {
-        i += 1;
-        break;
-        if (i > 0) {
-          localStringBuilder.append(";");
+        this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+        QLog.d("Login", 1, "rec | cmd:  | uin : *" + bfii.a(paramString) + " | ret : " + paramInt2 + " - error: " + str + " | code: " + paramInt1);
+        return;
+        localMessage.what = 2;
+        paramBundle = (ErrMsg)paramBundle.getParcelable("lastError");
+        Bundle localBundle = localMessage.getData();
+        localBundle.putInt("ret", paramInt2);
+        localBundle.putInt("code", paramInt1);
+        if (paramBundle != null) {
+          localBundle.putString("OTHER_ERROR", paramBundle.getMessage());
         }
-        localStringBuilder.append(str);
-      }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(JSONObject paramJSONObject)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    try
-    {
-      Iterator localIterator = paramJSONObject.keys();
-      while (localIterator.hasNext())
-      {
-        String str1 = (String)localIterator.next();
-        String str2 = paramJSONObject.getString(str1);
-        localStringBuilder.append(str1).append("=").append(str2).append("&");
-      }
-      if (localStringBuilder.length() <= 0) {
-        break label84;
-      }
-    }
-    catch (Exception paramJSONObject)
-    {
-      return null;
-    }
-    localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-    label84:
-    return localStringBuilder.toString();
-  }
-  
-  public static List a(JSONArray paramJSONArray)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramJSONArray.length())
-    {
-      if (!paramJSONArray.isNull(i)) {
-        localArrayList.add(a(paramJSONArray.opt(i)));
-      }
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  public static Map a(JSONObject paramJSONObject)
-  {
-    HashMap localHashMap = new HashMap();
-    Iterator localIterator = paramJSONObject.keys();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (!TextUtils.isEmpty(str))
-      {
-        Object localObject = paramJSONObject.opt(str);
-        if (!paramJSONObject.isNull(str)) {
-          localHashMap.put(str, a(localObject));
-        }
-      }
-    }
-    return localHashMap;
-  }
-  
-  public static JSONArray a(JSONArray paramJSONArray1, JSONArray paramJSONArray2)
-  {
-    int k = 0;
-    JSONArray localJSONArray = new JSONArray();
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = k;
-      if (i >= paramJSONArray1.length()) {
-        break;
-      }
-      localJSONArray.put(paramJSONArray1.get(i));
-      i += 1;
-    }
-    while (j < paramJSONArray2.length())
-    {
-      localJSONArray.put(paramJSONArray2.get(j));
-      j += 1;
-    }
-    return localJSONArray;
-  }
-  
-  public static JSONObject a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      return paramString;
-    }
-    catch (Throwable paramString) {}
-    return null;
-  }
-  
-  public static JSONObject a(Map<String, List<String>> paramMap)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    Iterator localIterator = paramMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      try
-      {
-        localJSONObject.put(str, a((List)paramMap.get(str)));
-      }
-      catch (JSONException localJSONException) {}
-    }
-    return localJSONObject;
-  }
-  
-  public static JSONObject a(JSONObject paramJSONObject, String paramString, Object paramObject)
-  {
-    JSONObject localJSONObject = paramJSONObject;
-    if (paramJSONObject == null) {
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put(paramString, paramObject);
-      return localJSONObject;
-    }
-    catch (Throwable paramJSONObject)
-    {
-      QMLog.e("JSONUtil", "", paramJSONObject);
-    }
-    return localJSONObject;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    try
-    {
-      new JSONObject(paramString);
-      return true;
-    }
-    catch (Throwable paramString) {}
-    return false;
-  }
-  
-  public static int[] a(JSONArray paramJSONArray)
-  {
-    if (paramJSONArray == null) {
-      return null;
-    }
-    int[] arrayOfInt = new int[paramJSONArray.length()];
-    int i = 0;
-    while (i < arrayOfInt.length)
-    {
-      arrayOfInt[i] = paramJSONArray.optInt(i);
-      i += 1;
-    }
-    return arrayOfInt;
-  }
-  
-  public static String[] a(JSONArray paramJSONArray)
-  {
-    if (paramJSONArray == null) {
-      return null;
-    }
-    String[] arrayOfString = new String[paramJSONArray.length()];
-    int i = 0;
-    while (i < arrayOfString.length)
-    {
-      arrayOfString[i] = paramJSONArray.optString(i);
-      i += 1;
-    }
-    return arrayOfString;
-  }
-  
-  public static String[][] a(JSONObject paramJSONObject, String paramString)
-  {
-    String[][] arrayOfString = (String[][])null;
-    Object localObject1 = arrayOfString;
-    localObject2 = arrayOfString;
-    try
-    {
-      if (paramJSONObject.has(paramString))
-      {
-        localObject1 = arrayOfString;
-        paramString = paramJSONObject.getJSONArray(paramString);
-        localObject1 = arrayOfString;
-        paramJSONObject = new String[paramString.length()][];
-        int i = 0;
         for (;;)
         {
-          localObject1 = paramJSONObject;
-          localObject2 = paramJSONObject;
-          if (i >= paramString.length()) {
-            break;
+          if (!this.a.jdField_b_of_type_Boolean) {
+            break label337;
           }
-          localObject1 = paramJSONObject;
-          localObject2 = paramString.getJSONArray(i);
-          localObject1 = paramJSONObject;
-          paramJSONObject[i] = new String[((JSONArray)localObject2).length()];
-          int j = 0;
-          for (;;)
-          {
-            localObject1 = paramJSONObject;
-            if (j >= ((JSONArray)localObject2).length()) {
-              break;
-            }
-            localObject1 = paramJSONObject;
-            paramJSONObject[i][j] = ((JSONArray)localObject2).getString(j);
-            j += 1;
-          }
-          i += 1;
+          localBundle.putBoolean("pwdblank", true);
+          break;
+          localBundle.putString("OTHER_ERROR", this.a.getResources().getString(2131695065));
         }
+        label337:
+        localBundle.putBoolean("pwdblank", false);
       }
-      return localObject2;
     }
-    catch (JSONException paramJSONObject)
+    catch (Exception localException)
     {
-      paramJSONObject.printStackTrace();
-      localObject2 = localObject1;
+      break label87;
     }
+  }
+  
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  {
+    if (paramInt == 4096) {
+      paramArrayOfByte = new String(paramArrayOfByte);
+    }
+    for (;;)
+    {
+      this.a.a(paramString, paramArrayOfByte, paramBundle);
+      paramInt = paramBundle.getInt("code");
+      QLog.d("Login", 1, "rec | cmd: g_t_n_p | uin : *" + bfii.a(paramString) + " | ret : success | code: " + paramInt);
+      try
+      {
+        paramBundle = bfng.a();
+        long l2 = this.a.jdField_a_of_type_Long;
+        long l3 = this.a.jdField_b_of_type_Long;
+        if (paramArrayOfByte == null) {}
+        int i;
+        for (long l1 = 0L;; l1 = i)
+        {
+          paramBundle.a("agent_login", l2, l3, l1, paramInt, Long.parseLong(paramString), "1000069", null);
+          return;
+          i = paramArrayOfByte.length();
+        }
+        paramArrayOfByte = null;
+      }
+      catch (Exception paramString)
+      {
+        return;
+      }
+    }
+  }
+  
+  public void onLoginSuccess(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  {
+    Login.a(this.a, false);
+    if (paramInt == 4096) {
+      paramArrayOfByte = new String(paramArrayOfByte);
+    }
+    for (;;)
+    {
+      this.a.a(paramString, paramArrayOfByte, paramBundle);
+      paramInt = paramBundle.getInt("code");
+      QLog.d("Login", 1, "rec | cmd: s_s_o_l | uin : *" + bfii.a(paramString) + " | ret : success | code: " + paramInt);
+      try
+      {
+        paramBundle = bfng.a();
+        long l2 = this.a.jdField_a_of_type_Long;
+        long l3 = this.a.jdField_b_of_type_Long;
+        if (paramArrayOfByte == null) {}
+        for (long l1 = 0L;; l1 = paramInt)
+        {
+          paramBundle.a("agent_login", l2, l3, l1, 0, Long.parseLong(paramString), "1000069", null);
+          return;
+          paramInt = paramArrayOfByte.length();
+        }
+        paramArrayOfByte = null;
+      }
+      catch (Exception paramString)
+      {
+        return;
+      }
+    }
+  }
+  
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SSOAccountObserver", 2, "onUserCancel ssoAccount=" + paramString + " action=" + paramInt);
+    }
+    this.a.d();
+    if (1100 == paramInt) {
+      Login.a(this.a, false);
+    }
+    paramInt = paramBundle.getInt("code");
+    QLog.d("Login", 1, "rec | cmd:  | uin : *" + bfii.a(paramString) + " | ret : on_user_cancel | code: " + paramInt);
   }
 }
 

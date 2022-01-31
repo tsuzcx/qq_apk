@@ -2,8 +2,8 @@ package com.tencent.biz.qqstory.shareGroup.infocard;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import urf;
-import urr;
+import uvo;
+import uwa;
 
 class QQStoryShareGroupProfileActivity$1
   implements Runnable
@@ -12,12 +12,12 @@ class QQStoryShareGroupProfileActivity$1
   
   public void run()
   {
-    urf localurf = (urf)urr.a(18);
-    ArrayList localArrayList = localurf.a(this.this$0);
+    uvo localuvo = (uvo)uwa.a(18);
+    ArrayList localArrayList = localuvo.a(this.this$0);
     int i = localArrayList.size();
     if (i >= 4)
     {
-      localurf.a(((Integer)localArrayList.get(0)).intValue() + 1, ((Integer)localArrayList.get(i - 1)).intValue());
+      localuvo.a(((Integer)localArrayList.get(0)).intValue() + 1, ((Integer)localArrayList.get(i - 1)).intValue());
       if (QLog.isColorLevel()) {
         QLog.d("zivonchen", 2, "QQStoryShareGroupProfileActivity activity stack full, size = " + i + ", start clear!");
       }

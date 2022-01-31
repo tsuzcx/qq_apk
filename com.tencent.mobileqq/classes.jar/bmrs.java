@@ -2,12 +2,13 @@ public class bmrs
 {
   public int a;
   public String a;
-  public int[] a;
   public int b;
   public int c;
-  public int d;
-  public int e;
-  public int f;
+  
+  public String toString()
+  {
+    return "TextInfo{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_a_of_type_Int + ", size=" + this.b + ", state=" + this.c + '}';
+  }
 }
 
 

@@ -1,15 +1,17 @@
-import android.widget.NumberPicker;
-import android.widget.NumberPicker.OnValueChangeListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.runtime.core.page.BrandPageWebview.4;
 
-class bhfs
-  implements NumberPicker.OnValueChangeListener
+public class bhfs
+  implements Animation.AnimationListener
 {
-  bhfs(bhfr parambhfr) {}
+  public bhfs(BrandPageWebview.4 param4) {}
   
-  public void onValueChange(NumberPicker paramNumberPicker, int paramInt1, int paramInt2)
-  {
-    bhfr.a(this.a, paramInt2);
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

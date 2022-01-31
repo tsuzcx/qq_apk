@@ -1,21 +1,95 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class aqfy
-  implements Animation.AnimationListener
+public class aqfy
+  extends aokh<aqgf>
 {
-  aqfy(aqfv paramaqfv, int paramInt, boolean paramBoolean) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public static aqgf a()
   {
-    this.jdField_a_of_type_Aqfv.jdField_a_of_type_Float = this.jdField_a_of_type_Aqfv.b;
-    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Aqfv.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    return (aqgf)aoks.a().a(532);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public int a()
+  {
+    return 532;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  @NonNull
+  public aqgf a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("LimitChatOnPlusConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new aqgf();
+  }
+  
+  @Nullable
+  public aqgf a(aoko[] paramArrayOfaoko)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatOnPlusConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LimitChatOnPlusConfProcessor", 2, "onParsed " + paramArrayOfaoko.length);
+      }
+      return aqgf.a(paramArrayOfaoko[0]);
+    }
+    return null;
+  }
+  
+  public Class<aqgf> a()
+  {
+    return aqgf.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("LimitChatOnPlusConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(aqgf paramaqgf)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramaqgf == null) {
+        break label73;
+      }
+    }
+    label73:
+    for (paramaqgf = paramaqgf.toString();; paramaqgf = " empty")
+    {
+      QLog.d("LimitChatOnPlusConfProcessor", 2, paramaqgf);
+      paramaqgf = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramaqgf instanceof QQAppInterface)) {
+        ((aqbg)((QQAppInterface)paramaqgf).getManager(264)).b();
+      }
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 

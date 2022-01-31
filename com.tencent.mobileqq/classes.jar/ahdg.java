@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahdg
-  implements View.OnClickListener
+public final class ahdg
+  implements DialogInterface.OnClickListener
 {
-  public ahdg(SearchBaseActivity paramSearchBaseActivity) {}
+  public ahdg(boolean paramBoolean, Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.setResult(1);
-    this.a.finish();
+    if (this.jdField_a_of_type_Boolean) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    }
   }
 }
 

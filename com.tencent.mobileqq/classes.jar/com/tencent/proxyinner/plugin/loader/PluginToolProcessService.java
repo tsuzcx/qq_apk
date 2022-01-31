@@ -5,7 +5,7 @@ import android.os.IBinder;
 import android.os.Process;
 import android.os.RemoteException;
 import android.os.SystemClock;
-import asyy;
+import atdh;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.shadow.dynamic.host.MultiLoaderPluginProcessService;
 import com.tencent.shadow.dynamic.host.MultiLoaderPpsController;
@@ -27,7 +27,7 @@ public class PluginToolProcessService
   {
     super.onCreate();
     this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    asyy.d();
+    atdh.d();
   }
   
   public void onDestroy()

@@ -1,30 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.open.agent.FriendChooser;
+import android.os.Looper;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.wifisdk.TMSDKCustomConfig.IThreadPoolManager;
 
-public class bezu
-  implements View.OnTouchListener
+final class bezu
+  implements TMSDKCustomConfig.IThreadPoolManager
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
-  
-  public bezu(FriendChooser paramFriendChooser) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void addTask(int paramInt, Runnable paramRunnable, String paramString)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
+    ThreadManagerV2.excute(paramRunnable, 16, null, false);
+  }
+  
+  public void addTypeTask(Runnable paramRunnable, int paramInt)
+  {
+    int i = 16;
+    if (paramInt == 3) {
+      i = 64;
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
+      ThreadManagerV2.excute(paramRunnable, i, null, false);
+      return;
+      if (paramInt == 4) {
+        i = 128;
+      } else if (paramInt == 2) {
+        i = 32;
+      }
     }
-    while ((i != 2) || ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float <= 10.0F) && (paramMotionEvent.getRawY() - this.b <= 10.0F))) {
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+  }
+  
+  public Looper getSubThreadLooper()
+  {
+    return ThreadManagerV2.getSubThreadLooper();
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.richmediabrowser.presenter;
 
-import apog;
-import axuh;
+import apsp;
+import axyq;
 
 public class AIOBrowserPresenter$1
   implements Runnable
 {
-  public AIOBrowserPresenter$1(axuh paramaxuh) {}
+  public AIOBrowserPresenter$1(axyq paramaxyq) {}
   
   public void run() {}
 }

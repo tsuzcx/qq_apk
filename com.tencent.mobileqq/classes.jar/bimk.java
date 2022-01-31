@@ -1,18 +1,7 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-
-final class bimk
-  implements bimn
+public class bimk
 {
-  public void a(boolean paramBoolean, Context paramContext, bimp parambimp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      bimg.e(paramContext, parambimp);
-    }
-  }
+  public int a = 0;
+  public String a;
 }
 
 

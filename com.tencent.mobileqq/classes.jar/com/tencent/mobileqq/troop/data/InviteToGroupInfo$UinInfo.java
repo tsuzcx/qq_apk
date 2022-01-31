@@ -3,12 +3,12 @@ package com.tencent.mobileqq.troop.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bbkr;
+import bbpa;
 
 public class InviteToGroupInfo$UinInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<UinInfo> CREATOR = new bbkr();
+  public static final Parcelable.Creator<UinInfo> CREATOR = new bbpa();
   public String a;
   public String b;
   public String c;

@@ -1,17 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.3.1;
+import com.tencent.qphone.base.util.QLog;
 
-class agab
-  implements View.OnTouchListener
+public final class agab
+  implements betp
 {
-  agab(afzx paramafzx, aeov paramaeov) {}
+  public agab(Handler paramHandler) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(betn parambetn)
   {
-    this.jdField_a_of_type_Aeov.onTouch(paramView, paramMotionEvent);
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.i("ScribbleItemBuilder", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambetn);
+    }
+    this.a.postDelayed(new ScribbleItemBuilder.3.1(this, parambetn), 100L);
   }
+  
+  public void a(betn parambetn, int paramInt1, int paramInt2) {}
 }
 
 

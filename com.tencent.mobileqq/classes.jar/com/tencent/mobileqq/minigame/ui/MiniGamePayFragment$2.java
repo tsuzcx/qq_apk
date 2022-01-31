@@ -2,7 +2,7 @@ package com.tencent.mobileqq.minigame.ui;
 
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_APP_PAY.MiniAppMidasPay.StGamePayRsp;
-import alpo;
+import alud;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +23,7 @@ class MiniGamePayFragment$2
       try
       {
         paramJSONObject.put("resultCode", -4);
-        paramJSONObject.put("resultMsg", alpo.a(2131707228));
+        paramJSONObject.put("resultMsg", alud.a(2131707240));
         if (paramJSONObject != null) {}
         for (paramJSONObject = paramJSONObject.toString(); paramJSONObject != null; paramJSONObject = "")
         {

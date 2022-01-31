@@ -1,6 +1,6 @@
 package cooperation.qqfav;
 
-import birv;
+import biwc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
@@ -8,15 +8,15 @@ import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
 public class QfavPluginProxyService
   extends PluginProxyService
 {
-  private static birv a;
+  private static biwc a;
   
-  public static birv a()
+  public static biwc a()
   {
     if (a == null) {}
     try
     {
       if (a == null) {
-        a = new birv(BaseApplicationImpl.getApplication().getRuntime());
+        a = new biwc(BaseApplicationImpl.getApplication().getRuntime());
       }
       return a;
     }
@@ -25,10 +25,10 @@ public class QfavPluginProxyService
   
   public static boolean a()
   {
-    birv localbirv = a();
-    if (!PluginCommunicationHandler.getInstance().containsCmd(localbirv.getCmd()))
+    biwc localbiwc = a();
+    if (!PluginCommunicationHandler.getInstance().containsCmd(localbiwc.getCmd()))
     {
-      PluginCommunicationHandler.getInstance().register(localbirv);
+      PluginCommunicationHandler.getInstance().register(localbiwc);
       return true;
     }
     return false;

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
 
 public class tjo
-  extends biac<stSimpleMetaPerson>
+  extends biej<stSimpleMetaPerson>
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
@@ -33,7 +33,7 @@ public class tjo
   
   public tjo(ViewGroup paramViewGroup, tjq paramtjq)
   {
-    super(paramViewGroup, 2131560224);
+    super(paramViewGroup, 2131560223);
     this.jdField_a_of_type_Tjq = paramtjq;
     e();
     d();
@@ -122,26 +122,26 @@ public class tjo
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)b(2131368547));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)b(2131368538));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)b(2131368537));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)b(2131368540));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)b(2131368541));
-    this.c = ((TextView)b(2131368539));
-    this.d = ((TextView)b(2131368542));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)b(2131368543));
-    this.e = ((TextView)b(2131368546));
-    this.f = ((TextView)b(2131368544));
-    this.g = ((TextView)b(2131368545));
-    this.h = ((TextView)b(2131368491));
-    this.i = ((TextView)b(2131368490));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)b(2131368558));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)b(2131368549));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)b(2131368548));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)b(2131368551));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)b(2131368552));
+    this.c = ((TextView)b(2131368550));
+    this.d = ((TextView)b(2131368553));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)b(2131368554));
+    this.e = ((TextView)b(2131368557));
+    this.f = ((TextView)b(2131368555));
+    this.g = ((TextView)b(2131368556));
+    this.h = ((TextView)b(2131368502));
+    this.i = ((TextView)b(2131368501));
   }
   
   private void f()
   {
     if (!ndk.a(a()))
     {
-      bfhq.a().a(2131721476);
+      bflz.a().a(2131721489);
       return;
     }
     if (this.jdField_a_of_type_Tep == null) {
@@ -232,18 +232,18 @@ public class tjo
     {
     default: 
       return;
-    case 2131368539: 
+    case 2131368550: 
       g();
       return;
-    case 2131368490: 
-    case 2131368491: 
+    case 2131368501: 
+    case 2131368502: 
       f();
       return;
-    case 2131368542: 
+    case 2131368553: 
       b(1);
       return;
-    case 2131368543: 
-    case 2131368545: 
+    case 2131368554: 
+    case 2131368556: 
       b(0);
       return;
     }

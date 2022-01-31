@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bjxj;
+import bkbq;
 import com.tencent.qphone.base.util.QLog;
 import ors;
 
@@ -13,7 +13,7 @@ public final class ReadInJoyUtils$9
   
   public void run()
   {
-    Object localObject = bjxj.a(ors.a(), this.jdField_a_of_type_Boolean, true);
+    Object localObject = bkbq.a(ors.a(), this.jdField_a_of_type_Boolean, true);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import adou;
-import alra;
+import adtj;
+import alvp;
 import android.widget.TextView;
-import aovj;
-import ayxn;
-import azmz;
-import bizg;
+import aozs;
+import azbw;
+import azri;
+import bjdn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadRegulator;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 class Leba$34
   implements Runnable
 {
-  Leba$34(Leba paramLeba, aovj paramaovj) {}
+  Leba$34(Leba paramLeba, aozs paramaozs) {}
   
   public void run()
   {
@@ -27,24 +27,24 @@ class Leba$34
     ThreadRegulator.a().a(4);
     ThreadRegulator.a().a(4, 2000L);
     Leba.d(this.this$0, true);
-    ayxn localayxn = (ayxn)this.this$0.a.getManager(10);
-    if (localayxn != null)
+    azbw localazbw = (azbw)this.this$0.a.getManager(10);
+    if (localazbw != null)
     {
-      if ((localayxn.a(1) <= 0) && (localayxn.a(2) <= 0))
+      if ((localazbw.a(1) <= 0) && (localazbw.a(2) <= 0))
       {
-        Object localObject = new bizg();
-        ((bizg)localObject).c = "1";
-        ((bizg)localObject).d = "0";
-        ((bizg)localObject).b = 4;
-        ((bizg)localObject).l = "3";
-        ((bizg)localObject).m = "mainEntrance";
-        ((bizg)localObject).n = "activefeed";
-        QZoneClickReport.report(this.this$0.a.getAccount(), (bizg)localObject, false);
+        Object localObject = new bjdn();
+        ((bjdn)localObject).c = "1";
+        ((bjdn)localObject).d = "0";
+        ((bjdn)localObject).b = 4;
+        ((bjdn)localObject).l = "3";
+        ((bjdn)localObject).m = "mainEntrance";
+        ((bjdn)localObject).n = "activefeed";
+        QZoneClickReport.report(this.this$0.a.getAccount(), (bjdn)localObject, false);
         localObject = new HashMap();
         ((HashMap)localObject).put("source_type", "3");
         ((HashMap)localObject).put("source_from", "mainEntrance");
         ((HashMap)localObject).put("source_to", "activefeed");
-        azmz.a(BaseApplicationImpl.getContext()).a(this.this$0.a.getAccount(), "actQZSourceDataReport", true, 0L, 0L, (HashMap)localObject, null);
+        azri.a(BaseApplicationImpl.getContext()).a(this.this$0.a.getAccount(), "actQZSourceDataReport", true, 0L, 0L, (HashMap)localObject, null);
       }
       if ((this.this$0.a.a() == null) || (!this.this$0.a.a().a())) {
         break label308;
@@ -52,12 +52,12 @@ class Leba$34
     }
     for (;;)
     {
-      adou.a(localayxn, false, bool);
+      adtj.a(localazbw, false, bool);
       if ((Leba.b(this.this$0) != null) && (Leba.b(this.this$0).getVisibility() == 0))
       {
-        localayxn.c(3);
-        localayxn.c(61);
-        localayxn.c(6);
+        localazbw.c(3);
+        localazbw.c(61);
+        localazbw.c(6);
       }
       LinkReport.reportClickQZoneEntry(this.this$0.a.c());
       return;

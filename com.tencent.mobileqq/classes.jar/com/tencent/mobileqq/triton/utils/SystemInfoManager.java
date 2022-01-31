@@ -137,7 +137,7 @@ public class SystemInfoManager
           localJSONObject1.put("SDKVersion", "0.1.0");
           localJSONObject1.put("benchmarkLevel", this.mTritonEngine.getQQEnv().getBenchmarkLevel());
           localJSONObject1.put("version", this.mTritonEngine.getQQEnv().getPlatformVersion());
-          localJSONObject1.put("SDKVersion", "1.1.2.1586762639354");
+          localJSONObject1.put("SDKVersion", "1.1.2.1587380786724");
           localJSONObject1.put("AppPlatform", this.mTritonEngine.getQQEnv().getPlatformName());
           JSONObject localJSONObject2 = new JSONObject();
           j = DisplayUtil.dip2px(this.appContext, 9.0F);

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.troop.utils;
 
-import alpo;
+import alud;
 import android.content.res.Resources;
-import bciz;
+import bcni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class TroopFileTransferManager$13$1
   implements Runnable
 {
-  public TroopFileTransferManager$13$1(bciz parambciz) {}
+  public TroopFileTransferManager$13$1(bcni parambcni) {}
   
   public void run()
   {
     int i = BaseApplicationImpl.sApplication.getResources().getDimensionPixelSize(2131298914);
-    QQToast.a(BaseApplicationImpl.sApplication, alpo.a(2131715699), 0).b(i);
+    QQToast.a(BaseApplicationImpl.sApplication, alud.a(2131715711), 0).b(i);
   }
 }
 

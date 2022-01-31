@@ -1,28 +1,14 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.LocalVideoPreviewCallback;
-import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
-import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.1.1;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.view.View;
 
-public class akiz
-  extends AVVideoCtrl.LocalVideoPreviewCallback
+public abstract interface akiz
 {
-  akiz(akiy paramakiy) {}
+  public abstract void a(View paramView);
   
-  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
-  {
-    Object localObject = akro.a(akix.a(this.a.a));
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = ((aktr)localObject).a();
-    } while (localObject == null);
-    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.1.1(this, (ApolloSurfaceView)localObject, paramVideoFrame));
-  }
+  public abstract boolean a(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akiz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,17 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.text.SpannableString;
+import com.tencent.qphone.base.util.QLog;
 
-class bhzb
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class bhzb
+  extends biba
 {
-  bhzb(bhza parambhza) {}
+  public int a;
   
-  public void onGlobalLayout()
+  public void a(SpannableString paramSpannableString)
   {
-    bhza.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("spanStyle", 2, "[MarginStyle] start:" + this.b + " end:" + this.c + " marginPix:" + this.a);
+    }
+    paramSpannableString.setSpan(new bhza(this.a), this.b, this.c, 17);
   }
 }
 

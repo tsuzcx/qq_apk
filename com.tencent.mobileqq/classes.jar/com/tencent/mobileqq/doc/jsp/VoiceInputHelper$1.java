@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.doc.jsp;
 
-import apfg;
+import apjp;
 
 public class VoiceInputHelper$1
   implements Runnable
 {
-  public VoiceInputHelper$1(apfg paramapfg) {}
+  public VoiceInputHelper$1(apjp paramapjp) {}
   
   public void run()
   {
-    apfg.a(this.this$0);
+    apjp.a(this.this$0);
   }
 }
 

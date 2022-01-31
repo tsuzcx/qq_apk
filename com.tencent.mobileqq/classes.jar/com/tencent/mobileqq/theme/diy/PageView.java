@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.theme.diy;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -46,14 +46,14 @@ public class PageView
   {
     this.pageIndex = paramInt1;
     this.mData = paramThemeDIYData;
-    this.mRLayout = ((RelativeLayout)super.findViewById(2131369261));
+    this.mRLayout = ((RelativeLayout)super.findViewById(2131369279));
     paramThemeDIYData = (RelativeLayout.LayoutParams)this.mRLayout.getLayoutParams();
     paramThemeDIYData.width = paramInt2;
     paramThemeDIYData.height = paramInt3;
     this.pich = paramInt3;
     this.picw = paramInt2;
-    this.mUserBgView = super.findViewById(2131379364);
-    this.mMaskColor = super.findViewById(2131370068);
+    this.mUserBgView = super.findViewById(2131379422);
+    this.mMaskColor = super.findViewById(2131370087);
     if (this.mData.orgMarkColor == 0) {
       if (this.mMaskColor.getParent() != null)
       {
@@ -63,7 +63,7 @@ public class PageView
     }
     for (;;)
     {
-      this.mShotView = super.findViewById(2131376589);
+      this.mShotView = super.findViewById(2131376643);
       return;
       this.mMaskColor.setBackgroundColor(super.getResources().getColor(this.mData.orgMarkColor));
     }
@@ -93,8 +93,8 @@ public class PageView
       } while (localObject != null);
       localObject = new ProgressBar(super.getContext());
       ((ProgressBar)localObject).setId(2131362155);
-      ((ProgressBar)localObject).setIndeterminateDrawable(super.getResources().getDrawable(2130839224));
-      int i = aekt.a(16.0F, super.getResources());
+      ((ProgressBar)localObject).setIndeterminateDrawable(super.getResources().getDrawable(2130839225));
+      int i = aepi.a(16.0F, super.getResources());
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i, i);
       localLayoutParams.bottomMargin = i;
       localLayoutParams.leftMargin = i;

@@ -1,15 +1,51 @@
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.app.Activity;
+import android.os.AsyncTask;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+import java.io.File;
 
-public class axzd
-  implements bhqf
+final class axzd
+  extends AsyncTask<Void, Void, Boolean>
 {
-  public axzd(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  axzd(File paramFile1, File paramFile2, Activity paramActivity, axze paramaxze) {}
   
-  public void onDismiss()
+  protected Boolean a(Void... paramVarArgs)
   {
-    SignatureHistoryFragment.a(this.a, null);
-    VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "5", "", "", "", "", 0, 0, 0, 0);
+    try
+    {
+      if (ey.a(this.jdField_a_of_type_JavaIoFile, this.b))
+      {
+        bdhj.a(BaseApplicationImpl.getApplication(), this.b);
+        bdhj.a(this.jdField_a_of_type_AndroidAppActivity, this.b.getAbsolutePath());
+        return Boolean.valueOf(true);
+      }
+      return Boolean.valueOf(false);
+    }
+    catch (OutOfMemoryError paramVarArgs)
+    {
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryUtils", 4, "savePhoto exception = " + paramVarArgs.getMessage());
+    }
+    return Boolean.valueOf(false);
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {}
+    for (int i = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight();; i = 0)
+    {
+      if (paramBoolean.booleanValue()) {}
+      for (String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131695324);; str = this.jdField_a_of_type_AndroidAppActivity.getString(2131695350))
+      {
+        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, str, 0).b(i);
+        if (this.jdField_a_of_type_Axze != null) {
+          this.jdField_a_of_type_Axze.a(paramBoolean.booleanValue());
+        }
+        return;
+      }
+    }
   }
 }
 

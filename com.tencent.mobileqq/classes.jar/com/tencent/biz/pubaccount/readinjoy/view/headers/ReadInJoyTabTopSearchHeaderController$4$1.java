@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.headers;
 
-import amap;
+import amfe;
 import set;
 
 class ReadInJoyTabTopSearchHeaderController$4$1
@@ -14,7 +14,7 @@ class ReadInJoyTabTopSearchHeaderController$4$1
       return;
     }
     this.a.this$0.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_Int, this.a.b);
-    new amap(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 10);
+    new amfe(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 10);
   }
 }
 

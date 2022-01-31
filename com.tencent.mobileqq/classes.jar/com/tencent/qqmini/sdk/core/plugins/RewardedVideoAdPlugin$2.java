@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bgkd;
+import bgok;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class RewardedVideoAdPlugin$2
   implements Runnable
 {
-  RewardedVideoAdPlugin$2(RewardedVideoAdPlugin paramRewardedVideoAdPlugin, String paramString, boolean paramBoolean, bgkd parambgkd) {}
+  RewardedVideoAdPlugin$2(RewardedVideoAdPlugin paramRewardedVideoAdPlugin, String paramString, boolean paramBoolean, bgok parambgok) {}
   
   public void run()
   {

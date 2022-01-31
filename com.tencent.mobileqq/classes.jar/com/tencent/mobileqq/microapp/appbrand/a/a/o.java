@@ -1,87 +1,87 @@
 package com.tencent.mobileqq.microapp.appbrand.a.a;
 
-import bdvu;
-import bdvv;
+import bead;
+import beae;
 import com.tencent.mobileqq.microapp.appbrand.utils.b;
 import com.tencent.mobileqq.microapp.webview.BaseAppBrandWebview;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 
 final class o
-  extends bdvu
+  extends bead
 {
   o(f paramf, WeakReference paramWeakReference, int paramInt, String paramString) {}
   
-  public void onDone(bdvv parambdvv)
+  public void onDone(beae parambeae)
   {
-    super.onDone(parambdvv);
+    super.onDone(parambeae);
     BaseAppBrandWebview localBaseAppBrandWebview = (BaseAppBrandWebview)this.a.get();
     if (localBaseAppBrandWebview == null) {
       return;
     }
     try
     {
-      if (parambdvv.jdField_a_of_type_Int == 0)
+      if (parambeae.jdField_a_of_type_Int == 0)
       {
         localJSONObject = new JSONObject();
         localJSONObject.put("downloadTaskId", this.b);
         localJSONObject.put("progress", 100);
-        localJSONObject.put("totalBytesWritten", parambdvv.jdField_a_of_type_Long);
-        localJSONObject.put("totalBytesExpectedWrite", parambdvv.jdField_a_of_type_Long);
+        localJSONObject.put("totalBytesWritten", parambeae.jdField_a_of_type_Long);
+        localJSONObject.put("totalBytesExpectedWrite", parambeae.jdField_a_of_type_Long);
         localJSONObject.put("state", "progressUpdate");
         localBaseAppBrandWebview.evaluteJs("WeixinJSBridge.subscribeHandler(\"onDownloadTaskStateChange\", " + localJSONObject + ")");
-        parambdvv = new JSONObject();
-        parambdvv.put("statusCode", 200);
-        parambdvv.put("downloadTaskId", this.b);
-        parambdvv.put("tempFilePath", b.a().c(this.c));
-        parambdvv.put("state", "success");
-        localBaseAppBrandWebview.evaluteJs("WeixinJSBridge.subscribeHandler(\"onDownloadTaskStateChange\", " + parambdvv + ")");
+        parambeae = new JSONObject();
+        parambeae.put("statusCode", 200);
+        parambeae.put("downloadTaskId", this.b);
+        parambeae.put("tempFilePath", b.a().c(this.c));
+        parambeae.put("state", "success");
+        localBaseAppBrandWebview.evaluteJs("WeixinJSBridge.subscribeHandler(\"onDownloadTaskStateChange\", " + parambeae + ")");
         return;
       }
     }
-    catch (Throwable parambdvv)
+    catch (Throwable parambeae)
     {
       try
       {
         localJSONObject = new JSONObject();
         localJSONObject.put("downloadTaskId", this.b);
         localJSONObject.put("state", "fail");
-        localJSONObject.put("errMsg", "Download Failed:" + parambdvv.getMessage());
+        localJSONObject.put("errMsg", "Download Failed:" + parambeae.getMessage());
         localBaseAppBrandWebview.evaluteJs("WeixinJSBridge.subscribeHandler(\"onDownloadTaskStateChange\", " + localJSONObject + ")");
         return;
       }
-      catch (Throwable parambdvv)
+      catch (Throwable parambeae)
       {
         return;
       }
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("downloadTaskId", this.b);
       localJSONObject.put("state", "fail");
-      localJSONObject.put("errMsg", "Download Failed:" + parambdvv.jdField_a_of_type_Int);
+      localJSONObject.put("errMsg", "Download Failed:" + parambeae.jdField_a_of_type_Int);
       localBaseAppBrandWebview.evaluteJs("WeixinJSBridge.subscribeHandler(\"onDownloadTaskStateChange\", " + localJSONObject + ")");
     }
   }
   
-  public void onProgress(bdvv parambdvv)
+  public void onProgress(beae parambeae)
   {
-    super.onProgress(parambdvv);
+    super.onProgress(parambeae);
     BaseAppBrandWebview localBaseAppBrandWebview = (BaseAppBrandWebview)this.a.get();
     if (localBaseAppBrandWebview == null) {}
-    while ((parambdvv.jdField_a_of_type_Long == 0L) || (parambdvv.b == 0L)) {
+    while ((parambeae.jdField_a_of_type_Long == 0L) || (parambeae.b == 0L)) {
       return;
     }
     try
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("downloadTaskId", this.b);
-      localJSONObject.put("progress", (int)(parambdvv.b * 100L / parambdvv.jdField_a_of_type_Long));
-      localJSONObject.put("totalBytesWritten", parambdvv.b);
-      localJSONObject.put("totalBytesExpectedWrite", parambdvv.jdField_a_of_type_Long);
+      localJSONObject.put("progress", (int)(parambeae.b * 100L / parambeae.jdField_a_of_type_Long));
+      localJSONObject.put("totalBytesWritten", parambeae.b);
+      localJSONObject.put("totalBytesExpectedWrite", parambeae.jdField_a_of_type_Long);
       localJSONObject.put("state", "progressUpdate");
       localBaseAppBrandWebview.evaluteJs("WeixinJSBridge.subscribeHandler(\"onDownloadTaskStateChange\", " + localJSONObject + ")");
       return;
     }
-    catch (Throwable parambdvv) {}
+    catch (Throwable parambeae) {}
   }
 }
 

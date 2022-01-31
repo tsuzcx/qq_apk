@@ -1,6 +1,6 @@
-class axke
+public abstract interface axke
 {
-  private static final axkd a = new axkd(null);
+  public abstract void a();
 }
 
 

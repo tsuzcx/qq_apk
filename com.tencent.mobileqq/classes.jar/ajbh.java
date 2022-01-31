@@ -1,21 +1,31 @@
-import android.os.Message;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.microapp.sdk.OnUpdateListener;
 
 class ajbh
-  extends amng
+  implements OnUpdateListener
 {
-  ajbh(ajbg paramajbg) {}
+  ajbh(ajaz paramajaz, ResultReceiver paramResultReceiver) {}
   
-  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
+  public void onCheckForUpdate(boolean paramBoolean)
   {
-    if ((paramBoolean) && (paramList != null))
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
-      }
-      ajbg.a(this.a).obtainMessage(2, 0, 0, paramList).sendToTarget();
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("action", 0);
+      localBundle.putBoolean("res", paramBoolean);
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
+    }
+  }
+  
+  public void onUpdateSucc(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("action", 1);
+      localBundle.putBoolean("res", paramBoolean);
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
     }
   }
 }

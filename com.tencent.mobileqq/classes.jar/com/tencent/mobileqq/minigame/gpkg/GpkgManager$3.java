@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.gpkg;
 
-import bdcs;
+import bdhb;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Status;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
@@ -37,7 +37,7 @@ final class GpkgManager$3
         this.val$listener.onPluginDownloadComplete(false, new RuntimeException("file size mismatch, expected:" + this.val$pluginInfo.packageSize + " got:" + this.val$pkgFile.length()));
         return;
       }
-      bdcs.a(this.val$folder.getAbsolutePath(), false);
+      bdhb.a(this.val$folder.getAbsolutePath(), false);
       if (!WxapkgUnpacker.unpackSync(this.val$pkgFile.getAbsolutePath(), this.val$folder.getAbsolutePath(), "", true))
       {
         QLog.e("[minigame] GpkgManager", 1, "[Gpkg] download plugin unpack failed " + this.val$pluginInfo);

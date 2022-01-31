@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import bbtf;
+import bbxo;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
 public class TroopFileUploadMgr$2
   implements Runnable
 {
-  public TroopFileUploadMgr$2(bbtf parambbtf) {}
+  public TroopFileUploadMgr$2(bbxo parambbxo) {}
   
   public void run()
   {

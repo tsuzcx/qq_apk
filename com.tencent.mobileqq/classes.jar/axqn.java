@@ -1,14 +1,22 @@
-import android.os.Handler;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
 
 public class axqn
-  implements axqv
+  implements azht
 {
-  public axqn(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
+  public axqn(CameraCaptureView paramCameraCaptureView) {}
   
-  public void a()
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    NeoVideoFilterPlayView.a(this.a).sendEmptyMessage(1);
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 2, "onAutoFocusCallback single tap focus " + paramBoolean1 + ", camera2:" + paramBoolean2);
+    }
+    if (paramBoolean1)
+    {
+      CameraCaptureView.a(this.a, true);
+      return;
+    }
+    CameraCaptureView.a.g();
   }
 }
 

@@ -1,31 +1,18 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-class ausn
-  implements arpo
+final class ausn
+  implements Comparator<auso>
 {
-  ausn(ausl paramausl) {}
-  
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public int a(auso paramauso1, auso paramauso2)
   {
-    QLog.d(ausl.a(this.a), 2, "onDownloadFailed,errCode=" + paramInt);
-  }
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      QLog.d(ausl.a(this.a), 2, "onDownloadSucess,filePath:" + paramString);
+    if (paramauso1.b < paramauso2.b) {
+      return -1;
     }
+    if (paramauso1.b > paramauso2.b) {
+      return 1;
+    }
+    return 0;
   }
-  
-  public void b(int paramInt, Bundle paramBundle) {}
-  
-  public void c(int paramInt, Bundle paramBundle) {}
-  
-  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 

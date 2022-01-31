@@ -1,7 +1,7 @@
 package com.tencent.qqmini.nativePlugins;
 
 import android.os.Bundle;
-import bgkd;
+import bgok;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
@@ -10,11 +10,11 @@ import org.json.JSONObject;
 class SetAvatarNativePlugin$AvatarResultCallback
   implements EIPCResultCallback
 {
-  private bgkd req;
+  private bgok req;
   
-  SetAvatarNativePlugin$AvatarResultCallback(SetAvatarNativePlugin paramSetAvatarNativePlugin, bgkd parambgkd)
+  SetAvatarNativePlugin$AvatarResultCallback(SetAvatarNativePlugin paramSetAvatarNativePlugin, bgok parambgok)
   {
-    this.req = parambgkd;
+    this.req = parambgok;
   }
   
   public void onCallback(EIPCResult paramEIPCResult)

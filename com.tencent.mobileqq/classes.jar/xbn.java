@@ -1,35 +1,18 @@
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
+import com.tencent.qphone.base.util.QLog;
 
 class xbn
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements betp
 {
-  private xbn(xbi paramxbi) {}
+  xbn(xbk paramxbk) {}
   
-  public void onGlobalLayout()
+  public void a(betn parambetn)
   {
-    int i = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom();
-    if (this.a.c < 0)
-    {
-      this.a.c = i;
-      this.a.jdField_a_of_type_Xbm.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambetn);
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.c - i <= this.a.b);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-      this.a.c = i;
-      this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
-    } while (this.a.jdField_a_of_type_Xbm == null);
-    this.a.jdField_a_of_type_Xbm.a(true, null);
-    this.a.jdField_a_of_type_Xbm.a(this.a.a());
   }
+  
+  public void a(betn parambetn, int paramInt1, int paramInt2) {}
 }
 
 

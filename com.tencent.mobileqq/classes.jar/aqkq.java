@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelMediaTabView.1;
-import java.util.Comparator;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 
 public class aqkq
-  implements Comparator<Long>
+  implements Animation.AnimationListener
 {
-  public aqkq(QfileLocalFileDelMediaTabView.1 param1) {}
+  public aqkq(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
   
-  public int a(Long paramLong1, Long paramLong2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramLong1.equals(paramLong2)) {
-      return 1;
+    if ((Face2FaceFriendBubbleView.a(this.a) == 2) || (Face2FaceFriendBubbleView.a(this.a) == 3) || (Face2FaceFriendBubbleView.a(this.a) == 4))
+    {
+      Face2FaceFriendBubbleView.a(this.a).startAnimation(Face2FaceFriendBubbleView.a(this.a));
+      return;
     }
-    return (int)(paramLong1.longValue() - paramLong2.longValue());
+    Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

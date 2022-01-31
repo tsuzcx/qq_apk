@@ -1,68 +1,11 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.text.TextUtils;
 
-public abstract class bjkb
-  extends Binder
-  implements bjka
+public class bjkb
+  extends bjjy
 {
-  public bjkb()
+  public boolean a()
   {
-    attachInterface(this, "cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-  }
-  
-  public static bjka a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-    if ((localIInterface != null) && ((localIInterface instanceof bjka))) {
-      return (bjka)localIInterface;
-    }
-    return new bjkc(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      a(paramParcel1.readFloat());
-      paramParcel2.writeNoException();
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      c();
-      paramParcel2.writeNoException();
-      return true;
-    case 4: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      b();
-      paramParcel2.writeNoException();
-      return true;
-    }
-    paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-    a(paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    return (this.jdField_a_of_type_Int > 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
   }
 }
 

@@ -1,33 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
 
-class azvs
-  extends bcuq
+public class azvs
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  private int c;
+  public azvs(StructMsgForHypertext paramStructMsgForHypertext) {}
   
-  public azvs(azvm paramazvm, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    if (paramBitmap == null) {
-      return null;
-    }
-    int j = this.c;
-    int k = paramBitmap.getWidth();
-    if (paramBitmap.getHeight() != 0) {}
-    for (int i = paramBitmap.getHeight();; i = this.c)
-    {
-      i = k * j / i;
-      return bdda.b(paramBitmap, this.jdField_a_of_type_Int, i, this.c);
-    }
+    new azuz(null, paramView, this.a.message).a("web", this.a.mSourceUrl, null, null);
+    azqs.b(null, "CliOper", "", "", "0X800567C", "0X800567C", 0, 0, this.a.mMsgServiceID + "", "", "", "");
+    azqs.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
   }
 }
 

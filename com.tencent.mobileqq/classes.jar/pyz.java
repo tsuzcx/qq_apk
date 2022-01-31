@@ -14,15 +14,15 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class pyz
   extends pyy
 {
-  public pyz(Context paramContext, bcws parambcws, rqj paramrqj)
+  public pyz(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()
   {
     this.jdField_a_of_type_Boolean = true;
-    return a(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).f().h().q().l().n().j();
+    return a(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).f().h().q().l().n().j();
   }
   
   public pxl d()
@@ -39,17 +39,17 @@ public class pyz
     LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
     localLinearLayout2.setOrientation(1);
     localLinearLayout2.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    opi.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841381));
+    opi.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841382));
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary != null) {
       localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary);
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null)
     {
       RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      Object localObject = new LinearLayout.LayoutParams(-1, aekt.a(79.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((LinearLayout.LayoutParams)localObject).leftMargin = aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((LinearLayout.LayoutParams)localObject).rightMargin = aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((LinearLayout.LayoutParams)localObject).bottomMargin = aekt.a(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      Object localObject = new LinearLayout.LayoutParams(-1, aepi.a(79.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      ((LinearLayout.LayoutParams)localObject).leftMargin = aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((LinearLayout.LayoutParams)localObject).rightMargin = aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((LinearLayout.LayoutParams)localObject).bottomMargin = aepi.a(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
       localRelativeLayout.setPadding(0, 0, 0, 0);
       localObject = new RelativeLayout.LayoutParams(-1, -2);
@@ -62,7 +62,7 @@ public class pyz
       localRelativeLayout.setDuplicateParentStateEnabled(true);
       localRelativeLayout.setOnTouchListener(new pzb(this, localRelativeLayout));
       localLinearLayout2.setOnTouchListener(new pzc(this, localRelativeLayout));
-      opi.a(localRelativeLayout, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842491));
+      opi.a(localRelativeLayout, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842504));
       localLinearLayout2.addView(localRelativeLayout);
       localLinearLayout2.setDuplicateParentStateEnabled(true);
       localLinearLayout2.setOnTouchListener(new pzd(this, localLinearLayout2));

@@ -1,67 +1,85 @@
-import com.tencent.commonsdk.pool.ByteArrayPool;
-import java.io.ByteArrayOutputStream;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CardProfile;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdev
-  extends ByteArrayOutputStream
 {
-  private final ByteArrayPool a;
-  
-  public bdev(ByteArrayPool paramByteArrayPool, int paramInt)
+  public static CardProfile a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
   {
-    this.a = paramByteArrayPool;
-    this.buf = this.a.getBuf(Math.max(paramInt, 256));
+    boolean bool = true;
+    CardProfile localCardProfile = null;
+    awgf localawgf = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    paramQQAppInterface = localCardProfile;
+    if (localawgf != null)
+    {
+      localCardProfile = (CardProfile)localawgf.a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(paramInt) });
+      paramQQAppInterface = localCardProfile;
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder().append("readFromDb. uin:").append(paramLong).append(" find:");
+        if (localCardProfile == null) {
+          break label111;
+        }
+      }
+    }
+    for (;;)
+    {
+      QLog.i("VoteUtil", 2, bool);
+      paramQQAppInterface = localCardProfile;
+      return paramQQAppInterface;
+      label111:
+      bool = false;
+    }
   }
   
-  private void a(int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
   {
-    if (this.count + paramInt <= this.buf.length) {
+    Object localObject = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    CardProfile localCardProfile;
+    if (localObject != null)
+    {
+      paramQQAppInterface = (CardProfile)((awgf)localObject).a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(2) });
+      if (paramQQAppInterface != null)
+      {
+        paramQQAppInterface.bAvailableCnt -= paramInt;
+        paramQQAppInterface.bTodayVotedCnt += paramInt;
+        if (paramQQAppInterface.getStatus() != 1000) {
+          break label238;
+        }
+        ((awgf)localObject).b(paramQQAppInterface);
+      }
+      localCardProfile = (CardProfile)((awgf)localObject).a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(3) });
+      if (localCardProfile != null)
+      {
+        localCardProfile.bAvailableCnt -= paramInt;
+        localCardProfile.bTodayVotedCnt += paramInt;
+        localCardProfile.bVoteCnt = ((short)(int)localCardProfile.bTodayVotedCnt);
+        if (localCardProfile.getStatus() != 1000) {
+          break label248;
+        }
+        ((awgf)localObject).b(localCardProfile);
+      }
+      label180:
+      ((awgf)localObject).a();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder().append("updateProfileCardVote. uin:").append(paramLong).append(" find:");
+        if (paramQQAppInterface == null) {
+          break label259;
+        }
+      }
+    }
+    label259:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("VoteUtil", 2, bool);
       return;
-    }
-    byte[] arrayOfByte = this.a.getBuf((this.count + paramInt) * 2);
-    System.arraycopy(this.buf, 0, arrayOfByte, 0, this.count);
-    this.a.returnBuf(this.buf);
-    this.buf = arrayOfByte;
-  }
-  
-  public byte[] a()
-  {
-    return this.buf;
-  }
-  
-  public void close()
-  {
-    this.a.returnBuf(this.buf);
-    this.buf = null;
-    super.close();
-  }
-  
-  public void write(int paramInt)
-  {
-    try
-    {
-      a(1);
-      super.write(paramInt);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      a(paramInt2);
-      super.write(paramArrayOfByte, paramInt1, paramInt2);
-      return;
-    }
-    finally
-    {
-      paramArrayOfByte = finally;
-      throw paramArrayOfByte;
+      label238:
+      ((awgf)localObject).a(paramQQAppInterface);
+      break;
+      label248:
+      ((awgf)localObject).a(localCardProfile);
+      break label180;
     }
   }
 }

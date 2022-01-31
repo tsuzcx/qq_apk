@@ -1,46 +1,49 @@
-public class bdsi
-  extends bdrz
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.qphone.base.util.QLog;
+
+class bdsi
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public static final bdsi a;
-  private int a;
+  bdsi(bdsg parambdsg) {}
   
-  static
+  public void onAudioFocusChange(int paramInt)
   {
-    jdField_a_of_type_Bdsi = new bdsi();
-  }
-  
-  public void a(bdpj parambdpj)
-  {
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    if (i < 2) {
-      download(null, 0, parambdpj, false);
+    if (paramInt == -2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorRingPlayer", 2, "transient focus loss.");
+      }
+      synchronized (this.a.a)
+      {
+        if (this.a.a.a == 4) {
+          this.a.a();
+        }
+        return;
+      }
     }
-  }
-  
-  public long getBID()
-  {
-    return 3L;
-  }
-  
-  protected String getRootDir()
-  {
-    return "tintconfig";
-  }
-  
-  public String getScid(int paramInt)
-  {
-    return getScidPrefix();
-  }
-  
-  protected String getScidPrefix()
-  {
-    return "theme_mapping_config_android";
-  }
-  
-  protected boolean isZip_KeepZip()
-  {
-    return false;
+    if (paramInt == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorRingPlayer", 2, "gained focus");
+      }
+      if (this.a.b)
+      {
+        this.a.c();
+        this.a.b = false;
+      }
+    }
+    else if (paramInt == -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorRingPlayer", 2, "Audio focus Loss");
+      }
+      this.a.b();
+      synchronized (this.a.a)
+      {
+        this.a.a.a = 6;
+        return;
+      }
+    }
   }
 }
 

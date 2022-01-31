@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.qcall;
 
-import awwk;
+import axat;
 import com.tencent.qphone.base.util.QLog;
 
 public class QCallProxy$1
   implements Runnable
 {
-  public QCallProxy$1(awwk paramawwk) {}
+  public QCallProxy$1(axat paramaxat) {}
   
   public void run()
   {

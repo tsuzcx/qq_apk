@@ -1,43 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
+import java.util.Map;
 
-class akbo
-  extends bajk
+public class akbo
+  extends altm
 {
-  akbo(akbl paramakbl, String paramString) {}
+  public akbo(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  public void onComplete(String paramString, int paramInt)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: " + paramString + "," + paramInt);
-    try
-    {
-      paramString = new JSONObject();
-      paramString.put("code", 2);
-      paramString.put("errorCode", paramInt);
-      this.jdField_a_of_type_Akbl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: ", paramString);
+    if (paramBoolean1) {
+      this.a.c();
     }
   }
   
-  public void onProgress(String paramString, long paramLong1, long paramLong2)
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    int i = (int)(100.0F * (float)paramLong1 / (float)paramLong2);
-    try
-    {
-      paramString = new JSONObject();
-      paramString.put("code", 1);
-      paramString.put("progress", i);
-      this.jdField_a_of_type_Akbl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: ", paramString);
+    this.a.c();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.c();
     }
   }
 }

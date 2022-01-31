@@ -1,14 +1,40 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.List;
 
-class aynl
-  implements View.OnClickListener
+public class aynl
+  implements aynt
 {
-  aynl(aynf paramaynf, aykh paramaykh, ayss paramayss) {}
+  private int jdField_a_of_type_Int;
+  private final String jdField_a_of_type_JavaLangString;
+  private final List<aynu> jdField_a_of_type_JavaUtilList;
   
-  public void onClick(View paramView)
+  public aynl(List<aynu> paramList, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Aykh.a(this.jdField_a_of_type_Ayss.a());
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public String a()
+  {
+    return alud.a(2131705779);
+  }
+  
+  public List<aynu> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView) {}
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

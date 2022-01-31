@@ -14,8 +14,8 @@ final class rsc
   {
     if (paramInt == 1)
     {
-      bjxj.e(1);
-      bjxj.a(true);
+      bkbq.e(1);
+      bkbq.a(true);
       nxu.b(this.a, 9);
     }
     for (;;)

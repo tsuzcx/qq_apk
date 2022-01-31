@@ -1,18 +1,14 @@
-import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask;
 
-public class bgqa
-  extends bgpz
+public class bgqa<Data>
 {
-  public bgqa(AppRuntimeLoaderManager paramAppRuntimeLoaderManager) {}
+  final AsyncTask jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask;
+  final Data[] jdField_a_of_type_ArrayOfJavaLangObject;
   
-  public void a(bgpy parambgpy)
+  public bgqa(AsyncTask paramAsyncTask, Data... paramVarArgs)
   {
-    if ((parambgpy == null) || (parambgpy.a == null)) {
-      return;
-    }
-    QMLog.i("minisdk-start_AppRuntimeLoaderManager", "OnRuntimeEvent message:" + parambgpy);
-    AppRuntimeLoaderManager.access$000(this.a, parambgpy);
+    this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask = paramAsyncTask;
+    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
   }
 }
 

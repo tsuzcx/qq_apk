@@ -1,64 +1,42 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder.2;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class aljf
-  extends aljh
+final class aljf
   implements aljj
 {
-  public aljf(aljk paramaljk)
+  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    super(null, paramaljk);
-    this.jdField_a_of_type_Aljj = this;
-  }
-  
-  public static String a(String paramString)
-  {
-    paramString = Utils.Crc64String(paramString);
-    String str = alef.k;
-    return str + paramString + ".zip";
-  }
-  
-  public void a(aljh paramaljh, String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_Int = 1;
-    bdvv localbdvv = new bdvv(paramString1, new File(paramString2));
-    localbdvv.p = true;
-    localbdvv.n = true;
-    localbdvv.f = "apollo_gif";
-    localbdvv.b = 1;
-    localbdvv.q = true;
-    localbdvv.r = true;
-    localbdvv.a(new aljg(this, paramString1, paramString2, paramString3));
-    paramaljh = BaseApplicationImpl.getApplication();
-    if (paramaljh != null)
-    {
-      paramaljh = paramaljh.getRuntime();
-      if (!(paramaljh instanceof QQAppInterface)) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt1 + ",from:" + paramInt2 + ",cmd:" + paramString3);
     }
-    for (paramaljh = (QQAppInterface)paramaljh;; paramaljh = null)
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+      return;
+    }
+    try
     {
-      if (paramaljh != null)
+      paramArrayOfInt = alje.a(paramInt1, paramArrayOfInt);
+      if (paramArrayOfInt == null)
       {
-        paramaljh = (bdvx)paramaljh.getManager(47);
-        if (paramaljh != null)
-        {
-          paramaljh = paramaljh.a(3);
-          if (paramaljh != null) {
-            paramaljh.a(localbdvv, localbdvv.a(), null);
-          }
-        }
-      }
-      for (int i = 0;; i = 1)
-      {
-        if (i != 0) {
-          ThreadManager.executeOnNetWorkThread(new QQFrameZipDecoder.2(this, localbdvv));
-        }
+        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
         return;
       }
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
+      return;
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramArrayOfInt.put("openId", paramString2);
+    }
+    for (;;)
+    {
+      ApolloCmdChannel.getChannel(paramQQAppInterface).callbackFromRequest(paramLong, 0, paramString3, paramArrayOfInt.toString());
+      return;
+      paramArrayOfInt.put("uin", paramString1);
     }
   }
 }

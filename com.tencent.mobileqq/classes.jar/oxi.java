@@ -157,7 +157,7 @@ public class oxi
   
   public static void b()
   {
-    if (!bjxj.o(ors.a())) {
+    if (!bkbq.o(ors.a())) {
       if (QLog.isColorLevel()) {
         QLog.e("viola.ReadInJoyWebRenderEngine", 2, new Object[] { "preWebRenderLoadSo [getWebRenderConfig], is:", Boolean.valueOf(false) });
       }
@@ -273,11 +273,11 @@ public class oxi
   public int g(Bundle paramBundle)
   {
     Object localObject = this.jdField_a_of_type_JavaLangString.replace("_pbid", "_bid");
-    if (befm.a((String)localObject))
+    if (bejv.a((String)localObject))
     {
-      localObject = befm.a((String)localObject);
-      if ((localObject != null) && (!TextUtils.isEmpty(((befn)localObject).jdField_b_of_type_JavaLangString))) {
-        this.jdField_e_of_type_JavaLangString = ((befn)localObject).jdField_b_of_type_JavaLangString;
+      localObject = bejv.a((String)localObject);
+      if ((localObject != null) && (!TextUtils.isEmpty(((bejw)localObject).jdField_b_of_type_JavaLangString))) {
+        this.jdField_e_of_type_JavaLangString = ((bejw)localObject).jdField_b_of_type_JavaLangString;
       }
     }
     while (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))

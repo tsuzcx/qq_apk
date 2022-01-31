@@ -1,36 +1,39 @@
-public class bhoq<T>
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
+
+public class bhoq
+  extends Handler
 {
-  private long jdField_a_of_type_Long;
-  private bhor<T> jdField_a_of_type_Bhor;
-  private long b;
-  
-  private bhoq(bhor<T> parambhor)
+  public bhoq(QSecFramework paramQSecFramework, Looper paramLooper)
   {
-    this.jdField_a_of_type_Bhor = parambhor;
+    super(paramLooper);
   }
   
-  public static <T> bhoq<T> a(bhor<T> parambhor)
+  public void handleMessage(Message paramMessage)
   {
-    return new bhoq(parambhor);
-  }
-  
-  public bhoq<T> a(long paramLong)
-  {
-    this.b = paramLong;
-    return this;
-  }
-  
-  public bhoq<T> a(T paramT)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long > this.b)
+    try
     {
-      this.jdField_a_of_type_Long = l;
-      if (this.jdField_a_of_type_Bhor != null) {
-        this.jdField_a_of_type_Bhor.a(paramT);
+      if ((paramMessage.what == 1) && (!TextUtils.isEmpty((CharSequence)paramMessage.obj)))
+      {
+        long l = Long.parseLong((String)paramMessage.obj);
+        if (l != 0L)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QSecFramework", 2, "handle native msg for cookie:" + l);
+          }
+          QSecFramework.a(6L, l, 0L, 0L, null, null, null, null);
+        }
       }
+      return;
     }
-    return this;
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
+    }
   }
 }
 

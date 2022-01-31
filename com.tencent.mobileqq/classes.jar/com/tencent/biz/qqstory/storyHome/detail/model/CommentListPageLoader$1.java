@@ -2,35 +2,35 @@ package com.tencent.biz.qqstory.storyHome.detail.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import java.util.List;
-import uqo;
-import urr;
-import wdn;
-import wdq;
-import wkg;
-import wsv;
+import uux;
+import uwa;
+import whw;
+import whz;
+import wop;
+import wxe;
 
 public class CommentListPageLoader$1
   implements Runnable
 {
   public void run()
   {
-    ??? = ((uqo)urr.a(17)).a(wdn.a(this.this$0).jdField_a_of_type_JavaLangString, wdn.a(this.this$0).a());
-    wdq localwdq = new wdq(new ErrorMessage(), wdn.a(this.this$0).jdField_a_of_type_JavaLangString, wdn.a(this.this$0).jdField_a_of_type_Int);
-    localwdq.d = false;
-    localwdq.jdField_b_of_type_Boolean = true;
-    localwdq.jdField_a_of_type_JavaUtilList = ((List)???);
-    localwdq.jdField_b_of_type_Int = -1;
-    localwdq.jdField_a_of_type_Boolean = true;
-    localwdq.jdField_a_of_type_Int = wdn.a(this.this$0).jdField_b_of_type_Int;
+    ??? = ((uux)uwa.a(17)).a(whw.a(this.this$0).jdField_a_of_type_JavaLangString, whw.a(this.this$0).a());
+    whz localwhz = new whz(new ErrorMessage(), whw.a(this.this$0).jdField_a_of_type_JavaLangString, whw.a(this.this$0).jdField_a_of_type_Int);
+    localwhz.d = false;
+    localwhz.jdField_b_of_type_Boolean = true;
+    localwhz.jdField_a_of_type_JavaUtilList = ((List)???);
+    localwhz.jdField_b_of_type_Int = -1;
+    localwhz.jdField_a_of_type_Boolean = true;
+    localwhz.jdField_a_of_type_Int = whw.a(this.this$0).jdField_b_of_type_Int;
     synchronized (this.this$0)
     {
       if (!this.this$0.jdField_b_of_type_Boolean)
       {
-        wdn.a(this.this$0, localwdq);
-        wsv.a("Q.qqstory.detail:CommentListPageLoader", "dispatch comment list return from cache: %s", localwdq);
+        whw.a(this.this$0, localwhz);
+        wxe.a("Q.qqstory.detail:CommentListPageLoader", "dispatch comment list return from cache: %s", localwhz);
         return;
       }
-      wsv.d("Q.qqstory.detail:CommentListPageLoader", "load cache data later than load from network");
+      wxe.d("Q.qqstory.detail:CommentListPageLoader", "load cache data later than load from network");
     }
   }
 }

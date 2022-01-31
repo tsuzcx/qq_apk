@@ -1,41 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.graphics.Rect;
+import java.util.Comparator;
 
-public class aojm
+class aojm
+  implements Comparator<Rect>
 {
-  private boolean a;
+  aojm(aojk paramaojk) {}
   
-  public static aojm a(String paramString)
+  public int a(Rect paramRect1, Rect paramRect2)
   {
-    if (paramString == null) {}
+    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
     do
     {
-      return null;
-      try
-      {
-        aojm localaojm = new aojm();
-        localaojm.a = new JSONObject(paramString).optBoolean("needSeparatePersonWithGroup", false);
-        return localaojm;
+      return 1;
+      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
+        return -1;
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("GlobalSearchConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
-  }
-  
-  public boolean a()
-  {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    return "needSeparate:" + this.a;
+    } while (paramRect1.width() > paramRect2.width());
+    if (paramRect1.width() < paramRect2.width()) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aojm
  * JD-Core Version:    0.7.0.1
  */

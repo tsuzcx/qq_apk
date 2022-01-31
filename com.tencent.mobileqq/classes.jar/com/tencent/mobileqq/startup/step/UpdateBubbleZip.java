@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import ahla;
-import bdcs;
+import ahpp;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.File;
 
@@ -10,8 +10,8 @@ public class UpdateBubbleZip
 {
   protected boolean doStep()
   {
-    ahla.a();
-    bdcs.a(BaseApplicationImpl.sApplication.getDir("classic_emoticon", 0).getPath());
+    ahpp.a();
+    bdhb.a(BaseApplicationImpl.sApplication.getDir("classic_emoticon", 0).getPath());
     return true;
   }
 }

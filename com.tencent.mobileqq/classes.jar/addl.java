@@ -1,20 +1,20 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.activity.GesturePWDGuideActivity;
 
 public class addl
-  extends MqqHandler
+  implements View.OnClickListener
 {
-  public addl(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
+  public addl(GesturePWDGuideActivity paramGesturePWDGuideActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
+    this.a.startActivityForResult(paramView, 999);
+    this.a.overridePendingTransition(2130771997, 2130771990);
+    azqs.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_Gesture_password", 0, 0, "", "", "", "");
   }
 }
 

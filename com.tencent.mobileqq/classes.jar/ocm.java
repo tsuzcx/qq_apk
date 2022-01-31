@@ -50,7 +50,7 @@ class ocm
         localViewBase1 = localViewBase1.findViewBaseByName("id_game_small_img");
         if ((localViewBase1 != null) && ((localViewBase1 instanceof psj)) && (!TextUtils.isEmpty(((AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData).J)))
         {
-          int i = aekt.a(40.0F, paramContainer.getContext().getResources());
+          int i = aepi.a(40.0F, paramContainer.getContext().getResources());
           odv.a(paramContainer.getContext(), localViewBase1, ((AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData).J, 10, i, i);
         }
       }

@@ -1,62 +1,42 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ajhq
-  extends ajhc
+class ajhq
+  implements View.OnClickListener
 {
-  public ajhq(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131699973);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
+  ajhq(ajgb paramajgb, alyr paramalyr) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    QLog.d("TroopKeyWordMsg", 2, "deSerialize");
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
+    azqs.b(ajgb.a(this.jdField_a_of_type_Ajgb).app, "CliOper", "", "", "0X8005B73", "0X8005B73", 0, 0, "", "", "", "");
+    paramView = BaseActivity.sTopActivity;
+    Intent localIntent;
+    if (paramView != null)
     {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      this.c = paramArrayOfByte.getString("messageNavInfo");
-      if ((this.c != null) && (this.c.length() != 0)) {
-        this.jdField_a_of_type_Bbkv.a(this.c);
+      if (!URLUtil.isValidUrl(this.jdField_a_of_type_Alyr.a)) {
+        break label144;
       }
+      localIntent = new Intent(paramView, QQBrowserActivity.class);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("url", this.jdField_a_of_type_Alyr.a);
+      localIntent.putExtra("hideRightButton", true);
+      paramView.startActivity(localIntent);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Ajgb.a(6, 0);
+      azqs.a(ajgb.a(this.jdField_a_of_type_Ajgb).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 5, 0, "", "", "", "");
       return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", paramArrayOfByte);
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("time", this.jdField_a_of_type_Int);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      this.c = this.jdField_a_of_type_Bbkv.a();
-      localJSONObject.put("messageNavInfo", this.c);
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", localJSONException);
-      }
+      label144:
+      localIntent = new Intent(paramView, PhoneUnityBindInfoActivity.class);
+      localIntent.putExtra("kSrouce", 0);
+      paramView.startActivity(localIntent);
     }
   }
 }

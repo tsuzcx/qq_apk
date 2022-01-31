@@ -1,19 +1,14 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
 
-class afmw
-  extends afpq
+public class afmw
 {
-  afmw(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
-  
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new StructingMsgItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
+  public int a;
+  public afmx a;
+  public View a;
+  private Runnable a;
+  public int[] a;
+  public int b;
+  public int c;
 }
 
 

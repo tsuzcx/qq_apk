@@ -1,13 +1,17 @@
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-
-class aolw
-  implements blur
+public class aolw
+  extends aolr
 {
-  aolw(aolv paramaolv) {}
+  private aomq a;
   
-  public void a(String paramString)
+  public aolw(String paramString, aomq paramaomq)
   {
-    ((DynamicTextConfigManager)blmf.a(7)).a(paramString);
+    super(paramString);
+    this.a = paramaomq;
+  }
+  
+  public aomq a()
+  {
+    return this.a;
   }
 }
 

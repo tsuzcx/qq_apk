@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 import rzd;
 import scw;
 import scx;
-import xxb;
+import ybk;
 
 public class FastWebActivity$39$1
   implements Runnable
@@ -28,7 +28,7 @@ public class FastWebActivity$39$1
         return;
       }
     }
-    xxb.a(1, 2131689512);
+    ybk.a(1, 2131689512);
     QLog.d("Q.readinjoy.fast_web", 2, "shareJson get false ! action : " + this.jdField_a_of_type_Int);
   }
 }

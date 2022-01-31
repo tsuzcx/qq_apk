@@ -1,12 +1,12 @@
-class wri
-  implements xoi<wnr>
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+
+public abstract interface wri
 {
-  wri(wrh paramwrh) {}
+  public abstract void a(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt);
   
-  public wnr a()
-  {
-    return new wnr();
-  }
+  public abstract void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt);
 }
 
 

@@ -1,86 +1,60 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import protocol.KQQConfig.UpgradeInfo;
 
 public class acaf
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public acaf(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public acaf(AboutActivity paramAboutActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (AssistantSettingActivity.a(this.a)) {
-      return;
-    }
-    if (!bdee.g(this.a))
+    int i = 2;
+    if (bfox.a().b())
     {
-      QQToast.a(BaseApplication.getContext(), 1, 2131694830, 0).b(this.a.getTitleBarHeight());
-      paramCompoundButton = this.a.e;
-      if (!paramBoolean) {}
-      for (paramBoolean = true;; paramBoolean = false)
+      if (bdmr.a()) {
+        i = 1;
+      }
+      azqs.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
+      paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
+      paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
+      paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
+      paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
+      paramView.putExtra("activity_type", 4096);
+      if (BaseActivity.sTopActivity != null) {
+        BaseActivity.sTopActivity.startActivity(paramView);
+      }
+    }
+    do
+    {
+      do
       {
-        paramCompoundButton.setChecked(paramBoolean);
         return;
-      }
-    }
-    paramCompoundButton = aoqj.c();
-    label194:
-    label213:
-    QQAppInterface localQQAppInterface;
-    if ((paramBoolean) && (paramCompoundButton.a <= 1))
-    {
-      if (!bdwk.a(this.a.app, "have_show_ptt_tip", false))
-      {
-        QLog.e("vip_ptt.AssistantSettingActivity", 1, "open the ptt check box and tip to user");
-        AssistantSettingActivity.a(this.a);
-      }
-      if ((!paramBoolean) && (paramCompoundButton.a <= 1)) {
-        bdwk.b(this.a.app, "have_add_ptt_gray_msg", false);
-      }
-      AssistantSettingActivity.a(this.a, paramBoolean);
-      ((alkv)this.a.app.a(2)).p(paramBoolean);
-      if (!paramBoolean) {
-        break label297;
-      }
-      azmj.b(null, "dc00898", "", "", "0X8009DF4", "0X8009DF4", 1, 0, "", "", "", "");
-      paramCompoundButton = "normal";
-      if (!VipUtils.c(this.a.app)) {
-        break label324;
-      }
-      paramCompoundButton = "vip";
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label343;
-      }
-    }
-    label297:
-    label324:
-    label343:
-    for (int i = 1;; i = 2)
-    {
-      azmj.b(localQQAppInterface, "dc00898", "", "", "", "0X800A415", i, 0, "", "", "", paramCompoundButton);
+        if ((AboutActivity.a(this.a).jdField_a_of_type_Amqj == null) || (!bdmr.a(AboutActivity.a(this.a).jdField_a_of_type_Amqj.a))) {
+          break;
+        }
+        if (bdmr.a()) {
+          i = 1;
+        }
+        azqs.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
+        paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
+        paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
+        paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
+        paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
+        paramView.putExtra("activity_type", 4096);
+      } while (BaseActivity.sTopActivity == null);
+      BaseActivity.sTopActivity.startActivity(paramView);
       return;
-      if ((!paramBoolean) || (VipUtils.b(this.a.app))) {
-        break;
-      }
-      QLog.e("vip_ptt.AssistantSettingActivity", 1, "open the ptt check box but u r not svip");
-      AssistantSettingActivity.b(this.a);
-      this.a.e.setChecked(false);
-      return;
-      azmj.b(null, "dc00898", "", "", "0X8009DF4", "0X8009DF4", 2, 0, "", "", "", "");
-      break label194;
-      if (!VipUtils.b(this.a.app)) {
-        break label213;
-      }
-      paramCompoundButton = "svip";
-      break label213;
-    }
+    } while ((AboutActivity.a(this.a) == null) || (AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null));
+    azqs.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", amqe.a(), "");
+    UpgradeDetailActivity.a(this.a, amqe.a().a(), false, false, true);
   }
 }
 

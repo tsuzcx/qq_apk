@@ -1,18 +1,38 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnInfoListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
+import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
+import java.util.ArrayList;
 
-class tsh
-  implements MediaPlayer.OnInfoListener
+public class tsh
+  implements ViewPager.OnPageChangeListener
 {
-  tsh(tsg paramtsg) {}
+  public tsh(QCircleFolderFragmentsPart paramQCircleFolderFragmentsPart) {}
   
-  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (paramInt1 == 3) {
-      QLog.d("QCircleFolderSplashPart", 1, "videoView render start");
+    QCircleFolderFragmentsPart.a(this.a, paramInt, 2);
+    tql.a();
+    if ((QCircleFolderFragmentsPart.a(this.a) != null) && (QCircleFolderFragmentsPart.a(this.a).getChildCount() > paramInt)) {
+      QCircleFolderFragmentsPart.a(this.a).getChildAt(paramInt).performClick();
     }
-    return true;
+    tsa localtsa;
+    if ((QCircleFolderFragmentsPart.a(this.a) != null) && (QCircleFolderFragmentsPart.a(this.a).size() > paramInt))
+    {
+      ((QCircleBaseTabFragment)QCircleFolderFragmentsPart.a(this.a).get(paramInt)).a(paramInt);
+      localtsa = ((QCircleBaseTabFragment)QCircleFolderFragmentsPart.a(this.a).get(paramInt)).a();
+      if (localtsa == null) {}
+    }
+    for (paramInt = localtsa.a();; paramInt = 0)
+    {
+      this.a.b("tab_changed", Integer.valueOf(paramInt));
+      return;
+    }
   }
 }
 

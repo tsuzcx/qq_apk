@@ -12,9 +12,9 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.widget.TextView;
 import android.widget.Toast;
-import asii;
-import asin;
-import bebk;
+import asmr;
+import asmw;
+import beft;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -88,7 +88,7 @@ public class GameCenterActivity
         QLog.d("GameCenterActivity", 2, "handlePushReport() called");
       }
       localIntent.removeExtra("game_msg_enter_from");
-      asin.a(10004, 2);
+      asmw.a(10004, 2);
     }
   }
   
@@ -99,7 +99,7 @@ public class GameCenterActivity
     while (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       return false;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130839226);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130839227);
     this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = localTextView.getCompoundDrawables();
     this.e = localTextView.getCompoundDrawablePadding();
     localTextView.setCompoundDrawablePadding(10);
@@ -223,7 +223,7 @@ public class GameCenterActivity
   
   public boolean onBackEvent()
   {
-    GameCenterVideoViewController localGameCenterVideoViewController = asii.a().a();
+    GameCenterVideoViewController localGameCenterVideoViewController = asmr.a().a();
     if ((localGameCenterVideoViewController != null) && (localGameCenterVideoViewController.a()))
     {
       localGameCenterVideoViewController.c();

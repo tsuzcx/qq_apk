@@ -1,25 +1,24 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import mqq.app.QQPermissionCallback;
-
-public class bbvi
-  implements QQPermissionCallback
+class bbvi
 {
-  public bbvi(PublishHomeWorkFragment paramPublishHomeWorkFragment, int paramInt) {}
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
+  int c = 0;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bbvi(bbvg parambbvg)
   {
-    bdcd.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity());
+    a();
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a()
   {
-    paramArrayOfString = TroopHWJsPlugin.a(10 - this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a.getCurrentAccountUin());
-    paramArrayOfString.putExtra("HomeWorkConstants:homework_request_code_key", 259);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.startActivityForResult(paramArrayOfString, 259);
-    bhoc.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity());
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+    this.c = 0;
+  }
+  
+  public String toString()
+  {
+    return " retryInfo[AutoR-" + this.jdField_a_of_type_Int + " EofR-" + this.b + " SvrErrR-" + this.c + "]";
   }
 }
 

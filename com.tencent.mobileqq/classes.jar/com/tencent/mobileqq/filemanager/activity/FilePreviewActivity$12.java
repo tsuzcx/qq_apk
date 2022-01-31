@@ -2,8 +2,8 @@ package com.tencent.mobileqq.filemanager.activity;
 
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
-import arod;
-import aroe;
+import arsm;
+import arsn;
 
 class FilePreviewActivity$12
   implements Runnable
@@ -16,16 +16,16 @@ class FilePreviewActivity$12
       return;
     }
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0 - this.this$0.jdField_a_of_type_AndroidViewViewGroup.getHeight());
-    if (this.this$0.jdField_a_of_type_Arod == null) {
-      this.this$0.jdField_a_of_type_Arod = new arod(this.this$0.jdField_a_of_type_AndroidViewViewGroup);
+    if (this.this$0.jdField_a_of_type_Arsm == null) {
+      this.this$0.jdField_a_of_type_Arsm = new arsm(this.this$0.jdField_a_of_type_AndroidViewViewGroup);
     }
-    aroe localaroe = new aroe();
-    localaroe.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
-    localaroe.jdField_a_of_type_Boolean = false;
-    localaroe.jdField_a_of_type_Int = arod.b;
-    localaroe.b = 250;
-    this.this$0.jdField_a_of_type_Arod.a(localaroe);
-    this.this$0.jdField_a_of_type_Arod.a();
+    arsn localarsn = new arsn();
+    localarsn.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
+    localarsn.jdField_a_of_type_Boolean = false;
+    localarsn.jdField_a_of_type_Int = arsm.b;
+    localarsn.b = 250;
+    this.this$0.jdField_a_of_type_Arsm.a(localarsn);
+    this.this$0.jdField_a_of_type_Arsm.a();
     this.this$0.d = true;
   }
 }

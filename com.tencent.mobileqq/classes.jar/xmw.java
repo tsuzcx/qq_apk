@@ -1,10 +1,6 @@
-final class xmw
-  extends uvf
+abstract interface xmw
 {
-  public String a()
-  {
-    return uhk.n;
-  }
+  public abstract void a(int paramInt);
 }
 
 

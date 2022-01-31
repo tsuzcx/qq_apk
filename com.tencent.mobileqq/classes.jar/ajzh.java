@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView;
 
 public class ajzh
-  implements bevo
+  implements View.OnClickListener
 {
-  public ajzh(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Runnable paramRunnable) {}
+  public ajzh(FriendTabView paramFriendTabView) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    this.a.a.a(1);
   }
 }
 

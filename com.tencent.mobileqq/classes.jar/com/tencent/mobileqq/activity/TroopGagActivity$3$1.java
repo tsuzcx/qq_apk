@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import adyh;
-import bcjl;
+import aecw;
+import bcnu;
 
 public class TroopGagActivity$3$1
   implements Runnable
 {
-  public TroopGagActivity$3$1(adyh paramadyh, bcjl parambcjl) {}
+  public TroopGagActivity$3$1(aecw paramaecw, bcnu parambcnu) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bcjl.a(this.jdField_a_of_type_Adyh.a.a, true);
+    this.jdField_a_of_type_Bcnu.a(this.jdField_a_of_type_Aecw.a.a, true);
   }
 }
 

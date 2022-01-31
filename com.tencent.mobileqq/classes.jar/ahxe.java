@@ -1,18 +1,13 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.image.AbstractGifImage;
 
-public class ahxe
-  implements View.OnClickListener
+class ahxe
+  implements DialogInterface.OnDismissListener
 {
-  public ahxe(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ahxe(ahww paramahww) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.u();
-    new azmo(this.a.getActivity().app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.c }).a();
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

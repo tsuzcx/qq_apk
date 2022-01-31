@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import alxq;
+import amcf;
 import android.graphics.Rect;
 
 class ScreenShot$1
   implements Runnable
 {
-  ScreenShot$1(ScreenShot paramScreenShot, alxq paramalxq) {}
+  ScreenShot$1(ScreenShot paramScreenShot, amcf paramamcf) {}
   
   public void run()
   {

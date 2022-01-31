@@ -1,27 +1,32 @@
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.widgets.QCirclePersonalBottomView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.qqcircle.events.QCircleCloseBannerEvent;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import qqcircle.QQCircleDitto.StSinglePicBanner;
 
-public class trh
-  extends yei
+class trh
+  implements uec
 {
-  private QCirclePersonalBottomView a;
+  trh(trg paramtrg) {}
   
-  public trh(Bundle paramBundle)
+  public void a()
   {
-    super(paramBundle);
+    QLog.d("QCircleInviteBannerAdapter", 1, "clickBanner actionType" + trg.a(this.a).actionType.get() + "   actionUrl" + trg.a(this.a).actionUrl.get());
+    if (trg.a(this.a).actionType.get() == 1)
+    {
+      tqs.a(trg.a(this.a), trg.a(this.a).actionUrl.get());
+      return;
+    }
+    QLog.d("QCircleInviteBannerAdapter", 1, "unDefined banner jump action:" + trg.a(this.a).actionType.get());
   }
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, ydp paramydp)
+  public void b()
   {
-    this.a = new QCirclePersonalBottomView(paramViewGroup.getContext(), paramydp);
-    return this.a;
+    tpz.a().f();
+    yiw.a().a(new QCircleCloseBannerEvent());
+    this.a.a(false);
+    QLog.d("QCircleInviteBannerAdapter", 1, "clickClose");
   }
-  
-  public void a(Bundle paramBundle) {}
-  
-  public void a(yeb paramyeb) {}
 }
 
 

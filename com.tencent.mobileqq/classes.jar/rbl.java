@@ -15,7 +15,7 @@ public class rbl
   public rbl(View paramView, int paramInt)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView = ((VideoFeedsAlphaMaskView)paramView.findViewById(2131364621));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView = ((VideoFeedsAlphaMaskView)paramView.findViewById(2131364623));
     this.jdField_a_of_type_Int = paramInt;
   }
   

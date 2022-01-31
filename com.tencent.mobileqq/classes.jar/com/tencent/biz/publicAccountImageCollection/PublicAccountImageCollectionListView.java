@@ -7,8 +7,8 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bdee;
-import bhpo;
+import bdin;
+import bhtv;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
 import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -27,14 +27,14 @@ import tpu;
 
 public class PublicAccountImageCollectionListView
   extends ListView
-  implements bhpo
+  implements bhtv
 {
   private float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Context jdField_a_of_type_AndroidContentContext;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private bhpo jdField_a_of_type_Bhpo;
+  private bhtv jdField_a_of_type_Bhtv;
   private ArrayList<toy> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   boolean jdField_a_of_type_Boolean = false;
   private float jdField_b_of_type_Float;
@@ -133,7 +133,7 @@ public class PublicAccountImageCollectionListView
     {
       return;
       l = System.currentTimeMillis();
-    } while (!bdee.h(this.jdField_a_of_type_AndroidContentContext));
+    } while (!bdin.h(this.jdField_a_of_type_AndroidContentContext));
     ArrayList localArrayList = new ArrayList(this.jdField_b_of_type_JavaUtilArrayList);
     ThreadManager.post(new PublicAccountImageCollectionListView.2(this, this.jdField_a_of_type_Long, localArrayList, paramInt1, paramInt2, l), 5, null, true);
   }
@@ -322,8 +322,8 @@ public class PublicAccountImageCollectionListView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bhpo != null) {
-        this.jdField_a_of_type_Bhpo.onScrollStateChanged(paramAbsListView, paramInt);
+      if (this.jdField_a_of_type_Bhtv != null) {
+        this.jdField_a_of_type_Bhtv.onScrollStateChanged(paramAbsListView, paramInt);
       }
       do
       {

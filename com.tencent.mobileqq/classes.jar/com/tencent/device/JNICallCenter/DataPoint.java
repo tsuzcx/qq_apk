@@ -3,12 +3,12 @@ package com.tencent.device.JNICallCenter;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import zez;
+import zjo;
 
 public class DataPoint
   implements Parcelable
 {
-  public static final Parcelable.Creator<DataPoint> CREATOR = new zez();
+  public static final Parcelable.Creator<DataPoint> CREATOR = new zjo();
   public static final int NAS_SUB_ISLOGIN = 1003;
   public static final int PID_ARK_MSG = 11010;
   public static final int PID_AUTH_REQUEST_StructMsg = 11008;

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.addon;
 
-import akii;
-import akij;
-import akik;
+import akmx;
+import akmy;
+import akmz;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -15,7 +15,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public class DiyPendantFetcher$2
   implements Runnable
 {
-  public DiyPendantFetcher$2(akii paramakii, QQAppInterface paramQQAppInterface) {}
+  public DiyPendantFetcher$2(akmx paramakmx, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -28,13 +28,13 @@ public class DiyPendantFetcher$2
       this.this$0.c(this.a);
       if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
       {
-        localObject1 = (akik)this.a.a(114);
+        localObject1 = (akmz)this.a.a(114);
         localObject2 = new ArrayList();
         Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
         while (localIterator.hasNext()) {
           ((List)localObject2).add(Long.valueOf(Long.parseLong(((java.lang.String)localIterator.next()).split("_")[0])));
         }
-        ((akik)localObject1).a((List)localObject2, null);
+        ((akmz)localObject1).a((List)localObject2, null);
         this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.clear();
       }
     }
@@ -44,12 +44,12 @@ public class DiyPendantFetcher$2
     Object localObject1 = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (akij)((Iterator)localObject1).next();
-      if ((localObject2 == null) || (((akij)localObject2).a() == null)) {
+      localObject2 = (akmy)((Iterator)localObject1).next();
+      if ((localObject2 == null) || (((akmy)localObject2).a() == null)) {
         this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject2);
       }
     }
-    akii.jdField_a_of_type_Long = 0L;
+    akmx.jdField_a_of_type_Long = 0L;
   }
 }
 

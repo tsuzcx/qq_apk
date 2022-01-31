@@ -1,14 +1,10 @@
-import android.view.animation.Interpolator;
-
-class aqgb
-  implements Interpolator
+public class aqgb
+  extends aqga
 {
-  aqgb(aqfv paramaqfv) {}
-  
-  public float getInterpolation(float paramFloat)
+  public aqgb(aqfz paramaqfz, aqfk paramaqfk)
   {
-    paramFloat -= 1.0F;
-    return 1.0F - paramFloat * (paramFloat * paramFloat * paramFloat);
+    super(paramaqfz, paramaqfk);
+    this.a = -1;
   }
 }
 

@@ -1,58 +1,12 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import com.tencent.image.ApngDrawable;
+import android.graphics.Rect;
 
 public class bdsy
-  implements bdsv
+  extends bdta
 {
-  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  
-  public bdsy(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof ApngDrawable))
-    {
-      if (paramBoolean) {
-        ((ApngDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).resume();
-      }
-    }
-    else {
-      return;
-    }
-    ((ApngDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).pause();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      a(true);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(true, false);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.invalidateSelf();
-    }
-  }
-  
-  public void a(bdsw parambdsw)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new bdsz(this, parambdsw);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      a(false);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(false, false);
-    }
-  }
+  public int a;
+  public aerc a;
+  public Rect a;
+  public String a;
 }
 
 

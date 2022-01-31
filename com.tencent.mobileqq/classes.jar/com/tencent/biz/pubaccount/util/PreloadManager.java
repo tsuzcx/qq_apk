@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.util;
 
-import aljq;
+import alof;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,9 +8,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import azmz;
-import bavf;
-import bfhi;
+import azri;
+import bazo;
+import bflr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -73,10 +73,10 @@ public class PreloadManager
   
   static int a(String paramString)
   {
-    Object localObject = bfhi.d(paramString);
+    Object localObject = bflr.d(paramString);
     paramString = (String)localObject + ".temp";
-    localObject = new File(aljq.cI, (String)localObject);
-    paramString = new File(aljq.cI, paramString);
+    localObject = new File(alof.cI, (String)localObject);
+    paramString = new File(alof.cI, paramString);
     if (((File)localObject).exists()) {
       return 2;
     }
@@ -239,7 +239,7 @@ public class PreloadManager
       localHashMap.put("param_ipConnResult", paramString3);
       localHashMap.put("param_hostConnResult", paramString4);
       paramLong = NetConnInfoCenter.getServerTimeMillis() - paramLong;
-      azmz.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actReadInJoyIpConnect", paramBoolean, paramLong, 0L, localHashMap, "");
+      azri.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actReadInJoyIpConnect", paramBoolean, paramLong, 0L, localHashMap, "");
       if (!QLog.isColorLevel()) {
         break;
       }
@@ -449,7 +449,7 @@ public class PreloadManager
     //   66: new 81	java/lang/StringBuilder
     //   69: dup
     //   70: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   73: getstatic 460	aljq:cH	Ljava/lang/String;
+    //   73: getstatic 460	alof:cH	Ljava/lang/String;
     //   76: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: aload 11
     //   81: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -479,7 +479,7 @@ public class PreloadManager
     //   141: aload 9
     //   143: astore 8
     //   145: aload 10
-    //   147: invokestatic 473	bdcs:b	(Ljava/lang/String;)Z
+    //   147: invokestatic 473	bdhb:b	(Ljava/lang/String;)Z
     //   150: ifeq +55 -> 205
     //   153: aload 9
     //   155: astore 8
@@ -778,7 +778,7 @@ public class PreloadManager
     //   755: astore 8
     //   757: new 94	java/io/File
     //   760: dup
-    //   761: getstatic 460	aljq:cH	Ljava/lang/String;
+    //   761: getstatic 460	alof:cH	Ljava/lang/String;
     //   764: invokespecial 519	java/io/File:<init>	(Ljava/lang/String;)V
     //   767: astore_1
     //   768: aload 9
@@ -878,7 +878,7 @@ public class PreloadManager
     //   966: new 81	java/lang/StringBuilder
     //   969: dup
     //   970: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   973: getstatic 460	aljq:cH	Ljava/lang/String;
+    //   973: getstatic 460	alof:cH	Ljava/lang/String;
     //   976: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   979: aload 11
     //   981: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1189,7 +1189,7 @@ public class PreloadManager
     try
     {
       str3 = new URL(paramString).getHost();
-      String str1 = bavf.a().a(str3, 1008);
+      String str1 = bazo.a().a(str3, 1008);
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyArticleDetailPreloadManager", 2, "downloadHtmlWithIpConnect host:" + str3 + ", ip:" + str1);
       }
@@ -1261,7 +1261,7 @@ public class PreloadManager
           QLog.d("ReadInJoyArticleDetailPreloadManager", 2, "downloadHtmlWithIpConnect retry direct download html with host:" + paramString);
         }
         localObject = ndd.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
-        bavf.a().a(str3, localMalformedURLException, 1008);
+        bazo.a().a(str3, localMalformedURLException, 1008);
         a(true, l, 3, str3, localMalformedURLException, localIOException2.getMessage(), "0");
         return localObject;
       }
@@ -1379,7 +1379,7 @@ public class PreloadManager
     try
     {
       str3 = new URL(paramString).getHost();
-      String str1 = bavf.a().a(str3, 1009);
+      String str1 = bazo.a().a(str3, 1009);
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyArticleDetailPreloadManager", 2, "downloadImageWithIpConnect host:" + str3 + ", ip:" + str1);
       }
@@ -1451,7 +1451,7 @@ public class PreloadManager
           QLog.d("ReadInJoyArticleDetailPreloadManager", 2, "downloadImageWithIpConnect retry direct download image with host:" + paramString);
         }
         localObject2 = ndd.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
-        bavf.a().a(str3, localMalformedURLException, 1009);
+        bazo.a().a(str3, localMalformedURLException, 1009);
         a(true, l, 3, str3, localMalformedURLException, localIOException2.getMessage(), "0");
         return localObject2;
       }
@@ -1630,11 +1630,11 @@ public class PreloadManager
     //   0: invokestatic 447	java/lang/System:currentTimeMillis	()J
     //   3: lstore_2
     //   4: aload_1
-    //   5: invokestatic 79	bfhi:d	(Ljava/lang/String;)Ljava/lang/String;
+    //   5: invokestatic 79	bflr:d	(Ljava/lang/String;)Ljava/lang/String;
     //   8: astore 10
     //   10: new 94	java/io/File
     //   13: dup
-    //   14: getstatic 99	aljq:cI	Ljava/lang/String;
+    //   14: getstatic 99	alof:cI	Ljava/lang/String;
     //   17: invokespecial 519	java/io/File:<init>	(Ljava/lang/String;)V
     //   20: astore 9
     //   22: aload 9

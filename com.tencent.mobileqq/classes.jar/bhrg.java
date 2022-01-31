@@ -1,6 +1,17 @@
-public abstract interface bhrg
+import com.tencent.mobileqq.shortvideo.resource.GestureGameResource;
+
+public class bhrg
+  implements GestureGameResource
 {
-  public abstract void a();
+  public String getGameModelPath()
+  {
+    return azgn.c();
+  }
+  
+  public boolean isGestureGameEnable()
+  {
+    return azgg.a().d();
+  }
 }
 
 

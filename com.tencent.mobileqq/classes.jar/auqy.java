@@ -1,14 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.music.QQPlayerService;
 
-class auqy
-  implements DialogInterface.OnClickListener
+public final class auqy
+  implements auca
 {
-  auqy(auqx paramauqx) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    paramDialogInterface.dismiss();
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      QQPlayerService.a(BaseApplicationImpl.getContext(), QQPlayerService.b());
+      return;
+    }
+    QQPlayerService.c(BaseApplicationImpl.getContext());
   }
 }
 

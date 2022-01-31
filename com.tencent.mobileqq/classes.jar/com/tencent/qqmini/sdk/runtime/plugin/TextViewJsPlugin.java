@@ -8,13 +8,13 @@ import android.text.TextUtils.TruncateAt;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import bgho;
-import bgkd;
-import bgkk;
-import bglo;
-import bglq;
-import bhab;
-import bhac;
+import bglv;
+import bgok;
+import bgor;
+import bgpv;
+import bgpx;
+import bhei;
+import bhej;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -33,7 +33,7 @@ public class TextViewJsPlugin
   private static final String EVENT_UPDATE_TEXTVIEW = "updateTextView";
   private static final String TAG = "TextViewJsPlugin";
   protected float density;
-  private boolean needSetPadding = bglq.a("qqminiapp", "miniappcovertextviewpadding", true);
+  private boolean needSetPadding = bgpx.a("qqminiapp", "miniappcovertextviewpadding", true);
   
   private void insertTextView(JSONObject paramJSONObject)
   {
@@ -42,16 +42,16 @@ public class TextViewJsPlugin
     String str = paramJSONObject.optString("data");
     boolean bool1 = paramJSONObject.optBoolean("gesture");
     boolean bool2 = paramJSONObject.optBoolean("fixed", false);
-    CoverView localCoverView = bhab.a(this.mMiniAppContext).a(i);
+    CoverView localCoverView = bhei.a(this.mMiniAppContext).a(i);
     Object localObject = localCoverView;
     if (localCoverView == null)
     {
       localObject = new CoverTextView(this.mContext);
-      ((CoverView)localObject).setData(str, bool1, bhac.a(this.mMiniAppContext));
+      ((CoverView)localObject).setData(str, bool1, bhej.a(this.mMiniAppContext));
       ((CoverView)localObject).setContentDescription(i + "_" + j);
       ((CoverView)localObject).setParentId(j);
       ((CoverView)localObject).setFixed(bool2);
-      bhab.a(this.mMiniAppContext).a(j, i, (CoverView)localObject, bool2);
+      bhei.a(this.mMiniAppContext).a(j, i, (CoverView)localObject, bool2);
     }
     if ((localObject instanceof CoverTextView)) {
       updateTextView((CoverTextView)localObject, paramJSONObject);
@@ -114,7 +114,7 @@ public class TextViewJsPlugin
         paramJSONObject = paramJSONObject.optJSONObject("label");
         if (paramJSONObject != null)
         {
-          if (!bglo.a(paramJSONObject.optString("color")))
+          if (!bgpv.a(paramJSONObject.optString("color")))
           {
             localObject1 = ColorUtils.getActualColor(paramJSONObject.optString("color"));
             if (!TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -131,7 +131,7 @@ public class TextViewJsPlugin
           }
           paramCoverTextView.setGravity(3);
           localObject1 = paramJSONObject.optString("content");
-          if (!bglo.a((String)localObject1)) {
+          if (!bgpv.a((String)localObject1)) {
             paramCoverTextView.setText((String)localObject1);
           }
           if ("bold".equals(paramJSONObject.optString("fontWeight"))) {
@@ -181,54 +181,54 @@ public class TextViewJsPlugin
   
   private void updateTextView(JSONObject paramJSONObject)
   {
-    CoverView localCoverView = bhab.a(this.mMiniAppContext).a(paramJSONObject.optInt("viewId"));
+    CoverView localCoverView = bhei.a(this.mMiniAppContext).a(paramJSONObject.optInt("viewId"));
     if ((localCoverView instanceof CoverTextView)) {
       updateTextView((CoverTextView)localCoverView, paramJSONObject);
     }
   }
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    super.onCreate(parambgho);
+    super.onCreate(parambglv);
     this.density = DisplayUtil.getDensity(this.mContext);
   }
   
-  public void setEventInsertTextview(bgkd parambgkd)
+  public void setEventInsertTextview(bgok parambgok)
   {
     try
     {
-      bgkk.a(new TextViewJsPlugin.1(this, new JSONObject(parambgkd.b)));
+      bgor.a(new TextViewJsPlugin.1(this, new JSONObject(parambgok.b)));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("TextViewJsPlugin", parambgkd.a + " error.", localJSONException);
+      QMLog.e("TextViewJsPlugin", parambgok.a + " error.", localJSONException);
     }
   }
   
-  public void setEventRemoveTextview(bgkd parambgkd)
+  public void setEventRemoveTextview(bgok parambgok)
   {
     try
     {
-      bgkk.a(new TextViewJsPlugin.3(this, new JSONObject(parambgkd.b)));
+      bgor.a(new TextViewJsPlugin.3(this, new JSONObject(parambgok.b)));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("TextViewJsPlugin", parambgkd.a + " error.", localJSONException);
+      QMLog.e("TextViewJsPlugin", parambgok.a + " error.", localJSONException);
     }
   }
   
-  public void setEventUpdateTextview(bgkd parambgkd)
+  public void setEventUpdateTextview(bgok parambgok)
   {
     try
     {
-      bgkk.a(new TextViewJsPlugin.2(this, new JSONObject(parambgkd.b)));
+      bgor.a(new TextViewJsPlugin.2(this, new JSONObject(parambgok.b)));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("TextViewJsPlugin", parambgkd.a + " error.", localJSONException);
+      QMLog.e("TextViewJsPlugin", parambgok.a + " error.", localJSONException);
     }
   }
 }

@@ -25,7 +25,7 @@ public class tgz
   
   static int a()
   {
-    String str = bizf.a();
+    String str = bjdm.a();
     int i = str.indexOf(".");
     int j = str.lastIndexOf(".");
     if ((j <= i) || (j - i != 2)) {}

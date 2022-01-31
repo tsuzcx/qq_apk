@@ -1,8 +1,11 @@
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
+
 public class vgz
+  extends uro
 {
-  public static boolean a(int paramInt)
+  public vgz(qqstory_service.RspDeleteVideo paramRspDeleteVideo)
   {
-    return paramInt > 1000;
+    super(paramRspDeleteVideo.result);
   }
 }
 

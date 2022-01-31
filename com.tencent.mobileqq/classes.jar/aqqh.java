@@ -1,54 +1,116 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.1;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.2;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.3;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.4;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.5;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class aqqh
-  implements aqnr
+public class aqqh
+  extends aqru
 {
-  aqqh(aqqg paramaqqg, String paramString, aqqr paramaqqr) {}
+  public aqqh(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a(int paramInt, String paramString)
+  protected void a(int paramInt, long paramLong, String paramString)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2BuddyTaskExcuter onFaild：");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
+    super.a(paramInt, paramLong, paramString);
+    arrr.a(paramLong, paramInt, paramString);
+    bkmm.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramInt);
+  }
+  
+  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    FileManagerEntity localFileManagerEntity = QfileBaseRecentFileTabView.G(this.a).a().a(paramLong1, paramString, paramInt, paramLong2);
+    if (localFileManagerEntity == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "OnFileCome,but query FileEntity null,uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + "], strUin[" + arrr.e(paramString) + "], peerType[" + paramInt + "]");
+      }
+      return;
+    }
+    this.a.b(localFileManagerEntity);
+    QfileBaseRecentFileTabView.H(this.a).a().c(localFileManagerEntity);
+    QfileBaseRecentFileTabView.d(this.a, new QfileBaseRecentFileTabView.10.3(this));
+  }
+  
+  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  {
+    super.a(paramLong, paramString1, paramInt, paramString2);
+    arrr.a(paramLong);
+    this.a.i();
+  }
+  
+  protected void a(arcg paramarcg)
+  {
+    if (paramarcg == null) {}
+    FileManagerEntity localFileManagerEntity;
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramarcg.a instanceof FileManagerEntity));
+      localFileManagerEntity = (FileManagerEntity)paramarcg.a;
+    } while ((paramarcg.b == null) || (paramarcg.b.length() <= 0));
+    localFileManagerEntity.strThumbPath = paramarcg.b;
+    QfileBaseRecentFileTabView.C(this.a).a().c(localFileManagerEntity);
+    this.a.i();
+  }
+  
+  protected void a(Boolean paramBoolean, List<OfflineFileInfo> paramList)
+  {
+    QfileBaseRecentFileTabView.a(this.a, paramBoolean, paramList);
+  }
+  
+  protected void a(Integer paramInteger, long paramLong, String paramString)
+  {
+    QfileBaseRecentFileTabView.e(this.a, new QfileBaseRecentFileTabView.10.4(this));
+    arrr.a(paramLong, paramInteger.intValue(), paramString);
+    bkmm.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramInteger.intValue());
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    QfileBaseRecentFileTabView.b(this.a, new QfileBaseRecentFileTabView.10.1(this));
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    FileManagerEntity localFileManagerEntity = QfileBaseRecentFileTabView.D(this.a).a().a(paramLong1, paramString1, paramInt1, paramLong2);
+    if (localFileManagerEntity == null)
+    {
+      QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 1, "OnFileCome,but query FileEntity null,uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + "], strUin[" + arrr.e(paramString1) + "], peerType[" + paramInt1 + "]");
+      return;
+    }
+    if (!paramBoolean)
+    {
+      localFileManagerEntity.bDelInFM = false;
+      arrr.a(paramLong2, paramInt2, paramString2);
+      bkmm.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramInt2);
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqqg.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild:" + paramInt);
+      if ((this.a.b == null) || (this.a.b.trim().length() == 0) || (localFileManagerEntity.getCloudType() != 2)) {
+        this.a.b(localFileManagerEntity);
       }
-      this.jdField_a_of_type_Aqqr.a(aqpv.a(this.jdField_a_of_type_Aqqg.jdField_a_of_type_Long, bool2), bool1);
+      QfileBaseRecentFileTabView.E(this.a).a().c(localFileManagerEntity);
+      QfileBaseRecentFileTabView.c(this.a, new QfileBaseRecentFileTabView.10.2(this, paramLong2));
       return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
+      paramInt1 = localFileManagerEntity.nOpType;
+      if ((paramInt1 == 4) || (paramInt1 == 20) || (paramInt1 == 6)) {
+        arrr.a(paramLong2);
       }
     }
   }
   
-  public void a(String paramString)
+  protected void b()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "1");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aqqg.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aqqg.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aqqg.c);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aqqg.e);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aqqg.f);
-    localBundle.putString("_m_ForwardUuid", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqqg.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send success");
-    }
-    this.jdField_a_of_type_Aqqr.a(paramString, localBundle);
+    super.b();
+    QfileBaseRecentFileTabView.f(this.a, new QfileBaseRecentFileTabView.10.5(this));
   }
 }
 

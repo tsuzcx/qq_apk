@@ -1,12 +1,8 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.view.View;
 
-public class beys
-  extends akee
+public abstract interface beys
 {
-  public TextView a;
-  public TroopInfo a;
-  public TextView b;
+  public abstract View b();
 }
 
 

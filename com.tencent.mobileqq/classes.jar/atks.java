@@ -1,22 +1,58 @@
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
+
 class atks
+  implements Handler.Callback
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  atks(atkr paramatkr) {}
   
-  public atks(String paramString1, String paramString2)
+  private void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = bfhi.d(paramString2);
-    this.d = atko.a(paramString1);
+    if (atkr.a(this.a) != null) {
+      atkr.a(this.a).setRefreshing(false);
+    }
+    if (atkr.a(this.a) != null) {
+      atkr.a(this.a).setRefresh(false);
+    }
   }
   
-  public String toString()
+  public boolean handleMessage(Message paramMessage)
   {
-    return "MusicReqInfo{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", url='" + this.b + '\'' + ", md5='" + this.c + '\'' + ", status=" + this.jdField_a_of_type_Int + ", cachePath='" + this.d + '\'' + '}';
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 3: 
+      QQToast.a(this.a.a(), 1, 2131720337, 0).b(atkr.a(this.a));
+      a();
+      return false;
+    case 4: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label134;
+        }
+        atkr.a(this.a);
+        if (atkr.a(this.a) == null) {
+          break;
+        }
+        atkr.a(this.a).a(0);
+        this.a.a.sendEmptyMessageDelayed(5, 800L);
+        return false;
+      }
+      label134:
+      a();
+      QQToast.a(this.a.a(), 1, 2131720337, 0).b(atkr.a(this.a));
+      return false;
+    }
+    a();
+    return false;
   }
 }
 

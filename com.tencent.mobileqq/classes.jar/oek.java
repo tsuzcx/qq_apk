@@ -396,7 +396,7 @@ public class oek
   
   public boolean d()
   {
-    return bdiv.aA(BaseApplicationImpl.getApplication(), BaseApplicationImpl.getApplication().getRuntime().getAccount()) == 1;
+    return bdne.aA(BaseApplicationImpl.getApplication(), BaseApplicationImpl.getApplication().getRuntime().getAccount()) == 1;
   }
   
   public boolean e()

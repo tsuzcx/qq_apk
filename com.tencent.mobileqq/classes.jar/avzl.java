@@ -1,18 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.AutoReplyText;
-
-class avzl
-  implements View.OnClickListener
+public abstract interface avzl
 {
-  avzl(avzg paramavzg, AutoReplyText paramAutoReplyText, boolean paramBoolean) {}
-  
-  public void onClick(View paramView)
-  {
-    if (avzg.a(this.jdField_a_of_type_Avzg) != null) {
-      avzg.a(this.jdField_a_of_type_Avzg).b(this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText, this.jdField_a_of_type_Boolean);
-    }
-  }
+  public abstract void a(int paramInt, avzm paramavzm);
 }
 
 

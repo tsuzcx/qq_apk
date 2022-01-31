@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdal;
+import bdeu;
 
 class QQSettingMe$14$1
   implements Runnable
@@ -16,7 +16,7 @@ class QQSettingMe$14$1
     }
     for (;;)
     {
-      if (!bdal.a(this.jdField_a_of_type_JavaLangString, QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe$14.this$0)))
+      if (!bdeu.a(this.jdField_a_of_type_JavaLangString, QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe$14.this$0)))
       {
         QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe$14.this$0, this.jdField_a_of_type_JavaLangString);
         this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe$14.this$0.a.setText(QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe$14.this$0));

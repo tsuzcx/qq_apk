@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import aljl;
+import aloa;
 
 public class AddFrdHelper$1
   implements Runnable
 {
-  public AddFrdHelper$1(aljl paramaljl) {}
+  public AddFrdHelper$1(aloa paramaloa) {}
   
   public void run()
   {

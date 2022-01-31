@@ -1,30 +1,56 @@
-public final class aoxl
-  implements Comparable<aoxl>
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class aoxl
 {
-  public long a;
-  public final aoxk a;
+  private Map<String, List<aoxm>> a = new HashMap();
   
-  public int a(aoxl paramaoxl)
+  public static aoxl a(aoko[] paramArrayOfaoko)
   {
-    if (paramaoxl == null) {}
-    do
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0)) {
+      return null;
+    }
+    localaoxl = new aoxl();
+    try
     {
-      return 1;
-      if (this.a > paramaoxl.a) {
-        return -1;
+      paramArrayOfaoko = new JSONObject(paramArrayOfaoko[0].a);
+      Iterator localIterator = paramArrayOfaoko.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        JSONArray localJSONArray = paramArrayOfaoko.getJSONArray(str);
+        ArrayList localArrayList = new ArrayList();
+        int i = 0;
+        while (i < localJSONArray.length())
+        {
+          localArrayList.add(aoxm.a(localJSONArray.getJSONObject(i)));
+          i += 1;
+        }
+        localaoxl.a.put(str, localArrayList);
       }
-    } while (this.a < paramaoxl.a);
-    return 0;
+      return localaoxl;
+    }
+    catch (JSONException paramArrayOfaoko)
+    {
+      QLog.e("TencentDocEditConvertConfigBean", 1, "parse fail", paramArrayOfaoko);
+    }
   }
   
-  public String toString()
+  public Map<String, List<aoxm>> a()
   {
-    return "mRemainTime:" + this.a;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoxl
  * JD-Core Version:    0.7.0.1
  */

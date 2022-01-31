@@ -1,16 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aegc
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aegc(UpgradeActivity paramUpgradeActivity) {}
+  public aegc(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    UpgradeActivity.a(this.a, false);
-    azmj.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, amlo.b(), String.valueOf(0), amlp.a(), "");
+    Object localObject = paramView.getTag();
+    if ((localObject == null) || (!(localObject instanceof Integer))) {}
+    int i;
+    do
+    {
+      return;
+      i = ((Integer)localObject).intValue();
+    } while (i < 0);
+    paramView = paramView.findViewById(2131378883);
+    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof Boolean))) {}
+    for (boolean bool = ((Boolean)paramView.getTag()).booleanValue();; bool = false)
+    {
+      if (bool)
+      {
+        paramView = (aegt)this.a.jdField_a_of_type_Aegx.getItem(i);
+        this.a.a(paramView);
+        if ((this.a.jdField_b_of_type_AndroidAppDialog != null) && (this.a.jdField_b_of_type_AndroidAppDialog.isShowing())) {
+          this.a.jdField_b_of_type_AndroidAppDialog.dismiss();
+        }
+        if (this.a.d != 11) {
+          break;
+        }
+        azqs.b(this.a.app, "CliOper", "", "", "0X8006218", "0X8006218", 0, 0, "", "", "", "");
+        return;
+      }
+      paramView = (aegt)this.a.jdField_a_of_type_Aegv.getItem(i);
+      this.a.a(paramView);
+      if (this.a.d == 11) {
+        azqs.b(this.a.app, "CliOper", "", "", "0X8006219", "0X8006219", 0, 0, "", "", "", "");
+      }
+      if (this.a.d != 18) {
+        break;
+      }
+      azqs.b(this.a.app, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "mber_clk", 0, 0, this.a.jdField_b_of_type_JavaLangString, "", "", "");
+      return;
+    }
   }
 }
 

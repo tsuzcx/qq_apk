@@ -1,35 +1,34 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.MobileQQ;
 
 public class adll
-  implements axmj
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adll(QQIdentiferActivity paramQQIdentiferActivity) {}
+  public adll(NotifyPushSettingActivity paramNotifyPushSettingActivity, alpk paramalpk) {}
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(axmn paramaxmn) {}
-  
-  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (!paramBoolean)
+    if ((bdin.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getApplicationContext())) && (NotifyPushSettingActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity)))
     {
-      bdcd.a(this.a, 230, this.a.getString(2131698758), alpo.a(2131710734), new adlm(this), null).show();
+      this.jdField_a_of_type_Alpk.d(paramBoolean);
       return;
     }
-    QQIdentiferActivity.a(this.a).set(false);
-    QQIdentiferActivity.a(this.a).a();
+    NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, false);
+    paramCompoundButton = NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
+    if (!NotifyPushSettingActivity.h(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).a()) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramCompoundButton.setChecked(paramBoolean);
+      NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, true);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getApplication().getString(2131695131), 0).b(5);
+      return;
+    }
   }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 

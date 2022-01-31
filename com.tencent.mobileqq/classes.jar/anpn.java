@@ -1,180 +1,341 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.ark.ark.Application;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anpn
+  extends WebViewPlugin
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
+  private int jdField_a_of_type_Int = 0;
+  private Dialog jdField_a_of_type_AndroidAppDialog;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString;
+  private ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  boolean jdField_a_of_type_Boolean = false;
+  private String jdField_b_of_type_JavaLangString;
+  private ConcurrentHashMap<String, Integer> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private String jdField_c_of_type_JavaLangString;
+  private ConcurrentHashMap<String, String> jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private String jdField_d_of_type_JavaLangString;
+  private ConcurrentHashMap<String, String> jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private String e;
   
   public anpn()
   {
-    a();
+    this.mPluginNameSpace = "lightapp";
   }
   
-  public void a()
+  private void b(String paramString)
   {
-    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.dynamic_avatar.name());
-    this.jdField_a_of_type_JavaLangString = ((String)localObject);
-    this.jdField_a_of_type_Boolean = true;
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("ArkPlugin", 1, "decodeArkH5Config, keywordCfgJsonStr is empty");
+    }
     for (;;)
     {
+      return;
+      this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      Object localObject2;
+      Object localObject3;
       try
       {
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length < 11) {
+        paramString = new JSONObject(paramString);
+        localObject1 = paramString.optJSONObject("web-view-jump-web-config");
+        paramString = paramString.optJSONObject("web-view-open-app-config");
+        if (localObject1 != null)
+        {
+          localObject2 = ((JSONObject)localObject1).keys();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (String)((Iterator)localObject2).next();
+            Object localObject4 = ((JSONObject)localObject1).get((String)localObject3);
+            if (((localObject4 instanceof String)) && (localObject4 != null)) {
+              this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject3, (String)localObject4);
+            }
+          }
+        }
+        if (paramString == null) {
           continue;
         }
-        this.jdField_a_of_type_Boolean = false;
-        if (Integer.valueOf(localObject[0]).intValue() != 1) {
-          continue;
-        }
-        this.jdField_b_of_type_Boolean = true;
-        if (!this.jdField_b_of_type_Boolean) {
-          continue;
-        }
-        if (Integer.valueOf(localObject[1]).intValue() != 1) {
-          continue;
-        }
-        this.jdField_c_of_type_Boolean = true;
       }
-      catch (Exception localException)
+      catch (JSONException paramString)
       {
-        this.jdField_a_of_type_Boolean = true;
-        if (!QLog.isColorLevel()) {
-          continue;
+        QLog.e("ArkPlugin", 1, String.format("decodeArkH5Config, parse json failed, err=%s", new Object[] { paramString.getMessage() }));
+        return;
+      }
+      Object localObject1 = paramString.keys();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (String)((Iterator)localObject1).next();
+        localObject3 = paramString.get((String)localObject2);
+        if (((localObject3 instanceof String)) && (localObject3 != null)) {
+          this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, (String)localObject3);
         }
-        QLog.d("DynamicAvatarConfig", 2, "parse config exception:" + localException.getMessage());
-        continue;
-        this.jdField_c_of_type_Boolean = false;
-        continue;
-        this.jdField_d_of_type_Boolean = false;
-        continue;
-        this.e = false;
-        continue;
-        this.f = false;
-        continue;
-        this.g = false;
-        continue;
-        this.h = false;
-        continue;
-        this.i = false;
-        continue;
-        this.j = false;
-        continue;
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_d_of_type_Boolean = false;
-        this.e = false;
-        this.f = false;
-        this.g = false;
-        this.h = false;
-        this.i = false;
-        this.j = false;
-        continue;
-        if ((this.jdField_a_of_type_Int > 0) && (this.jdField_b_of_type_Int > 0)) {
-          continue;
-        }
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_d_of_type_Boolean = false;
-        this.e = false;
-        this.f = false;
-        this.g = false;
-        this.h = false;
-        this.i = false;
-        this.j = false;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DynamicAvatarConfig", 2, "maxPlayingCount or maxPlayCountOneDay <= 0");
-        if (this.jdField_c_of_type_Int > 0) {
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DynamicAvatarConfig", 2, "adjust samllSizeFPS:" + this.jdField_c_of_type_Int);
-        this.jdField_c_of_type_Int = 18;
-        if (this.jdField_d_of_type_Int > 0) {
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DynamicAvatarConfig", 2, "adjust bigSizeFPS:" + this.jdField_d_of_type_Int);
-        this.jdField_d_of_type_Int = 18;
       }
-      if (Integer.valueOf(localObject[2]).intValue() != 1) {
-        continue;
-      }
-      this.jdField_d_of_type_Boolean = true;
-      if (Integer.valueOf(localObject[3]).intValue() != 1) {
-        continue;
-      }
-      this.e = true;
-      if (Integer.valueOf(localObject[4]).intValue() != 1) {
-        continue;
-      }
-      this.f = true;
-      if (Integer.valueOf(localObject[5]).intValue() != 1) {
-        continue;
-      }
-      this.g = true;
-      if (Integer.valueOf(localObject[6]).intValue() != 1) {
-        continue;
-      }
-      this.h = true;
-      if (Integer.valueOf(localObject[11]).intValue() != 1) {
-        continue;
-      }
-      this.i = true;
-      if (Integer.valueOf(localObject[12]).intValue() != 1) {
-        continue;
-      }
-      this.j = true;
-      this.jdField_a_of_type_Int = Integer.valueOf(localObject[7]).intValue();
-      this.jdField_b_of_type_Int = Integer.valueOf(localObject[8]).intValue();
-      this.jdField_c_of_type_Int = Integer.valueOf(localObject[9]).intValue();
-      this.jdField_d_of_type_Int = Integer.valueOf(localObject[10]).intValue();
-      if (!this.jdField_a_of_type_Boolean) {
-        continue;
-      }
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_d_of_type_Boolean = true;
-      this.e = true;
-      this.f = true;
-      this.g = true;
-      this.h = true;
-      this.jdField_a_of_type_Int = 8;
-      this.jdField_b_of_type_Int = 200;
-      this.jdField_c_of_type_Int = 18;
-      this.jdField_d_of_type_Int = 18;
-      this.i = true;
-      this.j = true;
-      return;
-      this.jdField_b_of_type_Boolean = false;
     }
   }
   
-  public String toString()
+  Context a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    localStringBuilder.append("dpcString:").append(this.jdField_a_of_type_JavaLangString).append(",isPlayInAll:").append(this.jdField_b_of_type_Boolean).append(",isPlayInMsgTab:").append(this.jdField_c_of_type_Boolean).append(",isPlayInContacts:").append(this.jdField_d_of_type_Boolean).append(",isPlayInNearList:").append(this.e).append(",isPlayInFriendProfile:").append(this.f).append(",isPlayInNearProfile:").append(this.g).append(",isPlayInTroopProfile:").append(this.h).append(",maxPlayingCount:").append(this.jdField_a_of_type_Int).append(",maxPlayCountOneDay:").append(this.jdField_b_of_type_Int).append(",bigSizeFPS:").append(this.jdField_d_of_type_Int).append(",smallSizeFPS:").append(this.jdField_c_of_type_Int).append(",isConvsPlayAfterKill:").append(this.i).append(",isContactPlayAfterKill:").append(this.j).append(",isUseDefault:").append(this.jdField_a_of_type_Boolean);
-    return localStringBuilder.toString();
+    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
+  }
+  
+  protected String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      paramString = new URL(paramString).getHost();
+      return paramString;
+    }
+    catch (MalformedURLException paramString) {}
+    return null;
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        ArkAppCenter.b(true);
+        Object localObject = this.mRuntime.a();
+        if (localObject == null) {
+          continue;
+        }
+        localObject = ((WebViewFragment)localObject).getArguments();
+        if (localObject == null) {
+          continue;
+        }
+        localObject = ((Intent)((Bundle)localObject).getParcelable("intent")).getExtras();
+        if (localObject == null) {
+          continue;
+        }
+        this.e = ((Bundle)localObject).getString("h5_ark_app_name");
+        this.jdField_c_of_type_JavaLangString = ((Bundle)localObject).getString("h5_ark_app_path");
+        this.jdField_d_of_type_JavaLangString = ((Bundle)localObject).getString("h5_ark_app_des");
+        b(((Bundle)localObject).getString("h5_ark_check_config"));
+        this.jdField_a_of_type_Boolean = true;
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.e("ArkPlugin", 1, String.format("setupArkEnvironment error, err=%s", new Object[] { localException.getMessage() }));
+        }
+      }
+    }
+  }
+  
+  protected void a(String paramString)
+  {
+    TextView localTextView1;
+    if (this.jdField_a_of_type_AndroidAppDialog == null)
+    {
+      this.jdField_a_of_type_AndroidAppDialog = new Dialog(BaseActivity.sTopActivity, 2131755801);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131558942);
+      localTextView1 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365237);
+      TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365233);
+      TextView localTextView3 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365222);
+      TextView localTextView4 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365228);
+      localTextView1.setText(2131720808);
+      if (!TextUtils.isEmpty(paramString)) {
+        localTextView2.setText(paramString);
+      }
+      localTextView4.setText(2131721454);
+      localTextView4.setOnClickListener(new anpo(this));
+      localTextView3.setOnClickListener(new anpp(this));
+      localTextView3.setText(2131690648);
+    }
+    do
+    {
+      return;
+      localTextView1 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365233);
+    } while (TextUtils.isEmpty(paramString));
+    localTextView1.setText(paramString);
+  }
+  
+  protected boolean a(String paramString)
+  {
+    int j = 0;
+    if (TextUtils.isEmpty(paramString)) {}
+    Object localObject1;
+    Object localObject2;
+    do
+    {
+      do
+      {
+        return true;
+        localObject1 = a(paramString);
+      } while (TextUtils.isEmpty((CharSequence)localObject1));
+      this.jdField_b_of_type_JavaLangString = ((String)localObject1);
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(this.jdField_b_of_type_JavaLangString))
+      {
+        localObject1 = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(this.jdField_b_of_type_JavaLangString);
+        if (localObject1 != null)
+        {
+          if (((Integer)localObject1).intValue() == 1) {
+            return false;
+          }
+          if (((Integer)localObject1).intValue() == 0)
+          {
+            b();
+            return true;
+          }
+        }
+      }
+      a();
+      localObject1 = null;
+      localObject2 = this.mRuntime.a();
+      if (localObject2 != null) {
+        localObject1 = ((WebViewFragment)localObject2).e();
+      }
+      localObject1 = a((String)localObject1);
+      if (a(this.jdField_b_of_type_JavaLangString, (String)localObject1))
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(this.jdField_b_of_type_JavaLangString, Integer.valueOf(1));
+        return false;
+      }
+      this.jdField_a_of_type_JavaLangString = paramString;
+    } while ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()));
+    this.jdField_a_of_type_Int = 0;
+    if (this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      for (localObject1 = this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator(); ((Iterator)localObject1).hasNext(); localObject1 = (String)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2))
+      {
+        label207:
+        localObject2 = (String)((Iterator)localObject1).next();
+        if ((TextUtils.isEmpty(this.e)) || (!((String)localObject2).equals(this.e))) {
+          break label207;
+        }
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      boolean bool;
+      if (((String)localObject1).equals("allow")) {
+        bool = false;
+      }
+      for (;;)
+      {
+        label281:
+        paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+        localObject1 = this.jdField_b_of_type_JavaLangString;
+        if (bool) {}
+        for (i = j;; i = 1)
+        {
+          paramString.put(localObject1, Integer.valueOf(i));
+          return bool;
+          if (((String)localObject1).equals("ask"))
+          {
+            if ((i == 0) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)))
+            {
+              localObject1 = ark.Application.Create(this.e, this.jdField_c_of_type_JavaLangString);
+              if ((localObject1 != null) && (!TextUtils.isEmpty(paramString)))
+              {
+                bool = ((ark.Application)localObject1).CheckUrlLegality(paramString);
+                ((ark.Application)localObject1).Release();
+                if (bool)
+                {
+                  this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(this.jdField_b_of_type_JavaLangString, Integer.valueOf(1));
+                  return false;
+                }
+              }
+            }
+            paramString = this.mRuntime.a();
+            if ((paramString == null) || (paramString.isFinishing())) {
+              break;
+            }
+            a(paramString.getString(2131690284));
+            this.jdField_a_of_type_AndroidAppDialog.show();
+            return true;
+          }
+          if (!((String)localObject1).equals("forbidden")) {
+            break label464;
+          }
+          b();
+          bool = true;
+          break label281;
+        }
+        label464:
+        bool = false;
+      }
+      localObject1 = "ask";
+    }
+  }
+  
+  protected boolean a(String paramString1, String paramString2)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        int i = paramString1.lastIndexOf(paramString2);
+        bool1 = bool2;
+        if (i >= 0)
+        {
+          bool1 = bool2;
+          if (i == paramString1.length() - paramString2.length()) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  protected void b()
+  {
+    if (this.mRuntime == null) {}
+    Activity localActivity;
+    do
+    {
+      return;
+      localActivity = this.mRuntime.a();
+    } while ((localActivity == null) || (localActivity.isFinishing()));
+    QQToast.a(localActivity, alud.a(2131701099), 0).a();
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    boolean bool = false;
+    if (paramLong == 16L) {
+      bool = a(paramString);
+    }
+    return bool;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_AndroidContentContext = a();
   }
 }
 

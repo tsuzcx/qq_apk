@@ -1,78 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavImageData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
 public class aphi
-  extends apgu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  QQAppInterface b = null;
+  public aphi(DataReportViewer paramDataReportViewer) {}
   
-  public aphi(QQAppInterface paramQQAppInterface)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super("qq.android.qav.image2", paramQQAppInterface);
-    this.b = paramQQAppInterface;
-  }
-  
-  public int a()
-  {
-    return 10047;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return QavImageData.class;
-  }
-  
-  public String a()
-  {
-    return "qavDownloadImageDuration";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavImageHandler", 2, "download success: " + paramString);
-    }
-    try
-    {
-      bdcs.a(paramString, mum.b(), false);
-      super.a(paramString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QavImageData localQavImageData = (QavImageData)a();
-    if ((localQavImageData != null) && (!localQavImageData.autoDownload))
-    {
-      localQavImageData.autoDownload = true;
-      apgi.a(localQavImageData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    return ((QavImageData)a()).autoDownload;
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

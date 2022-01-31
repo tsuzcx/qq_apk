@@ -4,7 +4,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class sxa
-  implements adca
+  implements adgp
 {
   String jdField_a_of_type_JavaLangString = "";
   WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference = null;

@@ -1,11 +1,15 @@
-class wpf
-  implements woo
+import android.support.annotation.NonNull;
+
+public class wpf
+  extends uli
 {
-  wpf(wou paramwou) {}
+  public int a;
+  public String a;
   
-  public void a()
+  public wpf(@NonNull String paramString, int paramInt)
   {
-    wsv.d("Q.qqstory.home.StoryListPresenter", "ParallelStepExecutor finish requestAllDataFromNet steps");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

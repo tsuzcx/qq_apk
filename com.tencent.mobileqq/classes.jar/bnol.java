@@ -1,221 +1,280 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.IntentFilter;
-import android.os.Environment;
-import android.os.StatFs;
-import android.text.TextUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tencent.ttpic.openapi.filter.GaussianBlurFilter;
+import com.tencent.ttpic.openapi.filter.GaussianBlurFilterCompose;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 
 public class bnol
 {
-  public static long a;
-  static bnol jdField_a_of_type_Bnol;
-  static final Object jdField_a_of_type_JavaLangObject = new Object();
-  public static long b;
-  final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bnom(this);
-  bnon jdField_a_of_type_Bnon;
-  public String a;
-  HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  boolean jdField_a_of_type_Boolean;
-  public String b;
-  long c = 0L;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bnoi jdField_a_of_type_Bnoi;
+  private GaussianBlurFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilter;
+  private GaussianBlurFilterCompose jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilterCompose;
+  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  private String jdField_a_of_type_JavaLangString;
+  private float[] jdField_a_of_type_ArrayOfFloat;
+  private int jdField_b_of_type_Int;
+  private RenderBuffer jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  private float[] jdField_b_of_type_ArrayOfFloat;
+  private int jdField_c_of_type_Int;
+  private RenderBuffer jdField_c_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  private float[] jdField_c_of_type_ArrayOfFloat;
+  private int jdField_d_of_type_Int;
+  private float[] jdField_d_of_type_ArrayOfFloat;
+  private int e;
+  private int f = -1;
   
-  static
+  public bnol(Context paramContext, String paramString)
   {
-    jdField_a_of_type_Long = 57671680L;
-    jdField_b_of_type_Long = 209715200L;
+    this(paramContext, paramString, 0);
   }
   
-  bnol()
+  public bnol(Context paramContext, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    b();
-    a();
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.intent.action.MEDIA_BAD_REMOVAL");
-    localIntentFilter.addAction("android.intent.action.MEDIA_EJECT");
-    localIntentFilter.addAction("android.intent.action.MEDIA_MOUNTED");
-    localIntentFilter.addAction("android.intent.action.MEDIA_REMOVED");
-    localIntentFilter.addAction("android.intent.action.MEDIA_UNMOUNTED");
-    localIntentFilter.addDataScheme("file");
-    VideoEnvironment.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static long a(String paramString)
+  private float[] a()
   {
-    try
+    float[] arrayOfFloat = new float[2];
+    arrayOfFloat[0] = (-this.jdField_b_of_type_Int * 0.734F * 0.5F);
+    arrayOfFloat[1] = (-this.jdField_c_of_type_Int * 0.734F * 0.5F);
+    float f1 = this.jdField_b_of_type_Int / this.jdField_c_of_type_Int;
+    float f2 = this.jdField_d_of_type_Int / this.e;
+    float f3;
+    if (f1 > f2)
     {
-      paramString = new StatFs(paramString);
-      long l = paramString.getAvailableBlocks();
-      int i = paramString.getBlockSize();
-      return i * l;
+      f3 = arrayOfFloat[0];
+      arrayOfFloat[0] = (f2 / f1 * f3);
     }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("StorageManager", 2, "getFreeSpace throw an Exception!", paramString);
-      }
-    }
-    return 0L;
-  }
-  
-  public static bnol a()
-  {
-    if (jdField_a_of_type_Bnol == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Bnol == null) {
-        jdField_a_of_type_Bnol = new bnol();
-      }
-      return jdField_a_of_type_Bnol;
-    }
-  }
-  
-  /* Error */
-  static boolean a(String paramString)
-  {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_1
-    //   2: invokestatic 132	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   5: invokevirtual 136	java/lang/Thread:getId	()J
-    //   8: lstore_2
-    //   9: new 138	java/io/File
-    //   12: dup
-    //   13: new 140	java/lang/StringBuilder
-    //   16: dup
-    //   17: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   20: aload_0
-    //   21: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: ldc 147
-    //   26: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: lload_2
-    //   30: invokevirtual 150	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   33: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   36: invokespecial 155	java/io/File:<init>	(Ljava/lang/String;)V
-    //   39: astore_0
-    //   40: aload_0
-    //   41: invokevirtual 158	java/io/File:exists	()Z
-    //   44: ifeq +22 -> 66
-    //   47: aload_0
-    //   48: invokevirtual 161	java/io/File:delete	()Z
-    //   51: ifeq +8 -> 59
-    //   54: aload_0
-    //   55: invokevirtual 164	java/io/File:createNewFile	()Z
-    //   58: istore_1
-    //   59: aload_0
-    //   60: invokevirtual 161	java/io/File:delete	()Z
-    //   63: pop
-    //   64: iload_1
-    //   65: ireturn
-    //   66: aload_0
-    //   67: invokevirtual 164	java/io/File:createNewFile	()Z
-    //   70: istore_1
-    //   71: goto -12 -> 59
-    //   74: astore 4
-    //   76: aload 4
-    //   78: invokevirtual 167	java/lang/Throwable:printStackTrace	()V
-    //   81: aload_0
-    //   82: invokevirtual 161	java/io/File:delete	()Z
-    //   85: pop
-    //   86: iconst_0
-    //   87: ireturn
-    //   88: astore 4
-    //   90: aload_0
-    //   91: invokevirtual 161	java/io/File:delete	()Z
-    //   94: pop
-    //   95: aload 4
-    //   97: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	98	0	paramString	String
-    //   1	70	1	bool	boolean
-    //   8	22	2	l	long
-    //   74	3	4	localThrowable	Throwable
-    //   88	8	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   40	47	74	java/lang/Throwable
-    //   47	59	74	java/lang/Throwable
-    //   66	71	74	java/lang/Throwable
-    //   40	47	88	finally
-    //   47	59	88	finally
-    //   66	71	88	finally
-    //   76	81	88	finally
-  }
-  
-  void a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
     for (;;)
     {
-      return;
-      this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "/Android/data/com.tencent.mobileqq/qq/video");
-      if (QLog.isColorLevel())
+      arrayOfFloat[1] += -0.091F * this.jdField_c_of_type_Int / 2.0F;
+      return arrayOfFloat;
+      if (f1 < f2)
       {
-        QLog.e("TAG", 2, "updateStorePath:storeVideoPath=" + this.jdField_b_of_type_JavaLangString);
-        QLog.e("TAG", 2, "updateStorePath:maxAvailableSizePath=" + this.jdField_a_of_type_JavaLangString);
-      }
-      try
-      {
-        File localFile = new File(this.jdField_b_of_type_JavaLangString);
-        if (!localFile.exists())
-        {
-          localFile.mkdirs();
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        this.jdField_a_of_type_JavaLangString = null;
+        f3 = arrayOfFloat[1];
+        arrayOfFloat[1] = (f1 / f2 * f3);
       }
     }
   }
   
-  void b()
+  private static float[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    float f2 = 0.734F;
+    float f1 = paramInt3 / paramInt4;
+    float f3 = paramInt1 / paramInt2;
+    if (f1 > f3) {
+      f1 = f3 / f1 * 0.734F;
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_a_of_type_JavaLangString = "";
-      this.c = 0L;
-      Object localObject1 = Environment.getExternalStorageDirectory().getAbsolutePath();
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsValue(localObject1)) {
-        this.jdField_a_of_type_JavaUtilHashMap.put("external_card", localObject1);
-      }
-      localObject1 = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      for (;;)
+      float[] arrayOfFloat = new float[16];
+      Matrix.setIdentityM(arrayOfFloat, 0);
+      Matrix.translateM(arrayOfFloat, 0, 0.0F, -0.091F, 0.0F);
+      Matrix.scaleM(arrayOfFloat, 0, f1, f2, 1.0F);
+      return arrayOfFloat;
+      if (f1 < f3)
       {
-        if (((Iterator)localObject1).hasNext())
-        {
-          String str = (String)((Iterator)localObject1).next();
-          try
-          {
-            Object localObject3 = new File(str);
-            if ((((File)localObject3).exists()) && (((File)localObject3).canWrite()) && (a(str)))
-            {
-              localObject3 = new StatFs(str);
-              long l = ((StatFs)localObject3).getAvailableBlocks() * ((StatFs)localObject3).getBlockSize();
-              if ((l > 0L) && (this.c < l))
-              {
-                this.c = l;
-                this.jdField_a_of_type_JavaLangString = str;
-              }
-            }
-          }
-          catch (Throwable localThrowable)
-          {
-            localThrowable.printStackTrace();
-          }
-        }
+        f2 = f1 / f3;
+        f1 = 0.734F;
+        f2 *= 0.734F;
       }
+      else
+      {
+        f1 = 0.734F;
+      }
+    }
+  }
+  
+  @NonNull
+  private void b()
+  {
+    Object localObject = new TextPaint();
+    ((TextPaint)localObject).setAntiAlias(true);
+    ((TextPaint)localObject).setStyle(Paint.Style.FILL_AND_STROKE);
+    ((TextPaint)localObject).setTextSize(22.0F);
+    ((TextPaint)localObject).setColor(-1);
+    ((TextPaint)localObject).setFakeBoldText(true);
+    ((TextPaint)localObject).setStrokeWidth(0.5F);
+    ((TextPaint)localObject).setShadowLayer(4.0F, 0.0F, 0.0F, 1073741824);
+    Paint.FontMetrics localFontMetrics = ((TextPaint)localObject).getFontMetrics();
+    float f1 = localFontMetrics.bottom - localFontMetrics.top;
+    float f2 = localFontMetrics.descent - localFontMetrics.ascent;
+    float f3 = ((TextPaint)localObject).measureText(this.jdField_a_of_type_JavaLangString) + 2.0F;
+    wxe.b("StoryVideoForwardFilter", "createWaterMarkTextureAndCalculateMvpMatrix textHeight=" + f1);
+    Bitmap localBitmap2 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130846385);
+    Bitmap localBitmap1 = Bitmap.createBitmap((int)f3 + 6 + (int)f2, (int)f1 + 1, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(localBitmap1);
+    localCanvas.drawBitmap(localBitmap2, null, new Rect((int)f3 + 5, (int)(f1 - f2) / 2 + 1, (int)f3 + 5 + (int)f2, (int)(f2 + f1) / 2), (Paint)localObject);
+    localBitmap2.recycle();
+    localCanvas.drawText(this.jdField_a_of_type_JavaLangString, 2.0F, f1 - localFontMetrics.bottom, (Paint)localObject);
+    this.f = GlUtil.createTexture(3553, localBitmap1);
+    GLES20.glBindTexture(3553, 0);
+    this.jdField_d_of_type_ArrayOfFloat = new float[16];
+    Matrix.setIdentityM(this.jdField_d_of_type_ArrayOfFloat, 0);
+    localObject = a();
+    f3 = this.jdField_b_of_type_Int / 750.0F;
+    f2 = localBitmap1.getWidth() * f3;
+    f1 = localBitmap1.getHeight() * f3;
+    float f6 = localObject[0];
+    float f7 = f2 / 2.0F;
+    float f4 = localObject[1];
+    float f5 = f1 / 2.0F;
+    f6 = (f6 + f7 + 20.0F * f3) / (this.jdField_b_of_type_Int / 2);
+    f3 = (f4 + f5 + f3 * 18.0F) / (this.jdField_c_of_type_Int / 2);
+    Matrix.translateM(this.jdField_d_of_type_ArrayOfFloat, 0, f6, f3, 0.0F);
+    f2 /= this.jdField_b_of_type_Int;
+    f1 /= this.jdField_c_of_type_Int;
+    Matrix.scaleM(this.jdField_d_of_type_ArrayOfFloat, 0, f2, f1, 1.0F);
+    if (localBitmap1 != null) {
+      localBitmap1.recycle();
+    }
+  }
+  
+  private void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilterCompose = new GaussianBlurFilterCompose();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilterCompose.init(paramInt1 / 4, paramInt2 / 4);
+    this.jdField_a_of_type_Bnoi = new bnoi();
+    this.jdField_a_of_type_Bnoi.a(paramInt1, paramInt2, (int)(20.0F * paramInt1 / 550.0F));
+    this.jdField_c_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramInt1, paramInt2, 33984);
+    bnof localbnof = new bnof();
+    localbnof.init();
+    localbnof.a(0.0F, 0.0F, 0.0F, 0.25F);
+    localbnof.a(0.05454546F, 0.03061225F);
+    this.jdField_c_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+    localbnof.a(null, null);
+    this.jdField_c_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilter = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilterCompose.getFilter();
+    this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramInt3, paramInt4, 33984);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramInt1, paramInt2, 33984);
+    b();
+    this.jdField_a_of_type_ArrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_b_of_type_ArrayOfFloat = a(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_c_of_type_ArrayOfFloat = new float[16];
+    System.arraycopy(this.jdField_b_of_type_ArrayOfFloat, 0, this.jdField_c_of_type_ArrayOfFloat, 0, 16);
+    Matrix.translateM(this.jdField_c_of_type_ArrayOfFloat, 0, 0.02181818F, 0.0122449F, 0.0F);
+    Matrix.scaleM(this.jdField_c_of_type_ArrayOfFloat, 0, 1.109091F, 1.061225F, 1.0F);
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = paramInt;
+    if (this.jdField_a_of_type_Int != 0)
+    {
+      float[] arrayOfFloat = new float[16];
+      Matrix.setIdentityM(arrayOfFloat, 0);
+      Matrix.rotateM(arrayOfFloat, 0, this.jdField_a_of_type_Int, 0.0F, 0.0F, 1.0F);
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramInt, null, arrayOfFloat);
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+      i = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId();
+    }
+    if ((this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilter != null) && (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilter.isInitSucc())) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilterCompose.drawTexture(i);
+    }
+    this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
+    GLES20.glClear(16384);
+    if ((this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilter != null) && (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilter.isInitSucc()))
+    {
+      GLES20.glEnable(3042);
+      GLES20.glBlendFunc(32771, 771);
+      GLES20.glBlendColor(0.0F, 0.0F, 0.0F, 0.75F);
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilterCompose.getTextureId(), null, this.jdField_a_of_type_ArrayOfFloat);
+      GLES20.glDisable(3042);
+    }
+    for (;;)
+    {
+      GLES20.glEnable(3042);
+      GLES20.glBlendFunc(770, 771);
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, this.jdField_c_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId(), null, this.jdField_c_of_type_ArrayOfFloat);
+      GLES20.glDisable(3042);
+      this.jdField_a_of_type_Bnoi.drawTexture(i, null, this.jdField_b_of_type_ArrayOfFloat);
+      if (this.f != -1)
+      {
+        GLES20.glEnable(3042);
+        GLES20.glBlendFunc(770, 771);
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, this.f, null, this.jdField_d_of_type_ArrayOfFloat);
+        GLES20.glDisable(3042);
+      }
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+      return this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId();
+      GLES20.glEnable(3042);
+      GLES20.glBlendFunc(32771, 771);
+      GLES20.glBlendColor(0.0F, 0.0F, 0.0F, 0.1F);
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, i, null, this.jdField_a_of_type_ArrayOfFloat);
+      GLES20.glDisable(3042);
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilter != null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilter.destroy();
+    }
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilterCompose != null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilterCompose.destroy();
+    }
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
+    }
+    if (this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+    }
+    if (this.f != -1) {
+      GlUtil.deleteTexture(this.f);
+    }
+    if (this.jdField_c_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
+      this.jdField_c_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+    }
+    if (this.jdField_a_of_type_Bnoi != null) {
+      this.jdField_a_of_type_Bnoi.destroy();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_b_of_type_Int != paramInt1) || (this.jdField_c_of_type_Int != paramInt2))
+    {
+      this.jdField_b_of_type_Int = paramInt1;
+      this.jdField_c_of_type_Int = paramInt2;
+      b(this.jdField_d_of_type_Int, this.e, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_b_of_type_Int = paramInt3;
+    this.jdField_c_of_type_Int = paramInt4;
+    if (this.jdField_a_of_type_Int % 180 != 0) {
+      this.jdField_d_of_type_Int = paramInt2;
+    }
+    for (this.e = paramInt1;; this.e = paramInt2)
+    {
+      b(this.jdField_d_of_type_Int, this.e, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+      return;
+      this.jdField_d_of_type_Int = paramInt1;
     }
   }
 }

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.hotpic;
 
-import asqd;
+import asum;
 
 public class HotPicPageView$7$1
   implements Runnable
 {
-  public HotPicPageView$7$1(asqd paramasqd) {}
+  public HotPicPageView$7$1(asum paramasum) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.a.jdField_a_of_type_Asqh, this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
+    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.a.jdField_a_of_type_Asuq, this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
   }
 }
 

@@ -1,10 +1,21 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.launcher.AppUIProxy.LoadingUI;
 
-public abstract interface bgum
+public class bgum
+  implements Animation.AnimationListener
 {
-  public abstract void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong);
+  public bgum(AppUIProxy.LoadingUI paramLoadingUI) {}
   
-  public abstract void onInitGpkgInfo(int paramInt, bgun parambgun, String paramString);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    AppUIProxy.LoadingUI.a(this.a).setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -14,7 +14,7 @@ class nqe
     RIJRedPacketManager.a().a(this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, 5, PublicAccountBrowser.a(this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser), this.a.jdField_a_of_type_JavaLangString, new nqf(this), false, null);
     paramView = new orz();
     orz localorz = paramView.a("rowkey", this.a.jdField_a_of_type_JavaLangString).a("content_type", Integer.valueOf(2));
-    if (bdee.h(BaseApplicationImpl.getContext())) {}
+    if (bdin.h(BaseApplicationImpl.getContext())) {}
     for (int i = 2;; i = 1)
     {
       localorz.a("network_type", Integer.valueOf(i)).a("os", Integer.valueOf(1)).a("imei", ors.f());

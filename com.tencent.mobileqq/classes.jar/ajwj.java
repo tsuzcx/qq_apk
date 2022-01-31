@@ -1,10 +1,18 @@
-import android.view.View;
-
-public class ajwj
-  extends ajwl
+public abstract interface ajwj
 {
-  public long a;
-  public View a;
+  public abstract void P();
+  
+  public abstract void Q();
+  
+  public abstract void a(boolean paramBoolean, int paramInt);
+  
+  public abstract void a(boolean paramBoolean, String paramString, int paramInt);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
+  
+  public abstract int c();
+  
+  public abstract void d(int paramInt);
 }
 
 

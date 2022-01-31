@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.model;
 
-import aube;
+import aufn;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmoticonManager$9
   implements Runnable
 {
-  public EmoticonManager$9(aube paramaube, Emoticon paramEmoticon) {}
+  public EmoticonManager$9(aufn paramaufn, Emoticon paramEmoticon) {}
   
   public void run()
   {
-    aube.a(this.this$0, this.a);
-    if (!aube.a(this.this$0, this.a)) {
+    aufn.a(this.this$0, this.a);
+    if (!aufn.a(this.this$0, this.a)) {
       QLog.e("EmoticonManager", 1, "saveEmoticon fail epId = " + this.a.epId + ", eId = " + this.a.eId);
     }
   }

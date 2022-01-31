@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bcwh;
+import bdaq;
 
 public class TabItemView
   extends LinearLayout
@@ -37,15 +37,15 @@ public class TabItemView
   {
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     localLinearLayout.setOrientation(1);
-    LinearLayout.LayoutParams localLayoutParams1 = new LinearLayout.LayoutParams(-1, bcwh.a(paramContext, 54.0F));
+    LinearLayout.LayoutParams localLayoutParams1 = new LinearLayout.LayoutParams(-1, bdaq.a(paramContext, 54.0F));
     this.jdField_a_of_type_AndroidViewView = new View(paramContext);
-    LinearLayout.LayoutParams localLayoutParams2 = new LinearLayout.LayoutParams(-1, bcwh.a(paramContext, 1.0F));
+    LinearLayout.LayoutParams localLayoutParams2 = new LinearLayout.LayoutParams(-1, bdaq.a(paramContext, 1.0F));
     localLinearLayout.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams2);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    int i = bcwh.a(paramContext, 25.0F);
+    int i = bdaq.a(paramContext, 25.0F);
     localLayoutParams2 = new LinearLayout.LayoutParams(i, i);
     localLayoutParams2.gravity = 17;
-    localLayoutParams2.setMargins(0, bcwh.a(paramContext, 5.0F), 0, bcwh.a(paramContext, 2.0F));
+    localLayoutParams2.setMargins(0, bdaq.a(paramContext, 5.0F), 0, bdaq.a(paramContext, 2.0F));
     localLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams2);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 11.0F);

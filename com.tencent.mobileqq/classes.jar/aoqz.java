@@ -1,27 +1,40 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class aoqz
-  extends aopw<aoqy>
+  extends aokh<aoqy>
 {
+  public static aoqy a()
+  {
+    return (aoqy)aoks.a().a(292);
+  }
+  
   public int a()
   {
-    return 580;
+    return 292;
   }
   
   @NonNull
-  public aoqy a()
+  public aoqy a(int paramInt)
   {
-    return aoqy.a();
+    return new aoqy();
   }
   
-  @NonNull
-  public aoqy a(@NonNull aogf[] paramArrayOfaogf)
+  @Nullable
+  public aoqy a(aoko[] paramArrayOfaoko)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QVIP.PERF.ConfigProcessor", 1, paramArrayOfaogf[0].a);
+      QLog.d("ReadInjoySearchJumpurlConfProcessor", 2, "[onParsed] confFiles = " + paramArrayOfaoko);
     }
-    return aoqy.a(paramArrayOfaogf[0].a);
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoySearchJumpurlConfProcessor", 2, "[onParsed] confFiles[0].content= " + paramArrayOfaoko[0].a);
+      }
+      return aoqy.a(paramArrayOfaoko[0].a);
+    }
+    return null;
   }
   
   public Class<aoqy> a()
@@ -29,15 +42,23 @@ public class aoqz
     return aoqy.class;
   }
   
-  public boolean a()
+  public void a(int paramInt) {}
+  
+  public void a(aoqy paramaoqy) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
   {
     return false;
   }
   
-  @NonNull
-  public aoqy b()
+  public boolean c()
   {
-    return aoqy.a();
+    return true;
   }
 }
 

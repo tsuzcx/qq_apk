@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.data.CustomEmotionData;
-import java.util.List;
-
-class apnl
-  extends alnn
+public class apnl
 {
-  apnl(apnf paramapnf, Object paramObject) {}
+  public static int a = 300;
   
-  protected void a(List<CustomEmotionData> arg1)
+  public static String a(String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaLangObject.notify();
-      return;
+    if (bdnn.a(paramString)) {
+      return "";
     }
+    paramString = paramString.split("_");
+    if (paramString.length > 2) {
+      return paramString[1];
+    }
+    return "";
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    if ((bdnn.a(paramString1)) || (bdnn.a(paramString2))) {
+      return "";
+    }
+    paramString2 = bflq.a(paramString2);
+    return alof.bj + paramString2 + paramString1;
   }
 }
 

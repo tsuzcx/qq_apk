@@ -1,15 +1,15 @@
-import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
 
-class txw
-  implements yvn<FeedCloudRead.StGetBusiInfoRsp>
+public class txw
+  implements View.OnClickListener
 {
-  txw(txv paramtxv, yft paramyft) {}
+  public txw(QCircleContentOperationView paramQCircleContentOperationView) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Yft != null) {
-      this.jdField_a_of_type_Yft.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetBusiInfoRsp });
-    }
+    QCircleContentOperationView.a(this.a);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.report;
 
-import bgpl;
-import bgya;
+import bgts;
+import bhch;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,12 +13,12 @@ public final class SDKMiniProgramLpReportDC04239$13
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
-      bgpl localbgpl = (bgpl)localIterator.next();
-      if (localbgpl != null) {
-        localbgpl.a();
+      bgts localbgts = (bgts)localIterator.next();
+      if (localbgts != null) {
+        localbgts.a();
       }
     }
-    bgya.a().b();
+    bhch.a().b();
   }
 }
 

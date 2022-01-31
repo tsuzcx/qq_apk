@@ -1,71 +1,93 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Pair;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.CaughtQZonePluginException;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.QZoneStartupMonitor.2.1;
-import cooperation.qzone.QzonePluginProxyActivity;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import mqq.app.AppRuntime;
 
 public class bjat
-  extends Handler
 {
-  bjat(bjar parambjar, Looper paramLooper)
+  private static int a = -1;
+  
+  public static void a(Context paramContext)
   {
-    super(paramLooper);
+    bjax.a().enter(paramContext, 1002L, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "", new Bundle(), null);
   }
   
-  public void handleMessage(Message paramMessage)
+  public static void a(Context paramContext, Intent paramIntent, String paramString)
   {
-    int j = 1;
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      break;
+    a(paramContext, paramIntent, paramString, null);
+  }
+  
+  public static void a(Context paramContext, Intent paramIntent, String paramString, EnterCallback paramEnterCallback)
+  {
+    Bundle localBundle = paramIntent.getExtras();
+    paramIntent = localBundle;
+    if (localBundle == null) {
+      paramIntent = new Bundle();
     }
-    do
+    paramIntent.putString("com.tencent.reader.plugin.KEY_ACTIVITY_CLASSNAME", paramString);
+    paramIntent.putLong("start_plugin_act_begin_time", System.currentTimeMillis());
+    bjax.a().enter(paramContext, 1003L, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "", paramIntent, paramEnterCallback);
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean)
+  {
+    if (bizc.a().a())
     {
-      return;
-    } while (bjar.a(this.a));
-    if (QzonePluginProxyActivity.a())
-    {
-      QLog.i("QZoneStartupMonitor", 1, "超时，但是qzone 进程存在");
+      bjbl.c("ReaderPluginHelper", "[loadPluginRuntime] sIsPluginReady = true ! mGrayState = " + a);
       return;
     }
-    QLog.e("QZoneStartupMonitor", 1, "启动超时认为启动失败，校验odex，并上报");
-    paramMessage = bjar.a(BaseApplicationImpl.getApplication(), "qzone_plugin.apk");
-    int i;
-    if (paramMessage != null)
-    {
-      i = ((Integer)paramMessage.first).intValue();
-      paramMessage = (Throwable)paramMessage.second;
+    bjbl.c("ReaderPluginHelper", "[loadPluginRuntime] sIsPluginReady = false, mGrayState = " + a + " isShadowOnly = " + paramBoolean);
+    if (a()) {
+      a(paramContext);
     }
     for (;;)
     {
-      int k = LocalMultiProcConfig.getInt("key_recovery_count", 0);
-      bjar.a(this.a, i, bjar.a(this.a), k);
-      StringBuilder localStringBuilder = new StringBuilder("qzone进程启动失败,elf valid errorcode: ").append(i).append(",recoveryCount:").append(k);
-      if (QzoneConfig.getInstance().getConfig("QZoneSetting", "exception_report_rdm", 0) == 1) {}
-      for (;;)
-      {
-        if (j != 0) {
-          bjqs.a(new CaughtQZonePluginException("start failed. " + paramMessage.getMessage()), localStringBuilder.toString());
-        }
-        if (i == 0) {
-          break;
-        }
-        ThreadManager.postImmediately(new QZoneStartupMonitor.2.1(this, k), null, false);
-        return;
-        j = 0;
+      bjbo.a(paramContext, String.valueOf(a));
+      return;
+      if (paramBoolean) {
+        break;
       }
-      paramMessage = null;
-      i = 0;
+      BaseApplicationImpl.getApplication().waitAppRuntime(null).getAppRuntime("qqreaderplugin.apk");
     }
+  }
+  
+  public static boolean a()
+  {
+    bjbl.e("ReaderPluginHelper", "[isUseShadow] mGrayState = " + a);
+    if (a == -1)
+    {
+      a = bjav.a().getInt("KEY_SHADOW_GRAY", -1);
+      if (a == -1) {
+        a = 0;
+      }
+      bjbl.c("ReaderPluginHelper", "[loadPluginRuntime] SP state = " + a);
+    }
+    return a == 1;
+  }
+  
+  public static void b(Context paramContext)
+  {
+    boolean bool = bizc.a().a();
+    bjbl.c("ReaderPluginHelper", "preloadPlugin: isPluginReady=" + bool + ", isUseShadow=" + a());
+    if (bool)
+    {
+      bjbl.c("ReaderPluginHelper", "[loadPluginRuntime] sIsPluginReady = true ! mGrayState = " + a);
+      return;
+    }
+    if (a())
+    {
+      c(paramContext);
+      return;
+    }
+    BaseApplicationImpl.getApplication().waitAppRuntime(null).getAppRuntime("qqreaderplugin.apk");
+  }
+  
+  private static void c(Context paramContext)
+  {
+    bjax.a().enter(paramContext, 1001L, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "", new Bundle(), null);
   }
 }
 

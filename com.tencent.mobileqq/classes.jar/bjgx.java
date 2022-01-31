@@ -1,21 +1,42 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.QCirclePublishPictureTagInfo;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
-public final class bjgx
-  implements Parcelable.Creator<QCirclePublishPictureTagInfo>
+public class bjgx
 {
-  public QCirclePublishPictureTagInfo a(Parcel paramParcel)
-  {
-    QCirclePublishPictureTagInfo localQCirclePublishPictureTagInfo = new QCirclePublishPictureTagInfo();
-    localQCirclePublishPictureTagInfo.picId = paramParcel.readString();
-    localQCirclePublishPictureTagInfo.picTags = paramParcel.readArrayList(String.class.getClassLoader());
-    return localQCirclePublishPictureTagInfo;
-  }
+  public final int a;
+  public final long a;
+  public final int b;
+  public final long b;
+  public final long c;
+  public final long d;
+  public final long e;
+  public final long f;
   
-  public QCirclePublishPictureTagInfo[] a(int paramInt)
+  private bjgx(ByteBuffer paramByteBuffer, int paramInt)
   {
-    return new QCirclePublishPictureTagInfo[paramInt];
+    switch (paramInt)
+    {
+    default: 
+      throw new IOException("Unexpected elf class: " + paramInt);
+    case 1: 
+      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_a_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Long = paramByteBuffer.getInt();
+      this.c = paramByteBuffer.getInt();
+      this.d = paramByteBuffer.getInt();
+      this.e = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
+      this.f = paramByteBuffer.getInt();
+      return;
+    }
+    this.jdField_a_of_type_Int = paramByteBuffer.getInt();
+    this.jdField_b_of_type_Int = paramByteBuffer.getInt();
+    this.jdField_a_of_type_Long = paramByteBuffer.getLong();
+    this.jdField_b_of_type_Long = paramByteBuffer.getLong();
+    this.c = paramByteBuffer.getLong();
+    this.d = paramByteBuffer.getLong();
+    this.e = paramByteBuffer.getLong();
+    this.f = paramByteBuffer.getLong();
   }
 }
 

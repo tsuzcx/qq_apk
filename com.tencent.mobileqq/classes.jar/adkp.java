@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adkp
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adkp(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adkp(NotificationActivity paramNotificationActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setText("");
+    NotificationActivity.a(this.a, NotificationActivity.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adkp
  * JD-Core Version:    0.7.0.1
  */

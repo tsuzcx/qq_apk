@@ -34,7 +34,7 @@ public class ntv
       a = new ArrayList();
       localObject1 = new File(ntw.f);
     } while ((!((File)localObject1).exists()) || (!((File)localObject1).isFile()));
-    Object localObject1 = bdcs.a((File)localObject1);
+    Object localObject1 = bdhb.a((File)localObject1);
     for (;;)
     {
       int i;
@@ -104,7 +104,7 @@ public class ntv
     paramCustomWebView.a(new String[] { "JD_REPORT" });
     return;
     label75:
-    ((yyp)localWebViewPlugin).b(str);
+    ((zde)localWebViewPlugin).b(str);
   }
   
   public static void a(AppInterface paramAppInterface, String paramString1, String paramString2)

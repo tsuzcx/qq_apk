@@ -1,39 +1,22 @@
-import android.os.SystemClock;
+import android.os.Handler;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import com.tencent.mobileqq.activity.photo.SendPhotoTask;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public abstract class aipp
+public class aipp
+  implements MessageQueue.IdleHandler
 {
-  private long jdField_a_of_type_Long;
-  private aipo jdField_a_of_type_Aipo;
-  private long b;
+  public aipp(SendPhotoActivity paramSendPhotoActivity) {}
   
-  public aipp(long paramLong)
+  public boolean queueIdle()
   {
-    a(paramLong);
+    awiw.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "queueIdle", "start");
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask = new SendPhotoTask(this.a, null, this.a.jdField_a_of_type_AndroidOsHandler);
+    ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask, 8, null, false);
+    return false;
   }
-  
-  public final void a()
-  {
-    long l = this.jdField_a_of_type_Long - SystemClock.elapsedRealtime();
-    if (l > 1000L)
-    {
-      b(l);
-      return;
-    }
-    b();
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Aipo != null) {
-      this.jdField_a_of_type_Aipo.a(paramLong);
-    }
-    this.b = paramLong;
-    this.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() + 1000L * paramLong);
-  }
-  
-  public abstract void b();
-  
-  public abstract void b(long paramLong);
 }
 
 

@@ -1,21 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.smtt.sdk.WebView;
 
-class beht
-  implements behy<oidb_0x8ed.RspBody>
+public abstract interface beht
 {
-  beht(behr parambehr, behy parambehy) {}
+  public abstract Activity a();
   
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
-  {
-    if (paramInt == 0) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WerewolvesHandler", 2, "startAnotherRound, quitFailed: errorCode :" + paramInt);
-    }
-    this.jdField_a_of_type_Behy.a(-1, null);
-  }
+  public abstract WebViewFragment a();
+  
+  public abstract WebView a();
 }
 
 

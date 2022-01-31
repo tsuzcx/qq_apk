@@ -1,8 +1,8 @@
 package com.tencent.biz.qrcode.activity;
 
 import android.view.View;
-import bcvq;
-import xtv;
+import bczz;
+import xye;
 
 class QRDisplayActivity$21
   implements Runnable
@@ -11,9 +11,9 @@ class QRDisplayActivity$21
   
   public void run()
   {
-    xtv localxtv = new xtv(this.this$0.d, this.this$0);
-    this.this$0.d.setAccessibilityDelegate(localxtv);
-    bcvq.a(this.this$0.a, false);
+    xye localxye = new xye(this.this$0.d, this.this$0);
+    this.this$0.d.setAccessibilityDelegate(localxye);
+    bczz.a(this.this$0.a, false);
   }
 }
 

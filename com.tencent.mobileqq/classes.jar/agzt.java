@@ -1,17 +1,9 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class agzt
-  implements View.OnTouchListener
+public abstract interface agzt
+  extends ahar
 {
-  public agzt(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return (paramMotionEvent.getAction() == 2) && ((this.a.a == null) || (this.a.a.getCount() == 0));
-  }
+  public abstract MessageRecord a(Object... paramVarArgs);
 }
 
 

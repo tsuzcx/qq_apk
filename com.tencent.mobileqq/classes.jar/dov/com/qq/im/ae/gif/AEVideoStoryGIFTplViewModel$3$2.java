@@ -1,19 +1,19 @@
 package dov.com.qq.im.ae.gif;
 
-import bkwc;
-import bkxi;
-import bkxk;
-import bmab;
+import blaj;
+import blbp;
+import blbr;
+import bmen;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 
 public class AEVideoStoryGIFTplViewModel$3$2
   implements Runnable
 {
-  public AEVideoStoryGIFTplViewModel$3$2(bkxk parambkxk, MetaMaterial paramMetaMaterial) {}
+  public AEVideoStoryGIFTplViewModel$3$2(blbr paramblbr, MetaMaterial paramMetaMaterial) {}
   
   public void run()
   {
-    bkxi.a(this.jdField_a_of_type_Bkxk.a).b(new bkwc(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, 0, 0));
+    blbp.a(this.jdField_a_of_type_Blbr.a).b(new blaj(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, 0, 0));
   }
 }
 

@@ -1,52 +1,53 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class alqq
+class alqq
+  implements arbi
 {
-  int jdField_a_of_type_Int = -1;
-  String jdField_a_of_type_JavaLangString;
-  ArrayList<alqp> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  alqq(alqo paramalqo, long paramLong) {}
   
-  public void a()
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    arri.c(BaseApplicationImpl.getContext().getString(2131692769));
+    ((alqo)this.jdField_a_of_type_Alqo.app.a(8)).OnSessionComplete(this.jdField_a_of_type_Long, 41, paramInt);
   }
   
-  public String toString()
+  public void a(Object paramObject)
   {
-    int i = 2000;
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
-    if (j > 2000) {}
-    for (;;)
-    {
-      StringBuilder localStringBuilder = new StringBuilder(i);
-      localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_JavaUtilArrayList.size()).append(",");
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        localStringBuilder.append("{");
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        for (;;)
-        {
-          if (localIterator.hasNext())
-          {
-            localStringBuilder.append((alqp)localIterator.next()).append(",");
-            continue;
-            if (j >= 100) {
-              break label155;
-            }
-            i = 100;
-            break;
-          }
-        }
-        localStringBuilder.append("}");
-      }
-      localStringBuilder.append("]");
-      return localStringBuilder.toString();
-      label155:
-      i = j;
+    Object localObject = (String)paramObject;
+    paramObject = (alqo)this.jdField_a_of_type_Alqo.app.a(8);
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      paramObject.OnSessionComplete(this.jdField_a_of_type_Long, 0, -999);
     }
+    DataLineMsgRecord localDataLineMsgRecord;
+    do
+    {
+      do
+      {
+        return;
+        int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_Long);
+        localDataLineMsgRecord = this.jdField_a_of_type_Alqo.app.a().a(i).a(this.jdField_a_of_type_Long);
+      } while (localDataLineMsgRecord == null);
+      localDataLineMsgRecord.serverPath = ((String)localObject);
+      localDataLineMsgRecord.nOpType = 1;
+      localDataLineMsgRecord.bIsSended = true;
+      localDataLineMsgRecord.bIsTransfering = false;
+      if (localDataLineMsgRecord.entityID != 0L)
+      {
+        localObject = this.jdField_a_of_type_Alqo.app.a().a(localDataLineMsgRecord.entityID);
+        if (localObject != null)
+        {
+          ((FileManagerEntity)localObject).status = 1;
+          ((FileManagerEntity)localObject).Uuid = localDataLineMsgRecord.serverPath;
+        }
+      }
+    } while (!paramObject.a(localDataLineMsgRecord));
+    paramObject.a(localDataLineMsgRecord);
   }
 }
 

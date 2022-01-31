@@ -1,18 +1,18 @@
 package com.tencent.biz.webviewplugin;
 
 import android.app.Activity;
-import becq;
-import begt;
-import zbx;
+import begz;
+import belc;
+import zgm;
 
 public class WebSoPlugin$2
   implements Runnable
 {
-  public WebSoPlugin$2(zbx paramzbx, String paramString) {}
+  public WebSoPlugin$2(zgm paramzgm, String paramString) {}
   
   public void run()
   {
-    if ((begt.c(this.a)) && (this.this$0.mRuntime != null) && (this.this$0.mRuntime.a() != null)) {
+    if ((belc.c(this.a)) && (this.this$0.mRuntime != null) && (this.this$0.mRuntime.a() != null)) {
       this.this$0.mRuntime.a().runOnUiThread(new WebSoPlugin.2.1(this));
     }
   }

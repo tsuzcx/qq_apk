@@ -1,13 +1,13 @@
 package com.tencent.open.appstore.dl;
 
-import bfgi;
-import bfhg;
+import bfkr;
+import bflp;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class DownloadManagerV2$15
   implements Runnable
 {
-  public DownloadManagerV2$15(bfgi parambfgi, boolean paramBoolean, String paramString) {}
+  public DownloadManagerV2$15(bfkr parambfkr, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
@@ -15,15 +15,15 @@ public class DownloadManagerV2$15
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        bfgi.a(this.this$0).deleteDownloadTask(this.jdField_a_of_type_JavaLangString);
+        bfkr.a(this.this$0).deleteDownloadTask(this.jdField_a_of_type_JavaLangString);
         return;
       }
-      bfgi.a(this.this$0).cancelDownloadTask(this.jdField_a_of_type_JavaLangString);
+      bfkr.a(this.this$0).cancelDownloadTask(this.jdField_a_of_type_JavaLangString);
       return;
     }
     catch (Exception localException)
     {
-      bfhg.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
+      bflp.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
     }
   }
 }

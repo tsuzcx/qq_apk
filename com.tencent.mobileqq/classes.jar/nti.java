@@ -48,17 +48,17 @@ public class nti
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
       this.jdField_a_of_type_AndroidViewView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167192));
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130846571);
+      ((TextView)this.jdField_a_of_type_AndroidViewView).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167194));
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130846644);
       ((TextView)this.jdField_a_of_type_AndroidViewView).setGravity(16);
       this.jdField_a_of_type_AndroidViewView.setTag(jdField_a_of_type_JavaLangString);
       ((TextView)this.jdField_a_of_type_AndroidViewView).setTextSize(this.jdField_a_of_type_AndroidContentContext.getResources().getInteger(2131427337));
     }
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.topMargin = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);
-    localLayoutParams.addRule(3, 2131373393);
+    localLayoutParams.topMargin = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);
+    localLayoutParams.addRule(3, 2131373445);
     localLayoutParams.addRule(11);
-    localLayoutParams.rightMargin = bcwh.b(this.jdField_a_of_type_AndroidContentContext, 20.0F);
+    localLayoutParams.rightMargin = bdaq.b(this.jdField_a_of_type_AndroidContentContext, 20.0F);
     ((TextView)this.jdField_a_of_type_AndroidViewView).setText(paramString);
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
@@ -104,7 +104,7 @@ public class nti
       Object localObject1 = null;
       try
       {
-        localObject2 = (ViewGroup)((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().c.findViewById(2131364137);
+        localObject2 = (ViewGroup)((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().c.findViewById(2131364139);
         localObject1 = localObject2;
       }
       catch (Exception localException)
@@ -118,11 +118,11 @@ public class nti
     {
       this.b = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
       this.b.setId(2131362440);
-      i = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 62.0F);
+      i = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 62.0F);
       localObject2 = new RelativeLayout.LayoutParams(i, i);
-      ((RelativeLayout.LayoutParams)localObject2).topMargin = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
-      ((RelativeLayout.LayoutParams)localObject2).rightMargin = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131373393);
+      ((RelativeLayout.LayoutParams)localObject2).topMargin = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
+      ((RelativeLayout.LayoutParams)localObject2).rightMargin = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131373445);
       ((RelativeLayout.LayoutParams)localObject2).addRule(11);
       this.b.setLayoutParams((ViewGroup.LayoutParams)localObject2);
     }
@@ -150,7 +150,7 @@ public class nti
       break label298;
     }
     a(localObject1, this.b);
-    azmj.b(null, "dc00899", "Pb_account_lifeservice", "1", "0X80075A0", "0X80075A0", 0, 0, "", "", String.valueOf(paramInt1), String.valueOf(paramInt2));
+    azqs.b(null, "dc00899", "Pb_account_lifeservice", "1", "0X80075A0", "0X80075A0", 0, 0, "", "", String.valueOf(paramInt1), String.valueOf(paramInt2));
   }
   
   public void onClick(View paramView)
@@ -173,7 +173,7 @@ public class nti
     }
     for (;;)
     {
-      azmj.b(null, "dc00899", "Pb_account_lifeservice", "1", "0X80075A1", "0X80075A1", 0, 0, "", "", str2, str3);
+      azqs.b(null, "dc00899", "Pb_account_lifeservice", "1", "0X80075A1", "0X80075A1", 0, 0, "", "", str2, str3);
       return;
       paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, JumpActivity.class);
       paramView.setData(Uri.parse(str1));

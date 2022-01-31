@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ahcn;
+import ahhc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,16 +12,16 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public abstract class ContactBaseView
   extends FrameLayout
 {
-  public ahcn a;
+  public ahhc a;
   public Activity a;
   public QQAppInterface a;
   
-  public ContactBaseView(ahcn paramahcn)
+  public ContactBaseView(ahhc paramahhc)
   {
-    super(paramahcn.a());
-    this.jdField_a_of_type_Ahcn = paramahcn;
-    this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_Ahcn.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramahcn.a();
+    super(paramahhc.a());
+    this.jdField_a_of_type_Ahhc = paramahhc;
+    this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_Ahhc.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramahhc.a();
   }
   
   public int a()

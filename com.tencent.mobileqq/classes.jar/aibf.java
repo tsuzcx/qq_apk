@@ -1,33 +1,22 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.4.1;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
 
 public class aibf
-  extends avqu
+  implements View.OnClickListener
 {
-  aibf(aiak paramaiak) {}
+  public aibf(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean1) && (paramBoolean2))
+    switch (paramView.getId())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
-      }
-      if ((this.a.a != null) && (this.a.a.app != null)) {}
     }
-    else
+    do
     {
       return;
-    }
-    QQAppInterface localQQAppInterface = this.a.a.app;
-    if ((GuardManager.a != null) && (!GuardManager.a.a())) {
-      ThreadManager.post(new MainAssistObserver.4.1(this, localQQAppInterface), 8, null, false);
-    }
-    this.a.g();
+    } while (ChatHistoryTroopFileFragment.a(this.a) == null);
+    ChatHistoryTroopFileFragment.a(this.a).setVisibility(8);
   }
 }
 

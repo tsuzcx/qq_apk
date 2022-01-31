@@ -1,24 +1,29 @@
-import android.support.annotation.NonNull;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class bmak
-  implements bmaj
+  implements blty
 {
-  @NonNull
-  public <T extends bmag> T a(@NonNull Class<T> paramClass)
+  public bmak(MusicProviderView paramMusicProviderView) {}
+  
+  public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    try
-    {
-      bmag localbmag = (bmag)paramClass.newInstance();
-      return localbmag;
+    if (QLog.isColorLevel()) {
+      QLog.d("MusicProviderView", 2, "onStep:" + paramInt + " done:" + paramBoolean);
     }
-    catch (InstantiationException localInstantiationException)
-    {
-      throw new RuntimeException("Cannot create an instance of " + paramClass, localInstantiationException);
+    if ((paramInt == 6) || (paramInt == 5) || (paramInt == 4)) {
+      this.a.a.sendEmptyMessage(3);
     }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      throw new RuntimeException("Cannot create an instance of " + paramClass, localIllegalAccessException);
-    }
+  }
+  
+  public void a(MusicItemInfo paramMusicItemInfo)
+  {
+    Message localMessage = this.a.a.obtainMessage();
+    localMessage.obj = paramMusicItemInfo;
+    localMessage.what = 4;
+    this.a.a.sendMessage(localMessage);
   }
 }
 

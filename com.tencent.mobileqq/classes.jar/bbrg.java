@@ -1,14 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bbrg
-  implements View.OnClickListener
+public class bbrg
 {
-  bbrg(bbrf parambbrf) {}
-  
-  public void onClick(View paramView)
+  public static String a(int paramInt)
   {
-    this.a.a(paramView);
+    long l1 = 0x7FFFFFFF & paramInt;
+    long l2 = paramInt >> 31 & 0x1;
+    return (l2 << 31 | l1) + "";
   }
 }
 

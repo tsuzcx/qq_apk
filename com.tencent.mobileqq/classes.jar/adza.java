@@ -1,46 +1,44 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.List;
-import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.GbarInfo;
-import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.RspBody;
-import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.RspInfo;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adza
-  extends nac
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adza(TroopInfoActivity paramTroopInfoActivity) {}
+  public adza(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    for (;;)
+    int i = 1;
+    if (paramBoolean)
     {
-      return;
-      try
+      SoundAndVibrateActivity.b(this.a, 0);
+      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839270);
+      if (this.a.app.b() == 0)
       {
-        paramBundle = new oidb_cmd0x6f6.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = paramBundle.rpt_msg_rsp_info.get();
-        if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
-        {
-          paramArrayOfByte = (oidb_cmd0x6f6.RspInfo)paramArrayOfByte.get(0);
-          if ((paramArrayOfByte != null) && (paramArrayOfByte.uint32_result.get() == 0))
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId = paramArrayOfByte.stgbarinfo.uint32_bid.get();
-            this.a.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId;
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeName = paramArrayOfByte.stgbarinfo.str_name.get().toStringUtf8();
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(7);
-            return;
-          }
+        this.a.b.setChecked(false);
+        this.a.app.f(1);
+        label61:
+        paramCompoundButton = this.a.app;
+        if (!paramBoolean) {
+          break label147;
         }
       }
-      catch (Exception paramArrayOfByte) {}
+    }
+    for (;;)
+    {
+      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_shake", 0, i, "", "", "", "");
+      return;
+      this.a.b.setChecked(true);
+      break;
+      SoundAndVibrateActivity.b(this.a, 8);
+      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839254);
+      this.a.app.f(0);
+      break label61;
+      label147:
+      i = 0;
     }
   }
 }

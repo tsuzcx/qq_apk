@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import kotlin.Metadata;
 
-class awlx
-  implements DialogInterface.OnDismissListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/pluspanel/AIOPlusPanelStudyModeAppInfoOrderConfigProcessor;", "Lcom/tencent/mobileqq/pluspanel/AIOPlusPanelAppInfoOrderConfigProcessor;", "()V", "type", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class awlx
+  extends awlv
 {
-  awlx(awlv paramawlv, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  public static final awly a = new awly(null);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public int a()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
-    }
+    return 611;
   }
 }
 

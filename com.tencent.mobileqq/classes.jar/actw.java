@@ -1,24 +1,15 @@
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class actw
-  extends aljr
+  implements DialogInterface.OnClickListener
 {
-  public actw(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public actw(DialogActivity paramDialogActivity) {}
   
-  protected void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
-      }
-    } while (this.a.a == null);
-    this.a.a.c();
+    this.a.finish();
   }
 }
 

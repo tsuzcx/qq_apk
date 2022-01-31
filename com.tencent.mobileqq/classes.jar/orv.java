@@ -3,13 +3,13 @@ import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.15.2;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public final class orv
-  implements bhvu
+  implements biab
 {
   orv(BaseActivity paramBaseActivity) {}
   
-  public void a(bhvt parambhvt)
+  public void a(biaa parambiaa)
   {
-    switch (parambhvt.a)
+    switch (parambiaa.a)
     {
     default: 
       return;

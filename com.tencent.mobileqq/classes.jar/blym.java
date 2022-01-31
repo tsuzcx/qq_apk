@@ -1,410 +1,262 @@
-import android.content.Intent;
-import android.os.Bundle;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.RectF;
+import android.graphics.Typeface;
+import android.text.InputFilter;
+import android.text.Layout.Alignment;
+import android.text.SpannableString;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.editipc.PeakIpcModuleServer.1;
-import dov.com.qq.im.editipc.PeakIpcModuleServer.2;
-import dov.com.qq.im.editipc.PeakIpcModuleServer.3;
-import eipc.EIPCResult;
+import android.text.style.AbsoluteSizeSpan;
+import android.util.DisplayMetrics;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 public class blym
-  extends QIPCModule
+  extends DynamicTextItem
 {
-  private static blym a;
+  private float jdField_a_of_type_Float;
+  Context jdField_a_of_type_AndroidContentContext;
+  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private InputFilter jdField_a_of_type_AndroidTextInputFilter;
+  StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
+  TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  private String jdField_a_of_type_JavaLangString = "";
+  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  public int[] a;
+  public int b;
+  private RectF b;
   
-  private blym(String paramString)
+  public blym(Context paramContext, int paramInt, List<String> paramList, Typeface paramTypeface)
   {
-    super(paramString);
+    super(paramInt, paramList);
+    this.jdField_a_of_type_ArrayOfInt = new int[] { 12, 20, 24 };
+    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_b_of_type_Int = a(paramContext, 235.0F);
+    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(aepi.a(28.0F, paramContext.getResources()));
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
+    if (!paramList.isEmpty()) {
+      a(0, (String)paramList.get(0));
+    }
   }
   
-  /* Error */
-  public static blym a()
+  public static int a(Context paramContext, float paramFloat)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 14	blym:a	Lblym;
-    //   6: ifnonnull +27 -> 33
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: getstatic 14	blym:a	Lblym;
-    //   15: ifnonnull +15 -> 30
-    //   18: new 2	blym
-    //   21: dup
-    //   22: ldc 16
-    //   24: invokespecial 17	blym:<init>	(Ljava/lang/String;)V
-    //   27: putstatic 14	blym:a	Lblym;
-    //   30: ldc 2
-    //   32: monitorexit
-    //   33: getstatic 14	blym:a	Lblym;
-    //   36: astore_0
-    //   37: ldc 2
-    //   39: monitorexit
-    //   40: aload_0
-    //   41: areturn
-    //   42: astore_0
-    //   43: ldc 2
-    //   45: monitorexit
-    //   46: aload_0
-    //   47: athrow
-    //   48: astore_0
-    //   49: ldc 2
-    //   51: monitorexit
-    //   52: aload_0
-    //   53: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   36	5	0	localblym	blym
-    //   42	5	0	localObject1	Object
-    //   48	5	0	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	30	42	finally
-    //   30	33	42	finally
-    //   43	46	42	finally
-    //   3	12	48	finally
-    //   33	37	48	finally
-    //   46	48	48	finally
+    return (int)(paramContext.getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public float a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleServer", 2, "[onCall]action= " + paramString);
+    if (this.jdField_a_of_type_AndroidTextStaticLayout != null) {
+      return this.jdField_a_of_type_AndroidTextStaticLayout.getWidth();
     }
-    Object localObject1 = BaseApplicationImpl.sApplication.getRuntime();
-    if (!(localObject1 instanceof QQAppInterface))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PeakIpcModuleServer", 2, "[onCall] get app failed.");
-      }
-      return null;
+    return 0.0F;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public InputFilter a()
+  {
+    if (this.jdField_a_of_type_AndroidTextInputFilter == null) {
+      this.jdField_a_of_type_AndroidTextInputFilter = new blyo(this, 20);
     }
-    Bundle localBundle = new Bundle();
-    Object localObject2;
-    boolean bool1;
-    if ("action_start_send".equals(paramString))
+    return this.jdField_a_of_type_AndroidTextInputFilter;
+  }
+  
+  public CharSequence a(String[] paramArrayOfString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("“");
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
     {
-      paramBundle = (Intent)paramBundle.getParcelable("key_intent");
-      if (paramBundle != null)
-      {
-        paramString = (QQAppInterface)localObject1;
-        localObject1 = paramBundle.getStringExtra("thumbfile_send_path");
-        localObject2 = paramBundle.getStringExtra("thumbfile_md5");
-        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
-          ThreadManager.post(new PeakIpcModuleServer.1(this, (String)localObject2, (String)localObject1), 5, null, false);
-        }
-        localObject1 = ayyu.a(3, 0);
-        localObject2 = ayyu.a(0, paramBundle, (ayzo)localObject1);
-        ((ayyz)localObject2).c = true;
-        ((ayzo)localObject1).a((ayyz)localObject2);
-        ayyu.a((ayzo)localObject1, paramString);
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder().append("sendVideo intent= ");
-        if (paramBundle != null)
-        {
-          paramString = paramBundle.getExtras();
-          QLog.d("PeakIpcModuleServer", 2, paramString);
-        }
-      }
-      else
-      {
-        if (paramBundle == null) {
-          break label266;
-        }
-      }
-      label266:
-      for (bool1 = true;; bool1 = false)
-      {
-        localBundle.putBoolean("key_result", bool1);
-        paramString = EIPCResult.createSuccessResult(localBundle);
-        callbackResult(paramInt, paramString);
-        return null;
-        paramString = "";
-        break;
-      }
+      ((StringBuilder)localObject).append(paramArrayOfString[i]);
+      i += 1;
     }
-    int i;
-    long l2;
-    long l1;
-    if ("action_cancel_send".equals(paramString))
+    ((StringBuilder)localObject).append("”");
+    paramArrayOfString = a(paramArrayOfString);
+    paramArrayOfString.add(0, Integer.valueOf(48));
+    paramArrayOfString.add(Integer.valueOf(48));
+    localObject = new SpannableString(((StringBuilder)localObject).toString());
+    j = ((SpannableString)localObject).length();
+    i = 1;
+    while (i < j - 1)
     {
-      localObject2 = paramBundle.getString("uin");
-      i = paramBundle.getInt("uintype");
-      l2 = paramBundle.getLong("key_uinsequence");
-      paramBundle = (QQAppInterface)localObject1;
-      localObject1 = paramBundle.a().a((String)localObject2, i, l2);
-      paramString = paramBundle.a().a((String)localObject2, l2);
-      if (localObject1 != null)
-      {
-        l1 = ((MessageRecord)localObject1).uniseq;
-        label350:
-        if ((!(paramString instanceof basv)) || (((basv)paramString).q)) {
-          break label570;
-        }
-        ((basv)paramString).c();
-        bool1 = true;
-        paramString = "forwardVideo";
-      }
+      ((SpannableString)localObject).setSpan(new AbsoluteSizeSpan(aepi.a(((Integer)paramArrayOfString.get(i)).intValue(), this.jdField_a_of_type_AndroidContentContext.getResources())), i, i + 1, 33);
+      i += 1;
     }
-    for (;;)
+    return localObject;
+  }
+  
+  public ArrayList<Integer> a(String[] paramArrayOfString)
+  {
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
     {
-      label380:
-      boolean bool3;
-      if (bool1)
+      localArrayList2.add(Integer.valueOf(localObject[i]));
+      i += 1;
+    }
+    Collections.shuffle(localArrayList2);
+    int m = paramArrayOfString.length;
+    j = 0;
+    i = 0;
+    while (j < m)
+    {
+      localObject = paramArrayOfString[j];
+      Integer localInteger = (Integer)localArrayList2.get(i % localArrayList2.size());
+      int n = ((String)localObject).length();
+      int k = 0;
+      if (k < n)
       {
-        bool3 = paramBundle.a().a((String)localObject2 + l2);
-        axso.a(paramBundle, (String)localObject2, l2);
-        bool2 = bool3;
-        if (localObject1 != null) {
-          ThreadManager.post(new PeakIpcModuleServer.2(this, paramBundle, (MessageRecord)localObject1), 8, null, true);
+        int i1 = ((String)localObject).charAt(k);
+        if ((i1 == 8220) || (i1 == 8221)) {
+          localArrayList1.add(Integer.valueOf(48));
         }
-      }
-      for (boolean bool2 = bool3;; bool2 = false)
-      {
         for (;;)
         {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("PeakIpcModuleServer", 2, "cancelInfo, uinseq:" + (String)localObject2 + ", uinType:" + i + ", sequence:" + l2 + ", msgSequence" + l1 + ", cancel:" + bool1 + ", removeProcess:" + bool2 + ", tips:" + paramString);
-            }
-            localBundle.putBoolean("key_result", bool1);
-            paramString = EIPCResult.createSuccessResult(localBundle);
-            break;
-            l1 = -1L;
-            break label350;
-            label570:
-            if (((paramString instanceof bang)) && (!((bang)paramString).b))
-            {
-              ((bang)paramString).c();
-              bool1 = true;
-              paramString = "C2CPic";
-              break label380;
-            }
-            if ((!(paramString instanceof bapa)) || (((bapa)paramString).q)) {
-              break label1832;
-            }
-            ((bapa)paramString).c();
-            bool1 = true;
-            paramString = "GroupPic";
-            break label380;
-            Object localObject3;
-            if ("action_pic_start_send".equals(paramString))
-            {
-              paramBundle.setClassLoader(getClass().getClassLoader());
-              paramString = paramBundle.getString("key_file_path");
-              localObject2 = (SessionInfo)paramBundle.getParcelable("key_session");
-              localObject3 = paramBundle.getString("widgetinfo", "");
-              paramBundle = paramBundle.getString("key_camera_material_name", "");
-              if (!TextUtils.isEmpty(paramString))
-              {
-                Intent localIntent = new Intent();
-                localIntent.putExtra("key_story_photo_to_recent", true);
-                if (!TextUtils.isEmpty((CharSequence)localObject3))
-                {
-                  localIntent.putExtra("widgetinfo", (String)localObject3);
-                  localIntent.putExtra("key_camera_material_name", paramBundle);
-                }
-                ForwardUtils.a(localIntent, (SessionInfo)localObject2, paramString, (QQAppInterface)localObject1);
-                localBundle.putBoolean("key_result", true);
-              }
-              for (bool1 = true;; bool1 = false)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("PeakIpcModuleServer", 2, "sendPic success:" + bool1 + ", photoPath：" + paramString);
-                }
-                paramString = EIPCResult.createSuccessResult(localBundle);
-                break;
-                localBundle.putBoolean("key_result", false);
-              }
-            }
-            if ("action_re_send".equals(paramString))
-            {
-              localObject2 = paramBundle.getString("uin");
-              i = paramBundle.getInt("uintype");
-              l1 = paramBundle.getLong("key_uinsequence");
-              paramString = (QQAppInterface)localObject1;
-              paramBundle = paramString.a().a((String)localObject2, i, l1);
-              bool2 = false;
-              if ((paramBundle instanceof MessageForShortVideo))
-              {
-                localObject1 = (MessageForShortVideo)paramBundle;
-                if ((bdcs.b(ShortVideoUtils.a(((MessageForShortVideo)localObject1).thumbMD5, "jpg"))) && (!TextUtils.isEmpty(((MessageForShortVideo)localObject1).videoFileName)) && (((MessageForShortVideo)localObject1).isStoryVideo))
-                {
-                  ((axso)paramString.getManager(326)).a(((MessageForShortVideo)localObject1).frienduin, (MessageRecord)localObject1, ((MessageForShortVideo)localObject1).videoFileName);
-                  localObject1 = ayyu.a(4, 0);
-                  localObject2 = ayyu.a(0, paramBundle, (ayzo)localObject1);
-                  ((ayyz)localObject2).c = true;
-                  ((ayzo)localObject1).a((ayyz)localObject2);
-                  ayyu.a((ayzo)localObject1, paramString);
-                  bool1 = true;
-                  label1014:
-                  if (QLog.isColorLevel())
-                  {
-                    localObject1 = new StringBuilder().append("reSend success:").append(bool1).append(", message：");
-                    if (paramBundle == null) {
-                      break label1445;
-                    }
-                  }
-                }
-              }
-              label1445:
-              for (paramString = paramBundle.toString();; paramString = "")
-              {
-                QLog.d("PeakIpcModuleServer", 2, paramString);
-                localBundle.putBoolean("key_result", bool1);
-                paramString = EIPCResult.createSuccessResult(localBundle);
-                break;
-                ((MessageForShortVideo)localObject1).videoFileStatus = 1005;
-                bool1 = false;
-                break label1014;
-                bool1 = bool2;
-                if (!(paramBundle instanceof MessageForPic)) {
-                  break label1014;
-                }
-                localObject1 = (MessageForPic)paramBundle;
-                bool1 = bool2;
-                if (!bdcs.b(((MessageForPic)localObject1).path)) {
-                  break label1014;
-                }
-                bool1 = bool2;
-                if (!((MessageForPic)localObject1).isStoryPhoto) {
-                  break label1014;
-                }
-                ThreadManager.post(new PeakIpcModuleServer.3(this, paramString, (MessageForPic)localObject1), 5, null, false);
-                if (((MessageForPic)localObject1).isSendFromLocal()) {
-                  paramString.a().a(paramString.a().a(((MessageForPic)localObject1).frienduin, ((MessageForPic)localObject1).uniseq));
-                }
-                localObject2 = new awfm();
-                ((awfm)localObject2).a(((MessageForPic)localObject1).path);
-                ((awfm)localObject2).d(5);
-                ((awfm)localObject2).d(((MessageForPic)localObject1).frienduin);
-                if (((MessageForPic)localObject1).fileSizeFlag == 1) {
-                  ((awfm)localObject2).c(batv.e);
-                }
-                for (;;)
-                {
-                  ((awfm)localObject2).e(((MessageForPic)localObject1).senderuin);
-                  ((awfm)localObject2).c(((MessageForPic)localObject1).selfuin);
-                  ((awfm)localObject2).e(((MessageForPic)localObject1).istroop);
-                  ((awfm)localObject2).l(((MessageForPic)localObject1).getConfessTopicId());
-                  ((awfm)localObject2).jdField_i_of_type_Int = ((MessageForPic)localObject1).extLong;
-                  ((awfm)localObject2).jdField_i_of_type_JavaLangString = ((MessageForPic)localObject1).extStr;
-                  ((awfm)localObject2).b(true);
-                  localObject3 = new awfn();
-                  ((awfn)localObject3).a = ((MessageForPic)localObject1).msgseq;
-                  ((awfn)localObject3).b = ((MessageForPic)localObject1).shmsgseq;
-                  ((awfn)localObject3).c = ((MessageForPic)localObject1).msgUid;
-                  ((awfm)localObject2).a((awfn)localObject3);
-                  ((awfm)localObject2).b(((MessageForPic)localObject1).uniseq);
-                  ((axso)paramString.getManager(326)).a(((MessageForPic)localObject1).frienduin, ((MessageForPic)localObject1).uniseq);
-                  localObject3 = awes.a(4, 5);
-                  ((awfc)localObject3).a(((awfm)localObject2).a());
-                  ((awfc)localObject3).a = ((MessageForPic)localObject1).picExtraData;
-                  awes.a((awfc)localObject3, paramString);
-                  bool1 = true;
-                  break;
-                  ((awfm)localObject2).c(batv.d);
-                }
-              }
-            }
-            if ("action_get_troop_member_name".equals(paramString))
-            {
-              paramString = paramBundle.getString("troop_uin");
-              paramBundle = paramBundle.getString("uin");
-              try
-              {
-                localObject1 = (TroopManager)((QQAppInterface)localObject1).getManager(52);
-                paramString = ((TroopManager)localObject1).a(((TroopManager)localObject1).b(paramString), paramBundle);
-                localBundle.putBoolean("key_result", true);
-                localBundle.putString("uinname", paramString);
-                paramString = EIPCResult.createSuccessResult(localBundle);
-              }
-              catch (Exception paramString)
-              {
-                for (;;)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("PeakIpcModuleServer", 2, "getTroopMemberName exception = " + paramString.getMessage());
-                  }
-                  paramString.printStackTrace();
-                  paramString = "";
-                }
-              }
-            }
-          }
-          if ("action_get_troop_info".equals(paramString))
-          {
-            paramString = paramBundle.getString("troop_uin");
-            try
-            {
-              paramBundle = (TroopManager)((QQAppInterface)localObject1).getManager(52);
-              paramString = paramBundle.a(paramBundle.b(paramString), true);
-              if (paramString != null)
-              {
-                localBundle.putBoolean("key_result", true);
-                localBundle.putBoolean("troop_owner", paramString.isDisband());
-                if ((paramString.isNewTroop()) && (!paramString.hasSetTroopHead())) {}
-                for (bool1 = true;; bool1 = false)
-                {
-                  localBundle.putBoolean("troop_code", bool1);
-                  paramString = EIPCResult.createSuccessResult(localBundle);
-                  return paramString;
-                }
-              }
-            }
-            catch (Exception paramString)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("PeakIpcModuleServer", 2, "ACTION_GET_TROOP_INFO exception = " + paramString.getMessage());
-              }
-              paramString.printStackTrace();
-              paramString = null;
-            }
-          }
+          k += 1;
+          break;
+          localArrayList1.add(localInteger);
         }
-        if ("action_get_name".equals(paramString))
-        {
-          paramString = paramBundle.getString("uin");
-          try
-          {
-            paramString = bdbt.b((QQAppInterface)localObject1, paramString);
-            localBundle.putBoolean("key_result", true);
-            localBundle.putString("uinname", paramString);
-            paramString = EIPCResult.createSuccessResult(localBundle);
-            return paramString;
-          }
-          catch (Exception paramString)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("PeakIpcModuleServer", 2, "ACTION_GET_NAME exception = " + paramString.getMessage());
-            }
-            paramString.printStackTrace();
-          }
+      }
+      j += 1;
+      i += 1;
+    }
+    return localArrayList1;
+  }
+  
+  @TargetApi(18)
+  public void a(int paramInt, String paramString)
+  {
+    float f = 0.0F;
+    int i = 0;
+    if ((TextUtils.equals(super.a(0), paramString)) && (this.jdField_a_of_type_AndroidTextStaticLayout != null)) {
+      return;
+    }
+    super.a(paramInt, paramString);
+    paramString = super.a(paramInt, new blyn(this));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (0 == 0) {}
+    for (paramString = a(paramString);; paramString = null)
+    {
+      paramString = a(paramString);
+      this.jdField_a_of_type_AndroidTextStaticLayout = blyu.a(paramString, 0, paramString.length(), this.jdField_a_of_type_AndroidTextTextPaint, this.jdField_b_of_type_Int, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, 3);
+      if (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() >= 3)
+      {
+        paramInt = this.jdField_a_of_type_AndroidTextStaticLayout.getLineEnd(2);
+        paramString = paramString.subSequence(0, paramInt - 1) + "”";
+        this.jdField_a_of_type_AndroidTextStaticLayout = blyu.a(paramString, 0, paramString.length(), this.jdField_a_of_type_AndroidTextTextPaint, this.jdField_b_of_type_Int, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, 3);
+      }
+      int j = this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount();
+      paramInt = i;
+      while (paramInt < j)
+      {
+        f = Math.max(f, this.jdField_a_of_type_AndroidTextStaticLayout.getLineWidth(paramInt));
+        paramInt += 1;
+      }
+      this.jdField_a_of_type_Float = f;
+      return;
+    }
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_AndroidTextStaticLayout != null)
+    {
+      paramCanvas.save();
+      paramCanvas.translate(0.0F, 0.0F);
+      this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+      if (super.b(0))
+      {
+        int i = aepi.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        this.jdField_b_of_type_AndroidGraphicsRectF.left = i;
+        this.jdField_b_of_type_AndroidGraphicsRectF.top = (-i);
+        this.jdField_b_of_type_AndroidGraphicsRectF.right = (a() + i);
+        RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+        float f = b();
+        localRectF.bottom = (i + f);
+        paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+      }
+      paramCanvas.restore();
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String[] a(String paramString)
+  {
+    int i = 0;
+    int j = 0;
+    int k = paramString.length();
+    String[] arrayOfString1;
+    if (k <= 7)
+    {
+      arrayOfString2 = new String[k];
+      i = j;
+      for (;;)
+      {
+        arrayOfString1 = arrayOfString2;
+        if (i >= k) {
+          break;
         }
-        paramString = null;
+        arrayOfString2[i] = paramString.substring(i, i + 1);
+        i += 1;
+      }
+    }
+    String[] arrayOfString2 = new String[7];
+    j = 0;
+    for (;;)
+    {
+      arrayOfString1 = arrayOfString2;
+      if (i >= 7) {
         break;
       }
-      label1832:
-      paramString = "";
-      bool1 = false;
+      int m = this.jdField_a_of_type_JavaUtilRandom.nextInt(k - (7 - i) + 1) + 1;
+      k -= m;
+      arrayOfString2[i] = paramString.substring(j, j + m);
+      j += m;
+      i += 1;
     }
+    return arrayOfString1;
+  }
+  
+  public float b()
+  {
+    if (this.jdField_a_of_type_AndroidTextStaticLayout != null) {
+      return this.jdField_a_of_type_AndroidTextStaticLayout.getHeight();
+    }
+    return 0.0F;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (super.b());
   }
 }
 

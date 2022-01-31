@@ -1,58 +1,48 @@
 import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
+import com.tencent.smtt.sdk.WebView;
+import java.util.concurrent.atomic.AtomicLong;
 
-class atjt
-  implements Application.ActivityLifecycleCallbacks
+public class atjt
+  extends BroadcastReceiver
 {
-  atjt(atjn paramatjn) {}
+  public atjt(UiApiPlugin paramUiApiPlugin) {}
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LyricsController", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
+    paramContext = (ResultReceiver)paramIntent.getParcelableExtra("receiver");
+    long l = paramIntent.getLongExtra("seq", 0L);
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("seq", l);
+    if (UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get() != -1L) {
+      paramContext.send(-1, localBundle);
     }
-  }
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LyricsController", 2, "onActivityResumed: " + paramActivity.getClass().getName());
-    }
-    if ((this.a.c) && (!this.a.b))
+    String str = paramIntent.getStringExtra("date");
+    paramIntent = paramIntent.getStringExtra("id");
+    Object localObject = this.a.mRuntime.a();
+    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
-      ThreadManager.getUIHandlerV2().removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      ThreadManager.getUIHandlerV2().postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
-    }
-    while (!atjn.b(this.a)) {
+      localObject = this.a.mRuntime.a();
+      if ((localObject == null) || (((WebView)localObject).getX5WebViewExtension() == null))
+      {
+        paramContext.send(-2, localBundle);
+        return;
+      }
+      localBundle = new Bundle();
+      localBundle.putString("date", str);
+      localBundle.putString("id", paramIntent);
+      UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(l);
+      UiApiPlugin.jdField_a_of_type_AndroidOsResultReceiver = paramContext;
+      ((WebView)localObject).getX5WebViewExtension().invokeMiscMethod("uploadX5CoreLiveLog", localBundle);
       return;
     }
-    atjn.a(this.a, false);
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.a(true);
-  }
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LyricsController", 2, "onActivityStarted: " + paramActivity.getClass().getName());
-    }
-  }
-  
-  public void onActivityStopped(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LyricsController", 2, "onActivityStopped: " + paramActivity.getClass().getName());
-    }
+    paramContext.send(-2, localBundle);
   }
 }
 

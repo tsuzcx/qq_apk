@@ -1,41 +1,61 @@
-import android.graphics.Canvas;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public abstract class aoyh<D extends aoxh>
+public class aoyh
+  extends aokh<aoyg>
 {
-  private ArrayList<aoym> a;
-  
-  private void c(Canvas paramCanvas, D paramD, aoxq paramaoxq, float paramFloat1, float paramFloat2)
+  public static aoyg a()
   {
-    if (this.a != null)
-    {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        ((aoym)localIterator.next()).a(paramCanvas, paramD, paramaoxq, paramFloat1, paramFloat2);
-      }
+    return (aoyg)aoks.a().a(437);
+  }
+  
+  public int a()
+  {
+    return 437;
+  }
+  
+  @NonNull
+  public aoyg a(int paramInt)
+  {
+    return new aoyg();
+  }
+  
+  @Nullable
+  public aoyg a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aoyg.a(paramArrayOfaoko);
     }
+    return null;
   }
   
-  public abstract aozf a(D paramD);
-  
-  public void a() {}
-  
-  public final void a(Canvas paramCanvas, D paramD, aoxq paramaoxq, float paramFloat1, float paramFloat2)
+  public Class<aoyg> a()
   {
-    b(paramCanvas, paramD, paramaoxq, paramFloat1, paramFloat2);
-    c(paramCanvas, paramD, paramaoxq, paramFloat1, paramFloat2);
+    return aoyg.class;
   }
   
-  public void a(D paramD) {}
+  public void a(int paramInt) {}
   
-  public abstract boolean a(aoxh paramaoxh);
+  public void a(aoyg paramaoyg) {}
   
-  public abstract void b(Canvas paramCanvas, D paramD, aoxq paramaoxq, float paramFloat1, float paramFloat2);
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoyh
  * JD-Core Version:    0.7.0.1
  */

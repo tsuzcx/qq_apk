@@ -1,20 +1,44 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedTicket;
-import java.util.concurrent.Future;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
 class aszy
-  implements CustomizedTicket
+  extends BroadcastReceiver
 {
-  aszy(aszx paramaszx) {}
+  aszy(aszw paramaszw) {}
   
-  public Future<Bundle> getA1(String paramString1, String paramString2, String paramString3, String paramString4)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return this.a.a(paramString1, paramString2, paramString3, paramString4);
-  }
-  
-  public Future<Bundle> getAccessToken(String paramString1, String paramString2)
-  {
-    return this.a.a(paramString1, paramString2);
+    paramContext = paramIntent.getAction();
+    int j = paramIntent.getIntExtra("key_state", -1);
+    int k;
+    int i;
+    if (paramContext.equals(atav.a("com.tencent.od")))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("GroupVideoManager.GVideoWebPlugin", 2, "state:" + j);
+      }
+      paramContext = atam.a;
+      k = paramContext.length;
+      i = 0;
+    }
+    for (;;)
+    {
+      if ((i >= k) || ((j == paramContext[i]) && (aszw.a(this.a).isShowing()))) {}
+      try
+      {
+        aszw.a(this.a).dismiss();
+        label105:
+        i += 1;
+        continue;
+        return;
+      }
+      catch (Throwable paramIntent)
+      {
+        break label105;
+      }
+    }
   }
 }
 

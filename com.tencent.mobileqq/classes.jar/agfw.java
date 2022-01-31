@@ -1,23 +1,17 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public abstract interface agfw
-  extends IInterface
+class agfw
+  implements View.OnTouchListener
 {
-  public abstract void a();
+  agfw(agfu paramagfu, aetk paramaetk) {}
   
-  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3);
-  
-  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.jdField_a_of_type_Aetk.onTouch(paramView, paramMotionEvent);
+    return false;
+  }
 }
 
 

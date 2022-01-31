@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import bazk;
+import bbdt;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
 public class TribeVideoListPlayerFragment$TVKSDKInstallRunnable
@@ -13,7 +13,7 @@ public class TribeVideoListPlayerFragment$TVKSDKInstallRunnable
     if (this.this$0.getActivity() == null) {
       return;
     }
-    TVK_SDKMgr.installPlugin(this.this$0.getActivity(), new bazk(this));
+    TVK_SDKMgr.installPlugin(this.this$0.getActivity(), new bbdt(this));
   }
 }
 

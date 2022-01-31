@@ -3,13 +3,13 @@ package cooperation.qzone.music;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjhm;
+import bjlt;
 import org.json.JSONObject;
 
 public class BroadcastOneShow
   implements Parcelable
 {
-  public static final Parcelable.Creator<BroadcastOneShow> CREATOR = new bjhm();
+  public static final Parcelable.Creator<BroadcastOneShow> CREATOR = new bjlt();
   public String bcShowId = "";
   public String bcShowName = "";
   public long endTime;

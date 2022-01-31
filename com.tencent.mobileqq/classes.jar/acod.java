@@ -1,20 +1,15 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
 
 public class acod
-  extends GestureDetector.SimpleOnGestureListener
+  implements DialogInterface.OnClickListener
 {
-  public acod(Conversation paramConversation) {}
+  public acod(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, " gestureDetector onDoubleTap");
-    }
-    Conversation.k(this.a);
-    return super.onDoubleTap(paramMotionEvent);
+    this.a.j();
   }
 }
 

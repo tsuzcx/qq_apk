@@ -1,30 +1,32 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
 public class acuf
-  extends VasQuickUpdateManager.CallBacker
+  implements bhuk
 {
-  public acuf(FriendProfileCardActivity paramFriendProfileCardActivity, awmr paramawmr, Card paramCard) {}
+  public acuf(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bhuf parambhuf) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
+    switch (paramInt)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b != null)
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      if (bdin.d(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getActivity()))
       {
-        if (this.jdField_a_of_type_Awmr.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_Awmr = this.jdField_a_of_type_Awmr;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b.obtainMessage(5, 0, 18, this.jdField_a_of_type_ComTencentMobileqqDataCard).sendToTarget();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard", 2, "send msg of UI_MSG_UPDATE_CARD");
-        }
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X80040EA", "0X80040EA", 0, 0, "", "", "", "");
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X8006669", "0X8006669", 0, 0, "", "", "", "");
+        DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).c(Long.valueOf(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity)).longValue());
+        this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131692290));
+        DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).show();
       }
-      paramVasQuickUpdateManager.removeCallBacker(this);
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(1, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131694831));
+      }
     }
   }
 }

@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aeso
-  implements azzg
+class aeso
+  extends altm
 {
-  public aeso(FriendShipWaveView paramFriendShipWaveView) {}
+  aeso(aesk paramaesk) {}
   
-  public void a()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.a.jdField_a_of_type_Baad.a = 255;
-    this.a.jdField_a_of_type_Baad.a(this.a.jdField_a_of_type_Baae);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
+    {
+      paramString = this.a.a.a(this.a.a.getCurrentAccountUin(), (byte)3, false);
+      if ((paramString != null) && (aesk.a(this.a) != null)) {
+        aesk.a(this.a).setImageBitmap(paramString);
+      }
+    }
   }
 }
 

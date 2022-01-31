@@ -1,20 +1,6 @@
-import com.tencent.mobileqq.screendetect.ScreenShotFragment;
-import mqq.app.QQPermissionCallback;
-
 public class aybq
-  implements QQPermissionCallback
 {
-  public aybq(ScreenShotFragment paramScreenShotFragment) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bdcd.b(ScreenShotFragment.a(this.a), this.a.getString(2131699448));
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    ScreenShotFragment.a(this.a);
-  }
+  public static final String a = alud.a(2131714515);
 }
 
 

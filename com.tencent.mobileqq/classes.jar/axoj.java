@@ -1,12 +1,13 @@
-public abstract interface axoj
+public class axoj
 {
-  public abstract void a();
-  
-  public abstract void a(axok paramaxok);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  long a;
+  public String a;
+  public boolean a;
+  long b;
+  public String b;
+  public boolean b;
+  public String c;
+  boolean c;
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.biz.webviewplugin;
 
 import android.app.Activity;
-import bebc;
-import bebd;
-import becq;
+import befl;
+import befm;
+import begz;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.open.adapter.OpenAppClient;
 import com.tencent.open.appcommon.js.BaseInterface;
@@ -21,8 +21,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class OpenCenterPlugin
-  extends bebc
-  implements bebd
+  extends befl
+  implements befm
 {
   private Map<String, BaseInterface> a;
   

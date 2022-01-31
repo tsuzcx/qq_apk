@@ -1,93 +1,58 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tencent.biz.qqstory.storyHome.model.TagUserItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.VideoListLayout;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import java.util.List;
 
-class wpv
-  implements bhqd
+public class wpv
+  extends umf<wpr, whz>
 {
-  wpv(wps paramwps, bhpy parambhpy, int paramInt, wme paramwme) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public wpv(wpr paramwpr)
   {
-    this.jdField_a_of_type_Bhpy.e();
-    switch (paramInt)
-    {
-    }
-    Object localObject2;
-    do
-    {
-      do
-      {
-        return;
-        wps.b(this.jdField_a_of_type_Wps, this.jdField_a_of_type_Int);
-        if (this.jdField_a_of_type_Wme.a().type != 3) {
-          break;
-        }
-      } while (!(this.jdField_a_of_type_Wme.a().getOwner() instanceof QQUserUIItem));
-      paramView = ((QQUserUIItem)this.jdField_a_of_type_Wme.a().getOwner()).qq;
-      localObject1 = new StringBuilder();
-      localObject2 = this.jdField_a_of_type_Wps.a(this.jdField_a_of_type_Int);
-      if (localObject2 != null)
-      {
-        localObject2 = (VideoListLayout)((wph)localObject2).a(2131373723);
-        if (localObject2 != null)
-        {
-          localObject2 = ((VideoListLayout)localObject2).a();
-          if (localObject2 != null)
-          {
-            paramInt = ((StoryHomeHorizontalListView)localObject2).getFirstVisiblePosition();
-            while (paramInt <= ((StoryHomeHorizontalListView)localObject2).getLastVisiblePosition())
-            {
-              List localList = this.jdField_a_of_type_Wme.d();
-              if ((paramInt >= 0) && (paramInt < localList.size()))
-              {
-                ((StringBuilder)localObject1).append(((StoryVideoItem)localList.get(paramInt)).mVid);
-                if (paramInt < ((StoryHomeHorizontalListView)localObject2).getLastVisiblePosition()) {
-                  ((StringBuilder)localObject1).append(",");
-                }
-              }
-              paramInt += 1;
-            }
-          }
-        }
-      }
-      wta.c("video_nenegative", "close_IDrecommend", 0, 0, new String[] { "", paramView, "", ((StringBuilder)localObject1).toString() });
-      return;
-    } while ((this.jdField_a_of_type_Wme.a().type != 6) || (!(this.jdField_a_of_type_Wme.a().getOwner() instanceof TagUserItem)));
-    long l = ((TagUserItem)this.jdField_a_of_type_Wme.a().getOwner()).tagId;
-    paramView = new StringBuilder();
-    Object localObject1 = this.jdField_a_of_type_Wps.a(this.jdField_a_of_type_Int);
-    if (localObject1 != null)
-    {
-      localObject1 = (VideoListLayout)((wph)localObject1).a(2131373723);
-      if (localObject1 != null)
-      {
-        localObject1 = ((VideoListLayout)localObject1).a();
-        if (localObject1 != null)
-        {
-          paramInt = ((StoryHomeHorizontalListView)localObject1).getFirstVisiblePosition();
-          while (paramInt <= ((StoryHomeHorizontalListView)localObject1).getLastVisiblePosition())
-          {
-            localObject2 = this.jdField_a_of_type_Wme.d();
-            if ((paramInt >= 0) && (paramInt < ((List)localObject2).size()))
-            {
-              paramView.append(((StoryVideoItem)((List)localObject2).get(paramInt)).mVid);
-              if (paramInt < ((StoryHomeHorizontalListView)localObject1).getLastVisiblePosition()) {
-                paramView.append(",");
-              }
-            }
-            paramInt += 1;
-          }
-        }
-      }
-    }
-    wta.c("video_nenegative", "close_newsrecommend", 0, 0, new String[] { "", String.valueOf(l), "", paramView.toString() });
+    super(paramwpr);
   }
+  
+  public void a(@NonNull wpr paramwpr, @NonNull whz paramwhz)
+  {
+    int i = 1;
+    if (paramwhz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      localObject = paramwpr.a(paramwhz.jdField_a_of_type_JavaLangString);
+      if (localObject == null) {
+        wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramwhz.jdField_a_of_type_JavaLangString });
+      }
+    }
+    else
+    {
+      return;
+    }
+    if (!(localObject instanceof woi))
+    {
+      wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not commentLike type!! feedId:%s", new Object[] { paramwhz.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    Object localObject = (woi)localObject;
+    ((woi)localObject).a(paramwhz.jdField_a_of_type_JavaUtilList, paramwhz.c);
+    CommentLikeFeedItem localCommentLikeFeedItem = (CommentLikeFeedItem)((woi)localObject).a;
+    if (paramwhz.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      localCommentLikeFeedItem.mCommentIsEnd = i;
+      ((CommentLikeFeedItem)((woi)localObject).a).mCommentLastCookie = paramwhz.jdField_b_of_type_JavaLangString;
+      ((CommentLikeFeedItem)((woi)localObject).a).mCommentCount = paramwhz.jdField_b_of_type_Int;
+      ((woy)uwa.a(11)).a(((woi)localObject).a);
+      wpr.a(paramwpr).b(paramwhz.jdField_a_of_type_JavaLangString);
+      wxe.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s comment update after count:%d. isEnd:%b, cookie:%s", paramwhz.jdField_a_of_type_JavaLangString, Integer.valueOf(((woi)localObject).b().size()), Boolean.valueOf(paramwhz.jdField_a_of_type_Boolean), paramwhz.jdField_b_of_type_JavaLangString);
+      return;
+      i = 0;
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return whz.class;
+  }
+  
+  public void b(@NonNull wpr paramwpr, @NonNull whz paramwhz) {}
 }
 
 

@@ -3,17 +3,17 @@ package com.tencent.mobileqq.statistics;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import azmz;
+import azri;
 
 public class StatisticCollector$5
   implements Runnable
 {
-  public StatisticCollector$5(azmz paramazmz) {}
+  public StatisticCollector$5(azri paramazri) {}
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = azmz.a().getSharedPreferences("pref_safemode_not_exit", 4);
-    if ((!azmz.b) && (localSharedPreferences.getBoolean("key_not_exit_enable", false))) {
+    SharedPreferences localSharedPreferences = azri.a().getSharedPreferences("pref_safemode_not_exit", 4);
+    if ((!azri.b) && (localSharedPreferences.getBoolean("key_not_exit_enable", false))) {
       localSharedPreferences.edit().clear().commit();
     }
   }

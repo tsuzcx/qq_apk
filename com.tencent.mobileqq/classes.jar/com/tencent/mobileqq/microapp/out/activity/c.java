@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.microapp.out.activity;
 
 import android.view.View;
-import bhqp;
+import bhuw;
 import com.tencent.widget.AdapterView;
 
 final class c
-  implements bhqp
+  implements bhuw
 {
   c(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   

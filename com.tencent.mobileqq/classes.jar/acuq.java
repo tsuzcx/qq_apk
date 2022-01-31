@@ -1,20 +1,34 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class acuq
-  extends apxc
+  implements Animation.AnimationListener
 {
-  public acuq(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public acuq(DiscussionMemberActivity paramDiscussionMemberActivity, TranslateAnimation paramTranslateAnimation1, Dialog paramDialog, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, String.format("ProfileCardExtendFriendView onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
+    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
+    {
+      this.jdField_a_of_type_AndroidAppDialog.show();
+      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
+      DiscussionMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity).setVisibility(8);
     }
-    if ((paramBoolean) && (paramInt == 2)) {
-      this.a.a(0L, null, null, false);
+    while (paramAnimation != this.b) {
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

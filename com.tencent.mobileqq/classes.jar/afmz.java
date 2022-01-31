@@ -1,17 +1,24 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.util.LruCache;
+import com.tencent.mobileqq.data.MessageForPoke;
 
 class afmz
-  extends afpq
+  extends LruCache<Long, MessageForPoke>
 {
-  afmz(aflj paramaflj)
+  afmz(afmy paramafmy, int paramInt)
   {
-    super(paramaflj, null);
+    super(paramInt);
   }
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  protected void a(boolean paramBoolean, Long paramLong, MessageForPoke paramMessageForPoke1, MessageForPoke paramMessageForPoke2)
   {
-    return new agbu(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if ((paramMessageForPoke1 != null) && (!paramMessageForPoke1.isPlayed))
+    {
+      paramMessageForPoke1.setPlayed(this.a.b);
+      paramMessageForPoke1.mFrameState.a = false;
+      paramMessageForPoke1.mFrameState.c = true;
+      paramMessageForPoke1.mUnlimitedState.a = false;
+      paramMessageForPoke1.mUnlimitedState.b = true;
+    }
   }
 }
 

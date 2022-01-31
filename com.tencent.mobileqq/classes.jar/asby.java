@@ -1,32 +1,43 @@
-import android.graphics.Bitmap;
-import android.widget.LinearLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class asby
-  extends auwz
+class asby
+  extends asbz
 {
-  public asby(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public ImageView a;
+  public TextView a;
   
-  protected void a(int paramInt, String paramString) {}
-  
-  protected void a(int paramInt, String paramString, Bitmap paramBitmap)
+  public asby(View paramView)
   {
-    if ((this.a.d != null) && (this.a.d.equals(paramString)) && (paramBitmap != null) && (this.a.b != null) && (this.a.b.getVisibility() == 0)) {
-      this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageBitmap(paramBitmap);
-    }
+    super(paramView);
+    this.jdField_a_of_type_Int = asbs.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368180));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379199));
+    paramView.setTag(this);
   }
   
-  protected void b()
+  public void a(String paramString1, String paramString2, bdbb parambdbb)
   {
-    if (this.a.jdField_a_of_type_Auqn != null) {
-      this.a.jdField_a_of_type_Auqn.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
+    Object localObject = paramString2;
+    if (paramString2 == null) {
+      localObject = paramString1;
     }
-    this.a.l();
-    this.a.m();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(new bamp((CharSequence)localObject, 2));
+    localObject = parambdbb.a(1, paramString1);
+    paramString2 = (String)localObject;
+    if (localObject == null)
+    {
+      localObject = bdhj.a();
+      paramString2 = (String)localObject;
+      if (!parambdbb.a())
+      {
+        parambdbb.a(paramString1, 1, false);
+        paramString2 = (String)localObject;
+      }
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
   }
-  
-  protected void b(int paramInt, String paramString) {}
 }
 
 

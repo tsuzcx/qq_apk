@@ -1,16 +1,42 @@
-import android.graphics.RectF;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class amyp
+class amyp
+  extends amzw
 {
-  public double a;
-  public RectF a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
+  amyp(amyk paramamyk) {}
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadSuccess");
+    }
+    Message localMessage = amyk.a(this.a).obtainMessage();
+    localMessage.what = 100;
+    localMessage.sendToTarget();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadProcess process=" + paramInt);
+    }
+    Message localMessage = amyk.a(this.a).obtainMessage();
+    localMessage.what = 102;
+    localMessage.arg1 = paramInt;
+    localMessage.sendToTarget();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadFail");
+    }
+    Message localMessage = amyk.a(this.a).obtainMessage();
+    localMessage.what = 101;
+    localMessage.sendToTarget();
+  }
 }
 
 

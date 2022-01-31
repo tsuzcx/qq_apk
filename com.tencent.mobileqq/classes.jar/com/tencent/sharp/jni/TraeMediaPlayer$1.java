@@ -1,17 +1,17 @@
 package com.tencent.sharp.jni;
 
-import bhms;
-import bhmt;
+import bhqz;
+import bhra;
 
 public class TraeMediaPlayer$1
   implements Runnable
 {
-  public TraeMediaPlayer$1(bhms parambhms, long paramLong) {}
+  public TraeMediaPlayer$1(bhqz parambhqz, long paramLong) {}
   
   public void run()
   {
-    if (bhms.a(this.this$0) != null) {
-      bhms.a(this.this$0).a(this.a);
+    if (bhqz.a(this.this$0) != null) {
+      bhqz.a(this.this$0).a(this.a);
     }
   }
 }

@@ -55,7 +55,7 @@ public class lwl
       {
         if (i == 1)
         {
-          i = a(paramTextView, 2131377380, this.b);
+          i = a(paramTextView, 2131377434, this.b);
           localObject[0].onClick(paramTextView);
           paramSpannable.setSpan(new ForegroundColorSpan(i), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
         }
@@ -64,7 +64,7 @@ public class lwl
           return true;
           if (i == 0)
           {
-            paramSpannable.setSpan(new ForegroundColorSpan(a(paramTextView, 2131377379, this.jdField_a_of_type_Int)), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+            paramSpannable.setSpan(new ForegroundColorSpan(a(paramTextView, 2131377433, this.jdField_a_of_type_Int)), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
             Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
           }
         }

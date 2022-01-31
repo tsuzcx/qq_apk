@@ -1,63 +1,20 @@
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+
 public class uqs
-  implements uqz
 {
-  public final uqq[] a = new uqq[2];
-  
-  private void a(uqq paramuqq, int paramInt)
+  public static String a(QQUserUIItem paramQQUserUIItem)
   {
-    this.a[paramInt] = paramuqq;
+    return url.a(paramQQUserUIItem);
   }
   
-  public <T extends uqq> T a(int paramInt)
+  public static boolean a()
   {
-    uqq localuqq = this.a[paramInt];
-    if (localuqq == null) {}
-    for (;;)
-    {
-      synchronized (this.a)
-      {
-        localuqq = this.a[paramInt];
-        if (localuqq == null) {
-          break label80;
-        }
-        return localuqq;
-        a(localuqq, paramInt);
-        if (localuqq != null) {
-          localuqq.b();
-        }
-        return localuqq;
-      }
-      Object localObject2 = new usf();
-      continue;
-      localObject2 = new uqj();
-      continue;
-      return localObject2;
-      label80:
-      switch (paramInt)
-      {
-      }
-    }
+    return true;
   }
   
-  public void a()
+  public static String b(QQUserUIItem paramQQUserUIItem)
   {
-    wsv.b("DataProviderManager", "onInit");
-  }
-  
-  public void b()
-  {
-    wsv.b("DataProviderManager", "onDestroy");
-    uqq[] arrayOfuqq = this.a;
-    int j = arrayOfuqq.length;
-    int i = 0;
-    while (i < j)
-    {
-      uqq localuqq = arrayOfuqq[i];
-      if (localuqq != null) {
-        localuqq.c();
-      }
-      i += 1;
-    }
+    return url.b(paramQQUserUIItem);
   }
 }
 

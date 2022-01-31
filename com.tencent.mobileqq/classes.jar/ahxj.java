@@ -1,19 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahxj
-  implements View.OnClickListener
+class ahxj
+  implements DialogInterface.OnClickListener
 {
-  public ahxj(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ahxj(ahww paramahww, boolean paramBoolean, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
-    this.a.startActivity(paramView);
+    azqs.b(null, "dc00898", "", "", "0X8009DCA", "0X8009DCA", 0, 0, ahww.a(this.jdField_a_of_type_Ahww), "", "", "");
+    if (this.jdField_a_of_type_Boolean)
+    {
+      ahww.a(this.jdField_a_of_type_Ahww, ahww.a(this.jdField_a_of_type_Ahww), Long.valueOf(ahww.a(this.jdField_a_of_type_Ahww)).longValue(), false);
+      return;
+    }
+    ahww.a(this.jdField_a_of_type_Ahww, ahww.a(this.jdField_a_of_type_Ahww), Long.valueOf(ahww.a(this.jdField_a_of_type_Ahww)).longValue(), false, this.jdField_a_of_type_JavaLangString);
   }
 }
 

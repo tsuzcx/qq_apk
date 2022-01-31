@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache.1;
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.ims.signature.SignatureReport;
 
 public class amdb
-  implements Comparator<File>
 {
-  public amdb(CleanCache.1 param1) {}
+  public int a;
+  public long a;
+  public signature.SignatureReport a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public int a(File paramFile1, File paramFile2)
+  amdb(amcw paramamcw, String paramString)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
-    }
-    return 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentImsSignature$SignatureReport = new signature.SignatureReport();
   }
 }
 

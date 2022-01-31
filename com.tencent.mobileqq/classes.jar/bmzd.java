@@ -1,26 +1,19 @@
-import android.util.Property;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
 
-class bmzd
-  extends Property<bmzb, Integer>
+public class bmzd
 {
-  bmzd(bmzb parambmzb, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public final Bitmap a;
+  public final boolean a;
+  public final Rect[] a;
+  public final String[] a;
   
-  public Integer a(bmzb parambmzb)
+  public bmzd(Bitmap paramBitmap, String[] paramArrayOfString, Rect[] paramArrayOfRect, boolean paramBoolean)
   {
-    if (parambmzb != null) {
-      return Integer.valueOf(bmzb.a(parambmzb));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(bmzb parambmzb, Integer paramInteger)
-  {
-    if (parambmzb != null) {
-      bmzb.a(parambmzb, paramInteger.intValue());
-    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsRect = paramArrayOfRect;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

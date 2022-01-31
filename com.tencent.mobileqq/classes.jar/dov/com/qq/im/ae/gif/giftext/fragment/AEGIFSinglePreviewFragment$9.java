@@ -3,22 +3,22 @@ package dov.com.qq.im.ae.gif.giftext.fragment;
 import android.app.Activity;
 import android.app.Dialog;
 import android.view.View;
-import bkzd;
+import bldk;
 
 public class AEGIFSinglePreviewFragment$9
   implements Runnable
 {
-  public AEGIFSinglePreviewFragment$9(bkzd parambkzd) {}
+  public AEGIFSinglePreviewFragment$9(bldk parambldk) {}
   
   public void run()
   {
-    if (!bkzd.a(this.this$0).isFinishing())
+    if (!bldk.a(this.this$0).isFinishing())
     {
-      if ((bkzd.a(this.this$0) != null) && (bkzd.a(this.this$0).isShowing())) {
-        bkzd.a(this.this$0).dismiss();
+      if ((bldk.a(this.this$0) != null) && (bldk.a(this.this$0).isShowing())) {
+        bldk.a(this.this$0).dismiss();
       }
-      if (bkzd.a(this.this$0) != null) {
-        bkzd.a(this.this$0).setVisibility(8);
+      if (bldk.a(this.this$0) != null) {
+        bldk.a(this.this$0).setVisibility(8);
       }
     }
   }

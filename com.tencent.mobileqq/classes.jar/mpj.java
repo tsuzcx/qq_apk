@@ -19,7 +19,7 @@ public class mpj
       }
     }
     label67:
-    for (i = bdyi.a(paramAppRuntime, paramString, 6, paramBoolean1, null); i != 0; i = bdyi.a(paramAppRuntime, paramAppRuntime.getAccount(), 6, paramBoolean1, paramString))
+    for (i = becr.a(paramAppRuntime, paramString, 6, paramBoolean1, null); i != 0; i = becr.a(paramAppRuntime, paramAppRuntime.getAccount(), 6, paramBoolean1, paramString))
     {
       if (AudioHelper.e()) {
         QLog.w("QAVConfig_382", 1, "getFunVideoId, 已经有默认配置, fcId[" + i + "]");

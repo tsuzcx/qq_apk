@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afyk;
+import agcz;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class StructingMsgItemBuilder$CacheMap
-  extends HashMap<String, ArrayList<afyk>>
+  extends HashMap<String, ArrayList<agcz>>
 {
   private static final long serialVersionUID = -7873031099646660622L;
   
-  public void add(afyk paramafyk)
+  public void add(agcz paramagcz)
   {
-    if (paramafyk == null) {
+    if (paramagcz == null) {
       return;
     }
-    get(paramafyk.a).add(paramafyk);
+    get(paramagcz.a).add(paramagcz);
   }
   
-  public ArrayList<afyk> get(String paramString)
+  public ArrayList<agcz> get(String paramString)
   {
     ArrayList localArrayList2 = (ArrayList)super.get(paramString);
     ArrayList localArrayList1 = localArrayList2;
@@ -29,17 +29,17 @@ public class StructingMsgItemBuilder$CacheMap
     return localArrayList1;
   }
   
-  public void remove(afyk paramafyk)
+  public void remove(agcz paramagcz)
   {
-    if ((paramafyk == null) || (paramafyk.a == null)) {}
+    if ((paramagcz == null) || (paramagcz.a == null)) {}
     ArrayList localArrayList;
     do
     {
       return;
-      localArrayList = get(paramafyk.a);
-      localArrayList.remove(paramafyk);
+      localArrayList = get(paramagcz.a);
+      localArrayList.remove(paramagcz);
     } while (!localArrayList.isEmpty());
-    remove(paramafyk.a);
+    remove(paramagcz.a);
   }
 }
 

@@ -1,16 +1,28 @@
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
+
 public class bdjp
+  extends PipedInputStream
 {
-  private static bdjq a;
+  private int a = 1024;
   
-  public static void a(Runnable paramRunnable)
+  public bdjp(PipedOutputStream paramPipedOutputStream, int paramInt)
   {
-    if (paramRunnable == null) {
+    super(paramPipedOutputStream);
+    this.a = paramInt;
+  }
+  
+  protected void receive(int paramInt)
+  {
+    try
+    {
+      if (this.buffer.length != this.a) {
+        this.buffer = new byte[this.a];
+      }
+      super.receive(paramInt);
       return;
     }
-    if (a == null) {
-      a = new bdjq(3, 10L);
-    }
-    a.execute(paramRunnable);
+    finally {}
   }
 }
 

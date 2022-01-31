@@ -1,28 +1,47 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import com.tencent.mobileqq.pb.PBEnumField;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahlq
-  implements ahgi
+  extends ahln
+  implements View.OnClickListener
 {
-  public ahlq(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
-  
-  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public ahlq(Context paramContext, QQAppInterface paramQQAppInterface, akln paramakln, avun paramavun)
   {
-    if (!(paramViewHolder instanceof ahkp)) {}
-    do
-    {
-      return;
-      paramView = (ahkp)paramViewHolder;
-    } while (paramView.a.msg_type.get() != 2);
-    TroopSuspiciousFragment.a(this.a, paramView);
+    super(paramContext, paramQQAppInterface, paramakln, paramavun);
   }
   
-  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public View a(int paramInt, View paramView)
   {
-    return false;
+    View localView;
+    if (paramView != null)
+    {
+      localView = paramView;
+      if ((paramView.getTag() instanceof ahlr)) {}
+    }
+    else
+    {
+      localView = LayoutInflater.from(this.a).inflate(2131561333, null);
+    }
+    localView.setOnClickListener(this);
+    localView.setTag(new ahlr());
+    return localView;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendBindContactGuideBuilder", 2, "start PhoneLaunchActivity");
+    }
+    Intent localIntent = new Intent(paramView.getContext(), BindNumberActivity.class);
+    localIntent.putExtra("kSrouce", 15);
+    ((Activity)paramView.getContext()).startActivityForResult(localIntent, 230);
   }
 }
 

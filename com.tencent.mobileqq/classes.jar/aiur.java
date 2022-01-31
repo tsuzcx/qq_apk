@@ -1,54 +1,53 @@
-import Wallet.SkinInfo;
-import java.util.Iterator;
-import java.util.List;
+import Wallet.IdiomRedPackMatchRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aiur
+class aiur
+  implements BusinessObserver
 {
-  public static aiup a(String paramString)
-  {
-    aiup localaiup = new aiup(alpo.a(2131705810));
-    localaiup.jdField_b_of_type_Int = -2;
-    localaiup.jdField_a_of_type_WalletSkinInfo.skin_id = -2;
-    localaiup.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
-    localaiup.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title = paramString;
-    localaiup.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon = null;
-    localaiup.jdField_a_of_type_Int = 0;
-    return localaiup;
-  }
+  aiur(aiuq paramaiuq) {}
   
-  public static aiup a(List<aiup> paramList, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramInt == 26)
     {
-      aiup localaiup = (aiup)paramList.next();
-      if (localaiup.jdField_a_of_type_WalletSkinInfo.skin_id == paramInt) {
-        return localaiup;
+      paramBundle = (IdiomRedPackMatchRsp)paramBundle.getSerializable("rsp");
+      if ((QLog.isColorLevel()) && (paramBundle != null)) {
+        QLog.d("PasswdRedBagManager", 2, "openSolitaireRedBagByIdiom reportObserver: " + paramBoolean + "|status: " + paramBundle.status + " |hbIdiom： " + paramBundle.hbIdiom + " |hbIdiomLastPY: " + paramBundle.hbIdiomLastPY + " |idiomSeq: " + paramBundle.idiomSeq + " |subchannel: " + paramBundle.subchannel);
+      }
+      if ((paramBoolean) && (paramBundle != null))
+      {
+        if (paramBundle.status != 0) {
+          break label159;
+        }
+        this.a.jdField_a_of_type_Aiul.a(this.a.jdField_a_of_type_Aiuk.jdField_a_of_type_JavaLangString, paramBundle.hbIdiom, paramBundle.hbIdiomLastPY, paramBundle.idiomSeq);
       }
     }
-    return null;
-  }
-  
-  public static aiup b(String paramString)
-  {
-    aiup localaiup = new aiup(alpo.a(2131705812));
-    localaiup.jdField_b_of_type_Int = -1;
-    localaiup.jdField_a_of_type_WalletSkinInfo.skin_id = 0;
-    localaiup.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
-    localaiup.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title = paramString;
-    localaiup.jdField_a_of_type_Int = -1;
-    return localaiup;
-  }
-  
-  public static aiup c(String paramString)
-  {
-    aiup localaiup = new aiup(alpo.a(2131705811));
-    localaiup.jdField_b_of_type_JavaLangString = paramString;
-    localaiup.jdField_b_of_type_Int = 1;
-    localaiup.jdField_a_of_type_Int = 1000;
-    localaiup.jdField_a_of_type_WalletSkinInfo.skin_id = -1;
-    localaiup.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
-    return localaiup;
+    label159:
+    do
+    {
+      return;
+      if (paramBundle.status == 1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("PasswdRedBagManager", 2, "sessionInfo.curType: " + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        }
+        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) {
+          this.a.jdField_a_of_type_Aiul.a(this.a.jdField_a_of_type_Aiuk.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        }
+        Bundle localBundle = new Bundle();
+        localBundle.putString("answer", this.a.jdField_a_of_type_JavaLangString);
+        localBundle.putInt("subchannel", paramBundle.subchannel);
+        this.a.jdField_a_of_type_Aiul.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_Aiuk, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Int, localBundle);
+        return;
+      }
+    } while (paramBundle.status != 2);
+    long l = NetConnInfoCenter.getServerTime();
+    aivo.a(aiul.a(this.a.jdField_a_of_type_Aiul).getCurrentAccountUin(), "idiom_match_in_phone", l + paramBundle.timeInterval);
   }
 }
 

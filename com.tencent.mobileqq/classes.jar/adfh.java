@@ -1,19 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.QQPermissionCallback;
 
 public class adfh
-  implements DialogInterface.OnClickListener
+  implements QQPermissionCallback
 {
-  public adfh(NotificationActivity paramNotificationActivity) {}
+  public adfh(JumpActivity paramJumpActivity, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    SettingCloneUtil.writeValue(this.a.app.getApp(), null, "security_scan_key", "qqsetting_security_scan_key", true);
-    this.a.app.y();
-    this.a.finish();
+    QLog.i("JumpAction", 1, "system share.doShare denied sd grant");
+    bdgm.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, new adfi(this));
+    paramArrayOfString = new HashMap();
+    azri.a(BaseApplication.getContext()).a("", "noSDPermissionShareDeny", true, 0L, 0L, paramArrayOfString, "");
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("JumpAction", 1, "system share.doShare user grant");
+    JumpActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, this.jdField_a_of_type_Boolean);
+    paramArrayOfString = new HashMap();
+    azri.a(BaseApplication.getContext()).a("", "noSDPermissionShareGrant", true, 0L, 0L, paramArrayOfString, "");
   }
 }
 

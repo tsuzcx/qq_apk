@@ -1,22 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
 public class ajkf
-  implements DialogInterface.OnClickListener
+  extends ajjw
 {
-  public ajkf(EditLocalVideoActivity paramEditLocalVideoActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (EditLocalVideoActivity.a(this.a)) {}
-    for (paramInt = -1;; paramInt = 0)
-    {
-      EditLocalVideoActivity.a(this.a).dismiss();
-      EditLocalVideoActivity.a(this.a, paramInt);
-      return;
-    }
-  }
+  public Button a;
+  public RelativeLayout a;
+  public TextView a;
+  public TroopLabelLayout a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public RelativeLayout b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

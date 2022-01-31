@@ -1,10 +1,22 @@
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public abstract interface akwz
+class akwz
+  extends altm
 {
-  public abstract void a(SpriteTaskParam paramSpriteTaskParam, long paramLong);
+  akwz(akwy paramakwy) {}
   
-  public abstract void a(SpriteTaskParam paramSpriteTaskParam, long paramLong, int paramInt);
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("qwe", 2, "onUpdateFriendInfo:" + paramString);
+    }
+    if ((akwy.a(this.a) != null) && (akwy.a(this.a).get(paramString + "nick") != null))
+    {
+      int i = ((Integer)akwy.a(this.a).remove(paramString + "nick")).intValue();
+      this.a.a(i, paramString, 1);
+    }
+  }
 }
 
 

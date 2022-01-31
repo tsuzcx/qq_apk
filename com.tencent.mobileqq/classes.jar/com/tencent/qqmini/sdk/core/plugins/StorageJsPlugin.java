@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bgho;
-import bgiy;
-import bgjw;
-import bgkd;
-import bglp;
-import bgte;
+import bglv;
+import bgnf;
+import bgod;
+import bgok;
+import bgpw;
+import bgxl;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -21,7 +21,7 @@ public class StorageJsPlugin
   private static final String TAG = "StorageJsPlugin";
   private MiniAppProxy mProxy;
   private SharedPreferences mSharedPref;
-  private bgiy mStorage;
+  private bgnf mStorage;
   
   public static String execStorageTask(String paramString, StorageJsPlugin.StorageTask paramStorageTask)
   {
@@ -32,18 +32,18 @@ public class StorageJsPlugin
     return "";
   }
   
-  public String handleClearStorage(bgkd parambgkd)
+  public String handleClearStorage(bgok parambgok)
   {
-    return execStorageTask(parambgkd.a, new StorageJsPlugin.5(this, parambgkd));
+    return execStorageTask(parambgok.a, new StorageJsPlugin.5(this, parambgok));
   }
   
-  public String handleGetGlobalStorage(bgkd parambgkd)
+  public String handleGetGlobalStorage(bgok parambgok)
   {
     try
     {
-      Object localObject = new JSONObject(parambgkd.b);
-      localObject = bglp.a(((JSONObject)localObject).optString("key"));
-      return execStorageTask(parambgkd.a, new StorageJsPlugin.6(this, (String)localObject, parambgkd));
+      Object localObject = new JSONObject(parambgok.b);
+      localObject = bgpw.a(((JSONObject)localObject).optString("key"));
+      return execStorageTask(parambgok.a, new StorageJsPlugin.6(this, (String)localObject, parambgok));
     }
     catch (Throwable localThrowable)
     {
@@ -55,13 +55,13 @@ public class StorageJsPlugin
     }
   }
   
-  public String handleGetStorage(bgkd parambgkd)
+  public String handleGetStorage(bgok parambgok)
   {
     try
     {
-      Object localObject = new JSONObject(parambgkd.b);
-      localObject = bglp.a(((JSONObject)localObject).optString("key"));
-      return execStorageTask(parambgkd.a, new StorageJsPlugin.2(this, (String)localObject, parambgkd));
+      Object localObject = new JSONObject(parambgok.b);
+      localObject = bgpw.a(((JSONObject)localObject).optString("key"));
+      return execStorageTask(parambgok.a, new StorageJsPlugin.2(this, (String)localObject, parambgok));
     }
     catch (Throwable localThrowable)
     {
@@ -73,18 +73,18 @@ public class StorageJsPlugin
     }
   }
   
-  public String handleGetStorageInfo(bgkd parambgkd)
+  public String handleGetStorageInfo(bgok parambgok)
   {
-    return execStorageTask(parambgkd.a, new StorageJsPlugin.3(this, parambgkd));
+    return execStorageTask(parambgok.a, new StorageJsPlugin.3(this, parambgok));
   }
   
-  public String handleRemoveStorage(bgkd parambgkd)
+  public String handleRemoveStorage(bgok parambgok)
   {
     try
     {
-      Object localObject = new JSONObject(parambgkd.b);
-      localObject = bglp.a(((JSONObject)localObject).optString("key"));
-      return execStorageTask(parambgkd.a, new StorageJsPlugin.4(this, (String)localObject, parambgkd));
+      Object localObject = new JSONObject(parambgok.b);
+      localObject = bgpw.a(((JSONObject)localObject).optString("key"));
+      return execStorageTask(parambgok.a, new StorageJsPlugin.4(this, (String)localObject, parambgok));
     }
     catch (Throwable localThrowable)
     {
@@ -96,14 +96,14 @@ public class StorageJsPlugin
     }
   }
   
-  public String handleSetGlobalStorage(bgkd parambgkd)
+  public String handleSetGlobalStorage(bgok parambgok)
   {
     try
     {
-      Object localObject = new JSONObject(parambgkd.b);
-      String str = bglp.a(((JSONObject)localObject).optString("key"));
+      Object localObject = new JSONObject(parambgok.b);
+      String str = bgpw.a(((JSONObject)localObject).optString("key"));
       localObject = ((JSONObject)localObject).optString("data");
-      return execStorageTask(parambgkd.a, new StorageJsPlugin.7(this, str, (String)localObject, parambgkd));
+      return execStorageTask(parambgok.a, new StorageJsPlugin.7(this, str, (String)localObject, parambgok));
     }
     catch (Throwable localThrowable)
     {
@@ -115,46 +115,46 @@ public class StorageJsPlugin
     }
   }
   
-  public String handleSetStorage(bgkd parambgkd)
+  public String handleSetStorage(bgok parambgok)
   {
     try
     {
-      Object localObject = new JSONObject(parambgkd.b);
+      Object localObject = new JSONObject(parambgok.b);
       String str1 = ((JSONObject)localObject).optString("key");
       if (TextUtils.isEmpty(str1)) {
-        return parambgkd.a("key is empty");
+        return parambgok.a("key is empty");
       }
-      str1 = bglp.a(str1);
+      str1 = bgpw.a(str1);
       String str2 = ((JSONObject)localObject).optString("data");
       localObject = ((JSONObject)localObject).optString("dataType", "String");
-      if ("setStorage".equals(parambgkd.a)) {
-        ThreadManager.a(new StorageJsPlugin.1(this, str1, str2, (String)localObject, parambgkd), 16, null, true);
+      if ("setStorage".equals(parambgok.a)) {
+        ThreadManager.a(new StorageJsPlugin.1(this, str1, str2, (String)localObject, parambgok), 16, null, true);
       }
-      if ("setStorageSync".equals(parambgkd.a))
+      if ("setStorageSync".equals(parambgok.a))
       {
         if (this.mStorage.a(str1, (String)localObject, str2)) {
-          return parambgkd.a();
+          return parambgok.a();
         }
-        parambgkd = parambgkd.a("size limit reached");
-        return parambgkd;
+        parambgok = parambgok.a("size limit reached");
+        return parambgok;
       }
     }
-    catch (Exception parambgkd)
+    catch (Exception parambgok)
     {
-      QMLog.e("StorageJsPlugin", parambgkd.getMessage(), parambgkd);
+      QMLog.e("StorageJsPlugin", parambgok.getMessage(), parambgok);
     }
     return "";
   }
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    super.onCreate(parambgho);
+    super.onCreate(parambglv);
     this.mSharedPref = this.mContext.getSharedPreferences("miniapp", 4);
-    if (bgte.a().a() != null) {}
-    for (parambgho = bgte.a().a();; parambgho = "")
+    if (bgxl.a().a() != null) {}
+    for (parambglv = bgxl.a().a();; parambglv = "")
     {
       String str = this.mApkgInfo.appId;
-      this.mStorage = bgiy.a(this.mContext, parambgho, str);
+      this.mStorage = bgnf.a(this.mContext, parambglv, str);
       return;
     }
   }

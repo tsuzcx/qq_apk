@@ -15,7 +15,7 @@ public class ReadinjoyTabFrame$29$2
   {
     if (ors.g() >= 2)
     {
-      QQToast.a(this.a.a, 0, this.a.a.getString(2131718857), 0).b(this.a.a.getResources().getDimensionPixelSize(2131298914));
+      QQToast.a(this.a.a, 0, this.a.a.getString(2131718869), 0).b(this.a.a.getResources().getDimensionPixelSize(2131298914));
       return;
     }
     ReadinjoyTabFrame.a(this.a.a);

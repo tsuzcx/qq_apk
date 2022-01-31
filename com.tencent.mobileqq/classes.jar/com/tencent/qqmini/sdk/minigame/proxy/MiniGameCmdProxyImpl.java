@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.minigame.proxy;
 
 import android.os.Bundle;
-import bgtx;
+import bgye;
 import com.tencent.qqmini.sdk.core.proxy.CmdProxy;
 import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
 
@@ -11,7 +11,7 @@ public class MiniGameCmdProxyImpl
   public void handleMiniAppCmd(String paramString, Bundle paramBundle, MiniCmdCallback paramMiniCmdCallback)
   {
     if (("cmd_queue_mini_process_load_apkg".equals(paramString)) || ("cmd_remove_mini_process_load_apkg".equals(paramString)) || ("cmd_main_process_load_pkg".equals(paramString)) || ("cmd_main_process_download_pkg".equals(paramString))) {
-      bgtx.a(paramString, paramBundle, paramMiniCmdCallback);
+      bgye.a(paramString, paramBundle, paramMiniCmdCallback);
     }
   }
 }

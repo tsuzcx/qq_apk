@@ -6,8 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutParams;
 import android.util.AttributeSet;
-import besi;
-import besj;
+import bewr;
+import bews;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -19,8 +19,8 @@ public class DatePickerView
 {
   protected Context a;
   private TypedArray a;
-  protected besi a;
-  protected besj a;
+  protected bewr a;
+  protected bews a;
   
   public DatePickerView(Context paramContext)
   {
@@ -45,10 +45,10 @@ public class DatePickerView
   
   public void a(int paramInt1, int paramInt2, ArrayList<MessageRecord> paramArrayList)
   {
-    if (this.jdField_a_of_type_Besj != null)
+    if (this.jdField_a_of_type_Bews != null)
     {
-      this.jdField_a_of_type_Besj.a(paramInt1, paramInt2, paramArrayList);
-      this.jdField_a_of_type_Besj.notifyDataSetChanged();
+      this.jdField_a_of_type_Bews.a(paramInt1, paramInt2, paramArrayList);
+      this.jdField_a_of_type_Bews.notifyDataSetChanged();
     }
     if (QLog.isColorLevel())
     {
@@ -71,15 +71,15 @@ public class DatePickerView
     setFadingEdgeLength(0);
   }
   
-  public void setController(besi parambesi)
+  public void setController(bewr parambewr)
   {
-    this.jdField_a_of_type_Besi = parambesi;
-    if (this.jdField_a_of_type_Besj == null) {
-      this.jdField_a_of_type_Besj = new besj(getContext(), parambesi, this.jdField_a_of_type_AndroidContentResTypedArray);
+    this.jdField_a_of_type_Bewr = parambewr;
+    if (this.jdField_a_of_type_Bews == null) {
+      this.jdField_a_of_type_Bews = new bews(getContext(), parambewr, this.jdField_a_of_type_AndroidContentResTypedArray);
     }
-    this.jdField_a_of_type_Besj.notifyDataSetChanged();
-    setAdapter(this.jdField_a_of_type_Besj);
-    scrollToPosition(this.jdField_a_of_type_Besj.getItemCount() - 1);
+    this.jdField_a_of_type_Bews.notifyDataSetChanged();
+    setAdapter(this.jdField_a_of_type_Bews);
+    scrollToPosition(this.jdField_a_of_type_Bews.getItemCount() - 1);
   }
 }
 

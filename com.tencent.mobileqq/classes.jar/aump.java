@@ -1,22 +1,6 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.music.QQPlayerService;
-
-public final class aump
-  implements atxr
+public abstract interface aump
 {
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      QQPlayerService.a(BaseApplicationImpl.getContext(), QQPlayerService.b());
-      return;
-    }
-    QQPlayerService.c(BaseApplicationImpl.getContext());
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,15 +1,15 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public abstract interface bakr
+class bakr
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void callJs(String paramString, String... paramVarArgs);
+  bakr(bakq parambakq) {}
   
-  public abstract void diyThemeSetup(JSONObject paramJSONObject, String paramString);
-  
-  public abstract void downloadBgPic(String paramString, Bundle paramBundle);
-  
-  public abstract void startDownload(JSONObject paramJSONObject, String paramString);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a.a = null;
+  }
 }
 
 

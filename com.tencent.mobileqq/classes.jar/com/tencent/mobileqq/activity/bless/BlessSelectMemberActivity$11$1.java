@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.bless;
 
-import agym;
-import alpo;
+import ahdb;
+import alud;
 import android.content.res.Resources;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class BlessSelectMemberActivity$11$1
   implements Runnable
 {
-  public BlessSelectMemberActivity$11$1(agym paramagym) {}
+  public BlessSelectMemberActivity$11$1(ahdb paramahdb) {}
   
   public void run()
   {
-    QQToast.a(this.a.a, alpo.a(2131701532), 0).b(this.a.a.getResources().getDimensionPixelSize(2131298914));
+    QQToast.a(this.a.a, alud.a(2131701544), 0).b(this.a.a.getResources().getDimensionPixelSize(2131298914));
   }
 }
 

@@ -65,7 +65,7 @@ public class qja
   public SkinData a(Context paramContext)
   {
     SkinData localSkinData = null;
-    paramContext = bdiv.q(paramContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    paramContext = bdne.q(paramContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
     if (paramContext != null) {}
     for (;;)
     {
@@ -110,7 +110,7 @@ public class qja
     }
     for (;;)
     {
-      boolean bool = bdiv.v(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+      boolean bool = bdne.v(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
       if ((this.jdField_a_of_type_JavaLangString.equals(paramString1)) && (paramBoolean == bool)) {
         return new ErrorMessage(-1, "your are already set the skin");
       }
@@ -122,14 +122,14 @@ public class qja
         if (localObject != null)
         {
           ((RefreshData)localObject).isShown = true;
-          bdiv.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), ((RefreshData)localObject).toJson().toString(), 0);
+          bdne.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), ((RefreshData)localObject).toJson().toString(), 0);
           if ((i >= ((RefreshData)localObject).beginTime) && (i <= ((RefreshData)localObject).endTime))
           {
             paramString3.a(1, ((RefreshData)localObject).id, ((RefreshData)localObject).seq, 0);
             paramString3.a(true);
           }
         }
-        bdiv.m(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramBoolean);
+        bdne.m(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramBoolean);
         paramString3 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext();
         localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
         if (paramString2 == null) {
@@ -139,14 +139,14 @@ public class qja
       label512:
       for (paramString2 = paramString2.toJson().toString();; paramString2 = null)
       {
-        bdiv.s(paramString3, (String)localObject, paramString2);
+        bdne.s(paramString3, (String)localObject, paramString2);
         a(paramInt, paramString1, false);
         return new ErrorMessage();
         if (localObject == null) {
           break;
         }
         ((RefreshData)localObject).isShown = false;
-        bdiv.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), ((RefreshData)localObject).toJson().toString(), 0);
+        bdne.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), ((RefreshData)localObject).toJson().toString(), 0);
         break;
       }
       paramString2 = null;
@@ -201,7 +201,7 @@ public class qja
   
   public void a(Context paramContext, String paramString, BaseResData paramBaseResData)
   {
-    bdiv.g(paramContext, paramString, paramBaseResData.seq);
+    bdne.g(paramContext, paramString, paramBaseResData.seq);
   }
   
   public void a(qjn paramqjn)
@@ -217,7 +217,7 @@ public class qja
   
   public void a(String[] paramArrayOfString)
   {
-    azmj.b(null, "dc00899", "BizTechReport", "", "skin_download", "skin_guide", 0, 0, paramArrayOfString[0], paramArrayOfString[1], paramArrayOfString[2], String.valueOf(bdee.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication())));
+    azqs.b(null, "dc00899", "BizTechReport", "", "skin_download", "skin_guide", 0, 0, paramArrayOfString[0], paramArrayOfString[1], paramArrayOfString[2], String.valueOf(bdin.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication())));
   }
   
   public boolean a(GuideData paramGuideData)
@@ -235,7 +235,7 @@ public class qja
     paramString = (String)this.jdField_a_of_type_JavaUtilHashMap.remove("skin_" + paramString);
     if (paramString != null)
     {
-      this.jdField_a_of_type_Bdwa.a(false, paramString);
+      this.jdField_a_of_type_Beaj.a(false, paramString);
       return true;
     }
     return false;
@@ -246,14 +246,14 @@ public class qja
     return (a() != 1) || (!paramBaseResData.id.equals(a()));
   }
   
-  public boolean a(String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, bdvu parambdvu)
+  public boolean a(String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, bead parambead)
   {
     paramString1 = new SkinData(paramString1, paramString3, paramLong1, (int)paramLong2, (int)paramLong3);
     paramString2 = a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext());
     if ((paramString2 != null) && (paramString2.id.equals(paramString1.id)) && (paramString2.seq != paramString1.seq) && (!this.jdField_a_of_type_JavaLangString.equals(paramString1.id))) {
-      bdcs.a(qip.a(paramString2.id));
+      bdhb.a(qip.a(paramString2.id));
     }
-    a(parambdvu);
+    a(parambead);
     return super.a("skin", paramString1, 3);
   }
   
@@ -270,8 +270,8 @@ public class qja
   
   public void b(String paramString, BaseResData paramBaseResData)
   {
-    bdiv.t(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramBaseResData.id);
-    bdiv.C(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    bdne.t(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramBaseResData.id);
+    bdne.C(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
   }
   
   public void b(qjn paramqjn)
@@ -286,9 +286,9 @@ public class qja
   public boolean b(String paramString, BaseResData paramBaseResData)
   {
     paramString = b(paramString, paramBaseResData.id);
-    long l1 = bdiv.h(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()) / 86400000L;
+    long l1 = bdne.h(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()) / 86400000L;
     long l2 = System.currentTimeMillis() / 86400000L;
-    return (azzp.a(new File(paramString))) && (qip.a(paramBaseResData.id)) && (!bdiv.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramBaseResData.id)) && (l2 > l1);
+    return (bady.a(new File(paramString))) && (qip.a(paramBaseResData.id)) && (!bdne.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramBaseResData.id)) && (l2 > l1);
   }
   
   public boolean c(String paramString, BaseResData paramBaseResData)

@@ -1,48 +1,44 @@
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.graphics.Bitmap;
 
 public class bmpe
-  implements bmmt
+  extends bmpw
 {
-  public bmpe(DoodleLayout paramDoodleLayout) {}
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  public String a;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  public String b;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
   
-  public void a()
+  public bmpe(int paramInt, Bitmap paramBitmap)
   {
-    wsv.b("DoodleLayout", "deleteVote.");
-    if (DoodleLayout.a(this.a) != null)
-    {
-      bmkm localbmkm = (bmkm)DoodleLayout.a(this.a).a(bmkm.class);
-      if (localbmkm != null) {
-        localbmkm.d();
-      }
-    }
+    super(paramInt, paramBitmap);
+    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
+  public bmpe a(Bitmap paramBitmap)
   {
-    this.a.a(paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5);
+    paramBitmap = new bmpe(this.jdField_c_of_type_Int, paramBitmap);
+    paramBitmap.jdField_b_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    paramBitmap.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    paramBitmap.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+    paramBitmap.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    paramBitmap.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    paramBitmap.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramBitmap.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    return paramBitmap;
   }
   
-  public boolean a(bmmu parambmmu)
+  public String toString()
   {
-    if (this.a.a != null)
-    {
-      this.a.a.setVisibility(0);
-      DoodleLayout.b(this.a);
-      this.a.a.a.a(parambmmu);
-      parambmmu.k = true;
-      parambmmu = parambmmu.a;
-      if (!this.a.a.a()) {}
-      for (boolean bool = true;; bool = false)
-      {
-        parambmmu.lockData(bool);
-        this.a.a.requestLayout();
-        wta.a("video_shoot_new", "qa_edit", 1, 0, new String[0]);
-        return true;
-      }
-    }
-    return false;
+    return "Mp4VideoFragmentInfo{index=" + this.jdField_c_of_type_Int + ", bitmap=" + this.jdField_c_of_type_AndroidGraphicsBitmap + ", startTime=" + this.jdField_a_of_type_Long + ", endTime=" + this.jdField_b_of_type_Long + '}';
   }
 }
 

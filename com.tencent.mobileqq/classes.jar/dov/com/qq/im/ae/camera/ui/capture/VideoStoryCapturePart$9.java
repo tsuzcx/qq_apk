@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui.capture;
 
-import bkrq;
-import blbj;
+import bkvx;
+import blfq;
 
 public class VideoStoryCapturePart$9
   implements Runnable
 {
-  public VideoStoryCapturePart$9(bkrq parambkrq) {}
+  public VideoStoryCapturePart$9(bkvx parambkvx) {}
   
   public void run()
   {
-    bkrq.d(this.this$0);
-    bkrq.a(this.this$0).a(false);
+    bkvx.d(this.this$0);
+    bkvx.a(this.this$0).a(false);
   }
 }
 

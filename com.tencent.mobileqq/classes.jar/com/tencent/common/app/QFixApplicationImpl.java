@@ -14,7 +14,7 @@ import android.os.Bundle;
 import android.os.Process;
 import android.text.TextUtils;
 import android.util.Log;
-import asls;
+import asqb;
 import com.tencent.mobileqq.msf.core.net.patch.PatchCommonUtil;
 import com.tencent.mobileqq.qfix.ApplicationDelegate;
 import com.tencent.mobileqq.qfix.QFixApplication;
@@ -234,8 +234,8 @@ public class QFixApplicationImpl
       else
       {
         localObject2 = ((JSONObject)localObject1).optString("revision", "");
-        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision=" + (String)localObject2 + ", " + "6b98d0b0");
-        if (!"6b98d0b0".equals(localObject2))
+        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision=" + (String)localObject2 + ", " + "fd2cc8f9");
+        if (!"fd2cc8f9".equals(localObject2))
         {
           Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision not match.");
           bool1 = false;
@@ -391,7 +391,7 @@ public class QFixApplicationImpl
     {
       FileProvider7Helper.intentCompatForN(this, paramIntent);
       ThirdAppReportHelper.reportThirdAppOpen(this, paramIntent, 0);
-      asls.a(this, paramIntent, new QFixApplicationImpl.1(this, paramIntent));
+      asqb.a(this, paramIntent, new QFixApplicationImpl.1(this, paramIntent));
       return;
     }
     catch (Throwable paramIntent)
@@ -406,7 +406,7 @@ public class QFixApplicationImpl
     {
       FileProvider7Helper.intentCompatForN(this, paramIntent);
       ThirdAppReportHelper.reportThirdAppOpen(this, paramIntent, 0);
-      asls.a(this, paramIntent, new QFixApplicationImpl.2(this, paramIntent, paramBundle));
+      asqb.a(this, paramIntent, new QFixApplicationImpl.2(this, paramIntent, paramBundle));
       return;
     }
     catch (Throwable paramIntent)

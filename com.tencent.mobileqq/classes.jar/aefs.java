@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aefs
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aefs(UpgradeActivity paramUpgradeActivity) {}
+  public aefs(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    UpgradeActivity.b(this.a);
-    this.a.finish();
+    this.a.b.dismiss();
   }
 }
 

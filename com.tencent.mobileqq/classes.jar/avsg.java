@@ -1,38 +1,27 @@
-import android.app.Activity;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.1;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.2;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.3;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.4;
-import mqq.os.MqqHandler;
+import java.util.List;
 
 public class avsg
-  extends bady
 {
-  public avsg(OCRResultFragmentNew paramOCRResultFragmentNew, Activity paramActivity)
-  {
-    super(paramActivity);
-  }
-  
-  public void a()
-  {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.1(this));
-  }
-  
-  public void a(int paramInt)
-  {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.4(this, paramInt));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.3(this));
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.2(this, paramString));
-  }
+  public long a;
+  public avdd a;
+  public List<avse> a;
+  public boolean a;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
 }
 
 

@@ -235,7 +235,7 @@ public class noy
     if ((paramContext == null) || (!(paramBaseArticleInfo instanceof AdvertisementInfo))) {
       return 0.0D;
     }
-    SosoInterface.SosoLbsInfo localSosoLbsInfo = amkv.a("readinjoy_feed_ad_distance");
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = ampk.a("readinjoy_feed_ad_distance");
     if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null))
     {
       paramBaseArticleInfo = (AdvertisementInfo)paramBaseArticleInfo;
@@ -279,7 +279,7 @@ public class noy
   
   public static double a(double[] paramArrayOfDouble, Context paramContext)
   {
-    SosoInterface.SosoLbsInfo localSosoLbsInfo = amkv.a("readinjoy_feed_ad_distance");
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = ampk.a("readinjoy_feed_ad_distance");
     double d1;
     double d2;
     double d3;
@@ -335,7 +335,7 @@ public class noy
         } while (!QLog.isColorLevel());
         QLog.d("NativeAdUtils", 2, "isPkgDownloading pkg:" + paramContext + ", appid:" + paramnnw + " false");
         return -1;
-        localDownloadInfo = bfkb.a().a(paramnnw);
+        localDownloadInfo = bfok.a().a(paramnnw);
         if (localDownloadInfo != null) {
           break;
         }
@@ -365,8 +365,8 @@ public class noy
   public static Dialog a(Context paramContext, String paramString1, String paramString2, View.OnClickListener paramOnClickListener1, String paramString3, View.OnClickListener paramOnClickListener2, String paramString4)
   {
     paramContext = new Dialog(paramContext, 2131755801);
-    paramContext.setContentView(2131558920);
-    TextView localTextView = (TextView)paramContext.findViewById(2131365235);
+    paramContext.setContentView(2131558919);
+    TextView localTextView = (TextView)paramContext.findViewById(2131365237);
     if (localTextView != null)
     {
       if (paramString1 != null) {
@@ -375,7 +375,7 @@ public class noy
     }
     else
     {
-      paramString1 = (TextView)paramContext.findViewById(2131365231);
+      paramString1 = (TextView)paramContext.findViewById(2131365233);
       if (paramString1 != null)
       {
         if (paramString4 == null) {
@@ -384,7 +384,7 @@ public class noy
         paramString1.setText(paramString4);
       }
       label72:
-      paramString1 = (TextView)paramContext.findViewById(2131365220);
+      paramString1 = (TextView)paramContext.findViewById(2131365222);
       if (paramString1 != null)
       {
         if (paramString2 == null) {
@@ -398,7 +398,7 @@ public class noy
     }
     for (;;)
     {
-      paramString1 = (TextView)paramContext.findViewById(2131365226);
+      paramString1 = (TextView)paramContext.findViewById(2131365228);
       if (paramString1 != null)
       {
         if (paramString3 == null) {
@@ -563,7 +563,7 @@ public class noy
           localObject1 = jdField_c_of_type_JavaLangString;
           return localObject1;
         }
-        Object localObject1 = bjxj.a((AppRuntime)localObject1, true, false);
+        Object localObject1 = bkbq.a((AppRuntime)localObject1, true, false);
         if (localObject1 != null) {
           jdField_c_of_type_JavaLangString = ((SharedPreferences)localObject1).getString("sp_key_ad_cookie", "");
         } else {
@@ -609,7 +609,7 @@ public class noy
   
   public static String a(String paramString)
   {
-    return bfhh.a(paramString);
+    return bflq.a(paramString);
   }
   
   public static JSONObject a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
@@ -659,7 +659,7 @@ public class noy
     //   33: aload 6
     //   35: ldc_w 853
     //   38: aload_3
-    //   39: invokestatic 857	bfhi:d	(Ljava/lang/String;)Ljava/lang/String;
+    //   39: invokestatic 857	bflr:d	(Ljava/lang/String;)Ljava/lang/String;
     //   42: invokevirtual 851	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   45: invokevirtual 860	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   48: pop
@@ -674,26 +674,26 @@ public class noy
     //   64: astore 4
     //   66: aload 5
     //   68: astore_3
-    //   69: new 864	aaop
+    //   69: new 864	aate
     //   72: dup
-    //   73: invokespecial 865	aaop:<init>	()V
+    //   73: invokespecial 865	aate:<init>	()V
     //   76: astore 5
     //   78: aload 5
     //   80: ldc_w 867
-    //   83: putfield 868	aaop:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   83: putfield 868	aate:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   86: invokestatic 874	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   89: aload 5
-    //   91: invokestatic 879	aaoo:a	(Landroid/content/Context;Laaop;)Laaoq;
+    //   91: invokestatic 879	aatd:a	(Landroid/content/Context;Laate;)Laatf;
     //   94: astore 5
     //   96: aload 5
     //   98: ifnull +51 -> 149
     //   101: aload 5
-    //   103: getfield 884	aaoq:a	Ltencent/gdt/qq_ad_get$QQAdGet$DeviceInfo;
+    //   103: getfield 884	aatf:a	Ltencent/gdt/qq_ad_get$QQAdGet$DeviceInfo;
     //   106: ifnull +43 -> 149
     //   109: aload 6
     //   111: ldc_w 853
     //   114: aload 5
-    //   116: getfield 884	aaoq:a	Ltencent/gdt/qq_ad_get$QQAdGet$DeviceInfo;
+    //   116: getfield 884	aatf:a	Ltencent/gdt/qq_ad_get$QQAdGet$DeviceInfo;
     //   119: getfield 889	tencent/gdt/qq_ad_get$QQAdGet$DeviceInfo:muid	Lcom/tencent/mobileqq/pb/PBStringField;
     //   122: invokevirtual 893	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
     //   125: invokevirtual 860	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
@@ -701,7 +701,7 @@ public class noy
     //   129: aload 6
     //   131: ldc_w 862
     //   134: aload 5
-    //   136: getfield 884	aaoq:a	Ltencent/gdt/qq_ad_get$QQAdGet$DeviceInfo;
+    //   136: getfield 884	aatf:a	Ltencent/gdt/qq_ad_get$QQAdGet$DeviceInfo;
     //   139: getfield 896	tencent/gdt/qq_ad_get$QQAdGet$DeviceInfo:muid_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   142: invokevirtual 900	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   145: invokevirtual 820	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
@@ -714,12 +714,12 @@ public class noy
     //   161: aload 6
     //   163: ldc_w 907
     //   166: aload_0
-    //   167: invokestatic 912	xne:c	(Landroid/content/Context;)Ljava/lang/String;
+    //   167: invokestatic 912	xrn:c	(Landroid/content/Context;)Ljava/lang/String;
     //   170: invokevirtual 860	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   173: pop
     //   174: iconst_0
     //   175: istore_1
-    //   176: invokestatic 916	bdcb:e	()I
+    //   176: invokestatic 916	bdgk:e	()I
     //   179: istore_2
     //   180: iload_2
     //   181: istore_1
@@ -730,12 +730,12 @@ public class noy
     //   191: pop
     //   192: aload 6
     //   194: ldc_w 920
-    //   197: invokestatic 922	bdcb:e	()Ljava/lang/String;
+    //   197: invokestatic 922	bdgk:e	()Ljava/lang/String;
     //   200: invokevirtual 860	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   203: pop
     //   204: aload 6
     //   206: ldc_w 924
-    //   209: invokestatic 925	bdcb:c	()Ljava/lang/String;
+    //   209: invokestatic 925	bdgk:c	()Ljava/lang/String;
     //   212: invokevirtual 860	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   215: pop
     //   216: aload 6
@@ -768,17 +768,17 @@ public class noy
     //   278: pop
     //   279: aload 6
     //   281: ldc_w 955
-    //   284: invokestatic 957	bdcb:k	()Ljava/lang/String;
+    //   284: invokestatic 957	bdgk:k	()Ljava/lang/String;
     //   287: invokevirtual 860	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   290: pop
     //   291: aload 6
     //   293: ldc_w 959
-    //   296: invokestatic 961	bdcb:i	()Ljava/lang/String;
+    //   296: invokestatic 961	bdgk:i	()Ljava/lang/String;
     //   299: invokevirtual 860	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   302: pop
     //   303: aload 6
     //   305: ldc_w 963
-    //   308: invokestatic 965	bdcb:h	()Ljava/lang/String;
+    //   308: invokestatic 965	bdgk:h	()Ljava/lang/String;
     //   311: invokevirtual 860	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   314: pop
     //   315: aload 6
@@ -812,7 +812,7 @@ public class noy
     //   378: aload 6
     //   380: ldc_w 853
     //   383: aload_3
-    //   384: invokestatic 857	bfhi:d	(Ljava/lang/String;)Ljava/lang/String;
+    //   384: invokestatic 857	bflr:d	(Ljava/lang/String;)Ljava/lang/String;
     //   387: invokevirtual 851	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   390: invokevirtual 860	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   393: pop
@@ -1025,7 +1025,7 @@ public class noy
       localJSONObject.put("uin", paramQQAppInterface.getAccount());
       localJSONObject.put("ts", NetConnInfoCenter.getServerTimeMillis());
       localJSONObject.put("dinfo", b(paramQQAppInterface.getApplication().getApplicationContext()));
-      localJSONObject.put("ver", "8.3.3");
+      localJSONObject.put("ver", "8.3.5");
       localJSONObject.put("type", paramInt1);
       localJSONObject.put("stype", paramInt2);
       localJSONObject.put("isdpg", 1);
@@ -1110,7 +1110,7 @@ public class noy
     return a(null, paramHashMap);
   }
   
-  public static void a(Activity paramActivity, nnw paramnnw, bfka parambfka)
+  public static void a(Activity paramActivity, nnw paramnnw, bfoj parambfoj)
   {
     if ((paramActivity == null) || (paramnnw == null)) {}
     String str1;
@@ -1125,22 +1125,22 @@ public class noy
       paramnnw = paramnnw.i;
     } while ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(paramnnw)));
     Bundle localBundle = new Bundle();
-    localBundle.putString(bfjy.jdField_f_of_type_JavaLangString, str1);
-    localBundle.putString(bfjy.jdField_b_of_type_JavaLangString, str2);
-    localBundle.putString(bfjy.jdField_j_of_type_JavaLangString, str3);
-    localBundle.putString(bfjy.jdField_l_of_type_JavaLangString, paramnnw);
-    localBundle.putInt(bfjy.k, 2);
-    localBundle.putInt(bfjy.E, 0);
-    localBundle.putBoolean(bfjy.x, false);
-    localBundle.putInt(bfjy.H, 0);
-    localBundle.putBoolean(bfjy.y, true);
+    localBundle.putString(bfoh.jdField_f_of_type_JavaLangString, str1);
+    localBundle.putString(bfoh.jdField_b_of_type_JavaLangString, str2);
+    localBundle.putString(bfoh.jdField_j_of_type_JavaLangString, str3);
+    localBundle.putString(bfoh.jdField_l_of_type_JavaLangString, paramnnw);
+    localBundle.putInt(bfoh.k, 2);
+    localBundle.putInt(bfoh.E, 0);
+    localBundle.putBoolean(bfoh.x, false);
+    localBundle.putInt(bfoh.H, 0);
+    localBundle.putBoolean(bfoh.y, true);
     if (QLog.isColorLevel()) {
       QLog.d("NativeAdUtils", 2, "downloadApk pkg:" + str1 + ", appid:" + str2 + ", name:" + paramnnw + ", url:" + str3);
     }
-    if (parambfka != null) {
-      bfkb.a().a(parambfka);
+    if (parambfoj != null) {
+      bfok.a().a(parambfoj);
     }
-    bfju.a(paramActivity, localBundle, "biz_src_yyb", null, 0);
+    bfod.a(paramActivity, localBundle, "biz_src_yyb", null, 0);
   }
   
   private static void a(Context paramContext)
@@ -1150,13 +1150,13 @@ public class noy
         QLog.d("NativeAdUtils", 2, "getADPosition doStartADLocation retryLocationCount >= 3");
       }
     }
-    while ((paramContext == null) || (!bdee.g(paramContext))) {
+    while ((paramContext == null) || (!bdin.g(paramContext))) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("NativeAdUtils", 2, "getADPosition doStartADLocation network is Available...");
     }
-    amkv.a(new npc("readinjoy_feed_ad_distance"));
+    ampk.a(new npc("readinjoy_feed_ad_distance"));
     aO += 1;
   }
   
@@ -1244,7 +1244,7 @@ public class noy
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    azmj.b(paramQQAppInterface, "dc04719", "ad", "0", paramString1.toUpperCase(), paramString2.toUpperCase(), paramInt1, paramInt2, paramString3, paramString4, paramString5, paramString6);
+    azqs.b(paramQQAppInterface, "dc04719", "ad", "0", paramString1.toUpperCase(), paramString2.toUpperCase(), paramInt1, paramInt2, paramString3, paramString4, paramString5, paramString6);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
@@ -1256,7 +1256,7 @@ public class noy
       localJSONObject.put("adId", paramString1);
       localJSONObject.put("channelId", paramString2);
       localJSONObject.put("info", paramString3);
-      localJSONObject.put("version", "8.3.3");
+      localJSONObject.put("version", "8.3.5");
       localJSONObject.put("actionCode", paramInt1);
       localJSONObject.put("subType", paramInt2);
       if (paramInt1 == 4) {
@@ -1426,7 +1426,7 @@ public class noy
     do
     {
       return bool1;
-      bool2 = bdem.a(paramContext, paramString);
+      bool2 = bdiv.a(paramContext, paramString);
       bool1 = bool2;
     } while (!QLog.isColorLevel());
     QLog.d("NativeAdUtils", 2, "isAppInstall pkg:" + paramString + " " + bool2);
@@ -1465,7 +1465,7 @@ public class noy
           } while (TextUtils.isEmpty(str1));
           bool2 = bool1;
         } while (TextUtils.isEmpty(str2));
-        localDownloadInfo = bfkb.a().a(str2);
+        localDownloadInfo = bfok.a().a(str2);
         bool2 = bool1;
       } while (localDownloadInfo == null);
       paramnnw = "";
@@ -1488,7 +1488,7 @@ public class noy
     TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo2;
     if (localDownloadInfo.jdField_c_of_type_Int == 0)
     {
-      localTMAssistantDownloadTaskInfo2 = bfkb.a().a(localDownloadInfo.jdField_d_of_type_JavaLangString);
+      localTMAssistantDownloadTaskInfo2 = bfok.a().a(localDownloadInfo.jdField_d_of_type_JavaLangString);
       paramContext = paramnnw;
       if (localTMAssistantDownloadTaskInfo2 != null)
       {
@@ -1500,7 +1500,7 @@ public class noy
       paramnnw = paramContext;
       if (TextUtils.isEmpty(paramContext))
       {
-        localTMAssistantDownloadTaskInfo1 = bfkb.a().a(localDownloadInfo);
+        localTMAssistantDownloadTaskInfo1 = bfok.a().a(localDownloadInfo);
         paramnnw = paramContext;
       }
     }
@@ -1520,10 +1520,10 @@ public class noy
       }
       localDownloadInfo.jdField_l_of_type_JavaLangString = paramContext;
       localDownloadInfo.a(4);
-      bfkb.a().e(localDownloadInfo);
+      bfok.a().e(localDownloadInfo);
       paramnnw = paramContext;
       break;
-      localTMAssistantDownloadTaskInfo2 = bfkb.a().a(localDownloadInfo);
+      localTMAssistantDownloadTaskInfo2 = bfok.a().a(localDownloadInfo);
       paramContext = paramnnw;
       if (localTMAssistantDownloadTaskInfo2 != null)
       {
@@ -1535,7 +1535,7 @@ public class noy
       paramnnw = paramContext;
       if (TextUtils.isEmpty(paramContext))
       {
-        localTMAssistantDownloadTaskInfo1 = bfkb.a().a(localDownloadInfo.jdField_d_of_type_JavaLangString);
+        localTMAssistantDownloadTaskInfo1 = bfok.a().a(localDownloadInfo.jdField_d_of_type_JavaLangString);
         paramnnw = paramContext;
       }
     }
@@ -1584,15 +1584,15 @@ public class noy
     String str3 = paramnnw.jdField_j_of_type_JavaLangString;
     paramnnw = paramnnw.i;
     Bundle localBundle = new Bundle();
-    localBundle.putInt(bfjy.k, 5);
-    localBundle.putString(bfjy.jdField_f_of_type_JavaLangString, str1);
-    localBundle.putString(bfjy.jdField_b_of_type_JavaLangString, str2);
-    localBundle.putString(bfjy.jdField_j_of_type_JavaLangString, str3);
-    localBundle.putString(bfjy.jdField_l_of_type_JavaLangString, paramnnw);
+    localBundle.putInt(bfoh.k, 5);
+    localBundle.putString(bfoh.jdField_f_of_type_JavaLangString, str1);
+    localBundle.putString(bfoh.jdField_b_of_type_JavaLangString, str2);
+    localBundle.putString(bfoh.jdField_j_of_type_JavaLangString, str3);
+    localBundle.putString(bfoh.jdField_l_of_type_JavaLangString, paramnnw);
     if (QLog.isColorLevel()) {
       QLog.d("NativeAdUtils", 2, "installApk pkg:" + str1 + ", appid:" + str2 + ", name:" + paramnnw + ", url:" + str3);
     }
-    return bfju.a(localBundle);
+    return bfod.a(localBundle);
   }
   
   public static double[] a(BaseArticleInfo paramBaseArticleInfo)
@@ -1626,18 +1626,18 @@ public class noy
       try
       {
         localJSONObject.put("dma", ods.c());
-        localJSONObject.put("hwm", bdcb.i());
-        localJSONObject.put("hwma", bdcb.h());
-        localJSONObject.put("osver", bdcb.e());
+        localJSONObject.put("hwm", bdgk.i());
+        localJSONObject.put("hwma", bdgk.h());
+        localJSONObject.put("osver", bdgk.e());
         localJSONObject.put("imei", ods.a());
-        localJSONObject.put("brd", bdcb.k());
+        localJSONObject.put("brd", bdgk.k());
         localJSONObject.put("ns", ndd.a());
         localJSONObject.put("andid", Settings.Secure.getString(paramContext.getContentResolver(), "android_id"));
         localJSONObject.put("mid", "mid");
         localJSONObject.put("pf", "android");
-        localJSONObject.put("wn", xne.c(paramContext));
+        localJSONObject.put("wn", xrn.c(paramContext));
         str = "";
-        switch (alep.b())
+        switch (alje.b())
         {
         case 1: 
           localJSONObject.put("mnc", str);
@@ -1651,11 +1651,11 @@ public class noy
         paramContext.printStackTrace();
         return localJSONObject;
       }
-      str = alpo.a(2131707449);
+      str = alud.a(2131707461);
       continue;
-      str = alpo.a(2131707447);
+      str = alud.a(2131707459);
       continue;
-      str = alpo.a(2131707445);
+      str = alud.a(2131707457);
     }
   }
   
@@ -1669,7 +1669,7 @@ public class noy
       if (QLog.isColorLevel()) {
         QLog.d("NativeAdUtils", 2, " C2S AD_EXPOSURE: advertisementInfo = " + paramAdvertisementInfo.toString() + " clickurl = " + paramAdvertisementInfo.mC2SClickUrl + " exposureUrl = " + paramAdvertisementInfo.mC2SExposureUrl);
       }
-      aanv.a(0, 1, szl.a(paramAdvertisementInfo));
+      aask.a(0, 1, szl.a(paramAdvertisementInfo));
     }
     label270:
     label271:
@@ -1688,7 +1688,7 @@ public class noy
           if (QLog.isColorLevel()) {
             QLog.d("NativeAdUtils", 2, " C2S AD_CLICK: advertisementInfo = " + paramAdvertisementInfo.toString() + " clickurl = " + paramAdvertisementInfo.mC2SClickUrl + " exposureUrl = " + paramAdvertisementInfo.mC2SExposureUrl);
           }
-          aanv.a(1, 1, szl.a(paramAdvertisementInfo));
+          aask.a(1, 1, szl.a(paramAdvertisementInfo));
         }
         for (;;)
         {
@@ -1700,7 +1700,7 @@ public class noy
             if (QLog.isColorLevel()) {
               QLog.d("NativeAdUtils", 2, " C2S AD_CLICK: advertisementInfo = " + paramAdvertisementInfo.toString() + " clickurl = " + paramAdvertisementInfo.mC2SVideoPlayUrl + " videoClickUrl = " + paramAdvertisementInfo.mC2SVideoPlayUrl);
             }
-            aanv.a(2, 1, szl.a(paramAdvertisementInfo));
+            aask.a(2, 1, szl.a(paramAdvertisementInfo));
           }
           return;
           if ((paramVideoAdInfo == null) || (paramVideoAdInfo.jdField_o_of_type_Int != 1)) {
@@ -1713,7 +1713,7 @@ public class noy
           if (QLog.isColorLevel()) {
             QLog.d("NativeAdUtils", 2, " C2S AD_EXPOSURE: advertisementInfo1 = " + localAdvertisementInfo.toString() + " videoAdInfo = " + paramVideoAdInfo.toString() + " clickurl = " + localAdvertisementInfo.mC2SClickUrl + " exposureUrl = " + localAdvertisementInfo.mC2SExposureUrl);
           }
-          aanv.a(0, 1, szl.a(localAdvertisementInfo));
+          aask.a(0, 1, szl.a(localAdvertisementInfo));
           break;
           if ((paramVideoAdInfo != null) && (paramVideoAdInfo.jdField_o_of_type_Int == 1))
           {
@@ -1723,7 +1723,7 @@ public class noy
               if (QLog.isColorLevel()) {
                 QLog.d("NativeAdUtils", 2, " C2S AD_CLICK: advertisementInfo1 = " + localAdvertisementInfo.toString() + " videoAdInfo = " + paramVideoAdInfo.toString() + " clickurl = " + localAdvertisementInfo.mC2SClickUrl + " exposureUrl = " + localAdvertisementInfo.mC2SExposureUrl);
               }
-              aanv.a(1, 1, szl.a(localAdvertisementInfo));
+              aask.a(1, 1, szl.a(localAdvertisementInfo));
             }
           }
         }
@@ -1734,7 +1734,7 @@ public class noy
     if (QLog.isColorLevel()) {
       QLog.d("NativeAdUtils", 2, " C2S AD_CLICK: advertisementInfo1 = " + paramAdvertisementInfo.toString() + " videoAdInfo = " + paramVideoAdInfo.toString() + " clickurl = " + paramAdvertisementInfo.mC2SVideoPlayUrl + " videoClickUrl = " + paramAdvertisementInfo.mC2SVideoPlayUrl);
     }
-    aanv.a(2, 1, szl.a(paramAdvertisementInfo));
+    aask.a(2, 1, szl.a(paramAdvertisementInfo));
   }
   
   public static void b(QQAppInterface paramQQAppInterface, AdData paramAdData)

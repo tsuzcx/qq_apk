@@ -1,141 +1,42 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
 import com.tencent.qqmini.sdk.log.QMLog;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
 
+@bglp(a="PageCreateTask")
 public class bhen
+  extends bhlw
 {
-  public static int a(Date paramDate)
+  public bhen(Context paramContext, bgun parambgun)
   {
-    if (paramDate == null) {
-      return -1;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTime(paramDate);
-    return localCalendar.get(11);
+    super(paramContext, parambgun);
   }
   
-  public static long a(String paramString)
+  public void a()
   {
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    if (a().getRuntime() == null)
+    {
+      QMLog.w("ServiceInitTask", "runtime is null!");
+      c();
+      return;
+    }
+    bglx localbglx = a().getRuntime().a();
+    if (!(localbglx instanceof AppBrandPageContainer))
+    {
+      QMLog.w("ServiceInitTask", "PageContainer type is incorrect! page=" + localbglx);
+      c();
+      return;
+    }
     try
     {
-      long l = localSimpleDateFormat.parse(paramString).getTime();
-      return l;
+      ((AppBrandPageContainer)localbglx).a(null);
+      c();
+      return;
     }
-    catch (ParseException paramString)
+    catch (Throwable localThrowable)
     {
-      paramString.printStackTrace();
+      QMLog.e("ServiceInitTask", "pageContainer init exception!", localThrowable);
+      a(10, "Page创建失败");
     }
-    return 0L;
-  }
-  
-  public static Date a(String paramString)
-  {
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("HH:mm");
-    try
-    {
-      paramString = localSimpleDateFormat.parse(paramString);
-      return paramString;
-    }
-    catch (ParseException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static int b(Date paramDate)
-  {
-    if (paramDate == null) {
-      return -1;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTime(paramDate);
-    return localCalendar.get(12);
-  }
-  
-  public static Date b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    SimpleDateFormat localSimpleDateFormat;
-    if (paramString.length() >= 10) {
-      if (Pattern.compile(AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getString(2131694322)).matcher(paramString).matches()) {
-        localSimpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
-      }
-    }
-    for (;;)
-    {
-      if (localSimpleDateFormat == null)
-      {
-        return null;
-        localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        continue;
-        if (paramString.length() >= 7)
-        {
-          localSimpleDateFormat = new SimpleDateFormat("yyyy-MM");
-          continue;
-        }
-        if (paramString.length() >= 4) {
-          localSimpleDateFormat = new SimpleDateFormat("yyyy");
-        }
-      }
-      else
-      {
-        try
-        {
-          paramString = localSimpleDateFormat.parse(paramString);
-          return paramString;
-        }
-        catch (ParseException paramString)
-        {
-          paramString.printStackTrace();
-          QMLog.e("DateUtils", "getDateByStrTime exception." + paramString);
-          return null;
-        }
-      }
-      localSimpleDateFormat = null;
-    }
-  }
-  
-  public static int c(Date paramDate)
-  {
-    if (paramDate == null) {
-      return -1;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTime(paramDate);
-    return localCalendar.get(1);
-  }
-  
-  public static int d(Date paramDate)
-  {
-    if (paramDate == null) {
-      return -1;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTime(paramDate);
-    return localCalendar.get(2);
-  }
-  
-  public static int e(Date paramDate)
-  {
-    if (paramDate == null) {
-      return -1;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTime(paramDate);
-    return localCalendar.get(5);
   }
 }
 

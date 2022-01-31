@@ -1,17 +1,28 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class ahxf
-  implements View.OnClickListener
+class ahxf
+  implements DialogInterface.OnKeyListener
 {
-  public ahxf(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ahxf(ahww paramahww, int paramInt) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    ChatHistoryTroopMemberFragment.b(this.a);
-    new azmo(this.a.getActivity().app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.c }).a();
+    if (paramInt == 4)
+    {
+      if (!ahww.a(this.jdField_a_of_type_Ahww)) {
+        break label28;
+      }
+      ahww.a(this.jdField_a_of_type_Ahww, this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      return true;
+      label28:
+      ahww.a(this.jdField_a_of_type_Ahww, ahww.a(this.jdField_a_of_type_Ahww), Long.valueOf(ahww.a(this.jdField_a_of_type_Ahww)).longValue());
+      ahww.a(this.jdField_a_of_type_Ahww);
+    }
   }
 }
 

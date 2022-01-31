@@ -1,8 +1,7 @@
-public abstract interface bkgy
+public class bkgy
 {
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, long paramLong, bkgj parambkgj, boolean paramBoolean);
+  public static final int a = (int)(40.0F * bdoo.a());
+  public static final int b = (int)(24.0F * bdoo.a());
 }
 
 

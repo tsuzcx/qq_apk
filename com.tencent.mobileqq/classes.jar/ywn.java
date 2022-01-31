@@ -1,10 +1,17 @@
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+
 class ywn
+  implements DialogInterface.OnShowListener
 {
-  public long a;
+  ywn(ywj paramywj) {}
   
-  public ywn(long paramLong)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    this.a = paramLong;
+    ((InputMethodManager)this.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method")).showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 1);
   }
 }
 

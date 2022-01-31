@@ -106,13 +106,13 @@ public class lxs
     this.jdField_c_of_type_Lxo.a(255);
     paramRedPacketGameView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.getContext();
     paramAVActivity = new View(paramRedPacketGameView);
-    paramAVActivity.setId(2131372807);
+    paramAVActivity.setId(2131372833);
     paramAVActivity.setOnClickListener(this);
     paramAVActivity.setVisibility(8);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.addView(paramAVActivity, localLayoutParams);
     paramRedPacketGameView = new View(paramRedPacketGameView);
-    paramRedPacketGameView.setId(2131372808);
+    paramRedPacketGameView.setId(2131372834);
     paramRedPacketGameView.setOnClickListener(this);
     paramRedPacketGameView.setVisibility(8);
     paramAVActivity = new RelativeLayout.LayoutParams(-2, -2);
@@ -126,12 +126,12 @@ public class lxs
   
   private void e()
   {
-    View localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131372807);
+    View localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131372833);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
     localLayoutParams.topMargin = ((int)(this.j + this.g + this.jdField_b_of_type_Float));
     localLayoutParams.leftMargin = ((int)(this.k + this.jdField_a_of_type_Float));
     localView.setLayoutParams(localLayoutParams);
-    localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131372808);
+    localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131372834);
     localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
     localLayoutParams.topMargin = ((int)(this.l + this.g + this.jdField_b_of_type_Float));
     localLayoutParams.leftMargin = ((int)(this.m + this.jdField_a_of_type_Float));
@@ -285,7 +285,7 @@ public class lxs
         this.jdField_a_of_type_Lxo.a(n);
         this.jdField_b_of_type_Lxo.a(n);
         this.jdField_c_of_type_Lxo.a(n);
-        localObject = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131372807);
+        localObject = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131372833);
         if (Float.compare(f2, ((View)localObject).getAlpha()) != 0) {
           ((View)localObject).setAlpha(f2);
         }
@@ -305,7 +305,7 @@ public class lxs
         if (bool1 != bool3) {
           ((View)localObject).setClickable(bool1);
         }
-        localObject = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131372808);
+        localObject = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131372834);
         i1 = (int)((1.0F - f2) * 10000.0F);
         if (i1 >= 0) {
           break label629;
@@ -418,7 +418,7 @@ public class lxs
   public void a(boolean paramBoolean, AVRedPacketManager paramAVRedPacketManager)
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
-    View localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131372807);
+    View localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131372833);
     if (!paramBoolean)
     {
       this.jdField_a_of_type_AndroidGraphicsBitmap = paramAVRedPacketManager.a("qav_redpacket_close.png");
@@ -430,7 +430,7 @@ public class lxs
       }
       if ((this.jdField_b_of_type_AndroidGraphicsBitmap != null) && (this.jdField_c_of_type_AndroidGraphicsBitmap != null))
       {
-        localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131372808);
+        localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131372834);
         StateListDrawable localStateListDrawable = new StateListDrawable();
         BitmapDrawable localBitmapDrawable = new BitmapDrawable(paramAVRedPacketManager, this.jdField_c_of_type_AndroidGraphicsBitmap);
         localStateListDrawable.addState(new int[] { 16842919 }, localBitmapDrawable);
@@ -496,10 +496,10 @@ public class lxs
   
   public void c()
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131372807).getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131372833).getLayoutParams();
     localLayoutParams.width = (this.h * 52 / 750);
     localLayoutParams.height = (this.h * 52 / 750);
-    localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131372808).getLayoutParams();
+    localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131372834).getLayoutParams();
     localLayoutParams.width = (this.h * 252 / 750);
     localLayoutParams.height = (this.h * 72 / 750);
     e();
@@ -529,7 +529,7 @@ public class lxs
     {
     default: 
       return;
-    case 2131372807: 
+    case 2131372833: 
       this.jdField_b_of_type_Long = System.currentTimeMillis();
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);

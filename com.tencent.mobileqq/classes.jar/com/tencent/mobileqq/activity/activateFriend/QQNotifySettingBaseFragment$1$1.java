@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import Wallet.AcsGetMsgRsp;
-import aeje;
+import aent;
 
 public class QQNotifySettingBaseFragment$1$1
   implements Runnable
 {
-  public QQNotifySettingBaseFragment$1$1(aeje paramaeje, AcsGetMsgRsp paramAcsGetMsgRsp) {}
+  public QQNotifySettingBaseFragment$1$1(aent paramaent, AcsGetMsgRsp paramAcsGetMsgRsp) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aeje.a.a(this.jdField_a_of_type_WalletAcsGetMsgRsp);
+    this.jdField_a_of_type_Aent.a.a(this.jdField_a_of_type_WalletAcsGetMsgRsp);
   }
 }
 

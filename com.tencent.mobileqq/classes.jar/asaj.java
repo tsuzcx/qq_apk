@@ -1,23 +1,38 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
-class asaj
-  extends RecyclerView.OnScrollListener
+public class asaj
 {
-  asaj(asag paramasag) {}
+  private static asaj jdField_a_of_type_Asaj;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public static asaj a()
   {
-    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "onScrollStateChanged state: " + paramInt);
-    if (paramInt != 0) {
-      asag.a(this.a).c();
+    if (jdField_a_of_type_Asaj == null) {
+      jdField_a_of_type_Asaj = new asaj();
     }
-    while (!asag.a(this.a).a()) {
-      return;
+    return jdField_a_of_type_Asaj;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (jdField_a_of_type_Asaj == null) {
+      paramString = null;
     }
-    asag.a(this.a).b();
-    asag.a(this.a).notifyDataSetChanged();
+    String str;
+    do
+    {
+      return paramString;
+      str = (String)jdField_a_of_type_Asaj.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      paramString = str;
+    } while (!jdField_a_of_type_Asaj.jdField_a_of_type_JavaUtilMap.isEmpty());
+    jdField_a_of_type_Asaj = null;
+    return str;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
   }
 }
 

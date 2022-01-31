@@ -1,22 +1,18 @@
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class aqrl
-  implements army
+  implements bhuk
 {
-  aqrl(aqrg paramaqrg, FileManagerEntity paramFileManagerEntity) {}
+  aqrl(aqrk paramaqrk, int paramInt, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
-    {
-      this.jdField_a_of_type_Aqrg.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      return;
-    }
-    this.jdField_a_of_type_Aqrg.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    azqs.b(this.jdField_a_of_type_Aqrk.a, "dc00898", "", "", "0X800A7F3", "0X800A7F3", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    this.jdField_a_of_type_Aqrk.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.jdField_a_of_type_Aqrk.a();
   }
-  
-  public void b() {}
 }
 
 

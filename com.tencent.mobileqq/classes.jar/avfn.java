@@ -1,24 +1,10 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
 
-public class avfn
-  extends autc
+public abstract interface avfn
 {
-  public avfn(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  protected void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyAuthVideoPlayerFragment", 2, "onDeleteNearbyPeopleAuthVideo isSuccess:" + paramBoolean);
-    }
-    ((auqc)this.a.getActivity().app.getManager(106)).d.put(this.a.getActivity().app.getCurrentAccountUin(), Integer.valueOf(1));
-    if (paramBoolean) {
-      this.a.getActivity().finish();
-    }
-  }
+  public abstract void a(String paramString, View paramView, int paramInt);
 }
 
 

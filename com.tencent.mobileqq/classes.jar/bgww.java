@@ -1,11 +1,29 @@
-import java.util.Comparator;
+import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
+import android.content.Context;
+import android.content.DialogInterface;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-final class bgww
-  implements Comparator<byte[]>
+class bgww
+  extends bgwp
 {
-  public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  bgww(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
   {
-    return paramArrayOfByte1.length - paramArrayOfByte2.length;
+    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
+  }
+  
+  protected bgwo a()
+  {
+    return new bgwo(2131694350, new bgwx(this));
+  }
+  
+  protected void a(DialogInterface paramDialogInterface)
+  {
+    a("expo");
+  }
+  
+  protected String b()
+  {
+    return "loginout";
   }
 }
 

@@ -1,18 +1,9 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-
-final class bdbc
-  implements MediaPlayer.OnCompletionListener
-{
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    paramMediaPlayer.release();
-    bdaz.a = null;
-  }
-}
+public abstract interface bdbc
+  extends bdbe
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdbc
  * JD-Core Version:    0.7.0.1
  */

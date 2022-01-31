@@ -1,42 +1,39 @@
-import android.text.TextUtils;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.qflutter.log.qflutter_log.QflutterLogPlugin;
+import com.qflutter.native_resources.QFlutterSkinEnginePlugin;
+import com.qflutter.resource_loader.QFlutterResourceLoaderPlugin;
+import com.qflutter.video.QflutterVideoViewSource;
+import com.qflutter.video.QflutterVideoviewPlugin;
+import io.flutter.plugin.common.PluginRegistry;
+import io.flutter.plugins.GeneratedPluginRegistrant;
+import io.flutter.plugins.packageinfo.PackageInfoPlugin;
+import io.flutter.plugins.pathprovider.PathProviderPlugin;
+import io.flutter.plugins.webviewflutter.WebViewFlutterPlugin;
 
-class bhhu
-  implements ThreadFactory
+public final class bhhu
 {
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-  private final String jdField_a_of_type_JavaLangString;
-  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
-  private final AtomicInteger b = new AtomicInteger(1);
-  
-  bhhu(String paramString)
+  public static void a(PluginRegistry paramPluginRegistry)
   {
-    Object localObject = System.getSecurityManager();
-    if (localObject != null) {}
-    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
+    if (!a(paramPluginRegistry))
     {
-      this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localObject = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        localObject = "threadpool";
-      }
-      this.jdField_a_of_type_JavaLangString = ((String)localObject + "-" + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() + "-thread-");
-      return;
+      PackageInfoPlugin.registerWith(paramPluginRegistry.registrarFor("io.flutter.plugins.packageinfo.PackageInfoPlugin"));
+      PathProviderPlugin.registerWith(paramPluginRegistry.registrarFor("io.flutter.plugins.pathprovider.PathProviderPlugin"));
+      QflutterLogPlugin.registerWith(paramPluginRegistry.registrarFor("com.qflutter.log.qflutter_log.QflutterLogPlugin"));
+      WebViewFlutterPlugin.registerWith(paramPluginRegistry.registrarFor("io.flutter.plugins.webviewflutter.WebViewFlutterPlugin"));
+      QFlutterSkinEnginePlugin.registerWith(paramPluginRegistry.registrarFor("com.qflutter.native_resources.QFlutterSkinEnginePlugin"));
+      QFlutterResourceLoaderPlugin.registerWith(paramPluginRegistry.registrarFor("com.qflutter.resource_loader.QFlutterResourceLoaderPlugin"));
+      QflutterVideoviewPlugin.registerWith(paramPluginRegistry.registrarFor("com.qflutter.video.QflutterVideoviewPlugin"));
+      QflutterVideoViewSource.setProvider(new bhhz());
     }
   }
   
-  public Thread newThread(Runnable paramRunnable)
+  private static boolean a(PluginRegistry paramPluginRegistry)
   {
-    paramRunnable = new Thread(this.jdField_a_of_type_JavaLangThreadGroup, paramRunnable, this.jdField_a_of_type_JavaLangString + this.b.getAndIncrement(), 0L);
-    if (paramRunnable.isDaemon()) {
-      paramRunnable.setDaemon(false);
+    String str = GeneratedPluginRegistrant.class.getCanonicalName();
+    if (paramPluginRegistry.hasPlugin(str)) {
+      return true;
     }
-    if (paramRunnable.getPriority() != 5) {
-      paramRunnable.setPriority(5);
-    }
-    return paramRunnable;
+    paramPluginRegistry.registrarFor(str);
+    return false;
   }
 }
 

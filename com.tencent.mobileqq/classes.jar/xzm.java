@@ -1,19 +1,43 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class xzm
-  implements View.OnClickListener
+public class xzm
+  implements xyj
 {
-  xzm(xzl paramxzl, CertifiedAccountMeta.StUser paramStUser) {}
+  public int a;
+  public String a;
+  public WeakReference<QRDisplayActivity> a;
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString)
   {
-    yvu.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + yjq.a(this.jdField_a_of_type_Xzl.a()), "clk_shop", 0, 0, new String[0]);
-    xxk.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    QRDisplayActivity localQRDisplayActivity;
+    do
+    {
+      do
+      {
+        return;
+        localQRDisplayActivity = (QRDisplayActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      } while (localQRDisplayActivity == null);
+      if (QLog.isColorLevel()) {
+        QLog.d("QRDisplayActivity", 2, String.format("onReceive qrcode url:%s suc:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
+      }
+    } while ((localQRDisplayActivity.b) || (localQRDisplayActivity.isFinishing()));
+    if (!paramBoolean)
+    {
+      localQRDisplayActivity.g();
+      return;
+    }
+    localQRDisplayActivity.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramString);
+    paramString = ybk.a(paramString, -1);
+    if (paramString != null)
+    {
+      localQRDisplayActivity.a = paramString;
+      localQRDisplayActivity.f();
+      return;
+    }
+    localQRDisplayActivity.g();
   }
 }
 

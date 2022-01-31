@@ -1,16 +1,13 @@
-import android.graphics.Color;
-
 public abstract interface beln
+  extends begg
 {
-  public static final int b = bdkf.b(0.5F);
-  public static final int c = Color.parseColor("#EBEDF5");
-  public static final int d = bdkf.b(16.0F);
-  public static final int e = bdkf.b(9.0F);
-  public static final int f = bdkf.b(15.0F);
+  public abstract boolean a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8);
+  
+  public abstract String b(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beln
  * JD-Core Version:    0.7.0.1
  */

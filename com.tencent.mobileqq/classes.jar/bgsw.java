@@ -1,28 +1,33 @@
-import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnSeekCompleteListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.11.1;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bgsw
-  implements DialogInterface.OnClickListener
+public class bgsw
+  implements VideoPlayerProxy.OnSeekCompleteListener
 {
-  bgsw(bgsu parambgsu) {}
+  public bgsw(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onSeekComplete(VideoPlayerProxy paramVideoPlayerProxy)
   {
-    if (((this.a.a() instanceof Activity)) && (this.a.a() != null))
+    ThreadManager.c().post(new MiniAppVideoPlayer.11.1(this));
+    try
     {
-      paramDialogInterface = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      Activity localActivity = (Activity)this.a.a();
-      Intent localIntent = new Intent();
-      localIntent.putExtra("url", this.a.a().url.get());
-      paramDialogInterface.startBrowserActivity(localActivity, localIntent);
+      paramVideoPlayerProxy = new JSONObject();
+      paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+      this.a.jdField_a_of_type_Bglu.a("onVideoSeeked", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+      QMLog.d("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoSeeked = " + paramVideoPlayerProxy.toString());
+      return;
     }
-    this.a.a("identi_click");
+    catch (JSONException paramVideoPlayerProxy)
+    {
+      paramVideoPlayerProxy.printStackTrace();
+    }
   }
 }
 

@@ -19,7 +19,7 @@ public class osy
       String str2 = (String)paramString.get(str1);
       QLog.d("AdNativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
       if (TextUtils.equals(str1, "commercialAdDetails_feeds")) {
-        bjxj.a("ad_native_proteus_offline_bid", str2);
+        bkbq.a("ad_native_proteus_offline_bid", str2);
       }
     }
     return true;
@@ -27,7 +27,7 @@ public class osy
   
   public void onWipeConfig(int paramInt)
   {
-    bjxj.a("ad_native_proteus_offline_bid", "0");
+    bkbq.a("ad_native_proteus_offline_bid", "0");
   }
 }
 

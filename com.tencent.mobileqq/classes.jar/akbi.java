@@ -1,34 +1,87 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.activity.specialcare.SpecialCareUtils.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import java.util.Comparator;
 
 public class akbi
+  implements Comparator<TroopMemberInfo>
 {
-  public static void a(Activity paramActivity, String paramString, int paramInt)
-  {
-    if ((paramInt == 3) && (arsx.a().a()))
-    {
-      localObject = new HashMap();
-      ((Map)localObject).put("uin", paramString);
-      ((Map)localObject).put("from", Integer.valueOf(3));
-      artk.a(paramActivity, "SpecialCareFriendSettingPage", (Map)localObject);
-      return;
-    }
-    Object localObject = new Intent(paramActivity, QQSpecialCareSettingActivity.class);
-    ((Intent)localObject).putExtra("key_friend_uin", paramString);
-    ((Intent)localObject).putExtra("key_start_from", 3);
-    paramActivity.startActivity((Intent)localObject);
-  }
+  private akbi(TroopAddFrdsInnerFrame paramTroopAddFrdsInnerFrame) {}
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new SpecialCareUtils.1(paramQQAppInterface), 1000L);
+    int j = 0;
+    int k = 0;
+    int i;
+    if (this.a.f == TroopAddFrdsInnerFrame.e)
+    {
+      i = paramTroopMemberInfo1.addState - paramTroopMemberInfo2.addState;
+      if (i == 0) {
+        if (paramTroopMemberInfo1.commonFrdCnt == -2147483648)
+        {
+          i = 0;
+          if (paramTroopMemberInfo2.commonFrdCnt != -2147483648) {
+            break label189;
+          }
+          j = 0;
+          label56:
+          if ((i != 0) || (j != 0) || (TroopAddFrdsInnerFrame.a(this.a) == null)) {
+            break label257;
+          }
+          if ((!TroopAddFrdsInnerFrame.a(this.a).isTroopAdmin(paramTroopMemberInfo1.memberuin)) && (!TroopAddFrdsInnerFrame.a(this.a).isTroopOwner(paramTroopMemberInfo1.memberuin))) {
+            break label252;
+          }
+          i = 1;
+          label111:
+          if (!TroopAddFrdsInnerFrame.a(this.a).isTroopAdmin(paramTroopMemberInfo2.memberuin))
+          {
+            j = k;
+            if (!TroopAddFrdsInnerFrame.a(this.a).isTroopOwner(paramTroopMemberInfo2.memberuin)) {}
+          }
+          else
+          {
+            j = 1;
+          }
+          j -= i;
+          i = j;
+          if (j == 0) {
+            i = Long.signum(paramTroopMemberInfo2.last_active_time - paramTroopMemberInfo1.last_active_time);
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      return i;
+      i = paramTroopMemberInfo1.commonFrdCnt;
+      break;
+      label189:
+      j = paramTroopMemberInfo2.commonFrdCnt;
+      break label56;
+      return i;
+      i = j;
+      if (this.a.f == TroopAddFrdsInnerFrame.d)
+      {
+        i = j;
+        if (paramTroopMemberInfo1 != null)
+        {
+          i = j;
+          if (paramTroopMemberInfo1.displayedNamePinyinFirst != null)
+          {
+            i = j;
+            if (paramTroopMemberInfo2 != null)
+            {
+              return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
+              label252:
+              i = 0;
+              break label111;
+              label257:
+              i = j - i;
+            }
+          }
+        }
+      }
+    }
   }
 }
 

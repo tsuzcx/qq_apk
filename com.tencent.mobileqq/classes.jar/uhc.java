@@ -1,19 +1,22 @@
-import android.support.v4.util.LruCache;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class uhc
-  extends LruCache<KEY, VALUE>
+  implements View.OnClickListener
 {
-  uhc(uhb paramuhb, int paramInt)
-  {
-    super(paramInt);
-  }
+  uhc(uhb paramuhb) {}
   
-  protected void a(boolean paramBoolean, KEY paramKEY, VALUE paramVALUE1, VALUE paramVALUE2)
+  public void onClick(View paramView)
   {
-    this.a.a.put(paramKEY, new WeakReference(paramVALUE1));
-    this.a.a();
+    paramView = uhb.a(this.a);
+    if (paramView != null)
+    {
+      Intent localIntent = new Intent();
+      tzv.a("", 17, 3L);
+      tqs.a(BaseApplication.getContext(), paramView, localIntent);
+    }
   }
 }
 

@@ -1,17 +1,17 @@
 package dov.com.tencent.mobileqq.richmedia.capture.activity;
 
-import alpo;
-import bngb;
+import alud;
+import bnkn;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class EditWebDanceMachineVideoActivity$2$2$1
   implements Runnable
 {
-  public EditWebDanceMachineVideoActivity$2$2$1(bngb parambngb) {}
+  public EditWebDanceMachineVideoActivity$2$2$1(bnkn parambnkn) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.this$0, 1, alpo.a(2131704322), 0).a();
+    QQToast.a(this.a.a.this$0, 1, alud.a(2131704334), 0).a();
   }
 }
 

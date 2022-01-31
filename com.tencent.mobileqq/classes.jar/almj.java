@@ -1,44 +1,70 @@
-import com.tencent.mobileqq.app.DataMigrationService;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.1.1;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.1.2;
+import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class almj
-  extends WtloginListener
+  extends alkv
 {
-  public almj(DataMigrationService paramDataMigrationService, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, WtloginHelper paramWtloginHelper) {}
+  public almj(ApolloPanel paramApolloPanel) {}
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| OnException=" + paramErrMsg + ", cmd=" + paramInt);
+      QLog.d("ApolloPanel", 2, "tab download Done");
     }
-    DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, null, this.jdField_b_of_type_Int);
   }
   
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  public void a(ApolloActionData paramApolloActionData)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| onGetA1WithA1 ret=" + paramInt2);
+      QLog.d("ApolloPanel", 2, "action res done. action=" + paramApolloActionData.actionId);
     }
-    if (paramInt2 != 0)
+    this.a.a(paramApolloActionData);
+    if (ApolloPanel.a(this.a) != null) {
+      ApolloPanel.a(this.a).a(paramApolloActionData);
+    }
+  }
+  
+  public void a(Boolean paramBoolean)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a == null)) {}
+    MqqHandler localMqqHandler;
+    do
     {
-      DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, null, this.jdField_b_of_type_Int);
+      do
+      {
+        do
+        {
+          return;
+          localMqqHandler = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getHandler(ChatActivity.class);
+        } while (localMqqHandler == null);
+        localMqqHandler.post(new ApolloPanel.1.1(this));
+        if (!paramBoolean.booleanValue()) {
+          break;
+        }
+        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin());
+      } while (this.a.c == null);
+      this.a.c.clear();
+      this.a.d(this.a.b(ApolloPanel.jdField_a_of_type_Int));
       return;
-    }
+    } while ((this.a.jdField_a_of_type_Almg == null) || (this.a.jdField_a_of_type_Almg.c != 3));
     if (QLog.isColorLevel()) {
-      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| send action");
+      QLog.d("ApolloPanel", 2, "onJsonDone in panel fail refresh panel");
     }
-    paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
-    DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, paramString, this.jdField_b_of_type_Int);
+    localMqqHandler.post(new ApolloPanel.1.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     almj
  * JD-Core Version:    0.7.0.1
  */

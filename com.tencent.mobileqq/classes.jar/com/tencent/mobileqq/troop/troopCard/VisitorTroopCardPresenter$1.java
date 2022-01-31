@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.troop.troopCard;
 
 import android.support.v4.app.FragmentActivity;
-import bcel;
-import bcfc;
+import bciu;
+import bcjl;
 
 public class VisitorTroopCardPresenter$1
   implements Runnable
 {
-  public VisitorTroopCardPresenter$1(bcfc parambcfc) {}
+  public VisitorTroopCardPresenter$1(bcjl parambcjl) {}
   
   public void run()
   {
-    if ((bcfc.a(this.this$0) == null) || (bcfc.a(this.this$0).isFinishing())) {
+    if ((bcjl.a(this.this$0) == null) || (bcjl.a(this.this$0).isFinishing())) {
       return;
     }
-    bcfc.a(this.this$0, true);
-    bcfc.a(this.this$0).d();
+    bcjl.a(this.this$0, true);
+    bcjl.a(this.this$0).d();
   }
 }
 

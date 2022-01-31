@@ -1,53 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudCommon.BytesEntry;
-import feedcloud.FeedCloudCommon.StCommonExt;
-import feedcloud.FeedCloudMeta.StGPSV2;
-import feedcloud.FeedCloudRead.StGetBusiInfoReq;
-import java.util.ArrayList;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import feedcloud.FeedCloudMeta.StFeed;
 
 public class txv
-  extends yfn
+  implements ydm
 {
-  FeedCloudMeta.StGPSV2 a;
+  public txv(QCircleContentOperationView paramQCircleContentOperationView) {}
   
-  public txv(FeedCloudMeta.StGPSV2 paramStGPSV2)
+  public void a()
   {
-    this.a = paramStGPSV2;
-  }
-  
-  public void a() {}
-  
-  public void a(yft paramyft)
-  {
-    QCircleGetTabListRequest localQCircleGetTabListRequest = new QCircleGetTabListRequest(this.a);
-    paramyft = new txw(this, paramyft);
-    localQCircleGetTabListRequest.setEnableCache(true);
-    Object localObject = tym.a().a();
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = ((String)localObject).getBytes();
-      tym.a().a(null);
-      FeedCloudCommon.StCommonExt localStCommonExt = new FeedCloudCommon.StCommonExt();
-      ArrayList localArrayList = new ArrayList();
-      if (localObject != null)
-      {
-        FeedCloudCommon.BytesEntry localBytesEntry = new FeedCloudCommon.BytesEntry();
-        localBytesEntry.key.set("circle_invite");
-        localBytesEntry.value.set(ByteStringMicro.copyFrom((byte[])localObject));
-        localArrayList.add(localBytesEntry);
-        localStCommonExt.mapBytesInfo.set(localArrayList);
-        if (localQCircleGetTabListRequest.mReq != null) {
-          localQCircleGetTabListRequest.mReq.extInfo.set(localStCommonExt);
-        }
-      }
+    if (this.a.a() != null) {
+      tzw.a(17, 2, (FeedCloudMeta.StFeed)this.a.a(), 2, 0);
     }
-    VSNetworkHelper.a().a(localQCircleGetTabListRequest, paramyft);
   }
 }
 

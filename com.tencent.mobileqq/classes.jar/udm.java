@@ -1,22 +1,22 @@
+import com.tencent.biz.qqcircle.events.QCircleDoublePraiseAnimationEvent;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedWidget;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
 
-class udm
-  implements ubh
+public class udm
+  implements ucr
 {
-  udm(udl paramudl) {}
+  public udm(QCircleFeedWidget paramQCircleFeedWidget, Object paramObject) {}
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void b(int paramInt)
+  public void a()
   {
-    if ((this.a.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed))
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
     {
-      FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)this.a.jdField_a_of_type_JavaLangObject;
-      tyg.a(localStFeed.poster.id.get(), 17, 2, this.a.jdField_a_of_type_Int, localStFeed, null);
+      String str = ((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).id.get();
+      yiw.a().a(new QCircleDoublePraiseAnimationEvent(str, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedWidget.a().pageType, QCircleFeedWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedWidget)));
+      QLog.d("QCircleDoubleClickLayout", 1, "dispatchEvent id:" + str + " pageType:" + this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedWidget.a().pageType);
     }
   }
 }

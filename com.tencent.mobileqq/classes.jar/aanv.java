@@ -1,32 +1,38 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.widget.LinearLayout;
+import com.tencent.image.URLImageView;
+import java.lang.ref.WeakReference;
 
-public final class aanv
+class aanv
+  extends LinearLayout
 {
-  private static aanw a(int paramInt)
-  {
-    aaoe localaaoe = null;
-    if ((paramInt == 0) || (1 == paramInt) || (2 == paramInt) || (3 == paramInt)) {
-      localaaoe = new aaoe();
-    }
-    return localaaoe;
-  }
+  private aauk jdField_a_of_type_Aauk;
+  private aaum jdField_a_of_type_Aaum = new aanw(this);
   
-  public static void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  public aanv(Context paramContext, String paramString)
   {
-    if ((paramInt1 < 0) || (paramInt1 >= 3)) {}
-    aanw localaanw;
-    do
+    super(paramContext);
+    setGravity(17);
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setStroke(1, Color.parseColor("#EFEFEF"));
+    if (Build.VERSION.SDK_INT >= 16) {
+      setBackground(localGradientDrawable);
+    }
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
     {
-      do
-      {
-        aaoc.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, false);
-        return;
-      } while ((paramInt2 < 0) || (paramInt2 >= 4));
-      localaanw = a(paramInt2);
-    } while (localaanw == null);
-    localaanw.a(paramInt1, paramInt2, paramAdInfo);
+      aase.d("GdtBannerImageView", "constructor");
+      return;
+    }
+    paramContext = new URLImageView(paramContext);
+    addView(paramContext);
+    this.jdField_a_of_type_Aauk = new aauk(paramString, new WeakReference(this.jdField_a_of_type_Aaum));
+    this.jdField_a_of_type_Aauk.a();
+    paramContext.setImageDrawable(this.jdField_a_of_type_Aauk.a());
   }
 }
 

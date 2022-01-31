@@ -1,40 +1,34 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import com.tencent.qphone.base.util.QLog;
 
 public class anuk
-  implements BusinessObserver
+  extends BroadcastReceiver
 {
-  public void a(boolean paramBoolean) {}
+  public anuk(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void a(boolean paramBoolean, String paramString) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void b(boolean paramBoolean, String paramString) {}
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramInt)
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
     {
-    default: 
-      return;
-    case 1: 
-      paramInt = paramBundle.getInt("resp_result", 0);
-      b(paramBoolean, paramBundle.getString("key_card_id"), paramInt);
-      return;
-    case 2: 
-      b(paramBoolean, paramBundle.getString("key_card_id"));
-      return;
-    case 3: 
-      a(paramBoolean, paramBundle.getString("key_card_id"));
-      return;
-    case 4: 
-      a(paramBoolean);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("DynamicAvatarRecordActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
+      }
+      paramContext = BaseActivity2.$(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366501);
+      if (paramContext != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
+      }
+      this.a.finish();
     }
-    a(paramBoolean, paramBundle.getString("key_card_id"), paramBundle.getInt("key_get_detail_type"));
   }
 }
 

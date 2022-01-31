@@ -1,22 +1,91 @@
-import android.os.Bundle;
+import com.tencent.oskplayer.util.QLog;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-class bhiv
-  extends nac
+public class bhiv
+  implements QLog
 {
-  protected bhjt a;
-  protected byte[] a;
+  private static ConcurrentHashMap<String, String> a;
   
-  public bhiv(byte[] paramArrayOfByte, bhjt parambhjt)
+  private static String a(String paramString)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Bhjt = parambhjt;
+    if (a == null) {
+      a = new ConcurrentHashMap();
+    }
+    if (!a.containsKey(paramString)) {
+      a.put(paramString, "VIDEO_LOG/" + paramString);
+    }
+    return (String)a.get(paramString);
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public int d(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Bhjt != null) {
-      this.jdField_a_of_type_Bhjt.a(paramInt, this.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
+    QMLog.d(a(paramString1), paramString2);
+    return 0;
+  }
+  
+  public int d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QMLog.d(a(paramString1), paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    QMLog.e(a(paramString1), paramString2);
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QMLog.e(a(paramString1), paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    QMLog.i(a(paramString1), paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QMLog.i(a(paramString1), paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QMLog.isColorLevel()) {
+      QMLog.i(a(paramString1), paramString2);
     }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QMLog.isColorLevel()) {
+      QMLog.i(a(paramString1), paramString2, paramThrowable);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    QMLog.w(a(paramString1), paramString2);
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QMLog.w(a(paramString1), paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public int w(String paramString, Throwable paramThrowable)
+  {
+    QMLog.w(a(paramString), paramThrowable.getMessage());
+    return 0;
   }
 }
 

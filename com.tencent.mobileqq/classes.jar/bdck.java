@@ -1,31 +1,41 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.util.CustomLruCache;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-final class bdck
-  implements DialogInterface.OnClickListener
+public class bdck
 {
-  bdck(Activity paramActivity, azjq paramazjq) {}
+  private CustomLruCache<String, Drawable> jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache;
+  private final HashMap<String, WeakReference<Drawable>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bdck(int paramInt)
   {
-    if (paramInt == 1)
+    paramInt = Math.max(paramInt, 5);
+    if (QLog.isColorLevel()) {
+      QLog.d("ImageCache", 2, "Memory cache size = " + paramInt + "MB");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache = new bdcl(this, paramInt * 1024 * 1024);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.evictAll();
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(String paramString, Drawable paramDrawable)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.get(paramString) == null))
     {
-      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.jdField_a_of_type_AndroidAppActivity.getPackageName(), null));
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
+      this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.put(paramString, paramDrawable);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new WeakReference(paramDrawable));
     }
-    while (this.jdField_a_of_type_Azjq == null) {
-      return;
-    }
-    this.jdField_a_of_type_Azjq.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdck
  * JD-Core Version:    0.7.0.1
  */

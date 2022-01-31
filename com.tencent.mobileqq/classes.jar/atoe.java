@@ -1,9 +1,12 @@
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import java.util.List;
-
-public abstract interface atoe
+class atoe
+  implements bhum
 {
-  public abstract void a(List<LocationRoom.Venue> paramList);
+  atoe(atnw paramatnw) {}
+  
+  public void onDismiss()
+  {
+    this.a.b(false);
+  }
 }
 
 

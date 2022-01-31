@@ -4,28 +4,28 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import bndh;
-import bndi;
-import bnlx;
+import bnht;
+import bnhu;
+import bnqj;
 import java.io.File;
 
 public class RMVideoSwitchCameraPicMgr
 {
-  private bndh jdField_a_of_type_Bndh = new bndh(this, null);
-  bndi jdField_a_of_type_Bndi = null;
+  private bnht jdField_a_of_type_Bnht = new bnht(this, null);
+  bnhu jdField_a_of_type_Bnhu = null;
   
   private String a()
   {
     String str = "shortvideo_cover_pic";
-    if (this.jdField_a_of_type_Bndh.b) {
+    if (this.jdField_a_of_type_Bnht.b) {
       str = "ptv_cover_pic";
     }
-    return bnlx.a + File.separator + str + ".jpg";
+    return bnqj.a + File.separator + str + ".jpg";
   }
   
   private String b()
   {
-    return bnlx.a + File.separator + "player_cover_pic" + ".jpg";
+    return bnqj.a + File.separator + "player_cover_pic" + ".jpg";
   }
   
   private native Bitmap getPreprocessBitmap(int[] paramArrayOfInt);
@@ -52,7 +52,7 @@ public class RMVideoSwitchCameraPicMgr
   public Bitmap a(boolean paramBoolean)
   {
     Object localObject = null;
-    this.jdField_a_of_type_Bndh.b = paramBoolean;
+    this.jdField_a_of_type_Bnht.b = paramBoolean;
     String str = a();
     if (new File(str).exists())
     {

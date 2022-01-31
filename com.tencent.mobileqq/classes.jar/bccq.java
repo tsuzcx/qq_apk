@@ -1,30 +1,33 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
 
 public class bccq
-  implements Comparable<bccq>
+  implements TextWatcher
 {
-  public int a;
-  public TroopInfo a;
-  public String a;
-  public int b;
+  public bccq(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public int a(@NonNull bccq parambccq)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (this.b != parambccq.b) {
-      return this.b - parambccq.b;
+    if (paramEditable.length() == 0)
+    {
+      this.a.e();
+      this.a.a(false);
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime != parambccq.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime) {
-      return (int)(parambccq.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime);
-    }
-    if (parambccq.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime != this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime) {
-      return (int)(parambccq.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime);
-    }
-    if (this.jdField_a_of_type_Int != parambccq.jdField_a_of_type_Int) {
-      return this.jdField_a_of_type_Int - parambccq.jdField_a_of_type_Int;
-    }
-    return this.jdField_a_of_type_JavaLangString.compareTo(parambccq.jdField_a_of_type_JavaLangString);
+    this.a.jdField_a_of_type_Bccz.a();
+    this.a.jdField_a_of_type_Bccz.notifyDataSetChanged();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.a.a(false);
+    this.a.b = 0;
+    this.a.a(true);
+    paramEditable = paramEditable.toString();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

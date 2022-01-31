@@ -1,36 +1,10 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import java.nio.ByteBuffer;
 
-public class baap
-  implements MediaPlayer.OnErrorListener
+class baap
 {
-  private WeakReference<VideoSprite> a;
-  
-  private baap(VideoSprite paramVideoSprite)
-  {
-    this.a = new WeakReference(paramVideoSprite);
-  }
-  
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
-  {
-    paramMediaPlayer = (VideoSprite)this.a.get();
-    if (paramMediaPlayer == null) {}
-    do
-    {
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.e("VideoSprite", 2, "onError: " + paramInt1);
-      }
-    } while (paramInt1 != 1);
-    if (paramMediaPlayer.a != null) {
-      paramMediaPlayer.a.a();
-    }
-    paramMediaPlayer.j();
-    return true;
-  }
+  public long a;
+  public ByteBuffer a;
+  public long b;
 }
 
 

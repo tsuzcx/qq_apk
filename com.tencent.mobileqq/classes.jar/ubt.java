@@ -1,69 +1,75 @@
-import android.content.Context;
-import android.os.Vibrator;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
-import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicLikePopWindow;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.biz.qqcircle.requests.QCircleGetLightInteractRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.AnimationView;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StLike;
-import java.lang.ref.WeakReference;
-import qqcircle.QQCircleFeedBase.StLikeBusiData;
-import qqcircle.QQCircleFeedBase.StPolyLike;
+import feedcloud.FeedCloudMeta.StLightInteractInfo;
+import feedcloud.FeedCloudRead.StGetLightInteractListRsp;
+import java.util.List;
 
 public class ubt
-  implements View.OnClickListener
+  extends ubk
 {
-  public ubt(QCirclePolymorphicLikePopWindow paramQCirclePolymorphicLikePopWindow, QQCircleFeedBase.StPolyLike paramStPolyLike, AnimationView paramAnimationView, ubx paramubx) {}
+  public static String a;
+  private MutableLiveData<ubz<List<FeedCloudMeta.StLightInteractInfo>>> a;
+  private String b = "";
   
-  public void onClick(View paramView)
+  static
   {
-    if (QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow) != null) {
-      QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow).a();
+    jdField_a_of_type_JavaLangString = "QCirclePolyListViewModel";
+  }
+  
+  public ubt()
+  {
+    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
+  }
+  
+  public MutableLiveData<ubz<List<FeedCloudMeta.StLightInteractInfo>>> a()
+  {
+    return this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(FeedCloudMeta.StFeed paramStFeed, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1) {
+      this.b = "";
     }
-    if (!tvt.a().a(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike.polySource.get())) {
-      QQToast.a((Context)QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow).get(), 0, 2131698352, 0).a();
-    }
-    while (QCirclePolymorphicLikePopWindow.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow).get() == null) {
-      return;
-    }
-    paramView = new int[2];
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.getLocationOnScreen(paramView);
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow.dismiss();
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow.getContentView().getContext();
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow.getContentView().getContext();
-    ((Vibrator)((Context)localObject).getSystemService("vibrator")).vibrate(50L);
-    try
+    paramStFeed = new QCircleGetLightInteractRequest(paramStFeed, this.b);
+    paramStFeed.setEnableCache(paramBoolean2);
+    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.setValue(ubz.b());
+    a(paramStFeed, new ubu(this, paramStFeed, paramBoolean1));
+  }
+  
+  public void a(boolean paramBoolean1, long paramLong, boolean paramBoolean2, String paramString, FeedCloudRead.StGetLightInteractListRsp paramStGetLightInteractListRsp)
+  {
+    boolean bool1 = true;
+    boolean bool2 = VSNetworkHelper.a(paramString);
+    if ((!paramBoolean1) || (paramLong != 0L) || (paramStGetLightInteractListRsp == null))
     {
-      localObject = new QQCircleFeedBase.StLikeBusiData();
-      ((QQCircleFeedBase.StLikeBusiData)localObject).mergeFrom(QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow).likeInfo.busiData.get().toByteArray());
-      localObject = ((QQCircleFeedBase.StLikeBusiData)localObject).curPolyLikeInfo;
-      int i;
-      if (ubx.a(this.jdField_a_of_type_Ubx).polyLikeID.get().equals(((QQCircleFeedBase.StPolyLike)localObject).polyLikeID.get())) {
-        i = 0;
-      }
-      for (;;)
-      {
-        if (i != 0) {
-          this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow.a(QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow), ubx.a(this.jdField_a_of_type_Ubx));
-        }
-        ((QCirclePolymorphicAniView)QCirclePolymorphicLikePopWindow.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow).get()).startZanAni(this.jdField_a_of_type_Ubx, (View)QCirclePolymorphicLikePopWindow.c(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow).get(), (View)QCirclePolymorphicLikePopWindow.d(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow).get(), paramView, QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow), new ubu(this, i, (QQCircleFeedBase.StPolyLike)localObject));
-        return;
-        boolean bool = TextUtils.isEmpty(((QQCircleFeedBase.StPolyLike)localObject).polyLikeID.get());
-        if (bool) {
-          i = 1;
-        } else {
-          i = 2;
-        }
-      }
+      this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.setValue(ubz.a(paramString).b(paramBoolean2));
       return;
     }
-    catch (Exception paramView) {}
+    this.b = paramStGetLightInteractListRsp.attachInfo.get();
+    Object localObject = paramStGetLightInteractListRsp.listInfo.get();
+    if (((List)localObject).size() > 0)
+    {
+      paramString = this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
+      localObject = ubz.a(bool2).a(paramBoolean2, localObject);
+      if (paramStGetLightInteractListRsp.isFinish.get() == 1) {}
+      for (paramBoolean1 = bool1;; paramBoolean1 = false)
+      {
+        paramString.setValue(((ubz)localObject).c(paramBoolean1));
+        return;
+      }
+    }
+    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.setValue(ubz.a().b(paramBoolean2));
   }
 }
 

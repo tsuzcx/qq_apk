@@ -1,15 +1,25 @@
+import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
 final class auzm
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  auzm(DialogInterface.OnDismissListener paramOnDismissListener) {}
+  auzm(Activity paramActivity, String paramString, int paramInt, long paramLong) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.onDismiss(paramDialogInterface);
+    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidAppActivity, GameRoomInviteActivity.class);
+    paramDialogInterface.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.putExtra("roomNum", this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Long > 0L)
+    {
+      paramDialogInterface.putExtra("gc", this.jdField_a_of_type_Long);
+      paramDialogInterface.putExtra("isInviteTroop", false);
+    }
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
   }
 }
 

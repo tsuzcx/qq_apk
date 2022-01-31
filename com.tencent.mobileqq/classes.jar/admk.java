@@ -1,14 +1,25 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class admk
-  extends aelt
+  extends altm
 {
-  public ImageView a;
-  public BreathAnimationLayout a;
-  public StringBuilder a;
-  public TextView c;
+  public admk(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  
+  protected void onGetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    }
+  }
+  
+  protected void onSetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1) {
+      this.a.a(2131719884, 1);
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
+  }
 }
 
 

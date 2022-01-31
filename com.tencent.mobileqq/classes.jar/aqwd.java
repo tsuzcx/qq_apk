@@ -1,49 +1,55 @@
-import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-class aqwd
-  implements arpo
+public class aqwd
+  extends aqxd
 {
-  aqwd(aqwa paramaqwa) {}
+  aqru jdField_a_of_type_Aqru = null;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString = "DiscOfflinePreviewController<FileAssistant>";
+  String b;
+  String c;
   
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public aqwd(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    aqwa.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramString1;
+    this.c = paramString2;
+    a();
   }
   
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  public int a()
   {
-    azmj.b(null, "P_CliOper", "webview", "", "webview_apk_download", "download_success", 0, 1, 0, "", "", "", "");
-    paramBundle.getInt("_CB_SID");
-    String str = paramBundle.getString("_CB_URL");
-    paramBundle = paramBundle.getBundle("_CB_USERDATA");
-    aqwa.a(this.a, str);
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>insertFM and install. PH:" + paramString + " SZ:" + paramLong);
-    if (this.a.a != null) {
-      this.a.a.a().a(null, -1, paramString, paramLong, 16, null, paramBundle);
-    }
-    for (;;)
+    return 2;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Aqru = new aqwe(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aqru);
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.b))
     {
-      if (paramBundle != null) {
-        arpg.a(paramString, paramBundle.getString("big_brother_source_key"));
+      QLog.e(this.jdField_a_of_type_JavaLangString, 1, " init OfflinePreviewController error,uuid is null,stack:" + arrr.a());
+      if (this.jdField_a_of_type_Aqlx != null) {
+        this.jdField_a_of_type_Aqlx.a(false, "", "", -100005L, "", "", null, this.b, null);
       }
-      aqwa.a(this.a);
-      if ("http://qqwx.qq.com/s?aid=index&g_f=429&mType=QQSpaceClean".equals(str)) {
-        azmj.b(null, "P_CliOper", "Safe_SpaceClean", "", "SpaceClean_", "download secure apk sucess", 0, 0, "", "", "", "");
-      }
-      return;
-      arni.c(paramString);
+      return false;
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.c, this.b);
+    return true;
   }
   
-  public void b(int paramInt, Bundle paramBundle) {}
-  
-  public void c(int paramInt, Bundle paramBundle) {}
-  
-  public void d(int paramInt, Bundle paramBundle) {}
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aqru != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aqru);
+    }
+  }
 }
 
 

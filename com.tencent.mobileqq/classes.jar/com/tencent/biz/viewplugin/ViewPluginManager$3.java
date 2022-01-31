@@ -4,12 +4,12 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import nbv;
-import yyc;
+import zcr;
 
 public class ViewPluginManager$3
   implements Runnable
 {
-  public ViewPluginManager$3(yyc paramyyc) {}
+  public ViewPluginManager$3(zcr paramzcr) {}
   
   public void run()
   {

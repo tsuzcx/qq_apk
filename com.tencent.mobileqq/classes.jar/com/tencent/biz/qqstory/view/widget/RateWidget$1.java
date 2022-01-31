@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import xsa;
+import xwj;
 
 public class RateWidget$1
   implements Runnable
 {
-  public RateWidget$1(xsa paramxsa) {}
+  public RateWidget$1(xwj paramxwj) {}
   
   public void run()
   {
-    xsa localxsa = this.this$0;
-    if (!xsa.a(this.this$0)) {}
+    xwj localxwj = this.this$0;
+    if (!xwj.a(this.this$0)) {}
     for (boolean bool = true;; bool = false)
     {
-      xsa.a(localxsa, bool);
-      this.this$0.c(xsa.a(this.this$0));
+      xwj.a(localxwj, bool);
+      this.this$0.c(xwj.a(this.this$0));
       return;
     }
   }

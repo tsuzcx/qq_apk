@@ -10,30 +10,30 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.DisplayMetrics;
-import asox;
-import aspd;
-import aspg;
-import bdda;
-import bdvv;
-import bdvx;
-import bdwa;
+import astg;
+import astm;
+import astp;
+import bdhj;
+import beae;
+import beag;
+import beaj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.io.File;
 
 public class PayLikeFloatViewBuilder
-  extends aspd
+  extends astm
 {
   private static boolean jdField_a_of_type_Boolean;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   
-  public PayLikeFloatViewBuilder(Context paramContext, int paramInt, asox paramasox)
+  public PayLikeFloatViewBuilder(Context paramContext, int paramInt, astg paramastg)
   {
-    super(paramContext, paramInt, paramasox);
+    super(paramContext, paramInt, paramastg);
   }
   
   private static Bitmap a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    bdvv localbdvv = null;
+    beae localbeae = null;
     String str = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MobileQQ/.nearby/nearby_pay_zan_anim.png";
     if (new File(str).exists())
     {
@@ -45,7 +45,7 @@ public class PayLikeFloatViewBuilder
     {
       try
       {
-        paramContext = bdda.a(str, paramQQAppInterface);
+        paramContext = bdhj.a(str, paramQQAppInterface);
         return paramContext;
       }
       catch (OutOfMemoryError paramContext)
@@ -55,13 +55,13 @@ public class PayLikeFloatViewBuilder
           paramContext = null;
         }
       }
-      paramContext = localbdvv;
+      paramContext = localbeae;
     } while (jdField_a_of_type_Boolean);
     jdField_a_of_type_Boolean = true;
     paramContext = new Bundle();
-    localbdvv = new bdvv("http://pub.idqqimg.com/pc/misc/nearby_pay_zan_anim.png", new File(str + ".tmp"));
-    localbdvv.b = 2;
-    ((bdvx)paramQQAppInterface.getManager(47)).a(1).a(localbdvv, new aspg(str), paramContext);
+    localbeae = new beae("http://pub.idqqimg.com/pc/misc/nearby_pay_zan_anim.png", new File(str + ".tmp"));
+    localbeae.b = 2;
+    ((beag)paramQQAppInterface.getManager(47)).a(1).a(localbeae, new astp(str), paramContext);
     return null;
   }
   

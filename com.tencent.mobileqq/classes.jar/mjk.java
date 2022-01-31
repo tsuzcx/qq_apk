@@ -60,7 +60,7 @@ public class mjk
     a(paramArrayList);
     jdField_a_of_type_Int = a(this.jdField_a_of_type_AndroidContentResResources, a());
     jdField_b_of_type_Int = a(this.jdField_a_of_type_AndroidContentResResources, a(), 0.1666667F);
-    jdField_c_of_type_Int = jdField_a_of_type_Int + aekt.a(30.0F, this.jdField_a_of_type_AndroidContentResResources);
+    jdField_c_of_type_Int = jdField_a_of_type_Int + aepi.a(30.0F, this.jdField_a_of_type_AndroidContentResResources);
     if (this.jdField_a_of_type_Float < 6.0F) {
       jdField_c_of_type_Int = this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297457);
     }
@@ -184,7 +184,7 @@ public class mjk
     do
     {
       return;
-      localView = paramView.findViewById(2131372608);
+      localView = paramView.findViewById(2131372634);
       if (parammkj == null) {
         paramView.setContentDescription(null);
       }
@@ -459,7 +459,7 @@ public class mjk
       paramView.jdField_a_of_type_Boolean = this.jdField_c_of_type_Boolean;
       if (this.jdField_a_of_type_Float < 6.0F)
       {
-        paramViewGroup = paramView.findViewById(2131372772);
+        paramViewGroup = paramView.findViewById(2131372798);
         if ((paramViewGroup instanceof LinearLayout)) {
           ((LinearLayout)paramViewGroup).setGravity(49);
         }

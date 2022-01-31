@@ -1,35 +1,22 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiUserInfo;
 
-class bjlq
-  implements bjkg
+public final class bjlq
+  implements Parcelable.Creator<WeishiUserInfo>
 {
-  bjlq(bjlp parambjlp) {}
-  
-  public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public WeishiUserInfo a(Parcel paramParcel)
   {
-    boolean bool = false;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
-    {
-      paramIntent = bjjq.a(paramFromServiceMsg.getWupBuffer());
-      bjlp.a(this.a, paramIntent);
-      bjlp.a(this.a, paramIntent, null);
-      bjie.a().a(paramIntent);
-      if (this.a.a != null)
-      {
-        paramFromServiceMsg = this.a.a;
-        if (paramIntent != null) {
-          bool = true;
-        }
-        paramFromServiceMsg.a(bool);
-      }
-    }
-    do
-    {
-      return;
-      bjlp.a(this.a, null, null);
-    } while (this.a.a == null);
-    this.a.a.a(false);
+    WeishiUserInfo localWeishiUserInfo = new WeishiUserInfo();
+    localWeishiUserInfo.uin = paramParcel.readLong();
+    localWeishiUserInfo.nickName = paramParcel.readString();
+    localWeishiUserInfo.logo = paramParcel.readString();
+    return localWeishiUserInfo;
+  }
+  
+  public WeishiUserInfo[] a(int paramInt)
+  {
+    return new WeishiUserInfo[paramInt];
   }
 }
 

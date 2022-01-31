@@ -39,16 +39,16 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 import tencent.im.s2c.msgtype0x210.submsgtype0x69.Submsgtype0x69;
 
 public class nag
-  extends alko
+  extends alpd
 {
   public int a;
-  protected alkr a;
+  protected alpg a;
   protected nam a;
   
   public nag(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_Alkr = new naj(this);
+    this.jdField_a_of_type_Alpg = new naj(this);
     this.jdField_a_of_type_Nam = new nam(this);
     AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApplication(), this.jdField_a_of_type_Nam);
     this.jdField_a_of_type_Int = 0;
@@ -71,12 +71,12 @@ public class nag
           localObject2 = new Submsgtype0x69();
           ((Submsgtype0x69)localObject2).mergeFrom(paramArrayOfByte);
           boolean bool = ((Submsgtype0x69)localObject2).bool_test_env.get();
-          if (bool != ayxk.a)
+          if (bool != azbt.a)
           {
-            wsv.a("TroopRedTouchHandler", "parsePushRedPointInfo env not match!! isTestEnvFromPush = %b, sIsTestEnv = %b", Boolean.valueOf(bool), Boolean.valueOf(ayxk.a));
-            if (bool != wnh.a())
+            wxe.a("TroopRedTouchHandler", "parsePushRedPointInfo env not match!! isTestEnvFromPush = %b, sIsTestEnv = %b", Boolean.valueOf(bool), Boolean.valueOf(azbt.a));
+            if (bool != wrq.a())
             {
-              wsv.a("TroopRedTouchHandler", "parsePushRedPointInfo env not match!! isTestEnvFromPush = %b, QQStoryNetReqUtils.isDevEnv() = %b", Boolean.valueOf(bool), Boolean.valueOf(wnh.a()));
+              wxe.a("TroopRedTouchHandler", "parsePushRedPointInfo env not match!! isTestEnvFromPush = %b, QQStoryNetReqUtils.isDevEnv() = %b", Boolean.valueOf(bool), Boolean.valueOf(wrq.a()));
               return null;
             }
           }
@@ -116,10 +116,10 @@ public class nag
           }
           i = 1;
           k = ((JSONObject)localObject2).optInt("red_content_type");
-          m = ((Integer)aush.a(paramQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
+          m = ((Integer)auwq.a(paramQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
           if (i != 0)
           {
-            new azmo(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("push_red_send").a(new String[] { String.valueOf(m), "0", String.valueOf(k), "0" }).a();
+            new azqx(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("push_red_send").a(new String[] { String.valueOf(m), "0", String.valueOf(k), "0" }).a();
             Log.i("redreport", "retport push_red_send d1 = " + m + " d3 = " + k);
           }
         }
@@ -157,7 +157,7 @@ public class nag
           if (46 != paramArrayOfByte.uint32_appid.get()) {
             break label1002;
           }
-          if (!badt.a(paramQQAppInterface)) {
+          if (!baic.a(paramQQAppInterface)) {
             break label1031;
           }
           oidb_0x791.RedDotInfo localRedDotInfo = localException.a(46, false);
@@ -189,7 +189,7 @@ public class nag
         if (!paramArrayOfByte.bool_display_reddot.get()) {
           break label771;
         }
-        paramQQAppInterface = (urk)urr.a(10);
+        paramQQAppInterface = (uvt)uwa.a(10);
         l1 = NetConnInfoCenter.getServerTimeMillis();
         l2 = paramQQAppInterface.a();
         if (l1 >= l2) {
@@ -200,7 +200,7 @@ public class nag
         }
         QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, "故事红点下发到达时间：" + l1 + "小于最近更新刷新时间：" + l2 + nan.a(paramArrayOfByte));
         return null;
-        wsv.a("TroopRedTouchHandler", "parsePushRedPointInfo() return %s", paramQQAppInterface);
+        wxe.a("TroopRedTouchHandler", "parsePushRedPointInfo() return %s", paramQQAppInterface);
         return paramQQAppInterface;
         label619:
         i = 0;
@@ -251,7 +251,7 @@ public class nag
     boolean bool = true;
     int i;
     label79:
-    amjk localamjk;
+    amnz localamnz;
     if ((paramQQAppInterface != null) && (paramRedDotInfo != null) && (paramRedDotInfo.uint32_appid.has()))
     {
       int j = paramRedDotInfo.uint32_appid.get();
@@ -265,8 +265,8 @@ public class nag
           break label187;
         }
         paramInt = 1;
-        localamjk = paramQQAppInterface.a().a();
-        if (localamjk.b(aljq.aP, 6004) == null) {
+        localamnz = paramQQAppInterface.a().a();
+        if (localamnz.b(alof.aP, 6004) == null) {
           break label192;
         }
       }
@@ -290,7 +290,7 @@ public class nag
       bool = false;
     }
     label198:
-    RecentUser localRecentUser = localamjk.a(aljq.aP, 6004);
+    RecentUser localRecentUser = localamnz.a(alof.aP, 6004);
     if ((i > 0) && ((paramRedDotInfo.bool_display_reddot.get()) || (paramBoolean))) {
       if (!paramRedDotInfo.uint32_last_time.has()) {
         break label303;
@@ -301,9 +301,9 @@ public class nag
     {
       localRecentUser.lastmsgtime = l;
       localRecentUser.msgType = 0;
-      localRecentUser.displayName = paramQQAppInterface.getApp().getString(2131720729);
+      localRecentUser.displayName = paramQQAppInterface.getApp().getString(2131720741);
       if (paramInt != 0) {
-        localamjk.a(localRecentUser);
+        localamnz.a(localRecentUser);
       }
       paramQQAppInterface.a().a(localRecentUser);
       paramQQAppInterface.D();
@@ -384,7 +384,7 @@ public class nag
     ((List)localObject1).add(Integer.valueOf(54));
     ((List)localObject1).add(Integer.valueOf(53));
     ((List)localObject1).add(Integer.valueOf(65));
-    if (badt.a(this.app)) {
+    if (baic.a(this.app)) {
       ((List)localObject1).add(Integer.valueOf(46));
     }
     Object localObject3 = new oidb_0x791.GetRedDotOpt();
@@ -407,7 +407,7 @@ public class nag
   
   public void a()
   {
-    this.app.addObserver(this.jdField_a_of_type_Alkr);
+    this.app.addObserver(this.jdField_a_of_type_Alpg);
   }
   
   public void a(int paramInt)
@@ -421,7 +421,7 @@ public class nag
     for (;;)
     {
       if (str.length() <= 0) {}
-      axho localaxho;
+      axlx localaxlx;
       do
       {
         return;
@@ -441,10 +441,10 @@ public class nag
         }
         str = "7719.771901";
         break;
-        localaxho = (axho)this.app.getManager(36);
-        localaxho.b(str);
-      } while (localaxho.a(7719) == null);
-      localaxho.a(7719, str);
+        localaxlx = (axlx)this.app.getManager(36);
+        localaxlx.b(str);
+      } while (localaxlx.a(7719) == null);
+      localaxlx.a(7719, str);
       return;
       label112:
       str = "";
@@ -461,7 +461,7 @@ public class nag
     localReqClearMessage.source.set(paramInt2);
     localReqClearMessage.version_ctrl.set(775);
     NewIntent localNewIntent = new NewIntent(this.app.getApplication(), mzx.class);
-    localNewIntent.putExtra("cmd", ume.a("StorySvc.clr_710_message_list"));
+    localNewIntent.putExtra("cmd", uqn.a("StorySvc.clr_710_message_list"));
     localNewIntent.putExtra("data", localReqClearMessage.toByteArray());
     localNewIntent.setObserver(new nak(this));
     this.app.startServlet(localNewIntent);
@@ -579,7 +579,7 @@ public class nag
   
   public void b()
   {
-    this.app.removeObserver(this.jdField_a_of_type_Alkr);
+    this.app.removeObserver(this.jdField_a_of_type_Alpg);
   }
   
   public void b(int paramInt)
@@ -602,9 +602,9 @@ public class nag
     }
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
-    return avqs.class;
+    return avvb.class;
   }
   
   public void onDestroy()

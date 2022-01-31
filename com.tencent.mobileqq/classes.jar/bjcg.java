@@ -1,44 +1,41 @@
-import android.os.Handler;
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
-import java.util.Properties;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class bjcg
-  implements OnPluginInstallListener
+final class bjcg
+  implements WtTicketPromise
 {
-  public bjcg(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity, long paramLong) {}
+  bjcg(bjch parambjch, String paramString) {}
   
-  public IBinder asBinder()
+  public void Done(Ticket paramTicket)
   {
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "get pskey async success!");
+    }
+    if (this.jdField_a_of_type_Bjch != null) {
+      this.jdField_a_of_type_Bjch.a(0, new String[] { bjcf.a(paramTicket, this.jdField_a_of_type_JavaLangString) });
+    }
   }
   
-  public void onInstallBegin(String paramString)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin onInstallBegin");
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "preGetKey. PSk Failed!!!");
+    }
+    if (this.jdField_a_of_type_Bjch != null) {
+      this.jdField_a_of_type_Bjch.a(-1, new String[] { paramErrMsg.getMessage() });
+    }
   }
   
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  public void Timeout(ErrMsg paramErrMsg)
   {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin onInstallDownloadProgress");
-  }
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    QLog.e("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin onInstallError");
-    QzoneVerticalVideoDownloadActivity.access$000(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).sendEmptyMessage(1012);
-    paramString = new Properties();
-    paramString.put("status", "installError");
-    QzoneVerticalVideoDownloadActivity.access$1000("vertical_layer_plugin_depend", paramString);
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin onInstallFinish");
-    QzoneVerticalVideoDownloadActivity.access$000(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).sendEmptyMessage(1011);
-    QzoneVerticalVideoDownloadActivity.access$900("vertical_layer_plugin_depend", "status", "installFinish", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "preGetKey. PSk Timeout!");
+    }
+    if (this.jdField_a_of_type_Bjch != null) {
+      this.jdField_a_of_type_Bjch.a(-1, new String[] { paramErrMsg.getMessage() });
+    }
   }
 }
 

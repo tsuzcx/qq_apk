@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.NativeAd.view;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -17,7 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import bcuq;
+import bcyz;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
 import com.tencent.common.app.AppInterface;
@@ -82,7 +82,7 @@ public class NativeAdVideoContainer
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    inflate(getContext(), 2131559894, this);
+    inflate(getContext(), 2131559893, this);
     this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView = ((ReadInJoyNativeAdAppVideoView)findViewById(2131362064));
     paramContext = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.getLayoutParams();
     paramContext.height = ((int)(getResources().getDisplayMetrics().widthPixels * 0.5626F));
@@ -115,7 +115,7 @@ public class NativeAdVideoContainer
       if ((j == 2131362057) || (j == 2131362021)) {
         i = 3;
       } else if (j != 2131362024) {
-        if ((j == 2131362055) || (j == 2131361991) || (j == 2131369886)) {
+        if ((j == 2131362055) || (j == 2131361991) || (j == 2131369905)) {
           i = 8;
         } else {
           i = paramInt;
@@ -134,7 +134,7 @@ public class NativeAdVideoContainer
     try
     {
       localObject = URLDrawable.getDrawable(new URL(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdCorporateLogo), (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setDecodeHandler(bcuq.a);
+      ((URLDrawable)localObject).setDecodeHandler(bcyz.a);
       paramReadInJoyHeadImageView.setImageDrawable((Drawable)localObject);
       return;
     }
@@ -151,14 +151,14 @@ public class NativeAdVideoContainer
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)findViewById(2131362053));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362057));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362055));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369886));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369905));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362056));
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    localLayoutParams.leftMargin = aekt.a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    localLayoutParams.leftMargin = aepi.a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewAdRatingBar = ((AdRatingBar)findViewById(2131375167));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369899));
+    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewAdRatingBar = ((AdRatingBar)findViewById(2131375218));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369918));
     this.f = ((TextView)findViewById(2131362023));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -172,7 +172,7 @@ public class NativeAdVideoContainer
     this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)findViewById(2131362019));
     this.c = ((TextView)findViewById(2131362021));
     this.d = ((TextView)findViewById(2131362024));
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2131368320));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2131368331));
     this.e = ((TextView)findViewById(2131361991));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(0);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setEnabled(false);

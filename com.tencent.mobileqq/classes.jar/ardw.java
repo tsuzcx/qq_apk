@@ -1,72 +1,68 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils.TruncateAt;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 
 public class ardw
+  implements aywd
 {
-  protected int a;
-  protected QQAppInterface a;
-  protected FileManagerEntity a;
-  protected List<ardq> a;
-  private int b;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
   
-  public ardw(QQAppInterface paramQQAppInterface)
+  public ardw(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560680, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366301));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366313));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365104));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(1);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.a();
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
   }
   
-  public int a()
+  public View a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public arbj a(BaseActivity paramBaseActivity)
+  public View a(String paramString)
   {
-    return new ardx(this, paramBaseActivity);
+    return null;
   }
   
-  public List<ardq> a()
+  public ImageView a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return null;
   }
   
-  public boolean a(Intent paramIntent, Activity paramActivity)
+  public TextView a()
   {
-    Object localObject = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
-    if (localObject == null) {
-      return false;
-    }
-    if (paramIntent.getBooleanExtra("from_webview", false))
-    {
-      bbpe localbbpe = bcjk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((ForwardFileInfo)localObject).a(), ((ForwardFileInfo)localObject).b(), ((ForwardFileInfo)localObject).e(), ((ForwardFileInfo)localObject).d(), ((ForwardFileInfo)localObject).d(), paramIntent.getIntExtra("bisId", 0));
-      l1 = ((ForwardFileInfo)localObject).a();
-      localObject = paramIntent.getStringExtra("sender_uin");
-      long l2 = paramIntent.getLongExtra("last_time", 0L);
-      aroo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramActivity, null, null, l1, localbbpe, (String)localObject, l2, -1, 0, null, false, false);
-      paramActivity.finish();
-      return false;
-    }
-    long l1 = ((ForwardFileInfo)localObject).b();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l1);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-      return false;
-    }
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime = paramIntent.getLongExtra("last_time", 0L);
-    this.jdField_a_of_type_JavaUtilList.add(ardj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity));
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0)
-    {
-      this.jdField_a_of_type_Int = 1;
-      return true;
-    }
-    this.jdField_a_of_type_Int = 3;
-    return true;
+    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+  }
+  
+  public ImageView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public TextView c()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public TextView d()
+  {
+    return null;
   }
 }
 

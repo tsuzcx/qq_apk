@@ -1,17 +1,15 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
 
 class afoz
-  extends afpq
+  implements arsg
 {
-  afoz(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  afoz(afnq paramafnq) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new affh(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    paramView = arbp.a();
+    arrr.c(this.a.a, paramView);
+    arrp.a("0X8007FA2");
   }
 }
 

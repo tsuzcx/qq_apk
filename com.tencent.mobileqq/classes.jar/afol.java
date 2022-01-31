@@ -1,17 +1,24 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class afol
-  extends afpq
+  implements bhuk
 {
-  afol(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  afol(afoj paramafoj, bhuf parambhuf) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new zsr(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    this.jdField_a_of_type_Bhuf.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    ChatActivityUtils.a(this.jdField_a_of_type_Afoj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Afoj.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afoj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Afoj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, null);
+    azqs.b(this.jdField_a_of_type_Afoj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8003F02", "0X8003F02", 0, 0, "", "", "", "");
+    azqs.b(this.jdField_a_of_type_Afoj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005976", "0X8005976", 0, 0, "", "", "", "");
   }
 }
 

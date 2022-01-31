@@ -1,8 +1,8 @@
 package cooperation.qqreader.host.advertisement;
 
-import aaie;
-import aaif;
-import aaig;
+import aamt;
+import aamu;
+import aamv;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.gdtad.aditem.GdtAd;
@@ -20,22 +20,22 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.MutiPicTextInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.PosAdInfo;
 
 public abstract class ReaderGdtSdk$RequestListener
-  implements aaif
+  implements aamu
 {
-  public void onResponse(aaie paramaaie)
+  public void onResponse(aamt paramaamt)
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject = null;
-    paramaaie = paramaaie.a().a;
-    if (paramaaie == null) {
-      paramaaie = (aaie)localObject;
+    paramaamt = paramaamt.a().a;
+    if (paramaamt == null) {
+      paramaamt = (aamt)localObject;
     }
     for (;;)
     {
-      onResult(localArrayList, paramaaie);
+      onResult(localArrayList, paramaamt);
       return;
-      localObject = paramaaie.pos_ads_info.get();
-      paramaaie = paramaaie.gdt_cookie.get();
+      localObject = paramaamt.pos_ads_info.get();
+      paramaamt = paramaamt.gdt_cookie.get();
       if (localObject != null) {
         if (!((List)localObject).isEmpty())
         {

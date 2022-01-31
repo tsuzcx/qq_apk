@@ -1,84 +1,16 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.media.MediaMetadataRetriever;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
 
 public class axsg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private static String a = "MediaUtil";
+  public axsg(QQSlidingTabView paramQQSlidingTabView) {}
   
-  @TargetApi(10)
-  public static long a(String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    long l1 = 0L;
-    localMediaMetadataRetriever = new MediaMetadataRetriever();
-    try
-    {
-      localMediaMetadataRetriever.setDataSource(paramString);
-      paramString = localMediaMetadataRetriever.extractMetadata(9);
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      long l2;
-      wsv.c(a, "getVideoDuration path=" + paramString + " exists=" + xmx.e(paramString), localRuntimeException);
-      localMediaMetadataRetriever.release();
-      return 0L;
-    }
-    catch (Error localError)
-    {
-      label32:
-      wsv.c(a, "getVideoDuration path=" + paramString + " exists=" + xmx.e(paramString), localError);
-      localMediaMetadataRetriever.release();
-      return 0L;
-    }
-    try
-    {
-      l2 = Long.parseLong(paramString);
-      l1 = l2;
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
-      break label32;
-    }
-    localMediaMetadataRetriever.release();
-    return l1;
-  }
-  
-  @TargetApi(10)
-  public static Bitmap a(String paramString, int paramInt)
-  {
-    Object localObject = null;
-    if (!xmx.e(paramString))
-    {
-      wsv.e(a, "File note exist when getFrameAtTime(). videoPath = " + paramString + " millisecond = " + paramInt);
-      return null;
-    }
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    localMediaMetadataRetriever.setDataSource(paramString);
-    long l = paramInt * 1000;
-    try
-    {
-      paramString = localMediaMetadataRetriever.getFrameAtTime(l, 0);
-      localMediaMetadataRetriever.release();
-      return paramString;
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      for (;;)
-      {
-        wsv.c(a, "getFrameAtTime", paramString);
-        paramString = localObject;
-      }
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    paramString1 = a(paramString1, 0);
-    if (paramString1 != null) {
-      xmn.a(paramString1, Bitmap.CompressFormat.JPEG, 80, paramString2);
-    }
+    QQSlidingTabView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 

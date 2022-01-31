@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afbx;
-import bckq;
-import bckr;
+import afgm;
+import bcoz;
+import bcpa;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopNotificationAIOHelper$1
   implements Runnable
 {
-  public TroopNotificationAIOHelper$1(afbx paramafbx) {}
+  public TroopNotificationAIOHelper$1(afgm paramafgm) {}
   
   public void run()
   {
-    if (afbx.a(this.this$0) == null) {}
-    bckq localbckq;
+    if (afgm.a(this.this$0) == null) {}
+    bcoz localbcoz;
     do
     {
       do
       {
         return;
-      } while (afbx.a(this.this$0).a == null);
-      localbckq = bckr.a(afbx.a(this.this$0).a, afbx.a(this.this$0).a());
-    } while ((localbckq == null) || (localbckq.a != 0));
+      } while (afgm.a(this.this$0).a == null);
+      localbcoz = bcpa.a(afgm.a(this.this$0).a, afgm.a(this.this$0).a());
+    } while ((localbcoz == null) || (localbcoz.a != 0));
     if (QLog.isColorLevel()) {
       QLog.d("TroopNotificationAIOHelper", 2, "handleTroopNotificationOnResume, readTroopNotification.");
     }
-    bckr.d(afbx.a(this.this$0).a, afbx.a(this.this$0).a());
+    bcpa.d(afgm.a(this.this$0).a, afgm.a(this.this$0).a());
   }
 }
 

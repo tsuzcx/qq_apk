@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdRsp;
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import aail;
+import aana;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -41,7 +41,7 @@ class DataJsPlugin$28
         this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, localJSONObject1, this.val$callBackId);
         DataJsPlugin.access$600(this.this$0, paramJSONObject, this.val$adType);
         paramJSONObject = new GdtAd(DataJsPlugin.access$700(this.this$0, paramJSONObject));
-        aail.a().a(paramJSONObject);
+        aana.a().a(paramJSONObject);
         if (localStGetAdRsp == null) {}
       }
       catch (JSONException localJSONException)

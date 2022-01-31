@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agot;
+import agti;
 
 public class PublicAccountChatPie$58
   implements Runnable
 {
-  public PublicAccountChatPie$58(agot paramagot) {}
+  public PublicAccountChatPie$58(agti paramagti) {}
   
   public void run()
   {
     boolean bool = false;
-    agot localagot = this.this$0;
+    agti localagti = this.this$0;
     if ((this.this$0.b(true)) || (this.this$0.b(false))) {
       bool = true;
     }
-    localagot.as = bool;
+    localagti.as = bool;
   }
 }
 

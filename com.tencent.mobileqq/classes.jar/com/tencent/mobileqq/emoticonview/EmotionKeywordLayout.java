@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import aekt;
+import aepi;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -8,19 +8,19 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
-import apsb;
-import apsc;
-import apsd;
-import apse;
+import apwk;
+import apwl;
+import apwm;
+import apwn;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmotionKeywordLayout
   extends LinearLayout
 {
   private int jdField_a_of_type_Int;
-  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new apsd(this);
+  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new apwm(this);
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private apse jdField_a_of_type_Apse;
+  private apwn jdField_a_of_type_Apwn;
   private EmotionKeywordHorizonListView jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView;
   private boolean jdField_a_of_type_Boolean;
   private ValueAnimator b;
@@ -33,7 +33,7 @@ public class EmotionKeywordLayout
   public EmotionKeywordLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = aekt.a(81.0F, paramContext.getResources());
+    this.jdField_a_of_type_Int = aepi.a(81.0F, paramContext.getResources());
   }
   
   public void a()
@@ -51,12 +51,12 @@ public class EmotionKeywordLayout
       this.b.cancel();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView == null) {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView = ((EmotionKeywordHorizonListView)findViewById(2131365703));
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView = ((EmotionKeywordHorizonListView)findViewById(2131365705));
     }
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_a_of_type_Int, 0.0F });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new apsb(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new apwk(this));
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
     }
@@ -82,12 +82,12 @@ public class EmotionKeywordLayout
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView == null) {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView = ((EmotionKeywordHorizonListView)findViewById(2131365703));
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView = ((EmotionKeywordHorizonListView)findViewById(2131365705));
     }
     if (this.b == null)
     {
       this.b = ValueAnimator.ofFloat(new float[] { 0.0F, this.jdField_a_of_type_Int });
-      this.b.addUpdateListener(new apsc(this));
+      this.b.addUpdateListener(new apwl(this));
       this.b.setDuration(200L);
       this.b.addListener(this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
     }
@@ -114,16 +114,16 @@ public class EmotionKeywordLayout
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnVisibilityListener(apse paramapse)
+  public void setOnVisibilityListener(apwn paramapwn)
   {
-    this.jdField_a_of_type_Apse = paramapse;
+    this.jdField_a_of_type_Apwn = paramapwn;
   }
   
   public void setVisibility(int paramInt)
   {
     super.setVisibility(paramInt);
-    if (this.jdField_a_of_type_Apse != null) {
-      this.jdField_a_of_type_Apse.a(paramInt);
+    if (this.jdField_a_of_type_Apwn != null) {
+      this.jdField_a_of_type_Apwn.a(paramInt);
     }
   }
 }

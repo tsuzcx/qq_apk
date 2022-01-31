@@ -1,6 +1,10 @@
-final class aaol
+public abstract interface aaol
 {
-  private static final aaoj a = new aaoj(null);
+  public abstract void a(aaoi paramaaoi);
+  
+  public abstract void a(aaoi paramaaoi, int paramInt);
+  
+  public abstract void a(aaoi paramaaoi, int paramInt1, int paramInt2);
 }
 
 

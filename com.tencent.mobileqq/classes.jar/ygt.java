@@ -1,15 +1,16 @@
-import com.tencent.biz.subscribe.utils.AnimationDrawableFactory.4;
-import java.io.File;
-import java.util.Comparator;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ygt
-  implements Comparator<File>
+class ygt
+  implements View.OnClickListener
 {
-  public ygt(AnimationDrawableFactory.4 param4) {}
+  ygt(ygq paramygq, CertifiedAccountMeta.StComment paramStComment) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onClick(View paramView)
   {
-    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
+    ygg.a(this.jdField_a_of_type_Ygq.a, ygg.a(this.jdField_a_of_type_Ygq.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, null);
+    ygg.a(this.jdField_a_of_type_Ygq.a).dismiss();
   }
 }
 

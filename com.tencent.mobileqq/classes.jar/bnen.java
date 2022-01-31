@@ -1,34 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.3.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
 
 public class bnen
-  implements INetInfoHandler
+  implements View.OnClickListener
 {
-  bnen(bnem parambnem) {}
+  public bnen(HorizontalAlumbListLayout paramHorizontalAlumbListLayout) {}
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    Thread.currentThread().getId();
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      bnem.a(this.a);
-    }
-    while (bnem.a(this.a) == null) {
-      return;
-    }
-    bnem.a(this.a).post(new LbsFilterStatusManager.3.1(this));
-  }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
+  public void onClick(View paramView) {}
 }
 
 

@@ -1,15 +1,18 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import com.tencent.biz.qqcircle.comment.QCircleCommentBottomBar;
+import java.util.ArrayList;
+import java.util.List;
 
 public class tuj
+  implements ufg
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public LinearLayout b;
-  public TextView b;
-  public TextView c;
+  public tuj(QCircleCommentBottomBar paramQCircleCommentBottomBar) {}
+  
+  public void a(int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(tzy.a("ext2", String.valueOf(paramInt)));
+    tzs.a(34, 2, QCircleCommentBottomBar.a(this.a), localArrayList);
+  }
 }
 
 

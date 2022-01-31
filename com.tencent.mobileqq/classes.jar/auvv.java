@@ -1,23 +1,12 @@
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.3.1;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.3.2;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x5ea.UpdatePhotoList.HeadInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class auvv
-  extends autc
+class auvv
+  implements DialogInterface.OnClickListener
 {
-  public auvv(NearbyGuideActivity paramNearbyGuideActivity) {}
+  auvv(auvr paramauvr) {}
   
-  protected void a(boolean paramBoolean, ArrayList<UpdatePhotoList.HeadInfo> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.runOnUiThread(new NearbyGuideActivity.3.1(this, paramBoolean, paramInt1, paramArrayList));
-  }
-  
-  protected void b(boolean paramBoolean, ArrayList<UpdatePhotoList.HeadInfo> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.runOnUiThread(new NearbyGuideActivity.3.2(this, paramBoolean, paramInt1, paramArrayList));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

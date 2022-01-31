@@ -1,21 +1,8 @@
-import android.support.annotation.Nullable;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment;
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
-import java.util.List;
+import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
 
-public class blid
-  implements bmac<List<AEEditorFilterBean>>
+public abstract interface blid
 {
-  public blid(AEEditorCommonEditFragment paramAEEditorCommonEditFragment) {}
-  
-  public void a(@Nullable List<AEEditorFilterBean> paramList)
-  {
-    blfg.b(AEEditorCommonEditFragment.d(), "mFiltersObserver-onChanged");
-    if (paramList != null) {
-      this.a.a.setFiltersData(paramList);
-    }
-  }
+  public abstract void a(NodeItem paramNodeItem);
 }
 
 

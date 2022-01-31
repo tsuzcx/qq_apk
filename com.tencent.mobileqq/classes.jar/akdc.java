@@ -1,7 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.14;
+
 public class akdc
+  implements DialogInterface.OnClickListener
 {
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean;
+  public akdc(ShortVideoPlayActivity.14 param14) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.this$0.s();
+  }
 }
 
 

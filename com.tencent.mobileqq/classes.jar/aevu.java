@@ -1,180 +1,64 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
 import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aevu
-  implements aewi
+  extends Drawable
 {
-  public static final aewj<aevu> a;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private float b;
-  private float c;
-  private float d;
+  public int a;
+  public Bitmap a;
+  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  boolean jdField_a_of_type_Boolean;
   
-  static
+  public void a(Bitmap paramBitmap, int paramInt)
   {
-    jdField_a_of_type_Aewj = new aevv();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, paramInt, paramBitmap.getHeight());
   }
   
-  public aevu()
+  public void draw(Canvas paramCanvas)
   {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    DisplayMetrics localDisplayMetrics = localBaseApplication.getResources().getDisplayMetrics();
-    this.jdField_a_of_type_Int = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    float f = this.jdField_a_of_type_Int / 750.0F;
-    this.jdField_a_of_type_Float = (12.0F * f);
-    this.b = (f * 6.0F);
-    this.c = (mww.a(localBaseApplication, 50.0F) / 1000.0F);
-    this.d = (mww.a(localBaseApplication, 0.4F) / 1000.0F);
-  }
-  
-  public aevu(aewg paramaewg)
-  {
-    paramaewg.a();
-    this.jdField_a_of_type_AndroidGraphicsRect = paramaewg.a();
-    this.jdField_a_of_type_Float = paramaewg.a();
-    this.b = paramaewg.a();
-    this.c = paramaewg.a();
-    this.d = paramaewg.a();
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public float a(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    float f = (float)paramLong / 1000.0F;
-    paramFloat1 = (float)Math.sqrt((paramFloat3 - paramFloat1) * (paramFloat3 - paramFloat1) + (paramFloat4 - paramFloat2) * (paramFloat4 - paramFloat2));
-    if (paramFloat1 <= 0.0F)
-    {
-      paramFloat1 = a();
-      return paramFloat1;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      QLog.e("VoicePrintView", 1, "onDraw(), bmp==null");
     }
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    paramFloat2 = f / paramFloat1;
-    if (this.jdField_a_of_type_AndroidGraphicsRect.width() > 0) {}
-    for (paramFloat1 = this.jdField_a_of_type_AndroidGraphicsRect.width();; paramFloat1 = this.jdField_a_of_type_Int)
-    {
-      paramFloat2 *= mww.b(localBaseApplication, paramFloat1);
-      paramFloat3 = c();
-      paramFloat4 = d();
-      f = b();
-      paramFloat1 = a();
-      if (paramFloat2 > paramFloat3) {
-        break;
-      }
-      if (paramFloat2 >= paramFloat4) {
-        break label139;
-      }
-      return f;
-    }
-    label139:
-    return (paramFloat2 - paramFloat4) * (a() - f) / (paramFloat3 - paramFloat4) + f;
-  }
-  
-  public Rect a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRect;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
-  }
-  
-  public void a(aevu paramaevu)
-  {
-    this.c = paramaevu.c();
-    this.d = paramaevu.d();
-    this.jdField_a_of_type_Float = paramaevu.a();
-    this.b = paramaevu.b();
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramaevu.a());
-  }
-  
-  public void a(aewg paramaewg, int paramInt)
-  {
-    paramaewg.a(1);
-    paramaewg.a(this.jdField_a_of_type_AndroidGraphicsRect);
-    paramaewg.a(this.jdField_a_of_type_Float);
-    paramaewg.a(this.b);
-    paramaewg.a(this.c);
-    paramaewg.a(this.d);
-  }
-  
-  public void a(aewl paramaewl)
-  {
-    if (paramaewl == null) {}
-    for (;;)
+    int i;
+    do
     {
       return;
-      ArrayList localArrayList = paramaewl.a();
-      if (localArrayList != null)
+      i = 0;
+      if (this.jdField_a_of_type_Boolean)
       {
-        int j = localArrayList.size();
-        if (j == 1)
-        {
-          ((aewm)localArrayList.get(0)).c(a());
-          return;
-        }
-        if (j > 1)
-        {
-          ((aewm)localArrayList.get(0)).c(a());
-          paramaewl = (aewm)localArrayList.get(0);
-          int i = 1;
-          while (i < j)
-          {
-            aewm localaewm = (aewm)localArrayList.get(i);
-            localaewm.c(a(localaewm.a() - paramaewl.a(), paramaewl.a(), paramaewl.b(), localaewm.a(), localaewm.b()));
-            i += 1;
-            paramaewl = localaewm;
-          }
-        }
+        i = paramCanvas.save();
+        paramCanvas.scale(-1.0F, 1.0F, this.jdField_a_of_type_Int / 2.0F, getBounds().exactCenterY());
       }
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+    } while (!this.jdField_a_of_type_Boolean);
+    paramCanvas.restoreToCount(i);
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      super.invalidateSelf();
     }
   }
   
-  public float b()
+  public void setColorFilter(ColorFilter paramColorFilter)
   {
-    return this.b;
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.b = paramFloat;
-  }
-  
-  public float c()
-  {
-    return this.c;
-  }
-  
-  public void c(float paramFloat)
-  {
-    this.c = paramFloat;
-  }
-  
-  public float d()
-  {
-    return this.d;
-  }
-  
-  public void d(float paramFloat)
-  {
-    this.d = paramFloat;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    super.invalidateSelf();
   }
 }
 

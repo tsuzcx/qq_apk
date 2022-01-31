@@ -3,9 +3,9 @@ package com.tencent.qqmini.sdk.runtime.widget;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.widget.FrameLayout.LayoutParams;
-import bghn;
-import bgkd;
-import bhfx;
+import bglu;
+import bgok;
+import bhke;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import com.tencent.qqmini.sdk.runtime.widget.camera.MiniAppCamera;
 
@@ -19,10 +19,10 @@ public class CoverCameraView
     super(paramContext);
   }
   
-  public CoverCameraView(@NonNull Context paramContext, bghn parambghn)
+  public CoverCameraView(@NonNull Context paramContext, bglu parambglu)
   {
     super(paramContext);
-    this.a = new MiniAppCamera(paramContext, parambghn);
+    this.a = new MiniAppCamera(paramContext, parambglu);
     paramContext = new FrameLayout.LayoutParams(-1, -1);
     addView(this.a, paramContext);
   }
@@ -32,14 +32,14 @@ public class CoverCameraView
     this.a.f();
   }
   
-  public void a(bgkd parambgkd)
+  public void a(bgok parambgok)
   {
-    this.a.a(parambgkd);
+    this.a.a(parambgok);
   }
   
-  public void a(bgkd parambgkd, String paramString)
+  public void a(bgok parambgok, String paramString)
   {
-    this.a.a(parambgkd, paramString);
+    this.a.a(parambgok, paramString);
   }
   
   public void a(String paramString)
@@ -52,9 +52,9 @@ public class CoverCameraView
     this.a.a(paramBoolean, paramString);
   }
   
-  public void b(bgkd parambgkd)
+  public void b(bgok parambgok)
   {
-    this.a.b(parambgkd);
+    this.a.b(parambgok);
   }
   
   public void setCameraHeight(int paramInt)
@@ -68,9 +68,9 @@ public class CoverCameraView
     this.a.setCameraId(paramInt);
   }
   
-  public void setCameraSurfaceCallBack(bhfx parambhfx)
+  public void setCameraSurfaceCallBack(bhke parambhke)
   {
-    this.a.setCameraSurfaceCallBack(parambhfx);
+    this.a.setCameraSurfaceCallBack(parambhke);
   }
   
   public void setCameraWidth(int paramInt)

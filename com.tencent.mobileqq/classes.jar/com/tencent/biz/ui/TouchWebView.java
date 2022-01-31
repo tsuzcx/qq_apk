@@ -12,13 +12,13 @@ import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebViewCallbackClient;
 import java.util.ArrayList;
 import java.util.Iterator;
-import ytd;
+import yxs;
 
 public class TouchWebView
   extends CustomWebView
   implements WebViewCallbackClient
 {
-  protected ytd helper;
+  protected yxs helper;
   TouchWebView.OnOverScrollHandler l;
   GestureDetector mGesture;
   public float mLastYUp;
@@ -178,9 +178,9 @@ public class TouchWebView
     this.mScrollListenerForBiz = paramOnScrollChangedListener;
   }
   
-  public void setWebViewHelper(ytd paramytd)
+  public void setWebViewHelper(yxs paramyxs)
   {
-    this.helper = paramytd;
+    this.helper = paramyxs;
   }
 }
 

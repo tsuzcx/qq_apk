@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.activity;
 
 import android.os.Bundle;
-import awbw;
-import awbx;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Setting;
 
@@ -16,9 +16,9 @@ public class TroopAvatarWallPreviewActivity$2
     if (this.this$0.app == null) {
       return;
     }
-    awbw localawbw = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    Setting localSetting = (Setting)localawbw.a(Setting.class, "troop_" + this.this$0.a);
-    localawbw.a();
+    awgf localawgf = this.this$0.app.getEntityManagerFactory().createEntityManager();
+    Setting localSetting = (Setting)localawgf.a(Setting.class, "troop_" + this.this$0.a);
+    localawgf.a();
     this.this$0.runOnUiThread(new TroopAvatarWallPreviewActivity.2.1(this, localSetting));
   }
 }

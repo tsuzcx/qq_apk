@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import aljq;
+import alof;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -13,7 +13,7 @@ public class WeishiManager$2
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b(aljq.aQ, 1008);
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b(alof.aQ, 1008);
     if (localMessageRecord != null) {}
     for (localMessageRecord = oye.a(this.this$0, localMessageRecord, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);; localMessageRecord = this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long))
     {

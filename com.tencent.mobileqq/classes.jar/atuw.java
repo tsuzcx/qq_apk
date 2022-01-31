@@ -1,11 +1,12 @@
-public abstract interface atuw
-  extends atud
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class atuw
+  implements View.OnClickListener
 {
-  public abstract boolean a();
+  atuw(atus paramatus) {}
   
-  public abstract void setIsFullScreen(boolean paramBoolean);
-  
-  public abstract void setSurfaceCreatelistener(atuz paramatuz);
+  public void onClick(View paramView) {}
 }
 
 

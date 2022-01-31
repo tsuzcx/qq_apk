@@ -1,22 +1,18 @@
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afrp
-  extends aelt
+class afrp
+  extends afuf
 {
-  private long jdField_a_of_type_Long;
-  public ajta a;
-  public TextView a;
-  public ETTextView a;
-  private MixedMsgLinearLayout jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout;
-  public boolean a;
-  public TextView b;
-  public ETTextView b;
-  private String b = "0";
-  public int e = -1;
+  afrp(afpy paramafpy)
+  {
+    super(paramafpy, null);
+  }
   
-  public afrp(afrl paramafrl) {}
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afuu(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

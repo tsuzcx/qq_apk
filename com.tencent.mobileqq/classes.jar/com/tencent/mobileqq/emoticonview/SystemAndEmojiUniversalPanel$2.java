@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.widget.ImageButton;
-import apup;
+import apyy;
 
 class SystemAndEmojiUniversalPanel$2
   implements Runnable

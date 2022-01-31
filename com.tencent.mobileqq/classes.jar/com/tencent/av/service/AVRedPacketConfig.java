@@ -5,8 +5,8 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.Xml;
-import annu;
-import bdcb;
+import ansd;
+import bdgk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -119,7 +119,7 @@ public class AVRedPacketConfig
     Object localObject = "";
     try
     {
-      String str = bdcb.a(BaseApplicationImpl.getContext());
+      String str = bdgk.a(BaseApplicationImpl.getContext());
       localObject = str;
     }
     catch (Exception localException)
@@ -224,11 +224,11 @@ public class AVRedPacketConfig
       }
       else if (paramString.equalsIgnoreCase("activityBeginTime"))
       {
-        localAVRedPacketConfig.operatingEntranceBeginTime = annu.b(localXmlPullParser.nextText());
+        localAVRedPacketConfig.operatingEntranceBeginTime = ansd.b(localXmlPullParser.nextText());
       }
       else if (paramString.equalsIgnoreCase("activityEndTime"))
       {
-        localAVRedPacketConfig.operatingEntranceEndTime = annu.b(localXmlPullParser.nextText());
+        localAVRedPacketConfig.operatingEntranceEndTime = ansd.b(localXmlPullParser.nextText());
       }
       else if (paramString.equalsIgnoreCase("androidCommonResUrl"))
       {

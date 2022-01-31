@@ -1,104 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.MayknowRecommendManager.3.1;
+import com.tencent.mobileqq.app.MayknowRecommendManager.3.2;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-class alwg
-  extends BroadcastReceiver
+public class alwg
+  extends altm
 {
-  alwg(alwf paramalwf) {}
+  alwg(alwd paramalwd) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void onAddFriend(String paramString)
   {
-    paramContext = paramIntent.getAction();
     if (QLog.isColorLevel()) {
-      QLog.d("QQMapActivityProxy", 2, "QQMapActivityProxy-onReceive:" + hashCode() + ", action=" + paramContext);
+      QLog.d("MayknowRecommendManager", 2, "onAddFriend " + paramString);
     }
-    if (paramContext.equals("com.tencent.mobileqq.addLbsObserver")) {
-      if (alwf.a(this.a) != null) {
-        alwf.a(this.a).addObserver(alwf.a(this.a));
-      }
-    }
-    do
-    {
-      do
-      {
-        int i;
-        int j;
-        int k;
-        int m;
-        int n;
-        do
-        {
-          String str;
-          int i1;
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  if (!paramContext.equals("com.tencent.mobileqq.removeLbsObserver")) {
-                    break;
-                  }
-                } while (alwf.a(this.a) == null);
-                alwf.a(this.a).removeObserver(alwf.a(this.a));
-                return;
-                if (!paramContext.equals("com.tencent.mobileqq.getStreetViewUrl")) {
-                  break;
-                }
-              } while (alwf.a(this.a) == null);
-              ((alqx)alwf.a(this.a).a(3)).b((int)(paramIntent.getDoubleExtra("latitude", 0.0D) * 1000000.0D), (int)(paramIntent.getDoubleExtra("longitude", 0.0D) * 1000000.0D));
-              return;
-              if (!paramContext.equals("com.tencent.mobileqq.unregisterReceiver")) {
-                break;
-              }
-              try
-              {
-                alwf.a(this.a).unregisterReceiver(alwf.a(this.a));
-                return;
-              }
-              catch (Exception paramContext) {}
-            } while (!QLog.isColorLevel());
-            QLog.w("QQMapActivityProxy", 2, "mBroadcastReceiver throw an exception when receive UNREGISTER_RECEIVER : " + paramContext.toString());
-            return;
-            if (!paramContext.equals("com.tencent.mobileqq.getLbsShareSearch")) {
-              break;
-            }
-            i = paramIntent.getIntExtra("latitude", 0);
-            j = paramIntent.getIntExtra("longitude", 0);
-            k = paramIntent.getIntExtra("coordinate", 0);
-            paramContext = paramIntent.getStringExtra("keyword");
-            str = paramIntent.getStringExtra("category");
-            m = paramIntent.getIntExtra("page", 0);
-            n = paramIntent.getIntExtra("count", 0);
-            i1 = paramIntent.getIntExtra("requireMyLbs", 0);
-          } while (alwf.a(this.a) == null);
-          ((alqx)alwf.a(this.a).a(3)).a(i, j, k, paramContext, str, m, n, i1);
-          return;
-          if (!paramContext.equals("com.tencent.mobileqq.getLbsShareShop")) {
-            break;
-          }
-          i = paramIntent.getIntExtra("latitude", 0);
-          j = paramIntent.getIntExtra("longitude", 0);
-          k = paramIntent.getIntExtra("coordinate", 0);
-          m = paramIntent.getIntExtra("begin", 0);
-          n = paramIntent.getIntExtra("count", 0);
-        } while (alwf.a(this.a) == null);
-        ((alqx)alwf.a(this.a).a(3)).a(i, j, k, m, n);
-        return;
-      } while (!paramContext.equals("com.tencent.mobileqq.getShareShopDetail"));
-      paramContext = paramIntent.getStringExtra("shop_id");
-    } while ((TextUtils.isEmpty(paramContext)) || (alwf.a(this.a) == null));
-    paramIntent = new ArrayList();
-    paramIntent.add(paramContext);
-    ((alqx)alwf.a(this.a).a(3)).a(paramIntent);
+    ThreadManager.getSubThreadHandler().post(new MayknowRecommendManager.3.1(this, paramString));
+  }
+  
+  protected void onAddReqStatesChanged(boolean paramBoolean, String paramString)
+  {
+    ThreadManager.getSubThreadHandler().post(new MayknowRecommendManager.3.2(this, paramBoolean, paramString));
   }
 }
 

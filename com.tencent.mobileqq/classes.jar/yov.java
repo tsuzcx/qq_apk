@@ -1,52 +1,21 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 class yov
-  implements bcgo
+  implements View.OnClickListener
 {
-  yov(yom paramyom) {}
+  yov(you paramyou, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("requstTroopNotifyAd", 2, "result = " + paramJSONObject + ", requestCode = " + paramInt);
-    }
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = paramJSONObject.optJSONObject("data");
-      if (paramJSONObject != null)
-      {
-        paramJSONObject = paramJSONObject.optJSONObject("8020205751015455");
-        if (paramJSONObject != null)
-        {
-          paramJSONObject = paramJSONObject.optJSONArray("list");
-          if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
-          {
-            paramJSONObject = bbnq.a(paramJSONObject.optJSONObject(0));
-            if (paramJSONObject != null)
-            {
-              this.a.jdField_a_of_type_Bbnq = paramJSONObject;
-              this.a.d = true;
-              if (QLog.isColorLevel()) {
-                QLog.d("requstTroopNotifyAd", 2, "apurl = " + this.a.jdField_a_of_type_Bbnq.a + ", img = " + this.a.jdField_a_of_type_Bbnq.c + ", rl = " + this.a.jdField_a_of_type_Bbnq.b);
-              }
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result ready -----------");
-            }
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
-            return;
-          }
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result null -----------");
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+    ybt.a(this.jdField_a_of_type_You.a.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 0, ykt.a(you.a(this.jdField_a_of_type_You), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.width.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.height.get()));
+    zaj.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "blank_content_clk", 0, 0, new String[] { "", you.a(this.jdField_a_of_type_You) + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
   }
 }
 

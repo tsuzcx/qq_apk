@@ -1,8 +1,9 @@
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class aeqz
 {
-  public RelativeLayout a;
+  public ChatMessage a;
+  public StringBuilder b;
 }
 
 

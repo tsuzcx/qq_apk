@@ -34,7 +34,7 @@ public class mfp
   
   private void a(TextView paramTextView)
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379412) != null)
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379470) != null)
     {
       paramTextView.setVisibility(0);
       return;
@@ -51,7 +51,7 @@ public class mfp
     localObject[1] -= arrayOfInt1[1];
     float f1 = (arrayOfInt2[0] * 2 + this.jdField_a_of_type_AndroidViewView.getWidth() - i) / 2;
     int k = arrayOfInt2[1];
-    float f2 = aekt.a(0, this.jdField_a_of_type_AndroidViewView.getResources()) + (k - j);
+    float f2 = aepi.a(0, this.jdField_a_of_type_AndroidViewView.getResources()) + (k - j);
     QLog.d("qav_face_guide", 1, String.format("host(%s, %s), Parent(%s, %s), cur(%s, %s), dest(%s, %s), textview(%s, %s)", new Object[] { Integer.valueOf(localObject[0]), Integer.valueOf(localObject[1]), Integer.valueOf(arrayOfInt1[0]), Integer.valueOf(arrayOfInt1[1]), Integer.valueOf(arrayOfInt2[0]), Integer.valueOf(arrayOfInt2[1]), Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i), Integer.valueOf(j) }));
     localObject = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject).addRule(5);
@@ -104,7 +104,7 @@ public class mfp
     this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramTextView);
     j = (paramTextView[0] * 2 + this.jdField_a_of_type_AndroidViewView.getWidth() - j) / 2;
     int k = paramTextView[1];
-    int m = aekt.a(0, this.jdField_a_of_type_AndroidViewView.getResources());
+    int m = aepi.a(0, this.jdField_a_of_type_AndroidViewView.getResources());
     this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView, 0, j, k - i + m);
     QLog.d("qav_face_guide", 1, "showUserGuide_PopupWindow");
   }
@@ -118,7 +118,7 @@ public class mfp
     }
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
     {
-      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379412);
+      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379470);
       if (localTextView != null)
       {
         localTextView.setVisibility(8);
@@ -141,7 +141,7 @@ public class mfp
       } while (localObject == null);
       localTextView = null;
       if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379412);
+        localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379470);
       }
     } while (localTextView == null);
     int i = ((AVActivity)localObject).getWindow().getDecorView().getWidth();
@@ -158,8 +158,8 @@ public class mfp
     ((RelativeLayout)localObject).getLocationInWindow(arrayOfInt);
     int i1 = i - arrayOfInt[0] - ((RelativeLayout)localObject).getWidth();
     int i2 = j - arrayOfInt[1] - ((RelativeLayout)localObject).getHeight();
-    float f1 = i - m - this.jdField_a_of_type_AndroidViewView.getWidth() / 2 - k / 2 - i1 + aekt.a(0.0F, this.jdField_a_of_type_AndroidViewView.getResources());
-    float f2 = j - n - i2 - aekt.a(11.0F, this.jdField_a_of_type_AndroidViewView.getResources());
+    float f1 = i - m - this.jdField_a_of_type_AndroidViewView.getWidth() / 2 - k / 2 - i1 + aepi.a(0.0F, this.jdField_a_of_type_AndroidViewView.getResources());
+    float f2 = j - n - i2 - aepi.a(11.0F, this.jdField_a_of_type_AndroidViewView.getResources());
     localObject = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, (int)f1, (int)f2);
     localTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);

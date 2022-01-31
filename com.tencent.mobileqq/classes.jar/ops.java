@@ -26,13 +26,13 @@ public class ops
   public void onNetWifi2Mobile(String paramString)
   {
     QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2Mobile] pause download");
-    bfkb.a().a("101480433");
+    bfok.a().a("101480433");
   }
   
   public void onNetWifi2None()
   {
     QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2None] pause download");
-    bfkb.a().a("101480433");
+    bfok.a().a("101480433");
   }
 }
 

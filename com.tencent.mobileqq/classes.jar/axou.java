@@ -1,33 +1,18 @@
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
 
-public class axou
-  extends axow
+public final class axou
+  implements Parcelable.Creator<FilterCategory>
 {
-  public long a = 0L;
-  public long b;
-  
-  public axou()
+  public FilterCategory a(Parcel paramParcel)
   {
-    this.jdField_b_of_type_Long = -1L;
+    return new FilterCategory(paramParcel);
   }
   
-  public HashMap<String, String> a(String paramString)
+  public FilterCategory[] a(int paramInt)
   {
-    if ("ShortVideo.FullscreenPreview".equals(paramString))
-    {
-      paramString = new HashMap();
-      paramString.put("param_uinType", this.jdField_b_of_type_Int + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_duration", this.a + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_netType", this.h + "");
-      paramString.put("param_playTimeCost", this.jdField_b_of_type_Long + "");
-      return paramString;
-    }
-    return null;
+    return new FilterCategory[paramInt];
   }
 }
 

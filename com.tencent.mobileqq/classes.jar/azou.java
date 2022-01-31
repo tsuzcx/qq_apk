@@ -1,13 +1,17 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.text.TextUtils;
+import com.tencent.mobileqq.startup.step.RecordTracer;
+import com.tencent.trackrecordlib.core.IRecordCallback;
 
-class azou
-  implements FileFilter
+public class azou
+  implements IRecordCallback
 {
-  public boolean accept(File paramFile)
+  public azou(RecordTracer paramRecordTracer) {}
+  
+  public void onRecordEvent(String paramString)
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    if (!TextUtils.isEmpty(paramString)) {
+      bjrf.a().a(paramString);
+    }
   }
 }
 

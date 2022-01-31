@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 
 public class adoe
-  implements bdrd
+  extends alwx
 {
-  public adoe(QQSettingMe paramQQSettingMe) {}
+  public adoe(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (this.a.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "enterWordListener");
-      }
-      this.a.c(this.a.a.getAccount());
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, false);
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, true);
     }
   }
 }

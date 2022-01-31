@@ -1,18 +1,20 @@
-import android.view.animation.Animation;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
-public class ahrq
-  extends bhnr
+class ahrq
+  implements QQPermissionCallback
 {
-  public ahrq(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  ahrq(ahrp paramahrp, View paramView, BaseActivity paramBaseActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a(true);
-    EmoticonGroupStoreFragment.a(this.a, false);
-    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.a(this.a));
-    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.b(this.a));
+    bdgm.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    ahrp.a(this.jdField_a_of_type_Ahrp, this.jdField_a_of_type_AndroidViewView);
   }
 }
 

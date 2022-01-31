@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ackh
-  extends alwq
+public final class ackh
+  implements DialogInterface.OnClickListener
 {
-  public ackh(ChatSettingActivity paramChatSettingActivity) {}
+  public ackh(acln paramacln) {}
   
-  public void a(Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramObject != null) {
-      ((Integer)paramObject).intValue();
+    if (this.a != null) {
+      this.a.a();
     }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,35 +1,25 @@
-import android.content.Context;
-import android.graphics.Paint;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
 public class afah
-  implements afak
+  implements DialogInterface.OnClickListener
 {
-  private Paint a;
+  public afah(DoodlePanel paramDoodlePanel) {}
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    azmj.b(paramQQAppInterface, "dc00898", "", "", "0X8008C70", "0X8008C70", agwq.a(paramInt), 0, "", "", "", "");
-    paramString = asnx.a(paramString);
-    if ((paramString != null) && (paramString.length() > 20))
+    switch (paramInt)
     {
-      QQToast.a(paramContext, alpo.a(2131705840), 0).a();
-      azmj.b(paramQQAppInterface, "dc00898", "", "", "0X800932C", "0X800932C", 0, 0, "", "", "", "");
-      return false;
+    default: 
+      return;
+    case 0: 
+      azqs.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
+      return;
     }
-    return true;
-  }
-  
-  public boolean a(Context paramContext, String paramString, EditText paramEditText)
-  {
-    if (this.a == null) {
-      this.a = new Paint();
-    }
-    this.a.setTypeface(paramEditText.getTypeface());
-    this.a.setTextSize(paramEditText.getTextSize());
-    return (paramString.length() < 200) && (!paramString.contains("\n")) && ((int)this.a.measureText(paramString) + aekt.a(45.0F, paramContext.getResources()) + paramEditText.getPaddingLeft() < paramEditText.getMeasuredWidth());
+    azqs.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
+    DoodlePanel.a(this.a).b(1);
   }
 }
 

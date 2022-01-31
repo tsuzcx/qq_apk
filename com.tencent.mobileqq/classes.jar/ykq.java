@@ -1,33 +1,73 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_COMM.COMM.StCommonExt;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.Packet;
 
 public class ykq
-  extends FragmentPagerAdapter
+  extends ykm
 {
-  public ykq(RelativePersonalBottomView paramRelativePersonalBottomView, FragmentManager paramFragmentManager)
+  public void a(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    super(paramFragmentManager);
+    paramBundle.putByteArray("key_data", paramArrayOfByte);
+    notifyObserver(paramIntent, this.a, true, paramBundle, null);
   }
   
-  public int getCount()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return RelativePersonalBottomView.a(this.a).size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    if (paramInt < RelativePersonalBottomView.a(this.a).size()) {
-      return (Fragment)RelativePersonalBottomView.a(this.a).get(paramInt);
+    Object localObject3 = null;
+    Object localObject1 = null;
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
+    if (arrayOfByte != null) {}
+    for (Object localObject2 = new COMM.StCommonExt();; localObject2 = null) {
+      for (;;)
+      {
+        try
+        {
+          ((COMM.StCommonExt)localObject2).mergeFrom(arrayOfByte);
+          i = paramIntent.getIntExtra("key_index", -1);
+          arrayOfByte = paramIntent.getByteArrayExtra("key_request_feed_bytes");
+          if (arrayOfByte == null) {}
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+        {
+          try
+          {
+            localObject1 = new CertifiedAccountMeta.StFeed();
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+          {
+            int i;
+            localObject1 = localObject3;
+          }
+          try
+          {
+            ((CertifiedAccountMeta.StFeed)localObject1).mergeFrom(arrayOfByte);
+            localObject2 = new ykp((COMM.StCommonExt)localObject2, (CertifiedAccountMeta.StFeed)localObject1).a(paramIntent, i, a());
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = new byte[4];
+            }
+            paramPacket.setSSOCommand("CertifiedAccountSvc.certified_account_write.PublishFeed");
+            paramPacket.putSendData(bdpd.a((byte[])localObject1));
+            paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 30000L));
+            super.onSend(paramIntent, paramPacket);
+            return;
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException3)
+          {
+            break label166;
+          }
+          localInvalidProtocolBufferMicroException1 = localInvalidProtocolBufferMicroException1;
+          QLog.e("CertifiedAccountPublishFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException1));
+          continue;
+        }
+        label166:
+        QLog.e("CertifiedAccountPublishFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException2));
+      }
     }
-    return null;
-  }
-  
-  public int getItemPosition(Object paramObject)
-  {
-    return -2;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ajfw;
+import ajkl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
@@ -11,7 +11,7 @@ class Conversation$3
   
   public void run()
   {
-    ajfw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, 15);
+    ajkl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, 15);
   }
 }
 

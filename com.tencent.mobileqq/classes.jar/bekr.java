@@ -1,18 +1,15 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.webview.webso.WebSoService;
 
 public class bekr
-  extends ListView
 {
-  public bekr(DraggableGridView paramDraggableGridView, Context paramContext)
+  public static void a(String paramString)
   {
-    super(paramContext);
-  }
-  
-  public void setOverScrollMode(int paramInt)
-  {
-    super.setOverScrollMode(2);
+    long l = System.currentTimeMillis();
+    if ((belc.b(paramString)) && (!belc.d(paramString)) && (aovt.c().b > 0))
+    {
+      WebSoService.a().a(paramString, null, true);
+      belc.a("preload spned time = " + (System.currentTimeMillis() - l));
+    }
   }
 }
 

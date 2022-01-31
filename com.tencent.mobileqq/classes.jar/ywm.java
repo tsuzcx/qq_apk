@@ -1,81 +1,24 @@
-import android.os.Looper;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import java.lang.ref.WeakReference;
 
-public class ywm
+class ywm
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = -1;
-  protected ywl a;
-  private ywo jdField_a_of_type_Ywo = new ywo(this, Looper.getMainLooper());
+  ywm(ywj paramywj, TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Ywo.removeCallbacks(null);
-    this.jdField_a_of_type_Ywl = null;
-  }
-  
-  protected void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    Message localMessage = Message.obtain(this.jdField_a_of_type_Ywo);
-    localMessage.what = 7;
-    localMessage.obj = new ywn(paramLong);
-    localMessage.sendToTarget();
-  }
-  
-  public void a(ywl paramywl)
-  {
-    this.jdField_a_of_type_Ywl = paramywl;
-  }
-  
-  public void b()
-  {
-    Message localMessage = Message.obtain(this.jdField_a_of_type_Ywo);
-    localMessage.what = 4;
-    localMessage.sendToTarget();
-  }
-  
-  protected void b(long paramLong)
-  {
-    if (this.jdField_a_of_type_Ywl != null) {
-      this.jdField_a_of_type_Ywl.a(paramLong);
+    this.jdField_a_of_type_Ywj.c();
+    this.jdField_a_of_type_Ywj.b();
+    if (this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c)
+    {
+      this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.b();
+      return;
     }
-  }
-  
-  public void c()
-  {
-    Message localMessage = Message.obtain(this.jdField_a_of_type_Ywo);
-    localMessage.what = 2;
-    localMessage.sendToTarget();
-  }
-  
-  protected void c(long paramLong)
-  {
-    a(3);
-    if (this.jdField_a_of_type_Ywl != null) {
-      this.jdField_a_of_type_Ywl.a(paramLong);
-    }
-  }
-  
-  protected void d()
-  {
-    a(3);
-    if (this.jdField_a_of_type_Ywl != null) {}
-  }
-  
-  protected void e()
-  {
-    a(4);
-    if (this.jdField_a_of_type_Ywl != null) {}
-  }
-  
-  protected void f()
-  {
-    a(5);
-    if (this.jdField_a_of_type_Ywl != null) {}
+    ((BaseChatPie)this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b.get()).aW();
   }
 }
 

@@ -1,6 +1,6 @@
 package cooperation.qzone.networkedmodule;
 
-import azmz;
+import azri;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 
@@ -11,7 +11,7 @@ public final class QzoneModuleReport$1
   
   public void run()
   {
-    azmz.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, this.c);
+    azri.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, this.c);
   }
 }
 

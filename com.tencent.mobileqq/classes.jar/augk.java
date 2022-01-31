@@ -1,24 +1,16 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
-import com.tencent.qphone.base.util.QLog;
-
-public class augk
-  implements auid
+public abstract interface augk
 {
-  public augk(MultiAIOFragment paramMultiAIOFragment) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "onActionUpNotFling() called with: initialVelocity = [" + paramInt + "]");
-    }
-    MultiAIOFragment.a(this.a).setViewPagerBusy(true);
-    MultiAIOFragment.a(this.a).c(paramInt);
-    if (MultiAIOFragment.a(this.a).c() == 0) {
-      MultiAIOFragment.a(this.a).setViewPagerBusy(false);
-    }
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 

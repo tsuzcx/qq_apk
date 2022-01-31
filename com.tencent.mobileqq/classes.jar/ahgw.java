@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ahgw
-  implements DialogInterface.OnDismissListener
+  extends nfu
 {
-  public ahgw(NewFriendActivity paramNewFriendActivity) {}
+  public ahgw(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt, List<SearchProtocol.WordItem> paramList)
   {
-    this.a.a = null;
+    if (paramInt == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ClassificationSearchActivity", 2, "hot words size: " + paramList.size());
+      }
+      this.a.b = paramList;
+      ClassificationSearchActivity.a(this.a, true);
+    }
   }
 }
 

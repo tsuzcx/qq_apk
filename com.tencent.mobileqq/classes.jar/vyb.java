@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.PlaybackThread;
 
-class vyb
-  implements DialogInterface.OnDismissListener
+public class vyb
+  implements vxy
 {
-  vyb(vya paramvya, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public vyb(MediaPlayer paramMediaPlayer) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(vxw paramvxw)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread != null) && (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread.a()) && (!this.a.e) && (this.a.jdField_a_of_type_Vxu.b() < 2000000L) && (!this.a.jdField_a_of_type_Vxu.b()))
+    {
+      this.a.e = true;
+      this.a.jdField_a_of_type_Vyc.sendMessage(this.a.jdField_a_of_type_Vyc.obtainMessage(200, 701, 0));
     }
   }
 }

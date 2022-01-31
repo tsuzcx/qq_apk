@@ -1,19 +1,35 @@
-import android.support.annotation.NonNull;
+import android.content.Intent;
 
-class vzj
-  implements vzf
+public class vzj
+  extends vtg
 {
-  vzj(vzi paramvzi) {}
+  private vzi a;
   
-  public void a(@NonNull vzd paramvzd)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    paramvzd = paramvzd.a();
-    if (paramvzd != null) {
-      vzi.a(this.a, paramvzd);
+    if (this.a != null) {
+      this.a.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
-  public void b(@NonNull vzd paramvzd) {}
+  public void a(vzi paramvzi)
+  {
+    this.a = paramvzi;
+  }
+  
+  public void f()
+  {
+    if (this.a != null) {
+      this.a.c();
+    }
+  }
+  
+  public void g()
+  {
+    if (this.a != null) {
+      this.a.b();
+    }
+  }
 }
 
 

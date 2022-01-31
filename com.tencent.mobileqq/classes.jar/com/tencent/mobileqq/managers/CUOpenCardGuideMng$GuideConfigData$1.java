@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.managers;
 
-import atvi;
+import atzr;
 
 public class CUOpenCardGuideMng$GuideConfigData$1
   implements Runnable
 {
-  public CUOpenCardGuideMng$GuideConfigData$1(atvi paramatvi) {}
+  public CUOpenCardGuideMng$GuideConfigData$1(atzr paramatzr) {}
   
   public void run()
   {

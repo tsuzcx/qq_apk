@@ -1,6 +1,13 @@
-public abstract interface bkgw
+import android.content.Context;
+import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
+
+public final class bkgw
+  extends bjsl<QzoneHuangzuanVipIconShow, Context>
 {
-  public abstract void a(bkge parambkge, boolean paramBoolean, int paramInt, String paramString);
+  protected QzoneHuangzuanVipIconShow a(Context paramContext)
+  {
+    return new QzoneHuangzuanVipIconShow(paramContext);
+  }
 }
 
 

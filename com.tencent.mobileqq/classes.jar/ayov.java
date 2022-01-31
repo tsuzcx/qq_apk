@@ -1,16 +1,13 @@
-import java.util.List;
-
-class ayov
+public class ayov
 {
-  String jdField_a_of_type_JavaLangString;
-  List<ayjh> jdField_a_of_type_JavaUtilList;
+  public int a;
+  public CharSequence a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  public ayov(String paramString, List<ayjh> paramList)
-  {
-    this.jdField_a_of_type_JavaLangString = paramList;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
+  public ayov(ayot paramayot) {}
 }
 
 

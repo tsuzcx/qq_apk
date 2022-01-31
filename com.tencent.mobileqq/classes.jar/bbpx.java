@@ -1,17 +1,33 @@
-import android.content.Context;
-import android.widget.ScrollView;
+import android.util.SparseArray;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.2;
+import java.util.Iterator;
+import java.util.List;
 
-class bbpx
-  extends ScrollView
+public class bbpx
+  extends amdy
 {
-  bbpx(bbpw parambbpw, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public bbpx(TroopAioKeywordTipManager.2 param2) {}
   
-  public void setOverScrollMode(int paramInt)
+  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
   {
-    super.setOverScrollMode(2);
+    SparseArray localSparseArray;
+    if (paramBoolean)
+    {
+      localSparseArray = this.a.this$0.b;
+      if (paramList != null) {
+        try
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext())
+          {
+            TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)paramList.next();
+            this.a.this$0.b.put(localTroopAioKeywordTipInfo.ruleId, localTroopAioKeywordTipInfo);
+          }
+        }
+        finally {}
+      }
+    }
   }
 }
 

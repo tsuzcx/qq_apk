@@ -86,7 +86,7 @@ public class rpk
   
   public int a()
   {
-    if (!bjxj.i())
+    if (!bkbq.i())
     {
       QLog.d("DailyFeedsDiandianEntranceManager", 1, "getEntryMode | hide mode");
       return 0;

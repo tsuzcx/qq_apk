@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import amqa;
+import amup;
 
 public class ARVideoRecordUIControllerImpl$6
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$6(amqa paramamqa) {}
+  public ARVideoRecordUIControllerImpl$6(amup paramamup) {}
   
   public void run() {}
 }

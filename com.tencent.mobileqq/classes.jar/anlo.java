@@ -1,30 +1,19 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.7;
+import com.tencent.open.downloadnew.DownloadInfo;
 
 public class anlo
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public anlo(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  public anlo(ArkAppYYBDownloadModule.7 param7) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      AboutActivity.a(5);
-      if (!this.a.b().equals("close")) {
-        this.a.b();
-      }
-      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is opened and IDE debug is also open ,state=%s", new Object[] { AboutActivity.b() }));
-      ArkAppCenter.a(true);
-      return;
+    if (this.a.a != null) {
+      anlk.a(this.a.this$0, this.a.a, this.a.a.g);
     }
-    AboutActivity.a(0);
-    this.a.c();
-    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is closed and IDE debug is also closed,state=%s", new Object[] { AboutActivity.b() }));
-    ArkAppCenter.a(false);
+    paramDialogInterface.dismiss();
   }
 }
 

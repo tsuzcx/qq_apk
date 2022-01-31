@@ -1,15 +1,12 @@
-public class ulf
-  extends ugz
+public abstract interface ulf
 {
-  public String a;
-  public String b;
+  public abstract void a(uiz paramuiz);
   
-  public ulf(ulc paramulc) {}
+  public abstract void a(uiz paramuiz, int paramInt);
   
-  public String toString()
-  {
-    return "CompositeVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", errorInfo='" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '\'' + ", videoUrl='" + this.b + '\'' + '}';
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void e();
 }
 
 

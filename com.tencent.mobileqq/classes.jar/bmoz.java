@@ -1,16 +1,36 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import com.qq.taf.jce.HexUtil;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoActivity.1.1;
 
 public class bmoz
-  implements ValueAnimator.AnimatorUpdateListener
+  implements akcn
 {
-  public bmoz(DoodleEditView paramDoodleEditView, bmtx parambmtx) {}
+  public bmoz(EditWebVideoActivity paramEditWebVideoActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Bmtx.n = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.invalidate();
+    this.a.runOnUiThread(new EditWebVideoActivity.1.1(this));
+  }
+  
+  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  {
+    int i = ((bmpa)this.a.a).c;
+    EditWebVideoActivity.a(this.a, paramString1);
+    EditWebVideoActivity.a(this.a, paramArrayOfByte1);
+    EditWebVideoActivity.b(this.a, HexUtil.bytes2HexStr(EditWebVideoActivity.a(this.a)));
+    paramString1 = this.a;
+    if (i <= 0) {}
+    for (;;)
+    {
+      EditWebVideoActivity.a(paramString1, paramInt3);
+      EditWebVideoActivity.c(this.a, paramString2);
+      EditWebVideoActivity.b(this.a, paramArrayOfByte2);
+      EditWebVideoActivity.b(this.a, paramInt1);
+      EditWebVideoActivity.c(this.a, paramInt2);
+      EditWebVideoActivity.a(this.a).sendEmptyMessage(1002);
+      return;
+      paramInt3 = i;
+    }
   }
 }
 

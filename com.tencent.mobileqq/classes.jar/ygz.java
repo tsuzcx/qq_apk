@@ -1,15 +1,15 @@
-final class ygz
-  implements bhqf
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+public class ygz
 {
-  ygz(bhpy parambhpy, yhe paramyhe) {}
-  
-  public void onDismiss()
-  {
-    this.jdField_a_of_type_Bhpy.dismiss();
-    if (this.jdField_a_of_type_Yhe != null) {
-      this.jdField_a_of_type_Yhe.a(true);
-    }
-  }
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public LinearLayout b;
+  public TextView b;
+  public TextView c;
 }
 
 

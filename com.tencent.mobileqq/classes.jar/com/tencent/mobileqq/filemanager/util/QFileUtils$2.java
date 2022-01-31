@@ -2,17 +2,17 @@ package com.tencent.mobileqq.filemanager.util;
 
 import android.content.Context;
 import android.widget.TextView;
-import arnx;
-import aroo;
+import arsg;
+import arsx;
 
 public final class QFileUtils$2
   implements Runnable
 {
-  public QFileUtils$2(Context paramContext, TextView paramTextView, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, arnx paramarnx) {}
+  public QFileUtils$2(Context paramContext, TextView paramTextView, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, arsg paramarsg) {}
   
   public void run()
   {
-    aroo.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Arnx);
+    arsx.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Arsg);
   }
 }
 

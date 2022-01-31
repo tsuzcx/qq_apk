@@ -19,16 +19,16 @@ class tqx
     {
     default: 
       return;
-    case 2131373169: 
+    case 2131373204: 
       localtqy.a(tqz.a);
       return;
-    case 2131373165: 
+    case 2131373200: 
       localtqy.a(tqz.b);
       return;
-    case 2131373166: 
+    case 2131373201: 
       localtqy.a(tqz.c);
       return;
-    case 2131373168: 
+    case 2131373203: 
       localtqy.a(tqz.d);
       return;
     }

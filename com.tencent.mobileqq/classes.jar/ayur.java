@@ -1,44 +1,71 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-class ayur
-  extends WtloginListener
+final class ayur
+  implements Comparator<aynq>
 {
-  ayur(ayup paramayup, String paramString, WtloginHelper paramWtloginHelper, int paramInt, Context paramContext) {}
+  private final alto jdField_a_of_type_Alto;
+  private final aufv jdField_a_of_type_Aufv;
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  ayur(QQAppInterface paramQQAppInterface)
   {
-    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d(getClass().getSimpleName(), 2, "geta1 OnException " + paramErrMsg);
-    }
-    ayup.a = false;
-    this.jdField_a_of_type_Ayup.b.removeMessages(0);
+    this.jdField_a_of_type_Aufv = ((aufv)paramQQAppInterface.getManager(11));
+    this.jdField_a_of_type_Alto = ((alto)paramQQAppInterface.getManager(51));
   }
   
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  public int a(aynq paramaynq1, aynq paramaynq2)
   {
-    this.jdField_a_of_type_Ayup.b.removeMessages(0);
-    ayup.a = false;
-    if (paramInt2 != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "geta1 failed " + paramInt2);
+    int i = -1;
+    paramaynq1 = this.jdField_a_of_type_Aufv.c(((aymm)paramaynq1).e());
+    paramaynq2 = this.jdField_a_of_type_Aufv.c(((aymm)paramaynq2).e());
+    if ((paramaynq1 == null) || (paramaynq2 == null)) {
+      if ((paramaynq1 == null) && (paramaynq2 == null)) {
+        i = 0;
       }
-      return;
     }
-    paramArrayOfByte1 = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    paramArrayOfByte1.putExtras(this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo));
-    paramArrayOfByte1.setFlags(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte1);
+    boolean bool2;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return i;
+          } while (paramaynq2 == null);
+          return 1;
+          if ((paramaynq1.uin.equals("0")) && (paramaynq2.uin.equals("0"))) {
+            break;
+          }
+          if ((!paramaynq1.uin.equals("0")) && (!paramaynq2.uin.equals("0"))) {
+            return 0;
+          }
+        } while (!paramaynq2.uin.equals("0"));
+        return 1;
+        bool1 = this.jdField_a_of_type_Alto.a(paramaynq1.unifiedCode, true);
+        bool2 = this.jdField_a_of_type_Alto.a(paramaynq2.unifiedCode, true);
+        if ((!bool1) && (!bool2)) {
+          break;
+        }
+        if ((bool1) && (bool2)) {
+          return 0;
+        }
+      } while (bool2);
+      return 1;
+      boolean bool1 = TextUtils.isEmpty(paramaynq1.pinyinFirst);
+      bool2 = TextUtils.isEmpty(paramaynq2.pinyinFirst);
+      if ((!bool1) && (!bool2)) {
+        break;
+      }
+      if ((bool1) && (bool2)) {
+        return 0;
+      }
+    } while (bool2);
+    return 1;
+    return paramaynq1.pinyinFirst.toLowerCase().charAt(0) - paramaynq2.pinyinFirst.toLowerCase().charAt(0);
   }
 }
 

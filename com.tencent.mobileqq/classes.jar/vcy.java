@@ -1,85 +1,60 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFriendStoryFeedVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.MultiRecommendItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class vcy
-  extends unf
+final class vcy
+  implements urr<vgc, vhq>
 {
-  public String a;
-  public ArrayList<StoryVideoItem> a;
-  public boolean a;
-  public String c;
+  vcy(List paramList) {}
   
-  public vcy(qqstory_service.RspFriendStoryFeedVideoList paramRspFriendStoryFeedVideoList)
+  public void a(@NonNull vgc paramvgc, @Nullable vhq paramvhq, @NonNull ErrorMessage paramErrorMessage)
   {
-    super(paramRspFriendStoryFeedVideoList.result);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramRspFriendStoryFeedVideoList.next_cookie.get().toStringUtf8();
-    this.c = paramRspFriendStoryFeedVideoList.union_id.get().toStringUtf8();
-    if (paramRspFriendStoryFeedVideoList.is_end.get() == 1) {}
-    Object localObject1;
-    Object localObject2;
-    for (;;)
+    wxe.b("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond");
+    vcz localvcz = new vcz();
+    localvcz.jdField_a_of_type_JavaUtilList = new ArrayList(paramvgc.jdField_a_of_type_JavaUtilList);
+    localvcz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    if ((paramErrorMessage.isFail()) || (paramvhq == null))
     {
-      this.jdField_a_of_type_Boolean = bool;
-      if (!paramRspFriendStoryFeedVideoList.share_group_video_info_list.has()) {
-        break;
-      }
-      paramRspFriendStoryFeedVideoList = paramRspFriendStoryFeedVideoList.share_group_video_info_list.get().iterator();
-      while (paramRspFriendStoryFeedVideoList.hasNext())
-      {
-        localObject1 = (qqstory_struct.ShareGroupVideoInfo)paramRspFriendStoryFeedVideoList.next();
-        localObject2 = new StoryVideoItem();
-        ((StoryVideoItem)localObject2).convertFrom("Q.qqstory.net:GetFeedVideoListResponse", (qqstory_struct.ShareGroupVideoInfo)localObject1);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-      }
-      bool = false;
+      wxe.c("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond: get story player tag info failed, error:%s", paramErrorMessage);
+      umc.a().dispatch(localvcz);
+      return;
     }
-    if (paramRspFriendStoryFeedVideoList.multi_rcmd_feed_info_list.has())
+    wxe.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond, vid list:%s, response list:%s", this.jdField_a_of_type_JavaUtilList, paramvhq.jdField_a_of_type_JavaUtilList);
+    paramErrorMessage = (uvx)uwa.a(5);
+    paramvgc = paramvgc.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramvgc.hasNext())
     {
-      localObject1 = (usd)urr.a(2);
-      paramRspFriendStoryFeedVideoList = paramRspFriendStoryFeedVideoList.multi_rcmd_feed_info_list.get().iterator();
-      while (paramRspFriendStoryFeedVideoList.hasNext())
+      Object localObject = (String)paramvgc.next();
+      StoryVideoItem localStoryVideoItem = paramErrorMessage.a((String)localObject);
+      localObject = vcx.a((String)localObject, paramvhq.jdField_a_of_type_JavaUtilList);
+      if (localStoryVideoItem != null)
       {
-        localObject2 = (qqstory_struct.MultiRecommendItem)paramRspFriendStoryFeedVideoList.next();
-        if (((qqstory_struct.MultiRecommendItem)localObject2).feed_video_info_list.has())
+        if (localObject == null)
         {
-          String str = ((qqstory_struct.MultiRecommendItem)localObject2).feed_id.get().toStringUtf8();
-          Iterator localIterator = ((qqstory_struct.MultiRecommendItem)localObject2).feed_video_info_list.get().iterator();
-          while (localIterator.hasNext())
-          {
-            Object localObject3 = (qqstory_struct.FeedVideoInfo)localIterator.next();
-            StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-            localStoryVideoItem.convertFrom("Q.qqstory.net:GetFeedVideoListResponse", (qqstory_struct.FeedVideoInfo)localObject3);
-            localStoryVideoItem.mAttachedFeedId = str;
-            this.jdField_a_of_type_JavaUtilArrayList.add(localStoryVideoItem);
-            localObject3 = new QQUserUIItem();
-            ((QQUserUIItem)localObject3).convertFrom(((qqstory_struct.MultiRecommendItem)localObject2).user);
-            localObject3 = ((usd)localObject1).a((QQUserUIItem)localObject3);
-            localStoryVideoItem.mOwnerUid = ((QQUserUIItem)localObject3).uid;
-            localStoryVideoItem.mOwnerName = ((QQUserUIItem)localObject3).getDisplayName();
+          localStoryVideoItem.mTagInfoBase = null;
+          localStoryVideoItem.mCompInfoBase = null;
+          localStoryVideoItem.mOALinkInfoJson = null;
+        }
+        for (localStoryVideoItem.mOALinkInfo = null;; localStoryVideoItem.mOALinkInfo = uxp.a(localStoryVideoItem.mOALinkInfoJson))
+        {
+          if (localStoryVideoItem.mTagInfoBase != null) {
+            localStoryVideoItem.mTagInfoBase.b = System.currentTimeMillis();
           }
+          paramErrorMessage.a(localStoryVideoItem);
+          break;
+          localStoryVideoItem.mTagInfoBase = ((vgd)localObject).jdField_a_of_type_Xof;
+          localStoryVideoItem.mCompInfoBase = ((vgd)localObject).jdField_a_of_type_Xnx;
+          localStoryVideoItem.mOALinkInfoJson = ((vgd)localObject).b;
         }
       }
     }
-    paramRspFriendStoryFeedVideoList = paramRspFriendStoryFeedVideoList.feed_video_info_list.get().iterator();
-    while (paramRspFriendStoryFeedVideoList.hasNext())
-    {
-      localObject1 = (qqstory_struct.FeedVideoInfo)paramRspFriendStoryFeedVideoList.next();
-      localObject2 = new StoryVideoItem();
-      ((StoryVideoItem)localObject2).convertFrom("Q.qqstory.net:GetFeedVideoListResponse", (qqstory_struct.FeedVideoInfo)localObject1);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-    }
+    localvcz.b = new ArrayList(paramvhq.jdField_a_of_type_JavaUtilList);
+    umc.a().dispatch(localvcz);
   }
 }
 

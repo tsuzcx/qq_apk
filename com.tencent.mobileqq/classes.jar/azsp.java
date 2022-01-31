@@ -1,428 +1,465 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.app.PendingIntent;
+import android.location.Criteria;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.ThumbWidthHeightDP;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.os.Looper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import java.net.URL;
-import org.xmlpull.v1.XmlSerializer;
+import java.lang.reflect.Member;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class azsp
-  extends azqj
+  extends azsl
+  implements HookMethodCallback
 {
-  public String S;
-  public String T;
-  public String U;
-  public MessageForPic a;
-  public StructMsgForImageShare a;
-  public URL a;
-  public long c;
-  public long d;
-  public long e;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
+  private int jdField_a_of_type_Int = 3;
+  private long jdField_a_of_type_Long = 900000L;
+  private LocationManager jdField_a_of_type_AndroidLocationLocationManager = (LocationManager)BaseApplicationImpl.getApplication().getSystemService("location");
+  private azsz jdField_a_of_type_Azsz = new azsz(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+  private String jdField_a_of_type_JavaLangString;
+  private Map<String, HashSet<Long>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private int jdField_b_of_type_Int = 10;
+  private long jdField_b_of_type_Long = 18000000L;
+  private azsz jdField_b_of_type_Azsz = new azsz(this.jdField_b_of_type_Int, this.jdField_b_of_type_Long);
+  private Map<String, HashSet<Long>> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private Map<String, HashSet<Long>> c;
+  private Map<String, HashSet<Long>> d;
   
-  public azsp()
+  public azsp(azsk paramazsk, String paramString)
   {
-    this.jdField_a_of_type_Int = 14;
-    this.jdField_a_of_type_JavaLangString = "image";
-  }
-  
-  public azsp(String paramString)
-  {
-    this();
-    this.S = paramString;
-  }
-  
-  private void a(View paramView)
-  {
-    int i1 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.width;
-    int i2 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.height;
-    int i3 = aekt.a(this.k, paramView.getResources());
-    int i4 = aekt.a(this.l, paramView.getResources());
-    int i5 = aekt.a(this.m, paramView.getResources());
-    int i6 = aekt.a(this.n, paramView.getResources());
-    int i;
-    if (i1 < i2)
+    super(paramazsk, paramString);
+    this.jdField_c_of_type_JavaUtilMap = new HashMap();
+    this.jdField_d_of_type_JavaUtilMap = new HashMap();
+    if ((this.jdField_a_of_type_Array2dOfJavaLangString.length >= 1) && (this.jdField_a_of_type_Array2dOfJavaLangString[0].length >= 2))
     {
-      if (i1 >= i3) {
-        break label363;
-      }
-      i = (int)(i2 * i3 * 1.0F / i1);
+      this.jdField_a_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][0]).intValue();
+      this.jdField_a_of_type_Long = (Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][1]).intValue() * 60 * 1000L);
     }
-    for (int j = i3;; j = i1)
+    if ((this.jdField_a_of_type_Array2dOfJavaLangString.length >= 2) && (this.jdField_a_of_type_Array2dOfJavaLangString[1].length >= 2))
     {
-      if (i2 > i6)
-      {
-        j = (int)(i1 * i6 * 1.0F / i2);
-        i = i6;
-      }
-      label361:
-      for (;;)
-      {
-        ViewGroup.LayoutParams localLayoutParams2 = paramView.getLayoutParams();
-        ViewGroup.LayoutParams localLayoutParams1 = localLayoutParams2;
-        if (localLayoutParams2 == null) {
-          localLayoutParams1 = new ViewGroup.LayoutParams(j, i);
-        }
-        localLayoutParams1.width = j;
-        localLayoutParams1.height = i;
-        if (QLog.isColorLevel()) {
-          QLog.d("StructMsg", 2, new Object[] { "wClip=", Integer.valueOf(i1), ", hClip=", Integer.valueOf(i2), ", dstW=", Integer.valueOf(j), " dstH=", Integer.valueOf(i), ", thumbMaxHeightPx=", Integer.valueOf(i6), ", thumbMinHeightPx=", Integer.valueOf(i4), "，thumbMaxWidthPx=", Integer.valueOf(i5), ", thumbMinWidthPx=", Integer.valueOf(i3) });
-        }
-        paramView.setLayoutParams(localLayoutParams1);
-        return;
-        if (i2 < i4)
-        {
-          j = (int)(i1 * i4 * 1.0F / i2);
-          i = i4;
-        }
-        for (;;)
-        {
-          if (i1 <= i5) {
-            break label361;
-          }
-          i = (int)(i2 * i5 * 1.0F / i1);
-          j = i5;
-          break;
-          i = i2;
-          j = i1;
-        }
-      }
-      label363:
-      i = i2;
+      this.jdField_b_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[1][0]).intValue();
+      this.jdField_b_of_type_Long = (Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[1][1]).intValue() * 60 * 1000L);
     }
   }
   
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  private int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null)
+    try
     {
-      paramBundle = baul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, 65537);
-      if ((this.jdField_a_of_type_JavaNetURL != null) && (this.jdField_a_of_type_JavaNetURL.equals(paramBundle))) {}
+      boolean bool = this.jdField_a_of_type_AndroidLocationLocationManager.isProviderEnabled("gps");
+      if (bool) {
+        return 1;
+      }
+      return 0;
     }
-    for (paramBundle = afsf.a(paramContext, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);; paramBundle = null)
-    {
-      Object localObject = paramBundle;
-      if (paramBundle == null)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("StructMsg", 2, "StructMsgItemImage.createView.mImageShareMsg == null nudnik trick");
-          }
-          paramView = new View(paramContext);
-          return paramView;
-        }
-        localObject = new MessageForPic();
-        ((MessageForPic)localObject).path = this.S;
-        ((MessageForPic)localObject).uuid = this.T;
-        ((MessageForPic)localObject).md5 = this.U;
-        ((MessageForPic)localObject).istroop = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uinType;
-        ((MessageForPic)localObject).msgtype = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mMsgType;
-        ((MessageForPic)localObject).versionCode = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.messageVersion;
-        ((MessageForPic)localObject).uniseq = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mUniseq;
-        ((MessageForPic)localObject).issend = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mIsSend;
-        ((MessageForPic)localObject).selfuin = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.currentAccountUin;
-        ((MessageForPic)localObject).frienduin = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uin;
-        ((MessageForPic)localObject).groupFileID = this.c;
-        ((MessageForPic)localObject).busiType = 1030;
-        if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mIsSend != 1) {
-          break label477;
-        }
-      }
-      label477:
-      for (paramBundle = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.currentAccountUin;; paramBundle = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uin)
-      {
-        ((MessageForPic)localObject).senderuin = paramBundle;
-        ((MessageForPic)localObject).size = this.d;
-        ((MessageForPic)localObject).time = this.e;
-        ((MessageForPic)localObject).subVersion = 5;
-        ((MessageForPic)localObject).fileSizeFlag = 0;
-        ((MessageForPic)localObject).thumbHeight = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.thumbHeight;
-        ((MessageForPic)localObject).thumbWidth = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.thumbWidth;
-        ((MessageForPic)localObject).rawMsgUrl = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.rawUrl;
-        ((MessageForPic)localObject).bigMsgUrl = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.bigUrl;
-        ((MessageForPic)localObject).thumbMsgUrl = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.thumbUrl;
-        if (a()) {
-          ((MessageForPic)localObject).thumbWidthHeightDP = new ThumbWidthHeightDP(this.k, this.l, this.m, this.n, true);
-        }
-        paramBundle = bame.a(baul.a((awfj)localObject, 1, null).toString());
-        if ((paramBundle != null) && (GifDrawable.isGifFile(paramBundle))) {
-          ((MessageForPic)localObject).imageType = 2000;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = ((MessageForPic)localObject);
-        localObject = afsf.a(paramContext, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
-        this.jdField_a_of_type_JavaNetURL = ((URLDrawable)localObject).getURL();
-        if ((paramView == null) || (!(paramView instanceof BubbleImageView))) {
-          break label488;
-        }
-        paramContext = (BubbleImageView)paramView;
-        paramContext.d(false);
-        paramContext.setShowEdge(true);
-        paramContext.setImageDrawable((Drawable)localObject);
-        paramView = paramContext;
-        if (!a()) {
-          break;
-        }
-        a(paramContext);
-        return paramContext;
-      }
-      label488:
-      paramView = new BubbleImageView(paramContext);
-      paramView.setId(2131368113);
-      paramView.setAdjustViewBounds(true);
-      if (this.m != 0)
-      {
-        i = aekt.a(this.m, paramContext.getResources());
-        label530:
-        paramView.setMaxWidth(i);
-        if (this.n == 0) {
-          break label642;
-        }
-      }
-      label642:
-      for (int i = aekt.a(this.n, paramContext.getResources());; i = baul.a(false))
-      {
-        paramView.setMaxHeight(i);
-        if (this.k != 0) {
-          paramView.setMinimumWidth(aekt.a(this.k, paramContext.getResources()));
-        }
-        if (this.l != 0) {
-          paramView.setMinimumHeight(aekt.a(this.l, paramContext.getResources()));
-        }
-        paramView.setAdjustViewBounds(true);
-        paramView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        paramView.setRadius(12.0F);
-        paramContext = paramView;
-        break;
-        i = baul.a(false);
-        break label530;
-      }
-    }
-  }
-  
-  public MessageForPic a()
-  {
-    MessageForPic localMessageForPic = new MessageForPic();
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null)
+    catch (Throwable localThrowable)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("StructMsg", 2, "StructMsgItemImage.generateMessageForPic.mImageShareMsg == null nudnik trick");
-      }
-      return localMessageForPic;
-    }
-    localMessageForPic.path = this.S;
-    localMessageForPic.uuid = this.T;
-    localMessageForPic.md5 = this.U;
-    localMessageForPic.istroop = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uinType;
-    localMessageForPic.msgtype = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mMsgType;
-    localMessageForPic.versionCode = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.messageVersion;
-    localMessageForPic.uniseq = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mUniseq;
-    localMessageForPic.issend = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mIsSend;
-    localMessageForPic.selfuin = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.currentAccountUin;
-    localMessageForPic.frienduin = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uin;
-    localMessageForPic.groupFileID = this.c;
-    localMessageForPic.busiType = 1030;
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mIsSend == 1) {}
-    for (String str = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.currentAccountUin;; str = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uin)
-    {
-      localMessageForPic.senderuin = str;
-      localMessageForPic.size = this.d;
-      localMessageForPic.time = this.e;
-      localMessageForPic.subVersion = 5;
-      localMessageForPic.fileSizeFlag = 0;
-      localMessageForPic.thumbHeight = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.thumbHeight;
-      localMessageForPic.thumbWidth = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.thumbWidth;
-      return localMessageForPic;
-    }
-  }
-  
-  public String a()
-  {
-    return "Image";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.S = paramObjectInput.readUTF();
-    this.T = paramObjectInput.readUTF();
-    this.U = paramObjectInput.readUTF();
-    this.c = paramObjectInput.readLong();
-    this.d = paramObjectInput.readLong();
-    this.e = paramObjectInput.readLong();
-    if (this.jdField_a_of_type_Int > 13)
-    {
-      this.k = paramObjectInput.readInt();
-      this.l = paramObjectInput.readInt();
-      this.m = paramObjectInput.readInt();
-      this.n = paramObjectInput.readInt();
-    }
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.S == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.T != null) {
-        break label147;
-      }
-      str = "";
-      label34:
-      paramObjectOutput.writeUTF(str);
-      if (this.U != null) {
-        break label155;
+        QLog.d("BatteryStats", 2, "", localThrowable);
       }
     }
-    label147:
-    label155:
-    for (String str = "";; str = this.U)
+    return -1;
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    int i = paramBundle.getInt("key_action");
+    if ((i == 1) || (i == 2))
     {
-      paramObjectOutput.writeUTF(str);
-      paramObjectOutput.writeLong(this.c);
-      paramObjectOutput.writeLong(this.d);
-      paramObjectOutput.writeLong(this.e);
-      if (this.jdField_a_of_type_Int > 13)
+      if (QLog.isColorLevel()) {
+        QLog.d("BatteryStats", 2, new Object[] { "GPS.onOtherProcReport:action=", i + ", type=", paramBundle.getString("key_type"), ", stack=", paramBundle.getString("key_stack") });
+      }
+      if ((azsk.a()) && (this.jdField_a_of_type_Boolean))
       {
-        paramObjectOutput.writeInt(this.k);
-        paramObjectOutput.writeInt(this.l);
-        paramObjectOutput.writeInt(this.m);
-        paramObjectOutput.writeInt(this.n);
-      }
-      return;
-      str = this.S;
-      break;
-      str = this.T;
-      break label34;
-    }
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "image");
-    if (this.T == null)
-    {
-      str = "";
-      paramXmlSerializer.attribute(null, "uuid", str);
-      if (this.U != null) {
-        break label206;
-      }
-      str = "";
-      label44:
-      paramXmlSerializer.attribute(null, "md5", str);
-      paramXmlSerializer.attribute(null, "GroupFiledid", String.valueOf(this.c));
-      paramXmlSerializer.attribute(null, "filesize", String.valueOf(this.d));
-      if (this.S != null) {
-        break label214;
-      }
-    }
-    label206:
-    label214:
-    for (String str = "";; str = this.S)
-    {
-      paramXmlSerializer.attribute(null, "local_path", str);
-      paramXmlSerializer.attribute(null, "minWidth", Integer.toString(this.k));
-      paramXmlSerializer.attribute(null, "minHeight", Integer.toString(this.l));
-      paramXmlSerializer.attribute(null, "maxWidth", Integer.toString(this.m));
-      paramXmlSerializer.attribute(null, "maxHeight", Integer.toString(this.n));
-      paramXmlSerializer.endTag(null, "image");
-      return;
-      str = this.T;
-      break;
-      str = this.U;
-      break label44;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.k != 0) && (this.l != 0) && (this.m != 0) && (this.n != 0);
-  }
-  
-  public boolean a(azsa paramazsa)
-  {
-    if (paramazsa == null) {}
-    for (;;)
-    {
-      return true;
-      String str4 = paramazsa.a("uuid");
-      String str3 = paramazsa.a("md5");
-      String str6 = paramazsa.a("md5");
-      String str5 = paramazsa.a("filesize");
-      String str2 = paramazsa.a("local_path");
-      String str1 = str4;
-      if (str4 == null) {
-        str1 = "";
-      }
-      this.T = str1;
-      if (str3 == null)
-      {
-        str1 = "";
-        label76:
-        this.U = str1;
-        if (str2 != null) {
-          break label193;
-        }
-        str1 = "";
-        this.S = str1;
-        this.k = aekt.a(paramazsa, "minWidth");
-        this.l = aekt.a(paramazsa, "minHeight");
-        this.m = aekt.a(paramazsa, "maxWidth");
-        this.n = aekt.a(paramazsa, "maxHeight");
-        if (str6 == null) {}
-      }
-      try
-      {
-        this.c = Long.parseLong(str6);
-        if (str5 == null) {
-          continue;
-        }
+        Map localMap2 = this.jdField_a_of_type_JavaUtilMap;
+        if (i == 1) {}
         try
         {
-          this.d = Long.parseLong(str5);
-          return true;
+          paramBundle = paramBundle.getString("key_type");
+          label139:
+          HashSet localHashSet2;
+          HashSet localHashSet1;
+          if (this.jdField_b_of_type_Boolean)
+          {
+            if (i == 1)
+            {
+              localMap1 = this.jdField_a_of_type_JavaUtilMap;
+              localHashSet2 = (HashSet)localMap1.get(paramBundle);
+              localHashSet1 = localHashSet2;
+              if (localHashSet2 == null)
+              {
+                localHashSet1 = new HashSet();
+                localMap1.put(paramBundle, localHashSet1);
+              }
+              localHashSet1.add(Long.valueOf(System.currentTimeMillis()));
+            }
+          }
+          else if ((this.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean)) {
+            if (i != 1) {
+              break label289;
+            }
+          }
+          label289:
+          for (Map localMap1 = this.jdField_c_of_type_JavaUtilMap;; localMap1 = this.jdField_d_of_type_JavaUtilMap)
+          {
+            localHashSet2 = (HashSet)localMap1.get(paramBundle);
+            localHashSet1 = localHashSet2;
+            if (localHashSet2 == null)
+            {
+              localHashSet1 = new HashSet();
+              localMap1.put(paramBundle, localHashSet1);
+            }
+            localHashSet1.add(Long.valueOf(System.currentTimeMillis()));
+            return;
+            paramBundle = paramBundle.getString("key_stack");
+            break;
+            localMap1 = this.jdField_b_of_type_JavaUtilMap;
+            break label139;
+          }
+          return;
         }
-        catch (NumberFormatException paramazsa) {}
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("StructMsg", 2, paramazsa.getMessage());
-        return true;
-        str1 = str3;
-        break label76;
-        label193:
-        str1 = str2;
+        finally {}
       }
-      catch (NumberFormatException paramazsa)
+    }
+  }
+  
+  public void a(String paramString, Object[] paramArrayOfObject)
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    String str3;
+    do
+    {
+      return;
+      str3 = azsk.a().toString();
+      if (QLog.isColorLevel()) {
+        azsk.a(this.jdField_b_of_type_Azsk, "onGPSScan: " + str3);
+      }
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        this.jdField_a_of_type_JavaLangString = SosoInterface.class.getPackage().getName();
+      }
+    } while ((("requestLocationUpdates".equals(paramString)) || ("requestSingleUpdate".equals(paramString))) && (str3.contains(this.jdField_a_of_type_JavaLangString)));
+    String str4 = "location|" + a() + "|";
+    if ("requestLocationUpdates".equals(paramString)) {
+      if (paramArrayOfObject.length == 5) {
+        if ((paramArrayOfObject[2] instanceof Criteria))
+        {
+          azsk.a(this.jdField_b_of_type_Azsk, new String[] { str4, "0", "|", "0", "|", "{", paramArrayOfObject[0].toString(), "#", paramArrayOfObject[1].toString(), "#", "[", this.jdField_a_of_type_AndroidLocationLocationManager.getBestProvider((Criteria)paramArrayOfObject[2], true), ",", String.valueOf(((Criteria)paramArrayOfObject[2]).getAccuracy()), ",", String.valueOf(((Criteria)paramArrayOfObject[2]).getPowerRequirement()), "]", "}", "|", str3 });
+          label321:
+          paramString = new Bundle();
+          paramString.putInt("key_action", 2);
+          paramString.putString("key_stack", str3);
+          if (azsk.a()) {
+            break label1088;
+          }
+          azsf.a().a(paramString);
+        }
+      }
+    }
+    for (;;)
+    {
+      paramString = this.jdField_a_of_type_Azsz.a(str3);
+      if ((paramString != null) && (paramString.size() > 0))
       {
+        azsk.a(this.jdField_b_of_type_Azsk, 6, 0, 0, "GPS request update is too frequently(" + this.jdField_a_of_type_Int + " in " + this.jdField_a_of_type_Long / 60L / 1000L + " seconds", azsz.a(paramString));
+        this.jdField_a_of_type_Azsz.a();
+      }
+      paramString = this.jdField_b_of_type_Azsz.a(str3);
+      if ((paramString == null) || (paramString.size() <= 0)) {
+        break;
+      }
+      azsk.a(this.jdField_b_of_type_Azsk, 6, 0, 0, "Wifi scan is too frequently(" + this.jdField_b_of_type_Int + " in " + this.jdField_b_of_type_Long / 60L / 1000L + " seconds", azsz.a(paramString));
+      this.jdField_b_of_type_Azsz.a();
+      return;
+      if ((paramArrayOfObject[0] instanceof String))
+      {
+        azsk.a(this.jdField_b_of_type_Azsk, new String[] { str4, "0", "|", "1", "|", "{", paramArrayOfObject[0].toString(), "#", paramArrayOfObject[1].toString(), "#", paramArrayOfObject[2].toString(), "}", "|", str3 });
+        break label321;
+      }
+      azsk.a(this.jdField_b_of_type_Azsk, new String[] { str4, "0", "|", "-1", "|", "{}", "|", str3 });
+      break label321;
+      if (paramArrayOfObject.length != 6) {
+        break label321;
+      }
+      if ((paramArrayOfObject[2] instanceof Criteria))
+      {
+        azsk.a(this.jdField_b_of_type_Azsk, new String[] { str4, "0", "|", "2", "|", "{", paramArrayOfObject[0].toString(), "#", paramArrayOfObject[1].toString(), "#", "[", this.jdField_a_of_type_AndroidLocationLocationManager.getBestProvider((Criteria)paramArrayOfObject[2], true), ",", String.valueOf(((Criteria)paramArrayOfObject[2]).getAccuracy()), ",", String.valueOf(((Criteria)paramArrayOfObject[2]).getPowerRequirement()), "]", "}", "|", str3 });
+        break label321;
+      }
+      if ((paramArrayOfObject[0] instanceof String))
+      {
+        azsk.a(this.jdField_b_of_type_Azsk, new String[] { str4, "0", "|", "3", "|", "{", paramArrayOfObject[0].toString(), "#", paramArrayOfObject[1].toString(), "#", paramArrayOfObject[2].toString(), "}", "|", str3 });
+        break label321;
+      }
+      azsk.a(this.jdField_b_of_type_Azsk, new String[] { str4, "0", "|", "-1", "|", "{}", "|", str3 });
+      break label321;
+      label1088:
+      a(paramString);
+      continue;
+      if ("requestSingleUpdate".equals(paramString))
+      {
+        if ((paramArrayOfObject[0] instanceof String)) {
+          azsk.a(this.jdField_b_of_type_Azsk, new String[] { str4, "1", "|", "0", "|", "{", paramArrayOfObject[0].toString(), "}", "|", str3 });
+        }
         for (;;)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("StructMsg", 2, paramazsa.getMessage());
+          paramString = new Bundle();
+          paramString.putInt("key_action", 2);
+          paramString.putString("key_stack", str3);
+          if (azsk.a()) {
+            break label1437;
+          }
+          azsf.a().a(paramString);
+          break;
+          if ((paramArrayOfObject[0] instanceof Criteria)) {
+            azsk.a(this.jdField_b_of_type_Azsk, new String[] { str4, "1", "|", "1", "|", "{", "[", this.jdField_a_of_type_AndroidLocationLocationManager.getBestProvider((Criteria)paramArrayOfObject[0], true), ",", String.valueOf(((Criteria)paramArrayOfObject[0]).getAccuracy()), ",", String.valueOf(((Criteria)paramArrayOfObject[0]).getPowerRequirement()), "]", "}", "|", str3 });
+          } else {
+            azsk.a(this.jdField_b_of_type_Azsk, new String[] { str4, "1", "|", "-1", "|", "{}", "|", str3 });
           }
         }
+        label1437:
+        a(paramString);
       }
+      else if ("requestSoso".equals(paramString))
+      {
+        label1465:
+        azsk localazsk;
+        String str5;
+        String str6;
+        String str1;
+        if (paramArrayOfObject[2] == null)
+        {
+          paramString = "none";
+          localazsk = this.jdField_b_of_type_Azsk;
+          str5 = paramArrayOfObject[0].toString();
+          str6 = paramArrayOfObject[1].toString();
+          if (paramArrayOfObject[3] != null) {
+            break label1684;
+          }
+          str1 = "-1";
+          label1497:
+          if (paramArrayOfObject[4] != null) {
+            break label1694;
+          }
+        }
+        label1684:
+        label1694:
+        for (String str2 = "-1";; str2 = paramArrayOfObject[4].toString())
+        {
+          azsk.a(localazsk, new String[] { str4, "2", "|", "0", "|", "{", str5, "#", str6, "#", paramString, "#", str1, "#", str2, "#", paramArrayOfObject[5].toString(), "}", "|", str3 });
+          paramArrayOfObject = new Bundle();
+          paramArrayOfObject.putInt("key_action", 1);
+          paramArrayOfObject.putString("key_type", paramString);
+          if (azsk.a()) {
+            break label1705;
+          }
+          azsf.a().a(paramArrayOfObject);
+          break;
+          paramString = paramArrayOfObject[2].toString();
+          break label1465;
+          str1 = paramArrayOfObject[3].toString();
+          break label1497;
+        }
+        label1705:
+        a(paramArrayOfObject);
+      }
+    }
+  }
+  
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam) {}
+  
+  public void b()
+  {
+    super.b();
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      this.jdField_c_of_type_JavaUtilMap.clear();
+      this.jdField_d_of_type_JavaUtilMap.clear();
+      return;
+    }
+  }
+  
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam)
+  {
+    a(paramMethodHookParam.method.getName(), paramMethodHookParam.args);
+  }
+  
+  public void d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      try
+      {
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { String.class, Long.TYPE, Float.TYPE, LocationListener.class, this });
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { String.class, Long.TYPE, Float.TYPE, LocationListener.class, Looper.class, this });
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { String.class, Long.TYPE, Float.TYPE, PendingIntent.class, this });
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { Long.TYPE, Float.TYPE, Criteria.class, LocationListener.class, Looper.class, this });
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { Long.TYPE, Float.TYPE, Criteria.class, PendingIntent.class, this });
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestSingleUpdate", new Object[] { String.class, PendingIntent.class, this });
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestSingleUpdate", new Object[] { String.class, LocationListener.class, Looper.class, this });
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestSingleUpdate", new Object[] { Criteria.class, LocationListener.class, Looper.class, this });
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestSingleUpdate", new Object[] { Criteria.class, PendingIntent.class, this });
+        return;
+      }
+      catch (Throwable localThrowable) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("BatteryStats", 2, "", localThrowable);
+  }
+  
+  public void e()
+  {
+    super.e();
+    if ((this.jdField_a_of_type_Boolean) && (azsk.a())) {}
+    label518:
+    for (;;)
+    {
+      String str;
+      Object localObject2;
+      Object localObject3;
+      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      {
+        Iterator localIterator1 = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+        int i = 0;
+        if (localIterator1.hasNext())
+        {
+          i = ((HashSet)localIterator1.next()).size() + i;
+          continue;
+        }
+        localIterator1 = this.jdField_b_of_type_JavaUtilMap.values().iterator();
+        int j = 0;
+        if (localIterator1.hasNext())
+        {
+          j = ((HashSet)localIterator1.next()).size() + j;
+          continue;
+        }
+        azsk.b(this.jdField_b_of_type_Azsk, new String[] { "fg30SdkCount", "|", String.valueOf(i) });
+        if (azsk.b(this.jdField_b_of_type_Azsk)) {
+          azsk.b(this.jdField_b_of_type_Azsk, new String[] { "fg30SysCount", "|", String.valueOf(j) });
+        }
+        localIterator1 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+        if (localIterator1.hasNext())
+        {
+          str = (String)localIterator1.next();
+          localObject2 = (HashSet)this.jdField_a_of_type_JavaUtilMap.get(str);
+          localObject3 = azsh.a();
+          Iterator localIterator3 = ((HashSet)localObject2).iterator();
+          i = 0;
+          if (localIterator3.hasNext())
+          {
+            ((StringBuilder)localObject3).append((Long)localIterator3.next());
+            i += 1;
+            if (i >= ((HashSet)localObject2).size()) {
+              break label518;
+            }
+            ((StringBuilder)localObject3).append("#");
+            break label518;
+          }
+          azsk.b(this.jdField_b_of_type_Azsk, new String[] { "fg30SdkDetail", "|", str, "|", ((StringBuilder)localObject3).toString() });
+        }
+      }
+      Iterator localIterator2 = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+      while (localIterator2.hasNext())
+      {
+        str = (String)localIterator2.next();
+        localObject3 = (HashSet)this.jdField_b_of_type_JavaUtilMap.get(str);
+        localObject2 = azsh.a();
+        localObject3 = ((HashSet)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext()) {
+          ((StringBuilder)localObject2).append((Long)((Iterator)localObject3).next()).append("|");
+        }
+        azsk.b(this.jdField_b_of_type_Azsk, new String[] { "fg30SysDetail", "|", str, "|", ((StringBuilder)localObject2).toString() });
+      }
+      this.jdField_a_of_type_JavaUtilMap.clear();
+      this.jdField_b_of_type_JavaUtilMap.clear();
+      return;
+    }
+  }
+  
+  public void f()
+  {
+    super.f();
+    if ((this.jdField_a_of_type_Boolean) && (azsk.a())) {}
+    label518:
+    for (;;)
+    {
+      String str;
+      Object localObject2;
+      Object localObject3;
+      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      {
+        Iterator localIterator1 = this.jdField_c_of_type_JavaUtilMap.values().iterator();
+        int i = 0;
+        if (localIterator1.hasNext())
+        {
+          i = ((HashSet)localIterator1.next()).size() + i;
+          continue;
+        }
+        localIterator1 = this.jdField_d_of_type_JavaUtilMap.values().iterator();
+        int j = 0;
+        if (localIterator1.hasNext())
+        {
+          j = ((HashSet)localIterator1.next()).size() + j;
+          continue;
+        }
+        azsk.b(this.jdField_b_of_type_Azsk, new String[] { "bg5SdkCount", "|", String.valueOf(i) });
+        if (azsk.b(this.jdField_b_of_type_Azsk)) {
+          azsk.b(this.jdField_b_of_type_Azsk, new String[] { "bg5SysCount", "|", String.valueOf(j) });
+        }
+        localIterator1 = this.jdField_c_of_type_JavaUtilMap.keySet().iterator();
+        if (localIterator1.hasNext())
+        {
+          str = (String)localIterator1.next();
+          localObject2 = (HashSet)this.jdField_c_of_type_JavaUtilMap.get(str);
+          localObject3 = azsh.a();
+          Iterator localIterator3 = ((HashSet)localObject2).iterator();
+          i = 0;
+          if (localIterator3.hasNext())
+          {
+            ((StringBuilder)localObject3).append((Long)localIterator3.next());
+            i += 1;
+            if (i >= ((HashSet)localObject2).size()) {
+              break label518;
+            }
+            ((StringBuilder)localObject3).append("#");
+            break label518;
+          }
+          azsk.b(this.jdField_b_of_type_Azsk, new String[] { "bg5SdkDetail", "|", str, "|", ((StringBuilder)localObject3).toString() });
+        }
+      }
+      Iterator localIterator2 = this.jdField_d_of_type_JavaUtilMap.keySet().iterator();
+      while (localIterator2.hasNext())
+      {
+        str = (String)localIterator2.next();
+        localObject3 = (HashSet)this.jdField_d_of_type_JavaUtilMap.get(str);
+        localObject2 = azsh.a();
+        localObject3 = ((HashSet)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext()) {
+          ((StringBuilder)localObject2).append((Long)((Iterator)localObject3).next()).append("|");
+        }
+        azsk.b(this.jdField_b_of_type_Azsk, new String[] { "bg5SysDetail", "|", str, "|", ((StringBuilder)localObject2).toString() });
+      }
+      this.jdField_c_of_type_JavaUtilMap.clear();
+      this.jdField_d_of_type_JavaUtilMap.clear();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azsp
  * JD-Core Version:    0.7.0.1
  */

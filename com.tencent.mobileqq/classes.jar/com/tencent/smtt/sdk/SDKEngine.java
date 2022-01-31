@@ -36,7 +36,7 @@ class SDKEngine
   {
     // Byte code:
     //   0: iconst_0
-    //   1: istore_2
+    //   1: istore_1
     //   2: new 64	java/io/File
     //   5: dup
     //   6: aload_0
@@ -55,7 +55,7 @@ class SDKEngine
     //   34: dup
     //   35: invokespecial 74	java/lang/NullPointerException:<init>	()V
     //   38: athrow
-    //   39: iload_2
+    //   39: iload_1
     //   40: ireturn
     //   41: astore 4
     //   43: aload 4
@@ -89,19 +89,19 @@ class SDKEngine
     //   103: invokevirtual 99	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   106: invokestatic 105	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
     //   109: invokevirtual 108	java/lang/Integer:intValue	()I
-    //   112: istore_1
-    //   113: iload_1
-    //   114: istore_2
+    //   112: istore_2
+    //   113: iload_2
+    //   114: istore_1
     //   115: aload 5
     //   117: ifnull -78 -> 39
     //   120: aload 5
     //   122: invokevirtual 111	java/io/BufferedInputStream:close	()V
-    //   125: iload_1
+    //   125: iload_2
     //   126: ireturn
     //   127: astore 4
     //   129: aload 4
     //   131: invokevirtual 77	java/io/IOException:printStackTrace	()V
-    //   134: iload_1
+    //   134: iload_2
     //   135: ireturn
     //   136: astore 6
     //   138: aconst_null
@@ -141,8 +141,8 @@ class SDKEngine
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	209	0	this	SDKEngine
-    //   112	23	1	i	int
-    //   1	114	2	j	int
+    //   1	114	1	i	int
+    //   112	23	2	j	int
     //   22	2	3	bool	boolean
     //   15	3	4	localFile	File
     //   41	18	4	localIOException1	IOException

@@ -1,11 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ahgi
+public class ahgi
+  implements alqc
 {
-  public abstract void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  public ahgi(AddContactsView paramAddContactsView) {}
   
-  public abstract boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onGetConfig | isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
+    }
+    if ((paramInt == 2) && (paramBoolean))
+    {
+      this.a.d = true;
+      this.a.f();
+    }
+  }
 }
 
 

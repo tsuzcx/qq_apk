@@ -1,12 +1,32 @@
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import java.util.concurrent.atomic.AtomicInteger;
+
 class aifd
-  implements bdjb
+  implements aiey
 {
-  aifd(aifb paramaifb) {}
+  aifd(aiez paramaiez) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a()
   {
-    aifb.a(this.a, bdiz.a(paramInt));
-    this.a.a.height = aifb.a(this.a);
+    this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
+  }
+  
+  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
+  {
+    boolean bool = true;
+    Object localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    ((Message)localObject).obj = paramRedTypeInfo;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+    localObject = oxp.a();
+    if (paramRedTypeInfo != null) {}
+    for (;;)
+    {
+      ((oxp)localObject).b(bool);
+      return;
+      bool = false;
+    }
   }
 }
 

@@ -1,29 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ObjectAnimator;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
 
 public class bexl
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public bexl(AuthorityAccountView paramAuthorityAccountView, String paramString) {}
+  public bexl(FloatingScreenContainer paramFloatingScreenContainer) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) instanceof AuthorityActivity)) {
-      ((AuthorityActivity)AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
+    FloatingScreenContainer.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    FloatingScreenContainer.a(this.a).removeAllListeners();
+    if (FloatingScreenContainer.a(this.a) != null) {
+      FloatingScreenContainer.a(this.a).b();
     }
-    for (;;)
-    {
-      if (AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) != null) {
-        AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView).dismiss();
-      }
-      return;
-      if ((AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) instanceof QuickLoginAuthorityActivity)) {
-        ((QuickLoginAuthorityActivity)AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
-      }
+    FloatingScreenContainer.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    FloatingScreenContainer.a(this.a, true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (FloatingScreenContainer.a(this.a) != null) {
+      FloatingScreenContainer.a(this.a).a();
     }
+    FloatingScreenContainer.a(this.a, true);
   }
 }
 

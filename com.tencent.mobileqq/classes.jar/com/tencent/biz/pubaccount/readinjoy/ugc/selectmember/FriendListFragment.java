@@ -57,17 +57,17 @@ public class FriendListFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2131560107, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView = ((PinnedFooterExpandableListView)paramViewGroup.findViewById(2131365860));
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560108, this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView, false);
-    paramLayoutInflater.findViewById(2131363701).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    paramViewGroup = paramLayoutInflater.inflate(2131560106, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView = ((PinnedFooterExpandableListView)paramViewGroup.findViewById(2131365862));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560107, this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView, false);
+    paramLayoutInflater.findViewById(2131363703).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.addHeaderView(paramLayoutInflater);
     this.jdField_a_of_type_Qvp = a();
     this.jdField_a_of_type_Qvp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList);
     this.jdField_a_of_type_Qvp.a(this.b);
     this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setAdapter(this.jdField_a_of_type_Qvp);
-    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setSelector(2131167138);
-    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setGroupIndicator(getResources().getDrawable(2130839301));
+    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setSelector(2131167140);
+    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setGroupIndicator(getResources().getDrawable(2130839302));
     this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setOnScrollListener(this.jdField_a_of_type_Qvp);
     this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setOnGroupExpandListener(new qvg(this));
     this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setOnGroupCollapseListener(new qvh(this));

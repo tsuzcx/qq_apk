@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import aevb;
-import aevu;
-import aevy;
-import aevz;
-import aewl;
+import aezq;
+import afaj;
+import afan;
+import afao;
+import afba;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -17,7 +17,7 @@ import java.util.List;
 public class DoodleView
   extends View
 {
-  private aevz jdField_a_of_type_Aevz;
+  private afao jdField_a_of_type_Afao;
   private LineLayer jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer;
   
   public DoodleView(Context paramContext, AttributeSet paramAttributeSet)
@@ -29,7 +29,7 @@ public class DoodleView
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer = new LineLayer(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a(new aevy(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a(new afan(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a(LineLayer.a);
     super.requestLayout();
   }
@@ -48,18 +48,18 @@ public class DoodleView
     return 0;
   }
   
-  public aevb a(boolean paramBoolean)
+  public aezq a(boolean paramBoolean)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer == null) {
       return null;
     }
-    aevb localaevb = new aevb();
-    localaevb.a(a(), paramBoolean, true);
-    localaevb.a().a(a());
-    return localaevb;
+    aezq localaezq = new aezq();
+    localaezq.a(a(), paramBoolean, true);
+    localaezq.a().a(a());
+    return localaezq;
   }
   
-  public aevu a()
+  public afaj a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer == null) {
       return null;
@@ -91,7 +91,7 @@ public class DoodleView
     return null;
   }
   
-  public List<aewl> a()
+  public List<afba> a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer != null) {
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a();
@@ -104,12 +104,12 @@ public class DoodleView
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a();
     }
-    this.jdField_a_of_type_Aevz = null;
+    this.jdField_a_of_type_Afao = null;
   }
   
-  public void a(aevz paramaevz)
+  public void a(afao paramafao)
   {
-    this.jdField_a_of_type_Aevz = paramaevz;
+    this.jdField_a_of_type_Afao = paramafao;
     c();
   }
   

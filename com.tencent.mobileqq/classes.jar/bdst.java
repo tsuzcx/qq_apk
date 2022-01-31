@@ -1,24 +1,49 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
-import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper;
-import java.lang.ref.WeakReference;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.vas.FriendCloneSettingFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bdst
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+  extends amcd
 {
-  private final WeakReference<WallpaperHelper> a;
+  public bdst(FriendCloneSettingFragment paramFriendCloneSettingFragment) {}
   
-  public bdst(WallpaperHelper paramWallpaperHelper)
+  public void d(boolean paramBoolean, Object paramObject)
   {
-    this.a = new WeakReference(paramWallpaperHelper);
-  }
-  
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
-  {
-    paramString = (WallpaperHelper)this.a.get();
-    if (paramString != null) {
-      WallpaperHelper.a(paramString, VipWallpaperService.a(paramSharedPreferences), true);
+    int i;
+    if ((paramBoolean) && ((paramObject instanceof ArrayList)))
+    {
+      paramObject = (ArrayList)paramObject;
+      i = ((Integer)paramObject.get(1)).intValue();
+      if (i == 257) {
+        if (((Boolean)paramObject.get(2)).booleanValue())
+        {
+          this.a.a(1);
+          this.a.jdField_a_of_type_Int = 1;
+        }
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      if (this.a.jdField_a_of_type_Beub != null) {
+        this.a.jdField_a_of_type_Beub.b();
+      }
+      return;
+      this.a.a(0);
+      this.a.jdField_a_of_type_Int = 0;
+      continue;
+      if (i == 258)
+      {
+        this.a.jdField_a_of_type_Int = this.a.b;
+        continue;
+        this.a.a(this.a.jdField_a_of_type_Int);
+        if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) {
+          QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, alud.a(2131705258), 0).a();
+        }
+        QLog.e("IphoneTitleBarFragment", 0, "onFriendCloneAuth: failed. ");
+      }
     }
   }
 }

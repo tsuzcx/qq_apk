@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-class acij
-  implements View.OnClickListener
+public class acij
+  implements DialogInterface.OnClickListener
 {
-  acij(acid paramacid, MessageRecord paramMessageRecord) {}
+  public acij(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Acid.a.a, zen.a(paramView));
+    paramDialogInterface.dismiss();
   }
 }
 

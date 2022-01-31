@@ -1,63 +1,42 @@
-import android.content.Context;
-import android.net.Uri;
-import android.view.Surface;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public abstract interface vtz
+public class vtz
+  extends vua
+  implements View.OnClickListener
 {
-  public abstract int a();
+  private long a;
   
-  public abstract void a(float paramFloat1, float paramFloat2);
+  public vtz(@NonNull ViewGroup paramViewGroup)
+  {
+    super(paramViewGroup);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+  }
   
-  public abstract void a(int paramInt);
+  protected View a(ViewGroup paramViewGroup)
+  {
+    return paramViewGroup;
+  }
   
-  public abstract void a(Context paramContext, Uri paramUri, Map<String, String> paramMap);
-  
-  public abstract void a(Surface paramSurface);
-  
-  public abstract void a(vua paramvua);
-  
-  public abstract void a(vub paramvub);
-  
-  public abstract void a(vuc paramvuc);
-  
-  public abstract void a(vud paramvud);
-  
-  public abstract void a(vue paramvue);
-  
-  public abstract void a(vuf paramvuf);
-  
-  public abstract void a(vuh paramvuh);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract int d();
-  
-  public abstract void d();
-  
-  public abstract int e();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Vtt == null) {}
+    while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
+      return;
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramView = this.jdField_a_of_type_Vtt.a().getVideoLinkInfo();
+    if ((paramView != null) && (paramView.a()) && (paramView.a.a()))
+    {
+      vod.a(a(), paramView.a.c, paramView.a.b, 1010);
+      wxj.a("play_video", "clk_tips", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_Vtt.a });
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
 }
 
 

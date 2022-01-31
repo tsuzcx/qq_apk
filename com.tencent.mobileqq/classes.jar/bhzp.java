@@ -1,11 +1,28 @@
-import android.view.animation.Interpolator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.PinnedHeadAndFootExpandableListView;
 
-final class bhzp
-  implements Interpolator
+public class bhzp
+  implements View.OnTouchListener
 {
-  public float getInterpolation(float paramFloat)
+  public bhzp(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return paramFloat * paramFloat * paramFloat * paramFloat * paramFloat;
+    if (paramMotionEvent.getAction() == 1)
+    {
+      long l = this.a.a(this.a.getFirstVisiblePosition());
+      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
+      {
+        int i = ExpandableListView.c(l);
+        if ((this.a.jdField_a_of_type_Bhwx == null) || (!this.a.jdField_a_of_type_Bhwx.a(this.a, paramView, i, this.a.jdField_a_of_type_Bhzr.getGroupId(i)))) {
+          this.a.b(i);
+        }
+      }
+    }
+    return true;
   }
 }
 

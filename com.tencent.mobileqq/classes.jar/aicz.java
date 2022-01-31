@@ -1,14 +1,16 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-class aicz
-  implements View.OnClickListener
+public class aicz
+  implements View.OnTouchListener
 {
-  aicz(aicw paramaicw) {}
+  public aicz(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.dismiss();
+    return true;
   }
 }
 

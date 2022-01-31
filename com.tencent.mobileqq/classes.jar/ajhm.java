@@ -1,11 +1,17 @@
-import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ajhm
-  extends ajhi
+class ajhm
+  implements View.OnClickListener
 {
-  public ajhm(Context paramContext)
+  ajhm(ajgb paramajgb) {}
+  
+  public void onClick(View paramView)
   {
-    this.a = "";
+    this.a.a(22, 0);
+    this.a.a(-1, null);
+    azqs.b(ajgb.a(this.a).app, "CliOper", "", "", "QQWIFI", "clk_buleClose", 0, 0, "", "", "", "");
   }
 }
 

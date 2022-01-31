@@ -1,145 +1,78 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aopk
-  implements aoga<String>, aoov
+  extends aokh<aopj>
 {
-  static boolean jdField_a_of_type_Boolean = true;
-  static boolean b = true;
-  private long jdField_a_of_type_Long = 20971520L;
-  private ExcitingTransferDownloadConfig jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig = new ExcitingTransferDownloadConfig();
-  public String a;
-  private boolean c;
-  
-  public aopk()
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    return 587;
   }
   
-  private void a()
+  @NonNull
+  public aopj a(int paramInt)
   {
-    this.jdField_a_of_type_Long = 20971520L;
-    this.c = false;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig = new ExcitingTransferDownloadConfig();
+    return new aopj();
   }
   
-  private void a(JSONObject paramJSONObject)
+  @Nullable
+  public aopj a(aoko[] paramArrayOfaoko)
   {
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoListPanelConfProcessor", 2, "onParsed " + paramArrayOfaoko.length);
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaoko != null)
     {
-      try
-      {
-        this.c = paramJSONObject.getBoolean("enableaqq");
-        paramJSONObject = paramJSONObject.getJSONObject("config");
-        if (paramJSONObject == null) {
-          break label221;
-        }
-        if (paramJSONObject.has("oneslicesize"))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.mSliceSize = paramJSONObject.getLong("oneslicesize");
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uMaxParrallelSlice = paramJSONObject.getInt("maxparrallelslice");
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uMaxWaitingSlice = paramJSONObject.getInt("maxtotalwaitingslice");
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uNotifyIntervals = paramJSONObject.getInt("notifyintervals");
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uSpeedDuration = paramJSONObject.getInt("speedduration");
-          this.jdField_a_of_type_Long = paramJSONObject.getInt("limitedsize");
-          if (paramJSONObject.has("slicenum"))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uSliceNum = paramJSONObject.getInt("slicenum");
-            QLog.i("QFileExcitingGroupDownloadConfigBean<FileAssistant>", 1, "parse Exciting-Group-Download config: enable:" + this.c + " LimitedSize:" + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.toString());
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.mSliceSize = 524288L;
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uSliceNum = 10;
+      localObject1 = localObject2;
+      if (paramArrayOfaoko.length > 0) {
+        localObject1 = aopj.a(paramArrayOfaoko);
       }
-      catch (JSONException paramJSONObject)
-      {
-        QLog.e("QFileExcitingGroupDownloadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramJSONObject));
-        return;
-      }
-      continue;
-      label221:
-      this.jdField_a_of_type_Long = 20971520L;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig = new ExcitingTransferDownloadConfig();
+    }
+    return localObject1;
+  }
+  
+  public Class<aopj> a()
+  {
+    return aopj.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoListPanelConfProcessor", 2, "onReqFailed " + paramInt);
     }
   }
   
-  public long a()
+  public void a(aopj paramaopj)
   {
-    return this.jdField_a_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoListPanelConfProcessor", 2, "onUpdate " + paramaopj.toString());
+    }
+    PhotoListPanel.setShowModeToSp(paramaopj.a);
   }
   
-  public ExcitingTransferDownloadConfig a()
+  public int b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig;
+    return 0;
   }
   
-  public void a(String paramString)
+  public boolean b()
   {
-    int k = 0;
-    this.jdField_a_of_type_JavaLangString = paramString.toLowerCase();
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      QLog.w("QFileExcitingGroupDownloadConfigBean<FileAssistant>", 1, "configContent is empty, use default value");
-      a();
-      return;
-    }
-    try
-    {
-      paramString = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      if (paramString.length() == 0)
-      {
-        QLog.w("QFileExcitingGroupDownloadConfigBean<FileAssistant>", 1, "configContent is empty json, use default value");
-        a();
-        return;
-      }
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("QFileExcitingGroupDownloadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramString));
-      return;
-    }
-    JSONArray localJSONArray = paramString.names();
-    int i = 0;
-    for (;;)
-    {
-      int j = k;
-      if (i < localJSONArray.length())
-      {
-        Object localObject = localJSONArray.getString(i).trim();
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          localObject = paramString.optJSONObject((String)localObject).getJSONObject("download");
-          if (localObject != null)
-          {
-            a((JSONObject)localObject);
-            j = 1;
-          }
-        }
-      }
-      else
-      {
-        if (j != 0) {
-          break;
-        }
-        QLog.w("QFileExcitingGroupDownloadConfigBean<FileAssistant>", 1, "configContent no Exciting-Group-Download config, use default value");
-        a();
-        return;
-      }
-      i += 1;
-    }
+    return false;
   }
   
-  public boolean a()
+  public boolean c()
   {
-    return this.c;
+    return true;
+  }
+  
+  public boolean d()
+  {
+    return true;
   }
 }
 

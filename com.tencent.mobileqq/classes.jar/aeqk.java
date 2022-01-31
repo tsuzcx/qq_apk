@@ -1,213 +1,87 @@
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import android.content.Context;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import com.tencent.widget.ListView;
-import java.util.List;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aeqk
-  extends aepy
+public final class aeqk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private aepy jdField_a_of_type_Aepy;
-  private aeqy jdField_a_of_type_Aeqy;
-  private aerh jdField_a_of_type_Aerh;
-  
-  public aeqk(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super(paramInt, paramAIOAnimationConatiner, paramListView);
-  }
-  
-  private boolean b(Object... paramVarArgs)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramVarArgs.length == 4)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner != null)
-      {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentWidgetListView != null)
-        {
-          if (this.jdField_a_of_type_Aepy == null) {
-            this.jdField_a_of_type_Aepy = new ansu(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
-          }
-          bool1 = this.jdField_a_of_type_Aepy.a(paramVarArgs);
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  private boolean c(Object... paramVarArgs)
-  {
-    boolean bool1 = ((Boolean)paramVarArgs[4]).booleanValue();
-    if ((this.jdField_a_of_type_Aeqy != null) && ((paramVarArgs[5] != null) || (bool1))) {
-      this.jdField_a_of_type_Aeqy.a(true);
-    }
-    boolean bool2 = false;
-    bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentWidgetListView != null)
-      {
-        this.jdField_a_of_type_Aeqy = new aeqy(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
-        bool1 = this.jdField_a_of_type_Aeqy.a(paramVarArgs);
-      }
-    }
-    return bool1;
-  }
-  
-  private boolean d(Object... paramVarArgs)
-  {
-    Pair localPair = null;
-    if (paramVarArgs.length == 3) {
-      localPair = (Pair)paramVarArgs[2];
-    }
-    if ((localPair == null) || (localPair.first == null)) {
-      return false;
-    }
-    if (((ansg)localPair.first).a.e == 1)
-    {
-      if (this.jdField_a_of_type_Aerh != null) {
-        this.jdField_a_of_type_Aerh.e();
-      }
-      this.jdField_a_of_type_Aerh = new aerh(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
-      return this.jdField_a_of_type_Aerh.a(paramVarArgs);
-    }
-    return false;
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aeqy != null) {
-      this.jdField_a_of_type_Aeqy.a();
-    }
-  }
-  
-  protected void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Aerh != null) {
-      this.jdField_a_of_type_Aerh.a(paramInt);
-    }
-    if (this.jdField_a_of_type_Aepy != null) {
-      this.jdField_a_of_type_Aepy.a(paramInt);
-    }
-    if (this.jdField_a_of_type_Aeqy != null) {
-      this.jdField_a_of_type_Aeqy.a(paramInt);
-    }
-  }
-  
-  protected boolean a(int paramInt)
-  {
-    return true;
-  }
-  
-  protected boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    boolean bool1 = false;
-    if (this.jdField_a_of_type_Aepy != null) {}
-    for (boolean bool2 = this.jdField_a_of_type_Aepy.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);; bool2 = false)
-    {
-      if (this.jdField_a_of_type_Aerh != null) {
-        if ((!this.jdField_a_of_type_Aerh.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4)) && (!bool2)) {}
-      }
-      for (bool1 = true;; bool1 = bool2)
-      {
-        if (this.jdField_a_of_type_Aeqy != null) {
-          bool1 = this.jdField_a_of_type_Aeqy.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-        }
-        return bool1;
-      }
-    }
-  }
-  
-  protected boolean a(Object... paramVarArgs)
-  {
-    if (paramVarArgs.length >= 2) {}
+    Object localObject1 = (ChatMessage)paramCompoundButton.getTag();
+    if (localObject1 == null) {}
     for (;;)
     {
-      int i;
-      try
+      return;
+      if ((localObject1 instanceof MessageForPtt))
       {
-        long l = ((Long)paramVarArgs[1]).longValue();
-        if ((this.jdField_a_of_type_ComTencentWidgetListView != null) && (this.jdField_a_of_type_ComTencentWidgetListView.getAdapter() != null) && (l > 0L))
+        localObject2 = MediaPlayerManager.a(BaseActivity.sTopActivity.app).a();
+        if ((localObject2 == localObject1) || (((localObject2 instanceof MessageForPtt)) && (((ChatMessage)localObject2).uniseq == ((ChatMessage)localObject1).uniseq))) {
+          MediaPlayerManager.a(BaseActivity.sTopActivity.app).c(false);
+        }
+      }
+      Object localObject2 = AIOLongShotHelper.a();
+      if ((localObject2 != null) && (((AIOLongShotHelper)localObject2).a()))
+      {
+        if ((paramBoolean != ((AIOLongShotHelper)localObject2).a((ChatMessage)localObject1)) && (BaseChatItemLayout.a != null)) {
+          BaseChatItemLayout.a.a((ChatMessage)localObject1, paramCompoundButton, paramBoolean);
+        }
+      }
+      else if (paramBoolean != aupg.a().a((ChatMessage)localObject1))
+      {
+        if (!paramBoolean) {
+          aupg.a().a((ChatMessage)localObject1, paramBoolean);
+        }
+        while (BaseChatItemLayout.a != null)
         {
-          ListAdapter localListAdapter = this.jdField_a_of_type_ComTencentWidgetListView.getAdapter();
-          i = localListAdapter.getCount() - 1;
-          if (i < 0) {
-            break label243;
-          }
-          Object localObject1 = localListAdapter.getItem(i);
-          if ((localObject1 instanceof ChatMessage))
+          BaseChatItemLayout.a.a((ChatMessage)localObject1, paramCompoundButton, paramBoolean);
+          return;
+          if ((localObject1 instanceof MessageForFile))
           {
-            localObject1 = (ChatMessage)localObject1;
-            if (((ChatMessage)localObject1).uniseq == l)
+            localObject2 = arrr.a(BaseActivity.sTopActivity.app, (MessageForFile)localObject1);
+            if ((((FileManagerEntity)localObject2).getCloudType() == 1) && (((FileManagerEntity)localObject2).status == 2))
             {
-              if (localObject1 == null) {
-                break label162;
-              }
-              localObject1 = EmojiStickerManager.a().a((MessageRecord)localObject1);
-              if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
-                break label162;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.i("BubbleAnimation", 2, "contain sticker, so stop bubble animation!");
-              }
-              return false;
+              localObject1 = paramCompoundButton.getContext().getString(2131692763);
+              QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
+              paramCompoundButton.setChecked(false);
+              return;
             }
           }
-          i -= 1;
-          continue;
+          if ((localObject1 instanceof MessageForTroopFile))
+          {
+            localObject2 = (MessageForTroopFile)localObject1;
+            localObject2 = bcnt.a(BaseActivity.sTopActivity.app, (MessageForTroopFile)localObject2);
+            if ((localObject2 != null) && ((((bbtn)localObject2).b == 0) || (((bbtn)localObject2).b == 1) || (((bbtn)localObject2).b == 2) || (((bbtn)localObject2).b == 3) || (((bbtn)localObject2).b == 4)))
+            {
+              localObject1 = paramCompoundButton.getContext().getString(2131692763);
+              QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
+              paramCompoundButton.setChecked(false);
+              return;
+            }
+          }
+          int i = aupg.a().a();
+          if (aupg.a().a((ChatMessage)localObject1, i))
+          {
+            if (aupg.a().a == 7) {}
+            for (localObject1 = paramCompoundButton.getContext().getString(2131698789, new Object[] { Integer.valueOf(i) });; localObject1 = paramCompoundButton.getContext().getString(2131698788, new Object[] { Integer.valueOf(i) }))
+            {
+              QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
+              paramCompoundButton.setChecked(false);
+              return;
+            }
+          }
+          aupg.a().a((ChatMessage)localObject1, paramBoolean);
         }
-        i = ((Integer)paramVarArgs[0]).intValue();
       }
-      catch (Exception localException)
-      {
-        QLog.e("BubbleAnimation", 1, "", localException);
-      }
-      label162:
-      boolean bool;
-      if ((i == 0) || (i == 1) || (i == 6)) {
-        bool = d(paramVarArgs);
-      }
-      for (;;)
-      {
-        return bool;
-        if ((i == 5) || (i == 3) || (i == 2)) {
-          bool = b(paramVarArgs);
-        } else if (i == 4) {
-          bool = c(paramVarArgs);
-        } else {
-          bool = false;
-        }
-      }
-      label243:
-      Object localObject2 = null;
-    }
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_Aeqy != null) {
-      this.jdField_a_of_type_Aeqy.b();
-    }
-  }
-  
-  protected void c()
-  {
-    if (this.jdField_a_of_type_Aerh != null) {
-      this.jdField_a_of_type_Aerh.e();
-    }
-    if (this.jdField_a_of_type_Aepy != null) {
-      this.jdField_a_of_type_Aepy.c();
-    }
-    if (this.jdField_a_of_type_Aeqy != null) {
-      this.jdField_a_of_type_Aeqy.a(true);
     }
   }
 }

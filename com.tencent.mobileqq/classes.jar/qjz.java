@@ -75,7 +75,7 @@ public class qjz
   {
     try
     {
-      Object localObject = (String)bjxj.a(jdField_b_of_type_JavaLangString, "");
+      Object localObject = (String)bkbq.a(jdField_b_of_type_JavaLangString, "");
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         return paramqka.jdField_c_of_type_Int;
       }
@@ -113,7 +113,7 @@ public class qjz
             break label235;
           }
           l1 = ((osk)localObject).a(false);
-          localObject = (String)bjxj.a(jdField_c_of_type_JavaLangString, "");
+          localObject = (String)bkbq.a(jdField_c_of_type_JavaLangString, "");
           if (TextUtils.isEmpty((CharSequence)localObject))
           {
             QLog.d(jdField_d_of_type_JavaLangString, 1, "getNowRemainTime time is" + l1 / 1000L);
@@ -244,7 +244,7 @@ public class qjz
   {
     try
     {
-      Object localObject = (String)bjxj.a(jdField_b_of_type_JavaLangString, "");
+      Object localObject = (String)bkbq.a(jdField_b_of_type_JavaLangString, "");
       QLog.d(jdField_d_of_type_JavaLangString, 1, "start saveChannelClickToSP :" + (String)localObject);
       String str1;
       int i;
@@ -271,7 +271,7 @@ public class qjz
         ((JSONObject)localObject).put("time", str1);
         ((JSONObject)localObject).put("clickTimes" + paramString2 + paramString1, i);
         QLog.d(jdField_d_of_type_JavaLangString, 1, "end saveChannelClickToSP :" + ((JSONObject)localObject).toString());
-        bjxj.a(jdField_b_of_type_JavaLangString, ((JSONObject)localObject).toString());
+        bkbq.a(jdField_b_of_type_JavaLangString, ((JSONObject)localObject).toString());
         return;
         localObject = new JSONObject((String)localObject);
         break;
@@ -331,7 +331,7 @@ public class qjz
   {
     try
     {
-      Object localObject = (String)bjxj.a(jdField_a_of_type_JavaLangString, "");
+      Object localObject = (String)bkbq.a(jdField_a_of_type_JavaLangString, "");
       QLog.d(jdField_d_of_type_JavaLangString, 1, "start addFreshTimesToUGAndSaveToSp : " + (String)localObject);
       int i;
       String str1;
@@ -353,7 +353,7 @@ public class qjz
         ((JSONObject)localObject).put("time", str1);
         ((JSONObject)localObject).put("freshTimes" + paramString, i);
         QLog.d(jdField_d_of_type_JavaLangString, 1, "end addFreshTimesToUGAndSaveToSp : " + ((JSONObject)localObject).toString());
-        bjxj.a(jdField_a_of_type_JavaLangString, ((JSONObject)localObject).toString());
+        bkbq.a(jdField_a_of_type_JavaLangString, ((JSONObject)localObject).toString());
         paramReqChannelPara.uint32_update_times_one_day.set(i);
         return;
         localObject = new JSONObject((String)localObject);
@@ -418,7 +418,7 @@ public class qjz
         if (localObject != null)
         {
           l1 = ((osk)localObject).a(false);
-          localObject = (String)bjxj.a(jdField_c_of_type_JavaLangString, "");
+          localObject = (String)bkbq.a(jdField_c_of_type_JavaLangString, "");
           QLog.d(jdField_d_of_type_JavaLangString, 1, "start saveRemainTimeToSP string is " + (String)localObject);
           if (TextUtils.isEmpty((CharSequence)localObject))
           {
@@ -433,7 +433,7 @@ public class qjz
               ((JSONObject)localObject).put("time", str1);
               ((JSONObject)localObject).put("remainTime" + paramInt, l2 + l1);
               QLog.d(jdField_d_of_type_JavaLangString, 1, "end saveRemainTimeToSP string is " + ((JSONObject)localObject).toString());
-              bjxj.a(jdField_c_of_type_JavaLangString, ((JSONObject)localObject).toString());
+              bkbq.a(jdField_c_of_type_JavaLangString, ((JSONObject)localObject).toString());
             }
           }
           else
@@ -465,7 +465,7 @@ public class qjz
     if (paramBaseArticleInfo.bytes_jump_bundle.has())
     {
       paramBaseArticleInfo = paramBaseArticleInfo.bytes_jump_bundle.get().toStringUtf8();
-      bool = bdem.a(BaseApplicationImpl.getApplication(), paramBaseArticleInfo);
+      bool = bdiv.a(BaseApplicationImpl.getApplication(), paramBaseArticleInfo);
       QLog.d(jdField_d_of_type_JavaLangString, 1, "judgeIsAgreement isappInstall " + paramBaseArticleInfo + " :" + bool + " useUg: " + i);
       if (((!bool) || (i != 2)) && ((bool) || (i != 1))) {
         break label142;

@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.5.1;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class aejl
-  implements aekb
+  implements View.OnClickListener
 {
-  public aejl(ReminderListFragment.5.1 param1) {}
+  public aejl(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ReminderListFragment.a(this.a.a.a, alpo.a(2131713765));
+    this.a.a.dismiss();
   }
 }
 

@@ -1,24 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class agoo
-  implements ysb
+  implements DialogInterface.OnClickListener
 {
-  agoo(agoj paramagoj) {}
+  agoo(agoe paramagoe) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    auvn localauvn = this.a.jdField_a_of_type_Auvn;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 10002) {}
-    for (int i = 8;; i = 6)
-    {
-      localauvn.a(false, true, i);
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    this.a.jdField_a_of_type_Auvn.a();
+    ((aknx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 319);
   }
 }
 

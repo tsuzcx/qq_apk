@@ -1,14 +1,24 @@
-public class ayhp
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
+import com.tencent.image.URLImageView;
+import java.lang.ref.SoftReference;
+
+class ayhp
+  implements GifDrawable.OnGIFPlayOnceListener
 {
-  public String a;
-  public String b;
+  ayhp(ayho paramayho, AbstractGifImage paramAbstractGifImage) {}
   
-  public ayhp() {}
-  
-  public ayhp(String paramString1, String paramString2)
+  public void onPlayOnce()
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    this.jdField_a_of_type_ComTencentImageAbstractGifImage.setStrongGIFPlayOnceListener(null);
+    AbstractGifImage.pauseAll();
+    if (this.jdField_a_of_type_Ayho.jdField_a_of_type_Ayhq != null) {
+      this.jdField_a_of_type_Ayho.jdField_a_of_type_Ayhq.b();
+    }
+    if (this.jdField_a_of_type_Ayho.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {
+      return;
+    }
+    ((URLImageView)this.jdField_a_of_type_Ayho.jdField_a_of_type_JavaLangRefSoftReference.get()).setVisibility(8);
   }
 }
 

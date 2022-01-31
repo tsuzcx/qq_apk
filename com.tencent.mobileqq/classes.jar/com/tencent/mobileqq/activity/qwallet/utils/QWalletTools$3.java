@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.utils;
 
-import aixa;
-import aixc;
-import ajaf;
+import ajbp;
+import ajbr;
+import ajeu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.widget.RedDotImageView;
 import java.lang.ref.WeakReference;
@@ -18,11 +18,11 @@ public final class QWalletTools$3
     RedDotImageView localRedDotImageView = (RedDotImageView)this.b.get();
     if ((localObject != null) && (localRedDotImageView != null))
     {
-      localObject = (aixa)((QQAppInterface)localObject).getManager(273);
-      aixc localaixc = ((aixa)localObject).a("2001");
-      if ((localaixc.a) && (ajaf.a(localaixc.b, this.jdField_a_of_type_Int)))
+      localObject = (ajbp)((QQAppInterface)localObject).getManager(273);
+      ajbr localajbr = ((ajbp)localObject).a("2001");
+      if ((localajbr.a) && (ajeu.a(localajbr.b, this.jdField_a_of_type_Int)))
       {
-        ((aixa)localObject).b("2001");
+        ((ajbp)localObject).b("2001");
         localRedDotImageView.post(new QWalletTools.3.1(this));
       }
     }

@@ -1,20 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class bizt
+class bizt
+  extends BroadcastReceiver
 {
-  private static bizt a;
-  public String a;
-  public String b;
+  private bizt(bizo parambizo) {}
   
-  public static bizt a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (jdField_a_of_type_Bizt == null) {
-      jdField_a_of_type_Bizt = new bizt();
+    if ("cooperation.qqreader.start_reader_act_completed".equals(paramIntent.getAction())) {
+      bizo.b(this.a);
     }
-    jdField_a_of_type_Bizt.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    jdField_a_of_type_Bizt.b = null;
-    return jdField_a_of_type_Bizt;
   }
 }
 

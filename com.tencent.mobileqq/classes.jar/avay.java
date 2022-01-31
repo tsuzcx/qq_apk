@@ -1,13 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 
-public class avay
-  implements View.OnClickListener
+public abstract interface avay
 {
-  public avay(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public abstract void a(InterestTagInfo paramInterestTagInfo);
   
-  public void onClick(View paramView) {}
+  public abstract boolean a(InterestTagInfo paramInterestTagInfo);
 }
 
 

@@ -1,29 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
 
-final class auzo
-  implements bevy
+public class auzo
+  implements View.OnClickListener
 {
-  auzo(String paramString, auzu paramauzu) {}
+  public auzo(PlayerInvitePanel paramPlayerInvitePanel, int paramInt) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onClick(View paramView)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Auzu != null) {
-        this.jdField_a_of_type_Auzu.a(true);
-      }
+    if (PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel) != null) {
+      PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel).onItemClick(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
     }
-    label50:
-    while (this.jdField_a_of_type_Auzu == null) {
-      return;
-    }
-    this.jdField_a_of_type_Auzu.a(false);
   }
 }
 

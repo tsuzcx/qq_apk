@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import abor;
-import abot;
-import agzr;
-import agzs;
-import amgm;
+import abtg;
+import abti;
+import aheg;
+import aheh;
+import amlb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
@@ -39,7 +39,7 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
         if (QLog.isColorLevel()) {
           QLog.d("TroopAIOImageGeter", 2, "[IncreasinglyLoadTask] start");
         }
-        if ((this.this$0.jdField_a_of_type_Agzr == null) && (this.this$0.jdField_a_of_type_Agzs == null))
+        if ((this.this$0.jdField_a_of_type_Aheg == null) && (this.this$0.jdField_a_of_type_Aheh == null))
         {
           this.this$0.jdField_a_of_type_Boolean = false;
           this.this$0.a();
@@ -153,7 +153,7 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
         if (localArrayList1.size() <= 0) {
           break label1111;
         }
-        localObject6 = this.this$0.jdField_a_of_type_Agzr;
+        localObject6 = this.this$0.jdField_a_of_type_Aheg;
         if (localObject6 != null)
         {
           localObject7 = new ArrayList();
@@ -169,15 +169,15 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
           }
           localObject1 = (AIORichMediaData[])((List)localObject1).toArray(new AIORichMediaData[((List)localObject1).size()]);
           if (localObject1.length > 0) {
-            ((agzr)localObject6).a((AIORichMediaData[])localObject1, -1);
+            ((aheg)localObject6).a((AIORichMediaData[])localObject1, -1);
           }
         }
-        localObject1 = this.this$0.jdField_a_of_type_Agzs;
+        localObject1 = this.this$0.jdField_a_of_type_Aheh;
         if (localObject1 != null)
         {
           localObject6 = (AIORichMediaData[])localArrayList1.toArray(new AIORichMediaData[localArrayList1.size()]);
           if (localObject6.length > 0) {
-            ((agzs)localObject1).a((AIORichMediaData[])localObject6, -1);
+            ((aheh)localObject1).a((AIORichMediaData[])localObject6, -1);
           }
         }
         if (QLog.isColorLevel()) {
@@ -185,7 +185,7 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
         }
         this.this$0.jdField_a_of_type_Boolean = false;
         return;
-        if (!abot.a(this.this$0.jdField_b_of_type_Int)) {
+        if (!abti.a(this.this$0.jdField_b_of_type_Int)) {
           continue;
         }
         localObject1 = this.this$0;

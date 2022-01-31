@@ -1,17 +1,16 @@
-class azpd
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+
+public final class azpd
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
+  public azpd(aznp paramaznp) {}
   
-  azpd(azpb paramazpb, String paramString)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    QLog.i("QSplash@QbossSplashUtil", 1, "video finish");
+    this.a.a(15, 1, 0L);
   }
 }
 

@@ -1,53 +1,15 @@
 import android.view.View;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 
 public class ayiz
-  implements ayjk
+  implements View.OnClickListener
 {
-  protected int a;
-  private String a;
-  public List<ayjl> a;
+  public ayiz(BaseSearchActivity paramBaseSearchActivity) {}
   
-  public ayiz(List<ayjl> paramList, String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public String a()
-  {
-    return alpo.a(2131705768);
-  }
-  
-  public List<ayjl> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    aynt.a(null, 0, this.jdField_a_of_type_Int, "0X8009D47", 0, 0, null, null);
-    String str = ayrd.b("pages/search-results/search-results?mode=search&q=" + this.jdField_a_of_type_JavaLangString);
-    str = ayrd.b("https://m.q.qq.com/a/p/1108291530?via=2005_2&referer=2005&s=" + str);
-    str = "mqqapi://microapp/open?url=" + str;
-    MiniAppLauncher.startMiniApp(paramView.getContext(), str, 2005, null);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.a.finish();
   }
 }
 

@@ -1,28 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.magicface.drawable.PngFrameManager.1;
 
-class atxo
+public class atxo
+  implements View.OnClickListener
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
+  public atxo(PngFrameManager.1 param1) {}
   
-  atxo(atxn paramatxn)
+  public void onClick(View paramView)
   {
-    Looper localLooper2 = Looper.myLooper();
-    Looper localLooper1 = localLooper2;
-    if (localLooper2 == null) {
-      localLooper1 = Looper.getMainLooper();
-    }
-    if (localLooper1 != null)
+    if (this.a.a.jdField_a_of_type_Afvu.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() == 0) {}
+    do
     {
-      this.jdField_a_of_type_AndroidOsHandler = new atxp(this, localLooper1, paramatxn);
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler = null;
-  }
-  
-  Handler a()
-  {
-    return this.jdField_a_of_type_AndroidOsHandler;
+      do
+      {
+        return;
+      } while (this.a.a.jdField_a_of_type_Afvu.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0);
+      this.a.a.jdField_a_of_type_Boolean = true;
+      this.a.a.jdField_a_of_type_Afvu.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+      this.a.this$0.e(this.a.a);
+    } while (this.a.a.jdField_a_of_type_Atxr == null);
+    this.a.a.jdField_a_of_type_Atxr.a(this.a.a.jdField_a_of_type_Afvu);
   }
 }
 

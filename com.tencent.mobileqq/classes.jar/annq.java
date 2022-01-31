@@ -1,12 +1,12 @@
-import java.util.Set;
-
-public class annq
+class annq
+  extends anno
 {
-  public long a;
-  public String a;
-  public Set<String> a;
-  public String b;
-  public String c;
+  public String d;
+  
+  private annq()
+  {
+    super(null);
+  }
 }
 
 

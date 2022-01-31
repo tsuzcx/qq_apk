@@ -1,84 +1,110 @@
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.util.SparseArray;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class akue
-  implements INetInfoHandler
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  private static long jdField_a_of_type_Long = -1L;
+  private static SparseArray<Long> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   
-  public akue(int paramInt)
+  public static void a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (jdField_a_of_type_AndroidUtilSparseArray != null) {
+      jdField_a_of_type_AndroidUtilSparseArray.clear();
+    }
+    jdField_a_of_type_AndroidUtilSparseArray = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameTimeReporter", 2, "[destroy]");
+    }
   }
   
-  private void a(int paramInt)
+  public static void a(CmGameStartChecker.StartCheckParam arg0)
   {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {}
-    for (;;)
+    if (??? != null)
     {
-      return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameNetInfoHandler", 2, "[notifyEngineNetChange], type:" + paramInt);
+      int i = ???.gameId;
+      if (i == 0) {
+        return;
       }
       try
       {
-        ApolloCmdChannel localApolloCmdChannel = akro.a();
-        if (localApolloCmdChannel != null)
-        {
-          Object localObject = akro.a(this.jdField_a_of_type_Int);
-          if (localObject != null)
-          {
-            localObject = ((aktr)localObject).a();
-            if (localObject != null)
-            {
-              JSONObject localJSONObject = new JSONObject();
-              localJSONObject.put("type", paramInt);
-              localApolloCmdChannel.callbackFromRequest(((ApolloSurfaceView)localObject).getLuaState(), 0, "sc.network_change.local", localJSONObject.toString());
-              return;
-            }
-          }
+        if (jdField_a_of_type_AndroidUtilSparseArray == null) {
+          jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
         }
+        synchronized (jdField_a_of_type_AndroidUtilSparseArray)
+        {
+          long l = System.currentTimeMillis();
+          jdField_a_of_type_AndroidUtilSparseArray.put(i, Long.valueOf(l));
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloGameTimeReporter", 2, "[reportStart] set time " + i + " # " + l);
+          }
+          return;
+        }
+        QLog.e("ApolloGameTimeReporter", 1, "[reportStart] no para");
       }
-      catch (Exception localException)
+      catch (Throwable ???)
       {
-        QLog.e("cmgame_process.CmGameNetInfoHandler", 1, "errInfo->" + localException.getMessage());
+        QLog.e("ApolloGameTimeReporter", 1, ???, new Object[] { "[reportStart]" });
+        return;
       }
     }
   }
   
-  public void onNetMobile2None()
+  public static void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    a(4);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    a(3);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    a(1);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    a(2);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    a(6);
-  }
-  
-  public void onNetWifi2None()
-  {
-    a(5);
+    int i;
+    if (paramStartCheckParam != null)
+    {
+      i = paramStartCheckParam.gameId;
+      if (i == 0) {}
+    }
+    else
+    {
+      label301:
+      for (;;)
+      {
+        try
+        {
+          if (jdField_a_of_type_AndroidUtilSparseArray == null) {
+            break;
+          }
+          synchronized (jdField_a_of_type_AndroidUtilSparseArray)
+          {
+            int j = paramStartCheckParam.gameMode;
+            long l1 = paramStartCheckParam.roomId;
+            long l2 = ((Long)jdField_a_of_type_AndroidUtilSparseArray.get(i, Long.valueOf(jdField_a_of_type_Long))).longValue();
+            paramStartCheckParam = akwd.a(i);
+            if (paramStartCheckParam == null) {
+              break label301;
+            }
+            paramStartCheckParam = paramStartCheckParam.a();
+            if (paramStartCheckParam == null) {
+              break label301;
+            }
+            l1 = paramStartCheckParam.mRoomId;
+            if (l2 != jdField_a_of_type_Long)
+            {
+              long l3 = System.currentTimeMillis() - l2;
+              VipUtils.a(null, "cmshow", "Apollo", "game_time", 0, 0, new String[] { i + "", String.valueOf(j), String.valueOf(l3), String.valueOf(l1) });
+              jdField_a_of_type_AndroidUtilSparseArray.remove(i);
+              if (QLog.isColorLevel()) {
+                QLog.d("ApolloGameTimeReporter", 2, new Object[] { "[reportEnd] report: id:", Integer.valueOf(i), "# roomId:", Long.valueOf(l1), "# mode:", Integer.valueOf(j), "# [", Long.valueOf(l3), "] #", Long.valueOf(l2), " => ", Long.valueOf(System.currentTimeMillis()) });
+              }
+            }
+            return;
+          }
+          QLog.e("ApolloGameTimeReporter", 1, "[reportEnd] no para");
+        }
+        catch (Throwable paramStartCheckParam)
+        {
+          QLog.e("ApolloGameTimeReporter", 1, paramStartCheckParam, new Object[] { "[reportEnd]" });
+          return;
+        }
+        return;
+      }
+    }
   }
 }
 

@@ -100,7 +100,7 @@ public class say
         if (paramContainer == null) {
           break;
         }
-        paramContainer.getComLayoutParams().mLayoutMarginLeft = aekt.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        paramContainer.getComLayoutParams().mLayoutMarginLeft = aepi.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
         return;
         ((NativeTextImp)localObject).setText("立即下载");
       }

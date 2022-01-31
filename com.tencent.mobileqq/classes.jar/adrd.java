@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.RiskInfoItem;
+import android.widget.TextView;
 
-public final class adrd
-  implements Parcelable.Creator<RiskInfoItem>
+public class adrd
 {
-  public RiskInfoItem a(Parcel paramParcel)
-  {
-    return new RiskInfoItem(paramParcel, null);
-  }
-  
-  public RiskInfoItem[] a(int paramInt)
-  {
-    return new RiskInfoItem[paramInt];
-  }
+  TextView a;
 }
 
 

@@ -1,16 +1,11 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
-
 class baeb
-  extends WebChromeClient
+  implements badp
 {
-  baeb(baea parambaea) {}
+  baeb(bady parambady) {}
   
-  public void onProgressChanged(WebView paramWebView, int paramInt)
+  public void a()
   {
-    super.onProgressChanged(paramWebView, paramInt);
-    QLog.i("TenDocWebViewPool", 1, "tendocpreload onProgressChanged = " + paramInt);
+    bady.a(this.a).a();
   }
 }
 

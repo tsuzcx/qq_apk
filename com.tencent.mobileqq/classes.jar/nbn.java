@@ -1,7 +1,7 @@
 import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
 
 public class nbn
-  implements alkr
+  implements alpg
 {
   protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
   

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.weishi_new.verticalvideo;
 
 import UserGrowth.stSimpleMetaFeed;
-import abqm;
-import adky;
+import abvb;
+import adpn;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import biac;
+import biej;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 import com.tencent.biz.pubaccount.weishi_new.WSBaseFragment;
 import com.tencent.biz.pubaccount.weishi_new.event.FollowEvent;
@@ -94,16 +94,16 @@ public class WSVerticalPageFragment
     return localIntent;
   }
   
-  private void a(int paramInt, biac parambiac)
+  private void a(int paramInt, biej parambiej)
   {
-    if ((parambiac instanceof tnj))
+    if ((parambiej instanceof tnj))
     {
-      parambiac = (tmv)((tnj)parambiac).a;
-      if ((parambiac != null) && ((parambiac.a() instanceof stSimpleMetaFeed)))
+      parambiej = (tmv)((tnj)parambiej).a;
+      if ((parambiej != null) && ((parambiej.a() instanceof stSimpleMetaFeed)))
       {
-        parambiac = (stSimpleMetaFeed)parambiac.a();
-        tnt.a(paramInt, parambiac);
-        tnt.a(parambiac);
+        parambiej = (stSimpleMetaFeed)parambiej.a();
+        tnt.a(paramInt, parambiej);
+        tnt.a(parambiej);
       }
     }
   }
@@ -116,28 +116,28 @@ public class WSVerticalPageFragment
   public static void a(Activity paramActivity, String paramString, List<stSimpleMetaFeed> paramList, int paramInt)
   {
     tlo.b("WSVerticalPageFragment", "start() needScrollToPosition:" + paramInt);
-    adky.a(paramActivity, a(paramString, paramList, paramInt), PublicFragmentActivity.class, WSVerticalPageFragment.class);
+    adpn.a(paramActivity, a(paramString, paramList, paramInt), PublicFragmentActivity.class, WSVerticalPageFragment.class);
     a(paramActivity);
   }
   
   public static void a(Activity paramActivity, String paramString, List<stSimpleMetaFeed> paramList, int paramInt1, int paramInt2)
   {
     tlo.b("WSVerticalPageFragment", "startForResult() needScrollToPosition:" + paramInt1);
-    adky.a(paramActivity, a(paramString, paramList, paramInt1), PublicFragmentActivity.class, WSVerticalPageFragment.class, paramInt2);
+    adpn.a(paramActivity, a(paramString, paramList, paramInt1), PublicFragmentActivity.class, WSVerticalPageFragment.class, paramInt2);
     a(paramActivity);
   }
   
   private void a(View paramView)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131379514);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131379572);
     int i = tlu.a(getActivity());
     localRelativeLayout.setPadding(localRelativeLayout.getPaddingLeft(), i + localRelativeLayout.getPaddingTop(), localRelativeLayout.getPaddingRight(), localRelativeLayout.getPaddingBottom());
-    paramView.findViewById(2131379515).setOnClickListener(new tmk(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView = ((VideoFeedsRecyclerView)paramView.findViewById(2131380255));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366413));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131379512));
-    b(paramView.findViewById(2131368683));
-    paramView.findViewById(2131379516).setOnClickListener(new tml(this));
+    paramView.findViewById(2131379573).setOnClickListener(new tmk(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView = ((VideoFeedsRecyclerView)paramView.findViewById(2131380313));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366415));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131379570));
+    b(paramView.findViewById(2131368694));
+    paramView.findViewById(2131379574).setOnClickListener(new tml(this));
     j();
     i();
   }
@@ -278,14 +278,6 @@ public class WSVerticalPageFragment
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public ArrayList<Class> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(LikeRspEvent.class);
-    localArrayList.add(FollowEvent.class);
-    return localArrayList;
-  }
-  
   public tmf a()
   {
     return this.jdField_a_of_type_Tmf;
@@ -310,9 +302,9 @@ public class WSVerticalPageFragment
   public void a(RecyclerView.ViewHolder paramViewHolder)
   {
     tlo.b("WSVerticalPageFragment", "onCenterViewChanged: " + paramViewHolder);
-    if ((paramViewHolder instanceof biac))
+    if ((paramViewHolder instanceof biej))
     {
-      paramViewHolder = (biac)paramViewHolder;
+      paramViewHolder = (biej)paramViewHolder;
       int i = paramViewHolder.getLayoutPosition() - 1;
       this.jdField_a_of_type_Tmf.a(paramViewHolder, i);
       ((tmi)this.jdField_a_of_type_Taw).a(paramViewHolder, i);
@@ -375,6 +367,14 @@ public class WSVerticalPageFragment
     }
   }
   
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(LikeRspEvent.class);
+    localArrayList.add(FollowEvent.class);
+    return localArrayList;
+  }
+  
   public boolean onBackEvent()
   {
     ((tmi)this.jdField_a_of_type_Taw).e();
@@ -395,7 +395,7 @@ public class WSVerticalPageFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559859, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559858, paramViewGroup, false);
     tlo.a("weishi-comment", "onCreateView before initUI~~~~~~~~~~~");
     a(paramLayoutInflater);
     k();
@@ -420,7 +420,7 @@ public class WSVerticalPageFragment
     tff.a().b(this);
     tgg.a().a();
     tnt.a();
-    abqm.a(getActivity());
+    abvb.a(getActivity());
   }
   
   public void onPause()

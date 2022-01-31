@@ -1,52 +1,21 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class aceo
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aceo(BaseChatPie paramBaseChatPie) {}
+  public aceo(AssistantSettingActivity paramAssistantSettingActivity, apjy paramapjy) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramView.getId())
+    this.jdField_a_of_type_Apjy.a(paramBoolean);
+    if (!paramBoolean)
     {
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081DD", "0X80081DD", 0, 0, "", "", "", "");
+      return;
     }
-    BaseChatPie localBaseChatPie;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373095);
-        } while (!(paramView instanceof bcek));
-        paramView = (bcek)paramView;
-      } while ((paramView == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null));
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.aio.BaseChatPie", 2, "TextItemBuilder onClickListener: isReplyMsg = true, mSourceMsgSeq = " + paramView.a);
-      }
-      localBaseChatPie = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && ((localBaseChatPie instanceof agld)))
-      {
-        ((agld)localBaseChatPie).a(22, paramView.d, paramView.c, null);
-        return;
-      }
-    } while (!localBaseChatPie.j());
-    QQMessageFacade.Message localMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    localBaseChatPie.a(22, paramView.a, (int)(localMessage.shmsgseq - paramView.a), null);
-    MessageForReplyText.reportReplyMsg(null, "typebox", "clk_original", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null);
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081F1", "0X80081F1", 0, 0, "", "", "", "");
   }
 }
 

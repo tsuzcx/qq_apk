@@ -1,29 +1,20 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class acgr
-  implements DialogInterface.OnClickListener
+public class acgr
+  extends amcj
 {
-  public acgr(QQAppInterface paramQQAppInterface, acgz paramacgz, long paramLong, Context paramContext, acgy paramacgy) {}
+  public acgr(AuthDevRenameActivity paramAuthDevRenameActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    ausd localausd = (ausd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(66);
-    if (localausd != null) {
-      localausd.a((byte)0);
+    AuthDevRenameActivity.a(this.a);
+    if (!paramBoolean)
+    {
+      QQToast.a(this.a, this.a.getString(2131692240), 0).b(this.a.getTitleBarHeight());
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true);
-    if (this.jdField_a_of_type_Acgz.a) {
-      azmj.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
-    }
-    this.jdField_a_of_type_Acgz.e = false;
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acgy, this.jdField_a_of_type_Acgz);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    this.a.finish();
   }
 }
 

@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import xmh;
+import xqq;
 
 public class MsgTabPlayInfo
   implements Serializable
@@ -32,7 +32,7 @@ public class MsgTabPlayInfo
     if ((paramInt == 1) && (TextUtils.isEmpty(paramString2))) {
       throw new IllegalArgumentException("uin can't empty for friend header play");
     }
-    xmh.a(paramString1);
+    xqq.a(paramString1);
   }
   
   public MsgTabPlayInfo(@NonNull String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, ArrayList<String> paramArrayList, HashMap<String, String> paramHashMap)

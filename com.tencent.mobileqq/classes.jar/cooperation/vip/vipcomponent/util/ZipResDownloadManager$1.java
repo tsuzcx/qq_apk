@@ -1,24 +1,24 @@
 package cooperation.vip.vipcomponent.util;
 
-import bkcv;
-import bkcx;
+import bkhc;
+import bkhe;
 
 public class ZipResDownloadManager$1
   implements Runnable
 {
-  public ZipResDownloadManager$1(bkcv parambkcv, String paramString) {}
+  public ZipResDownloadManager$1(bkhc parambkhc, String paramString) {}
   
   public void run()
   {
     String str = this.a;
     if (this.this$0.a(str)) {}
-    bkcx localbkcx;
+    bkhe localbkhe;
     do
     {
       return;
-      localbkcx = bkcv.a(this.this$0, str, -1, null, null);
-    } while (!bkcv.a(this.this$0, str, localbkcx));
-    bkcv.a(this.this$0, localbkcx);
+      localbkhe = bkhc.a(this.this$0, str, -1, null, null);
+    } while (!bkhc.a(this.this$0, str, localbkhe));
+    bkhc.a(this.this$0, localbkhe);
   }
 }
 

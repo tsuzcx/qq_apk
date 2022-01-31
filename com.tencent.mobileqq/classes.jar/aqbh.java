@@ -1,24 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import com.tencent.mobileqq.data.Card;
 
-public class aqbh
-  implements View.OnTouchListener
+class aqbh
+  extends alpq
 {
-  public aqbh(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
+  aqbh(aqbg paramaqbg) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+    if ((paramBoolean) && (paramInt == 0)) {
+      aqbg.a(this.a);
     }
   }
 }

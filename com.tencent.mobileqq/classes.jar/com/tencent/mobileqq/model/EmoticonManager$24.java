@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.model;
 
-import aube;
+import aufn;
 
 public class EmoticonManager$24
   implements Runnable
 {
-  public EmoticonManager$24(aube paramaube, int paramInt) {}
+  public EmoticonManager$24(aufn paramaufn, int paramInt) {}
   
   /* Error */
   public void run()
@@ -26,8 +26,8 @@ public class EmoticonManager$24
     //   25: aload 5
     //   27: astore 4
     //   29: aload_0
-    //   30: getfield 14	com/tencent/mobileqq/model/EmoticonManager$24:this$0	Laube;
-    //   33: getfield 44	aube:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   30: getfield 14	com/tencent/mobileqq/model/EmoticonManager$24:this$0	Laufn;
+    //   33: getfield 44	aufn:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   36: ldc 46
     //   38: iconst_1
     //   39: aconst_null
@@ -210,14 +210,14 @@ public class EmoticonManager$24
     //   420: aload 5
     //   422: astore 4
     //   424: aload_0
-    //   425: getfield 14	com/tencent/mobileqq/model/EmoticonManager$24:this$0	Laube;
-    //   428: getfield 137	aube:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   425: getfield 14	com/tencent/mobileqq/model/EmoticonManager$24:this$0	Laufn;
+    //   428: getfield 137	aufn:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   431: ifnull +28 -> 459
     //   434: aload 5
     //   436: astore 4
     //   438: aload_0
-    //   439: getfield 14	com/tencent/mobileqq/model/EmoticonManager$24:this$0	Laube;
-    //   442: getfield 137	aube:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   439: getfield 14	com/tencent/mobileqq/model/EmoticonManager$24:this$0	Laufn;
+    //   442: getfield 137	aufn:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   445: new 139	com/tencent/mobileqq/model/EmoticonManager$24$1
     //   448: dup
     //   449: aload_0

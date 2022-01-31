@@ -1,12 +1,6 @@
 public abstract interface bdzm
 {
-  public abstract int getRenderHeight();
-  
-  public abstract int getRenderWidth();
-  
-  public abstract void onDrawBegin();
-  
-  public abstract void onSetRenderer(bdzn parambdzn);
+  public abstract void a(int paramInt);
 }
 
 

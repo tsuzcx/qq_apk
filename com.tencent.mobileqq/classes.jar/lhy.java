@@ -96,7 +96,7 @@ public class lhy
   
   public Bitmap a()
   {
-    return bdda.a(true);
+    return bdhj.a(true);
   }
   
   public Bitmap a(int paramInt, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)

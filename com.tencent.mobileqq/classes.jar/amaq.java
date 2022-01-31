@@ -1,10 +1,13 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import pb.unite.search.RequestSearchWord.Rcmd;
-
-public abstract interface amaq
+class amaq
+  implements mag
 {
-  public abstract void a(PBRepeatMessageField<RequestSearchWord.Rcmd> paramPBRepeatMessageField, PBStringField paramPBStringField);
+  amaq(amai paramamai, byte[] paramArrayOfByte) {}
+  
+  public void a(maf parammaf)
+  {
+    parammaf.a(this.jdField_a_of_type_ArrayOfByte);
+    parammaf.a();
+  }
 }
 
 

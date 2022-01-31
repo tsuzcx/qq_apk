@@ -28,13 +28,13 @@ class HongBaoPanel$MyViewHolder
       paramOnHolderItemClickListener = paramView.getLayoutParams();
       paramOnHolderItemClickListener.height += paramHongBaoPanel.itemTopMargin + 5;
     }
-    this.hongbaoPic = ((ImageView)paramView.findViewById(2131367462));
-    this.hongbaoText = ((TextView)paramView.findViewById(2131367480));
+    this.hongbaoPic = ((ImageView)paramView.findViewById(2131367472));
+    this.hongbaoText = ((TextView)paramView.findViewById(2131367490));
     if (HongBaoPanel.access$700(paramHongBaoPanel)) {
       this.hongbaoText.setTextColor(HongBaoPanel.access$800(paramHongBaoPanel));
     }
-    this.hbRedPointContainer = ((RelativeLayout)paramView.findViewById(2131367471));
-    this.imgFlag = ((ImageView)paramView.findViewById(2131368095));
+    this.hbRedPointContainer = ((RelativeLayout)paramView.findViewById(2131367481));
+    this.imgFlag = ((ImageView)paramView.findViewById(2131368106));
   }
   
   public void onClick(View paramView)

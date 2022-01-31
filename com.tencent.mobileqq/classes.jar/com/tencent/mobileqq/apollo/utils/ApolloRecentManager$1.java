@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aleh;
-import alfy;
+import aliw;
+import alkn;
 
 public class ApolloRecentManager$1
   implements Runnable
@@ -13,10 +13,10 @@ public class ApolloRecentManager$1
     }
     if (this.a == null)
     {
-      aleh.a(this.this$0.a, this.b);
+      aliw.a(this.this$0.a, this.b);
       return;
     }
-    aleh.a(this.this$0.a, this.b, this.a);
+    aliw.a(this.this$0.a, this.b, this.a);
   }
 }
 

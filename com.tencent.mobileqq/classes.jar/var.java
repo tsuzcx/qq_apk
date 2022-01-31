@@ -1,77 +1,22 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertUinAndUnionId;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class var
-  extends unk<vcp>
+  extends QQUIEventReceiver<vai, uow>
 {
-  public String a;
-  public List<usy> a;
-  public boolean a;
-  public boolean b;
-  public int c;
-  public boolean c;
-  
-  public var()
+  public var(@NonNull vai paramvai)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = "";
+    super(paramvai);
   }
   
-  public String a()
+  public void a(@NonNull vai paramvai, @NonNull uow paramuow)
   {
-    return ume.a("StorySvc.convert_uid_and_union_id");
+    paramvai.a.b(paramuow);
   }
   
-  public vcp a(byte[] paramArrayOfByte)
+  public Class acceptEventClass()
   {
-    qqstory_service.RspConvertUinAndUnionId localRspConvertUinAndUnionId = new qqstory_service.RspConvertUinAndUnionId();
-    try
-    {
-      localRspConvertUinAndUnionId.mergeFrom(paramArrayOfByte);
-      return new vcp(localRspConvertUinAndUnionId);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wsv.d("Q.qqstory.user:ConvertUinAndUnionIdRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    int j = 1;
-    qqstory_service.ReqConvertUinAndUnionId localReqConvertUinAndUnionId = new qqstory_service.ReqConvertUinAndUnionId();
-    localReqConvertUinAndUnionId.convert_from.set(this.c);
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      usy localusy = (usy)((Iterator)localObject).next();
-      localReqConvertUinAndUnionId.user_id_list.add(localusy.a());
-    }
-    localObject = localReqConvertUinAndUnionId.need_medal;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = 1;
-      ((PBUInt32Field)localObject).set(i);
-      localObject = localReqConvertUinAndUnionId.need_grade_speed;
-      if (!this.b) {
-        break label121;
-      }
-    }
-    label121:
-    for (int i = j;; i = 0)
-    {
-      ((PBUInt32Field)localObject).set(i);
-      return localReqConvertUinAndUnionId.toByteArray();
-      i = 0;
-      break;
-    }
+    return uow.class;
   }
 }
 

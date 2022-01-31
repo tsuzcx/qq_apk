@@ -21,9 +21,9 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import azgq;
-import bhou;
-import bjri;
+import azkz;
+import bhtb;
+import bjvp;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -47,7 +47,7 @@ public class DisplayUtil
   
   static
   {
-    if (bhou.i()) {}
+    if (bhtb.i()) {}
     try
     {
       Method localMethod = Class.forName("android.os.SystemProperties").getDeclaredMethod("get", new Class[] { String.class });
@@ -143,8 +143,8 @@ public class DisplayUtil
     int j;
     if ((paramActivity != null) && (paramActivity.getWindow() != null) && (paramActivity.getWindow().getDecorView() != null))
     {
-      Rect localRect = bjri.a(paramActivity.getWindow().getDecorView());
-      localRect.top = bjri.a(paramActivity, paramActivity);
+      Rect localRect = bjvp.a(paramActivity.getWindow().getDecorView());
+      localRect.top = bjvp.a(paramActivity, paramActivity);
       DisplayMetrics localDisplayMetrics = new DisplayMetrics();
       if (Build.VERSION.SDK_INT >= 17)
       {
@@ -303,7 +303,7 @@ public class DisplayUtil
       k = i;
       if (m != 0)
       {
-        j = azgq.c(BaseApplication.getContext());
+        j = azkz.c(BaseApplication.getContext());
         k = 0;
       }
       i = j;

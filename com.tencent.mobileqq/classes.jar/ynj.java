@@ -1,45 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class ynj
-  implements ayzy
+public class ynj
+  implements yqb
 {
-  ynj(ync paramync, AppRuntime paramAppRuntime, Bundle paramBundle) {}
+  public ynj(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    VideoEnvironment.a("TroopMemberApiService", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
-    {
-      if (paramInt2 != 0)
-      {
-        VideoEnvironment.a("TroopMemberApiService", alpo.a(2131715984) + paramInt2 + "]", null);
-        ShortVideoResourceManager.a(alpo.a(2131715954));
-        ayyy.a(1, paramInt2);
-        this.jdField_a_of_type_Ync.a.b = false;
-        return;
-      }
-      ArrayList localArrayList = new ArrayList(1);
-      paramInt1 = ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList);
-      if (paramInt1 == 0)
-      {
-        VideoEnvironment.a("TroopMemberApiService", alpo.a(2131715945), null);
-        ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList, new ynk(this));
-        return;
-      }
-      VideoEnvironment.a("TroopMemberApiService", alpo.a(2131715946) + paramInt1 + "]", null);
-      ShortVideoResourceManager.a(alpo.a(2131715983));
-      ayyy.a(1, paramInt1);
-      return;
-    }
-    VideoEnvironment.a("TroopMemberApiService", alpo.a(2131716034) + paramInt2 + "]", null);
-    ShortVideoResourceManager.a(alpo.a(2131715991));
-    ayyy.a(1, paramInt2);
-    this.jdField_a_of_type_Ync.a.b = false;
+    zaj.a(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "finish_follow", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).id.get(), VideoPlayerView.a(this.a).title.get() });
   }
 }
 

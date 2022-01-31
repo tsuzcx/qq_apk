@@ -1,11 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
 class biuu
-  implements bimm
+  implements DialogInterface.OnDismissListener
 {
-  biuu(bius parambius) {}
+  biuu(biup parambiup) {}
   
-  public void a(boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bixe.c("QRPluginManager", "startPluginByActivity: openPlugin result = " + paramBoolean);
+    if (!this.a.b) {
+      biup.a(this.a, 1);
+    }
+    this.a.b = false;
+    this.a.a = null;
   }
 }
 

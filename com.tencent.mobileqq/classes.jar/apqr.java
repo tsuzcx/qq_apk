@@ -1,25 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewParent;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
 class apqr
-  implements ValueAnimator.AnimatorUpdateListener
+  implements akut
 {
-  apqr(apqq paramapqq, int paramInt) {}
+  apqr(apqh paramapqh, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i == this.jdField_a_of_type_Int) {
-      AbstractGifImage.resumeAll();
-    }
-    com.tencent.widget.XPanelContainer.jdField_a_of_type_Int = i;
-    if (apqq.a(this.jdField_a_of_type_Apqq).getParent() != null) {
-      apqq.a(this.jdField_a_of_type_Apqq).getParent().requestLayout();
-    }
+    this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
+    this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
   }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidOsBundle.putInt("result", paramInt);
+    this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
+  }
+  
+  public void b() {}
 }
 
 

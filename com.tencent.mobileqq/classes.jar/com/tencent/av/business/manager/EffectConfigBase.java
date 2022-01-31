@@ -5,11 +5,11 @@ import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import baps;
-import baqx;
-import bcyj;
+import baub;
+import bavg;
 import bdcs;
-import bdee;
+import bdhb;
+import bdin;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -268,7 +268,7 @@ public abstract class EffectConfigBase<T extends ljo>
         j = 0;
         if (j < paramString.length())
         {
-          localljo = (ljo)bcyj.a((JSONObject)paramString.get(j), (Class)localObject);
+          localljo = (ljo)bdcs.a((JSONObject)paramString.get(j), (Class)localObject);
           if ((localljo == null) || (TextUtils.isEmpty(localljo.getId()))) {
             break label423;
           }
@@ -295,7 +295,7 @@ public abstract class EffectConfigBase<T extends ljo>
     {
       try
       {
-        bdcs.a(str1, str2, false);
+        bdhb.a(str1, str2, false);
         bool1 = localFile.exists();
         if (i == 0) {
           break label382;
@@ -415,16 +415,16 @@ public abstract class EffectConfigBase<T extends ljo>
       this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, 1, (int)paramLong, paramT).sendToTarget();
       return;
     }
-    baps localbaps = new baps();
-    localbaps.jdField_a_of_type_Bapx = new ljm(this, paramLong, paramT);
-    localbaps.jdField_a_of_type_JavaLangString = paramT.getResurl();
-    localbaps.jdField_a_of_type_Int = 0;
-    localbaps.jdField_c_of_type_JavaLangString = a(paramT);
-    localbaps.jdField_c_of_type_Int = bdee.a(baqx.a().a());
-    localbaps.a(paramT);
+    baub localbaub = new baub();
+    localbaub.jdField_a_of_type_Baug = new ljm(this, paramLong, paramT);
+    localbaub.jdField_a_of_type_JavaLangString = paramT.getResurl();
+    localbaub.jdField_a_of_type_Int = 0;
+    localbaub.jdField_c_of_type_JavaLangString = a(paramT);
+    localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
+    localbaub.a(paramT);
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "startDownload, item[" + paramT + "], seq[" + paramLong + "]");
     paramT.isDownloading = true;
-    ThreadManager.post(new EffectConfigBase.NetReqRunnable(this, localbaps), 5, null, true);
+    ThreadManager.post(new EffectConfigBase.NetReqRunnable(this, localbaub), 5, null, true);
   }
   
   public void a(Message paramMessage) {}

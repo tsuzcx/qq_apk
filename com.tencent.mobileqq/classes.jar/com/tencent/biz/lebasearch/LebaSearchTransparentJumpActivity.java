@@ -4,13 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import aycr;
-import ayjl;
-import ayju;
-import bdbt;
-import biqv;
-import bizm;
-import bizt;
+import ayha;
+import aynu;
+import ayod;
+import bdgc;
+import bivc;
+import bjdt;
+import bjea;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -19,7 +19,7 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.QWalletHelper;
 import cooperation.qzone.QzonePluginProxyActivity;
 import nxu;
-import ume;
+import uqn;
 
 public class LebaSearchTransparentJumpActivity
   extends IphoneTitleBarActivity
@@ -40,12 +40,12 @@ public class LebaSearchTransparentJumpActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    aycr localaycr = (aycr)this.app.getManager(222);
-    if (localaycr.jdField_a_of_type_Ayjl != null) {
-      localaycr.jdField_a_of_type_Ayjl = null;
+    ayha localayha = (ayha)this.app.getManager(222);
+    if (localayha.jdField_a_of_type_Aynu != null) {
+      localayha.jdField_a_of_type_Aynu = null;
     }
-    if (localaycr.jdField_a_of_type_Ayju != null) {
-      localaycr.jdField_a_of_type_Ayju = null;
+    if (localayha.jdField_a_of_type_Ayod != null) {
+      localayha.jdField_a_of_type_Ayod = null;
     }
   }
   
@@ -61,7 +61,7 @@ public class LebaSearchTransparentJumpActivity
     {
       finish();
       return;
-      ume.a(this, 23, ((Intent)localObject1).getLongExtra("uin", 0L));
+      uqn.a(this, 23, ((Intent)localObject1).getLongExtra("uin", 0L));
       continue;
       QWalletHelper.launchQWalletAct(this, this.app, true, false);
       continue;
@@ -70,23 +70,23 @@ public class LebaSearchTransparentJumpActivity
       ((Intent)localObject1).putExtra("refer", "schemeActiveFeeds");
       QzonePluginProxyActivity.a((Intent)localObject1, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
       ((Intent)localObject1).addFlags(805306368);
-      bizm.b(this, this.app.getCurrentAccountUin(), (Intent)localObject1, -1);
+      bjdt.b(this, this.app.getCurrentAccountUin(), (Intent)localObject1, -1);
       continue;
       ((Intent)localObject1).putExtra("selfSet_leftViewText", getString(2131690623));
-      biqv.a(this, this.app.getAccount(), (Intent)localObject1, -1, false);
+      bivc.a(this, this.app.getAccount(), (Intent)localObject1, -1, false);
       continue;
-      bizt localbizt = bizt.a();
+      bjea localbjea = bjea.a();
       try
       {
         long l = Long.valueOf(this.app.getCurrentAccountUin()).longValue();
-        localbizt.a = String.valueOf(l);
+        localbjea.a = String.valueOf(l);
         String str = this.app.getCurrentNickname();
         localObject1 = str;
         if (TextUtils.isEmpty(str)) {
-          localObject1 = bdbt.h(this.app, String.valueOf(l));
+          localObject1 = bdgc.h(this.app, String.valueOf(l));
         }
-        localbizt.b = ((String)localObject1);
-        bizm.b(this, localbizt, Long.valueOf(l), 0, false, -1);
+        localbjea.b = ((String)localObject1);
+        bjdt.b(this, localbjea, Long.valueOf(l), 0, false, -1);
       }
       catch (Exception localException1)
       {
@@ -108,11 +108,11 @@ public class LebaSearchTransparentJumpActivity
       try
       {
         i = Integer.valueOf(localObject2[1]).intValue();
-        localObject2 = ((aycr)this.app.getManager(222)).jdField_a_of_type_Ayjl;
+        localObject2 = ((ayha)this.app.getManager(222)).jdField_a_of_type_Aynu;
         if (localObject2 != null)
         {
-          this.a.setTag(2131379914, Integer.valueOf(i));
-          ((ayjl)localObject2).a(this.a);
+          this.a.setTag(2131379972, Integer.valueOf(i));
+          ((aynu)localObject2).a(this.a);
         }
       }
       catch (Exception localException2)
@@ -129,7 +129,7 @@ public class LebaSearchTransparentJumpActivity
         QLog.d("kueenie", 2, "result model is null");
       }
       continue;
-      ((aycr)this.app.getManager(222)).jdField_a_of_type_Ayju.a(this.a);
+      ((ayha)this.app.getManager(222)).jdField_a_of_type_Ayod.a(this.a);
     }
   }
 }

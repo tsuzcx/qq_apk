@@ -1,67 +1,44 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class aomh
-  extends aofy<aomf>
+class aomh
 {
-  public int a()
-  {
-    return 534;
-  }
+  private static volatile aomh a;
   
-  @NonNull
-  public aomf a(int paramInt)
+  public static aomh a()
   {
-    return new aomf();
-  }
-  
-  @Nullable
-  public aomf a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
+    if (a == null) {}
+    try
     {
-      aomf localaomf = aomf.a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicConfProcessor", 2, "onParsed  " + paramArrayOfaogf[0].a);
+      if (a == null) {
+        a = new aomh();
       }
-      return localaomf;
+      return a;
     }
-    return null;
+    finally {}
   }
   
-  public Class<aomf> a()
+  public String a(String paramString)
   {
-    return aomf.class;
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      paramString = Pattern.compile("^\\[(\\d+)\\]$").matcher(paramString);
+    } while (!paramString.find());
+    return paramString.group(1);
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(aomf paramaomf)
+  public String b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQComicConfProcessor", 2, "onUpdate " + paramaomf.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      paramString = Pattern.compile("^\\[('|\")(.+)('|\")\\]$").matcher(paramString);
+    } while (!paramString.find());
+    return paramString.group(2);
   }
 }
 

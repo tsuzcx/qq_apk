@@ -1,19 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
-import org.json.JSONObject;
+import android.view.View;
 
 class beya
-  implements DialogInterface.OnClickListener
+  implements bexx
 {
-  beya(bexw parambexw, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse, JSONObject paramJSONObject) {}
+  beya(bexz parambexz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_Bexw.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    this.a.a(true, new View[] { this.a.a });
+  }
+  
+  public void b()
+  {
+    this.a.a(false, new View[] { this.a.a });
+  }
+  
+  public void c()
+  {
+    this.a.b(5);
   }
 }
 

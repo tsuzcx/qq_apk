@@ -22,9 +22,9 @@ public class ReadInjoySlideAnimLayout
   public ReadInjoySlideAnimLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560121, this, true);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramContext.findViewById(2131364780));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131375536));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560120, this, true);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramContext.findViewById(2131364781));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131375587));
   }
   
   public void a()

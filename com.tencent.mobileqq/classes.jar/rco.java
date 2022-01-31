@@ -24,7 +24,7 @@ class rco
           break label130;
         }
       }
-      while ((i != 0) && (rcn.a(this.a).getVisibility() == 0) && (j == 0) && (bjxj.f()))
+      while ((i != 0) && (rcn.a(this.a).getVisibility() == 0) && (j == 0) && (bkbq.f()))
       {
         rcn.a(this.a, rcn.a(this.a));
         sendEmptyMessageDelayed(2, 3000L);

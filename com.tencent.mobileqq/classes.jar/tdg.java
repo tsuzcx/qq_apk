@@ -3,7 +3,7 @@ import android.view.View;
 import com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.1.1;
 
 public class tdg
-  implements ybs
+  implements ygb
 {
   tdg(tdf paramtdf) {}
   

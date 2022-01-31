@@ -1,10 +1,17 @@
-public abstract interface bbmu
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class bbmu
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(int paramInt, String paramString);
+  bbmu(bbms parambbms) {}
   
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void c(String paramString);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
+  }
 }
 
 

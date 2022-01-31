@@ -1,181 +1,64 @@
-import android.text.Spannable;
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import mqq.manager.Manager;
 
 public class bbaa
-  extends bazx
+  implements Manager
 {
-  public int a;
-  public Spannable a;
-  public ArrayList<bazy> a;
-  public JSONObject a;
-  public int b;
-  public long b;
-  public boolean b;
-  public int c;
-  public long c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public boolean d;
-  public int e;
-  public long e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public String l;
-  public int m;
-  public int n;
+  private bbae jdField_a_of_type_Bbae;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
-  public bbaa(JSONObject paramJSONObject)
+  public bbaa(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_d_of_type_Int = paramJSONObject.optInt("del");
-    this.jdField_e_of_type_Int = paramJSONObject.optInt("views_num");
-    this.jdField_f_of_type_Int = paramJSONObject.optInt("hot_score");
-    this.m = paramJSONObject.optInt("commentnum_v2");
-    this.jdField_c_of_type_Long = paramJSONObject.optLong("uin");
-    this.jdField_l_of_type_Int = paramJSONObject.optInt("likes");
-    this.jdField_g_of_type_Int = paramJSONObject.optInt("readnum");
-    this.jdField_h_of_type_Int = paramJSONObject.optInt("theme_id");
-    this.jdField_k_of_type_Int = paramJSONObject.optInt("alreadyzan");
-    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("pid");
-    this.jdField_b_of_type_Long = paramJSONObject.optLong("bid");
-    if ((TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) || (this.jdField_b_of_type_Long == 0L)) {
-      throw new IllegalArgumentException("pid = " + this.jdField_d_of_type_JavaLangString + ", bid = " + this.jdField_b_of_type_Long);
-    }
-    label251:
-    Object localObject;
-    if (paramJSONObject.optInt("relation") == 1)
-    {
-      bool1 = true;
-      this.jdField_c_of_type_Boolean = bool1;
-      this.jdField_g_of_type_JavaLangString = paramJSONObject.optString("detail_page_url").replace("${bid}", String.valueOf(this.jdField_b_of_type_Long)).replace("${pid}", this.jdField_d_of_type_JavaLangString);
-      if (paramJSONObject.optInt("star") != 1) {
-        break label684;
-      }
-      bool1 = true;
-      this.jdField_d_of_type_Boolean = bool1;
-      this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("gbar_home_url_android");
-      this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject.optJSONObject("report");
-      localObject = paramJSONObject.optJSONObject("user_info");
-      if (localObject != null)
-      {
-        this.n = ((JSONObject)localObject).optInt("sex");
-        this.jdField_k_of_type_JavaLangString = ((JSONObject)localObject).optString("nickname");
-        this.jdField_l_of_type_JavaLangString = ((JSONObject)localObject).optString("headimgurl");
-      }
-      localObject = paramJSONObject.optJSONObject("theme_info");
-      if (localObject != null)
-      {
-        this.jdField_d_of_type_Long = ((JSONObject)localObject).optLong("creator_uin");
-        this.jdField_i_of_type_Int = ((JSONObject)localObject).optInt("censor_status");
-        this.jdField_j_of_type_Int = ((JSONObject)localObject).optInt("recommend_status");
-        this.jdField_h_of_type_JavaLangString = ((JSONObject)localObject).optString("theme_intro");
-        this.jdField_i_of_type_JavaLangString = ((JSONObject)localObject).optString("theme_name");
-      }
-      localObject = paramJSONObject.optJSONObject("post");
-      this.jdField_j_of_type_JavaLangString = ((JSONObject)localObject).optString("content");
-      this.jdField_c_of_type_Int = paramJSONObject.optInt("cs_source");
-      localObject = ((JSONObject)localObject).optJSONArray("ugc_video_list").optJSONObject(0);
-      this.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("duration");
-      this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("height");
-      this.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("width");
-      this.jdField_b_of_type_Boolean = ((JSONObject)localObject).optBoolean("isLocalVideo");
-      this.jdField_e_of_type_Long = ((JSONObject)localObject).optLong("size");
-      this.jdField_f_of_type_JavaLangString = ((JSONObject)localObject).optString("text");
-      this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("url");
-      this.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("vid");
-      this.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("video_thumbe_url");
-      if (this.jdField_b_of_type_Int / this.jdField_a_of_type_Int <= 0.75F) {
-        break label689;
-      }
-    }
-    label684:
-    label689:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.jdField_a_of_type_Boolean = bool1;
-      paramJSONObject = paramJSONObject.optJSONArray("gbar_info_list");
-      if (paramJSONObject == null) {
-        return;
-      }
-      while (i1 < paramJSONObject.length())
-      {
-        localObject = paramJSONObject.optJSONObject(i1);
-        long l1 = ((JSONObject)localObject).optLong("bid");
-        if (((JSONObject)localObject).optInt("bar_class") != 101)
-        {
-          localObject = new bazy(l1, ((JSONObject)localObject).optString("name") + alpo.a(2131715481), this.jdField_e_of_type_JavaLangString.replace("${bid}", String.valueOf(l1)));
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-        }
-        i1 += 1;
-      }
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label251;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Boolean = BaseApplication.getContext().getSharedPreferences("mobileQQ", 4).getBoolean("serializePreDownload", true);
+    this.jdField_a_of_type_Bbae = ((bbae)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(233));
+    this.jdField_a_of_type_Bbae.b(this.jdField_a_of_type_Boolean);
   }
   
-  public static ArrayList<bbaa> a(JSONArray paramJSONArray)
+  public static String a(int paramInt, String paramString, boolean paramBoolean)
   {
-    ArrayList localArrayList = new ArrayList(paramJSONArray.length());
-    int i1 = 0;
-    for (;;)
-    {
-      if (i1 < paramJSONArray.length()) {
-        try
-        {
-          bbaa localbbaa = new bbaa(paramJSONArray.optJSONObject(i1));
-          if (localbbaa != null) {
-            localArrayList.add(new bbaa(paramJSONArray.optJSONObject(i1)));
-          }
-          i1 += 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("TribeVideoItem", 2, QLog.getStackTraceString(localException));
-            }
-            Object localObject = null;
-          }
-        }
-      }
-    }
-    return localArrayList;
+    return bbae.a(paramInt, paramString, paramBoolean);
   }
   
-  public boolean equals(Object paramObject)
+  public static ArrayList<String> a(int paramInt1, int paramInt2)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (bbaa)paramObject;
-    } while ((this.jdField_d_of_type_JavaLangString.equals(paramObject.jdField_d_of_type_JavaLangString)) && (this.jdField_b_of_type_Long == paramObject.jdField_b_of_type_Long));
-    return false;
+    return new ArrayList(5);
   }
+  
+  public bazx a(String paramString)
+  {
+    return this.jdField_a_of_type_Bbae.a(paramString);
+  }
+  
+  void a(bazx parambazx)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreDownload.Controller", 2, "onTaskEnd: " + parambazx);
+    }
+    this.jdField_a_of_type_Bbae.a(parambazx);
+  }
+  
+  public void a(String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_Bbae.a(paramString, paramLong);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, int paramInt3, int paramInt4, boolean paramBoolean, bazx parambazx)
+  {
+    return this.jdField_a_of_type_Bbae.a(paramInt1, paramString1, paramString2, paramInt2, paramString3, paramString4, paramInt3, paramInt4, paramBoolean, parambazx);
+  }
+  
+  public void onDestroy() {}
 }
 
 

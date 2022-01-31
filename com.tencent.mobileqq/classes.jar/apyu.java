@@ -1,36 +1,27 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerFrameLayout;
 
-public class apyu
-  implements aqdi
+class apyu
+  implements Animator.AnimatorListener
 {
-  public apyu(ExtendFriendBaseFragment paramExtendFriendBaseFragment) {}
+  apyu(apyt paramapyt) {}
   
-  public void a()
-  {
-    aqcz.a(this.a.a);
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.a == null)
+    if (this.a.a != null)
     {
-      QLog.d("ExtendFriendBaseFragment", 1, "sendMsgDirectly()-> showToast() mActivity is null just return");
-      return;
+      float f = this.a.a.getTranslationX();
+      this.a.a.setTranslationX(0.0F);
+      this.a.a((int)(this.a.a.getLeft() + f), this.a.a.getTop(), (int)(f + this.a.a.getLeft() + this.a.a.getWidth()), this.a.a.getBottom());
     }
-    aqcz.a(this.a.a, this.a.a.getString(paramInt));
   }
   
-  public void a(String paramString1, String paramString2)
-  {
-    aqcz.a(this.a.a, paramString1, paramString2);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
-  {
-    aqcz.a(this.a.a, paramBoolean, paramInt, paramString1, paramString2);
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

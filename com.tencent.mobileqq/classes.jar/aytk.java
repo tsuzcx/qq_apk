@@ -1,139 +1,38 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class aytk
-  implements ayru
 {
-  protected View b;
-  public int c;
-  protected View c;
-  protected View d;
-  protected ImageView e;
-  protected ImageView f;
-  protected TextView h;
-  protected TextView i;
-  protected TextView j;
-  protected TextView k;
+  boolean jdField_a_of_type_Boolean;
   
-  protected aytk() {}
-  
-  public aytk(View paramView)
+  public aytk(aytg paramaytg, boolean paramBoolean)
   {
-    this.b = paramView;
-    a();
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public aytk(ViewGroup paramViewGroup, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Int = paramInt;
-    LayoutInflater localLayoutInflater = LayoutInflater.from(paramViewGroup.getContext());
-    if (a(paramInt)) {}
-    for (this.b = localLayoutInflater.inflate(paramInt, null, false);; this.b = localLayoutInflater.inflate(paramInt, paramViewGroup, false))
+    try
     {
-      a();
+      this.jdField_a_of_type_Boolean = paramBoolean;
       return;
     }
-  }
-  
-  public View a()
-  {
-    return this.b;
-  }
-  
-  public View a(int paramInt)
-  {
-    switch (paramInt)
+    finally
     {
-    default: 
-      return this.b;
+      localObject = finally;
+      throw localObject;
     }
-    return this.b.findViewById(2131376228);
   }
   
-  public View a(String paramString)
+  public boolean a()
   {
-    return null;
-  }
-  
-  public ImageView a()
-  {
-    return this.f;
-  }
-  
-  public TextView a()
-  {
-    return this.h;
-  }
-  
-  protected void a()
-  {
-    View localView = this.b.findViewById(2131377884);
-    if (localView != null)
+    try
     {
-      this.h = ((TextView)localView);
-      this.h.setEditableFactory(baiq.a);
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
     }
-    localView = this.b.findViewById(2131377143);
-    if (localView != null) {
-      this.i = ((TextView)localView);
-    }
-    localView = this.b.findViewById(2131365127);
-    if (localView != null) {
-      this.j = ((TextView)localView);
-    }
-    localView = this.b.findViewById(2131366333);
-    if (localView != null) {
-      this.k = ((TextView)localView);
-    }
-    localView = this.b.findViewById(2131367910);
-    if (localView != null) {
-      this.e = ((ImageView)localView);
-    }
-    localView = this.b.findViewById(2131375742);
-    if (localView != null) {
-      this.f = ((ImageView)localView);
-    }
-    this.jdField_c_of_type_AndroidViewView = this.b.findViewById(2131365367);
-    this.d = this.b.findViewById(2131375755);
-    b();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    switch (paramInt)
+    finally
     {
-    default: 
-      return true;
+      localObject = finally;
+      throw localObject;
     }
-    return false;
-  }
-  
-  public ImageView b()
-  {
-    return this.e;
-  }
-  
-  public TextView b()
-  {
-    return this.i;
-  }
-  
-  public void b()
-  {
-    if (a(this.jdField_c_of_type_Int)) {}
-  }
-  
-  public TextView c()
-  {
-    return this.j;
-  }
-  
-  public TextView d()
-  {
-    return this.k;
   }
 }
 

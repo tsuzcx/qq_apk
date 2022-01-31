@@ -1,43 +1,28 @@
-import android.media.MediaCodec;
-import android.media.MediaFormat;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.AudioPlayback;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.io.File;
 
-public class vtm
-  extends vtn
+class vtm
+  implements vvh
 {
-  private AudioPlayback a;
+  private vtm(vtj paramvtj) {}
   
-  public vtm(vtr paramvtr, boolean paramBoolean, int paramInt, vtp paramvtp, AudioPlayback paramAudioPlayback)
+  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean) {}
+  
+  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, vwa paramvwa) {}
+  
+  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, vwa paramvwa, int paramInt, Object paramObject)
   {
-    super(paramvtr, paramBoolean, paramInt, paramvtp);
-    this.a = paramAudioPlayback;
-    a();
+    return false;
   }
   
-  protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
+  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, vwa paramvwa, boolean paramBoolean)
   {
-    super.a(paramMediaCodec, paramMediaFormat);
-    this.a.a(paramMediaFormat);
+    return this.a.a.a(paramVideoViewVideoHolder, paramvwa, paramBoolean);
   }
   
-  protected void a(MediaFormat paramMediaFormat)
-  {
-    this.a.a(paramMediaFormat);
-  }
+  public void b(VideoViewVideoHolder paramVideoViewVideoHolder, vwa paramvwa) {}
   
-  public void a(vto paramvto, long paramLong)
-  {
-    this.a.a(paramvto.jdField_a_of_type_JavaNioByteBuffer, paramvto.jdField_a_of_type_Long);
-    b(paramvto);
-  }
-  
-  protected boolean a()
-  {
-    if (!c()) {
-      return this.a.a() < 200000L;
-    }
-    return super.a();
-  }
+  public void c(VideoViewVideoHolder paramVideoViewVideoHolder, vwa paramvwa) {}
 }
 
 

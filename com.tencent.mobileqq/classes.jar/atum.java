@@ -1,13 +1,14 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class atum
-  implements atui
+  implements View.OnClickListener
 {
-  atum(atuj paramatuj) {}
+  atum(atuh paramatuh, View.OnClickListener paramOnClickListener) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Attp != null) {
-      this.a.jdField_a_of_type_Attp.a(paramInt, this.a.jdField_a_of_type_Atup);
-    }
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
   }
 }
 

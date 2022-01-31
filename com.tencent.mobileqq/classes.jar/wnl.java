@@ -1,23 +1,39 @@
-import com.tribe.async.dispatch.IEventReceiver;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class wnl
-  implements IEventReceiver
+  extends xvp
 {
-  protected wmu a;
+  public static final String KEY = "MemoriesPlaceHolderSegment";
   
-  public wmu a()
+  public wnl(Context paramContext)
   {
-    return this.a;
+    super(paramContext);
   }
   
-  public void a(Runnable paramRunnable)
+  public int a()
   {
-    wsv.b("Q.qqstory.home.Repository", "executeRunnableOnWorkThread");
+    return 1;
   }
   
-  public boolean isValidate()
+  public View a(int paramInt, wtq paramwtq, ViewGroup paramViewGroup)
   {
-    return false;
+    paramInt = xsm.d(this.a);
+    int i = xsm.e(this.a);
+    paramwtq.a().getLayoutParams().height = (paramInt - i);
+    return paramwtq.a();
+  }
+  
+  public String a()
+  {
+    return "MemoriesPlaceHolderSegment";
+  }
+  
+  public wtq a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new wtq(LayoutInflater.from(this.a).inflate(2131561502, paramViewGroup, false));
   }
 }
 

@@ -1,20 +1,37 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.widget.QQToast.ProtectedToast;
 
 public class beug
-  implements MediaPlayer.OnErrorListener
+  implements Handler.Callback
 {
-  public beug(VideoTextureView paramVideoTextureView) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public beug(QQToast.ProtectedToast paramProtectedToast, Handler paramHandler)
   {
-    return true;
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidOsHandler.handleMessage(paramMessage);
+      return true;
+    }
+    catch (Throwable paramMessage)
+    {
+      for (;;)
+      {
+        paramMessage.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     beug
  * JD-Core Version:    0.7.0.1
  */

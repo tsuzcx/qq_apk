@@ -1,55 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import java.lang.ref.WeakReference;
 
 public class ahze
+  implements DialogInterface.OnCancelListener
 {
-  ArrayList<Object> a = new ArrayList();
+  private final WeakReference<ChatHistoryC2CAllFragment> a;
   
-  private boolean a()
+  public ahze(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment)
   {
-    boolean bool = false;
-    if (this.a != null) {}
-    for (int i = this.a.size() + 0;; i = 0)
-    {
-      if (i >= 20) {
-        bool = true;
-      }
-      if ((bool) && (QLog.isColorLevel())) {
-        QLog.d("Q.history.", 2, "isOverLimit");
-      }
-      return bool;
+    this.a = new WeakReference(paramChatHistoryC2CAllFragment);
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = (ChatHistoryC2CAllFragment)this.a.get();
+    if ((localChatHistoryC2CAllFragment != null) && (localChatHistoryC2CAllFragment.getActivity() != null) && (!localChatHistoryC2CAllFragment.getActivity().isFinishing())) {
+      paramDialogInterface.dismiss();
     }
-  }
-  
-  public List<Object> a()
-  {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (a(paramObject))
-    {
-      this.a.remove(paramObject);
-      return;
-    }
-    if (a())
-    {
-      armz.a(2131692639);
-      return;
-    }
-    this.a.add(paramObject);
-  }
-  
-  public boolean a(Object paramObject)
-  {
-    return this.a.contains(paramObject);
   }
 }
 

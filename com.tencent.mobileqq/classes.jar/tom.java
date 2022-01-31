@@ -32,17 +32,17 @@ class tom
         }
         if (paramInt == 58)
         {
-          toi.a(this.a, 2131695724);
+          toi.a(this.a, 2131695726);
           return;
         }
         if (paramInt == 65)
         {
-          toi.a(this.a, 2131695697);
+          toi.a(this.a, 2131695699);
           return;
         }
-        toi.a(this.a, 2131695727);
+        toi.a(this.a, 2131695729);
         return;
-        toi.a(this.a, 2131695727);
+        toi.a(this.a, 2131695729);
       }
       return;
     }

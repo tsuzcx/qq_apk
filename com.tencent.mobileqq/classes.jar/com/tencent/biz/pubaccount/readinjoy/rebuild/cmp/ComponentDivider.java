@@ -64,7 +64,7 @@ public class ComponentDivider
   
   public void a(Context paramContext)
   {
-    setBackgroundColor(getContext().getResources().getColor(2131166784));
+    setBackgroundColor(getContext().getResources().getColor(2131166786));
   }
   
   public void a(Object paramObject)

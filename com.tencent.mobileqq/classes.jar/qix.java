@@ -13,7 +13,7 @@ import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.ReqBody;
 import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
 public class qix
-  extends alko
+  extends alpd
 {
   public qix(QQAppInterface paramQQAppInterface)
   {
@@ -37,7 +37,7 @@ public class qix
     mzy.a(this.app, new qiy(this), paramGuideData1.toByteArray(), "OidbSvc.0x5bd_1", 1469, 1, new Bundle(), 6000L);
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return qiz.class;
   }

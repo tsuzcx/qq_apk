@@ -1,8 +1,34 @@
 public class bgol
 {
-  public static void a(String paramString, bgon parambgon)
+  bgok a = new bgok();
+  
+  public bgok a()
   {
-    new bgom(parambgon).execute(new String[] { paramString });
+    return this.a;
+  }
+  
+  public bgol a(int paramInt)
+  {
+    this.a.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public bgol a(bglu parambglu)
+  {
+    this.a.jdField_a_of_type_Bglu = parambglu;
+    return this;
+  }
+  
+  public bgol a(String paramString)
+  {
+    this.a.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bgol b(String paramString)
+  {
+    this.a.jdField_b_of_type_JavaLangString = paramString;
+    return this;
   }
 }
 

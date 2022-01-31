@@ -1,24 +1,30 @@
-import android.view.View;
+import android.app.Activity;
+import android.content.Context;
+import java.lang.ref.WeakReference;
 
-class yhq
-  implements bhqd
+public class yhq
+  extends yfg
 {
-  yhq(yho paramyho, String paramString1, String paramString2, yhz paramyhz, bhpy parambhpy) {}
+  protected WeakReference<Context> a;
   
-  public void OnClick(View paramView, int paramInt)
+  public yhq(Context paramContext, int paramInt)
   {
-    switch (paramInt)
-    {
+    super(paramContext, paramInt);
+    this.a = new WeakReference(paramContext);
+  }
+  
+  public boolean a()
+  {
+    Context localContext = (Context)this.a.get();
+    return ((localContext instanceof Activity)) && (((Activity)localContext).isFinishing());
+  }
+  
+  public void show()
+  {
+    if (a()) {
+      return;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      do
-      {
-        return;
-      } while (ytg.a("subScribe_delete_draft"));
-      this.jdField_a_of_type_Yho.a(this.jdField_a_of_type_JavaLangString, this.b, new yhr(this));
-    }
+    super.show();
   }
 }
 

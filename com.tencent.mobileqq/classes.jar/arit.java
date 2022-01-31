@@ -1,20 +1,22 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.1.1;
-
-public class arit
-  implements aqte
+public abstract interface arit
 {
-  arit(aris paramaris) {}
+  public abstract long a();
   
-  public void a()
-  {
-    this.a.n();
-  }
+  public abstract String a();
   
-  public void b()
-  {
-    this.a.a.runOnUiThread(new VideoFilePresenter.1.1(this));
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void a(aqxm paramaqxm);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract String c();
 }
 
 

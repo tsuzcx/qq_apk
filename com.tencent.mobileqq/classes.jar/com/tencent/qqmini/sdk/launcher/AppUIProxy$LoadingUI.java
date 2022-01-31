@@ -18,10 +18,10 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bgqe;
-import bgqf;
-import bgqg;
-import bgyd;
+import bgul;
+import bgum;
+import bgun;
+import bhck;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.utils.DisplayUtil;
 import com.tencent.qqmini.sdk.utils.LiuHaiUtils;
@@ -57,11 +57,11 @@ public class AppUIProxy$LoadingUI
   
   private void c()
   {
-    inflate(getContext(), 2131559350, this);
+    inflate(getContext(), 2131559349, this);
     this.jdField_a_of_type_AndroidViewViewGroup = this;
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376953);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131377007);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364766));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364767));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 80.0F), DisplayUtil.dip2px(getContext(), 30.0F));
     localLayoutParams.addRule(11, -1);
     int j = DisplayUtil.dip2px(getContext(), 9.0F);
@@ -71,14 +71,14 @@ public class AppUIProxy$LoadingUI
       localLayoutParams.topMargin = (i + j);
       localLayoutParams.rightMargin = DisplayUtil.dip2px(getContext(), 12.5F);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363630));
-      this.c = ((ImageView)findViewById(2131363541));
-      this.c.setImageResource(2130840953);
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131369117));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367041));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369845));
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131365172);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365173));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363632));
+      this.c = ((ImageView)findViewById(2131363543));
+      this.c.setImageResource(2130840954);
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131369135));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367051));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369864));
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131365174);
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365175));
       this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.c.setOnClickListener(this);
       return;
@@ -115,7 +115,7 @@ public class AppUIProxy$LoadingUI
     ((Animation)localObject2).setInterpolator(new DecelerateInterpolator());
     localAnimationSet.addAnimation((Animation)localObject1);
     localAnimationSet.addAnimation((Animation)localObject2);
-    ((Animation)localObject1).setAnimationListener(new bgqe(this));
+    ((Animation)localObject1).setAnimationListener(new bgul(this));
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AppUIProxy.LoadingUI.3(this, localAnimationSet), 200L);
   }
   
@@ -148,7 +148,7 @@ public class AppUIProxy$LoadingUI
     new AnimationSet(true);
     localObject1 = new AlphaAnimation(1.0F, 0.0F);
     ((AlphaAnimation)localObject1).setDuration(400L);
-    ((AlphaAnimation)localObject1).setAnimationListener(new bgqf(this));
+    ((AlphaAnimation)localObject1).setAnimationListener(new bgum(this));
     this.jdField_a_of_type_AndroidViewViewGroup.setAnimation((Animation)localObject1);
   }
   
@@ -195,15 +195,15 @@ public class AppUIProxy$LoadingUI
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131363541)
+    if (paramView.getId() == 2131363543)
     {
-      bgyd.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 1026, "1");
+      bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 1026, "1");
       if (AppRuntimeLoaderManager.g().getCurrentRunTimeLoader() != null) {
         AppRuntimeLoaderManager.g().getCurrentRunTimeLoader().notifyRuntimeEvent(60, new Object[0]);
       }
       this.jdField_a_of_type_ComTencentQqminiSdkLauncherAppUIProxy.quit();
     }
-    while (paramView.getId() != 2131363630) {
+    while (paramView.getId() != 2131363632) {
       return;
     }
   }

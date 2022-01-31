@@ -1,14 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class ayly
-  implements View.OnClickListener
+public class ayly
 {
-  ayly(aylv paramaylv) {}
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  public ayly() {}
+  
+  public ayly(String paramString1, String paramString2)
   {
-    aylv.a(this.a).a(paramView);
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

@@ -70,15 +70,15 @@ public class PublicAccountImageCollectionCommentActivity
   {
     this.mNeedStatusTrans = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559481);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131364520);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131364517));
+    super.setContentView(2131559480);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131364522);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131364519));
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new tos(this));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new tot(this));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131364511).setOnClickListener(new tou(this));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131364513).setOnClickListener(new tou(this));
     this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new tov(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131376336));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131376390));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new tow(this));
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("anonymous", false);
     this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131362581));

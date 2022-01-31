@@ -1,69 +1,42 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.SparseArray;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
-class amae
-  extends Handler
+public class amae
+  extends BroadcastReceiver
 {
-  amae(amad paramamad, Looper paramLooper, QQAppInterface paramQQAppInterface)
-  {
-    super(paramLooper);
-  }
+  public amae(QQAppInterface paramQQAppInterface) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
     {
-    default: 
-      return;
-    case 1001: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message Progress. clientKey= " + paramMessage.arg1 + " progress=" + paramMessage.arg2);
-      }
-      i = paramMessage.arg1;
-      this.jdField_a_of_type_Amad.a(paramMessage.what, i, paramMessage.arg2);
-      return;
-    case 1000: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message Finished. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
-      }
-      i = paramMessage.arg1;
-      this.jdField_a_of_type_Amad.a(paramMessage.what, i, paramMessage.arg2);
-      return;
-    case 1003: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message failed. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
-      }
-      i = paramMessage.arg1;
-      this.jdField_a_of_type_Amad.a(paramMessage.what, i, paramMessage.arg2);
-      return;
-    case 1005: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message task removed. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
-      }
-      i = paramMessage.arg1;
-      this.jdField_a_of_type_Amad.a(paramMessage.what, i, paramMessage.arg2);
-      this.jdField_a_of_type_Amad.a.remove(i);
-      return;
-    case 1004: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message no task. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
-      }
-      this.jdField_a_of_type_Amad.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2);
-      this.jdField_a_of_type_Amad.a.clear();
-      return;
+      do
+      {
+        do
+        {
+          return;
+          if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())))
+          {
+            assz.a();
+            return;
+          }
+        } while (!paramContext.equals("com.tencent.mobileqq.kickedLogin.otherDevice"));
+        paramContext = paramIntent.getStringExtra("kickedUin");
+      } while ((TextUtils.isEmpty(paramContext)) || (!paramContext.equals(this.a.getAccount())));
+      paramContext = this.a.getKickIntent();
+    } while (paramContext == null);
+    paramContext.putExtra("isSameDevice", false);
+    paramIntent = paramIntent.getStringExtra("msg");
+    if (!TextUtils.isEmpty(paramIntent)) {
+      paramContext.putExtra("msg", paramIntent);
     }
-    paramMessage = (Object[])paramMessage.obj;
-    int i = ((Integer)paramMessage[0]).intValue();
-    amai localamai = (amai)paramMessage[1];
-    int j = ((Integer)paramMessage[2]).intValue();
-    int k = ((Integer)paramMessage[3]).intValue();
-    this.jdField_a_of_type_Amad.a(localamai.jdField_a_of_type_Long, j, k);
-    this.jdField_a_of_type_Amad.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, localamai.jdField_a_of_type_JavaLangString, localamai.jdField_a_of_type_Long, j, k);
+    this.a.setKickIntent(paramContext);
   }
 }
 

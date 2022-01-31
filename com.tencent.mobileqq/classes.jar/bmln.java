@@ -1,43 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDTextFace.1;
 
 public class bmln
-  extends JobSegment<Bitmap, Bitmap>
+  implements View.OnTouchListener
 {
-  public int a;
+  public bmln(EditVideoDTextFace.1 param1) {}
   
-  public bmln()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = 10;
-  }
-  
-  public bmln(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
-  {
-    if (paramBitmap == null) {
-      return null;
-    }
-    bdjc.a(paramBitmap, paramInt);
-    return paramBitmap;
-  }
-  
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
-  {
-    long l = System.currentTimeMillis();
-    paramJobContext = a(paramBitmap, this.a, false);
-    wsv.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
-    if (paramJobContext == null)
+    if (1 == paramMotionEvent.getAction())
     {
-      super.notifyError(new BitmapError("BlurJobSegment", 7));
-      return;
+      bmlm.a(this.a.this$0);
+      wxj.a("video_edit_text", "clk_textWording", 0, 0, new String[] { this.a.this$0.a, "", "", "" });
     }
-    super.notifyResult(paramJobContext);
+    this.a.this$0.d();
+    return false;
   }
 }
 

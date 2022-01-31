@@ -1,11 +1,9 @@
-public final class bkhq
+public class bkhq
 {
   public int a;
-  public long a;
   public String a;
-  public Throwable a = null;
-  public long b;
-  public long c;
+  public String b;
+  public String c;
 }
 
 

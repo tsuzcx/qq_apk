@@ -1,28 +1,44 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
 
 public class axqm
-  implements Handler.Callback
+  extends OrientationEventListener
 {
-  public axqm(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public axqm(CameraCaptureView paramCameraCaptureView, Context paramContext)
   {
-    switch (paramMessage.what)
+    super(paramContext);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    this.a.v = paramInt;
+    if (paramInt == -1)
     {
-    default: 
-      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraCaptureView", 2, "OrientationEventListener unknown");
+      }
+      this.a.w = 90;
     }
-    if (!NeoVideoFilterPlayView.a(this.a))
+    if ((paramInt > 315) || (paramInt < 45)) {
+      this.a.w = 90;
+    }
+    for (;;)
     {
-      this.a.requestRender();
-      return true;
+      if (this.a.g) {
+        this.a.u = this.a.w;
+      }
+      axpx.a = this.a.u;
+      return;
+      if ((paramInt > 45) && (paramInt < 135)) {
+        this.a.w = 180;
+      } else if ((paramInt > 135) && (paramInt < 225)) {
+        this.a.w = 270;
+      } else if ((paramInt > 225) && (paramInt < 315)) {
+        this.a.w = 0;
+      }
     }
-    NeoVideoFilterPlayView.a(this.a).set(true);
-    wsv.b("FlowEdit_NeoVideoFilterPlayView", "skip request render because of pause play");
-    return true;
   }
 }
 

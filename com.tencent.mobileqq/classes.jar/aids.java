@@ -1,16 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class aids
-  implements View.OnClickListener
+public abstract interface aids
 {
-  aids(aidp paramaidp) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a = null;
-    this.a.dismiss();
-  }
+  public abstract boolean a(FileManagerEntity paramFileManagerEntity);
 }
 
 

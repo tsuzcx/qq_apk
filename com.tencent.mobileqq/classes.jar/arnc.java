@@ -1,12 +1,19 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.1.1;
 
-final class arnc
-  implements Comparator<Map.Entry<String, Integer>>
+public class arnc
+  implements aqxn
 {
-  public int a(Map.Entry<String, Integer> paramEntry1, Map.Entry<String, Integer> paramEntry2)
+  arnc(arnb paramarnb) {}
+  
+  public void a()
   {
-    return ((Integer)paramEntry2.getValue()).intValue() - ((Integer)paramEntry1.getValue()).intValue();
+    this.a.n();
+  }
+  
+  public void b()
+  {
+    this.a.a.runOnUiThread(new VideoFilePresenter.1.1(this));
   }
 }
 

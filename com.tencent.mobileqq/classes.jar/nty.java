@@ -5,7 +5,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
 class nty
-  implements bcwt
+  implements bdbc
 {
   nty(ntw paramntw) {}
   

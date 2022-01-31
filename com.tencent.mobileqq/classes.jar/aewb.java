@@ -1,34 +1,16 @@
-import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
+import android.support.annotation.IntRange;
 
-public class aewb
-  implements aewe
+public abstract interface aewb
 {
-  public aewb(LoadDataJob paramLoadDataJob, Map paramMap, List paramList) {}
+  public abstract void a();
   
-  public void a(int paramInt, aewp paramaewp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoadDataJob", 2, "unmarshall task finish id:" + paramInt);
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-      this.jdField_a_of_type_JavaUtilMap.notifyAll();
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramaewp);
-      if (this.jdField_a_of_type_JavaUtilList.size() == LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob)) {
-        this.jdField_a_of_type_JavaUtilList.notifyAll();
-      }
-      return;
-      paramaewp = finally;
-      throw paramaewp;
-    }
-  }
+  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt);
+  
+  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt, String paramString1, String paramString2);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

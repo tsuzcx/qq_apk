@@ -1,22 +1,22 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.story.mode.StoryEffectTextMode.6.1;
+import mqq.os.MqqHandler;
 
-class bmie
-  extends bmlk
+public class bmie
+  implements nbs
 {
-  public Bitmap a;
-  public Bitmap b;
+  bmie(bmhu parambmhu) {}
   
-  public bmie(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
+  public void loaded(String paramString, int paramInt)
   {
-    super(paramInt, paramBitmap1);
-    this.b = paramBitmap2;
-    this.a = paramBitmap3;
+    if ((paramInt == 0) && (paramString == null) && (bmhu.a(this.a, bmhu.a(this.a).d))) {
+      ThreadManager.getUIHandler().post(new StoryEffectTextMode.6.1(this));
+    }
+    QLog.i("StoryEffectTextModeQ.qqstory.text_filter", 2, "HtmlOffline.checkUpByBusinessId QG_SO_BID, loaded:code =" + paramInt);
   }
   
-  public bmie(bmlk parambmlk, Bitmap paramBitmap1, Bitmap paramBitmap2)
-  {
-    this(parambmlk.jdField_c_of_type_Int, parambmlk.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
-  }
+  public void progress(int paramInt) {}
 }
 
 

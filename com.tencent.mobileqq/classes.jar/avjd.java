@@ -1,25 +1,32 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.app.Activity;
+import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
 
-class avjd
-  implements aoec
+public class avjd
+  extends zje
 {
-  avjd(avjc paramavjc, IphonePickerView paramIphonePickerView, bhpy parambhpy) {}
+  public avjd(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
   
-  public void a()
+  public zil a(Activity paramActivity, zir paramzir)
   {
-    if ((this.jdField_a_of_type_Bhpy != null) && (this.jdField_a_of_type_Bhpy.isShowing()))
-    {
-      avjc.a(this.jdField_a_of_type_Avjc, this.jdField_a_of_type_Avjc.b, false);
-      this.jdField_a_of_type_Bhpy.dismiss();
-    }
+    return new avjf(paramActivity, paramzir);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public zin a(Activity paramActivity, zir paramzir)
   {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.jdField_a_of_type_Avjc.b.setTag(Byte.valueOf((byte)paramInt1));
-    this.jdField_a_of_type_Avjc.b.setText(avjc.a(this.jdField_a_of_type_Avjc).a(0, paramInt1));
+    return new avjj((PicBrowserActivity)paramActivity, paramzir);
+  }
+  
+  public zir a(Activity paramActivity)
+  {
+    paramActivity = new avjp(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
+    paramActivity.a(this.a.jdField_b_of_type_Int);
+    return paramActivity;
+  }
+  
+  public zis a(Activity paramActivity, zir paramzir)
+  {
+    return null;
   }
 }
 

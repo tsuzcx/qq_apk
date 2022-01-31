@@ -1,20 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
 public class awph
-  implements View.OnClickListener
+  implements beua
 {
-  public awph(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  public awph(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.a(0);
-    this.a.b(false);
-    StickyNotePublishFragment.a(this.a).setImageResource(2130844348);
-    StickyNotePublishFragment.a(this.a).setContentDescription(this.a.getActivity().getString(2131690364));
+    if (!this.a.e) {
+      this.a.e = true;
+    }
   }
 }
 

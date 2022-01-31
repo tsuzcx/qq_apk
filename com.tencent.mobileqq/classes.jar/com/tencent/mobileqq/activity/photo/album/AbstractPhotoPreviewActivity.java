@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import ailq;
-import aimj;
+import aiqf;
+import aiqy;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -19,9 +19,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import apgg;
-import bnnt;
-import bnnu;
+import apkp;
+import bnsf;
+import bnsg;
 import com.tencent.image.QQLiveImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
@@ -55,7 +55,7 @@ public abstract class AbstractPhotoPreviewActivity
   public PhotoPreviewBaseData mPhotoPreviewData;
   PhotoPreviewLogic mPhotoPreviewLogic;
   public SurfaceView mSurfaceView;
-  public ailq mVideoPlayController;
+  public aiqf mVideoPlayController;
   public Button magicStickBtn;
   float originalTextSize = 13.0F;
   public CheckBox qualityCheckBox;
@@ -77,11 +77,11 @@ public abstract class AbstractPhotoPreviewActivity
   
   public Drawable getCoverDrawable(String paramString, int paramInt1, int paramInt2, LocalMediaInfo paramLocalMediaInfo)
   {
-    apgg localapgg = new apgg(Color.rgb(214, 214, 214), paramInt1, paramInt2);
+    apkp localapkp = new apkp(Color.rgb(214, 214, 214), paramInt1, paramInt2);
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, paramInt1, paramInt2, localapgg, localapgg);
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, paramInt1, paramInt2, localapkp, localapkp);
         localURLDrawable.setTag(paramLocalMediaInfo);
         if (localURLDrawable.getStatus() != 1) {
           localURLDrawable.downloadImediatly();
@@ -95,7 +95,7 @@ public abstract class AbstractPhotoPreviewActivity
         }
       }
     }
-    return localapgg;
+    return localapkp;
   }
   
   public int getCurrentSelectedPostion()
@@ -105,7 +105,7 @@ public abstract class AbstractPhotoPreviewActivity
   
   public String getExceedMaxSelectNumStr()
   {
-    return getResources().getString(2131695258, new Object[] { Integer.valueOf(this.mPhotoPreviewLogic.mPhotoCommonData.maxSelectNum) });
+    return getResources().getString(2131695260, new Object[] { Integer.valueOf(this.mPhotoPreviewLogic.mPhotoCommonData.maxSelectNum) });
   }
   
   public URL getFileUrl(File paramFile)
@@ -139,8 +139,8 @@ public abstract class AbstractPhotoPreviewActivity
         Object localObject;
         if ((localLocalMediaInfo != null) && ((localLocalMediaInfo.mediaWidth == 0) || (localLocalMediaInfo.mediaHeight == 0)))
         {
-          localObject = new bnnu();
-          bnnt.a(paramString, (bnnu)localObject);
+          localObject = new bnsg();
+          bnsf.a(paramString, (bnsg)localObject);
           localLocalMediaInfo.mediaWidth = localObject.a[0];
           localLocalMediaInfo.mediaHeight = localObject.a[1];
           localLocalMediaInfo.rotation = localObject.a[2];
@@ -221,7 +221,7 @@ public abstract class AbstractPhotoPreviewActivity
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     int i = paramCompoundButton.getId();
-    if (i == 2131373917) {
+    if (i == 2131373968) {
       this.mPhotoPreviewLogic.onQualityBtnClick(paramCompoundButton, paramBoolean);
     }
     for (;;)
@@ -232,7 +232,7 @@ public abstract class AbstractPhotoPreviewActivity
         this.flashTv.setTextColor(-1);
       }
       return;
-      if (i == 2131366468) {
+      if (i == 2131366474) {
         this.mPhotoPreviewLogic.mOnCheckedChangedCallback.flashPicCheckedChanged(paramBoolean);
       }
     }
@@ -241,24 +241,24 @@ public abstract class AbstractPhotoPreviewActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131559437);
-    this.mSurfaceView = ((SurfaceView)findViewById(2131367019));
+    super.setContentView(2131559436);
+    this.mSurfaceView = ((SurfaceView)findViewById(2131367029));
     this.mSurfaceView.setVisibility(8);
-    this.rootLayout = ((RelativeLayout)findViewById(2131375982));
-    this.topBar = findViewById(2131378090);
+    this.rootLayout = ((RelativeLayout)findViewById(2131376035));
+    this.topBar = findViewById(2131378144);
     this.bottomBar = ((RelativeLayout)findViewById(2131363377));
-    this.magicStickBtn = ((Button)findViewById(2131369974));
-    this.flashPicCb = ((CheckBox)findViewById(2131366468));
-    this.flashTv = ((TextView)findViewById(2131366469));
-    this.qualityCheckBox = ((CheckBox)findViewById(2131373917));
-    this.qualityTv = ((TextView)findViewById(2131373923));
-    this.cancelTv = ((TextView)findViewById(2131371872));
-    this.sendBtn = ((Button)findViewById(2131376341));
-    this.selectedBox = ((NumberCheckBox)findViewById(2131376318));
-    this.selectLayout = findViewById(2131376298);
-    this.titleView = ((TextView)findViewById(2131377884));
+    this.magicStickBtn = ((Button)findViewById(2131369993));
+    this.flashPicCb = ((CheckBox)findViewById(2131366474));
+    this.flashTv = ((TextView)findViewById(2131366475));
+    this.qualityCheckBox = ((CheckBox)findViewById(2131373968));
+    this.qualityTv = ((TextView)findViewById(2131373974));
+    this.cancelTv = ((TextView)findViewById(2131371892));
+    this.sendBtn = ((Button)findViewById(2131376395));
+    this.selectedBox = ((NumberCheckBox)findViewById(2131376372));
+    this.selectLayout = findViewById(2131376352);
+    this.titleView = ((TextView)findViewById(2131377938));
     this.backToPhotoListBtn = ((TextView)findViewById(2131363031));
-    this.gallery = ((DragGallery)findViewById(2131367010));
+    this.gallery = ((DragGallery)findViewById(2131367020));
     this.flashPicCb.setVisibility(8);
     this.flashTv.setVisibility(8);
     this.qualityCheckBox.setVisibility(8);

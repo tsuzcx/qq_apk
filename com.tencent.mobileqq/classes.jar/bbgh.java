@@ -1,17 +1,16 @@
-import android.view.KeyEvent;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
 
 public class bbgh
-  implements bcpn
+  implements DialogInterface.OnClickListener
 {
-  public bbgh(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public bbgh(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1)) {
-      TroopBarReplyActivity.a(this.a, false);
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -6,14 +6,14 @@ public class mia
 {
   public mia(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
   
-  protected void a(bdfb parambdfb)
+  protected void a(bdjk parambdjk)
   {
-    if ((QLog.isDevelopLevel()) || (this.a.a != parambdfb.a)) {
-      QLog.w(this.a.d, 1, "onGroupInviteFlagChanged, mCanAutoInviteMemIntoTroop[" + this.a.a + "->" + parambdfb.a + "]");
+    if ((QLog.isDevelopLevel()) || (this.a.a != parambdjk.a)) {
+      QLog.w(this.a.d, 1, "onGroupInviteFlagChanged, mCanAutoInviteMemIntoTroop[" + this.a.a + "->" + parambdjk.a + "]");
     }
-    if (this.a.a != parambdfb.a)
+    if (this.a.a != parambdjk.a)
     {
-      this.a.a = parambdfb.a;
+      this.a.a = parambdjk.a;
       this.a.f(0L, 65535);
     }
   }

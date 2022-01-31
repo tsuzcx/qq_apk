@@ -1,22 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahxm
-  implements View.OnTouchListener
+class ahxm
+  implements aznz
 {
-  public ahxm(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ahxm(ahxl paramahxl) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.x();
-      paramView = this.a.o;
-      this.a.a("Clk_find", paramView, "");
-    }
-    return true;
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog grant");
+  }
+  
+  public void b()
+  {
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog denied");
+    ahww.a(this.a.a, ahww.b(this.a.a));
   }
 }
 

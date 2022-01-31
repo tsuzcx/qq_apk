@@ -1,66 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class actb
-  implements aylz
 {
-  public actb(ForwardRecentActivity paramForwardRecentActivity) {}
+  private final String jdField_a_of_type_JavaLangString;
+  private final String b;
+  private final String c;
   
-  public void a(View paramView)
+  public actb(Conversation paramConversation, String paramString1, String paramString2, String paramString3)
   {
-    int i = 3000;
-    paramView = (ayjh)paramView.getTag(2131379913);
-    if (paramView == null) {
-      return;
-    }
-    String str1 = paramView.b();
-    String str2 = paramView.a().toString();
-    if ((paramView instanceof ayhv)) {
-      paramView = ((ayhv)paramView).e();
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onAction, uin = " + str1 + ", displayName = " + str2 + ", troopUin = " + paramView + ", type = " + i);
-      }
-      if ((i != -1) && (ForwardRecentActivity.a(this.a, new ResultRecord(str1, str2, i, paramView, "")))) {
-        ForwardRecentActivity.a(this.a).notifyDataSetChanged();
-      }
-      ForwardRecentActivity.h(this.a);
-      return;
-      if ((paramView instanceof ayht))
-      {
-        paramView = ((ayht)paramView).b();
-      }
-      else if ((paramView instanceof ayib))
-      {
-        paramView = ((ayib)paramView).a;
-        i = 1;
-      }
-      else if ((paramView instanceof ayig))
-      {
-        paramView = ((ayig)paramView).a().troopuin;
-        i = 1;
-      }
-      else if ((paramView instanceof ayhw))
-      {
-        i = 0;
-        paramView = "-1";
-      }
-      else
-      {
-        i = -1;
-        paramView = "-1";
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  public void a()
+  {
+    actc localactc = new actc(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a = bdgm.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), 230, this.jdField_a_of_type_JavaLangString, this.b, alud.a(2131702985), alud.a(2131702989), localactc, localactc);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.setCancelable(false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     actb
  * JD-Core Version:    0.7.0.1
  */

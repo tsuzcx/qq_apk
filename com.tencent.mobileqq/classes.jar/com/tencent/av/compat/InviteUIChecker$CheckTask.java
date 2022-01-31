@@ -2,7 +2,7 @@ package com.tencent.av.compat;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import azmj;
+import azqs;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.gaudio.GaInviteLockActivity;
 import com.tencent.av.ui.MultiIncomingCallsActivity;
@@ -170,7 +170,7 @@ class InviteUIChecker$CheckTask
         if (VideoInviteActivity.class.getName().equals(this.jdField_a_of_type_JavaLangString))
         {
           c(localVideoAppInterface, this.jdField_a_of_type_AndroidContentIntent);
-          azmj.b(null, "dc00898", "", "", "0X800A2C4", "0X800A2C4", 0, 0, "", "", "", "");
+          azqs.b(null, "dc00898", "", "", "0X800A2C4", "0X800A2C4", 0, 0, "", "", "", "");
           if (!QLog.isColorLevel()) {
             break;
           }

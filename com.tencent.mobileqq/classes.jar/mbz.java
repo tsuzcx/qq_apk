@@ -231,7 +231,7 @@ public class mbz
       }
       if (this.a.jdField_a_of_type_Mcb != null)
       {
-        paramString = bdiv.a(this.a.jdField_a_of_type_AndroidContentContext).edit();
+        paramString = bdne.a(this.a.jdField_a_of_type_AndroidContentContext).edit();
         paramString.putInt("video_position", this.a.jdField_a_of_type_Mcb.g());
         paramString.commit();
       }
@@ -291,8 +291,8 @@ public class mbz
     if (QLog.isColorLevel()) {
       QLog.d("SmallScreenVideoController", 2, "yiler onPlayAnnimate receive id:" + paramInt);
     }
-    int i = bdyi.a();
-    Object localObject = bdyi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt, i, null);
+    int i = becr.a();
+    Object localObject = becr.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt, i, null);
     if (localObject == null) {}
     do
     {

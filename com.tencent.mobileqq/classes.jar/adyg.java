@@ -1,108 +1,106 @@
-import android.os.Handler;
-import android.os.Looper;
+import android.graphics.drawable.Animatable;
+import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopGagActivity;
-import com.tencent.mobileqq.activity.TroopGagActivity.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.ViewGroup;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 import java.util.List;
 
 public class adyg
-  extends alkl
+  extends RecyclerView.Adapter<adye>
 {
-  public adyg(TroopGagActivity paramTroopGagActivity) {}
+  private int jdField_a_of_type_Int;
+  List<adyf> jdField_a_of_type_JavaUtilList;
   
-  protected void a(bcjo parambcjo)
+  public adyg(List<adyf> paramList)
   {
-    if ((parambcjo == null) || (!parambcjo.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_JavaLangString))) {
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+    this.jdField_a_of_type_Int = azmk.c();
+  }
+  
+  private void a(int paramInt)
+  {
+    adyf localadyf = a(paramInt);
+    if (!localadyf.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (a(localadyf, paramInt, bool)) {
+        adyd.a(this.jdField_a_of_type_Adyd).a(localadyf.jdField_a_of_type_Int);
+      }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGagActivity", 2, "onTroopGagStatusChange, statuCode=" + parambcjo.jdField_a_of_type_Int);
-    }
-    alzx localalzx;
-    adyi localadyi;
-    if (parambcjo.jdField_a_of_type_Int == 3)
+  }
+  
+  public adye a(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = adyd.a(this.jdField_a_of_type_Adyd).getLayoutInflater().inflate(2131562651, paramViewGroup, false);
+    return new adye(this.jdField_a_of_type_Adyd, paramViewGroup);
+  }
+  
+  public adyf a(int paramInt)
+  {
+    return (adyf)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(adye paramadye, int paramInt)
+  {
+    adyf localadyf = a(paramInt);
+    if (localadyf.jdField_a_of_type_Boolean)
     {
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      if (parambcjo.jdField_a_of_type_JavaUtilArrayList != null)
-      {
-        parambcjo = parambcjo.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (parambcjo.hasNext())
-        {
-          localalzx = (alzx)parambcjo.next();
-          localadyi = new adyi();
-          localadyi.jdField_a_of_type_JavaLangString = localalzx.jdField_a_of_type_JavaLangString;
-          localadyi.jdField_a_of_type_Long = localalzx.jdField_a_of_type_Long;
-          this.a.jdField_a_of_type_JavaUtilList.add(localadyi);
-        }
+      paramadye.b.setVisibility(0);
+      ViewCompat.setAccessibilityDelegate(paramadye.jdField_a_of_type_ComTencentImageURLImageView, new adyh(this));
+      paramadye.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(azmf.c[paramInt]);
+      adyd.a(this.jdField_a_of_type_Adyd, paramadye.jdField_a_of_type_ComTencentImageURLImageView, localadyf);
+      if (!localadyf.b) {
+        break label134;
       }
-      this.a.jdField_a_of_type_Adyj.notifyDataSetChanged();
+      paramadye.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      ((Animatable)paramadye.jdField_a_of_type_AndroidViewView.getBackground()).start();
     }
-    while (this.a.jdField_a_of_type_JavaUtilList.size() == 0)
+    for (;;)
     {
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      paramadye.itemView.setOnClickListener(new adyj(this, paramInt));
       return;
-      if (parambcjo.jdField_a_of_type_Int == 1)
-      {
-        parambcjo = parambcjo.jdField_a_of_type_Bcjs;
-        this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-        if (parambcjo.jdField_a_of_type_Long != 0L) {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
-        }
-        for (;;)
-        {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
-          break;
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
-        }
-      }
-      if (parambcjo.jdField_a_of_type_Int == 5)
-      {
-        if (!parambcjo.jdField_a_of_type_Bcjp.jdField_a_of_type_Boolean)
-        {
-          ThreadManager.post(new TroopGagActivity.2.1(this, new Handler(Looper.getMainLooper())), 8, null, false);
-        }
-        else
-        {
-          this.a.jdField_a_of_type_JavaUtilList.clear();
-          if (parambcjo.jdField_a_of_type_JavaUtilArrayList != null)
-          {
-            parambcjo = parambcjo.jdField_a_of_type_JavaUtilArrayList.iterator();
-            while (parambcjo.hasNext())
-            {
-              localalzx = (alzx)parambcjo.next();
-              localadyi = new adyi();
-              localadyi.jdField_a_of_type_JavaLangString = localalzx.jdField_a_of_type_JavaLangString;
-              localadyi.jdField_a_of_type_Long = localalzx.jdField_a_of_type_Long;
-              this.a.jdField_a_of_type_JavaUtilList.add(localadyi);
-            }
-          }
-          this.a.jdField_a_of_type_Adyj.notifyDataSetChanged();
-        }
-      }
-      else if (parambcjo.jdField_a_of_type_Int == 4)
-      {
-        parambcjo = parambcjo.jdField_a_of_type_Bcjq;
-        if (!parambcjo.jdField_a_of_type_Boolean)
-        {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-          if (parambcjo.jdField_a_of_type_Long != 0L) {
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
-          }
-          for (;;)
-          {
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
-            break;
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
-          }
-        }
+      paramadye.b.setVisibility(8);
+      ViewCompat.setAccessibilityDelegate(paramadye.jdField_a_of_type_ComTencentImageURLImageView, new adyi(this));
+      break;
+      label134:
+      paramadye.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      ((Animatable)paramadye.jdField_a_of_type_AndroidViewView.getBackground()).stop();
+    }
+  }
+  
+  public boolean a(adyf paramadyf, int paramInt, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Int == paramInt)
+    {
+      notifyItemChanged(paramInt);
+      return false;
+    }
+    paramadyf.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramadyf.jdField_a_of_type_Boolean) {
+      if (this.jdField_a_of_type_Int >= 0) {
+        break label46;
       }
     }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    for (this.jdField_a_of_type_Int = paramInt;; this.jdField_a_of_type_Int = paramInt)
+    {
+      notifyItemChanged(paramInt);
+      return true;
+      label46:
+      paramadyf = a(this.jdField_a_of_type_Int);
+      paramadyf.jdField_a_of_type_Boolean = false;
+      paramadyf.b = false;
+      notifyItemChanged(this.jdField_a_of_type_Int);
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

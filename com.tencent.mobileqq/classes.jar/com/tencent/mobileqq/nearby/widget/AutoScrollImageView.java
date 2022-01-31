@@ -15,7 +15,7 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
-import avoy;
+import avth;
 import com.tencent.qphone.base.util.QLog;
 
 public class AutoScrollImageView
@@ -70,7 +70,7 @@ public class AutoScrollImageView
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new avoy(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new avth(this));
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     }
     if (this.jdField_a_of_type_Int == 0)

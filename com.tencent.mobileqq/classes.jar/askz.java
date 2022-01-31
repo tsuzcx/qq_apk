@@ -1,99 +1,125 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gameparty.PromptDialogActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.s2c.msgtype0x210.submsgtype0xaa.SubMsgType0xaa.GameTeam_StartGameMessage;
+import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Handler;
+import android.view.animation.ScaleAnimation;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.gamecenter.anim.FullPopAnimLowVersion.6;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.gamecenter.data.FullPopData;
+import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
+import cooperation.qwallet.plugin.QWalletPicHelper;
+import java.io.File;
 
-class askz
-  implements asla
+public class askz
+  extends askx
+  implements asnp
 {
-  askz(askw paramaskw, long paramLong1, SubMsgType0xaa.GameTeam_StartGameMessage paramGameTeam_StartGameMessage, long paramLong2, boolean paramBoolean) {}
+  @SuppressLint({"HandlerLeak"})
+  private Handler a;
   
-  public void a(String paramString)
+  public askz(Context paramContext, FullPopData paramFullPopData, String paramString1, String paramString2, boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)askw.a(this.jdField_a_of_type_Askw).get();
-    if (localQQAppInterface == null) {}
-    for (;;)
+    super(paramContext, paramFullPopData, paramString1, paramString2, paramBoolean);
+    this.jdField_a_of_type_AndroidOsHandler = new asla(this);
+  }
+  
+  private void a(FullPopData paramFullPopData, FullPopVideoView paramFullPopVideoView)
+  {
+    paramFullPopData = asnh.a(paramFullPopData.resPath, "video.mp4");
+    FeedsItemData localFeedsItemData = new FeedsItemData();
+    localFeedsItemData.videoUrl = Uri.parse(paramFullPopData.getPath()).toString();
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.a();
+    paramFullPopVideoView.a(this.jdField_a_of_type_AndroidContentContext, localFeedsItemData.videoUrl);
+  }
+  
+  private void e()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData != null)
     {
-      return;
-      try
-      {
-        paramString = new JSONObject(paramString).getJSONObject("result").getJSONArray("team_list");
-        if (paramString.length() <= 0) {
-          continue;
-        }
-        paramString = paramString.getJSONObject(0);
-        int i;
-        int j;
-        boolean bool;
-        label426:
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        try
-        {
-          i = paramString.getInt("expire");
-          j = i;
-          if (i <= 0) {
-            j = askw.a;
-          }
-          i = paramString.getInt("status");
-          if (QLog.isColorLevel()) {
-            QLog.d("GamePartyManager", 2, "handlePushMsg_StartGame, getTeamContext finished, deltaTime = " + this.jdField_a_of_type_Long + ", expire = " + j + ", status = " + i);
-          }
-          if (this.jdField_a_of_type_Long < j)
-          {
-            paramString = paramString.getJSONObject("leader");
-            bool = localQQAppInterface.getCurrentAccountUin().equals(paramString.getString("uin"));
-            if ((i > 0) && (i < 5))
-            {
-              paramString = new Intent(localQQAppInterface.getApp().getApplicationContext(), PromptDialogActivity.class);
-              paramString.addFlags(268435456);
-              paramString.putExtra("title", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_title.get());
-              paramString.putExtra("summary", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_summary.get());
-              paramString.putExtra("picUrl", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_picUrl.get());
-              paramString.putExtra("appid", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_appid.get());
-              paramString.putExtra("packageName", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_packageName.get());
-              paramString.putExtra("gamedata", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_gamedata.get());
-              paramString.putExtra("leader", bool);
-              paramString.putExtra("createMsgTime", this.b);
-              localQQAppInterface.getApp().startActivity(paramString);
-              if (!this.jdField_a_of_type_Boolean) {
-                break label426;
-              }
-              bfdq.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2044", "0", false);
-              return;
-              paramString = paramString;
-              if (QLog.isColorLevel()) {
-                QLog.d("GamePartyManager", 2, "handlePushMsg_StartGame, getTeamContext finished, parse json error e = " + paramString);
-              }
-            }
-          }
-          if (this.jdField_a_of_type_Boolean)
-          {
-            bfdq.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2044", "1", false);
-            return;
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            i = 0;
-          }
-          bfdq.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2043", "0", false);
-          return;
-        }
-        bfdq.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2043", "1", false);
-      }
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.bringToFront();
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      int i = azkz.e(this.jdField_a_of_type_AndroidContentContext);
+      Object localObject1 = asnh.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.resPath, "line.png", i, 0);
+      Object localObject2 = QWalletPicHelper.getDrawableForWallet(asnh.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.resPath, "box.png").getPath(), null);
+      this.c.setImageDrawable((Drawable)localObject2);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
+      localObject1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "scaleY", new float[] { 0.0F, 1.0F });
+      ((ObjectAnimator)localObject1).setDuration(500L);
+      localObject2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 0.0F, 1.0F });
+      ((ObjectAnimator)localObject2).setDuration(500L);
+      a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData, this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView);
+      ((ObjectAnimator)localObject2).addListener(new aslb(this));
+      ((ObjectAnimator)localObject1).start();
+      ((ObjectAnimator)localObject2).start();
     }
+  }
+  
+  private void f()
+  {
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 1.0F, 0.0F });
+    localObjectAnimator.setDuration(100L);
+    localObjectAnimator.start();
+    localObjectAnimator.addListener(new aslc(this));
+  }
+  
+  @SuppressLint({"NewApi"})
+  private void g()
+  {
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 1.0F, 0.0F, 1.0F, 1, 0.0F, 1, 0.3F);
+    localScaleAnimation.setDuration(500L);
+    localScaleAnimation.setAnimationListener(new asld(this));
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.startAnimation(localScaleAnimation);
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.b();
+    asnm.a(System.currentTimeMillis());
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 4000L);
+  }
+  
+  private void h()
+  {
+    this.jdField_b_of_type_Boolean = true;
+    this.d.setVisibility(0);
+    this.d.bringToFront();
+    this.d.setOnClickListener(new asle(this));
+  }
+  
+  private void i()
+  {
+    this.d.setVisibility(8);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 1.0F, 1.0F, 0.0F, 1, 0.0F, 1, 0.3F);
+    localScaleAnimation.setDuration(300L);
+    localScaleAnimation.setAnimationListener(new aslf(this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.startAnimation(localScaleAnimation);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      a();
+    }
+  }
+  
+  public void c() {}
+  
+  public void d()
+  {
+    ThreadManagerV2.getUIHandlerV2().post(new FullPopAnimLowVersion.6(this));
+    a(false);
   }
 }
 

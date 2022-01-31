@@ -174,8 +174,8 @@ public class qlq
         localHashMap.put("param_skipFramesTotalCount", String.valueOf(this.jdField_o_of_type_Int));
         localHashMap.put("param_skipFramesFinalCount", String.valueOf(this.jdField_p_of_type_Int));
       }
-      localHashMap.put("param_version", "8.3.3.4515");
-      localHashMap.put("param_subversion", "8.3.3");
+      localHashMap.put("param_version", "8.3.5.4555");
+      localHashMap.put("param_subversion", "8.3.5");
       localHashMap.put("param_speedList", this.jdField_l_of_type_JavaLangString);
       localHashMap.put("param_isChangeHWBackup", String.valueOf(this.jdField_g_of_type_Boolean));
       localHashMap.put("param_continuousPlay", String.valueOf(this.jdField_r_of_type_Int));
@@ -183,9 +183,9 @@ public class qlq
       localHashMap.put("param_isPreOutputFirstFrame", String.valueOf(this.jdField_i_of_type_Boolean));
       localHashMap.put("param_preparePerformanceJson", this.jdField_m_of_type_JavaLangString);
       localHashMap.put("param_prepareOptimizeConfigJson", ors.j());
-      localHashMap.put("param_httpbuffertime_for_playpreload", String.valueOf(bjxj.f()));
-      localHashMap.put("param_dynamic_buffer_switch", String.valueOf(bjxj.g()));
-      localHashMap.put("param_dynamic_buffer_config_json", bjxj.b());
+      localHashMap.put("param_httpbuffertime_for_playpreload", String.valueOf(bkbq.f()));
+      localHashMap.put("param_dynamic_buffer_switch", String.valueOf(bkbq.g()));
+      localHashMap.put("param_dynamic_buffer_config_json", bkbq.b());
       localHashMap.put("param_bandwidth", String.valueOf(this.v));
       localHashMap.put("param_http_buffer_range_tag", this.jdField_n_of_type_JavaLangString);
       if (QLog.isColorLevel()) {

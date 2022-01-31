@@ -15,7 +15,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 
 class ogc
-  extends aaqp
+  extends aave
 {
   ogc(ofx paramofx, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {

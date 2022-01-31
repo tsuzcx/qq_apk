@@ -1,26 +1,8 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.content.DialogInterface;
 
-public class xvb
-  implements Comparator<String>
+public abstract interface xvb
 {
-  public xvb(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public int a(String paramString1, String paramString2)
-  {
-    int i = 1;
-    if ((paramString1 != null) && (paramString2 != null)) {
-      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
-    }
-    while (paramString1 != null) {
-      return i;
-    }
-    if (paramString2 != null) {
-      return -1;
-    }
-    return 0;
-  }
+  public abstract void a(DialogInterface paramDialogInterface, int paramInt);
 }
 
 

@@ -1,35 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.widget.AdapterView;
+import android.os.Handler;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.21.1;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.21.2;
 
 public class bbdg
-  implements bhqr
+  implements INetInfoHandler
 {
-  public bbdg(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  public bbdg(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
   {
-    if (paramView == null) {}
-    for (;;)
-    {
-      return;
-      this.a.jdField_a_of_type_Int = paramInt;
-      if (this.a.jdField_a_of_type_Ailh != null) {
-        this.a.jdField_a_of_type_Ailh.b(paramInt);
-      }
-      if (!this.a.c) {
-        azmj.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.jdField_a_of_type_JavaLangString, "0", "", "");
-      }
-      while (TroopAvatarWallEditActivity.a(this.a) != null)
-      {
-        TroopAvatarWallEditActivity.a(this.a).a(paramInt);
-        return;
-        azmj.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.jdField_a_of_type_JavaLangString, "1", "", "");
-      }
-    }
+    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.21.1(this));
   }
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.21.2(this));
+  }
+  
+  public void onNetWifi2None() {}
 }
 
 

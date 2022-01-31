@@ -1,18 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.os.IInterface;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-class agko
-  implements DialogInterface.OnClickListener
+public abstract interface agko
+  extends IInterface
 {
-  agko(agkk paramagkk) {}
+  public abstract void a(CompressInfo paramCompressInfo);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    zqh.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.g);
-    this.a.g = "";
-  }
+  public abstract void b(CompressInfo paramCompressInfo);
+  
+  public abstract void c(CompressInfo paramCompressInfo);
 }
 
 

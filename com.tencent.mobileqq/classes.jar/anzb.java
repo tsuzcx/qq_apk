@@ -1,94 +1,95 @@
-import android.content.Context;
 import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.colornote.anim.MusicDanceDrawable;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class anzb
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+  extends anyt
 {
-  public View a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  anyx jdField_a_of_type_Anyx;
-  anyy jdField_a_of_type_Anyy;
-  MusicDanceDrawable jdField_a_of_type_ComTencentMobileqqColornoteAnimMusicDanceDrawable;
-  public View b;
-  public TextView b;
+  public anzb(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public anzb(anyx paramanyx, View paramView)
+  public void a(boolean paramBoolean, String paramString)
   {
-    super(paramView);
-    this.jdField_a_of_type_Anyx = paramanyx;
-    Resources localResources = paramView.getContext().getResources();
-    paramView.setOnClickListener(this);
-    View localView1 = paramView.findViewById(2131371239);
-    bcvq.a(localView1, false);
-    localView1.setOnClickListener(this);
-    View localView2 = paramView.findViewById(2131371240);
-    bcvq.a(localView2, false);
-    localView2.setOnClickListener(this);
-    if (anyx.a(paramanyx))
-    {
-      i = 8;
-      localView1.setVisibility(i);
-      if (!anyx.a(paramanyx)) {
-        break label329;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_observer", 2, String.format("onModifyCard isSuccess=%s cardId=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
     }
-    label329:
-    for (int i = j;; i = 8)
+    this.a.b();
+    if (paramBoolean)
     {
-      localView2.setVisibility(i);
-      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371232);
-      this.jdField_a_of_type_AndroidViewView.setContentDescription(localResources.getString(2131690918));
-      this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131371229);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371233));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371243));
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(aekt.a(3.0F, localResources));
-      this.jdField_a_of_type_AndroidWidgetTextView.setFocusable(true);
-      this.jdField_a_of_type_AndroidWidgetTextView.setFocusableInTouchMode(true);
-      bcvq.a(this.jdField_a_of_type_AndroidWidgetTextView, true);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371241));
-      this.jdField_b_of_type_AndroidWidgetTextView.setFocusable(true);
-      this.jdField_b_of_type_AndroidWidgetTextView.setFocusableInTouchMode(true);
-      bcvq.a(this.jdField_b_of_type_AndroidWidgetTextView, true);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131371234));
-      this.jdField_a_of_type_Anyy = new anyy(paramanyx, this);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_Anyy);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new anyz(paramanyx, this));
-      this.jdField_a_of_type_ComTencentMobileqqColornoteAnimMusicDanceDrawable = new MusicDanceDrawable();
-      this.jdField_a_of_type_ComTencentMobileqqColornoteAnimMusicDanceDrawable.a(paramView.getContext(), aekt.a(15.0F, localResources), aekt.a(9.5F, localResources));
+      this.a.b(alud.a(2131701636));
+      azqs.b(this.a.app, "CliOper", "", "", "0X8007748", "0X8007748", this.a.d, 0, "", "", "", "");
       return;
-      i = 0;
-      break;
     }
+    QQToast.a(this.a.getActivity(), 2, alud.a(2131701644), 0).b(this.a.getTitleBarHeight());
   }
   
-  public ColorNote a(int paramInt)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    return (ColorNote)anyx.a(this.jdField_a_of_type_Anyx).get(paramInt);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_observer", 2, String.format("onGetCardInfo isSuccess=%s cardId=%s queryType=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
+    }
+    this.a.b();
+    if ((paramBoolean) && (paramString.equals(this.a.jdField_a_of_type_JavaLangString)))
     {
+      if ((this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Int == 2) && (this.a.c == 1))
+      {
+        this.a.c = 0;
+        this.a.jdField_a_of_type_Anys.a(false);
+      }
+      if ((!this.a.jdField_a_of_type_Boolean) || (!this.a.b) || (this.a.isFinishing())) {
+        break label190;
+      }
+      this.a.jdField_a_of_type_Anys.a(paramString);
+      QLog.i("BusinessCard_observer", 4, "after edit and require : cardId = " + paramString);
+      this.a.finish();
     }
+    label190:
     do
     {
       return;
-    } while (anyx.a(this.jdField_a_of_type_Anyx) == null);
-    anyx.a(this.jdField_a_of_type_Anyx).a();
-    azmj.b(null, "dc00898", "", "", "0X800A6CE", "0X800A6CE", 0, 0, "", "", "", "");
+      paramString = this.a.jdField_a_of_type_Anys.a(paramString);
+    } while (paramString == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard = paramString;
+    BusinessCardEditActivity.a(this.a, false, true, true);
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_observer", 2, String.format("onDelCard isSuccess=%s cardId=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+    }
+    this.a.b();
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.getActivity(), 2, alud.a(2131701639), 0).b(this.a.getTitleBarHeight());
+      this.a.finish();
+      return;
+    }
+    QQToast.a(this.a.getActivity(), 1, alud.a(2131701634), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_observer", 2, String.format("onAddCard isSuccess=%s cardId=%s result=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
+    }
+    this.a.b();
+    Object localObject = this.a.getResources();
+    if (paramBoolean)
+    {
+      localObject = ((Resources)localObject).getString(2131698914);
+      this.a.b((String)localObject);
+      if (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) {
+        this.a.jdField_a_of_type_JavaLangString = paramString;
+      }
+      return;
+    }
+    paramString = ((Resources)localObject).getString(2131698912);
+    if (paramInt == 66) {
+      paramString = ((Resources)localObject).getString(2131698913);
+    }
+    QQToast.a(this.a.getActivity(), 2, paramString, 0).b(this.a.getTitleBarHeight());
   }
 }
 

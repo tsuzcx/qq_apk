@@ -1,55 +1,13 @@
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionReq;
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionRsp;
-import NS_MOBILE_QBOSS_PROTO.ReportExceptionInfo;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bjme
-  extends QzoneExternalRequest
+  implements bjmi
 {
-  private JceStruct a;
+  public bjme(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
   
-  public bjme(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  public void a()
   {
-    ArrayList localArrayList = new ArrayList(1);
-    ReportExceptionInfo localReportExceptionInfo = new ReportExceptionInfo();
-    localReportExceptionInfo.iCode = paramInt3;
-    localReportExceptionInfo.iAppid = paramInt1;
-    localReportExceptionInfo.iTaskId = paramInt2;
-    localReportExceptionInfo.strMsg = paramString;
-    localArrayList.add(localReportExceptionInfo);
-    this.a = new MobileQbossReportExceptionReq(paramLong, localArrayList);
-  }
-  
-  public static MobileQbossReportExceptionRsp a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
-    }
-    MobileQbossReportExceptionRsp localMobileQbossReportExceptionRsp;
-    do
-    {
-      return paramArrayOfByte;
-      localMobileQbossReportExceptionRsp = (MobileQbossReportExceptionRsp)decode(paramArrayOfByte, "reportException");
-      paramArrayOfByte = localMobileQbossReportExceptionRsp;
-    } while (localMobileQbossReportExceptionRsp != null);
-    return null;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.mobileqboss.reportException";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "reportException";
+    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playAudioList(this.jdField_a_of_type_JavaLangString);
   }
 }
 

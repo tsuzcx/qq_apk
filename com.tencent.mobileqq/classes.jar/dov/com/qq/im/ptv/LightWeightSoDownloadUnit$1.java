@@ -1,11 +1,11 @@
 package dov.com.qq.im.ptv;
 
-import bmcg;
+import bmgs;
 
 public class LightWeightSoDownloadUnit$1
   implements Runnable
 {
-  public LightWeightSoDownloadUnit$1(bmcg parambmcg) {}
+  public LightWeightSoDownloadUnit$1(bmgs parambmgs) {}
   
   public void run()
   {

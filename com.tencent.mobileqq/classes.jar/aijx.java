@@ -1,49 +1,43 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.PortraitImageview;
-import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.mobileqq.vas.PendantInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aijx
-  extends Handler
 {
-  boolean jdField_a_of_type_Boolean;
-  
-  public aijx(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity, ExtensionInfo paramExtensionInfo, String paramString) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static aijq a(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    if (1000 == paramMessage.what)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
-      int j = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.b();
-      paramMessage = new RelativeLayout.LayoutParams((int)(i * 1.257D), (int)(j * 1.481D));
-      paramMessage.addRule(14);
-      paramMessage.topMargin = ((int)(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_AndroidViewViewGroup.getHeight() * 0.5F - j * 0.5F * 1.705D));
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_ComTencentImageURLImageView != null) {
-        break label214;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_ComTencentImageURLImageView, paramMessage);
+    int i = paramSessionInfo.a;
+    Object localObject = null;
+    if (paramSessionInfo.f == 3) {
+      paramSessionInfo = new aika(paramContext, paramSessionInfo, paramQQAppInterface);
     }
-    for (;;)
+    do
     {
-      ((AvatarPendantManager)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.app.getManager(46)).a(this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantId).a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_ComTencentImageURLImageView, 6, PendantInfo.e, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-      return;
-      if (this.jdField_a_of_type_Boolean) {
-        break;
+      return paramSessionInfo;
+      switch (i)
+      {
+      default: 
+        paramContext = localObject;
+        paramSessionInfo = paramContext;
       }
-      return;
-      label214:
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(paramMessage);
+    } while (!QLog.isColorLevel());
+    paramQQAppInterface = new StringBuilder().append("getChatPie uinType = ").append(i).append(" miniPie ");
+    if (paramContext == null) {}
+    for (paramSessionInfo = "null";; paramSessionInfo = Integer.valueOf(paramContext.hashCode()))
+    {
+      QLog.i("MiniPieFactory", 2, paramSessionInfo);
+      return paramContext;
+      paramContext = new aijy(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+      paramContext = new aijz(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+      paramContext = new aikd(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+      paramContext = new aikc(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+      paramContext = new aikb(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
     }
   }
 }

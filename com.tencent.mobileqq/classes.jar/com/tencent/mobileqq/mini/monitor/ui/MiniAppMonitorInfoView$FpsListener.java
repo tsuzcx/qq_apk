@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.monitor.ui;
 
-import bcwm;
+import bdav;
 
 class MiniAppMonitorInfoView$FpsListener
-  implements bcwm
+  implements bdav
 {
   private MiniAppMonitorInfoView$FpsListener(MiniAppMonitorInfoView paramMiniAppMonitorInfoView) {}
   

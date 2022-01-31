@@ -1,12 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.RectF;
+import com.tencent.biz.qqcircle.transition.QCircleTransitionImageView;
 
-class uap
-  implements DialogInterface.OnClickListener
+public class uap
+  implements uao
 {
-  uap(uan paramuan) {}
+  public uap(QCircleTransitionImageView paramQCircleTransitionImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public float a()
+  {
+    return QCircleTransitionImageView.b(this.a).bottom;
+  }
 }
 
 

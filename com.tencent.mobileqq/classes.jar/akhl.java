@@ -1,42 +1,18 @@
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.widget.Switch;
 
 public class akhl
-  extends akee
 {
-  public akhj a;
-  public View a;
   public ImageView a;
   public RelativeLayout a;
   public TextView a;
-  public Switch a;
   public ImageView b;
-  public TextView b;
-  public TextView c;
+  public ImageView c;
   public ImageView d;
-  public TextView d;
-  public TextView e;
+  public ImageView e;
   
-  public akhl(View paramView)
-  {
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367808));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370067));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376952));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131375954));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377553));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377555));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370804));
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378290));
-    this.jdField_c_of_type_AndroidWidgetImageView.setClickable(false);
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131373099));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378382);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378448));
-    this.e = ((TextView)paramView.findViewById(2131378447));
-  }
+  public akhl(akhk paramakhk) {}
 }
 
 

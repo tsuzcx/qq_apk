@@ -1,16 +1,15 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class airl
-  implements MediaPlayer.OnCompletionListener
+class airl
+  implements View.OnClickListener
 {
-  public airl(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  airl(airj paramairj) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(View paramView)
   {
-    RedPacketKSongFragment.a(this.a, false);
-    paramMediaPlayer.release();
+    this.a.onMagicStickClick(paramView, -1, new Bundle(), 2, null);
   }
 }
 

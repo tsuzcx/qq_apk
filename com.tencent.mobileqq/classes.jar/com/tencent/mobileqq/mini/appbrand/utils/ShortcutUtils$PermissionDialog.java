@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
@@ -11,12 +11,12 @@ import android.text.style.ForegroundColorSpan;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import bdfq;
+import bdjz;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class ShortcutUtils$PermissionDialog
-  extends bdfq
+  extends bdjz
 {
   private static final String CONFIG_SHORTCUT_DIALOG_HIDE = "mini_shortcut_dialog_hide";
   private static final String CONFIG_SHORTCUT_HELP_URL = "mini_shortcut_help_url";
@@ -60,8 +60,8 @@ class ShortcutUtils$PermissionDialog
   
   public CharSequence getMessageContent()
   {
-    String str1 = alpo.a(2131714386);
-    String str2 = alpo.a(2131714390);
+    String str1 = alud.a(2131714398);
+    String str2 = alud.a(2131714402);
     SpannableString localSpannableString = new SpannableString(str1 + str2);
     localSpannableString.setSpan(new ShortcutUtils.PermissionDialog.2(this), str1.length(), str1.length() + str2.length(), 33);
     localSpannableString.setSpan(new ForegroundColorSpan(-15505507), str1.length(), str1.length() + str2.length(), 33);
@@ -70,12 +70,12 @@ class ShortcutUtils$PermissionDialog
   
   public void initUI()
   {
-    setContentView(2131558934);
+    setContentView(2131558933);
     this.text.setMovementMethod(LinkMovementMethod.getInstance());
     this.text.setText(getMessageContent());
-    this.mCheckBoxLayout = ((ViewGroup)findViewById(2131369159));
-    this.mCheckBox = ((CheckBox)findViewById(2131378161));
-    this.mCheckText = ((TextView)findViewById(2131379069));
+    this.mCheckBoxLayout = ((ViewGroup)findViewById(2131369177));
+    this.mCheckBox = ((CheckBox)findViewById(2131378215));
+    this.mCheckText = ((TextView)findViewById(2131379127));
     this.mCheckText.setOnClickListener(new ShortcutUtils.PermissionDialog.1(this));
   }
   

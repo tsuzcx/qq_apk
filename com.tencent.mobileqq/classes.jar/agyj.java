@@ -1,8 +1,17 @@
-public class agyj
-  implements Cloneable
+import android.animation.Animator;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+
+class agyj
 {
-  public String a;
-  public String b;
+  agxz jdField_a_of_type_Agxz;
+  Animator jdField_a_of_type_AndroidAnimationAnimator;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
 }
 
 

@@ -18,12 +18,12 @@ public class sft
   
   public static String a(String paramString)
   {
-    return (String)bjxj.a(b(paramString), "");
+    return (String)bkbq.a(b(paramString), "");
   }
   
   public static void a(String paramString1, String paramString2)
   {
-    bjxj.a(b(paramString1), paramString2);
+    bkbq.a(b(paramString1), paramString2);
   }
   
   private static String b(String paramString)
@@ -53,21 +53,21 @@ public class sft
   private void b()
   {
     sfu localsfu = new sfu("default_feeds");
-    localsfu.b = bjxj.a("default_feeds_proteus_offline_bid");
+    localsfu.b = bkbq.a("default_feeds_proteus_offline_bid");
     localsfu.c = ("proteus/" + localsfu.a + "");
     a(localsfu);
     localsfu = new sfu("comment_feeds");
-    localsfu.b = bjxj.a("comment_proteus_offline_bid");
+    localsfu.b = bkbq.a("comment_proteus_offline_bid");
     localsfu.c = ("proteus/" + localsfu.a);
     a(localsfu);
     localsfu = new sfu("native_article");
     localsfu.a("default_feeds");
     localsfu.c = ("proteus/" + localsfu.a + "");
-    localsfu.b = bjxj.a("native_proteus_offline_bid");
+    localsfu.b = bkbq.a("native_proteus_offline_bid");
     a(localsfu);
     c();
     localsfu = new sfu("daily_dynamic_header");
-    localsfu.b = bjxj.a("daily_header_proteus_bid");
+    localsfu.b = bkbq.a("daily_header_proteus_bid");
     localsfu.c = ("proteus/" + localsfu.a + "");
     QLog.i("StyleConfigHelper", 1, "[init]: dailyDynamicHeader.bid=" + localsfu.b);
     a(localsfu);

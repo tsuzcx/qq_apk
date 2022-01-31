@@ -1,19 +1,19 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.data.ContactMatch;
 
 public class avuh
-  extends avue
+  extends avun
 {
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup, avua paramavua, avuc paramavuc)
+  public ContactMatch a;
+  
+  public avuh(ContactMatch paramContactMatch)
   {
-    paramViewGroup = paramViewGroup.getContext();
-    if ((paramView != null) && (((avuc)paramView.getTag()).a == paramavuc.a)) {
-      return paramView;
-    }
-    paramView = LayoutInflater.from(paramViewGroup).inflate(2131559668, null);
-    paramView.setTag(paramavuc);
-    return paramView;
+    this.jdField_a_of_type_ComTencentMobileqqDataContactMatch = paramContactMatch;
+    this.jdField_a_of_type_Long = paramContactMatch.timestamp;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataContactMatch.isReaded;
   }
 }
 

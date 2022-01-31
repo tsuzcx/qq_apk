@@ -1,13 +1,15 @@
-import dov.com.qq.im.ae.play.EditTextViewer;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bldm
-  implements bldl
+class bldm
+  implements View.OnClickListener
 {
-  public bldm(EditTextViewer paramEditTextViewer) {}
+  bldm(bldk parambldk) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    this.a.a(paramString);
+    bliu.a().R();
+    bldk.a(this.a, false);
   }
 }
 

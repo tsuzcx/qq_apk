@@ -1,9 +1,58 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.lang.reflect.Proxy;
 
-public abstract interface bhlf
+public class bhlf
 {
-  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
+  public static Object a(bhlg parambhlg)
+  {
+    try
+    {
+      ClassLoader localClassLoader = bhkx.class.getClassLoader();
+      Class localClass = Class.forName("com.tencent.rtmp.ITXLivePushListener");
+      parambhlg = new bhll(parambhlg);
+      parambhlg = Proxy.newProxyInstance(localClassLoader, new Class[] { localClass }, parambhlg);
+      return parambhlg;
+    }
+    catch (ClassNotFoundException parambhlg)
+    {
+      QMLog.e("TXLivePushListenerRefle", "newInstance", parambhlg);
+    }
+    return null;
+  }
+  
+  public static Object a(bhlh parambhlh)
+  {
+    try
+    {
+      ClassLoader localClassLoader = bhkx.class.getClassLoader();
+      Class localClass = Class.forName("com.tencent.rtmp.TXLivePusher$ITXSnapshotListener");
+      parambhlh = new bhli(parambhlh);
+      parambhlh = Proxy.newProxyInstance(localClassLoader, new Class[] { localClass }, parambhlh);
+      return parambhlh;
+    }
+    catch (ClassNotFoundException parambhlh)
+    {
+      QMLog.e("TXLivePushListenerRefle", "newInstance", parambhlh);
+    }
+    return null;
+  }
+  
+  public static Object a(bhlj parambhlj)
+  {
+    try
+    {
+      ClassLoader localClassLoader = bhkx.class.getClassLoader();
+      Class localClass = Class.forName("com.tencent.rtmp.TXLivePusher$OnBGMNotify");
+      parambhlj = new bhlk(parambhlj);
+      parambhlj = Proxy.newProxyInstance(localClassLoader, new Class[] { localClass }, parambhlj);
+      return parambhlj;
+    }
+    catch (ClassNotFoundException parambhlj)
+    {
+      QMLog.e("TXLivePushListenerRefle", "newInstance", parambhlj);
+    }
+    return null;
+  }
 }
 
 

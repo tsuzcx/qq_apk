@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
 
-public class anzz
-  implements Comparator<ColorNote>
+public final class anzz
+  implements Parcelable.Creator<CardOCRInfo>
 {
-  public anzz(ColorNoteSettingFragment paramColorNoteSettingFragment) {}
-  
-  public int a(ColorNote paramColorNote1, ColorNote paramColorNote2)
+  public CardOCRInfo a(Parcel paramParcel)
   {
-    return -(int)(paramColorNote1.getTime() - paramColorNote2.getTime());
+    return new CardOCRInfo(paramParcel);
+  }
+  
+  public CardOCRInfo[] a(int paramInt)
+  {
+    return new CardOCRInfo[paramInt];
   }
 }
 

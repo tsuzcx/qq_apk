@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 
 public class nrb
-  extends amle
+  extends ampt
 {
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
@@ -43,7 +43,7 @@ public class nrb
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-2", "{type:1, data:null}" });
     String str = Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    azmj.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 3, this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.getNetworkType(), str, "", "");
+    azqs.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 3, this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.getNetworkType(), str, "", "");
     SosoInterface.b(this);
   }
   
@@ -67,14 +67,14 @@ public class nrb
         for (;;)
         {
           paramSosoLbsInfo = Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-          azmj.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getloc", 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.getNetworkType(), paramSosoLbsInfo, "", "");
+          azqs.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getloc", 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.getNetworkType(), paramSosoLbsInfo, "", "");
           return;
           this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.format("'%1$f,%2$f'", new Object[] { Double.valueOf(d2), Double.valueOf(d1) }) });
         }
       }
       this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-1", "{}" });
       paramSosoLbsInfo = Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-      azmj.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getloc", 0, 1, this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.getNetworkType(), paramSosoLbsInfo, "", "");
+      azqs.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getloc", 0, 1, this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.getNetworkType(), paramSosoLbsInfo, "", "");
       return;
     }
     if (paramSosoLbsInfo != null) {}
@@ -88,7 +88,7 @@ public class nrb
         {
           try
           {
-            paramSosoLbsInfo = bhoo.a(PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, arrayOfByte), "nbyvie");
+            paramSosoLbsInfo = bhsv.a(PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, arrayOfByte), "nbyvie");
             if (TextUtils.isEmpty(paramSosoLbsInfo)) {
               break label931;
             }
@@ -103,7 +103,7 @@ public class nrb
             this.jdField_a_of_type_Boolean = false;
             this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "0", "{type:1, decrypt_padding:" + this.jdField_a_of_type_Int + ",data:\"" + paramSosoLbsInfo + "\"}" });
             paramSosoLbsInfo = Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-            azmj.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.getNetworkType(), paramSosoLbsInfo, "", "");
+            azqs.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.getNetworkType(), paramSosoLbsInfo, "", "");
             if (arrayOfByte == null) {
               break;
             }
@@ -115,7 +115,7 @@ public class nrb
             if ((TextUtils.isEmpty(paramSosoLbsInfo)) || (!paramSosoLbsInfo.contains("_bid=108"))) {
               break;
             }
-            nco.a(null, 81, "", 0, 0, bdbi.encodeToString(arrayOfByte, 2), "", "", "");
+            nco.a(null, 81, "", 0, 0, bdfr.encodeToString(arrayOfByte, 2), "", "", "");
             return;
           }
           catch (Exception paramSosoLbsInfo)
@@ -129,7 +129,7 @@ public class nrb
             if (this.jdField_a_of_type_Int == 1) {}
             for (bool = true;; bool = false)
             {
-              paramSosoLbsInfo = bdbi.encodeToString(svi.a(bool, svi.a(arrayOfByte), "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrkUA+dDEQT52svdheRw04+xrExuTvNj3g7pjcyUkH3+86FiYNhHtyWJc11BywUZ2Ey3RomCyTb/szl5qQEJqR7UC5z4mhLrhgXlbRI0BgmI/LhaMRsfskGM7ziyQ2ZpS0qbHX2xoum6ou/541/VePIwmcnIk6eWUx6GYnA4euZQIDAQAB"), 2);
+              paramSosoLbsInfo = bdfr.encodeToString(svi.a(bool, svi.a(arrayOfByte), "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrkUA+dDEQT52svdheRw04+xrExuTvNj3g7pjcyUkH3+86FiYNhHtyWJc11BywUZ2Ey3RomCyTb/szl5qQEJqR7UC5z4mhLrhgXlbRI0BgmI/LhaMRsfskGM7ziyQ2ZpS0qbHX2xoum6ou/541/VePIwmcnIk6eWUx6GYnA4euZQIDAQAB"), 2);
               break;
             }
             paramSosoLbsInfo = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.mRuntime.a();
@@ -143,7 +143,7 @@ public class nrb
       for (;;)
       {
         if (paramSosoLbsInfo != null) {
-          azmj.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 0, paramSosoLbsInfo.getAccount(), localException.getMessage(), "", "");
+          azqs.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 0, paramSosoLbsInfo.getAccount(), localException.getMessage(), "", "");
         }
         paramSosoLbsInfo = "";
         break;
@@ -165,7 +165,7 @@ public class nrb
           for (;;)
           {
             paramSosoLbsInfo = Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-            azmj.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 2, this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.getNetworkType(), paramSosoLbsInfo, "", "");
+            azqs.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 2, this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.getNetworkType(), paramSosoLbsInfo, "", "");
             return;
             this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-1", "{}" });
           }
@@ -173,7 +173,7 @@ public class nrb
         this.jdField_a_of_type_Boolean = false;
         this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-1", "{}" });
         paramSosoLbsInfo = Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-        azmj.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 1, this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.getNetworkType(), paramSosoLbsInfo, "", "");
+        azqs.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 1, this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.getNetworkType(), paramSosoLbsInfo, "", "");
         return;
         label931:
         bool = false;

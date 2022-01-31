@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import aaos;
-import aaot;
+import aath;
+import aati;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,10 +19,10 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anxn;
-import aobd;
-import aobe;
-import betl;
+import aobw;
+import aofm;
+import aofn;
+import bexu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -40,8 +40,8 @@ import org.json.JSONObject;
 public class GameActivity1
   extends BaseActivity
 {
-  protected anxn mColorNoteController;
-  private aobe mColorNoteServiceListenr;
+  protected aobw mColorNoteController;
+  private aofn mColorNoteServiceListenr;
   private RelativeLayout mRoot;
   private IUIProxy mUIProxy;
   private MiniAIOEntryView miniAIOEntryView;
@@ -233,14 +233,14 @@ public class GameActivity1
         this.mUIProxy.onCreate(this, paramBundle, localFrameLayout);
         MiniSDKClientQIPCModule.registerModule();
         paramBundle = (MiniAppInfo)getIntent().getParcelableExtra("KEY_APPINFO");
-        this.mColorNoteController = new anxn(this, false, true);
+        this.mColorNoteController = new aobw(this, false, true);
         this.mColorNoteController.a(this);
         this.mColorNoteController.a(new GameActivity1.1(this, paramBundle));
         this.mColorNoteController.a(new GameActivity1.2(this));
         this.mColorNoteController.a(new GameActivity1.3(this));
         this.mColorNoteServiceListenr = new GameActivity1.4(this);
         this.mColorNoteController.a(this.mColorNoteServiceListenr);
-        aaos.a().a(this, new aaot());
+        aath.a().a(this, new aati());
         getSharedPreferences("sdk_conf", 4).edit().putInt("usersdk", 1).apply();
       }
     }
@@ -298,7 +298,7 @@ public class GameActivity1
     if (this.mColorNoteController != null) {
       this.mColorNoteController.b();
     }
-    aobd.a(this, 2, true);
+    aofm.a(this, 2, true);
   }
   
   public void doOnResume()
@@ -307,11 +307,11 @@ public class GameActivity1
     if (this.mUIProxy != null) {
       this.mUIProxy.onResume(this);
     }
-    betl.a(this);
+    bexu.a(this);
     if (this.mColorNoteController != null) {
       this.mColorNoteController.a();
     }
-    aobd.a(BaseApplicationImpl.getContext(), 2, false);
+    aofm.a(BaseApplicationImpl.getContext(), 2, false);
   }
   
   public void doOnStart()
@@ -350,7 +350,7 @@ public class GameActivity1
     }
   }
   
-  public anxn getColorNoteController()
+  public aobw getColorNoteController()
   {
     return this.mColorNoteController;
   }

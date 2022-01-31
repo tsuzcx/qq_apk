@@ -1,22 +1,61 @@
-import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import java.util.Set;
 
-class asae
-  implements View.OnClickListener
+public class asae
+  extends aryv
 {
-  asae(asad paramasad) {}
-  
-  public void onClick(View paramView)
+  public asae(Intent paramIntent)
   {
-    if (this.a.jdField_a_of_type_Bdfq == null) {
-      return;
+    super(paramIntent);
+  }
+  
+  protected View a()
+  {
+    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("key_hiboom_id");
+    HiBoomTextView localHiBoomTextView = new HiBoomTextView(this.jdField_a_of_type_AndroidAppActivity);
+    localHiBoomTextView.setHiBoom(i, 0, assg.jdField_a_of_type_Asrz);
+    localHiBoomTextView.setText(this.jdField_a_of_type_JavaLangString);
+    localHiBoomTextView.setMaxSize(assg.jdField_a_of_type_Int);
+    localHiBoomTextView.setLayoutParams(new RelativeLayout.LayoutParams(500, 500));
+    return localHiBoomTextView;
+  }
+  
+  protected void a()
+  {
+    if (k()) {
+      this.jdField_a_of_type_JavaUtilSet.add(d);
     }
-    this.a.jdField_a_of_type_Bdfq.hideSoftInputFromWindow();
-    paramView = new arxh(this.a.jdField_a_of_type_Bdfq);
-    paramView.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692843), this.a.jdField_a_of_type_JavaLangString);
-    this.a.jdField_a_of_type_Bdfq.addPreviewView(paramView.b());
-    this.a.D();
+    if (l()) {
+      this.jdField_a_of_type_JavaUtilSet.add(c);
+    }
+    if (m()) {
+      this.jdField_a_of_type_JavaUtilSet.add(b);
+    }
+  }
+  
+  public boolean a()
+  {
+    super.a();
+    return true;
+  }
+  
+  protected void b()
+  {
+    this.jdField_a_of_type_Bdjz.setMessage(null);
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  protected boolean h()
+  {
+    return true;
   }
 }
 

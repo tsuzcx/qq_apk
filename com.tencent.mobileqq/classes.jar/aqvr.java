@@ -1,12 +1,12 @@
 class aqvr
+  implements bezx
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  boolean jdField_b_of_type_Boolean = false;
-  boolean c = false;
+  aqvr(aqvp paramaqvp) {}
   
-  aqvr(aqug paramaqug) {}
+  public void a(int paramInt)
+  {
+    arrr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, aqvp.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
+  }
 }
 
 

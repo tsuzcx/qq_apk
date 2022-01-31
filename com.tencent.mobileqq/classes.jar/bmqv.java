@@ -1,47 +1,16 @@
-import android.util.Log;
-import java.io.Writer;
-
-public class bmqv
-  extends Writer
+public abstract interface bmqv
 {
-  private StringBuilder a = new StringBuilder();
+  public abstract void a(bmyj parambmyj);
   
-  private void a()
-  {
-    if (this.a.length() > 0)
-    {
-      Log.v("GLTextureView", this.a.toString());
-      this.a.delete(0, this.a.length());
-    }
-  }
+  public abstract void a(bmyj parambmyj, int paramInt1, int paramInt2);
   
-  public void close()
-  {
-    a();
-  }
+  public abstract void a(bmyj parambmyj, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2);
   
-  public void flush()
-  {
-    a();
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5);
   
-  public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (i < paramInt2)
-    {
-      char c = paramArrayOfChar[(paramInt1 + i)];
-      if (c == '\n') {
-        a();
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.a.append(c);
-      }
-    }
-  }
+  public abstract void b(bmyj parambmyj);
+  
+  public abstract void b(bmyj parambmyj, int paramInt1, int paramInt2);
 }
 
 

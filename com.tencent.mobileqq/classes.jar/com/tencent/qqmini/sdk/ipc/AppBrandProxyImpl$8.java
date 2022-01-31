@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.ipc;
 
 import android.os.Bundle;
-import bgpo;
+import bgtv;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.ipc.IAppMainService;
 import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
@@ -10,7 +10,7 @@ import com.tencent.qqmini.sdk.log.QMLog;
 public class AppBrandProxyImpl$8
   implements Runnable
 {
-  public AppBrandProxyImpl$8(bgpo parambgpo, String paramString, MiniCmdCallback paramMiniCmdCallback, Bundle paramBundle) {}
+  public AppBrandProxyImpl$8(bgtv parambgtv, String paramString, MiniCmdCallback paramMiniCmdCallback, Bundle paramBundle) {}
   
   public void run()
   {
@@ -31,7 +31,7 @@ public class AppBrandProxyImpl$8
     }
     try
     {
-      bgpo.a(this.this$0).sendCmd(this.jdField_a_of_type_JavaLangString, AppLoaderFactory.g().getCurrentProcessName(), this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentQqminiSdkLauncherIpcMiniCmdCallback);
+      bgtv.a(this.this$0).sendCmd(this.jdField_a_of_type_JavaLangString, AppLoaderFactory.g().getCurrentProcessName(), this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentQqminiSdkLauncherIpcMiniCmdCallback);
       return;
     }
     catch (Throwable localThrowable2)

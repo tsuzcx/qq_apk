@@ -1,14 +1,11 @@
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-
 public class wfl
-  extends xrw
+  extends uli
 {
-  public wfl(StoryDetailFragment paramStoryDetailFragment) {}
+  public int a;
   
-  public boolean a(boolean paramBoolean)
+  public String toString()
   {
-    this.a.d();
-    return true;
+    return "ChangeVideoSortEvent " + super.toString();
   }
 }
 

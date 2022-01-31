@@ -1,9 +1,39 @@
-import java.io.File;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class bkkv
+class bkkv
+  implements INetInfoHandler
 {
-  public static final String a = bklb.b + File.separator + "gif";
-  public static final String b = a + File.separator + "gifPreview";
+  bkkv(bkks parambkks) {}
+  
+  public void onNetMobile2None()
+  {
+    this.a.a(false, false);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    this.a.a(true, true);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    this.a.a(false, true);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    this.a.a(true, true);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    this.a.a(false, true);
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.a(false, false);
+  }
 }
 
 

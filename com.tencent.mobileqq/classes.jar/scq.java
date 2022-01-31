@@ -77,7 +77,7 @@ public class scq
       localHashMap.put("article_url", "" + paramString);
       localHashMap.put("error", "" + localException.toString());
       localHashMap.put("param_uin", ors.a());
-      azmz.a(BaseApplicationImpl.getApplication()).a(null, "actKandianFastWebCost", false, 0L, 0L, localHashMap, null);
+      azri.a(BaseApplicationImpl.getApplication()).a(null, "actKandianFastWebCost", false, 0L, 0L, localHashMap, null);
     }
     return -1L;
   }
@@ -274,8 +274,8 @@ public class scq
       int i1 = Utils.dp2px(Integer.valueOf(str2).intValue());
       int j = Utils.dp2px(Integer.valueOf((String)localObject1).intValue());
       int k = Utils.dp2px(Integer.valueOf(str1).intValue());
-      int m = azgq.a(paramContext);
-      int n = azgq.b(paramContext);
+      int m = azkz.a(paramContext);
+      int n = azkz.b(paramContext);
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
         i = Utils.dp2px(Integer.valueOf((String)localObject2).intValue());
@@ -482,7 +482,7 @@ public class scq
               ((JSONObject)localObject2).put("text_color", "#FF4A2D");
               ((JSONObject)localObject2).put("label_ug_progress_bgcolor", "#FFE9E9");
               ((JSONObject)localObject2).put("label_ug_progress_fgcolor", "#FFCECE");
-              if (!bdem.a(BaseApplicationImpl.getContext(), "com.tencent.reading").equals("0"))
+              if (!bdiv.a(BaseApplicationImpl.getContext(), "com.tencent.reading").equals("0"))
               {
                 ((JSONObject)localObject2).put("text", "前往快报阅读");
                 ((JSONObject)localObject2).put("label_ug_progress_progress", 100);
@@ -523,7 +523,7 @@ public class scq
             continue;
           }
         }
-        localObject4 = bfgi.a().b((String)localObject4);
+        localObject4 = bfkr.a().b((String)localObject4);
       }
       catch (Exception localException1)
       {
@@ -622,12 +622,12 @@ public class scq
       String str;
       try
       {
-        localObject1 = new aaop();
-        ((aaop)localObject1).jdField_a_of_type_JavaLangString = "ce2d9f";
-        localObject1 = aaoo.a(BaseApplication.getContext(), (aaop)localObject1);
+        localObject1 = new aate();
+        ((aate)localObject1).jdField_a_of_type_JavaLangString = "ce2d9f";
+        localObject1 = aatd.a(BaseApplication.getContext(), (aate)localObject1);
         if (localObject1 != null)
         {
-          localObject1 = ((aaoq)localObject1).a;
+          localObject1 = ((aatf)localObject1).a;
           localJSONObject.put("muidtype", 1);
           str = ods.b();
           if (!TextUtils.isEmpty(str)) {
@@ -635,7 +635,7 @@ public class scq
           }
           localObject2 = "0000000000000000";
           localJSONObject.put("muid", localObject2);
-          localJSONObject.put("carrier", aaor.a(BaseApplicationImpl.getContext()));
+          localJSONObject.put("carrier", aatg.a(BaseApplicationImpl.getContext()));
           localJSONObject.put("c_os", "android");
           localJSONObject.put("appid", String.valueOf(AppSetting.a()));
           localJSONObject.put("app_version_id", AppSetting.a());
@@ -693,7 +693,7 @@ public class scq
             }
           }
           localJSONObject.put("present_from", paramInt);
-          if (azwu.a()) {
+          if (babd.a()) {
             localJSONObject.put("reqLearningPatternFlag", 1);
           }
           return localJSONObject;

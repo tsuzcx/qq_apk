@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import ailh;
+import aipw;
 import java.io.File;
 
 class TroopAvatarWallEditActivity$15

@@ -1,13 +1,21 @@
-class aiot
-  implements bevo
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
+
+public class aiot
+  implements View.OnClickListener
 {
-  aiot(aior paramaior, Runnable paramRunnable) {}
+  public aiot(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    paramView = QzonePhotoPreviewActivity.a(this.a);
+    paramView.putExtra("PhotoConst.send_changtu", true);
+    paramView.putExtra("PhotoConst.KEY_SHOW_TYPE", 1);
+    paramView.putExtra("PhotoConst.KEY_SHOW_ORIGIN_TYPE", 1);
+    PhotoUtils.a(this.a.getActivity(), QzonePhotoPreviewActivity.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_Int, false);
   }
 }
 

@@ -1,69 +1,71 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.Button;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ThemeImageView;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class ahhy
-  extends ahgy
-  implements View.OnClickListener
+  implements ahhf
 {
-  public ahhy(Context paramContext, QQAppInterface paramQQAppInterface, akgy paramakgy, avqe paramavqe)
-  {
-    super(paramContext, paramQQAppInterface, paramakgy, paramavqe);
-  }
+  public ahhy(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public View a(int paramInt, View paramView)
+  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
   {
-    View localView;
-    Object localObject;
-    if ((paramView == null) || (!(paramView.getTag() instanceof ahhz)))
+    int i = 3;
+    this.a.i();
+    if (paramBoolean)
     {
-      paramView = new ahhz();
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561102, null);
-      localObject = new Rect();
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-      a(localView, ((Rect)localObject).height() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914) - bdkf.a(80.0F));
-      paramView.a = ((Button)localView.findViewById(2131367375));
-      if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-        paramView.a.setBackgroundResource(2130839129);
+      if ((paramObject != null) && ((paramObject instanceof ArrayList)))
+      {
+        paramObject = (ArrayList)paramObject;
+        if (paramObject.size() != 0) {
+          break label94;
+        }
+        if (this.a.a != null)
+        {
+          paramObject = this.a.a;
+          if (!this.a.b) {
+            break label89;
+          }
+          paramInt1 = 3;
+          paramObject.sendEmptyMessage(paramInt1);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(SearchBaseFragment.a(), 2, "error! SearchResult is null!");
+        }
       }
-      localObject = (ThemeImageView)localView.findViewById(2131367372);
-      ((ThemeImageView)localObject).setSupportMaskView(true);
-      ((ThemeImageView)localObject).setMaskShape(bhxo.b);
-      localView.setTag(paramView);
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A5D3", "0X800A5D3", 0, 0, "1", "", "", "");
-      localObject = paramView;
-    }
-    for (;;)
-    {
-      ((ahhz)localObject).a.setOnClickListener(this);
-      return localView;
-      localObject = (ahhz)paramView.getTag();
-      localView = paramView;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A5D4", "0X800A5D4", 0, 0, "1", "", "", "");
-    if (bdee.d(this.jdField_a_of_type_AndroidContentContext))
-    {
-      paramView = (ahpq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(295);
-      if (paramView != null) {
-        paramView.b(true);
+      for (;;)
+      {
+        return;
+        label89:
+        paramInt1 = 2;
+        break;
+        label94:
+        if (paramObject.size() > 0) {}
+        try
+        {
+          paramString = (ahip)paramObject.get(0);
+          if ((this.a.a(paramObject)) && (this.a.a != null))
+          {
+            this.a.a.sendEmptyMessage(0);
+            return;
+          }
+        }
+        catch (Exception paramObject)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(SearchBaseFragment.a(), 2, "", paramObject);
+          }
+          paramObject = this.a.a;
+          if (!this.a.b) {}
+        }
       }
-      return;
+      for (paramInt1 = i;; paramInt1 = 2)
+      {
+        paramObject.sendEmptyMessage(paramInt1);
+        return;
+      }
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692397), 0).a();
+    this.a.a(paramInt1, paramObject, paramInt2, paramString);
   }
 }
 

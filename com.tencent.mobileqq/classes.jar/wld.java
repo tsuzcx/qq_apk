@@ -1,31 +1,15 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.Vector;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 
 class wld
-  implements uni<vba, vcx>
+  implements beqw
 {
-  wld(wkz paramwkz, JobContext paramJobContext, wkm paramwkm) {}
+  wld(wlc paramwlc, String paramString, QQStoryAutoPlayView paramQQStoryAutoPlayView) {}
   
-  public void a(@NonNull vba paramvba, @Nullable vcx paramvcx, @NonNull ErrorMessage arg3)
+  public void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      wsv.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "segment cancel on net respond");
-      return;
-    }
-    if ((paramvcx == null) || (???.isFail())) {
-      wsv.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feature request, %s", new Object[] { ???.toString() });
-    }
-    synchronized (this.jdField_a_of_type_Wkz)
-    {
-      wkz.a(this.jdField_a_of_type_Wkz, paramvcx);
-      wkz.a(this.jdField_a_of_type_Wkz).remove(paramvba);
-      wkz.a(this.jdField_a_of_type_Wkz, this.jdField_a_of_type_Wkm);
-      return;
-    }
+    wxe.a("Q.qqstory.detail.FeedItemThumbAdapter", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
+    uoy.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
   }
 }
 

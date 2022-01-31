@@ -1,16 +1,15 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.view.QIMSlidingTabView;
 
 public class bmbk
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public bmbk(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  public bmbk(QIMSlidingTabView paramQIMSlidingTabView, int paramInt) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.b.setTranslationX(0.0F);
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.a(this.jdField_a_of_type_Int);
   }
 }
 

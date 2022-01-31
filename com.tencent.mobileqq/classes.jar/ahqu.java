@@ -1,17 +1,28 @@
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 
 public class ahqu
-  extends View.AccessibilityDelegate
+  implements View.OnClickListener
 {
-  public ahqu(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
+  public ahqu(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt != 4096) {
-      super.sendAccessibilityEvent(paramView, paramInt);
+    if ((paramView.getTag() instanceof ahpn))
+    {
+      paramView = (ahpn)paramView.getTag();
+      if (paramView != null) {}
     }
+    else
+    {
+      return;
+    }
+    paramView = TroopInfoActivity.a(paramView.b, 4);
+    paramView.putInt("t_s_f", 1002);
+    bcpx.a(this.a.getActivity(), paramView, 2);
   }
 }
 

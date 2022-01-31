@@ -1,25 +1,35 @@
-import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.ar.util.VipARUtils.4;
 
-final class bkfc
-  implements UploadManager.IUploadStatusListener
+public class bkfc
+  implements ModuleDownloadListener
 {
-  public void onUploadJobAdded(String paramString, long paramLong) {}
+  public bkfc(VipARUtils.4 param4) {}
   
-  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
+  public void onDownloadCanceled(String paramString)
   {
-    if (paramBoolean)
-    {
-      if (paramStatusInfo.state != 6) {
-        break label26;
-      }
-      bkid.a(paramString, "actFileWyUp", paramStatusInfo, false, paramLong);
-    }
-    label26:
-    while (paramStatusInfo.state != 5) {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("libTar.so")) {
       return;
     }
-    bkid.a(paramString, "actFileWyUp", paramStatusInfo, true, paramLong);
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bkey.c(), " onDownloadSucceed = ", bkey.d() });
+    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bkey.d());
   }
 }
 

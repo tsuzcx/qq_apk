@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.jsp;
 
-import atdf;
-import atdg;
+import atho;
+import athp;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class IdentificationApiPlugin$1$2
   implements Runnable
 {
-  public IdentificationApiPlugin$1$2(atdg paramatdg, String paramString) {}
+  public IdentificationApiPlugin$1$2(athp paramathp, String paramString) {}
   
   public void run()
   {
-    atdf.a(this.jdField_a_of_type_Atdg.a);
-    QQToast.a(atdf.a(this.jdField_a_of_type_Atdg.a), this.jdField_a_of_type_JavaLangString, 0).a();
+    atho.a(this.jdField_a_of_type_Athp.a);
+    QQToast.a(atho.a(this.jdField_a_of_type_Athp.a), this.jdField_a_of_type_JavaLangString, 0).a();
   }
 }
 

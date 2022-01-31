@@ -38,7 +38,7 @@ public class nrz
     {
       localObject1 = localObject2;
       if (paramFromServiceMsg.isSuccess()) {
-        localObject1 = bdku.b(paramFromServiceMsg.getWupBuffer());
+        localObject1 = bdpd.b(paramFromServiceMsg.getWupBuffer());
       }
     }
     return localObject1;
@@ -88,7 +88,7 @@ public class nrz
     for (;;)
     {
       if (paramIntent != null) {
-        paramPacket.putSendData(bdku.a(paramIntent));
+        paramPacket.putSendData(bdpd.a(paramIntent));
       }
       if (QLog.isColorLevel()) {
         QLog.d(this.a, 2, "onSend exit");

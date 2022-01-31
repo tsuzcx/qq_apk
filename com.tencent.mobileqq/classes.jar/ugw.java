@@ -1,12 +1,18 @@
-public abstract interface ugw
+import com.tencent.biz.qqcircle.widgets.message.item.QCircleMessageReplyItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StReply;
+import feedcloud.FeedCloudMeta.StUser;
+
+public class ugw
+  implements ucd
 {
-  public abstract void a(ueq paramueq);
+  public ugw(QCircleMessageReplyItemView paramQCircleMessageReplyItemView, FeedCloudMeta.StReply paramStReply) {}
   
-  public abstract void a(ueq paramueq, int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void e();
+  public void a()
+  {
+    tzs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.id.get(), QCircleMessageReplyItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMessageItemQCircleMessageReplyItemView).a, QCircleMessageReplyItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMessageItemQCircleMessageReplyItemView), 44);
+    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.id.get());
+  }
 }
 
 

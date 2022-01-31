@@ -1,12 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import mqq.app.QQPermissionCallback;
 
 class tsr
-  implements DialogInterface.OnClickListener
+  implements QQPermissionCallback
 {
-  tsr(tsp paramtsp) {}
+  tsr(tsk paramtsk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    tsk.a(this.a);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    tsk.d(this.a);
+  }
 }
 
 

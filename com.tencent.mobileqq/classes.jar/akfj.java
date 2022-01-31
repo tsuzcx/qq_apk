@@ -1,15 +1,27 @@
-class akfj
-  implements bhtl
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+
+public class akfj
+  implements Animation.AnimationListener
 {
-  akfj(akfe paramakfe) {}
+  public akfj(SpecailCareListActivity paramSpecailCareListActivity, akfw paramakfw, int paramInt) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt != 4097) {
-      return;
-    }
-    this.a.e();
+    this.jdField_a_of_type_Akfw.a.clearAnimation();
+    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
+    paramAnimation.addRule(1, 2131367819);
+    paramAnimation.addRule(10);
+    paramAnimation.setMargins(0, (int)(10.0F * SpecailCareListActivity.h(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), this.jdField_a_of_type_Int, 0);
+    this.jdField_a_of_type_Akfw.a.setLayoutParams(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

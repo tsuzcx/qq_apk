@@ -1,46 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public class ackv
-  implements bhqd
+public final class ackv
+  implements aclm
 {
-  public ackv(ChatSettingForTroop paramChatSettingForTroop, bhpy parambhpy) {}
+  public ackv(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    AudioHelper.b("发起音视频_获取会议id_rsp");
+    Bundle localBundle2 = this.jdField_a_of_type_AndroidOsBundle;
+    Bundle localBundle1 = localBundle2;
+    if (localBundle2 == null) {
+      localBundle1 = new Bundle();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Beps == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Beps = new beps(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
-    }
-    if (bdee.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop))
-    {
-      paramView = (alzf)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.a(20);
-      if (paramView != null)
-      {
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.k & 0x1) == 0)
-        {
-          ChatSettingForTroop localChatSettingForTroop = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop;
-          localChatSettingForTroop.k |= 0x1;
-          paramView.l(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Beps.b(0, 2131692292, 1000);
-      }
-    }
-    for (;;)
-    {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Bhpy.cancel();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Beps.b(2, 2131692288, 1500);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Beps.b(2, 2131694829, 1500);
-    }
+    localBundle1.putInt("ConfAppID", paramInt1);
+    localBundle1.putInt("MeetingConfID", paramInt2);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, localBundle1);
   }
 }
 

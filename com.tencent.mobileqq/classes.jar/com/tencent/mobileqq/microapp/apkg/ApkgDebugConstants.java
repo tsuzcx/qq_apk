@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.apkg;
 
 import Wallet.ApkgConfig;
-import alpo;
+import alud;
 import android.text.TextUtils;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -53,7 +53,7 @@ public class ApkgDebugConstants
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         FormSimpleItem localFormSimpleItem = new FormSimpleItem(paramLinearLayout.getContext());
-        localFormSimpleItem.setLeftText(alpo.a(2131700656) + ((ApkgConfig)localEntry.getValue()).app_name);
+        localFormSimpleItem.setLeftText(alud.a(2131700668) + ((ApkgConfig)localEntry.getValue()).app_name);
         localFormSimpleItem.setOnClickListener(new ApkgDebugConstants.1(paramLinearLayout, localEntry));
         paramLinearLayout.addView(localFormSimpleItem);
       }

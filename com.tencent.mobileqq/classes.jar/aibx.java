@@ -1,33 +1,31 @@
-import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.messagesearch.C2CLinkElement;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import java.util.ArrayList;
+import java.util.List;
 
-class aibx
-  implements bhqp
+public class aibx
+  implements View.OnClickListener
 {
-  aibx(aibq paramaibq) {}
+  public aibx(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
-    }
-    if ((this.a.jdField_a_of_type_Aibp.getCount() <= 0) || (paramInt <= 0)) {
-      return;
-    }
-    paramAdapterView = this.a.jdField_a_of_type_Aibp.a(paramInt - 1);
-    if (paramAdapterView != null)
+    xqq.a(this.a.jdField_a_of_type_Aidh);
+    xqq.a(this.a.jdField_a_of_type_JavaUtilList);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
     {
-      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", paramAdapterView.url);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      return;
+      paramView.add(((aidf)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
+      i += 1;
     }
-    QLog.e("LinkMessageSearchDialog", 2, "link element is null pos:" + paramInt);
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.getActivity().setResult(-1, localIntent);
+    this.a.getActivity().finish();
   }
 }
 

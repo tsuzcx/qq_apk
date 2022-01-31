@@ -2,7 +2,7 @@ package com.tencent.mobileqq.msgbackup.fragment;
 
 import android.os.Message;
 import android.os.SystemClock;
-import auey;
+import aujh;
 import mqq.os.MqqHandler;
 
 class MsgBackupBaseFragment$6
@@ -12,7 +12,7 @@ class MsgBackupBaseFragment$6
   
   public void run()
   {
-    if (!auey.a().b())
+    if (!aujh.a().b())
     {
       if (SystemClock.elapsedRealtime() - this.this$0.jdField_b_of_type_Long > 30000L)
       {

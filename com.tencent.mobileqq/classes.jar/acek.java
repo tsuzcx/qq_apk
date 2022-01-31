@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import mqq.app.QQPermissionCallback;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class acek
-  implements QQPermissionCallback
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public acek(BaseChatPie paramBaseChatPie) {}
+  public acek(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    bdcd.a(this.a.a(), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.bm();
+    auku.a(paramBoolean);
   }
 }
 

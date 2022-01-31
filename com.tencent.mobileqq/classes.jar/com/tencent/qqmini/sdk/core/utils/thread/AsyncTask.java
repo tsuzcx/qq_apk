@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.utils.thread;
 
 import android.os.Message;
-import bgls;
-import bglt;
-import bglu;
-import bglv;
-import bglw;
+import bgpz;
+import bgqa;
+import bgqb;
+import bgqc;
+import bgqd;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -18,7 +18,7 @@ public abstract class AsyncTask<Params, Progress, Result>
 {
   private static final BlockingQueue<Runnable> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
   public static final Executor a;
-  private static final ThreadFactory jdField_a_of_type_JavaUtilConcurrentThreadFactory = new bgls();
+  private static final ThreadFactory jdField_a_of_type_JavaUtilConcurrentThreadFactory = new bgpz();
   public static final Executor b;
   private static volatile Executor c = jdField_b_of_type_JavaUtilConcurrentExecutor;
   private volatile AsyncTask.Status jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask$Status;
@@ -29,12 +29,12 @@ public abstract class AsyncTask<Params, Progress, Result>
   {
     jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue(10);
     jdField_a_of_type_JavaUtilConcurrentExecutor = new ThreadPoolExecutor(1, 128, 1L, TimeUnit.SECONDS, jdField_a_of_type_JavaUtilConcurrentBlockingQueue, jdField_a_of_type_JavaUtilConcurrentThreadFactory);
-    jdField_b_of_type_JavaUtilConcurrentExecutor = new bglw(null);
+    jdField_b_of_type_JavaUtilConcurrentExecutor = new bgqd(null);
   }
   
   private Result a(Result paramResult)
   {
-    bglu.a.obtainMessage(1, new bglt(this, new Object[] { paramResult })).sendToTarget();
+    bgqb.a.obtainMessage(1, new bgqa(this, new Object[] { paramResult })).sendToTarget();
     return paramResult;
   }
   

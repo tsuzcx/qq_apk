@@ -1,37 +1,24 @@
-import android.content.res.Resources;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
+import java.lang.ref.WeakReference;
 
-class bmca
-  implements View.OnTouchListener
+public class bmca
+  implements View.OnClickListener
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public bmca(VideoSegmentPickerProviderView paramVideoSegmentPickerProviderView) {}
   
-  bmca(bmbz parambmbz) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
+    VideoSegmentPickerProviderView.a(this.a).a.clearSegments();
+    if (VideoSegmentPickerProviderView.a(this.a) != null)
     {
+      paramView = (bmcb)VideoSegmentPickerProviderView.a(this.a).get();
+      if (paramView != null) {
+        paramView.a(0L, 0L);
+      }
     }
-    do
-    {
-      return true;
-      this.jdField_a_of_type_Bmbz.a.a.setBackgroundColor(this.jdField_a_of_type_Bmbz.a.getResources().getColor(2131165356));
-      this.jdField_a_of_type_Boolean = true;
-      return true;
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Bmbz.a.a.setBackgroundColor(this.jdField_a_of_type_Bmbz.a.getResources().getColor(2131165358));
-    if (!this.jdField_a_of_type_Bmbz.a.f)
-    {
-      this.jdField_a_of_type_Bmbz.a.f = true;
-      this.jdField_a_of_type_Bmbz.a.h();
-    }
-    this.jdField_a_of_type_Boolean = false;
-    return true;
   }
 }
 

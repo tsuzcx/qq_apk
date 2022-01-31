@@ -4,7 +4,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
 
 class rek
-  extends alox
+  extends altm
 {
   rek(reh paramreh, QQAppInterface paramQQAppInterface) {}
   
@@ -14,7 +14,7 @@ class rek
     {
       Bundle localBundle = new Bundle();
       localBundle.putString("VALUE_USER_UIN_TO_GET_NICK_NAME", paramString);
-      localBundle.putString("VALUE_USER_NICK_NAME", bdbt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, true));
+      localBundle.putString("VALUE_USER_NICK_NAME", bdgc.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, true));
       QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_GET_NICK_NAME_BY_UIN", localBundle, null);
     }
   }

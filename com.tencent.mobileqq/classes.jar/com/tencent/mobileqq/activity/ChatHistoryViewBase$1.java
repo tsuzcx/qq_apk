@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acju;
+import acoj;
 
 public class ChatHistoryViewBase$1
   implements Runnable
 {
-  public ChatHistoryViewBase$1(acju paramacju) {}
+  public ChatHistoryViewBase$1(acoj paramacoj) {}
   
   public void run()
   {

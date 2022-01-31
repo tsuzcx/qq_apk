@@ -14,8 +14,8 @@ public class nlh
     switch (paramView.getId())
     {
     default: 
-    case 2131379590: 
-    case 2131379613: 
+    case 2131379648: 
+    case 2131379671: 
       do
       {
         return;
@@ -30,14 +30,14 @@ public class nlh
       PublicAccountAdvertisementActivity.a(this.a).setCurrentPage(1);
       PublicAccountAdvertisementActivity.b(this.a, 1);
       return;
-    case 2131379606: 
+    case 2131379664: 
       this.a.b();
       return;
     case 2131362046: 
-      azmj.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8009032", "0X8009032", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
+      azqs.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8009032", "0X8009032", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
       PublicAccountAdvertisementActivity.d(this.a);
       return;
-    case 2131370718: 
+    case 2131370737: 
       PublicAccountAdvertisementActivity.a(this.a, 2);
       return;
     }

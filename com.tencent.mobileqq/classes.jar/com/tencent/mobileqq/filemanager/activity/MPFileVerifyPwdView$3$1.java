@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.app.Activity;
-import aqif;
+import aqmo;
 import java.util.TimerTask;
 
 public class MPFileVerifyPwdView$3$1
   extends TimerTask
 {
-  public MPFileVerifyPwdView$3$1(aqif paramaqif) {}
+  public MPFileVerifyPwdView$3$1(aqmo paramaqmo) {}
   
   public void run()
   {

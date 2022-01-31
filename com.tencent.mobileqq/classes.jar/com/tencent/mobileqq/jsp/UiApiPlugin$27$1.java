@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.jsp;
 
 import android.app.ProgressDialog;
-import atff;
+import atjo;
 import java.io.File;
 
 public class UiApiPlugin$27$1
   implements Runnable
 {
-  public UiApiPlugin$27$1(atff paramatff, File paramFile) {}
+  public UiApiPlugin$27$1(atjo paramatjo, File paramFile) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Atff.a.b.dismiss();
-    this.jdField_a_of_type_Atff.a.a(this.jdField_a_of_type_JavaIoFile);
+    this.jdField_a_of_type_Atjo.a.b.dismiss();
+    this.jdField_a_of_type_Atjo.a.a(this.jdField_a_of_type_JavaIoFile);
   }
 }
 

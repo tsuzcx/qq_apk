@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
+import android.graphics.Bitmap;
 
 class bncf
-  implements DialogInterface.OnClickListener
+  implements ansr
 {
-  bncf(bnbz parambnbz) {}
+  bncf(bnce parambnce) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    paramDialogInterface.dismiss();
-    bnbz.a(this.a).q = false;
-    bnbz.b(this.a).setSelected(false);
+    if (bnce.a(this.a) != null) {
+      bnce.a(this.a).a(paramString1, 1, paramString2, paramBitmap);
+    }
   }
 }
 

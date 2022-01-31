@@ -1,41 +1,21 @@
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class vlc
-  extends vle
+  extends urs<vgo, vgp>
 {
-  public ErrorMessage a;
+  public vlc(StoryShareEncryptHelper.2 param2, long paramLong, bety parambety) {}
   
-  public vlc(vld paramvld, @Nullable ErrorMessage paramErrorMessage)
+  public void a(@NonNull vgo paramvgo, @Nullable vgp paramvgp, @NonNull ErrorMessage paramErrorMessage)
   {
-    super(paramvld);
-    if (paramErrorMessage == null) {}
-    for (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(97000001, "loading");; this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage)
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.share.trans.helper", 2, "decrypt done costTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", resp:" + paramvgp);
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000000;
-  }
-  
-  public boolean b()
-  {
-    return (!a()) && (!c());
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000001;
-  }
-  
-  public String toString()
-  {
-    return "fg{g=" + this.jdField_a_of_type_Vld + ", em=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
+    wxj.a("StoryShareEncryptHelper", "decrypt", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareUtilStoryShareEncryptHelper$2.a.a(paramvgp, this.jdField_a_of_type_Bety);
   }
 }
 

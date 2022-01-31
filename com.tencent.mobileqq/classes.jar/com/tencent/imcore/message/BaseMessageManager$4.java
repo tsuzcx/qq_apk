@@ -1,8 +1,8 @@
 package com.tencent.imcore.message;
 
-import abnt;
-import amhm;
-import ayvc;
+import absi;
+import ammb;
+import ayzl;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class BaseMessageManager$4
   implements Runnable
 {
-  public BaseMessageManager$4(abnt paramabnt, MessageRecord paramMessageRecord, long paramLong) {}
+  public BaseMessageManager$4(absi paramabsi, MessageRecord paramMessageRecord, long paramLong) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class BaseMessageManager$4
     {
       this.this$0.a.a().f(null);
       return;
-      this.this$0.a.a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, amhm.e, amhm.m);
+      this.this$0.a.a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, ammb.e, ammb.m);
     }
   }
 }

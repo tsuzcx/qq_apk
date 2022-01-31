@@ -1,24 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileFilter;
 
-public class annt
-  implements alkr
+public final class annt
+  implements FileFilter
 {
-  public void a(boolean paramBoolean, int paramInt, long paramLong) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public boolean accept(File paramFile)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArMapObserver", 2, new Object[] { "onUpdate, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
-    }
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (!(paramObject instanceof Object[]));
-    paramObject = (Object[])paramObject;
-    a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Long)paramObject[1]).longValue());
+    return (paramFile.getName().startsWith("hc_")) || (paramFile.getName().startsWith(".hc_"));
   }
 }
 

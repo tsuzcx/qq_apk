@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.imaxad;
 
-import astw;
+import asyf;
 
 public class ImaxAdVideoPreloadManager$8
   implements Runnable
 {
-  public ImaxAdVideoPreloadManager$8(astw paramastw, int paramInt) {}
+  public ImaxAdVideoPreloadManager$8(asyf paramasyf, int paramInt) {}
   
   public void run()
   {
-    astw.a(this.this$0, this.a);
+    asyf.a(this.this$0, this.a);
   }
 }
 

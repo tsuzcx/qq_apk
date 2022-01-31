@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.scribble;
 
-import ayby;
-import aybz;
-import ayca;
+import aygh;
+import aygi;
+import aygj;
 import com.tencent.mobileqq.data.MessageForScribble;
 
 public class ScribbleDownloader$1
   implements Runnable
 {
-  public ScribbleDownloader$1(ayca paramayca, aybz paramaybz) {}
+  public ScribbleDownloader$1(aygj paramaygj, aygi paramaygi) {}
   
   public void run()
   {
-    ayca.a(this.this$0, "dowmthreak", "start download ,uniseq:" + this.a.a.uniseq);
-    new ayby(this.this$0.a).a(this.a.a, null);
+    aygj.a(this.this$0, "dowmthreak", "start download ,uniseq:" + this.a.a.uniseq);
+    new aygh(this.this$0.a).a(this.a.a, null);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ark;
 
-import ania;
-import anko;
+import anmj;
+import anox;
 
 final class ArkRecommendLogic$1
   implements Runnable
 {
   public void run()
   {
-    ania.a(null);
-    anko.a();
+    anmj.a(null);
+    anox.a();
   }
 }
 

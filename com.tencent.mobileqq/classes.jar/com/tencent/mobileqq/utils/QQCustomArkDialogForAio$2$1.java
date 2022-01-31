@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.utils;
 
-import bdfl;
-import bdfn;
+import bdju;
+import bdjw;
 import java.lang.ref.WeakReference;
 
 public class QQCustomArkDialogForAio$2$1
   implements Runnable
 {
-  public QQCustomArkDialogForAio$2$1(bdfn parambdfn, WeakReference paramWeakReference, int paramInt) {}
+  public QQCustomArkDialogForAio$2$1(bdjw parambdjw, WeakReference paramWeakReference, int paramInt) {}
   
   public void run()
   {
-    bdfl localbdfl = (bdfl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localbdfl != null) {
-      bdfl.a(localbdfl, this.jdField_a_of_type_Int);
+    bdju localbdju = (bdju)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localbdju != null) {
+      bdju.a(localbdju, this.jdField_a_of_type_Int);
     }
   }
 }

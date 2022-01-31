@@ -1,23 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
 
-final class bcvg
-  implements DownloadParams.DecodeHandler
+public class bcvg
+  implements badp
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public bcvg(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  
+  public void a()
   {
-    if (paramBitmap == null) {
-      return null;
-    }
-    paramDownloadParams = paramDownloadParams.tag;
-    int i;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1)) {
-      i = ((int[])(int[])paramDownloadParams)[0];
-    }
-    for (paramDownloadParams = bdda.a(paramBitmap, i, i, i);; paramDownloadParams = null) {
-      return paramDownloadParams;
-    }
+    badx localbadx = new badx(new bado[] { new badw(400, TroopGiftToAllSurfaceView.a(this.a), TroopGiftToAllSurfaceView.a(this.a) * 0.95F), new badw(400, TroopGiftToAllSurfaceView.a(this.a) * 0.95F, TroopGiftToAllSurfaceView.a(this.a)) });
+    localbadx.a = true;
+    TroopGiftToAllSurfaceView.a(this.a).a(new bado[] { localbadx });
   }
 }
 

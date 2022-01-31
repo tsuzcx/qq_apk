@@ -1,14 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
+import com.tencent.qphone.base.util.QLog;
 
 class algx
-  implements View.OnClickListener
+  extends AVAudioCtrl.EnableMicCompleteCallback
 {
-  algx(algv paramalgv) {}
+  algx(algt paramalgt) {}
   
-  public void onClick(View paramView)
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    this.a.dismiss();
+    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean, paramInt);
+    }
   }
 }
 

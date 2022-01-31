@@ -1,7 +1,7 @@
 package com.tencent.biz.TroopRedpoint;
 
-import bdbi;
-import bdcs;
+import bdfr;
+import bdhb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -20,7 +20,7 @@ public class TroopRedTouchManager$4
     {
       try
       {
-        bdcs.a(str, bdbi.encode(this.a.getBytes(), 0), false);
+        bdhb.a(str, bdfr.encode(this.a.getBytes(), 0), false);
         return;
       }
       catch (Exception localException)

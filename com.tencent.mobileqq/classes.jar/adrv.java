@@ -1,37 +1,62 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Process;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class adrv
-  implements View.OnKeyListener
+  extends BroadcastReceiver
 {
-  public adrv(SelectedAndSearchBar paramSelectedAndSearchBar) {}
+  public adrv(QQMapActivity.MapRuntime paramMapRuntime) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 67)
-    {
-      if (paramKeyEvent.getAction() != 0) {
-        break label36;
-      }
-      SelectedAndSearchBar.a(this.a, TextUtils.isEmpty(SelectedAndSearchBar.a(this.a).getText()));
-    }
+    int j = 1;
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
     for (;;)
     {
-      return false;
-      label36:
-      if ((paramKeyEvent.getAction() == 1) && (SelectedAndSearchBar.a(this.a))) {
-        SelectedAndSearchBar.a(this.a).a();
+      return;
+      int i;
+      if (paramContext.equals("com.tencent.process.exit"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQMapActivity", 2, "receive kill map process broadcast");
+        }
+        paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
+        if ((!QQMapActivity.a(paramIntent.getExtras().getString("verify"), paramContext)) || (!bdao.a(paramContext, MobileQQ.getContext()))) {
+          break label144;
+        }
+        i = j;
+      }
+      while (i != 0)
+      {
+        Process.killProcess(Process.myPid());
+        return;
+        i = j;
+        if (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))
+        {
+          i = j;
+          if (!paramContext.equals("mqq.intent.action.LOGOUT"))
+          {
+            i = j;
+            if (!paramContext.equals("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName())) {
+              label144:
+              i = 0;
+            }
+          }
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adrv
  * JD-Core Version:    0.7.0.1
  */

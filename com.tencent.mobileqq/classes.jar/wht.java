@@ -1,47 +1,49 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.storyHome.atvideo.view.StoryAtVideoFragment;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 
-class wht
-  extends QQUIEventReceiver<whs, uyb>
+public class wht
+  extends umf<StoryAtVideoFragment, wpf>
 {
-  public wht(@NonNull whs paramwhs)
+  public wht(StoryAtVideoFragment paramStoryAtVideoFragment)
   {
-    super(paramwhs);
+    super(paramStoryAtVideoFragment);
   }
   
-  public void a(@NonNull whs paramwhs, @NonNull uyb paramuyb)
+  public void a(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull wpf paramwpf)
   {
-    if (!TextUtils.equals(String.valueOf(paramwhs.hashCode()), paramuyb.jdField_a_of_type_JavaLangString)) {
+    if ((paramwpf.jdField_a_of_type_Int == 2) || (!paramwpf.jdField_a_of_type_JavaLangString.equals(paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString)) || (paramStoryAtVideoFragment.jdField_a_of_type_Wiq == null))
+    {
+      wxe.b(this.TAG, "ignore this video cookie change event. %s.", paramwpf.toString());
       return;
     }
-    wsv.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video collection list. %s.", paramuyb);
-    if (paramuyb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (!paramStoryAtVideoFragment.jdField_a_of_type_Wiq.c())
     {
-      if (paramuyb.jdField_a_of_type_Int != -1) {
-        paramwhs.jdField_a_of_type_Int = paramuyb.jdField_a_of_type_Int;
-      }
-      paramwhs.jdField_a_of_type_Boolean = true;
-      paramwhs.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
-      if (paramuyb.e)
-      {
-        paramwhs.a(paramuyb.jdField_a_of_type_JavaUtilList, paramuyb.c, paramuyb.jdField_a_of_type_Boolean);
-        paramwhs.b = paramuyb.jdField_a_of_type_Boolean;
-      }
-    }
-    for (;;)
-    {
-      whs.a(paramwhs).a(paramuyb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+      wxe.e(this.TAG, "this feed does not support video list.ignore this comment list event. %s.", new Object[] { paramwpf.toString() });
       return;
-      paramwhs.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramuyb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
     }
+    paramwpf = paramStoryAtVideoFragment.jdField_a_of_type_Wpe.a(paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString, paramStoryAtVideoFragment.jdField_a_of_type_Wiq.a().mVideoPullType);
+    if (paramwpf == null)
+    {
+      wxe.e(this.TAG, "can't find video info for feedId:%s, pullType:%d.", new Object[] { paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString, Integer.valueOf(paramStoryAtVideoFragment.jdField_a_of_type_Wiq.a().mVideoPullType) });
+      return;
+    }
+    wxe.a(this.TAG, "receive video cookie change event. %s.", paramwpf.toString());
+    paramStoryAtVideoFragment.jdField_a_of_type_Wiq.a().updateVideoInfo(paramwpf);
+    paramStoryAtVideoFragment.jdField_a_of_type_Wiq.a(paramwpf.mVideoItemList, true);
+    if (paramStoryAtVideoFragment.jdField_a_of_type_Wjb != null) {
+      paramStoryAtVideoFragment.jdField_a_of_type_Wjb.a(paramwpf.mVideoPullType, paramwpf.mVideoNextCookie, paramwpf.mVideoSeq);
+    }
+    paramStoryAtVideoFragment.a(paramStoryAtVideoFragment.jdField_a_of_type_Wiq);
   }
   
   public Class acceptEventClass()
   {
-    return uyb.class;
+    return wpf.class;
   }
+  
+  public void b(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull wpf paramwpf) {}
 }
 
 

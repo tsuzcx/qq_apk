@@ -1,16 +1,40 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.nearby.widget.GradientAnimTextView;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
-public class avpe
-  implements ValueAnimator.AnimatorUpdateListener
+class avpe
+  implements aoil
 {
-  public avpe(GradientAnimTextView paramGradientAnimTextView) {}
+  avpe(avop paramavop, IphonePickerView paramIphonePickerView, bhuf parambhuf) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    GradientAnimTextView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    if ((this.jdField_a_of_type_Bhuf != null) && (this.jdField_a_of_type_Bhuf.isShowing()))
+    {
+      avop.a(this.jdField_a_of_type_Avop, this.jdField_a_of_type_Avop.c, false);
+      this.jdField_a_of_type_Bhuf.dismiss();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
+      {
+        if ((paramInt1 == 0) || (paramInt1 == 1)) {
+          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+        }
+        this.jdField_a_of_type_Avop.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2));
+      }
+      return;
+      this.jdField_a_of_type_Avop.e = paramInt2;
+      continue;
+      this.jdField_a_of_type_Avop.f = paramInt2;
+      continue;
+      this.jdField_a_of_type_Avop.g = paramInt2;
+    }
   }
 }
 

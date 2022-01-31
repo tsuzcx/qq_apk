@@ -1,18 +1,6 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-
-public abstract class aelt
-  extends aemk
+public abstract interface aelt
 {
-  public int a;
-  public View a;
-  public ansf a;
-  public BaseChatItemLayout a;
-  public String a;
-  public int b;
-  public View b;
-  public int c;
-  public int d;
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

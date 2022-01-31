@@ -1,49 +1,58 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Handler;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.16.1;
+import com.tencent.mobileqq.widget.QQToast;
 
-class akae
-  implements DialogInterface.OnDismissListener
+public class akae
+  extends Handler
 {
-  akae(akad paramakad, amip paramamip) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public akae(SelectMemberActivity paramSelectMemberActivity, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "finish all settings when dialog dismiss");
-    }
-    if (bdee.g(this.jdField_a_of_type_Akad.a))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      boolean bool1 = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Akad.a).a();
-      boolean bool2 = QQSpecialFriendSettingActivity.b(this.jdField_a_of_type_Akad.a).a();
-      paramDialogInterface = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Akad.a);
-      String str = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Akad.a);
-      int i = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Akad.a);
-      paramDialogInterface.a(str, new int[] { 2, 3 }, new boolean[] { bool1, bool2 }, new String[] { String.valueOf(i), null });
-      paramDialogInterface = this.jdField_a_of_type_Akad.a.a.obtainMessage(8193);
-      paramDialogInterface.obj = this.jdField_a_of_type_Akad.a.getString(2131699849);
-      this.jdField_a_of_type_Akad.a.a.sendMessage(paramDialogInterface);
-      if ((bool1) && (bool2))
+    }
+    do
+    {
+      do
       {
-        paramDialogInterface = "0";
-        azmj.b(null, "CliOper", "", "", "0X80050E2", "0X80050E2", 0, 0, paramDialogInterface, "", "", "");
+        return;
+      } while ((this.a.b == null) || (!this.a.b.isShowing()));
+      this.a.b.dismiss();
+      paramMessage = new Intent();
+      paramMessage.putExtra("select_member_add_request_ok", true);
+      this.a.setResult(-1, paramMessage);
+      if (!TextUtils.isEmpty(this.a.g))
+      {
+        paramMessage = this.a.g;
+        QQToast.a(this.a, 2, paramMessage, 1500).b(this.a.getTitleBarHeight());
+        postDelayed(new SelectMemberActivity.16.1(this), 1500L);
+        return;
       }
+      if (this.a.c) {}
+      for (int i = 2131693785;; i = 2131693784)
+      {
+        paramMessage = this.a.getResources().getString(i);
+        break;
+      }
+    } while ((this.a.b == null) || (!this.a.b.isShowing()));
+    this.a.b.dismiss();
+    String str = (String)paramMessage.obj;
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131693783);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Amip.a();
-      return;
-      paramDialogInterface = "1";
-      break;
-      paramDialogInterface = this.jdField_a_of_type_Akad.a.a.obtainMessage(8195);
-      paramDialogInterface.arg1 = 0;
-      paramDialogInterface.arg2 = 2131692397;
-      this.jdField_a_of_type_Akad.a.a.sendMessage(paramDialogInterface);
-    }
+    QQToast.a(this.a, 1, paramMessage, 1500).b(this.a.getTitleBarHeight());
   }
 }
 

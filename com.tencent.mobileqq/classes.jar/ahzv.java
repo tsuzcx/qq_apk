@@ -1,36 +1,20 @@
-import android.view.View;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-class ahzv
-  extends arqb
+public class ahzv
 {
-  ahzv(ahzt paramahzt) {}
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public Object a;
+  public String a;
+  public TextView b;
+  public TextView c;
   
-  public void a(View paramView)
-  {
-    if ((ahzt.a(this.a)) && (ahzt.a(this.a) != null))
-    {
-      if (paramView.getId() != 2131365543) {
-        break label43;
-      }
-      ahzt.a(this.a).a(1);
-    }
-    label43:
-    do
-    {
-      return;
-      if (paramView.getId() == 2131365548)
-      {
-        ahzt.a(this.a).a(3);
-        return;
-      }
-      if (paramView.getId() == 2131365544)
-      {
-        ahzt.a(this.a).a(2);
-        return;
-      }
-    } while (paramView.getId() != 2131365542);
-    ahzt.a(this.a).a(4);
-  }
+  public ahzv(ahzr paramahzr) {}
 }
 
 

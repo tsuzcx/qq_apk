@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Intent;
-import bgjd;
-import bgje;
-import bgkd;
+import bgnk;
+import bgnl;
+import bgok;
 
 class PayJsPlugin$1
-  implements bgje
+  implements bgnl
 {
-  PayJsPlugin$1(PayJsPlugin paramPayJsPlugin, bgkd parambgkd) {}
+  PayJsPlugin$1(PayJsPlugin paramPayJsPlugin, bgok parambgok) {}
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -17,7 +17,7 @@ class PayJsPlugin$1
       if (paramInt2 == 0) {
         PayJsPlugin.access$000(this.this$0, this.val$req, null);
       }
-      bgjd.a().b(this);
+      bgnk.a().b(this);
       return true;
     }
     return false;

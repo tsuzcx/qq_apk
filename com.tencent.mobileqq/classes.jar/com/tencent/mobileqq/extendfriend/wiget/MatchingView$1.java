@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import aqbo;
-import aqem;
+import aqfx;
+import aqiv;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedInputStream;
@@ -15,11 +15,11 @@ public class MatchingView$1
   
   public void run()
   {
-    Object localObject = aqbo.a("expend_match_ellipisis.json");
+    Object localObject = aqfx.a("expend_match_ellipisis.json");
     try
     {
       localObject = new BufferedInputStream(new FileInputStream((String)localObject));
-      LottieComposition.Factory.fromInputStream(this.this$0.getContext(), (InputStream)localObject, new aqem(this));
+      LottieComposition.Factory.fromInputStream(this.this$0.getContext(), (InputStream)localObject, new aqiv(this));
       return;
     }
     catch (Exception localException)

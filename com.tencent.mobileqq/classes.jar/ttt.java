@@ -1,16 +1,16 @@
-import com.tencent.biz.qqcircle.comment.ItemReplyView;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StReply;
-import feedcloud.FeedCloudMeta.StUser;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.List;
 
-public class ttt
-  implements tzq
+class ttt
+  implements Observer<ubz<List<FeedCloudMeta.StFeed>>>
 {
-  public ttt(ItemReplyView paramItemReplyView, FeedCloudMeta.StReply paramStReply) {}
+  ttt(ttr paramttr) {}
   
-  public void a()
+  public void a(@Nullable ubz<List<FeedCloudMeta.StFeed>> paramubz)
   {
-    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.targetUser.id.get());
+    ttr.b(this.a, paramubz);
   }
 }
 

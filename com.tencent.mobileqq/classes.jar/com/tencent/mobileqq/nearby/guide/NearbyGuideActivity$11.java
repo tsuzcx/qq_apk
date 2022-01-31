@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.guide;
 
-import azmj;
+import azqs;
 
 class NearbyGuideActivity$11
   implements Runnable
@@ -9,7 +9,7 @@ class NearbyGuideActivity$11
   
   public void run()
   {
-    azmj.b(this.this$0.app, "CliOper", "", "", this.a, this.a, 0, 0, "", "", "", "");
+    azqs.b(this.this$0.app, "CliOper", "", "", this.a, this.a, 0, 0, "", "", "", "");
   }
 }
 

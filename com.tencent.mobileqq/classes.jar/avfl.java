@@ -1,57 +1,22 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class avfl
-  extends avfj
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  protected int a()
-  {
-    return 2131561031;
-  }
+  public avfl(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  protected LabelContainer a(View paramView, int paramInt1, auwl paramauwl, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ((TextView)paramView.findViewById(2131379170)).setText(c[paramInt1]);
-    paramInt1 = xee.b(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-    int i = xee.b(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-    LabelContainer localLabelContainer = (LabelContainer)paramView.findViewById(2131369102);
-    localLabelContainer.setSpace(paramInt1, i);
-    paramView.setTag(paramauwl);
-    paramView.setOnClickListener(this);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() == paramInt2 - 1)
+    if (paramMotionEvent.getAction() == 0)
     {
-      paramInt1 = xee.b(this.jdField_a_of_type_AndroidContentContext, 10.0F);
-      paramView.setBackgroundResource(2130839260);
-      paramView.setPadding(0, paramInt1, 0, paramInt1);
+      if (!ShortVideoCommentsView.a(this.a)) {}
+      this.a.l();
+      ShortVideoCommentsView.b(this.a);
     }
-    return localLabelContainer;
-  }
-  
-  protected boolean a()
-  {
-    return true;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((paramView.getTag() instanceof auwl))
-    {
-      paramView = (auwl)paramView.getTag();
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, ChooseInterestTagActivity.class);
-      localIntent.putExtra("interest_tag_type", paramView.jdField_a_of_type_Int);
-      localIntent.putExtra("is_from_judge", false);
-      localIntent.putExtra("is_from_nearby", true);
-      localIntent.putExtra("from_where", "NearbyPeopleProfileActivity");
-      localIntent.putParcelableArrayListExtra("choosed_interest_tags", paramView.jdField_a_of_type_JavaUtilArrayList);
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 11);
-    }
+    return false;
   }
 }
 

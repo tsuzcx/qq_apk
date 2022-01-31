@@ -1,24 +1,10 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.widget.TextView;
 
 public class ahmi
-  extends amab
 {
-  public ahmi(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
-  
-  protected void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 8) {
-      this.a.a.sendEmptyMessage(1018);
-    }
-  }
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (paramInt1 == 8) {
-      this.a.a.sendEmptyMessage(1016);
-    }
-  }
+  public View a;
+  public TextView a;
 }
 
 

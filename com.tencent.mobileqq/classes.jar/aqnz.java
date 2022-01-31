@@ -1,59 +1,42 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class aqnz
-  implements aqnr
+  implements View.OnClickListener
 {
-  aqnz(aqny paramaqny, String paramString, aqot paramaqot) {}
+  aqnz(aqny paramaqny, View paramView) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2BuddyTaskExcuter faild");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
-    }
-    for (;;)
+    paramView = this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((paramView instanceof aqnh))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_Aqny.jdField_a_of_type_JavaLangString + "] faild:" + paramInt);
+      paramView = (WeiYunFileInfo)((aqnh)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+      if ((arbs.a(paramView.a)) && (QLog.isColorLevel())) {
+        QLog.d(QfileBaseCloudFileTabView.b, 2, "there is a bug ");
       }
-      this.jdField_a_of_type_Aqot.a(aqnw.a(this.jdField_a_of_type_Aqny.jdField_a_of_type_Long, bool2), bool1);
+      QfileBaseCloudFileTabView.b(this.jdField_a_of_type_Aqny.a).a().a(paramView);
+      this.jdField_a_of_type_Aqny.a.ay_();
+    }
+    do
+    {
       return;
-      if ((paramInt == -6101) || (paramInt == -7003))
+      if ((paramView instanceof aqon))
       {
-        bool1 = false;
-        bool2 = true;
+        paramView = (WeiYunFileInfo)((aqon)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+        break;
       }
-      else
-      {
-        bool1 = false;
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "1");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aqny.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aqny.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aqny.c);
-    localBundle.putString("_m_ForwardUuid", paramString);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aqny.e);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aqny.f);
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_Aqny.jdField_a_of_type_JavaLangString + "] success");
-    }
-    this.jdField_a_of_type_Aqot.a(paramString, localBundle);
+    } while (!QLog.isColorLevel());
+    QLog.e(QfileBaseCloudFileTabView.b, 2, "unknow Object");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqnz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.adapter;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.view.PagerAdapter;
@@ -8,9 +8,9 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
-import bdkf;
-import bhqp;
-import blmw;
+import bdoo;
+import bhuw;
+import blri;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.GridView;
 import dov.com.qq.im.capture.data.FilterCategory;
@@ -20,16 +20,16 @@ public class TransitionProviderPagerAdapter
   extends PagerAdapter
 {
   public static final int a;
-  public static final int b = bdkf.b(0.0F);
+  public static final int b = bdoo.b(0.0F);
   private Context jdField_a_of_type_AndroidContentContext;
   public SparseArray<GridView> a;
-  private bhqp jdField_a_of_type_Bhqp;
+  private bhuw jdField_a_of_type_Bhuw;
   private ArrayList<FilterCategory> jdField_a_of_type_JavaUtilArrayList;
   public int c;
   
   static
   {
-    jdField_a_of_type_Int = bdkf.b(7.0F);
+    jdField_a_of_type_Int = bdoo.b(7.0F);
   }
   
   public TransitionProviderPagerAdapter(Context paramContext, int paramInt)
@@ -47,17 +47,17 @@ public class TransitionProviderPagerAdapter
       while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
       {
         GridView localGridView = (GridView)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-        if ((localGridView != null) && ((localGridView.a() instanceof blmw))) {
-          ((blmw)localGridView.a()).b();
+        if ((localGridView != null) && ((localGridView.a() instanceof blri))) {
+          ((blri)localGridView.a()).b();
         }
         i += 1;
       }
     }
   }
   
-  public void a(bhqp parambhqp)
+  public void a(bhuw parambhuw)
   {
-    this.jdField_a_of_type_Bhqp = parambhqp;
+    this.jdField_a_of_type_Bhuw = parambhuw;
   }
   
   public void a(ArrayList<FilterCategory> paramArrayList)
@@ -73,8 +73,8 @@ public class TransitionProviderPagerAdapter
       while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
       {
         GridView localGridView = (GridView)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-        if ((localGridView != null) && ((localGridView.a() instanceof blmw))) {
-          ((blmw)localGridView.a()).a();
+        if ((localGridView != null) && ((localGridView.a() instanceof blri))) {
+          ((blri)localGridView.a()).a();
         }
         i += 1;
       }
@@ -109,12 +109,12 @@ public class TransitionProviderPagerAdapter
       ((GridView)localObject1).setVerticalSpacing(b);
       ((GridView)localObject1).setHorizontalSpacing(b);
       ((GridView)localObject1).setClipToPadding(false);
-      ((GridView)localObject1).setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int + jdField_a_of_type_Int + aekt.a(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      ((GridView)localObject1).setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int + jdField_a_of_type_Int + aepi.a(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       ((GridView)localObject1).setVerticalScrollBarEnabled(false);
-      localObject2 = new blmw(this.jdField_a_of_type_AndroidContentContext, this.c);
-      ((blmw)localObject2).a(((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a);
+      localObject2 = new blri(this.jdField_a_of_type_AndroidContentContext, this.c);
+      ((blri)localObject2).a(((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a);
       ((GridView)localObject1).setAdapter((ListAdapter)localObject2);
-      ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_Bhqp);
+      ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_Bhuw);
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
     }
     paramViewGroup.addView((View)localObject1, -1, -1);

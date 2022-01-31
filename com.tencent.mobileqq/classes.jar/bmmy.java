@@ -1,19 +1,26 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-public class bmmy
-  implements bmmz
+class bmmy
+  implements View.OnTouchListener
 {
-  public void a(List<bmmw> paramList, DoodleView paramDoodleView)
+  bmmy(bmmx parambmmx) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    bmlu localbmlu = new bmlu(paramDoodleView);
-    bmls localbmls = new bmls(paramDoodleView);
-    bmmg localbmmg = new bmmg(paramDoodleView);
-    paramDoodleView = new bmmk(paramDoodleView);
-    paramList.add(localbmlu);
-    paramList.add(localbmls);
-    paramList.add(localbmmg);
-    paramList.add(paramDoodleView);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
+      continue;
+      this.a.a.setTextColor(Color.parseColor("#ffffff"));
+    }
   }
 }
 

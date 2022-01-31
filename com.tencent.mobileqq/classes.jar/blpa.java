@@ -1,16 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class blpa
-  implements View.OnTouchListener
+public abstract interface blpa
 {
-  blpa(bloz parambloz) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public abstract void a(int paramInt);
 }
 
 

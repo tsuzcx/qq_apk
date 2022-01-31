@@ -4,9 +4,9 @@ import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage
 public class qbi
   extends qbk
 {
-  public qbi(Context paramContext, bcws parambcws, rqj paramrqj)
+  public qbi(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl g()

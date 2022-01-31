@@ -1,59 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.1;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.2;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.3;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
-public class aqln
-  extends aqnl
+class aqln
+  implements DialogInterface.OnClickListener
 {
-  public aqln(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  aqln(aqlm paramaqlm, String paramString, araj paramaraj, Bundle paramBundle) {}
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramInt, paramLong, paramString);
-    arni.a(paramLong, paramInt, paramString);
-    bkif.a(this.a.a, paramInt);
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    super.a(paramLong, paramString1, paramInt, paramString2);
-    arni.a(paramLong);
-  }
-  
-  protected void a(aqxx paramaqxx)
-  {
-    if (paramaqxx == null) {}
-    FileManagerEntity localFileManagerEntity;
-    do
+    String str2 = "http://" + this.jdField_a_of_type_Aqlm.a.h + ":" + this.jdField_a_of_type_Aqlm.a.i + "/ftn_compress_getfile/rkey=" + this.jdField_a_of_type_Aqlm.a.f + "&filetype=" + this.jdField_a_of_type_Aqlm.a.b + "&path=";
+    if (QLog.isColorLevel()) {
+      QLog.i("<FileAssistant>FilePreviewActivity", 1, str2);
+    }
+    paramDialogInterface = this.jdField_a_of_type_JavaLangString;
+    try
     {
-      do
+      String str1 = URLEncoder.encode(this.jdField_a_of_type_JavaLangString, "utf8");
+      paramDialogInterface = str1;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      for (;;)
       {
-        return;
-      } while (!(paramaqxx.a instanceof FileManagerEntity));
-      localFileManagerEntity = (FileManagerEntity)paramaqxx.a;
-    } while ((paramaqxx.b == null) || (paramaqxx.b.length() <= 0));
-    localFileManagerEntity.strThumbPath = paramaqxx.b;
-    QfileBaseLocalFileTabView.c(this.a).a().c(localFileManagerEntity);
-    this.a.i();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    QfileBaseLocalFileTabView.a(this.a, new QfileBaseLocalFileTabView.7.1(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    QfileBaseLocalFileTabView.b(this.a, new QfileBaseLocalFileTabView.7.2(this, paramLong2, paramBoolean, paramInt2, paramString2));
-  }
-  
-  protected void b()
-  {
-    super.b();
-    QfileBaseLocalFileTabView.c(this.a, new QfileBaseLocalFileTabView.7.3(this));
+        localUnsupportedEncodingException.printStackTrace();
+      }
+    }
+    paramDialogInterface = str2 + paramDialogInterface + "&";
+    this.jdField_a_of_type_Araj.b(paramDialogInterface, this.jdField_a_of_type_AndroidOsBundle);
+    arrp.a("0X80052CE");
   }
 }
 

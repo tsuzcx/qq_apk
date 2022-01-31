@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.core;
 
 import android.os.Bundle;
-import aqwa;
+import araj;
 
 public class UniformDownloadMgr$10
   implements Runnable
 {
-  public UniformDownloadMgr$10(aqwa paramaqwa, String paramString, Bundle paramBundle) {}
+  public UniformDownloadMgr$10(araj paramaraj, String paramString, Bundle paramBundle) {}
   
   public void run()
   {
-    aqwa.b(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    aqwa.b(this.this$0);
+    araj.b(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    araj.b(this.this$0);
   }
 }
 

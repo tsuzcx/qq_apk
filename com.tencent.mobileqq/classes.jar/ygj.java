@@ -1,32 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.FrameLayout;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.subscribe.comment.CommentPresenter.5.1;
+import com.tencent.qphone.base.util.QLog;
 
-class ygj
-  implements Animator.AnimatorListener
+public class ygj
+  implements View.OnLayoutChangeListener
 {
   ygj(ygg paramygg) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    ygg.a(this.a, null);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (ygg.a(this.a) != null) {
-      ygg.a(this.a).a(3);
-    }
-    if (ygg.a(this.a) != null)
-    {
-      ygg.a(this.a).setAlpha(0.0F);
-      ygg.a(this.a, null);
+    QLog.d(ygg.a(), 2, "OnLayoutChangeListener scrollToReplyView start mScrollToTargetReply" + ygg.c(this.a));
+    if ((ygg.a(this.a) != null) && (ygg.c(this.a))) {
+      ygg.a(this.a, new CommentPresenter.5.1(this));
     }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

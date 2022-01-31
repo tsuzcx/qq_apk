@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-
 public class bjhr
-  implements DialogInterface.OnClickListener
 {
-  public bjhr(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.getPlayMode();
-  }
+  public static int a;
+  public static int b = 480;
+  public static int c = 360;
+  public static int d = 270;
+  public static int e = 200;
+  public static int f = 150;
+  public static int g = 200;
+  public static int h = 150;
 }
 
 

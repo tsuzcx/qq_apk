@@ -1,10 +1,21 @@
-import android.content.Intent;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public abstract interface aggr
+class aggr
+  implements Animation.AnimationListener
 {
-  public abstract void a(Intent paramIntent);
+  aggr(aggq paramaggq) {}
   
-  public abstract boolean a(int paramInt);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (aggq.a(this.a) != null) {
+      aggq.a(this.a).b();
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

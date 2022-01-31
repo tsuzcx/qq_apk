@@ -1,7 +1,7 @@
 import com.tencent.mobileqq.data.TroopInfo;
 
 class myq
-  extends amab
+  extends ameq
 {
   myq(myo parammyo) {}
   
@@ -17,7 +17,7 @@ class myq
       myo.a(this.a, paramTroopInfo);
       return;
     }
-    myo.a(this.a, 2131719743, 1);
+    myo.a(this.a, 2131719755, 1);
     this.a.jdField_a_of_type_Myr.a();
   }
 }

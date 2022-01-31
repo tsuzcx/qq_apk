@@ -1,17 +1,16 @@
-import android.os.Handler;
-import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
 
-class wrs
-  implements wom<wnt>
+final class wrs
+  implements wta
 {
-  wrs(wrr paramwrr, String paramString) {}
+  wrs(WeakReference paramWeakReference) {}
   
-  public void a(wnt paramwnt)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    if ((paramwnt.a != null) && (TextUtils.equals(paramwnt.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
-    {
-      wrh.a(this.jdField_a_of_type_Wrr.a).a = paramwnt.a;
-      wrh.a(this.jdField_a_of_type_Wrr.a).sendMessage(wrh.a(this.jdField_a_of_type_Wrr.a).obtainMessage(0, wrh.a(this.jdField_a_of_type_Wrr.a)));
+    wrt localwrt = (wrt)this.a.get();
+    if (localwrt != null) {
+      localwrt.a(paramErrorMessage);
     }
   }
 }

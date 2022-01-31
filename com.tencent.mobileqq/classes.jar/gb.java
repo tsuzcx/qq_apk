@@ -61,7 +61,7 @@ public class gb
       str1 = str4;
     case 2: 
     case 3: 
-      switch (bdkd.a(bdkd.a(), str2))
+      switch (bdom.a(bdom.a(), str2))
       {
       }
       break;

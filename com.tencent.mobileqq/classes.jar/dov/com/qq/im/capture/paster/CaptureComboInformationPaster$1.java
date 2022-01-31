@@ -1,16 +1,16 @@
 package dov.com.qq.im.capture.paster;
 
-import blof;
-import blql;
+import blsr;
+import blux;
 
 public class CaptureComboInformationPaster$1
   implements Runnable
 {
-  public CaptureComboInformationPaster$1(blql paramblql, blof paramblof) {}
+  public CaptureComboInformationPaster$1(blux paramblux, blsr paramblsr) {}
   
   public void run()
   {
-    blql.a(this.this$0, blql.a(this.this$0), this.a);
+    blux.a(this.this$0, blux.a(this.this$0), this.a);
   }
 }
 

@@ -1,36 +1,51 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import android.annotation.TargetApi;
+import android.os.SystemClock;
 
+@TargetApi(14)
 public class upi
-  implements View.OnTouchListener
+  extends xtb
 {
-  public upi(StoryInputBarView paramStoryInputBarView) {}
+  private int jdField_a_of_type_Int = 941000;
+  private long jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  private String jdField_a_of_type_JavaLangString;
+  private upk jdField_a_of_type_Upk;
+  private String b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public upi(String paramString1, String paramString2, upk paramupk)
   {
-    if (paramMotionEvent.getAction() == 0)
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Upk = paramupk;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onFailure(String paramString)
+  {
+    if (paramString.equals(String.valueOf(941001))) {
+      this.jdField_a_of_type_Upk.a(941001, paramString, "");
+    }
+    for (;;)
     {
-      StoryInputBarView.a(this.a);
-      if (this.a.jdField_a_of_type_Boolean) {
-        break label94;
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Wdj.jdField_a_of_type_Boolean);
-      paramView = this.a;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
-        break label89;
+      wxe.d(upd.jdField_a_of_type_JavaLangString, "combine audio fail %s, %d", new Object[] { paramString, Integer.valueOf(this.jdField_a_of_type_Int) });
+      xrg.g(this.jdField_a_of_type_JavaLangString);
+      return;
+      if (paramString.equals(String.valueOf(941002))) {
+        this.jdField_a_of_type_Upk.a(941002, paramString, "");
+      } else {
+        this.jdField_a_of_type_Upk.a(this.jdField_a_of_type_Int, paramString, "");
       }
     }
-    label89:
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.jdField_a_of_type_Boolean = bool;
-      return false;
-    }
-    label94:
-    this.a.a();
-    return false;
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    wxe.a(upd.jdField_a_of_type_JavaLangString, "combine music success take time:%d", Long.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_Upk.a(0, "", this.b);
+    xrg.g(this.jdField_a_of_type_JavaLangString);
   }
 }
 

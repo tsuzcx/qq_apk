@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.app.activateFriends;
 
-import ambk;
-import ambl;
+import amfz;
+import amga;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import ayvc;
+import ayzl;
 import com.tencent.qphone.base.util.QLog;
 
 public class ActivateFriendsManager$2
   implements Runnable
 {
-  public ActivateFriendsManager$2(ambl paramambl) {}
+  public ActivateFriendsManager$2(amga paramamga) {}
   
   public void run()
   {
-    long l = ambl.a(this.this$0).getLong("key_last_birth_msg_stamp", 0L);
+    long l = amga.a(this.this$0).getLong("key_last_birth_msg_stamp", 0L);
     if (QLog.isColorLevel()) {
       QLog.d("ActivateFriends.Manager", 2, "local birth timestamp = " + l);
     }
-    if (ayvc.a() - l > 259200L)
+    if (ayzl.a() - l > 259200L)
     {
-      ambl.a(this.this$0).removeCallbacks(ambl.a(this.this$0));
-      this.this$0.a = ambl.b(this.this$0);
-      ambk.a(ambl.a(this.this$0), false, true, false, true);
+      amga.a(this.this$0).removeCallbacks(amga.a(this.this$0));
+      this.this$0.a = amga.b(this.this$0);
+      amfz.a(amga.a(this.this$0), false, true, false, true);
     }
   }
 }

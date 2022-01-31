@@ -1,33 +1,40 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-public class axoe
+class axoe
+  implements baug
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  axoe(axoc paramaxoc, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
   
-  private void a()
+  public void onResp(bavf parambavf)
   {
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
+    if (QLog.isColorLevel()) {
+      QLog.i("CapturePtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + parambavf.c);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_Axoc.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
+    try
+    {
+      ndr.a(new File(axoc.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5), axoc.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5));
+      if (this.jdField_a_of_type_Axoc.a != null) {
+        this.jdField_a_of_type_Axoc.a.a();
+      }
+      return;
+    }
+    catch (IOException parambavf)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          parambavf.printStackTrace();
+        }
+      }
     }
   }
   
-  private void a(ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup != null) {
-      paramViewGroup.removeAllViews();
-    }
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout)
-  {
-    a(this.jdField_a_of_type_AndroidViewViewGroup);
-    a(paramRelativeLayout);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
-    a();
-  }
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

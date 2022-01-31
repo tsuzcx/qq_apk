@@ -1,7 +1,16 @@
-public class aqxk
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class aqxk
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public byte[] a;
+  aqxk(aqxi paramaqxi, Context paramContext, aqxn paramaqxn) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    aqxi.b(this.jdField_a_of_type_Aqxi, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aqxn);
+  }
 }
 
 

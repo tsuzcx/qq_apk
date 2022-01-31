@@ -1,33 +1,47 @@
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.net.Uri;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.util.ArrayList;
 
-public class asqq
-  extends MSFServlet
+class asqq
+  implements asqy
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  asqq(asqp paramasqp, int paramInt, String paramString) {}
+  
+  public void a(Uri paramUri)
   {
-    AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface))) {
-      asps.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
-    }
+    QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFaild= " + paramUri);
+    this.jdField_a_of_type_Asqp.a.finish();
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(String paramString1, String paramString2, long paramLong)
   {
-    if (paramIntent == null)
+    QLog.d("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFinish= " + paramString1);
+    try
     {
-      QLog.e("HotPicServlet", 1, "onSend : req is null");
+      if (this.jdField_a_of_type_Int == 2)
+      {
+        paramString2 = new ArrayList();
+        paramString2.add(paramString1);
+        this.jdField_a_of_type_Asqp.a(paramString2, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 4)
+      {
+        paramString2 = new ArrayList();
+        paramString2.add(paramString1);
+        this.jdField_a_of_type_Asqp.b(paramString2, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq exception=", paramString1);
       return;
     }
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
-    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
-    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
+    if (this.jdField_a_of_type_Int == 3) {
+      this.jdField_a_of_type_Asqp.a(paramString1, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

@@ -1,28 +1,32 @@
-import android.graphics.Bitmap;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 
-class beeg
-  implements Animation.AnimationListener
+public class beeg
+  extends BroadcastReceiver
 {
-  beeg(beed parambeed) {}
+  public beeg(WebProcessManager paramWebProcessManager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "showScreenshotPad->on hideAnimationEnd!");
-    }
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    int i = paramIntent.getIntExtra("user_type", 0);
+    int j = paramIntent.getIntExtra("from_type", 0);
+    paramContext = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramContext instanceof QQAppInterface))
+    {
+      paramContext = (alok)((QQAppInterface)paramContext).a(53);
+      if (paramContext != null) {
+        paramContext.a(i, j);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("WebProcessManager", 2, "babyq receiver recv user_type=" + i + ", from_type=" + j);
+      }
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

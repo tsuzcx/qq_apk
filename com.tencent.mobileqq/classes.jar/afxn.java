@@ -1,21 +1,18 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 
 class afxn
-  extends aelt
+  implements ImageAssetDelegate
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RoundCornerImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  View d;
+  afxn(afxm paramafxm) {}
   
-  afxn(afxl paramafxl) {}
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  {
+    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
+  }
 }
 
 

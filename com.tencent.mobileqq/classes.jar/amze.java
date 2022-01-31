@@ -1,28 +1,18 @@
-public class amze
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+
+public final class amze
+  implements Parcelable.Creator<ArConfigInfo>
 {
-  public int a;
-  public long a;
-  public baps a;
-  public String a;
-  public boolean a;
-  public String b = "";
-  public String c = "";
-  public String d;
-  
-  public amze()
+  public ArConfigInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    return new ArConfigInfo(paramParcel);
   }
   
-  public String toString()
+  public ArConfigInfo[] a(int paramInt)
   {
-    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
-    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", md5='").append(this.b).append('\'');
-    localStringBuffer.append(", fileName='").append(this.c).append('\'');
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    return new ArConfigInfo[paramInt];
   }
 }
 

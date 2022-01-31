@@ -1,23 +1,12 @@
-import com.tencent.mobileqq.ocr.OCRPerformFragment;
-import com.tencent.mobileqq.ocr.view.OcrImageTextView;
-
-public class avrd
-  implements avup
+class avrd
+  implements avrt
 {
-  public avrd(OCRPerformFragment paramOCRPerformFragment) {}
+  avrd(avrb paramavrb, String paramString) {}
   
-  public void a()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    avrh.a("0X800AAE1", 0);
-    if (OCRPerformFragment.a(this.a).a()) {
-      OCRPerformFragment.a(this.a).setShowTextMask(false);
-    }
-  }
-  
-  public void b()
-  {
-    if (!OCRPerformFragment.a(this.a).a()) {
-      OCRPerformFragment.a(this.a).setShowTextMask(true);
+    if (paramBoolean) {
+      this.jdField_a_of_type_Avrb.b(this.jdField_a_of_type_JavaLangString, paramInt);
     }
   }
 }

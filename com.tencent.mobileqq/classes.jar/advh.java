@@ -1,20 +1,27 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class advh
-  extends MqqHandler
+  extends alop
 {
-  public advh(SubAccountUgActivity paramSubAccountUgActivity) {}
+  public advh(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    switch (paramMessage.what)
+    if (paramBoolean)
     {
-    default: 
+      if (!TextUtils.isEmpty(this.a.f)) {
+        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
+      }
+      if (this.a.a == 13) {
+        this.a.b();
+      }
+      this.a.finish();
       return;
     }
-    this.a.finish();
+    QQToast.a(this.a.app.getApp(), 1, alud.a(2131713837), 0).a();
   }
 }
 

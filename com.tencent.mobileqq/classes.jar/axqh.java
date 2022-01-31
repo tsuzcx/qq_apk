@@ -1,82 +1,58 @@
-import android.graphics.Bitmap;
-import android.opengl.GLES20;
-import android.opengl.GLUtils;
-import android.support.annotation.Nullable;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class axqh
+  extends Handler
 {
-  public static int a(int paramInt)
-  {
-    return a(paramInt, null, 9729, 9729, 33071, 33071);
-  }
+  public axqh(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
   
-  public static int a(int paramInt, Bitmap paramBitmap)
+  public void handleMessage(Message paramMessage)
   {
-    return a(paramInt, paramBitmap, 9729, 9729, 33071, 33071);
-  }
-  
-  public static int a(int paramInt1, @Nullable Bitmap paramBitmap, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    a("glGenTextures");
-    GLES20.glBindTexture(paramInt1, arrayOfInt[0]);
-    a("glBindTexture " + arrayOfInt[0]);
-    GLES20.glTexParameterf(paramInt1, 10241, paramInt2);
-    GLES20.glTexParameterf(paramInt1, 10240, paramInt3);
-    GLES20.glTexParameteri(paramInt1, 10242, paramInt4);
-    GLES20.glTexParameteri(paramInt1, 10243, paramInt5);
-    if (paramBitmap != null) {
-      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
+    super.handleMessage(paramMessage);
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "handleMessage what:" + paramMessage.what + ", shortVideoShot:" + this.a.a.get());
     }
-    a("glTexParameter");
-    return arrayOfInt[0];
-  }
-  
-  public static void a(int paramInt)
-  {
-    a(paramInt, null);
-  }
-  
-  public static void a(int paramInt1, int paramInt2, @Nullable Bitmap paramBitmap, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    GLES20.glBindTexture(paramInt2, paramInt1);
-    a("glBindTexture " + paramInt1);
-    GLES20.glTexParameterf(paramInt2, 10241, paramInt3);
-    GLES20.glTexParameterf(paramInt2, 10240, paramInt4);
-    GLES20.glTexParameteri(paramInt2, 10242, paramInt5);
-    GLES20.glTexParameteri(paramInt2, 10243, paramInt6);
-    if (paramBitmap != null) {
-      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            CameraCaptureButtonLayout.c(this.a);
+            return;
+          } while (CameraCaptureButtonLayout.a(this.a) == null);
+          CameraCaptureButtonLayout.a(this.a).b();
+          return;
+        } while (!this.a.a.get());
+        if (CameraCaptureButtonLayout.a(this.a) != null) {
+          CameraCaptureButtonLayout.a(this.a).c();
+        }
+        this.a.a.set(false);
+        CameraCaptureButtonLayout.d(this.a);
+        return;
+        if (CameraCaptureButtonLayout.a(this.a) != null) {
+          CameraCaptureButtonLayout.a(this.a).a();
+        }
+        CameraCaptureButtonLayout.d(this.a);
+        return;
+      } while (!this.a.a.get());
+      CameraCaptureButtonLayout.e(this.a);
+      CameraCaptureButtonLayout.a(this.a).sendEmptyMessageDelayed(5, 50L);
+      return;
     }
-    a("glTexParameter");
-  }
-  
-  public static void a(int paramInt, @Nullable Bitmap paramBitmap)
-  {
-    a(paramInt, 3553, paramBitmap, 9729, 9729, 33071, 33071);
-  }
-  
-  public static void a(String paramString)
-  {
-    int i = GLES20.glGetError();
-    if (i != 0) {
-      wsv.e("FlowEdit_GlUtil", paramString + ": glError 0x" + Integer.toHexString(i));
-    }
-  }
-  
-  public static int[] a(int paramInt)
-  {
-    int[] arrayOfInt = new int[paramInt];
-    GLES20.glGenTextures(paramInt, arrayOfInt, 0);
-    a("glGenTextures");
-    return arrayOfInt;
-  }
-  
-  public static void b(int paramInt)
-  {
-    GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
-    a("glDeleteTextures");
+    this.a.b();
   }
 }
 

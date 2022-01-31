@@ -1,22 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity.GetClassChoiceCallBack.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class adxv
-  implements bcrx
+  implements acln
 {
-  public adxv(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
+  public adxv(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean)
-    {
-      this.a.a = bcrv.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getContext(), TroopClassChoiceActivity.a(this.a));
-      this.a.runOnUiThread(new TroopClassChoiceActivity.GetClassChoiceCallBack.1(this));
-      return;
-    }
-    QLog.e("IphoneTitleBarActivity", 1, "getClassChoiceFromServer failed!");
+    this.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.finish();
   }
 }
 

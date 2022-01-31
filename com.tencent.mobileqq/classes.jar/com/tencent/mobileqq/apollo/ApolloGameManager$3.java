@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo;
 
-import akje;
-import akji;
+import aknt;
+import aknx;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ApolloGameManager$3
   implements Runnable
 {
-  public ApolloGameManager$3(akje paramakje) {}
+  public ApolloGameManager$3(aknt paramaknt) {}
   
   public void run()
   {
-    if (akje.a(this.this$0) != null) {
-      ((akji)akje.a(this.this$0).getManager(153)).e();
+    if (aknt.a(this.this$0) != null) {
+      ((aknx)aknt.a(this.this$0).getManager(153)).e();
     }
   }
 }

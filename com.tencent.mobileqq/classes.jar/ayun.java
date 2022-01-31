@@ -1,18 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendListInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine.ParseTask;
+import java.util.ArrayList;
 
-public final class ayun
-  implements Parcelable.Creator<FriendListInfo>
+public class ayun
+  extends altm
 {
-  public FriendListInfo a(Parcel paramParcel)
-  {
-    return new FriendListInfo(paramParcel);
-  }
+  public ayun(NetSearchEngine.NetSearchRunnalbe paramNetSearchRunnalbe) {}
   
-  public FriendListInfo[] a(int paramInt)
+  protected void onSearchFriendResult(boolean paramBoolean1, int paramInt1, Object paramObject, int paramInt2, String paramString, boolean paramBoolean2, long paramLong)
   {
-    return new FriendListInfo[paramInt];
+    if (this.a.a != null) {
+      NetSearchEngine.a(this.a.this$0).removeObserver(this.a.a);
+    }
+    if (NetSearchEngine.NetSearchRunnalbe.a(this.a)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramInt1 != 88) || (paramBoolean2));
+        if (!paramBoolean1) {
+          break;
+        }
+      } while (!(paramObject instanceof ArrayList));
+      ThreadManager.post(new NetSearchEngine.ParseTask(this.a.this$0, NetSearchEngine.NetSearchRunnalbe.a(this.a), (ArrayList)paramObject, NetSearchEngine.NetSearchRunnalbe.a(this.a)), 10, null, true);
+      return;
+    } while (NetSearchEngine.NetSearchRunnalbe.a(this.a) == null);
+    NetSearchEngine.NetSearchRunnalbe.a(this.a).a(null, 1);
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webprocess;
 
-import bdzu;
+import beed;
 import com.tencent.common.app.AppInterface;
 
 public class PreloadService$PreloadImpl$1
   implements Runnable
 {
-  public PreloadService$PreloadImpl$1(bdzu parambdzu, AppInterface paramAppInterface) {}
+  public PreloadService$PreloadImpl$1(beed parambeed, AppInterface paramAppInterface) {}
   
   public void run()
   {

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.structmsg;
 
-import aekt;
-import aeov;
-import alpo;
+import aepi;
+import aetk;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -14,9 +14,9 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import azqs;
-import azsa;
-import azsd;
+import azvb;
+import azwj;
+import azwm;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -26,10 +26,10 @@ import java.io.UnsupportedEncodingException;
 import org.json.JSONObject;
 
 public abstract class AbsStructMsg
-  implements azqs, Externalizable
+  implements azvb, Externalizable
 {
-  public static final String DEFAULT_MSG_BRIEF = alpo.a(2131700094);
-  public static final String PA_DEFAULT_MSG_BRIEF = alpo.a(2131700093);
+  public static final String DEFAULT_MSG_BRIEF = alud.a(2131700106);
+  public static final String PA_DEFAULT_MSG_BRIEF = alud.a(2131700105);
   public static int SOURCE_ACCOUNT_TYPE_PA = 7;
   public String adverKey;
   public int adverSign;
@@ -126,19 +126,19 @@ public abstract class AbsStructMsg
     catch (Exception paramBundle) {}
   }
   
-  AbsStructMsg(azsa paramazsa)
+  AbsStructMsg(azwj paramazwj)
   {
-    parseMsgAttrubutes(paramazsa);
+    parseMsgAttrubutes(paramazwj);
   }
   
-  public static View getExceptionView(Context paramContext, View paramView, aeov paramaeov, Bundle paramBundle, int paramInt)
+  public static View getExceptionView(Context paramContext, View paramView, aetk paramaetk, Bundle paramBundle, int paramInt)
   {
-    return getExceptionView(paramContext, paramView, paramaeov, paramBundle, paramContext.getResources().getString(paramInt));
+    return getExceptionView(paramContext, paramView, paramaetk, paramBundle, paramContext.getResources().getString(paramInt));
   }
   
-  public static View getExceptionView(Context paramContext, View paramView, aeov paramaeov, Bundle paramBundle, String paramString)
+  public static View getExceptionView(Context paramContext, View paramView, aetk paramaetk, Bundle paramBundle, String paramString)
   {
-    paramaeov = paramContext.getResources();
+    paramaetk = paramContext.getResources();
     if ((paramView != null) && ((paramView instanceof RelativeLayout))) {
       ((RelativeLayout)paramView).removeAllViews();
     }
@@ -150,16 +150,16 @@ public abstract class AbsStructMsg
       paramBundle.setText(paramString);
       paramBundle.setTextSize(2, 14.0F);
       paramBundle.setTextColor(Color.parseColor("#777777"));
-      int i = aekt.a(15.0F, paramaeov);
-      int j = aekt.a(7.5F, paramaeov);
+      int i = aepi.a(15.0F, paramaetk);
+      int j = aepi.a(7.5F, paramaetk);
       paramContext = new RelativeLayout(paramContext);
-      paramContext.setBackgroundResource(2130838186);
+      paramContext.setBackgroundResource(2130838187);
       paramContext.setPadding(i, j, i, j);
       paramContext.addView(paramBundle);
-      paramContext.setId(2131377068);
-      paramaeov = new RelativeLayout.LayoutParams(-2, -2);
-      paramaeov.addRule(13);
-      paramView.addView(paramContext, paramaeov);
+      paramContext.setId(2131377122);
+      paramaetk = new RelativeLayout.LayoutParams(-2, -2);
+      paramaetk.addRule(13);
+      paramView.addView(paramContext, paramaetk);
       return paramView;
       paramView = new RelativeLayout(paramContext);
     }
@@ -179,7 +179,7 @@ public abstract class AbsStructMsg
       paramContext.setTextColor(Color.parseColor("#000000"));
       int i = BaseChatItemLayout.n;
       int j = BaseChatItemLayout.o;
-      paramView.setBackgroundResource(2130838186);
+      paramView.setBackgroundResource(2130838187);
       paramContext.setPadding(i, BaseChatItemLayout.l, j, BaseChatItemLayout.m);
       paramView.addView(paramContext, new RelativeLayout.LayoutParams(-1, -1));
       return paramView;
@@ -187,9 +187,9 @@ public abstract class AbsStructMsg
     }
   }
   
-  public static View getVersionExceptionView(Context paramContext, View paramView, aeov paramaeov, Bundle paramBundle)
+  public static View getVersionExceptionView(Context paramContext, View paramView, aetk paramaetk, Bundle paramBundle)
   {
-    return getExceptionView(paramContext, paramView, paramaeov, paramBundle, 2131698861);
+    return getExceptionView(paramContext, paramView, paramaetk, paramBundle, 2131698873);
   }
   
   public boolean LayoutEquals(Object paramObject)
@@ -213,14 +213,14 @@ public abstract class AbsStructMsg
   
   public abstract View getSourceView(Context paramContext, View paramView);
   
-  public View getView(Context paramContext, View paramView, aeov paramaeov, Bundle paramBundle)
+  public View getView(Context paramContext, View paramView, aetk paramaetk, Bundle paramBundle)
   {
-    paramaeov = paramView;
+    paramaetk = paramView;
     if (paramView == null)
     {
-      paramaeov = new LinearLayout(paramContext);
-      paramaeov.setOrientation(1);
-      paramContext = paramaeov.getLayoutParams();
+      paramaetk = new LinearLayout(paramContext);
+      paramaetk.setOrientation(1);
+      paramContext = paramaetk.getLayoutParams();
       if (paramContext != null) {
         break label49;
       }
@@ -228,8 +228,8 @@ public abstract class AbsStructMsg
     }
     for (;;)
     {
-      paramaeov.setLayoutParams(paramContext);
-      return paramaeov;
+      paramaetk.setLayoutParams(paramContext);
+      return paramaetk;
       label49:
       paramContext.width = BaseChatItemLayout.A;
       paramContext.height = -2;
@@ -261,7 +261,7 @@ public abstract class AbsStructMsg
     {
       localObject = localByteArrayOutputStream.toString("UTF-8");
       QLog.d("StructMsg", 4, "Obj[" + System.identityHashCode(this) + "]getXmlBytes xmlStr:" + (String)localObject);
-      localObject = azsd.b(localByteArrayOutputStream.toByteArray());
+      localObject = azwm.b(localByteArrayOutputStream.toByteArray());
       int i = localObject.length;
       arrayOfByte = new byte[i + 1];
       arrayOfByte[0] = 1;
@@ -292,56 +292,56 @@ public abstract class AbsStructMsg
     return this.mTSum > 0;
   }
   
-  protected void parseMsgAttrubutes(azsa paramazsa)
+  protected void parseMsgAttrubutes(azwj paramazwj)
   {
-    if (paramazsa == null) {}
+    if (paramazwj == null) {}
     for (;;)
     {
       return;
-      String str1 = paramazsa.a("templateID");
+      String str1 = paramazwj.a("templateID");
       if (!TextUtils.isEmpty(str1)) {
         this.mMsgTemplateID = Integer.parseInt(str1);
       }
-      this.mMsgUrl = paramazsa.a("url");
-      this.mMsgAction = paramazsa.a("action");
-      this.mMsgActionData = paramazsa.a("actionData");
-      this.mMsg_A_ActionData = paramazsa.a("a_actionData");
-      this.mMsg_I_ActionData = paramazsa.a("i_actionData");
-      this.rijAlbumActionData = paramazsa.a("rijAlbumActionData");
-      this.mQzoneExtraMsg = paramazsa.a("qzFloatExtra");
-      str1 = paramazsa.a("fwflag");
+      this.mMsgUrl = paramazwj.a("url");
+      this.mMsgAction = paramazwj.a("action");
+      this.mMsgActionData = paramazwj.a("actionData");
+      this.mMsg_A_ActionData = paramazwj.a("a_actionData");
+      this.mMsg_I_ActionData = paramazwj.a("i_actionData");
+      this.rijAlbumActionData = paramazwj.a("rijAlbumActionData");
+      this.mQzoneExtraMsg = paramazwj.a("qzFloatExtra");
+      str1 = paramazwj.a("fwflag");
       if (!TextUtils.isEmpty(str1)) {}
       try
       {
         this.fwFlag = Integer.parseInt(str1);
         label128:
-        str1 = paramazsa.a("flag");
+        str1 = paramazwj.a("flag");
         if (!TextUtils.isEmpty(str1)) {}
         try
         {
           this.mFlag = Integer.parseInt(str1);
           label151:
-          str1 = paramazsa.a("serviceID");
+          str1 = paramazwj.a("serviceID");
           if (!TextUtils.isEmpty(str1)) {
             this.mMsgServiceID = Integer.parseInt(str1);
           }
-          this.mMsgBrief = paramazsa.a("brief");
-          this.mResid = paramazsa.a("m_resid");
-          this.mFileName = paramazsa.a("m_fileName");
-          str1 = paramazsa.a("tSum");
+          this.mMsgBrief = paramazwj.a("brief");
+          this.mResid = paramazwj.a("m_resid");
+          this.mFileName = paramazwj.a("m_fileName");
+          str1 = paramazwj.a("tSum");
           if (!TextUtils.isEmpty(str1)) {
             this.mTSum = Integer.parseInt(str1);
           }
-          str1 = paramazsa.a("m_fileSize");
+          str1 = paramazwj.a("m_fileSize");
           if (!TextUtils.isEmpty(str1)) {}
           try
           {
             this.mFileSize = Long.parseLong(str1);
             label253:
-            str1 = paramazsa.a("promotionType");
-            this.mPromotionMsg = paramazsa.a("promotionMsg");
-            this.mPromotionMenus = paramazsa.a("promotionMenus");
-            String str2 = paramazsa.a("promotionMenuDestructiveIndex");
+            str1 = paramazwj.a("promotionType");
+            this.mPromotionMsg = paramazwj.a("promotionMsg");
+            this.mPromotionMenus = paramazwj.a("promotionMenus");
+            String str2 = paramazwj.a("promotionMenuDestructiveIndex");
             label392:
             label426:
             try
@@ -359,57 +359,57 @@ public abstract class AbsStructMsg
               label449:
               break label321;
             }
-            this.source_puin = paramazsa.a("sourcePublicUin");
+            this.source_puin = paramazwj.a("sourcePublicUin");
             if (this.source_puin == null) {
               this.source_puin = "";
             }
-            this.mSourceThirdName = paramazsa.a("sourceName");
+            this.mSourceThirdName = paramazwj.a("sourceName");
             if (this.mSourceThirdName == null) {
               this.mSourceThirdName = "";
             }
-            str1 = paramazsa.a("sourceMsgId");
+            str1 = paramazwj.a("sourceMsgId");
             try
             {
               if (!TextUtils.isEmpty(str1)) {
                 this.msgId = Long.parseLong(str1);
               }
-              this.mSType = paramazsa.a("sType");
-              str1 = paramazsa.a("accostType");
+              this.mSType = paramazwj.a("sType");
+              str1 = paramazwj.a("accostType");
               try
               {
                 if (!TextUtils.isEmpty(str1)) {
                   this.sourceAccoutType = Integer.parseInt(str1);
                 }
-                str1 = paramazsa.a("adverSign");
+                str1 = paramazwj.a("adverSign");
                 try
                 {
                   if (!TextUtils.isEmpty(str1)) {
                     this.adverSign = Integer.parseInt(str1);
                   }
-                  this.adverKey = paramazsa.a("adverKey");
-                  this.index = paramazsa.a("index");
-                  this.index_name = paramazsa.a("index_name");
-                  this.index_type = paramazsa.a("index_type");
-                  this.mExtraData = paramazsa.a("extraData");
-                  this.mCreateTime = paramazsa.a("createTime");
-                  this.mTagName = paramazsa.a("tagName");
-                  this.mArticleIds = paramazsa.a("articleIds");
-                  this.mOrangeWord = paramazsa.a("orangeWord");
-                  this.mAlgorithmIds = paramazsa.a("algorithmIds");
-                  this.mStrategyIds = paramazsa.a("strategyIds");
-                  this.reportEventFolderStatusValue = paramazsa.a("reportEventFolderStatusValue");
-                  this.mQidianBulkTaskId = paramazsa.a("qf_task_id");
-                  this.mInnerUniqIds = paramazsa.a("uuids");
-                  this.mQQStoryExtra = paramazsa.a("qqstoryExtra");
-                  this.mTribeShortVideoExtra = paramazsa.a("qqtribeVideoInfoExtra");
-                  this.mNeedRound = paramazsa.a("needRoundView");
-                  this.mCommonData = paramazsa.a("msgCommonData");
-                  this.mMergeSeq = paramazsa.a("mergeSeq");
-                  paramazsa = paramazsa.a("sortKey");
+                  this.adverKey = paramazwj.a("adverKey");
+                  this.index = paramazwj.a("index");
+                  this.index_name = paramazwj.a("index_name");
+                  this.index_type = paramazwj.a("index_type");
+                  this.mExtraData = paramazwj.a("extraData");
+                  this.mCreateTime = paramazwj.a("createTime");
+                  this.mTagName = paramazwj.a("tagName");
+                  this.mArticleIds = paramazwj.a("articleIds");
+                  this.mOrangeWord = paramazwj.a("orangeWord");
+                  this.mAlgorithmIds = paramazwj.a("algorithmIds");
+                  this.mStrategyIds = paramazwj.a("strategyIds");
+                  this.reportEventFolderStatusValue = paramazwj.a("reportEventFolderStatusValue");
+                  this.mQidianBulkTaskId = paramazwj.a("qf_task_id");
+                  this.mInnerUniqIds = paramazwj.a("uuids");
+                  this.mQQStoryExtra = paramazwj.a("qqstoryExtra");
+                  this.mTribeShortVideoExtra = paramazwj.a("qqtribeVideoInfoExtra");
+                  this.mNeedRound = paramazwj.a("needRoundView");
+                  this.mCommonData = paramazwj.a("msgCommonData");
+                  this.mMergeSeq = paramazwj.a("mergeSeq");
+                  paramazwj = paramazwj.a("sortKey");
                   try
                   {
-                    if (!TextUtils.isEmpty(paramazsa)) {
-                      this.mSortKey = Long.parseLong(paramazsa);
+                    if (!TextUtils.isEmpty(paramazwj)) {
+                      this.mSortKey = Long.parseLong(paramazwj);
                     }
                     if (((this.mMsgServiceID != 142) && (this.mMsgServiceID != 500)) || (!TextUtils.isEmpty(this.mExtraData)) || (TextUtils.isEmpty(this.mMsgActionData))) {
                       continue;
@@ -419,17 +419,17 @@ public abstract class AbsStructMsg
                       this.mExtraData = new JSONObject(this.mMsgActionData).getString("push_ext_data");
                       return;
                     }
-                    catch (Exception paramazsa)
+                    catch (Exception paramazwj)
                     {
-                      paramazsa.getStackTrace();
+                      paramazwj.getStackTrace();
                       return;
                     }
                   }
-                  catch (NumberFormatException paramazsa)
+                  catch (NumberFormatException paramazwj)
                   {
                     for (;;)
                     {
-                      paramazsa.printStackTrace();
+                      paramazwj.printStackTrace();
                     }
                   }
                 }

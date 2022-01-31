@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import aeki;
-import alxk;
+import aeox;
+import ambz;
 import android.annotation.TargetApi;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
@@ -9,9 +9,9 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.text.TextUtils;
-import apbb;
-import apbd;
-import awcw;
+import apfk;
+import apfm;
+import awhf;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -29,14 +29,14 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
   
   public QQEntityManagerFactory$SQLiteOpenHelperImpl(QQEntityManagerFactory paramQQEntityManagerFactory, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt)
   {
-    super(BaseApplication.getContext(), paramString, new apbb(paramQQEntityManagerFactory, null), paramInt);
+    super(BaseApplication.getContext(), paramString, new apfk(paramQQEntityManagerFactory, null), paramInt);
     this.databaseName = paramString;
   }
   
   @TargetApi(11)
-  public QQEntityManagerFactory$SQLiteOpenHelperImpl(QQEntityManagerFactory paramQQEntityManagerFactory, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt, apbd paramapbd)
+  public QQEntityManagerFactory$SQLiteOpenHelperImpl(QQEntityManagerFactory paramQQEntityManagerFactory, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt, apfm paramapfm)
   {
-    super(BaseApplication.getContext(), paramString, new apbb(paramQQEntityManagerFactory, null), paramInt, paramapbd);
+    super(BaseApplication.getContext(), paramString, new apfk(paramQQEntityManagerFactory, null), paramInt, paramapfm);
     this.databaseName = paramString;
   }
   
@@ -58,12 +58,12 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
           if (!"sqlite_sequence".equals(str)) {
             try
             {
-              paramSQLiteDatabase.execSQL(awcw.a(str));
+              paramSQLiteDatabase.execSQL(awhf.a(str));
             }
             catch (SQLiteException localSQLiteException)
             {
               QLog.e(this.this$0.TAG, 1, "[DB] dropAllTable " + str, localSQLiteException);
-              alxk.a(localSQLiteException);
+              ambz.a(localSQLiteException);
             }
           }
         }
@@ -139,7 +139,7 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
     //   126: aload 4
     //   128: astore 5
     //   130: aload 6
-    //   132: invokestatic 102	alxk:a	(Ljava/lang/Exception;)V
+    //   132: invokestatic 102	ambz:a	(Ljava/lang/Exception;)V
     //   135: aload_1
     //   136: astore 5
     //   138: aload 4
@@ -241,7 +241,7 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
       for (;;)
       {
         QLog.e(this.this$0.TAG, 1, "getReadableDatabase", localException);
-        alxk.a(localException);
+        ambz.a(localException);
       }
     }
     finally {}
@@ -261,7 +261,7 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
       for (;;)
       {
         QLog.e(this.this$0.TAG, 1, "getWritableDatabase", localException);
-        alxk.a(localException);
+        ambz.a(localException);
       }
     }
     finally {}
@@ -382,7 +382,7 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
       QLog.i(this.this$0.TAG, 2, "[DB]" + this.databaseName + " onUpgrade oldVersion: " + paramInt1 + " newVersion: " + paramInt2);
     }
     this.this$0.upgradeDatabase(paramSQLiteDatabase, paramInt1, paramInt2);
-    aeki.a();
+    aeox.a();
     if (QLog.isColorLevel()) {
       QLog.i(this.this$0.TAG, 2, "[DB] onUpgrade end");
     }

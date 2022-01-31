@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.portal;
 
-import awhw;
+import awmf;
 import com.tencent.widget.HongBaoListView;
 
 public class ConversationHongBao$1
   implements Runnable
 {
-  public ConversationHongBao$1(awhw paramawhw) {}
+  public ConversationHongBao$1(awmf paramawmf) {}
   
   public void run()
   {

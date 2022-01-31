@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
-import bllv;
+import blqh;
 import com.tencent.common.app.AppInterface;
 
 class SaveVideoActivity$1
@@ -10,7 +10,7 @@ class SaveVideoActivity$1
   
   public void run()
   {
-    AppInterface localAppInterface = bllv.a();
+    AppInterface localAppInterface = blqh.a();
     SaveVideoActivity.a(localAppInterface, SaveVideoActivity.a(localAppInterface, this.a));
   }
 }

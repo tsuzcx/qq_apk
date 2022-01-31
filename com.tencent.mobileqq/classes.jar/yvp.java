@@ -1,51 +1,34 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_QQ_STORY_CLIENT.CLIENT.StGetUserNewestStoryReq;
-import NS_QQ_STORY_CLIENT.CLIENT.StGetUserNewestStoryRsp;
-import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
-import com.tencent.mobileqq.mini.servlet.ProtoBufRequest;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import org.json.JSONObject;
 
 public class yvp
-  extends ProtoBufRequest
 {
-  private CLIENT.StGetUserNewestStoryReq a = new CLIENT.StGetUserNewestStoryReq();
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public yvp(COMM.StCommonExt paramStCommonExt, long paramLong1, long paramLong2)
+  public yvp(JSONObject paramJSONObject)
   {
-    CLIENT.StUinTime localStUinTime = new CLIENT.StUinTime();
-    localStUinTime.newestTime.set(paramLong1);
-    localStUinTime.uin.set(paramLong2);
-    ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(localStUinTime);
-    this.a.vecUinTime.set(localArrayList);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
+    if (paramJSONObject.has("title")) {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
     }
-  }
-  
-  public static CLIENT.StGetUserNewestStoryRsp a(byte[] paramArrayOfByte)
-  {
-    CLIENT.StGetUserNewestStoryRsp localStGetUserNewestStoryRsp = new CLIENT.StGetUserNewestStoryRsp();
-    try
-    {
-      localStGetUserNewestStoryRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetUserNewestStoryRsp;
+    if (paramJSONObject.has("tabID")) {
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("tabID");
     }
-    catch (Exception paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAioStoryFeedRequest", 2, "onResponse fail." + paramArrayOfByte);
-      }
+    if (paramJSONObject.has("icon")) {
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
     }
-    return null;
-  }
-  
-  public byte[] getBusiBuf()
-  {
-    return this.a.toByteArray();
+    if (paramJSONObject.has("jumpUrl")) {
+      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
+    }
+    if (paramJSONObject.has("width")) {
+      this.jdField_b_of_type_Int = paramJSONObject.optInt("width");
+    }
+    if (paramJSONObject.has("height")) {
+      this.jdField_c_of_type_Int = paramJSONObject.optInt("height");
+    }
   }
 }
 

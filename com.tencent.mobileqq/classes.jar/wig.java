@@ -1,35 +1,46 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tribe.async.async.JobContext;
 import java.util.List;
 
-public class wig
-  extends QQUIEventReceiver<wic, wif>
+class wig
+  implements urr<vfh, vfi>
 {
-  public wig(wic paramwic)
-  {
-    super(paramwic);
-  }
+  wig(wif paramwif, JobContext paramJobContext, wop paramwop) {}
   
-  public void a(@NonNull wic paramwic, @NonNull wif paramwif)
+  public void a(@NonNull vfh paramvfh, @Nullable vfi paramvfi, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (paramwif.jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      if (paramwif.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-      {
-        wic.a(paramwic, paramwif.jdField_a_of_type_JavaUtilList, true);
-        wic.a(paramwic).a(true);
-      }
+      wxe.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
       return;
     }
-    wic.a(paramwic, paramwif);
-    wic.a(paramwic).remove(wic.b());
-    wic.a(paramwic);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wif.class;
+    if ((paramvfi == null) || (paramErrorMessage.isFail()))
+    {
+      wxe.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for comment request");
+      wif.a(this.jdField_a_of_type_Wif, paramErrorMessage);
+      return;
+    }
+    if (this.jdField_a_of_type_Wop.b == 0) {}
+    for (boolean bool1 = false;; bool1 = true)
+    {
+      ((uux)uwa.a(17)).a(paramvfi.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Wop.jdField_a_of_type_JavaLangString, bool1, true);
+      boolean bool3 = paramvfi.jdField_a_of_type_Boolean;
+      boolean bool2 = bool3;
+      if (!paramvfi.jdField_a_of_type_Boolean)
+      {
+        bool2 = bool3;
+        if (paramvfi.jdField_a_of_type_JavaUtilList.size() == 0)
+        {
+          wxe.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "comment pull should be end!!!!!!!!!!!!");
+          bool2 = true;
+        }
+      }
+      paramvfh = new wic(bool1, paramvfi.jdField_a_of_type_JavaUtilList, paramvfi.b, bool2, paramvfi.jdField_a_of_type_JavaLangString);
+      wif.a(this.jdField_a_of_type_Wif, paramvfh);
+      return;
+    }
   }
 }
 

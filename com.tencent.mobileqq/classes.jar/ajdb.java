@@ -1,43 +1,16 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.URLUtil;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
-class ajdb
+public class ajdb
   implements View.OnClickListener
 {
-  ajdb(ajbm paramajbm, aluc paramaluc) {}
+  public ajdb(DrawHbFragment paramDrawHbFragment) {}
   
   public void onClick(View paramView)
   {
-    azmj.b(ajbm.a(this.jdField_a_of_type_Ajbm).app, "CliOper", "", "", "0X8005B73", "0X8005B73", 0, 0, "", "", "", "");
-    paramView = BaseActivity.sTopActivity;
-    Intent localIntent;
-    if (paramView != null)
-    {
-      if (!URLUtil.isValidUrl(this.jdField_a_of_type_Aluc.a)) {
-        break label144;
-      }
-      localIntent = new Intent(paramView, QQBrowserActivity.class);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("url", this.jdField_a_of_type_Aluc.a);
-      localIntent.putExtra("hideRightButton", true);
-      paramView.startActivity(localIntent);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Ajbm.a(6, 0);
-      azmj.a(ajbm.a(this.jdField_a_of_type_Ajbm).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 5, 0, "", "", "", "");
-      return;
-      label144:
-      localIntent = new Intent(paramView, PhoneUnityBindInfoActivity.class);
-      localIntent.putExtra("kSrouce", 0);
-      paramView.startActivity(localIntent);
-    }
+    DrawHbFragment.b(this.a).c("draw.wrappacket.random");
   }
 }
 

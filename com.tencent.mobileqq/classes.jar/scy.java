@@ -4,7 +4,7 @@ import com.tencent.mm.opensdk.modelbase.BaseResp;
 import mqq.app.MobileQQ;
 
 class scy
-  implements bevy
+  implements bfah
 {
   scy(scx paramscx, ArticleInfo paramArticleInfo, int paramInt) {}
   
@@ -18,7 +18,7 @@ class scy
     {
     case -1: 
     default: 
-      xxb.b(1, 2131720019);
+      ybk.b(1, 2131720031);
       bool = false;
     }
     for (;;)
@@ -26,7 +26,7 @@ class scy
       paramBaseResp = (AppInterface)ors.a();
       sdn.b(paramBaseResp.getApplication().getApplicationContext(), paramBaseResp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, -1, false, bool);
       return;
-      xxb.b(2, 2131720038);
+      ybk.b(2, 2131720050);
       continue;
       bool = false;
     }

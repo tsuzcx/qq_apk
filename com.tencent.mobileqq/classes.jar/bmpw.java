@@ -1,24 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.graphics.Bitmap;
 
-class bmpw
-  implements Animation.AnimationListener
+public class bmpw
 {
-  bmpw(bmpu parambmpu) {}
+  public final int c;
+  public final Bitmap c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public bmpw(int paramInt, Bitmap paramBitmap)
   {
-    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_Bmpo != null) {
-      this.a.a.jdField_a_of_type_Bmpo.a(null);
-    }
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String toString()
+  {
+    return "VideoFragmentInfo{blockIndex=" + this.jdField_c_of_type_Int + '}';
+  }
 }
 
 

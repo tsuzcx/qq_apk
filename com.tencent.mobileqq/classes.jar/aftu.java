@@ -1,28 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class aftu
-  extends GestureDetector.SimpleOnGestureListener
+final class aftu
+  implements afug
 {
-  aftu(aftt paramaftt) {}
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if (this.a.jdField_a_of_type_Aftr.a()) {
-      return false;
+    if (paramChatMessage.msgtype != -1036) {
+      return 17;
     }
-    aekt.n = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_Aftr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (FragmentActivity)this.a.jdField_a_of_type_Aftr.jdField_a_of_type_AndroidContentContext);
-    return true;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    if (this.a.jdField_a_of_type_Aeov != null) {
-      this.a.jdField_a_of_type_Aeov.onLongClick(this.a.jdField_a_of_type_AndroidViewView);
-    }
+    return 18;
   }
 }
 

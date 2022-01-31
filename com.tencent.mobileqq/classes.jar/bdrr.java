@@ -1,17 +1,6 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.theme.TextHook;
-
-class bdrr
-  extends BroadcastReceiver
+public abstract interface bdrr
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent.getBooleanExtra("isFont", false)) {
-      TextHook.getInstance().checkTypeface(paramContext);
-    }
-  }
+  public abstract void a(bdro parambdro);
 }
 
 

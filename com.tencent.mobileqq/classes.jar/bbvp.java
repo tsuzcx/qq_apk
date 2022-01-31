@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bbvp
-  implements DialogInterface.OnClickListener
+class bbvp
+  implements View.OnClickListener
 {
-  public bbvp(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  bbvp(bbvo parambbvo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    PublishHomeWorkFragment.a(this.a);
+    this.a.a(paramView);
   }
 }
 

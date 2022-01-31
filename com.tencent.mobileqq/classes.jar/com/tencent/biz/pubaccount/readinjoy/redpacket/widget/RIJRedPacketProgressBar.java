@@ -10,7 +10,7 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import bcwh;
+import bdaq;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class RIJRedPacketProgressBar
@@ -39,7 +39,7 @@ public class RIJRedPacketProgressBar
   
   private static int a(float paramFloat)
   {
-    return bcwh.a(BaseApplicationImpl.getContext(), paramFloat);
+    return bdaq.a(BaseApplicationImpl.getContext(), paramFloat);
   }
   
   private void a()

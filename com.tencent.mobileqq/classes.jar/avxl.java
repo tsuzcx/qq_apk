@@ -1,148 +1,19 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import mqq.app.QQPermissionCallback;
 
 public class avxl
+  implements QQPermissionCallback
 {
-  static final String jdField_a_of_type_JavaLangString = ampn.jdField_a_of_type_JavaLangString + "_Guide";
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private avxo jdField_a_of_type_Avxo;
-  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
-  boolean jdField_a_of_type_Boolean = false;
+  public avxl(ScanOcrActivity paramScanOcrActivity) {}
   
-  public avxl(Activity paramActivity)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131380227));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131380228));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131380226));
+    bdgm.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  private boolean a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return (this.jdField_a_of_type_Avxo == null) || ((this.jdField_a_of_type_Avxo != null) && (!this.jdField_a_of_type_Avxo.a()));
-  }
-  
-  public void a(int paramInt)
-  {
-    int i = 1;
-    if (a())
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "showText, isDestroyed, textIndex[" + paramInt + "]");
-      return;
-    }
-    if (this.jdField_a_of_type_Avxo == null)
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "showText, mPromotionRes为null, textIndex[" + paramInt + "]");
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_Avxo.a();
-    if (localObject != null)
-    {
-      localObject = ((ampd)localObject).a(paramInt);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      }
-    }
-    for (paramInt = i;; paramInt = 0)
-    {
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (paramInt != 0) {}
-      for (i = 0;; i = 8)
-      {
-        ((TextView)localObject).setVisibility(i);
-        if (paramInt == 0) {
-          break;
-        }
-        this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-        return;
-      }
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(this.jdField_a_of_type_AndroidWidgetImageView.getVisibility());
-      return;
-    }
-  }
-  
-  public void a(ampd paramampd)
-  {
-    QLog.w(jdField_a_of_type_JavaLangString, 1, "loadRes, hadLoad[" + this.jdField_a_of_type_Boolean + "]");
-    if (a()) {}
-    while (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity.getResources();
-    int i = ((Resources)localObject).getDisplayMetrics().densityDpi;
-    int j = ((Resources)localObject).getDisplayMetrics().densityDpi;
-    localObject = ampj.b(paramampd);
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "PromotionGuide, path is null");
-      return;
-    }
-    if (!new File((String)localObject).exists())
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "PromotionGuide, file not exist");
-      return;
-    }
-    paramampd = (String)localObject + "guide.json";
-    localObject = new avxm(this, (String)localObject, i, j);
-    try
-    {
-      LottieComposition.Factory.fromInputStream(this.jdField_a_of_type_AndroidAppActivity, new FileInputStream(paramampd), (OnCompositionLoadedListener)localObject);
-      return;
-    }
-    catch (Exception paramampd)
-    {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "loadWorldCupGuideAnimation failed. err = " + paramampd.getMessage());
-    }
-  }
-  
-  public void a(avxo paramavxo)
-  {
-    this.jdField_a_of_type_Avxo = paramavxo;
-  }
-  
-  public void a(AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = null;
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      if (!paramBoolean) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(this.jdField_a_of_type_AndroidWidgetTextView.getVisibility());
+    this.a.grant();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry;
 
-import ajbg;
+import ajfv;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aokd;
+import aoom;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -67,14 +67,14 @@ public class MiniAppEntryLayout
     this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     this.mRefer = paramInt;
     this.mListView = paramARMapHongBaoListView;
-    inflate(paramContext, 2131562167, this);
-    this.mParent = ((ViewGroup)findViewById(2131370603));
-    this.mRecyclerView = ((RecyclerView)findViewById(2131370211));
+    inflate(paramContext, 2131562185, this);
+    this.mParent = ((ViewGroup)findViewById(2131370622));
+    this.mRecyclerView = ((RecyclerView)findViewById(2131370230));
     this.mRecyclerView.setItemAnimator(null);
     this.mAdapter = new MiniAppEntryAdapter((Activity)paramContext, paramInt);
-    if (aokd.l())
+    if (aoom.l())
     {
-      boolean bool = ((ajbg)this.mContext.app.getManager(315)).a();
+      boolean bool = ((ajfv)this.mContext.app.getManager(315)).a();
       paramARMapHongBaoListView = this.mAdapter;
       if (!bool) {
         break label295;
@@ -86,12 +86,12 @@ public class MiniAppEntryLayout
       paramARMapHongBaoListView.setRedDotSwitchState(paramInt);
       this.mRecyclerView.setAdapter(this.mAdapter);
       this.mRecyclerView.addOnScrollListener(new MiniAppEntryLayout.1(this));
-      this.mThemeBackgroudView = ((ImageView)findViewById(2131370449));
-      this.mNormalStateView = ((ViewGroup)findViewById(2131370488));
-      this.mDefaultStateView = ((ViewGroup)findViewById(2131370437));
-      this.mAppStoreEntryText = ((TextView)findViewById(2131370548));
+      this.mThemeBackgroudView = ((ImageView)findViewById(2131370468));
+      this.mNormalStateView = ((ViewGroup)findViewById(2131370507));
+      this.mDefaultStateView = ((ViewGroup)findViewById(2131370456));
+      this.mAppStoreEntryText = ((TextView)findViewById(2131370567));
       this.mAppStoreEntryText.setOnClickListener(this);
-      this.mDotView = ((MiniAppDotAnimationView)findViewById(2131370601));
+      this.mDotView = ((MiniAppDotAnimationView)findViewById(2131370620));
       this.mLinearLayoutManager = new MiniAppEntryLayout.MiniAppLinearLayoutManager(paramContext, 0, false);
       this.mLinearLayoutManager.setAutoMeasureEnabled(false);
       this.mRecyclerView.setLayoutManager(this.mLinearLayoutManager);

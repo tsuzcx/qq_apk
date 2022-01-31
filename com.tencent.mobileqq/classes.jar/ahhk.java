@@ -1,16 +1,21 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgSuspiciousFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
 public class ahhk
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
-  public ahhk(NewFriendMoreSysMsgSuspiciousFragment paramNewFriendMoreSysMsgSuspiciousFragment) {}
+  public ahhk(PublicView paramPublicView, AppActivity paramAppActivity) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.getActivity().finish();
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView.denied();
+    bdgm.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView.grant();
   }
 }
 

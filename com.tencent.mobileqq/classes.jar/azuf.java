@@ -1,14 +1,20 @@
-import android.view.View;
-import android.view.ViewGroup;
+import java.util.Comparator;
 
 class azuf
+  implements Comparator
 {
-  public View a;
-  public ViewGroup a;
-  public View b;
-  public ViewGroup b;
-  public View c;
-  public View d;
+  public int compare(Object paramObject1, Object paramObject2)
+  {
+    paramObject1 = (azub)paramObject1;
+    paramObject2 = (azub)paramObject2;
+    if (paramObject1.a > paramObject2.a) {
+      return -1;
+    }
+    if (paramObject1.a < paramObject2.a) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 

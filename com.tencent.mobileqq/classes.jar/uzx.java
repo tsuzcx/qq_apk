@@ -1,73 +1,60 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.reactive.SimpleObserver;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class uzx
-  extends uxv
-  implements uni<vch, vdq>
+class uzx
+  extends SimpleObserver<List<vlp>>
 {
-  protected String a;
-  protected List<uzy> a;
+  uzx(uzw paramuzw, vaa paramvaa, uyg paramuyg) {}
   
-  public uzx(String paramString)
+  public void a(List<vlp> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a()
-  {
-    vch localvch = new vch();
-    localvch.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    localvch.b = this.jdField_a_of_type_JavaLangString;
-    ung.a().a(localvch, this);
-  }
-  
-  public void a(List<uzy> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public void a(@NonNull vch paramvch, @Nullable vdq paramvdq, @NonNull ErrorMessage paramErrorMessage)
-  {
-    if ((paramErrorMessage.isSuccess()) && (paramvdq != null))
+    super.onNext(paramList);
+    ArrayList localArrayList;
+    int i;
+    vlp localvlp;
+    if (this.jdField_a_of_type_Vaa != null)
     {
-      paramvch = new uye(1);
-      paramErrorMessage = (ure)urr.a(19);
-      paramvdq = paramvdq.jdField_a_of_type_JavaUtilList;
-      Object localObject1 = paramvdq.iterator();
-      Object localObject2;
-      while (((Iterator)localObject1).hasNext())
+      localArrayList = new ArrayList();
+      if ((paramList != null) && (!paramList.isEmpty()))
       {
-        localObject2 = new uyd(2, paramErrorMessage.a((VideoCollectionItem)((Iterator)localObject1).next()));
-        paramvch.a.add(localObject2);
-      }
-      paramErrorMessage = (wkp)urr.a(11);
-      localObject1 = new ArrayList(paramvdq.size());
-      paramvdq = paramvdq.iterator();
-      while (paramvdq.hasNext())
-      {
-        localObject2 = (VideoCollectionItem)paramvdq.next();
-        if (!TextUtils.isEmpty(((VideoCollectionItem)localObject2).feedId))
+        Collections.sort(paramList, new uzy(this));
+        paramList = paramList.iterator();
+        i = 0;
+        if (paramList.hasNext())
         {
-          VideoListFeedItem localVideoListFeedItem = (VideoListFeedItem)paramErrorMessage.a(((VideoCollectionItem)localObject2).feedId);
-          if (localVideoListFeedItem != null)
-          {
-            localVideoListFeedItem.mViewTotalTime = ((VideoCollectionItem)localObject2).viewTimes;
-            ((ArrayList)localObject1).add(localVideoListFeedItem);
+          localvlp = (vlp)paramList.next();
+          if (i < uzw.a(this.jdField_a_of_type_Uzw)) {
+            break label100;
           }
         }
       }
-      paramErrorMessage.a((List)localObject1);
-      uht.a().dispatch(paramvch);
+      this.jdField_a_of_type_Vaa.a(this.jdField_a_of_type_Uyg, localArrayList);
+    }
+    else
+    {
+      return;
+    }
+    label100:
+    if ((localvlp != null) && (!localvlp.jdField_a_of_type_Boolean) && (localvlp.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
+    {
+      localArrayList.add(localvlp.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      i += 1;
+    }
+    for (;;)
+    {
+      break;
+    }
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    if (this.jdField_a_of_type_Vaa != null) {
+      this.jdField_a_of_type_Vaa.a(this.jdField_a_of_type_Uyg, paramError);
     }
   }
 }

@@ -9,7 +9,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 public class tbp
   extends RecyclerView.ItemDecoration
 {
-  private final int a = aekt.a(4.0F, BaseApplicationImpl.getApplication().getResources());
+  private final int a = aepi.a(4.0F, BaseApplicationImpl.getApplication().getResources());
   
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import adab;
-import adac;
-import adad;
-import alpo;
-import alpu;
-import alqf;
+import adeq;
+import ader;
+import ades;
+import alud;
+import aluj;
+import aluu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,9 +14,9 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
-import azmj;
-import bdee;
-import bepp;
+import azqs;
+import bdin;
+import bety;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -29,10 +29,10 @@ public class HotChatAnnounceActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  alqf jdField_a_of_type_Alqf = new adab(this);
+  aluu jdField_a_of_type_Aluu = new adeq(this);
   View jdField_a_of_type_AndroidViewView;
   public TextView a;
-  bepp jdField_a_of_type_Bepp;
+  bety jdField_a_of_type_Bety;
   BlockableEditTextView jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView;
   public String a;
   boolean jdField_a_of_type_Boolean;
@@ -47,13 +47,13 @@ public class HotChatAnnounceActivity
   {
     try
     {
-      if ((this.jdField_a_of_type_Bepp == null) && (!isFinishing()))
+      if ((this.jdField_a_of_type_Bety == null) && (!isFinishing()))
       {
-        this.jdField_a_of_type_Bepp = new bepp(this, getTitleBarHeight());
-        this.jdField_a_of_type_Bepp.c(2131695088);
+        this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
+        this.jdField_a_of_type_Bety.c(2131695090);
       }
-      if ((this.jdField_a_of_type_Bepp != null) && (!this.jdField_a_of_type_Bepp.isShowing())) {
-        this.jdField_a_of_type_Bepp.show();
+      if ((this.jdField_a_of_type_Bety != null) && (!this.jdField_a_of_type_Bety.isShowing())) {
+        this.jdField_a_of_type_Bety.show();
       }
       return;
     }
@@ -70,12 +70,12 @@ public class HotChatAnnounceActivity
   {
     try
     {
-      if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing()))
+      if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing()))
       {
-        this.jdField_a_of_type_Bepp.dismiss();
-        this.jdField_a_of_type_Bepp.cancel();
+        this.jdField_a_of_type_Bety.dismiss();
+        this.jdField_a_of_type_Bety.cancel();
       }
-      this.jdField_a_of_type_Bepp = null;
+      this.jdField_a_of_type_Bety = null;
       return;
     }
     catch (Throwable localThrowable)
@@ -90,18 +90,18 @@ public class HotChatAnnounceActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560975);
-    setTitle(alpo.a(2131705907));
-    setRightButton(2131693874, this);
+    super.setContentView(2131560993);
+    setTitle(alud.a(2131705919));
+    setRightButton(2131693876, this);
     setLeftViewName(2131690382);
     this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView = ((BlockableEditTextView)super.findViewById(2131362579));
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.addTextChangedListener(new adac(this));
-    this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView = ((BlockableEditTextView)super.findViewById(2131369490));
-    this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.addTextChangedListener(new adad(this));
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131379998);
+    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.addTextChangedListener(new ader(this));
+    this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView = ((BlockableEditTextView)super.findViewById(2131369508));
+    this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.addTextChangedListener(new ades(this));
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131380056);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369374));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131369500);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369392));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131369518);
     paramBundle = getIntent();
     this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("TROOPUIN");
     this.jdField_a_of_type_Boolean = paramBundle.getBooleanExtra("CANADDLINK", false);
@@ -117,7 +117,7 @@ public class HotChatAnnounceActivity
       if ((this.c != null) && (this.c.trim().length() > 0)) {
         this.jdField_b_of_type_AndroidViewView.setEnabled(true);
       }
-      this.app.addObserver(this.jdField_a_of_type_Alqf);
+      this.app.addObserver(this.jdField_a_of_type_Aluu);
       return true;
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
@@ -126,8 +126,8 @@ public class HotChatAnnounceActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Alqf != null) {
-      this.app.removeObserver(this.jdField_a_of_type_Alqf);
+    if (this.jdField_a_of_type_Aluu != null) {
+      this.app.removeObserver(this.jdField_a_of_type_Aluu);
     }
   }
   
@@ -146,21 +146,21 @@ public class HotChatAnnounceActivity
     Object localObject;
     if (paramView == this.rightViewText)
     {
-      if (!bdee.d(this))
+      if (!bdin.d(this))
       {
-        QQToast.a(this, 0, 2131692397, 0).b(getTitleBarHeight());
+        QQToast.a(this, 0, 2131692398, 0).b(getTitleBarHeight());
         return;
       }
       localObject = this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getText().toString();
       paramView = this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getText().toString();
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        QQToast.a(this, 0, alpo.a(2131705912), 0).b(getTitleBarHeight());
+        QQToast.a(this, 0, alud.a(2131705924), 0).b(getTitleBarHeight());
         return;
       }
       if (((String)localObject).getBytes().length / 3 > 40)
       {
-        QQToast.a(this, 0, alpo.a(2131705906), 0).b(getTitleBarHeight());
+        QQToast.a(this, 0, alud.a(2131705918), 0).b(getTitleBarHeight());
         return;
       }
       if ((paramView != null) && (!TextUtils.isEmpty(paramView.trim()))) {
@@ -173,18 +173,18 @@ public class HotChatAnnounceActivity
     {
       if ((!TextUtils.isEmpty(paramView)) && (paramView.length() > 1024))
       {
-        QQToast.a(this, 0, alpo.a(2131705914), 0).b(getTitleBarHeight());
+        QQToast.a(this, 0, alud.a(2131705926), 0).b(getTitleBarHeight());
         return;
       }
-      alpu localalpu = (alpu)this.app.a(35);
+      aluj localaluj = (aluj)this.app.a(35);
       HotChatInfo localHotChatInfo = ((HotChatManager)this.app.getManager(60)).a(this.jdField_a_of_type_JavaLangString);
       a();
       if (QLog.isColorLevel()) {
         QLog.i("HotChatAnnounceActivity", 2, "onClick.contnet=" + (String)localObject + ",link=" + paramView);
       }
-      azmj.b(this.app, "CliOper", "", "", "0X8005D54", "0X8005D54", 0, 0, "", "", "", "");
+      azqs.b(this.app, "CliOper", "", "", "0X8005D54", "0X8005D54", 0, 0, "", "", "", "");
       if (localHotChatInfo.userCreate == 1) {}
-      for (boolean bool = localalpu.a(localHotChatInfo.troopUin, (String)localObject);; bool = localalpu.a(localHotChatInfo.uuid.getBytes(), (String)localObject, paramView))
+      for (boolean bool = localaluj.a(localHotChatInfo.troopUin, (String)localObject);; bool = localaluj.a(localHotChatInfo.uuid.getBytes(), (String)localObject, paramView))
       {
         this.d = ((String)localObject);
         this.e = paramView;
@@ -192,7 +192,7 @@ public class HotChatAnnounceActivity
           break;
         }
         b();
-        QQToast.a(this, 0, alpo.a(2131705910), 0).b(getTitleBarHeight());
+        QQToast.a(this, 0, alud.a(2131705922), 0).b(getTitleBarHeight());
         return;
       }
       if (paramView != this.jdField_b_of_type_AndroidViewView) {

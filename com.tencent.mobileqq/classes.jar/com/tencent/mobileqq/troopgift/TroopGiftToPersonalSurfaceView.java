@@ -11,21 +11,21 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import azzf;
-import azzg;
-import azzh;
-import azzi;
-import azzj;
-import azzl;
-import azzn;
-import azzo;
-import azzz;
-import baaa;
-import baaj;
-import baam;
-import bcrb;
-import bcrd;
-import bcwh;
+import bado;
+import badp;
+import badq;
+import badr;
+import bads;
+import badu;
+import badw;
+import badx;
+import baei;
+import baej;
+import baes;
+import baev;
+import bcvk;
+import bcvm;
+import bdaq;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
 
@@ -33,11 +33,11 @@ public class TroopGiftToPersonalSurfaceView
   extends SpriteGLView
 {
   protected int a;
-  private baaj jdField_a_of_type_Baaj;
-  private baaj[] jdField_a_of_type_ArrayOfBaaj;
+  private baes jdField_a_of_type_Baes;
+  private baes[] jdField_a_of_type_ArrayOfBaes;
   protected int b;
-  private baaj b;
-  private baaj c;
+  private baes b;
+  private baes c;
   private int d;
   
   public TroopGiftToPersonalSurfaceView(Context paramContext, AttributeSet paramAttributeSet)
@@ -47,7 +47,7 @@ public class TroopGiftToPersonalSurfaceView
   
   private Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    int i = bcwh.a(getContext(), 4.0F);
+    int i = bdaq.a(getContext(), 4.0F);
     try
     {
       Bitmap localBitmap1 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
@@ -73,7 +73,7 @@ public class TroopGiftToPersonalSurfaceView
       paramBitmap.setAlpha(43);
       paramBitmap.setStyle(Paint.Style.STROKE);
       paramBitmap.setAntiAlias(true);
-      paramBitmap.setStrokeWidth(bcwh.a(getContext(), 1.0F));
+      paramBitmap.setStrokeWidth(bdaq.a(getContext(), 1.0F));
       localCanvas.drawCircle(localBitmap1.getWidth() / 2, localBitmap1.getHeight() / 2, localBitmap1.getWidth() / 2, paramBitmap);
       localBitmap2.recycle();
       return localBitmap1;
@@ -82,72 +82,72 @@ public class TroopGiftToPersonalSurfaceView
     return null;
   }
   
-  public void a(int paramInt, azzg paramazzg)
+  public void a(int paramInt, badp parambadp)
   {
-    int i = this.jdField_a_of_type_Baaj.d();
+    int i = this.jdField_a_of_type_Baes.d();
     int j = (int)(i * 0.15F);
-    this.jdField_a_of_type_Baaj.a(new azzf[] { new azzo(new azzf[] { new azzh(paramInt), new azzn(200, 1.0F, 1.05F), new azzn(200, 1.05F, 0.0F) }), new azzo(new azzf[] { new azzh(paramInt), new azzj(200, (int)this.jdField_a_of_type_Baaj.c, (int)this.jdField_a_of_type_Baaj.d, (int)this.jdField_a_of_type_Baaj.c - j / 2, (int)this.jdField_a_of_type_Baaj.d), new azzj(200, (int)this.jdField_a_of_type_Baaj.c, (int)this.jdField_a_of_type_Baaj.d, (int)this.jdField_a_of_type_Baaj.c + j / 2 + i, (int)this.jdField_a_of_type_Baaj.d) }) });
-    if (this.jdField_b_of_type_Baaj.a() == null)
+    this.jdField_a_of_type_Baes.a(new bado[] { new badx(new bado[] { new badq(paramInt), new badw(200, 1.0F, 1.05F), new badw(200, 1.05F, 0.0F) }), new badx(new bado[] { new badq(paramInt), new bads(200, (int)this.jdField_a_of_type_Baes.c, (int)this.jdField_a_of_type_Baes.d, (int)this.jdField_a_of_type_Baes.c - j / 2, (int)this.jdField_a_of_type_Baes.d), new bads(200, (int)this.jdField_a_of_type_Baes.c, (int)this.jdField_a_of_type_Baes.d, (int)this.jdField_a_of_type_Baes.c + j / 2 + i, (int)this.jdField_a_of_type_Baes.d) }) });
+    if (this.jdField_b_of_type_Baes.a() == null)
     {
-      if (paramazzg != null) {
-        paramazzg.a();
+      if (parambadp != null) {
+        parambadp.a();
       }
       return;
     }
-    azzn localazzn = new azzn(200, 1.05F, 0.0F);
-    this.jdField_b_of_type_Baaj.a(new azzf[] { new azzo(new azzf[] { new azzh(paramInt), new azzn(200, 1.0F, 1.05F), localazzn }), new azzo(new azzf[] { new azzj(200, (int)this.jdField_b_of_type_Baaj.c, (int)this.jdField_b_of_type_Baaj.d, (int)this.jdField_b_of_type_Baaj.c + j / 2, (int)this.jdField_b_of_type_Baaj.d), new azzj(200, (int)this.jdField_b_of_type_Baaj.c, (int)this.jdField_b_of_type_Baaj.d, (int)this.jdField_b_of_type_Baaj.c - j / 2 - i, (int)this.jdField_b_of_type_Baaj.d) }) });
-    localazzn.a(paramazzg);
+    badw localbadw = new badw(200, 1.05F, 0.0F);
+    this.jdField_b_of_type_Baes.a(new bado[] { new badx(new bado[] { new badq(paramInt), new badw(200, 1.0F, 1.05F), localbadw }), new badx(new bado[] { new bads(200, (int)this.jdField_b_of_type_Baes.c, (int)this.jdField_b_of_type_Baes.d, (int)this.jdField_b_of_type_Baes.c + j / 2, (int)this.jdField_b_of_type_Baes.d), new bads(200, (int)this.jdField_b_of_type_Baes.c, (int)this.jdField_b_of_type_Baes.d, (int)this.jdField_b_of_type_Baes.c - j / 2 - i, (int)this.jdField_b_of_type_Baes.d) }) });
+    localbadw.a(parambadp);
   }
   
-  public void a(baaa parambaaa)
+  public void a(baej parambaej)
   {
-    this.jdField_a_of_type_Baaj.e = 0.0F;
-    this.jdField_b_of_type_Baaj.e = 0.0F;
-    int i = this.jdField_a_of_type_Baaj.d();
+    this.jdField_a_of_type_Baes.e = 0.0F;
+    this.jdField_b_of_type_Baes.e = 0.0F;
+    int i = this.jdField_a_of_type_Baes.d();
     int j = i / 10;
-    this.jdField_a_of_type_Baaj.a(this.jdField_a_of_type_Int / 2 - i, this.d);
-    this.jdField_b_of_type_Baaj.a(this.jdField_a_of_type_Int / 2 + i, this.d);
-    this.jdField_a_of_type_ArrayOfBaaj[0].a(this.jdField_a_of_type_Int / 2 - i, this.d - j * 2);
-    this.jdField_a_of_type_ArrayOfBaaj[1].a(this.jdField_a_of_type_Int / 2 - i, this.d - j);
-    this.jdField_a_of_type_ArrayOfBaaj[2].a(this.jdField_a_of_type_Int / 2 - i, this.d);
-    this.jdField_a_of_type_ArrayOfBaaj[3].a(this.jdField_a_of_type_Int / 2 - i * 6 / 5, this.d + j);
-    this.jdField_a_of_type_ArrayOfBaaj[4].a(this.jdField_a_of_type_Int / 2 - i * 6 / 5, this.d + j * 2);
-    this.jdField_a_of_type_ArrayOfBaaj[5].a(this.jdField_a_of_type_Int / 2 - i, j * 2 + this.d);
-    this.jdField_a_of_type_Baaj.a(new azzf[] { new azzo(new azzf[] { new azzn(200, 0.0F, 1.05F), new azzn(150, 1.05F, 1.0F) }) });
-    this.jdField_b_of_type_Baaj.a(new azzf[] { new azzo(new azzf[] { new azzh(200), new azzn(200, 0.0F, 1.05F), new azzn(150, 1.05F, 1.0F) }) });
-    float f = 9.0F / (this.jdField_b_of_type_Baaj.c - this.jdField_a_of_type_Baaj.c);
-    azzo localazzo1 = new azzo(new azzf[] { new azzh(500), new azzi(600, (int)this.jdField_a_of_type_ArrayOfBaaj[0].c, (int)this.jdField_a_of_type_ArrayOfBaaj[0].d, (int)this.jdField_b_of_type_Baaj.c, i / 20, f) });
-    azzo localazzo2 = new azzo(new azzf[] { new azzh(700), new azzi(600, (int)this.jdField_a_of_type_ArrayOfBaaj[1].c, (int)this.jdField_a_of_type_ArrayOfBaaj[1].d, (int)this.jdField_b_of_type_Baaj.c, i / 20, f) });
-    azzo localazzo3 = new azzo(new azzf[] { new azzh(600), new azzi(600, (int)this.jdField_a_of_type_ArrayOfBaaj[2].c, (int)this.jdField_a_of_type_ArrayOfBaaj[2].d, (int)this.jdField_b_of_type_Baaj.c, i / 20, f) });
-    azzo localazzo4 = new azzo(new azzf[] { new azzh(900), new azzi(600, (int)this.jdField_a_of_type_ArrayOfBaaj[3].c, (int)this.jdField_a_of_type_ArrayOfBaaj[3].d, (int)this.jdField_b_of_type_Baaj.c, i / 20, f * 0.6F) });
-    azzo localazzo5 = new azzo(new azzf[] { new azzh(800), new azzi(600, (int)this.jdField_a_of_type_ArrayOfBaaj[4].c, (int)this.jdField_a_of_type_ArrayOfBaaj[4].d, (int)this.jdField_b_of_type_Baaj.c, i / 20, f * 0.6F) });
-    azzo localazzo6 = new azzo(new azzf[] { new azzh(1000), new azzi(600, (int)this.jdField_a_of_type_ArrayOfBaaj[5].c, (int)this.jdField_a_of_type_ArrayOfBaaj[5].d, (int)this.jdField_b_of_type_Baaj.c, i / 20, f) });
+    this.jdField_a_of_type_Baes.a(this.jdField_a_of_type_Int / 2 - i, this.d);
+    this.jdField_b_of_type_Baes.a(this.jdField_a_of_type_Int / 2 + i, this.d);
+    this.jdField_a_of_type_ArrayOfBaes[0].a(this.jdField_a_of_type_Int / 2 - i, this.d - j * 2);
+    this.jdField_a_of_type_ArrayOfBaes[1].a(this.jdField_a_of_type_Int / 2 - i, this.d - j);
+    this.jdField_a_of_type_ArrayOfBaes[2].a(this.jdField_a_of_type_Int / 2 - i, this.d);
+    this.jdField_a_of_type_ArrayOfBaes[3].a(this.jdField_a_of_type_Int / 2 - i * 6 / 5, this.d + j);
+    this.jdField_a_of_type_ArrayOfBaes[4].a(this.jdField_a_of_type_Int / 2 - i * 6 / 5, this.d + j * 2);
+    this.jdField_a_of_type_ArrayOfBaes[5].a(this.jdField_a_of_type_Int / 2 - i, j * 2 + this.d);
+    this.jdField_a_of_type_Baes.a(new bado[] { new badx(new bado[] { new badw(200, 0.0F, 1.05F), new badw(150, 1.05F, 1.0F) }) });
+    this.jdField_b_of_type_Baes.a(new bado[] { new badx(new bado[] { new badq(200), new badw(200, 0.0F, 1.05F), new badw(150, 1.05F, 1.0F) }) });
+    float f = 9.0F / (this.jdField_b_of_type_Baes.c - this.jdField_a_of_type_Baes.c);
+    badx localbadx1 = new badx(new bado[] { new badq(500), new badr(600, (int)this.jdField_a_of_type_ArrayOfBaes[0].c, (int)this.jdField_a_of_type_ArrayOfBaes[0].d, (int)this.jdField_b_of_type_Baes.c, i / 20, f) });
+    badx localbadx2 = new badx(new bado[] { new badq(700), new badr(600, (int)this.jdField_a_of_type_ArrayOfBaes[1].c, (int)this.jdField_a_of_type_ArrayOfBaes[1].d, (int)this.jdField_b_of_type_Baes.c, i / 20, f) });
+    badx localbadx3 = new badx(new bado[] { new badq(600), new badr(600, (int)this.jdField_a_of_type_ArrayOfBaes[2].c, (int)this.jdField_a_of_type_ArrayOfBaes[2].d, (int)this.jdField_b_of_type_Baes.c, i / 20, f) });
+    badx localbadx4 = new badx(new bado[] { new badq(900), new badr(600, (int)this.jdField_a_of_type_ArrayOfBaes[3].c, (int)this.jdField_a_of_type_ArrayOfBaes[3].d, (int)this.jdField_b_of_type_Baes.c, i / 20, f * 0.6F) });
+    badx localbadx5 = new badx(new bado[] { new badq(800), new badr(600, (int)this.jdField_a_of_type_ArrayOfBaes[4].c, (int)this.jdField_a_of_type_ArrayOfBaes[4].d, (int)this.jdField_b_of_type_Baes.c, i / 20, f * 0.6F) });
+    badx localbadx6 = new badx(new bado[] { new badq(1000), new badr(600, (int)this.jdField_a_of_type_ArrayOfBaes[5].c, (int)this.jdField_a_of_type_ArrayOfBaes[5].d, (int)this.jdField_b_of_type_Baes.c, i / 20, f) });
     i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfBaaj.length)
+    while (i < this.jdField_a_of_type_ArrayOfBaes.length)
     {
-      this.jdField_a_of_type_ArrayOfBaaj[i].e = 0.0F;
-      this.jdField_a_of_type_ArrayOfBaaj[i].jdField_a_of_type_Int = 255;
-      this.jdField_a_of_type_ArrayOfBaaj[i].a(new azzf[] { new azzf[] { localazzo1, localazzo2, localazzo3, localazzo4, localazzo5, localazzo6 }[i], new azzo(new azzf[] { new azzh(1300), new azzl(300, 255, 0) }) });
+      this.jdField_a_of_type_ArrayOfBaes[i].e = 0.0F;
+      this.jdField_a_of_type_ArrayOfBaes[i].jdField_a_of_type_Int = 255;
+      this.jdField_a_of_type_ArrayOfBaes[i].a(new bado[] { new bado[] { localbadx1, localbadx2, localbadx3, localbadx4, localbadx5, localbadx6 }[i], new badx(new bado[] { new badq(1300), new badu(300, 255, 0) }) });
       i += 1;
     }
-    if ((this.c != null) && ((this.c instanceof azzz)))
+    if ((this.c != null) && ((this.c instanceof baei)))
     {
-      ((azzz)this.c).a = new bcrb(this, parambaaa);
-      ((azzz)this.c).a(getContext(), this);
+      ((baei)this.c).a = new bcvk(this, parambaej);
+      ((baei)this.c).a(getContext(), this);
     }
     while (a())
     {
       a(this.c);
-      a(this.jdField_a_of_type_Baaj);
-      a(this.jdField_b_of_type_Baaj);
+      a(this.jdField_a_of_type_Baes);
+      a(this.jdField_b_of_type_Baes);
       i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfBaaj.length)
+      while (i < this.jdField_a_of_type_ArrayOfBaes.length)
       {
-        a(this.jdField_a_of_type_ArrayOfBaaj[i]);
+        a(this.jdField_a_of_type_ArrayOfBaes[i]);
         i += 1;
       }
       if ((this.c != null) && ((this.c instanceof VideoSprite))) {
-        ((VideoSprite)this.c).a(new bcrd(this, parambaaa));
+        ((VideoSprite)this.c).a(new bcvm(this, parambaej));
       }
     }
   }
@@ -177,8 +177,8 @@ public class TroopGiftToPersonalSurfaceView
   
   public void setReceiveHeadBitmap(Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (this.jdField_b_of_type_Baaj != null)) {
-      this.jdField_b_of_type_Baaj.a(this, a(paramBitmap.copy(Bitmap.Config.ARGB_8888, false), bcwh.a(getContext(), 70.0F), bcwh.a(getContext(), 70.0F)));
+    if ((paramBitmap != null) && (this.jdField_b_of_type_Baes != null)) {
+      this.jdField_b_of_type_Baes.a(this, a(paramBitmap.copy(Bitmap.Config.ARGB_8888, false), bdaq.a(getContext(), 70.0F), bdaq.a(getContext(), 70.0F)));
     }
   }
   
@@ -189,75 +189,75 @@ public class TroopGiftToPersonalSurfaceView
     this.c.c = (paramInt1 / 2);
     this.c.d = (paramInt2 / 2);
     a(this.c);
-    this.jdField_a_of_type_Baaj = new baaj();
-    a(this.jdField_a_of_type_Baaj);
-    this.jdField_b_of_type_Baaj = new baaj();
-    a(this.jdField_b_of_type_Baaj);
-    this.jdField_a_of_type_Baaj.e = 0.0F;
-    this.jdField_b_of_type_Baaj.e = 0.0F;
-    this.jdField_a_of_type_ArrayOfBaaj = new baaj[6];
+    this.jdField_a_of_type_Baes = new baes();
+    a(this.jdField_a_of_type_Baes);
+    this.jdField_b_of_type_Baes = new baes();
+    a(this.jdField_b_of_type_Baes);
+    this.jdField_a_of_type_Baes.e = 0.0F;
+    this.jdField_b_of_type_Baes.e = 0.0F;
+    this.jdField_a_of_type_ArrayOfBaes = new baes[6];
     paramInt1 = 0;
     while (paramInt1 < 6)
     {
-      this.jdField_a_of_type_ArrayOfBaaj[paramInt1] = new baaj();
-      this.jdField_a_of_type_ArrayOfBaaj[paramInt1].e = 0.0F;
-      a(this.jdField_a_of_type_ArrayOfBaaj[paramInt1]);
+      this.jdField_a_of_type_ArrayOfBaes[paramInt1] = new baes();
+      this.jdField_a_of_type_ArrayOfBaes[paramInt1].e = 0.0F;
+      a(this.jdField_a_of_type_ArrayOfBaes[paramInt1]);
       paramInt1 += 1;
     }
     if (paramBitmap1 != null) {
-      this.jdField_a_of_type_Baaj.a(this, a(paramBitmap1.copy(Bitmap.Config.ARGB_8888, false), bcwh.a(getContext(), 70.0F), bcwh.a(getContext(), 70.0F)));
+      this.jdField_a_of_type_Baes.a(this, a(paramBitmap1.copy(Bitmap.Config.ARGB_8888, false), bdaq.a(getContext(), 70.0F), bdaq.a(getContext(), 70.0F)));
     }
     if (paramBitmap2 != null) {
-      this.jdField_b_of_type_Baaj.a(this, a(paramBitmap2.copy(Bitmap.Config.ARGB_8888, false), bcwh.a(getContext(), 70.0F), bcwh.a(getContext(), 70.0F)));
+      this.jdField_b_of_type_Baes.a(this, a(paramBitmap2.copy(Bitmap.Config.ARGB_8888, false), bdaq.a(getContext(), 70.0F), bdaq.a(getContext(), 70.0F)));
     }
-    paramBitmap1 = new baam(this, paramBitmap3);
+    paramBitmap1 = new baev(this, paramBitmap3);
     paramInt1 = 0;
     while (paramInt1 < 6)
     {
-      this.jdField_a_of_type_ArrayOfBaaj[paramInt1].a(paramBitmap1);
+      this.jdField_a_of_type_ArrayOfBaes[paramInt1].a(paramBitmap1);
       paramInt1 += 1;
     }
   }
   
   public void setResourceWithFps(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String[] paramArrayOfString, int paramInt)
   {
-    this.c = new azzz(this, paramArrayOfString);
-    ((azzz)this.c).e(paramInt);
+    this.c = new baei(this, paramArrayOfString);
+    ((baei)this.c).e(paramInt);
     a(this.c);
-    this.jdField_a_of_type_Baaj = new baaj();
-    a(this.jdField_a_of_type_Baaj);
-    this.jdField_b_of_type_Baaj = new baaj();
-    a(this.jdField_b_of_type_Baaj);
-    this.jdField_a_of_type_Baaj.e = 0.0F;
-    this.jdField_b_of_type_Baaj.e = 0.0F;
-    this.jdField_a_of_type_ArrayOfBaaj = new baaj[6];
+    this.jdField_a_of_type_Baes = new baes();
+    a(this.jdField_a_of_type_Baes);
+    this.jdField_b_of_type_Baes = new baes();
+    a(this.jdField_b_of_type_Baes);
+    this.jdField_a_of_type_Baes.e = 0.0F;
+    this.jdField_b_of_type_Baes.e = 0.0F;
+    this.jdField_a_of_type_ArrayOfBaes = new baes[6];
     paramInt = 0;
     while (paramInt < 6)
     {
-      this.jdField_a_of_type_ArrayOfBaaj[paramInt] = new baaj();
-      this.jdField_a_of_type_ArrayOfBaaj[paramInt].e = 0.0F;
-      a(this.jdField_a_of_type_ArrayOfBaaj[paramInt]);
+      this.jdField_a_of_type_ArrayOfBaes[paramInt] = new baes();
+      this.jdField_a_of_type_ArrayOfBaes[paramInt].e = 0.0F;
+      a(this.jdField_a_of_type_ArrayOfBaes[paramInt]);
       paramInt += 1;
     }
     if (paramBitmap1 != null) {
-      this.jdField_a_of_type_Baaj.a(this, a(paramBitmap1.copy(Bitmap.Config.ARGB_8888, false), bcwh.a(getContext(), 70.0F), bcwh.a(getContext(), 70.0F)));
+      this.jdField_a_of_type_Baes.a(this, a(paramBitmap1.copy(Bitmap.Config.ARGB_8888, false), bdaq.a(getContext(), 70.0F), bdaq.a(getContext(), 70.0F)));
     }
     if (paramBitmap2 != null) {
-      this.jdField_b_of_type_Baaj.a(this, a(paramBitmap2.copy(Bitmap.Config.ARGB_8888, false), bcwh.a(getContext(), 70.0F), bcwh.a(getContext(), 70.0F)));
+      this.jdField_b_of_type_Baes.a(this, a(paramBitmap2.copy(Bitmap.Config.ARGB_8888, false), bdaq.a(getContext(), 70.0F), bdaq.a(getContext(), 70.0F)));
     }
-    paramBitmap1 = new baam(this, paramBitmap3);
+    paramBitmap1 = new baev(this, paramBitmap3);
     paramInt = 0;
     while (paramInt < 6)
     {
-      this.jdField_a_of_type_ArrayOfBaaj[paramInt].a(paramBitmap1);
+      this.jdField_a_of_type_ArrayOfBaes[paramInt].a(paramBitmap1);
       paramInt += 1;
     }
   }
   
   public void setSendHeadBitmap(Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (this.jdField_a_of_type_Baaj != null)) {
-      this.jdField_a_of_type_Baaj.a(this, a(paramBitmap.copy(Bitmap.Config.ARGB_8888, false), bcwh.a(getContext(), 70.0F), bcwh.a(getContext(), 70.0F)));
+    if ((paramBitmap != null) && (this.jdField_a_of_type_Baes != null)) {
+      this.jdField_a_of_type_Baes.a(this, a(paramBitmap.copy(Bitmap.Config.ARGB_8888, false), bdaq.a(getContext(), 70.0F), bdaq.a(getContext(), 70.0F)));
     }
   }
 }

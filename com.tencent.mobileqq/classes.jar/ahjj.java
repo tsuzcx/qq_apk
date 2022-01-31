@@ -1,28 +1,52 @@
-import android.os.Bundle;
-import com.tencent.widget.AbsListView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import java.util.Set;
 
 class ahjj
-  implements bhpo
+  extends RecyclerView.ViewHolder
+  implements Animator.AnimatorListener, View.OnClickListener
 {
-  ahjj(ahjd paramahjd) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public ahjj(ahjh paramahjh, View paramView)
   {
-    ahjd.a(this.a, paramInt1 + paramInt2 - 1);
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131376070));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367819));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370977));
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramInt != 0) {
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(4);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
+    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+    ahjh.a(this.jdField_a_of_type_Ahjh).add(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
       return;
     }
-    if (ahjd.b(this.a) >= this.a.getCount() - 2)
-    {
-      paramAbsListView = new Bundle();
-      paramAbsListView.putString("from", "4");
-      ahjd.a(this.a).b(4, ahjd.a(this.a), paramAbsListView);
-    }
-    this.a.d();
+    ahjh.a(this.jdField_a_of_type_Ahjh, this.jdField_a_of_type_JavaLangString);
   }
 }
 

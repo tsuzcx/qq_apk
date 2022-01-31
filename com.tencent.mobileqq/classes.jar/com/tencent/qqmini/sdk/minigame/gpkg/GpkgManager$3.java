@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.minigame.gpkg;
 
-import bgtx;
+import bgye;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public final class GpkgManager$3
@@ -10,7 +10,7 @@ public final class GpkgManager$3
   
   public void run()
   {
-    bgtx.a(this.a, null, true);
+    bgye.a(this.a, null, true);
   }
 }
 

@@ -95,12 +95,12 @@ public class syp
             } while (jdField_c_of_type_Long > 10000L);
             if (TextUtils.equals(paramString1, "SUBSCRIPT_FEEDS_COST"))
             {
-              azmz.a(BaseApplicationImpl.getApplication()).a(null, "actSubscribeOpenCost", true, jdField_c_of_type_Long, 0L, null, null);
+              azri.a(BaseApplicationImpl.getApplication()).a(null, "actSubscribeOpenCost", true, jdField_c_of_type_Long, 0L, null, null);
               return;
             }
             if (TextUtils.equals(paramString1, "SUBSCRIPT_AIO_COST"))
             {
-              azmz.a(BaseApplicationImpl.getApplication()).a(null, "actSubscribeAIOOpenCost", true, jdField_c_of_type_Long, 0L, null, null);
+              azri.a(BaseApplicationImpl.getApplication()).a(null, "actSubscribeAIOOpenCost", true, jdField_c_of_type_Long, 0L, null, null);
               return;
             }
             if (!TextUtils.equals(paramString1, "KANDIAN_FEEDS_COST")) {
@@ -114,20 +114,20 @@ public class syp
             paramString1.put("on_create", String.valueOf(jdField_d_of_type_Long));
             paramString1.put("load_article", String.valueOf(jdField_e_of_type_Long));
             paramString1.put("listView_cost", String.valueOf(f));
-            azmz.a(BaseApplicationImpl.getApplication()).a(null, "actKandianOpenCost", true, jdField_c_of_type_Long, 0L, paramString1, null);
+            azri.a(BaseApplicationImpl.getApplication()).a(null, "actKandianOpenCost", true, jdField_c_of_type_Long, 0L, paramString1, null);
           } while (!QLog.isColorLevel());
           QLog.i("PubAccAutoMonitor", 2, "isRecommendFirst = " + jdField_a_of_type_Boolean);
           QLog.d("PubAccAutoMonitor", 2, new Object[] { "kandian_feeds_open_cost, total_cost = ", Long.valueOf(jdField_c_of_type_Long), ", tab_index = ", Integer.valueOf(jdField_a_of_type_Int) });
           return;
           if (TextUtils.equals(paramString1, "KANDIAN_TO_SUBSCRIPT_COST"))
           {
-            azmz.a(BaseApplicationImpl.getApplication()).a(null, "actKandianToSubscribeCost", true, jdField_c_of_type_Long, 0L, null, null);
+            azri.a(BaseApplicationImpl.getApplication()).a(null, "actKandianToSubscribeCost", true, jdField_c_of_type_Long, 0L, null, null);
             return;
           }
         } while (TextUtils.equals(paramString1, "LEBA_KANDIAN_FEEDS_COST"));
         if (TextUtils.equals(paramString1, "SERVICE_FOLDER_COST"))
         {
-          azmz.a(BaseApplicationImpl.getApplication()).a(null, "actServiceFolderToServiceNumListCost", true, jdField_c_of_type_Long, 0L, null, null);
+          azri.a(BaseApplicationImpl.getApplication()).a(null, "actServiceFolderToServiceNumListCost", true, jdField_c_of_type_Long, 0L, null, null);
           return;
         }
         if (TextUtils.equals(paramString1, "recommend_tab_cost"))
@@ -141,14 +141,14 @@ public class syp
             i = 1;
             paramString2.put("first", String.valueOf(i));
             paramString2.put("which", String.valueOf(1));
-            if (!bjxj.i()) {
+            if (!bkbq.i()) {
               break label627;
             }
           }
           for (paramString1 = "0";; paramString1 = "1")
           {
             paramString2.put("which_kandian", paramString1);
-            azmz.a(BaseApplicationImpl.getApplication()).a(null, "actKandianTabOpenCost", true, jdField_c_of_type_Long, 0L, paramString2, null);
+            azri.a(BaseApplicationImpl.getApplication()).a(null, "actKandianTabOpenCost", true, jdField_c_of_type_Long, 0L, paramString2, null);
             jdField_b_of_type_Boolean = false;
             return;
             i = 0;
@@ -166,7 +166,7 @@ public class syp
           {
             paramString1.put("first", String.valueOf(i));
             paramString1.put("which", String.valueOf(2));
-            azmz.a(BaseApplicationImpl.getApplication()).a(null, "actKandianTabOpenCost", true, jdField_c_of_type_Long, 0L, paramString1, null);
+            azri.a(BaseApplicationImpl.getApplication()).a(null, "actKandianTabOpenCost", true, jdField_c_of_type_Long, 0L, paramString1, null);
             jdField_c_of_type_Boolean = false;
             return;
           }
@@ -182,7 +182,7 @@ public class syp
           {
             paramString1.put("first", String.valueOf(i));
             paramString1.put("which", String.valueOf(3));
-            azmz.a(BaseApplicationImpl.getApplication()).a(null, "actKandianTabOpenCost", true, jdField_c_of_type_Long, 0L, paramString1, null);
+            azri.a(BaseApplicationImpl.getApplication()).a(null, "actKandianTabOpenCost", true, jdField_c_of_type_Long, 0L, paramString1, null);
             jdField_d_of_type_Boolean = false;
             return;
           }
@@ -197,7 +197,7 @@ public class syp
       {
         paramString1.put("first", String.valueOf(i));
         paramString1.put("which", String.valueOf(4));
-        azmz.a(BaseApplicationImpl.getApplication()).a(null, "actKandianTabOpenCost", true, jdField_c_of_type_Long, 0L, paramString1, null);
+        azri.a(BaseApplicationImpl.getApplication()).a(null, "actKandianTabOpenCost", true, jdField_c_of_type_Long, 0L, paramString1, null);
         jdField_e_of_type_Boolean = false;
         return;
       }

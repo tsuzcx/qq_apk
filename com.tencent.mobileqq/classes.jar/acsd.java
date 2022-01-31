@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acsd
-  implements View.OnClickListener
+  extends avva
 {
-  public acsd(FontSettingActivity paramFontSettingActivity) {}
+  public acsd(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.a.c();
+    super.a(paramBoolean1, paramBoolean2, paramInt);
+    if ((paramBoolean1) && (paramInt != 2) && (Conversation.b(this.a))) {
+      axmd.a(this.a);
+    }
   }
 }
 

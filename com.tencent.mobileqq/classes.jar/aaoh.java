@@ -1,148 +1,96 @@
-import NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.AdvExposureInfo;
-import NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.ExposeAndGetAdvInfoReq;
-import NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.ExposeAndGetAdvInfoRsp;
-import NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.GetAdvInfoReq;
-import NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.GetAdvInfoRsp;
-import android.content.Intent;
-import android.os.Bundle;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.Context;
+import android.graphics.Color;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 
-public final class aaoh
-  extends MSFServlet
+final class aaoh
+  extends LinearLayout
+  implements aany
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private int jdField_a_of_type_Int = -2147483648;
+  private aanv jdField_a_of_type_Aanv;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private int jdField_b_of_type_Int = -2147483648;
+  private aanv jdField_b_of_type_Aanv;
+  private aanv c;
+  
+  public aaoh(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    int i;
-    int j;
-    String str;
-    Bundle localBundle;
-    int k;
-    if (paramFromServiceMsg != null)
+    super(paramContext);
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramInt1 < 0) || (paramInt2 < 0))
     {
-      i = paramFromServiceMsg.getResultCode();
-      j = paramIntent.getIntExtra("key_operation", -1);
-      str = paramIntent.getStringExtra("key_adID");
-      localBundle = new Bundle();
-      if (i != 1000) {
-        break label322;
-      }
-      k = -10000;
-      paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
-      if (j != 0) {
-        break label278;
-      }
-      localObject1 = (ExposeAndGetAdvInfoRsp)aaoi.a(paramFromServiceMsg, "ExposeAndGetAdvInfo");
-      if (localObject1 == null) {
-        break label339;
-      }
-      i = ((ExposeAndGetAdvInfoRsp)localObject1).Code;
-      paramFromServiceMsg = ((ExposeAndGetAdvInfoRsp)localObject1).Msg;
-      localObject1 = ((ExposeAndGetAdvInfoRsp)localObject1).vecAdvExposureInfo;
+      aase.d("GdtBannerViewForCreativeSize285", "constructor");
+      return;
     }
-    for (;;)
-    {
-      label98:
-      j = k;
-      if (i == 0)
-      {
-        j = k;
-        if (localObject1 != null)
-        {
-          j = k;
-          if (((ArrayList)localObject1).size() > 0) {
-            j = ((AdvExposureInfo)((ArrayList)localObject1).get(0)).iAuditResult;
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QBossC2SCheckerServlet", 2, "onReceive: " + str + ", code: " + j);
-      }
-      label183:
-      localBundle.putString("msg", paramFromServiceMsg);
-      localBundle.putInt("code", j);
-      localBundle.putString("adid", str);
-      if (QLog.isColorLevel()) {
-        QLog.d("QBossC2SCheckerServlet", 2, "onReceive code=" + j + " adID=" + str);
-      }
-      if (j == 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        notifyObserver(paramIntent, 100, bool, localBundle, aaog.class);
-        return;
-        i = -1;
-        break;
-        label278:
-        if (1 != j) {
-          break label339;
-        }
-        localObject1 = (GetAdvInfoRsp)aaoi.a(paramFromServiceMsg, "GetAdvInfo");
-        if (localObject1 == null) {
-          break label339;
-        }
-        i = ((GetAdvInfoRsp)localObject1).Code;
-        paramFromServiceMsg = ((GetAdvInfoRsp)localObject1).Msg;
-        localObject1 = ((GetAdvInfoRsp)localObject1).vecAdvExposureInfo;
-        break label98;
-        label322:
-        j = -20000;
-        paramFromServiceMsg = (FromServiceMsg)localObject1;
-        break label183;
-      }
-      label339:
-      i = -10000;
-      localObject1 = null;
-      paramFromServiceMsg = localObject2;
-    }
+    setOrientation(1);
+    setGravity(1);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+    LinearLayout localLinearLayout = new LinearLayout(paramContext);
+    localLinearLayout.setOrientation(0);
+    addView(localLinearLayout, localLayoutParams);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Aanv = new aanv(paramContext, paramString1);
+    this.jdField_a_of_type_Aanv.setId(2131367082);
+    localLinearLayout.addView(this.jdField_a_of_type_Aanv);
+    this.jdField_b_of_type_Aanv = new aanv(paramContext, paramString2);
+    this.jdField_b_of_type_Aanv.setId(2131367083);
+    localLinearLayout.addView(this.jdField_b_of_type_Aanv);
+    this.c = new aanv(paramContext, paramString3);
+    this.c.setId(2131367084);
+    localLinearLayout.addView(this.c);
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367085);
+    this.jdField_a_of_type_AndroidWidgetTextView.setLines(1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#333333"));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString4);
+    addView(this.jdField_a_of_type_AndroidWidgetTextView);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public View a()
   {
-    int i = paramIntent.getIntExtra("key_operation", -1);
-    Object localObject3 = paramIntent.getStringExtra("key_uin");
-    paramIntent = paramIntent.getStringExtra("key_adID");
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("QBossC2SCheckerServlet", 2, "onSend operationType= " + i + " adID=" + paramIntent);
-    }
-    paramIntent = "";
-    Object localObject2 = "";
-    Object localObject1 = null;
-    if (i == 0)
-    {
-      paramIntent = "RevenueQboss.ExposeAndGetAdvInfo";
-      localObject2 = "ExposeAndGetAdvInfo";
-      localObject1 = new ExposeAndGetAdvInfoReq(localArrayList, (String)localObject3);
-    }
-    for (;;)
-    {
-      localObject3 = new aaoi((String)localObject3, (JceStruct)localObject1, paramIntent, (String)localObject2);
-      localObject2 = ((aaoi)localObject3).encode();
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        QLog.e("QBossC2SCheckerServlet", 1, "onSend request encode result is null.cmd = " + ((aaoi)localObject3).uniKey());
-        localObject1 = new byte[4];
-      }
-      paramPacket.setTimeout(30000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + paramIntent);
-      paramPacket.putSendData((byte[])localObject1);
-      return;
-      if (1 == i)
-      {
-        paramIntent = "RevenueQboss.GetAdvInfo";
-        localObject2 = "GetAdvInfo";
-        localObject1 = new GetAdvInfoReq(localArrayList, (String)localObject3);
-      }
-    }
+    return this;
   }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_b_of_type_Int <= 0) || (this.jdField_a_of_type_Aanv == null) || (this.jdField_b_of_type_Aanv == null) || (this.c == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    {
+      aase.d("GdtBannerViewForCreativeSize285", "setSize error");
+      return;
+    }
+    aaod localaaod = new aaod(getContext(), paramInt1, paramInt2);
+    paramInt2 = Double.valueOf((paramInt1 - localaaod.jdField_a_of_type_Int * 2) * 1.0D / 3.0D).intValue();
+    int i = Double.valueOf((paramInt2 - localaaod.jdField_b_of_type_Int * 2) * 1.0D / this.jdField_a_of_type_Int * this.jdField_b_of_type_Int + localaaod.jdField_b_of_type_Int * 2).intValue();
+    paramInt1 = Double.valueOf(0.839285714285714D * paramInt1).intValue();
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt2, i);
+    localLayoutParams.leftMargin = 0;
+    this.jdField_a_of_type_Aanv.setPadding(localaaod.jdField_b_of_type_Int, localaaod.jdField_b_of_type_Int, localaaod.jdField_b_of_type_Int, localaaod.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Aanv.setLayoutParams(localLayoutParams);
+    localLayoutParams = new LinearLayout.LayoutParams(paramInt2, i);
+    localLayoutParams.leftMargin = localaaod.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Aanv.setPadding(localaaod.jdField_b_of_type_Int, localaaod.jdField_b_of_type_Int, localaaod.jdField_b_of_type_Int, localaaod.jdField_b_of_type_Int);
+    this.jdField_b_of_type_Aanv.setLayoutParams(localLayoutParams);
+    localLayoutParams = new LinearLayout.LayoutParams(paramInt2, i);
+    localLayoutParams.leftMargin = localaaod.jdField_a_of_type_Int;
+    this.c.setPadding(localaaod.jdField_b_of_type_Int, localaaod.jdField_b_of_type_Int, localaaod.jdField_b_of_type_Int, localaaod.jdField_b_of_type_Int);
+    this.c.setLayoutParams(localLayoutParams);
+    localLayoutParams = new LinearLayout.LayoutParams(paramInt1, -2);
+    localLayoutParams.topMargin = localaaod.jdField_b_of_type_Int;
+    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, localaaod.d);
+  }
+  
+  public void a(Context paramContext) {}
+  
+  public void b(Context paramContext) {}
+  
+  public void c(Context paramContext) {}
 }
 
 

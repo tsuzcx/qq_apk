@@ -1,23 +1,23 @@
 package dov.com.qq.im;
 
-import alpo;
-import bfhq;
-import bkjp;
+import alud;
+import bflz;
+import bknw;
 
 public class QIMQzoneEffectsCameraCaptureUnit$4
   implements Runnable
 {
-  public QIMQzoneEffectsCameraCaptureUnit$4(bkjp parambkjp, boolean paramBoolean, String paramString) {}
+  public QIMQzoneEffectsCameraCaptureUnit$4(bknw parambknw, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    bkjp.a(this.this$0);
+    bknw.a(this.this$0);
     if (this.jdField_a_of_type_Boolean)
     {
-      bkjp.b(this.this$0, this.jdField_a_of_type_JavaLangString);
+      bknw.b(this.this$0, this.jdField_a_of_type_JavaLangString);
       return;
     }
-    bfhq.a().a(alpo.a(2131710215));
+    bflz.a().a(alud.a(2131710227));
   }
 }
 

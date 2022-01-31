@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import agug;
-import awbw;
+import agyv;
+import awgf;
 
 public class StickerRecManager$5
   implements Runnable
 {
-  public StickerRecManager$5(agug paramagug, StickerRecommendEntity paramStickerRecommendEntity) {}
+  public StickerRecManager$5(agyv paramagyv, StickerRecommendEntity paramStickerRecommendEntity) {}
   
   public void run()
   {
-    agug.a(this.this$0).b(this.a);
+    agyv.a(this.this$0).b(this.a);
   }
 }
 

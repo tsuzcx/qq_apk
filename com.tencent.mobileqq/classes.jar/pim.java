@@ -69,14 +69,14 @@ public class pim
     pip localpip = new pip(this, null);
     localpip.jdField_a_of_type_Int = ((pio)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int;
     if (((pio)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int == 2) {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560109, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560108, paramViewGroup, false);
     }
-    for (localpip.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364280));; localpip.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368206)))
+    for (localpip.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364282));; localpip.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368217)))
     {
       paramView.setTag(localpip);
       paramViewGroup = localpip;
       break;
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560112, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560111, paramViewGroup, false);
     }
   }
 }

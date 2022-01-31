@@ -14,16 +14,16 @@ public class swi
   implements Handler.Callback, Manager
 {
   private volatile int jdField_a_of_type_Int = -1;
-  private awbw jdField_a_of_type_Awbw;
-  private bhoe jdField_a_of_type_Bhoe;
+  private awgf jdField_a_of_type_Awgf;
+  private bhsl jdField_a_of_type_Bhsl;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private List<PAReportInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   public swi(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Awbw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_Bhoe = new bhoe(ThreadManager.getSubThreadLooper(), this);
+    this.jdField_a_of_type_Awgf = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_Bhsl = new bhsl(ThreadManager.getSubThreadLooper(), this);
   }
   
   public void a()
@@ -42,15 +42,15 @@ public class swi
       if (this.jdField_a_of_type_JavaUtilList.size() != 0) {
         break;
       }
-    } while (this.jdField_a_of_type_Bhoe.hasMessages(100001));
-    this.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(100001, 3000L);
+    } while (this.jdField_a_of_type_Bhsl.hasMessages(100001));
+    this.jdField_a_of_type_Bhsl.sendEmptyMessageDelayed(100001, 3000L);
     return;
-    this.jdField_a_of_type_Bhoe.sendEmptyMessage(100002);
+    this.jdField_a_of_type_Bhsl.sendEmptyMessage(100002);
   }
   
   public void a(PAReportInfo paramPAReportInfo)
   {
-    this.jdField_a_of_type_Bhoe.post(new PAReportManager.1(this, paramPAReportInfo));
+    this.jdField_a_of_type_Bhsl.post(new PAReportManager.1(this, paramPAReportInfo));
   }
   
   public void b()
@@ -61,12 +61,12 @@ public class swi
     if (this.jdField_a_of_type_Int == -1) {
       this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b().a(PAReportInfo.class.getSimpleName());
     }
-    List localList2 = this.jdField_a_of_type_Awbw.a(PAReportInfo.class, true, null, (String[])null, null, null, null, String.valueOf(20));
+    List localList2 = this.jdField_a_of_type_Awgf.a(PAReportInfo.class, true, null, (String[])null, null, null, null, String.valueOf(20));
     if (localList2 != null) {}
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       this.jdField_a_of_type_JavaUtilList.addAll(localList2);
-      this.jdField_a_of_type_Bhoe.sendEmptyMessage(100002);
+      this.jdField_a_of_type_Bhsl.sendEmptyMessage(100002);
       return;
     }
   }
@@ -81,7 +81,7 @@ public class swi
     {
       return;
       Object localObject1 = (PAReportInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-      if (!this.jdField_a_of_type_Awbw.b((awbv)localObject1)) {
+      if (!this.jdField_a_of_type_Awgf.b((awge)localObject1)) {
         continue;
       }
       this.jdField_a_of_type_Int -= 1;
@@ -118,7 +118,7 @@ public class swi
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_Awbw.a();
+    this.jdField_a_of_type_Awgf.a();
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       this.jdField_a_of_type_JavaUtilList.clear();

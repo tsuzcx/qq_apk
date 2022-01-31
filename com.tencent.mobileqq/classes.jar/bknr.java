@@ -1,30 +1,23 @@
-import android.graphics.Matrix;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
+import com.tencent.mobileqq.activity.qwallet.emoj.HandRecognizer.OnPreviewFrameHandlerListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bknr
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
+class bknr
+  implements HandRecognizer.OnPreviewFrameHandlerListener
 {
-  private bknr(AECropperImageView paramAECropperImageView) {}
+  bknr(bknm parambknm) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void getHandRecognizeResult(int paramInt)
   {
-    if (!AECropperImageView.a(this.a)) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onPreviewFrame: getHandRecognizeResult=" + paramInt);
     }
-    if (AECropperImageView.b(this.a))
+    if (paramInt >= this.a.g)
     {
-      blfg.d("AECropperImageView", "Cropping current bitmap. Can't perform this action right now.");
-      return false;
+      bknm.a(this.a);
+      if (bknm.a(this.a)) {
+        this.a.ad();
+      }
     }
-    Matrix localMatrix = this.a.getImageMatrix();
-    AECropperImageView.a(this.a, paramScaleGestureDetector.getFocusX());
-    AECropperImageView.b(this.a, paramScaleGestureDetector.getFocusY());
-    localMatrix.postScale(paramScaleGestureDetector.getScaleFactor(), paramScaleGestureDetector.getScaleFactor(), paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
-    this.a.setImageMatrix(localMatrix);
-    this.a.invalidate();
-    return true;
   }
 }
 

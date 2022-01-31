@@ -1,35 +1,26 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.25.1;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.25.2;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
 public class bbdk
-  implements bhqd
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  public bbdk(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, bhpy parambhpy, URLDrawable paramURLDrawable, String paramString1, String paramString2) {}
+  public bbdk(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    paramView = this.jdField_a_of_type_Bhpy.a(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131693495).equals(paramView))
+    switch (paramInt)
     {
-      TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      bcyw.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, Long.parseLong(this.jdField_a_of_type_JavaLangString), "0", null, 20006);
     }
     for (;;)
     {
-      azmj.b(null, "dc00899", "grp_lbs", this.jdField_a_of_type_JavaLangString, "video", "clk_rep", 0, 0, "", "", "", "");
-      break;
-      if ((TextUtils.isEmpty(this.b)) || ("0".equals(this.b))) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, 2, alpo.a(2131715593), 0).a();
-      } else {
-        bcyw.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, 0L, this.b, null, 20006);
-      }
+      return false;
+      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.25.1(this));
+      continue;
+      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.25.2(this));
     }
   }
 }

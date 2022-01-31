@@ -1,39 +1,22 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.widget.StoryCoverView;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
-class wrk
-  extends wna
+public class wrk
 {
-  wrk(wrh paramwrh, boolean paramBoolean) {}
-  
-  public void a(int paramInt, View paramView, Object paramObject, wph paramwph)
+  public static void a(String paramString, Object... paramVarArgs)
   {
-    if (paramView == paramwph.a()) {
-      wrh.a(this.jdField_a_of_type_Wrh, paramInt, (StoryVideoItem)wrh.a(this.jdField_a_of_type_Wrh).a().get(paramInt), paramView);
+    wxe.e(paramString, wrm.a(paramVarArgs));
+  }
+  
+  public static void b(String paramString, Object... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString, 2, wrm.a(paramVarArgs));
     }
-    do
-    {
-      return;
-      if (paramView == paramwph.a(2131373769))
-      {
-        paramView = (StoryCoverView)paramwph.a(2131373768);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          wrh.a(this.jdField_a_of_type_Wrh, paramInt, (StoryVideoItem)wrh.a(this.jdField_a_of_type_Wrh).a().get(paramInt), paramView);
-          return;
-        }
-        wrh.b(this.jdField_a_of_type_Wrh, paramInt, (StoryVideoItem)wrh.a(this.jdField_a_of_type_Wrh).a().get(paramInt), paramView);
-        return;
-      }
-      if ((paramView == paramwph.a(2131373824)) || (paramView == paramwph.a(2131373771)))
-      {
-        wrh.a(this.jdField_a_of_type_Wrh, paramInt, (StoryVideoItem)wrh.a(this.jdField_a_of_type_Wrh).a().get(paramInt));
-        return;
-      }
-    } while (paramView != paramwph.a(2131373820));
-    this.jdField_a_of_type_Wrh.a(paramwph, paramInt);
+  }
+  
+  public static void c(String paramString, Object... paramVarArgs)
+  {
+    wxe.d(paramString, wrm.a(paramVarArgs));
   }
 }
 

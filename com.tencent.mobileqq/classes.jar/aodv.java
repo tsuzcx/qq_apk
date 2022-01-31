@@ -1,10 +1,6 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-
-public class aodv
+public abstract interface aodv
 {
-  public ProgressBar a;
-  public TextView a;
+  public abstract void a(aodk paramaodk, int paramInt, boolean paramBoolean);
 }
 
 

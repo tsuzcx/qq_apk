@@ -1,12 +1,15 @@
-public class aslb
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
+
+class aslb
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  public String a;
+  aslb(askz paramaskz) {}
   
-  public aslb(askw paramaskw, int paramInt, String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    askz.a(this.a).sendEmptyMessageDelayed(6, 500L);
   }
 }
 

@@ -45,9 +45,9 @@ public class phk
     jdField_a_of_type_JavaLangString = phk.class.getSimpleName();
   }
   
-  public phk(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public phk(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
   }
   
   private void a(int paramInt, BaseVideoArticleInfo paramBaseVideoArticleInfo)
@@ -325,7 +325,7 @@ public class phk
     {
       str = "channelID = ? and recommendSeq < ?";
       localArrayList = new ArrayList();
-      localObject = this.jdField_a_of_type_Awbw.a(WeiShiVideoArticleInfo.class, true, str, new String[] { String.valueOf(paramInt1), String.valueOf(paramLong) }, null, null, "recommendSeq desc", String.valueOf(paramInt2));
+      localObject = this.jdField_a_of_type_Awgf.a(WeiShiVideoArticleInfo.class, true, str, new String[] { String.valueOf(paramInt1), String.valueOf(paramLong) }, null, null, "recommendSeq desc", String.valueOf(paramInt2));
       if (localObject != null) {
         localArrayList.addAll((Collection)localObject);
       }

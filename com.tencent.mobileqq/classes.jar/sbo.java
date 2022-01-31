@@ -39,8 +39,8 @@ public class sbo
   public sbo(View paramView, BaseData paramBaseData)
   {
     super(paramView, paramBaseData);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131379602));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379711));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131379660));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379769));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
   }
   
@@ -131,7 +131,7 @@ public class sbo
       localBundle2.putString("req_create_time", orr.a(paramBaseArticleInfo.mTime));
       localBundle2.putString("brief_key", paramBaseArticleInfo.mTitle);
       localBundle2.putInt("req_type", 140);
-      localBundle1.putByteArray("STRUCT_MSG_BYTES", ((StructMsgForGeneralShare)azqu.a(localBundle2)).getBytes());
+      localBundle1.putByteArray("STRUCT_MSG_BYTES", ((StructMsgForGeneralShare)azvd.a(localBundle2)).getBytes());
       localBundle1.putString("KEY_VIDEO_JSON_LIST", paramBaseArticleInfo.mJsonVideoList);
       return localBundle1;
       if (paramrjk.jdField_f_of_type_Int == 6)
@@ -211,7 +211,7 @@ public class sbo
   public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
   {
     paramBaseData1 = (VideoData)paramBaseData2;
-    int i = aekt.a(12.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
+    int i = aepi.a(12.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
     i = a(this.jdField_a_of_type_ComTencentImageURLImageView.getContext()) - i - i;
     this.jdField_e_of_type_Int = (i * 280 / 496);
     paramBaseData2 = URLDrawable.URLDrawableOptions.obtain();

@@ -1,22 +1,20 @@
 public class ammh
 {
-  public long a;
-  public String a;
-  public long b = -1L;
-  public long c = -1L;
-  
-  public ammh(long paramLong)
+  public static String a(long paramLong)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = Long.toString(paramLong);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.c = -1L;
-    this.b = -1L;
+    if (paramLong <= 0L) {
+      return "";
+    }
+    if (paramLong < 1024L) {
+      return paramLong + "B";
+    }
+    if (paramLong < 1048576L) {
+      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F) }) + "K";
+    }
+    if (paramLong < 1073741824L) {
+      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F) }) + "M";
+    }
+    return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F / 1024.0F) }) + "G";
   }
 }
 

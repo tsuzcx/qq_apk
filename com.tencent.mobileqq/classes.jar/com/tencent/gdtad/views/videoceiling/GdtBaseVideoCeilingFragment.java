@@ -1,8 +1,8 @@
 package com.tencent.gdtad.views.videoceiling;
 
-import aanp;
-import aapa;
-import adky;
+import aase;
+import aatp;
+import adpn;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,10 +35,10 @@ public abstract class GdtBaseVideoCeilingFragment
   {
     if ((paramActivity == null) || (paramGdtVideoCeilingData == null) || (!paramGdtVideoCeilingData.isValid()))
     {
-      aanp.d("GdtBaseVideoCeilingFragment", "start error");
+      aase.d("GdtBaseVideoCeilingFragment", "start error");
       return;
     }
-    aanp.b("GdtBaseVideoCeilingFragment", "start");
+    aase.b("GdtBaseVideoCeilingFragment", "start");
     Bundle localBundle = new Bundle();
     if ((paramBundle != null) && (!paramBundle.isEmpty())) {
       localBundle.putAll(paramBundle);
@@ -52,16 +52,16 @@ public abstract class GdtBaseVideoCeilingFragment
     paramBundle.putExtra("big_brother_source_key", "biz_src_ads");
     paramBundle.putExtras(localBundle);
     if (TextUtils.isEmpty(paramBundle.getStringExtra("big_brother_ref_source_key"))) {
-      aanp.d("GdtBaseVideoCeilingFragment", "start gdt empty refId");
+      aase.d("GdtBaseVideoCeilingFragment", "start gdt empty refId");
     }
     if (paramGdtVideoCeilingData.getStyle() == 4) {
-      adky.a(paramActivity, paramBundle, PublicFragmentActivity.class, paramClass);
+      adpn.a(paramActivity, paramBundle, PublicFragmentActivity.class, paramClass);
     }
     for (;;)
     {
       AdReporterForAnalysis.reportForStartActivity(paramActivity, paramGdtVideoCeilingData.getAd(), "GdtBaseVideoCeilingFragment");
       return;
-      adky.a(paramActivity, paramBundle, PublicFragmentActivityForTool.class, paramClass);
+      adpn.a(paramActivity, paramBundle, PublicFragmentActivityForTool.class, paramClass);
     }
   }
   
@@ -119,9 +119,9 @@ public abstract class GdtBaseVideoCeilingFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     AdReporterForAnalysis.reportForActivityStatusChanged(getActivity(), null, "GdtBaseVideoCeilingFragment", 1);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559154, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView = ((GdtVideoCeilingView)paramLayoutInflater.findViewById(2131379796));
-    aapa.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559153, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView = ((GdtVideoCeilingView)paramLayoutInflater.findViewById(2131379854));
+    aatp.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView);
     this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView.a(paramBundle);
     if ((getArguments() != null) && ((getArguments().getSerializable("data") instanceof GdtVideoCeilingData))) {
       this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView.setData((GdtVideoCeilingData)getArguments().getSerializable("data"));

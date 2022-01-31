@@ -1,27 +1,16 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class agqc
-  extends nub
+  implements View.OnClickListener
 {
-  agqc(agot paramagot) {}
+  agqc(agps paramagps) {}
   
-  protected void d(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (agot.a(this.a).getVisibility() != 0))
-    {
-      if (mdj.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
-      {
-        agot.b(this.a).setVisibility(0);
-        agot.c(this.a).setOnClickListener(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight2Icon(2130846559, 2130846560);
-      }
+    if (!this.a.N) {
+      acjm.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a());
     }
-    else {
-      return;
-    }
-    agot.d(this.a).setVisibility(8);
   }
 }
 

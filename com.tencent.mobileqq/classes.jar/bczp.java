@@ -1,12 +1,24 @@
 import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public abstract interface bczp<T>
+final class bczp
+  implements DownloadParams.DecodeHandler
 {
-  public abstract T a(Bitmap paramBitmap);
-  
-  public abstract void a(Exception paramException);
-  
-  public abstract void a(T paramT, Bitmap paramBitmap);
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {
+      return null;
+    }
+    paramDownloadParams = paramDownloadParams.tag;
+    int i;
+    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1)) {
+      i = ((int[])(int[])paramDownloadParams)[0];
+    }
+    for (paramDownloadParams = bdhj.a(paramBitmap, i, i, i);; paramDownloadParams = null) {
+      return paramDownloadParams;
+    }
+  }
 }
 
 

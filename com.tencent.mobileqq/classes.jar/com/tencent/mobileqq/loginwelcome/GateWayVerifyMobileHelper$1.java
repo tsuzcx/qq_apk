@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.loginwelcome;
 
-import atqz;
-import atrb;
+import atvi;
+import atvk;
 
 public final class GateWayVerifyMobileHelper$1
   implements Runnable
 {
-  public GateWayVerifyMobileHelper$1(String paramString, atrb paramatrb) {}
+  public GateWayVerifyMobileHelper$1(String paramString, atvk paramatvk) {}
   
   public void run()
   {
-    atqz.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atrb);
+    atvi.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atvk);
   }
 }
 

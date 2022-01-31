@@ -16,7 +16,7 @@ public class mrg
     catch (Exception paramContext)
     {
       QLog.e("GuideHelper", 1, "fromAssetFileName fail, seq[" + paramLong + "]", paramContext);
-      bfrq.a().post(new GuideHelper.LottieDrawableHelper.2(this, parammrj));
+      bfvz.a().post(new GuideHelper.LottieDrawableHelper.2(this, parammrj));
     }
   }
 }

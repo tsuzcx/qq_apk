@@ -1,44 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
-import com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment.UrlNotauthorizedError;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 class absy
-  extends SimpleObserver<atzw>
+  implements Comparator<MessageRecord>
 {
-  absy(absu paramabsu, abte paramabte) {}
+  absy(absu paramabsu) {}
   
-  public void a(atzw paramatzw)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    abte localabte = this.jdField_a_of_type_Abte;
-    if (paramatzw.c == 1) {}
-    for (int i = 2;; i = 3)
-    {
-      localabte.a(paramatzw, i);
-      return;
-    }
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
-    }
-    int i;
-    if ((paramError instanceof VerifyUrlJobSegment.UrlNotauthorizedError)) {
-      i = 4;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Abte.a(null, i);
-      return;
-      if ((paramError instanceof AppInfoError)) {
-        i = ((AppInfoError)paramError).type;
-      } else {
-        i = 0;
-      }
-    }
+    return (int)(paramMessageRecord2.time - paramMessageRecord1.time);
   }
 }
 

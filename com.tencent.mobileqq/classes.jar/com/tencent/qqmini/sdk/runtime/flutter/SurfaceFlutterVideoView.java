@@ -5,13 +5,13 @@ import android.graphics.SurfaceTexture;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
-import bgjm;
-import bglo;
-import bgnj;
-import bhdo;
-import bhdp;
-import bhdq;
-import bhdr;
+import bgnt;
+import bgpv;
+import bgrq;
+import bhhv;
+import bhhw;
+import bhhx;
+import bhhy;
 import com.qflutter.video.IQflutterVideoView;
 import com.qflutter.video.IQflutterVideoView.StatusCallBack;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -24,7 +24,7 @@ public class SurfaceFlutterVideoView
   extends TextureView
   implements TextureView.SurfaceTextureListener, IQflutterVideoView
 {
-  private final bgnj jdField_a_of_type_Bgnj;
+  private final bgrq jdField_a_of_type_Bgrq;
   private IQflutterVideoView.StatusCallBack jdField_a_of_type_ComQflutterVideoIQflutterVideoView$StatusCallBack;
   private final VideoPlayerProviderProxy jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProviderProxy;
   private String jdField_a_of_type_JavaLangString;
@@ -36,20 +36,20 @@ public class SurfaceFlutterVideoView
     super(paramContext);
     setSurfaceTextureListener(this);
     this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProviderProxy = ((VideoPlayerProviderProxy)ProxyManager.get(VideoPlayerProviderProxy.class));
-    this.jdField_a_of_type_Bgnj = this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProviderProxy.getVideoPlayer();
-    this.jdField_a_of_type_Bgnj.setLooping(true);
+    this.jdField_a_of_type_Bgrq = this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProviderProxy.getVideoPlayer();
+    this.jdField_a_of_type_Bgrq.setLooping(true);
     this.jdField_a_of_type_JavaLangString = ("" + paramMap.get("data"));
     a(paramMap.get("videoUrl") + "");
-    this.jdField_a_of_type_Bgnj.setOnCompletionListener(new bhdo(this));
-    this.jdField_a_of_type_Bgnj.setOnBufferingUpdateListener(new bhdp(this));
-    this.jdField_a_of_type_Bgnj.setOnErrorListener(new bhdq(this));
-    this.jdField_a_of_type_Bgnj.setOnPreparedListener(new bhdr(this));
+    this.jdField_a_of_type_Bgrq.setOnCompletionListener(new bhhv(this));
+    this.jdField_a_of_type_Bgrq.setOnBufferingUpdateListener(new bhhw(this));
+    this.jdField_a_of_type_Bgrq.setOnErrorListener(new bhhx(this));
+    this.jdField_a_of_type_Bgrq.setOnPreparedListener(new bhhy(this));
   }
   
   private void a(String paramString)
   {
     String str;
-    if ((!bglo.a(paramString)) && (!paramString.equals(this.b)))
+    if ((!bgpv.a(paramString)) && (!paramString.equals(this.b)))
     {
       this.b = paramString;
       if (!paramString.startsWith("http"))
@@ -59,15 +59,15 @@ public class SurfaceFlutterVideoView
       }
       else
       {
-        str = this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProviderProxy.getUrl(bgjm.a().a(paramString));
+        str = this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProviderProxy.getUrl(bgnt.a().a(paramString));
       }
       QMLog.d("QFV", "handleOperateXWebVideo playUrl : " + str);
     }
     try
     {
-      this.jdField_a_of_type_Bgnj.reset();
-      this.jdField_a_of_type_Bgnj.setDataSource(str);
-      this.jdField_a_of_type_Bgnj.prepareAsync();
+      this.jdField_a_of_type_Bgrq.reset();
+      this.jdField_a_of_type_Bgrq.setDataSource(str);
+      this.jdField_a_of_type_Bgrq.prepareAsync();
       return;
     }
     catch (Throwable paramString)
@@ -85,7 +85,7 @@ public class SurfaceFlutterVideoView
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     QMLog.e("QFV", "surface onSurfaceTextureAvailable");
-    this.jdField_a_of_type_Bgnj.setSurface(new Surface(paramSurfaceTexture));
+    this.jdField_a_of_type_Bgrq.setSurface(new Surface(paramSurfaceTexture));
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
@@ -112,12 +112,12 @@ public class SurfaceFlutterVideoView
     {
       if ("play".equals(str))
       {
-        this.jdField_a_of_type_Bgnj.start();
+        this.jdField_a_of_type_Bgrq.start();
         return;
       }
       if ("pause".equals(str))
       {
-        this.jdField_a_of_type_Bgnj.pause();
+        this.jdField_a_of_type_Bgrq.pause();
         return;
       }
     }
@@ -128,7 +128,7 @@ public class SurfaceFlutterVideoView
     }
     if ("stop".equals(str))
     {
-      this.jdField_a_of_type_Bgnj.stop();
+      this.jdField_a_of_type_Bgrq.stop();
       return;
     }
     boolean bool = "seek".equals(str);
@@ -136,7 +136,7 @@ public class SurfaceFlutterVideoView
       try
       {
         int i = (int)(new JSONObject(paramMap).optDouble("time") * 1000.0D);
-        this.jdField_a_of_type_Bgnj.seekTo(i);
+        this.jdField_a_of_type_Bgrq.seekTo(i);
         return;
       }
       catch (Exception localException)

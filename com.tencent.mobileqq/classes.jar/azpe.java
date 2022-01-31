@@ -1,71 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.msf.sdk.utils.MonitorHttpInfo;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.widget.ImageView;
 
-public class azpe
-  extends QIPCModule
+public final class azpe
+  implements aznn
 {
-  private static azpe a;
+  public azpe(ImageView paramImageView1, ImageView paramImageView2) {}
   
-  private azpe(String paramString)
+  public void a()
   {
-    super(paramString);
-  }
-  
-  public static azpe a()
-  {
-    if (a == null) {}
-    try
+    if ((this.a != null) && (this.b != null))
     {
-      if (a == null) {
-        a = new azpe("NetworkMonitorIPCModule");
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NetworkMonitorIPCModule", 2, new Object[] { "NetworkMonitorIPCModule : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
-    }
-    if ("ACTION_REPORT_DOWNLOAD_URL".equalsIgnoreCase(paramString))
-    {
-      paramString = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_URL", "");
-      azpb.a().a(paramString);
-    }
-    for (;;)
-    {
-      return new EIPCResult();
-      if ("ACTION_REPORT_HTTPINFO".equalsIgnoreCase(paramString))
-      {
-        try
-        {
-          paramString = (MonitorHttpInfo)paramBundle.getSerializable("BUNDLE_KEY_REPORT_HTTP_INFO_INFO");
-          String str = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_PROCESS_NAME", "");
-          paramBundle = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_TOP_ACTIVITY", "");
-          if (paramString != null)
-          {
-            try
-            {
-              azpb.a().a(paramString, str, paramBundle);
-            }
-            catch (Throwable paramString) {}
-            continue;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("NetworkMonitorIPCModule", 2, "MonitorHttpInfo == null");
-        }
-        catch (Exception paramString) {}
-        if (QLog.isColorLevel()) {
-          QLog.d("NetworkMonitorIPCModule", 2, new Object[] { "ClassCastException", paramString.toString() });
-        }
-      }
+      this.a.setVisibility(8);
+      this.b.setVisibility(8);
     }
   }
 }

@@ -1,129 +1,126 @@
-import java.util.Arrays;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ayqu
+  extends ayrj
 {
-  static boolean a(int paramInt, long[][] paramArrayOfLong, long[] paramArrayOfLong1, long[] paramArrayOfLong2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, boolean[] paramArrayOfBoolean1, boolean[] paramArrayOfBoolean2, long[] paramArrayOfLong3)
+  public ayqu(bdbb parambdbb)
   {
-    paramArrayOfBoolean1[paramInt] = true;
-    int i = 0;
-    if (i < paramArrayOfLong2.length)
+    super(parambdbb);
+  }
+  
+  protected ayqo<aynu, aywd> a(bdbb parambdbb)
+  {
+    return new ayqv(parambdbb);
+  }
+  
+  public void a(ayns paramayns, aywc paramaywc)
+  {
+    paramayns = (aynt)paramayns;
+    LinearLayout localLinearLayout = ((aywh)paramaywc).a();
+    List localList;
+    int k;
+    int i;
+    aynq localaynq;
+    Object localObject2;
+    Object localObject1;
+    if (localLinearLayout != null)
     {
-      if ((paramArrayOfBoolean2[i] != 0) || (paramArrayOfLong[paramInt][i] <= 0L)) {}
+      localList = paramayns.a();
+      if (localList != null)
+      {
+        localLinearLayout.removeAllViews();
+        k = Math.min(localList.size(), 3);
+        i = 0;
+        if (i < k)
+        {
+          paramayns = (aynu)localList.get(i);
+          if ((paramayns instanceof aynq))
+          {
+            localaynq = (aynq)paramayns;
+            localObject2 = null;
+            if (aypf.a(localaynq.e()) == 1)
+            {
+              localObject2 = LayoutInflater.from(paramaywc.a().getContext()).inflate(2131562604, null);
+              paramayns = ((View)localObject2).findViewById(2131368483);
+              localObject1 = new ayvx((View)localObject2);
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      label137:
+      int j;
+      if ((localObject2 != null) && (paramayns != null))
+      {
+        ((View)localObject2).setTag(2131379971, localaynq);
+        ((View)localObject2).setTag(2131379976, localObject1);
+        ((View)localObject2).setTag(2131379972, Integer.valueOf(i));
+        ((View)localObject2).setTag(2131379970, Integer.valueOf(localList.size()));
+        ((View)localObject2).setTag(2131379973, this.a);
+        ayvp.a(localaynq, k, i);
+        int m = localaynq.a();
+        int n = localaynq.b();
+        if ((localaynq instanceof aynv))
+        {
+          j = localaynq.r;
+          label240:
+          ayvp.a(m, n, (View)localObject2, j);
+          localLinearLayout.addView((View)localObject2);
+          this.a.a(localaynq, (aywe)localObject1);
+        }
+      }
       for (;;)
       {
         i += 1;
         break;
-        long l = paramArrayOfLong1[paramInt] + paramArrayOfLong2[i] - paramArrayOfLong[paramInt][i];
-        if (l == 0L)
-        {
-          paramArrayOfBoolean2[i] = true;
-          int j = paramArrayOfInt2[i];
-          if ((j == -1) || (a(j, paramArrayOfLong, paramArrayOfLong1, paramArrayOfLong2, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfBoolean1, paramArrayOfBoolean2, paramArrayOfLong3)))
-          {
-            paramArrayOfInt2[i] = paramInt;
-            paramArrayOfInt1[paramInt] = i;
-            return true;
-          }
+        if (aypf.a(localaynq.e()) != 2) {
+          break label538;
         }
-        else if (l < paramArrayOfLong3[i])
+        localObject2 = LayoutInflater.from(paramaywc.a().getContext()).inflate(2131562611, null);
+        paramayns = ((View)localObject2).findViewById(2131368483);
+        localObject1 = new aywg((View)localObject2);
+        break label137;
+        j = 0;
+        break label240;
+        QLog.e("MostUseResultGroupPresenter", 2, "unresolved id type" + localaynq.e());
+        continue;
+        if ((paramayns instanceof ayms))
         {
-          paramArrayOfLong3[i] = l;
-        }
-      }
-    }
-    return false;
-  }
-  
-  public static int[] a(long[][] paramArrayOfLong, int paramInt1, int paramInt2)
-  {
-    long[] arrayOfLong1 = new long[paramInt1];
-    long[] arrayOfLong2 = new long[paramInt2];
-    long[] arrayOfLong3 = new long[paramInt2];
-    int[] arrayOfInt1 = new int[paramInt1];
-    int[] arrayOfInt2 = new int[paramInt2];
-    Arrays.fill(arrayOfLong1, -9223372036854775808L);
-    Arrays.fill(arrayOfLong2, 0L);
-    int i = 0;
-    int j;
-    while (i < paramInt1)
-    {
-      j = 0;
-      while (j < paramInt2)
-      {
-        if ((paramArrayOfLong[i][j] > 0L) && (paramArrayOfLong[i][j] > arrayOfLong1[i])) {
-          arrayOfLong1[i] = paramArrayOfLong[i][j];
-        }
-        j += 1;
-      }
-      i += 1;
-    }
-    Arrays.fill(arrayOfInt1, -1);
-    Arrays.fill(arrayOfInt2, -1);
-    i = 0;
-    if (i < paramInt1)
-    {
-      boolean[] arrayOfBoolean1 = new boolean[paramInt1];
-      boolean[] arrayOfBoolean2 = new boolean[paramInt2];
-      Arrays.fill(arrayOfLong3, 9223372036854775807L);
-      Arrays.fill(arrayOfBoolean1, false);
-      Arrays.fill(arrayOfBoolean2, false);
-      for (;;)
-      {
-        long l1;
-        if (!a(i, paramArrayOfLong, arrayOfLong1, arrayOfLong2, arrayOfInt1, arrayOfInt2, arrayOfBoolean1, arrayOfBoolean2, arrayOfLong3))
-        {
-          l1 = 9223372036854775807L;
-          j = 0;
-          if (j < paramInt2)
-          {
-            long l2;
-            if (arrayOfBoolean2[j] != 0) {
-              l2 = l1;
-            }
-            for (;;)
-            {
-              j += 1;
-              l1 = l2;
-              break;
-              l2 = l1;
-              if (arrayOfLong3[j] < l1) {
-                l2 = arrayOfLong3[j];
-              }
-            }
-          }
-          if ((l1 != 9223372036854775807L) && (l1 != 0L)) {}
+          paramayns = (ayms)paramayns;
+          localObject1 = new ayxl(localLinearLayout, paramayns.d());
+          localObject2 = ((ayxl)localObject1).a();
+          ((View)localObject2).setTag(2131379971, paramayns);
+          ((View)localObject2).setTag(2131379976, localObject1);
+          ((View)localObject2).setTag(2131379972, Integer.valueOf(i));
+          ((View)localObject2).setTag(2131379970, Integer.valueOf(localList.size()));
+          ((View)localObject2).setTag(2131379973, this.a);
+          ayvp.a(paramayns, k, i);
+          localObject2 = new LinearLayout.LayoutParams(-1, -2);
+          localLinearLayout.addView(((ayxl)localObject1).a(), (ViewGroup.LayoutParams)localObject2);
+          this.a.a(paramayns, (aywe)localObject1);
         }
         else
         {
-          i += 1;
-          break;
+          QLog.e("MostUseResultGroupPresenter", 2, "unknown type in MOST USED GROUP P");
         }
-        j = 0;
-        while (j <= i)
-        {
-          if (arrayOfBoolean1[j] != 0) {
-            arrayOfLong1[j] -= l1;
-          }
-          j += 1;
-        }
-        j = 0;
-        if (j < paramInt2)
-        {
-          if (arrayOfBoolean2[j] != 0) {
-            arrayOfLong2[j] += l1;
-          }
-          for (;;)
-          {
-            j += 1;
-            break;
-            arrayOfLong3[j] -= l1;
-          }
-        }
-        Arrays.fill(arrayOfBoolean1, false);
-        Arrays.fill(arrayOfBoolean2, false);
       }
+      if (paramaywc.b() != null) {
+        paramaywc.b().setVisibility(8);
+      }
+      return;
+      label538:
+      paramayns = null;
+      localObject1 = null;
     }
-    return arrayOfInt1;
   }
 }
 

@@ -1,23 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class agcv
-  extends BroadcastReceiver
+  implements Animation.AnimationListener
 {
-  public agcv(AIOGalleryActivity paramAIOGalleryActivity) {}
+  public agcv(StructingMsgItemBuilder paramStructingMsgItemBuilder, agcx paramagcx) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOGalleryActivity", 2, "receive videochat in aiogallery");
-      }
-      this.a.finish();
-    }
+    this.jdField_a_of_type_Agcx.a.setVisibility(0);
   }
 }
 

@@ -1,19 +1,23 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.forward.ForwardPhotoOption;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodCodec;
 
 public class arww
-  implements aruy
+  extends arwu
 {
-  public arww(ForwardPhotoOption paramForwardPhotoOption) {}
-  
-  public void a()
+  public arww(String paramString, BinaryMessenger paramBinaryMessenger)
   {
-    ForwardPhotoOption.a(this.a).a.setVisibility(0);
+    super(paramString, paramBinaryMessenger);
   }
   
-  public void b()
+  public MethodChannel.MethodCallHandler a()
   {
-    ForwardPhotoOption.a(this.a).a.setVisibility(8);
+    return new arwx(this);
+  }
+  
+  public MethodCodec a()
+  {
+    return arwy.a;
   }
 }
 

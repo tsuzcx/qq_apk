@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
 import android.graphics.drawable.BitmapDrawable;
-import wrd;
+import wvm;
 
 class LocalVideoPushSegment$5$1
   implements Runnable

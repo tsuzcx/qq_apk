@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.transfile;
 
-import bato;
+import baxx;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.mobileqq.highway.config.HwServlet;
 import com.tencent.mobileqq.highway.openup.SessionInfo;
-import wsv;
+import wxe;
 
 public final class StoryUploadProcessor$2
   implements Runnable
@@ -32,7 +32,7 @@ public final class StoryUploadProcessor$2
           {
             QQStoryContext.a();
             HwServlet.getConfig(QQStoryContext.a(), str);
-            wsv.d(bato.a, "pull session key");
+            wxe.d(baxx.a, "pull session key");
           }
           return;
         }

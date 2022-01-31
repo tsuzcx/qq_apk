@@ -1,20 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
-import com.tencent.mobileqq.widget.TabBarView2;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class bbjq
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bbey
 {
-  public bbjq(NewTroopCreateActivity paramNewTroopCreateActivity) {}
+  private bbjq(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(bbfa parambbfa)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
-    paramValueAnimator.topMargin = i;
-    this.a.a.setLayoutParams(paramValueAnimator);
+    this.a.jdField_a_of_type_Bbfa = parambbfa;
+    this.a.jdField_a_of_type_Bbco.b();
+    this.a.e(true);
+    azqs.b(null, "dc00899", "Grp_tribe", "", "pub_page", "choose_prefix", 0, 0, this.a.q, "", "", "");
   }
 }
 

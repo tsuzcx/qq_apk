@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
 import android.os.Bundle;
-import befo;
+import bejx;
 
 public class SwiftWebAccelerator$2
   implements Runnable
 {
-  public SwiftWebAccelerator$2(befo parambefo, Bundle paramBundle) {}
+  public SwiftWebAccelerator$2(bejx parambejx, Bundle paramBundle) {}
   
   public void run()
   {

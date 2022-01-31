@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.newshare.model;
 
 import java.util.concurrent.ConcurrentHashMap;
-import vfy;
-import vga;
+import vkh;
+import vkj;
 
 public class JobExecutor$1
   implements Runnable
 {
-  public JobExecutor$1(vga paramvga, vfy paramvfy, ConcurrentHashMap paramConcurrentHashMap) {}
+  public JobExecutor$1(vkj paramvkj, vkh paramvkh, ConcurrentHashMap paramConcurrentHashMap) {}
   
   public void run()
   {
-    vga.a(this.this$0, this.jdField_a_of_type_Vfy, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+    vkj.a(this.this$0, this.jdField_a_of_type_Vkh, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
 import android.graphics.Rect;
-import argq;
-import aroo;
+import arkz;
+import arsx;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.MessageForTroopFile;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -16,7 +16,7 @@ class TroopFileModel$7$1
   public void run()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForTroopFile))) {
-      aroo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel$7.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel$7.this$0.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForTroopFile)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel$7.a, this.b.selfUin, this.b.lastTime, 3, 3, this.jdField_a_of_type_AndroidGraphicsRect, false, false);
+      arsx.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel$7.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel$7.this$0.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForTroopFile)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel$7.a, this.b.selfUin, this.b.lastTime, 3, 3, this.jdField_a_of_type_AndroidGraphicsRect, false, false);
     }
   }
 }

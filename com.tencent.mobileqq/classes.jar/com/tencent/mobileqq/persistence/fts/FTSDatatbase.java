@@ -2,8 +2,8 @@ package com.tencent.mobileqq.persistence.fts;
 
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import awdf;
-import bdli;
+import awho;
+import bdpr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -26,13 +26,13 @@ public class FTSDatatbase
   public FTSDatatbase(QQAppInterface paramQQAppInterface)
   {
     if ((Build.VERSION.SDK_INT < 18) && (!SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "sqlite_qq"))) {
-      amjf.jdField_a_of_type_Boolean = false;
+      amnu.jdField_a_of_type_Boolean = false;
     }
     for (int i = 0;; i = 1)
     {
       boolean bool = SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "FTSDatabase");
       if (!bool) {
-        amjf.jdField_a_of_type_Boolean = false;
+        amnu.jdField_a_of_type_Boolean = false;
       }
       if ((i != 0) && (bool)) {}
       for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
@@ -161,14 +161,14 @@ public class FTSDatatbase
     }
   }
   
-  public ArrayList<FTSEntity> a(awdf paramawdf)
+  public ArrayList<FTSEntity> a(awho paramawho)
   {
     long l1;
     for (;;)
     {
       try
       {
-        if (TextUtils.isEmpty(paramawdf.jdField_a_of_type_JavaLangString))
+        if (TextUtils.isEmpty(paramawho.jdField_a_of_type_JavaLangString))
         {
           if (!QLog.isColorLevel()) {
             break label333;
@@ -176,7 +176,7 @@ public class FTSDatatbase
           QLog.e("Q.fts.db", 2, "query: sql is null");
           break label333;
         }
-        if (TextUtils.isEmpty(paramawdf.jdField_c_of_type_JavaLangString))
+        if (TextUtils.isEmpty(paramawho.jdField_c_of_type_JavaLangString))
         {
           if (!QLog.isColorLevel()) {
             break label335;
@@ -185,16 +185,16 @@ public class FTSDatatbase
           break label335;
         }
         if (QLog.isColorLevel()) {
-          QLog.i("Q.fts.db", 2, "query: sql = " + paramawdf.jdField_a_of_type_JavaLangString);
+          QLog.i("Q.fts.db", 2, "query: sql = " + paramawho.jdField_a_of_type_JavaLangString);
         }
         l1 = System.nanoTime();
-        paramawdf = queryIndexTable(paramawdf.jdField_a_of_type_JavaLangString, paramawdf.jdField_a_of_type_ArrayOfJavaLangString, paramawdf.jdField_a_of_type_Boolean, paramawdf.jdField_b_of_type_Boolean, paramawdf.jdField_a_of_type_Int, paramawdf.jdField_b_of_type_Int, paramawdf.jdField_b_of_type_JavaLangString, paramawdf.jdField_c_of_type_JavaLangString, paramawdf.jdField_c_of_type_Int);
+        paramawho = queryIndexTable(paramawho.jdField_a_of_type_JavaLangString, paramawho.jdField_a_of_type_ArrayOfJavaLangString, paramawho.jdField_a_of_type_Boolean, paramawho.jdField_b_of_type_Boolean, paramawho.jdField_a_of_type_Int, paramawho.jdField_b_of_type_Int, paramawho.jdField_b_of_type_JavaLangString, paramawho.jdField_c_of_type_JavaLangString, paramawho.jdField_c_of_type_Int);
         l2 = System.nanoTime();
         Object localObject;
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder().append("query: list = ");
-          if (paramawdf == null)
+          if (paramawho == null)
           {
             i = 0;
             QLog.i("Q.fts.db", 2, i + ", cost = " + (l2 - l1) / 1000000L + "ms");
@@ -202,24 +202,24 @@ public class FTSDatatbase
         }
         else
         {
-          if ((paramawdf == null) || (paramawdf.isEmpty())) {
+          if ((paramawho == null) || (paramawho.isEmpty())) {
             break label331;
           }
           l1 = System.nanoTime();
-          localObject = paramawdf.iterator();
+          localObject = paramawho.iterator();
           if (!((Iterator)localObject).hasNext()) {
             break;
           }
           ((FTSEntity)((Iterator)localObject).next()).postRead();
           continue;
         }
-        int i = paramawdf.size();
+        int i = paramawho.size();
       }
-      catch (Exception paramawdf)
+      catch (Exception paramawho)
       {
-        paramawdf.printStackTrace();
+        paramawho.printStackTrace();
         if (QLog.isColorLevel()) {
-          QLog.e("Q.fts.db", 2, "query: failure, ", paramawdf);
+          QLog.e("Q.fts.db", 2, "query: failure, ", paramawho);
         }
         return null;
       }
@@ -228,7 +228,7 @@ public class FTSDatatbase
     if (QLog.isColorLevel()) {
       QLog.i("Q.fts.db", 2, "query: postRead cost = " + (l2 - l1) / 1000000L + "ms");
     }
-    return paramawdf;
+    return paramawho;
     label331:
     return null;
     label333:
@@ -243,7 +243,7 @@ public class FTSDatatbase
     if (QLog.isColorLevel()) {}
     for (int i = 1;; i = 0)
     {
-      int j = bdli.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      int j = bdpr.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       QLog.d("Q.fts.db", 1, Thread.currentThread().getName() + " native initFTS V1");
       if (initFTS(this.jdField_b_of_type_JavaLangString, str, i, j) == 0) {
         break;

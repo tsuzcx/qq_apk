@@ -1,58 +1,50 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.view.Surface;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 
-public abstract class amvb
-  extends Binder
-  implements amva
+public class amvb
 {
-  public amvb()
+  private axvh jdField_a_of_type_Axvh;
+  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = (EGL10)EGLContext.getEGL();
+  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext();
+  private EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentDisplay();
+  private EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentSurface(12377);
+  
+  public amvb(axvg paramaxvg, Surface paramSurface)
   {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+    this.jdField_a_of_type_Axvh = new axvh(paramaxvg);
+    this.jdField_a_of_type_Axvh.a(paramSurface);
   }
   
-  public static amva a(IBinder paramIBinder)
+  public void a()
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof amva))) {
-      return (amva)localIInterface;
-    }
-    return new amvc(paramIBinder);
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
   }
   
-  public IBinder asBinder()
+  public void a(long paramLong)
   {
-    return this;
+    this.jdField_a_of_type_Axvh.a(paramLong);
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void b()
   {
-    switch (paramInt1)
+    this.jdField_a_of_type_Axvh.b();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Axvh.a();
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Axvh != null)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      a(paramParcel1.readInt(), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
+      this.jdField_a_of_type_Axvh.a();
+      this.jdField_a_of_type_Axvh = null;
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-    b(paramParcel1.readInt(), paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
   }
 }
 

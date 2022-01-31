@@ -1,16 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class aftk
-  implements View.OnClickListener
+  extends afuf
 {
-  aftk(aftj paramaftj) {}
-  
-  public void onClick(View paramView)
+  aftk(afpy paramafpy)
   {
-    paramView = this.a.a(paramView);
-    this.a.a.b(paramView);
-    this.a.a.d();
+    super(paramafpy, null);
+  }
+  
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afkj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

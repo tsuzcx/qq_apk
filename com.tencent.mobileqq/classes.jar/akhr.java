@@ -1,14 +1,7 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class akhr
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  
-  protected akhr(akhq paramakhq) {}
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private boolean jdField_a_of_type_Boolean;
 }
 
 

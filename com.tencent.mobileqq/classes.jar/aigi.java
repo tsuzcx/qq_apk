@@ -1,27 +1,15 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aigi
-  implements Animator.AnimatorListener
+class aigi
+  implements View.OnClickListener
 {
-  public aigi(AvatarPendantActivity paramAvatarPendantActivity) {}
+  aigi(aigf paramaigf) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.e = AvatarPendantActivity.c;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.e = AvatarPendantActivity.a;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.e = AvatarPendantActivity.d;
+    this.a.a = null;
+    this.a.dismiss();
   }
 }
 

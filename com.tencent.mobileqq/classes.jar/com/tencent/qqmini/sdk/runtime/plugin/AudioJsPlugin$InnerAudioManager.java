@@ -1,23 +1,23 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
 import android.text.TextUtils;
-import bgkk;
-import bgkz;
-import bhge;
-import bhgg;
+import bgor;
+import bgpg;
+import bhkl;
+import bhkn;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 class AudioJsPlugin$InnerAudioManager
-  implements bhgg
+  implements bhkn
 {
   private JSONObject audioContext = new JSONObject();
   public int audioId;
   private volatile boolean isStart;
   private long lastStartTime;
-  private bhge mPlayer;
+  private bhkl mPlayer;
   private String src = "";
   private int startTime;
   
@@ -30,8 +30,8 @@ class AudioJsPlugin$InnerAudioManager
   
   private void evaluateAudioState(String paramString)
   {
-    paramString = bgkz.a(null, "state", paramString);
-    bgkz.a(paramString, "audioId", Integer.valueOf(this.audioId));
+    paramString = bgpg.a(null, "state", paramString);
+    bgpg.a(paramString, "audioId", Integer.valueOf(this.audioId));
     AudioJsPlugin.access$2300(this.this$0, "onAudioStateChange", paramString.toString());
   }
   
@@ -94,7 +94,7 @@ class AudioJsPlugin$InnerAudioManager
   {
     long l = System.currentTimeMillis() - this.lastStartTime;
     if (l < 50L) {
-      bgkk.a(new AudioJsPlugin.InnerAudioManager.2(this), 50L - l);
+      bgor.a(new AudioJsPlugin.InnerAudioManager.2(this), 50L - l);
     }
     while ((this.mPlayer == null) || (!this.mPlayer.a())) {
       return;
@@ -107,11 +107,11 @@ class AudioJsPlugin$InnerAudioManager
     boolean bool = true;
     if ((this.mPlayer != null) && ((this.mPlayer.b()) || (this.mPlayer.c())))
     {
-      bhge localbhge = this.mPlayer;
+      bhkl localbhkl = this.mPlayer;
       if (!AudioJsPlugin.access$2200()) {}
       for (;;)
       {
-        localbhge.a(bool);
+        localbhkl.a(bool);
         this.mPlayer.d();
         return;
         bool = false;
@@ -139,7 +139,7 @@ class AudioJsPlugin$InnerAudioManager
       return;
     }
     if (this.mPlayer == null) {
-      this.mPlayer = new bhge(ThreadManager.a());
+      this.mPlayer = new bhkl(ThreadManager.a());
     }
     if ((this.mPlayer.a()) && (this.src.equals(str)) && (this.startTime == i))
     {
@@ -169,7 +169,7 @@ class AudioJsPlugin$InnerAudioManager
   {
     long l = System.currentTimeMillis() - this.lastStartTime;
     if (l < 100L) {
-      bgkk.a(new AudioJsPlugin.InnerAudioManager.3(this, paramInt), 100L - l);
+      bgor.a(new AudioJsPlugin.InnerAudioManager.3(this, paramInt), 100L - l);
     }
     while (this.mPlayer == null) {
       return;

@@ -1,25 +1,25 @@
 package dov.com.qq.im.ae.play;
 
 import android.graphics.Bitmap;
-import bldr;
-import bldv;
+import blhy;
+import blic;
 
 public final class FaceChangeUtils$5
   implements Runnable
 {
-  public FaceChangeUtils$5(Bitmap paramBitmap, bldv parambldv) {}
+  public FaceChangeUtils$5(Bitmap paramBitmap, blic paramblic) {}
   
   public void run()
   {
     try
     {
-      bldr.b(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Bldv);
+      blhy.b(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Blic);
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      this.jdField_a_of_type_Bldv.a(-1);
+      this.jdField_a_of_type_Blic.a(-1);
     }
   }
 }

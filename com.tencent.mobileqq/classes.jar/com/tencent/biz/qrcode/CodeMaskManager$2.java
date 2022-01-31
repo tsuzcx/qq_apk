@@ -1,12 +1,12 @@
 package com.tencent.biz.qrcode;
 
 import java.util.concurrent.atomic.AtomicBoolean;
-import xtu;
+import xyd;
 
 class CodeMaskManager$2
   implements Runnable
 {
-  CodeMaskManager$2(CodeMaskManager paramCodeMaskManager, CodeMaskManager.PrepareBundleTask paramPrepareBundleTask, xtu paramxtu) {}
+  CodeMaskManager$2(CodeMaskManager paramCodeMaskManager, CodeMaskManager.PrepareBundleTask paramPrepareBundleTask, xyd paramxyd) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ class CodeMaskManager$2
     while (!this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$PrepareBundleTask.a.compareAndSet(false, true)) {
       return;
     }
-    this.jdField_a_of_type_Xtu.a(CodeMaskManager.a(this.this$0));
+    this.jdField_a_of_type_Xyd.a(CodeMaskManager.a(this.this$0));
     CodeMaskManager.a(this.this$0);
   }
 }

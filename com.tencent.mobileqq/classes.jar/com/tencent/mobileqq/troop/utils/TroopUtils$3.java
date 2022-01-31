@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bctc;
+import bcxl;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public final class TroopUtils$3
   implements Runnable
 {
-  public TroopUtils$3(bctc parambctc, TroopInfoData paramTroopInfoData) {}
+  public TroopUtils$3(bcxl parambcxl, TroopInfoData paramTroopInfoData) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bctc != null) {
-      this.jdField_a_of_type_Bctc.a(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
+    if (this.jdField_a_of_type_Bcxl != null) {
+      this.jdField_a_of_type_Bcxl.a(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
     }
   }
 }

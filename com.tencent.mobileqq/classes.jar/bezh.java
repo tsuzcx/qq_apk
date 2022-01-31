@@ -1,18 +1,121 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.open.agent.CardContainer;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import com.tencent.mobileqq.widget.share.Validator.1;
+import java.util.Iterator;
+import java.util.List;
 
 public class bezh
-  extends AnimatorListenerAdapter
 {
-  public bezh(CardContainer paramCardContainer, ImageView paramImageView) {}
+  private ShareActionSheetV2 jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2;
+  private boolean jdField_a_of_type_Boolean = false;
   
-  public void onAnimationStart(Animator paramAnimator)
+  public bezh(ShareActionSheetV2 paramShareActionSheetV2)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentCardContainer.setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2 = paramShareActionSheetV2;
+  }
+  
+  private void a(String paramString)
+  {
+    new Handler(Looper.getMainLooper()).post(new Validator.1(this, paramString));
+  }
+  
+  private boolean b()
+  {
+    List[] arrayOfList = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a();
+    int i = 0;
+    while (i < arrayOfList.length)
+    {
+      Iterator localIterator = arrayOfList[i].iterator();
+      while (localIterator.hasNext()) {
+        if (!((ShareActionSheetBuilder.ActionSheetItem)localIterator.next()).isValidCreate()) {
+          return false;
+        }
+      }
+      i += 1;
+    }
+    return true;
+  }
+  
+  private boolean c()
+  {
+    List[] arrayOfList = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a();
+    int i = 0;
+    while (i < arrayOfList.length)
+    {
+      Iterator localIterator = arrayOfList[i].iterator();
+      while (localIterator.hasNext()) {
+        if (!((ShareActionSheetBuilder.ActionSheetItem)localIterator.next()).isValidLabel()) {
+          return false;
+        }
+      }
+      i += 1;
+    }
+    return true;
+  }
+  
+  private boolean d()
+  {
+    List[] arrayOfList = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a();
+    int i = 0;
+    while (i < arrayOfList.length)
+    {
+      Iterator localIterator = arrayOfList[i].iterator();
+      while (localIterator.hasNext()) {
+        if (!((ShareActionSheetBuilder.ActionSheetItem)localIterator.next()).isValidIcon()) {
+          return false;
+        }
+      }
+      i += 1;
+    }
+    return true;
+  }
+  
+  private boolean e()
+  {
+    Context localContext = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a;
+    if ((localContext instanceof Activity)) {
+      return !TextUtils.isEmpty(((Activity)localContext).getIntent().getStringExtra("big_brother_source_key"));
+    }
+    return false;
+  }
+  
+  public boolean a()
+  {
+    boolean bool1 = true;
+    boolean bool2 = false;
+    if (!this.jdField_a_of_type_Boolean) {
+      return true;
+    }
+    if (!e())
+    {
+      a("share component no biz id");
+      bool1 = false;
+    }
+    if (!d())
+    {
+      a("share component icon invalid");
+      bool1 = false;
+    }
+    if (!c())
+    {
+      a("share component label invalid");
+      bool1 = false;
+    }
+    if (!b())
+    {
+      a("share component item invalid");
+      bool1 = bool2;
+    }
+    for (;;)
+    {
+      return bool1;
+    }
   }
 }
 

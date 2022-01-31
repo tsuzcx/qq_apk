@@ -1,128 +1,71 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.TopCardInfo;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment.1.1;
-import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONObject;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.freshnews.BlockableEditTextView;
 
 public class ashx
-  extends bdqc
+  implements TextWatcher
 {
-  public ashx(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  public int a;
+  public CharSequence a;
+  public boolean a;
+  int b = -1;
+  int c = -1;
   
-  protected void onGetGameCenterPubAccountFeeds(boolean paramBoolean, Object paramObject)
+  public ashx(BlockableEditTextView paramBlockableEditTextView)
   {
-    super.onGetGameCenterPubAccountFeeds(paramBoolean, paramObject);
-    Object localObject2;
-    long l;
-    Object localObject1;
-    String str1;
-    if ((paramBoolean) && (paramObject != null))
-    {
-      localObject2 = (Object[])paramObject;
-      l = ((Long)localObject2[0]).longValue();
-      localObject1 = (String)localObject2[5];
-      str1 = (String)localObject2[6];
-      paramBoolean = ((Boolean)localObject2[1]).booleanValue();
-      paramObject = (List)localObject2[2];
-      JSONObject localJSONObject = (JSONObject)localObject2[3];
-      if (localJSONObject != null)
-      {
-        asjb.a = localJSONObject.optInt("video_count");
-        asjb.b = localJSONObject.optInt("video_time") * 1000;
-        asjb.c = localJSONObject.optInt("layer_duration") * 1000;
-        SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("game_center_sp", 0);
-        String str2 = "sp_key_game_center_feeds_float_condition" + QQGamePubAccountFragment.a(this.a).getCurrentAccountUin();
-        localSharedPreferences.edit().putString(str2, localJSONObject.toString()).commit();
-      }
-      localObject2 = (FeedsItemData.TopCardInfo)localObject2[4];
-      if (paramBoolean) {
-        if (paramObject.size() == 0)
-        {
-          aact.a(akro.a(), "769", "205353", str1, "76901", "1", "160", new String[] { localObject1, "", "20" });
-          QQGamePubAccountFragment.a(this.a).a(false, false);
-        }
-      }
-    }
-    for (;;)
-    {
-      QQGamePubAccountFragment.a(this.a, false);
-      return;
-      localObject1 = (List)QQGamePubAccountFragment.a(this.a).get(Long.valueOf(l));
-      if ((localObject1 != null) && (((List)localObject1).size() > 0))
-      {
-        ((List)localObject1).addAll(paramObject);
-        QQGamePubAccountFragment.a(this.a).put(Long.valueOf(l), localObject1);
-      }
-      for (;;)
-      {
-        i = this.a.a.getCurrentItem();
-        if ((QQGamePubAccountFragment.a(this.a) == null) || (i >= QQGamePubAccountFragment.a(this.a).size()) || (((MessageRecord)QQGamePubAccountFragment.a(this.a).get(i)).uniseq != l)) {
-          break;
-        }
-        QQGamePubAccountFragment.a(this.a).c();
-        QQGamePubAccountFragment.a(this.a).a(paramObject);
-        break;
-        QQGamePubAccountFragment.a(this.a).put(Long.valueOf(l), paramObject);
-      }
-      QQGamePubAccountFragment.b(this.a).put(Long.valueOf(l), localObject2);
-      int i = this.a.a.getCurrentItem();
-      if (paramObject.size() == 0) {
-        if (localObject2 == null)
-        {
-          this.a.a(true);
-          label495:
-          QQGamePubAccountFragment.a(this.a).a(false, false);
-          QQGamePubAccountFragment.c(this.a).put(Long.valueOf(l), asjc.b);
-          aact.a(akro.a(), "769", "205353", str1, "76901", "1", "160", new String[] { localObject1, "", "20" });
-        }
-      }
-      for (;;)
-      {
-        QQGamePubAccountFragment.a(this.a).put(Long.valueOf(l), paramObject);
-        if ((QQGamePubAccountFragment.a(this.a) == null) || (i >= QQGamePubAccountFragment.a(this.a).size()) || (((MessageRecord)QQGamePubAccountFragment.a(this.a).get(i)).uniseq != l)) {
-          break;
-        }
-        QQGamePubAccountFragment.a(this.a).a(paramObject, (FeedsItemData.TopCardInfo)localObject2);
-        ThreadManagerV2.getUIHandlerV2().post(new QQGamePubAccountFragment.1.1(this, (FeedsItemData.TopCardInfo)localObject2));
-        break;
-        this.a.a(false);
-        break label495;
-        QQGamePubAccountFragment.c(this.a).put(Long.valueOf(l), asjc.a);
-        QQGamePubAccountFragment.a(this.a).a(false, false);
-      }
-      if (paramObject != null)
-      {
-        localObject1 = (Object[])paramObject;
-        l = ((Long)localObject1[0]).longValue();
-        paramObject = (String)localObject1[5];
-        localObject1 = (String)localObject1[6];
-        aact.a(akro.a(), "769", "205353", (String)localObject1, "76901", "1", "160", new String[] { paramObject, "", "20" });
-        QLog.e("QQGamePubAccountFragment", 1, "[onGetGameCenterPubAccountFeeds] get feeds fail.");
-        i = this.a.a.getCurrentItem();
-        if ((i < QQGamePubAccountFragment.a(this.a).size()) && (((MessageRecord)QQGamePubAccountFragment.a(this.a).get(i)).uniseq == l))
-        {
-          QQGamePubAccountFragment.a(this.a).a(false, false);
-          QQGamePubAccountFragment.c(this.a).put(Long.valueOf(l), asjc.b);
-          this.a.a(false);
-        }
-      }
-      if (this.a.getActivity() != null) {
-        QQToast.a(this.a.getActivity(), alpo.a(2131710683), 0).a();
-      }
-    }
+    this.jdField_a_of_type_JavaLangCharSequence = "";
   }
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int == 0)) {}
+    while (this.jdField_a_of_type_Int >= 0) {
+      return;
+    }
+    if (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 2)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(TextUtils.concat(new CharSequence[] { this.jdField_a_of_type_JavaLangCharSequence.subSequence(this.c, this.jdField_a_of_type_JavaLangCharSequence.length()), this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, this.b) }));
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setSelection(this.b);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((this.jdField_a_of_type_Boolean) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0)) {}
+    do
+    {
+      Editable localEditable;
+      ashy[] arrayOfashy;
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            this.jdField_a_of_type_Int = 0;
+          } while (paramInt3 == paramInt2);
+          localEditable = this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getEditableText();
+        } while (localEditable == null);
+        arrayOfashy = (ashy[])localEditable.getSpans(paramInt1, paramInt1, ashy.class);
+      } while ((arrayOfashy == null) || (arrayOfashy.length <= 0));
+      this.b = localEditable.getSpanStart(arrayOfashy[0]);
+      this.c = localEditable.getSpanEnd(arrayOfashy[0]);
+    } while ((this.c < 0) || (this.c < this.b) || (paramInt2 <= paramInt3) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0) || (paramInt1 == this.b) || (paramInt1 == this.c));
+    this.jdField_a_of_type_JavaLangCharSequence = new SpannableStringBuilder(paramCharSequence).subSequence(0, paramCharSequence.length());
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

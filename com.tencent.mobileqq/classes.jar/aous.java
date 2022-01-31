@@ -1,41 +1,71 @@
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aous
+  extends aouf<aour>
 {
-  private int a;
-  
-  public static aous a(aogf paramaogf)
+  public static aour c()
   {
-    localaous = new aous();
-    if (paramaogf != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SuspiciousTroopConfBean", 2, "parse taskid->" + paramaogf.jdField_a_of_type_Int + " content->" + paramaogf.jdField_a_of_type_JavaLangString);
-      }
-      try
-      {
-        if (paramaogf.jdField_a_of_type_JavaLangString == null) {}
-        for (paramaogf = "";; paramaogf = paramaogf.jdField_a_of_type_JavaLangString)
-        {
-          localaous.jdField_a_of_type_Int = new JSONObject(paramaogf).optInt("suspiciousSwitch", 0);
-          return localaous;
-        }
-        return localaous;
-      }
-      catch (JSONException paramaogf)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SuspiciousTroopConfBean", 2, "parse error->" + paramaogf.toString());
-        }
-      }
+    aour localaour2 = (aour)aoks.a().a(498);
+    aour localaour1 = localaour2;
+    if (localaour2 == null) {
+      localaour1 = new aour();
     }
+    return localaour1;
   }
   
-  public boolean a()
+  public int a()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return 498;
+  }
+  
+  @NonNull
+  public aour a()
+  {
+    return new aour();
+  }
+  
+  @NonNull
+  public aour a(@NonNull aoko[] paramArrayOfaoko)
+  {
+    aour localaour = new aour();
+    paramArrayOfaoko = paramArrayOfaoko[0].jdField_a_of_type_JavaLangString;
+    if (TextUtils.isEmpty(paramArrayOfaoko)) {}
+    for (;;)
+    {
+      return localaour;
+      try
+      {
+        paramArrayOfaoko = new JSONObject(paramArrayOfaoko);
+        localaour.jdField_a_of_type_Int = paramArrayOfaoko.optInt("stage");
+        localaour.jdField_a_of_type_JavaLangString = paramArrayOfaoko.optString("pay_url");
+        if (QLog.isColorLevel())
+        {
+          QLog.d("vip_ptt.ConfigProcessor", 1, "json parse config.stage:" + localaour.jdField_a_of_type_Int + " url=" + localaour.jdField_a_of_type_JavaLangString);
+          return localaour;
+        }
+      }
+      catch (JSONException paramArrayOfaoko)
+      {
+        QLog.e("vip_ptt.ConfigProcessor", 1, "json parse error:" + paramArrayOfaoko);
+        localaour.b = paramArrayOfaoko.toString();
+      }
+    }
+    return localaour;
+  }
+  
+  public Class<aour> a()
+  {
+    return aour.class;
+  }
+  
+  @NonNull
+  public aour b()
+  {
+    return new aour();
   }
 }
 

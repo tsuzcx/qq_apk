@@ -1,23 +1,46 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.cs.group_file_common.group_file_common.FolderInfo;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.CreateFolderRspBody;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
 
-class ytw
-  implements Animator.AnimatorListener
+public abstract class ytw
+  extends nac
 {
-  ytw(ytv paramytv) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (ytv.a(this.a) != null) {
-      ytv.a(this.a).a();
+    if (paramInt != 0)
+    {
+      a(false, paramInt, null);
+      return;
     }
+    paramBundle = new oidb_0x6d7.RspBody();
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d7.CreateFolderRspBody)paramBundle.create_folder_rsp.get();
+      if (!paramArrayOfByte.int32_ret_code.has()) {
+        break label104;
+      }
+      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      {
+        a(true, 0, new bbsa((group_file_common.FolderInfo)paramArrayOfByte.folder_info.get()));
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null);
+      return;
+    }
+    a(false, paramArrayOfByte.int32_ret_code.get(), null);
+    return;
+    label104:
+    a(false, -1, null);
   }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  protected abstract void a(boolean paramBoolean, int paramInt, bbsa parambbsa);
 }
 
 

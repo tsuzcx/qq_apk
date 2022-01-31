@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alpo;
-import bhpy;
+import alud;
+import bhuf;
 
 class ContactJsPlugin$2
   implements Runnable
@@ -10,11 +10,11 @@ class ContactJsPlugin$2
   
   public void run()
   {
-    bhpy localbhpy = bhpy.a(this.this$0.jsPluginEngine.getActivityContext());
-    localbhpy.a(alpo.a(2131702858), 7);
-    localbhpy.a(alpo.a(2131702854), 7);
-    localbhpy.a(new ContactJsPlugin.2.1(this, localbhpy));
-    localbhpy.show();
+    bhuf localbhuf = bhuf.a(this.this$0.jsPluginEngine.getActivityContext());
+    localbhuf.a(alud.a(2131702870), 7);
+    localbhuf.a(alud.a(2131702866), 7);
+    localbhuf.a(new ContactJsPlugin.2.1(this, localbhuf));
+    localbhuf.show();
   }
 }
 

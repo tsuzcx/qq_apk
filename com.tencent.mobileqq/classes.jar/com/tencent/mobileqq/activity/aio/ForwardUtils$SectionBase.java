@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aeno;
+import aesd;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ForwardUtils$SectionBase
   implements Parcelable
 {
-  public static final Parcelable.Creator<SectionBase> CREATOR = new aeno();
+  public static final Parcelable.Creator<SectionBase> CREATOR = new aesd();
   public int a;
   
   protected ForwardUtils$SectionBase() {}

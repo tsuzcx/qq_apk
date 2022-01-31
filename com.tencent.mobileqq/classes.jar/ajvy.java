@@ -1,22 +1,67 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.widget.Scroller;
 
-public class ajvy
-  implements DialogInterface.OnClickListener
+class ajvy
+  implements GestureDetector.OnGestureListener
 {
-  public ajvy(SelectMemberActivity paramSelectMemberActivity, ArrayList paramArrayList) {}
+  ajvy(ajvx paramajvx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
-    ((alzf)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.a(20)).b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c, this.jdField_a_of_type_JavaUtilArrayList, "");
-    SelectMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.show();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d("Clk_invite");
+    ajvx.a(this.a).forceFinished(true);
+    return true;
+  }
+  
+  public boolean onFling(MotionEvent arg1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    synchronized (this.a)
+    {
+      ajvx.a(this.a).fling((int)ajvx.a(this.a), 0, (int)-paramFloat1, 0, (int)ajvx.b(this.a), (int)ajvx.c(this.a), 0, 0);
+      ajvx.b(this.a);
+      return true;
+    }
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent arg1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    do
+    {
+      synchronized (this.a)
+      {
+        ajvx.a(this.a, ajvx.a(this.a) + paramFloat1);
+        if (ajvx.a(this.a) < ajvx.b(this.a)) {
+          ajvx.a(this.a, ajvx.b(this.a));
+        }
+        if (ajvx.a(this.a) > ajvx.c(this.a)) {
+          ajvx.a(this.a, ajvx.c(this.a));
+        }
+        paramFloat1 = ajvx.a(this.a);
+        paramFloat2 = ajvx.d(this.a);
+        ajvx.b(this.a, ajvx.a(this.a));
+        if (ajvx.a(this.a, paramFloat1 - paramFloat2, 0.0F)) {
+          return true;
+        }
+      }
+      ajvx.a(this.a);
+      if (ajvx.a(this.a) != null) {
+        ajvx.a(this.a).a(ajvx.a(this.a), ajvx.b(this.a));
+      }
+      if (ajvx.a(this.a) != null) {
+        ajvx.a(this.a).invalidate();
+      }
+    } while (ajvx.a(this.a) == null);
+    ajvx.a(this.a).a(ajvx.a(this.a), -ajvx.a(this.a), ajvx.e(this.a) - ajvx.a(this.a));
+    return true;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

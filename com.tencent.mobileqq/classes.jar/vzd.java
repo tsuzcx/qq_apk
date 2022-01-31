@@ -1,135 +1,257 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.os.Looper;
-import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import com.tribe.async.reactive.Stream;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.v4.util.Pools.Pool;
+import android.support.v4.util.Pools.SimplePool;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.Map;
 
-class vzd
-  extends Drawable.ConstantState
+public class vzd
+  extends AbsVideoInfoWidget
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  @NonNull
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  @NonNull
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Error jdField_a_of_type_JavaLangError;
-  @NonNull
-  public final String a;
-  private final CopyOnWriteArraySet<vzg> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  @NonNull
-  private vzh<Bitmap> jdField_a_of_type_Vzh;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private String b = "story.icon.ShareGroupDrawableState";
+  public static SparseArray<Pools.Pool<vzg>> a;
+  private vzf a;
+  public vzg a;
+  public vzh a;
+  private int b;
   
-  public vzd(String paramString, Context paramContext, Drawable paramDrawable)
+  public vzd(ViewGroup paramViewGroup)
   {
-    if ((paramString == null) || (paramContext == null) || (paramDrawable == null)) {
-      throw new IllegalArgumentException("params should not be null");
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.b = (this.b + "[" + System.identityHashCode(this) + "]");
+    super(paramViewGroup);
   }
   
-  private void a(boolean paramBoolean)
+  private int a(StoryVideoItem paramStoryVideoItem)
   {
-    if (Looper.getMainLooper() == Looper.myLooper())
+    int k = 0;
+    uxp localuxp = paramStoryVideoItem.getOALinkInfo();
+    int i;
+    if ((localuxp != null) && (localuxp.jdField_a_of_type_Int > 0))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-      while (localIterator.hasNext())
+      i = paramStoryVideoItem.getOALinkInfo().jdField_a_of_type_Int;
+      paramStoryVideoItem = null;
+    }
+    for (;;)
+    {
+      switch (i)
       {
-        vzg localvzg = (vzg)localIterator.next();
-        if (vzg.a(localvzg))
+      }
+      label60:
+      do
+      {
+        int j = i;
+        do
         {
-          if (paramBoolean) {
-            localvzg.a(this);
-          } else {
-            localvzg.b(this);
-          }
+          do
+          {
+            return j;
+            paramStoryVideoItem = paramStoryVideoItem.getVideoLinkInfo();
+            if (paramStoryVideoItem == null) {
+              break label118;
+            }
+            i = paramStoryVideoItem.jdField_a_of_type_Int;
+            break;
+            if (azki.p()) {
+              break label60;
+            }
+            return 0;
+            j = k;
+          } while (paramStoryVideoItem == null);
+          j = k;
+        } while (paramStoryVideoItem.jdField_a_of_type_Uxq == null);
+      } while (!paramStoryVideoItem.jdField_a_of_type_Uxq.a());
+      return 0;
+      label118:
+      i = 0;
+    }
+  }
+  
+  private vzg a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Vzg != null) && (this.jdField_b_of_type_Int == paramInt)) {
+      return this.jdField_a_of_type_Vzg;
+    }
+    if (jdField_a_of_type_AndroidUtilSparseArray == null) {
+      jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    }
+    Pools.Pool localPool = (Pools.Pool)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = localPool;
+    if (localPool == null)
+    {
+      localObject = new Pools.SimplePool(5);
+      jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject);
+    }
+    localObject = (vzg)((Pools.Pool)localObject).acquire();
+    if (localObject == null) {
+      localObject = b(paramInt);
+    }
+    for (;;)
+    {
+      if (localObject != null) {
+        ((vzg)localObject).b = true;
+      }
+      localPool = (Pools.Pool)jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_b_of_type_Int);
+      if ((localPool != null) && (this.jdField_a_of_type_Vzg != null))
+      {
+        localPool.release(this.jdField_a_of_type_Vzg);
+        this.jdField_a_of_type_Vzg.b = false;
+      }
+      this.jdField_a_of_type_Vzg = ((vzg)localObject);
+      return localObject;
+    }
+  }
+  
+  public static void a(String paramString, @NonNull ImageView paramImageView, Drawable paramDrawable, int paramInt1, int paramInt2)
+  {
+    try
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = paramDrawable;
+      localURLDrawableOptions.mFailedDrawable = paramDrawable;
+      localURLDrawableOptions.mPlayGifImage = false;
+      localURLDrawableOptions.mGifRoundCorner = 0.0F;
+      localURLDrawableOptions.mRequestWidth = paramInt1;
+      localURLDrawableOptions.mRequestHeight = paramInt2;
+      localURLDrawableOptions.mMemoryCacheKeySuffix = "link";
+      Object localObject = null;
+      if (ndd.a(paramString))
+      {
+        paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+        paramString.startDownload();
+        paramImageView.setImageDrawable(paramString);
+      }
+      while (paramString != null) {
+        if (paramString.getStatus() == 1)
+        {
+          return;
+          wxe.d("BannerVideoInfoWidget", "invalid url, failed to parse the url drawable " + paramString);
+          paramImageView.setImageDrawable(paramDrawable);
+          paramString = localObject;
         }
         else
         {
-          vzb.a(this.b, "remove invalid callback %s", this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet);
-          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localvzg);
+          paramString.setURLDrawableListener(new vze(paramImageView, paramDrawable));
         }
       }
     }
-    throw new IllegalStateException("notifyCallBack should be at Main-Thread");
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true)) || (paramBoolean))
+    catch (IllegalArgumentException paramString)
     {
-      vzb.a(this.b, "startLoad");
-      this.jdField_a_of_type_Vzh.a(this).subscribe(new vze(this));
-    }
-    while ((this.jdField_a_of_type_JavaLangError == null) || (Math.abs(this.jdField_a_of_type_Long - SystemClock.uptimeMillis()) <= 10000L)) {
+      wxe.b("BannerVideoInfoWidget", "set image fail , %s", paramString);
+      paramImageView.setImageDrawable(paramDrawable);
       return;
     }
-    vzb.b(this.b, "load again, oldError=%s", this.jdField_a_of_type_JavaLangError);
-    this.jdField_a_of_type_JavaLangError = null;
-    b(true);
   }
   
-  Bitmap a()
+  private vzg b(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public Drawable a()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      return new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap);
+    switch (paramInt)
+    {
+    case 4: 
+    default: 
+      return null;
+    case 1: 
+      return new wav();
+    case 2: 
+      return new wat();
+    case 3: 
+      return new wad();
+    case 5: 
+      return new wce();
+    case 6: 
+      return new wcg();
     }
-    return null;
+    return new wab();
   }
   
-  Error a()
+  public String a()
   {
-    return this.jdField_a_of_type_JavaLangError;
+    return "BannerVideoInfoWidget";
   }
   
-  public void a()
+  public void a(View paramView)
   {
-    vzb.b(this.b, "recycle");
-    this.jdField_a_of_type_Boolean = true;
+    if (jdField_a_of_type_AndroidUtilSparseArray == null) {
+      jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    }
   }
   
-  public void a(vzf paramvzf)
+  public void a(Map<Subscriber, String> paramMap)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new vzg(paramvzf));
+    this.jdField_a_of_type_Vzf = new vzf(this);
+    a(this.jdField_a_of_type_Vzf);
   }
   
-  void a(@NonNull vzh<Bitmap> paramvzh)
+  public void a(@NonNull vtt paramvtt, @NonNull StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_Vzh = paramvzh;
+    wxe.a(this.jdField_b_of_type_JavaLangString, "BannerVideoInfoWidget3 doOnBindUIWhileVideoInfoReady, dataVid:%s, videoItemVid:%s", paramvtt.jdField_a_of_type_JavaLangString, paramStoryVideoItem.mVid);
+    if (this.jdField_a_of_type_Vzh == null)
+    {
+      this.jdField_a_of_type_Vzh = new vzh(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    }
+    int i = a(paramStoryVideoItem);
+    paramStoryVideoItem = a(i);
+    if (paramStoryVideoItem != null) {
+      paramStoryVideoItem.a(this, i, paramvtt);
+    }
   }
   
-  public void b()
+  public boolean a(vtt paramvtt, StoryVideoItem paramStoryVideoItem)
   {
-    b(false);
+    if ((a().mUIStyle.hideBannerInfo) || ((paramvtt.jdField_a_of_type_Uyg != null) && (paramvtt.jdField_a_of_type_Uyg.jdField_a_of_type_Int == 13))) {}
+    while (a(paramStoryVideoItem) <= 0) {
+      return false;
+    }
+    return true;
   }
   
-  public int getChangingConfigurations()
+  public int b()
   {
-    return 0;
+    return 2131561613;
   }
   
-  @NonNull
-  public Drawable newDrawable()
+  public void f() {}
+  
+  public void g()
   {
-    return new vzi(this, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if ((jdField_a_of_type_AndroidUtilSparseArray != null) && (jdField_a_of_type_AndroidUtilSparseArray.size() > 0))
+    {
+      int i = 0;
+      while (i < jdField_a_of_type_AndroidUtilSparseArray.size())
+      {
+        Pools.Pool localPool = (Pools.Pool)jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+        for (;;)
+        {
+          vzg localvzg = (vzg)localPool.acquire();
+          if (localvzg == null) {
+            break;
+          }
+          localvzg.a();
+        }
+        i += 1;
+      }
+      jdField_a_of_type_AndroidUtilSparseArray.clear();
+    }
+    if (this.jdField_a_of_type_Vzf != null) {
+      b(this.jdField_a_of_type_Vzf);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Vzg != null) {
+      this.jdField_a_of_type_Vzg.a(paramView);
+    }
   }
 }
 

@@ -1,12 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardShortVideoOption;
 
-class asef
-  implements MiniAppLauncher.MiniAppLaunchListener
+public class asef
+  implements View.OnClickListener
 {
-  asef(asee paramasee) {}
+  public asef(ForwardShortVideoOption paramForwardShortVideoOption) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle) {}
+  public void onClick(View paramView)
+  {
+    if (this.a.a != null) {
+      ForwardShortVideoOption.a(this.a);
+    }
+  }
 }
 
 

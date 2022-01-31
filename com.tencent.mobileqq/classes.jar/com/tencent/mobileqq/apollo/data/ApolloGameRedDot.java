@@ -2,11 +2,11 @@ package com.tencent.mobileqq.apollo.data;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import awbv;
+import awge;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloGameRedDot
-  extends awbv
+  extends awge
   implements Comparable<ApolloGameRedDot>
 {
   public static final int REDDOT_ID_GAME_ACTIVITY = 1001;

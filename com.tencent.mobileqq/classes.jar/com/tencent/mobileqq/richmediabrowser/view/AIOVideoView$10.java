@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import axwf;
+import ayao;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 public class AIOVideoView$10
   implements Runnable
 {
-  public AIOVideoView$10(axwf paramaxwf, ArrayList paramArrayList) {}
+  public AIOVideoView$10(ayao paramayao, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -18,9 +18,9 @@ public class AIOVideoView$10
     while (localIterator.hasNext())
     {
       ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = (ShareActionSheetBuilder.ActionSheetItem)localIterator.next();
-      axwf.a(this.this$0).add(axwf.a(this.this$0).size() - 1, localActionSheetItem);
+      ayao.a(this.this$0).add(ayao.a(this.this$0).size() - 1, localActionSheetItem);
     }
-    this.this$0.a.setActionSheetItems(axwf.b(this.this$0), axwf.a(this.this$0));
+    this.this$0.a.setActionSheetItems(ayao.b(this.this$0), ayao.a(this.this$0));
     if (this.this$0.a.isShowing())
     {
       if (QLog.isColorLevel()) {

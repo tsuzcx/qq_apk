@@ -1,22 +1,42 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class acdb
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public acdb(BaseChatPie paramBaseChatPie) {}
+  public acdb(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    this.a.jdField_a_of_type_Agwa.a();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
-    paramView.putInt("funcall_tip_" + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 4);
-    paramView.commit();
+    Object localObject = new Rect();
+    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
+    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
+    {
+      i = 1;
+      localObject = this.a.getCurrentFocus();
+      if (i != 0) {
+        break label101;
+      }
+      if ((localObject != null) && ((localObject instanceof EditText))) {
+        ((EditText)localObject).setCursorVisible(false);
+      }
+    }
+    label101:
+    while ((localObject == null) || (!(localObject instanceof EditText)))
+    {
+      return;
+      i = 0;
+      break;
+    }
+    ((EditText)localObject).setCursorVisible(true);
   }
 }
 

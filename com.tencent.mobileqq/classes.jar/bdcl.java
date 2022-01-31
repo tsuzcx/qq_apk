@@ -1,20 +1,61 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.util.CustomLruCache;
 
-final class bdcl
-  implements View.OnClickListener
+class bdcl
+  extends CustomLruCache<String, Drawable>
 {
-  bdcl(DialogInterface.OnClickListener paramOnClickListener, bdfq parambdfq) {}
-  
-  public void onClick(View paramView)
+  bdcl(bdck parambdck, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdfq, 2);
+    super(paramInt);
+  }
+  
+  protected int a(String paramString, Drawable paramDrawable)
+  {
+    int i = 0;
+    int j = 0;
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramString = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramString != null) {
+        j = paramString.getRowBytes() * paramString.getHeight();
+      }
+    }
+    int m;
+    int k;
+    do
+    {
+      do
+      {
+        return j;
+      } while (!(paramDrawable instanceof AnimationDrawable));
+      paramString = (AnimationDrawable)paramDrawable;
+      m = paramString.getNumberOfFrames();
+      k = 0;
+      j = i;
+    } while (k >= m);
+    paramDrawable = paramString.getFrame(k);
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
+      {
+        j = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * j + i;
+      }
+    }
+    for (;;)
+    {
+      k += 1;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdcl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import ampy;
+import amun;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -82,15 +82,15 @@ public class ARVideoRecordButtonView
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-1);
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130838535);
-    this.c = a(2130838536);
+    this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130838536);
+    this.c = a(2130838537);
   }
   
   private void a(float paramFloat1, float paramFloat2)
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2 });
     localValueAnimator.setDuration(1000L);
-    localValueAnimator.addUpdateListener(new ampy(this));
+    localValueAnimator.addUpdateListener(new amun(this));
     localValueAnimator.start();
   }
   

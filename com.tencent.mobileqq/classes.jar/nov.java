@@ -52,7 +52,7 @@ class nov
         i += 1;
         break;
         noy.a(new obk().a(not.a(this.jdField_a_of_type_Not)).a(noy.c).b(noy.P).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo).a(l).a(paramView).a());
-        QQToast.a(not.a(this.jdField_a_of_type_Not), -1, not.a(this.jdField_a_of_type_Not).getString(2131700043), 0).b(not.a(this.jdField_a_of_type_Not).getResources().getDimensionPixelSize(2131298914));
+        QQToast.a(not.a(this.jdField_a_of_type_Not), -1, not.a(this.jdField_a_of_type_Not).getString(2131700055), 0).b(not.a(this.jdField_a_of_type_Not).getResources().getDimensionPixelSize(2131298914));
         not.a(this.jdField_a_of_type_Not).dismiss();
         return true;
       }

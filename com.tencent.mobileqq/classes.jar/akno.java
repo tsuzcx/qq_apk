@@ -1,20 +1,28 @@
-import java.util.List;
+import com.tencent.TMG.sdk.AVVideoCtrl.LocalVideoPreviewCallback;
+import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
+import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.1.1;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-public abstract interface akno
+public class akno
+  extends AVVideoCtrl.LocalVideoPreviewCallback
 {
-  public abstract int a();
+  akno(aknn paramaknn) {}
   
-  public abstract aknj a();
-  
-  public abstract void a(List<aknn> paramList, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract int b();
+  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
+  {
+    Object localObject = akwd.a(aknm.a(this.a.a));
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = ((akyg)localObject).a();
+    } while (localObject == null);
+    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.1.1(this, (ApolloSurfaceView)localObject, paramVideoFrame));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akno
  * JD-Core Version:    0.7.0.1
  */

@@ -57,7 +57,7 @@ public class rwq
     }
     int i = paramMessage.arg1;
     int j = paramMessage.arg2;
-    if ((i <= 0) || ((j == 2131375312) && ((this.a.a() instanceof ReadInJoyVideoChannelFragment))))
+    if ((i <= 0) || ((j == 2131375363) && ((this.a.a() instanceof ReadInJoyVideoChannelFragment))))
     {
       ReadinjoyTabFrame.a(this.a).a(j);
       return;

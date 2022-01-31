@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.data.ShowExternalTroop;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import java.util.List;
 
-public class akgs
+class akgs
+  implements View.OnClickListener
 {
-  public int a;
-  public ShowExternalTroop a;
+  akgs(akgr paramakgr, akgq paramakgq, int paramInt) {}
   
-  public akgs(int paramInt, ShowExternalTroop paramShowExternalTroop)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataShowExternalTroop = paramShowExternalTroop;
+    if (this.jdField_a_of_type_Akgq.a.isChecked()) {}
+    for (((ammf)this.jdField_a_of_type_Akgr.a.get(this.jdField_a_of_type_Int)).a = false;; ((ammf)this.jdField_a_of_type_Akgr.a.get(this.jdField_a_of_type_Int)).a = true)
+    {
+      this.jdField_a_of_type_Akgr.notifyItemChanged(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Akgr.a();
+      return;
+    }
   }
 }
 

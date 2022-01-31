@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.launch;
 
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import alpo;
+import alud;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -25,7 +25,7 @@ import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.LruCache;
-import bdiv;
+import bdne;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -132,7 +132,7 @@ public class AppBrandLaunchManager
   private boolean mMiniAppUsed;
   private ConcurrentHashMap<String, String> mPreloadingTask = new ConcurrentHashMap();
   private int mProcessGameMaxCount;
-  private int mProcessMaxCount = bdiv.a(this.mContext, 6);
+  private int mProcessMaxCount = bdne.a(this.mContext, 6);
   private int mProcessPreloadCount;
   private LruCache<String, AppBrandLaunchManager.MiniAppSubProcessorInfo> mProcessStack;
   private int mStartTimeInterval = 1500;
@@ -192,14 +192,14 @@ public class AppBrandLaunchManager
       }
       label253:
       subProcessorInfoMap.put(sInternalProcessInfo.processName, sInternalProcessInfo);
-      this.mProcessPreloadCount = bdiv.c(this.mContext, 2);
+      this.mProcessPreloadCount = bdne.c(this.mContext, 2);
       if (this.mProcessPreloadCount < 0) {
         this.mProcessPreloadCount = 2;
       }
       if (this.mProcessPreloadCount > this.mProcessMaxCount) {
         this.mProcessPreloadCount = this.mProcessMaxCount;
       }
-      this.mProcessGameMaxCount = bdiv.b(this.mContext, 3);
+      this.mProcessGameMaxCount = bdne.b(this.mContext, 3);
       if (this.mProcessGameMaxCount <= 0) {
         this.mProcessGameMaxCount = 3;
       }
@@ -209,8 +209,8 @@ public class AppBrandLaunchManager
       if (this.mProcessGameMaxCount > subGameProcessorInfoMap.size()) {
         this.mProcessGameMaxCount = subGameProcessorInfoMap.size();
       }
-      this.appProcessRecycleTime = bdiv.b(this.mContext, "mini_app_process_recycle_time", 1800000);
-      this.gameProcessRecycleTime = bdiv.b(this.mContext, "mini_game_process_recycle_time", 900000);
+      this.appProcessRecycleTime = bdne.b(this.mContext, "mini_app_process_recycle_time", 1800000);
+      this.gameProcessRecycleTime = bdne.b(this.mContext, "mini_game_process_recycle_time", 900000);
     }
     try
     {
@@ -432,7 +432,7 @@ public class AppBrandLaunchManager
       i += 1;
       break;
     }
-    QQToast.a(this.mContext, alpo.a(2131700974), 0).a();
+    QQToast.a(this.mContext, alud.a(2131700986), 0).a();
   }
   
   private void checkPreload()

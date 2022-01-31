@@ -1,10 +1,18 @@
-import android.graphics.Bitmap;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface asds
+class asds
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString);
+  asds(asdo paramasdo, bdjz parambdjz) {}
   
-  public abstract void a(String paramString, Bitmap paramBitmap);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bdjz.dismiss();
+    this.jdField_a_of_type_Asdo.a.setResult(-1);
+    this.jdField_a_of_type_Asdo.a.finish();
+  }
 }
 
 

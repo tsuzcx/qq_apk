@@ -1,24 +1,23 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-public class bkva
-  extends RecyclerView.ViewHolder
+class bkva
+  implements Animation.AnimationListener
 {
-  public Button a;
-  public EditText a;
-  public ImageView a;
-  public boolean a;
+  bkva(bkuy parambkuy) {}
   
-  public bkva(bkus parambkus, View paramView)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131365600));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365353));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131375648));
-    this.jdField_a_of_type_Boolean = false;
+    if ((bkuy.a(this.a) != null) && (bkuy.b(this.a)))
+    {
+      bkuy.a(this.a).setAlpha(1.0F);
+      bkuy.a(this.a).setVisibility(0);
+    }
   }
 }
 

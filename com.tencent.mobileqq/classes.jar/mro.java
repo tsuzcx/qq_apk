@@ -30,7 +30,7 @@ public class mro
       return;
     }
     mso.c();
-    mdd.a(this.a.a, 1045, 2131696275);
+    mdd.a(this.a.a, 1045, 2131696277);
     parammey.jdField_b_of_type_Boolean = true;
     parammey.jdField_b_of_type_JavaLangString = "AVRedBag";
   }

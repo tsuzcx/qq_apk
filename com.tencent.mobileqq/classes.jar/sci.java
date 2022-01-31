@@ -10,11 +10,11 @@ import com.tencent.qphone.base.util.QLog;
 
 public class sci
 {
-  private static final String a = alpo.a(2131717264);
+  private static final String a = alud.a(2131717276);
   
   public static String a(int paramInt)
   {
-    return bjxj.a(paramInt, 99990000L, "9999万+", a);
+    return bkbq.a(paramInt, 99990000L, "9999万+", a);
   }
   
   public static void a(Context paramContext, ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)

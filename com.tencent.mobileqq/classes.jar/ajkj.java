@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.content.DialogInterface;
 
-public class ajkj
-  implements bhqf
+class ajkj
+  extends bdgx
 {
-  public ajkj(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  ajkj(ajkg paramajkg) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + alpo.a(2131704024);
-    bjcl.a().c(str);
+    paramDialogInterface.dismiss();
   }
 }
 

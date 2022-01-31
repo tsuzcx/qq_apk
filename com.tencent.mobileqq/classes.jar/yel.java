@@ -1,11 +1,32 @@
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
-import java.util.ArrayList;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
-public abstract interface yel<T extends SimpleBaseEvent>
+class yel
+  extends RecyclerView.OnScrollListener
 {
-  public abstract ArrayList<Class<T>> a();
+  yel(yei paramyei) {}
   
-  public abstract void a(SimpleBaseEvent paramSimpleBaseEvent);
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if ((this.a.a instanceof StaggeredGridLayoutManager))
+    {
+      paramRecyclerView = (StaggeredGridLayoutManager)this.a.a;
+      int[] arrayOfInt = new int[paramRecyclerView.getColumnCountForAccessibility(null, null)];
+      paramRecyclerView.findFirstVisibleItemPositions(arrayOfInt);
+      if ((this.a.getLocalPosition(arrayOfInt[0]) <= 0) && (!yei.b(this.a)))
+      {
+        yei.a(this.a, true);
+        paramRecyclerView.invalidateSpanAssignments();
+      }
+      if (arrayOfInt[0] > 2) {
+        yei.a(this.a, false);
+      }
+    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 

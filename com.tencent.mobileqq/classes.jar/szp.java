@@ -134,7 +134,7 @@ public class szp
   
   public static String a(long paramLong)
   {
-    if ((otf.a((int)paramLong)) || (bjxj.a(paramLong))) {
+    if ((otf.a((int)paramLong)) || (bkbq.a(paramLong))) {
       return "0X8009CCB";
     }
     if (a(paramLong)) {
@@ -204,7 +204,7 @@ public class szp
       {
         if (otf.c(paramInt2))
         {
-          paramLong1 = ((Long)bjxj.a("readinjoy_daily_article_first_exposure_" + paramLong1, Long.valueOf(0L))).longValue();
+          paramLong1 = ((Long)bkbq.a("readinjoy_daily_article_first_exposure_" + paramLong1, Long.valueOf(0L))).longValue();
           if (paramLong1 != 0L) {
             localJSONObject.put("daily_article_first_timestamp", paramLong1 + "");
           }
@@ -391,15 +391,15 @@ public class szp
   
   public static void a(int paramInt, String paramString1, String paramString2, Resources paramResources)
   {
-    if ((paramInt == 1008) && (aljq.aS.equals(paramString1)))
+    if ((paramInt == 1008) && (alof.aS.equals(paramString1)))
     {
-      if (!bdal.a(paramString2, paramResources.getString(ajff.a[3]))) {
+      if (!bdeu.a(paramString2, paramResources.getString(ajju.a[3]))) {
         break label57;
       }
       nrt.a(null, null, "0X8009884", "0X8009884", 0, 0, "", "", "", a(), false);
     }
     label57:
-    while (!bdal.a(paramString2, paramResources.getString(ajff.a[2]))) {
+    while (!bdeu.a(paramString2, paramResources.getString(ajju.a[2]))) {
       return;
     }
     nrt.a(null, null, "0X8009885", "0X8009885", 0, 0, "", "", "", a(), false);
@@ -407,7 +407,7 @@ public class szp
   
   public static void a(int paramInt, String paramString, boolean paramBoolean)
   {
-    if ((paramInt == 1008) && (aljq.aS.equals(paramString)))
+    if ((paramInt == 1008) && (alof.aS.equals(paramString)))
     {
       if (paramBoolean) {
         nrt.a(null, null, "0X8009884", "0X8009884", 0, 0, "", "", "", a(), false);
@@ -617,8 +617,8 @@ public class szp
   
   public static void a(BaseArticleInfo paramBaseArticleInfo, long paramLong)
   {
-    if (((Long)bjxj.a("readinjoy_daily_article_first_exposure_" + paramBaseArticleInfo.mArticleID, Long.valueOf(0L))).longValue() == 0L) {
-      bjxj.a("readinjoy_daily_article_first_exposure_" + paramBaseArticleInfo.mArticleID, Long.valueOf(System.currentTimeMillis() / 1000L));
+    if (((Long)bkbq.a("readinjoy_daily_article_first_exposure_" + paramBaseArticleInfo.mArticleID, Long.valueOf(0L))).longValue() == 0L) {
+      bkbq.a("readinjoy_daily_article_first_exposure_" + paramBaseArticleInfo.mArticleID, Long.valueOf(System.currentTimeMillis() / 1000L));
     }
     synchronized (jdField_b_of_type_JavaUtilMap)
     {
@@ -656,7 +656,7 @@ public class szp
   public static void a(RecentItemChatMsgData paramRecentItemChatMsgData)
   {
     if (!jdField_a_of_type_Boolean) {}
-    while ((paramRecentItemChatMsgData == null) || (paramRecentItemChatMsgData.mUser == null) || (!aljq.aR.equals(paramRecentItemChatMsgData.mUser.uin))) {
+    while ((paramRecentItemChatMsgData == null) || (paramRecentItemChatMsgData.mUser == null) || (!alof.aR.equals(paramRecentItemChatMsgData.mUser.uin))) {
       return;
     }
     jdField_a_of_type_Boolean = false;
@@ -706,12 +706,12 @@ public class szp
   
   public static void a(String paramString)
   {
-    if (aljq.aR.equals(paramString))
+    if (alof.aR.equals(paramString))
     {
       nrt.a(null, null, "0X800978D", "0X800978D", 0, 0, "", "", "", a(), false);
       oxp.l();
     }
-    while (!aljq.aS.equals(paramString)) {
+    while (!alof.aS.equals(paramString)) {
       return;
     }
     nrt.a(null, null, "0X8009886", "0X8009886", 0, 0, "", "", "", a(), false);
@@ -859,7 +859,7 @@ public class szp
             {
               ((JSONObject)localObject).put("exposure_time", "" + (float)localszu.jdField_a_of_type_Long / 1000.0F);
               if (otf.c((int)localArticleInfo.mChannelID)) {
-                ((JSONObject)localObject).put("cmd", bjxj.g());
+                ((JSONObject)localObject).put("cmd", bkbq.g());
               }
               nrt.a(null, "CliOper", "", paramMap, str1, str1, 0, 0, Long.toString(localArticleInfo.mFeedId), localArticleInfo.mArticleID + "", localArticleInfo.mStrategyId + "", ((JSONObject)localObject).toString(), false);
             }
@@ -918,7 +918,7 @@ public class szp
   
   public static String b(long paramLong)
   {
-    if ((otf.a((int)paramLong)) || (bjxj.a(paramLong))) {
+    if ((otf.a((int)paramLong)) || (bkbq.a(paramLong))) {
       return "0X8009CC9";
     }
     if (a(paramLong)) {

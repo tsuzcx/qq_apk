@@ -1,88 +1,59 @@
 import android.content.SharedPreferences;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.IPluginAdapter;
-import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.HashMap;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.VipComicHelper.1;
+import java.lang.ref.WeakReference;
+import mqq.app.MobileQQ;
 
 public class bimr
-  implements IPluginAdapter
+  implements nbs
 {
-  public static HashMap<String, Integer> a = new HashMap();
+  public bimr(VipComicHelper.1 param1) {}
   
-  static
+  public void loaded(String paramString, int paramInt)
   {
-    a.put("qzone_plugin.apk", Integer.valueOf(2));
-  }
-  
-  public static int a(String paramString)
-  {
-    if ((Integer)a.get(paramString) == null) {
-      return 1;
+    int j = 0;
+    paramString = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramString == null) {
+      return;
     }
-    return ((Integer)a.get(paramString)).intValue();
-  }
-  
-  public Object invoke(int paramInt, Object paramObject)
-  {
-    int i = 4;
-    boolean bool = false;
-    String str;
+    if (QLog.isColorLevel()) {
+      QLog.d("ComicHelper", 2, "Finish update offline pkg. code = " + paramInt + ", entry = " + this.a.jdField_a_of_type_Int);
+    }
     switch (paramInt)
     {
-    default: 
-      return null;
-    case 1: 
-      paramObject = BaseApplicationImpl.getApplication();
-      str = IPluginAdapterProxy.getProxy().currentUin;
-      if (!TextUtils.isEmpty(str))
-      {
-        if (Build.VERSION.SDK_INT > 10) {}
-        for (;;)
-        {
-          paramObject = paramObject.getSharedPreferences(str, i).getString("currentThemeId_6.3.5", "1000");
-          if ((!"1103".equals(paramObject)) && (!"2920".equals(paramObject))) {
-            break;
-          }
-          return Boolean.valueOf(true);
-          i = 0;
-        }
-      }
-      return Boolean.valueOf(false);
-    case 3: 
-      paramObject = BaseApplicationImpl.getApplication();
-      str = IPluginAdapterProxy.getProxy().currentUin;
-      if (!TextUtils.isEmpty(str))
-      {
-        if (Build.VERSION.SDK_INT > 10) {}
-        for (;;)
-        {
-          paramObject = paramObject.getSharedPreferences(str, i).getString("currentThemeId_6.3.5", "1000");
-          if ((!"1000".equals(paramObject)) && (!"999".equals(paramObject))) {
-            break;
-          }
-          return Boolean.valueOf(true);
-          i = 0;
-        }
-      }
-      return Boolean.valueOf(false);
-    case 2: 
-      return ThreadManager.getSubThreadLooper();
-    case 4: 
-      if (a((String)paramObject) > 1) {
-        bool = true;
-      }
-      return Boolean.valueOf(bool);
     }
-    return Integer.valueOf(ImmersiveUtils.isSupporImmersive());
+    for (int i = 0;; i = 1)
+    {
+      Object localObject = paramString.getApplication().getSharedPreferences("vip_comic_file", 4);
+      int k = ((SharedPreferences)localObject).getInt("totalOfflinePkgDownloadCount", 0);
+      if (i != 0) {
+        j = k + 1;
+      }
+      if (j != k) {
+        ((SharedPreferences)localObject).edit().putInt("totalOfflinePkgDownloadCount", j).apply();
+      }
+      if (i == 0) {
+        break;
+      }
+      long l = NetConnInfoCenter.getServerTime();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramInt + "|");
+      ((StringBuilder)localObject).append(j + "|");
+      ((StringBuilder)localObject).append(l + "|");
+      ((StringBuilder)localObject).append("|||||");
+      azps.a(paramString, "sendtdbank|b_sng_qqvip_qqcomic|offlinePkgDownload", ((StringBuilder)localObject).toString(), true);
+      return;
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bimr
  * JD-Core Version:    0.7.0.1
  */

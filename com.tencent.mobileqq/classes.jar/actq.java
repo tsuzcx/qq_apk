@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
-class actq
-  implements View.OnClickListener
+public class actq
+  implements DialogInterface.OnClickListener
 {
-  actq(actp paramactp) {}
+  public actq(DialogActivity paramDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = paramView.getTag();
-    actp.a(this.a, (akdg)paramView);
+    paramDialogInterface.cancel();
   }
 }
 

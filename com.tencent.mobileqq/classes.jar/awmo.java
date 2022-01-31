@@ -1,67 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
 
 class awmo
-  extends BroadcastReceiver
+  implements Animator.AnimatorListener
 {
-  awmo(awmn paramawmn) {}
+  awmo(awmf paramawmf, View paramView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    int k = 0;
-    if ((paramIntent != null) && ("com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())))
-    {
-      if (paramIntent.getIntExtra("faceType", -1) != 1) {
-        QLog.d("ProfileCardShareHelper", 1, "getHead onReceive FaceType not match!");
-      }
-    }
-    else {
-      return;
-    }
-    if (TextUtils.isEmpty(awmn.a(this.a)))
-    {
-      QLog.d("ProfileCardShareHelper", 1, "getHead onReceive mUin is empty!");
-      return;
-    }
-    paramContext = paramIntent.getStringArrayListExtra("uinList");
-    paramIntent = paramIntent.getStringArrayListExtra("headPathList");
-    int j = k;
-    int i;
-    if (paramContext != null)
-    {
-      j = k;
-      if (paramIntent != null)
-      {
-        j = k;
-        if (paramContext.size() == paramIntent.size()) {
-          i = 0;
-        }
-      }
-    }
-    for (;;)
-    {
-      j = k;
-      if (i < paramContext.size())
-      {
-        if (((String)paramContext.get(i)).equals(awmn.a(this.a)))
-        {
-          awmn.a(this.a, (String)paramIntent.get(i));
-          j = 1;
-        }
-      }
-      else
-      {
-        if ((j == 0) || (!awmn.a(this.a))) {
-          break;
-        }
-        awmn.a(this.a, awmn.b(this.a));
-        return;
-      }
-      i += 1;
+    this.jdField_a_of_type_Awmf.l();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Awmf.l();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Awmf.f) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
   }
 }

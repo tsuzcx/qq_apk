@@ -1,21 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
-
 public class bipi
-  implements DialogInterface.OnClickListener
 {
-  public bipi(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bipi(int paramInt, String paramString1, String paramString2)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bipi
  * JD-Core Version:    0.7.0.1
  */

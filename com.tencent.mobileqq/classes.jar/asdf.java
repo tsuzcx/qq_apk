@@ -1,17 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
 
-public class asdf
-  implements CompoundButton.OnCheckedChangeListener
+class asdf
+  implements DialogInterface.OnDismissListener
 {
-  public asdf(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  asdf(asdb paramasdb) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ((atvu)this.a.a.getManager(303)).a((short)-23308, paramBoolean, true);
-    azmj.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 1, 1, "", "", "", "");
+    if ((this.a.a instanceof DirectForwardActivity)) {
+      this.a.a.finish();
+    }
   }
 }
 

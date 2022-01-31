@@ -1,58 +1,55 @@
-import android.graphics.Typeface;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
 
 public class blsn
+  extends blsf
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int;
-  Typeface jdField_a_of_type_AndroidGraphicsTypeface = null;
-  ArrayList<blsj> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  float jdField_b_of_type_Float = 0.0F;
-  int jdField_b_of_type_Int = 0;
-  boolean jdField_b_of_type_Boolean = false;
-  float jdField_c_of_type_Float = 0.0F;
-  int jdField_c_of_type_Int = 0;
-  float d = 0.0F;
-  
-  public blsn()
+  public blsn(Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    super(paramObject);
   }
   
-  public blsl a(int paramInt, List<String> paramList)
+  public int a(Activity paramActivity, int paramInt)
   {
-    blsl localblsl = new blsl(paramInt, paramList);
-    localblsl.jdField_a_of_type_JavaUtilArrayList.clear();
-    localblsl.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    if (this.jdField_a_of_type_AndroidGraphicsTypeface != null) {
-      localblsl.a(this.jdField_a_of_type_AndroidGraphicsTypeface);
+    return super.a(paramActivity, paramInt);
+  }
+  
+  public void a(Activity paramActivity, int paramInt)
+  {
+    super.a(paramActivity, paramInt);
+    bnhb localbnhb = bnhb.a();
+    blsn localblsn = localbnhb.a[paramInt];
+    if ((localblsn != null) && (localblsn.b().equals(b()))) {
+      localbnhb.a(null, paramActivity, paramInt);
     }
-    localblsl.a(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Boolean) {
-      blsl.a(localblsl, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_b_of_type_Int);
+  }
+  
+  public void b(Activity paramActivity, int paramInt)
+  {
+    super.b(paramActivity, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("QCombo", 2, "select " + toString());
     }
-    blsl.a(localblsl, this.jdField_b_of_type_Boolean, this.d, this.jdField_c_of_type_Int);
-    if (!paramList.isEmpty()) {
-      localblsl.a(0, (String)paramList.get(0));
-    }
-    return localblsl;
+    QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.a;
+    bnhb.a().a(localQIMFilterCategoryItem, paramActivity, paramInt);
+    ((blrx)blqr.a(5)).a[paramInt].a(this);
   }
   
-  public void a(int paramInt)
+  public boolean equals(Object paramObject)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return paramObject.hashCode() == hashCode();
   }
   
-  public void a(Typeface paramTypeface)
+  public int hashCode()
   {
-    this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
+    return ((QIMFilterCategoryItem)this.a).a.hashCode();
   }
   
-  public void a(blsj paramblsj)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramblsj);
+    QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.a;
+    return localQIMFilterCategoryItem.a + localQIMFilterCategoryItem.hashCode() + localQIMFilterCategoryItem.g + this.a;
   }
 }
 

@@ -1,35 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager.17;
-
-public class bfke
-  implements DialogInterface.OnClickListener
+public abstract interface bfke
 {
-  public bfke(DownloadManager.17 param17) {}
+  public abstract void a(bfkf parambfkf);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    try
-    {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfjy.b);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfjy.j);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfjy.f);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfjy.i);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfjy.l);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bfjy.y, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
-      this.a.this$0.a(10, paramDialogInterface);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
-    }
-  }
+  public abstract void b(bfkf parambfkf);
+  
+  public abstract void c(bfkf parambfkf);
+  
+  public abstract void d(bfkf parambfkf);
 }
 
 

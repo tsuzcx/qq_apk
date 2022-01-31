@@ -1,14 +1,12 @@
-import android.os.MessageQueue.IdleHandler;
-
 class agwu
-  implements MessageQueue.IdleHandler
+  extends amcd
 {
-  agwu(agwq paramagwq) {}
+  agwu(agwt paramagwt) {}
   
-  public boolean queueIdle()
+  public void a(String paramString, int paramInt)
   {
-    this.a.b();
-    return false;
+    super.a(paramString, paramInt);
+    agwt.a(this.a).b();
   }
 }
 

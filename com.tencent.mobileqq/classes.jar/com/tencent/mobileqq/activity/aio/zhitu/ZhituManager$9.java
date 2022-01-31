@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import agwq;
+import ahbf;
 
 public class ZhituManager$9
   implements Runnable
 {
-  public ZhituManager$9(agwq paramagwq, ZhituResponse paramZhituResponse, String paramString1, int paramInt, String paramString2) {}
+  public ZhituManager$9(ahbf paramahbf, ZhituResponse paramZhituResponse, String paramString1, int paramInt, String paramString2) {}
   
   public void run()
   {
-    agwq.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituResponse, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    ahbf.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituResponse, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
   }
 }
 

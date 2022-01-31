@@ -1,6 +1,15 @@
-public abstract interface wnz
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+
+public class wnz
+  implements bhvm
 {
-  public abstract void a(wob paramwob);
+  public wnz(StoryMessageListActivity paramStoryMessageListActivity, View paramView) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+  }
 }
 
 

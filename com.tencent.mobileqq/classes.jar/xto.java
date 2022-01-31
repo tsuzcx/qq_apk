@@ -1,67 +1,34 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
 
-public class xto
-  extends ValueAnimator
+final class xto
+  extends xtb
 {
-  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener;
-  private View jdField_a_of_type_AndroidViewView;
+  xto(xtb paramxtb, PublishVideoEntry paramPublishVideoEntry) {}
   
-  private xto(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public void onFailure(String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    setObjectValues(new Object[] { new xtr(paramFloat1, paramFloat2, paramFloat3), new xtr(paramFloat4, paramFloat5, paramFloat6) });
-    setEvaluator(new xts(null));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new xtp(this, a(paramView));
-    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
-  }
-  
-  private CircularRevealCompatLayout a(View paramView)
-  {
-    if ((paramView instanceof CircularRevealCompatLayout)) {
-      return (CircularRevealCompatLayout)paramView;
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
     }
-    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-    if ((localViewGroup instanceof CircularRevealCompatLayout)) {
-      return (CircularRevealCompatLayout)localViewGroup;
+    this.jdField_a_of_type_Xtb.onFailure(paramString);
+    if ((this.jdField_a_of_type_Xtb instanceof upi)) {
+      ((upi)this.jdField_a_of_type_Xtb).a(941006);
     }
-    CircularRevealCompatLayout localCircularRevealCompatLayout = new CircularRevealCompatLayout(paramView.getContext());
-    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    int i = localViewGroup.indexOfChild(paramView);
-    localViewGroup.removeView(paramView);
-    localCircularRevealCompatLayout.addView(paramView, new ViewGroup.LayoutParams(-1, -1));
-    localViewGroup.addView(localCircularRevealCompatLayout, i, localLayoutParams);
-    return localCircularRevealCompatLayout;
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getVideoFromMp4 failed msg：" + paramString);
   }
   
-  public static xto a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  public void onStart()
   {
-    return new xto(paramView, paramInt1, paramInt2, paramFloat1, paramInt1, paramInt2, paramFloat2);
+    super.onStart();
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getVideoFromMp4 start");
   }
   
-  public void a()
+  public void onSuccess(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getParent();
-    if ((localObject instanceof CircularRevealCompatLayout))
-    {
-      localObject = (CircularRevealCompatLayout)localObject;
-      ((CircularRevealCompatLayout)localObject).removeView(this.jdField_a_of_type_AndroidViewView);
-      ViewGroup localViewGroup = (ViewGroup)((CircularRevealCompatLayout)localObject).getParent();
-      ViewGroup.LayoutParams localLayoutParams = ((CircularRevealCompatLayout)localObject).getLayoutParams();
-      int i = localViewGroup.indexOfChild((View)localObject);
-      localViewGroup.removeView((View)localObject);
-      localViewGroup.addView(this.jdField_a_of_type_AndroidViewView, i, localLayoutParams);
-    }
-  }
-  
-  public void removeAllUpdateListeners()
-  {
-    super.removeAllUpdateListeners();
-    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
+    long l1 = System.currentTimeMillis();
+    long l2 = this.b;
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getVideoFromMp4 success cost：" + String.valueOf(l1 - l2));
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.doutu;
 
-import apfp;
-import awbw;
+import apjy;
+import awgf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 public class DoutuManager$9
   implements Runnable
 {
-  public DoutuManager$9(apfp paramapfp, List paramList) {}
+  public DoutuManager$9(apjy paramapjy, List paramList) {}
   
   public void run()
   {
@@ -17,14 +17,14 @@ public class DoutuManager$9
     {
       synchronized (this.this$0)
       {
-        if (apfp.a(this.this$0) != null)
+        if (apjy.a(this.this$0) != null)
         {
-          apfp.a(this.this$0).a(DoutuData.class);
+          apjy.a(this.this$0).a(DoutuData.class);
           Iterator localIterator = this.a.iterator();
           if (localIterator.hasNext())
           {
             DoutuData localDoutuData = (DoutuData)localIterator.next();
-            apfp.a(this.this$0).b(localDoutuData);
+            apjy.a(this.this$0).b(localDoutuData);
           }
         }
       }

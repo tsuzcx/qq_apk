@@ -17,12 +17,12 @@ public class GuideTip2$5
     Object localObject = this.this$0.a();
     if (localObject != null)
     {
-      localObject = (RelativeLayout)((Activity)localObject).findViewById(2131367368);
+      localObject = (RelativeLayout)((Activity)localObject).findViewById(2131367378);
       if (Build.VERSION.SDK_INT < 16) {
         break label118;
       }
-      ((RelativeLayout)localObject).findViewById(2131367369).setBackground(null);
-      ((RelativeLayout)localObject).findViewById(2131367370).setBackground(null);
+      ((RelativeLayout)localObject).findViewById(2131367379).setBackground(null);
+      ((RelativeLayout)localObject).findViewById(2131367380).setBackground(null);
     }
     for (;;)
     {
@@ -39,8 +39,8 @@ public class GuideTip2$5
       }
       return;
       label118:
-      ((RelativeLayout)localObject).findViewById(2131367369).setBackgroundDrawable(null);
-      ((RelativeLayout)localObject).findViewById(2131367370).setBackgroundDrawable(null);
+      ((RelativeLayout)localObject).findViewById(2131367379).setBackgroundDrawable(null);
+      ((RelativeLayout)localObject).findViewById(2131367380).setBackgroundDrawable(null);
     }
   }
 }

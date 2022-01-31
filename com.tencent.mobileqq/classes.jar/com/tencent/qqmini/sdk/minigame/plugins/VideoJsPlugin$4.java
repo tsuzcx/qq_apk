@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import bgkd;
+import bgok;
 
 class VideoJsPlugin$4
   implements Runnable
 {
-  VideoJsPlugin$4(VideoJsPlugin paramVideoJsPlugin, int paramInt, bgkd parambgkd) {}
+  VideoJsPlugin$4(VideoJsPlugin paramVideoJsPlugin, int paramInt, bgok parambgok) {}
   
   public void run()
   {

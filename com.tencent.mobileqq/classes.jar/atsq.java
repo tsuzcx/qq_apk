@@ -1,14 +1,21 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class atsq
-  implements Comparator<atse>
+  extends altm
 {
-  public int a(atse paramatse1, atse paramatse2)
+  atsq(atso paramatso) {}
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if (paramatse1.a >= paramatse2.a) {
-      return 1;
+    super.onUpdateDelFriend(paramBoolean, paramObject);
+    paramObject = String.valueOf(paramObject);
+    if ((paramBoolean) && (paramObject.equals(atso.a(this.a).a())))
+    {
+      atso.a(atso.a(this.a), 0, String.valueOf(paramObject));
+      if (atso.a(this.a) != null) {
+        atso.a(this.a).finish();
+      }
     }
-    return -1;
   }
 }
 

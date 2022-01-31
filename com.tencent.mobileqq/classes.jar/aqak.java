@@ -1,17 +1,10 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.mobileqq.data.MessageForPic;
 
-public class aqak
-  implements aqdv
+public abstract interface aqak
 {
-  public aqak(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  public abstract void a(int paramInt, MessageForPic paramMessageForPic);
   
-  public void a(String paramString, int paramInt)
-  {
-    this.a.a.setText(paramString);
-    this.a.a.setSelection(this.a.a.length());
-    this.a.a(paramString);
-  }
+  public abstract void a(boolean paramBoolean, MessageForPic paramMessageForPic);
 }
 
 

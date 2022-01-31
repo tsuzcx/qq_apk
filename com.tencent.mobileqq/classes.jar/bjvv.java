@@ -1,20 +1,6 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-
-public class bjvv
+public abstract interface bjvv
 {
-  public static void a(becq parambecq, String... paramVarArgs)
-  {
-    paramVarArgs = new Intent("action_js2qzone");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("cmd", "CleanZebraNum");
-    paramVarArgs.putExtras(localBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneZebraAlbumJsHandleLogicQZonePersonalizePlugin", 2, "actionString: " + paramVarArgs.getAction());
-    }
-    bizm.a(parambecq.a(), bizt.a(), paramVarArgs);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

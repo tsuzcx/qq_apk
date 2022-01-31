@@ -1,20 +1,30 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import java.lang.ref.WeakReference;
 
 public class axkp
+  implements View.OnLongClickListener
 {
-  public int a;
-  public String a;
-  public List<PtvTemplateManager.PtvTemplateInfo> a;
-  public boolean a;
-  public int b;
-  public String b;
+  private WeakReference<ReceiptMessageDetailFragment> a;
   
-  public axkp() {}
-  
-  public axkp(String paramString)
+  private axkp(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    this.a = paramString;
+    this.a = new WeakReference(paramReceiptMessageDetailFragment);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    paramView = (ReceiptMessageDetailFragment)this.a.get();
+    if ((paramView == null) || (!paramView.isAdded())) {
+      return false;
+    }
+    bhuf localbhuf = bhuf.a(paramView.getActivity());
+    localbhuf.b(2131691357);
+    localbhuf.c(2131690648);
+    localbhuf.a(new axkq(this, paramView, localbhuf));
+    localbhuf.show();
+    return true;
   }
 }
 

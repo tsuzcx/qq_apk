@@ -1,16 +1,41 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class bcna
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bcna(RedDotAnimateView paramRedDotAnimateView) {}
+  public int a;
+  public long a;
+  public ByteStringMicro a;
+  public List<bbsa> a;
+  public Map<String, bbsa> a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public int d = 0;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bcna(bcmu parambcmu, long paramLong)
   {
-    this.a.jdField_a_of_type_Float = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.jdField_a_of_type_Int / 2.0F);
-    this.a.invalidate();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = ByteStringMicro.copyFromUtf8("");
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    if (paramLong == 0L) {
+      this.c = 0;
+    }
+    for (;;)
+    {
+      this.c = i;
+      return;
+      i = 3;
+    }
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.biz.qqcircle.style;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.webview.WebViewTitleStyle;
-import tyw;
+import uai;
 
 public class QCircleWebViewTitleStyle
   extends WebViewTitleStyle
 {
-  public static final Parcelable.Creator<QCircleWebViewTitleStyle> CREATOR = new tyw();
+  public static final Parcelable.Creator<QCircleWebViewTitleStyle> CREATOR = new uai();
   public int a;
   
   public QCircleWebViewTitleStyle() {}

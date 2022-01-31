@@ -1,16 +1,16 @@
 package cooperation.qzone.webviewplugin;
 
-import bjtz;
+import bjyg;
 import java.util.ArrayList;
 
 public class QzonePhotoWallPlugin$3
   implements Runnable
 {
-  public QzonePhotoWallPlugin$3(bjtz parambjtz, ArrayList paramArrayList) {}
+  public QzonePhotoWallPlugin$3(bjyg parambjyg, ArrayList paramArrayList) {}
   
   public void run()
   {
-    bjtz.a(this.this$0, this.a, true);
+    bjyg.a(this.this$0, this.a, true);
   }
 }
 

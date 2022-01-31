@@ -1,36 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.MemoryManager;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class adft
-  implements DialogInterface.OnClickListener
+  implements Handler.Callback
 {
-  public adft(NotificationActivity paramNotificationActivity, CheckBox paramCheckBox, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
+  public adft(Leba paramLeba) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
-      if (this.jdField_a_of_type_Boolean != bool) {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
-      }
-      MemoryManager.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app);
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.lebatab.leba", 4, "callback handleMessage,what = " + paramMessage.what);
     }
-    catch (Exception paramDialogInterface) {}finally
+    if ((this.a.a != null) && ("0".equals(this.a.a.getCurrentAccountUin()))) {
+      return false;
+    }
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+    }
+    for (;;)
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.lebatab.leba", 2, "handler refresh leba config");
+      }
+      this.a.l();
+      continue;
+      Leba.c(this.a);
+      continue;
+      this.a.a(paramMessage);
+      continue;
+      this.a.s();
+      continue;
+      Leba.d(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adft
  * JD-Core Version:    0.7.0.1
  */

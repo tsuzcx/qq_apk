@@ -1,14 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
-class xql
-  implements View.OnClickListener
+public class xql
+  extends wos<wpn>
 {
-  xql(xqj paramxqj) {}
-  
-  public void onClick(View paramView)
+  public xql(@Nullable wow paramwow)
   {
-    this.a.dismiss();
+    super(paramwow);
+  }
+  
+  protected JobSegment<wov, wpn> a()
+  {
+    return new wpi();
+  }
+  
+  protected JobSegment<Integer, wov> a(wou paramwou)
+  {
+    return new xqm(paramwou);
+  }
+  
+  protected wpn a()
+  {
+    woy localwoy = (woy)uwa.a(11);
+    List localList = localwoy.b();
+    wpn localwpn = new wpn(new ErrorMessage());
+    localwpn.jdField_b_of_type_JavaUtilList = localwoy.b(localList);
+    localwpn.jdField_b_of_type_Boolean = true;
+    localwpn.a = localwpn.jdField_b_of_type_JavaUtilList.isEmpty();
+    return localwpn;
+  }
+  
+  protected wpn a(ErrorMessage paramErrorMessage)
+  {
+    return new wpn(paramErrorMessage);
+  }
+  
+  protected void a(List<String> paramList, boolean paramBoolean)
+  {
+    ((woy)uwa.a(11)).b(paramList, paramBoolean);
   }
 }
 

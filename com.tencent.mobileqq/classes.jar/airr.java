@@ -1,15 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class airr
+class airr
   implements DialogInterface.OnClickListener
 {
-  public airr(RedPacketPopFragment paramRedPacketPopFragment) {}
+  airr(airj paramairj) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
+    if (((NewPhotoPreviewActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(true);
+    }
   }
 }
 

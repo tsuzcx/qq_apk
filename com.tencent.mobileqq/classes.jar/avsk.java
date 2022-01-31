@@ -1,7 +1,6 @@
 public class avsk
-{
-  public Object a;
-}
+  extends avsg
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

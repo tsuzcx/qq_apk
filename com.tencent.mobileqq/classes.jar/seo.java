@@ -110,7 +110,7 @@ class seo
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo = paramChannelCoverInfo;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setOnClickListener(new sep(this, paramOnClickListener));
-    if ((TextUtils.isEmpty(paramChannelCoverInfo.externalExposureBackgroundUrl)) || (bjxj.c(paramChannelCoverInfo.mChannelCoverId)))
+    if ((TextUtils.isEmpty(paramChannelCoverInfo.externalExposureBackgroundUrl)) || (bkbq.c(paramChannelCoverInfo.mChannelCoverId)))
     {
       c();
       return;

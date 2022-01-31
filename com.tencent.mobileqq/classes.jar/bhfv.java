@@ -1,31 +1,35 @@
-import android.widget.NumberPicker;
-import android.widget.TimePicker;
-import android.widget.TimePicker.OnTimeChangedListener;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-class bhfv
-  implements TimePicker.OnTimeChangedListener
+public abstract interface bhfv
+  extends bglx
 {
-  bhfv(bhfu parambhfu) {}
+  public abstract View a();
   
-  public void onTimeChanged(TimePicker paramTimePicker, int paramInt1, int paramInt2)
-  {
-    bhfu.a(this.a, paramInt1);
-    if (paramInt1 == bhfu.a(this.a).getMinValue())
-    {
-      bhfu.b(this.a).setMinValue(bhfu.a(this.a));
-      bhfu.b(this.a).setMaxValue(59);
-      return;
-    }
-    if (paramInt1 == bhfu.a(this.a).getMaxValue())
-    {
-      bhfu.b(this.a).setMinValue(0);
-      bhfu.b(this.a).setMaxValue(bhfu.b(this.a));
-      return;
-    }
-    bhfu.b(this.a).setMinValue(0);
-    bhfu.b(this.a).setMaxValue(59);
-    bhfu.b(this.a, paramInt2);
-  }
+  public abstract void a();
+  
+  public abstract void a(Activity paramActivity);
+  
+  public abstract void a(MiniAppInfo paramMiniAppInfo, boolean paramBoolean);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a(int paramInt1, int paramInt2);
+  
+  public abstract void b();
+  
+  public abstract void b(String paramString, int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void setApkgInfo(bgod parambgod);
 }
 
 

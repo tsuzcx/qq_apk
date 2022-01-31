@@ -1,49 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
-public class uuk
-  extends JobSegment<List<vhg>, List<vhg>>
+class uuk
+  implements View.OnLongClickListener
 {
-  private final vhf a;
+  uuk(uui paramuui, uuh paramuuh) {}
   
-  public uuk()
+  public boolean onLongClick(View paramView)
   {
-    this(new uul());
-  }
-  
-  public uuk(vhf paramvhf)
-  {
-    this.a = paramvhf;
-  }
-  
-  protected void a(JobContext paramJobContext, List<vhg> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "list empty");
-      }
-      notifyResult(paramList);
-      return;
+    int i = this.jdField_a_of_type_Uuh.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Uui.a.b(this.jdField_a_of_type_Uuh.itemView, i);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info start");
-    }
-    paramJobContext = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext()) {
-      paramJobContext.add(((vhg)localIterator.next()).b);
-    }
-    paramJobContext = new vha(paramJobContext);
-    if (this.a != null) {
-      paramJobContext.a = this.a;
-    }
-    paramJobContext.a(new uum(this, paramList));
-    paramJobContext.b();
+    return true;
   }
 }
 

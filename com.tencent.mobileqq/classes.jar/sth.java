@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
 
 public class sth
-  extends alsi
+  extends alwx
 {
   public sth(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   

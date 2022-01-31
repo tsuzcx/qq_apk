@@ -1,90 +1,164 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.model.ShareState;
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.qqmini.sdk.core.tissue.TissueEnv;
+import com.tencent.qqmini.sdk.core.tissue.TissueGlobal;
 import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.ui.MiniTranslucentFragmentActivity;
-import com.tencent.qqmini.sdk.ui.MoreFragment;
-import com.tencent.qqmini.sdk.utils.GameWnsUtils;
-import java.util.ArrayList;
+import io.flutter.view.FlutterMain;
+import io.flutter.view.FlutterNativeView;
+import java.io.File;
+import java.lang.reflect.Method;
 
+@bglp(a="RuntimeCreateTask")
 public class bhih
+  extends bhlw
 {
-  private static boolean a;
+  bhey jdField_a_of_type_Bhey;
+  private boolean jdField_a_of_type_Boolean;
   
-  private static String a(bgho parambgho)
+  public bhih(Context paramContext, bgun parambgun)
   {
-    return bgie.a(parambgho).a();
+    super(paramContext, parambgun);
   }
   
-  public static void a(bgho parambgho)
+  private static boolean a(String paramString)
   {
-    if (a)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramString != null)
     {
-      QMLog.w("MorePanel", "Ignore. Already showing");
-      return;
+      bool1 = bool2;
+      if (paramString.length() <= 0) {}
     }
-    if (parambgho == null)
+    try
     {
-      QMLog.w("MorePanel", "Failed to show. miniAppContext is null");
-      return;
+      bool1 = new File(paramString).exists();
+      return bool1;
     }
-    Activity localActivity = parambgho.a();
-    if ((localActivity == null) || (localActivity.isFinishing()))
+    catch (Exception paramString)
     {
-      QMLog.w("MorePanel", "Failed to show. activity is null");
-      return;
+      QMLog.e("Tools.isFileExists", "" + paramString.getMessage());
     }
-    MiniAppInfo localMiniAppInfo = parambgho.a();
-    if (localMiniAppInfo == null)
+    return false;
+  }
+  
+  private boolean b(String paramString)
+  {
+    paramString = paramString + "/res.apk";
+    if (a(paramString)) {}
+    for (;;)
     {
-      QMLog.w("MorePanel", "Failed to show. MiniAppInfo is null");
-      return;
-    }
-    ShareState localShareState = bgic.a(parambgho);
-    if (localShareState == null)
-    {
-      QMLog.w("MorePanel", "Failed to show. shareState is null");
-      return;
-    }
-    Intent localIntent = new Intent();
-    Object localObject1 = new bhig();
-    ((bhig)localObject1).a = localShareState.withShareQQ;
-    ((bhig)localObject1).b = localShareState.withShareQzone;
-    ((bhig)localObject1).c = localShareState.withShareWeChatFriend;
-    ((bhig)localObject1).d = localShareState.withShareWeChatMoment;
-    ((bhig)localObject1).e = localShareState.withShareOthers;
-    ((bhig)localObject1).f = localShareState.showDebug;
-    ((bhig)localObject1).g = localShareState.showMonitor;
-    ((bhig)localObject1).h = true;
-    ((bhig)localObject1).i = true;
-    if (parambgho.b()) {}
-    for (boolean bool = GameWnsUtils.showRestartButton();; bool = localShareState.showRestart)
-    {
-      ((bhig)localObject1).j = bool;
-      Object localObject2 = new bhif().a((bhig)localObject1);
-      localObject1 = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      localObject2 = ((MiniAppProxy)localObject1).getMoreItems((bhif)localObject2);
-      localIntent.putExtra("key_orientation_landscape", parambgho.c());
-      localIntent.putExtra("key_mini_app_info", localMiniAppInfo);
-      localIntent.putParcelableArrayListExtra("key_more_item_list", (ArrayList)localObject2);
-      bgjd.a().a(new bhii(localShareState, (MiniAppProxy)localObject1, parambgho));
-      MiniTranslucentFragmentActivity.a(localActivity, localIntent, MoreFragment.class, 9527);
-      a(parambgho, "open");
-      a = true;
-      return;
+      try
+      {
+        long l1 = System.currentTimeMillis();
+        AssetManager localAssetManager = a().getAssets();
+        Method localMethod = AssetManager.class.getDeclaredMethod("addAssetPath", new Class[] { String.class });
+        localMethod.setAccessible(true);
+        localMethod.invoke(localAssetManager, new Object[] { paramString });
+        long l2 = System.currentTimeMillis();
+        QMLog.e("miniapp-start-TISSUE", "loadAsset", paramString);
+      }
+      catch (Exception paramString)
+      {
+        try
+        {
+          QMLog.d("miniapp-start-TISSUE", String.format("load asset file %s cost %s ms", new Object[] { paramString, Long.valueOf(l2 - l1) }));
+          bool = true;
+          if (QMLog.isColorLevel()) {
+            QMLog.d("miniapp-start-TISSUE", String.format("loadAssetRes, isSuccess: %s", new Object[] { Boolean.valueOf(bool) }));
+          }
+          return bool;
+        }
+        catch (Exception paramString)
+        {
+          for (;;)
+          {
+            boolean bool = true;
+          }
+        }
+        paramString = paramString;
+        bool = false;
+      }
+      continue;
+      QMLog.e("miniapp-start-TISSUE", String.format("assetsPath: %s not exist", new Object[] { paramString }));
+      bool = true;
     }
   }
   
-  private static void a(bgho parambgho, String paramString)
+  public bhey a()
   {
-    if (TextUtils.isEmpty(paramString)) {
+    return this.jdField_a_of_type_Bhey;
+  }
+  
+  public void a()
+  {
+    bhbs.a(200, "", a().getMiniAppInfoForReport());
+    if (this.jdField_a_of_type_Bhey != null)
+    {
+      c();
       return;
     }
-    bgyg.a(parambgho.a(), bgyg.a(parambgho.a()), a(parambgho), "user_click", "more_button", paramString);
+    if ((TissueGlobal.tissueEnv != null) && (!b(TissueGlobal.tissueEnv.getNativeLibDir())))
+    {
+      this.jdField_a_of_type_Boolean = false;
+      QMLog.e("miniapp-start-TISSUE", "flutter loadAssetRes failed!!! enableFlutter=false");
+    }
+    try
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Bhey = new bhew();
+        this.jdField_a_of_type_Bhey.a(a());
+        c();
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      QMLog.e("minisdk-start", "RuntimeCreateTask exception!", localThrowable);
+      e();
+      return;
+    }
+    this.jdField_a_of_type_Bhey = new bhfa();
+    this.jdField_a_of_type_Bhey.a(a());
+    Object localObject = TissueGlobal.tissueEnv;
+    if (localObject != null) {}
+    try
+    {
+      FlutterMain.setNativeLibDir(TissueGlobal.tissueEnv.getNativeLibDir());
+      FlutterMain.startInitialization(a().getApplicationContext());
+      FlutterMain.ensureInitializationComplete(a().getApplicationContext(), null);
+      label170:
+      localObject = new FlutterNativeView(a().getApplicationContext());
+      ((bhfa)this.jdField_a_of_type_Bhey).a((FlutterNativeView)localObject);
+      c();
+      return;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      break label170;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_Bhey = null;
+  }
+  
+  public void c()
+  {
+    super.c();
+    bhbs.a(201, "", a().getMiniAppInfoForReport());
+  }
+  
+  public void d()
+  {
+    bhbs.a(221, "", a().getMiniAppInfoForReport());
   }
 }
 

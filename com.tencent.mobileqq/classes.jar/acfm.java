@@ -1,36 +1,55 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity.14.1;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import mqq.os.MqqHandler;
 
-public final class acfm
-  implements DialogInterface.OnClickListener
+public class acfm
+  implements bhzf
 {
-  public acfm(acgz paramacgz, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, acgy paramacgy) {}
+  public acfm(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    int i = mww.b(this.jdField_a_of_type_Acgz.jdField_a_of_type_Int);
-    String str;
-    if ((this.jdField_a_of_type_Acgz.jdField_a_of_type_JavaUtilMap != null) && (i == 1))
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      str = (String)this.jdField_a_of_type_Acgz.jdField_a_of_type_JavaUtilMap.get("MultiAVType");
-      if (str == null) {}
-    }
-    for (paramInt = Integer.valueOf(str).intValue();; paramInt = 0)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, i, paramInt);
-      this.jdField_a_of_type_Acgz.d = false;
-      this.jdField_a_of_type_Acgz.e = false;
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acgy, this.jdField_a_of_type_Acgz);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.dismiss();
-      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.at_();
       return;
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "onViewCompleteVisableAndReleased begin refresh");
+    }
+    if (this.a.c())
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
+      this.a.b = true;
+      AssociatedAccountActivity.b(this.a, false, true);
+      return true;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new AssociatedAccountActivity.14.1(this), 800L);
+    return true;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

@@ -114,7 +114,7 @@ public class qlc
   
   public static qlc a()
   {
-    SharedPreferences localSharedPreferences = bjxj.a(ors.a(), true, false);
+    SharedPreferences localSharedPreferences = bkbq.a(ors.a(), true, false);
     return a(a(localSharedPreferences.getString("kandian_push_ox210_msg", ""), localSharedPreferences.getInt("kandian_push_ox210_c5_msg_count", 1)));
   }
   
@@ -123,12 +123,12 @@ public class qlc
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    return a(bdlr.a(paramString), paramInt);
+    return a(bdqa.a(paramString), paramInt);
   }
   
   private static qlc a(qlc paramqlc)
   {
-    SharedPreferences localSharedPreferences = bjxj.a(ors.a(), true, false);
+    SharedPreferences localSharedPreferences = bkbq.a(ors.a(), true, false);
     if ((localSharedPreferences == null) || (paramqlc == null)) {
       return paramqlc;
     }
@@ -356,7 +356,7 @@ public class qlc
   
   public static qlc b()
   {
-    return a(a(bjxj.a(ors.a(), true, false).getString("kandian_push_0x210_msg_for_follow", ""), 1));
+    return a(a(bkbq.a(ors.a(), true, false).getString("kandian_push_0x210_msg_for_follow", ""), 1));
   }
   
   public static int c(byte[] paramArrayOfByte)
@@ -396,24 +396,24 @@ public class qlc
   
   public static qlc c()
   {
-    return a(a(bjxj.a(ors.a(), true, false).getString("kandian_push_0x210_msg_for_follow_show_in_folder", ""), 1));
+    return a(a(bkbq.a(ors.a(), true, false).getString("kandian_push_0x210_msg_for_follow_show_in_folder", ""), 1));
   }
   
   public static qlc d()
   {
-    SharedPreferences localSharedPreferences = bjxj.a(ors.a(), true, false);
+    SharedPreferences localSharedPreferences = bkbq.a(ors.a(), true, false);
     return a(a(localSharedPreferences.getString("kandian_push_0x210_msg_sys", ""), localSharedPreferences.getInt("kandian_push_0x210_msg_sys_count", 1)));
   }
   
   public static qlc e()
   {
-    SharedPreferences localSharedPreferences = bjxj.a(ors.a(), true, false);
+    SharedPreferences localSharedPreferences = bkbq.a(ors.a(), true, false);
     return a(a(localSharedPreferences.getString("kandian_0x210_c5_normal_item_body", ""), localSharedPreferences.getInt("kandian_0x210_c5_normal_item_msg_count", 1)));
   }
   
   public String a()
   {
-    return bdlr.a(this.jdField_a_of_type_ArrayOfByte);
+    return bdqa.a(this.jdField_a_of_type_ArrayOfByte);
   }
   
   public void a(QQAppInterface paramQQAppInterface)

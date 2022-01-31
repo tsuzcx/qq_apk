@@ -1,28 +1,22 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
 
 class ajcu
-  implements View.OnClickListener
+  implements ajdx
 {
-  ajcu(ajbm paramajbm) {}
+  ajcu(ajct paramajct, ajcw paramajcw) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    paramView = new Intent(ajbm.a(this.a), GuideBindPhoneActivity.class);
-    paramView.putExtra("fromKeyForContactBind", 4);
-    ajbm.a(this.a).startActivity(paramView);
-    ajbm.a(this.a).getSharedPreferences("contact_bind_info" + ajbm.a(this.a).app.getAccount(), 0).edit().putBoolean("key_show_contact_banner", false).commit();
-    this.a.a(15, 0);
-    ajbm.a(this.a).removeMessages(11);
-    azmj.a(ajbm.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 13, 0, "", "", "", "");
-    azmj.b(ajbm.a(this.a).app, "CliOper", "", "", "0X80053D9", "0X80053D9", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("DrawClassifier", 2, "TensorFlow init:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      ajct.a(this.jdField_a_of_type_Ajct, ajct.a(this.jdField_a_of_type_Ajct), this.jdField_a_of_type_Ajcw, true);
+    }
+    while (this.jdField_a_of_type_Ajcw == null) {
+      return;
+    }
+    this.jdField_a_of_type_Ajcw.a(false);
   }
 }
 

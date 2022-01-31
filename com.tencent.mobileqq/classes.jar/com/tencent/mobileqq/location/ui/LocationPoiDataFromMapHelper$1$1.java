@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.location.ui;
 
-import atnz;
-import atoa;
-import atob;
+import atsi;
+import atsj;
+import atsk;
 
 public class LocationPoiDataFromMapHelper$1$1
   implements Runnable
 {
-  public LocationPoiDataFromMapHelper$1$1(atoa paramatoa) {}
+  public LocationPoiDataFromMapHelper$1$1(atsj paramatsj) {}
   
   public void run()
   {
-    atnz.a(this.a.a).a(atnz.a(this.a.a));
+    atsi.a(this.a.a).a(atsi.a(this.a.a));
   }
 }
 

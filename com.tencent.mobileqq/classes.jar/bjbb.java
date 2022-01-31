@@ -1,39 +1,63 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.content.res.Resources;
+import android.widget.TextView;
+import cooperation.qqreader.net.BaseCgiTask;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
+import org.json.JSONObject;
 
-class bjbb
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+public class bjbb
+  extends bjaq
 {
-  bjbb(bjba parambjba) {}
+  public bjbb(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
   
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  public void a(bjap parambjap)
   {
-    paramSharedPreferences = BaseApplicationImpl.getApplication().getRuntime();
-    if (paramSharedPreferences != null)
+    JSONObject localJSONObject = parambjap.a();
+    if (localJSONObject == null) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged key = " + paramString);
-      }
-      if ((!bjba.a(this.a)) && (bjba.a(this.a) != null))
-      {
-        if (bjba.a(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          bjba.a(this.a, bjba.a(this.a).getInt(paramString, 0));
-        }
-        if (bjba.b(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          bjba.c(this.a, bjba.a(this.a).getString(paramString, null));
-        }
-        if (bjba.d(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          bjba.e(this.a, bjba.a(this.a).getString(paramString, null));
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged value = " + bjba.a(this.a) + " personlizedYellowVipUrl = " + bjba.a(this.a));
-        }
-      }
-      bjba.a(this.a, false);
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate response json is null");
+      return;
     }
+    catch (Exception parambjap)
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate parse failed: " + parambjap.getMessage());
+      return;
+    }
+    int i = localJSONObject.getInt("ret");
+    parambjap = localJSONObject.getString("msg");
+    localJSONObject = localJSONObject.getJSONObject("data");
+    if ((i != 0) || (localJSONObject == null) || (localJSONObject.length() == 0))
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate ret=" + i + "|msg=" + parambjap);
+      return;
+    }
+    i = localJSONObject.optInt("gray_level", 0);
+    int j = localJSONObject.optInt("updateStatus", 0);
+    int k = localJSONObject.optInt("updateStatus", 0);
+    int m = localJSONObject.optInt("remainMaxTime", 0);
+    bjbj.a(ForceUserUpdateActivity.a(this.a), i);
+    bjbj.b(ForceUserUpdateActivity.a(this.a), j);
+    bjbj.c(ForceUserUpdateActivity.a(this.a), k);
+    bjbj.d(ForceUserUpdateActivity.a(this.a), m);
+    bjbl.d("ForceUserUpdateActivity", "onReceiveData: QueryGrayUpdate result: level=" + i + "|status=" + j + "|remain=" + m + "|interval=" + k);
+    if (j == 1)
+    {
+      ForceUserUpdateActivity.c(this.a);
+      return;
+    }
+    if (j == 2)
+    {
+      ForceUserUpdateActivity.a(this.a, k);
+      ForceUserUpdateActivity.a(this.a).setText(this.a.getResources().getString(2131717572, new Object[] { Integer.valueOf(m) }));
+      return;
+    }
+    ForceUserUpdateActivity.d(this.a);
+    bjbj.b(ForceUserUpdateActivity.a(this.a), 2);
+  }
+  
+  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
+  {
+    ForceUserUpdateActivity.a(this.a, "onConnectionError: QueryGrayUpdate error: " + paramString);
   }
 }
 

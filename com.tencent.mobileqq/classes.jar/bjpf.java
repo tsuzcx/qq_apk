@@ -1,33 +1,11 @@
-import android.os.Looper;
-import android.util.Printer;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.BaseHandler;
+import cooperation.qzone.plugin.PluginRecord;
 
-public class bjpf
-  implements Printer
+class bjpf
 {
-  public bjpf(BaseHandler paramBaseHandler) {}
-  
-  public void println(String paramString)
-  {
-    if ((!BaseHandler.isBusy) && (!((Boolean)BaseHandler.isRegulated.get()).booleanValue())) {}
-    do
-    {
-      return;
-      if (!BaseHandler.access$000())
-      {
-        Looper.myLooper().setMessageLogging(null);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseHandler", 2, paramString);
-      }
-      if ((paramString != null) && (paramString.contains(">>>>> Dispatching to"))) {
-        BaseHandler.access$100(this.a);
-      }
-    } while ((paramString == null) || (!paramString.contains("<<<<< Finished to")));
-    BaseHandler.access$200(this.a);
-  }
+  private int jdField_a_of_type_Int;
+  private bjpg jdField_a_of_type_Bjpg;
+  private PluginRecord jdField_a_of_type_CooperationQzonePluginPluginRecord;
+  private String jdField_a_of_type_JavaLangString;
 }
 
 

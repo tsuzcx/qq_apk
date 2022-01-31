@@ -1,16 +1,36 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.videostory.video.FrameVideoHelper;
+import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class zcd
-  implements View.OnClickListener
+  implements zao
 {
-  zcd(zcc paramzcc, DialogInterface.OnClickListener paramOnClickListener) {}
+  zcd(zby paramzby) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Zcc, 0);
+    if ((!paramBoolean) || (paramArrayList == null))
+    {
+      this.a.a(alud.a(2131704264));
+      QLog.w("EditVideoSmartMusicPart", 1, "extractFrame failed  data is null");
+    }
+    zby localzby;
+    StringBuilder localStringBuilder;
+    if (zby.a(this.a) != null)
+    {
+      localzby = this.a;
+      localStringBuilder = new StringBuilder().append(alud.a(2131704150)).append(zby.a(this.a).a()).append("ms\n抽取图片数：");
+      if (paramArrayList != null) {
+        break label133;
+      }
+    }
+    label133:
+    for (int i = 0;; i = paramArrayList.size())
+    {
+      localzby.a(i + "\n抽帧字节数：" + zby.a(this.a).b() + "KB");
+      zby.a(this.a, paramArrayList);
+      return;
     }
   }
 }

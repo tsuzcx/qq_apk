@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bepp;
+import bety;
 import qzs;
 
 class TopicShareHelper$6$1

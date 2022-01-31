@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import aduw;
-import aeif;
+import adzl;
+import aemu;
 
 public class StructMsgObserver$2
   implements Runnable
 {
-  public StructMsgObserver$2(aduw paramaduw, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  public StructMsgObserver$2(adzl paramadzl, String paramString1, int paramInt, String paramString2, String paramString3) {}
   
   public void run()
   {
-    aeif.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
+    aemu.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

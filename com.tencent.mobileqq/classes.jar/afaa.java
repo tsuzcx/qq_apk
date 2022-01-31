@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
 public class afaa
-  implements afal
+  implements afbs
 {
-  public void a(int paramInt) {}
+  public afaa(DoodlePanel paramDoodlePanel) {}
   
-  public int[] a()
+  public void a(afbr paramafbr)
   {
-    return new int[6];
+    this.a.a(paramafbr);
+    paramafbr = "" + paramafbr.a + ";" + paramafbr.b + ";" + paramafbr.c;
+    bdea.a(this.a.getContext(), "aio_doodle_colorpicker_select", paramafbr);
   }
 }
 

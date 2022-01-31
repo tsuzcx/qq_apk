@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask;
 
-import awbw;
+import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
 import qun;
 

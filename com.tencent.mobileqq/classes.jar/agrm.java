@@ -1,18 +1,19 @@
-import android.content.Context;
-import android.widget.ScrollView;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agrm
-  extends ScrollView
+class agrm
+  implements DialogInterface.OnClickListener
 {
-  public agrm(TroopChatPie paramTroopChatPie, Context paramContext)
-  {
-    super(paramContext);
-  }
+  agrm(agqq paramagqq, bemp parambemp) {}
   
-  public void setOverScrollMode(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.setOverScrollMode(2);
+    this.jdField_a_of_type_Agqq.ab = true;
+    this.jdField_a_of_type_Agqq.aa = true;
+    agqq.b(this.jdField_a_of_type_Agqq, false);
+    if ((this.jdField_a_of_type_Bemp.a()) && (!this.jdField_a_of_type_Bemp.b())) {
+      azqs.b(this.jdField_a_of_type_Agqq.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
+    }
   }
 }
 

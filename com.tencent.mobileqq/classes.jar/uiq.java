@@ -1,31 +1,22 @@
-import android.annotation.TargetApi;
-import java.net.URL;
+import java.util.Comparator;
 
-@TargetApi(14)
-public class uiq
+final class uiq
+  implements Comparator<uiz>
 {
-  public static URL a(URL paramURL)
+  public int a(uiz paramuiz1, uiz paramuiz2)
   {
-    String str = paramURL.getHost();
-    int k = str.indexOf(':');
-    Object localObject = paramURL;
-    if (k != -1)
+    if (paramuiz1.a() > paramuiz2.a()) {}
+    do
     {
-      localObject = str.substring(0, k);
-      int j = paramURL.getPort();
-      int i = j;
-      if (j == -1) {
-        i = Integer.valueOf(str.substring(k + 1)).intValue();
+      return 1;
+      if (paramuiz1.a() < paramuiz2.a()) {
+        return -1;
       }
-      wsv.b("URLChecker", "url is not initilized correctly, so re-create it");
-      localObject = new URL(paramURL.getProtocol(), (String)localObject, i, paramURL.getFile());
-    }
-    return localObject;
-  }
-  
-  public static boolean a(URL paramURL)
-  {
-    return paramURL.getHost().indexOf(':') == -1;
+      if (paramuiz1.d() == paramuiz2.d()) {
+        return 0;
+      }
+    } while (paramuiz1.d() < paramuiz2.d());
+    return -1;
   }
 }
 

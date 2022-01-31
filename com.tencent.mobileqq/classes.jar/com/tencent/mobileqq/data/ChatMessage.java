@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import awdg;
+import awhp;
 
 public abstract class ChatMessage
   extends MessageRecord
@@ -28,7 +28,7 @@ public abstract class ChatMessage
   public boolean mNeedGrayTips;
   public boolean mNeedTimeStamp;
   public boolean mPendantAnimatable;
-  @awdg
+  @awhp
   private int mViewHeight;
   
   protected abstract void doParse();
@@ -104,7 +104,7 @@ public abstract class ChatMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ChatMessage
  * JD-Core Version:    0.7.0.1
  */

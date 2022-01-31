@@ -1,63 +1,33 @@
-import android.content.res.Resources;
-import android.widget.TextView;
-import cooperation.qqreader.net.BaseCgiTask;
-import cooperation.qqreader.ui.ForceUserUpdateActivity;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
 
 public class biwu
-  extends biwj
+  implements aocf
 {
-  public biwu(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Long jdField_a_of_type_JavaLangLong;
   
-  public void a(biwi parambiwi)
+  public biwu(Context paramContext, Long paramLong)
   {
-    JSONObject localJSONObject = parambiwi.a();
-    if (localJSONObject == null) {}
-    try
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate response json is null");
-      return;
-    }
-    catch (Exception parambiwi)
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate parse failed: " + parambiwi.getMessage());
-      return;
-    }
-    int i = localJSONObject.getInt("ret");
-    parambiwi = localJSONObject.getString("msg");
-    localJSONObject = localJSONObject.getJSONObject("data");
-    if ((i != 0) || (localJSONObject == null) || (localJSONObject.length() == 0))
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate ret=" + i + "|msg=" + parambiwi);
-      return;
-    }
-    i = localJSONObject.optInt("gray_level", 0);
-    int j = localJSONObject.optInt("updateStatus", 0);
-    int k = localJSONObject.optInt("updateStatus", 0);
-    int m = localJSONObject.optInt("remainMaxTime", 0);
-    bixc.a(ForceUserUpdateActivity.a(this.a), i);
-    bixc.b(ForceUserUpdateActivity.a(this.a), j);
-    bixc.c(ForceUserUpdateActivity.a(this.a), k);
-    bixc.d(ForceUserUpdateActivity.a(this.a), m);
-    bixe.d("ForceUserUpdateActivity", "onReceiveData: QueryGrayUpdate result: level=" + i + "|status=" + j + "|remain=" + m + "|interval=" + k);
-    if (j == 1)
-    {
-      ForceUserUpdateActivity.c(this.a);
-      return;
-    }
-    if (j == 2)
-    {
-      ForceUserUpdateActivity.a(this.a, k);
-      ForceUserUpdateActivity.a(this.a).setText(this.a.getResources().getString(2131717560, new Object[] { Integer.valueOf(m) }));
-      return;
-    }
-    ForceUserUpdateActivity.d(this.a);
-    bixc.b(ForceUserUpdateActivity.a(this.a), 2);
+    this.jdField_a_of_type_JavaLangLong = paramLong;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
+  public ColorNote getColorNote()
   {
-    ForceUserUpdateActivity.a(this.a, "onConnectionError: QueryGrayUpdate error: " + paramString);
+    aocl localaocl = new aocl();
+    if (QLog.isColorLevel()) {
+      QLog.i("FavColorNoteServiceInfo", 2, "getColorNote: colorNote key [" + "qfav" + "]");
+    }
+    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131689642);
+    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131692401);
+    localaocl.a(17104896);
+    localaocl.a("" + this.jdField_a_of_type_JavaLangLong + "-4");
+    localaocl.b(str1);
+    localaocl.c(str2);
+    localaocl.d("resdrawable://2130843803");
+    return localaocl.a();
   }
 }
 

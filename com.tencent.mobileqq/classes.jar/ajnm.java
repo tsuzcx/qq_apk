@@ -1,24 +1,16 @@
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.3.1;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.3.2;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.widget.HorizontalListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class ajnm
-  implements ayyn
+  implements View.OnClickListener
 {
-  ajnm(ajnj paramajnj) {}
+  public ajnm(LoginView paramLoginView) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.post(new PtvTemplateAdapter.3.2(this, paramPtvTemplateInfo, paramInt));
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    this.a.a.post(new PtvTemplateAdapter.3.1(this, paramPtvTemplateInfo, paramBoolean));
-    if (!paramBoolean) {
-      ajlj.a("", "0X80075BB", "", "", "", "");
-    }
+    azqs.a(this.a.a, "dc00898", "", "", "0X800AA2E", "0X800AA2E", 0, 0, "", "", "", "");
+    LoginView.a(this.a).dismiss();
   }
 }
 

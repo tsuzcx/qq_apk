@@ -1,14 +1,13 @@
-class arqm
-  implements army
+public class arqm
 {
-  arqm(arqk paramarqk) {}
-  
-  public void a()
-  {
-    this.a.c();
-  }
-  
-  public void b() {}
+  public int a;
+  public long a;
+  public String a = "";
+  public byte[] a;
+  public byte[] b;
+  public byte[] c;
+  public byte[] d;
+  public byte[] e;
 }
 
 

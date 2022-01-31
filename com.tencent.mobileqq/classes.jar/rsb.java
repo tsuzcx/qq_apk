@@ -7,7 +7,7 @@ public class rsb
   public static sks a(Context paramContext, String paramString1, String paramString2)
   {
     paramContext = new sks(paramContext, 2131755801);
-    paramContext.setContentView(2131562517);
+    paramContext.setContentView(2131562535);
     paramContext.setTitle(null);
     paramContext.setMessage(paramString1);
     paramContext.a(paramString2);
@@ -18,7 +18,7 @@ public class rsb
   public static void a(@NotNull Context paramContext)
   {
     rsc localrsc = new rsc(paramContext);
-    bgkp.a(paramContext, 230, null, paramContext.getResources().getString(2131718743), localrsc, localrsc).show();
+    bgow.a(paramContext, 230, null, paramContext.getResources().getString(2131718755), localrsc, localrsc).show();
   }
 }
 

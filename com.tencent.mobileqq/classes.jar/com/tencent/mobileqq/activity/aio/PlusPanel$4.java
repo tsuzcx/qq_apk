@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio;
 
-import bchl;
+import bclu;
 import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
 
 class PlusPanel$4
   implements Runnable
 {
-  PlusPanel$4(PlusPanel paramPlusPanel, bchl parambchl, TroopAIOAppInfo paramTroopAIOAppInfo) {}
+  PlusPanel$4(PlusPanel paramPlusPanel, bclu parambclu, TroopAIOAppInfo paramTroopAIOAppInfo) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bchl != null) {
-      this.jdField_a_of_type_Bchl.c(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAIOAppInfo.appid, 0);
+    if (this.jdField_a_of_type_Bclu != null) {
+      this.jdField_a_of_type_Bclu.c(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAIOAppInfo.appid, 0);
     }
   }
 }

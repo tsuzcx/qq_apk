@@ -1,18 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.2;
-
-public class akut
-  implements DialogInterface.OnClickListener
+public abstract interface akut
 {
-  public akut(CmGameSubRscHandler.2 param2) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.a.a != null) {
-      this.a.a.b(null);
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

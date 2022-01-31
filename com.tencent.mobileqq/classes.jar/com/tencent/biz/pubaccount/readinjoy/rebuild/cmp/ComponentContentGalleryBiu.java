@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -106,7 +106,7 @@ public class ComponentContentGalleryBiu
   private Pair<Integer, Integer> a()
   {
     Resources localResources = BaseApplicationImpl.getApplication().getResources();
-    int k = (localResources.getDisplayMetrics().widthPixels - aekt.a(this.jdField_a_of_type_Float * 2.0F, localResources) - aekt.a(22.0F, localResources)) / 3;
+    int k = (localResources.getDisplayMetrics().widthPixels - aepi.a(this.jdField_a_of_type_Float * 2.0F, localResources) - aepi.a(22.0F, localResources)) / 3;
     int j = localResources.getDimensionPixelSize(2131298578);
     if (this.jdField_a_of_type_Boolean) {
       j = k;
@@ -211,7 +211,7 @@ public class ComponentContentGalleryBiu
       if (localKandianUrlImageView != null)
       {
         a(localKandianUrlImageView);
-        ((LinearLayout.LayoutParams)localKandianUrlImageView.getLayoutParams()).setMargins(0, 0, aekt.a(this.jdField_a_of_type_Float, getResources()), 0);
+        ((LinearLayout.LayoutParams)localKandianUrlImageView.getLayoutParams()).setMargins(0, 0, aepi.a(this.jdField_a_of_type_Float, getResources()), 0);
       }
       j += 1;
     }
@@ -251,7 +251,7 @@ public class ComponentContentGalleryBiu
         if (this.jdField_b_of_type_Boolean)
         {
           parampgd = new TextView(getContext());
-          parampgd.setPadding(0, 0, 0, aekt.a(11.0F, getContext().getResources()));
+          parampgd.setPadding(0, 0, 0, aepi.a(11.0F, getContext().getResources()));
           parampgd.setMaxLines(2);
           parampgd.setEllipsize(TextUtils.TruncateAt.END);
           parampgd.setTextColor(Color.parseColor("#000000"));
@@ -305,12 +305,12 @@ public class ComponentContentGalleryBiu
         parampgd = new LinearLayout(getContext());
         parampgd.setOrientation(0);
         parampgd.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        localObject1 = LayoutInflater.from(getContext()).inflate(2131559947, null);
-        ((TextView)((View)localObject1).findViewById(2131378863)).setText(String.valueOf(l) + alpo.a(2131702700));
+        localObject1 = LayoutInflater.from(getContext()).inflate(2131559946, null);
+        ((TextView)((View)localObject1).findViewById(2131378920)).setText(String.valueOf(l) + alud.a(2131702712));
         if (k == 1)
         {
           parampgd.addView((View)localObject1);
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)((View)localObject1).findViewById(2131367910));
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)((View)localObject1).findViewById(2131367921));
           this.jdField_a_of_type_JavaUtilList = Arrays.asList(new KandianUrlImageView[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView });
           qfg.a(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
           orc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localArticleInfo.mSinglePicture, getContext());
@@ -323,7 +323,7 @@ public class ComponentContentGalleryBiu
         return;
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = new KandianUrlImageView(getContext());
         this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = new KandianUrlImageView(getContext());
-        this.c = ((KandianUrlImageView)((View)localObject1).findViewById(2131367910));
+        this.c = ((KandianUrlImageView)((View)localObject1).findViewById(2131367921));
         parampgd.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
         parampgd.addView(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
         parampgd.addView((View)localObject1);
@@ -341,8 +341,8 @@ public class ComponentContentGalleryBiu
           parampgd.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           ((LinearLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
           ((LinearLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-          ((LinearLayout)localObject2).setPadding(0, aekt.a(this.jdField_a_of_type_Float, getResources()), 0, 0);
-          ((LinearLayout)localObject3).setPadding(0, aekt.a(this.jdField_a_of_type_Float, getResources()), 0, 0);
+          ((LinearLayout)localObject2).setPadding(0, aepi.a(this.jdField_a_of_type_Float, getResources()), 0, 0);
+          ((LinearLayout)localObject3).setPadding(0, aepi.a(this.jdField_a_of_type_Float, getResources()), 0, 0);
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = new KandianUrlImageView(getContext());
           this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = new KandianUrlImageView(getContext());
           this.c = new KandianUrlImageView(getContext());
@@ -355,11 +355,11 @@ public class ComponentContentGalleryBiu
           ((LinearLayout)localObject2).addView(this.d);
           ((LinearLayout)localObject2).addView(this.e);
           ((LinearLayout)localObject2).addView(this.f);
-          localObject1 = LayoutInflater.from(getContext()).inflate(2131559947, null);
-          ((TextView)((View)localObject1).findViewById(2131378863)).setText(String.valueOf(l) + alpo.a(2131702626));
+          localObject1 = LayoutInflater.from(getContext()).inflate(2131559946, null);
+          ((TextView)((View)localObject1).findViewById(2131378920)).setText(String.valueOf(l) + alud.a(2131702638));
           this.g = new KandianUrlImageView(getContext());
           this.h = new KandianUrlImageView(getContext());
-          this.i = ((KandianUrlImageView)((View)localObject1).findViewById(2131367910));
+          this.i = ((KandianUrlImageView)((View)localObject1).findViewById(2131367921));
           ((LinearLayout)localObject3).addView(this.g);
           ((LinearLayout)localObject3).addView(this.h);
           ((LinearLayout)localObject3).addView((View)localObject1);

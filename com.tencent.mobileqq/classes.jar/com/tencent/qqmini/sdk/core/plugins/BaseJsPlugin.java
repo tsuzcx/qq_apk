@@ -1,30 +1,30 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
-import bgho;
-import bgid;
-import bgil;
-import bgjw;
-import bgkd;
+import bglv;
+import bgmk;
+import bgms;
+import bgod;
+import bgok;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public abstract class BaseJsPlugin
   implements IJsPlugin
 {
-  protected bgjw mApkgInfo;
+  protected bgod mApkgInfo;
   public Context mContext;
   protected boolean mIsDestroyed;
   public boolean mIsMiniGame;
-  public bgho mMiniAppContext;
+  public bglv mMiniAppContext;
   public MiniAppInfo mMiniAppInfo;
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    this.mMiniAppContext = parambgho;
-    this.mContext = parambgho.a();
-    this.mMiniAppInfo = parambgho.a();
-    this.mApkgInfo = ((bgjw)this.mMiniAppInfo.apkgInfo);
-    this.mIsMiniGame = parambgho.b();
+    this.mMiniAppContext = parambglv;
+    this.mContext = parambglv.a();
+    this.mMiniAppInfo = parambglv.a();
+    this.mApkgInfo = ((bgod)this.mMiniAppInfo.apkgInfo);
+    this.mIsMiniGame = parambglv.b();
     this.mIsDestroyed = false;
   }
   
@@ -33,7 +33,7 @@ public abstract class BaseJsPlugin
     this.mIsDestroyed = true;
   }
   
-  public boolean onInterceptJsEvent(bgkd parambgkd)
+  public boolean onInterceptJsEvent(bgok parambgok)
   {
     return false;
   }
@@ -42,19 +42,19 @@ public abstract class BaseJsPlugin
   
   public void onResume() {}
   
-  protected void sendNativeViewEvent(bgkd parambgkd, int paramInt)
+  protected void sendNativeViewEvent(bgok parambgok, int paramInt)
   {
-    this.mMiniAppContext.a(bgid.a(parambgkd, paramInt));
+    this.mMiniAppContext.a(bgmk.a(parambgok, paramInt));
   }
   
   public void sendSubscribeEvent(String paramString1, String paramString2)
   {
-    this.mMiniAppContext.a(bgil.a(paramString1, paramString2, 0));
+    this.mMiniAppContext.a(bgms.a(paramString1, paramString2, 0));
   }
   
   public void sendSubscribeEvent(String paramString1, String paramString2, int paramInt)
   {
-    this.mMiniAppContext.a(bgil.a(paramString1, paramString2, paramInt));
+    this.mMiniAppContext.a(bgms.a(paramString1, paramString2, paramInt));
   }
 }
 

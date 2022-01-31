@@ -1,196 +1,85 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity.9.1;
-import com.tencent.mobileqq.activity.SubLoginActivity.9.2;
-import com.tencent.mobileqq.activity.SubLoginActivity.9.3;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v7.widget.RecyclerView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.observer.SubAccountObserver;
+import java.util.ArrayList;
+import java.util.List;
 
 public class advt
-  extends SubAccountObserver
+  implements mxt
 {
-  public advt(SubLoginActivity paramSubLoginActivity) {}
+  public advt(ScoreQAVFragment paramScoreQAVFragment) {}
   
-  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("SubLoginActivity.onGetKeyBack() start. subUin=").append(paramString2).append(" key=");
-      if (paramString3 == null)
-      {
-        paramString1 = null;
-        QLog.d("Q.subaccount.SubLoginActivity", 2, paramString1);
-      }
-    }
-    else
-    {
-      if (!TextUtils.isEmpty(paramString3)) {
-        break label164;
-      }
-      paramString1 = new HashMap();
-      paramString1.put("param_FailCode", "12005");
-      paramString1.put("fail_step", "getKeyEmpty");
-      paramString1.put("fail_location", "subLogin");
-      azmz.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBGeykey", false, 0L, 0L, paramString1, "");
-      this.a.e();
-      this.a.b(this.a.getString(2131720450));
-      this.a.runOnUiThread(new SubLoginActivity.9.3(this));
-    }
-    for (;;)
-    {
-      return;
-      paramString1 = "no null.";
-      break;
-      label164:
-      paramString1 = new HashMap();
-      paramString1.put("param_FailCode", "12006");
-      paramString1.put("fail_step", "getKeyNotEmpty");
-      paramString1.put("fail_location", "subLogin");
-      azmz.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBGeykey", true, 0L, 0L, paramString1, "");
-      if (!SubLoginActivity.a(this.a))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SUB_ACCOUNT", 2, "subaccount onGetKeyBack not need bind");
-        }
-        this.a.e();
-        paramString1 = (azyu)this.a.app.getManager(61);
-        if (paramString1 != null) {
-          paramString1.a(paramString2, paramString3, true);
-        }
-        azyl.a(this.a.app, (byte)1, paramString2);
-        azyl.a(this.a.app, paramString2, 7);
-        azyk.b(this.a.app);
-        azyk.a(this.a.app);
-        this.a.setTitle("");
-        azyk.a(this.a.app, this.a, paramString2);
-        this.a.finish();
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("Q.subaccount.SubLoginActivity", 2, "onGetKeyBack: sucess .........");
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("SubAccount", 2, "subaccount onGetKeyBack goto bind");
-        }
-        paramString1 = (azyr)this.a.app.getManager(28);
-        if (paramString1 != null) {
-          paramString1.a(paramString2, paramString3, this.a.b);
-        }
-        this.a.a = true;
-      }
-    }
-  }
-  
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, String paramString4)
+  public void a(Object paramObject, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubLoginActivity", 2, "onLoginFailed: subLogin ...onLoginTimeout  subuin =  uin .. .errorMsg = " + paramString4);
+      QLog.d("ScoreActivity", 2, "ratingScore : " + paramInt);
     }
-    paramString2 = new HashMap();
-    paramString2.put("param_FailCode", "12002");
-    paramString2.put("fail_step", "loginFail");
-    paramString3 = new StringBuilder().append("subLogin:");
-    if (paramString4 == null) {
-      paramString1 = "";
-    }
+    this.a.e = paramInt;
+    if (paramInt <= 3) {}
     for (;;)
     {
-      paramString2.put("fail_location", paramString1);
-      azmz.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBLogin", false, 0L, 0L, paramString2, "");
-      if (!this.a.getActivity().isFinishing()) {}
       try
       {
-        this.a.e();
-        this.a.runOnUiThread(new SubLoginActivity.9.2(this));
-        if (TextUtils.isEmpty(paramString4))
+        if (mum.a("qav_score_bad.jpg")) {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), mum.b() + "qav_score_bad.jpg"));
+        }
+        ScoreQAVFragment.a(this.a).setVisibility(0);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.a.b.setText(2131696310);
+        if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
         {
-          this.a.b(this.a.getString(2131694764));
+          ScoreQAVFragment.a(this.a).setAdapter(ScoreQAVFragment.a(this.a));
+          if (paramInt <= 0) {
+            break label398;
+          }
+          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+          this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFF"));
+          this.a.jdField_a_of_type_JavaUtilArrayList.clear();
           return;
-          paramString1 = paramString4;
         }
       }
-      catch (Exception paramString1)
+      catch (OutOfMemoryError paramObject)
       {
-        for (;;)
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
+        continue;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ScoreActivity", 2, "mDatas is invalid!");
+        continue;
+      }
+      if (paramInt > 3)
+      {
+        ScoreQAVFragment.a(this.a).setVisibility(8);
+        try
         {
-          paramString1.printStackTrace();
+          if (mum.a("qav_score_good.jpg")) {
+            this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), mum.b() + "qav_score_good.jpg"));
+          }
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+          this.a.b.setText(2131696310);
         }
-        this.a.b(this.a.getResources().getString(2131719367), paramString4, null);
+        catch (OutOfMemoryError paramObject)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
+            }
+          }
+        }
+        label398:
+        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
       }
-    }
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubLoginActivity", 2, "onLoginSuccess: start");
-    }
-    if (this.a.app == null) {
-      return;
-    }
-    paramString1 = new HashMap();
-    paramString1.put("param_FailCode", "12001");
-    paramString1.put("fail_step", "loginsucc");
-    paramString1.put("fail_location", "subLogin");
-    azmz.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBLogin", true, 0L, 0L, paramString1, "");
-    bdiv.a(this.a.app.getApplication().getApplicationContext(), paramString2, true);
-    this.a.getAppRuntime().getSubAccountKey(this.a.app.getAccount(), paramString2, null);
-    ThreadManager.post(new SubLoginActivity.9.1(this, paramString2), 8, null, true);
-  }
-  
-  public void onLoginTimeout(String paramString1, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubLoginActivity", 2, "onLoginTimeout:  subuin =  uin");
-    }
-    paramString1 = new HashMap();
-    paramString1.put("param_FailCode", "12004");
-    paramString1.put("fail_step", "loginTimeout");
-    paramString1.put("fail_location", "subLogin");
-    azmz.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBLogin", false, 0L, 0L, paramString1, "");
-    if (!this.a.getActivity().isFinishing()) {}
-    try
-    {
-      this.a.e();
-      this.a.b(this.a.getString(2131694764));
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        paramString1.printStackTrace();
-      }
-    }
-  }
-  
-  public void onUserCancel(String paramString1, String paramString2, String paramString3)
-  {
-    paramString1 = new HashMap();
-    paramString1.put("param_FailCode", "12003");
-    paramString1.put("fail_step", "onUserCancel");
-    paramString1.put("fail_location", "subLogin");
-    azmz.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBLogin", false, 0L, 0L, paramString1, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubLoginActivity", 2, "onUserCancel: start");
-    }
-    if (!this.a.getActivity().isFinishing()) {}
-    try
-    {
-      this.a.e();
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
     }
   }
 }

@@ -99,7 +99,7 @@ public class the
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Tgu = paramtgu;
     if (1000006 == paramInt1) {
-      this.jdField_a_of_type_JavaLangString = alpo.a(2131717301);
+      this.jdField_a_of_type_JavaLangString = alud.a(2131717313);
     }
     tgx.a().b(this);
   }

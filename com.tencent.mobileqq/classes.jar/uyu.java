@@ -1,36 +1,13 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertGroupId;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupId;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class uyu
-  extends unf
+class uyu
+  implements vlo
 {
-  public List<wbm> a = new ArrayList();
-  
-  public uyu(qqstory_service.RspConvertGroupId paramRspConvertGroupId)
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
   {
-    super(paramRspConvertGroupId.result);
-    if (paramRspConvertGroupId.group_rsp_list.has())
-    {
-      paramRspConvertGroupId = paramRspConvertGroupId.group_rsp_list.get().iterator();
-      while (paramRspConvertGroupId.hasNext())
-      {
-        Object localObject = (qqstory_struct.GroupId)paramRspConvertGroupId.next();
-        localObject = new wbm(String.valueOf(((qqstory_struct.GroupId)localObject).group_uin.get()), ((qqstory_struct.GroupId)localObject).group_union_id.get().toStringUtf8());
-        this.a.add(localObject);
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    return "GetUserGroupUnionIDResponse{groupIDList=" + this.a + '}';
+    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex <= 0L);
   }
 }
 

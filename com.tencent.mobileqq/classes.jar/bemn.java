@@ -1,6 +1,16 @@
-public abstract interface bemn
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
+
+public class bemn
+  extends ameq
 {
-  public abstract void a(String paramString);
+  public bemn(WerewolvesHostInterface paramWerewolvesHostInterface, QQAppInterface paramQQAppInterface) {}
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.manager.a().a(6, new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2) });
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+  }
 }
 
 

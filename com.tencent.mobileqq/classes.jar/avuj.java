@@ -1,13 +1,25 @@
-import java.util.List;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectsExplorationBanner;
 
 public class avuj
+  extends avun
 {
-  public int a;
-  public String a;
-  public List<avsj> a;
-  public boolean a;
-  public int b;
-  public String b;
+  public ConnectsExplorationBanner a;
+  
+  public avuj(ConnectsExplorationBanner paramConnectsExplorationBanner)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationBanner = paramConnectsExplorationBanner;
+    this.jdField_a_of_type_Long = paramConnectsExplorationBanner.timestamp;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationBanner.uin;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 

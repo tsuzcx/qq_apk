@@ -1,26 +1,6 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
-
-public class bmbq
-  extends AnimatorListenerAdapter
+public abstract interface bmbq
 {
-  public bmbq(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner 140ms translate end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner lockView begin");
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,106 +1,76 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessServlet.ResultInfo;
-import com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessServlet.RspOpenStart;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.observer.BusinessObserver;
-import mqq.util.WeakReference;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class atbc
-  implements BusinessObserver
+class atbc
+  implements Handler.Callback
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<QIPCModule> jdField_a_of_type_MqqUtilWeakReference;
+  atbc(atbb paramatbb) {}
   
-  public atbc(QIPCModule paramQIPCModule, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQIPCModule);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private void a(Bundle paramBundle, TogetherBusinessServlet.RspOpenStart paramRspOpenStart)
-  {
-    int i;
-    long l;
-    String str;
-    QQAppInterface localQQAppInterface;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherObserver", 2, "handleStartPackage TogetherControlManager");
-      }
-      i = paramBundle.getInt("session_type", -1);
-      l = paramBundle.getLong("uin", -1L);
-      int j = paramBundle.getInt("business_type", 0);
-      str = paramBundle.getString("appid", "");
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (j == 2) {
-        if (i != 2) {
-          break label154;
-        }
-      }
     }
-    label154:
-    for (paramBundle = "c2c_AIO";; paramBundle = "Grp_AIO")
-    {
-      azmj.b(localQQAppInterface, "dc00899", paramBundle, "", "video_tab", "clk_share_suc", 0, 0, l + "", str, "", "");
-      ball.a(localQQAppInterface, paramRspOpenStart.jumpType, paramRspOpenStart.jumpUrl, null, new Bundle(), i);
-      return;
-    }
-  }
-  
-  private boolean a(TogetherBusinessServlet.RspOpenStart paramRspOpenStart)
-  {
-    if ((paramRspOpenStart.resultInfo != null) && (paramRspOpenStart.resultInfo.showErrorMsg) && (!TextUtils.isEmpty(paramRspOpenStart.resultInfo.errorMsg))) {}
-    while (((paramRspOpenStart.jumpType != 1) && (paramRspOpenStart.jumpType != 2)) || (TextUtils.isEmpty(paramRspOpenStart.jumpUrl))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherObserver", 2, "type:" + paramInt + " isSuccess:" + paramBoolean);
-    }
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherObserver", 2, " mRef is empty");
-      }
-    }
-    Object localObject;
     do
     {
-      do
+      return false;
+      Object localObject = atbb.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((atbd)((Iterator)localObject).next()).a(paramMessage.arg1);
+      }
+      localObject = atbb.a(this.a).iterator();
+      if (((Iterator)localObject).hasNext())
       {
-        do
+        atbd localatbd = (atbd)((Iterator)localObject).next();
+        if (paramMessage.arg1 == 0) {}
+        for (boolean bool = true;; bool = false)
         {
-          return;
-          localObject = (QIPCModule)this.jdField_a_of_type_MqqUtilWeakReference.get();
-          if ((12 == paramInt) && (paramBoolean))
-          {
-            ((QIPCModule)localObject).callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
-            return;
-          }
-        } while ((13 != paramInt) || (!paramBoolean));
-        ((QIPCModule)localObject).callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
-        localObject = (TogetherBusinessServlet.RspOpenStart)paramBundle.getSerializable("QQAIOMediaSvc.open_start");
-        paramBundle = paramBundle.getBundle("bundle");
-        if ((paramBundle != null) && (localObject != null)) {
+          localatbd.a(bool, (Throwable)paramMessage.obj);
           break;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("TogetherObserver", 2, "bundleExtra is null or rspOpenStart is null");
-      return;
-    } while (!a((TogetherBusinessServlet.RspOpenStart)localObject));
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherObserver", 2, "handleStartPackage jumpToTogetherBusiness");
-    }
-    a(paramBundle, (TogetherBusinessServlet.RspOpenStart)localObject);
+      }
+      localObject = new Intent(atav.a(atbb.a(this.a).c));
+      if (paramMessage.arg1 == 0)
+      {
+        if (atav.a(atbb.a(this.a).c)) {}
+        for (int i = 9;; i = 8)
+        {
+          ((Intent)localObject).putExtra("key_state", i);
+          atbb.a(this.a).sendBroadcast((Intent)localObject);
+          if (atbi.a.get(atbb.a(this.a)) == null) {
+            break;
+          }
+          atbh.b(String.valueOf(((atbi)atbi.a.get(atbb.a(this.a))).f));
+          return false;
+        }
+      }
+      if (atav.a(atbb.a(this.a).c)) {
+        atbh.a("2691708");
+      }
+      for (;;)
+      {
+        ataq.a((Throwable)paramMessage.obj);
+        ((Intent)localObject).putExtra("key_state", 7);
+        atbb.a(this.a).sendBroadcast((Intent)localObject);
+        return false;
+        if (atav.b(atbb.a(this.a).c)) {
+          atbh.a("2597726");
+        } else if (atbi.a.get(atbb.a(this.a)) != null) {
+          atbh.b(String.valueOf(((atbi)atbi.a.get(atbb.a(this.a))).e));
+        }
+      }
+      paramMessage = new Intent(atav.a(atbb.a(this.a).c));
+      paramMessage.putExtra("key_state", 6);
+      atbb.a(this.a).sendBroadcast(paramMessage);
+    } while (atbi.a.get(atbb.a(this.a)) == null);
+    atbh.b(String.valueOf(((atbi)atbi.a.get(atbb.a(this.a))).d));
+    return false;
   }
 }
 

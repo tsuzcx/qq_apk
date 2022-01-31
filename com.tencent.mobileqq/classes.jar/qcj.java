@@ -29,7 +29,7 @@ public class qcj
     }
     try
     {
-      paramView = new String(bdbi.decode(((qlk)localObject1).jdField_a_of_type_Qlm.jdField_b_of_type_JavaLangString, 0));
+      paramView = new String(bdfr.decode(((qlk)localObject1).jdField_a_of_type_Qlm.jdField_b_of_type_JavaLangString, 0));
       ((Intent)localObject2).putExtra("is_from_poly_topic", true);
       if (localpgd.e() == 70)
       {

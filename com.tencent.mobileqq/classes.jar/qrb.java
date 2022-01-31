@@ -9,7 +9,7 @@ public class qrb
   
   public qro a(int paramInt, @NotNull RecyclerView paramRecyclerView)
   {
-    return a(paramInt, GalleryFragment.a(this.a).getItemCount(), 4, bcwh.a(this.a.a, 8.0F));
+    return a(paramInt, GalleryFragment.a(this.a).getItemCount(), 4, bdaq.a(this.a.a, 8.0F));
   }
 }
 

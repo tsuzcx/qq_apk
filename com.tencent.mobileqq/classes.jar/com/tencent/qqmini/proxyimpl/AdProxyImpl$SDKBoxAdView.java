@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import aais;
+import aanh;
 import android.app.Activity;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +18,7 @@ class AdProxyImpl$SDKBoxAdView
   AdProxy.IBoxADLisener mBoxListener;
   int mDeviceOrientation;
   String mEntryPath;
-  aais mGdtBoxView;
+  aanh mGdtBoxView;
   String mGdtCookie;
   String mPosid;
   String mRefer;

@@ -1,21 +1,32 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPromoteTaskList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class vgt
-  extends unj<vcf, vcg>
+  extends vez<qqstory_service.ReqGetPromoteTaskList>
 {
-  public vgt(StoryShareEncryptHelper.2 param2, long paramLong, bepp parambepp) {}
+  public static final String b = uqn.a("StorySvc.get_promote_tasklist");
   
-  public void a(@NonNull vcf paramvcf, @Nullable vcg paramvcg, @NonNull ErrorMessage paramErrorMessage)
+  public vgt(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "decrypt done costTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", resp:" + paramvcg);
-    }
-    wta.a("StoryShareEncryptHelper", "decrypt", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareUtilStoryShareEncryptHelper$2.a.a(paramvcg, this.jdField_a_of_type_Bepp);
+    super(b, new qqstory_service.ReqGetPromoteTaskList(), null);
+    ((qqstory_service.ReqGetPromoteTaskList)this.a).bytes_cookie.set(ByteStringMicro.copyFromUtf8(paramString));
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    return new vgu(paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    wxe.a("GetPromoteTaskRequest", "encode: %s", this);
+    return super.a();
+  }
+  
+  public String toString()
+  {
+    return xrq.a(this.a);
   }
 }
 

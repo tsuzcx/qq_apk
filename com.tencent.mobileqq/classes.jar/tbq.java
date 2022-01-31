@@ -21,7 +21,7 @@ import com.tencent.image.URLDrawableDownListener;
 import com.tencent.image.URLImageView;
 
 public class tbq
-  extends ydh
+  extends yhq
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
@@ -132,14 +132,14 @@ public class tbq
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559866, null, false);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559865, null, false);
     setContentView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380258));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380259));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380244));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380245));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380247));
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380253);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380316));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380317));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380302));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380303));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380305));
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380311);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
     localRelativeLayout.setOnClickListener(this);
@@ -169,7 +169,7 @@ public class tbq
   public void a(stPublisherRsp paramstPublisherRsp)
   {
     this.jdField_a_of_type_UserGrowthStPublisherRsp = paramstPublisherRsp;
-    paramstPublisherRsp = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841377);
+    paramstPublisherRsp = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841378);
     if ((this.jdField_a_of_type_UserGrowthStPublisherRsp != null) && (this.jdField_a_of_type_UserGrowthStPublisherRsp.guide != null))
     {
       String str = this.jdField_a_of_type_UserGrowthStPublisherRsp.guide.imageUrl;
@@ -196,11 +196,11 @@ public class tbq
     {
     default: 
       return;
-    case 2131380247: 
+    case 2131380305: 
       d();
       c();
       return;
-    case 2131380253: 
+    case 2131380311: 
       a("gzh_click", "publish_popup", 1000001);
       c();
       return;

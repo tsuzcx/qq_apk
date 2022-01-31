@@ -1,14 +1,35 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.view.View;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
 
-class aubh
-  implements aubq<Pair<String, Integer>, EmoticonPackage>
+public class aubh
+  extends PopupWindow
 {
-  aubh(aube paramaube) {}
+  private PopupWindow.OnDismissListener a;
   
-  public EmoticonPackage a(Pair<String, Integer> paramPair)
+  public aubh(View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    return this.a.c((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    super(paramView, paramInt1, paramInt2, paramBoolean);
+  }
+  
+  public void a()
+  {
+    super.dismiss();
+  }
+  
+  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
+  {
+    this.a = paramOnDismissListener;
+  }
+  
+  public void dismiss()
+  {
+    if (this.a != null)
+    {
+      this.a.onDismiss();
+      return;
+    }
+    super.dismiss();
   }
 }
 

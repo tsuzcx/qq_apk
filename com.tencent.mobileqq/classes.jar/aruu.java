@@ -1,31 +1,48 @@
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class aruu
-  extends awfw
+  implements View.OnClickListener
 {
-  aruu(arut paramarut, MessageForPic paramMessageForPic) {}
+  aruu(arut paramarut) {}
   
-  public void a(int paramInt, awfd paramawfd)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Arut.jdField_a_of_type_Aruy != null) {
-      this.jdField_a_of_type_Arut.jdField_a_of_type_Aruy.b();
+    if (!this.a.a) {
+      return;
     }
-    bame.d(baul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, 1, null).toString().toString());
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardBaseOption", 2, "DownloadBigPic finish");
+    int i = 4;
+    if (arut.a(this.a) == 1)
+    {
+      i = 2;
+      if (!arut.a(this.a).equals(alof.z)) {
+        break label131;
+      }
+      i = 3;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
-      arum.a(this.jdField_a_of_type_Arut.jdField_a_of_type_Arum, agem.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic), this.jdField_a_of_type_Arut.jdField_a_of_type_JavaLangString);
+    label131:
+    for (;;)
+    {
+      long l = arbs.b();
+      azqs.b(null, "dc00898", "", "", "0X800AA92", "0X800AA92", i, 0, "" + l, "0", "", "");
+      if (arut.a(this.a) == 1)
+      {
+        arut.a(this.a);
+        return;
+        if (arut.a(this.a) != 0) {
+          break;
+        }
+        i = 1;
+        break;
+      }
+      arut.b(this.a);
+      return;
     }
   }
-  
-  public void a_(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aruu
  * JD-Core Version:    0.7.0.1
  */

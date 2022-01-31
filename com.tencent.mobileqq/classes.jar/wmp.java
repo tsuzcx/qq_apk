@@ -1,40 +1,35 @@
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
-import android.widget.ImageView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
 public class wmp
-  extends xqu<wms>
+  extends QQUIEventReceiver<wml, wmo>
 {
-  private LruCache<wms, Drawable> a = new wmq(this, 5242880);
-  
-  public LruCache<wms, Drawable> a()
+  public wmp(wml paramwml)
   {
-    return this.a;
+    super(paramwml);
   }
   
-  public xqv a(ImageView paramImageView, wms paramwms)
+  public void a(@NonNull wml paramwml, @NonNull wmo paramwmo)
   {
-    return new wmt(paramImageView, paramwms);
-  }
-  
-  public void a()
-  {
-    super.a();
-    b();
-  }
-  
-  public void b()
-  {
-    super.b();
-    try
+    if (paramwmo.jdField_a_of_type_Boolean)
     {
-      this.a.evictAll();
+      if (paramwmo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+      {
+        wml.a(paramwml, paramwmo.jdField_a_of_type_JavaUtilList, true);
+        wml.a(paramwml).a(true);
+      }
       return;
     }
-    catch (Exception localException)
-    {
-      this.a = new wmr(this, 5242880);
-    }
+    wml.a(paramwml, paramwmo);
+    wml.a(paramwml).remove(wml.b());
+    wml.a(paramwml);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wmo.class;
   }
 }
 

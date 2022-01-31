@@ -1,24 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adym
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adym(TroopInfoActivity paramTroopInfoActivity) {}
+  public adym(SoundAndVibrateActivity paramSoundAndVibrateActivity, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface = this.a.app;
-    String str2 = this.a.a.troopUin;
-    if (this.a.a.bOwner) {}
-    for (String str1 = "0";; str1 = "1")
+    if (NotifyPushSettingActivity.a())
     {
-      azmj.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "0", "");
-      paramDialogInterface.dismiss();
+      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setChecked(false);
+      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(8);
+      SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.getString(2131719358), "qqsetting_notify_showcontent_key", paramBoolean);
+      if (!paramBoolean) {
+        break label124;
+      }
+    }
+    label124:
+    for (int i = 1;; i = 0)
+    {
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
       return;
+      if (paramBoolean)
+      {
+        SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(0);
+        break;
+      }
+      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(8);
+      break;
     }
   }
 }

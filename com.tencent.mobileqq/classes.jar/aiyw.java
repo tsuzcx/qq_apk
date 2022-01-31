@@ -1,33 +1,20 @@
-import android.graphics.Color;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment.1;
 
 public class aiyw
-  implements aiyb
+  implements View.OnClickListener
 {
-  public aiyw(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
+  public aiyw(WordChainHbFragment.1 param1, TextView paramTextView, aiza paramaiza) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineBegin---");
-    }
-    DrawRedpacketPannelPreviewFragment.a(this.a, false);
-    DrawRedpacketPannelPreviewFragment.a(this.a);
-    DrawRedpacketPannelPreviewFragment.c(this.a).setTextColor(Color.parseColor("#878B99"));
-    DrawRedpacketPannelPreviewFragment.c(this.a).setText(alpo.a(2131703915));
+    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0);
+    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_Aiza);
+    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0, this.jdField_a_of_type_AndroidWidgetTextView);
   }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineFinish---");
-    }
-    DrawRedpacketPannelPreviewFragment.c(this.a);
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
 }
 
 

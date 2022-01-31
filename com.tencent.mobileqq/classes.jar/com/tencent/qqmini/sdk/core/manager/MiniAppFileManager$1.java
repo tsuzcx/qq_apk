@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.core.manager;
 
-import bgjm;
-import bgkv;
+import bgnt;
+import bgpc;
 
 public class MiniAppFileManager$1
   implements Runnable
 {
-  public MiniAppFileManager$1(bgjm parambgjm) {}
+  public MiniAppFileManager$1(bgnt parambgnt) {}
   
   public void run()
   {
-    bgkv.a(bgjm.a(this.this$0, 0), false);
+    bgpc.a(bgnt.a(this.this$0, 0), false);
   }
 }
 

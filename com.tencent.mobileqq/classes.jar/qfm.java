@@ -11,7 +11,7 @@ public class qfm
   
   public void a()
   {
-    this.jdField_a_of_type_Qfu.a(BaseApplicationImpl.getApplication().getString(2131718996));
+    this.jdField_a_of_type_Qfu.a(BaseApplicationImpl.getApplication().getString(2131719008));
   }
   
   public void a(int paramInt, long paramLong, String paramString1, qfz paramqfz, String paramString2, String paramString3, String paramString4)

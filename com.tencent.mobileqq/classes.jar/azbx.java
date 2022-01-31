@@ -1,74 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.servlet.QZoneManagerImp.1.1;
 
 public class azbx
+  extends ContentObserver
 {
-  private static volatile azbx jdField_a_of_type_Azbx;
-  azbz jdField_a_of_type_Azbz = null;
-  azcc jdField_a_of_type_Azcc = null;
-  
-  public static azbx a()
+  azbx(azbw paramazbw, Handler paramHandler)
   {
-    if (jdField_a_of_type_Azbx == null) {}
-    try
-    {
-      if (jdField_a_of_type_Azbx == null)
-      {
-        azbx localazbx = new azbx();
-        localazbx.b();
-        jdField_a_of_type_Azbx = localazbx;
-      }
-      return jdField_a_of_type_Azbx;
-    }
-    finally {}
+    super(paramHandler);
   }
   
-  public static void a()
+  public void onChange(boolean paramBoolean)
   {
-    azbx localazbx = a();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGesture", 4, String.format("onDownloadRequest, mStatusGesture[%s]", new Object[] { Integer.valueOf(localazbx.jdField_a_of_type_Azcc.a) }));
-    }
-    azbz.a();
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Azcc = new azcc();
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      this.jdField_a_of_type_Azbz = new azbz();
-    }
-  }
-  
-  public void a(boolean paramBoolean, azby paramazby)
-  {
-    this.jdField_a_of_type_Azcc.a(paramBoolean, paramazby);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Azcc.a();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Azcc.d();
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Azcc.b();
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Azcc.a == 1;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_a_of_type_Azcc.c();
+    super.onChange(paramBoolean);
+    ThreadManager.post(new QZoneManagerImp.1.1(this), 8, null, true);
   }
 }
 

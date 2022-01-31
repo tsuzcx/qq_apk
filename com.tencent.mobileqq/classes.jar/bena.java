@@ -1,12 +1,8 @@
-import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
+import android.view.View;
 
 public abstract interface bena
 {
-  public abstract void a();
-  
-  public abstract void a(boolean paramBoolean, String paramString, mobile_sub_get_photo_wall_rsp parammobile_sub_get_photo_wall_rsp);
-  
-  public abstract boolean a();
+  public abstract void a(View paramView);
 }
 
 

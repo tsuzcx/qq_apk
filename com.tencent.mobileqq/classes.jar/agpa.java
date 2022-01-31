@@ -1,22 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
 class agpa
-  implements Animation.AnimationListener
+  implements aznz
 {
-  agpa(agot paramagot) {}
+  agpa(agoz paramagoz) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.a.W = false;
-    this.a.af = false;
-    this.a.d(this.a.o);
-    this.a.s = 1;
+    agoz.a(this.a);
+    this.a.I();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void b()
+  {
+    this.a.I();
+  }
 }
 
 

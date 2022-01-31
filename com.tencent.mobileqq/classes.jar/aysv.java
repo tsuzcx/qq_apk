@@ -1,71 +1,126 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.SquareImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class aysv
-  extends aysb
+public abstract class aysv
+  implements ayso
 {
-  public int a;
-  public FrameLayout a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public SquareImageView a;
-  public ImageView b;
-  public ImageView d;
+  private int jdField_a_of_type_Int;
+  protected Context a;
+  private aysq jdField_a_of_type_Aysq;
+  private aysu jdField_a_of_type_Aysu = new aysu();
+  protected QQAppInterface a;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<aysp> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public aysv(ViewGroup paramViewGroup, int paramInt)
+  public aysq a()
   {
-    super(paramViewGroup, paramInt);
+    return this.jdField_a_of_type_Aysq;
   }
   
-  protected void a()
+  protected abstract aysq a(Context paramContext);
+  
+  public String a()
   {
-    super.a();
-    Object localObject = a(this.c);
-    this.b = ((ImageView)((View)localObject).findViewById(2131364891));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131367808));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131377394));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)((View)localObject).findViewById(2131371964));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)((View)localObject).findViewById(2131376741));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131368007));
-    this.d = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131369119));
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    localObject = a();
-    TextView localTextView1 = b();
-    TextView localTextView2 = c();
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
+    return this.jdField_a_of_type_Aysu.a();
+  }
+  
+  protected void a() {}
+  
+  public void a(aysp paramaysp)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaysp);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "create, serverdata:" + paramString1 + "  extredata:" + paramString2 + " config:" + paramString3 + " templateid:" + paramInt);
+    }
+    this.jdField_a_of_type_Aysu.a(true);
+    this.jdField_a_of_type_Aysu.a(paramString1);
+    this.jdField_a_of_type_Aysu.b(paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Aysq = a(paramContext);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "updateData, serverdata:" + paramString1 + "  extredata:" + paramString2 + " config:" + paramString3);
+    }
+    this.jdField_a_of_type_Aysu.a(paramString1);
+    this.jdField_a_of_type_Aysu.b(paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString3;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "pause");
+    }
+  }
+  
+  protected void b(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "fireEvent, key:" + paramString1 + " value:" + paramString2);
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      if (localObject != null) {
-        ((TextView)localObject).setTextColor(((View)localObject).getContext().getResources().getColor(2131166839));
-      }
-      if (localTextView1 != null) {
-        ((TextView)localTextView1).setTextColor(localTextView1.getContext().getResources().getColor(2131166838));
-      }
-      if (localTextView2 != null) {
-        ((TextView)localTextView2).setTextColor(localTextView2.getContext().getResources().getColor(2131166838));
+      aysp localaysp = (aysp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localaysp != null) {
+        localaysp.a(this, paramString1, paramString2);
       }
     }
-    do
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "resume");
+    }
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "destroy");
+    }
+    a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    if (this.jdField_a_of_type_Aysq != null)
     {
-      return;
-      if (localObject != null) {
-        ((TextView)localObject).setTextColor(Color.parseColor("#262626"));
+      this.jdField_a_of_type_Aysq.f();
+      this.jdField_a_of_type_Aysq = null;
+    }
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Aysu = null;
+  }
+  
+  protected void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "fireOnRichViewChangedEvent");
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      aysp localaysp = (aysp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localaysp != null) {
+        localaysp.a(this);
       }
-      if (localTextView1 != null) {
-        ((TextView)localTextView1).setTextColor(Color.parseColor("#737373"));
-      }
-    } while (localTextView2 == null);
-    ((TextView)localTextView2).setTextColor(Color.parseColor("#737373"));
+    }
   }
 }
 

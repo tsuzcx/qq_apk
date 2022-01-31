@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
-import ajfr;
-import alpo;
+import ajkg;
+import alud;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -18,22 +18,22 @@ import android.os.Looper;
 import android.os.ResultReceiver;
 import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
-import anxn;
-import bdar;
-import bdvr;
-import bfei;
-import bfin;
-import bfju;
-import bfjy;
-import bfka;
-import bgjd;
-import bglq;
-import bgwg;
-import bgxk;
-import bgyg;
-import bhif;
-import bhij;
-import bizf;
+import aobw;
+import bdfa;
+import beaa;
+import bfir;
+import bfmw;
+import bfod;
+import bfoh;
+import bfoj;
+import bgnk;
+import bgpx;
+import bhan;
+import bhbr;
+import bhcn;
+import bhmm;
+import bhmq;
+import bjdm;
 import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -108,7 +108,7 @@ public class MiniAppProxyImpl
   private ArrayList<Integer> backHomeSceneList = new MiniAppProxyImpl.1(this);
   private boolean isMiniMsgTabShow;
   private MiniAppInfo mDownLoadMiniAppInfo;
-  private bfka mDownloadListener = new MiniAppProxyImpl.12(this);
+  private bfoj mDownloadListener = new MiniAppProxyImpl.12(this);
   private String mDownloadNativeAppId;
   private String mDownloadPackageName;
   private String mDownloadUrl;
@@ -122,17 +122,17 @@ public class MiniAppProxyImpl
     this.mDownloadNativeAppId = paramString1;
     this.mDownloadPackageName = paramString2;
     Bundle localBundle = new Bundle();
-    localBundle.putString(bfjy.b, paramString1);
-    localBundle.putString(bfjy.j, paramString4);
-    localBundle.putString(bfjy.f, paramString2);
-    localBundle.putInt(bfjy.k, 2);
-    localBundle.putString(bfjy.i, "MiniApp");
-    localBundle.putString(bfjy.l, paramString3);
-    localBundle.putInt(bfjy.H, 1);
-    bfju.a(this.mDownloadListener);
-    bfju.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
+    localBundle.putString(bfoh.b, paramString1);
+    localBundle.putString(bfoh.j, paramString4);
+    localBundle.putString(bfoh.f, paramString2);
+    localBundle.putInt(bfoh.k, 2);
+    localBundle.putString(bfoh.i, "MiniApp");
+    localBundle.putString(bfoh.l, paramString3);
+    localBundle.putInt(bfoh.H, 1);
+    bfod.a(this.mDownloadListener);
+    bfod.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
     QQToast.a(paramActivity, "开始下载", 1).a();
-    bgxk.a(this.mDownLoadMiniAppInfo, null, "launchapp", "downloadapp", "qqdownload");
+    bhbr.a(this.mDownLoadMiniAppInfo, null, "launchapp", "downloadapp", "qqdownload");
   }
   
   private void openAppDetailPage(Context paramContext, String paramString1, String paramString2)
@@ -146,14 +146,14 @@ public class MiniAppProxyImpl
     localBundle.putString("big_brother_source_key", "biz_src_miniapp");
     if ((paramContext instanceof BasePluginActivity))
     {
-      bfei.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
-      bgxk.a(this.mDownLoadMiniAppInfo, null, "launchapp", "downloadapp", "yybdownload");
+      bfir.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
+      bhbr.a(this.mDownLoadMiniAppInfo, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
     if ((paramContext instanceof Activity))
     {
-      bfei.b((Activity)paramContext, localBundle);
-      bgxk.a(this.mDownLoadMiniAppInfo, null, "launchapp", "downloadapp", "yybdownload");
+      bfir.b((Activity)paramContext, localBundle);
+      bhbr.a(this.mDownLoadMiniAppInfo, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
     QLog.e("MiniAppProxyImpl", 2, "onOpenThridApp mContext 必现是一个Activity");
@@ -165,7 +165,7 @@ public class MiniAppProxyImpl
     while (!this.miniRuntime.getMiniAppInfo().isEngineTypeMiniGame()) {
       return;
     }
-    bgyg.a(this.miniRuntime.getMiniAppInfo(), bgyg.a(this.miniRuntime.getMiniAppInfo()), null, "user_click", "more_button", paramString);
+    bhcn.a(this.miniRuntime.getMiniAppInfo(), bhcn.a(this.miniRuntime.getMiniAppInfo()), null, "user_click", "more_button", paramString);
   }
   
   private void sendSetUserAppTopRequest(MiniAppInfo paramMiniAppInfo)
@@ -208,7 +208,7 @@ public class MiniAppProxyImpl
       QLog.i("MiniAppProxyImpl", 1, "shouldShowKingCardTip， not wangka app");
       return false;
     }
-    i = bdvr.a();
+    i = beaa.a();
     QLog.i("MiniAppProxyImpl", 1, "shouldShowKingCardTip， king card status = " + i);
     if (i == 1) {}
     for (;;)
@@ -239,14 +239,14 @@ public class MiniAppProxyImpl
         localUnsupportedEncodingException.printStackTrace();
       }
     }
-    localObject = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + localMiniAppInfo.appId + "&openid=" + MainPageFragment.getUin() + "&avatar=" + paramIMiniRuntime + alpo.a(2131701725);
+    localObject = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + localMiniAppInfo.appId + "&openid=" + MainPageFragment.getUin() + "&avatar=" + paramIMiniRuntime + alud.a(2131701737);
     paramIMiniRuntime = new Intent(localActivity, QQBrowserActivity.class);
     paramIMiniRuntime.putExtra("url", (String)localObject);
     localObject = new Bundle();
     ((Bundle)localObject).putBoolean("hide_more_button", true);
     paramIMiniRuntime.putExtras((Bundle)localObject);
     localActivity.startActivity(paramIMiniRuntime);
-    bgyg.a(localMiniAppInfo, bgyg.a(localMiniAppInfo), null, "user_click", "more_button", "report");
+    bhcn.a(localMiniAppInfo, bhcn.a(localMiniAppInfo), null, "user_click", "more_button", "report");
   }
   
   public boolean addShortcut(Context paramContext, MiniAppInfo paramMiniAppInfo, AsyncResult paramAsyncResult)
@@ -257,7 +257,7 @@ public class MiniAppProxyImpl
   
   public boolean chooseLocation(Context paramContext, AsyncResult paramAsyncResult)
   {
-    bgjd.a().a(new MiniAppProxyImpl.11(this, paramAsyncResult));
+    bgnk.a().a(new MiniAppProxyImpl.11(this, paramAsyncResult));
     paramAsyncResult = new Intent(paramContext, MapActivity.class);
     paramAsyncResult.putExtra("key_type", 2);
     ((BaseActivity)paramContext).startActivityForResult(paramAsyncResult, 3);
@@ -296,9 +296,9 @@ public class MiniAppProxyImpl
       int i;
       if ((!bool2) && (localObject != null))
       {
-        bool3 = ((anxn)localObject).a();
+        bool3 = ((aobw)localObject).a();
         if (bool3) {
-          if (((anxn)localObject).c())
+          if (((aobw)localObject).c())
           {
             i = 2;
             label145:
@@ -341,7 +341,7 @@ public class MiniAppProxyImpl
           ((Intent)localObject).putExtra("key_color_note", i);
           ((Intent)localObject).putExtra("is_limited_access_app", bool2);
           ((Intent)localObject).putExtra("showRestartMiniApp", bool1);
-          bgjd.a().a(new MiniAppProxyImpl.7(this));
+          bgnk.a().a(new MiniAppProxyImpl.7(this));
           MiniChatActivity.a(localActivity, (Intent)localObject, 9527);
           QMLog.d("MiniAppProxyImpl", "set isMiniMsgTabShow true");
           this.isMiniMsgTabShow = true;
@@ -381,7 +381,7 @@ public class MiniAppProxyImpl
   public boolean enterQRCode(Context paramContext, boolean paramBoolean, AsyncResult paramAsyncResult)
   {
     BaseActivity localBaseActivity = (BaseActivity)paramContext;
-    if (!ajfr.a(localBaseActivity))
+    if (!ajkg.a(localBaseActivity))
     {
       paramAsyncResult.onReceiveResult(false, null);
       return true;
@@ -432,7 +432,7 @@ public class MiniAppProxyImpl
   
   public String getAppVersion()
   {
-    return "8.3.3.4515";
+    return "8.3.5.4555";
   }
   
   public Drawable getDrawable(Context paramContext, String paramString, int paramInt1, int paramInt2, Drawable paramDrawable)
@@ -443,7 +443,7 @@ public class MiniAppProxyImpl
     paramContext.mRequestHeight = paramInt2;
     paramContext.mFailedDrawable = paramDrawable;
     paramContext.mLoadingDrawable = paramDrawable;
-    if (bgwg.a(paramString)) {
+    if (bhan.a(paramString)) {
       return URLDrawable.getDrawable(paramString, paramContext);
     }
     return URLDrawable.getFileDrawable(paramString, paramContext);
@@ -456,7 +456,7 @@ public class MiniAppProxyImpl
   
   public String getImei()
   {
-    return bfin.c();
+    return bfmw.c();
   }
   
   public boolean getLocation(Context paramContext, String paramString, boolean paramBoolean, AsyncResult paramAsyncResult)
@@ -479,12 +479,12 @@ public class MiniAppProxyImpl
     return 0;
   }
   
-  public bhij getMoreItemSelectedListener()
+  public bhmq getMoreItemSelectedListener()
   {
     return null;
   }
   
-  public ArrayList<MoreItem> getMoreItems(bhif parambhif)
+  public ArrayList<MoreItem> getMoreItems(bhmm parambhmm)
   {
     return null;
   }
@@ -532,7 +532,7 @@ public class MiniAppProxyImpl
   
   public String getPlatformQUA()
   {
-    return bizf.a();
+    return bjdm.a();
   }
   
   public String getSoPath()
@@ -625,7 +625,7 @@ public class MiniAppProxyImpl
       localShareState.showDebug = true;
       localShareState.showMonitor = true;
     }
-    if (bglq.a("qqminiapp", "mini_app_share_to_wx_switcher", 1) != 1)
+    if (bgpx.a("qqminiapp", "mini_app_share_to_wx_switcher", 1) != 1)
     {
       localShareState.withShareWeChatFriend = false;
       localShareState.withShareWeChatMoment = false;
@@ -644,7 +644,7 @@ public class MiniAppProxyImpl
     paramIChoosePhotoListner.putExtra("PhotoConst.DEST_BROADCAST_ACTION_NAME", "micro_api_choose_image");
     paramIChoosePhotoListner.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
     paramContext.startActivity(paramIChoosePhotoListner);
-    bdar.anim((Activity)paramContext, false, true);
+    bdfa.anim((Activity)paramContext, false, true);
     return true;
   }
   

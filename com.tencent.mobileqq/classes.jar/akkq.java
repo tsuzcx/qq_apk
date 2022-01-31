@@ -1,46 +1,49 @@
 import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import org.json.JSONObject;
+import android.view.View.OnClickListener;
+import com.tencent.widget.SimpleTextView;
 
-public final class akkq
-  implements absf
+class akkq
+  extends bibk
 {
-  public akkq(View paramView, absi paramabsi, long paramLong, int paramInt) {}
-  
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  akkq(akkn paramakkn, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Absi, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location failed," + paramString);
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public void onPermission(int paramInt)
+  public View a(int paramInt, Object paramObject, bibj parambibj, View.OnClickListener paramOnClickListener)
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Absi, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location permision code");
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    double d1 = paramJSONObject.optDouble("altitude", 0.0D);
-    double d2 = paramJSONObject.optDouble("latitude", 0.0D);
-    double d3 = paramJSONObject.optDouble("longitude", 0.0D);
-    double d4 = paramJSONObject.optDouble("horizontalAccuracy", 0.0D);
-    paramJSONObject.optDouble("verticalAccuracy", 0.0D);
-    paramJSONObject.optDouble("accuracy", 0.0D);
-    double d5 = paramJSONObject.optDouble("speed", 0.0D);
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      ApolloRender.getLocationCity(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Absi, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D);
-      return;
+    parambibj = super.a(paramInt, paramObject, parambibj, paramOnClickListener);
+    if ((parambibj instanceof SimpleTextView)) {
+      parambibj.setTag(paramObject);
     }
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Absi, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D, "", 0, "location success");
+    return parambibj;
   }
   
-  public void onTrigger(JSONObject paramJSONObject) {}
+  public void a(int paramInt, Object paramObject, bibj[] paramArrayOfbibj)
+  {
+    paramInt = 0;
+    if ((paramArrayOfbibj == null) || (paramArrayOfbibj.length <= 0)) {}
+    for (;;)
+    {
+      return;
+      if (paramArrayOfbibj.length < 0)
+      {
+        paramArrayOfbibj[0].b = 0;
+        paramArrayOfbibj[0].a = 0;
+        paramInt = 1;
+      }
+      while (paramInt < paramArrayOfbibj.length)
+      {
+        paramArrayOfbibj[paramInt].b = -1;
+        paramArrayOfbibj[paramInt].a = -1;
+        paramInt += 1;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akkq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.AccountDetail.model;
 
-import alvc;
-import awbw;
+import alzr;
+import awgf;
 import com.tencent.biz.pubaccount.AccountDetail.bean.DynamicInfoEntity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ import nia;
 public class AccountDetailDynamicDataManager$2
   implements Runnable
 {
-  public AccountDetailDynamicDataManager$2(nhz paramnhz, long paramLong, QQAppInterface paramQQAppInterface, alvc paramalvc) {}
+  public AccountDetailDynamicDataManager$2(nhz paramnhz, long paramLong, QQAppInterface paramQQAppInterface, alzr paramalzr) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class AccountDetailDynamicDataManager$2
       int i = nia.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, ((DynamicInfoEntity)localObject).dynamicInfoData, true);
       localObject = nhz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_Long);
       if ((i == 0) && (localObject != null) && (!((nhp)localObject).a().isEmpty())) {
-        this.jdField_a_of_type_Alvc.a(true, i);
+        this.jdField_a_of_type_Alzr.a(true, i);
       }
     }
   }

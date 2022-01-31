@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
-import wsv;
-import wwo;
+import wxe;
+import xax;
 
 public class EditVideoPlayer$5
   implements Runnable
 {
-  public EditVideoPlayer$5(wwo paramwwo, int paramInt, byte[] paramArrayOfByte) {}
+  public EditVideoPlayer$5(xax paramxax, int paramInt, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    wsv.a("Q.qqstory.record.EditVideoPlayer", "setMosaic %d", Integer.valueOf(this.jdField_a_of_type_Int));
+    wxe.a("Q.qqstory.record.EditVideoPlayer", "setMosaic %d", Integer.valueOf(this.jdField_a_of_type_Int));
     VideoSourceHelper.nativeSetMosaic(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
   }
 }

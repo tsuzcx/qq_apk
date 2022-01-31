@@ -1,17 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
-class ahnf
-  implements View.OnClickListener
+public class ahnf
+  implements DialogInterface.OnClickListener
 {
-  ahnf(ahnd paramahnd, int paramInt) {}
+  public ahnf(SystemMsgListView paramSystemMsgListView) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Ahnd.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int] = 2;
-    this.jdField_a_of_type_Ahnd.notifyDataSetChanged();
-    int i = ahnd.a(this.jdField_a_of_type_Ahnd, this.jdField_a_of_type_Int);
-    new azmo(this.jdField_a_of_type_Ahnd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("Grp_contactlist").d("clk_inactive").a(new String[] { "", String.valueOf(i) }).a();
+    if (paramInt == 1)
+    {
+      paramDialogInterface = new Intent(this.a.getContext(), BindNumberActivity.class);
+      paramDialogInterface.putExtra("kSrouce", 17);
+      this.a.a(paramDialogInterface, 230);
+      azqs.b(this.a.a, "dc00898", "", "", "0X80077C9", "0X80077C9", 0, 0, "", "", "", "");
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    azqs.b(this.a.a, "dc00898", "", "", "0X80077CA", "0X80077CA", 0, 0, "", "", "", "");
   }
 }
 

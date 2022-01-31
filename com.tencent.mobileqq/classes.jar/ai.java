@@ -2,7 +2,7 @@ import android.os.AsyncTask;
 import com.dataline.activities.LiteActivity;
 
 public class ai
-  implements army
+  implements arrh
 {
   public ai(LiteActivity paramLiteActivity, AsyncTask paramAsyncTask, int paramInt) {}
   

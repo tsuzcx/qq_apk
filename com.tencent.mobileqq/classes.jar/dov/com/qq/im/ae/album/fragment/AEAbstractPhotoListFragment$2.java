@@ -1,11 +1,11 @@
 package dov.com.qq.im.ae.album.fragment;
 
-import bkme;
+import bkql;
 
 public class AEAbstractPhotoListFragment$2
   implements Runnable
 {
-  public AEAbstractPhotoListFragment$2(bkme parambkme) {}
+  public AEAbstractPhotoListFragment$2(bkql parambkql) {}
   
   public void run()
   {

@@ -1,17 +1,15 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
 
-class afmq
-  extends afpq
+public class afmq
+  implements bayi
 {
-  afmq(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  public afmq(FlashPicItemBuilder paramFlashPicItemBuilder) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(ArrayList<MessageRecord> paramArrayList)
   {
-    return new afjb(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.a.b();
   }
 }
 

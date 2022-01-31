@@ -1,6 +1,8 @@
+import android.hardware.Camera;
+
 public abstract interface axqv
 {
-  public abstract void a();
+  public abstract void a(byte[] paramArrayOfByte, Camera paramCamera);
 }
 
 

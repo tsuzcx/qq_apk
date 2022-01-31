@@ -1,18 +1,19 @@
-class bbjy
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
+
+public final class bbjy
+  implements QQPermissionCallback
 {
-  final float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  float b = 0.0F;
+  public bbjy(bbkd parambbkd, BaseActivity paramBaseActivity) {}
   
-  public bbjy(bbjv parambbjv, float paramFloat)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    bdgm.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public float a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return this.jdField_a_of_type_Int * this.jdField_a_of_type_Float * 0.4F + this.b * 0.6F;
+    this.jdField_a_of_type_Bbkd.a(bcmc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, alof.bd, 1001));
   }
 }
 

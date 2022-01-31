@@ -1,14 +1,6 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-
-public class bjia
-  implements bjib
+public abstract interface bjia
 {
-  public bjia(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
-  
-  public void a()
-  {
-    QzoneWebMusicJsPlugin.access$100(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(bjhz parambjhz, boolean paramBoolean);
 }
 
 

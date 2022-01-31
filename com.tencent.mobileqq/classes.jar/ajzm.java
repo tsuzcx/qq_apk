@@ -1,22 +1,15 @@
-import android.view.SurfaceView;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
 
 public class ajzm
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends altm
 {
-  public ajzm(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public ajzm(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public void onGlobalLayout()
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.e = this.a.a.getWidth();
-    this.a.f = this.a.a.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.e + ",mSurfaceViewHeight:" + this.a.f);
+    if (paramBoolean1) {
+      FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
     }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

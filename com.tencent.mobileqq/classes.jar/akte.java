@@ -1,34 +1,20 @@
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import org.json.JSONObject;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
-class akte
-  implements absf
+public class akte
+  extends RecyclerView.ViewHolder
 {
-  akte(akta paramakta, String paramString, long paramLong, absi paramabsi, CmGameInitParams paramCmGameInitParams) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public akte(aktd paramaktd, View paramView)
   {
-    akta.a(this.jdField_a_of_type_Akta, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
+    super(paramView);
+    if (paramView == aktd.a(paramaktd)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364383));
   }
-  
-  public void onPermission(int paramInt)
-  {
-    akta.a(this.jdField_a_of_type_Akta, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    String str = paramJSONObject.optString("openid");
-    paramJSONObject = paramJSONObject.optString("access_token", "");
-    akta.a(this.jdField_a_of_type_Akta, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Absi);
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.openId = str;
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessToken = paramJSONObject;
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessTokenRet = 1;
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

@@ -1,43 +1,18 @@
-public class wyu
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+
+public final class wyu
+  implements Parcelable.Creator<EditTakeVideoSource>
 {
-  private static volatile wyu jdField_a_of_type_Wyu;
-  private wyv jdField_a_of_type_Wyv;
-  
-  public static wyu a()
+  public EditTakeVideoSource a(Parcel paramParcel)
   {
-    if (jdField_a_of_type_Wyu == null) {}
-    try
-    {
-      if (jdField_a_of_type_Wyu == null) {
-        jdField_a_of_type_Wyu = new wyu();
-      }
-      return jdField_a_of_type_Wyu;
-    }
-    finally {}
+    return new EditTakeVideoSource(paramParcel);
   }
   
-  public void a()
+  public EditTakeVideoSource[] a(int paramInt)
   {
-    this.jdField_a_of_type_Wyv = null;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_Wyv != null) {
-      this.jdField_a_of_type_Wyv.a(paramString1, paramString2);
-    }
-  }
-  
-  public void a(wyv paramwyv)
-  {
-    this.jdField_a_of_type_Wyv = paramwyv;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Wyv != null) {
-      this.jdField_a_of_type_Wyv.ac_();
-    }
+    return new EditTakeVideoSource[paramInt];
   }
 }
 

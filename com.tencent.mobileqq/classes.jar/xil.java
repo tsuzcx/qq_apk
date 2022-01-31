@@ -1,15 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
+import java.util.Iterator;
+import java.util.List;
 
-class xil
-  implements View.OnClickListener
+public class xil
+  implements ViewPager.OnPageChangeListener
 {
-  xil(xij paramxij, int paramInt) {}
+  public xil(FaceViewPager paramFaceViewPager) {}
   
-  public void onClick(View paramView)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (xij.a(this.jdField_a_of_type_Xij) != null) {
-      xij.a(this.jdField_a_of_type_Xij).a(this.jdField_a_of_type_Int);
+    Iterator localIterator = FaceViewPager.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((xim)localIterator.next()).b(paramInt);
     }
   }
 }

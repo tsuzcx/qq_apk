@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acqc
-  extends alox
+class acqc
+  implements DialogInterface.OnClickListener
 {
-  public acqc(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  acqc(acqb paramacqb) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

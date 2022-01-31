@@ -28,7 +28,7 @@ class sam
   
   private View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560013, (ViewGroup)this.jdField_a_of_type_AndroidViewView, false);
+    return LayoutInflater.from(paramContext).inflate(2131560012, (ViewGroup)this.jdField_a_of_type_AndroidViewView, false);
   }
   
   private void a(String paramString, rzy paramrzy, ArticleInfo paramArticleInfo)
@@ -51,7 +51,7 @@ class sam
     for (;;)
     {
       if (i < paramString.length()) {
-        if (!bdje.c(paramString.charAt(i))) {
+        if (!bdnn.c(paramString.charAt(i))) {
           break label144;
         }
       }
@@ -95,7 +95,7 @@ class sam
         localView.setVisibility(0);
         rzy localrzy = (rzy)paramBaseData1.jdField_a_of_type_JavaUtilList.get(i);
         localView.setTag(localrzy);
-        ((TextView)localView.findViewById(2131375222)).setText(a(localrzy.jdField_a_of_type_JavaLangString));
+        ((TextView)localView.findViewById(2131375273)).setText(a(localrzy.jdField_a_of_type_JavaLangString));
         if ((!paramBoolean) && (!paramBaseData1.jdField_a_of_type_Boolean))
         {
           a("0X800919F", localrzy, paramBaseData2.b);

@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bghn;
-import bgkd;
+import bglu;
+import bgok;
 import com.tencent.qqmini.sdk.core.manager.VoIPManager.EventListener;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONArray;

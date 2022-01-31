@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.NativeAd.util;
 
 import android.text.TextUtils;
-import bfgi;
+import bfkr;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import nop;
@@ -19,7 +19,7 @@ public class ADBaseAppDownloadManager$2
     int j;
     if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 3)))
     {
-      localObject = bfgi.a().a((String)localObject);
+      localObject = bfkr.a().a((String)localObject);
       if (localObject != null)
       {
         i = (int)((float)((TMAssistantDownloadTaskInfo)localObject).mReceiveDataLen / (float)((TMAssistantDownloadTaskInfo)localObject).mTotalDataLen * 100.0F);

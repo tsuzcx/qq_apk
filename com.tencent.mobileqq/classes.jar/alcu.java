@@ -1,14 +1,22 @@
-public class alcu
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+final class alcu
+  implements EIPCResultCallback
 {
-  public int a;
-  public String a;
-  public String b;
-  
-  public alcu(int paramInt, String paramString1, String paramString2)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    if (paramEIPCResult.code == 0) {
+      ApolloUtil.b("测试版本tips:预下载动作成功");
+    }
+    for (;;)
+    {
+      QLog.i("CmShow_RenderViewController", 1, "CmShow_ preLoadRes result.code:" + paramEIPCResult.code);
+      return;
+      ApolloUtil.b("测试版本tips:预下载动作失败 ret:" + paramEIPCResult.code);
+    }
   }
 }
 

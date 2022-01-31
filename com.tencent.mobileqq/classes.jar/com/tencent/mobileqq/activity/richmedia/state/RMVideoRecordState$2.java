@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ajpa;
-import alpo;
+import ajtp;
+import alud;
 import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
 import com.tencent.qphone.base.util.QLog;
 
 public class RMVideoRecordState$2
   implements Runnable
 {
-  public RMVideoRecordState$2(ajpa paramajpa) {}
+  public RMVideoRecordState$2(ajtp paramajtp) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class RMVideoRecordState$2
       if (localRMVideoStateMgr.a.i != -1) {
         break label95;
       }
-      localRMVideoStateMgr.b(0, alpo.a(2131713849), false);
+      localRMVideoStateMgr.b(0, alud.a(2131713861), false);
     }
     for (;;)
     {
@@ -33,11 +33,11 @@ public class RMVideoRecordState$2
       return;
       label95:
       if (localRMVideoStateMgr.a.i == -2) {
-        localRMVideoStateMgr.b(0, alpo.a(2131713854), false);
+        localRMVideoStateMgr.b(0, alud.a(2131713866), false);
       } else if (localRMVideoStateMgr.a.i == -3) {
-        localRMVideoStateMgr.b(0, alpo.a(2131713856), false);
+        localRMVideoStateMgr.b(0, alud.a(2131713868), false);
       } else {
-        localRMVideoStateMgr.b(0, alpo.a(2131713852), false);
+        localRMVideoStateMgr.b(0, alud.a(2131713864), false);
       }
     }
   }

@@ -1,35 +1,26 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
 import android.view.View;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class yez
-  implements yad
+class yez
+  implements View.OnClickListener
 {
-  public yez(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment) {}
+  yez(yew paramyew) {}
   
-  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
+  public void onClick(View paramView)
   {
-    if (paramStFeed != null) {
-      if (!paramStFeed.id.get().startsWith("fakeid_")) {
-        break label40;
+    if (this.a.a() != null)
+    {
+      paramView = this.a.a().a();
+      if (paramView != null) {
+        this.a.d(paramView);
       }
     }
-    label40:
-    do
+    else
     {
-      QQToast.a(this.a.getActivity(), alpo.a(2131715025), 0).a();
-      do
-      {
-        return;
-      } while (!(paramView instanceof RelativeFeedItemView));
-      paramView = (RelativeFeedItemView)paramView;
-    } while (paramView.a == null);
-    xxk.a(this.a.getActivity(), paramStFeed, 0, ygg.a(paramView.a, paramStFeed.cover.width.get(), paramStFeed.cover.height.get()));
+      return;
+    }
+    QQToast.a(yew.a(this.a), 1, alud.a(2131715043), 0).a();
   }
 }
 

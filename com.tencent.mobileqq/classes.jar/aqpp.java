@@ -1,7 +1,16 @@
-public abstract class aqpp
-  extends aqpn
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+
+public class aqpp
+  implements View.OnClickListener
 {
-  protected abstract void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2);
+  public aqpp(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.h();
+  }
 }
 
 

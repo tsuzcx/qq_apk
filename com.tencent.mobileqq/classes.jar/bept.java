@@ -1,8 +1,6 @@
-import com.tencent.mobileqq.widget.QQTabHost;
-
 public abstract interface bept
 {
-  public abstract void a(int paramInt1, int paramInt2, QQTabHost paramQQTabHost);
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

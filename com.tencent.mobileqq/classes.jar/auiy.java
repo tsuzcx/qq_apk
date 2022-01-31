@@ -1,15 +1,59 @@
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class auiy
-  implements auhv
+  extends aujd<MessageForMixedMsg>
 {
-  public auiy(MultiCardFragment paramMultiCardFragment) {}
-  
-  public void a(boolean paramBoolean)
+  public auiy(MessageForMixedMsg paramMessageForMixedMsg)
   {
-    if (MultiCardFragment.a(this.a) != null) {
-      MultiCardFragment.a(this.a).setViewPagerBusy(paramBoolean);
+    super(paramMessageForMixedMsg);
+  }
+  
+  protected int a()
+  {
+    return 1;
+  }
+  
+  public List<MsgBackupResEntity> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (MessageRecord)localIterator.next();
+      if ((localObject instanceof MessageForPic))
+      {
+        localObject = augx.a((MessageRecord)localObject);
+        ((aujd)localObject).a(this.a);
+        localArrayList.addAll(((aujd)localObject).a());
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
+    while (localIterator.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      if ((localMessageRecord instanceof MessageForPic)) {
+        augx.a(localMessageRecord).a();
+      }
+    }
+  }
+  
+  public void b()
+  {
+    if (((MessageForMixedMsg)this.a).isSendFromLocal())
+    {
+      ((MessageForMixedMsg)this.a).issend = 2;
+      ((MessageForMixedMsg)this.a).prewrite();
     }
   }
 }

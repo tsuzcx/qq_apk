@@ -77,9 +77,9 @@ public class pes
     jdField_c_of_type_Int = 10;
   }
   
-  public pes(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public pes(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
     this.jdField_c_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
     this.jdField_d_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
     if (QLog.isColorLevel()) {
@@ -89,7 +89,7 @@ public class pes
   
   private int a()
   {
-    switch (bdee.a(BaseApplication.getContext()))
+    switch (bdin.a(BaseApplication.getContext()))
     {
     case 0: 
     default: 
@@ -319,15 +319,15 @@ public class pes
     if (QLog.isColorLevel()) {
       QLog.d("AdvertisementInfoModule", 2, "makeReqAdvertisePara channelID=" + paramInt1);
     }
-    Object localObject1 = new aaop();
-    ((aaop)localObject1).a = "ce2d9f";
-    Object localObject3 = aaoo.a(BaseApplication.getContext(), (aaop)localObject1);
+    Object localObject1 = new aate();
+    ((aate)localObject1).a = "ce2d9f";
+    Object localObject3 = aatd.a(BaseApplication.getContext(), (aate)localObject1);
     oidb_cmd0x68b.ReqAdvertisePara localReqAdvertisePara;
     Object localObject2;
     long l;
     if (localObject3 != null)
     {
-      localObject1 = ((aaoq)localObject3).a;
+      localObject1 = ((aatf)localObject3).a;
       localReqAdvertisePara = new oidb_cmd0x68b.ReqAdvertisePara();
       localReqAdvertisePara.uint64_channel_id.set(paramInt1, true);
       localObject2 = localReqAdvertisePara.uint64_last_time;
@@ -338,10 +338,10 @@ public class pes
       label115:
       ((PBUInt64Field)localObject2).set(l, true);
       localObject2 = new oidb_cmd0x68b.PhoneInfo();
-      if ((localObject3 != null) && (((aaoq)localObject3).a != null) && (((aaoq)localObject3).a.muid != null) && (((aaoq)localObject3).a.muid_type != null))
+      if ((localObject3 != null) && (((aatf)localObject3).a != null) && (((aatf)localObject3).a.muid != null) && (((aatf)localObject3).a.muid_type != null))
       {
-        ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_muid.set(ByteStringMicro.copyFromUtf8(((aaoq)localObject3).a.muid.get()));
-        ((oidb_cmd0x68b.PhoneInfo)localObject2).uint32_muid_type.set(((aaoq)localObject3).a.muid_type.get());
+        ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_muid.set(ByteStringMicro.copyFromUtf8(((aatf)localObject3).a.muid.get()));
+        ((oidb_cmd0x68b.PhoneInfo)localObject2).uint32_muid_type.set(((aatf)localObject3).a.muid_type.get());
       }
       localObject3 = ods.b();
       if (!TextUtils.isEmpty((CharSequence)localObject3)) {
@@ -353,7 +353,7 @@ public class pes
     }
     try
     {
-      int j = bdcb.e();
+      int j = bdgk.e();
       i = j;
     }
     catch (Exception localException)
@@ -362,9 +362,9 @@ public class pes
       break label258;
     }
     ((oidb_cmd0x68b.PhoneInfo)localObject2).uint32_carrier.set(i);
-    localObject3 = bdcb.e();
+    localObject3 = bdgk.e();
     ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_os_ver.set(ByteStringMicro.copyFromUtf8((String)localObject3));
-    localObject3 = bdcb.c();
+    localObject3 = bdgk.c();
     ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_qq_ver.set(ByteStringMicro.copyFromUtf8((String)localObject3));
     int i = AppSetting.a();
     ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_appid.set(ByteStringMicro.copyFromUtf8(String.valueOf(i)));
@@ -439,7 +439,7 @@ public class pes
           ((JSONObject)localObject1).put("prePatchAdCount", paramnnv.e);
           ((JSONObject)localObject1).put("postPatchAdCount", paramnnv.f);
         }
-        if (azwu.a()) {
+        if (babd.a()) {
           ((JSONObject)localObject1).put("reqLearningPatternFlag", 1);
         }
         localReqAdvertisePara.bytes_ad_user_info.set(ByteStringMicro.copyFromUtf8(((JSONObject)localObject1).toString()));
@@ -550,13 +550,13 @@ public class pes
       if (!otf.c(paramInt1))
       {
         paramnnv = (nnv)localObject;
-        if (!bjxj.a(paramInt1)) {}
+        if (!bkbq.a(paramInt1)) {}
       }
       else
       {
         localReqBody.bytes_style_version.set(ByteStringMicro.copyFromUtf8(sgc.a("default_feeds")));
         paramnnv = (nnv)localObject;
-        if (bjxj.w())
+        if (bkbq.w())
         {
           paramnnv = pgj.a(paramInt1);
           if (!TextUtils.isEmpty(paramnnv)) {

@@ -1,53 +1,21 @@
-import android.widget.TextView;
-import com.tencent.biz.videostory.widget.view.smartmusicview.SmartMusicRecyclerView;
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.PopupWindow;
 
 class yxn
-  implements yxr
+  implements View.OnTouchListener
 {
-  yxn(yxj paramyxj) {}
+  yxn(yxm paramyxm) {}
   
-  public void a(int paramInt, VsMusicItemInfo paramVsMusicItemInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = false;
-    if (paramInt == this.a.a) {
-      return;
-    }
-    yxj.a(this.a).setHasAutoSet(false);
-    if (yxj.a(this.a) != null)
+    if (paramMotionEvent.getAction() == 4)
     {
-      paramVsMusicItemInfo = yxj.a(this.a);
-      if (!yxj.a(this.a)) {
-        bool = true;
-      }
-      paramVsMusicItemInfo.a(bool);
-      yxj.a(this.a).b();
+      this.a.a.dismiss();
+      return true;
     }
-    yxj.a(this.a).smoothScrollToPosition(paramInt);
-  }
-  
-  public void a(int paramInt, yxv paramyxv)
-  {
-    if (yxj.a(this.a)) {
-      yxj.a(this.a);
-    }
-    VsMusicItemInfo localVsMusicItemInfo = yxj.a(this.a).a(paramInt);
-    if ((yxj.c(this.a) != null) && (localVsMusicItemInfo != null))
-    {
-      QLog.i("EditVideoSmartMusicPart", 1, "onPositionChange:" + paramInt + ", music name:" + localVsMusicItemInfo.mMusicName + ", musicSongMid:" + localVsMusicItemInfo.mSongMid + ", musicCoverUrl:" + localVsMusicItemInfo.mAlbumUrl + ", musicUrl:" + localVsMusicItemInfo.mUrl);
-      yxj.b(this.a);
-      yxj.c(this.a).setText(localVsMusicItemInfo.mMusicName);
-      yxj.a(this.a, localVsMusicItemInfo, paramInt, paramyxv);
-    }
-    yxj.c(this.a);
-  }
-  
-  public void a(VsMusicItemInfo paramVsMusicItemInfo, int paramInt, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (yxj.a(this.a) != null) && (yxj.a(this.a).mSongMid != null) && (yxj.a(this.a).mSongMid.equals(paramVsMusicItemInfo.mSongMid))) {
-      yxj.a(this.a, paramVsMusicItemInfo, paramInt, null);
-    }
+    return false;
   }
 }
 

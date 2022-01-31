@@ -1,24 +1,18 @@
-import android.text.Editable;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class avtw
-  implements TextView.OnEditorActionListener
+class avtw
+  implements View.OnClickListener
 {
-  public avtw(OCRTextSearchActivity paramOCRTextSearchActivity) {}
+  avtw(avtv paramavtv) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    if (((paramView.getTag() instanceof avtx)) && (this.a.a != null))
     {
-      OCRTextSearchActivity.a(this.a);
-      this.a.a.setSelection(this.a.a.getText().length());
-      return true;
+      avtx localavtx = (avtx)paramView.getTag();
+      this.a.a.a(this.a, paramView, localavtx);
     }
-    return false;
   }
 }
 

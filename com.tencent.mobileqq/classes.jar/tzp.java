@@ -1,28 +1,73 @@
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedWidget;
+import feedcloud.FeedCloudMeta.StFeed;
 
 public class tzp
-  extends ClickableSpan
 {
-  public tzp(QCircleAsyncTextView paramQCircleAsyncTextView, tzq paramtzq) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private QCircleFeedWidget jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedWidget;
+  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
+  private long b;
+  private long c;
   
-  public void onClick(@NonNull View paramView)
+  public int a()
   {
-    QCircleAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView, true);
-    if (this.jdField_a_of_type_Tzq != null) {
-      this.jdField_a_of_type_Tzq.a();
-    }
+    return this.jdField_a_of_type_Int;
   }
   
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  public long a()
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(-16777216);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setFakeBoldText(true);
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public QCircleFeedWidget a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedWidget;
+  }
+  
+  public FeedCloudMeta.StFeed a()
+  {
+    return this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(QCircleFeedWidget paramQCircleFeedWidget)
+  {
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedWidget = paramQCircleFeedWidget;
+  }
+  
+  public void a(FeedCloudMeta.StFeed paramStFeed)
+  {
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
+  }
+  
+  public long b()
+  {
+    return this.b;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.b = paramLong;
+  }
+  
+  public long c()
+  {
+    return this.c;
+  }
+  
+  public void c(long paramLong)
+  {
+    this.c = paramLong;
   }
 }
 

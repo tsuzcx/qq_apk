@@ -1,44 +1,37 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
 import java.util.List;
 
 class ahzm
-  implements View.OnClickListener
+  implements arrh
 {
-  ahzm(ahzk paramahzk, TroopLinkElement paramTroopLinkElement, ahzo paramahzo) {}
+  ahzm(ahzl paramahzl, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (!ahzk.a(this.jdField_a_of_type_Ahzk))
-    {
-      paramView = new Intent(ahzk.a(this.jdField_a_of_type_Ahzk), QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement.url);
-      ahzk.a(this.jdField_a_of_type_Ahzk).startActivity(paramView);
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Ahzl.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    boolean bool = ahzo.a(this.jdField_a_of_type_Ahzo).isChecked();
-    if (bool)
+    alqo localalqo;
+    ArrayList localArrayList;
+    do
     {
-      ahzk.a(this.jdField_a_of_type_Ahzk).remove(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
-      paramView = ahzo.a(this.jdField_a_of_type_Ahzo);
-      if (bool) {
-        break label125;
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
       }
-    }
-    label125:
-    for (bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
-      return;
-      ahzk.a(this.jdField_a_of_type_Ahzk).add(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
-      break;
-    }
+      localalqo = (alqo)this.jdField_a_of_type_Ahzl.a.a.a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localalqo.a(localArrayList));
+    arri.a(2131692746);
+    return;
+    this.jdField_a_of_type_Ahzl.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
+  
+  public void b() {}
 }
 
 

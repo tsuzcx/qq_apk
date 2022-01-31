@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
 public class spe
-  extends amky
+  extends ampn
 {
   public spe(BridgeModule paramBridgeModule, String paramString1, String paramString2)
   {

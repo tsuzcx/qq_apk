@@ -1,25 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class akbv
-  implements View.OnClickListener
 {
-  public akbv(SessionClearFragment paramSessionClearFragment) {}
+  public int a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public int b;
   
-  public void onClick(View paramView)
+  public akbv(akbr paramakbr, int paramInt, awge paramawge)
   {
-    if (SessionClearFragment.a(this.a) == 0)
-    {
-      SessionClearFragment.a(this.a).setText(alpo.a(2131714225));
-      SessionClearFragment.a(this.a, 1);
-      SessionClearFragment.a(this.a).b();
-      return;
-    }
-    SessionClearFragment.a(this.a).setText(alpo.a(2131714223));
-    SessionClearFragment.a(this.a, 0);
-    SessionClearFragment.a(this.a).c();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = ((TroopInfo)paramawge);
+  }
+  
+  public akbv(akbr paramakbr, int paramInt, DiscussionInfo paramDiscussionInfo)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
+  }
+  
+  public akbv(akbr paramakbr, int paramInt1, DiscussionInfo paramDiscussionInfo, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
+    this.b = paramInt2;
   }
 }
 

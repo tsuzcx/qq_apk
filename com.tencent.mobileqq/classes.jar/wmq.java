@@ -1,30 +1,44 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wmq
-  extends LruCache<wms, Drawable>
+public class wmq
+  extends QQUIEventReceiver<wml, uow>
 {
-  wmq(wmp paramwmp, int paramInt)
+  public wmq(wml paramwml)
   {
-    super(paramInt);
+    super(paramwml);
   }
   
-  protected int a(wms paramwms, Drawable paramDrawable)
+  public void a(@NonNull wml paramwml, @NonNull uow paramuow)
   {
-    if ((paramDrawable instanceof BitmapDrawable))
+    if (paramuow.a.isSuccess())
     {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
-      {
-        int i = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * i;
-        wnb.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramwms, " size=", Integer.valueOf(i) });
-        return i;
+      if (!paramuow.a()) {
+        break label25;
       }
+      wxe.c("Q.qqstory.memories.ProfileFeedPresenter", "ignore this upload status event, because it's a troop video.");
     }
-    return 524288;
+    label25:
+    do
+    {
+      do
+      {
+        return;
+        if (paramuow.c())
+        {
+          wxe.b("Q.qqstory.memories.ProfileFeedPresenter", "receive share group video upload status change event. %s.", paramuow.toString());
+          return;
+        }
+      } while (!paramuow.b());
+      wxe.a("Q.qqstory.memories.ProfileFeedPresenter", "receive personal video upload status change event. %s. start to refresh year node list", paramuow.toString());
+    } while (paramuow.b == null);
+    wml.a(paramwml, true);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uow.class;
   }
 }
 

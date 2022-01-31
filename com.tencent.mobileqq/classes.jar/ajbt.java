@@ -1,12 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import org.json.JSONObject;
 
-class ajbt
-  implements DialogInterface.OnClickListener
+public class ajbt
 {
-  ajbt(ajbr paramajbr) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public String a;
+  public JSONObject a;
+  public String b;
+  public String c;
 }
 
 

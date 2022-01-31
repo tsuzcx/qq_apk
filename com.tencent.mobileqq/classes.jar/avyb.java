@@ -1,17 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.app.Activity;
+import android.view.View;
 
-public class avyb
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface avyb
 {
-  public avyb(ScanIconAnimateView paramScanIconAnimateView) {}
+  public abstract Activity a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
-  }
+  public abstract void a(View paramView);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

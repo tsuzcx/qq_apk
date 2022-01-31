@@ -1,89 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agvv
-  implements agvy
+class agvv
+  implements DialogInterface.OnClickListener
 {
-  private agwa jdField_a_of_type_Agwa;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected String a;
-  private String b;
-  private String c;
+  agvv(agvu paramagvu) {}
   
-  public agvv(QQAppInterface paramQQAppInterface, agwa paramagwa, Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Agwa = paramagwa;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-  }
-  
-  public int a()
-  {
-    return 30;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558621, null);
-    paramVarArgs.setOnClickListener(new agvw(this));
-    ((TextView)paramVarArgs.findViewById(2131362427)).setText(this.jdField_a_of_type_JavaLangString);
-    return paramVarArgs;
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    if (paramInt != 1000) {}
-    String str;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("ReaderTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
-          }
-          paramVarArgs = this.jdField_a_of_type_AndroidContentIntent.getExtras();
-          if (paramVarArgs != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("ReaderTipsBar", 2, "data == null");
-        return;
-        str = paramVarArgs.getString("bookname");
-        if (!TextUtils.isEmpty(str)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ReaderTipsBar", 2, "onAIOEvent() : bookName is empty");
-      return;
-      this.jdField_a_of_type_JavaLangString = String.format(alpo.a(2131713083), new Object[] { str });
-      this.b = paramVarArgs.getString("bookid");
-      this.c = paramVarArgs.getString("book_new_id");
-      this.jdField_a_of_type_Agwa.a(this, new Object[0]);
-    } while (!QLog.isColorLevel());
-    QLog.d("ReaderTipsBar", 2, "onAIOEvent() : show ReaderTipBar, bookName : " + str);
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 1;
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import bhqp;
+import bhuw;
 import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.AdapterView;
@@ -31,7 +31,7 @@ import qvz;
 
 public class FollowingListFragment
   extends Fragment
-  implements bhqp, qsm<ObservableArrayList<ResultRecord>>
+  implements bhuw, qsm<ObservableArrayList<ResultRecord>>
 {
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private ObservableArrayList<ResultRecord> jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList;
@@ -49,18 +49,18 @@ public class FollowingListFragment
     arrayOfString[2] = "key_name";
     int[] arrayOfInt = new int[3];
     int[] tmp35_34 = arrayOfInt;
-    tmp35_34[0] = 2131364254;
+    tmp35_34[0] = 2131364256;
     int[] tmp40_35 = tmp35_34;
-    tmp40_35[1] = 2131367808;
+    tmp40_35[1] = 2131367819;
     int[] tmp45_40 = tmp40_35;
-    tmp45_40[2] = 2131370958;
+    tmp45_40[2] = 2131370977;
     tmp45_40;
     if ((this.jdField_a_of_type_Qvz != null) && (this.jdField_a_of_type_Qvz.a() == 1))
     {
-      this.jdField_a_of_type_Qve = new qvf(this, getActivity(), this.jdField_a_of_type_JavaUtilList, 2131560105, arrayOfString, arrayOfInt);
+      this.jdField_a_of_type_Qve = new qvf(this, getActivity(), this.jdField_a_of_type_JavaUtilList, 2131560104, arrayOfString, arrayOfInt);
       return;
     }
-    this.jdField_a_of_type_Qve = new qve(this, getActivity(), this.jdField_a_of_type_JavaUtilList, 2131560105, arrayOfString, arrayOfInt);
+    this.jdField_a_of_type_Qve = new qve(this, getActivity(), this.jdField_a_of_type_JavaUtilList, 2131560104, arrayOfString, arrayOfInt);
   }
   
   private void a(List<qkw> paramList)
@@ -120,12 +120,12 @@ public class FollowingListFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560104, paramViewGroup, false);
-    paramViewGroup = (ListView)paramLayoutInflater.findViewById(2131369555);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560103, paramViewGroup, false);
+    paramViewGroup = (ListView)paramLayoutInflater.findViewById(2131369573);
     a();
     paramViewGroup.setAdapter(this.jdField_a_of_type_Qve);
     paramViewGroup.setOnItemClickListener(this);
-    paramViewGroup.setSelector(2131167138);
+    paramViewGroup.setSelector(2131167140);
     paramViewGroup.setOverScrollMode(0);
     oxb.a().a(this.jdField_a_of_type_Oxe);
     return paramLayoutInflater;
@@ -140,7 +140,7 @@ public class FollowingListFragment
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     boolean bool = true;
-    Object localObject = (CheckBox)paramView.findViewById(2131364254);
+    Object localObject = (CheckBox)paramView.findViewById(2131364256);
     if (((CheckBox)localObject).isEnabled()) {
       if (!((CheckBox)localObject).isChecked())
       {
@@ -170,11 +170,11 @@ public class FollowingListFragment
       {
         if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() >= this.jdField_a_of_type_Qvz.b()))
         {
-          paramAdapterView = getActivity().getResources().getString(2131719014, new Object[] { String.valueOf(this.jdField_a_of_type_Qvz.c()) });
+          paramAdapterView = getActivity().getResources().getString(2131719026, new Object[] { String.valueOf(this.jdField_a_of_type_Qvz.c()) });
           QQToast.a(getActivity(), paramAdapterView, 0).a();
           return;
         }
-        QQToast.a(getActivity(), getActivity().getResources().getString(2131719008), 0).a();
+        QQToast.a(getActivity(), getActivity().getResources().getString(2131719020), 0).a();
       }
     }
   }

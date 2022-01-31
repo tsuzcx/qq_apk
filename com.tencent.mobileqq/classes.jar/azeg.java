@@ -1,33 +1,42 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+
 public class azeg
 {
-  static int jdField_a_of_type_Int = 3;
-  int[] jdField_a_of_type_ArrayOfInt;
-  int b;
-  int c;
-  
-  public azeg(String paramString, int paramInt)
+  public static azei a(String paramString)
   {
-    this.c = paramInt;
-    paramString = paramString.split(" ");
-    if (paramString.length != 2) {
-      throw new Exception("data illegal");
-    }
-    if (paramString[1].equals("1")) {}
-    for (this.b = 1;; this.b = 0)
+    String str = paramString;
+    if (azfg.a())
     {
-      paramString = paramString[0].toCharArray();
-      this.jdField_a_of_type_ArrayOfInt = new int[paramString.length];
-      paramInt = i;
-      while (paramInt < paramString.length)
-      {
-        this.jdField_a_of_type_ArrayOfInt[paramInt] = (Integer.valueOf(paramString[paramInt]).intValue() - Integer.valueOf(48).intValue());
-        paramInt += 1;
-      }
-      if (!paramString[1].equals("0")) {
-        break;
+      str = paramString;
+      if (!paramString.endsWith("64bit")) {
+        str = paramString + "64bit";
       }
     }
-    throw new Exception("data illegal");
+    paramString = new azei();
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_resource_status_sp", 4);
+    paramString.a = localSharedPreferences.getInt(str + "_version_k", 0);
+    paramString.b = localSharedPreferences.getInt(str + "_status_k", -1);
+    paramString.c = localSharedPreferences.getInt(str + "_last_error_k", -1);
+    return paramString;
+  }
+  
+  public static boolean a(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    String str = paramString;
+    if (azfg.a())
+    {
+      str = paramString;
+      if (!paramString.endsWith("64bit")) {
+        str = paramString + "64bit";
+      }
+    }
+    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_resource_status_sp", 4).edit();
+    paramString.putInt(str + "_version_k", paramInt1);
+    paramString.putInt(str + "_status_k", paramInt2);
+    paramString.putInt(str + "_last_error_k", paramInt3);
+    return paramString.commit();
   }
 }
 

@@ -1,6 +1,15 @@
-public abstract interface bcrx
+import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+
+public class bcrx
+  implements bcpo
 {
-  public abstract void a(boolean paramBoolean);
+  public bcrx(TroopAIORobotLayout paramTroopAIORobotLayout, bcrq parambcrq) {}
+  
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  {
+    if (paramInt == 0) {}
+  }
 }
 
 

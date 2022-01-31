@@ -24,14 +24,14 @@ class oyo
       if (paramView != null)
       {
         paramView.isShown = false;
-        bdiv.f(oym.a(this.jdField_a_of_type_Oym), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramView.toJson().toString(), 0);
+        bdne.f(oym.a(this.jdField_a_of_type_Oym), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramView.toJson().toString(), 0);
       }
     }
     ((qja)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(261)).a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.id, false);
     oym.a(this.jdField_a_of_type_Oym).a();
     this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(oym.a(this.jdField_a_of_type_Oym));
     oym.a(this.jdField_a_of_type_Oym, null);
-    bdiv.s(oym.a(this.jdField_a_of_type_Oym), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.toJson().toString());
+    bdne.s(oym.a(this.jdField_a_of_type_Oym), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.toJson().toString());
     if (QLog.isColorLevel()) {
       QLog.d("RIJSkinOperationPopupStep", 2, "set skin: id = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.id);
     }

@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
+import android.view.View;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class xvi
-  implements DialogInterface.OnClickListener
+  implements bibb
 {
-  public xvi(QRLoginAuthActivity paramQRLoginAuthActivity) {}
+  public xvi(SegmentList paramSegmentList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(View paramView)
+  {
+    this.a.a.b(paramView);
+  }
+  
+  public void b(View paramView)
+  {
+    this.a.a.c(paramView);
+  }
 }
 
 

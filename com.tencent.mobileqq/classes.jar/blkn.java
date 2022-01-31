@@ -1,16 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView;
-
-public class blkn
-  implements View.OnClickListener
+public abstract interface blkn
 {
-  public blkn(AEEditorColorSelectorView paramAEEditorColorSelectorView, int paramInt) {}
+  public abstract void a(int paramInt, bllj parambllj);
   
-  public void onClick(View paramView)
-  {
-    AEEditorColorSelectorView.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorColorSelectorView, this.jdField_a_of_type_Int);
-  }
+  public abstract void aU_();
 }
 
 

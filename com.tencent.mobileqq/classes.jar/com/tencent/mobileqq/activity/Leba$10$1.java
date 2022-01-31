@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aovj;
-import atgm;
+import aozs;
+import atkv;
 import com.tencent.mobileqq.data.LebaPluginInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -21,15 +21,15 @@ class Leba$10$1
     Iterator localIterator1 = Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$10.this$0).iterator();
     while (localIterator1.hasNext())
     {
-      aovj localaovj1 = (aovj)localIterator1.next();
-      if ((localaovj1 != null) && (localaovj1.b != null) && (localaovj1.a != null))
+      aozs localaozs1 = (aozs)localIterator1.next();
+      if ((localaozs1 != null) && (localaozs1.b != null) && (localaozs1.a != null))
       {
         Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator2.hasNext())
         {
-          aovj localaovj2 = (aovj)localIterator2.next();
-          if ((localaovj2 != null) && (localaovj2.a != null) && (localaovj2.a.strPkgName.equals(localaovj1.a.strPkgName))) {
-            localaovj2.b = localaovj1.b;
+          aozs localaozs2 = (aozs)localIterator2.next();
+          if ((localaozs2 != null) && (localaozs2.a != null) && (localaozs2.a.strPkgName.equals(localaozs1.a.strPkgName))) {
+            localaozs2.b = localaozs1.b;
           }
         }
       }

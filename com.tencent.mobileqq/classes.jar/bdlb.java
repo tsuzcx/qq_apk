@@ -1,42 +1,21 @@
-public class bdlb
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ScrollView;
+
+class bdlb
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  int a;
-  public String a;
-  int b;
+  bdlb(bdku parambdku) {}
   
-  public int a()
+  public void onGlobalLayout()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.b = paramInt;
+    if (this.a.a != null) {
+      this.a.a.fullScroll(130);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdlb
  * JD-Core Version:    0.7.0.1
  */

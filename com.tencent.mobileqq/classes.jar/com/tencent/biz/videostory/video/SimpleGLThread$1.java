@@ -4,18 +4,18 @@ import android.opengl.EGLContext;
 import com.tencent.ttpic.baseutils.gles.EglCore;
 import com.tencent.ttpic.baseutils.gles.OffscreenSurface;
 import com.tencent.ttpic.openapi.config.MediaConfig;
-import ywg;
+import zav;
 
 public class SimpleGLThread$1
   implements Runnable
 {
-  public SimpleGLThread$1(ywg paramywg, EGLContext paramEGLContext) {}
+  public SimpleGLThread$1(zav paramzav, EGLContext paramEGLContext) {}
   
   public void run()
   {
-    ywg.a(this.this$0, new EglCore(this.a, 0));
-    ywg.a(this.this$0, new OffscreenSurface(ywg.a(this.this$0), MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT));
-    ywg.a(this.this$0).makeCurrent();
+    zav.a(this.this$0, new EglCore(this.a, 0));
+    zav.a(this.this$0, new OffscreenSurface(zav.a(this.this$0), MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT));
+    zav.a(this.this$0).makeCurrent();
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ayzn;
-import azab;
-import azac;
+import azdw;
+import azek;
+import azel;
 import java.io.File;
 
 public final class ShortVideoPtuResManager$1
@@ -10,8 +10,8 @@ public final class ShortVideoPtuResManager$1
 {
   public void run()
   {
-    String str1 = ayzn.a();
-    String str2 = ayzn.b();
+    String str1 = azdw.a();
+    String str2 = azdw.b();
     File[] arrayOfFile = new File(str1).listFiles();
     int j;
     Object localObject1;
@@ -35,8 +35,8 @@ public final class ShortVideoPtuResManager$1
           localObject2 = arrayOfFile[k].getName();
           if (!str2.equalsIgnoreCase((String)localObject2))
           {
-            localObject3 = azab.a((String)localObject2);
-            m = ((azac)localObject3).a();
+            localObject3 = azek.a((String)localObject2);
+            m = ((azel)localObject3).a();
             if (m == 0) {
               break label197;
             }
@@ -48,7 +48,7 @@ public final class ShortVideoPtuResManager$1
           }
         }
         label197:
-        localObject3 = ((azac)localObject3).b();
+        localObject3 = ((azel)localObject3).b();
       }
     }
     label397:

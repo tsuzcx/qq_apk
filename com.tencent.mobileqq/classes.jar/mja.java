@@ -3,17 +3,17 @@ import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class mja
-  extends bdfq
+  extends bdjz
 {
   public mja(Context paramContext, int paramInt)
   {
     super(paramContext, paramInt);
   }
   
-  public static bdfq a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  public static bdjz a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
     paramContext = new mja(paramContext, 2131755801);
-    paramContext.setContentView(2131558943);
+    paramContext.setContentView(2131558942);
     paramContext.setTitle(paramString1);
     paramContext.setMessage(paramString2);
     paramContext.setNegativeButton(paramInt2, paramOnClickListener2);

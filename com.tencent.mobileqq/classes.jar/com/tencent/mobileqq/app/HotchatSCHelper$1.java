@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.app;
 
-import alqj;
-import alql;
+import aluy;
+import alva;
 import android.os.Handler;
 
 public class HotchatSCHelper$1
   implements Runnable
 {
-  public HotchatSCHelper$1(alqj paramalqj, long paramLong1, long paramLong2) {}
+  public HotchatSCHelper$1(aluy paramaluy, long paramLong1, long paramLong2) {}
   
   public void run()
   {
     if (!this.this$0.jdField_a_of_type_Boolean) {
       return;
     }
-    this.this$0.jdField_a_of_type_Alql.a();
+    this.this$0.jdField_a_of_type_Alva.a();
     long l1 = System.currentTimeMillis();
     long l2 = this.a - Math.abs(l1 - this.b);
     if (l2 < 0L) {

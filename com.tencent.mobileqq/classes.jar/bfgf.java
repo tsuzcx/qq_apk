@@ -1,138 +1,149 @@
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bfgf
 {
-  /* Error */
-  public static void a(String paramString)
+  protected static bfgf a;
+  protected long a;
+  protected Bundle a;
+  protected bfgh a;
+  protected bfmk a;
+  protected bfnt a;
+  public String a;
+  protected String b;
+  protected String c;
+  public String d;
+  
+  public static bfgf a()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: invokestatic 12	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   7: istore_1
-    //   8: iload_1
-    //   9: ifeq +7 -> 16
-    //   12: ldc 2
-    //   14: monitorexit
-    //   15: return
-    //   16: aload_0
-    //   17: invokestatic 18	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   20: astore_0
-    //   21: aload_0
-    //   22: ifnull -10 -> 12
-    //   25: aload_0
-    //   26: invokevirtual 22	android/net/Uri:getHost	()Ljava/lang/String;
-    //   29: ifnull -17 -> 12
-    //   32: aload_0
-    //   33: invokevirtual 22	android/net/Uri:getHost	()Ljava/lang/String;
-    //   36: invokevirtual 27	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   39: invokestatic 30	bfgf:a	(Ljava/lang/String;)Z
-    //   42: ifeq -30 -> 12
-    //   45: new 32	bfge
-    //   48: dup
-    //   49: invokestatic 37	bexd:a	()Lbexd;
-    //   52: invokevirtual 40	bexd:a	()Landroid/content/Context;
-    //   55: invokespecial 44	bfge:<init>	(Landroid/content/Context;)V
-    //   58: astore_0
-    //   59: new 46	bfgd
-    //   62: dup
-    //   63: invokespecial 49	bfgd:<init>	()V
-    //   66: astore 4
-    //   68: aload 4
-    //   70: iconst_1
-    //   71: invokevirtual 52	bfgd:a	(Z)V
-    //   74: invokestatic 37	bexd:a	()Lbexd;
-    //   77: invokevirtual 55	bexd:a	()J
-    //   80: lstore_2
-    //   81: invokestatic 60	bfin:c	()Ljava/lang/String;
-    //   84: astore 5
-    //   86: invokestatic 37	bexd:a	()Lbexd;
-    //   89: invokevirtual 62	bexd:a	()Ljava/lang/String;
-    //   92: astore 6
-    //   94: aload 4
-    //   96: ldc 64
-    //   98: new 66	java/lang/StringBuilder
-    //   101: dup
-    //   102: invokespecial 67	java/lang/StringBuilder:<init>	()V
-    //   105: ldc 69
-    //   107: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: lload_2
-    //   111: invokevirtual 76	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   114: ldc 78
-    //   116: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   119: ldc 80
-    //   121: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: ldc 82
-    //   126: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   129: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: invokevirtual 88	bfgd:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   135: aload 4
-    //   137: ldc 64
-    //   139: new 66	java/lang/StringBuilder
-    //   142: dup
-    //   143: invokespecial 67	java/lang/StringBuilder:<init>	()V
-    //   146: ldc 90
-    //   148: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   151: aload 6
-    //   153: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   156: ldc 78
-    //   158: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   161: ldc 80
-    //   163: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   166: ldc 82
-    //   168: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   171: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   174: invokevirtual 88	bfgd:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   177: aload 4
-    //   179: ldc 64
-    //   181: new 66	java/lang/StringBuilder
-    //   184: dup
-    //   185: invokespecial 67	java/lang/StringBuilder:<init>	()V
-    //   188: ldc 92
-    //   190: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   193: aload 5
-    //   195: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: ldc 78
-    //   200: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   203: ldc 80
-    //   205: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   208: ldc 82
-    //   210: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   213: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   216: invokevirtual 88	bfgd:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   219: aload_0
-    //   220: invokevirtual 94	bfge:a	()V
-    //   223: goto -211 -> 12
-    //   226: astore_0
-    //   227: ldc 2
-    //   229: monitorexit
-    //   230: aload_0
-    //   231: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	232	0	paramString	String
-    //   7	2	1	bool	boolean
-    //   80	31	2	l	long
-    //   66	112	4	localbfgd	bfgd
-    //   84	110	5	str1	String
-    //   92	60	6	str2	String
-    // Exception table:
-    //   from	to	target	type
-    //   3	8	226	finally
-    //   16	21	226	finally
-    //   25	223	226	finally
+    try
+    {
+      if (jdField_a_of_type_Bfgf == null) {
+        jdField_a_of_type_Bfgf = new bfgf();
+      }
+      bfgf localbfgf = jdField_a_of_type_Bfgf;
+      return localbfgf;
+    }
+    finally {}
   }
   
-  public static boolean a(String paramString)
+  public ArrayList<bfhs> a()
   {
-    if ((!TextUtils.isEmpty(paramString)) && ((paramString.endsWith(".qq.com")) || (paramString.endsWith(".myapp.com")) || (paramString.endsWith(".3gqq.com")) || (paramString.endsWith(".qzone.com"))))
-    {
-      bfhg.c("CookieUtils", "host:" + paramString + " isAuthedDomain:true");
-      return true;
+    int i = 0;
+    if (this.jdField_a_of_type_Bfnt == null) {
+      return new ArrayList(0);
     }
-    bfhg.c("CookieUtils", "host:" + paramString + " isAuthedDomain:false");
-    return false;
+    int j = this.jdField_a_of_type_Bfnt.a();
+    ArrayList localArrayList = new ArrayList(j);
+    while (i < j)
+    {
+      localArrayList.add((bfhs)this.jdField_a_of_type_Bfnt.a(i));
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bfgh = null;
+    if (this.jdField_a_of_type_Bfmk != null) {
+      this.jdField_a_of_type_Bfmk.a();
+    }
+  }
+  
+  public void a(Bundle paramBundle, bfgi parambfgi, String paramString)
+  {
+    if ((paramBundle == null) || (parambfgi == null))
+    {
+      bflp.e("OpenSdkFriendService", "getFriendListAsync params error. params=" + paramBundle + "; listener=" + parambfgi);
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.d = paramString;
+    if ("action_invite".equals(paramString))
+    {
+      paramString = bfri.a().a("http://fusion.qq.com/cgi-bin/qzapps/mappinvite_getqqlist.cgi");
+      paramBundle.putString("md5str", bfrh.a(bfbm.a().a(), "invite_friend_list_md5").getString(this.b, ""));
+    }
+    for (;;)
+    {
+      this.c = paramString;
+      this.jdField_a_of_type_Bfmk = new bfmk(paramString, "GET", new bfgj(this, parambfgi));
+      this.jdField_a_of_type_Bfmk.a(paramBundle);
+      return;
+      if ("action_story".equals(paramString))
+      {
+        paramString = bfri.a().a("http://fusion.qq.com/cgi-bin/appstage/mapp_getqqlist.cgi");
+        paramBundle.putString("needhttpcache", "nothing");
+      }
+      else if ("action_voice".equals(paramString))
+      {
+        paramString = bfri.a().a("http://appic.qq.com/cgi-bin/appstage/mapp_friendslist.cgi");
+      }
+      else if ("action_reactive".equals(paramString))
+      {
+        paramString = bfri.a().a("http://appic.qq.com/cgi-bin/appstage/mapp_friendslist.cgi");
+      }
+      else
+      {
+        paramString = bfri.a().a("http://appic.qq.com/cgi-bin/appstage/mapp_friendslist.cgi");
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if ("action_invite".equals(this.d))
+    {
+      SharedPreferences.Editor localEditor = bfrh.a(bfbm.a().a(), "invite_friend_list_md5").edit();
+      localEditor.putString(this.b, paramString);
+      localEditor.commit();
+    }
+  }
+  
+  public void a(String paramString, Bundle paramBundle, bfgh parambfgh)
+  {
+    this.jdField_a_of_type_Bfgh = parambfgh;
+    paramBundle.putString("time", bfrh.a(bfbm.a().a(), "prefer_last_avatar_update_time").getString(this.b, "0"));
+    new bfmk(paramString, "GET", new bfgg(this)).a(paramBundle);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString2 == null)) {}
+    for (;;)
+    {
+      try
+      {
+        bflp.e("OpenSdkFriendService", "initData error. appid=" + paramString1 + "; openid=" + paramString2);
+        return;
+      }
+      finally {}
+      this.jdField_a_of_type_Long = Long.parseLong(bfrh.a(bfbm.a().a(), "uin_openid_store").getString(paramString2, ""));
+      this.jdField_a_of_type_JavaLangString = paramString1;
+      this.b = paramString2;
+      try
+      {
+        this.jdField_a_of_type_Bfnt = bfno.a().a(bfhs.class, this.jdField_a_of_type_Long, "invite_friend_list_" + this.b);
+      }
+      catch (Exception paramString1)
+      {
+        paramString1.printStackTrace();
+      }
+    }
+  }
+  
+  public void a(List<bfhs> paramList)
+  {
+    if (this.jdField_a_of_type_Bfnt == null) {
+      return;
+    }
+    bfhs[] arrayOfbfhs = new bfhs[paramList.size()];
+    paramList.toArray(arrayOfbfhs);
+    this.jdField_a_of_type_Bfnt.a(arrayOfbfhs, 2);
   }
 }
 

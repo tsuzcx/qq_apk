@@ -1,22 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 
 public class auhs
-  implements Comparator<View>
+  implements DialogInterface.OnClickListener
 {
-  public int a(View paramView1, View paramView2)
+  public auhs(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
-    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
-    if (paramView1.a != paramView2.a)
-    {
-      if (paramView1.a) {
-        return 1;
-      }
-      return -1;
+    MsgBackupCompleteFragment.a(this.a);
+    if (MsgBackupCompleteFragment.a(this.a) == 1) {
+      aujo.a("0X800A253", 5);
     }
-    return paramView1.b - paramView2.b;
+    while ((MsgBackupCompleteFragment.a(this.a) != 4) || (!MsgBackupCompleteFragment.a(this.a))) {
+      return;
+    }
+    aujo.a("0X800A267", 2);
   }
 }
 

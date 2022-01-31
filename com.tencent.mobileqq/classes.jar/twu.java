@@ -1,23 +1,35 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentVideo;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.fragments.QCircleFolderFollowTabFragment;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Arrays;
+import qqcircle.QQCircleFeedBase.StTabInfo;
 
 public class twu
-  extends RecyclerView.ViewHolder
+  implements Observer<try>
 {
-  QCircleContentVideo jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentVideo;
+  public twu(QCircleFolderFollowTabFragment paramQCircleFolderFollowTabFragment) {}
   
-  public twu(tws paramtws, View paramView)
+  public void a(@Nullable try paramtry)
   {
-    super(paramView);
-    paramtws = ((FrameLayout)paramView).getChildAt(0);
-    if ((paramtws instanceof QCircleContentVideo))
+    if ((QCircleFolderFollowTabFragment.a(this.a) != null) && (this.a.a != null) && (this.a.a.a != null))
     {
-      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentVideo = ((QCircleContentVideo)paramtws);
+      if (paramtry != null)
+      {
+        paramtry.a(tqr.a(this.a.a.a.urlInfo.get(), "NoticeListUrl"));
+        boolean bool = paramtry.a();
+        if (bool) {
+          tzv.a("", 18, 1L);
+        }
+        QCircleFolderFollowTabFragment.a(this.a).a(bool);
+        QCircleFolderFollowTabFragment.a(this.a).setDatas(new ArrayList(Arrays.asList(new try[] { paramtry })));
+      }
+    }
+    else {
       return;
     }
-    ((FrameLayout)paramView).removeAllViews();
+    QCircleFolderFollowTabFragment.a(this.a).a(false);
   }
 }
 

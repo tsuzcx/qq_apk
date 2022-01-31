@@ -1,346 +1,212 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.graphics.BitmapFactory.Options;
+import android.text.TextUtils;
+import com.tencent.image.JpegExifReader;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.widget.MessageProgressView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0xe0a.cmd0xe0a.App;
-import tencent.im.oidb.cmd0xe0a.cmd0xe0a.ClientInfo;
-import tencent.im.oidb.cmd0xe0a.cmd0xe0a.ReqBody;
-import tencent.im.oidb.cmd0xe0a.cmd0xe0a.RspBody;
-import tencent.im.oidb.cmd0xe0e.Oidb_0xe0e.ReqBody;
-import tencent.im.oidb.cmd0xe0e.Oidb_0xe0e.RspBody;
-import tencent.im.oidb.oidb_0x8c9.oidb_0x8c9.ReqBody;
-import tencent.im.oidb.oidb_0x8c9.oidb_0x8c9.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
+import com.tribe.async.reactive.UIThreadOffFunction;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import java.io.File;
+import java.net.URI;
+import java.net.URL;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bced
-  extends alko
+  extends bcei
 {
-  public bced(QQAppInterface paramQQAppInterface)
+  public int a;
+  public long a;
+  public String a;
+  public URL a;
+  public ConcurrentHashMap<String, bkdb> a;
+  public int b;
+  protected String b;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  
+  public bced() {}
+  
+  public bced(String paramString)
   {
-    super(paramQQAppInterface);
+    b(paramString);
+    a();
+    this.jdField_d_of_type_JavaLangString = String.valueOf(hashCode());
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public bced(JSONObject paramJSONObject)
   {
-    cmd0xe0a.RspBody localRspBody = new cmd0xe0a.RspBody();
-    long l = ((Long)paramToServiceMsg.getAttribute("troopcode", Long.valueOf(0L))).longValue();
-    int j = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-    if (j == 0)
-    {
-      int i = localRspBody.cache_ts.get();
-      int k = localRspBody.disabled.get();
-      int m = localRspBody.group_disabled.get();
-      int n = localRspBody.redpoint_cache_ts.get();
-      paramToServiceMsg = new ArrayList();
-      paramFromServiceMsg = localRspBody.app.get().iterator();
-      while (paramFromServiceMsg.hasNext()) {
-        paramToServiceMsg.add(bcea.a((cmd0xe0a.App)paramFromServiceMsg.next()));
-      }
-      paramToServiceMsg = new bcee(l, i, k, m, n, paramToServiceMsg);
-      ((bcef)this.app.getManager(355)).a(Long.valueOf(l), paramToServiceMsg);
-      paramFromServiceMsg = new StringBuilder();
-      if (!paramToServiceMsg.a().isEmpty())
-      {
-        i = 0;
-        while (i < paramToServiceMsg.a().size() - 1)
-        {
-          paramFromServiceMsg.append(((bcea)paramToServiceMsg.a().get(i)).a()).append("|");
-          i += 1;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopShortcutBar", 2, "TroopShortcutBarHandler handleGetTroopAIOShortcutBar appList:" + paramFromServiceMsg + "troopCode: " + l);
-        }
-      }
-    }
-    if (j == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      notifyUI(2, bool, new Object[] { Long.valueOf(l) });
-      return;
-    }
+    a(paramJSONObject);
+    this.jdField_d_of_type_JavaLangString = String.valueOf(hashCode());
   }
   
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public static String b()
   {
-    cmd0xe0a.RspBody localRspBody = new cmd0xe0a.RspBody();
-    long l = ((Long)paramToServiceMsg.getAttribute("troopcode", Long.valueOf(0L))).longValue();
-    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-    if (i == 0)
+    VFSFile localVFSFile = new VFSFile(TroopHWJsPlugin.jdField_a_of_type_JavaLangString);
+    if (!localVFSFile.exists())
     {
-      int j = localRspBody.cache_ts.get();
-      int k = localRspBody.disabled.get();
-      int m = localRspBody.group_disabled.get();
-      int n = localRspBody.redpoint_cache_ts.get();
-      paramToServiceMsg = new ArrayList();
-      paramFromServiceMsg = localRspBody.app.get().iterator();
-      while (paramFromServiceMsg.hasNext()) {
-        paramToServiceMsg.add(bcea.a((cmd0xe0a.App)paramFromServiceMsg.next()));
-      }
-      paramToServiceMsg = new bcee(l, j, k, m, n, paramToServiceMsg);
-      ((bcef)this.app.getManager(355)).b(Long.valueOf(l), paramToServiceMsg);
+      localVFSFile.mkdirs();
+      bdhb.c(TroopHWJsPlugin.jdField_a_of_type_JavaLangString + ".nomedia");
     }
-    if (i == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      notifyUI(1, bool, new Object[] { Long.valueOf(l) });
-      return;
-    }
+    return TroopHWJsPlugin.jdField_a_of_type_JavaLangString;
   }
   
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public int a()
   {
-    Oidb_0xe0e.RspBody localRspBody = new Oidb_0xe0e.RspBody();
-    long l1 = ((Long)paramToServiceMsg.getAttribute("troopcode", Long.valueOf(0L))).longValue();
-    long l2 = ((Long)paramToServiceMsg.getAttribute("appid", Long.valueOf(0L))).longValue();
-    int i = ((Integer)paramToServiceMsg.getAttribute("disabled", Integer.valueOf(0))).intValue();
-    int j = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-    if (j == 0) {
-      ((bcef)this.app.getManager(355)).a(l1, l2, i);
-    }
-    if (j == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      notifyUI(3, bool, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i) });
-      return;
-    }
+    return 0;
   }
   
-  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public bkdb a(String paramString1, String paramString2)
   {
-    Oidb_0xe0e.RspBody localRspBody = new Oidb_0xe0e.RspBody();
-    long l = ((Long)paramToServiceMsg.getAttribute("troopcode", Long.valueOf(0L))).longValue();
-    int i = ((Integer)paramToServiceMsg.getAttribute("disabled", Integer.valueOf(0))).intValue();
-    boolean bool = ((Boolean)paramToServiceMsg.getAttribute("bisadmin", Boolean.valueOf(false))).booleanValue();
-    int j = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-    if (j == 0) {
-      ((bcef)this.app.getManager(355)).a(l, i, bool);
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     }
-    if (j == 0) {}
-    for (bool = true;; bool = false)
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString1))
     {
-      notifyUI(4, bool, new Object[] { Long.valueOf(l), Integer.valueOf(i) });
-      return;
+      paramString2 = new bkdb(vls.a(), paramString1, paramString2);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, paramString2);
+      return paramString2;
     }
+    return (bkdb)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
   }
   
-  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public Stream<bced> a(XMediaEditor paramXMediaEditor)
   {
-    long l = ((Long)paramToServiceMsg.getAttribute("troopcode", Long.valueOf(0L))).longValue();
-    if (paramFromServiceMsg.getResultCode() == 1000) {}
+    this.g = 1;
+    Object localObject2 = Stream.of(this).map(new ThreadOffFunction("ImageInfo", 2));
+    Object localObject1 = localObject2;
+    if (!arso.b(this.jdField_c_of_type_JavaLangString)) {
+      localObject1 = ((Stream)localObject2).map(new bcee(this.jdField_d_of_type_Int));
+    }
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localObject1 = ((Stream)localObject1).map(new bcef(0, paramXMediaEditor, paramXMediaEditor.a("troopuin")));
+    }
     for (;;)
     {
-      try
+      localObject2 = paramXMediaEditor.findViewHolderForLayoutPosition(this.jdField_c_of_type_Int);
+      if ((localObject2 instanceof bcfe))
       {
-        paramToServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
-        if ((paramToServiceMsg == null) || (!paramToServiceMsg.bytes_bodybuffer.has()) || (paramToServiceMsg.bytes_bodybuffer.get() == null)) {
-          break label188;
+        localObject2 = (bcfe)localObject2;
+        if (this.jdField_d_of_type_JavaLangString.equals(((bcfe)localObject2).a.getTag())) {
+          ((bcfa)((bcdu)paramXMediaEditor.getAdapter()).a.a(1)).a((bcfe)localObject2, this, 0);
         }
-        paramToServiceMsg = paramToServiceMsg.bytes_bodybuffer.get().toByteArray();
       }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+      return ((Stream)localObject1).map(new UIThreadOffFunction(null));
+    }
+  }
+  
+  public String a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return this.jdField_b_of_type_JavaLangString;
+    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("type", "img");
+      localJSONObject.put("url", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("width", this.jdField_a_of_type_Int);
+      localJSONObject.put("height", this.jdField_b_of_type_Int);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ImageInfo", 2, "ImageInfo getContent exception.");
+    }
+    return localJSONObject;
+  }
+  
+  public void a()
+  {
+    long l = System.currentTimeMillis();
+    if (arso.b(this.jdField_a_of_type_JavaLangString))
+    {
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      SafeBitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, localOptions);
+      this.jdField_a_of_type_Int = localOptions.outWidth;
+      this.jdField_b_of_type_Int = localOptions.outHeight;
+      int i = JpegExifReader.readOrientation(this.jdField_a_of_type_JavaLangString);
+      if ((i == 6) || (i == 5) || (i == 8) || (i == 7))
       {
-        notifyUI(5, false, new Object[] { Long.valueOf(l) });
-        return;
-      }
-      try
-      {
-        paramFromServiceMsg = new oidb_0x8c9.RspBody();
-        paramFromServiceMsg.mergeFrom(paramToServiceMsg);
-        if (!paramFromServiceMsg.rpt_group_app_unread_info.has()) {
-          break label188;
+        if (QLog.isColorLevel()) {
+          QLog.d("ImageInfo", 2, new Object[] { "calculateLocalImageSize need orientation. before width=", Integer.valueOf(this.jdField_a_of_type_Int), ", height=", Integer.valueOf(this.jdField_b_of_type_Int), ", path=", this.jdField_a_of_type_JavaLangString });
         }
-        paramToServiceMsg = paramFromServiceMsg.rpt_group_app_unread_info.get();
-        ((bcef)this.app.getManager(355)).a(Long.valueOf(l), paramToServiceMsg);
-        bool = true;
+        i = this.jdField_a_of_type_Int;
+        this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+        this.jdField_b_of_type_Int = i;
       }
-      catch (Exception paramToServiceMsg)
-      {
-        bool = false;
-        continue;
-      }
-      notifyUI(5, bool, new Object[] { Long.valueOf(l) });
-      return;
-      label188:
-      boolean bool = false;
-    }
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    Object localObject = new cmd0xe0a.ReqBody();
-    ((cmd0xe0a.ReqBody)localObject).group_id.set(paramLong);
-    ((cmd0xe0a.ReqBody)localObject).group_type.set(paramInt);
-    if (azwu.a()) {
-      ((cmd0xe0a.ReqBody)localObject).mode.set(1);
-    }
-    cmd0xe0a.ClientInfo localClientInfo = new cmd0xe0a.ClientInfo();
-    localClientInfo.platform.set(2);
-    localClientInfo.version.set("8.3.3");
-    ((cmd0xe0a.ReqBody)localObject).client.set(localClientInfo);
-    localObject = makeOIDBPkg("OidbSvc.0xe0a_1", 3594, 1, ((cmd0xe0a.ReqBody)localObject).toByteArray(), 30000L);
-    ((ToServiceMsg)localObject).addAttribute("troopcode", Long.valueOf(paramLong));
-    ((ToServiceMsg)localObject).addAttribute("trooptype", Integer.valueOf(paramInt));
-    if (azwu.a()) {
-      ((ToServiceMsg)localObject).addAttribute("mode", Integer.valueOf(1));
-    }
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public void a(long paramLong, int paramInt, boolean paramBoolean)
-  {
-    Object localObject2 = ((bcef)this.app.getManager(355)).b(Long.valueOf(paramLong));
-    if (localObject2 == null) {
-      return;
-    }
-    Object localObject1 = new Oidb_0xe0e.ReqBody();
-    ((Oidb_0xe0e.ReqBody)localObject1).group_id.set(paramLong);
-    ((Oidb_0xe0e.ReqBody)localObject1).disabled.set(paramInt);
-    Object localObject3 = ((bcee)localObject2).a();
-    localObject2 = new ArrayList();
-    localObject3 = ((ArrayList)localObject3).iterator();
-    while (((Iterator)localObject3).hasNext())
-    {
-      bcea localbcea = (bcea)((Iterator)localObject3).next();
-      if (localbcea.c() == 1) {
-        ((ArrayList)localObject2).add(Long.valueOf(localbcea.a()));
-      }
-    }
-    ((Oidb_0xe0e.ReqBody)localObject1).disabled_appids.set((List)localObject2);
-    localObject1 = makeOIDBPkg("OidbSvc.0xe0e_2", 3598, 0, ((Oidb_0xe0e.ReqBody)localObject1).toByteArray(), 30000L);
-    ((ToServiceMsg)localObject1).addAttribute("troopcode", Long.valueOf(paramLong));
-    ((ToServiceMsg)localObject1).addAttribute("disabled", Integer.valueOf(paramInt));
-    ((ToServiceMsg)localObject1).addAttribute("bisadmin", Boolean.valueOf(paramBoolean));
-    sendPbReq((ToServiceMsg)localObject1);
-  }
-  
-  public void a(long paramLong1, long paramLong2, int paramInt)
-  {
-    Object localObject2 = ((bcef)this.app.getManager(355)).b(Long.valueOf(paramLong1));
-    if (localObject2 == null) {
-      return;
-    }
-    int i = ((bcee)localObject2).a();
-    Object localObject1 = new Oidb_0xe0e.ReqBody();
-    ((Oidb_0xe0e.ReqBody)localObject1).group_id.set(paramLong1);
-    ((Oidb_0xe0e.ReqBody)localObject1).disabled.set(i);
-    Object localObject3 = ((bcee)localObject2).a();
-    localObject2 = new ArrayList();
-    localObject3 = ((ArrayList)localObject3).iterator();
-    while (((Iterator)localObject3).hasNext())
-    {
-      bcea localbcea = (bcea)((Iterator)localObject3).next();
-      if ((localbcea.a() == 1) && (localbcea.a() != paramLong2)) {
-        ((ArrayList)localObject2).add(Long.valueOf(localbcea.a()));
-      }
-    }
-    if (paramInt == 1) {
-      ((ArrayList)localObject2).add(Long.valueOf(paramLong2));
-    }
-    ((Oidb_0xe0e.ReqBody)localObject1).disabled_appids.set((List)localObject2);
-    localObject1 = makeOIDBPkg("OidbSvc.Oxe0e_1", 3598, 0, ((Oidb_0xe0e.ReqBody)localObject1).toByteArray(), 30000L);
-    ((ToServiceMsg)localObject1).addAttribute("troopcode", Long.valueOf(paramLong1));
-    ((ToServiceMsg)localObject1).addAttribute("appid", Long.valueOf(paramLong2));
-    ((ToServiceMsg)localObject1).addAttribute("disabled", Integer.valueOf(paramInt));
-    sendPbReq((ToServiceMsg)localObject1);
-  }
-  
-  public void a(Long paramLong, List<Long> paramList)
-  {
-    long l = Long.valueOf(this.app.getCurrentAccountUin()).longValue();
-    Object localObject = new oidb_0x8c9.ReqBody();
-    ((oidb_0x8c9.ReqBody)localObject).opt_uint64_from_uin.set(l);
-    ((oidb_0x8c9.ReqBody)localObject).opt_uint64_group_code.set(paramLong.longValue());
-    ((oidb_0x8c9.ReqBody)localObject).rpt_uint64_appid.set(paramList);
-    paramList = new oidb_sso.OIDBSSOPkg();
-    paramList.uint32_command.set(2249);
-    paramList.uint32_service_type.set(2);
-    paramList.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x8c9.ReqBody)localObject).toByteArray()));
-    localObject = createToServiceMsg("OidbSvc.0x8c9_2.GetPoint");
-    ((ToServiceMsg)localObject).addAttribute("troopcode", paramLong);
-    ((ToServiceMsg)localObject).putWupBuffer(paramList.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public void b(long paramLong, int paramInt)
-  {
-    Object localObject = new cmd0xe0a.ReqBody();
-    ((cmd0xe0a.ReqBody)localObject).group_id.set(paramLong);
-    ((cmd0xe0a.ReqBody)localObject).group_type.set(paramInt);
-    cmd0xe0a.ClientInfo localClientInfo = new cmd0xe0a.ClientInfo();
-    localClientInfo.platform.set(2);
-    localClientInfo.version.set("8.3.3");
-    ((cmd0xe0a.ReqBody)localObject).client.set(localClientInfo);
-    localObject = makeOIDBPkg("OidbSvc.0xe0a_2", 3594, 2, ((cmd0xe0a.ReqBody)localObject).toByteArray(), 30000L);
-    ((ToServiceMsg)localObject).addAttribute("troopcode", Long.valueOf(paramLong));
-    ((ToServiceMsg)localObject).addAttribute("trooptype", Integer.valueOf(paramInt));
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  protected Class<? extends alkr> observerClass()
-  {
-    return bceg.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramFromServiceMsg == null) || (paramToServiceMsg == null)) {}
-    do
-    {
-      return;
       if (QLog.isColorLevel()) {
-        QLog.i("TroopShortcutBar", 2, "TroopShortcutBarHandler onReceive resultCode:" + paramFromServiceMsg.getResultCode() + "errMsg: " + paramFromServiceMsg.getBusinessFailMsg() + "serivceCmd: " + paramToServiceMsg.getServiceCmd());
+        QLog.d("ImageInfo", 2, new Object[] { "calculateLocalImageSize result. width=", Integer.valueOf(this.jdField_a_of_type_Int), ", height=", Integer.valueOf(this.jdField_b_of_type_Int), ", path=", this.jdField_a_of_type_JavaLangString, ", cost=", Long.valueOf(System.currentTimeMillis() - l) });
       }
-      try
-      {
-        int i = ((oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject)).uint32_result.get();
-        if ((i != 0) && (QLog.isColorLevel())) {
-          QLog.i("TroopShortcutBar", 2, "TroopShortcutBarHandler onReceive return Error result:" + i + "cmd：" + paramToServiceMsg.getServiceCmd());
-        }
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
-        {
-          String str;
-          if (QLog.isColorLevel()) {
-            QLog.i("TroopShortcutBar", 2, "TroopShortcutBarHandler onReceive exception: " + localInvalidProtocolBufferMicroException.getMessage() + "cmd：" + paramToServiceMsg.getServiceCmd());
-          }
-        }
-        if (!"OidbSvc.0xe0a_2".equals(localInvalidProtocolBufferMicroException)) {
-          continue;
-        }
-        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-        if (!"OidbSvc.Oxe0e_1".equals(localInvalidProtocolBufferMicroException)) {
-          continue;
-        }
-        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-        if (!"OidbSvc.0xe0e_2".equals(localInvalidProtocolBufferMicroException)) {
-          continue;
-        }
-        d(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      str = paramToServiceMsg.getServiceCmd();
-      if ("OidbSvc.0xe0a_1".equals(str))
-      {
-        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-    } while (!"OidbSvc.0x8c9_2.GetPoint".equals(localInvalidProtocolBufferMicroException));
-    e(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ImageInfo", 2, new Object[] { "ImageInfo createFrom json: ", paramJSONObject });
+    }
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    c(paramJSONObject.optString("url"));
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("width");
+    this.jdField_b_of_type_Int = paramJSONObject.optInt("height");
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
+  }
+  
+  public int b()
+  {
+    return 1;
+  }
+  
+  public void b(String paramString)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaNetURL = new File(paramString).toURI().toURL();
+      this.jdField_a_of_type_JavaLangString = paramString;
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ImageInfo", 1, "setURLFromPath exception.");
+    }
+  }
+  
+  public boolean b()
+  {
+    return TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
+  }
+  
+  public void c(String paramString)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaNetURL = new URL(paramString);
+      this.jdField_b_of_type_JavaLangString = paramString;
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ImageInfo", 1, "Image setURLFromContentUrl exception.");
+    }
   }
 }
 

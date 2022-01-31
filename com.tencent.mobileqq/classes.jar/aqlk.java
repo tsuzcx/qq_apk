@@ -1,13 +1,25 @@
-import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-class aqlk
-  implements bhrf
+public class aqlk
+  extends bahj
 {
-  aqlk(aqlh paramaqlh, View paramView) {}
+  public aqlk(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void a()
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    super.a(paramTeamWorkFileImportInfo);
+    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
+      FilePreviewActivity.a(this.a).dismiss();
+    }
+  }
+  
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  {
+    super.a(paramString, paramTeamWorkFileImportInfo);
+    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
+      FilePreviewActivity.a(this.a).dismiss();
+    }
   }
 }
 

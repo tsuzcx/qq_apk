@@ -1,31 +1,30 @@
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-class adat
-  implements azjq
+public class adat
+  implements asfa
 {
-  adat(adas paramadas) {}
+  public adat(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
   public void a()
   {
-    QLog.i("JumpAction", 1, "system share.doShare show self dialog grant");
-    HashMap localHashMap = new HashMap();
-    azmz.a(BaseApplication.getContext()).a("", "noSDPermissionShareSelftGrant", true, 0L, 0L, localHashMap, "");
-  }
-  
-  public void b()
-  {
-    QLog.i("JumpAction", 1, "system share.doShare show self dialog denied");
-    HashMap localHashMap = new HashMap();
-    azmz.a(BaseApplication.getContext()).a("", "noSDPermissionShareSelftDeny", true, 0L, 0L, localHashMap, "");
-    this.a.a.finish();
+    bhso localbhso = bhso.a;
+    if ((localbhso != null) && (localbhso.a()))
+    {
+      if (!localbhso.a(1)) {
+        localbhso.b(1);
+      }
+      if ((!localbhso.a(8)) && (localbhso.a(5)) && (localbhso.a(7))) {
+        localbhso.b(8);
+      }
+      if ((!localbhso.a(9)) && (localbhso.a(6)) && (localbhso.a(7))) {
+        localbhso.b(9);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adat
  * JD-Core Version:    0.7.0.1
  */

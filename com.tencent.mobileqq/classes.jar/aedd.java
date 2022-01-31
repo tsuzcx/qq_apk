@@ -1,19 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aedd
-  implements View.OnClickListener
+  implements nfd
 {
-  public aedd(TroopRequestActivity paramTroopRequestActivity) {}
+  public aedd(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    TroopRequestActivity.a(this.a).setVisibility(8);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.security_verify", 2, "close warning tips");
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopTypeExt = 4;
     }
+    azqs.b(this.a.app, "P_CliOper", "Grp_create", "", "edit_data", "local_suc", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, "", "");
+    TroopInfoActivity.a(this.a, true, 0L, "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.j();
+    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
   }
 }
 

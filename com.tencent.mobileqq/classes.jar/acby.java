@@ -1,24 +1,24 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
 
 public class acby
   implements View.OnClickListener
 {
-  public acby(AuthDevEnableCompleteActivity paramAuthDevEnableCompleteActivity) {}
+  public acby(AddAccountActivity paramAddAccountActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = (ImageView)paramView.findViewById(2131367933);
-    if (paramView != null)
-    {
-      int i = 0;
-      if (paramView.getVisibility() == 0) {
-        i = 4;
-      }
-      paramView.setVisibility(i);
+    if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.isShown())) {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
+    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("");
+    libsafeedit.clearPassBuffer();
   }
 }
 

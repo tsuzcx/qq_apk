@@ -1,17 +1,45 @@
+import java.util.HashMap;
+
 public class amyq
 {
-  public float a;
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  private static int a;
+  public static String a;
+  public static HashMap<String, amxy> a;
+  private static int b;
+  public static String b;
+  public static String c;
+  public static String d;
   
-  public String toString()
+  static
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("xMIN:").append(this.a).append(",xMAX:").append(this.b).append(",yMIN:").append(this.c).append(",yMAX:").append(this.d);
-    return localStringBuilder.toString();
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_Int = 5;
+    jdField_b_of_type_Int = 1;
+    jdField_a_of_type_JavaLangString = "";
+    jdField_b_of_type_JavaLangString = "";
+    c = "";
+    d = "";
+    jdField_a_of_type_JavaUtilHashMap.put("recogQ3", new amxy(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("recogQ4", new amxy(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("recogQ5", new amxy(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("trackQ3", new amxy(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("trackQ4", new amxy(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("trackQ5", new amxy(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("renderQ1", new amxy(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("renderQ0", new amxy(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ1", new amxy(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ0", new amxy(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("camRenderQ0", new amxy(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ1", new amxy(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ0", new amxy(2147483647));
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    jdField_a_of_type_JavaLangString = paramString1;
+    jdField_b_of_type_JavaLangString = paramString2;
+    c = paramString3;
+    d = paramString4;
   }
 }
 

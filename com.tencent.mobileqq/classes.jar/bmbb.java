@@ -1,42 +1,59 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
+import dov.com.qq.im.capture.view.MusicProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import java.util.HashMap;
+import java.util.HashSet;
 
-class bmbb
-  extends BroadcastReceiver
+public class bmbb
+  implements View.OnClickListener
 {
-  bmbb(bmba parambmba) {}
+  public bmbb(QIMProviderContainerView paramQIMProviderContainerView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = this.a.a.a();
-    if ((paramContext == null) || (paramContext.isFinishing())) {}
-    do
+    if (paramView.getId() == 2131373303)
     {
-      do
+      MusicProviderView localMusicProviderView = (MusicProviderView)QIMProviderContainerView.a(this.a).get(Integer.valueOf(104));
+      if ((localMusicProviderView != null) && (!localMusicProviderView.c()))
       {
-        return;
-        paramContext = paramIntent.getAction();
-        if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("LightWeightCameraCaptureUnit", 2, "receive ACTION_START_VIDEO_CHAT.");
-          }
-          this.a.h();
-          return;
-        }
-      } while (!"tencent.qq.ipc.event".equals(paramContext));
-      paramContext = paramIntent.getExtras();
-      if (paramContext != null)
-      {
-        AIOLongCaptureCtrl.a(paramContext);
+        QQToast.a(BaseApplicationImpl.getContext(), alud.a(2131710207), 0).a();
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("LightWeightCameraCaptureUnit", 2, "receive ACTION_START_IPC_EVENT. extras=null");
+    }
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      int i = ((Integer)paramView.getTag()).intValue();
+      if (QLog.isColorLevel()) {
+        QLog.i("ProviderContainerView", 2, "onclick, indext: " + i);
+      }
+      this.a.a(i, 0, null, false);
+      if (QIMProviderContainerView.a(this.a) == null) {
+        break;
+      }
+      QIMProviderContainerView.a(this.a).g();
+      return;
+      wxj.a("clk_effect", wxj.b(axpl.a), 0, false, new String[0]);
+      bkoa.a.add(Integer.valueOf(7));
+      continue;
+      wxj.a("clk_filter", wxj.b(axpl.a), 0, false, new String[0]);
+      bkoa.a.add(Integer.valueOf(8));
+      continue;
+      wxj.a("clk_music", wxj.b(axpl.a), 0, false, new String[0]);
+      bkoa.a.add(Integer.valueOf(9));
+      continue;
+      wxj.a("clk_face", wxj.b(axpl.a), 0, false, new String[0]);
+      bkoa.a.add(Integer.valueOf(10));
+      continue;
+      wxj.a("clk_beauty", wxj.b(axpl.a), 0, false, new String[0]);
+      bkoa.a.add(Integer.valueOf(11));
+    }
   }
 }
 

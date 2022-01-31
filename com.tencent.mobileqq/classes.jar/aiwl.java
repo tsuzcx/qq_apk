@@ -1,19 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import eipc.EIPCResult;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
-class aiwl
-  implements aivx
+public class aiwl
+  implements DialogInterface.OnClickListener
 {
-  aiwl(aiwk paramaiwk, int paramInt) {}
+  public aiwl(SendHbActivity paramSendHbActivity) {}
   
-  public void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result_code", paramInt);
-    localBundle.putSerializable("path_result", paramHashMap);
-    this.jdField_a_of_type_Aiwk.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    paramDialogInterface.dismiss();
+    SendHbActivity.a(this.a);
   }
 }
 

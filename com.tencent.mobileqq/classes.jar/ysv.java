@@ -1,150 +1,78 @@
-import android.content.Context;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.Display;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
-public class ysv
-  extends ysx
+class ysv
+  extends bead
 {
-  private int jdField_a_of_type_Int;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private List<ysu> jdField_a_of_type_JavaUtilList = new ArrayList();
-  protected ysr a;
-  private int b;
+  ysv(ysu paramysu, ysl paramysl, ArrayList paramArrayList, long paramLong) {}
   
-  public ysv(Context paramContext)
+  public void onDone(beae parambeae)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    a(2131559082);
-    this.b = 4;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    int i = this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredWidth();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    if (paramInt3 > paramInt1)
+    if (parambeae.a == 0)
     {
-      if (paramInt3 > paramInt2 * 2)
+      parambeae = this.jdField_a_of_type_Ysu.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (parambeae.hasNext()) {
+        if (!((File)parambeae.next()).exists())
+        {
+          this.jdField_a_of_type_Ysu.jdField_a_of_type_Yta.a(this.jdField_a_of_type_Ysu);
+          return;
+        }
+      }
+      try
       {
-        localLayoutParams.leftMargin = (paramInt2 - i / 2);
-        return;
+        parambeae = this.jdField_a_of_type_Ysl.b.iterator();
+        int i = 1;
+        while (parambeae.hasNext())
+        {
+          String str = (String)parambeae.next();
+          File localFile = new File(this.jdField_a_of_type_Ysu.a() + File.separator + "v_" + i + ".mp4");
+          this.jdField_a_of_type_JavaUtilArrayList.add(localFile.getAbsolutePath());
+          if (localFile.exists())
+          {
+            i += 1;
+          }
+          else
+          {
+            if (!localFile.exists()) {
+              localFile.createNewFile();
+            }
+            xrg.a(new File(str), localFile);
+            i += 1;
+          }
+        }
+        this.jdField_a_of_type_Ysu.b();
       }
-      if (paramInt3 > (paramInt4 - paramInt2) * 2)
+      catch (IOException parambeae)
       {
-        localLayoutParams.leftMargin = (paramInt2 + paramInt3 - paramInt4 - i / 2);
+        QLog.e(".troop.VideoCombineHelper", 1, parambeae, new Object[0]);
+        this.jdField_a_of_type_Ysu.jdField_a_of_type_Yta.a(this.jdField_a_of_type_Ysu);
+        this.jdField_a_of_type_Ysl.b = this.jdField_a_of_type_JavaUtilArrayList;
+        this.jdField_a_of_type_Ysu.jdField_a_of_type_Yta.b(this.jdField_a_of_type_Ysu);
+        this.jdField_a_of_type_Ysu.jdField_a_of_type_Ysz = new ysm(this.jdField_a_of_type_Ysu.jdField_a_of_type_Ysb, this.jdField_a_of_type_Ysu.jdField_a_of_type_Yta, this.jdField_a_of_type_Ysu.c, this.jdField_a_of_type_Ysl.b, this.jdField_a_of_type_Ysl.d, this.jdField_a_of_type_Ysl.c);
+        if (!VideoEnvironment.e((AppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web"))) {}
+      }
+      for (;;)
+      {
+        QLog.d(".troop.trace_video_combine", 2, "downLoadTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
         return;
+        if (this.jdField_a_of_type_Ysl.a) {
+          this.jdField_a_of_type_Ysu.jdField_a_of_type_Yta.b(this.jdField_a_of_type_Ysu.jdField_a_of_type_Ysz);
+        } else {
+          this.jdField_a_of_type_Ysu.jdField_a_of_type_Yta.a(this.jdField_a_of_type_Ysu.jdField_a_of_type_Ysz);
+        }
       }
-      localLayoutParams.addRule(14);
-      return;
     }
-    localLayoutParams.addRule(14);
-  }
-  
-  private void a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    switch (this.b)
-    {
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131755040);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, null));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131370178));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362829));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-    super.b(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void a(View paramView)
-  {
-    a();
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt);
-    Rect localRect = new Rect(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight());
-    this.jdField_a_of_type_AndroidViewView.measure(-2, -2);
-    int i = this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
-    int j = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
-    int k = this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getWidth();
-    int m = arrayOfInt[0];
-    int n = (paramView.getWidth() - i) / 2;
-    int i1 = localRect.top;
-    a(paramView.getWidth(), localRect.centerX(), i, k);
-    a(k, localRect.centerX(), true);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, m + n, i1 - j - 10);
-  }
-  
-  public void a(ysr paramysr)
-  {
-    this.jdField_a_of_type_Ysr = paramysr;
-  }
-  
-  public void a(ysu paramysu)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramysu);
-    String str = paramysu.a();
-    Drawable localDrawable = paramysu.a();
-    if (this.jdField_a_of_type_Int != 0)
-    {
-      localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      ((ImageView)localObject1).setBackgroundResource(2130839472);
-      localObject2 = new LinearLayout.LayoutParams(-1, -2, 1.0F);
-      ((LinearLayout.LayoutParams)localObject2).setMargins(aekt.a(15.0F, ((ImageView)localObject1).getResources()), 0, aekt.a(15.0F, ((ImageView)localObject1).getResources()), 0);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-    }
-    Object localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559081, null);
-    Object localObject2 = (ImageView)((View)localObject1).findViewById(2131370184);
-    TextView localTextView = (TextView)((View)localObject1).findViewById(2131370197);
-    if (localDrawable != null)
-    {
-      ((ImageView)localObject2).setImageDrawable(localDrawable);
-      if (str == null) {
-        break label267;
-      }
-      if (ndp.a(str) <= 18) {
-        break label258;
-      }
-      localTextView.setText(ndp.a(str, 18, "..."));
-    }
-    for (;;)
-    {
-      ((View)localObject1).setOnClickListener(new ysw(this, paramysu.b(), paramysu.a()));
-      ((View)localObject1).setFocusable(true);
-      ((View)localObject1).setClickable(true);
-      paramysu = new LinearLayout.LayoutParams(-1, -2, 1.0F);
-      paramysu.gravity = 17;
-      ((View)localObject1).setLayoutParams(paramysu);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1);
-      this.jdField_a_of_type_Int += 1;
-      return;
-      ((ImageView)localObject2).setVisibility(8);
-      break;
-      label258:
-      localTextView.setText(str);
-      continue;
-      label267:
-      localTextView.setVisibility(8);
-    }
+    this.jdField_a_of_type_Ysu.d = ("donwload failed!code = " + parambeae.a + "errmsg = " + parambeae.b);
+    this.jdField_a_of_type_Ysu.jdField_a_of_type_Yta.a(this.jdField_a_of_type_Ysu);
   }
 }
 

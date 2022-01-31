@@ -1,29 +1,16 @@
-import android.support.annotation.Nullable;
-import dov.com.qq.im.capture.view.CountDownView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import dov.com.qq.im.ae.AEPituCameraUnit.10;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
-class bkpn
-  implements bmac<bkuk>
+public class bkpn
+  implements DialogInterface.OnCancelListener
 {
-  bkpn(bkpi parambkpi) {}
+  public bkpn(AEPituCameraUnit.10 param10) {}
   
-  public void a(@Nullable bkuk parambkuk)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (parambkuk == null) {
-      return;
-    }
-    boolean bool = parambkuk.a();
-    if (bool) {
-      bkpi.b(this.a);
-    }
-    for (;;)
-    {
-      bkpi.a(this.a).a(bool, new bkpo(this, parambkuk));
-      return;
-      if (bkpi.a(this.a) != null) {
-        bkpi.a(this.a).a();
-      }
-    }
+    bkpl.a(this.a.this$0).setCameraPermissionResult(false);
   }
 }
 

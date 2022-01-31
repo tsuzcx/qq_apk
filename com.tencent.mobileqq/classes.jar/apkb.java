@@ -1,51 +1,25 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonIPCModule.1;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
-public class apkb
-  extends QIPCModule
+class apkb
+  implements apjw
 {
-  private static apkb a;
+  apkb(apjy paramapjy, MqqHandler paramMqqHandler) {}
   
-  private apkb(String paramString)
+  public void a(int paramInt)
   {
-    super(paramString);
-  }
-  
-  public static apkb a()
-  {
-    if (a == null) {}
-    try
+    switch (paramInt)
     {
-      if (a == null) {
-        a = new apkb("EmoticonIPCModule");
-      }
-      return a;
     }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonIPCModule", 2, "onCall action = " + paramString);
-    }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localAppRuntime instanceof QQAppInterface))
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonIPCModule", 2, "cannot get QQAppInterface.");
-      }
-      return null;
-    }
-    ThreadManager.post(new EmoticonIPCModule.1(this, paramBundle, paramString, ((bdqa)((QQAppInterface)localAppRuntime).getManager(235)).a, paramInt), 5, null, true);
-    return null;
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(80);
+      return;
+    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(80, 5000L);
   }
 }
 

@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 class aflf
-  implements DialogInterface.OnClickListener
+  extends aeqi
 {
-  aflf(afld paramafld, ChatMessage paramChatMessage) {}
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public TextView b;
+  public TextView c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    acex.b(this.jdField_a_of_type_Afld.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afld.b, this.jdField_a_of_type_Afld.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
-  }
+  aflf(aflc paramaflc) {}
 }
 
 

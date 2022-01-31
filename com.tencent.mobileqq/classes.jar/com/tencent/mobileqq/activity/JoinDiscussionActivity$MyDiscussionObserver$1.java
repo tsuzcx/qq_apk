@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import adao;
-import almt;
+import adfd;
+import alri;
 import android.graphics.Bitmap;
 
 public class JoinDiscussionActivity$MyDiscussionObserver$1
   implements Runnable
 {
-  public JoinDiscussionActivity$MyDiscussionObserver$1(adao paramadao) {}
+  public JoinDiscussionActivity$MyDiscussionObserver$1(adfd paramadfd) {}
   
   public void run()
   {

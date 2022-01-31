@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import argw;
+import arlf;
 import com.tencent.mobileqq.app.TroopManager;
 
 public class TroopFileModel$13$1
   implements Runnable
 {
-  public TroopFileModel$13$1(argw paramargw) {}
+  public TroopFileModel$13$1(arlf paramarlf) {}
   
   public void run()
   {

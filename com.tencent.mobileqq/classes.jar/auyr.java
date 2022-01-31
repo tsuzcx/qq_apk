@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.MedalItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-public final class auyr
-  implements Parcelable.Creator<MedalItem>
+public class auyr
+  implements DialogInterface.OnClickListener
 {
-  public MedalItem a(Parcel paramParcel)
-  {
-    return new MedalItem(paramParcel);
-  }
+  public auyr(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public MedalItem[] a(int paramInt)
-  {
-    return new MedalItem[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

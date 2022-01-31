@@ -1,57 +1,45 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.nearby.smooth.ItemLoader;
-import com.tencent.widget.AbsListView;
+import java.util.Calendar;
 
-public final class avot
+class avot
+  implements aoim
 {
-  int jdField_a_of_type_Int;
-  final Handler jdField_a_of_type_AndroidOsHandler;
-  avos jdField_a_of_type_Avos;
-  final ItemLoader<?, ?> jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  avot(avop paramavop) {}
   
-  void a()
+  public int a()
   {
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    return 3;
   }
   
-  void a(View paramView1, View paramView2, int paramInt)
+  public int a(int paramInt)
   {
-    this.jdField_a_of_type_Avos.a();
-    ListAdapter localListAdapter = this.jdField_a_of_type_Avos.a();
-    if ((this.jdField_a_of_type_Int != 2) && (!this.jdField_a_of_type_Boolean)) {}
-    for (boolean bool = true;; bool = false)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(paramView1, paramView2, localListAdapter, paramInt, bool);
-      return;
+    default: 
+      return 0;
+    case 0: 
+      return this.a.b - 1896 + 1;
+    case 1: 
+      return 12;
     }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, this.a.e + 1896);
+    localCalendar.set(2, this.a.f);
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
   }
   
-  void a(avos paramavos)
+  public String a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Avos = paramavos;
-    if (this.jdField_a_of_type_Avos != null)
+    switch (paramInt1)
     {
-      paramavos = this.jdField_a_of_type_Avos.a();
-      paramavos.setOnScrollListener(new avow(this, null));
-      paramavos.setOnTouchListener(new avov(this, null));
-      paramavos.setOnItemSelectedListener(new avox(this, null));
+    default: 
+      return "";
+    case 0: 
+      return paramInt2 + 1896 + alud.a(2131707694);
+    case 1: 
+      return paramInt2 + 1 + alud.a(2131707686);
     }
-  }
-  
-  void b()
-  {
-    if (this.jdField_a_of_type_Avos == null) {
-      throw new IllegalStateException("Cannot cancel requests with no managed view");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Avos.a());
+    return paramInt2 + 1 + alud.a(2131707674);
   }
 }
 

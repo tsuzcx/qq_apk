@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import acoa;
-import azyl;
+import acsp;
+import bacu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.util.Pair;
 import java.util.ArrayList;
@@ -17,16 +17,16 @@ public class Conversation$50$1
     for (;;)
     {
       return;
-      azyl localazyl = (azyl)this.a.this$0.a.getManager(62);
-      if (localazyl != null)
+      bacu localbacu = (bacu)this.a.this$0.a.getManager(62);
+      if (localbacu != null)
       {
-        ArrayList localArrayList = localazyl.a("sub.uin.all");
+        ArrayList localArrayList = localbacu.a("sub.uin.all");
         int j = localArrayList.size();
         int i = 0;
         while (i < j)
         {
           Pair localPair = (Pair)localArrayList.get(i);
-          localazyl.a(this.a.this$0.a, this.a.this$0.a(), localPair, new acoa(this, localazyl, localPair));
+          localbacu.a(this.a.this$0.a, this.a.this$0.a(), localPair, new acsp(this, localbacu, localPair));
           i += 1;
         }
       }

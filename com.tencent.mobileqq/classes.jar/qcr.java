@@ -48,15 +48,15 @@ public class qcr
     ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a.put(Long.valueOf(localRecommendFollowInfo.uin), localRecommendFollowInfo);
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131562498, null, false);
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131562516, null, false);
       paramViewGroup = new qcy(this.a);
-      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131367536));
-      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView = ((RingAvatarView)paramView.findViewById(2131375168));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367591));
-      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131377979));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365125));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131363588));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365353);
+      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131367546));
+      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView = ((RingAvatarView)paramView.findViewById(2131375219));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367601));
+      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131378033));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365127));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131363590));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365355);
       paramView.setTag(paramViewGroup);
     }
     for (;;)
@@ -81,9 +81,9 @@ public class qcr
           if (!localRecommendFollowInfo.isFollowed) {
             break label443;
           }
-          paramViewGroup.b.setText(alpo.a(2131702722));
+          paramViewGroup.b.setText(alud.a(2131702734));
           paramViewGroup.b.setTextColor(Color.parseColor("#777777"));
-          paramViewGroup.b.setBackgroundResource(2130848856);
+          paramViewGroup.b.setBackgroundResource(2130848929);
           paramViewGroup.b.setOnClickListener(new qct(this, localRecommendFollowInfo));
           paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
           return paramView;
@@ -103,10 +103,10 @@ public class qcr
           paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
           continue;
           label443:
-          paramViewGroup.b.setText(alpo.a(2131702673));
+          paramViewGroup.b.setText(alud.a(2131702685));
           paramViewGroup.b.setTextColor(-1);
-          paramViewGroup.b.setBackgroundResource(2130848825);
-          paramViewGroup.b.setCompoundDrawablePadding(aekt.a(3.0F, this.a.getResources()));
+          paramViewGroup.b.setBackgroundResource(2130848898);
+          paramViewGroup.b.setCompoundDrawablePadding(aepi.a(3.0F, this.a.getResources()));
         }
       }
     }

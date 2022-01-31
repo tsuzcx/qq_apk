@@ -6,7 +6,7 @@ import com.tencent.widget.AdapterView;
 import java.util.List;
 
 public class mzk
-  implements bhqp
+  implements bhuw
 {
   public mzk(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   

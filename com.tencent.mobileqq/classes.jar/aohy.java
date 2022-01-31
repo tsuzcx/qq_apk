@@ -1,49 +1,38 @@
-import android.text.TextUtils;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.XListView;
 
-class aohy
+public class aohy
+  implements Handler.Callback
 {
-  private static volatile aohy a;
+  public aohy(SearchResultActivity paramSearchResultActivity) {}
   
-  public static aohy a()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (a == null) {}
-    try
+    switch (paramMessage.what)
     {
-      if (a == null) {
-        a = new aohy();
-      }
-      return a;
     }
-    finally {}
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    for (;;)
     {
-      return null;
-      paramString = Pattern.compile("^\\[(\\d+)\\]$").matcher(paramString);
-    } while (!paramString.find());
-    return paramString.group(1);
-  }
-  
-  public String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      paramString = Pattern.compile("^\\[('|\")(.+)('|\")\\]$").matcher(paramString);
-    } while (!paramString.find());
-    return paramString.group(2);
+      return true;
+      SearchResultActivity.a(this.a);
+      continue;
+      SearchResultActivity.b(this.a);
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+      QQToast.a(this.a, 2131694768, 0).b(this.a.getTitleBarHeight());
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,38 @@
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class aonz
 {
-  public int a;
+  public int a = 0;
   
-  public static aonz a(String paramString)
+  public static aonz a(aoko[] paramArrayOfaoko)
   {
     aonz localaonz = new aonz();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaoko != null) {
+      localObject1 = localObject2;
+    }
     try
     {
-      localaonz.a = new JSONObject(paramString).optInt("preloadPskey", 0);
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "confBean = " + localaonz.toString());
+      if (paramArrayOfaoko.length > 0) {
+        localObject1 = paramArrayOfaoko[0].a;
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        QLog.i("LebaQzoneStyleBean", 1, "content is empty");
+        return localaonz;
+      }
+      localaonz.a = new JSONObject((String)localObject1).optInt("ifnewstyle", 0);
+      QLog.i("LebaQzoneStyleBean", 1, "parse config=" + (String)localObject1 + ",style=" + localaonz.a);
       return localaonz;
     }
-    catch (Exception paramString)
+    catch (Exception paramArrayOfaoko)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("WVPreloadPskeyConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+      QLog.i("LebaQzoneStyleBean", 1, "handleLebaConfig parse", paramArrayOfaoko);
     }
     return localaonz;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("preloadPskey:").append(this.a);
-    return localStringBuilder.toString();
   }
 }
 

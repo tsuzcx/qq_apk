@@ -1,17 +1,23 @@
-public class ampu
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoAttribute;
+
+public final class ampu
+  implements Parcelable.Creator<SosoInterface.SosoAttribute>
 {
-  public long a;
-  public boolean a;
-  
-  public ampu(long paramLong, boolean paramBoolean)
+  public SosoInterface.SosoAttribute a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return new SosoInterface.SosoAttribute(paramParcel);
+  }
+  
+  public SosoInterface.SosoAttribute[] a(int paramInt)
+  {
+    return new SosoInterface.SosoAttribute[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampu
  * JD-Core Version:    0.7.0.1
  */

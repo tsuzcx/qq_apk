@@ -1,63 +1,43 @@
-import android.graphics.PointF;
-import android.opengl.GLES20;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.mobileqq.shortvideo.ptvfilter.DoodleMagicAlgoHandler.RenderPoint;
-import com.tencent.view.RendererUtils;
-import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 public class xdc
-  extends xct
+  extends JobSegment<Bitmap, Bitmap>
 {
-  Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-  public String a;
-  ArrayList<DoodleMagicAlgoHandler.RenderPoint> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  CopyOnWriteArrayList<PointF> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  volatile boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  volatile boolean jdField_b_of_type_Boolean;
-  int jdField_c_of_type_Int;
-  volatile boolean jdField_c_of_type_Boolean;
-  boolean d;
-  boolean e = false;
+  public int a;
   
-  public xdc(int paramInt, String paramString)
+  public xdc()
   {
-    super(paramInt);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
+    this.a = 10;
   }
   
-  public Frame a(int paramInt1, int paramInt2)
+  public xdc(int paramInt)
   {
-    this.jdField_c_of_type_Int = RendererUtils.createTexture();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-    GLES20.glBindTexture(3553, this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_c_of_type_Int, paramInt1, paramInt2, 1.0D);
-    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO());
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-    GLES20.glClear(16640);
-    GLES20.glFlush();
-    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+    this.a = paramInt;
   }
   
-  public void a()
+  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame != null) && (!this.e))
-    {
-      this.e = true;
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-      RendererUtils.clearTexture(this.jdField_c_of_type_Int);
+    if (paramBitmap == null) {
+      return null;
     }
+    bdnl.a(paramBitmap, paramInt);
+    return paramBitmap;
   }
   
-  public void b()
+  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.b = true;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    long l = System.currentTimeMillis();
+    paramJobContext = a(paramBitmap, this.a, false);
+    wxe.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
+    if (paramJobContext == null)
+    {
+      super.notifyError(new BitmapError("BlurJobSegment", 7));
+      return;
+    }
+    super.notifyResult(paramJobContext);
   }
 }
 

@@ -1,17 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class abyh
-  implements DialogInterface.OnClickListener
+public final class abyh
 {
-  public abyh(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString, int paramInt) {}
+  public long a;
+  public String a;
+  public long b;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public JSONObject a()
   {
-    bdqe.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, "mvip.n.a.gnew_apply", this.jdField_a_of_type_JavaLangString, 3, false, false, "", "", true, true);
-    azmj.b(null, "dc00898", "", "", "qq_vip", "0X800A4FB", this.jdField_a_of_type_Int, 0, "", "", "", "");
-    paramDialogInterface.dismiss();
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("openid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("access_token", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("expire_in", this.jdField_a_of_type_Long);
+      localJSONObject.put("expire_time", this.jdField_b_of_type_Long);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(abye.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
+    }
+    return localJSONObject;
+  }
+  
+  public String toString()
+  {
+    return "LoginInfo{, openid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", access_token='" + this.jdField_b_of_type_JavaLangString + '\'' + ", expireIn='" + this.jdField_a_of_type_Long + '\'' + ", expireTime='" + this.jdField_b_of_type_Long + '\'' + '}';
   }
 }
 

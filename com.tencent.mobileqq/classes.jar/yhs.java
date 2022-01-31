@@ -1,6 +1,8 @@
 public abstract interface yhs
 {
-  public abstract void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs);
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
 }
 
 

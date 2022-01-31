@@ -1,79 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class agsi
+  implements DialogInterface.OnClickListener
 {
-  boolean a;
+  agsi(agse paramagse) {}
   
-  void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      this.a = false;
-      return;
-    }
-    finally {}
-  }
-  
-  boolean a()
-  {
-    return a(0L);
-  }
-  
-  /* Error */
-  boolean a(long paramLong)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 15	agsi:a	Z
-    //   6: ifeq +7 -> 13
-    //   9: aload_0
-    //   10: monitorexit
-    //   11: iconst_1
-    //   12: ireturn
-    //   13: aload_0
-    //   14: lload_1
-    //   15: invokevirtual 25	java/lang/Object:wait	(J)V
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: iconst_1
-    //   21: ireturn
-    //   22: astore_3
-    //   23: aload_0
-    //   24: monitorexit
-    //   25: aload_3
-    //   26: athrow
-    //   27: astore_3
-    //   28: aload_3
-    //   29: invokevirtual 28	java/lang/InterruptedException:printStackTrace	()V
-    //   32: aload_0
-    //   33: monitorexit
-    //   34: iconst_0
-    //   35: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	36	0	this	agsi
-    //   0	36	1	paramLong	long
-    //   22	4	3	localObject	Object
-    //   27	2	3	localInterruptedException	java.lang.InterruptedException
-    // Exception table:
-    //   from	to	target	type
-    //   2	11	22	finally
-    //   13	18	22	finally
-    //   18	20	22	finally
-    //   23	25	22	finally
-    //   28	34	22	finally
-    //   13	18	27	java/lang/InterruptedException
-  }
-  
-  void b()
-  {
-    try
-    {
-      this.a = true;
-      notify();
-      return;
-    }
-    finally {}
+    aepi.n = true;
+    aetu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, null);
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ADC9", "0X800ADC9", 0, 0, "", "", "", "");
   }
 }
 

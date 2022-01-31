@@ -1,38 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ahxs
-  extends bcjt
+class ahxs
+  implements View.OnClickListener
 {
-  public ahxs(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ahxs(ahxp paramahxp, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList error");
-    }
-    ChatHistoryTroopMemberFragment.a(this.a, true);
-    if (ChatHistoryTroopMemberFragment.b(this.a))
-    {
-      paramString = this.a.b.obtainMessage(12, null);
-      this.a.b.sendMessage(paramString);
-    }
-  }
-  
-  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList");
-    }
-    ChatHistoryTroopMemberFragment.a(this.a, paramArrayOfLong1);
-    ChatHistoryTroopMemberFragment.b(this.a, paramArrayOfLong2);
-    ChatHistoryTroopMemberFragment.c(this.a, paramArrayOfLong3);
-    ChatHistoryTroopMemberFragment.a(this.a, true);
-    if (ChatHistoryTroopMemberFragment.b(this.a))
-    {
-      paramArrayOfLong1 = this.a.b.obtainMessage(12, null);
-      this.a.b.sendMessage(paramArrayOfLong1);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ahxp, 2);
     }
   }
 }

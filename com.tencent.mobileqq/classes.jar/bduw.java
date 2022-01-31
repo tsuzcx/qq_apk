@@ -1,70 +1,33 @@
-import android.os.Environment;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.graphics.Color;
+import android.util.SparseArray;
 
 public class bduw
 {
-  private static volatile boolean a;
-  private static boolean b;
+  public byte a;
+  public int a;
+  public long a;
+  public SparseArray<bduw> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public long c;
   
-  public static String a(String paramString)
+  public static bduw a()
   {
-    if (!a) {}
-    String str3;
-    try
-    {
-      b = "mounted".equals(Environment.getExternalStorageState());
-      a = true;
-      String str1 = paramString;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        str1 = paramString;
-        if (b)
-        {
-          str3 = bdux.a().a();
-          if ((!paramString.startsWith("/")) && (paramString.indexOf(":") <= 0)) {
-            break label149;
-          }
-          str1 = paramString;
-          if (str3 != null)
-          {
-            str1 = paramString;
-            if (!paramString.startsWith(str3))
-            {
-              str1 = paramString;
-              if (paramString.startsWith(bdux.a().b()))
-              {
-                String[] arrayOfString = paramString.split(bdux.a().b());
-                str1 = paramString;
-                if (arrayOfString.length >= 2) {
-                  str1 = str3 + arrayOfString[1];
-                }
-              }
-            }
-          }
-        }
-      }
-      return str1;
-    }
-    catch (Exception localException)
-    {
-      label149:
-      do
-      {
-        for (;;)
-        {
-          QLog.e("VFSAssistantUtils", 1, "getSDKPrivatePath is called!", localException);
-        }
-        String str2 = paramString;
-      } while (str3 == null);
-    }
-    return str3 + File.separator + paramString;
+    return new bduw();
   }
   
-  public static String b(String paramString)
+  public static bduw a(int paramInt, byte paramByte)
   {
-    return new File(paramString).getCanonicalPath();
+    bduw localbduw = new bduw();
+    localbduw.jdField_b_of_type_Int = paramInt;
+    localbduw.jdField_a_of_type_Byte = paramByte;
+    return localbduw;
+  }
+  
+  public int a()
+  {
+    return Color.rgb((int)this.jdField_a_of_type_Long, (int)this.jdField_b_of_type_Long, (int)this.c);
   }
 }
 

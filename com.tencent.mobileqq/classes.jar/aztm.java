@@ -1,28 +1,22 @@
-import android.view.View;
-import android.widget.TextView;
-
 class aztm
 {
-  public View a;
-  public TextView a;
-  public TextView b;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
   
-  public void a()
+  aztm(aztk paramaztk, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-    if (this.b != null) {
-      this.b.setVisibility(8);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aztm
  * JD-Core Version:    0.7.0.1
  */

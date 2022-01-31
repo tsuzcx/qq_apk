@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.main;
 
-import aiak;
-import aibj;
-import awwg;
+import aiez;
+import aify;
+import axap;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -11,7 +11,7 @@ import ssp;
 public class MainAssistObserver$8$1
   implements Runnable
 {
-  public MainAssistObserver$8$1(aibj paramaibj) {}
+  public MainAssistObserver$8$1(aify paramaify) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class MainAssistObserver$8$1
     }
     QQAppInterface localQQAppInterface = localSplashActivity.app;
     int i = 0;
-    int j = awwg.a(localQQAppInterface);
+    int j = axap.a(localQQAppInterface);
     QQMessageFacade localQQMessageFacade = localQQAppInterface.a();
     if (localQQMessageFacade != null)
     {

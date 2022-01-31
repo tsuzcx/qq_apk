@@ -1,23 +1,12 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qphone.base.util.QLog;
-
-final class agsq
-  implements Animation.AnimationListener
+class agsq
+  extends alpa
 {
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleHelper", 2, "onAllAnimationEnd " + paramAnimation);
-    }
-  }
+  agsq(agso paramagso) {}
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  protected void a(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleHelper", 2, "onAnimationStart " + paramAnimation);
+    if (agso.a(this.a) != null) {
+      agso.a(this.a).notifyDataSetChanged();
     }
   }
 }

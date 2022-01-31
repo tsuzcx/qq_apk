@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.addon;
 
-import akii;
+import akmx;
 import com.etrump.mixlayout.ETEngine;
 
 public class DiyPendantFetcher$3
   implements Runnable
 {
-  public DiyPendantFetcher$3(akii paramakii, String paramString, int paramInt) {}
+  public DiyPendantFetcher$3(akmx paramakmx, String paramString, int paramInt) {}
   
   public void run()
   {

@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract class aemj
-  implements aeml
+class aemj
+  implements DialogInterface.OnClickListener
 {
-  public static final boolean e = AppSetting.c;
-  public int b;
+  aemj(aemi paramaemi) {}
   
-  public abstract View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, aeov paramaeov);
-  
-  public abstract void a();
-  
-  public abstract void a(View paramView, ChatMessage paramChatMessage, int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

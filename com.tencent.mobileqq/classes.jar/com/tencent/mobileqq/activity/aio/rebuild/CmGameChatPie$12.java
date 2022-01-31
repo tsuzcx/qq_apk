@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agjp;
-import akqn;
+import agoe;
+import akvc;
 import com.tencent.mobileqq.utils.VipUtils;
 
 public class CmGameChatPie$12
   implements Runnable
 {
-  public CmGameChatPie$12(agjp paramagjp, int paramInt1, int paramInt2, String paramString) {}
+  public CmGameChatPie$12(agoe paramagoe, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
     int i = 2;
-    if (agjp.a(this.this$0) == null) {
-      agjp.a(this.this$0, new akqn(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    if (agoe.a(this.this$0) == null) {
+      agoe.a(this.this$0, new akvc(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
     }
-    agjp.a(this.this$0).a(this.this$0.b);
-    agjp.a(this.this$0).a(agjp.a(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
-    agjp.a(this.this$0).show();
-    agjp.a(this.this$0);
+    agoe.a(this.this$0).a(this.this$0.b);
+    agoe.a(this.this$0).a(agoe.a(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    agoe.a(this.this$0).show();
+    agoe.a(this.this$0);
     if (this.b == 2) {}
     for (;;)
     {

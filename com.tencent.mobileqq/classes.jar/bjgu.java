@@ -1,136 +1,220 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.PhotoParam;
+import android.util.Pair;
+import cooperation.qzone.util.QZLog;
+import java.io.Closeable;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.Map;
 
-public final class bjgu
-  implements Parcelable.Creator<PhotoParam>
+public class bjgu
+  implements Closeable
 {
-  public PhotoParam a(Parcel paramParcel)
+  public bjgw a;
+  private final FileInputStream jdField_a_of_type_JavaIoFileInputStream;
+  private final Map<String, bjgy> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public bjgx[] a;
+  public bjgy[] a;
+  
+  public bjgu(File paramFile)
   {
-    boolean bool2 = true;
-    PhotoParam localPhotoParam = new PhotoParam();
-    localPhotoParam.jdField_a_of_type_Long = paramParcel.readLong();
-    localPhotoParam.jdField_b_of_type_Long = paramParcel.readLong();
-    localPhotoParam.jdField_c_of_type_Long = paramParcel.readLong();
-    localPhotoParam.jdField_d_of_type_Long = paramParcel.readLong();
-    localPhotoParam.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localPhotoParam.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localPhotoParam.jdField_a_of_type_Int = paramParcel.readInt();
-    localPhotoParam.jdField_b_of_type_Int = paramParcel.readInt();
-    localPhotoParam.jdField_c_of_type_Int = paramParcel.readInt();
-    localPhotoParam.jdField_d_of_type_Int = paramParcel.readInt();
-    localPhotoParam.jdField_e_of_type_Int = paramParcel.readInt();
-    localPhotoParam.jdField_f_of_type_Int = paramParcel.readInt();
-    localPhotoParam.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readInt() == 1)
+    this.jdField_a_of_type_JavaIoFileInputStream = new FileInputStream(paramFile);
+    Object localObject = this.jdField_a_of_type_JavaIoFileInputStream.getChannel();
+    this.jdField_a_of_type_Bjgw = new bjgw((FileChannel)localObject, null);
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(128);
+    localByteBuffer.limit(this.jdField_a_of_type_Bjgw.d);
+    if (this.jdField_a_of_type_Bjgw.a[5] == 1) {}
+    for (paramFile = ByteOrder.LITTLE_ENDIAN;; paramFile = ByteOrder.BIG_ENDIAN)
     {
-      bool1 = true;
-      localPhotoParam.jdField_a_of_type_Boolean = bool1;
-      localPhotoParam.jdField_g_of_type_Int = paramParcel.readInt();
-      localPhotoParam.jdField_h_of_type_Int = paramParcel.readInt();
-      localPhotoParam.jdField_d_of_type_JavaLangString = paramParcel.readString();
-      localPhotoParam.jdField_e_of_type_JavaLangString = paramParcel.readString();
-      localPhotoParam.jdField_f_of_type_JavaLangString = paramParcel.readString();
-      localPhotoParam.jdField_g_of_type_JavaLangString = paramParcel.readString();
-      localPhotoParam.jdField_h_of_type_JavaLangString = paramParcel.readString();
-      localPhotoParam.jdField_i_of_type_Int = paramParcel.readInt();
-      localPhotoParam.jdField_a_of_type_JavaUtilMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localPhotoParam.jdField_i_of_type_JavaLangString = paramParcel.readString();
-      if (paramParcel.readInt() != 1) {
-        break label447;
-      }
-      bool1 = true;
-      label251:
-      localPhotoParam.jdField_b_of_type_Boolean = bool1;
-      localPhotoParam.jdField_j_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readInt() != 1) {
-        break label452;
-      }
-      bool1 = true;
-      label276:
-      localPhotoParam.jdField_c_of_type_Boolean = bool1;
-      localPhotoParam.jdField_j_of_type_JavaLangString = paramParcel.readString();
-      if (paramParcel.readInt() != 1) {
-        break label457;
-      }
-      bool1 = true;
-      label301:
-      localPhotoParam.jdField_d_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label462;
-      }
-      bool1 = true;
-      label317:
-      localPhotoParam.jdField_e_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label467;
-      }
-      bool1 = true;
-      label333:
-      localPhotoParam.jdField_f_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label472;
-      }
-      bool1 = true;
-      label349:
-      localPhotoParam.jdField_g_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label477;
-      }
-      bool1 = true;
-      label365:
-      localPhotoParam.jdField_h_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label482;
-      }
-      bool1 = true;
-      label381:
-      localPhotoParam.jdField_i_of_type_Boolean = bool1;
-      localPhotoParam.jdField_k_of_type_Int = paramParcel.readInt();
-      localPhotoParam.jdField_e_of_type_Long = paramParcel.readLong();
-      localPhotoParam.jdField_k_of_type_JavaLangString = paramParcel.readString();
-      localPhotoParam.jdField_f_of_type_Long = paramParcel.readLong();
-      if (paramParcel.readInt() != 1) {
-        break label487;
+      localByteBuffer.order(paramFile);
+      ((FileChannel)localObject).position(this.jdField_a_of_type_Bjgw.b);
+      this.jdField_a_of_type_ArrayOfBjgx = new bjgx[this.jdField_a_of_type_Bjgw.e];
+      i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfBjgx.length)
+      {
+        a((FileChannel)localObject, localByteBuffer, "failed to read phdr.");
+        this.jdField_a_of_type_ArrayOfBjgx[i] = new bjgx(localByteBuffer, this.jdField_a_of_type_Bjgw.a[4], null);
+        i += 1;
       }
     }
-    label447:
-    label452:
-    label457:
-    label462:
-    label467:
-    label472:
-    label477:
-    label482:
-    label487:
-    for (boolean bool1 = bool2;; bool1 = false)
+    ((FileChannel)localObject).position(this.jdField_a_of_type_Bjgw.c);
+    localByteBuffer.limit(this.jdField_a_of_type_Bjgw.f);
+    this.jdField_a_of_type_ArrayOfBjgy = new bjgy[this.jdField_a_of_type_Bjgw.g];
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfBjgy.length)
     {
-      localPhotoParam.jdField_j_of_type_Boolean = bool1;
-      return localPhotoParam;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label251;
-      bool1 = false;
-      break label276;
-      bool1 = false;
-      break label301;
-      bool1 = false;
-      break label317;
-      bool1 = false;
-      break label333;
-      bool1 = false;
-      break label349;
-      bool1 = false;
-      break label365;
-      bool1 = false;
-      break label381;
+      a((FileChannel)localObject, localByteBuffer, "failed to read shdr.");
+      this.jdField_a_of_type_ArrayOfBjgy[i] = new bjgy(localByteBuffer, this.jdField_a_of_type_Bjgw.a[4], null);
+      i += 1;
+    }
+    if (this.jdField_a_of_type_Bjgw.h > 0)
+    {
+      paramFile = a(this.jdField_a_of_type_ArrayOfBjgy[this.jdField_a_of_type_Bjgw.h]);
+      localObject = this.jdField_a_of_type_ArrayOfBjgy;
+      int k = localObject.length;
+      i = j;
+      while (i < k)
+      {
+        localByteBuffer = localObject[i];
+        paramFile.position(localByteBuffer.jdField_a_of_type_Int);
+        localByteBuffer.jdField_a_of_type_JavaLangString = a(paramFile);
+        this.jdField_a_of_type_JavaUtilMap.put(localByteBuffer.jdField_a_of_type_JavaLangString, localByteBuffer);
+        i += 1;
+      }
     }
   }
   
-  public PhotoParam[] a(int paramInt)
+  public static Pair<Integer, Throwable> a(File paramFile)
   {
-    return null;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        paramFile = new bjgu(paramFile);
+        if (paramFile == null) {}
+      }
+      catch (IOException paramFile)
+      {
+        Object localObject1 = paramFile.getMessage();
+        if (localObject1 == null) {
+          continue;
+        }
+        if (!((String)localObject1).startsWith("bad elf magic")) {
+          continue;
+        }
+        i = -1;
+        localObject1 = new Pair(Integer.valueOf(i), paramFile);
+        paramFile = (File)localObject1;
+        if (0 == 0) {
+          continue;
+        }
+        try
+        {
+          throw new NullPointerException();
+        }
+        catch (IOException paramFile)
+        {
+          QZLog.e("ShareElfFile", "", paramFile);
+          return localObject1;
+        }
+        if (!((String)localObject1).startsWith("bad elf class")) {
+          continue;
+        }
+        i = -2;
+        continue;
+        if (!((String)localObject1).startsWith("bad elf data encoding")) {
+          continue;
+        }
+        i = -3;
+        continue;
+        if (!((String)localObject1).startsWith("failed to read rest part of ehdr")) {
+          continue;
+        }
+        i = -4;
+        continue;
+        if (!((String)localObject1).startsWith("bad elf version")) {
+          continue;
+        }
+        i = -5;
+        continue;
+        if (!((String)localObject1).startsWith("Unexpected elf class")) {
+          continue;
+        }
+        i = -6;
+        continue;
+        if (!((String)localObject1).startsWith("failed to read phdr")) {
+          continue;
+        }
+        i = -7;
+        continue;
+        boolean bool = ((String)localObject1).startsWith("failed to read shdr");
+        if (!bool) {
+          continue;
+        }
+        i = -8;
+        continue;
+        i = -1000;
+        continue;
+      }
+      finally
+      {
+        if (0 == 0) {
+          break label232;
+        }
+      }
+      try
+      {
+        paramFile.close();
+        paramFile = new Pair(Integer.valueOf(0), null);
+        return paramFile;
+      }
+      catch (IOException paramFile)
+      {
+        QZLog.e("ShareElfFile", "", paramFile);
+      }
+    }
+    try
+    {
+      throw new NullPointerException();
+      label232:
+      throw localObject2;
+    }
+    catch (IOException paramFile)
+    {
+      for (;;)
+      {
+        QZLog.e("ShareElfFile", "", paramFile);
+      }
+    }
+  }
+  
+  public static String a(ByteBuffer paramByteBuffer)
+  {
+    byte[] arrayOfByte = paramByteBuffer.array();
+    int i = paramByteBuffer.position();
+    while ((paramByteBuffer.hasRemaining()) && (arrayOfByte[paramByteBuffer.position()] != 0)) {
+      paramByteBuffer.position(paramByteBuffer.position() + 1);
+    }
+    paramByteBuffer.position(paramByteBuffer.position() + 1);
+    return new String(arrayOfByte, i, paramByteBuffer.position() - i - 1, Charset.forName("ASCII"));
+  }
+  
+  public static void a(FileChannel paramFileChannel, ByteBuffer paramByteBuffer, String paramString)
+  {
+    paramByteBuffer.rewind();
+    int i = paramFileChannel.read(paramByteBuffer);
+    if (i != paramByteBuffer.limit()) {
+      throw new IOException(paramString + " Rest bytes insufficient, expect to read " + paramByteBuffer.limit() + " bytes but only " + i + " bytes were read.");
+    }
+    paramByteBuffer.flip();
+  }
+  
+  private static void b(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    if ((paramInt1 < paramInt2) || (paramInt1 > paramInt3)) {
+      throw new IOException(paramString);
+    }
+  }
+  
+  public ByteBuffer a(bjgy parambjgy)
+  {
+    ByteBuffer localByteBuffer = ByteBuffer.allocate((int)parambjgy.d);
+    this.jdField_a_of_type_JavaIoFileInputStream.getChannel().position(parambjgy.c);
+    a(this.jdField_a_of_type_JavaIoFileInputStream.getChannel(), localByteBuffer, "failed to read section: " + parambjgy.jdField_a_of_type_JavaLangString);
+    return localByteBuffer;
+  }
+  
+  public void close()
+  {
+    this.jdField_a_of_type_JavaIoFileInputStream.close();
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.jdField_a_of_type_ArrayOfBjgx = null;
+    this.jdField_a_of_type_ArrayOfBjgy = null;
   }
 }
 

@@ -1,37 +1,15 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearSmoothScroller;
+import android.content.Intent;
 import android.view.View;
 
-class bkre
-  extends LinearSmoothScroller
+public abstract interface bkre
 {
-  public bkre(bkrd parambkrd, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public abstract Intent a(View paramView, int paramInt);
   
-  public int calculateDxToMakeVisible(View paramView, int paramInt)
-  {
-    return bkrd.a(this.a).a(-this.a.g);
-  }
+  public abstract void a(View paramView, int paramInt);
   
-  public int calculateDyToMakeVisible(View paramView, int paramInt)
-  {
-    return bkrd.a(this.a).b(-this.a.g);
-  }
+  public abstract void b(View paramView, int paramInt);
   
-  public int calculateTimeForScrolling(int paramInt)
-  {
-    return (int)(Math.max(0.01F, Math.min(Math.abs(paramInt), this.a.d) / this.a.d) * bkrd.a(this.a));
-  }
-  
-  @Nullable
-  public PointF computeScrollVectorForPosition(int paramInt)
-  {
-    return new PointF(bkrd.a(this.a).a(this.a.g), bkrd.a(this.a).b(this.a.g));
-  }
+  public abstract void c(View paramView, int paramInt);
 }
 
 

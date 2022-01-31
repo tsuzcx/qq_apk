@@ -6,9 +6,9 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import bhai;
-import bhaj;
-import bhak;
+import bhep;
+import bheq;
+import bher;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
@@ -23,7 +23,7 @@ public class LameMp3EncodeThread
   private long jdField_a_of_type_Long = 60000L;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private bhak jdField_a_of_type_Bhak;
+  private bher jdField_a_of_type_Bher;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 2;
   private String jdField_b_of_type_JavaLangString;
@@ -43,10 +43,10 @@ public class LameMp3EncodeThread
     jdField_a_of_type_JavaLangString = LameMp3EncodeThread.class.getName();
   }
   
-  public LameMp3EncodeThread(bhak parambhak, Handler paramHandler)
+  public LameMp3EncodeThread(bher parambher, Handler paramHandler)
   {
-    super(AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getString(2131694397));
-    this.jdField_a_of_type_Bhak = parambhak;
+    super(AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getString(2131694399));
+    this.jdField_a_of_type_Bher = parambher;
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
     start();
   }
@@ -172,14 +172,14 @@ public class LameMp3EncodeThread
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setAudioStreamType(3);
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
       this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new bhai(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new bhaj(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new bhep(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new bheq(this));
       return false;
     }
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(bhak.b(AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getString(2131694394)));
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(bher.b(AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getString(2131694396)));
       e();
     }
     return false;
@@ -330,7 +330,7 @@ public class LameMp3EncodeThread
     //   65: invokevirtual 54	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   68: ldc_w 284
     //   71: invokevirtual 61	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   74: invokestatic 286	bhak:a	(Ljava/lang/String;)Landroid/os/Message;
+    //   74: invokestatic 286	bher:a	(Ljava/lang/String;)Landroid/os/Message;
     //   77: invokevirtual 143	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   80: pop
     //   81: return
@@ -355,7 +355,7 @@ public class LameMp3EncodeThread
     //   126: invokevirtual 54	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   129: ldc_w 298
     //   132: invokevirtual 61	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   135: invokestatic 286	bhak:a	(Ljava/lang/String;)Landroid/os/Message;
+    //   135: invokestatic 286	bher:a	(Ljava/lang/String;)Landroid/os/Message;
     //   138: invokevirtual 143	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   141: pop
     //   142: return
@@ -409,7 +409,7 @@ public class LameMp3EncodeThread
     //   241: invokevirtual 54	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   244: ldc_w 312
     //   247: invokevirtual 61	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   250: invokestatic 286	bhak:a	(Ljava/lang/String;)Landroid/os/Message;
+    //   250: invokestatic 286	bher:a	(Ljava/lang/String;)Landroid/os/Message;
     //   253: invokevirtual 143	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   256: pop
     //   257: return
@@ -425,7 +425,7 @@ public class LameMp3EncodeThread
     //   282: invokevirtual 54	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   285: ldc_w 313
     //   288: invokevirtual 61	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   291: invokestatic 286	bhak:a	(Ljava/lang/String;)Landroid/os/Message;
+    //   291: invokestatic 286	bher:a	(Ljava/lang/String;)Landroid/os/Message;
     //   294: invokevirtual 143	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   297: pop
     //   298: return
@@ -441,7 +441,7 @@ public class LameMp3EncodeThread
     //   323: invokevirtual 54	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   326: ldc_w 314
     //   329: invokevirtual 61	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   332: invokestatic 286	bhak:a	(Ljava/lang/String;)Landroid/os/Message;
+    //   332: invokestatic 286	bher:a	(Ljava/lang/String;)Landroid/os/Message;
     //   335: invokevirtual 143	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   338: pop
     //   339: aconst_null
@@ -514,7 +514,7 @@ public class LameMp3EncodeThread
     //   480: invokevirtual 54	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   483: ldc_w 327
     //   486: invokevirtual 61	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   489: invokestatic 286	bhak:a	(Ljava/lang/String;)Landroid/os/Message;
+    //   489: invokestatic 286	bher:a	(Ljava/lang/String;)Landroid/os/Message;
     //   492: invokevirtual 143	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   495: pop
     //   496: invokestatic 329	com/tencent/qqmini/sdk/runtime/audiorecorder/LameMp3Native:a	()V
@@ -551,7 +551,7 @@ public class LameMp3EncodeThread
     //   559: invokevirtual 54	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   562: ldc_w 336
     //   565: invokevirtual 61	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   568: invokestatic 286	bhak:a	(Ljava/lang/String;)Landroid/os/Message;
+    //   568: invokestatic 286	bher:a	(Ljava/lang/String;)Landroid/os/Message;
     //   571: invokevirtual 143	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   574: pop
     //   575: goto +686 -> 1261
@@ -590,7 +590,7 @@ public class LameMp3EncodeThread
     //   644: invokevirtual 54	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   647: ldc_w 348
     //   650: invokevirtual 61	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   653: invokestatic 286	bhak:a	(Ljava/lang/String;)Landroid/os/Message;
+    //   653: invokestatic 286	bher:a	(Ljava/lang/String;)Landroid/os/Message;
     //   656: invokevirtual 143	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   659: pop
     //   660: iload_1
@@ -614,8 +614,8 @@ public class LameMp3EncodeThread
     //   697: getfield 90	com/tencent/qqmini/sdk/runtime/audiorecorder/LameMp3EncodeThread:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   700: ifnull -684 -> 16
     //   703: aload_0
-    //   704: getfield 88	com/tencent/qqmini/sdk/runtime/audiorecorder/LameMp3EncodeThread:jdField_a_of_type_Bhak	Lbhak;
-    //   707: invokevirtual 360	bhak:a	()J
+    //   704: getfield 88	com/tencent/qqmini/sdk/runtime/audiorecorder/LameMp3EncodeThread:jdField_a_of_type_Bher	Lbher;
+    //   707: invokevirtual 360	bher:a	()J
     //   710: lconst_1
     //   711: lcmp
     //   712: ifle +473 -> 1185
@@ -647,7 +647,7 @@ public class LameMp3EncodeThread
     //   771: invokevirtual 54	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   774: ldc_w 348
     //   777: invokevirtual 61	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   780: invokestatic 286	bhak:a	(Ljava/lang/String;)Landroid/os/Message;
+    //   780: invokestatic 286	bher:a	(Ljava/lang/String;)Landroid/os/Message;
     //   783: invokevirtual 143	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   786: pop
     //   787: goto +474 -> 1261
@@ -793,7 +793,7 @@ public class LameMp3EncodeThread
     //   1052: invokevirtual 54	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   1055: ldc_w 364
     //   1058: invokevirtual 61	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   1061: invokestatic 286	bhak:a	(Ljava/lang/String;)Landroid/os/Message;
+    //   1061: invokestatic 286	bher:a	(Ljava/lang/String;)Landroid/os/Message;
     //   1064: invokevirtual 143	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   1067: pop
     //   1068: goto +208 -> 1276
@@ -809,7 +809,7 @@ public class LameMp3EncodeThread
     //   1095: invokevirtual 54	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   1098: ldc_w 364
     //   1101: invokevirtual 61	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   1104: invokestatic 286	bhak:a	(Ljava/lang/String;)Landroid/os/Message;
+    //   1104: invokestatic 286	bher:a	(Ljava/lang/String;)Landroid/os/Message;
     //   1107: invokevirtual 143	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   1110: pop
     //   1111: goto -438 -> 673
@@ -839,7 +839,7 @@ public class LameMp3EncodeThread
     //   1166: invokevirtual 54	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   1169: ldc_w 365
     //   1172: invokevirtual 61	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   1175: invokestatic 286	bhak:a	(Ljava/lang/String;)Landroid/os/Message;
+    //   1175: invokestatic 286	bher:a	(Ljava/lang/String;)Landroid/os/Message;
     //   1178: invokevirtual 143	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   1181: pop
     //   1182: goto -504 -> 678

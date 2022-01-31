@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ajxc;
-import ajxg;
-import ajxh;
+import akbr;
+import akbv;
+import akbw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -13,9 +13,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import awbv;
-import azmj;
-import bhpo;
+import awge;
+import azqs;
+import bhtv;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -28,14 +28,14 @@ import java.util.ArrayList;
 
 public class TroopListInnerFrame
   extends SelectMemberInnerFrame
-  implements View.OnClickListener, bhpo
+  implements View.OnClickListener, bhtv
 {
   int jdField_a_of_type_Int;
-  private ajxc jdField_a_of_type_Ajxc;
+  private akbr jdField_a_of_type_Akbr;
   Context jdField_a_of_type_AndroidContentContext;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
   SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView;
-  ArrayList<awbv> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<awge> jdField_a_of_type_JavaUtilArrayList;
   
   public TroopListInnerFrame(Context paramContext)
   {
@@ -63,18 +63,18 @@ public class TroopListInnerFrame
     do
     {
       return;
-      localObject1 = this.jdField_a_of_type_Ajxc.getItem(paramInt);
-    } while (!(localObject1 instanceof ajxg));
-    Object localObject2 = (ajxg)localObject1;
+      localObject1 = this.jdField_a_of_type_Akbr.getItem(paramInt);
+    } while (!(localObject1 instanceof akbv));
+    Object localObject2 = (akbv)localObject1;
     Object localObject1 = null;
-    switch (((ajxg)localObject2).jdField_a_of_type_Int)
+    switch (((akbv)localObject2).jdField_a_of_type_Int)
     {
     default: 
       label132:
-      if (paramInt + 1 < this.jdField_a_of_type_Ajxc.getCount())
+      if (paramInt + 1 < this.jdField_a_of_type_Akbr.getCount())
       {
-        localObject2 = (ajxg)this.jdField_a_of_type_Ajxc.getItem(paramInt + 1);
-        if (((localObject2 == null) || (((ajxg)localObject2).jdField_a_of_type_Int != 6)) && (((ajxg)localObject2).jdField_a_of_type_Int != 4) && (((ajxg)localObject2).jdField_a_of_type_Int != 2) && (((ajxg)localObject2).jdField_a_of_type_Int != 8)) {
+        localObject2 = (akbv)this.jdField_a_of_type_Akbr.getItem(paramInt + 1);
+        if (((localObject2 == null) || (((akbv)localObject2).jdField_a_of_type_Int != 6)) && (((akbv)localObject2).jdField_a_of_type_Int != 4) && (((akbv)localObject2).jdField_a_of_type_Int != 2) && (((akbv)localObject2).jdField_a_of_type_Int != 8)) {
           break label441;
         }
         localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.getChildAt(0);
@@ -98,15 +98,15 @@ public class TroopListInnerFrame
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
       return;
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131696670, new Object[] { String.valueOf(this.jdField_a_of_type_Ajxc.d) });
+      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131696672, new Object[] { String.valueOf(this.jdField_a_of_type_Akbr.d) });
       break label132;
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131696690, new Object[] { String.valueOf(this.jdField_a_of_type_Ajxc.c) });
+      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131696692, new Object[] { String.valueOf(this.jdField_a_of_type_Akbr.c) });
       break label132;
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131696603, new Object[] { String.valueOf(this.jdField_a_of_type_Ajxc.jdField_a_of_type_Int) });
+      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131696605, new Object[] { String.valueOf(this.jdField_a_of_type_Akbr.jdField_a_of_type_Int) });
       break label132;
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131696642, new Object[] { String.valueOf(this.jdField_a_of_type_Ajxc.b) });
+      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131696644, new Object[] { String.valueOf(this.jdField_a_of_type_Akbr.b) });
       break label132;
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131696784, new Object[] { String.valueOf(this.jdField_a_of_type_Ajxc.e) });
+      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131696786, new Object[] { String.valueOf(this.jdField_a_of_type_Akbr.e) });
       break label132;
       label433:
       ((RelativeLayout.LayoutParams)localObject2).topMargin = 0;
@@ -143,14 +143,14 @@ public class TroopListInnerFrame
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    setContentView(2131560256);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131380290));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378448));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setSelector(2131167138);
-    this.jdField_a_of_type_Ajxc = new ajxc(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, 4, false, this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Ajxc);
+    setContentView(2131560255);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131380348));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378502));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setSelector(2131167140);
+    this.jdField_a_of_type_Akbr = new akbr(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, 4, false, this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Akbr);
     g();
-    this.jdField_a_of_type_Ajxc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Akbr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilArrayList);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollGroupFloatingListener(this);
   }
   
@@ -162,20 +162,20 @@ public class TroopListInnerFrame
   
   public void d()
   {
-    if (this.jdField_a_of_type_Ajxc != null) {
-      this.jdField_a_of_type_Ajxc.c();
+    if (this.jdField_a_of_type_Akbr != null) {
+      this.jdField_a_of_type_Akbr.c();
     }
     super.d();
   }
   
   public void f()
   {
-    this.jdField_a_of_type_Ajxc.notifyDataSetChanged();
+    this.jdField_a_of_type_Akbr.notifyDataSetChanged();
   }
   
   public void onClick(View paramView)
   {
-    paramView = (ajxh)paramView.getTag();
+    paramView = (akbw)paramView.getTag();
     if ((paramView != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null))
     {
       localObject = paramView.jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
@@ -191,7 +191,7 @@ public class TroopListInnerFrame
       case 8: 
       default: 
         i = 0;
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_contacts", "", "choose_grp", "create_discuss", 0, 0, ((TroopInfo)localObject).troopuin + "", String.valueOf(i), "", "");
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_contacts", "", "choose_grp", "create_discuss", 0, 0, ((TroopInfo)localObject).troopuin + "", String.valueOf(i), "", "");
       }
     }
     while ((paramView == null) || (paramView.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo == null)) {
@@ -219,7 +219,7 @@ public class TroopListInnerFrame
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Ajxc != null) {
+    if (this.jdField_a_of_type_Akbr != null) {
       a(paramInt1);
     }
   }

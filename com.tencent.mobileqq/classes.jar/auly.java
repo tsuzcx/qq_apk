@@ -1,14 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
 
-class auly
-  implements DialogInterface.OnClickListener
+public class auly
+  extends DataSetObserver
 {
-  auly(ault paramault) {}
+  public auly(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onChanged()
   {
-    ault.a(this.a);
+    this.a.b();
+  }
+  
+  public void onInvalidated()
+  {
+    this.a.b();
   }
 }
 

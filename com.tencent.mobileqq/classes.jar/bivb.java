@@ -1,17 +1,6 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-
-class bivb
-  extends alvc
+public abstract interface bivb
 {
-  bivb(biva parambiva, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    paramString = new Bundle();
-    paramString.putBoolean("isSuccess", paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(paramString);
-  }
+  public abstract void b(boolean paramBoolean);
 }
 
 

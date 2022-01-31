@@ -1,29 +1,19 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acrj
-  implements ActionMode.Callback
+  implements DialogInterface.OnClickListener
 {
-  public acrj(EditInfoActivity paramEditInfoActivity) {}
+  public acrj(Conversation paramConversation) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
+    }
+    azqs.b(this.a.a, "CliOper", "", "", "0X800815E", "0X800815E", 0, 0, "", "", "", "");
+    azqs.b(this.a.a, "CliOper", "", "", "0X8008656", "0X8008656", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,21 +1,6 @@
-import android.view.View;
-import android.view.ViewGroup;
-
-public class vpt
-  extends vpr
+public abstract interface vpt
 {
-  public final View b;
-  
-  public vpt(View paramView)
-  {
-    super((ViewGroup)paramView.getParent());
-    this.b = paramView;
-  }
-  
-  protected View a(ViewGroup paramViewGroup)
-  {
-    return this.b;
-  }
+  public abstract void a(vpu paramvpu);
 }
 
 

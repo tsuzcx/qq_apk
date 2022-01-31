@@ -1,16 +1,18 @@
-import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.AdapterView;
 
 class afea
-  implements amfo
+  implements bhuw
 {
   afea(afdy paramafdy) {}
   
-  public void a(int paramInt, zdm paramzdm) {}
-  
-  public void a(long paramLong)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    afdy.a("onLowMemory");
-    afdy.a().sendMessage(afdy.a().obtainMessage(5));
+    paramAdapterView = (aihj)afdy.a(this.a).a.getItem(paramInt - 1);
+    afdy.a(this.a, paramAdapterView);
+    afdy.a(this.a).dismiss();
+    azqs.b(afdy.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
   }
 }
 

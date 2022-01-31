@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
@@ -10,9 +10,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
-import bcch;
-import bdcb;
-import bhxr;
+import bcgq;
+import bdgk;
+import biby;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
@@ -67,8 +67,8 @@ public class ComponentContentGridImage
   public ComponentContentGridImage(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = aekt.a(12.0F, getResources());
-    this.jdField_b_of_type_Int = aekt.a(12.0F, getResources());
+    this.jdField_a_of_type_Int = aepi.a(12.0F, getResources());
+    this.jdField_b_of_type_Int = aepi.a(12.0F, getResources());
     a(paramContext);
   }
   
@@ -226,7 +226,7 @@ public class ComponentContentGridImage
           if ((localqms.jdField_b_of_type_JavaLangString == null) && (localqms.jdField_c_of_type_JavaLangString == null)) {
             break;
           }
-          bhxr.a("ComponentContentGridImage.log");
+          biby.a("ComponentContentGridImage.log");
           if (QLog.isColorLevel())
           {
             if (localqms.jdField_b_of_type_JavaLangString != null) {
@@ -236,8 +236,8 @@ public class ComponentContentGridImage
               QLog.d("Q.readinjoy.ui", 2, "Grid thumbNail Image url [" + j + "]: " + localqms.jdField_c_of_type_JavaLangString);
             }
           }
-          bhxr.a();
-          bhxr.a("ComponentContentGridImage.setImageUrl");
+          biby.a();
+          biby.a("ComponentContentGridImage.setImageUrl");
           if (localqms.jdField_b_of_type_JavaLangString != null)
           {
             paramObject = localqms.jdField_b_of_type_JavaLangString;
@@ -246,9 +246,9 @@ public class ComponentContentGridImage
             {
               paramObject = localqms.jdField_c_of_type_JavaLangString;
               paramObject = new URL(paramObject);
-              bhxr.a();
+              biby.a();
               localArrayList1.add(localURL);
-              bhxr.a("ComponentContentGridImage.PicInfo");
+              biby.a("ComponentContentGridImage.PicInfo");
               k = localqms.jdField_a_of_type_Int;
               int m = localqms.jdField_b_of_type_Int;
               if (localqms.jdField_c_of_type_Int != 1) {
@@ -259,9 +259,9 @@ public class ComponentContentGridImage
               if ((bool1) && (j == i - 1))
               {
                 paramObject.b(bool1);
-                paramObject.a(String.valueOf(l1) + alpo.a(2131702690));
+                paramObject.a(String.valueOf(l1) + alud.a(2131702702));
               }
-              bhxr.a();
+              biby.a();
               localArrayList2.add(paramObject);
               break;
             }
@@ -344,7 +344,7 @@ public class ComponentContentGridImage
     {
       localArticleInfo.click_area = d();
       ors.b(this.jdField_a_of_type_Qbs.a.a().a().getContext(), localArticleInfo, (int)localArticleInfo.mChannelID);
-      bcch.a((Activity)getContext(), paramInt, a(paramList), null, null, false, false, "4", 100, null, str1, str2, localArticleInfo, "");
+      bcgq.a((Activity)getContext(), paramInt, a(paramList), null, null, false, false, "4", 100, null, str1, str2, localArticleInfo, "");
       if (paramList != null) {
         a(paramInt, paramList.size());
       }
@@ -368,8 +368,8 @@ public class ComponentContentGridImage
   {
     setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     setNumColumns(3);
-    setVerticalSpacing(aekt.a(2.0F, paramContext.getResources()));
-    setHorizontalSpacing(aekt.a(2.0F, paramContext.getResources()));
+    setVerticalSpacing(aepi.a(2.0F, paramContext.getResources()));
+    setHorizontalSpacing(aepi.a(2.0F, paramContext.getResources()));
     setSelector(17170445);
     a();
     this.jdField_a_of_type_Qbs = new qbs();
@@ -421,10 +421,10 @@ public class ComponentContentGridImage
       }
       if ((localLayoutParams != null) && (localLayoutParams.width < 0))
       {
-        i = (int)bdcb.a(true) - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int;
-        localLayoutParams.width = ((i - aekt.a(4.0F, getResources())) * 2 / 3 + aekt.a(2.0F, getResources()));
+        i = (int)bdgk.a(true) - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int;
+        localLayoutParams.width = ((i - aepi.a(4.0F, getResources())) * 2 / 3 + aepi.a(2.0F, getResources()));
         if (QLog.isColorLevel()) {
-          QLog.d("ComponentContentGridImage", 2, new Object[] { "contentWidth: ", Integer.valueOf(i), ", layout.width: ", Integer.valueOf(localLayoutParams.width), ", MinOfWidthAndHeight: ", Long.valueOf(bdcb.i()) });
+          QLog.d("ComponentContentGridImage", 2, new Object[] { "contentWidth: ", Integer.valueOf(i), ", layout.width: ", Integer.valueOf(localLayoutParams.width), ", MinOfWidthAndHeight: ", Long.valueOf(bdgk.i()) });
         }
         if (localLayoutParams.width > 0) {
           setLayoutParams(localLayoutParams);

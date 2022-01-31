@@ -1,30 +1,23 @@
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aixd
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public JSONObject a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public aixd(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public aixd() {}
-  
-  public aixd(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-  }
-  
-  public String toString()
-  {
-    return "id: " + this.jdField_a_of_type_JavaLangString + " type: " + this.jdField_a_of_type_Int + " name: " + this.b + " params: " + this.jdField_a_of_type_OrgJsonJSONObject;
+    TroopUnAccalimedRedPacketList.a(this.a, true);
+    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+      ajeu.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.back", "", "");
+    }
+    if (this.a.a != null) {
+      this.a.a.dismiss();
+    }
   }
 }
 

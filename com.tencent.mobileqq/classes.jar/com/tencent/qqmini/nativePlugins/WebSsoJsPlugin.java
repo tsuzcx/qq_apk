@@ -1,15 +1,15 @@
 package com.tencent.qqmini.nativePlugins;
 
-import alpo;
+import alud;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import bfns;
-import bfnt;
-import bgkd;
-import bket;
-import bkeu;
+import bfsb;
+import bfsc;
+import bgok;
+import bkja;
+import bkjb;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -19,7 +19,7 @@ import org.json.JSONObject;
 
 public class WebSsoJsPlugin
   extends BaseJsPlugin
-  implements bket
+  implements bkja
 {
   public static final String EVENT_QUERY_WEBSSO = "requestWebSSO";
   public static final String KEY_CMD = "cmd";
@@ -27,12 +27,12 @@ public class WebSsoJsPlugin
   public static final String KEY_RSP = "rsp";
   public static final String KEY_SEQ = "mini_seq";
   private static final String TAG = "WebSsoJsPlugin";
-  SparseArray<bgkd> callbackMap = new SparseArray();
+  SparseArray<bgok> callbackMap = new SparseArray();
   private int seq;
   
   public WebSsoJsPlugin()
   {
-    bkeu.a().a(this);
+    bkjb.a().a(this);
   }
   
   private int genSeq()
@@ -50,27 +50,27 @@ public class WebSsoJsPlugin
     }
   }
   
-  private JSONObject getParam(bgkd parambgkd)
+  private JSONObject getParam(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("WebSsoJsPlugin", "Failed to parse jsonParams=" + parambgkd.b);
+      QMLog.e("WebSsoJsPlugin", "Failed to parse jsonParams=" + parambgok.b);
     }
     return null;
   }
   
   public HashSet<String> getFilterCmds()
   {
-    bfns localbfns = (bfns)bfnt.a().a("comminfo");
-    if (localbfns != null) {
-      return localbfns.a();
+    bfsb localbfsb = (bfsb)bfsc.a().a("comminfo");
+    if (localbfsb != null) {
+      return localbfsb.a();
     }
-    return bkeu.a;
+    return bkjb.a;
   }
   
   public void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject)
@@ -84,15 +84,15 @@ public class WebSsoJsPlugin
       }
     }
     label26:
-    bgkd localbgkd;
+    bgok localbgok;
     do
     {
       return;
       i = -1;
       break;
-      localbgkd = (bgkd)this.callbackMap.get(i);
+      localbgok = (bgok)this.callbackMap.get(i);
       this.callbackMap.remove(i);
-    } while (localbgkd == null);
+    } while (localbgok == null);
     paramIntent = paramJSONObject;
     if (paramJSONObject == null) {
       paramIntent = new JSONObject();
@@ -105,7 +105,7 @@ public class WebSsoJsPlugin
       paramJSONObject.put("rsp", paramIntent);
       if (paramLong == 0L)
       {
-        localbgkd.a(paramJSONObject);
+        localbgok.a(paramJSONObject);
         return;
       }
     }
@@ -115,33 +115,33 @@ public class WebSsoJsPlugin
       {
         paramIntent.printStackTrace();
       }
-      localbgkd.a(paramJSONObject, "");
+      localbgok.a(paramJSONObject, "");
     }
   }
   
-  public void requestWebSSO(bgkd parambgkd)
+  public void requestWebSSO(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = getParam(parambgkd).getJSONObject("data");
+      JSONObject localJSONObject = getParam(parambgok).getJSONObject("data");
       String str = localJSONObject.getString("webssoCmdId");
       localJSONObject = localJSONObject.getJSONObject("webssoReq");
       Object localObject = getFilterCmds();
       if ((TextUtils.isEmpty(str)) || (localObject == null) || (!((HashSet)localObject).contains(str)))
       {
-        parambgkd.a(alpo.a(2131717273));
+        parambgok.a(alud.a(2131717285));
         return;
       }
       int i = genSeq();
-      this.callbackMap.put(i, parambgkd);
+      this.callbackMap.put(i, parambgok);
       localObject = new Bundle();
       ((Bundle)localObject).putInt("mini_seq", i);
-      bkeu.a().a(str, localJSONObject, (Bundle)localObject);
+      bkjb.a().a(str, localJSONObject, (Bundle)localObject);
       return;
     }
     catch (Throwable localThrowable)
     {
-      parambgkd.a(alpo.a(2131717272));
+      parambgok.a(alud.a(2131717284));
       if (QLog.isColorLevel()) {
         QLog.w("WebSsoJsPlugin", 2, "requestWebSSO,decode param error");
       }

@@ -1,25 +1,25 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
 
 public class anuu
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public anuu(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public anuu(SelectCoverActivity paramSelectCoverActivity, View paramView1, View paramView2) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramView = (anva)paramView.getTag();
-    if (!((aloz)this.a.app.getManager(51)).b(paramView.a)) {}
-    for (int i = 35;; i = 1)
-    {
-      paramView = new ProfileActivity.AllInOne(paramView.a, i);
-      ProfileActivity.a(this.a, paramView, 1016);
-      return;
-    }
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    this.b.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a = null;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    this.b.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a = null;
   }
 }
 

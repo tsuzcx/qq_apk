@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emosm.web;
 
-import apmy;
-import apna;
+import aprh;
+import aprj;
 
 public class WebIPCOperator$1
   implements Runnable
 {
-  public WebIPCOperator$1(apmy paramapmy, apna paramapna) {}
+  public WebIPCOperator$1(aprh paramaprh, aprj paramaprj) {}
   
   public void run()
   {

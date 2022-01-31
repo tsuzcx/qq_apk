@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bktb
-  implements View.OnClickListener
+public class bktb
 {
-  bktb(bkta parambkta, bktd parambktd) {}
+  private static bktc a;
   
-  public void onClick(View paramView)
+  public static bktc a()
   {
-    int i = this.jdField_a_of_type_Bktd.getLayoutPosition();
-    bkta.a(this.jdField_a_of_type_Bkta).a(this.jdField_a_of_type_Bktd.itemView, i);
+    return a;
+  }
+  
+  public static void a(bktc parambktc)
+  {
+    a = parambktc;
   }
 }
 

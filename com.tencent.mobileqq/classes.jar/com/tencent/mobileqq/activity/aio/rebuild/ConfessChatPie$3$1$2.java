@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agkd;
-import agkg;
+import agos;
+import agov;
 import android.view.View;
 
 public class ConfessChatPie$3$1$2
   implements Runnable
 {
-  public ConfessChatPie$3$1$2(agkg paramagkg) {}
+  public ConfessChatPie$3$1$2(agov paramagov) {}
   
   public void run()
   {
-    if (agkd.a(this.a.a.this$0) != null) {
-      agkd.a(this.a.a.this$0).setBackgroundDrawable(agkd.a(this.a.a.this$0));
+    if (agos.a(this.a.a.this$0) != null) {
+      agos.a(this.a.a.this$0).setBackgroundDrawable(agos.a(this.a.a.this$0));
     }
   }
 }

@@ -1,12 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.qphone.base.util.QLog;
 
 class avhd
-  implements DialogInterface.OnClickListener
+  implements avci
 {
-  avhd(avgk paramavgk) {}
+  avhd(avhb paramavhb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(Comments.Comment paramComment)
+  {
+    if (avhb.a(this.a) != null)
+    {
+      avhb.a(this.a).a(paramComment);
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.bindphone", 2, "onPublishSuccess");
+      }
+    }
+  }
+  
+  public void a(Comments.Comment paramComment, int paramInt, String paramString)
+  {
+    if (avhb.a(this.a) != null)
+    {
+      avhb.a(this.a).a(paramComment, paramInt, paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.bindphone", 2, "onDataNotAvailable, code=" + paramInt + ", tip=" + paramString + ", comment=" + paramComment);
+      }
+    }
+  }
 }
 
 

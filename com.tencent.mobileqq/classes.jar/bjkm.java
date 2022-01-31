@@ -1,14 +1,31 @@
-public abstract interface bjkm
+import NS_USER_ACTION_REPORT.UserCommReport;
+
+class bjkm
 {
-  public abstract void a(bjkl parambjkl);
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
   
-  public abstract void b(bjkl parambjkl);
+  public UserCommReport a()
+  {
+    UserCommReport localUserCommReport = new UserCommReport();
+    localUserCommReport.uin = this.jdField_a_of_type_Long;
+    localUserCommReport.platform = "AND";
+    localUserCommReport.client_type = "SQ";
+    localUserCommReport.network_type = this.jdField_a_of_type_JavaLangString;
+    return localUserCommReport;
+  }
   
-  public abstract void c(bjkl parambjkl);
+  public bjkm a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
   
-  public abstract void d(bjkl parambjkl);
-  
-  public abstract void e(bjkl parambjkl);
+  public bjkm a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
 }
 
 

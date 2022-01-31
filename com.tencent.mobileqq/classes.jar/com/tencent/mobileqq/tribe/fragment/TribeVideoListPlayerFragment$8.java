@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.tribe.fragment;
 
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import bazh;
-import bazz;
+import bbdq;
+import bbei;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
@@ -17,7 +17,7 @@ class TribeVideoListPlayerFragment$8
   {
     try
     {
-      ndd.a(BaseApplicationImpl.getContext(), ((bazh)this.a).a.i, null, "GET", null, null);
+      ndd.a(BaseApplicationImpl.getContext(), ((bbdq)this.a).a.i, null, "GET", null, null);
       return;
     }
     catch (IOException localIOException)

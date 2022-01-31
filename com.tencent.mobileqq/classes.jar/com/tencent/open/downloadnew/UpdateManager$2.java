@@ -1,14 +1,14 @@
 package com.tencent.open.downloadnew;
 
-import bfhg;
-import bfkb;
-import bflh;
+import bflp;
+import bfok;
+import bfpq;
 import java.io.File;
 
 public class UpdateManager$2
   implements Runnable
 {
-  public UpdateManager$2(bflh parambflh, String paramString, DownloadInfo paramDownloadInfo) {}
+  public UpdateManager$2(bfpq parambfpq, String paramString, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -19,15 +19,15 @@ public class UpdateManager$2
       {
         long l = localFile.length();
         this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c = l;
-        bfkb.a().g(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+        bfok.a().g(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
         return;
       }
-      bfhg.c(bflh.jdField_a_of_type_JavaLangString, "patchNewApk file not exists");
+      bflp.c(bfpq.jdField_a_of_type_JavaLangString, "patchNewApk file not exists");
       return;
     }
     catch (Exception localException)
     {
-      bfhg.c(bflh.jdField_a_of_type_JavaLangString, "patchNewApk>>>", localException);
+      bflp.c(bfpq.jdField_a_of_type_JavaLangString, "patchNewApk>>>", localException);
     }
   }
 }

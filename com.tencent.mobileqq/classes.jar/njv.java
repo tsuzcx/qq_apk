@@ -37,9 +37,9 @@ public class njv
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     paramViewGroup = this.a.jdField_a_of_type_AndroidContentContext.getResources();
-    int i = aekt.a(200.0F, paramViewGroup);
-    int j = aekt.a(140.0F, paramViewGroup);
-    int k = aekt.a(12.0F, paramViewGroup);
+    int i = aepi.a(200.0F, paramViewGroup);
+    int j = aepi.a(140.0F, paramViewGroup);
+    int k = aepi.a(12.0F, paramViewGroup);
     Object localObject;
     if (paramView == null)
     {

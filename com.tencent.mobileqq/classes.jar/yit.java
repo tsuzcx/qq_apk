@@ -1,20 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.component.extendsadapter.ComponentRvInnerView;
 
 public class yit
-  implements View.OnClickListener
+  extends yhw
 {
-  public yit(VideoPlayerView paramVideoPlayerView) {}
+  public yit(ComponentRvInnerView paramComponentRvInnerView) {}
   
-  public void onClick(View paramView)
+  public yis a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (VideoPlayerView.a(this.a) != null)
-    {
-      VideoPlayerView.a(this.a).b();
-      VideoPlayerView.i(this.a);
-      VideoPlayerView.a(this.a, false);
+    if (ComponentRvInnerView.a(this.a) != null) {
+      return ComponentRvInnerView.a(this.a).a(paramViewGroup, paramInt);
+    }
+    return null;
+  }
+  
+  public int getItemCount()
+  {
+    if (ComponentRvInnerView.a(this.a) != null) {
+      return ComponentRvInnerView.a(this.a).a();
+    }
+    return 0;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((!bhrz.a(paramInt, this.mDataList)) && (ComponentRvInnerView.a(this.a) != null)) {
+      ComponentRvInnerView.a(this.a).a(paramViewHolder, paramInt);
     }
   }
 }

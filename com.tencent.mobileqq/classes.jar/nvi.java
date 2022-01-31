@@ -19,8 +19,8 @@ import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
 
 public class nvi
-  extends beaa
-  implements beay
+  extends beej
+  implements befh
 {
   private String a;
   
@@ -54,13 +54,13 @@ public class nvi
     paramArrayList.add(new QWalletCommonJsPlugin());
     paramArrayList.add(new QWalletBluetoothJsPlugin());
     paramArrayList.add(new sxe());
-    paramArrayList.add(new atdu());
+    paramArrayList.add(new atid());
     paramArrayList.add(new UiApiPlugin());
     paramArrayList.add(new SensorAPIJavaScript());
-    paramArrayList.add(new atcu());
+    paramArrayList.add(new athd());
     paramArrayList.add(new MediaApiPlugin());
     paramArrayList.add(new VasCommonJsPlugin());
-    paramArrayList.add(new bdut());
+    paramArrayList.add(new bdzc());
     paramArrayList.add(new QWalletMixJsPlugin());
   }
   

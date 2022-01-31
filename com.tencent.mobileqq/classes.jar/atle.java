@@ -1,14 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 
-class atle
-  implements DialogInterface.OnClickListener
+public class atle
+  extends BaseAdapter
 {
-  atle(atlc paramatlc, bdfq parambdfq) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int getCount()
   {
-    this.jdField_a_of_type_Bdfq.dismiss();
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    return null;
   }
 }
 

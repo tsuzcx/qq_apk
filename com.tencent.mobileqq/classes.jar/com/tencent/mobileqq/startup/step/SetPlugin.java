@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import azki;
+import azor;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginRecoverReceiver;
 
@@ -9,7 +9,7 @@ public class SetPlugin
 {
   protected boolean doStep()
   {
-    PluginRecoverReceiver.register(BaseApplicationImpl.sApplication, new azki());
+    PluginRecoverReceiver.register(BaseApplicationImpl.sApplication, new azor());
     return true;
   }
 }

@@ -1,181 +1,189 @@
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.WebViewDownloadListener.1;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class bflj
-  implements bfka
 {
-  protected static bflj a;
-  protected Handler a;
-  
-  protected bflj()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
+  protected int a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
+  protected String h;
+  protected String i;
+  protected String j;
+  protected String k;
+  protected String l;
+  protected String m;
   
   public static bflj a()
   {
-    if (jdField_a_of_type_Bflj == null) {
-      jdField_a_of_type_Bflj = new bflj();
-    }
-    return jdField_a_of_type_Bflj;
+    return new bflj();
   }
   
-  protected String a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, String paramString3, int paramInt4, int paramInt5)
+  private static String a(String paramString)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("packagename", paramString2);
-      localJSONObject.put("appid", paramString1);
-      localJSONObject.put("state", paramInt1);
-      localJSONObject.put("pro", paramInt2);
-      localJSONObject.put("ismyapp", paramInt3);
-      localJSONObject.put("errorMsg", paramString3);
-      localJSONObject.put("errorCode", paramInt4);
-      localJSONObject.put("writecodestate", paramInt5);
-      return localJSONObject.toString();
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
     }
-    catch (JSONException paramString1)
-    {
-      for (;;)
-      {
-        bfhg.c("WebViewDownloadListener", "getCallBackJsonObject >>> ", paramString1);
-      }
-    }
+    return paramString.replace("|", "");
   }
   
-  protected String a(String paramString1, int paramInt, String paramString2)
+  public final bflj a(int paramInt)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("packagename", paramString2);
-      localJSONObject.put("appid", paramString1);
-      localJSONObject.put("state", paramInt);
-      localJSONObject.put("pro", 0);
-      return localJSONObject.toString();
-    }
-    catch (JSONException paramString1)
-    {
-      for (;;)
-      {
-        bfhg.c("WebViewDownloadListener", "getCallBackJsonObject >>> ", paramString1);
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  protected void a(String paramString)
+  public final bflj a(String paramString)
   {
-    bfim localbfim = bfim.a();
-    for (;;)
-    {
-      int i;
-      try
-      {
-        int j = localbfim.a().size();
-        i = 0;
-        if (i < j)
-        {
-          Object localObject = (bfil)localbfim.a().get(i);
-          WebView localWebView = ((bfil)localObject).getWebview();
-          if (localWebView != null) {
-            if (TextUtils.isEmpty(((bfil)localObject).getJsCallbackMethod()))
-            {
-              localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess'," + paramString + ");}void(0);";
-              bfhg.a("WebViewDownloadListener", " commonJsCallBack >>> " + (String)localObject);
-              this.jdField_a_of_type_AndroidOsHandler.post(new WebViewDownloadListener.1(this, localWebView, (String)localObject));
-            }
-            else
-            {
-              localObject = "javascript:" + ((bfil)localObject).getJsCallbackMethod() + "(" + paramString + ")";
-              continue;
-            }
-          }
-        }
-        else
-        {
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        bfhg.c("WebViewDownloadListener", "doJsCallback >>> ", paramString);
-      }
-      i += 1;
-    }
+    this.f = paramString;
+    return this;
   }
   
-  public void installSucceed(String paramString1, String paramString2)
+  public String a()
   {
-    a(a(paramString1, 6, paramString2));
+    return "";
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  public final bflj b(String paramString)
   {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
+    this.g = paramString;
+    return this;
   }
   
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  public final String b()
   {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramInt2, paramDownloadInfo.f, paramDownloadInfo.e, paramDownloadInfo.jdField_c_of_type_Int, paramString, paramInt1, paramDownloadInfo.j));
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(this.jdField_a_of_type_JavaLangString));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.b));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.c));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.d));
+    localStringBuilder.append("|");
+    localStringBuilder.append(bfbm.a().a());
+    localStringBuilder.append("|");
+    localStringBuilder.append(bfbm.a().c());
+    localStringBuilder.append("|");
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.e));
+    return localStringBuilder.toString();
   }
   
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  public final bflj c(String paramString)
   {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
+    this.h = paramString;
+    return this;
   }
   
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  public final String c()
   {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(this.f));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.g));
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.h));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.i));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.j));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.k));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.l));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.m));
+    return localStringBuilder.toString();
   }
   
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  public final bflj d(String paramString)
   {
-    if (paramList != null)
-    {
-      JSONArray localJSONArray = new JSONArray();
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        localJSONArray.put(((DownloadInfo)paramList.next()).a());
-      }
-      a(localJSONArray.toString());
-    }
+    this.i = paramString;
+    return this;
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public final String d()
   {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" ");
+    localStringBuilder.append("|");
+    localStringBuilder.append(" ");
+    localStringBuilder.append("|");
+    localStringBuilder.append(" ");
+    localStringBuilder.append("|");
+    localStringBuilder.append(" ");
+    localStringBuilder.append("|");
+    localStringBuilder.append(" ");
+    localStringBuilder.append("|");
+    localStringBuilder.append(" ");
+    localStringBuilder.append("|");
+    localStringBuilder.append(" ");
+    localStringBuilder.append("|");
+    localStringBuilder.append(" ");
+    localStringBuilder.append("|");
+    localStringBuilder.append(" ");
+    return localStringBuilder.toString();
   }
   
-  public void packageReplaced(String paramString1, String paramString2)
+  public final bflj e(String paramString)
   {
-    a(a(paramString1, 13, paramString2));
+    this.j = paramString;
+    return this;
   }
   
-  public void uninstallSucceed(String paramString1, String paramString2)
+  public final bflj f(String paramString)
   {
-    a(a(paramString1, 9, paramString2));
+    this.k = paramString;
+    return this;
+  }
+  
+  public final bflj g(String paramString)
+  {
+    this.l = paramString;
+    return this;
+  }
+  
+  public final bflj h(String paramString)
+  {
+    this.m = paramString;
+    return this;
+  }
+  
+  public final bflj i(String paramString)
+  {
+    this.e = paramString;
+    return this;
+  }
+  
+  public final bflj j(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public final bflj k(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public final bflj l(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public final bflj m(String paramString)
+  {
+    this.d = paramString;
+    return this;
   }
 }
 

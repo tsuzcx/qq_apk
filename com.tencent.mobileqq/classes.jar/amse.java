@@ -1,87 +1,22 @@
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import java.util.ArrayList;
+import java.util.List;
 
 public class amse
-  implements anag
 {
-  public amse(ArConfigService paramArConfigService) {}
+  public String a;
+  public List<AppletItem> a;
   
-  public void a(int paramInt1, int paramInt2)
+  public amse()
   {
-    if (ArConfigService.c(this.a) != null) {
-      try
-      {
-        int j = ArConfigService.c(this.a).beginBroadcast();
-        int i = 0;
-        for (;;)
-        {
-          if (i >= j) {
-            break label106;
-          }
-          try
-          {
-            ((amva)ArConfigService.c(this.a).getBroadcastItem(i)).a(paramInt1, paramInt2);
-            i += 1;
-          }
-          catch (RemoteException localRemoteException)
-          {
-            for (;;)
-            {
-              localRemoteException.printStackTrace();
-            }
-          }
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onProgress error:" + localException.getMessage());
-        }
-      }
-    }
-    label106:
-    ArConfigService.c(this.a).finishBroadcast();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public String toString()
   {
-    if (ArConfigService.c(this.a) != null) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        int j = ArConfigService.c(this.a).beginBroadcast();
-        i = 0;
-        if (i >= j) {
-          break label129;
-        }
-        if (paramBoolean) {}
-        try
-        {
-          ((amva)ArConfigService.c(this.a).getBroadcastItem(i)).a(paramInt);
-        }
-        catch (RemoteException localRemoteException)
-        {
-          localRemoteException.printStackTrace();
-        }
-        ((amva)ArConfigService.c(this.a).getBroadcastItem(i)).b(paramInt, 0);
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onFinish error:" + localException.getMessage());
-        }
-      }
-      return;
-      label129:
-      ArConfigService.c(this.a).finishBroadcast();
-      return;
-      i += 1;
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppletsSetting:[").append("des = ").append(this.jdField_a_of_type_JavaLangString).append(this.jdField_a_of_type_JavaUtilList);
+    return localStringBuilder.toString();
   }
 }
 

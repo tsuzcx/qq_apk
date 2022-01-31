@@ -1,25 +1,25 @@
 package com.tencent.biz.qqstory.album.view;
 
-import blvo;
+import bmaa;
 import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
-import ugk;
-import wsv;
+import ukt;
+import wxe;
 
 public class AlbumGalleryCapturePart$11
   implements Runnable
 {
-  public AlbumGalleryCapturePart$11(ugk paramugk) {}
+  public AlbumGalleryCapturePart$11(ukt paramukt) {}
   
   public void run()
   {
-    if (ugk.b(this.this$0))
+    if (ukt.b(this.this$0))
     {
-      wsv.b("FredguoFix", "play animation");
-      ugk.a(this.this$0).a(null);
-      boolean bool1 = ugk.a(this.this$0).post(ugk.a(this.this$0));
-      boolean bool2 = ugk.a(this.this$0).postDelayed(ugk.b(this.this$0), 800L);
+      wxe.b("FredguoFix", "play animation");
+      ukt.a(this.this$0).a(null);
+      boolean bool1 = ukt.a(this.this$0).post(ukt.a(this.this$0));
+      boolean bool2 = ukt.a(this.this$0).postDelayed(ukt.b(this.this$0), 800L);
       if ((!bool1) || (!bool2)) {
-        ugk.a(this.this$0).a(ugk.a(this.this$0));
+        ukt.a(this.this$0).a(ukt.a(this.this$0));
       }
     }
   }

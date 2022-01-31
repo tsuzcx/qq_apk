@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import aypy;
-import ayql;
+import ayuh;
+import ayuu;
 import java.util.List;
 
 class PublicAccountSearchEngine$1
   implements Runnable
 {
-  PublicAccountSearchEngine$1(PublicAccountSearchEngine paramPublicAccountSearchEngine, ayql paramayql, aypy paramaypy) {}
+  PublicAccountSearchEngine$1(PublicAccountSearchEngine paramPublicAccountSearchEngine, ayuu paramayuu, ayuh paramayuh) {}
   
   public void run()
   {
-    List localList = this.this$0.a(this.jdField_a_of_type_Ayql);
-    if (this.jdField_a_of_type_Aypy != null) {
-      this.jdField_a_of_type_Aypy.a(localList, 1);
+    List localList = this.this$0.a(this.jdField_a_of_type_Ayuu);
+    if (this.jdField_a_of_type_Ayuh != null) {
+      this.jdField_a_of_type_Ayuh.a(localList, 1);
     }
   }
 }

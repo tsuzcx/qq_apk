@@ -1,71 +1,38 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class vpg
-  implements vri
+class vpg
+  implements urr<vga, vgb>
 {
-  public vpg(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
+  vpg(vpf paramvpf, vps paramvps) {}
   
-  public void a(int paramInt)
+  public void a(@NonNull vga paramvga, @Nullable vgb paramvgb, @NonNull ErrorMessage paramErrorMessage)
   {
-    wsv.a(this.a.jdField_a_of_type_JavaLangString, "onPageSelected : position = %d", Integer.valueOf(paramInt));
-    int i = this.a.b;
-    this.a.b = paramInt;
-    Object localObject = this.a.a();
-    if (localObject != null)
+    if ((paramErrorMessage.isFail()) || (paramvgb == null))
     {
-      localObject = (vpt)((vpr)localObject).a(vpt.class);
-      if ((localObject != null) && (((vpt)localObject).b.getVisibility() != 0)) {
-        this.a.a(true, true);
-      }
+      wxe.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      this.jdField_a_of_type_Vps.a(paramErrorMessage, null, false);
+      return;
     }
-    localObject = (vog)this.a.b(vog.class);
-    if (localObject != null) {
-      ((vog)localObject).a().a(paramInt);
-    }
-    c(paramInt);
-    if (StoryPlayerGroupHolder.a(this.a) != null) {
-      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, i, paramInt);
-    }
-  }
-  
-  public void a(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (StoryPlayerGroupHolder.a(this.a) != null) {
-      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt1, paramFloat, paramInt2);
-    }
-    vog localvog = (vog)this.a.b(vog.class);
-    if (localvog != null) {
-      localvog.a().a(paramInt1, paramFloat, paramInt2);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((paramInt == 1) && (this.a.d()) && (this.a.c()))
+    vpf.a(this.jdField_a_of_type_Vpf);
+    this.jdField_a_of_type_Vpf.b.a(paramvgb.jdField_a_of_type_JavaUtilList, paramvgb.jdField_a_of_type_JavaLangString, paramvgb.jdField_a_of_type_Boolean);
+    ((woy)uwa.a(11)).a(paramvgb.jdField_a_of_type_JavaUtilList);
+    AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
+    boolean bool = wpp.a(paramvgb, localAtomicBoolean);
+    wxe.d("Q.qqstory.player.data.HomeFeedPlayPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramvgb.b), Integer.valueOf(vpf.b(this.jdField_a_of_type_Vpf)), Boolean.valueOf(bool) });
+    if ((!paramvgb.jdField_a_of_type_Boolean) && (vpf.b(this.jdField_a_of_type_Vpf) < 10) && ((!paramvgb.b) || (bool)))
     {
-      ((vog)this.a.b(vog.class)).d();
-      wsv.a(this.a.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onPageScrolled, showLoadingMoreWidget position=%d", Integer.valueOf(this.a.b));
+      wxe.d("Q.qqstory.player.data.HomeFeedPlayPageLoader", "feedId list not end, pull more");
+      paramvga.b = this.jdField_a_of_type_Vpf.b.a();
+      urp.a().a(paramvga, this);
+      return;
     }
-    vog localvog = (vog)this.a.b(vog.class);
-    if (localvog != null) {
-      localvog.a().b(paramInt);
+    if (localAtomicBoolean.getAndSet(false)) {
+      this.jdField_a_of_type_Vpf.b.c();
     }
-    if (StoryPlayerGroupHolder.a(this.a) != null) {
-      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt);
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    wsv.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected : position = %d", Integer.valueOf(paramInt));
-    vpr localvpr = this.a.a();
-    if ((localvpr != null) && (TextUtils.equals(StoryPlayerGroupHolder.a(this.a).a().jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Vld.jdField_a_of_type_JavaLangString)) && (!localvpr.c()))
-    {
-      wsv.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected, setSelected => %s", localvpr);
-      this.a.a(localvpr);
-    }
+    this.jdField_a_of_type_Vps.a(paramErrorMessage, vpa.b(paramvgb.jdField_a_of_type_JavaUtilList), paramvgb.jdField_a_of_type_Boolean);
   }
 }
 

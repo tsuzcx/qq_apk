@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.main;
 
-import aiaf;
+import aieu;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 public class CommonLoadingView
   extends FrameLayout
 {
-  private aiaf jdField_a_of_type_Aiaf;
+  private aieu jdField_a_of_type_Aieu;
   private boolean jdField_a_of_type_Boolean = true;
   
   public CommonLoadingView(Context paramContext)
@@ -33,15 +33,15 @@ public class CommonLoadingView
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Aiaf != null) {
-        this.jdField_a_of_type_Aiaf.c();
+      if (this.jdField_a_of_type_Aieu != null) {
+        this.jdField_a_of_type_Aieu.c();
       }
     }
   }
   
-  public void setOnFirstDrawListener(aiaf paramaiaf)
+  public void setOnFirstDrawListener(aieu paramaieu)
   {
-    this.jdField_a_of_type_Aiaf = paramaiaf;
+    this.jdField_a_of_type_Aieu = paramaieu;
   }
 }
 

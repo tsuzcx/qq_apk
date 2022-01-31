@@ -1,25 +1,25 @@
 import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wqi
-  extends QQUIEventReceiver<wps, uqv>
+  extends umf<wpr, veb>
 {
-  public wqi(@NonNull wps paramwps)
+  public wqi(wpr paramwpr)
   {
-    super(paramwps);
+    super(paramwpr);
   }
   
-  public void a(@NonNull wps paramwps, @NonNull uqv paramuqv)
+  public void a(@NonNull wpr paramwpr, @NonNull veb paramveb)
   {
-    if (paramuqv.a) {
-      wps.d(paramwps);
-    }
+    wxe.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramveb);
+    wpr.a(paramwpr, paramveb.a);
   }
   
   public Class acceptEventClass()
   {
-    return uqv.class;
+    return veb.class;
   }
+  
+  public void b(@NonNull wpr paramwpr, @NonNull veb paramveb) {}
 }
 
 

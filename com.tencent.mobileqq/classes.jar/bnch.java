@@ -1,19 +1,15 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
+import android.graphics.Bitmap;
 
 class bnch
-  implements ulb
+  implements ansr
 {
-  bnch(bncg parambncg, PeakActivity paramPeakActivity, String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry) {}
+  bnch(bnce parambnce) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    if (paramInt == 0)
-    {
-      bncg.a(this.jdField_a_of_type_Bncg, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-      return;
+    if (bnce.a(this.a) != null) {
+      bnce.a(this.a).a(paramString1, 4, paramString2, paramBitmap);
     }
-    bncg.a(this.jdField_a_of_type_Bncg, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
   }
 }
 

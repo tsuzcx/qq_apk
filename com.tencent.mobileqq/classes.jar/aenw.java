@@ -1,30 +1,15 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
 
-class aenw
-  implements URLDrawable.URLDrawableListener
+public class aenw
+  implements View.OnClickListener
 {
-  aenw(aenv paramaenv) {}
+  public aenw(ReminderListFragment paramReminderListFragment) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    aenv.d(this.a);
-    QQToast.a(this.a.a, 0, 2131693762, 1).a();
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    aenv.d(this.a);
-    QQToast.a(this.a.a, 0, 2131693762, 1).a();
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    aenv.d(this.a);
-    aenv.a(this.a, aenv.a(this.a));
+    ReminderListFragment.a(this.a);
   }
 }
 

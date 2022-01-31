@@ -1,16 +1,27 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
 
 public class achh
   implements View.OnClickListener
 {
-  public achh(ChatHistory paramChatHistory) {}
+  public achh(AutoRemarkActivity paramAutoRemarkActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.k();
-    azmj.b(this.a.app, "CliOper", "", "", "0X800568E", "0X800568E", this.a.k, 0, "", "", "", "");
+    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {}
+    try
+    {
+      this.a.a.dismiss();
+      label46:
+      this.a.a = null;
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      break label46;
+    }
   }
 }
 

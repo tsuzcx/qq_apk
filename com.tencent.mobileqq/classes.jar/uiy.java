@@ -1,32 +1,43 @@
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.List;
 
-class uiy
-  implements bapw
+public class uiy
 {
-  uiy(uiw paramuiw) {}
+  public AddressItem a;
+  public String a;
+  public List<uja> a;
+  public uke a;
   
-  public void a(baqv parambaqv, baqw parambaqw)
+  public uiy(String paramString)
   {
-    if ((parambaqv == null) || (parambaqw == null)) {}
-    while (!(parambaqv instanceof baps)) {
-      return;
-    }
-    baps localbaps = (baps)parambaqv;
-    localbaps.jdField_a_of_type_Long += parambaqw.c;
-    parambaqw.c = 0L;
-    parambaqw = "bytes=" + localbaps.jdField_a_of_type_Long + "-";
-    localbaps.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
-    String str1 = localbaps.jdField_a_of_type_JavaLangString;
-    if (str1.contains("range="))
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
     {
-      String str2 = str1.substring(0, str1.lastIndexOf("range="));
-      localbaps.jdField_a_of_type_JavaLangString = (str2 + "range=" + localbaps.jdField_a_of_type_Long);
+      return false;
+      if (this == paramObject) {
+        return true;
+      }
+    } while (!(paramObject instanceof uiy));
+    return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((uiy)paramObject).jdField_a_of_type_JavaLangString);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder("GeoHashPhotoGroup=[");
+    localStringBuilder1.append("geohashString:").append(this.jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder2 = localStringBuilder1.append("picList size:");
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
+    {
+      localStringBuilder2.append(i);
+      return localStringBuilder1.toString();
     }
-    parambaqv = parambaqv.a();
-    if ((parambaqv != null) && ((parambaqv instanceof uja))) {
-      ((uja)parambaqv).b = true;
-    }
-    wsv.b("AsyncFileDownloader", String.format("breakDown , range = %s , url = %s", new Object[] { parambaqw, str1 }));
   }
 }
 

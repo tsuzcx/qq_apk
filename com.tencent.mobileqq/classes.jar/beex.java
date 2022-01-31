@@ -1,22 +1,8 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
 
-class beex
-  implements URLDrawable.URLDrawableListener
+public abstract interface beex
 {
-  beex(beet parambeet) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.a.a.sendMessage(this.a.a.obtainMessage(103, paramURLDrawable));
-  }
+  public abstract void a(Bundle paramBundle);
 }
 
 

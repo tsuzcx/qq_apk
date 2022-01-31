@@ -11,10 +11,10 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import blfg;
-import blgs;
-import blgt;
-import blgu;
+import bljn;
+import blkz;
+import blla;
+import bllb;
 
 public class AEEditorApplyAllLoadingView
   extends FrameLayout
@@ -40,7 +40,7 @@ public class AEEditorApplyAllLoadingView
   private void a(Context paramContext)
   {
     LayoutInflater.from(paramContext).inflate(2131558523, this);
-    this.a = ((TextView)findViewById(2131377553));
+    this.a = ((TextView)findViewById(2131377607));
     b();
   }
   
@@ -49,12 +49,12 @@ public class AEEditorApplyAllLoadingView
     AnimatorSet localAnimatorSet = new AnimatorSet();
     ValueAnimator localValueAnimator1 = ValueAnimator.ofInt(new int[] { 22, 0 });
     localValueAnimator1.setDuration(500L);
-    localValueAnimator1.addUpdateListener(new blgs(this));
+    localValueAnimator1.addUpdateListener(new blkz(this));
     ValueAnimator localValueAnimator2 = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
     localValueAnimator2.setDuration(1000L);
-    localValueAnimator2.addUpdateListener(new blgt(this));
+    localValueAnimator2.addUpdateListener(new blla(this));
     localAnimatorSet.play(localValueAnimator1).before(localValueAnimator2);
-    localAnimatorSet.addListener(new blgu(this));
+    localAnimatorSet.addListener(new bllb(this));
     localAnimatorSet.start();
   }
   
@@ -62,7 +62,7 @@ public class AEEditorApplyAllLoadingView
   {
     if (getParent() == null)
     {
-      blfg.a("AEEditorApplyAllLoadingView", "cancelLoading parent is null.");
+      bljn.a("AEEditorApplyAllLoadingView", "cancelLoading parent is null.");
       return;
     }
     ((ViewGroup)getParent()).removeAllViews();

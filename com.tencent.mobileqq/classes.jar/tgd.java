@@ -1,7 +1,7 @@
 import android.view.ViewGroup;
 
 public abstract class tgd<T>
-  extends biac<T>
+  extends biej<T>
 {
   public thf a;
   public thl a;

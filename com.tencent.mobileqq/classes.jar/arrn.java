@@ -1,16 +1,8 @@
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-
-class arrn
-  implements bevo
+public abstract interface arrn
 {
-  arrn(arrk paramarrk) {}
+  public abstract void a(String paramString);
   
-  public void a(int paramInt)
-  {
-    if (paramInt == 2) {
-      this.a.a.c();
-    }
-  }
+  public abstract void b(String paramString);
 }
 
 

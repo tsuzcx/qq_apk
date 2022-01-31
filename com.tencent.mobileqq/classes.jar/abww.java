@@ -1,72 +1,39 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class abww
-  implements Animation.AnimationListener
 {
-  int jdField_a_of_type_Int = -1;
-  View jdField_a_of_type_AndroidViewView;
+  public static final JSONObject a = new JSONObject();
   
-  public abww(AccountManageActivity paramAccountManageActivity, View paramView, int paramInt)
+  public static JSONObject a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return;
+    JSONObject localJSONObject = new JSONObject();
+    if (paramBundle == null) {
+      return a;
     }
-    switch (this.jdField_a_of_type_Int)
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
     {
-    case 2: 
-    case 3: 
-    default: 
-      return;
-    case 0: 
-      paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      paramAnimation.leftMargin += (int)(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a * 34.0F);
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-      this.jdField_a_of_type_AndroidViewView.setTag("right");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      return;
-      paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      paramAnimation.leftMargin -= (int)(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a * 34.0F);
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-      this.jdField_a_of_type_AndroidViewView.setTag("left");
-      continue;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      if (this.jdField_a_of_type_AndroidViewView.getId() == 2131364237)
+      String str = (String)localIterator.next();
+      Object localObject2 = paramBundle.get(str);
+      Object localObject1 = localObject2;
+      if ((localObject2 instanceof Bundle)) {
+        localObject1 = a((Bundle)localObject2);
+      }
+      try
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c();
-        continue;
-        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+        localJSONObject.put(str, localObject1);
+      }
+      catch (JSONException localJSONException) {}
+      if (QLog.isColorLevel()) {
+        QLog.e("APIParam", 2, localJSONException.getMessage(), localJSONException);
       }
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
-    }
-    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
-    }
+    return localJSONObject;
   }
 }
 

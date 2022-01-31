@@ -1,476 +1,478 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
-import android.text.TextUtils;
+import android.content.Context;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgTabServerInitStep;
+import com.tencent.mobileqq.activity.leba.LebaShowListManager.1;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import mqq.app.AppRuntime;
 
 public class aieq
-  extends QIPCModule
-  implements Handler.Callback
 {
-  private static aieq jdField_a_of_type_Aieq;
-  private long jdField_a_of_type_Long;
-  private aier jdField_a_of_type_Aier;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private boolean jdField_a_of_type_Boolean;
-  private aier b;
-  private aier c;
+  public static volatile int a;
+  private static volatile aieq jdField_a_of_type_Aieq;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  public HashMap<String, aozs> a;
+  protected List<aozs> a;
+  public boolean a;
   
   private aieq()
   {
-    super("MiniMsgIPCServer");
-    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("mini_msg", 0);
-    localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper(), this);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    jdField_a_of_type_Int = 0;
   }
   
   public static aieq a()
   {
     if (jdField_a_of_type_Aieq == null) {}
-    try
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
       if (jdField_a_of_type_Aieq == null) {
         jdField_a_of_type_Aieq = new aieq();
       }
       return jdField_a_of_type_Aieq;
     }
-    finally {}
   }
   
-  public static void a(int paramInt)
+  public aozs a(long paramLong)
   {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      ((aieo)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(147)).a(Integer.valueOf(paramInt));
-    }
-  }
-  
-  private void a(int paramInt, Bundle paramBundle)
-  {
-    long l = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_Long > l) && (this.jdField_a_of_type_Long - l < 5000L)) {
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
+    Iterator localIterator = a().iterator();
+    while (localIterator.hasNext())
     {
-      aier localaier = this.jdField_a_of_type_Aier;
-      if ((localObject == null) || (localaier == null)) {
-        break;
+      aozs localaozs = (aozs)localIterator.next();
+      if (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == paramLong) {
+        return localaozs;
       }
-      if (paramBundle == null) {
-        paramBundle = new Bundle();
-      }
-      for (;;)
+    }
+    return null;
+  }
+  
+  public List<aozs> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    for (;;)
+    {
+      aozs localaozs;
+      boolean bool;
+      synchronized (this.jdField_a_of_type_JavaUtilList)
       {
-        localObject = ((QQAppInterface)localObject).a();
-        if (localObject != null) {}
-        for (int i = ((QQMessageFacade)localObject).c();; i = 0)
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (!localIterator.hasNext()) {
+          break label265;
+        }
+        localaozs = (aozs)localIterator.next();
+        if ((localaozs == null) || (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) || (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 905L)) {
+          continue;
+        }
+        if (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == nga.jdField_a_of_type_Int)
         {
-          paramBundle.putInt("param_cmd", 0);
-          paramBundle.putInt("param_proc_badge_count", i);
-          localObject = new EIPCResult();
-          ((EIPCResult)localObject).data = paramBundle;
-          callbackResult(paramInt, (EIPCResult)localObject);
-          paramBundle.putInt("param_proc_badge_count", i);
-          QIPCServerHelper.getInstance().callClient(aier.a(localaier), aier.b(localaier), "action_sync_unreadcount", paramBundle, null);
-          if (this.c != null) {
-            QIPCServerHelper.getInstance().callClient(aier.a(this.c), aier.b(this.c), "action_sync_unreadcount", paramBundle, null);
+          bool = false;
+          if (!(localAppRuntime instanceof QQAppInterface)) {
+            break label273;
           }
+          bool = ((QQAppInterface)localAppRuntime).a().a();
+          break label273;
+        }
+        if ((localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 1130L) && (bkbq.k()))
+        {
           if (!QLog.isColorLevel()) {
-            break;
+            continue;
           }
-          QLog.d("MiniMsgIPCServer", 2, "doNotifyUnreadState unread = " + i);
-          return;
+          QLog.d("Q.lebatab.mgr", 2, "getLebaMgrList hide leba kandian");
         }
       }
-    }
-  }
-  
-  private void a(Bundle paramBundle)
-  {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(aier.a(this.c), aier.b(this.c), "actionMiniReportEvent", paramBundle, null);
-    }
-  }
-  
-  private void b(Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Aier != null)
-    {
-      String str1 = paramBundle.getString("param_proc_name");
-      String str2 = paramBundle.getString("param_proc_modulename");
-      paramBundle.getString("param_proc_businame");
-      if ((this.jdField_a_of_type_Aier.a().equals(str1)) && (this.jdField_a_of_type_Aier.b().equals(str2))) {
-        this.jdField_a_of_type_Boolean = false;
-      }
-    }
-  }
-  
-  private void c(Bundle paramBundle)
-  {
-    String str1 = paramBundle.getString("param_proc_name");
-    String str2 = paramBundle.getString("param_proc_modulename");
-    int i = paramBundle.getInt("param_proc_businame");
-    this.jdField_a_of_type_Aier = new aier(str1, str2);
-    this.b = new aier(str1, "aio_client_module");
-    if (("mini_app_client_module".equals(str2)) || ("mini_sdk_client_module".equals(str2))) {
-      this.c = new aier(str1, str2);
-    }
-    this.jdField_a_of_type_Aier.a = i;
-    this.jdField_a_of_type_Boolean = true;
-    boolean bool = paramBundle.getBoolean("param_proc_first_start", false);
-    if (QLog.isColorLevel())
-    {
-      QLog.d("MiniMsgIPCServer", 2, str1 + "doOnProcForeGround isFirst = " + bool);
-      QLog.d("MiniMsgIPCServer", 2, "moduleName:" + str2);
-    }
-    if (bool) {
-      a();
-    }
-  }
-  
-  private void d(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return;
-    }
-    String str = paramBundle.getString("param_proc_uin");
-    int j = paramBundle.getInt("param_proc_uin_type");
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (paramBundle = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramBundle = null)
-    {
-      aier localaier = this.b;
-      if ((paramBundle == null) || (localaier == null)) {
-        break;
-      }
-      paramBundle = paramBundle.a();
-      if (paramBundle != null) {}
-      for (int i = paramBundle.a(j, str);; i = 0)
+      if (((localAppRuntime instanceof QQAppInterface)) && (alvr.a((QQAppInterface)localAppRuntime, localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId)))
       {
-        paramBundle = new Bundle();
-        paramBundle.putString("param_proc_uin", str);
-        paramBundle.putInt("param_proc_uin_type", j);
-        paramBundle.putInt("param_proc_single_con_badge_count", i);
         if (QLog.isColorLevel()) {
-          QLog.d("mini_msg_IPCServer", 2, "doNotifySingleConUnreadState uin = " + str + "; unread = " + i);
+          QLog.d("Q.lebatab.mgr", 2, "getLebaMgrList, " + localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId + " is filtered");
         }
-        QIPCServerHelper.getInstance().callClient(aier.a(localaier), aier.b(localaier), "action_sync_single_con_unread_count", paramBundle, null);
-        if (this.c == null) {
+      }
+      else if (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.cDataType != 1)
+      {
+        localList2.add(localaozs);
+        continue;
+        label265:
+        alvr.a(localList2);
+        return localList2;
+        label273:
+        if (!bool) {}
+      }
+    }
+  }
+  
+  public List<aozs> a(Context paramContext, QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.lebatab.mgr", 4, String.format(Locale.getDefault(), "reloadLebaItems [%s, %s, %s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), paramContext, paramQQAppInterface }));
+    }
+    ArrayList localArrayList1 = new ArrayList();
+    List localList = paramQQAppInterface.a();
+    ArrayList localArrayList2;
+    if (localList != null)
+    {
+      paramContext = paramQQAppInterface.a().a;
+      if ((paramContext == null) && (QLog.isDevelopLevel())) {
+        QLog.i("Q.lebatab.mgr", 4, "reloadLebaItems wholePeopleChecker is null");
+      }
+      Object localObject = new ArrayList(localList);
+      localArrayList2 = new ArrayList();
+      localObject = ((List)localObject).iterator();
+      boolean bool1 = false;
+      while (((Iterator)localObject).hasNext())
+      {
+        LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)((Iterator)localObject).next();
+        if (localLebaPluginInfo != null) {
+          if ((localLebaPluginInfo.uiResId == 770L) && (paramContext != null) && (!paramContext.jdField_a_of_type_Boolean))
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.i("Q.lebatab.mgr", 4, "reloadLebaItems wholePeople entry switch is off ");
+            }
+          }
+          else
+          {
+            boolean bool2 = bool1;
+            if (localLebaPluginInfo.uiResId == 770L) {
+              bool2 = true;
+            }
+            aozs localaozs = new aozs();
+            try
+            {
+              localaozs.jdField_a_of_type_Long = localLebaPluginInfo.uiResId;
+              localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo = localLebaPluginInfo;
+              if (!alvr.a(localaozs)) {
+                break label298;
+              }
+              this.jdField_a_of_type_JavaUtilHashMap.put(localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strPkgName, localaozs);
+              bool1 = bool2;
+            }
+            catch (Exception localException)
+            {
+              bool1 = bool2;
+            }
+            if (QLog.isColorLevel())
+            {
+              bool1 = bool2;
+              if (localException != null)
+              {
+                QLog.d("Q.lebatab.mgr", 2, localException.toString());
+                bool1 = bool2;
+                continue;
+                label298:
+                localArrayList2.add(localaozs);
+                bool1 = bool2;
+              }
+            }
+          }
+        }
+      }
+      if (paramContext != null) {
+        paramContext.a(bool1);
+      }
+      Collections.sort(localArrayList2, new alvs());
+      paramContext = (axlx)paramQQAppInterface.getManager(36);
+      if (paramContext != null) {
+        break label442;
+      }
+    }
+    label442:
+    for (paramContext = null;; paramContext = paramContext.a())
+    {
+      a(paramQQAppInterface, localArrayList2, paramContext);
+      paramContext = a(paramQQAppInterface);
+      alvr.a(localArrayList1, paramContext);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.lebatab.mgr", 2, "reloadLebaItems, info.size=" + localList.size() + ", alldatasize=" + this.jdField_a_of_type_JavaUtilList.size() + ", pluginShowList=" + paramContext.size());
+      }
+      return localArrayList1;
+    }
+  }
+  
+  public List<aozs> a(QQAppInterface paramQQAppInterface)
+  {
+    ArrayList localArrayList = new ArrayList();
+    boolean bool = azmk.a();
+    for (;;)
+    {
+      aozs localaozs;
+      synchronized (this.jdField_a_of_type_JavaUtilList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (!localIterator.hasNext()) {
           break;
         }
-        QIPCServerHelper.getInstance().callClient(aier.a(this.c), aier.b(this.c), "action_sync_single_con_unread_count", paramBundle, null);
-        return;
-      }
-    }
-  }
-  
-  private void e()
-  {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(aier.a(this.c), aier.b(this.c), "action_sync_unreadcount", null, null);
-    }
-  }
-  
-  private void f()
-  {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(aier.a(this.c), aier.b(this.c), "actionMiniDirectShareSucCallback", null, null);
-    }
-  }
-  
-  private void g()
-  {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(aier.a(this.c), aier.b(this.c), "actionMiniShareSucCallback", null, null);
-    }
-  }
-  
-  private void h()
-  {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(aier.a(this.c), aier.b(this.c), "actionMiniShareFailCallback", null, null);
-    }
-  }
-  
-  private void i()
-  {
-    long l = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_Long > l) && (this.jdField_a_of_type_Long - l < 5000L)) {
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
-    {
-      aier localaier = this.jdField_a_of_type_Aier;
-      if ((localObject == null) || (localaier == null)) {
-        break;
-      }
-      localObject = ((QQAppInterface)localObject).a();
-      if (localObject != null) {}
-      for (int i = ((QQMessageFacade)localObject).c();; i = 0)
-      {
-        localObject = new Bundle();
-        ((Bundle)localObject).putInt("param_proc_badge_count", i);
-        if (QLog.isColorLevel()) {
-          QLog.d("mini_msg_IPCServer", 2, "doNotifyUnreadState unread = " + i);
+        localaozs = (aozs)localIterator.next();
+        if ((localaozs == null) || (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) || (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 905L)) {
+          continue;
         }
-        QIPCServerHelper.getInstance().callClient(aier.a(localaier), aier.b(localaier), "action_sync_unreadcount", (Bundle)localObject, null);
-        if (this.c == null) {
-          break;
-        }
-        QIPCServerHelper.getInstance().callClient(aier.a(this.c), aier.b(this.c), "action_sync_unreadcount", (Bundle)localObject, null);
-        return;
-      }
-    }
-  }
-  
-  private void j()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
-    {
-      aier localaier = this.jdField_a_of_type_Aier;
-      if ((localObject != null) && (localaier != null))
-      {
-        localObject = new Bundle();
-        if (QLog.isColorLevel()) {
-          QLog.d("mini_msg_IPCServer", 2, "doNotifyGoToConversation  ");
-        }
-        QIPCServerHelper.getInstance().callClient(aier.a(localaier), aier.b(localaier), "action_mini_msgtab_notify_to_conversation", (Bundle)localObject, null);
-      }
-      return;
-    }
-  }
-  
-  private void k()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
-    {
-      aier localaier = this.jdField_a_of_type_Aier;
-      QQMessageFacade localQQMessageFacade = ((QQAppInterface)localObject).a();
-      if (localQQMessageFacade != null) {}
-      for (int i = localQQMessageFacade.c();; i = 0)
-      {
-        if ((localObject != null) && (localaier != null))
+        if ((localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 1130L) && (bkbq.k()))
         {
-          localObject = new Bundle();
-          ((Bundle)localObject).putInt("param_proc_badge_count", i);
-          if (QLog.isColorLevel()) {
-            QLog.d("MiniMsgIPCServer", 2, "doNotifyUnreadState unread = " + i);
+          if (!QLog.isColorLevel()) {
+            continue;
           }
-          QIPCServerHelper.getInstance().callClient(aier.a(localaier), aier.b(localaier), "action_msg_tab_back_refresh", (Bundle)localObject, null);
+          QLog.d("Q.lebatab.mgr", 2, "hide leba kandian");
         }
-        return;
       }
-    }
-  }
-  
-  private void l()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
-    {
-      aier localaier = this.jdField_a_of_type_Aier;
-      QQMessageFacade localQQMessageFacade = ((QQAppInterface)localObject).a();
-      if (localQQMessageFacade != null) {}
-      for (int i = localQQMessageFacade.c();; i = 0)
+      StringBuilder localStringBuilder;
+      if (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == nga.jdField_a_of_type_Int)
       {
-        if ((localObject != null) && (localaier != null))
+        if (QLog.isColorLevel())
         {
-          localObject = new Bundle();
-          ((Bundle)localObject).putInt("param_proc_badge_count", i);
-          if (QLog.isColorLevel()) {
-            QLog.d("mini_msg_IPCServer", 2, "notifyGetUnread unread = " + i);
-          }
-          QIPCServerHelper.getInstance().callClient(aier.a(localaier), aier.b(localaier), "action_get_unread", (Bundle)localObject, null);
+          localStringBuilder = new StringBuilder().append("getLebaShowList isNowTabAdded:");
+          paramQQAppInterface.a();
+          QLog.d("Q.qqstory.fourTab", 2, nga.c + "  isNowTabShow:" + paramQQAppInterface.a().jdField_a_of_type_Boolean + "  isSDKAPISupportStory:" + ulu.i());
         }
-        return;
+        if ((!paramQQAppInterface.a().a()) || (localaozs.jdField_a_of_type_Byte == 1)) {}
+      }
+      else if (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == nga.jdField_a_of_type_Int)
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder().append("getLebaShowList isNowTabAdded:");
+          paramQQAppInterface.a();
+          QLog.d("Q.qqstory.fourTab", 2, nga.c + "  isNowTabShow:" + paramQQAppInterface.a().jdField_a_of_type_Boolean + "  isSDKAPISupportStory:" + ulu.i());
+        }
+        if ((!paramQQAppInterface.a().a()) || (localaozs.jdField_a_of_type_Byte == 1)) {}
+      }
+      else if (alvr.a(paramQQAppInterface, localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.lebatab.mgr", 2, "getLebaShowList, " + localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId + " is filtered");
+        }
+      }
+      else if (bool)
+      {
+        if (((localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.showInSimpleMode != 0)) || (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 0L)) {
+          localArrayList.add(localaozs);
+        }
+      }
+      else if ((localaozs.jdField_a_of_type_Byte == 0) || (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 0L))
+      {
+        localArrayList.add(localaozs);
       }
     }
-  }
-  
-  public aier a()
-  {
-    return this.jdField_a_of_type_Aier;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.mgr", 2, "alldatasize=" + this.jdField_a_of_type_JavaUtilList.size() + ", result" + aozs.a(localArrayList));
+    }
+    alvr.a(localArrayList);
+    return localArrayList;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-  }
-  
-  void a(String paramString, int paramInt)
-  {
-    Message localMessage = Message.obtain();
-    localMessage.what = 11;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param_proc_uin", paramString);
-    localBundle.putInt("param_proc_uin_type", paramInt);
-    localMessage.setData(localBundle);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-  }
-  
-  public void c()
-  {
-    j();
-  }
-  
-  public void d()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
+    synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      aier localaier = this.jdField_a_of_type_Aier;
-      if ((localObject != null) && (localaier != null))
-      {
-        localObject = new Bundle();
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniMsgIPCServer", 2, "notifyFromMiniAIOToAIO ");
-        }
-        QIPCServerHelper.getInstance().callClient(aier.a(localaier), aier.b(localaier), "action_mini_aio_to_aio", (Bundle)localObject, null);
-      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+      jdField_a_of_type_Int = 0;
       return;
     }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(QQAppInterface paramQQAppInterface)
   {
-    switch (paramMessage.what)
-    {
-    }
+    Object localObject = a();
+    if (localObject == null) {}
     for (;;)
     {
-      return true;
-      c((Bundle)paramMessage.obj);
-      continue;
-      b((Bundle)paramMessage.obj);
-      continue;
-      if (MiniMsgTabServerInitStep.jdField_a_of_type_Boolean)
+      return;
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        i();
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("MiniMsgIPCServer", 2, "isAfterActionB = " + MiniMsgTabServerInitStep.jdField_a_of_type_Boolean);
-        continue;
-        d(paramMessage.getData());
-        continue;
-        if (MiniMsgTabServerInitStep.jdField_a_of_type_Boolean)
-        {
-          a(paramMessage.arg1, (Bundle)paramMessage.obj);
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.d("MiniMsgIPCServer", 2, "isAfterActionB = " + MiniMsgTabServerInitStep.jdField_a_of_type_Boolean);
-          continue;
-          k();
-          continue;
-          g();
-          continue;
-          h();
-          continue;
-          l();
-          continue;
-          j();
-          continue;
-          a((Bundle)paramMessage.obj);
-          continue;
-          f();
-          continue;
-          e();
+        aozs localaozs = (aozs)((Iterator)localObject).next();
+        if (localaozs != null) {
+          if (localaozs.jdField_a_of_type_Byte == 0)
+          {
+            if (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) {
+              azqs.b(paramQQAppInterface, "CliStatus", "", "", "trends_tab", "Clk_plug_in_s", 0, 0, "1", String.valueOf(localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId), "", "");
+            }
+          }
+          else if ((localaozs.jdField_a_of_type_Byte == 1) && (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null)) {
+            azqs.b(paramQQAppInterface, "CliStatus", "", "", "trends_tab", "Clk_plug_in_s", 0, 0, "0", String.valueOf(localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId), "", "");
+          }
         }
       }
     }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a(QQAppInterface paramQQAppInterface, long paramLong1, boolean paramBoolean, long paramLong2, long paramLong3)
   {
-    if ((QLog.isColorLevel()) && (paramBundle != null)) {
-      QLog.d("MiniMsgIPCServer", 2, new Object[] { "MiniMsgIPCServer : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
-    }
-    Message localMessage = Message.obtain();
-    localMessage.obj = paramBundle;
-    if (!TextUtils.isEmpty(paramString))
+    int i = 1;
+    int k = 1;
+    for (;;)
     {
-      if (!paramString.equalsIgnoreCase("cmd_proc_foregound")) {
-        break label125;
+      int j;
+      synchronized (this.jdField_a_of_type_JavaUtilList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        j = i;
+        if (!localIterator.hasNext()) {
+          break label290;
+        }
+        aozs localaozs = (aozs)localIterator.next();
+        if ((localaozs == null) || (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) || (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId != paramLong1)) {
+          continue;
+        }
+        if (paramBoolean)
+        {
+          i = 0;
+          localaozs.jdField_a_of_type_Byte = ((byte)i);
+          if (paramLong3 == -9223372036854775808L)
+          {
+            localaozs.b = paramLong2;
+            i = k;
+            j = i;
+            if (!QLog.isDevelopLevel()) {
+              break label290;
+            }
+            QLog.i("Q.lebatab.mgr", 4, "updateAppSetting, name = " + localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName + " status:" + paramBoolean);
+            if ((paramQQAppInterface != null) && (i == 1)) {
+              ThreadManager.post(new LebaShowListManager.1(this, (axlx)paramQQAppInterface.getManager(36), paramLong1, paramBoolean, paramLong3, paramLong2), 5, null, true);
+            }
+            if (QLog.isDevelopLevel()) {
+              QLog.i("Q.lebatab.mgr", 4, "updateAppSetting, ret = " + i);
+            }
+          }
+        }
+        else
+        {
+          i = 1;
+          continue;
+        }
+        if (paramLong2 == localaozs.b)
+        {
+          localaozs.b = paramLong3;
+          i = k;
+        }
       }
-      localMessage.what = 1;
+      i = -2147483648;
+      continue;
+      label290:
+      i = j;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, List<aozs> paramList, List<BusinessInfoCheckUpdate.AppSetting> paramList1)
+  {
+    int i;
+    if (QLog.isDevelopLevel())
+    {
+      ??? = new StringBuilder().append("setAllLebaList, ");
+      if (paramList != null) {
+        break label111;
+      }
+      i = 0;
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      return null;
-      label125:
-      if (paramString.equalsIgnoreCase("cmd_proc_backgound"))
+      QLog.i("Q.lebatab.mgr", 4, i);
+      synchronized (this.jdField_a_of_type_JavaUtilList)
       {
-        localMessage.what = 2;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_refresh_mini_badge"))
-      {
-        localMessage.what = 4;
-        localMessage.arg1 = paramInt;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_msg_tab_back_refresh"))
-      {
-        localMessage.what = 8;
-        localMessage.arg1 = paramInt;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_mini_share_suc"))
-      {
-        localMessage.what = 6;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_mini_share_fail"))
-      {
-        localMessage.what = 7;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_get_unread"))
-      {
-        localMessage.what = 8;
-        localMessage.arg1 = paramInt;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_mini_clear_business"))
-      {
-        if (paramBundle != null) {
-          a(paramBundle.getInt("PARAM_CMD_BUSIID"));
+        this.jdField_a_of_type_JavaUtilList.clear();
+        if (paramList != null) {
+          this.jdField_a_of_type_JavaUtilList.addAll(paramList);
         }
-      }
-      else if (paramString.equalsIgnoreCase("cmd_mini_report_event"))
-      {
-        localMessage.what = 10;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_mini_direct_share_suc"))
-      {
-        localMessage.what = 12;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_mini_direct_share_fail"))
-      {
-        localMessage.what = 13;
+        a(paramList1);
+        if (paramQQAppInterface != null)
+        {
+          paramQQAppInterface = (ambk)paramQQAppInterface.a(31);
+          if (paramQQAppInterface != null) {
+            paramQQAppInterface.notifyUI(1, true, null);
+          }
+        }
+        return;
+        label111:
+        i = paramList.size();
       }
     }
+  }
+  
+  public void a(List<BusinessInfoCheckUpdate.AppSetting> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilList)
+      {
+        Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
+        continue;
+        if (!localIterator1.hasNext()) {
+          break;
+        }
+        aozs localaozs = (aozs)localIterator1.next();
+        if ((localaozs == null) || (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null)) {
+          continue;
+        }
+        long l = localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId;
+        if (l == 0L) {
+          continue;
+        }
+        Iterator localIterator2 = paramList.iterator();
+        if (!localIterator2.hasNext()) {
+          continue;
+        }
+        BusinessInfoCheckUpdate.AppSetting localAppSetting = (BusinessInfoCheckUpdate.AppSetting)localIterator2.next();
+        if ((localAppSetting == null) || (localAppSetting.appid.get() != l)) {
+          continue;
+        }
+        if (localAppSetting.setting.get())
+        {
+          b = 0;
+          localaozs.jdField_a_of_type_Byte = b;
+          if (QLog.isDevelopLevel()) {
+            QLog.i("Q.lebatab.mgr", 4, "updateAllLebaListFlag, name = " + localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName + " cCurFlag:" + localaozs.jdField_a_of_type_Byte);
+          }
+          localaozs.b = localAppSetting.modify_ts.get();
+        }
+      }
+      byte b = 1;
+    }
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    paramQQAppInterface = a();
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = paramQQAppInterface.iterator();
+      while (paramQQAppInterface.hasNext())
+      {
+        aozs localaozs = (aozs)paramQQAppInterface.next();
+        if ((localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == paramLong)) {
+          return localaozs.jdField_a_of_type_Byte == 0;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public List<aozs> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        aozs localaozs = (aozs)localIterator.next();
+        if ((localaozs != null) && (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId != 905L) && ((localaozs.jdField_a_of_type_Byte == 0) || (localaozs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 0L))) {
+          localArrayList.add(localaozs);
+        }
+      }
+    }
+    return localList1;
   }
 }
 

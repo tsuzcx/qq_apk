@@ -1,24 +1,6 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.emoticonview.EmoticonGuideBubbleView;
-import com.tencent.qphone.base.util.QLog;
-
-public class appu
-  implements Animation.AnimationListener
+public abstract interface appu
 {
-  public appu(EmoticonGuideBubbleView paramEmoticonGuideBubbleView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonGuideBubbleView", 2, "removeFastImage fadeoutanimation ended");
-    }
-    this.a.removeAllViews();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(int paramInt);
 }
 
 

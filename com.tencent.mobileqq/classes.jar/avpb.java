@@ -1,42 +1,37 @@
-import android.content.Context;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollViewPager;
-import java.lang.reflect.Field;
+import android.annotation.TargetApi;
+import android.content.ClipData;
+import android.content.ClipData.Item;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
-public class avpb
-  extends Scroller
+class avpb
+  implements View.OnLongClickListener
 {
-  public avpb(AvatarWallViewPager paramAvatarWallViewPager, Context paramContext, Interpolator paramInterpolator)
-  {
-    super(paramContext, paramInterpolator);
-  }
+  avpb(avop paramavop) {}
   
-  public void a()
+  @TargetApi(11)
+  public boolean onLongClick(View paramView)
   {
-    try
-    {
-      Field localField = AvatarWallViewPager.RollViewPager.class.getDeclaredField("mScroller");
-      localField.setAccessible(true);
-      localField.set(this.a.a, this);
-      localField.setAccessible(false);
-      return;
+    if (this.a.a.getChildCount() <= 1) {
+      return true;
     }
-    catch (Exception localException)
+    Object localObject = new ClipData.Item("");
+    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new avpi(this.a, paramView), paramView, 0);
+    localObject = avop.a(this.a, (PicInfo)paramView.getTag(), null);
+    ((RelativeLayout)localObject).setVisibility(4);
+    avop.a(this.a, (RelativeLayout)localObject);
+    int i = this.a.a.indexOfChild(paramView);
+    if (i != -1)
     {
-      localException.printStackTrace();
+      this.a.a.removeView(paramView);
+      this.a.a.addView(avop.a(this.a), i);
+      return true;
     }
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
+    paramView.setVisibility(4);
+    return true;
   }
 }
 

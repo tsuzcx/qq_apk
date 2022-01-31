@@ -1,22 +1,61 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
 
-class wgv
-  implements ValueAnimator.AnimatorUpdateListener
+public class wgv
+  implements whf
 {
-  wgv(wgt paramwgt, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
+  public wgv(QQStoryMainActivity paramQQStoryMainActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public View a()
   {
-    try
+    return QQStoryMainActivity.a(this.a);
+  }
+  
+  public ImageView a()
+  {
+    return this.a.rightViewImg;
+  }
+  
+  public TextView a()
+  {
+    return this.a.rightViewText;
+  }
+  
+  public void a()
+  {
+    this.a.onBackEvent();
+  }
+  
+  public void a(String paramString)
+  {
+    QQStoryMainActivity.a(this.a, paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.scrollTo((int)(300.0F - f * 300.0F), 0);
+      this.a.startTitleProgress();
       return;
     }
-    catch (Exception paramValueAnimator) {}
+    this.a.stopTitleProgress();
   }
+  
+  public void b() {}
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      QQStoryMainActivity.a(this.a, ulg.a, alud.a(2131711341));
+      return;
+    }
+    a(ulg.a);
+  }
+  
+  public void c() {}
 }
 
 

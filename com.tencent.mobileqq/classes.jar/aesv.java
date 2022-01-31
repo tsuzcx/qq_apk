@@ -1,167 +1,39 @@
-import android.content.Context;
-import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
-import com.tencent.mobileqq.dinifly.RenderMode;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.WeakHashMap;
 
-public class aesv
+class aesv
+  implements bhuk
 {
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  private Queue<aesz> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private WeakHashMap<String, Bitmap> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
+  aesv(aesk paramaesk, String paramString) {}
   
-  public aesv(BaseChatPie paramBaseChatPie)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  private boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView != null) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating()))
+    aesk.a(this.jdField_a_of_type_Aesk).dismiss();
+    switch (paramInt)
     {
-      bool1 = true;
-      return bool1;
     }
-    Object localObject1 = "";
-    if ((this.jdField_a_of_type_JavaUtilQueue != null) && (this.jdField_a_of_type_JavaUtilQueue.size() > 0)) {
-      localObject1 = ((aesz)this.jdField_a_of_type_JavaUtilQueue.peek()).jdField_a_of_type_JavaLangString;
-    }
-    for (int i = ((aesz)this.jdField_a_of_type_JavaUtilQueue.peek()).jdField_a_of_type_Int;; i = 0)
+    do
     {
-      bool1 = bool2;
-      if (((String)localObject1).isEmpty()) {
-        break;
-      }
-      Object localObject4 = new File(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getFilesDir().getAbsoluteFile() + File.separator + "animConfig/" + (String)localObject1 + "/data.json");
-      Object localObject3 = new File(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getFilesDir().getAbsoluteFile() + File.separator + "animConfig/" + (String)localObject1 + "/images");
-      if (((File)localObject4).exists()) {}
-      for (;;)
+      return;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
-        try
-        {
-          localObject1 = new FileInputStream((File)localObject4);
-          bool1 = bool2;
-          if (localObject1 == null) {
-            break;
-          }
-          bool1 = bool2;
-          if (!((File)localObject3).exists()) {
-            break;
-          }
-          localObject3 = ((File)localObject3).getAbsolutePath();
-          this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetDelegate(new aesx(this, (String)localObject3));
-          LottieComposition.Factory.fromInputStream(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getContext(), (InputStream)localObject1, new aesy(this));
-          localObject4 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c();
-          localObject1 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-          localObject3 = "";
-          if (localObject1 != null)
-          {
-            localObject1 = ((TroopManager)localObject1).b((String)localObject4);
-            if (localObject1 != null) {
-              localObject3 = "" + ((TroopInfo)localObject1).dwGroupClassExt;
-            }
-            azmj.b(null, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "0X800AE17", "0X800AE17", i, 0, (String)localObject4, (String)localObject3, "", "");
-            return true;
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-          return false;
-        }
-        Object localObject2 = null;
-        continue;
-        localObject2 = null;
+        aesk.a(this.jdField_a_of_type_Aesk, this.jdField_a_of_type_JavaLangString);
+        return;
       }
-    }
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView != null) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating())) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.endAnimation();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.removeAllAnimatorListener();
-    }
-    if ((this.jdField_a_of_type_JavaUtilQueue != null) && (!this.jdField_a_of_type_JavaUtilQueue.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilQueue.clear();
-    }
-    if ((this.jdField_a_of_type_JavaUtilWeakHashMap != null) && (!this.jdField_a_of_type_JavaUtilWeakHashMap.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilWeakHashMap.clear();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
+      if (aesk.a(this.jdField_a_of_type_Aesk))
+      {
+        aesk.b(this.jdField_a_of_type_Aesk);
+        return;
+      }
+      aesk.c(this.jdField_a_of_type_Aesk);
+      return;
+    } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+    if (aesk.a(this.jdField_a_of_type_Aesk))
     {
-      RelativeLayout localRelativeLayout = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-      if (localRelativeLayout != null) {
-        localRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-      }
+      aesk.b(this.jdField_a_of_type_Aesk);
+      return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = null;
-  }
-  
-  public boolean a(Object... paramVarArgs)
-  {
-    if (paramVarArgs == null) {
-      return false;
-    }
-    if (paramVarArgs.length > 1)
-    {
-      String str = (String)paramVarArgs[0];
-      int i = ((Integer)paramVarArgs[1]).intValue();
-      if ((!str.isEmpty()) && (i != 0)) {
-        this.jdField_a_of_type_JavaUtilQueue.add(new aesz(this, str, i, null));
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView != null) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating())) {
-        return true;
-      }
-    }
-    else
-    {
-      return false;
-    }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)View.inflate(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, 2131558554, null));
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) {
-        return false;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362238));
-      if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView == null) {
-        return false;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new aesw(this));
-      paramVarArgs = new RelativeLayout.LayoutParams(-1, -1);
-      paramVarArgs.addRule(2, 2131368333);
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, paramVarArgs);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setRenderMode(RenderMode.HARDWARE);
-    }
-    if (!a())
-    {
-      this.jdField_a_of_type_JavaUtilQueue.clear();
-      a();
-      return false;
-    }
-    return true;
+    aesk.c(this.jdField_a_of_type_Aesk);
   }
 }
 

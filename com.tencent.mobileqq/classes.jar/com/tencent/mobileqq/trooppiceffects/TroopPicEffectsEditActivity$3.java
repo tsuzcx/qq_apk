@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.trooppiceffects;
 
-import awfl;
-import awga;
-import batw;
-import baub;
-import bauf;
-import bcsu;
+import awju;
+import awkj;
+import bayf;
+import bayk;
+import bayo;
+import bcxd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.pic.CompressInfo;
@@ -13,33 +13,33 @@ import com.tencent.mobileqq.pic.CompressInfo;
 class TroopPicEffectsEditActivity$3
   implements Runnable
 {
-  TroopPicEffectsEditActivity$3(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity, awfl paramawfl) {}
+  TroopPicEffectsEditActivity$3(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity, awju paramawju) {}
   
   public void run()
   {
     this.this$0.app.getHwEngine().preConnect();
     Object localObject = new CompressInfo(this.a.g, 0);
     ((CompressInfo)localObject).f = 0;
-    awga.a((CompressInfo)localObject);
-    baub localbaub = new baub();
-    localbaub.jdField_b_of_type_JavaLangString = this.this$0.app.getAccount();
-    localbaub.c = this.this$0.jdField_b_of_type_JavaLangString;
-    localbaub.d = this.this$0.app.getCurrentAccountUin();
-    localbaub.jdField_a_of_type_Int = 1;
-    localbaub.jdField_b_of_type_Int = 1;
-    localbaub.jdField_a_of_type_Boolean = true;
-    localbaub.e = this.a.jdField_a_of_type_Int;
-    localbaub.jdField_i_of_type_JavaLangString = ((CompressInfo)localObject).e;
-    localbaub.f = this.a.f;
-    localObject = new bauf();
-    localbaub.jdField_a_of_type_JavaLangObject = localObject;
-    ((bauf)localObject).jdField_a_of_type_Boolean = false;
-    localbaub.jdField_a_of_type_Awfy = new bcsu(this.this$0);
-    localbaub.jdField_i_of_type_Boolean = this.a.c;
-    localbaub.j = this.a.e;
-    localbaub.jdField_b_of_type_Int = 55;
-    localbaub.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.this$0.app.a().a(localbaub);
+    awkj.a((CompressInfo)localObject);
+    bayk localbayk = new bayk();
+    localbayk.jdField_b_of_type_JavaLangString = this.this$0.app.getAccount();
+    localbayk.c = this.this$0.jdField_b_of_type_JavaLangString;
+    localbayk.d = this.this$0.app.getCurrentAccountUin();
+    localbayk.jdField_a_of_type_Int = 1;
+    localbayk.jdField_b_of_type_Int = 1;
+    localbayk.jdField_a_of_type_Boolean = true;
+    localbayk.e = this.a.jdField_a_of_type_Int;
+    localbayk.jdField_i_of_type_JavaLangString = ((CompressInfo)localObject).e;
+    localbayk.f = this.a.f;
+    localObject = new bayo();
+    localbayk.jdField_a_of_type_JavaLangObject = localObject;
+    ((bayo)localObject).jdField_a_of_type_Boolean = false;
+    localbayk.jdField_a_of_type_Awkh = new bcxd(this.this$0);
+    localbayk.jdField_i_of_type_Boolean = this.a.c;
+    localbayk.j = this.a.e;
+    localbayk.jdField_b_of_type_Int = 55;
+    localbayk.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.this$0.app.a().a(localbayk);
   }
 }
 

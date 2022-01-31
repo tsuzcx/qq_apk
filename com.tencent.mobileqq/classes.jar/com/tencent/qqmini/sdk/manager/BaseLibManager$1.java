@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.manager;
 
 import android.content.SharedPreferences;
-import bgrl;
-import bgrm;
-import bgrp;
+import bgvs;
+import bgvt;
+import bgvw;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -12,7 +12,7 @@ import com.tencent.qqmini.sdk.utils.StorageUtil;
 public class BaseLibManager$1
   implements Runnable
 {
-  public BaseLibManager$1(bgrl parambgrl, bgrp parambgrp) {}
+  public BaseLibManager$1(bgvs parambgvs, bgvw parambgvw) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class BaseLibManager$1
     String str2 = StorageUtil.getPreference().getString("version", "1.14.0.00225");
     QMLog.i("miniapp-process_BaseLibManager", "updateBaseLib start. baseLibVersion=" + str2);
     QMLog.i("miniapp-process_BaseLibManager", "forceUpdateBaseLib current requestVersion is:" + str2);
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib(str2, true, true, new bgrm(this, str2, str1));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib(str2, true, true, new bgvt(this, str2, str1));
   }
 }
 

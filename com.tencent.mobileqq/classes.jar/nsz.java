@@ -17,7 +17,7 @@ import tencent.im.oidb.cmd0x6a6.oidb_0x6a6.RspBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class nsz
-  extends alko
+  extends alpd
 {
   static final String a = "Q.pubaccount.video." + nta.class.getSimpleName();
   
@@ -185,7 +185,7 @@ public class nsz
     ThreadManager.excute(new VideoPlayCountHandler.1(this, paramString1, paramString2), 16, null, true);
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return nta.class;
   }

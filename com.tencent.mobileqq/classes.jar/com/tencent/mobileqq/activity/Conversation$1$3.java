@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import acms;
-import ajbm;
-import awdr;
+import acrh;
+import ajgb;
+import awia;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class Conversation$1$3
   implements Runnable
 {
-  public Conversation$1$3(acms paramacms) {}
+  public Conversation$1$3(acrh paramacrh) {}
   
   public void run()
   {
@@ -16,17 +16,17 @@ public class Conversation$1$3
     int i;
     boolean bool4;
     boolean bool1;
-    if (this.a.a.jdField_a_of_type_Ajbm.a(17) == 2)
+    if (this.a.a.jdField_a_of_type_Ajgb.a(17) == 2)
     {
       i = 1;
-      bool4 = awdr.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      bool4 = awia.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       if (!bool4) {
         break label122;
       }
       if (i != 0) {
         break label165;
       }
-      awdr.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      awia.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       bool1 = false;
     }
     for (;;)
@@ -49,7 +49,7 @@ public class Conversation$1$3
         i = 0;
         break;
         label122:
-        bool1 = awdr.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        bool1 = awia.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
         break label69;
         bool2 = false;
         break label80;

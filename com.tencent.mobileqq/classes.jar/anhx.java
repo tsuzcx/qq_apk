@@ -1,18 +1,18 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
-class anhx
-  implements ArkAppCacheMgr.OnGetAppIcon
+public abstract interface anhx
 {
-  anhx(anhw paramanhw, anhy paramanhy) {}
+  public abstract anga a();
   
-  public void callback(String paramString, Bitmap paramBitmap)
-  {
-    if (paramBitmap != null) {
-      this.jdField_a_of_type_Anhy.a.setImageBitmap(paramBitmap);
-    }
-  }
+  public abstract ange a();
+  
+  public abstract awby a();
+  
+  public abstract ARCommonConfigInfo a();
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

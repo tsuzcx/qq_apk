@@ -1,73 +1,92 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.DrawerPushItem;
+import com.tencent.mobileqq.apollo.task.ApolloAioBubblePush.1;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class algl
-  implements akmm, akmo
 {
-  public WeakReference<BaseChatPie> a;
-  private WeakReference<akmm> b;
+  private DrawerPushItem jdField_a_of_type_ComTencentMobileqqDrawerPushItem;
+  private boolean jdField_a_of_type_Boolean;
   
-  public algl(BaseChatPie paramBaseChatPie)
+  public DrawerPushItem a()
   {
-    if (((paramBaseChatPie instanceof agld)) || ((paramBaseChatPie instanceof TroopChatPie)) || ((paramBaseChatPie instanceof agkt)) || ((paramBaseChatPie instanceof agmy))) {
-      this.a = new WeakReference(paramBaseChatPie);
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem;
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloBackgroundViewListener", 2, "onCompleteRender");
-    }
-    if ((this.b != null) && (this.b.get() != null)) {
-      ((akmm)this.b.get()).a(paramInt1, paramInt2, paramString);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem = null;
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloBackgroundViewListener", 2, "onStartRender");
-    }
-    if ((this.b != null) && (this.b.get() != null)) {
-      ((akmm)this.b.get()).a(paramInt, paramString);
-    }
+    ThreadManager.post(new ApolloAioBubblePush.1(this, paramQQAppInterface), 8, null, true);
   }
   
-  public void a(akmm paramakmm)
+  public boolean a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    this.b = new WeakReference(paramakmm);
-  }
-  
-  public void onNotifyLongTouch(String paramString) {}
-  
-  public void onNotifyStatusChanged(int paramInt, String paramString) {}
-  
-  public void onSurfaceReady(int paramInt1, int paramInt2)
-  {
-    Object localObject2 = (BaseChatPie)this.a.get();
-    if ((localObject2 == null) || (((BaseChatPie)localObject2).jdField_a_of_type_Aklj == null)) {}
-    Object localObject1;
+    if ((paramQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloAioBubblePush", 2, "DO NOT show bubble, maybe item is null, item:" + this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
+      }
+    }
+    alar localalar;
     do
     {
       do
       {
-        return;
-        localObject1 = ((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        localObject2 = ((BaseChatPie)localObject2).jdField_a_of_type_Aklj.a();
-      } while ((localObject1 == null) || (localObject2 == null));
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloBackgroundViewListener", 2, "surfaceView.getWidth():" + ((ApolloTextureView)localObject2).getWidth());
+        return false;
+        if (!this.jdField_a_of_type_Boolean) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("ApolloAioBubblePush", 2, "DO NOT show bubble cause it has been showed.");
+      return false;
+      if ((this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_type == 4) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_id)))
+      {
+        paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "apollo_game_reddot_sp", 0).edit().putBoolean(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_id, true).commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloAioBubblePush", 2, "[onShowBubble] parseGameReddot mPushItem.msg_id has show:" + this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_id);
+        }
       }
-      ((ApolloTextureView)localObject2).getRenderImpl().a(1, null, 0, 1.0F, 250.0F, 0.0F);
-      ((ApolloTextureView)localObject2).getRenderImpl().a(1000L);
-      localObject1 = ((akwq)((AppInterface)localObject1).getManager(249)).a();
-    } while (localObject1 == null);
-    ((akwh)localObject1).b();
+      QLog.i("ApolloAioBubblePush", 1, "Show bubble, id:" + this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_id);
+      localalar = albi.a(paramQQAppInterface);
+    } while (localalar == null);
+    localalar.a("", this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.content);
+    this.jdField_a_of_type_Boolean = true;
+    b(paramQQAppInterface);
+    if ((this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_type == 10) || (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_type == 7)) {
+      aknx.a(101, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.tianshuAdId), this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.tianshuTraceInfo);
+    }
+    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_msg_display", ApolloUtil.b(paramInt), 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_id });
+    return true;
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem == null) || (paramQQAppInterface == null)) {}
+    do
+    {
+      return;
+      paramQQAppInterface = (aknx)paramQQAppInterface.getManager(153);
+    } while (!this.jdField_a_of_type_Boolean);
+    DrawerPushItem localDrawerPushItem = this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem;
+    localDrawerPushItem.show_sum += 1;
+    if (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_sum == this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_counts)
+    {
+      QLog.i("ApolloAioBubblePush", 1, "remove item from db, id:" + this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_id);
+      paramQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
+      return;
+    }
+    paramQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
+    QLog.i("ApolloAioBubblePush", 1, "update item from db" + this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_id);
   }
 }
 

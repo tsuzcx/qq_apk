@@ -1,30 +1,30 @@
-import com.tencent.mobileqq.pb.PBStringField;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp;
+import mqq.os.MqqHandler;
 
 class aqwo
-  implements bkgc<WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp>
+  extends MqqHandler
 {
-  aqwo(aqwl paramaqwl, aqwz paramaqwz) {}
-  
-  public void a(int paramInt, String paramString, WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp paramWeiyunShareAddFromMobileQQMsgRsp)
+  aqwo(aqwn paramaqwn, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink onFailed: errorCode[" + paramInt + "], errorMsg[" + paramString + "]");
-    }
-    if (this.jdField_a_of_type_Aqwz != null) {
-      this.jdField_a_of_type_Aqwz.a(paramInt, paramString);
-    }
+    super(paramLooper);
   }
   
-  public void a(WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp paramWeiyunShareAddFromMobileQQMsgRsp)
+  public void handleMessage(Message paramMessage)
   {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
     if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink succeed");
+      QLog.i("FileManagerNotifyCenter<FileAssistant>", 1, "recv Netchang event!");
     }
-    if (this.jdField_a_of_type_Aqwz != null) {
-      this.jdField_a_of_type_Aqwz.a(paramWeiyunShareAddFromMobileQQMsgRsp.raw_url.get());
-    }
+    this.a.a.a().a(true);
+    this.a.a.a().b(-1);
+    aqxi.a(-1);
   }
 }
 

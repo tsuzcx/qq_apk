@@ -1,7 +1,22 @@
+import android.support.v4.app.Fragment;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+
 public class aukv
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public static final String a = alpo.a(2131707393);
-  public static final String b = alpo.a(2131707390);
+  public aukv(MultiAIOItemFragment paramMultiAIOItemFragment) {}
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    Fragment localFragment = this.a.getParentFragment();
+    if ((localFragment != null) && ((localFragment instanceof MultiAIOFragment))) {
+      ((MultiAIOFragment)localFragment).a(this.a.getView(), paramMotionEvent);
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
+  }
 }
 
 

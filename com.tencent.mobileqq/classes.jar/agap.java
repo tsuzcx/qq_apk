@@ -1,13 +1,17 @@
-import android.view.View;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class agap
-  extends aelt
+class agap
+  implements DialogInterface.OnClickListener
 {
-  public TextView a;
-  public TextView b;
-  public View c;
-  public View d;
+  agap(agai paramagai, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Agai.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    azdd.jdField_a_of_type_Boolean = true;
+  }
 }
 
 

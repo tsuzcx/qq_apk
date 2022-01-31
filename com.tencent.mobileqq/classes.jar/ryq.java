@@ -56,9 +56,9 @@ public class ryq
     QLog.i(FastWebActivity.a(this.a), 1, " red packet task do not get Tips!");
   }
   
-  public void ax_()
+  public void au_()
   {
-    super.ax_();
+    super.au_();
     if ((FastWebActivity.f(this.a)) || (FastWebActivity.a(this.a) == null)) {
       return;
     }

@@ -1,42 +1,36 @@
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import QzoneCombine.ClientOnlineNotfiyReq;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class bjcq
+  extends QzoneExternalRequest
 {
-  public final int a;
-  public final long a;
-  public final int b;
-  public final long b;
-  public final long c;
-  public final long d;
-  public final long e;
-  public final long f;
+  ClientOnlineNotfiyReq a;
   
-  private bjcq(ByteBuffer paramByteBuffer, int paramInt)
+  public bjcq(long paramLong, byte[] paramArrayOfByte)
   {
-    switch (paramInt)
-    {
-    default: 
-      throw new IOException("Unexpected elf class: " + paramInt);
-    case 1: 
-      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_a_of_type_Long = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Long = paramByteBuffer.getInt();
-      this.c = paramByteBuffer.getInt();
-      this.d = paramByteBuffer.getInt();
-      this.e = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
-      this.f = paramByteBuffer.getInt();
-      return;
-    }
-    this.jdField_a_of_type_Int = paramByteBuffer.getInt();
-    this.jdField_b_of_type_Int = paramByteBuffer.getInt();
-    this.jdField_a_of_type_Long = paramByteBuffer.getLong();
-    this.jdField_b_of_type_Long = paramByteBuffer.getLong();
-    this.c = paramByteBuffer.getLong();
-    this.d = paramByteBuffer.getLong();
-    this.e = paramByteBuffer.getLong();
-    this.f = paramByteBuffer.getLong();
+    this.needCompress = false;
+    this.a = new ClientOnlineNotfiyReq(paramArrayOfByte, paramLong);
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService." + uniKey();
+  }
+  
+  public byte[] getEncodedUniParameter()
+  {
+    return bilr.a(this.a);
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "MqqOnlineNtf";
   }
 }
 

@@ -1,7 +1,6 @@
-public abstract class xrw
-  implements xrv
+public abstract interface xrw
 {
-  public void a() {}
+  public abstract void a(xrs paramxrs, xsa paramxsa);
 }
 
 

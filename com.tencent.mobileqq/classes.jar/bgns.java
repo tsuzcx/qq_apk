@@ -1,18 +1,46 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqmini.sdk.core.widget.TabBar;
-import com.tencent.qqmini.sdk.launcher.model.TabBarInfo.ButtonInfo;
+import android.view.ViewGroup;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.lang.ref.WeakReference;
 
 public class bgns
-  implements View.OnClickListener
 {
-  public bgns(TabBar paramTabBar, int paramInt, TabBarInfo.ButtonInfo paramButtonInfo) {}
+  private static volatile bgns jdField_a_of_type_Bgns;
+  private WeakReference<ViewGroup> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(View paramView)
+  public static bgns a()
   {
-    if (TabBar.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetTabBar) != null) {
-      TabBar.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetTabBar).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo$ButtonInfo.pagePath, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo$ButtonInfo.text);
+    if (jdField_a_of_type_Bgns == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bgns == null) {
+        jdField_a_of_type_Bgns = new bgns();
+      }
+      return jdField_a_of_type_Bgns;
     }
+    finally {}
+  }
+  
+  public void a(View paramView)
+  {
+    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localViewGroup == null)
+    {
+      QMLog.e("GameVideoPlayerManager", "removePlayerView error: parent == null");
+      return;
+    }
+    localViewGroup.removeView(paramView);
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
+    for (ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_JavaLangRefWeakReference.get(); localViewGroup == null; localViewGroup = null)
+    {
+      QMLog.e("GameVideoPlayerManager", "addPlayerView error: parent == null");
+      return;
+    }
+    localViewGroup.addView(paramViewGroup);
   }
 }
 

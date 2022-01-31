@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.service.message;
 
-import ayvr;
+import azaa;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -11,11 +11,11 @@ import msf.msgcomm.msg_comm.MsgHead;
 public class MessagePBElemDecoder$2
   implements Runnable
 {
-  public MessagePBElemDecoder$2(ayvr paramayvr, msg_comm.Msg paramMsg) {}
+  public MessagePBElemDecoder$2(azaa paramazaa, msg_comm.Msg paramMsg) {}
   
   public void run()
   {
-    ((PublicAccountHandler)ayvr.a(this.this$0).app.a(11)).a(String.valueOf(this.a.msg_head.from_uin.get()), 0L, 1);
+    ((PublicAccountHandler)azaa.a(this.this$0).app.a(11)).a(String.valueOf(this.a.msg_head.from_uin.get()), 0L, 1);
   }
 }
 

@@ -1,24 +1,24 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aalb;
-import aalf;
-import aanp;
+import aapq;
+import aapu;
+import aase;
 import android.view.View;
 
 public class GdtMvAnimation585V$1
   implements Runnable
 {
-  public GdtMvAnimation585V$1(aalf paramaalf) {}
+  public GdtMvAnimation585V$1(aapu paramaapu) {}
   
   public void run()
   {
     if (this.this$0.a != null)
     {
-      aalb localaalb = (aalb)this.this$0.a;
-      if (localaalb.a != null)
+      aapq localaapq = (aapq)this.this$0.a;
+      if (localaapq.a != null)
       {
-        aanp.b("GdtMotiveVideoAd", "585V maskRunnable run ");
-        localaalb.a.setVisibility(0);
+        aase.b("GdtMotiveVideoAd", "585V maskRunnable run ");
+        localaapq.a.setVisibility(0);
       }
     }
   }

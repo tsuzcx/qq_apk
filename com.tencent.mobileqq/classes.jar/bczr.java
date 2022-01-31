@@ -1,37 +1,32 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class bczr
+final class bczr
+  implements DownloadParams.DecodeHandler
 {
-  public static String a(Context paramContext, String paramString)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (paramContext != null) {
-      return paramContext.getSharedPreferences("c_profile_sharepreference", 0).getString(paramString, "");
+    if (QLog.isColorLevel()) {
+      QLog.d("URLDrawableDecodeHandler", 2, "AVATAR_WALL_RECT__DECODER");
     }
-    return "";
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    if (paramContext != null)
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    Object localObject;
+    do
     {
-      paramContext = paramContext.getSharedPreferences("c_profile_sharepreference", 0).edit();
-      paramContext.remove(paramString);
-      paramContext.commit();
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    b(paramContext, paramString1, paramString2);
-  }
-  
-  private static void b(Context paramContext, String paramString1, String paramString2)
-  {
-    paramContext = paramContext.getSharedPreferences("c_profile_sharepreference", 0).edit();
-    paramContext.putString(paramString1, paramString2);
-    paramContext.commit();
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    return bdhj.b(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

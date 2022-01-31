@@ -1,24 +1,20 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class ajkv
-  implements View.OnClickListener
+final class ajkv
+  implements Animation.AnimationListener
 {
-  public ajkv(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
+  ajkv(View paramView, Animation paramAnimation) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.l();
-    if (((!QLog.isColorLevel()) || (!bdcs.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()))) || (ajli.a == 1))
-    {
-      ajlj.b("", "0X8005F5B", "0");
-      return;
-    }
-    ajlj.b("", "0X8005F5B", "1");
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

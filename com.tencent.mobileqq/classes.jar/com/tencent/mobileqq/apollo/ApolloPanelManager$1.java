@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.apollo;
 
-import akkb;
-import akwb;
-import akwq;
-import akwt;
-import alhk;
+import akoq;
+import alaq;
+import albf;
+import albi;
+import allz;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ApolloPanelManager$1
   implements Runnable
 {
-  public ApolloPanelManager$1(akkb paramakkb, alhk paramalhk) {}
+  public ApolloPanelManager$1(akoq paramakoq, allz paramallz) {}
   
   public void run()
   {
-    this.this$0.a(this.this$0.a.get(), true, akkb.a(this.this$0));
-    if ((this.this$0.a.get() == 0) && (!akkb.a(this.this$0)) && (this.this$0.a() != null))
+    this.this$0.a(this.this$0.a.get(), true, akoq.a(this.this$0));
+    if ((this.this$0.a.get() == 0) && (!akoq.a(this.this$0)) && (this.this$0.a() != null))
     {
-      akwb localakwb = akwt.a(this.this$0.a()).a();
-      if (localakwb != null) {
-        localakwb.a(this.this$0.b);
+      alaq localalaq = albi.a(this.this$0.a()).a();
+      if (localalaq != null) {
+        localalaq.a(this.this$0.b);
       }
     }
-    if ((akkb.a(this.this$0)) || (this.this$0.a.get() > 0)) {
-      akkb.a(this.this$0, this.a);
+    if ((akoq.a(this.this$0)) || (this.this$0.a.get() > 0)) {
+      akoq.a(this.this$0, this.a);
     }
   }
 }

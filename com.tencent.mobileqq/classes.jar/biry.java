@@ -1,10 +1,37 @@
 import android.os.Bundle;
-import android.os.IInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
-public abstract interface biry
-  extends IInterface
+public class biry
+  extends RemoteCommand
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  private QQAppInterface a;
+  
+  public biry(QQAppInterface paramQQAppInterface)
+  {
+    super("common.get_qq_app_interface_data");
+    this.a = paramQQAppInterface;
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    int i = paramBundle.getInt("param_data_type", 0);
+    paramOnInvokeFinishLinstener = new Bundle();
+    switch (i)
+    {
+    default: 
+      return paramOnInvokeFinishLinstener;
+    case 1: 
+      paramBundle = paramBundle.getString("param_uin");
+      paramOnInvokeFinishLinstener.putString("result_key", bdgc.h(this.a, paramBundle));
+      return paramOnInvokeFinishLinstener;
+    }
+    String str = paramBundle.getString("param_uin");
+    boolean bool = paramBundle.getBoolean("param_fetch_if_not_exist", false);
+    paramOnInvokeFinishLinstener.putString("result_key", bdgc.b(this.a, str, bool));
+    return paramOnInvokeFinishLinstener;
+  }
 }
 
 

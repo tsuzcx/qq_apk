@@ -1,23 +1,4 @@
-import com.tencent.ark.ark.VariantWrapper;
-
-class aneg
-  implements anfo
-{
-  aneg(andz paramandz, long paramLong) {}
-  
-  public void a(long paramLong)
-  {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Andz.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
-  }
-  
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    andw.a(this.jdField_a_of_type_Andz.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
-  }
-}
+public abstract interface aneg {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

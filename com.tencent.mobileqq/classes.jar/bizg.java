@@ -1,155 +1,85 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.NetworkState;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class bizg
+  extends bime
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<String> a;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap;
-  private boolean jdField_a_of_type_Boolean;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public String d = "";
-  public String e = "";
-  public String f = "0";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "2";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = "";
+  public final bimd a;
+  private String d;
   
-  public bizg()
+  public bizg(bize parambize, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "0";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = NetworkState.getNetworkType();
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    this.jdField_d_of_type_JavaLangString = "noreason";
+    this.jdField_a_of_type_JavaLangString = "com.tencent.mobileqq:tool";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaLangString = "qqreaderplugin.apk";
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_c_of_type_JavaLangString = "qqreaderplugin.apk";
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bimd = new bimd(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_Bimd.a = new asta("qqreader_leba_preload", "com.tencent.mobileqq:tool", "qqreaderplugin.apk");
   }
   
-  public bizg(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, String paramString6, ArrayList<String> paramArrayList)
+  protected void a()
   {
-    this();
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString3;
-    this.jdField_c_of_type_JavaLangString = paramString4;
-    this.d = paramString5;
-    this.jdField_b_of_type_Int = paramInt;
-    this.e = paramString6;
-    this.g = paramString2;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    bize.a(this.jdField_a_of_type_Bize, this.jdField_a_of_type_Bimd, this.jdField_d_of_type_JavaLangString, this.jdField_d_of_type_Int);
   }
   
-  public bizg(long paramLong, String paramString, Map<String, String> paramMap)
+  public void a(bimk parambimk)
   {
-    this();
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = true;
-    if (paramMap != null)
+    if (parambimk == null) {
+      return;
+    }
+    this.jdField_d_of_type_JavaLangString = parambimk.jdField_a_of_type_JavaLangString;
+  }
+  
+  protected boolean a(bimk parambimk)
+  {
+    boolean bool = bize.a(this.jdField_a_of_type_Bize);
+    if (parambimk != null)
     {
-      this.jdField_a_of_type_JavaUtilMap = new HashMap();
-      this.jdField_a_of_type_JavaUtilMap.putAll(paramMap);
+      parambimk.jdField_a_of_type_Int = 2;
+      if (!bool) {
+        break label66;
+      }
     }
-  }
-  
-  public bizg(String paramString)
-  {
-    this();
-    this.f = paramString;
-    this.jdField_c_of_type_JavaLangString = "12";
-  }
-  
-  public JSONObject a()
-  {
-    if (!TextUtils.isEmpty(this.h)) {}
-    Object localObject;
-    for (JSONObject localJSONObject = new JSONObject(this.h);; localJSONObject = new JSONObject())
+    label66:
+    for (String str = "preload:ok:dpc";; str = "preload:fail:dpc")
     {
-      localJSONObject.put("touin", this.jdField_a_of_type_Long);
-      localJSONObject.put("network_type", String.valueOf(this.jdField_a_of_type_Int));
-      localJSONObject.put("tabletype", this.jdField_b_of_type_Int);
-      if (!this.jdField_a_of_type_Boolean) {
-        break;
+      parambimk.jdField_a_of_type_JavaLangString = str;
+      bize.a(this.jdField_a_of_type_Bize);
+      if (this.jdField_a_of_type_Bize.jdField_a_of_type_Bimh.jdField_a_of_type_Int != -1) {
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_Bize.jdField_a_of_type_Bimh.jdField_b_of_type_Int;
       }
-      if ((this.jdField_a_of_type_JavaUtilMap == null) || (this.jdField_a_of_type_JavaUtilMap.isEmpty())) {
-        break label366;
-      }
-      localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
-      }
+      return bool;
     }
-    if (!localJSONObject.has("refer")) {
-      localJSONObject.put("refer", this.jdField_b_of_type_JavaLangString);
-    }
-    localJSONObject.put("actiontype", this.jdField_c_of_type_JavaLangString);
-    localJSONObject.put("subactiontype", this.d);
-    localJSONObject.put("tabletype", this.jdField_b_of_type_Int);
-    localJSONObject.put("domain_type", this.j);
-    localJSONObject.put("reserves", this.e);
-    localJSONObject.put("source_type", this.l);
-    localJSONObject.put("source_from", this.m);
-    localJSONObject.put("source_to", this.n);
-    localJSONObject.put("mergenum", this.jdField_c_of_type_Int);
-    localJSONObject.put("reserves10", this.i);
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+  }
+  
+  protected boolean b(bimk parambimk)
+  {
+    boolean bool1;
+    if (!this.jdField_a_of_type_Bize.c)
     {
-      int i2 = this.jdField_a_of_type_JavaUtilArrayList.size();
-      int i1 = 0;
-      while (i1 < i2)
-      {
-        localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          localJSONObject.put("reserves" + (i1 + 2), localObject);
-        }
-        i1 += 1;
+      if (parambimk != null) {
+        parambimk.jdField_a_of_type_JavaLangString = "preload:fail:serverswitch";
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("QRProcessManager", 2, "pluginType:" + this.jdField_b_of_type_Int + "  preload:fail:serverswitch");
+      }
+      bool1 = false;
     }
-    label366:
-    localJSONObject.put("read_source", this.f);
-    localJSONObject.put("time", String.valueOf(this.jdField_b_of_type_Long));
-    localJSONObject.put("info", this.g);
-    localJSONObject.put("pushstatkey", this.k);
-    return localJSONObject;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void b(String paramString)
-  {
-    this.d = paramString;
-  }
-  
-  public void c(String paramString)
-  {
-    this.e = paramString;
+    boolean bool2;
+    do
+    {
+      return bool1;
+      String str = this.jdField_a_of_type_Bize.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      bool2 = a(this.jdField_a_of_type_Bize.jdField_a_of_type_Bimg, String.valueOf(769), this.jdField_a_of_type_Bize.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "com.read.android", this.jdField_a_of_type_Bize.a(str), this.jdField_a_of_type_Bize.a(str), this.jdField_a_of_type_Bize.a(str), parambimk);
+      this.jdField_d_of_type_JavaLangString = parambimk.jdField_a_of_type_JavaLangString;
+      bool1 = bool2;
+    } while (this.jdField_a_of_type_Bize.jdField_a_of_type_Bimg == null);
+    this.jdField_d_of_type_Int = this.jdField_a_of_type_Bize.jdField_a_of_type_Bimg.jdField_a_of_type_Int;
+    return bool2;
   }
 }
 

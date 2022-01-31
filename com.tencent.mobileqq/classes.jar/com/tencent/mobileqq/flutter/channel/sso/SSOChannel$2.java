@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flutter.channel.sso;
 
-import arsu;
+import arxd;
 import com.tencent.mobileqq.flutter.channel.model.ResponsePacket;
 import com.tencent.qphone.base.util.QLog;
 import io.flutter.plugin.common.MethodChannel.Result;
@@ -9,7 +9,7 @@ import java.util.Map;
 public class SSOChannel$2
   implements Runnable
 {
-  public SSOChannel$2(arsu paramarsu, ResponsePacket paramResponsePacket, String paramString, MethodChannel.Result paramResult) {}
+  public SSOChannel$2(arxd paramarxd, ResponsePacket paramResponsePacket, String paramString, MethodChannel.Result paramResult) {}
   
   public void run()
   {

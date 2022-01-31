@@ -1,46 +1,86 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.ShareGroupEntry;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import java.util.HashMap;
 import java.util.List;
 
-class wfw
-  extends uhw<wfn, wev>
+public class wfw
+  implements uvi
 {
-  wfw(wfn paramwfn)
+  protected HashMap<String, String> a;
+  private ulk<String, ShareGroupItem> a;
+  
+  public wfw()
   {
-    super(paramwfn);
+    this.jdField_a_of_type_Ulk = new ulk(300);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public void a(@NonNull wfn paramwfn, @NonNull wev paramwev)
+  private QQStoryContext a()
   {
-    if ((!paramwev.jdField_a_of_type_JavaLangString.equals(wfn.a(paramwfn))) || (paramwev.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (wfn.a(paramwfn) == null))
-    {
-      wsv.b(this.TAG, "ignore this comment list event. %s.", paramwev.toString());
-      return;
-    }
-    if (!wfn.a(paramwfn).c())
-    {
-      wsv.e(this.TAG, "this feed does not support video list. ignore this comment list event. %s.", new Object[] { paramwev.toString() });
-      return;
-    }
-    wsv.a(this.TAG, "receive comment list event. %s.", paramwev.toString());
-    wfn.a(paramwfn).a(paramwev.jdField_a_of_type_JavaUtilList, paramwev.c);
-    wfn.a(paramwfn).a().updateVideoInfo(paramwev.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
-    if (wfn.a(paramwfn).a().size() < 1)
-    {
-      wfn.a(paramwfn).b();
-      return;
-    }
-    paramwfn.a();
+    return QQStoryContext.a();
   }
   
-  public Class acceptEventClass()
+  public static List<? extends awge> a(awgf paramawgf, Class<? extends awge> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
   {
-    return wev.class;
+    return paramawgf.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
   }
   
-  public void b(@NonNull wfn paramwfn, @NonNull wev paramwev) {}
+  public static boolean a(ShareGroupItem paramShareGroupItem)
+  {
+    if (paramShareGroupItem == null) {
+      return false;
+    }
+    long l = paramShareGroupItem.groupUin;
+    return auam.a().a(QQStoryContext.a(), String.valueOf(l));
+  }
+  
+  public ShareGroupItem a(ShareGroupItem paramShareGroupItem)
+  {
+    paramShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_Ulk.a(paramShareGroupItem.shareGroupId, paramShareGroupItem);
+    ShareGroupEntry localShareGroupEntry = paramShareGroupItem.convertTo();
+    a().a().createEntityManager().b(localShareGroupEntry);
+    return paramShareGroupItem;
+  }
+  
+  public ShareGroupItem a(String paramString)
+  {
+    xqq.a(paramString);
+    Object localObject = (ShareGroupItem)this.jdField_a_of_type_Ulk.a(paramString);
+    if (localObject != null)
+    {
+      wxe.d("Q.qqstory.discover.ShareGroupManager", "read sg cc:%s, unionId:" + ((ShareGroupItem)localObject).headerUnionIdList, new Object[] { ((ShareGroupItem)localObject).shareGroupId });
+      return localObject;
+    }
+    localObject = a(a().a().createEntityManager(), ShareGroupEntry.class, ShareGroupEntry.class.getSimpleName(), ShareGroupEntry.getShareGroupSelectionNoArg(), new String[] { paramString });
+    if ((localObject == null) || (((List)localObject).size() == 0))
+    {
+      wxe.d("Q.qqstory.discover.ShareGroupManager", "find not find share group:%s", new Object[] { paramString });
+      return null;
+    }
+    localObject = new ShareGroupItem((ShareGroupEntry)((List)localObject).get(0));
+    return (ShareGroupItem)this.jdField_a_of_type_Ulk.a(paramString, (ulj)localObject);
+  }
+  
+  public void a() {}
+  
+  public ShareGroupItem b(String paramString)
+  {
+    ShareGroupItem localShareGroupItem2 = a(paramString);
+    ShareGroupItem localShareGroupItem1 = localShareGroupItem2;
+    if (localShareGroupItem2 == null)
+    {
+      localShareGroupItem1 = new ShareGroupItem();
+      localShareGroupItem1.shareGroupId = paramString;
+      localShareGroupItem1.name = paramString;
+      localShareGroupItem1.ownerUnionId = QQStoryContext.a().b();
+      localShareGroupItem1.assertItem();
+      wxe.d("Q.qqstory.discover.ShareGroupManager", "create one fake groupItem:%s", new Object[] { localShareGroupItem1 });
+    }
+    return localShareGroupItem1;
+  }
+  
+  public void b() {}
 }
 
 

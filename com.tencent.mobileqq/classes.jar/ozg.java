@@ -5,7 +5,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
 import com.tencent.mobileqq.widget.AutoFitTextView;
 
 public class ozg
-  implements beiy
+  implements benh
 {
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;

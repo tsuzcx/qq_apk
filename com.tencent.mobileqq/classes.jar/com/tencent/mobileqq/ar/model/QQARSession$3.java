@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.model;
 
-import anbo;
+import anfx;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQARSession$3
   implements Runnable
 {
-  public QQARSession$3(anbo paramanbo) {}
+  public QQARSession$3(anfx paramanfx) {}
   
   public void run()
   {

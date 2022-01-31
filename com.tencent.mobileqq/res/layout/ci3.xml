@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="horizontal" android:id="@id/mmb" android:background="@color/ajr" android:layout_width="45.0dip" android:layout_height="45.0dip"
+<LinearLayout android:orientation="horizontal" android:paddingLeft="12.0dip" android:paddingTop="15.0dip" android:paddingRight="12.0dip" android:paddingBottom="11.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_gravity="center" android:id="@id/mm9" android:background="@drawable/e5r" android:visibility="invisible" android:layout_width="45.0dip" android:layout_height="45.0dip">
-        <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/mmc" android:layout_width="19.0dip" android:layout_height="19.0dip" android:scaleType="centerCrop" />
-    </FrameLayout>
-    <ImageView android:layout_gravity="center" android:id="@id/mmd" android:layout_width="45.0dip" android:layout_height="45.0dip" android:src="@drawable/e76" />
-</merge>
+    <include layout="@layout/ci5" />
+    <include layout="@layout/ci6" />
+    <include layout="@layout/ci8" />
+</LinearLayout>

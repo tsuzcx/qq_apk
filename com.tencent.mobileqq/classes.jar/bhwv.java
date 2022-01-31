@@ -1,11 +1,18 @@
-import android.view.animation.Interpolator;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
 
 public class bhwv
-  implements Interpolator
+  implements ContextMenu.ContextMenuInfo
 {
-  public float getInterpolation(float paramFloat)
+  public long a;
+  public View a;
+  public long b;
+  
+  public bhwv(View paramView, long paramLong1, long paramLong2)
   {
-    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 

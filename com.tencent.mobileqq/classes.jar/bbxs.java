@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import java.util.UUID;
 
-public class bbxs
-  implements DialogInterface.OnClickListener
+public abstract interface bbxs
 {
-  public bbxs(ReciteFragment paramReciteFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(UUID paramUUID, boolean paramBoolean, int paramInt, bbxr parambbxr);
 }
 
 

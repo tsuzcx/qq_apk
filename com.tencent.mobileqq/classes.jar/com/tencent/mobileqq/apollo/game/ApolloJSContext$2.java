@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo.game;
 
-import akpr;
+import akug;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.smtt.sdk.ValueCallback;
 
 public class ApolloJSContext$2
   implements Runnable
 {
-  public ApolloJSContext$2(akpr paramakpr, String paramString, ValueCallback paramValueCallback) {}
+  public ApolloJSContext$2(akug paramakug, String paramString, ValueCallback paramValueCallback) {}
   
   public void run()
   {
-    if (akpr.a(this.this$0) != null) {
-      akpr.a(this.this$0).evaluateJavascript(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentSmttSdkValueCallback);
+    if (akug.a(this.this$0) != null) {
+      akug.a(this.this$0).evaluateJavascript(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentSmttSdkValueCallback);
     }
   }
 }

@@ -1,41 +1,15 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment;
 
-final class bacc
-  implements bhqd
+public class bacc
+  implements DialogInterface.OnCancelListener
 {
-  bacc(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, bhpy parambhpy, QQAppInterface paramQQAppInterface, Context paramContext, String paramString, bacf parambacf) {}
+  public bacc(StudyRoomLoadingFragment paramStudyRoomLoadingFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g = 2;
-        this.jdField_a_of_type_Bhpy.dismiss();
-        paramView = bacb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContext.getString(2131720679), true);
-        if (this.jdField_a_of_type_Bacf != null) {
-          this.jdField_a_of_type_Bacf.a(paramView);
-        }
-      } while (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d());
-      bafi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8009ED1");
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g = 0;
-      ((bacn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(120)).e(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_Bhpy.dismiss();
-      paramView = bacb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContext.getString(2131720679), true);
-      if (this.jdField_a_of_type_Bacf != null) {
-        this.jdField_a_of_type_Bacf.a(paramView);
-      }
-    } while (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d());
-    bafi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8009ED2");
+    this.a.a();
   }
 }
 

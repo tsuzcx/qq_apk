@@ -1,12 +1,6 @@
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-
 public abstract interface ajwa
 {
-  public abstract void a(ResultRecord paramResultRecord, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b(String paramString);
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 

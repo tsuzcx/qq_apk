@@ -1,8 +1,8 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.util.Log;
-import azmf;
-import azpp;
+import azqo;
+import azty;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -17,8 +17,8 @@ class DataReporter$1
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        azpp localazpp = (azpp)localIterator.next();
-        azmf.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localazpp);
+        azty localazty = (azty)localIterator.next();
+        azqo.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localazty);
       }
       return;
     }

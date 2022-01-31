@@ -1,10 +1,8 @@
-public class bfvj
+public abstract interface bfvj
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public int c;
+  public abstract boolean isMultiVideoMsgSupport(int paramInt);
+  
+  public abstract boolean isSharpVideoMsgSupport(int paramInt);
 }
 
 

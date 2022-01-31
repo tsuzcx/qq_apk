@@ -144,7 +144,7 @@ class mby
           if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().E != 2) {
             break label530;
           }
-          azmj.b(null, "CliOper", "", "", "0X8004CF8", "0X8004CF8", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X8004CF8", "0X8004CF8", 0, 0, "", "", "", "");
         }
       }
       for (;;)
@@ -179,7 +179,7 @@ class mby
         i = 1;
         break label265;
         label530:
-        azmj.b(null, "CliOper", "", "", "0X8004F5C", "0X8004F5C", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8004F5C", "0X8004F5C", 0, 0, "", "", "", "");
       }
       paramArrayList = this.a.jdField_a_of_type_Mcb;
       i = this.a.g;
@@ -424,7 +424,7 @@ class mby
     for (;;)
     {
       return;
-      localView = this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.b.findViewById(2131375460);
+      localView = this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.b.findViewById(2131375511);
       if (localView == null)
       {
         QLog.d("SmallScreenVideoController", 1, "onChangeUI_RecordStateChange view is null");
@@ -438,11 +438,11 @@ class mby
       Object localObject = new mli();
       ((mli)localObject).setDuration(1000L);
       ((mli)localObject).setRepeatCount(-1);
-      localView.findViewById(2131375464).startAnimation((Animation)localObject);
+      localView.findViewById(2131375515).startAnimation((Animation)localObject);
       int i;
       if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().B) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().C))
       {
-        ((TextView)localView.findViewById(2131375472)).setText(2131696236);
+        ((TextView)localView.findViewById(2131375523)).setText(2131696238);
         i = 1;
       }
       for (;;)
@@ -455,16 +455,16 @@ class mby
         if ((!"Xiaomi".equalsIgnoreCase((String)localObject)) || (!"MI MAX".equalsIgnoreCase(str))) {
           break;
         }
-        ((TextView)localView.findViewById(2131375472)).setTextSize(1, 8.0F);
+        ((TextView)localView.findViewById(2131375523)).setTextSize(1, 8.0F);
         return;
         if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().B)
         {
-          ((TextView)localView.findViewById(2131375472)).setText(2131696237);
+          ((TextView)localView.findViewById(2131375523)).setText(2131696239);
           i = 0;
         }
         else
         {
-          ((TextView)localView.findViewById(2131375472)).setText(2131696235);
+          ((TextView)localView.findViewById(2131375523)).setText(2131696237);
           i = 1;
         }
       }

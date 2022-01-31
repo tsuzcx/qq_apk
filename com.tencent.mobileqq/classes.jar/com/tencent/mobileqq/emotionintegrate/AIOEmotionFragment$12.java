@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import agdf;
+import aghu;
 import android.app.Activity;
 import android.widget.RelativeLayout;
 
@@ -11,7 +11,7 @@ class AIOEmotionFragment$12
   
   public void run()
   {
-    agdf.a((Activity)this.this$0.jdField_a_of_type_AndroidContentContext, (RelativeLayout)this.this$0.jdField_a_of_type_AndroidViewView);
+    aghu.a((Activity)this.this$0.jdField_a_of_type_AndroidContentContext, (RelativeLayout)this.this$0.jdField_a_of_type_AndroidViewView);
   }
 }
 

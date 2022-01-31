@@ -1,18 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.mediafocus.MediaFocusStackItem;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public final class atxs
-  implements Parcelable.Creator<MediaFocusStackItem>
+final class atxs
+  extends Handler
 {
-  public MediaFocusStackItem a(Parcel paramParcel)
+  java.lang.ref.WeakReference<atxi> a;
+  
+  public atxs(atxi paramatxi)
   {
-    return new MediaFocusStackItem(paramParcel);
+    super(Looper.getMainLooper());
+    this.a = new mqq.util.WeakReference(paramatxi);
   }
   
-  public MediaFocusStackItem[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new MediaFocusStackItem[paramInt];
+    if (this.a == null) {}
+    atxi localatxi;
+    do
+    {
+      return;
+      localatxi = (atxi)this.a.get();
+    } while (localatxi == null);
+    localatxi.a(paramMessage);
   }
 }
 

@@ -1,28 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.1;
 
-public class attf
+class attf
   implements View.OnClickListener
 {
-  public attf(PngFrameManager.1 param1) {}
+  attf(atte paramatte) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a.jdField_a_of_type_Afrf.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() == 0) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.a.jdField_a_of_type_Afrf.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0);
-      this.a.a.jdField_a_of_type_Boolean = true;
-      this.a.a.jdField_a_of_type_Afrf.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.a.this$0.e(this.a.a);
-    } while (this.a.a.jdField_a_of_type_Atti == null);
-    this.a.a.jdField_a_of_type_Atti.a(this.a.a.jdField_a_of_type_Afrf);
+    if (this.a.a.a()) {
+      return;
+    }
+    azqs.b(null, "CliOper", "", "", "0X800A966", "0X800A966", 0, 0, "0", "0", "0", "");
+    atqr.a(atso.a(this.a.a), this.a.a);
   }
 }
 

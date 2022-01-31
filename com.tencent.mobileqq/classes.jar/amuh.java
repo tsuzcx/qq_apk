@@ -1,28 +1,11 @@
-import com.tencent.mobileqq.ar.ScanningData;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-import com.tencent.mobileqq.ar.ScanningSurfaceView.8;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-public class amuh
-  implements avwy
+public final class amuh
+  implements Comparator<amui>
 {
-  public amuh(ScanningSurfaceView.8 param8) {}
-  
-  public void a()
+  public int a(amui paramamui1, amui paramamui2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanningSurfaceView", 2, "onContentClick subFaceData.wikiurl = " + this.a.b.c);
-    }
-    ScanningSurfaceView.b(this.a.this$0, this.a.b.c);
-    azmj.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanningSurfaceView", 2, "onFeedbackClick subFaceData.wikiurl = " + this.a.b.c);
-    }
-    this.a.this$0.a.a();
+    return paramamui1.a - paramamui2.a;
   }
 }
 

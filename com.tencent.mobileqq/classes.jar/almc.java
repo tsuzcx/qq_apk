@@ -1,28 +1,43 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
 
-class almc
-  extends BroadcastReceiver
+public class almc
+  implements OnCompositionLoadedListener
 {
-  almc(allz paramallz, QQAppInterface paramQQAppInterface) {}
+  public almc(ApolloLottieAnim paramApolloLottieAnim, DiniFlyAnimationView paramDiniFlyAnimationView, boolean paramBoolean) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getAction();
-      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")))) {
-        this.jdField_a_of_type_Allz.a();
+    if (paramLottieComposition == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloLottieAnim", 2, "composition is null ,return");
       }
     }
+    do
+    {
+      return;
+      if (!ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloLottieAnim", 2, "anim is destroy ,return");
+    return;
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetDelegate(new almd(this));
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+    }
+    ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     almc
  * JD-Core Version:    0.7.0.1
  */

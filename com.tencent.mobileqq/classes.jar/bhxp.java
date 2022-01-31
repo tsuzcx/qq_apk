@@ -1,12 +1,28 @@
-import android.graphics.Canvas;
+import android.database.DataSetObserver;
+import com.tencent.widget.HorizontalListView;
 
-public abstract interface bhxp
+public class bhxp
+  extends DataSetObserver
 {
-  public abstract void a_(Canvas paramCanvas);
+  public bhxp(HorizontalListView paramHorizontalListView) {}
   
-  public abstract int getHeight();
+  public void onChanged()
+  {
+    this.a.mDataChanged = true;
+    HorizontalListView.access$402(this.a, false);
+    HorizontalListView.access$100(this.a);
+    this.a.invalidate();
+    this.a.requestLayout();
+  }
   
-  public abstract int getWidth();
+  public void onInvalidated()
+  {
+    HorizontalListView.access$402(this.a, false);
+    HorizontalListView.access$100(this.a);
+    this.a.reset(true);
+    this.a.invalidate();
+    this.a.requestLayout();
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import aluw;
+import alzl;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.common.app.AppInterface;
@@ -27,7 +27,7 @@ public class ReadInJoyBaseAdapter$34
         }
         localObject = (QQAppInterface)localObject;
         if (localObject != null) {
-          if (!((aluw)((AppInterface)localObject).getManager(56)).a(Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeID))) {
+          if (!((alzl)((AppInterface)localObject).getManager(56)).a(Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeID))) {
             break label151;
           }
         }

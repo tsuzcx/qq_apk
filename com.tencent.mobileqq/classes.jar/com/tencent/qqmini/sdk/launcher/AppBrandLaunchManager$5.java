@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.launcher;
 
 import android.util.LruCache;
-import bgpw;
+import bgud;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 class AppBrandLaunchManager$5
@@ -11,12 +11,12 @@ class AppBrandLaunchManager$5
   
   public void run()
   {
-    bgpw localbgpw = (bgpw)AppBrandLaunchManager.access$100(this.this$0).get(this.a);
-    if (localbgpw != null)
+    bgud localbgud = (bgud)AppBrandLaunchManager.access$100(this.this$0).get(this.a);
+    if (localbgud != null)
     {
-      QMLog.i("minisdk-start_AppBrandLaunchManager", "set preload BaseLibVersion:" + this.b + " to " + localbgpw);
-      localbgpw.c = this.b;
-      AppBrandLaunchManager.access$100(this.this$0).put(this.a, localbgpw);
+      QMLog.i("minisdk-start_AppBrandLaunchManager", "set preload BaseLibVersion:" + this.b + " to " + localbgud);
+      localbgud.c = this.b;
+      AppBrandLaunchManager.access$100(this.this$0).put(this.a, localbgud);
     }
   }
 }

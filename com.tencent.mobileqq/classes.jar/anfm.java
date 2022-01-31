@@ -1,6 +1,19 @@
-public abstract interface anfm
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArAwardInfo;
+
+public final class anfm
+  implements Parcelable.Creator<ArAwardInfo>
 {
-  public abstract void a(long paramLong);
+  public ArAwardInfo a(Parcel paramParcel)
+  {
+    return new ArAwardInfo(paramParcel);
+  }
+  
+  public ArAwardInfo[] a(int paramInt)
+  {
+    return new ArAwardInfo[paramInt];
+  }
 }
 
 

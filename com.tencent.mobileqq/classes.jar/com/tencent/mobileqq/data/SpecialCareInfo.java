@@ -3,23 +3,23 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apbk;
-import awbv;
-import awdj;
+import apft;
+import awge;
+import awhs;
 import com.tencent.qphone.base.util.QLog;
 
 public class SpecialCareInfo
-  extends awbv
+  extends awge
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<SpecialCareInfo> CREATOR = new apbk();
+  public static final Parcelable.Creator<SpecialCareInfo> CREATOR = new apft();
   public long dateTime;
   public int friendRingId;
   public int globalSwitch;
   public int groupFriendSwitch;
   public int qzoneSwitch;
   public int specialRingSwitch;
-  @awdj
+  @awhs
   public String uin;
   public byte[] zoneInfo;
   

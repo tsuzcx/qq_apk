@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bjxj;
+import bkbq;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -18,7 +18,7 @@ public class FollowCoverInfoModule$4
   
   public void run()
   {
-    Object localObject = bjxj.a(pfv.a(this.this$0), true, false);
+    Object localObject = bkbq.a(pfv.a(this.this$0), true, false);
     JSONObject localJSONObject;
     if (localObject != null)
     {
@@ -43,7 +43,7 @@ public class FollowCoverInfoModule$4
       }
     }
     localJSONException.putString("follow_tab_topic_update_info_exposure", localJSONObject.toString());
-    bjxj.a(localJSONException, true);
+    bkbq.a(localJSONException, true);
   }
 }
 

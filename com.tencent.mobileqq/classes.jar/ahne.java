@@ -1,28 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.SimpleTextView;
+import android.util.SparseArray;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.SwipListView;
 
-class ahne
-  extends bhxd
+public class ahne
+  implements skj
 {
-  ahne(ahnd paramahnd, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  public ahne(SystemMsgListView paramSystemMsgListView) {}
   
-  public View a(int paramInt, Object paramObject, bhxc parambhxc, View.OnClickListener paramOnClickListener)
+  public void a(sko paramsko)
   {
-    parambhxc = super.a(paramInt, paramObject, parambhxc, paramOnClickListener);
-    if ((parambhxc instanceof SimpleTextView)) {
-      parambhxc.setTag(paramObject);
+    int j;
+    if (paramsko != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.newfriendSystemMsgListView", 2, "setStickHead onTabSelected : position = " + paramsko.a() + " tabid = " + (Integer)paramsko.a());
+      }
+      SystemMsgListView.a(this.a).a(((Integer)paramsko.a()).intValue(), paramsko.a());
+      i = SystemMsgListView.a(this.a).b();
+      paramsko = (ahob)SystemMsgListView.a(this.a).get(i);
+      if (paramsko == null) {
+        break label141;
+      }
+      j = paramsko.b;
     }
-    return parambhxc;
+    for (int i = paramsko.c;; i = SystemMsgListView.a(this.a).c)
+    {
+      SystemMsgListView.a(this.a).setSelectionFromTop(j, i);
+      SystemMsgListView.a(this.a).a(0L);
+      return;
+      label141:
+      j = SystemMsgListView.a(this.a).b;
+    }
   }
   
-  public void a(int paramInt, Object paramObject, bhxc[] paramArrayOfbhxc)
-  {
-    this.a.a(paramInt, paramArrayOfbhxc, paramObject);
-  }
+  public void b(sko paramsko) {}
+  
+  public void c(sko paramsko) {}
 }
 
 

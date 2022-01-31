@@ -1,17 +1,17 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.qphone.base.util.QLog;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
+import java.util.List;
+import qqcircle.QQCircleFeedBase.StTabInfo;
 
-class tsi
-  implements MediaPlayer.OnErrorListener
+public class tsi
+  implements Observer<ubz<List<QQCircleFeedBase.StTabInfo>>>
 {
-  tsi(tsf paramtsf) {}
+  public tsi(QCircleFolderFragmentsPart paramQCircleFolderFragmentsPart) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void a(@Nullable ubz<List<QQCircleFeedBase.StTabInfo>> paramubz)
   {
-    tsf.a(this.a);
-    QLog.e("QCircleFolderSplashPart", 1, "play splash video error!what:" + paramInt1 + ",extra:" + paramInt2);
-    return true;
+    QCircleFolderFragmentsPart.a(this.a, paramubz);
   }
 }
 

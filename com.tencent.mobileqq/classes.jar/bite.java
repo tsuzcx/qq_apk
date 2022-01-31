@@ -1,43 +1,36 @@
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import android.app.Dialog;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class bite
-  extends OnPluginInstallListener.Stub
 {
-  public bite(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  private static void b(String paramString)
   {
-    String str = String.valueOf(paramInt);
-    paramString = alpo.a(2131710770);
-    if (this.a.b == QQIndividualityBridgeActivity.c) {
-      paramString = alpo.a(2131710763);
+    Dialog localDialog = new Dialog(BaseApplicationImpl.getApplication(), 2131755801);
+    localDialog.getWindow().setType(2003);
+    localDialog.setContentView(2131558919);
+    TextView localTextView = (TextView)localDialog.findViewById(2131365237);
+    if (localTextView != null) {
+      localTextView.setText("dump文件保存地址");
     }
-    for (;;)
+    localTextView = (TextView)localDialog.findViewById(2131365233);
+    if ((localTextView != null) && (paramString != null)) {
+      localTextView.setText(paramString);
+    }
+    localTextView = (TextView)localDialog.findViewById(2131365222);
+    if (localTextView != null)
     {
-      bimg.a(str, paramString);
-      int i = bdee.a(this.a);
-      QLog.e("QQIndividuality", 2, "install plugin fail: " + paramInt + " and netType = " + i);
-      this.a.setResult(1001);
-      QQIndividualityBridgeActivity.c(this.a);
-      azmj.b(null, "CliOper", "", "", "ep_mall", "0X8006A98", 0, 0, str, String.valueOf(i), "", "");
-      return;
-      if (this.a.b == QQIndividualityBridgeActivity.d) {
-        paramString = alpo.a(2131710764);
-      } else if (this.a.b == QQIndividualityBridgeActivity.e) {
-        paramString = alpo.a(2131710767);
-      }
+      localTextView.setText(2131690648);
+      localTextView.setOnClickListener(new bitg(localDialog));
     }
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    this.a.b();
+    localTextView = (TextView)localDialog.findViewById(2131365228);
+    if (localTextView != null)
+    {
+      localTextView.setText(2131691603);
+      localTextView.setOnClickListener(new bith(localDialog, paramString));
+    }
+    localDialog.show();
   }
 }
 

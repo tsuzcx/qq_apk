@@ -1,12 +1,12 @@
 package cooperation.qqreader;
 
-import biuv;
-import biuw;
+import bizc;
+import bizd;
 
 public class QRPluginManagerClient$2
   implements Runnable
 {
-  public QRPluginManagerClient$2(biuv parambiuv, biuw parambiuw) {}
+  public QRPluginManagerClient$2(bizc parambizc, bizd parambizd) {}
   
   public void run()
   {

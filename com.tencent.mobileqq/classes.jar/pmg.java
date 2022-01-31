@@ -20,7 +20,7 @@ class pmg
     {
       ArticleInfo localArticleInfo = this.jdField_a_of_type_Pgd.a();
       opy.a(localArticleInfo, localArticleInfo.mProteusTemplateBean, paramViewBase);
-      if (bdem.a(BaseApplicationImpl.getContext(), "com.tencent.reading")) {
+      if (bdiv.a(BaseApplicationImpl.getContext(), "com.tencent.reading")) {
         if (this.jdField_a_of_type_Pgd.a().weishiUGInfo.msg_url_jump_info.uint32_jump_type.get() == 2)
         {
           paramViewBase = pmf.a(this.jdField_a_of_type_Pmf, this.jdField_a_of_type_Pgd.a().weishiUGInfo.msg_url_jump_info.bytes_jump_schema);
@@ -37,7 +37,7 @@ class pmg
         {
           paramViewBase = pmf.a(this.jdField_a_of_type_Pmf, this.jdField_a_of_type_Pgd.a().weishiUGInfo.msg_url_jump_info.bytes_jump_url);
           if (!TextUtils.isEmpty(paramViewBase)) {
-            ayrd.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+            ayvm.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
           }
         }
       }

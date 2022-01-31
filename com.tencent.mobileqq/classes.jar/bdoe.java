@@ -1,14 +1,11 @@
-class bdoe
+import android.graphics.Rect;
+
+final class bdoe
+  implements bdoi<Rect>
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b = "";
-  
-  bdoe(bdnx parambdnx)
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
+    return new Rect(paramRect1.left + (int)((paramRect2.left - paramRect1.left) * paramFloat), paramRect1.top + (int)((paramRect2.top - paramRect1.top) * paramFloat), paramRect1.right + (int)((paramRect2.right - paramRect1.right) * paramFloat), paramRect1.bottom + (int)((paramRect2.bottom - paramRect1.bottom) * paramFloat));
   }
 }
 

@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import mqq.os.MqqHandler;
 
 public class adia
-  implements axxl
+  extends MqqHandler
 {
-  public adia(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public adia(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    PermisionPrivacyActivity.a(this.a, this.a.h.a(), paramBoolean);
-  }
-  
-  public void b(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      PermisionPrivacyActivity.a(this.a, 2131719872);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    PermisionPrivacyActivity.a(this.a, this.a.h.a(), PermisionPrivacyActivity.a(this.a).b());
+    this.a.finish();
   }
 }
 

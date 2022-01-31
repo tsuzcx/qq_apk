@@ -7,7 +7,7 @@ import java.io.File;
 import java.lang.ref.WeakReference;
 
 class ntz
-  extends bdvu
+  extends bead
 {
   private WeakReference<ntw> a;
   
@@ -16,18 +16,18 @@ class ntz
     this.a = new WeakReference(paramntw);
   }
   
-  public void onDone(bdvv parambdvv)
+  public void onDone(beae parambeae)
   {
-    super.onDone(parambdvv);
+    super.onDone(parambeae);
     if (this.a != null)
     {
       Object localObject = (ntw)this.a.get();
       if (localObject != null)
       {
         QQAppInterface localQQAppInterface = ((ntw)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if ((parambdvv.a == 0) && (localQQAppInterface != null))
+        if ((parambeae.a == 0) && (localQQAppInterface != null))
         {
-          localQQAppInterface.getPreferences().edit().putLong("last_modified_time", parambdvv.i).commit();
+          localQQAppInterface.getPreferences().edit().putLong("last_modified_time", parambeae.i).commit();
           ((ntw)localObject).b();
         }
         if (QLog.isColorLevel())
@@ -37,7 +37,7 @@ class ntz
           if (((File)localObject).exists()) {
             l = ((File)localObject).lastModified();
           }
-          QLog.d("EcShopAssistantManager", 2, "download onDone status=" + parambdvv.a() + ",errCode=" + parambdvv.a + ",httpCode=" + parambdvv.f + ",local lastModify=" + l + ",server lastModify=" + parambdvv.i);
+          QLog.d("EcShopAssistantManager", 2, "download onDone status=" + parambeae.a() + ",errCode=" + parambeae.a + ",httpCode=" + parambeae.f + ",local lastModify=" + l + ",server lastModify=" + parambeae.i);
         }
       }
     }

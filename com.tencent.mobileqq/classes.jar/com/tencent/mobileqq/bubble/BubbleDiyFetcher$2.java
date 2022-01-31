@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.bubble;
 
 import android.text.TextUtils;
-import ansd;
-import awbw;
-import awbx;
+import anwm;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -13,7 +13,7 @@ import java.util.Map;
 public class BubbleDiyFetcher$2
   implements Runnable
 {
-  public BubbleDiyFetcher$2(ansd paramansd, QQAppInterface paramQQAppInterface) {}
+  public BubbleDiyFetcher$2(anwm paramanwm, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

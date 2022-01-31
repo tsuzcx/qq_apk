@@ -1,59 +1,26 @@
-import android.annotation.TargetApi;
-import android.opengl.EGL14;
-import android.opengl.EGLSurface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-@TargetApi(17)
-public class axqy
+public final class axqy
+  extends BroadcastReceiver
 {
-  private EGLSurface a;
-  protected axqx a;
+  private axqy(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
   
-  public axqy(axqx paramaxqx)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
-    this.jdField_a_of_type_Axqx = paramaxqx;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Axqx.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
-      throw new IllegalStateException("surface already created");
+    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
+    {
+      axom.a().b();
+      axom.a().a(new axqz(this));
+      this.a.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
+      }
     }
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_Axqx.a(paramInt1, paramInt2);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Axqx.a(this.jdField_a_of_type_AndroidOpenglEGLSurface, paramLong);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
-      throw new IllegalStateException("surface already created");
-    }
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_Axqx.a(paramObject);
-  }
-  
-  public boolean a()
-  {
-    boolean bool = this.jdField_a_of_type_Axqx.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
-    if ((!bool) && (QLog.isColorLevel())) {
-      QLog.d("EglSurfaceBase", 2, "WARNING: swapBuffers() failed");
-    }
-    return bool;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Axqx.b(this.jdField_a_of_type_AndroidOpenglEGLSurface);
   }
 }
 

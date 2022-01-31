@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afvt;
-import afvw;
-import afwd;
+import agai;
+import agal;
+import agas;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.mobileqq.data.MessageForShortVideo;
@@ -10,16 +10,16 @@ import com.tencent.mobileqq.data.MessageForShortVideo;
 public class ShortVideoItemBuilder$12$2
   implements Runnable
 {
-  public ShortVideoItemBuilder$12$2(afvw paramafvw, MessageForShortVideo paramMessageForShortVideo) {}
+  public ShortVideoItemBuilder$12$2(agal paramagal, MessageForShortVideo paramMessageForShortVideo) {}
   
   public void run()
   {
-    afwd localafwd = afvt.a(this.jdField_a_of_type_Afvw.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    if (localafwd != null)
+    agas localagas = agai.a(this.jdField_a_of_type_Agal.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+    if (localagas != null)
     {
-      localafwd.a.setVisibility(8);
-      localafwd.d.setVisibility(8);
-      afvt.a(this.jdField_a_of_type_Afvw.a, localafwd, 2131719264);
+      localagas.a.setVisibility(8);
+      localagas.d.setVisibility(8);
+      agai.a(this.jdField_a_of_type_Agal.a, localagas, 2131719276);
     }
   }
 }

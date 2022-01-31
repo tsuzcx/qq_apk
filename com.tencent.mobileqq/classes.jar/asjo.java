@@ -1,17 +1,42 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.MessageForFuDai;
 
 public class asjo
-  implements View.OnClickListener
+  implements affa, Handler.Callback
 {
-  public asjo(ImgHeaderView paramImgHeaderView, Activity paramActivity, QQGameMsgInfo paramQQGameMsgInfo, int paramInt) {}
+  private BaseChatPie a;
   
-  public void onClick(View paramView)
+  public asjo(BaseChatPie paramBaseChatPie)
   {
-    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo);
+    this.a = paramBaseChatPie;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 12: 
+    case 13: 
+      asjp.e();
+      return;
+    }
+    asjp.f();
+  }
+  
+  void a(MessageForFuDai paramMessageForFuDai) {}
+  
+  public int[] a()
+  {
+    return new int[] { 2, 11, 12, 13, 14 };
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    return false;
   }
 }
 

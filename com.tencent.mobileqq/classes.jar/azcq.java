@@ -1,18 +1,8 @@
 public abstract interface azcq
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3);
+  public abstract azdi a(Object paramObject, azdx paramazdx);
   
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
-  
-  public abstract void a(String paramString, int paramInt, long paramLong);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void c();
+  public abstract azen a(Object paramObject, azdx paramazdx);
 }
 
 

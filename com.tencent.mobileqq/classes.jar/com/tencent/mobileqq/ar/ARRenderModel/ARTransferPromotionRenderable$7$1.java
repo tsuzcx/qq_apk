@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amrb;
+import amvq;
 import android.widget.TextView;
 
 class ARTransferPromotionRenderable$7$1
@@ -10,8 +10,8 @@ class ARTransferPromotionRenderable$7$1
   
   public void run()
   {
-    amrb.a(this.a.this$0).setVisibility(8);
-    amrb.a(this.a.this$0, null);
+    amvq.a(this.a.this$0).setVisibility(8);
+    amvq.a(this.a.this$0, null);
   }
 }
 

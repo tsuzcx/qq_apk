@@ -1,32 +1,27 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
+import java.util.List;
 
 public class asfr
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public ArrayList<asfp> a;
-  public HashMap<String, String> a;
-  public int b;
-  public String b;
-  public ArrayList<String> b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
+  public asfr(LangSettingFragment paramLangSettingFragment, int paramInt) {}
   
-  public asfr()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mMd5= ").append(this.jdField_a_of_type_JavaLangString).append("\n").append("baseWidth= ").append(this.jdField_a_of_type_Int).append("\n").append("baseHeight= ").append(this.jdField_b_of_type_Int).append("\n").append("mLanguage= ").append(this.jdField_b_of_type_JavaLangString).append("\n");
-    return localStringBuilder.toString();
+    if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < LangSettingFragment.a().size()))
+    {
+      LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, this.jdField_a_of_type_Int);
+      LangSettingFragment.c(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, ((Integer)LangSettingFragment.a().get(this.jdField_a_of_type_Int)).intValue());
+    }
+    if ((LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment) != null) && (LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).isShowing())) {
+      LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).dismiss();
+    }
+    if ((LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment) != null) && (LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).isShowing())) {
+      LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).dismiss();
+    }
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.Doraemon.monitor;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="type,appid,apiName")
 public class APIQuotaEntity
-  extends awbv
+  extends awge
 {
   public String apiName;
   public String appid;

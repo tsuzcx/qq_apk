@@ -328,8 +328,8 @@ public class sgi
     do
     {
       return false;
-      paramString3 = a("8.3.3");
-      paramString3.add(Integer.valueOf(Integer.parseInt("4515")));
+      paramString3 = a("8.3.5");
+      paramString3.add(Integer.valueOf(Integer.parseInt("4555")));
       paramString1 = a(paramString1);
       paramString2 = a(paramString2);
     } while ((paramString1.size() != paramString3.size() - 1) || (paramString2.size() != paramString3.size() - 1) || (a(paramString1, paramString2) > 0) || (a(paramString3, paramString1) < 0) || (a(paramString3, paramString2) > 0));
@@ -340,8 +340,8 @@ public class sgi
   
   public static void c()
   {
-    String str = bjxj.a("default_feeds_proteus_offline_bid");
-    bdcs.a(ncb.a(str) + str);
+    String str = bkbq.a("default_feeds_proteus_offline_bid");
+    bdhb.a(ncb.a(str) + str);
   }
 }
 

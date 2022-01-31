@@ -1,76 +1,40 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideoBatch;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.VideoItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class via
+public class via
+  extends uro
 {
-  public static void a(Context paramContext)
-  {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://story.now.qq.com/mobile/qim/transfer.html?_wv=16777219");
-    paramContext.startActivity(localIntent);
-  }
+  public List<uvr> a;
   
-  public static void a(Context paramContext, String paramString)
+  public via(qqstory_service.RspWatchVideoBatch paramRspWatchVideoBatch)
   {
-    if (a(paramContext, paramString))
+    super(paramRspWatchVideoBatch.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspWatchVideoBatch = paramRspWatchVideoBatch.succ_video_list.get();
+    if (paramRspWatchVideoBatch == null) {}
+    for (;;)
     {
-      b(paramContext, paramString);
       return;
-    }
-    a(paramContext);
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
-  {
-    boolean bool = false;
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    paramContext = null;
-    try
-    {
-      paramString = localPackageManager.getPackageInfo(paramString, 0);
-      paramContext = paramString;
-    }
-    catch (PackageManager.NameNotFoundException paramString)
-    {
-      for (;;)
+      paramRspWatchVideoBatch = paramRspWatchVideoBatch.iterator();
+      while (paramRspWatchVideoBatch.hasNext())
       {
-        paramString.printStackTrace();
+        qqstory_service.VideoItem localVideoItem = (qqstory_service.VideoItem)paramRspWatchVideoBatch.next();
+        uvr localuvr = new uvr();
+        localuvr.a = localVideoItem.vid.get().toStringUtf8();
+        this.jdField_a_of_type_JavaUtilList.add(localuvr);
       }
     }
-    if (paramContext != null) {
-      bool = true;
-    }
-    return bool;
   }
   
-  public static boolean a(Context paramContext, String paramString1, String paramString2)
+  public String toString()
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return false;
-    }
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", String.format("%s?tag_id=%s&tag_type=%s&_wv=3&_nav_alpha=0&_bid=2910", new Object[] { "http://story.now.qq.com/mobile/tag/index.html", String.valueOf(paramString1), String.valueOf(paramString2) }));
-    paramContext.startActivity(localIntent);
-    return true;
-  }
-  
-  public static boolean a(Context paramContext, xjw paramxjw)
-  {
-    if (paramxjw == null) {
-      return false;
-    }
-    return a(paramContext, String.valueOf(paramxjw.jdField_a_of_type_Long), String.valueOf(paramxjw.jdField_a_of_type_Int));
-  }
-  
-  public static void b(Context paramContext, String paramString)
-  {
-    paramString = paramContext.getPackageManager().getLaunchIntentForPackage(paramString);
-    if (paramString != null) {
-      paramContext.startActivity(paramString);
-    }
+    return "WatchVideoBatchResponse{ errorCode=" + this.jdField_a_of_type_Int + " succList=" + this.jdField_a_of_type_JavaUtilList + "}";
   }
 }
 

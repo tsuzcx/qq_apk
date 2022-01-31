@@ -1,6 +1,6 @@
 public abstract interface bhxw
 {
-  public abstract void a(String paramString);
+  public abstract void a(long paramLong);
 }
 
 

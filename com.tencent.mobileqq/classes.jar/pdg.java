@@ -36,11 +36,11 @@ public class pdg
     View localView = pxi.a(paramInt2, localObject, paramInt1, paramView, this.jdField_a_of_type_Pde.a(), this.jdField_a_of_type_Pde.a(), this.jdField_a_of_type_Pde.a());
     if (localView != null)
     {
-      localView.setTag(2131379913, localObject);
+      localView.setTag(2131379971, localObject);
       if (QLog.isColorLevel()) {
         QLog.d("FrameworkHandler", 2, "CellFactory.getView = " + localView.getTag().getClass().getSimpleName());
       }
-      localView.setTag(2131369009, this.jdField_a_of_type_Pde.a());
+      localView.setTag(2131369027, this.jdField_a_of_type_Pde.a());
       if (paramArticleInfo == null)
       {
         if (QLog.isColorLevel()) {
@@ -113,8 +113,8 @@ public class pdg
       {
         l = System.currentTimeMillis();
         paramArticleInfo1 = this.jdField_a_of_type_Pde.a();
-        paramView.a().setTag(2131369009, paramArticleInfo1);
-        paramView.setTag(2131379913, paramArticleInfo2);
+        paramView.a().setTag(2131369027, paramArticleInfo1);
+        paramView.setTag(2131379971, paramArticleInfo2);
         srq.a("FrameworkHandler", String.valueOf(paramInt1), "getProteusNormalView.setTag", System.currentTimeMillis() - l);
       }
       return paramView;
@@ -187,9 +187,9 @@ public class pdg
     {
       paramArticleInfo1 = this.jdField_a_of_type_Pde.a();
       if (paramView.a() != null) {
-        paramView.a().setTag(2131369009, paramArticleInfo1);
+        paramView.a().setTag(2131369027, paramArticleInfo1);
       }
-      paramView.setTag(2131379913, paramArticleInfo2);
+      paramView.setTag(2131379971, paramArticleInfo2);
       return paramView;
       l = System.currentTimeMillis();
       paramView = this.jdField_a_of_type_Ppz.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt1, paramArticleInfo1);

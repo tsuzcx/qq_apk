@@ -1,65 +1,21 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import java.util.Comparator;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class bbjb
-  implements Comparator<bbiz>
+public class bbjb
+  implements upk
 {
-  public int a(bbiz parambbiz)
-  {
-    if (parambbiz.jdField_a_of_type_Int != -1) {
-      return parambbiz.jdField_a_of_type_Int;
-    }
-    Friends localFriends = parambbiz.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    int k = bdbt.a(localFriends.detalStatusFlag, localFriends.iTermType);
-    int j;
-    int i;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label132;
-      }
-      i = 4096;
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        label64:
-        i = j | i | (int)localFriends.getLastLoginType();
-      }
-    }
-    for (;;)
-    {
-      parambbiz.jdField_a_of_type_Int = i;
-      return i;
-      j = 131072;
-      break;
-      label132:
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
-      {
-        i = 8192;
-        break label64;
-      }
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
-      {
-        i = 12288;
-        break label64;
-      }
-      i = 16384;
-      break label64;
-      i = j | i | 0x1;
-      continue;
-      i = j | i | 0x2;
-      continue;
-      i = j | i | 0x3;
-    }
-  }
+  public bbjb(TroopBarPublishActivity paramTroopBarPublishActivity, String paramString1, long paramLong, String paramString2) {}
   
-  public int a(bbiz parambbiz1, bbiz parambbiz2)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    return a(parambbiz1) - a(parambbiz2);
+    xrg.f(this.jdField_a_of_type_JavaLangString);
+    if (paramInt != 0)
+    {
+      QLog.i("tribe_publish_TroopBarPublishActivity", 1, "merge music failed. merge file path:" + this.jdField_a_of_type_JavaLangString + " merge result:" + paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(null, this.jdField_a_of_type_Long);
+      return;
+    }
+    TroopBarPublishActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, this.b, this.jdField_a_of_type_Long);
   }
 }
 

@@ -1,23 +1,15 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class ayhf
-  implements Comparator<ayhj>
+  implements View.OnClickListener
 {
   ayhf(ayhe paramayhe) {}
   
-  public int a(ayhj paramayhj1, ayhj paramayhj2)
+  public void onClick(View paramView)
   {
-    int j = Long.signum(paramayhj1.b - paramayhj2.b);
-    int i = j;
-    if (j == 0)
-    {
-      j = Long.signum(paramayhj1.c - paramayhj2.c);
-      i = j;
-      if (j == 0) {
-        i = Long.signum(-paramayhj1.a + paramayhj2.a);
-      }
-    }
-    return i;
+    int i = ((Integer)paramView.getTag(-1)).intValue();
+    ayhe.a(this.a).onItemClick(this.a.a, paramView, i, 0L);
   }
 }
 

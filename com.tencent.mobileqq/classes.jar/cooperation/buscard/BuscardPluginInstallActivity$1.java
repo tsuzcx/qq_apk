@@ -1,6 +1,6 @@
 package cooperation.buscard;
 
-import bimg;
+import biqn;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -25,7 +25,7 @@ public class BuscardPluginInstallActivity$1
         BuscardPluginInstallActivity.a(this.this$0, true);
         return;
       }
-      QQToast.a(this.this$0.getApplicationContext(), 2131695368, 0);
+      QQToast.a(this.this$0.getApplicationContext(), 2131695370, 0);
       BuscardPluginInstallActivity.a(this.this$0, false);
       this.this$0.finish();
       return;

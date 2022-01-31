@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
@@ -14,11 +14,11 @@ import android.view.View.MeasureSpec;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
-import apgg;
-import azmj;
-import azvm;
-import azvt;
-import bdan;
+import apkp;
+import azqs;
+import azzv;
+import baac;
+import bdew;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.QQLiveDrawable;
 import com.tencent.image.QQLiveDrawable.ErrorInfo;
@@ -46,15 +46,15 @@ public class PAVideoView
   extends BubbleVideoView
   implements QQLiveDrawable.OnStateListener
 {
-  public static apgg a;
+  public static apkp a;
   public static int c;
   public static int d;
   public static int e;
   public long a;
   public Handler a;
   RotateAnimation a;
-  public azvm a;
-  public azvt a;
+  public azzv a;
+  public baac a;
   public String a;
   public int b;
   private long jdField_b_of_type_Long;
@@ -81,7 +81,7 @@ public class PAVideoView
     QQLiveImage.setDebugEnable(false);
     jdField_d_of_type_Int = jdField_c_of_type_Int + 1;
     jdField_e_of_type_Int = jdField_d_of_type_Int + 1;
-    jdField_a_of_type_Apgg = new apgg(-2236446, 100, 100);
+    jdField_a_of_type_Apkp = new apkp(-2236446, 100, 100);
   }
   
   public PAVideoView(Context paramContext)
@@ -110,13 +110,13 @@ public class PAVideoView
   
   public Drawable a(String paramString)
   {
-    apgg localapgg = jdField_a_of_type_Apgg;
+    apkp localapkp = jdField_a_of_type_Apkp;
     if (!TextUtils.isEmpty(paramString)) {}
     do
     {
       try
       {
-        paramString = URLDrawable.getDrawable(paramString, jdField_a_of_type_Apgg, jdField_a_of_type_Apgg);
+        paramString = URLDrawable.getDrawable(paramString, jdField_a_of_type_Apkp, jdField_a_of_type_Apkp);
         return paramString;
       }
       catch (Exception paramString)
@@ -124,12 +124,12 @@ public class PAVideoView
         if (QLog.isColorLevel()) {
           QLog.e("PAVideoView" + this.jdField_b_of_type_Int, 2, "getCoverDrawable():  getDrawable Exception, mCoverUrl=" + this.jdField_a_of_type_JavaLangString, paramString);
         }
-        return jdField_a_of_type_Apgg;
+        return jdField_a_of_type_Apkp;
       }
-      paramString = localapgg;
+      paramString = localapkp;
     } while (!QLog.isColorLevel());
     QLog.e("PAVideoView" + this.jdField_b_of_type_Int, 2, "getCoverDrawable():  mCoverUrl=" + this.jdField_a_of_type_JavaLangString);
-    return localapgg;
+    return localapkp;
   }
   
   QQLiveDrawable.QQLiveDrawableParams a(boolean paramBoolean)
@@ -165,19 +165,19 @@ public class PAVideoView
         localQQLiveDrawableParams.mDataSource = this.jdField_d_of_type_JavaLangString;
       }
       localQQLiveDrawableParams.mCoverUrl = this.jdField_a_of_type_JavaLangString;
-      localQQLiveDrawableParams.mCoverLoadingDrawable = jdField_a_of_type_Apgg;
+      localQQLiveDrawableParams.mCoverLoadingDrawable = jdField_a_of_type_Apkp;
       if (((this.jdField_j_of_type_Int >= 1) && (this.jdField_j_of_type_Int <= 3)) || (this.jdField_j_of_type_Int == 6))
       {
-        if ((this.jdField_a_of_type_Azvm.m == 0) || (this.jdField_a_of_type_Azvm.m > 8))
+        if ((this.jdField_a_of_type_Azzv.m == 0) || (this.jdField_a_of_type_Azzv.m > 8))
         {
           localQQLiveDrawableParams.mMaxPlayTimeMs = 8000;
-          localQQLiveDrawableParams.mStartPosi = this.jdField_a_of_type_Azvm.l;
+          localQQLiveDrawableParams.mStartPosi = this.jdField_a_of_type_Azzv.l;
         }
         localQQLiveDrawableParams.mLoopback = false;
       }
       if (this.jdField_j_of_type_Int == 4)
       {
-        localQQLiveDrawableParams.mMaxPlayTimeMs = (this.jdField_a_of_type_Azvm.m * 1000);
+        localQQLiveDrawableParams.mMaxPlayTimeMs = (this.jdField_a_of_type_Azzv.m * 1000);
         localQQLiveDrawableParams.mLoopback = true;
       }
       return localQQLiveDrawableParams;
@@ -203,26 +203,26 @@ public class PAVideoView
     return null;
   }
   
-  public void a(azvm paramazvm, azvt paramazvt)
+  public void a(azzv paramazzv, baac parambaac)
   {
-    this.g = paramazvm.n;
-    this.h = paramazvm.o;
-    this.jdField_a_of_type_JavaLangString = paramazvm.S;
-    this.jdField_b_of_type_JavaLangString = paramazvm.U;
-    if (paramazvm.a.message == null) {}
-    for (long l = 0L;; l = paramazvm.a.message.uniseq)
+    this.g = paramazzv.n;
+    this.h = paramazzv.o;
+    this.jdField_a_of_type_JavaLangString = paramazzv.S;
+    this.jdField_b_of_type_JavaLangString = paramazzv.U;
+    if (paramazzv.a.message == null) {}
+    for (long l = 0L;; l = paramazzv.a.message.uniseq)
     {
       this.jdField_a_of_type_Long = l;
-      this.jdField_i_of_type_Int = paramazvm.a.uinType;
-      this.jdField_c_of_type_JavaLangString = paramazvm.a.uin;
-      this.jdField_j_of_type_Int = paramazvm.r;
-      this.jdField_e_of_type_JavaLangString = paramazvm.Z;
-      if ((paramazvm.a instanceof AbsShareMsg)) {
-        this.jdField_f_of_type_JavaLangString = ((AbsShareMsg)paramazvm.a).mSourceName;
+      this.jdField_i_of_type_Int = paramazzv.a.uinType;
+      this.jdField_c_of_type_JavaLangString = paramazzv.a.uin;
+      this.jdField_j_of_type_Int = paramazzv.r;
+      this.jdField_e_of_type_JavaLangString = paramazzv.Z;
+      if ((paramazzv.a instanceof AbsShareMsg)) {
+        this.jdField_f_of_type_JavaLangString = ((AbsShareMsg)paramazzv.a).mSourceName;
       }
-      this.jdField_a_of_type_Azvm = paramazvm;
-      this.jdField_d_of_type_JavaLangString = paramazvm.T;
-      this.jdField_a_of_type_Azvt = paramazvt;
+      this.jdField_a_of_type_Azzv = paramazzv;
+      this.jdField_d_of_type_JavaLangString = paramazzv.T;
+      this.jdField_a_of_type_Baac = parambaac;
       return;
     }
   }
@@ -242,7 +242,7 @@ public class PAVideoView
   
   public void d()
   {
-    this.jdField_a_of_type_Azvt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.jdField_a_of_type_Baac.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     setImageDrawable(a(this.jdField_a_of_type_JavaLangString));
     if (QLog.isColorLevel()) {
       QLog.d("PAVideoView" + this.jdField_b_of_type_Int, 2, "showCover():  mVid=" + this.jdField_b_of_type_JavaLangString);
@@ -252,9 +252,9 @@ public class PAVideoView
   public void e()
   {
     this.jdField_c_of_type_Long = -1L;
-    this.jdField_a_of_type_Azvt.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_Azvt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_Azvt.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842823);
+    this.jdField_a_of_type_Baac.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.jdField_a_of_type_Baac.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.jdField_a_of_type_Baac.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842836);
     Object localObject = a();
     if (localObject != null)
     {
@@ -285,18 +285,18 @@ public class PAVideoView
   public void f()
   {
     if (this.jdField_j_of_type_Int != 4) {
-      this.jdField_a_of_type_Azvt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_a_of_type_Baac.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
     this.jdField_c_of_type_Long = System.currentTimeMillis();
     syb.a(this.jdField_e_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 0, 0);
-    if ((!this.jdField_a_of_type_Azvm.b) && (this.jdField_a_of_type_Azvm.a.message != null))
+    if ((!this.jdField_a_of_type_Azzv.b) && (this.jdField_a_of_type_Azzv.a.message != null))
     {
-      azmj.b(null, "dc00899", "Pb_account_lifeservice", this.jdField_a_of_type_Azvm.a.message.frienduin, "0X800682E", "0X800682E", 0, 0, this.jdField_b_of_type_JavaLangString, "" + this.jdField_j_of_type_Int, "" + this.jdField_a_of_type_Azvm.a.msgId, "");
-      this.jdField_a_of_type_Azvm.b = true;
+      azqs.b(null, "dc00899", "Pb_account_lifeservice", this.jdField_a_of_type_Azzv.a.message.frienduin, "0X800682E", "0X800682E", 0, 0, this.jdField_b_of_type_JavaLangString, "" + this.jdField_j_of_type_Int, "" + this.jdField_a_of_type_Azzv.a.msgId, "");
+      this.jdField_a_of_type_Azzv.b = true;
     }
     int m;
     Object localObject2;
-    if ((this.jdField_a_of_type_Azvm.a.message != null) && (!bdan.a().a(this.jdField_a_of_type_Azvm.a.message, "0X80077D9")))
+    if ((this.jdField_a_of_type_Azzv.a.message != null) && (!bdew.a().a(this.jdField_a_of_type_Azzv.a.message, "0X80077D9")))
     {
       m = ntd.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_c_of_type_JavaLangString, this.jdField_i_of_type_Int);
       localObject2 = new JSONObject();
@@ -305,24 +305,24 @@ public class PAVideoView
     {
       ((JSONObject)localObject2).put("uin", this.jdField_c_of_type_JavaLangString);
       ((JSONObject)localObject2).put("memNum", m);
-      ((JSONObject)localObject2).put("msg_uniseq", this.jdField_a_of_type_Azvm.a.message.uniseq);
+      ((JSONObject)localObject2).put("msg_uniseq", this.jdField_a_of_type_Azzv.a.message.uniseq);
       label264:
       if (this.jdField_e_of_type_JavaLangString != null) {}
       for (Object localObject1 = this.jdField_e_of_type_JavaLangString;; localObject1 = "0")
       {
         nrt.a(null, "", "0X80077D9", "0X80077D9", 0, 0, "1", "", (String)localObject1, ntd.a(null, null, this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, (JSONObject)localObject2), false);
-        bdan.a().a(this.jdField_a_of_type_Azvm.a.message, "0X80077D9");
+        bdew.a().a(this.jdField_a_of_type_Azzv.a.message, "0X80077D9");
         localObject1 = a(false);
         localObject2 = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject2).mExtraInfo = localObject1;
-        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = jdField_a_of_type_Apgg;
+        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = jdField_a_of_type_Apkp;
         localObject1 = URLDrawable.getDrawable(a(this.jdField_a_of_type_Long), (URLDrawable.URLDrawableOptions)localObject2);
         if (QLog.isColorLevel()) {
           QLog.d("PAVideoView" + this.jdField_b_of_type_Int, 2, "startPlay(): new or reuse cache, mVid=" + this.jdField_b_of_type_JavaLangString);
         }
         if ((((URLDrawable)localObject1).getStatus() == 1) && ((((URLDrawable)localObject1).getCurrDrawable() instanceof QQLiveDrawable)) && (((QQLiveDrawable)((URLDrawable)localObject1).getCurrDrawable()).getPlayState() == 6))
         {
-          this.jdField_a_of_type_Azvt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          this.jdField_a_of_type_Baac.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
           if (QLog.isColorLevel()) {
             QLog.d("PAVideoView" + this.jdField_b_of_type_Int, 2, "startPlay():reuse cache playCompleted, show play btn" + this.jdField_b_of_type_JavaLangString);
           }
@@ -391,14 +391,14 @@ public class PAVideoView
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.jdField_b_of_type_AndroidGraphicsShader == null)
     {
-      paramInt1 = aekt.a(55.0F, getResources());
+      paramInt1 = aepi.a(55.0F, getResources());
       if (!this.jdField_c_of_type_Boolean) {
         break label138;
       }
       if (this.jdField_f_of_type_Int != jdField_c_of_type_Int) {
         break label114;
       }
-      paramInt1 = aekt.a(55.0F, getResources());
+      paramInt1 = aepi.a(55.0F, getResources());
     }
     label138:
     for (;;)
@@ -411,7 +411,7 @@ public class PAVideoView
       label114:
       if (this.jdField_f_of_type_Int == jdField_d_of_type_Int)
       {
-        paramInt1 = aekt.a(75.0F, getResources());
+        paramInt1 = aepi.a(75.0F, getResources());
         continue;
         paramInt1 = (int)(paramInt2 * 0.6F);
       }
@@ -421,7 +421,7 @@ public class PAVideoView
   public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject)
   {
     boolean bool2 = true;
-    paramQQLiveDrawableParams = this.jdField_a_of_type_Azvt.jdField_a_of_type_AndroidWidgetImageView;
+    paramQQLiveDrawableParams = this.jdField_a_of_type_Baac.jdField_a_of_type_AndroidWidgetImageView;
     if (paramQQLiveDrawableParams != null)
     {
       if (paramInt == 3)
@@ -464,8 +464,8 @@ public class PAVideoView
     for (paramString = (QQLiveDrawable.ErrorInfo)paramObject;; paramString = null)
     {
       paramQQLiveDrawableParams.setVisibility(0);
-      paramQQLiveDrawableParams.setImageResource(2130842819);
-      this.jdField_a_of_type_Azvt.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      paramQQLiveDrawableParams.setImageResource(2130842832);
+      this.jdField_a_of_type_Baac.jdField_a_of_type_AndroidViewView.setVisibility(0);
       b(true);
       this.jdField_a_of_type_AndroidOsHandler.post(new PAVideoView.3(this, paramQQLiveDrawableParams));
       if (paramString == null) {
@@ -503,7 +503,7 @@ public class PAVideoView
             {
               paramQQLiveDrawableParams.put("uin", this.jdField_c_of_type_JavaLangString);
               paramQQLiveDrawableParams.put("memNum", paramInt);
-              paramQQLiveDrawableParams.put("msg_uniseq", this.jdField_a_of_type_Azvm.a.message.uniseq);
+              paramQQLiveDrawableParams.put("msg_uniseq", this.jdField_a_of_type_Azzv.a.message.uniseq);
               label461:
               if (this.jdField_e_of_type_JavaLangString != null) {}
               for (paramString = this.jdField_e_of_type_JavaLangString;; paramString = "0")
@@ -531,7 +531,7 @@ public class PAVideoView
                 paramQQLiveDrawableParams.put("pa", "1");
                 paramQQLiveDrawableParams.put("pb", "1");
                 paramString.h = paramQQLiveDrawableParams.toString();
-                paramString = nud.a(paramString, this.jdField_a_of_type_Azvm.a.message);
+                paramString = nud.a(paramString, this.jdField_a_of_type_Azzv.a.message);
                 ((nud)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(paramString, null);
                 this.jdField_b_of_type_Long = 0L;
                 return;
@@ -539,7 +539,7 @@ public class PAVideoView
                   break;
                 }
                 paramQQLiveDrawableParams.setVisibility(0);
-                paramQQLiveDrawableParams.setImageResource(2130842823);
+                paramQQLiveDrawableParams.setImageResource(2130842836);
                 this.jdField_a_of_type_AndroidOsHandler.post(new PAVideoView.4(this, paramQQLiveDrawableParams));
                 return;
                 if (!QLog.isColorLevel()) {

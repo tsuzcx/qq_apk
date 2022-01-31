@@ -1,72 +1,52 @@
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.open.export.js.VipDownloadInterface;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import mqq.manager.WtloginManager;
+import mqq.observer.SSOAccountObserver;
+import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
+import oicq.wlogin_sdk.tools.RSACrypt;
+import oicq.wlogin_sdk.tools.util;
 
-public class bflx
-  implements bfli
+class bflx
+  extends SSOAccountObserver
 {
-  protected final String a;
+  bflx(bflw parambflw) {}
   
-  public bflx(VipDownloadInterface paramVipDownloadInterface, String paramString)
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    bfhg.b(paramVipDownloadInterface.jdField_a_of_type_JavaLangString, "new  JsCheckUpdateCallback");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (this.a.jdField_a_of_type_Bfly != null) {
+      this.a.jdField_a_of_type_Bfly.a();
+    }
   }
   
-  public void a(String paramString)
+  public void onGetA1WithA1(String paramString, int paramInt1, byte[] paramArrayOfByte, int paramInt2, Bundle paramBundle)
   {
-    if (!this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.hasRight()) {
+    if (paramInt1 == 0)
+    {
+      paramBundle = new WloginSimpleInfo();
+      if (this.a.jdField_a_of_type_MqqManagerWtloginManager != null) {
+        this.a.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(paramString, paramBundle);
+      }
+      paramString = "" + paramBundle._uin;
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+      {
+        util.LOGD("outA1 buff: " + util.buf_to_string(paramArrayOfByte));
+        paramArrayOfByte = new RSACrypt(bfbm.a().a()).EncryptData(this.a.a(bfbm.a().a(), this.a.jdField_a_of_type_Long, 1L), paramArrayOfByte);
+        util.LOGD("encrypt buff:" + util.buf_to_string(paramArrayOfByte));
+        if (this.a.jdField_a_of_type_Bfly != null) {
+          this.a.jdField_a_of_type_Bfly.a(paramString, paramArrayOfByte);
+        }
+      }
+    }
+    while (this.a.jdField_a_of_type_Bfly == null) {
       return;
     }
-    bfhg.e(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "JsCheckUpdateCallback onException >>> " + paramString);
-    paramString = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
-    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramString);
+    this.a.jdField_a_of_type_Bfly.a();
   }
   
-  public void a(ArrayList<ApkUpdateDetail> paramArrayList)
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
   {
-    if (!this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.hasRight()) {
-      return;
+    if (this.a.jdField_a_of_type_Bfly != null) {
+      this.a.jdField_a_of_type_Bfly.a();
     }
-    bfhg.a(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "JsCheckUpdateCallback onResult >>> " + paramArrayList.size());
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONArray localJSONArray = new JSONArray();
-    int i = 0;
-    try
-    {
-      while (i < paramArrayList.size())
-      {
-        ApkUpdateDetail localApkUpdateDetail = (ApkUpdateDetail)paramArrayList.get(i);
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("packageName", localApkUpdateDetail.packageName);
-        localJSONObject2.put("newapksize", localApkUpdateDetail.newapksize);
-        localJSONObject2.put("patchsize", localApkUpdateDetail.patchsize);
-        localJSONObject2.put("updatemethod", localApkUpdateDetail.updatemethod);
-        localJSONObject2.put("versioncode", localApkUpdateDetail.versioncode);
-        localJSONObject2.put("versionname", localApkUpdateDetail.versionname);
-        localJSONObject2.put("fileMd5", localApkUpdateDetail.fileMd5);
-        localJSONObject2.put("sigMd5", localApkUpdateDetail.sigMd5);
-        localJSONObject2.put("url", localApkUpdateDetail.url);
-        localJSONArray.put(localJSONObject2);
-        i += 1;
-      }
-      localJSONObject1.put("guid", this.jdField_a_of_type_JavaLangString);
-      localJSONObject1.put("content", localJSONArray.toString());
-      localJSONObject1.put("resultCode", "0");
-      paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'" + localJSONArray.toString() + "'});}void(0);";
-    }
-    catch (JSONException paramArrayList)
-    {
-      for (;;)
-      {
-        paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
-      }
-    }
-    bfhg.b(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, ">>checkUpdate jsUrl:" + paramArrayList);
-    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramArrayList);
   }
 }
 

@@ -1,26 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.widget.ParticipleView;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class avrx
-  extends bajc
+  extends avqj
 {
-  public avrx(OCRResultActivity paramOCRResultActivity) {}
+  public ImageView e;
+  public TextView g;
   
-  protected void a(boolean paramBoolean, List<String> paramList)
+  public avrx(avrw paramavrw)
   {
-    super.a(paramBoolean, paramList);
-    OCRResultActivity.c(this.a);
-    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
-    {
-      this.a.a.setParticipleItems(paramList);
-      this.a.a.a();
-      OCRResultActivity.d(this.a);
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131708206), 0).a();
+    super(paramavrw);
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.content.Intent;
-import bgjd;
-import bgje;
+import bgnk;
+import bgnl;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 
 class ChannelProxyImpl$5
-  implements bgje
+  implements bgnl
 {
   ChannelProxyImpl$5(ChannelProxyImpl paramChannelProxyImpl, AsyncResult paramAsyncResult) {}
   
@@ -15,7 +15,7 @@ class ChannelProxyImpl$5
     boolean bool = false;
     if (paramInt1 == 9)
     {
-      bgjd.a().b(this);
+      bgnk.a().b(this);
       paramIntent = this.val$result;
       if (paramInt2 == 0) {
         bool = true;

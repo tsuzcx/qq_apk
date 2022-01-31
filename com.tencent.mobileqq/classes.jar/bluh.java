@@ -1,49 +1,18 @@
-import java.util.Arrays;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
 
 public class bluh
+  implements View.OnClickListener
 {
-  public static String a;
-  private static final int[] a;
+  public bluh(HummingActivity paramHummingActivity) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 64, 91, 96, 123, 8543, 8576, 12295, 19967, 40870, 65295, 65306, 65312, 65339, 65344, 65371, 2147483647 };
-    jdField_a_of_type_JavaLangString = "[a-zA-Z0-9\\u4e00-\\u9fa5]";
-  }
-  
-  public static int a(char paramChar)
-  {
-    if (a(paramChar)) {
-      return 3;
+    if (blud.b()) {
+      return;
     }
-    switch (Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, paramChar))
-    {
-    default: 
-      if (Character.isHighSurrogate(paramChar)) {
-        return 2;
-      }
-      break;
-    case -16: 
-    case -14: 
-    case -12: 
-    case -10: 
-    case -7: 
-    case -5: 
-    case -3: 
-    case 5: 
-      return 0;
-    }
-    return 1;
-  }
-  
-  public static int a(String paramString)
-  {
-    return Character.codePointCount(paramString, 0, paramString.length());
-  }
-  
-  private static boolean a(char paramChar)
-  {
-    return (paramChar >= '0') && (paramChar <= '9');
+    HummingActivity.a(this.a);
   }
 }
 

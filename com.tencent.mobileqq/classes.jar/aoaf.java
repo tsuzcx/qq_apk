@@ -1,42 +1,27 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
 
-public class aoaf
-  implements View.OnClickListener
+final class aoaf
+  implements URLDrawableDownListener
 {
-  public aoaf(HistoryFormItem paramHistoryFormItem) {}
+  aoaf(URLImageView paramURLImageView) {}
   
-  public void onClick(View paramView)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    boolean bool = true;
-    int i;
-    HistoryFormItem localHistoryFormItem;
-    if (anxr.a())
-    {
-      i = 1;
-      if ((i != 0) && (this.a.a()))
-      {
-        localHistoryFormItem = this.a;
-        if (HistoryFormItem.a(this.a)) {
-          break label112;
-        }
-      }
-    }
-    for (;;)
-    {
-      HistoryFormItem.a(localHistoryFormItem, bool);
-      this.a.a(paramView, HistoryFormItem.a(this.a));
-      if (HistoryFormItem.a(this.a) != null) {
-        HistoryFormItem.a(this.a).a(paramView, HistoryFormItem.a(this.a), HistoryFormItem.a(this.a));
-      }
-      return;
-      anyi.a(paramView.getContext());
-      i = 0;
-      break;
-      label112:
-      bool = false;
-    }
+    this.a.setVisibility(8);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.a.setVisibility(0);
   }
 }
 

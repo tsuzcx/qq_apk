@@ -1,21 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.Groups;
 
-public class akbd
-  implements Animation.AnimationListener
+class akbd
 {
-  public akbd(SpecailCareListActivity paramSpecailCareListActivity, akbh paramakbh) {}
+  int jdField_a_of_type_Int;
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  Groups jdField_a_of_type_ComTencentMobileqqDataGroups;
+  TextView b;
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Akbh.c.setVisibility(0);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  akbd(akbb paramakbb) {}
 }
 
 

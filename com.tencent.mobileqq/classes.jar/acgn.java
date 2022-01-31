@@ -1,26 +1,24 @@
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity;
 
-public final class acgn
-  implements bdvt
+public class acgn
+  implements View.OnClickListener
 {
-  public acgn(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
+  public acgn(AuthDevEnableCompleteActivity paramAuthDevEnableCompleteActivity) {}
   
-  public void callback(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
-    }
-    switch (paramInt)
+    paramView = (ImageView)paramView.findViewById(2131367944);
+    if (paramView != null)
     {
-    default: 
-      return;
-    case 1: 
-    case 2: 
-      this.a.onClick(null, 0);
-      return;
+      int i = 0;
+      if (paramView.getVisibility() == 0) {
+        i = 4;
+      }
+      paramView.setVisibility(i);
     }
-    this.b.onClick(null, 0);
   }
 }
 

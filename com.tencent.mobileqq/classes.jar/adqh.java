@@ -1,51 +1,52 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface.GetLiveStyleResult;
+import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.YTLiveStyleReq;
+import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleResponse;
+import com.tencent.youtu.ytcommon.tools.wejson.WeJson;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.os.MqqHandler;
 
 public class adqh
-  extends awdn
+  implements YTAGReflectLiveCheckInterface.GetLiveStyleResult
 {
-  public adqh(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public adqh(QQIdentiferLegacy paramQQIdentiferLegacy, boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "onUploadContact  isSuccess = " + paramBoolean);
+    String str = new WeJson().toJson(new LiveStyleRequester.YTLiveStyleReq(-2.0F, "10164651"));
+    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.obtainMessage(2);
+    localMessage.arg1 = 24;
+    localMessage.obj = str;
+    if (paramInt == 3) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessageDelayed(localMessage, 2000L);
+    }
+    for (;;)
+    {
+      QLog.d("QQIdentiferLegacy", 1, new Object[] { "getLightInfo Failed code=", Integer.valueOf(paramInt), " tips=", paramString1, " howtofix=", paramString2, " lightRTry=", Integer.valueOf(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).get()) });
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessage(localMessage);
     }
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  public void onSuccess(LiveStyleRequester.YTLiveStyleReq paramYTLiveStyleReq, LiveStyleResponse paramLiveStyleResponse)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "RegisterQQNumberActivity onGetBindUinWithPhone isSuccess = " + paramBoolean1 + "; isBindOk = " + paramBoolean2 + ";hadbind = " + paramBoolean3 + ";uin =" + paramString);
-    }
-    if (paramBoolean1)
+    QLog.d("QQIdentiferLegacy", 1, new Object[] { "getLightInfo success, current is loading : ", Boolean.valueOf(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).get()) });
+    paramYTLiveStyleReq.app_id = "10164651";
+    paramYTLiveStyleReq = new WeJson().toJson(paramYTLiveStyleReq);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.removeMessages(2);
+    paramLiveStyleResponse = this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.obtainMessage(2);
+    paramLiveStyleResponse.arg1 = 23;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessage(paramLiveStyleResponse);
+    if (QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).compareAndSet(true, true)) {}
+    do
     {
-      if (paramBoolean2)
-      {
-        RegisterQQNumberActivity.a(this.a, true);
-        RegisterQQNumberActivity.b(this.a);
-        return;
-      }
-      if ((paramBoolean3) && (!TextUtils.isEmpty(paramString)))
-      {
-        RegisterQQNumberActivity.a(this.a);
-        Intent localIntent = new Intent(this.a, VerifyPhoneNumActivity.class);
-        localIntent.putExtra("phonenum", this.a.a);
-        localIntent.putExtra("key", this.a.b);
-        localIntent.putExtra("uin", RegisterQQNumberActivity.a(this.a));
-        localIntent.putExtra("key_register_sign", RegisterQQNumberActivity.a(this.a));
-        localIntent.putExtra("key_register_binduin", paramString);
-        this.a.startActivity(localIntent);
-        this.a.finish();
-        return;
-      }
-      RegisterQQNumberActivity.b(this.a);
       return;
-    }
-    RegisterQQNumberActivity.b(this.a);
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, paramYTLiveStyleReq, this.jdField_a_of_type_Boolean);
+    } while (!QLog.isColorLevel());
+    QLog.d("QQIdentiferLegacy", 2, "getLightInfo success");
   }
 }
 

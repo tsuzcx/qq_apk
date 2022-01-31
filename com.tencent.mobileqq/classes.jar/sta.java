@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendT
 import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
 
 class sta
-  implements yhf
+  implements yls
 {
   sta(ssz paramssz) {}
   
@@ -13,7 +13,7 @@ class sta
       ssy.a(this.a.a).c();
       this.a.a.a(false);
       this.a.a.a.c();
-      yvu.a("", "auth_discover", "fold", 0, 0, new String[0]);
+      zaj.a("", "auth_discover", "fold", 0, 0, new String[0]);
     }
   }
 }

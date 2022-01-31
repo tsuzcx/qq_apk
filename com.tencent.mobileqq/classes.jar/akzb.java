@@ -1,25 +1,44 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity.3.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class akzb
-  implements Animator.AnimatorListener
 {
-  public akzb(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public String a()
   {
-    ThreadManager.getUIHandler().postDelayed(new ApolloGuestsStateActivity.3.1(this), 200L);
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.d == 0) {
+      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.c).append("_").append(this.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameShareDataHandler", 2, new Object[] { "getCacheKey:", localStringBuilder.toString() });
+      }
+      return localStringBuilder.toString();
+      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.d);
+    }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("GameShareResult{");
+    localStringBuffer.append("mGameId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mActivityId=").append(this.b);
+    localStringBuffer.append(", mUin='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mAIOType=").append(this.c);
+    localStringBuffer.append(", mShareTo=").append(this.d);
+    localStringBuffer.append(", mShareTS=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", mShareRet=").append(this.e);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
+  }
 }
 
 

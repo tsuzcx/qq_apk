@@ -28,7 +28,7 @@ public class oua
           str1 = (String)((Iterator)localObject).next();
           str2 = (String)paramString.get(str1);
           if (TextUtils.equals(str1, "dynamic_buffer_switch")) {
-            bjxj.l(Integer.parseInt(str2));
+            bkbq.l(Integer.parseInt(str2));
           }
         }
         else
@@ -41,7 +41,7 @@ public class oua
         paramString.printStackTrace();
       }
       if (TextUtils.equals(str1, "dynamic_buffer_config_json")) {
-        bjxj.g(str2);
+        bkbq.g(str2);
       }
     }
   }
@@ -49,8 +49,8 @@ public class oua
   public void onWipeConfig(int paramInt)
   {
     super.onWipeConfig(paramInt);
-    bjxj.l(0);
-    bjxj.g("");
+    bkbq.l(0);
+    bkbq.g("");
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afyi;
-import azmj;
+import agcx;
+import azqs;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 class StructingMsgItemBuilder$5
   implements Runnable
 {
-  StructingMsgItemBuilder$5(StructingMsgItemBuilder paramStructingMsgItemBuilder, afyi paramafyi) {}
+  StructingMsgItemBuilder$5(StructingMsgItemBuilder paramStructingMsgItemBuilder, agcx paramagcx) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ class StructingMsgItemBuilder$5
       if (localPortalManager != null) {}
       for (int j = localPortalManager.a();; j = -1)
       {
-        azmj.b(this.this$0.a, "CliOper", "", "", "0X8004FF9", "0X8004FF9", 0, 0, "" + j, "" + i, "" + str1, str2);
+        azqs.b(this.this$0.a, "CliOper", "", "", "0X8004FF9", "0X8004FF9", 0, 0, "" + j, "" + i, "" + str1, str2);
         return;
         i = 2;
         break;

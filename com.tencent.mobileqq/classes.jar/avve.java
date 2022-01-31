@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.ocr.view.gesture.GestureFrameLayout;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class avve
-  implements avvf
+  implements BusinessObserver
 {
-  public avve(GestureFrameLayout paramGestureFrameLayout) {}
-  
-  public void a(avvt paramavvt)
-  {
-    this.a.a(paramavvt);
-  }
-  
-  public void a(avvt paramavvt1, avvt paramavvt2)
-  {
-    this.a.a(paramavvt2);
-  }
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

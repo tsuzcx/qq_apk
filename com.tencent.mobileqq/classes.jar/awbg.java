@@ -1,15 +1,6 @@
-public final class awbg
+public abstract interface awbg
 {
-  public int a;
-  public long a;
-  public String a;
-  
-  public awbg(int paramInt, long paramLong, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

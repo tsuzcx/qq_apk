@@ -1,39 +1,27 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.SSOAccountObserver;
 
 public class addu
-  extends SSOAccountObserver
+  extends Handler
 {
-  public addu(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
+  public addu(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    this.a.c();
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SSOAccountObserver", 2, "onGetTicketNoPasswd wtTicket=" + paramArrayOfByte);
+      QLog.d("GroupManagerActivity", 2, "mWaitingDialogControlHandler operationFinished = " + GroupManagerActivity.b(this.a));
     }
-    String str = null;
-    if (paramInt == 4096) {
-      str = new String(paramArrayOfByte);
+    GroupManagerActivity.b(this.a, true);
+    if (GroupManagerActivity.b(this.a))
+    {
+      this.a.a(true);
+      return;
     }
-    paramArrayOfByte = new Intent();
-    paramArrayOfByte.putExtra("last_account", paramString);
-    paramArrayOfByte.putExtra("wtTicket", str);
-    paramArrayOfByte.putExtra("ssobundle", paramBundle);
-    this.a.setResult(-1, paramArrayOfByte);
-    this.a.finish();
-  }
-  
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
-  {
-    this.a.c();
+    paramMessage = GroupManagerActivity.a(this.a).obtainMessage(0);
+    GroupManagerActivity.a(this.a).sendMessageDelayed(paramMessage, 60000L);
+    GroupManagerActivity.c(this.a, true);
   }
 }
 

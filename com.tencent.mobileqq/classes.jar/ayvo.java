@@ -1,25 +1,26 @@
-import QQService.StreamInfo;
-
-public class ayvo
+class ayvo
 {
-  public int a;
-  public StreamInfo a;
-  public String a;
-  public short a;
-  public int b;
+  int jdField_a_of_type_Int;
+  CharSequence jdField_a_of_type_JavaLangCharSequence;
+  int b;
   
-  public ayvo(String paramString, short paramShort, int paramInt1, StreamInfo paramStreamInfo, int paramInt2)
+  public ayvo(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Short = paramShort;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_a_of_type_Int = -1;
+    this.b = 0;
+  }
+  
+  public ayvo(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
     this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_QQServiceStreamInfo = paramStreamInfo;
     this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayvo
  * JD-Core Version:    0.7.0.1
  */

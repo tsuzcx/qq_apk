@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.minigame.manager;
 
-import bguw;
+import bgzd;
 
 public class GameReportManager$2
   implements Runnable
 {
-  public GameReportManager$2(bguw parambguw) {}
+  public GameReportManager$2(bgzd parambgzd) {}
   
   public void run()
   {
-    bguw.a(this.this$0, true);
+    bgzd.a(this.this$0, true);
   }
 }
 

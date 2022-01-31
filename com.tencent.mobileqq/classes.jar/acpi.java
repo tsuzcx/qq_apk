@@ -1,41 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.DirectForwardActivity;
-import java.util.ArrayList;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class acpi
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public acpi(DirectForwardActivity paramDirectForwardActivity) {}
+  public acpi(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramIntent = paramIntent.getExtras();
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getStringArrayList("procNameList");
-      paramIntent = paramIntent.getString("verify");
-      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.a != null) && (bcwf.a(paramIntent, paramContext))) {
-        break label53;
-      }
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    for (;;)
-    {
-      return;
-      label53:
-      int i = 0;
-      while (i < paramContext.size())
-      {
-        if (this.a.a.equals(paramContext.get(i)))
-        {
-          this.a.finish();
-          return;
-        }
-        i += 1;
-      }
-    }
+    ChatSettingForTroop.h(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
   }
 }
 

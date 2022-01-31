@@ -1,8 +1,9 @@
-import java.nio.channels.SelectionKey;
+import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public abstract interface bgma
 {
-  public abstract boolean handle(SelectionKey paramSelectionKey);
+  public abstract void a(Context paramContext, MiniAppInfo paramMiniAppInfo);
 }
 
 

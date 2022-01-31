@@ -1,20 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+
 public class asfo
-  implements alkr
+  implements View.OnClickListener
 {
-  public void a() {}
+  public asfo(IphoneTitleBarFragment paramIphoneTitleBarFragment) {}
   
-  public void a(asfr paramasfr) {}
-  
-  protected void a(boolean paramBoolean, asfr paramasfr) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBoolean, (asfr)paramObject);
+    this.a.onBackEvent();
   }
 }
 

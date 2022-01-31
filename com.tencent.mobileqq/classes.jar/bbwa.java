@@ -1,17 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.troop.filemanager.data.TroopMemberListRefresher.1.1;
+import java.util.List;
 
 public class bbwa
-  implements bbzj
+  extends ameq
 {
-  public bbwa(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  bbwa(bbvz parambbvz) {}
   
-  public void a(View paramView, boolean paramBoolean)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    if (paramBoolean) {
-      this.a.a(this.a.a.a());
+    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {}
+    while ((!paramBoolean) || (this.a.jdField_a_of_type_AndroidOsHandler == null)) {
+      return;
     }
+    ThreadManager.post(new TroopMemberListRefresher.1.1(this), 5, null, true);
   }
 }
 

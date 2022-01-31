@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.List;
 
 class aufo
-  implements DialogInterface.OnClickListener
+  implements aufz<Integer, List<EmoticonPackage>>
 {
-  aufo(aufi paramaufi) {}
+  aufo(aufn paramaufn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public List<EmoticonPackage> a(Integer paramInteger)
   {
-    paramDialogInterface.dismiss();
+    return this.a.a(paramInteger.intValue());
   }
 }
 

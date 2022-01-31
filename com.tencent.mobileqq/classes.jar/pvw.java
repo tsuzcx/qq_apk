@@ -38,7 +38,7 @@ public class pvw
     int j = 0;
     this.jdField_a_of_type_JavaUtilList.clear();
     String str1 = a(paramString);
-    boolean bool2 = bdcs.a(str1);
+    boolean bool2 = bdhb.a(str1);
     boolean bool3 = pwc.a(str1, paramString);
     String str2 = str1 + "/" + "pts_app_config.json";
     boolean bool4 = pwc.a(str2);

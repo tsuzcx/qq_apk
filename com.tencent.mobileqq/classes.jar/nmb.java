@@ -338,7 +338,7 @@ public class nmb
             c("startVideoDownload create tmp file failed for vid:" + str1);
             continue;
           }
-          i = bdee.a(BaseApplication.getContext());
+          i = bdin.a(BaseApplication.getContext());
           c("startVideoDownload vid:" + str1 + ", networkType:" + this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mNetworkType + ", curNetType:" + i + ", no valid network, skip to next task");
           b(paramInt);
           continue;
@@ -383,7 +383,7 @@ public class nmb
             if ((paramConfig != null) && (paramConfig.content.has())) {
               if (paramConfig.compress.get() == 1)
               {
-                paramConfig = avxz.a(paramConfig.content.get().toByteArray());
+                paramConfig = awci.a(paramConfig.content.get().toByteArray());
                 if (paramConfig == null) {
                   break label500;
                 }

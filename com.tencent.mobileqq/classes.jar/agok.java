@@ -1,84 +1,36 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class agok
-  extends alxx
+  implements Handler.Callback
 {
-  agok(agoj paramagoj) {}
+  agok(agoe paramagoe) {}
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  public boolean handleMessage(Message paramMessage)
   {
-    ChatActivityUtils.b();
-    Object localObject = this.a.jdField_a_of_type_AndroidContentContext;
-    Context localContext = this.a.jdField_a_of_type_AndroidContentContext;
-    int i;
-    if (paramBoolean)
-    {
-      i = 2131720075;
-      QQToast.a((Context)localObject, 2, localContext.getString(i), 0).b(this.a.a());
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-        break label69;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "[handleMessage] handle message mStoped = " + agoe.a(this.a));
     }
-    label69:
-    do
+    switch (paramMessage.what)
     {
-      int k;
-      do
-      {
-        return;
-        i = 2131720063;
-        break;
-        localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-        if (paramList == null) {}
-        for (i = 0;; i = paramList.size())
-        {
-          int j = 0;
-          k = 0;
-          while ((k == 0) && (j < i))
-          {
-            if (bdal.a(String.valueOf(paramList.get(j)), localObject)) {
-              k = 1;
-            }
-            j += 1;
-          }
-        }
-      } while (k == 0);
-      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
-    } while (!paramBoolean);
-    this.a.m();
-  }
-  
-  protected void b(boolean paramBoolean, List<Long> paramList)
-  {
-    int k = 0;
-    ChatActivityUtils.b();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
-    do
+    }
+    for (;;)
     {
-      do
-      {
-        return;
-        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-        if (paramList == null) {}
-        for (int i = 0;; i = paramList.size())
-        {
-          int j = 0;
-          while ((k == 0) && (j < i))
-          {
-            if (bdal.a(String.valueOf(paramList.get(j)), str)) {
-              k = 1;
-            }
-            j += 1;
-          }
-        }
-      } while (k == 0);
-      ChatActivityUtils.b();
-    } while (!paramBoolean);
-    this.a.m();
+      return false;
+      Object localObject = (aknx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+      paramMessage = (String)paramMessage.obj;
+      if (!agoe.a(this.a)) {
+        ((aknx)localObject).a().e(paramMessage);
+      }
+      localObject = Message.obtain();
+      ((Message)localObject).what = 1;
+      ((Message)localObject).obj = paramMessage;
+      agoe.a(this.a).removeMessages(1);
+      agoe.a(this.a).sendMessageDelayed((Message)localObject, 30000L);
+    }
   }
 }
 

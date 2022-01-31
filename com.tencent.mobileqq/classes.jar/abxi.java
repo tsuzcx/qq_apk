@@ -1,28 +1,18 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AddAccountActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class abxi
-  implements TextWatcher
+class abxi
+  implements DialogInterface.OnCancelListener
 {
-  public abxi(AddAccountActivity paramAddAccountActivity) {}
+  abxi(abxe paramabxe, abxd paramabxd, abwv paramabwv, JSONObject paramJSONObject, abwu paramabwu) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramCharSequence.length() > 0) {
-      if (this.a.a != null) {
-        this.a.a.setVisibility(0);
-      }
-    }
-    while ((this.a.a == null) || (!this.a.a.isShown())) {
-      return;
-    }
-    this.a.a.setVisibility(8);
+    this.jdField_a_of_type_Abxe.d();
+    QLog.i("DoraemonOpenAPI.apiMgr", 1, "cancel " + this.jdField_a_of_type_Abxd.a);
+    abxe.c(this.jdField_a_of_type_Abxe, 4, this.jdField_a_of_type_Abwv, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Abwu);
   }
 }
 

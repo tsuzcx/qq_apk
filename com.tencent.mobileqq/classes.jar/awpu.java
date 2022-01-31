@@ -1,8 +1,17 @@
-import QC.UniBusiGetOneItemWithCheckRsp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface awpu
+class awpu
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, UniBusiGetOneItemWithCheckRsp paramUniBusiGetOneItemWithCheckRsp);
+  awpu(awpq paramawpq) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

@@ -1,21 +1,58 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class uxs
-  extends ugz
 {
-  public boolean a;
-  public boolean b;
-  public boolean c = true;
-  public boolean d;
+  public final int a;
+  public final int b;
+  public final int c;
   
-  public uxs(ErrorMessage paramErrorMessage)
+  public uxs(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = 1;
+  }
+  
+  public uxs(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
+  
+  public static uxs a(SosoInterface.SosoLocation paramSosoLocation)
+  {
+    if (paramSosoLocation != null) {
+      return new uxs((int)(paramSosoLocation.a * 1000000.0D), (int)(paramSosoLocation.b * 1000000.0D));
+    }
+    return new uxs(0, 0);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (uxs)paramObject;
+      if (this.a != paramObject.a) {
+        return false;
+      }
+    } while (this.b == paramObject.b);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.a * 31 + this.b;
   }
   
   public String toString()
   {
-    return "{\"_class\":\"BasePageLoaderEvent\", \"errorInfo\":\"" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + "\", \"isEnd\":\"" + this.jdField_a_of_type_Boolean + "\", \"isLocalData\":\"" + this.b + "\", \"isFirstPage\":\"" + this.c + "\"}";
+    return "GpsMsg{latitude=" + this.a + ", longitude=" + this.b + '}';
   }
 }
 

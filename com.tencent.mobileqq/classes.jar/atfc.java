@@ -1,17 +1,15 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.os.Bundle;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
 
-public class atfc
-  implements View.OnClickListener
+public abstract interface atfc
 {
-  public atfc(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
+  public abstract atff a();
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
-  }
+  public abstract void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
+  
+  public abstract void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, Bundle paramBundle, atfe paramatfe);
+  
+  public abstract void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, Bundle paramBundle, atfe paramatfe);
 }
 
 

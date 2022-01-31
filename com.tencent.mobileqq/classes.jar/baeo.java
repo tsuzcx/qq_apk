@@ -1,50 +1,56 @@
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
 public class baeo
-  implements bhqd
+  extends baes
 {
-  public baeo(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, baby parambaby, SparseArray paramSparseArray, bhpy parambhpy) {}
+  private Paint a;
+  private String b = "";
+  private int g = 20;
+  private int h = -1;
   
-  public void OnClick(View paramView, int paramInt)
+  public baeo(SpriteGLView paramSpriteGLView, Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
-    TimDocSSOMsg.UinRightInfo localUinRightInfo = this.jdField_a_of_type_Baby.a;
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null) {
-      paramInt = -1;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    e(paramInt1);
+    f(paramInt2);
+    a(paramSpriteGLView, paramString);
+  }
+  
+  public void a(SpriteGLView paramSpriteGLView, String paramString)
+  {
+    if (paramString.equals(this.b)) {
+      return;
     }
-    switch (paramInt)
-    {
-    default: 
-    case 2131720637: 
-    case 2131720638: 
-      for (;;)
-      {
-        TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.a.notifyDataSetChanged();
-        if (this.jdField_a_of_type_Bhpy.isShowing()) {
-          this.jdField_a_of_type_Bhpy.dismiss();
-        }
-        return;
-        paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
-        break;
-        localUinRightInfo.uint32_right.set(1);
-        continue;
-        localUinRightInfo.uint32_right.set(2);
-      }
+    this.b = paramString;
+    paramString = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString), this.g, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(paramString);
+    localCanvas.drawColor(-16777216, PorterDuff.Mode.CLEAR);
+    localCanvas.drawText(this.b, 0.0F, this.g * 0.8F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_a_of_type_Baev != null) {
+      this.jdField_a_of_type_Baev.c();
     }
-    if ((localUinRightInfo.uint32_right.get() == 1) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.b == 1)) {}
-    for (paramView = this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getString(2131720634);; paramView = this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getString(2131720633))
-    {
-      bdcd.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getActivity(), 230, alpo.a(2131715140), paramView, 2131690648, 2131691561, new baep(this, localUinRightInfo), new baeq(this)).show();
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.b != 1) {
-        break;
-      }
-      azmj.b(TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment), "dc00898", "", "", "0x8007CFC", "0x8007CFC", 0, 0, "", "", "", "");
-      break;
-    }
+    this.jdField_a_of_type_Baev = new baev(paramSpriteGLView, paramString);
+    g();
+    f();
+  }
+  
+  public void e(int paramInt)
+  {
+    this.h = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
+  }
+  
+  public void f(int paramInt)
+  {
+    this.g = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.g);
   }
 }
 

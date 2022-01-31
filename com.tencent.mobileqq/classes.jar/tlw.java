@@ -37,7 +37,7 @@ final class tlw
       {
         tfd.b(1, paramURL.toString());
         long l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-        paramsfc = bame.a(paramURL.toString());
+        paramsfc = baqn.a(paramURL.toString());
         if (paramsfc != null)
         {
           String str = paramsfc.getAbsolutePath();

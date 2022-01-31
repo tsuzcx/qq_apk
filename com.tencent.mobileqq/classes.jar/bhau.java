@@ -1,44 +1,40 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.webkit.ValueCallback;
+import android.media.MediaDataSource;
+import android.support.annotation.RequiresApi;
 
-public abstract class bhau
-  extends bhax<Integer, Integer>
+@RequiresApi(api=23)
+class bhau
+  extends MediaDataSource
 {
-  public static final Integer a;
-  public static final Integer b = Integer.valueOf(2);
-  protected Handler a;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  static
+  public bhau(bhat parambhat, byte[] paramArrayOfByte)
   {
-    jdField_a_of_type_JavaLangInteger = Integer.valueOf(1);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
   
-  public bhau()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
+  public void close() {}
   
-  public void a(Integer paramInteger)
+  public long getSize()
   {
-    Object localObject = getCurrState();
-    if ((localObject instanceof bhav))
-    {
-      localObject = (bhav)localObject;
-      if ((bhav.a((bhav)localObject) != null) && (jdField_a_of_type_JavaLangInteger == paramInteger)) {
-        setCurrState(bhav.a((bhav)localObject));
-      }
+    if (this.jdField_a_of_type_ArrayOfByte == null) {
+      return -1L;
     }
-    for (int i = 1;; i = 0)
+    return this.jdField_a_of_type_ArrayOfByte.length;
+  }
+  
+  public int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_ArrayOfByte == null) {}
+    while ((paramLong < 0L) || (paramLong >= this.jdField_a_of_type_ArrayOfByte.length)) {
+      return -1;
+    }
+    if (paramInt2 + paramLong < this.jdField_a_of_type_ArrayOfByte.length) {}
+    for (long l = paramInt2;; l = this.jdField_a_of_type_ArrayOfByte.length - paramLong)
     {
-      if (i == 0) {
-        super.sendEvent(paramInteger);
-      }
-      return;
+      System.arraycopy(this.jdField_a_of_type_ArrayOfByte, (int)paramLong, paramArrayOfByte, paramInt1, (int)l);
+      return (int)l;
     }
   }
-  
-  public abstract void a(String paramString1, ValueCallback paramValueCallback, String paramString2);
 }
 
 

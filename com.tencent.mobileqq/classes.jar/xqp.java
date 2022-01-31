@@ -1,22 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class xqp
-  implements View.OnTouchListener
+public class xqp
 {
-  xqp(xqo paramxqo) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static String a(int[] paramArrayOfInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+      return null;
     }
-    for (;;)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramArrayOfInt[0]);
+    int i = 1;
+    while (i < paramArrayOfInt.length)
     {
-      return true;
-      this.a.dismiss();
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramArrayOfInt[i]);
+      i += 1;
     }
+    return localStringBuilder.toString();
   }
 }
 

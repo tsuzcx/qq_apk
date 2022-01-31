@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import acgi;
+import ackx;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ChatActivityUtils$36$1
   implements Runnable
 {
-  public ChatActivityUtils$36$1(acgi paramacgi) {}
+  public ChatActivityUtils$36$1(ackx paramackx) {}
   
   public void run()
   {

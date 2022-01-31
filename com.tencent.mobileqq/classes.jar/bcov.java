@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.Calendar;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class bcov
-  implements View.OnClickListener
+public class bcov
 {
-  bcov(bcot parambcot, bcox parambcox) {}
+  private static Handler a;
   
-  public void onClick(View paramView)
+  public static void a(Runnable paramRunnable)
   {
-    if ((bcot.a(this.jdField_a_of_type_Bcot) != null) && (bcot.a(this.jdField_a_of_type_Bcot).isShowing())) {
-      bcot.a(this.jdField_a_of_type_Bcot).dismiss();
+    if (a == null)
+    {
+      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("TroopMemberDBThread", 0);
+      localHandlerThread.start();
+      a = new Handler(localHandlerThread.getLooper());
     }
-    if ((this.jdField_a_of_type_Bcox != null) && (bcot.a(this.jdField_a_of_type_Bcot) != null)) {
-      this.jdField_a_of_type_Bcox.a(bcot.a(this.jdField_a_of_type_Bcot).getTimeInMillis());
-    }
+    a.post(paramRunnable);
   }
 }
 

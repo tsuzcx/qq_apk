@@ -5,17 +5,17 @@ public class len
 {
   public static String a()
   {
-    return bduw.a(aljq.aX + "qav" + File.separator);
+    return bdzf.a(alof.aX + "qav" + File.separator);
   }
   
   public static String b()
   {
-    return bduw.a(aljq.aX + "ptv_template" + File.separator);
+    return bdzf.a(alof.aX + "ptv_template" + File.separator);
   }
   
   public static String c()
   {
-    return bduw.a(aljq.aX + "new_ptv_template" + File.separator);
+    return bdzf.a(alof.aX + "new_ptv_template" + File.separator);
   }
   
   public static String d()
@@ -30,13 +30,13 @@ public class len
   
   public static String f()
   {
-    return bduw.a(aljq.aX + "funcall" + File.separator);
+    return bdzf.a(alof.aX + "funcall" + File.separator);
   }
   
   public static String g()
   {
-    if (bdag.a()) {}
-    for (String str1 = bduw.a(aljq.aX);; str1 = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath())
+    if (bdep.a()) {}
+    for (String str1 = bdzf.a(alof.aX);; str1 = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath())
     {
       String str2 = str1;
       if (str1 != null)
@@ -57,12 +57,12 @@ public class len
   
   public static String i()
   {
-    return bduw.a(aljq.aX + "av_image_data" + File.separator);
+    return bdzf.a(alof.aX + "av_image_data" + File.separator);
   }
   
   public static String j()
   {
-    return bduw.a(aljq.aX + "av_report_record_dir");
+    return bdzf.a(alof.aX + "av_report_record_dir");
   }
   
   public static String k()

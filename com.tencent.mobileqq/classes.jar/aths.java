@@ -1,27 +1,74 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.liveroom.LiveRoomHelper;
+import cooperation.liveroom.LiveRoomProxyActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aths
-  implements DialogInterface.OnClickListener
+  extends WebViewPlugin
 {
-  public aths(ListenTogetherManager paramListenTogetherManager, int paramInt, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aths()
   {
-    if (paramInt == 1)
+    this.mPluginNameSpace = "gflivesdk";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("openView".equals(paramString3)) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LiveRoomBusinessPlugin", 2, "openView");
+        }
+        paramString1 = new JSONObject(paramVarArgs[0]);
+        paramString2 = paramString1.optString("viewType");
+        paramJsBridgeListener = paramString1.optString("callback");
+        if ("activity".equals(paramString2))
+        {
+          paramString1 = paramString1.optString("url");
+          paramString2 = this.mRuntime.a();
+          if ((paramString2 != null) && (paramString1 != null) && (!paramString1.isEmpty()))
+          {
+            LiveRoomProxyActivity.open(paramString2, paramString1, "BusinessPlugin openView");
+            callJs(paramJsBridgeListener, new String[] { "{\"result\":0}" });
+          }
+        }
+        return true;
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+        }
+      }
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.a();
-      paramDialogInterface.dismiss();
+      return false;
+      if ("checkSDKInstalled".equals(paramString3))
+      {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+          if ((!LiveRoomHelper.getPluginInstalledInTool()) || (TextUtils.isEmpty(LiveRoomHelper.getPluginVersionInTool()))) {
+            break;
+          }
+          callJs(paramJsBridgeListener, new String[] { "{\"result\":0,\"version\":\"" + LiveRoomHelper.getPluginVersionInTool() + "\"}" });
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+        }
+      }
     }
-    while (paramInt != 0) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.b();
-    paramDialogInterface.dismiss();
-    ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager, (ListenTogetherSession)ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager).get(atii.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString)));
+    PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), new atht(this, paramJsBridgeListener));
+    return true;
   }
 }
 

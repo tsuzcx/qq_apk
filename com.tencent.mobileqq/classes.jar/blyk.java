@@ -1,29 +1,37 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import android.graphics.Canvas;
+import android.graphics.RectF;
+import android.text.TextPaint;
 
-class blyk
-  implements EIPClientConnectListener
+public class blyk
+  extends blwu
 {
-  blyk(blyj paramblyj) {}
+  protected float a;
+  protected String a;
   
-  public void connectFailed()
+  public blyk(int paramInt1, int paramInt2, TextPaint paramTextPaint, String paramString, RectF paramRectF, float paramFloat)
   {
-    blyj.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "connectFailed!");
-    }
+    super(paramInt1, paramInt2, paramTextPaint, paramRectF);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public void connectSuccess(EIPCConnection paramEIPCConnection)
+  public void a(Canvas paramCanvas, int paramInt1, int paramInt2)
   {
-    if (paramEIPCConnection != null) {
-      blyj.a(this.a, paramEIPCConnection.procName);
+    if (paramCanvas == null) {
+      return;
     }
-    blyj.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "connectSuccess:" + blyj.a(this.a));
-    }
+    String str = this.jdField_a_of_type_JavaLangString;
+    int i = this.jdField_a_of_type_JavaLangString.length();
+    float f1 = paramInt1;
+    float f2 = this.jdField_a_of_type_AndroidGraphicsRectF.left;
+    float f3 = paramInt2;
+    float f4 = this.jdField_a_of_type_Float;
+    paramCanvas.drawText(str, 0, i, f2 + f1, this.jdField_a_of_type_AndroidGraphicsRectF.top + (f3 + f4), this.jdField_a_of_type_AndroidTextTextPaint);
+  }
+  
+  public void a(Canvas paramCanvas, blws paramblws, int paramInt1, int paramInt2)
+  {
+    paramblws.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRectF, paramInt1, paramInt2);
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.config.business;
 
-import aogj;
-import aonw;
-import aony;
+import aoks;
+import aosf;
+import aosh;
 
 public class VipARConfProcessor$1
   implements Runnable
 {
   public void run()
   {
-    aonw localaonw = (aonw)aogj.a().a(499);
-    aony localaony = this.this$0;
-    if (localaonw != null) {}
+    aosf localaosf = (aosf)aoks.a().a(499);
+    aosh localaosh = this.this$0;
+    if (localaosf != null) {}
     for (boolean bool = true;; bool = false)
     {
-      aony.a(localaony, bool, localaonw, "loadConfig", "bean = null");
+      aosh.a(localaosh, bool, localaosf, "loadConfig", "bean = null");
       return;
     }
   }

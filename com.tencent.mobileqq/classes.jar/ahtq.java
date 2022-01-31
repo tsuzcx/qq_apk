@@ -1,27 +1,33 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class ahtq
-  implements ahzw
 {
-  public ahtq(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  public void a(int paramInt)
+  public ahtq(PublicAccountInfo paramPublicAccountInfo)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.k();
-      return;
-    case 3: 
-      this.a.l();
-      return;
-    case 2: 
-      this.a.m();
-      return;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    this.a.n();
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.b = str;
   }
 }
 

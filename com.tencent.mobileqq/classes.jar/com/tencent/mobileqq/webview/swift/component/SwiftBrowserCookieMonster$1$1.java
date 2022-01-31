@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bedq;
+import behz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -29,14 +29,14 @@ class SwiftBrowserCookieMonster$1$1
         localObject2 = ((CopyOnWriteArrayList)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          localObject3 = (bedq)((Iterator)localObject2).next();
+          localObject3 = (behz)((Iterator)localObject2).next();
           if (QLog.isColorLevel()) {
             QLog.i("SwiftBrowserCookieMonster", 2, "post callback onSetCookiesFinished " + ndq.b((String)localObject1, new String[0]) + ", errorCode: " + this.a.this$0.jdField_a_of_type_Long);
           }
           if (this.a.this$0.b) {
             QLog.i("SwiftBrowserCookieMonster", 1, "cookie is wrong, need do jump ptlogin! " + ndq.b((String)localObject1, new String[0]));
           }
-          ((bedq)localObject3).a((String)localObject1, null, this.a.this$0.jdField_a_of_type_Long);
+          ((behz)localObject3).a((String)localObject1, null, this.a.this$0.jdField_a_of_type_Long);
         }
         break;
       }

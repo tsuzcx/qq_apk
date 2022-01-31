@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.app.Dialog;
-import wxb;
+import xbk;
 
 public class EditVideoSave$4
   implements Runnable
 {
-  public EditVideoSave$4(wxb paramwxb) {}
+  public EditVideoSave$4(xbk paramxbk) {}
   
   public void run()
   {
-    wxb.a(this.this$0).show();
+    xbk.a(this.this$0).show();
   }
 }
 

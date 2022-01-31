@@ -1,17 +1,15 @@
-import android.net.Proxy;
+import android.os.IInterface;
 
-final class bjok
-  extends bjoj
+public abstract interface bjok
+  extends IInterface
 {
-  public int a()
-  {
-    return Proxy.getDefaultPort();
-  }
+  public abstract void a(String paramString);
   
-  public String a()
-  {
-    return Proxy.getDefaultHost();
-  }
+  public abstract void a(String paramString, float paramFloat, long paramLong);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void b(String paramString);
 }
 
 

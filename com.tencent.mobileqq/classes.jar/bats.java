@@ -1,115 +1,77 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.util.DisplayMetrics;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.highway.api.HighwayConfBean;
+import com.tencent.qphone.base.util.QLog;
 
 public class bats
-  extends bapk
+  extends aokh<HighwayConfBean>
 {
-  private float a = 2.0F;
-  
-  public bats(BaseApplicationImpl paramBaseApplicationImpl)
+  public int a()
   {
-    try
-    {
-      this.a = paramBaseApplicationImpl.getResources().getDisplayMetrics().density;
-      return;
-    }
-    catch (Exception paramBaseApplicationImpl) {}
+    return 15;
   }
   
-  public static Bitmap a(Bitmap paramBitmap, double paramDouble1, double paramDouble2)
+  @NonNull
+  public HighwayConfBean a(int paramInt)
   {
-    Object localObject;
-    if (paramBitmap == null) {
-      localObject = null;
+    HighwayConfBean localHighwayConfBean = new HighwayConfBean();
+    if (QLog.isColorLevel()) {
+      QLog.d("HighwayConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
     }
-    Bitmap localBitmap;
-    do
-    {
-      return localObject;
-      float f1 = paramBitmap.getWidth();
-      float f2 = paramBitmap.getHeight();
-      localObject = new Matrix();
-      ((Matrix)localObject).postScale((float)paramDouble1 / f1, (float)paramDouble2 / f2);
-      localBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, (int)f1, (int)f2, (Matrix)localObject, true);
-      localObject = localBitmap;
-    } while (localBitmap == paramBitmap);
-    paramBitmap.recycle();
-    return localBitmap;
+    return localHighwayConfBean;
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  @Nullable
+  public HighwayConfBean a(aoko[] paramArrayOfaoko)
   {
-    URL localURL = paramDownloadParams.url;
-    paramDownloadParams.url = new URL("http", localURL.getAuthority(), localURL.getFile());
-    return super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramDownloadParams = null;
-    try
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      paramFile = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), null);
-      paramDownloadParams = a(paramFile, this.a * 50.0F, this.a * 50.0F);
-      int i = paramDownloadParams.getWidth();
-      int j = paramDownloadParams.getHeight();
-      paramFile = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-      paramFile.setDensity(160);
-      paramURLDrawableHandler = new Canvas(paramFile);
-      Paint localPaint = new Paint(1);
-      localPaint.setColor(-16777216);
-      Rect localRect = new Rect(0, 0, i, j);
-      RectF localRectF = new RectF(localRect);
-      float f = 10.0F * this.a;
-      paramURLDrawableHandler.drawRoundRect(localRectF, f, f, localPaint);
-      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-      paramURLDrawableHandler.drawBitmap(paramDownloadParams, localRect, localRect, localPaint);
-    }
-    catch (OutOfMemoryError paramFile)
-    {
-      for (;;)
-      {
-        try
-        {
-          if (!paramDownloadParams.isRecycled()) {
-            paramDownloadParams.recycle();
-          }
-          return paramFile;
-        }
-        catch (Throwable paramDownloadParams)
-        {
-          paramDownloadParams.printStackTrace();
-        }
-        paramFile = paramFile;
-        paramFile.printStackTrace();
-        paramFile = paramDownloadParams;
+      HighwayConfBean localHighwayConfBean = HighwayConfBean.parse(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("HighwayConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
       }
+      return localHighwayConfBean;
     }
-    catch (Exception paramFile)
-    {
-      for (;;)
-      {
-        paramFile.printStackTrace();
-        paramFile = paramDownloadParams;
-      }
+    return null;
+  }
+  
+  public Class<HighwayConfBean> a()
+  {
+    return HighwayConfBean.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HighwayConfProcessor", 2, "onReqFailed " + paramInt);
     }
-    return paramFile;
+  }
+  
+  public void a(HighwayConfBean paramHighwayConfBean)
+  {
+    HighwayConfBean.updateHighwayConf((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramHighwayConfBean);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

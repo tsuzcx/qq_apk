@@ -1,10 +1,6 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-
 public abstract interface blpm
 {
-  public abstract void a(int paramInt, boolean paramBoolean, Object paramObject);
-  
-  public abstract void a(MusicItemInfo paramMusicItemInfo);
+  public abstract void a();
 }
 
 

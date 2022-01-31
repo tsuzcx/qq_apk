@@ -1,6 +1,6 @@
 package dov.com.qq.im.editipc;
 
-import blym;
+import bmcy;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.data.MessageForPic;
 public class PeakIpcModuleServer$3
   implements Runnable
 {
-  public PeakIpcModuleServer$3(blym paramblym, QQAppInterface paramQQAppInterface, MessageForPic paramMessageForPic) {}
+  public PeakIpcModuleServer$3(bmcy parambmcy, QQAppInterface paramQQAppInterface, MessageForPic paramMessageForPic) {}
   
   public void run()
   {

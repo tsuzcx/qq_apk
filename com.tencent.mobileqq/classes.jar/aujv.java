@@ -1,20 +1,14 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aujv
-  extends RecyclerView.ItemDecoration
+class aujv
+  implements DialogInterface.OnClickListener
 {
-  private final int jdField_a_of_type_Int = aekt.a(12.0F, this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment.getResources());
+  aujv(aujr paramaujr) {}
   
-  private aujv(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramRect.top = this.jdField_a_of_type_Int;
+    paramDialogInterface.dismiss();
   }
 }
 

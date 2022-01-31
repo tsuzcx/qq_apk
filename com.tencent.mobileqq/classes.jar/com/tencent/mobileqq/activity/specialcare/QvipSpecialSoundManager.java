@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import akak;
-import akal;
-import akam;
+import akez;
+import akfa;
+import akfb;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import bdee;
-import bdvv;
-import bdvx;
+import bdin;
+import beae;
+import beag;
 import com.tencent.common.app.AppInterface;
 import com.tencent.commonsdk.pool.ByteArrayPool;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -29,8 +29,8 @@ import org.json.JSONObject;
 
 public class QvipSpecialSoundManager
 {
-  public static HashMap<String, List<akal>> a;
-  public static HashMap<String, akal> b = new HashMap();
+  public static HashMap<String, List<akfa>> a;
+  public static HashMap<String, akfa> b = new HashMap();
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
@@ -62,10 +62,10 @@ public class QvipSpecialSoundManager
     {
       try
       {
-        bdvv localbdvv = new bdvv(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).getString("specialcare_config", ""), (File)localObject);
-        localbdvv.a = 1;
-        localbdvv.n = true;
-        i = bdvx.a(localbdvv, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+        beae localbeae = new beae(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).getString("specialcare_config", ""), (File)localObject);
+        localbeae.a = 1;
+        localbeae.n = true;
+        i = beag.a(localbeae, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
         if (i != 0) {
           break label197;
         }
@@ -312,9 +312,9 @@ public class QvipSpecialSoundManager
     a(paramString, paramFile);
   }
   
-  private void a(akam paramakam, boolean paramBoolean)
+  private void a(akfb paramakfb, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new QvipSpecialSoundManager.3(this, paramakam, paramBoolean));
+    this.jdField_a_of_type_AndroidOsHandler.post(new QvipSpecialSoundManager.3(this, paramakfb, paramBoolean));
   }
   
   private void a(String paramString1, String paramString2)
@@ -330,10 +330,10 @@ public class QvipSpecialSoundManager
         if (TextUtils.isEmpty(paramString2)) {
           return;
         }
-        paramString2 = akak.a(new JSONObject(paramString2));
-        localObject = akak.a(new JSONObject(paramString1));
+        paramString2 = akez.a(new JSONObject(paramString2));
+        localObject = akez.a(new JSONObject(paramString1));
         paramString1 = paramString2.a;
-        paramString2 = ((akak)localObject).a;
+        paramString2 = ((akez)localObject).a;
         if ((paramString1 == null) || (paramString2 == null) || (paramString1.isEmpty()) || (paramString2.isEmpty()) || (paramString1.size() < paramString2.size()))
         {
           b("updateSpecialSound return.");
@@ -350,17 +350,17 @@ public class QvipSpecialSoundManager
       int i = 0;
       while (i < j)
       {
-        localObject = (akal)paramString1.get(i);
-        akal localakal = (akal)paramString2.get(i);
-        if ((((akal)localObject).jdField_a_of_type_Int == localakal.jdField_a_of_type_Int) && (!((akal)localObject).jdField_b_of_type_JavaLangString.equals(localakal.jdField_b_of_type_JavaLangString))) {
-          ThreadManager.post(new QvipSpecialSoundManager.1(this, (akal)localObject), 5, null, true);
+        localObject = (akfa)paramString1.get(i);
+        akfa localakfa = (akfa)paramString2.get(i);
+        if ((((akfa)localObject).jdField_a_of_type_Int == localakfa.jdField_a_of_type_Int) && (!((akfa)localObject).jdField_b_of_type_JavaLangString.equals(localakfa.jdField_b_of_type_JavaLangString))) {
+          ThreadManager.post(new QvipSpecialSoundManager.1(this, (akfa)localObject), 5, null, true);
         }
         i += 1;
       }
     }
   }
   
-  private void a(List<akal> paramList)
+  private void a(List<akfa> paramList)
   {
     if ((paramList == null) || (paramList.isEmpty())) {
       b("SpecialSoundList is empty, donot need sort.");
@@ -376,25 +376,25 @@ public class QvipSpecialSoundManager
       int i = 0;
       if (i < j)
       {
-        akal localakal = (akal)paramList.get(i);
-        if (!b.containsKey(String.valueOf(localakal.jdField_a_of_type_Int))) {
-          b.put(String.valueOf(localakal.jdField_a_of_type_Int), localakal);
+        akfa localakfa = (akfa)paramList.get(i);
+        if (!b.containsKey(String.valueOf(localakfa.jdField_a_of_type_Int))) {
+          b.put(String.valueOf(localakfa.jdField_a_of_type_Int), localakfa);
         }
-        localEditor.putString("special_sound_url" + localakal.jdField_a_of_type_Int, localakal.jdField_c_of_type_JavaLangString);
-        if (!b(localakal.d)) {
+        localEditor.putString("special_sound_url" + localakfa.jdField_a_of_type_Int, localakfa.jdField_c_of_type_JavaLangString);
+        if (!b(localakfa.d)) {
           b("is white list.");
         }
         for (;;)
         {
           i += 1;
           break;
-          if (localakal.jdField_c_of_type_Int == 1) {
-            if (localakal.jdField_b_of_type_Int == 1) {
-              localArrayList1.add(localakal);
-            } else if (localakal.jdField_b_of_type_Int == 2) {
-              localArrayList2.add(localakal);
+          if (localakfa.jdField_c_of_type_Int == 1) {
+            if (localakfa.jdField_b_of_type_Int == 1) {
+              localArrayList1.add(localakfa);
+            } else if (localakfa.jdField_b_of_type_Int == 2) {
+              localArrayList2.add(localakfa);
             } else {
-              localArrayList3.add(localakal);
+              localArrayList3.add(localakfa);
             }
           }
         }
@@ -457,9 +457,9 @@ public class QvipSpecialSoundManager
   {
     if ((b != null) && (!b.isEmpty()))
     {
-      akal localakal = (akal)b.get(String.valueOf(paramInt));
-      if (localakal != null) {
-        return localakal.jdField_a_of_type_JavaLangString;
+      akfa localakfa = (akfa)b.get(String.valueOf(paramInt));
+      if (localakfa != null) {
+        return localakfa.jdField_a_of_type_JavaLangString;
       }
     }
     return "";
@@ -498,29 +498,29 @@ public class QvipSpecialSoundManager
     //   49: ldc 129
     //   51: invokeinterface 135 3 0
     //   56: astore_3
-    //   57: new 117	bdvv
+    //   57: new 117	beae
     //   60: dup
     //   61: aload_3
     //   62: aload_2
-    //   63: invokespecial 138	bdvv:<init>	(Ljava/lang/String;Ljava/io/File;)V
+    //   63: invokespecial 138	beae:<init>	(Ljava/lang/String;Ljava/io/File;)V
     //   66: astore 5
     //   68: aload 5
     //   70: iconst_1
-    //   71: putfield 141	bdvv:a	B
+    //   71: putfield 141	beae:a	B
     //   74: aload 5
     //   76: iconst_1
-    //   77: putfield 145	bdvv:n	Z
+    //   77: putfield 145	beae:n	Z
     //   80: aload 5
     //   82: sipush 20000
-    //   85: putfield 412	bdvv:e	I
+    //   85: putfield 412	beae:e	I
     //   88: aload_0
     //   89: getfield 59	com/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManager:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
     //   92: sipush 193
     //   95: invokevirtual 416	com/tencent/common/app/AppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   98: checkcast 418	bavr
+    //   98: checkcast 418	bbaa
     //   101: astore 4
     //   103: aload 4
-    //   105: invokevirtual 420	bavr:a	()Z
+    //   105: invokevirtual 420	bbaa:a	()Z
     //   108: ifeq +150 -> 258
     //   111: new 422	com/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManager$SyncDownloadRunnable
     //   114: dup
@@ -530,9 +530,9 @@ public class QvipSpecialSoundManager
     //   119: getfield 59	com/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManager:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
     //   122: aload_2
     //   123: aload_1
-    //   124: invokespecial 425	com/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManager$SyncDownloadRunnable:<init>	(Lcom/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManager;Lbdvv;Lcom/tencent/common/app/AppInterface;Ljava/io/File;Ljava/lang/String;)V
+    //   124: invokespecial 425	com/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManager$SyncDownloadRunnable:<init>	(Lcom/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManager;Lbeae;Lcom/tencent/common/app/AppInterface;Ljava/io/File;Ljava/lang/String;)V
     //   127: astore_1
-    //   128: new 427	bavs
+    //   128: new 427	bbab
     //   131: dup
     //   132: aload_0
     //   133: getfield 59	com/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManager:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
@@ -540,7 +540,7 @@ public class QvipSpecialSoundManager
     //   139: ldc_w 431
     //   142: aload_1
     //   143: ldc2_w 432
-    //   146: invokespecial 436	bavs:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/Runnable;J)V
+    //   146: invokespecial 436	bbab:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/Runnable;J)V
     //   149: astore_1
     //   150: aload 4
     //   152: sipush 10021
@@ -554,7 +554,7 @@ public class QvipSpecialSoundManager
     //   168: iconst_0
     //   169: iconst_0
     //   170: aload_1
-    //   171: invokevirtual 441	bavr:a	(ILjava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;IIZLbavo;)Z
+    //   171: invokevirtual 441	bbaa:a	(ILjava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;IIZLbazx;)Z
     //   174: pop
     //   175: invokestatic 237	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   178: ifeq +42 -> 220
@@ -596,7 +596,7 @@ public class QvipSpecialSoundManager
     //   259: aload 5
     //   261: aload_0
     //   262: getfield 59	com/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManager:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   265: invokestatic 150	bdvx:a	(Lbdvv;Lmqq/app/AppRuntime;)I
+    //   265: invokestatic 150	beag:a	(Lbeae;Lmqq/app/AppRuntime;)I
     //   268: aload_2
     //   269: aload_1
     //   270: invokespecial 269	com/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManager:a	(ILjava/io/File;Ljava/lang/String;)V
@@ -625,8 +625,8 @@ public class QvipSpecialSoundManager
     //   274	29	1	localException2	Exception
     //   32	237	2	localFile	File
     //   13	198	3	localObject2	Object
-    //   101	50	4	localbavr	bavr
-    //   66	194	5	localbdvv	bdvv
+    //   101	50	4	localbbaa	bbaa
+    //   66	194	5	localbeae	beae
     // Exception table:
     //   from	to	target	type
     //   33	46	221	java/lang/Exception
@@ -642,7 +642,7 @@ public class QvipSpecialSoundManager
       return;
     }
     String[] arrayOfString;
-    if (bdee.b(BaseApplication.getContext()) == 1)
+    if (bdin.b(BaseApplication.getContext()) == 1)
     {
       b("reportFlowData int wifi state");
       arrayOfString = new String[3];
@@ -663,9 +663,9 @@ public class QvipSpecialSoundManager
     }
   }
   
-  public void a(akam paramakam)
+  public void a(akfb paramakfb)
   {
-    ThreadManager.post(new QvipSpecialSoundManager.2(this, paramakam), 5, null, true);
+    ThreadManager.post(new QvipSpecialSoundManager.2(this, paramakfb), 5, null, true);
   }
   
   public void a(String paramString)
@@ -676,7 +676,7 @@ public class QvipSpecialSoundManager
       return;
       try
       {
-        paramString = akak.a(new JSONObject(paramString));
+        paramString = akez.a(new JSONObject(paramString));
         if (paramString != null)
         {
           a(paramString.a);
@@ -708,9 +708,9 @@ public class QvipSpecialSoundManager
       File localFile = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), paramString);
       try
       {
-        paramString = new bdvv(MsfSdkUtils.insertMtype("lingyin", paramString), localFile);
+        paramString = new beae(MsfSdkUtils.insertMtype("lingyin", paramString), localFile);
         paramString.a = 1;
-        i = bdvx.a(paramString, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+        i = beag.a(paramString, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
         if (i == 0) {
           continue;
         }

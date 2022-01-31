@@ -7,7 +7,7 @@ class SnapshotService$2$1
   
   public void run()
   {
-    SnapshotService.b(this.a.this$0, this.a.jdField_a_of_type_Bctv, this.a.jdField_a_of_type_Bctx);
+    SnapshotService.b(this.a.this$0, this.a.jdField_a_of_type_Bcye, this.a.jdField_a_of_type_Bcyg);
   }
 }
 

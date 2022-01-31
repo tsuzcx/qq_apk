@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.data;
 
-import alpo;
+import alud;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ public final class ApolloDress$2
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131700700) + this.a + " 装扮不足7件", 1).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131700712) + this.a + " 装扮不足7件", 1).a();
   }
 }
 

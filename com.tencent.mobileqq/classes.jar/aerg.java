@@ -1,35 +1,39 @@
 import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
-import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.PanelStrategy.1;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
 
 public class aerg
-  extends AsyncTask<String, Void, Bitmap>
+  implements ajal
 {
-  public aerg(VoicePrintUtils.VoicePrintView paramVoicePrintView) {}
+  public aerg(CustomizeStrategyFactory.PanelStrategy.1 param1) {}
   
-  protected Bitmap a(String... paramVarArgs)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    paramVarArgs = paramVarArgs[0];
-    if (BaseApplicationImpl.sImageCache.get(paramVarArgs) == null)
+    paramPathResult = paramPathResult.filePath;
+    if (paramInt == 0) {}
+    try
     {
-      Bitmap localBitmap = BubbleManager.a(paramVarArgs, this.a.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("VoicePrintUtils.DecodePngTask", 2, "decode " + paramVarArgs + "in background.");
+      Bitmap localBitmap = SafeBitmapFactory.decodeFile(paramPathResult, bdhj.a(paramPathResult, (int)(CustomizeStrategyFactory.a * 50.0F + 0.5D)));
+      if (localBitmap != null) {
+        this.a.a.icon = localBitmap;
       }
-      BaseApplicationImpl.sImageCache.put(paramVarArgs, localBitmap);
+      this.a.a.resPath = paramPathResult;
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "PanelStrategy info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
+      }
     }
-    return null;
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    VoicePrintUtils.VoicePrintView.a(this.a);
-    this.a.setImageDrawable(VoicePrintUtils.VoicePrintView.a(this.a));
-    this.a.invalidate();
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
+    }
+    CustomizeStrategyFactory.a().a(this.a.a);
   }
 }
 

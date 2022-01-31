@@ -1,59 +1,67 @@
-import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build.VERSION;
-import android.provider.Settings;
-import android.view.Window;
-import android.widget.TextView;
+import android.media.MediaPlayer;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class aure
+public final class aure
+  extends Handler
 {
-  private static void b(String paramString)
+  public aure(QQPlayerService paramQQPlayerService, Looper paramLooper)
   {
-    int j = 1;
-    int i = j;
-    if (Build.VERSION.SDK_INT >= 23)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      localObject = BaseApplicationImpl.getApplication();
-      i = j;
-      if (localObject != null)
+    default: 
+      QQPlayerService.a(this.a, (Intent)paramMessage.obj);
+    }
+    for (;;)
+    {
+      return;
+      try
       {
-        i = j;
-        if (!Settings.canDrawOverlays((Context)localObject))
+        BaseApplicationImpl.getContext().unregisterReceiver(QQPlayerService.a(this.a));
+        paramMessage = (aurd)paramMessage.obj;
+        if (paramMessage == null) {
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("QQPlayerService", 2, "release player");
+        }
+        if (paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer != null)
         {
-          i = 0;
-          ((Context)localObject).startActivity(new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION"));
+          paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+          if (QQPlayerService.a() == paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer) {
+            QQPlayerService.a(null);
+          }
+        }
+        if (paramMessage.jdField_a_of_type_AndroidOsLooper != null) {
+          paramMessage.jdField_a_of_type_AndroidOsLooper.quit();
+        }
+        if (QQPlayerService.d() != paramMessage.jdField_a_of_type_ComTencentMobileqqMusicSongInfo) {
+          continue;
+        }
+        QQPlayerService.a(null);
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QQPlayerService", 2, "onDestroy unregisterReceiver exception ");
+          }
         }
       }
     }
-    if (i == 0) {
-      return;
-    }
-    Object localObject = new Dialog(BaseApplicationImpl.getApplication(), 2131755801);
-    ((Dialog)localObject).getWindow().setType(2003);
-    ((Dialog)localObject).setContentView(2131558920);
-    TextView localTextView = (TextView)((Dialog)localObject).findViewById(2131365235);
-    if (localTextView != null) {
-      localTextView.setText("dump文件保存地址");
-    }
-    localTextView = (TextView)((Dialog)localObject).findViewById(2131365231);
-    if ((localTextView != null) && (paramString != null)) {
-      localTextView.setText(paramString);
-    }
-    localTextView = (TextView)((Dialog)localObject).findViewById(2131365220);
-    if (localTextView != null)
-    {
-      localTextView.setText(2131690648);
-      localTextView.setOnClickListener(new aurg((Dialog)localObject));
-    }
-    localTextView = (TextView)((Dialog)localObject).findViewById(2131365226);
-    if (localTextView != null)
-    {
-      localTextView.setText(alpo.a(2131707576));
-      localTextView.setOnClickListener(new aurh((Dialog)localObject, paramString));
-    }
-    ((Dialog)localObject).show();
   }
 }
 

@@ -1,80 +1,97 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.MaxHeightRelativelayout;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
+import com.tencent.mobileqq.flutter.channel.model.ResponsePacket;
+import com.tencent.mobileqq.flutter.channel.sso.SSOChannel.2;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.MethodCodec;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.os.MqqHandler;
 
-public abstract class arxd
+public class arxd
+  extends arwu
 {
-  protected Context a;
-  protected View a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected bdfq a;
-  protected MaxHeightRelativelayout a;
+  public static final AtomicInteger a;
+  private Map<Integer, MethodChannel.Result> a;
   
-  public arxd(bdfq parambdfq)
+  static
   {
-    this.jdField_a_of_type_Bdfq = parambdfq;
-    this.jdField_a_of_type_AndroidContentContext = parambdfq.getContext();
-    a();
-    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.setMaxHeight(Math.max(parambdfq.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296991), aekt.a(a(), this.jdField_a_of_type_AndroidContentContext.getResources())));
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
   }
   
-  protected int a()
+  public arxd(String paramString, BinaryMessenger paramBinaryMessenger)
   {
-    return 380;
+    super(paramString, paramBinaryMessenger);
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   }
   
-  protected abstract View a();
-  
-  protected void a()
+  private void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558924, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379159));
-    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout = ((MaxHeightRelativelayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131375849));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368170));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131375882));
-    View localView = a();
-    if (localView != null) {
-      this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.addView(localView);
+    if ((paramRequestPacket == null) || (paramResult == null)) {
+      QLog.d("QFlutter.SSOChannel", 1, "send request, packet == null or result == null");
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new arxe(this));
-    int i = bdkf.a(15.0F);
-    aekt.a(this.jdField_a_of_type_AndroidWidgetImageView, i, i, i, i);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alpo.a(2131705152));
+    int i;
+    do
+    {
+      return;
+      i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", a().getAccount(), paramRequestPacket.cmd);
+      localToServiceMsg.setTimeout(paramRequestPacket.timeout.intValue() * 1000L);
+      localToServiceMsg.extraData.putLong("REQUEST_TIME", System.currentTimeMillis());
+      localToServiceMsg.extraData.putInt("FLUTTER_REQUEST_SEQ", i);
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramResult);
+      localToServiceMsg.putWupBuffer(paramRequestPacket.body);
+      paramResult = new NewIntent(a().getApplication(), arxc.class);
+      paramResult.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
+      a().startServlet(paramResult);
+    } while (!QLog.isColorLevel());
+    QLog.d("QFlutter.SSOChannel", 2, String.format("send request cmd: %s, request seq: %s", new Object[] { paramRequestPacket.cmd, Integer.valueOf(i) }));
   }
   
-  public void a(String paramString)
+  public MethodChannel.MethodCallHandler a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    return new arxe(this);
   }
   
-  public View b()
+  public MethodCodec a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return arxf.a;
   }
   
-  public void b()
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    c();
-    this.jdField_a_of_type_Bdfq.removePreviewView();
+    if (paramToServiceMsg == null)
+    {
+      QLog.d("QFlutter.SSOChannel", 1, "onReceive, request is null");
+      return;
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = paramToServiceMsg.extraData.getLong("REQUEST_TIME");
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.SSOChannel", 2, String.format("[onReceive]cmd: %s, app seq: %s, cost: %s, errCode: %s", new Object[] { paramToServiceMsg.getServiceCmd(), Integer.valueOf(paramToServiceMsg.getAppSeq()), Long.valueOf(l1 - l2), Integer.valueOf(paramFromServiceMsg.getResultCode()) }));
+    }
+    byte[] arrayOfByte = paramFromServiceMsg.getWupBuffer();
+    ResponsePacket localResponsePacket = new ResponsePacket();
+    localResponsePacket.isSuc = Boolean.valueOf(paramFromServiceMsg.isSuccess());
+    localResponsePacket.errCode = Integer.valueOf(paramFromServiceMsg.getResultCode());
+    localResponsePacket.body = arrayOfByte;
+    int i = paramToServiceMsg.extraData.getInt("FLUTTER_REQUEST_SEQ");
+    paramFromServiceMsg = (MethodChannel.Result)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+    a(paramToServiceMsg.getServiceCmd(), localResponsePacket, paramFromServiceMsg);
   }
   
-  protected void c() {}
-  
-  protected void d()
+  public void a(String paramString, ResponsePacket paramResponsePacket, MethodChannel.Result paramResult)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    ThreadManager.getUIHandler().post(new SSOChannel.2(this, paramResponsePacket, paramString, paramResult));
   }
 }
 

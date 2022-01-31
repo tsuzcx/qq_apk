@@ -71,7 +71,7 @@ public class nwm
   private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new nws(this);
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bhtl jdField_a_of_type_Bhtl;
+  private bhxs jdField_a_of_type_Bhxs;
   private ReadInJoyChannelViewPager.CustomFragmentPagerAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyChannelViewPager$CustomFragmentPagerAdapter;
   private ReadInJoyChannelViewPager jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyChannelViewPager;
   private ColorBandVideoEntranceButton jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotColorBandVideoEntranceButton;
@@ -102,9 +102,9 @@ public class nwm
     jdField_b_of_type_JavaUtilHashMap = new HashMap();
     jdField_c_of_type_JavaUtilHashMap = new HashMap();
     jdField_d_of_type_JavaUtilHashMap = new HashMap();
-    jdField_b_of_type_Int = bdkf.b(0.0F);
-    jdField_c_of_type_Int = bdkf.b(0.0F);
-    jdField_a_of_type_Long = bjxj.g(ors.a());
+    jdField_b_of_type_Int = bdoo.b(0.0F);
+    jdField_c_of_type_Int = bdoo.b(0.0F);
+    jdField_a_of_type_Long = bkbq.g(ors.a());
   }
   
   public nwm(Context paramContext, View paramView, ReadInJoyChannelViewPager paramReadInJoyChannelViewPager)
@@ -112,9 +112,9 @@ public class nwm
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_b_of_type_AndroidViewView = paramView;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyChannelViewPager = paramReadInJoyChannelViewPager;
-    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout = ((TabLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131377338));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368823));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368880));
+    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout = ((TabLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131377392));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368838));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368897));
     this.jdField_a_of_type_AndroidViewView = ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView();
     q();
     g();
@@ -173,7 +173,7 @@ public class nwm
     View localView1;
     if (localViewGroup != null)
     {
-      localView2 = localViewGroup.findViewById(2131368519);
+      localView2 = localViewGroup.findViewById(2131368530);
       paramInt2 = 0;
       if (paramInt1 != i - 1) {
         break label273;
@@ -342,15 +342,15 @@ public class nwm
       QLog.d("ReadInJoyChannelViewPagerController", 1, "tvSelectTab or tvUnselectTab null");
       return;
     }
-    paramView1 = (TextView)paramView1.findViewById(2131378985);
-    paramView2 = (TextView)paramView2.findViewById(2131378985);
+    paramView1 = (TextView)paramView1.findViewById(2131379043);
+    paramView2 = (TextView)paramView2.findViewById(2131379043);
     a(paramView1);
     b(paramView2);
   }
   
   private void a(TextView paramTextView)
   {
-    paramTextView.setTextColor(paramTextView.getResources().getColor(2131166797));
+    paramTextView.setTextColor(paramTextView.getResources().getColor(2131166799));
     paramTextView.setTypeface(Typeface.defaultFromStyle(1));
   }
   
@@ -484,7 +484,7 @@ public class nwm
   
   private void b(TextView paramTextView)
   {
-    paramTextView.setTextColor(paramTextView.getResources().getColor(2131166798));
+    paramTextView.setTextColor(paramTextView.getResources().getColor(2131166800));
     paramTextView.setTypeface(Typeface.defaultFromStyle(0));
   }
   
@@ -523,7 +523,7 @@ public class nwm
     int j;
     if (this.jdField_c_of_type_AndroidViewView != null)
     {
-      if ((!paramBoolean) || (azwu.a())) {
+      if ((!paramBoolean) || (babd.a())) {
         break label60;
       }
       i = 1;
@@ -746,10 +746,10 @@ public class nwm
   {
     if (otb.a())
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848837);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848910);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842541);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842554);
   }
   
   private void j()
@@ -785,17 +785,17 @@ public class nwm
     }
     this.f = j;
     int i = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a(j);
-    int k = (int)(bdcb.m() - i) / 2 - bdkf.a(12.0F);
+    int k = (int)(bdgk.m() - i) / 2 - bdoo.a(12.0F);
     i = 200;
     if ((j < this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.getFirstVisiblePosition()) || (j > this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.getLastVisiblePosition())) {
       i = 0;
     }
     QLog.d("ReadInJoyChannelViewPagerController", 2, new Object[] { "smoothScrollToPosition, position = ", Integer.valueOf(j), ", offset = ", Integer.valueOf(k) });
     this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.smoothScrollToPositionFromLeftOrRight(j, -k, i);
-    if (this.jdField_a_of_type_Bhtl == null) {
-      this.jdField_a_of_type_Bhtl = new nwp(this);
+    if (this.jdField_a_of_type_Bhxs == null) {
+      this.jdField_a_of_type_Bhxs = new nwp(this);
     }
-    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.setOnScrollStateChangedListener(this.jdField_a_of_type_Bhtl);
+    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.setOnScrollStateChangedListener(this.jdField_a_of_type_Bhxs);
   }
   
   private void n()
@@ -927,7 +927,7 @@ public class nwm
         try
         {
           a("0X8009665", "", ors.a().a(((TabChannelCoverInfo)localObject).mChannelCoverId).m(ReadInJoyChannelPanelFragment.a((ChannelCoverInfo)localObject)).n(ReadInJoyChannelPanelFragment.a((TabChannelCoverInfo)localObject)).a());
-          boolean bool = bjxj.z();
+          boolean bool = bkbq.z();
           if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
             if (((TabChannelCoverInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).dynamicSort == 1)
             {
@@ -1016,7 +1016,7 @@ public class nwm
         break label247;
       }
       boolean bool1 = a(this.jdField_b_of_type_JavaUtilList);
-      boolean bool2 = bjxj.A();
+      boolean bool2 = bkbq.A();
       QLog.d("ReadInJoyChannelViewPagerController", 2, "has changed :" + bool1 + " ,isDynamicOrderSwitchOn : " + bool2);
       if ((!bool1) || (!bool2) || (paramBoolean)) {
         break label236;

@@ -14,8 +14,8 @@ public class qrj
   public qrj(qrf paramqrf, ViewGroup paramViewGroup, int paramInt)
   {
     super(paramqrf, paramViewGroup, paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)b(2131378705));
-    this.jdField_b_of_type_AndroidViewView = b(2131379221);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)b(2131378760));
+    this.jdField_b_of_type_AndroidViewView = b(2131379279);
   }
   
   protected URL a(String paramString)

@@ -5,11 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import bfjg;
-import bfjh;
-import bfji;
-import bfjj;
-import bfjp;
+import bfnp;
+import bfnq;
+import bfnr;
+import bfns;
+import bfny;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,18 +17,18 @@ import java.util.Iterator;
 public abstract class AbstractDbCacheManager
 {
   protected long a;
-  protected bfjh a;
-  protected bfjj a;
+  protected bfnq a;
+  protected bfns a;
   protected String a;
-  protected ArrayList<bfji> a;
+  protected ArrayList<bfnr> a;
   protected boolean a;
   protected boolean b;
   
-  protected AbstractDbCacheManager(Context paramContext, Class<? extends bfjg> paramClass, long paramLong, String paramString)
+  protected AbstractDbCacheManager(Context paramContext, Class<? extends bfnp> paramClass, long paramLong, String paramString)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Bfjj = bfjj.a(paramContext.getApplicationContext(), paramLong);
-    this.jdField_a_of_type_Bfjj.a(hashCode());
+    this.jdField_a_of_type_Bfns = bfns.a(paramContext.getApplicationContext(), paramLong);
+    this.jdField_a_of_type_Bfns.a(hashCode());
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_JavaLangString = paramString;
     a(paramClass);
@@ -41,17 +41,17 @@ public abstract class AbstractDbCacheManager
     return String.valueOf(paramLong) + "_" + paramString;
   }
   
-  final int a(SQLiteDatabase paramSQLiteDatabase, bfjg parambfjg, String paramString)
+  final int a(SQLiteDatabase paramSQLiteDatabase, bfnp parambfnp, String paramString)
   {
     ContentValues localContentValues = new ContentValues();
-    parambfjg.a(localContentValues);
+    parambfnp.a(localContentValues);
     return paramSQLiteDatabase.update(this.jdField_a_of_type_JavaLangString, localContentValues, paramString, null);
   }
   
   final Cursor a(SQLiteDatabase paramSQLiteDatabase, String paramString1, String paramString2)
   {
     if (paramString2 == null) {
-      paramString2 = this.jdField_a_of_type_Bfjh.a();
+      paramString2 = this.jdField_a_of_type_Bfnq.a();
     }
     for (;;)
     {
@@ -90,10 +90,10 @@ public abstract class AbstractDbCacheManager
     if (a()) {
       return null;
     }
-    return this.jdField_a_of_type_Bfjj.getWritableDatabase();
+    return this.jdField_a_of_type_Bfns.getWritableDatabase();
   }
   
-  protected bfjg a(Cursor paramCursor, int paramInt)
+  protected bfnp a(Cursor paramCursor, int paramInt)
   {
     if ((paramCursor == null) || (paramCursor.isClosed())) {}
     for (;;)
@@ -104,7 +104,7 @@ public abstract class AbstractDbCacheManager
         {
           boolean bool = paramCursor.moveToPosition(paramInt);
           if (bool) {
-            return this.jdField_a_of_type_Bfjh.a(paramCursor);
+            return this.jdField_a_of_type_Bfnq.a(paramCursor);
           }
         }
         catch (Exception paramCursor)
@@ -123,7 +123,7 @@ public abstract class AbstractDbCacheManager
   
   protected abstract void a();
   
-  protected void a(int paramInt, bfjg... paramVarArgs)
+  protected void a(int paramInt, bfnp... paramVarArgs)
   {
     if (a()) {}
     SQLiteDatabase localSQLiteDatabase;
@@ -236,10 +236,10 @@ public abstract class AbstractDbCacheManager
     a(paramSQLiteDatabase, null);
   }
   
-  final void a(SQLiteDatabase paramSQLiteDatabase, bfjg parambfjg)
+  final void a(SQLiteDatabase paramSQLiteDatabase, bfnp parambfnp)
   {
     ContentValues localContentValues = new ContentValues();
-    parambfjg.a(localContentValues);
+    parambfnp.a(localContentValues);
     paramSQLiteDatabase.replaceOrThrow(this.jdField_a_of_type_JavaLangString, null, localContentValues);
   }
   
@@ -248,7 +248,7 @@ public abstract class AbstractDbCacheManager
     paramSQLiteDatabase.delete(this.jdField_a_of_type_JavaLangString, paramString, null);
   }
   
-  protected void a(bfjg parambfjg, String paramString)
+  protected void a(bfnp parambfnp, String paramString)
   {
     int m = 0;
     int n = 0;
@@ -263,7 +263,7 @@ public abstract class AbstractDbCacheManager
     for (;;)
     {
       return;
-      if (parambfjg != null)
+      if (parambfnp != null)
       {
         localSQLiteDatabase = a();
         if (localSQLiteDatabase == null) {
@@ -278,41 +278,41 @@ public abstract class AbstractDbCacheManager
             localSQLiteDatabase.beginTransaction();
             j = m;
             k = n;
-            if (a(localSQLiteDatabase, parambfjg, paramString) > 0) {
+            if (a(localSQLiteDatabase, parambfnp, paramString) > 0) {
               i = 1;
             }
             j = i;
             k = i;
             localSQLiteDatabase.setTransactionSuccessful();
           }
-          catch (SQLException parambfjg)
+          catch (SQLException parambfnp)
           {
-            parambfjg = parambfjg;
-            parambfjg.printStackTrace();
+            parambfnp = parambfnp;
+            parambfnp.printStackTrace();
             try
             {
               localSQLiteDatabase.endTransaction();
               i = j;
             }
-            catch (Exception parambfjg)
+            catch (Exception parambfnp)
             {
-              parambfjg.printStackTrace();
+              parambfnp.printStackTrace();
               i = j;
             }
             continue;
           }
-          catch (Exception parambfjg)
+          catch (Exception parambfnp)
           {
-            parambfjg = parambfjg;
-            parambfjg.printStackTrace();
+            parambfnp = parambfnp;
+            parambfnp.printStackTrace();
             try
             {
               localSQLiteDatabase.endTransaction();
               i = k;
             }
-            catch (Exception parambfjg)
+            catch (Exception parambfnp)
             {
-              parambfjg.printStackTrace();
+              parambfnp.printStackTrace();
               i = k;
             }
             continue;
@@ -327,9 +327,9 @@ public abstract class AbstractDbCacheManager
             b();
             return;
           }
-          catch (Exception parambfjg)
+          catch (Exception parambfnp)
           {
-            parambfjg.printStackTrace();
+            parambfnp.printStackTrace();
           }
         }
       }
@@ -337,7 +337,7 @@ public abstract class AbstractDbCacheManager
     try
     {
       localSQLiteDatabase.endTransaction();
-      throw parambfjg;
+      throw parambfnp;
     }
     catch (Exception paramString)
     {
@@ -348,12 +348,12 @@ public abstract class AbstractDbCacheManager
     }
   }
   
-  protected void a(Class<? extends bfjg> paramClass)
+  protected void a(Class<? extends bfnp> paramClass)
   {
     String str = paramClass.getName();
     try
     {
-      paramClass = (bfjh)paramClass.getField("DB_CREATOR").get(null);
+      paramClass = (bfnq)paramClass.getField("DB_CREATOR").get(null);
       if (paramClass == null) {
         throw new AbstractDbCacheManager.BadCacheDataException("CacheData protocol requires a CacheData.Creator object called  CREATOR on class " + str);
       }
@@ -370,7 +370,7 @@ public abstract class AbstractDbCacheManager
     {
       throw new AbstractDbCacheManager.BadCacheDataException("CacheData protocol requires a CacheData.Creator object called  CacheData on class " + str);
     }
-    this.jdField_a_of_type_Bfjh = paramClass;
+    this.jdField_a_of_type_Bfnq = paramClass;
     paramClass = paramClass.a();
     if (paramClass != null)
     {
@@ -434,11 +434,11 @@ public abstract class AbstractDbCacheManager
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      bfji localbfji = (bfji)localIterator.next();
+      bfnr localbfnr = (bfnr)localIterator.next();
       localStringBuilder.append(',');
-      localStringBuilder.append(localbfji.a());
+      localStringBuilder.append(localbfnr.a());
       localStringBuilder.append(' ');
-      localStringBuilder.append(localbfji.b());
+      localStringBuilder.append(localbfnr.b());
     }
     localStringBuilder.append(')');
     return localStringBuilder.toString();
@@ -462,8 +462,8 @@ public abstract class AbstractDbCacheManager
   
   protected void c()
   {
-    int i = this.jdField_a_of_type_Bfjh.a();
-    int j = bfjp.a(this.jdField_a_of_type_JavaLangString + "_cache_db_version", -1, this.jdField_a_of_type_Long);
+    int i = this.jdField_a_of_type_Bfnq.a();
+    int j = bfny.a(this.jdField_a_of_type_JavaLangString + "_cache_db_version", -1, this.jdField_a_of_type_Long);
     SQLiteDatabase localSQLiteDatabase;
     if ((j == -1) || (j != i))
     {
@@ -473,7 +473,7 @@ public abstract class AbstractDbCacheManager
     try
     {
       b(localSQLiteDatabase);
-      bfjp.a(this.jdField_a_of_type_JavaLangString + "_cache_db_version", i, this.jdField_a_of_type_Long);
+      bfny.a(this.jdField_a_of_type_JavaLangString + "_cache_db_version", i, this.jdField_a_of_type_Long);
       return;
     }
     catch (SQLException localSQLException)

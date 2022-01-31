@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
-import bgho;
-import bgjw;
-import bgkd;
+import bglv;
+import bgod;
+import bgok;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -30,18 +30,18 @@ public class QQFriendJsPlugin
     localChannelProxy.getUserSetting(paramString1, paramString2, "setting.addFriend", new QQFriendJsPlugin.2(paramString2, paramString1, localChannelProxy, paramContext, paramIAddFriendCallBack));
   }
   
-  public void addFriend(bgkd parambgkd)
+  public void addFriend(bgok parambgok)
   {
     try
     {
-      String str = new JSONObject(parambgkd.b).optString("openid", "");
-      QQFriendJsPlugin.1 local1 = new QQFriendJsPlugin.1(this, parambgkd);
+      String str = new JSONObject(parambgok.b).optString("openid", "");
+      QQFriendJsPlugin.1 local1 = new QQFriendJsPlugin.1(this, parambgok);
       doAddFriend(this.mMiniAppContext.a(), this.mApkgInfo.appId, str, local1);
       return;
     }
     catch (Exception localException)
     {
-      parambgkd.b();
+      parambgok.b();
     }
   }
 }

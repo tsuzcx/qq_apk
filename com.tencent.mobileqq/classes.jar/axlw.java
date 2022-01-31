@@ -1,51 +1,37 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.ComponentName;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.redtouch.RedTouchLifeTimeManager;
 
 public class axlw
-  extends AnimatorListenerAdapter
+  implements Application.ActivityLifecycleCallbacks
 {
-  public axlw(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  public axlw(RedTouchLifeTimeManager paramRedTouchLifeTimeManager) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
-    }
-  }
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onActivityDestroyed(Activity paramActivity) {}
+  
+  public void onActivityPaused(Activity paramActivity) {}
+  
+  public void onActivityResumed(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.a.get() + ", mActionUpAnimator:" + this.a.b.get());
-    }
-    if (!this.a.b.get())
+    if (paramActivity.getComponentName() != null)
     {
-      this.a.a.set(true);
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(2);
-      CameraCaptureButtonLayout.a(this.a, System.currentTimeMillis());
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(5);
-    }
-    for (;;)
-    {
-      this.a.b.set(false);
-      return;
-      CameraCaptureButtonLayout.a(this.a).setVisibility(8);
-      CameraCaptureButtonLayout.a(this.a);
-      CameraCaptureButtonLayout.a(this.a, 1.0F);
+      RedTouchLifeTimeManager.a(this.a, paramActivity.getComponentName().getClassName());
+      if ((!TextUtils.isEmpty(RedTouchLifeTimeManager.a(this.a))) && (RedTouchLifeTimeManager.a(this.a).equals(RedTouchLifeTimeManager.b(this.a)))) {
+        RedTouchLifeTimeManager.a(this.a);
+      }
     }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
-    }
-  }
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity) {}
+  
+  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

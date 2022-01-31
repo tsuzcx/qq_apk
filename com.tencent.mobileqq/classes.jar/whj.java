@@ -1,32 +1,25 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import com.tribe.async.reactive.SimpleObserver;
 
 class whj
-  extends JobSegment<Integer, wkm>
+  extends SimpleObserver<Void>
 {
-  private wkl a;
+  whj(whh paramwhh, whl paramwhl) {}
   
-  public whj(@NonNull wkl paramwkl)
+  public void a(Void paramVoid)
   {
-    this.a = paramwkl;
+    super.onNext(paramVoid);
+    wxe.b("QQStoryTakeVideoHelper", "generate video manifest success.");
+    this.jdField_a_of_type_Whh.a = 2;
+    this.jdField_a_of_type_Whl.a();
   }
   
-  protected void a(JobContext paramJobContext, Integer paramInteger)
+  public void onError(@NonNull Error paramError)
   {
-    Object localObject = this.a.a(paramInteger.intValue(), 5);
-    if ((((wkm)localObject).a.size() > 0) || (((wkm)localObject).b))
-    {
-      wsv.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
-      notifyResult(localObject);
-      return;
-    }
-    localObject = new vbi();
-    ((vbi)localObject).a = this.a.a();
-    ((vbi)localObject).b = QQStoryContext.a().b();
-    ung.a().a((unk)localObject, new whk(this, paramJobContext, paramInteger));
+    super.onError(paramError);
+    wxe.e("QQStoryTakeVideoHelper", "generate video manifest failed.");
+    this.jdField_a_of_type_Whh.a = -1;
+    this.jdField_a_of_type_Whl.b();
   }
 }
 

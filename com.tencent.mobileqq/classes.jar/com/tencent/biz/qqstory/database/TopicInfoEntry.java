@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class TopicInfoEntry
-  extends awbv
+  extends awge
 {
-  @awdj
+  @awhs
   public long topicId;
   public byte[] topicPbData;
 }

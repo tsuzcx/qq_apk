@@ -1,40 +1,34 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.widget.ConfigClearableEditText;
 
 public class beod
-  implements bhqd
+  implements TextWatcher
 {
-  public beod(ProfileCardExtendFriendView paramProfileCardExtendFriendView) {}
+  public beod(ConfigClearableEditText paramConfigClearableEditText) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((ProfileCardExtendFriendView.c(this.a)) && (!ProfileCardExtendFriendView.d(this.a))) {
-      if (paramInt == 0) {
-        this.a.a(false, true);
-      }
-    }
-    for (;;)
+    paramCharSequence = this.a.getText().toString();
+    if (this.a.isFocused())
     {
-      ProfileCardExtendFriendView.a(this.a).cancel();
-      return;
-      if ((!ProfileCardExtendFriendView.c(this.a)) && (ProfileCardExtendFriendView.d(this.a)))
-      {
-        if (paramInt == 0) {
-          this.a.a(true, false);
-        }
-      }
-      else if ((ProfileCardExtendFriendView.d(this.a)) && (ProfileCardExtendFriendView.c(this.a)))
-      {
-        if (paramInt == 0) {
-          this.a.a(false, true);
-        } else if (paramInt == 1) {
-          this.a.a(true, false);
-        }
-      }
-      else if ((!ProfileCardExtendFriendView.c(this.a)) && (!ProfileCardExtendFriendView.d(this.a)) && (paramInt == 0)) {
-        this.a.a(false, false);
+      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
+        this.a.setClearButtonVisible(false);
       }
     }
+    else {
+      return;
+    }
+    if ((ConfigClearableEditText.b(this.a)) || (ConfigClearableEditText.c(this.a)))
+    {
+      this.a.setClearButtonVisible(true);
+      return;
+    }
+    this.a.setClearButtonVisible(false);
   }
 }
 

@@ -10,7 +10,7 @@ public class roo
 {
   private long jdField_a_of_type_Long;
   private Context jdField_a_of_type_AndroidContentContext;
-  private azhl jdField_a_of_type_Azhl;
+  private azlu jdField_a_of_type_Azlu;
   private String jdField_a_of_type_JavaLangString;
   private roq jdField_a_of_type_Roq;
   private ros jdField_a_of_type_Ros;
@@ -29,7 +29,7 @@ public class roo
   {
     if (Build.VERSION.SDK_INT >= 18)
     {
-      int i = azct.a(paramContext);
+      int i = azhc.a(paramContext);
       if (((i & 0x1) > 0) && ((i & 0x2) > 0)) {}
       for (boolean bool = true;; bool = false)
       {
@@ -44,8 +44,8 @@ public class roo
         }
         paramContext = new File(paramString1);
         paramString1 = new rop(this, paramString2, (int)(paramros.jdField_b_of_type_Long * 1024L), (int)paramros.jdField_a_of_type_Long, 0L, paramros.c);
-        this.jdField_a_of_type_Azhl = new azhl();
-        if ((!this.jdField_a_of_type_Azhl.a(paramContext, paramString1, true)) || (paramString1.a != null)) {
+        this.jdField_a_of_type_Azlu = new azlu();
+        if ((!this.jdField_a_of_type_Azlu.a(paramContext, paramString1, true)) || (paramString1.a != null)) {
           break;
         }
         if (QLog.isColorLevel()) {
@@ -118,10 +118,10 @@ public class roo
   public void a()
   {
     cancel(false);
-    if (this.jdField_a_of_type_Azhl != null)
+    if (this.jdField_a_of_type_Azlu != null)
     {
-      this.jdField_a_of_type_Azhl.a();
-      this.jdField_a_of_type_Azhl.b();
+      this.jdField_a_of_type_Azlu.a();
+      this.jdField_a_of_type_Azlu.b();
     }
   }
   

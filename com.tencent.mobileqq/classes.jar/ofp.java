@@ -13,9 +13,9 @@ class ofp
     float f = paramValueAnimator.getAnimatedFraction();
     ofn.a(this.jdField_a_of_type_Ofn, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams, f, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.e, this.jdField_a_of_type_Float);
     ofn.a(this.jdField_a_of_type_Ofn, this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams, f, ofn.a(this.jdField_a_of_type_Ofn));
-    ofn.a(this.jdField_a_of_type_Ofn, ofn.a(this.jdField_a_of_type_Ofn), f, 0.2F, 1.7F, aekt.a(34.0F, ofn.a(this.jdField_a_of_type_Ofn).getResources()));
-    ofn.a(this.jdField_a_of_type_Ofn, ofn.b(this.jdField_a_of_type_Ofn), f, 0.2F, 2.0F, aekt.a(34.0F, ofn.a(this.jdField_a_of_type_Ofn).getResources()));
-    ofn.a(this.jdField_a_of_type_Ofn, ofn.c(this.jdField_a_of_type_Ofn), f, 0.2F, 2.0F, aekt.a(34.0F, ofn.a(this.jdField_a_of_type_Ofn).getResources()));
+    ofn.a(this.jdField_a_of_type_Ofn, ofn.a(this.jdField_a_of_type_Ofn), f, 0.2F, 1.7F, aepi.a(34.0F, ofn.a(this.jdField_a_of_type_Ofn).getResources()));
+    ofn.a(this.jdField_a_of_type_Ofn, ofn.b(this.jdField_a_of_type_Ofn), f, 0.2F, 2.0F, aepi.a(34.0F, ofn.a(this.jdField_a_of_type_Ofn).getResources()));
+    ofn.a(this.jdField_a_of_type_Ofn, ofn.c(this.jdField_a_of_type_Ofn), f, 0.2F, 2.0F, aepi.a(34.0F, ofn.a(this.jdField_a_of_type_Ofn).getResources()));
   }
 }
 

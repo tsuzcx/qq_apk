@@ -1,35 +1,55 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetMusicListConfig;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.text.TextUtils;
 
 public class vbg
-  extends unk<vda>
 {
-  private static final String a = ume.a("StorySvc.video_music_get");
+  public int a;
+  public String a;
+  public int b;
   
-  public String a()
+  public vbg()
   {
-    return a;
+    this.jdField_a_of_type_JavaLangString = "";
+    uvt localuvt = (uvt)uwa.a(10);
+    String str = xqz.a();
+    this.jdField_a_of_type_JavaLangString = ((String)localuvt.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_Int = ((Integer)localuvt.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int))).intValue();
+    this.b = ((Integer)localuvt.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(this.b))).intValue();
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, str))
+    {
+      this.jdField_a_of_type_JavaLangString = str;
+      this.jdField_a_of_type_Int = 0;
+      localuvt.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
+      localuvt.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
+    }
+    wxe.a(vaw.b(), "MsgTabShowCounter(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
   }
   
-  public vda a(byte[] paramArrayOfByte)
+  public void a()
   {
-    qqstory_service.RspGetMusicListConfig localRspGetMusicListConfig = new qqstory_service.RspGetMusicListConfig();
-    try
-    {
-      localRspGetMusicListConfig.mergeFrom(paramArrayOfByte);
-      return new vda(localRspGetMusicListConfig);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
+    b();
+    this.jdField_a_of_type_Int += 1;
+    ((uvt)uwa.a(10)).b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
+    wxe.a(vaw.b(), "addAutoShowCount(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
   }
   
-  protected byte[] a()
+  public boolean a()
   {
-    return new qqstory_service.ReqGetMusicListConfig().toByteArray();
+    b();
+    wxe.a(vaw.b(), "shouldAutoShow(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
+    return this.jdField_a_of_type_Int < this.b;
+  }
+  
+  public void b()
+  {
+    String str = xqz.a();
+    if (!TextUtils.equals(str, this.jdField_a_of_type_JavaLangString))
+    {
+      uvt localuvt = (uvt)uwa.a(10);
+      this.jdField_a_of_type_JavaLangString = str;
+      this.jdField_a_of_type_Int = 0;
+      localuvt.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
+      localuvt.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
+    }
   }
 }
 

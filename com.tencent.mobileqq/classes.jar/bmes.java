@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-
-public final class bmes
-  implements Parcelable.Creator<EditLocalVideoSource>
+public abstract class bmes
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
-  {
-    return new EditLocalVideoSource(paramParcel);
-  }
-  
-  public EditLocalVideoSource[] a(int paramInt)
-  {
-    return new EditLocalVideoSource[paramInt];
-  }
+  protected void b() {}
 }
 
 

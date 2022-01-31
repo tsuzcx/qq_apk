@@ -1,44 +1,17 @@
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class aczo
-  implements aplf
+  implements View.OnClickListener
 {
-  public aczo(GroupManagerActivity paramGroupManagerActivity) {}
+  public aczo(FriendProfileCardActivity paramFriendProfileCardActivity, TextView paramTextView, int paramInt) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "RemoveListener which = " + paramInt);
-    }
-    paramInt -= 1;
-    byte b;
-    if ((paramInt >= 0) && (paramInt < this.a.a.size()))
-    {
-      Object localObject = (Groups)this.a.a.get(paramInt);
-      b = (byte)((Groups)localObject).group_id;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("GroupManagerActivity", 2, "RemoveListener remove groupId :" + b);
-        QLog.d("GroupManagerActivity", 2, "RemoveListener remove friend_count :" + ((Groups)localObject).group_friend_count);
-      }
-      if (b == 0)
-      {
-        localObject = new QQToast(this.a);
-        ((QQToast)localObject).d(2000);
-        ((QQToast)localObject).c(2131720877);
-        ((QQToast)localObject).a();
-      }
-    }
-    else
-    {
-      return;
-    }
-    GroupManagerActivity.a(this.a, b);
-    azmj.b(this.a.app, "CliOper", "", "", "category", "Delete_category", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    bdun.a(paramView.getContext(), bduj.b(this.jdField_a_of_type_Int), bduj.c(this.jdField_a_of_type_Int), 3, false, true);
   }
 }
 

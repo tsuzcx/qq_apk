@@ -1,26 +1,16 @@
-import android.content.Context;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import android.graphics.drawable.Drawable;
 
 public class aetr
-  extends AccessibilityDelegateCompat
 {
-  public aetr(PressToSpeakPanel paramPressToSpeakPanel) {}
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if ((AppSetting.c) && (PressToSpeakPanel.a(this.a) > 0) && (!PressToSpeakPanel.a(this.a)) && (PressToSpeakPanel.a(this.a).a() == 1))
-    {
-      PressToSpeakPanel.a(this.a, true);
-      PressToSpeakPanel.b(this.a);
-      bcvq.a(this.a, this.a.getContext().getString(2131691154));
-    }
-  }
+  public int a;
+  public Drawable a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

@@ -1,59 +1,64 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import android.view.WindowManager.BadTokenException;
+import android.view.accessibility.AccessibilityManager;
+import android.view.accessibility.AccessibilityManager.AccessibilityStateChangeListener;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import java.lang.reflect.Field;
 
-class atgj
-  implements Handler.Callback
+final class atgj
+  implements HookMethodCallback
 {
-  atgj(atgi paramatgi) {}
+  atgj(Class paramClass) {}
   
-  private void a()
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    if (atgi.a(this.a) != null) {
-      atgi.a(this.a).setRefreshing(false);
+    if (paramMethodHookParam.throwable == null) {
+      return;
     }
-    if (atgi.a(this.a) != null) {
-      atgi.a(this.a).setRefresh(false);
+    Object localObject;
+    if (paramMethodHookParam.throwable.getCause() != null) {
+      localObject = paramMethodHookParam.throwable.getCause();
     }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 3: 
-      QQToast.a(this.a.a(), 1, 2131720325, 0).b(atgi.a(this.a));
-      a();
-      return false;
-    case 4: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (i = 1;; i = 0)
+    while ((localObject instanceof WindowManager.BadTokenException)) {
+      try
       {
-        if (i == 0) {
-          break label134;
-        }
-        atgi.a(this.a);
-        if (atgi.a(this.a) == null) {
-          break;
-        }
-        atgi.a(this.a).a(0);
-        this.a.a.sendEmptyMessageDelayed(5, 800L);
-        return false;
+        localObject = this.a.getDeclaredField("mAccessibilityInteractionConnectionManager");
+        ((Field)localObject).setAccessible(true);
+        localObject = ((Field)localObject).get(paramMethodHookParam.thisObject);
+        Field localField = this.a.getDeclaredField("mAccessibilityManager");
+        localField.setAccessible(true);
+        ((AccessibilityManager)localField.get(paramMethodHookParam.thisObject)).removeAccessibilityStateChangeListener((AccessibilityManager.AccessibilityStateChangeListener)localObject);
+        return;
       }
-      label134:
-      a();
-      QQToast.a(this.a.a(), 1, 2131720325, 0).b(atgi.a(this.a));
-      return false;
+      catch (NoSuchFieldException paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+        return;
+        localObject = paramMethodHookParam.throwable;
+      }
+      catch (IllegalArgumentException paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+        return;
+      }
+      catch (IllegalAccessException paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+        return;
+      }
+      catch (Exception paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+        return;
+      }
+      catch (Error paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+      }
     }
-    a();
-    return false;
   }
+  
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

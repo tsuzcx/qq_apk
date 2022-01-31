@@ -1,30 +1,42 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.teamworkforgroup.TeamWorkTransparentShareActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class bagz
-  implements bevy
 {
-  public bagz(TeamWorkTransparentShareActivity paramTeamWorkTransparentShareActivity, String paramString) {}
+  protected bagw a;
+  TeamWorkFileImportInfo a;
   
-  public void a(BaseResp paramBaseResp)
+  public bagz(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction)) {
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo = paramTeamWorkFileImportInfo;
+    if (paramQQAppInterface != null) {
+      this.jdField_a_of_type_Bagw = ((bagw)paramQQAppInterface.a(120));
     }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface) {}
+  
+  protected void a(boolean paramBoolean)
+  {
+    int i = 0;
+    if ((paramBoolean) && (bdhb.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c)))
     {
-    case -1: 
-    default: 
-      xxb.a(1, 2131720019);
+      if (QLog.isColorLevel()) {
+        QLog.i("TeamWorkFileImportJob", 2, "---notifyUIFailed try local fileName: " + this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
+      }
+      this.jdField_a_of_type_Bagw.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.a = false;
+      this.jdField_a_of_type_Bagw.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      this.jdField_a_of_type_Bagw.f(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
     }
     for (;;)
     {
-      WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTeamWorkTransparentShareActivity.a);
+      if (i != 0) {
+        this.jdField_a_of_type_Bagw.d(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      }
       return;
-      xxb.a(2, 2131720038);
+      i = 1;
     }
   }
 }

@@ -1,15 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class xru
-  implements View.OnClickListener
+public abstract interface xru
 {
-  xru(xrt paramxrt) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.b(true);
-  }
+  public abstract void a(xrs paramxrs);
 }
 
 

@@ -1,16 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class aebz
-  implements View.OnClickListener
+  implements ThreadExcutor.IThreadListener
 {
-  public aebz(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aebz(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(View paramView)
+  public void onAdded()
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onAdded:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, true);
+  }
+  
+  public void onPostRun()
+  {
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPostRun:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, false);
+  }
+  
+  public void onPreRun()
+  {
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPreRun:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, true);
   }
 }
 

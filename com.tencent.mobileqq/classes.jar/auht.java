@@ -1,18 +1,15 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 
 public class auht
-  extends GestureDetector.SimpleOnGestureListener
+  implements DialogInterface.OnClickListener
 {
-  public auht(MultiAIOViewPager paramMultiAIOViewPager) {}
+  public auht(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (MultiAIOViewPager.a(this.a) != null) {
-      this.a.performClick();
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,36 +1,61 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class ung
+class ung
+  implements baug
 {
-  public static volatile ung a;
+  ung(unf paramunf) {}
   
-  public static ung a()
+  public void onResp(bavf parambavf)
   {
-    Object localObject = a;
-    if (localObject == null) {
-      try
+    if (parambavf.jdField_a_of_type_Int == 3) {}
+    unj localunj;
+    do
+    {
+      do
       {
-        ung localung2 = a;
-        localObject = localung2;
-        if (localung2 == null)
-        {
-          localObject = new ung();
-          a = (ung)localObject;
-        }
-        return localObject;
-      }
-      finally {}
+        return;
+        localObject = ((baub)parambavf.jdField_a_of_type_Bave).a();
+      } while ((localObject == null) || (!(localObject instanceof unj)));
+      localunj = (unj)localObject;
+      this.a.a.jdField_a_of_type_JavaUtilMap.remove(((unj)localObject).jdField_a_of_type_JavaLangString);
+      localunj.jdField_b_of_type_Long = (System.currentTimeMillis() - localunj.jdField_a_of_type_Long);
+    } while (localunj.jdField_a_of_type_Unc == null);
+    Object localObject = localunj.jdField_a_of_type_Unc;
+    if (parambavf.jdField_a_of_type_Int == 0) {}
+    for (parambavf = new ErrorMessage(0, "");; parambavf = new ErrorMessage(parambavf.b, parambavf.jdField_a_of_type_JavaLangString))
+    {
+      ((unc)localObject).a(localunj, parambavf);
+      return;
     }
-    return localung1;
   }
   
-  public <Request extends unk, Respond extends unf> void a(Request paramRequest, uni<Request, Respond> paramuni)
+  public void onUpdateProgeress(bave arg1, long paramLong1, long paramLong2)
   {
-    paramRequest = new unh(paramRequest);
-    paramRequest.jdField_a_of_type_Uni = paramuni;
-    paramRequest.jdField_a_of_type_Unk.a(paramRequest);
-    QQStoryContext.a().a().a(paramRequest.jdField_a_of_type_Unk);
+    ??? = ???.a();
+    if ((??? != null) && ((??? instanceof unj)))
+    {
+      unj localunj = (unj)???;
+      int i = (int)(paramLong1 / paramLong2 * 100.0D);
+      synchronized (PreloadDownloader.a)
+      {
+        if (this.a.a.jdField_a_of_type_JavaUtilList != null)
+        {
+          Iterator localIterator = this.a.a.jdField_a_of_type_JavaUtilList.iterator();
+          while (localIterator.hasNext())
+          {
+            unn localunn = (unn)((WeakReference)localIterator.next()).get();
+            if (localunn != null) {
+              localunn.a(localunj.jdField_b_of_type_JavaLangString, localunj.jdField_a_of_type_Int, i, localunj);
+            }
+          }
+        }
+      }
+    }
   }
 }
 

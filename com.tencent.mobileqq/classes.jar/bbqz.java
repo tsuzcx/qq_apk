@@ -1,24 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
 class bbqz
+  implements DialogInterface.OnDismissListener
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  int c = 0;
+  bbqz(bbqu parambbqu) {}
   
-  public bbqz(bbqx parambbqx)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    this.c = 0;
-  }
-  
-  public String toString()
-  {
-    return " retryInfo[AutoR-" + this.jdField_a_of_type_Int + " EofR-" + this.b + " SvrErrR-" + this.c + "]";
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
   }
 }
 

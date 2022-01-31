@@ -20,16 +20,16 @@ public class nfr
     case 0: 
       this.a.a.jdField_a_of_type_Byte = 0;
       LebaSearchPluginManagerActivity.a(this.a);
+      localStringBuilder.append(this.a.getString(2131696460));
       localStringBuilder.append(this.a.getString(2131696458));
-      localStringBuilder.append(this.a.getString(2131696456));
       localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
       QQToast.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
       return;
     }
     this.a.a.jdField_a_of_type_Byte = 1;
     LebaSearchPluginManagerActivity.a(this.a);
-    localStringBuilder.append(this.a.getString(2131696458));
-    localStringBuilder.append(this.a.getString(2131696452));
+    localStringBuilder.append(this.a.getString(2131696460));
+    localStringBuilder.append(this.a.getString(2131696454));
     localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
     QQToast.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
   }

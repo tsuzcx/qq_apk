@@ -1,13 +1,98 @@
-import com.tencent.mobileqq.videoplatform.api.IReport;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.SystemClock;
+import android.view.animation.AccelerateInterpolator;
 
 public class awwv
-  implements IReport
+  extends BitmapDrawable
 {
-  public void report(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3)
+  private static int d;
+  private static int e;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private AccelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator = new AccelerateInterpolator(1.5F);
+  private float jdField_b_of_type_Float = 0.5F;
+  private int jdField_b_of_type_Int = 50;
+  private int c;
+  
+  public awwv(Resources paramResources, Bitmap paramBitmap)
   {
-    azmz.a(BaseApplication.getContext()).a(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3);
+    super(paramResources, paramBitmap);
+  }
+  
+  public static awwv[] a(int paramInt, Resources paramResources, Bitmap paramBitmap)
+  {
+    if ((paramBitmap != null) && (paramResources != null))
+    {
+      awwv[] arrayOfawwv2 = new awwv[paramInt];
+      e = paramBitmap.getWidth() / 2;
+      d = paramBitmap.getHeight() / 2;
+      int i = 0;
+      for (;;)
+      {
+        arrayOfawwv1 = arrayOfawwv2;
+        if (i >= paramInt) {
+          break;
+        }
+        arrayOfawwv2[i] = new awwv(paramResources, paramBitmap);
+        i += 1;
+      }
+    }
+    awwv[] arrayOfawwv1 = null;
+    return arrayOfawwv1;
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    this.jdField_a_of_type_Float = ((float)paramLong);
+    this.jdField_a_of_type_Int = paramInt;
+    this.c = 1;
+    invalidateSelf();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    int j = 1;
+    int i = j;
+    switch (this.c)
+    {
+    default: 
+      i = j;
+    }
+    float f2;
+    for (;;)
+    {
+      if (i == 0) {
+        invalidateSelf();
+      }
+      return;
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      this.c = 2;
+      i = 0;
+      continue;
+      f2 = (float)(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / this.jdField_a_of_type_Float;
+      if (f2 <= 1.0F) {
+        break;
+      }
+      this.c = 3;
+      i = j;
+    }
+    paramCanvas.save();
+    float f3 = this.jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator.getInterpolation(f2);
+    if (f3 > 0.5F) {}
+    for (float f1 = -f3 * this.jdField_b_of_type_Int;; f1 = -(1.0F - f3) * this.jdField_b_of_type_Int)
+    {
+      paramCanvas.translate(f1, this.jdField_a_of_type_Int - f3 * this.jdField_a_of_type_Int);
+      paramCanvas.scale(this.jdField_b_of_type_Float * f2, this.jdField_b_of_type_Float * f2, e, d);
+      setAlpha((int)(255.0F - f2 * 255.0F));
+      super.draw(paramCanvas);
+      paramCanvas.restore();
+      i = 0;
+      break;
+    }
   }
 }
 

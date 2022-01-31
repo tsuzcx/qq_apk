@@ -1,56 +1,31 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.RoundRectBitmap;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.data.ThumbWidthHeightDP;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import java.util.HashMap;
 
 public class basu
-  extends bame
+  extends bast
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    return new File(paramDownloadParams.url.getFile());
-  }
+  public HashMap<String, String> a = new HashMap();
+  public String b;
+  public String c;
+  public boolean c;
+  public long d;
+  public String d;
+  public boolean d;
+  public int e;
+  public long e;
+  public long f;
   
-  public boolean a()
+  public String a()
   {
-    return false;
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inDensity = 160;
-    localOptions.inTargetDensity = 160;
-    localOptions.inScreenDensity = 160;
-    localOptions.inJustDecodeBounds = false;
-    String str = paramFile.getAbsolutePath();
-    if (!bdcs.b(str))
+    if (a())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoForPicThumbDownloader", 2, "decodeFile file not exits. just return");
-      }
-      return null;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("{");
+      localStringBuilder.append("elapsed:" + a());
+      localStringBuilder.append(",tryCount:" + this.b);
+      localStringBuilder.append("}");
+      return localStringBuilder.toString();
     }
-    paramURLDrawableHandler = SafeBitmapFactory.decodeFile(paramFile.getAbsolutePath(), localOptions);
-    SafeBitmapFactory.decodeFile(str, localOptions);
-    paramDownloadParams = ThumbWidthHeightDP.resizeAndClipBitmap(paramURLDrawableHandler, paramDownloadParams, ThumbWidthHeightDP.getThumbWidthHeightDP(false), false);
-    if (!paramURLDrawableHandler.equals(paramDownloadParams.mBitmap)) {
-      paramURLDrawableHandler.recycle();
-    }
-    paramFile = new RoundRectBitmap(new bauz(paramFile.getAbsolutePath()).a(paramDownloadParams.mBitmap), paramDownloadParams.mCornerRadius, paramDownloadParams.mBoardColor, paramDownloadParams.mBorderWidth);
-    paramFile.mDisplayWidth = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
-    paramFile.mDisplayHeight = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().heightPixels;
-    return paramFile;
+    return "{}";
   }
 }
 

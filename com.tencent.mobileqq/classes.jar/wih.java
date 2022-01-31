@@ -1,44 +1,27 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
 
-public class wih
-  extends QQUIEventReceiver<wic, ukn>
+class wih
+  extends ParallelJobSegment<String, wid>
 {
-  public wih(wic paramwic)
+  public int a;
+  
+  public wih(wib paramwib, int paramInt)
   {
-    super(paramwic);
+    super("RequestLikeListSegment");
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(@NonNull wic paramwic, @NonNull ukn paramukn)
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    if (paramukn.a.isSuccess())
-    {
-      if (!paramukn.a()) {
-        break label25;
-      }
-      wsv.c("Q.qqstory.memories.ProfileFeedPresenter", "ignore this upload status event, because it's a troop video.");
+    wiv localwiv = new wiv();
+    localwiv.jdField_a_of_type_JavaLangString = paramString;
+    localwiv.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Int != -1) {
+      localwiv.c = this.jdField_a_of_type_Int;
     }
-    label25:
-    do
-    {
-      do
-      {
-        return;
-        if (paramukn.c())
-        {
-          wsv.b("Q.qqstory.memories.ProfileFeedPresenter", "receive share group video upload status change event. %s.", paramukn.toString());
-          return;
-        }
-      } while (!paramukn.b());
-      wsv.a("Q.qqstory.memories.ProfileFeedPresenter", "receive personal video upload status change event. %s. start to refresh year node list", paramukn.toString());
-    } while (paramukn.b == null);
-    wic.a(paramwic, true);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return ukn.class;
+    urp.a().a(localwiv, new wii(this, paramJobContext, paramString));
   }
 }
 

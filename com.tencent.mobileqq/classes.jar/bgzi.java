@@ -1,58 +1,24 @@
-import NS_MINI_INTERFACE.INTERFACE.StGetUserInfoExtraReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetUserInfoExtraRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.minigame.manager.JsApiUpdateManager.2.1;
 
-public class bgzi
-  extends bgzp
+public final class bgzi
+  implements bgyt
 {
-  private INTERFACE.StGetUserInfoExtraReq a = new INTERFACE.StGetUserInfoExtraReq();
+  bgzi(bgxn parambgxn) {}
   
-  public bgzi(String paramString)
-  {
-    this.a.appid.set(paramString);
-  }
+  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong) {}
   
-  protected String a()
+  public void onInitGpkgInfo(int paramInt, bgyu parambgyu, String paramString)
   {
-    return "mini_user_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetUserInfoExtraRsp localStGetUserInfoExtraRsp = new INTERFACE.StGetUserInfoExtraRsp();
-    try
+    if ((paramInt == 0) && (parambgyu != null))
     {
-      localStGetUserInfoExtraRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetUserInfoExtraRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("encryptedData", localStGetUserInfoExtraRsp.encryptedData.get());
-        paramArrayOfByte.put("iv", localStGetUserInfoExtraRsp.iv.get());
-        return paramArrayOfByte;
-      }
-      QMLog.d("GetUserInfoExtraRequest", "onResponse fail.rsp = null");
-      return null;
+      bgnt.a().a(parambgyu, true);
+      ThreadManager.a(new JsApiUpdateManager.2.1(this), 16, null, true);
+      bgzg.b(this.a, true);
+      return;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("GetUserInfoExtraRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetUserInfoExtra";
+    bgzg.b(this.a, false);
   }
 }
 

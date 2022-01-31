@@ -7,9 +7,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import bebk;
-import beey;
-import besa;
+import beft;
+import bejh;
+import bewj;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.qphone.base.util.QLog;
 import ofx;
@@ -53,14 +53,14 @@ public class ReadInJoyAdPopSheetBrowserFragment
   public int a(Bundle paramBundle)
   {
     int i = super.a(paramBundle);
-    if ((this.jdField_a_of_type_Bebk != null) && (this.jdField_a_of_type_Bebk.a != null)) {
-      this.jdField_a_of_type_Bebk.a.setVisibility(8);
+    if ((this.jdField_a_of_type_Beft != null) && (this.jdField_a_of_type_Beft.a != null)) {
+      this.jdField_a_of_type_Beft.a.setVisibility(8);
     }
     if (this.d != null) {
       this.d.setVisibility(8);
     }
-    if ((this.jdField_a_of_type_Beey != null) && (this.jdField_a_of_type_Beey.a != null)) {
-      this.jdField_a_of_type_Beey.a.a(false);
+    if ((this.jdField_a_of_type_Bejh != null) && (this.jdField_a_of_type_Bejh.a != null)) {
+      this.jdField_a_of_type_Bejh.a.a(false);
     }
     getActivity().getWindow().getDecorView().setSystemUiVisibility(514);
     return i;

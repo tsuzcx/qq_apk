@@ -1,51 +1,64 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.util.List;
 
-public abstract class xgl
+public class xgl
+  implements xdu
 {
-  protected final int a;
-  protected Context a;
-  protected final String a;
-  protected xgm a;
-  protected boolean a;
-  protected boolean b;
+  public xgl(DoodleLayout paramDoodleLayout) {}
   
-  public xgl(Context paramContext, String paramString, int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    if (this.a.jdField_a_of_type_Xgp != null) {
+      this.a.jdField_a_of_type_Xgp.b(1, paramInt);
+    }
   }
   
-  public abstract int a();
-  
-  public abstract int a(int paramInt);
-  
-  public abstract View a(int paramInt, ViewGroup paramViewGroup);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, View paramView);
-  
-  public void a(xgm paramxgm)
+  public void a(xdo paramxdo)
   {
-    this.jdField_a_of_type_Xgm = paramxgm;
+    this.a.jdField_a_of_type_Xdo = paramxdo;
+    if (this.a.jdField_a_of_type_Xgp != null)
+    {
+      wxe.b("DoodleLayout", "selectLocation: clickItem-->" + paramxdo.toString());
+      this.a.jdField_a_of_type_Xgp.a(this.a.jdField_a_of_type_Xdo.a());
+    }
   }
   
-  public void a(boolean paramBoolean)
+  public boolean a(xdr paramxdr)
   {
-    this.b = paramBoolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null)
+    {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setVisibility(0);
+      Object localObject;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b())
+      {
+        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a();
+        ((xiq)localObject).d = false;
+        if (!(localObject instanceof xdr)) {
+          break label120;
+        }
+        xdn localxdn = this.a.a();
+        if (localxdn != null) {
+          localxdn.a.add((xdr)localObject);
+        }
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(paramxdr);
+        paramxdr.d = true;
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.requestLayout();
+        return true;
+        label120:
+        if ((localObject instanceof xed))
+        {
+          localObject = this.a.a();
+          if (localObject != null) {
+            ((xeb)localObject).d();
+          }
+        }
+      }
+    }
+    return false;
   }
 }
 

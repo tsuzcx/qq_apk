@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class akyd
-  implements Parcelable.Creator<IPCSpriteContext>
+class akyd
+  implements View.OnClickListener
 {
-  public IPCSpriteContext a(Parcel paramParcel)
-  {
-    return new IPCSpriteContext(paramParcel);
-  }
+  akyd(akyc paramakyc) {}
   
-  public IPCSpriteContext[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new IPCSpriteContext[paramInt];
+    akyc.a(this.a, true);
+    this.a.a();
+    akyc.a(this.a, -1, -1);
   }
 }
 

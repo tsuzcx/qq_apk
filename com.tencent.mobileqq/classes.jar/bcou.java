@@ -1,54 +1,51 @@
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-class bcou
-  implements bcpm
+public class bcou
 {
-  bcou(bcot parambcot) {}
+  private static final Drawable a = new ColorDrawable(-5658199);
   
-  public void a(int paramInt1, int paramInt2)
+  public static String a(String paramString1, String paramString2)
   {
-    if (bcot.a(this.a) != null)
+    return "https://qun.qq.com/qqweb/m/qun/rank/rank.html?from=31&_wv=1031&_bid=2468&uin=" + paramString1 + "&gc=" + paramString2;
+  }
+  
+  protected static void a()
+  {
+    int i = 0;
+    while (i < 20)
     {
-      if (paramInt1 != 0) {
-        break label212;
+      Object localObject = String.format("http://pub.idqqimg.com/pc/misc/groupgift/global_troop_level_%d.png", new Object[] { Integer.valueOf(i) });
+      URLDrawable.removeMemoryCacheByUrl((String)localObject);
+      localObject = baqn.a((String)localObject);
+      if ((localObject != null) && (((File)localObject).exists()) && (((File)localObject).isFile())) {
+        ((File)localObject).delete();
       }
-      if (bcot.a(this.a) == null) {
-        break label288;
-      }
-      paramInt1 = bcot.a(this.a).a(bcot.a(this.a), paramInt2);
-      int i = bcot.a(this.a).a(bcot.a(this.a), paramInt2, paramInt1);
-      paramInt2 = paramInt1;
-      paramInt1 = i;
+      i += 1;
     }
-    for (;;)
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
+    String str = new SimpleDateFormat("yyyy年MM月dd日").format(localCalendar.getTime());
+    if ((!TextUtils.isEmpty(str)) && (str.equals(bdea.a(paramContext, "glamour_has_update_today")))) {
+      return false;
+    }
+    if (localCalendar.get(11) >= 4)
     {
-      bcot.a(this.a).setSelection(1, paramInt2);
-      bcot.a(this.a).a(1);
-      bcot.a(this.a).setSelection(2, paramInt1);
-      bcot.a(this.a).a(2);
-      label212:
-      do
-      {
-        bcot.a(this.a, bcot.a(this.a).a(new int[] { bcot.a(this.a).a(0), bcot.a(this.a).a(1), bcot.a(this.a).a(2) }));
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopPickerViewHelper", 2, Arrays.toString(bcot.a(this.a).a(bcot.a(this.a).getTimeInMillis())));
-        }
-        return;
-      } while (paramInt1 != 1);
-      if (bcot.a(this.a) != null) {}
-      for (paramInt1 = bcot.a(this.a).a(bcot.a(this.a), bcot.a(this.a).a(0), paramInt2);; paramInt1 = 0)
-      {
-        bcot.a(this.a).setSelection(2, paramInt1);
-        bcot.a(this.a).a(2);
-        break;
-      }
-      label288:
-      paramInt1 = 0;
-      paramInt2 = 0;
+      a();
+      bdea.a(paramContext, "glamour_has_update_today", str);
     }
+    return true;
   }
 }
 

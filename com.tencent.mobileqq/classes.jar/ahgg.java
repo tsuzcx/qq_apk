@@ -1,18 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.widget.SwipListView;
 
-class ahgg
-  implements View.OnClickListener
+public class ahgg
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  ahgg(ahge paramahge, ahgk paramahgk) {}
+  public ahgg(AddContactsView paramAddContactsView) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (this.jdField_a_of_type_Ahge.a != null)
-    {
-      int i = this.jdField_a_of_type_Ahgk.getAdapterPosition();
-      this.jdField_a_of_type_Ahge.a.a(paramView, this.jdField_a_of_type_Ahgk, i);
-    }
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.setListViewHeightBasedOnChildren(this.a.a);
   }
 }
 

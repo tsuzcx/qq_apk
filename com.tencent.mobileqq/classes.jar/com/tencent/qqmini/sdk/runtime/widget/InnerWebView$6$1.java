@@ -1,18 +1,18 @@
 package com.tencent.qqmini.sdk.runtime.widget;
 
-import bgnf;
-import bhfm;
+import bgrm;
+import bhjt;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 public class InnerWebView$6$1
   implements Runnable
 {
-  public InnerWebView$6$1(bhfm parambhfm) {}
+  public InnerWebView$6$1(bhjt parambhjt) {}
   
   public void run()
   {
     QMLog.e("ProgressWebView", "sharePicToQQ failed, because of picture downloadFailed");
-    bgnf.a(InnerWebView.a(this.a.a), 1, "分享失败", 0).a();
+    bgrm.a(InnerWebView.a(this.a.a), 1, "分享失败", 0).a();
   }
 }
 

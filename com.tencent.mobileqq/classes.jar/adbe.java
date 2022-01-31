@@ -1,41 +1,15 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class adbe
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  public adbe(Leba paramLeba) {}
+  public adbe(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.lebatab.leba", 4, "callback handleMessage,what = " + paramMessage.what);
-    }
-    if ((this.a.a != null) && ("0".equals(this.a.a.getCurrentAccountUin()))) {
-      return false;
-    }
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebatab.leba", 2, "handler refresh leba config");
-      }
-      this.a.l();
-      continue;
-      Leba.c(this.a);
-      continue;
-      this.a.a(paramMessage);
-      continue;
-      this.a.s();
-      continue;
-      Leba.d(this.a);
-    }
+    FriendProfileImageActivity.a(this.a);
   }
 }
 

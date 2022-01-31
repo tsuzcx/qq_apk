@@ -3,12 +3,12 @@ package com.tencent.open.appcommon.now.download.js;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bexd;
-import bffn;
-import bfhb;
-import bfhg;
-import bfjy;
-import bfkb;
+import bfbm;
+import bfjw;
+import bflk;
+import bflp;
+import bfoh;
+import bfok;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 import com.tencent.open.downloadnew.DownloadInfo;
 
@@ -24,30 +24,30 @@ public final class DownloadJSApi$1
     if (this.jdField_a_of_type_AndroidAppActivity == null) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      bfhg.a("DownloadJSApi", bool1);
+      bflp.a("DownloadJSApi", bool1);
       if (this.jdField_a_of_type_AndroidOsBundle != null) {
         break;
       }
-      bfhg.e("DownloadJSApi", "doDownloadAction pParams == null return");
+      bflp.e("DownloadJSApi", "doDownloadAction pParams == null return");
       return;
     }
-    Object localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString(bfjy.b);
-    this.jdField_a_of_type_AndroidOsBundle.putString(bfjy.s, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putInt(bfjy.E, 1);
-    String str = this.jdField_a_of_type_AndroidOsBundle.getString(bfjy.B);
-    localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString(bfjy.i);
+    Object localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString(bfoh.b);
+    this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.s, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidOsBundle.putInt(bfoh.E, 1);
+    String str = this.jdField_a_of_type_AndroidOsBundle.getString(bfoh.B);
+    localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString(bfoh.i);
     if ((TextUtils.isEmpty(str)) || (str.equals("0"))) {
-      this.jdField_a_of_type_AndroidOsBundle.putString(bfjy.B, "");
+      this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.B, "");
     }
-    localObject2 = bfkb.a().a((String)localObject2);
+    localObject2 = bfok.a().a((String)localObject2);
     if ((localObject2 != null) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
       ((DownloadInfo)localObject2).h = ((String)localObject1);
     }
-    if ((this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail != null) && (this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.updatemethod == 2) && (TextUtils.isEmpty(this.jdField_a_of_type_AndroidOsBundle.getString(bfjy.j))) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url))) {
-      this.jdField_a_of_type_AndroidOsBundle.putString(bfjy.j, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url);
+    if ((this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail != null) && (this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.updatemethod == 2) && (TextUtils.isEmpty(this.jdField_a_of_type_AndroidOsBundle.getString(bfoh.j))) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url))) {
+      this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.j, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url);
     }
-    boolean bool3 = bfhb.d(bexd.a().a());
-    boolean bool4 = bfhb.c(bexd.a().a());
+    boolean bool3 = bflk.d(bfbm.a().a());
+    boolean bool4 = bflk.c(bfbm.a().a());
     if ((localObject2 == null) || (((DownloadInfo)localObject2).a() == 1))
     {
       bool1 = true;
@@ -57,11 +57,11 @@ public final class DownloadJSApi$1
     }
     for (;;)
     {
-      bfhg.a("DownloadJSApi", "check wifi dialog isWifiActive=" + bool4 + " isFirstDownload=" + bool1 + " acIsNull=" + bool2);
-      if ((!bool3) || (bool2) || (bool4) || (!bool1) || (!this.jdField_a_of_type_AndroidOsBundle.getBoolean(bfjy.r))) {
+      bflp.a("DownloadJSApi", "check wifi dialog isWifiActive=" + bool4 + " isFirstDownload=" + bool1 + " acIsNull=" + bool2);
+      if ((!bool3) || (bool2) || (bool4) || (!bool1) || (!this.jdField_a_of_type_AndroidOsBundle.getBoolean(bfoh.r))) {
         break label431;
       }
-      bffn.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.jdField_a_of_type_Int);
+      bfjw.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.jdField_a_of_type_Int);
       return;
       bool1 = false;
       break;
@@ -69,7 +69,7 @@ public final class DownloadJSApi$1
       bool2 = false;
     }
     label431:
-    bffn.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    bfjw.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
   }
 }
 

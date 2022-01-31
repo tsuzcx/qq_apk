@@ -1,38 +1,19 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.concurrent.atomic.AtomicInteger;
-import tencent.im.msg.im_msg_body.RichText;
+import android.support.v4.util.LruCache;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
 class ull
-  implements awfy
+  extends LruCache<KEY, VALUE>
 {
-  ull(ulk paramulk) {}
-  
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  ull(ulk paramulk, int paramInt)
   {
-    return null;
+    super(paramInt);
   }
   
-  public void a(awfz paramawfz) {}
-  
-  public void b(awfz paramawfz)
+  protected void a(boolean paramBoolean, KEY paramKEY, VALUE paramVALUE1, VALUE paramVALUE2)
   {
-    if (paramawfz.jdField_b_of_type_Int == 0)
-    {
-      this.a.jdField_b_of_type_JavaLangString = paramawfz.jdField_b_of_type_JavaLangString;
-      this.a.b();
-      ulk.a(this.a, new ErrorMessage());
-      return;
-    }
-    if ((paramawfz.jdField_b_of_type_Int == bato.a(940010)) && (this.a.a.getAndIncrement() < 2))
-    {
-      ulk.a(this.a);
-      wsv.d("Q.qqstory.publish.upload:ImageFileObject", "retry load file");
-      return;
-    }
-    paramawfz = new ErrorMessage(paramawfz.jdField_b_of_type_Int, paramawfz.a);
-    paramawfz.extraMsg = "upload";
-    ulk.a(this.a, paramawfz);
+    this.a.a.put(paramKEY, new WeakReference(paramVALUE1));
+    this.a.a();
   }
 }
 

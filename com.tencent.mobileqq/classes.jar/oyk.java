@@ -48,14 +48,14 @@ public class oyk
       QLog.d("RIJMsgBoxPopupStep", 1, "checkIfShowMsgBoxWithFloatingWindow | no msg");
       return false;
     }
-    boolean bool = ((Boolean)bjxj.a("sp_key_kandian_msg_box_show_float_window", Boolean.valueOf(false))).booleanValue();
+    boolean bool = ((Boolean)bkbq.a("sp_key_kandian_msg_box_show_float_window", Boolean.valueOf(false))).booleanValue();
     QLog.d("RIJMsgBoxPopupStep", 1, "checkIfShowMsgBoxWithFloatingWindow | sp showFloatingWin " + bool);
     localObject = Aladdin.getConfig(262);
     if (localObject != null) {
       if (((AladdinConfig)localObject).getIntegerFromString("kandian_msg_box_popup_window_cfg", 0) == 1)
       {
         bool = true;
-        bjxj.a("sp_key_kandian_msg_box_show_float_window", Boolean.valueOf(bool));
+        bkbq.a("sp_key_kandian_msg_box_show_float_window", Boolean.valueOf(bool));
         QLog.d("RIJMsgBoxPopupStep", 1, "checkIfShowMsgBoxWithFloatingWindow | aladdin cfg showFloatingWin " + bool);
       }
     }

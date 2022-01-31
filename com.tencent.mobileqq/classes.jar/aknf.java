@@ -1,13 +1,104 @@
+import android.content.Context;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.StatFs;
+import com.tencent.mobileqq.antiphing.AntiphishingUrlConfig.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import org.xml.sax.InputSource;
+
 public class aknf
 {
-  public static boolean a(String paramString)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler = new akng(this, Looper.getMainLooper());
+  private String jdField_a_of_type_JavaLangString = "antiphishingConfig";
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int c = 1;
+  private int d = 2;
+  
+  public static long a()
   {
-    return ("cs.close_room.local".equals(paramString)) || ("cs.create_room.local".equals(paramString)) || ("sc.force_stop_game.local".equals(paramString)) || ("cs.get_dress_path.local".equals(paramString)) || ("cs.join_room.local".equals(paramString)) || ("cs.game_tips.local".equals(paramString)) || ("cs.make_room_min.local".equals(paramString)) || ("cs.first_frame_drawn.local".equals(paramString)) || ("cs.share_game_result.local".equals(paramString)) || ("sc.init_global_var.local".equals(paramString)) || ("cs.report_data_2_compass.local".equals(paramString)) || ("cs.report_data_2_backstage.local".equals(paramString)) || ("cs.report_event.local".equals(paramString)) || ("cs.report_flow_data.local".equals(paramString)) || ("cs.encrypt_data.local".equals(paramString)) || ("cs.decrypt_data.local".equals(paramString)) || ("cs.get_server_ip_port.local".equals(paramString)) || ("cs.save_recommend_ip.local".equals(paramString)) || ("cs.game_start.local".equals(paramString)) || ("cs.check_pubAccount_state.local".equals(paramString)) || ("cs.enter_pubAccount_card.local".equals(paramString)) || ("cs.invite_friends.local".equals(paramString)) || ("cs.send_b2c_redpacket.local".equals(paramString)) || ("cs.finish_group_whiteface.local".equals(paramString)) || ("cs.ready_play_whiteface.local".equals(paramString)) || ("cs.on_get_open_key.local".equals(paramString)) || ("cs.apolloGameWebMessage.local".equals(paramString)) || ("cs.openFloatTransparentView.local".equals(paramString)) || ("cs.openWebView.local".equals(paramString)) || ("cs.show_apollo_panel.local".equals(paramString)) || ("cs.slave_action_status_notify.local".equals(paramString)) || ("cs.qta_notify_test_result.local".equals(paramString)) || ("cs.share_pic.local".equals(paramString)) || ("cs.single_action_status_changed.local".equals(paramString)) || ("cs.audioRoom_enter.local".equals(paramString)) || ("cs.audioRoom_exit.local".equals(paramString)) || ("cs.audioRoom_set_mic.local".equals(paramString)) || ("cs.audioRoom_set_speaker.local".equals(paramString)) || ("cs.script_action_status_notify.local".equals(paramString)) || ("cs.script_get_dress_data.local".equals(paramString)) || ("cs.script_change_panel_status.local".equals(paramString)) || ("cs.script_sprite_status_change.local".equals(paramString)) || ("cs.script_get_show_action.local".equals(paramString)) || ("cs.script_is_allow_play_audio.local".equals(paramString)) || ("cs.script_show_barrage.local".equals(paramString)) || ("cs.script_send_action_msg.local".equals(paramString)) || ("cs.script_show_toast.local".equals(paramString)) || ("cs.script_get_config.local".equals(paramString)) || ("cs.script_get_nickname.local".equals(paramString)) || ("cs.script_get_action_data.local".equals(paramString)) || ("cs.send_game_msg.local".equals(paramString)) || ("cs.share_game_in_ark.local".equals(paramString)) || ("cs.h5_communicate.local".equals(paramString)) || ("cs.get_cm3D_state.local".equals(paramString)) || ("cs.trace_begin.local".equals(paramString)) || ("cs.trace_end.local".equals(paramString)) || ("cs.trace_span_begin.local".equals(paramString)) || ("cs.trace_span_end.local".equals(paramString)) || ("cs.trace_log.local".equals(paramString));
+    StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
+    long l = localStatFs.getBlockSize();
+    return localStatFs.getAvailableBlocks() * l;
+  }
+  
+  private String a()
+  {
+    new StringBuilder().append(Environment.getExternalStorageDirectory().getAbsolutePath()).append("/Tencent/com/tencent/mobileqq/antiphishingconfig.xml").toString();
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public ArrayList<String> a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (!this.jdField_a_of_type_Boolean)) {
+      a();
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2, Context paramContext)
+  {
+    if (paramInt <= this.jdField_a_of_type_Int)
+    {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 4, "nNewVersion:" + paramInt + "nLocalConfigVer:" + this.jdField_a_of_type_Int + "Do not Need Update!");
+      return;
+    }
+    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Int == paramInt) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 7200000L))
+    {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "Config Updata, Frequence limited!");
+      return;
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_b_of_type_Int = paramInt;
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "filehash:" + paramString2 + "downloadurl:" + paramString1);
+    ThreadManager.post(new AntiphishingUrlConfig.2(this, paramContext, paramString1, paramString2), 5, null, true);
+  }
+  
+  public void a(String paramString, Context paramContext)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public boolean a()
+  {
+    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Parase Config!");
+    Object localObject = a();
+    if (localObject == null) {
+      return false;
+    }
+    localObject = new File((String)localObject);
+    aknj localaknj = new aknj();
+    try
+    {
+      SAXParserFactory.newInstance().newSAXParser().parse(new InputSource(new InputStreamReader(new FileInputStream((File)localObject), "UTF-8")), localaknj);
+      this.jdField_a_of_type_Int = localaknj.a();
+      this.jdField_a_of_type_JavaUtilArrayList = localaknj.a();
+      return true;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aknf
  * JD-Core Version:    0.7.0.1
  */

@@ -8,15 +8,15 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import com.tencent.theme.ISkinIgnoreTypeface;
 import com.tencent.theme.TextHook;
-import ybr;
-import ybs;
+import yga;
+import ygb;
 
 public class CommentEditText
   extends EditText
   implements ISkinIgnoreTypeface
 {
   private int jdField_a_of_type_Int = 140;
-  private ybs jdField_a_of_type_Ybs;
+  private ygb jdField_a_of_type_Ygb;
   
   public CommentEditText(Context paramContext)
   {
@@ -26,7 +26,7 @@ public class CommentEditText
   public CommentEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    addTextChangedListener(new ybr(this));
+    addTextChangedListener(new yga(this));
   }
   
   public CommentEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -59,9 +59,9 @@ public class CommentEditText
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setOnInputBackListener(ybs paramybs)
+  public void setOnInputBackListener(ygb paramygb)
   {
-    this.jdField_a_of_type_Ybs = paramybs;
+    this.jdField_a_of_type_Ygb = paramygb;
   }
 }
 

@@ -7,7 +7,7 @@ import sbi;
 import sbj;
 import scw;
 import scx;
-import xxb;
+import ybk;
 
 public class WebFastShareBottomCreator$ViewHolder$ShareCallBack$1
   implements Runnable
@@ -21,7 +21,7 @@ public class WebFastShareBottomCreator$ViewHolder$ShareCallBack$1
       this.jdField_a_of_type_Sbj.jdField_a_of_type_Sbi.a.a(this.jdField_a_of_type_Sbj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, FastWebActivity.sTopActivity, this.jdField_a_of_type_Sbj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl, "0X800898D", this.jdField_a_of_type_Scw.a(this.jdField_a_of_type_Int));
       return;
     }
-    xxb.a(1, 2131689512);
+    ybk.a(1, 2131689512);
     QLog.d("Q.readinjoy.fast_web", 2, "shareJson get false ! action : " + this.jdField_a_of_type_Int);
   }
 }

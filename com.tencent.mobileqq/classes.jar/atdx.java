@@ -1,47 +1,26 @@
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.mobileqq.jsp.QQApiPlugin.3;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.intervideo.nowproxy.NowEntryData;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedReport;
 
-public class atdx
-  implements ymm
+class atdx
+  extends CustomizedReport
 {
-  public atdx(QQApiPlugin.3 param3, Bitmap paramBitmap) {}
+  atdx(atdh paramatdh) {}
   
-  public void callback(Bundle paramBundle)
+  public void onNowEntry(Bundle paramBundle, NowEntryData paramNowEntryData) {}
+  
+  public void onReport(Bundle paramBundle)
   {
-    int j = 0;
-    int i = 0;
-    if (paramBundle.getInt("readinjoy_to_wx_config") == 0)
-    {
-      paramBundle = WxShareHelperFromReadInjoy.a();
-      str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.this$0.c;
-      str2 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.d;
-      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      str3 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.e;
-      str4 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.b;
-      if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.a)) {}
-      for (;;)
-      {
-        paramBundle.a(str1, str2, localBitmap, str3, str4, i);
-        return;
-        i = 1;
-      }
+    atcy localatcy = ateg.a().a();
+    if (localatcy != null) {
+      localatcy.a(paramBundle);
     }
-    paramBundle = WXShareHelper.a();
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.this$0.c;
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.d;
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    String str3 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.e;
-    String str4 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.b;
-    if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.a)) {}
-    for (i = j;; i = 1)
-    {
-      paramBundle.b(str1, str2, localBitmap, str3, str4, i);
-      return;
+    if ((paramBundle != null) && ("weishi_service_num".equals(paramBundle.getString("id", "")))) {
+      tjr.a(atef.jdField_a_of_type_JavaLangString, "", "", atef.b, atef.jdField_a_of_type_Int, 4, 2, paramBundle.getInt("play_time"));
     }
   }
+  
+  public void setNowEntryData(NowEntryData paramNowEntryData) {}
 }
 
 

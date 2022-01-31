@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.model;
 
-import anbg;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anfp;
 
 public class ArLBSActivity
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArLBSActivity> CREATOR = new anbg();
+  public static final Parcelable.Creator<ArLBSActivity> CREATOR = new anfp();
   public String a = "";
   public String b = "";
   public String c = "";

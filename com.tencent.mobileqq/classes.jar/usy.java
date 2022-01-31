@@ -1,49 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserId;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class usy
-  implements uha
+  extends QQUIEventReceiver<ust, vdi>
 {
-  public String a;
-  public String b;
-  
-  public usy(String paramString1, String paramString2)
+  public usy(@NonNull ust paramust)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    super(paramust);
   }
   
-  public qqstory_struct.UserId a()
+  public void a(@NonNull ust paramust, @NonNull vdi paramvdi)
   {
-    qqstory_struct.UserId localUserId = new qqstory_struct.UserId();
-    if (!TextUtils.isEmpty(this.a)) {
-      localUserId.uid.set(Long.valueOf(this.a).longValue());
-    }
-    localUserId.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localUserId;
-  }
-  
-  public boolean a()
-  {
-    return (QQStoryContext.a().a(this.b)) || (QQStoryContext.a().b(this.a));
-  }
-  
-  public void copy(Object paramObject)
-  {
-    if ((paramObject instanceof usy))
+    if (paramvdi.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
+    CommentEntry localCommentEntry;
+    do
     {
-      this.a = ((usy)paramObject).a;
-      this.b = ((usy)paramObject).b;
-    }
+      return;
+      Iterator localIterator;
+      while (!localIterator.hasNext()) {
+        localIterator = paramust.a.iterator();
+      }
+      localCommentEntry = (CommentEntry)localIterator.next();
+    } while ((paramvdi.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.authorUnionId) == null) && (paramvdi.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.replierUnionId) == null));
+    paramust.f();
+    wxe.e(this.TAG, "UserIconUpdateReceiver FeedCommentLego need to update");
   }
   
-  public String toString()
+  public Class acceptEventClass()
   {
-    return "UserID{qq=" + this.a + ", unionId='" + this.b + '\'' + '}';
+    return vdi.class;
   }
 }
 

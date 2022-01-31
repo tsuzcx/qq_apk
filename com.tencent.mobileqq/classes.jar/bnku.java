@@ -1,35 +1,49 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.5;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.io.File;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.utils.SecUtil;
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class bnku
-  implements bapx
+class bnku
+  implements baug
 {
-  public bnku(PtvTemplateManager.5 param5) {}
+  bnku(bnkr parambnkr) {}
   
-  public void onResp(baqw parambaqw)
+  public void onResp(bavf parambavf)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "onResp url: " + this.a.a.resurl + " resultcode: " + parambaqw.c);
+    Object localObject = (FilterDesc)parambavf.jdField_a_of_type_Bave.a();
+    if (parambavf.jdField_a_of_type_Int != 0) {
+      lek.c("CaptureVideoFilterManager", "download file failed. errorCode: " + parambavf.b + ", errorMsg: " + parambavf.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
     }
-    this.a.a.usable = this.a.this$0.a(this.a.a);
-    if (this.a.a.usable) {}
-    try
+    for (;;)
     {
-      ndr.a(new File(PtvTemplateManager.jdField_a_of_type_JavaIoFile, this.a.a.name), PtvTemplateManager.jdField_a_of_type_JavaLangString);
       return;
-    }
-    catch (IOException parambaqw)
-    {
-      while (!QLog.isColorLevel()) {}
-      parambaqw.printStackTrace();
+      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(parambavf.jdField_a_of_type_Bave.c)))
+      {
+        lek.c("CaptureVideoFilterManager", "download file failed: md5 is not match.");
+        bdhb.d(parambavf.jdField_a_of_type_Bave.c);
+        return;
+      }
+      lek.c("CaptureVideoFilterManager", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
+      try
+      {
+        localObject = bnkr.b;
+        bdhb.a(parambavf.jdField_a_of_type_Bave.c, (String)localObject, false);
+        bdhb.d(parambavf.jdField_a_of_type_Bave.c);
+        if ((bnkr.a(this.a).decrementAndGet() == 0) && (bnkr.a(this.a) != null))
+        {
+          bnkr.a(this.a).a(true);
+          return;
+        }
+      }
+      catch (IOException parambavf)
+      {
+        parambavf.printStackTrace();
+        lek.c("CaptureVideoFilterManager", "unzip file failed.");
+      }
     }
   }
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

@@ -5,15 +5,15 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.TextView;
-import bcwh;
-import xij;
-import xim;
-import yqm;
+import bdaq;
+import xms;
+import xmv;
+import yvb;
 
 public class SlideShowAdapter$3
   implements Runnable
 {
-  public SlideShowAdapter$3(xij paramxij, xim paramxim) {}
+  public SlideShowAdapter$3(xms paramxms, xmv paramxmv) {}
   
   public void run()
   {
@@ -22,14 +22,14 @@ public class SlideShowAdapter$3
     if ((i == 0) || (j == 0)) {
       return;
     }
-    if (xij.a(this.this$0) == null)
+    if (xms.a(this.this$0) == null)
     {
-      int k = bcwh.a(xij.a(this.this$0), 1.0F);
-      new Paint().setTextSize(bcwh.a(xij.a(this.this$0), 11.0F));
-      int m = bcwh.a(xij.a(this.this$0), 2.0F);
-      xij.a(this.this$0, yqm.a(i, j, k, 0.0F, m, Color.parseColor("#12B7F5")));
+      int k = bdaq.a(xms.a(this.this$0), 1.0F);
+      new Paint().setTextSize(bdaq.a(xms.a(this.this$0), 11.0F));
+      int m = bdaq.a(xms.a(this.this$0), 2.0F);
+      xms.a(this.this$0, yvb.a(i, j, k, 0.0F, m, Color.parseColor("#12B7F5")));
     }
-    this.a.a.setBackgroundDrawable(new BitmapDrawable(xij.a(this.this$0).getResources(), xij.a(this.this$0)));
+    this.a.a.setBackgroundDrawable(new BitmapDrawable(xms.a(this.this$0).getResources(), xms.a(this.this$0)));
   }
 }
 

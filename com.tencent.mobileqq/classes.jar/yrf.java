@@ -1,37 +1,36 @@
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.common.app.AppInterface;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-public class yrf
-  extends bcjt
+class yrf
+  implements ysj
 {
-  public yrf(TroopGiftPanel paramTroopGiftPanel, yqu paramyqu) {}
+  yrf(yrd paramyrd, String paramString) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
-    }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
+    JSONObject localJSONObject = new JSONObject();
+    if (paramBoolean) {}
+    for (;;)
     {
-      alsy.a("gift_store", "fail_all", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
-      return;
+      try
+      {
+        localJSONObject.put("retCode", 0);
+        if (!TextUtils.isEmpty(paramString2)) {
+          localJSONObject.put("errMsg", paramString2);
+        }
+        if (!TextUtils.isEmpty(paramString1)) {
+          localJSONObject.put("file", paramString1);
+        }
+        this.jdField_a_of_type_Yrd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        QLog.e(this.jdField_a_of_type_Yrd.TAG, 1, paramString2, paramString1);
+      }
+      localJSONObject.put("retCode", 1);
     }
-    azmj.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forall_fail", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Yqu.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mwu.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "onGetThrowGiftResult productId = " + paramInt);
-    }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
-    {
-      alsy.a("gift_store", "suc_all", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
-      return;
-    }
-    azmj.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forall_suc", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Yqu.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mwu.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
 }
 

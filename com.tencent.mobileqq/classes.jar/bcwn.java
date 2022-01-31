@@ -1,9 +1,4 @@
-import android.graphics.Bitmap.Config;
-
-public abstract interface bcwn
-{
-  public static final Bitmap.Config a = Bitmap.Config.ARGB_8888;
-}
+class bcwn {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

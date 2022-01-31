@@ -21,7 +21,7 @@ public class oal
     switch (paramMessage.what)
     {
     default: 
-      localBundle.putString("msg", alpo.a(2131713406));
+      localBundle.putString("msg", alud.a(2131713418));
       localBundle.putInt("retCode", 3);
       localIntent.putExtra("Bundle", localBundle);
       this.a.setResult(-1, localIntent);
@@ -32,7 +32,7 @@ public class oal
       return;
       localBundle.putString("url", (String)paramMessage.obj);
       localBundle.putInt("retCode", 0);
-      localBundle.putString("msg", alpo.a(2131713465));
+      localBundle.putString("msg", alud.a(2131713477));
       localIntent.putExtra("Bundle", localBundle);
       this.a.setResult(-1, localIntent);
     }

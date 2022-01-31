@@ -1,69 +1,62 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Book;
-import com.tencent.mobileqq.data.IPSiteModel.Comic;
-import com.tencent.mobileqq.data.IPSiteModel.Game;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
-import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
-import com.tencent.mobileqq.data.IPSiteModel.Video;
-import com.tencent.mobileqq.data.VipIPSiteInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
+import java.lang.ref.WeakReference;
 
-public final class apbl
-  implements Parcelable.Creator
+public class apbl
+  implements Handler.Callback
 {
-  public VipIPSiteInfo a(Parcel paramParcel)
+  private WeakReference<DanmakuManager> a;
+  
+  private apbl(DanmakuManager paramDanmakuManager)
   {
-    VipIPSiteInfo localVipIPSiteInfo = new VipIPSiteInfo();
-    localVipIPSiteInfo.ipID = paramParcel.readInt();
-    localVipIPSiteInfo.ipName = paramParcel.readString();
-    localVipIPSiteInfo.ipDesc = paramParcel.readString();
-    localVipIPSiteInfo.ipUrl = paramParcel.readString();
-    localVipIPSiteInfo.itemSize = paramParcel.readInt();
-    localVipIPSiteInfo.strType = paramParcel.readString();
-    localVipIPSiteInfo.extId = paramParcel.readInt();
-    localVipIPSiteInfo.extStr = paramParcel.readString();
-    localVipIPSiteInfo.ipLogo = paramParcel.readString();
-    localVipIPSiteInfo.ipContent = paramParcel.readString();
-    if (localVipIPSiteInfo.ipList == null) {
-      localVipIPSiteInfo.ipList = new ArrayList();
-    }
-    localVipIPSiteInfo.ipList.clear();
-    if ("gxzb".equals(localVipIPSiteInfo.strType)) {
-      paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Gxzb.class.getClassLoader());
-    }
-    do
-    {
-      return localVipIPSiteInfo;
-      if ("game".equals(localVipIPSiteInfo.strType))
-      {
-        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Game.class.getClassLoader());
-        return localVipIPSiteInfo;
-      }
-      if ("goods".equals(localVipIPSiteInfo.strType))
-      {
-        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Goods.class.getClassLoader());
-        return localVipIPSiteInfo;
-      }
-      if ("video".equals(localVipIPSiteInfo.strType))
-      {
-        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Video.class.getClassLoader());
-        return localVipIPSiteInfo;
-      }
-      if ("book".equals(localVipIPSiteInfo.strType))
-      {
-        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Book.class.getClassLoader());
-        return localVipIPSiteInfo;
-      }
-    } while (!"comic".equals(localVipIPSiteInfo.strType));
-    paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Comic.class.getClassLoader());
-    return localVipIPSiteInfo;
+    this.a = new WeakReference(paramDanmakuManager);
   }
   
-  public VipIPSiteInfo[] a(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    return new VipIPSiteInfo[paramInt];
+    DanmakuManager localDanmakuManager = (DanmakuManager)this.a.get();
+    if (localDanmakuManager == null) {
+      return false;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 1: 
+      DanmakuManager.a(localDanmakuManager, paramMessage);
+      DanmakuManager.a(localDanmakuManager);
+      return false;
+    case 2: 
+      DanmakuManager.a(localDanmakuManager);
+      return false;
+    case 4: 
+      DanmakuManager.b(localDanmakuManager);
+      return false;
+    case 3: 
+      DanmakuManager.c(localDanmakuManager);
+      return false;
+    case 5: 
+      DanmakuManager.b(localDanmakuManager, paramMessage);
+      return false;
+    case 6: 
+      DanmakuManager.d(localDanmakuManager);
+      return false;
+    case 7: 
+      DanmakuManager.e(localDanmakuManager);
+      return false;
+    case 8: 
+      DanmakuManager.f(localDanmakuManager);
+      return false;
+    case 9: 
+      DanmakuManager.g(localDanmakuManager);
+      return false;
+    case 10: 
+      DanmakuManager.h(localDanmakuManager);
+      return false;
+    }
+    DanmakuManager.i(localDanmakuManager);
+    return false;
   }
 }
 

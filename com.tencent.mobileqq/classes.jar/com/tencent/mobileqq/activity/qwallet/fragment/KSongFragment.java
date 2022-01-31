@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import aitw;
-import aixa;
-import ajaf;
+import aiyl;
+import ajbp;
+import ajeu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,9 +11,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import bdje;
-import bixy;
-import biyf;
+import bdnn;
+import bjcf;
+import bjcm;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -26,7 +26,7 @@ public class KSongFragment
   implements View.OnClickListener
 {
   private long jdField_a_of_type_Long;
-  private aixa jdField_a_of_type_Aixa;
+  private ajbp jdField_a_of_type_Ajbp;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private KSongFragment.KsongBundleInfo jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo = new KSongFragment.KsongBundleInfo();
   
@@ -34,7 +34,7 @@ public class KSongFragment
   {
     try
     {
-      if (!bdje.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo.biz_params))
+      if (!bdnn.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo.biz_params))
       {
         JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo.biz_params);
         this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo.song_id = localJSONObject.optString("song_id");
@@ -71,14 +71,14 @@ public class KSongFragment
     localMap.put("feedsid", this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo.song_id);
     localMap.put("bus_type", "2");
     localMap.put("total_num", str1);
-    localMap.put("total_amount", bixy.a(str2));
+    localMap.put("total_amount", bjcf.a(str2));
     localMap.put("channel", "" + this.channel);
     this.mLogic.a(localMap);
   }
   
   public int a()
   {
-    return 2131561711;
+    return 2131561729;
   }
   
   protected String a()
@@ -89,18 +89,18 @@ public class KSongFragment
   public void a()
   {
     b();
-    this.jdField_a_of_type_Aixa = ((aixa)this.mQApp.getManager(273));
-    this.jdField_a_of_type_Aixa.b("3001");
+    this.jdField_a_of_type_Ajbp = ((ajbp)this.mQApp.getManager(273));
+    this.jdField_a_of_type_Ajbp.b("3001");
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    biyf.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364271));
+    bjcm.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364273));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    ajaf.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.6F);
+    ajeu.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.6F);
     c();
     if (QLog.isColorLevel()) {
       QLog.i("KSongFragment", 2, "biz_params: " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo.biz_params);
@@ -148,7 +148,7 @@ public class KSongFragment
     {
       try
       {
-        this.jdField_a_of_type_Aixa.a("3001");
+        this.jdField_a_of_type_Ajbp.a("3001");
         this.mActivity.c("ksong.wrappacket.choosesong");
         if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo.pick_entry))
         {

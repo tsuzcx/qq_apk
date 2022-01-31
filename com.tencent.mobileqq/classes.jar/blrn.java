@@ -1,11 +1,21 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import dov.com.qq.im.capture.control.CaptureAsyncAutomator;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract interface blrn
+public class blrn
+  implements ThreadFactory
 {
-  public abstract void a(int paramInt, String... paramVarArgs);
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, ArrayList<TroopBarPOI> paramArrayList, TroopBarPOI paramTroopBarPOI);
+  private blrn(CaptureAsyncAutomator paramCaptureAsyncAutomator) {}
+  
+  public Thread newThread(@NonNull Runnable paramRunnable)
+  {
+    paramRunnable = new Thread(paramRunnable, "CaptureAsyncAutomator_" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
+    paramRunnable.setPriority(4);
+    return paramRunnable;
+  }
 }
 
 

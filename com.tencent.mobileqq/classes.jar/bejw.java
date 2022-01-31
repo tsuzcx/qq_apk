@@ -1,10 +1,24 @@
-public abstract interface bejw
+import android.os.SystemClock;
+
+public class bejw
 {
-  public abstract int a();
+  final long a;
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public abstract void a(boolean paramBoolean);
+  bejw(String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  }
   
-  public abstract void b(boolean paramBoolean);
+  boolean a()
+  {
+    return SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > 300000L;
+  }
 }
 
 

@@ -2,7 +2,7 @@ package dov.com.tencent.biz.qqstory.takevideo.multivideo;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import bmvp;
+import bnab;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -14,7 +14,7 @@ public abstract class DecodeRunnable
   protected int a;
   protected long a;
   protected String a;
-  protected WeakReference<bmvp> a;
+  protected WeakReference<bnab> a;
   protected boolean a;
   protected int b;
   protected long b;
@@ -23,9 +23,9 @@ public abstract class DecodeRunnable
   protected int d;
   protected int e = -1;
   
-  public DecodeRunnable(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, bmvp parambmvp)
+  public DecodeRunnable(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, bnab parambnab)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambmvp);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambnab);
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_b_of_type_Long = (1000L * paramLong1);
     this.jdField_c_of_type_Long = (1000L * paramLong2);
@@ -97,9 +97,9 @@ public abstract class DecodeRunnable
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bmvp localbmvp = (bmvp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbmvp != null) {
-        localbmvp.a(paramInt);
+      bnab localbnab = (bnab)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbnab != null) {
+        localbnab.a(paramInt);
       }
     }
   }
@@ -108,9 +108,9 @@ public abstract class DecodeRunnable
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bmvp localbmvp = (bmvp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbmvp != null) {
-        localbmvp.a(paramInt, paramLong, paramBitmap);
+      bnab localbnab = (bnab)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbnab != null) {
+        localbnab.a(paramInt, paramLong, paramBitmap);
       }
     }
   }
@@ -118,25 +118,25 @@ public abstract class DecodeRunnable
   protected void a(List<Long> paramList)
   {
     if ((paramList == null) || (paramList.size() == 0)) {}
-    bmvp localbmvp;
+    bnab localbnab;
     do
     {
       do
       {
         return;
       } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localbmvp = (bmvp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localbmvp == null);
-    localbmvp.a(paramList);
+      localbnab = (bnab)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localbnab == null);
+    localbnab.a(paramList);
   }
   
   protected void a(boolean paramBoolean)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bmvp localbmvp = (bmvp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbmvp != null) {
-        localbmvp.a(paramBoolean);
+      bnab localbnab = (bnab)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbnab != null) {
+        localbnab.a(paramBoolean);
       }
     }
   }
@@ -150,9 +150,9 @@ public abstract class DecodeRunnable
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bmvp localbmvp = (bmvp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbmvp != null) {
-        localbmvp.a();
+      bnab localbnab = (bnab)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbnab != null) {
+        localbnab.a();
       }
     }
   }

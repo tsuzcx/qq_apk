@@ -1,12 +1,24 @@
-public abstract interface bdhw
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+
+class bdhw
+  implements View.OnClickListener
 {
-  public abstract void a(awug paramawug, awuh paramawuh);
+  bdhw(bdhk parambdhk) {}
   
-  public abstract void b(awug paramawug, awuh paramawuh);
+  public void onClick(View paramView)
+  {
+    if ((bdhk.a(this.a) != null) && (bdhk.a(this.a).isShowing())) {
+      bdhk.a(this.a).dismiss();
+    }
+    ((BaseActivity)this.a.a).finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdhw
  * JD-Core Version:    0.7.0.1
  */

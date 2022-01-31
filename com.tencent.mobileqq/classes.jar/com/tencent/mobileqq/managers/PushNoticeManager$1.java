@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.managers;
 
-import atvq;
-import awuu;
+import atzz;
+import awzd;
 
 public class PushNoticeManager$1
   implements Runnable
 {
-  public PushNoticeManager$1(atvq paramatvq, int paramInt) {}
+  public PushNoticeManager$1(atzz paramatzz, int paramInt) {}
   
   public void run()
   {
-    awuu.a(this.a, 2);
+    awzd.a(this.a, 2);
   }
 }
 

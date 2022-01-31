@@ -1,5 +1,5 @@
 class mjm
-  implements bhtl
+  implements bhxs
 {
   mjm(mjk parammjk) {}
   

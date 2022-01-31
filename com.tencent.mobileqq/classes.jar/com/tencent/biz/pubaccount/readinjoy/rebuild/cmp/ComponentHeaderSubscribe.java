@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import ayrd;
-import bdbi;
+import ayvm;
+import bdfr;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -95,11 +95,11 @@ public class ComponentHeaderSubscribe
       {
         QLog.w("ComponentHeaderSubscribe", 1, "read field error", localException);
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(alpo.a(2131702644));
+        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(alud.a(2131702656));
         return;
       }
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setText(alpo.a(2131702662));
+      ((TextView)this.jdField_a_of_type_AndroidViewView).setText(alud.a(2131702674));
       return;
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return;
@@ -113,7 +113,7 @@ public class ComponentHeaderSubscribe
   
   private void f()
   {
-    String str = oqu.k + bdbi.encodeToString(String.valueOf(a()).getBytes(), 2);
+    String str = oqu.k + bdfr.encodeToString(String.valueOf(a()).getBytes(), 2);
     ors.a(getContext(), str);
     g();
   }
@@ -142,15 +142,15 @@ public class ComponentHeaderSubscribe
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559983, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559982, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)findViewById(2131375196));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375212));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131377204);
+    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)findViewById(2131375247));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375263));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131377258);
   }
   
   public void a(Object paramObject)
@@ -191,7 +191,7 @@ public class ComponentHeaderSubscribe
       if (!ors.a()) {
         break label52;
       }
-      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageDrawable(ayrd.a(this.jdField_a_of_type_Bcws, String.valueOf(l), 1));
+      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageDrawable(ayvm.a(this.jdField_a_of_type_Bdbb, String.valueOf(l), 1));
     }
     for (;;)
     {

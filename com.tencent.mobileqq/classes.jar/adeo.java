@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.activity.NearbyActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
 public class adeo
-  implements QQPermissionCallback
+  implements Animation.AnimationListener
 {
-  public adeo(NearbyActivity paramNearbyActivity) {}
+  public adeo(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bdcd.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

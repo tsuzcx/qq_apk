@@ -30,7 +30,7 @@ public class rev
   {
     VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).setColor(Color.parseColor("#E6FF4222"));
     VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).setStyle(Paint.Style.FILL);
-    this.i = (VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).nextFloat() * aekt.a(10.0F, this.a.getResources()) + aekt.a(4.5F, this.a.getResources()));
+    this.i = (VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).nextFloat() * aepi.a(10.0F, this.a.getResources()) + aepi.a(4.5F, this.a.getResources()));
   }
   
   public void a(Canvas paramCanvas)

@@ -16,20 +16,20 @@ import android.view.View;
 import android.view.View.OnKeyListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import bhun;
-import bhxw;
+import bhyu;
+import bicd;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 
 public class VerificationCodeInputView
   extends LinearLayout
-  implements TextWatcher, View.OnKeyListener, bhun
+  implements TextWatcher, View.OnKeyListener, bhyu
 {
   public static final int[] a;
   private int jdField_a_of_type_Int = 4;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private bhxw jdField_a_of_type_Bhxw;
+  private bicd jdField_a_of_type_Bicd;
   private final List<EditText> jdField_a_of_type_JavaUtilList = new ArrayList();
   private final InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[0];
   private int jdField_b_of_type_Int;
@@ -38,7 +38,7 @@ public class VerificationCodeInputView
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131364408, 2131364409, 2131364410, 2131364411, 2131364412, 2131364413 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131364410, 2131364411, 2131364412, 2131364413, 2131364414, 2131364415 };
   }
   
   public VerificationCodeInputView(Context paramContext)
@@ -61,9 +61,9 @@ public class VerificationCodeInputView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844537);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844538);
-    LayoutInflater.from(getContext()).inflate(2131559419, this);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844609);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844610);
+    LayoutInflater.from(getContext()).inflate(2131559418, this);
     b();
   }
   
@@ -129,8 +129,8 @@ public class VerificationCodeInputView
     {
       if (i != 0)
       {
-        if (this.jdField_a_of_type_Bhxw != null) {
-          this.jdField_a_of_type_Bhxw.a(localStringBuilder.toString());
+        if (this.jdField_a_of_type_Bicd != null) {
+          this.jdField_a_of_type_Bicd.a(localStringBuilder.toString());
         }
         setEnabled(false);
       }
@@ -266,9 +266,9 @@ public class VerificationCodeInputView
     }
   }
   
-  public void setOnCompleteListener(bhxw parambhxw)
+  public void setOnCompleteListener(bicd parambicd)
   {
-    this.jdField_a_of_type_Bhxw = parambhxw;
+    this.jdField_a_of_type_Bicd = parambicd;
   }
 }
 

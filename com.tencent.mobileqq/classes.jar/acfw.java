@@ -1,28 +1,59 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity.8.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.SingleLineTextView;
 
-public final class acfw
-  implements DialogInterface.OnClickListener
+public class acfw
+  extends altm
 {
-  public acfw(long paramLong, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString, boolean paramBoolean1, acgy paramacgy, Bundle paramBundle, boolean paramBoolean2) {}
+  public acfw(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  void a(String paramString, View paramView)
   {
-    boolean bool = false;
-    paramDialogInterface = ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext);
-    if (paramInt == 1)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDialogInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Acgy, this.jdField_a_of_type_AndroidOsBundle);
+    if ((TextUtils.isEmpty(paramString)) || (paramView == null)) {
       return;
     }
-    if (!this.b) {
-      bool = true;
+    this.a.runOnUiThread(new AssociatedAccountManageActivity.8.1(this, paramString, paramView));
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    View localView;
+    do
+    {
+      return;
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 0);
+      if (localView != null) {
+        a(paramString, localView);
+      }
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 1);
+    } while (localView == null);
+    a(paramString, localView);
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountManage", 2, "onUpdateFriendInfo  uin = " + paramString + " isSuccess = " + paramBoolean);
     }
-    ChatActivityUtils.a(paramDialogInterface, bool, null);
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    View localView;
+    do
+    {
+      return;
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 0);
+      if (localView != null)
+      {
+        ((SingleLineTextView)localView.findViewById(2131370977)).setText(bdgc.h(this.a.app, paramString));
+        a(paramString, localView);
+      }
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 1);
+    } while (localView == null);
+    ((SingleLineTextView)localView.findViewById(2131370977)).setText(bdgc.h(this.a.app, paramString));
+    a(paramString, localView);
   }
 }
 

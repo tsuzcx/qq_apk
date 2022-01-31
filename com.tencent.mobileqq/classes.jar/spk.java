@@ -12,8 +12,8 @@ public class spk
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = super.a(paramInteger);
     if ((paramInteger.intValue() == 11) && (localActionSheetItem != null))
     {
-      localActionSheetItem.icon = 2130843784;
-      localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131693495);
+      localActionSheetItem.icon = 2130843856;
+      localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131693497);
     }
     return localActionSheetItem;
   }

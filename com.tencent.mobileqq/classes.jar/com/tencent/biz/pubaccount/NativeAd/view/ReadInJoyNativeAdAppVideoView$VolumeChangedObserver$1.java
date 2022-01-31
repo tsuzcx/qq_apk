@@ -14,11 +14,11 @@ public class ReadInJoyNativeAdAppVideoView$VolumeChangedObserver$1
   {
     if (ReadInJoyNativeAdAppVideoView.a(this.a.a).getStreamVolume(3) > 0)
     {
-      ReadInJoyNativeAdAppVideoView.b(this.a.a).setImageResource(2130841275);
+      ReadInJoyNativeAdAppVideoView.b(this.a.a).setImageResource(2130841276);
       ReadInJoyNativeAdAppVideoView.a(this.a.a).setOutputMute(false);
       return;
     }
-    ReadInJoyNativeAdAppVideoView.b(this.a.a).setImageResource(2130841274);
+    ReadInJoyNativeAdAppVideoView.b(this.a.a).setImageResource(2130841275);
     ReadInJoyNativeAdAppVideoView.a(this.a.a).setOutputMute(true);
   }
 }

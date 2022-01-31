@@ -1,20 +1,9 @@
-import android.graphics.RectF;
-import android.text.TextPaint;
+import dov.com.qq.im.capture.data.TemplateData;
+import java.util.List;
 
-public abstract class blsi
+public abstract interface blsi
 {
-  protected int a;
-  protected RectF a;
-  protected TextPaint a;
-  protected int b;
-  
-  public blsi(int paramInt1, int paramInt2, TextPaint paramTextPaint, RectF paramRectF)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF;
-  }
+  public abstract void a(List<TemplateData> paramList);
 }
 
 

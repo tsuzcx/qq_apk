@@ -1,66 +1,43 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
-import com.tencent.qapmsdk.base.listener.IMonitorListener;
-import com.tencent.qapmsdk.base.meta.DropFrameResultMeta;
-import com.tencent.qapmsdk.base.meta.LooperMeta;
-import com.tencent.qapmsdk.base.meta.MonitorMeta;
-import com.tencent.qapmsdk.base.meta.SceneMeta;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.ArkAppReportController.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
 
 public class azpl
-  implements IMonitorListener
 {
-  public void onMetaGet(@NotNull MonitorMeta paramMonitorMeta)
+  private static String a(azpm paramazpm)
   {
-    if ((paramMonitorMeta instanceof SceneMeta))
+    return paramazpm.a();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString4, String paramString5)
+  {
+    azpm localazpm = new azpm();
+    localazpm.jdField_a_of_type_JavaLangString = paramString1;
+    localazpm.jdField_b_of_type_JavaLangString = paramString2;
+    localazpm.jdField_c_of_type_JavaLangString = paramString3;
+    localazpm.jdField_a_of_type_Long = paramLong1;
+    localazpm.jdField_b_of_type_Long = paramLong2;
+    localazpm.jdField_d_of_type_Long = paramLong3;
+    localazpm.f = paramLong4;
+    localazpm.g = paramLong5;
+    localazpm.jdField_d_of_type_JavaLangString = paramString4;
+    localazpm.e = paramString5;
+    localazpm.jdField_c_of_type_Long = 1L;
+    if (paramQQAppInterface == null)
     {
-      paramMonitorMeta = (SceneMeta)paramMonitorMeta;
-      double d = 100.0D * paramMonitorMeta.cpu;
+      paramQQAppInterface = a(localazpm);
       if (QLog.isColorLevel()) {
-        QLog.i("QAPM_QQ_Impl", 2, "reportToDenta" + paramMonitorMeta.stage + " " + d + " " + paramMonitorMeta.memory + " " + paramMonitorMeta.duration);
+        QLog.i("ArkAppReportController", 1, "POST getReportingDetail=" + paramQQAppInterface);
       }
-      localObject = new HashMap();
-      ((HashMap)localObject).put("cpuUsage", String.valueOf(d));
-      ((HashMap)localObject).put("memory", String.valueOf(paramMonitorMeta.memory));
-      ((HashMap)localObject).put("scene", String.valueOf(paramMonitorMeta.stage));
-      ((HashMap)localObject).put("duration", String.valueOf(paramMonitorMeta.duration));
-      azmz.a(BaseApplicationImpl.getContext()).a("", "actScenePerf", true, 0L, 0L, (HashMap)localObject, "");
-    }
-    do
-    {
-      return;
-      if ((paramMonitorMeta instanceof DropFrameResultMeta))
-      {
-        paramMonitorMeta = (DropFrameResultMeta)paramMonitorMeta;
-        abqw.a(paramMonitorMeta.scene, (paramMonitorMeta.duration / 1000000.0F), paramMonitorMeta.dropCount, paramMonitorMeta.dropIntervals);
-        return;
-      }
-    } while (!(paramMonitorMeta instanceof LooperMeta));
-    Object localObject = (LooperMeta)paramMonitorMeta;
-    paramMonitorMeta = new HashMap();
-    localObject = ((LooperMeta)localObject).getLooperParams();
-    try
-    {
-      Iterator localIterator = ((JSONObject)localObject).keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        paramMonitorMeta.put(str, ((JSONObject)localObject).getString(str));
-      }
-      i = azpi.a();
-    }
-    catch (Exception paramMonitorMeta)
-    {
-      QLog.e("QAPMMonitorListener", 1, "onMetaGet looper", paramMonitorMeta);
+      ThreadManager.executeOnSubThread(new ArkAppReportController.1(paramQQAppInterface));
       return;
     }
-    int i;
-    int j = ((JSONObject)localObject).getInt("cost_time");
-    UnifiedMonitor.a().addEvent(i, "LooperSingle", j, 0, paramMonitorMeta);
+    paramString1 = a(localazpm);
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkAppReportController", 1, "getReportingDetail=" + paramString1);
+    }
+    azqs.b(paramQQAppInterface, "dc01616", paramString1, 1);
   }
 }
 

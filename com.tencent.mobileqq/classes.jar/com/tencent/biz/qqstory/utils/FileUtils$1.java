@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.utils;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Window;
-import bdcd;
-import bdfq;
-import xmy;
-import xmz;
+import bdgm;
+import bdjz;
+import xrh;
+import xri;
 
 public final class FileUtils$1
   implements Runnable
@@ -16,13 +16,13 @@ public final class FileUtils$1
   
   public void run()
   {
-    bdfq localbdfq = bdcd.a(this.a, 230);
-    localbdfq.setMessage(alpo.a(2131704957));
-    localbdfq.setNegativeButton(alpo.a(2131704959), new xmy(this));
-    localbdfq.setPositiveButton(alpo.a(2131704958), new xmz(this));
-    localbdfq.setCancelable(false);
-    localbdfq.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    localbdfq.show();
+    bdjz localbdjz = bdgm.a(this.a, 230);
+    localbdjz.setMessage(alud.a(2131704969));
+    localbdjz.setNegativeButton(alud.a(2131704971), new xrh(this));
+    localbdjz.setPositiveButton(alud.a(2131704970), new xri(this));
+    localbdjz.setCancelable(false);
+    localbdjz.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    localbdjz.show();
   }
 }
 

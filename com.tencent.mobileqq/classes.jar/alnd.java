@@ -1,26 +1,19 @@
-public class alnd
-  implements alkr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class alnd
+  implements DialogInterface.OnClickListener
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  alnd(alnc paramalnc) {}
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    }
-    b(paramBoolean, paramObject);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alnd
  * JD-Core Version:    0.7.0.1
  */

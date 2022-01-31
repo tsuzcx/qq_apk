@@ -1,14 +1,22 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
+import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback.Stub;
+import com.tencent.qqmini.sdk.log.QMLog;
 
-public class bgyf
+final class bgyf
+  extends MiniCmdCallback.Stub
 {
-  public String a;
-  public Map<Integer, Long> a = new HashMap();
-  public boolean a;
-  public Map<Integer, Long> b = new HashMap();
-  public boolean b;
-  public Map<Integer, String> c = new HashMap();
+  bgyf(MiniCmdCallback paramMiniCmdCallback, boolean paramBoolean) {}
+  
+  public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherIpcMiniCmdCallback != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherIpcMiniCmdCallback.onCmdResult(paramBoolean, paramBundle);
+    }
+    if ((this.jdField_a_of_type_Boolean) || (paramBoolean)) {
+      QMLog.d("ApkgMainProcessManager", "onCmdResult() called with: succ = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
+    }
+  }
 }
 
 

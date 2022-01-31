@@ -28,7 +28,7 @@ public class lxk
   public lxk(Context paramContext)
   {
     this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131696264);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131696266);
   }
   
   public void a(long paramLong)

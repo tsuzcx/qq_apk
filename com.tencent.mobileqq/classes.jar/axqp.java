@@ -1,10 +1,8 @@
 public abstract interface axqp
 {
-  public abstract void a();
+  public abstract void a(bkug parambkug);
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong);
+  public abstract void a(String paramString);
 }
 
 

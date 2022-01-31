@@ -1,32 +1,37 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
-import java.util.ArrayList;
-
-class bakz
-  implements bkch
+public class bakz
 {
-  bakz(baky parambaky) {}
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int b;
+  private int c;
+  private int d;
   
-  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
+  public bakz(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    QLog.d("TogetherControlManager", 2, new Object[] { "ongetAdvs result:", Boolean.valueOf(paramBoolean), " rsp:", paramGetAdsRsp.toString() });
-    if (paramBoolean)
-    {
-      paramGetAdsRsp = balf.a(paramBoolean, paramGetAdsRsp);
-      if (paramGetAdsRsp != null)
-      {
-        this.a.a.add(paramGetAdsRsp);
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        URLDrawable.getDrawable(paramGetAdsRsp.c, localURLDrawableOptions).startDownload();
-      }
-    }
-    else
-    {
-      return;
-    }
-    QLog.d("TogetherControlManager", 2, "ongetAdvs banner is null");
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public int d()
+  {
+    return this.d;
   }
 }
 

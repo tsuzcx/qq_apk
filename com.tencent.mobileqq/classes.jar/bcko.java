@@ -1,6 +1,14 @@
 public abstract interface bcko
 {
-  public abstract void a(String paramString1, String paramString2);
+  public abstract String getFriendUin();
+  
+  public abstract int getLimitType();
+  
+  public abstract long getSenderUin();
+  
+  public abstract long getShmsgseq();
+  
+  public abstract boolean isReaded();
 }
 
 

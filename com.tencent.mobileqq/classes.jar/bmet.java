@@ -1,21 +1,43 @@
-import java.util.List;
+import android.support.annotation.NonNull;
 
-public abstract interface bmet
-  extends bmiw
+public class bmet
 {
-  public abstract int a();
+  private final bmev jdField_a_of_type_Bmev;
+  private final bmex jdField_a_of_type_Bmex;
   
-  public abstract void a(long paramLong, boolean paramBoolean);
+  public bmet(@NonNull bmex parambmex, @NonNull bmev parambmev)
+  {
+    this.jdField_a_of_type_Bmev = parambmev;
+    this.jdField_a_of_type_Bmex = parambmex;
+  }
   
-  public abstract void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2);
+  public bmet(@NonNull bmey parambmey, @NonNull bmev parambmev)
+  {
+    this(parambmey.a(), parambmev);
+  }
   
-  public abstract void a(List<Long> paramList);
+  @NonNull
+  public <T extends bmes> T a(@NonNull Class<T> paramClass)
+  {
+    String str = paramClass.getCanonicalName();
+    if (str == null) {
+      throw new IllegalArgumentException("Local and anonymous classes can not be ViewModels");
+    }
+    return a("androidx.lifecycle.ViewModelProvider.DefaultKey:" + str, paramClass);
+  }
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract boolean i_();
+  @NonNull
+  public <T extends bmes> T a(@NonNull String paramString, @NonNull Class<T> paramClass)
+  {
+    bmes localbmes = this.jdField_a_of_type_Bmex.a(paramString);
+    if (paramClass.isInstance(localbmes)) {
+      return localbmes;
+    }
+    if (localbmes != null) {}
+    paramClass = this.jdField_a_of_type_Bmev.a(paramClass);
+    this.jdField_a_of_type_Bmex.a(paramString, paramClass);
+    return paramClass;
+  }
 }
 
 

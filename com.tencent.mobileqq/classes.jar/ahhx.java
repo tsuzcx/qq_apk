@@ -1,9 +1,15 @@
-import android.widget.LinearLayout;
-
-public class ahhx
+public final class ahhx
 {
-  public LinearLayout a;
-  public LinearLayout b;
+  public static String a(int paramInt)
+  {
+    if (paramInt == 0) {
+      return "1";
+    }
+    if (paramInt == 1) {
+      return "2";
+    }
+    return "";
+  }
 }
 
 

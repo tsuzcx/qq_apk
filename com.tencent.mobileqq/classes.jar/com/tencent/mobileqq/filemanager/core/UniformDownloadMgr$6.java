@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqwa;
+import araj;
 
 public class UniformDownloadMgr$6
   implements Runnable
 {
-  public UniformDownloadMgr$6(aqwa paramaqwa) {}
+  public UniformDownloadMgr$6(araj paramaraj) {}
   
   public void run()
   {
-    aqwa.b(this.this$0, null);
-    aqwa.b(this.this$0);
+    araj.b(this.this$0, null);
+    araj.b(this.this$0);
   }
 }
 

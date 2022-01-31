@@ -1,13 +1,23 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-final class bgsg
-  implements AsyncResult
+class bgsg
+  extends Handler
 {
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public bgsg(bgse parambgse)
   {
-    QMLog.d("GameGrowthGuardianManager", "onReceived() called with: success = [" + paramBoolean + "], stReportExecuteRsp = [" + paramJSONObject + "]");
+    super(Looper.getMainLooper());
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.e();
   }
 }
 

@@ -1,42 +1,68 @@
-import mqq.app.AppRuntime.Status;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.olympic.OlympicManager;
+import com.tencent.mobileqq.olympic.ShuayishuaConfig;
+import com.tencent.mobileqq.olympic.TorchInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class awam
+  extends awan
 {
-  public int a;
-  public long a;
-  public String a;
-  public AppRuntime.Status a;
-  public int b;
-  public String b;
+  public awam(OlympicManager paramOlympicManager) {}
   
-  public awam(long paramLong, String paramString1, String paramString2)
+  public void a(boolean paramBoolean, int paramInt1, TorchInfo paramTorchInfo, int paramInt2)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    if (QLog.isColorLevel())
+    {
+      OlympicManager localOlympicManager = this.a;
+      QLog.i("OlympicManager", 2, "onGetMyTorchInfo.isSuccess=" + paramBoolean + ",errCode=" + paramInt1 + ",errStr=,info=" + paramTorchInfo);
+    }
   }
   
-  public awam(AppRuntime.Status paramStatus)
+  public void a(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte, TorchInfo paramTorchInfo)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = paramStatus;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = awai.a(paramStatus);
-    this.jdField_a_of_type_JavaLangString = awai.a(paramStatus);
-  }
-  
-  public static String a(AppRuntime.Status paramStatus, long paramLong)
-  {
-    return paramStatus.getValue() + paramLong + "";
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return paramLong == 1000L;
+    if (QLog.isColorLevel())
+    {
+      OlympicManager localOlympicManager = this.a;
+      QLog.i("OlympicManager", 2, "onCollectTorch.isSuccess=" + paramBoolean + ",errCode=" + paramInt + ",errStr=" + paramString + ",sig=" + paramArrayOfByte + ",info=" + paramTorchInfo);
+    }
+    OlympicManager.a(this.a, false);
+    if (paramBoolean)
+    {
+      OlympicManager.a(this.a, paramArrayOfByte);
+      if (paramInt == 0)
+      {
+        azqs.b(this.a.a, "CliOper", "", "", "0X80069C8", "0X80069C8", 0, 0, "", "", "", "");
+        this.a.a(1);
+        this.a.a(paramTorchInfo);
+        OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
+        OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
+        paramArrayOfByte = Long.valueOf(-1L);
+        paramString = paramArrayOfByte;
+        if (OlympicManager.a(this.a) != null)
+        {
+          paramString = paramArrayOfByte;
+          if (OlympicManager.a(this.a).type == 2) {
+            paramString = Long.valueOf(OlympicManager.a(this.a).uiBegin);
+          }
+        }
+        OlympicManager.a(this.a).obtainMessage(7, paramString).sendToTarget();
+      }
+    }
+    else
+    {
+      return;
+    }
+    if (paramInt == 1)
+    {
+      this.a.a(1);
+      OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
+      OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
+      return;
+    }
+    OlympicManager.b(this.a, false);
+    OlympicManager.b(this.a, null);
+    OlympicManager.a(this.a, 0);
   }
 }
 

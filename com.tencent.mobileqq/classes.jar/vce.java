@@ -1,60 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqReportEvil;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-
-public class vce
-  extends unk<vdp>
+public abstract class vce
 {
-  public static final String a = ume.a("StorySvc.video_report_evil");
-  public long b;
-  public String b;
-  public final int c;
-  public String c;
+  protected int a;
+  protected vcc a;
   
-  public String a()
+  public abstract void a();
+  
+  public void a(vcc paramvcc)
   {
-    return a;
+    this.jdField_a_of_type_Vcc = paramvcc;
   }
   
-  public vdp a(byte[] paramArrayOfByte)
+  public boolean a()
   {
-    qqstory_service.RspReportEvil localRspReportEvil = new qqstory_service.RspReportEvil();
-    try
+    if (this.jdField_a_of_type_Int < 1)
     {
-      localRspReportEvil.mergeFrom(paramArrayOfByte);
-      return new vdp(localRspReportEvil);
+      this.jdField_a_of_type_Int += 1;
+      wxe.d("Q.qqstory.net:BatchNetHandler", String.format("retry request , retry count = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+      a();
+      return true;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
+    return false;
   }
   
-  protected byte[] a()
+  public void b()
   {
-    qqstory_service.ReqReportEvil localReqReportEvil = new qqstory_service.ReqReportEvil();
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localReqReportEvil.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Vcc != null) {
+      this.jdField_a_of_type_Vcc.a(this);
     }
-    if (this.jdField_b_of_type_Long != 0L) {
-      localReqReportEvil.tuin.set(this.jdField_b_of_type_Long);
-    }
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      localReqReportEvil.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    }
-    localReqReportEvil.type.set(this.jdField_c_of_type_Int);
-    return localReqReportEvil.toByteArray();
   }
   
-  public String toString()
+  public void c()
   {
-    return "ReportEvilRequest{impeachType=" + this.jdField_c_of_type_Int + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    if (this.jdField_a_of_type_Vcc != null) {
+      this.jdField_a_of_type_Vcc.b(this);
+    }
   }
 }
 

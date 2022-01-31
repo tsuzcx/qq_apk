@@ -1,54 +1,60 @@
-import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.ContactCard;
 
-class acco
-  extends awdn
+public class acco
+  extends alpq
 {
-  acco(accm paramaccm) {}
+  public acco(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "onUploadContact  isSuccess = " + paramBoolean);
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "RegisterQQNumberActivity onGetBindUinWithPhone isSuccess = " + paramBoolean1 + "; isBindOk = " + paramBoolean2 + ";hadbind = " + paramBoolean3 + ";uin =" + paramString);
-    }
-    if (paramBoolean1)
+    Object localObject;
+    if ((paramBoolean) && (paramObject != null))
     {
-      if (paramBoolean2)
-      {
-        accm.a(this.a, true);
-        accm.b(this.a);
+      if (!(paramObject instanceof Card)) {
+        break label163;
       }
-      do
+      localObject = (Card)paramObject;
+      if ((((Card)localObject).uin != null) && (((Card)localObject).uin.equals(AddFriendVerifyActivity.a(this.a))))
       {
-        return;
-        if ((!paramBoolean3) || (TextUtils.isEmpty(paramString))) {
-          break;
+        paramObject = bddf.a(this.a, ((Card)localObject).shGender, ((Card)localObject).age, ((Card)localObject).strCountry, ((Card)localObject).strProvince, ((Card)localObject).strCity);
+        if (this.a.a != null) {
+          paramObject = bddf.a(this.a, ((Card)localObject).shGender, 0, "", "", "");
         }
-        accm.a(this.a);
-      } while (accm.a(this.a) == null);
-      Intent localIntent = new Intent(accm.a(this.a), VerifyPhoneNumActivity.class);
-      localIntent.putExtra("phonenum", this.a.a);
-      localIntent.putExtra("key", this.a.b);
-      localIntent.putExtra("uin", accm.a(this.a));
-      localIntent.putExtra("key_register_sign", accm.a(this.a));
-      localIntent.putExtra("key_register_binduin", paramString);
-      accm.a(this.a).startActivity(localIntent);
-      accm.a(this.a).finish();
-      return;
-      accm.b(this.a);
-      return;
+        if (!TextUtils.isEmpty(paramObject))
+        {
+          this.a.c.setVisibility(0);
+          this.a.c.setText(paramObject);
+        }
+      }
     }
-    accm.b(this.a);
+    for (;;)
+    {
+      if (bfyh.b(this.a.app, AddFriendVerifyActivity.a(this.a))) {
+        this.a.c.setVisibility(8);
+      }
+      return;
+      label163:
+      if ((paramObject instanceof ContactCard))
+      {
+        localObject = (ContactCard)paramObject;
+        if ((((ContactCard)localObject).mobileNo != null) && (((ContactCard)localObject).mobileNo.equals(AddFriendVerifyActivity.a(this.a))))
+        {
+          paramObject = bddf.a(this.a, ((ContactCard)localObject).bSex, ((ContactCard)localObject).bAge, ((ContactCard)localObject).strCountry, ((ContactCard)localObject).strProvince, ((ContactCard)localObject).strCity);
+          if (this.a.a != null) {
+            paramObject = bddf.a(this.a, ((ContactCard)localObject).bSex, 0, "", "", "");
+          }
+          if (!TextUtils.isEmpty(paramObject))
+          {
+            this.a.c.setVisibility(0);
+            this.a.c.setText(paramObject);
+          }
+        }
+      }
+    }
   }
 }
 

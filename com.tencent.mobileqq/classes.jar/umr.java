@@ -1,75 +1,25 @@
-import java.util.concurrent.ConcurrentHashMap;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class umr
+class umr
+  extends SimpleJob<Object>
 {
-  public static ConcurrentHashMap<Class<?>, Class<?>> a = new ConcurrentHashMap();
-  public static ConcurrentHashMap<Class<?>, Class<?>> b = new ConcurrentHashMap();
-  
-  static
+  umr(umm paramumm, String paramString1, String paramString2, umv paramumv)
   {
-    a.put(vym.class, umo.class);
-    b.put(urg.class, ump.class);
+    super(paramString1);
   }
   
-  public static <I> I a(Class<? extends I> paramClass, Class<I> paramClass1, Object... paramVarArgs)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    try
-    {
-      if (paramClass.equals(vym.class))
-      {
-        Object localObject = paramClass1.cast(new umo());
-        return localObject;
-      }
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      wsv.e("ExtensionFactoryImplement", "parse int exception");
-      try
-      {
-        paramClass = (Class)a.get(paramClass);
-        if (paramClass != null)
-        {
-          if (umd.class.isAssignableFrom(paramClass)) {
-            break label110;
-          }
-          throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
-        }
-      }
-      catch (Exception paramClass)
-      {
-        wsv.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
-      }
-      return ums.a(paramClass1);
-    }
-    label110:
-    paramClass = ums.a(paramClass, paramVarArgs);
-    return paramClass;
+    umm.a(this.jdField_a_of_type_Umm, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Umv);
+    return null;
   }
   
-  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
+  public int getJobType()
   {
-    if (!umd.class.isAssignableFrom(paramClass)) {
-      throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
-    }
-    try
-    {
-      Class localClass = (Class)b.get(paramClass);
-      if (localClass != null)
-      {
-        if (umd.class.isAssignableFrom(localClass)) {
-          break label124;
-        }
-        throw new IllegalArgumentException("createExtendableObject class " + localClass.getName() + " should have a KeepConstructor interface");
-      }
-    }
-    catch (Exception localException)
-    {
-      wsv.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
-    }
-    return ums.a(paramClass, paramVarArgs);
-    label124:
-    Object localObject = ums.a(localException, paramVarArgs);
-    return localObject;
+    return 4;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vas.avatar;
 
 import android.graphics.drawable.Drawable;
-import bdrt;
+import bdwc;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.URLDrawable;
 import java.lang.ref.WeakReference;
@@ -9,7 +9,7 @@ import java.lang.ref.WeakReference;
 public class VasAvatarLoader$1
   implements Runnable
 {
-  public VasAvatarLoader$1(bdrt parambdrt, URLDrawable paramURLDrawable) {}
+  public VasAvatarLoader$1(bdwc parambdwc, URLDrawable paramURLDrawable) {}
   
   public void run()
   {

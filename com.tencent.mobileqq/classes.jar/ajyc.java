@@ -1,8 +1,21 @@
-public class ajyc
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.view.View;
+
+public abstract interface ajyc
 {
-  public String a;
-  public String b;
-  public String c;
+  @NonNull
+  public abstract View a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void a(ajyd paramajyd);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract void b(@ColorInt int paramInt);
 }
 
 

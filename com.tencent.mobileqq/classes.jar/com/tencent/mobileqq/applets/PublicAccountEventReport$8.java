@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.applets;
 
-import azmj;
+import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class PublicAccountEventReport$8
@@ -10,7 +10,7 @@ public final class PublicAccountEventReport$8
   
   public void run()
   {
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB5", "0X8009EB5", this.jdField_a_of_type_Int, 0, "" + this.b, this.jdField_a_of_type_Long + "", "", "");
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB5", "0X8009EB5", this.jdField_a_of_type_Int, 0, "" + this.b, this.jdField_a_of_type_Long + "", "", "");
   }
 }
 

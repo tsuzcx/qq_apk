@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.util;
 
-import alkv;
-import bdcs;
-import bdda;
+import alpk;
+import bdhb;
+import bdhj;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public final class ProfileCardUtil$1
@@ -12,12 +12,12 @@ public final class ProfileCardUtil$1
   
   public void run()
   {
-    String str1 = alkv.a(this.a, alkv.b(BaseApplication.getContext()));
-    int i = alkv.c(BaseApplication.getContext());
-    String str2 = alkv.a(this.a, i);
-    bdda.a(this.b, str1);
-    bdda.a(this.b, str2, i, i);
-    bdcs.a(this.b, true);
+    String str1 = alpk.a(this.a, alpk.b(BaseApplication.getContext()));
+    int i = alpk.c(BaseApplication.getContext());
+    String str2 = alpk.a(this.a, i);
+    bdhj.a(this.b, str1);
+    bdhj.a(this.b, str2, i, i);
+    bdhb.a(this.b, true);
   }
 }
 

@@ -50,8 +50,8 @@ public class qpi
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mUseAutoScaleParams = false;
-    localURLDrawableOptions.mRequestWidth = bdkf.b(100.0F);
-    localURLDrawableOptions.mRequestHeight = bdkf.b(100.0F);
+    localURLDrawableOptions.mRequestWidth = bdoo.b(100.0F);
+    localURLDrawableOptions.mRequestHeight = bdoo.b(100.0F);
     return localURLDrawableOptions;
   }
   
@@ -64,14 +64,14 @@ public class qpi
       bool = true;
       localURLDrawableOptions.mPlayGifImage = bool;
       localURLDrawableOptions.mExtraInfo = paramHotPicData;
-      localURLDrawableOptions.mRequestWidth = bdkf.a(50.0F);
-      localURLDrawableOptions.mRequestHeight = bdkf.a(50.0F);
+      localURLDrawableOptions.mRequestWidth = bdoo.a(50.0F);
+      localURLDrawableOptions.mRequestHeight = bdoo.a(50.0F);
       if (paramHotPicData.getDataType() != 2) {
         break label69;
       }
     }
     label69:
-    for (paramHotPicData = asri.a((HotVideoData)paramHotPicData);; paramHotPicData = aspk.a(paramHotPicData.url))
+    for (paramHotPicData = asvr.a((HotVideoData)paramHotPicData);; paramHotPicData = astt.a(paramHotPicData.url))
     {
       if (paramHotPicData != null) {
         break label80;
@@ -106,15 +106,15 @@ public class qpi
   {
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560006, null);
+      paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560005, null);
     }
-    Object localObject2 = (TextView)paramViewGroup.findViewById(2131378704);
-    MiddleBracketsTitleTextView localMiddleBracketsTitleTextView = (MiddleBracketsTitleTextView)paramViewGroup.findViewById(2131378702);
-    paramView = (TextView)paramViewGroup.findViewById(2131378703);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131368751);
-    TextView localTextView = (TextView)paramViewGroup.findViewById(2131378682);
-    ((TextView)localObject2).setEditableFactory(baiq.a);
-    localMiddleBracketsTitleTextView.setEditableFactory(baiq.a);
+    Object localObject2 = (TextView)paramViewGroup.findViewById(2131378759);
+    MiddleBracketsTitleTextView localMiddleBracketsTitleTextView = (MiddleBracketsTitleTextView)paramViewGroup.findViewById(2131378757);
+    paramView = (TextView)paramViewGroup.findViewById(2131378758);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131368765);
+    TextView localTextView = (TextView)paramViewGroup.findViewById(2131378736);
+    ((TextView)localObject2).setEditableFactory(bamz.a);
+    localMiddleBracketsTitleTextView.setEditableFactory(bamz.a);
     ReadInJoyDraftboxItem localReadInJoyDraftboxItem;
     if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size()))
     {
@@ -122,16 +122,16 @@ public class qpi
       paramView.setText(orr.a(localReadInJoyDraftboxItem.time, false));
       paramView = localReadInJoyDraftboxItem.title;
       if (localReadInJoyDraftboxItem.type == 3) {
-        paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718979);
+        paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718991);
       }
       if (TextUtils.isEmpty(paramView)) {
         break label487;
       }
       Object localObject1 = paramView;
       if (localReadInJoyDraftboxItem.type == 2) {
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718975) + ": " + paramView;
+        localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718987) + ": " + paramView;
       }
-      ((TextView)localObject2).setText(new baig((CharSequence)localObject1, 7, 16));
+      ((TextView)localObject2).setText(new bamp((CharSequence)localObject1, 7, 16));
       ((TextView)localObject2).setVisibility(0);
       localObject1 = localReadInJoyDraftboxItem.digest;
       paramView = (View)localObject1;
@@ -149,7 +149,7 @@ public class qpi
       if (TextUtils.isEmpty(paramView)) {
         break label497;
       }
-      localMiddleBracketsTitleTextView.setText(new baig(paramView, 7, 16));
+      localMiddleBracketsTitleTextView.setText(new bamp(paramView, 7, 16));
       localMiddleBracketsTitleTextView.setVisibility(0);
       label373:
       if ((localReadInJoyDraftboxItem.firstPicData == null) || ((localReadInJoyDraftboxItem.firstPicData.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData == null) && (TextUtils.isEmpty(localReadInJoyDraftboxItem.firstPicData.jdField_a_of_type_JavaLangString)))) {
@@ -166,7 +166,7 @@ public class qpi
     {
       paramViewGroup.setOnClickListener(new qpj(this, localReadInJoyDraftboxItem));
       localTextView.setOnClickListener(new qpk(this, localReadInJoyDraftboxItem, paramInt));
-      paramViewGroup.setTag(-3, Integer.valueOf(bdkf.a(66.0F)));
+      paramViewGroup.setTag(-3, Integer.valueOf(bdoo.a(66.0F)));
       return paramViewGroup;
       label487:
       ((TextView)localObject2).setVisibility(8);

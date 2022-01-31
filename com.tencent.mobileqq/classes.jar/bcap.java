@@ -1,36 +1,17 @@
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 
 public class bcap
-  extends bcal<bcaq, bbzs>
+  implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View jdField_a_of_type_AndroidViewView;
+  public bcap(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public bcap(XMediaEditor paramXMediaEditor, Context paramContext)
+  public void onClick(View paramView)
   {
-    super(paramXMediaEditor);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    bhsj.b(paramView);
+    this.a.f();
   }
-  
-  public bcaq a(ViewGroup paramViewGroup)
-  {
-    return new bcaq(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(View paramView, bcaq parambcaq) {}
-  
-  public void a(bcaq parambcaq, bbzs parambbzs, int paramInt) {}
 }
 
 

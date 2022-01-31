@@ -1,7 +1,12 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class aswb
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  aswb(asvy paramasvy) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

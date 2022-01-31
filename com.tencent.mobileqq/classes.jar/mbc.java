@@ -51,7 +51,7 @@ public class mbc
     if (parammbh != null) {
       localBitmap = parammbh.a(paramLong);
     }
-    localBitmap = bctc.a(localBitmap);
+    localBitmap = bcxl.a(localBitmap);
     String str2 = max.a(paramContext);
     parammbh = max.a(parammbh);
     int i;
@@ -73,7 +73,7 @@ public class mbc
       i = 2;
       break;
       label159:
-      paramContext = bctc.a(parammbh, paramContext);
+      paramContext = bcxl.a(parammbh, paramContext);
       WXShareHelper.a().b(str1, str2, localBitmap, paramContext, paramString);
     }
   }
@@ -85,7 +85,7 @@ public class mbc
     if (!TextUtils.isEmpty(str)) {
       localArrayList.add(str);
     }
-    str = paramContext.getString(2131693348) + paramString;
+    str = paramContext.getString(2131693350) + paramString;
     Bundle localBundle = new Bundle();
     localBundle.putString("title", max.a(paramContext));
     localBundle.putString("desc", max.a(parammbh));
@@ -96,7 +96,7 @@ public class mbc
     localBundle.putString("troop_wording", str);
     localBundle.putString("bizname", "JoinTroopLink");
     localBundle.putParcelable("PARAM_ActivityResultReceiver", new ShareChat.SharePanel.1(this, new Handler(), paramLong, paramInt));
-    bjao.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramContext, localBundle, null, 145);
+    bjev.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramContext, localBundle, null, 145);
     if (QLog.isColorLevel()) {
       QLog.w("ShareChat", 1, "shareToQzone, shareLink[" + paramString + "], seq[" + paramLong + "]");
     }
@@ -112,11 +112,11 @@ public class mbc
     String str = this.jdField_a_of_type_Mbh.a(paramLong, this.b);
     if (TextUtils.isEmpty(str))
     {
-      boolean bool = bdee.d(null);
+      boolean bool = bdin.d(null);
       QLog.w("ShareChat", 1, "tryToGetShareLink, url为空, isConn[" + bool + "], mChoosedChannel[" + this.jdField_a_of_type_Int + "], mChoosedLinkType[" + this.b + "], seq[" + paramLong + "]");
       if ((!bool) && (this.jdField_a_of_type_Int != 4))
       {
-        QQToast.a(paramContext, paramContext.getString(2131692397), 0).a();
+        QQToast.a(paramContext, paramContext.getString(2131692398), 0).a();
         if (QLog.isColorLevel()) {
           QLog.w("ShareChat", 1, "tryToGetShareLink, !isNetSupport, mChoosedChannel[" + this.jdField_a_of_type_Int + "]");
         }
@@ -125,7 +125,7 @@ public class mbc
       {
         a(this.jdField_a_of_type_Int, this.b, 3);
         return;
-        QQToast.a(paramContext, alpo.a(2131714284), 0).a();
+        QQToast.a(paramContext, alud.a(2131714296), 0).a();
       }
     }
     switch (this.jdField_a_of_type_Int)
@@ -153,12 +153,12 @@ public class mbc
   
   private void d(long paramLong, Context paramContext, int paramInt, mbh parammbh, String paramString)
   {
-    parammbh = paramContext.getString(2131693348) + paramString;
+    parammbh = paramContext.getString(2131693350) + paramString;
     if (QLog.isColorLevel()) {
       QLog.w("ShareChat", 1, "copyTroopLink, text[" + parammbh + "], seq[" + paramLong + "]");
     }
     ((ClipboardManager)paramContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("troop_url", parammbh));
-    QQToast.a(paramContext, 2, 2131693349, 0).a();
+    QQToast.a(paramContext, 2, 2131693351, 0).a();
     a(4, paramInt, 2);
   }
   
@@ -192,7 +192,7 @@ public class mbc
       String str1 = max.a(paramContext);
       String str2 = max.a(parammbh);
       String str3 = max.b(parammbh);
-      Object localObject2 = paramContext.getString(2131693346);
+      Object localObject2 = paramContext.getString(2131693348);
       Object localObject1 = new JSONObject();
       ((JSONObject)localObject1).put("prompt", localObject3);
       localObject3 = new JSONObject();
@@ -216,7 +216,7 @@ public class mbc
         paramString.put("type", parammbh);
         paramString.put("name", parammbh);
         paramString.put("reportType", "898");
-        paramString.put("r2", bdje.a("ShareChat", this.jdField_a_of_type_JavaLangString));
+        paramString.put("r2", bdnn.a("ShareChat", this.jdField_a_of_type_JavaLangString));
         localJSONObject.put("report", paramString);
       }
       ((JSONObject)localObject3).put("news", localJSONObject);
@@ -238,15 +238,15 @@ public class mbc
       ((Intent)localObject2).putExtra("forward_ark_app_prompt", (String)localObject1);
       ((Intent)localObject2).putExtra("forward_ark_app_meta", str3);
       ((Intent)localObject2).putExtra("forward_ark_app_config", str2);
-      ((Intent)localObject2).putExtras(bdfk.a(parammbh, str1, paramString, str3, paramContext.getResources().getDisplayMetrics().scaledDensity, null, null));
+      ((Intent)localObject2).putExtras(bdjt.a(parammbh, str1, paramString, str3, paramContext.getResources().getDisplayMetrics().scaledDensity, null, null));
       ((Intent)localObject2).putExtra("PARAM_ActivityResultReceiver", new ShareChat.SharePanel.2(this, new Handler(), paramLong, paramInt));
-      arum.a(paramContext, (Intent)localObject2);
+      aryv.a(paramContext, (Intent)localObject2);
       return;
     }
     catch (Exception parammbh)
     {
       QLog.w("ShareChat", 1, "shareToMobileQQ, Exception, seq[" + paramLong + "]", parammbh);
-      QQToast.a(paramContext, alpo.a(2131714286), 0).a();
+      QQToast.a(paramContext, alud.a(2131714298), 0).a();
       a(0, paramInt, 3);
     }
   }
@@ -257,8 +257,8 @@ public class mbc
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(paramContext.getString(2131720040));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(bctc.a(paramContext, true));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(paramContext.getString(2131720052));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(bcxl.a(paramContext, true));
     this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setOnDismissListener(new mbe(this));
     this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(this.jdField_a_of_type_Mbi);
   }
@@ -292,7 +292,7 @@ public class mbc
       return;
     }
     Intent localIntent = new Intent(paramContext, QRDisplayActivity.class);
-    localIntent.putExtra("title", paramContext.getString(2131717448));
+    localIntent.putExtra("title", paramContext.getString(2131717460));
     int i;
     if (TextUtils.isEmpty(localTroopInfoData.troopName))
     {
@@ -340,32 +340,32 @@ public class mbc
   
   protected void c(long paramLong, Context paramContext)
   {
-    bhpy localbhpy = (bhpy)bhql.a(paramContext, null);
-    localbhpy.b(2131721151);
-    localbhpy.b(2131721152);
-    localbhpy.c(2131690648);
-    localbhpy.setOnDismissListener(new mbf(this, paramLong));
-    localbhpy.a(new mbg(this, paramLong, localbhpy));
+    bhuf localbhuf = (bhuf)bhus.a(paramContext, null);
+    localbhuf.b(2131721164);
+    localbhuf.b(2131721165);
+    localbhuf.c(2131690648);
+    localbhuf.setOnDismissListener(new mbf(this, paramLong));
+    localbhuf.a(new mbg(this, paramLong, localbhuf));
     switch (this.jdField_a_of_type_Int)
     {
     case 4: 
     default: 
-      paramContext = paramContext.getString(2131721149);
+      paramContext = paramContext.getString(2131721162);
     }
     for (;;)
     {
-      localbhpy.a(paramContext);
-      localbhpy.show();
+      localbhuf.a(paramContext);
+      localbhuf.show();
       return;
-      paramContext = String.format(paramContext.getString(2131690843), new Object[] { paramContext.getString(2131721150) });
+      paramContext = String.format(paramContext.getString(2131690844), new Object[] { paramContext.getString(2131721163) });
       continue;
-      paramContext = String.format(paramContext.getString(2131690843), new Object[] { paramContext.getString(2131721153) });
+      paramContext = String.format(paramContext.getString(2131690844), new Object[] { paramContext.getString(2131721166) });
       continue;
-      paramContext = String.format(paramContext.getString(2131690843), new Object[] { paramContext.getString(2131720045) });
+      paramContext = String.format(paramContext.getString(2131690844), new Object[] { paramContext.getString(2131720057) });
       continue;
-      paramContext = String.format(paramContext.getString(2131690843), new Object[] { paramContext.getString(2131720048) });
+      paramContext = String.format(paramContext.getString(2131690844), new Object[] { paramContext.getString(2131720060) });
       continue;
-      paramContext = alpo.a(2131714285);
+      paramContext = alud.a(2131714297);
     }
   }
   

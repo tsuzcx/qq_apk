@@ -76,7 +76,7 @@ public class rem
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager != null) {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.f();
       }
-      Object localObject = Boolean.valueOf(bjxj.r(ors.a()));
+      Object localObject = Boolean.valueOf(bkbq.r(ors.a()));
       WebViewTitleStyle localWebViewTitleStyle = new WebViewTitleStyle();
       Bundle localBundle = new Bundle();
       localBundle.putParcelable("titleStyle", localWebViewTitleStyle);
@@ -88,7 +88,7 @@ public class rem
       localWebViewTitleStyle.e = -16777216;
       localBundle.putParcelable("titleStyle", localWebViewTitleStyle);
       if (((Boolean)localObject).booleanValue()) {
-        smk.a(this.jdField_a_of_type_AndroidAppActivity, alpo.a(2131716632), "https://kandian.qq.com/viola/bundle_weishiLeadTo.js?v_bid=3256", null, new ren(this, localBundle));
+        smk.a(this.jdField_a_of_type_AndroidAppActivity, alud.a(2131716644), "https://kandian.qq.com/viola/bundle_weishiLeadTo.js?v_bid=3256", null, new ren(this, localBundle));
       }
       for (;;)
       {
@@ -122,14 +122,14 @@ public class rem
   {
     if ((this.jdField_a_of_type_Rbs.jdField_c_of_type_AndroidViewView == null) && ((this.jdField_a_of_type_Rbs.itemView instanceof ViewGroup)))
     {
-      View localView = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131560166, (ViewGroup)this.jdField_a_of_type_Rbs.itemView);
-      this.jdField_a_of_type_Rbs.jdField_c_of_type_AndroidViewView = localView.findViewById(2131367402);
-      this.jdField_a_of_type_Rbs.jdField_d_of_type_AndroidViewView = localView.findViewById(2131367385);
-      this.jdField_a_of_type_Rbs.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367394));
-      this.jdField_a_of_type_Rbs.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367403));
-      this.jdField_a_of_type_Rbs.e = ((TextView)localView.findViewById(2131367406));
-      this.jdField_a_of_type_Rbs.f = ((TextView)localView.findViewById(2131367392));
-      this.jdField_a_of_type_Rbs.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCircleCountdownView = ((CircleCountdownView)localView.findViewById(2131367404));
+      View localView = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131560165, (ViewGroup)this.jdField_a_of_type_Rbs.itemView);
+      this.jdField_a_of_type_Rbs.jdField_c_of_type_AndroidViewView = localView.findViewById(2131367412);
+      this.jdField_a_of_type_Rbs.jdField_d_of_type_AndroidViewView = localView.findViewById(2131367395);
+      this.jdField_a_of_type_Rbs.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367404));
+      this.jdField_a_of_type_Rbs.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367413));
+      this.jdField_a_of_type_Rbs.e = ((TextView)localView.findViewById(2131367416));
+      this.jdField_a_of_type_Rbs.f = ((TextView)localView.findViewById(2131367402));
+      this.jdField_a_of_type_Rbs.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCircleCountdownView = ((CircleCountdownView)localView.findViewById(2131367414));
     }
   }
   
@@ -166,16 +166,16 @@ public class rem
       localResources = this.jdField_a_of_type_AndroidAppActivity.getResources();
       if (this.jdField_a_of_type_Rbs.jdField_a_of_type_Rfs != null)
       {
-        if (bdem.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$InterruptedWeishiAd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.jdField_b_of_type_JavaLangString)) {
+        if (bdiv.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$InterruptedWeishiAd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.jdField_b_of_type_JavaLangString)) {
           break label297;
         }
         this.jdField_a_of_type_Rbs.f.setText(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$InterruptedWeishiAd.d);
-        localObject = localResources.getDrawable(2130842687);
+        localObject = localResources.getDrawable(2130842700);
       }
     }
     for (;;)
     {
-      int i = aekt.a(12.0F, localResources);
+      int i = aepi.a(12.0F, localResources);
       ((Drawable)localObject).setBounds(0, 0, i, i);
       this.jdField_a_of_type_Rbs.f.setCompoundDrawables((Drawable)localObject, null, null, null);
       this.jdField_a_of_type_Rbs.f.setOnClickListener(new reo(this));
@@ -196,7 +196,7 @@ public class rem
         return;
         label297:
         this.jdField_a_of_type_Rbs.f.setText(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$InterruptedWeishiAd.e);
-        localObject = localResources.getDrawable(2130842690);
+        localObject = localResources.getDrawable(2130842703);
       }
       catch (Exception localException)
       {
@@ -211,9 +211,9 @@ public class rem
     if (!this.jdField_b_of_type_Boolean)
     {
       this.jdField_b_of_type_Boolean = true;
-      this.jdField_b_of_type_JavaLangString = bjxj.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      localObject = bjxj.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      boolean bool = bjxj.v(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_b_of_type_JavaLangString = bkbq.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localObject = bkbq.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      boolean bool = bkbq.v(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "checkIsNeedShowInterruptedAd() 后台下发原始配置：" + this.jdField_b_of_type_JavaLangString + "\n本地副本配置：" + (String)localObject + "\n本地副本配置是否为当天：" + bool);
       }
@@ -359,7 +359,7 @@ public class rem
         for (String str = "weishi";; str = "default")
         {
           localJSONObject1.put(str, localJSONObject2);
-          bjxj.E(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localJSONObject1.toString());
+          bkbq.E(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localJSONObject1.toString());
           if (!QLog.isColorLevel()) {
             break;
           }

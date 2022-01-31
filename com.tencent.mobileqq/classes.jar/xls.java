@@ -1,21 +1,18 @@
-import android.view.View;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
-public class xls
+public final class xls
+  implements Parcelable.Creator<PublishParam>
 {
-  public View a;
-  public View b;
-  
-  public xls(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  public PublishParam a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.b = paramView.findViewById(2131379602);
+    return new PublishParam(paramParcel);
   }
   
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
+  public PublishParam[] a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new xlt(this));
+    return new PublishParam[paramInt];
   }
 }
 

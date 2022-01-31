@@ -1,29 +1,101 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import java.util.List;
 
 public class avbi
-  implements View.OnLayoutChangeListener
 {
-  public avbi(StuffContainerView paramStuffContainerView) {}
+  protected void a() {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  protected void a(int paramInt, String paramString) {}
+  
+  protected void a(int paramInt, String paramString, Bitmap paramBitmap) {}
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(int paramInt, Object... paramVarArgs)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = StuffContainerView.a(this.a);
-    if ((StuffContainerView.a(this.a) > 0L) && (l1 - l2 < 500L)) {}
-    do
+    switch (paramInt)
     {
+    default: 
+    case 4118: 
+    case 4131: 
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramVarArgs == null) || (paramVarArgs.length != 2));
+        a((List)paramVarArgs[0], (List)paramVarArgs[1]);
+        return;
+      } while ((paramVarArgs == null) || (paramVarArgs.length != 2));
+      a(((Integer)paramVarArgs[0]).intValue(), ((Boolean)paramVarArgs[1]).booleanValue());
       return;
-      StuffContainerView.a(this.a, l1);
-      if (QLog.isColorLevel()) {
-        QLog.d("StuffContainerView", 2, "VideoInfoListenerImpl onLayoutChange");
+    case 4113: 
+      a(((Boolean)paramVarArgs[0]).booleanValue(), (List)paramVarArgs[1]);
+      return;
+    case 4114: 
+      b(((Boolean)paramVarArgs[0]).booleanValue(), (List)paramVarArgs[1]);
+      return;
+    case 4115: 
+      a(((Boolean)paramVarArgs[0]).booleanValue(), null);
+      return;
+    case 4116: 
+      a(((Boolean)paramVarArgs[0]).booleanValue(), null);
+      return;
+    case 4159: 
+      b();
+      return;
+    case 4161: 
+      try
+      {
+        a(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1], (Bitmap)paramVarArgs[2]);
+        return;
       }
-    } while (this.a.a == null);
-    this.a.a.l();
+      catch (Exception paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+        return;
+      }
+    case 4162: 
+      try
+      {
+        if (((Integer)paramVarArgs[0]).intValue() == 0)
+        {
+          a(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1]);
+          return;
+        }
+      }
+      catch (Exception paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+        return;
+      }
+      b(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1]);
+      return;
+    }
+    try
+    {
+      a();
+      return;
+    }
+    catch (Exception paramVarArgs)
+    {
+      paramVarArgs.printStackTrace();
+    }
   }
+  
+  public void a(List<String> paramList1, List<String> paramList2) {}
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, List<Long> paramList) {}
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  protected void b() {}
+  
+  protected void b(int paramInt, String paramString) {}
+  
+  public void b(boolean paramBoolean, List<Long> paramList) {}
 }
 
 

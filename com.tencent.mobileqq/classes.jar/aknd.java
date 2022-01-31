@@ -1,10 +1,23 @@
-public abstract interface aknd
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+
+class aknd
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString);
+  aknd(aknb paramaknb) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(aknb.a(this.a), 4, "right button is clicked! ");
+    }
+    aknb.a(this.a, 0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aknd
  * JD-Core Version:    0.7.0.1
  */

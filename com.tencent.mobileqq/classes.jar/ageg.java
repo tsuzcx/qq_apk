@@ -1,17 +1,13 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.RelativeLayout;
 
 class ageg
-  implements DialogInterface.OnClickListener
+  extends aeqi
 {
-  ageg(agee paramagee) {}
+  public long a;
+  public RelativeLayout a;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    agdi.u(this.a.a).setResult(8001);
-  }
+  private ageg(agee paramagee) {}
 }
 
 

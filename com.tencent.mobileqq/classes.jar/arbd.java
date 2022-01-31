@@ -1,71 +1,42 @@
-import android.annotation.TargetApi;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.Window;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarCompact;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp;
 
-public class arbd
-  implements ardo
+class arbd
+  implements bkkj<WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp>
 {
-  public arbd(FileBrowserActivity paramFileBrowserActivity) {}
+  arbd(arau paramarau, arbi paramarbi) {}
   
-  @TargetApi(14)
-  public void a()
+  public void a(int paramInt, String paramString, WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
   {
-    if (ImmersiveUtils.isSupporImmersive() == 1)
-    {
-      RelativeLayout localRelativeLayout = (RelativeLayout)this.a.findViewById(2131375982);
-      localRelativeLayout.setFitsSystemWindows(true);
-      localRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this.a), 0, 0);
+    QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "sendWeiYun2Dataline onFailed: errcode[" + paramInt + "], errmsg[" + paramString + "]");
+    if (this.jdField_a_of_type_Arbi != null) {
+      this.jdField_a_of_type_Arbi.a(paramInt, paramString);
     }
   }
   
-  public void a(int paramInt)
+  public void a(WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
   {
-    FileBrowserActivity.a(this.a, (TextView)this.a.findViewById(2131368659));
-    FileBrowserActivity.a(this.a).setTextSize(1, 19.0F);
-    FileBrowserActivity.a(this.a).setText(this.a.a.a());
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    FileBrowserActivity.a(this.a, paramBoolean);
-    View localView = this.a.findViewById(2131375815);
-    if (!FileBrowserActivity.a(this.a))
+    paramCrossBidProxyCopyFileToOtherBidMsgRsp = new String(paramCrossBidProxyCopyFileToOtherBidMsgRsp.dst_path.get().toByteArray());
+    if (paramCrossBidProxyCopyFileToOtherBidMsgRsp.length() < 1)
     {
-      localView.setVisibility(0);
-      if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.mSystemBarComp != null))
-      {
-        int i = this.a.getResources().getColor(2131166957);
-        this.a.mSystemBarComp.setStatusColor(i);
-        this.a.mSystemBarComp.setStatusBarColor(i);
-        if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-          this.a.mSystemBarComp.setStatusBarDrawable(this.a.getResources().getDrawable(2130845674));
-        }
+      QLog.e("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^! [CS Replay]sendWeiYun2Dataline onSucceed,But uuid is null!!!");
+      if (this.jdField_a_of_type_Arbi != null) {
+        this.jdField_a_of_type_Arbi.a(-3, "copyFileToOtherBid_fail");
       }
-      this.a.getWindow().setFlags(0, 1024);
+    }
+    do
+    {
       return;
-    }
-    localView.setVisibility(8);
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.mSystemBarComp != null))
-    {
-      this.a.mSystemBarComp.setStatusColor(0);
-      this.a.mSystemBarComp.setStatusBarColor(0);
-      if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-        this.a.mSystemBarComp.setStatusBarDrawable(null);
-      }
-    }
-    this.a.getWindow().setFlags(1024, 1024);
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^ [CS Replay] sendWeiYun2Dataline onSucceed, Uuid[" + paramCrossBidProxyCopyFileToOtherBidMsgRsp + "]");
+    } while (this.jdField_a_of_type_Arbi == null);
+    this.jdField_a_of_type_Arbi.a(paramCrossBidProxyCopyFileToOtherBidMsgRsp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arbd
  * JD-Core Version:    0.7.0.1
  */

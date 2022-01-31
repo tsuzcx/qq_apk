@@ -1,23 +1,23 @@
-import android.text.Spannable;
-import java.util.Comparator;
+import java.util.ArrayList;
+import java.util.List;
 
-final class bcei
-  implements Comparator<bceh>
+public abstract class bcei
+  extends bcdy
 {
-  bcei(Spannable paramSpannable) {}
+  public List<Integer> b = new ArrayList();
+  public int g = 0;
   
-  public int a(bceh parambceh1, bceh parambceh2)
+  public bcei()
   {
-    int i = 0;
-    int j = this.a.getSpanStart(parambceh1);
-    int k = this.a.getSpanStart(parambceh2);
-    if (j < k) {
-      i = -1;
-    }
-    while (j <= k) {
-      return i;
-    }
-    return 1;
+    this.b.add(Integer.valueOf(0));
+    this.b.add(Integer.valueOf(3));
+    this.b.add(Integer.valueOf(1));
+    this.b.add(Integer.valueOf(2));
+  }
+  
+  public int e()
+  {
+    return this.g;
   }
 }
 

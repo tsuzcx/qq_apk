@@ -1,64 +1,72 @@
-import android.content.Intent;
-import android.os.AsyncTask;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.MimeTypeMap;
-import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bbdo
-  extends AsyncTask<Void, Void, String>
+  implements ldw
 {
-  public bbdo(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public bbdo(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  protected String a(Void... paramVarArgs)
+  public void a() {}
+  
+  public void a(Bundle paramBundle)
   {
-    try
+    int j = 0;
+    paramBundle = paramBundle.getString("sso_GdtLoadAd_rsp_json");
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, "json = " + paramBundle);
+    }
+    for (;;)
     {
-      str1 = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (str1 != null)
+      int i;
+      int k;
+      try
       {
-        paramVarArgs = null;
-        try
+        JSONObject localJSONObject1 = new JSONObject(paramBundle);
+        paramBundle = localJSONObject1.optJSONArray("pos_ads_info");
+        localJSONObject1 = new JSONObject(localJSONObject1.optString("busi_cookie")).optJSONObject("index");
+        i = 0;
+        if (i < paramBundle.length())
         {
-          String str2 = MimeTypeMap.getFileExtensionFromUrl(str1);
-          if (str2 != null) {
-            paramVarArgs = MimeTypeMap.getSingleton().getMimeTypeFromExtension(str2);
-          }
-          if ((paramVarArgs != null) && (paramVarArgs.startsWith("image/"))) {
-            bdda.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, new File(str1));
-          }
-        }
-        catch (IllegalArgumentException paramVarArgs)
-        {
-          for (;;)
+          Object localObject = paramBundle.optJSONObject(i);
+          JSONObject localJSONObject2 = ((JSONObject)localObject).optJSONArray("ads_info").optJSONObject(0);
+          k = j;
+          if (localJSONObject2 != null)
           {
-            QLog.e("TroopAvatarWallPreviewActivity", 2, new Object[] { "savePic2SystemMedia illegalArgumentException ex", paramVarArgs.getMessage() });
+            int m = localJSONObject1.optInt(((JSONObject)localObject).optString("pos_id"));
+            k = j;
+            if (m - 1 > 0)
+            {
+              k = j;
+              if (m - 1 < this.a.jdField_a_of_type_JavaUtilArrayList.size())
+              {
+                localObject = new bbei(localJSONObject2);
+                this.a.jdField_a_of_type_JavaUtilArrayList.add(m - 1, localObject);
+                k = 1;
+              }
+            }
           }
         }
-        bdda.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, str1);
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getIntent().getBooleanExtra("from_photo_wall", false)) {
-          return alpo.a(2131715595);
+        else
+        {
+          if (j != 0) {
+            this.a.jdField_a_of_type_Bbdw.notifyDataSetChanged();
+          }
+          return;
         }
       }
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+      i += 1;
+      j = k;
     }
-    catch (IOException paramVarArgs)
-    {
-      String str1;
-      return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131695348);
-      return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131695349) + " " + str1;
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131695348);
-      return paramVarArgs;
-    }
-    catch (OutOfMemoryError paramVarArgs) {}
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131695348);
-  }
-  
-  protected void a(String paramString)
-  {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getTitleBarHeight());
   }
 }
 

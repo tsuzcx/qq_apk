@@ -1,95 +1,79 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.View;
-import com.tencent.biz.widgets.ViewFinderView.1;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class zda
-  extends View
+  extends WebViewPlugin
 {
-  protected double a;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842851);
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842868);
-  protected int c;
-  protected int d = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+  public static final String a = zda.class.getSimpleName();
   
-  public zda(Context paramContext)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(1275068416);
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Boolean = true;
-      invalidate();
+    boolean bool2 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    Rect localRect = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(localRect);
-    this.c = (paramInt4 - paramInt2 - this.d);
-    this.jdField_a_of_type_Double = (this.c / 5000.0D);
-    this.jdField_a_of_type_AndroidGraphicsRect = localRect;
-    invalidate();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  protected void onDraw(Canvas paramCanvas)
-  {
-    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
-    if ((localRect == null) || (localRect.width() == 0) || (localRect.height() == 0)) {
-      paramCanvas.drawRect(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if ("arcard".equals(paramString2)) {
+      if ("isEntranceSupport".equals(paramString3)) {
+        if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+          break label328;
+        }
+      }
     }
-    do
+    for (;;)
     {
-      return;
-      paramCanvas.drawRect(0.0F, 0.0F, this.jdField_a_of_type_Int, localRect.top, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(0.0F, localRect.top, localRect.left, localRect.bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(localRect.right, localRect.top, this.jdField_a_of_type_Int, localRect.bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(0.0F, localRect.bottom, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    } while (!this.jdField_a_of_type_Boolean);
-    int i = (int)((System.currentTimeMillis() - this.jdField_a_of_type_Long) * this.jdField_a_of_type_Double) % this.c;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(localRect.left, localRect.top + i, localRect.right, i + localRect.top + this.d);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    postInvalidateDelayed(20L, localRect.left, localRect.top, localRect.right, localRect.bottom);
-  }
-  
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    invalidate();
-  }
-  
-  public void postInvalidateDelayed(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (Build.VERSION.SDK_INT >= 14)
-    {
-      super.postInvalidateDelayed(paramLong, paramInt1, paramInt2, paramInt3, paramInt4);
-      return;
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        QLog.d(a, 2, "handleJsRequest jsonobject is " + paramJsBridgeListener.toString());
+        paramJsBridgeListener = paramJsBridgeListener.optString("callback");
+        if (!amwp.a())
+        {
+          bool1 = true;
+          paramString1 = new JSONObject();
+          paramString1.put("is_entrance_support", bool1);
+          callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+          bool1 = bool2;
+          return bool1;
+        }
+        bool1 = false;
+        continue;
+        if (!"isModelSupport".equals(paramString3)) {
+          break label296;
+        }
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+        return false;
+      }
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        QLog.d(a, 2, "handleJsRequest jsonobject is " + paramJsBridgeListener.toString());
+        paramJsBridgeListener = paramJsBridgeListener.optString("callback");
+        bool1 = amva.a();
+        paramString1 = new JSONObject();
+        paramString1.put("is_device_support", bool1);
+        callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+        bool1 = bool2;
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+        return false;
+      }
+      label296:
+      boolean bool1 = super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+      continue;
+      bool1 = super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+      continue;
+      label328:
+      bool1 = false;
     }
-    postDelayed(new ViewFinderView.1(this, paramInt1, paramInt2, paramInt3, paramInt4), paramLong);
   }
 }
 

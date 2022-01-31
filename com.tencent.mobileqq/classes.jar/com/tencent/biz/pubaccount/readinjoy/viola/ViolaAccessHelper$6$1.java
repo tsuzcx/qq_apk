@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
-import bdcs;
+import bdhb;
 import java.io.File;
 import java.io.IOException;
 import srg;
@@ -14,7 +14,7 @@ class ViolaAccessHelper$6$1
   {
     try
     {
-      this.this$0.a.a(bdcs.b(new File(this.a)));
+      this.this$0.a.a(bdhb.b(new File(this.a)));
       return;
     }
     catch (IOException localIOException)

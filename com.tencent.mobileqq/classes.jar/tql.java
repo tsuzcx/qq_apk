@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableDownListener;
 import com.tencent.image.URLImageView;
 import mqq.util.WeakReference;
 import org.jetbrains.annotations.NotNull;
@@ -16,7 +17,8 @@ public class tql
   public static URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846089);
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846162);
+    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843636);
     if (paramURLImageView.getLayoutParams() != null)
     {
       localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
@@ -49,6 +51,11 @@ public class tql
   
   public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean)
   {
+    a(paramString, paramURLImageView, paramURLDrawableOptions, paramBoolean, null);
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean, URLDrawableDownListener paramURLDrawableDownListener)
+  {
     WeakReference localWeakReference = new WeakReference(paramURLImageView);
     Object localObject = paramURLDrawableOptions;
     if (paramURLDrawableOptions == null) {}
@@ -64,7 +71,7 @@ public class tql
           if ((paramURLDrawableOptions == null) || (localWeakReference.get() == null)) {
             break label158;
           }
-          paramURLImageView.setURLDrawableDownListener(new tqm(l, paramString));
+          paramURLImageView.setURLDrawableDownListener(new tqm(paramURLDrawableDownListener, l, paramString));
           ((ImageView)localWeakReference.get()).setImageDrawable(paramURLDrawableOptions);
           return;
         }
@@ -98,7 +105,8 @@ public class tql
   public static URLDrawable.URLDrawableOptions b(URLImageView paramURLImageView)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841308);
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841309);
+    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843636);
     if ((paramURLImageView != null) && (paramURLImageView.getLayoutParams() != null))
     {
       localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;

@@ -1,23 +1,27 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.subscribe.widget.SubscribeBannerView;
-import com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter;
-import com.tencent.biz.subscribe.widget.SubscribeBannerView.DotsIndicator;
-import java.util.ArrayList;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class yji
-  implements ViewPager.OnPageChangeListener
+  implements ygp
 {
-  public yji(SubscribeBannerView paramSubscribeBannerView) {}
+  public yji(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void a(int paramInt)
   {
-    if ((SubscribeBannerView.a(this.a) != null) && (SubscribeBannerView.a(this.a) != null)) {
-      SubscribeBannerView.a(this.a).setDotsSelected(paramInt % SubscribeBannerView.a(this.a).a().size());
+    SubscribeHybirdFragment.a(this.a).a(paramInt);
+  }
+  
+  public void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString)
+  {
+    if ((paramStGetFeedDetailRsp == null) || (paramStGetFeedDetailRsp.feed.get() == null))
+    {
+      QQToast.a(this.a.a(), alud.a(2131715033), 0).a();
+      return;
     }
+    SubscribeHybirdFragment.a(this.a, paramStGetFeedDetailRsp, paramLong, paramString);
   }
 }
 

@@ -1,112 +1,121 @@
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
-import java.io.File;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.opengl.EGLContext;
+import android.opengl.Matrix;
+import android.support.annotation.NonNull;
+import android.view.Surface;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 
-public class axuf
-  extends BrowserBaseModel
+public final class axuf
+  implements SurfaceTexture.OnFrameAvailableListener, axuo
 {
-  public Drawable a(AIOVideoData paramAIOVideoData)
+  private int jdField_a_of_type_Int;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private Surface jdField_a_of_type_AndroidViewSurface;
+  private axup jdField_a_of_type_Axup;
+  private axvg jdField_a_of_type_Axvg;
+  private axvh jdField_a_of_type_Axvh;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private boolean jdField_a_of_type_Boolean;
+  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  private int b;
+  private int c;
+  
+  public axuf(EGLContext paramEGLContext, int paramInt1, int paramInt2)
   {
-    URLDrawable localURLDrawable = null;
-    File localFile = a(paramAIOVideoData, 0);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = baul.a;
-    localURLDrawableOptions.mFailedDrawable = baul.a;
-    if ((localFile != null) && (BaseApplicationImpl.sImageCache.get(a(paramAIOVideoData, 0)) != null)) {
-      localURLDrawable = URLDrawable.getDrawable(a(paramAIOVideoData, 0), localURLDrawableOptions);
-    }
-    while (localFile == null) {
-      return localURLDrawable;
-    }
-    paramAIOVideoData = URLDrawable.getDrawable(a(paramAIOVideoData, 0), localURLDrawableOptions);
-    paramAIOVideoData.downloadImediatly();
-    return paramAIOVideoData;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Axvg = new axvg(paramEGLContext, 1);
+    this.jdField_a_of_type_Axvh = new axvh(this.jdField_a_of_type_Axvg);
+    this.jdField_a_of_type_Axvh.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Axvh.b();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    this.c = axuq.a(36197);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.c);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_Axup = new axup(this.jdField_a_of_type_Int, this.b);
+    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
   }
   
-  public File a(AIOVideoData paramAIOVideoData, int paramInt)
+  public Surface a()
   {
-    if (paramAIOVideoData == null) {
-      return null;
-    }
-    switch (paramInt)
-    {
-    default: 
-      paramAIOVideoData = null;
-    }
-    while ((paramAIOVideoData != null) && (!paramAIOVideoData.equals("I:N")))
-    {
-      paramAIOVideoData = new File(paramAIOVideoData);
-      if (!paramAIOVideoData.exists()) {
-        break;
-      }
-      return paramAIOVideoData;
-      paramAIOVideoData = paramAIOVideoData.a;
-      continue;
-      paramAIOVideoData = paramAIOVideoData.b;
-    }
+    return this.jdField_a_of_type_AndroidViewSurface;
   }
   
-  public String a(AIOVideoData paramAIOVideoData, int paramInt)
+  public void a()
   {
-    if (paramAIOVideoData == null) {
-      return null;
-    }
-    switch (paramInt)
+    if (this.jdField_a_of_type_Axvg != null)
     {
-    default: 
-      paramAIOVideoData = null;
+      this.jdField_a_of_type_Axvg.a();
+      this.jdField_a_of_type_Axvg = null;
     }
-    while ((paramAIOVideoData != null) && (!paramAIOVideoData.equals("I:N")))
+    if (this.jdField_a_of_type_Axvh != null)
     {
-      if (paramAIOVideoData.startsWith("/")) {
-        break label88;
-      }
-      return "file:/" + paramAIOVideoData;
-      paramAIOVideoData = paramAIOVideoData.a;
-      continue;
-      paramAIOVideoData = paramAIOVideoData.b;
+      this.jdField_a_of_type_Axvh.a();
+      this.jdField_a_of_type_Axvh = null;
     }
-    label88:
-    if (paramAIOVideoData.startsWith("//")) {
-      return "file:" + paramAIOVideoData;
-    }
-    return "file:" + paramAIOVideoData;
+    this.jdField_a_of_type_AndroidViewSurface.release();
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
+    this.jdField_a_of_type_Axup.b();
+    this.jdField_a_of_type_Axup = null;
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
+    this.jdField_a_of_type_AndroidViewSurface = null;
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
   }
   
-  public void a(AIOVideoData paramAIOVideoData, int paramInt, String paramString)
+  public void a(@NonNull axua paramaxua, boolean paramBoolean)
   {
-    if ("I:E".equals(paramString))
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
+    paramaxua.jdField_a_of_type_ArrayOfFloat = ((float[])this.jdField_a_of_type_ArrayOfFloat.clone());
+    this.jdField_a_of_type_Axup.a(paramaxua.a());
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.c, null, null);
+    this.jdField_a_of_type_Axup.a();
+  }
+  
+  public void b()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      switch (paramInt)
+      for (;;)
       {
-      default: 
-        return;
-      case 0: 
-        paramAIOVideoData.d = true;
-        return;
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {
+          try
+          {
+            this.jdField_a_of_type_JavaLangObject.wait();
+            if (!this.jdField_a_of_type_Boolean) {
+              throw new RuntimeException("frame wait timed out");
+            }
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            throw new RuntimeException(localInterruptedException);
+          }
+        }
       }
-      paramAIOVideoData.e = true;
-      return;
     }
-    switch (paramInt)
+    this.jdField_a_of_type_Boolean = false;
+    axuq.a("before updateTexImage");
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+  }
+  
+  public void onFrameAvailable(SurfaceTexture arg1)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-    default: 
-      return;
-    case 0: 
-      paramAIOVideoData.a = paramString;
-      return;
+      if (this.jdField_a_of_type_Boolean) {
+        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
+      }
     }
-    paramAIOVideoData.b = paramString;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangObject.notifyAll();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axuf
  * JD-Core Version:    0.7.0.1
  */

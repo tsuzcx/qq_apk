@@ -1,23 +1,24 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.Face;
+import android.hardware.Camera.FaceDetectionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.FaceDetectionCallbackForward.1;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aoax
+@TargetApi(14)
+public class aoax
+  implements Camera.FaceDetectionListener
 {
-  public abstract int a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aoam jdField_a_of_type_Aoam;
+  private final aoaq jdField_a_of_type_Aoaq;
   
-  public abstract void a(Point paramPoint, int paramInt);
-  
-  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
-  
-  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(Point paramPoint, boolean paramBoolean);
-  
-  public abstract int b(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
+  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
+  {
+    QLog.d("Q.camera.CameraManagerImpl", 2, "[onFaceDetection] faces = " + paramArrayOfFace + ", length = " + paramArrayOfFace.length);
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.FaceDetectionCallbackForward.1(this, paramArrayOfFace));
+  }
 }
 
 

@@ -1,34 +1,88 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.mobileqq.jsp.IdentificationApiPlugin.1.1;
-import com.tencent.mobileqq.jsp.IdentificationApiPlugin.1.2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
+import java.util.List;
 
 public class atdg
-  implements astb
+  extends amcm
 {
-  atdg(atdf paramatdf) {}
+  public atdg(ShareToQQActivity paramShareToQQActivity) {}
   
-  public void a(int paramInt, String paramString)
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    QLog.e("IdentificationApiPlugin", 1, "getAppConf error, code : " + paramInt + " errorMsg : " + paramString);
-    if (atdf.a(this.a) == null)
+    if (this.a.a == null)
     {
-      QLog.e("IdentificationApiPlugin", 1, "getConfFailed, activity is null");
+      this.a.finish();
       return;
     }
-    ThreadManager.getUIHandler().post(new IdentificationApiPlugin.1.2(this, paramString));
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.i(this.a.a)) {
+      str = this.a.a();
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      int k;
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        k = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (bdeu.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k != 0)
+      {
+        paramList = new Intent();
+        paramList.putExtra("isSuccess", paramBoolean);
+        paramList.putExtra("isCancelShield", false);
+        this.a.setResult(-1, paramList);
+      }
+      this.a.finish();
+      return;
+    }
   }
   
-  public void a(FaceDetectForThirdPartyManager.AppConf paramAppConf)
+  protected void b(boolean paramBoolean, List<Long> paramList)
   {
-    if (atdf.a(this.a) == null)
+    int k = 0;
+    if (this.a.a == null)
     {
-      QLog.e("IdentificationApiPlugin", 1, "getConfSuccess, activity is null");
+      this.a.finish();
       return;
     }
-    ThreadManager.getUIHandler().post(new IdentificationApiPlugin.1.1(this, paramAppConf));
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.i(this.a.a)) {
+      str = this.a.a();
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (bdeu.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k != 0)
+      {
+        paramList = new Intent();
+        paramList.putExtra("isSuccess", paramBoolean);
+        paramList.putExtra("isCancelShield", true);
+        this.a.setResult(-1, paramList);
+      }
+      this.a.finish();
+      return;
+    }
   }
 }
 

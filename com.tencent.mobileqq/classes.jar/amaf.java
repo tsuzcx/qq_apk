@@ -1,41 +1,35 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.HandlerThread;
-import android.os.IBinder;
-import android.os.Messenger;
-import android.util.SparseArray;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Set;
 
-class amaf
-  implements ServiceConnection
+public class amaf
+  extends altm
 {
-  amaf(amad paramamad) {}
+  public amaf(QQAppInterface paramQQAppInterface) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    amad.a(this.a, 2);
-    amad.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadPhoto", 2, "onServiceConnected()...");
-    }
-    this.a.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
-    this.a.b = new Messenger(this.a.jdField_a_of_type_AndroidOsHandler);
-    amad.b(this.a);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("UploadPhoto", 2, "onServiceDisconnected()...");
+      QLog.d("QQAppInterface_friendListObserver", 2, "onUpdateFriendInfo uin:" + paramString + ",isSuccess:" + paramBoolean);
     }
-    this.a.jdField_a_of_type_AndroidOsMessenger = null;
-    amad.a(this.a, 4);
-    this.a.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    this.a.b = null;
-    amad.a(this.a, true);
-    if (amad.a(this.a) != null) {
-      amad.a(this.a).interrupt();
+    if (this.a.jdField_a_of_type_JavaUtilSet.contains(paramString))
+    {
+      if ((this.a.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.a() == 1) && (paramString != null) && (paramString.equals(((QQMessageFacade.Message)this.a.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.a().get(0)).frienduin)) && (this.a.isBackground_Pause) && (this.a.f()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQAppInterface_friendListObserver", 2, "update notifcation");
+        }
+        QQAppInterface.a(this.a, (QQMessageFacade.Message)this.a.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.a().get(0), false);
+      }
+      this.a.jdField_a_of_type_JavaUtilSet.remove(paramString);
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface_friendListObserver", 2, "removeObserver");
+    }
+    this.a.removeObserver(this);
   }
 }
 

@@ -5,26 +5,26 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import atzv;
-import atzw;
-import auab;
+import auee;
+import auef;
+import auek;
 import com.tencent.mobileqq.miniapp.MiniAppOptions;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import uht;
+import umc;
 
 public class MiniAppActivity
   extends FragmentActivity
 {
   protected int a;
-  public atzw a;
+  public auef a;
   private MiniAppBaseFragment a;
   protected String a;
   
   public void a(MiniAppBaseFragment paramMiniAppBaseFragment)
   {
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
-    localFragmentTransaction.replace(2131366780, paramMiniAppBaseFragment);
+    localFragmentTransaction.replace(2131366790, paramMiniAppBaseFragment);
     localFragmentTransaction.commit();
     this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppBaseFragment = paramMiniAppBaseFragment;
   }
@@ -38,26 +38,26 @@ public class MiniAppActivity
     Object localObject = new MiniAppLoadingFragment();
     ((MiniAppLoadingFragment)localObject).setArguments(paramBundle);
     a((MiniAppBaseFragment)localObject);
-    auab.a();
+    auek.a();
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("key_appid");
     this.jdField_a_of_type_Int = getIntent().getIntExtra("key_appType", 0);
     paramBundle = (MiniAppOptions)getIntent().getParcelableExtra("key_options");
-    localObject = new atzv();
-    ((atzv)localObject).jdField_a_of_type_Int = 2;
-    ((atzv)localObject).jdField_a_of_type_Boolean = true;
-    ((atzv)localObject).jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramBundle };
-    uht.a().dispatch("MiniAppManager", (Dispatcher.Dispatchable)localObject);
+    localObject = new auee();
+    ((auee)localObject).jdField_a_of_type_Int = 2;
+    ((auee)localObject).jdField_a_of_type_Boolean = true;
+    ((auee)localObject).jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramBundle };
+    umc.a().dispatch("MiniAppManager", (Dispatcher.Dispatchable)localObject);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    atzv localatzv = new atzv();
-    localatzv.jdField_a_of_type_Int = 3;
-    localatzv.jdField_a_of_type_Boolean = true;
-    localatzv.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) };
-    uht.a().dispatch("MiniAppManager", localatzv);
+    auee localauee = new auee();
+    localauee.jdField_a_of_type_Int = 3;
+    localauee.jdField_a_of_type_Boolean = true;
+    localauee.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) };
+    umc.a().dispatch("MiniAppManager", localauee);
   }
   
   public boolean isWrapContent()
@@ -68,7 +68,7 @@ public class MiniAppActivity
   public boolean onBackEvent()
   {
     moveTaskToBack(true);
-    overridePendingTransition(2130772293, 2130771990);
+    overridePendingTransition(2130772294, 2130771990);
     return true;
   }
 }

@@ -1,56 +1,32 @@
-import android.support.v4.util.SparseArrayCompat;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.SwipListView;
 
-public class ahgd<T>
+public class ahgd
+  implements akkb
 {
-  SparseArrayCompat<ahgc<T>> a = new SparseArrayCompat();
+  public ahgd(AddContactsView paramAddContactsView) {}
   
-  public int a()
+  public void a()
   {
-    return this.a.size();
-  }
-  
-  public int a(T paramT, int paramInt)
-  {
-    int i = this.a.size() - 1;
-    while (i >= 0)
-    {
-      if (((ahgc)this.a.valueAt(i)).a(paramT, paramInt)) {
-        return this.a.keyAt(i);
-      }
-      i -= 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled");
     }
-    throw new IllegalArgumentException("No ItemViewDelegate added that matches position=" + paramInt + " in data source");
+    this.a.b.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
   }
   
-  public ahgc a(int paramInt)
+  public void b()
   {
-    return (ahgc)this.a.get(paramInt);
-  }
-  
-  public ahgd<T> a(ahgc<T> paramahgc)
-  {
-    int i = this.a.size();
-    if (paramahgc != null) {
-      this.a.put(i, paramahgc);
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onRecommendsAvailable");
     }
-    return this;
-  }
-  
-  public void a(ahgk paramahgk, T paramT, int paramInt)
-  {
-    int j = this.a.size();
-    int i = 0;
-    while (i < j)
-    {
-      ahgc localahgc = (ahgc)this.a.valueAt(i);
-      if (localahgc.a(paramT, paramInt))
-      {
-        localahgc.a(paramahgk, paramT, paramInt);
-        return;
-      }
-      i += 1;
-    }
-    throw new IllegalArgumentException("No ItemViewDelegateManager added that matches position=" + paramInt + " in data source");
+    this.a.b.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
+    this.a.e();
   }
 }
 

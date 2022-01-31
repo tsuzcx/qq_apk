@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class adua
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adua(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public adua(RegisterActivity paramRegisterActivity, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SoundAndVibrateActivity.a(this.a, "CHANNEL_ID_GROUP_MSG");
-    azmj.b(null, "CliOper", "", "", "0X800AC8A", "0X800AC8A", 0, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, alud.a(2131713737) + alud.a(2131713758) + this.jdField_a_of_type_JavaLangString + alud.a(2131713736) + this.b + alud.a(2131713729));
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity);
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, 60000L);
   }
 }
 

@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.aio.helper.TroopRobotHelper.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public class afbz
-  implements bcnj
+public abstract class afbz
 {
-  afbz(afby paramafby) {}
+  private boolean a;
   
-  public void a(String paramString)
+  public void a(boolean paramBoolean)
   {
-    ThreadManager.getUIHandler().post(new TroopRobotHelper.1.1(this));
+    this.a = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.a;
   }
 }
 

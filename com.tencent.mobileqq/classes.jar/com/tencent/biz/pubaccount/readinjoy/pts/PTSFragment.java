@@ -63,10 +63,10 @@ public class PTSFragment
     while (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "daily_feeds")) {
       return;
     }
-    paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131559996, paramViewGroup);
-    View localView1 = paramViewGroup.findViewById(2131369889);
-    View localView2 = paramViewGroup.findViewById(2131369897);
-    ((TextView)paramViewGroup.findViewById(2131378995)).setVisibility(8);
+    paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131559995, paramViewGroup);
+    View localView1 = paramViewGroup.findViewById(2131369908);
+    View localView2 = paramViewGroup.findViewById(2131369916);
+    ((TextView)paramViewGroup.findViewById(2131379053)).setVisibility(8);
     localView1.setOnClickListener(new pvk(this));
     localView2.setOnClickListener(new pvl(this));
   }
@@ -80,14 +80,14 @@ public class PTSFragment
   {
     this.jdField_a_of_type_AndroidAppActivity = getActivity();
     a();
-    paramViewGroup = paramLayoutInflater.inflate(2131560094, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2131560093, paramViewGroup, false);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramViewGroup.setFitsSystemWindows(true);
       paramViewGroup.setPadding(0, ImmersiveUtils.getStatusBarHeight(paramLayoutInflater.getContext()), 0, 0);
     }
-    paramLayoutInflater = (ViewGroup)paramViewGroup.findViewById(2131364787);
-    a((ViewGroup)paramViewGroup.findViewById(2131377908));
+    paramLayoutInflater = (ViewGroup)paramViewGroup.findViewById(2131364788);
+    a((ViewGroup)paramViewGroup.findViewById(2131377962));
     paramBundle = PTSJSBridgeManager.getInstance().getJSBridge(this.jdField_a_of_type_AndroidAppActivity, this.d, this.e);
     this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance = new PTSAppInstance.Builder().withContext(this.jdField_a_of_type_AndroidAppActivity).withRootView(paramLayoutInflater).withRootNodeType(0).withPTSJSBridge(paramBundle).withAppName(this.jdField_a_of_type_JavaLangString).withFrameTreeJson(this.b).withPageJs(this.c).build();
     this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.onCreate();

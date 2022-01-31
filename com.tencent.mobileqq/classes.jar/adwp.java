@@ -1,23 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class adwp
-  implements avvc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public adwp(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public adwp(SelectedAndSearchBar paramSelectedAndSearchBar, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  public void a(int paramInt, avvd paramavvd)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((!TextUtils.isEmpty(TextPreviewTranslateActivity.a(this.a))) && (!TextPreviewTranslateActivity.a(this.a).equals(paramavvd.b)))
-    {
-      TextPreviewTranslateActivity.a(this.a, paramavvd.b);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+    SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adwp
  * JD-Core Version:    0.7.0.1
  */

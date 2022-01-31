@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.photo.album.logicImp;
 
-import aimj;
-import ainq;
+import aiqy;
+import aisf;
 import android.content.Intent;
-import azmj;
+import azqs;
 
 public class PhotoListLogicDataline$1
   implements Runnable
 {
-  public PhotoListLogicDataline$1(ainq paramainq, Intent paramIntent, int paramInt, String paramString1, String paramString2) {}
+  public PhotoListLogicDataline$1(aisf paramaisf, Intent paramIntent, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.this$0.a(this.this$0.mActivity, this.jdField_a_of_type_AndroidContentIntent, ainq.a(this.this$0).selectedPhotoList);
-    azmj.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
-    ayyu.b = System.currentTimeMillis();
+    this.this$0.a(this.this$0.mActivity, this.jdField_a_of_type_AndroidContentIntent, aisf.a(this.this$0).selectedPhotoList);
+    azqs.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
+    azdd.b = System.currentTimeMillis();
   }
 }
 

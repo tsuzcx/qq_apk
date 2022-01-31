@@ -1,40 +1,16 @@
 import android.view.View;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
 
 public class ayjc
-  implements ayjk
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<ayjl> jdField_a_of_type_JavaUtilList;
+  public ayjc(MixSearchWebFragment paramMixSearchWebFragment) {}
   
-  public ayjc(List<ayjl> paramList, String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public String a()
-  {
-    return alpo.a(2131705767);
-  }
-  
-  public List<ayjl> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView) {}
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.a.a(1);
+    this.a.f();
   }
 }
 

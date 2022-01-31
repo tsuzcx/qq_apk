@@ -2,10 +2,10 @@ package cooperation.qzone;
 
 import QMF_PROTOCAL.RetryInfo;
 import android.text.TextUtils;
-import bdku;
-import bize;
-import bizf;
-import bjqk;
+import bdpd;
+import bjdl;
+import bjdm;
+import bjur;
 import com.qq.jce.wup.UniAttribute;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
@@ -26,29 +26,29 @@ public abstract class QzoneExternalRequest
   
   public static JceStruct decode(byte[] paramArrayOfByte, String paramString)
   {
-    return bjqk.a(paramArrayOfByte, paramString);
+    return bjur.a(paramArrayOfByte, paramString);
   }
   
   public static JceStruct decode(byte[] paramArrayOfByte, String paramString, int[] paramArrayOfInt)
   {
-    return bjqk.a(paramArrayOfByte, paramString, paramArrayOfInt);
+    return bjur.a(paramArrayOfByte, paramString, paramArrayOfInt);
   }
   
   protected static JceStruct decode(byte[] paramArrayOfByte, String paramString, int[] paramArrayOfInt, String[] paramArrayOfString)
   {
-    return bjqk.a(paramArrayOfByte, paramString, paramArrayOfInt, paramArrayOfString);
+    return bjur.a(paramArrayOfByte, paramString, paramArrayOfInt, paramArrayOfString);
   }
   
   public byte[] encode()
   {
     Object localObject1 = getDeviceInfo();
-    Object localObject2 = bizf.a();
+    Object localObject2 = bjdm.a();
     long l = getLoginUserId();
     RetryInfo localRetryInfo = (RetryInfo)getRetryInfo();
     localObject1 = new WNSStream(1000027, (String)localObject2, l, new byte[0], (String)localObject1, localRetryInfo);
     localObject2 = getEncodedUniParameter();
     if (localObject2 != null) {
-      return bdku.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.needCompress));
+      return bdpd.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.needCompress));
     }
     return null;
   }
@@ -62,7 +62,7 @@ public abstract class QzoneExternalRequest
   
   public String getDeviceInfo()
   {
-    return bize.a().c();
+    return bjdl.a().c();
   }
   
   public String getDeviceTail()

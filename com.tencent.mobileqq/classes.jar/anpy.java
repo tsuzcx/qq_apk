@@ -1,52 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.DynamicAvatar;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
-class anpy
-  extends anpw
+public class anpy
+  implements CompoundButton.OnCheckedChangeListener
 {
-  anpy(anpx paramanpx) {}
+  public anpy(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  protected void a(boolean paramBoolean1, anpr paramanpr, Long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    String str4 = anpx.a(paramInt2, paramInt1, String.valueOf(paramLong), paramInt3);
-    if (!paramBoolean1)
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.dynamicAvatar", 2, "onGetDynamicAvatarInfo not success: " + paramInt1 + " " + paramLong + " " + paramInt2);
-      }
-      anpx.a(this.a, str4, null, null);
+      this.a.b();
+      this.a.a("");
+      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is open", new Object[0]));
       return;
     }
-    if ((paramanpr != null) && (paramanpr.a != null) && (!paramanpr.a.isEmpty())) {}
-    for (paramanpr = DynamicAvatar.convertFrom((anps)paramanpr.a.get(0));; paramanpr = null)
-    {
-      if (paramanpr == null)
-      {
-        anpx.a(this.a, str4, null, null);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.dynamicAvatar", 2, "onGetDynamicAvatarInfo: " + paramanpr);
-      }
-      String str2 = anpx.a(paramInt2, paramInt3, paramanpr);
-      String str3 = anpx.a(paramInt2, 640, paramanpr);
-      String str1 = str3;
-      paramLong = str2;
-      if (TextUtils.isEmpty(str2))
-      {
-        str1 = str3;
-        paramLong = str2;
-        if (paramBoolean2)
-        {
-          paramLong = anpx.a(17, paramInt3, paramanpr);
-          str1 = anpx.a(17, 640, paramanpr);
-        }
-      }
-      anpx.a(this.a, str4, paramLong, str1);
-      return;
-    }
+    this.a.c();
+    this.a.a("close");
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is close", new Object[0]));
   }
 }
 

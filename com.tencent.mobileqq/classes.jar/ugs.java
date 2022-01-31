@@ -1,29 +1,50 @@
-import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StTagInfo;
+import java.util.List;
 
 class ugs
-  implements RecyclerView.OnChildAttachStateChangeListener
+  extends RecyclerView.ViewHolder
 {
-  ugs(ugk paramugk) {}
+  public RelativeLayout a;
+  public TextView a;
+  public FeedCloudMeta.StTagInfo a;
   
-  public void onChildViewAttachedToWindow(View paramView)
+  public ugs(ugr paramugr, View paramView)
   {
-    paramView = (ugc)ugk.a(this.a).getChildViewHolder(paramView);
-    if ((paramView != null) && (paramView == ugk.a(this.a)))
-    {
-      paramView.b();
-      wsv.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "attach from window , start play!");
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369129));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369127));
   }
   
-  public void onChildViewDetachedFromWindow(View paramView)
+  public void a(FeedCloudMeta.StTagInfo paramStTagInfo, int paramInt)
   {
-    paramView = (ugc)ugk.a(this.a).getChildViewHolder(paramView);
-    if ((paramView != null) && (paramView == ugk.a(this.a)))
+    if (paramStTagInfo != null)
     {
-      paramView.c();
-      wsv.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "detach from window , stop play!");
+      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo = paramStTagInfo;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStTagInfo.tagName.get());
+      paramStTagInfo = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      if (paramInt != 0) {
+        break label93;
+      }
+      paramStTagInfo.setMargins(azkz.a(12.0F), 0, 0, 0);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramStTagInfo);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(azkz.a(5.0F), 0, azkz.a(5.0F), 0);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ugt(this));
+      return;
+      label93:
+      if (paramInt == this.jdField_a_of_type_Ugr.a.size() - 1) {
+        paramStTagInfo.setMargins(azkz.a(5.0F), 0, azkz.a(38.0F), 0);
+      } else {
+        paramStTagInfo.setMargins(azkz.a(5.0F), 0, 0, 0);
+      }
     }
   }
 }

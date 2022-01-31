@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
-import becq;
-import bjsx;
+import begz;
+import bjxe;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.widget.QQToast;
 import cooperation.qzone.util.QZLog;
@@ -9,7 +9,7 @@ import cooperation.qzone.util.QZLog;
 public class QZoneSharePictureJsPlugin$10
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$10(bjsx parambjsx, int paramInt, String paramString) {}
+  public QZoneSharePictureJsPlugin$10(bjxe parambjxe, int paramInt, String paramString) {}
   
   public void run()
   {

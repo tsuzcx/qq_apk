@@ -1,97 +1,166 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.util.Pair;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QFlutterEngineData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
 
 public class arxn
-  extends RecyclerView.Adapter<arxq>
+  extends apld
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  bcws jdField_a_of_type_Bcws;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  List<Pair<String, String>> jdField_a_of_type_JavaUtilList;
+  private boolean d;
   
-  public arxn(QQAppInterface paramQQAppInterface, Context paramContext, bcws parambcws)
+  public arxn(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bcws = parambcws;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super("qq.android.flutter.engine.v8.3.3", paramQQAppInterface);
   }
   
-  public arxq a(ViewGroup paramViewGroup, int paramInt)
+  public static String e()
   {
-    if (paramInt == arxj.b)
+    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localObject == null)
     {
-      paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
-      paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296992)));
-      return new arxq(paramViewGroup);
+      if (QLog.isColorLevel()) {
+        QLog.i("QFlutter.QFlutterEngineDownloader", 2, "getFilesDir is null");
+      }
+      localObject = "";
     }
-    return new arxp(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559110, paramViewGroup, false));
-  }
-  
-  public void a(arxq paramarxq, int paramInt)
-  {
-    if (paramarxq.a == arxj.b) {}
-    Pair localPair;
+    String str;
     do
     {
-      do
-      {
-        return;
-      } while (paramarxq.a != arxj.a);
-      paramInt -= 1;
-      if (paramInt < 0) {
-        QLog.e("Forward.Preview.Dialog", 2, "type normal in wrong index");
-      }
-      localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    } while (!(paramarxq instanceof arxp));
-    ((arxp)paramarxq).a((String)localPair.first, (String)localPair.second, this.jdField_a_of_type_Bcws);
+      return localObject;
+      str = localObject + "/pddata/prd/" + "qq.android.flutter.engine.v8.3.3";
+      localObject = str;
+    } while (!QLog.isColorLevel());
+    QLog.i("QFlutter.QFlutterEngineDownloader", 2, "getLibDir ,path = " + str);
+    return str;
   }
   
-  public void a(List<Pair<String, String>> paramList)
+  public int a()
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
+    return 10092;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QFlutterEngineData.class;
+  }
+  
+  public String a()
+  {
+    return QFlutterEngineData.class.getSimpleName();
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, "restoreState");
+    }
+    a().loadState = 0;
+    a().Version = 0;
+    apkr.a(a(), new String[0]);
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    super.a(paramLong1, paramLong2);
+    int i = (int)(100L * paramLong1 / paramLong2);
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, "download progress: " + i);
+    }
+    arxo.a(0, paramLong1, paramLong2);
+  }
+  
+  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
+  {
+    super.a(paramXmlData, paramBoolean, paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, String.format("onDownloadFinish, result: %s, errCode: %s, filepath: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString }));
+    }
+    if (!paramBoolean) {
+      arxo.a(0, false);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, "download success: " + paramString);
+    }
+    if (arxo.a(paramString, (QFlutterEngineData)a())) {
+      arxo.a(0, true);
+    }
+    for (;;)
+    {
+      super.a(paramString);
+      return;
+      a();
+      arxo.a(0, false);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, String.format("restartDownload userClick: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    super.a(paramBoolean);
+    if (!this.d) {
+      this.d = paramBoolean;
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return "prd";
+  }
+  
+  public void b(XmlData paramXmlData)
+  {
+    super.b(paramXmlData);
+    if (paramXmlData != null) {}
+    for (long l = paramXmlData.totalSize;; l = 0L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QFlutter.QFlutterEngineDownloader", 2, "download begin, totalLen: " + l);
+      }
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
   }
   
-  public int getItemCount()
+  public boolean b()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, String.format("isNetValid2Download mHadRequestedByUser: %s", new Object[] { Boolean.valueOf(this.d) }));
     }
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    if (this.d) {
+      return true;
+    }
+    return super.b();
   }
   
-  public int getItemViewType(int paramInt)
+  public void c()
   {
-    if (paramInt == 0) {
-      return arxj.b;
+    String str = e();
+    boolean bool = arso.a(new File(str));
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, String.format("delete unzipFile: %s, ret: %s", new Object[] { str, Boolean.valueOf(bool) }));
     }
-    return arxj.a;
   }
   
-  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  public boolean e()
   {
-    super.onAttachedToRecyclerView(paramRecyclerView);
-    paramRecyclerView = paramRecyclerView.getLayoutManager();
-    if ((paramRecyclerView instanceof GridLayoutManager)) {
-      ((GridLayoutManager)paramRecyclerView).setSpanSizeLookup(new arxo(this));
+    QLog.d("QFlutter.QFlutterEngineDownloader", 1, String.format("downloadResource, mHadRequestedByUser = %s", new Object[] { Boolean.valueOf(this.d) }));
+    if (!this.d) {
+      return false;
     }
+    return super.e();
   }
 }
 

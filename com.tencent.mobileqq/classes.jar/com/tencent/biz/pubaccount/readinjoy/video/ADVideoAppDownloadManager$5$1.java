@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.text.TextUtils;
-import bfgi;
+import bfkr;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import java.util.Iterator;
@@ -31,7 +31,7 @@ public class ADVideoAppDownloadManager$5$1
         j = this.jdField_a_of_type_Qyk.a.a(localqyj);
         if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (((String)localObject2).equals(this.jdField_a_of_type_JavaLangString)) && ((j == 0) || (j == 4) || (j == 3)))
         {
-          localObject2 = bfgi.a().a((String)localObject2);
+          localObject2 = bfkr.a().a((String)localObject2);
           i = 0;
           if (localObject2 != null) {
             i = (int)((float)((TMAssistantDownloadTaskInfo)localObject2).mReceiveDataLen / (float)((TMAssistantDownloadTaskInfo)localObject2).mTotalDataLen * 100.0F);

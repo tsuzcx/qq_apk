@@ -1,28 +1,30 @@
 import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
 public class wae
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vad>
+  extends umf<wad, vcz>
 {
-  public wae(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public wae(wad paramwad)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super(paramwad);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vad paramvad)
+  public void a(@NonNull wad paramwad, @NonNull vcz paramvcz)
   {
-    if (paramvad.a.isSuccess()) {
-      paramQQStoryShareGroupProfileActivity.a.a(paramvad);
+    if ((wad.a(paramwad) != null) && (paramvcz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvcz.jdField_a_of_type_JavaUtilList.contains(wad.a(paramwad).a)))
+    {
+      wxe.a("CaptureTogetherBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramvcz.b.toString());
+      paramwad.a.i();
     }
   }
   
   public Class acceptEventClass()
   {
-    return vad.class;
+    return vcz.class;
   }
+  
+  public void b(@NonNull wad paramwad, @NonNull vcz paramvcz) {}
 }
 
 

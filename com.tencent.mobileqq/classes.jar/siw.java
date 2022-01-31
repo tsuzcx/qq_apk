@@ -93,9 +93,9 @@ public class siw
   
   private boolean a()
   {
-    if (!bdee.g(this.jdField_a_of_type_AndroidAppActivity))
+    if (!bdin.g(this.jdField_a_of_type_AndroidAppActivity))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, 2131718824, 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, 2131718836, 0).a();
       return false;
     }
     return true;
@@ -134,14 +134,14 @@ public class siw
   
   private void d()
   {
-    bhpy localbhpy = bhpy.a(this.jdField_a_of_type_AndroidAppActivity);
-    localbhpy.a(2131718881);
-    localbhpy.a(2131718880, 0);
-    localbhpy.c(2131690648);
-    if (!localbhpy.isShowing()) {
-      localbhpy.show();
+    bhuf localbhuf = bhuf.a(this.jdField_a_of_type_AndroidAppActivity);
+    localbhuf.a(2131718893);
+    localbhuf.a(2131718892, 0);
+    localbhuf.c(2131690648);
+    if (!localbhuf.isShowing()) {
+      localbhuf.show();
     }
-    localbhpy.a(new sjb(this, localbhpy));
+    localbhuf.a(new sjb(this, localbhuf));
   }
   
   private void e()
@@ -155,14 +155,14 @@ public class siw
   
   public View a(LayoutInflater paramLayoutInflater)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559911, null);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131376562));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131375625));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131365080));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131376359));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131374267));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131380129));
-    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131370661));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559910, null);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131376616));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131375676));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131365082));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131376413));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131374318));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131380187));
+    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131370680));
     return paramLayoutInflater;
   }
   
@@ -187,14 +187,14 @@ public class siw
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842484));
+      this.jdField_c_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842497));
       return;
     }
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842483));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842484));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842496));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842497));
   }
   
   public void b()
@@ -217,27 +217,27 @@ public class siw
     {
     default: 
       return;
-    case 2131376562: 
+    case 2131376616: 
       e();
       a("0X80095D4", 5);
       return;
-    case 2131375625: 
+    case 2131375676: 
       c();
       a("0X80095D4", 7);
       return;
-    case 2131365080: 
+    case 2131365082: 
       d();
       a("0X80095D4", 6);
       return;
-    case 2131376359: 
+    case 2131376413: 
       a(0);
       a("0X80095D4", 1);
       return;
-    case 2131374267: 
+    case 2131374318: 
       a(1);
       a("0X80095D4", 2);
       return;
-    case 2131380129: 
+    case 2131380187: 
       a(2);
       a("0X80095D4", 3);
       return;

@@ -1,41 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.5;
+import com.tencent.mobileqq.activity.Leba.5.1;
 
 public class adgl
-  implements DialogInterface.OnClickListener
+  implements beei
 {
-  private int jdField_a_of_type_Int;
+  public adgl(Leba.5.1 param1) {}
   
-  public adgl(NotificationActivity paramNotificationActivity, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Int == 1) {
-        NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
-      }
+    if (paramBoolean) {
+      Leba.b(this.a.a.this$0).a();
     }
-    while (paramInt != 1)
-    {
-      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity).sendEmptyMessage(4);
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Int != 2);
-      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
-      return;
-    }
-    NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adgl
  * JD-Core Version:    0.7.0.1
  */

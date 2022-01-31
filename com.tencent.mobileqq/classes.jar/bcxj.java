@@ -1,6 +1,22 @@
-public abstract interface bcxj
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.troopreward.OrientationAdapterImageView;
+import com.tencent.qphone.base.util.QLog;
+
+public class bcxj
+  extends Handler
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
+  public bcxj(OrientationAdapterImageView paramOrientationAdapterImageView) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.a.invalidate();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("OrientationAdapterImageView", 2, "handleMessage:" + this.a.jdField_a_of_type_Int + "," + this.a.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+  }
 }
 
 

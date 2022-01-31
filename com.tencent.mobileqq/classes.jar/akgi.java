@@ -1,23 +1,18 @@
-import com.tencent.widget.AbsListView;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class akgi
-  implements bhpo
+public class akgi
+  implements ansr
 {
-  akgi(akge paramakge) {}
+  public akgi(SessionClearFragment paramSessionClearFragment) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    akge.a(this.a, paramInt);
-    if (paramInt == 0)
-    {
-      akge.a(this.a, null, null);
-      akge.a(this.a).b();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForTroop onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
     }
-    akge.a(this.a).c();
-    akge.a(this.a).a();
+    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
   }
 }
 

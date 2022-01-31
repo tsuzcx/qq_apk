@@ -1,8 +1,6 @@
-import android.content.Intent;
-
-public abstract interface afay
+public abstract interface afay<T>
 {
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  public abstract T a(afav paramafav);
 }
 
 

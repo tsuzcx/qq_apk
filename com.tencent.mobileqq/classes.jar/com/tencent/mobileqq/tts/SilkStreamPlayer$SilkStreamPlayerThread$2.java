@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.tts;
 
-import alpo;
+import alud;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread$2
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.context, alpo.a(2131714539), 0).a();
+    QQToast.a(BaseApplicationImpl.context, alud.a(2131714551), 0).a();
   }
 }
 

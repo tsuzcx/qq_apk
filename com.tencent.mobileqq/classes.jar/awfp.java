@@ -1,73 +1,14 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.mobileqq.pic.PresendPicMgr;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-public class awfp
-  extends Handler
+public final class awfp
 {
-  private final WeakReference<PresendPicMgr> a;
+  public int a;
+  public long a;
+  public String a;
   
-  public awfp(Looper paramLooper, PresendPicMgr paramPresendPicMgr)
+  public awfp(int paramInt, long paramLong, String paramString)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramPresendPicMgr);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    PresendPicMgr localPresendPicMgr = (PresendPicMgr)this.a.get();
-    if (localPresendPicMgr != null)
-    {
-      switch (paramMessage.what)
-      {
-      default: 
-        super.handleMessage(paramMessage);
-        return;
-      case 1: 
-        awen.a("PresendPicMgr", "PresendHandler", "handleMessage MSG_REGISTER_CLIENT_HANDLER");
-        localPresendPicMgr.a = paramMessage.replyTo;
-        paramMessage = Message.obtain(null, 2);
-        ArrayList localArrayList = new ArrayList();
-        Object localObject = PresendPicMgr.a(localPresendPicMgr).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          localArrayList.add(((awfq)((Iterator)localObject).next()).a);
-        }
-        localObject = new Bundle();
-        ((Bundle)localObject).putParcelableArrayList("flag_compressinfolist", localArrayList);
-        paramMessage.setData((Bundle)localObject);
-        try
-        {
-          localPresendPicMgr.a.send(paramMessage);
-          localPresendPicMgr.a = null;
-          PresendPicMgr.a(localPresendPicMgr);
-          localPresendPicMgr.b();
-          return;
-        }
-        catch (RemoteException paramMessage)
-        {
-          for (;;)
-          {
-            localPresendPicMgr.a = null;
-            if (QLog.isColorLevel()) {
-              QLog.e("PresendPicMgr", 2, paramMessage.getMessage(), paramMessage);
-            }
-            paramMessage.printStackTrace();
-          }
-        }
-      }
-      awen.a("PresendPicMgr", "PresendHandler", "handleMessage MSG_UNREGISTER_CLIENT_HANDLER");
-      localPresendPicMgr.a = null;
-      return;
-    }
-    awen.b("PresendPicMgr", "handleMessage", "PresendPicMgr == null!");
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

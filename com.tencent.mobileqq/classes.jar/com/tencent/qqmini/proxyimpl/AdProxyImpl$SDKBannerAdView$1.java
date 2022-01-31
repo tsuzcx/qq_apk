@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import aail;
+import aana;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.gdtad.aditem.GdtAd;
@@ -54,7 +54,7 @@ class AdProxyImpl$SDKBannerAdView$1
               break label284;
             }
             GdtAd localGdtAd = new GdtAd(paramJSONObject);
-            aail.a().a(localGdtAd);
+            aana.a().a(localGdtAd);
             this.this$1.mReportUrl = paramJSONObject.report_info.exposure_url.get();
             this.this$1.mAdId = paramJSONObject.report_info.trace_info.aid.get();
             this.this$1.mGdtBannerView = AdProxyImpl.access$300(this.this$1.this$0, this.val$activity, paramJSONObject, this.this$1.mWidth, this.this$1.mHeight);

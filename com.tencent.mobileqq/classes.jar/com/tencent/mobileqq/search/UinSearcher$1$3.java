@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.search;
 
-import aosc;
-import ayee;
-import ayef;
-import ayij;
-import azmj;
-import bhpy;
+import aowl;
+import ayin;
+import ayio;
+import ayms;
+import azqs;
+import bhuf;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class UinSearcher$1$3
   implements Runnable
 {
-  public UinSearcher$1$3(ayef paramayef, bhpy parambhpy, ayij[] paramArrayOfayij1, ayij[] paramArrayOfayij2, aosc paramaosc, QQAppInterface paramQQAppInterface) {}
+  public UinSearcher$1$3(ayio paramayio, bhuf parambhuf, ayms[] paramArrayOfayms1, ayms[] paramArrayOfayms2, aowl paramaowl, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bhpy.show();
+    this.jdField_a_of_type_Bhuf.show();
     String str1;
     String str2;
-    if (this.jdField_a_of_type_ArrayOfAyij[0] == null) {
+    if (this.jdField_a_of_type_ArrayOfAyms[0] == null) {
       if (this.b[0] == null)
       {
         str1 = "0X800A923";
-        if ((this.jdField_a_of_type_ArrayOfAyij[0] != null) || (this.b[0] != null)) {
+        if ((this.jdField_a_of_type_ArrayOfAyms[0] != null) || (this.b[0] != null)) {
           break label127;
         }
         str2 = "";
@@ -30,7 +30,7 @@ public class UinSearcher$1$3
     }
     for (;;)
     {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str1, str1, ayee.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ayee.b(this.jdField_a_of_type_Ayef.a), ayee.d(this.jdField_a_of_type_Ayef.a)), 0, str2, "", "", "");
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str1, str1, ayin.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ayin.b(this.jdField_a_of_type_Ayio.a), ayin.d(this.jdField_a_of_type_Ayio.a)), 0, str2, "", "", "");
       return;
       str1 = "0X800A921";
       break;
@@ -42,10 +42,10 @@ public class UinSearcher$1$3
       str1 = "0X800A922";
       break;
       label127:
-      if (this.jdField_a_of_type_Aosc.a()) {
-        str2 = aosc.a + "";
+      if (this.jdField_a_of_type_Aowl.a()) {
+        str2 = aowl.a + "";
       } else {
-        str2 = aosc.b + "";
+        str2 = aowl.b + "";
       }
     }
   }

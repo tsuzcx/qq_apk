@@ -1,42 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.AddressItem;
-import java.util.List;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicLikePopWindow;
 
 public class uep
+  implements twi
 {
-  public AddressItem a;
-  public String a;
-  public List<uer> a;
-  public ufv a;
+  public uep(QCirclePolymorphicLikePopWindow paramQCirclePolymorphicLikePopWindow, ueq paramueq) {}
   
-  public uep(String paramString)
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
-      return false;
-      if (this == paramObject) {
-        return true;
-      }
-    } while (!(paramObject instanceof uep));
-    return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((uep)paramObject).jdField_a_of_type_JavaLangString);
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder1 = new StringBuilder("GeoHashPhotoGroup=[");
-    localStringBuilder1.append("geohashString:").append(this.jdField_a_of_type_JavaLangString);
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("picList size:");
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
-    {
-      localStringBuilder2.append(i);
-      return localStringBuilder1.toString();
+    if (paramBoolean) {
+      QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow, this.jdField_a_of_type_Ueq.a(), paramString);
     }
   }
 }

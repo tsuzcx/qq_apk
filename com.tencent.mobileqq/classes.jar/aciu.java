@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.BaseChatPie.84;
 
 public class aciu
-  implements acje
+  implements View.OnTouchListener
 {
-  public aciu(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
+  public aciu(BaseChatPie.84 param84) {}
   
-  public boolean a(boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBoolean) {
-      bkfg.a(this.a);
-    }
-    return false;
+    return true;
   }
 }
 

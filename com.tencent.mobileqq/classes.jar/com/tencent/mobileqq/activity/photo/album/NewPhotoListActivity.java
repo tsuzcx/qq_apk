@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import abqw;
-import aime;
-import aimf;
-import aimg;
-import aimj;
-import aioo;
-import aljq;
+import abvl;
+import aiqt;
+import aiqu;
+import aiqv;
+import aiqy;
+import aitd;
+import alof;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,11 +17,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aobd;
-import bdar;
-import bdcs;
-import bnnt;
-import bnnu;
+import aofm;
+import bdfa;
+import bdhb;
+import bnsf;
+import bnsg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.startup.step.CheckPermission;
@@ -39,7 +39,7 @@ import lmm;
 public class NewPhotoListActivity
   extends AbstractPhotoListActivity
 {
-  public static aimg a;
+  public static aiqv a;
   public Handler a;
   View a;
   public Button a;
@@ -51,12 +51,12 @@ public class NewPhotoListActivity
   
   static
   {
-    jdField_a_of_type_Aimg = new aimg();
+    jdField_a_of_type_Aiqv = new aiqv();
   }
   
   public NewPhotoListActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new aimf(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aiqu(this);
   }
   
   public int a(String paramString)
@@ -64,31 +64,31 @@ public class NewPhotoListActivity
     if ((TextUtils.isEmpty(paramString)) || (a(paramString) == null)) {
       return -1;
     }
-    return bdar.getMediaType(a(paramString));
+    return bdfa.getMediaType(a(paramString));
   }
   
   public LocalMediaInfo a(String paramString)
   {
-    aimj localaimj = this.mPhotoListLogic.mPhotoCommonData;
+    aiqy localaiqy = this.mPhotoListLogic.mPhotoCommonData;
     LocalMediaInfo localLocalMediaInfo = null;
-    if (localaimj.selectedMediaInfoHashMap != null) {
-      localLocalMediaInfo = (LocalMediaInfo)localaimj.selectedMediaInfoHashMap.get(paramString);
+    if (localaiqy.selectedMediaInfoHashMap != null) {
+      localLocalMediaInfo = (LocalMediaInfo)localaiqy.selectedMediaInfoHashMap.get(paramString);
     }
-    if ((localLocalMediaInfo == null) && (localaimj.allMediaInfoHashMap != null)) {
-      localLocalMediaInfo = (LocalMediaInfo)localaimj.allMediaInfoHashMap.get(paramString);
+    if ((localLocalMediaInfo == null) && (localaiqy.allMediaInfoHashMap != null)) {
+      localLocalMediaInfo = (LocalMediaInfo)localaiqy.allMediaInfoHashMap.get(paramString);
     }
     for (;;)
     {
       if ((localLocalMediaInfo != null) && ((localLocalMediaInfo.mediaWidth == 0) || (localLocalMediaInfo.mediaHeight == 0)))
       {
-        bnnu localbnnu = new bnnu();
-        bnnt.a(paramString, localbnnu);
-        localLocalMediaInfo.mediaWidth = localbnnu.a[0];
-        localLocalMediaInfo.mediaHeight = localbnnu.a[1];
-        localLocalMediaInfo.rotation = localbnnu.a[2];
-        if (localaimj.allMediaInfoHashMap != null)
+        bnsg localbnsg = new bnsg();
+        bnsf.a(paramString, localbnsg);
+        localLocalMediaInfo.mediaWidth = localbnsg.a[0];
+        localLocalMediaInfo.mediaHeight = localbnsg.a[1];
+        localLocalMediaInfo.rotation = localbnsg.a[2];
+        if (localaiqy.allMediaInfoHashMap != null)
         {
-          paramString = (LocalMediaInfo)localaimj.allMediaInfoHashMap.get(paramString);
+          paramString = (LocalMediaInfo)localaiqy.allMediaInfoHashMap.get(paramString);
           if ((paramString != null) && ((paramString.mediaWidth == 0) || (paramString.mediaHeight == 0)))
           {
             paramString.mediaWidth = localLocalMediaInfo.mediaWidth;
@@ -110,18 +110,18 @@ public class NewPhotoListActivity
       if (localFile.exists())
       {
         localObject = localFile.getName();
-        String str = aljq.bk + (String)localObject;
+        String str = alof.bk + (String)localObject;
         localObject = paramString;
         if (!str.equals(paramString))
         {
-          localObject = new File(aljq.bk);
+          localObject = new File(alof.bk);
           if (!((File)localObject).exists()) {
             ((File)localObject).mkdirs();
           }
           boolean bool2 = localFile.renameTo(new File(str));
           boolean bool1 = bool2;
           if (!bool2) {
-            bool1 = bdcs.b(paramString, str);
+            bool1 = bdhb.b(paramString, str);
           }
           QLog.d("PhotoListActivity", 2, new Object[] { "saveToDCIM rename to :", str });
           localObject = paramString;
@@ -226,7 +226,7 @@ public class NewPhotoListActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    abqw.a().c();
+    abvl.a().c();
     if (!CheckPermission.isHasStorageReadAndWritePermission(this)) {
       CheckPermission.requestStoreReadAndWritePermission(this, null);
     }
@@ -236,13 +236,13 @@ public class NewPhotoListActivity
   public void doOnPause()
   {
     super.doOnPause();
-    aobd.a(BaseApplicationImpl.getContext(), 2, true);
+    aofm.a(BaseApplicationImpl.getContext(), 2, true);
   }
   
   protected PhotoListLogic generateLogic()
   {
     int i = getIntent().getIntExtra("enter_from", 0);
-    PhotoListLogic localPhotoListLogic = aioo.a(i, this);
+    PhotoListLogic localPhotoListLogic = aitd.a(i, this);
     if (QLog.isColorLevel()) {
       QLog.d("PhotoListActivity", 2, "generateLogic:" + localPhotoListLogic.getClass().getName() + " enterFrom:" + i);
     }
@@ -257,7 +257,7 @@ public class NewPhotoListActivity
   protected Dialog getDialog()
   {
     Dialog localDialog = new Dialog(this, 2131755801);
-    localDialog.setContentView(2131559438);
+    localDialog.setContentView(2131559437);
     return localDialog;
   }
   
@@ -268,21 +268,21 @@ public class NewPhotoListActivity
   
   protected void initUI()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131375981);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131376034);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       localRelativeLayout.setFitsSystemWindows(true);
       localRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367310);
-    this.d = ((TextView)findViewById(2131379325));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369974));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131373917));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373923));
-    this.b = ((TextView)findViewById(2131373918));
-    this.c = ((TextView)findViewById(2131368077));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367320);
+    this.d = ((TextView)findViewById(2131379383));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369993));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131373968));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373974));
+    this.b = ((TextView)findViewById(2131373969));
+    this.c = ((TextView)findViewById(2131368088));
     super.initUI();
-    this.mGridView.setOnScrollListener(new aime(this));
+    this.mGridView.setOnScrollListener(new aiqt(this));
   }
   
   public void onClick(View paramView)

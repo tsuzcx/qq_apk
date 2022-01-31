@@ -1,32 +1,46 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.SquareImageView;
 
 public class ayxd
-  extends MSFServlet
+  extends aywk
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public SquareImageView a;
+  public Button b;
+  public LinearLayout b;
+  public TextView b;
+  public LinearLayout c;
+  
+  public ayxd(ViewGroup paramViewGroup, int paramInt)
   {
-    paramIntent = (QQAppInterface)getAppRuntime();
-    if ("ConfigPushSvc.GetIpDirect".equals(paramFromServiceMsg.getServiceCmd()))
-    {
-      bavf.a().a(paramFromServiceMsg);
-      if (QLog.isColorLevel()) {
-        QLog.i("IPDomainGet", 2, "onReceive response resultCode:" + paramFromServiceMsg.getResultCode() + " log:" + paramFromServiceMsg.getStringForLog());
-      }
-    }
+    super(paramViewGroup, paramInt);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  protected void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("IPDomainGet", 2, "IPDomainGet onSend() ");
-    }
-    paramPacket.setSSOCommand("ConfigPushSvc.GetIpDirect");
-    paramPacket.setTimeout(15000L);
+    super.a();
+    View localView = a(this.jdField_c_of_type_Int);
+    a(localView);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131375959));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363693));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368903));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369628));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369629));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378691));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378690));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131368729));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369627));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363523));
   }
 }
 

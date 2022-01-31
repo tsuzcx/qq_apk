@@ -19,7 +19,7 @@ public class ngs
     }
     if (!paramBoolean) {
       if (!EqqAccountDetailActivity.a(this.a)) {
-        this.a.d(2131695727);
+        this.a.d(2131695729);
       }
     }
     for (;;)
@@ -60,17 +60,17 @@ public class ngs
             this.a.f();
             continue;
           }
-          this.a.d(2131695727);
+          this.a.d(2131695729);
           continue;
         }
         if (EqqAccountDetailActivity.d(this.a)) {
           continue;
         }
-        this.a.d(2131695727);
+        this.a.d(2131695729);
       }
       catch (Exception paramBundle) {}
       if (!EqqAccountDetailActivity.e(this.a)) {
-        this.a.d(2131695727);
+        this.a.d(2131695729);
       }
     }
   }

@@ -1,6 +1,17 @@
-public abstract interface agbp
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+
+public class agbp
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  public agbp(SixCombolEffectView paramSixCombolEffectView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
+  }
 }
 
 

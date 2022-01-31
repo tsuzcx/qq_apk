@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amqs;
-import amro;
+import amvh;
+import amwd;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class MultiFragmentAnimRenderable$3
   implements Runnable
 {
-  public MultiFragmentAnimRenderable$3(amro paramamro) {}
+  public MultiFragmentAnimRenderable$3(amwd paramamwd) {}
   
   public void run()
   {
-    amro.a(this.this$0).lock();
-    if (amro.a(this.this$0) != null)
+    amwd.a(this.this$0).lock();
+    if (amwd.a(this.this$0) != null)
     {
-      amro.a(this.this$0).f();
-      amro.a(this.this$0, null);
+      amwd.a(this.this$0).f();
+      amwd.a(this.this$0, null);
     }
-    amro.a(this.this$0).unlock();
+    amwd.a(this.this$0).unlock();
   }
 }
 

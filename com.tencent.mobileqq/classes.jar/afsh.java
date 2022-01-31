@@ -1,24 +1,17 @@
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class afsh
-  extends awfw
+  extends afuf
 {
-  afsh(afsf paramafsf, BaseChatItemLayout paramBaseChatItemLayout) {}
-  
-  public void a(int paramInt, awfd paramawfd)
+  afsh(afpy paramafpy)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "2g diy gif onDownload");
-    }
+    super(paramafpy, null);
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "2g diy gif onUpdateProgress");
-    }
+    return new aojq(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

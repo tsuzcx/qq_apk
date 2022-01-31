@@ -1,28 +1,10 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
-public class bhyl
-  implements View.OnSystemUiVisibilityChangeListener
+public abstract interface bhyl
 {
-  public bhyl(XPanelContainer paramXPanelContainer) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
-  {
-    if (paramInt == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      if (XPanelContainer.b != bool)
-      {
-        XPanelContainer.a(this.a, true);
-        XPanelContainer.b = bool;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("XPanelContainer", 2, "onSystemUiVisibilityChange..visibility =  " + paramInt + " context = " + this.a.getContext().getClass().getName());
-      }
-      return;
-    }
-  }
+  public abstract void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject);
 }
 
 

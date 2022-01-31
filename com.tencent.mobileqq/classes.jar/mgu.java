@@ -11,7 +11,7 @@ public abstract class mgu
     switch (paramInt)
     {
     default: 
-      str = alpo.a(2131706367) + paramInt + "]，Name[" + AudioHelper.a(BaseApplicationImpl.getContext().getResources(), paramInt);
+      str = alud.a(2131706379) + paramInt + "]，Name[" + AudioHelper.a(BaseApplicationImpl.getContext().getResources(), paramInt);
       QLog.d("LayoutDef", 1, str);
       if (AudioHelper.d()) {
         throw new IllegalArgumentException(str);

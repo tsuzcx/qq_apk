@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import aqhd;
+import aqlm;
 import com.tencent.qphone.base.util.QLog;
 
 public class FilePreviewActivity$16$2
   implements Runnable
 {
-  public FilePreviewActivity$16$2(aqhd paramaqhd, int paramInt1, boolean paramBoolean, int paramInt2, String paramString) {}
+  public FilePreviewActivity$16$2(aqlm paramaqlm, int paramInt1, boolean paramBoolean, int paramInt2, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Aqhd.a.a(this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aqlm.a.a(this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
       QLog.i("<FileAssistant>FilePreviewActivity", 1, "js call loadFinish  process Over");
       return;
       if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_Aqhd.a.b(this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Aqlm.a.b(this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
       }
     }
   }

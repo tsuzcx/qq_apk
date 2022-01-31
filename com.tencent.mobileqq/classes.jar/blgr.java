@@ -1,6 +1,18 @@
-public abstract interface blgr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+
+public class blgr
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a();
+  public blgr(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    AETakeFacePhotoPreviewFragment.a(this.a);
+    AEVideoShelfEditFragment.a(this.a.getActivity(), false);
+  }
 }
 
 

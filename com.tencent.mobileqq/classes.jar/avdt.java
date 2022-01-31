@@ -1,40 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.graphics.LightingColorFilter;
-import android.graphics.drawable.Drawable;
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.1.1;
 
-class avdt
-  extends AnimatorListenerAdapter
+public class avdt
+  implements aved
 {
-  avdt(avcw paramavcw) {}
+  avdt(avds paramavds) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(boolean paramBoolean)
   {
-    this.a.c = false;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.c = false;
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366643).setVisibility(8);
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366617).setTranslationY(0.0F);
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366642).setTranslationY(0.0F);
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366648).setVisibility(8);
-  }
-  
-  public void onAnimationPause(Animator paramAnimator)
-  {
-    this.a.c = false;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.c = true;
-    int i = this.a.jdField_b_of_type_Int;
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366641).setBackgroundResource(2130844952);
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366641).getBackground().setColorFilter(new LightingColorFilter(-16777216, i));
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366640).setBackgroundColor(0);
+    if (paramBoolean) {
+      ThreadManagerV2.excute(new ShortVideoShareUtil.1.1.1(this, (auul)this.a.a.getManager(106)), 16, null, false);
+    }
   }
 }
 

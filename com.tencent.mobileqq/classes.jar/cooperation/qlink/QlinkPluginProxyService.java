@@ -2,8 +2,8 @@ package cooperation.qlink;
 
 import android.content.Intent;
 import android.content.ServiceConnection;
-import bimg;
-import bimp;
+import biqn;
+import biqw;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.PluginInfo;
@@ -17,15 +17,15 @@ public class QlinkPluginProxyService
     Intent localIntent = new Intent(paramAppRuntime.getApplication(), QlinkPluginProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
     localIntent.putExtra("userQqResources", 2);
-    bimp localbimp = new bimp(0);
-    localbimp.b = QlinkPluginProxyActivity.a();
-    localbimp.d = PluginInfo.c;
-    localbimp.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localbimp.e = "com.tencent.qlink.service.QlinkService";
-    localbimp.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localbimp.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    biqw localbiqw = new biqw(0);
+    localbiqw.b = QlinkPluginProxyActivity.a();
+    localbiqw.d = PluginInfo.c;
+    localbiqw.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    localbiqw.e = "com.tencent.qlink.service.QlinkService";
+    localbiqw.jdField_a_of_type_AndroidContentIntent = localIntent;
+    localbiqw.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
     QLog.d("QLinkLog", 4, "Bind Qlink Service");
-    bimg.c(paramAppRuntime.getApplication(), localbimp);
+    biqn.c(paramAppRuntime.getApplication(), localbiqw);
   }
 }
 

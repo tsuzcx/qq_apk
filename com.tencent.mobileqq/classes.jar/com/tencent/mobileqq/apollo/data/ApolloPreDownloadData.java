@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.data;
 
-import awbv;
+import awge;
 import java.io.Serializable;
 
 public class ApolloPreDownloadData
-  extends awbv
+  extends awge
   implements Serializable
 {
   public static final int DOWNLOAD_STATUS_FAILED = 0;

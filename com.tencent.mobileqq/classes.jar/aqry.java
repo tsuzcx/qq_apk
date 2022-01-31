@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
-public class aqry
-  extends aqrt
+class aqry
+  extends aqty
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  long b;
+  aqry(aqrv paramaqrv, aqsa paramaqsa) {}
   
-  public aqry(FileManagerEntity paramFileManagerEntity)
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
   {
-    super(paramFileManagerEntity);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Aqsa.a(paramString2);
+      return;
+    }
+    this.jdField_a_of_type_Aqsa.a(paramInt, paramString1);
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.mobileqq.webview.webso;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import begs;
+import belb;
 
 public class WebSoService$WebSoState$WebSo3
   implements Parcelable
 {
-  public static final Parcelable.Creator<WebSo3> CREATOR = new begs();
+  public static final Parcelable.Creator<WebSo3> CREATOR = new belb();
   public String a;
   public boolean a;
   public String b;

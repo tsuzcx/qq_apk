@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import bdog;
+import bdsp;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,11 +8,11 @@ import java.util.Iterator;
 public class CustomOnlineStatusManager$1
   implements Runnable
 {
-  public CustomOnlineStatusManager$1(bdog parambdog) {}
+  public CustomOnlineStatusManager$1(bdsp parambdsp) {}
   
   public void run()
   {
-    Iterator localIterator = bdog.a(this.this$0).iterator();
+    Iterator localIterator = bdsp.a(this.this$0).iterator();
     while (localIterator.hasNext())
     {
       Runnable localRunnable = (Runnable)((WeakReference)localIterator.next()).get();

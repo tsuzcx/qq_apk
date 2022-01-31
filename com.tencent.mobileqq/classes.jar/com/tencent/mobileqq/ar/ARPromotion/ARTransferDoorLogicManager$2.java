@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import amou;
-import amya;
-import amyc;
+import amtj;
+import ancj;
+import ancl;
 
 public class ARTransferDoorLogicManager$2
   implements Runnable
 {
-  public ARTransferDoorLogicManager$2(amou paramamou) {}
+  public ARTransferDoorLogicManager$2(amtj paramamtj) {}
   
   public void run()
   {
-    if (amou.a(this.this$0).a.a == 0) {
+    if (amtj.a(this.this$0).a.a == 0) {
       this.this$0.c(5);
     }
     for (;;)
     {
-      amou.a(this.this$0, 0L);
+      amtj.a(this.this$0, 0L);
       return;
-      if (amou.a(this.this$0).a.c == 0) {
+      if (amtj.a(this.this$0).a.c == 0) {
         this.this$0.e();
       }
     }

@@ -1,12 +1,6 @@
-class afax
-  implements anth
+public abstract interface afax
 {
-  afax(afaw paramafaw) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    afaw.a(this.a);
-  }
+  public abstract void a(afav paramafav, int paramInt);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent;
 
-import azmj;
+import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 import suv;
@@ -13,7 +13,7 @@ public final class RecentUtil$1
   public void run()
   {
     int i = suv.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).size();
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", "0", "0X80064CB", "0X80064CB", 0, 0, "" + this.jdField_a_of_type_Int, "" + i, "", "");
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", "0", "0X80064CB", "0X80064CB", 0, 0, "" + this.jdField_a_of_type_Int, "" + i, "", "");
   }
 }
 

@@ -10,14 +10,14 @@ import cooperation.qzone.plugin.PluginRecord;
 import mqq.os.MqqHandler;
 
 public class tld
-  implements bjlm
+  implements bjpt
 {
   public static int a;
   public static volatile tld a;
   public static boolean a;
   public static boolean b;
   private long jdField_a_of_type_Long = 120000L;
-  private bjjt jdField_a_of_type_Bjjt;
+  private bjoa jdField_a_of_type_Bjoa;
   private volatile boolean c;
   private boolean d = true;
   
@@ -57,7 +57,7 @@ public class tld
       }
       if (localQQAppInterface1 != null)
       {
-        bjlu.a().a(localQQAppInterface1);
+        bjqb.a().a(localQQAppInterface1);
         if (System.currentTimeMillis() - a() > 60000L) {
           jdField_a_of_type_Int = 0;
         }
@@ -68,7 +68,7 @@ public class tld
     {
       this.c = true;
       QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk preInstall OK mIsPreInstalling = " + this.c + " sPreloadPluginState = " + jdField_a_of_type_Int);
-      bjlk.a(BaseApplicationImpl.getContext(), this);
+      bjpr.a(BaseApplicationImpl.getContext(), this);
     }
   }
   
@@ -97,11 +97,11 @@ public class tld
     b = true;
   }
   
-  public void onQzonePluginClientReady(bjjt parambjjt)
+  public void onQzonePluginClientReady(bjoa parambjoa)
   {
     QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk onQzonePluginClientReady start");
-    if (parambjjt == null) {
-      bjlk.a(BaseApplicationImpl.getContext(), this);
+    if (parambjoa == null) {
+      bjpr.a(BaseApplicationImpl.getContext(), this);
     }
     for (;;)
     {
@@ -115,9 +115,9 @@ public class tld
         localQQAppInterface1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       }
       if (localQQAppInterface1 != null) {
-        bjlu.a().a(localQQAppInterface1);
+        bjqb.a().a(localQQAppInterface1);
       }
-      this.jdField_a_of_type_Bjjt = parambjjt;
+      this.jdField_a_of_type_Bjoa = parambjoa;
       long l1 = a();
       long l2 = System.currentTimeMillis();
       long l3 = l2 - l1;
@@ -128,12 +128,12 @@ public class tld
         return;
       }
       QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk OK deltaTime > " + this.jdField_a_of_type_Long + " deltaTime = " + l3 + " curTime = " + l2 + " lastTime = " + l1);
-      parambjjt = this.jdField_a_of_type_Bjjt.a("qzone_vertical_video_plugin.apk");
-      if (parambjjt != null)
+      parambjoa = this.jdField_a_of_type_Bjoa.a("qzone_vertical_video_plugin.apk");
+      if (parambjoa != null)
       {
         jdField_a_of_type_Boolean = true;
-        QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk onQzonePluginClientReady start  state = " + parambjjt.state + " ver = " + parambjjt.ver + " old_ver = " + parambjjt.old_ver + " mainVersion = " + parambjjt.mainVersion + " installPath = " + parambjjt.mInstalledPath + " url = " + parambjjt.url + " id = " + parambjjt.id + " isvalid = " + parambjjt.isValid() + " name = " + parambjjt.name);
-        if (parambjjt.state == 4)
+        QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk onQzonePluginClientReady start  state = " + parambjoa.state + " ver = " + parambjoa.ver + " old_ver = " + parambjoa.old_ver + " mainVersion = " + parambjoa.mainVersion + " installPath = " + parambjoa.mInstalledPath + " url = " + parambjoa.url + " id = " + parambjoa.id + " isvalid = " + parambjoa.isValid() + " name = " + parambjoa.name);
+        if (parambjoa.state == 4)
         {
           this.c = false;
           c();
@@ -142,11 +142,11 @@ public class tld
         }
         try
         {
-          this.jdField_a_of_type_Bjjt.a("qzone_vertical_video_plugin.apk", new tle(this), 0);
+          this.jdField_a_of_type_Bjoa.a("qzone_vertical_video_plugin.apk", new tle(this), 0);
         }
-        catch (RemoteException parambjjt)
+        catch (RemoteException parambjoa)
         {
-          QLog.e("QzoneVerticalVideoPluginApk", 1, parambjjt, new Object[0]);
+          QLog.e("QzoneVerticalVideoPluginApk", 1, parambjoa, new Object[0]);
         }
       }
       else

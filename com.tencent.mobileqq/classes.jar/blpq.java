@@ -1,8 +1,7 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-
 public abstract interface blpq
+  extends blpp
 {
-  public abstract void a(MusicItemInfo paramMusicItemInfo);
+  public abstract void q();
 }
 
 

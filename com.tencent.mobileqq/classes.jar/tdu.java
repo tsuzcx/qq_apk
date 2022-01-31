@@ -11,7 +11,7 @@ import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 import com.tencent.widget.pull2refresh.XRecyclerView;
 
 class tdu
-  implements yde
+  implements yhn
 {
   tdu(tdn paramtdn) {}
   
@@ -48,7 +48,7 @@ class tdu
                             paramView = (String)paramObject;
                             paramView = "weishi://profile?person_id=" + paramView;
                             paramObject = tdn.a(this.a, paramView, 14);
-                            if (xoo.a(tdn.a(this.a)))
+                            if (xsx.a(tdn.a(this.a)))
                             {
                               tlq.a(tdn.a(this.a), "biz_src_jc_gzh_weishi", paramView, paramObject.mScene, paramObject.mLinkStrategyType, paramObject.mEventId);
                               WSPublicAccReport.getInstance().reportCommentTagClick(this.a.a(), WSPublicAccReport.getTagPositionId(this.a.a()) + tdn.c(this.a), 1000003, tdn.a(this.a));
@@ -62,7 +62,7 @@ class tdu
                             paramView = ((stMetaPerson)paramObject).id;
                             paramView = "weishi://profile?person_id=" + paramView;
                             paramObject = tdn.a(this.a, paramView, 13);
-                            if (xoo.a(tdn.a(this.a)))
+                            if (xsx.a(tdn.a(this.a)))
                             {
                               tlq.a(tdn.a(this.a), "biz_src_jc_gzh_weishi", paramView, paramObject.mScene, paramObject.mLinkStrategyType, paramObject.mEventId);
                               WSPublicAccReport.getInstance().reportCommentPageClick(this.a.a(), WSPublicAccReport.getPagePositionId(this.a.a()) + tdn.c(this.a), 1000003, 2, tdn.a(this.a));
@@ -136,34 +136,34 @@ class tdu
           return;
         } while (!(paramObject instanceof stMetaComment));
         paramView = (stMetaComment)paramObject;
-        tdn.a(this.a, new yav(tdn.a(this.a), false, true));
-        tdn.a(this.a).a(tdn.a(this.a).getString(2131691356), 0, new tdv(this, paramView));
+        tdn.a(this.a, new yfe(tdn.a(this.a), false, true));
+        tdn.a(this.a).a(tdn.a(this.a).getString(2131691357), 0, new tdv(this, paramView));
         if (tdn.a(this.a, paramView.poster)) {
-          tdn.a(this.a).a(tdn.a(this.a).getString(2131691555), 1, new tdw(this, paramView));
+          tdn.a(this.a).a(tdn.a(this.a).getString(2131691556), 1, new tdw(this, paramView));
         }
         for (;;)
         {
           tdn.a(this.a).a(tdn.a(this.a).getString(2131690648));
           tdn.a(this.a).show();
           return;
-          tdn.a(this.a).a(tdn.a(this.a).getString(2131719217), 6, new tdx(this));
+          tdn.a(this.a).a(tdn.a(this.a).getString(2131719229), 6, new tdx(this));
         }
       } while (!(paramObject instanceof Object[]));
       paramObject = (Object[])paramObject;
     } while ((paramObject.length <= 1) || (paramObject[0] == null) || (paramObject[1] == null) || (!(paramObject[0] instanceof stMetaComment)) || (!(paramObject[1] instanceof stMetaReply)));
     paramView = (stMetaComment)paramObject[0];
     paramObject = (stMetaReply)paramObject[1];
-    tdn.a(this.a, new yav(tdn.a(this.a), false, true));
-    tdn.a(this.a).a(tdn.a(this.a).getString(2131691356), 0, new tdy(this, paramObject));
+    tdn.a(this.a, new yfe(tdn.a(this.a), false, true));
+    tdn.a(this.a).a(tdn.a(this.a).getString(2131691357), 0, new tdy(this, paramObject));
     if (tdn.a(this.a, paramObject.poster)) {
-      tdn.a(this.a).a(tdn.a(this.a).getString(2131691555), 1, new tdz(this, paramView, paramObject));
+      tdn.a(this.a).a(tdn.a(this.a).getString(2131691556), 1, new tdz(this, paramView, paramObject));
     }
     for (;;)
     {
       tdn.a(this.a).a(tdn.a(this.a).getString(2131690648));
       tdn.a(this.a).show();
       return;
-      tdn.a(this.a).a(tdn.a(this.a).getString(2131719217), 6, new tea(this));
+      tdn.a(this.a).a(tdn.a(this.a).getString(2131719229), 6, new tea(this));
     }
   }
 }

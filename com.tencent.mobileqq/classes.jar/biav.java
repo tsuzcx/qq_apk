@@ -1,57 +1,201 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import java.util.List;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Typeface;
+import android.os.SystemClock;
+import android.text.Layout;
+import android.text.TextPaint;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.theme.SkinnableColorStateList;
+import java.lang.reflect.Method;
+import java.util.Arrays;
 
-class biav
-  extends RecyclerView.AdapterDataObserver
+public class biav
 {
-  biav(biau parambiau) {}
+  private static boolean b;
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
+  ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private Paint.FontMetrics jdField_a_of_type_AndroidGraphicsPaint$FontMetrics;
+  public final TextPaint a;
+  public String a;
+  private Method jdField_a_of_type_JavaLangReflectMethod;
+  public boolean a;
+  public int b;
+  public int c;
+  int d;
   
-  public void onChanged()
+  public biav(Resources paramResources)
   {
-    this.a.notifyDataSetChanged();
-    if (biau.a(this.a) != null) {
-      biau.a(this.a).a(biau.a(this.a));
+    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.SANS_SERIF);
+    this.jdField_a_of_type_AndroidTextTextPaint.density = paramResources.getDisplayMetrics().density;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(-7829368);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentResColorStateList.getDefaultColor();
+    a();
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return 0;
+    }
+    if (this.c < 0) {
+      this.c = ((int)Math.ceil(Layout.getDesiredWidth(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidTextTextPaint)));
+    }
+    return this.c;
+  }
+  
+  public Paint.FontMetrics a()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics == null) {
+      this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+    }
+    return this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.c = 0;
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public void a(Canvas paramCanvas, int[] paramArrayOfInt, float paramFloat1, float paramFloat2)
+  {
+    if (paramCanvas != null)
+    {
+      this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidTextTextPaint.drawableState = paramArrayOfInt;
+      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramFloat1, paramFloat2, this.jdField_a_of_type_AndroidTextTextPaint);
     }
   }
   
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  public boolean a(float paramFloat, Context paramContext)
   {
-    this.a.notifyItemRangeChanged(biau.a(this.a).size() + paramInt1, paramInt2);
-    if (biau.a(this.a) != null) {
-      biau.a(this.a).a(biau.a(this.a));
+    if (Math.abs(this.jdField_a_of_type_Float - paramFloat) > 0.01F)
+    {
+      this.jdField_a_of_type_Float = paramFloat;
+      if (paramContext == null) {}
+      for (paramContext = Resources.getSystem();; paramContext = paramContext.getResources())
+      {
+        paramFloat = TypedValue.applyDimension(1, paramFloat, paramContext.getDisplayMetrics());
+        if (paramFloat == this.jdField_a_of_type_AndroidTextTextPaint.getTextSize()) {
+          break;
+        }
+        this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
+        this.c = -1;
+        this.d = -1;
+        this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics = null;
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(ColorStateList paramColorStateList, int[] paramArrayOfInt)
+  {
+    if (paramColorStateList == null) {
+      return false;
+    }
+    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
+    return a(paramArrayOfInt);
+  }
+  
+  public boolean a(int[] paramArrayOfInt)
+  {
+    int j = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(paramArrayOfInt, 0);
+    int i;
+    if (j == 0) {
+      if (this.jdField_a_of_type_JavaLangReflectMethod == null)
+      {
+        try
+        {
+          this.jdField_a_of_type_JavaLangReflectMethod = SkinnableColorStateList.class.getMethod("getColorForState", new Class[] { [I.class, Integer.TYPE });
+          i = 0;
+        }
+        catch (NoSuchMethodException localNoSuchMethodException)
+        {
+          for (;;)
+          {
+            label94:
+            String str;
+            localNoSuchMethodException.printStackTrace();
+            i = 1;
+          }
+        }
+        try
+        {
+          k = ((Integer)this.jdField_a_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_AndroidContentResColorStateList, new Object[] { paramArrayOfInt, Integer.valueOf(0) })).intValue();
+          j = k;
+          k = i;
+          i = j;
+          j = k;
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+          k = 1;
+          i = j;
+          j = k;
+          break label94;
+        }
+        k = i;
+        if (!jdField_b_of_type_Boolean)
+        {
+          k = i;
+          if (j != 0)
+          {
+            str = "get color from state list fail, state is " + Arrays.toString(paramArrayOfInt) + " but the state list is " + this.jdField_a_of_type_AndroidContentResColorStateList + " curTs: " + SystemClock.uptimeMillis();
+            str = str + " colorFromReflect: " + i;
+            QLog.e("SingleLineTextView", 1, str);
+            azpo.a(new IllegalStateException(str), str);
+            jdField_b_of_type_Boolean = true;
+          }
+        }
+      }
+    }
+    for (int k = i;; k = j)
+    {
+      if ((this.jdField_a_of_type_AndroidContentResColorStateList instanceof SkinnableColorStateList)) {
+        ((SkinnableColorStateList)this.jdField_a_of_type_AndroidContentResColorStateList).reset();
+      }
+      if (k != this.jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_Int = k;
+        this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_AndroidTextTextPaint.drawableState = paramArrayOfInt;
+        return true;
+      }
+      return false;
+      i = 0;
+      break;
     }
   }
   
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
+  public int b()
   {
-    this.a.notifyItemRangeChanged(biau.a(this.a).size() + paramInt1, paramInt2, paramObject);
-    if (biau.a(this.a) != null) {
-      biau.a(this.a).a(biau.a(this.a));
+    if (this.jdField_a_of_type_Boolean) {
+      return 0;
     }
+    if (this.d < 0) {
+      this.d = Math.round(this.jdField_a_of_type_AndroidTextTextPaint.getFontMetricsInt(null));
+    }
+    return this.d;
   }
   
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  public String toString()
   {
-    this.a.notifyItemRangeInserted(biau.a(this.a).size() + paramInt1, paramInt2);
-    if (biau.a(this.a) != null) {
-      biau.a(this.a).a(biau.a(this.a));
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return "";
     }
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.notifyItemMoved(biau.a(this.a).size() + paramInt1, biau.a(this.a).size() + paramInt2);
-    if (biau.a(this.a) != null) {
-      biau.a(this.a).a(biau.a(this.a));
-    }
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeRemoved(biau.a(this.a).size() + paramInt1, paramInt2);
-    if (biau.a(this.a) != null) {
-      biau.a(this.a).a(biau.a(this.a));
-    }
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

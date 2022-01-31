@@ -1,24 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.image.ApngImage;
+import dov.com.qq.im.ae.play.AEPlayShowTabView;
 
-public class blgl
-  implements Animator.AnimatorListener
+class blgl
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public blgl(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  blgl(blgj paramblgj) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    AEEditorAILoadingView.c(this.a).setVisibility(8);
-    AEEditorAILoadingView.d(this.a).playAnimation();
+    if (paramInt == 0)
+    {
+      ApngImage.resumeAll();
+      return;
+    }
+    ApngImage.pauseAll();
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onPageSelected(int paramInt)
+  {
+    blgj.a(this.a).a(paramInt);
+  }
 }
 
 

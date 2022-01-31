@@ -1,29 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-
-class badr
-  implements View.OnClickListener
+public class badr
+  extends bado
 {
-  badr(badq parambadq) {}
+  private float d;
+  private int f;
+  private int g;
+  private int h;
+  private int i;
   
-  public void onClick(View paramView)
+  public badr(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat)
   {
-    if ((badq.a(this.a) instanceof CustomWebView))
-    {
-      if (2 == badq.a(this.a).c)
-      {
-        ((CustomWebView)badq.a(this.a)).callJs("openAdvPermissionsMobile()");
-        this.a.dismiss();
-      }
+    super(paramInt1, 11, 0);
+    this.f = paramInt2;
+    this.g = paramInt3;
+    this.h = paramInt4;
+    this.i = paramInt5;
+    this.d = paramFloat;
+  }
+  
+  protected void a(int paramInt, float paramFloat)
+  {
+    this.jdField_c_of_type_Float = (paramInt * 0.8F / this.jdField_c_of_type_Int);
+    if (this.jdField_c_of_type_Float > 0.8F) {
+      this.jdField_c_of_type_Float = 0.8F;
     }
-    else {
-      return;
-    }
-    ((CustomWebView)badq.a(this.a)).callJs("openCooperationMobile()");
-    this.a.dismiss();
-    azmj.b(badq.a(this.a).app, "dc00898", "", "", "0x8009412", "0x8009412", 0, 0, "", "", "", "");
+    this.jdField_b_of_type_Int = ((int)(360.0F * paramInt * paramInt / (this.jdField_c_of_type_Int * this.jdField_c_of_type_Int)));
+    this.a = (this.f + (this.h - this.f) * paramInt / this.jdField_c_of_type_Int);
+    this.jdField_b_of_type_Float = ((int)(this.g + this.i * Math.sin(this.d * this.a)));
+    super.a(paramInt, paramFloat);
   }
 }
 

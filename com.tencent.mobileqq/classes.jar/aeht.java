@@ -1,33 +1,20 @@
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.AccountDetail;
 
 public class aeht
-  extends alxo
+  extends bcmk
 {
-  public aeht(VisitorsActivity paramVisitorsActivity) {}
+  public aeht(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VisitorsActivity", 2, "onVipStatusChanged: ");
-    }
-    if ((this.a.app != null) && (VipUtils.b(this.a.app)))
+    if ((paramBoolean) && (paramAccountDetail != null))
     {
-      this.a.a(true);
-      this.a.b(true);
-      if (VisitorsActivity.b(this.a).compareAndSet(true, false))
-      {
-        if (VisitorsActivity.a(this.a).get())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("VisitorsActivity", 2, "onVipStatusChanged: showDialog");
-          }
-          bdcd.a(this.a, 232, null, alpo.a(2131717199), null, alpo.a(2131717196), new aehu(this), null).show();
-        }
-        this.a.removeObserver(VisitorsActivity.a(this.a));
-      }
+      this.a.j.setText(paramAccountDetail.name);
+      this.a.b.setVisibility(0);
+      this.a.e();
     }
   }
 }

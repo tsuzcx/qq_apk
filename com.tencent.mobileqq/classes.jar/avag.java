@@ -1,67 +1,23 @@
-import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.MagazinePlayerView.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
 
 public class avag
-  extends avbo
+  implements bhuk
 {
-  public auxh a;
-  public VideoData a;
-  private String b = "MagazinePlayerView";
-  private long d;
+  public avag(NearbyGuideActivity paramNearbyGuideActivity, bhuf parambhuf) {}
   
-  public avag(Context paramContext, auxh paramauxh, QQAppInterface paramQQAppInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramContext, paramQQAppInterface);
-    this.jdField_a_of_type_Auxh = paramauxh;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null)
+    this.jdField_a_of_type_Bhuf.cancel();
+    switch (paramInt)
     {
-      QLog.w(this.b, 2, "pasue mShortVideoInfo is null!!");
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.h();
       return;
     }
-    super.a();
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout, VideoData paramVideoData, avah paramavah)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(this.b, 2, "play() called with: rootView = [" + paramRelativeLayout + "], videoData = [" + paramVideoData + "]");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
-    this.jdField_a_of_type_Avah = paramavah;
-    if (paramVideoData.a == 1)
-    {
-      a(paramRelativeLayout);
-      this.d = 0L;
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      d();
-      auzw.a().a(this.jdField_a_of_type_AndroidWidgetImageView, paramVideoData.c, new ColorDrawable(0), new ColorDrawable(0), null);
-      this.jdField_a_of_type_AndroidOsHandler.post(new MagazinePlayerView.1(this));
-      return;
-    }
-    super.a(paramRelativeLayout, paramVideoData, paramavah);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a == 1) {
-      return;
-    }
-    if (this.jdField_a_of_type_Auxh != null) {
-      this.jdField_a_of_type_Auxh.a();
-    }
-    super.b();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.i();
   }
 }
 

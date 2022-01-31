@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.teamwork.PadInfo;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
-import java.util.Comparator;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bagm
-  implements Comparator<PadInfo>
+final class bagm
+  implements DialogInterface.OnClickListener
 {
-  public bagm(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  bagm(Context paramContext, String paramString) {}
   
-  public int a(PadInfo paramPadInfo1, PadInfo paramPadInfo2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = paramPadInfo2.lastEditTime - paramPadInfo1.lastEditTime;
-    if (l > 0L) {
-      return 1;
+    try
+    {
+      arrr.c(this.jdField_a_of_type_AndroidContentContext, aoxg.a().a());
+      return;
     }
-    if (l < 0L) {
-      return -1;
+    catch (Exception paramDialogInterface)
+    {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 1, paramDialogInterface.toString());
     }
-    return 0;
   }
 }
 

@@ -1,48 +1,43 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class arrd
-  implements bhqe
 {
-  public arrd(SendBottomBar paramSendBottomBar) {}
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  public String b;
+  public String c;
   
-  public void a(View paramView, int paramInt, String paramString)
+  private arrd(arqx paramarqx) {}
+  
+  public void a() {}
+  
+  public void a(Context paramContext)
   {
-    if (paramString.equals(alpo.a(2131714165)))
+    paramContext.getSharedPreferences("FMSETTING_59", 3).edit().putString("DefaultRootPath", this.b).commit();
+    paramContext = arqx.a(this.jdField_a_of_type_Arqx, this.b + this.c);
+    Object localObject = arqx.b(this.jdField_a_of_type_Arqx, this.b + this.c);
+    String str = arqx.c(this.jdField_a_of_type_Arqx, this.b + this.c);
+    arqx.a(this.jdField_a_of_type_Arqx, paramContext);
+    arqx.a(this.jdField_a_of_type_Arqx, str);
+    arqx.a(this.jdField_a_of_type_Arqx, (String)localObject);
+    paramContext = this.jdField_a_of_type_Arqx.a.keySet().iterator();
+    while (paramContext.hasNext())
     {
-      paramView = arni.a("排序方式:\n时间", alpo.a(2131714174), null);
-      SendBottomBar.a(this.a).setText(paramView);
-      if (SendBottomBar.a(this.a).g() == 0) {
-        return;
-      }
-      SendBottomBar.a(this.a).b(0);
-    }
-    for (;;)
-    {
-      this.a.a.dismiss();
-      return;
-      if (paramString.equals(alpo.a(2131714194)))
+      localObject = (String)paramContext.next();
+      localObject = (arrd)this.jdField_a_of_type_Arqx.a.get(localObject);
+      if ((((arrd)localObject).jdField_a_of_type_Boolean) && (localObject != this))
       {
-        paramView = arni.a("排序方式:\n大小", alpo.a(2131714168), null);
-        SendBottomBar.a(this.a).setText(paramView);
-        if (SendBottomBar.a(this.a).g() == 1) {
-          break;
-        }
-        SendBottomBar.a(this.a).b(1);
-        continue;
-      }
-      if (paramString.equals(alpo.a(2131714167)))
-      {
-        paramView = arni.a("排序方式:\n类型", alpo.a(2131714190), null);
-        SendBottomBar.a(this.a).setText(paramView);
-        if (SendBottomBar.a(this.a).g() == 2) {
-          break;
-        }
-        SendBottomBar.a(this.a).b(2);
+        arqx.a(2, "getDefaultStorage[" + ((arrd)localObject).b + "]");
+        ((arrd)localObject).jdField_a_of_type_Boolean = false;
       }
     }
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

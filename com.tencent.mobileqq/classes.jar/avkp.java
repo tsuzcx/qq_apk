@@ -1,19 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-class avkp
-  implements DialogInterface.OnClickListener
+public class avkp
+  implements View.OnClickListener
 {
-  avkp(avkm paramavkm, bdfq parambdfq) {}
+  public avkp(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bdfq.dismiss();
-    this.jdField_a_of_type_Avkm.a.e();
-    paramDialogInterface = new Intent("tribe_profile_edit_finish");
-    BaseApplicationImpl.getApplication().sendBroadcast(paramDialogInterface);
+    if ((this.a.b != null) && (!this.a.isFinishing()))
+    {
+      this.a.b.dismiss();
+      this.a.b = null;
+    }
   }
 }
 

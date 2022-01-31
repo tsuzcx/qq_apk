@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ajee;
-import azmj;
+import ajit;
+import azqs;
 import ssp;
 
 public class RecentAdapter$4
   implements Runnable
 {
-  public RecentAdapter$4(ajee paramajee, int paramInt, String paramString1, String paramString2, String paramString3) {}
+  public RecentAdapter$4(ajit paramajit, int paramInt, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    azmj.b(this.this$0.a, "dc01160", "Pb_account_lifeservice", "", "0X800687A", "0X800687A", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(ssp.a().a()));
+    azqs.b(this.this$0.a, "dc01160", "Pb_account_lifeservice", "", "0X800687A", "0X800687A", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(ssp.a().a()));
   }
 }
 

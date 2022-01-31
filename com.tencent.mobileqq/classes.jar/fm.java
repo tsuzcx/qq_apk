@@ -120,8 +120,8 @@ public class fm
       return;
     }
     int i;
-    if ((paramCharacterStyle instanceof bain)) {
-      i = ((bain)paramCharacterStyle).a().getBounds().width();
+    if ((paramCharacterStyle instanceof bamw)) {
+      i = ((bamw)paramCharacterStyle).a().getBounds().width();
     }
     for (;;)
     {
@@ -145,10 +145,10 @@ public class fm
         this.g = 0;
         this.e += 1;
         return;
-        if (!(paramCharacterStyle instanceof axye)) {
+        if (!(paramCharacterStyle instanceof aycn)) {
           break label196;
         }
-        i = ((axye)paramCharacterStyle).a();
+        i = ((aycn)paramCharacterStyle).a();
         break label26;
         if (this.g == 0)
         {

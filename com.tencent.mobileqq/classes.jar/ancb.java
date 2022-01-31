@@ -1,20 +1,6 @@
-import android.os.Bundle;
-
-public final class ancb
+public abstract interface ancb
 {
-  public static Bundle a(Bundle paramBundle)
-  {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    paramBundle = new ancg(localBundle);
-    paramBundle.a(10L);
-    paramBundle.b(true);
-    paramBundle.a(true);
-    paramBundle.b(4096L);
-    return paramBundle.a();
-  }
+  public abstract void a(long paramLong, ancs paramancs);
 }
 
 

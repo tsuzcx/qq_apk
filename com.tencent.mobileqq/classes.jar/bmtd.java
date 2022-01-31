@@ -1,35 +1,35 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.view.animation.AccelerateDecelerateInterpolator;
 
 public class bmtd
-  implements ViewPager.OnPageChangeListener
+  extends ValueAnimator
 {
-  public bmtd(FaceViewPager paramFaceViewPager) {}
+  private bmte jdField_a_of_type_Bmte;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onPageScrollStateChanged(int paramInt)
+  public bmtd()
   {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bmte)localIterator.next()).e(paramInt);
-    }
+    setInterpolator(new AccelerateDecelerateInterpolator());
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void a(bmtc parambmtc1, bmtc parambmtc2)
   {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bmte)localIterator.next()).a(paramInt1, paramFloat, paramInt2);
-    }
+    setObjectValues(new Object[] { parambmtc1, parambmtc2 });
+    this.jdField_a_of_type_Boolean = bmtc.a(parambmtc1, parambmtc2);
   }
   
-  public void onPageSelected(int paramInt)
+  public boolean a()
   {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bmte)localIterator.next()).c(paramInt);
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void setObjectValues(Object... paramVarArgs)
+  {
+    super.setObjectValues(paramVarArgs);
+    if (this.jdField_a_of_type_Bmte == null) {
+      this.jdField_a_of_type_Bmte = new bmte();
     }
+    setEvaluator(this.jdField_a_of_type_Bmte);
   }
 }
 

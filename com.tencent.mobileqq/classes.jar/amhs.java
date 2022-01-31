@@ -1,20 +1,15 @@
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.io.FilenameFilter;
+
 public class amhs
+  implements FilenameFilter
 {
-  public static String a(long paramLong)
+  public amhs(CleanCache paramCleanCache) {}
+  
+  public boolean accept(File paramFile, String paramString)
   {
-    if (paramLong <= 0L) {
-      return "";
-    }
-    if (paramLong < 1024L) {
-      return paramLong + "B";
-    }
-    if (paramLong < 1048576L) {
-      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F) }) + "K";
-    }
-    if (paramLong < 1073741824L) {
-      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F) }) + "M";
-    }
-    return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F / 1024.0F) }) + "G";
+    return !paramString.contains("CrashInfoSummary.txt");
   }
 }
 

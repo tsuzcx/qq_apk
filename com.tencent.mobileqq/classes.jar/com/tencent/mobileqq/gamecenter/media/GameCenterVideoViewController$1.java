@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.gamecenter.media;
 
-import alpo;
+import alud;
 import android.content.Context;
-import bdee;
+import bdin;
 import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -13,16 +13,16 @@ class GameCenterVideoViewController$1
   
   public void run()
   {
-    String str = alpo.a(2131705404);
-    if (!bdee.g(this.this$0.getContext())) {
-      str = this.this$0.getContext().getString(2131718824);
+    String str = alud.a(2131705416);
+    if (!bdin.g(this.this$0.getContext())) {
+      str = this.this$0.getContext().getString(2131718836);
     }
     for (;;)
     {
       QQToast.a(this.this$0.getContext(), 1, str, 0).b(0);
       return;
       if (GameCenterVideoViewController.a(this.this$0).type == 1) {
-        str = alpo.a(2131705411);
+        str = alud.a(2131705423);
       }
     }
   }

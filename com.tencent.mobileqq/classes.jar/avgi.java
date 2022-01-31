@@ -1,41 +1,36 @@
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
 
-public abstract class avgi
+public abstract interface avgi
 {
-  protected Context a;
-  protected View a;
+  public abstract int a();
   
-  public avgi(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
+  public abstract long a();
   
-  protected abstract int a();
+  public abstract View a();
   
-  public View a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return this.jdField_a_of_type_AndroidViewView;
-    }
-    int i = a();
-    if (i > 0)
-    {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, null);
-      a(this.jdField_a_of_type_AndroidViewView);
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_AndroidViewView;
-      this.jdField_a_of_type_AndroidViewView = null;
-    }
-  }
+  public abstract void a();
   
-  protected void a(View paramView) {}
+  public abstract void a(long paramLong);
   
-  public abstract void a(NearbyPeopleCard paramNearbyPeopleCard);
+  public abstract void a(avgj paramavgj);
+  
+  public abstract void a(avgk paramavgk);
+  
+  public abstract void a(avgl paramavgl);
+  
+  public abstract void a(avgm paramavgm);
+  
+  public abstract void a(avgn paramavgn);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

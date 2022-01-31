@@ -1,39 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.PanelStrategy.1;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aemr
-  implements aivw
+class aemr
+  implements View.OnClickListener
 {
-  public aemr(CustomizeStrategyFactory.PanelStrategy.1 param1) {}
+  aemr(aemq paramaemq) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(View paramView)
   {
-    paramPathResult = paramPathResult.filePath;
-    if (paramInt == 0) {}
-    try
-    {
-      Bitmap localBitmap = SafeBitmapFactory.decodeFile(paramPathResult, bdda.a(paramPathResult, (int)(CustomizeStrategyFactory.a * 50.0F + 0.5D)));
-      if (localBitmap != null) {
-        this.a.a.icon = localBitmap;
-      }
-      this.a.a.resPath = paramPathResult;
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "PanelStrategy info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
-      }
-    }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
-    }
-    CustomizeStrategyFactory.a().a(this.a.a);
+    this.a.a.b(paramView.getTag());
   }
 }
 

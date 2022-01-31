@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import atsv;
+import atxe;
 import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
 
 public class LyricViewController$2
   extends TimerTaskManager.TimerTaskRunnable
 {
-  public LyricViewController$2(atsv paramatsv) {}
+  public LyricViewController$2(atxe paramatxe) {}
   
   public void a()
   {
     if (!a()) {
-      atsv.a(this.this$0);
+      atxe.a(this.this$0);
     }
   }
 }

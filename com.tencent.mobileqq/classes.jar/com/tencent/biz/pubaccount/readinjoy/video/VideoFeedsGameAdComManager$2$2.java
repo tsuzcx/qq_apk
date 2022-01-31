@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import alpo;
+import alud;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ class VideoFeedsGameAdComManager$2$2
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), 1, alpo.a(2131716612), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), 1, alud.a(2131716624), 0).a();
   }
 }
 

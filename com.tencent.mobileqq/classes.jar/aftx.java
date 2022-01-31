@@ -1,35 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class aftx
-  implements View.OnTouchListener
+  extends afuf
 {
-  aftx(aftw paramaftw) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  aftx(afpy paramafpy)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-      return true;
-    case 0: 
-      aftw.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      aftw.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(true);
-      return true;
-    case 3: 
-      aftw.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      aftw.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
-      return true;
-    }
-    aftw.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    aftw.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
-    paramView.performClick();
-    aftw.a(this.a, paramView);
-    return true;
+    super(paramafpy, null);
+  }
+  
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new TribeShortVideoItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

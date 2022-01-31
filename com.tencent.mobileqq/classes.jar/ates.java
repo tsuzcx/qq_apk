@@ -1,34 +1,35 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
+import com.tencent.mobileqq.intervideo.od.ODLoadingActivity.2;
+import com.tencent.mobileqq.intervideo.od.ODLoadingActivity.2.1.1;
+import com.tencent.shadow.dynamic.host.EnterCallback;
 
-public final class ates
-  implements EIPCResultCallback
+public class ates
+  implements EnterCallback
 {
-  public ates(JSONObject paramJSONObject, spj paramspj, String paramString) {}
+  public ates(ODLoadingActivity.2 param2) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onCloseLoadingView()
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.data != null)) {}
-    for (boolean bool = paramEIPCResult.data.getBoolean("action_update_biu_and_comment_switch");; bool = false) {
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("isGrayscaleUser", bool);
-        QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig is " + bool);
-        this.jdField_a_of_type_Spj.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
-        return;
-      }
-      catch (JSONException paramEIPCResult)
-      {
-        for (;;)
-        {
-          QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig error " + paramEIPCResult.getMessage());
-        }
-      }
-    }
+    ODLoadingActivity.a(this.a.this$0);
+    this.a.this$0.finish();
+    ODLoadingActivity.a(this.a.this$0).opType("onCloseLoadingView").report();
+    atbh.b("33669909");
+  }
+  
+  public void onEnterComplete()
+  {
+    ODLoadingActivity.a(this.a.this$0).opType("onEnterComplete").report();
+    atbh.b("33669911");
+  }
+  
+  public void onShowLoadingView(View paramView)
+  {
+    ODLoadingActivity.a(this.a.this$0, paramView);
+    this.a.this$0.runOnUiThread(new ODLoadingActivity.2.1.1(this));
+    ODLoadingActivity.a(this.a.this$0).opType("onShowLoadingView").report();
+    atbh.b("33669908");
   }
 }
 

@@ -1,22 +1,29 @@
-import android.os.FileObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.splashad.SplashADView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-class aznm
-  extends FileObserver
+public class aznm
+  implements View.OnClickListener
 {
-  public aznm(String paramString, int paramInt)
-  {
-    super(paramString, paramInt);
-  }
+  public aznm(SplashADView paramSplashADView) {}
   
-  public void onEvent(int paramInt, String arg2)
+  public void onClick(View paramView)
   {
-    QLog.e("UnifiedMonitor.Trace", 1, "dumpTraces onEvent " + ???);
-    synchronized (aznl.a())
+    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
     {
-      notifyAll();
+      if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getOutputMute())
+      {
+        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(false);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849834);
+      }
+    }
+    else {
       return;
     }
+    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(true);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849835);
   }
 }
 

@@ -1,264 +1,305 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.text.TextUtils;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.net.Inet6Address;
-import java.net.InetAddress;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.cs.cmd0x388.cmd0x388.GetPttUrlReq;
-import tencent.im.cs.cmd0x388.cmd0x388.GetPttUrlRsp;
-import tencent.im.cs.cmd0x388.cmd0x388.IPv6Info;
-import tencent.im.cs.cmd0x388.cmd0x388.ReqBody;
-import tencent.im.cs.cmd0x388.cmd0x388.RspBody;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
 
 public class bawh
-  extends bawa
+  extends baqn
 {
-  void a(int paramInt, bawz parambawz, cmd0x388.ReqBody paramReqBody)
+  private static Bitmap a(Bitmap paramBitmap)
   {
-    parambawz = (baws)parambawz;
-    cmd0x388.GetPttUrlReq localGetPttUrlReq = new cmd0x388.GetPttUrlReq();
-    localGetPttUrlReq.setHasFlag(true);
-    localGetPttUrlReq.uint64_file_id.set(paramInt);
-    localGetPttUrlReq.uint64_dst_uin.set(Long.valueOf(parambawz.c).longValue());
-    localGetPttUrlReq.uint64_group_code.set(Long.parseLong(parambawz.d));
-    localGetPttUrlReq.bytes_file_md5.set(ByteStringMicro.copyFrom(parambawz.jdField_a_of_type_ArrayOfByte));
-    if (parambawz.jdField_a_of_type_Long != 0L) {
-      localGetPttUrlReq.uint64_fileid.set(parambawz.jdField_a_of_type_Long);
-    }
-    localGetPttUrlReq.uint32_req_platform_type.set(9);
-    localGetPttUrlReq.uint32_req_term.set(5);
-    localGetPttUrlReq.uint32_inner_ip.set(0);
-    Object localObject = localGetPttUrlReq.uint32_bu_type;
-    if (parambawz.f == 1) {
-      paramInt = 3;
-    }
-    for (;;)
-    {
-      ((PBUInt32Field)localObject).set(paramInt);
-      localGetPttUrlReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(basj.a()));
-      localGetPttUrlReq.uint32_codec.set(parambawz.jdField_a_of_type_Int);
-      if (parambawz.jdField_a_of_type_JavaLangString != null) {}
-      try
-      {
-        localObject = parambawz.jdField_a_of_type_JavaLangString.getBytes("utf-8");
-        localGetPttUrlReq.bytes_file_key.set(ByteStringMicro.copyFrom((byte[])localObject));
-        label207:
-        localGetPttUrlReq.uint32_is_auto.set(parambawz.b);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richmedia.GroupPttDownHandler", 2, "constructReqBody GroupPttDownReq = " + parambawz.toString());
-        }
-        paramReqBody.rpt_msg_getptt_url_req.add(localGetPttUrlReq);
-        return;
-        paramInt = 4;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        break label207;
-      }
-    }
-  }
-  
-  public void a(bari parambari, barh parambarh)
-  {
-    FromServiceMsg localFromServiceMsg = parambari.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-    byte[] arrayOfByte = parambari.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
-    bawo localbawo = (bawo)parambarh.jdField_a_of_type_JavaLangObject;
-    baxd localbaxd = localbawo.jdField_a_of_type_Baxd;
-    alsj localalsj = parambari.jdField_a_of_type_Alsj;
+    Bitmap localBitmap = null;
+    int m;
     int i;
-    if (localFromServiceMsg.getResultCode() != 1000)
+    int j;
+    if (paramBitmap != null)
     {
-      i = localFromServiceMsg.getResultCode();
-      if ((i == 1002) || (i == 1013))
-      {
-        localObject1 = MessageHandler.a(localFromServiceMsg);
-        parambarh = localFromServiceMsg.getBusinessFailMsg();
-        parambari = parambarh;
-        if (parambarh == null) {
-          parambari = "";
-        }
-        a(-1, 9311, (String)localObject1, parambari, localalsj, localbaxd.jdField_a_of_type_JavaUtilList);
+      k = paramBitmap.getWidth();
+      m = paramBitmap.getHeight();
+      if (k <= m) {
+        break label63;
       }
-      for (;;)
-      {
-        baxu.a(localbawo, localbaxd);
-        return;
-        localObject1 = MessageHandler.a(localFromServiceMsg);
-        parambarh = localFromServiceMsg.getBusinessFailMsg();
-        parambari = parambarh;
-        if (parambarh == null) {
-          parambari = "";
-        }
-        a(-1, 9044, (String)localObject1, parambari, localalsj, localbaxd.jdField_a_of_type_JavaUtilList);
+      i = m;
+      if (k <= m) {
+        break label68;
+      }
+      j = (k - m) / 2;
+      label40:
+      if (k <= m) {
+        break label73;
       }
     }
-    for (;;)
+    label63:
+    label68:
+    label73:
+    for (int k = 0;; k = (m - k) / 2)
     {
-      try
-      {
-        Iterator localIterator = ((cmd0x388.RspBody)new cmd0x388.RspBody().mergeFrom(arrayOfByte)).rpt_msg_getptt_url_rsp.get().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        parambari = (cmd0x388.GetPttUrlRsp)localIterator.next();
-      }
-      catch (Exception parambari)
-      {
-        a(-1, -9527, bamw.a("P", -9529L), parambari.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localalsj, localbaxd.jdField_a_of_type_JavaUtilList);
-      }
-      try
-      {
-        localObject1 = (baxj)localbaxd.jdField_a_of_type_JavaUtilList.get((int)parambari.uint64_file_id.get());
-        if ((localObject1 != null) && (localFromServiceMsg != null)) {}
-        try
-        {
-          ((baxj)localObject1).d = ((Boolean)localFromServiceMsg.getAttribute("_attr_send_by_quickHttp", Boolean.valueOf(false))).booleanValue();
-          if (QLog.isColorLevel()) {
-            QLog.e("http_sideway", 2, "GroupPttDownHandler.onProtoResp:isSendByQuickHttp=" + ((baxj)localObject1).d);
-          }
-          i = parambari.uint32_result.get();
-          if (i != 0) {
-            break label714;
-          }
-          ((baxj)localObject1).jdField_a_of_type_JavaLangString = parambari.bytes_down_para.get().toStringUtf8();
-          List localList = parambari.rpt_uint32_down_ip.get();
-          Object localObject2 = parambari.rpt_uint32_down_port.get();
-          i = 0;
-          if (i < localList.size())
-          {
-            basp localbasp = new basp();
-            localbasp.jdField_a_of_type_JavaLangString = bdlr.a(((Integer)localList.get(i)).intValue() & 0xFFFFFFFF);
-            localbasp.jdField_a_of_type_Int = ((Integer)((List)localObject2).get(i)).intValue();
-            ((baxj)localObject1).jdField_a_of_type_JavaUtilArrayList.add(i, localbasp);
-            i += 1;
-            continue;
-          }
-          if ((parambari.rpt_msg_down_ip6.has()) && (parambari.rpt_msg_down_ip6.size() > 0))
-          {
-            localList = parambari.rpt_msg_down_ip6.get();
-            i = 0;
-            if (i < localList.size())
-            {
-              localObject2 = new basp();
-              ((basp)localObject2).jdField_a_of_type_JavaLangString = Inet6Address.getByAddress(((cmd0x388.IPv6Info)localList.get(i)).bytes_ip6.get().toByteArray()).getHostAddress();
-              ((basp)localObject2).jdField_a_of_type_Int = ((cmd0x388.IPv6Info)localList.get(i)).uint32_port.get();
-              ((basp)localObject2).jdField_a_of_type_Boolean = true;
-              ((baxj)localObject1).jdField_b_of_type_JavaUtilArrayList.add(i, localObject2);
-              i += 1;
-              continue;
-            }
-          }
-          if (parambari.rpt_str_domain.has()) {
-            ((baxj)localObject1).jdField_b_of_type_JavaLangString = parambari.rpt_str_domain.get();
-          }
-          a(0, 0, "", "", localalsj, (baxq)localObject1);
-        }
-        catch (Exception parambari) {}
-      }
-      catch (Exception parambari)
-      {
-        localObject1 = null;
-        continue;
-      }
-      a(-1, -9527, bamw.a("P", -9529L), parambari.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localalsj, (baxq)localObject1);
-      continue;
+      localBitmap = Bitmap.createBitmap(paramBitmap, j, k, i, i, null, false);
+      return localBitmap;
+      i = k;
       break;
-      label714:
-      if (parambari.uint32_allow_retry.get() == 1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richmedia.BaseHandler", 2, "onProtoResp :group ptt server not allow retry");
-        }
-        ((baxj)localObject1).e = false;
-      }
-      if (bawg.a(i))
-      {
-        this.b += 1;
-        if (this.b < 2)
-        {
-          localbawo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a(parambarh);
-          return;
-        }
-      }
-      a(-1, -9527, bamw.a(i), "", localalsj, (baxq)localObject1);
+      j = 0;
+      break label40;
     }
   }
   
-  public void a(bawo parambawo)
+  private String a(String paramString)
   {
-    if ((parambawo != null) && (parambawo.jdField_a_of_type_JavaUtilList != null) && (parambawo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
-    {
-      barh localbarh = new barh();
-      localbarh.jdField_a_of_type_JavaLangString = "PttStore.GroupPttDown";
-      localbarh.jdField_a_of_type_ArrayOfByte = a(parambawo.jdField_a_of_type_JavaUtilList);
-      localbarh.jdField_a_of_type_JavaLangObject = parambawo;
-      localbarh.jdField_a_of_type_Barg = this;
-      a(parambawo, localbarh);
-    }
-  }
-  
-  byte[] a(List<bawz> paramList)
-  {
-    cmd0x388.ReqBody localReqBody = new cmd0x388.ReqBody();
-    localReqBody.setHasFlag(true);
-    localReqBody.uint32_subcmd.set(4);
     int i = 0;
-    while (i < paramList.size())
-    {
-      a(i, (bawz)paramList.get(i), localReqBody);
-      i += 1;
+    int j = paramString.length();
+    int k = paramString.indexOf('[');
+    if (k == 0) {
+      i = k + 1;
     }
-    switch (baqx.a().a())
-    {
-    default: 
-      i = 6;
+    k = paramString.lastIndexOf(']');
+    if (k == paramString.length() - 1) {
+      j = k;
     }
     for (;;)
     {
-      paramList = baqx.a().a();
-      int j = i;
-      if (paramList != null)
-      {
-        j = i;
-        if (paramList.contains("wap")) {
-          j = 5;
-        }
+      paramString = paramString.substring(i, j);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.QZoneRecentPhotoDownloader", 2, "dealHost|host = " + paramString);
       }
-      localReqBody.uint32_net_type.set(j);
-      return localReqBody.toByteArray();
-      i = 3;
-      continue;
-      i = 6;
-      continue;
-      i = 7;
-      continue;
-      i = 8;
+      return paramString;
     }
   }
   
-  void b(bawo parambawo)
+  /* Error */
+  private void a(String paramString1, String paramString2)
   {
-    baxd localbaxd = parambawo.jdField_a_of_type_Baxd;
-    localbaxd.jdField_a_of_type_JavaUtilList.clear();
-    int i = 0;
-    while (i < parambawo.jdField_a_of_type_JavaUtilList.size())
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: invokestatic 47	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5: ifeq +37 -> 42
+    //   8: ldc 49
+    //   10: iconst_2
+    //   11: new 51	java/lang/StringBuilder
+    //   14: dup
+    //   15: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   18: ldc 77
+    //   20: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: aload_1
+    //   24: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: ldc 79
+    //   29: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: aload_2
+    //   33: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   39: invokestatic 66	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   42: new 51	java/lang/StringBuilder
+    //   45: dup
+    //   46: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   49: aload_1
+    //   50: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: ldc 81
+    //   55: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   61: astore 5
+    //   63: new 83	java/io/File
+    //   66: dup
+    //   67: aload 5
+    //   69: invokespecial 86	java/io/File:<init>	(Ljava/lang/String;)V
+    //   72: astore 4
+    //   74: aload 4
+    //   76: invokevirtual 89	java/io/File:exists	()Z
+    //   79: ifeq +9 -> 88
+    //   82: aload 4
+    //   84: invokevirtual 92	java/io/File:delete	()Z
+    //   87: pop
+    //   88: aload 4
+    //   90: invokevirtual 96	java/io/File:getParentFile	()Ljava/io/File;
+    //   93: astore 6
+    //   95: aload 6
+    //   97: ifnull +17 -> 114
+    //   100: aload 6
+    //   102: invokevirtual 89	java/io/File:exists	()Z
+    //   105: ifne +9 -> 114
+    //   108: aload 6
+    //   110: invokevirtual 99	java/io/File:mkdirs	()Z
+    //   113: pop
+    //   114: aconst_null
+    //   115: ldc 101
+    //   117: aload_2
+    //   118: invokestatic 107	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:insertMtype	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   121: aload 4
+    //   123: invokestatic 112	com/tencent/mobileqq/utils/HttpDownloadUtil:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/io/File;)Z
+    //   126: ifeq +102 -> 228
+    //   129: aload 5
+    //   131: invokestatic 118	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   134: astore_2
+    //   135: aload_2
+    //   136: invokestatic 120	bawh:a	(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+    //   139: astore_2
+    //   140: aload_2
+    //   141: ifnull +81 -> 222
+    //   144: new 83	java/io/File
+    //   147: dup
+    //   148: aload_1
+    //   149: invokespecial 86	java/io/File:<init>	(Ljava/lang/String;)V
+    //   152: astore_1
+    //   153: aload_1
+    //   154: invokevirtual 89	java/io/File:exists	()Z
+    //   157: ifeq +8 -> 165
+    //   160: aload_1
+    //   161: invokevirtual 92	java/io/File:delete	()Z
+    //   164: pop
+    //   165: aload_1
+    //   166: invokevirtual 96	java/io/File:getParentFile	()Ljava/io/File;
+    //   169: astore 5
+    //   171: aload 5
+    //   173: ifnull +17 -> 190
+    //   176: aload 5
+    //   178: invokevirtual 89	java/io/File:exists	()Z
+    //   181: ifne +9 -> 190
+    //   184: aload 5
+    //   186: invokevirtual 99	java/io/File:mkdirs	()Z
+    //   189: pop
+    //   190: new 122	java/io/FileOutputStream
+    //   193: dup
+    //   194: aload_1
+    //   195: invokespecial 125	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   198: astore_1
+    //   199: aload_1
+    //   200: ifnull +22 -> 222
+    //   203: aload_2
+    //   204: getstatic 131	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   207: bipush 70
+    //   209: aload_1
+    //   210: invokevirtual 135	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   213: pop
+    //   214: aload_1
+    //   215: invokevirtual 138	java/io/FileOutputStream:flush	()V
+    //   218: aload_1
+    //   219: invokevirtual 141	java/io/FileOutputStream:close	()V
+    //   222: aload 4
+    //   224: invokevirtual 92	java/io/File:delete	()Z
+    //   227: pop
+    //   228: return
+    //   229: astore_2
+    //   230: aload_2
+    //   231: invokevirtual 144	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   234: aconst_null
+    //   235: astore_2
+    //   236: goto -101 -> 135
+    //   239: astore_2
+    //   240: aload_2
+    //   241: invokevirtual 145	java/lang/Exception:printStackTrace	()V
+    //   244: aconst_null
+    //   245: astore_2
+    //   246: goto -111 -> 135
+    //   249: astore_1
+    //   250: aload_1
+    //   251: invokevirtual 146	java/io/FileNotFoundException:printStackTrace	()V
+    //   254: aload_3
+    //   255: astore_1
+    //   256: goto -57 -> 199
+    //   259: astore_1
+    //   260: aload_1
+    //   261: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   264: goto -42 -> 222
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	267	0	this	bawh
+    //   0	267	1	paramString1	String
+    //   0	267	2	paramString2	String
+    //   1	254	3	localObject1	Object
+    //   72	151	4	localFile1	File
+    //   61	124	5	localObject2	Object
+    //   93	16	6	localFile2	File
+    // Exception table:
+    //   from	to	target	type
+    //   129	135	229	java/lang/OutOfMemoryError
+    //   129	135	239	java/lang/Exception
+    //   190	199	249	java/io/FileNotFoundException
+    //   214	222	259	java/io/IOException
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramURLDrawableHandler = null;
+    Object localObject = paramDownloadParams.url;
+    paramOutputStream = paramURLDrawableHandler;
+    if (localObject != null)
     {
-      baxj localbaxj = new baxj();
-      localbaxd.jdField_a_of_type_JavaUtilList.add(i, localbaxj);
-      i += 1;
+      paramOutputStream = paramURLDrawableHandler;
+      if (bdeu.a(((URL)localObject).getProtocol(), "troop_photo_qzone"))
+      {
+        paramURLDrawableHandler = ((URL)localObject).getFile();
+        paramDownloadParams = new File(paramURLDrawableHandler);
+        localObject = ((URL)localObject).getHost();
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.QZoneRecentPhotoDownloader", 2, "downloadImage| path = " + paramURLDrawableHandler + ", host = " + (String)localObject);
+        }
+        if (paramDownloadParams.exists())
+        {
+          paramOutputStream = paramDownloadParams;
+          if (paramDownloadParams.length() > 0L) {}
+        }
+        else
+        {
+          paramOutputStream = paramDownloadParams;
+          if (localObject != null)
+          {
+            a(paramURLDrawableHandler, a((String)localObject));
+            paramOutputStream = paramDownloadParams;
+          }
+        }
+      }
     }
+    return paramOutputStream;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    Object localObject = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.QZoneRecentPhotoDownloader", 2, "decodeFile| f = " + paramFile);
+    }
+    if (paramFile == null) {}
+    for (paramFile = null;; paramFile = paramFile.getPath())
+    {
+      paramURLDrawableHandler = paramFile;
+      if (TextUtils.isEmpty(paramFile))
+      {
+        paramURLDrawableHandler = paramFile;
+        if (paramDownloadParams != null)
+        {
+          paramURLDrawableHandler = paramFile;
+          if (paramDownloadParams.url != null) {
+            paramURLDrawableHandler = paramDownloadParams.url.getPath();
+          }
+        }
+      }
+      paramFile = localObject;
+      if (!TextUtils.isEmpty(paramURLDrawableHandler)) {}
+      try
+      {
+        paramFile = BitmapFactory.decodeFile(paramURLDrawableHandler);
+        return paramFile;
+      }
+      catch (OutOfMemoryError paramFile)
+      {
+        paramFile.printStackTrace();
+        return null;
+      }
+      catch (Exception paramFile)
+      {
+        paramFile.printStackTrace();
+      }
+    }
+    return null;
   }
 }
 

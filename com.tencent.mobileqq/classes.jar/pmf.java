@@ -52,7 +52,7 @@ public class pmf
     for (;;)
     {
       localJSONObject.put("updateTimeStr", paramBaseArticleInfo);
-      if (!bdem.a(BaseApplicationImpl.getContext(), "com.tencent.reading")) {
+      if (!bdiv.a(BaseApplicationImpl.getContext(), "com.tencent.reading")) {
         break;
       }
       localJSONObject.put("jump_page", "3");

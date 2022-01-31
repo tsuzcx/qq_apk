@@ -1,15 +1,15 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
+import java.util.HashMap;
 
 class vjo
-  implements AudioManager.OnAudioFocusChangeListener
+  extends viv
 {
-  vjo(vjl paramvjl) {}
+  vjo(vji paramvji, vkm paramvkm) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public boolean b()
   {
-    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (vjl.a(this.a))) {
-      this.a.a();
-    }
+    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
+    this.jdField_a_of_type_Vkm.a = ((String)localHashMap.get(this.jdField_a_of_type_Vkm.a));
+    return true;
   }
 }
 

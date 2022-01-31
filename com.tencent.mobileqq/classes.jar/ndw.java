@@ -13,7 +13,7 @@ import mqq.observer.BusinessObserver;
 final class ndw
   implements BusinessObserver
 {
-  ndw(Context paramContext, QQAppInterface paramQQAppInterface, bepp parambepp, SessionInfo paramSessionInfo, String paramString) {}
+  ndw(Context paramContext, QQAppInterface paramQQAppInterface, bety parambety, SessionInfo paramSessionInfo, String paramString) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
@@ -37,30 +37,30 @@ final class ndw
         {
           paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
           ndv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
-          ndv.a(this.jdField_a_of_type_Bepp);
+          ndv.a(this.jdField_a_of_type_Bety);
           if (QLog.isDevelopLevel()) {
             QLog.d("IVR_TS_CrmUtils", 4, "<<<end getDetail, ts=" + System.currentTimeMillis());
           }
           ndv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, paramBundle, this.jdField_a_of_type_JavaLangString);
-          ndv.a(this.jdField_a_of_type_Bepp);
+          ndv.a(this.jdField_a_of_type_Bety);
           return;
         }
       }
       catch (InvalidProtocolBufferMicroException paramBundle)
       {
-        ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
-        ndv.a(this.jdField_a_of_type_Bepp);
+        ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+        ndv.a(this.jdField_a_of_type_Bety);
         return;
       }
-      ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+      ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
       continue;
-      ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+      ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
       continue;
-      ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+      ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
     }
   }
 }

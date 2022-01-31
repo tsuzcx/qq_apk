@@ -2,8 +2,8 @@ package cooperation.qzone.event;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import bjdh;
-import bjfd;
+import bjho;
+import bjjk;
 import cooperation.qzone.util.QZLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -17,12 +17,12 @@ public class ExoticEventPool
   @NonNull
   public static ExoticEventPool getInstance()
   {
-    return bjfd.a();
+    return bjjk.a();
   }
   
   public boolean onEventReceived(@Nullable ExoticEvent paramExoticEvent)
   {
-    if (bjdh.d()) {
+    if (bjho.d()) {
       return false;
     }
     if (paramExoticEvent == null) {

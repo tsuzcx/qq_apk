@@ -1,8 +1,26 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.core.widget.ActionSheetDialog.3;
+
 public class bgqt
+  implements Animation.AnimationListener
 {
-  public int a;
-  public bgqh<?> a;
-  public Class<bgqg> a;
+  public bgqt(ActionSheetDialog.3 param3) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    try
+    {
+      bgqs.a(this.a.this$0);
+      bgqs.a(this.a.this$0, true);
+      return;
+    }
+    catch (Exception paramAnimation) {}
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

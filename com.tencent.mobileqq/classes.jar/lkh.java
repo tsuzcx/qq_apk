@@ -4,7 +4,7 @@ import java.io.File;
 
 public class lkh
 {
-  private atus jdField_a_of_type_Atus;
+  private atzb jdField_a_of_type_Atzb;
   String jdField_a_of_type_JavaLangString;
   private lkc jdField_a_of_type_Lkc;
   lkd jdField_a_of_type_Lkd;
@@ -23,7 +23,7 @@ public class lkh
   {
     if (this.jdField_a_of_type_Lkc == null)
     {
-      if (bdcb.d())
+      if (bdgk.d())
       {
         this.jdField_a_of_type_Lkc = new lkg();
         lek.e("AVMagicfacePlayer", "initDecoder| use [MagicfaceNormalDecoder]");
@@ -59,8 +59,8 @@ public class lkh
       this.jdField_a_of_type_Lkf = null;
       this.jdField_a_of_type_Lke = null;
       this.jdField_a_of_type_Lkd = null;
-      if ((paramlkf.a.src != null) && (!paramlkf.a.src.equals("")) && (this.jdField_a_of_type_Atus == null)) {
-        this.jdField_a_of_type_Atus = new atus();
+      if ((paramlkf.a.src != null) && (!paramlkf.a.src.equals("")) && (this.jdField_a_of_type_Atzb == null)) {
+        this.jdField_a_of_type_Atzb = new atzb();
       }
       this.jdField_a_of_type_Lkc.a(paramString);
       this.jdField_a_of_type_Lkc.a(paramlkf);
@@ -74,16 +74,16 @@ public class lkh
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Atus != null) {
-      this.jdField_a_of_type_Atus.a(paramString);
+    if (this.jdField_a_of_type_Atzb != null) {
+      this.jdField_a_of_type_Atzb.a(paramString);
     }
   }
   
   public void a(String paramString, int paramInt)
   {
     lek.c("AVMagicfacePlayer", "playSound soundSrc = " + paramString + ", loop = " + paramInt);
-    if (this.jdField_a_of_type_Atus != null) {
-      this.jdField_a_of_type_Atus.a(paramString, paramInt, 0);
+    if (this.jdField_a_of_type_Atzb != null) {
+      this.jdField_a_of_type_Atzb.a(paramString, paramInt, 0);
     }
   }
   

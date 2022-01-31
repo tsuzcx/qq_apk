@@ -1,14 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import java.util.List;
 
-class asrr
-  implements DialogInterface.OnClickListener
+public class asrr
+  implements aufz<T, List<FontBubble>>
 {
-  asrr(asrp paramasrp) {}
+  public asrr(FontBubblePanelView paramFontBubblePanelView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public List<FontBubble> a(T paramT)
   {
-    this.a.k();
+    paramT = FontBubblePanelView.a(this.a).a(FontBubblePanelView.a(this.a).a, paramT);
+    FontBubble localFontBubble = new FontBubble();
+    localFontBubble.viewType = 0;
+    paramT.add(localFontBubble);
+    return paramT;
   }
 }
 

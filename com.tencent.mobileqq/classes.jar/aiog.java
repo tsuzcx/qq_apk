@@ -1,23 +1,30 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aiog
-  implements MediaScanner.OnMediaInfoScannerListener
+public class aiog
+  extends Handler
 {
-  aiog(aiof paramaiof, Intent paramIntent, ArrayList paramArrayList) {}
+  public aiog(PhotoCropActivity paramPhotoCropActivity) {}
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    ((NewPhotoListActivity)this.jdField_a_of_type_Aiof.mActivity).cancleProgressDailog();
-    if (bnbf.a(this.jdField_a_of_type_Aiof.mActivity, paramLocalMediaInfo))
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-      PhotoUtils.a(this.jdField_a_of_type_Aiof.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
     }
+    do
+    {
+      return;
+      this.a.b();
+      this.a.a.sendMessageDelayed(Message.obtain(this.a.a, 1003), 10000L);
+      return;
+    } while (this.a.isFinishing());
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoCropActivity", 2, "LOADING_TIMEOUT");
+    }
+    PhotoCropActivity.a(this.a, 2131717759);
+    this.a.c();
   }
 }
 

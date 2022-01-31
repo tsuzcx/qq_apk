@@ -10,17 +10,17 @@ public class ogg
   
   public void onInstallProgress(float paramFloat)
   {
-    aanp.a("ReadInJoyArticleBottomVideoView", "installSDK onInstallProgress arg0=");
+    aase.a("ReadInJoyArticleBottomVideoView", "installSDK onInstallProgress arg0=");
   }
   
   public void onInstalledFailed(int paramInt)
   {
-    aanp.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledFailed arg0=");
+    aase.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledFailed arg0=");
   }
   
   public void onInstalledSuccessed()
   {
-    aanp.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledSuccessed");
+    aase.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledSuccessed");
     if ((ReadInJoyArticleBottomVideoView.b()) && (ReadInJoyArticleBottomVideoView.a(this.a) != null)) {
       ReadInJoyArticleBottomVideoView.a(this.a).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(this.a, 4));
     }

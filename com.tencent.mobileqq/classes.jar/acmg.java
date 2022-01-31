@@ -1,27 +1,32 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
+import mqq.os.MqqHandler;
 
 public class acmg
-  implements Animation.AnimationListener
+  extends alwx
 {
-  public acmg(ContactBindedActivity paramContactBindedActivity) {}
+  public acmg(ChatHistory paramChatHistory) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void b(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim end");
+    this.a.r();
+    if (!paramBoolean)
+    {
+      Message localMessage = this.a.a.obtainMessage(5);
+      this.a.a(localMessage);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  protected void c(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim start");
+    if (!paramBoolean)
+    {
+      localMessage = this.a.a.obtainMessage(3);
+      this.a.a(localMessage);
+      return;
     }
+    Message localMessage = this.a.a.obtainMessage(2);
+    this.a.a(localMessage);
   }
 }
 

@@ -9,7 +9,7 @@ public class rmd
   
   private int a(String paramString)
   {
-    return Math.round(((Float)bjxj.a(a(paramString), Float.valueOf(0.0F))).floatValue());
+    return Math.round(((Float)bkbq.a(a(paramString), Float.valueOf(0.0F))).floatValue());
   }
   
   private String a(String paramString)
@@ -61,11 +61,11 @@ public class rmd
   
   public void a(String paramString, int paramInt)
   {
-    float f = ((Float)bjxj.a(a(paramString), Float.valueOf(0.0F))).floatValue();
+    float f = ((Float)bkbq.a(a(paramString), Float.valueOf(0.0F))).floatValue();
     if (f > 0.0F) {}
     for (f = f * 0.5F + paramInt * 0.5F;; f = paramInt)
     {
-      bjxj.a(paramString + "_watch_length", Float.valueOf(f));
+      bkbq.a(paramString + "_watch_length", Float.valueOf(f));
       if (QLog.isColorLevel()) {
         QLog.d("VideoPreloadStrategyConoller", 2, "reoprt: currentPredition=" + f);
       }
@@ -83,7 +83,7 @@ public class rmd
       QLog.d("VideoPreloadStrategyConoller", 2, "checkPreloadEnable: bandwidth=" + l1 + ", birate=" + paramInt + ", weight=" + f + ", idleBandwidth=" + l2 + ", idleThreshold=" + i + ", enable=" + a("idle_preload_limit_enable"));
     }
     if ((l1 <= 50L) || (paramInt <= 0) || (!a("idle_preload_limit_enable"))) {
-      return bdee.h(BaseApplicationImpl.getContext());
+      return bdin.h(BaseApplicationImpl.getContext());
     }
     return l2 > i;
   }

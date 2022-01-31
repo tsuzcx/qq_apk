@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
-import awdc;
-import awdj;
+import awge;
+import awhl;
+import awhs;
 
 public class StoryVideoEntry
-  extends awbv
+  extends awge
 {
   public long addTime;
   public String address;
@@ -75,7 +75,7 @@ public class StoryVideoEntry
   public String sourceVid;
   public int storyType;
   public int strangerViewCount;
-  @awdc(a=2147483647)
+  @awhl(a=2147483647)
   public long timeZoneOffsetMillis;
   public int totalLikeNum;
   public int totalRateCount = -1;
@@ -83,7 +83,7 @@ public class StoryVideoEntry
   public int uncheckLikeNum;
   public String unionId;
   public int uploadStatus = -1;
-  @awdj
+  @awhs
   public String vid;
   public long videoBytes;
   public long videoDuration;

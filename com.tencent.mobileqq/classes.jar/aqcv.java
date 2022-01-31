@@ -1,19 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.pb.profilecard.EditExtendFriendInfo.SchoolInfo;
-
-final class aqcv
-  implements DialogInterface.OnClickListener
+public class aqcv
 {
-  aqcv(apwv paramapwv, EditExtendFriendInfo.SchoolInfo paramSchoolInfo) {}
+  public int a;
+  public String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aqcv()
   {
-    if (this.jdField_a_of_type_Apwv != null) {
-      this.jdField_a_of_type_Apwv.a(this.jdField_a_of_type_ComTencentPbProfilecardEditExtendFriendInfo$SchoolInfo);
-    }
-    azmj.b(null, "dc00898", "", "", "0X800ADA8", "0X800ADA8", 1, 0, "", "", "", "");
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

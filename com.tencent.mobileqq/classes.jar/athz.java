@@ -1,23 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Process;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
+import org.json.JSONObject;
 
 public class athz
-  extends BroadcastReceiver
+  implements QQPermissionCallback
 {
-  public athz(ListenTogetherManager paramListenTogetherManager) {}
+  public athz(MediaApiPlugin paramMediaApiPlugin, JSONObject paramJSONObject, boolean paramBoolean, BaseActivity paramBaseActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramIntent == null) {}
-    while (paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) {
-      return;
-    }
-    QLog.i("ListenTogether.Manager", 1, "onThemeChange.");
-    ListenTogetherManager.c(this.a);
+    QLog.d(MediaApiPlugin.a, 1, "User requestPermissions WRITE_EXTERNAL_STORAGE denied");
+    bdgm.a(this.jdField_a_of_type_MqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Boolean);
   }
 }
 

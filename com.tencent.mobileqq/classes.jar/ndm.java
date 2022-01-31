@@ -2,7 +2,7 @@ import com.tencent.mobileqq.data.OpenID;
 import com.tencent.qphone.base.util.QLog;
 
 public class ndm
-  extends alsi
+  extends alwx
 {
   protected void a(boolean paramBoolean, OpenID paramOpenID) {}
   

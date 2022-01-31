@@ -1,41 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class acwb
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public acwb(FriendProfileCardActivity paramFriendProfileCardActivity, String paramString, int paramInt) {}
+  public acwb(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.e("QVipProfileCard.FriendProfileCardActivity", 1, "set friend profile card click and aid=" + this.jdField_a_of_type_JavaLangString + " pay type=" + this.jdField_a_of_type_Int);
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 3: 
-    default: 
-      Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getApplicationContext(), 2131695635, 0).show();
-    }
-    for (;;)
-    {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "", "0X800A4C2", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.C();
-      return;
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, 1, this.jdField_a_of_type_JavaLangString);
-      continue;
-      VipUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, 1, this.jdField_a_of_type_JavaLangString);
-      continue;
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, false, 12, false, this.jdField_a_of_type_JavaLangString);
-      continue;
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, true, 12, false, this.jdField_a_of_type_JavaLangString);
-      continue;
-      bdqe.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_JavaLangString, "SVHHZLH", 0, false, false);
-      continue;
-      bdqe.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_JavaLangString, "SVHHZLH", 12, false, false);
-    }
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847428);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131704021));
+    this.a.jdField_a_of_type_Boolean = false;
   }
 }
 

@@ -1,8 +1,21 @@
-import android.os.Handler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qzone.share.QZoneShareActivity;
+import cooperation.qzone.share.QZoneShareActivity.22.1;
 
-public abstract interface bjrr
+public class bjrr
+  extends BroadcastReceiver
 {
-  public abstract void a(Handler paramHandler);
+  public bjrr(QZoneShareActivity paramQZoneShareActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ("com.tencent.qq.shareupdate".equals(paramIntent.getAction())) {
+      ThreadManager.postImmediately(new QZoneShareActivity.22.1(this), null, true);
+    }
+  }
 }
 
 

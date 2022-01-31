@@ -1,23 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.util.Pair;
-import cooperation.qqreader.net.BusinessTask;
+import android.os.Bundle;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
 
-public final class bixw
+class bixw
+  extends amfb
 {
-  public static final Pair<Integer, Integer> a = new Pair(Integer.valueOf(1154), Integer.valueOf(1));
-  public static final Pair<Integer, Integer> b = new Pair(Integer.valueOf(1529), Integer.valueOf(2));
-  public static final Pair<Integer, Integer> c = new Pair(Integer.valueOf(1201), Integer.valueOf(1));
+  bixw(bixv parambixv) {}
   
-  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull biwg parambiwg)
+  public void a()
   {
-    a(paramPair, parambiwg, false);
-  }
-  
-  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull biwg parambiwg, boolean paramBoolean)
-  {
-    paramPair = new BusinessTask("ZzConfigDataTask", paramPair);
-    paramPair.a(parambiwg, paramBoolean);
-    paramPair.a();
+    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 2, new Bundle());
   }
 }
 

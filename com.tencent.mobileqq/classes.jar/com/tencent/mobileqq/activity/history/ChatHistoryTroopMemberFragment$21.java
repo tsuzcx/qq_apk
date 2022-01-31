@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import ahxn;
+import aicc;
 import android.support.v4.app.FragmentActivity;
 
 public class ChatHistoryTroopMemberFragment$21
@@ -10,7 +10,7 @@ public class ChatHistoryTroopMemberFragment$21
   
   public void run()
   {
-    ChatHistoryTroopMemberFragment.a(this.this$0.getActivity().app, Long.valueOf(this.this$0.c).longValue(), new ahxn(this));
+    ChatHistoryTroopMemberFragment.a(this.this$0.getActivity().app, Long.valueOf(this.this$0.c).longValue(), new aicc(this));
   }
 }
 

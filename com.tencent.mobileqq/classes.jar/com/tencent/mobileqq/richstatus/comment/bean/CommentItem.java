@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richstatus.comment.bean;
 
-import ayab;
+import ayek;
 import java.io.Serializable;
 
 public class CommentItem
@@ -11,8 +11,8 @@ public class CommentItem
   public long id;
   public long targetId;
   public long timeStamp;
-  public ayab toReplyUser;
-  public ayab user;
+  public ayek toReplyUser;
+  public ayek user;
 }
 
 

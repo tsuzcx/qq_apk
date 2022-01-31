@@ -1,36 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.8.1;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.8.2;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.8.3;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
-class aibi
-  extends avqr
+public class aibi
+  extends ytz
 {
-  aibi(aiak paramaiak) {}
+  public aibi(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
-      }
+    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
+    while (!paramBoolean1) {
+      return;
     }
-    switch (paramInt)
+    ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryTroopFileFragment.8.1(this, paramInt1));
+    if (paramBoolean2)
     {
-    case 2: 
-    case 3: 
-    default: 
-      return;
-    case 0: 
-      this.a.g();
-      return;
-    case 1: 
-      this.a.g();
-      return;
-    case 4: 
-      this.a.g();
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new ChatHistoryTroopFileFragment.8.2(this), 1000L);
       return;
     }
-    this.a.g();
-    this.a.e();
-    this.a.f();
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new ChatHistoryTroopFileFragment.8.3(this), 1000L);
   }
 }
 

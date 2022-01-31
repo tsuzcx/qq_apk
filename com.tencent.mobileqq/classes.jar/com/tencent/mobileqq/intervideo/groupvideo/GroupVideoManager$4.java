@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import asvu;
+import atad;
 
 public class GroupVideoManager$4
   implements Runnable
 {
-  public GroupVideoManager$4(asvu paramasvu, boolean paramBoolean) {}
+  public GroupVideoManager$4(atad paramatad, boolean paramBoolean) {}
   
   public void run()
   {

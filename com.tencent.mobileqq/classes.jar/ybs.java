@@ -1,8 +1,28 @@
-import android.view.View;
+import org.json.JSONObject;
 
-public abstract interface ybs
+public class ybs
+  extends JSONObject
 {
-  public abstract void a(View paramView);
+  public ybs(ybq paramybq, String paramString)
+  {
+    super(paramString);
+  }
+  
+  public int getInt(String paramString)
+  {
+    if (!has(paramString)) {
+      return 0;
+    }
+    return super.getInt(paramString);
+  }
+  
+  public String getString(String paramString)
+  {
+    if (!has(paramString)) {
+      return "";
+    }
+    return super.getString(paramString);
+  }
 }
 
 

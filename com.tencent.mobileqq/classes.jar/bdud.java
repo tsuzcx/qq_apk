@@ -1,41 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.ApngImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bdud
-  extends Handler
+final class bdud
+  implements URLDrawable.URLDrawableListener
 {
-  public bdud(PathTraceManager paramPathTraceManager, Looper paramLooper)
+  bdud(int[] paramArrayOfInt) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super(paramLooper);
+    if (QLog.isColorLevel()) {
+      QLog.d("VasApngUtil", 2, "applyNormalPaster onLoadFialed");
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("VasApngUtil", 2, "urlDrawableListener onLoadSuccessed");
     }
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramMessage = (JSONObject)paramMessage.obj;
-        String str = paramMessage.getString("callback");
-        if (this.a.a != null)
-        {
-          bdtt localbdtt = (bdtt)this.a.a.get();
-          if (localbdtt != null)
-          {
-            localbdtt.callJs(str, new String[] { paramMessage.toString() });
-            return;
-          }
-        }
-      }
-      catch (Exception paramMessage) {}
+    paramURLDrawable = paramURLDrawable.getCurrDrawable();
+    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof ApngDrawable)) && (((ApngDrawable)paramURLDrawable).getImage() != null)) {
+      ApngImage.playByTag(this.a[0]);
     }
   }
 }

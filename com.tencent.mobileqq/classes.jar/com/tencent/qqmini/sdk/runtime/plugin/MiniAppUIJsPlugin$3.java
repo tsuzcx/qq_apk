@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgie;
-import bgkd;
+import bgml;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.runtime.util.ToastMessage;
 
 class MiniAppUIJsPlugin$3
   implements Runnable
 {
-  MiniAppUIJsPlugin$3(MiniAppUIJsPlugin paramMiniAppUIJsPlugin, bgkd parambgkd, String paramString, boolean paramBoolean) {}
+  MiniAppUIJsPlugin$3(MiniAppUIJsPlugin paramMiniAppUIJsPlugin, bgok parambgok, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ class MiniAppUIJsPlugin$3
     if (MiniAppUIJsPlugin.access$100(this.this$0) != null) {
       localToastMessage.b(MiniAppUIJsPlugin.access$500(this.this$0));
     }
-    MiniAppUIJsPlugin.access$102(this.this$0, bgie.a(MiniAppUIJsPlugin.access$600(this.this$0)).a());
+    MiniAppUIJsPlugin.access$102(this.this$0, bgml.a(MiniAppUIJsPlugin.access$600(this.this$0)).a());
     if (MiniAppUIJsPlugin.access$100(this.this$0) == null)
     {
       QMLog.w("MiniAppUIJsPlugin", "showLoading event=" + this.val$req.jdField_a_of_type_JavaLangString + "， top page not found");

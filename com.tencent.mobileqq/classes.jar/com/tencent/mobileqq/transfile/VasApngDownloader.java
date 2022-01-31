@@ -2,9 +2,9 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bamf;
-import bdvv;
-import bdvx;
+import baqo;
+import beae;
+import beag;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
@@ -18,7 +18,7 @@ import java.io.OutputStream;
 import java.net.URL;
 
 public class VasApngDownloader
-  extends bamf
+  extends baqo
 {
   public VasApngDownloader()
   {
@@ -86,9 +86,9 @@ public class VasApngDownloader
         QLog.e("vasapngdownloader", 2, "downloadImage url has no http err, url=" + paramOutputStream + ", path=" + paramURLDrawableHandler);
         return null;
       }
-      paramDownloadParams = new bdvv(paramOutputStream, localFile);
+      paramDownloadParams = new beae(paramOutputStream, localFile);
       paramDownloadParams.h = true;
-      i = bdvx.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
+      i = beag.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
       if (i == 0)
       {
         if (localFile.exists()) {

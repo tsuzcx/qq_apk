@@ -1,22 +1,8 @@
-import java.io.InputStream;
+import android.graphics.Bitmap;
 
-public class bfhx
+public abstract interface bfhx
 {
-  public int a;
-  public long a;
-  public InputStream a;
-  public String a;
-  public long b;
-  
-  public bfhx(String paramString, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      this.b = this.jdField_a_of_type_JavaLangString.length();
-    }
-  }
+  public abstract void a(String paramString1, Bitmap paramBitmap, String paramString2);
 }
 
 

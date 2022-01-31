@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
-import bdcs;
+import bdhb;
 import com.tencent.component.utils.preference.PreferenceManager;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -38,7 +38,7 @@ public class WeishiManager$3
       {
         if (this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(1)) != null)
         {
-          bdcs.a((byte[])this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(1)), this.this$0.b(), false);
+          bdhb.a((byte[])this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(1)), this.this$0.b(), false);
           Log.i("weishi-report", "save map passback length:" + ((byte[])this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(1))).length);
           Log.d("weishi-report", "save map passback:" + tlv.a((byte[])this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(1))));
         }

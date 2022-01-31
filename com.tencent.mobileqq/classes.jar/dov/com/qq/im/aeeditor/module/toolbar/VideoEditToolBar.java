@@ -6,9 +6,9 @@ import android.util.AttributeSet;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
-import bllf;
-import bllg;
-import bllh;
+import blpr;
+import blps;
+import blpt;
 
 public class VideoEditToolBar
   extends AEEditorToolBar
@@ -34,23 +34,23 @@ public class VideoEditToolBar
   {
     a(0, "clip", 2130837649);
     a(1, "text", 2130837650);
-    a(2, "music", 2130837668);
+    a(2, "music", 2130837669);
   }
   
   void a(String paramString)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Blld != null)
+    if (this.jdField_a_of_type_Blpp != null)
     {
       localObject1 = localObject2;
-      if ((this.jdField_a_of_type_Blld instanceof bllh)) {
-        localObject1 = (bllh)this.jdField_a_of_type_Blld;
+      if ((this.jdField_a_of_type_Blpp instanceof blpt)) {
+        localObject1 = (blpt)this.jdField_a_of_type_Blpp;
       }
     }
     if (paramString.equals("clip")) {
       if (localObject1 != null) {
-        ((bllh)localObject1).i();
+        ((blpt)localObject1).l();
       }
     }
     do
@@ -62,10 +62,10 @@ public class VideoEditToolBar
           break;
         }
       } while (localObject1 == null);
-      ((bllh)localObject1).n();
+      ((blpt)localObject1).q();
       return;
     } while ((!paramString.equals("music")) || (localObject1 == null));
-    ((bllh)localObject1).o();
+    ((blpt)localObject1).r();
   }
   
   public void a(boolean paramBoolean)
@@ -73,10 +73,10 @@ public class VideoEditToolBar
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean)
     {
-      a("music", 2130837667);
+      a("music", 2130837668);
       return;
     }
-    a("music", 2130837668);
+    a("music", 2130837669);
   }
   
   public void d()
@@ -86,7 +86,7 @@ public class VideoEditToolBar
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.setInterpolator(new DecelerateInterpolator());
     localAnimationSet.setDuration(350L);
-    localAnimationSet.setAnimationListener(new bllf(this));
+    localAnimationSet.setAnimationListener(new blpr(this));
     startAnimation(localAnimationSet);
   }
   
@@ -97,7 +97,7 @@ public class VideoEditToolBar
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.setInterpolator(new DecelerateInterpolator());
     localAnimationSet.setDuration(350L);
-    localAnimationSet.setAnimationListener(new bllg(this));
+    localAnimationSet.setAnimationListener(new blps(this));
     startAnimation(localAnimationSet);
   }
 }

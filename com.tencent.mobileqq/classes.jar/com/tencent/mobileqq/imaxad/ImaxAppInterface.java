@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.imaxad;
 
-import awbx;
+import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -29,7 +29,7 @@ public class ImaxAppInterface
     return getAccount();
   }
   
-  public awbx getEntityManagerFactory(String paramString)
+  public awgg getEntityManagerFactory(String paramString)
   {
     return null;
   }

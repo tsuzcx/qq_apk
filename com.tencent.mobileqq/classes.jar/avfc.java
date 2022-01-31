@@ -1,6 +1,16 @@
-public abstract interface avfc
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+
+public class avfc
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(avfd paramavfd, int paramInt);
+  public avfc(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

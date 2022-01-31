@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class ReportWatchVideoEntry
-  extends awbv
+  extends awge
 {
   public long createTime;
   public boolean isLiveVideo;
   public int source;
-  @awdj
+  @awhs
   public String vid;
   public int vidType;
   public String videoUnionId;

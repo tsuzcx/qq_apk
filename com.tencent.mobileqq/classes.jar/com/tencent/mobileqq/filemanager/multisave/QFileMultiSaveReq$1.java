@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.filemanager.multisave;
 
-import arlp;
-import arlq;
-import aroo;
+import arpy;
+import arpz;
+import arsx;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class QFileMultiSaveReq$1
   implements Runnable
 {
-  public QFileMultiSaveReq$1(arlp paramarlp, String paramString, arlq paramarlq) {}
+  public QFileMultiSaveReq$1(arpy paramarpy, String paramString, arpz paramarpz) {}
   
   public void run()
   {
     try
     {
-      boolean bool = aroo.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Arlq != null)
+      boolean bool = arsx.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Arpz != null)
       {
         if (bool)
         {
-          this.jdField_a_of_type_Arlq.a();
+          this.jdField_a_of_type_Arpz.a();
           return;
         }
-        this.jdField_a_of_type_Arlq.a(-1, "save file fail. filePath[" + this.jdField_a_of_type_JavaLangString + "]");
+        this.jdField_a_of_type_Arpz.a(-1, "save file fail. filePath[" + this.jdField_a_of_type_JavaLangString + "]");
         return;
       }
     }
     catch (Exception localException)
     {
-      if (this.jdField_a_of_type_Arlq != null) {
-        this.jdField_a_of_type_Arlq.a(-1, localException.getMessage());
+      if (this.jdField_a_of_type_Arpz != null) {
+        this.jdField_a_of_type_Arpz.a(-1, localException.getMessage());
       }
     }
   }

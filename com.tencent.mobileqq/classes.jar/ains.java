@@ -1,14 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
-class ains
+public class ains
   implements DialogInterface.OnClickListener
 {
-  ains(ainq paramainq, Runnable paramRunnable) {}
+  public ains(CameraPreviewActivity paramCameraPreviewActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    this.a.a = null;
   }
 }
 

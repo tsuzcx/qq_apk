@@ -1,44 +1,95 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogRsp;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtReq;
+import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.UUID;
 
-class bcuj
-  implements BusinessObserver
+public abstract class bcuj
 {
-  bcuj(bcui parambcui) {}
+  int jdField_a_of_type_Int;
+  bcug jdField_a_of_type_Bcug;
+  protected ITransactionCallback a;
+  protected Transaction a;
+  public String a;
+  protected boolean a;
+  protected String b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public bcuj(bcug parambcug, int paramInt)
   {
-    if (paramBoolean)
+    this.jdField_a_of_type_ComTencentMobileqqHighwayApiITransactionCallback = new bcuk(this);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
+    this.jdField_a_of_type_Bcug = parambcug;
+  }
+  
+  protected QQAppInterface a()
+  {
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    return null;
+  }
+  
+  public abstract void a();
+  
+  protected boolean a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadPic path= " + paramString);
+    }
+    ITransactionCallback localITransactionCallback = this.jdField_a_of_type_ComTencentMobileqqHighwayApiITransactionCallback;
+    QQAppInterface localQQAppInterface = a();
+    String str = localQQAppInterface.c();
+    byte[] arrayOfByte;
+    if (localQQAppInterface != null)
     {
-      paramBundle = paramBundle.getByteArray("extra_data");
-      if (paramBundle == null) {}
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        RemoteDebugReportMsg.RemoteLogRsp localRemoteLogRsp = new RemoteDebugReportMsg.RemoteLogRsp();
-        localRemoteLogRsp.mergeFrom(paramBundle);
-        if (localRemoteLogRsp.i32_ret.has())
-        {
-          paramInt = localRemoteLogRsp.i32_ret.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("UnifiedDebugReporter", 2, "onReceive: retCode=" + paramInt);
-          }
-        }
-        return;
+      arrayOfByte = amzy.a(paramString);
+      if (arrayOfByte != null) {
+        break label83;
       }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("UnifiedDebugReporter", 2, "onReceive: exception=" + paramBundle.getMessage());
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadPic md5 null ");
       }
     }
-    QLog.e("UnifiedDebugReporter", 2, "onReceive: isSuccess=" + paramBoolean);
+    label83:
+    int i;
+    do
+    {
+      return false;
+      Bdh_extinfo.CommFileExtReq localCommFileExtReq = new Bdh_extinfo.CommFileExtReq();
+      localCommFileExtReq.uint32_action_type.set(0);
+      localCommFileExtReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
+      paramString = new Transaction(str, 75, paramString, 0, arrayOfByte, localITransactionCallback, localCommFileExtReq.toByteArray(), false);
+      i = localQQAppInterface.getHwEngine().submitTransactionTask(paramString);
+      if (i == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = paramString;
+        return true;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadPic submitTransactionTask  retCode= " + i);
+    return false;
+  }
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onFailed ");
+    }
+    c();
+    d();
   }
 }
 

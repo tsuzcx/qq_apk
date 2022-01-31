@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.ui.dashboard;
 
-import bksv;
+import bkxc;
 import java.util.List;
 
 public final class AEDashboardUtil$3
   implements Runnable
 {
-  public AEDashboardUtil$3(bksv parambksv, List paramList1, List paramList2) {}
+  public AEDashboardUtil$3(bkxc parambkxc, List paramList1, List paramList2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bksv.a(this.jdField_a_of_type_JavaUtilList, this.b);
+    this.jdField_a_of_type_Bkxc.a(this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

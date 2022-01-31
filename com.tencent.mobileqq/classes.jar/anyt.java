@@ -1,47 +1,40 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Parcel;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class anyt
-  implements anyn
+  implements BusinessObserver
 {
-  private String a = "ReadInJoyLauncher";
+  public void a(boolean paramBoolean) {}
   
-  public void a(Context paramContext, ColorNote paramColorNote)
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void b(boolean paramBoolean, String paramString) {}
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramColorNote = paramColorNote.getReserve();
-    if (paramColorNote == null) {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      paramInt = paramBundle.getInt("resp_result", 0);
+      b(paramBoolean, paramBundle.getString("key_card_id"), paramInt);
+      return;
+    case 2: 
+      b(paramBoolean, paramBundle.getString("key_card_id"));
+      return;
+    case 3: 
+      a(paramBoolean, paramBundle.getString("key_card_id"));
+      return;
+    case 4: 
+      a(paramBoolean);
       return;
     }
-    try
-    {
-      Parcel localParcel = Parcel.obtain();
-      localParcel.unmarshall(paramColorNote, 0, paramColorNote.length);
-      localParcel.setDataPosition(0);
-      paramColorNote = new ArticleInfo(localParcel);
-      if (paramColorNote == null)
-      {
-        QLog.d(this.a, 2, "init color error something is null");
-        return;
-      }
-    }
-    catch (Exception paramColorNote)
-    {
-      for (;;)
-      {
-        QLog.e(this.a, 2, "unmarshall error");
-        paramColorNote.printStackTrace();
-        paramColorNote = null;
-      }
-      QLog.d(this.a, 2, "articleInfo From ColorNote :\n" + paramColorNote.toString());
-      paramColorNote = osb.b(paramContext, paramColorNote);
-      paramColorNote.addFlags(268435456);
-      paramColorNote.putExtra("from_color_note", true);
-      paramContext.startActivity(paramColorNote);
-    }
+    a(paramBoolean, paramBundle.getString("key_card_id"), paramBundle.getInt("key_get_detail_type"));
   }
 }
 

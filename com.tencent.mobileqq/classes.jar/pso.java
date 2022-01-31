@@ -16,7 +16,7 @@ public class pso
   public pso(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.mNative.setBackgroundColor(paramVafContext.getContext().getResources().getColor(2131167138));
+    this.mNative.setBackgroundColor(paramVafContext.getContext().getResources().getColor(2131167140));
   }
   
   private String a(String paramString1, String paramString2)

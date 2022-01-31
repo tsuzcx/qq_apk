@@ -1,87 +1,56 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
-import android.widget.ImageView;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.baseutils.log.LogUtils;
+import java.util.HashMap;
 
-public class yxv
-  extends RecyclerView.ViewHolder
+public final class yxv
 {
-  private final View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private boolean jdField_a_of_type_Boolean;
-  private View b;
+  private static Pair<String, Long> a;
+  public static HashMap<String, Long> a;
   
-  public yxv(yxs paramyxs, View paramView)
+  static
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368902));
-    this.b = paramView.findViewById(2131366451);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370863);
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  private RotateAnimation a()
+  public static boolean a(@NonNull String paramString)
   {
-    RotateAnimation localRotateAnimation = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
-    localRotateAnimation.setDuration(3000L);
-    localRotateAnimation.setInterpolator(new LinearInterpolator());
-    localRotateAnimation.setRepeatCount(-1);
-    return localRotateAnimation;
-  }
-  
-  public void a()
-  {
-    a(true);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    if ((jdField_a_of_type_AndroidUtilPair != null) && (TextUtils.equals(paramString, (CharSequence)jdField_a_of_type_AndroidUtilPair.first))) {}
+    long l;
+    for (Long localLong = (Long)jdField_a_of_type_AndroidUtilPair.second;; localLong = null)
     {
-      if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 8) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      l = SystemClock.elapsedRealtime();
+      if ((localLong == null) || (l - localLong.longValue() >= 1000L)) {
+        break;
       }
-      if (this.b.getVisibility() == 8) {
-        this.b.setVisibility(0);
-      }
+      LogUtils.w("FastClickUtils", "fast click ,tag  = " + paramString + ", intervalTime = " + (l - localLong.longValue()));
+      return true;
     }
-    while (this.b.getVisibility() != 0) {
-      return;
-    }
-    this.b.setVisibility(8);
+    jdField_a_of_type_AndroidUtilPair = new Pair(paramString, Long.valueOf(l));
+    return false;
   }
   
-  public void b()
+  public static boolean a(@NonNull String paramString, long paramLong)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
+    long l = SystemClock.elapsedRealtime();
+    if (jdField_a_of_type_JavaUtilHashMap == null) {
+      jdField_a_of_type_JavaUtilHashMap = new HashMap();
     }
-    while (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public void c()
-  {
-    b(true);
-  }
-  
-  public void d()
-  {
-    if (!this.jdField_a_of_type_Boolean)
+    Long localLong = (Long)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (localLong != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(a());
-      this.jdField_a_of_type_Boolean = true;
+      if (jdField_a_of_type_JavaUtilHashMap.size() > 10) {
+        jdField_a_of_type_JavaUtilHashMap.clear();
+      }
+      jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(l));
+      QLog.d("FastClickUtils", 4, "fast click ,tag  = " + paramString + ", currentTime = " + l + " lastTime" + localLong + " intervalTime = " + (l - localLong.longValue()));
+      return l - localLong.longValue() < paramLong;
     }
+    jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(l));
+    return false;
   }
 }
 

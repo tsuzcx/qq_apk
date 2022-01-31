@@ -1,272 +1,149 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.search.UinSearcher.1.3;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import PersonalState.UserProfile;
+import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richstatus.StatusManager.3.1;
+import com.tencent.mobileqq.richstatus.StatusManager.3.2;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import mqq.util.WeakReference;
-import pb.unite.search.DynamicTabSearch.SubHotWord;
+import java.util.LinkedList;
+import mqq.os.MqqHandler;
 
 public class ayef
-  extends amao
+  extends ayeh
 {
-  ayef(ayee paramayee) {}
+  ayef(ayec paramayec) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2, int paramInt, String paramString3, long[] paramArrayOfLong)
+  @TargetApi(9)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    ThreadManager.getSubThreadHandler().post(new StatusManager.3.1(this, paramBoolean, paramBundle));
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("UinSearcher", 2, "Unify handleTabSearchError.  resultCode=" + paramInt + " errorMsg=" + paramString3);
+      QLog.d("Q.richstatus.shuo", 2, "onGetSyncShuoshuo " + paramBoolean1 + ", " + paramBoolean2);
     }
-    try
+    label83:
+    aybu localaybu;
+    if (paramBoolean1)
     {
-      if (ayee.a(this.a) != null)
-      {
-        ayee.a(this.a).dismiss();
-        ayee.a(this.a);
-      }
-      if ((!ActiveEntitySearchFragment.a(ayee.a(this.a), paramArrayOfLong)) || (!paramString1.equals(ayee.a(this.a))))
-      {
-        QLog.d("UinSearcher", 2, "Unify handleTabSearchError.  reqKeyword=" + paramString1 + " keyword=" + ayee.a(this.a));
+      ayec.c(this.a, 0L);
+      ayec.a(this.a, paramBoolean2);
+      if (ayec.b(this.a) == null) {
         return;
       }
-    }
-    catch (RuntimeException paramString2)
-    {
-      for (;;)
-      {
-        QLog.e("UinSearcher", 1, paramString2, new Object[0]);
+      Iterator localIterator = ayec.b(this.a).iterator();
+      if (!localIterator.hasNext()) {
+        return;
       }
-      QQToast.a(BaseApplicationImpl.context, 0, 2131721180, 0).a();
+      localaybu = (aybu)localIterator.next();
+      if (!paramBoolean1) {
+        break label162;
+      }
+    }
+    label162:
+    for (int i = 100;; i = -1)
+    {
+      localaybu.a(i, paramBoolean2);
+      break label83;
+      ayec.c(this.a, System.currentTimeMillis() - 180000L + 60000L);
+      paramBoolean2 = ayec.b(this.a).getBoolean("k_sync_ss", false);
+      break;
     }
   }
   
-  public void a(String paramString1, boolean paramBoolean1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean2, List<ayjk> paramList, long[] paramArrayOfLong, String paramString3, List<DynamicTabSearch.SubHotWord> paramList1, boolean paramBoolean3, String paramString4)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, byte[] paramArrayOfByte, ArrayList<UserProfile> paramArrayList)
   {
-    if (!TextUtils.equals(paramString2, ayee.b(this.a))) {
-      QLog.d("UinSearcher", 2, "Unify handleTabSearchResult. reqKeyword=" + paramString1 + " keyword=" + ayee.a(this.a) + " reqTime=" + paramString2 + " lastReqTime=" + ayee.b(this.a) + " isEnd1=" + paramBoolean2);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.mate", 2, "onGetStatusMate " + paramBoolean1 + " " + paramBoolean2 + " " + paramInt + " " + paramArrayList.size());
     }
-    label768:
-    label806:
-    label837:
-    label1228:
-    label1233:
-    label1239:
-    label1258:
-    label1266:
-    label1401:
-    do
+    if (paramBoolean1) {
+      ayec.a(this.a, paramArrayOfByte);
+    }
+    for (;;)
     {
-      return;
-      paramString3 = (Context)ayee.a(this.a).get();
-      paramList1 = (QQAppInterface)ayee.b(this.a).get();
-      try
-      {
-        if (ayee.a(this.a) != null)
+      if (paramBoolean1) {
+        if (paramBoolean2)
         {
-          ayee.a(this.a).dismiss();
-          ayee.a(this.a);
-        }
-        if ((paramString3 == null) || (paramList1 == null))
-        {
-          QLog.e("UinSearcher", 1, "Unify handleTabSearchResult, fragment is detached ..., reqKeyword=" + paramString1 + " keyword=" + ayee.a(this.a) + " reqTime=" + paramString2 + " lastReqTime=" + ayee.b(this.a) + " isEnd1=" + paramBoolean2);
-          return;
+          if (ayec.a(this.a) != null)
+          {
+            ayec.a(this.a, paramArrayList);
+            return;
+            if (!paramBoolean2) {
+              continue;
+            }
+            ayec.a(this.a, null);
+            continue;
+          }
+          if (ayec.b(this.a) == null) {
+            ayec.b(this.a, new ArrayList());
+          }
+          paramArrayOfByte = this.a.a(ayec.b(this.a), paramArrayList, paramInt);
         }
       }
-      catch (RuntimeException paramArrayOfByte)
+    }
+    for (;;)
+    {
+      label165:
+      if ((ayec.a(this.a) != null) && (ayec.a(this.a).length > 0)) {}
+      for (boolean bool = true;; bool = false)
       {
-        for (;;)
-        {
-          QLog.e("UinSearcher", 1, paramArrayOfByte, new Object[0]);
+        if (ayec.c(this.a) == null) {
+          break label264;
         }
-        if ((!ActiveEntitySearchFragment.a(ayee.a(this.a), paramArrayOfLong)) || (!paramString1.equals(ayee.a(this.a))))
-        {
-          QLog.d("UinSearcher", 2, "Unify handleTabSearchResult.  reqKeyword=" + paramString1 + " keyword=" + ayee.a(this.a) + " isEnd1=" + paramBoolean2);
-          return;
+        paramArrayList = ayec.c(this.a).iterator();
+        while (paramArrayList.hasNext()) {
+          ((aybt)paramArrayList.next()).a(paramBoolean1, paramBoolean2, paramInt, paramArrayOfByte, bool);
         }
-        paramArrayOfLong = new ayij[1];
-        paramString4 = new ayij[1];
-        ayee.a(this.a, 4);
-        bhpy localbhpy = bhpy.a(paramString3);
-        ayeg localayeg = new ayeg(this, paramString3, paramString1, paramList1, paramArrayOfLong, paramString4, localbhpy);
-        ayeh localayeh = new ayeh(this, paramList1);
-        paramString2 = (aloz)paramList1.getManager(51);
-        if (paramList == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("UinSearcher", 2, "Unify handleTabSearchResult result is null");
-          }
-          localbhpy.a(String.format(paramString3.getString(2131694909), new Object[] { ayee.a(this.a) }));
-          localbhpy.a(2131691360, 1, 2131362243);
-          localbhpy.a(2131692400, 1, 2131362244);
-          localbhpy.a(2131691699, 1, 2131362242);
-          localbhpy.a(2131689686, 1, 2131362240);
-          if ((!ayee.a(this.a).isSend()) && (!ayee.a(this.a).senderuin.equals(paramList1.getCurrentAccountUin())) && (paramString2.b(ayee.a(this.a).senderuin))) {
-            localbhpy.a(2131689696, 1, 2131362241);
-          }
-          localbhpy.c(2131690648);
-          localbhpy.a(localayeg);
-          localbhpy.a(localayeh);
-          localbhpy.show();
-          azmj.b(paramList1, "dc00898", "", "", "0X800A923", "0X800A923", ayee.a(paramList1, ayee.b(this.a), ayee.d(this.a)), 0, "", "", "", "");
-          return;
-        }
-        paramArrayOfByte = aydw.a(paramList, paramBoolean1, false).iterator();
-        while (paramArrayOfByte.hasNext())
-        {
-          paramList = (ayjj)paramArrayOfByte.next();
-          if ((paramList instanceof ayij)) {
-            if (((ayij)paramList).d() == 1001) {
-              paramArrayOfLong[0] = ((ayij)paramList);
-            } else if (((ayij)paramList).d() == 1002) {
-              paramString4[0] = ((ayij)paramList);
-            }
-          }
-        }
-        int i;
-        if (QLog.isColorLevel())
-        {
-          paramArrayOfByte = new StringBuilder().append("search result: person is null=");
-          if (paramArrayOfLong[0] == null)
-          {
-            paramBoolean1 = true;
-            paramArrayOfByte = paramArrayOfByte.append(paramBoolean1).append(", troop is null=");
-            if (paramString4[0] != null) {
-              break label1228;
-            }
-            paramBoolean1 = true;
-            QLog.d("UinSearcher", 2, paramBoolean1);
-          }
-        }
-        else
-        {
-          paramArrayOfByte = this.a;
-          if (paramArrayOfLong[0] != null) {
-            break label1239;
-          }
-          if (paramString4[0] != null) {
-            break label1233;
-          }
-          i = 4;
-          ayee.a(paramArrayOfByte, i);
-          i = 2131694909;
-          if (paramString4[0] == null) {
-            break label1266;
-          }
-          if (paramArrayOfLong[0] != null) {
-            break label1258;
-          }
-          i = 2131721112;
-          localbhpy.a(String.format(paramString3.getString(i), new Object[] { paramString1 }));
-          localbhpy.a(2131691360, 1, 2131362243);
-          localbhpy.a(2131692400, 1, 2131362244);
-          localbhpy.a(2131691699, 1, 2131362242);
-          localbhpy.a(2131689686, 1, 2131362240);
-          if ((!ayee.a(this.a).isSend()) && (!ayee.a(this.a).senderuin.equals(paramList1.getCurrentAccountUin())) && (paramString2.b(ayee.a(this.a).senderuin))) {
-            localbhpy.a(2131689696, 1, 2131362241);
-          }
-          paramList = (aosc)aogj.a().a(589);
-          if (paramArrayOfLong[0] != null)
-          {
-            if (paramString2.b(paramString1)) {
-              break label1296;
-            }
-            if ((TextUtils.isEmpty(paramArrayOfLong[0].c)) || (!paramList.a())) {
-              break label1281;
-            }
-            localbhpy.a(paramString3.getString(2131689648) + "\n" + paramArrayOfLong[0].c, 65537, 2131362239);
-          }
-          if (paramString4[0] != null)
-          {
-            if (TroopInfo.isTroopMember(paramList1, paramString1)) {
-              break label1416;
-            }
-            if ((TextUtils.isEmpty(paramString4[0].c)) || (!paramList.a())) {
-              break label1401;
-            }
-            localbhpy.a(paramString3.getString(2131693805) + "\n" + paramString4[0].c, 65537, 2131362245);
-          }
-        }
-        for (;;)
-        {
-          localbhpy.c(2131690648);
-          localbhpy.a(localayeg);
-          localbhpy.a(localayeh);
-          try
-          {
-            if ((!(paramString3 instanceof Activity)) || (((Activity)paramString3).isFinishing())) {
-              break label1503;
-            }
-            ThreadManagerV2.getUIHandlerV2().post(new UinSearcher.1.3(this, localbhpy, paramArrayOfLong, paramString4, paramList, paramList1));
-            return;
-          }
-          catch (RuntimeException paramString1)
-          {
-            QLog.e("UinSearcher", 1, paramString1, new Object[0]);
-            return;
-          }
-          paramBoolean1 = false;
-          break;
-          paramBoolean1 = false;
-          break label768;
-          i = 2;
-          break label806;
-          if (paramString4[0] == null)
-          {
-            i = 1;
-            break label806;
-          }
-          i = 3;
-          break label806;
-          i = 2131694908;
-          break label837;
-          if (paramArrayOfLong[0] == null) {
-            break label837;
-          }
-          i = 2131694908;
-          break label837;
-          localbhpy.a(2131689648, 1, 2131362239);
-          break label1059;
-          paramString2 = null;
-          if (paramList.a())
-          {
-            paramArrayOfByte = bdbt.b(paramList1, paramString1, false);
-            paramString2 = paramArrayOfByte;
-            if (TextUtils.isEmpty(paramArrayOfByte)) {
-              paramString2 = paramArrayOfLong[0].c;
-            }
-          }
-          if (!TextUtils.isEmpty(paramString2))
-          {
-            localbhpy.a(paramString3.getString(2131695053) + "\n" + paramString2, 65537, 2131362246);
-            break label1059;
-          }
-          localbhpy.a(2131695053, 1, 2131362246);
-          break label1059;
-          localbhpy.a(2131693805, 1, 2131362245);
-          continue;
-          if ((!TextUtils.isEmpty(paramString4[0].c)) && (paramList.a())) {
-            localbhpy.a(paramString3.getString(2131695077) + "\n" + paramString4[0].c, 65537, 2131362247);
-          } else {
-            localbhpy.a(2131695077, 1, 2131362247);
-          }
-        }
+        break;
+        paramArrayOfByte = this.a.a(paramArrayList);
+        break label165;
       }
-    } while (ayee.a(this.a) == null);
-    label1059:
-    label1503:
-    ayee.a(this.a).dismiss();
-    label1281:
-    label1296:
-    return;
+      label264:
+      break;
+      paramArrayOfByte = paramArrayList;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Bundle paramBundle)
+  {
+    ThreadManager.getSubThreadHandler().post(new StatusManager.3.2(this, paramBoolean));
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.shuo", 2, "onSetSyncShuoshuo " + paramBoolean1 + ", " + paramBoolean2);
+    }
+    label74:
+    aybu localaybu;
+    if (paramBoolean1)
+    {
+      ayec.a(this.a, paramBoolean2);
+      if (ayec.b(this.a) == null) {
+        return;
+      }
+      Iterator localIterator = ayec.b(this.a).iterator();
+      if (!localIterator.hasNext()) {
+        return;
+      }
+      localaybu = (aybu)localIterator.next();
+      if (!paramBoolean1) {
+        break label134;
+      }
+    }
+    label134:
+    for (int i = 100;; i = -1)
+    {
+      localaybu.b(i, paramBoolean2);
+      break label74;
+      paramBoolean2 = ayec.b(this.a).getBoolean("k_sync_ss", false);
+      break;
+    }
   }
 }
 

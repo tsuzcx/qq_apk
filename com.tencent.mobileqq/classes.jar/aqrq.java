@@ -1,25 +1,35 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class aqrq
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  aqrq(aqrp paramaqrp, long paramLong, UUID paramUUID, Activity paramActivity) {}
+  aqrq(aqrp paramaqrp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    aeqi localaeqi = (aeqi)aepi.a(paramView);
+    int i;
+    ChatMessage localChatMessage;
+    if (localaeqi != null)
     {
-    default: 
-      return;
-    case 0: 
-      TroopFileTransferManager.a(this.jdField_a_of_type_Aqrp.a, this.jdField_a_of_type_Long).a(this.jdField_a_of_type_JavaUtilUUID);
-      return;
+      i = -1;
+      localChatMessage = arrr.a(localaeqi.a);
+      if (!this.a.a(localChatMessage)) {
+        break label50;
+      }
+      i = 0;
     }
-    new bboe(this.jdField_a_of_type_Long, this.jdField_a_of_type_Aqrp.a, this.jdField_a_of_type_AndroidAppActivity).b(this.jdField_a_of_type_JavaUtilUUID);
+    for (;;)
+    {
+      this.a.a(paramView, localaeqi, localChatMessage, i);
+      return;
+      label50:
+      if (this.a.b(localChatMessage)) {
+        i = 1;
+      }
+    }
   }
 }
 

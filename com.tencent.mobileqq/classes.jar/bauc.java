@@ -1,11 +1,11 @@
 public class bauc
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public byte[] a = new byte[16];
+  
+  bauc(byte[] paramArrayOfByte)
+  {
+    this.a = paramArrayOfByte;
+  }
 }
 
 

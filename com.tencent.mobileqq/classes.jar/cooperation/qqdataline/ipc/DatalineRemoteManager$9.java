@@ -1,17 +1,17 @@
 package cooperation.qqdataline.ipc;
 
 import android.os.Bundle;
-import biqi;
+import biup;
 import java.util.ArrayList;
 
 public class DatalineRemoteManager$9
   implements Runnable
 {
-  public DatalineRemoteManager$9(biqi parambiqi, Bundle paramBundle) {}
+  public DatalineRemoteManager$9(biup parambiup, Bundle paramBundle) {}
   
   public void run()
   {
-    biqi.a(this.this$0, this.a);
+    biup.a(this.this$0, this.a);
     this.this$0.a.add(this.a);
   }
 }

@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.OverloadTipsActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class adhp
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public adhp(OverloadTipsActivity paramOverloadTipsActivity) {}
+  public adhp(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.finish();
+    LoginInfoActivity.b(this.a).setVisibility(4);
+    LoginInfoActivity.b(this.a).clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

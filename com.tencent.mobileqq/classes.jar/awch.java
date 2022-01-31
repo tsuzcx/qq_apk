@@ -1,20 +1,12 @@
-import android.content.ContentValues;
-import android.database.Cursor;
+import android.net.Uri;
 
-public abstract class awch
+public abstract interface awch
 {
-  public int a;
-  public boolean a;
-  
-  public abstract awbv a(awbv paramawbv, Cursor paramCursor, boolean paramBoolean, awcg paramawcg);
-  
-  public abstract String a(String paramString);
-  
-  public abstract void a(awbv paramawbv, ContentValues paramContentValues);
+  public abstract void a(Uri paramUri);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awch
  * JD-Core Version:    0.7.0.1
  */

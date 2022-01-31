@@ -7,15 +7,15 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
-import bebk;
-import bedf;
-import biij;
-import bijh;
-import bijk;
-import bijl;
-import bijm;
-import bijw;
-import bijy;
+import beft;
+import beho;
+import bimq;
+import bino;
+import binr;
+import bins;
+import bint;
+import biod;
+import biof;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
@@ -33,7 +33,7 @@ import org.json.JSONObject;
 public class QQComicFragment
   extends WebViewFragment
 {
-  private bijh a;
+  private bino a;
   
   public static WebViewFragment a(Intent paramIntent)
   {
@@ -52,20 +52,20 @@ public class QQComicFragment
       try
       {
         localObject2 = new URL((String)localObject2);
-        biij.c = ((URL)localObject2).getPath().substring(((URL)localObject2).getPath().lastIndexOf("/") + 1);
-        biij.a = i + "";
-        if ((TextUtils.isEmpty(biij.a)) || ("NULL".equalsIgnoreCase(biij.a))) {
+        bimq.c = ((URL)localObject2).getPath().substring(((URL)localObject2).getPath().lastIndexOf("/") + 1);
+        bimq.a = i + "";
+        if ((TextUtils.isEmpty(bimq.a)) || ("NULL".equalsIgnoreCase(bimq.a))) {
           QLog.e("WebLog_WebViewFragment", 1, "[webFragment] from is null");
         }
         for (;;)
         {
-          biij.b = paramIntent.getStringExtra("reportActionFrom");
-          biij.a();
+          bimq.b = paramIntent.getStringExtra("reportActionFrom");
+          bimq.a();
           return localObject1;
           localObject1 = new QQComicFragment();
           break;
           if (QLog.isColorLevel()) {
-            QLog.d("WebLog_WebViewFragment", 2, "[webFragment] from is " + biij.a);
+            QLog.d("WebLog_WebViewFragment", 2, "[webFragment] from is " + bimq.a);
           }
         }
         return localObject1;
@@ -74,23 +74,23 @@ public class QQComicFragment
     }
   }
   
-  public bedf a()
+  public beho a()
   {
-    return new bedf(this, 127, new bijm(this));
+    return new beho(this, 127, new bint(this));
   }
   
-  public bijh a()
+  public bino a()
   {
-    if (this.jdField_a_of_type_Bijh != null) {
-      return this.jdField_a_of_type_Bijh;
+    if (this.jdField_a_of_type_Bino != null) {
+      return this.jdField_a_of_type_Bino;
     }
     if ((getWebView() != null) && (getWebView().getPluginEngine() != null))
     {
       WebViewPlugin localWebViewPlugin = getWebView().getPluginEngine().a("comic");
-      if ((localWebViewPlugin instanceof bijh))
+      if ((localWebViewPlugin instanceof bino))
       {
-        this.jdField_a_of_type_Bijh = ((bijh)localWebViewPlugin);
-        return this.jdField_a_of_type_Bijh;
+        this.jdField_a_of_type_Bino = ((bino)localWebViewPlugin);
+        return this.jdField_a_of_type_Bino;
       }
     }
     return null;
@@ -105,21 +105,21 @@ public class QQComicFragment
   {
     super.a(paramWebView, paramString);
     QLog.d("WebLog_WebViewFragment", 4, "QQComicFragment onPageFinished ");
-    if (bijy.a != null)
+    if (biof.a != null)
     {
       QLog.d("WebLog_WebViewFragment", 4, "QQComicPluginBridge sFirstInObservable is not null ");
-      bijy.a.a(paramWebView.getContext());
+      biof.a.a(paramWebView.getContext());
     }
-    bijy.b(new bijl(this, paramWebView));
+    biof.b(new bins(this, paramWebView));
   }
   
   public String[] a()
   {
     String[] arrayOfString = new String[4];
     Object localObject = a();
-    if ((localObject != null) && (((bijh)localObject).jdField_a_of_type_Bijk != null))
+    if ((localObject != null) && (((bino)localObject).jdField_a_of_type_Binr != null))
     {
-      localObject = ((bijh)localObject).jdField_a_of_type_Bijk.a();
+      localObject = ((bino)localObject).jdField_a_of_type_Binr.a();
       if (localObject != null)
       {
         arrayOfString[0] = ((String)((HashMap)localObject).get("page_id"));
@@ -132,24 +132,24 @@ public class QQComicFragment
   
   public boolean g()
   {
-    bijh localbijh = a();
+    bino localbino = a();
     JSONObject localJSONObject1;
-    if (localbijh != null)
+    if (localbino != null)
     {
-      localbijh = (bijh)localbijh;
+      localbino = (bino)localbino;
       localJSONObject1 = new JSONObject();
     }
     try
     {
       JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("status", localbijh.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      localJSONObject2.put("status", localbino.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
       localJSONObject1.put("data", localJSONObject2);
       label52:
       if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "notifySecretModeChange. status=" + localbijh.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+        QLog.d("WebLog_WebViewFragment", 2, "notifySecretModeChange. status=" + localbino.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
       }
-      if (!TextUtils.isEmpty(localbijh.b)) {
-        getWebView().callJs(localbijh.b, new String[] { localJSONObject1.toString() });
+      if (!TextUtils.isEmpty(localbino.b)) {
+        getWebView().callJs(localbino.b, new String[] { localJSONObject1.toString() });
       }
       return true;
     }
@@ -161,9 +161,9 @@ public class QQComicFragment
   
   public void onClick(View paramView)
   {
-    if (((paramView == this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.jdField_a_of_type_Bebk.d)) && (this.jdField_a_of_type_Bebk.jdField_a_of_type_Boolean))
+    if (((paramView == this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.jdField_a_of_type_Beft.d)) && (this.jdField_a_of_type_Beft.jdField_a_of_type_Boolean))
     {
-      this.jdField_a_of_type_Bebk.d(false);
+      this.jdField_a_of_type_Beft.d(false);
       if ((this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp() != null)) {
         this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp().getSharedPreferences("boodo_" + this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getCurrentAccountUin(), 0).edit().putBoolean("private_read_red_dot", true).apply();
       }
@@ -178,16 +178,16 @@ public class QQComicFragment
     if ((paramBundle instanceof Intent)) {
       getActivity().setResult(0, (Intent)paramBundle);
     }
-    biij.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    biij.a(a());
+    bimq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    bimq.a(a());
   }
   
   public void onStop()
   {
     super.onStop();
-    bijh localbijh = a();
-    if (localbijh != null) {
-      localbijh.a();
+    bino localbino = a();
+    if (localbino != null) {
+      localbino.a();
     }
   }
 }

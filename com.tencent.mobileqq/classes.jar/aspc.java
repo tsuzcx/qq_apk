@@ -1,13 +1,63 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface aspc
+public class aspc
+  extends WebViewPlugin
 {
-  public abstract void a(Animation paramAnimation);
+  public static String a = "QQGameWebViewJsPlugin";
   
-  public abstract void a(HeartLayout paramHeartLayout, float paramFloat1, float paramFloat2);
+  public aspc()
+  {
+    this.mPluginNameSpace = a;
+  }
   
-  public abstract void b(Animation paramAnimation);
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    super.handleEvent(paramString, paramLong, paramMap);
+    if (paramLong == 8589934621L)
+    {
+      paramString = new JSONObject();
+      if (paramMap != null) {}
+      try
+      {
+        paramString.put("action", paramMap.get("action"));
+        if (paramMap.containsKey("height")) {
+          paramString.put("height", paramMap.get("height"));
+        }
+        if (paramMap.containsKey("index")) {
+          paramString.put("index", paramMap.get("index"));
+        }
+        if (paramMap.containsKey("gameData")) {
+          paramString.put("gameData", paramMap.get("gameData"));
+        }
+      }
+      catch (ClassCastException paramMap)
+      {
+        for (;;)
+        {
+          paramMap.printStackTrace();
+        }
+      }
+      catch (JSONException paramMap)
+      {
+        for (;;)
+        {
+          paramMap.printStackTrace();
+        }
+      }
+      dispatchJsEvent("gameFeedsEvent", paramString, null);
+      return true;
+    }
+    return super.handleEvent(paramString, paramLong, paramMap);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+  }
 }
 
 

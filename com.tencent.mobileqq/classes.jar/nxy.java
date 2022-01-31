@@ -2,7 +2,7 @@ import android.os.Bundle;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
 
 class nxy
-  extends aphy
+  extends apmh
 {
   nxy(nxx paramnxx) {}
   

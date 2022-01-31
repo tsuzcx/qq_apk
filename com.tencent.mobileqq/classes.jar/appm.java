@@ -1,31 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.util.SparseIntArray;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import java.util.ArrayList;
 
-class appm
-  implements apsl
+public class appm
 {
-  appm(appj paramappj) {}
+  private int jdField_a_of_type_Int;
+  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
   
-  public void a(List<apsj> paramList)
+  public appm(DragSortListView paramDragSortListView, int paramInt)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    this.jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray(paramInt);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramInt);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt, -1);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int i = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt1, -1);
+    if (i != paramInt2)
     {
-      localStringBuilder = new StringBuilder().append("refreshPanelData call back dataList = ");
-      if (paramList != null) {
-        break label60;
+      if (i != -1) {
+        break label77;
+      }
+      if (this.jdField_a_of_type_AndroidUtilSparseIntArray.size() == this.jdField_a_of_type_Int) {
+        this.jdField_a_of_type_AndroidUtilSparseIntArray.delete(((Integer)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).intValue());
       }
     }
-    label60:
-    for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
+    for (;;)
     {
-      QLog.d("CameraEmotionAdapter", 2, localObject);
-      if (paramList != null)
-      {
-        this.a.a(paramList);
-        this.a.notifyDataSetChanged();
-      }
+      this.jdField_a_of_type_AndroidUtilSparseIntArray.put(paramInt1, paramInt2);
+      this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramInt1));
       return;
+      label77:
+      this.jdField_a_of_type_JavaUtilArrayList.remove(Integer.valueOf(paramInt1));
     }
   }
 }

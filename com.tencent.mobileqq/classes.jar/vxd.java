@@ -1,36 +1,59 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-public final class vxd
-  extends QQUIEventReceiver<vwo, uyg>
+public class vxd
+  implements TVK_SDKMgr.OnLogListener
 {
-  public vxd(@NonNull vwo paramvwo)
-  {
-    super(paramvwo);
-  }
+  public int a;
   
-  public void a(@NonNull vwo paramvwo, @NonNull uyg paramuyg)
+  public int d(String paramString1, String paramString2)
   {
-    if ((paramuyg.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramuyg.jdField_a_of_type_JavaUtilList != null) && (paramvwo.a != null))
-    {
-      paramuyg = paramuyg.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramuyg.hasNext())
-      {
-        usu localusu = (usu)paramuyg.next();
-        if (TextUtils.equals(paramvwo.a.b, localusu.a)) {
-          paramvwo.i();
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
+    return 0;
   }
   
-  public Class acceptEventClass()
+  public int e(String paramString1, String paramString2)
   {
-    return uyg.class;
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if ((paramString2 != null) && (paramString2.contains("INFO_TRY_AGAIN_LATER"))) {}
+    try
+    {
+      this.a = Integer.parseInt(paramString2.substring(paramString2.lastIndexOf("=") + 1));
+      label32:
+      if (QLog.isColorLevel()) {
+        QLog.w(paramString1, 2, paramString2);
+      }
+      return 0;
+    }
+    catch (Exception localException)
+    {
+      break label32;
+    }
   }
 }
 

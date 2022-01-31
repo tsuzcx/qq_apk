@@ -1,92 +1,80 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import android.content.res.Resources;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.teamwork.DocsGrayTipsInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import java.util.List;
+import java.util.Locale;
 
-public class ahug
-  extends badk
+class ahug
+  implements ahsh
 {
-  public ahug(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  ahug(ahuf paramahuf) {}
   
-  public void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void a(List<MayKnowRecommend> paramList)
   {
-    try
+    Object localObject2 = this.a.a(3);
+    boolean bool3 = ((ahua)localObject2).c;
+    Object localObject1 = ((ahua)localObject2).jdField_a_of_type_JavaLangObject;
+    Object localObject3;
+    boolean bool2;
+    boolean bool1;
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      Object localObject = (DocsGrayTipsInfo)paramArrayOfObject[0];
-      String str = (String)paramArrayOfObject[1];
-      long l = ((Long)paramArrayOfObject[2]).longValue();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131720687).equals(str))
+      ((ahua)localObject2).jdField_a_of_type_JavaLangString = ahuf.a(this.a).getApp().getResources().getString(2131699478);
+      ((ahua)localObject2).b = "";
+      ((ahua)localObject2).jdField_a_of_type_JavaLangObject = paramList;
+      localObject3 = (alwd)ahuf.a(this.a).getManager(159);
+      if (localObject3 == null) {
+        break label262;
+      }
+      bool2 = ((alwd)localObject3).b("sp_mayknow_entry_list_recommend");
+      bool1 = ((alwd)localObject3).b("sp_mayknow_entry_list_head");
+    }
+    for (;;)
+    {
+      label128:
+      Object localObject4;
+      if ((bool1) && (!bool2))
       {
-        paramArrayOfObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((DocsGrayTipsInfo)localObject).a, 0, l);
-        if ((paramArrayOfObject != null) && ((paramArrayOfObject instanceof MessageForUniteGrayTip)))
+        ((ahua)localObject2).c = true;
+        ahuf.a(this.a);
+        if (QLog.isColorLevel())
         {
-          localObject = (MessageForUniteGrayTip)paramArrayOfObject;
-          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a != null)) {
-            ((MessageForUniteGrayTip)localObject).tipParam.a.clear();
+          localObject3 = Locale.getDefault();
+          bool1 = ((ahua)localObject2).c;
+          localObject4 = ((ahua)localObject2).jdField_a_of_type_JavaLangObject;
+          localObject2 = ((ahua)localObject2).b;
+          if (paramList == null) {
+            break label257;
           }
-          ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
-          localObject = new Message();
-          Bundle localBundle = new Bundle();
-          localBundle.putLong("messageUniseq", paramArrayOfObject.uniseq);
-          ((Message)localObject).setData(localBundle);
-          ((Message)localObject).what = 78;
-          ((Message)localObject).arg1 = 0;
-          this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
         }
       }
-      QQToast.a(this.a.getActivity(), str, 0).a();
-      QLog.i(baca.i, 2, " onGetUserAuth  isSuccess = " + paramBoolean + " tips =" + str);
-      return;
-    }
-    catch (Exception paramArrayOfObject)
-    {
-      QLog.e(baca.i, 2, " onGetUserAuth  exception = " + paramArrayOfObject.toString());
+      label257:
+      for (int i = paramList.size();; i = 0)
+      {
+        QLog.i("CTEntryMng", 2, String.format((Locale)localObject3, "updateMayKnow pre: [%s,%s], cur: [%s,%s], subtitle: %s recommends:%s", new Object[] { Boolean.valueOf(bool3), localObject1, Boolean.valueOf(bool1), localObject4, localObject2, Integer.valueOf(i) }));
+        return;
+        ((ahua)localObject2).jdField_a_of_type_JavaLangObject = null;
+        ((ahua)localObject2).b = null;
+        break;
+        ((ahua)localObject2).c = false;
+        break label128;
+      }
+      label262:
+      bool1 = true;
+      bool2 = false;
     }
   }
   
-  public void b(boolean paramBoolean, Object[] paramArrayOfObject)
+  public boolean a()
   {
-    try
-    {
-      QLog.i(baca.i, 2, " onSetUserAuth  isSuccess = " + paramBoolean);
-      Object localObject = (DocsGrayTipsInfo)paramArrayOfObject[0];
-      String str = (String)paramArrayOfObject[1];
-      long l = ((Long)paramArrayOfObject[2]).longValue();
-      if (paramBoolean)
-      {
-        paramArrayOfObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((DocsGrayTipsInfo)localObject).a, 0, l);
-        if ((paramArrayOfObject != null) && ((paramArrayOfObject instanceof MessageForUniteGrayTip)))
-        {
-          localObject = (MessageForUniteGrayTip)paramArrayOfObject;
-          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a != null)) {
-            ((MessageForUniteGrayTip)localObject).tipParam.a.clear();
-          }
-          ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
-          localObject = new Message();
-          Bundle localBundle = new Bundle();
-          localBundle.putLong("messageUniseq", paramArrayOfObject.uniseq);
-          ((Message)localObject).setData(localBundle);
-          ((Message)localObject).what = 78;
-          ((Message)localObject).arg1 = 0;
-          this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
-        }
-      }
-      QQToast.a(this.a.getActivity(), str, 0).a();
-      return;
+    ahua localahua = this.a.a(3);
+    ahum localahum = this.a.a(3);
+    if (QLog.isColorLevel()) {
+      QLog.d("CTEntryMng", 2, "isMayKnowEntryShown, canBeShown = " + localahua.c + ", flagValue = " + localahum.b);
     }
-    catch (Exception paramArrayOfObject)
-    {
-      QLog.e(baca.i, 1, " onSetUserAuth  exception  = " + paramArrayOfObject.toString());
-    }
+    return (localahua.c) && (localahum.b == 0);
   }
 }
 

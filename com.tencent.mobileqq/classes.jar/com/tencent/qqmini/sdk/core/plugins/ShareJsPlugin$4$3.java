@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.view.View;
-import bgkd;
-import bgob;
-import bgog;
+import bgok;
+import bgsi;
+import bgsn;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class ShareJsPlugin$4$3
-  implements bgog
+  implements bgsn
 {
-  ShareJsPlugin$4$3(ShareJsPlugin.4 param4, bgob parambgob) {}
+  ShareJsPlugin$4$3(ShareJsPlugin.4 param4, bgsi parambgsi) {}
   
   public void OnClick(View paramView, int paramInt)
   {

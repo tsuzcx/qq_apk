@@ -1,27 +1,8 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
-public class advw
-  implements bhqd
+public abstract interface advw
 {
-  public advw(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment, bhpy parambhpy) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment, true);
-      this.jdField_a_of_type_Bhpy.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.f());
-      return;
-    }
-    this.jdField_a_of_type_Bhpy.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.getActivity().finish();
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

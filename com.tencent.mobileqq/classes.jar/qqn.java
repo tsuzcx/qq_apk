@@ -15,7 +15,7 @@ public class qqn
     if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
     {
       ReadInJoyVideoTagSelectionFragment.a(this.a).setVisibility(0);
-      String str = this.a.getString(2131719045, new Object[] { Integer.valueOf(ReadInJoyVideoTagSelectionFragment.a(this.a).getCount()), Integer.valueOf(5) });
+      String str = this.a.getString(2131719057, new Object[] { Integer.valueOf(ReadInJoyVideoTagSelectionFragment.a(this.a).getCount()), Integer.valueOf(5) });
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(str);
       localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-4473925), 5, str.length(), 0);
       ReadInJoyVideoTagSelectionFragment.a(this.a).setText(localSpannableStringBuilder);

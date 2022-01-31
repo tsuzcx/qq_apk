@@ -1,17 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class ysq
-  implements View.OnClickListener
+class ysq
+  implements ysj
 {
-  public ysq(CustomMenuBar paramCustomMenuBar, String paramString, int paramInt) {}
+  ysq(ysn paramysn, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a != null) {
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
+      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
+    File localFile = new File(paramString1);
+    if ((paramBoolean) && (localFile.exists()))
+    {
+      this.jdField_a_of_type_Ysn.jdField_a_of_type_Ysl.e = paramString1;
+      this.jdField_a_of_type_Ysn.jdField_a_of_type_Ysm.a.b(this.jdField_a_of_type_Ysn.jdField_a_of_type_Ysm);
+      this.jdField_a_of_type_Ysn.jdField_a_of_type_Ysm.b();
+      return;
+    }
+    this.jdField_a_of_type_Ysn.jdField_a_of_type_Ysm.d = paramString2;
+    this.jdField_a_of_type_Ysn.jdField_a_of_type_Ysm.a.a(this.jdField_a_of_type_Ysn.jdField_a_of_type_Ysm);
   }
 }
 

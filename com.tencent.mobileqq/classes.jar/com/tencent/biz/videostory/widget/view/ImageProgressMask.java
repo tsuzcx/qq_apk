@@ -9,7 +9,7 @@ import android.graphics.RectF;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View;
-import bczv;
+import bdee;
 
 public class ImageProgressMask
   extends View
@@ -76,7 +76,7 @@ public class ImageProgressMask
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != 0) && (paramInt2 != 0) && ((paramInt1 != paramInt3) || (paramInt2 != paramInt4))) {
-      this.jdField_a_of_type_AndroidGraphicsPath = bczv.a(paramInt1, paramInt2);
+      this.jdField_a_of_type_AndroidGraphicsPath = bdee.a(paramInt1, paramInt2);
     }
   }
   

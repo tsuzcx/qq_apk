@@ -1,32 +1,12 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-
 final class bjtb
-  implements bjnu
+  extends bjta
 {
-  public void a(BaseResp paramBaseResp)
+  public int a(String paramString, int paramInt)
   {
-    if ((!TextUtils.isEmpty(bjta.jdField_a_of_type_JavaLangString)) && (bjta.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null)) {
-      bjta.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.callJs(bjta.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(paramBaseResp.errCode) });
+    if ((paramString == null) || (paramString.length() == 0) || (paramInt < 1)) {
+      return -1;
     }
-    for (;;)
-    {
-      bjta.jdField_a_of_type_JavaLangString = null;
-      bjta.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = null;
-      bjnt.a().b(this);
-      return;
-      switch (paramBaseResp.errCode)
-      {
-      case -2: 
-      case -1: 
-      default: 
-        xxb.a(1, 2131720019);
-        break;
-      case 0: 
-        xxb.a(2, 2131720038);
-      }
-    }
+    return 0;
   }
 }
 

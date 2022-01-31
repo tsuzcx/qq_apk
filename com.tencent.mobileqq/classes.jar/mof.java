@@ -36,9 +36,9 @@ public class mof
   
   private void c()
   {
-    int i = 2130841950;
+    int i = 2130841963;
     if (this.jdField_a_of_type_ComTencentAvVideoController.a().az) {
-      i = 2130841951;
+      i = 2130841964;
     }
     this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
   }
@@ -47,15 +47,15 @@ public class mof
   {
     if (this.jdField_a_of_type_Moe.getCount() == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696437);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696439);
       return;
     }
     if (this.jdField_a_of_type_ComTencentAvVideoController.a().T == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696436);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696438);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696435);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696437);
   }
   
   public void b()
@@ -122,7 +122,7 @@ public class mof
         paramView.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
         this.jdField_a_of_type_AndroidViewView.startAnimation(paramView);
       }
-    case 2131370002: 
+    case 2131370021: 
       return;
     }
     paramView = this.jdField_a_of_type_ComTencentAvVideoController.a();
@@ -135,7 +135,7 @@ public class mof
         if (!this.jdField_a_of_type_ComTencentAvVideoController.a().az) {
           break label196;
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696435);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696437);
       }
     }
     for (;;)
@@ -150,7 +150,7 @@ public class mof
       bool = false;
       break;
       label196:
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696434);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696436);
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_Int = 0;
     }

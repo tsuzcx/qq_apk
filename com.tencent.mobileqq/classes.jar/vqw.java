@@ -1,28 +1,40 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class vqw
-  implements vru
+public class vqw
+  implements View.OnClickListener
 {
-  vqw(vqr paramvqr, StoryVideoItem paramStoryVideoItem) {}
+  vqw(vqu paramvqu) {}
   
-  public boolean a(vrr paramvrr, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Vqr.isCanceled()) {
-      return true;
-    }
-    wsv.e(this.jdField_a_of_type_Vqr.a.a, "onError, setOnErrorListener [videoView, model=%d, what=%d, position=%d, extra=%s, Info=%s] = ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, paramObject });
-    if (paramInt2 == 102)
+    if ((vqu.a(this.a) != null) && (vqu.a(this.a).a()))
     {
-      paramvrr.d();
-      return true;
+      vqu.a(this.a).c();
+      ThreadManager.getUIHandler().postDelayed(new CommentFloatDialog.2.1(this), 200L);
+      if (!this.a.a()) {
+        break label109;
+      }
+      paramView = "2";
+      label64:
+      if (!this.a.b()) {
+        break label115;
+      }
     }
-    VideoViewVideoHolder.c(this.jdField_a_of_type_Vqr.a, 7);
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Vqr.a, false);
-    VideoViewVideoHolder.b(this.jdField_a_of_type_Vqr.a, paramInt2);
-    vqr.b(this.jdField_a_of_type_Vqr, new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_Vqr.a), "wht=" + paramInt2 + ", mod=" + paramInt1 + ", " + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid));
-    return true;
+    label109:
+    label115:
+    for (String str = "2";; str = "1")
+    {
+      wxj.a("play_video", "close_reply", 0, 1, new String[] { paramView, str });
+      return;
+      this.a.a();
+      break;
+      paramView = "1";
+      break label64;
+    }
   }
 }
 

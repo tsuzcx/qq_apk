@@ -14,7 +14,7 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
-import azmj;
+import azqs;
 import com.tencent.av.VideoController;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.DoubleVideoCtrlUI;
@@ -64,13 +64,13 @@ public class ChildLockSign
   
   private void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    setId(2131372586);
+    setId(2131372612);
     paramAttributeSet = getResources();
     this.jdField_a_of_type_Boolean = true;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130841723);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130841724);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130841736);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130841737);
       if (this.jdField_a_of_type_Boolean) {}
       for (this.c = this.jdField_a_of_type_AndroidGraphicsBitmap;; this.c = this.jdField_b_of_type_AndroidGraphicsBitmap)
       {
@@ -113,7 +113,7 @@ public class ChildLockSign
       {
         paramMessage.a().y = true;
         ((DoubleVideoCtrlUI)localObject).d(true);
-        azmj.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
       }
       for (;;)
       {
@@ -121,7 +121,7 @@ public class ChildLockSign
         return false;
         paramMessage.a().y = false;
         ((DoubleVideoCtrlUI)localObject).s();
-        azmj.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
       }
     }
     catch (Exception paramMessage)

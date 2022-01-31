@@ -9,7 +9,7 @@ import android.graphics.Paint.FontMetrics;
 import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.view.View;
-import bllm;
+import blpy;
 
 public class AEEditorClipIndexView
   extends View
@@ -50,14 +50,14 @@ public class AEEditorClipIndexView
     super.onDraw(paramCanvas);
     int i = Math.min(getWidth(), getHeight()) / 2;
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167192));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167194));
     paramCanvas.drawCircle(i, i, i, this.jdField_a_of_type_AndroidGraphicsPaint);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165215));
-    int j = bllm.a(this.jdField_a_of_type_AndroidContentContext, 1.0F);
+    int j = blpy.a(this.jdField_a_of_type_AndroidContentContext, 1.0F);
     paramCanvas.drawCircle(i, i, i - j, this.jdField_a_of_type_AndroidGraphicsPaint);
     this.b.setStyle(Paint.Style.FILL);
-    this.b.setTextSize(bllm.a(this.jdField_a_of_type_AndroidContentContext, 17.0F));
-    this.b.setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167192));
+    this.b.setTextSize(blpy.a(this.jdField_a_of_type_AndroidContentContext, 17.0F));
+    this.b.setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167194));
     this.b.setTextAlign(Paint.Align.CENTER);
     Paint.FontMetrics localFontMetrics = this.b.getFontMetrics();
     float f1 = (localFontMetrics.bottom - localFontMetrics.top) / 2.0F;

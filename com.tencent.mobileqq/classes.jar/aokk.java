@@ -1,91 +1,102 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
+import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.SelfInfo;
 
 public class aokk
-  extends aofy<aoki>
+  implements Manager
 {
-  @NonNull
-  public static aoki a()
+  public static byte a;
+  private int jdField_a_of_type_Int = 0;
+  private NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  
+  static
   {
-    aoki localaoki2 = (aoki)aogj.a().a(458);
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendContactGuideConfProcessor", 2, "loadConfig bean: " + localaoki2);
-    }
-    aoki localaoki1 = localaoki2;
-    if (localaoki2 == null) {
-      localaoki1 = new aoki();
-    }
-    return localaoki1;
+    jdField_a_of_type_Byte = 30;
+  }
+  
+  public aokk(NearbyAppInterface paramNearbyAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface)
+  {
+    return ((Integer)auwq.a(paramQQAppInterface.getCurrentAccountUin(), "nearby_usercard_tab_host", Integer.valueOf(0))).intValue();
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return ((Integer)auwq.a(paramQQAppInterface.getCurrentAccountUin(), "face_score_switch", Integer.valueOf(0))).intValue() == 1;
+  }
+  
+  public static int b(QQAppInterface paramQQAppInterface)
+  {
+    return ((Integer)auwq.a(paramQQAppInterface.getCurrentAccountUin(), "nearby_usercard_tab_guest", Integer.valueOf(-1))).intValue();
   }
   
   public int a()
   {
-    return 458;
+    return this.jdField_a_of_type_Int;
   }
   
-  @NonNull
-  public aoki a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendContactGuideConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
-    }
-    return new aoki();
-  }
+  public void a() {}
   
-  @Nullable
-  public aoki a(aogf[] paramArrayOfaogf)
+  public void a(NearbyAppInterface paramNearbyAppInterface, oidb_0x8dd.SelfInfo paramSelfInfo)
   {
-    return aoki.a(paramArrayOfaogf);
-  }
-  
-  public Class<aoki> a()
-  {
-    return aoki.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendContactGuideConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(aoki paramaoki)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendContactGuideConfProcessor", 2, "onUpdate " + paramaoki.toString());
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    int i = 2;
+    QLog.d("NearbyNiche", 2, "writeSelfInfo" + paramSelfInfo);
+    if (paramSelfInfo == null) {}
+    do
     {
-      localObject = (QQAppInterface)localObject;
-      if (((QQAppInterface)localObject).a(34))
+      return;
+      Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramNearbyAppInterface.getCurrentAccountUin(), 4);
+      if (localObject != null)
       {
-        ((altc)((QQAppInterface)localObject).getManager(34)).a = paramaoki;
-        if (QLog.isColorLevel()) {
-          QLog.d("NewFriendContactGuideConfProcessor", 2, "onUpdate bean");
+        localObject = ((SharedPreferences)localObject).edit().putString("nick", paramSelfInfo.bytes_nick.get().toStringUtf8()).putInt("charm_level", paramSelfInfo.uint32_charm_level.get()).putInt("charm", paramSelfInfo.uint32_charm.get()).putString("third_line", paramSelfInfo.str_third_line_info.get()).putString("third_line_icon", paramSelfInfo.str_third_line_icon.get()).putInt("god_flag", paramSelfInfo.uint32_god_flag.get()).putInt("real_video_auth", paramSelfInfo.uint32_real_video_flag.get()).putInt("gender", paramSelfInfo.uint32_gender.get()).putInt("age", paramSelfInfo.uint32_age.get()).putInt("task_finished", paramSelfInfo.uint32_finish_task_num.get()).putInt("task_total", paramSelfInfo.uint32_all_task_num.get());
+        if (paramSelfInfo.uint32_vote_num.get() >= 0) {
+          ((SharedPreferences.Editor)localObject).putInt("vote", paramSelfInfo.uint32_vote_num.get());
         }
+        if (paramSelfInfo.uint32_vote_increment.get() >= 0) {
+          ((SharedPreferences.Editor)localObject).putInt("vote_increment", paramSelfInfo.uint32_vote_increment.get());
+        }
+        ((SharedPreferences.Editor)localObject).commit();
       }
+    } while (paramSelfInfo.uint32_gender.get() == -1);
+    switch (paramSelfInfo.uint32_gender.get())
+    {
+    }
+    for (i = 0;; i = 1)
+    {
+      auwq.a(paramNearbyAppInterface.getAccount(), "self_gender", Integer.valueOf(i));
+      return;
     }
   }
   
-  public int b()
+  public void a(String paramString)
   {
-    return 0;
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      this.jdField_a_of_type_Int = Integer.valueOf(paramString).intValue();
+      return;
+    }
+    catch (Exception paramString)
+    {
+      this.jdField_a_of_type_Int = 0;
+    }
   }
   
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public void onDestroy() {}
 }
 
 

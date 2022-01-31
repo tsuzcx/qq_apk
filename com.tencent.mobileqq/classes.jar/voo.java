@@ -1,83 +1,80 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.PlayerGestureGroupHolder.OnViewPagerGestureListener.1;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
 
 public class voo
-  extends GestureDetector.SimpleOnGestureListener
 {
-  private voo(vom paramvom) {}
+  @NonNull
+  public final String a;
+  @NonNull
+  public final String b;
+  @NonNull
+  public final String c;
+  public final String d;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public voo(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    int i = 0;
-    Object localObject = (StoryPlayerGroupHolder)this.a.a();
-    if (((StoryPlayerGroupHolder)localObject).a() == null) {
-      return super.onDoubleTap(paramMotionEvent);
-    }
-    localObject = (vvc)((StoryPlayerGroupHolder)localObject).b(vvc.class);
-    if ((localObject != null) && (((vvc)localObject).d()))
+    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null))
     {
-      try
+      wxe.e("Q.qqstory.playernew.TVKPreloader", "vid=%s, videoUrl=%s, localPath=%s", new Object[] { paramString1, paramString2, paramString3 });
+      throw new IllegalArgumentException("vid, videoUrl, localPath should not be null");
+    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = true;
+    boolean bool3 = false;
+    boolean bool1;
+    if (this == paramObject) {
+      bool1 = true;
+    }
+    do
+    {
+      do
       {
-        localObject = (AnimationDrawable)this.a.a().getResources().getDrawable(2130846408);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        ((AnimationDrawable)localObject).start();
-        int j = 0;
-        while (i < ((AnimationDrawable)localObject).getNumberOfFrames())
+        do
         {
-          j += ((AnimationDrawable)localObject).getDuration(i);
-          i += 1;
-        }
-        ThreadManager.getUIHandler().postDelayed(new PlayerGestureGroupHolder.OnViewPagerGestureListener.1(this, (AnimationDrawable)localObject), j);
-      }
-      catch (OutOfMemoryError paramMotionEvent)
-      {
-        azlf.a(paramMotionEvent);
-        return false;
-      }
-      wsv.c(this.a.jdField_a_of_type_JavaLangString, "onDoubleTap handle");
+          do
+          {
+            return bool1;
+            bool1 = bool3;
+          } while (paramObject == null);
+          bool1 = bool3;
+        } while (getClass() != paramObject.getClass());
+        paramObject = (voo)paramObject;
+        bool1 = bool3;
+      } while (!this.a.equals(paramObject.a));
+      bool1 = bool3;
+    } while (!this.b.equals(paramObject.b));
+    if (this.d != null) {
+      bool1 = this.d.equals(paramObject.d);
     }
     for (;;)
     {
-      return super.onDoubleTap(paramMotionEvent);
-      wsv.c(this.a.jdField_a_of_type_JavaLangString, "onDoubleTap not handle");
-    }
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    super.onLongPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    paramMotionEvent = (StoryPlayerGroupHolder)this.a.a();
-    VideoViewVideoHolder localVideoViewVideoHolder = paramMotionEvent.a();
-    if (localVideoViewVideoHolder != null) {
-      switch (localVideoViewVideoHolder.a())
-      {
+      return bool1;
+      bool1 = bool2;
+      if (paramObject.d != null) {
+        bool1 = false;
       }
     }
-    for (;;)
-    {
-      wsv.c(this.a.jdField_a_of_type_JavaLangString, "onSingleTapConfirmed");
-      return true;
-      paramMotionEvent.a(true, true);
-      wta.a("play_video", "clk_video", 0, 0, new String[] { "", "2", "", "" });
-      continue;
-      paramMotionEvent.a(false, true);
-      wta.a("play_video", "clk_video", 0, 0, new String[] { "", "1", "", "" });
+  }
+  
+  public int hashCode()
+  {
+    int j = this.a.hashCode();
+    int k = this.b.hashCode();
+    if (this.d != null) {}
+    for (int i = this.d.hashCode();; i = 0) {
+      return i + (j * 31 + k) * 31;
     }
+  }
+  
+  public String toString()
+  {
+    return "PreloadItem{vid='" + this.a + '\'' + ", debugMsg='" + this.d + '\'' + '}';
   }
 }
 

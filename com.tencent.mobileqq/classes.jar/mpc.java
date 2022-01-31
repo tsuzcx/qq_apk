@@ -7,7 +7,7 @@ public class mpc
   private static int jdField_c_of_type_Int;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private baig jdField_a_of_type_Baig;
+  private bamp jdField_a_of_type_Bamp;
   private String jdField_a_of_type_JavaLangString;
   private mpc jdField_a_of_type_Mpc;
   private int jdField_b_of_type_Int;
@@ -57,7 +57,7 @@ public class mpc
   
   public CharSequence a()
   {
-    return this.jdField_a_of_type_Baig;
+    return this.jdField_a_of_type_Bamp;
   }
   
   public String a()
@@ -68,7 +68,7 @@ public class mpc
   public void a()
   {
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Baig = null;
+    this.jdField_a_of_type_Bamp = null;
     this.jdField_a_of_type_JavaLangString = null;
     this.jdField_b_of_type_Int = 0;
     this.jdField_c_of_type_JavaLangString = null;
@@ -95,7 +95,7 @@ public class mpc
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_Baig = lmv.a(paramString, 16);
+    this.jdField_a_of_type_Bamp = lmv.a(paramString, 16);
   }
   
   public String b()
@@ -115,7 +115,7 @@ public class mpc
   
   public String toString()
   {
-    return "VideoChatMessage{type=" + this.jdField_a_of_type_Int + ", content='" + this.jdField_a_of_type_Baig + '\'' + ", filepath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", sendState=" + this.jdField_b_of_type_Int + ", time='" + this.jdField_b_of_type_JavaLangString + '\'' + ", header='" + this.jdField_c_of_type_JavaLangString + '\'' + ", imageUrl='" + this.d + '\'' + ", voiceTime=" + this.jdField_a_of_type_Long + ", msgId='" + this.e + '\'' + '}';
+    return "VideoChatMessage{type=" + this.jdField_a_of_type_Int + ", content='" + this.jdField_a_of_type_Bamp + '\'' + ", filepath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", sendState=" + this.jdField_b_of_type_Int + ", time='" + this.jdField_b_of_type_JavaLangString + '\'' + ", header='" + this.jdField_c_of_type_JavaLangString + '\'' + ", imageUrl='" + this.d + '\'' + ", voiceTime=" + this.jdField_a_of_type_Long + ", msgId='" + this.e + '\'' + '}';
   }
 }
 

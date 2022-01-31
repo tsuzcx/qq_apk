@@ -1,9 +1,6 @@
-public class aroe
+public abstract interface aroe
 {
-  public int a;
-  public Object a;
-  public boolean a;
-  public int b;
+  public abstract void o();
 }
 
 

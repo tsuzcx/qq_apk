@@ -6,21 +6,21 @@ import android.content.DialogInterface.OnKeyListener;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.KeyEvent;
-import bepp;
-import beps;
+import bety;
+import beub;
 import com.tencent.qphone.base.util.QLog;
-import xif;
-import xii;
-import xir;
+import xmo;
+import xmr;
+import xna;
 
 public class SlideProgressNotifier
-  extends beps
-  implements DialogInterface.OnKeyListener, xif
+  extends beub
+  implements DialogInterface.OnKeyListener, xmo
 {
   Activity jdField_a_of_type_AndroidAppActivity;
   Handler jdField_a_of_type_AndroidOsHandler;
   SlideProgressNotifier.RefreshProgressThread jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread;
-  private xii jdField_a_of_type_Xii;
+  private xmr jdField_a_of_type_Xmr;
   
   public SlideProgressNotifier(Activity paramActivity, int paramInt)
   {
@@ -60,9 +60,9 @@ public class SlideProgressNotifier
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super.a(paramInt1, this.jdField_a_of_type_AndroidAppActivity.getString(2131699901) + "0%", 0);
-    if (this.jdField_a_of_type_Bepp != null) {
-      this.jdField_a_of_type_Bepp.setOnKeyListener(this);
+    super.a(paramInt1, this.jdField_a_of_type_AndroidAppActivity.getString(2131699913) + "0%", 0);
+    if (this.jdField_a_of_type_Bety != null) {
+      this.jdField_a_of_type_Bety.setOnKeyListener(this);
     }
     if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread.a()))
     {
@@ -76,18 +76,18 @@ public class SlideProgressNotifier
     }
   }
   
-  public void a(xii paramxii)
+  public void a(xmr paramxmr)
   {
-    this.jdField_a_of_type_Xii = paramxii;
+    this.jdField_a_of_type_Xmr = paramxmr;
   }
   
   public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
     if (paramInt == 4)
     {
-      xir.a().f();
-      if (this.jdField_a_of_type_Xii != null) {
-        this.jdField_a_of_type_Xii.a();
+      xna.a().f();
+      if (this.jdField_a_of_type_Xmr != null) {
+        this.jdField_a_of_type_Xmr.a();
       }
     }
     return false;

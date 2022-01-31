@@ -1,12 +1,15 @@
-class tuf
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+
+public class tuf
+  implements Dispatcher.Dispatchable
 {
-  public String a;
-  public boolean a;
-  public boolean b;
+  public int a;
+  public Object a;
   
-  public String toString()
+  public tuf(int paramInt, Object... paramVarArgs)
   {
-    return "CommentResponse{hasMore=" + this.jdField_a_of_type_Boolean + ", attachInfo='" + this.jdField_a_of_type_JavaLangString + '\'' + ", hasResponse='" + this.b + '\'' + '}';
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramVarArgs;
   }
 }
 

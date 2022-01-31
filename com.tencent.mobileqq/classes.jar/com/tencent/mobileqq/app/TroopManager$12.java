@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import amaa;
+import amep;
 import mqq.os.MqqHandler;
 
 class TroopManager$12
   implements Runnable
 {
-  TroopManager$12(TroopManager paramTroopManager, String paramString, amaa paramamaa) {}
+  TroopManager$12(TroopManager paramTroopManager, String paramString, amep paramamep) {}
   
   public void run()
   {

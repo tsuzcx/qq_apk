@@ -1,49 +1,67 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aopu
-  implements aooy
+public class aopu
+  extends aokh<aopt>
 {
-  aopu(aopq paramaopq) {}
-  
-  public void a(Context paramContext)
+  public int a()
   {
-    try
+    return 488;
+  }
+  
+  @NonNull
+  public aopt a(int paramInt)
+  {
+    return new aopt();
+  }
+  
+  @Nullable
+  public aopt a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
     {
-      Intent localIntent;
-      if (new JSONObject(aopq.a(this.a)).getInt("showlocalfile") == 1)
-      {
-        localIntent = new Intent(paramContext, LocalFileBrowserActivity.class);
-        if (localIntent != null) {}
+      aopt localaopt = aopt.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("PttWithTextSwitchProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
       }
-      else
-      {
-        return;
-      }
-      try
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("category", 23);
-        localIntent.putExtra("bundle", localBundle);
-        localIntent.putExtra("localSdCardfile", 0);
-        paramContext.startActivity(localIntent);
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
-        return;
-      }
-      return;
+      return localaopt;
     }
-    catch (JSONException paramContext)
-    {
-      paramContext.printStackTrace();
+    return null;
+  }
+  
+  public Class<aopt> a()
+  {
+    return aopt.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aopt paramaopt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PttWithTextSwitchProcessor", 2, "onUpdate " + paramaopt.toString());
     }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

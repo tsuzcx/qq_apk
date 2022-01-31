@@ -1,19 +1,65 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aijc
-  implements View.OnClickListener
+  extends aokh
 {
-  public aijc(CameraPreviewActivity paramCameraPreviewActivity) {}
-  
-  public void onClick(View paramView)
+  public static aijb a()
   {
-    if (this.a.b) {
-      azmj.b(this.a.app, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
+    return (aijb)aoks.a().a(470);
+  }
+  
+  public int a()
+  {
+    return 470;
+  }
+  
+  @NonNull
+  public aijb a(int paramInt)
+  {
+    return new aijb();
+  }
+  
+  @Nullable
+  public aijb a(aoko[] paramArrayOfaoko)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfaoko[0].a);
     }
-    this.a.finish();
-    bdar.anim(this.a, true, false);
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aijb.a(paramArrayOfaoko);
+    }
+    return null;
+  }
+  
+  public Class<aijb> a()
+  {
+    return aijb.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 0, "onUpdate " + paramObject);
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

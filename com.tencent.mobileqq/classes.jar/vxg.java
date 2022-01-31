@@ -1,53 +1,21 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import mqq.os.MqqHandler;
 
 public class vxg
-  extends vox
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public vxg(vwo paramvwo) {}
+  vxg(vxe paramvxe) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    Object localObject = this.a.a();
-    if ((localObject == null) || (!this.a.jdField_a_of_type_Vld.equals(localObject))) {}
-    do
-    {
-      return;
-      if (paramInt1 == this.a.hashCode())
-      {
-        wsv.b(this.a.b, "onActivityResult, onChooseFriendResult");
-        localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
-        if (localObject != null) {
-          ((VideoViewVideoHolder)localObject).c(false);
-        }
-        if (paramInt2 == -1) {
-          vhx.a().a(paramIntent.getExtras());
-        }
-      }
-      if ((paramInt1 == 10002) && (paramInt2 == -1))
-      {
-        ukd.b(this.a.b + " onActivityResult");
-        QQToast.a(this.a.b(), this.a.b().getString(2131720047), 1).a();
-      }
-      if ((paramInt1 == 467) && (paramInt2 == -1) && (vwo.a(this.a) != null)) {
-        vwo.a(this.a).a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, new Object[] { "MoreVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
-      }
-    } while (this.a.jdField_a_of_type_Vdt == null);
-    this.a.jdField_a_of_type_Vdt.a(paramInt1, paramInt2, paramIntent);
-  }
-  
-  public void g()
-  {
-    super.g();
-    if (vwo.a(this.a) != null) {
-      vwo.a(this.a).a();
+    vxe.a(this.a).d = paramTVK_IMediaPlayer.getDuration();
+    vxe.a(this.a).e = paramTVK_IMediaPlayer.getCurrentPostion();
+    paramTVK_IMediaPlayer = this.a.a;
+    if (paramTVK_IMediaPlayer != null) {
+      ThreadManager.getUIHandler().post(new VideoViewTVKImpl.2.1(this, paramTVK_IMediaPlayer));
     }
   }
 }

@@ -1,27 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-final class amzc
-  implements bapw
+public final class amzc
+  implements Parcelable.Creator<ArCloudConfigInfo>
 {
-  public void a(baqv parambaqv, baqw parambaqw)
+  public ArCloudConfigInfo a(Parcel paramParcel)
   {
-    if ((parambaqv == null) || (parambaqw == null)) {}
-    while (!(parambaqv instanceof baps)) {
-      return;
-    }
-    baps localbaps = (baps)parambaqv;
-    localbaps.jdField_a_of_type_Long += parambaqw.c;
-    parambaqw.c = 0L;
-    parambaqw = "bytes=" + localbaps.jdField_a_of_type_Long + "-";
-    localbaps.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
-    parambaqw = localbaps.jdField_a_of_type_JavaLangString;
-    if (parambaqw.contains("range="))
-    {
-      parambaqw = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
-      localbaps.jdField_a_of_type_JavaLangString = (parambaqw + "range=" + localbaps.jdField_a_of_type_Long);
-    }
-    QLog.i("AREngine_ARPreSoResourceDownload", 1, "IBreakDownFix. url = " + ((baps)parambaqv).jdField_a_of_type_JavaLangString + ", offset=" + localbaps.jdField_a_of_type_Long);
+    return new ArCloudConfigInfo(paramParcel);
+  }
+  
+  public ArCloudConfigInfo[] a(int paramInt)
+  {
+    return new ArCloudConfigInfo[paramInt];
   }
 }
 

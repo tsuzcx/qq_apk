@@ -1,120 +1,72 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.support.annotation.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ahnq
-  extends alox
+public class ahnq
 {
-  ahnq(ahnp paramahnp) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  public static ahnq a(ahnq paramahnq)
   {
-    super.onCancelMayKnowRecommend(paramBoolean, paramString);
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    ahnq localahnq = new ahnq();
+    if (paramahnq != null)
     {
-      localStringBuilder = new StringBuilder().append("delete mayKnowData ");
-      if (!paramBoolean) {
-        break label65;
-      }
+      localahnq.jdField_a_of_type_Int = paramahnq.jdField_a_of_type_Int;
+      localahnq.jdField_a_of_type_JavaLangString = paramahnq.jdField_a_of_type_JavaLangString;
+      localahnq.jdField_b_of_type_Int = paramahnq.jdField_b_of_type_Int;
+      localahnq.jdField_b_of_type_JavaLangString = paramahnq.jdField_b_of_type_JavaLangString;
+      localahnq.c = paramahnq.c;
     }
-    label65:
-    for (String str = "success";; str = "false")
-    {
-      QLog.d("CardViewController", 2, str + ", delete uin is " + paramString);
-      this.a.b();
-      return;
-    }
+    return localahnq;
   }
   
-  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
+  public static ahnq a(JSONObject paramJSONObject)
   {
-    super.onMayKnowEntryStateChanged(paramBoolean, paramBundle);
-    if (QLog.isColorLevel())
+    ahnq localahnq = new ahnq();
+    if (paramJSONObject != null)
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("do network checkUpdate, rsp ");
-      if (paramBoolean)
-      {
-        paramBundle = "success";
-        QLog.d("CardViewController", 2, paramBundle + ". msg: \"send network respond done\"");
-      }
+      localahnq.jdField_a_of_type_Int = paramJSONObject.optInt("tab_id", -1);
+      localahnq.jdField_b_of_type_Int = paramJSONObject.optInt("recommend_count", 0);
+      localahnq.jdField_a_of_type_JavaLangString = paramJSONObject.optString("tab_name");
+      localahnq.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon_url_select");
+      localahnq.c = paramJSONObject.optString("icon_url_unselect");
     }
-    else
-    {
-      if (paramBoolean) {
-        break label82;
-      }
-      ahnp.a(this.a, System.currentTimeMillis());
-    }
-    for (;;)
-    {
-      ahnp.a(this.a, true, paramBoolean);
-      return;
-      paramBundle = "false";
-      break;
-      label82:
-      ahnp.a(this.a);
-    }
+    return localahnq;
   }
   
-  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  public static JSONObject a(ahnq paramahnq)
   {
-    super.onMayKnowListPushAdd(paramBoolean, paramList);
-    Object localObject;
-    if (QLog.isColorLevel())
+    JSONObject localJSONObject = new JSONObject();
+    if (paramahnq != null) {}
+    try
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("recv mayKnowData push add ");
-      if (!paramBoolean) {
-        break label108;
-      }
-      localObject = "success";
-      localObject = localStringBuilder.append((String)localObject).append(", push uin size is ");
-      if (paramList == null) {
-        break label115;
-      }
+      localJSONObject.put("tab_id", paramahnq.jdField_a_of_type_Int);
+      localJSONObject.put("recommend_count", paramahnq.jdField_b_of_type_Int);
+      localJSONObject.put("tab_name", paramahnq.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("icon_url_select", paramahnq.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("icon_url_unselect", paramahnq.c);
+      return localJSONObject;
     }
-    label108:
-    label115:
-    for (int i = paramList.size();; i = 0)
-    {
-      QLog.d("CardViewController", 2, i);
-      if ((paramList != null) && (!paramList.isEmpty())) {
-        ahnp.a(this.a, paramList.size());
-      }
-      this.a.b();
-      return;
-      localObject = "false";
-      break;
-    }
+    catch (JSONException paramahnq) {}
+    return localJSONObject;
   }
   
-  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  public boolean equals(@Nullable Object paramObject)
   {
-    super.onMayKnowListPushDel(paramBoolean, paramList);
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("recv mayKnowData push del ");
-      if (!paramBoolean) {
-        break label82;
-      }
-      localObject = "success";
-      localObject = localStringBuilder.append((String)localObject).append(", push uin size is ");
-      if (paramList == null) {
-        break label89;
-      }
+    if ((paramObject instanceof ahnq)) {
+      return this.jdField_a_of_type_Int == ((ahnq)paramObject).jdField_a_of_type_Int;
     }
-    label82:
-    label89:
-    for (int i = paramList.size();; i = 0)
-    {
-      QLog.d("CardViewController", 2, i);
-      this.a.b();
-      return;
-      localObject = "false";
-      break;
-    }
+    return super.equals(paramObject);
+  }
+  
+  public String toString()
+  {
+    return "tab_id=" + this.jdField_a_of_type_Int + " recommend_count=" + this.jdField_b_of_type_Int + " tab_name=" + this.jdField_a_of_type_JavaLangString + " icon_url_select=" + this.jdField_b_of_type_JavaLangString + " icon_url_unselect=" + this.c;
   }
 }
 

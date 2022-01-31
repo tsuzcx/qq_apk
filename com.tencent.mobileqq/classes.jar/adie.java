@@ -1,31 +1,20 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adie
-  implements CompoundButton.OnCheckedChangeListener
+class adie
+  implements DialogInterface.OnClickListener
 {
-  public adie(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  adie(adic paramadic) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = true;
-    if (!bdee.g(this.a))
-    {
-      QQToast.a(BaseApplication.getContext(), 1, 2131694830, 0).b(this.a.getTitleBarHeight());
-      paramCompoundButton = this.a.j;
-      if (!paramBoolean) {}
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        paramCompoundButton.setChecked(paramBoolean);
-        return;
-      }
+    if (paramInt == 1) {
+      this.a.b();
     }
-    ((alkv)this.a.app.a(2)).g(paramBoolean);
+    while (adic.a(this.a) == null) {
+      return;
+    }
+    adic.a(this.a).b();
   }
 }
 

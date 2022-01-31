@@ -1,7 +1,4 @@
-public abstract interface apcf
-{
-  public abstract void a(int paramInt);
-}
+public abstract interface apcf {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

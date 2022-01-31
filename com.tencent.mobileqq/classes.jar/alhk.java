@@ -1,41 +1,136 @@
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 public class alhk
 {
-  public float a;
-  public int a;
-  public ApolloActionData a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  private static alhk jdField_a_of_type_Alhk;
+  alhj jdField_a_of_type_Alhj;
+  alhl jdField_a_of_type_Alhl = new alhl();
+  alhn jdField_a_of_type_Alhn;
   
-  public Drawable a(Context paramContext, float paramFloat)
+  static alhk a()
   {
-    return baiy.a(paramContext.getResources(), this.h);
+    if (jdField_a_of_type_Alhk == null) {
+      jdField_a_of_type_Alhk = new alhk();
+    }
+    return jdField_a_of_type_Alhk;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo) {}
-  
-  public String toString()
+  static SharedPreferences a()
   {
-    if (this.a != null)
+    return BaseApplication.getContext().getSharedPreferences("config_qq.android.tmg_opensdk", 4);
+  }
+  
+  public static String a()
+  {
+    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localObject == null)
     {
-      StringBuilder localStringBuilder = new StringBuilder("[");
-      localStringBuilder.append("id: ").append(this.a.actionId).append(", name: ").append(this.a.actionName).append(", peerUin: ").append(this.a.peerUin).append(", peopleNum: ").append(this.a.personNum).append(", feeType: ").append(this.a.feeType).append(", inputText: ").append(this.a.inputText).append(",actionText: ").append(this.b).append(",textType: ").append(this.d).append("]");
-      return localStringBuilder.toString();
+      if (QLog.isColorLevel()) {
+        QLog.i("TMG_Downloader", 2, "getFilesDir is null");
+      }
+      localObject = "";
     }
-    return "ApolloActionData is null";
+    String str;
+    File localFile;
+    do
+    {
+      return localObject;
+      str = ((File)localObject).getParent() + "/txlib/tmg/";
+      localFile = new File(str);
+      localObject = str;
+    } while (localFile.exists());
+    localFile.mkdirs();
+    return str;
+  }
+  
+  public static String a(alhj paramalhj)
+  {
+    return a() + "tmg_sdk_" + paramalhj.a + "_" + paramalhj.b + ".zip";
+  }
+  
+  public static void a()
+  {
+    ArrayList localArrayList = bdhb.a(a());
+    if (localArrayList != null)
+    {
+      int i = 0;
+      while (i < localArrayList.size())
+      {
+        QLog.e("TMG_Downloader", 1, String.format("ListSoDirs file i=" + i + ", name=" + (String)localArrayList.get(i), new Object[0]));
+        i += 1;
+      }
+    }
+  }
+  
+  static void a(String paramString)
+  {
+    SharedPreferences.Editor localEditor = a().edit();
+    localEditor.putString("tmg_opensdk_download_md5", paramString);
+    localEditor.commit();
+  }
+  
+  static String b()
+  {
+    return a().getString("tmg_opensdk_download_md5", null);
+  }
+  
+  public static boolean b(alhj paramalhj)
+  {
+    String str1 = paramalhj.b;
+    paramalhj = a(paramalhj);
+    String str2 = b();
+    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TMG_Downloader", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
+      }
+    }
+    do
+    {
+      return false;
+      if (bdhb.a(paramalhj)) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.d("TMG_Downloader", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramalhj }));
+    return false;
+    a();
+    return true;
+  }
+  
+  boolean a(alhj paramalhj)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface))
+    {
+      if (((QQAppInterface)localAppRuntime).getManager(21) == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("TMG_Downloader", 4, "innerDownload, getNetEngine 为空");
+        }
+        return false;
+      }
+    }
+    else if (QLog.isDevelopLevel()) {
+      QLog.d("TMG_Downloader", 4, "appRuntime 不是 QQAppInterface");
+    }
+    this.jdField_a_of_type_Alhj = paramalhj;
+    return this.jdField_a_of_type_Alhl.a(paramalhj, this.jdField_a_of_type_Alhn);
+  }
+  
+  boolean a(alhj paramalhj, alhn paramalhn)
+  {
+    this.jdField_a_of_type_Alhn = paramalhn;
+    return a(paramalhj);
   }
 }
 

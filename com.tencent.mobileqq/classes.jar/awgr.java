@@ -1,14 +1,22 @@
-public final class awgr
-  extends awgp
+import com.tencent.mobileqq.persistence.EntityDaoRegister;
+
+public class awgr
 {
-  protected int c()
+  public static awgr a = new awgr();
+  
+  public static awgr a()
   {
-    return 519;
+    return a;
+  }
+  
+  public awgq a(Class paramClass)
+  {
+    return EntityDaoRegister.a(paramClass);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awgr
  * JD-Core Version:    0.7.0.1
  */

@@ -82,8 +82,8 @@ class mda
   
   static void a(TextView paramTextView, int paramInt1, int paramInt2)
   {
-    paramTextView.setTag(2131377379, Integer.valueOf(paramInt2));
-    paramTextView.setTag(2131377380, Integer.valueOf(paramInt1));
+    paramTextView.setTag(2131377433, Integer.valueOf(paramInt2));
+    paramTextView.setTag(2131377434, Integer.valueOf(paramInt1));
     paramTextView.setMovementMethod((lwl)lwl.a());
     paramTextView.setHighlightColor(0);
   }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.view;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -29,7 +29,7 @@ public class QQStoryVideoPlayerErrorView
   
   public void a()
   {
-    this.a.setText(alpo.a(2131711472));
+    this.a.setText(alud.a(2131711484));
     this.a.setVisibility(0);
     this.b.setVisibility(8);
   }
@@ -42,9 +42,9 @@ public class QQStoryVideoPlayerErrorView
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559392, this, true);
-    this.a = ((TextView)paramContext.findViewById(2131375684));
-    this.b = ((TextView)paramContext.findViewById(2131377844));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559391, this, true);
+    this.a = ((TextView)paramContext.findViewById(2131375735));
+    this.b = ((TextView)paramContext.findViewById(2131377898));
   }
   
   public void setOnRetryClickListener(View.OnClickListener paramOnClickListener)

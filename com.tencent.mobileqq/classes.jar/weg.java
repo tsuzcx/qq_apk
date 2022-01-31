@@ -1,29 +1,10 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import android.content.Context;
+import android.view.View;
 
 public class weg
-  extends SimpleObserver<weh>
+  implements uqm
 {
-  public weg(wec paramwec) {}
-  
-  public void a(weh paramweh)
-  {
-    super.onNext(paramweh);
-    wec.a(this.a, paramweh, false, new ErrorMessage());
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    wsv.d("Q.qqstory.detail.DetailFeedAllInfoPuller", "refresh data cancel");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    wec.a(this.a, null, false, (ErrorMessage)paramError);
-  }
+  public void a(Context paramContext, View paramView) {}
 }
 
 

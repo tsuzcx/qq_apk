@@ -1,599 +1,386 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.RectF;
-import android.view.View;
-import android.view.animation.AnimationUtils;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
+import tencent.im.msg.im_msg_body.CustomFace;
+import tencent.im.msg.im_msg_body.NotOnlineImage;
 
-public class awik
-  extends awht
+class awik
+  implements bbce
 {
-  public int a;
-  public long a;
-  public Context a;
-  RectF jdField_a_of_type_AndroidGraphicsRectF;
-  public View a;
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  awht jdField_a_of_type_Awht;
-  awiq jdField_a_of_type_Awiq;
-  public awjb a;
-  public boolean a;
-  public int b;
-  public long b;
-  awht b;
-  int c;
-  int d;
-  public int e;
-  public int k;
-  public int l;
-  public int m;
-  private int n;
+  private volatile long jdField_a_of_type_Long;
+  private Random jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
   
-  public RectF a(int paramInt)
+  awik(awij paramawij) {}
+  
+  private int a()
   {
-    float f = this.h / 4;
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.f - f, this.g - f + this.k - paramInt, this.f + this.h + f, f + (this.g + this.i) + this.k - paramInt);
-    return this.jdField_a_of_type_AndroidGraphicsRectF;
+    ArrayList localArrayList = this.jdField_a_of_type_Awij.jdField_a_of_type_JavaUtilArrayList;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        Iterator localIterator = this.jdField_a_of_type_Awij.jdField_a_of_type_JavaUtilArrayList.iterator();
+        if (localIterator.hasNext())
+        {
+          if (((awjm)localIterator.next()).jdField_a_of_type_Int == -2) {
+            i += 1;
+          }
+        }
+        else {
+          return i;
+        }
+      }
+      finally {}
+    }
   }
   
-  public void a()
+  private String a(awjf paramawjf)
   {
-    float f1 = 1.0F;
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    float f2 = (float)(AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long) * 1.0F / (float)this.jdField_b_of_type_Long;
-    float f3;
-    if (this.jdField_a_of_type_AndroidViewAnimationInterpolator != null)
+    Object localObject3 = null;
+    if (paramawjf.jdField_a_of_type_Awju.l == 1) {}
+    Object localObject1;
+    for (int i = 1; paramawjf.jdField_a_of_type_Int >= 0; i = 0)
     {
-      f3 = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f2);
-      if (f3 <= 1.0F) {}
+      localObject1 = paramawjf.jdField_a_of_type_Awju.jdField_g_of_type_JavaLangString;
+      return localObject1;
+    }
+    if (bdhb.b(paramawjf.jdField_a_of_type_Awju.jdField_g_of_type_JavaLangString))
+    {
+      localObject1 = new CompressInfo(paramawjf.jdField_a_of_type_Awju.jdField_g_of_type_JavaLangString, 0, 1009);
+      awkj.a((CompressInfo)localObject1);
+      localObject1 = ((CompressInfo)localObject1).e;
+      awiw.a(this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.b, this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a, "uploadForwardMultiMsgPics.getTargetPicFilepath", "Compress raw to big compress image at " + (String)localObject1);
     }
     for (;;)
     {
-      f3 = this.m;
-      a((int)(f1 * (this.l - this.m) + f3));
-      if (f2 <= 0.99D) {
-        break;
-      }
-      switch (this.e)
+      if (localObject1 == null)
       {
-      case 2: 
-      default: 
-        d();
-        return;
-      case 1: 
-        this.e = 3;
-        b();
+        Object localObject2 = bayu.a(paramawjf, 1, null);
+        if (localObject2 != null) {}
+        for (localObject2 = baqn.d(((URL)localObject2).toString()); bdhb.b((String)localObject2); localObject2 = null)
+        {
+          awiw.a(this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.b, this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a, "uploadForwardMultiMsgPics.getTargetPicFilepath", "find big compress image at " + (String)localObject2);
+          return localObject2;
+        }
+        localObject2 = localObject1;
+        if (i != 0)
+        {
+          localObject2 = bayu.a(paramawjf, 131075, null);
+          if (localObject2 == null) {
+            break label416;
+          }
+        }
+        label416:
+        for (String str = baqn.d(((URL)localObject2).toString());; str = null)
+        {
+          localObject2 = localObject1;
+          if (bdhb.b(str))
+          {
+            localObject1 = new CompressInfo(str, 0);
+            ((CompressInfo)localObject1).jdField_a_of_type_Int = 1009;
+            awkj.a((CompressInfo)localObject1);
+            localObject2 = ((CompressInfo)localObject1).e;
+            awiw.a(this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.b, this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a, "uploadForwardMultiMsgPics.getTargetPicFilepath", "Compress raw to big compress image at " + (String)localObject2);
+          }
+          localObject1 = localObject2;
+          if (localObject2 != null) {
+            break;
+          }
+          localObject1 = bayu.a(paramawjf, 65537, null);
+          paramawjf = localObject3;
+          if (localObject1 != null) {
+            paramawjf = baqn.d(((URL)localObject1).toString());
+          }
+          localObject1 = localObject2;
+          if (!bdhb.b(paramawjf)) {
+            break;
+          }
+          awiw.a(this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.b, this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a, "uploadForwardMultiMsgPics.getTargetPicFilepath", "find thumb image at " + paramawjf);
+          return paramawjf;
+        }
+      }
+      return localObject1;
+      localObject1 = null;
+    }
+  }
+  
+  private im_msg_body.CustomFace a(im_msg_body.NotOnlineImage paramNotOnlineImage)
+  {
+    im_msg_body.CustomFace localCustomFace = new im_msg_body.CustomFace();
+    try
+    {
+      localCustomFace.uint32_file_id.set(paramNotOnlineImage.uint32_file_id.get());
+      localCustomFace.uint32_file_type.set(Integer.valueOf(66).intValue());
+      localCustomFace.uint32_useful.set(1);
+      if (((QQAppInterface)this.jdField_a_of_type_Awij.jdField_a_of_type_JavaLangRefWeakReference.get()).a() != null) {
+        localCustomFace.bytes_signature.set(ByteStringMicro.copyFrom(((QQAppInterface)this.jdField_a_of_type_Awij.jdField_a_of_type_JavaLangRefWeakReference.get()).a()));
+      }
+      localCustomFace.bytes_md5.set(ByteStringMicro.copyFrom(paramNotOnlineImage.pic_md5.get().toByteArray()));
+      if (paramNotOnlineImage.res_id.has()) {
+        localCustomFace.str_file_path.set(paramNotOnlineImage.res_id.get().toStringUtf8());
+      }
+      for (;;)
+      {
+        localCustomFace.uint32_origin.set(paramNotOnlineImage.original.get());
+        localCustomFace.biz_type.set(4);
+        localCustomFace.uint32_source.set(104);
+        localCustomFace.uint32_width.set(paramNotOnlineImage.pic_width.get());
+        localCustomFace.uint32_height.set(paramNotOnlineImage.pic_height.get());
+        localCustomFace.uint32_size.set(paramNotOnlineImage.file_len.get());
+        localCustomFace.uint32_thumb_width.set(paramNotOnlineImage.uint32_thumb_width.get());
+        localCustomFace.uint32_thumb_height.set(paramNotOnlineImage.uint32_thumb_height.get());
+        localCustomFace.image_type.set(paramNotOnlineImage.img_type.get());
+        awiw.a(this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.b, this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a, "uploadForwardMultiMsgPics.convert2CustomFace", awij.a(this.jdField_a_of_type_Awij, localCustomFace));
+        return localCustomFace;
+        if (paramNotOnlineImage.download_path.has()) {
+          localCustomFace.str_file_path.set(paramNotOnlineImage.download_path.get().toStringUtf8());
+        }
+      }
+      return null;
+    }
+    catch (Exception paramNotOnlineImage)
+    {
+      awiw.b(this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.b, this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a, "uploadForwardMultiMsgPics.convert2CustomFace", "Exception, " + paramNotOnlineImage.toString());
+    }
+  }
+  
+  private im_msg_body.NotOnlineImage a(im_msg_body.CustomFace paramCustomFace)
+  {
+    im_msg_body.NotOnlineImage localNotOnlineImage = new im_msg_body.NotOnlineImage();
+    try
+    {
+      localNotOnlineImage.uint32_file_id.set(paramCustomFace.uint32_file_id.get());
+      localNotOnlineImage.download_path.set(ByteStringMicro.copyFromUtf8("BADBADBAD"));
+      Object localObject = new StringBuilder();
+      long l = this.jdField_a_of_type_Long;
+      this.jdField_a_of_type_Long = (1L + l);
+      localObject = l + "BADBADBAD" + this.jdField_a_of_type_JavaUtilRandom.nextInt();
+      localNotOnlineImage.res_id.set(ByteStringMicro.copyFromUtf8((String)localObject));
+      localNotOnlineImage.file_path.set(ByteStringMicro.copyFromUtf8(paramCustomFace.str_file_path.get()));
+      localNotOnlineImage.file_len.set(paramCustomFace.uint32_size.get());
+      localNotOnlineImage.pic_md5.set(paramCustomFace.bytes_md5.get());
+      localNotOnlineImage.pic_height.set(paramCustomFace.uint32_height.get());
+      localNotOnlineImage.pic_width.set(paramCustomFace.uint32_width.get());
+      localNotOnlineImage.original.set(paramCustomFace.uint32_origin.get());
+      localNotOnlineImage.img_type.set(paramCustomFace.image_type.get());
+      localNotOnlineImage.biz_type.set(4);
+      localNotOnlineImage.uint32_thumb_width.set(paramCustomFace.uint32_thumb_width.get());
+      localNotOnlineImage.uint32_thumb_height.set(paramCustomFace.uint32_thumb_height.get());
+      awiw.a(this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.b, this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a, "uploadForwardMultiMsgPics.createNotOnlineImage", "OK, " + awij.a(this.jdField_a_of_type_Awij, localNotOnlineImage));
+      return localNotOnlineImage;
+    }
+    catch (Exception paramCustomFace)
+    {
+      awiw.a(this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.b, this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a, "uploadForwardMultiMsgPics.createNotOnlineImage", "Failed, Exception" + paramCustomFace.toString());
+    }
+    return null;
+  }
+  
+  private void a()
+  {
+    int i = this.jdField_a_of_type_Awij.jdField_a_of_type_JavaUtilList.size();
+    int j = a();
+    awjm localawjm = new awjm();
+    localawjm.jdField_a_of_type_Int = 0;
+    localawjm.jdField_a_of_type_JavaLangObject = Integer.valueOf(i - j);
+    this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a(6, 0, localawjm);
+  }
+  
+  private boolean a(awjf paramawjf)
+  {
+    if (paramawjf != null)
+    {
+      awiw.a(this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.b, this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a, "checkFowardPicInfo", "info:" + paramawjf);
+      if (paramawjf.jdField_a_of_type_Awju == null)
+      {
+        paramawjf.a("PicFowardInfo.check", "upInfo == null");
+        return false;
+      }
+      if (((paramawjf.jdField_a_of_type_Awju.b == 1000) || (paramawjf.jdField_a_of_type_Awju.b == 1020) || (paramawjf.jdField_a_of_type_Awju.b == 1004)) && (paramawjf.jdField_a_of_type_Awju.d == null))
+      {
+        paramawjf.a("PicFowardInfo.check", "secondId invalid,uinType:" + paramawjf.jdField_a_of_type_Awju.b + ",secondId:" + paramawjf.jdField_a_of_type_Awju.d);
+        return false;
+      }
+      if (paramawjf.jdField_a_of_type_Awju.jdField_g_of_type_Int == -1)
+      {
+        paramawjf.a("PicFowardInfo.check", "protocolType invalid,protocolType:" + paramawjf.jdField_a_of_type_Awju.jdField_g_of_type_Int);
+        return false;
+      }
+      if (a(paramawjf) != null) {
+        return true;
+      }
+      paramawjf.a("PicFowardInfo.check", "getForwardMultiMsgPicsTargetFilepath == null");
+      return false;
+    }
+    awiw.b(this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.b, this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a, "checkFowardPicInfo", "info == null");
+    return false;
+  }
+  
+  private void b()
+  {
+    new awil(this).execute(new Void[0]);
+  }
+  
+  public void a(bbax parambbax, bbbm parambbbm)
+  {
+    awiw.a(this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.b, this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a, "uploadForwardMultiMsgPics.onBusiProtoResp", "start");
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiMsg_TAG", 2, "onBusiProtoResp miao size =  [" + parambbbm.jdField_a_of_type_JavaUtilList.size());
+    }
+    if ((parambbax != null) && (parambbbm != null))
+    {
+      i = 0;
+      if (i < parambbbm.jdField_a_of_type_JavaUtilList.size())
+      {
+        Object localObject1 = (awjf)this.jdField_a_of_type_Awij.jdField_a_of_type_JavaUtilList.get(i);
+        awjm localawjm = (awjm)this.jdField_a_of_type_Awij.jdField_a_of_type_JavaUtilArrayList.get(i);
+        Object localObject2 = (bbbz)parambbbm.jdField_a_of_type_JavaUtilList.get(i);
+        if ((localObject2 instanceof bbbo))
+        {
+          localObject2 = (bbbo)localObject2;
+          awiw.a(this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.b, this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a, "uploadForwardMultiMsgPics.onBusiProtoResp", "C2CPicUpResp[" + i + "]," + ((bbbo)localObject2).toString());
+          if ((((bbbo)localObject2).c == 0) && (((bbbo)localObject2).jdField_a_of_type_Boolean))
+          {
+            localObject2 = this.jdField_a_of_type_Awij.a((bbbg)parambbax.jdField_a_of_type_JavaUtilList.get(i), (bbbo)localObject2, i);
+            if ((((awjf)localObject1).jdField_a_of_type_Awjd.b != 1) && (((awjf)localObject1).jdField_a_of_type_Awjd.b != 3000)) {
+              break label412;
+            }
+            awiw.a(this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.b, this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a, "uploadForwardMultiMsgPics.onBusiProtoResp", "convert2CustomFace for [" + i + "] ");
+            localObject1 = a((im_msg_body.NotOnlineImage)localObject2);
+            if (localObject1 != null)
+            {
+              localawjm.jdField_a_of_type_Int = 0;
+              localawjm.jdField_a_of_type_JavaLangObject = localObject1;
+              a();
+              if (QLog.isColorLevel()) {
+                QLog.d("MultiMsg_TAG", 2, "[uploadForwardMultiMsgPics] upload [" + i + "] success, picture is exsit");
+              }
+            }
+          }
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          label412:
+          if (localObject2 != null)
+          {
+            localawjm.jdField_a_of_type_Int = 0;
+            localawjm.jdField_a_of_type_JavaLangObject = localObject2;
+            a();
+            if (QLog.isColorLevel())
+            {
+              QLog.d("MultiMsg_TAG", 2, "[uploadForwardMultiMsgPics] upload [" + i + "] success, picture is exsit");
+              continue;
+              if ((localObject2 instanceof bbbr))
+              {
+                localObject2 = (bbbr)localObject2;
+                awiw.a(this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.b, this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a, "uploadForwardMultiMsgPics.onBusiProtoResp", "GroupPicUpResp[" + i + "]," + ((bbbr)localObject2).toString());
+                if ((((bbbr)localObject2).c == 0) && (((bbbr)localObject2).jdField_a_of_type_Boolean))
+                {
+                  localObject2 = this.jdField_a_of_type_Awij.a((bbbg)parambbax.jdField_a_of_type_JavaUtilList.get(i), (bbbr)localObject2, i);
+                  if ((((awjf)localObject1).jdField_a_of_type_Awjd.b == 1) || (((awjf)localObject1).jdField_a_of_type_Awjd.b == 3000))
+                  {
+                    if (localObject2 != null)
+                    {
+                      localawjm.jdField_a_of_type_Int = 0;
+                      localawjm.jdField_a_of_type_JavaLangObject = localObject2;
+                      a();
+                      if (QLog.isColorLevel()) {
+                        QLog.d("MultiMsg_TAG", 2, "[uploadForwardMultiMsgPics] upload [" + i + "] success, picture is exsit");
+                      }
+                    }
+                  }
+                  else
+                  {
+                    awiw.a(this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.b, this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a, "uploadForwardMultiMsgPics.onBusiProtoResp", "convert2NotOnlineImage for [" + i + "] ");
+                    localObject1 = a((im_msg_body.CustomFace)localObject2);
+                    if (localObject1 != null)
+                    {
+                      localawjm.jdField_a_of_type_Int = 0;
+                      localawjm.jdField_a_of_type_JavaLangObject = localObject1;
+                      a();
+                      if (QLog.isColorLevel()) {
+                        QLog.d("MultiMsg_TAG", 2, "[uploadForwardMultiMsgPics] upload [" + i + "] success, picture is exsit");
+                      }
+                    }
+                  }
+                }
+              }
+              else
+              {
+                awiw.b(this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.b, this.jdField_a_of_type_Awij.jdField_a_of_type_Awih.a, "uploadForwardMultiMsgPics.onBusiProtoResp", "Unkown response type[" + i + "] " + localObject2.getClass().getSimpleName());
+              }
+            }
+          }
+        }
+      }
+    }
+    int i = a();
+    if (i > 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg_TAG", 2, "[uploadForwardMultiMsgPics] need upload [" + i + "] pictures");
+      }
+      int k = 0;
+      for (int j = 0; k < this.jdField_a_of_type_Awij.jdField_a_of_type_JavaUtilArrayList.size(); j = i)
+      {
+        parambbax = (awjf)this.jdField_a_of_type_Awij.jdField_a_of_type_JavaUtilList.get(k);
+        parambbbm = (awjm)this.jdField_a_of_type_Awij.jdField_a_of_type_JavaUtilArrayList.get(k);
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiMsg_TAG", 2, "[uploadForwardMultiMsgPics] miao mIsChange  info.upInfo.localPath =  " + parambbax.jdField_a_of_type_Awju.jdField_g_of_type_JavaLangString);
+        }
+        i = j;
+        if (parambbbm.jdField_a_of_type_Int == -2)
+        {
+          i = j;
+          if (!a(parambbax))
+          {
+            parambbax.jdField_a_of_type_Awju.jdField_g_of_type_JavaLangString = aupg.a((QQAppInterface)this.jdField_a_of_type_Awij.jdField_a_of_type_JavaLangRefWeakReference.get());
+            parambbax.jdField_a_of_type_Awju.jdField_f_of_type_JavaLangString = bdhb.c(parambbax.jdField_a_of_type_Awju.jdField_g_of_type_JavaLangString);
+            parambbax.jdField_a_of_type_Awju.l = 1;
+            parambbax.jdField_a_of_type_Awju.j = 242;
+            parambbax.jdField_a_of_type_Awju.k = 192;
+            parambbax.jdField_a_of_type_Awju.c = aupg.a();
+            parambbax.jdField_a_of_type_Awju.h = parambbax.jdField_a_of_type_Awju.jdField_g_of_type_JavaLangString;
+            parambbax.jdField_a_of_type_Awju.jdField_f_of_type_Int = 192;
+            parambbax.jdField_a_of_type_Awju.e = 242;
+            parambbax.jdField_a_of_type_Awjd.jdField_f_of_type_JavaLangString = parambbax.jdField_a_of_type_Awju.jdField_f_of_type_JavaLangString;
+            parambbbm.b = true;
+            j = 1;
+            i = j;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("MultiMsg_TAG", 2, "[uploadForwardMultiMsgPics] miao mIsChange  info.upInfo.localPath =  " + parambbax.jdField_a_of_type_Awju.jdField_g_of_type_JavaLangString);
+              i = j;
+            }
+          }
+        }
+        k += 1;
+      }
+      if ((j != 0) && (!this.jdField_a_of_type_Awij.jdField_a_of_type_Boolean))
+      {
+        this.jdField_a_of_type_Awij.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Awij.a(new Void[0]);
         return;
       }
-      this.e = 2;
+      this.jdField_a_of_type_Awij.jdField_a_of_type_Boolean = false;
+      b();
       return;
-      f1 = f3;
-      continue;
-      f1 = f2;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    float f1 = 1.0F * paramInt / this.d;
-    float f2 = this.c - this.d;
-    this.g = paramInt;
-    if (this.jdField_a_of_type_Awht != null) {
-      this.jdField_a_of_type_Awht.i = ((int)(f1 * f2) + paramInt);
-    }
-    if (this.jdField_a_of_type_Awiq != null) {
-      this.jdField_a_of_type_Awiq.d = paramInt;
-    }
-    if (this.jdField_b_of_type_Awht != null) {
-      this.jdField_b_of_type_Awht.g = (this.i + paramInt + this.n);
-    }
-    if (this.jdField_a_of_type_Awjb != null) {
-      this.jdField_a_of_type_Awjb.a(this.f + this.h / 2, this.g);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
-  {
-    super.a(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Awht = new awht();
-    paramInt2 = (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131298079);
-    this.c = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131298078));
-    paramInt3 = this.h / 2;
-    paramInt4 = paramInt2 / 2;
-    this.jdField_a_of_type_Awht.a = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844819);
-    this.jdField_a_of_type_Awht.a(paramInt3 + paramInt1 - paramInt4, 0, paramInt2, this.c, paramView);
-  }
-  
-  public void a(int paramInt, long paramLong)
-  {
-    this.m = this.jdField_a_of_type_Int;
-    this.l = (this.jdField_a_of_type_Int + paramInt);
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
-    this.e = 1;
-    a(paramLong);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  /* Error */
-  public void a(boolean paramBoolean, android.graphics.Bitmap paramBitmap)
-  {
-    // Byte code:
-    //   0: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +28 -> 31
-    //   6: ldc 157
-    //   8: iconst_2
-    //   9: new 159	java/lang/StringBuilder
-    //   12: dup
-    //   13: invokespecial 160	java/lang/StringBuilder:<init>	()V
-    //   16: ldc 162
-    //   18: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: aload_2
-    //   22: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   25: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   28: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   31: aload_0
-    //   32: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   35: invokevirtual 181	android/view/View:getResources	()Landroid/content/res/Resources;
-    //   38: ldc 182
-    //   40: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   43: fstore_3
-    //   44: fload_3
-    //   45: f2i
-    //   46: istore 8
-    //   48: aload_0
-    //   49: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   52: invokevirtual 181	android/view/View:getResources	()Landroid/content/res/Resources;
-    //   55: ldc 183
-    //   57: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   60: f2i
-    //   61: istore 13
-    //   63: aload_0
-    //   64: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   67: invokevirtual 181	android/view/View:getResources	()Landroid/content/res/Resources;
-    //   70: ldc 184
-    //   72: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   75: f2i
-    //   76: istore 10
-    //   78: aload_0
-    //   79: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   82: invokevirtual 181	android/view/View:getResources	()Landroid/content/res/Resources;
-    //   85: ldc 185
-    //   87: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   90: f2i
-    //   91: istore 9
-    //   93: aload_0
-    //   94: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   97: invokevirtual 189	android/view/View:getWidth	()I
-    //   100: iload 13
-    //   102: isub
-    //   103: iload 10
-    //   105: isub
-    //   106: istore 10
-    //   108: aload_0
-    //   109: iload 9
-    //   111: putfield 85	awik:d	I
-    //   114: aload_2
-    //   115: astore 16
-    //   117: aload_2
-    //   118: ifnonnull +31 -> 149
-    //   121: aload_0
-    //   122: getfield 191	awik:jdField_b_of_type_Int	I
-    //   125: iconst_1
-    //   126: if_icmpne +358 -> 484
-    //   129: aload_0
-    //   130: getfield 117	awik:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   133: invokevirtual 123	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   136: ldc 192
-    //   138: invokestatic 198	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   141: astore 16
-    //   143: aload 16
-    //   145: astore_2
-    //   146: aload_2
-    //   147: astore 16
-    //   149: aload_0
-    //   150: getfield 191	awik:jdField_b_of_type_Int	I
-    //   153: iconst_1
-    //   154: if_icmpne +363 -> 517
-    //   157: aload_0
-    //   158: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   161: invokevirtual 181	android/view/View:getResources	()Landroid/content/res/Resources;
-    //   164: ldc 199
-    //   166: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   169: fstore 6
-    //   171: aload 16
-    //   173: invokevirtual 204	android/graphics/Bitmap:getHeight	()I
-    //   176: i2f
-    //   177: fload 6
-    //   179: fmul
-    //   180: aload 16
-    //   182: invokevirtual 205	android/graphics/Bitmap:getWidth	()I
-    //   185: i2f
-    //   186: fdiv
-    //   187: fstore 5
-    //   189: iload 8
-    //   191: i2f
-    //   192: fstore 4
-    //   194: aload_0
-    //   195: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   198: invokevirtual 181	android/view/View:getResources	()Landroid/content/res/Resources;
-    //   201: ldc 206
-    //   203: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   206: fstore 7
-    //   208: aload_0
-    //   209: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   212: invokevirtual 181	android/view/View:getResources	()Landroid/content/res/Resources;
-    //   215: ldc 207
-    //   217: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   220: fstore_3
-    //   221: fload 4
-    //   223: fload 5
-    //   225: fsub
-    //   226: fload 7
-    //   228: fsub
-    //   229: fstore 7
-    //   231: fload_3
-    //   232: fstore 4
-    //   234: fload 7
-    //   236: fstore_3
-    //   237: aload_0
-    //   238: getfield 92	awik:jdField_a_of_type_Awiq	Lawiq;
-    //   241: ifnonnull +96 -> 337
-    //   244: aload_0
-    //   245: new 94	awiq
-    //   248: dup
-    //   249: aload_0
-    //   250: getfield 117	awik:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   253: iload 13
-    //   255: iload 8
-    //   257: iload 10
-    //   259: iload 9
-    //   261: fload 4
-    //   263: f2i
-    //   264: fload_3
-    //   265: f2i
-    //   266: fload 6
-    //   268: f2i
-    //   269: fload 5
-    //   271: f2i
-    //   272: invokespecial 210	awiq:<init>	(Landroid/content/Context;IIIIIIII)V
-    //   275: putfield 92	awik:jdField_a_of_type_Awiq	Lawiq;
-    //   278: aload_0
-    //   279: getfield 92	awik:jdField_a_of_type_Awiq	Lawiq;
-    //   282: aload_0
-    //   283: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   286: invokevirtual 181	android/view/View:getResources	()Landroid/content/res/Resources;
-    //   289: ldc 211
-    //   291: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   294: f2i
-    //   295: putfield 212	awiq:i	I
-    //   298: aload_0
-    //   299: getfield 92	awik:jdField_a_of_type_Awiq	Lawiq;
-    //   302: aload_0
-    //   303: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   306: invokevirtual 181	android/view/View:getResources	()Landroid/content/res/Resources;
-    //   309: ldc 213
-    //   311: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   314: f2i
-    //   315: putfield 216	awiq:j	I
-    //   318: aload_0
-    //   319: getfield 92	awik:jdField_a_of_type_Awiq	Lawiq;
-    //   322: aload_0
-    //   323: getfield 117	awik:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   326: invokevirtual 123	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   329: ldc 217
-    //   331: invokestatic 198	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   334: invokevirtual 220	awiq:c	(Landroid/graphics/Bitmap;)V
-    //   337: aload_0
-    //   338: getfield 92	awik:jdField_a_of_type_Awiq	Lawiq;
-    //   341: fload 4
-    //   343: f2i
-    //   344: putfield 221	awiq:e	I
-    //   347: aload_0
-    //   348: getfield 92	awik:jdField_a_of_type_Awiq	Lawiq;
-    //   351: fload_3
-    //   352: f2i
-    //   353: putfield 222	awiq:f	I
-    //   356: aload_0
-    //   357: getfield 92	awik:jdField_a_of_type_Awiq	Lawiq;
-    //   360: fload 6
-    //   362: f2i
-    //   363: putfield 223	awiq:g	I
-    //   366: aload_0
-    //   367: getfield 92	awik:jdField_a_of_type_Awiq	Lawiq;
-    //   370: fload 5
-    //   372: f2i
-    //   373: putfield 224	awiq:h	I
-    //   376: aload_0
-    //   377: getfield 191	awik:jdField_b_of_type_Int	I
-    //   380: iconst_1
-    //   381: if_icmpne +206 -> 587
-    //   384: aload_0
-    //   385: getfield 92	awik:jdField_a_of_type_Awiq	Lawiq;
-    //   388: aload_0
-    //   389: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   392: invokevirtual 181	android/view/View:getResources	()Landroid/content/res/Resources;
-    //   395: ldc 225
-    //   397: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   400: f2i
-    //   401: putfield 226	awiq:k	I
-    //   404: aload_0
-    //   405: getfield 92	awik:jdField_a_of_type_Awiq	Lawiq;
-    //   408: aload_0
-    //   409: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   412: invokevirtual 181	android/view/View:getResources	()Landroid/content/res/Resources;
-    //   415: ldc 227
-    //   417: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   420: f2i
-    //   421: putfield 228	awiq:l	I
-    //   424: aload_0
-    //   425: getfield 191	awik:jdField_b_of_type_Int	I
-    //   428: iconst_3
-    //   429: if_icmpne +189 -> 618
-    //   432: aload_0
-    //   433: getfield 92	awik:jdField_a_of_type_Awiq	Lawiq;
-    //   436: aload 16
-    //   438: invokevirtual 230	awiq:a	(Landroid/graphics/Bitmap;)V
-    //   441: aload_0
-    //   442: getfield 92	awik:jdField_a_of_type_Awiq	Lawiq;
-    //   445: invokevirtual 232	awiq:a	()V
-    //   448: aload_0
-    //   449: iload 10
-    //   451: iload 9
-    //   453: iload 13
-    //   455: iload 8
-    //   457: aload_0
-    //   458: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   461: invokevirtual 233	awik:a	(IIIILandroid/view/View;)V
-    //   464: iload_1
-    //   465: ifeq +165 -> 630
-    //   468: aload_0
-    //   469: aconst_null
-    //   470: putfield 97	awik:jdField_b_of_type_Awht	Lawht;
-    //   473: aload_0
-    //   474: invokevirtual 234	awik:a	()V
-    //   477: return
-    //   478: astore_2
-    //   479: aload_2
-    //   480: invokevirtual 237	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   483: return
-    //   484: aload_0
-    //   485: getfield 117	awik:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   488: invokevirtual 123	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   491: ldc 238
-    //   493: invokestatic 198	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   496: astore 16
-    //   498: aload 16
-    //   500: astore_2
-    //   501: goto -355 -> 146
-    //   504: astore 16
-    //   506: aload 16
-    //   508: invokevirtual 237	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   511: aload_2
-    //   512: astore 16
-    //   514: goto -365 -> 149
-    //   517: aload_0
-    //   518: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   521: invokevirtual 181	android/view/View:getResources	()Landroid/content/res/Resources;
-    //   524: ldc 239
-    //   526: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   529: fstore_3
-    //   530: iload 8
-    //   532: i2f
-    //   533: fstore 5
-    //   535: aload_0
-    //   536: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   539: invokevirtual 181	android/view/View:getResources	()Landroid/content/res/Resources;
-    //   542: ldc 240
-    //   544: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   547: fstore 6
-    //   549: iload 13
-    //   551: i2f
-    //   552: fload_3
-    //   553: fsub
-    //   554: fconst_2
-    //   555: fdiv
-    //   556: fstore 4
-    //   558: fload 5
-    //   560: fload_3
-    //   561: fsub
-    //   562: fload 6
-    //   564: fsub
-    //   565: fstore 7
-    //   567: fload_3
-    //   568: fstore 5
-    //   570: fload_3
-    //   571: fstore 6
-    //   573: fload 7
-    //   575: fstore_3
-    //   576: goto -339 -> 237
-    //   579: astore_2
-    //   580: aload_2
-    //   581: invokevirtual 237	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   584: goto -247 -> 337
-    //   587: aload_0
-    //   588: getfield 92	awik:jdField_a_of_type_Awiq	Lawiq;
-    //   591: iconst_0
-    //   592: putfield 226	awiq:k	I
-    //   595: aload_0
-    //   596: getfield 92	awik:jdField_a_of_type_Awiq	Lawiq;
-    //   599: aload_0
-    //   600: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   603: invokevirtual 181	android/view/View:getResources	()Landroid/content/res/Resources;
-    //   606: ldc 241
-    //   608: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   611: f2i
-    //   612: putfield 228	awiq:l	I
-    //   615: goto -191 -> 424
-    //   618: aload_0
-    //   619: getfield 92	awik:jdField_a_of_type_Awiq	Lawiq;
-    //   622: aload 16
-    //   624: invokevirtual 243	awiq:b	(Landroid/graphics/Bitmap;)V
-    //   627: goto -179 -> 448
-    //   630: aload_0
-    //   631: new 4	awht
-    //   634: dup
-    //   635: invokespecial 115	awht:<init>	()V
-    //   638: putfield 97	awik:jdField_b_of_type_Awht	Lawht;
-    //   641: aload_0
-    //   642: aload_0
-    //   643: getfield 117	awik:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   646: invokevirtual 123	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   649: ldc 244
-    //   651: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   654: f2i
-    //   655: putfield 99	awik:n	I
-    //   658: aload_0
-    //   659: getfield 117	awik:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   662: invokevirtual 123	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   665: ldc 245
-    //   667: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   670: f2i
-    //   671: istore 11
-    //   673: aload_0
-    //   674: getfield 117	awik:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   677: invokevirtual 123	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   680: ldc 246
-    //   682: invokevirtual 130	android/content/res/Resources:getDimension	(I)F
-    //   685: f2i
-    //   686: istore 12
-    //   688: iload 13
-    //   690: iconst_2
-    //   691: idiv
-    //   692: istore 13
-    //   694: iload 11
-    //   696: iconst_2
-    //   697: idiv
-    //   698: istore 14
-    //   700: aload_0
-    //   701: getfield 99	awik:n	I
-    //   704: istore 15
-    //   706: aload_0
-    //   707: getfield 97	awik:jdField_b_of_type_Awht	Lawht;
-    //   710: iload 13
-    //   712: iload 10
-    //   714: iadd
-    //   715: iload 14
-    //   717: isub
-    //   718: iload 15
-    //   720: iload 9
-    //   722: iload 8
-    //   724: iadd
-    //   725: iadd
-    //   726: iload 11
-    //   728: iload 12
-    //   730: aload_0
-    //   731: getfield 178	awik:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   734: invokevirtual 110	awht:a	(IIIILandroid/view/View;)V
-    //   737: goto -264 -> 473
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	740	0	this	awik
-    //   0	740	1	paramBoolean	boolean
-    //   0	740	2	paramBitmap	android.graphics.Bitmap
-    //   43	533	3	f1	float
-    //   192	365	4	f2	float
-    //   187	382	5	f3	float
-    //   169	403	6	f4	float
-    //   206	368	7	f5	float
-    //   46	679	8	i	int
-    //   91	634	9	j	int
-    //   76	639	10	i1	int
-    //   671	56	11	i2	int
-    //   686	43	12	i3	int
-    //   61	654	13	i4	int
-    //   698	20	14	i5	int
-    //   704	22	15	i6	int
-    //   115	384	16	localBitmap1	android.graphics.Bitmap
-    //   504	3	16	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   512	111	16	localBitmap2	android.graphics.Bitmap
-    // Exception table:
-    //   from	to	target	type
-    //   31	44	478	java/lang/OutOfMemoryError
-    //   121	143	504	java/lang/OutOfMemoryError
-    //   484	498	504	java/lang/OutOfMemoryError
-    //   318	337	579	java/lang/OutOfMemoryError
-  }
-  
-  public boolean a(Canvas paramCanvas)
-  {
-    boolean bool2 = false;
-    boolean bool3 = super.a();
-    a();
-    paramCanvas.save();
-    paramCanvas.translate(0.0F, this.k);
-    if ((this.jdField_a_of_type_Awht != null) && (this.j != 0))
-    {
-      this.jdField_a_of_type_Awht.j = this.j;
-      this.jdField_a_of_type_Awht.a(paramCanvas);
-    }
-    super.c(paramCanvas);
-    if (this.jdField_a_of_type_Awiq != null) {}
-    for (boolean bool1 = this.jdField_a_of_type_Awiq.a(paramCanvas);; bool1 = false)
-    {
-      if ((this.jdField_b_of_type_Awht != null) && (this.j != 0))
-      {
-        this.jdField_b_of_type_Awht.j = this.j;
-        this.jdField_b_of_type_Awht.a(paramCanvas);
-      }
-      this.jdField_a_of_type_Awjb.a(paramCanvas);
-      paramCanvas.restore();
-      if ((this.jdField_a_of_type_Boolean) || (bool3) || (bool1)) {
-        bool2 = true;
-      }
-      return bool2;
-    }
-  }
-  
-  public void b()
-  {
-    this.m = this.g;
-    this.l = this.jdField_a_of_type_Int;
-    this.e = 3;
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new awhu();
-    a(1500L);
-  }
-  
-  public void c()
-  {
-    bdjs localbdjs = new bdjs(Float.valueOf(1.0F), Float.valueOf(1.1F), new awil(this));
-    localbdjs.setDuration(500L);
-    localbdjs.setRepeatCount(-1);
-    localbdjs.setRepeatMode(2);
-    a(localbdjs);
-    this.jdField_a_of_type_Awjb.b();
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Long = 1L;
-    this.e = 2;
-    a(this.jdField_a_of_type_Int);
-  }
-  
-  public void e()
-  {
-    super.e();
-    d();
-    this.jdField_b_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Float = 1.0F;
-    if (this.jdField_a_of_type_Awiq != null)
-    {
-      this.jdField_a_of_type_Awiq.jdField_b_of_type_Float = 1.0F;
-      this.jdField_a_of_type_Awiq.jdField_a_of_type_Float = 1.0F;
-    }
+    awij.a(this.jdField_a_of_type_Awij);
   }
 }
 

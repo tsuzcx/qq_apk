@@ -1,6 +1,6 @@
 package com.tencent.biz.ui;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -35,21 +35,21 @@ public class CustomGuideView
   public CustomGuideView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangString = alpo.a(2131703080);
+    this.jdField_a_of_type_JavaLangString = alud.a(2131703092);
     a();
   }
   
   public CustomGuideView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaLangString = alpo.a(2131703080);
+    this.jdField_a_of_type_JavaLangString = alud.a(2131703092);
     a();
   }
   
   public CustomGuideView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaLangString = alpo.a(2131703080);
+    this.jdField_a_of_type_JavaLangString = alud.a(2131703092);
     a();
   }
   

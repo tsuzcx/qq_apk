@@ -1,14 +1,29 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.troopAddFrd.TroopRecommendFriendFragment;
 
-class bcub
-  implements FilenameFilter
+public class bcub
+  extends RecyclerView.OnScrollListener
 {
-  bcub(bcua parambcua, String paramString) {}
+  public bcub(TroopRecommendFriendFragment paramTroopRecommendFriendFragment) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    return paramString.startsWith(this.jdField_a_of_type_JavaLangString);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    TroopRecommendFriendFragment.a(this.a, paramInt);
+    if (paramInt == 0)
+    {
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopRecommendFriendFragment.a(this.a).getItemCount())) {
+        TroopRecommendFriendFragment.a(this.a);
+      }
+    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

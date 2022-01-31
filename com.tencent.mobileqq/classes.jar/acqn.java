@@ -1,22 +1,18 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class acqn
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  private acqn(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public acqn(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.b(paramEditable);
+    ChatSettingForTroop.e(this.a);
+    bdes.a("Grp_set_new", "grpData_admin", "clk_quitgrp", 0, 0, new String[] { this.a.a.troopUin, bdes.a(this.a.a) });
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

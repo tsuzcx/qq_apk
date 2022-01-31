@@ -1,6 +1,25 @@
-abstract interface afli
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
+
+class afli
+  implements bhuk
 {
-  public abstract void a();
+  afli(aflg paramaflg, MessageForDeviceFile paramMessageForDeviceFile, bhuf parambhuf) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    if ("device_groupchat".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.extStr)) {
+      ((zxz)this.jdField_a_of_type_Aflg.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aflg.b();
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      this.jdField_a_of_type_Aflg.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
+  }
 }
 
 

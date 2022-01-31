@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.teamwork.PadInfo;
 
-public class bagc
-  implements DialogInterface.OnClickListener
+public abstract interface bagc
 {
-  public bagc(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  public abstract void a(PadInfo paramPadInfo);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    GroupTeamWorkListActivity.a(this.a);
-  }
+  public abstract void b(PadInfo paramPadInfo);
 }
 
 

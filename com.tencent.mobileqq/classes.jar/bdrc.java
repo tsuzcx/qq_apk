@@ -1,29 +1,25 @@
-import android.view.View;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
 
-class bdrc
-  implements URLDrawableDownListener
+public class bdrc
+  implements bdrb
 {
-  bdrc(bdrb parambdrb, String paramString, URLImageView paramURLImageView) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public bdrc(String paramString, int paramInt)
   {
-    QLog.e("friends_king", 1, "namePlateOfKing drawable fail url = " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public URLDrawable a(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_loop", this.jdField_a_of_type_Int);
+    localBundle.putBoolean("key_use_cache", false);
+    return bduc.a(this.jdField_a_of_type_JavaLangString, "dontCacheMe", paramDrawable, null, this.jdField_a_of_type_JavaLangString, localBundle);
   }
 }
 

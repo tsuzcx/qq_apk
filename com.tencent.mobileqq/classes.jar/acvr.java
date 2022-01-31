@@ -1,53 +1,15 @@
-import android.app.Dialog;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.InterestSwitchEditActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acvr
-  implements View.OnClickListener
+class acvr
+  implements DialogInterface.OnClickListener
 {
-  public acvr(FriendProfileCardActivity paramFriendProfileCardActivity, Card paramCard) {}
+  acvr(acvq paramacvq) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131363577: 
-      if ((FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity) != null) && (FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity).isShowing())) {
-        FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity).dismiss();
-      }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.declaration))
-      {
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X80092EC", "0X80092EC", 0, 0, "", "", "", "");
-        return;
-      }
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X80092E9", "0X80092E9", 0, 0, "", "", "", "");
-      return;
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.declaration)) {
-      PublicFragmentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getActivity(), ExtendFriendEditFragment.class);
-    }
-    for (;;)
-    {
-      if ((FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity) != null) && (FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity).isShowing())) {
-        FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity).dismiss();
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.declaration)) {
-        break;
-      }
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X80092EB", "0X80092EB", 0, 0, "", "", "", "");
-      return;
-      paramView = InterestSwitchEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivityForResult(paramView, 1022);
-    }
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X80092E8", "0X80092E8", 0, 0, "", "", "", "");
+    bdun.a(this.a.a, "mvip.g.a.qnc_gc", "CJCLUBT", -1, false, true);
+    paramDialogInterface.dismiss();
   }
 }
 

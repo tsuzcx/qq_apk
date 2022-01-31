@@ -1,37 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import android.annotation.TargetApi;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.util.Log;
 
 public class bmzr
-  implements Animator.AnimatorListener
 {
-  public bmzr(PickerContainer paramPickerContainer) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  @TargetApi(16)
+  public static int a(MediaExtractor paramMediaExtractor)
   {
-    if (PickerContainer.a(this.a))
+    int j = paramMediaExtractor.getTrackCount();
+    int i = 0;
+    while (i < j)
     {
-      if (PickerContainer.b(this.a).floatValue() < 0.01F) {
-        this.a.setVisibility(4);
+      MediaFormat localMediaFormat = paramMediaExtractor.getTrackFormat(i);
+      String str = localMediaFormat.getString("mime");
+      if (str.startsWith("video/"))
+      {
+        Log.d("VideoUtils", "Extractor selected track " + i + " (" + str + "): " + localMediaFormat);
+        return i;
       }
-      PickerContainer.a(this.a, false);
+      i += 1;
     }
+    return -1;
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (PickerContainer.a(this.a))
-    {
-      if (PickerContainer.b(this.a).floatValue() < 0.01F) {
-        this.a.setVisibility(4);
-      }
-      PickerContainer.a(this.a, false);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

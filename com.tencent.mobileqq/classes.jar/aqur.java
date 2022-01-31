@@ -1,74 +1,53 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 class aqur
-  extends aquk
+  extends aqvc
 {
-  public aqur(aqug paramaqug)
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
+  
+  aqur(aque paramaque, MessageRecord paramMessageRecord)
   {
-    super(paramaqug);
+    super(paramaque);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
   }
   
-  protected String a()
-  {
-    return "StateChangeToOffWhenToOffFailed";
-  }
+  void a(String paramString, int paramInt) {}
   
-  protected void a()
+  void a(String paramString, int paramInt, aqva paramaqva)
   {
-    if (a("onResumeTrans")) {
+    if ("1".equals(this.g))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2DiscTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      }
+      paramaqva.a(aque.a(this.jdField_a_of_type_Long, false), false);
       return;
     }
-    aqug.a(this.jdField_a_of_type_Aqug, 9, 11);
-    aqug.a(this.jdField_a_of_type_Aqug, 9, 14, false);
-    a("StateUploadingWhenRecv");
-    this.jdField_a_of_type_Aquk = new aqvm(this.jdField_a_of_type_Aqug);
-    this.jdField_a_of_type_Aqug.a(true, 0L);
-  }
-  
-  protected void a(int paramInt1, int paramInt2)
-  {
-    b(paramInt1, paramInt2);
-  }
-  
-  protected void a(int paramInt, String paramString)
-  {
-    if (a("onSenderUploadException")) {
+    if ((this.b == null) || (this.b.length() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild uuid is null");
+      }
+      paramaqva.a(aque.a(this.jdField_a_of_type_Long, true), false);
       return;
     }
-    aqug.a(this.jdField_a_of_type_Aqug, 9, 12, true);
-    a("StateExcepInvalidWhenRecv");
-    this.jdField_a_of_type_Aquk = new aquv(this.jdField_a_of_type_Aqug);
-  }
-  
-  protected boolean a(int paramInt, String paramString, long paramLong)
-  {
-    if (a("onSenderUploadCompleted")) {
-      return false;
-    }
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    localFileManagerEntity.Uuid = new String(paramString);
-    localFileManagerEntity.fProgress = 0.0F;
-    if ((arni.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
-      this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
-    }
-    this.jdField_a_of_type_Aqug.a(paramLong, localFileManagerEntity.peerUin);
-    localFileManagerEntity.setCloudType(1);
-    aqug.a(this.jdField_a_of_type_Aqug, 1, 0, true);
-    a("StateGotoOffFileProcess");
-    this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
-    this.jdField_a_of_type_Aquk = new aquw(this.jdField_a_of_type_Aqug);
-    return true;
-  }
-  
-  protected void b()
-  {
-    if (a("onSenderCancelUpload")) {
-      return;
-    }
-    aqug.a(this.jdField_a_of_type_Aqug, 11, 9, true);
-    a("StateCancelUploadWhenRecv");
-    this.jdField_a_of_type_Aquk = new aqun(this.jdField_a_of_type_Aqug);
+    aque.a(this.jdField_a_of_type_Aque).a().a().a(paramString, paramInt, this.d, 106, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aqus(this, paramString, paramaqva));
   }
 }
 

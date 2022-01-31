@@ -1,108 +1,55 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.widget.ListView;
 
 public class ayko
-  extends ayju
+  extends ayjo<aynu, aywd>
 {
-  public double a;
-  public int a;
-  public CharSequence a;
-  public String a;
-  public List<ayjn> a;
-  public double b;
-  public int b;
-  public CharSequence b;
-  public boolean b;
-  public CharSequence c;
-  public boolean c;
-  
-  public ayko(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public ayko(ContactSearchFragment paramContactSearchFragment, ListView paramListView, bdbb parambdbb)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    super(paramListView, parambdbb);
   }
   
-  public ayko(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  protected ayqp<aynu, aywd> a(int paramInt)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = paramInt;
-    switch (paramInt)
-    {
-    default: 
-      i = 1;
+    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == -1) {
+      return new ayry(this.jdField_a_of_type_Bdbb, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment), ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment), ContactSearchFragment.b(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment));
     }
-    return i;
+    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 17) {
+      return new ayqc(this.jdField_a_of_type_Bdbb, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment));
+    }
+    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 19) {
+      return new ayqb(this.jdField_a_of_type_Bdbb, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment), ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment));
+    }
+    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 23) {
+      return new aysa(this.jdField_a_of_type_Bdbb, null);
+    }
+    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 24) {
+      return new ayrz(this.jdField_a_of_type_Bdbb, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment), ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment));
+    }
+    return new ayqe(this.jdField_a_of_type_Bdbb, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment), ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment));
   }
   
-  public void a(String paramString)
+  protected aywe a(int paramInt, ViewGroup paramViewGroup)
   {
-    boolean bool2 = true;
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.i = paramString.optString("leftImageURL");
-      this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
-      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_JavaLangCharSequence = ayrd.a(paramString.optString("headText"));
-      this.jdField_a_of_type_JavaLangString = paramString.optString("headLineIconURL");
-      this.jdField_b_of_type_JavaLangCharSequence = ayrd.a(paramString.optString("descLineText"));
-      this.jdField_c_of_type_JavaLangCharSequence = ayrd.a(paramString.optString("firstLineText"));
-      JSONArray localJSONArray = paramString.optJSONArray("imageList");
-      if (localJSONArray != null)
-      {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList(localJSONArray.length());
-        int i = 0;
-        while (i < localJSONArray.length())
-        {
-          Object localObject = localJSONArray.optJSONObject(i);
-          localObject = new ayjn(((JSONObject)localObject).optString("url"), ((JSONObject)localObject).optInt("type"));
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
-          i += 1;
-        }
-      }
-      this.jdField_a_of_type_Double = paramString.optDouble("imageAspectRatio", 1.0D);
-      this.jdField_b_of_type_Double = paramString.optDouble("singleImageScale", 1.0D);
-      this.jdField_b_of_type_Int = paramString.optInt("imageTotalCount");
-      if (paramString.optInt("topNeedHigherMargin", 0) == 1)
-      {
-        bool1 = true;
-        this.jdField_b_of_type_Boolean = bool1;
-        if (paramString.optInt("needCornerRadius", 0) != 1) {
-          break label259;
-        }
-      }
-      label259:
-      for (boolean bool1 = bool2;; bool1 = false)
-      {
-        this.jdField_c_of_type_Boolean = bool1;
-        return;
-        bool1 = false;
-        break;
-      }
-      return;
+    if ((ayvm.a(ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment))) || (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 5) || (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 8)) {
+      return new ayvx(paramViewGroup, 2131562604);
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
+    if ((ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == -1) || (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 19) || (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 24)) {
+      return new ayvx(paramViewGroup, 2131562603);
     }
-  }
-  
-  public boolean b()
-  {
-    return true;
+    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 17) {
+      return new ayvw(paramViewGroup, 2131560903);
+    }
+    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 23) {
+      return new ayxw(paramViewGroup, 2131560903);
+    }
+    return new ayvx(paramViewGroup, 2131562602);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ayko
  * JD-Core Version:    0.7.0.1
  */

@@ -1,128 +1,199 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
-import android.support.v7.widget.RecyclerView;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.TopRecommendBannerAdapter.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
+import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
+import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import java.util.List;
-import mqq.os.MqqHandler;
-import org.jetbrains.annotations.NotNull;
 
 public class xyn
-  extends xxz
+  implements bhuk
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private boolean jdField_a_of_type_Boolean;
-  private List<xze> b = new ArrayList();
+  public xyn(QRCardActivity paramQRCardActivity, boolean[] paramArrayOfBoolean, String paramString1, Context paramContext, String paramString2) {}
   
-  public xyn(@NotNull RecyclerView paramRecyclerView)
+  @SuppressLint({"NewApi"})
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
+    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.c) {}
+    do
     {
-      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.isComputingLayout()) {
-        ThreadManager.getUIHandler().postDelayed(new TopRecommendBannerAdapter.1(this), 500L);
-      }
-    }
-    else {
       return;
-    }
-    notifyDataSetChanged();
-  }
-  
-  private void b()
-  {
-    this.b.clear();
-    this.b.addAll(this.jdField_a_of_type_JavaUtilList.subList(0, 10));
-    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList.subList(10, this.jdField_a_of_type_JavaUtilList.size());
-  }
-  
-  public List<xze> a()
-  {
-    return this.b;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt < this.b.size())
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.c = true;
+      Object localObject;
+      if (this.jdField_a_of_type_ArrayOfBoolean[0] == 1)
+      {
+        switch (paramInt)
+        {
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Bhuf.dismiss();
+          return;
+          paramView = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.app.getAccount();
+          localObject = (String)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Ybj.f.get(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.k);
+          if (!TextUtils.isEmpty(paramView))
+          {
+            localObject = "http://w.mail.qq.com/cgi-bin/login?target=mobileqqwrite&fwd=mq&fun=from3g&uin=" + paramView + "&to=" + (String)localObject;
+            String str = ((String)localObject).toLowerCase();
+            if (str.startsWith("www.")) {
+              paramView = "http://" + (String)localObject;
+            }
+            for (;;)
+            {
+              localObject = new Intent(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity, QQBrowserDelegationActivity.class);
+              ((Intent)localObject).putExtra("url", paramView);
+              ((Intent)localObject).putExtra("key_isReadModeEnabled", true);
+              ((Intent)localObject).putExtra("injectrecommend", false);
+              this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.startActivity((Intent)localObject);
+              break;
+              if (str.startsWith("https:"))
+              {
+                paramView = "https" + ((String)localObject).substring(5);
+              }
+              else
+              {
+                paramView = (View)localObject;
+                if (str.startsWith("http:")) {
+                  paramView = "http" + ((String)localObject).substring(4);
+                }
+              }
+            }
+            paramView = (String)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Ybj.f.get(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.k);
+            localObject = Uri.parse("mailto:" + paramView);
+            if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getPackageManager().queryIntentActivities(new Intent("android.intent.action.SENDTO", (Uri)localObject), 65536).size() > 0)
+            {
+              localObject = new Intent("android.intent.action.SENDTO");
+              ((Intent)localObject).setData(Uri.parse("mailto:" + paramView));
+              this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.startActivity((Intent)localObject);
+            }
+            else
+            {
+              localObject = new Intent("android.intent.action.SEND");
+              ((Intent)localObject).putExtra("android.intent.extra.EMAIL", paramView);
+              ((Intent)localObject).putExtra("android.intent.extra.TEXT", "The email body text");
+              ((Intent)localObject).setType("text/plain");
+              try
+              {
+                this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.startActivity(Intent.createChooser((Intent)localObject, "Choose Email Client"));
+              }
+              catch (ActivityNotFoundException paramView) {}
+              if (QLog.isColorLevel()) {
+                QLog.d("QrcodeScannerCard", 2, "Intent.ACTION_SEND do not exist");
+              }
+            }
+          }
+        }
+      }
+      if (this.jdField_a_of_type_ArrayOfBoolean[1] == 1)
+      {
+        switch (paramInt)
+        {
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Bhuf.dismiss();
+          return;
+          if (this.jdField_a_of_type_JavaLangString.contains("-")) {
+            this.jdField_a_of_type_JavaLangString.replaceAll("-", "");
+          }
+          if (this.jdField_a_of_type_JavaLangString.contains(" ")) {
+            this.jdField_a_of_type_JavaLangString.replaceAll(" ", "");
+          }
+          paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+          try
+          {
+            this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+          }
+          catch (ActivityNotFoundException paramView) {}
+          if (QLog.isColorLevel()) {
+            QLog.d("QrcodeScannerCard", 2, "Intent.ACTION_DIAL do not exist");
+          }
+        }
+      }
+      if (this.jdField_a_of_type_ArrayOfBoolean[2] == 1)
+      {
+        paramView = new HashMap();
+        if (!this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Ybj.c.isEmpty()) {
+          paramView.putAll(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Ybj.c);
+        }
+        if (!this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Ybj.f.isEmpty()) {
+          paramView.putAll(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Ybj.f);
+        }
+        if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Ybj.e != null) {
+          paramView.putAll(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Ybj.e);
+        }
+        if (!this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Ybj.d.isEmpty()) {
+          paramView.putAll(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Ybj.d);
+        }
+        switch (paramInt)
+        {
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Bhuf.dismiss();
+          return;
+          localObject = new Intent("android.intent.action.INSERT");
+          ((Intent)localObject).setType("vnd.android.cursor.dir/person");
+          ((Intent)localObject).setType("vnd.android.cursor.dir/contact");
+          ((Intent)localObject).setType("vnd.android.cursor.dir/raw_contact");
+          this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.a((Intent)localObject, paramView);
+          continue;
+          localObject = new Intent("android.intent.action.INSERT_OR_EDIT");
+          ((Intent)localObject).setType("vnd.android.cursor.item/person");
+          ((Intent)localObject).setType("vnd.android.cursor.item/contact");
+          ((Intent)localObject).setType("vnd.android.cursor.item/raw_contact");
+          this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.a((Intent)localObject, paramView);
+        }
+      }
+    } while (this.jdField_a_of_type_ArrayOfBoolean[3] != 1);
+    switch (paramInt)
     {
-      this.b.remove(paramInt);
-      notifyItemRemoved(a() + paramInt);
-      notifyItemRangeChanged(a() + paramInt, this.b.size() - paramInt);
-    }
-  }
-  
-  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<xze> paramList)
-  {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry = paramStEntry;
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_JavaUtilList != null)
-      {
-        if (this.jdField_a_of_type_JavaUtilList.size() < 10) {
-          break;
-        }
-        b();
-        a();
-      }
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Bhuf.dismiss();
       return;
-      this.jdField_a_of_type_JavaUtilList = paramList;
-    }
-    this.b.addAll(paramList);
-    this.jdField_a_of_type_JavaUtilList.clear();
-    a();
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() >= 10))
-    {
-      b();
-      a();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() < 10);
-  }
-  
-  public boolean c()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      if (this.b.contains("-")) {
+        this.b.replaceAll("-", "");
+      }
+      if (this.b.contains(" ")) {
+        this.b.replaceAll(" ", "");
+      }
+      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.b));
+      try
       {
-        this.b.add(this.jdField_a_of_type_JavaUtilList.remove(0));
-        notifyItemInserted(this.b.size());
-        bool1 = true;
+        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      }
+      catch (ActivityNotFoundException paramView) {}
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QrcodeScannerCard", 2, "Intent.ACTION_DIAL do not exist");
+        continue;
+        if (!TextUtils.isEmpty(this.b)) {
+          if (Build.VERSION.SDK_INT < 11)
+          {
+            ((android.text.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(this.b);
+          }
+          else
+          {
+            ((android.content.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(this.b);
+            continue;
+            AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, false, this.b, true);
+            continue;
+            AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, true, this.b, true);
+          }
+        }
       }
     }
-    return bool1;
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.b != null) {
-      return this.b.size() + a();
-    }
-    return a();
   }
 }
 

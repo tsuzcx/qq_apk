@@ -1,113 +1,54 @@
-import android.app.Activity;
-import android.net.Uri;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForGrayTips;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class auak
+class auak
+  extends WtloginListener
 {
-  public static aual a(String paramString)
+  auak(auah paramauah, bety parambety, WtloginHelper paramWtloginHelper, Bundle paramBundle) {}
+  
+  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return null;
-      paramString = Uri.parse(paramString);
-      if (paramString.isHierarchical())
-      {
-        paramString = paramString.getQueryParameter("_appinfo");
-        if (!TextUtils.isEmpty(paramString)) {
-          try
-          {
-            paramString = Base64.decode(paramString, 10);
-            if (paramString == null)
-            {
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.i("miniAppJump", 2, "appinfo decode error 2");
-              return null;
-            }
-          }
-          catch (Exception paramString)
-          {
-            QLog.e("miniAppJump", 1, "parse miniapp jump url error", paramString);
-            return null;
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(auah.a, 2, "jumpTimLogin OnException=" + paramErrMsg + ", cmd=" + paramInt);
     }
-    paramString = new JSONObject(new String(paramString, "UTF-8"));
-    aual localaual = new aual();
-    localaual.jdField_a_of_type_Int = paramString.getInt("type");
-    localaual.jdField_a_of_type_JavaLangString = paramString.getString("appid");
-    localaual.jdField_b_of_type_JavaLangString = paramString.optString("pageName");
-    localaual.jdField_b_of_type_Int = paramString.optInt("from");
-    localaual.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("param");
-    return localaual;
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+      this.jdField_a_of_type_Bety.dismiss();
+    }
+    QQToast.a(auah.a(this.jdField_a_of_type_Auah).getApp(), 1, 2131720801, 0).a();
   }
   
-  public static boolean a(Activity paramActivity, aual paramaual, Bundle paramBundle)
+  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
   {
-    if (paramaual == null) {}
-    while ((paramaual.jdField_a_of_type_Int == 4) || (paramaual.jdField_a_of_type_Int != 3)) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d(auah.a, 2, "jumpTimLogin onGetA1WithA1 ret=" + paramInt2);
     }
-    auab.a(paramActivity, paramaual.jdField_a_of_type_JavaLangString, paramaual.jdField_a_of_type_Int, null);
-    return true;
-  }
-  
-  public static boolean a(Activity paramActivity, String paramString, Bundle paramBundle)
-  {
-    return a(paramActivity, a(paramString), paramBundle);
-  }
-  
-  public static boolean a(BaseActivity paramBaseActivity, String paramString, MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
-      return false;
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+      this.jdField_a_of_type_Bety.dismiss();
     }
-    Bundle localBundle = new Bundle();
-    QQAppInterface localQQAppInterface = paramBaseActivity.app;
-    localBundle.putString("uin", localQQAppInterface.getCurrentAccountUin());
-    boolean bool;
-    if (paramMessageRecord.istroop == 1)
+    if (paramInt2 != 0)
     {
-      localBundle.putString("gc", paramMessageRecord.frienduin);
-      if ((bclo.a(localQQAppInterface, paramMessageRecord.frienduin, localQQAppInterface.c())) || (bclo.b(localQQAppInterface, paramMessageRecord.frienduin, localQQAppInterface.c())))
-      {
-        bool = true;
-        localBundle.putBoolean("isAdmin", bool);
-      }
+      QQToast.a(auah.a(this.jdField_a_of_type_Auah).getApp(), 1, 2131720801, 0).a();
+      return;
     }
-    else
-    {
-      paramString = a(paramString);
-      bool = a(paramBaseActivity, paramString, localBundle);
-      if ((paramString != null) && (bool) && ((paramMessageRecord instanceof MessageForGrayTips)) && (paramString.jdField_a_of_type_Int == 4) && (paramString.jdField_a_of_type_JavaLangString.equals("101474665")))
-      {
-        if (paramString.jdField_b_of_type_Int != 1) {
-          break label186;
-        }
-        azmj.b(localQQAppInterface, "dc00899", "Grp_idol", "", "idol_follow", "follow_suc_clk", 0, 0, paramMessageRecord.frienduin, "", "", "");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(auah.a, 2, "jumpTimLogin call TIM JumpActivity");
     }
-    for (;;)
-    {
-      return bool;
-      bool = false;
-      break;
-      label186:
-      if (paramString.jdField_b_of_type_Int == 2) {
-        bdaj.a("Grp_idol", "Grp_AIO", "clk_renwu", 0, 0, new String[] { paramMessageRecord.frienduin });
-      }
-    }
+    paramArrayOfByte1 = new Intent();
+    paramArrayOfByte1.setComponent(new ComponentName("com.tencent.tim", "com.tencent.mobileqq.activity.LoginJumpTeamWorkActivity"));
+    paramArrayOfByte1.setFlags(268435456);
+    paramArrayOfByte1.putExtras(this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo));
+    paramArrayOfByte1.putExtras(this.jdField_a_of_type_AndroidOsBundle);
+    auah.a(this.jdField_a_of_type_Auah).getApp().startActivity(paramArrayOfByte1);
   }
 }
 

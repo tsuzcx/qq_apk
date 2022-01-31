@@ -11,7 +11,7 @@ public class nff
 {
   private static volatile nff jdField_a_of_type_Nff;
   int jdField_a_of_type_Int = 0;
-  private bimg jdField_a_of_type_Bimg;
+  private biqn jdField_a_of_type_Biqn;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new nfg(this);
   String jdField_a_of_type_JavaLangString;
@@ -35,10 +35,10 @@ public class nff
     if (QLog.isColorLevel()) {
       QLog.w("HuanjiPlugin", 2, "queryStatuspackageName = " + paramString1 + "pluginId =" + paramString2 + "version = " + paramString3);
     }
-    if ((this.jdField_a_of_type_Bimg == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
+    if ((this.jdField_a_of_type_Biqn == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
       return null;
     }
-    paramString1 = this.jdField_a_of_type_Bimg.a("qhuanji_plugin.apk");
+    paramString1 = this.jdField_a_of_type_Biqn.a("qhuanji_plugin.apk");
     if ((paramString1 != null) && (QLog.isColorLevel())) {
       QLog.w("HuanjiPlugin", 2, "queryPluginstate = " + paramString1.mState + "pluginSize =" + paramString1.mLength + "version = " + paramString1.mVersion);
     }
@@ -75,7 +75,7 @@ public class nff
   public void a(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bimg = ((bimg)paramQQAppInterface.getManager(27));
+    this.jdField_a_of_type_Biqn = ((biqn)paramQQAppInterface.getManager(27));
   }
   
   public boolean a(String paramString1, int paramInt, String paramString2, nfh paramnfh)
@@ -83,15 +83,15 @@ public class nff
     if (QLog.isColorLevel()) {
       QLog.w("HuanjiPlugin", 2, "huanjiDownloadstartParam = " + paramString2);
     }
-    azmo localazmo = new azmo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_huanji").c("Grp_download");
+    azqx localazqx = new azqx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_huanji").c("Grp_download");
     String str;
     if (paramInt == 2)
     {
       str = "Clk_start";
-      localazmo.d(str).a(new String[] { paramString1 }).a();
+      localazqx.d(str).a(new String[] { paramString1 }).a();
       this.jdField_a_of_type_Int = paramInt;
       this.jdField_a_of_type_JavaLangString = paramString2;
-      paramString1 = this.jdField_a_of_type_Bimg.a("qhuanji_plugin.apk");
+      paramString1 = this.jdField_a_of_type_Biqn.a("qhuanji_plugin.apk");
       this.jdField_a_of_type_Nfh = paramnfh;
       if ((paramString1 == null) || (paramString1.mState == 4)) {
         break label163;
@@ -99,7 +99,7 @@ public class nff
       if (QLog.isColorLevel()) {
         QLog.w("HuanjiPlugin", 2, "换机插件还未安装 installPlugin");
       }
-      this.jdField_a_of_type_Bimg.installPlugin("qhuanji_plugin.apk", this.jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener);
+      this.jdField_a_of_type_Biqn.installPlugin("qhuanji_plugin.apk", this.jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener);
     }
     label163:
     do

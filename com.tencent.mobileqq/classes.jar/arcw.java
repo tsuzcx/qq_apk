@@ -1,36 +1,90 @@
-import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class arcw
-  extends WebChromeClient
+public class arcw
+  implements aynt
 {
-  private final IHostInterface.IWebClient a;
+  public static final String a;
+  public static final String b = alud.a(2131705776);
+  int jdField_a_of_type_Int = -1;
+  List<aynu> jdField_a_of_type_JavaUtilList;
+  String c;
   
-  private arcw(IHostInterface.IWebClient paramIWebClient)
+  static
   {
-    this.a = paramIWebClient;
+    jdField_a_of_type_JavaLangString = arcw.class.getSimpleName();
   }
   
-  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  public arcw(List<aynu> paramList, String paramString, int paramInt)
   {
-    if ((this.a == null) || (!this.a.onConsoleMessage(paramConsoleMessage.message(), paramConsoleMessage.lineNumber(), paramConsoleMessage.sourceId()))) {
-      return super.onConsoleMessage(paramConsoleMessage);
-    }
-    return true;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.c = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  public int a()
   {
-    if ((this.a == null) || (!this.a.onJsPrompt(paramWebView, paramString1, paramString2, paramString3))) {
-      return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
+    return 3;
+  }
+  
+  public String a()
+  {
+    return alud.a(2131705758);
+  }
+  
+  public List<aynu> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    ayig localayig;
+    QQAppInterface localQQAppInterface;
+    JSONObject localJSONObject;
+    if (((paramView.getContext() instanceof UniteSearchActivity)) && (ayif.b.containsKey(this)))
+    {
+      localayig = (ayig)ayif.b.get(this);
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      localJSONObject = new JSONObject();
     }
-    if (paramJsPromptResult != null) {
-      paramJsPromptResult.cancel();
+    try
+    {
+      localJSONObject.put("project", aysc.a());
+      localJSONObject.put("event_src", "client");
+      localJSONObject.put("obj_lct", localayig.jdField_a_of_type_Int);
+      localJSONObject.put("get_src", "native");
+      aysc.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localayig.jdField_a_of_type_Long + "").obj2(localayig.b).ver1(localayig.jdField_a_of_type_JavaLangString).ver2(aysc.a(UniteSearchActivity.d)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + ayif.jdField_a_of_type_Long));
+      ayvm.a(this.c, 100, 0, paramView);
+      arrp.a("0X8006061");
+      aysc.a(null, 0, this.jdField_a_of_type_Int, "0x8009D5B", 0, 0, null, null);
+      FileSearchActivity.a(paramView.getContext(), this.c, this.jdField_a_of_type_JavaUtilList, true, this.jdField_a_of_type_Int);
+      return;
     }
-    return true;
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
+      }
+    }
+  }
+  
+  public String b()
+  {
+    if (this.jdField_a_of_type_JavaUtilList.size() > a()) {
+      aysc.a(null, 0, this.jdField_a_of_type_Int, "0x8009D5A", 0, 0, null, null);
+    }
+    return this.c;
   }
 }
 

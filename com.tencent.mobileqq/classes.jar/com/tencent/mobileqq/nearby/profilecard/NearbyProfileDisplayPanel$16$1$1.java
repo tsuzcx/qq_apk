@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import alpo;
-import avgk;
-import avgq;
-import avgr;
+import alud;
+import avkt;
+import avkz;
+import avla;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class NearbyProfileDisplayPanel$16$1$1
   implements Runnable
 {
-  public NearbyProfileDisplayPanel$16$1$1(avgr paramavgr) {}
+  public NearbyProfileDisplayPanel$16$1$1(avla paramavla) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a.a, 2, alpo.a(2131707743), 0).a();
+    QQToast.a(this.a.a.a.a, 2, alud.a(2131707755), 0).a();
   }
 }
 

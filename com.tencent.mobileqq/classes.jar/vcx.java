@@ -1,28 +1,58 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedFeature;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class vcx
-  extends unf
 {
-  public List<usu> a = new ArrayList();
+  private static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
   
-  public vcx(qqstory_service.RspGetBatchFeedFeature paramRspGetBatchFeedFeature)
+  @Nullable
+  public static vgd a(String paramString, List<vgd> paramList)
   {
-    if ((paramRspGetBatchFeedFeature.feed_feature_list.has()) && (!paramRspGetBatchFeedFeature.feed_feature_list.isEmpty()))
+    if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.isEmpty())) {
+      return null;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      paramRspGetBatchFeedFeature = paramRspGetBatchFeedFeature.feed_feature_list.get().iterator();
-      while (paramRspGetBatchFeedFeature.hasNext())
-      {
-        qqstory_struct.FeedFeature localFeedFeature = (qqstory_struct.FeedFeature)paramRspGetBatchFeedFeature.next();
-        usu localusu = new usu();
-        localusu.a(localFeedFeature);
-        this.a.add(localusu);
+      vgd localvgd = (vgd)paramList.next();
+      if (paramString.equals(localvgd.a)) {
+        return localvgd;
       }
     }
+    return null;
+  }
+  
+  public static void a(@NonNull List<String> paramList, boolean paramBoolean)
+  {
+    wxe.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "send request : %s", paramList.toString());
+    if (paramBoolean)
+    {
+      localObject = paramList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        Long localLong = (Long)a.get(str);
+        if ((localLong != null) && (System.currentTimeMillis() - localLong.longValue() < 60000L))
+        {
+          ((Iterator)localObject).remove();
+          wxe.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "remove same request for feed info:%s", str);
+        }
+        else
+        {
+          a.put(str, Long.valueOf(System.currentTimeMillis()));
+        }
+      }
+    }
+    if (paramList.size() == 0) {
+      return;
+    }
+    wxe.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "request for feed info:%s", paramList);
+    Object localObject = new vgc(paramList);
+    urp.a().a((urt)localObject, new vcy(paramList));
   }
 }
 

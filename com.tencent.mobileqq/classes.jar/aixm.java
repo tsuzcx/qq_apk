@@ -1,9 +1,17 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
-public class aixm
+class aixm
+  extends aixi
 {
-  public static final IRedPacket a = new RedPacketManager();
+  aixm(aixl paramaixl) {}
+  
+  public void a(int paramInt)
+  {
+    if (((paramInt == 1) || (paramInt == 10)) && (this.a.a.a != null)) {
+      this.a.a.a.dismiss();
+    }
+  }
 }
 
 

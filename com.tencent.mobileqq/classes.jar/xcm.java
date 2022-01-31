@@ -1,24 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xcm
-  implements Animation.AnimationListener
+public class xcm
+  extends QQUIEventReceiver<QQStoryTakeVideoCloseAnimationActivity, wus>
 {
-  xcm(xck paramxck) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public xcm(@NonNull QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity)
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_Xcf != null) {
-      this.a.a.jdField_a_of_type_Xcf.a(null);
+    super(paramQQStoryTakeVideoCloseAnimationActivity);
+  }
+  
+  public void a(@NonNull QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity, @NonNull wus paramwus)
+  {
+    if (paramwus != null) {
+      paramQQStoryTakeVideoCloseAnimationActivity.a(paramwus.a, paramwus.b, paramwus.c, paramwus.d);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public Class acceptEventClass()
+  {
+    return wus.class;
+  }
 }
 
 

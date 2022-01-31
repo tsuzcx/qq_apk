@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import aljq;
-import amjk;
+import alof;
+import amnz;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -59,7 +59,7 @@ public class KandianDailyManager$DailySetTopInfo
     if (paramQQAppInterface == null) {}
     MessageRecord localMessageRecord;
     long l;
-    amjk localamjk;
+    amnz localamnz;
     RecentUser localRecentUser;
     do
     {
@@ -69,18 +69,18 @@ public class KandianDailyManager$DailySetTopInfo
         {
           return;
         } while (!a());
-        localMessageRecord = paramQQAppInterface.a().b(aljq.aS, 1008);
-        if ((localMessageRecord == null) || (localMessageRecord.isread) || (ors.b(aljq.aS)) || (localMessageRecord.uniseq == this.lastSetTopMsgUniseq)) {
+        localMessageRecord = paramQQAppInterface.a().b(alof.aS, 1008);
+        if ((localMessageRecord == null) || (localMessageRecord.isread) || (ors.b(alof.aS)) || (localMessageRecord.uniseq == this.lastSetTopMsgUniseq)) {
           break;
         }
         l = NetConnInfoCenter.getServerTime();
-        localamjk = paramQQAppInterface.a().a();
-      } while (localamjk == null);
-      localRecentUser = localamjk.b(aljq.aS, 1008);
+        localamnz = paramQQAppInterface.a().a();
+      } while (localamnz == null);
+      localRecentUser = localamnz.b(alof.aS, 1008);
     } while (localRecentUser == null);
     localRecentUser.lastmsgtime = l;
-    paramQQAppInterface.a().a(aljq.aS, 1008, localMessageRecord.uniseq, "time", Long.valueOf(l));
-    localamjk.a(localRecentUser);
+    paramQQAppInterface.a().a(alof.aS, 1008, localMessageRecord.uniseq, "time", Long.valueOf(l));
+    localamnz.a(localRecentUser);
     paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
     if (paramQQAppInterface != null) {
       paramQQAppInterface.sendEmptyMessage(1009);

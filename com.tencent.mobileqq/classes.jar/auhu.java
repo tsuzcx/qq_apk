@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
 
 public class auhu
-  implements auhn
+  implements View.OnClickListener
 {
-  public auhu(MultiAIOViewPager paramMultiAIOViewPager) {}
+  public auhu(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void b(int paramInt)
+  public void onClick(View paramView)
   {
-    if (MultiAIOViewPager.a(this.a) != null) {
-      MultiAIOViewPager.a(this.a).a(paramInt);
+    if (MsgBackupDateFragment.a(this.a) == 0) {
+      aujo.a("0X800A237");
+    }
+    for (;;)
+    {
+      this.a.a();
+      return;
+      if (augo.c) {
+        aujo.a("0X800A25C");
+      }
     }
   }
 }

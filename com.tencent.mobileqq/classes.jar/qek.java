@@ -32,7 +32,7 @@ public class qek
   
   public void onClick(View paramView)
   {
-    paramView = oqu.k + bdbi.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 0);
+    paramView = oqu.k + bdfr.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 0);
     Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.getContext(), PublicAccountBrowser.class);
     localIntent.putExtra("url", paramView);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.getContext().startActivity(localIntent);

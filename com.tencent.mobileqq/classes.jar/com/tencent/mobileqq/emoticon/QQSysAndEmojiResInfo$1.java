@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.emoticon;
 
-import apoa;
+import apsj;
 
 final class QQSysAndEmojiResInfo$1
   implements Runnable
 {
   public void run()
   {
-    if (apoa.a() != null) {
-      apoa.a().a();
+    if (apsj.a() != null) {
+      apsj.a().a();
     }
   }
 }

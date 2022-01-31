@@ -5,7 +5,7 @@ import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1.1.1;
 import com.tencent.viola.core.ViolaEnvironment;
 
 public class sqw
-  implements bcwm
+  implements bdav
 {
   public sqw(ViolaBaseView.10.1 param1) {}
   

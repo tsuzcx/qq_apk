@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search;
 
 import android.text.TextUtils;
-import aycr;
+import ayha;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import ndd;
 public class FunctionModuleConfigManager$3
   implements Runnable
 {
-  public FunctionModuleConfigManager$3(aycr paramaycr, String paramString) {}
+  public FunctionModuleConfigManager$3(ayha paramayha, String paramString) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class FunctionModuleConfigManager$3
       Object localObject = ndd.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.a), "GET", null, null);
       if (localObject != null)
       {
-        localObject = aycr.a(this.this$0, (byte[])localObject);
+        localObject = ayha.a(this.this$0, (byte[])localObject);
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
           this.this$0.a((String)localObject);

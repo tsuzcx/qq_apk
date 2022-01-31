@@ -1,30 +1,18 @@
-import android.support.annotation.DrawableRes;
-import kotlin.Metadata;
-import kotlin.jvm.JvmStatic;
+import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
+import java.util.Comparator;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/growth/GrowthUtil;", "", "()V", "INVALID_DRAWABLE_ID", "", "getDrawableIdByWns", "wnsPicId", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class aslr
+final class aslr
+  implements Comparator<PadFaceAd>
 {
-  public static final aslr a = new aslr();
-  
-  @JvmStatic
-  @DrawableRes
-  public static final int a(int paramInt)
+  public int a(PadFaceAd paramPadFaceAd1, PadFaceAd paramPadFaceAd2)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramPadFaceAd1.startTime < paramPadFaceAd2.startTime) {
       return -1;
-    case 1001: 
-      return 2130847590;
-    case 1002: 
-      return 2130847591;
-    case 1003: 
-      return 2130847592;
-    case 1004: 
-      return 2130847593;
     }
-    return 2130847594;
+    if (paramPadFaceAd1.startTime == paramPadFaceAd2.startTime) {
+      return 0;
+    }
+    return 1;
   }
 }
 

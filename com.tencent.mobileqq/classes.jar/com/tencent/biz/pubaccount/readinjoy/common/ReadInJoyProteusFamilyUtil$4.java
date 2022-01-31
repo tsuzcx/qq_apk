@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.text.TextUtils;
-import bjxj;
+import bkbq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -21,7 +21,7 @@ public class ReadInJoyProteusFamilyUtil$4
   {
     try
     {
-      Object localObject2 = (String)bjxj.a(orf.c(), "");
+      Object localObject2 = (String)bkbq.a(orf.c(), "");
       QLog.d(orf.a(), 2, "local card data str " + (String)localObject2);
       Object localObject1 = localObject2;
       Object localObject3;
@@ -54,7 +54,7 @@ public class ReadInJoyProteusFamilyUtil$4
           {
             localObject1 = ((JSONObject)localObject1).toString();
             QLog.d(orf.a(), 2, "loadProteusFamilyData | update local cardDataStr " + (String)localObject1);
-            bjxj.a(orf.c(), localObject1);
+            bkbq.a(orf.c(), localObject1);
             orf.a(this.this$0, orf.a((String)localObject1));
             if (orf.a(this.this$0) != null) {
               orf.a(this.this$0).a(true, orf.a(this.this$0));
@@ -70,7 +70,7 @@ public class ReadInJoyProteusFamilyUtil$4
           {
             QLog.d((String)localObject1, 2, i);
             return;
-            localObject1 = (String)bjxj.a(orf.c(), "");
+            localObject1 = (String)bkbq.a(orf.c(), "");
             QLog.d(orf.a(), 2, "loadProteusFamilyData | no need to update just use local cardDataStr " + (String)localObject1);
             break;
           }

@@ -1,26 +1,22 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.gdtad.jsbridge.GdtDeviceInfoJsCallHandler.1;
-import java.lang.ref.WeakReference;
+import tencent.gdt.qq_ad_get.QQAdGet;
+import tencent.gdt.qq_ad_get.QQAdGetRsp;
 
 public class aamv
-  implements aanf
 {
-  public boolean a(aamm paramaamm, String paramString, String... paramVarArgs)
+  public int a;
+  public long a;
+  public qq_ad_get.QQAdGet a;
+  public qq_ad_get.QQAdGetRsp a;
+  
+  public aamv()
   {
-    Object localObject = null;
-    WeakReference localWeakReference = new WeakReference(paramaamm);
-    AdThreadManager.INSTANCE.post(new GdtDeviceInfoJsCallHandler.1(this, localWeakReference, paramVarArgs, paramString), 4);
-    if (paramaamm != null) {}
-    for (paramString = paramaamm.a();; paramString = null)
-    {
-      paramVarArgs = localObject;
-      if (paramaamm != null) {
-        paramVarArgs = paramaamm.a();
-      }
-      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, true, "getDeviceInfo", paramVarArgs);
-      return false;
-    }
+    this.jdField_a_of_type_Int = -2147483648;
+    this.jdField_a_of_type_Long = -2147483648L;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet != null;
   }
 }
 

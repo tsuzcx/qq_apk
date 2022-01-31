@@ -1,15 +1,39 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.mobileqq.data.Stranger;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.List;
+import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
 
 public class amdd
-  implements FilenameFilter
+  implements alpg
 {
-  public amdd(CleanCache paramCleanCache) {}
+  public void a(List<String> paramList) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField) {}
+  
+  public void a(boolean paramBoolean, List<Stranger> paramList) {}
+  
+  public void b(boolean paramBoolean, List<Stranger> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return !paramString.contains("CrashInfoSummary.txt");
+    if (paramInt == 4) {
+      a(paramBoolean, (PBRepeatMessageField)paramObject);
+    }
+    do
+    {
+      return;
+      if (paramInt == 2)
+      {
+        a(paramBoolean, (List)paramObject);
+        return;
+      }
+      if (paramInt == 3)
+      {
+        b(paramBoolean, (List)paramObject);
+        return;
+      }
+    } while (paramInt != 5);
+    a((List)paramObject);
   }
 }
 

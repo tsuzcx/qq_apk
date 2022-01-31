@@ -1,12 +1,10 @@
-class xkz
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class xkz
 {
-  static void a(String paramString1, String paramString2) {}
-  
-  static void b(String paramString1, String paramString2) {}
-  
-  static void c(String paramString1, String paramString2) {}
-  
-  static void d(String paramString1, String paramString2) {}
+  protected ImageView a;
+  protected TextView a;
 }
 
 

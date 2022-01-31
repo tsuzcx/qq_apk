@@ -1,20 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
+import android.util.Property;
 
-public class bndt
+class bndt
+  extends Property<bnds, Integer>
 {
-  public int a;
-  public Bitmap a;
-  
-  protected void finalize()
+  bndt(bnds parambnds, Class paramClass, String paramString)
   {
-    super.finalize();
-    if ((this.a != null) && (!this.a.isRecycled()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Frames", 2, "recycle bitmap");
-      }
-      this.a.recycle();
+    super(paramClass, paramString);
+  }
+  
+  public Integer a(bnds parambnds)
+  {
+    if (parambnds != null) {
+      return Integer.valueOf(bnds.a(parambnds));
+    }
+    return Integer.valueOf(0);
+  }
+  
+  public void a(bnds parambnds, Integer paramInteger)
+  {
+    if (parambnds != null) {
+      bnds.a(parambnds, paramInteger.intValue());
     }
   }
 }

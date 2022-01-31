@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import bdbi;
+import bdfr;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
@@ -103,13 +103,13 @@ public class ComponentHeaderRecommend
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (b())
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131702624));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131702636));
       this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       this.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(false);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131702717));
+    this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131702729));
     this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#07D0B0"));
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
     this.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(true);
@@ -124,10 +124,10 @@ public class ComponentHeaderRecommend
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setOnClickListener(this);
       if ((((ArticleInfo)localObject).mSocialFeedInfo != null) && (rqj.h((ArticleInfo)localObject)) && (((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Qme.a == 1))
       {
-        localObject = getResources().getDrawable(2130844543);
-        ((Drawable)localObject).setBounds(0, 0, aekt.a(16.0F, getResources()), aekt.a(16.0F, getResources()));
+        localObject = getResources().getDrawable(2130844615);
+        ((Drawable)localObject).setBounds(0, 0, aepi.a(16.0F, getResources()), aepi.a(16.0F, getResources()));
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setCompoundDrawables(null, null, (Drawable)localObject, null);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setCompoundDrawablePadding(aekt.a(4.0F, getResources()));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setCompoundDrawablePadding(aepi.a(4.0F, getResources()));
       }
     }
   }
@@ -139,7 +139,7 @@ public class ComponentHeaderRecommend
     {
       localArticleInfo = this.jdField_a_of_type_Qbs.a.a();
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMaxLines(7);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(alpo.a(2131702635));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(alud.a(2131702647));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new qeb(this));
       if (!ors.r(localArticleInfo)) {
         break label103;
@@ -169,7 +169,7 @@ public class ComponentHeaderRecommend
       do
       {
         return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131702655));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131702667));
         return;
       } while (((ArticleInfo)localObject).mSocialFeedInfo == null);
       if (!TextUtils.isEmpty(((ArticleInfo)localObject).mSocialFeedInfo.d))
@@ -182,9 +182,9 @@ public class ComponentHeaderRecommend
     if (i >= 10000) {
       localObject = new DecimalFormat("####.0");
     }
-    for (localObject = ((DecimalFormat)localObject).format(i / 10000.0D) + alpo.a(2131702654);; localObject = "" + i)
+    for (localObject = ((DecimalFormat)localObject).format(i / 10000.0D) + alud.a(2131702666);; localObject = "" + i)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((String)localObject + alpo.a(2131702648));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((String)localObject + alud.a(2131702660));
       return;
     }
   }
@@ -198,7 +198,7 @@ public class ComponentHeaderRecommend
     {
       localArticleInfo = this.jdField_a_of_type_Qbs.a.a();
       str = "" + a();
-      localObject1 = oqu.k + bdbi.encodeToString(String.valueOf(a()).getBytes(), 2);
+      localObject1 = oqu.k + bdfr.encodeToString(String.valueOf(a()).getBytes(), 2);
       ors.a(getContext(), (String)localObject1);
       localObject1 = "";
     }
@@ -227,7 +227,7 @@ public class ComponentHeaderRecommend
     QQAppInterface localQQAppInterface;
     if (!b())
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131702625));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131702637));
       this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       this.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(false);
@@ -255,17 +255,17 @@ public class ComponentHeaderRecommend
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559967, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559966, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)findViewById(2131362973));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)findViewById(2131371142));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364870));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131365127));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363588));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)findViewById(2131371161));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364872));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131365129));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363590));
     this.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(true);
   }
   
@@ -294,8 +294,8 @@ public class ComponentHeaderRecommend
     default: 
       return;
     case 2131362973: 
-    case 2131371142: 
-    case 2131377793: 
+    case 2131371161: 
+    case 2131377847: 
       h();
       return;
     }

@@ -1,8 +1,4 @@
-final class awvo
-  implements bhqf
-{
-  public void onDismiss() {}
-}
+public class awvo {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

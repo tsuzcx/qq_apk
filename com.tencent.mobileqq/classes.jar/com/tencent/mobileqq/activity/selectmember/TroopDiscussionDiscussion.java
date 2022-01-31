@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import akdx;
-import akeb;
+import akim;
+import akiq;
 import android.os.Bundle;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.data.DiscussionInfo;
@@ -9,9 +9,9 @@ import com.tencent.widget.XListView;
 
 public class TroopDiscussionDiscussion
   extends TroopDiscussionBaseV
-  implements akeb
+  implements akiq
 {
-  private akdx jdField_a_of_type_Akdx;
+  private akim jdField_a_of_type_Akim;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   
   public TroopDiscussionDiscussion(SelectMemberActivity paramSelectMemberActivity)
@@ -21,13 +21,13 @@ public class TroopDiscussionDiscussion
   
   public void a(Bundle paramBundle)
   {
-    a(2131562621);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131380290));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131167138);
-    this.jdField_a_of_type_Akdx = new akdx(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this, this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    this.jdField_a_of_type_Akdx.a(true);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Akdx);
-    this.jdField_a_of_type_Akdx.notifyDataSetChanged();
+    a(2131562639);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131380348));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131167140);
+    this.jdField_a_of_type_Akim = new akim(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this, this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    this.jdField_a_of_type_Akim.a(true);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Akim);
+    this.jdField_a_of_type_Akim.notifyDataSetChanged();
   }
   
   public void a(DiscussionInfo paramDiscussionInfo)
@@ -44,7 +44,7 @@ public class TroopDiscussionDiscussion
   public void b()
   {
     super.b();
-    this.jdField_a_of_type_Akdx.a();
+    this.jdField_a_of_type_Akim.a();
   }
   
   public void b(Bundle paramBundle) {}

@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class aixr
-  implements View.OnClickListener
 {
-  public aixr(ChooseItemView paramChooseItemView) {}
-  
-  public void onClick(View paramView)
+  public static void a(String paramString1, String paramString2, String paramString3)
   {
-    this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletConfigHandler", 2, "onReceivePreExec|" + paramString1 + "|" + paramString2 + "|" + paramString3);
+    }
+    if ((!TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(paramString3))) {}
   }
 }
 

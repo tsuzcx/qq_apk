@@ -1,13 +1,19 @@
-public abstract interface bmkm
-  extends bmiw
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+
+public final class bmkm
+  implements Parcelable.Creator<EditTakeVideoSource>
 {
-  public abstract bmkl a();
+  public EditTakeVideoSource a(Parcel paramParcel)
+  {
+    return new EditTakeVideoSource(paramParcel);
+  }
   
-  public abstract void a(bmmu parambmmu, float paramFloat1, float paramFloat2);
-  
-  public abstract void b(int paramInt, bmwn parambmwn);
-  
-  public abstract void d();
+  public EditTakeVideoSource[] a(int paramInt)
+  {
+    return new EditTakeVideoSource[paramInt];
+  }
 }
 
 

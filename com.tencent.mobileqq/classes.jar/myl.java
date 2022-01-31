@@ -822,7 +822,7 @@ public class myl
     //   59: ldc 239
     //   61: ldc 239
     //   63: ldc 239
-    //   65: invokestatic 500	bcli:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   65: invokestatic 500	bcpr:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   68: ldc 161
     //   70: iconst_1
     //   71: ldc_w 502
@@ -1088,12 +1088,12 @@ public class myl
     {
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
       localEditor.putLong("lastUpdate", System.currentTimeMillis());
-      localEditor.putString("qqVersion", "2013 8.3.3");
+      localEditor.putString("qqVersion", "2013 8.3.5");
       localEditor.putString(paramString3, paramString2);
       if (QLog.isColorLevel()) {
         QLog.d("AuthorizeConfig", 2, "White list update completed as version=" + paramString2);
       }
-      azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_ok", 0, 1, 0, "", "", "", "");
+      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_ok", 0, 1, 0, "", "", "", "");
     }
     for (;;)
     {
@@ -1104,7 +1104,7 @@ public class myl
       this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
       return;
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-      azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 0, 1, 0, "", "", "", "");
+      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 0, 1, 0, "", "", "", "");
       if (QLog.isColorLevel()) {
         QLog.e("AuthorizeConfig", 2, "Authorize config parse failed include: " + paramString1);
       }
@@ -1182,7 +1182,7 @@ public class myl
       }
       for (;;)
       {
-        bcli.a("webview", "file_js", paramString1, "", "", "");
+        bcpr.a("webview", "file_js", paramString1, "", "", "");
         QLog.e("AuthorizeConfig", 1, "action deprecated with file protocol");
         return false;
       }
@@ -1227,7 +1227,7 @@ public class myl
   
   public boolean a(JSONObject paramJSONObject)
   {
-    return befr.a(paramJSONObject, "sonicWhiteList");
+    return beka.a(paramJSONObject, "sonicWhiteList");
   }
   
   protected boolean a(boolean paramBoolean)
@@ -1418,7 +1418,7 @@ public class myl
           boolean bool4 = bool1;
           if (localJSONObject != null)
           {
-            if (befr.a(localJSONObject, "X5Config"))
+            if (beka.a(localJSONObject, "X5Config"))
             {
               if (localJSONObject.optInt("mainThreadControl", 0) != 0) {
                 break label220;
@@ -1428,7 +1428,7 @@ public class myl
             label172:
             bool2 = bool3;
             bool4 = bool1;
-            if (befr.a(localJSONObject, "X5Config"))
+            if (beka.a(localJSONObject, "X5Config"))
             {
               if (localJSONObject.optInt("enableQuic", 1) != 1) {
                 break label225;
@@ -1572,7 +1572,7 @@ public class myl
       if (((String)localObject1).length() > 200) {}
       for (paramString1 = ((String)localObject1).substring(0, 200);; paramString1 = (String)localObject1)
       {
-        bcli.a("webview", "file_scheme", paramString1, "", "", "");
+        bcpr.a("webview", "file_scheme", paramString1, "", "", "");
         QLog.e("AuthorizeConfig", 1, "action deprecated with file protocol");
         return false;
       }
@@ -2151,7 +2151,7 @@ public class myl
       return;
       localObject1 = BaseApplicationImpl.getApplication().getRuntime();
     } while ((!(localObject1 instanceof QQAppInterface)) || ((!((AppRuntime)localObject1).isLogin()) && (!"com.tencent.mobileqq".equals(MobileQQ.getMobileQQ().getQQProcessName()))));
-    if (((aonz)aogj.a().a(585)).jdField_a_of_type_Int == 1)
+    if (((aosi)aoks.a().a(585)).jdField_a_of_type_Int == 1)
     {
       Object localObject4 = a("pskey");
       localObject1 = new ArrayList(((Set)localObject4).size());
@@ -2480,8 +2480,8 @@ public class myl
       if (localObject2 == null)
       {
         QLog.d("AuthorizeConfig", 1, "WebViewSwitchAio calling main process to download FuncDevWebViewConfig");
-        localObject1 = apic.a("download_FuncDev_webview", "", 0, null);
-        apmy.a().b((Bundle)localObject1);
+        localObject1 = apml.a("download_FuncDev_webview", "", 0, null);
+        aprh.a().b((Bundle)localObject1);
         localObject1 = localObject2;
       }
     }

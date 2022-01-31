@@ -1,15 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.nearby.now.view.widget.MetaballView;
 
-class avin
-  implements DialogInterface.OnDismissListener
+public class avin
 {
-  avin(avhw paramavhw) {}
+  public float a;
+  public float[] a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.s = false;
-  }
+  private avin(MetaballView paramMetaballView) {}
 }
 
 

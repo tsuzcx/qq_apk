@@ -1,6 +1,10 @@
+import android.widget.TextView;
+
 class bdly
 {
-  public static final bdlw a = new bdlw(null);
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  private bdly(bdls parambdls) {}
 }
 
 

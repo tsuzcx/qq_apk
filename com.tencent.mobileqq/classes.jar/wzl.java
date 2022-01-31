@@ -1,10 +1,58 @@
-public abstract interface wzl
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+
+class wzl
+  extends xic
 {
-  public abstract void a(int paramInt);
+  private final List<xhr> a = new ArrayList();
   
-  public abstract void a(wzf paramwzf);
+  public int a()
+  {
+    return this.a.size();
+  }
   
-  public abstract boolean a(wzi paramwzi);
+  public xhr a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (xhr)this.a.get(paramInt);
+    }
+    return null;
+  }
+  
+  public xhr a(String paramString)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      xhr localxhr = (xhr)localIterator.next();
+      if (TextUtils.equals(paramString, localxhr.a)) {
+        return localxhr;
+      }
+    }
+    return null;
+  }
+  
+  public void a(Collection<xhr> paramCollection)
+  {
+    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
+    this.a.clear();
+    this.a.addAll(paramCollection);
+    a();
+  }
+  
+  public void a(xhr paramxhr)
+  {
+    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + paramxhr);
+    int i = this.a.indexOf(paramxhr);
+    if (i >= 0)
+    {
+      this.a.set(i, paramxhr);
+      a(i);
+    }
+  }
 }
 
 

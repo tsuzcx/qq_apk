@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.os.Bundle;
-import aqpu;
+import aqud;
 import com.tencent.qphone.base.util.QLog;
 
 public class QFileConfigManager$3
   implements Runnable
 {
-  public QFileConfigManager$3(aqpu paramaqpu, Bundle paramBundle) {}
+  public QFileConfigManager$3(aqud paramaqud, Bundle paramBundle) {}
   
   public void run()
   {
     if (!this.a.containsKey("ipv6_all_switch")) {
       return;
     }
-    aqpu.d(this.this$0, this.a.getBoolean("ipv6_all_switch", false));
-    QLog.i("QFileConfigManager", 1, "enableFileIPv6: set ipv6 config. enableFileIPv6[" + aqpu.d(this.this$0) + "]");
+    aqud.d(this.this$0, this.a.getBoolean("ipv6_all_switch", false));
+    QLog.i("QFileConfigManager", 1, "enableFileIPv6: set ipv6 config. enableFileIPv6[" + aqud.d(this.this$0) + "]");
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgjw;
-import bgkd;
+import bgod;
+import bgok;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.model.AppConfigInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -12,15 +12,15 @@ public class AuthJsPlugin
   private static final String TAG = "AuthJsPlugin";
   private ChannelProxy mChannelProxy;
   
-  public void login(bgkd parambgkd)
+  public void login(bgok parambgok)
   {
-    QMLog.d("AuthJsPlugin", "call API_LOGIN callbackId:" + parambgkd.b + " PackageToolVersion:" + this.mApkgInfo.a.PackageToolVersion);
-    this.mChannelProxy.login(this.mApkgInfo.appId, new AuthJsPlugin.1(this, parambgkd));
+    QMLog.d("AuthJsPlugin", "call API_LOGIN callbackId:" + parambgok.b + " PackageToolVersion:" + this.mApkgInfo.a.PackageToolVersion);
+    this.mChannelProxy.login(this.mApkgInfo.appId, new AuthJsPlugin.1(this, parambgok));
   }
   
-  public void refreshSession(bgkd parambgkd)
+  public void refreshSession(bgok parambgok)
   {
-    this.mChannelProxy.checkSession(this.mApkgInfo.appId, new AuthJsPlugin.2(this, parambgkd));
+    this.mChannelProxy.checkSession(this.mApkgInfo.appId, new AuthJsPlugin.2(this, parambgok));
   }
 }
 

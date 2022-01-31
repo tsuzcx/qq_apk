@@ -1,20 +1,24 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahxy
-  implements View.OnClickListener
+class ahxy
+  extends BroadcastReceiver
 {
-  public ahxy(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ahxy(ahxx paramahxx) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.jdField_d_of_type_Int == 11) {
-      azmj.b(this.a.getActivity().app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
+    if (paramIntent.getBooleanExtra("recording_time_out", false))
+    {
+      QQToast.a(this.a.mRuntime.a(), 2131699382, 0).a();
+      QLog.e("FaceUnblockCameraJsApiPlugin", 1, "FaceUnlock record timeout!");
+      return;
     }
-    this.a.jdField_d_of_type_AndroidAppDialog.cancel();
+    paramContext = paramIntent.getStringExtra("target_media_url");
+    ahxx.a(this.a, paramContext);
   }
 }
 

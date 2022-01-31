@@ -1,12 +1,21 @@
-import org.json.JSONObject;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
 public class aixe
+  extends RecyclerView.OnScrollListener
 {
-  public int a;
-  public String a;
-  public JSONObject a;
-  public String b;
-  public String c;
+  public aixe(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      agmq.a(bool);
+      return;
+    }
+  }
 }
 
 

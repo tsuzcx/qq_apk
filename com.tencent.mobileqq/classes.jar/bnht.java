@@ -1,29 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr;
-import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr.DragViewIcon;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
 
 public class bnht
-  extends AnimatorListenerAdapter
 {
-  public bnht(DragAnimationMgr paramDragAnimationMgr, DragAnimationMgr.DragViewIcon paramDragViewIcon) {}
+  int jdField_a_of_type_Int = 0;
+  boolean jdField_a_of_type_Boolean = false;
+  int b;
+  public boolean b;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  private bnht(RMVideoSwitchCameraPicMgr paramRMVideoSwitchCameraPicMgr)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.b = false;
-    DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr);
-    if (DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr) != null) {
-      DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr).b();
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.b = false;
-    DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr);
-    if (DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr) != null) {
-      DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr).b();
-    }
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = true;
   }
 }
 

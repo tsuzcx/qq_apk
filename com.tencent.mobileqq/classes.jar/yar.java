@@ -1,15 +1,6 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.view.View;
-
-class yar
-  implements yad
+public abstract interface yar
 {
-  yar(yan paramyan) {}
-  
-  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
-  {
-    this.a.d(paramStFeed);
-  }
+  public abstract void a();
 }
 
 

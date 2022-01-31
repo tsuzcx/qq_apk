@@ -1,36 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForWantGiftMsg;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class agbg
-  implements View.OnClickListener
+public class agbg
+  implements beqw
 {
-  agbg(agbf paramagbf, ChatMessage paramChatMessage, MessageForWantGiftMsg paramMessageForWantGiftMsg) {}
+  public agbg(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, agbi paramagbi) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    if (paramView.getId() == 2131373108)
-    {
-      new azmo(this.jdField_a_of_type_Agbf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_flower").c("grp_aio").d("clk_send_him").a(0).a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + "", "29" }).a();
-      paramView = bdiv.i(this.jdField_a_of_type_Agbf.jdField_a_of_type_AndroidContentContext, "url");
-      if (TextUtils.isEmpty(paramView)) {
-        break label216;
-      }
-    }
-    for (;;)
-    {
-      paramView = paramView.replace("{troopUin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.frienduin).replace("{uin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.senderuin).replace("{from}", "29");
-      Intent localIntent = new Intent(this.jdField_a_of_type_Agbf.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_Agbf.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      return;
-      label216:
-      paramView = "https://qun.qq.com/qunpay/gifts/index.html?_bid=2204&troopUin={troopUin}&uin={uin}&from={from}&_wv=1031";
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Agbi.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Agbi.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Agbi.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
     }
   }
 }

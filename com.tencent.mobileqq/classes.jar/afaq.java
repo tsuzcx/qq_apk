@@ -1,16 +1,32 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
-class afaq
-  extends atqq
+public class afaq
+  implements afat
 {
-  afaq(afao paramafao) {}
+  public afaq(LoadDataJob paramLoadDataJob, Map paramMap, List paramList) {}
   
-  public void a() {}
-  
-  public void a(atlh paramatlh)
+  public void a(int paramInt, afbe paramafbe)
   {
-    if ((afao.a(this.a) != null) && (afao.a(this.a).equals(paramatlh)) && (afao.a(this.a) == afao.a(this.a).a().a())) {
-      afao.a(this.a).a().a();
+    if (QLog.isColorLevel()) {
+      QLog.d("LoadDataJob", 2, "unmarshall task finish id:" + paramInt);
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
+      this.jdField_a_of_type_JavaUtilMap.notifyAll();
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramafbe);
+      if (this.jdField_a_of_type_JavaUtilList.size() == LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob)) {
+        this.jdField_a_of_type_JavaUtilList.notifyAll();
+      }
+      return;
+      paramafbe = finally;
+      throw paramafbe;
     }
   }
 }

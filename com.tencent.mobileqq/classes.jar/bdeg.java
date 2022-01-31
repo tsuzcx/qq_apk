@@ -1,23 +1,41 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-class bdeg
-  implements DialogInterface.OnKeyListener
+public class bdeg
+  implements DownloadParams.DecodeHandler
 {
-  bdeg(bdef parambdef) {}
+  private DownloadParams.DecodeHandler a;
+  private DownloadParams.DecodeHandler b;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public bdeg(DownloadParams.DecodeHandler paramDecodeHandler1, DownloadParams.DecodeHandler paramDecodeHandler2)
   {
-    if (paramInt == 4)
+    this.a = paramDecodeHandler1;
+    this.b = paramDecodeHandler2;
+  }
+  
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    Bitmap localBitmap = this.a.run(paramDownloadParams, paramBitmap);
+    DownloadParams localDownloadParams = null;
+    if (localBitmap != null)
     {
-      this.a.dismiss();
-      ((Activity)this.a.a.get()).finish();
-      return true;
+      paramDownloadParams = this.b.run(paramDownloadParams, localBitmap);
+      localDownloadParams = paramDownloadParams;
+      if (localBitmap != paramDownloadParams)
+      {
+        localDownloadParams = paramDownloadParams;
+        if (localBitmap != paramBitmap)
+        {
+          localBitmap.recycle();
+          localDownloadParams = paramDownloadParams;
+        }
+      }
     }
-    return false;
+    if (localDownloadParams != null) {
+      paramBitmap = localDownloadParams;
+    }
+    return paramBitmap;
   }
 }
 

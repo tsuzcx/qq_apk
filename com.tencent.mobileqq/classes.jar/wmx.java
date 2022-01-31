@@ -1,26 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.ShareGroupCollectionItem;
+import java.util.ArrayList;
+import java.util.List;
 
 public class wmx
-  extends QQUIEventReceiver<wmw, uqu>
+  extends vcb
 {
-  public wmx(wmw paramwmw1, @NonNull wmw paramwmw2)
+  public int a;
+  public String a;
+  public List<ShareGroupCollectionItem> a;
+  
+  public wmx(ErrorMessage paramErrorMessage, String paramString)
   {
-    super(paramwmw2);
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(@NonNull wmw paramwmw, @NonNull uqu paramuqu)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.playernew.StoryPlayerActivity", 2, "GetStoryListReceiver");
-    }
-    paramwmw.b(paramuqu.a);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uqu.class;
+    return "GetShareGroupListEvent{mShareGroupList=" + this.jdField_a_of_type_JavaUtilList.size() + ", mShareGroupTotalCount=" + this.jdField_a_of_type_Int + ", errorCode=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

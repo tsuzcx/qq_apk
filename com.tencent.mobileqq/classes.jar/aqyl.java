@@ -1,136 +1,73 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.BitmapFactory.Options;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqyl
-  extends aynd
+class aqyl
+  extends aqru
 {
-  private BitmapFactory.Options a = new BitmapFactory.Options();
+  aqyl(aqyj paramaqyj) {}
   
-  public aqyl(bcws parambcws)
+  protected void a(long paramLong)
   {
-    super(parambcws);
-  }
-  
-  public void a(ayjl paramayjl, ayru paramayru)
-  {
-    paramayru.a().setMaxWidth(800);
-    Object localObject = (aqyg)paramayjl;
-    ImageView localImageView = paramayru.b();
-    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    localImageView.setImageDrawable(null);
-    localImageView.setBackgroundDrawable(null);
-    if (((aqyg)localObject).a == null) {
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileProgressDirectDone sessionid error.return");
+    }
+    aqyp localaqyp;
+    do
+    {
       return;
-    }
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)((aqyg)localObject).a.get(0);
-    int i = arni.a(localFileManagerEntity.fileName);
-    if ((i == 0) || (i == 2))
-    {
-      if (bdcs.b(localFileManagerEntity.strThumbPath)) {
-        localObject = localFileManagerEntity.strThumbPath;
-      }
-      for (;;)
+      localaqyp = this.a.a(paramLong);
+      if (localaqyp == null)
       {
-        localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramayru.b().getHeight();
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramayru.b().getWidth();
-        paramayru = paramayru.d();
-        if ((paramayru != null) && (!TextUtils.isEmpty(paramayjl.d())))
-        {
-          paramayru.setText(paramayjl.d());
-          paramayru.setVisibility(0);
-        }
-        paramayjl = aroa.a(localFileManagerEntity);
-        if (paramayjl == null) {
-          break;
-        }
-        paramayjl = URLDrawable.getDrawable(paramayjl, (URLDrawable.URLDrawableOptions)localObject);
-        if (paramayjl == null) {
-          localImageView.setImageDrawable(localImageView.getContext().getResources().getDrawable(2130843839));
-        }
-        localImageView.setImageDrawable(paramayjl);
-        return;
-        if (bdcs.b(localFileManagerEntity.strLargeThumPath))
-        {
-          localObject = localFileManagerEntity.strLargeThumPath;
-        }
-        else
-        {
-          if (!bdcs.b(localFileManagerEntity.strFilePath)) {
-            break label266;
-          }
-          localObject = localFileManagerEntity.strFilePath;
-        }
-      }
-      label266:
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localFileManagerEntity.getCloudType() == 1) {
-        localObject = ((QQAppInterface)localObject).a().a(localFileManagerEntity, 7);
-      }
-    }
-    for (;;)
-    {
-      if (TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localImageView.setImageDrawable(BaseApplicationImpl.getContext().getResources().getDrawable(2130843839));
-        return;
-        if (localFileManagerEntity.getCloudType() == 2) {
-          localObject = ((QQAppInterface)localObject).a().a(localFileManagerEntity.WeiYunFileId, localFileManagerEntity.strLargeThumPath, 3, localFileManagerEntity);
-        }
-      }
-      else
-      {
-        localFileManagerEntity.strThumbPath = ((String)localObject);
-        break;
-        arni.a(localImageView, localFileManagerEntity);
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileProgressDirectDone");
         return;
       }
-      localObject = "";
-    }
+      localaqyp.h();
+    } while (!localaqyp.c());
+    this.a.c(paramLong);
   }
   
-  public void b(ayjl paramayjl, ayru paramayru)
+  protected void b(long paramLong)
   {
-    super.b(paramayjl, paramayru);
-    if ((paramayru.a() != null) && (!TextUtils.isEmpty(paramayjl.a())))
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileRecvButSenderReplayTimeOut sessionid error.return");
+    }
+    aqyp localaqyp;
+    do
     {
-      paramayru.a().setVisibility(0);
-      paramayru.a().setText(paramayjl.a());
+      return;
+      localaqyp = this.a.a(paramLong);
+      if (localaqyp == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileRecvButSenderReplayTimeOut");
+        return;
+      }
+      localaqyp.j();
+    } while (!localaqyp.c());
+    this.a.c(paramLong);
+  }
+  
+  protected void c(long paramLong)
+  {
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileQueryUpProgressTimeOut sessionid error.return");
     }
-    if ((paramayru.b() != null) && (!TextUtils.isEmpty(paramayjl.b())))
+    aqyp localaqyp;
+    do
     {
-      paramayru.b().setVisibility(0);
-      paramayru.b().setText(paramayjl.b());
-    }
-    if ((paramayru.c() != null) && (!TextUtils.isEmpty(paramayjl.c())))
-    {
-      paramayru.c().setVisibility(0);
-      paramayru.c().setText(paramayjl.c());
-    }
-    if ((paramayjl.d() == null) && (paramayru.d() != null)) {
-      paramayru.d().setVisibility(8);
-    }
-    if ((paramayru.d() != null) && (paramayjl.d() != null))
-    {
-      paramayru.d().setVisibility(0);
-      paramayru.d().setText(paramayjl.d());
-    }
+      return;
+      localaqyp = this.a.a(paramLong);
+      if (localaqyp == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileQueryUpProgressTimeOut");
+        return;
+      }
+      localaqyp.l();
+    } while (!localaqyp.c());
+    this.a.c(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqyl
  * JD-Core Version:    0.7.0.1
  */

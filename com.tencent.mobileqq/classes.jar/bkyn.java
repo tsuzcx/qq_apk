@@ -1,45 +1,23 @@
+import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.List;
 
 class bkyn
-  implements View.OnClickListener
+  implements bmeo<Boolean>
 {
-  bkyn(bkym parambkym, int paramInt) {}
+  bkyn(bkyj parambkyj) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    bkym.a(this.jdField_a_of_type_Bkym, this.jdField_a_of_type_Int);
-    bkyo localbkyo;
-    if (this.jdField_a_of_type_Int != bkym.a(this.jdField_a_of_type_Bkym))
-    {
-      int i = bkym.a(this.jdField_a_of_type_Bkym);
-      bkym.a(this.jdField_a_of_type_Bkym, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bkym.notifyItemChanged(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bkym.notifyItemChanged(i);
-      if (bkym.a(this.jdField_a_of_type_Bkym) != null)
-      {
-        localbkyo = bkym.a(this.jdField_a_of_type_Bkym);
-        if (this.jdField_a_of_type_Int != 0) {
-          break label127;
-        }
-      }
-    }
-    label127:
-    for (paramView = null;; paramView = (bkvz)bkym.a(this.jdField_a_of_type_Bkym).get(this.jdField_a_of_type_Int - 1))
-    {
-      localbkyo.a(paramView);
-      if (this.jdField_a_of_type_Int != 0) {
-        break;
-      }
-      bler.a().k("none");
-      blen.a().O();
-      blfg.b("AEGIFStickerAdapter", "【Gif Material Click】: null");
+    if (paramBoolean == null) {
       return;
     }
-    bler.a().k(((bkvz)bkym.a(this.jdField_a_of_type_Bkym).get(this.jdField_a_of_type_Int - 1)).a);
-    blen.a().O();
-    blfg.b("AEGIFStickerAdapter", "【Gif Material Click】: " + ((bkvz)bkym.a(this.jdField_a_of_type_Bkym).get(this.jdField_a_of_type_Int - 1)).a);
+    View localView = bkyj.f(this.a);
+    if (paramBoolean.booleanValue()) {}
+    for (int i = 0;; i = 4)
+    {
+      localView.setVisibility(i);
+      return;
+    }
   }
 }
 

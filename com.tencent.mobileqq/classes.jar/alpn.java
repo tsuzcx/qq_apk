@@ -1,70 +1,47 @@
-import com.tencent.mobileqq.app.GuardManager;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class alpn
+  extends bayj
 {
-  public static final String[] a;
-  private static final String[] b = { "MSG", "RESUME", "TICK", "FG", "BG", "ENTER", "MAIN" };
-  public int a;
-  public GuardManager a;
-  protected long c;
-  protected long d;
+  WeakReference<alpo> a;
   
-  static
+  public alpn(alpo paramalpo)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "EMPTY", "BG_FETCH", "FG_MAIN", "FG_OTHER", "BG_GUARD", "BG_UNGUARD", "LITE_GUARD", "LITE_UNGUARD", "DEAD" };
+    this.a = new WeakReference(paramalpo);
   }
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    this.c += 1L;
-    this.d += 1L;
-  }
-  
-  public final void a(int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GuardManager", 2, jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int] + " onEvent " + b[paramInt] + ", " + paramObject + ", " + this.c + ", " + this.d);
+    bass localbass = (bass)paramMessage.obj;
+    if (localbass.b == 35) {
+      switch (paramMessage.what)
+      {
+      }
     }
-    switch (paramInt)
+    do
     {
-    default: 
+      do
+      {
+        return;
+        paramMessage = localbass.a;
+        if ((this.a != null) && (this.a.get() != null))
+        {
+          ((alpo)this.a.get()).b(paramMessage);
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("CardHandler", 2, "CardTransProcessorHandler no callback");
       return;
-    case 2: 
-      a();
-      return;
-    case 0: 
-      b();
-      return;
-    case 3: 
-      a((String)paramObject);
-      return;
-    case 4: 
-      d((String)paramObject);
-      return;
-    case 5: 
-      b((String)paramObject);
-      return;
-    case 6: 
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(2, null);
-      return;
-    }
-    c((String)paramObject);
+      if ((this.a != null) && (this.a.get() != null))
+      {
+        ((alpo)this.a.get()).d();
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("CardHandler", 2, "CardTransProcessorHandler error no callback");
   }
-  
-  protected void a(String paramString) {}
-  
-  protected void b() {}
-  
-  protected void b(String paramString)
-  {
-    this.d = 0L;
-    this.c = 0L;
-  }
-  
-  protected void c(String paramString) {}
-  
-  protected void d(String paramString) {}
 }
 
 

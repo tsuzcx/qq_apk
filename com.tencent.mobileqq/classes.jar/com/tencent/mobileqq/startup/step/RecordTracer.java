@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.startup.step;
 
 import android.os.Build.VERSION;
-import azkk;
-import azkl;
-import azkm;
+import azot;
+import azou;
+import azov;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.trackrecordlib.core.RecordManager;
@@ -15,7 +15,7 @@ public class RecordTracer
   
   public static RecordTracer a()
   {
-    return azkm.a;
+    return azov.a;
   }
   
   protected boolean doStep()
@@ -25,7 +25,7 @@ public class RecordTracer
     }
     try
     {
-      RecordManager.getInstance().startRecord(BaseApplicationImpl.getContext(), new azkk(this), new azkl(this));
+      RecordManager.getInstance().startRecord(BaseApplicationImpl.getContext(), new azot(this), new azou(this));
       return true;
     }
     catch (Throwable localThrowable)

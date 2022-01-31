@@ -102,7 +102,7 @@ public class qbw
     for (int i = this.b;; i = 16777215)
     {
       paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(aekt.a(2, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentResResources));
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(aepi.a(2, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentResResources));
       this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
       return;
     }

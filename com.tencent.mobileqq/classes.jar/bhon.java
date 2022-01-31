@@ -1,19 +1,13 @@
+import android.os.Bundle;
+
 public class bhon
 {
-  private static ThreadLocal<StringBuilder> a = new ThreadLocal();
-  
-  public static StringBuilder a()
-  {
-    StringBuilder localStringBuilder = (StringBuilder)a.get();
-    if (localStringBuilder == null)
-    {
-      localStringBuilder = new StringBuilder();
-      a.set(localStringBuilder);
-      return localStringBuilder;
-    }
-    localStringBuilder.setLength(0);
-    return localStringBuilder;
-  }
+  int jdField_a_of_type_Int;
+  Bundle jdField_a_of_type_AndroidOsBundle;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  int c;
 }
 
 

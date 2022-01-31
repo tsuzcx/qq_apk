@@ -10,7 +10,7 @@ public class ltz
     if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {}
     for (boolean bool = true;; bool = false)
     {
-      bhnt.a(bool);
+      bhsa.a(bool);
       this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
       return;
     }

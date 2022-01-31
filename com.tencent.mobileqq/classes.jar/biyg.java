@@ -1,14 +1,53 @@
 public class biyg
 {
-  public String biz_params;
-  public String bus_type;
-  public String people_num;
-  public String pick_entry;
-  public String recv_type;
+  public static int a;
+  public static String a;
+  public static int b;
+  public static String b;
+  public static int c;
+  public static String c;
+  public static String d;
+  public static String e;
+  public static String f;
+  public static String g;
+  public static String h;
+  public static String i;
+  public static String j;
+  public static String k;
+  public static String l;
+  public static String m;
+  public static String n;
+  public static String o;
+  public static String p;
+  public static String q;
+  public static String r;
+  public static String s = "merge_contact";
+  public static String t = "restore_contact";
+  public static String u = "mainui";
   
-  public String toString()
+  static
   {
-    return new StringBuilder().append("people_num: ").append(this.people_num).toString() + new StringBuilder().append("recv_type: ").append(this.recv_type).toString() + new StringBuilder().append("bus_type: ").append(this.bus_type).toString() + new StringBuilder().append("pick_entry: ").append(this.pick_entry).toString() + new StringBuilder().append("biz_params: ").append(this.biz_params).toString();
+    jdField_a_of_type_JavaLangString = "qqpim";
+    jdField_b_of_type_JavaLangString = "com.tencent.mobileqq:tool";
+    jdField_c_of_type_JavaLangString = "qqpimPlugin";
+    d = "getTipsInfo";
+    e = "clickTipsInfo";
+    f = "getIsQQPimServiceRunning";
+    g = "noticeServiceActive";
+    h = "noticeHasBackup";
+    i = "com.qqpim.activity.QQPimSyncActivity";
+    j = "com.qqpim.activity.QQPimDownloadActivity";
+    k = "com.qqpim.service.QQPimSyncServer";
+    l = "account";
+    m = "a2";
+    n = "tipsInfo";
+    o = "activity_type";
+    p = "repeat_contact_num";
+    q = "cloud_contact_num";
+    r = "click_tips_type";
+    jdField_a_of_type_Int = 1;
+    jdField_b_of_type_Int = 2;
+    jdField_c_of_type_Int = 3;
   }
 }
 

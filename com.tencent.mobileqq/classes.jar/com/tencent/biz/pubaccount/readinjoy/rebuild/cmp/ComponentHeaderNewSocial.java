@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.SpannableStringBuilder;
@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import baig;
+import bamp;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
@@ -164,7 +164,7 @@ public class ComponentHeaderNewSocial
         break label320;
       }
       label485:
-      parampgd = new SpannableStringBuilder(new baig(localStringBuilder, 7, 16));
+      parampgd = new SpannableStringBuilder(new bamp(localStringBuilder, 7, 16));
       localObject1 = ((List)localObject2).iterator();
       while (((Iterator)localObject1).hasNext())
       {
@@ -172,7 +172,7 @@ public class ComponentHeaderNewSocial
         parampgd.setSpan(new qdt(this, ((qdu)localObject2).jdField_a_of_type_Long, -3355444), ((qdu)localObject2).jdField_a_of_type_Int, ((qdu)localObject2).b, 17);
       }
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMaxLines(7);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(alpo.a(2131702650));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(alud.a(2131702662));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new qds(this, localArticleInfo, -3355444));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setText(parampgd);
       return;
@@ -191,19 +191,19 @@ public class ComponentHeaderNewSocial
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559966, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559965, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131371077);
-    opi.a(this.jdField_a_of_type_AndroidViewView, getResources().getDrawable(2130841380));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371079));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371078));
-    this.b = findViewById(2131371074);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131371075));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpannableFactory(baig.a);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131371096);
+    opi.a(this.jdField_a_of_type_AndroidViewView, getResources().getDrawable(2130841381));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371098));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371097));
+    this.b = findViewById(2131371093);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131371094));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpannableFactory(bamp.a);
     this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView[1].setVisibility(8);
     this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView[2].setVisibility(8);
     this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView[3].setVisibility(8);

@@ -1,40 +1,6 @@
-import android.os.Handler;
-import android.os.Looper;
-
-public class bhot
+public abstract interface bhot
 {
-  private static Handler a;
-  
-  public static void a(Runnable paramRunnable)
-  {
-    try
-    {
-      if (a == null) {
-        a = new Handler(Looper.getMainLooper());
-      }
-      a.post(paramRunnable);
-      return;
-    }
-    finally {}
-  }
-  
-  public static void a(Runnable paramRunnable, long paramLong)
-  {
-    try
-    {
-      if (a == null) {
-        a = new Handler(Looper.getMainLooper());
-      }
-      a.postDelayed(paramRunnable, paramLong);
-      return;
-    }
-    finally {}
-  }
-  
-  public static boolean a()
-  {
-    return Looper.getMainLooper().getThread() == Thread.currentThread();
-  }
+  public abstract int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2);
 }
 
 

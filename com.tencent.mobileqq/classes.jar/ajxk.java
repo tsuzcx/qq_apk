@@ -1,9 +1,6 @@
-public class ajxk
+public abstract interface ajxk
 {
-  public int a;
-  public awbv a;
-  
-  protected ajxk(ajxi paramajxi) {}
+  public abstract void a(int paramInt);
 }
 
 

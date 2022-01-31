@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.forward;
 
-import arxj;
-import arxn;
+import asbs;
+import asbw;
 import java.util.List;
 
 class ForwardPreviewTroopMemberController$1$1
@@ -11,10 +11,10 @@ class ForwardPreviewTroopMemberController$1$1
   
   public void run()
   {
-    if (arxj.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0) != null)
+    if (asbs.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0) != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0.e();
-      arxj.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0).a(this.jdField_a_of_type_JavaUtilList);
+      asbs.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0).a(this.jdField_a_of_type_JavaUtilList);
     }
   }
 }

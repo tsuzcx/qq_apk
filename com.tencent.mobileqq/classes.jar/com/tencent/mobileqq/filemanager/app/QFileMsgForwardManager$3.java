@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aqpv;
-import aqqs;
+import aque;
+import aqvb;
 import java.util.HashMap;
 
 public class QFileMsgForwardManager$3
   implements Runnable
 {
-  public QFileMsgForwardManager$3(aqpv paramaqpv, String paramString) {}
+  public QFileMsgForwardManager$3(aque paramaque, String paramString) {}
   
   public void run()
   {
-    aqqs localaqqs = null;
-    if (aqpv.a(this.this$0).containsKey(this.a)) {
-      localaqqs = (aqqs)aqpv.a(this.this$0).get(this.a);
+    aqvb localaqvb = null;
+    if (aque.a(this.this$0).containsKey(this.a)) {
+      localaqvb = (aqvb)aque.a(this.this$0).get(this.a);
     }
-    if (localaqqs != null) {
-      localaqqs.d();
+    if (localaqvb != null) {
+      localaqvb.d();
     }
   }
 }

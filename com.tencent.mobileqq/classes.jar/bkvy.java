@@ -1,58 +1,19 @@
-import android.support.annotation.Nullable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
-public class bkvy
+class bkvy
+  implements View.OnTouchListener
 {
-  private String a;
-  private String b;
+  bkvy(bkvx parambkvx) {}
   
-  public bkvy(@Nullable String paramString1, @Nullable String paramString2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  @Nullable
-  public String a()
-  {
-    return this.a;
-  }
-  
-  @Nullable
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if ((paramObject != null) && (!(paramObject instanceof bkvy))) {}
-    do
-    {
-      return false;
-      paramObject = (bkvy)paramObject;
-    } while ((bdje.a(this.a)) || (bdje.a(this.b)) || (!this.a.equals(paramObject.a())) || (!this.b.equals(paramObject.b())));
+    if ((bkvx.a(this.a) != null) && (bkvx.a(this.a) != null)) {
+      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, false, bkvx.a(this.a), bkvx.a(this.a));
+    }
     return true;
-  }
-  
-  public int hashCode()
-  {
-    int j = 0;
-    int i;
-    if (this.b == null)
-    {
-      i = 0;
-      if (this.a != null) {
-        break label40;
-      }
-    }
-    for (;;)
-    {
-      return (i + 527) * 31 + j;
-      i = this.b.hashCode();
-      break;
-      label40:
-      j = this.a.hashCode();
-    }
   }
 }
 

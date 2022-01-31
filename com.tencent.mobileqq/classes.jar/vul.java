@@ -1,14 +1,27 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-class vul
-  implements MediaPlayer.OnCompletionListener
+public class vul
+  extends vut<StoryVideoItem>
 {
-  vul(vuj paramvuj, vub paramvub) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public vul(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    this.jdField_a_of_type_Vub.a(this.jdField_a_of_type_Vuj);
+    super(paramVideoViewVideoHolder, null);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    wxe.d(this.a.a, "STATE_VIDEOFILE_ED error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.tmg_opensdk;
 
-import alce;
-import alch;
-import alcm;
+import algt;
+import algw;
+import alhb;
 import android.text.TextUtils;
-import bggp;
+import bgkw;
 import com.tencent.TMG.sdk.AVCustomSpearEngineCtrl;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
@@ -15,26 +15,26 @@ import org.json.JSONTokener;
 public class AVEngineWalper$3$1
   implements Runnable
 {
-  public AVEngineWalper$3$1(alch paramalch, byte[] paramArrayOfByte) {}
+  public AVEngineWalper$3$1(algw paramalgw, byte[] paramArrayOfByte) {}
   
   public void run()
   {
     Object localObject1 = new JSONTokener(new String(this.jdField_a_of_type_ArrayOfByte));
-    if ((this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_AndroidContentContext == null) || (alcm.a(this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_AndroidContentContext) == null) || (alcm.a(this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_AndroidContentContext).a() == null)) {
-      if (this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_Bggp != null) {
-        this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_Bggp.b(1, "context is null !!!!");
+    if ((this.jdField_a_of_type_Algw.jdField_a_of_type_Algt.jdField_a_of_type_AndroidContentContext == null) || (alhb.a(this.jdField_a_of_type_Algw.jdField_a_of_type_Algt.jdField_a_of_type_AndroidContentContext) == null) || (alhb.a(this.jdField_a_of_type_Algw.jdField_a_of_type_Algt.jdField_a_of_type_AndroidContentContext).a() == null)) {
+      if (this.jdField_a_of_type_Algw.jdField_a_of_type_Algt.jdField_a_of_type_Bgkw != null) {
+        this.jdField_a_of_type_Algw.jdField_a_of_type_Algt.jdField_a_of_type_Bgkw.b(1, "context is null !!!!");
       }
     }
     AVCustomSpearEngineCtrl localAVCustomSpearEngineCtrl;
     do
     {
       return;
-      localAVCustomSpearEngineCtrl = alcm.a(this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_AndroidContentContext).a();
+      localAVCustomSpearEngineCtrl = alhb.a(this.jdField_a_of_type_Algw.jdField_a_of_type_Algt.jdField_a_of_type_AndroidContentContext).a();
       if (localAVCustomSpearEngineCtrl != null) {
         break;
       }
-    } while (this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_Bggp == null);
-    this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_Bggp.b(1, "get spearEngineCtrl failed!!!!");
+    } while (this.jdField_a_of_type_Algw.jdField_a_of_type_Algt.jdField_a_of_type_Bgkw == null);
+    this.jdField_a_of_type_Algw.jdField_a_of_type_Algt.jdField_a_of_type_Bgkw.b(1, "get spearEngineCtrl failed!!!!");
     return;
     for (;;)
     {
@@ -65,23 +65,23 @@ public class AVEngineWalper$3$1
                 break label414;
               }
               localAVCustomSpearEngineCtrl.addParamByRole((String)localObject2, str);
-              QLog.e("AVEngineWalper", 1, "Add Role mAppID=" + this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_JavaLangString + ", roleName=" + (String)localObject2 + ", strRoleConf=" + str);
+              QLog.e("AVEngineWalper", 1, "Add Role mAppID=" + this.jdField_a_of_type_Algw.jdField_a_of_type_Algt.jdField_a_of_type_JavaLangString + ", roleName=" + (String)localObject2 + ", strRoleConf=" + str);
               break label414;
             }
           }
           localAVCustomSpearEngineCtrl.setSpearEngineScence(((JSONObject)localObject1).getInt("scheme"));
         }
-        this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.a(this.jdField_a_of_type_Alch.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alch.jdField_a_of_type_Boolean, this.jdField_a_of_type_Alch.b);
+        this.jdField_a_of_type_Algw.jdField_a_of_type_Algt.a(this.jdField_a_of_type_Algw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Algw.jdField_a_of_type_Boolean, this.jdField_a_of_type_Algw.b);
         return;
       }
       catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
       }
-      if (this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_Bggp == null) {
+      if (this.jdField_a_of_type_Algw.jdField_a_of_type_Algt.jdField_a_of_type_Bgkw == null) {
         break;
       }
-      this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_Bggp.b(1, "spearEngineCtrl addParamByRole failed!!!!");
+      this.jdField_a_of_type_Algw.jdField_a_of_type_Algt.jdField_a_of_type_Bgkw.b(1, "spearEngineCtrl addParamByRole failed!!!!");
       return;
       label414:
       i += 1;

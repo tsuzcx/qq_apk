@@ -1,28 +1,24 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewParent;
 import com.tencent.image.AbstractGifImage;
-import com.tencent.image.NativeGifFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
-public class apva
+class apva
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static AbstractGifImage a(File paramFile, int paramInt, boolean paramBoolean)
+  apva(apuz paramapuz, int paramInt) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    try
-    {
-      if (NativeGifFactory.isUseNewGif()) {
-        return new apvc(paramFile, paramInt, paramBoolean);
-      }
-      paramFile = new apvb(paramFile, paramInt, paramBoolean);
-      return paramFile;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (i == this.jdField_a_of_type_Int) {
+      AbstractGifImage.resumeAll();
     }
-    catch (IOException paramFile)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("VoiceGifFactory", 2, "getVoiceGifObject exception. msg:" + paramFile.getMessage());
-      }
+    com.tencent.widget.XPanelContainer.jdField_a_of_type_Int = i;
+    if (apuz.a(this.jdField_a_of_type_Apuz).getParent() != null) {
+      apuz.a(this.jdField_a_of_type_Apuz).getParent().requestLayout();
     }
-    return null;
   }
 }
 

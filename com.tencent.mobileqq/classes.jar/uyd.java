@@ -1,23 +1,19 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-
 public class uyd
 {
-  public int a;
-  public VideoCollectionItem a;
+  public final int a;
+  public final String a;
+  public final uyc a;
   
-  public uyd(int paramInt, VideoCollectionItem paramVideoCollectionItem)
+  public uyd(uyc paramuyc, int paramInt, String paramString)
   {
+    this.jdField_a_of_type_Uyc = paramuyc;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem = paramVideoCollectionItem;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("StateVideoCollectionItem{itemKey=").append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key).append(", operation=");
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (String str = "delete";; str = "update") {
-      return str + '}';
-    }
+    return "Output{intput=" + this.jdField_a_of_type_Uyc + ", errorCode=" + this.jdField_a_of_type_Int + ", errorMessage='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

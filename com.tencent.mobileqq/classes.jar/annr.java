@@ -1,7 +1,4 @@
-public abstract interface annr
-{
-  public abstract boolean a(int paramInt);
-}
+public class annr {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

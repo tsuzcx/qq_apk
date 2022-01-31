@@ -1,22 +1,14 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
 
-class asgk
-  implements ViewSwitcher.ViewFactory
+public class asgk
+  implements bhum
 {
-  asgk(asgi paramasgi) {}
+  public asgk(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public View makeView()
+  public void onDismiss()
   {
-    CornerImageView localCornerImageView = new CornerImageView(asgi.a(this.a));
-    localCornerImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localCornerImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    localCornerImageView.setRadius(aekt.a(30.0F, asgi.a(this.a).getResources()) / 2);
-    return localCornerImageView;
+    this.a.a = null;
+    this.a.o();
   }
 }
 

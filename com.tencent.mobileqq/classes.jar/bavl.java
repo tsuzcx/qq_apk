@@ -1,47 +1,47 @@
-import android.content.res.XmlResourceParser;
-import org.xmlpull.v1.XmlPullParser;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class bavl
+  extends agkv
 {
-  private bavm jdField_a_of_type_Bavm;
-  private XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
-  
-  private void a()
+  public bavl(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    String str1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "extension");
-    String str2 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "mimetype");
-    this.jdField_a_of_type_Bavm.a(str1, str2);
+    super(paramBaseApplicationImpl);
   }
   
-  public bavm a()
+  public File getFile(DownloadParams paramDownloadParams)
   {
-    this.jdField_a_of_type_Bavm = new bavm();
-    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
-    if (i != 1)
+    paramDownloadParams = paramDownloadParams.url;
+    try
     {
-      String str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
-      if (i == 2) {
-        if (!str.equals("MimeTypes")) {}
-      }
-      for (;;)
+      File localFile1 = new File(paramDownloadParams.toURI().getPath());
+      return localFile1;
+    }
+    catch (URISyntaxException localURISyntaxException)
+    {
+      try
       {
-        i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.next();
-        break;
-        if (str.equals("type"))
-        {
-          a();
-          continue;
-          if ((i != 3) || (!str.equals("MimeTypes"))) {}
+        File localFile2 = new File(paramDownloadParams.toString().replaceFirst("filegalleryorigimage:", ""));
+        return localFile2;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("URLDrawable_", 2, "LocaleFileDownloader getFile error url:" + paramDownloadParams, localException);
         }
+        return null;
       }
     }
-    return this.jdField_a_of_type_Bavm;
-  }
-  
-  public bavm a(XmlResourceParser paramXmlResourceParser)
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlResourceParser;
-    return a();
+    catch (NullPointerException paramDownloadParams)
+    {
+      paramDownloadParams.printStackTrace();
+    }
+    return null;
   }
 }
 

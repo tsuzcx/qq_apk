@@ -1,37 +1,20 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.content.Context;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import mqq.app.QQPermissionCallback;
 
 public class anyv
-  implements anyn
+  implements QQPermissionCallback
 {
-  private String a = "SubscribeColorNoteLauncher";
+  public anyv(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void a(Context paramContext, ColorNote paramColorNote)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    try
-    {
-      paramColorNote = paramColorNote.getReserve();
-      if (paramColorNote == null) {
-        return;
-      }
-      paramColorNote = (SubscribeColorNoteReserveBean)yhl.a(paramColorNote);
-      if (paramColorNote != null)
-      {
-        CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
-        localStFeed.mergeFrom(paramColorNote.feedData);
-        QLog.d(this.a, 2, "articleInfo From ColorNote :\n" + localStFeed.toString());
-        xxk.a(paramContext, "", localStFeed, new ExtraTypeInfo(paramColorNote.pageType, 9003), null);
-        return;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
+    this.a.denied();
+    bdgm.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.grant();
   }
 }
 

@@ -1,29 +1,35 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureSegmentView;
-import dov.com.qq.im.ptv.LightVideoSoDownloadFragment;
-import dov.com.qq.im.ptv.LightVideoSoDownloadFragment.4;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
 
 public class bmay
-  implements DialogInterface.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public bmay(LightVideoSoDownloadFragment.4 param4) {}
+  public bmay(QIMCircleProgress paramQIMCircleProgress) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramDialogInterface = this.a.this$0.getActivity();
-    if (paramInt == 1)
-    {
-      this.a.this$0.a.setCameraPermissionResult(false);
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", paramDialogInterface.getPackageName(), null));
-      paramDialogInterface.startActivity(localIntent);
-      return;
+    this.a.b = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator cancel");
     }
-    paramDialogInterface.finish();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.b = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.b = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator start");
+    }
   }
 }
 

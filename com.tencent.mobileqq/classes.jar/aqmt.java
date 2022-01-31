@@ -1,44 +1,15 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
 
 public class aqmt
-  extends aroh
+  extends aqru
 {
-  public aqmt(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  public aqmt(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().s();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().t();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

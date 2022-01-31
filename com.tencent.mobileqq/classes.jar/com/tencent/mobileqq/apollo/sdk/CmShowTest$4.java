@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import akye;
+import alct;
 
 public final class CmShowTest$4
   implements Runnable
@@ -11,8 +11,8 @@ public final class CmShowTest$4
   {
     CmShowRenderView.PlayActionConfig localPlayActionConfig = new CmShowRenderView.PlayActionConfig();
     localPlayActionConfig.jdField_a_of_type_Int = 300272;
-    int i = akye.jdField_a_of_type_Int + 1;
-    akye.jdField_a_of_type_Int = i;
+    int i = alct.jdField_a_of_type_Int + 1;
+    alct.jdField_a_of_type_Int = i;
     localPlayActionConfig.jdField_b_of_type_Int = i;
     localPlayActionConfig.jdField_b_of_type_Boolean = true;
     localPlayActionConfig.c = 2;

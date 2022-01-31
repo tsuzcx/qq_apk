@@ -1,8 +1,6 @@
-public class akrc
+public abstract interface akrc
 {
-  public int a;
-  public CharSequence a;
-  public int b;
+  public abstract void onRender();
 }
 
 

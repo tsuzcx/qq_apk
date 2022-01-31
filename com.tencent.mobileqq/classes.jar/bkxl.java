@@ -1,37 +1,25 @@
-import com.tencent.aekit.openrender.internal.Frame;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import dov.com.qq.im.ae.camera.ui.panel.AEGridView;
 
 public class bkxl
+  extends RecyclerView.ItemDecoration
 {
-  public static final Integer a;
-  private bkxs jdField_a_of_type_Bkxs = new bkxs();
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  static
+  public bkxl(AEGridView paramAEGridView, int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_JavaLangInteger = Integer.valueOf(480);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public Frame a(Frame paramFrame)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    Frame localFrame = paramFrame;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Bkxs.a(paramFrame, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-      localFrame = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-    }
-    return localFrame;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bkxs.apply();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bkxs.ClearGLSL();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    paramRect.top = this.b;
   }
 }
 

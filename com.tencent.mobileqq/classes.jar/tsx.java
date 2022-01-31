@@ -1,12 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
 
 class tsx
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
-  tsx(tsv paramtsv) {}
+  tsx(tsw paramtsw) {}
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public void onClick(View paramView)
+  {
+    tsw.a(this.a).b();
+  }
 }
 
 

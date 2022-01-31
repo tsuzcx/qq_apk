@@ -1,27 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class admu
-  implements View.OnClickListener
+  extends asim
 {
-  public admu(QQMapActivity paramQQMapActivity) {}
+  public admu(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (!bdee.d(this.a)) {
-      this.a.x();
+    super.a(paramBoolean, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onBandIntimateRelationship");
     }
-    for (;;)
-    {
-      zcg.a("see_streetview");
-      return;
-      if (bdee.a(this.a)) {
-        this.a.p();
-      } else {
-        bdcd.a(this.a, 230).setTitle(this.a.getString(2131690071)).setMessage(2131695057).setPositiveButton(2131691089, new admw(this)).setNegativeButton(2131690648, new admv(this)).show();
-      }
+    PermisionPrivacyActivity.a(this.a);
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    super.a(paramBoolean1, paramString, paramBoolean2);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onDisbandIntimateRelationship");
     }
+    PermisionPrivacyActivity.a(this.a);
   }
 }
 

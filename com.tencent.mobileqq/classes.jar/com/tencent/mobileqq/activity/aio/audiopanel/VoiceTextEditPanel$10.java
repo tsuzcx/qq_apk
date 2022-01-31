@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.widget.EditText;
@@ -17,7 +17,7 @@ class VoiceTextEditPanel$10
     VoiceTextEditPanel.a(this.this$0).setText("");
     VoiceTextEditPanel.a(this.this$0).setFocusableInTouchMode(true);
     VoiceTextEditPanel.a(this.this$0).set(5);
-    QQToast.a(this.this$0.getContext(), alpo.a(2131717237), 0).b(this.this$0.getContext().getResources().getDimensionPixelSize(2131298914));
+    QQToast.a(this.this$0.getContext(), alud.a(2131717249), 0).b(this.this$0.getContext().getResources().getDimensionPixelSize(2131298914));
   }
 }
 

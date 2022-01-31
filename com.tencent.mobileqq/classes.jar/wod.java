@@ -1,38 +1,24 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserSelfInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserSelfInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class wod
-  extends unk<woe>
+  extends xwu
 {
-  public static final String a = ume.a("StorySvc.get_user_base_info");
+  private static final int[] a = { 2131691562 };
+  private static final int[] f = { 2131165566 };
+  private static final int[] g = { 2131370198 };
+  private static int[] h = { BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298801) };
   
-  public String a()
+  public wod()
   {
-    return a;
+    super(1, 1, h, -1, g, a, f);
   }
   
-  public woe a(byte[] paramArrayOfByte)
+  public void a(int paramInt, Object paramObject, bibj[] paramArrayOfbibj)
   {
-    qqstory_service.RspGetUserSelfInfo localRspGetUserSelfInfo = new qqstory_service.RspGetUserSelfInfo();
-    try
-    {
-      localRspGetUserSelfInfo.mergeFrom(paramArrayOfByte);
-      return new woe(localRspGetUserSelfInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        wsv.c("Q.qqstory.home.GetUserSelfInfoStep", "decodeResponse error=%s", paramArrayOfByte);
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    return new qqstory_service.ReqGetUserSelfInfo().toByteArray();
+    paramArrayOfbibj[0].a = 0;
+    paramArrayOfbibj[0].b = 0;
   }
 }
 

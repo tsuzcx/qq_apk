@@ -1,51 +1,16 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 public class bayv
-  implements TVK_SDKMgr.OnLogListener
+  implements URLDrawable.URLDrawableListener
 {
-  public bayv(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public int d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public int e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

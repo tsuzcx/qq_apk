@@ -5,7 +5,7 @@ import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
 
 public class nvg
-  implements best
+  implements bexc
 {
   public nvg(EcshopNewPageFragment paramEcshopNewPageFragment) {}
   

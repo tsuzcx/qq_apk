@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.data;
 
-import aajk;
+import aanz;
 import android.text.TextUtils;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -49,7 +49,7 @@ public class BannerAdPosInfo
       return null;
     }
     paramInt1 = calculateLegalWidth(paramBannerAdPosInfo.mAdWidth, paramInt1, paramFloat, paramInt2, paramInt3);
-    paramInt2 = aajk.a(0, paramInt1);
+    paramInt2 = aanz.a(0, paramInt1);
     return new BannerAdPosInfo(paramBannerAdPosInfo.mAdUnitId, paramBannerAdPosInfo.mAdLeft, paramBannerAdPosInfo.mAdTop, paramBannerAdPosInfo.mAdWidth, paramBannerAdPosInfo.mAdHeight, paramInt1, paramInt2);
   }
   

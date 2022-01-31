@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vashealth;
 
-import bdug;
-import bduh;
+import bdyp;
+import bdyq;
 
 public class SSOHttpUtils$1$1
   implements Runnable
 {
-  public SSOHttpUtils$1$1(bduh parambduh, int paramInt, String paramString) {}
+  public SSOHttpUtils$1$1(bdyq parambdyq, int paramInt, String paramString) {}
   
   public void run()
   {
-    bdug.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    bdyp.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

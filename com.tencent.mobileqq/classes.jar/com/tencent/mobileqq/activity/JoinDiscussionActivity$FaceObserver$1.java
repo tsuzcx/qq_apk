@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import adan;
-import almt;
+import adfc;
+import alri;
 import android.graphics.Bitmap;
 
 public class JoinDiscussionActivity$FaceObserver$1
   implements Runnable
 {
-  public JoinDiscussionActivity$FaceObserver$1(adan paramadan) {}
+  public JoinDiscussionActivity$FaceObserver$1(adfc paramadfc) {}
   
   public void run()
   {

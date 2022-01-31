@@ -1,15 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bkjd
-  implements View.OnClickListener
+class bkjd
+  extends Handler
 {
-  public bkjd(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void onClick(View paramView)
+  public bkjd(Looper paramLooper)
   {
-    this.a.g();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 0) {
+      bkjc.a(0);
+    }
+    while ((paramMessage.what != 1) || (!bkjc.a()) || (TextUtils.isEmpty(bkjc.a())) || (TextUtils.isEmpty(bkjc.b()))) {
+      return;
+    }
+    String str1 = bkjc.a();
+    String str2 = bkjc.b();
+    int i = bkjc.a();
+    int j = bkjc.b();
+    String str3 = bkjc.a(BaseApplicationImpl.getApplication());
+    Process.setThreadPriority(10);
+    bkjc.a((QQAppInterface)paramMessage.obj, str1, str2, i, j, str3);
+    bkjc.b();
   }
 }
 

@@ -1,59 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.support.annotation.Nullable;
 
 public class vsu
-  implements TVK_SDKMgr.OnLogListener
+  extends uli
 {
-  public int a;
+  public String a;
+  public vpm a;
+  public String b;
   
-  public int d(String paramString1, String paramString2)
+  public vsu(@Nullable String paramString1, vpm paramvpm, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Vpm = paramvpm;
+    this.b = paramString2;
   }
   
-  public int e(String paramString1, String paramString2)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if ((paramString2 != null) && (paramString2.contains("INFO_TRY_AGAIN_LATER"))) {}
-    try
-    {
-      this.a = Integer.parseInt(paramString2.substring(paramString2.lastIndexOf("=") + 1));
-      label32:
-      if (QLog.isColorLevel()) {
-        QLog.w(paramString1, 2, paramString2);
-      }
-      return 0;
-    }
-    catch (Exception localException)
-    {
-      break label32;
-    }
+    return "PlayVideoChangeEvent{openPlayerSessionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", groupId=" + this.jdField_a_of_type_Vpm + ", vid='" + this.b + '\'' + '}';
   }
 }
 

@@ -1,25 +1,15 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.manager.Manager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
 public class bbcz
-  implements Manager
+  implements DialogInterface.OnClickListener
 {
-  private HashMap<Long, ArrayList<bbcy>> a = new HashMap();
+  public bbcz(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public ArrayList<bbcy> a(long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (ArrayList)this.a.get(Long.valueOf(paramLong));
-  }
-  
-  public void a(long paramLong, ArrayList<bbcy> paramArrayList)
-  {
-    this.a.put(Long.valueOf(paramLong), paramArrayList);
-  }
-  
-  public void onDestroy()
-  {
-    this.a.clear();
+    paramDialogInterface.dismiss();
   }
 }
 

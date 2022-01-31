@@ -1,29 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
 
 public class auiu
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public auiu(MultiCardFragment paramMultiCardFragment, auje paramauje, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
+  public auiu(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    if (this.jdField_a_of_type_Auje == null) {
+    augo.a().a().c();
+    augo.a().d();
+    if (this.a.a)
+    {
+      this.a.g();
       return;
     }
-    float f2 = this.jdField_a_of_type_Float + (1.0F - this.jdField_a_of_type_Float) * f1;
-    this.jdField_a_of_type_Auje.a.setScaleX(f2);
-    this.jdField_a_of_type_Auje.a.setScaleY(f2);
-    this.jdField_a_of_type_Auje.a.setTranslationX(0.0F);
-    this.jdField_a_of_type_Auje.a.setTranslationY(this.b * (1.0F - f1));
-    paramValueAnimator = this.jdField_a_of_type_Auje.a.getLayoutParams();
-    float f3 = this.c;
-    float f4 = this.d;
-    paramValueAnimator.height = ((int)((f1 * (1.0F - this.d) + f4) / f2 * f3));
-    this.jdField_a_of_type_Auje.a.requestLayout();
+    this.a.a(this.a.getActivity());
   }
 }
 

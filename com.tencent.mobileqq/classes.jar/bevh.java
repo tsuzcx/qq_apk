@@ -1,48 +1,45 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
-final class bevh
-  implements DialogInterface.OnClickListener
+public class bevh
+  extends GestureDetector.SimpleOnGestureListener
 {
-  bevh(int paramInt, Activity paramActivity, bevo parambevo) {}
+  public bevh(SlideDetectListView paramSlideDetectListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    paramInt = 2;
-    if (this.jdField_a_of_type_Int == 1)
+    if (!this.a.jdField_c_of_type_Boolean) {}
+    do
     {
-      bevd.b(this.jdField_a_of_type_AndroidAppActivity, 398668);
-      bevd.a("0X80094F5");
-      paramInt = 1;
-    }
-    for (;;)
-    {
-      bevd.c(this.jdField_a_of_type_AndroidAppActivity, paramInt);
-      this.jdField_a_of_type_Bevo.a(1);
-      paramDialogInterface.dismiss();
-      return;
-      if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 5))
+      return false;
+      if ((paramFloat1 > 0.0F) && (Math.abs(paramFloat1) > Math.abs(paramFloat2) * 2.0F) && ((this.a.jdField_c_of_type_Int == 0) || (this.a.d)) && (!this.a.jdField_a_of_type_Boolean) && (Math.abs(paramFloat1) > this.a.f))
       {
-        bevd.b(this.jdField_a_of_type_AndroidAppActivity, 398668);
-        bevd.a("0X80094F4");
-        paramInt = 1;
-      }
-      else if (this.jdField_a_of_type_Int == 3)
-      {
-        bevd.b(this.jdField_a_of_type_AndroidAppActivity, 398671);
-        bevd.a("0X80094F6");
-      }
-      else
-      {
-        if (this.jdField_a_of_type_Int == 4)
+        this.a.jdField_b_of_type_Int = this.a.a(this.a.jdField_a_of_type_Int);
+        this.a.jdField_a_of_type_AndroidViewView = this.a.a(this.a.jdField_b_of_type_Int);
+        if (this.a.jdField_a_of_type_AndroidViewView != null)
         {
-          bevd.b(this.jdField_a_of_type_AndroidAppActivity, 398690);
-          bevd.a("0X80094F4");
+          this.a.jdField_a_of_type_Boolean = true;
+          this.a.setPressed(false);
+          this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
+          if (SlideDetectListView.a(this.a) != null)
+          {
+            int i = this.a.jdField_b_of_type_Int;
+            int j = this.a.getHeaderViewsCount();
+            SlideDetectListView.a(this.a).a(this.a, this.a.jdField_a_of_type_AndroidViewView, i - j);
+          }
+          this.a.jdField_a_of_type_Int = 0;
         }
-        paramInt = 1;
+        for (;;)
+        {
+          return true;
+          this.a.jdField_b_of_type_Boolean = true;
+        }
       }
-    }
+    } while (Math.abs(paramFloat1) <= Math.abs(paramFloat2) * 2.0F);
+    this.a.jdField_b_of_type_Boolean = true;
+    return false;
   }
 }
 

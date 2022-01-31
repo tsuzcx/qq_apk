@@ -1,93 +1,74 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import cooperation.qzone.cache.SDCardMountMonitorReceiver;
+import java.io.File;
 
 public class ajvn
-  extends amab
+  implements bjii
 {
-  public ajvn(SelectMemberActivity paramSelectMemberActivity) {}
+  private static ajvn jdField_a_of_type_Ajvn;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private ajvo jdField_a_of_type_Ajvo;
+  private String jdField_a_of_type_JavaLangString = "";
   
-  protected void a(int paramInt1, int paramInt2)
+  private ajvn()
   {
-    if (paramInt1 == 8)
+    a();
+    SDCardMountMonitorReceiver.a().a(this);
+  }
+  
+  public static ajvn a()
+  {
+    if (jdField_a_of_type_Ajvn == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "add troop member fail");
+      if (jdField_a_of_type_Ajvn == null) {
+        jdField_a_of_type_Ajvn = new ajvn();
       }
-      SelectMemberActivity.a(this.a, paramInt2);
+      return jdField_a_of_type_Ajvn;
     }
   }
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  private void a()
   {
-    if (paramInt1 == 8)
+    this.jdField_a_of_type_JavaLangString = bjhx.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("StorageManager", 2, "updateStorePath, storeVideoPath=" + this.jdField_a_of_type_JavaLangString);
+    }
+    try
     {
-      if (paramInt2 == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SelectMemberActivity", 2, "add troop member success");
-        }
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-        if (!this.a.jdField_c_of_type_Boolean)
-        {
-          paramInt1 = this.a.b();
-          this.a.a(paramInt1 + 1);
-          azmj.b(this.a.app, "CliOper", "", "", "Grp", "Send_invite", 0, 0, "", "", "", "");
-        }
-        ArrayList localArrayList = this.a.a();
-        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", Long.parseLong(paramString));
-        this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set", this.a.e);
-        this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set_for_out_Member ", localArrayList);
-        this.a.setResult(-1);
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (!localFile.exists()) {
+        localFile.mkdirs();
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("StorageManager", 2, "create root path directory error", localException);
+    }
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StorageManager", 2, "sdcard mount receiver, isMount=" + paramBoolean);
+    }
+    String str = bjhx.b();
+    if ((this.jdField_a_of_type_Ajvo != null) && (!str.equals(this.jdField_a_of_type_JavaLangString)))
+    {
+      if (paramBoolean) {
+        this.jdField_a_of_type_Ajvo.a(1, this.jdField_a_of_type_JavaLangString);
       }
     }
     else {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "add troop member fail, troopUin: " + paramString + " result: " + paramInt2);
-    }
-    SelectMemberActivity.a(this.a, paramInt2);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2)
-  {
-    String str = String.valueOf(paramLong1);
-    if ((paramBoolean) && (str.equals(this.a.jdField_c_of_type_JavaLangString)))
-    {
-      this.a.jdField_a_of_type_Long = paramLong2;
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "troop" + str + " get inviteNoAuthLimitNum = " + paramLong2);
-      }
-      if ((this.a.i >= this.a.jdField_a_of_type_Long) && (this.a.jdField_a_of_type_Long > 0L))
-      {
-        this.a.d.setVisibility(0);
-        azmj.b(this.a.app, "dc00899", "invite_friend", "", "friend_list", "exp_needagree", 0, 0, str, mwu.a(this.a.app, this.a.app.getCurrentAccountUin(), str) + "", "", "");
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong, List<Long> paramList)
-  {
-    paramLong = String.valueOf(paramLong);
-    if ((paramBoolean) && (paramLong.equals(this.a.jdField_c_of_type_JavaLangString)))
-    {
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
-      {
-        Long localLong = (Long)localIterator.next();
-        this.a.jdField_a_of_type_JavaUtilList.add(String.valueOf(localLong));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "troop" + paramLong + " get invitedUinList = " + paramList.toString());
-      }
-    }
+    this.jdField_a_of_type_Ajvo.a(0, this.jdField_a_of_type_JavaLangString);
   }
 }
 

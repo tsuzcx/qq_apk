@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.widget.SquareImageView;
 
 public class ssf
-  implements yvn<CertifiedAccountRead.StGetMainPageRsp>
+  implements zac<CertifiedAccountRead.StGetMainPageRsp>
 {
   public ssf(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
@@ -30,14 +30,14 @@ public class ssf
       if (paramStGetMainPageRsp != null)
       {
         ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
-        wsv.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage success");
+        wxe.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage success");
         a(paramStGetMainPageRsp);
         ServiceAccountFolderActivityNew.a(this.a);
         ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
       }
       return;
     }
-    wsv.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage error retCode:" + paramLong + ",errMsg:" + paramString);
+    wxe.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage error retCode:" + paramLong + ",errMsg:" + paramString);
   }
 }
 

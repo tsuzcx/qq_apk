@@ -1,32 +1,17 @@
-import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
 class ahet
-  implements bcwt
+  implements View.OnClickListener
 {
   ahet(ahes paramahes) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      paramInt2 = ahes.a(this.a).getChildCount();
-      paramInt1 = 0;
-      while (paramInt1 < paramInt2)
-      {
-        Object localObject = ahes.a(this.a).getChildViewHolder(ahes.a(this.a).getChildAt(paramInt1));
-        if ((localObject instanceof aheu))
-        {
-          localObject = (aheu)localObject;
-          if (((aheu)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) {
-            ((aheu)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-          }
-        }
-        paramInt1 += 1;
-      }
-    }
+    paramView = (RecommendTroopItem)paramView.getTag(-1);
+    bcpx.a(ahes.a(this.a), paramView, this.a.a());
+    this.a.b(paramView);
   }
 }
 

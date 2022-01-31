@@ -1,101 +1,23 @@
-import NS_COMM.COMM.Entry;
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StGamePayReq;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StGamePayRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback.Stub;
+import com.tencent.qqmini.sdk.manager.EngineChannel;
+import com.tencent.qqmini.sdk.minigame.task.InstalledEngineLoadTask.1;
 
 public class bgzo
-  extends bgzp
+  extends MiniCmdCallback.Stub
 {
-  private MiniAppMidasPay.StGamePayReq a = new MiniAppMidasPay.StGamePayReq();
+  public bgzo(InstalledEngineLoadTask.1 param1) {}
   
-  public bgzo(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString3, String paramString4)
+  public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.appId.set(paramString1);
-    this.a.prepayId.set(paramString2);
-    this.a.starCurrency.set(paramInt1);
-    this.a.balanceAmount.set(paramInt2);
-    this.a.topupAmount.set(paramInt3);
-    this.a.payChannel.set(paramInt4);
-    this.a.sandboxEnv.set(paramInt5);
-    paramString2 = new COMM.StCommonExt();
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = new COMM.Entry();
-    ((COMM.Entry)localObject).key.set("refer");
-    PBStringField localPBStringField = ((COMM.Entry)localObject).value;
-    paramString1 = paramString3;
-    if (TextUtils.isEmpty(paramString3)) {
-      paramString1 = "";
-    }
-    localPBStringField.set(paramString1);
-    localArrayList.add(localObject);
-    paramString3 = new COMM.Entry();
-    paramString3.key.set("via");
-    localObject = paramString3.value;
-    paramString1 = paramString4;
-    if (TextUtils.isEmpty(paramString4)) {
-      paramString1 = "";
-    }
-    ((PBStringField)localObject).set(paramString1);
-    localArrayList.add(paramString3);
-    paramString2.mapInfo.set(localArrayList);
-    this.a.extInfo.setHasFlag(true);
-    this.a.extInfo.set(paramString2);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_pay";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    MiniAppMidasPay.StGamePayRsp localStGamePayRsp = new MiniAppMidasPay.StGamePayRsp();
-    try
+    if ((paramBoolean) && (paramBundle != null))
     {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStGamePayRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStGamePayRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("response", localStGamePayRsp);
-        paramArrayOfByte.put("resultCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        return paramArrayOfByte;
-      }
-      QMLog.d("MiniAppPayRequest", "onResponse fail.rsp = null");
-      return null;
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      paramBundle = (EngineChannel)paramBundle.getParcelable("engineChannel");
+      this.a.this$0.a(paramBundle);
+      bhaj.a().i(bgzn.a(this.a.this$0), "[MiniEng]reInitOutChannel " + paramBundle);
+      bgzn.a(this.a.this$0);
     }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("MiniAppPayRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GamePay";
   }
 }
 

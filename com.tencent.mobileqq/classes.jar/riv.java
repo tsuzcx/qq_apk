@@ -9,7 +9,7 @@ public class riv
   
   public void onClick(View paramView)
   {
-    bdiv.a("ug_prefix_ug_1get3_ug_close_time", System.currentTimeMillis());
+    bdne.a("ug_prefix_ug_1get3_ug_close_time", System.currentTimeMillis());
     this.a.setVisibility(8);
     nwh.a(nwh.b(this.a.jdField_a_of_type_Nsx.i, "101", this.a.jdField_a_of_type_JavaLangString));
   }

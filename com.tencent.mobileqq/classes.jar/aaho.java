@@ -1,80 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.ad.tangram.ipc.AdIPCManager;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Adapter;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
-import com.tencent.ad.tangram.process.AdProcessManager;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
+import android.graphics.Outline;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewOutlineProvider;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
 
-public final class aaho
-  implements AdIPCManager.Adapter
+public class aaho
+  extends ViewOutlineProvider
 {
-  public AdIPCManager.Result receive(String paramString, AdIPCManager.Params paramParams)
-  {
-    boolean bool = false;
-    AdIPCManager.Result localResult2 = new AdIPCManager.Result();
-    AdIPCManager.Result localResult1;
-    if (TextUtils.isEmpty(paramString)) {
-      localResult1 = localResult2;
-    }
-    for (;;)
-    {
-      if (localResult1 != null) {
-        bool = localResult1.success;
-      }
-      aanp.b("GdtIPCAdapter", String.format("receive action:%s result:%b", new Object[] { paramString, Boolean.valueOf(bool) }));
-      return localResult1;
-      Boolean localBoolean = AdProcessManager.INSTANCE.isOnMainProcess();
-      localResult1 = localResult2;
-      if (localBoolean != null)
-      {
-        localResult1 = localResult2;
-        if (localBoolean.booleanValue())
-        {
-          localResult1 = localResult2;
-          if (QIPCClientHelper.getInstance() != null)
-          {
-            localResult1 = localResult2;
-            if (QIPCClientHelper.getInstance().getClient() != null) {
-              localResult1 = AdIPCManager.INSTANCE.receive(paramString, paramParams);
-            }
-          }
-        }
-      }
-    }
-  }
+  public aaho(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public AdIPCManager.Result send(String paramString, AdIPCManager.Params paramParams)
+  public void getOutline(View paramView, Outline paramOutline)
   {
-    AdIPCManager.Result localResult = new AdIPCManager.Result();
-    if (TextUtils.isEmpty(paramString)) {
-      if (localResult == null) {
-        break label148;
-      }
-    }
-    label148:
-    for (boolean bool = localResult.success;; bool = false)
-    {
-      aanp.b("GdtIPCAdapter", String.format("send action:%s result:%b", new Object[] { paramString, Boolean.valueOf(bool) }));
-      return localResult;
-      Object localObject = AdProcessManager.INSTANCE.isOnMainProcess();
-      if ((localObject == null) || (((Boolean)localObject).booleanValue()) || (QIPCClientHelper.getInstance() == null) || (QIPCClientHelper.getInstance().getClient() == null)) {
-        break;
-      }
-      localObject = QIPCClientHelper.getInstance().getClient();
-      if (paramParams != null) {}
-      for (paramParams = paramParams.bundle;; paramParams = null)
-      {
-        paramParams = ((EIPCClient)localObject).callServer("gdt_ipc", paramString, paramParams);
-        if (paramParams == null) {
-          break;
-        }
-        localResult.success = paramParams.isSuccess();
-        localResult.bundle = paramParams.data;
-        break;
-      }
+    if (Build.VERSION.SDK_INT >= 21) {
+      paramOutline.setRoundRect(0, 0, paramView.getWidth(), paramView.getHeight(), aepi.a(5.0F, paramView.getResources()));
     }
   }
 }

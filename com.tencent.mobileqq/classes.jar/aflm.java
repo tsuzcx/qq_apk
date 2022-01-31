@@ -1,18 +1,18 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
 
 class aflm
-  extends afpq
+  implements arrh
 {
-  aflm(aflj paramaflj)
+  aflm(afll paramafll, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct) {}
+  
+  public void a()
   {
-    super(paramaflj, null);
+    ((zxz)this.jdField_a_of_type_Afll.a.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
+    aflk.a(this.jdField_a_of_type_Afll.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
   }
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new afzm(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
+  public void b() {}
 }
 
 

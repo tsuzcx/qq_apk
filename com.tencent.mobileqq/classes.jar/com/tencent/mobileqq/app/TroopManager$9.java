@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
 import android.os.Handler;
-import awbw;
-import awbx;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 
 class TroopManager$9
@@ -12,16 +12,16 @@ class TroopManager$9
   
   public void run()
   {
-    awbw localawbw = this.this$0.a.getEntityManagerFactory().createEntityManager();
+    awgf localawgf = this.this$0.a.getEntityManagerFactory().createEntityManager();
     if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
-      localawbw.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      localawgf.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
     for (;;)
     {
-      localawbw.a();
+      localawgf.a();
       this.jdField_a_of_type_AndroidOsHandler.post(new TroopManager.9.1(this));
       return;
-      localawbw.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      localawgf.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
   }
 }

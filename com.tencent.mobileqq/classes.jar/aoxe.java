@@ -1,87 +1,70 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.mobileqq.danmaku.core.DanmakuMeasureManager.1;
-import com.tencent.mobileqq.danmaku.core.DanmakuMeasureManager.2;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoxe
+  extends aokh<aoxd>
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private aoxq jdField_a_of_type_Aoxq;
-  
-  public aoxe(aoxq paramaoxq)
+  public int a()
   {
-    this.jdField_a_of_type_Aoxq = paramaoxq;
+    return 294;
   }
   
-  private Handler a()
+  @NonNull
+  public aoxd a(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("DanmakuMeasureThread");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandlerThread.setUncaughtExceptionHandler(new aozg());
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-      return this.jdField_a_of_type_AndroidOsHandler;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        aozj.d("DanmakuMeasureManager", new Object[] { localThrowable });
-      }
-    }
+    return new aoxd();
   }
   
-  public static void a(aoxq paramaoxq, aoxh paramaoxh)
+  @Nullable
+  public aoxd a(aoko[] paramArrayOfaoko)
   {
-    if (paramaoxh.b()) {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aoxd.a(paramArrayOfaoko);
+    }
+    return null;
+  }
+  
+  public Class<aoxd> a()
+  {
+    return aoxd.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("TencentDocConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
+  }
+  
+  public void a(aoxd paramaoxd)
+  {
+    if (paramaoxd == null) {}
+    while (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
       return;
     }
-    paramaoxq = paramaoxq.a(paramaoxh).a(paramaoxh);
-    paramaoxh.d(paramaoxq.a() + aoxq.a().g() * 2);
-    paramaoxh.e(paramaoxq.b() + aoxq.a().c() * 2);
-    paramaoxh.g();
+    baic.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramaoxd.a());
+    baic.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramaoxd.b());
   }
   
-  public void a()
+  public int b()
   {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {
-      return;
-    }
-    if (aozh.a())
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+    return 0;
   }
   
-  public void a(aoxh paramaoxh, aoxf paramaoxf)
+  public boolean b()
   {
-    Handler localHandler = a();
-    if (localHandler != null) {
-      localHandler.post(new DanmakuMeasureManager.1(this, paramaoxh, paramaoxf));
-    }
+    return false;
   }
   
-  public void a(List<aoxh> paramList, aoxf paramaoxf)
+  public boolean c()
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    Handler localHandler;
-    do
-    {
-      return;
-      localHandler = a();
-    } while (localHandler == null);
-    localHandler.post(new DanmakuMeasureManager.2(this, paramList, paramaoxf));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoxe
  * JD-Core Version:    0.7.0.1
  */

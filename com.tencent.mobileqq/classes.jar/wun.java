@@ -1,118 +1,113 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
+import com.tencent.biz.qqstory.storyHome.model.TagFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class wun
-  extends BaseAdapter
+class wun
+  extends wrj
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  List<wyq> jdField_a_of_type_JavaUtilList;
-  int b;
-  public int c = -1;
+  wun(wub paramwub) {}
   
-  public wun(EditVideoArtFilter paramEditVideoArtFilter, Context paramContext)
+  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = xee.b(this.jdField_a_of_type_AndroidContentContext, 130.0F);
-    this.b = xee.b(this.jdField_a_of_type_AndroidContentContext, 96.0F);
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(20);
-  }
-  
-  public wyq a(int paramInt)
-  {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return (wyq)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a(List<wyq> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    wyq localwyq = new wyq();
-    this.jdField_a_of_type_JavaUtilList.add(localwyq);
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.c = 0;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView1;
-    if (paramView == null)
+    if (xsm.b()) {}
+    do
     {
-      paramViewGroup = new wuo(this);
-      localView1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559236, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131377768));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = localView1.findViewById(2131376317);
-      localView1.setTag(paramViewGroup);
+      return;
+      switch (paramView.getId())
+      {
+      default: 
+        return;
+      case 2131373754: 
+        if ((this.a.jdField_a_of_type_Wpr.a() == null) || (this.a.jdField_a_of_type_Wpr.a().size() <= paramInt) || (this.a.jdField_a_of_type_Wpr.a().get(paramInt) == null)) {
+          break label378;
+        }
+      }
+    } while (!(this.a.jdField_a_of_type_Wpr.a().get(paramInt) instanceof wqp));
+    paramView = (wqp)this.a.jdField_a_of_type_Wpr.a().get(paramInt);
+    paramObject = new ArrayList();
+    paramwtq = paramView.a().iterator();
+    paramInt = 0;
+    label175:
+    if (paramwtq.hasNext())
+    {
+      StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramwtq.next();
+      if (!localStoryVideoItem.isUploadFail()) {
+        break label645;
+      }
+      paramObject.add(localStoryVideoItem);
+      paramInt += 1;
     }
-    wyq localwyq;
+    label645:
     for (;;)
     {
-      localwyq = a(paramInt);
-      if (localwyq != null) {
+      break label175;
+      paramView = ((wqn)this.a.jdField_a_of_type_Wpr.a().get(paramInt)).a();
+      if ((paramView != null) && ((paramView instanceof TagFeedItem)))
+      {
+        vmj.a(wub.a(this.a), ((TagFeedItem)paramView).tagItem.a);
+        return;
+      }
+      wxe.e("Q.qqstory.home:FeedSegment", "why tagFeedItem is null?");
+      return;
+      if (paramObject.size() > 0) {
+        uom.a(paramObject, wub.a(this.a));
+      }
+      if (this.a.jdField_a_of_type_Wpr.a().size() <= 0) {
         break;
       }
-      return localView1;
-      paramViewGroup = (wuo)paramView.getTag();
-      localView1 = paramView;
-    }
-    paramView = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localwyq.jdField_a_of_type_Int + localwyq.b);
-    View localView2 = paramView;
-    if (paramView == null)
-    {
-      if (paramInt != 0) {
-        break label249;
+      wxj.a("home_page", "clk_retry", wxj.a(paramView.a()), 0, new String[] { "1", wxj.a(this.a.jdField_a_of_type_Int), String.valueOf(paramInt), paramView.a().feedId });
+      return;
+      label378:
+      wxe.e("Q.qqstory.home:FeedSegment", "feed upload retry failed!!");
+      return;
+      paramView = ((wqn)this.a.jdField_a_of_type_Wpr.a().get(paramInt)).a();
+      if ((paramView == null) || (!(paramView instanceof TagFeedItem))) {
+        break;
       }
-      paramView = bcwc.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_AndroidContentContext.getResources(), 2130841173, this.b, this.jdField_a_of_type_Int);
-      localView2 = paramView;
-      if (paramView != null)
+      paramView = (TagFeedItem)paramView;
+      if (!TextUtils.isEmpty(paramView.schema))
       {
-        this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(localwyq.jdField_a_of_type_Int + localwyq.b, paramView);
-        localView2 = paramView;
+        paramObject = new Intent(wub.b(this.a), QQBrowserActivity.class);
+        paramObject.putExtra("url", paramView.schema);
+        wub.c(this.a).startActivity(paramObject);
+      }
+      for (;;)
+      {
+        wxj.a("home_page", "clk_more_tag", 0, 0, new String[] { "", String.valueOf(paramView.tagItem.a.a) });
+        return;
+        wxe.e("Q.qqstory.home:FeedSegment", "tag schema is null.");
+      }
+      wub.a(this.a, paramInt);
+      return;
+      paramView = ((wqn)this.a.jdField_a_of_type_Wpr.a().get(paramInt)).a();
+      if ((paramView != null) && ((paramView instanceof TagFeedItem)))
+      {
+        paramView = ((TagFeedItem)paramView).tagItem.a();
+        if (paramView == null) {
+          break label635;
+        }
+        paramObject = new Intent(wub.d(this.a), StoryTransitionActivity.class);
+        paramObject.putExtra("jump_action", 1);
+        paramObject.putExtra("video_tag", paramView);
+        wub.e(this.a).startActivity(paramObject);
+      }
+      for (;;)
+      {
+        wxj.a("home_page", "tag_clk_join", 0, 0, new String[0]);
+        return;
+        label635:
+        wxe.e("Q.qqstory.home:FeedSegment", "click tag, tag is null");
       }
     }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localView2);
-    if (paramInt == 0) {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alpo.a(2131704167));
-    }
-    for (;;)
-    {
-      if (paramInt != this.c) {
-        break label305;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      return localView1;
-      label249:
-      paramView = bcwc.a(localwyq.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
-      break;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alpo.a(2131704316) + localwyq.c);
-    }
-    label305:
-    paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    return localView1;
   }
 }
 

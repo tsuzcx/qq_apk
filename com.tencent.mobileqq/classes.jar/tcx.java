@@ -15,7 +15,7 @@ class tcx
       stMetaComment localstMetaComment = localstPostFeedCommentRsp.getComment();
       tlo.c(tcu.a(), "---CommentEvent, addFeedComment！");
       paramthe = this.a.a(new Object[] { Integer.valueOf(3), Integer.valueOf(paramthe.b), paramthe.jdField_a_of_type_JavaLangString, localstPostFeedCommentRsp, localstMetaComment.id, Integer.valueOf(this.a.hashCode()) });
-      uht.a().dispatch(paramthe);
+      umc.a().dispatch(paramthe);
       return;
     }
     tlo.d(tcu.a(), "添加评论失败new！");

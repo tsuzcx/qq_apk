@@ -1,20 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.widget.QQToast;
 
 class yoc
-  extends yoh
+  implements bfah
 {
-  yoc(ynx paramynx, long paramLong, ynu paramynu, File paramFile)
-  {
-    super(paramynx.a);
-  }
+  yoc(ynx paramynx) {}
   
-  public void a(boolean paramBoolean)
+  public void a(BaseResp paramBaseResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.trace_video_combine", 2, "combineVideos total = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if ((ynx.c(this.a) == null) || (!ynx.c(this.a).equals(paramBaseResp.transaction))) {
+      return;
     }
-    this.jdField_a_of_type_Ynu.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramBoolean, null);
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      QQToast.a(ynx.a(this.a), 1, "分享失败", 0).a();
+      return;
+    }
+    QQToast.a(ynx.a(this.a), 2, "分享成功", 0).a();
   }
 }
 

@@ -119,12 +119,12 @@ public abstract class qoe
     this.jdField_f_of_type_Long = System.currentTimeMillis();
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    azmz localazmz = azmz.a(this.jdField_a_of_type_AndroidContentContext);
+    azri localazri = azri.a(this.jdField_a_of_type_AndroidContentContext);
     String str = ors.a().getAccount();
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localazmz.a(str, "actReadInJoyDeliverVideoSendRequest", bool, this.jdField_f_of_type_Long - this.jdField_c_of_type_Long, 0L, localHashMap, "");
+      localazri.a(str, "actReadInJoyDeliverVideoSendRequest", bool, this.jdField_f_of_type_Long - this.jdField_c_of_type_Long, 0L, localHashMap, "");
       return;
     }
   }
@@ -135,12 +135,12 @@ public abstract class qoe
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
     long l1 = NetConnInfoCenter.getServerTimeMillis();
     long l2 = this.jdField_b_of_type_Long;
-    azmz localazmz = azmz.a(this.jdField_a_of_type_AndroidContentContext);
+    azri localazri = azri.a(this.jdField_a_of_type_AndroidContentContext);
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localazmz.a(str, "actReadInJoyUGCVideo", bool, l1 - l2, 0L, localHashMap, "");
+      localazri.a(str, "actReadInJoyUGCVideo", bool, l1 - l2, 0L, localHashMap, "");
       return;
     }
   }
@@ -152,12 +152,12 @@ public abstract class qoe
     this.jdField_e_of_type_Long = System.currentTimeMillis();
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    azmz localazmz = azmz.a(this.jdField_a_of_type_AndroidContentContext);
+    azri localazri = azri.a(this.jdField_a_of_type_AndroidContentContext);
     String str = ors.a().getAccount();
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localazmz.a(str, "actReadInJoyDeliverUGCVideo", bool, this.jdField_e_of_type_Long - this.jdField_a_of_type_Long, 0L, localHashMap, "");
+      localazri.a(str, "actReadInJoyDeliverUGCVideo", bool, this.jdField_e_of_type_Long - this.jdField_a_of_type_Long, 0L, localHashMap, "");
       return;
     }
   }

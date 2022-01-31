@@ -1,15 +1,17 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.dating.DatingUtil.1;
 
-public final class apic
+public class apic
+  implements DialogInterface.OnClickListener
 {
-  public static Bundle a(String paramString1, String paramString2, int paramInt, Bundle paramBundle)
+  public apic(DatingUtil.1 param1) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("cmd", paramString1);
-    localBundle.putString("callbackid", paramString2);
-    localBundle.putInt("respkey", paramInt);
-    localBundle.putBundle("request", paramBundle);
-    return localBundle;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

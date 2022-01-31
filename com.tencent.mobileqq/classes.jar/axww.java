@@ -1,46 +1,42 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.richstatus.ActionUrlActivity;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
-import com.tencent.widget.ProtectedWebView;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class axww
-  extends WebViewClient
 {
-  private axww(ActionUrlActivity paramActionUrlActivity) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  alwx jdField_a_of_type_Alwx;
+  axwz jdField_a_of_type_Axwz;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  Runnable jdField_a_of_type_JavaLangRunnable;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean;
+  int c;
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public boolean a()
   {
-    ActionUrlActivity.a(this.a).setVisibility(8);
-    super.onPageFinished(paramWebView, paramString);
-    this.a.a();
+    return (this.a != null) && (this.b == 1);
   }
   
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public boolean b()
   {
-    ActionUrlActivity.a(this.a).setVisibility(0);
-    ActionUrlActivity.a(this.a).setVisibility(8);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    return (this.a != null) && (this.b >= 2);
   }
   
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  public boolean c()
   {
-    ActionUrlActivity.a(this.a).clearView();
-    ActionUrlActivity.a(this.a).setVisibility(8);
-    ActionUrlActivity.a(this.a).setVisibility(0);
-    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+    return (this.a != null) && (this.c == 3);
   }
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public boolean d()
   {
-    return ActionUrlActivity.a(this.a).a(paramWebView, paramString);
+    return (this.a != null) && (this.c >= 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axww
  * JD-Core Version:    0.7.0.1
  */

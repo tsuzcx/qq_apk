@@ -1,37 +1,42 @@
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StReply;
-import feedcloud.FeedCloudMeta.StUser;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.qphone.base.util.QLog;
 
 class tvd
-  implements tqy
+  implements AbsListView.OnScrollListener
 {
-  tvd(tuu paramtuu, FeedCloudMeta.StReply paramStReply, FeedCloudMeta.StComment paramStComment) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void a(int paramInt)
+  tvd(tuz paramtuz) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject;
-    if (paramInt == tqz.c)
+    if ((paramInt3 > 0) && (paramAbsListView.getFirstVisiblePosition() + paramInt2 >= paramInt3))
     {
-      localObject = (ClipboardManager)tuk.c(this.jdField_a_of_type_Tuu.a).getSystemService("clipboard");
-      if (localObject != null) {
-        ((ClipboardManager)localObject).setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.content.get()));
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0) && (!tuz.a(this.jdField_a_of_type_Tuz)) && (!tuz.b(this.jdField_a_of_type_Tuz)))
+    {
+      QLog.i("QCircleCommentPanelView", 1, "onLastItemVisible");
+      tuz.a(this.jdField_a_of_type_Tuz, this.jdField_a_of_type_Tuz.a().a(tuz.a(this.jdField_a_of_type_Tuz)));
+      if (tuz.b(this.jdField_a_of_type_Tuz) != null)
+      {
+        this.jdField_a_of_type_Tuz.a().a(tuz.a(this.jdField_a_of_type_Tuz), true);
+        tuz.a(this.jdField_a_of_type_Tuz, true);
       }
     }
-    while (paramInt != tqz.e) {
-      return;
-    }
-    if (tra.a((FeedCloudMeta.StUser)this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.get())) {}
-    for (paramInt = 0;; paramInt = 2)
+    if (paramInt == 0)
     {
-      localObject = tuk.d(this.jdField_a_of_type_Tuu.a).getString(2131698367);
-      bdcd.a(tuk.e(this.jdField_a_of_type_Tuu.a), 230, (String)localObject, null, 2131690648, 2131690626, new tve(this, paramInt), new tvf(this)).show();
+      abvl.a().a("qcircle_comment_page", false);
       return;
     }
+    abvl.a().a("qcircle_comment_page");
   }
 }
 

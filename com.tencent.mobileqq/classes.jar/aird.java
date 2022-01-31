@@ -1,17 +1,22 @@
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment.4.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aird
-  implements aivw
+class aird
+  implements DialogInterface.OnClickListener
 {
-  public aird(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  aird(aira paramaira) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new RedPacketEmojiFragment.4.1(this, paramInt, paramPathResult));
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
+    if (((NewPhotoListActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+    }
   }
 }
 

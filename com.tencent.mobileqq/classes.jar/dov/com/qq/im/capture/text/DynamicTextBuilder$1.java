@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.text;
 
-import alpo;
-import bllv;
-import blst;
+import alud;
+import blqh;
+import blxf;
 import com.tencent.common.app.AppInterface;
 import java.util.Arrays;
 import java.util.Map;
@@ -12,9 +12,9 @@ public final class DynamicTextBuilder$1
 {
   public void run()
   {
-    String str = bllv.a().getCurrentNickname();
-    blst.a().put(Integer.valueOf(5), Arrays.asList(new String[] { alpo.a(2131703975), "MY JOURNEY \n" + str }));
-    blst.a().put(Integer.valueOf(27), Arrays.asList(new String[] { "悠闲的\n下午。", str }));
+    String str = blqh.a().getCurrentNickname();
+    blxf.a().put(Integer.valueOf(5), Arrays.asList(new String[] { alud.a(2131703987), "MY JOURNEY \n" + str }));
+    blxf.a().put(Integer.valueOf(27), Arrays.asList(new String[] { "悠闲的\n下午。", str }));
   }
 }
 

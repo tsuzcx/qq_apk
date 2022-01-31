@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.model;
 
-import urx;
+import uwg;
 
 public class TrimmableManager$1
   implements Runnable
 {
-  public TrimmableManager$1(urx paramurx, int paramInt) {}
+  public TrimmableManager$1(uwg paramuwg, int paramInt) {}
   
   public void run()
   {
-    urx.a(this.this$0, this.a);
+    uwg.a(this.this$0, this.a);
   }
 }
 

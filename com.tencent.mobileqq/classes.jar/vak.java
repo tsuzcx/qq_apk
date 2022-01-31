@@ -1,43 +1,20 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.ArrayList;
-import java.util.List;
-
-public class vak
+class vak
+  implements uzv
 {
-  public int a;
-  public String a;
-  public List<CommentEntry> a;
-  public int b;
-  public String b;
+  private long jdField_a_of_type_Long;
   
-  public vak()
+  vak(vai paramvai) {}
+  
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public boolean equals(Object paramObject)
+  public void b()
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (vak)paramObject;
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
-      }
-    } while (paramObject.jdField_a_of_type_JavaLangString == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString.hashCode();
+    if (this.jdField_a_of_type_Long != 0L) {
+      wxj.b("msgtab", "preload_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
     }
-    return 0;
   }
 }
 

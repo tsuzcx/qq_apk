@@ -19,7 +19,7 @@ public class mim
       {
         bool = true;
         VideoMsgTools.a(localAVActivity, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().g), bool, true);
-        azmj.b(null, "CliOper", "", "", "0X8009E27", "0X8009E27", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8009E27", "0X8009E27", 0, 0, "", "", "", "");
       }
     }
     while (!QLog.isColorLevel()) {

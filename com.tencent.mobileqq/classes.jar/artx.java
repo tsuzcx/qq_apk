@@ -1,105 +1,18 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.os.Bundle;
 
-public class artx
-  implements Handler.Callback
+public abstract interface artx
 {
-  private static artx jdField_a_of_type_Artx;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public static artx a()
-  {
-    if (jdField_a_of_type_Artx == null) {}
-    try
-    {
-      if (jdField_a_of_type_Artx == null) {
-        jdField_a_of_type_Artx = new artx();
-      }
-      return jdField_a_of_type_Artx;
-    }
-    finally {}
-  }
+  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.Reporter", 2, "onCreate");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-  }
+  public abstract void a(String paramString, long paramLong, Bundle paramBundle);
   
-  public void a(boolean paramBoolean)
-  {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.Reporter", 2, "onFirstFrameRendered");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    if (paramBoolean) {}
-    for (;;)
-    {
-      localMessage.arg1 = i;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 2000L);
-      return;
-      i = 0;
-    }
-  }
+  public abstract void b(int paramInt, Bundle paramBundle);
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.Reporter", 1, "onDestroy");
-    }
-    if ((paramBoolean2) && (paramBoolean1)) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 2000L);
-    }
-  }
+  public abstract void c(int paramInt, Bundle paramBundle);
   
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.Reporter", 2, "onPagePause");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return false;
-        QLog.d("QFlutter.Reporter", 1, "init memory");
-        this.jdField_a_of_type_JavaUtilMap = bdcb.a(BaseApplicationImpl.getContext());
-        return false;
-      } while (this.jdField_a_of_type_JavaUtilMap == null);
-      if (paramMessage.arg1 == 1) {}
-      for (boolean bool = true;; bool = false)
-      {
-        arty.a(bool, true, this.jdField_a_of_type_JavaUtilMap);
-        if (bool) {
-          break;
-        }
-        this.jdField_a_of_type_JavaUtilMap = null;
-        return false;
-      }
-    } while (this.jdField_a_of_type_JavaUtilMap == null);
-    arty.a(true, false, this.jdField_a_of_type_JavaUtilMap);
-    this.jdField_a_of_type_JavaUtilMap = null;
-    return false;
-  }
+  public abstract void d(int paramInt, Bundle paramBundle);
 }
 
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.widget;
 
-import alpo;
+import alud;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.data.MessageRecord;
-import yom;
+import ytb;
 
 class ProfileCardMoreInfoView$9
   implements Runnable
@@ -15,10 +15,10 @@ class ProfileCardMoreInfoView$9
   {
     Object localObject = this.this$0.a();
     if (localObject != null) {}
-    for (localObject = alpo.a(2131708831) + yom.a(((MessageRecord)localObject).time, true, false, true).toString();; localObject = null)
+    for (localObject = alud.a(2131708843) + ytb.a(((MessageRecord)localObject).time, true, false, true).toString();; localObject = null)
     {
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        this.this$0.jdField_a_of_type_Awmk.b = ((String)localObject);
+        this.this$0.jdField_a_of_type_Awqt.b = ((String)localObject);
       }
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new ProfileCardMoreInfoView.9.1(this));
       return;

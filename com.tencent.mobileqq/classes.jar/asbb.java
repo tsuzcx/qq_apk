@@ -1,33 +1,111 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.DeleteFaceFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class asbb
-  implements View.OnClickListener
+class asbb
+  implements apuc
 {
-  public asbb(DeleteFaceFragment paramDeleteFaceFragment) {}
+  asbb(asau paramasau) {}
   
-  public void onClick(View paramView)
+  public void a(apuf paramapuf)
   {
-    azmj.b(null, "dc00898", "", "", "0X800A320", "0X800A320", 0, 0, "", "", "", "");
-    if ((DeleteFaceFragment.a(this.a) != null) && (DeleteFaceFragment.a(this.a).isShowing())) {
-      DeleteFaceFragment.a(this.a).dismiss();
-    }
-    if (!bdee.d(this.a.getActivity()))
+    int i;
+    int j;
+    if ((paramapuf instanceof apzf))
     {
-      QQToast.a(this.a.getActivity(), this.a.getString(2131692397), 0).b(this.a.a());
-      return;
+      i = asau.a(this.a).getSelectionStart();
+      j = asau.a(this.a).getSelectionEnd();
+      if ((i < 0) || (j < 0) || (j < i)) {}
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DeleteFaceFragment", 2, "user confirm delete");
+    apza localapza;
+    int k;
+    int m;
+    do
+    {
+      asau.a(this.a).getEditableText().replace(i, j, banh.c(((apzf)paramapuf).a));
+      do
+      {
+        return;
+      } while (!(paramapuf instanceof apza));
+      localapza = (apza)paramapuf;
+      i = asau.a(this.a).getSelectionStart();
+      j = asau.a(this.a).getSelectionEnd();
+      k = localapza.a;
+      m = localapza.b;
+      if ((i < 0) || (j < 0) || (j < i)) {
+        break;
+      }
+    } while ((k == 2) && (m == -1));
+    String str = "";
+    if (k == 1) {}
+    try
+    {
+      for (paramapuf = banh.c(m);; paramapuf = banh.a(m))
+      {
+        asau.a(this.a).getEditableText().replace(i, j, paramapuf);
+        asau.a(this.a).requestFocus();
+        localapza.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
+        apsj.a().a(k).a(m, 4);
+        return;
+      }
     }
-    this.a.a();
-    ayxe.a(this.a.getActivity().app, new asbc(this));
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        paramapuf = str;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Forward.NewVersion.Dialog", 2, QLog.getStackTraceString(localException));
+          paramapuf = str;
+        }
+      }
+    }
   }
+  
+  public void a(apuf paramapuf1, apuf paramapuf2, Drawable paramDrawable) {}
+  
+  public boolean a(apuf paramapuf)
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    if (asau.a(this.a).getSelectionStart() == 0) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        Editable localEditable = asau.a(this.a).getText();
+        int i = asau.a(this.a).getSelectionStart();
+        int j = TextUtils.getOffsetBefore(asau.a(this.a).getText(), i);
+        if (i != j)
+        {
+          localEditable.delete(Math.min(i, j), Math.max(i, j));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public void b(apuf paramapuf) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 

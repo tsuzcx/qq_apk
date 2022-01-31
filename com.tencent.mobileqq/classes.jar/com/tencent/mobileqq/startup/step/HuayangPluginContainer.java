@@ -2,9 +2,9 @@ package com.tencent.mobileqq.startup.step;
 
 import android.os.Debug;
 import android.widget.Toast;
-import asuu;
-import asyy;
-import azjr;
+import aszd;
+import atdh;
+import azoa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.shadow.core.common.LoggerFactory;
@@ -26,12 +26,12 @@ public class HuayangPluginContainer
       Toast.makeText(BaseApplicationImpl.getContext(), "waitForDebugger", 1).show();
       Debug.waitForDebugger();
     }
-    LoggerFactory.setILoggerFactory(asuu.a());
+    LoggerFactory.setILoggerFactory(aszd.a());
     BaseApplicationImpl.getApplication().registerActivityLifecycleCallbacks(PluginProcessService.getActivityHolder());
     DynamicRuntime.recoveryRuntime(BaseApplicationImpl.getContext());
-    asyy.d();
-    azjr localazjr = new azjr(BaseApplicationImpl.getApplication());
-    URLDrawable.init(BaseApplicationImpl.getApplication(), localazjr);
+    atdh.d();
+    azoa localazoa = new azoa(BaseApplicationImpl.getApplication());
+    URLDrawable.init(BaseApplicationImpl.getApplication(), localazoa);
     new InitUrlDrawable().step();
     new InitMemoryCache().step();
     return true;

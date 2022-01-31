@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
@@ -339,7 +339,7 @@ public final class AppBrandRuntimeContainer
         if (this.mDebugLayout.getParent() != null) {
           ((ViewGroup)this.mDebugLayout.getParent()).removeView(this.mDebugLayout);
         }
-        this.mDebugText.setText(alpo.a(2131700965));
+        this.mDebugText.setText(alud.a(2131700977));
         paramFrameLayout.addView(this.mDebugLayout, new ViewGroup.LayoutParams(-1, -1));
         this.mDebugLayout.setVisibility(4);
       }

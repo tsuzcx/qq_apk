@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class mab
-  implements bkwk
+  implements blar
 {
   final WeakReference<QQServiceForAV> a;
   
@@ -15,19 +15,19 @@ public class mab
     this.a = new WeakReference(paramQQServiceForAV);
   }
   
-  public void a(bkwh parambkwh, long paramLong1, long paramLong2) {}
+  public void a(blao paramblao, long paramLong1, long paramLong2) {}
   
-  public void a(bkwh parambkwh, String paramString, boolean paramBoolean, int paramInt)
+  public void a(blao paramblao, String paramString, boolean paramBoolean, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QQServiceForAV", 2, "onAEResDownloadResult, package[" + parambkwh.a + ", isDownloaded[" + paramBoolean + ", errorType[" + paramInt + "]");
+      QLog.i("QQServiceForAV", 2, "onAEResDownloadResult, package[" + paramblao.a + ", isDownloaded[" + paramBoolean + ", errorType[" + paramInt + "]");
     }
     paramString = (QQServiceForAV)this.a.get();
     if (paramString != null)
     {
       paramString = (QQAppInterface)paramString.a();
       Intent localIntent = new Intent("tencent.video.q2v.ptusoDownloadRet");
-      localIntent.putExtra("packageIdx", parambkwh.a);
+      localIntent.putExtra("packageIdx", paramblao.a);
       localIntent.putExtra("isDownloaded", paramBoolean);
       localIntent.putExtra("errorType", paramInt);
       paramString.getApp().sendBroadcast(localIntent);

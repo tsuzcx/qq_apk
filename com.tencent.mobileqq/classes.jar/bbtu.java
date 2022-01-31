@@ -1,30 +1,10 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
-import java.lang.ref.WeakReference;
-
 public class bbtu
 {
-  protected ImageView a;
-  protected SessionInfo a;
-  protected QQAppInterface a;
-  protected RedDotAnimateView a;
-  protected WeakReference<BaseActivity> a;
-  
-  public void a() {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean1, TroopChatPie paramTroopChatPie, boolean paramBoolean2) {}
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c() {}
+  public static int a = -1;
+  public static int b = 1;
+  public static int c = 2;
+  public bbpj a;
+  public int d = a;
 }
 
 

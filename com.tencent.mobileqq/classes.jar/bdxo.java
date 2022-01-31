@@ -1,23 +1,17 @@
-import android.os.Looper;
-import android.widget.Button;
+import android.view.View;
 import android.widget.FrameLayout;
-import com.tencent.mobileqq.vip.lianghao.RegisterLHAssistant.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
 
 public class bdxo
-  implements bdxt
+  implements TouchWebView.OnScrollChangedListener
 {
-  public bdxo(RegisterLHAssistant.2 param2) {}
+  public bdxo(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public void a(boolean paramBoolean)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(bdxm.a, 4, String.format(Locale.getDefault(), "checkVipQQStatus, needShow: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    bdxm.a(this.a.this$0, paramBoolean);
-    if ((bdxm.a(this.a.this$0)) && (bdxm.a(this.a.this$0).isEnabled()) && (Thread.currentThread() == Looper.getMainLooper().getThread()) && (bdxm.a(this.a.this$0).getVisibility() == 8)) {
-      this.a.this$0.b(true);
+    if (this.a.a != null) {
+      this.a.a.scrollBy(0, paramInt2 - paramInt4);
     }
   }
 }

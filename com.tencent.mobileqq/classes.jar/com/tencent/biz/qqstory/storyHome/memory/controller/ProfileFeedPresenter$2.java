@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.storyHome.memory.controller;
 
 import java.util.List;
-import wic;
-import wle;
+import wml;
+import wpn;
 
 public class ProfileFeedPresenter$2
   implements Runnable
 {
-  public ProfileFeedPresenter$2(wic paramwic, wle paramwle) {}
+  public ProfileFeedPresenter$2(wml paramwml, wpn paramwpn) {}
   
   public void run()
   {
@@ -16,9 +16,9 @@ public class ProfileFeedPresenter$2
       this.this$0.b(this.a);
       return;
     }
-    wic.a(this.this$0, this.a);
-    wic.a(this.this$0).remove(wic.a());
-    wic.a(this.this$0);
+    wml.a(this.this$0, this.a);
+    wml.a(this.this$0).remove(wml.a());
+    wml.a(this.this$0);
   }
 }
 

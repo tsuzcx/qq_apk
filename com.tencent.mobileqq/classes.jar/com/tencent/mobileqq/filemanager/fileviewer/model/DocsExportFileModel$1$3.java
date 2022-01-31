@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import arfw;
-import arfx;
-import argf;
+import arkf;
+import arkg;
+import arko;
 
 public class DocsExportFileModel$1$3
   implements Runnable
 {
-  public DocsExportFileModel$1$3(arfx paramarfx, int paramInt) {}
+  public DocsExportFileModel$1$3(arkg paramarkg, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Arfx.a.a.a(this.jdField_a_of_type_Int / 2 + 50);
+    this.jdField_a_of_type_Arkg.a.a.a(this.jdField_a_of_type_Int / 2 + 50);
   }
 }
 

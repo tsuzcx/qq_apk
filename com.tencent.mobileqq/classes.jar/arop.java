@@ -1,16 +1,14 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class arop
+class arop
   implements View.OnClickListener
 {
-  arop(arnx paramarnx) {}
+  arop(aron paramaron, String paramString) {}
   
   public void onClick(View paramView)
   {
-    if (this.a != null) {
-      this.a.onClick(paramView);
-    }
+    arrr.a(this.jdField_a_of_type_Aron.a, this.jdField_a_of_type_JavaLangString);
   }
 }
 

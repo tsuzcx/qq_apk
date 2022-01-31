@@ -1,40 +1,63 @@
-import android.content.res.TypedArray;
+import android.util.Pair;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class atsu
+class atsu
+  implements atqd
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
+  atsu(atso paramatso, LocationRoom.Venue paramVenue) {}
   
-  public void a(TypedArray paramTypedArray)
+  public Pair<atpq, LocationRoom.Venue> a()
   {
-    this.jdField_a_of_type_Int = paramTypedArray.getDimensionPixelSize(19, 16);
-    this.jdField_b_of_type_Int = paramTypedArray.getInt(18, 255);
-    this.jdField_c_of_type_Int = paramTypedArray.getInt(20, 255);
-    this.d = paramTypedArray.getDimensionPixelSize(8, 20);
-    this.i = paramTypedArray.getDimensionPixelSize(9, 20);
-    this.j = paramTypedArray.getDimensionPixelSize(0, 15);
-    this.e = paramTypedArray.getDimensionPixelSize(4, 20);
-    this.f = paramTypedArray.getInt(2, 255);
-    this.g = paramTypedArray.getInt(5, 255);
-    this.h = paramTypedArray.getDimensionPixelSize(3, 20);
-    this.k = paramTypedArray.getDimensionPixelSize(12, 20);
-    this.jdField_a_of_type_Boolean = paramTypedArray.getBoolean(11, false);
-    this.l = paramTypedArray.getDimensionPixelSize(7, 10);
-    this.jdField_c_of_type_Boolean = paramTypedArray.getBoolean(6, false);
-    this.jdField_b_of_type_Boolean = paramTypedArray.getBoolean(1, true);
+    return new Pair(atso.a(this.jdField_a_of_type_Atso), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
+  }
+  
+  public void a(atpq paramatpq, LocationRoom.Venue paramVenue, int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, new Object[] { "[venue] setVenue: onResult. roomKey: " + paramatpq + " venue: " + paramVenue + " mRoomKey: " + atso.a(this.jdField_a_of_type_Atso) + " optType: " + paramInt1, " isSuccess: " + paramBoolean + " errorCode: " + paramInt2 });
+    }
+    if ((!paramatpq.equals(atso.a(this.jdField_a_of_type_Atso))) || (paramVenue == null)) {
+      return;
+    }
+    atso.a(this.jdField_a_of_type_Atso).setVenueOprating(false);
+    atso.a(this.jdField_a_of_type_Atso).setVisibility(8);
+    if (paramBoolean)
+    {
+      atso.a(this.jdField_a_of_type_Atso).setVenue(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
+      QQToast.a(atso.a(this.jdField_a_of_type_Atso), 2, "集合点设置成功", 0).a();
+      azqs.b(null, "CliOper", "", "", "0X800A964", "0X800A964", 0, 0, "0", "0", "0", "");
+      return;
+    }
+    switch (paramInt2)
+    {
+    default: 
+      QQToast.a(atso.a(this.jdField_a_of_type_Atso), 1, "设置失败，请稍后重试", 0).a();
+      if (atso.a(this.jdField_a_of_type_Atso).a() != null) {
+        atso.a(this.jdField_a_of_type_Atso);
+      }
+      break;
+    }
+    for (;;)
+    {
+      if ((paramInt2 != 10001) && (paramInt2 != 10003) && (paramInt2 != 10004) && (paramInt2 != 10100)) {
+        break label389;
+      }
+      azqs.b(null, "CliOper", "", "", "0X800A965", "0X800A965", 2, 0, "0", "0", "0", "");
+      return;
+      QQToast.a(atso.a(this.jdField_a_of_type_Atso), 1, "你已离开共享会话", 0).a();
+      atso.a(this.jdField_a_of_type_Atso).finish();
+      break;
+      QQToast.a(atso.a(this.jdField_a_of_type_Atso), 1, "已有人设置集合点", 0).a();
+      break;
+      atso.b(this.jdField_a_of_type_Atso);
+    }
+    label389:
+    azqs.b(null, "CliOper", "", "", "0X800A965", "0X800A965", 1, 0, "0", "0", "0", "");
   }
 }
 

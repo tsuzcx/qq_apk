@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afbt;
-import alzf;
+import afgi;
+import amdu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 
 public class TroopAddFriendTipsHelper$3
   implements Runnable
 {
-  public TroopAddFriendTipsHelper$3(afbt paramafbt, boolean paramBoolean, String paramString) {}
+  public TroopAddFriendTipsHelper$3(afgi paramafgi, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    alzf localalzf = (alzf)afbt.a(this.this$0).a(20);
+    amdu localamdu = (amdu)afgi.a(this.this$0).a(20);
     if (this.jdField_a_of_type_Boolean)
     {
-      localalzf.a().d(this.jdField_a_of_type_JavaLangString);
+      localamdu.a().d(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    localalzf.a().d(this.jdField_a_of_type_JavaLangString);
+    localamdu.a().d(this.jdField_a_of_type_JavaLangString);
   }
 }
 

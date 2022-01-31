@@ -1,8 +1,15 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-
-public abstract interface ylm
+final class ylm
+  implements bhum
 {
-  public abstract void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed);
+  ylm(bhuf parambhuf, ylr paramylr) {}
+  
+  public void onDismiss()
+  {
+    this.jdField_a_of_type_Bhuf.dismiss();
+    if (this.jdField_a_of_type_Ylr != null) {
+      this.jdField_a_of_type_Ylr.a(true);
+    }
+  }
 }
 
 

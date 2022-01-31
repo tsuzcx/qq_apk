@@ -1,14 +1,14 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbUIFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aitj
-  extends aitx
+class aitj
+  implements DialogInterface.OnClickListener
 {
-  public aitj(BaseHbUIFragment paramBaseHbUIFragment) {}
+  aitj(aitg paramaitg, Runnable paramRunnable) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a();
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

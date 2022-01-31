@@ -1,20 +1,55 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class ajdf
-  implements View.OnClickListener
+public class ajdf
+  extends Handler
 {
-  ajdf(ajbm paramajbm) {}
-  
-  public void onClick(View paramView)
+  public ajdf(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment, Looper paramLooper)
   {
-    if (ajbm.a(this.a).app != null)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      ((alkv)ajbm.a(this.a).app.a(2)).b(0, "", "not_disturb_from_conversation");
-      azmj.b(ajbm.a(this.a).app, "CliOper", "", "", "0X8009EBA", "0X8009EBA", 0, 1, "", "", "", "");
     }
+    FragmentActivity localFragmentActivity;
+    do
+    {
+      return;
+      paramMessage = (ajdp)paramMessage.obj;
+      if (QLog.isColorLevel()) {
+        QLog.d(DrawRedpacketPannelPreviewFragment.jdField_a_of_type_JavaLangString, 2, "save path: " + paramMessage.c + " thread name: " + Thread.currentThread().getName());
+      }
+      localFragmentActivity = this.a.getActivity();
+    } while (localFragmentActivity == null);
+    Intent localIntent = new Intent(localFragmentActivity, SendPhotoActivity.class);
+    localIntent.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1007);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramMessage.c);
+    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
+    localIntent.putExtra("PhotoConst.PHOTO_COUNT", localArrayList.size());
+    localIntent.putExtra("uin", paramMessage.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("uintype", paramMessage.jdField_a_of_type_Int);
+    localIntent.putExtra("troop_uin", paramMessage.jdField_b_of_type_JavaLangString);
+    localIntent.putExtra("key_confess_topicid", paramMessage.jdField_b_of_type_Int);
+    localIntent.putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+    localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
+    if (localArrayList.size() == 1) {
+      localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", localArrayList);
+    }
+    localFragmentActivity.startActivity(localIntent);
+    localFragmentActivity.finish();
   }
 }
 

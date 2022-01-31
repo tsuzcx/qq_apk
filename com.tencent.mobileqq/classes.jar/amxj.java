@@ -1,10 +1,31 @@
-public class amxj
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
+final class amxj
+  implements bauf
 {
-  public int a = 3000;
-  
-  public String toString()
+  public void a(bave parambave, bavf parambavf)
   {
-    return "ARCloudReqMarkerInfo{timeout = " + this.a + '}';
+    if ((parambave == null) || (parambavf == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(parambave instanceof baub));
+      parambave = (baub)parambave;
+      parambave.jdField_a_of_type_Long += parambavf.c;
+      parambavf.c = 0L;
+      parambavf = "bytes=" + parambave.jdField_a_of_type_Long + "-";
+      parambave.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
+      parambavf = parambave.jdField_a_of_type_JavaLangString;
+      if (parambavf.contains("range="))
+      {
+        String str = parambavf.substring(0, parambavf.lastIndexOf("range="));
+        parambave.jdField_a_of_type_JavaLangString = (str + "range=" + parambave.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ArConfig_ArResourceDownload", 2, "IBreakDownFix, " + parambavf + ", offset=" + parambave.jdField_a_of_type_Long);
   }
 }
 

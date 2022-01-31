@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aemq;
-import aemr;
-import aitd;
+import aerf;
+import aerg;
+import aixs;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class CustomizeStrategyFactory$PanelStrategy$1
   implements Runnable
 {
-  public CustomizeStrategyFactory$PanelStrategy$1(aemq paramaemq, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  public CustomizeStrategyFactory$PanelStrategy$1(aerf paramaerf, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
   public void run()
   {
@@ -19,14 +19,14 @@ public class CustomizeStrategyFactory$PanelStrategy$1
       if (QLog.isColorLevel()) {
         QLog.d("CustomizeStrategyFactory", 2, "PanelStrategy");
       }
-      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager == null) || (this.this$0.jdField_a_of_type_Aitd == null) || (TextUtils.isEmpty(this.a.templateId)))
+      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager == null) || (this.this$0.jdField_a_of_type_Aixs == null) || (TextUtils.isEmpty(this.a.templateId)))
       {
         CustomizeStrategyFactory.a().a(this.a);
         return;
       }
-      String str = this.this$0.jdField_a_of_type_Aitd.a("redPackPanel", "http://i.gtimg.cn/channel/imglib/201803/", new String[] { "themeInfo", "prefix" });
+      String str = this.this$0.jdField_a_of_type_Aixs.a("redPackPanel", "http://i.gtimg.cn/channel/imglib/201803/", new String[] { "themeInfo", "prefix" });
       str = str + this.a.templateId + ".png";
-      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.b(str, new aemr(this));
+      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.b(str, new aerg(this));
       return;
     }
     catch (Throwable localThrowable)

@@ -1,18 +1,14 @@
 import android.os.Bundle;
 
-class beaj
-  implements beao
+public abstract interface beaj
 {
-  beaj(beai parambeai) {}
+  public abstract int a(boolean paramBoolean, String paramString);
   
-  public void a(Bundle paramBundle)
-  {
-    if (this.a.c) {
-      return;
-    }
-    this.a.b = false;
-    beai.a(this.a);
-  }
+  public abstract beae a(String paramString);
+  
+  public abstract void a(beae parambeae, bead parambead, Bundle paramBundle);
+  
+  public abstract void b();
 }
 
 

@@ -1,29 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.content.Context;
+import com.tencent.mobileqq.data.MessageForFile;
 
-final class afly
-  implements afpr
+class afly
+  implements arrh
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  afly(aflw paramaflw, MessageForFile paramMessageForFile, Context paramContext) {}
+  
+  public void a()
   {
-    if ((paramChatMessage instanceof MessageForLightVideo)) {
-      return 103;
-    }
-    switch (((MessageForShortVideo)paramChatMessage).busiType)
-    {
-    default: 
-      return 29;
-    case 1: 
-      return 38;
-    case 2: 
-      return 46;
-    case 1007: 
-      return 40;
-    }
-    return 41;
+    arrr.a(this.jdField_a_of_type_Aflw.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
   }
+  
+  public void b() {}
 }
 
 

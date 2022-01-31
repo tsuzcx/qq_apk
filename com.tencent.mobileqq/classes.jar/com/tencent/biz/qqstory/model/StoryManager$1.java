@@ -5,15 +5,15 @@ import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import uht;
-import uro;
-import uzz;
-import vaa;
+import umc;
+import uvx;
+import vei;
+import vej;
 
 public class StoryManager$1
   implements Runnable
 {
-  public StoryManager$1(uro paramuro, String paramString) {}
+  public StoryManager$1(uvx paramuvx, String paramString) {}
   
   public void run()
   {
@@ -22,12 +22,12 @@ public class StoryManager$1
     {
       localObject = new ArrayList(1);
       ((List)localObject).add(this.a);
-      new uzz((List)localObject, true).a();
+      new vei((List)localObject, true).a();
       return;
     }
-    vaa localvaa = new vaa();
-    localvaa.a = Collections.singletonList(localObject);
-    uht.a().dispatch(localvaa);
+    vej localvej = new vej();
+    localvej.a = Collections.singletonList(localObject);
+    umc.a().dispatch(localvej);
   }
 }
 

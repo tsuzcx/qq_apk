@@ -1,8 +1,6 @@
 public abstract interface aiqm
 {
-  public abstract void a();
-  
-  public abstract void a(Object paramObject);
+  public abstract void a(String paramString);
 }
 
 

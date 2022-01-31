@@ -1,20 +1,27 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.2.1;
+import com.tencent.widget.XListView;
 
 public class awpi
   implements View.OnClickListener
 {
-  public awpi(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  public awpi(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.a(1);
-    StickyNotePublishFragment.a(this.a).setImageResource(2130837526);
-    StickyNotePublishFragment.a(this.a).setContentDescription(this.a.getActivity().getString(2131690365));
-    azmj.b(null, "dc00898", "", "", "0X800AB2D", "0X800AB2D", 0, 0, "0", "0", "", "");
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "https://ti.qq.com/cgi-node/specialtag/zanlist?_wv=1027&asyncMode=3");
+    this.a.startActivity(paramView);
+    paramView = PersonalityLabelGalleryActivity.a(this.a);
+    paramView.praiseCount += PersonalityLabelGalleryActivity.a(this.a).unreadCount;
+    PersonalityLabelGalleryActivity.a(this.a).unreadCount = 0;
+    PersonalityLabelGalleryActivity.a(this.a).postDelayed(new PersonalityLabelGalleryActivity.2.1(this), 500L);
+    azqs.b(this.a.app, "dc00898", "", "", "0X8007FCF", "0X8007FCF", 0, 0, "", "", "", "");
   }
 }
 

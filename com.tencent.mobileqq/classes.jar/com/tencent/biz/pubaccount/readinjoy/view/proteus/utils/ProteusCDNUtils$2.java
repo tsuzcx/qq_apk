@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.utils;
 
-import aljq;
-import bdcs;
-import bduw;
+import alof;
+import bdhb;
+import bdzf;
 import com.tencent.biz.common.offline.BidDownloader;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.vas.LzmaUtils;
@@ -21,7 +21,7 @@ public final class ProteusCDNUtils$2
   
   public void run()
   {
-    String str1 = bduw.a(aljq.cE + this.a + ".7z");
+    String str1 = bdzf.a(alof.cE + this.a + ".7z");
     if (!new File(str1).exists()) {
       QLog.i("ProteusCDNUtils", 1, "[unCompressOfflineFile], bid = " + this.a + ", file does not exist.");
     }
@@ -35,18 +35,18 @@ public final class ProteusCDNUtils$2
         return;
         localObject = BidDownloader.a(str1);
         QLog.i("ProteusCDNUtils", 1, "[unCompressOfflineFile], fileFormat = " + (String)localObject);
-        String str3 = bduw.a(aljq.cE);
-        str2 = bduw.a(aljq.cE + this.a + ".zip");
+        String str3 = bdzf.a(alof.cE);
+        str2 = bdzf.a(alof.cE + this.a + ".zip");
         localObject = new File(str2);
         if (((File)localObject).exists())
         {
-          bdcs.d(str2);
+          bdhb.d(str2);
           QLog.i("ProteusCDNUtils", 1, "[unCompressOfflineFile], delete file = " + str2);
         }
         int j = LzmaUtils.a(BaseApplicationImpl.getApplication().getApplicationContext(), str1, str3);
         QLog.i("ProteusCDNUtils", 1, "[unCompressOfflineFile], firstUnCompressCode = " + j + ", outputFilePath = " + str3);
         i = -1;
-        str1 = bduw.a(aljq.cE + this.a);
+        str1 = bdzf.a(alof.cE + this.a);
         if (j == 0)
         {
           ndq.a(str1);

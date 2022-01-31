@@ -1,33 +1,33 @@
 package dov.com.qq.im.ae.camera.core;
 
-import axky;
-import azdf;
-import bkoi;
-import blfg;
+import axph;
+import azho;
+import bksp;
+import bljn;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
 
 public class AECameraManager$3
   implements Runnable
 {
-  public AECameraManager$3(bkoi parambkoi, boolean paramBoolean) {}
+  public AECameraManager$3(bksp parambksp, boolean paramBoolean) {}
   
   public void run()
   {
-    blfg.b("AECameraManager", "forceStopCamera---BEGIN");
-    bkoi.a().a(false);
-    bkoi.a(this.this$0, false);
-    bkoi.a().b(bkoi.b(this.this$0));
-    bkoi.b(this.this$0, false);
-    if (bkoi.a(this.this$0) != null) {
-      bkoi.a(this.this$0).g();
+    bljn.b("AECameraManager", "forceStopCamera---BEGIN");
+    bksp.a().a(false);
+    bksp.a(this.this$0, false);
+    bksp.a().b(bksp.b(this.this$0));
+    bksp.b(this.this$0, false);
+    if (bksp.a(this.this$0) != null) {
+      bksp.a(this.this$0).g();
     }
-    bkoi.a().b(this.this$0);
-    bkoi.a().b(PeakAppInterface.a);
+    bksp.a().b(this.this$0);
+    bksp.a().b(PeakAppInterface.a);
     if (!this.a) {
-      axky.a(bkoi.a(this.this$0));
+      axph.a(bksp.a(this.this$0));
     }
-    blfg.b("AECameraManager", "forceStopCamera---END");
+    bljn.b("AECameraManager", "forceStopCamera---END");
   }
 }
 

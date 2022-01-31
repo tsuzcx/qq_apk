@@ -12,7 +12,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
-import bdkf;
+import bdoo;
 
 public class MiniAppDialog
   extends Dialog
@@ -75,8 +75,8 @@ public class MiniAppDialog
     paramBundle = getWindow().getAttributes();
     paramBundle.height = -2;
     paramBundle.gravity = 81;
-    int i = bdkf.a();
-    int j = bdkf.b();
+    int i = bdoo.a();
+    int j = bdoo.b();
     if (i < j) {}
     for (;;)
     {

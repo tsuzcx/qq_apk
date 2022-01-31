@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.camera.core;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.os.Looper;
 import android.text.TextUtils;
-import axjr;
-import bkoi;
-import bkov;
-import bkse;
-import bkvr;
-import blbr;
-import blfg;
-import bnko;
-import bnlu;
+import axoa;
+import bksp;
+import bktc;
+import bkwl;
+import bkzy;
+import blfy;
+import bljn;
+import bnpa;
+import bnqg;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.baseutils.string.StringUtils;
@@ -38,7 +38,7 @@ public class AECameraGLSurfaceView$12
       QLog.d("AECameraGLSurfaceView", 1, new Object[] { "setFaceEffect fail ", Boolean.valueOf(this.this$0.b()) });
     }
     Object localObject2;
-    bkov localbkov;
+    bktc localbktc;
     Object localObject1;
     do
     {
@@ -46,13 +46,13 @@ public class AECameraGLSurfaceView$12
       {
         return;
         localObject2 = this.a;
-        localbkov = (bkov)AECameraGLSurfaceView.a(this.this$0);
+        localbktc = (bktc)AECameraGLSurfaceView.a(this.this$0);
         if (TextUtils.isEmpty((CharSequence)localObject2))
         {
           AECameraGLSurfaceView.a(this.this$0).a(null);
           AECameraGLSurfaceView.a(this.this$0, null);
           AECameraGLSurfaceView.a(this.this$0, false);
-          this.this$0.queueEvent(new AECameraGLSurfaceView.12.1(this, localbkov));
+          this.this$0.queueEvent(new AECameraGLSurfaceView.12.1(this, localbktc));
           AECameraGLSurfaceView.a(this.this$0).a();
           AECameraGLSurfaceView.a(this.this$0, null);
           return;
@@ -66,10 +66,10 @@ public class AECameraGLSurfaceView$12
     } while ((localObject2 == null) || (((VideoMaterial)localObject2).getGameParams() != null));
     AECameraGLSurfaceView.a(this.this$0).a((VideoMaterial)localObject2);
     ((VideoMaterial)localObject2).setDataPath((String)localObject1);
-    if ((!FeatureManager.ensureMaterialSoLoaded((VideoMaterial)localObject2)) || ((bnko.a((VideoMaterial)localObject2)) && (!bnko.a())))
+    if ((!FeatureManager.ensureMaterialSoLoaded((VideoMaterial)localObject2)) || ((bnpa.a((VideoMaterial)localObject2)) && (!bnpa.a())))
     {
-      AECameraGLSurfaceView.a(this.this$0, alpo.a(2131689868));
-      bnko.a((VideoMaterial)localObject2, (Activity)this.this$0.getContext(), ((VideoMaterial)localObject2).getDataPath());
+      AECameraGLSurfaceView.a(this.this$0, alud.a(2131689868));
+      bnpa.a((VideoMaterial)localObject2, (Activity)this.this$0.getContext(), ((VideoMaterial)localObject2).getDataPath());
       return;
     }
     label333:
@@ -86,8 +86,8 @@ public class AECameraGLSurfaceView$12
     }
     else
     {
-      if (bkvr.a() != null) {
-        bkvr.a().a = VideoMaterialUtil.isWatermarkEditable((VideoMaterial)localObject2);
+      if (bkzy.a() != null) {
+        bkzy.a().a = VideoMaterialUtil.isWatermarkEditable((VideoMaterial)localObject2);
       }
       if (AECameraGLSurfaceView.a(this.this$0) != null) {
         AECameraGLSurfaceView.a(this.this$0).a(VideoMaterialUtil.needVoiceChange((VideoMaterial)localObject2), ((VideoMaterial)localObject2).getVoicekind(), ((VideoMaterial)localObject2).getEnvironment());
@@ -102,8 +102,8 @@ public class AECameraGLSurfaceView$12
       if (!StringUtils.equals(((VideoMaterial)localObject2).getPreferCameraId(), "back")) {
         break label605;
       }
-      if (bkoi.a().b()) {
-        bkoi.a().c(AECameraGLSurfaceView.d(this.this$0));
+      if (bksp.a().b()) {
+        bksp.a().c(AECameraGLSurfaceView.d(this.this$0));
       }
       if (!VideoMaterialUtil.isWatermarkEditable((VideoMaterial)localObject2)) {
         break label643;
@@ -117,24 +117,24 @@ public class AECameraGLSurfaceView$12
     {
       AECameraGLSurfaceView.a(this.this$0, (VideoMaterial)localObject2);
       if (i != 0) {
-        this.this$0.queueEvent(new AECameraGLSurfaceView.12.4(this, localbkov, (VideoMaterial)localObject2));
+        this.this$0.queueEvent(new AECameraGLSurfaceView.12.4(this, localbktc, (VideoMaterial)localObject2));
       }
-      if ((!bkse.a()) || (TextUtils.isEmpty(this.a))) {
+      if ((!bkwl.a()) || (TextUtils.isEmpty(this.a))) {
         break;
       }
-      bkse.a(this.this$0.a, 1500L);
+      bkwl.a(this.this$0.a, 1500L);
       return;
-      blfg.b("AECameraGLSurfaceView", "updateWMProps mIsTryLocationPermission false");
+      bljn.b("AECameraGLSurfaceView", "updateWMProps mIsTryLocationPermission false");
       ThreadManager.getUIHandler().post(new AECameraGLSurfaceView.12.3(this));
       break label333;
       label592:
       AECameraGLSurfaceView.a(this.this$0).a();
       break label412;
       label605:
-      if ((!StringUtils.equals(((VideoMaterial)localObject2).getPreferCameraId(), "front")) || (bkoi.a().b())) {
+      if ((!StringUtils.equals(((VideoMaterial)localObject2).getPreferCameraId(), "front")) || (bksp.a().b())) {
         break label466;
       }
-      bkoi.a().c(AECameraGLSurfaceView.d(this.this$0));
+      bksp.a().c(AECameraGLSurfaceView.d(this.this$0));
       break label466;
       label643:
       i = 1;

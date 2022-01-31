@@ -1,71 +1,38 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
-import java.io.File;
+import android.view.SurfaceHolder;
 
-public class bdzk
+public abstract interface bdzk
 {
-  public static final int a = ListenChangeVoicePanel.a.length;
+  public abstract int a();
   
-  public static String a(String paramString)
-  {
-    String str = paramString.substring(0, paramString.lastIndexOf(".")).concat(".pcm");
-    new File(paramString).renameTo(new File(str));
-    return str;
-  }
+  public abstract void a();
   
-  public static String a(String paramString, int paramInt)
-  {
-    int i = paramString.lastIndexOf(".");
-    return paramString.substring(0, i).concat("_" + paramInt).concat(paramString.substring(i, paramString.length()));
-  }
+  public abstract void a(int paramInt);
   
-  public static void a(String paramString1, String paramString2)
-  {
-    new File(paramString1).delete();
-    new File(paramString2).delete();
-    int i = 0;
-    while (i < a)
-    {
-      new File(a(paramString1, i)).delete();
-      i += 1;
-    }
-  }
+  public abstract void a(SurfaceHolder paramSurfaceHolder);
   
-  public static void a(String paramString1, String paramString2, int paramInt)
-  {
-    String str = null;
-    new File(paramString1).delete();
-    new File(paramString2).delete();
-    int i = 0;
-    paramString2 = str;
-    if (i < a)
-    {
-      str = a(paramString1, i);
-      if (i == paramInt) {
-        paramString2 = str;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        new File(str).delete();
-      }
-    }
-    if (paramString2 != null) {
-      new File(paramString2).renameTo(new File(paramString1));
-    }
-  }
+  public abstract void a(bdzl parambdzl);
   
-  public static void b(String paramString1, String paramString2)
-  {
-    new File(paramString1).deleteOnExit();
-    new File(paramString2).deleteOnExit();
-    int i = 0;
-    while (i < a)
-    {
-      new File(a(paramString1, i)).deleteOnExit();
-      i += 1;
-    }
-  }
+  public abstract void a(bdzm parambdzm);
+  
+  public abstract void a(bdzn parambdzn);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString, int paramInt);
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract int d();
+  
+  public abstract int e();
 }
 
 

@@ -1,34 +1,48 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.AddRequestSuspiciousMsgFragment;
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.Iterator;
+import java.util.List;
 
 public class ahgl
-  extends alox
+  implements ruy
 {
-  public ahgl(AddRequestSuspiciousMsgFragment paramAddRequestSuspiciousMsgFragment) {}
+  public ahgl(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onAgreeSuspiciousMsg(boolean paramBoolean, int paramInt, long paramLong)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddRequestSuspiciousMsgFragment", 2, "onAgreeSuspiciousMsg " + paramBoolean + " " + paramInt + " " + paramLong);
-    }
-    if ((AddRequestSuspiciousMsgFragment.a(this.a) != null) && (AddRequestSuspiciousMsgFragment.a(this.a).uin == paramLong))
+    Object localObject;
+    if (paramString != null)
     {
-      AddRequestSuspiciousMsgFragment.a(this.a);
-      if (paramBoolean)
+      Iterator localIterator = this.a.c.iterator();
+      do
       {
-        QQToast.a(this.a.getActivity(), alpo.a(2131700246), 0).a();
-        AddRequestSuspiciousMsgFragment.b(this.a);
-        this.a.getActivity().finish();
-      }
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = (ChannelInfo)localIterator.next();
+      } while (!paramString.equals(((ChannelInfo)localObject).mChannelName));
     }
-    else
+    for (paramString = (String)localObject;; paramString = null)
     {
+      if (paramString != null)
+      {
+        if (!TextUtils.isEmpty(paramString.mJumpUrl))
+        {
+          localObject = new Intent(this.a, QQBrowserActivity.class);
+          ((Intent)localObject).putExtra("hide_operation_bar", true);
+          ((Intent)localObject).putExtra("url", paramString.mJumpUrl);
+          this.a.startActivity((Intent)localObject);
+        }
+      }
+      else {
+        return;
+      }
+      nxu.a(this.a, paramString.mChannelID, paramString.mChannelName, paramString.mChannelType, 0);
       return;
     }
-    QQToast.a(this.a.getActivity(), alpo.a(2131700247), 0).a();
   }
 }
 

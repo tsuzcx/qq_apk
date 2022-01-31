@@ -1,23 +1,26 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-
-public class aqfj
-  implements Animation.AnimationListener
+public abstract interface aqfj
 {
-  public aqfj(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  public abstract long a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.l = false;
-    this.a.a.setVisibility(8);
-    this.a.e();
-  }
+  public abstract void a(int paramInt);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(long paramLong);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d();
+  
+  public abstract void d(int paramInt);
+  
+  public abstract void e(int paramInt);
 }
 
 

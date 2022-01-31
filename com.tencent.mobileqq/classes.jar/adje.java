@@ -1,20 +1,15 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class adje
-  implements ScaleGestureDetector.OnScaleGestureListener
+  extends avbi
 {
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return false;
-  }
+  public adje(NearbyActivity paramNearbyActivity) {}
   
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  protected void a()
   {
-    return true;
+    this.a.a.sendEmptyMessageDelayed(2, 0L);
   }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

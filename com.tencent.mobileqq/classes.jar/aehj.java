@@ -1,84 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class aehj
-  extends autc
+  implements View.OnClickListener
 {
-  public aehj(VisitorsActivity paramVisitorsActivity) {}
+  public aehj(TroopRequestActivity paramTroopRequestActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (TextUtils.equals("0", paramString)))
-    {
-      if (this.a.jdField_a_of_type_Aeib != null) {
-        this.a.jdField_a_of_type_Aeib.notifyDataSetChanged();
-      }
-      if (this.a.b != null) {
-        this.a.b.notifyDataSetChanged();
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    if (!paramString1.equals(this.a.app.getCurrentAccountUin())) {}
-    do
-    {
+    long l = System.currentTimeMillis();
+    if ((l - TroopRequestActivity.c > 0L) && (l - TroopRequestActivity.c < 800L)) {
       return;
-      if (paramInt2 == 1)
-      {
-        if (!paramBoolean)
-        {
-          this.a.jdField_a_of_type_Awsp.b(paramString2, paramInt1, false);
-          return;
-        }
-        this.a.jdField_a_of_type_Awsp.a(paramString2, paramInt1, false);
-        return;
-      }
-    } while (paramInt2 != 0);
-    this.a.jdField_a_of_type_Awsp.a(Long.parseLong(paramString2));
-  }
-  
-  protected void a(boolean paramBoolean, ArrayList<auro> paramArrayList, int paramInt)
-  {
-    if ((paramBoolean) && (paramArrayList != null)) {}
+    }
+    TroopRequestActivity.c = l;
+    if (((alto)this.a.app.getManager(51)).b(this.a.l)) {
+      paramView = new ProfileActivity.AllInOne(this.a.l, 1);
+    }
     for (;;)
     {
-      auro localauro;
-      try
-      {
-        if (paramArrayList.size() > 0)
-        {
-          paramArrayList = paramArrayList.iterator();
-          if (paramArrayList.hasNext())
-          {
-            localauro = (auro)paramArrayList.next();
-            if (paramInt != 511) {
-              break label121;
-            }
-            if (localauro.jdField_a_of_type_Int != 0) {
-              continue;
-            }
-            awsp localawsp = this.a.jdField_a_of_type_Awsp;
-            String str = localauro.jdField_a_of_type_Long + "";
-            int i = localauro.b;
-            localawsp.a(str, localauro.c + i, false);
-            continue;
-          }
-        }
-        return;
+      azqs.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
+      ProfileActivity.b(this.a, paramView);
+      return;
+      if ((this.a.a.msg.group_msg_type.get() != 2) || (this.a.a.msg.sub_type.get() != 3)) {
+        break;
       }
-      catch (Exception paramArrayList)
-      {
-        paramArrayList.printStackTrace();
-      }
-      label121:
-      if (localauro.jdField_a_of_type_Int == 0) {
-        this.a.jdField_a_of_type_Awsp.a(localauro.jdField_a_of_type_Long);
-      }
+      paramView = new ProfileActivity.AllInOne(this.a.l, 26);
+      paramView.d = 1;
+    }
+    paramView = new ProfileActivity.AllInOne(this.a.l, 24);
+    bcpx.a(this.a.a, paramView);
+    switch (this.a.b)
+    {
+    }
+    for (;;)
+    {
+      break;
+      paramView.l = 3;
+      break;
+      paramView.l = 1;
+      break;
+      paramView.l = 2;
     }
   }
 }

@@ -1,32 +1,22 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-public class aejf
-  implements BusinessObserver
+class aejf
+  implements DialogInterface.OnClickListener
 {
-  public aejf(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
+  aejf(aeje paramaeje, bdjz parambdjz) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 2002)
-    {
-      if (paramBoolean) {}
-      try
-      {
-        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.2.1(this, paramBundle));
-        return;
-      }
-      catch (Throwable paramBundle)
-      {
-        QLog.e(QQNotifySettingBaseFragment.a(), 1, QLog.getStackTraceString(paramBundle));
-      }
-      this.a.b(3, "system error");
-      return;
-    }
+    azqs.b(this.jdField_a_of_type_Aeje.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Aeje.a.a, "", "", "");
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Aeje.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", "http://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
+    paramDialogInterface.putExtra("webStyle", "noBottomBar");
+    this.jdField_a_of_type_Aeje.a.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_Bdjz.cancel();
   }
 }
 

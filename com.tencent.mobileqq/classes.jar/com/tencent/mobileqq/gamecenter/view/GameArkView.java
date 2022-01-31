@@ -5,22 +5,22 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
-import asjl;
+import asnu;
 import com.tencent.ark.open.ArkView;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 
 public class GameArkView
   extends RelativeLayout
-  implements asjl
+  implements asnu
 {
   private ArkView a;
   
   public GameArkView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(getContext()).inflate(2131559136, this);
-    this.a = ((ArkView)findViewById(2131373617));
+    LayoutInflater.from(getContext()).inflate(2131559135, this);
+    this.a = ((ArkView)findViewById(2131373668));
   }
   
   public void a()

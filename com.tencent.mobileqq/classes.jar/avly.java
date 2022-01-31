@@ -1,24 +1,28 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 class avly
-  implements avmx
+  implements View.OnClickListener
 {
-  avly(avlx paramavlx) {}
+  avly(avkt paramavkt, String paramString) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    Intent localIntent = new Intent(this.jdField_a_of_type_Avkt.a, QQBrowserActivity.class);
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
+    paramView = this.jdField_a_of_type_Avkt.a;
+    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Avkt.a.j)) {}
+    for (paramView = "1";; paramView = "2")
     {
-      auzx localauzx = new auzx().h("data_card").i("feed_delete_suc").d("2").a(this.a.jdField_a_of_type_Avlt.a(this.a.jdField_a_of_type_Avma)).b(paramString).c(String.valueOf(this.a.jdField_a_of_type_Avlt.a(this.a.jdField_a_of_type_Avma)));
-      if (this.a.jdField_a_of_type_Avlt.jdField_a_of_type_Boolean) {}
-      for (paramString = "1";; paramString = "2")
-      {
-        localauzx.e(paramString).b(this.a.jdField_a_of_type_Avlt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        return;
-      }
+      localIntent.putExtra("url", paramView);
+      azqs.b(this.jdField_a_of_type_Avkt.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_focus", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Avkt.a.startActivity(localIntent);
+      this.jdField_a_of_type_Avkt.a.l = true;
+      return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131701405), 0).a();
   }
 }
 

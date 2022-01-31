@@ -19,9 +19,9 @@ public class sce
     if (paramActivity == null) {
       return;
     }
-    TextView localTextView1 = (TextView)paramActivity.findViewById(2131368613);
-    TextView localTextView2 = (TextView)paramActivity.findViewById(2131368619);
-    ImageView localImageView = (ImageView)paramActivity.findViewById(2131368618);
+    TextView localTextView1 = (TextView)paramActivity.findViewById(2131368624);
+    TextView localTextView2 = (TextView)paramActivity.findViewById(2131368630);
+    ImageView localImageView = (ImageView)paramActivity.findViewById(2131368629);
     new Handler().postDelayed(new FastWebAnimationUtils.1(paramActivity, localTextView1), 500L);
     new Handler().postDelayed(new FastWebAnimationUtils.2(localTextView2, paramActivity), 2500L);
     new Handler().postDelayed(new FastWebAnimationUtils.3(paramActivity, localTextView2, localImageView), 4200L);
@@ -29,7 +29,7 @@ public class sce
   
   private static AnimationSet b(View paramView, Context paramContext)
   {
-    paramView = new TranslateAnimation(0.0F, -(paramView.getX() - bdkf.b(40.0F)), 0.0F, 0.0F);
+    paramView = new TranslateAnimation(0.0F, -(paramView.getX() - bdoo.b(40.0F)), 0.0F, 0.0F);
     paramView.setFillAfter(true);
     paramView.setDuration(200L);
     paramContext = (AlphaAnimation)AnimationUtils.loadAnimation(paramContext, 2130772182);

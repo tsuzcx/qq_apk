@@ -9,10 +9,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import beph;
+import betq;
 import com.tencent.biz.ui.CustomMenuBar;
 import ndp;
-import ysu;
+import yxj;
 
 public class PublicMenuBar
   extends CustomMenuBar
@@ -22,15 +22,15 @@ public class PublicMenuBar
     super(paramContext, paramAttributeSet);
   }
   
-  public View a(ysu paramysu, int paramInt)
+  public View a(yxj paramyxj, int paramInt)
   {
-    String str = paramysu.a();
-    Drawable localDrawable = paramysu.a();
+    String str = paramyxj.a();
+    Drawable localDrawable = paramyxj.a();
     View localView = ((LayoutInflater)super.getContext().getSystemService("layout_inflater")).inflate(paramInt, null);
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131370194);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131370184);
-    TextView localTextView = (TextView)localView.findViewById(2131370197);
-    if ((localImageView1 != null) && (paramysu.a() > 0))
+    ImageView localImageView1 = (ImageView)localView.findViewById(2131370213);
+    ImageView localImageView2 = (ImageView)localView.findViewById(2131370203);
+    TextView localTextView = (TextView)localView.findViewById(2131370216);
+    if ((localImageView1 != null) && (paramyxj.a() > 0))
     {
       localImageView1.setVisibility(0);
       if (localDrawable == null) {
@@ -48,12 +48,12 @@ public class PublicMenuBar
     }
     for (;;)
     {
-      localView.setOnClickListener(new beph(this, paramysu.b(), paramysu.a()));
+      localView.setOnClickListener(new betq(this, paramyxj.b(), paramyxj.a()));
       localView.setFocusable(true);
       localView.setClickable(true);
-      paramysu = new LinearLayout.LayoutParams(-1, -1, 1.0F);
-      paramysu.gravity = 17;
-      localView.setLayoutParams(paramysu);
+      paramyxj = new LinearLayout.LayoutParams(-1, -1, 1.0F);
+      paramyxj.gravity = 17;
+      localView.setLayoutParams(paramyxj);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
       return localView;
       if (localImageView1 == null) {

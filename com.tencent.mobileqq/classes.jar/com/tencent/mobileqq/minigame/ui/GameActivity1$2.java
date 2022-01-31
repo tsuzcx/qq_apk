@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import aobg;
+import aofp;
 
 class GameActivity1$2
-  implements aobg
+  implements aofp
 {
   GameActivity1$2(GameActivity1 paramGameActivity1) {}
   

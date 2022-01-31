@@ -1,8 +1,10 @@
-import android.graphics.Bitmap;
-
 public abstract interface bcxy
 {
-  public abstract void a(int paramInt1, String paramString, int paramInt2, Bitmap paramBitmap);
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

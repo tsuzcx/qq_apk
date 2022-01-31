@@ -1,29 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ApolloActionPush;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
 class akke
-  implements akkf
+  implements Comparator<avun>
 {
   akke(akkd paramakkd) {}
   
-  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
+  public int a(avun paramavun1, avun paramavun2)
   {
-    if ((akkd.a(this.a) != null) && (paramApolloActionPush != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
-      }
-      if ((akkd.a(this.a).jdField_a_of_type_Int == paramInt) && (paramInt == akkd.a(this.a).jdField_a_of_type_Int) && (!TextUtils.isEmpty(akkd.a(this.a).jdField_a_of_type_JavaLangString)) && (akkd.a(this.a).jdField_a_of_type_JavaLangString.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
-        this.a.a(paramApolloActionPush);
-      }
-    }
+    return (int)(paramavun2.a - paramavun1.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akke
  * JD-Core Version:    0.7.0.1
  */

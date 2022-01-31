@@ -1,13 +1,15 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.io.File;
+import java.io.FilenameFilter;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface bcyl
+class bcyl
+  implements FilenameFilter
 {
-  Class a() default Object.class;
+  bcyl(bcyj parambcyj, String paramString) {}
+  
+  public boolean accept(File paramFile, String paramString)
+  {
+    return paramString.startsWith(this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

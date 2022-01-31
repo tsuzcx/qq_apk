@@ -1,98 +1,70 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-class xes
-  extends xek<xeq>
+public class xes
+  implements Cloneable
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367786);
-  private ImageView b = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367787);
-  private ImageView c = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370638);
-  private ImageView d = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370639);
+  public final int a;
+  public final String a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
+  public final String f;
+  public final String g;
+  public String h;
   
-  private xes(xeq paramxeq, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public xes(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    super(paramContext, paramViewGroup);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = null;
+    this.d = paramString3;
+    this.e = paramString4;
+    this.f = paramString5;
+    this.g = paramString6;
+    this.jdField_a_of_type_Int = 1;
   }
   
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public xes(vhf paramvhf)
   {
-    return LayoutInflater.from(paramContext).inflate(2131561573, paramViewGroup, false);
+    this.jdField_a_of_type_JavaLangString = paramvhf.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramvhf.jdField_b_of_type_JavaLangString;
+    this.c = paramvhf.c;
+    this.d = paramvhf.d;
+    this.e = paramvhf.e;
+    this.f = paramvhf.g;
+    this.g = paramvhf.f;
+    this.jdField_a_of_type_Int = paramvhf.jdField_b_of_type_Int;
   }
   
-  void a(ImageView paramImageView, char paramChar)
+  public String a()
   {
-    switch (paramChar)
-    {
-    default: 
-      return;
-    case '0': 
-      paramImageView.setImageResource(2130846162);
-      return;
-    case '1': 
-      paramImageView.setImageResource(2130846163);
-      return;
-    case '2': 
-      paramImageView.setImageResource(2130846164);
-      return;
-    case '3': 
-      paramImageView.setImageResource(2130846165);
-      return;
-    case '4': 
-      paramImageView.setImageResource(2130846166);
-      return;
-    case '5': 
-      paramImageView.setImageResource(2130846167);
-      return;
-    case '6': 
-      paramImageView.setImageResource(2130846168);
-      return;
-    case '7': 
-      paramImageView.setImageResource(2130846169);
-      return;
-    case '8': 
-      paramImageView.setImageResource(2130846170);
-      return;
+    return this.h;
+  }
+  
+  public void a(String paramString)
+  {
+    this.h = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
     }
-    paramImageView.setImageResource(2130846171);
+    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+      return false;
+    }
+    paramObject = (xes)paramObject;
+    return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
   }
   
-  public void a(xeq paramxeq, int paramInt)
+  public int hashCode()
   {
-    super.a(paramxeq, paramInt);
-    paramxeq = new SimpleDateFormat("HH:mm");
-    ((xeq)this.jdField_a_of_type_Xej).c = paramxeq.format(new Date());
-    wsv.b("TimeFilterData", "TimeFilterData time:" + ((xeq)this.jdField_a_of_type_Xej).c);
-    a(this.jdField_a_of_type_AndroidWidgetImageView, ((xeq)this.jdField_a_of_type_Xej).c.charAt(0));
-    a(this.b, ((xeq)this.jdField_a_of_type_Xej).c.charAt(1));
-    a(this.c, ((xeq)this.jdField_a_of_type_Xej).c.charAt(3));
-    a(this.d, ((xeq)this.jdField_a_of_type_Xej).c.charAt(4));
-    int i = xod.d(this.jdField_a_of_type_AndroidViewView.getContext());
-    if (((this.jdField_a_of_type_Xeq.a != null) && (this.jdField_a_of_type_Xeq.a.jdField_a_of_type_Int == 10)) || ((this.jdField_a_of_type_Xeq.a != null) && (this.jdField_a_of_type_Xeq.a.jdField_a_of_type_Int == 12)))
-    {
-      if (this.jdField_a_of_type_Xeq.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a() / this.jdField_a_of_type_Xeq.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b() > bdcb.k() / bdcb.l())
-      {
-        paramInt = (int)(bdcb.k() * this.jdField_a_of_type_Xeq.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b() / this.jdField_a_of_type_Xeq.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a());
-        if (paramInt > i / 3 * 2 + bcwh.a(this.jdField_a_of_type_AndroidViewView.getContext(), 75.0F))
-        {
-          this.jdField_a_of_type_AndroidViewView.setPadding(0, i / 3 * 2, 0, 0);
-          return;
-        }
-        i = bcwh.a(this.jdField_a_of_type_AndroidViewView.getContext(), 75.0F);
-        this.jdField_a_of_type_AndroidViewView.setPadding(0, paramInt - i, 0, 0);
-        return;
-      }
-      this.jdField_a_of_type_AndroidViewView.setPadding(0, i / 3 * 2, 0, 0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setPadding(0, i / 3 * 2, 0, 0);
+    return this.jdField_a_of_type_JavaLangString.hashCode();
+  }
+  
+  public String toString()
+  {
+    return "DoodleEmojiItem{mPackId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLogoUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mDownloadLogoUrl='" + this.c + '\'' + ", mPackName='" + this.d + '\'' + ", mPackDownloadUrl='" + this.e + '\'' + ", mPackMd5='" + this.g + '\'' + ", mLocalEmojiFolderPath='" + this.h + '\'' + ", mConfig='" + this.f + '\'' + '}';
   }
 }
 

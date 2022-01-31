@@ -1,236 +1,188 @@
-import android.media.MediaPlayer;
-import android.media.SoundPool;
-import android.text.TextUtils;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Process;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadRegulator;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class amof
+  extends Handler
 {
-  private int jdField_a_of_type_Int;
-  MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-  private SoundPool jdField_a_of_type_AndroidMediaSoundPool;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet;
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private HashSet<Integer> jdField_b_of_type_JavaUtilHashSet;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
-  private boolean e;
+  public static int a;
+  public static long a;
+  private amnu a;
+  private long b;
+  private long c;
+  private long d;
   
-  public amof(int paramInt, String... paramVarArgs)
+  static
   {
-    try
-    {
-      this.e = true;
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-      this.jdField_b_of_type_JavaUtilHashSet = new HashSet();
-      this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(paramInt, 3, 0);
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new amoj(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new amok(this));
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-      {
-        int j = paramVarArgs.length;
-        paramInt = i;
-        while (paramInt < j)
-        {
-          String str = paramVarArgs[paramInt];
-          if (!TextUtils.isEmpty(str))
-          {
-            i = this.jdField_a_of_type_AndroidMediaSoundPool.load(str, 1);
-            this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(i));
-            if (QLog.isColorLevel()) {
-              QLog.d("ARMusicController", 2, "load file:" + str + ", id=" + i);
-            }
-          }
-          paramInt += 1;
-        }
-      }
-      return;
-    }
-    catch (Exception paramVarArgs)
-    {
-      paramVarArgs.printStackTrace();
-    }
+    jdField_a_of_type_Int = -1000;
   }
   
-  public amof(String paramString1, String paramString2)
+  public amof(Looper paramLooper, QQAppInterface paramQQAppInterface, amnu paramamnu)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaLangString = paramString1;
-      this.jdField_b_of_type_JavaLangString = paramString2;
-      this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(1, 3, 0);
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new amog(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new amoh(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new amoi(this));
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString2, 1);
-      try
-      {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString1);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-        return;
-      }
-      catch (IOException paramString1)
-      {
-        paramString1.printStackTrace();
-        return;
-      }
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
-    }
+    super(paramLooper);
+    this.jdField_a_of_type_Amnu = paramamnu;
+    this.b = System.currentTimeMillis();
   }
   
   public void a()
   {
-    a(false);
+    removeCallbacksAndMessages(null);
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public void dispatchMessage(Message paramMessage)
   {
-    int i;
-    for (;;)
+    ThreadRegulator.a().b();
+    super.dispatchMessage(paramMessage);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    jdField_a_of_type_Int = Process.myTid();
+    jdField_a_of_type_Long = SystemClock.currentThreadTimeMillis();
+    long l2 = System.currentTimeMillis();
+    long l3 = SystemClock.currentThreadTimeMillis();
+    Object localObject1 = (amob)paramMessage.obj;
+    label266:
+    boolean bool;
+    do
     {
-      try
+      for (;;)
       {
-        if (!this.e) {
-          return;
-        }
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+        try
         {
-          i = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
-          if (QLog.isColorLevel()) {
-            QLog.d("ARMusicController", 2, "playSound path=" + paramString + ", id=" + i);
-          }
-          if (i == -1) {
+          int i = paramMessage.what;
+          switch (i)
+          {
+          default: 
+            this.d += SystemClock.currentThreadTimeMillis() - l3;
+            this.c += System.currentTimeMillis() - l2;
+            if (System.currentTimeMillis() - this.b > 300000L)
+            {
+              paramMessage = new StringBuilder(100);
+              paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
+              paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
+              localObject1 = (amoc)this.jdField_a_of_type_Amnu.a(1);
+              if (localObject1 != null) {
+                paramMessage.append(((amoc)localObject1).a());
+              }
+              localObject1 = (amog)this.jdField_a_of_type_Amnu.a(2);
+              if (localObject1 != null) {
+                paramMessage.append(((amog)localObject1).a()).append("\n");
+              }
+              QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
+              this.d = 0L;
+              this.c = 0L;
+              this.b = System.currentTimeMillis();
+            }
             return;
           }
-          if (!this.jdField_b_of_type_JavaUtilHashSet.contains(Integer.valueOf(i))) {
-            break;
-          }
-          this.jdField_a_of_type_AndroidMediaSoundPool.play(i, 1.0F, 1.0F, 1, 0, 1.0F);
-          return;
         }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("ARMusicController", 2, paramString, new Object[0]);
-        return;
-      }
-      i = -1;
-    }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(i));
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
-  }
-  
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        if (!new File(paramString).exists())
+        finally
         {
-          QLog.d("ARMusicController", 2, "playBgMusic file not exist" + paramString);
-          return;
+          l1 = this.d;
+          this.d = (SystemClock.currentThreadTimeMillis() - l3 + l1);
+          l1 = this.c;
+          this.c = (System.currentTimeMillis() - l2 + l1);
+          if (System.currentTimeMillis() - this.b <= 300000L) {
+            continue;
+          }
+          localObject1 = new StringBuilder(100);
+          ((StringBuilder)localObject1).append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
+          ((StringBuilder)localObject1).append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
+          Object localObject2 = (amoc)this.jdField_a_of_type_Amnu.a(1);
+          if (localObject2 == null) {
+            continue;
+          }
+          ((StringBuilder)localObject1).append(((amoc)localObject2).a());
+          localObject2 = (amog)this.jdField_a_of_type_Amnu.a(2);
+          if (localObject2 == null) {
+            continue;
+          }
+          ((StringBuilder)localObject1).append(((amog)localObject2).a()).append("\n");
+          QLog.d("Q.fts.BgCpu.Total", 1, ((StringBuilder)localObject1).toString());
+          this.d = 0L;
+          this.c = 0L;
+          this.b = System.currentTimeMillis();
         }
-        if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying()) {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+        if (((amob)localObject1).c()) {
+          sendMessageDelayed(obtainMessage(2, localObject1), 30000L);
+        } else if (QLog.isColorLevel()) {
+          QLog.w("Q.fts.sync_worker", 2, "readSyncedCursor is false!!");
         }
-        this.jdField_a_of_type_JavaLangString = paramString;
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean1);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-        this.d = paramBoolean2;
-        return;
       }
+      removeMessages(2, localObject1);
+      if (((amob)localObject1).d()) {
+        ((amob)localObject1).e();
+      }
+      bool = this.jdField_a_of_type_Amnu.b;
+      if (!bool) {
+        break;
+      }
+      this.d += SystemClock.currentThreadTimeMillis() - l3;
+      this.c += System.currentTimeMillis() - l2;
+    } while (System.currentTimeMillis() - this.b <= 300000L);
+    paramMessage = new StringBuilder(100);
+    paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
+    paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
+    localObject1 = (amoc)this.jdField_a_of_type_Amnu.a(1);
+    if (localObject1 != null) {
+      paramMessage.append(((amoc)localObject1).a());
     }
-    catch (Throwable paramString)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.e("ARMusicController", 2, "playBgMusic exception", paramString);
-        return;
-      }
-      QLog.d("ARMusicController", 1, "playBgMusic exception" + paramString.getMessage());
+    localObject1 = (amog)this.jdField_a_of_type_Amnu.a(2);
+    if (localObject1 != null) {
+      paramMessage.append(((amog)localObject1).a()).append("\n");
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    try
+    QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
+    this.d = 0L;
+    this.c = 0L;
+    this.b = System.currentTimeMillis();
+    return;
+    paramMessage = obtainMessage(2, localObject1);
+    if (((amob)localObject1).f()) {}
+    for (long l1 = 15000L;; l1 = 30000L)
     {
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+      sendMessageDelayed(paramMessage, l1);
+      break;
+      removeMessages(3, localObject1);
+      ((amob)localObject1).e();
+      bool = this.jdField_a_of_type_Amnu.b;
+      if (!bool) {
+        break;
       }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("ARMusicController", 2, "playBgMusic : " + this.jdField_a_of_type_JavaLangString);
-        return;
-        this.d = true;
+      this.d += SystemClock.currentThreadTimeMillis() - l3;
+      this.c += System.currentTimeMillis() - l2;
+      if (System.currentTimeMillis() - this.b <= 300000L) {
+        break label266;
       }
+      paramMessage = new StringBuilder(100);
+      paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
+      paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
+      localObject1 = (amoc)this.jdField_a_of_type_Amnu.a(1);
+      if (localObject1 != null) {
+        paramMessage.append(((amoc)localObject1).a());
+      }
+      localObject1 = (amog)this.jdField_a_of_type_Amnu.a(2);
+      if (localObject1 != null) {
+        paramMessage.append(((amog)localObject1).a()).append("\n");
+      }
+      QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
+      this.d = 0L;
+      this.c = 0L;
+      this.b = System.currentTimeMillis();
       return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void b()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMusicController", 2, "stopAllMusic");
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void c()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      this.jdField_a_of_type_AndroidMediaSoundPool.release();
-      this.jdField_a_of_type_JavaUtilHashMap = null;
-      this.jdField_a_of_type_JavaUtilHashSet = null;
-      this.jdField_b_of_type_JavaUtilHashSet = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amof
  * JD-Core Version:    0.7.0.1
  */

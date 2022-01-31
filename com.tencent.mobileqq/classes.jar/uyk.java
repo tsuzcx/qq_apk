@@ -1,17 +1,14 @@
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Comparator;
 
-public class uyk
-  extends ugz
+class uyk
+  implements Comparator<vlp>
 {
-  public ArrayList<HotSortVideoEntry> a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  uyk(uyj paramuyj) {}
   
-  public String toString()
+  public int a(vlp paramvlp1, vlp paramvlp2)
   {
-    return " GetVideoByHotSortEvent " + super.toString();
+    return vae.a(paramvlp1.a.mCreateTime, paramvlp2.a.mCreateTime);
   }
 }
 

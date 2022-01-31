@@ -1,9 +1,19 @@
-import android.graphics.Bitmap;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class bnke
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public long a;
-  public Bitmap a;
+  public bnke(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  
+  public void onGlobalLayout()
+  {
+    ThreadManager.post(this.a, 8, null, false);
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+  }
 }
 
 

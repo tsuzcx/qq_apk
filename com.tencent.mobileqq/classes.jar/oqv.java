@@ -48,7 +48,7 @@ public class oqv
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new oqx(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559985, null));
+    return new oqx(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559984, null));
   }
 }
 

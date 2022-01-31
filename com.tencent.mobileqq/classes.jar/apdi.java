@@ -1,61 +1,32 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class apdi
-  extends apcg
 {
-  public ArrayList<apdh> a;
+  private long a;
+  private long b;
   
-  public static apdi a(JSONObject paramJSONObject)
+  public apdi(long paramLong)
   {
-    apdi localapdi = new apdi();
-    localapdi.jdField_a_of_type_JavaLangString = paramJSONObject.optString("group");
-    paramJSONObject = paramJSONObject.optJSONArray("configs");
-    localapdi.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramJSONObject.length());
-    int i = 0;
-    while (i < paramJSONObject.length())
-    {
-      apdh localapdh = apdh.a(paramJSONObject.optJSONObject(i));
-      localapdh.a = localapdi;
-      localapdi.jdField_a_of_type_JavaUtilArrayList.add(localapdh);
-      i += 1;
-    }
-    return localapdi;
+    this.b = paramLong;
+    this.a = this.b;
   }
   
-  public JSONObject a()
+  public long a()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("group", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
-      JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        localJSONArray.put(((apdh)localIterator.next()).a());
-      }
-      localJSONObject.put("configs", localJSONException);
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-      return localJSONObject;
-    }
-    return localJSONObject;
+    return this.b;
   }
   
-  public boolean a()
+  public apdi a()
   {
-    return false;
+    return new apdi(this.b);
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.b = (((float)this.b * paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apdi
  * JD-Core Version:    0.7.0.1
  */

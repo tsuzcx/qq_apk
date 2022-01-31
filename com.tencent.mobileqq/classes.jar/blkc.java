@@ -1,9 +1,4 @@
-import android.support.annotation.NonNull;
-
-public abstract interface blkc
-{
-  public abstract void a(@NonNull bljv parambljv, boolean paramBoolean, @NonNull String paramString);
-}
+public class blkc {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

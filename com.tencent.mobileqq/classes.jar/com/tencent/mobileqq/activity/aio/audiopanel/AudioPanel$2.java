@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import aetb;
+import aexq;
 import com.tencent.qphone.base.util.QLog;
 
 class AudioPanel$2
@@ -14,7 +14,7 @@ class AudioPanel$2
       QLog.d("AudioPanel", 2, "playAnimRunable isEnabled():" + this.this$0.isEnabled() + ",mIsDestroyed= " + AudioPanel.a(this.this$0) + " mCurAnimType=" + AudioPanel.a(this.this$0));
     }
     if ((this.this$0.isEnabled()) && (!AudioPanel.a(this.this$0))) {
-      aetb.a().a(AudioPanel.a(this.this$0), AudioPanel.a(this.this$0), AudioPanel.a(this.this$0), AudioPanel.b(this.this$0));
+      aexq.a().a(AudioPanel.a(this.this$0), AudioPanel.a(this.this$0), AudioPanel.a(this.this$0), AudioPanel.b(this.this$0));
     }
   }
 }

@@ -1,12 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class bhpz
-  implements View.OnClickListener
 {
-  bhpz(bhpy parambhpy) {}
-  
-  public void onClick(View paramView) {}
+  public int a;
+  public byte[] a;
+  public int b;
+  public int c;
 }
 
 

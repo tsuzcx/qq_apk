@@ -2,9 +2,9 @@ package com.tencent.mobileqq.nearby.profilecard;
 
 import android.os.Handler;
 import android.os.Message;
-import aoge;
-import apnb;
-import bcyw;
+import aokn;
+import aprk;
+import bddf;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -35,7 +35,7 @@ class NearbyPeopleProfileActivity$DownloadHDAvatarRunnable
     if (QLog.isColorLevel()) {
       QLog.e("Q.nearby_people_card.", 2, "downloadHDAvatar()  uin=" + this.jdField_a_of_type_JavaLangString + ", mgSize=" + this.jdField_a_of_type_Int + ", url = " + (String)localObject);
     }
-    File localFile1 = new File(bcyw.a(String.valueOf(this.jdField_a_of_type_JavaLangString)));
+    File localFile1 = new File(bddf.a(String.valueOf(this.jdField_a_of_type_JavaLangString)));
     boolean bool2;
     if ((localFile1.exists()) && (!this.jdField_a_of_type_Boolean))
     {
@@ -69,8 +69,8 @@ class NearbyPeopleProfileActivity$DownloadHDAvatarRunnable
         try
         {
           localObject = new URL(str);
-          localObject = new URL(((URL)localObject).getProtocol(), aoge.a(0), ((URL)localObject).getFile()).toString();
-          if (HttpDownloadUtil.a(this.this$0.app, new apnb((String)localObject, localFile2, 0), null) == 0)
+          localObject = new URL(((URL)localObject).getProtocol(), aokn.a(0), ((URL)localObject).getFile()).toString();
+          if (HttpDownloadUtil.a(this.this$0.app, new aprk((String)localObject, localFile2, 0), null) == 0)
           {
             bool2 = true;
             boolean bool1 = bool2;

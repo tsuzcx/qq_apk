@@ -1,13 +1,30 @@
-public class awdw
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+
+class awdw
+  extends Animation
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
+  awdw(awdp paramawdp, View paramView, int paramInt) {}
   
-  public String toString()
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    return "QuickSendObject{mOriginMD5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mOriginSize=" + this.jdField_a_of_type_Long + ", mThumbMD5='" + this.b + '\'' + ", mQuickSendFailed=" + this.jdField_a_of_type_Boolean + '}';
+    super.applyTransformation(paramFloat, paramTransformation);
+    if (paramFloat == 1.0F) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    do
+    {
+      return;
+      paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    } while (paramTransformation == null);
+    paramTransformation.height = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramTransformation);
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return true;
   }
 }
 

@@ -1,27 +1,47 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import java.lang.ref.WeakReference;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0x5e1.RspBody;
+import tencent.im.oidb.oidb_0x5e1.UdcUinData;
 
 public class adht
-  extends BroadcastReceiver
+  extends avvc
 {
-  WeakReference<PayBridgeActivity> a;
+  public adht(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public adht(PayBridgeActivity paramPayBridgeActivity)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    this.a = new WeakReference(paramPayBridgeActivity);
+    QQToast.a(this.a, paramString2, 0).a();
+    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
+    LoginInfoActivity.a(this.a).setVisibility(4);
   }
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(oidb_0x5e1.RspBody paramRspBody)
   {
-    if ((paramIntent != null) && ("action_launch_completed".equals(paramIntent.getAction())) && ("qwallet_plugin.apk".equals(paramIntent.getStringExtra("plugin_apk"))) && (this.a != null))
+    LoginInfoActivity.a(this.a, paramRspBody);
+    int i = ((oidb_0x5e1.UdcUinData)paramRspBody.rpt_msg_uin_data.get(0)).user_login_guard_face.get();
+    TextView localTextView = LoginInfoActivity.c(this.a);
+    if (i == 1)
     {
-      paramContext = (PayBridgeActivity)this.a.get();
-      if (paramContext != null) {
-        paramContext.b = true;
+      paramRspBody = this.a.getString(2131692354);
+      localTextView.setText(paramRspBody);
+      LoginInfoActivity.a(this.a).setVisibility(4);
+      LoginInfoActivity.c(this.a).setVisibility(0);
+      if (i != 1) {
+        break label122;
       }
+    }
+    label122:
+    for (paramRspBody = "1";; paramRspBody = "0")
+    {
+      azqs.b(null, "dc00898", "", "", "0X800AA7A", "0X800AA7A", 0, 0, paramRspBody, "", "", "");
+      return;
+      paramRspBody = this.a.getString(2131692361);
+      break;
     }
   }
 }

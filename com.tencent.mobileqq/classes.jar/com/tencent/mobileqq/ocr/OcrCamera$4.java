@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ocr;
 
-import alpo;
-import avsm;
+import alud;
+import avwv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class OcrCamera$4
   implements Runnable
 {
-  public OcrCamera$4(avsm paramavsm) {}
+  public OcrCamera$4(avwv paramavwv) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), alpo.a(2131708073), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), alud.a(2131708085), 0).a();
   }
 }
 

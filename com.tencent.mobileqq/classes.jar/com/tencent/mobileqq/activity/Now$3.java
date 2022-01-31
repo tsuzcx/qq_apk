@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import urr;
-import usd;
+import uwa;
+import uwm;
 
 class Now$3
   implements Runnable
@@ -10,7 +10,7 @@ class Now$3
   
   public void run()
   {
-    ((usd)urr.a(2)).c();
+    ((uwm)uwa.a(2)).c();
   }
 }
 

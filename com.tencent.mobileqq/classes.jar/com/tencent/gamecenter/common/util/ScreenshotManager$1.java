@@ -1,7 +1,7 @@
 package com.tencent.gamecenter.common.util;
 
-import aadi;
-import aadk;
+import aahx;
+import aahz;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
@@ -9,24 +9,24 @@ import android.text.TextUtils;
 public class ScreenshotManager$1
   implements Runnable
 {
-  public ScreenshotManager$1(aadi paramaadi, String paramString, aadk paramaadk) {}
+  public ScreenshotManager$1(aahx paramaahx, String paramString, aahz paramaahz) {}
   
   public void run()
   {
-    aadi localaadi;
+    aahx localaahx;
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      localaadi = this.this$0;
-      if (aadi.a(this.this$0) != null) {
+      localaahx = this.this$0;
+      if (aahx.a(this.this$0) != null) {
         break label80;
       }
     }
     label80:
-    for (Bitmap localBitmap = BitmapFactory.decodeFile(aadi.b + this.jdField_a_of_type_JavaLangString);; localBitmap = aadi.a(this.this$0))
+    for (Bitmap localBitmap = BitmapFactory.decodeFile(aahx.b + this.jdField_a_of_type_JavaLangString);; localBitmap = aahx.a(this.this$0))
     {
-      aadi.a(localaadi, localBitmap);
-      if (this.jdField_a_of_type_Aadk != null) {
-        this.jdField_a_of_type_Aadk.a(304, "load to mem");
+      aahx.a(localaahx, localBitmap);
+      if (this.jdField_a_of_type_Aahz != null) {
+        this.jdField_a_of_type_Aahz.a(304, "load to mem");
       }
       return;
     }

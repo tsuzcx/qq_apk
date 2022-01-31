@@ -1,23 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import feedcloud.FeedCloudMeta.StDittoFeed;
+import feedcloud.FeedCloudMeta.StFeed;
 import mqq.app.AppRuntime;
+import qqcircle.QQCircleDitto.StCircleDittoDataNew;
 
 class trp
-  implements View.OnClickListener
+  implements Observer<FeedCloudMeta.StFeed>
 {
   trp(tro paramtro) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable FeedCloudMeta.StFeed paramStFeed)
   {
-    if (tro.a(this.a) != null)
+    boolean bool = false;
+    if (paramStFeed == null)
     {
-      if (bdje.a(tro.a(this.a))) {
-        QLog.w("QCircleTaskCenterAdapter", 1, "task center url is empty");
+      this.a.a(false);
+      return;
+    }
+    tro.a(this.a, new QQCircleDitto.StCircleDittoDataNew());
+    tzv.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 9, 1L);
+    try
+    {
+      tro.a(this.a).mergeFrom(paramStFeed.dittoFeed.dittoDataNew.get().toByteArray());
+      paramStFeed = this.a;
+      if (tro.a(this.a).multiItemContainter.size() > 0) {
+        bool = true;
       }
-      tqs.a(tro.a(this.a), tro.a(this.a));
-      tyj.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 8, 2L);
+      paramStFeed.a(bool);
+      return;
+    }
+    catch (Exception paramStFeed)
+    {
+      paramStFeed.printStackTrace();
     }
   }
 }

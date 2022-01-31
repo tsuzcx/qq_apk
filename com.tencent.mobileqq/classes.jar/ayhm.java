@@ -1,24 +1,21 @@
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ayhm
+class ayhm
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public List<ayjn> a;
-  public String b;
-  public String c;
-  public String d;
+  ayhm(ayhk paramayhk, aynp paramaynp) {}
   
-  public ayhm() {}
-  
-  public ayhm(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, List<ayjn> paramList)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Aynp.d))
+    {
+      ayvm.a(this.jdField_a_of_type_Ayhk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ayhk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aynp.d);
+      ayvm.a("hot_list", "clk_title", new String[] { String.valueOf(1), String.valueOf(this.jdField_a_of_type_Ayhk.jdField_a_of_type_Int) });
+      return;
+    }
+    ayvm.a("hot_list", "clk_title", new String[] { String.valueOf(2), String.valueOf(this.jdField_a_of_type_Ayhk.jdField_a_of_type_Int) });
   }
 }
 

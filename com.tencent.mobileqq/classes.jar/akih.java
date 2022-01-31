@@ -1,9 +1,26 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
 
-public abstract interface akih
+public class akih
+  extends akit
 {
-  public abstract void a(Canvas paramCanvas, Paint paramPaint);
+  public View a;
+  public Button a;
+  public CheckBox a;
+  public TextView a;
+  public PhoneContact a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  
+  public akih()
+  {
+    this.c = 11;
+  }
 }
 
 

@@ -1,23 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 import java.util.List;
 
 public class aebh
-  implements View.OnClickListener
+  implements PopupWindow.OnDismissListener
 {
-  public aebh(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aebh(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    paramView = new ArrayList();
-    Iterator localIterator = this.a.a.b.iterator();
-    while (localIterator.hasNext()) {
-      paramView.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
+    this.a.a = null;
+    Object localObject;
+    if ((TextPreviewTranslateActivity.b(this.a) != null) && (TextPreviewTranslateActivity.b(this.a).size() > 1))
+    {
+      localObject = this.a.getResources();
+      if (!TextPreviewTranslateActivity.a(this.a)) {
+        break label76;
+      }
     }
-    TroopMemberListActivity.a(this.a, paramView);
+    label76:
+    for (int i = 2130845229;; i = 2130845740)
+    {
+      localObject = ((Resources)localObject).getDrawable(i);
+      TextPreviewTranslateActivity.b(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
+      return;
+    }
   }
 }
 

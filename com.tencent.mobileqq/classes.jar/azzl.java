@@ -1,39 +1,86 @@
+import android.graphics.Color;
+import android.text.TextUtils;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
+
 public class azzl
-  extends azzf
+  extends azuu
 {
-  private int f;
-  private int g;
+  String ai;
   
-  public azzl(int paramInt1, int paramInt2, int paramInt3)
+  public azzl()
   {
-    super(paramInt1, 4, 0);
-    this.f = paramInt2;
-    this.g = paramInt3;
+    this(null);
   }
   
-  public azzl(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public azzl(String paramString)
   {
-    super(paramInt1, 4, paramInt4);
-    this.f = paramInt2;
-    this.g = paramInt3;
+    super(paramString, "remark");
   }
   
-  protected void a(int paramInt, float paramFloat)
+  public String a()
   {
-    this.a = ((int)(this.f + (this.g - this.f) * paramFloat));
-    if (this.g - this.f > 0) {
-      if (this.a >= this.g) {
-        this.a = this.g;
-      }
-    }
-    for (;;)
+    return "Remark";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.ai = paramObjectInput.readUTF();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    if (this.ai == null) {}
+    for (String str = "";; str = this.ai)
     {
-      super.a(paramInt, paramFloat);
+      paramObjectOutput.writeUTF(str);
       return;
-      if (this.a <= this.g) {
-        this.a = this.g;
-      }
     }
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    super.a(paramXmlSerializer);
+    if (!TextUtils.isEmpty(this.ai)) {
+      paramXmlSerializer.attribute(null, "url", this.ai);
+    }
+  }
+  
+  public boolean a(azwj paramazwj)
+  {
+    if (paramazwj == null) {
+      return true;
+    }
+    this.ai = paramazwj.a("bgColor");
+    return super.a(paramazwj);
+  }
+  
+  public int b()
+  {
+    return 1;
+  }
+  
+  public int c()
+  {
+    return 2131378970;
+  }
+  
+  public int e()
+  {
+    return Color.rgb(128, 128, 128);
+  }
+  
+  public int f()
+  {
+    return 24;
+  }
+  
+  public String g()
+  {
+    return this.ai;
   }
 }
 

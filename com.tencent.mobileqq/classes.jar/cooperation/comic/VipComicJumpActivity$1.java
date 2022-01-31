@@ -1,7 +1,7 @@
 package cooperation.comic;
 
-import biij;
-import bijy;
+import bimq;
+import biof;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -25,7 +25,7 @@ final class VipComicJumpActivity$1
         do
         {
           return;
-          if (!bijy.a(localQQAppInterface)) {
+          if (!biof.a(localQQAppInterface)) {
             break;
           }
         } while (!QLog.isColorLevel());
@@ -34,8 +34,8 @@ final class VipComicJumpActivity$1
         if (QLog.isColorLevel()) {
           QLog.d("QQComicDebug", 2, "wait for plugin installation...");
         }
-        biij.a(2, localQQAppInterface);
-        if (bijy.a(localQQAppInterface, true, null)) {
+        bimq.a(2, localQQAppInterface);
+        if (biof.a(localQQAppInterface, true, null)) {
           break;
         }
       } while (!QLog.isColorLevel());

@@ -46,7 +46,7 @@ public class rez
             this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramActivity.getWindow().getDecorView().findViewById(16908290));
           } while (this.jdField_a_of_type_AndroidViewViewGroup == null);
           this.jdField_a_of_type_ArrayOfInt = new int[2];
-          jdField_a_of_type_Int = aekt.a(28.0F, paramActivity.getResources());
+          jdField_a_of_type_Int = aepi.a(28.0F, paramActivity.getResources());
           this.jdField_a_of_type_AndroidViewViewGroup.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
           this.jdField_a_of_type_JavaUtilRandom = new Random();
           paramActivity = a();
@@ -56,15 +56,15 @@ public class rez
             this.jdField_a_of_type_Rfa = new rfa(this);
             paramActivity.addObserver(this.jdField_a_of_type_Rfa);
           }
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoLikeAnimationInfo = bjxj.a();
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoLikeAnimationInfo = bkbq.a();
           if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoLikeAnimationInfo == null) {
             break label236;
           }
-          if ((this.jdField_a_of_type_Rey == null) || (!bjxj.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoLikeAnimationInfo.jdField_a_of_type_Int))) {
+          if ((this.jdField_a_of_type_Rey == null) || (!bkbq.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoLikeAnimationInfo.jdField_a_of_type_Int))) {
             break;
           }
           this.jdField_a_of_type_Rey.a(paramInt);
-          bjxj.a(System.currentTimeMillis());
+          bkbq.a(System.currentTimeMillis());
         } while (!QLog.isColorLevel());
         QLog.d("VideoFeedsLikeAnimateManager", 2, "fetch icon list");
         return;
@@ -74,7 +74,7 @@ public class rez
       return;
     } while (this.jdField_a_of_type_Rey == null);
     this.jdField_a_of_type_Rey.a(paramInt);
-    bjxj.a(System.currentTimeMillis());
+    bkbq.a(System.currentTimeMillis());
   }
   
   private QQAppInterface a()

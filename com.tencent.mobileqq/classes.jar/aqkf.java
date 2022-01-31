@@ -1,48 +1,37 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 import com.tencent.qphone.base.util.QLog;
 
-public class aqkf
-  extends aroh
+class aqkf
+  implements Animation.AnimationListener
 {
-  public aqkf(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  aqkf(aqke paramaqke, aqkw paramaqkw1, int paramInt1, double paramDouble, boolean paramBoolean1, boolean paramBoolean2, aqkw paramaqkw2, boolean paramBoolean3, boolean paramBoolean4, Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt2) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.a().a();
+    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Aqke.a).b(this.jdField_b_of_type_Aqkw, this.c, this.d);
+    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.setStatusWithAnimation(this.jdField_b_of_type_Int);
   }
   
-  public void b()
-  {
-    this.a.a.a().g();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void c()
-  {
-    this.a.a.a().h();
-  }
-  
-  public void d()
+  public void onAnimationStart(Animation paramAnimation)
   {
     if (QLog.isColorLevel()) {
-      QLog.e(QfileBaseCloudFileTabView.b, 2, "wy saveto wy?" + arni.a());
+      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation currentUin ( " + this.jdField_a_of_type_Aqkw.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " ) Animation Start  ");
     }
-  }
-  
-  public void e()
-  {
-    this.a.a.a().i();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().j();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().E();
+    double d2 = Math.atan(this.jdField_a_of_type_Double) * 180.0D / 3.141592653589793D * this.jdField_a_of_type_Aqke.jdField_b_of_type_Int;
+    double d1 = d2;
+    if (this.jdField_a_of_type_Boolean) {
+      d1 = 180.0D - d2;
+    }
+    this.jdField_a_of_type_Aqke.jdField_b_of_type_Float = ((float)d1);
+    if (QLog.isColorLevel()) {
+      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation uinToHoleIndex add( " + this.jdField_a_of_type_Aqkw.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " )");
+    }
+    this.jdField_a_of_type_Aqke.a(2, this.jdField_b_of_type_Boolean);
   }
 }
 

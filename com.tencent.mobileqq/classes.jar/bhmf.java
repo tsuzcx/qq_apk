@@ -1,81 +1,116 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.AudioDeviceInterface;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
+import android.app.Dialog;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import com.tencent.qqmini.sdk.utils.ViewUtils;
 
 public class bhmf
-  implements bhmp
+  extends Dialog
 {
-  public bhmf(AudioDeviceInterface paramAudioDeviceInterface) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private bhmh jdField_a_of_type_Bhmh;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(int paramInt)
+  public bhmf(@NonNull Context paramContext)
   {
-    try
-    {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
-      }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
+    super(paramContext, 2131755757);
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
       return;
     }
-    catch (Exception localException) {}
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+    AnimationSet localAnimationSet = new AnimationSet(true);
+    localAnimationSet.addAnimation(localTranslateAnimation);
+    localAnimationSet.addAnimation(localAlphaAnimation);
+    localAnimationSet.setInterpolator(new DecelerateInterpolator());
+    localAnimationSet.setDuration(200L);
+    localAnimationSet.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
   }
   
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, String paramString)
+  private void b()
   {
-    if (paramInt == 0) {
-      AudioDeviceInterface.access$400(this.a, paramString);
-    }
-  }
-  
-  public void a(int paramInt, String paramString, boolean paramBoolean) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3) {}
-  
-  public void a(long paramLong, int paramInt) {}
-  
-  public void a(long paramLong, int paramInt, String paramString) {}
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    if (!paramBoolean) {}
-    try
-    {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
-      }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
+    if (this.jdField_a_of_type_AndroidViewView == null) {
       return;
     }
-    catch (Exception localException) {}
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    AnimationSet localAnimationSet = new AnimationSet(true);
+    localAnimationSet.addAnimation(localTranslateAnimation);
+    localAnimationSet.addAnimation(localAlphaAnimation);
+    localAnimationSet.setInterpolator(new DecelerateInterpolator());
+    localAnimationSet.setDuration(200L);
+    localAnimationSet.setFillAfter(true);
+    localAnimationSet.setAnimationListener(new bhmg(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
   }
   
-  public void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
+  public void dismiss()
   {
-    if (AudioDeviceInterface.access$300(this.a)) {
-      AudioDeviceInterface.access$400(this.a, paramString1);
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    b();
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    getWindow().getDecorView().setPadding(0, 0, 0, 0);
+    paramBundle = getWindow().getAttributes();
+    paramBundle.height = -2;
+    paramBundle.gravity = 81;
+    int i = ViewUtils.getScreenWidth();
+    int j = ViewUtils.getScreenHeight();
+    if (i < j) {}
+    for (;;)
+    {
+      paramBundle.width = i;
+      getWindow().setAttributes(paramBundle);
+      setCanceledOnTouchOutside(true);
+      return;
+      i = j;
     }
   }
   
-  public void a(String paramString) {}
+  public void setContentView(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(paramInt, null);
+    super.setContentView(this.jdField_a_of_type_AndroidViewView);
+  }
   
-  public void a(String paramString, long paramLong) {}
+  public void setContentView(@NonNull View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    super.setContentView(paramView);
+  }
   
-  public void a(String paramString1, String paramString2) {}
+  public void setContentView(@NonNull View paramView, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    super.setContentView(paramView, paramLayoutParams);
+  }
   
-  public void a(boolean paramBoolean) {}
-  
-  public void b(int paramInt, String paramString) {}
+  public void show()
+  {
+    super.show();
+    a();
+    if (this.jdField_a_of_type_Bhmh != null) {
+      this.jdField_a_of_type_Bhmh.a();
+    }
+  }
 }
 
 

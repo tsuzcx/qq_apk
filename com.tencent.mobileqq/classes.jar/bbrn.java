@@ -1,38 +1,47 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.data.TroopFeedItem;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bbrn
-  implements Callable<List<aydi>>
+  extends bbro
 {
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public bbrn(bbrm parambbrm, Context paramContext, QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public List<aydi> a()
-  {
-    long l = System.currentTimeMillis();
-    ArrayList localArrayList = new ArrayList();
-    if (aydi.E == this.jdField_a_of_type_Long)
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {}
+    for (;;)
     {
-      this.jdField_a_of_type_Bbrm.a = this.jdField_a_of_type_Bbrm.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true);
-      localArrayList.addAll(this.jdField_a_of_type_Bbrm.a);
-      this.jdField_a_of_type_Bbrm.b = this.jdField_a_of_type_Bbrm.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+      return null;
+      localTroopFeedItem.type = 99;
+      try
+      {
+        localTroopFeedItem.linkUrl = paramJSONObject.optString("open_url");
+        if (paramJSONObject.has("app_id"))
+        {
+          localTroopFeedItem.ex_1 = ("" + paramJSONObject.getLong("app_id"));
+          if ((!ulu.i()) && (localTroopFeedItem.isStoryType()))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("TroopFeedParserHelperQ.qqstory.tag_api_limit", 2, "当前系统api：" + Build.VERSION.SDK_INT + ",低于14");
+            return null;
+          }
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return null;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "CallableForSearchData time = " + (System.currentTimeMillis() - l));
-    }
-    return localArrayList;
+    paramJSONObject = paramJSONObject.getJSONObject("content");
+    localTroopFeedItem.content = paramJSONObject.getString("body");
+    localTroopFeedItem.title = paramJSONObject.getString("title");
+    localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
+    return localTroopFeedItem;
   }
 }
 

@@ -1,80 +1,106 @@
-import java.util.HashMap;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.startup.step.ProcessInfoUtil.1;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.List;
 
 public class azos
 {
-  private int jdField_a_of_type_Int;
-  private LinkedHashMap<String, Integer> jdField_a_of_type_JavaUtilLinkedHashMap;
-  private int b;
-  
-  public azos(int paramInt1, int paramInt2)
+  public static int a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(paramInt1, 0.5F, true);
-  }
-  
-  public Map<String, Integer> a()
-  {
-    HashMap localHashMap = null;
-    label110:
-    for (;;)
+    if (paramContext != null)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
+      paramContext = (ActivityManager)paramContext.getSystemService("activity");
+      if (paramContext != null)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-        if (localIterator.hasNext())
+        paramContext = paramContext.getRunningAppProcesses();
+        if (paramContext != null)
         {
-          Map.Entry localEntry = (Map.Entry)localIterator.next();
-          if (((Integer)localEntry.getValue()).intValue() < this.b) {
-            break label110;
-          }
-          if (localHashMap == null)
+          paramContext = paramContext.iterator();
+          while (paramContext.hasNext())
           {
-            localHashMap = new HashMap();
-            localHashMap.put(localEntry.getKey(), localEntry.getValue());
-            break label110;
+            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+            if (paramString.compareTo(localRunningAppProcessInfo.processName) == 0) {
+              return localRunningAppProcessInfo.pid;
+            }
           }
-        }
-        else
-        {
-          return localHashMap;
         }
       }
     }
+    return -1;
   }
   
-  public void a()
+  public static int a(String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-      return;
+    int i = -1;
+    SharedPreferences localSharedPreferences = b();
+    if (localSharedPreferences != null) {
+      i = localSharedPreferences.getInt("pid" + paramString, -1);
     }
+    return i;
   }
   
-  public void a(String paramString)
+  public static long a(String paramString)
   {
-    for (;;)
+    long l2 = 0L;
+    int i = a(BaseApplicationImpl.getContext(), paramString);
+    long l1;
+    if (i == -1) {
+      l1 = l2;
+    }
+    do
     {
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
+      long l3;
+      do
       {
-        if (this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(paramString))
+        int j;
+        do
         {
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString, Integer.valueOf(((Integer)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString)).intValue() + 1));
-          if (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() <= this.jdField_a_of_type_Int) {
-            break;
-          }
-          paramString = (Map.Entry)this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator().next();
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramString.getKey());
-        }
-      }
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString, Integer.valueOf(1));
+          do
+          {
+            return l1;
+            j = a(paramString);
+            l1 = l2;
+          } while (j == -1);
+          l1 = l2;
+        } while (i != j);
+        l3 = b(paramString);
+        l1 = l2;
+      } while (l3 == -1L);
+      l2 = System.currentTimeMillis() - l3;
+      l1 = l2;
+    } while (!QLog.isColorLevel());
+    QLog.d("ProcessUtils", 2, "getProcessRunningTime - " + paramString + ":" + l2);
+    return l2;
+  }
+  
+  public static void a(String paramString)
+  {
+    ThreadManager.post(new ProcessInfoUtil.1(paramString), 5, null, true);
+  }
+  
+  public static long b(String paramString)
+  {
+    long l = -1L;
+    SharedPreferences localSharedPreferences = b();
+    if (localSharedPreferences != null) {
+      l = localSharedPreferences.getLong("start_time" + paramString, -1L);
     }
+    return l;
+  }
+  
+  private static SharedPreferences b()
+  {
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (localBaseApplicationImpl != null) {
+      return localBaseApplicationImpl.getSharedPreferences("process_info_pref", 4);
+    }
+    return null;
   }
 }
 

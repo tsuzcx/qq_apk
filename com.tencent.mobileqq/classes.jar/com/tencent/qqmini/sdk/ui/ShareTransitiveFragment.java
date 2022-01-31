@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import bhib;
+import bhmi;
 import com.tencent.qqmini.sdk.MiniSDK;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.proxy.ShareProxy;
@@ -71,7 +71,7 @@ public class ShareTransitiveFragment
     localIntent.putExtra(b, paramShareData);
     localIntent.setFlags(268435456);
     localIntent.putExtra("public_fragment_window_feature", 1);
-    bhib.a(paramActivity, localIntent, MiniTranslucentFragmentActivity.class, ShareTransitiveFragment.class);
+    bhmi.a(paramActivity, localIntent, MiniTranslucentFragmentActivity.class, ShareTransitiveFragment.class);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)

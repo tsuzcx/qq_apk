@@ -1,20 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.StaticStickerProviderView;
 
 public class bmbs
-  extends Handler
+  extends bltq
 {
-  public bmbs(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bmbs(StaticStickerProviderView paramStaticStickerProviderView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void d()
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    if (QLog.isColorLevel()) {
+      QLog.i("StaticStickerProviderView", 2, "paster config get notify");
+    }
+    this.a.g();
   }
 }
 

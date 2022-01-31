@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.app.proxy;
 
-import abom;
-import aboq;
-import abos;
-import abot;
-import amce;
-import amcg;
-import amgm;
-import amiz;
-import amjb;
-import amjc;
-import amjd;
-import amjf;
-import amjg;
-import amjh;
-import amji;
-import amjj;
-import amjk;
+import abtb;
+import abtf;
+import abth;
+import abti;
+import amgt;
+import amgv;
+import amlb;
+import amno;
+import amnq;
+import amnr;
+import amns;
+import amnu;
+import amnv;
+import amnw;
+import amnx;
+import amny;
+import amnz;
 import android.content.ContentValues;
-import anyf;
-import aoeu;
-import aqxp;
-import arpf;
-import asit;
-import aucv;
-import awbv;
-import awbw;
-import awbx;
-import awwk;
-import ayvc;
-import azmm;
-import bbqi;
-import bhxr;
-import bipd;
-import bjxj;
+import aoco;
+import aojd;
+import arby;
+import arto;
+import asnc;
+import auhe;
+import awge;
+import awgf;
+import awgg;
+import axat;
+import ayzl;
+import azqv;
+import bbur;
+import biby;
+import bitk;
+import bkbq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -52,37 +52,37 @@ public class ProxyManager
   implements Manager
 {
   public static int a;
-  private static final Class[] jdField_a_of_type_ArrayOfJavaLangClass = { awwk.class, aoeu.class };
+  private static final Class[] jdField_a_of_type_ArrayOfJavaLangClass = { axat.class, aojd.class };
   private static int jdField_b_of_type_Int = 10000;
   private static int jdField_c_of_type_Int = 2000;
   private static int d = 10000;
   private long jdField_a_of_type_Long;
-  private abom jdField_a_of_type_Abom;
-  private abos jdField_a_of_type_Abos;
-  private amcg jdField_a_of_type_Amcg;
-  private amgm jdField_a_of_type_Amgm;
-  private amjd jdField_a_of_type_Amjd;
-  private amjg jdField_a_of_type_Amjg;
-  private anyf jdField_a_of_type_Anyf;
-  private aoeu jdField_a_of_type_Aoeu;
-  private aqxp jdField_a_of_type_Aqxp;
-  private arpf jdField_a_of_type_Arpf;
-  private asit jdField_a_of_type_Asit;
-  private aucv jdField_a_of_type_Aucv;
-  private awwk jdField_a_of_type_Awwk;
-  private azmm jdField_a_of_type_Azmm;
-  private bbqi jdField_a_of_type_Bbqi;
-  private bipd jdField_a_of_type_Bipd;
+  private abtb jdField_a_of_type_Abtb;
+  private abth jdField_a_of_type_Abth;
+  private amgv jdField_a_of_type_Amgv;
+  private amlb jdField_a_of_type_Amlb;
+  private amns jdField_a_of_type_Amns;
+  private amnv jdField_a_of_type_Amnv;
+  private aoco jdField_a_of_type_Aoco;
+  private aojd jdField_a_of_type_Aojd;
+  private arby jdField_a_of_type_Arby;
+  private arto jdField_a_of_type_Arto;
+  private asnc jdField_a_of_type_Asnc;
+  private auhe jdField_a_of_type_Auhe;
+  private axat jdField_a_of_type_Axat;
+  private azqv jdField_a_of_type_Azqv;
+  private bbur jdField_a_of_type_Bbur;
+  private bitk jdField_a_of_type_Bitk;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private SQLiteDatabase jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase;
   public Object a;
   private Thread jdField_a_of_type_JavaLangThread;
-  private ArrayList<amjj> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private Set<amiz> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private Vector<amjh> jdField_a_of_type_JavaUtilVector;
+  private ArrayList<amny> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private Set<amno> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private Vector<amnw> jdField_a_of_type_JavaUtilVector;
   volatile boolean jdField_a_of_type_Boolean;
-  private amiz[] jdField_a_of_type_ArrayOfAmiz;
-  private amjd jdField_b_of_type_Amjd;
+  private amno[] jdField_a_of_type_ArrayOfAmno;
+  private amns jdField_b_of_type_Amns;
   private final Object jdField_b_of_type_JavaLangObject = new Object();
   private boolean jdField_b_of_type_Boolean;
   private boolean jdField_c_of_type_Boolean = true;
@@ -97,27 +97,27 @@ public class ProxyManager
   {
     this.jdField_a_of_type_JavaLangObject = new Object();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    bjxj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    bjxj.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Amcg = paramQQAppInterface.a().a();
+    bkbq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    bkbq.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Amgv = paramQQAppInterface.a().a();
     this.jdField_a_of_type_JavaUtilVector = new Vector();
-    this.jdField_a_of_type_Abos = new abos(paramQQAppInterface, this, new aboq());
-    this.jdField_a_of_type_Amgm = new amgm(paramQQAppInterface, this);
-    this.jdField_b_of_type_Amjd = new amjc(paramQQAppInterface, this);
-    this.jdField_a_of_type_Amjd = new amjb(paramQQAppInterface, this);
-    this.jdField_a_of_type_Amjg = new amjg(paramQQAppInterface, this);
-    this.jdField_a_of_type_Aqxp = new aqxp(paramQQAppInterface, this);
-    this.jdField_a_of_type_Bbqi = new bbqi(paramQQAppInterface, this);
-    this.jdField_a_of_type_Arpf = new arpf(paramQQAppInterface, this);
-    this.jdField_a_of_type_Azmm = new azmm(paramQQAppInterface, this);
-    this.jdField_a_of_type_Bipd = new bipd(paramQQAppInterface, this);
-    this.jdField_a_of_type_Abom = new abom(paramQQAppInterface, this);
-    this.jdField_a_of_type_Awwk = new awwk(paramQQAppInterface, this);
-    this.jdField_a_of_type_Aoeu = new aoeu(paramQQAppInterface, this);
-    this.jdField_a_of_type_Aucv = new aucv(paramQQAppInterface, this);
-    this.jdField_a_of_type_Anyf = new anyf(paramQQAppInterface, this);
-    this.jdField_a_of_type_Asit = new asit(paramQQAppInterface, this, new aboq());
-    this.jdField_a_of_type_ArrayOfAmiz = new amiz[] { this.jdField_a_of_type_Abos, this.jdField_b_of_type_Amjd, this.jdField_a_of_type_Amjd, this.jdField_a_of_type_Aqxp, this.jdField_a_of_type_Azmm, this.jdField_a_of_type_Bipd, this.jdField_a_of_type_Arpf, this.jdField_a_of_type_Abom, this.jdField_a_of_type_Awwk, this.jdField_a_of_type_Aoeu, this.jdField_a_of_type_Bbqi, this.jdField_a_of_type_Aucv, this.jdField_a_of_type_Anyf, this.jdField_a_of_type_Asit };
+    this.jdField_a_of_type_Abth = new abth(paramQQAppInterface, this, new abtf());
+    this.jdField_a_of_type_Amlb = new amlb(paramQQAppInterface, this);
+    this.jdField_b_of_type_Amns = new amnr(paramQQAppInterface, this);
+    this.jdField_a_of_type_Amns = new amnq(paramQQAppInterface, this);
+    this.jdField_a_of_type_Amnv = new amnv(paramQQAppInterface, this);
+    this.jdField_a_of_type_Arby = new arby(paramQQAppInterface, this);
+    this.jdField_a_of_type_Bbur = new bbur(paramQQAppInterface, this);
+    this.jdField_a_of_type_Arto = new arto(paramQQAppInterface, this);
+    this.jdField_a_of_type_Azqv = new azqv(paramQQAppInterface, this);
+    this.jdField_a_of_type_Bitk = new bitk(paramQQAppInterface, this);
+    this.jdField_a_of_type_Abtb = new abtb(paramQQAppInterface, this);
+    this.jdField_a_of_type_Axat = new axat(paramQQAppInterface, this);
+    this.jdField_a_of_type_Aojd = new aojd(paramQQAppInterface, this);
+    this.jdField_a_of_type_Auhe = new auhe(paramQQAppInterface, this);
+    this.jdField_a_of_type_Aoco = new aoco(paramQQAppInterface, this);
+    this.jdField_a_of_type_Asnc = new asnc(paramQQAppInterface, this, new abtf());
+    this.jdField_a_of_type_ArrayOfAmno = new amno[] { this.jdField_a_of_type_Abth, this.jdField_b_of_type_Amns, this.jdField_a_of_type_Amns, this.jdField_a_of_type_Arby, this.jdField_a_of_type_Azqv, this.jdField_a_of_type_Bitk, this.jdField_a_of_type_Arto, this.jdField_a_of_type_Abtb, this.jdField_a_of_type_Axat, this.jdField_a_of_type_Aojd, this.jdField_a_of_type_Bbur, this.jdField_a_of_type_Auhe, this.jdField_a_of_type_Aoco, this.jdField_a_of_type_Asnc };
     this.jdField_a_of_type_JavaLangThread = new Thread(new ProxyManager.2(this));
     this.jdField_a_of_type_Boolean = false;
   }
@@ -138,13 +138,13 @@ public class ProxyManager
       return;
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext()) {
-        ((amjj)localIterator.next()).a(paramInt);
+        ((amny)localIterator.next()).a(paramInt);
       }
     }
   }
   
   /* Error */
-  private void a(awbw paramawbw, List<amjh> paramList)
+  private void a(awgf paramawgf, List<amnw> paramList)
   {
     // Byte code:
     //   0: aload_2
@@ -154,37 +154,37 @@ public class ProxyManager
     //   10: aload_0
     //   11: getfield 73	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_c_of_type_Boolean	Z
     //   14: ifeq +59 -> 73
-    //   17: getstatic 249	amjf:jdField_a_of_type_Boolean	Z
+    //   17: getstatic 249	amnu:jdField_a_of_type_Boolean	Z
     //   20: ifeq +467 -> 487
     //   23: aload_0
     //   24: getfield 82	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   27: invokestatic 254	bdli:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
+    //   27: invokestatic 254	bdpr:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
     //   30: ifeq +457 -> 487
     //   33: aload_0
     //   34: getfield 82	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   37: invokevirtual 257	com/tencent/mobileqq/app/QQAppInterface:a	()Lamjf;
-    //   40: invokevirtual 259	amjf:a	()Z
+    //   37: invokevirtual 257	com/tencent/mobileqq/app/QQAppInterface:a	()Lamnu;
+    //   40: invokevirtual 259	amnu:a	()Z
     //   43: ifeq +30 -> 73
     //   46: aload_0
     //   47: getfield 82	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   50: invokevirtual 257	com/tencent/mobileqq/app/QQAppInterface:a	()Lamjf;
-    //   53: invokevirtual 262	amjf:a	()Lamjn;
+    //   50: invokevirtual 257	com/tencent/mobileqq/app/QQAppInterface:a	()Lamnu;
+    //   53: invokevirtual 262	amnu:a	()Lamoc;
     //   56: astore 17
     //   58: aload 17
     //   60: ifnull +8 -> 68
     //   63: aload 17
-    //   65: invokevirtual 266	amjn:b	()V
+    //   65: invokevirtual 266	amoc:b	()V
     //   68: aload_0
     //   69: iconst_0
     //   70: putfield 73	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_c_of_type_Boolean	Z
     //   73: aconst_null
     //   74: astore 17
-    //   76: invokestatic 269	azmz:a	()Z
+    //   76: invokestatic 269	azri:a	()Z
     //   79: istore 10
     //   81: iload 10
     //   83: ifeq +412 -> 495
     //   86: iconst_0
-    //   87: invokestatic 272	azmz:a	(I)Z
+    //   87: invokestatic 272	azri:a	(I)Z
     //   90: ifeq +405 -> 495
     //   93: iconst_1
     //   94: istore 7
@@ -213,14 +213,14 @@ public class ProxyManager
     //   149: invokevirtual 304	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   152: invokestatic 307	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   155: aload_1
-    //   156: invokevirtual 312	awbw:a	()Lawby;
+    //   156: invokevirtual 312	awgf:a	()Lawgh;
     //   159: astore 18
     //   161: aload 18
     //   163: astore 17
     //   165: invokestatic 318	java/lang/System:nanoTime	()J
     //   168: lstore 13
     //   170: aload 17
-    //   172: invokevirtual 322	awby:a	()V
+    //   172: invokevirtual 322	awgh:a	()V
     //   175: iload 7
     //   177: ifeq +2085 -> 2262
     //   180: invokestatic 318	java/lang/System:nanoTime	()J
@@ -255,12 +255,12 @@ public class ProxyManager
     //   247: pop
     //   248: aload 19
     //   250: ldc_w 349
-    //   253: getstatic 352	alxk:jdField_a_of_type_Boolean	Z
+    //   253: getstatic 352	ambz:jdField_a_of_type_Boolean	Z
     //   256: invokestatic 355	java/lang/String:valueOf	(Z)Ljava/lang/String;
     //   259: invokevirtual 335	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   262: pop
     //   263: invokestatic 361	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   266: invokestatic 364	azmz:a	(Landroid/content/Context;)Lazmz;
+    //   266: invokestatic 364	azri:a	(Landroid/content/Context;)Lazri;
     //   269: aconst_null
     //   270: ldc_w 366
     //   273: iconst_1
@@ -269,7 +269,7 @@ public class ProxyManager
     //   278: aload 19
     //   280: aconst_null
     //   281: iconst_0
-    //   282: invokevirtual 371	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   282: invokevirtual 371	azri:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   285: aload_2
     //   286: invokeinterface 372 1 0
     //   291: astore 18
@@ -282,7 +282,7 @@ public class ProxyManager
     //   305: ifeq +1174 -> 1479
     //   308: aload 18
     //   310: invokeinterface 236 1 0
-    //   315: checkcast 374	amjh
+    //   315: checkcast 374	amnw
     //   318: astore 19
     //   320: iload 4
     //   322: iconst_1
@@ -293,14 +293,14 @@ public class ProxyManager
     //   329: iload_3
     //   330: istore 5
     //   332: aload 19
-    //   334: getfield 377	amjh:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   334: getfield 377	amnw:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   337: astore 20
     //   339: iload_3
     //   340: istore 6
     //   342: iload_3
     //   343: istore 5
     //   345: aload 19
-    //   347: getfield 380	amjh:jdField_a_of_type_Amji	Lamji;
+    //   347: getfield 380	amnw:jdField_a_of_type_Amnx	Lamnx;
     //   350: astore 21
     //   352: iload_3
     //   353: istore 6
@@ -313,7 +313,7 @@ public class ProxyManager
     //   367: iload_3
     //   368: istore 5
     //   370: aload 19
-    //   372: getfield 383	amjh:jdField_a_of_type_Awbv	Lawbv;
+    //   372: getfield 383	amnw:jdField_a_of_type_Awge	Lawge;
     //   375: instanceof 385
     //   378: ifeq +137 -> 515
     //   381: iload_3
@@ -335,7 +335,7 @@ public class ProxyManager
     //   405: dup
     //   406: iconst_1
     //   407: aload 19
-    //   409: getfield 388	amjh:jdField_b_of_type_Int	I
+    //   409: getfield 388	amnw:jdField_b_of_type_Int	I
     //   412: invokestatic 393	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   415: aastore
     //   416: dup
@@ -345,11 +345,11 @@ public class ProxyManager
     //   422: dup
     //   423: iconst_3
     //   424: aload 19
-    //   426: getfield 383	amjh:jdField_a_of_type_Awbv	Lawbv;
+    //   426: getfield 383	amnw:jdField_a_of_type_Awge	Lawge;
     //   429: aastore
     //   430: invokestatic 398	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   433: aload 19
-    //   435: getfield 388	amjh:jdField_b_of_type_Int	I
+    //   435: getfield 388	amnw:jdField_b_of_type_Int	I
     //   438: istore 5
     //   440: iload 5
     //   442: tableswitch	default:+42 -> 484, 0:+220->662, 1:+493->935, 2:+754->1196, 3:+467->909, 4:+726->1168, 5:+969->1411, 6:+997->1439
@@ -373,35 +373,35 @@ public class ProxyManager
     //   518: iload_3
     //   519: istore 5
     //   521: aload 19
-    //   523: getfield 388	amjh:jdField_b_of_type_Int	I
+    //   523: getfield 388	amnw:jdField_b_of_type_Int	I
     //   526: istore 8
     //   528: iload_3
     //   529: istore 6
     //   531: iload_3
     //   532: istore 5
     //   534: aload 19
-    //   536: getfield 402	amjh:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   536: getfield 402	amnw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   539: astore 22
     //   541: iload_3
     //   542: istore 6
     //   544: iload_3
     //   545: istore 5
     //   547: aload 19
-    //   549: getfield 377	amjh:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   549: getfield 377	amnw:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   552: astore 23
     //   554: iload_3
     //   555: istore 6
     //   557: iload_3
     //   558: istore 5
     //   560: aload 19
-    //   562: getfield 405	amjh:jdField_a_of_type_AndroidContentContentValues	Landroid/content/ContentValues;
+    //   562: getfield 405	amnw:jdField_a_of_type_AndroidContentContentValues	Landroid/content/ContentValues;
     //   565: ifnull +90 -> 655
     //   568: iload_3
     //   569: istore 6
     //   571: iload_3
     //   572: istore 5
     //   574: aload 19
-    //   576: getfield 405	amjh:jdField_a_of_type_AndroidContentContentValues	Landroid/content/ContentValues;
+    //   576: getfield 405	amnw:jdField_a_of_type_AndroidContentContentValues	Landroid/content/ContentValues;
     //   579: invokevirtual 410	android/content/ContentValues:hashCode	()I
     //   582: invokestatic 393	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   585: astore_2
@@ -453,27 +453,27 @@ public class ProxyManager
     //   659: goto -73 -> 586
     //   662: invokestatic 318	java/lang/System:nanoTime	()J
     //   665: lstore 11
-    //   667: getstatic 249	amjf:jdField_a_of_type_Boolean	Z
+    //   667: getstatic 249	amnu:jdField_a_of_type_Boolean	Z
     //   670: ifeq +41 -> 711
     //   673: aload_0
     //   674: getfield 82	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   677: invokestatic 254	bdli:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
+    //   677: invokestatic 254	bdpr:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
     //   680: ifeq +31 -> 711
     //   683: aload_0
     //   684: getfield 82	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   687: invokestatic 420	bdli:b	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
+    //   687: invokestatic 420	bdpr:b	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
     //   690: ifeq +21 -> 711
     //   693: aload_0
     //   694: getfield 82	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   697: invokevirtual 257	com/tencent/mobileqq/app/QQAppInterface:a	()Lamjf;
-    //   700: invokevirtual 262	amjf:a	()Lamjn;
+    //   697: invokevirtual 257	com/tencent/mobileqq/app/QQAppInterface:a	()Lamnu;
+    //   700: invokevirtual 262	amnu:a	()Lamoc;
     //   703: aload 19
-    //   705: getfield 383	amjh:jdField_a_of_type_Awbv	Lawbv;
-    //   708: invokevirtual 423	amjn:a	(Lawbv;)V
+    //   705: getfield 383	amnw:jdField_a_of_type_Awge	Lawge;
+    //   708: invokevirtual 423	amoc:a	(Lawge;)V
     //   711: aload_1
     //   712: aload 19
-    //   714: getfield 383	amjh:jdField_a_of_type_Awbv	Lawbv;
-    //   717: invokevirtual 425	awbw:b	(Lawbv;)V
+    //   714: getfield 383	amnw:jdField_a_of_type_Awge	Lawge;
+    //   717: invokevirtual 425	awgf:b	(Lawge;)V
     //   720: invokestatic 318	java/lang/System:nanoTime	()J
     //   723: lload 11
     //   725: lsub
@@ -485,24 +485,24 @@ public class ProxyManager
     //   737: aload 21
     //   739: aload 20
     //   741: invokeinterface 430 2 0
-    //   746: getstatic 249	amjf:jdField_a_of_type_Boolean	Z
+    //   746: getstatic 249	amnu:jdField_a_of_type_Boolean	Z
     //   749: ifeq +42 -> 791
     //   752: aload_0
     //   753: getfield 82	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   756: invokestatic 254	bdli:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
+    //   756: invokestatic 254	bdpr:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
     //   759: ifeq +32 -> 791
     //   762: aload_0
     //   763: getfield 82	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   766: invokestatic 420	bdli:b	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
+    //   766: invokestatic 420	bdpr:b	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
     //   769: ifeq +22 -> 791
     //   772: aload_0
     //   773: getfield 82	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   776: invokevirtual 257	com/tencent/mobileqq/app/QQAppInterface:a	()Lamjf;
-    //   779: invokevirtual 262	amjf:a	()Lamjn;
+    //   776: invokevirtual 257	com/tencent/mobileqq/app/QQAppInterface:a	()Lamnu;
+    //   779: invokevirtual 262	amnu:a	()Lamoc;
     //   782: aload 19
-    //   784: getfield 383	amjh:jdField_a_of_type_Awbv	Lawbv;
+    //   784: getfield 383	amnw:jdField_a_of_type_Awge	Lawge;
     //   787: aload_1
-    //   788: invokevirtual 433	amjn:a	(Lawbv;Lawbw;)V
+    //   788: invokevirtual 433	amoc:a	(Lawge;Lawgf;)V
     //   791: lload 15
     //   793: lstore 11
     //   795: iload 10
@@ -510,7 +510,7 @@ public class ProxyManager
     //   800: lload 15
     //   802: lstore 11
     //   804: iconst_4
-    //   805: invokestatic 272	azmz:a	(I)Z
+    //   805: invokestatic 272	azri:a	(I)Z
     //   808: ifeq +1444 -> 2252
     //   811: new 326	java/util/HashMap
     //   814: dup
@@ -538,12 +538,12 @@ public class ProxyManager
     //   864: pop
     //   865: aload 19
     //   867: ldc_w 349
-    //   870: getstatic 352	alxk:jdField_a_of_type_Boolean	Z
+    //   870: getstatic 352	ambz:jdField_a_of_type_Boolean	Z
     //   873: invokestatic 355	java/lang/String:valueOf	(Z)Ljava/lang/String;
     //   876: invokevirtual 335	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   879: pop
     //   880: invokestatic 361	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   883: invokestatic 364	azmz:a	(Landroid/content/Context;)Lazmz;
+    //   883: invokestatic 364	azri:a	(Landroid/content/Context;)Lazri;
     //   886: aconst_null
     //   887: ldc_w 366
     //   890: iconst_1
@@ -552,37 +552,37 @@ public class ProxyManager
     //   895: aload 19
     //   897: aconst_null
     //   898: iconst_0
-    //   899: invokevirtual 371	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   899: invokevirtual 371	azri:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   902: lload 15
     //   904: lstore 11
     //   906: goto -422 -> 484
     //   909: aload_1
     //   910: aload 19
-    //   912: getfield 383	amjh:jdField_a_of_type_Awbv	Lawbv;
-    //   915: invokevirtual 425	awbw:b	(Lawbv;)V
+    //   912: getfield 383	amnw:jdField_a_of_type_Awge	Lawge;
+    //   915: invokevirtual 425	awgf:b	(Lawge;)V
     //   918: aload 21
     //   920: ifnull -436 -> 484
     //   923: aload 21
     //   925: aload 20
     //   927: invokeinterface 430 2 0
     //   932: goto -448 -> 484
-    //   935: getstatic 249	amjf:jdField_a_of_type_Boolean	Z
+    //   935: getstatic 249	amnu:jdField_a_of_type_Boolean	Z
     //   938: ifeq +39 -> 977
     //   941: aload_0
     //   942: getfield 82	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   945: invokestatic 254	bdli:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
+    //   945: invokestatic 254	bdpr:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
     //   948: ifeq +29 -> 977
     //   951: aload_0
     //   952: getfield 82	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   955: invokestatic 420	bdli:b	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
+    //   955: invokestatic 420	bdpr:b	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
     //   958: ifeq +19 -> 977
     //   961: aload_0
     //   962: getfield 82	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   965: invokevirtual 257	com/tencent/mobileqq/app/QQAppInterface:a	()Lamjf;
-    //   968: invokevirtual 262	amjf:a	()Lamjn;
+    //   965: invokevirtual 257	com/tencent/mobileqq/app/QQAppInterface:a	()Lamnu;
+    //   968: invokevirtual 262	amnu:a	()Lamoc;
     //   971: aload 19
     //   973: aload_1
-    //   974: invokevirtual 438	amjn:a	(Lamjh;Lawbw;)V
+    //   974: invokevirtual 438	amoc:a	(Lamnw;Lawgf;)V
     //   977: invokestatic 318	java/lang/System:nanoTime	()J
     //   980: lstore 15
     //   982: aload_0
@@ -593,11 +593,11 @@ public class ProxyManager
     //   991: aload_2
     //   992: aload 20
     //   994: aload 19
-    //   996: getfield 405	amjh:jdField_a_of_type_AndroidContentContentValues	Landroid/content/ContentValues;
+    //   996: getfield 405	amnw:jdField_a_of_type_AndroidContentContentValues	Landroid/content/ContentValues;
     //   999: aload 19
-    //   1001: getfield 441	amjh:c	Ljava/lang/String;
+    //   1001: getfield 441	amnw:c	Ljava/lang/String;
     //   1004: aload 19
-    //   1006: getfield 444	amjh:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   1006: getfield 444	amnw:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   1009: invokevirtual 449	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
     //   1012: istore 5
     //   1014: invokestatic 318	java/lang/System:nanoTime	()J
@@ -623,7 +623,7 @@ public class ProxyManager
     //   1059: lload 15
     //   1061: lstore 11
     //   1063: iconst_5
-    //   1064: invokestatic 272	azmz:a	(I)Z
+    //   1064: invokestatic 272	azri:a	(I)Z
     //   1067: ifeq +1185 -> 2252
     //   1070: new 326	java/util/HashMap
     //   1073: dup
@@ -651,12 +651,12 @@ public class ProxyManager
     //   1123: pop
     //   1124: aload 19
     //   1126: ldc_w 349
-    //   1129: getstatic 352	alxk:jdField_a_of_type_Boolean	Z
+    //   1129: getstatic 352	ambz:jdField_a_of_type_Boolean	Z
     //   1132: invokestatic 355	java/lang/String:valueOf	(Z)Ljava/lang/String;
     //   1135: invokevirtual 335	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   1138: pop
     //   1139: invokestatic 361	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1142: invokestatic 364	azmz:a	(Landroid/content/Context;)Lazmz;
+    //   1142: invokestatic 364	azri:a	(Landroid/content/Context;)Lazri;
     //   1145: aconst_null
     //   1146: ldc_w 366
     //   1149: iconst_1
@@ -665,14 +665,14 @@ public class ProxyManager
     //   1154: aload 19
     //   1156: aconst_null
     //   1157: iconst_0
-    //   1158: invokevirtual 371	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   1158: invokevirtual 371	azri:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   1161: lload 15
     //   1163: lstore 11
     //   1165: goto -681 -> 484
     //   1168: aload_1
     //   1169: aload 19
-    //   1171: getfield 383	amjh:jdField_a_of_type_Awbv	Lawbv;
-    //   1174: invokevirtual 457	awbw:a	(Lawbv;)Z
+    //   1171: getfield 383	amnw:jdField_a_of_type_Awge	Lawge;
+    //   1174: invokevirtual 457	awgf:a	(Lawge;)Z
     //   1177: pop
     //   1178: aload 21
     //   1180: ifnull -696 -> 484
@@ -681,32 +681,32 @@ public class ProxyManager
     //   1187: iconst_1
     //   1188: invokeinterface 452 3 0
     //   1193: goto -709 -> 484
-    //   1196: getstatic 249	amjf:jdField_a_of_type_Boolean	Z
+    //   1196: getstatic 249	amnu:jdField_a_of_type_Boolean	Z
     //   1199: ifeq +39 -> 1238
     //   1202: aload_0
     //   1203: getfield 82	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1206: invokestatic 254	bdli:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
+    //   1206: invokestatic 254	bdpr:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
     //   1209: ifeq +29 -> 1238
     //   1212: aload_0
     //   1213: getfield 82	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1216: invokestatic 420	bdli:b	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
+    //   1216: invokestatic 420	bdpr:b	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
     //   1219: ifeq +19 -> 1238
     //   1222: aload_0
     //   1223: getfield 82	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1226: invokevirtual 257	com/tencent/mobileqq/app/QQAppInterface:a	()Lamjf;
-    //   1229: invokevirtual 262	amjf:a	()Lamjn;
+    //   1226: invokevirtual 257	com/tencent/mobileqq/app/QQAppInterface:a	()Lamnu;
+    //   1229: invokevirtual 262	amnu:a	()Lamoc;
     //   1232: aload 19
     //   1234: aload_1
-    //   1235: invokevirtual 459	amjn:b	(Lamjh;Lawbw;)V
+    //   1235: invokevirtual 459	amoc:b	(Lamnw;Lawgf;)V
     //   1238: invokestatic 318	java/lang/System:nanoTime	()J
     //   1241: lstore 11
     //   1243: aload_0
     //   1244: invokespecial 439	com/tencent/mobileqq/app/proxy/ProxyManager:a	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
     //   1247: aload 20
     //   1249: aload 19
-    //   1251: getfield 441	amjh:c	Ljava/lang/String;
+    //   1251: getfield 441	amnw:c	Ljava/lang/String;
     //   1254: aload 19
-    //   1256: getfield 444	amjh:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   1256: getfield 444	amnw:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   1259: invokevirtual 462	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
     //   1262: istore 5
     //   1264: invokestatic 318	java/lang/System:nanoTime	()J
@@ -728,7 +728,7 @@ public class ProxyManager
     //   1301: lload 15
     //   1303: lstore 11
     //   1305: bipush 6
-    //   1307: invokestatic 272	azmz:a	(I)Z
+    //   1307: invokestatic 272	azri:a	(I)Z
     //   1310: ifeq +942 -> 2252
     //   1313: new 326	java/util/HashMap
     //   1316: dup
@@ -756,12 +756,12 @@ public class ProxyManager
     //   1366: pop
     //   1367: aload 19
     //   1369: ldc_w 349
-    //   1372: getstatic 352	alxk:jdField_a_of_type_Boolean	Z
+    //   1372: getstatic 352	ambz:jdField_a_of_type_Boolean	Z
     //   1375: invokestatic 355	java/lang/String:valueOf	(Z)Ljava/lang/String;
     //   1378: invokevirtual 335	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   1381: pop
     //   1382: invokestatic 361	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1385: invokestatic 364	azmz:a	(Landroid/content/Context;)Lazmz;
+    //   1385: invokestatic 364	azri:a	(Landroid/content/Context;)Lazri;
     //   1388: aconst_null
     //   1389: ldc_w 366
     //   1392: iconst_1
@@ -770,14 +770,14 @@ public class ProxyManager
     //   1397: aload 19
     //   1399: aconst_null
     //   1400: iconst_0
-    //   1401: invokevirtual 371	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   1401: invokevirtual 371	azri:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   1404: lload 15
     //   1406: lstore 11
     //   1408: goto -924 -> 484
     //   1411: aload_1
     //   1412: aload 19
-    //   1414: getfield 383	amjh:jdField_a_of_type_Awbv	Lawbv;
-    //   1417: invokevirtual 468	awbw:b	(Lawbv;)Z
+    //   1414: getfield 383	amnw:jdField_a_of_type_Awge	Lawge;
+    //   1417: invokevirtual 468	awgf:b	(Lawge;)Z
     //   1420: pop
     //   1421: aload 21
     //   1423: ifnull -939 -> 484
@@ -790,9 +790,9 @@ public class ProxyManager
     //   1440: invokespecial 439	com/tencent/mobileqq/app/proxy/ProxyManager:a	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
     //   1443: aload 20
     //   1445: aload 19
-    //   1447: getfield 441	amjh:c	Ljava/lang/String;
+    //   1447: getfield 441	amnw:c	Ljava/lang/String;
     //   1450: aload 19
-    //   1452: getfield 444	amjh:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   1452: getfield 444	amnw:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   1455: invokevirtual 462	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
     //   1458: istore 5
     //   1460: aload 21
@@ -803,14 +803,14 @@ public class ProxyManager
     //   1471: invokeinterface 464 3 0
     //   1476: goto -992 -> 484
     //   1479: aload 17
-    //   1481: invokevirtual 470	awby:c	()V
+    //   1481: invokevirtual 470	awgh:c	()V
     //   1484: aload_0
     //   1485: sipush 1000
     //   1488: invokespecial 471	com/tencent/mobileqq/app/proxy/ProxyManager:a	(I)V
     //   1491: aload 17
     //   1493: ifnull -1484 -> 9
     //   1496: aload 17
-    //   1498: invokevirtual 472	awby:b	()V
+    //   1498: invokevirtual 472	awgh:b	()V
     //   1501: invokestatic 318	java/lang/System:nanoTime	()J
     //   1504: lload 13
     //   1506: lsub
@@ -872,12 +872,12 @@ public class ProxyManager
     //   1621: pop
     //   1622: aload_2
     //   1623: ldc_w 349
-    //   1626: getstatic 352	alxk:jdField_a_of_type_Boolean	Z
+    //   1626: getstatic 352	ambz:jdField_a_of_type_Boolean	Z
     //   1629: invokestatic 355	java/lang/String:valueOf	(Z)Ljava/lang/String;
     //   1632: invokevirtual 335	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   1635: pop
     //   1636: invokestatic 361	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1639: invokestatic 364	azmz:a	(Landroid/content/Context;)Lazmz;
+    //   1639: invokestatic 364	azri:a	(Landroid/content/Context;)Lazri;
     //   1642: aconst_null
     //   1643: ldc_w 490
     //   1646: iconst_1
@@ -886,7 +886,7 @@ public class ProxyManager
     //   1650: aload_2
     //   1651: aconst_null
     //   1652: iconst_0
-    //   1653: invokevirtual 371	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   1653: invokevirtual 371	azri:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   1656: return
     //   1657: ldc_w 400
     //   1660: astore_1
@@ -924,7 +924,7 @@ public class ProxyManager
     //   1728: aload_2
     //   1729: ifnull -1720 -> 9
     //   1732: aload_2
-    //   1733: invokevirtual 472	awby:b	()V
+    //   1733: invokevirtual 472	awgh:b	()V
     //   1736: invokestatic 318	java/lang/System:nanoTime	()J
     //   1739: lload 11
     //   1741: lsub
@@ -986,12 +986,12 @@ public class ProxyManager
     //   1856: pop
     //   1857: aload_2
     //   1858: ldc_w 349
-    //   1861: getstatic 352	alxk:jdField_a_of_type_Boolean	Z
+    //   1861: getstatic 352	ambz:jdField_a_of_type_Boolean	Z
     //   1864: invokestatic 355	java/lang/String:valueOf	(Z)Ljava/lang/String;
     //   1867: invokevirtual 335	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   1870: pop
     //   1871: invokestatic 361	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1874: invokestatic 364	azmz:a	(Landroid/content/Context;)Lazmz;
+    //   1874: invokestatic 364	azri:a	(Landroid/content/Context;)Lazri;
     //   1877: aconst_null
     //   1878: ldc_w 490
     //   1881: iconst_1
@@ -1000,7 +1000,7 @@ public class ProxyManager
     //   1885: aload_2
     //   1886: aconst_null
     //   1887: iconst_0
-    //   1888: invokevirtual 371	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   1888: invokevirtual 371	azri:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   1891: return
     //   1892: ldc_w 400
     //   1895: astore_1
@@ -1019,7 +1019,7 @@ public class ProxyManager
     //   1916: aload 17
     //   1918: ifnull +173 -> 2091
     //   1921: aload 17
-    //   1923: invokevirtual 472	awby:b	()V
+    //   1923: invokevirtual 472	awgh:b	()V
     //   1926: invokestatic 318	java/lang/System:nanoTime	()J
     //   1929: lload 13
     //   1931: lsub
@@ -1081,12 +1081,12 @@ public class ProxyManager
     //   2054: pop
     //   2055: aload 17
     //   2057: ldc_w 349
-    //   2060: getstatic 352	alxk:jdField_a_of_type_Boolean	Z
+    //   2060: getstatic 352	ambz:jdField_a_of_type_Boolean	Z
     //   2063: invokestatic 355	java/lang/String:valueOf	(Z)Ljava/lang/String;
     //   2066: invokevirtual 335	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   2069: pop
     //   2070: invokestatic 361	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2073: invokestatic 364	azmz:a	(Landroid/content/Context;)Lazmz;
+    //   2073: invokestatic 364	azri:a	(Landroid/content/Context;)Lazri;
     //   2076: aconst_null
     //   2077: ldc_w 490
     //   2080: iconst_1
@@ -1095,7 +1095,7 @@ public class ProxyManager
     //   2084: aload 17
     //   2086: aconst_null
     //   2087: iconst_0
-    //   2088: invokevirtual 371	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   2088: invokevirtual 371	azri:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   2091: aload_1
     //   2092: athrow
     //   2093: ldc_w 400
@@ -1209,8 +1209,8 @@ public class ProxyManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	2294	0	this	ProxyManager
-    //   0	2294	1	paramawbw	awbw
-    //   0	2294	2	paramList	List<amjh>
+    //   0	2294	1	paramawgf	awgf
+    //   0	2294	2	paramList	List<amnw>
     //   294	1944	3	i	int
     //   296	1909	4	j	int
     //   330	1906	5	k	int
@@ -1226,7 +1226,7 @@ public class ProxyManager
     //   99	412	18	localObject2	Object
     //   104	1347	19	localObject3	Object
     //   337	1131	20	str1	String
-    //   350	1116	21	localamji	amji
+    //   350	1116	21	localamnx	amnx
     //   539	85	22	str2	String
     //   552	83	23	str3	String
     // Exception table:
@@ -1363,7 +1363,7 @@ public class ProxyManager
     return true;
   }
   
-  private boolean a(amiz paramamiz)
+  private boolean a(amno paramamno)
   {
     boolean bool2 = false;
     int i = 0;
@@ -1374,7 +1374,7 @@ public class ProxyManager
       {
         if (i < jdField_a_of_type_ArrayOfJavaLangClass.length)
         {
-          Class localClass1 = paramamiz.getClass();
+          Class localClass1 = paramamno.getClass();
           Class localClass2 = jdField_a_of_type_ArrayOfJavaLangClass[i];
           if (localClass1 == localClass2) {
             bool1 = true;
@@ -1397,20 +1397,20 @@ public class ProxyManager
     {
       try
       {
-        if ((i < this.jdField_a_of_type_ArrayOfAmiz.length) && (!this.jdField_a_of_type_Boolean)) {
-          if (a(this.jdField_a_of_type_ArrayOfAmiz[i]))
+        if ((i < this.jdField_a_of_type_ArrayOfAmno.length) && (!this.jdField_a_of_type_Boolean)) {
+          if (a(this.jdField_a_of_type_ArrayOfAmno[i]))
           {
-            this.jdField_a_of_type_JavaUtilSet.add(this.jdField_a_of_type_ArrayOfAmiz[i]);
+            this.jdField_a_of_type_JavaUtilSet.add(this.jdField_a_of_type_ArrayOfAmno[i]);
           }
           else
           {
-            bhxr.a("i." + this.jdField_a_of_type_ArrayOfAmiz[i]);
+            biby.a("i." + this.jdField_a_of_type_ArrayOfAmno[i]);
             long l = System.currentTimeMillis();
-            this.jdField_a_of_type_ArrayOfAmiz[i].a();
+            this.jdField_a_of_type_ArrayOfAmno[i].a();
             if (QLog.isColorLevel()) {
-              QLog.d("Q.msg.MsgProxy", 2, "ProxyInit , proxy=" + this.jdField_a_of_type_ArrayOfAmiz[i].getClass().getName() + "cost=" + (System.currentTimeMillis() - l));
+              QLog.d("Q.msg.MsgProxy", 2, "ProxyInit , proxy=" + this.jdField_a_of_type_ArrayOfAmno[i].getClass().getName() + "cost=" + (System.currentTimeMillis() - l));
             }
-            bhxr.a();
+            biby.a();
           }
         }
       }
@@ -1420,86 +1420,86 @@ public class ProxyManager
     }
   }
   
-  public abom a()
+  public abtb a()
   {
-    return this.jdField_a_of_type_Abom;
+    return this.jdField_a_of_type_Abtb;
   }
   
-  public abos a()
+  public abth a()
   {
-    return this.jdField_a_of_type_Abos;
+    return this.jdField_a_of_type_Abth;
   }
   
-  public amgm a()
+  public amlb a()
   {
-    return this.jdField_a_of_type_Amgm;
+    return this.jdField_a_of_type_Amlb;
   }
   
-  public amjd a(int paramInt)
+  public amns a(int paramInt)
   {
     if (paramInt == 0)
     {
-      this.jdField_b_of_type_Amjd.a();
-      return this.jdField_b_of_type_Amjd;
+      this.jdField_b_of_type_Amns.a();
+      return this.jdField_b_of_type_Amns;
     }
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_Amjd.a();
-      return this.jdField_a_of_type_Amjd;
+      this.jdField_a_of_type_Amns.a();
+      return this.jdField_a_of_type_Amns;
     }
-    this.jdField_b_of_type_Amjd.a();
-    return this.jdField_b_of_type_Amjd;
+    this.jdField_b_of_type_Amns.a();
+    return this.jdField_b_of_type_Amns;
   }
   
-  public amjg a()
+  public amnv a()
   {
-    return this.jdField_a_of_type_Amjg;
+    return this.jdField_a_of_type_Amnv;
   }
   
   @Deprecated
-  public amjk a()
+  public amnz a()
   {
     return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
   }
   
-  public anyf a()
+  public aoco a()
   {
-    return this.jdField_a_of_type_Anyf;
+    return this.jdField_a_of_type_Aoco;
   }
   
-  public aoeu a()
+  public aojd a()
   {
-    return this.jdField_a_of_type_Aoeu;
+    return this.jdField_a_of_type_Aojd;
   }
   
-  public aqxp a()
+  public arby a()
   {
-    return this.jdField_a_of_type_Aqxp;
+    return this.jdField_a_of_type_Arby;
   }
   
-  public arpf a()
+  public arto a()
   {
-    return this.jdField_a_of_type_Arpf;
+    return this.jdField_a_of_type_Arto;
   }
   
-  public asit a()
+  public asnc a()
   {
-    return this.jdField_a_of_type_Asit;
+    return this.jdField_a_of_type_Asnc;
   }
   
-  public aucv a()
+  public auhe a()
   {
-    return this.jdField_a_of_type_Aucv;
+    return this.jdField_a_of_type_Auhe;
   }
   
-  public awwk a()
+  public axat a()
   {
-    return this.jdField_a_of_type_Awwk;
+    return this.jdField_a_of_type_Axat;
   }
   
-  public bbqi a()
+  public bbur a()
   {
-    return this.jdField_a_of_type_Bbqi;
+    return this.jdField_a_of_type_Bbur;
   }
   
   public Object a()
@@ -1507,7 +1507,7 @@ public class ProxyManager
     return this.jdField_b_of_type_JavaLangObject;
   }
   
-  public Vector<amjh> a()
+  public Vector<amnw> a()
   {
     return this.jdField_a_of_type_JavaUtilVector;
   }
@@ -1530,14 +1530,14 @@ public class ProxyManager
         Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
         if (localIterator.hasNext())
         {
-          amiz localamiz = (amiz)localIterator.next();
-          bhxr.a("i." + localamiz);
+          amno localamno = (amno)localIterator.next();
+          biby.a("i." + localamno);
           long l = System.currentTimeMillis();
-          localamiz.a();
+          localamno.a();
           if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.MsgProxy", 2, "ProxyInit , proxy=" + localamiz.getClass().getName() + "cost=" + (System.currentTimeMillis() - l));
+            QLog.d("Q.msg.MsgProxy", 2, "ProxyInit , proxy=" + localamno.getClass().getName() + "cost=" + (System.currentTimeMillis() - l));
           }
-          bhxr.a();
+          biby.a();
         }
         else
         {
@@ -1548,15 +1548,15 @@ public class ProxyManager
     }
   }
   
-  public void a(amjj paramamjj)
+  public void a(amny paramamny)
   {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramamjj)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramamjj);
+    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramamny)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramamny);
     }
   }
   
   /* Error */
-  public void a(awbw paramawbw)
+  public void a(awgf paramawgf)
   {
     // Byte code:
     //   0: aload_0
@@ -1606,11 +1606,11 @@ public class ProxyManager
     //   87: aload_0
     //   88: aload_1
     //   89: aload 4
-    //   91: invokespecial 600	com/tencent/mobileqq/app/proxy/ProxyManager:a	(Lawbw;Ljava/util/List;)V
+    //   91: invokespecial 600	com/tencent/mobileqq/app/proxy/ProxyManager:a	(Lawgf;Ljava/util/List;)V
     //   94: aload_0
     //   95: getfield 82	com/tencent/mobileqq/app/proxy/ProxyManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   98: invokevirtual 603	com/tencent/mobileqq/app/QQAppInterface:a	()Layvc;
-    //   101: invokevirtual 608	ayvc:e	()V
+    //   98: invokevirtual 603	com/tencent/mobileqq/app/QQAppInterface:a	()Layzl;
+    //   101: invokevirtual 608	ayzl:e	()V
     //   104: aload_2
     //   105: monitorexit
     //   106: return
@@ -1627,7 +1627,7 @@ public class ProxyManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	117	0	this	ProxyManager
-    //   0	117	1	paramawbw	awbw
+    //   0	117	1	paramawgf	awgf
     //   4	105	2	localObject1	Object
     //   72	18	4	localVector	Vector
     // Exception table:
@@ -1657,9 +1657,9 @@ public class ProxyManager
         Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
         while (localIterator.hasNext())
         {
-          amjh localamjh = (amjh)localIterator.next();
-          if ((abot.a(localamjh.jdField_a_of_type_JavaLangString, paramString, localamjh.jdField_a_of_type_Int, paramInt)) && ((localamjh.jdField_b_of_type_Int == 1) || (localamjh.jdField_b_of_type_Int == 2) || (localamjh.jdField_b_of_type_Int == 0))) {
-            localArrayList.add(localamjh);
+          amnw localamnw = (amnw)localIterator.next();
+          if ((abti.a(localamnw.jdField_a_of_type_JavaLangString, paramString, localamnw.jdField_a_of_type_Int, paramInt)) && ((localamnw.jdField_b_of_type_Int == 1) || (localamnw.jdField_b_of_type_Int == 2) || (localamnw.jdField_b_of_type_Int == 0))) {
+            localArrayList.add(localamnw);
           }
         }
       }
@@ -1672,9 +1672,9 @@ public class ProxyManager
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e();
   }
   
-  public void a(String arg1, int paramInt1, String paramString2, ContentValues paramContentValues, String paramString3, String[] paramArrayOfString, int paramInt2, amji paramamji)
+  public void a(String arg1, int paramInt1, String paramString2, ContentValues paramContentValues, String paramString3, String[] paramArrayOfString, int paramInt2, amnx paramamnx)
   {
-    paramContentValues = new amjh(???, paramInt1, paramString2, paramContentValues, paramString3, paramArrayOfString, paramInt2, paramamji);
+    paramContentValues = new amnw(???, paramInt1, paramString2, paramContentValues, paramString3, paramArrayOfString, paramInt2, paramamnx);
     do
     {
       synchronized (this.jdField_b_of_type_JavaLangObject)
@@ -1708,9 +1708,9 @@ public class ProxyManager
     f();
   }
   
-  public void a(String paramString1, int paramInt1, String paramString2, awbv paramawbv, int paramInt2, amji paramamji)
+  public void a(String paramString1, int paramInt1, String paramString2, awge paramawge, int paramInt2, amnx paramamnx)
   {
-    d(paramString1, paramInt1, paramString2, paramawbv, paramInt2, paramamji);
+    d(paramString1, paramInt1, paramString2, paramawge, paramInt2, paramamnx);
     if (this.jdField_a_of_type_Boolean)
     {
       if (QLog.isColorLevel()) {
@@ -1727,9 +1727,9 @@ public class ProxyManager
     f();
   }
   
-  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, String[] paramArrayOfString, int paramInt2, amji paramamji)
+  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, String[] paramArrayOfString, int paramInt2, amnx paramamnx)
   {
-    a(paramString1, paramInt1, paramString2, null, paramString3, paramArrayOfString, paramInt2, paramamji);
+    a(paramString1, paramInt1, paramString2, null, paramString3, paramArrayOfString, paramInt2, paramamnx);
   }
   
   public void b()
@@ -1742,16 +1742,16 @@ public class ProxyManager
     }
   }
   
-  public void b(amjj paramamjj)
+  public void b(amny paramamny)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramamjj)) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramamjj);
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramamny)) {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(paramamny);
     }
   }
   
-  public void b(String paramString1, int paramInt1, String paramString2, awbv paramawbv, int paramInt2, amji paramamji)
+  public void b(String paramString1, int paramInt1, String paramString2, awge paramawge, int paramInt2, amnx paramamnx)
   {
-    d(paramString1, paramInt1, paramString2, paramawbv, paramInt2, paramamji);
+    d(paramString1, paramInt1, paramString2, paramawge, paramInt2, paramamnx);
     f();
   }
   
@@ -1778,9 +1778,9 @@ public class ProxyManager
     jdField_b_of_type_Int = Math.min(jdField_b_of_type_Int, d);
   }
   
-  public void c(String paramString1, int paramInt1, String paramString2, awbv paramawbv, int paramInt2, amji paramamji)
+  public void c(String paramString1, int paramInt1, String paramString2, awge paramawge, int paramInt2, amnx paramamnx)
   {
-    d(paramString1, paramInt1, paramString2, paramawbv, paramInt2, paramamji);
+    d(paramString1, paramInt1, paramString2, paramawge, paramInt2, paramamnx);
     if (this.jdField_a_of_type_Boolean)
     {
       if (QLog.isColorLevel()) {
@@ -1795,25 +1795,25 @@ public class ProxyManager
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MsgProxy", 2, "transSaveToDatabase");
     }
-    awbw localawbw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).createEntityManager();
-    a(localawbw);
-    localawbw.a();
+    awgf localawgf = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).createEntityManager();
+    a(localawgf);
+    localawgf.a();
   }
   
-  public void d(String arg1, int paramInt1, String paramString2, awbv paramawbv, int paramInt2, amji paramamji)
+  public void d(String arg1, int paramInt1, String paramString2, awge paramawge, int paramInt2, amnx paramamnx)
   {
-    paramawbv = new amjh(???, paramInt1, paramString2, paramawbv, paramInt2, paramamji);
-    if ((QLog.isColorLevel()) && ((paramawbv.jdField_a_of_type_Awbv instanceof MessageRecord))) {
-      QLog.d("Q.msg.MsgProxy", 2, "addMsgQueueDonotNotify QueueItem.action: " + paramawbv.jdField_b_of_type_Int + ",mr=" + paramawbv.jdField_a_of_type_Awbv);
+    paramawge = new amnw(???, paramInt1, paramString2, paramawge, paramInt2, paramamnx);
+    if ((QLog.isColorLevel()) && ((paramawge.jdField_a_of_type_Awge instanceof MessageRecord))) {
+      QLog.d("Q.msg.MsgProxy", 2, "addMsgQueueDonotNotify QueueItem.action: " + paramawge.jdField_b_of_type_Int + ",mr=" + paramawge.jdField_a_of_type_Awge);
     }
     synchronized (this.jdField_b_of_type_JavaLangObject)
     {
       try
       {
-        this.jdField_a_of_type_JavaUtilVector.add(paramawbv);
+        this.jdField_a_of_type_JavaUtilVector.add(paramawge);
         return;
       }
-      catch (OutOfMemoryError paramawbv)
+      catch (OutOfMemoryError paramawge)
       {
         for (;;)
         {
@@ -1839,7 +1839,7 @@ public class ProxyManager
     if (this.jdField_a_of_type_Boolean)
     {
       d();
-      this.jdField_a_of_type_Amcg.c();
+      this.jdField_a_of_type_Amgv.c();
       return;
     }
     synchronized (this.jdField_b_of_type_JavaLangObject)
@@ -1870,9 +1870,9 @@ public class ProxyManager
           this.jdField_b_of_type_JavaLangObject.notify();
         }
         i = j;
-        if (i < this.jdField_a_of_type_ArrayOfAmiz.length)
+        if (i < this.jdField_a_of_type_ArrayOfAmno.length)
         {
-          this.jdField_a_of_type_ArrayOfAmiz[i].b();
+          this.jdField_a_of_type_ArrayOfAmno[i].b();
           i += 1;
         }
       }

@@ -1,31 +1,46 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.util.Pair;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
+import dov.com.tencent.biz.qqstory.takevideo.multivideo.SegmentPicker;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class bmbz
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public bmbz(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public bmbz(VideoSegmentPickerProviderView paramVideoSegmentPickerProviderView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim  140ms end");
+    long l1 = 0L;
+    bmcb localbmcb;
+    long l2;
+    if (VideoSegmentPickerProviderView.a(this.a) != null)
+    {
+      paramView = VideoSegmentPickerProviderView.a(this.a).a();
+      VideoSegmentPickerProviderView.a(this.a).a.clearSegments();
+      VideoSegmentPickerProviderView.a(this.a).a.addSegment(paramView);
+      if (VideoSegmentPickerProviderView.a(this.a) != null)
+      {
+        localbmcb = (bmcb)VideoSegmentPickerProviderView.a(this.a).get();
+        if (localbmcb != null)
+        {
+          if ((paramView == null) || (paramView.size() <= 0)) {
+            break label145;
+          }
+          l2 = ((Long)((Pair)paramView.get(0)).first).longValue();
+          l1 = ((Long)((Pair)paramView.get(0)).second).longValue();
+        }
+      }
     }
-    athi.a();
-    this.a.a.setImageResource(2130843990);
-    this.a.a.setOnTouchListener(null);
-    this.a.a.setOnTouchListener(new bmca(this));
-    this.a.b.setStateful(true);
-    this.a.b.setOnClickListener(new bmcb(this));
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim start");
+    for (;;)
+    {
+      localbmcb.a(l2, l1);
+      return;
+      label145:
+      l2 = 0L;
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bhge;
+import bhkl;
 
 class AudioJsPlugin$InnerAudioManager$3
   implements Runnable

@@ -1,16 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class agqa
-  implements View.OnClickListener
+  extends aspm
 {
-  agqa(agot paramagot, RelativeLayout paramRelativeLayout, LinearLayout paramLinearLayout) {}
+  agqa(agps paramagps) {}
   
-  public void onClick(View paramView)
+  protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    if (((aspf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      agps.a(this.a).a(this.a.jdField_a_of_type_Agzq, new Object[0]);
+    }
+  }
+  
+  protected void b()
+  {
+    if (((aspf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      this.a.jdField_a_of_type_Agzq.a();
+    }
+  }
+  
+  protected void c()
+  {
+    if ((((aspf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (agps.b(this.a).a() == 14)) {
+      agps.c(this.a).a();
+    }
   }
 }
 

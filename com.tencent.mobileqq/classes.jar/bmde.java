@@ -1,22 +1,35 @@
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.support.annotation.RestrictTo;
 
+@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class bmde
-  extends bllx
+  implements bmdi
 {
-  private bdvx jdField_a_of_type_Bdvx;
-  private PtvTemplateManager.PtvTemplateInfo jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
+  private final bmdh[] a;
   
-  public PtvTemplateManager.PtvTemplateInfo a()
+  bmde(bmdh[] paramArrayOfbmdh)
   {
-    return this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
+    this.a = paramArrayOfbmdh;
   }
   
-  public void a() {}
-  
-  public void b()
+  public void a(bmdn parambmdn, bmdk parambmdk)
   {
-    if (this.jdField_a_of_type_Bdvx != null) {
-      this.jdField_a_of_type_Bdvx.onDestroy();
+    int j = 0;
+    bmdp localbmdp = new bmdp();
+    bmdh[] arrayOfbmdh = this.a;
+    int k = arrayOfbmdh.length;
+    int i = 0;
+    while (i < k)
+    {
+      arrayOfbmdh[i].a(parambmdn, parambmdk, false, localbmdp);
+      i += 1;
+    }
+    arrayOfbmdh = this.a;
+    k = arrayOfbmdh.length;
+    i = j;
+    while (i < k)
+    {
+      arrayOfbmdh[i].a(parambmdn, parambmdk, true, localbmdp);
+      i += 1;
     }
   }
 }

@@ -1,11 +1,11 @@
 package cooperation.qzone.share;
 
-import bjnk;
+import bjrr;
 
 public class QZoneShareActivity$22$1
   implements Runnable
 {
-  public QZoneShareActivity$22$1(bjnk parambjnk) {}
+  public QZoneShareActivity$22$1(bjrr parambjrr) {}
   
   public void run()
   {

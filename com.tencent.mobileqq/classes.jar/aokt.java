@@ -1,28 +1,14 @@
-public class aokt
+final class aokt
 {
-  private aoku jdField_a_of_type_Aoku;
-  private String jdField_a_of_type_JavaLangString;
+  public final int a;
+  public final long a;
+  public final Object a;
   
-  public aokt()
+  aokt(long paramLong, int paramInt, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Aoku = new aoku();
-  }
-  
-  public aokt(String paramString, aoku paramaoku)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aoku = paramaoku;
-  }
-  
-  public aoku a()
-  {
-    return this.jdField_a_of_type_Aoku;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
 }
 

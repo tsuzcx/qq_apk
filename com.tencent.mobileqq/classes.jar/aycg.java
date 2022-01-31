@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
 public class aycg
-  implements Comparator<ScribbleResMgr.ResInfo>
+  implements DialogInterface.OnClickListener
 {
-  public aycg(ScribbleResMgr paramScribbleResMgr) {}
+  public aycg(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public int a(ScribbleResMgr.ResInfo paramResInfo1, ScribbleResMgr.ResInfo paramResInfo2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramResInfo1 != null) && (paramResInfo2 != null)) {
-      return paramResInfo1.orderIndex - paramResInfo2.orderIndex;
-    }
-    return -1;
+    SignTextEditFragment.a(this.a, "");
+    paramDialogInterface.dismiss();
+    this.a.b.obtainMessage(6, null).sendToTarget();
   }
 }
 

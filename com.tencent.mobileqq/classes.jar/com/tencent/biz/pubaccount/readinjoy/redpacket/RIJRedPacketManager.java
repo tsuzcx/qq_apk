@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.redpacket;
 
-import alpo;
+import alud;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -13,12 +13,12 @@ import android.text.TextUtils;
 import android.util.LruCache;
 import android.view.ViewGroup;
 import android.view.Window;
-import awbx;
-import azwu;
-import bdcb;
-import bizm;
-import bjxj;
-import bkci;
+import awgg;
+import babd;
+import bdgk;
+import bjdt;
+import bkbq;
+import bkgp;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyEntityManagerFactory;
@@ -76,14 +76,14 @@ import qfu;
 import qfz;
 import qgi;
 import rdm;
-import ymk;
+import yqz;
 
 public class RIJRedPacketManager
 {
   private static volatile RIJRedPacketManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketRIJRedPacketManager;
   private LruCache<String, String> jdField_a_of_type_AndroidUtilLruCache = new LruCache(10000);
   @Nullable
-  private awbx jdField_a_of_type_Awbx;
+  private awgg jdField_a_of_type_Awgg;
   
   private long a()
   {
@@ -115,7 +115,7 @@ public class RIJRedPacketManager
     return PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
   }
   
-  private awbx a()
+  private awgg a()
   {
     Object localObject1 = ors.a();
     if (localObject1 == null) {
@@ -123,13 +123,13 @@ public class RIJRedPacketManager
     }
     try
     {
-      if ((this.jdField_a_of_type_Awbx == null) || (!TextUtils.equals(((ReadInJoyEntityManagerFactory)this.jdField_a_of_type_Awbx).name, (CharSequence)localObject1)))
+      if ((this.jdField_a_of_type_Awgg == null) || (!TextUtils.equals(((ReadInJoyEntityManagerFactory)this.jdField_a_of_type_Awgg).name, (CharSequence)localObject1)))
       {
         localObject1 = new ReadInJoyEntityManagerFactory((String)localObject1);
         ThreadManager.excute(new RIJRedPacketManager.12(this, (ReadInJoyEntityManagerFactory)localObject1), 16, null, false);
-        this.jdField_a_of_type_Awbx = ((awbx)localObject1);
+        this.jdField_a_of_type_Awgg = ((awgg)localObject1);
       }
-      return this.jdField_a_of_type_Awbx;
+      return this.jdField_a_of_type_Awgg;
     }
     finally {}
   }
@@ -254,7 +254,7 @@ public class RIJRedPacketManager
   
   public String a()
   {
-    return Aladdin.getConfig(275).getString("video_tips_content", BaseApplicationImpl.getApplication().getString(2131719032));
+    return Aladdin.getConfig(275).getString("video_tips_content", BaseApplicationImpl.getApplication().getString(2131719044));
   }
   
   public JSONObject a(JSONObject paramJSONObject, BaseArticleInfo paramBaseArticleInfo)
@@ -298,12 +298,12 @@ public class RIJRedPacketManager
     localReqBody.rowkey.set(paramString2);
     localReqBody.task_idx.setHasFlag(true);
     paramString1 = new terminal_info.TerminalInfo();
-    paramString1.qimei.set(bkci.b());
-    paramString1.os_version.set(String.valueOf(bdcb.a()));
+    paramString1.qimei.set(bkgp.b());
+    paramString1.os_version.set(String.valueOf(bdgk.a()));
     paramString1.imsi.set(ors.g());
-    paramString1.qua.set(bizm.a());
+    paramString1.qua.set(bjdt.a());
     localReqBody.terminal_info.set(paramString1);
-    QLog.i("RIJRedPacketManager", 1, "yyy_0xe19 terminal info: qimei " + bkci.b() + "\n os_version: " + bdcb.a() + "\n imsi: " + ors.g() + "\n qua: " + bizm.a());
+    QLog.i("RIJRedPacketManager", 1, "yyy_0xe19 terminal info: qimei " + bkgp.b() + "\n os_version: " + bdgk.a() + "\n imsi: " + ors.g() + "\n qua: " + bjdt.a());
     paramString1 = ((TicketManager)ors.a().getManager(2)).getSkey(ors.a().getAccount());
     localReqBody.skey.set(paramString1);
     switch (paramInt)
@@ -353,12 +353,12 @@ public class RIJRedPacketManager
     b(paramInt, paramqft);
   }
   
-  public void a(Activity paramActivity, int paramInt, String paramString1, String paramString2, @NotNull qfu paramqfu, boolean paramBoolean, ymk paramymk)
+  public void a(Activity paramActivity, int paramInt, String paramString1, String paramString2, @NotNull qfu paramqfu, boolean paramBoolean, yqz paramyqz)
   {
     QLog.i("RIJRedPacketManager", 1, "onClickBubbleTips share source: " + paramInt + "\n encryptId: " + paramString1 + "\nrowkey: " + paramString2);
-    if (!bjxj.g())
+    if (!bkbq.g())
     {
-      a(paramActivity, paramString1, 2, 0, paramBoolean, paramymk);
+      a(paramActivity, paramString1, 2, 0, paramBoolean, paramyqz);
       return;
     }
     if ("QzoneFeedsPluginProxyActivity".equals(paramActivity.getIntent().getStringExtra("SourceActivityName"))) {}
@@ -369,9 +369,9 @@ public class RIJRedPacketManager
     }
   }
   
-  public void a(Activity paramActivity, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, ymk paramymk)
+  public void a(Activity paramActivity, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, yqz paramyqz)
   {
-    new qgi((ViewGroup)paramActivity.getWindow().getDecorView(), paramString, paramInt1, paramInt2, paramBoolean, paramymk).a();
+    new qgi((ViewGroup)paramActivity.getWindow().getDecorView(), paramString, paramInt1, paramInt2, paramBoolean, paramyqz).a();
   }
   
   @SuppressLint({"DefaultLocale"})
@@ -399,12 +399,12 @@ public class RIJRedPacketManager
     localReqBody.rowkey.set(paramString);
     localReqBody.type.set(paramInt1);
     Object localObject = new terminal_info.TerminalInfo();
-    ((terminal_info.TerminalInfo)localObject).qimei.set(bkci.b());
-    ((terminal_info.TerminalInfo)localObject).os_version.set(String.valueOf(bdcb.a()));
+    ((terminal_info.TerminalInfo)localObject).qimei.set(bkgp.b());
+    ((terminal_info.TerminalInfo)localObject).os_version.set(String.valueOf(bdgk.a()));
     ((terminal_info.TerminalInfo)localObject).imsi.set(ors.g());
-    ((terminal_info.TerminalInfo)localObject).qua.set(bizm.a());
+    ((terminal_info.TerminalInfo)localObject).qua.set(bjdt.a());
     localReqBody.terminal_info.set((MessageMicro)localObject);
-    QLog.i("RIJRedPacketManager", 1, "yyy_0xe21 terminal info: qimei " + bkci.b() + "\n os_version: " + bdcb.a() + "\n imsi: " + ors.g() + "\n qua: " + bizm.a());
+    QLog.i("RIJRedPacketManager", 1, "yyy_0xe21 terminal info: qimei " + bkgp.b() + "\n os_version: " + bdgk.a() + "\n imsi: " + ors.g() + "\n qua: " + bjdt.a());
     localObject = ((TicketManager)ors.a().getManager(2)).getSkey(ors.a().getAccount());
     localReqBody.skey.set((String)localObject);
     mzy.a(ors.a(), new qfh(this, paramString, paramInt2, paramqfs), localReqBody.toByteArray(), "OidbSvc.0xe21", 3617, 1, new Bundle(), 5000L);
@@ -508,7 +508,7 @@ public class RIJRedPacketManager
       }
       i = 1;
       label186:
-      if ((!alpo.a(2131718257).equals(str2)) && (TextUtils.isEmpty(str3))) {
+      if ((!alud.a(2131718269).equals(str2)) && (TextUtils.isEmpty(str3))) {
         break label280;
       }
     }
@@ -587,7 +587,7 @@ public class RIJRedPacketManager
   
   public String c()
   {
-    return Aladdin.getConfig(275).getString("article_share_tips_wording_android", BaseApplicationImpl.getContext().getString(2131718991));
+    return Aladdin.getConfig(275).getString("article_share_tips_wording_android", BaseApplicationImpl.getContext().getString(2131719003));
   }
   
   public void c()
@@ -646,7 +646,7 @@ public class RIJRedPacketManager
     if (Aladdin.getConfig(285).getIntegerFromString("is_highest_red_packet_authority_on", 0) == 1) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      boolean bool2 = azwu.a();
+      boolean bool2 = babd.a();
       QLog.i("RIJRedPacketManager", 1, "isHighestRedPacketAuthorityOn: " + bool1 + " ,isStudyMode=" + bool2);
       if ((!bool1) || (bool2)) {
         break;

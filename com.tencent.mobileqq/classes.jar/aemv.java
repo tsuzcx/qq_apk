@@ -1,33 +1,22 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
 
 public class aemv
-  implements aivw
+  extends ClickableSpan
 {
-  public aemv(CustomizeStrategyFactory.SkinRedPacketStrategy.1 param1) {}
+  public aemv(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(View paramView)
   {
-    paramPathResult = paramPathResult.filePath;
-    if (paramInt == 0) {}
-    try
-    {
-      this.a.a.resPath = paramPathResult;
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "TYPE_POP_ANIM path=" + paramPathResult);
-      }
-      CustomizeStrategyFactory.a().a(this.a.a);
-      return;
-    }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
-    }
+    this.a.b();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(0, 165, 224));
   }
 }
 

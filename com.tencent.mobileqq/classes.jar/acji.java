@@ -1,57 +1,166 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class acji
-  implements View.OnClickListener
+public class acji
+  extends aqru
 {
-  acji(acjf paramacjf) {}
+  private acji(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  protected void a()
   {
-    paramView = (akdm)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
-    if (5 != localFileManagerEntity.cloudType) {
-      arni.c(localFileManagerEntity);
+    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
+  }
+  
+  protected void a(int paramInt, long paramLong, String paramString)
+  {
+    arrr.a(paramLong, paramInt, paramString);
+    bkmm.a(null, paramInt);
+    if (this.a.jdField_a_of_type_Aeqo != null) {
+      this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
     }
-    switch (paramView.jdField_a_of_type_Int)
+  }
+  
+  protected void a(long paramLong1, long paramLong2)
+  {
+    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
+  }
+  
+  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
+  }
+  
+  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  {
+    if ((paramString2 != null) && (paramString2.length() > 0))
     {
+      arrr.a(paramString2);
+      return;
+    }
+    arrr.a(paramLong);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt, String paramString)
+  {
+    if ((paramString != null) && (paramString.length() > 0)) {
+      arrr.a(paramString);
+    }
+    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
+  }
+  
+  protected void a(arcg paramarcg)
+  {
+    if (paramarcg == null) {}
+    label4:
+    do
+    {
+      FileManagerEntity localFileManagerEntity;
+      do
+      {
+        do
+        {
+          break label4;
+          do
+          {
+            return;
+          } while (!(paramarcg.a instanceof FileManagerEntity));
+          localFileManagerEntity = (FileManagerEntity)paramarcg.a;
+          if ((paramarcg.b == null) || (paramarcg.b.length() <= 0)) {
+            break;
+          }
+          localFileManagerEntity.strThumbPath = paramarcg.b;
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity);
+        } while (this.a.jdField_a_of_type_Aeqo == null);
+        this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
+        return;
+      } while (localFileManagerEntity.thumbInvalidCode != 1);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity);
+    } while (this.a.jdField_a_of_type_Aeqo == null);
+    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
+  }
+  
+  protected void a(Integer paramInteger, long paramLong, String paramString)
+  {
+    if (this.a.jdField_a_of_type_Aeqo != null) {
+      this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
+    }
+    arrr.a(paramLong, paramInteger.intValue(), paramString);
+    bkmm.a(null, paramInteger.intValue());
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
+    }
+    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
+    if ((paramString1 != null) && (paramString1.nOpType == 6)) {
+      if (bkjc.a(paramInt2))
+      {
+        if (!paramBoolean) {
+          break label154;
+        }
+        bkjy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.a());
+      }
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Akdl.notifyDataSetChanged();
+      this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
       return;
-      if (!bdee.d(BaseApplication.getContext()))
+      label154:
+      if (bkjc.b())
       {
-        armz.a(2131692745);
-        return;
-      }
-      armf.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_AndroidContentContext, new acjj(this, localFileManagerEntity));
-      continue;
-      this.a.a(localFileManagerEntity);
-      continue;
-      if (localFileManagerEntity.getCloudType() == 0)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
-      }
-      else if (localFileManagerEntity.getCloudType() == 6)
-      {
-        ((allz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(0, localFileManagerEntity.uniseq, false);
+        bkjc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
       else
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
-        continue;
-        if (!bdee.d(BaseApplication.getContext()))
-        {
-          armz.a(2131692745);
-          return;
+        if (!TextUtils.isEmpty(paramString2)) {
+          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramString2, 1).b(this.a.a());
         }
-        boolean bool = localFileManagerEntity.isSend();
-        armf.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_AndroidContentContext, new acjk(this, localFileManagerEntity));
+        for (;;)
+        {
+          bkmm.a(null, paramInt2);
+          break;
+          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131692913, 1).b(this.a.a());
+        }
+        if ((!paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString1.peerUin)) && (paramString1.peerUin.equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+        {
+          arrr.a(paramLong2, paramInt2, paramString2);
+          bkmm.a(null, paramInt2);
+        }
       }
+    }
+  }
+  
+  protected void b()
+  {
+    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
+  }
+  
+  protected void c()
+  {
+    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
+  }
+  
+  protected void d()
+  {
+    if (this.a.jdField_a_of_type_Aeqo != null) {
+      this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
     }
   }
 }

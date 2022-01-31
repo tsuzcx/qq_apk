@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
-
-public class umv
+abstract interface umv
 {
-  public static void a(Object paramObject)
-  {
-    if ((paramObject instanceof QQAppInterface)) {
-      umw.a = new WeakReference((QQAppInterface)paramObject);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,6 +1,17 @@
-public abstract interface xxy
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+
+class xxy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  xxy(xxx paramxxx, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    paramValueAnimator = (xya)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setRevealClip(paramValueAnimator.a, paramValueAnimator.b, paramValueAnimator.c);
+  }
 }
 
 

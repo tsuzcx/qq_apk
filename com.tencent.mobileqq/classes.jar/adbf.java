@@ -1,21 +1,15 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.activity.Leba;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class adbf
-  implements ViewSwitcher.ViewFactory
+  implements DialogInterface.OnClickListener
 {
-  public adbf(Leba paramLeba) {}
+  public adbf(FriendProfileImageActivity paramFriendProfileImageActivity, String paramString1, String paramString2) {}
   
-  public View makeView()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

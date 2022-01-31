@@ -1,10 +1,20 @@
-import Wallet.AcsMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class aekd
+  implements DialogInterface.OnKeyListener
 {
-  public int a;
-  public AcsMsg a;
-  public String a;
+  public aekd(UpgradeActivity paramUpgradeActivity) {}
+  
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4) {
+      this.a.a();
+    }
+    return false;
+  }
 }
 
 

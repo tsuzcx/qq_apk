@@ -14,12 +14,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import awpk;
-import awpl;
-import awpm;
-import awpn;
-import azgq;
-import bdwc;
+import awtt;
+import awtu;
+import awtv;
+import awtw;
+import azkz;
+import beal;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -32,9 +32,9 @@ public class StickyNoteShopLayout
 {
   public static final String a;
   public int a;
-  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new awpl(this);
+  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new awtu(this);
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private awpn jdField_a_of_type_Awpn;
+  private awtw jdField_a_of_type_Awtw;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString = "";
@@ -90,23 +90,23 @@ public class StickyNoteShopLayout
   
   private void c()
   {
-    View.inflate(getContext(), 2131561212, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131377013));
+    View.inflate(getContext(), 2131561230, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131377067));
     StaggeredGridLayoutManager localStaggeredGridLayoutManager = new StaggeredGridLayoutManager(3, 1);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localStaggeredGridLayoutManager);
-    this.jdField_a_of_type_Awpn = new awpn(getContext(), null);
-    this.jdField_a_of_type_Awpn.a(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Awpn);
+    this.jdField_a_of_type_Awtw = new awtw(getContext(), null);
+    this.jdField_a_of_type_Awtw.a(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Awtw);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setBackgroundColor(-1);
-    findViewById(2131378710).setOnClickListener(this);
-    findViewById(2131367986).setOnClickListener(this);
+    findViewById(2131378765).setOnClickListener(this);
+    findViewById(2131367997).setOnClickListener(this);
     a();
   }
   
   public int a(int paramInt)
   {
-    if (paramInt > azgq.jdField_b_of_type_Int / 4) {}
+    if (paramInt > azkz.jdField_b_of_type_Int / 4) {}
     for (;;)
     {
       ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
@@ -114,31 +114,31 @@ public class StickyNoteShopLayout
       setMinimumHeight(localLayoutParams.height);
       setLayoutParams(localLayoutParams);
       return paramInt;
-      paramInt = azgq.jdField_b_of_type_Int / 3;
+      paramInt = azkz.jdField_b_of_type_Int / 3;
     }
   }
   
-  public awpn a()
+  public awtw a()
   {
-    return this.jdField_a_of_type_Awpn;
+    return this.jdField_a_of_type_Awtw;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Awpn);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Awtw);
   }
   
   public void a(int paramInt)
   {
     setVisibility(paramInt);
-    if (this.jdField_a_of_type_Awpn.getItemCount() == 0) {
+    if (this.jdField_a_of_type_Awtw.getItemCount() == 0) {
       a(false);
     }
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Awpn.a();
+    this.jdField_a_of_type_Awtw.a();
   }
   
   public void a(boolean paramBoolean)
@@ -148,15 +148,15 @@ public class StickyNoteShopLayout
       break label68;
     }
     label68:
-    while ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Awpn.a() >= 30) && (paramBoolean)) {
+    while ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Awtw.a() >= 30) && (paramBoolean)) {
       return;
     }
-    bdwc localbdwc = new bdwc("QC.HomepageLogicServer.HomepageLogicObj", "QcHomePageLogic.GetSuixintieSigFontReq");
-    GetSuixintieSigFontReq localGetSuixintieSigFontReq = new GetSuixintieSigFontReq(bdwc.a(), this.jdField_b_of_type_Int, this.c, "", this.jdField_b_of_type_JavaLangString);
+    beal localbeal = new beal("QC.HomepageLogicServer.HomepageLogicObj", "QcHomePageLogic.GetSuixintieSigFontReq");
+    GetSuixintieSigFontReq localGetSuixintieSigFontReq = new GetSuixintieSigFontReq(beal.a(), this.jdField_b_of_type_Int, this.c, "", this.jdField_b_of_type_JavaLangString);
     if (this.jdField_a_of_type_Int == 1) {}
     for (String str = "getSuixintieSigFont";; str = "getExtendFriendSigFont")
     {
-      localbdwc.a(str, localGetSuixintieSigFontReq, new GetSuixintieSigFontRsp(), new awpk(this, paramBoolean), false);
+      localbeal.a(str, localGetSuixintieSigFontReq, new GetSuixintieSigFontRsp(), new awtt(this, paramBoolean), false);
       if (paramBoolean) {
         break;
       }
@@ -177,7 +177,7 @@ public class StickyNoteShopLayout
     {
     default: 
       return;
-    case 2131378710: 
+    case 2131378765: 
       a(false);
       return;
     }
@@ -187,19 +187,19 @@ public class StickyNoteShopLayout
   public void setAppId(int paramInt)
   {
     this.jdField_b_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Awpn != null) {
-      this.jdField_a_of_type_Awpn.a(paramInt);
+    if (this.jdField_a_of_type_Awtw != null) {
+      this.jdField_a_of_type_Awtw.a(paramInt);
     }
   }
   
   public void setItemId(int paramInt)
   {
-    this.jdField_a_of_type_Awpn.c(paramInt);
+    this.jdField_a_of_type_Awtw.c(paramInt);
   }
   
-  public void setShopCallback(awpm paramawpm)
+  public void setShopCallback(awtv paramawtv)
   {
-    this.jdField_a_of_type_Awpn.a(paramawpm);
+    this.jdField_a_of_type_Awtw.a(paramawtv);
   }
   
   public void setUseId(int paramInt)

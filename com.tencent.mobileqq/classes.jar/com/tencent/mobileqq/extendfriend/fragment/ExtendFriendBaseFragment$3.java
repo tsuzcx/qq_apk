@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
 import android.support.v4.app.FragmentActivity;
-import apyo;
-import apyx;
-import aqay;
+import aqcx;
+import aqdg;
+import aqfh;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,14 +17,14 @@ class ExtendFriendBaseFragment$3
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Aqay == null) || (this.this$0.jdField_a_of_type_Aqay.a() <= 0) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.this$0.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing())) {
+    if ((this.this$0.jdField_a_of_type_Aqfh == null) || (this.this$0.jdField_a_of_type_Aqfh.a() <= 0) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.this$0.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing())) {
       return;
     }
     Object localObject1 = ExtendFriendBaseFragment.a(this.this$0);
     Object localObject2 = new ArrayList();
     Object localObject3 = ((ArrayList)localObject1).iterator();
     while (((Iterator)localObject3).hasNext()) {
-      ((ArrayList)localObject2).add(((apyx)((Iterator)localObject3).next()).jdField_a_of_type_Apyo.mUin);
+      ((ArrayList)localObject2).add(((aqdg)((Iterator)localObject3).next()).jdField_a_of_type_Aqcx.mUin);
     }
     localObject3 = ExtendFriendBaseFragment.a(this.this$0).keySet().iterator();
     while (((Iterator)localObject3).hasNext())
@@ -37,11 +37,11 @@ class ExtendFriendBaseFragment$3
     localObject1 = ((ArrayList)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (apyx)((Iterator)localObject1).next();
-      localObject3 = ((apyx)localObject2).jdField_a_of_type_Apyo.mUin;
+      localObject2 = (aqdg)((Iterator)localObject1).next();
+      localObject3 = ((aqdg)localObject2).jdField_a_of_type_Aqcx.mUin;
       if (!ExtendFriendBaseFragment.a(this.this$0).containsKey(localObject3))
       {
-        ((apyx)localObject2).jdField_a_of_type_Long = System.currentTimeMillis();
+        ((aqdg)localObject2).jdField_a_of_type_Long = System.currentTimeMillis();
         ExtendFriendBaseFragment.a(this.this$0).put(localObject3, localObject2);
       }
     }

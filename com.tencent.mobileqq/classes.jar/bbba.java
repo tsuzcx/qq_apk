@@ -1,21 +1,11 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemBar;
-
 public class bbba
-  implements Animation.AnimationListener
+  extends bbbi
 {
-  public bbba(AbsPublishActivity paramAbsPublishActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a;
+  public long a;
+  public byte[] a;
+  public int b;
+  public int c;
 }
 
 

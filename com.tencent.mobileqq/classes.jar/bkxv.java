@@ -1,16 +1,29 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
 public class bkxv
+  implements View.OnClickListener
 {
-  public static final List<bkxw> a;
-  public static final int[] a;
+  public bkxv(AEProviderContainerView paramAEProviderContainerView) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 1, 2, 3, 4, 5 };
-    jdField_a_of_type_JavaUtilList = new ArrayList(Arrays.asList(new bkxw[] { new bkxw("#ffffff", "#000000"), new bkxw("#000000", "#ffffff"), new bkxw("#ff596a", "#ffffff"), new bkxw("#ffcc00", "#b96300"), new bkxw("#64ecde", "#1d70c0"), new bkxw("#8173ff", "#ffffff") }));
+    switch (paramView.getId())
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        wxj.a("clk_filter", wxj.b(axpl.a), 0, false, new String[0]);
+      } while (AEProviderContainerView.a(this.a) == 0);
+      AEProviderContainerView.a(this.a);
+      return;
+      wxj.a("clk_beauty", wxj.b(axpl.a), 0, false, new String[0]);
+    } while (AEProviderContainerView.a(this.a) == 1);
+    AEProviderContainerView.b(this.a);
   }
 }
 

@@ -1,29 +1,29 @@
 package com.tencent.qqmini.sdk.monitor.common;
 
 import android.os.Handler;
-import bgwx;
-import bgwz;
+import bhbe;
+import bhbg;
 import java.util.Vector;
 
 public class FPSCalculator$3
   implements Runnable
 {
-  public FPSCalculator$3(bgwx parambgwx) {}
+  public FPSCalculator$3(bhbe parambhbe) {}
   
   public void run()
   {
-    Object localObject1 = bgwx.a(this.this$0);
+    Object localObject1 = bhbe.a(this.this$0);
     int i = 0;
     try
     {
-      while (i < bgwx.a(this.this$0).size())
+      while (i < bhbe.a(this.this$0).size())
       {
-        bgwz localbgwz = (bgwz)bgwx.a(this.this$0).get(i);
-        bgwx.a(this.this$0, System.currentTimeMillis());
-        localbgwz.a(bgwx.a(this.this$0), 60.0D);
+        bhbg localbhbg = (bhbg)bhbe.a(this.this$0).get(i);
+        bhbe.a(this.this$0, System.currentTimeMillis());
+        localbhbg.a(bhbe.a(this.this$0), 60.0D);
         i += 1;
       }
-      bgwx.a(this.this$0).postDelayed(bgwx.b(this.this$0), 500L);
+      bhbe.a(this.this$0).postDelayed(bhbe.b(this.this$0), 500L);
       return;
     }
     finally {}

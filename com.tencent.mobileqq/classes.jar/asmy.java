@@ -1,159 +1,123 @@
-import android.content.Context;
-import android.content.pm.ActivityInfo;
-import android.content.pm.ProviderInfo;
-import android.content.pm.ResolveInfo;
-import android.content.pm.ServiceInfo;
-import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bigbrother.ServerApi.ReqDownloadCheckRecmd;
-import com.tencent.mobileqq.bigbrother.ServerApi.ReqJumpCheckRecmd;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.data.ConversationInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.message.TinyInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.manager.Manager;
-import tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.CheckShareExtensionReq;
-import tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.ReqBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.Set;
+import javax.annotation.Nullable;
 
 public class asmy
-  implements Manager
 {
-  private asmz a;
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, anre paramanre)
+  public static asmy a()
   {
-    QLog.i("TeleScreen|CheckForwardManager", 1, "dl src: " + paramString1 + ", refId: " + paramString4);
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    NewIntent localNewIntent = new NewIntent(localBaseApplicationImpl.getApplicationContext(), asna.class);
-    ServerApi.ReqDownloadCheckRecmd localReqDownloadCheckRecmd = new ServerApi.ReqDownloadCheckRecmd();
-    localReqDownloadCheckRecmd.uin.set(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
-    if (paramString2 != null) {
-      localReqDownloadCheckRecmd.pkg_name.set(paramString2);
-    }
-    if (paramString3 != null) {
-      localReqDownloadCheckRecmd.url.set(paramString3);
-    }
-    if (paramString1 != null) {
-      localReqDownloadCheckRecmd.source.set(paramString1);
-    }
-    if (paramString4 != null) {
-      localReqDownloadCheckRecmd.ref_source.set(paramString4);
-    }
-    localReqDownloadCheckRecmd.platform.set("android");
-    localNewIntent.putExtra("CMD", "QQApkSvc.check_download_apk");
-    localNewIntent.putExtra("RequestBytes", localReqDownloadCheckRecmd.toByteArray());
-    paramString1 = anrx.a();
-    if (paramanre != null)
-    {
-      int i = paramString1.a(paramContext, paramanre);
-      localNewIntent.putExtra("req_id", i);
-      if (QLog.isColorLevel()) {
-        QLog.d("TeleScreen|CheckForwardManager", 2, "add req with id: " + i);
-      }
-    }
-    localNewIntent.setObserver(anrx.a());
-    localBaseApplicationImpl.getRuntime().startServlet(localNewIntent);
+    return asna.a;
   }
   
-  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, List<ResolveInfo> paramList, String paramString6, anrj paramanrj)
+  private boolean a(ConversationInfo paramConversationInfo)
   {
-    QLog.i("TeleScreen|CheckForwardManager", 1, "jump src: " + paramString1 + ", pkg: " + paramString3 + ", scheme: " + paramString4 + ", action: " + paramString5 + "， refId: " + paramString6);
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    NewIntent localNewIntent = new NewIntent(localBaseApplicationImpl.getApplicationContext(), asna.class);
-    ServerApi.ReqJumpCheckRecmd localReqJumpCheckRecmd = new ServerApi.ReqJumpCheckRecmd();
-    localReqJumpCheckRecmd.uin.set(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
-    if (paramString3 != null) {
-      localReqJumpCheckRecmd.pkg_name.add(paramString3);
+    if (TextUtils.isEmpty(paramConversationInfo.extString))
+    {
+      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "isValid() called, info is invalid!" + paramConversationInfo);
+      return false;
+    }
+    if ((paramConversationInfo.tinyInfo == null) || (TextUtils.isEmpty(paramConversationInfo.tinyInfo.fromRoleId)) || (TextUtils.isEmpty(paramConversationInfo.tinyInfo.toRoleId)))
+    {
+      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "isValid() called, info is invalid!" + paramConversationInfo);
+      return false;
+    }
+    return true;
+  }
+  
+  @Nullable
+  public ConversationInfo a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    if (paramQQAppInterface == null)
+    {
+      paramQQAppInterface = null;
+      return paramQQAppInterface;
+    }
+    ConversationInfo localConversationInfo = paramQQAppInterface.a().a(paramString, paramInt);
+    if (localConversationInfo != null)
+    {
+      paramQQAppInterface = paramQQAppInterface.a(10007).a(paramString, paramInt);
+      if (paramQQAppInterface == null) {
+        break label116;
+      }
+      paramString = paramQQAppInterface.getExtInfoFromExtStr("ext_key_game_msg_info");
+      if (!TextUtils.isEmpty(paramString))
+      {
+        localConversationInfo.tinyInfo = new TinyInfo(paramString, paramQQAppInterface.isSend());
+        localConversationInfo.extString = paramString;
+      }
     }
     for (;;)
     {
-      if (paramString4 != null) {
-        localReqJumpCheckRecmd.scheme.set(paramString4);
+      paramQQAppInterface = localConversationInfo;
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      if (paramString5 != null) {
-        localReqJumpCheckRecmd.action.set(paramString5);
+      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfo info = " + localConversationInfo);
+      return localConversationInfo;
+      label116:
+      if (!TextUtils.isEmpty(localConversationInfo.extString)) {
+        localConversationInfo.tinyInfo = new TinyInfo(localConversationInfo.extString);
       }
-      if (paramString2 != null) {
-        localReqJumpCheckRecmd.url.set(paramString2);
-      }
-      if (paramString1 != null) {
-        localReqJumpCheckRecmd.source.set(paramString1);
-      }
-      if (paramString6 != null) {
-        localReqJumpCheckRecmd.ref_source.set(paramString6);
-      }
-      localReqJumpCheckRecmd.platform.set("android");
-      localNewIntent.putExtra("CMD", "QQApkSvc.check_jump_apk");
-      localNewIntent.putExtra("RequestBytes", localReqJumpCheckRecmd.toByteArray());
-      int i = anrx.a().a(paramContext, paramanrj);
-      localNewIntent.putExtra("req_id", i);
-      if (QLog.isColorLevel()) {
-        QLog.d("TeleScreen|CheckForwardManager", 2, "add req with id: " + i);
-      }
-      localNewIntent.setObserver(anrx.a());
-      localBaseApplicationImpl.getRuntime().startServlet(localNewIntent);
-      if ((localReqJumpCheckRecmd.pkg_name.isEmpty()) && (TextUtils.isEmpty(localReqJumpCheckRecmd.scheme.get())) && (TextUtils.isEmpty(localReqJumpCheckRecmd.action.get())) && (TextUtils.isEmpty(localReqJumpCheckRecmd.url.get())))
+    }
+  }
+  
+  public List<ConversationInfo> a(QQAppInterface paramQQAppInterface)
+  {
+    Object localObject = paramQQAppInterface.a().a();
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((Set)localObject).iterator();
+    label241:
+    while (((Iterator)localObject).hasNext())
+    {
+      ConversationInfo localConversationInfo = (ConversationInfo)((Iterator)localObject).next();
+      if (localConversationInfo.type == 10007)
       {
-        azlr.c();
-        QLog.e("TeleScreen|CheckForwardManager", 1, "openthirdappnullinfo" + QLog.getStackTraceString(new Throwable()));
-      }
-      return;
-      if (paramList != null)
-      {
-        paramString3 = paramList.iterator();
-        while (paramString3.hasNext())
+        MessageRecord localMessageRecord = paramQQAppInterface.a(10007).a(localConversationInfo.uin, localConversationInfo.type);
+        if (localMessageRecord != null)
         {
-          paramList = (ResolveInfo)paramString3.next();
-          if (paramList.activityInfo != null) {
-            localReqJumpCheckRecmd.pkg_name.add(paramList.activityInfo.packageName);
-          } else if (paramList.serviceInfo != null) {
-            localReqJumpCheckRecmd.pkg_name.add(paramList.serviceInfo.packageName);
-          } else if ((Build.VERSION.SDK_INT >= 19) && (paramList.providerInfo != null)) {
-            localReqJumpCheckRecmd.pkg_name.add(paramList.providerInfo.packageName);
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList item = " + localMessageRecord.getBaseInfoString());
+          }
+          String str = localMessageRecord.getExtInfoFromExtStr("ext_key_game_msg_info");
+          if (!TextUtils.isEmpty(str))
+          {
+            localConversationInfo.extString = str;
+            localConversationInfo.tinyInfo = new TinyInfo(str, localMessageRecord.isSend());
           }
         }
-        if ((QLog.isColorLevel()) && (localReqJumpCheckRecmd.pkg_name.has()) && (!localReqJumpCheckRecmd.pkg_name.isEmpty())) {
-          QLog.d("TeleScreen|CheckForwardManager", 2, "resolve pkg: " + (String)localReqJumpCheckRecmd.pkg_name.get(0));
+        for (;;)
+        {
+          if (!a(localConversationInfo)) {
+            break label241;
+          }
+          localArrayList.add(localConversationInfo);
+          break;
+          if (!TextUtils.isEmpty(localConversationInfo.extString))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList info = " + localConversationInfo);
+            }
+            localConversationInfo.tinyInfo = new TinyInfo(localConversationInfo.extString);
+          }
         }
       }
     }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, oidb_cmd0xc78.CheckShareExtensionReq paramCheckShareExtensionReq, String paramString, asnb paramasnb)
-  {
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), asna.class);
-    localNewIntent.putExtra("CMD", "OidbSvc.0xc78_1");
-    localNewIntent.putExtra("ext_info", paramString);
-    paramString = new oidb_cmd0xc78.ReqBody();
-    paramString.check_share_extension_req.set(paramCheckShareExtensionReq);
-    paramCheckShareExtensionReq = new oidb_sso.OIDBSSOPkg();
-    paramCheckShareExtensionReq.uint32_command.set(3192);
-    paramCheckShareExtensionReq.uint32_service_type.set(1);
-    paramCheckShareExtensionReq.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramString.toByteArray()));
-    localNewIntent.putExtra("RequestBytes", paramCheckShareExtensionReq.toByteArray());
-    if (this.a == null) {
-      this.a = new asmz();
-    }
-    int i = this.a.a(paramasnb);
-    localNewIntent.setObserver(this.a);
-    localNewIntent.putExtra("req_id", i);
-    paramQQAppInterface.startServlet(localNewIntent);
     if (QLog.isColorLevel()) {
-      QLog.d("TeleScreen|CheckForwardManager", 2, "sendCheckShareReq");
+      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList mock before = " + localArrayList);
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList size = " + localArrayList.size());
+    }
+    return localArrayList;
   }
-  
-  public void onDestroy() {}
 }
 
 

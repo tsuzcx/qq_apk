@@ -22,12 +22,11 @@ public class ExtraTypeInfo
   public static final int SOURCE_TYPE_IS_MINI_PROJECT = 9001;
   public static final int SOURCE_TYPE_QZONE = 9002;
   public String commentId;
-  public String mCommentPosterId;
   public int mDataPosition;
-  public String mReplyPosterId;
   public int pageType;
   public String replyId;
   public int sourceType;
+  public String userId;
   
   public ExtraTypeInfo() {}
   
@@ -50,6 +49,11 @@ public class ExtraTypeInfo
   public String getReplyId()
   {
     return this.replyId;
+  }
+  
+  public String getUserId()
+  {
+    return this.userId;
   }
   
   public void setCommentId(String paramString)

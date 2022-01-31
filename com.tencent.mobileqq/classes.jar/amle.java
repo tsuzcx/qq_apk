@@ -1,47 +1,34 @@
-import android.os.SystemClock;
-import android.util.AndroidRuntimeException;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
-public abstract class amle
+class amle
+  implements abso
 {
-  public boolean askGPS;
-  protected String callerRoute;
-  protected long geoCacheInterval;
-  protected long globalCacheInterval;
-  public boolean goonListener;
-  private boolean isRemoved;
-  public int level;
-  protected long levelCacheInterval;
-  public long maxCacheInterval;
-  protected int maxFailCount = 3;
-  public boolean reqLocation;
-  private boolean requesting;
-  public long sTime;
-  public String tag;
-  public boolean uiThread;
+  amle(amlc paramamlc, String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte) {}
   
-  public amle(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public ToServiceMsg a()
   {
-    if ((paramInt == 0) || (paramInt == 1) || (paramInt == 3) || (paramInt == 4))
-    {
-      this.tag = paramString;
-      this.level = paramInt;
-      this.askGPS = paramBoolean2;
-      this.reqLocation = paramBoolean1;
-      this.goonListener = paramBoolean4;
-      this.uiThread = paramBoolean3;
-      this.maxCacheInterval = paramLong;
-      this.sTime = SystemClock.elapsedRealtime();
-      return;
-    }
-    throw new AndroidRuntimeException("invalid level=" + paramInt);
+    ToServiceMsg localToServiceMsg = amlc.b(this.jdField_a_of_type_Amlc).createToServiceMsg("MessageSvc.PbSendMsg");
+    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putByte("cmd", (byte)0);
+    localToServiceMsg.extraData.putByte("keyType", (byte)0);
+    localToServiceMsg.extraData.putByte("sendType", (byte)0);
+    localToServiceMsg.extraData.putInt("busiType", 1025);
+    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putInt("random", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putLong("msgsize", 0L);
+    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_b_of_type_Long));
+    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 9);
+    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_b_of_type_Int);
+    azak localazak = new azak();
+    localazak.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    localazak.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    localToServiceMsg.putWupBuffer(azad.a(amlc.b(this.jdField_a_of_type_Amlc), 9, this.jdField_a_of_type_JavaLangString, localazak, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int).toByteArray());
+    return localToServiceMsg;
   }
-  
-  public void onConsecutiveFailure(int paramInt1, int paramInt2) {}
-  
-  public abstract void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo);
-  
-  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 

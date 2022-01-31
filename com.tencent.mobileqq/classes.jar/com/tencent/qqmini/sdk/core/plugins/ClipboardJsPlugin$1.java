@@ -4,13 +4,13 @@ import android.content.ClipData;
 import android.content.ClipData.Item;
 import android.content.ClipboardManager;
 import android.content.Context;
-import bgkd;
+import bgok;
 import org.json.JSONObject;
 
 class ClipboardJsPlugin$1
   implements Runnable
 {
-  ClipboardJsPlugin$1(ClipboardJsPlugin paramClipboardJsPlugin, bgkd parambgkd) {}
+  ClipboardJsPlugin$1(ClipboardJsPlugin paramClipboardJsPlugin, bgok parambgok) {}
   
   public void run()
   {

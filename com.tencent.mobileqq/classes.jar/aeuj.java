@@ -1,17 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-class aeuj
-  implements View.OnTouchListener
+public final class aeuj
+  implements Parcelable.Creator<SessionInfo>
 {
-  aeuj(aeui paramaeui) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public SessionInfo a(Parcel paramParcel)
   {
-    aeui.a(this.a).a(paramMotionEvent);
-    return true;
+    return new SessionInfo(paramParcel);
+  }
+  
+  public SessionInfo[] a(int paramInt)
+  {
+    return new SessionInfo[paramInt];
   }
 }
 

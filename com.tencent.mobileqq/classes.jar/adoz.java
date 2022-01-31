@@ -1,21 +1,21 @@
-import QQService.SvcDevLoginInfo;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import java.util.ArrayList;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class adoz
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public adoz(RecentLoginDevActivity paramRecentLoginDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
+  public adoz(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramView.stDeviceItemDes);
-    RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, paramView.strDeviceName, localArrayList, RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity), this.jdField_a_of_type_Int);
+    if (paramMotionEvent.getAction() == 1)
+    {
+      this.a.a();
+      nrt.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573C", "0X800573C", 0, 0, "", "", "", "", false);
+    }
+    return true;
   }
 }
 

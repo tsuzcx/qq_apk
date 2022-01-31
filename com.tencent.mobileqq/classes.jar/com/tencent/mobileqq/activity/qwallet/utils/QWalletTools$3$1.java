@@ -19,7 +19,7 @@ class QWalletTools$3$1
       {
         localRedDotImageView.setReddotXOffsetDp(15);
         localRedDotImageView.setReddotYOffsetDp(10);
-        localRedDotImageView.setRedDotDrawable(localRedDotImageView.getResources().getDrawable(2130849729));
+        localRedDotImageView.setRedDotDrawable(localRedDotImageView.getResources().getDrawable(2130849802));
         localRedDotImageView.a(true);
       }
       return;

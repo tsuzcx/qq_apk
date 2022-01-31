@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bghl;
-import bghn;
-import bghv;
+import bgls;
+import bglu;
+import bgmc;
 
 class EmbeddedVideoJsPlugin$1
-  implements bghv<bghn>
+  implements bgmc<bglu>
 {
   EmbeddedVideoJsPlugin$1(EmbeddedVideoJsPlugin paramEmbeddedVideoJsPlugin) {}
   
-  public bghn perform(bghl parambghl)
+  public bglu perform(bgls parambgls)
   {
-    return parambghl.a();
+    return parambgls.a();
   }
 }
 

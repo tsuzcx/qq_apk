@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
 
-class aqfr
+public class aqfr
   implements DialogInterface.OnClickListener
 {
-  aqfr(aqfq paramaqfq) {}
+  public aqfr(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Face2FaceAddFriendActivity.e(this.a.a);
+    paramDialogInterface.dismiss();
   }
 }
 

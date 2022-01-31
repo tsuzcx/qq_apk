@@ -34,8 +34,8 @@ public class qsb
   
   public static void d()
   {
-    if (!awwp.a()) {
-      awwp.a(BaseApplication.getContext(), new qsc());
+    if (!axay.a()) {
+      axay.a(BaseApplication.getContext(), new qsc());
     }
   }
   
@@ -203,7 +203,7 @@ public class qsb
   
   public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
   {
-    bfrq.c(new PlayerCaptureProxy.2(this));
+    bfvz.c(new PlayerCaptureProxy.2(this));
   }
 }
 

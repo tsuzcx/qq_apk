@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import xcu;
-import xdd;
+import xhd;
+import xhm;
 
 class DoodleTextureView$1
   implements Runnable
@@ -10,12 +10,12 @@ class DoodleTextureView$1
   
   public void run()
   {
-    xdd localxdd = (xdd)this.this$0.jdField_a_of_type_Xcu.a(102);
-    if (localxdd != null)
+    xhm localxhm = (xhm)this.this$0.jdField_a_of_type_Xhd.a(102);
+    if (localxhm != null)
     {
-      localxdd.a();
-      localxdd.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
-      this.this$0.jdField_a_of_type_Xcu.h();
+      localxhm.a();
+      localxhm.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
+      this.this$0.jdField_a_of_type_Xhd.h();
       this.this$0.a();
     }
   }

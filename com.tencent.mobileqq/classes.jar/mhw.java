@@ -28,11 +28,11 @@ public class mhw
     if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.e)
     {
       this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.c, this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.jdField_a_of_type_Long, 100);
-      azmj.b(null, "CliOper", "", "", "0X8004CF2", "0X8004CF2", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8004CF2", "0X8004CF2", 0, 0, "", "", "", "");
       if (((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f != 90) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f != 270)) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().a() == -1) || (((lqq)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().c.get(0)).a != 1)) {
         break label318;
       }
-      azmj.b(null, "CliOper", "", "", "0X8004CFB", "0X8004CFB", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8004CFB", "0X8004CFB", 0, 0, "", "", "", "");
     }
     for (;;)
     {
@@ -42,7 +42,7 @@ public class mhw
       break;
       label318:
       if (((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f == 90) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f == 270)) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().a() != -1) && (((lqq)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().c.get(0)).a == 2)) {
-        azmj.b(null, "CliOper", "", "", "0X8004CFC", "0X8004CFC", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8004CFC", "0X8004CFC", 0, 0, "", "", "", "");
       }
     }
   }

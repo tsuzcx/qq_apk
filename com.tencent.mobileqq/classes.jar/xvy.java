@@ -1,15 +1,31 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class xvy
-  implements xwi
+public abstract class xvy<T>
 {
-  public xvy(ScannerActivity paramScannerActivity, long paramLong) {}
+  private int jdField_a_of_type_Int;
+  private List<T> jdField_a_of_type_JavaUtilList;
   
-  public void a()
+  public xvy(int paramInt, List<T> paramList)
   {
-    this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.b();
-    QLog.d("ScannerActivity", 2, "launchAr time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public List<T> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public abstract void a(int paramInt, T paramT, wtq paramwtq);
+  
+  public void a(int paramInt, wtq paramwtq)
+  {
+    a(paramInt, this.jdField_a_of_type_JavaUtilList.get(paramInt), paramwtq);
   }
 }
 

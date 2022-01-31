@@ -1,18 +1,18 @@
 package com.tencent.qqmini.sdk.core.manager;
 
-import bgqv;
+import bgvc;
 
 public class VoIPManager$RoomConfig
 {
-  @bgqv(a="groupId")
+  @bgvc(a="groupId")
   public String groupId;
-  @bgqv(a="muteConfig")
+  @bgvc(a="muteConfig")
   public VoIPManager.MuteConfig muteConfig;
-  @bgqv(a="nonceStr")
+  @bgvc(a="nonceStr")
   public String nonceStr;
-  @bgqv(a="signature")
+  @bgvc(a="signature")
   public String signature;
-  @bgqv(a="timeStamp")
+  @bgvc(a="timeStamp")
   public int timeStamp;
   
   public String toString()

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import becq;
+import begz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import java.util.Map;

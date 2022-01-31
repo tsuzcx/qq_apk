@@ -1,73 +1,46 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
 
-class assq
-  implements INetInfoHandler
+public class assq
+  extends GestureDetector.SimpleOnGestureListener
 {
-  assq(assp paramassp) {}
+  public assq(HiBoomTextView paramHiBoomTextView) {}
   
-  public void onNetMobile2None()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    Iterator localIterator = assp.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((asss)localIterator.next()).a(5);
+    if (this.a.jdField_a_of_type_Assw != null)
+    {
+      this.a.jdField_a_of_type_Assw.a(this.a);
+      return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetMobile2None onConnClose");
-    }
+    return super.onDoubleTap(paramMotionEvent);
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    paramString = assp.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((asss)paramString.next()).a(4);
+    assa localassa = asry.a().a(this.a.jdField_a_of_type_Int, this.a.b, this.a.jdField_a_of_type_Asrz);
+    if (this.a.b())
+    {
+      localassa.a(true);
+      this.a.invalidate();
+      return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetMobile2Wifi onConnOK");
+    if (HiBoomTextView.a(this.a)) {
+      this.a.a();
     }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    paramString = assp.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((asss)paramString.next()).a(3);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetNone2Mobile onConnOK");
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    paramString = assp.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((asss)paramString.next()).a(2);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetNone2Wifi onConnOK");
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    paramString = assp.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((asss)paramString.next()).a(1);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    Iterator localIterator = assp.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((asss)localIterator.next()).a(0);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetWifi2None onConnClose");
+    for (;;)
+    {
+      return super.onSingleTapConfirmed(paramMotionEvent);
+      if (localassa.jdField_a_of_type_Int == 3)
+      {
+        this.a.a(true);
+      }
+      else if (localassa.jdField_a_of_type_Int == 4)
+      {
+        this.a.jdField_a_of_type_Boolean = true;
+        this.a.invalidate();
+      }
     }
   }
 }

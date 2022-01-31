@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import alox;
+import altm;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
@@ -8,10 +8,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import bbcg;
-import bbch;
-import bbci;
-import bdbt;
+import bbgp;
+import bbgq;
+import bbgr;
+import bdgc;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -25,10 +25,10 @@ import java.util.Map;
 public class TroopAdminList
   extends IphoneTitleBarActivity
 {
-  alox jdField_a_of_type_Alox = new bbcg(this);
+  altm jdField_a_of_type_Altm = new bbgp(this);
   public View.OnClickListener a;
   protected LinearLayout a;
-  bbci jdField_a_of_type_Bbci;
+  bbgr jdField_a_of_type_Bbgr;
   protected FriendListHandler a;
   protected XListView a;
   protected final String a;
@@ -42,7 +42,7 @@ public class TroopAdminList
   {
     this.jdField_a_of_type_JavaLangString = "TroopAdminList";
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bbch(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bbgq(this);
   }
   
   protected void a()
@@ -84,8 +84,8 @@ public class TroopAdminList
   
   protected void b()
   {
-    View localView = View.inflate(this, 2131560395, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131364643));
+    View localView = View.inflate(this, 2131560394, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131364645));
     this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this);
@@ -93,7 +93,7 @@ public class TroopAdminList
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
     setContentView(localView);
-    setTitle(getString(2131694194));
+    setTitle(getString(2131694196));
   }
   
   public void c()
@@ -108,7 +108,7 @@ public class TroopAdminList
     while (i < j)
     {
       String str = (String)((Map)this.jdField_a_of_type_JavaUtilList.get(i)).get("uin");
-      ((Map)this.jdField_a_of_type_JavaUtilList.get(i)).put("nick", bdbt.j(this.app, str));
+      ((Map)this.jdField_a_of_type_JavaUtilList.get(i)).put("nick", bdgc.j(this.app, str));
       i += 1;
     }
     runOnUiThread(new TroopAdminList.4(this));
@@ -134,7 +134,7 @@ public class TroopAdminList
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Alox);
+    removeObserver(this.jdField_a_of_type_Altm);
     super.doOnDestroy();
   }
 }

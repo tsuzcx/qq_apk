@@ -1,9 +1,9 @@
 package com.tencent.qqmini.proxyimpl;
 
-import alpo;
+import alud;
 import android.app.Activity;
-import bdcd;
-import bdfq;
+import bdgm;
+import bdjz;
 
 class VideoJsProxyImpl$2
   implements Runnable
@@ -12,7 +12,7 @@ class VideoJsProxyImpl$2
   
   public void run()
   {
-    bdcd.a(this.val$context, 230, alpo.a(2131716679), alpo.a(2131716680), alpo.a(2131716683), alpo.a(2131716681), new VideoJsProxyImpl.2.1(this), new VideoJsProxyImpl.2.2(this)).show();
+    bdgm.a(this.val$context, 230, alud.a(2131716691), alud.a(2131716692), alud.a(2131716695), alud.a(2131716693), new VideoJsProxyImpl.2.1(this), new VideoJsProxyImpl.2.2(this)).show();
   }
 }
 

@@ -1,22 +1,10 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import java.util.List;
 
-abstract class amml
+public abstract interface amml
 {
-  protected final SharedPreferences a = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 0);
+  public abstract void a();
   
-  protected abstract String a();
-  
-  protected void a()
-  {
-    this.a.edit().putBoolean(a(), true).commit();
-  }
-  
-  protected boolean a()
-  {
-    return !this.a.contains(a());
-  }
+  public abstract void a(List<ammf> paramList);
 }
 
 

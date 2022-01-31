@@ -1,36 +1,23 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.widget.TipsBar;
 
 public class acxu
-  implements bhqd
+  implements View.OnClickListener
 {
-  public acxu(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, bhpy parambhpy) {}
+  public acxu(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Bhpy != null) {
-      this.jdField_a_of_type_Bhpy.dismiss();
+    if ((this.a.a != null) && (this.a.a.getVisibility() == 0)) {
+      this.a.a.setVisibility(8);
     }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 1);
-      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(3) }));
-      return;
-    case 1: 
-      FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 2);
-      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(2) }));
-      return;
-    }
-    FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 3);
-    FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(1) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acxu
  * JD-Core Version:    0.7.0.1
  */

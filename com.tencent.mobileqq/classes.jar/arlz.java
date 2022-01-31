@@ -1,8 +1,15 @@
-public class arlz
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class arlz
+  implements View.OnClickListener
 {
-  public arlw a;
-  public arlx a;
-  public arly a;
+  arlz(arly paramarly) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.e();
+  }
 }
 
 

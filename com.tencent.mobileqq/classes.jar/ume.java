@@ -1,73 +1,30 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class ume
+class ume
+  extends altm
 {
-  public static int a(int paramInt)
-  {
-    return BaseApplicationImpl.getApplication().getResources().getInteger(paramInt);
-  }
+  ume(umd paramumd) {}
   
-  public static Boolean a(int paramInt)
+  protected void onAddFriend(String paramString)
   {
-    return Boolean.valueOf(BaseApplicationImpl.getApplication().getResources().getBoolean(paramInt));
-  }
-  
-  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
-  {
-    return umr.a(paramClass, paramVarArgs);
-  }
-  
-  public static String a(int paramInt)
-  {
-    return BaseApplicationImpl.getApplication().getResources().getString(paramInt);
-  }
-  
-  public static String a(int paramInt, Object... paramVarArgs)
-  {
-    return BaseApplicationImpl.getApplication().getResources().getString(paramInt, paramVarArgs);
-  }
-  
-  public static String a(String paramString)
-  {
-    return paramString;
-  }
-  
-  public static <T extends Activity> umn<T> a(Class<? extends umn<T>> paramClass, Class<umn<T>> paramClass1, Object... paramVarArgs)
-  {
-    return (umn)umr.a(paramClass, paramClass1, paramVarArgs);
-  }
-  
-  public static xrg a(Context paramContext, int paramInt)
-  {
-    return umu.a(paramContext, paramInt);
-  }
-  
-  public static void a(Context paramContext, int paramInt, long paramLong)
-  {
-    umx.a(paramContext, paramInt, paramLong);
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString)
-  {
-    umx.a(paramContext, paramInt, paramString);
-  }
-  
-  public static void a(Object paramObject)
-  {
-    umv.a(paramObject);
-  }
-  
-  public static boolean a()
-  {
-    return umw.a();
-  }
-  
-  public static String[] a(int paramInt)
-  {
-    return BaseApplicationImpl.getApplication().getResources().getStringArray(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "onAddFriend: invoked.  addUin: " + paramString);
+    }
+    try
+    {
+      paramString = Long.valueOf(paramString);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(paramString);
+      this.a.a(3, localArrayList);
+      this.a.a();
+      return;
+    }
+    catch (NumberFormatException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("StoryHaloManager", 2, "onAddFriend: failed.  exception: " + paramString);
+    }
   }
 }
 

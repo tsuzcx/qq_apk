@@ -1,50 +1,33 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.spread.ConfigSetting.LocalWtTicketPromise.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
 
 public class bafc
-  implements WtTicketPromise
+  extends baff
+  implements badj
 {
-  private aouf jdField_a_of_type_Aouf;
-  private WeakReference<bafb> jdField_a_of_type_JavaLangRefWeakReference;
+  protected String b;
   
-  public bafc(bafb parambafb, aouf paramaouf)
+  public bafc(SpriteNativeView paramSpriteNativeView, String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambafb);
-    this.jdField_a_of_type_Aouf = paramaouf;
+    super(paramSpriteNativeView);
+    this.b = paramString;
   }
   
-  public void Done(Ticket paramTicket)
+  protected ImageView a()
   {
-    if ((paramTicket != null) && (paramTicket._pskey_map != null))
-    {
-      ThreadManager.excute(new ConfigSetting.LocalWtTicketPromise.1(this), 128, null, false);
-      return;
-    }
-    if (this.jdField_a_of_type_Aouf != null) {
-      this.jdField_a_of_type_Aouf.a(false);
-    }
-    QLog.e("ConfigSetting", 2, "get pskey failed ticket is null");
+    return new PressEffectImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public String a()
   {
-    QLog.e("ConfigSetting", 2, "get pskey failed ticket failed");
-    if (this.jdField_a_of_type_Aouf != null) {
-      this.jdField_a_of_type_Aouf.a(false);
-    }
+    return this.b;
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_Aouf != null) {
-      this.jdField_a_of_type_Aouf.a(false);
-    }
-    QLog.e("ConfigSetting", 2, "get pskey failed ticket time oiut");
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
   }
 }
 

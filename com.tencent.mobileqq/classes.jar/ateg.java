@@ -1,148 +1,164 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.support.annotation.Nullable;
-import android.support.v4.util.ArraySet;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.intervideo.nowproxy.NowLive;
+import com.tencent.intervideo.nowproxy.customized_interface.DownloadCallback;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import java.io.ByteArrayInputStream;
-import java.util.Iterator;
-import org.json.JSONObject;
+import com.tencent.qqinterface.CommonCallback;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 public class ateg
-  extends WebViewPlugin
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  @Nullable
-  private ArraySet<Integer> jdField_a_of_type_AndroidSupportV4UtilArraySet;
+  private static volatile ateg jdField_a_of_type_Ateg;
+  private atct jdField_a_of_type_Atct;
+  public atcy a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public ateg()
+  public static ateg a()
   {
-    this.mPluginNameSpace = "Gdt";
-  }
-  
-  private Activity a()
-  {
-    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
-    return localActivity;
-  }
-  
-  private void a(String paramString)
-  {
-    for (;;)
+    if (jdField_a_of_type_Ateg == null) {}
+    try
     {
-      Object localObject;
-      try
-      {
-        localObject = new JSONObject(paramString);
-        paramString = ((JSONObject)localObject).optString("businessId");
-        String str1 = ((JSONObject)localObject).optString("openlink");
-        String str2 = ((JSONObject)localObject).optString("packageName");
-        localObject = ((JSONObject)localObject).optString("callback");
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label207;
-        }
-        ateh localateh = new ateh(this, (String)localObject);
-        i = anrt.a().a(localateh);
-        if (this.jdField_a_of_type_AndroidSupportV4UtilArraySet == null) {
-          this.jdField_a_of_type_AndroidSupportV4UtilArraySet = new ArraySet();
-        }
-        this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(Integer.valueOf(i));
-        try
-        {
-          if (!TextUtils.isEmpty(str1))
-          {
-            anry.a(this.jdField_a_of_type_AndroidAppActivity, str1, paramString, i);
-            return;
-          }
-          if (TextUtils.isEmpty(str2)) {
-            break label183;
-          }
-          bdem.a(this.jdField_a_of_type_AndroidAppActivity, str2, null, paramString, i);
-          return;
-        }
-        catch (ActivityNotFoundException paramString)
-        {
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            break;
-          }
-        }
-        callJs((String)localObject, new String[] { "{\"openresult\":-3}" });
-        return;
+      if (jdField_a_of_type_Ateg == null) {
+        jdField_a_of_type_Ateg = new ateg();
       }
-      catch (Exception paramString)
-      {
-        QLog.e(this.TAG, 1, paramString, new Object[0]);
-        return;
-      }
-      label183:
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break;
-      }
-      callJs((String)localObject, new String[] { "{\"openresult\":-3}" });
+      return jdField_a_of_type_Ateg;
+    }
+    finally {}
+  }
+  
+  public static void a()
+  {
+    if (jdField_a_of_type_Ateg != null) {
+      jdField_a_of_type_Ateg.b();
+    }
+  }
+  
+  public atcy a()
+  {
+    return this.jdField_a_of_type_Atcy;
+  }
+  
+  public String a(String paramString)
+  {
+    return bazo.a().a(paramString, 1017);
+  }
+  
+  public Future<Bundle> a(String paramString1, String paramString2)
+  {
+    return amdp.a(128).submit(new atem(this, paramString2, paramString1));
+  }
+  
+  public Future<Bundle> a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    return amdp.a(128).submit(new atek(this, paramString1, paramString2, paramString3, paramString4));
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    Object localObject = paramBundle.getString("url", "");
+    QLog.i("PluginManagerInterfaceImpl", 1, "跳转web页面 URL = " + (String)localObject);
+    localObject = new Intent(BaseApplicationImpl.getContext(), QQBrowserActivity.class);
+    ((Intent)localObject).putExtras(paramBundle);
+    ((Intent)localObject).addFlags(268435456);
+    BaseApplicationImpl.getContext().startActivity((Intent)localObject);
+  }
+  
+  public void a(Bundle paramBundle, DownloadCallback paramDownloadCallback)
+  {
+    try
+    {
+      String str = paramBundle.getString("url", "");
+      paramBundle = paramBundle.getString("path", "");
+      this.jdField_a_of_type_Atct = atct.jdField_a_of_type_Atct;
+      this.jdField_a_of_type_Atct.a(BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_Atct.a(str, new atei(this, paramDownloadCallback, str));
+      this.jdField_a_of_type_Atct.a(atcv.a(str, "com.tencent.now", paramBundle));
       return;
-      label207:
-      int i = 0;
     }
-  }
-  
-  public Object handleEvent(String paramString, long paramLong)
-  {
-    if ((paramLong == 8L) && (paramString != null)) {
-      try
-      {
-        if (((anrv)aogj.a().a(416)).a(paramString))
-        {
-          QLog.d(this.TAG, 1, "doInterceptRequest");
-          WebResourceResponse localWebResourceResponse = new WebResourceResponse("text/html", "utf-8", new ByteArrayInputStream(new byte[0]));
-          return localWebResourceResponse;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e(this.TAG, 1, localThrowable, new Object[0]);
-        return super.handleEvent(paramString, paramLong);
-      }
-    }
-    return super.handleEvent(paramString, paramLong);
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool = false;
-    if ("Gdt".equals(paramString2))
+    finally
     {
-      addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
-      if (("Openlink".equals(paramString3)) && (paramVarArgs.length > 0)) {
-        a(paramVarArgs[0]);
-      }
-      bool = true;
+      paramBundle = finally;
+      throw paramBundle;
     }
-    return bool;
   }
   
-  public void onCreate()
+  public void a(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback)
   {
-    super.onCreate();
-    this.jdField_a_of_type_AndroidAppActivity = a();
+    String str1 = paramBundle.getString("serviceName");
+    String str2 = paramBundle.getString("serviceCmd");
+    paramBundle = paramBundle.getByteArray("buffer");
+    ((atep)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(145)).a(str1, str2, paramBundle, paramCommonCallback);
   }
   
-  public void onDestroy()
+  public void a(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilArraySet != null)
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    }
+    if (this.jdField_a_of_type_Atcy == null) {
+      this.jdField_a_of_type_Atcy = new atcy(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+    NowLive.setCustomizedTicket(new ateh(this));
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void b()
+  {
+    jdField_a_of_type_Ateg = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_Atcy = null;
+    if (this.jdField_a_of_type_Atct != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_AndroidSupportV4UtilArraySet.iterator();
-      while (localIterator.hasNext())
-      {
-        int i = ((Integer)localIterator.next()).intValue();
-        anrt.a().a(i);
-      }
-      this.jdField_a_of_type_AndroidSupportV4UtilArraySet.clear();
+      this.jdField_a_of_type_Atct.a();
+      this.jdField_a_of_type_Atct = null;
     }
-    super.onDestroy();
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    QLog.i(paramBundle.getString("tag", "nowplugin_dynamic"), 1, paramBundle.getString("msg", ""));
+  }
+  
+  public void b(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback)
+  {
+    ngd localngd = (ngd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(130);
+    localngd.a(paramBundle.getString("fromId"), paramBundle.getLong("roomId"), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), new atej(this, localngd, paramCommonCallback));
+  }
+  
+  public void c(Bundle paramBundle)
+  {
+    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), ShareToQQActivity.class);
+    localIntent.addFlags(268435456);
+    if (paramBundle != null) {
+      localIntent.putExtras(paramBundle);
+    }
+    localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+    BaseApplicationImpl.getContext().startActivity(localIntent);
+  }
+  
+  public void d(Bundle paramBundle)
+  {
+    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), ReadInJoyDeliverBiuActivity.class);
+    localIntent.putExtra("arg_title", paramBundle.getString("title"));
+    localIntent.putExtra("arg_src", paramBundle.getString("anchor_name"));
+    localIntent.putExtra("arg_cover", paramBundle.getString("cover_url"));
+    localIntent.putExtra("arg_source_url", paramBundle.getString("room_url"));
+    localIntent.putExtra("biu_src", 24);
+    localIntent.putExtra("arg_now_live_vid", paramBundle.getString("vid"));
+    localIntent.putExtra("arg_now_anchor_uin", paramBundle.getLong("qq_number"));
+    localIntent.setFlags(268435456);
+    BaseApplicationImpl.getContext().startActivity(localIntent);
   }
 }
 

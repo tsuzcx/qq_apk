@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 
 public class ohy
-  implements bepr
+  implements beua
 {
   public ohy(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   

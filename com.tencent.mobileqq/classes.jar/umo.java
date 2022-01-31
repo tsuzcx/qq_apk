@@ -1,7 +1,4 @@
-public class umo
-  extends vym
-{}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     umo

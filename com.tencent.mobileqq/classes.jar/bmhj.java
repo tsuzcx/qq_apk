@@ -1,16 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.setting.QIMSelectEffectParams;
 
-class bmhj
-  implements View.OnTouchListener
+public final class bmhj
+  implements Parcelable.Creator<QIMSelectEffectParams>
 {
-  bmhj(bmhd parambmhd) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public QIMSelectEffectParams a(Parcel paramParcel)
   {
-    return this.a.a.a(paramMotionEvent);
+    return new QIMSelectEffectParams(paramParcel);
+  }
+  
+  public QIMSelectEffectParams[] a(int paramInt)
+  {
+    return new QIMSelectEffectParams[paramInt];
   }
 }
 

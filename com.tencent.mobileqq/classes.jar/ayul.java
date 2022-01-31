@@ -1,29 +1,22 @@
-import android.os.Parcel;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
 
 public class ayul
+  extends ampt
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  
-  public void a(Parcel paramParcel)
+  public ayul(NetSearchEngine paramNetSearchEngine, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.c);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void b(Parcel paramParcel)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.c = paramParcel.readInt();
+    if (paramInt == 0)
+    {
+      NetSearchEngine.a = paramSosoLbsInfo.a.a;
+      NetSearchEngine.b = paramSosoLbsInfo.a.b;
+    }
   }
 }
 

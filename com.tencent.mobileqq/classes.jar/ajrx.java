@@ -1,15 +1,11 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 public class ajrx
 {
-  public AtomicBoolean a;
-  public boolean a;
-  
-  private ajrx(CameraFilterGLView paramCameraFilterGLView)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
+  public static final String a = bdzf.a(alof.aW);
+  public static final String b = alof.bf;
+  public static final String c = bdzf.a(alof.bg);
+  public static final String d = bbck.a(alof.aX);
+  public static final String e = alof.bk;
+  public static final String f = alof.br;
 }
 
 

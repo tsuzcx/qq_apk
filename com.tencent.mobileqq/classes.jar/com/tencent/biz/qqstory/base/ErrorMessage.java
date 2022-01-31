@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.base;
 
-import alpo;
+import alud;
 import android.annotation.TargetApi;
 
 @TargetApi(14)
@@ -54,7 +54,7 @@ public class ErrorMessage
     }
     else
     {
-      str = alpo.a(2131704590);
+      str = alud.a(2131704602);
     }
     return String.format("%s(%d)", new Object[] { str, Integer.valueOf(this.errorCode) });
   }

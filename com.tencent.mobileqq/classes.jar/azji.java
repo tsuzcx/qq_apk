@@ -1,21 +1,41 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.startup.step.BroadcastReportRegister;
-import mqq.app.AppCallback;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class azji
-  implements AppCallback
+class azji
+  extends BroadcastReceiver
 {
-  public azji(BroadcastReportRegister paramBroadcastReportRegister) {}
+  azji(azjh paramazjh) {}
   
-  public void onSendBroadcast(Context paramContext, Intent paramIntent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
+    if (paramIntent == null) {}
+    for (;;)
     {
-      anrc.a(paramIntent);
       return;
+      paramContext = paramIntent.getStringExtra("event");
+      if (paramContext != null)
+      {
+        paramIntent = paramIntent.getStringExtra("data");
+        if ((paramIntent != null) && (paramContext.equals("ShortVideoHongbaoInfoUpdate"))) {
+          try
+          {
+            paramContext = new JSONObject(paramIntent);
+            paramIntent = paramContext.optString("shortVideoId");
+            boolean bool = paramContext.optBoolean("isPaid");
+            if ((azjh.a(this.a) != null) && (azjh.a(this.a).h != 1) && (bool) && (azjh.a(this.a).c.equals(paramIntent)))
+            {
+              new azjq(this.a).execute(new String[0]);
+              return;
+            }
+          }
+          catch (JSONException paramContext) {}
+        }
+      }
     }
-    catch (Throwable paramContext) {}
   }
 }
 

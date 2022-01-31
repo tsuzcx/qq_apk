@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.model;
 
-import amxd;
-import anbo;
+import anbm;
+import anfx;
 
 public class QQARSession$9
   implements Runnable
 {
-  public QQARSession$9(anbo paramanbo, boolean paramBoolean) {}
+  public QQARSession$9(anfx paramanfx, boolean paramBoolean) {}
   
   public void run()
   {
     int j = 0;
-    if (anbo.c(this.this$0)) {
-      if (anbo.a(this.this$0) != null) {
-        anbo.b(this.this$0, false);
+    if (anfx.c(this.this$0)) {
+      if (anfx.a(this.this$0) != null) {
+        anfx.b(this.this$0, false);
       }
     }
     int i;
@@ -21,13 +21,13 @@ public class QQARSession$9
     {
       return;
       i = j;
-      if (anbo.a(this.this$0) != null)
+      if (anfx.a(this.this$0) != null)
       {
         i = j;
-        if (anbo.a(this.this$0).a != null)
+        if (anfx.a(this.this$0).a != null)
         {
           i = j;
-          if (anbo.b(this.this$0))
+          if (anfx.b(this.this$0))
           {
             i = j;
             if (this.this$0.a == 2) {
@@ -38,12 +38,12 @@ public class QQARSession$9
       }
       if ((this.a) && (i != 0))
       {
-        anbo.a(this.this$0, anbo.a(this.this$0).a);
+        anfx.a(this.this$0, anfx.a(this.this$0).a);
         return;
       }
     } while (i == 0);
-    if (anbo.a(this.this$0) != null) {
-      anbo.b(this.this$0, true);
+    if (anfx.a(this.this$0) != null) {
+      anfx.b(this.this$0, true);
     }
     this.this$0.n();
   }

@@ -1,61 +1,67 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import com.tencent.qqmini.sdk.manager.EngineVersion;
+import com.tencent.qqmini.sdk.utils.StorageUtil;
 
 public class bgzc
-  extends bgzp
 {
-  private INTERFACE.StGetRobotUinReq a = new INTERFACE.StGetRobotUinReq();
+  private String a;
   
-  public bgzc(COMM.StCommonExt paramStCommonExt, String paramString)
+  private static String a(String paramString1, String paramString2)
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-    this.a.appid.set(paramString);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetRobotUinRsp localStGetRobotUinRsp = new INTERFACE.StGetRobotUinRsp();
-    try
+    boolean bool1 = bgvs.a().c(paramString1);
+    boolean bool2 = bgvs.a().c(paramString2);
+    if ((bool1) && (bool2))
     {
-      localStGetRobotUinRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetRobotUinRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("robotUin", localStGetRobotUinRsp.uin.get());
-        return paramArrayOfByte;
+      localEngineVersion1 = EngineVersion.a(paramString1);
+      localEngineVersion2 = EngineVersion.a(paramString2);
+      if ((localEngineVersion1 != null) && (localEngineVersion2 != null)) {
+        if (EngineVersion.a(localEngineVersion1.b, localEngineVersion2.b) < 0) {}
       }
-      QMLog.d("GetRobotUinRequest", "onResponse fail.rsp = null");
-      return null;
     }
-    catch (Exception paramArrayOfByte)
+    while (bool1)
     {
-      QMLog.d("GetRobotUinRequest", "onResponse fail." + paramArrayOfByte);
+      EngineVersion localEngineVersion1;
+      EngineVersion localEngineVersion2;
+      do
+      {
+        return paramString1;
+        return paramString2;
+      } while ((localEngineVersion1 != null) || (localEngineVersion2 == null));
+      return paramString2;
+    }
+    if (bool2) {
+      return paramString2;
     }
     return null;
   }
   
-  protected byte[] a()
+  private void a(EngineVersion paramEngineVersion)
   {
-    return this.a.toByteArray();
+    if ((paramEngineVersion != null) && (paramEngineVersion.b != null)) {
+      this.a = paramEngineVersion.b.replace("/", "");
+    }
   }
   
-  protected String b()
+  public String a()
   {
-    return "GetRobotUin";
+    String str1 = StorageUtil.getPreference().getString("downloadUrl", "mini");
+    String str2 = StorageUtil.getPreference().getString("version", "1.14.0.00225");
+    str1 = bgvs.a().b(str1, str2);
+    str2 = bgvs.a().b("mini", "1.14.0.00225");
+    String str3 = a(null, a(str1, str2));
+    if (str3 != null) {
+      a(EngineVersion.a(str3));
+    }
+    bhaj.a().i("GameLibVersionManager", "[MiniEng]getBaseEnginePath, appBaseLibPath:" + str1);
+    bhaj.a().i("GameLibVersionManager", "[MiniEng]getBaseEnginePath, innerBaseLibPath:" + str2);
+    bhaj.a().i("GameLibVersionManager", "[MiniEng]getBaseEnginePath, gameBaseLibPath:" + null);
+    bhaj.a().i("GameLibVersionManager", "[MiniEng]getBaseEnginePath, [本次启动使用的小游戏基础库版本]retPath:" + str3);
+    return str3;
+  }
+  
+  public String b()
+  {
+    return this.a;
   }
 }
 

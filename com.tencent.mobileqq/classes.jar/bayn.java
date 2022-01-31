@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.image.URLDrawableHandler;
 
 public class bayn
-  implements bhqf
 {
-  public bayn(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public int a;
+  public URLDrawableHandler a;
+  public String a;
   
-  public void onDismiss()
+  public String toString()
   {
-    TribeVideoListPlayerFragment.a(this.a);
-    this.a.e = false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mUrlFromMsg:" + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",mStartDownOffset:" + this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

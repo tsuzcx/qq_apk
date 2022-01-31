@@ -1,21 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
 
-class bmfx
-  implements View.OnClickListener
+public class bmfx
+  extends AnimatorListenerAdapter
 {
-  bmfx(bmfw parambmfw) {}
+  public bmfx(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramView = this.a;
-    if (!bmfw.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bmfw.a(paramView, bool);
-      bmfw.a(this.a, bmfw.a(this.a));
-      urk.d(bmfw.a(this.a));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteLoosenAnim mProgressView 100ms back end");
+    }
+    this.a.j();
+    atlr.b();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteLoosenAnim mProgressView begin");
     }
   }
 }

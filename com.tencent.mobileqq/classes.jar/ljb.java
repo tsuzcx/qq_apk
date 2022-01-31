@@ -13,7 +13,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 
 public class ljb
-  extends alko
+  extends alpd
 {
   static volatile long jdField_a_of_type_Long = 1L;
   static Object jdField_a_of_type_JavaLangObject = new Object();
@@ -134,9 +134,9 @@ public class ljb
     return localljd;
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
-    return alsi.class;
+    return alwx.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)

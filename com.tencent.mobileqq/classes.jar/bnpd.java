@@ -1,8 +1,14 @@
-public final class bnpd
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class bnpd
+  implements DialogInterface.OnClickListener
 {
-  public static boolean a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (paramInt == 3006) || (paramInt == 3009) || (paramInt == 3014) || (paramInt == 3068) || (paramInt == 3075) || (paramInt == 3078) || (paramInt == 3079);
+    bljn.b("PtuTemplateManager", "【Camera is in Prepareing】toast show: choose cancel");
+    bnpa.a = null;
+    paramDialogInterface.cancel();
   }
 }
 

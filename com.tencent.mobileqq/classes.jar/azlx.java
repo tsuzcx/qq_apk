@@ -1,29 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.statistics.LocalCrashCollector;
-import com.tencent.mobileqq.statistics.LocalCrashCollector.3;
-import com.tencent.widget.XEditTextEx;
+import java.io.File;
 
-public class azlx
-  implements DialogInterface.OnClickListener
+public abstract interface azlx
 {
-  public azlx(LocalCrashCollector.3 param3) {}
+  public abstract boolean a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    try
-    {
-      LocalCrashCollector.a(this.a.this$0).a.setText("");
-      LocalCrashCollector.a(this.a.this$0).delete(0, LocalCrashCollector.a(this.a.this$0).length());
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
-    }
-  }
+  public abstract boolean a(File paramFile, azlv paramazlv, boolean paramBoolean);
+  
+  public abstract boolean b();
 }
 
 

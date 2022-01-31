@@ -1,44 +1,80 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.CompInfoBase;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBaseVidList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.IconInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UsrIcon;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-public class vdh
-  extends unf
+class vdh
+  extends SimpleJob<Void>
 {
-  public final List<vbu> a = new ArrayList();
-  
-  public vdh(qqstory_service.RspStoryPlayerTagInfo paramRspStoryPlayerTagInfo)
+  vdh(vdg paramvdg, String paramString)
   {
-    super(paramRspStoryPlayerTagInfo.result);
-    Iterator localIterator = paramRspStoryPlayerTagInfo.tag_info.get().iterator();
-    Object localObject;
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = this.a.a.icon_info.get();
+    HashMap localHashMap = new HashMap();
+    uwm localuwm = (uwm)uwa.a(2);
+    Iterator localIterator = paramJobContext.iterator();
     String str;
-    qqstory_struct.TagInfoBase localTagInfoBase;
-    if (localIterator.hasNext())
+    QQUserUIItem localQQUserUIItem;
+    for (;;)
     {
-      localObject = (qqstory_struct.TagInfoBaseVidList)localIterator.next();
-      str = ((qqstory_struct.TagInfoBaseVidList)localObject).vid.get().toStringUtf8();
-      localTagInfoBase = (qqstory_struct.TagInfoBase)((qqstory_struct.TagInfoBaseVidList)localObject).tag_info.get();
-      if (!((qqstory_struct.TagInfoBaseVidList)localObject).comp_info.has()) {
-        break label163;
+      if (localIterator.hasNext())
+      {
+        paramJobContext = (qqstory_struct.IconInfo)localIterator.next();
+        str = paramJobContext.union_id.get().toStringUtf8();
+        localQQUserUIItem = localuwm.b(str);
+        if (localQQUserUIItem != null) {
+          if ((paramJobContext.err_code.get() == 0) && (paramJobContext.usr_icon_list.has()) && (paramJobContext.usr_icon_list.size() > 0))
+          {
+            paramVarArgs = (qqstory_struct.UsrIcon)paramJobContext.usr_icon_list.get(0);
+            paramJobContext = paramVarArgs.icon_postfix.get().toStringUtf8();
+            paramVarArgs = paramVarArgs.jmp_postfix.get().toStringUtf8();
+            if (TextUtils.isEmpty(paramJobContext)) {
+              break label309;
+            }
+            paramJobContext = "http://pub.idqqimg.com/pc/misc/qqstory_icon/" + paramJobContext;
+          }
+        }
       }
     }
-    label163:
-    for (paramRspStoryPlayerTagInfo = new xjo((qqstory_struct.CompInfoBase)((qqstory_struct.TagInfoBaseVidList)localObject).comp_info.get());; paramRspStoryPlayerTagInfo = null)
+    label309:
+    for (;;)
     {
-      if (((qqstory_struct.TagInfoBaseVidList)localObject).extern_config_json.has()) {}
-      for (localObject = ((qqstory_struct.TagInfoBaseVidList)localObject).extern_config_json.get().toStringUtf8();; localObject = null)
+      if (!TextUtils.isEmpty(paramVarArgs)) {
+        paramVarArgs = "https://story.now.qq.com/mobile/pages/medal.html?_bid=2473&_wv=1031" + paramVarArgs;
+      }
+      for (;;)
       {
-        this.a.add(new vbu(str, new xjw(localTagInfoBase), paramRspStoryPlayerTagInfo, (String)localObject));
-        break;
-        return;
+        localHashMap.put(str, new String[] { paramJobContext, paramVarArgs });
+        localQQUserUIItem.setUserIcon(paramJobContext, paramVarArgs);
+        for (;;)
+        {
+          localQQUserUIItem.iconUrlCacheTime = System.currentTimeMillis();
+          localuwm.a(localQQUserUIItem);
+          break;
+          localHashMap.put(str, new String[] { "", "" });
+          localQQUserUIItem.setUserIcon("", "");
+        }
+        paramJobContext = new vdi();
+        paramJobContext.a = localHashMap;
+        umc.a().dispatch(paramJobContext);
+        return null;
       }
     }
   }

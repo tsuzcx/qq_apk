@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vashealth;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import org.json.JSONObject;
 
 public class TracePointsData
-  extends awbv
+  extends awge
 {
   public static final String TABLE_NAME = "TracePointsData";
   public int accuracy;
@@ -15,7 +15,7 @@ public class TracePointsData
   public float speed;
   public long startTime;
   public int steps;
-  @awdj
+  @awhs
   public long time;
   
   public JSONObject toJson()

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.multicard.manager;
 
-import aukl;
+import auou;
 
 public class TroopMemberRecommendManager$1
   implements Runnable
 {
-  public TroopMemberRecommendManager$1(aukl paramaukl) {}
+  public TroopMemberRecommendManager$1(auou paramauou) {}
   
   public void run()
   {
-    aukl.a(this.this$0);
+    auou.a(this.this$0);
   }
 }
 

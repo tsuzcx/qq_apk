@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
 import android.os.Bundle;
-import azib;
-import bllv;
+import azmk;
+import blqh;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.NativeVideoImage;
@@ -17,7 +17,7 @@ public class PeakActivity
   
   protected void adjustStatusBar()
   {
-    azib.a(this.mSystemBarComp, getWindow());
+    azmk.a(this.mSystemBarComp, getWindow());
   }
   
   public String getModuleId()
@@ -30,7 +30,7 @@ public class PeakActivity
     super.onCreate(paramBundle);
     setVolumeControlStream(3);
     if (!isLatecyWaitRuntime()) {
-      bllv.a();
+      blqh.a();
     }
   }
   

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.ResultReceiver;
-import bdfc;
+import bdjl;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -33,7 +33,7 @@ final class VideoMsgTools$7
       }
       i = paramBundle.size();
       label86:
-      bdfc.a(i, this.jdField_a_of_type_Boolean);
+      bdjl.a(i, this.jdField_a_of_type_Boolean);
       if (paramBundle != null) {
         break label109;
       }

@@ -1,48 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeWatched;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class uvf
-  extends unk<uvg>
+  extends uli
 {
-  static final String a = ume.a("StorySvc.msgtab_node_watched");
-  public long b;
+  public long a;
+  public final String a;
+  public final boolean a;
   public String b;
-  public int c;
-  public int d;
+  public boolean b;
+  public String c;
+  public String d;
   
-  public String a()
+  public uvf(ErrorMessage paramErrorMessage, String paramString, boolean paramBoolean)
   {
-    return a;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public unf a(byte[] paramArrayOfByte)
+  public String toString()
   {
-    qqstory_service.RspMsgTabNodeWatched localRspMsgTabNodeWatched = new qqstory_service.RspMsgTabNodeWatched();
-    try
-    {
-      localRspMsgTabNodeWatched.mergeFrom(paramArrayOfByte);
-      return new uvg(localRspMsgTabNodeWatched);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wsv.d("Q.qqstory.msgTab:ReqMsgTabNodeWatched", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqMsgTabNodeWatched localReqMsgTabNodeWatched = new qqstory_service.ReqMsgTabNodeWatched();
-    localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqMsgTabNodeWatched.node_type.set(this.c);
-    localReqMsgTabNodeWatched.operation.set(this.d);
-    localReqMsgTabNodeWatched.recommend_id.set(this.jdField_b_of_type_Long);
-    return localReqMsgTabNodeWatched.toByteArray();
+    return "DeleteStoryVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", groupId='" + this.c + '\'' + ", feedId='" + this.d + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", localDelete=" + this.jdField_a_of_type_Boolean + ", isRemoveMember=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 

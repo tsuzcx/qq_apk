@@ -1,53 +1,31 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ancj
+public class ancj
+  extends ancs
 {
-  public static int a(String paramString)
+  public long a;
+  public ancl a;
+  public ancm a;
+  
+  public ancj()
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).getInt(paramString, 0);
+    this.jdField_a_of_type_Ancm = new ancm();
+    this.jdField_a_of_type_Ancl = new ancl();
+    a();
   }
   
-  public static void a(Context paramContext, View paramView)
+  public void a()
   {
-    if (ImmersiveUtils.isSupporImmersive() == 1)
-    {
-      int i = ImmersiveUtils.getStatusBarHeight(paramContext);
-      paramContext = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-      paramContext.topMargin = i;
-      paramView.setLayoutParams(paramContext);
-    }
+    QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecogResult.reset");
+    this.b = 4096L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Ancm.a();
+    this.jdField_a_of_type_Ancl.a();
   }
   
-  public static void a(Context paramContext, View paramView, boolean paramBoolean, int paramInt)
+  public String toString()
   {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams;
-    int i;
-    if (azgq.a(paramContext))
-    {
-      localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-      i = paramInt;
-      if (paramBoolean) {
-        i = paramInt + azgq.d(paramContext);
-      }
-      if (localMarginLayoutParams.bottomMargin != i) {}
-    }
-    else
-    {
-      return;
-    }
-    localMarginLayoutParams.bottomMargin = i;
-    paramView.setLayoutParams(localMarginLayoutParams);
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).edit().putInt(paramString, paramInt).commit();
+    return "ARLocalGestureCircleRecogResult{recogType = " + this.b + ", frameIdx = " + this.jdField_a_of_type_Long + ", gestureResult = " + this.jdField_a_of_type_Ancm + ", circleResult = " + this.jdField_a_of_type_Ancl + '}';
   }
 }
 

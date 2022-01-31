@@ -1,17 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import java.nio.ByteBuffer;
 
-class bniu
-  implements View.OnClickListener
+public class bniu
 {
-  bniu(bnit parambnit) {}
-  
-  public void onClick(View paramView)
+  public static ByteBuffer a(int paramInt1, int paramInt2)
   {
-    if (this.a.a.isShowing())
+    try
     {
-      this.a.a.cancel();
-      this.a.a.dismiss();
+      if (bnit.c)
+      {
+        ByteBuffer localByteBuffer1 = CameraGLSurfaceView.allocate(paramInt1, paramInt2);
+        bnit.b = true;
+        ByteBuffer localByteBuffer2 = localByteBuffer1;
+        if (localByteBuffer1 == null)
+        {
+          localByteBuffer2 = ByteBuffer.allocateDirect(paramInt2);
+          bnit.b = false;
+        }
+        return localByteBuffer2;
+      }
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        Object localObject = null;
+        continue;
+        localObject = null;
+      }
     }
   }
 }

@@ -41,16 +41,16 @@ public class sal
     default: 
       throw new IllegalArgumentException();
     case 7: 
-      return new sap(this, localLayoutInflater.inflate(2131560021, paramViewGroup, false), paramBaseData);
+      return new sap(this, localLayoutInflater.inflate(2131560020, paramViewGroup, false), paramBaseData);
     case 8: 
-      return new san(this, localLayoutInflater.inflate(2131560018, paramViewGroup, false), paramBaseData);
+      return new san(this, localLayoutInflater.inflate(2131560017, paramViewGroup, false), paramBaseData);
     case 13: 
       paramViewGroup = new HorizontalLabelLayout(paramContext);
-      int i = aekt.a(15.0F, paramContext.getResources());
+      int i = aepi.a(15.0F, paramContext.getResources());
       paramViewGroup.setPadding(i, 0, i, 0);
       return new sam(this, paramViewGroup, paramBaseData);
     }
-    return new sao(this, localLayoutInflater.inflate(2131559940, paramViewGroup, false), paramBaseData);
+    return new sao(this, localLayoutInflater.inflate(2131559939, paramViewGroup, false), paramBaseData);
   }
   
   public boolean a(BaseData paramBaseData)

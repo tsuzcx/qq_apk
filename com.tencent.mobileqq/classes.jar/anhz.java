@@ -1,10 +1,4 @@
-import java.util.List;
-
-public abstract interface anhz
-{
-  public abstract void a(List<anis> paramList);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhz

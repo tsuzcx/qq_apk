@@ -1,15 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class afjf
-  implements DialogInterface.OnClickListener
+public abstract interface afjf
 {
-  afjf(afje paramafje, bdfq parambdfq) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Bdfq.dismiss();
-  }
+  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
 }
 
 

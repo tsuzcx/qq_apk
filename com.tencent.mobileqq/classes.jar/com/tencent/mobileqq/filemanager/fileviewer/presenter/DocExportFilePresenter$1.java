@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.view.View;
-import arhr;
+import arma;
 
 public class DocExportFilePresenter$1
   implements Runnable
 {
-  public DocExportFilePresenter$1(arhr paramarhr, View paramView) {}
+  public DocExportFilePresenter$1(arma paramarma, View paramView) {}
   
   public void run()
   {

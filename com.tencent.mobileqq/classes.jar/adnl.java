@@ -1,15 +1,30 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity.ScanSpaceTask;
-import com.tencent.mobileqq.widget.CircleProgressBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adnl
-  implements adnj
+class adnl
+  implements DialogInterface.OnClickListener
 {
-  public adnl(QQSettingCleanActivity.ScanSpaceTask paramScanSpaceTask) {}
+  adnl(adnj paramadnj) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.this$0.a.setPercent(paramInt);
+    paramDialogInterface.dismiss();
+    if (!bdin.d(this.a.a))
+    {
+      PhoneUnityChangeActivity.a(this.a.a, 2131694831);
+      return;
+    }
+    if (this.a.a.b == null)
+    {
+      this.a.a.b = new adnm(this);
+      this.a.a.app.registObserver(this.a.a.b);
+    }
+    PhoneUnityChangeActivity.a(this.a.a).a(true, false);
+    PhoneUnityChangeActivity.a(this.a.a, 2131719785, 0L, true);
+    azqs.b(this.a.a.app, "CliOper", "", "", "0X8005B81", "0X8005B81", 0, 0, "", "", "", "");
   }
 }
 

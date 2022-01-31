@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 
 public class adlo
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public adlo(QQIdentiferActivity paramQQIdentiferActivity) {}
+  public adlo(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    paramView = new Intent(this.a, TroopAssisSettingActivity.class);
+    this.a.startActivity(paramView);
+    azqs.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_msginfor_grp", 0, 0, "", "", "", "");
   }
 }
 

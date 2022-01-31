@@ -16,7 +16,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bdhy;
+import bdmh;
 import com.tencent.mobileqq.activity.QQLSUnlockActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
@@ -126,7 +126,7 @@ public class QWalletLockScreenActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.qwallet.push", 2, "QWalletLockScreenActivity doOnCreate taskId" + getTaskId() + Thread.currentThread().getId());
     }
-    setContentView(2131561780);
+    setContentView(2131561798);
     getWindow().addFlags(524288);
     this.mScreenReceiver = new QWalletLockScreenActivity.ScreenBroadcastReceiver(this, null);
     registerListener();
@@ -144,13 +144,13 @@ public class QWalletLockScreenActivity
       this.title = getIntent().getStringExtra("title");
       this.content = getIntent().getStringExtra("content");
       this.time = getIntent().getStringExtra("time");
-      this.titleView = ((TextView)findViewById(2131377896));
-      this.contentView = ((TextView)findViewById(2131373491));
-      this.timeView = ((TextView)findViewById(2131373496));
+      this.titleView = ((TextView)findViewById(2131377950));
+      this.contentView = ((TextView)findViewById(2131373543));
+      this.timeView = ((TextView)findViewById(2131373548));
       this.titleView.setText(this.title);
       this.contentView.setText(this.content);
       this.timeView.setText(this.time);
-      this.mBackBtn = ((RelativeLayout)findViewById(2131363541));
+      this.mBackBtn = ((RelativeLayout)findViewById(2131363543));
       this.mBackBtn.setOnClickListener(this);
       this.contentView.setOnClickListener(this);
     } while (!QLog.isColorLevel());
@@ -195,7 +195,7 @@ public class QWalletLockScreenActivity
   public void doOnStart()
   {
     super.doOnStart();
-    boolean bool = bdhy.a(this);
+    boolean bool = bdmh.a(this);
     if (QLog.isColorLevel()) {
       QLog.d("Q.qwallet.push", 2, "QWalletLockScreenActivity doOnStart isScreenLocked=" + bool);
     }
@@ -210,7 +210,7 @@ public class QWalletLockScreenActivity
     {
     default: 
       return;
-    case 2131373491: 
+    case 2131373543: 
       paramView = this.handler.obtainMessage(9);
       Handler localHandler = this.handler;
       if (GesturePWDUtils.getJumpLock(this, this.app.getCurrentAccountUin())) {}

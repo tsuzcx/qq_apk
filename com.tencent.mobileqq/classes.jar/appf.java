@@ -1,11 +1,20 @@
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
-public class appf
-  extends apow
+class appf
+  extends DataSetObserver
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout[] jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout;
+  appf(appe paramappe, DragSortListView paramDragSortListView) {}
+  
+  public void onChanged()
+  {
+    this.jdField_a_of_type_Appe.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    this.jdField_a_of_type_Appe.notifyDataSetInvalidated();
+  }
 }
 
 

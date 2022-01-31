@@ -1,19 +1,4 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
-
-public class abwe
-  extends AccountObserver
-{
-  public abwe(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void onDeleteAccount(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "onDeleteAccount isSuccess " + paramBoolean);
-    }
-  }
-}
+class abwe {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

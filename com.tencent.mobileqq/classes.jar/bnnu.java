@@ -1,6 +1,12 @@
-public class bnnu
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+
+public abstract interface bnnu
 {
-  public int[] a = new int[5];
+  public abstract int a(int paramInt, long paramLong);
+  
+  public abstract QQFilterRenderManager a();
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

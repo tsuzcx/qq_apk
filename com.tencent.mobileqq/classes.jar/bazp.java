@@ -1,42 +1,30 @@
-import android.text.Layout;
-import android.text.SpannedString;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
 
 class bazp
-  implements View.OnTouchListener
+  implements EIPClientConnectListener
 {
-  bazp(bazn parambazn) {}
+  bazp(bazo parambazo) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void connectFailed()
   {
-    int i = paramMotionEvent.getAction();
-    TextView localTextView = (TextView)paramView;
-    CharSequence localCharSequence = localTextView.getText();
-    if (((localCharSequence instanceof SpannedString)) && (i == 1))
-    {
-      i = (int)paramMotionEvent.getX();
-      int j = (int)paramMotionEvent.getY();
-      int k = localTextView.getTotalPaddingLeft();
-      int m = localTextView.getTotalPaddingTop();
-      int n = localTextView.getScrollX();
-      int i1 = localTextView.getScrollY();
-      paramMotionEvent = localTextView.getLayout();
-      i = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(j - m + i1), i - k + n);
-      paramMotionEvent = (ClickableSpan[])((SpannedString)localCharSequence).getSpans(i, i, ClickableSpan.class);
-      if (paramMotionEvent.length != 0) {
-        paramMotionEvent[0].onClick(localTextView);
-      }
+    bazo.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "connectFailed");
     }
-    else
-    {
-      return true;
+  }
+  
+  public void connectSuccess(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      bazo.a(this.a, paramEIPCConnection.procName);
     }
-    paramView.performClick();
-    return true;
+    bazo.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "connectSuccess");
+    }
+    bazo.a(this.a);
   }
 }
 

@@ -1,13 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
-public class ayal
-  implements View.OnClickListener
+class ayal
+  implements DialogInterface.OnClickListener
 {
-  public ayal(LikesView paramLikesView) {}
+  ayal(ayaa paramayaa) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 4, "showSaveFileTips cancel");
+  }
 }
 
 

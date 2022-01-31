@@ -1,23 +1,31 @@
 import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedHashMap;
 
-public class aomg
+class aomg
+  extends aomf
 {
-  public String a;
-  public boolean a;
+  private String a;
   
-  public aomg(aomf paramaomf)
+  public aomg(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    this.a = paramString;
   }
   
-  public boolean a()
+  public Object a(Object paramObject)
   {
-    return (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public String toString()
-  {
-    return "WebBundleConfig{enable=" + this.jdField_a_of_type_Boolean + ", preloadUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    if (paramObject == null) {}
+    do
+    {
+      return null;
+      paramObject = (LinkedHashMap)paramObject;
+      if (!(paramObject instanceof LinkedHashMap))
+      {
+        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
+        return null;
+      }
+    } while (TextUtils.isEmpty(this.a));
+    return paramObject.get(this.a);
   }
 }
 

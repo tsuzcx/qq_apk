@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.profile.vote;
 
-import aloz;
-import awsp;
-import azmj;
+import alto;
+import awwy;
+import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.profile.like.PraiseManager;
 
 public class VoteHelper$1
   implements Runnable
 {
-  public VoteHelper$1(awsp paramawsp, long paramLong1, int paramInt, boolean paramBoolean, long paramLong2) {}
+  public VoteHelper$1(awwy paramawwy, long paramLong1, int paramInt, boolean paramBoolean, long paramLong2) {}
   
   public void run()
   {
     int j = 2;
-    boolean bool = ((aloz)this.this$0.a.getManager(51)).b(Long.toString(this.jdField_a_of_type_Long));
+    boolean bool = ((alto)this.this$0.a.getManager(51)).b(Long.toString(this.jdField_a_of_type_Long));
     int i;
     if (this.jdField_a_of_type_Int == 2) {
       if (bool)
@@ -30,7 +30,7 @@ public class VoteHelper$1
     }
     for (;;)
     {
-      azmj.b(this.this$0.a, "CliOper", "", "", "P_prof", "Prof_good", i, 1, j, Long.toString(this.b), "1", this.this$0.a.getCurrentAccountUin(), Long.toString(this.jdField_a_of_type_Long));
+      azqs.b(this.this$0.a, "CliOper", "", "", "P_prof", "Prof_good", i, 1, j, Long.toString(this.b), "1", this.this$0.a.getCurrentAccountUin(), Long.toString(this.jdField_a_of_type_Long));
       return;
       i = 6;
       break;

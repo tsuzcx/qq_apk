@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.dc;
 
-import azmz;
+import azri;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -27,7 +27,7 @@ public class DataReport$ReportTask
     do
     {
       return;
-      azmz.a(BaseApplication.getContext()).a(null, this.jdField_a_of_type_JavaLangString, true, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
+      azri.a(BaseApplication.getContext()).a(null, this.jdField_a_of_type_JavaLangString, true, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
     } while (!QLog.isColorLevel());
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("eventCode:" + this.jdField_a_of_type_JavaLangString + "\n");

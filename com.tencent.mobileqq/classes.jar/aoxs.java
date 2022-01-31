@@ -1,47 +1,65 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aoxs
+public class aoxs
+  extends aokh<aoxr>
 {
-  private int jdField_a_of_type_Int;
-  private aoxu jdField_a_of_type_Aoxu;
-  public aoxv a;
-  private aoxx jdField_a_of_type_Aoxx;
-  private aoxy jdField_a_of_type_Aoxy;
-  public aoxz a;
-  private aoya jdField_a_of_type_Aoya;
-  private aoyc jdField_a_of_type_Aoyc;
-  private aoyd jdField_a_of_type_Aoyd;
-  private List<aoyh> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public aoxq a()
+  public static aoxr a()
   {
-    return new aoxq(this, null);
+    return (aoxr)aoks.a().a(338);
   }
   
-  public aoxs a(int paramInt)
+  public int a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    return 338;
   }
   
-  public aoxs a(aoya paramaoya)
+  @NonNull
+  public aoxr a(int paramInt)
   {
-    this.jdField_a_of_type_Aoya = paramaoya;
-    return this;
+    return new aoxr();
   }
   
-  public aoxs a(aoyh paramaoyh)
+  @Nullable
+  public aoxr a(aoko[] paramArrayOfaoko)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramaoyh);
-    return this;
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aoxr.a(paramArrayOfaoko);
+    }
+    return null;
+  }
+  
+  public Class<aoxr> a()
+  {
+    return aoxr.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("TencentDocGrayTipsProcessor", 1, "TENCENT_DOC_GRAY_TIPS failed, resultCode:" + paramInt);
+  }
+  
+  public void a(aoxr paramaoxr) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoxs
  * JD-Core Version:    0.7.0.1
  */

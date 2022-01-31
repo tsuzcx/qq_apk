@@ -1,21 +1,22 @@
-import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.view.View.OnTouchListener;
 
 class avhz
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  avhz(avhw paramavhw) {}
+  avhz(avhf paramavhf) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501");
-    paramView.putExtra("url", "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501");
-    this.a.a.startActivity(paramView);
-    azmj.b(null, "dc00899", "grp_lbs", "", "rank_data", "clk_gift", 0, 0, "", "", "", "");
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131370728).setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.findViewById(2131370728).setAlpha(1.0F);
+    }
   }
 }
 

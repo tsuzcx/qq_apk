@@ -9,28 +9,28 @@ public final class GetUserIconHandler$1
     // Byte code:
     //   0: ldc2_w 15
     //   3: invokestatic 22	java/lang/Thread:sleep	(J)V
-    //   6: invokestatic 28	uyv:a	()Ljava/util/ArrayList;
+    //   6: invokestatic 28	vde:a	()Ljava/util/ArrayList;
     //   9: astore_1
     //   10: aload_1
     //   11: monitorenter
-    //   12: invokestatic 28	uyv:a	()Ljava/util/ArrayList;
+    //   12: invokestatic 28	vde:a	()Ljava/util/ArrayList;
     //   15: invokevirtual 34	java/util/ArrayList:isEmpty	()Z
     //   18: ifne +32 -> 50
     //   21: new 30	java/util/ArrayList
     //   24: dup
-    //   25: invokestatic 28	uyv:a	()Ljava/util/ArrayList;
+    //   25: invokestatic 28	vde:a	()Ljava/util/ArrayList;
     //   28: invokespecial 37	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
     //   31: astore_2
-    //   32: invokestatic 28	uyv:a	()Ljava/util/ArrayList;
+    //   32: invokestatic 28	vde:a	()Ljava/util/ArrayList;
     //   35: invokevirtual 40	java/util/ArrayList:clear	()V
-    //   38: invokestatic 43	uyv:a	()Ljava/util/Set;
+    //   38: invokestatic 43	vde:a	()Ljava/util/Set;
     //   41: invokeinterface 46 1 0
     //   46: aload_2
-    //   47: invokestatic 49	uyv:a	(Ljava/util/ArrayList;)V
+    //   47: invokestatic 49	vde:a	(Ljava/util/ArrayList;)V
     //   50: aload_1
     //   51: monitorexit
     //   52: iconst_0
-    //   53: putstatic 52	uyv:a	Z
+    //   53: putstatic 52	vde:a	Z
     //   56: return
     //   57: astore_2
     //   58: aload_1
@@ -41,11 +41,11 @@ public final class GetUserIconHandler$1
     //   63: aload_1
     //   64: invokevirtual 55	java/lang/InterruptedException:printStackTrace	()V
     //   67: iconst_0
-    //   68: putstatic 52	uyv:a	Z
+    //   68: putstatic 52	vde:a	Z
     //   71: return
     //   72: astore_1
     //   73: iconst_0
-    //   74: putstatic 52	uyv:a	Z
+    //   74: putstatic 52	vde:a	Z
     //   77: aload_1
     //   78: athrow
     // Local variable table:

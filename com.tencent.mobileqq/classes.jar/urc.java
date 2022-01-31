@@ -1,9 +1,13 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
-public abstract interface urc
+final class urc
+  implements InvocationHandler
 {
-  public abstract void a(List<StoryVideoItem> paramList, boolean paramBoolean);
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  {
+    return null;
+  }
 }
 
 

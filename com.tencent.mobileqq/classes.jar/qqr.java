@@ -5,7 +5,7 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.AdapterView;
 
 public class qqr
-  implements bhqp
+  implements bhuw
 {
   public qqr(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   

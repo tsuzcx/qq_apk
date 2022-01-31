@@ -1,32 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.7.1;
 
-class blea
-  implements bkwg
+public class blea
+  implements View.OnClickListener
 {
-  public void a(bkvu parambkvu, int paramInt)
-  {
-    if (paramInt <= 1) {
-      return;
-    }
-    bldz.a().a(parambkvu.a, paramInt);
-  }
+  blea(blds paramblds) {}
   
-  public void a(bkvu parambkvu, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (parambkvu == null) {
-      return;
-    }
-    parambkvu.e = false;
-    if (paramBoolean) {
-      parambkvu.d = true;
-    }
-    for (;;)
-    {
-      bldz.a().a(parambkvu, paramBoolean);
-      bldz.a(bldz.a(), parambkvu.a);
-      return;
-      QLog.e("PlayDownloadManagerWrap", 1, "download failed with id: " + parambkvu.a);
-    }
+    blds.b(this.a);
+    new Handler().postDelayed(new AEGIFTextEditFragment.7.1(this), 200L);
   }
 }
 

@@ -50,7 +50,7 @@ public class oig
   private void a(ArrayList<SocializeFeedsInfo.BiuCommentInfo> paramArrayList)
   {
     paramArrayList = SocializeFeedsInfo.a(null, "5", this.jdField_a_of_type_Pgr, paramArrayList);
-    this.c.setSpannableFactory(baig.a);
+    this.c.setSpannableFactory(bamp.a);
     this.c.setText(paramArrayList);
   }
   
@@ -75,10 +75,10 @@ public class oig
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560039, null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367534));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371127));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364509));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560038, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367544));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371146));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364511));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363328));
   }
   
@@ -127,7 +127,7 @@ public class oig
     localObject = new SpannableStringBuilder();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramMultiBiuSameContent.jdField_a_of_type_JavaLangString);
-    ((SpannableStringBuilder)localObject).append(new baig(localStringBuilder, 7, 16));
+    ((SpannableStringBuilder)localObject).append(new bamp(localStringBuilder, 7, 16));
     this.c.setText((CharSequence)localObject);
   }
 }

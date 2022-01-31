@@ -1,43 +1,93 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody.Item;
+import tencent.im.cs.cmd0x383.cmd0x383.ApplyGetFileListRspBody.FileInfo;
 
 public class bbvu
-  implements bcgo
 {
-  public bbvu(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public long a;
+  public bbsa a;
+  public String a;
+  public ArrayList<String> a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public bbvu(QQAppInterface paramQQAppInterface, cmd0x383.ApplyFileSearchRspBody.Item paramItem)
   {
-    this.a.o();
-    if ((paramJSONObject != null) && (paramJSONObject.has("retcode")))
+    if (paramItem == null) {
+      return;
+    }
+    this.jdField_a_of_type_Long = paramItem.uint64_group_code.get();
+    this.jdField_a_of_type_JavaLangString = paramItem.bytes_group_name.get().toStringUtf8();
+    this.jdField_b_of_type_Long = paramItem.uint64_upload_uin.get();
+    this.jdField_b_of_type_JavaLangString = paramItem.bytes_uploader_nick_name.get().toStringUtf8();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    List localList = paramItem.bytes_match_word.get();
+    if (localList != null)
     {
-      paramInt = paramJSONObject.optInt("retcode");
-      if (paramInt == 0)
+      int i = 0;
+      while (i < localList.size())
       {
-        QQToast.a(this.a.getActivity(), 2131697872, 0).a();
-        paramJSONObject = aekt.a(new Intent(this.a.getActivity(), SplashActivity.class), new int[] { 2 });
-        paramJSONObject.addFlags(268435456);
-        paramJSONObject.putExtra("uin", this.a.b);
-        paramJSONObject.putExtra("uintype", 1);
-        this.a.getActivity().startActivity(paramJSONObject);
-        this.a.getActivity().overridePendingTransition(2130771990, 2130772294);
+        this.jdField_a_of_type_JavaUtilArrayList.add(((ByteStringMicro)localList.get(i)).toStringUtf8());
+        i += 1;
       }
     }
-    else
+    this.jdField_c_of_type_Long = paramItem.uint64_match_uin.get();
+    if (this.jdField_c_of_type_Long > 0L)
     {
-      return;
+      paramQQAppInterface = ((alto)paramQQAppInterface.getManager(51)).e(String.valueOf(this.jdField_c_of_type_Long));
+      if (paramQQAppInterface != null)
+      {
+        this.jdField_c_of_type_JavaLangString = paramQQAppInterface.name;
+        this.d = paramQQAppInterface.remark;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopFileSearchItemData<QFile>", 2, "TroopFileSearchItemData matchUin:" + this.jdField_c_of_type_Long + ", name:" + this.jdField_c_of_type_JavaLangString + ", remark = " + this.d);
+      }
     }
-    if (paramInt == 111000)
+    this.jdField_a_of_type_Bbsa = new bbsa((cmd0x383.ApplyGetFileListRspBody.FileInfo)paramItem.file_info.get());
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("groupCode = " + this.jdField_a_of_type_Long);
+    localStringBuilder.append(", groupName = " + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", uploaderUin = " + this.jdField_b_of_type_Long);
+    localStringBuilder.append(", uploaderNickName = " + this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", matchUin = " + this.jdField_c_of_type_Long);
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      QQToast.a(this.a.getActivity(), 2131697871, 0).a();
-      return;
+      localStringBuilder.append(", matchWord: = ");
+      int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+      int i = 0;
+      if (i < j)
+      {
+        if (i == j - 1) {
+          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i) + ", ");
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i)).append("、 ");
+        }
+      }
     }
-    QQToast.a(this.a.getActivity(), 2131697931, 0).a();
+    if (this.jdField_a_of_type_Bbsa != null) {
+      localStringBuilder.append(", fileInfo = " + this.jdField_a_of_type_Bbsa.toString());
+    }
+    return localStringBuilder.toString();
   }
 }
 

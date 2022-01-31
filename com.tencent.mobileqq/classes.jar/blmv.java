@@ -1,31 +1,26 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class blmv
-  extends RecyclerView.ItemDecoration
+  implements WtTicketPromise
 {
-  int a = 0;
-  int b = 0;
-  int c = 0;
-  int d = 0;
+  public blmv(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
-  public blmv(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void Done(Ticket paramTicket)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    bljn.b(AEEditorImageEditFragment.e(), "psKey success.");
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    paramRect.left = this.a;
-    paramRect.right = this.b;
-    paramRect.bottom = this.d;
-    paramRect.top = this.c;
+    bljn.d(AEEditorImageEditFragment.e(), paramErrMsg.toString());
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    bljn.d(AEEditorImageEditFragment.e(), paramErrMsg.toString());
   }
 }
 

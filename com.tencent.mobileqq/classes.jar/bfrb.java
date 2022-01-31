@@ -1,126 +1,97 @@
 import android.content.Context;
-import com.tencent.av.gaudio.QQGAudioCtrl;
-import com.tencent.av.video.call.ClientLogReport;
-import com.tencent.av.video.call.GAClientLogReport;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.net.Uri.Builder;
+import android.webkit.MimeTypeMap;
+import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
+import java.io.File;
 
-public class bfrb
-  implements bfqw
+public final class bfrb
 {
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bfqy jdField_a_of_type_Bfqy;
-  private bfre jdField_a_of_type_Bfre;
-  private QQGAudioCtrl jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl;
-  
-  public bfrb(Context paramContext, long paramLong, bfqy parambfqy)
+  public static Intent a(Context paramContext, File paramFile)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Bfqy = parambfqy;
-    this.jdField_a_of_type_Bfqy.a(this);
-    bfrj.a().a(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Bfre = new bfre(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, this.jdField_a_of_type_Bfqy);
-    this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl = this.jdField_a_of_type_Bfre.a();
-    ClientLogReport.instance();
-    GAClientLogReport.instance();
-  }
-  
-  public static int a()
-  {
-    int i;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 1;
+    if ((paramContext == null) || (paramFile == null) || (!paramFile.isFile())) {
+      return null;
+    }
+    String str = paramFile.getName().toLowerCase().trim();
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.addFlags(268435456);
+    if (a(str, paramContext.getResources().getStringArray(2130968625))) {
+      localIntent.setDataAndType(Uri.fromFile(paramFile), "image/*");
     }
     for (;;)
     {
-      bfrg.c("QavCtrl", String.format("getApn networkType=%s", new Object[] { Integer.valueOf(i) }));
-      return i;
-      if (AppNetConnInfo.isMobileConn()) {
-        switch (AppNetConnInfo.getMobileInfo())
-        {
-        default: 
-          i = 100;
-          break;
-        case 1: 
-          i = 3;
-          break;
-        case 2: 
-          i = 9;
-          break;
-        case 3: 
-          i = 11;
-          break;
-        case 4: 
-          i = 14;
-          break;
-        }
-      } else {
-        i = 0;
+      FileProvider7Helper.intentCompatForN(paramContext, localIntent);
+      return localIntent;
+      if (a(str, paramContext.getResources().getStringArray(2130968631)))
+      {
+        localIntent.setDataAndType(Uri.parse(paramFile.toString()).buildUpon().encodedAuthority("com.android.htmlfileprovider").scheme("content").encodedPath(paramFile.toString()).build(), "text/html");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968622)))
+      {
+        localIntent.addFlags(67108864);
+        localIntent.putExtra("oneshot", 0);
+        localIntent.putExtra("configchange", 0);
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "audio/*");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968630)))
+      {
+        localIntent.addFlags(67108864);
+        localIntent.putExtra("oneshot", 0);
+        localIntent.putExtra("configchange", 0);
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "video/*");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968629)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "text/plain");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968628)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/pdf");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968632)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/msword");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968624)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/vnd.ms-excel");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968626)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/vnd.ms-powerpoint");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968623)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/x-chm");
+      }
+      else
+      {
+        str = MimeTypeMap.getSingleton().getMimeTypeFromExtension(str.substring(str.lastIndexOf(".") + 1).toLowerCase().trim());
+        localIntent.setDataAndType(Uri.fromFile(paramFile), str);
       }
     }
   }
   
-  public static void a(bfqy parambfqy)
+  public static boolean a(String paramString, String[] paramArrayOfString)
   {
-    if (parambfqy != null) {
-      parambfqy.a();
-    }
-  }
-  
-  public static void a(bfqy parambfqy, Context paramContext, long paramLong)
-  {
-    if (parambfqy != null) {
-      parambfqy.a(lno.a(paramLong, String.valueOf(AppSetting.a()), paramContext));
-    }
-  }
-  
-  public bfrc a()
-  {
-    return this.jdField_a_of_type_Bfre;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bfre != null)
+    boolean bool2 = false;
+    int j = paramArrayOfString.length;
+    int i = 0;
+    for (;;)
     {
-      this.jdField_a_of_type_Bfre.c();
-      this.jdField_a_of_type_Bfre = null;
-    }
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Bfqy = null;
-    this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl = null;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setNetIPAndPort(paramString, paramInt);
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    lno.a(String.valueOf(AppSetting.a()), this.jdField_a_of_type_AndroidContentContext, paramArrayOfByte);
-  }
-  
-  public void b(byte[] paramArrayOfByte) {}
-  
-  public void c(byte[] paramArrayOfByte) {}
-  
-  public void d(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.onNativeRecvGAudioCMD(1, paramArrayOfByte);
-    }
-  }
-  
-  public void e(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.onNativeRecvGAudioCMD(2, paramArrayOfByte);
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (paramString.endsWith(paramArrayOfString[i])) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
     }
   }
 }

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.richmedia.capture.adapter;
 
-import axjl;
-import axjn;
-import axjt;
 import axnu;
+import axnw;
+import axoc;
+import axsd;
 import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateItemView;
 import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -13,12 +13,12 @@ import java.util.ArrayList;
 public class PtvTemplateAdapter$2$1
   implements Runnable
 {
-  public PtvTemplateAdapter$2$1(axjn paramaxjn, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean) {}
+  public PtvTemplateAdapter$2$1(axnw paramaxnw, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean) {}
   
   public void run()
   {
-    int j = this.jdField_a_of_type_Axjn.a.jdField_a_of_type_ComTencentWidgetGridView.getFirstVisiblePosition();
-    int k = this.jdField_a_of_type_Axjn.a.jdField_a_of_type_ComTencentWidgetGridView.getLastVisiblePosition();
+    int j = this.jdField_a_of_type_Axnw.a.jdField_a_of_type_ComTencentWidgetGridView.getFirstVisiblePosition();
+    int k = this.jdField_a_of_type_Axnw.a.jdField_a_of_type_ComTencentWidgetGridView.getLastVisiblePosition();
     int i = j;
     Object localObject1;
     Object localObject2;
@@ -30,11 +30,11 @@ public class PtvTemplateAdapter$2$1
       {
         i += 1;
         break;
-        localObject1 = (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Axjn.a.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localObject1 = (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Axnw.a.jdField_a_of_type_JavaUtilArrayList.get(i);
       } while ((localObject1 == null) || (!((PtvTemplateManager.PtvTemplateInfo)localObject1).id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)));
       ((PtvTemplateManager.PtvTemplateInfo)localObject1).downloading = false;
       ((PtvTemplateManager.PtvTemplateInfo)localObject1).usable = this.jdField_a_of_type_Boolean;
-      localObject2 = this.jdField_a_of_type_Axjn.a.jdField_a_of_type_ComTencentWidgetGridView.getChildAt(i - j);
+      localObject2 = this.jdField_a_of_type_Axnw.a.jdField_a_of_type_ComTencentWidgetGridView.getChildAt(i - j);
       if ((localObject2 instanceof PtvTemplateItemView))
       {
         localObject2 = (PtvTemplateItemView)localObject2;
@@ -48,18 +48,18 @@ public class PtvTemplateAdapter$2$1
     for (i = 1000;; i = -1)
     {
       ((PtvTemplateItemView)localObject2).a(localPtvTemplateInfo, i);
-      axjt.a().a(112, localObject1);
-      if ((QLog.isColorLevel()) && (this.jdField_a_of_type_Axjn.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo != null)) {
-        QLog.i("CapturePtvTemplateManager", 2, "onDownloadFinish mCurrentPtvTemplateInfo=" + this.jdField_a_of_type_Axjn.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id + " info=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id);
+      axoc.a().a(112, localObject1);
+      if ((QLog.isColorLevel()) && (this.jdField_a_of_type_Axnw.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo != null)) {
+        QLog.i("CapturePtvTemplateManager", 2, "onDownloadFinish mCurrentPtvTemplateInfo=" + this.jdField_a_of_type_Axnw.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id + " info=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id);
       }
-      if ((this.jdField_a_of_type_Axjn.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo != null) && (this.jdField_a_of_type_Axjn.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable))
+      if ((this.jdField_a_of_type_Axnw.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo != null) && (this.jdField_a_of_type_Axnw.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable))
       {
-        localObject1 = axjt.a(this.jdField_a_of_type_Axjn.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name, this.jdField_a_of_type_Axjn.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5);
-        this.jdField_a_of_type_Axjn.a.jdField_a_of_type_JavaLangString = ((String)localObject1);
-        axjt.a().a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-        axjt.a().a(113, null);
-        if (axjl.a(this.jdField_a_of_type_Axjn.a) != null) {
-          axjl.a(this.jdField_a_of_type_Axjn.a).a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, this.jdField_a_of_type_Axjn.a.jdField_a_of_type_JavaLangString);
+        localObject1 = axoc.a(this.jdField_a_of_type_Axnw.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name, this.jdField_a_of_type_Axnw.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5);
+        this.jdField_a_of_type_Axnw.a.jdField_a_of_type_JavaLangString = ((String)localObject1);
+        axoc.a().a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
+        axoc.a().a(113, null);
+        if (axnu.a(this.jdField_a_of_type_Axnw.a) != null) {
+          axnu.a(this.jdField_a_of_type_Axnw.a).a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, this.jdField_a_of_type_Axnw.a.jdField_a_of_type_JavaLangString);
         }
       }
       return;

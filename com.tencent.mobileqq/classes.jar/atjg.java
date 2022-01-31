@@ -1,6 +1,19 @@
-class atjg
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+
+public class atjg
+  implements View.OnClickListener
 {
-  private static atje a = new atje(null);
+  public atjg(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+    }
+  }
 }
 
 

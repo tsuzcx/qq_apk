@@ -1,26 +1,6 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-
-public class aenf
+public abstract interface aenf
 {
-  public long a;
-  public String a;
-  
-  public boolean a()
-  {
-    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("MutualMarkPushGrayTipInfo{");
-    localStringBuilder.append("notifyTime:").append(this.jdField_a_of_type_Long).append(", ");
-    localStringBuilder.append("grayTipTemplate:").append(this.jdField_a_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
-  }
+  public abstract void a(int paramInt);
 }
 
 

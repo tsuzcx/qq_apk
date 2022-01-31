@@ -59,7 +59,7 @@ public class rna
       localJSONObject1.put("reportConfig", localJSONObject4);
       localJSONObject1.put("dynamicAladdinConfig", oty.a());
       localJSONObject1.put("protocolExtralParam", paramIntent);
-      localJSONObject1.put("autoPlayDisable", bjxj.h());
+      localJSONObject1.put("autoPlayDisable", bkbq.h());
       localBundle.putString("param", localJSONObject1.toString());
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "generateParamsForViola: " + localJSONObject1.toString());
@@ -138,7 +138,7 @@ public class rna
   private static JSONObject a()
   {
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("uint32_youngster_status", bjxj.a("key_sp_is_readinjoy_youngster", Integer.valueOf(0)));
+    localJSONObject.put("uint32_youngster_status", bkbq.a("key_sp_is_readinjoy_youngster", Integer.valueOf(0)));
     localJSONObject.put("uint32_req_recommend_flag", ntb.a());
     return localJSONObject;
   }
@@ -253,8 +253,8 @@ public class rna
   {
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
-      if (bngs.b()) {
-        paramView.setPadding(paramView.getPaddingLeft(), paramView.getPaddingTop() + bngs.b(paramActivity), paramView.getPaddingRight(), paramView.getPaddingBottom());
+      if (bnle.b()) {
+        paramView.setPadding(paramView.getPaddingLeft(), paramView.getPaddingTop() + bnle.b(paramActivity), paramView.getPaddingRight(), paramView.getPaddingBottom());
       }
     }
     else {
@@ -268,7 +268,7 @@ public class rna
     if ((TextUtils.isEmpty(paramString)) || (paramActivity == null)) {
       return;
     }
-    ors.a(paramActivity, oqu.k + bdbi.encodeToString(String.valueOf(paramString).getBytes(), 2));
+    ors.a(paramActivity, oqu.k + bdfr.encodeToString(String.valueOf(paramString).getBytes(), 2));
   }
   
   public static void a(RecyclerView paramRecyclerView, rnb<RecyclerView.ViewHolder> paramrnb)
@@ -295,8 +295,8 @@ public class rna
     int k;
     if (!paramBoolean)
     {
-      int m = aekt.a(10.0F, paramActivity.getResources());
-      k = aekt.a(10.0F, paramActivity.getResources());
+      int m = aepi.a(10.0F, paramActivity.getResources());
+      k = aepi.a(10.0F, paramActivity.getResources());
       i = m;
       j = k;
       if (paramVideoInfo.b() < paramVideoInfo.c())
@@ -313,9 +313,9 @@ public class rna
       f = paramVideoInfo.b() / paramVideoInfo.c();
       j = (int)(j * f);
       if (j <= i) {}
-      for (i = (i - j) / 2 + aekt.a(16.0F, paramActivity.getResources());; i = aekt.a(16.0F, paramActivity.getResources()))
+      for (i = (i - j) / 2 + aepi.a(16.0F, paramActivity.getResources());; i = aepi.a(16.0F, paramActivity.getResources()))
       {
-        j = aekt.a(16.0F, paramActivity.getResources());
+        j = aepi.a(16.0F, paramActivity.getResources());
         break;
       }
     }
@@ -324,9 +324,9 @@ public class rna
     float f = paramVideoInfo.c() / paramVideoInfo.b();
     j = (int)(j * f);
     if (j < i) {}
-    for (i = (i - j) / 2 + aekt.a(32.0F, paramActivity.getResources());; i = aekt.a(32.0F, paramActivity.getResources()))
+    for (i = (i - j) / 2 + aepi.a(32.0F, paramActivity.getResources());; i = aepi.a(32.0F, paramActivity.getResources()))
     {
-      k = aekt.a(10.0F, paramActivity.getResources());
+      k = aepi.a(10.0F, paramActivity.getResources());
       j = i;
       i = k;
       break;
@@ -335,7 +335,7 @@ public class rna
   
   public static void b(Activity paramActivity, View paramView)
   {
-    paramView.setPadding(paramView.getPaddingLeft() + bngs.b(paramActivity), paramView.getPaddingTop(), paramView.getPaddingRight() + bngs.b(paramActivity), paramView.getPaddingBottom());
+    paramView.setPadding(paramView.getPaddingLeft() + bnle.b(paramActivity), paramView.getPaddingTop(), paramView.getPaddingRight() + bnle.b(paramActivity), paramView.getPaddingBottom());
   }
 }
 

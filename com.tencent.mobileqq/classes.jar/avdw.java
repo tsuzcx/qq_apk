@@ -1,14 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class avdw
-  implements View.OnClickListener
+final class avdw
+  implements URLDrawable.URLDrawableListener
 {
-  avdw(avcw paramavcw) {}
+  avdw(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, aved paramaved) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.a.g(paramView);
+    wxe.c("ShortVideoShareUtil", "onLoadCanceled --");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    avdr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, null, this.jdField_a_of_type_Aved);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    wxe.c("ShortVideoShareUtil", "onLoadProgressed --" + paramInt);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = avdr.a(paramURLDrawable);
+    avdr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, paramURLDrawable, this.jdField_a_of_type_Aved);
   }
 }
 

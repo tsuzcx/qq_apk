@@ -38,7 +38,7 @@ public class MiniAppGameDebugSettingFragment
   
   public int getContentLayoutId()
   {
-    return 2131562161;
+    return 2131562179;
   }
   
   public void onAttach(Activity paramActivity)
@@ -50,13 +50,13 @@ public class MiniAppGameDebugSettingFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    paramBundle = (FormSwitchItem)paramView.findViewById(2131370616);
+    paramBundle = (FormSwitchItem)paramView.findViewById(2131370635);
     paramBundle.setChecked(this.sharedPreferences.getBoolean("pref_key_use_system_webview", false));
     paramBundle.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.1(this));
-    paramBundle = (FormSwitchItem)paramView.findViewById(2131370614);
+    paramBundle = (FormSwitchItem)paramView.findViewById(2131370633);
     paramBundle.setChecked(this.sharedPreferences.getBoolean("pref_key_use_old_desktop", false));
     paramBundle.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.2(this));
-    paramView = (FormSwitchItem)paramView.findViewById(2131370615);
+    paramView = (FormSwitchItem)paramView.findViewById(2131370634);
     paramView.setChecked(BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_user_sdk_minigame_", 4).getBoolean("_minigame_start_with_sdk", false));
     paramView.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.3(this));
   }

@@ -65,7 +65,7 @@ public class pol
       if (localNativeMiddleBodyView.a() == null)
       {
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        localLayoutParams.setMargins(bdkf.a(12.0F), 0, bdkf.a(12.0F), 0);
+        localLayoutParams.setMargins(bdoo.a(12.0F), 0, bdoo.a(12.0F), 0);
         localprm.a(localLayoutParams);
         paramContainer = a(paramInt1, paramContainer.getContext());
         if (paramContainer != null) {

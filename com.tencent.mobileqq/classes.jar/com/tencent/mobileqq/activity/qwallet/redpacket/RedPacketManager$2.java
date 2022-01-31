@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket;
 
 import Wallet.GetSkinListRsp;
-import bdcs;
+import bdhb;
 import com.qq.taf.jce.JceInputStream;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,7 +15,7 @@ class RedPacketManager$2
   {
     try
     {
-      Object localObject = bdcs.a(BaseApplicationImpl.getApplication().getFilesDir() + "skins" + this.a.getCurrentAccountUin());
+      Object localObject = bdhb.a(BaseApplicationImpl.getApplication().getFilesDir() + "skins" + this.a.getCurrentAccountUin());
       if ((localObject != null) && (localObject.length > 0))
       {
         localObject = new JceInputStream((byte[])localObject);

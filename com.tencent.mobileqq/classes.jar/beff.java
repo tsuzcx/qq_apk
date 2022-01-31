@@ -1,62 +1,18 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.webview.WebViewTitleStyle;
 
-public class beff
-  implements Handler.Callback
+public final class beff
+  implements Parcelable.Creator<WebViewTitleStyle>
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final befg jdField_a_of_type_Befg;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
-  
-  public beff(befg parambefg)
+  public WebViewTitleStyle a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Befg = parambefg;
-    this.jdField_a_of_type_AndroidOsHandler = new bhow(Looper.getMainLooper(), this);
+    return new WebViewTitleStyle(paramParcel);
   }
   
-  public void a()
+  public WebViewTitleStyle[] a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.b = false;
-    do
-    {
-      while (!this.b) {
-        switch (this.jdField_a_of_type_Befg.a(paramBundle))
-        {
-        }
-      }
-      return;
-    } while (!this.jdField_a_of_type_Boolean);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    localMessage.setData(paramBundle);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void b()
-  {
-    this.b = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    if (!this.b) {
-      a(paramMessage.getData());
-    }
-    return true;
+    return new WebViewTitleStyle[paramInt];
   }
 }
 

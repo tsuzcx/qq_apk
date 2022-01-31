@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afij;
-import afiq;
+import afmy;
+import afnf;
 
 public class GivingHeartItemBuilder$4$1
   implements Runnable
 {
-  public GivingHeartItemBuilder$4$1(afiq paramafiq) {}
+  public GivingHeartItemBuilder$4$1(afnf paramafnf) {}
   
   public void run()
   {
-    afij.a(this.a.a);
+    afmy.a(this.a.a);
   }
 }
 

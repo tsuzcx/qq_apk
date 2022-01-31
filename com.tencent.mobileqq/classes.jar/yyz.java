@@ -1,29 +1,50 @@
-import android.os.Bundle;
+import org.json.JSONObject;
 
-class yyz
-  extends aphy
+public class yyz
 {
-  yyz(yyu paramyyu) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+  private String b = "";
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public static yyz a(String paramString)
   {
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == yyu.a(this.a).key))
-    {
-      String str1 = paramBundle.getString("cmd");
-      String str2 = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("request");
-      if ((str1 != null) && ("ipc_hotchat_plugin".equals(str1)) && (paramBundle.getString("key_action").endsWith("updateFavoriteFlag")))
-      {
-        int i = paramBundle.getInt("result", 1);
-        this.a.callJs(str2, new String[] { Integer.toString(i) });
-      }
+    if (paramString == null) {
+      return null;
     }
+    try
+    {
+      yyz localyyz = new yyz();
+      paramString = new JSONObject(paramString);
+      localyyz.jdField_a_of_type_JavaLangString = paramString.optString("icon_image_url", "");
+      localyyz.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("config");
+      localyyz.b = paramString.optString("md5", "");
+      return localyyz;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public JSONObject a()
+  {
+    return this.jdField_a_of_type_OrgJsonJSONObject;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    return "k = icon_image_url, value = " + this.jdField_a_of_type_JavaLangString + "\n k = config, value = " + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "\n k = md5, value = " + this.b;
   }
 }
 

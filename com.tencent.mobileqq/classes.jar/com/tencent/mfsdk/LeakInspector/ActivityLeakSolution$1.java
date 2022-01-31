@@ -1,6 +1,6 @@
 package com.tencent.mfsdk.LeakInspector;
 
-import abqm;
+import abvb;
 import android.app.Activity;
 import android.view.Choreographer;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +16,7 @@ public final class ActivityLeakSolution$1
     try
     {
       Choreographer localChoreographer = Choreographer.getInstance();
-      abqm.a.set(localChoreographer, this.a.getApplicationContext());
+      abvb.a.set(localChoreographer, this.a.getApplicationContext());
       return;
     }
     catch (Throwable localThrowable)

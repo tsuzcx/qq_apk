@@ -1,36 +1,33 @@
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.os.Handler;
+import com.tencent.biz.qqcircle.report.QCircleLpReportDc05504.1;
 
-class tzv
-  implements ydj
+public class tzv
 {
-  tzv(tzr paramtzr) {}
-  
-  public void a()
+  public static void a(String paramString, int paramInt, long paramLong)
   {
-    if (tzr.a(this.a))
-    {
-      tzr.b(this.a, false);
-      tzr.a(this.a).setVisibility(0);
-    }
-    for (;;)
-    {
-      tzr.a(this.a, false);
-      return;
-      this.a.dismiss();
-    }
+    a(paramString, paramInt, paramLong, 0L, "", "", "", "", "");
   }
   
-  public void a(int paramInt)
+  public static void a(String paramString, int paramInt, long paramLong1, long paramLong2)
   {
-    if (tzr.a(this.a) != paramInt)
-    {
-      tzr.a(this.a, paramInt);
-      tzr.a(this.a);
-      tzr.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
-      tzr.a(this.a).commit();
-    }
-    tzr.a(this.a, true);
+    a(paramString, paramInt, paramLong1, paramLong2, "", "", "", "", "");
+  }
+  
+  public static void a(String paramString1, int paramInt, long paramLong1, long paramLong2, String paramString2)
+  {
+    a(paramString1, paramInt, paramLong1, paramLong2, "", "", "", "", paramString2);
+  }
+  
+  public static void a(String paramString1, int paramInt, long paramLong1, long paramLong2, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    int i = tzy.a().a();
+    int j = tzy.a().b();
+    uab.a().a().post(new QCircleLpReportDc05504.1(paramString1, paramInt, paramLong1, paramLong2, i, j, paramString2, paramString3, paramString4, paramString5, paramString6));
+  }
+  
+  private static int b()
+  {
+    return 5504;
   }
 }
 

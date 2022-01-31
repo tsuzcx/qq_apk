@@ -1,84 +1,89 @@
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
-import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.widget.RangeButtonView;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.DynamicGridView;
 
 public class bhwd
-  extends ExploreByTouchHelper
+  implements AbsListView.OnScrollListener
 {
-  public bhwd(RangeButtonView paramRangeButtonView, View paramView)
-  {
-    super(paramView);
-  }
+  private int jdField_a_of_type_Int = -1;
+  private int b = -1;
+  private int c;
+  private int d;
+  private int e;
   
-  public Rect a(int paramInt)
-  {
-    Point localPoint = (Point)RangeButtonView.a(this.a).a().get(paramInt);
-    paramInt = RangeButtonView.a(this.a).a() / 2;
-    return new Rect(localPoint.x - paramInt, localPoint.y - paramInt, localPoint.x + paramInt, localPoint.y + paramInt);
-  }
+  public bhwd(DynamicGridView paramDynamicGridView) {}
   
-  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
+  private void c()
   {
-    return RangeButtonView.a(this.a, (int)paramFloat1, (int)paramFloat2, RangeButtonView.a(this.a).a() / 2, RangeButtonView.a(this.a).a() / 2, false);
-  }
-  
-  public void getVisibleVirtualViews(List<Integer> paramList)
-  {
-    int i = 0;
-    while (i < RangeButtonView.a(this.a).size())
+    if ((this.d > 0) && (this.e == 0))
     {
-      paramList.add(Integer.valueOf(i));
-      i += 1;
-    }
-  }
-  
-  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    switch (paramInt2)
-    {
-    }
-    do
-    {
-      return false;
-    } while ((RangeButtonView.a(this.a) == null) || (RangeButtonView.a(this.a) == null));
-    if ((paramInt1 != RangeButtonView.a(this.a)) && (paramInt1 != -1))
-    {
-      if (RangeButtonView.a(this.a) != null) {
-        RangeButtonView.a(this.a).a(RangeButtonView.a(this.a), paramInt1);
+      if ((!DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) || (!DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView))) {
+        break label42;
       }
-      RangeButtonView.a(this.a, paramInt1);
-      this.a.invalidate();
+      DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
     }
-    return true;
+    label42:
+    while (!DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) {
+      return;
+    }
+    DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
   }
   
-  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
+  public void a()
   {
-    if ((RangeButtonView.b(this.a) != null) && (RangeButtonView.b(this.a).size() > paramInt)) {
-      paramAccessibilityEvent.setContentDescription((CharSequence)RangeButtonView.b(this.a).get(paramInt));
-    }
-  }
-  
-  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    if ((RangeButtonView.b(this.a) != null) && (RangeButtonView.b(this.a).size() > paramInt))
+    if ((this.c != this.jdField_a_of_type_Int) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != -1L))
     {
-      String str2 = (String)RangeButtonView.b(this.a).get(paramInt);
-      String str1 = str2;
-      if (paramInt == RangeButtonView.a(this.a)) {
-        str1 = str2 + alpo.a(2131713081);
-      }
-      paramAccessibilityNodeInfoCompat.setContentDescription(str1);
+      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView));
+      DynamicGridView.d(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
     }
-    paramAccessibilityNodeInfoCompat.addAction(16);
-    paramAccessibilityNodeInfoCompat.setBoundsInParent(a(paramInt));
+  }
+  
+  public void b()
+  {
+    if ((this.c + this.d != this.jdField_a_of_type_Int + this.b) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != -1L))
+    {
+      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView));
+      DynamicGridView.d(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+    if (this.jdField_a_of_type_Int == -1)
+    {
+      i = this.c;
+      this.jdField_a_of_type_Int = i;
+      if (this.b != -1) {
+        break label111;
+      }
+    }
+    label111:
+    for (int i = this.d;; i = this.b)
+    {
+      this.b = i;
+      a();
+      b();
+      this.jdField_a_of_type_Int = this.c;
+      this.b = this.d;
+      if (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != null) {
+        DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      }
+      return;
+      i = this.jdField_a_of_type_Int;
+      break;
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    this.e = paramInt;
+    DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, paramInt);
+    c();
+    if (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != null) {
+      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView).onScrollStateChanged(paramAbsListView, paramInt);
+    }
   }
 }
 

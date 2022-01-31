@@ -1,53 +1,57 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import com.tencent.biz.qqstory.database.CommentEntry;
 import java.util.List;
 
-public final class wks
-  extends QQUIEventReceiver<wkp, uqw>
+public class wks
+  extends wrj
 {
-  public wks(@NonNull wkp paramwkp)
-  {
-    super(paramwkp);
-  }
+  public wks(wkp paramwkp) {}
   
-  public void a(@NonNull wkp paramwkp, @NonNull uqw paramuqw)
+  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
   {
-    Iterator localIterator = paramwkp.a.iterator();
-    int j;
-    for (int i = 0; localIterator.hasNext(); i = j)
+    if ((paramInt < 0) || (paramInt > this.a.a.a(wkp.a(this.a)).size())) {}
+    do
     {
-      Object localObject = (wme)localIterator.next();
-      j = i;
-      if ((localObject instanceof wkx))
+      do
       {
-        j = i;
-        if (((wkx)localObject).b())
+        do
         {
-          localObject = ((wkx)localObject).a().iterator();
-          for (;;)
+          return;
+          paramObject = (CommentEntry)this.a.a.a(wkp.a(this.a)).get(paramInt);
+          switch (paramView.getId())
           {
-            j = i;
-            if (!((Iterator)localObject).hasNext()) {
-              break;
-            }
-            if (((StoryVideoItem)((Iterator)localObject).next()).mVid.equals(paramuqw.a)) {
-              i = 1;
-            }
+          default: 
+            return;
           }
-        }
-      }
-    }
-    if (i != 0) {
-      paramwkp.a.clear();
-    }
+        } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
+        uqn.a(paramView.getContext(), 12, paramObject.authorUnionId);
+        return;
+      } while (wkp.a(this.a) == null);
+      wkp.a(this.a).a(paramObject, paramInt);
+      return;
+    } while (wkp.a(this.a) == null);
+    wkp.a(this.a).Q_();
   }
   
-  public Class acceptEventClass()
+  public void b(int paramInt, View paramView, Object paramObject, wtq paramwtq)
   {
-    return uqw.class;
+    if ((paramInt < 0) || (paramInt > this.a.a.a(wkp.a(this.a)).size())) {}
+    do
+    {
+      do
+      {
+        return;
+        paramObject = (CommentEntry)this.a.a.a(wkp.a(this.a)).get(paramInt);
+        switch (paramView.getId())
+        {
+        default: 
+          return;
+        }
+      } while (wkp.a(this.a) == null);
+      wkp.a(this.a).b(paramObject, paramInt);
+      return;
+    } while (wkp.a(this.a) == null);
+    wkp.a(this.a).Q_();
   }
 }
 

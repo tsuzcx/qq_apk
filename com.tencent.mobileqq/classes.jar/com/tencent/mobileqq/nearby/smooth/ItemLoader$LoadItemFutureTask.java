@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.smooth;
 
-import avoq;
+import avsz;
 import java.util.concurrent.FutureTask;
 
 final class ItemLoader$LoadItemFutureTask<Params, Result>
@@ -11,18 +11,18 @@ final class ItemLoader$LoadItemFutureTask<Params, Result>
   
   public int a(LoadItemFutureTask<Params, Result> paramLoadItemFutureTask)
   {
-    avoq localavoq = this.a.a();
+    avsz localavsz = this.a.a();
     paramLoadItemFutureTask = paramLoadItemFutureTask.a.a();
-    if ((localavoq.b != null) && (paramLoadItemFutureTask.b == null)) {
+    if ((localavsz.b != null) && (paramLoadItemFutureTask.b == null)) {
       return -1;
     }
-    if ((localavoq.b == null) && (paramLoadItemFutureTask.b != null)) {
+    if ((localavsz.b == null) && (paramLoadItemFutureTask.b != null)) {
       return 1;
     }
-    if (!localavoq.jdField_a_of_type_JavaLangInteger.equals(paramLoadItemFutureTask.jdField_a_of_type_JavaLangInteger)) {
-      return localavoq.jdField_a_of_type_JavaLangInteger.compareTo(paramLoadItemFutureTask.jdField_a_of_type_JavaLangInteger);
+    if (!localavsz.jdField_a_of_type_JavaLangInteger.equals(paramLoadItemFutureTask.jdField_a_of_type_JavaLangInteger)) {
+      return localavsz.jdField_a_of_type_JavaLangInteger.compareTo(paramLoadItemFutureTask.jdField_a_of_type_JavaLangInteger);
     }
-    return localavoq.jdField_a_of_type_JavaLangLong.compareTo(paramLoadItemFutureTask.jdField_a_of_type_JavaLangLong);
+    return localavsz.jdField_a_of_type_JavaLangLong.compareTo(paramLoadItemFutureTask.jdField_a_of_type_JavaLangLong);
   }
 }
 

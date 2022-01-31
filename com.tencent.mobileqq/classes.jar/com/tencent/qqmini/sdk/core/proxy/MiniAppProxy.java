@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.ResultReceiver;
-import bhif;
-import bhij;
+import bhmm;
+import bhmq;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniRuntime;
 import com.tencent.qqmini.sdk.ui.MoreItem;
@@ -40,9 +40,9 @@ public abstract class MiniAppProxy
   
   public abstract int getLoginType();
   
-  public abstract bhij getMoreItemSelectedListener();
+  public abstract bhmq getMoreItemSelectedListener();
   
-  public abstract ArrayList<MoreItem> getMoreItems(bhif parambhif);
+  public abstract ArrayList<MoreItem> getMoreItems(bhmm parambhmm);
   
   public abstract String getNickName();
   

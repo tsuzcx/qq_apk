@@ -1,25 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
-public class ahup
-  implements DialogInterface.OnCancelListener
+class ahup
+  implements bhtv
 {
-  private final WeakReference<ChatHistoryC2CAllFragment> a;
+  ahup(ahuo paramahuo) {}
   
-  public ahup(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a = new WeakReference(paramChatHistoryC2CAllFragment);
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.RecommendsAdapter", 2, "onScrollStateChanged firstVisibleItem: " + paramInt1 + " visibleItemCount: " + paramInt2 + " totalItemCount: " + paramInt3);
+    }
+    if ((paramInt1 >= 1) && (paramInt1 - 1 >= 0) && (paramInt1 - 1 < this.a.getCount()))
+    {
+      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 - 1);
+      if (paramAbsListView != null) {
+        this.a.a.b(paramAbsListView, 24, 0, 1);
+      }
+    }
+    if ((paramInt1 + paramInt2 < paramInt3) && (paramInt1 + paramInt2 >= 0) && (paramInt1 + paramInt2 < this.a.getCount()))
+    {
+      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 + paramInt2);
+      if (paramAbsListView != null) {
+        this.a.a.b(paramAbsListView, 24, 0, 1);
+      }
+    }
   }
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = (ChatHistoryC2CAllFragment)this.a.get();
-    if ((localChatHistoryC2CAllFragment != null) && (localChatHistoryC2CAllFragment.getActivity() != null) && (!localChatHistoryC2CAllFragment.getActivity().isFinishing())) {
-      paramDialogInterface.dismiss();
+    if (paramInt != 0) {
+      return;
     }
+    this.a.f();
   }
 }
 

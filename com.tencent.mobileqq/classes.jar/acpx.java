@@ -1,33 +1,32 @@
-import android.app.Dialog;
-import android.graphics.Color;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.style.ImageSpan;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class acpx
-  implements bekp
+  extends ImageSpan
 {
-  public acpx(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
-  
-  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
+  public acpx(ChatSettingForTroop paramChatSettingForTroop, Drawable paramDrawable, int paramInt)
   {
-    this.a.app.a().a(DiscussionInfoCardActivity.a(this.a), 3000);
-    this.a.app.a().e(DiscussionInfoCardActivity.a(this.a), 3000);
-    akwk.a(this.a.app, "chat_history_confirm_del_msg");
-    paramDialog = this.a.app.getHandler(Conversation.class);
-    paramView = paramDialog.obtainMessage(1017);
-    paramView.obj = DiscussionInfoCardActivity.a(this.a);
-    paramView.arg1 = 3000;
-    paramDialog.sendMessage(paramView);
-    QQToast.a(this.a, 2, this.a.getString(2131690871), 0).a();
-    if (this.a.a != null) {
-      ((TextView)this.a.a.findViewById(2131377884)).setTextColor(Color.parseColor("#cccccc"));
-    }
+    super(paramDrawable, paramInt);
+  }
+  
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  {
+    paramCanvas.save();
+    paramCanvas.translate(azkz.a(9.0F), 0.0F);
+    super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
+    paramCanvas.restore();
+  }
+  
+  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    return getDrawable().getBounds().right + azkz.a(9.0F);
   }
 }
 

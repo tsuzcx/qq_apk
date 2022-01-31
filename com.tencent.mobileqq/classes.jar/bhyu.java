@@ -1,44 +1,12 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.EditText;
 
-public class bhyu
-  extends BaseAdapter
-  implements bhyi
+public abstract interface bhyu
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
+  public abstract void a(EditText paramEditText, CharSequence paramCharSequence);
   
-  public bhyu(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Int = 0;
-      return;
-    }
-    this.jdField_a_of_type_Int = 1;
-  }
+  public abstract void b(EditText paramEditText, CharSequence paramCharSequence);
   
-  public int getCount()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
+  public abstract void c(EditText paramEditText, CharSequence paramCharSequence);
 }
 
 

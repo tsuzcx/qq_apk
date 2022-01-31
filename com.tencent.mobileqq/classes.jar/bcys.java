@@ -1,68 +1,44 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogRsp;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class bcys
+class bcys
+  implements BusinessObserver
 {
-  private static int a = -1;
+  bcys(bcyr parambcyr) {}
   
-  public static void a(boolean paramBoolean)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    if (paramBoolean)
     {
-      a = i;
-      if (QLog.isColorLevel()) {
-        QLog.d("NoDisturbUtil", 2, new Object[] { "setMuteStat:", Integer.valueOf(a) });
-      }
-      return;
+      paramBundle = paramBundle.getByteArray("extra_data");
+      if (paramBundle == null) {}
     }
-  }
-  
-  public static boolean a(Context paramContext, AppInterface paramAppInterface)
-  {
-    return (!FriendsStatusUtil.a(paramContext)) || ((!paramAppInterface.isBackground_Pause) && (bczj.a(BaseApplicationImpl.sApplication)));
-  }
-  
-  public static boolean b(Context paramContext, AppInterface paramAppInterface)
-  {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    aoiy localaoiy = (aoiy)aogj.a().a(528);
-    boolean bool1 = bool3;
-    if ((paramAppInterface instanceof QQAppInterface))
-    {
-      bool1 = bool3;
-      if (localaoiy != null)
+    while (!QLog.isColorLevel()) {
+      try
       {
-        bool1 = bool3;
-        if (localaoiy.a == 1)
+        RemoteDebugReportMsg.RemoteLogRsp localRemoteLogRsp = new RemoteDebugReportMsg.RemoteLogRsp();
+        localRemoteLogRsp.mergeFrom(paramBundle);
+        if (localRemoteLogRsp.i32_ret.has())
         {
-          if (a != -1) {
-            break label87;
-          }
-          bool1 = SettingCloneUtil.readValue(paramContext, paramAppInterface.getCurrentAccountUin(), null, "qqsetting_qrlogin_set_mute", false);
-          if (!bool1) {
-            break label82;
+          paramInt = localRemoteLogRsp.i32_ret.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("UnifiedDebugReporter", 2, "onReceive: retCode=" + paramInt);
           }
         }
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.e("UnifiedDebugReporter", 2, "onReceive: exception=" + paramBundle.getMessage());
+        return;
       }
     }
-    label82:
-    for (int i = 1;; i = 0)
-    {
-      a = i;
-      return bool1;
-    }
-    label87:
-    if (a == 1) {}
-    for (bool1 = bool2;; bool1 = false) {
-      return bool1;
-    }
+    QLog.e("UnifiedDebugReporter", 2, "onReceive: isSuccess=" + paramBoolean);
   }
 }
 

@@ -1,18 +1,8 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-
-class ajwe
-  implements View.OnClickListener
+public abstract interface ajwe
 {
-  ajwe(ajwc paramajwc) {}
+  public abstract void a(float paramFloat);
   
-  public void onClick(View paramView)
-  {
-    GroupManagerActivity.a((Activity)ajwc.a(this.a));
-    azmj.b(ajwc.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

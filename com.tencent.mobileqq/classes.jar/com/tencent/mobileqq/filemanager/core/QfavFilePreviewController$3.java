@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqho;
-import aqvs;
+import aqlx;
+import arab;
 import com.tencent.qphone.base.util.QLog;
 
 public class QfavFilePreviewController$3
   implements Runnable
 {
-  public QfavFilePreviewController$3(aqvs paramaqvs) {}
+  public QfavFilePreviewController$3(arab paramarab) {}
   
   public void run()
   {
-    aqho localaqho = this.this$0.a;
-    if (0L == aqvs.a(this.this$0)) {}
+    aqlx localaqlx = this.this$0.a;
+    if (0L == arab.a(this.this$0)) {}
     for (boolean bool = true;; bool = false)
     {
-      localaqho.a(bool, aqvs.a(this.this$0), String.valueOf(aqvs.a(this.this$0)), aqvs.a(this.this$0), null, aqvs.b(this.this$0), null, aqvs.c(this.this$0), null);
+      localaqlx.a(bool, arab.a(this.this$0), String.valueOf(arab.a(this.this$0)), arab.a(this.this$0), null, arab.b(this.this$0), null, arab.c(this.this$0), null);
       if (QLog.isColorLevel()) {
-        QLog.i("QfavFilePreviewController", 2, "sendCS: mHost=" + aqvs.a(this.this$0) + ", port=" + aqvs.a(this.this$0) + ", key=" + aqvs.b(this.this$0) + ", retCode =" + aqvs.a(this.this$0));
+        QLog.i("QfavFilePreviewController", 2, "sendCS: mHost=" + arab.a(this.this$0) + ", port=" + arab.a(this.this$0) + ", key=" + arab.b(this.this$0) + ", retCode =" + arab.a(this.this$0));
       }
       return;
     }

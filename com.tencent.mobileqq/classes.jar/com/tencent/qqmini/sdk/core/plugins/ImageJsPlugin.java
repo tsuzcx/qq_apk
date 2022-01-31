@@ -11,15 +11,15 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.media.ExifInterface;
 import android.text.TextUtils;
-import bgho;
-import bgjd;
-import bgjm;
-import bgkd;
-import bgkk;
-import bgkv;
-import bgkx;
-import bgll;
-import bgnf;
+import bglv;
+import bgnk;
+import bgnt;
+import bgok;
+import bgor;
+import bgpc;
+import bgpe;
+import bgps;
+import bgrm;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.utils.QUAUtil;
@@ -44,26 +44,26 @@ public class ImageJsPlugin
   public static final String API_SAVE_IMAGE_TO_ALBUM = "saveImageToPhotosAlbum";
   private static final String TAG = "ImageJsPlugin";
   private static final boolean USE_NATIVE_CAMERA_FLAG = true;
-  private bgkd mCurRequestEvent;
+  private bgok mCurRequestEvent;
   private boolean mHasChoosePhoto;
   private MiniAppProxy mMiniAppProxy;
   private boolean mNeedCompress;
   private BroadcastReceiver receiver = new ImageJsPlugin.4(this);
   
-  private void callbackChooseImage(ArrayList<String> paramArrayList, bgkd parambgkd)
+  private void callbackChooseImage(ArrayList<String> paramArrayList, bgok parambgok)
   {
     if (this.mHasChoosePhoto) {
       return;
     }
     if (this.mNeedCompress)
     {
-      callbackJsChooseImage(compressImages(paramArrayList), parambgkd);
+      callbackJsChooseImage(compressImages(paramArrayList), parambgok);
       return;
     }
-    callbackJsChooseImage(copyImages(paramArrayList), parambgkd);
+    callbackJsChooseImage(copyImages(paramArrayList), parambgok);
   }
   
-  private void callbackGetImageInfo(String paramString, bgkd parambgkd)
+  private void callbackGetImageInfo(String paramString, bgok parambgok)
   {
     try
     {
@@ -73,21 +73,21 @@ public class ImageJsPlugin
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("width", localOptions.outWidth);
       localJSONObject.put("height", localOptions.outHeight);
-      localJSONObject.put("path", bgjm.a().e(paramString));
-      localJSONObject.put("type", bgkx.a(localOptions));
+      localJSONObject.put("path", bgnt.a().e(paramString));
+      localJSONObject.put("type", bgpe.a(localOptions));
       localJSONObject.put("orientation", getExifOrientation(paramString));
-      parambgkd.a(localJSONObject);
+      parambgok.a(localJSONObject);
       return;
     }
     catch (Exception paramString)
     {
       paramString.printStackTrace();
       QMLog.e("ImageJsPlugin", "getimageinfo error,", paramString);
-      parambgkd.b();
+      parambgok.b();
     }
   }
   
-  private void callbackJsChooseImage(ArrayList<String> paramArrayList, bgkd parambgkd)
+  private void callbackJsChooseImage(ArrayList<String> paramArrayList, bgok parambgok)
   {
     Object localObject1 = null;
     Object localObject2;
@@ -96,7 +96,7 @@ public class ImageJsPlugin
       this.mHasChoosePhoto = true;
       if ((paramArrayList == null) || (paramArrayList.size() == 0))
       {
-        parambgkd.a("cancel");
+        parambgok.a("cancel");
         return;
       }
       if (paramArrayList == null) {
@@ -110,7 +110,7 @@ public class ImageJsPlugin
         String str1 = (String)paramArrayList.next();
         if (!TextUtils.isEmpty(str1))
         {
-          String str2 = bgjm.a().e(str1);
+          String str2 = bgnt.a().e(str1);
           ((JSONArray)localObject1).put(str2);
           JSONObject localJSONObject = new JSONObject();
           localJSONObject.put("path", str2);
@@ -124,7 +124,7 @@ public class ImageJsPlugin
     {
       this.mHasChoosePhoto = false;
       QMLog.e("ImageJsPlugin", paramArrayList.getMessage(), paramArrayList);
-      parambgkd.b();
+      parambgok.b();
       return;
     }
     paramArrayList = (ArrayList<String>)localObject2;
@@ -135,7 +135,7 @@ public class ImageJsPlugin
       if (paramArrayList != null) {
         ((JSONObject)localObject2).put("tempFiles", paramArrayList);
       }
-      parambgkd.a((JSONObject)localObject2);
+      parambgok.a((JSONObject)localObject2);
       return;
       label251:
       localObject2 = null;
@@ -171,9 +171,9 @@ public class ImageJsPlugin
     //   13: aload_1
     //   14: invokespecial 209	java/io/File:<init>	(Ljava/lang/String;)V
     //   17: astore 4
-    //   19: invokestatic 127	bgjm:a	()Lbgjm;
+    //   19: invokestatic 127	bgnt:a	()Lbgnt;
     //   22: ldc 255
-    //   24: invokevirtual 257	bgjm:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   24: invokevirtual 257	bgnt:b	(Ljava/lang/String;)Ljava/lang/String;
     //   27: astore 11
     //   29: new 206	java/io/File
     //   32: dup
@@ -233,7 +233,7 @@ public class ImageJsPlugin
     //   142: aload 9
     //   144: astore_3
     //   145: aload_1
-    //   146: invokestatic 268	bgkx:a	(Ljava/lang/String;)I
+    //   146: invokestatic 268	bgpe:a	(Ljava/lang/String;)I
     //   149: istore_2
     //   150: aload 8
     //   152: astore 5
@@ -259,7 +259,7 @@ public class ImageJsPlugin
     //   196: astore_3
     //   197: iload_2
     //   198: aload 10
-    //   200: invokestatic 276	bgkx:a	(ILandroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+    //   200: invokestatic 276	bgpe:a	(ILandroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
     //   203: astore 6
     //   205: aload 8
     //   207: astore 5
@@ -408,7 +408,7 @@ public class ImageJsPlugin
     if (localIterator.hasNext())
     {
       paramArrayList = (String)localIterator.next();
-      String str = bgjm.a().h(paramArrayList);
+      String str = bgnt.a().h(paramArrayList);
       if (TextUtils.isEmpty(str)) {}
       for (;;)
       {
@@ -422,31 +422,31 @@ public class ImageJsPlugin
   
   private File createImageFile(Context paramContext)
   {
-    return new File(bgjm.a().b("jpg"));
+    return new File(bgnt.a().b("jpg"));
   }
   
-  private void doCompressImage(String paramString, int paramInt, bgkd parambgkd)
+  private void doCompressImage(String paramString, int paramInt, bgok parambgok)
   {
     try
     {
-      Object localObject = bgkx.a(paramString);
+      Object localObject = bgpe.a(paramString);
       if (localObject != null)
       {
         ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
         ((Bitmap)localObject).compress(Bitmap.CompressFormat.JPEG, paramInt, localByteArrayOutputStream);
         localObject = BitmapFactory.decodeStream(new ByteArrayInputStream(localByteArrayOutputStream.toByteArray()), null, null);
-        paramString = bgjm.a().b(paramString.hashCode() + ".jpg");
-        bgkx.a((Bitmap)localObject, new File(paramString));
+        paramString = bgnt.a().b(paramString.hashCode() + ".jpg");
+        bgpe.a((Bitmap)localObject, new File(paramString));
         localObject = new JSONObject();
-        ((JSONObject)localObject).put("tempFilePath", bgjm.a().e(paramString));
-        parambgkd.a((JSONObject)localObject);
+        ((JSONObject)localObject).put("tempFilePath", bgnt.a().e(paramString));
+        parambgok.a((JSONObject)localObject);
       }
       return;
     }
     catch (Exception paramString)
     {
       QMLog.e("ImageJsPlugin", "compressImage error,", paramString);
-      parambgkd.b();
+      parambgok.b();
     }
   }
   
@@ -480,7 +480,7 @@ public class ImageJsPlugin
     return "left";
   }
   
-  private void openCamera(bgkd parambgkd)
+  private void openCamera(bgok parambgok)
   {
     Intent localIntent = new Intent("android.media.action.IMAGE_CAPTURE");
     if (localIntent.resolveActivity(this.mMiniAppContext.a().getPackageManager()) == null) {}
@@ -490,12 +490,12 @@ public class ImageJsPlugin
       return;
       localFile = createImageFile(this.mMiniAppContext.a());
     } while (localFile == null);
-    localIntent.putExtra("output", bgkv.a(this.mMiniAppContext.a(), localFile));
+    localIntent.putExtra("output", bgpc.a(this.mMiniAppContext.a(), localFile));
     this.mMiniAppContext.a().startActivityForResult(localIntent, 4);
-    bgjd.a().a(new ImageJsPlugin.3(this, parambgkd, localFile));
+    bgnk.a().a(new ImageJsPlugin.3(this, parambgok, localFile));
   }
   
-  public void chooseImage(bgkd parambgkd)
+  public void chooseImage(bgok parambgok)
   {
     int i = 9;
     int j = 1;
@@ -505,7 +505,7 @@ public class ImageJsPlugin
       try
       {
         this.mHasChoosePhoto = false;
-        localObject2 = new JSONObject(parambgkd.b);
+        localObject2 = new JSONObject(parambgok.b);
         k = ((JSONObject)localObject2).optInt("count", 9);
         localObject1 = ((JSONObject)localObject2).optJSONArray("sizeType");
         localObject2 = ((JSONObject)localObject2).optJSONArray("sourceType");
@@ -517,8 +517,8 @@ public class ImageJsPlugin
       {
         Object localObject2;
         Object localObject1;
-        QMLog.e("ImageJsPlugin", parambgkd.a + " error,", localThrowable);
-        parambgkd.b();
+        QMLog.e("ImageJsPlugin", parambgok.a + " error,", localThrowable);
+        parambgok.b();
         return;
       }
       if (localObject1 != null)
@@ -530,19 +530,19 @@ public class ImageJsPlugin
       }
       if (((JSONArray)localObject2).length() == 2)
       {
-        bgkk.a(new ImageJsPlugin.1(this, parambgkd, i));
+        bgor.a(new ImageJsPlugin.1(this, parambgok, i));
         return;
       }
       if ("camera".equals(((JSONArray)localObject2).optString(0)))
       {
-        openCamera(parambgkd);
+        openCamera(parambgok);
         return;
       }
-      if (this.mMiniAppProxy.openChoosePhotoActivity(this.mMiniAppContext.a(), i, new ImageJsPlugin.2(this, parambgkd))) {
+      if (this.mMiniAppProxy.openChoosePhotoActivity(this.mMiniAppContext.a(), i, new ImageJsPlugin.2(this, parambgok))) {
         break;
       }
-      bgnf.a(this.mMiniAppContext.a(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中选择图片", 1);
-      parambgkd.b();
+      bgrm.a(this.mMiniAppContext.a(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中选择图片", 1);
+      parambgok.b();
       return;
       label269:
       do
@@ -554,72 +554,72 @@ public class ImageJsPlugin
     }
   }
   
-  public void compressImage(bgkd parambgkd)
+  public void compressImage(bgok parambgok)
   {
     for (;;)
     {
       try
       {
-        Object localObject1 = new JSONObject(parambgkd.b);
+        Object localObject1 = new JSONObject(parambgok.b);
         String str = ((JSONObject)localObject1).optString("src");
         int i = ((JSONObject)localObject1).optInt("quality");
         if (!TextUtils.isEmpty(str))
         {
-          localObject1 = bgjm.a().a(str);
+          localObject1 = bgnt.a().a(str);
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
-            doCompressImage((String)localObject1, i, parambgkd);
+            doCompressImage((String)localObject1, i, parambgok);
             return;
           }
-          parambgkd.b();
+          parambgok.b();
           return;
         }
       }
       catch (Exception localException)
       {
-        QMLog.e("ImageJsPlugin", parambgkd.a + " error", localException);
-        parambgkd.b();
+        QMLog.e("ImageJsPlugin", parambgok.a + " error", localException);
+        parambgok.b();
         return;
       }
       Object localObject2 = null;
     }
   }
   
-  public void getImageInfo(bgkd parambgkd)
+  public void getImageInfo(bgok parambgok)
   {
     for (;;)
     {
       try
       {
-        String str = new JSONObject(parambgkd.b).optString("src", "");
+        String str = new JSONObject(parambgok.b).optString("src", "");
         if (!TextUtils.isEmpty(str))
         {
-          str = bgjm.a().a(str);
+          str = bgnt.a().a(str);
           if (!TextUtils.isEmpty(str))
           {
-            callbackGetImageInfo(str, parambgkd);
+            callbackGetImageInfo(str, parambgok);
             return;
           }
-          parambgkd.a("image path error.");
+          parambgok.a("image path error.");
           return;
         }
       }
       catch (Exception localException)
       {
-        QMLog.e("ImageJsPlugin", parambgkd.a + " error.", localException);
-        parambgkd.b();
+        QMLog.e("ImageJsPlugin", parambgok.a + " error.", localException);
+        parambgok.b();
         return;
       }
       Object localObject = null;
     }
   }
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    super.onCreate(parambgho);
-    parambgho = new IntentFilter();
-    parambgho.addAction("micro_api_choose_image");
-    this.mMiniAppContext.a().registerReceiver(this.receiver, parambgho);
+    super.onCreate(parambglv);
+    parambglv = new IntentFilter();
+    parambglv.addAction("micro_api_choose_image");
+    this.mMiniAppContext.a().registerReceiver(this.receiver, parambglv);
   }
   
   public void onDestroy()
@@ -630,18 +630,18 @@ public class ImageJsPlugin
     }
   }
   
-  public boolean onInterceptJsEvent(bgkd parambgkd)
+  public boolean onInterceptJsEvent(bgok parambgok)
   {
-    this.mCurRequestEvent = parambgkd;
-    return super.onInterceptJsEvent(parambgkd);
+    this.mCurRequestEvent = parambgok;
+    return super.onInterceptJsEvent(parambgok);
   }
   
-  public void previewImage(bgkd parambgkd)
+  public void previewImage(bgok parambgok)
   {
     int i = 0;
     try
     {
-      Object localObject = new JSONObject(parambgkd.b);
+      Object localObject = new JSONObject(parambgok.b);
       String str1 = ((JSONObject)localObject).optString("current", "");
       localObject = ((JSONObject)localObject).optJSONArray("urls");
       ArrayList localArrayList = new ArrayList();
@@ -652,53 +652,53 @@ public class ImageJsPlugin
         if (str2.equals(str1)) {
           j = i;
         }
-        String str3 = bgjm.a().a(str2);
+        String str3 = bgnt.a().a(str2);
         localArrayList.add(str3);
         QMLog.d("ImageJsPlugin", "previewImage wxFilePath=" + str2 + ",localFilePath=" + str3);
         i += 1;
       }
       if ((localArrayList != null) && (!this.mMiniAppProxy.openImagePreview(this.mMiniAppContext.a(), j, localArrayList)))
       {
-        bgnf.a(this.mMiniAppContext.a(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中预览图片", 1);
-        parambgkd.b();
+        bgrm.a(this.mMiniAppContext.a(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中预览图片", 1);
+        parambgok.b();
         return;
       }
-      parambgkd.a();
+      parambgok.a();
       return;
     }
     catch (Exception localException)
     {
-      QMLog.e("ImageJsPlugin", parambgkd.a + " error,", localException);
-      parambgkd.b();
+      QMLog.e("ImageJsPlugin", parambgok.a + " error,", localException);
+      parambgok.b();
     }
   }
   
-  public void saveImageToPhotosAlbum(bgkd parambgkd)
+  public void saveImageToPhotosAlbum(bgok parambgok)
   {
     try
     {
-      String str = new JSONObject(parambgkd.b).optString("filePath", "");
+      String str = new JSONObject(parambgok.b).optString("filePath", "");
       if (!TextUtils.isEmpty(str))
       {
-        str = bgjm.a().a(str);
+        str = bgnt.a().a(str);
         Object localObject = new File(str);
-        localObject = bgll.a() + System.currentTimeMillis() / 1000L + "_" + ((File)localObject).getName();
-        if (bgkv.a(this.mMiniAppContext.a(), str, (String)localObject))
+        localObject = bgps.a() + System.currentTimeMillis() / 1000L + "_" + ((File)localObject).getName();
+        if (bgpc.a(this.mMiniAppContext.a(), str, (String)localObject))
         {
-          parambgkd.a();
+          parambgok.a();
           return;
         }
-        parambgkd.a("save failed.");
+        parambgok.a("save failed.");
         return;
       }
     }
     catch (Exception localException)
     {
-      QMLog.e("ImageJsPlugin", parambgkd.a + " error", localException);
-      parambgkd.b();
+      QMLog.e("ImageJsPlugin", parambgok.a + " error", localException);
+      parambgok.b();
       return;
     }
-    parambgkd.a("save failed.");
+    parambgok.a("save failed.");
   }
 }
 

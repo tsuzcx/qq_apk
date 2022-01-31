@@ -49,7 +49,7 @@ public class qds
     for (int i = this.jdField_a_of_type_Int;; i = -1)
     {
       paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(aekt.a(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.getResources()));
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(aepi.a(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.getResources()));
       this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
       return;
     }

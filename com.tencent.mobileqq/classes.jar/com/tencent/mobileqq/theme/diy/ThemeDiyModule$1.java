@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.theme.diy;
 
-import aubp;
-import bakf;
-import bakr;
+import aufy;
+import baoo;
+import bapa;
 import org.json.JSONObject;
 
 class ThemeDiyModule$1
-  implements aubp<bakf>
+  implements aufy<baoo>
 {
   ThemeDiyModule$1(ThemeDiyModule paramThemeDiyModule, JSONObject paramJSONObject, String paramString) {}
   
-  public void postQuery(bakf parambakf)
+  public void postQuery(baoo parambaoo)
   {
-    if ((parambakf != null) && (parambakf.b())) {
+    if ((parambaoo != null) && (parambaoo.b())) {
       if (ThemeDiyModule.access$000(this.this$0) != null) {
         ThemeDiyModule.access$000(this.this$0).diyThemeSetup(this.val$styleObj, this.val$callbackId);
       }

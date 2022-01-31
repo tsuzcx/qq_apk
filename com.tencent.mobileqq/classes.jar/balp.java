@@ -1,25 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class balp
-  implements Animation.AnimationListener
+  implements View.OnTouchListener
 {
-  balp(balo parambalo) {}
+  balp(balm parambalm) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(500);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setAnimationListener(new balq(this));
-    this.a.d.startAnimation(paramAnimation);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      bhsj.b(paramView);
+      this.a.d();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -7,15 +7,15 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class qaz
   extends pxl
 {
-  public qaz(Context paramContext, bcws parambcws, rqj paramrqj)
+  public qaz(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()
   {
     this.jdField_a_of_type_Boolean = true;
-    return f(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).q().l().n();
+    return f(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).q().l().n();
   }
   
   public pxl d()

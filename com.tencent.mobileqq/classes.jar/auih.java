@@ -1,9 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
 
-public abstract interface auih
+public class auih
+  implements augg
 {
-  public abstract void b(View paramView, MotionEvent paramMotionEvent);
+  public auih(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
+  
+  public void a()
+  {
+    this.a.a(this.a.a, this.a.getString(2131690487));
+  }
 }
 
 

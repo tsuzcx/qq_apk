@@ -1,60 +1,187 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Environment;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.util.QZLog;
+import java.io.File;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class yzo
-  implements aoec
 {
-  public yzo(NewerGuidePlugin paramNewerGuidePlugin, IphonePickerView paramIphonePickerView, bhpy parambhpy) {}
+  public static String a;
+  private static yzo jdField_a_of_type_Yzo;
+  private Map<String, yzq> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  public void a()
+  private yzo()
   {
-    int i = NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1897;
-    int j = NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1;
-    int k = NewerGuidePlugin.d(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("onDismissOperations year=%s month=%s day=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) }));
+    a(BaseApplicationImpl.getContext());
+  }
+  
+  private String a(Context paramContext)
+  {
+    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+    {
+      paramContext = paramContext.getExternalFilesDir("video_story");
+      if (paramContext != null) {
+        jdField_a_of_type_JavaLangString = paramContext.getAbsolutePath();
+      }
     }
-    if ((this.jdField_a_of_type_Bhpy != null) && (this.jdField_a_of_type_Bhpy.isShowing())) {
-      this.jdField_a_of_type_Bhpy.dismiss();
+    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+    {
+      paramContext = Environment.getExternalStorageDirectory().getAbsolutePath();
+      jdField_a_of_type_JavaLangString = paramContext + "/Tencent/MobileQQ/" + "video_story";
     }
-    JSONObject localJSONObject = new JSONObject();
+    QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "intDownLoadRoot" + jdField_a_of_type_JavaLangString);
+    return null;
+  }
+  
+  public static yzo a()
+  {
     try
     {
-      localJSONObject.put("result", 1);
-      localJSONObject.put("year", i);
-      localJSONObject.put("month", j);
-      localJSONObject.put("date", k);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respDatePicker", new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("NewerGuidePlugin", 1, "sendDatePickerResp fail", localException);
+      if (jdField_a_of_type_Yzo == null) {
+        jdField_a_of_type_Yzo = new yzo();
       }
+      yzo localyzo = jdField_a_of_type_Yzo;
+      return localyzo;
+    }
+    finally {}
+  }
+  
+  public String a(String paramString)
+  {
+    try
+    {
+      paramString = paramString.split("/");
+      paramString = paramString[(paramString.length - 1)];
+      paramString = paramString.substring(0, paramString.indexOf(".zip"));
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
+  }
+  
+  public void a(String paramString, Downloader.DownloadListener paramDownloadListener)
+  {
+    QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:" + paramString);
+    if (TextUtils.isEmpty(paramString)) {
+      QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:url is empty" });
+    }
+    String str1;
+    String str2;
+    yzq localyzq;
+    beaj localbeaj;
+    beae localbeae;
+    Bundle localBundle;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          str1 = a(paramString);
+          if (TextUtils.isEmpty(str1))
+          {
+            QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:prefixId is empty" });
+            return;
+          }
+          QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:prefixId:" + str1);
+          if (b(str1))
+          {
+            QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:resource has download");
+            return;
+          }
+          if (c(str1))
+          {
+            QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:resource on download");
+            return;
+          }
+          if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+          {
+            QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:mDownLoadRoot is empty" });
+            return;
+          }
+          str2 = jdField_a_of_type_JavaLangString + "/" + str1 + ".zip";
+        } while (TextUtils.isEmpty(paramString));
+        localyzq = new yzq(this, null);
+        this.jdField_a_of_type_JavaUtilMap.put(str1, localyzq);
+        localbeaj = ((beag)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(47)).a(1);
+      } while (localbeaj == null);
+      localbeae = new beae(paramString, new File(str2));
+      localbeae.b = 1;
+      localBundle = new Bundle();
+    } while (localbeaj == null);
+    localbeaj.a(localbeae, new yzp(this, paramDownloadListener, str2, localyzq, str1, paramString), localBundle);
+  }
+  
+  public void a(yyz paramyyz)
+  {
+    if (paramyyz != null) {
+      a(paramyyz.a(), null);
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(yzb paramyzb)
   {
-    switch (paramInt1)
-    {
+    if (paramyzb != null) {
+      a(paramyzb.a(), null);
     }
-    for (;;)
+  }
+  
+  public boolean a(String paramString)
+  {
+    paramString = a(paramString);
+    if (!TextUtils.isEmpty(paramString)) {
+      return b(paramString);
+    }
+    return false;
+  }
+  
+  public String b(String paramString)
+  {
+    return jdField_a_of_type_JavaLangString + "/" + a(paramString);
+  }
+  
+  public boolean b(String paramString)
+  {
+    Object localObject = jdField_a_of_type_JavaLangString + "/" + paramString;
+    if (new File((String)localObject + ".zip").exists())
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+      QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "upZip failed:" + paramString);
+      return false;
+    }
+    boolean bool2;
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      bool2 = new File((String)localObject).exists();
+      bool1 = bool2;
+      if (bool2)
+      {
+        localObject = new yzq(this, null);
+        yzq.a((yzq)localObject, 0);
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
       }
-      return;
-      NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
-      continue;
-      NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
-      continue;
-      NewerGuidePlugin.d(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
     }
+    for (boolean bool1 = bool2;; bool1 = false) {
+      return bool1;
+    }
+  }
+  
+  public boolean c(String paramString)
+  {
+    paramString = (yzq)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null) {
+      return (yzq.a(paramString) == -1) || (yzq.a(paramString) == 1);
+    }
+    return false;
   }
 }
 

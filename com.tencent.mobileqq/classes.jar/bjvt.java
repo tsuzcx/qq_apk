@@ -1,114 +1,38 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.LocalMultiProcConfig;
-import java.util.Map;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
 
-public class bjvt
-  extends WebViewPlugin
-  implements bebd
+class bjvt
+  implements ModuleDownloadListener
 {
-  private BroadcastReceiver a = new bjvu(this);
+  bjvt(bjvs parambjvs, bjvv parambjvv) {}
   
-  public void a()
+  public void onDownloadCanceled(String paramString)
   {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("QZoneCardPreDownload");
-    localIntentFilter.addAction("action_facade_qzone2js");
-    BaseApplication.getContext().registerReceiver(this.a, localIntentFilter);
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadCanceled ", paramString });
   }
   
-  public void b()
+  public void onDownloadFailed(String paramString)
   {
-    BaseApplication.getContext().unregisterReceiver(this.a);
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadFailed ", paramString });
+    bjvs.a(this.jdField_a_of_type_Bjvs, false);
+    this.jdField_a_of_type_Bjvv.a(false);
   }
   
-  public String[] getMultiNameSpace()
+  public void onDownloadProgress(String paramString, float paramFloat)
   {
-    return new String[] { "qzcardstorre", "QzAvatar", "QzFloat" };
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  public void onDownloadSucceed(String paramString)
   {
-    if ((paramLong == 2L) && (paramString.equals(bjvq.a))) {
-      bjvq.a(this.mRuntime, null);
+    if (!paramString.equals("xmpcore.jar")) {
+      return;
     }
-    return false;
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePersonalizePlugin", 2, "handleJsRequest \n url: " + paramString1 + "\n pkgName:" + paramString2 + "\n method:" + paramString3);
-    }
-    if (bjsm.a(paramString3))
-    {
-      LocalMultiProcConfig.putBool("qzone_force_refresh", true);
-      LocalMultiProcConfig.putBool("qzone_force_refresh_passive", true);
-    }
-    if (paramString2.equals("qzcardstorre"))
-    {
-      if (paramString3.equals("closecardpreview")) {
-        return true;
-      }
-      if (paramString3.equals("setcardfinish")) {
-        bjvi.a(this, this.mRuntime, paramVarArgs);
-      }
-      if (paramString3.equals("downloadcard"))
-      {
-        bjvi.a(this.mRuntime, paramVarArgs);
-        return true;
-      }
-    }
-    else
-    {
-      if (!paramString2.equals("QzAvatar")) {
-        break label208;
-      }
-      if (!paramString3.equals("downloadAvatar")) {
-        break label162;
-      }
-      bjvo.b(this.mRuntime, paramVarArgs);
-    }
-    label162:
-    label208:
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          return false;
-          if (paramString3.equals("setAvatar")) {
-            bjvo.a(this.mRuntime, paramVarArgs);
-          } else if (paramString3.equalsIgnoreCase("checkIdList")) {
-            bjvo.c(this.mRuntime, new String[0]);
-          }
-        }
-      } while (!paramString2.equals("QzFloat"));
-      if (paramString3.equals("downloadFloat"))
-      {
-        bjvq.a(this.mRuntime, paramVarArgs);
-        return true;
-      }
-    } while (!paramString3.equals("setFloat"));
-    bjvq.b(this.mRuntime, paramVarArgs);
-    return true;
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    a();
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    b();
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "url = ", bjvs.a(), " onDownloadSucceed = ", bjvs.b() });
+    LocalMultiProcConfig.putString("xmp_core_file_md5", bjvs.b());
+    bjvs.a(this.jdField_a_of_type_Bjvs);
+    this.jdField_a_of_type_Bjvv.a(bjvs.a(this.jdField_a_of_type_Bjvs));
   }
 }
 

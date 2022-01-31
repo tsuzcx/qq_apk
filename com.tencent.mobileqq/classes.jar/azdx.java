@@ -1,47 +1,139 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import java.util.ArrayList;
 
 public class azdx
+  implements Comparable<azdx>
 {
-  public static azdx a;
-  public static String a;
-  private azbs a;
+  public int a;
+  public long a;
+  public azdg a;
+  public azdi a;
+  public azdv a;
+  public azen a;
+  public azeq a;
+  public MessageForShortVideo a;
+  public String a;
+  public ArrayList<azdi> a;
+  public boolean a;
+  public String[] a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e = 201;
+  public int f;
   
-  static
+  public azdx()
   {
-    jdField_a_of_type_Azdx = new azdx();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = awjl.a();
   }
   
-  private azdx()
+  public int a(azdx paramazdx)
   {
-    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-  }
-  
-  public static azdx a()
-  {
-    return jdField_a_of_type_Azdx;
-  }
-  
-  public azbs a()
-  {
-    if (this.jdField_a_of_type_Azbs == null) {
-      this.jdField_a_of_type_Azbs = new azbs(40, azds.c);
+    if (this.e < paramazdx.e) {
+      return -1;
     }
-    return this.jdField_a_of_type_Azbs;
+    if (this.e > paramazdx.e) {
+      return 1;
+    }
+    return 0;
   }
   
-  public azbv a()
+  public void a(azdg paramazdg)
   {
-    return azbv.a();
+    int j = 6;
+    if (paramazdg == null)
+    {
+      awiw.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "downInfo == null");
+      return;
+    }
+    paramazdg.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Azdg = paramazdg;
+    int i;
+    if (paramazdg.e == 1002) {
+      i = 7;
+    }
+    for (;;)
+    {
+      this.jdField_b_of_type_JavaLangString = awiw.a(this.jdField_a_of_type_Azdg.jdField_b_of_type_Int, 0, i);
+      return;
+      if (paramazdg.e == 1006)
+      {
+        i = 18;
+      }
+      else if (paramazdg.e == 1004)
+      {
+        i = 16;
+      }
+      else
+      {
+        i = j;
+        if (paramazdg.e != 1001) {
+          if (paramazdg.e == 1005)
+          {
+            i = 17;
+          }
+          else
+          {
+            i = j;
+            if (paramazdg.e == 1003) {
+              i = 9;
+            }
+          }
+        }
+      }
+    }
   }
   
-  public AVCodec a()
+  public void a(azdi paramazdi)
   {
-    return AVCodec.get();
+    if (paramazdi == null)
+    {
+      awiw.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "forwardInfo == null");
+      return;
+    }
+    paramazdi.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Azdi = paramazdi;
+    this.jdField_b_of_type_JavaLangString = awiw.a(this.jdField_a_of_type_Azdi.jdField_b_of_type_Int, 2, 20);
   }
   
-  public void a()
+  public void a(azen paramazen)
   {
-    this.jdField_a_of_type_Azbs = null;
+    int i = 6;
+    if (paramazen == null)
+    {
+      awiw.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "upInfo == null");
+      return;
+    }
+    paramazen.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Azen = paramazen;
+    if (paramazen.jdField_b_of_type_Int == 0) {}
+    for (;;)
+    {
+      this.jdField_b_of_type_JavaLangString = awiw.a(this.jdField_a_of_type_Azen.jdField_b_of_type_Int, 1, i);
+      return;
+      if (paramazen.jdField_b_of_type_Int == 3000) {
+        i = 17;
+      } else if (paramazen.jdField_b_of_type_Int == 1) {
+        i = 9;
+      }
+    }
+  }
+  
+  public void a(azeq paramazeq)
+  {
+    this.jdField_a_of_type_Azeq = paramazeq;
+  }
+  
+  public void a(MessageForShortVideo paramMessageForShortVideo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
+  }
+  
+  public void a(ArrayList<azdi> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 

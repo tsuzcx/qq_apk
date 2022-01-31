@@ -1,13 +1,13 @@
-import java.util.HashMap;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public class xxa
+class xxa
+  extends RecyclerView.ViewHolder
 {
-  public HashMap<String, String> a = new HashMap();
-  public HashMap<String, String> b = new HashMap();
-  public HashMap<String, String> c = new HashMap();
-  public HashMap<String, String> d = new HashMap();
-  public HashMap<String, String> e = new HashMap();
-  public HashMap<String, String> f = new HashMap();
+  xxa(xwy paramxwy, View paramView)
+  {
+    super(paramView);
+  }
 }
 
 

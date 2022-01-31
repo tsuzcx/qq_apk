@@ -1,6 +1,6 @@
 package com.tencent.av.ui.beauty;
 
-import aekt;
+import aepi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -13,8 +13,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
-import bdcd;
-import bdkf;
+import bdgm;
+import bdoo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.av.ui.FadingHorizontalScrollView;
@@ -33,7 +33,7 @@ import mww;
 public class BeautyView
   extends BeautyBaseView
 {
-  static final Object[][] jdField_a_of_type_Array2dOfJavaLangObject = { { "BEAUTY_SKIN", Integer.valueOf(2131695871), Integer.valueOf(2130841581) }, { "FACE_SHAPE_4", Integer.valueOf(2131695855), Integer.valueOf(2130841572) }, { "COLOR_TONE", Integer.valueOf(2131695870), Integer.valueOf(2130841582) }, { "FACE_V", Integer.valueOf(2131695858), Integer.valueOf(2130841575) }, { "FACE_THIN", Integer.valueOf(2131695857), Integer.valueOf(2130841573) }, { "FACE_SHORTEN", Integer.valueOf(2131695856), Integer.valueOf(2130841574) }, { "CHIN", Integer.valueOf(2131695853), Integer.valueOf(2130841571) }, { "ENLARGE_EYE", Integer.valueOf(2131695854), Integer.valueOf(2130841576) }, { "EYE_LIGHTEN", Integer.valueOf(2131695862), Integer.valueOf(2130841577) }, { "NOSE_THIN", Integer.valueOf(2131695867), Integer.valueOf(2130841583) }, { "MOUTH_SHAPE", Integer.valueOf(2131695864), Integer.valueOf(2130841579) }, { "TOOTH_WHITEN", Integer.valueOf(2131695878), Integer.valueOf(2130841584) } };
+  static final Object[][] jdField_a_of_type_Array2dOfJavaLangObject;
   int jdField_a_of_type_Int = 0;
   public final Button a;
   final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -42,6 +42,15 @@ public class BeautyView
   final ArrayList<mor> jdField_a_of_type_JavaUtilArrayList = new ArrayList(12);
   private boolean jdField_a_of_type_Boolean = true;
   VideoAppInterface b;
+  
+  static
+  {
+    Object[] arrayOfObject1 = { "FACE_THIN", Integer.valueOf(2131695859), Integer.valueOf(2130841586) };
+    Object[] arrayOfObject2 = { "EYE_LIGHTEN", Integer.valueOf(2131695864), Integer.valueOf(2130841590) };
+    Object[] arrayOfObject3 = { "NOSE_THIN", Integer.valueOf(2131695869), Integer.valueOf(2130841596) };
+    Object[] arrayOfObject4 = { "TOOTH_WHITEN", Integer.valueOf(2131695880), Integer.valueOf(2130841597) };
+    jdField_a_of_type_Array2dOfJavaLangObject = new Object[][] { { "BEAUTY_SKIN", Integer.valueOf(2131695873), Integer.valueOf(2130841594) }, { "FACE_SHAPE_4", Integer.valueOf(2131695857), Integer.valueOf(2130841585) }, { "COLOR_TONE", Integer.valueOf(2131695872), Integer.valueOf(2130841595) }, { "FACE_V", Integer.valueOf(2131695860), Integer.valueOf(2130841588) }, arrayOfObject1, { "FACE_SHORTEN", Integer.valueOf(2131695858), Integer.valueOf(2130841587) }, { "CHIN", Integer.valueOf(2131695855), Integer.valueOf(2130841584) }, { "ENLARGE_EYE", Integer.valueOf(2131695856), Integer.valueOf(2130841589) }, arrayOfObject2, arrayOfObject3, { "MOUTH_SHAPE", Integer.valueOf(2131695866), Integer.valueOf(2130841592) }, arrayOfObject4 };
+  }
   
   public BeautyView(Context paramContext)
   {
@@ -56,7 +65,7 @@ public class BeautyView
   public BeautyView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    inflate(paramContext, 2131559605, this);
+    inflate(paramContext, 2131559604, this);
     this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView = ((BeautySeekView)findViewById(2131363171));
     this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363150));
     this.jdField_a_of_type_ComTencentAvUiFadingHorizontalScrollView = ((FadingHorizontalScrollView)findViewById(2131363167));
@@ -71,7 +80,7 @@ public class BeautyView
     {
       paramContext = new RelativeLayout.LayoutParams(i, -2);
       this.jdField_a_of_type_AndroidWidgetButton.setLayoutParams(paramContext);
-      a(this.jdField_a_of_type_AndroidWidgetButton, 2131695852, 2130841580, 2131165877, Integer.valueOf(2131363150));
+      a(this.jdField_a_of_type_AndroidWidgetButton, 2131695854, 2130841593, 2131165877, Integer.valueOf(2131363150));
       paramContext = BaseApplicationImpl.getApplication().getRuntime();
       if (!(paramContext instanceof VideoAppInterface)) {
         break label426;
@@ -131,7 +140,7 @@ public class BeautyView
   {
     Button localButton = new Button(getContext());
     a(localButton, parammor.jdField_a_of_type_Int, parammor.b, 2131165876, parammor);
-    parammor.d = ((int)Math.max(mww.a(localButton), aekt.a(28.0F, getResources())));
+    parammor.d = ((int)Math.max(mww.a(localButton), aepi.a(28.0F, getResources())));
     return localButton;
   }
   
@@ -181,9 +190,9 @@ public class BeautyView
     paramButton.setText(paramInt1);
     paramButton.setBackgroundDrawable(null);
     paramButton.setOnClickListener(this);
-    paramButton.setTag(2131371440, paramObject);
-    paramButton.setTextSize(bdkf.e(aekt.a(12.0F, getResources())));
-    paramButton.setCompoundDrawablePadding(aekt.a(8.0F, getResources()));
+    paramButton.setTag(2131371459, paramObject);
+    paramButton.setTextSize(bdoo.e(aepi.a(12.0F, getResources())));
+    paramButton.setCompoundDrawablePadding(aepi.a(8.0F, getResources()));
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
@@ -258,7 +267,7 @@ public class BeautyView
         if (this.b != null) {
           AVNotifyCenter.a(this.b.getCurrentAccountUin(), 1);
         }
-        bdcd.a((Activity)getContext(), getResources().getString(2131695868), 2131690648, 2131694951, new mop(this), new moq(this)).show();
+        bdgm.a((Activity)getContext(), getResources().getString(2131695870), 2131690648, 2131694953, new mop(this), new moq(this)).show();
       }
     }
     do
@@ -276,7 +285,7 @@ public class BeautyView
       }
       b();
       return;
-      localObject = paramView.getTag(2131371440);
+      localObject = paramView.getTag(2131371459);
     } while (!(localObject instanceof mor));
     Object localObject = (mor)localObject;
     if (((mor)localObject).e == this.jdField_a_of_type_Int) {}

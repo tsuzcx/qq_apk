@@ -1,35 +1,16 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
-public abstract class bmtz
+public class bmtz
+  implements bmrl
 {
-  public final int a;
-  public final String a;
-  public final int b;
-  public String b;
+  public bmtz(DoodleLayout paramDoodleLayout) {}
   
-  public bmtz(int paramInt1, String paramString, int paramInt2)
+  public void a(List<bmri> paramList, DoodleView paramDoodleView)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-  }
-  
-  @NonNull
-  public abstract bmua a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  @NonNull
-  public abstract Class<? extends bmua> a();
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public String toString()
-  {
-    return "Filter:{" + this.jdField_a_of_type_JavaLangString + "}";
+    paramList.add(this.a.jdField_a_of_type_Bmre);
+    paramList.add(this.a.jdField_a_of_type_Bmqq);
   }
 }
 

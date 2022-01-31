@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import wwe;
-import wwo;
+import xan;
+import xax;
 
 public class EditVideoPlayer$3
   implements Runnable
 {
-  public EditVideoPlayer$3(wwo paramwwo) {}
+  public EditVideoPlayer$3(xax paramxax) {}
   
   public void run()
   {

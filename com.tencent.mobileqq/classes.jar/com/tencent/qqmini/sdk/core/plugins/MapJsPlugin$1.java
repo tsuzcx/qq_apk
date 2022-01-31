@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
-import bgkj;
+import bgok;
+import bgoq;
 import org.json.JSONObject;
 
 class MapJsPlugin$1
-  implements bgkj
+  implements bgoq
 {
-  MapJsPlugin$1(MapJsPlugin paramMapJsPlugin, bgkd parambgkd) {}
+  MapJsPlugin$1(MapJsPlugin paramMapJsPlugin, bgok parambgok) {}
   
   public void onLocationFinishCallback(JSONObject paramJSONObject)
   {

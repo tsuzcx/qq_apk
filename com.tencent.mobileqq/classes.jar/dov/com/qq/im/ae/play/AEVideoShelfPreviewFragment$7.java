@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.play;
 
-import bhot;
+import bhta;
 import java.util.TimerTask;
 
 class AEVideoShelfPreviewFragment$7
@@ -10,7 +10,7 @@ class AEVideoShelfPreviewFragment$7
   
   public void run()
   {
-    bhot.a(new AEVideoShelfPreviewFragment.7.1(this));
+    bhta.a(new AEVideoShelfPreviewFragment.7.1(this));
   }
 }
 

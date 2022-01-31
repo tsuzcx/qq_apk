@@ -1,52 +1,19 @@
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew.10.1;
 
 public class avwj
-  implements INetInfoHandler
+  extends asjx
 {
-  private avwj(OlympicToolAppInterface paramOlympicToolAppInterface) {}
+  public avwj(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
-  public void onNetMobile2None()
+  protected void a(boolean paramBoolean, aska paramaska)
   {
-    if (OlympicToolAppInterface.i(this.a) != null) {
-      OlympicToolAppInterface.j(this.a).onNetMobile2None();
+    if (!OCRResultFragmentNew.a(this.a)) {
+      return;
     }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (OlympicToolAppInterface.g(this.a) != null) {
-      OlympicToolAppInterface.h(this.a).onNetMobile2Wifi(paramString);
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (OlympicToolAppInterface.a(this.a) != null) {
-      OlympicToolAppInterface.b(this.a).onNetNone2Mobile(paramString);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (OlympicToolAppInterface.e(this.a) != null) {
-      OlympicToolAppInterface.f(this.a).onNetNone2Wifi(paramString);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (OlympicToolAppInterface.c(this.a) != null) {
-      OlympicToolAppInterface.d(this.a).onNetWifi2Mobile(paramString);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (OlympicToolAppInterface.k(this.a) != null) {
-      OlympicToolAppInterface.l(this.a).onNetWifi2None();
-    }
+    OCRResultFragmentNew.b(this.a, false);
+    OCRResultFragmentNew.a(this.a).runOnUiThread(new OCRResultFragmentNew.10.1(this, paramBoolean, paramaska));
   }
 }
 

@@ -140,13 +140,13 @@ public class tam
     {
       if (NetworkState.getNetworkType() == 1)
       {
-        bfkb.a().a(a);
+        bfok.a().a(a);
         return;
       }
-      paramContext = bdcd.a(paramContext, 230);
+      paramContext = bdgm.a(paramContext, 230);
       paramContext.setTitle(null);
-      paramContext.setMessage(alpo.a(2131716602));
-      paramContext.setNegativeButton(alpo.a(2131716590), new tao()).setPositiveButton(alpo.a(2131716546), new tan());
+      paramContext.setMessage(alud.a(2131716614));
+      paramContext.setNegativeButton(alud.a(2131716602), new tao()).setPositiveButton(alud.a(2131716558), new tan());
       paramContext.show();
       return;
     }

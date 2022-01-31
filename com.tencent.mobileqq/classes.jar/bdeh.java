@@ -1,25 +1,69 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.lang.ref.WeakReference;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class bdeh
-  implements View.OnClickListener
+public class bdeh
+  extends Drawable
 {
-  bdeh(bdef parambdef) {}
+  private int jdField_a_of_type_Int;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Path jdField_a_of_type_AndroidGraphicsPath;
+  private int b;
+  private int c;
   
-  public void onClick(View paramView)
+  public bdeh(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = 2;
-    bfhg.b("NewUpgradeDialog", bfeh.a(10010, bdef.a(), 2, 200));
-    bfef.a().a(17, bfeh.a(10010, bdef.a(), 4, 200));
-    this.a.dismiss();
-    ((Activity)this.a.a.get()).finish();
-    if (bdef.a() == 2) {
-      i = 1;
+    if ((paramInt2 > 0) && (paramInt3 > 0))
+    {
+      this.b = paramInt2;
+      this.c = paramInt3;
+      this.jdField_a_of_type_AndroidGraphicsPath = bdee.a(this.b, this.c);
     }
-    azmj.b(null, "dc00898", "", "", "0X8008FFC", "0X8008FFC", i, 0, "", "", "", "");
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
   }
+  
+  public void draw(@NonNull Canvas paramCanvas)
+  {
+    Rect localRect = getBounds();
+    int i = localRect.right - localRect.left;
+    int j = localRect.bottom - localRect.top;
+    if ((i != this.b) && (j != this.c))
+    {
+      this.b = i;
+      this.c = j;
+      this.jdField_a_of_type_AndroidGraphicsPath = bdee.a(this.b, this.c);
+    }
+    paramCanvas.save();
+    paramCanvas.translate(localRect.left, localRect.top);
+    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.restore();
+  }
+  
+  public int getOpacity()
+  {
+    switch (this.jdField_a_of_type_Int >>> 24)
+    {
+    default: 
+      return -3;
+    case 255: 
+      return -1;
+    }
+    return -2;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
 }
 
 

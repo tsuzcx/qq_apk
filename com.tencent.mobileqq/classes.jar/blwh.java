@@ -1,28 +1,65 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
+import dov.com.qq.im.capture.poi.FacePoiUI.3.1;
+import dov.com.qq.im.capture.poi.FacePoiUI.3.2;
 
-final class blwh
-  implements ValueAnimator.AnimatorUpdateListener
+public class blwh
+  implements bhzf
 {
-  float jdField_a_of_type_Float = 1.0F;
-  final View jdField_a_of_type_AndroidViewView;
+  blwh(blwf paramblwf) {}
   
-  blwh(View paramView)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_Float = f;
-    this.jdField_a_of_type_AndroidViewView.invalidate();
-    if (QLog.isColorLevel()) {
-      QLog.d("PressScaleAnimDelegate ", 2, "do scale animtion, scale=" + f);
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.a == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.a)
+    {
+      paramView.c(l);
+      return;
     }
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    paramListView = (PullRefreshHeader)paramView;
+    long l;
+    if (this.a.a == 0L)
+    {
+      l = System.currentTimeMillis();
+      paramListView.a(l);
+      if (!bdin.g(this.a.e.getContext())) {
+        break label114;
+      }
+      blwf.a(this.a).d();
+      blwf.a(this.a).a();
+      new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.3.1(this), 300L);
+    }
+    for (;;)
+    {
+      ((acrg)paramView.getTag()).a = true;
+      return true;
+      l = this.a.a;
+      break;
+      label114:
+      new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.3.2(this), 300L);
+    }
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.a == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.a)
+    {
+      paramView.b(l);
+      return;
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

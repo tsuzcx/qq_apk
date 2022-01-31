@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class stx
-  implements alkr
+  implements alpg
 {
   protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList) {}
   

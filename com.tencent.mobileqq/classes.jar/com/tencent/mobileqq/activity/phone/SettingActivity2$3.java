@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.phone;
 
-import aiix;
+import ainm;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SettingActivity2$3
@@ -12,11 +12,11 @@ public class SettingActivity2$3
   {
     if (this.this$0.c == null)
     {
-      this.this$0.c = new aiix(this);
+      this.this$0.c = new ainm(this);
       this.this$0.app.registObserver(this.this$0.c);
     }
     this.this$0.app.a(new SettingActivity2.3.2(this));
-    this.this$0.a(2131719773, 1000L, true);
+    this.this$0.a(2131719785, 1000L, true);
   }
 }
 

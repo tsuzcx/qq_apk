@@ -1,33 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class bmkj
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  static
+  bmkj(bmki parambmki) {}
+  
+  public void onClick(View paramView)
   {
-    if (!bmki.class.desiredAssertionStatus()) {}
+    paramView = this.a;
+    if (!bmki.a(this.a)) {}
     for (boolean bool = true;; bool = false)
     {
-      jdField_a_of_type_Boolean = bool;
+      bmki.a(paramView, bool);
+      bmki.a(this.a, bmki.a(this.a));
+      uvt.d(bmki.a(this.a));
       return;
     }
-  }
-  
-  bmkj(bmki parambmki, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Bundle();
-    bmmu localbmmu = this.jdField_a_of_type_Bmki.a().a;
-    if ((!jdField_a_of_type_Boolean) && (localbmmu == null)) {
-      throw new AssertionError();
-    }
-    bmki.a(paramDialogInterface, localbmmu);
-    paramDialogInterface.putInt("element_index", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bmki.a.a(35, paramDialogInterface);
   }
 }
 

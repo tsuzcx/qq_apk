@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import aige;
+import aikt;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
 public class AvatarPendantActivity$22$1
   implements Runnable
 {
-  public AvatarPendantActivity$22$1(aige paramaige) {}
+  public AvatarPendantActivity$22$1(aikt paramaikt) {}
   
   public void run()
   {

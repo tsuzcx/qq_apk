@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent.specialcare;
 
-import ajii;
+import ajmx;
 import android.animation.ValueAnimator;
 
 public class CareNotificationBar$2$1$1
   implements Runnable
 {
-  public CareNotificationBar$2$1$1(ajii paramajii) {}
+  public CareNotificationBar$2$1$1(ajmx paramajmx) {}
   
   public void run()
   {

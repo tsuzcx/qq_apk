@@ -32,14 +32,14 @@ public class ntt
     } while (this.a.jdField_a_of_type_AndroidWidgetTextView == null);
     if (this.a.jdField_a_of_type_Boolean)
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131701626));
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131701638));
       this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
       this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131701638));
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131701650));
     this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846565);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846638);
   }
 }
 

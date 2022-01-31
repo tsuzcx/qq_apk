@@ -1,8 +1,8 @@
 package com.tencent.biz.webviewplugin;
 
-import becq;
+import begz;
 import ntv;
-import yyp;
+import zde;
 
 class BusinessReportPlugin$1$1
   implements Runnable

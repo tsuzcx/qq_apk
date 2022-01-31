@@ -54,7 +54,7 @@ public class qym
       try
       {
         paramVideoInfo = new JSONObject(paramVideoInfo.a.r);
-        boolean bool = bdem.a(this.jdField_a_of_type_AndroidContentContext, paramVideoInfo.optString("pkg_name"));
+        boolean bool = bdiv.a(this.jdField_a_of_type_AndroidContentContext, paramVideoInfo.optString("pkg_name"));
         if (bool) {
           return 3;
         }
@@ -94,9 +94,9 @@ public class qym
       {
       default: 
         localObject1 = localObject2;
-        i = 2130842688;
-        if (localResources.getText(2131718891).toString().equals(localObject1)) {
-          i = 2130842687;
+        i = 2130842701;
+        if (localResources.getText(2131718903).toString().equals(localObject1)) {
+          i = 2130842700;
         }
         break;
       }
@@ -104,32 +104,32 @@ public class qym
     for (;;)
     {
       this.jdField_a_of_type_Rbi.j.setText((CharSequence)localObject1);
-      int j = aekt.a(12.0F, localResources);
+      int j = aepi.a(12.0F, localResources);
       localObject1 = localResources.getDrawable(i);
       ((Drawable)localObject1).setBounds(0, 0, j, j);
       this.jdField_a_of_type_Rbi.j.setCompoundDrawables((Drawable)localObject1, null, null, null);
       return;
-      localObject1 = localResources.getText(2131718896).toString();
+      localObject1 = localResources.getText(2131718908).toString();
       break;
       localObject1 = localObject2;
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         break;
       }
-      localObject1 = localResources.getText(2131718891).toString();
+      localObject1 = localResources.getText(2131718903).toString();
       break;
-      localObject1 = localResources.getText(2131718893).toString();
+      localObject1 = localResources.getText(2131718905).toString();
       break;
       localObject1 = localObject2;
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         break;
       }
-      localObject1 = localResources.getText(2131718941).toString();
+      localObject1 = localResources.getText(2131718953).toString();
       break;
       label327:
-      localObject1 = localResources.getText(2131718941).toString();
+      localObject1 = localResources.getText(2131718953).toString();
       break;
-      if (localResources.getText(2131718893).toString().equals(localObject1)) {
-        i = 2130842690;
+      if (localResources.getText(2131718905).toString().equals(localObject1)) {
+        i = 2130842703;
       }
     }
   }
@@ -363,7 +363,7 @@ public class qym
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qym
  * JD-Core Version:    0.7.0.1
  */

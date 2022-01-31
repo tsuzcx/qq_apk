@@ -1,26 +1,20 @@
-public class baps
-  extends baqv
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.aio.media.aio_media.RspLatestPlayingState;
+
+public abstract interface baps
 {
-  public int a = 0;
-  public bapt a;
-  public bapu a;
-  public bash a;
-  public String a;
-  public boolean a;
-  public String[] a;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  public baps()
-  {
-    this.b = 0;
-  }
+  public abstract void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, Object paramObject);
+  
+  public abstract void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, long paramLong1, long paramLong2, boolean paramBoolean);
+  
+  public abstract void a(ToServiceMsg paramToServiceMsg, aio_media.RspLatestPlayingState paramRspLatestPlayingState);
+  
+  public abstract void a(Object paramObject);
+  
+  public abstract void a(String paramString, int paramInt);
 }
 
 

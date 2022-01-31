@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.mainpage;
 
-import alpo;
+import alud;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnLongClickListener;
@@ -16,7 +16,7 @@ class MainPageFragment$1
   {
     MiniCacheFreeManager.freeCache(MainPageFragment.getUin(), MainPageFragment.access$000(this.this$0));
     this.this$0.getActivity().finish();
-    Toast.makeText(paramView.getContext(), alpo.a(2131706805), 1).show();
+    Toast.makeText(paramView.getContext(), alud.a(2131706817), 1).show();
     return false;
   }
 }

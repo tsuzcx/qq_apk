@@ -1,43 +1,64 @@
-import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
-import com.tencent.richmediabrowser.core.RichMediaBrowserManager;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-import com.tencent.richmediabrowser.presenter.IProvider;
-import com.tencent.richmediabrowser.view.page.Gallery;
+import android.annotation.TargetApi;
+import android.opengl.EGL14;
+import android.opengl.EGLSurface;
+import com.tencent.qphone.base.util.QLog;
 
-class axvh
-  implements army
+@TargetApi(17)
+public class axvh
 {
-  axvh(axvg paramaxvg, AIOFilePictureData paramAIOFilePictureData) {}
+  private EGLSurface a;
+  protected axvg a;
+  
+  public axvh(axvg paramaxvg)
+  {
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
+    this.jdField_a_of_type_Axvg = paramaxvg;
+  }
   
   public void a()
   {
-    try
-    {
-      this.jdField_a_of_type_Axvg.updateUI();
-      RichMediaBrowserManager.getInstance().getProvider().downloadMedia(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData.jdField_a_of_type_Int, 20);
-      if (this.jdField_a_of_type_Axvg.a.getGallery() != null)
-      {
-        this.jdField_a_of_type_Axvg.a.getGallery().enableDoubleTap(true);
-        this.jdField_a_of_type_Axvg.a.getGallery().enableScaleGesture(true);
-      }
-      return;
+    this.jdField_a_of_type_Axvg.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
+      throw new IllegalStateException("surface already created");
     }
-    catch (Exception localException)
-    {
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "showFlowDialog exception = " + localException.getMessage());
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_Axvg.a(paramInt1, paramInt2);
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Axvg.a(this.jdField_a_of_type_AndroidOpenglEGLSurface, paramLong);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
+      throw new IllegalStateException("surface already created");
     }
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_Axvg.a(paramObject);
+  }
+  
+  public boolean a()
+  {
+    boolean bool = this.jdField_a_of_type_Axvg.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
+    if ((!bool) && (QLog.isColorLevel())) {
+      QLog.d("EglSurfaceBase", 2, "WARNING: swapBuffers() failed");
+    }
+    return bool;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Axvg.updateUI();
-    this.jdField_a_of_type_Axvg.e(true);
+    this.jdField_a_of_type_Axvg.b(this.jdField_a_of_type_AndroidOpenglEGLSurface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axvh
  * JD-Core Version:    0.7.0.1
  */

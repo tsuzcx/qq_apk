@@ -1,67 +1,71 @@
-import android.content.Context;
-import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqWatchVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class vgs
+  extends urt<vib>
 {
-  public static void a(Context paramContext, String paramString, vgu paramvgu, bepp parambepp)
+  public static final String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  
+  static
   {
-    ThreadManager.getUIHandler().post(new StoryShareEncryptHelper.2(paramString, parambepp, paramContext, paramvgu));
+    jdField_a_of_type_JavaLangString = uqn.a("StorySvc.video_watch_no_expired");
   }
   
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  public String a()
   {
-    paramString = paramString.split("&");
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public vib a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspWatchVideo localRspWatchVideo = new qqstory_service.RspWatchVideo();
+    try
     {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length == 2) {
-        paramHashMap.put(arrayOfString[0], arrayOfString[1]);
+      localRspWatchVideo.mergeFrom(paramArrayOfByte);
+      return new vib(localRspWatchVideo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqWatchVideo localReqWatchVideo = new qqstory_service.ReqWatchVideo();
+    localReqWatchVideo.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    localReqWatchVideo.to_union_id.set(ByteStringMicro.copyFromUtf8(a(this.jdField_c_of_type_JavaLangString)));
+    PBUInt32Field localPBUInt32Field = localReqWatchVideo.is_live_video;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localPBUInt32Field.set(i);
+      localReqWatchVideo.source.set(this.jdField_c_of_type_Int);
+      if (this.jdField_b_of_type_Long > 0L) {
+        localReqWatchVideo.create_time.set(this.jdField_b_of_type_Long / 1000L);
       }
-      i += 1;
+      if (this.d > 0) {
+        localReqWatchVideo.vid_type.set(this.d);
+      }
+      return localReqWatchVideo.toByteArray();
     }
   }
   
-  public static void a(HashMap<String, String> paramHashMap)
+  public String toString()
   {
-    HashMap<String, String> localHashMap = null;
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    paramHashMap = localHashMap;
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if ((!str.equals("src_type")) && (!str.equals("version")) && (!str.equals("from_leba")) && (!str.equals("leba_resid")) && (!str.equals("config_res_plugin_item_name")) && (!str.equals("redtouch_click_timestamp")) && (!str.equals("lebaVersion")) && (!str.equals("redid")))
-      {
-        localHashMap = paramHashMap;
-        if (QLog.isColorLevel())
-        {
-          if (paramHashMap != null) {
-            break label144;
-          }
-          paramHashMap = new StringBuilder();
-        }
-        for (;;)
-        {
-          paramHashMap.append(str);
-          localHashMap = paramHashMap;
-          localIterator.remove();
-          paramHashMap = localHashMap;
-          break;
-          label144:
-          paramHashMap.append('|');
-        }
-      }
-    }
-    if ((paramHashMap != null) && (QLog.isColorLevel())) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "remove attrs:" + paramHashMap);
-    }
+    return "WatchVideoRequest{vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", videoUid=" + this.jdField_c_of_type_JavaLangString + '}';
   }
 }
 

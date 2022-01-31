@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class bdhv
-  implements Parcelable.Creator<QQRecorder.RecorderParam>
+class bdhv
+  implements View.OnClickListener
 {
-  public QQRecorder.RecorderParam a(Parcel paramParcel)
-  {
-    return new QQRecorder.RecorderParam(paramParcel);
-  }
+  bdhv(bdhk parambdhk) {}
   
-  public QQRecorder.RecorderParam[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new QQRecorder.RecorderParam[paramInt];
+    if ((bdhk.a(this.a) != null) && (bdhk.a(this.a).isShowing())) {
+      bdhk.a(this.a).dismiss();
+    }
+    bdhk.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdhv
  * JD-Core Version:    0.7.0.1
  */

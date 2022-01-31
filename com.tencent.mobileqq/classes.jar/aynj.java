@@ -1,27 +1,50 @@
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import java.util.List;
 
-class aynj
-  implements View.OnClickListener
+public class aynj
+  implements aynt
 {
-  aynj(aynf paramaynf, ayke paramayke, Context paramContext) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public aynj(String paramString, int paramInt)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Ayke.m))
-    {
-      paramView = ayra.a(this.jdField_a_of_type_Ayke.a(), 0, aynt.a(this.jdField_a_of_type_Ayke.c));
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      aynt.a(null, new ReportModelDC02528().module("all_result").action("clk_web_search").obj1("2073745984").ver1(this.jdField_a_of_type_Ayke.g).ver2(aynt.a(UniteSearchActivity.d)).ver5("1").ver6("1").ver7("{experiment_id:" + aynt.b + "}"));
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public String a()
+  {
+    return alud.a(2131705764);
+  }
+  
+  public List<aynu> a()
+  {
+    return null;
+  }
+  
+  public void a(View paramView)
+  {
+    Intent localIntent = new Intent((Activity)paramView.getContext(), SearchContactsActivity.class);
+    localIntent.putExtra("start_search_key", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("jump_src_key", 0);
+    localIntent.putExtra("fromType", this.jdField_a_of_type_Int);
+    ((Activity)paramView.getContext()).startActivity(localIntent);
+    ayvm.a(this.jdField_a_of_type_JavaLangString, 0, 0, paramView);
+    azqs.b(null, "CliOper", "", "", "0X80061B7", "0X80061B7", 0, 0, "", "", "", "");
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

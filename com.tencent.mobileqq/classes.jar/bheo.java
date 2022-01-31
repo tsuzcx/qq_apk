@@ -1,91 +1,16 @@
-import com.tencent.oskplayer.util.QLog;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
 
 public class bheo
-  implements QLog
+  extends bhlt
 {
-  private static ConcurrentHashMap<String, String> a;
-  
-  private static String a(String paramString)
+  public bheo(Context paramContext, bgun parambgun)
   {
-    if (a == null) {
-      a = new ConcurrentHashMap();
-    }
-    if (!a.containsKey(paramString)) {
-      a.put(paramString, "VIDEO_LOG/" + paramString);
-    }
-    return (String)a.get(paramString);
+    super(paramContext, parambgun);
   }
   
-  public int d(String paramString1, String paramString2)
+  public void a()
   {
-    QMLog.d(a(paramString1), paramString2);
-    return 0;
-  }
-  
-  public int d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QMLog.d(a(paramString1), paramString2, paramThrowable);
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2)
-  {
-    QMLog.e(a(paramString1), paramString2);
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QMLog.e(a(paramString1), paramString2, paramThrowable);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    QMLog.i(a(paramString1), paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QMLog.i(a(paramString1), paramString2, paramThrowable);
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QMLog.isColorLevel()) {
-      QMLog.i(a(paramString1), paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QMLog.isColorLevel()) {
-      QMLog.i(a(paramString1), paramString2, paramThrowable);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    QMLog.w(a(paramString1), paramString2);
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QMLog.w(a(paramString1), paramString2, paramThrowable);
-    return 0;
-  }
-  
-  public int w(String paramString, Throwable paramThrowable)
-  {
-    QMLog.w(a(paramString), paramThrowable.getMessage());
-    return 0;
+    c();
   }
 }
 

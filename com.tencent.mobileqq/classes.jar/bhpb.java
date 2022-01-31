@@ -1,182 +1,89 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.util.notification.NotificationReportController;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import mqq.app.MobileQQ;
+import org.json.JSONObject;
 
-public class bhpb
-  implements Handler.Callback, NotificationReportController
+class bhpb
 {
-  Handler jdField_a_of_type_AndroidOsHandler = null;
-  private List<bhpc> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Set<Integer> jdField_a_of_type_JavaUtilSet;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private bhpc a;
   
-  public bhpb()
+  public bhpb(bhpc parambhpc)
   {
-    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("NotificationReportControllerImpl", 0);
-    localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper(), this);
+    this.a = parambhpc;
   }
   
-  private String a()
+  public void a(int paramInt)
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext()) {
-      localStringBuffer.append((Integer)localIterator.next()).append(",");
-    }
-    return localStringBuffer.substring(0, localStringBuffer.length() - 1);
-  }
-  
-  private void a()
-  {
-    Object localObject;
-    if ((0 == 0) && (BaseApplicationImpl.sProcessId == 1))
+    label348:
+    try
     {
-      localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
-      if ((localObject == null) || (!(localObject instanceof QQAppInterface))) {}
-    }
-    for (QQAppInterface localQQAppInterface = (QQAppInterface)localObject;; localQQAppInterface = null)
-    {
-      if ((localQQAppInterface != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (localIterator.hasNext())
-        {
-          bhpc localbhpc = (bhpc)localIterator.next();
-          boolean bool = a(localQQAppInterface, localbhpc.b);
-          localObject = "";
-          switch (localbhpc.jdField_a_of_type_Int)
-          {
-          default: 
-            label132:
-            if ((localbhpc.c == 7200) || (localbhpc.c == 1008) || (localbhpc.c == 7220)) {
-              azmj.a(localQQAppInterface, bool, "tech_push", "push", (String)localObject, "", 0, "", "", localbhpc.jdField_a_of_type_JavaLangString, localbhpc.b + "", "" + localbhpc.c, "", "", "", "");
-            }
-            break;
-          }
-          while (QLog.isDevelopLevel())
-          {
-            QLog.d("NotificationReportControllerImpl", 2, "report real msgType:" + localbhpc.jdField_a_of_type_Int + "    frienduin:" + localbhpc.jdField_a_of_type_JavaLangString + "   uinType:" + localbhpc.c + "    nId:" + localbhpc.b);
-            break;
-            localObject = "info_arr";
-            break label132;
-            localObject = "clk";
-            break label132;
-            localObject = "lock_arr";
-            break label132;
-            localObject = "lock_clk";
-            break label132;
-            azmj.a(localQQAppInterface, bool, "tech_push", "push", (String)localObject, "", 0, "", "", "", localbhpc.b + "", "", "", "", "", "");
-          }
-        }
-        this.jdField_a_of_type_JavaUtilList.clear();
+      localObject1 = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if (localObject1 == null) {
+        return;
       }
+    }
+    catch (Exception localException)
+    {
+      Object localObject1;
+      Iterator localIterator1;
+      localException.printStackTrace();
+      return;
       return;
     }
-  }
-  
-  private boolean a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (!this.b)
+    finally
     {
-      Object localObject = paramQQAppInterface.getAccount();
-      SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
-      long l1 = localSharedPreferences.getLong("key_begintime_" + (String)localObject, 0L);
-      long l2 = bhoy.a().longValue();
-      this.jdField_a_of_type_JavaUtilSet = new HashSet();
-      if (l1 == l2)
+      if (this.a == null) {
+        break label348;
+      }
+      this.a.a();
+    }
+    localObject1 = new bhpr((QQAppInterface)localObject1).a(1L);
+    if (localObject1 != null)
+    {
+      localIterator1 = ((List)localObject1).iterator();
+      while (localIterator1.hasNext())
       {
-        localObject = localSharedPreferences.getString("kay_reported_notify_ids_" + (String)localObject, "");
-        if (!TextUtils.isEmpty((CharSequence)localObject))
+        localObject1 = (bhpw)localIterator1.next();
+        if ((((bhpw)localObject1).b == paramInt) && (((bhpw)localObject1).a != null))
         {
-          localObject = ((String)localObject).split(",");
-          int j = localObject.length;
-          int i = 0;
-          while (i < j)
+          Iterator localIterator2 = ((bhpw)localObject1).a.iterator();
+          while (localIterator2.hasNext())
           {
-            localSharedPreferences = localObject[i];
-            this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(localSharedPreferences));
-            i += 1;
+            Object localObject3 = (bhpv)localIterator2.next();
+            if (!TextUtils.isEmpty(((bhpv)localObject3).i))
+            {
+              localObject1 = ((bhpv)localObject3).f;
+              if (!TextUtils.isEmpty(((bhpv)localObject3).g)) {
+                localObject1 = ((bhpv)localObject3).g;
+              }
+              if (localObject1 != null)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("QQProtect.QSec", 2, String.format("ExtraInfo: %s path: %s", new Object[] { ((bhpv)localObject3).i, localObject1 }));
+                }
+                localObject3 = new JSONObject(((bhpv)localObject3).i);
+                int i = ((JSONObject)localObject3).getInt("id");
+                int j = ((JSONObject)localObject3).getInt("type");
+                int k = ((JSONObject)localObject3).getInt("flag");
+                int m = ((JSONObject)localObject3).getInt("mode");
+                localObject3 = ((JSONObject)localObject3).getString("ver");
+                if (this.a != null) {
+                  this.a.a((String)localObject1, (String)localObject3, i, j, k, m);
+                }
+              }
+            }
           }
         }
       }
-      else
-      {
-        localSharedPreferences.edit().putLong("key_begintime_" + (String)localObject, l2).apply();
-      }
-      this.b = true;
     }
-    if (!this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt)))
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
-      PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putString("kay_reported_notify_ids_" + paramQQAppInterface.getAccount(), a()).apply();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-      paramMessage = (bhpc)paramMessage.obj;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_JavaUtilList.add(paramMessage);
-        a();
-        return true;
-      }
-      this.jdField_a_of_type_JavaUtilList.add(paramMessage);
-      return true;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    a();
-    return true;
-  }
-  
-  public void report(int paramInt1, int paramInt2, String paramString, int paramInt3)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("NotificationReportControllerImpl", 2, "msgType:" + paramInt1 + "frienduin:" + paramString + "   uinType:" + paramInt3 + "    nId:" + paramInt2);
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = paramInt1;
-    localMessage.obj = new bhpc(paramInt1, paramInt2, paramString, paramInt3);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void reportAll()
-  {
-    Message localMessage = Message.obtain();
-    localMessage.what = 5;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhpb
  * JD-Core Version:    0.7.0.1
  */

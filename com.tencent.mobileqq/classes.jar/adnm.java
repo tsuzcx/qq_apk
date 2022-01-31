@@ -1,25 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adnm
-  extends BroadcastReceiver
+class adnm
+  extends awhw
 {
-  public adnm(QQSettingMe paramQQSettingMe) {}
+  adnm(adnl paramadnl) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void b(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: intent=" + paramIntent.toString());
-    }
-    if ((paramIntent != null) && (paramIntent.getBooleanExtra("key_pay_action_result", false)))
+    super.b(paramBoolean);
+    PhoneUnityChangeActivity.a(this.a.a.a);
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: need update ");
-      }
-      this.a.x();
+      ((alys)this.a.a.a.app.getManager(102)).a(null);
+      this.a.a.a.setResult(4001);
+      this.a.a.a.finish();
     }
   }
 }

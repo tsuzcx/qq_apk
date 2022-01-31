@@ -1,37 +1,30 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.graphics.Bitmap;
+import java.util.List;
 
-class xaz
-  implements TextWatcher
+public abstract interface xaz
+  extends xam
 {
-  xaz(xay paramxay) {}
+  public abstract long a(int paramInt);
   
-  public void afterTextChanged(Editable paramEditable) {}
+  public abstract Bitmap a(int paramInt);
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public abstract List<? extends xcs> a();
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.jdField_a_of_type_Xbf == null) {}
-    do
-    {
-      return;
-      paramInt2 = this.a.a(paramCharSequence.toString());
-      if (paramInt2 > 420)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, paramInt1));
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramInt1);
-        if (this.a.jdField_a_of_type_Xbf != null) {
-          this.a.jdField_a_of_type_Xbf.b(420);
-        }
-      }
-    } while (paramInt2 <= 0);
-    this.a.b.setTextColor(Color.parseColor("#12b7f5"));
-    this.a.b.setEnabled(true);
-  }
+  public abstract void a(int paramInt1, int paramInt2, float paramFloat);
+  
+  public abstract void a(int paramInt, byte[] paramArrayOfByte);
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void j();
+  
+  public abstract void k();
 }
 
 

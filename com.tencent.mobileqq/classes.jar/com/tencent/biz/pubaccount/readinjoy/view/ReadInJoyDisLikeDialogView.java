@@ -41,8 +41,8 @@ public class ReadInJoyDisLikeDialogView
   {
     super(paramContext);
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 2131379253, 2131379254, 2131379255, 2131379256, 2131379257, 2131379258, 2131379259, 2131379260 };
-    this.jdField_b_of_type_ArrayOfInt = new int[] { 2131379248, 2131379249, 2131379250, 2131379251 };
+    this.jdField_a_of_type_ArrayOfInt = new int[] { 2131379311, 2131379312, 2131379313, 2131379314, 2131379315, 2131379316, 2131379317, 2131379318 };
+    this.jdField_b_of_type_ArrayOfInt = new int[] { 2131379306, 2131379307, 2131379308, 2131379309 };
     a(paramContext);
   }
   
@@ -111,17 +111,17 @@ public class ReadInJoyDisLikeDialogView
   protected void a(Context paramContext)
   {
     int j = 0;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559918, this);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379246));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131167192));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379264));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559917, this);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379304));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131167194));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379322));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379261));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131700040));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131379243));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379319));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131700052));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131379301));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379245));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379303));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(Color.parseColor("#FFF6F7FA"));
     this.jdField_a_of_type_ArrayOfAndroidWidgetButton = new Button[this.jdField_a_of_type_ArrayOfInt.length];
@@ -146,7 +146,7 @@ public class ReadInJoyDisLikeDialogView
     int i;
     switch (paramView.getId())
     {
-    case 2131379244: 
+    case 2131379302: 
     default: 
       i = 0;
       if (i < this.jdField_a_of_type_ArrayOfInt.length) {

@@ -1,24 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+
 public class almo
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b = "";
-  public String c = "0";
-  public String d = "";
+  public almo(ApolloPanel paramApolloPanel) {}
   
-  almo()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    return "DPCXMLParseInfo: key=" + this.jdField_a_of_type_JavaLangString + ",value=" + this.b + ",weight=" + this.jdField_a_of_type_Int + ",taskId=" + this.c + ",testType=" + this.d;
+    this.a.n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     almo
  * JD-Core Version:    0.7.0.1
  */

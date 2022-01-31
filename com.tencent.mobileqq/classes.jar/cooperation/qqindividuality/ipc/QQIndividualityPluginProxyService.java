@@ -2,10 +2,10 @@ package cooperation.qqindividuality.ipc;
 
 import android.content.Intent;
 import android.content.ServiceConnection;
-import bimg;
-import bimp;
-import bitm;
-import bitt;
+import biqn;
+import biqw;
+import bixt;
+import biya;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
@@ -16,41 +16,41 @@ import mqq.app.MobileQQ;
 public class QQIndividualityPluginProxyService
   extends PluginProxyService
 {
-  private static bitm jdField_a_of_type_Bitm;
-  private static bitt jdField_a_of_type_Bitt;
+  private static bixt jdField_a_of_type_Bixt;
+  private static biya jdField_a_of_type_Biya;
   
-  public static bitm a()
+  public static bixt a()
   {
-    if (jdField_a_of_type_Bitm == null) {}
+    if (jdField_a_of_type_Bixt == null) {}
     try
     {
-      if (jdField_a_of_type_Bitm == null) {
-        jdField_a_of_type_Bitm = new bitm(BaseApplicationImpl.getApplication().getRuntime());
+      if (jdField_a_of_type_Bixt == null) {
+        jdField_a_of_type_Bixt = new bixt(BaseApplicationImpl.getApplication().getRuntime());
       }
-      return jdField_a_of_type_Bitm;
+      return jdField_a_of_type_Bixt;
     }
     finally {}
   }
   
-  public static bitt a()
+  public static biya a()
   {
-    if (jdField_a_of_type_Bitt == null) {}
+    if (jdField_a_of_type_Biya == null) {}
     try
     {
-      if (jdField_a_of_type_Bitt == null) {
-        jdField_a_of_type_Bitt = new bitt(BaseApplicationImpl.getApplication().getRuntime());
+      if (jdField_a_of_type_Biya == null) {
+        jdField_a_of_type_Biya = new biya(BaseApplicationImpl.getApplication().getRuntime());
       }
-      return jdField_a_of_type_Bitt;
+      return jdField_a_of_type_Biya;
     }
     finally {}
   }
   
   public static void a()
   {
-    if (jdField_a_of_type_Bitt != null)
+    if (jdField_a_of_type_Biya != null)
     {
-      jdField_a_of_type_Bitt.b("qqindividuality_signature");
-      jdField_a_of_type_Bitt = null;
+      jdField_a_of_type_Biya.b("qqindividuality_signature");
+      jdField_a_of_type_Biya = null;
     }
   }
   
@@ -63,22 +63,22 @@ public class QQIndividualityPluginProxyService
   {
     Intent localIntent = new Intent(paramAppRuntime.getApplication(), QQIndividualityPluginProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
-    bimp localbimp = new bimp(0);
-    localbimp.b = "qqindividuality_plugin.apk";
-    localbimp.d = PluginInfo.m;
-    localbimp.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localbimp.e = paramString;
-    localbimp.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localbimp.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    bimg.c(paramAppRuntime.getApplication(), localbimp);
+    biqw localbiqw = new biqw(0);
+    localbiqw.b = "qqindividuality_plugin.apk";
+    localbiqw.d = PluginInfo.m;
+    localbiqw.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    localbiqw.e = paramString;
+    localbiqw.jdField_a_of_type_AndroidContentIntent = localIntent;
+    localbiqw.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    biqn.c(paramAppRuntime.getApplication(), localbiqw);
   }
   
   public static boolean a()
   {
-    bitm localbitm = a();
-    if (!PluginCommunicationHandler.getInstance().containsCmd(localbitm.getCmd()))
+    bixt localbixt = a();
+    if (!PluginCommunicationHandler.getInstance().containsCmd(localbixt.getCmd()))
     {
-      PluginCommunicationHandler.getInstance().register(localbitm);
+      PluginCommunicationHandler.getInstance().register(localbixt);
       return true;
     }
     return false;

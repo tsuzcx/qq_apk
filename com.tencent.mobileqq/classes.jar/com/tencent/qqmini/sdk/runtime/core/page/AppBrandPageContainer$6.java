@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bgid;
+import bgmk;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.utils.ColorUtils;
 import org.json.JSONObject;
@@ -8,7 +8,7 @@ import org.json.JSONObject;
 class AppBrandPageContainer$6
   implements Runnable
 {
-  AppBrandPageContainer$6(AppBrandPageContainer paramAppBrandPageContainer, bgid parambgid) {}
+  AppBrandPageContainer$6(AppBrandPageContainer paramAppBrandPageContainer, bgmk parambgmk) {}
   
   public void run()
   {

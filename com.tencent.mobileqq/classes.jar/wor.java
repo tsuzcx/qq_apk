@@ -1,8 +1,23 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.Comparator;
 
-public abstract interface wor
+public class wor
+  implements Comparator<woq>
 {
-  public abstract void a(ErrorMessage paramErrorMessage);
+  public int a(woq paramwoq1, woq paramwoq2)
+  {
+    if (paramwoq1.a == paramwoq2.a) {
+      if (!paramwoq1.b) {}
+    }
+    while (paramwoq1.a > paramwoq2.a)
+    {
+      return -1;
+      if (paramwoq2.b) {
+        return 1;
+      }
+      return 0;
+    }
+    return 1;
+  }
 }
 
 

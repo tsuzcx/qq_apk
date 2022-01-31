@@ -1,23 +1,16 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
 class afle
-  implements ason
+  implements bhuk
 {
-  afle(afld paramafld) {}
+  afle(aflc paramaflc, MessageForDeviceFile paramMessageForDeviceFile, bhuf parambhuf) {}
   
-  public void a(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HiBoomFont.ItemBuilder", 2, "onDoubleClick");
-    }
-    aekt.n = true;
-    if (this.a.a()) {
-      return;
-    }
-    ChatActivityUtils.a(this.a.a, paramView, (FragmentActivity)this.a.b);
+    this.jdField_a_of_type_Aflc.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    this.jdField_a_of_type_Aflc.b();
+    this.jdField_a_of_type_Bhuf.dismiss();
   }
 }
 

@@ -2,7 +2,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class tlo
 {
-  private static final String a = "weishi" + "8.3.3".replaceAll("\\.", "");
+  private static final String a = "weishi" + "8.3.5".replaceAll("\\.", "");
   
   public static void a(String paramString)
   {

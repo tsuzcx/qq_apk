@@ -11,8 +11,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import bhoe;
-import bjxj;
+import bhsl;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
@@ -44,7 +44,7 @@ public class KandianVideoUploadService
   private static Map<String, WeakReference<qoe>> jdField_a_of_type_JavaUtilMap = new HashMap();
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "com.tencent.biz.pubaccount.readinjoy" };
   private static final String[] b = { "kandian", "readinjoy", "post.mp.qq.com " };
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bhoe(Looper.getMainLooper(), this, true);
+  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bhsl(Looper.getMainLooper(), this, true);
   private qhw jdField_a_of_type_Qhw = new qhw();
   private boolean jdField_a_of_type_Boolean;
   
@@ -55,7 +55,7 @@ public class KandianVideoUploadService
   
   private String a()
   {
-    return bjxj.a(ors.a(), false, true).getString("mLoadingUrl", "");
+    return bkbq.a(ors.a(), false, true).getString("mLoadingUrl", "");
   }
   
   private qoh a()
@@ -214,7 +214,7 @@ public class KandianVideoUploadService
       } while (paramString == null);
       paramIntent = paramIntent.getExtras();
     } while (paramIntent == null);
-    paramString.a(paramIntent, getString(2131720113));
+    paramString.a(paramIntent, getString(2131720125));
     return;
     paramIntent.putExtra("mTaskID", str1);
     paramString = jdField_a_of_type_JavaUtilMap.keySet().iterator();
@@ -263,7 +263,7 @@ public class KandianVideoUploadService
         if (paramString3 != null) {
           paramString3.a(paramString1);
         }
-        a(2, getString(2131719073));
+        a(2, getString(2131719085));
       }
     }
   }
@@ -333,7 +333,7 @@ public class KandianVideoUploadService
     int j;
     if (paramMessage.what == 100)
     {
-      paramMessage = getString(2131719058);
+      paramMessage = getString(2131719070);
       j = 0;
     }
     for (;;)
@@ -362,14 +362,14 @@ public class KandianVideoUploadService
           return true;
           if (paramMessage.what == 101)
           {
-            paramMessage = getString(2131720113);
+            paramMessage = getString(2131720125);
             i = 101;
             j = 0;
             break;
           }
           if (paramMessage.what == 102)
           {
-            paramMessage = getString(2131719060);
+            paramMessage = getString(2131719072);
             i = 102;
             j = 0;
             break;
@@ -383,21 +383,21 @@ public class KandianVideoUploadService
           }
           if (paramMessage.what == 104)
           {
-            paramMessage = getString(2131719066);
+            paramMessage = getString(2131719078);
             i = 104;
             j = 0;
             break;
           }
           if (paramMessage.what == 105)
           {
-            paramMessage = getString(2131719059);
+            paramMessage = getString(2131719071);
             i = 105;
             j = 0;
             break;
           }
           if (paramMessage.what == 106)
           {
-            paramMessage = getString(2131719067);
+            paramMessage = getString(2131719079);
             i = 106;
             j = 0;
             break;
@@ -406,12 +406,12 @@ public class KandianVideoUploadService
           {
             if (this.jdField_a_of_type_Boolean)
             {
-              paramMessage = getString(2131719072);
+              paramMessage = getString(2131719084);
               i = 107;
               j = 0;
               break;
             }
-            paramMessage = getString(2131719071);
+            paramMessage = getString(2131719083);
             i = 107;
             j = 0;
             break;

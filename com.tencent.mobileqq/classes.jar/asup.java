@@ -1,46 +1,73 @@
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.CountDownLatch;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.HotPicFooter.1;
+import mqq.os.MqqHandler;
 
-class asup
-  implements asyi
+public class asup
+  implements astu
 {
-  asup(asun paramasun, File paramFile, Exception[] paramArrayOfException, long paramLong, CountDownLatch paramCountDownLatch) {}
+  int jdField_a_of_type_Int = 1;
+  asun jdField_a_of_type_Asun;
+  public boolean a;
   
-  public void a()
+  public asup(HotPicPageView paramHotPicPageView, asun paramasun)
   {
-    QLog.d("shadow::CdnPmUpdater", 1, " download cdn success");
-    if (!asun.a(this.jdField_a_of_type_Asun).renameTo(this.jdField_a_of_type_JavaIoFile)) {
-      this.jdField_a_of_type_ArrayOfJavaLangException[0] = new RuntimeException(alpo.a(2131701841) + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-    }
-    if (asun.b(this.jdField_a_of_type_Asun)) {}
-    for (String str = "33669797";; str = "33669802")
-    {
-      aswy.b(str);
-      asun.a(this.jdField_a_of_type_Asun).opType("onDownloadComplete").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-      return;
-    }
+    this.jdField_a_of_type_Asun = paramasun;
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangException[0] = new Exception("下载失败 retcode:" + paramInt1 + " httpCode:" + paramInt2 + " err:" + paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("shadow::CdnPmUpdater", 2, " onDownloadFailed ");
-    }
-    if (asun.b(this.jdField_a_of_type_Asun)) {}
-    for (paramString = "33669798";; paramString = "33669803")
-    {
-      aswy.b(paramString);
-      asun.a(this.jdField_a_of_type_Asun).opType("onDownloadFailed").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-      return;
-    }
+    return new asut(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_AndroidContentContext).inflate(2131558584, paramViewGroup, false), null);
   }
   
-  public void a(long paramLong1, long paramLong2, int paramInt) {}
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    StaggeredGridLayoutManager.LayoutParams localLayoutParams1 = null;
+    if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
+      localLayoutParams1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
+    }
+    StaggeredGridLayoutManager.LayoutParams localLayoutParams2 = localLayoutParams1;
+    if (localLayoutParams1 == null)
+    {
+      localLayoutParams2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
+      paramViewHolder.itemView.setLayoutParams(localLayoutParams2);
+    }
+    localLayoutParams2.setFullSpan(true);
+    paramInt = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_Int;
+    if ((!this.jdField_a_of_type_Boolean) && (paramInt != -20) && (this.jdField_a_of_type_Int == 1))
+    {
+      asub.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramInt);
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      paramViewHolder.itemView.findViewById(2131367785).setVisibility(0);
+      paramViewHolder.itemView.findViewById(2131367786).setVisibility(4);
+      return;
+    }
+    if (HotPicPageView.b())
+    {
+      paramViewHolder.itemView.findViewById(2131367786).setVisibility(0);
+      paramViewHolder.itemView.findViewById(2131367785).setVisibility(8);
+      return;
+    }
+    ThreadManager.getUIHandler().post(new HotPicPageView.HotPicFooter.1(this, paramViewHolder));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
 }
 
 

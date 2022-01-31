@@ -1,30 +1,55 @@
-import android.database.DataSetObserver;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
-import com.tencent.biz.qqstory.view.PagerIndicator;
-import com.tencent.biz.qqstory.view.PagerIndicator.IndicatorAdapter;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import java.io.File;
 
 public class xqg
-  extends DataSetObserver
-  implements ViewPager.OnPageChangeListener
+  extends xqi
 {
-  private xqg(PagerIndicator paramPagerIndicator) {}
-  
-  public void onChanged()
+  public xqg(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    Log.d("PagerIndicator", "onChanged");
-    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
+    super(paramTroopStoryMemoriesListAdapter, paramView);
   }
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
   {
-    Log.d("PagerIndicator", "onPageSelected : " + paramInt);
-    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
+    TroopStoryMemoriesListAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter, paramTroopStoryItemInfo, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetTextView);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(xqz.d(paramTroopStoryItemInfo.publishTime));
+    Drawable localDrawable = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130846447);
+    try
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = localDrawable;
+      localURLDrawableOptions.mFailedDrawable = localDrawable;
+      localURLDrawableOptions.mMemoryCacheKeySuffix = "troop_story_message";
+      paramTroopStoryItemInfo = URLDrawable.getDrawable(new File(paramTroopStoryItemInfo.videoThumbUrl), localURLDrawableOptions);
+      paramTroopStoryItemInfo.setTag(bcyz.b(xsm.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 50.0F), xsm.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 70.0F), xsm.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 3.0F)));
+      paramTroopStoryItemInfo.setDecodeHandler(bcyz.i);
+      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(paramTroopStoryItemInfo);
+      paramTroopStoryItemInfo = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130839225);
+      paramTroopStoryItemInfo.setBounds(0, 0, 26, 26);
+      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(paramTroopStoryItemInfo, null, null, null);
+      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131716184));
+      ((Animatable)paramTroopStoryItemInfo).start();
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new xqh(this));
+      return;
+    }
+    catch (Exception paramTroopStoryItemInfo)
+    {
+      for (;;)
+      {
+        this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
+      }
+    }
   }
 }
 

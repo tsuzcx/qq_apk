@@ -1,13 +1,17 @@
-import com.tencent.biz.troopplugin.PluginJumpManager;
+import com.tencent.biz.troop.VideoCombineHelper.4;
+import com.tencent.qphone.base.util.QLog;
 
-class yse
-  implements nbt
+public class yse
+  extends yta
 {
-  yse(ysd paramysd) {}
-  
-  public void loaded(int paramInt, String paramString)
+  public yse(VideoCombineHelper.4 param4)
   {
-    this.a.a.loadConfigFromFile();
+    super(param4.this$0);
+  }
+  
+  public void b(ysz paramysz)
+  {
+    QLog.d(".troop.VideoCombineHelper", 2, "");
   }
 }
 

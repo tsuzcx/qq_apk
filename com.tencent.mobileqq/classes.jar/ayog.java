@@ -1,8 +1,12 @@
-public abstract interface ayog
+public class ayog
+  implements ayns
 {
-  public abstract void a(ayof paramayof);
+  public static final String a = ayog.class.getSimpleName();
   
-  public abstract void a(ayof paramayof, String paramString1, String paramString2);
+  public static boolean a(int paramInt)
+  {
+    return (paramInt > 0) && (paramInt < 3);
+  }
 }
 
 

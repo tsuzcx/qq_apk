@@ -1,21 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
 class ahsb
-  implements DialogInterface.OnClickListener
+  implements bhtv
 {
-  ahsb(ahrz paramahrz) {}
+  ahsb(ahsa paramahsa) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.RecommendsAdapter", 2, "onScrollStateChanged firstVisibleItem: " + paramInt1 + " visibleItemCount: " + paramInt2 + " totalItemCount: " + paramInt3);
     }
-    if (paramInt == 1) {
-      bdqe.a(ahrz.a(this.a), ahrz.a(this.a), "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", ahrz.a(this.a).getApp().getString(2131720510), "");
+    if ((paramInt1 >= 1) && (paramInt1 - 1 >= 0) && (paramInt1 - 1 < this.a.getCount()))
+    {
+      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 - 1);
+      if (paramAbsListView != null) {
+        this.a.a.b(paramAbsListView, 20, 0, 1);
+      }
     }
+    if ((paramInt1 + paramInt2 < paramInt3) && (paramInt1 + paramInt2 >= 0) && (paramInt1 + paramInt2 < this.a.getCount()))
+    {
+      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 + paramInt2);
+      if (paramAbsListView != null) {
+        this.a.a.b(paramAbsListView, 20, 0, 1);
+      }
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt != 0) {
+      return;
+    }
+    this.a.e();
   }
 }
 

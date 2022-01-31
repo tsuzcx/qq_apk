@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import bhoc;
+import bhsj;
 
 class AutoReplyEditActivity$7
   implements Runnable
@@ -9,7 +9,7 @@ class AutoReplyEditActivity$7
   
   public void run()
   {
-    bhoc.a(AutoReplyEditActivity.a(this.this$0));
+    bhsj.a(AutoReplyEditActivity.a(this.this$0));
   }
 }
 

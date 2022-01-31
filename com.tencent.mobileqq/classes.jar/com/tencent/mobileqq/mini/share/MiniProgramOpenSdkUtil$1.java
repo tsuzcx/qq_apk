@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.share;
 
 import android.content.Context;
 import android.view.Window;
-import bepp;
+import bety;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.qphone.base.util.QLog;
 
@@ -17,7 +17,7 @@ final class MiniProgramOpenSdkUtil$1
     {
       if (((this.val$context instanceof JumpActivity)) && (!((JumpActivity)this.val$context).isFinishing()))
       {
-        this.val$outInfo.progressDialog = new bepp(this.val$context, 0, 2131558667, 17);
+        this.val$outInfo.progressDialog = new bety(this.val$context, 0, 2131558667, 17);
         this.val$outInfo.progressDialog.a(this.val$context.getString(2131690291));
         this.val$outInfo.progressDialog.getWindow().setDimAmount(0.0F);
         this.val$outInfo.progressDialog.setCanceledOnTouchOutside(true);

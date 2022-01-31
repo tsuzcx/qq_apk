@@ -1,27 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-
-class atvw
-  implements DialogInterface.OnClickListener
+public class atvw
 {
-  atvw(atvu paramatvu, BaseChatPie paramBaseChatPie, short paramShort) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public atvw()
   {
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(1);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      if (paramInt == 1)
-      {
-        this.jdField_a_of_type_Atvu.a(this.jdField_a_of_type_Short, true, true);
-        azmj.b(atvu.a(this.jdField_a_of_type_Atvu), "dc00898", "", "", "0X8009978", "0X8009978", this.jdField_a_of_type_Atvu.a(this.jdField_a_of_type_Short), this.jdField_a_of_type_Atvu.a(this.jdField_a_of_type_Short), "", "", "", "");
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ContactsGuideInfo|showWelcomepage=").append(this.jdField_a_of_type_Boolean).append(",showConvGuideEntrance=").append(this.jdField_b_of_type_Boolean).append(",friends_recomm_flag=").append(this.jdField_a_of_type_Int).append(",groups_recomm_flag=").append(this.jdField_b_of_type_Int).append(",url=").append(this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 

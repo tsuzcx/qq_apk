@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import ajaf;
+import ajeu;
 
 final class b
   implements Runnable
@@ -11,7 +11,7 @@ final class b
   {
     synchronized (a.a(this.a))
     {
-      ajaf.a(this.a, a.b(this.a));
+      ajeu.a(this.a, a.b(this.a));
       return;
     }
   }

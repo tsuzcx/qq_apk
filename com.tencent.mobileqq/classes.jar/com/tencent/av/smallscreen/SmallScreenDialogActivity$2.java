@@ -1,15 +1,15 @@
 package com.tencent.av.smallscreen;
 
-import bdfq;
+import bdjz;
 
 class SmallScreenDialogActivity$2
   implements Runnable
 {
-  SmallScreenDialogActivity$2(SmallScreenDialogActivity paramSmallScreenDialogActivity, String paramString, bdfq parambdfq) {}
+  SmallScreenDialogActivity$2(SmallScreenDialogActivity paramSmallScreenDialogActivity, String paramString, bdjz parambdjz) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaLangString + "_dealy", this.jdField_a_of_type_Bdfq);
+    this.this$0.a(this.jdField_a_of_type_JavaLangString + "_dealy", this.jdField_a_of_type_Bdjz);
   }
 }
 

@@ -31,16 +31,16 @@ public class nba
     this.jdField_a_of_type_AndroidOsHandler = new Handler(new nbb(this));
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560405, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369756));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369767));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560404, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369775));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369786));
   }
   
   public void a()
   {
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    localLayoutParams.width = ((int)bdcq.a(this.jdField_a_of_type_AndroidContentContext, 44.0F));
-    localLayoutParams.height = ((int)bdcq.a(this.jdField_a_of_type_AndroidContentContext, 44.0F));
+    localLayoutParams.width = ((int)bdgz.a(this.jdField_a_of_type_AndroidContentContext, 44.0F));
+    localLayoutParams.height = ((int)bdgz.a(this.jdField_a_of_type_AndroidContentContext, 44.0F));
     super.show();
     this.jdField_a_of_type_AndroidViewView.postDelayed(new QQAnonymousDialog.2(this), 1000L);
   }
@@ -57,20 +57,20 @@ public class nba
         do
         {
           return;
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843236);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843249);
           this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
         } while (!AppSetting.c);
         QQAppInterface.f(paramString);
         return;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843230);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843243);
         this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
       } while (!AppSetting.c);
       QQAppInterface.f(paramString);
       return;
     }
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843235);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696531));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843248);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696533));
   }
   
   public void dismiss()

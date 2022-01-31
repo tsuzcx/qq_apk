@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.highway.netprobe.WeakNetCallback;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
 final class bana
-  implements WeakNetCallback
+  extends Editable.Factory
 {
-  private azmz a = azmz.a(BaseApplication.getContext());
-  
-  public void onResultOverflow(HashMap<String, String> paramHashMap)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    this.a.a(bdhy.a(), "actWeaknetProbe", true, 0L, paramHashMap.size(), paramHashMap, "");
+    if ((paramCharSequence instanceof bamz)) {
+      return (Editable)paramCharSequence;
+    }
+    return new bamz(paramCharSequence, 3);
   }
 }
 

@@ -1,23 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:id="@id/mkh" android:background="@color/l1" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mkf" android:layout_width="fill_parent" android:layout_height="50.0dip">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/mk8" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/eb6" android:scaleType="fitCenter" />
-        <FrameLayout android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="-3.5dip">
-            <include android:id="@id/mmi" android:visibility="invisible" android:layout_width="50.0dip" android:layout_height="50.0dip" layout="@layout/ci7" />
-        </FrameLayout>
-        <FrameLayout android:layout_gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat android:layout_gravity="center" android:id="@id/mki" android:background="@drawable/e7e" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="35.0dip" app:tabCompatMinWidth="80.0dip" />
-        </FrameLayout>
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/mkb" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginRight="-2.0dip" android:src="@drawable/e7f" android:scaleType="fitCenter" />
-        <FrameLayout android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/mk7" android:background="@drawable/eb7" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginRight="3.5dip">
-            <com.tencent.mobileqq.widget.SquareImageView android:layout_gravity="center" android:id="@id/mka" android:layout_width="35.0dip" android:layout_height="35.0dip" android:scaleType="fitXY" app:round_radius="35.0dip" />
-        </FrameLayout>
-    </LinearLayout>
-    <com.tencent.biz.qqcircle.widgets.QCircleFolderTabViewPager android:id="@id/mkm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="60.0dip" />
-    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/mk9" android:visibility="visible" android:layout_width="74.0dip" android:layout_height="74.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="26.0dip" android:src="@drawable/e9q" android:scaleType="fitCenter" />
-    <ViewStub android:id="@id/mls" android:layout="@layout/chq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/ml2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView android:id="@id/mm_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.biz.qqcircle.widgets.QCircleStatusView android:id="@id/mmr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="50.0dip" />
+<FrameLayout android:layout_width="@dimen/b2l" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/mh7" android:background="@drawable/bjj" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="21.0dip">
+        <ImageView android:id="@id/mh6" android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@drawable/eb1" android:layout_centerVertical="true" />
+        <TextView android:textSize="11.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/mh8" android:paddingRight="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="腾讯俱乐部" android:layout_toRightOf="@id/mh6" android:layout_centerVertical="true" />
+    </RelativeLayout>
 </FrameLayout>

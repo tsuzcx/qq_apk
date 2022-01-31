@@ -1,20 +1,11 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class aimy
-  implements army
+public class aimy
 {
-  aimy(aimx paramaimx) {}
-  
-  public void a()
-  {
-    this.a.a.c();
-  }
-  
-  public void b()
-  {
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).sendBtn.setClickable(true);
-  }
+  public ImageView a;
+  public TextView a;
+  public bdjc a;
 }
 
 

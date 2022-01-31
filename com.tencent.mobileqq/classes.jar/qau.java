@@ -13,15 +13,15 @@ public class qau
 {
   private qcf a;
   
-  public qau(Context paramContext, bcws parambcws, rqj paramrqj)
+  public qau(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()
   {
     this.jdField_a_of_type_Boolean = true;
-    return f(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).q().l().h().g();
+    return f(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).q().l().h().g();
   }
   
   public pxl d()
@@ -38,7 +38,7 @@ public class qau
     if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentGridImage)))
     {
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.setMargins(aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      localLayoutParams.setMargins(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
       ((ComponentContentGridImage)this.jdField_a_of_type_Pxk).setLayoutParams(localLayoutParams);
       ((ComponentContentGridImage)this.jdField_a_of_type_Pxk).setOnNoItemClickListener(new qav(this));
       localLinearLayout.addView((ComponentContentGridImage)this.jdField_a_of_type_Pxk);

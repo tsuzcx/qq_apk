@@ -1,25 +1,11 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForScribble;
+import java.util.Comparator;
 
-public class aizf
+final class aizf
+  implements Comparator<aize>
 {
-  public QQAppInterface a;
-  
-  public boolean a(MessageForScribble paramMessageForScribble, String paramString, awfy paramawfy)
+  public int a(aize paramaize1, aize paramaize2)
   {
-    baub localbaub = new baub();
-    localbaub.jdField_a_of_type_Boolean = true;
-    localbaub.jdField_b_of_type_Int = 262153;
-    localbaub.jdField_b_of_type_JavaLangString = paramMessageForScribble.selfuin;
-    localbaub.c = paramMessageForScribble.frienduin;
-    localbaub.jdField_a_of_type_Int = paramMessageForScribble.istroop;
-    localbaub.jdField_a_of_type_Long = paramMessageForScribble.uniseq;
-    localbaub.jdField_a_of_type_Awfy = paramawfy;
-    localbaub.i = paramString;
-    localbaub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageForScribble;
-    paramMessageForScribble.fileUploadStatus = 3;
-    this.a.a().a(localbaub);
-    return true;
+    return paramaize1.a - paramaize2.a;
   }
 }
 

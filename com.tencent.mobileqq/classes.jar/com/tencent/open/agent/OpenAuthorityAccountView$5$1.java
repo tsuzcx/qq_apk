@@ -3,7 +3,7 @@ package com.tencent.open.agent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
-import bfdz;
+import bfii;
 import com.tencent.qphone.base.util.QLog;
 
 class OpenAuthorityAccountView$5$1
@@ -15,14 +15,14 @@ class OpenAuthorityAccountView$5$1
   {
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      QLog.d("OpenAuthorityAccountView", 1, "-->updateAccountFace success uin = " + bfdz.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.jdField_a_of_type_JavaLangString));
+      QLog.d("OpenAuthorityAccountView", 1, "-->updateAccountFace success uin = " + bfii.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.jdField_a_of_type_JavaLangString));
       this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
       return;
     }
     try
     {
-      QLog.d("OpenAuthorityAccountView", 1, "-->updateAccountFace use default uin = " + bfdz.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.this$0.getResources(), 2130840391));
+      QLog.d("OpenAuthorityAccountView", 1, "-->updateAccountFace use default uin = " + bfii.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.this$0.getResources(), 2130840392));
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)

@@ -1,93 +1,395 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.drawer.CardDrawerStatus.1;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.ApolloQueueDownloader.1;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
 
 public class akow
-  extends akov
+  implements beaj, INetInfoHandler
 {
-  public akow(QQAppInterface paramQQAppInterface)
+  private beai jdField_a_of_type_Beai;
+  private LinkedList<beae> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  public AtomicInteger a;
+  
+  public akow(AppRuntime paramAppRuntime, beai parambeai)
   {
-    super(paramQQAppInterface);
-    this.a = 99;
-    if (paramQQAppInterface != null)
-    {
-      int i = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp" + paramQQAppInterface.c(), 0).getInt("hire_priority", 99);
-      if (i > this.a) {
-        this.a = (i + 1);
-      }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+    beai localbeai = parambeai;
+    if (parambeai == null) {
+      localbeai = new beai();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("CardDrawerStatus", 2, "[CardDrawerStatus] onCreate ");
+    this.jdField_a_of_type_Beai = localbeai;
+    if (this.jdField_a_of_type_Beai.a) {
+      AppNetConnInfo.registerConnectionChangeReceiver(paramAppRuntime.getApplication(), this);
     }
   }
   
-  private void a(QQAppInterface paramQQAppInterface)
+  private beae a()
   {
-    ThreadManager.getUIHandler().post(new CardDrawerStatus.1(this, paramQQAppInterface));
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    Object localObject = akji.a();
-    if (localObject != null)
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      if (localObject != null)
+      if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
       {
-        ((SharedPreferences.Editor)localObject).putBoolean("CardDrawerStatus.VOICE_CONTROL", paramBoolean).commit();
-        return;
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (localIterator.hasNext())
+        {
+          beae localbeae = (beae)localIterator.next();
+          if (!localbeae.a())
+          {
+            localbeae.a();
+            return localbeae;
+          }
+        }
       }
-      QLog.e("CardDrawerStatus", 1, "[setVoicePermission] editor is null ");
+      return null;
+    }
+  }
+  
+  public int a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloQueue_Downloader", 2, "cancelTask stopAll=" + paramBoolean + ",key=" + paramString);
+    }
+    Object localObject;
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    {
+      if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
+        break label115;
+      }
+      if (!paramBoolean) {
+        break label119;
+      }
+      paramString = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+      if (paramString.hasNext())
+      {
+        localObject = (beae)paramString.next();
+        ((beae)localObject).a(true);
+        ((beae)localObject).i();
+      }
+    }
+    this.jdField_a_of_type_JavaUtilLinkedList.clear();
+    for (;;)
+    {
+      label115:
+      return 0;
+      label119:
+      if ((paramString == null) || (TextUtils.isEmpty(paramString))) {
+        break;
+      }
+      localObject = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+      ArrayList localArrayList = new ArrayList();
+      while (((Iterator)localObject).hasNext())
+      {
+        beae localbeae = (beae)((Iterator)localObject).next();
+        if (paramString.equals(localbeae.jdField_a_of_type_JavaLangString))
+        {
+          if (!localbeae.a())
+          {
+            ((Iterator)localObject).remove();
+            localArrayList.add(localbeae);
+          }
+          else
+          {
+            localbeae.a(true);
+            localbeae.i();
+          }
+        }
+        else if ((localbeae.b()) && (!localbeae.a()))
+        {
+          ((Iterator)localObject).remove();
+          localArrayList.add(localbeae);
+        }
+      }
+      if (localArrayList.size() > 0) {
+        this.jdField_a_of_type_JavaUtilLinkedList.removeAll(localArrayList);
+      }
+    }
+    return -1;
+  }
+  
+  public beae a(String paramString)
+  {
+    LinkedList localLinkedList = this.jdField_a_of_type_JavaUtilLinkedList;
+    if (paramString != null) {}
+    try
+    {
+      if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (localIterator.hasNext())
+        {
+          beae localbeae = (beae)localIterator.next();
+          if (paramString.equals(localbeae.jdField_a_of_type_JavaLangString))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloQueue_Downloader", 2, "getTask | " + paramString + " task find =" + localbeae);
+            }
+            return localbeae;
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloQueue_Downloader", 2, "getTask | " + paramString + " task not find");
+      }
+      return null;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    for (;;)
+    {
+      try
+      {
+        synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+        {
+          Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+          if (!localIterator.hasNext()) {
+            break label185;
+          }
+          beae localbeae2 = (beae)localIterator.next();
+          if (localbeae2.d <= 0L) {
+            break label316;
+          }
+          long l = System.currentTimeMillis() / 1000L;
+          if ((!localbeae2.a()) && (l > localbeae2.c + localbeae2.d))
+          {
+            bool = true;
+            if ((!localbeae2.b()) && (!bool)) {
+              continue;
+            }
+            localIterator.remove();
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("ApolloQueue_Downloader", 2, "remove task[" + localbeae2.jdField_a_of_type_JavaLangString + "], isCancal=" + localbeae2.b() + ", timeOut=" + bool);
+          }
+        }
+        bool = false;
+      }
+      finally {}
+      continue;
+      label185:
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloQueue_Downloader", 2, "doTask | downloadLimitCount=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ",maxDownloadCount=" + 3 + ",downloadQueue size=" + this.jdField_a_of_type_JavaUtilLinkedList.size());
+      }
+      for (;;)
+      {
+        beae localbeae1;
+        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= 3)
+        {
+          localbeae1 = a();
+          if (localbeae1 != null) {
+            break label288;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloQueue_Downloader", 2, "doTask | run() null");
+          }
+        }
+        return;
+        label288:
+        ThreadManager.postDownLoadTask(new ApolloQueueDownloader.1(this, localbeae1), 2, null, false);
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
+      }
+      label316:
+      boolean bool = false;
+    }
+  }
+  
+  public void a(beae parambeae)
+  {
+    LinkedList localLinkedList = this.jdField_a_of_type_JavaUtilLinkedList;
+    if (parambeae != null) {}
+    try
+    {
+      if ((!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) && (this.jdField_a_of_type_JavaUtilLinkedList.contains(parambeae)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloQueue_Downloader", 2, "removeTask | task=" + parambeae);
+        }
+        parambeae.i();
+        this.jdField_a_of_type_JavaUtilLinkedList.remove(parambeae);
+      }
       return;
     }
-    QLog.e("CardDrawerStatus", 1, "[setVoicePermission] sp is null ");
+    finally {}
   }
   
-  public static boolean a()
+  public void a(beae parambeae, bead arg2, Bundle paramBundle)
   {
-    SharedPreferences localSharedPreferences = akji.a();
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getBoolean("CardDrawerStatus.VOICE_CONTROL", true);
-    }
-    QLog.e("CardDrawerStatus", 1, "[getVoicePermission] sp is null ");
-    return true;
-  }
-  
-  public int a(akxc paramakxc, int paramInt, AppInterface paramAppInterface, Context paramContext)
-  {
-    if ((paramakxc == null) || (paramAppInterface == null) || (paramContext == null))
+    if ((!beag.a(parambeae)) || (a(parambeae.jdField_a_of_type_JavaLangString) == parambeae)) {}
+    beae localbeae;
+    do
     {
-      QLog.e("CardDrawerStatus", 1, "[onExecAction] null pointer");
-      return 0;
-    }
-    if (!this.c) {
-      return super.a(paramakxc, paramInt, paramAppInterface, paramContext);
-    }
-    paramContext = ((akji)paramAppInterface.getManager(153)).a((QQAppInterface)paramAppInterface, paramAppInterface.getCurrentAccountUin(), new int[] { 2, 4 });
-    if (paramContext != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CardDrawerStatus", 2, new Object[] { "CardDrawerStatus onExecAction actionId:", Integer.valueOf(paramContext.actionId), ",actionType:", Integer.valueOf(paramContext.actionType) });
+      return;
+      localbeae = a(parambeae.jdField_a_of_type_JavaLangString);
+      if (localbeae == null) {
+        break;
       }
-      a((QQAppInterface)paramAppInterface);
-      akwt.a(paramakxc, 12, paramContext);
+    } while ((localbeae == null) || (!localbeae.s));
+    parambeae.a(???);
+    parambeae.a(paramBundle);
+    ??? = BaseApplicationImpl.getApplication().getRuntime();
+    if ((??? != null) && (parambeae.jdField_a_of_type_Beaf.a < 0L)) {
+      parambeae.jdField_a_of_type_Beaf.a = ???.getLongAccountUin();
+    }
+    localbeae.a(parambeae);
+    return;
+    parambeae.a(???);
+    parambeae.a(paramBundle);
+    parambeae.g = 3;
+    ??? = BaseApplicationImpl.getApplication().getRuntime();
+    if ((??? != null) && (parambeae.jdField_a_of_type_Beaf.a < 0L)) {
+      parambeae.jdField_a_of_type_Beaf.a = ???.getLongAccountUin();
     }
     for (;;)
     {
-      return 0;
-      paramAppInterface = new ApolloActionData();
-      paramAppInterface.actionId = -1;
-      paramAppInterface.actionType = 0;
-      akwt.a(paramakxc, 5, paramAppInterface);
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      {
+        paramBundle = a(parambeae.jdField_a_of_type_JavaLangString);
+        if (paramBundle == null)
+        {
+          parambeae.c = ((int)(System.currentTimeMillis() / 1000L));
+          if (parambeae.b)
+          {
+            this.jdField_a_of_type_JavaUtilLinkedList.addFirst(parambeae);
+            if ((parambeae.jdField_a_of_type_JavaUtilList != null) && (parambeae.jdField_a_of_type_JavaUtilList.size() != 0)) {
+              break label328;
+            }
+            ??? = null;
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloQueue_Downloader", 2, new Object[] { "startDownload | task=" + parambeae.jdField_a_of_type_JavaLangString, ", url:", ??? });
+            }
+            a();
+            return;
+          }
+          this.jdField_a_of_type_JavaUtilLinkedList.addLast(parambeae);
+        }
+      }
+      if ((parambeae.b) && (!paramBundle.a()) && (this.jdField_a_of_type_JavaUtilLinkedList.remove(paramBundle)))
+      {
+        this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramBundle);
+        continue;
+        label328:
+        ??? = (String)parambeae.jdField_a_of_type_JavaUtilList.get(0);
+      }
     }
+  }
+  
+  public void b()
+  {
+    a(true, null);
+  }
+  
+  public void onNetMobile2None()
+  {
+    if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloQueue_Downloader", 2, "queueDownload network-onNetMobile2None");
+      }
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (localIterator.hasNext())
+        {
+          beae localbeae = (beae)localIterator.next();
+          if (localbeae.a() == 2) {
+            localbeae.h();
+          }
+        }
+      }
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloQueue_Downloader", 2, "queueDownload network-onNetMobile2Wifi");
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloQueue_Downloader", 2, "queueDownload network-onNetNone2Mobile");
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloQueue_Downloader", 2, "queueDownload network-onNetNone2Wifi");
+    }
+  }
+  
+  public void onNetWifi2Mobile(String arg1)
+  {
+    if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)) {
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (localIterator.hasNext())
+        {
+          beae localbeae = (beae)localIterator.next();
+          if (localbeae.a() == 2) {
+            localbeae.f();
+          }
+        }
+      }
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloQueue_Downloader", 2, "queueDownload network-onNetWifi2None");
+      }
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (localIterator.hasNext())
+        {
+          beae localbeae = (beae)localIterator.next();
+          if (localbeae.a() == 2) {
+            localbeae.g();
+          }
+        }
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)) {
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        if (localIterator.hasNext())
+        {
+          beae localbeae = (beae)localIterator.next();
+          localStringBuilder.append("key=").append(localbeae.jdField_a_of_type_JavaLangString);
+          if ((localbeae.jdField_a_of_type_JavaUtilList != null) && (localbeae.jdField_a_of_type_JavaUtilList.size() > 0)) {
+            localStringBuilder.append(",size=").append(localbeae.jdField_a_of_type_JavaUtilList.size()).append(",url=").append((String)localbeae.jdField_a_of_type_JavaUtilList.get(0));
+          }
+          localStringBuilder.append(";");
+        }
+      }
+    }
+    return "QueueDownloader task url:" + localObject.toString();
   }
 }
 

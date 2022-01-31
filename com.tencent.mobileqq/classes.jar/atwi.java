@@ -1,20 +1,59 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
-import com.tencent.mobileqq.matchchat.MatchChatSettingFragment;
+import android.util.Log;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 public class atwi
-  implements View.OnClickListener
+  extends ScheduledThreadPoolExecutor
 {
-  public atwi(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
-  
-  public void onClick(View paramView)
+  public atwi(TimerTaskManager paramTimerTaskManager, int paramInt)
   {
-    azmj.b(this.a.a, "dc00898", "", "", "0X800A698", "0X800A698", 0, 0, "", "", "", "");
-    paramView = new Intent();
-    PublicFragmentActivity.a(this.a.getActivity(), paramView, MatchChatSettingFragment.class);
+    super(paramInt);
+  }
+  
+  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  {
+    super.afterExecute(paramRunnable, paramThrowable);
+    Throwable localThrowable1 = paramThrowable;
+    if (paramThrowable == null)
+    {
+      localThrowable1 = paramThrowable;
+      if (!(paramRunnable instanceof Future)) {}
+    }
+    try
+    {
+      paramRunnable = (Future)paramRunnable;
+      localThrowable1 = paramThrowable;
+      if (paramRunnable.isDone())
+      {
+        paramRunnable.get();
+        localThrowable1 = paramThrowable;
+      }
+    }
+    catch (CancellationException localCancellationException)
+    {
+      break label46;
+    }
+    catch (ExecutionException paramRunnable)
+    {
+      for (;;)
+      {
+        localThrowable2 = paramRunnable.getCause();
+      }
+    }
+    catch (InterruptedException paramRunnable)
+    {
+      for (;;)
+      {
+        label46:
+        Throwable localThrowable2 = paramThrowable;
+      }
+    }
+    if (localThrowable1 != null) {
+      Log.e("LyricTimerTaskManager", "Exception happen when execute task! : " + localThrowable1.toString());
+    }
   }
 }
 

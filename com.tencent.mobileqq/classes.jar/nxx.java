@@ -11,14 +11,14 @@ public class nxx
   
   public boolean queueIdle()
   {
-    if (!apmy.a().a())
+    if (!aprh.a().a())
     {
-      apmy.a().a().doBindService(BaseApplicationImpl.getApplication());
-      apmy.a().a(new nxy(this));
+      aprh.a().a().doBindService(BaseApplicationImpl.getApplication());
+      aprh.a().a(new nxy(this));
       return false;
     }
-    Bundle localBundle = apic.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
-    apmy.a().a(localBundle);
+    Bundle localBundle = apml.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
+    aprh.a().a(localBundle);
     return false;
   }
 }

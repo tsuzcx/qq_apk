@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app.proxy.fts;
 
-import amjr;
+import amog;
 import java.util.ArrayList;
 
 public class FTSTroopOperator$2
   implements Runnable
 {
-  public FTSTroopOperator$2(amjr paramamjr, ArrayList paramArrayList) {}
+  public FTSTroopOperator$2(amog paramamog, ArrayList paramArrayList) {}
   
   public void run()
   {

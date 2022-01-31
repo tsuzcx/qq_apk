@@ -8,9 +8,9 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
-import aoaf;
-import aoag;
-import bcwh;
+import aoeo;
+import aoep;
+import bdaq;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class HistoryFormItem
@@ -18,7 +18,7 @@ public class HistoryFormItem
 {
   private int jdField_a_of_type_Int;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private aoag jdField_a_of_type_Aoag;
+  private aoep jdField_a_of_type_Aoep;
   private boolean d;
   private boolean e = true;
   
@@ -38,7 +38,7 @@ public class HistoryFormItem
   {
     if (paramBoolean)
     {
-      setBackgroundResource(2130849676);
+      setBackgroundResource(2130849749);
       return;
     }
     setBgType(2);
@@ -48,10 +48,10 @@ public class HistoryFormItem
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839079);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839080);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839078);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839079);
   }
   
   private void d()
@@ -63,14 +63,14 @@ public class HistoryFormItem
   {
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getResources().getString(2131690927));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getResources().getString(2131690928));
     c(this.d);
     int i = getResources().getDimensionPixelSize(2131298703);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i, i);
     localLayoutParams.addRule(11, 1);
     localLayoutParams.addRule(15, 1);
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aoaf(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aoeo(this));
   }
   
   public int a()
@@ -92,7 +92,7 @@ public class HistoryFormItem
   public void b()
   {
     super.b();
-    this.o = bcwh.a(getContext(), 290.0F);
+    this.o = bdaq.a(getContext(), 290.0F);
   }
   
   public void setChecked(boolean paramBoolean)
@@ -128,9 +128,9 @@ public class HistoryFormItem
     }
   }
   
-  public void setOnIconClickListener(aoag paramaoag)
+  public void setOnIconClickListener(aoep paramaoep)
   {
-    this.jdField_a_of_type_Aoag = paramaoag;
+    this.jdField_a_of_type_Aoep = paramaoep;
   }
   
   public void setRightIconResource(int paramInt)

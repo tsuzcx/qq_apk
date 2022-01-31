@@ -25,7 +25,7 @@ public class owu
     {
       return;
       localQQMessageFacade = localQQAppInterface.a();
-      localMessageRecord = localQQMessageFacade.b(aljq.aR, 1008);
+      localMessageRecord = localQQMessageFacade.b(alof.aR, 1008);
     } while ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForText)) || (TextUtils.isEmpty(localMessageRecord.msg)) || (!localMessageRecord.msg.contains(ReadInJoyUserInfoModule.a())) || (!TextUtils.equals(localMessageRecord.extStr, paramString)));
     localMessageRecord.msg = localMessageRecord.msg.replace(ReadInJoyUserInfoModule.a(), paramReadInJoyUserInfo.nick);
     localMessageRecord.createMessageUniseq();

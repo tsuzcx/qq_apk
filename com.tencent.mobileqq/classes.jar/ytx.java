@@ -1,38 +1,46 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DeleteFileRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-class ytx
-  implements Animator.AnimatorListener
+public abstract class ytx
+  extends nac
 {
-  ytx(ytv paramytv) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (ytv.a(this.a) != null) {
-      ytv.a(this.a).a();
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (ytv.a(this.a) != null) {
-      ytv.a(this.a).a();
-    }
-    if (ytv.a(this.a) != null)
+    if (paramInt != 0)
     {
-      ytv.a(ytv.a(this.a), null);
-      ytv.a(this.a).a();
+      a(false, paramInt, paramBundle, "", alud.a(2131715765));
+      return;
     }
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.DeleteFileRspBody)localRspBody.delete_file_rsp.get();
+      if (!paramArrayOfByte.int32_ret_code.has()) {
+        break label133;
+      }
+      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      {
+        a(true, 0, paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, paramBundle, "", alud.a(2131715761));
+      return;
+    }
+    a(false, paramArrayOfByte.int32_ret_code.get(), paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
+    return;
+    label133:
+    a(false, -1, paramBundle, "", alud.a(2131715769));
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (ytv.a(this.a) != null) {
-      ytv.a(this.a).a();
-    }
-  }
+  protected abstract void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2);
 }
 
 

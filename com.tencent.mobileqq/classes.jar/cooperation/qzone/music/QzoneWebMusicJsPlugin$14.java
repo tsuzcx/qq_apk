@@ -1,8 +1,8 @@
 package cooperation.qzone.music;
 
-import atje;
-import bjmn;
-import bjmp;
+import atnn;
+import bjqu;
+import bjqw;
 import org.json.JSONObject;
 
 class QzoneWebMusicJsPlugin$14
@@ -12,8 +12,8 @@ class QzoneWebMusicJsPlugin$14
   
   public void run()
   {
-    bjmn.a().a().c();
-    atje.a(new JSONObject(), "pauseFloatView", null);
+    bjqu.a().a().c();
+    atnn.a(new JSONObject(), "pauseFloatView", null);
   }
 }
 

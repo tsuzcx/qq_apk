@@ -1,74 +1,62 @@
-import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class aoru
 {
-  private int a;
-  private int b = 1;
-  private int c = 1;
+  private String jdField_a_of_type_JavaLangString = "1108338344";
+  private boolean jdField_a_of_type_Boolean;
+  private String b = "pages/list/list";
+  private String c = "";
   
-  public aoru()
+  public static aoru a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public static aoru a(aogf paramaogf)
-  {
+    boolean bool = true;
     aoru localaoru = new aoru();
-    if (paramaogf != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchBusinessConfBean", 2, "parse taskid->" + paramaogf.jdField_a_of_type_Int + " content->" + paramaogf.jdField_a_of_type_JavaLangString);
+    if (paramJSONObject.has("enableOpenMiniCode")) {
+      if (paramJSONObject.getInt("enableOpenMiniCode") != 1) {
+        break label93;
       }
     }
-    try
+    for (;;)
     {
-      paramaogf = new JSONObject(paramaogf.jdField_a_of_type_JavaLangString);
-      localaoru.a(paramaogf.optInt("business_switch_message", 1));
-      localaoru.b(paramaogf.optInt("business_switch_contact", 1));
-      localaoru.c(paramaogf.optInt("business_switch_dongtai", 1));
+      localaoru.jdField_a_of_type_Boolean = bool;
+      if (paramJSONObject.has("miniCodeAppid")) {
+        localaoru.jdField_a_of_type_JavaLangString = paramJSONObject.getString("miniCodeAppid");
+      }
+      if (paramJSONObject.has("miniCodePage")) {
+        localaoru.b = paramJSONObject.getString("miniCodePage");
+      }
+      if (paramJSONObject.has("miniCodeEnvVersion")) {
+        localaoru.c = paramJSONObject.getString("miniCodeEnvVersion");
+      }
       return localaoru;
+      label93:
+      bool = false;
     }
-    catch (Exception paramaogf)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SearchBusinessConfBean", 2, "parse error->" + paramaogf.toString());
-    }
-    return localaoru;
   }
   
-  void a(int paramInt)
+  public String a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  void b(int paramInt)
+  public String b()
   {
-    this.b = paramInt;
-  }
-  
-  public boolean b()
-  {
-    return this.b == 1;
-  }
-  
-  void c(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public boolean c()
-  {
-    return this.c == 1;
-  }
-  
-  public String toString()
-  {
-    return String.format("mBusinessSwitchTabMessage:%d, mBusinessSwitchTabContact:%d, mBusinessSwitchTabDongtai:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
+    return this.b;
   }
 }
 

@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class aecj
-  implements Comparator<aece>
+  extends alwx
 {
-  public aecj(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aecj(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public int a(aece paramaece1, aece paramaece2)
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    return paramaece1.f.compareToIgnoreCase(paramaece2.f);
+    this.a.c();
+  }
+  
+  protected void b()
+  {
+    this.a.c();
   }
 }
 

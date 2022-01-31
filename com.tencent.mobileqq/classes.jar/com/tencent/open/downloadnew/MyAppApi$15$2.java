@@ -1,33 +1,33 @@
 package com.tencent.open.downloadnew;
 
-import bfhg;
-import bfhn;
-import bfko;
-import bfks;
+import bflp;
+import bflw;
+import bfox;
+import bfpb;
 import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
 import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
 
 public class MyAppApi$15$2
   implements Runnable
 {
-  public MyAppApi$15$2(bfks parambfks) {}
+  public MyAppApi$15$2(bfpb parambfpb) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Bfhn.a();
-    if (this.a.jdField_a_of_type_Bfko.a != null)
+    this.a.jdField_a_of_type_Bflw.a();
+    if (this.a.jdField_a_of_type_Bfox.a != null)
     {
-      if (this.a.jdField_a_of_type_Bfko.a() <= 2) {
-        ((TMAssistantCallYYB_V1)this.a.jdField_a_of_type_Bfko.a()).startToAuthorized(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Bfko.a, "2");
+      if (this.a.jdField_a_of_type_Bfox.a() <= 2) {
+        ((TMAssistantCallYYB_V1)this.a.jdField_a_of_type_Bfox.a()).startToAuthorized(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Bfox.a, "2");
       }
       for (;;)
       {
-        this.a.jdField_a_of_type_Bfko.a = null;
+        this.a.jdField_a_of_type_Bfox.a = null;
         return;
-        ((TMAssistantCallYYB_V2)this.a.jdField_a_of_type_Bfko.a()).startToAuthorized(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Bfko.a, "2");
+        ((TMAssistantCallYYB_V2)this.a.jdField_a_of_type_Bfox.a()).startToAuthorized(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Bfox.a, "2");
       }
     }
-    bfhg.e("MyAppApi", "startToAuthorizedDirect->onGetA1Fail mLastAuthorizeParam = null, needCarryQQIdentity = true");
+    bflp.e("MyAppApi", "startToAuthorizedDirect->onGetA1Fail mLastAuthorizeParam = null, needCarryQQIdentity = true");
   }
 }
 

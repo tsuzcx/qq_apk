@@ -1,26 +1,17 @@
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class agbk
   implements ValueAnimator.AnimatorUpdateListener
 {
-  public agbk(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  public agbk(SixCombolEffectView paramSixCombolEffectView, agbz paramagbz) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (ViewGroup.MarginLayoutParams)UnlimitedBladeWorks.a(this.a).getLayoutParams();
-    if (UnlimitedBladeWorks.a(this.a)) {
-      paramValueAnimator.leftMargin = 0;
-    }
-    for (paramValueAnimator.rightMargin = i;; paramValueAnimator.rightMargin = 0)
-    {
-      UnlimitedBladeWorks.a(this.a).setLayoutParams(paramValueAnimator);
-      return;
-      paramValueAnimator.leftMargin = i;
+    this.jdField_a_of_type_Agbz.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.jdField_a_of_type_Agbz.b) && (this.jdField_a_of_type_Agbz.a < 0.52F)) {
+      this.jdField_a_of_type_Agbz.b = true;
     }
   }
 }

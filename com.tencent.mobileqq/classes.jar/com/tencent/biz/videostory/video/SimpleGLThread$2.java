@@ -1,11 +1,11 @@
 package com.tencent.biz.videostory.video;
 
-import ywg;
+import zav;
 
 public class SimpleGLThread$2
   implements Runnable
 {
-  public SimpleGLThread$2(ywg paramywg, Object paramObject) {}
+  public SimpleGLThread$2(zav paramzav, Object paramObject) {}
   
   public void run()
   {

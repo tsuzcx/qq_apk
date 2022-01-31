@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class athr
-  implements atil
+  extends WebViewPlugin
 {
-  public athr(ListenTogetherManager paramListenTogetherManager, BaseActivity paramBaseActivity, int paramInt, String paramString) {}
-  
-  public void a()
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
-      return;
+    if (("nvPopToRoot".equals(paramString3)) && (paramVarArgs.length > 0))
+    {
+      paramJsBridgeListener = this.mRuntime.a();
+      paramString1 = new Intent(paramJsBridgeListener, SplashActivity.class);
+      paramString1.setFlags(67108864);
+      paramJsBridgeListener.startActivity(paramString1);
+      return false;
     }
-    ListenTogetherManager.a(ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1002);
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
-  
-  public void b() {}
 }
 
 

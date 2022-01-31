@@ -1,43 +1,31 @@
-import android.os.AsyncTask;
-import android.os.Handler;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.data.MessageRecord;
 
-class achw
-  extends AsyncTask<MessageRecord, Object, Object>
+public class achw
+  implements bmff
 {
-  achw(achv paramachv) {}
+  public achw(BaseChatPie paramBaseChatPie) {}
   
-  protected Object a(MessageRecord... paramVarArgs)
+  public Activity a()
   {
-    if (this.a.a.d) {
-      if (this.a.a.jdField_a_of_type_Awdi != null) {
-        this.a.a.jdField_a_of_type_Awdi.a(paramVarArgs[0], true);
-      }
-    }
-    for (;;)
-    {
-      if ((paramVarArgs[0] instanceof MessageForApollo)) {
-        akwk.a(this.a.a.app, "chat_history_start_del_msg");
-      }
-      return null;
-      this.a.a.app.a().a(paramVarArgs[0], true);
-    }
+    return this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   }
   
-  protected void onPostExecute(Object paramObject)
+  public SessionInfo a()
   {
-    super.onPostExecute(paramObject);
-    this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    if ((this.a.a.jdField_a_of_type_Bepp != null) && (this.a.a.jdField_a_of_type_Bepp.isShowing())) {
-      this.a.a.jdField_a_of_type_Bepp.dismiss();
-    }
-    if (this.a.a.d) {
-      this.a.a.a(11, false);
-    }
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  }
+  
+  public boolean a()
+  {
+    return this.a.c();
   }
 }
 

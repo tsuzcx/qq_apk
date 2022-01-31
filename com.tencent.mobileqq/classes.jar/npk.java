@@ -2,13 +2,13 @@ import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class npk
-  implements army
+  implements arrh
 {
   public npk(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
   public void a()
   {
-    aanp.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
+    aase.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
     if (ReadInJoyNativeAdAppVideoView.a(this.a) == 6)
     {
       ReadInJoyNativeAdAppVideoView.a(this.a).start();

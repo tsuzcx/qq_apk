@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agld;
+import agps;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class FriendChatPie$1
   implements Runnable
 {
-  public FriendChatPie$1(agld paramagld) {}
+  public FriendChatPie$1(agps paramagps) {}
   
   public void run()
   {

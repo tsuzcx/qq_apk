@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import ahna;
+import ahrp;
 
 public class ContactsDeviceAdapter$3
   implements Runnable
 {
-  public ContactsDeviceAdapter$3(ahna paramahna) {}
+  public ContactsDeviceAdapter$3(ahrp paramahrp) {}
   
   public void run()
   {

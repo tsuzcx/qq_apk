@@ -1,23 +1,36 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wsf
-  implements Animation.AnimationListener
+  extends uro
 {
-  public wsf(NewMessageYellowBar paramNewMessageYellowBar) {}
+  public List<String> a = new ArrayList();
+  public int b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public wsf(qqstory_service.RspGetPhotographyGuide paramRspGetPhotographyGuide)
   {
-    this.a.setVisibility(8);
+    super(paramRspGetPhotographyGuide.result);
+    Object localObject = paramRspGetPhotographyGuide.word.get();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        ByteStringMicro localByteStringMicro = (ByteStringMicro)((Iterator)localObject).next();
+        this.a.add(localByteStringMicro.toStringUtf8());
+      }
+    }
+    this.b = paramRspGetPhotographyGuide.seqno.get();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public String toString()
   {
-    this.a.a.setAlpha(1.0F);
+    return "GetPhotographyGuideResponse{, wordList=" + this.a.size() + ", seqno=" + this.b + '}';
   }
 }
 

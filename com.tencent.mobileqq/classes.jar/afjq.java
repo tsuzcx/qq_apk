@@ -1,30 +1,50 @@
-import android.app.Activity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewImplement.ArkViewInterface;
 
 class afjq
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  afjq(afjb paramafjb) {}
+  afjq(afjp paramafjp, int paramInt, ArkViewImplement.ArkViewInterface paramArkViewInterface) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      paramView = bhpy.a(this.a.jdField_a_of_type_AndroidContentContext);
-      paramView.b(2131720898);
-      paramView.c(2131690648);
-      paramView.a(new afjr(this));
-      paramView.a(new afjs(this, paramView));
-      paramView.show();
-      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
+    int i = paramView.getId();
+    if (this.jdField_a_of_type_Int == 2) {
+      if (i == 0) {
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(5);
+      }
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
+    do
+    {
+      do
+      {
+        return;
+        if (i == 1)
+        {
+          this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(4);
+          return;
+        }
+      } while (i != 2);
+      this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+      return;
+      if (this.jdField_a_of_type_Int != 1) {
+        break;
+      }
+      if (i == 0)
+      {
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(1);
+        return;
+      }
+      if (i == 1)
+      {
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(2);
+        return;
+      }
+    } while (i != 2);
+    this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+    return;
+    this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
   }
 }
 

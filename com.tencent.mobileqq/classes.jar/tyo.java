@@ -1,17 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqcircle.requests.QCircleHeartbeatSignalReportRequest;
-import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCircleReport.StHeartbeatSignalRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class tyo
-  implements yvn<QQCircleReport.StHeartbeatSignalRsp>
+  implements View.OnClickListener
 {
-  tyo(tym paramtym, QCircleHeartbeatSignalReportRequest paramQCircleHeartbeatSignalReportRequest) {}
+  tyo(tyn paramtyn) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleReport.StHeartbeatSignalRsp paramStHeartbeatSignalRsp)
+  public void onClick(View paramView)
   {
-    if (((!paramBoolean) || (paramLong != 0L) || (paramStHeartbeatSignalRsp == null)) && (!TextUtils.isEmpty(paramString))) {
-      QLog.e("QCircleReportHelper", 1, "reportQCircleActiveIntervalTime error:" + paramString + ",traceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleHeartbeatSignalReportRequest.getTraceId());
+    tyn.a(this.a, false);
+    this.a.b();
+    if (tyn.a(this.a) != null) {
+      tyn.a(this.a).a();
     }
   }
 }

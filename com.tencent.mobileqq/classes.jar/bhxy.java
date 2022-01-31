@@ -1,8 +1,14 @@
-import com.tencent.widget.VerticalGallery;
+import android.widget.PopupWindow.OnDismissListener;
 
-public abstract interface bhxy
+class bhxy
+  implements PopupWindow.OnDismissListener
 {
-  public abstract void a(VerticalGallery paramVerticalGallery);
+  bhxy(bhxx parambhxx) {}
+  
+  public void onDismiss()
+  {
+    this.a.a(1.0F);
+  }
 }
 
 

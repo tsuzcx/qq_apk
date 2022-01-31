@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.sdk;
 
-import alpo;
+import alud;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ final class MiniAppLauncher$3
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131707192) + this.val$appId, 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131707204) + this.val$appId, 1).a();
   }
 }
 

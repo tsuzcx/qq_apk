@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
+import awge;
 
 public class TroopKeyWord
-  extends awbv
+  extends awge
 {
   public boolean enable;
   public int expiredFlag;

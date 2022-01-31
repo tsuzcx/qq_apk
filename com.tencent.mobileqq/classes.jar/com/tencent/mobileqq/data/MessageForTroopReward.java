@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import alpo;
-import bbme;
+import alud;
+import bbqn;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
@@ -19,7 +19,7 @@ public class MessageForTroopReward
   public int expiredTimeStamp;
   public String md5;
   public String mediaPath = "";
-  public bbme resq;
+  public bbqn resq;
   public String rewardContent = "";
   public int rewardCreateTime;
   public String rewardId = "";
@@ -181,7 +181,7 @@ public class MessageForTroopReward
   
   public String getSummaryMsg()
   {
-    return alpo.a(2131706968) + this.rewardContent;
+    return alud.a(2131706980) + this.rewardContent;
   }
   
   public boolean isSupportReply()

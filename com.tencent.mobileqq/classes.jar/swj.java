@@ -127,10 +127,10 @@ public class swj
     try
     {
       String str1 = AppSetting.e();
-      String str2 = bfin.a();
-      String str3 = bfin.d();
+      String str2 = bfmw.a();
+      String str3 = bfmw.d();
       String str4 = Settings.Secure.getString(paramAppInterface.getApp().getContentResolver(), "android_id");
-      String str5 = bfin.c();
+      String str5 = bfmw.c();
       JSONArray localJSONArray = new JSONArray();
       int j = paramList1.size();
       int i = 0;

@@ -1,8 +1,23 @@
-import android.view.View;
+import java.util.Hashtable;
 
-public abstract interface beiq
+public class beiq
+  extends behq
 {
-  public abstract void a(View paramView);
+  Hashtable<String, Boolean> a = new Hashtable();
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    this.a.put(paramString, Boolean.valueOf(paramBoolean));
+  }
+  
+  public boolean a(String paramString, boolean paramBoolean)
+  {
+    paramString = (Boolean)this.a.get(paramString);
+    if (paramString == null) {
+      return paramBoolean;
+    }
+    return paramString.booleanValue();
+  }
 }
 
 

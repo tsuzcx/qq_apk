@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkBridgeActivity;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
+import com.tencent.webbundle.sdk.IWebBundleWebView.OnPageFinishedListener;
+import cooperation.comic.webbundle.WebBundleWebView;
 
 public class biot
-  implements DialogInterface.OnClickListener
+  extends WebViewClient
 {
-  public biot(QlinkBridgeActivity paramQlinkBridgeActivity) {}
+  public biot(WebBundleWebView paramWebBundleWebView, IWebBundleWebView.OnPageFinishedListener paramOnPageFinishedListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    super.onPageFinished(paramWebView, paramString);
+    this.jdField_a_of_type_ComTencentWebbundleSdkIWebBundleWebView$OnPageFinishedListener.onPageFinished(this.jdField_a_of_type_CooperationComicWebbundleWebBundleWebView, paramString);
   }
 }
 

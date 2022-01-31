@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import alpo;
+import alud;
 import android.content.Context;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
@@ -17,7 +17,7 @@ class ReadInJoyDraftboxAdapter$2$1$1
   {
     Context localContext = qpi.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxAdapter$2$1.a.jdField_a_of_type_Qpi);
     if (this.jdField_a_of_type_Boolean) {}
-    for (String str = alpo.a(2131713323);; str = alpo.a(2131713184))
+    for (String str = alud.a(2131713335);; str = alud.a(2131713196))
     {
       QQToast.a(localContext, 2, str, 1).a();
       if (this.jdField_a_of_type_Boolean)

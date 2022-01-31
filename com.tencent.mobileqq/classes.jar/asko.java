@@ -1,17 +1,14 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class asko
-  implements View.OnTouchListener
+class asko
+  implements DialogInterface.OnDismissListener
 {
-  public asko(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  asko(askn paramaskn) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return QQGameFeedWebFragment.a(this.a).onTouchEvent(paramMotionEvent);
+    askm.a(this.a.a).dismiss();
   }
 }
 

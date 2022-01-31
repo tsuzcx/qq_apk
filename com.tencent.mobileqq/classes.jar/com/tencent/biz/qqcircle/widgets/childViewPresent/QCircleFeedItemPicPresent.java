@@ -6,19 +6,28 @@ import android.view.View;
 import android.view.ViewStub;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import com.tencent.biz.qqcircle.events.QCircleFeedPicPositionEvent;
+import com.tencent.biz.subscribe.event.SimpleBaseEvent;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StImage;
+import java.util.ArrayList;
 import java.util.List;
 import tqg;
-import ucz;
-import udn;
+import tzo;
+import tzw;
+import tzy;
+import uga;
+import ugn;
+import yiw;
+import yiy;
 
 public class QCircleFeedItemPicPresent
-  extends ucz
+  extends uga
+  implements yiy
 {
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
@@ -26,22 +35,14 @@ public class QCircleFeedItemPicPresent
   private QCircleFeedItemPicPresent.MultiPicAdapter jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresent$MultiPicAdapter;
   private int b = ImmersiveUtils.a();
   private int c;
-  
-  private void a()
-  {
-    if ((this.jdField_a_of_type_AndroidSupportV4ViewViewPager != null) && (this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getLayoutParams() != null))
-    {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getLayoutParams().height = this.c;
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.requestLayout();
-    }
-  }
+  private int d;
   
   private void a(FeedCloudMeta.StImage paramStImage)
   {
     if ((paramStImage.width.get() != 0) && (paramStImage.height.get() != 0))
     {
       this.c = ((int)(Math.max(Math.min(paramStImage.height.get() / paramStImage.width.get(), 1.333333F), 0.5625F) * this.b));
-      a();
+      b();
     }
   }
   
@@ -62,6 +63,15 @@ public class QCircleFeedItemPicPresent
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
   }
   
+  private void b()
+  {
+    if ((this.jdField_a_of_type_AndroidSupportV4ViewViewPager != null) && (this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getLayoutParams() != null))
+    {
+      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getLayoutParams().height = this.c;
+      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.requestLayout();
+    }
+  }
+  
   private void b(int paramInt)
   {
     if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresent$MultiPicAdapter != null)
@@ -78,17 +88,56 @@ public class QCircleFeedItemPicPresent
     a("");
   }
   
+  private void c(int paramInt)
+  {
+    if (!(this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)) {
+      return;
+    }
+    FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject;
+    int[] arrayOfInt = tzo.a(localStFeed);
+    String str;
+    ArrayList localArrayList;
+    if (localStFeed.images.size() > paramInt)
+    {
+      str = ((FeedCloudMeta.StImage)localStFeed.images.get(paramInt)).picId.get() + "";
+      localArrayList = new ArrayList();
+      localArrayList.add(tzy.a("ext1", "1"));
+      if (paramInt >= this.d) {
+        break label191;
+      }
+      localArrayList.add(tzy.a("ext2", "1"));
+    }
+    for (;;)
+    {
+      localArrayList.add(tzy.a("ext3", localStFeed.images.size() + ""));
+      tzw.a(2, 1, arrayOfInt[0], arrayOfInt[1], localStFeed, 1, this.jdField_a_of_type_Int, str, localArrayList);
+      this.d = paramInt;
+      return;
+      str = "";
+      break;
+      label191:
+      if (paramInt > this.d) {
+        localArrayList.add(tzy.a("ext2", "2"));
+      }
+    }
+  }
+  
+  public void a()
+  {
+    yiw.a().b(this);
+  }
+  
   public void a(ViewStub paramViewStub)
   {
     if (paramViewStub != null)
     {
       this.jdField_a_of_type_AndroidViewView = paramViewStub.inflate();
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373178));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373179));
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131373170));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373226));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373227));
+      this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131373205));
       this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresent$MultiPicAdapter = new QCircleFeedItemPicPresent.MultiPicAdapter(this);
       this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresent$MultiPicAdapter);
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new udn(this));
+      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new ugn(this));
     }
   }
   
@@ -127,6 +176,20 @@ public class QCircleFeedItemPicPresent
       }
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
       return;
+    }
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(QCircleFeedPicPositionEvent.class);
+    return localArrayList;
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if (((paramSimpleBaseEvent instanceof QCircleFeedPicPositionEvent)) && (this.jdField_a_of_type_AndroidSupportV4ViewViewPager != null) && ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)) && (((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).id.get().equals(((QCircleFeedPicPositionEvent)paramSimpleBaseEvent).mFeedId)) && (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresent$MultiPicAdapter != null) && (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresent$MultiPicAdapter.getCount() > ((QCircleFeedPicPositionEvent)paramSimpleBaseEvent).mPicPosition)) {
+      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(((QCircleFeedPicPositionEvent)paramSimpleBaseEvent).mPicPosition);
     }
   }
 }

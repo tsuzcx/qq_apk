@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.startup.step;
 
-import bjar;
+import bjey;
 
 public class QzoneTracer
   extends Step
 {
   protected boolean doStep()
   {
-    bjar.a();
+    bjey.a();
     return super.doStep();
   }
 }

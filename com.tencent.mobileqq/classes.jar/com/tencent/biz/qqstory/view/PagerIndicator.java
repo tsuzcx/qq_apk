@@ -15,7 +15,7 @@ import android.widget.LinearLayout.LayoutParams;
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 import java.util.Queue;
-import xqg;
+import xup;
 
 public class PagerIndicator
   extends LinearLayout
@@ -26,7 +26,7 @@ public class PagerIndicator
   public EmptySupportViewPager a;
   protected WeakReference<PagerIndicator.IndicatorAdapter> a;
   protected Queue<PagerIndicator.InnerImageView> a;
-  public final xqg a;
+  public final xup a;
   protected int b;
   
   static
@@ -43,7 +43,7 @@ public class PagerIndicator
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
-    this.jdField_a_of_type_Xqg = new xqg(this, null);
+    this.jdField_a_of_type_Xup = new xup(this, null);
     super.setOrientation(0);
     super.setGravity(17);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt);
@@ -135,13 +135,13 @@ public class PagerIndicator
     {
       if (this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager != null)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager.b(this.jdField_a_of_type_Xqg);
+        this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager.b(this.jdField_a_of_type_Xup);
         this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager = null;
       }
       if (paramEmptySupportViewPager != null)
       {
         this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager = paramEmptySupportViewPager;
-        this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager.a(this.jdField_a_of_type_Xqg);
+        this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager.a(this.jdField_a_of_type_Xup);
       }
     }
   }
@@ -155,12 +155,12 @@ public class PagerIndicator
       {
         if (localIndicatorAdapter != null)
         {
-          localIndicatorAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Xqg);
+          localIndicatorAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Xup);
           this.jdField_a_of_type_JavaLangRefWeakReference = null;
         }
         if (paramIndicatorAdapter != null)
         {
-          paramIndicatorAdapter.registerDataSetObserver(this.jdField_a_of_type_Xqg);
+          paramIndicatorAdapter.registerDataSetObserver(this.jdField_a_of_type_Xup);
           this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramIndicatorAdapter);
         }
         if (this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager != null) {

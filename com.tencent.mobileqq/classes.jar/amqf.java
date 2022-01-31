@@ -1,191 +1,107 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy.1;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy.3;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy.4;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy.5;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy.6;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
 public class amqf
-  implements amqd
+  implements INetEventHandler
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  private amqe jdField_a_of_type_Amqe;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ARVideoRecordButtonView jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ARVideoRecordViewProxy.1(this);
-  private final String jdField_a_of_type_JavaLangString = alpo.a(2131701132);
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int = 5000;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private final String jdField_b_of_type_JavaLangString = "0.00M";
-  private View c;
+  private Context jdField_a_of_type_AndroidContentContext;
   
-  public amqf(View paramView)
+  public amqf(amqe paramamqe)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView = ((ARVideoRecordButtonView)paramView.findViewById(2131369916));
-    this.c = paramView.findViewById(2131363958);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131362751);
-    this.jdField_a_of_type_Boolean = ampw.a();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
-    this.c.setOnClickListener(null);
-    this.c.setOnTouchListener(new amqg(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362753));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362752));
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordViewProxy", 2, "init self");
-    }
+    this.jdField_a_of_type_AndroidContentContext = amqe.a(paramamqe);
   }
   
-  private void a(View paramView, int paramInt1, int paramInt2)
-  {
-    TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, paramInt2);
-    localTranslateAnimation1.setInterpolator(new AccelerateInterpolator());
-    localTranslateAnimation1.setDuration(paramInt1 / 2);
-    int i = 0 + paramInt1 / 2;
-    TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0 - paramInt2);
-    localTranslateAnimation2.setDuration(paramInt1 / 2);
-    localTranslateAnimation2.setInterpolator(new DecelerateInterpolator());
-    localTranslateAnimation2.setStartOffset(i);
-    i += paramInt1 / 2;
-    TranslateAnimation localTranslateAnimation3 = new TranslateAnimation(0.0F, 0.0F, 0.0F, paramInt2 * 2 / 3);
-    localTranslateAnimation3.setInterpolator(new AccelerateInterpolator());
-    localTranslateAnimation3.setDuration(paramInt1 / 2);
-    localTranslateAnimation3.setStartOffset(i);
-    i += paramInt1 / 2;
-    TranslateAnimation localTranslateAnimation4 = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0 - paramInt2 * 2 / 3);
-    localTranslateAnimation4.setInterpolator(new DecelerateInterpolator());
-    localTranslateAnimation4.setDuration(paramInt1 / 2);
-    localTranslateAnimation4.setStartOffset(i);
-    paramInt1 /= 2;
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    localAnimationSet.addAnimation(localTranslateAnimation1);
-    localAnimationSet.addAnimation(localTranslateAnimation2);
-    localAnimationSet.addAnimation(localTranslateAnimation3);
-    localAnimationSet.addAnimation(localTranslateAnimation4);
-    if (paramView != null) {
-      paramView.startAnimation(localAnimationSet);
-    }
-  }
-  
-  private void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordViewProxy", 2, "resetToInnerTipsStatus");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView.setShowState(2);
-    this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText("0.00M");
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_Int = 0;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_b_of_type_AndroidViewView.clearAnimation();
-    }
-    do
-    {
-      return;
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      a(this.jdField_b_of_type_AndroidViewView, 600, -40);
-      ampw.a(true);
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
-    } while (!QLog.isColorLevel());
-    QLog.i("ARVideoRecordViewProxy", 2, "ARButtonTips resetToInnerTipsStatus start animation");
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
+  /* Error */
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordViewProxy", 2, "show");
-    }
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      c();
-      return;
-    }
-    ThreadManager.getUIHandler().post(new ARVideoRecordViewProxy.3(this));
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordViewProxy", 2, "switchUIdisplayMode" + paramInt);
-    }
-    if (this.jdField_a_of_type_Int == paramInt)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ARVideoRecordViewProxy", 2, "switchUIdisplayMode mCurrentUIDisplayMode equal");
-      }
-      return;
-    }
-    ThreadManager.getUIHandler().post(new ARVideoRecordViewProxy.6(this, paramInt));
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Int == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView.setProgress(paramInt1, 60000L);
-    }
-    ThreadManager.getUIHandler().post(new ARVideoRecordViewProxy.5(this, paramInt1, paramInt2));
-  }
-  
-  public void a(amqe paramamqe)
-  {
-    this.jdField_a_of_type_Amqe = paramamqe;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 23	amqf:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   6: aload_0
+    //   7: invokestatic 32	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:registerNetChangeReceiver	(Landroid/content/Context;Lcom/tencent/mobileqq/msf/sdk/handler/INetEventHandler;)V
+    //   10: invokestatic 36	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:isWifiConn	()Z
+    //   13: ifeq +14 -> 27
+    //   16: aload_0
+    //   17: getfield 13	amqf:jdField_a_of_type_Amqe	Lamqe;
+    //   20: iconst_1
+    //   21: invokevirtual 40	amqe:c	(Z)V
+    //   24: aload_0
+    //   25: monitorexit
+    //   26: return
+    //   27: invokestatic 45	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   30: ifeq -6 -> 24
+    //   33: ldc 47
+    //   35: iconst_2
+    //   36: ldc 49
+    //   38: invokestatic 53	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   41: goto -17 -> 24
+    //   44: astore_1
+    //   45: aload_0
+    //   46: monitorexit
+    //   47: aload_1
+    //   48: athrow
+    //   49: astore_1
+    //   50: goto -40 -> 10
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	53	0	this	amqf
+    //   44	4	1	localObject	Object
+    //   49	1	1	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   2	10	44	finally
+    //   10	24	44	finally
+    //   27	41	44	finally
+    //   2	10	49	java/lang/Exception
   }
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordViewProxy", 2, "hide");
-    }
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
+    try
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      AppNetConnInfo.unregisterNetEventHandler(this);
+      label7:
+      this.jdField_a_of_type_Amqe.c();
       return;
-      ThreadManager.getUIHandler().post(new ARVideoRecordViewProxy.4(this));
     }
+    catch (Exception localException)
+    {
+      break label7;
+    }
+    finally {}
+  }
+  
+  public void onNetChangeEvent(boolean paramBoolean)
+  {
+    int i = bdin.b(this.jdField_a_of_type_AndroidContentContext);
+    if (i == 0) {
+      if (amqe.a(this.jdField_a_of_type_Amqe)) {
+        this.jdField_a_of_type_Amqe.e();
+      }
+    }
+    do
+    {
+      return;
+      if (i == 1)
+      {
+        if (!amqe.a(this.jdField_a_of_type_Amqe))
+        {
+          this.jdField_a_of_type_Amqe.c(true);
+          return;
+        }
+        this.jdField_a_of_type_Amqe.d();
+        return;
+      }
+    } while ((i != 0) || (!amqe.a(this.jdField_a_of_type_Amqe)));
+    this.jdField_a_of_type_Amqe.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqf
  * JD-Core Version:    0.7.0.1
  */

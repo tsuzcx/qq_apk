@@ -1,158 +1,17 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import android.widget.EditText;
 
 class bmsk
-  extends LinearLayout
+  implements View.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private int b;
-  private int c;
-  private final int d = 5;
+  bmsk(bmsi parambmsi) {}
   
-  public bmsk(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
+  public void onClick(View paramView)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat;
-    paramInt1 = bmtu.b(getContext(), 6.0F);
-    this.c = ((this.jdField_a_of_type_Int - paramInt1 * ((this.b - 1) * 2)) / this.b);
-    a();
-  }
-  
-  private void a()
-  {
-    setOrientation(0);
-    setGravity(17);
-    int j = bmtu.b(getContext(), 12.0F);
-    int k = (int)((this.c - j * 2) * this.jdField_a_of_type_Float);
-    int i = 0;
-    if (i < this.b)
-    {
-      View localView = LayoutInflater.from(getContext()).inflate(2131559041, null);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.c, this.c);
-      if (i == 0) {
-        localLayoutParams.setMargins(0, j, j / 2, 0);
-      }
-      for (;;)
-      {
-        localView.setLayoutParams(localLayoutParams);
-        ((ImageView)localView.findViewById(2131369801)).setPadding(k, k, k, k);
-        addView(localView);
-        i += 1;
-        break;
-        if (this.b - 1 == i) {
-          localLayoutParams.setMargins(j / 2, j, 0, 0);
-        } else {
-          localLayoutParams.setMargins(j / 2, j, j / 2, 0);
-        }
-      }
-    }
-  }
-  
-  private void a(int paramInt)
-  {
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = paramInt;
-      if (i >= paramInt) {
-        break;
-      }
-      j = paramInt;
-      if (i >= getChildCount()) {
-        break;
-      }
-      getChildAt(i).setVisibility(0);
-      i += 1;
-    }
-    while ((j < this.b) && (j < getChildCount()))
-    {
-      getChildAt(j).setVisibility(4);
-      j += 1;
-    }
-  }
-  
-  public void a(bmrq parambmrq, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    int i = paramInt1 * this.b;
-    label31:
-    URLImageView localURLImageView;
-    ProgressBar localProgressBar;
-    String str;
-    if (paramInt1 == paramInt2 - 1)
-    {
-      paramInt1 = parambmrq.b();
-      a(paramInt1 - i);
-      paramInt2 = i;
-      if (paramInt2 >= paramInt1) {
-        return;
-      }
-      localObject1 = getChildAt(paramInt2 - i);
-      localObject2 = ((View)localObject1).findViewById(2131369812);
-      localURLImageView = (URLImageView)((View)localObject1).findViewById(2131369801);
-      localObject3 = (TextView)((View)localObject1).findViewById(2131369813);
-      localProgressBar = (ProgressBar)((View)localObject1).findViewById(2131369811);
-      str = parambmrq.b(paramInt2);
-      localObject1 = parambmrq.a(paramInt2);
-      if (localObject1 != null) {
-        break label146;
-      }
-      wsv.e("LocationFaceAdapter", "FacePackage's thumbUri is empty , pkg : %s", new Object[] { parambmrq.toString() });
-    }
-    for (;;)
-    {
-      paramInt2 += 1;
-      break label31;
-      paramInt1 = this.b + i;
-      break;
-      label146:
-      ((TextView)localObject3).setText(str);
-      ((View)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localURLImageView.setTag(2131377387, Integer.valueOf(paramInt2));
-      if (paramBoolean) {
-        break label193;
-      }
-      localProgressBar.setVisibility(4);
-      localURLImageView.setImageDrawable(null);
-    }
-    label193:
-    localURLImageView.setTag(2131377396, localObject1);
-    localURLImageView.setTag(2131377365, Boolean.valueOf(false));
-    localProgressBar.setVisibility(0);
-    Object localObject2 = new bmsl((String)localObject1, localURLImageView, localProgressBar);
-    localURLImageView.setURLDrawableDownListener((URLDrawableDownListener)localObject2);
-    Object localObject3 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = baul.a;
-    ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = baul.a;
-    ((URLDrawable.URLDrawableOptions)localObject3).mUseAutoScaleParams = false;
-    Object localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
-    if (((URLDrawable)localObject1).getStatus() == 1) {
-      ((bmsl)localObject2).onLoadSuccessed(localURLImageView, (URLDrawable)localObject1);
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      localURLImageView.setImageDrawable((Drawable)localObject1);
-      break;
-      localObject1 = null;
-    }
+    this.a.a.setSelectAllOnFocus(false);
+    this.a.a.setSelection(this.a.a.length());
+    this.a.a.setOnClickListener(null);
   }
 }
 

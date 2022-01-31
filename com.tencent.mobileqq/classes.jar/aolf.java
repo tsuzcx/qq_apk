@@ -1,90 +1,69 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aolf
+  extends aokh<aolg>
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c = "分享给你1张图片";
-  public String d = "";
-  
-  public aolf()
+  public static aolg a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 10485760L;
-    this.jdField_a_of_type_JavaLangString = "gh_0fc5d8395610";
-    this.jdField_b_of_type_JavaLangString = "/pages/gallery/gallery?";
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
+    return (aolg)aoks.a().a(457);
   }
   
-  public static aolf a(String paramString)
+  public int a()
   {
-    boolean bool2 = false;
-    if (paramString == null)
-    {
-      paramString = null;
-      return paramString;
+    return 457;
+  }
+  
+  @NonNull
+  public aolg a(int paramInt)
+  {
+    return new aolg();
+  }
+  
+  @Nullable
+  public aolg a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length == 0)) {
+      return null;
     }
-    aolf localaolf = new aolf();
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        if (localJSONObject.has("picShareToWeChatEnable"))
-        {
-          if (localJSONObject.getInt("picShareToWeChatEnable") == 1)
-          {
-            bool1 = true;
-            localaolf.jdField_a_of_type_Boolean = bool1;
-          }
-        }
-        else
-        {
-          if (localJSONObject.has("picShareToWeChatSize")) {
-            localaolf.jdField_a_of_type_Long = localJSONObject.getLong("picShareToWeChatSize");
-          }
-          if (localJSONObject.has("PicShareToWeChatUserName")) {
-            localaolf.jdField_a_of_type_JavaLangString = localJSONObject.getString("PicShareToWeChatUserName");
-          }
-          if (localJSONObject.has("PicShareToWeChatPath")) {
-            localaolf.jdField_b_of_type_JavaLangString = localJSONObject.getString("PicShareToWeChatPath");
-          }
-          if (localJSONObject.has("PicShareToWeChatShareTicket"))
-          {
-            bool1 = bool2;
-            if (localJSONObject.getInt("PicShareToWeChatShareTicket") == 1) {
-              bool1 = true;
-            }
-            localaolf.jdField_b_of_type_Boolean = bool1;
-          }
-          if (localJSONObject.has("PicShareToWeChatMiniType")) {
-            localaolf.jdField_a_of_type_Int = localJSONObject.getInt("PicShareToWeChatMiniType");
-          }
-          if (localJSONObject.has("PicShareToWeChatTitle")) {
-            localaolf.c = localJSONObject.getString("PicShareToWeChatTitle");
-          }
-          paramString = localaolf;
-          if (!localJSONObject.has("PicShareToWeChatDescription")) {
-            break;
-          }
-          localaolf.d = localJSONObject.getString("PicShareToWeChatDescription");
-          return localaolf;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("PicShareToWXConfigProcessor", 1, "parse error.", paramString);
-        return localaolf;
-      }
-      boolean bool1 = false;
+    paramArrayOfaoko = paramArrayOfaoko[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendTroopConfigProcessor", 2, "RecommendTroopConfigProcessor onParsed, content:" + paramArrayOfaoko);
     }
+    return aolg.a(paramArrayOfaoko);
+  }
+  
+  public Class<aolg> a()
+  {
+    return aolg.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aolg paramaolg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendTroopConfigProcessor", 2, "RecommendTroopConfigProcessor update.");
+    }
+    ((alwd)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(159)).a();
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

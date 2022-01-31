@@ -1,158 +1,30 @@
 import android.os.Handler;
-import android.os.HandlerThread;
-import android.text.TextUtils;
-import android.util.Log;
-import android.util.SparseArray;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.module.common.NetworkState.NetworkStateListener;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.tmassistant.common.jce.StatItem;
-import com.tencent.tmassistant.common.jce.StatReportRequest;
-import com.tencent.tmassistant.common.jce.StatReportResponse;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Message;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import android.widget.HorizontalScrollView;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfef
-  implements bfed, NetworkState.NetworkStateListener
+  extends Handler
 {
-  private static bfef jdField_a_of_type_Bfef;
-  private long jdField_a_of_type_Long = 1800000L;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private SparseArray<ArrayList<StatItem>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private bfec jdField_a_of_type_Bfec = new bfec();
-  private Map<Integer, ArrayList<String>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private SparseArray<ArrayList<StatItem>> b = new SparseArray();
+  public bfef(FriendChooser paramFriendChooser) {}
   
-  private bfef()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Bfec.a(this);
-    a();
-  }
-  
-  public static bfef a()
-  {
-    try
+    switch (paramMessage.what)
     {
-      if (jdField_a_of_type_Bfef == null) {
-        jdField_a_of_type_Bfef = new bfef();
-      }
-      bfef localbfef = jdField_a_of_type_Bfef;
-      return localbfef;
     }
-    finally {}
-  }
-  
-  private void a()
-  {
-    HandlerThread localHandlerThread = new HandlerThread("thread_report");
-    localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new bfeg(this, localHandlerThread.getLooper());
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-  }
-  
-  public void a(int paramInt, DownloadInfo paramDownloadInfo)
-  {
-    if (BaseApplicationImpl.sProcessId == 7) {}
-    for (int i = 1; (paramDownloadInfo == null) || (i == 0); i = 0) {
-      return;
-    }
-    long l = System.currentTimeMillis() / 1000L;
-    a(9, l + "|" + paramDownloadInfo.jdField_c_of_type_JavaLangString + "|" + paramDownloadInfo.b + "|" + paramDownloadInfo.e + "|" + paramDownloadInfo.jdField_c_of_type_Int + "|" + paramInt + "|" + paramDownloadInfo.jdField_c_of_type_Long + "|" + paramDownloadInfo.h);
-  }
-  
-  public void a(int paramInt1, StatReportRequest paramStatReportRequest, StatReportResponse paramStatReportResponse, int paramInt2)
-  {
-    Log.i("selfupdeReport", "circleTest reportLog onReportFinish errorCode = " + paramInt2);
-    paramStatReportRequest = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
-    if (paramStatReportRequest == null) {
-      paramStatReportRequest = (ArrayList)this.b.get(paramInt1);
-    }
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      if (paramInt2 != 0)
-      {
-        if ((paramStatReportRequest != null) && (paramStatReportRequest.size() > 0) && (i == 0))
-        {
-          SparseArray localSparseArray = new SparseArray();
-          Iterator localIterator = paramStatReportRequest.iterator();
-          while (localIterator.hasNext())
-          {
-            StatItem localStatItem = (StatItem)localIterator.next();
-            paramStatReportResponse = (List)localSparseArray.get(localStatItem.type);
-            paramStatReportRequest = paramStatReportResponse;
-            if (paramStatReportResponse == null)
-            {
-              paramStatReportRequest = new ArrayList();
-              localSparseArray.put(localStatItem.type, paramStatReportRequest);
-            }
-            paramStatReportRequest.addAll(localStatItem.records);
-          }
-          i = localSparseArray.size();
-          paramInt2 = 0;
-          while (paramInt2 < i)
-          {
-            int j = localSparseArray.keyAt(paramInt2);
-            paramStatReportResponse = (List)localSparseArray.get(j);
-            paramStatReportRequest = new ArrayList();
-            paramStatReportResponse = paramStatReportResponse.iterator();
-            while (paramStatReportResponse.hasNext()) {
-              paramStatReportRequest.add((String)paramStatReportResponse.next());
-            }
-            paramStatReportResponse = bfds.a().a(String.valueOf(j));
-            if (paramStatReportResponse != null) {
-              paramStatReportRequest.addAll(paramStatReportResponse);
-            }
-            bfds.a().a(String.valueOf(j), paramStatReportRequest);
-            paramInt2 += 1;
-          }
-        }
-      }
-      else if ((i != 0) && (paramStatReportRequest != null) && (paramStatReportRequest.size() > 0))
-      {
-        paramStatReportRequest = paramStatReportRequest.iterator();
-        while (paramStatReportRequest.hasNext())
-        {
-          paramStatReportResponse = (StatItem)paramStatReportRequest.next();
-          bfds.a().a(String.valueOf(paramStatReportResponse.type));
-        }
-      }
-      this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt1);
-      this.b.delete(paramInt1);
+      super.handleMessage(paramMessage);
       return;
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if ((paramInt >= 0) && (!TextUtils.isEmpty(paramString)))
-    {
-      ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      ArrayList localArrayList1 = localArrayList2;
-      if (localArrayList2 == null)
-      {
-        localArrayList1 = new ArrayList();
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localArrayList1);
-      }
-      localArrayList1.add(paramString);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 500L);
-    }
-  }
-  
-  public void onNetworkConnect(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+      this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
+      if (QLog.isColorLevel()) {
+        QLog.e("qqBaseActivity", 2, "" + this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width);
       }
     }
-    while (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
   }
 }
 

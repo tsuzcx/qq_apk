@@ -1,5 +1,5 @@
 class dg
-  extends almg
+  extends alqv
 {
   dg(df paramdf) {}
   

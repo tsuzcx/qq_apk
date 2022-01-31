@@ -1,42 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.confess.ConfessMsgListFragment;
 
 public class aoix
+  extends aoiz
 {
-  private boolean a;
+  public aoix(ConfessMsgListFragment paramConfessMsgListFragment) {}
   
-  public static aoix a(String paramString)
+  public void a(aoiq paramaoiq)
   {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
-    {
-      aoix localaoix = new aoix();
-      if (new JSONObject(paramString).optInt("isDefaultOpen", 1) == 1) {}
-      for (;;)
-      {
-        localaoix.a = bool;
-        return localaoix;
-        bool = false;
-      }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("DarkModeConfigProcessor", 2, "DarkModeConfigBean parse error", paramString);
+    ConfessMsgListFragment.a(this.a);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    if (this.a.isResumed()) {
+      this.a.b();
     }
   }
   
-  public boolean a()
+  public void b(boolean paramBoolean, Object paramObject)
   {
-    return this.a;
+    if (this.a.isResumed()) {
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoix
  * JD-Core Version:    0.7.0.1
  */

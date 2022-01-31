@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agot;
-import azmz;
+import agti;
+import azri;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -13,7 +13,7 @@ import java.util.List;
 public class PublicAccountChatPie$33
   implements Runnable
 {
-  public PublicAccountChatPie$33(agot paramagot, String paramString, int paramInt, long paramLong1, long paramLong2) {}
+  public PublicAccountChatPie$33(agti paramagti, String paramString, int paramInt, long paramLong1, long paramLong2) {}
   
   public void run()
   {
@@ -39,7 +39,7 @@ public class PublicAccountChatPie$33
       }
       else
       {
-        azmz.a(BaseApplication.getContext()).a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "show_msg_result", bool1, 0L, 0L, new HashMap(), "");
+        azri.a(BaseApplication.getContext()).a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "show_msg_result", bool1, 0L, 0L, new HashMap(), "");
         if (QLog.isColorLevel()) {
           QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "reportShowMsgResult uin = " + this.jdField_a_of_type_JavaLangString + " , type = " + this.jdField_a_of_type_Int + " , msguid = " + this.jdField_a_of_type_Long + " , result = " + bool1);
         }

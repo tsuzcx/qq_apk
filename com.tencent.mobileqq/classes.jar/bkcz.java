@@ -1,209 +1,193 @@
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import cooperation.qzone.util.QZLog;
-import cooperation.vip.webview.controller.BaseTranslucentController.2;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bkcz
+  implements azlv
 {
-  private long jdField_a_of_type_Long;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bkda(this);
-  protected Handler a;
-  protected QQBrowserActivity a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new BaseTranslucentController.2(this);
-  private volatile boolean jdField_a_of_type_Boolean;
-  private volatile boolean b;
+  final int jdField_a_of_type_Int;
+  final String jdField_a_of_type_JavaLangString;
+  Throwable jdField_a_of_type_JavaLangThrowable;
+  final int b;
   
-  public bkcz(QQBrowserActivity paramQQBrowserActivity)
+  bkcz(String paramString, int paramInt1, int paramInt2)
   {
-    QZLog.i("BaseTranslucentControll", "current controller = " + getClass().getName());
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = paramQQBrowserActivity;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    if (paramInt2 > 0) {}
+    for (this.jdField_b_of_type_Int = paramInt2;; this.jdField_b_of_type_Int = 30)
+    {
+      this.jdField_a_of_type_JavaLangThrowable = null;
+      if (paramString != null) {
+        break;
+      }
+      throw new IllegalArgumentException("null == outputFilePath");
+    }
   }
   
-  private void f()
+  public azlw a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Boolean) {}
+    int i = 0;
+    azlw localazlw = new azlw();
+    int k;
+    Object localObject;
+    if (paramInt1 <= paramInt2)
+    {
+      k = paramInt2;
+      localObject = new File(this.jdField_a_of_type_JavaLangString);
+      if (((File)localObject).exists()) {
+        ((File)localObject).delete();
+      }
+      localazlw.jdField_a_of_type_JavaIoFile = ((File)localObject);
+      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.lvcc.name(), "640|640|384|768|30");
+      if ((localObject == null) || (((String)localObject).length() <= 0)) {
+        break label431;
+      }
+      localObject = ((String)localObject).split("\\|");
+      if ((localObject == null) || (localObject.length <= 4)) {
+        break label431;
+      }
+    }
+    label431:
     for (;;)
     {
-      return;
       try
       {
-        QZLog.i("BaseTranslucentControll", "registerBroadcast");
-        IntentFilter localIntentFilter = new IntentFilter();
-        String[] arrayOfString = a();
-        if (arrayOfString != null)
-        {
-          int j = arrayOfString.length;
-          int i = 0;
-          while (i < j)
-          {
-            localIntentFilter.addAction(arrayOfString[i]);
-            i += 1;
-          }
-        }
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (bool) {
-          continue;
-        }
-        try
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-          this.jdField_a_of_type_Boolean = true;
-          return;
-        }
-        catch (Exception localException1)
-        {
-          QZLog.e("BaseTranslucentControll", "regist receiver error:", localException1);
-          return;
-        }
-        return;
+        i = Integer.valueOf(localObject[1]).intValue();
       }
-      catch (Exception localException2)
+      catch (NumberFormatException localNumberFormatException1)
       {
-        QZLog.e("BaseTranslucentControll", "registerBroadcast error", localException2);
+        paramInt1 = 0;
+        paramInt2 = 0;
+        i = 0;
       }
-    }
-  }
-  
-  private void g()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_Boolean)
+      try
       {
-        QZLog.i("BaseTranslucentControll", "removeBroadcast");
-        try
+        paramInt2 = Integer.valueOf(localObject[2]).intValue();
+      }
+      catch (NumberFormatException localNumberFormatException2)
+      {
+        for (;;)
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-          this.jdField_a_of_type_Boolean = false;
-          return;
-        }
-        catch (Exception localException1)
-        {
-          for (;;)
-          {
-            QZLog.e("BaseTranslucentControll", "unregisterReceiver error ", localException1);
-          }
+          label344:
+          int n;
+          paramInt1 = 0;
+          paramInt2 = 0;
         }
       }
-      return;
-    }
-    catch (Exception localException2)
-    {
-      QZLog.e("BaseTranslucentControll", "removeBroadcast error", localException2);
+      try
+      {
+        paramInt1 = Integer.valueOf(localObject[3]).intValue();
+      }
+      catch (NumberFormatException localNumberFormatException3)
+      {
+        paramInt1 = 0;
+        break label344;
+      }
+      try
+      {
+        m = Integer.valueOf(localObject[4]).intValue();
+        j = i;
+        i = paramInt2;
+        paramInt2 = m;
+        m = j;
+        if (j <= 0) {
+          m = 640;
+        }
+        j = i;
+        if (i <= 0) {
+          j = 384;
+        }
+        i = paramInt1;
+        if (paramInt1 <= 0) {
+          i = 768;
+        }
+        paramInt1 = paramInt2;
+        if (paramInt2 <= 0) {
+          paramInt1 = 30;
+        }
+        localazlw.jdField_a_of_type_Float = (m / k);
+        localazlw.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int * localazlw.jdField_a_of_type_Float * localazlw.jdField_a_of_type_Float + 0.5F));
+        if (localazlw.jdField_a_of_type_Int <= i * 1024) {
+          break label382;
+        }
+        localazlw.jdField_a_of_type_Int = (i * 1024);
+        paramInt2 = paramInt1;
+        if (this.jdField_b_of_type_Int <= paramInt1) {
+          paramInt2 = this.jdField_b_of_type_Int;
+        }
+        localazlw.jdField_b_of_type_Int = paramInt2;
+        localazlw.jdField_b_of_type_Boolean = a();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopHomeworkHelper", 2, "CompressTask, step: getEncodeConfig() config.setRotation = " + localazlw.jdField_b_of_type_Boolean);
+        }
+        return localazlw;
+      }
+      catch (NumberFormatException localNumberFormatException4)
+      {
+        break label344;
+      }
+      k = paramInt1;
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopHomeworkHelper", 2, "getEncodeConfig -> get DpcConfig Erro", localNumberFormatException1);
+      }
+      n = 0;
+      int j = paramInt2;
+      int m = i;
+      paramInt2 = n;
+      i = j;
+      j = m;
+      continue;
+      label382:
+      if (localazlw.jdField_a_of_type_Int < j * 1024)
+      {
+        localazlw.jdField_a_of_type_Int = (j * 1024);
+        continue;
+        paramInt2 = 0;
+        paramInt1 = 0;
+        j = 0;
+      }
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a(false);
-    f();
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 6100L);
-  }
-  
-  public void a(Intent paramIntent) {}
-  
-  protected void a(View paramView)
-  {
-    if (!this.b)
-    {
-      this.b = true;
-      QZLog.i("BaseTranslucentControll", "setAlpha(1)");
-      if (paramView != null) {
-        paramView.setAlpha(1.0F);
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b() != null)
-        {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b().getWebView();
-          if (paramView != null)
-          {
-            Object localObject = paramView.getTag(2131375040);
-            if ((localObject == null) || (!((Boolean)localObject).booleanValue())) {
-              break label119;
-            }
-            i = 1;
-            paramView.setTag(2131375037, Boolean.TRUE);
-            if (i != 0)
-            {
-              QZLog.i("BaseTranslucentControll", "tiantai jsReady true,notify webview.");
-              bjtx.a(paramView);
-              return;
-            }
-            QZLog.i("BaseTranslucentControll", "tiantai jsReady false,not notify webview.");
-            return;
-          }
-        }
-      }
-      catch (Exception paramView)
-      {
-        QZLog.e("BaseTranslucentControll", "notify webview qzRoofStartAnimation fail.", paramView);
-      }
-      return;
-      label119:
-      int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHomeworkHelper", 2, "CompressTask, step: HWCompressProcessor onSuccessed");
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void a(int paramInt)
   {
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131364784);
-    if (localView == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHomeworkHelper", 2, "CompressTask, step: HWCompressProcessor onProgress:" + paramInt);
     }
-    if (!paramBoolean)
-    {
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 6000L)
-      {
-        localView.setAlpha(0.0F);
-        this.b = false;
-        QZLog.i("BaseTranslucentControll", "setAlpha(0)");
-        return;
-      }
-      QZLog.i("BaseTranslucentControll", "isLoadSuccess = true，setAlpha(1)");
-      a(localView);
-      return;
+  }
+  
+  public void a(Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopHomeworkHelper", 2, "CompressTask, step: HWCompressProcessor onFailed");
     }
-    QZLog.i("BaseTranslucentControll", "isLoadSuccess = false，setAlpha(1)");
-    a(localView);
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
   }
   
   public boolean a()
   {
-    return true;
-  }
-  
-  public String[] a()
-  {
-    return null;
+    boolean bool = false;
+    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
+      bool = true;
+    }
+    while (Build.VERSION.SDK_INT <= 19) {
+      return bool;
+    }
+    return false;
   }
   
   public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    g();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void e()
-  {
-    a(true);
-  }
 }
 
 

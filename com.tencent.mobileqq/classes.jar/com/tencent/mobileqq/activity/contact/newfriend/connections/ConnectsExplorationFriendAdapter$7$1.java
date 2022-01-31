@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.newfriend.connections;
 
-import ahjd;
-import alro;
+import ahns;
+import alwd;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -18,28 +18,28 @@ class ConnectsExplorationFriendAdapter$7$1
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0.a(this.jdField_a_of_type_JavaUtilArrayList);
-      ahjd.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).setVisibility(8);
-      ahjd.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).setVisibility(8);
+      ahns.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).setVisibility(8);
+      ahns.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).setVisibility(8);
     }
     do
     {
       return;
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.a) && (!ahjd.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0)))
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.a) && (!ahns.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0)))
       {
-        ahjd.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0, true);
-        ahjd.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).setVisibility(0);
-        ahjd.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).setVisibility(8);
+        ahns.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0, true);
+        ahns.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).setVisibility(0);
+        ahns.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).setVisibility(8);
         Bundle localBundle = new Bundle();
         localBundle.putString("from", "4");
-        ahjd.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).a(5, ahjd.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0), localBundle);
+        ahns.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).a(5, ahns.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0), localBundle);
         return;
       }
-      ahjd.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).setVisibility(0);
-      ahjd.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).setText(2131699560);
-      ahjd.c(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).setVisibility(8);
-      ahjd.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).setVisibility(8);
+      ahns.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).setVisibility(0);
+      ahns.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).setText(2131699572);
+      ahns.c(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).setVisibility(8);
+      ahns.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0).setVisibility(8);
     } while (!QLog.isColorLevel());
-    QLog.d("ConnectsExplorationFriendAdapter", 2, "reloadRecommendData empty " + ahjd.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0));
+    QLog.d("ConnectsExplorationFriendAdapter", 2, "reloadRecommendData empty " + ahns.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationFriendAdapter$7.this$0));
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.fragment;
 
-import ajeu;
-import alpo;
+import ajjj;
+import alud;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,25 +27,25 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import asbn;
-import asbo;
-import asbp;
-import asbq;
-import asbr;
-import aubt;
-import aubv;
-import aucf;
-import aucl;
-import aucp;
-import auct;
-import aucw;
-import aucz;
-import aude;
-import audf;
-import aufb;
-import aufh;
-import bdcs;
-import bepp;
+import asfw;
+import asfx;
+import asfy;
+import asfz;
+import asga;
+import augc;
+import auge;
+import augo;
+import augu;
+import augy;
+import auhc;
+import auhf;
+import auhi;
+import auhn;
+import auho;
+import aujk;
+import aujq;
+import bdhb;
+import bety;
 import com.tencent.component.utils.preference.PreferenceManager;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -65,22 +65,22 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import mqq.os.MqqHandler;
-import xmn;
+import xqw;
 
 public class MsgBackupSettingFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
   public static int a;
-  public static auct a;
+  public static auhc a;
   public static String a;
   long jdField_a_of_type_Long;
-  private aubt jdField_a_of_type_Aubt;
-  private aubv jdField_a_of_type_Aubv = new asbq(this);
-  private aucp jdField_a_of_type_Aucp;
-  private aucw jdField_a_of_type_Aucw;
-  private aucz jdField_a_of_type_Aucz;
-  private bepp jdField_a_of_type_Bepp;
+  private augc jdField_a_of_type_Augc;
+  private auge jdField_a_of_type_Auge = new asfz(this);
+  private augy jdField_a_of_type_Augy;
+  private auhf jdField_a_of_type_Auhf;
+  private auhi jdField_a_of_type_Auhi;
+  private bety jdField_a_of_type_Bety;
   private MsgBackupEndPoint jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint;
   MsgBackupJniProxy jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
@@ -92,9 +92,9 @@ public class MsgBackupSettingFragment
   private int jdField_c_of_type_Int;
   private String jdField_c_of_type_JavaLangString;
   private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString = alpo.a(2131707293);
+  private String jdField_d_of_type_JavaLangString = alud.a(2131707305);
   private final int jdField_e_of_type_Int = 0;
-  private String jdField_e_of_type_JavaLangString = alpo.a(2131707310);
+  private String jdField_e_of_type_JavaLangString = alud.a(2131707322);
   private final int jdField_f_of_type_Int = 1;
   private String jdField_f_of_type_JavaLangString;
   private final int jdField_g_of_type_Int = 2;
@@ -103,9 +103,9 @@ public class MsgBackupSettingFragment
   
   private void a(Object paramObject)
   {
-    if ((paramObject instanceof aucw))
+    if ((paramObject instanceof auhf))
     {
-      paramObject = (aucw)paramObject;
+      paramObject = (auhf)paramObject;
       this.jdField_c_of_type_Int = paramObject.a();
       this.jdField_b_of_type_JavaLangString = paramObject.a();
       QLog.d("MsgBackup", 1, "onProcessPush0x11b confirmQrRsp = " + paramObject);
@@ -136,7 +136,7 @@ public class MsgBackupSettingFragment
         do
         {
           return;
-          localObject1 = new File(paramString).listFiles(new asbr(this));
+          localObject1 = new File(paramString).listFiles(new asga(this));
         } while ((localObject1 == null) || (localObject1.length <= 0));
         localObject2 = localObject1[0];
         localObject1 = BitmapFactory.decodeFile(((File)localObject2).getAbsolutePath());
@@ -176,7 +176,7 @@ public class MsgBackupSettingFragment
           {
             for (;;)
             {
-              xmn.a(localBitmap, str);
+              xqw.a(localBitmap, str);
               localCanvas.restoreToCount(n);
               i += 1;
               break;
@@ -225,7 +225,7 @@ public class MsgBackupSettingFragment
     default: 
       return;
     case 0: 
-      a(alpo.a(2131707314));
+      a(alud.a(2131707326));
       return;
     }
     b();
@@ -279,8 +279,8 @@ public class MsgBackupSettingFragment
     String str1 = getActivity().app.c();
     String str2 = str1 + ".db";
     str1 = getActivity().getDatabasePath(str2).getAbsolutePath();
-    str2 = aufb.jdField_a_of_type_JavaLangString + "test/" + str2;
-    aufh.a("qqdb copy fromPath = %s,toPath = %s,result = %b", str1, new Object[] { str2, Boolean.valueOf(bdcs.d(str1, str2)) });
+    str2 = aujk.jdField_a_of_type_JavaLangString + "test/" + str2;
+    aujq.a("qqdb copy fromPath = %s,toPath = %s,result = %b", str1, new Object[] { str2, Boolean.valueOf(bdhb.d(str1, str2)) });
   }
   
   public void a(Message paramMessage)
@@ -300,12 +300,12 @@ public class MsgBackupSettingFragment
   {
     try
     {
-      if (this.jdField_a_of_type_Bepp == null) {
-        this.jdField_a_of_type_Bepp = new bepp(getActivity(), getActivity().getTitleBarHeight());
+      if (this.jdField_a_of_type_Bety == null) {
+        this.jdField_a_of_type_Bety = new bety(getActivity(), getActivity().getTitleBarHeight());
       }
-      this.jdField_a_of_type_Bepp.a(paramString);
-      this.jdField_a_of_type_Bepp.c(false);
-      this.jdField_a_of_type_Bepp.show();
+      this.jdField_a_of_type_Bety.a(paramString);
+      this.jdField_a_of_type_Bety.c(false);
+      this.jdField_a_of_type_Bety.show();
       return;
     }
     catch (Exception paramString)
@@ -332,8 +332,8 @@ public class MsgBackupSettingFragment
   {
     try
     {
-      if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
-        this.jdField_a_of_type_Bepp.dismiss();
+      if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+        this.jdField_a_of_type_Bety.dismiss();
       }
       return;
     }
@@ -347,39 +347,39 @@ public class MsgBackupSettingFragment
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_Aubt = ((aubt)getActivity().app.a(162));
-    getActivity().app.addObserver(this.jdField_a_of_type_Aubv);
-    this.vg.setRightButton(alpo.a(2131707312));
-    this.vg.setLeftButton(alpo.a(2131707313));
-    ((Button)this.mContentView.findViewById(2131369735)).setOnClickListener(this);
-    ((Button)this.mContentView.findViewById(2131375631)).setOnClickListener(this);
-    ((Button)this.mContentView.findViewById(2131364690)).setOnClickListener(this);
-    this.mContentView.findViewById(2131375574).setOnClickListener(this);
-    this.mContentView.findViewById(2131373925).setOnClickListener(this);
-    this.mContentView.findViewById(2131378075).setOnClickListener(this);
-    this.mContentView.findViewById(2131365875).setOnClickListener(this);
-    this.mContentView.findViewById(2131373240).setOnClickListener(this);
-    this.mContentView.findViewById(2131364981).setOnClickListener(this);
-    this.mContentView.findViewById(2131364308).setOnClickListener(this);
-    this.mContentView.findViewById(2131364307).setOnClickListener(this);
-    this.mContentView.findViewById(2131364858).setOnClickListener(this);
-    this.mContentView.findViewById(2131376938).setOnClickListener(this);
-    this.mContentView.findViewById(2131364691).setOnClickListener(this);
-    this.mContentView.findViewById(2131364695).setOnClickListener(this);
-    this.mContentView.findViewById(2131367794).setOnClickListener(this);
-    this.mContentView.findViewById(2131365773).setOnClickListener(this);
-    this.mContentView.findViewById(2131376378).setOnClickListener(this);
-    this.mContentView.findViewById(2131375630).setOnClickListener(this);
-    this.mContentView.findViewById(2131375629).setOnClickListener(this);
-    this.mContentView.findViewById(2131379347).setOnClickListener(this);
-    this.mContentView.findViewById(2131379346).setOnClickListener(this);
-    this.mContentView.findViewById(2131376379).setOnClickListener(this);
-    this.mContentView.findViewById(2131370772).setOnClickListener(this);
-    this.mContentView.findViewById(2131370790).setOnClickListener(this);
-    this.mContentView.findViewById(2131379343).setOnClickListener(this);
-    paramLayoutInflater = (TextView)this.mContentView.findViewById(2131376378);
-    paramViewGroup = (TextView)this.mContentView.findViewById(2131376379);
-    ((EditText)this.mContentView.findViewById(2131368346)).addTextChangedListener(new asbn(this, paramLayoutInflater, paramViewGroup));
+    this.jdField_a_of_type_Augc = ((augc)getActivity().app.a(162));
+    getActivity().app.addObserver(this.jdField_a_of_type_Auge);
+    this.vg.setRightButton(alud.a(2131707324));
+    this.vg.setLeftButton(alud.a(2131707325));
+    ((Button)this.mContentView.findViewById(2131369754)).setOnClickListener(this);
+    ((Button)this.mContentView.findViewById(2131375682)).setOnClickListener(this);
+    ((Button)this.mContentView.findViewById(2131364691)).setOnClickListener(this);
+    this.mContentView.findViewById(2131375625).setOnClickListener(this);
+    this.mContentView.findViewById(2131373976).setOnClickListener(this);
+    this.mContentView.findViewById(2131378129).setOnClickListener(this);
+    this.mContentView.findViewById(2131365877).setOnClickListener(this);
+    this.mContentView.findViewById(2131373292).setOnClickListener(this);
+    this.mContentView.findViewById(2131364983).setOnClickListener(this);
+    this.mContentView.findViewById(2131364310).setOnClickListener(this);
+    this.mContentView.findViewById(2131364309).setOnClickListener(this);
+    this.mContentView.findViewById(2131364860).setOnClickListener(this);
+    this.mContentView.findViewById(2131376992).setOnClickListener(this);
+    this.mContentView.findViewById(2131364692).setOnClickListener(this);
+    this.mContentView.findViewById(2131364696).setOnClickListener(this);
+    this.mContentView.findViewById(2131367804).setOnClickListener(this);
+    this.mContentView.findViewById(2131365775).setOnClickListener(this);
+    this.mContentView.findViewById(2131376432).setOnClickListener(this);
+    this.mContentView.findViewById(2131375681).setOnClickListener(this);
+    this.mContentView.findViewById(2131375680).setOnClickListener(this);
+    this.mContentView.findViewById(2131379405).setOnClickListener(this);
+    this.mContentView.findViewById(2131379404).setOnClickListener(this);
+    this.mContentView.findViewById(2131376433).setOnClickListener(this);
+    this.mContentView.findViewById(2131370791).setOnClickListener(this);
+    this.mContentView.findViewById(2131370809).setOnClickListener(this);
+    this.mContentView.findViewById(2131379401).setOnClickListener(this);
+    paramLayoutInflater = (TextView)this.mContentView.findViewById(2131376432);
+    paramViewGroup = (TextView)this.mContentView.findViewById(2131376433);
+    ((EditText)this.mContentView.findViewById(2131368357)).addTextChangedListener(new asfw(this, paramLayoutInflater, paramViewGroup));
     paramLayoutInflater.setText(String.format(this.jdField_d_of_type_JavaLangString, new Object[] { "10000" }));
     paramViewGroup.setText(String.format(this.jdField_e_of_type_JavaLangString, new Object[] { "1000" }));
     paramViewGroup = PreferenceManager.getDefaultGlobalPreference(getActivity());
@@ -390,31 +390,31 @@ public class MsgBackupSettingFragment
     if (!TextUtils.isEmpty(paramBundle))
     {
       int i = paramViewGroup.getInt("msgbackup_uintype", 0);
-      ((EditText)this.mContentView.findViewById(2131365876)).setText(paramBundle);
-      ((EditText)this.mContentView.findViewById(2131365877)).setText(String.valueOf(i));
-      ((EditText)this.mContentView.findViewById(2131366334)).setText(str1);
-      ((EditText)this.mContentView.findViewById(2131368346)).setText(str2);
-      ((EditText)this.mContentView.findViewById(2131368428)).setText(str3);
+      ((EditText)this.mContentView.findViewById(2131365878)).setText(paramBundle);
+      ((EditText)this.mContentView.findViewById(2131365879)).setText(String.valueOf(i));
+      ((EditText)this.mContentView.findViewById(2131366336)).setText(str1);
+      ((EditText)this.mContentView.findViewById(2131368357)).setText(str2);
+      ((EditText)this.mContentView.findViewById(2131368439)).setText(str3);
     }
     paramLayoutInflater.requestFocus();
     this.jdField_a_of_type_ArrayOfJavaLangString = a();
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper(), new asbo(this));
-    this.jdField_b_of_type_MqqOsMqqHandler = new MqqHandler(ThreadManager.getSubThreadLooper(), new asbp(this));
+    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper(), new asfx(this));
+    this.jdField_b_of_type_MqqOsMqqHandler = new MqqHandler(ThreadManager.getSubThreadLooper(), new asfy(this));
   }
   
   protected int getContentLayoutId()
   {
-    return 2131561276;
+    return 2131561294;
   }
   
   public void onClick(View paramView)
   {
     int m = paramView.getId();
-    paramView = ((EditText)this.mContentView.findViewById(2131365876)).getText().toString();
-    Object localObject4 = ((EditText)this.mContentView.findViewById(2131365877)).getText().toString();
-    Object localObject2 = ((EditText)this.mContentView.findViewById(2131368346)).getText().toString();
-    Object localObject1 = ((EditText)this.mContentView.findViewById(2131366334)).getText().toString();
-    Object localObject3 = ((EditText)this.mContentView.findViewById(2131368428)).getText().toString();
+    paramView = ((EditText)this.mContentView.findViewById(2131365878)).getText().toString();
+    Object localObject4 = ((EditText)this.mContentView.findViewById(2131365879)).getText().toString();
+    Object localObject2 = ((EditText)this.mContentView.findViewById(2131368357)).getText().toString();
+    Object localObject1 = ((EditText)this.mContentView.findViewById(2131366336)).getText().toString();
+    Object localObject3 = ((EditText)this.mContentView.findViewById(2131368439)).getText().toString();
     boolean bool;
     int j;
     int i;
@@ -451,38 +451,38 @@ public class MsgBackupSettingFragment
     {
       paramView = jdField_a_of_type_JavaLangString;
       j = jdField_a_of_type_Int;
-      localObject2 = aucf.a();
-      localObject3 = (aubt)getActivity().app.a(162);
-      localObject4 = new aude();
+      localObject2 = augo.a();
+      localObject3 = (augc)getActivity().app.a(162);
+      localObject4 = new auhn();
       localArrayList = new ArrayList(2);
     }
     switch (m)
     {
-    case 2131373240: 
+    case 2131373292: 
     default: 
-    case 2131369735: 
-    case 2131375631: 
-    case 2131364690: 
-    case 2131375574: 
-    case 2131373925: 
-    case 2131378075: 
-    case 2131365875: 
-    case 2131364981: 
-    case 2131376378: 
-    case 2131376379: 
-    case 2131376376: 
-    case 2131364308: 
-    case 2131364307: 
-    case 2131364858: 
-    case 2131376938: 
+    case 2131369754: 
+    case 2131375682: 
     case 2131364691: 
-    case 2131364695: 
-    case 2131367794: 
-    case 2131365773: 
-    case 2131375630: 
-    case 2131375629: 
-    case 2131379347: 
-    case 2131379346: 
+    case 2131375625: 
+    case 2131373976: 
+    case 2131378129: 
+    case 2131365877: 
+    case 2131364983: 
+    case 2131376432: 
+    case 2131376433: 
+    case 2131376430: 
+    case 2131364310: 
+    case 2131364309: 
+    case 2131364860: 
+    case 2131376992: 
+    case 2131364692: 
+    case 2131364696: 
+    case 2131367804: 
+    case 2131365775: 
+    case 2131375681: 
+    case 2131375680: 
+    case 2131379405: 
+    case 2131379404: 
       do
       {
         do
@@ -506,69 +506,69 @@ public class MsgBackupSettingFragment
               c();
               return;
             } while ((this.jdField_b_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint == null) || (this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint == null));
-            QQToast.a(getActivity(), -1, alpo.a(2131707311), 1).a();
-            ((aude)localObject4).c(this.jdField_a_of_type_ArrayOfJavaLangString[1]);
-            ((aude)localObject4).b(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
-            ((aude)localObject4).a(aufh.a(this.jdField_b_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint.ipv4));
+            QQToast.a(getActivity(), -1, alud.a(2131707323), 1).a();
+            ((auhn)localObject4).c(this.jdField_a_of_type_ArrayOfJavaLangString[1]);
+            ((auhn)localObject4).b(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+            ((auhn)localObject4).a(aujq.a(this.jdField_b_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint.ipv4));
             localArrayList.add(Integer.valueOf(this.jdField_b_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint.port));
             localArrayList.add(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint.port));
-            ((aude)localObject4).a(localArrayList);
-            ((aude)localObject4).a(4);
-            ((aubt)localObject3).a(((aude)localObject4).a(), 3, false);
+            ((auhn)localObject4).a(localArrayList);
+            ((auhn)localObject4).a(4);
+            ((augc)localObject3).a(((auhn)localObject4).a(), 3, false);
             return;
           } while ((this.jdField_b_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint == null) || (this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint == null));
-          QQToast.a(getActivity(), -1, alpo.a(2131707308), 1).a();
-          if (jdField_a_of_type_Auct != null)
+          QQToast.a(getActivity(), -1, alud.a(2131707320), 1).a();
+          if (jdField_a_of_type_Auhc != null)
           {
-            ((aude)localObject4).c(this.jdField_a_of_type_ArrayOfJavaLangString[1]);
-            ((aude)localObject4).b(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
-            ((aude)localObject4).a(aufh.a(this.jdField_b_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint.ipv4));
+            ((auhn)localObject4).c(this.jdField_a_of_type_ArrayOfJavaLangString[1]);
+            ((auhn)localObject4).b(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+            ((auhn)localObject4).a(aujq.a(this.jdField_b_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint.ipv4));
             localArrayList.add(Integer.valueOf(this.jdField_b_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint.port));
             localArrayList.add(Integer.valueOf(this.jdField_b_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint.port));
-            ((aude)localObject4).a(localArrayList);
-            ((aude)localObject4).a(4);
-            ((aubt)localObject3).a(((aude)localObject4).a(), jdField_a_of_type_Auct.a(), 3);
+            ((auhn)localObject4).a(localArrayList);
+            ((auhn)localObject4).a(4);
+            ((augc)localObject3).a(((auhn)localObject4).a(), jdField_a_of_type_Auhc.a(), 3);
             return;
           }
           QLog.d("MsgBackup", 1, "case confirmQR qrResponse is null!");
           return;
-          if (jdField_a_of_type_Auct != null)
+          if (jdField_a_of_type_Auhc != null)
           {
-            ((aubt)localObject3).a(jdField_a_of_type_Auct.a(), 3);
+            ((augc)localObject3).a(jdField_a_of_type_Auhc.a(), 3);
             return;
           }
           QLog.d("MsgBackup", 1, "case rejectQR qrResponse is null!");
           return;
-          if (jdField_a_of_type_Auct != null)
+          if (jdField_a_of_type_Auhc != null)
           {
-            ((aubt)localObject3).c(jdField_a_of_type_Auct.a());
+            ((augc)localObject3).c(jdField_a_of_type_Auhc.a());
             return;
           }
           QLog.d("MsgBackup", 1, "case queryQRState qrResponse is null!");
           return;
-          if (this.jdField_a_of_type_Aucp != null)
+          if (this.jdField_a_of_type_Augy != null)
           {
-            ((aubt)localObject3).a(this.jdField_a_of_type_Aucp.a());
+            ((augc)localObject3).a(this.jdField_a_of_type_Augy.a());
             return;
           }
           QLog.d("MsgBackup", 1, "case tokenConfirm qrConfirmReponse is null!");
           return;
-          ((aucf)localObject2).jdField_a_of_type_JavaUtilHashSet.clear();
+          ((augo)localObject2).jdField_a_of_type_JavaUtilHashSet.clear();
           getActivity().app.a().a();
-          paramView = ajeu.a(paramView, j);
-          paramView = ajeu.a().a(paramView);
+          paramView = ajjj.a(paramView, j);
+          paramView = ajjj.a().a(paramView);
           if (paramView != null)
           {
-            ((aucf)localObject2).jdField_a_of_type_JavaUtilHashSet.add(paramView);
-            paramView = new aucl();
-            paramView.jdField_a_of_type_JavaUtilHashSet = aucf.a().jdField_a_of_type_JavaUtilHashSet;
+            ((augo)localObject2).jdField_a_of_type_JavaUtilHashSet.add(paramView);
+            paramView = new augu();
+            paramView.jdField_a_of_type_JavaUtilHashSet = augo.a().jdField_a_of_type_JavaUtilHashSet;
             paramView.jdField_a_of_type_Int = 0;
-            ((aucf)localObject2).a(paramView);
+            ((augo)localObject2).a(paramView);
             return;
           }
           QLog.d("MsgBackup", 1, "test export submit,recentBaseData is null");
           return;
-          aucf.a().c(null);
+          augo.a().c(null);
           return;
           localObject1 = new SessionInfo();
           ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString = paramView;
@@ -586,22 +586,22 @@ public class MsgBackupSettingFragment
           return;
           getActivity().app.a().a(paramView, j);
           return;
-          ((aucf)localObject2).f();
+          ((augo)localObject2).f();
           return;
           a();
           return;
           d();
           return;
-          a(this.jdField_a_of_type_Aucw);
+          a(this.jdField_a_of_type_Auhf);
           return;
-          a(this.jdField_a_of_type_Aucw);
+          a(this.jdField_a_of_type_Auhf);
           return;
-          QQToast.a(getActivity(), -1, alpo.a(2131707307), 1).a();
+          QQToast.a(getActivity(), -1, alud.a(2131707319), 1).a();
           return;
           paramView = MsgBackupJniProxy.encryptFromString("i am a hero!!!", "1111111111111111");
-          aufh.a("MsgBackup", alpo.a(2131707315), new Object[] { "i am a hero!!!", paramView });
+          aujq.a("MsgBackup", alud.a(2131707327), new Object[] { "i am a hero!!!", paramView });
           localObject1 = MsgBackupJniProxy.decryptFromString(paramView, "1111111111111111");
-          aufh.a("MsgBackup", alpo.a(2131707299), new Object[] { paramView, localObject1 });
+          aujq.a("MsgBackup", alud.a(2131707311), new Object[] { paramView, localObject1 });
           localObject1 = new byte[12];
           Object tmp1273_1271 = localObject1;
           tmp1273_1271[0] = 73;
@@ -629,48 +629,48 @@ public class MsgBackupSettingFragment
           tmp1344_1337[11] = 33;
           tmp1344_1337;
           paramView = MsgBackupJniProxy.encryptFromByteArray((byte[])localObject1, "1111111111111111");
-          aufh.a("MsgBackup", alpo.a(2131707301), new Object[] { Integer.valueOf(localObject1.length), Integer.valueOf(paramView.length) });
+          aujq.a("MsgBackup", alud.a(2131707313), new Object[] { Integer.valueOf(localObject1.length), Integer.valueOf(paramView.length) });
           localObject1 = MsgBackupJniProxy.decryptFromByteArray(paramView, "1111111111111111");
-          aufh.a("MsgBackup", alpo.a(2131707286), new Object[] { Integer.valueOf(paramView.length), Integer.valueOf(localObject1.length) });
+          aujq.a("MsgBackup", alud.a(2131707298), new Object[] { Integer.valueOf(paramView.length), Integer.valueOf(localObject1.length) });
           return;
-          this.jdField_a_of_type_Aubt.a();
+          this.jdField_a_of_type_Augc.a();
           return;
-        } while (TextUtils.isEmpty(aucf.jdField_a_of_type_JavaLangString));
-        this.jdField_a_of_type_Aubt.b(aucf.jdField_a_of_type_JavaLangString);
+        } while (TextUtils.isEmpty(augo.jdField_a_of_type_JavaLangString));
+        this.jdField_a_of_type_Augc.b(augo.jdField_a_of_type_JavaLangString);
         return;
         this.jdField_c_of_type_JavaLangString = Uri.encode("111111111111111111");
-        aufh.a("IphoneTitleBarFragment", "编码之后的value = %s", new Object[] { this.jdField_c_of_type_JavaLangString });
+        aujq.a("IphoneTitleBarFragment", "编码之后的value = %s", new Object[] { this.jdField_c_of_type_JavaLangString });
         return;
       } while (this.jdField_c_of_type_JavaLangString == null);
-      aufh.a("IphoneTitleBarFragment", "解码之后的value = %s", new Object[] { Uri.decode(this.jdField_c_of_type_JavaLangString) });
+      aujq.a("IphoneTitleBarFragment", "解码之后的value = %s", new Object[] { Uri.decode(this.jdField_c_of_type_JavaLangString) });
       return;
-    case 2131370772: 
-      audf.a(getActivity().app);
+    case 2131370791: 
+      auho.a(getActivity().app);
       return;
-    case 2131370790: 
+    case 2131370809: 
       if (i > 0) {}
       for (;;)
       {
-        localObject1 = audf.a(null, i, paramView, j, getActivity().app.c());
+        localObject1 = auho.a(null, i, paramView, j, getActivity().app.c());
         if (((List)localObject1).size() > 0) {
-          audf.a(getActivity().app, (List)localObject1);
+          auho.a(getActivity().app, (List)localObject1);
         }
         paramView = MessageRecord.getTableName(paramView, j);
         i = getActivity().app.a().a(paramView, 0L, 9223372036854775807L, false);
-        ((TextView)getActivity().findViewById(2131370789)).setText("result:msgSize =  " + i);
+        ((TextView)getActivity().findViewById(2131370808)).setText("result:msgSize =  " + i);
         return;
         i = 0;
       }
     }
     c();
-    paramView = aufh.a("http://10.71.161.35:8001/4EFF91728050FE643749C167C73EBCDA6CD8EE193B8636D01B445730BB8A31EE1374186F5611658FD9217AB6FF9BC857DE9D9A8DFA5CFF3C8E063D3B2FA3BB0B1B0EDC7D8B162F850C0A375A45E4CE3B70846A812C626CB5ED09EB107556EECB765BCF39A41BACA755747BE723749A26655D46D004D3DBA34C374CA622B8B0F3E3B2F0E582BA37B4", aufh.a("10.71.161.35"), 8001, "'U}MXig2f9zi:$?_");
+    paramView = aujq.a("http://10.71.161.35:8001/4EFF91728050FE643749C167C73EBCDA6CD8EE193B8636D01B445730BB8A31EE1374186F5611658FD9217AB6FF9BC857DE9D9A8DFA5CFF3C8E063D3B2FA3BB0B1B0EDC7D8B162F850C0A375A45E4CE3B70846A812C626CB5ED09EB107556EECB765BCF39A41BACA755747BE723749A26655D46D004D3DBA34C374CA622B8B0F3E3B2F0E582BA37B4", aujq.a("10.71.161.35"), 8001, "'U}MXig2f9zi:$?_");
     QLog.e("MsgBackupSettingFragment", 1, "RESULT = " + paramView);
   }
   
   public void onDestroy()
   {
     if (getActivity() != null) {
-      getActivity().app.removeObserver(this.jdField_a_of_type_Aubv);
+      getActivity().app.removeObserver(this.jdField_a_of_type_Auge);
     }
     super.onDestroy();
   }

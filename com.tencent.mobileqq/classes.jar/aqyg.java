@@ -1,249 +1,113 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchDetailActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqyg
-  extends ayjm
+  extends aqwb
 {
-  public int a;
-  CharSequence a;
-  public String a;
-  public List<FileManagerEntity> a;
-  CharSequence b;
-  public String b;
+  private aqru a;
   
-  public aqyg()
+  public aqyg(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Aqru = new aqyh(this);
+    paramQQAppInterface.a().addObserver(this.jdField_a_of_type_Aqru);
   }
   
-  public CharSequence a()
+  private aqyi a(long paramLong, boolean paramBoolean)
   {
-    CharSequence localCharSequence = ayrd.a(((FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0)).fileName.toLowerCase(), this.jdField_a_of_type_JavaLangString);
-    localCharSequence.toString();
-    return localCharSequence;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(View paramView)
-  {
-    if ((paramView.getContext() instanceof UniteSearchActivity)) {
-      ayrd.a("all_result", "clk_file", new String[] { "" + this.jdField_a_of_type_JavaLangString });
+    aqwc localaqwc = a(paramLong);
+    if (localaqwc == null) {
+      return null;
     }
-    ayrd.a(this.jdField_a_of_type_JavaLangString, 100, 0, paramView);
-    if (this.jdField_a_of_type_JavaUtilList.size() == 1)
-    {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
-      Object localObject1 = (BaseActivity)paramView.getContext();
-      Object localObject2 = new arnh();
-      ((arnh)localObject2).jdField_b_of_type_JavaLangString = "file_viewer_in";
-      ((arnh)localObject2).jdField_a_of_type_Int = 73;
-      ((arnh)localObject2).c = arof.a(localFileManagerEntity.fileName);
-      ((arnh)localObject2).jdField_a_of_type_Long = localFileManagerEntity.fileSize;
-      arng.a(((BaseActivity)localObject1).app.getCurrentAccountUin(), (arnh)localObject2);
-      arng.a("0X8004AE4");
-      if (localFileManagerEntity.nFileType == 13)
-      {
-        badt.a(localFileManagerEntity.Uuid, (Context)localObject1, this.jdField_a_of_type_Int, localFileManagerEntity, ((BaseActivity)localObject1).app);
-        if (this.jdField_a_of_type_Int == 8) {
-          azmj.b(null, "dc00898", "", "", "0X800A084", "0X800A084", 0, 0, "", "", "", "");
-        }
-      }
-      for (;;)
-      {
-        arng.a("0X8006062");
-        aynt.a(null, 0, this.jdField_a_of_type_Int, "0x8009D59", 0, 0, null, null);
-        return;
-        if (this.jdField_a_of_type_Int == 1)
-        {
-          azmj.b(null, "dc00898", "", "", "0X800A086", "0X800A086", 0, 0, "", "", "", "");
-          continue;
-          localObject2 = new arhh(((BaseActivity)localObject1).app, (Context)localObject1, localFileManagerEntity, 10001);
-          Bundle localBundle = new Bundle();
-          localBundle.putBoolean("from_qlink_enter_recent", false);
-          localBundle.putString("c2c_discussion_recentfile", localFileManagerEntity.peerUin);
-          if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-            localBundle.putString("file_browser_extra_params_uin", this.jdField_b_of_type_JavaLangString);
-          }
-          ((arhh)localObject2).a(localBundle);
-          localObject1 = new arhj((Context)localObject1, (arhm)localObject2);
-          ((arhj)localObject1).a(7);
-          if (this.jdField_a_of_type_Int != -1) {
-            ((arhj)localObject1).a(this.jdField_a_of_type_Int);
-          }
-          ((arhj)localObject1).a(alpo.a(2131704887));
-          ((arhj)localObject1).a(aroo.a(paramView.findViewById(2131366299), localFileManagerEntity.fileName));
-          ((arhj)localObject1).a();
-        }
-      }
+    if ((localaqwc instanceof aqyi)) {
+      return (aqyi)localaqwc;
     }
-    arng.a("0X8006099");
-    aynt.a(null, 0, this.jdField_a_of_type_Int, "0x8009D5B", 0, 0, null, null);
-    FileSearchDetailActivity.a(paramView.getContext(), a(), this);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
+    QLog.e("OfflineVideoThumbDownLoader<FileAssistant>", 1, "[downloadThumb] getSession  ID[" + paramLong + "] no instance");
     return null;
   }
   
-  public String b()
+  public String a(FileManagerEntity paramFileManagerEntity, int paramInt)
   {
-    return ((FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0)).peerUin;
+    if (paramFileManagerEntity.Uuid == null)
+    {
+      QLog.e("OfflineVideoThumbDownLoader<FileAssistant>", 1, "[downloadThumb]  download. uuid = null nSession[" + paramFileManagerEntity.nSessionId + "]");
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 50, new Object[] { paramFileManagerEntity });
+      return null;
+    }
+    int i = a(paramFileManagerEntity.fileName);
+    if (-1 == i)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 50, new Object[] { paramFileManagerEntity });
+      return null;
+    }
+    a();
+    Object localObject1 = paramFileManagerEntity.Uuid.replace("/", "");
+    Object localObject2 = arqx.a().d() + a(paramInt, (String)localObject1);
+    localObject1 = localObject2;
+    if (!arso.b((String)localObject2))
+    {
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty(paramFileManagerEntity.strFileMd5)) {
+        localObject1 = arqx.a().d() + a(paramInt, bhqh.a(paramFileManagerEntity.strFileMd5));
+      }
+    }
+    if (bdhb.b((String)localObject1) == true)
+    {
+      QLog.e("OfflineVideoThumbDownLoader<FileAssistant>", 1, "[downloadThumb] Id[" + paramFileManagerEntity.nSessionId + "] thumb Downloaded:" + (String)localObject1);
+      return localObject1;
+    }
+    localObject2 = new aqyi(paramFileManagerEntity);
+    ((aqyi)localObject2).jdField_a_of_type_Int = paramInt;
+    ((aqyi)localObject2).b = i;
+    a((aqwc)localObject2, (String)localObject1);
+    QLog.i("OfflineVideoThumbDownLoader<FileAssistant>", 1, "[downloadThumb] download  nSession[" + paramFileManagerEntity.nSessionId + "], ThumbDownloadId[" + ((aqyi)localObject2).jdField_a_of_type_Long + "]");
+    return null;
   }
   
-  public int c()
+  public void a(long paramLong, arah paramarah) {}
+  
+  public void a(long paramLong, bdpx parambdpx)
   {
-    return 1;
+    parambdpx.c = 0;
   }
   
-  public CharSequence c()
+  public void a(long paramLong, boolean paramBoolean, int paramInt, String paramString, arah paramarah)
   {
-    Object localObject3;
-    if (this.jdField_a_of_type_JavaLangCharSequence == null)
+    aqyi localaqyi = a(paramLong, false);
+    if (localaqyi == null)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() != 1) {
-        break label158;
-      }
-      localObject3 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
-      localObject1 = new SpannableStringBuilder();
-      ((SpannableStringBuilder)localObject1).append(d());
-      if (((FileManagerEntity)localObject3).nFileType == 13) {
-        break label87;
-      }
-      ((SpannableStringBuilder)localObject1).append(" ").append(arni.c((FileManagerEntity)localObject3));
+      QLog.e("OfflineVideoThumbDownLoader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onDownloadCompleted no this session");
+      return;
     }
-    label87:
-    Object localObject2;
-    for (;;)
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
-      return this.jdField_a_of_type_JavaLangCharSequence;
-      localObject2 = aroy.b(((FileManagerEntity)localObject3).srvTime);
-      localObject3 = arni.b((FileManagerEntity)localObject3);
-      ((SpannableStringBuilder)localObject1).clear();
-      ((SpannableStringBuilder)localObject1).append((String)localObject2 + " " + (String)localObject3 + " " + BaseApplicationImpl.getContext().getString(2131692509));
+      localaqyi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = paramString;
+      arrr.e(localaqyi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localaqyi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     }
-    label158:
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    long l = 0L;
-    label170:
-    if (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
-      if (l >= ((FileManagerEntity)localObject2).srvTime) {
-        break label220;
-      }
-      l = ((FileManagerEntity)localObject2).srvTime;
-    }
-    label220:
-    for (;;)
-    {
-      break label170;
-      this.jdField_a_of_type_JavaLangCharSequence = d();
-      break;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramBoolean, 50, new Object[] { localaqyi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(localaqyi.jdField_a_of_type_Int) });
+    super.a(paramLong, paramBoolean, paramInt, paramString, paramarah);
   }
   
-  public CharSequence d()
+  public boolean a(long paramLong, arah paramarah)
   {
-    int i = 7;
-    if (this.jdField_b_of_type_JavaLangCharSequence != null) {
-      return this.jdField_b_of_type_JavaLangCharSequence;
-    }
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    Object localObject1;
-    if (j > 1)
+    paramarah = a(paramLong, false);
+    if (paramarah == null)
     {
-      localObject1 = new SpannableStringBuilder(j + alpo.a(2131704891) + "\"");
-      ((SpannableStringBuilder)localObject1).append(ayrd.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString));
-      ((SpannableStringBuilder)localObject1).append("\"").append("相关的同名文件记录");
-      this.jdField_b_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
-      return this.jdField_b_of_type_JavaLangCharSequence;
+      QLog.e("OfflineVideoThumbDownLoader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onGetDownloadUrl no this session");
+      return false;
     }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    String str = arni.b((FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0)).trim();
-    if (str.indexOf(alpo.a(2131704890)) == 0) {
-      localSpannableStringBuilder.append("来自多人聊天: ");
-    }
-    for (;;)
-    {
-      localObject1 = str;
-      if (i != 0) {}
-      try
-      {
-        localObject1 = str.toLowerCase().substring(i);
-        localSpannableStringBuilder.append(ayrd.a((String)localObject1, this.jdField_a_of_type_JavaLangString));
-        if (this.jdField_b_of_type_JavaLangCharSequence == null) {
-          this.jdField_b_of_type_JavaLangCharSequence = localSpannableStringBuilder;
-        }
-        return this.jdField_b_of_type_JavaLangCharSequence;
-        if (str.indexOf(alpo.a(2131704888)) == 0)
-        {
-          localSpannableStringBuilder.append("发给多人聊天: ");
-        }
-        else if (str.indexOf(alpo.a(2131704889)) == 0)
-        {
-          localSpannableStringBuilder.append("来自群: ");
-          i = 4;
-        }
-        else if (str.indexOf(alpo.a(2131704884)) == 0)
-        {
-          localSpannableStringBuilder.append("发给群: ");
-          i = 4;
-        }
-        else if (str.indexOf(alpo.a(2131704885)) == 0)
-        {
-          localSpannableStringBuilder.append("来自 ");
-          i = 2;
-        }
-        else if (str.indexOf(alpo.a(2131704886)) == 0)
-        {
-          localSpannableStringBuilder.append("发给  ");
-          i = 2;
-        }
-        else if (str.indexOf(alpo.a(2131704883)) == 0)
-        {
-          localSpannableStringBuilder.append("存到");
-          i = 2;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          Object localObject2 = str;
-        }
-        i = 0;
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramarah.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramLong);
+    return true;
   }
+  
+  public void b(long paramLong, arah paramarah) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqyg
  * JD-Core Version:    0.7.0.1
  */

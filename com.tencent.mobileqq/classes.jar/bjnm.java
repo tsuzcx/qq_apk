@@ -1,18 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.share.QZoneShareActivity;
-import cooperation.qzone.share.QZoneShareActivity.4.2;
+import android.graphics.Bitmap;
 
 public class bjnm
-  implements DialogInterface.OnClickListener
 {
-  public bjnm(QZoneShareActivity.4.2 param2) {}
+  private int jdField_a_of_type_Int = -1;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    QLog.e("QZoneShare", 1, "dialog click ");
-    this.a.a.a.finish();
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
+    while (this.jdField_a_of_type_Int > 0) {
+      return;
+    }
+    this.jdField_a_of_type_Int = bjnq.a(this.jdField_a_of_type_AndroidGraphicsBitmap, true);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+    bjnq.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public int c()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      return this.jdField_a_of_type_AndroidGraphicsBitmap.getByteCount();
+    }
+    return 0;
   }
 }
 

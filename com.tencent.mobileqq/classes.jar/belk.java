@@ -1,6 +1,9 @@
 public abstract interface belk
+  extends begg
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract long b();
+  
+  public abstract boolean c(String paramString);
 }
 
 

@@ -1,75 +1,50 @@
+import android.app.Dialog;
+import android.content.res.Resources;
 import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.14.3;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
 
 public class acrb
-  extends bdqc
+  extends Handler
 {
-  public acrb(EditInfoActivity paramEditInfoActivity) {}
+  public acrb(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  protected void onSetColorNick(boolean paramBoolean, int paramInt, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramBoolean)
+    if (paramMessage.what == 1000)
     {
-      VasWebviewUtil.reportCommercialDrainage(this.a.app.c(), "group_nickname", "set", "", 1, 0, 0, "", "", "");
-      this.a.c(true);
-      paramString = (alzf)this.a.app.a(20);
-      try
-      {
-        paramString.a(Long.parseLong(this.a.e), Long.parseLong(this.a.f));
-        return;
+      if (this.a.a()) {
+        break label149;
       }
-      catch (Exception paramString)
-      {
-        this.a.b(false);
-        return;
+      i = paramMessage.arg1 - 1;
+      if (i != 0) {
+        break label39;
       }
+      ContactSyncJumpActivity.a(this.a);
     }
-    this.a.b(false);
-    String str;
-    if (paramInt == 1282)
+    label39:
+    while ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (this.a.jdField_a_of_type_Int != 2))
     {
-      VasWebviewUtil.reportCommercialDrainage(this.a.app.c(), "group_nickname", "group_nickname_9", "", 1, 0, 0, "", "", "");
-      paramString = alpo.a(2131704016);
-      str = alpo.a(2131704010);
-      try
+      int i;
+      return;
+      if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_Int == 2))
       {
-        bdcd.a(this.a, 230, paramString, str, alpo.a(2131704003), alpo.a(2131704007), new acrc(this), new acrd(this)).show();
-        return;
+        paramMessage = "(" + i + ")";
+        ((TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365264)).setText(String.format(this.a.getResources().getString(2131699036), new Object[] { paramMessage }));
       }
-      catch (Exception paramString)
-      {
-        QLog.e("EditInfoActivity", 1, "onSetColorNick", paramString);
-        return;
-      }
-    }
-    if (1283 == paramInt)
-    {
-      QQToast.a(this.a, 1, alpo.a(2131704006), 0).b(this.a.getTitleBarHeight());
+      paramMessage = obtainMessage(1000);
+      paramMessage.arg1 = i;
+      sendMessageDelayed(paramMessage, 1000L);
       return;
     }
-    if (1793 == paramInt)
-    {
-      EditInfoActivity localEditInfoActivity = this.a;
-      str = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        str = this.a.getString(2131693617);
-      }
-      QQToast.a(localEditInfoActivity, 1, str, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(this.a, 1, 2131694454, 0).b(this.a.getTitleBarHeight());
-    this.a.a.postDelayed(new EditInfoActivity.14.3(this), 1500L);
+    label149:
+    ((TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365264)).setText(String.format(this.a.getResources().getString(2131699036), new Object[] { "" }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acrb
  * JD-Core Version:    0.7.0.1
  */

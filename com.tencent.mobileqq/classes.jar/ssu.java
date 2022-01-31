@@ -15,9 +15,9 @@ import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
 
 public class ssu
-  implements yvn<CertifiedAccountRead.StGetFollowFeedsRsp>
+  implements zac<CertifiedAccountRead.StGetFollowFeedsRsp>
 {
-  public ssu(FolderFollowTabFragment paramFolderFollowTabFragment, SubscribeGetFollowFeedsRequest paramSubscribeGetFollowFeedsRequest, xzz paramxzz) {}
+  public ssu(FolderFollowTabFragment paramFolderFollowTabFragment, SubscribeGetFollowFeedsRequest paramSubscribeGetFollowFeedsRequest, yei paramyei) {}
   
   public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFollowFeedsRsp paramStGetFollowFeedsRsp)
   {
@@ -31,7 +31,7 @@ public class ssu
       if (!bool2)
       {
         VSBaseRequest.reMoveCache(this.jdField_a_of_type_ComTencentBizSubscribeNetworkSubscribeGetFollowFeedsRequest);
-        if ((this.jdField_a_of_type_Xzz.getItemCount() == 0) && (FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment) != null)) {
+        if ((this.jdField_a_of_type_Yei.getItemCount() == 0) && (FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment) != null)) {
           FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment).a(true);
         }
       }
@@ -54,22 +54,22 @@ public class ssu
       if (FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment) != null) {
         FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment).a(false);
       }
-      xzz localxzz = this.jdField_a_of_type_Xzz;
+      yei localyei = this.jdField_a_of_type_Yei;
       COMM.StCommonExt localStCommonExt = paramStGetFollowFeedsRsp.extInfo;
       if (paramStGetFollowFeedsRsp.isFinish.get() != 1) {
         break label330;
       }
-      localxzz.a(paramString, localStCommonExt, bool1);
+      localyei.a(paramString, localStCommonExt, bool1);
       if (!bool2)
       {
-        FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment).a();
+        FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment).clearData();
         FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment).notifyDataSetChanged();
         FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment).b(FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment));
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Xzz.d(paramBoolean);
+      this.jdField_a_of_type_Yei.notifyLoadingComplete(paramBoolean);
       return;
       label330:
       bool1 = false;
@@ -78,7 +78,7 @@ public class ssu
       if (!bool2)
       {
         VSBaseRequest.reMoveCache(this.jdField_a_of_type_ComTencentBizSubscribeNetworkSubscribeGetFollowFeedsRequest);
-        FolderFollowTabFragment.c(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment, this.jdField_a_of_type_Xzz);
+        FolderFollowTabFragment.c(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment, this.jdField_a_of_type_Yei);
       }
     }
   }

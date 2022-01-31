@@ -1,25 +1,123 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
 
 public class aevp
-  implements DialogInterface.OnClickListener
+  extends Drawable
 {
-  public aevp(DoodlePanel paramDoodlePanel) {}
+  protected int a;
+  aevq jdField_a_of_type_Aevq;
+  Resources jdField_a_of_type_AndroidContentResResources;
+  protected Paint a;
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  protected Object a;
+  protected int b = 50;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aevp(Resources paramResources)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+    this.jdField_a_of_type_AndroidContentResResources = paramResources;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.b = 50;
+  }
+  
+  public void a(aevq paramaevq)
+  {
+    this.jdField_a_of_type_Aevq = paramaevq;
+  }
+  
+  public void a(String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof aevr)) && (((aevr)this.jdField_a_of_type_JavaLangObject).a != null) && (this.jdField_a_of_type_Int == 1) && (((aevr)this.jdField_a_of_type_JavaLangObject).a.equals(paramString))) {
       return;
     }
-    if (DoodlePanel.a(this.a) != null) {
-      DoodlePanel.a(this.a).a(false, false);
+    a();
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangObject = new aevr(this, paramString);
+  }
+  
+  public void a(String[] paramArrayOfString, int paramInt)
+  {
+    if (paramArrayOfString == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_JavaLangObject != null) && (!(this.jdField_a_of_type_JavaLangObject instanceof aevr)))
+        {
+          boolean bool = Arrays.equals((String[])this.jdField_a_of_type_JavaLangObject, paramArrayOfString);
+          if (bool) {
+            continue;
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.e("VipPendantDrawable", 1, "setPngPaths, exception=" + MsfSdkUtils.getStackTraceString(localException));
+        }
+      }
     }
-    DoodlePanel.a(this.a);
+    a();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangObject = paramArrayOfString;
+    this.b = paramInt;
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_Int == -1) {}
+    Bitmap localBitmap;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Aevq == null);
+      localBitmap = this.jdField_a_of_type_Aevq.a();
+    } while ((localBitmap == null) || (localBitmap.isRecycled()));
+    paramCanvas.drawBitmap(localBitmap, null, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      invalidateSelf();
+    }
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    invalidateSelf();
+  }
+  
+  public void setDither(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
+    invalidateSelf();
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emoticon;
 
-import apnf;
-import apoj;
-import aube;
+import apro;
+import apss;
+import aufn;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.List;
 public class SogouEmoji$4
   implements Runnable
 {
-  public SogouEmoji$4(apoj paramapoj, List paramList) {}
+  public SogouEmoji$4(apss paramapss, List paramList) {}
   
   public void run()
   {
@@ -36,10 +36,10 @@ public class SogouEmoji$4
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        Object localObject = this.this$0.jdField_a_of_type_Aube.a(str);
+        Object localObject = this.this$0.jdField_a_of_type_Aufn.a(str);
         if (localObject == null)
         {
-          this.this$0.jdField_a_of_type_Apnf.a(str, apnf.c);
+          this.this$0.jdField_a_of_type_Apro.a(str, apro.c);
           if (QLog.isColorLevel()) {
             QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey, packId=" + str + ",fail to search 【the pack】 from db, try get json from svr.");
           }
@@ -49,7 +49,7 @@ public class SogouEmoji$4
           if (QLog.isColorLevel()) {
             QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey, packId=" + str + ",type:" + ((EmoticonPackage)localObject).type + ",json exists in local db.");
           }
-          localObject = this.this$0.jdField_a_of_type_Aube.a(str, true);
+          localObject = this.this$0.jdField_a_of_type_Aufn.a(str, true);
           if ((localObject instanceof ArrayList))
           {
             localArrayList = (ArrayList)localObject;

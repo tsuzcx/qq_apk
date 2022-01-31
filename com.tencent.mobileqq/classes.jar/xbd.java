@@ -1,26 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 
 class xbd
-  implements View.OnClickListener
+  implements axpu
 {
-  xbd(xay paramxay) {}
+  xbd(xba paramxba, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(this.a.jdField_a_of_type_JavaLangString);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(this.a.d);
-    this.a.jdField_a_of_type_Xah.a = this.a.d;
-    this.a.jdField_a_of_type_Xah.d = this.a.e;
-    this.a.dismiss();
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 3, 3);
-    }
-    wtb.a("0X80076C5");
-    wtb.b("0X80075D9");
+    this.jdField_a_of_type_Xba.a = new xbe(this, "NewStoryTakeVideoActivity");
+    SosoInterface.a(this.jdField_a_of_type_Xba.a);
   }
 }
 

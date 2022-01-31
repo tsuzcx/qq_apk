@@ -1,18 +1,17 @@
 import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class akbt
-  implements anoi
+class akbt
+  extends ameq
 {
-  public akbt(SessionClearFragment paramSessionClearFragment) {}
+  akbt(akbr paramakbr) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForTroop onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
+    if (localBitmap != null) {
+      akbr.a(this.a, paramString, localBitmap);
     }
-    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
   }
 }
 

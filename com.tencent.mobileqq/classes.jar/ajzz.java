@@ -1,55 +1,32 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class ajzz
-  extends Handler
+  implements View.OnTouchListener
 {
-  public ajzz(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  float jdField_a_of_type_Float = 0.0F;
+  float b = 0.0F;
   
-  public void handleMessage(Message paramMessage)
+  public ajzz(SelectMemberActivity paramSelectMemberActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
     {
-    default: 
-    case 8193: 
-    case 8194: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (QQSpecialCareSettingActivity.a(this.a) == null)
-            {
-              QQSpecialCareSettingActivity.a(this.a, new bepp(this.a, this.a.getTitleBarHeight()));
-              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
-                QQSpecialCareSettingActivity.a(this.a).a((String)paramMessage.obj);
-              }
-            }
-          } while ((this.a.isFinishing()) || (QQSpecialCareSettingActivity.a(this.a).isShowing()));
-          try
-          {
-            QQSpecialCareSettingActivity.a(this.a).show();
-            return;
-          }
-          catch (Exception paramMessage) {}
-        } while (!QLog.isColorLevel());
-        QLog.e("QQSpecialCareSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
-        return;
-      } while ((QQSpecialCareSettingActivity.a(this.a) == null) || (!QQSpecialCareSettingActivity.a(this.a).isShowing()));
-      QQSpecialCareSettingActivity.a(this.a).dismiss();
-      QQSpecialCareSettingActivity.a(this.a, null);
-      return;
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.b = paramMotionEvent.getRawY();
     }
-    if (QQSpecialCareSettingActivity.a(this.a) != null) {
-      QQSpecialCareSettingActivity.a(this.a).cancel();
+    for (;;)
+    {
+      return false;
+      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.b();
+      }
     }
-    QQSpecialCareSettingActivity.a(this.a, QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
   }
 }
 

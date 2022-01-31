@@ -1,17 +1,59 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
-import com.tencent.open.agent.AuthorityControlAppDetailsFragment.2.1;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
 
-public class beyc
-  implements DialogInterface.OnClickListener
+class beyc
+  implements bexx
 {
-  public beyc(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
+  beyc(beyb parambeyb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface = new AuthorityControlAppDetailsFragment.2.1(this);
-    AuthorityControlAppDetailsFragment.a(this.a).a(paramDialogInterface);
+    if (beyb.a(this.a) != null)
+    {
+      beyb.a(this.a).notifyVideoStop();
+      beyb.a(this.a, 1);
+    }
+    this.a.a(true, new View[] { beyb.a(this.a) });
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((this.a.a != null) && (this.a.a.getVisibility() != 0))
+    {
+      this.a.a(true, new View[] { this.a.a });
+      if ((paramBoolean) && (beyb.a(this.a) != null) && (beyb.a(this.a) == 0))
+      {
+        beyb.a(this.a).notifyVideoStart();
+        this.a.a(false, new View[] { beyb.a(this.a) });
+      }
+    }
+    else
+    {
+      return;
+    }
+    if ((beyb.a(this.a) != null) && (beyb.a(this.a).getVisibility() == 0))
+    {
+      this.a.a(false, new View[] { beyb.a(this.a) });
+      return;
+    }
+    this.a.a(true, new View[] { beyb.a(this.a) });
+    beyb.a(this.a, 1);
+  }
+  
+  public void b()
+  {
+    if (beyb.a(this.a) != null) {
+      beyb.a(this.a).notifyVideoStop();
+    }
+    this.a.a(true, new View[] { beyb.a(this.a) });
+    this.a.a(false, new View[] { this.a.a });
+  }
+  
+  public void c()
+  {
+    this.a.b(5);
   }
 }
 

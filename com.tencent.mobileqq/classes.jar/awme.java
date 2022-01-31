@@ -1,21 +1,13 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.portal.BreathEffectView;
 
 public class awme
-  implements Comparator<awlz>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  Point jdField_a_of_type_AndroidGraphicsPoint;
+  public awme(BreathEffectView paramBreathEffectView) {}
   
-  public awme(TagCloudView paramTagCloudView, Point paramPoint)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-  }
-  
-  public int a(awlz paramawlz1, awlz paramawlz2)
-  {
-    return TagCloudView.a(paramawlz1.a(), this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramawlz2.a(), this.jdField_a_of_type_AndroidGraphicsPoint);
-  }
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
 }
 
 

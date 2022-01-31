@@ -1,13 +1,10 @@
 public class bbyp
 {
-  @bcyk(a="type")
-  public int a;
-  @bcyk(a="title")
+  public long a;
   public String a;
-  @bcyk(a="content_text")
+  public long b;
   public String b;
-  @bcyk(a="kid")
-  public String c;
+  public long c;
 }
 
 

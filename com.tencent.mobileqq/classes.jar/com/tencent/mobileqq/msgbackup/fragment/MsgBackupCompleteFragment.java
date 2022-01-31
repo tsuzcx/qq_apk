@@ -17,21 +17,21 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import aubu;
-import aucb;
-import aucf;
-import aucl;
-import audb;
-import audj;
-import audk;
-import auey;
-import auff;
-import aufg;
-import aufh;
-import bdcd;
-import bdfq;
-import bdkf;
-import best;
+import augd;
+import augk;
+import augo;
+import augu;
+import auhk;
+import auhs;
+import auht;
+import aujh;
+import aujo;
+import aujp;
+import aujq;
+import bdgm;
+import bdjz;
+import bdoo;
+import bexc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.commonsdk.util.notification.NotificationFactory;
@@ -54,7 +54,7 @@ import mqq.os.MqqHandler;
 
 public class MsgBackupCompleteFragment
   extends IphoneTitleBarFragment
-  implements Handler.Callback, View.OnClickListener, aucb, best
+  implements Handler.Callback, View.OnClickListener, augk, bexc
 {
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
@@ -86,7 +86,7 @@ public class MsgBackupCompleteFragment
   
   private static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    aufh.a("MsgBackupCompleteFragment", "go is called! isfromMsgTab = %b, auto = %b", new Object[] { Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean1) });
+    aujq.a("MsgBackupCompleteFragment", "go is called! isfromMsgTab = %b, auto = %b", new Object[] { Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean1) });
     Intent localIntent;
     if ((paramContext instanceof Activity))
     {
@@ -115,25 +115,25 @@ public class MsgBackupCompleteFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370412);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370410);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370409));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370408));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370417));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370405));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370416));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378939));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131371643));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370431);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370429);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370428));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370427));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370436));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370424));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370435));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378997));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131371662));
   }
   
   private void b()
   {
-    bdkf.b(this.jdField_a_of_type_AndroidViewView, 8);
-    bdkf.b(this.jdField_b_of_type_AndroidViewView, 0);
-    bdkf.b(this.jdField_a_of_type_AndroidWidgetButton, 8);
-    bdkf.b(this.jdField_b_of_type_AndroidWidgetButton, 0);
+    bdoo.b(this.jdField_a_of_type_AndroidViewView, 8);
+    bdoo.b(this.jdField_b_of_type_AndroidViewView, 0);
+    bdoo.b(this.jdField_a_of_type_AndroidWidgetButton, 8);
+    bdoo.b(this.jdField_b_of_type_AndroidWidgetButton, 0);
     if (!this.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841017);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841018);
     }
     this.vg.setTitle(getString(2131690414));
     this.vg.setLeftBackVisible(8);
@@ -142,15 +142,15 @@ public class MsgBackupCompleteFragment
     default: 
       return;
     case 0: 
-      bdkf.b(this.jdField_b_of_type_AndroidWidgetButton, 0);
-      bdkf.b(this.jdField_a_of_type_AndroidWidgetButton, 8);
+      bdoo.b(this.jdField_b_of_type_AndroidWidgetButton, 0);
+      bdoo.b(this.jdField_a_of_type_AndroidWidgetButton, 8);
       this.vg.setTitle(getString(2131690414));
       this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690457);
       this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131690458, new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int) }));
       return;
     case 1: 
       this.vg.setTitle(getString(2131690414));
-      bdkf.b(this.jdField_b_of_type_AndroidWidgetButton, 8);
+      bdoo.b(this.jdField_b_of_type_AndroidWidgetButton, 8);
       if (this.jdField_b_of_type_Boolean)
       {
         e(0, this.jdField_b_of_type_Int);
@@ -160,42 +160,42 @@ public class MsgBackupCompleteFragment
       {
         this.vg.setOnItemSelectListener(this);
         return;
-        bdkf.b(this.jdField_a_of_type_AndroidWidgetButton, 0);
+        bdoo.b(this.jdField_a_of_type_AndroidWidgetButton, 0);
         this.vg.setRightButton(2131690654);
         this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690464);
         i = this.jdField_c_of_type_Int;
-        j = aucf.jdField_a_of_type_Int;
+        j = augo.jdField_a_of_type_Int;
         this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131690421, new Object[] { Integer.valueOf(i - j), Integer.valueOf(this.jdField_b_of_type_Int) }));
         this.jdField_a_of_type_AndroidWidgetButton.setText(2131690460);
         if (AppSetting.jdField_c_of_type_Boolean) {
           this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131690460));
         }
-        auff.a("0X800A24B");
+        aujo.a("0X800A24B");
       }
     case 2: 
       this.vg.setTitle(getString(2131690414));
-      bdkf.b(this.jdField_b_of_type_AndroidWidgetButton, 0);
-      bdkf.b(this.jdField_a_of_type_AndroidWidgetButton, 8);
+      bdoo.b(this.jdField_b_of_type_AndroidWidgetButton, 0);
+      bdoo.b(this.jdField_a_of_type_AndroidWidgetButton, 8);
       i = this.jdField_c_of_type_Int;
-      j = aucf.jdField_a_of_type_Int;
-      aufh.a("MsgBackupCompleteFragment", "TYPE_PHONE_IMPORT_COMPLETE ----> mImportFinishCount = %d, sSkipSessionCount = %d", new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(aucf.jdField_a_of_type_Int) });
+      j = augo.jdField_a_of_type_Int;
+      aujq.a("MsgBackupCompleteFragment", "TYPE_PHONE_IMPORT_COMPLETE ----> mImportFinishCount = %d, sSkipSessionCount = %d", new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(augo.jdField_a_of_type_Int) });
       this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690461);
       this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131690442, new Object[] { Integer.valueOf(i - j), Integer.valueOf(this.jdField_b_of_type_Int) }));
-      auff.a("0X800A24F");
+      aujo.a("0X800A24F");
       return;
     case 3: 
       this.vg.setTitle(getString(2131690388));
-      bdkf.b(this.jdField_b_of_type_AndroidWidgetButton, 0);
-      bdkf.b(this.jdField_a_of_type_AndroidWidgetButton, 8);
-      bdkf.b(this.jdField_c_of_type_AndroidWidgetTextView, 0);
+      bdoo.b(this.jdField_b_of_type_AndroidWidgetButton, 0);
+      bdoo.b(this.jdField_a_of_type_AndroidWidgetButton, 8);
+      bdoo.b(this.jdField_c_of_type_AndroidWidgetTextView, 0);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690451);
       this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131690483, new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int) }));
       this.vg.setOnItemSelectListener(this);
-      auff.a("0X800A262");
+      aujo.a("0X800A262");
       return;
     case 4: 
       this.vg.setTitle(getString(2131690385));
-      bdkf.b(this.jdField_b_of_type_AndroidWidgetButton, 8);
+      bdoo.b(this.jdField_b_of_type_AndroidWidgetButton, 8);
       if (this.jdField_b_of_type_Boolean)
       {
         this.vg.setRightViewTextVisible(8);
@@ -207,24 +207,24 @@ public class MsgBackupCompleteFragment
       if (AppSetting.jdField_c_of_type_Boolean) {
         this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131690460));
       }
-      bdkf.b(this.jdField_a_of_type_AndroidWidgetButton, 0);
+      bdoo.b(this.jdField_a_of_type_AndroidWidgetButton, 0);
       this.vg.setRightButton(2131690654);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690464);
       i = this.jdField_c_of_type_Int;
-      j = aucf.jdField_a_of_type_Int;
+      j = augo.jdField_a_of_type_Int;
       this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131690421, new Object[] { Integer.valueOf(i - j), Integer.valueOf(this.jdField_b_of_type_Int) }));
       this.vg.setOnItemSelectListener(this);
       return;
     }
     this.vg.setTitle(getString(2131690385));
-    bdkf.b(this.jdField_b_of_type_AndroidWidgetButton, 0);
-    bdkf.b(this.jdField_a_of_type_AndroidWidgetButton, 8);
+    bdoo.b(this.jdField_b_of_type_AndroidWidgetButton, 0);
+    bdoo.b(this.jdField_a_of_type_AndroidWidgetButton, 8);
     int i = this.jdField_c_of_type_Int;
-    int j = aucf.jdField_a_of_type_Int;
-    aufh.a("MsgBackupCompleteFragment", "TYPE_PC_IMPORT_COMPLETED ----> mImportFinishCount = %d, sSkipSessionCount = %d", new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(aucf.jdField_a_of_type_Int) });
+    int j = augo.jdField_a_of_type_Int;
+    aujq.a("MsgBackupCompleteFragment", "TYPE_PC_IMPORT_COMPLETED ----> mImportFinishCount = %d, sSkipSessionCount = %d", new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(augo.jdField_a_of_type_Int) });
     this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690452);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131690484, new Object[] { Integer.valueOf(i - j), Integer.valueOf(this.jdField_b_of_type_Int) }));
-    auff.a("0X800A286");
+    aujo.a("0X800A286");
   }
   
   public static void b(Context paramContext, int paramInt1, int paramInt2)
@@ -248,20 +248,20 @@ public class MsgBackupCompleteFragment
     for (int i = paramInt1 + 1;; i = paramInt1)
     {
       this.vg.setOnItemSelectListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841020);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841021);
       String str = getString(2131690459, new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt2) });
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      if (aubu.a().a() == 3) {
+      if (augd.a().a() == 3) {
         this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690419);
       }
       for (;;)
       {
-        bdkf.b(this.jdField_a_of_type_AndroidWidgetButton, 8);
+        bdoo.b(this.jdField_a_of_type_AndroidWidgetButton, 8);
         if ((paramInt2 <= 0) || (this.jdField_a_of_type_AndroidWidgetProgressBar == null)) {
           break;
         }
         paramInt1 = paramInt1 * 100 / paramInt2;
-        bdkf.b(this.jdField_a_of_type_AndroidWidgetProgressBar, 0);
+        bdoo.b(this.jdField_a_of_type_AndroidWidgetProgressBar, 0);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt1);
         return;
         this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690419);
@@ -271,7 +271,7 @@ public class MsgBackupCompleteFragment
   
   public static void c(Context paramContext, int paramInt1, int paramInt2)
   {
-    aufh.a("MsgBackupCompleteFragment", "tranfer not auto completed! so display whether import page!", new Object[0]);
+    aujq.a("MsgBackupCompleteFragment", "tranfer not auto completed! so display whether import page!", new Object[0]);
     a(paramContext, paramInt1, paramInt2, 1, false);
   }
   
@@ -282,13 +282,13 @@ public class MsgBackupCompleteFragment
     this.jdField_b_of_type_Boolean = localBundle.getBoolean("auto_import_key", false);
     this.jdField_b_of_type_Int = localBundle.getInt("import_total_count", this.jdField_b_of_type_Int);
     this.jdField_c_of_type_Int = localBundle.getInt("import_finish_count", this.jdField_c_of_type_Int);
-    auff.a();
-    auff.a.c = this.jdField_c_of_type_Int;
+    aujo.a();
+    aujo.a.c = this.jdField_c_of_type_Int;
     if (QLog.isColorLevel()) {
       QLog.d("MsgBackupCompleteFragment", 2, "handlerArg, page type = " + this.jdField_a_of_type_Int + " ;import total count = " + this.jdField_b_of_type_Int + "; finish count = " + this.jdField_c_of_type_Int);
     }
     if (this.jdField_a_of_type_Int == 0) {
-      auff.a("0X800A240");
+      aujo.a("0X800A240");
     }
   }
   
@@ -301,20 +301,20 @@ public class MsgBackupCompleteFragment
     for (int i = paramInt1 + 1;; i = paramInt1)
     {
       this.vg.setOnItemSelectListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841022);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841023);
       String str = getString(2131690459, new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt2) });
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      if (aubu.a().a() == 3) {
+      if (augd.a().a() == 3) {
         this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690419);
       }
       for (;;)
       {
-        bdkf.b(this.jdField_a_of_type_AndroidWidgetButton, 8);
+        bdoo.b(this.jdField_a_of_type_AndroidWidgetButton, 8);
         if ((paramInt2 <= 0) || (this.jdField_a_of_type_AndroidWidgetProgressBar == null)) {
           break;
         }
         paramInt1 = paramInt1 * 100 / paramInt2;
-        bdkf.b(this.jdField_a_of_type_AndroidWidgetProgressBar, 0);
+        bdoo.b(this.jdField_a_of_type_AndroidWidgetProgressBar, 0);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt1);
         return;
         this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690419);
@@ -324,7 +324,7 @@ public class MsgBackupCompleteFragment
   
   public static void d(Context paramContext, int paramInt1, int paramInt2)
   {
-    aufh.a("MsgBackupCompleteFragment", "tranfer auto completed! so auto import data!", new Object[0]);
+    aujq.a("MsgBackupCompleteFragment", "tranfer auto completed! so auto import data!", new Object[0]);
     a(paramContext, paramInt1, paramInt2, 1, true, false, false);
   }
   
@@ -333,11 +333,11 @@ public class MsgBackupCompleteFragment
     if (QLog.isColorLevel()) {
       QLog.d("MsgBackupCompleteFragment", 2, "startImport is called!");
     }
-    aufg.f = 0L;
-    aufg.a(null, "total_daoru_cost");
+    aujp.f = 0L;
+    aujp.a(null, "total_daoru_cost");
     this.jdField_a_of_type_Boolean = true;
     this.vg.setRightButton(2131690654);
-    Object localObject = aucf.a().jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap;
+    Object localObject = augo.a().jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap;
     if ((localObject == null) || (((ConcurrentHashMap)localObject).size() == 0)) {
       QQToast.a(getActivity(), "no session to import", 0).a();
     }
@@ -349,34 +349,34 @@ public class MsgBackupCompleteFragment
       localObject = ((ConcurrentHashMap)localObject).values().iterator();
       while (((Iterator)localObject).hasNext())
       {
-        audb localaudb = (audb)((Iterator)localObject).next();
-        if (localaudb.jdField_c_of_type_Boolean)
+        auhk localauhk = (auhk)((Iterator)localObject).next();
+        if (localauhk.jdField_c_of_type_Boolean)
         {
           MsgBackupMsgUserData localMsgBackupMsgUserData = new MsgBackupMsgUserData();
-          localMsgBackupMsgUserData.uin = localaudb.jdField_a_of_type_JavaLangString;
-          localMsgBackupMsgUserData.uinType = localaudb.jdField_a_of_type_Int;
+          localMsgBackupMsgUserData.uin = localauhk.jdField_a_of_type_JavaLangString;
+          localMsgBackupMsgUserData.uinType = localauhk.jdField_a_of_type_Int;
           localHashSet.add(localMsgBackupMsgUserData);
         }
       }
       if (localHashSet.size() != 0) {
         break;
       }
-      aufh.b("MsgBackupCompleteFragment", "no session is completed!--------so jump completed page!", new Object[0]);
+      aujq.b("MsgBackupCompleteFragment", "no session is completed!--------so jump completed page!", new Object[0]);
       if (this.jdField_a_of_type_Int == 1)
       {
-        f(getActivity(), aucf.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+        f(getActivity(), augo.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
         return;
       }
     } while (this.jdField_a_of_type_Int != 4);
-    h(getActivity(), aucf.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+    h(getActivity(), augo.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
     return;
-    aucf.a().jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    localObject = new aucl();
-    ((aucl)localObject).jdField_a_of_type_Int = 2;
-    ((aucl)localObject).jdField_a_of_type_JavaUtilHashSet = localHashSet;
-    ((aucl)localObject).jdField_b_of_type_Int = localHashSet.size();
-    aucf.a().a(this);
-    aucf.a().c((aucl)localObject);
+    augo.a().jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    localObject = new augu();
+    ((augu)localObject).jdField_a_of_type_Int = 2;
+    ((augu)localObject).jdField_a_of_type_JavaUtilHashSet = localHashSet;
+    ((augu)localObject).jdField_b_of_type_Int = localHashSet.size();
+    augo.a().a(this);
+    augo.a().c((augu)localObject);
   }
   
   private void e(int paramInt1, int paramInt2)
@@ -402,7 +402,7 @@ public class MsgBackupCompleteFragment
   {
     if (getActivity() != null)
     {
-      aucf.a().d();
+      augo.a().d();
       if (getActivity() != null)
       {
         getActivity().setResult(1001);
@@ -421,14 +421,14 @@ public class MsgBackupCompleteFragment
     if (this.jdField_a_of_type_Boolean)
     {
       if (this.jdField_a_of_type_Int == 1) {
-        auff.a("0X800A252", 5);
+        aujo.a("0X800A252", 5);
       }
       for (;;)
       {
         h();
         return;
         if ((this.jdField_a_of_type_Int == 4) && (this.d)) {
-          auff.a("0X800A266", 2);
+          aujo.a("0X800A266", 2);
         }
       }
     }
@@ -437,7 +437,7 @@ public class MsgBackupCompleteFragment
   
   public static void g(Context paramContext, int paramInt1, int paramInt2)
   {
-    a(paramContext, paramInt1, paramInt2, 3, false, true, aucf.jdField_c_of_type_Boolean);
+    a(paramContext, paramInt1, paramInt2, 3, false, true, augo.jdField_c_of_type_Boolean);
   }
   
   private void h()
@@ -446,7 +446,7 @@ public class MsgBackupCompleteFragment
     if (localFragmentActivity == null) {
       return;
     }
-    bdcd.a(getActivity(), 0, localFragmentActivity.getString(2131690456), localFragmentActivity.getString(2131690455), localFragmentActivity.getString(2131690465), localFragmentActivity.getString(2131690454), new audj(this), new audk(this)).show();
+    bdgm.a(getActivity(), 0, localFragmentActivity.getString(2131690456), localFragmentActivity.getString(2131690455), localFragmentActivity.getString(2131690465), localFragmentActivity.getString(2131690454), new auhs(this), new auht(this)).show();
   }
   
   public static void h(Context paramContext, int paramInt1, int paramInt2)
@@ -456,13 +456,13 @@ public class MsgBackupCompleteFragment
   
   public static void i(Context paramContext, int paramInt1, int paramInt2)
   {
-    aufh.a("MsgBackupCompleteFragment", "restore not auto completed! so display whether import page!", new Object[0]);
+    aujq.a("MsgBackupCompleteFragment", "restore not auto completed! so display whether import page!", new Object[0]);
     a(paramContext, paramInt1, paramInt2, 4, false);
   }
   
   public static void j(Context paramContext, int paramInt1, int paramInt2)
   {
-    aufh.a("MsgBackupCompleteFragment", "restore auto completed! so auto import data!", new Object[0]);
+    aujq.a("MsgBackupCompleteFragment", "restore auto completed! so auto import data!", new Object[0]);
     a(paramContext, paramInt1, paramInt2, 4, true, false, false);
   }
   
@@ -474,14 +474,14 @@ public class MsgBackupCompleteFragment
   protected void a()
   {
     Object localObject = getActivity().app;
-    aufh.a("MsgBackupCompleteFragment", "fight notification start ..app.isBackground_Stop =%b.app,.isBackground_Pause = %b,.", new Object[] { Boolean.valueOf(((QQAppInterface)localObject).isBackground_Stop), Boolean.valueOf(((QQAppInterface)localObject).isBackground_Pause) });
+    aujq.a("MsgBackupCompleteFragment", "fight notification start ..app.isBackground_Stop =%b.app,.isBackground_Pause = %b,.", new Object[] { Boolean.valueOf(((QQAppInterface)localObject).isBackground_Stop), Boolean.valueOf(((QQAppInterface)localObject).isBackground_Pause) });
     if ((((QQAppInterface)localObject).isBackground_Pause) || (((QQAppInterface)localObject).isBackground_Stop))
     {
-      aufh.a("MsgBackupCompleteFragment", "fight notification start ....", new Object[0]);
+      aujq.a("MsgBackupCompleteFragment", "fight notification start ....", new Object[0]);
       localObject = new Intent(BaseApplicationImpl.getContext(), SplashActivity.class);
       ((Intent)localObject).putExtra("param_notifyid", 524);
       localObject = PendingIntent.getActivity(BaseApplication.getContext(), 0, (Intent)localObject, 134217728);
-      NotificationCompat.Builder localBuilder = NotificationFactory.createNotificationCompatBuilder("CHANNEL_ID_OTHER").setSmallIcon(2130841130).setAutoCancel(true).setOngoing(true).setWhen(System.currentTimeMillis());
+      NotificationCompat.Builder localBuilder = NotificationFactory.createNotificationCompatBuilder("CHANNEL_ID_OTHER").setSmallIcon(2130841131).setAutoCancel(true).setOngoing(true).setWhen(System.currentTimeMillis());
       localBuilder.setContentText("QQ正在进行聊天记录迁移，请保持QQ在前台显示。").setContentIntent((PendingIntent)localObject);
       localObject = localBuilder.build();
       QQNotificationManager.getInstance().notify("MsgBackup", 524, (Notification)localObject);
@@ -525,7 +525,7 @@ public class MsgBackupCompleteFragment
     label133:
     for (paramInt1 = i;; paramInt1 = 1)
     {
-      auff.a("0X800A24E", paramInt1);
+      aujo.a("0X800A24E", paramInt1);
       this.jdField_c_of_type_Boolean = true;
       return;
     }
@@ -547,7 +547,7 @@ public class MsgBackupCompleteFragment
   
   public int getContentLayoutId()
   {
-    return 2131561254;
+    return 2131561272;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -562,7 +562,7 @@ public class MsgBackupCompleteFragment
       int j = paramMessage.arg2;
       if (i == j)
       {
-        aufg.a("total_daoru_cost", null);
+        aujp.a("total_daoru_cost", null);
         if (this.jdField_a_of_type_Int == 1) {
           f(getActivity(), i, i);
         } else if (this.jdField_a_of_type_Int == 4) {
@@ -621,8 +621,8 @@ public class MsgBackupCompleteFragment
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackupCompleteFragment", 2, "completed page, click space clean btn!");
       }
-      auff.a("0X800A263");
-      aucf.a().d();
+      aujo.a("0X800A263");
+      augo.a().d();
       paramView = new Intent();
       paramView.putExtra("set_display_type", 1);
       PublicFragmentActivity.a(getActivity(), paramView, QQSettingMsgClearFragment.class);
@@ -640,10 +640,10 @@ public class MsgBackupCompleteFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    aucf.a().a(null);
-    aufh.a("MsgBackupCompleteFragment", "onDestroyView is from page = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    aucf.a().d();
-    aucf.a().l();
+    augo.a().a(null);
+    aujq.a("MsgBackupCompleteFragment", "onDestroyView is from page = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    augo.a().d();
+    augo.a().l();
   }
   
   public void onFinish()
@@ -657,13 +657,13 @@ public class MsgBackupCompleteFragment
   public void onPause()
   {
     super.onPause();
-    aucf.a().b(getActivity());
+    augo.a().b(getActivity());
   }
   
   public void onResume()
   {
     super.onResume();
-    aucf.a().a(getActivity());
+    augo.a().a(getActivity());
   }
   
   public void onStop()
@@ -679,7 +679,7 @@ public class MsgBackupCompleteFragment
     a(paramView);
     b();
     c();
-    auey.a().b();
+    aujh.a().b();
   }
 }
 

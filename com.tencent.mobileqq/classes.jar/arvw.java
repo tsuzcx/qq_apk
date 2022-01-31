@@ -1,24 +1,14 @@
-import android.content.Intent;
-import java.util.Set;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-public class arvw
-  extends arxa
+class arvw
+  implements bezx
 {
-  public arvw(Intent paramIntent)
-  {
-    super(paramIntent);
-  }
+  arvw(arvt paramarvt) {}
   
-  protected void a()
+  public void a(int paramInt)
   {
-    if (k()) {
-      this.a.add(d);
-    }
-    if (l()) {
-      this.a.add(c);
-    }
-    if (m()) {
-      this.a.add(b);
+    if (paramInt == 2) {
+      this.a.a.c();
     }
   }
 }

@@ -5,7 +5,7 @@ import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 import com.tencent.widget.SingleLineTextView;
 
 class sso
-  extends bhxb
+  extends bibi
 {
   Button jdField_a_of_type_AndroidWidgetButton;
   ImageView jdField_a_of_type_AndroidWidgetImageView;

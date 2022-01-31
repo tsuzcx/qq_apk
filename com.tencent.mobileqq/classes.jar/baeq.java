@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
-class baeq
-  implements DialogInterface.OnClickListener
+public class baeq
+  extends badg
 {
-  baeq(baeo parambaeo) {}
+  protected SpriteGLView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public badm a()
   {
-    if (this.a.a.b == 1) {
-      azmj.b(TeamWorkAuthorizeSettingFragment.a(this.a.a), "dc00898", "", "", "0x8007CFE", "0x8007CFE", 0, 0, "", "", "", "");
-    }
+    return this.a;
+  }
+  
+  public void aM_() {}
+  
+  public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
+  {
+    this.e = paramInt1;
+    this.f = paramInt2;
+    b();
   }
 }
 

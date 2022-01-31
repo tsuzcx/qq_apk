@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webview.swift;
 
-import beck;
+import begt;
 import com.tencent.mobileqq.webview.webso.WebSoService;
 
 public class WebViewModule$3
   implements Runnable
 {
-  public WebViewModule$3(beck parambeck, String paramString) {}
+  public WebViewModule$3(begt parambegt, String paramString) {}
   
   public void run()
   {

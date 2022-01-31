@@ -2,7 +2,7 @@ import android.view.View;
 import android.view.animation.Animation;
 
 class riy
-  extends bhnr
+  extends bhry
 {
   riy(riw paramriw) {}
   

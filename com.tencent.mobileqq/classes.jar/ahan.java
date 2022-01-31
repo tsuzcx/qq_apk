@@ -1,17 +1,11 @@
-import java.util.ArrayList;
+import android.view.View;
 
-public class ahan
-  extends ahms
+public abstract interface ahan
+  extends ahar
 {
-  public int a;
-  public String a;
-  public ArrayList<ahao> a;
-  public boolean a;
-  public int b = -1;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public abstract int a();
+  
+  public abstract View a(Object... paramVarArgs);
 }
 
 

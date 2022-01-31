@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bmhd;
-import bmni;
-import urr;
+import bmlp;
+import bmru;
+import uwa;
 
 public class EditVideoDoodle$5
   implements Runnable
 {
-  public EditVideoDoodle$5(bmhd parambmhd) {}
+  public EditVideoDoodle$5(bmlp parambmlp) {}
   
   public void run()
   {
-    ((bmni)urr.a(39)).c();
+    ((bmru)uwa.a(39)).c();
   }
 }
 

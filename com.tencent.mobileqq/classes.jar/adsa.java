@@ -1,24 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity.ScanSpaceTask;
+import com.tencent.mobileqq.widget.CircleProgressBar;
 
 public class adsa
-  implements ValueAnimator.AnimatorUpdateListener
+  implements adry
 {
-  public adsa(SelectedAndSearchBar paramSelectedAndSearchBar, RelativeLayout.LayoutParams paramLayoutParams) {}
+  public adsa(QQSettingCleanActivity.ScanSpaceTask paramScanSpaceTask) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-    SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.a.this$0.a.setPercent(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsa
  * JD-Core Version:    0.7.0.1
  */

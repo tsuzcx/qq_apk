@@ -1,6 +1,12 @@
-public abstract interface ytt
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class ytt
+  extends akit
 {
-  public abstract void a();
+  public ImageView a;
+  public TextView a;
+  public TextView b;
 }
 
 

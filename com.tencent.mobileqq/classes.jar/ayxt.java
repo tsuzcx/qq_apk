@@ -1,63 +1,139 @@
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionRsp;
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ayxt
-  extends MSFServlet
+  implements aywd
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  protected View b;
+  public int c;
+  protected View c;
+  protected View d;
+  protected ImageView e;
+  protected ImageView f;
+  protected TextView h;
+  protected TextView i;
+  protected TextView j;
+  protected TextView k;
+  
+  protected ayxt() {}
+  
+  public ayxt(View paramView)
   {
-    int i;
-    if (paramFromServiceMsg != null)
-    {
-      i = paramFromServiceMsg.getResultCode();
-      if (i != 1000) {
-        break label83;
-      }
-      paramIntent = bjme.a(paramFromServiceMsg.getWupBuffer());
-      if (paramIntent == null) {
-        break label68;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QbossErrorReportServlet", 2, "report qboss success state = " + paramIntent.iRet);
-      }
-    }
-    label68:
-    label83:
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        return;
-        i = -1;
-        break;
-      } while (!QLog.isColorLevel());
-      QLog.d("QbossErrorReportServlet", 2, "report qboss exception fail, decode result is null");
-      return;
-    }
-    QLog.d("QbossErrorReportServlet", 2, "QZONE_GET_QBOSS_DATA fail, resultCode=" + i);
+    this.b = paramView;
+    a();
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public ayxt(ViewGroup paramViewGroup, int paramInt)
   {
-    long l = paramIntent.getLongExtra("uin", 0L);
-    int i = paramIntent.getIntExtra("appId", 0);
-    int j = paramIntent.getIntExtra("taskId", 0);
-    Object localObject = paramIntent.getStringExtra("message");
-    bjme localbjme = new bjme(l, i, j, paramIntent.getIntExtra("code", 0), (String)localObject);
-    localObject = localbjme.encode();
-    paramIntent = (Intent)localObject;
-    if (localObject == null)
+    this.jdField_c_of_type_Int = paramInt;
+    LayoutInflater localLayoutInflater = LayoutInflater.from(paramViewGroup.getContext());
+    if (a(paramInt)) {}
+    for (this.b = localLayoutInflater.inflate(paramInt, null, false);; this.b = localLayoutInflater.inflate(paramInt, paramViewGroup, false))
     {
-      QLog.e("QbossErrorReportServlet", 1, "onSend request encode result is null.cmd=" + localbjme.uniKey());
-      paramIntent = new byte[4];
+      a();
+      return;
     }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localbjme.uniKey());
-    paramPacket.putSendData(paramIntent);
+  }
+  
+  public View a()
+  {
+    return this.b;
+  }
+  
+  public View a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return this.b;
+    }
+    return this.b.findViewById(2131376282);
+  }
+  
+  public View a(String paramString)
+  {
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return this.f;
+  }
+  
+  public TextView a()
+  {
+    return this.h;
+  }
+  
+  protected void a()
+  {
+    View localView = this.b.findViewById(2131377938);
+    if (localView != null)
+    {
+      this.h = ((TextView)localView);
+      this.h.setEditableFactory(bamz.a);
+    }
+    localView = this.b.findViewById(2131377197);
+    if (localView != null) {
+      this.i = ((TextView)localView);
+    }
+    localView = this.b.findViewById(2131365129);
+    if (localView != null) {
+      this.j = ((TextView)localView);
+    }
+    localView = this.b.findViewById(2131366335);
+    if (localView != null) {
+      this.k = ((TextView)localView);
+    }
+    localView = this.b.findViewById(2131367921);
+    if (localView != null) {
+      this.e = ((ImageView)localView);
+    }
+    localView = this.b.findViewById(2131375793);
+    if (localView != null) {
+      this.f = ((ImageView)localView);
+    }
+    this.jdField_c_of_type_AndroidViewView = this.b.findViewById(2131365369);
+    this.d = this.b.findViewById(2131375806);
+    b();
+  }
+  
+  public boolean a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return true;
+    }
+    return false;
+  }
+  
+  public ImageView b()
+  {
+    return this.e;
+  }
+  
+  public TextView b()
+  {
+    return this.i;
+  }
+  
+  public void b()
+  {
+    if (a(this.jdField_c_of_type_Int)) {}
+  }
+  
+  public TextView c()
+  {
+    return this.j;
+  }
+  
+  public TextView d()
+  {
+    return this.k;
   }
 }
 

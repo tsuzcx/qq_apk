@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.minigame.task;
 
-import bgvi;
+import bgzp;
 
 public class MiniAppInfoLoadTask$1
   implements Runnable
 {
-  public MiniAppInfoLoadTask$1(bgvi parambgvi) {}
+  public MiniAppInfoLoadTask$1(bgzp parambgzp) {}
   
   public void run()
   {
-    bgvi.a(this.this$0);
+    bgzp.a(this.this$0);
   }
 }
 

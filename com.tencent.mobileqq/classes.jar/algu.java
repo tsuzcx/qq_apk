@@ -1,28 +1,19 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class algu
-  implements View.OnClickListener
+public class algu
+  extends alhn
 {
-  algu(algr paramalgr, String paramString, int paramInt) {}
+  algu(algt paramalgt) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString != null))
-    {
-      paramView = "http://lgame.qq.com/html/feedback/index?gameid=" + this.jdField_a_of_type_Int + "&_wv=2&openid=" + this.jdField_a_of_type_JavaLangString;
-      Intent localIntent = new Intent(this.jdField_a_of_type_Algr.a.getActivity(), QQBrowserActivity.class);
-      localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
-      VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_Algr.a.getActivity(), paramView, -1L, localIntent, false, -1);
-      return;
+    if (paramInt == 0) {
+      ThreadManager.getUIHandler().post(new AVEngineWalper.1.1(this));
     }
-    QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setGameIdAndOpenId] openId is null or is empty");
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.device.msg.activities;
 
-import zsu;
+import zxj;
 
 public class DeviceMsgSettingActivity$2$1
   implements Runnable
 {
-  public DeviceMsgSettingActivity$2$1(zsu paramzsu) {}
+  public DeviceMsgSettingActivity$2$1(zxj paramzxj) {}
   
   public void run()
   {

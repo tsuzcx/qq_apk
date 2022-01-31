@@ -1,78 +1,78 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ajow;
-import ajpe;
-import ajpf;
+import ajtl;
+import ajtt;
+import ajtu;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import azbo;
-import bdjc;
+import azfx;
+import bdnl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import wsv;
-import xmn;
+import wxe;
+import xqw;
 
 public class RMVideoSwitchCameraPicMgr
 {
-  private ajpe jdField_a_of_type_Ajpe = new ajpe(this, null);
-  ajpf jdField_a_of_type_Ajpf = null;
+  private ajtt jdField_a_of_type_Ajtt = new ajtt(this, null);
+  ajtu jdField_a_of_type_Ajtu = null;
   
-  private Bitmap a(int paramInt1, int paramInt2, ajow paramajow)
+  private Bitmap a(int paramInt1, int paramInt2, ajtl paramajtl)
   {
     Bitmap localBitmap = null;
-    if (this.jdField_a_of_type_Ajpf != null) {
-      localBitmap = this.jdField_a_of_type_Ajpf.a(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Ajtu != null) {
+      localBitmap = this.jdField_a_of_type_Ajtu.a(paramInt1, paramInt2);
     }
-    if ((paramajow == null) || (localBitmap == null)) {
+    if ((paramajtl == null) || (localBitmap == null)) {
       return localBitmap;
     }
     for (;;)
     {
       try
       {
-        paramajow = Bitmap.createBitmap(localBitmap, paramajow.jdField_b_of_type_Int, paramajow.jdField_a_of_type_Int, paramajow.c, paramajow.d);
-        if (paramajow != null) {
-          return paramajow;
+        paramajtl = Bitmap.createBitmap(localBitmap, paramajtl.jdField_b_of_type_Int, paramajtl.jdField_a_of_type_Int, paramajtl.c, paramajtl.d);
+        if (paramajtl != null) {
+          return paramajtl;
         }
       }
-      catch (IllegalArgumentException paramajow)
+      catch (IllegalArgumentException paramajtl)
       {
-        paramajow.printStackTrace();
+        paramajtl.printStackTrace();
         return localBitmap;
       }
-      catch (OutOfMemoryError paramajow)
+      catch (OutOfMemoryError paramajtl)
       {
-        paramajow.printStackTrace();
+        paramajtl.printStackTrace();
         return localBitmap;
       }
-      paramajow = localBitmap;
+      paramajtl = localBitmap;
     }
   }
   
-  private Bitmap a(ajow paramajow)
+  private Bitmap a(ajtl paramajtl)
   {
     int[] arrayOfInt;
-    if (paramajow != null)
+    if (paramajtl != null)
     {
       arrayOfInt = new int[6];
-      arrayOfInt[0] = paramajow.jdField_a_of_type_Int;
-      arrayOfInt[1] = paramajow.jdField_b_of_type_Int;
-      arrayOfInt[2] = paramajow.c;
-      arrayOfInt[3] = paramajow.d;
-      arrayOfInt[4] = paramajow.e;
-      arrayOfInt[5] = paramajow.f;
+      arrayOfInt[0] = paramajtl.jdField_a_of_type_Int;
+      arrayOfInt[1] = paramajtl.jdField_b_of_type_Int;
+      arrayOfInt[2] = paramajtl.c;
+      arrayOfInt[3] = paramajtl.d;
+      arrayOfInt[4] = paramajtl.e;
+      arrayOfInt[5] = paramajtl.f;
     }
-    for (paramajow = arrayOfInt;; paramajow = null) {
+    for (paramajtl = arrayOfInt;; paramajtl = null) {
       try
       {
-        paramajow = getPreprocessBitmap(paramajow);
-        return paramajow;
+        paramajtl = getPreprocessBitmap(paramajtl);
+        return paramajtl;
       }
-      catch (UnsatisfiedLinkError paramajow)
+      catch (UnsatisfiedLinkError paramajtl)
       {
-        paramajow.printStackTrace();
+        paramajtl.printStackTrace();
         return null;
       }
     }
@@ -83,22 +83,22 @@ public class RMVideoSwitchCameraPicMgr
     if (paramBitmap == null) {
       return null;
     }
-    bdjc.a(paramBitmap, paramInt);
+    bdnl.a(paramBitmap, paramInt);
     return paramBitmap;
   }
   
   private String a()
   {
     String str = "shortvideo_cover_pic";
-    if (this.jdField_a_of_type_Ajpe.jdField_b_of_type_Boolean) {
+    if (this.jdField_a_of_type_Ajtt.jdField_b_of_type_Boolean) {
       str = "ptv_cover_pic";
     }
-    return azbo.a + File.separator + str + ".jpg";
+    return azfx.a + File.separator + str + ".jpg";
   }
   
   private String b()
   {
-    return azbo.a + File.separator + "player_cover_pic" + ".jpg";
+    return azfx.a + File.separator + "player_cover_pic" + ".jpg";
   }
   
   private native Bitmap getPreprocessBitmap(int[] paramArrayOfInt);
@@ -122,28 +122,28 @@ public class RMVideoSwitchCameraPicMgr
     return null;
   }
   
-  public Bitmap a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, ajow paramajow)
+  public Bitmap a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, ajtl paramajtl)
   {
-    this.jdField_a_of_type_Ajpe.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Ajpe.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Ajpe.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Ajpe.jdField_b_of_type_Boolean = paramBoolean2;
-    if ((this.jdField_a_of_type_Ajpe.jdField_a_of_type_Int <= 0) || (this.jdField_a_of_type_Ajpe.jdField_b_of_type_Int <= 0)) {
-      this.jdField_a_of_type_Ajpe.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Ajtt.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Ajtt.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Ajtt.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Ajtt.jdField_b_of_type_Boolean = paramBoolean2;
+    if ((this.jdField_a_of_type_Ajtt.jdField_a_of_type_Int <= 0) || (this.jdField_a_of_type_Ajtt.jdField_b_of_type_Int <= 0)) {
+      this.jdField_a_of_type_Ajtt.jdField_a_of_type_Boolean = true;
     }
-    if (this.jdField_a_of_type_Ajpf == null) {
-      this.jdField_a_of_type_Ajpe.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Ajtu == null) {
+      this.jdField_a_of_type_Ajtt.jdField_a_of_type_Boolean = true;
     }
-    if (this.jdField_a_of_type_Ajpe.jdField_a_of_type_Boolean) {
-      return a(paramajow);
+    if (this.jdField_a_of_type_Ajtt.jdField_a_of_type_Boolean) {
+      return a(paramajtl);
     }
-    return a(this.jdField_a_of_type_Ajpe.jdField_b_of_type_Int, this.jdField_a_of_type_Ajpe.jdField_a_of_type_Int, paramajow);
+    return a(this.jdField_a_of_type_Ajtt.jdField_b_of_type_Int, this.jdField_a_of_type_Ajtt.jdField_a_of_type_Int, paramajtl);
   }
   
   public Bitmap a(boolean paramBoolean)
   {
     Object localObject = null;
-    this.jdField_a_of_type_Ajpe.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Ajtt.jdField_b_of_type_Boolean = paramBoolean;
     String str = a();
     if (new File(str).exists())
     {
@@ -161,7 +161,7 @@ public class RMVideoSwitchCameraPicMgr
   }
   
   /* Error */
-  public void a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, ajow paramajow)
+  public void a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, ajtl paramajtl)
   {
     // Byte code:
     //   0: aload_0
@@ -170,7 +170,7 @@ public class RMVideoSwitchCameraPicMgr
     //   3: iload_3
     //   4: iload 4
     //   6: aload 5
-    //   8: invokevirtual 160	com/tencent/mobileqq/activity/richmedia/state/RMVideoSwitchCameraPicMgr:a	(IIZZLajow;)Landroid/graphics/Bitmap;
+    //   8: invokevirtual 160	com/tencent/mobileqq/activity/richmedia/state/RMVideoSwitchCameraPicMgr:a	(IIZZLajtl;)Landroid/graphics/Bitmap;
     //   11: astore 8
     //   13: aload_0
     //   14: invokespecial 150	com/tencent/mobileqq/activity/richmedia/state/RMVideoSwitchCameraPicMgr:a	()Ljava/lang/String;
@@ -259,10 +259,10 @@ public class RMVideoSwitchCameraPicMgr
     //   0	182	2	paramInt2	int
     //   0	182	3	paramBoolean1	boolean
     //   0	182	4	paramBoolean2	boolean
-    //   0	182	5	paramajow	ajow
+    //   0	182	5	paramajtl	ajtl
     //   44	100	6	localObject1	Object
     //   154	1	6	localIOException1	java.io.IOException
-    //   163	1	6	localajow	ajow
+    //   163	1	6	localajtl	ajtl
     //   172	1	6	localIOException2	java.io.IOException
     //   177	1	6	localFileNotFoundException	java.io.FileNotFoundException
     //   41	94	7	localObject2	Object
@@ -291,10 +291,10 @@ public class RMVideoSwitchCameraPicMgr
       boolean bool1 = bool2;
       if (paramBitmap != null)
       {
-        paramBitmap = a(xmn.a(paramBitmap, 0.6F, false), 40, false);
+        paramBitmap = a(xqw.a(paramBitmap, 0.6F, false), 40, false);
         bool1 = bool2;
         if (paramBitmap != null) {
-          bool1 = xmn.a(paramBitmap, a());
+          bool1 = xqw.a(paramBitmap, a());
         }
       }
       if (QLog.isColorLevel()) {
@@ -317,18 +317,18 @@ public class RMVideoSwitchCameraPicMgr
   
   public void b(Bitmap paramBitmap)
   {
-    paramBitmap = xmn.a(paramBitmap, 0.6F, false);
+    paramBitmap = xqw.a(paramBitmap, 0.6F, false);
     if (paramBitmap == null)
     {
-      wsv.e("RMVideoSwitchCameraPicMgr", "resize bitmap failed!");
+      wxe.e("RMVideoSwitchCameraPicMgr", "resize bitmap failed!");
       return;
     }
-    if (xmn.a(paramBitmap, b()))
+    if (xqw.a(paramBitmap, b()))
     {
-      wsv.c("RMVideoSwitchCameraPicMgr", "save cover bitmap to file success.");
+      wxe.c("RMVideoSwitchCameraPicMgr", "save cover bitmap to file success.");
       return;
     }
-    wsv.e("RMVideoSwitchCameraPicMgr", "save cover bitmap to file error.");
+    wxe.e("RMVideoSwitchCameraPicMgr", "save cover bitmap to file error.");
   }
 }
 

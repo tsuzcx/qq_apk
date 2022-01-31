@@ -1,13 +1,16 @@
-import com.tencent.qqmini.sdk.runtime.widget.CanvasView;
-
-public class bhet
+public abstract interface bhet
 {
-  public float a;
-  public int a;
-  public float b;
-  public float c;
+  public abstract void onRecordFrame(byte[] paramArrayOfByte, boolean paramBoolean);
   
-  public bhet(CanvasView paramCanvasView) {}
+  public abstract void onRecordPause();
+  
+  public abstract void onRecordResume();
+  
+  public abstract void onRecordStart();
+  
+  public abstract void onRecordStop(String paramString, long paramLong1, long paramLong2);
+  
+  public abstract void onRecordUpdate(int paramInt1, int paramInt2);
 }
 
 

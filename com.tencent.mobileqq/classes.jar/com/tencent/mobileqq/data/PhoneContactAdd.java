@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class PhoneContactAdd
-  extends awbv
+  extends awge
 {
-  @awdj
+  @awhs
   public String mobileNo;
   public String name;
   public String remindInfo;

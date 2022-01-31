@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import acna;
+import acrp;
 import android.widget.RelativeLayout;
 
 public class Conversation$18$2
   implements Runnable
 {
-  public Conversation$18$2(acna paramacna) {}
+  public Conversation$18$2(acrp paramacrp) {}
   
   public void run()
   {

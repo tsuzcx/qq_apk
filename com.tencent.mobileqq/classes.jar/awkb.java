@@ -1,99 +1,75 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.CoverDetailFragment;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AccountNotMatchException;
 
-public class awkb
-  implements View.OnClickListener
+class awkb
+  implements awke
 {
-  public awkb(CustomCoverFragment paramCustomCoverFragment) {}
+  awkb(awka paramawka, awjl paramawjl, awju paramawju) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, awjm paramawjm) {}
+  
+  public void a(int paramInt, ArrayList<awjm> paramArrayList) {}
+  
+  public void a_(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, awjm paramawjm) {}
+  
+  public void c(int paramInt, awjm arg2)
   {
-    int i = 1;
-    if (paramView.getId() == 2131368721) {
-      if (CustomCoverFragment.a(this.a) != null)
-      {
-        paramView = this.a;
-        if (CustomCoverFragment.c(this.a)) {
-          break label152;
-        }
-        bool = true;
-        CustomCoverFragment.b(paramView, bool);
-        paramView = (alxl)CustomCoverFragment.a(this.a).a(13);
-        if (!CustomCoverFragment.b(this.a)) {
-          break label158;
-        }
-        i = 1;
-        paramView.h(i);
-        CustomCoverFragment.a(this.a).a(0, this.a.getString(2131699394), 0, CustomCoverFragment.a(this.a));
-        localObject = CustomCoverFragment.a(this.a).getCurrentAccountUin();
-        if (!CustomCoverFragment.b(this.a)) {
-          break label163;
-        }
-        paramView = "open_random";
-        VasWebviewUtil.reportCommercialDrainage((String)localObject, "defaultcard", paramView, "", 1, 0, 0, "", "", "");
-      }
-    }
-    label152:
-    label158:
-    label163:
-    while (this.a.getActivity() == null) {
-      for (;;)
-      {
-        return;
-        boolean bool = false;
-        continue;
-        i = 0;
-        continue;
-        paramView = "close_random";
-      }
-    }
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof Integer)) {}
-    for (int j = ((Integer)localObject).intValue();; j = 0)
+    awki localawki = (awki)???.a;
+    Object localObject2 = new StringBuilder().append("PresendStatus: destPath:").append(this.jdField_a_of_type_Awjl.jdField_a_of_type_Awju.g).append(",uuid:").append(this.jdField_a_of_type_Awjl.jdField_a_of_type_JavaLangString).append(",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:true, mainUploadFinish:true, uploadResult:");
+    if (paramInt == 0)
     {
-      if ((paramView instanceof Button))
+      ??? = "ResultOk";
+      awiw.a("PresendPicMgrService", "onSend ", ???);
+      awiw.a("PresendPicMgrService", "onSend", " SendResult = " + localawki);
+    }
+    for (;;)
+    {
+      synchronized (awka.a(this.jdField_a_of_type_Awka))
       {
-        if (CustomCoverFragment.c(this.a))
+        if (!this.jdField_a_of_type_Awju.f)
         {
-          QQToast.a(this.a.getActivity(), 0, 2131690668, 0).a();
-          return;
+          if (paramInt == 0)
+          {
+            this.jdField_a_of_type_Awjl.jdField_a_of_type_Awju.c = 1;
+            awiw.a("PresendPicMgrService", "onSend", " SendButton not clicked, add senReq to mUploadFinishList,senReq = " + this.jdField_a_of_type_Awjl);
+            awka.a(this.jdField_a_of_type_Awka).add(this.jdField_a_of_type_Awjl);
+            return;
+            ??? = "ResultFail";
+            break;
+          }
+          this.jdField_a_of_type_Awjl.jdField_a_of_type_Awju.c = 2;
         }
-        if (CustomCoverFragment.a(this.a) != j)
-        {
-          CustomCoverFragment.a(this.a, j);
-          return;
-        }
-        if (j != CustomCoverFragment.a(this.a)) {
-          break;
-        }
-        CustomCoverFragment.a(this.a, 0);
-        return;
       }
-      if (!(paramView instanceof ImageView)) {
-        break;
-      }
-      paramView = new Intent();
-      paramView.putExtra("cover_id_key", j);
-      if (!CustomCoverFragment.c(this.a)) {
-        if (CustomCoverFragment.a(this.a) != j) {}
-      }
-      for (i = 2;; i = 0)
+      if (paramInt == 0)
       {
-        paramView.putExtra("cover_button_key", i);
-        adky.a(this.a.getActivity(), paramView, PublicFragmentActivity.class, CoverDetailFragment.class, 2001);
-        return;
+        try
+        {
+          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(awka.a(this.jdField_a_of_type_Awka));
+          localObject2 = (MessageRecord)this.jdField_a_of_type_Awjl.jdField_a_of_type_Awju.a;
+          ((axwx)localQQAppInterface.getManager(326)).a((MessageRecord)localObject2, null);
+          awiw.a("PresendPicMgrService", "onSend", " SendButton has been clicked, sendMessage directly! ,senReq = " + this.jdField_a_of_type_Awjl);
+        }
+        catch (AccountNotMatchException localAccountNotMatchException) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("PresendPicMgrService", 2, "no appRuntime");
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("PresendPicMgrService", 2, "onSend SendResult = " + localAccountNotMatchException + ", upload failed");
       }
     }
   }
+  
+  public void d(int paramInt, awjm paramawjm) {}
 }
 
 

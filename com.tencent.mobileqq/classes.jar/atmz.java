@@ -1,17 +1,22 @@
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.9;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
 public class atmz
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public atmz(LocationDialogUtil.9 param9) {}
+  public atmz(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, atnw paramatnw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (atmi.a(this.a.a)) {
-      this.a.a.finish();
+    this.jdField_a_of_type_Atnw.b(false);
+    this.jdField_a_of_type_Atnw.d = false;
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    }
+    if (this.jdField_a_of_type_Atnw.e) {
+      this.jdField_a_of_type_Atnw.f();
     }
   }
 }

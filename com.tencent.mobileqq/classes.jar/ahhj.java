@@ -1,15 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.XListView;
 
 public class ahhj
-  implements View.OnClickListener
+  extends alzr
 {
-  public ahhj(NewFriendMoreSysMsgActivity paramNewFriendMoreSysMsgActivity) {}
+  public ahhj(PublicView paramPublicView) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a.finish();
+    if (true == paramBoolean)
+    {
+      PublicView.a(this.a).a(0);
+      PublicView.a(this.a).sendEmptyMessage(1);
+      PublicView.a(this.a).sendEmptyMessage(3);
+      return;
+    }
+    PublicView.a(this.a).springBackOverScrollHeaderView();
+    PublicView.a(this.a, 1, 2131720337);
+    PublicView.a(this.a);
   }
 }
 

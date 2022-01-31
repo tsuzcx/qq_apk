@@ -1,25 +1,22 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wut
-  implements www
+public class wut
+  extends QQUIEventReceiver<wub, vdl>
 {
-  wut(wus paramwus) {}
-  
-  public void a()
+  public wut(@NonNull wub paramwub)
   {
-    wsv.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
+    super(paramwub);
   }
   
-  public void a(TroopBarPOI paramTroopBarPOI)
+  public void a(@NonNull wub paramwub, @NonNull vdl paramvdl)
   {
-    wsv.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
-    if (paramTroopBarPOI != null)
-    {
-      this.a.a.setLocation(paramTroopBarPOI.a());
-      return;
-    }
-    this.a.a.setLocation("None for test!!");
+    paramwub.i();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdl.class;
   }
 }
 

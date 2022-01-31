@@ -2,7 +2,7 @@ import com.tencent.biz.PoiMapActivity;
 import com.tencent.widget.AbsListView;
 
 class mzs
-  implements bhpo
+  implements bhtv
 {
   mzs(mzq parammzq, PoiMapActivity paramPoiMapActivity) {}
   

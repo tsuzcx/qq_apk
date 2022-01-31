@@ -1,42 +1,18 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager.4;
-import java.io.File;
-import java.io.IOException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
+import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment.7;
 
 public class bnla
-  implements bapx
+  implements DialogInterface.OnCancelListener
 {
-  public bnla(QIMPtvTemplateManager.4 param4) {}
+  public bnla(CaptureQmcfSoDownloadFragment.7 param7) {}
   
-  public void onResp(baqw parambaqw)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMPtvTemplateManager", 2, "onResp url: " + this.a.a.resurl + " resultcode: " + parambaqw.c);
-    }
-    this.a.a.usable = this.a.this$0.a(this.a.a);
-    if (this.a.a.usable) {}
-    try
-    {
-      ndr.a(new File(bnkz.a(), this.a.a.name), bnkz.a);
-      if (this.a.this$0.a() != null) {
-        this.a.this$0.a().notifyObservers(blpe.class, 3, true, null);
-      }
-      return;
-    }
-    catch (IOException parambaqw)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          parambaqw.printStackTrace();
-        }
-      }
-    }
+    CaptureQmcfSoDownloadFragment.a(this.a.this$0).setCameraPermissionResult(false);
   }
-  
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 

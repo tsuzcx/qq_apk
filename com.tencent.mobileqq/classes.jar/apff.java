@@ -1,27 +1,88 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.mobileqq.data.MessageForStarLeague;
 import com.tencent.qphone.base.util.QLog;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
-class apff
-  extends Handler
+public class apff
+  extends DefaultHandler
 {
-  apff(apfd paramapfd, Looper paramLooper)
+  MessageForStarLeague a;
+  public String a;
+  
+  public apff()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague = ((MessageForStarLeague)azaf.a(-2069));
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void handleMessage(Message paramMessage)
+  public MessageForStarLeague a()
   {
-    switch (paramMessage.what)
-    {
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+    if (paramArrayOfChar.equals("\n")) {}
     do
     {
       return;
-    } while (apfd.a(this.a));
-    QLog.e("CameraHelper", 1, "checkPermission uncertain");
-    apfd.a(this.a, false, 1830004);
+      if (this.jdField_a_of_type_JavaLangString.equals("title"))
+      {
+        localMessageForStarLeague = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
+        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName == null) {}
+        for (;;)
+        {
+          localMessageForStarLeague.starName = paramArrayOfChar;
+          this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName.trim();
+          return;
+          paramArrayOfChar = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName.concat(paramArrayOfChar);
+        }
+      }
+    } while (!this.jdField_a_of_type_JavaLangString.equals("summary"));
+    MessageForStarLeague localMessageForStarLeague = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle == null) {}
+    for (;;)
+    {
+      localMessageForStarLeague.subTitle = paramArrayOfChar;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle.trim();
+      return;
+      paramArrayOfChar = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle.concat(paramArrayOfChar);
+    }
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    if (paramString3.equals("msg")) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.actionUrl = paramAttributes.getValue("url");
+    }
+    do
+    {
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.levelStatus = Integer.parseInt(paramAttributes.getValue("levelStatus"));
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.brief = paramAttributes.getValue("brief");
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        for (;;)
+        {
+          QLog.e("StructMsg", 1, "levelStatus parse failed!", paramString1);
+        }
+      }
+      if (paramString3.equals("picture"))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starAvatar = paramAttributes.getValue("cover");
+        return;
+      }
+      if (paramString3.equals("title"))
+      {
+        this.jdField_a_of_type_JavaLangString = "title";
+        return;
+      }
+    } while (!paramString3.equals("summary"));
+    this.jdField_a_of_type_JavaLangString = "summary";
   }
 }
 

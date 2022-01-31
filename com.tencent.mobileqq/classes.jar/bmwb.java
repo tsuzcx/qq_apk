@@ -1,8 +1,27 @@
-class bmwb
+public class bmwb
+  extends bmvv
 {
-  int jdField_a_of_type_Int;
-  bmvz jdField_a_of_type_Bmvz;
-  bmwa jdField_a_of_type_Bmwa;
+  public static final String f = alud.a(2131706189);
+  
+  public bmwb()
+  {
+    super("-1000");
+  }
+  
+  public String a()
+  {
+    return "InteractFacePackage";
+  }
+  
+  public String a(int paramInt)
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
 }
 
 

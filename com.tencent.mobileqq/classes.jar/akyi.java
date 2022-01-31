@@ -1,62 +1,60 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.EditText;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-@TargetApi(11)
-public class akyi
-  extends EditText
-  implements ActionMode.Callback
+class akyi
+  implements EIPCResultCallback
 {
-  public akyi(Context paramContext)
-  {
-    super(paramContext);
-    super.setLongClickable(false);
-    super.setTextIsSelectable(false);
-    super.setImeOptions(268435456);
-    if (Build.VERSION.SDK_INT >= 11) {
-      super.setCustomSelectionActionModeCallback(this);
-    }
-  }
+  akyi(akyg paramakyg) {}
   
-  public void a(int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    try
+    long l1 = 0L;
+    if ((paramEIPCResult == null) || (paramEIPCResult.data == null)) {}
+    Activity localActivity;
+    do
     {
-      super.setSelection(paramInt);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ApolloDiyTextActivity", 1, localException.getMessage());
-    }
-  }
-  
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
-  {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public boolean onTextContextMenuItem(int paramInt)
-  {
-    return true;
+      int i;
+      CmGameInitParams localCmGameInitParams;
+      do
+      {
+        return;
+        i = paramEIPCResult.data.getInt("result");
+        localActivity = this.a.a();
+        if (i != 0) {
+          break;
+        }
+        long l2 = paramEIPCResult.data.getLong("ResultCode");
+        localCmGameInitParams = (CmGameInitParams)paramEIPCResult.data.getSerializable("CmGameInitParams");
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.CmGameLauncher", 2, new Object[] { "queryCheckGameFromMainProcess onCallback cmGameInitParams", localCmGameInitParams });
+        }
+        if ((l2 != 0L) || (localCmGameInitParams == null)) {
+          break;
+        }
+      } while (!(localActivity instanceof ApolloGameActivity));
+      if (akyg.a(this.a) == null) {}
+      for (;;)
+      {
+        paramEIPCResult = (CmGameStartChecker.StartCheckParam)paramEIPCResult.data.getSerializable("StartCheckParam");
+        this.a.b(paramEIPCResult);
+        akwd.a(new Object[] { "[checkFinish], loading from main process but waiting for tool, before cost:", Long.valueOf(l1) });
+        ((ApolloGameActivity)localActivity).a(paramEIPCResult);
+        ((ApolloGameActivity)localActivity).a(localCmGameInitParams);
+        return;
+        l1 = System.currentTimeMillis() - akyg.a(this.a).mCreateTs;
+      }
+      QLog.e("cmgame_process.CmGameLauncher", 1, new Object[] { "queryCheckGameFromMainProcess onCallback result:", Integer.valueOf(i) });
+      if ((localActivity instanceof ApolloGameActivity)) {
+        ((ApolloGameActivity)localActivity).i();
+      }
+    } while (localActivity == null);
+    localActivity.finish();
   }
 }
 

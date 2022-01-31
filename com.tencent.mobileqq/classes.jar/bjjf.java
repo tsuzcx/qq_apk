@@ -1,57 +1,46 @@
-import android.graphics.Bitmap;
+import NS_MOBILE_OPERATION.operation_like_req;
+import com.qq.taf.jce.JceStruct;
 
 public class bjjf
+  extends bjdo
 {
-  private int jdField_a_of_type_Int = -1;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private int b;
+  private int a;
+  public JceStruct a;
+  
+  public bjjf(Long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    operation_like_req localoperation_like_req = new operation_like_req();
+    localoperation_like_req.uin = paramLong.longValue();
+    localoperation_like_req.action = paramInt1;
+    localoperation_like_req.appid = paramInt2;
+    localoperation_like_req.curkey = paramString1;
+    localoperation_like_req.unikey = paramString2;
+    this.jdField_a_of_type_ComQqTafJceJceStruct = localoperation_like_req;
+  }
   
   public int a()
   {
     return this.jdField_a_of_type_Int;
   }
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
-    while (this.jdField_a_of_type_Int > 0) {
-      return;
-    }
-    this.jdField_a_of_type_Int = bjjj.a(this.jdField_a_of_type_AndroidGraphicsBitmap, true);
-  }
-  
   public void a(int paramInt)
   {
-    this.b = paramInt;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(Bitmap paramBitmap)
+  public String getCmdString()
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    return "QzoneNewService.like";
   }
   
-  public int b()
+  public JceStruct getReq()
   {
-    return this.b;
+    return this.jdField_a_of_type_ComQqTafJceJceStruct;
   }
   
-  public void b()
+  public String uniKey()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    }
-    bjjj.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public int c()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap.getByteCount();
-    }
-    return 0;
+    return "like";
   }
 }
 

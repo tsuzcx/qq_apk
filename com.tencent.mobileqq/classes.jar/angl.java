@@ -1,32 +1,14 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.1;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.2;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.music.SongInfo;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
-public final class angl
-  implements aumt
+public class angl
+  extends angm
 {
-  private String a;
+  public String a = "10001";
   
-  public angl(String paramString)
+  public void a(AppInterface paramAppInterface, Bundle paramBundle)
   {
-    this.a = paramString;
-  }
-  
-  public String getToken()
-  {
-    return angk.a();
-  }
-  
-  public void onPlaySongChanged(SongInfo paramSongInfo)
-  {
-    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.2(this, paramSongInfo));
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.1(this, paramInt));
+    this.a = paramBundle.getString("PromotionDescription");
   }
 }
 

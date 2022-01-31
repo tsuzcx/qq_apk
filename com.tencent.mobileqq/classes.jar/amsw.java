@@ -1,37 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class amsw
-  extends bavo
+class amsw
+  implements MediaPlayer.OnPreparedListener
 {
-  amst jdField_a_of_type_Amst;
-  amsv jdField_a_of_type_Amsv;
+  amsw(amsu paramamsu) {}
   
-  public amsw(QQAppInterface paramQQAppInterface, amsv paramamsv, amst paramamst)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    super(paramQQAppInterface, paramamsv.b);
-    this.jdField_a_of_type_Amsv = paramamsv;
-    this.jdField_a_of_type_Amst = paramamst;
-  }
-  
-  protected void realCancel()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realCancel");
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + amsu.b(this.a));
+      }
+      this.a.a.seekTo(0);
+      amsu.b(this.a, true);
+      if (amsu.b(this.a))
+      {
+        this.a.a.start();
+        amsu.c(this.a, false);
+      }
+      return;
     }
-  }
-  
-  protected void realStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realStart");
+    catch (Exception paramMediaPlayer)
+    {
+      paramMediaPlayer.printStackTrace();
     }
-    amst.a(this.jdField_a_of_type_Amst, this.jdField_a_of_type_Amsv);
-  }
-  
-  public String toString()
-  {
-    return "[DownloadTask] mInfo=" + this.jdField_a_of_type_Amsv + ", mDownloader=" + this.jdField_a_of_type_Amst;
   }
 }
 

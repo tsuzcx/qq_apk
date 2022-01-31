@@ -1,57 +1,111 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.util.ArrayList;
 
 public class acrr
-  extends alnb
+  extends ameq
 {
-  public acrr(EmosmActivity paramEmosmActivity) {}
+  public acrr(Conversation paramConversation) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  protected void a()
   {
-    if (paramInt == 1) {
-      if (paramBoolean)
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_onupdaterecentlist");
+    }
+    this.a.a(0L);
+  }
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0)
       {
-        paramObject = (EmoticonResp)paramObject;
-        this.a.a(paramObject.delEpId);
-        this.a.b();
-        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.e();
+        auam.a().c(this.a.a);
+        this.a.a(8, paramString, 1);
+        this.a.a(8, alof.C, 5000);
+        this.a.a(8, alof.aL, 5001);
       }
     }
-    label119:
-    do
-    {
-      do
-      {
-        return;
-        this.a.a();
-        EmosmActivity.a(this.a, (EmoticonResp)paramObject);
-        break;
-        if (paramInt != 2) {
-          break label119;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("EmosmActivity", 2, "emoticon fetch:" + paramBoolean);
-        }
-      } while (!paramBoolean);
-      this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
+    while ((paramInt1 != 2) || (paramInt2 != 0)) {
       return;
-    } while (paramInt != 17);
+    }
+    auam.a().b(paramString, this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_ontroopmanagersuccess");
+    }
+    this.a.a(8, paramString, 1);
+    this.a.a(8, alof.C, 5000);
+    this.a.a(8, alof.aL, 5001);
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    this.a.a(8, paramString1, 1);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    auam.a().c(this.a.a);
+  }
+  
+  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      this.a.a(8, alof.C, 5000);
+      this.a.a(8, alof.aL, 5001);
+      if (paramTroopInfo != null) {
+        this.a.a(8, paramTroopInfo.troopuin, 1);
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
     if (paramBoolean)
     {
-      paramObject = ((EmoticonResp)paramObject).ids.iterator();
-      while (paramObject.hasNext())
+      this.a.a(8, paramString, 1);
+      this.a.a(8, alof.C, 5000);
+      this.a.a(8, alof.aL, 5001);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, ArrayList<TroopMemberCardInfo> paramArrayList, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2) && (paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      paramArrayList = (TroopMemberCardInfo)paramArrayList.get(0);
+      if (paramArrayList != null)
       {
-        Integer localInteger = (Integer)paramObject.next();
-        this.a.a(localInteger.intValue());
+        this.a.a(8, paramArrayList.troopuin, 1);
+        this.a.a(8, paramArrayList.memberuin, -2147483648);
+        this.a.a(8, alof.C, 5000);
+        this.a.a(8, alof.aL, 5001);
       }
     }
-    this.a.a();
-    EmosmActivity.a(this.a, (EmoticonResp)paramObject);
-    this.a.b();
+  }
+  
+  protected void b(String paramString1, String paramString2)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramString2.equals(this.a.a.getCurrentAccountUin()))) {
+      this.a.a(8, paramString1, 1);
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "Conversation.onGetTroopMemberCard isSuccess=" + paramBoolean + " data=" + paramObject);
+    }
+    if ((paramBoolean) && (paramObject != null))
+    {
+      long l = ((Long)((Object[])(Object[])paramObject)[0]).longValue();
+      this.a.a(8, String.valueOf(l), 1);
+    }
   }
 }
 

@@ -1,21 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class affw
-  implements DialogInterface.OnClickListener
+public class affw
+  implements affa
 {
-  affw(affu paramaffu, ApolloGameData paramApolloGameData) {}
+  private BaseChatPie a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public affw(BaseChatPie paramBaseChatPie)
   {
-    paramDialogInterface = String.format("https://m.gamecenter.qq.com/directout/detail/%s?_wv=2147484679&_wwv=4&ADTAG=limixiuteam&autodownload=1&pf=invite&appid=%s&notShowPub=1&asyncMode=3&appType=1&_nav_bgclr=ffffff&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_anim=true&_nav_alpha=0", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid });
-    Intent localIntent = new Intent(this.jdField_a_of_type_Affu.a, QQBrowserActivity.class);
-    localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
-    VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_Affu.a, paramDialogInterface, -1L, localIntent, false, -1);
+    this.a = paramBaseChatPie;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.a != null)
+    {
+      BaseActivity localBaseActivity = this.a.a();
+      localObject1 = localObject2;
+      if (localBaseActivity != null) {
+        localObject1 = localBaseActivity.getIntent();
+      }
+    }
+    a((Intent)localObject1);
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if ((paramIntent == null) || (this.a == null)) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = this.a.a;
+    } while ((localQQAppInterface == null) || (!paramIntent.getBooleanExtra("key_reactive_push_tip", false)));
+    azqs.b(localQQAppInterface, "dc00898", "", "", "0X800A1BF", "0X800A1BF", 0, 0, "", "", "", "");
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 2, 11 };
   }
 }
 

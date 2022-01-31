@@ -1,29 +1,19 @@
-import java.util.Observable;
-import java.util.Observer;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
 
-public class asld
-  implements Observer
+class asld
+  implements Animation.AnimationListener
 {
-  protected void a() {}
+  asld(askz paramaskz) {}
   
-  protected void b() {}
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  protected void c() {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    switch (((Integer)paramObject).intValue())
-    {
-    default: 
-      return;
-    case 1: 
-      a();
-      return;
-    case 2: 
-      b();
-      return;
-    }
-    c();
+    this.a.a.setVisibility(0);
   }
 }
 

@@ -1,46 +1,41 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.DragShadowBuilder;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(11)
 class avkf
-  extends View.DragShadowBuilder
+  implements URLDrawable.URLDrawableListener
 {
-  public int a;
+  avkf(avke paramavke, ImageView paramImageView) {}
   
-  public avkf(avjc paramavjc, View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Avjc.a.f * 1.4D));
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadCanceled");
+    }
   }
   
-  public void onDrawShadow(Canvas paramCanvas)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    getView().setDrawingCacheEnabled(false);
-    getView().setDrawingCacheEnabled(true);
-    Object localObject = new Paint();
-    ((Paint)localObject).setShadowLayer(10.0F, 0.0F, 0.0F, -16777216);
-    paramCanvas.drawRect(new Rect(10, 10, this.jdField_a_of_type_Int + 10, this.jdField_a_of_type_Int + 10), (Paint)localObject);
-    localObject = getView().getDrawingCache();
-    Matrix localMatrix = new Matrix();
-    float f = this.jdField_a_of_type_Int / ((Bitmap)localObject).getWidth();
-    localMatrix.postScale(f, f);
-    paramCanvas.drawBitmap(Bitmap.createBitmap((Bitmap)localObject, 0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), localMatrix, true), 10.0F, 10.0F, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadFialed");
+    }
   }
   
-  public void onProvideShadowMetrics(Point paramPoint1, Point paramPoint2)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    int i = this.jdField_a_of_type_Int + 20;
-    int j = this.jdField_a_of_type_Int + 20;
-    paramPoint1.set(i, j);
-    paramPoint2.set(i / 2, j / 2);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadProgressed");
+    }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "download vote headImage success");
+    }
+    this.jdField_a_of_type_Avke.a.a(this.jdField_a_of_type_AndroidWidgetImageView, paramURLDrawable);
   }
 }
 

@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="rectangle">
-            <corners android:radius="20.0dip" />
-            <size android:height="40.0dip" android:width="339.0dip" />
-            <solid android:color="#19ffffff" />
-        </shape>
-    </item>
+    <item android:state_focused="true" android:drawable="@drawable/bk8" />
+    <item android:drawable="@drawable/bk9" />
 </selector>

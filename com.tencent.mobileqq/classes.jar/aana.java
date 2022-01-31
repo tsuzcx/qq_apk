@@ -1,31 +1,94 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.canvas.canvasJson.AdCanvasJsonManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtPreLoader.1;
+import com.tencent.gdtad.aditem.GdtPreLoader.2;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aana
-  implements View.OnClickListener
+public final class aana
 {
-  public aana(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
+  private static volatile aana a;
   
-  public void onClick(View paramView)
+  public static aana a()
   {
-    if (GdtInterstitialFragmentForJS.a(this.a) == null)
+    if (a == null) {}
+    try
     {
-      paramView = "loading ad data";
-      aaig localaaig = new aaig();
-      localaaig.a = GdtInterstitialFragmentForJS.a(this.a);
-      GdtInterstitialFragmentForJS.a(this.a, new aaie(localaaig, new WeakReference(GdtInterstitialFragmentForJS.a(this.a))));
-      GdtInterstitialFragmentForJS.a(this.a).a(new WeakReference(this.a.getActivity()));
+      if (a == null) {
+        a = new aana();
+      }
+      return a;
     }
+    finally {}
+  }
+  
+  private void b(GdtAd paramGdtAd)
+  {
+    AdCanvasJsonManager.getInstance().init(BaseApplicationImpl.getContext());
+    if ((paramGdtAd == null) || (!paramGdtAd.isValid()) || (TextUtils.isEmpty(paramGdtAd.getCanvas()))) {}
     for (;;)
     {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), paramView, 0).show();
       return;
-      paramView = "load ad data error";
+      int i = paramGdtAd.getDestType();
+      int j = paramGdtAd.getProductType();
+      if (((i == 4) && (j == 1000)) || (paramGdtAd.isAppXiJing()) || (paramGdtAd.isAppXiJingDefault())) {}
+      for (i = 1; i != 0; i = 0) {
+        try
+        {
+          Object localObject = new JSONObject(paramGdtAd.getCanvas());
+          String str = ((JSONObject)localObject).optString("canvas_json_key");
+          localObject = ((JSONObject)localObject).optString("canvas_json_url");
+          if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty((CharSequence)localObject))) {
+            break label147;
+          }
+          AdCanvasJsonManager.getInstance().preloadCanvasJson(paramGdtAd, str, (String)localObject);
+          return;
+        }
+        catch (JSONException paramGdtAd)
+        {
+          aase.d("GdtPreLoader", "preloadCanvasJsonAfterAdLoaded error", paramGdtAd);
+          return;
+        }
+      }
     }
+    label147:
+    aase.d("GdtPreLoader", "preloadCanvasJsonAfterAdLoaded error");
+  }
+  
+  private void c(GdtAd paramGdtAd)
+  {
+    aase.a("GdtPreLoader", "preloadVideoAfterAdLoaded() called with: ad = [" + paramGdtAd + "]");
+    if (!paramGdtAd.isVideoSplice()) {
+      return;
+    }
+    new Handler(Looper.getMainLooper()).post(new GdtPreLoader.2(this, paramGdtAd));
+  }
+  
+  private void d(GdtAd paramGdtAd)
+  {
+    aath.a().a(BaseApplicationImpl.getContext(), null);
+    if ((paramGdtAd != null) && (paramGdtAd.isInterstitial())) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      boolean bool2 = aaoq.a().a(BaseApplicationImpl.getContext());
+      aase.b("GdtPreLoader", String.format("preDownloadInterstitialAfterAdLoaded isInterstitial:%b isEnabled:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      if ((bool1) && (bool2)) {
+        aaot.a().b(BaseApplicationImpl.getContext());
+      }
+      return;
+    }
+  }
+  
+  public void a(GdtAd paramGdtAd)
+  {
+    new Handler(Looper.getMainLooper()).post(new GdtPreLoader.1(this, paramGdtAd));
+    c(paramGdtAd);
+    b(paramGdtAd);
+    d(paramGdtAd);
   }
 }
 

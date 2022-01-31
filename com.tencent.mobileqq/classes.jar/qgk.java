@@ -24,9 +24,9 @@ public class qgk
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
     this.jdField_a_of_type_JavaLangString = paramString3;
-    TextView localTextView2 = (TextView)a(2131380060);
-    TextView localTextView1 = (TextView)a(2131380065);
-    ((TextView)a(2131380062)).setText(paramString2);
+    TextView localTextView2 = (TextView)a(2131380118);
+    TextView localTextView1 = (TextView)a(2131380123);
+    ((TextView)a(2131380120)).setText(paramString2);
     if (paramLong % 100L == 0L) {}
     for (paramViewGroup = String.valueOf(paramLong / 100L);; paramViewGroup = String.valueOf((float)paramLong / 100.0F))
     {
@@ -53,7 +53,7 @@ public class qgk
   
   View a(ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562503, paramViewGroup, false);
+    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562521, paramViewGroup, false);
   }
   
   protected void c()

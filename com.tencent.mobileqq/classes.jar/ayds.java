@@ -1,65 +1,16 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.Callable;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
 class ayds
-  implements Callable<List<aydj>>
+  implements ayew
 {
-  ayds(aydq paramaydq, int paramInt1, int paramInt2) {}
+  ayds(aydn paramaydn) {}
   
-  public List<aydj> a()
+  public void a(String paramString)
   {
-    Object localObject = aydq.a(this.jdField_a_of_type_Aydq).subList(this.jdField_a_of_type_Int, this.b);
-    ArrayList localArrayList = new ArrayList();
-    aydj localaydj;
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        localaydj = (aydj)((Iterator)localObject).next();
-        if (!this.jdField_a_of_type_Aydq.isCancelled()) {
-          break label141;
-        }
-      }
-      if (!aydq.a(this.jdField_a_of_type_Aydq).equals(aydq.b(this.jdField_a_of_type_Aydq))) {
-        localObject = localArrayList.iterator();
-      }
+    if (SignatureHistoryFragment.b(this.a.a)) {
+      return;
     }
-    for (;;)
-    {
-      if (((Iterator)localObject).hasNext())
-      {
-        localaydj = (aydj)((Iterator)localObject).next();
-        if (!this.jdField_a_of_type_Aydq.isCancelled()) {}
-      }
-      else
-      {
-        return localArrayList;
-        label141:
-        localaydj.a(aydq.a(this.jdField_a_of_type_Aydq));
-        if (localaydj.c() == -9223372036854775808L) {
-          break;
-        }
-        int i = localArrayList.indexOf(localaydj);
-        if (-1 == i)
-        {
-          localArrayList.add(localaydj);
-          break;
-        }
-        if (((aydj)localArrayList.get(i)).c() >= localaydj.c()) {
-          break;
-        }
-        localArrayList.set(i, localaydj);
-        break;
-      }
-      long l = localaydj.c();
-      localaydj.a(aydq.b(this.jdField_a_of_type_Aydq));
-      if (localaydj.c() == -9223372036854775808L) {
-        localaydj.a(l);
-      }
-    }
+    SignatureHistoryFragment.a(this.a.a, paramString);
   }
 }
 

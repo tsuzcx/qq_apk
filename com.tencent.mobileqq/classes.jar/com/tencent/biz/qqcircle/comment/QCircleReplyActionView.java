@@ -31,9 +31,9 @@ public class QCircleReplyActionView
   
   private void a()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131560522, this, true);
-    this.a = ((TextView)localView.findViewById(2131378834));
-    this.b = ((TextView)localView.findViewById(2131378807));
+    View localView = LayoutInflater.from(getContext()).inflate(2131560523, this, true);
+    this.a = ((TextView)localView.findViewById(2131378891));
+    this.b = ((TextView)localView.findViewById(2131378862));
   }
   
   public TextView a()

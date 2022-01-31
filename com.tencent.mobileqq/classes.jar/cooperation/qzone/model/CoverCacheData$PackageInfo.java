@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjgl;
+import bjks;
 
 public class CoverCacheData$PackageInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<PackageInfo> CREATOR = new bjgl();
+  public static final Parcelable.Creator<PackageInfo> CREATOR = new bjks();
   public int a;
   public String a;
   public int b;

@@ -1,20 +1,18 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class aelo
-  implements amaa
+  implements DialogInterface.OnClickListener
 {
-  public aelo(BaseBubbleBuilder paramBaseBubbleBuilder, Intent paramIntent) {}
+  public aelo(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void a(Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramObject instanceof String))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.startActivity(this.jdField_a_of_type_AndroidContentIntent);
-    }
+    this.a.l();
+    this.a.a(awra.g, this.a.a, false);
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, ndd.a(), "2", "1");
   }
 }
 

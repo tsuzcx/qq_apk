@@ -1,14 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqdataline.DatalineBridgeActivity;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.hce.HcePluginInstallActivity;
 
 public class bipz
-  implements DialogInterface.OnDismissListener
+  implements OnPluginInstallListener
 {
-  public bipz(DatalineBridgeActivity paramDatalineBridgeActivity) {}
+  public bipz(HcePluginInstallActivity paramHcePluginInstallActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public IBinder asBinder()
   {
+    return null;
+  }
+  
+  public void onInstallBegin(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("HcePluginInstallActivity", 4, "onInstallBegin, pluginId:" + paramString);
+    }
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("HcePluginInstallActivity", 4, "onInstallDownloadProgress, pluginId:" + paramString + " offset:" + paramInt1 + " total: " + paramInt2);
+    }
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("HcePluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
+    }
+    QQToast.a(this.a.getApplicationContext(), 2131695370, 0).a();
+    HcePluginInstallActivity.a(this.a, false);
+    this.a.finish();
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("HcePluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
+    }
+    if (HcePluginInstallActivity.a(this.a).isPlugininstalled("vfc_plugin.apk"))
+    {
+      HcePluginInstallActivity.a(this.a);
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 2131695370, 0).a();
+    HcePluginInstallActivity.a(this.a, false);
     this.a.finish();
   }
 }

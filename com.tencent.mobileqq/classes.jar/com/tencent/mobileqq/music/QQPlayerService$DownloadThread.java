@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.music;
 
-import aljq;
+import alof;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
@@ -30,11 +30,11 @@ public class QQPlayerService$DownloadThread
   
   private File a(String paramString)
   {
-    File localFile = new File(aljq.bC);
+    File localFile = new File(alof.bC);
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
-    paramString = new File(aljq.bC + paramString);
+    paramString = new File(alof.bC + paramString);
     if (!paramString.exists()) {}
     try
     {
@@ -53,7 +53,7 @@ public class QQPlayerService$DownloadThread
   public void run()
   {
     // Byte code:
-    //   0: invokestatic 103	bdcb:b	()[J
+    //   0: invokestatic 103	bdgk:b	()[J
     //   3: astore 5
     //   5: aload 5
     //   7: ifnull +39 -> 46
@@ -142,7 +142,7 @@ public class QQPlayerService$DownloadThread
     //   184: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   187: aload_0
     //   188: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   191: invokestatic 160	bded:a	(Ljava/lang/String;II)V
+    //   191: invokestatic 160	bdim:a	(Ljava/lang/String;II)V
     //   194: return
     //   195: aload 6
     //   197: astore 5
@@ -516,11 +516,11 @@ public class QQPlayerService$DownloadThread
     //   1038: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1041: aload_0
     //   1042: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   1045: invokestatic 160	bded:a	(Ljava/lang/String;II)V
+    //   1045: invokestatic 160	bdim:a	(Ljava/lang/String;II)V
     //   1048: aload_0
     //   1049: getfield 332	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Boolean	Z
     //   1052: ifeq +6 -> 1058
-    //   1055: invokestatic 334	bded:a	()V
+    //   1055: invokestatic 334	bdim:a	()V
     //   1058: aload_0
     //   1059: iconst_0
     //   1060: putfield 332	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Boolean	Z
@@ -628,7 +628,7 @@ public class QQPlayerService$DownloadThread
     //   1289: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1292: aload_0
     //   1293: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   1296: invokestatic 160	bded:a	(Ljava/lang/String;II)V
+    //   1296: invokestatic 160	bdim:a	(Ljava/lang/String;II)V
     //   1299: return
     //   1300: aload 6
     //   1302: astore 5
@@ -709,7 +709,7 @@ public class QQPlayerService$DownloadThread
     //   1472: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1475: aload_0
     //   1476: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   1479: invokestatic 160	bded:a	(Ljava/lang/String;II)V
+    //   1479: invokestatic 160	bdim:a	(Ljava/lang/String;II)V
     //   1482: goto -434 -> 1048
     //   1485: iload_2
     //   1486: istore_1
@@ -846,7 +846,7 @@ public class QQPlayerService$DownloadThread
     //   1758: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1761: aload_0
     //   1762: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   1765: invokestatic 160	bded:a	(Ljava/lang/String;II)V
+    //   1765: invokestatic 160	bdim:a	(Ljava/lang/String;II)V
     //   1768: return
     //   1769: aload 6
     //   1771: astore 5
@@ -917,7 +917,7 @@ public class QQPlayerService$DownloadThread
     //   1914: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1917: aload_0
     //   1918: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   1921: invokestatic 160	bded:a	(Ljava/lang/String;II)V
+    //   1921: invokestatic 160	bdim:a	(Ljava/lang/String;II)V
     //   1924: iconst_0
     //   1925: istore_2
     //   1926: iload_2
@@ -999,7 +999,7 @@ public class QQPlayerService$DownloadThread
     //   2092: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   2095: aload_0
     //   2096: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   2099: invokestatic 160	bded:a	(Ljava/lang/String;II)V
+    //   2099: invokestatic 160	bdim:a	(Ljava/lang/String;II)V
     //   2102: return
     //   2103: aload 6
     //   2105: astore 5
@@ -1267,7 +1267,7 @@ public class QQPlayerService$DownloadThread
     //   2694: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   2697: aload_0
     //   2698: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   2701: invokestatic 160	bded:a	(Ljava/lang/String;II)V
+    //   2701: invokestatic 160	bdim:a	(Ljava/lang/String;II)V
     //   2704: goto -1656 -> 1048
     //   2707: iconst_0
     //   2708: istore_1
@@ -1334,7 +1334,7 @@ public class QQPlayerService$DownloadThread
     //   2839: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   2842: aload_0
     //   2843: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   2846: invokestatic 160	bded:a	(Ljava/lang/String;II)V
+    //   2846: invokestatic 160	bdim:a	(Ljava/lang/String;II)V
     //   2849: goto -1801 -> 1048
     //   2852: aload 6
     //   2854: astore 5
@@ -1390,7 +1390,7 @@ public class QQPlayerService$DownloadThread
     //   2973: astore 5
     //   2975: aload_0
     //   2976: getfield 32	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   2979: invokestatic 429	bded:a	(Ljava/lang/String;)V
+    //   2979: invokestatic 429	bdim:a	(Ljava/lang/String;)V
     //   2982: aload_0
     //   2983: iconst_0
     //   2984: putfield 123	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
@@ -1412,7 +1412,7 @@ public class QQPlayerService$DownloadThread
     //   3020: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   3023: aload_0
     //   3024: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   3027: invokestatic 160	bded:a	(Ljava/lang/String;II)V
+    //   3027: invokestatic 160	bdim:a	(Ljava/lang/String;II)V
     //   3030: goto -1982 -> 1048
     //   3033: astore 7
     //   3035: aconst_null
@@ -1463,7 +1463,7 @@ public class QQPlayerService$DownloadThread
     //   3136: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   3139: aload_0
     //   3140: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   3143: invokestatic 160	bded:a	(Ljava/lang/String;II)V
+    //   3143: invokestatic 160	bdim:a	(Ljava/lang/String;II)V
     //   3146: goto -2098 -> 1048
     //   3149: astore 6
     //   3151: aconst_null
@@ -1489,7 +1489,7 @@ public class QQPlayerService$DownloadThread
     //   3192: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   3195: aload_0
     //   3196: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   3199: invokestatic 160	bded:a	(Ljava/lang/String;II)V
+    //   3199: invokestatic 160	bdim:a	(Ljava/lang/String;II)V
     //   3202: aload 6
     //   3204: athrow
     //   3205: astore 5

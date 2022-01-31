@@ -26,7 +26,7 @@ public class nkt
       QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "follow isSuccess:" + String.valueOf(paramBoolean));
     }
     if (!paramBoolean) {
-      this.a.d(2131695727);
+      this.a.d(2131695729);
     }
     for (;;)
     {
@@ -49,7 +49,7 @@ public class nkt
         localArrayList.add("find.mp.qq.com");
         localArrayList.add("post.mp.qq.com");
         localArrayList.add("article.mp.qq.com");
-        atda.a("follow", (JSONObject)localObject, localArrayList, null);
+        athj.a("follow", (JSONObject)localObject, localArrayList, null);
         if (!paramBoolean) {
           break label748;
         }
@@ -68,7 +68,7 @@ public class nkt
               if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null)
               {
                 paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin;
-                azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.d, "mp_msg_sys_12", "scan_via", 0, 0, paramBundle, "", "", this.a.jdField_f_of_type_JavaLangString);
+                azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.d, "mp_msg_sys_12", "scan_via", 0, 0, paramBundle, "", "", this.a.jdField_f_of_type_JavaLangString);
               }
             }
             else
@@ -81,7 +81,7 @@ public class nkt
               AccountDetailActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.d, this.a.jdField_a_of_type_AndroidContentIntent);
               if ((!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.a.jdField_c_of_type_JavaLangString)))
               {
-                azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", this.a.jdField_b_of_type_JavaLangString, this.a.jdField_c_of_type_JavaLangString, 0, 0, "", "", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.d);
+                azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", this.a.jdField_b_of_type_JavaLangString, this.a.jdField_c_of_type_JavaLangString, 0, 0, "", "", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.d);
                 if (QLog.isColorLevel()) {
                   QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "----[follow report done]----");
                 }
@@ -116,19 +116,19 @@ public class nkt
         }
         if (paramInt == 58)
         {
-          this.a.d(2131695724);
+          this.a.d(2131695726);
           continue;
         }
         if (paramInt == 65)
         {
-          this.a.d(2131695697);
+          this.a.d(2131695699);
           continue;
         }
-        this.a.d(2131695727);
+        this.a.d(2131695729);
       }
       continue;
       label748:
-      this.a.d(2131695727);
+      this.a.d(2131695729);
     }
   }
 }

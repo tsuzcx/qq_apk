@@ -1,6 +1,22 @@
-public abstract interface avah
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+
+public class avah
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
+  public avah(NearbyGuideActivity paramNearbyGuideActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((this.a.a != null) && (!this.a.isFinishing()))
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+      this.a.e("0X800590A");
+    }
+  }
 }
 
 

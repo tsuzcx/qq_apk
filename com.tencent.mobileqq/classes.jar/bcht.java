@@ -1,326 +1,281 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.text.Spanned;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ListAdapter;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.contacts.view.IndexBar;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.Pic_list;
-import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.widget.XListView;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.lang.reflect.Method;
 
 public class bcht
+  extends PopupWindow
+  implements View.OnClickListener, Animation.AnimationListener, bchl, bcic
 {
-  protected static final String a;
-  protected static SimpleDateFormat a;
-  public static final HashMap<String, bchv> a;
-  public static Hashtable<String, TroopBarPublishActivity.Pic_list> a;
-  protected static final String b;
-  public static final HashMap<String, bchv> b;
-  protected static final String c;
-  public static final HashMap<String, String> c;
-  protected static final String d;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
+  private View jdField_a_of_type_AndroidViewView;
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  private bchu jdField_a_of_type_Bchu;
+  private bcib jdField_a_of_type_Bcib;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private Drawable b;
   
-  static
+  private bcht(BaseActivity paramBaseActivity, View paramView, int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_JavaLangString = alpo.a(2131715610);
-    jdField_b_of_type_JavaLangString = alpo.a(2131715620);
-    jdField_c_of_type_JavaLangString = alpo.a(2131715601);
-    d = alpo.a(2131715597);
-    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat();
-    jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    jdField_c_of_type_JavaUtilHashMap = new HashMap();
+    super(paramView, paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_Bcib = new bcib(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    paramBaseActivity = (LayerDrawable)paramBaseActivity.getResources().getDrawable(2130837729);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable();
+    this.b = paramBaseActivity.getDrawable(1);
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)paramBaseActivity.mutate());
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setDrawableByLayerId(2131369143, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable);
   }
   
-  public static int a(String paramString, char paramChar)
+  private static View a(bcht parambcht, Activity paramActivity, int paramInt)
   {
-    int j = 0;
-    if (paramString != null) {
-      for (int i = 0;; i = k)
-      {
-        k = i;
-        if (j >= paramString.length()) {
-          break;
-        }
-        k = i;
-        if (paramString.charAt(j) == paramChar) {
-          k = i + 1;
-        }
-        j += 1;
-      }
+    View localView = parambcht.getContentView();
+    AtPanelTouchController localAtPanelTouchController = (AtPanelTouchController)localView.findViewById(2131364771);
+    int i = aepi.a(60.0F, paramActivity.getResources());
+    IndexBar localIndexBar = (IndexBar)localView.findViewById(2131368223);
+    XListView localXListView = (XListView)localView.findViewById(2131378454);
+    ViewGroup.LayoutParams localLayoutParams = localXListView.getLayoutParams();
+    localXListView.setOverScrollMode(2);
+    if (paramInt == 1) {
+      localIndexBar.setVisibility(8);
     }
-    int k = 0;
-    return k;
-  }
-  
-  public static final Uri a(BaseActivity paramBaseActivity, String paramString, int paramInt)
-  {
-    if (lmm.b(BaseApplicationImpl.getContext())) {}
-    do
+    for (localLayoutParams.height = -2;; localLayoutParams.height = -1)
     {
-      return null;
-      paramString = new File(paramString);
-      if (paramString.exists()) {}
-      for (boolean bool = true; (bool) && (paramString.canWrite()); bool = paramString.mkdirs()) {
-        try
-        {
-          paramString = new Intent();
-          Uri localUri = FileProvider7Helper.setSystemCapture(paramBaseActivity, new File(aljq.bd + System.currentTimeMillis() + ".jpg"), paramString);
-          paramString.addFlags(3);
-          paramBaseActivity.startActivityForResult(paramString, paramInt);
-          return localUri;
-        }
-        catch (Exception paramBaseActivity)
-        {
-          paramBaseActivity.printStackTrace();
-          return null;
-        }
+      localAtPanelTouchController.a(0, 500);
+      localAtPanelTouchController.setAtPanelTouchListener(parambcht);
+      localAtPanelTouchController.setMode(paramInt);
+      localAtPanelTouchController.setPadding(0, i, 0, 0);
+      localXListView.setLayoutParams(localLayoutParams);
+      return localView;
+      localIndexBar.setVisibility(0);
+      ListAdapter localListAdapter = localXListView.getAdapter();
+      if (((localListAdapter instanceof bchv)) && (((bchv)localListAdapter).b() == 1)) {
+        localIndexBar.setVisibility(8);
       }
-    } while ((paramBaseActivity == null) || (paramBaseActivity.isFinishing()));
-    QQToast.a(paramBaseActivity, 2131696746, 1).b(paramBaseActivity.getTitleBarHeight());
-    return null;
+      i = aepi.a(40.0F, paramActivity.getResources());
+    }
   }
   
-  public static final String a(EditText paramEditText)
+  public static bcht a(BaseActivity paramBaseActivity, int paramInt1, int paramInt2)
   {
-    int j = 0;
-    if (paramEditText == null) {
-      return null;
+    View localView = LayoutInflater.from(paramBaseActivity).inflate(2131558601, null);
+    bcht localbcht = new bcht(paramBaseActivity, localView, paramInt1, paramInt2);
+    a(localbcht, paramBaseActivity, 1);
+    localView.findViewById(2131369562).setBackgroundColor(localView.getResources().getColor(2131166878));
+    localView.findViewById(2131362336).setBackgroundColor(localView.getResources().getColor(2131166878));
+    localbcht.setFocusable(false);
+    localView.setOnClickListener(localbcht);
+    ((TextView)localView.findViewById(2131362869)).setOnClickListener(localbcht);
+    ((RelativeLayout)localView.findViewById(2131362870)).setOnClickListener(localbcht);
+    localbcht.setInputMethodMode(32);
+    localbcht.setInputMethodMode(1);
+    localbcht.setClippingEnabled(false);
+    localbcht.setOutsideTouchable(true);
+    if (AppSetting.c) {
+      a(localbcht);
     }
-    if ((paramEditText.getEditableText() instanceof baiq))
+    return localbcht;
+  }
+  
+  public static void a(PopupWindow paramPopupWindow)
+  {
+    int i = 0;
+    if (!AppSetting.c) {}
+    for (;;)
     {
-      baiq localbaiq = (baiq)paramEditText.getEditableText();
-      if (localbaiq != null)
+      return;
+      Method[] arrayOfMethod = PopupWindow.class.getMethods();
+      int j = arrayOfMethod.length;
+      while (i < j)
       {
-        int i = localbaiq.length();
-        Object localObject1 = new char[i];
-        localbaiq.getChars(0, i, (char[])localObject1, 0);
-        paramEditText = new StringBuffer();
-        paramEditText.append((char[])localObject1);
-        localObject1 = (bain[])localbaiq.getSpans(0, i, bain.class);
-        if (((localbaiq instanceof Spanned)) && (Build.VERSION.SDK_INT >= 24)) {
-          Arrays.sort((Object[])localObject1, new bchu(localbaiq));
-        }
-        int k = 0;
-        if (j < localObject1.length)
-        {
-          Object localObject2 = localObject1[j];
-          int m;
-          if (((bain)localObject2).c == 1)
+        Method localMethod = arrayOfMethod[i];
+        if (localMethod.getName().equals("setTouchModal")) {
+          try
           {
-            i = localbaiq.getSpanStart(localObject2);
-            m = localbaiq.getSpanEnd(localObject2);
-            localObject2 = apog.a(((bain)localObject2).a & 0x7FFFFFFF);
-            paramEditText.replace(i + k, m + k, (String)localObject2);
-            i = k + (((String)localObject2).length() - (m - i));
+            localMethod.invoke(paramPopupWindow, new Object[] { Boolean.valueOf(false) });
+            return;
           }
-          for (;;)
+          catch (Exception paramPopupWindow)
           {
-            j += 1;
-            k = i;
-            break;
-            i = k;
-            if (((bain)localObject2).c == 2)
-            {
-              i = localbaiq.getSpanStart(localObject2);
-              m = localbaiq.getSpanEnd(localObject2);
-              localObject2 = ((bain)localObject2).a();
-              paramEditText.replace(i + k, m + k, (String)localObject2);
-              i = k + (((String)localObject2).length() - (m - i));
-            }
+            paramPopupWindow.printStackTrace();
+            return;
           }
         }
-        return paramEditText.toString();
+        i += 1;
       }
     }
-    return paramEditText.getEditableText().toString();
   }
   
-  public static String a(String paramString)
+  public void a()
   {
-    String str;
-    if (TextUtils.isEmpty(paramString))
+    if (!isShowing()) {
+      getContentView().scrollTo(0, -1000);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    dismiss();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    View localView = getContentView().findViewById(2131362336);
+    if (localView == null) {
+      return;
+    }
+    localView.setVisibility(paramInt1);
+    ((TextView)localView.findViewById(2131369789)).setText(localView.getResources().getText(paramInt2));
+    if (paramInt2 != 2131689924) {}
+    for (paramInt1 = 0;; paramInt1 = 8)
     {
-      str = "";
-      return str;
+      getContentView().findViewById(2131362250).setVisibility(paramInt1);
+      return;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    int j = getHeight();
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      paramInt3 = 0;
+      if (!bcib.a) {
+        break label67;
+      }
+    }
+    label67:
+    for (int i = 0;; i = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity))
+    {
+      paramInt2 = paramInt2 - paramInt3 + i;
+      if (paramInt2 != j) {
+        update(0, 0, -1, paramInt2);
+      }
+      a(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramInt1);
+      return;
+      paramInt3 = this.jdField_a_of_type_AndroidViewView.getHeight();
+      break;
+    }
+  }
+  
+  public void a(bchu parambchu)
+  {
+    this.jdField_a_of_type_Bchu = parambchu;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setDrawableByLayerId(2131369143, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
     for (;;)
     {
-      try
-      {
-        boolean bool = a(paramString);
-        if (!bool) {
-          return paramString;
-        }
-        i = 0;
-        str = paramString;
+      if (QLog.isColorLevel()) {
+        QLog.d("PopupCardDialog", 2, "JSKJSSKSKSKSK+" + paramBoolean);
       }
-      catch (Exception localException1)
-      {
-        try
-        {
-          if (i >= bahu.a.length) {
-            break;
-          }
-          str = paramString;
-          if (paramString.indexOf(bahu.a[i]) != -1) {
-            str = paramString.replace(bahu.a[i], "\024" + (char)i);
-          }
-          i += 1;
-          paramString = str;
-        }
-        catch (Exception localException2)
-        {
-          int i;
-          StringBuilder localStringBuilder;
-          continue;
-        }
-        localException1 = localException1;
-        localException1.printStackTrace();
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder().append("convertFaceStringTextToIndex:");
-          if (paramString.length() > 200)
-          {
-            i = 200;
-            QLog.e("TroopBar", 2, paramString.substring(0, i));
-          }
-        }
-        else
-        {
-          return paramString;
-        }
-      }
-      i = paramString.length() - 1;
-    }
-    return paramString;
-  }
-  
-  public static final JSONObject a(String paramString1, Context paramContext, String paramString2, String paramString3, String paramString4, Map<String, String> paramMap)
-  {
-    HashMap localHashMap1;
-    HashMap localHashMap2;
-    if (arof.a(paramString2))
-    {
-      localHashMap1 = new HashMap();
-      localHashMap1.put("Connection", "keep-alive");
-      localHashMap1.put("Referer", "http://www.qq.com");
-      localHashMap2 = new HashMap();
-      localHashMap2.put("file", paramString2);
-      if (paramMap != null) {
-        break label265;
-      }
-    }
-    label265:
-    for (paramContext = new HashMap();; paramContext = paramMap)
-    {
-      paramContext.put("file", paramString2);
-      long l = System.currentTimeMillis();
-      paramString1 = ndd.a(paramString1, paramString3, paramString4, paramContext, localHashMap2, localHashMap1);
-      if (QLog.isColorLevel())
-      {
-        QLog.d("TroopBar", 2, "singleUploadImage t = " + (System.currentTimeMillis() - l) + ", path = " + paramString2 + ", size = " + arof.a(paramString2));
-        QLog.d("TroopBar", 2, "urlResult: " + paramString1);
-      }
-      if (TextUtils.isEmpty(paramString1)) {
-        return null;
-      }
-      try
-      {
-        paramString1 = new JSONObject(paramString1);
-        if ((paramString1.optInt("retcode", -1) == 0) || (paramString1.optInt("ret", -1) == 0))
-        {
-          paramString1 = paramString1.getJSONObject("result");
-          return paramString1;
-        }
-      }
-      catch (JSONException paramString1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopBar", 2, paramString1.getMessage());
-        }
-      }
-      return null;
+      return;
+      this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setDrawableByLayerId(2131369143, this.b);
     }
   }
   
-  public static final void a(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5)
+  public void b(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = bdee.b(paramContext);
-    azmj.b(null, "P_CliOper", "BizTechReport", "", paramString1, paramString2, 0, paramInt, "" + i, paramString3, paramString4, paramString5);
+    a(paramInt1, paramInt2, -1);
   }
   
-  public static void a(Context paramContext, String paramString1, String paramString2, Bundle paramBundle1, String paramString3, int paramInt, Bundle paramBundle2, bcgo parambcgo, String paramString4)
+  public void c()
   {
-    if ((paramBundle1 != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
     {
-      paramBundle1.putString("version", "8.3.3");
-      paramBundle1.putString("platform", "android");
-      paramBundle1.putString("mType", "qb_troop_bar");
-      paramBundle1.putString("Cookie", "uin=" + paramString1 + ";skey=" + paramString2);
-      paramBundle1.putString("Referer", "https://buluo.qq.com");
-      paramString1 = new HashMap();
-      paramString1.put("BUNDLE", paramBundle1);
-      paramString1.put("CONTEXT", paramContext.getApplicationContext());
-      new bcgn(paramString3, paramString4, parambcgo, paramInt, paramBundle2).execute(new HashMap[] { paramString1 });
+      InputMethodManager localInputMethodManager = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("input_method");
+      if (localInputMethodManager != null) {
+        localInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().getDecorView().getWindowToken(), 0);
+      }
     }
-    while (!QLog.isColorLevel()) {
+  }
+  
+  @TargetApi(16)
+  public void dismiss()
+  {
+    this.jdField_a_of_type_Bcib.a();
+    this.jdField_a_of_type_Bcib.a(null);
+    this.jdField_a_of_type_AndroidViewView = null;
+    if (Build.VERSION.SDK_INT >= 11) {
+      super.dismiss();
+    }
+    while ((!isShowing()) || ((this.jdField_a_of_type_AndroidViewAnimationAnimation != null) && (!this.jdField_a_of_type_AndroidViewAnimationAnimation.hasEnded()))) {
       return;
     }
-    QLog.w("TroopBar", 2, "httpGet skey is null!!!!!!!!!!!!!!!");
+    if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)
+    {
+      this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130772321);
+      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
+    }
+    getContentView().startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
   
-  public static void a(BaseActivity paramBaseActivity, Bundle paramBundle1, String paramString, int paramInt, Bundle paramBundle2, bcgo parambcgo)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    a(paramBaseActivity, paramBundle1, paramString, paramInt, paramBundle2, parambcgo, "GET");
+    if (QLog.isColorLevel()) {
+      QLog.i("PopupCardDialog", 2, "onAnimationEnd");
+    }
+    super.dismiss();
   }
   
-  protected static void a(BaseActivity paramBaseActivity, Bundle paramBundle1, String paramString1, int paramInt, Bundle paramBundle2, bcgo parambcgo, String paramString2)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    AppRuntime localAppRuntime = paramBaseActivity.getAppRuntime();
-    String str = localAppRuntime.getAccount();
-    a(paramBaseActivity, str, ((TicketManager)localAppRuntime.getManager(2)).getSkey(str), paramBundle1, paramString1, paramInt, paramBundle2, parambcgo, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.i("PopupCardDialog", 2, "onAnimationStart");
+    }
   }
   
-  public static final void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  public void onClick(View paramView)
   {
-    a("Grp_tribe", paramString1, paramString2, paramString3, paramString4, paramString5, paramString6);
+    if (paramView.getId() == 2131362869) {
+      if (this.jdField_a_of_type_Bchu != null) {
+        this.jdField_a_of_type_Bchu.a(paramView);
+      }
+    }
+    while (paramView.getId() == 2131362870) {
+      return;
+    }
+    dismiss();
   }
   
-  public static final void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  public void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    azmj.b(null, "P_CliOper", paramString1, "", paramString2, paramString3, 0, 0, paramString4, paramString5, paramString6, paramString7);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (-1 != paramString.indexOf('/'));
-  }
-  
-  public static void b(BaseActivity paramBaseActivity, Bundle paramBundle1, String paramString, int paramInt, Bundle paramBundle2, bcgo parambcgo)
-  {
-    a(paramBaseActivity, paramBundle1, paramString, paramInt, paramBundle2, parambcgo, "POST");
-  }
-  
-  public static final void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    azmj.b(null, "dc00899", "Grp_tribe", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    super.showAtLocation(paramView, paramInt1, paramInt2, paramInt3);
+    this.jdField_a_of_type_Bcib.a(this);
+    this.jdField_a_of_type_Bcib.a(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

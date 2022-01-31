@@ -1,10 +1,25 @@
-public abstract interface bmte
+import android.animation.TypeEvaluator;
+
+public class bmte
+  implements TypeEvaluator<bmtc>
 {
-  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
+  private bmtc a;
   
-  public abstract void c(int paramInt);
-  
-  public abstract void e(int paramInt);
+  public bmtc a(float paramFloat, bmtc parambmtc1, bmtc parambmtc2)
+  {
+    float f1 = parambmtc1.a + (parambmtc2.a - parambmtc1.a) * paramFloat;
+    float f2 = parambmtc1.b + (parambmtc2.b - parambmtc1.b) * paramFloat;
+    float f3 = parambmtc1.c + (parambmtc2.c - parambmtc1.c) * paramFloat;
+    paramFloat = parambmtc1.d + (parambmtc2.d - parambmtc1.d) * paramFloat;
+    if (this.a == null) {
+      this.a = new bmtc(f1, f2, f3, paramFloat);
+    }
+    for (;;)
+    {
+      return this.a;
+      this.a.a(f1, f2, f3, paramFloat);
+    }
+  }
 }
 
 

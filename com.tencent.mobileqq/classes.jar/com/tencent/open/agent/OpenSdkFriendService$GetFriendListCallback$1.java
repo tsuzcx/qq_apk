@@ -1,20 +1,20 @@
 package com.tencent.open.agent;
 
-import bfbw;
-import bfca;
+import bfgf;
+import bfgj;
 import java.util.ArrayList;
 
 public class OpenSdkFriendService$GetFriendListCallback$1
   implements Runnable
 {
-  public OpenSdkFriendService$GetFriendListCallback$1(bfca parambfca, ArrayList paramArrayList, String paramString) {}
+  public OpenSdkFriendService$GetFriendListCallback$1(bfgj parambfgj, ArrayList paramArrayList, String paramString) {}
   
   public void run()
   {
-    if ("action_invite".equals(this.jdField_a_of_type_Bfca.a.d))
+    if ("action_invite".equals(this.jdField_a_of_type_Bfgj.a.d))
     {
-      this.jdField_a_of_type_Bfca.a.a(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_Bfca.a.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Bfgj.a.a(this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Bfgj.a.a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

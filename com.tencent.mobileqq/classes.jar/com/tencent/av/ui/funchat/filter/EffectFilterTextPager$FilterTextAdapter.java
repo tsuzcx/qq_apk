@@ -88,8 +88,8 @@ public class EffectFilterTextPager$FilterTextAdapter
     Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localContext != null)
     {
-      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131559648, null);
-      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131372606);
+      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131559647, null);
+      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131372632);
       localImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
       if (localObject != null) {}
       for (localObject = ((FilterItem)localObject).getIconurl();; localObject = null)

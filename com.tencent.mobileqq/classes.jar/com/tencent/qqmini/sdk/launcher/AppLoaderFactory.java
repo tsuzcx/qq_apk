@@ -6,10 +6,10 @@ import android.content.Context;
 import android.os.IBinder;
 import android.os.Process;
 import android.text.TextUtils;
-import bghr;
-import bgql;
-import bgqu;
-import bgqy;
+import bgly;
+import bgus;
+import bgvb;
+import bgvf;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader;
 import com.tencent.qqmini.sdk.launcher.shell.IAppBrandProxy;
@@ -29,27 +29,27 @@ public class AppLoaderFactory
   public static final String TAG = "minisdk-start";
   private static volatile AppLoaderFactory instance;
   private static volatile byte[] lock = new byte[0];
-  @bgqu(a="com.tencent.qqmini.sdk.ipc.AppBrandProxy")
+  @bgvb(a="com.tencent.qqmini.sdk.ipc.AppBrandProxy")
   private IAppBrandProxy appBrandProxy;
-  @bgqu(a="com.tencent.qqmini.sdk.launcher.AppUIProxy")
+  @bgvb(a="com.tencent.qqmini.sdk.launcher.AppUIProxy")
   private IUIProxy appUIProxy;
   private BaselibLoader baselibLoader;
-  @bgqu(a="com.tencent.qqmini.sdk.core.Build")
+  @bgvb(a="com.tencent.qqmini.sdk.core.Build")
   private IBuild build;
-  @bgqu(a="com.tencent.qqmini.sdk.minigame.ui.GameUIProxy")
+  @bgvb(a="com.tencent.qqmini.sdk.minigame.ui.GameUIProxy")
   private IUIProxy gameUIProxy;
-  @bgqu(a="com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager")
+  @bgvb(a="com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager")
   private ILaunchManager launchManager;
   Context mContext;
   private String mProcessName;
   private Class mainServiceBinderClass;
-  @bgqu(a="com.tencent.qqmini.sdk.core.MiniAppEnv")
+  @bgvb(a="com.tencent.qqmini.sdk.core.MiniAppEnv")
   private IMiniAppEnv miniAppEnv;
-  @bgqu(a="com.tencent.qqmini.sdk.core.log.LogImpl")
+  @bgvb(a="com.tencent.qqmini.sdk.core.log.LogImpl")
   private Log minilog;
-  @bgqu(a="com.tencent.qqmini.sdk.core.proxy.FakeProxyManager")
-  private bghr proxyManager;
-  @bgqu(a="com.tencent.qqmini.sdk.receiver.MainReceiverProxy")
+  @bgvb(a="com.tencent.qqmini.sdk.core.proxy.FakeProxyManager")
+  private bgly proxyManager;
+  @bgvb(a="com.tencent.qqmini.sdk.receiver.MainReceiverProxy")
   private IReceiverProxy receiverProxy;
   
   /* Error */
@@ -190,11 +190,11 @@ public class AppLoaderFactory
     if (localObject != null) {
       return localObject;
     }
-    if (paramField.isAnnotationPresent(bgqu.class))
+    if (paramField.isAnnotationPresent(bgvb.class))
     {
       paramField.setAccessible(true);
-      localObject = ((bgqu)paramField.getAnnotation(bgqu.class)).a();
-      localObject = bgqy.a().a((String)localObject);
+      localObject = ((bgvb)paramField.getAnnotation(bgvb.class)).a();
+      localObject = bgvf.a().a((String)localObject);
       paramField.set(this, localObject);
       return localObject;
     }
@@ -225,7 +225,7 @@ public class AppLoaderFactory
   
   public Class findClass(String paramString)
   {
-    return bgqy.a().a(paramString);
+    return bgvf.a().a(paramString);
   }
   
   public IAppBrandProxy getAppBrandProxy()
@@ -330,7 +330,7 @@ public class AppLoaderFactory
     return this.mProcessName;
   }
   
-  public bghr getProxyManager()
+  public bgly getProxyManager()
   {
     return this.proxyManager;
   }
@@ -345,18 +345,18 @@ public class AppLoaderFactory
     return this.build;
   }
   
-  public void init(Context paramContext, bgql parambgql)
+  public void init(Context paramContext, bgus parambgus)
   {
     if (this.mContext != null) {
       return;
     }
     this.mContext = paramContext;
-    bgqy localbgqy = bgqy.a();
-    if (parambgql != null) {}
-    for (boolean bool = parambgql.b;; bool = true)
+    bgvf localbgvf = bgvf.a();
+    if (parambgus != null) {}
+    for (boolean bool = parambgus.b;; bool = true)
     {
-      localbgqy.a(paramContext, bool);
-      bgqy.a().a();
+      localbgvf.a(paramContext, bool);
+      bgvf.a().a();
       doAnnotation();
       QMLog.setLog(this.minilog);
       this.miniAppEnv.init(paramContext);

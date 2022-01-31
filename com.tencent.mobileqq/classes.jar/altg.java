@@ -1,46 +1,36 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
-class altg
-  implements aubn
+public final class altg
+  implements awdn
 {
-  altg(altc paramaltc) {}
+  private WeakReference<FrameHelperActivity> a;
   
-  public void a(int paramInt)
+  public altg(FrameHelperActivity paramFrameHelperActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onBindStateChanged = " + paramInt);
-    }
-    this.a.d();
+    this.a = new WeakReference(paramFrameHelperActivity);
   }
   
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onRecommendCountChanged = " + paramInt);
-    }
-    this.a.d();
-  }
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onUpdateContactList = " + paramInt);
-    }
-    if ((paramInt & 0x1) != 0) {
-      synchronized (altc.a(this.a))
+    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
+    if (localFrameHelperActivity == null) {}
+    FragmentActivity localFragmentActivity;
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      do
       {
-        Iterator localIterator = altc.a(this.a).iterator();
-        if (localIterator.hasNext()) {
-          ((alti)localIterator.next()).b();
-        }
-      }
-    }
+        return;
+        localFragmentActivity = localFrameHelperActivity.getActivity();
+      } while ((localFragmentActivity == null) || (localFragmentActivity.getAppInterface() == null));
+      localQQAppInterface = localFragmentActivity.app;
+    } while ((!awia.a().a(localQQAppInterface, localFragmentActivity)) || ((FrameHelperActivity.a(localFrameHelperActivity) != null) && (FrameHelperActivity.a(localFrameHelperActivity).isShowing())));
+    FrameHelperActivity.a(localFrameHelperActivity, localQQAppInterface, localFragmentActivity);
+    azqs.b(localQQAppInterface, "dc00898", "", "", "0X800A00D", "0X800A00D", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,31 +1,13 @@
-import android.graphics.Canvas;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bnpb
+final class bnpb
+  implements DialogInterface.OnClickListener
 {
-  public boolean d = true;
-  public boolean e = true;
-  public int f;
-  public boolean f;
-  public int g;
-  
-  bnpb(TCProgressBar paramTCProgressBar)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_f_of_type_Boolean = false;
-  }
-  
-  void a(Canvas paramCanvas)
-  {
-    this.jdField_f_of_type_Boolean = false;
-  }
-  
-  boolean a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
-    }
-    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
+    bnpa.a = null;
+    paramDialogInterface.cancel();
   }
 }
 

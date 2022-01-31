@@ -13,7 +13,7 @@ class MultiVideoEnterPageActivity$RefreshDisplayNameRunnable
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695840);
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695842);
     if (this.this$0.jdField_c_of_type_Int == 2) {
       localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(3000, String.valueOf(this.this$0.jdField_a_of_type_Long), null);
     }

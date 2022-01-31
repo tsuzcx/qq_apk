@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.os.Message;
-import awdi;
+import awhr;
 import com.tencent.mobileqq.data.MessageRecord;
 import mqq.os.MqqHandler;
 
@@ -17,8 +17,8 @@ class ChatHistory$8
       localStringBuilder = new StringBuilder();
     }
     int i = 0;
-    if (this.this$0.jdField_a_of_type_Awdi != null) {
-      i = this.this$0.jdField_a_of_type_Awdi.a(MessageRecord.getTableName(this.this$0.b, this.this$0.jdField_a_of_type_Int));
+    if (this.this$0.jdField_a_of_type_Awhr != null) {
+      i = this.this$0.jdField_a_of_type_Awhr.a(MessageRecord.getTableName(this.this$0.b, this.this$0.jdField_a_of_type_Int));
     }
     int j = ChatHistory.a(this.this$0.app, this.this$0.b, this.this$0.jdField_a_of_type_Int, localStringBuilder);
     Message localMessage = this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(this.jdField_a_of_type_Int);

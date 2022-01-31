@@ -72,7 +72,7 @@ public class tlv
       if ((((QQAppInterface)localObject).a() == null) || (((QQAppInterface)localObject).a().a() == null)) {
         return 0;
       }
-      return ((QQAppInterface)localObject).a().a().a(aljq.aQ, 1008);
+      return ((QQAppInterface)localObject).a().a().a(alof.aQ, 1008);
     }
     return 0;
   }
@@ -94,7 +94,7 @@ public class tlv
       localsfg.jdField_a_of_type_JavaNetURL = paramURL;
       localsfg.jdField_a_of_type_Int = paramImageView.getWidth();
       localsfg.b = paramImageView.getHeight();
-      paramURL = bdbq.a(localsfg.a());
+      paramURL = bdfz.a(localsfg.a());
       if (paramURL != null) {
         return paramURL.a();
       }
@@ -359,7 +359,7 @@ public class tlv
     }
     Object localObject = paramDrawable;
     if (paramDrawable == null) {
-      localObject = paramContext.getResources().getDrawable(2130841377);
+      localObject = paramContext.getResources().getDrawable(2130841378);
     }
     if (paramURL == null)
     {
@@ -378,7 +378,7 @@ public class tlv
     if ((paramContext != null) && (paramRoundImageView != null))
     {
       localURL = a(paramString);
-      paramContext = paramContext.getResources().getDrawable(2130840084);
+      paramContext = paramContext.getResources().getDrawable(2130840085);
       if (localURL == null) {
         paramRoundImageView.setImageDrawable(paramContext);
       }
@@ -400,7 +400,7 @@ public class tlv
     if (paramtmc == null) {
       throw new RuntimeException("downloadOpenWeishiGoH5 must not be null!");
     }
-    if (xoo.a(paramContext))
+    if (xsx.a(paramContext))
     {
       if (!TextUtils.isEmpty(paramString1))
       {
@@ -578,7 +578,7 @@ public class tlv
     if ((paramKandianUrlImageView != null) && (!TextUtils.isEmpty(paramString)))
     {
       paramString = a(paramString);
-      paramKandianUrlImageView.a(BaseApplicationImpl.getApplication().getApplicationContext().getResources().getDrawable(2130841465)).a(paramString);
+      paramKandianUrlImageView.a(BaseApplicationImpl.getApplication().getApplicationContext().getResources().getDrawable(2130841466)).a(paramString);
     }
   }
   
@@ -633,7 +633,7 @@ public class tlv
   
   public static void a(List<stSimpleMetaFeed> paramList, boolean paramBoolean)
   {
-    if (!bdee.h(BaseApplication.getContext())) {}
+    if (!bdin.h(BaseApplication.getContext())) {}
     while ((paramList == null) || (paramList.size() == 0)) {
       return;
     }
@@ -670,7 +670,7 @@ public class tlv
     {
       return false;
       tlo.d("WSPushLog", "isMsgFromWeishiPush structMsg.frienduin: " + paramMessageForStructing.frienduin);
-    } while ((!TextUtils.equals(aljq.aQ, paramMessageForStructing.frienduin)) || (paramMessageForStructing.issend != 0));
+    } while ((!TextUtils.equals(alof.aQ, paramMessageForStructing.frienduin)) || (paramMessageForStructing.issend != 0));
     return true;
   }
   

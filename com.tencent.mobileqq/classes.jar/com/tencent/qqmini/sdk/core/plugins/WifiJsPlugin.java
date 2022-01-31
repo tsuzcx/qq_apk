@@ -13,10 +13,10 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bghn;
-import bgho;
-import bgjd;
-import bgkd;
+import bglu;
+import bglv;
+import bgnk;
+import bgok;
 import java.util.BitSet;
 import java.util.Iterator;
 import java.util.List;
@@ -185,11 +185,11 @@ public class WifiJsPlugin
       return;
       localActivity = this.mMiniAppContext.a();
     } while ((localActivity == null) || (paramLocationPermissionListener == null));
-    bgjd.a().a(new WifiJsPlugin.3(this, paramLocationPermissionListener));
+    bgnk.a().a(new WifiJsPlugin.3(this, paramLocationPermissionListener));
     localActivity.requestPermissions(new String[] { "android.permission.ACCESS_FINE_LOCATION" }, 9528);
   }
   
-  public String connectWifi(bgkd parambgkd)
+  public String connectWifi(bgok parambgok)
   {
     if (this.wifiManager != null) {
       if (!this.wifiManager.isWifiEnabled()) {}
@@ -198,7 +198,7 @@ public class WifiJsPlugin
     {
       try
       {
-        Object localObject1 = new JSONObject(parambgkd.b);
+        Object localObject1 = new JSONObject(parambgok.b);
         if (localObject1 != null)
         {
           String str = ((JSONObject)localObject1).optString("SSID");
@@ -220,7 +220,7 @@ public class WifiJsPlugin
             if (i != -1) {
               this.wifiManager.enableNetwork(i, true);
             }
-            parambgkd.a();
+            parambgok.a();
             return "";
           }
         }
@@ -230,14 +230,14 @@ public class WifiJsPlugin
         localThrowable.printStackTrace();
         Object localObject2 = null;
         continue;
-        parambgkd.a(":invalid network id");
+        parambgok.a(":invalid network id");
         continue;
-        parambgkd.a(":invalid data");
+        parambgok.a(":invalid data");
         continue;
       }
-      parambgkd.a(":wifi is disable");
+      parambgok.a(":wifi is disable");
       continue;
-      parambgkd.a(":not invoke startWifi");
+      parambgok.a(":not invoke startWifi");
       continue;
       label211:
       int i = 0;
@@ -304,7 +304,7 @@ public class WifiJsPlugin
     }
   }
   
-  public String getConnectedWifi(bgkd parambgkd)
+  public String getConnectedWifi(bgok parambgok)
   {
     JSONObject localJSONObject;
     if (this.wifiManager != null) {
@@ -317,7 +317,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject.put("errCode", 0);
-        parambgkd.a(localJSONObject);
+        parambgok.a(localJSONObject);
         return "";
       }
       catch (JSONException localJSONException1)
@@ -329,7 +329,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject.put("errCode", 12005);
-        parambgkd.a(localJSONObject, ":wifi is disable");
+        parambgok.a(localJSONObject, ":wifi is disable");
       }
       catch (JSONException localJSONException2)
       {
@@ -342,7 +342,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject.put("errCode", 12000);
-        parambgkd.a(localJSONObject, ":not invoke startWifi");
+        parambgok.a(localJSONObject, ":not invoke startWifi");
       }
       catch (JSONException localJSONException3)
       {
@@ -369,7 +369,7 @@ public class WifiJsPlugin
     return 0;
   }
   
-  public String getWifiList(bgkd parambgkd)
+  public String getWifiList(bgok parambgok)
   {
     JSONArray localJSONArray;
     JSONObject localJSONObject1;
@@ -388,8 +388,8 @@ public class WifiJsPlugin
       {
         localJSONObject1.put("wifiList", localJSONArray);
         localJSONObject2.put("errCode", 0);
-        parambgkd.a(localJSONObject2);
-        parambgkd.a.a("onGetWifiList", localJSONObject1.toString(), 0);
+        parambgok.a(localJSONObject2);
+        parambgok.a.a("onGetWifiList", localJSONObject1.toString(), 0);
         return "";
       }
       catch (JSONException localJSONException3)
@@ -401,7 +401,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject1.put("errCode", 12005);
-        parambgkd.a(localJSONObject1, ":wifi is disable");
+        parambgok.a(localJSONObject1, ":wifi is disable");
       }
       catch (JSONException localJSONException1)
       {
@@ -414,7 +414,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject1.put("errCode", 12000);
-        parambgkd.a(localJSONObject1, ":not invoke startWifi");
+        parambgok.a(localJSONObject1, ":not invoke startWifi");
       }
       catch (JSONException localJSONException2)
       {
@@ -431,10 +431,10 @@ public class WifiJsPlugin
     return getSecurityMode(paramScanResult) > 1;
   }
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    super.onCreate(parambgho);
-    this.mActivity = parambgho.a();
+    super.onCreate(parambglv);
+    this.mActivity = parambglv.a();
   }
   
   public void onDestroy()
@@ -443,7 +443,7 @@ public class WifiJsPlugin
     this.wifiReceiver = null;
   }
   
-  public String startWifi(bgkd parambgkd)
+  public String startWifi(bgok parambgok)
   {
     JSONObject localJSONObject;
     if (Build.VERSION.SDK_INT >= 23) {
@@ -458,7 +458,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject.put("errCode", 0);
-        parambgkd.a(localJSONObject);
+        parambgok.a(localJSONObject);
         registerWifiReceiver();
         return "";
       }
@@ -467,14 +467,14 @@ public class WifiJsPlugin
         localJSONException1.printStackTrace();
         continue;
       }
-      checkPermission(new WifiJsPlugin.2(this, parambgkd));
+      checkPermission(new WifiJsPlugin.2(this, parambgok));
       continue;
       this.wifiManager = ((WifiManager)this.mContext.getApplicationContext().getSystemService("wifi"));
       localJSONObject = new JSONObject();
       try
       {
         localJSONObject.put("errCode", 0);
-        parambgkd.a(localJSONObject);
+        parambgok.a(localJSONObject);
         registerWifiReceiver();
       }
       catch (JSONException localJSONException2)
@@ -487,7 +487,7 @@ public class WifiJsPlugin
     }
   }
   
-  public String stopWifi(bgkd parambgkd)
+  public String stopWifi(bgok parambgok)
   {
     JSONObject localJSONObject1;
     if (this.wifiManager != null)
@@ -500,7 +500,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject1.put("errCode", 0);
-        parambgkd.a();
+        parambgok.a();
         unregisterWifiReceiver();
         return "";
       }
@@ -513,7 +513,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject2.put("errCode", 12000);
-        parambgkd.a(":not invoke startWifi");
+        parambgok.a(":not invoke startWifi");
       }
       catch (JSONException localJSONException2)
       {

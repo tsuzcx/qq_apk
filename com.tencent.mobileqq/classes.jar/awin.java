@@ -1,107 +1,115 @@
-import android.opengl.GLES20;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class awin
 {
-  public static int a;
-  public static int b = 2;
-  public static int c = 3;
-  public HashMap<String, Integer> a;
-  private int[] a;
+  private static awio a;
+  public static long c;
+  public static long d;
+  protected long a;
+  protected QQAppInterface a;
+  protected long b;
+  protected long e = 524288000L;
+  protected long f = 10485760L;
+  protected long g = 10485760L;
+  protected long h = 5242880L;
   
-  static
+  public static final void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    jdField_a_of_type_Int = 1;
+    c();
+    jdField_a_of_type_Awio.a(paramLong, paramBoolean1, paramBoolean2);
   }
   
-  public awin()
+  public static final void b()
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[1];
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    c();
+    jdField_a_of_type_Awio.a();
   }
   
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7)
+  private static final void c()
   {
-    a(paramFloat1, "percent1");
-    a(paramFloat2, "percent2");
-    a(paramFloat3, "percent3");
-    a(paramFloat4, "percent4");
-    a(paramFloat5, "percent5");
-    a(paramFloat6, "percent6");
-    a(paramFloat7, "percent7");
-  }
-  
-  private void a(float paramFloat, String paramString)
-  {
-    int i = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
-    if (i >= 0) {
-      GLES20.glUniform1f(i, paramFloat);
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    float f = new float[] { 1.0F, 1.0F, 0.95F, 0.9F }[paramInt];
-    if (paramInt == c) {
-      f = 1.1F;
-    }
-    for (;;)
-    {
-      a(f, "quality");
-      a(0.0F, "add_red");
-      a(0.0F, "red_m");
-      a(0.0F, "green_m");
-      a(0.0F, "blue_m");
-      return;
-      if (paramInt == b) {
-        f = 1.0F;
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    float f5 = 0.2F;
-    float f1;
-    float f2;
-    float f3;
-    float f4;
-    if (paramInt == jdField_a_of_type_Int)
-    {
-      f1 = 0.455F;
-      f2 = 0.17F;
-      f3 = 0.177F;
-      f4 = 0.0F;
-    }
-    for (;;)
-    {
-      a(0.0F, f1, f2, f3, 0.0F, f5, f4);
-      b(paramInt);
-      return;
-      if (paramInt == b)
+    if (jdField_a_of_type_Awio == null) {
+      try
       {
-        f1 = 0.62F;
-        f2 = 0.375F;
-        f3 = 0.07F;
-        f5 = 0.125F;
-        f4 = 0.26F;
+        if (jdField_a_of_type_Awio == null) {
+          jdField_a_of_type_Awio = new awio();
+        }
+        return;
       }
-      else if (paramInt == c)
+      finally {}
+    }
+  }
+  
+  private void d()
+  {
+    c();
+    long[] arrayOfLong = jdField_a_of_type_Awio.a();
+    this.jdField_a_of_type_Long = (arrayOfLong[0] + arrayOfLong[1]);
+    this.b = (arrayOfLong[2] + arrayOfLong[3]);
+    if (QLog.isColorLevel()) {
+      awiw.a("PIC_TAG_PRELOAD", "", "updateTrafficData ", "picTrafficFlowXG:" + this.jdField_a_of_type_Long + ",C2CPicDownFlowXG:" + arrayOfLong[0] + ",Group/DiscussPicDownFlowXG:" + arrayOfLong[1] + ",picTrafficFlowWIFI:" + this.b + ",C2CPicDownFlowWIFI:" + arrayOfLong[2] + ",Group/DiscussPicDownFlowWIFI:" + arrayOfLong[3]);
+    }
+  }
+  
+  public int a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    d();
+    paramBoolean = DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name());
+    if (QLog.isColorLevel()) {
+      awiw.a("PIC_TAG_PRELOAD", "isOverLimit", "isInDPCWhiteList:" + paramBoolean);
+    }
+    if ((paramInt2 == 0) || ((paramBoolean) && (paramInt2 != 3)))
+    {
+      if (this.b >= this.e)
       {
-        f1 = 0.824F;
-        f2 = 0.461F;
-        f3 = 0.152F;
-        f4 = 0.0F;
-      }
-      else
-      {
-        f4 = 0.0F;
-        f5 = 0.0F;
-        f3 = 0.0F;
-        f2 = 0.0F;
-        f1 = 0.0F;
+        awjk.a(paramInt2, this.e);
+        awiw.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowWIFI:" + this.b);
+        return -8;
       }
     }
+    else if (paramInt2 == 1)
+    {
+      if (this.jdField_a_of_type_Long >= this.f)
+      {
+        awjk.a(paramInt2, this.f);
+        awiw.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long);
+        return -8;
+      }
+    }
+    else if (paramInt2 == 2)
+    {
+      if (this.jdField_a_of_type_Long >= this.g)
+      {
+        awjk.a(paramInt2, this.g);
+        awiw.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long);
+        return -8;
+      }
+    }
+    else if ((paramInt2 == 3) && (this.jdField_a_of_type_Long >= this.h))
+    {
+      awjk.a(paramInt2, this.h);
+      awiw.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long);
+      return -8;
+    }
+    return 0;
+  }
+  
+  public void a()
+  {
+    c = awji.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "UseLocalFlowSet", 0L);
+    d = awji.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "PicDTPt2", 0L);
+    this.e = awji.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "MaxWifiFlow", 524288000L);
+    this.f = awji.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Max4GFlow", 10485760L);
+    this.g = awji.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Max3GFlow", 10485760L);
+    this.h = awji.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Max2GFlow", 5242880L);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    a();
   }
 }
 

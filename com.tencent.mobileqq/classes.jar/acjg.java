@@ -1,47 +1,14 @@
-import com.tencent.mobileqq.data.TencentDocData;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class acjg
-  implements Comparator<Object>
+  implements DialogInterface.OnClickListener
 {
   acjg(acjf paramacjf) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramObject1 instanceof FileManagerEntity)) {
-      if ((paramObject2 instanceof FileManagerEntity)) {
-        if (((FileManagerEntity)paramObject1).srvTime <= ((FileManagerEntity)paramObject2).srvTime) {}
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return -1;
-          return 1;
-          if (!(paramObject2 instanceof TencentDocData)) {
-            break;
-          }
-        } while (((FileManagerEntity)paramObject1).srvTime > ((TencentDocData)paramObject2).aioTime);
-        return 1;
-        if (!(paramObject1 instanceof TencentDocData)) {
-          break label124;
-        }
-        if (!(paramObject2 instanceof FileManagerEntity)) {
-          break;
-        }
-      } while (((TencentDocData)paramObject1).aioTime > ((FileManagerEntity)paramObject2).srvTime);
-      return 1;
-      if (!(paramObject2 instanceof TencentDocData)) {
-        break;
-      }
-    } while (((TencentDocData)paramObject1).aioTime > ((TencentDocData)paramObject2).aioTime);
-    return 1;
-    label124:
-    return 0;
+    paramDialogInterface.dismiss();
   }
 }
 

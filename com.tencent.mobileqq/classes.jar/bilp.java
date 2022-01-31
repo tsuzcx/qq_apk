@@ -1,6 +1,6 @@
 public abstract interface bilp
 {
-  public abstract void a(bilo parambilo);
+  public abstract void onConfigChange();
 }
 
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.splashad;
 
-import azjc;
-import azje;
+import aznl;
+import aznn;
 import com.tencent.qphone.base.util.QLog;
 
 public class SplashADView$1$1
   implements Runnable
 {
-  public SplashADView$1$1(azjc paramazjc) {}
+  public SplashADView$1$1(aznl paramaznl) {}
   
   public void run()
   {

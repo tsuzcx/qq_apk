@@ -2,17 +2,17 @@ package com.tencent.mobileqq.activity;
 
 import android.content.Intent;
 import android.os.Message;
-import asmg;
+import asqp;
 import mqq.os.MqqHandler;
 
 class JumpActivity$10
   implements Runnable
 {
-  JumpActivity$10(JumpActivity paramJumpActivity, asmg paramasmg, Intent paramIntent, int paramInt) {}
+  JumpActivity$10(JumpActivity paramJumpActivity, asqp paramasqp, Intent paramIntent, int paramInt) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Asmg.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_AndroidContentIntent.getAction()))
+    if (!this.jdField_a_of_type_Asqp.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_AndroidContentIntent.getAction()))
     {
       Message localMessage = Message.obtain();
       localMessage.what = 2;

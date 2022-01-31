@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bchs;
-import bclu;
+import bcmb;
+import bcqd;
 import com.tencent.common.app.AppInterface;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,12 +10,12 @@ import java.util.List;
 public class TroopAvatarManger$1
   implements Runnable
 {
-  public TroopAvatarManger$1(bchs parambchs, AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, bclu parambclu, Class paramClass, ArrayList paramArrayList, HashMap paramHashMap) {}
+  public TroopAvatarManger$1(bcmb parambcmb, AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, bcqd parambcqd, Class paramClass, ArrayList paramArrayList, HashMap paramHashMap) {}
   
   public void run()
   {
     List localList = this.this$0.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "0", "0", this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    this.jdField_a_of_type_Bclu.a(this.jdField_a_of_type_JavaLangClass, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, localList);
+    this.jdField_a_of_type_Bcqd.a(this.jdField_a_of_type_JavaLangClass, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, localList);
   }
 }
 

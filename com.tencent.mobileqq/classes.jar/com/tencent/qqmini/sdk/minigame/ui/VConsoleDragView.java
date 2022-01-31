@@ -7,7 +7,7 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import bgvx;
+import bhae;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
 import com.tencent.qqmini.sdk.utils.LiuHaiUtils;
@@ -18,7 +18,7 @@ public class VConsoleDragView
 {
   private int jdField_a_of_type_Int;
   private DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics;
-  private bgvx jdField_a_of_type_Bgvx;
+  private bhae jdField_a_of_type_Bhae;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
@@ -149,16 +149,16 @@ public class VConsoleDragView
         }
       }
     }
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bgvx != null)) {
-      this.jdField_a_of_type_Bgvx.d();
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bhae != null)) {
+      this.jdField_a_of_type_Bhae.d();
     }
     this.jdField_a_of_type_Boolean = false;
     return true;
   }
   
-  public void setListener(bgvx parambgvx)
+  public void setListener(bhae parambhae)
   {
-    this.jdField_a_of_type_Bgvx = parambgvx;
+    this.jdField_a_of_type_Bhae = parambhae;
   }
 }
 

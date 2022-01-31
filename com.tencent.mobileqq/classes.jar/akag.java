@@ -1,51 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class akag
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public akag(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
+  public akag(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 8193: 
-    case 8194: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (QQSpecialFriendSettingActivity.a(this.a) == null)
-            {
-              QQSpecialFriendSettingActivity.a(this.a, new bepp(this.a, this.a.getTitleBarHeight()));
-              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
-                QQSpecialFriendSettingActivity.a(this.a).a((String)paramMessage.obj);
-              }
-            }
-          } while ((this.a.isFinishing()) || (QQSpecialFriendSettingActivity.a(this.a).isShowing()));
-          try
-          {
-            QQSpecialFriendSettingActivity.a(this.a).show();
-            return;
-          }
-          catch (Exception paramMessage) {}
-        } while (!QLog.isColorLevel());
-        QLog.e("QQSpecialFriendSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
-        return;
-      } while ((QQSpecialFriendSettingActivity.a(this.a) == null) || (!QQSpecialFriendSettingActivity.a(this.a).isShowing()));
-      QQSpecialFriendSettingActivity.a(this.a).dismiss();
-      QQSpecialFriendSettingActivity.a(this.a, null);
-      return;
-    }
-    QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight());
+    paramDialogInterface.dismiss();
   }
 }
 

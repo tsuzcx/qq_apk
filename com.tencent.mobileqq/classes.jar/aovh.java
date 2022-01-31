@@ -1,87 +1,45 @@
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public abstract class aovh
+public class aovh
 {
-  public byte a;
-  private final int jdField_a_of_type_Int = aofu.a();
-  public long a;
-  protected ArrayList a;
-  public short a;
-  private boolean jdField_a_of_type_Boolean;
-  public long b = -1L;
-  public long c = -1L;
+  private int a = 1;
   
-  public aovh(short paramShort, byte paramByte)
+  @NonNull
+  public static aovh a()
   {
-    this.jdField_a_of_type_Byte = -1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Short = paramShort;
-    this.jdField_a_of_type_Byte = paramByte;
+    return new aovh();
   }
   
-  public final int a()
+  @NonNull
+  public static aovh a(@Nullable String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public abstract void a();
-  
-  public abstract void a(DataInputStream paramDataInputStream);
-  
-  public abstract void a(DataOutputStream paramDataOutputStream);
-  
-  public void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public final boolean a()
-  {
-    return (this.c > 0L) && (this.c <= System.currentTimeMillis());
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void b(String paramString)
-  {
-    if ((paramString == null) || (paramString.trim().equals(""))) {}
-    label85:
-    for (;;)
+    aovh localaovh = new aovh();
+    try
     {
-      return;
-      int i = 0;
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        aovn localaovn = (aovn)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((localaovn.d == null) || (!localaovn.d.contains(paramString))) {}
+      if (!TextUtils.isEmpty(paramString)) {
+        localaovh.a = new JSONObject(paramString).getInt("use_apm");
       }
+      if (QLog.isColorLevel()) {
+        QLog.e("QVIP.SDK.ConfigProcessor", 1, " : " + localaovh.toString());
+      }
+      return localaovh;
+    }
+    catch (Exception paramString)
+    {
       for (;;)
       {
-        if (i == -1) {
-          break label85;
-        }
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-        return;
-        i += 1;
-        break;
-        i = -1;
+        QLog.e("QVIP.SDK.ConfigProcessor", 1, "json parse error:" + paramString);
       }
     }
   }
   
-  public final boolean b()
+  public String toString()
   {
-    return this.b > System.currentTimeMillis();
+    return "QVipPerfLevelConfig{use_apm=" + this.a + '}';
   }
 }
 

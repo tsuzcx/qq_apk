@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public final class vnp
-  implements Parcelable.Creator<AnimationParam>
+public class vnp
+  extends QQUIEventReceiver<StoryPlayerActivity, vno>
 {
-  public AnimationParam a(Parcel paramParcel)
+  public vnp(@NonNull StoryPlayerActivity paramStoryPlayerActivity)
   {
-    return new AnimationParam(paramParcel);
+    super(paramStoryPlayerActivity);
   }
   
-  public AnimationParam[] a(int paramInt)
+  public void a(@NonNull StoryPlayerActivity paramStoryPlayerActivity, @NonNull vno paramvno)
   {
-    return new AnimationParam[paramInt];
+    paramStoryPlayerActivity.b = paramvno.a;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vno.class;
   }
 }
 

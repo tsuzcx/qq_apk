@@ -1,20 +1,20 @@
 package com.tencent.qqmini.sdk.minigame.webaudio;
 
-import bgkd;
-import bgwp;
+import bgok;
+import bhaw;
 import com.tencent.mobileqq.triton.sdk.audio.IAudioNativeManager;
 
 public class WebAudioManager$1
   implements Runnable
 {
-  public WebAudioManager$1(bgwp parambgwp, int paramInt1, int paramInt2, bgkd parambgkd, int paramInt3) {}
+  public WebAudioManager$1(bhaw parambhaw, int paramInt1, int paramInt2, bgok parambgok, int paramInt3) {}
   
   public void run()
   {
-    if (bgwp.a(this.this$0) != null)
+    if (bhaw.a(this.this$0) != null)
     {
-      bgwp.a(this.this$0).play(this.jdField_a_of_type_Int, this.b);
-      bgwp.a(this.this$0, this.jdField_a_of_type_Bgkd, this.jdField_a_of_type_Int, this.c);
+      bhaw.a(this.this$0).play(this.jdField_a_of_type_Int, this.b);
+      bhaw.a(this.this$0, this.jdField_a_of_type_Bgok, this.jdField_a_of_type_Int, this.c);
     }
   }
 }

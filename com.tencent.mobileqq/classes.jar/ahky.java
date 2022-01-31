@@ -1,28 +1,6 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-public class ahky
-  extends ahgk
+public abstract interface ahky
 {
-  public int a;
-  public long a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public String a;
-  public LinearLayout b;
-  public TextView b;
-  public String b;
-  
-  public ahky(Context paramContext, View paramView)
-  {
-    super(paramContext, paramView);
-  }
+  public abstract void a();
 }
 
 

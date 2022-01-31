@@ -4,8 +4,8 @@ import com.tencent.mobileqq.qipc.QIPCModule;
 public class reg
 {
   private static reg jdField_a_of_type_Reg;
-  private aenl jdField_a_of_type_Aenl;
-  private alox jdField_a_of_type_Alox;
+  private aesa jdField_a_of_type_Aesa;
+  private altm jdField_a_of_type_Altm;
   private View jdField_a_of_type_AndroidViewView;
   private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new reh(this, "Module_VideoFeedsIPCServer");
   private oiq jdField_a_of_type_Oiq;

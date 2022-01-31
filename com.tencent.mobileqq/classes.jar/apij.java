@@ -1,10 +1,21 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.dating.MsgBoxListActivity.6.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+
 public class apij
+  implements avdq
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  public apij(MsgBoxListActivity paramMsgBoxListActivity) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MsgBoxListActivity", 2, "follow onReceive errorCode = [" + paramInt + "]");
+    }
+    this.a.b.post(new MsgBoxListActivity.6.1(this, paramInt));
+  }
 }
 
 

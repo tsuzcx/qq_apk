@@ -1,29 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.os.Handler;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.Collections;
+import java.util.List;
 
 class bmlx
-  implements Animator.AnimatorListener
+  implements bmsf
 {
-  bmlx(bmlv parambmlv) {}
+  bmlx(bmlp parambmlp) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt, List<uxf> paramList)
   {
-    this.a.a = false;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a = false;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.a.a = true;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a = true;
+    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = Collections.EMPTY_LIST;
+    }
+    umc.a().dispatch(new bmsd(paramInt, (List)localObject));
   }
 }
 

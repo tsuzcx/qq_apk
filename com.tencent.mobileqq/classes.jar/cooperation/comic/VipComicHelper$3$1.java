@@ -1,12 +1,12 @@
 package cooperation.comic;
 
-import biil;
+import bims;
 import com.tencent.webbundle.sdk.WebBundleManager;
 
 public class VipComicHelper$3$1
   implements Runnable
 {
-  public VipComicHelper$3$1(biil parambiil) {}
+  public VipComicHelper$3$1(bims parambims) {}
   
   public void run()
   {

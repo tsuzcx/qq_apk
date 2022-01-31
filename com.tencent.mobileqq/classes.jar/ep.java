@@ -1,5 +1,5 @@
 class ep
-  implements bhrf
+  implements bhvm
 {
   ep(en paramen) {}
   

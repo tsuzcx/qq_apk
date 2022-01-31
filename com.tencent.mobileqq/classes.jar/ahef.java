@@ -1,69 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment;
 
 public class ahef
-  extends amab
+  implements bhuk
 {
-  public ahef(TroopView paramTroopView) {}
+  public ahef(TroopAIOEmotionFragment paramTroopAIOEmotionFragment, bhuf parambhuf) {}
   
-  protected void d(boolean paramBoolean, ArrayList<ahan> paramArrayList)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("addContacts.TroopView", 2, "onGetAddContactFindTroopClassify isSuccess = " + paramBoolean + ",dataList = " + paramArrayList);
-    }
-    Object localObject;
-    int i;
-    if ((TroopView.a(this.a) != null) && (TroopView.a(this.a).b()))
-    {
-      localObject = TroopView.a(this.a);
-      if (paramBoolean)
-      {
-        i = 1;
-        localObject = ((aheo)localObject).obtainMessage(14, 0, i);
-        TroopView.a(this.a).sendMessage((Message)localObject);
-      }
-    }
-    else
-    {
-      if (!paramBoolean) {
-        break label223;
-      }
-      TroopView.a(this.a).sendEmptyMessage(4);
-    }
-    label223:
-    for (;;)
-    {
-      label118:
-      if ((paramArrayList != null) && (paramArrayList.size() > 0))
-      {
-        this.a.a.clear();
-        this.a.a.addAll(paramArrayList);
-        TroopView.a(this.a).notifyDataSetChanged();
-        localObject = new ArrayList();
-        i = 0;
-        for (;;)
-        {
-          if (i < paramArrayList.size())
-          {
-            ahan localahan = (ahan)paramArrayList.get(i);
-            localahan.c = (i + 100);
-            ((ArrayList)localObject).add(localahan);
-            i += 1;
-            continue;
-            i = 0;
-            break;
-            TroopView.a(this.a).sendEmptyMessage(5);
-            break label118;
-          }
-        }
-        TroopView.a(this.a).a((ArrayList)localObject);
-        TroopView.a(this.a, 0);
-      }
+    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOEmotionFragment.b();
+    if (this.jdField_a_of_type_Bhuf.isShowing()) {
+      this.jdField_a_of_type_Bhuf.dismiss();
     }
   }
 }

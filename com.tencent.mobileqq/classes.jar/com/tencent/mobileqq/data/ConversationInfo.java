@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import aloz;
+import alto;
 import android.text.TextUtils;
-import awbv;
-import awdg;
+import awge;
+import awhp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.gamecenter.message.TinyInfo;
 import com.tencent.mobileqq.persistence.ConflictClause;
@@ -13,9 +13,9 @@ import mqq.app.AppRuntime;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin,type")
 public class ConversationInfo
-  extends awbv
+  extends awge
 {
-  @awdg
+  @awhp
   public static boolean publicaccountTypeErrorReported = false;
   private static final String tableName = "conversation_info";
   public byte[] extData;
@@ -25,7 +25,7 @@ public class ConversationInfo
   public String extString;
   public boolean isImax;
   public long lastread;
-  @awdg
+  @awhp
   public TinyInfo tinyInfo;
   public int type;
   public String uin;
@@ -66,7 +66,7 @@ public class ConversationInfo
         localObject = ((BaseApplicationImpl)localObject).getRuntime();
         if (localObject != null)
         {
-          paramString = ((aloz)((AppRuntime)localObject).getManager(51)).c(paramString);
+          paramString = ((alto)((AppRuntime)localObject).getManager(51)).c(paramString);
           if ((paramString != null) && (paramString.isFriend()))
           {
             publicaccountTypeErrorReported = true;
@@ -120,7 +120,7 @@ public class ConversationInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ConversationInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,39 @@
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody;
 
-public class yum
+public abstract class yum
+  extends nac
 {
-  private String a = "";
-  private String b = "";
-  private String c = "";
-  
-  public static yum a(String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramString == null) {
-      return null;
+    if (paramInt != 0)
+    {
+      a(false, paramInt, null, paramBundle);
+      return;
     }
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
     try
     {
-      yum localyum = new yum();
-      paramString = new JSONObject(paramString);
-      localyum.a = paramString.optString("icon_image_url", "");
-      localyum.b = paramString.optString("md5", "");
-      localyum.c = paramString.optString("widget_id", "");
-      return localyum;
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.UploadFileRspBody)localRspBody.upload_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
+      {
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
+      }
     }
-    catch (Exception paramString)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      paramString.printStackTrace();
+      a(false, -1, null, paramBundle);
+      return;
     }
-    return null;
+    a(false, -1, null, paramBundle);
   }
   
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String toString()
-  {
-    return "k = icon_image_url, value = " + this.a + "\n k = md5, value = " + this.b + "\n k = widget_id, value = " + this.c;
-  }
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.UploadFileRspBody paramUploadFileRspBody, Bundle paramBundle);
 }
 
 

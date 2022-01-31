@@ -1,69 +1,100 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
+import android.os.Handler;
+import android.os.SystemClock;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager.RunnableShowForKey;
+import com.tencent.mobileqq.listentogether.data.ISong;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class atmd
+  implements atom
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public atmd(ListenTogetherManager paramListenTogetherManager) {}
   
-  public atmd(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie)
+  public void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    b();
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
+    QLog.d("ListenTogether.Manager", 1, new Object[] { "onPlayStateChanged: " + atoh.a(paramInt), " songId:", paramString, " curSongID:", QQMusicPlayService.a().a() });
+    HashMap localHashMap = new HashMap();
+    if (paramInt == 8)
     {
-      this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+      ListenTogetherManager.a(this.a);
+      if (paramInt != 2) {
+        break label289;
+      }
+      ListenTogetherManager.a(this.a).k();
+      ListenTogetherManager.a(this.a).m();
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
+      localHashMap.put("status", String.valueOf(paramInt));
+      label177:
+      if (paramInt != 2) {
+        break label368;
+      }
+      ListenTogetherManager.a(this.a).removeMessages(1001);
+      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, atlw.a().a);
+    }
+    for (;;)
+    {
+      ListenTogetherManager.a(this.a, paramString, paramInt);
+      if (!localHashMap.isEmpty()) {
+        azri.a(BaseApplication.getContext()).a("", "listen_together_player_status", true, 0L, 0L, localHashMap, "");
+      }
+      if (QQMusicPlayService.a() != null) {
+        awfa.a().a(paramInt);
+      }
+      return;
+      if ((paramInt != 5) && (paramInt != 7)) {
+        break;
+      }
+      localHashMap.put("status", String.valueOf(paramInt));
+      break;
+      label289:
+      if ((paramInt != 4) && (paramInt != 5) && (paramInt != 7)) {
+        break label177;
+      }
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+      break label177;
+      label368:
+      ListenTogetherManager.a(this.a).removeMessages(1001);
     }
   }
   
-  private void c()
+  public void a(boolean paramBoolean)
   {
-    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 1);
-    azmj.b(null, "CliOper", "", "", "0X800A763", "0X800A763", 0, 0, "", "0", "0", "");
+    QLog.i("ListenTogether.Manager", 1, "onNetChanged: " + paramBoolean);
+    if (paramBoolean) {
+      ListenTogetherManager.b(this.a);
+    }
   }
   
-  private void d()
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    aepf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().setCanLock(false);
-    }
-    agci.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800407F", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationSheet", 2, new Object[] { "show: invoked. ", " sessionInfo: ", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo });
-    }
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {
+    QLog.i("ListenTogether.Manager", 1, "onFocusChanged: " + paramBoolean1 + " isTransient:" + paramBoolean2);
+    ListenTogetherManager.a(this.a, paramBoolean1);
+    if (paramBoolean1)
+    {
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
+      ListenTogetherManager.a(this.a, 0L);
       return;
     }
-    Object localObject = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    if (((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof agkt)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && (!((aloz)localObject).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))))
+    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
+    ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
+    ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+    if (paramBoolean2)
     {
-      d();
+      ListenTogetherManager.a(this.a, 0L);
       return;
     }
-    localObject = bhpy.a(this.jdField_a_of_type_AndroidContentContext);
-    ((bhpy)localObject).a(2131719749, 0);
-    ((bhpy)localObject).a(2131720032, 0);
-    ((bhpy)localObject).c(2131690648);
-    ((bhpy)localObject).a(new atme(this, (bhpy)localObject));
-    ((bhpy)localObject).show();
+    ListenTogetherManager.a(this.a, SystemClock.elapsedRealtime());
   }
 }
 

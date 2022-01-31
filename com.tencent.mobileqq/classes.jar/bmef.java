@@ -1,13 +1,57 @@
-import android.graphics.Canvas;
+import android.support.annotation.NonNull;
+import java.util.Map.Entry;
 
-public abstract interface bmef
-  extends bmiw
+class bmef<K, V>
+  implements Map.Entry<K, V>
 {
-  public abstract int a(int paramInt);
+  bmef<K, V> jdField_a_of_type_Bmef;
+  @NonNull
+  final K jdField_a_of_type_JavaLangObject;
+  bmef<K, V> jdField_b_of_type_Bmef;
+  @NonNull
+  final V jdField_b_of_type_JavaLangObject;
   
-  public abstract boolean a(int paramInt);
+  bmef(@NonNull K paramK, @NonNull V paramV)
+  {
+    this.a = paramK;
+    this.b = paramV;
+  }
   
-  public abstract boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3);
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == this) {}
+    do
+    {
+      return true;
+      if (!(paramObject instanceof bmef)) {
+        return false;
+      }
+      paramObject = (bmef)paramObject;
+    } while ((this.a.equals(paramObject.a)) && (this.b.equals(paramObject.b)));
+    return false;
+  }
+  
+  @NonNull
+  public K getKey()
+  {
+    return this.a;
+  }
+  
+  @NonNull
+  public V getValue()
+  {
+    return this.b;
+  }
+  
+  public V setValue(V paramV)
+  {
+    throw new UnsupportedOperationException("An entry modification is not supported");
+  }
+  
+  public String toString()
+  {
+    return this.a + "=" + this.b;
+  }
 }
 
 

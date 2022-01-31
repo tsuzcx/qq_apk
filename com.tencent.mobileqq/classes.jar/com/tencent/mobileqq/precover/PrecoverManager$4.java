@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.precover;
 
-import awjh;
-import awji;
+import awnq;
+import awnr;
 
 public class PrecoverManager$4
   implements Runnable
 {
-  public PrecoverManager$4(awjh paramawjh) {}
+  public PrecoverManager$4(awnq paramawnq) {}
   
   public void run()
   {
-    awjh.a(this.this$0).a();
+    awnq.a(this.this$0).a();
   }
 }
 

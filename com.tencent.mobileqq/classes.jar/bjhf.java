@@ -1,18 +1,67 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiInterestInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import java.io.File;
 
-public final class bjhf
-  implements Parcelable.Creator<WeishiInterestInfo>
+class bjhf
+  implements ModuleDownloadListener
 {
-  public WeishiInterestInfo a(Parcel paramParcel)
+  bjhf(bjhe parambjhe) {}
+  
+  public void onDownloadCanceled(String paramString)
   {
-    return new WeishiInterestInfo(paramParcel);
+    bjhe.b(false);
   }
   
-  public WeishiInterestInfo[] a(int paramInt)
+  public void onDownloadFailed(String paramString)
   {
-    return new WeishiInterestInfo[paramInt];
+    bjhe.b(false);
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("upload.so")) {
+      return;
+    }
+    bjhe.b(false);
+    String str = bjhe.a().getAbsolutePath();
+    QLog.d("UploadEnv", 1, "upload so download success : " + str);
+    paramString = QzoneModuleManager.getInstance().getModuleFilePath(paramString);
+    File localFile = new File(str);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    if (!bjtz.b(new File(paramString), localFile))
+    {
+      QLog.d("UploadEnv", 1, "upload so unzip fail");
+      bjhe.b(false);
+      return;
+    }
+    if (bjhe.a(this.a, str))
+    {
+      QLog.d("UploadEnv", 1, "upload so save success");
+      bjhe.a(this.a, true);
+      bjhe.a(true);
+    }
+    for (;;)
+    {
+      bjhe.b(false);
+      return;
+      try
+      {
+        localFile.delete();
+        bjhe.a(this.a, false);
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
+      }
+    }
   }
 }
 

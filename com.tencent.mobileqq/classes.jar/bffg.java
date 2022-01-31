@@ -1,9 +1,14 @@
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.open.agent.OpenAuthorityFragment;
 
-class bffg
+public class bffg
+  implements bffz
 {
-  WebView jdField_a_of_type_ComTencentSmttSdkWebView;
-  String jdField_a_of_type_JavaLangString;
+  public bffg(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  
+  public void a()
+  {
+    this.a.l();
+  }
 }
 
 

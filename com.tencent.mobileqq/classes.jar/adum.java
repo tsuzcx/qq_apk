@@ -1,33 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity.2;
 
 public class adum
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public adum(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public adum(RegisterNewBaseActivity.2 param2) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 1;
-    if (paramBoolean)
-    {
-      this.a.app.c(1);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label68;
-      }
-    }
-    for (;;)
-    {
-      azmj.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
-      return;
-      this.a.app.c(0);
-      break;
-      label68:
-      i = 0;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

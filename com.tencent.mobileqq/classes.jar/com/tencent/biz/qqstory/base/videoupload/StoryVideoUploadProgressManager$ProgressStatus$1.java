@@ -1,22 +1,22 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
 import android.os.Handler;
-import ukp;
-import ukq;
-import wsv;
+import uoy;
+import uoz;
+import wxe;
 
 public class StoryVideoUploadProgressManager$ProgressStatus$1
   implements Runnable
 {
-  public StoryVideoUploadProgressManager$ProgressStatus$1(ukq paramukq) {}
+  public StoryVideoUploadProgressManager$ProgressStatus$1(uoz paramuoz) {}
   
   public void run()
   {
-    wsv.a("StoryVideoUploadProgressManager", "progress running, id=%s", this.a.jdField_a_of_type_JavaLangString);
-    ukq.a(this.a);
-    ukp.a(this.a.jdField_a_of_type_Ukp, this.a.jdField_a_of_type_JavaLangString, this.a.b);
-    if (!ukq.a(this.a)) {
-      ukp.a(this.a.jdField_a_of_type_Ukp).postDelayed(ukq.a(this.a), 500L);
+    wxe.a("StoryVideoUploadProgressManager", "progress running, id=%s", this.a.jdField_a_of_type_JavaLangString);
+    uoz.a(this.a);
+    uoy.a(this.a.jdField_a_of_type_Uoy, this.a.jdField_a_of_type_JavaLangString, this.a.b);
+    if (!uoz.a(this.a)) {
+      uoy.a(this.a.jdField_a_of_type_Uoy).postDelayed(uoz.a(this.a), 500L);
     }
   }
 }

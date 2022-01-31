@@ -1,26 +1,51 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 class aqsj
-  implements aqte
+  extends aqtd
 {
-  aqsj(aqsg paramaqsg, FileManagerEntity paramFileManagerEntity) {}
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
   
-  public void a()
+  public aqsj(aqsf paramaqsf, MessageRecord paramMessageRecord)
   {
-    QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v! entity[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] init cancel!");
+    super(paramaqsf);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
   }
   
-  public void b()
+  void a(String paramString, int paramInt) {}
+  
+  void a(String paramString, int paramInt, aqtc paramaqtc)
   {
-    QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v> entity[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] init success, start video download");
-    new areo(this.jdField_a_of_type_Aqsg.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType == 3000) {}
-    for (Object localObject = new arer(this.jdField_a_of_type_Aqsg.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);; localObject = new areo(this.jdField_a_of_type_Aqsg.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))
+    if ("1".equals(this.f))
     {
-      aqsz.a((arek)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2DiscTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      }
+      paramaqtc.a(aqsf.a(this.jdField_a_of_type_Long, false), false);
       return;
     }
+    if ((this.b == null) || (this.b.length() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter faild,文件不存在或已失效");
+      }
+      paramaqtc.a(aqsf.a(this.jdField_a_of_type_Long, true), false);
+      return;
+    }
+    aqsf.a(this.jdField_a_of_type_Aqsf).a().a().a(paramString, paramInt, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 106, new aqsk(this, paramString, paramaqtc));
   }
 }
 

@@ -1,6 +1,6 @@
 package cooperation.qzone.video;
 
-import aupo;
+import autx;
 import com.tencent.mobileqq.myapp.net.HttpResponseException;
 import com.tencent.qphone.base.util.QLog;
 
@@ -21,7 +21,7 @@ public class TcSdkDownloadReportServlet$ReportRunnable
       if (QLog.isDevelopLevel()) {
         QLog.d("TcSdkDownloadReportServlet", 4, "tcSdkReport, report:" + this.a);
       }
-      aupo.a(this.a, null, "GET", null);
+      autx.a(this.a, null, "GET", null);
       if (QLog.isDevelopLevel()) {
         QLog.d("TcSdkDownloadReportServlet", 4, "report success");
       }

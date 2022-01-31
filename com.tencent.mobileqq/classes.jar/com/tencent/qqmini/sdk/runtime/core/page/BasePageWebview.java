@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.runtime.core.page;
 
 import android.content.Context;
 import android.os.Build.VERSION;
-import bhbr;
+import bhfy;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebSettingsExtension;
 import com.tencent.smtt.sdk.WebSettings;
@@ -13,7 +13,7 @@ public class BasePageWebview
 {
   public static volatile int a;
   private static final String jdField_a_of_type_JavaLangString = BasePageWebview.class.getSimpleName();
-  protected bhbr a;
+  protected bhfy a;
   private AppBrandPageContainer jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAppBrandPageContainer;
   protected int b;
   
@@ -80,9 +80,9 @@ public class BasePageWebview
     }
   }
   
-  public void setPageEventListener(bhbr parambhbr)
+  public void setPageEventListener(bhfy parambhfy)
   {
-    this.jdField_a_of_type_Bhbr = parambhbr;
+    this.jdField_a_of_type_Bhfy = parambhfy;
   }
 }
 

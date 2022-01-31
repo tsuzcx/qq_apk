@@ -3,7 +3,7 @@ package com.tencent.biz.qqcircle.fragments;
 import android.os.Bundle;
 import com.tencent.biz.qqcircle.component.ComponentBaseFragment;
 import java.util.List;
-import tvg;
+import tvv;
 
 public class QCricleMainPageFragment
   extends ComponentBaseFragment
@@ -13,7 +13,7 @@ public class QCricleMainPageFragment
     return 0;
   }
   
-  public List<tvg> a()
+  public List<tvv> a()
   {
     return null;
   }

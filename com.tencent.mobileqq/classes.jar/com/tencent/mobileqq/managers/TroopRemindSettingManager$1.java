@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.managers;
 
-import atwf;
-import awbw;
-import awbx;
+import auao;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.TroopRemindSettingData;
 
 public class TroopRemindSettingManager$1
   implements Runnable
 {
-  public TroopRemindSettingManager$1(atwf paramatwf, QQAppInterface paramQQAppInterface, String paramString) {}
+  public TroopRemindSettingManager$1(auao paramauao, QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {
-    awbw localawbw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if ((TroopRemindSettingData)localawbw.a(TroopRemindSettingData.class, this.jdField_a_of_type_JavaLangString) == null)
+    awgf localawgf = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if ((TroopRemindSettingData)localawgf.a(TroopRemindSettingData.class, this.jdField_a_of_type_JavaLangString) == null)
     {
       TroopRemindSettingData localTroopRemindSettingData = new TroopRemindSettingData();
       localTroopRemindSettingData.troopUin = this.jdField_a_of_type_JavaLangString;
       localTroopRemindSettingData.isOpenState = 0;
-      localawbw.b(localTroopRemindSettingData);
+      localawgf.b(localTroopRemindSettingData);
     }
   }
 }

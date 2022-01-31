@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class OfficialRecommendEntry
-  extends awbv
+  extends awge
 {
   public int bigvColor;
   public String bigvCover;
@@ -19,7 +19,7 @@ public class OfficialRecommendEntry
   public String bigvUserSymbolUrl;
   public String bigvUserUnionId;
   public boolean isMarkRead;
-  @awdj
+  @awhs
   public int itemId;
   public int linkColor;
   public String linkCover;

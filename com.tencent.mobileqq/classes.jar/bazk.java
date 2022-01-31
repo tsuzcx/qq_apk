@@ -1,31 +1,34 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.TVKSDKInstallRunnable;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class bazk
-  implements TVK_SDKMgr.InstallListener
 {
-  public bazk(TribeVideoListPlayerFragment.TVKSDKInstallRunnable paramTVKSDKInstallRunnable) {}
+  public static int a = -1;
   
-  public void onInstallProgress(float paramFloat)
+  public static void a(int paramInt)
   {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_EXIF_Info_Switch", 4).edit();
+    localEditor.putInt("SP_KEY_EXIF_Info_Switch_VALUE", paramInt);
+    localEditor.commit();
+    a = paramInt;
     if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 1, String.format("plugin install %f", new Object[] { Float.valueOf(paramFloat) }));
+      QLog.d("PicUploadExifInfoSwitch", 2, "setSwitch:" + paramInt);
     }
   }
   
-  public void onInstalledFailed(int paramInt)
+  public static boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 1, "plugin fail errorCode = " + paramInt);
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 1, "plugin success");
-    }
+    if (asrc.a().g()) {}
+    do
+    {
+      return true;
+      if (a < 0) {
+        a = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_EXIF_Info_Switch", 4).getInt("SP_KEY_EXIF_Info_Switch_VALUE", 0);
+      }
+    } while (a == 1);
+    return false;
   }
 }
 

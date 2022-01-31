@@ -5,7 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class snv
-  implements bhqd
+  implements bhuk
 {
   snv(snu paramsnu, String paramString) {}
   

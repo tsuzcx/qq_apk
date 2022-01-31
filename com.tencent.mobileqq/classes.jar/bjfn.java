@@ -1,17 +1,11 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
 class bjfn
-  implements EIPCResultCallback
+  implements bjfl
 {
-  bjfn(bjfl parambjfl) {}
+  bjfn(bjfm parambjfm, bjfj parambjfj) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FontManager", 2, "startFontSoDownload download so success");
-    }
+    this.jdField_a_of_type_Bjfj.a();
   }
 }
 

@@ -11,7 +11,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import bjxj;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo;
@@ -202,7 +202,7 @@ public class ReadInJoyLockScreenJumpDelegate
   
   private void a(@NonNull Context paramContext, @NonNull JSONObject paramJSONObject, int paramInt1, int paramInt2)
   {
-    if (bjxj.k())
+    if (bkbq.k())
     {
       localIntent = new Intent(paramContext, SplashActivity.class);
       localIntent.putExtra("fragment_id", 1);
@@ -428,7 +428,7 @@ public class ReadInJoyLockScreenJumpDelegate
   
   public int getContentLayoutId()
   {
-    return 2131560055;
+    return 2131560054;
   }
 }
 

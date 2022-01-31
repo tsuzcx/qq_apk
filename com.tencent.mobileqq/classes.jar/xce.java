@@ -1,24 +1,11 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.ConvertIFramesRunnable;
 
 public class xce
-  implements Animation.AnimationListener
+  implements axvn
 {
-  public xce(DoodleLayout paramDoodleLayout) {}
+  public xce(HWEditLocalVideoPlayer.ConvertIFramesRunnable paramConvertIFramesRunnable) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.jdField_a_of_type_Xcf != null) {
-      this.a.jdField_a_of_type_Xcf.a(null);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a() {}
 }
 
 

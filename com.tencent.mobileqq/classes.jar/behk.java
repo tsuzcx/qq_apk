@@ -1,19 +1,19 @@
-import com.tencent.biz.pubaccount.CustomWebView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
 
-public abstract interface behk
-  extends bebx
+class behk
+  implements ValueCallback<Bundle>
 {
-  public abstract void a(boolean paramBoolean);
+  behk(behj parambehj) {}
   
-  public abstract String b();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract CustomWebView getWebView();
+  public void a(Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("input-box-num", 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "onFakeLoginRecognised detect ", Integer.valueOf(i), " input box" });
+    }
+  }
 }
 
 

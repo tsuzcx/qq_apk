@@ -1,16 +1,16 @@
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 class afig
-  extends aekx
+  extends aeqi
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  public LinearLayout a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  afig(afie paramafie) {}
+  afig(afif paramafif) {}
 }
 
 

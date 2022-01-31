@@ -1,27 +1,15 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.Queue;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-class alyj
-  extends Handler
+public class alyj
+  implements Comparator<PhoneContact>
 {
-  alyj(alyh paramalyh, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public alyj(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    paramMessage = (alyl)paramMessage.obj;
-    this.a.a.remove(paramMessage);
-    paramMessage.jdField_a_of_type_AndroidContentContext.startActivity(paramMessage.jdField_a_of_type_AndroidContentIntent);
+    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
   }
 }
 

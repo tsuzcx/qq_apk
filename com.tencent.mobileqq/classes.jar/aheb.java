@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
+import android.view.View;
+import android.widget.TextView;
 
-public final class aheb
-  implements Parcelable.Creator<SearchResultItem>
+class aheb
 {
-  public SearchResultItem a(Parcel paramParcel)
-  {
-    return new SearchResultItem(paramParcel);
-  }
+  public TextView a;
   
-  public SearchResultItem[] a(int paramInt)
+  public aheb(View paramView)
   {
-    return new SearchResultItem[paramInt];
+    this.a = ((TextView)paramView.findViewById(2131377606));
+    paramView.setTag(this);
   }
 }
 

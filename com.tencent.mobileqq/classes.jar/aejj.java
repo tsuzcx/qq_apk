@@ -1,21 +1,16 @@
-import Wallet.AcsMsg;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class aejj
   implements View.OnClickListener
 {
-  public aejj(ReminderListFragment paramReminderListFragment) {}
+  public aejj(TroopTransferActivity paramTroopTransferActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = (AcsMsg)paramView.getTag();
-    ReminderListFragment.a(this.a, paramView);
-    if (ReminderListFragment.a(this.a) != null) {
-      ReminderListFragment.a(this.a).dismiss();
-    }
+    this.a.a.setText("");
   }
 }
 

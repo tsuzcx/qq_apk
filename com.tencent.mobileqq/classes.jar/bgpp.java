@@ -1,23 +1,19 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.content.Intent;
 
 class bgpp
-  implements Handler.Callback
+  extends BroadcastReceiver
 {
   bgpp(bgpo parambgpo) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = paramMessage.what;
-    paramMessage.getData().setClassLoader(bgpo.a(this.a).getClassLoader());
-    MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramMessage.getData().getParcelable("KEY_APPINFO");
-    ResultReceiver localResultReceiver = (ResultReceiver)paramMessage.getData().getParcelable("receiver");
-    bgpo.a(this.a, i, paramMessage.getData(), localMiniAppInfo, localResultReceiver);
-    return false;
+    if (bgpv.a(paramIntent.getAction())) {}
+    while (bgpo.a(this.a) == null) {
+      return;
+    }
+    bgpo.a(this.a).a(paramContext, paramIntent);
   }
 }
 

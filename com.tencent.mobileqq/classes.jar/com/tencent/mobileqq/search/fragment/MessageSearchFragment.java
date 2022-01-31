@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ayfe;
-import aygo;
-import aypx;
-import aypz;
+import ayjn;
+import aykx;
+import ayug;
+import ayui;
 
 public class MessageSearchFragment
   extends BaseSearchFragment
@@ -13,19 +13,19 @@ public class MessageSearchFragment
     return 40;
   }
   
-  protected ayfe a()
+  protected ayjn a()
   {
-    return new aygo(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bcws);
+    return new aykx(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb);
   }
   
-  protected aypx a()
+  protected ayug a()
   {
-    return new aypz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new ayui(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
   protected String a()
   {
-    return getString(2131719570);
+    return getString(2131719582);
   }
   
   public void a(String paramString)
@@ -36,13 +36,13 @@ public class MessageSearchFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Aypx.c();
+    this.jdField_a_of_type_Ayug.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Aypx.d();
+    this.jdField_a_of_type_Ayug.d();
   }
 }
 

@@ -1,15 +1,6 @@
-import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
-import com.tencent.qphone.base.util.QLog;
-
-public class tvy
-  implements tvv
+public abstract interface tvy
 {
-  public tvy(QCircleBaseFragment paramQCircleBaseFragment) {}
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    QLog.i(QCircleBaseFragment.b, 1, paramBoolean + paramString);
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString);
 }
 
 

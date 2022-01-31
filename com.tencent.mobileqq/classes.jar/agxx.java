@@ -1,19 +1,50 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.net.URL;
 
-public class agxx
-  implements MediaPlayer.OnErrorListener
+public abstract class agxx
+  implements agxz
 {
-  public agxx(BlessActivity paramBlessActivity) {}
+  private boolean a;
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public URLDrawable.URLDrawableOptions a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onError what=" + paramInt1 + ", extra=" + paramInt2);
+    return URLDrawable.URLDrawableOptions.obtain();
+  }
+  
+  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
+  {
+    if (paramURL == null) {
+      return null;
     }
-    BlessActivity.a(this.a, true);
+    return URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  {
+    this.a = true;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean b()
+  {
+    return this.a;
+  }
+  
+  public boolean c()
+  {
     return true;
   }
 }

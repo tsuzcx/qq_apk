@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aelz;
-import agnz;
-import agoh;
+import aeqo;
+import agso;
+import agsw;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
@@ -11,16 +11,16 @@ import com.tencent.mobileqq.bubble.ChatXListView;
 public class MultiForwardChatPie$LongTextDownloadCallback$1
   implements Runnable
 {
-  public MultiForwardChatPie$LongTextDownloadCallback$1(agoh paramagoh, agnz paramagnz, CharSequence paramCharSequence) {}
+  public MultiForwardChatPie$LongTextDownloadCallback$1(agsw paramagsw, agso paramagso, CharSequence paramCharSequence) {}
   
   public void run()
   {
-    agnz.a(this.jdField_a_of_type_Agnz).setVisibility(8);
-    agnz.a(this.jdField_a_of_type_Agnz).setVisibility(0);
-    agnz.a(this.jdField_a_of_type_Agnz).setVisibility(0);
-    this.jdField_a_of_type_Agnz.e.setText(this.jdField_a_of_type_Agnz.h);
-    agnz.a(this.jdField_a_of_type_Agnz).a(agnz.a(this.jdField_a_of_type_Agnz), this.jdField_a_of_type_JavaLangCharSequence);
-    this.jdField_a_of_type_Agnz.F();
+    agso.a(this.jdField_a_of_type_Agso).setVisibility(8);
+    agso.a(this.jdField_a_of_type_Agso).setVisibility(0);
+    agso.a(this.jdField_a_of_type_Agso).setVisibility(0);
+    this.jdField_a_of_type_Agso.e.setText(this.jdField_a_of_type_Agso.h);
+    agso.a(this.jdField_a_of_type_Agso).a(agso.a(this.jdField_a_of_type_Agso), this.jdField_a_of_type_JavaLangCharSequence);
+    this.jdField_a_of_type_Agso.F();
   }
 }
 

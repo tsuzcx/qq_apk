@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bjxj;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -91,7 +91,7 @@ public class ReadInJoyRecommendFeedsFragment
   public void a(Constants.LogoutReason paramLogoutReason)
   {
     super.a(paramLogoutReason);
-    if ((bjxj.i()) && (this.jdField_a_of_type_Nwc != null)) {
+    if ((bkbq.i()) && (this.jdField_a_of_type_Nwc != null)) {
       this.jdField_a_of_type_Nwc.a(paramLogoutReason);
     }
   }
@@ -118,7 +118,7 @@ public class ReadInJoyRecommendFeedsFragment
     }
     this.jdField_b_of_type_Boolean = true;
     paramBundle = (KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(162);
-    if ((bjxj.i()) && (!(paramActivity instanceof ReadInJoyNewFeedsActivity)))
+    if ((bkbq.i()) && (!(paramActivity instanceof ReadInJoyNewFeedsActivity)))
     {
       this.jdField_a_of_type_Long = System.currentTimeMillis();
       paramBoolean = paramBundle.b();
@@ -134,8 +134,8 @@ public class ReadInJoyRecommendFeedsFragment
           paramBoolean = bool;
         }
       }
-      l = this.jdField_a_of_type_Long - bjxj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if ((l >= bjxj.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (!this.e))
+      l = this.jdField_a_of_type_Long - bkbq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if ((l >= bkbq.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (!this.e))
       {
         paramBoolean = true;
         if (l < 900000L) {
@@ -154,7 +154,7 @@ public class ReadInJoyRecommendFeedsFragment
         oxp.a().a.jdField_a_of_type_Boolean = true;
         this.jdField_a_of_type_Nwc.a(paramBoolean, 3);
         oxb.a().a(3, null);
-        if (((paramActivity instanceof SplashActivity)) && (bjxj.i()))
+        if (((paramActivity instanceof SplashActivity)) && (bkbq.i()))
         {
           if (i == 13) {
             break label404;
@@ -238,10 +238,10 @@ public class ReadInJoyRecommendFeedsFragment
       this.jdField_a_of_type_Nwc.j();
       this.jdField_a_of_type_Nwc.n();
     }
-    if (bjxj.k())
+    if (bkbq.k())
     {
       this.jdField_b_of_type_Long = System.currentTimeMillis();
-      bjxj.a(this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      bkbq.a(this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
   }
   

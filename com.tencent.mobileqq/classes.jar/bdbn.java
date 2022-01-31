@@ -1,7 +1,6 @@
-public class bdbn
+public abstract interface bdbn
 {
-  public int a;
-  public String a;
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
 }
 
 

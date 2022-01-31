@@ -3,28 +3,28 @@ package com.tencent.biz.webviewplugin;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import becq;
-import behk;
+import begz;
+import belt;
 import com.tencent.smtt.sdk.WebView;
-import zax;
+import zfm;
 
 public class QzonePlugin$2
   implements Runnable
 {
-  public QzonePlugin$2(zax paramzax) {}
+  public QzonePlugin$2(zfm paramzfm) {}
   
   public void run()
   {
-    if (zax.a(this.this$0) != null)
+    if (zfm.a(this.this$0) != null)
     {
-      Object localObject = zax.a(this.this$0);
+      Object localObject = zfm.a(this.this$0);
       if (this.this$0.mRuntime.a().getIntent().getExtras().getString("url") != null) {
         localObject = this.this$0.mRuntime.a().getIntent().getExtras().getString("url");
       }
-      zax.a(this.this$0).loadData(new String((String)localObject).replaceAll("#", "%23").replaceAll("%", "%25").replaceAll("'", "%27"), "text/html", "utf-8");
+      zfm.a(this.this$0).loadData(new String((String)localObject).replaceAll("#", "%23").replaceAll("%", "%25").replaceAll("'", "%27"), "text/html", "utf-8");
       localObject = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-      if ((localObject != null) && ((localObject instanceof behk))) {
-        ((behk)localObject).a(false);
+      if ((localObject != null) && ((localObject instanceof belt))) {
+        ((belt)localObject).a(false);
       }
     }
   }

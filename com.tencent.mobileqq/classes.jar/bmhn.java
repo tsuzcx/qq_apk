@@ -2,18 +2,38 @@ import android.support.annotation.NonNull;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 class bmhn
-  extends QQUIEventReceiver<bmhd, bmnq>
+  extends QQUIEventReceiver<bmhk, bmhm>
 {
-  public bmhn(@NonNull bmhd parambmhd)
+  public bmhn(@NonNull bmhk parambmhk)
   {
-    super(parambmhd);
+    super(parambmhk);
   }
   
-  public void a(@NonNull bmhd parambmhd, @NonNull bmnq parambmnq) {}
+  public void a(@NonNull bmhk parambmhk, @NonNull bmhm parambmhm)
+  {
+    if (bmhm.a(parambmhm))
+    {
+      switch (parambmhm.a())
+      {
+      }
+      for (;;)
+      {
+        bmhk.a(parambmhk);
+        return;
+        bmhk.a(parambmhk, true);
+        wxe.b("QGEnvironment", "surface created");
+        continue;
+        wxe.b("QGEnvironment", "qg so loaded");
+        continue;
+        wxe.b("QGEnvironment", "filter manager inited");
+      }
+    }
+    wxe.e("QGEnvironment", "QG environment init error :  event type = " + parambmhm.a());
+  }
   
   public Class acceptEventClass()
   {
-    return bmnq.class;
+    return bmhm.class;
   }
 }
 

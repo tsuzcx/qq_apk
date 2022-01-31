@@ -1,58 +1,81 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetLocation;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetLocation;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public class vbf
-  extends unk<vcz>
+class vbf
+  extends SimpleObserver<List<vlp>>
 {
-  private static final String a = ume.a("StorySvc.get_location");
-  public final int c;
-  public final int d;
-  public final int e;
+  vbf(vaw paramvaw, uyg paramuyg, View paramView, Activity paramActivity) {}
   
-  public vbf(int paramInt1, int paramInt2, int paramInt3)
+  private void a(String paramString1, String paramString2, ArrayList<String> paramArrayList, HashMap<String, String> paramHashMap)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
-  }
-  
-  public String a()
-  {
-    return a;
-  }
-  
-  public unf a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetLocation localRspGetLocation = new qqstory_service.RspGetLocation();
-    try
-    {
-      localRspGetLocation.mergeFrom(paramArrayOfByte);
-      return new vcz(localRspGetLocation);
+    if ((!TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(paramString1))) {
+      paramString1 = "NO_SUCH_FEED_ID";
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    for (;;)
     {
-      paramArrayOfByte.printStackTrace();
+      paramString1 = new OpenPlayerBuilder(new MsgTabPlayInfo(this.jdField_a_of_type_Uyg.a, 0, null, paramString1, paramString2, paramArrayList, paramHashMap), 106);
+      paramString1.a(this.jdField_a_of_type_Vaw.a());
+      paramString1 = paramString1.a();
+      paramString1.mUIStyle.bottomWidgetShowFlag = 3;
+      if ((this.jdField_a_of_type_AndroidViewView instanceof StoryMsgNodeFrameLayout))
+      {
+        vod.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, ((StoryMsgNodeFrameLayout)this.jdField_a_of_type_AndroidViewView).a);
+        return;
+      }
+      vod.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, this.jdField_a_of_type_AndroidViewView);
+      return;
     }
-    return null;
   }
   
-  protected byte[] a()
+  public void a(List<vlp> paramList)
   {
-    qqstory_service.ReqGetLocation localReqGetLocation = new qqstory_service.ReqGetLocation();
-    localReqGetLocation.coordinate.set(this.c);
-    localReqGetLocation.gps.lng.set(this.d);
-    localReqGetLocation.gps.lat.set(this.e);
-    localReqGetLocation.gps.setHasFlag(true);
-    return localReqGetLocation.toByteArray();
+    Object localObject = vpz.a(paramList);
+    String str1;
+    if (localObject != null)
+    {
+      str1 = ((vlp)localObject).a;
+      localObject = ((vlp)localObject).b;
+    }
+    for (;;)
+    {
+      ArrayList localArrayList = new ArrayList();
+      HashMap localHashMap = new HashMap();
+      int i = 0;
+      for (;;)
+      {
+        String str2;
+        if (i < paramList.size())
+        {
+          str2 = ((vlp)paramList.get(i)).b;
+          if (!TextUtils.isEmpty(str2)) {}
+        }
+        else
+        {
+          a(str1, (String)localObject, localArrayList, localHashMap);
+          return;
+        }
+        localArrayList.add(str2);
+        localHashMap.put(str2, ((vlp)paramList.get(i)).a);
+        i += 1;
+      }
+      localObject = null;
+      str1 = null;
+    }
   }
   
-  public String toString()
+  public void onError(@NonNull Error paramError)
   {
-    return "GetLocationRequest{mCoordinate=" + this.c + ", mLng=" + this.d + ", mLat=" + this.e + '}';
+    a("", "", null, null);
   }
 }
 

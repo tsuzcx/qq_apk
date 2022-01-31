@@ -1,21 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Build.VERSION;
-import android.widget.ImageView;
-
 class vnv
-  implements ValueAnimator.AnimatorUpdateListener
+  implements vpo
 {
   vnv(vnu paramvnu) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      this.a.a.setImageAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-      return;
-    }
-    this.a.a.setImageResource(2130849999);
+    vnu.a(this.a);
+  }
+  
+  public void a(vpm paramvpm, String paramString, boolean paramBoolean)
+  {
+    wxe.d("Q.qqstory.playernew.StoryPlayerImpl", "onGroupDataDelete, groupId=%s, vid=%s", new Object[] { paramvpm.a, paramString });
+    vnu.a(this.a).a(paramvpm, paramString, paramBoolean);
   }
 }
 

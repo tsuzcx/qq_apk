@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
-
-public final class agwp
-  implements Parcelable.Creator<ZhituImgResponse>
+public class agwp
+  implements bcms
 {
-  public ZhituImgResponse a(Parcel paramParcel)
+  public String a;
+  
+  public agwp(String paramString)
   {
-    return new ZhituImgResponse(paramParcel);
+    this.a = paramString;
   }
   
-  public ZhituImgResponse[] a(int paramInt)
+  public long a()
   {
-    return new ZhituImgResponse[paramInt];
+    try
+    {
+      long l = Long.parseLong(this.a);
+      return l;
+    }
+    catch (Exception localException) {}
+    return 0L;
   }
 }
 

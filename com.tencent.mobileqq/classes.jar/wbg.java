@@ -1,69 +1,54 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class wbg
-  extends wav
+class wbg
+  implements DialogInterface.OnClickListener
 {
-  public TextView a;
-  public wbe a;
-  public TextView b;
-  public wbe b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  wbg(wax paramwax, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem, wpe paramwpe) {}
   
-  public wbg(View paramView, wbb paramwbb)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    View localView = paramView.findViewById(2131373749);
-    paramView = paramView.findViewById(2131373800);
-    this.jdField_a_of_type_Wbe = new wbe(localView, paramwbb.jdField_a_of_type_AndroidContentContext);
-    this.jdField_b_of_type_Wbe = new wbe(paramView, paramwbb.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364006));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364006));
-    this.c = ((TextView)localView.findViewById(2131363986));
-    this.d = ((TextView)paramView.findViewById(2131363986));
-    this.e = ((TextView)localView.findViewById(2131364002));
-    this.f = ((TextView)paramView.findViewById(2131364002));
-    QQStoryContext.a();
-    if (ThemeUtil.isInNightMode(QQStoryContext.a()))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991b8"));
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991b8"));
-      this.c.setTextColor(Color.parseColor("#6991b8"));
-      this.d.setTextColor(Color.parseColor("#6991b8"));
-      this.e.setTextColor(Color.parseColor("#6991b8"));
-      this.f.setTextColor(Color.parseColor("#6991b8"));
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
-    if (paramwbb.jdField_a_of_type_Way != null)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Wbe.a(paramwbb.jdField_a_of_type_Way);
-      this.jdField_b_of_type_Wbe.a(paramwbb.jdField_a_of_type_Way);
-    }
-  }
-  
-  public void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt)
-  {
-    if ((paramVideoCollectionItem == null) || (paramView == null))
-    {
-      wsv.e("Q.qqstory.shareGroup.ShareGroupsListAdapter", "qqstory sharegroup hotsort erro. view  or data is null.");
+    case 0: 
+    default: 
       return;
     }
-    paramView = (HotSortVideoEntry)paramVideoCollectionItem.hotSortVideoLIst.get(0);
-    paramVideoCollectionItem = (HotSortVideoEntry)paramVideoCollectionItem.hotSortVideoLIst.get(1);
-    this.jdField_a_of_type_Wbe.a(paramView);
-    if (paramVideoCollectionItem == null)
+    this.jdField_a_of_type_Wax.a("");
+    if (StoryVideoItem.isFakeVid(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid))
     {
-      this.jdField_b_of_type_Wbe.a();
-      return;
+      ((uom)uwa.a(3)).c(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      paramDialogInterface = new uvf(new ErrorMessage(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, false);
+      paramDialogInterface.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+      paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
+      if (paramDialogInterface.a == 0L) {
+        paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
+      }
+      umc.a().dispatch(paramDialogInterface);
     }
-    this.jdField_b_of_type_Wbe.a(paramVideoCollectionItem);
+    for (;;)
+    {
+      wxj.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      return;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mStoryType == 2)
+      {
+        ((xpo)vls.a().getManager(208)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0, false, new wbh(this));
+      }
+      else
+      {
+        this.jdField_a_of_type_Wpe.a(this.jdField_a_of_type_Wax.a.b, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        this.jdField_a_of_type_Wpe.a(this.jdField_a_of_type_Wax.a.b, 1, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        new vcl().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      }
+    }
   }
 }
 

@@ -1,16 +1,45 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class bais
-  extends Editable.Factory
+public class bais
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  
+  public static bais a(JSONObject paramJSONObject)
   {
-    if ((paramCharSequence instanceof baiq)) {
-      return (Editable)paramCharSequence;
+    if (paramJSONObject != null) {
+      try
+      {
+        if ((paramJSONObject.has("retcode")) && (paramJSONObject.getInt("retcode") == 0) && (paramJSONObject.has("data")))
+        {
+          bais localbais = new bais();
+          paramJSONObject = paramJSONObject.getJSONObject("data");
+          if (paramJSONObject != null)
+          {
+            localbais.jdField_a_of_type_JavaLangString = paramJSONObject.optString("url");
+            localbais.jdField_b_of_type_JavaLangString = paramJSONObject.optString("title");
+            localbais.jdField_a_of_type_Int = paramJSONObject.optInt("localPadId");
+            localbais.c = paramJSONObject.optString("localPadId");
+            localbais.d = paramJSONObject.optString("doc_id");
+            localbais.jdField_b_of_type_Int = paramJSONObject.optInt("doc_type");
+            localbais.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isCache");
+          }
+          return localbais;
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        QLog.e("ImportFormData", 1, paramJSONObject.getLocalizedMessage(), paramJSONObject);
+      }
     }
-    return new baiq(paramCharSequence, 3, ChatTextSizeSettingActivity.b() + 1);
+    return null;
   }
 }
 

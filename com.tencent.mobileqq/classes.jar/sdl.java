@@ -7,7 +7,7 @@ import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 
 final class sdl
-  implements bhud
+  implements bhyk
 {
   sdl(Context paramContext, AdData paramAdData) {}
   

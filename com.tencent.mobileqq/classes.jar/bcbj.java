@@ -1,54 +1,129 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import java.util.List;
-import org.json.JSONObject;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bcbj
-  extends bcbo
+public final class bcbj
 {
-  private TextView a;
-  private TextView b;
+  private static int jdField_a_of_type_Int = 4000;
+  private static final Map<String, bcbk> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(2);
   
-  protected bcbj(View paramView)
+  private static void a(bcbk parambcbk, boolean paramBoolean)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378900));
-    this.b = ((TextView)paramView.findViewById(2131378773));
-  }
-  
-  public void a(View paramView, HWReciteItem paramHWReciteItem, bcbm parambcbm)
-  {
-    paramHWReciteItem = (bbzr)parambcbm.a;
-    switch (paramView.getId())
+    if ((parambcbk != null) && (parambcbk.jdField_a_of_type_JavaIoByteArrayOutputStream != null))
     {
-    }
-    do
-    {
-      return;
-      ReciteFragment.a(paramView.getContext(), paramHWReciteItem.a().toString(), paramHWReciteItem.jdField_c_of_type_Int);
-      paramView = BaseApplicationImpl.getApplication().getRuntime();
-    } while (!(paramView instanceof QQAppInterface));
-    bdaj.a((QQAppInterface)paramView, paramHWReciteItem.f, "Grp_recite", "Recite_Clk", 0, 0, new String[] { paramHWReciteItem.f, "", paramHWReciteItem.b, "" });
-  }
-  
-  public void a(HWReciteItem paramHWReciteItem, bcbm parambcbm, bbzr parambbzr, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (TextUtils.isEmpty(parambbzr.jdField_c_of_type_JavaLangString))
-    {
-      StringBuilder localStringBuilder = new StringBuilder(alpo.a(2131705687)).append(parambbzr.b);
-      if ((parambbzr.a != null) && (!parambbzr.a.isEmpty())) {
-        localStringBuilder.append(bbyv.a(parambbzr.a));
+      if (parambcbk.jdField_a_of_type_JavaIoByteArrayOutputStream.size() > 0)
+      {
+        if (parambcbk.jdField_a_of_type_JavaIoFile == null)
+        {
+          File localFile = new File(parambcbk.jdField_a_of_type_JavaLangString);
+          if (!localFile.exists()) {
+            localFile.createNewFile();
+          }
+          parambcbk.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile, true);
+          parambcbk.jdField_a_of_type_JavaIoFile = localFile;
+        }
+        parambcbk.jdField_a_of_type_JavaIoByteArrayOutputStream.writeTo(parambcbk.jdField_a_of_type_JavaIoFileOutputStream);
       }
-      parambbzr.jdField_c_of_type_JavaLangString = localStringBuilder.toString();
+      if (paramBoolean)
+      {
+        if (parambcbk.jdField_a_of_type_JavaIoFileOutputStream != null)
+        {
+          parambcbk.jdField_a_of_type_JavaIoFileOutputStream.flush();
+          parambcbk.jdField_a_of_type_JavaIoFileOutputStream.close();
+          parambcbk.jdField_a_of_type_JavaIoFileOutputStream = null;
+        }
+        parambcbk.jdField_a_of_type_JavaIoFile = null;
+      }
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambbzr.jdField_c_of_type_JavaLangString);
-    paramHWReciteItem.b(this.jdField_a_of_type_AndroidViewView, parambcbm);
+  }
+  
+  public static void a(String paramString)
+  {
+    b(paramString);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if ((bcbk)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
+    {
+      bcbk localbcbk = new bcbk();
+      localbcbk.jdField_a_of_type_JavaLangString = paramString;
+      jdField_a_of_type_JavaUtilMap.put(paramString, localbcbk);
+    }
+    return true;
+  }
+  
+  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt)
+  {
+    paramString = (bcbk)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null)
+    {
+      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream == null) {
+        paramString.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream(paramInt << 1);
+      }
+      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.write(paramArrayOfByte, 0, paramInt);
+      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.size() < jdField_a_of_type_Int) {}
+    }
+    try
+    {
+      a(paramString, false);
+      label66:
+      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+      return true;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      break label66;
+    }
+  }
+  
+  private static void b(String paramString)
+  {
+    bcbk localbcbk = (bcbk)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((localbcbk == null) || (localbcbk.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
+    try
+    {
+      localbcbk.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
+      label31:
+      if (localbcbk.jdField_a_of_type_JavaIoFileOutputStream != null) {}
+      try
+      {
+        localbcbk.jdField_a_of_type_JavaIoFileOutputStream.close();
+        label45:
+        localbcbk.jdField_a_of_type_JavaIoFileOutputStream = null;
+        jdField_a_of_type_JavaUtilMap.remove(paramString);
+        return;
+      }
+      catch (Exception localException1)
+      {
+        break label45;
+      }
+    }
+    catch (Exception localException2)
+    {
+      break label31;
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    bcbk localbcbk = (bcbk)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((localbcbk != null) && (localbcbk.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
+    try
+    {
+      a(localbcbk, true);
+      label29:
+      localbcbk.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+      b(paramString);
+      return true;
+    }
+    catch (IOException localIOException)
+    {
+      break label29;
+    }
   }
 }
 

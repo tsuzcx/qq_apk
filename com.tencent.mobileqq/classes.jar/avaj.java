@@ -1,77 +1,72 @@
+import android.content.res.Resources;
+import android.graphics.Paint;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.ListView;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.10.1;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class avaj
-  implements AbsListView.OnScrollListener
+  implements View.OnClickListener
 {
-  public avaj(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public avaj(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    if (paramInt1 == 0)
+    if ((ChooseInterestTagActivity.a(this.a) == 3) || (ChooseInterestTagActivity.a(this.a) == 2) || (ChooseInterestTagActivity.a(this.a) == 1) || (ChooseInterestTagActivity.a(this.a) == 4))
     {
-      paramAbsListView = ShortVideoCommentsView.a(this.a).getChildAt(0);
-      if ((paramAbsListView != null) && (paramAbsListView.getTop() == 0))
+      paramView = (InterestTagInfo)paramView.getTag();
+      if (paramView != null)
       {
-        ShortVideoCommentsView.a(this.a, true);
+        ChooseInterestTagActivity.a(this.a).remove(paramView);
+        ChooseInterestTagActivity.a(this.a, paramView);
+        ChooseInterestTagActivity.b(this.a, paramView);
+      }
+    }
+    do
+    {
+      for (;;)
+      {
         return;
+        try
+        {
+          int[] arrayOfInt = new int[2];
+          paramView.getLocationInWindow(arrayOfInt);
+          if (arrayOfInt[0] > 0)
+          {
+            InterestTagInfo localInterestTagInfo = (InterestTagInfo)paramView.getTag();
+            if (localInterestTagInfo != null)
+            {
+              Paint localPaint = new Paint();
+              localPaint.setTextSize((float)(ChooseInterestTagActivity.a(this.a) * 14.0F + 0.5D));
+              localPaint.setColor(this.a.getResources().getColor(2131166961));
+              localPaint.setFakeBoldText(false);
+              localPaint.setAntiAlias(true);
+              Object localObject2 = localInterestTagInfo.tagName;
+              Object localObject1 = localObject2;
+              if (TextUtils.isEmpty((CharSequence)localObject2)) {
+                localObject1 = " ";
+              }
+              localObject2 = localObject1;
+              if (((String)localObject1).length() > 8) {
+                localObject2 = ((String)localObject1).substring(0, 8) + "...";
+              }
+              float f = localPaint.measureText((String)localObject2);
+              int i = (int)(ChooseInterestTagActivity.a(this.a) * 64.0F + 0.5D + f);
+              localObject1 = new avaz(this.a, arrayOfInt[0], i);
+              ((avaz)localObject1).a(ChooseInterestTagActivity.a(this.a));
+              ((avaz)localObject1).a(localInterestTagInfo);
+              ((avaz)localObject1).showAsDropDown(paramView, -(int)((i - 40.0F * ChooseInterestTagActivity.a(this.a)) / 2.0F), 10);
+              return;
+            }
+          }
+        }
+        catch (Exception paramView) {}
       }
-      ShortVideoCommentsView.a(this.a, false);
-      return;
-    }
-    ShortVideoCommentsView.a(this.a, false);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      if ((paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.a.a.a.size() > 0) && (!ShortVideoCommentsView.b(this.a)) && (!ShortVideoCommentsView.c(this.a))) {
-        ShortVideoCommentsView.c(this.a);
-      }
-      if (ShortVideoCommentsView.a(this.a) == null) {
-        break label269;
-      }
-      paramAbsListView = ShortVideoCommentsView.a(this.a).jdField_a_of_type_JavaLangString;
-      if (ShortVideoCommentsView.a(this.a) != null) {
-        long l = ShortVideoCommentsView.a(this.a).jdField_a_of_type_Long;
-      }
-      paramInt = ShortVideoCommentsView.a(this.a);
-      if ((paramInt < ShortVideoCommentsView.b(this.a)) || (paramInt < mww.a(this.a.getContext(), 40.0F))) {
-        break label272;
-      }
-      if (!ShortVideoCommentsView.d(this.a))
-      {
-        ShortVideoCommentsView.a(this.a, true);
-        if (ShortVideoCommentsView.a(this.a).j != 4) {}
-      }
-      this.a.f();
-    }
-    for (;;)
-    {
-      ShortVideoCommentsView.a(this.a, paramInt);
-      if ((ShortVideoCommentsView.a(this.a) != null) && (ShortVideoCommentsView.a(this.a).getChildCount() > 0) && (ShortVideoCommentsView.a(this.a).getChildAt(0).getTop() == 0) && (!ShortVideoCommentsView.e(this.a)))
-      {
-        ShortVideoCommentsView.b(this.a, true);
-        this.a.postDelayed(new ShortVideoCommentsView.10.1(this), 100L);
-      }
-      return;
-      label269:
-      break;
-      label272:
-      if (!ShortVideoCommentsView.e(this.a))
-      {
-        this.a.j();
-        ShortVideoCommentsView.a(this.a, 2);
-      }
-    }
+    } while (!QLog.isDevelopLevel());
+    QLog.i("choose_interest_tag", 4, paramView.getMessage());
   }
 }
 

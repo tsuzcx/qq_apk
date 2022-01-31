@@ -1,73 +1,47 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyReq;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
-public class bgzq
-  extends bgzp
+class bgzq
+  implements AsyncResult
 {
-  private MiniAppMidasPay.StQueryStarCurrencyReq a = new MiniAppMidasPay.StQueryStarCurrencyReq();
+  bgzq(bgzp parambgzp) {}
   
-  public bgzq(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-    this.a.appId.set(paramString1);
-    this.a.prepayId.set(paramString2);
-    this.a.starCurrency.set(paramInt1);
-    this.a.sandboxEnv.set(paramInt2);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_pay";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    MiniAppMidasPay.StQueryStarCurrencyRsp localStQueryStarCurrencyRsp = new MiniAppMidasPay.StQueryStarCurrencyRsp();
-    try
+    if (paramBoolean)
     {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStQueryStarCurrencyRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStQueryStarCurrencyRsp != null)
+      long l = paramJSONObject.optLong("retCode");
+      String str = paramJSONObject.optString("errMsg");
+      QMLog.i("MiniAppInfoLoadTask", "getAppInfoById, retCode = " + l + ",errMsg = " + str);
+      paramJSONObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
+      if (paramJSONObject != null)
       {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("response", localStQueryStarCurrencyRsp);
-        paramArrayOfByte.put("resultCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        return paramArrayOfByte;
+        paramJSONObject.launchParam.clone(bgzp.a(this.a).launchParam);
+        paramJSONObject.apkgInfo = bgzp.a(this.a).apkgInfo;
+        paramJSONObject.launchParam.miniAppId = paramJSONObject.appId;
+        if (!TextUtils.isEmpty(bgzp.a(this.a).launchParam.extendData)) {
+          paramJSONObject.extendData = bgzp.a(this.a).launchParam.extendData;
+        }
+        if (paramJSONObject.verType != 3) {
+          paramJSONObject.forceReroad = 3;
+        }
+        bhck.a(paramJSONObject, 1028, "main_loading", bhck.a(paramJSONObject));
+        bgzp.a(this.a, paramJSONObject);
+        this.a.c();
+        return;
       }
-      QMLog.d("QueryCurrencyRequest", "onResponse fail.rsp = null");
-      return null;
+      bhcn.a(bgzp.a(this.a), "1", null, "load_fail", "shortcut_request_fail");
+      bhbs.a("2launch_fail", "shotcut_request_fail", null, bgzp.a(this.a));
+      this.a.e();
+      return;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("QueryCurrencyRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "QueryStarCurrency";
+    bhcn.a(bgzp.a(this.a), "1", null, "load_fail", "shortcut_request_fail");
+    bhbs.a("2launch_fail", "shotcut_request_fail", null, bgzp.a(this.a));
+    this.a.e();
   }
 }
 

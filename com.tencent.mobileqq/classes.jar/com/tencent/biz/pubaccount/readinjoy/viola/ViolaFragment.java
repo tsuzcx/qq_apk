@@ -28,7 +28,7 @@ import smy;
 import snl;
 import sno;
 import snq;
-import xwb;
+import yak;
 
 public class ViolaFragment
   extends ViolaLazyFragment
@@ -265,7 +265,7 @@ public class ViolaFragment
       {
         this.jdField_a_of_type_Snl.c();
         label33:
-        xwb.a(getActivity());
+        yak.a(getActivity());
         return;
         label41:
         BaseActivity.sTopActivity.finishAndRemoveTask();

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import aekt;
+import aepi;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import asin;
-import bkeu;
+import asmw;
+import bkjb;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
 import java.util.ArrayList;
@@ -36,8 +36,8 @@ class GameSessionView$3
     {
       GameSessionView.a(this.this$0).setVisibility(0);
       localObject = (LinearLayout.LayoutParams)GameSessionView.a(this.this$0).getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject).leftMargin = aekt.a(68.0F, this.this$0.getResources());
-      ((LinearLayout.LayoutParams)localObject).rightMargin = aekt.a(68.0F, this.this$0.getResources());
+      ((LinearLayout.LayoutParams)localObject).leftMargin = aepi.a(68.0F, this.this$0.getResources());
+      ((LinearLayout.LayoutParams)localObject).rightMargin = aepi.a(68.0F, this.this$0.getResources());
       this.this$0.a(GameSessionView.a(this.this$0), (GameCenterSessionInfo)GameSessionView.a(this.this$0).get(0));
       GameSessionView.b(this.this$0).setVisibility(8);
       GameSessionView.c(this.this$0).setVisibility(8);
@@ -56,17 +56,17 @@ class GameSessionView$3
       if (GameSessionView.a(this.this$0).get(0) != null) {
         localObject = ((GameCenterSessionInfo)GameSessionView.a(this.this$0).get(0)).d();
       }
-      bkeu.a().a((String)localObject, "1", "145", "920", "92001", "206341", "0", "0", "8", "" + i);
+      bkjb.a().a((String)localObject, "1", "145", "920", "92001", "206341", "0", "0", "8", "" + i);
       return;
       if (GameSessionView.a(this.this$0).size() == 2)
       {
         GameSessionView.a(this.this$0).setVisibility(0);
         localObject = (LinearLayout.LayoutParams)GameSessionView.a(this.this$0).getLayoutParams();
-        ((LinearLayout.LayoutParams)localObject).leftMargin = aekt.a(4.0F, this.this$0.getResources());
-        ((LinearLayout.LayoutParams)localObject).rightMargin = aekt.a(0.0F, this.this$0.getResources());
+        ((LinearLayout.LayoutParams)localObject).leftMargin = aepi.a(4.0F, this.this$0.getResources());
+        ((LinearLayout.LayoutParams)localObject).rightMargin = aepi.a(0.0F, this.this$0.getResources());
         localObject = (LinearLayout.LayoutParams)GameSessionView.b(this.this$0).getLayoutParams();
-        ((LinearLayout.LayoutParams)localObject).leftMargin = aekt.a(0.0F, this.this$0.getResources());
-        ((LinearLayout.LayoutParams)localObject).rightMargin = aekt.a(4.0F, this.this$0.getResources());
+        ((LinearLayout.LayoutParams)localObject).leftMargin = aepi.a(0.0F, this.this$0.getResources());
+        ((LinearLayout.LayoutParams)localObject).rightMargin = aepi.a(4.0F, this.this$0.getResources());
         this.this$0.a(GameSessionView.a(this.this$0), (GameCenterSessionInfo)GameSessionView.a(this.this$0).get(0));
         GameSessionView.b(this.this$0).setVisibility(0);
         this.this$0.a(GameSessionView.b(this.this$0), (GameCenterSessionInfo)GameSessionView.a(this.this$0).get(1));
@@ -75,11 +75,11 @@ class GameSessionView$3
       }
       GameSessionView.a(this.this$0).setVisibility(0);
       localObject = (LinearLayout.LayoutParams)GameSessionView.a(this.this$0).getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject).leftMargin = aekt.a(4.0F, this.this$0.getResources());
-      ((LinearLayout.LayoutParams)localObject).rightMargin = aekt.a(0.0F, this.this$0.getResources());
+      ((LinearLayout.LayoutParams)localObject).leftMargin = aepi.a(4.0F, this.this$0.getResources());
+      ((LinearLayout.LayoutParams)localObject).rightMargin = aepi.a(0.0F, this.this$0.getResources());
       localObject = (LinearLayout.LayoutParams)GameSessionView.b(this.this$0).getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject).leftMargin = aekt.a(0.0F, this.this$0.getResources());
-      ((LinearLayout.LayoutParams)localObject).rightMargin = aekt.a(0.0F, this.this$0.getResources());
+      ((LinearLayout.LayoutParams)localObject).leftMargin = aepi.a(0.0F, this.this$0.getResources());
+      ((LinearLayout.LayoutParams)localObject).rightMargin = aepi.a(0.0F, this.this$0.getResources());
       this.this$0.a(GameSessionView.a(this.this$0), (GameCenterSessionInfo)GameSessionView.a(this.this$0).get(0));
       GameSessionView.b(this.this$0).setVisibility(0);
       this.this$0.a(GameSessionView.b(this.this$0), (GameCenterSessionInfo)GameSessionView.a(this.this$0).get(1));
@@ -95,7 +95,7 @@ class GameSessionView$3
       {
         GameSessionView.a(this.this$0).setVisibility(8);
         GameSessionView.a(this.this$0).setVisibility(0);
-        GameSessionView.a(this.this$0).setText(asin.a(j));
+        GameSessionView.a(this.this$0).setText(asmw.a(j));
         break;
       }
       GameSessionView.a(this.this$0).setVisibility(0);

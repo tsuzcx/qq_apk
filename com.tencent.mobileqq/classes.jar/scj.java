@@ -44,7 +44,7 @@ public class scj
           }
         }
       }
-      bcch.a(paramFastWebActivity, paramArrayList.indexOf(ors.f(paramJSONObject)), paramArrayList, null, null, false, true, "4", 1000, null, null, null, null, "", true);
+      bcgq.a(paramFastWebActivity, paramArrayList.indexOf(ors.f(paramJSONObject)), paramArrayList, null, null, false, true, "4", 1000, null, null, null, null, "", true);
     }
     catch (Exception paramArticleInfo)
     {

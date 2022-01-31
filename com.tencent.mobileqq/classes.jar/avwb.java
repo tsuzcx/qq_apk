@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import java.util.List;
 
-public final class avwb
-  implements Comparator<ShuayishuaConfig>
+public class avwb
+  implements bhuk
 {
-  public int a(ShuayishuaConfig paramShuayishuaConfig1, ShuayishuaConfig paramShuayishuaConfig2)
+  public avwb(OCRResultActivity paramOCRResultActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    long l = paramShuayishuaConfig1.realBegin - paramShuayishuaConfig2.realBegin;
-    if (l > 0L) {
-      return 1;
+    if ((OCRResultActivity.a(this.a) != null) && (paramInt < OCRResultActivity.a(this.a).size()))
+    {
+      paramView = (String)OCRResultActivity.a(this.a).get(paramInt);
+      OCRResultActivity.a(this.a, OCRResultActivity.a(this.a), paramView, false, true);
     }
-    if (l < 0L) {
-      return -1;
+    if ((OCRResultActivity.a(this.a) != null) && (OCRResultActivity.a(this.a).isShowing())) {
+      OCRResultActivity.a(this.a).dismiss();
     }
-    return 0;
+    OCRResultActivity.a(this.a, null);
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.trooppiceffects;
 
-import bcsl;
-import bcsn;
+import bcwu;
+import bcww;
 
 public class TroopPicEffectsController$2
   implements Runnable
 {
-  public TroopPicEffectsController$2(bcsl parambcsl, bcsn parambcsn) {}
+  public TroopPicEffectsController$2(bcwu parambcwu, bcww parambcww) {}
   
   public void run()
   {

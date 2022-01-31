@@ -1,105 +1,23 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Set;
 
-public class arxw
-  extends arum
+class arxw
+  implements arxq
 {
-  AbsShareMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
-  AbsStructMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+  arxw(arxv paramarxv) {}
   
-  public arxw(Intent paramIntent)
-  {
-    super(paramIntent);
-  }
+  public void a(int paramInt) {}
   
-  protected void a()
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (k()) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-    if (l()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (m()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
-    }
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    AbsStructMsg localAbsStructMsg = azqu.a(this.jdField_a_of_type_AndroidOsBundle.getByteArray("stuctmsg_bytes"));
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = azqu.a(this.jdField_a_of_type_AndroidOsBundle.getByteArray("struct_msg_show_in_dialog"));
-    if ((localAbsStructMsg != null) && ((localAbsStructMsg instanceof AbsShareMsg))) {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)localAbsStructMsg);
-    }
-    return true;
-  }
-  
-  protected boolean a(bdfq parambdfq)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) {
-      parambdfq.addView(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.getPreDialogView(this.jdField_a_of_type_AndroidAppActivity, null));
-    }
-    for (;;)
-    {
-      return true;
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
-      {
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-        localLayoutParams.setMargins(aekt.a(-15.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 0, aekt.a(-15.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), aekt.a(5.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardOption.ForwardRecommendFriendOption", 2, "updateImageView addStructView");
-        }
-        parambdfq.addView(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.getPreDialogView(this.jdField_a_of_type_AndroidAppActivity, null), localLayoutParams);
-      }
-    }
-  }
-  
-  protected void d()
-  {
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("structmsg_service_id", -1);
-    if (i == 63) {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B34", "0X8005B34", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      super.d();
-      return;
-      if (i == 84) {
-        if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("pa_type", -1) == 53) {
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007018", "0X8007018", 0, 0, "", "", "", "");
-        } else {
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007169", "0X8007169", 0, 0, "", "", "", "");
-        }
-      }
-    }
-  }
-  
-  protected void r()
-  {
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("structmsg_service_id", -1);
-    if (i == 63) {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B35", "0X8005B35", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      super.r();
-      return;
-      if (i == 84) {
-        if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("pa_type", -1) == 53) {
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007017", "0X8007017", 0, 0, "", "", "", "");
-        } else {
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800716A", "0X800716A", 0, 0, "", "", "", "");
-        }
-      }
-    }
+    QLog.d("FlutterMainQIPCModule", 1, String.format("onResult, isSuccess: %s, installDir: %s, isEngineExist: %s, isAppExist: %s", new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("KEY_INSTALL_RESULT", paramBoolean1);
+    localBundle.putString("KEY_INSTALL_DIR", paramString);
+    localBundle.putBoolean("KEY_IS_APP_EXIST", paramBoolean3);
+    localBundle.putBoolean("KEY_IS_ENGINE_EXIST", paramBoolean2);
+    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "FlutterSubQIPCModule", "ACTION_INSTALL_RESULT", localBundle, new arxx(this));
   }
 }
 

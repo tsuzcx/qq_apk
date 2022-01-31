@@ -1,41 +1,61 @@
-import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_rsp;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
+import java.util.concurrent.atomic.AtomicLong;
 
 class azmi
-  extends avqu
+  extends baot
 {
-  protected void e(boolean paramBoolean, Bundle paramBundle)
+  azmi(azmg paramazmg) {}
+  
+  public boolean a(int paramInt)
   {
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof mobile_get_qzone_public_msg_rsp)))
+    boolean bool2 = false;
+    QLog.i("SimpleUILog.SimpleUIHandler", 1, String.format("postSwitch %d", new Object[] { Integer.valueOf(paramInt) }));
+    switch (paramInt)
     {
-      int i = azmg.a().decrementAndGet();
-      azmg.a(0);
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      localAppRuntime.getPreferences().edit().putInt(localAppRuntime.getAccount() + "_" + "qzone_xp_req_left", i).apply();
-      azmg.b(((mobile_get_qzone_public_msg_rsp)paramBundle).next_req_tmstamp);
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneReport", 2, "next req time: " + azmg.b() + ", left: " + i);
-      }
-      azmj.b(null, "CliOper", "", "", "0X800915D", "0X800915D", 0, 0, "", "", "", "");
+    default: 
+      paramInt = 3;
     }
-    for (;;)
+    while (paramInt == 0)
     {
-      azmg.a().set(false);
-      BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(azmg.a());
-      return;
-      azmg.c();
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneReport", 2, "qzone report failed");
+      boolean bool1;
+      if (!AppNetConnInfo.isNetSupport())
+      {
+        this.a.notifyUI(3, false, new Object[] { Boolean.valueOf(true), Boolean.valueOf(this.a.a), Integer.valueOf(6) });
+        bool1 = azmg.a(this.a, false, "211", azmk.b(), true, azmf.b[azmk.c()]);
+        if (!bool1) {
+          azmg.a(this.a, azmg.a(this.a), -2147483648, azmg.b(this.a), -2147483648, null, -2147483648);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("SimpleUILog.SimpleUIHandler", 2, String.format("postSwitch net_err revert theme bStartSwtich=%b", new Object[] { Boolean.valueOf(bool1) }));
+        }
+        return true;
+        paramInt = 0;
+        continue;
+        paramInt = 3;
+        continue;
+        paramInt = 1;
+      }
+      else
+      {
+        azmg localazmg = (azmg)this.a.app.a(154);
+        if (azmg.a(this.a, azmg.a(this.a)) == 1) {}
+        for (bool1 = true;; bool1 = false)
+        {
+          paramInt = azmg.a(this.a, azmg.b(this.a));
+          if (azmg.a(this.a, azmg.c(this.a)) == 1) {
+            bool2 = true;
+          }
+          long l = localazmg.a(bool1, paramInt, this.a.a, bool2);
+          azmg.a(this.a).set(l);
+          return true;
+        }
       }
     }
+    azmg.a(this.a, azmg.a(this.a), -2147483648, azmg.b(this.a), -2147483648, azmg.c(this.a), -2147483648);
+    this.a.notifyUI(3, false, new Object[] { Boolean.valueOf(false), Boolean.valueOf(this.a.a), Integer.valueOf(paramInt) });
+    return true;
   }
 }
 

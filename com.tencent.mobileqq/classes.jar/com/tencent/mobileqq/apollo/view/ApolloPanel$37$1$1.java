@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.apollo.view;
 
-import alik;
-import alil;
-import bdpx;
+import almz;
+import alna;
+import bdug;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ApolloPanel$37$1$1
   implements Runnable
 {
-  public ApolloPanel$37$1$1(alil paramalil, boolean paramBoolean) {}
+  public ApolloPanel$37$1$1(alna paramalna, boolean paramBoolean) {}
   
   public void run()
   {
     if (!this.jdField_a_of_type_Boolean) {
-      QQToast.a(this.jdField_a_of_type_Alil.jdField_a_of_type_Alik.a.getContext(), 1, 2131690181, 0).b(0);
+      QQToast.a(this.jdField_a_of_type_Alna.jdField_a_of_type_Almz.a.getContext(), 1, 2131690181, 0).b(0);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Alil.jdField_a_of_type_Bdpx.a(null);
+      this.jdField_a_of_type_Alna.jdField_a_of_type_Bdug.a(null);
       return;
-      QQToast.a(this.jdField_a_of_type_Alil.jdField_a_of_type_Alik.a.getContext(), 2, 2131690182, 0).b(0);
+      QQToast.a(this.jdField_a_of_type_Alna.jdField_a_of_type_Almz.a.getContext(), 2, 2131690182, 0).b(0);
     }
   }
 }

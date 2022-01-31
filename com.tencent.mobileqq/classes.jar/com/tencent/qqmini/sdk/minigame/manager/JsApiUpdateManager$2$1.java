@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.minigame.manager;
 
-import bgjm;
-import bgvb;
+import bgnt;
+import bgzi;
 
 public class JsApiUpdateManager$2$1
   implements Runnable
 {
-  public JsApiUpdateManager$2$1(bgvb parambgvb) {}
+  public JsApiUpdateManager$2$1(bgzi parambgzi) {}
   
   public void run()
   {
-    bgjm.a().a();
+    bgnt.a().a();
   }
 }
 

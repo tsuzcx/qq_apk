@@ -1,20 +1,15 @@
-import android.os.Bundle;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.theme.diy.ResData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
 
 public class auba
-  implements baks
+  implements DialogInterface.OnDismissListener
 {
-  public auba(ChatBackgroundManager paramChatBackgroundManager) {}
+  public auba(MedalGuideView paramMedalGuideView) {}
   
-  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramInt2 == 4) {
-      BaseApplicationImpl.sImageCache.evictAll();
-    }
-    return 0;
+    MedalGuideView.a(this.a);
   }
 }
 

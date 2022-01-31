@@ -1,84 +1,172 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import android.os.Handler;
+import android.util.SparseArray;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.manager.EngineChannel;
+import com.tencent.qqmini.sdk.manager.EngineManager.1;
+import com.tencent.qqmini.sdk.manager.EngineManager.2;
+import com.tencent.qqmini.sdk.manager.InstalledEngine;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bgwe
 {
-  public static final Set<String> a = new HashSet();
-  public static final Set<String> b = new HashSet(Arrays.asList(new String[] { "__TT__GLOBAL__", "createAudioInstance", "setAudioState", "getAudioState", "operateAudio", "destroyAudioInstance", "onAudioStateChange", "setInnerAudioOptionQGame", "getAvailableAudioSources", "loadFont", "getTextLineHeight", "getSystemInfo", "getSystemInfoSync" }));
-  private static Set<String> c;
-  private static Set<String> d;
+  private static volatile bgwe jdField_a_of_type_Bgwe;
+  private SparseArray<bgwa> jdField_a_of_type_AndroidUtilSparseArray;
+  private SparseArray<EngineChannel> b;
+  private SparseArray<EngineChannel> c;
   
-  public static Set<String> a()
+  private bgwe()
   {
-    if (c == null)
-    {
-      c = new HashSet(a);
-      Object localObject = bglq.a("qqtriton", "MiniGameAPILogWhiteList");
-      bgwc.a().i("LogFilterUtil", "wns config white list: " + (String)localObject);
-      localObject = a((String)localObject);
-      if (localObject != null) {
-        c.addAll((Collection)localObject);
-      }
-      localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      if ((localObject != null) && (((MiniAppProxy)localObject).isDebugVersion())) {
-        c.add("__jsBridge_all_log__");
-      }
-    }
-    return c;
+    QMLog.i("EngineManager", "[MiniEng]init start");
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.c = new SparseArray();
+    EngineChannel localEngineChannel = new EngineChannel();
+    localEngineChannel.a("MainGame");
+    localEngineChannel.a(new bgwh(this));
+    this.c.put(2, localEngineChannel);
+    localEngineChannel = new EngineChannel();
+    localEngineChannel.a("MainApp");
+    localEngineChannel.a(new bgwh(this));
+    this.c.put(3, localEngineChannel);
+    this.b = new SparseArray();
+    bgwa.a();
+    bgwa.b(2);
+    bgwa.a(2);
+    bgwa.a(3);
+    QMLog.i("EngineManager", "[MiniEng]init end cost=" + (System.currentTimeMillis() - l));
   }
   
-  private static Set<String> a(String paramString)
+  public static bgwe a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
-    }
-    HashSet localHashSet;
-    String[] arrayOfString;
-    do
+    if (jdField_a_of_type_Bgwe == null) {}
+    try
     {
-      do
-      {
-        return paramString;
-        localHashSet = new HashSet();
-        arrayOfString = paramString.split(",");
-        paramString = localHashSet;
-      } while (arrayOfString == null);
-      paramString = localHashSet;
-    } while (arrayOfString.length <= 0);
-    int j = arrayOfString.length;
-    int i = 0;
+      if (jdField_a_of_type_Bgwe == null) {
+        jdField_a_of_type_Bgwe = new bgwe();
+      }
+      return jdField_a_of_type_Bgwe;
+    }
+    finally {}
+  }
+  
+  private ArrayList<Integer> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = AppLoaderFactory.g().getMiniAppEnv().getContext();
+    if (localObject == null) {
+      return localArrayList;
+    }
+    localObject = (ActivityManager)((Context)localObject).getSystemService("activity");
+    if (localObject == null) {
+      return localArrayList;
+    }
+    localObject = ((ActivityManager)localObject).getRunningAppProcesses().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.add(Integer.valueOf(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).pid));
+    }
+    return localArrayList;
+  }
+  
+  private void a(BaseLibInfo paramBaseLibInfo, EngineChannel paramEngineChannel)
+  {
+    if (paramBaseLibInfo != null)
+    {
+      ThreadManager.b().post(new EngineManager.1(this, paramBaseLibInfo, paramEngineChannel));
+      return;
+    }
+    paramEngineChannel.a(54, null);
+  }
+  
+  private void a(EngineChannel paramEngineChannel)
+  {
     for (;;)
     {
-      paramString = localHashSet;
-      if (i >= j) {
-        break;
+      int i;
+      try
+      {
+        ArrayList localArrayList = a();
+        if (this.b != null)
+        {
+          i = 0;
+          if (i < this.b.size())
+          {
+            int j = this.b.keyAt(i);
+            if (localArrayList.contains(Integer.valueOf(j))) {
+              break label137;
+            }
+            if (((EngineChannel)this.b.valueAt(i)).equals(paramEngineChannel))
+            {
+              QMLog.e("EngineManager", "[MiniEng] removeDeadChannelExcept error pid=" + j);
+            }
+            else
+            {
+              this.b.remove(j);
+              QMLog.i("EngineManager", "[MiniEng] removeDeadChannelExcept pid=" + j);
+            }
+          }
+        }
       }
-      paramString = arrayOfString[i].trim();
-      if (!TextUtils.isEmpty(paramString)) {
-        localHashSet.add(paramString);
-      }
+      finally {}
+      return;
+      label137:
       i += 1;
     }
   }
   
-  public static Set<String> b()
+  private void b(BaseLibInfo paramBaseLibInfo, EngineChannel paramEngineChannel)
   {
-    if (d == null)
+    if (paramBaseLibInfo != null)
     {
-      d = new HashSet(b);
-      Object localObject = bglq.a("qqtriton", "MiniGameAPILogBlackList");
-      bgwc.a().i("LogFilterUtil", "wns config black list: " + (String)localObject);
-      localObject = a((String)localObject);
-      if (localObject != null) {
-        d.addAll((Collection)localObject);
-      }
+      ThreadManager.b().post(new EngineManager.2(this, paramBaseLibInfo, paramEngineChannel));
+      return;
     }
-    return d;
+    paramEngineChannel.a(54, null);
+  }
+  
+  private void c(BaseLibInfo paramBaseLibInfo, EngineChannel paramEngineChannel)
+  {
+    QMLog.i("EngineManager", "[MiniEng] installBaseLibForChannel " + paramBaseLibInfo + "," + paramEngineChannel);
+    a(paramBaseLibInfo, new bgwg(this, paramEngineChannel, paramBaseLibInfo));
+  }
+  
+  public EngineChannel a(int paramInt)
+  {
+    EngineChannel localEngineChannel = (EngineChannel)this.c.get(paramInt);
+    if (localEngineChannel == null) {
+      QMLog.e("EngineManager", "[MiniEng]getChannelForType error type" + paramInt);
+    }
+    return localEngineChannel;
+  }
+  
+  public ArrayList<InstalledEngine> a(int paramInt)
+  {
+    return bgwa.a(paramInt);
+  }
+  
+  public void a(BaseLibInfo paramBaseLibInfo, bgwd parambgwd)
+  {
+    if (paramBaseLibInfo != null)
+    {
+      bgwa localbgwa2 = (bgwa)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramBaseLibInfo.baseLibType);
+      bgwa localbgwa1 = localbgwa2;
+      if (localbgwa2 == null)
+      {
+        localbgwa1 = new bgwa();
+        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramBaseLibInfo.baseLibType, localbgwa1);
+      }
+      localbgwa1.a(paramBaseLibInfo, parambgwd);
+      return;
+    }
+    QMLog.i("EngineManager", "[MiniEng] libInfo is null ");
   }
 }
 

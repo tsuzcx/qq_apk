@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.jsp;
 
-import atcu;
+import athd;
 
 public class DataApiPlugin$2
   implements Runnable
 {
-  public DataApiPlugin$2(atcu paramatcu, String paramString1, String paramString2) {}
+  public DataApiPlugin$2(athd paramathd, String paramString1, String paramString2) {}
   
   public void run()
   {

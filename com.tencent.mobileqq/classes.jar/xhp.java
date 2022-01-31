@@ -1,142 +1,126 @@
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.IBinder;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWService;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWServiceProxy.2;
-import java.util.Queue;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Cap;
+import android.graphics.Paint.Join;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class xhp
+  extends xhf
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Messenger jdField_a_of_type_AndroidOsMessenger;
-  private Queue<Message> jdField_a_of_type_JavaUtilQueue;
-  private xhr jdField_a_of_type_Xhr;
-  private xht jdField_a_of_type_Xht;
-  private int jdField_b_of_type_Int;
-  private final Messenger jdField_b_of_type_AndroidOsMessenger;
+  public static final int a;
+  public float a;
+  public Paint a;
+  xhb a;
+  public xho a;
+  public float b;
+  public int b;
+  public Paint b;
+  public int c = aepi.a(6.0F, BaseApplicationImpl.getContext().getResources());
   
-  public static String a(int paramInt)
+  static
   {
-    switch (paramInt)
-    {
-    default: 
-      return "UNKNOWN";
-    case 2: 
-      return "CONNECTED";
-    case 1: 
-      return "CONNECTING";
-    case 0: 
-      return "DISCONNECTED";
-    }
-    return "DISCONNECTING";
+    jdField_a_of_type_Int = xov.a[8];
   }
   
-  private static void b()
+  public xhp(xhb paramxhb)
   {
-    if (Looper.myLooper() != Looper.getMainLooper()) {
-      throw new IllegalStateException("should invoke at main thread");
-    }
+    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
+    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
+    this.jdField_a_of_type_Xhb = paramxhb;
+  }
+  
+  private void a(Paint paramPaint, xho paramxho)
+  {
+    paramPaint.setXfermode(null);
+    paramPaint.setColor(paramxho.jdField_b_of_type_Int);
+    paramPaint.setStrokeWidth(paramxho.c);
+    paramPaint.setShader(null);
+  }
+  
+  public Paint a()
+  {
+    return this.jdField_b_of_type_AndroidGraphicsPaint;
   }
   
   public void a()
   {
-    Messenger localMessenger = this.jdField_a_of_type_AndroidOsMessenger;
-    if (localMessenger != null) {
-      for (;;)
-      {
-        Message localMessage = (Message)this.jdField_a_of_type_JavaUtilQueue.poll();
-        if (localMessage == null) {
-          break;
-        }
-        if (localMessage.replyTo == null) {
-          localMessage.replyTo = this.jdField_b_of_type_AndroidOsMessenger;
-        }
-        try
-        {
-          xhm.b("RMWServiceProxy", "client.flush : " + xhn.a(localMessage));
-          localMessenger.send(localMessage);
-        }
-        catch (RemoteException localRemoteException)
-        {
-          xhm.a("RMWServiceProxy", "sendMessageToService error", new Object[] { localRemoteException });
-        }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void a(Canvas paramCanvas, xhc paramxhc, Paint paramPaint)
+  {
+    if ((paramxhc instanceof xho))
+    {
+      paramxhc = (xho)paramxhc;
+      a(paramPaint, paramxhc);
+      paramCanvas.drawPath(paramxhc.a, paramPaint);
+    }
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.jdField_a_of_type_Float = f1;
+      this.jdField_b_of_type_Float = f2;
+      this.jdField_a_of_type_Xho = new xho(new Path(), 101, this.jdField_a_of_type_AndroidGraphicsPaint.getColor(), this.c);
+      if (this.jdField_a_of_type_Xhb != null) {
+        this.jdField_a_of_type_Xhb.a(this.jdField_a_of_type_Xho);
       }
-    }
-    xhm.b("RMWServiceProxy", "can not flushMessageQueue, service state invalid : " + a(this.jdField_a_of_type_Int));
-  }
-  
-  protected void a(ComponentName paramComponentName)
-  {
-    this.jdField_a_of_type_AndroidOsMessenger = null;
-    this.jdField_a_of_type_Int = 0;
-    xhm.b("RMWServiceProxy", "onServiceDisconnected " + a(this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_Xht.notifyObservers(new xhs(this.jdField_a_of_type_Int));
-    if (this.jdField_a_of_type_Xhr != null)
-    {
-      this.jdField_a_of_type_Xhr.a();
-      this.jdField_a_of_type_Xhr = null;
-    }
-  }
-  
-  protected void a(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    try
-    {
-      paramIBinder.linkToDeath(new xhq(this, paramComponentName), 0);
-      this.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
-      this.jdField_a_of_type_Int = 2;
-      xhm.b("RMWServiceProxy", "onServiceConnected " + a(this.jdField_a_of_type_Int));
-      a();
-      this.jdField_a_of_type_Xht.notifyObservers(new xhs(this.jdField_a_of_type_Int));
-      return;
-    }
-    catch (RemoteException paramComponentName)
-    {
-      xhm.c("RMWServiceProxy", "linkToDeath failed : " + paramComponentName);
-      new Handler(Looper.getMainLooper()).postDelayed(new RMWServiceProxy.2(this), 1000L);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    xhm.a("RMWServiceProxy", "setup, current state = " + a(this.jdField_a_of_type_Int) + ", force = " + paramBoolean);
-    b();
-    if (this.jdField_a_of_type_AndroidContentContext == null)
-    {
-      xhm.c("RMWServiceProxy", "setup but without context, give up");
-      return;
-    }
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
-    }
-    if (paramBoolean) {
-      this.jdField_b_of_type_Int = 5;
-    }
-    if (this.jdField_b_of_type_Int > 0)
-    {
-      this.jdField_b_of_type_Int -= 1;
-      xhm.c("RMWServiceProxy", "setup again because of remote died, retry count left = " + this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_Int = 1;
-      xhm.a("RMWServiceProxy", "connecting ... " + a(this.jdField_a_of_type_Int));
-      if (this.jdField_a_of_type_Xhr == null) {
-        this.jdField_a_of_type_Xhr = new xhr(this);
+      DoodleLayout.a("use_graffiti");
+      this.jdField_a_of_type_Xho.a.reset();
+      this.jdField_a_of_type_Xho.a.moveTo(f1, f2);
+      this.jdField_a_of_type_Xho.a.lineTo(f1 + 1.0F, f2 + 1.0F);
+      continue;
+      if ((this.jdField_a_of_type_Xho != null) && (this.jdField_a_of_type_Xho.a != null)) {
+        this.jdField_a_of_type_Xho.a.quadTo(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, (this.jdField_a_of_type_Float + f1) / 2.0F, (this.jdField_b_of_type_Float + f2) / 2.0F);
       }
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, RMWService.class);
-      this.jdField_a_of_type_AndroidContentContext.bindService(localIntent, this.jdField_a_of_type_Xhr, 1);
-      return;
+      this.jdField_a_of_type_Float = f1;
+      this.jdField_b_of_type_Float = f2;
     }
-    xhm.c("RMWServiceProxy", "give up setup again");
+  }
+  
+  public Paint b()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsPaint;
+  }
+  
+  public void b()
+  {
+    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
+    this.jdField_a_of_type_Xho = null;
   }
 }
 

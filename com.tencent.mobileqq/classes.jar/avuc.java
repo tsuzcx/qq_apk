@@ -1,15 +1,8 @@
-public class avuc
+public abstract interface avuc
 {
-  public int a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public abstract boolean a();
   
-  public avuc(avua paramavua) {}
+  public abstract boolean a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

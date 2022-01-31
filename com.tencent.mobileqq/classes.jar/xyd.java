@@ -1,21 +1,8 @@
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
-import com.tencent.biz.subscribe.event.RecommendFeedbackEvent;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
 
-public class xyd
-  implements yhf
+public abstract interface xyd
 {
-  public xyd(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      yej.a().a(new RecommendFeedbackEvent(RecommendBannerFeedItemView.a(this.a)));
-      return;
-    }
-    QQToast.a(this.a.getContext(), 2131720490, 0).a();
-  }
+  public abstract void a(Bundle paramBundle);
 }
 
 

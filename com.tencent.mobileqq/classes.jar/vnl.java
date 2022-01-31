@@ -1,14 +1,19 @@
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
 
 public class vnl
-  extends xrw
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public vnl(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
+  public vnl(StoryPlayerActivity paramStoryPlayerActivity, View paramView) {}
   
-  public boolean a(boolean paramBoolean)
+  public boolean onPreDraw()
   {
-    StoryPlayerCommentListView.a(this.a).a(StoryPlayerCommentListView.a(this.a).a());
-    return true;
+    vrz.b((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerActivity.a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerActivity.a, new vnm(this));
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
+    return false;
   }
 }
 

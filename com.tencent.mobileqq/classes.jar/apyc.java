@@ -1,96 +1,168 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 
 public class apyc
+  extends BaseAdapter
+  implements AdapterView.OnItemClickListener
 {
-  public int a;
-  public long a;
-  public apxk a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public String c = "";
-  public String d = "";
-  public String e = "0";
-  public String f = "";
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private apye jdField_a_of_type_Apye;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public apyc()
+  public apyc(Context paramContext, apye paramapye)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = 30;
-    this.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Apye = paramapye;
+    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(570425344);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847367);
+    this.jdField_a_of_type_Int = aepi.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
-  public apyc a()
+  public static URL a(String paramString1, String paramString2)
   {
-    apyc localapyc = new apyc();
-    localapyc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localapyc.jdField_a_of_type_ArrayOfByte = ((byte[])this.jdField_a_of_type_ArrayOfByte.clone());
-    localapyc.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localapyc.c = this.c;
-    localapyc.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    localapyc.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localapyc.e = this.e;
-    return localapyc;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfByte = bdal.a("");
-    this.jdField_b_of_type_JavaLangString = "";
-    this.c = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-    this.e = "0";
-    this.jdField_b_of_type_Int = 0;
-    this.f = "";
-    this.jdField_a_of_type_Apxk = null;
-  }
-  
-  public boolean a()
-  {
-    String str = bdal.a(this.jdField_a_of_type_ArrayOfByte);
-    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(str));
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
-    do
+    StringBuilder localStringBuilder = new StringBuilder("albumthumbpreview");
+    localStringBuilder.append("://");
+    localStringBuilder.append(paramString1);
+    if (paramString2 != null)
     {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof apyc));
-      paramObject = (apyc)paramObject;
-    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
-    return true;
+      localStringBuilder.append("#");
+      localStringBuilder.append(paramString2);
+    }
+    try
+    {
+      paramString1 = new URL(localStringBuilder.toString());
+      return paramString1;
+    }
+    catch (MalformedURLException paramString1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PreviewThumbAdapter", 2, paramString1.getMessage(), paramString1);
+      }
+    }
+    return null;
   }
   
-  public String toString()
+  public LocalMediaInfo a(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{uin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    String str = bdal.a(this.jdField_a_of_type_ArrayOfByte);
-    int i = 0;
-    if (str != null) {
-      i = str.length();
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    localLocalMediaInfo.mMediaType = 0;
+    localLocalMediaInfo.path = paramString;
+    localLocalMediaInfo.thumbWidth = this.jdField_a_of_type_Int;
+    localLocalMediaInfo.thumbHeight = this.jdField_a_of_type_Int;
+    return localLocalMediaInfo;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return (String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
-    localStringBuilder.append("{sig: ").append(i).append("}");
-    localStringBuilder.append("{matchUin: ").append(this.jdField_b_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{tipsWording: ").append(this.c).append("}");
-    localStringBuilder.append("{timeStamp: ").append(this.jdField_a_of_type_Long).append("}");
-    localStringBuilder.append("{nickName: ").append(this.d).append("}");
-    localStringBuilder.append("{algorithmID: ").append(this.e).append("}");
-    localStringBuilder.append("{tagId: ").append(this.jdField_b_of_type_Int).append("}");
-    localStringBuilder.append("{tagName: ").append(this.f).append("}");
-    if (this.jdField_a_of_type_Apxk != null) {
-      localStringBuilder.append(this.jdField_a_of_type_Apxk.toString());
+    return null;
+  }
+  
+  public ArrayList<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(ArrayList<String> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.size();
     }
-    return localStringBuilder.toString();
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1;
+    if (paramView == null)
+    {
+      paramView = new apyd(this);
+      localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559448, paramViewGroup, false);
+      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)((View)localObject1).findViewById(2131377823));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131377821));
+      ((View)localObject1).setTag(paramView);
+      paramViewGroup = paramView;
+      paramView = (View)localObject1;
+    }
+    Object localObject2;
+    for (;;)
+    {
+      localObject2 = a(paramInt);
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        break;
+      }
+      return paramView;
+      paramViewGroup = (apyd)paramView.getTag();
+    }
+    if (((String)localObject2).equals(this.jdField_a_of_type_JavaLangString)) {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
+    for (;;)
+    {
+      localObject1 = a((String)localObject2);
+      localObject2 = a((String)localObject2, "DEFAULT");
+      URLDrawable localURLDrawable = paramViewGroup.jdField_a_of_type_ComTencentImageURLDrawable;
+      if ((localURLDrawable != null) && (localURLDrawable.getURL().toString().equals(((URL)localObject2).toString()))) {
+        break;
+      }
+      localObject2 = bayu.a((URL)localObject2, this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      ((URLDrawable)localObject2).setTag(localObject1);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject2);
+      return paramView;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if (this.jdField_a_of_type_Apye != null) {
+      this.jdField_a_of_type_Apye.a(paramInt);
+    }
   }
 }
 

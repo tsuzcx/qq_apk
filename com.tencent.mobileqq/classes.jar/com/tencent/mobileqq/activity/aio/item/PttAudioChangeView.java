@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -42,7 +42,7 @@ public class PttAudioChangeView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.d);
     this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode);
-    this.c = aekt.a(paramInt, getContext().getResources());
+    this.c = aepi.a(paramInt, getContext().getResources());
   }
   
   public void a()

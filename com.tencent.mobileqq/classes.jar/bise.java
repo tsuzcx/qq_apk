@@ -1,130 +1,69 @@
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.IBinder;
 
-public class bise
+class bise
+  implements bisc
 {
-  private final HashSet<WeakReference<bisf>> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private final ConcurrentHashMap<Integer, HashSet<WeakReference<bisf>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private IBinder a;
   
-  public void a(int paramInt, Object paramObject, Object... paramVarArgs)
+  bise(IBinder paramIBinder)
   {
-    Object localObject1 = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-    {
-      HashSet localHashSet = (HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-      if (localHashSet != null) {
-        ((ArrayList)localObject1).addAll(localHashSet);
-      }
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-    {
-      ((ArrayList)localObject1).addAll(this.jdField_a_of_type_JavaUtilHashSet);
-      localObject1 = ((ArrayList)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        ??? = (bisf)((WeakReference)((Iterator)localObject1).next()).get();
-        if (??? != null)
-        {
-          ((bisf)???).a(paramInt, paramObject, paramVarArgs);
-          continue;
-          paramObject = finally;
-          throw paramObject;
-        }
-      }
-    }
+    this.a = paramIBinder;
   }
   
-  public void a(bisf parambisf)
+  /* Error */
+  public void a(cooperation.qappcenter.remote.RecvMsg paramRecvMsg)
   {
-    if (parambisf == null) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator;
-    Object localObject2;
-    Object localObject3;
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-    {
-      localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
-      while (localIterator.hasNext())
-      {
-        localObject2 = (WeakReference)localIterator.next();
-        localObject3 = (bisf)((WeakReference)localObject2).get();
-        if ((localObject3 == null) || (parambisf == localObject3)) {
-          localArrayList.add(localObject2);
-        }
-      }
-    }
-    this.jdField_a_of_type_JavaUtilHashSet.removeAll(localArrayList);
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-      {
-        localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        int i = ((Integer)localIterator.next()).intValue();
-        localObject2 = (HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
-        localArrayList.clear();
-        localObject3 = ((HashSet)localObject2).iterator();
-        if (((Iterator)localObject3).hasNext())
-        {
-          WeakReference localWeakReference = (WeakReference)((Iterator)localObject3).next();
-          bisf localbisf = (bisf)localWeakReference.get();
-          if ((localbisf != null) && (parambisf != localbisf)) {
-            continue;
-          }
-          localArrayList.add(localWeakReference);
-        }
-      }
-      ((HashSet)localObject2).removeAll(localArrayList);
-    }
+    // Byte code:
+    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: aload_2
+    //   5: ldc 25
+    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_1
+    //   11: ifnull +33 -> 44
+    //   14: aload_2
+    //   15: iconst_1
+    //   16: invokevirtual 33	android/os/Parcel:writeInt	(I)V
+    //   19: aload_1
+    //   20: aload_2
+    //   21: iconst_0
+    //   22: invokevirtual 39	cooperation/qappcenter/remote/RecvMsg:writeToParcel	(Landroid/os/Parcel;I)V
+    //   25: aload_0
+    //   26: getfield 15	bise:a	Landroid/os/IBinder;
+    //   29: iconst_1
+    //   30: aload_2
+    //   31: aconst_null
+    //   32: iconst_1
+    //   33: invokeinterface 45 5 0
+    //   38: pop
+    //   39: aload_2
+    //   40: invokevirtual 48	android/os/Parcel:recycle	()V
+    //   43: return
+    //   44: aload_2
+    //   45: iconst_0
+    //   46: invokevirtual 33	android/os/Parcel:writeInt	(I)V
+    //   49: goto -24 -> 25
+    //   52: astore_1
+    //   53: aload_2
+    //   54: invokevirtual 48	android/os/Parcel:recycle	()V
+    //   57: aload_1
+    //   58: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	59	0	this	bise
+    //   0	59	1	paramRecvMsg	cooperation.qappcenter.remote.RecvMsg
+    //   3	51	2	localParcel	android.os.Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   4	10	52	finally
+    //   14	25	52	finally
+    //   25	39	52	finally
+    //   44	49	52	finally
   }
   
-  public void a(bisf parambisf, int... arg2)
+  public IBinder asBinder()
   {
-    if (parambisf == null) {
-      return;
-    }
-    a(parambisf);
-    parambisf = new WeakReference(parambisf);
-    if ((??? == null) || (???.length == 0)) {
-      synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-      {
-        this.jdField_a_of_type_JavaUtilHashSet.add(parambisf);
-        return;
-      }
-    }
-    for (;;)
-    {
-      int i;
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-      {
-        int j = ???.length;
-        i = 0;
-        if (i < j)
-        {
-          int k = ???[i];
-          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(k)))
-          {
-            ((HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(k))).add(parambisf);
-          }
-          else
-          {
-            HashSet localHashSet = new HashSet();
-            localHashSet.add(parambisf);
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(k), localHashSet);
-          }
-        }
-      }
-      return;
-      i += 1;
-    }
+    return this.a;
   }
 }
 

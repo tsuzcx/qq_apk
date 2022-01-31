@@ -1,5 +1,5 @@
 class sys
-  implements bhwb
+  implements biai
 {
   sys(syq paramsyq) {}
   
@@ -7,8 +7,8 @@ class sys
   {
     syq.a(this.a, paramInt2);
     float f = syq.a(this.a).a(syq.a(this.a));
-    bjxj.a("readinjoy_font_size_sp", Float.valueOf(f));
-    bjxj.a("readinjoy_font_size_index_sp" + ors.a(), Integer.valueOf(syq.a(this.a)));
+    bkbq.a("readinjoy_font_size_sp", Float.valueOf(f));
+    bkbq.a("readinjoy_font_size_index_sp" + ors.a(), Integer.valueOf(syq.a(this.a)));
     if (syq.a(this.a) != null) {
       syq.a(this.a).a(syq.a(this.a), f);
     }

@@ -1,66 +1,28 @@
-import android.view.View;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.tribe.TribeVideoPublishParams;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
 public class xgs
 {
-  public final int a;
-  public final PublishVideoEntry a;
-  public final EditVideoParams.EditSource a;
-  public final EditVideoParams a;
-  public PublishParam a;
-  public TribeVideoPublishParams a;
-  public LpReportInfo_pf00064 a;
-  public String a;
-  public WeakReference<View> a;
-  public xgw a;
-  public xgy a;
-  public boolean a;
-  public int b = 1;
-  public String b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public boolean d;
+  public final ArrayList<xeh> a;
+  @NonNull
+  public final xdm a;
+  @NonNull
+  public final xdn a;
+  @NonNull
+  public final xdx a;
+  @NonNull
+  public final xeb a;
   
-  public xgs(EditVideoParams paramEditVideoParams)
+  public xgs(@NonNull xeb paramxeb, @NonNull xdx paramxdx, @NonNull xdn paramxdn, @NonNull xdm paramxdm)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
-    this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064 = new LpReportInfo_pf00064();
-    this.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams = new TribeVideoPublishParams();
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams = paramEditVideoParams;
-    this.jdField_a_of_type_Int = paramEditVideoParams.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource = paramEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoLabel = paramEditVideoParams.a("story_default_label");
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.putExtra("enable_flow_decode", Boolean.valueOf(axpq.b));
-  }
-  
-  public View a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    return null;
-  }
-  
-  public void a(View paramView)
-  {
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-      return;
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-  }
-  
-  public String toString()
-  {
-    return "GenerateContext{, businessId='" + this.jdField_a_of_type_Int + '\'' + '}';
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Xeb = paramxeb;
+    this.jdField_a_of_type_Xdx = paramxdx;
+    this.jdField_a_of_type_Xdn = paramxdn;
+    this.jdField_a_of_type_Xdm = paramxdm;
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramxdn);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramxdx);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramxeb);
   }
 }
 

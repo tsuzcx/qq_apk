@@ -1,42 +1,62 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.QQRecorder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.transfile.chatpic.PicDownloadExplicitError;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
 
 public class aetj
-  extends Handler
+  implements View.OnClickListener
 {
-  public aetj(CommonRecordSoundPanel paramCommonRecordSoundPanel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  private long a;
+  public SessionInfo a;
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 1000L) {}
+    Object localObject;
+    MessageForPic localMessageForPic;
+    URLDrawable localURLDrawable;
+    do
     {
-    default: 
+      do
+      {
+        do
+        {
+          return;
+          this.jdField_a_of_type_Long = l;
+          localObject = (URLImageView)paramView;
+          localMessageForPic = (MessageForPic)((URLImageView)localObject).getTag(2131364187);
+          localURLDrawable = (URLDrawable)((URLImageView)localObject).getDrawable();
+        } while (localURLDrawable == null);
+        switch (localURLDrawable.getStatus())
+        {
+        default: 
+          return;
+        }
+      } while (localURLDrawable.isDownloadStarted());
+      localURLDrawable.startDownload();
       return;
-    case 16711687: 
-      this.a.b(102);
-      return;
-    case 16711686: 
-      if (QLog.isColorLevel()) {
-        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
+      localObject = PicDownloadExplicitError.getFailedTip(localURLDrawable);
+      if (localObject != null)
+      {
+        QQToast.a(paramView.getContext(), (CharSequence)localObject, 0).a();
+        return;
       }
-      CommonRecordSoundPanel.a(this.a).c();
-      bdaz.b(2131230744, false);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(16711686);
-      bdaz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
+    } while (!bdhb.a(paramView.getContext()));
+    localURLDrawable.restartDownload();
+    return;
+    if (afwu.a(localMessageForPic))
+    {
+      AIOEmotionFragment.a(paramView.getContext(), localMessageForPic, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, zjc.a(paramView));
       return;
     }
-    this.a.b(1);
-    this.a.b();
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698848), 1).a();
+    localMessageForPic.isInMixedMsg = true;
+    afwu.a(vls.a(), paramView.getContext(), (View)localObject, localMessageForPic, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, true, true, null);
   }
 }
 

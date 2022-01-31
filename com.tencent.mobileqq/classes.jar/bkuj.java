@@ -1,18 +1,20 @@
-public class bkuj
-  extends bmag
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+
+class bkuj
+  implements Animation.AnimationListener
 {
-  private bmab<bkuk> a = new bmab();
-  private bmab<Boolean> b = new bmab();
+  bkuj(bkuh parambkuh) {}
   
-  public bmab<bkuk> a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return this.a;
+    bkuh.b(this.a).setVisibility(8);
   }
   
-  public bmab<Boolean> b()
-  {
-    return this.b;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

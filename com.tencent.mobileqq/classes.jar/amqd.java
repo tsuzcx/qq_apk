@@ -1,20 +1,43 @@
-public abstract interface amqd
+public final class amqd
 {
-  public abstract int a();
+  public static String a()
+  {
+    switch ()
+    {
+    default: 
+      return "X";
+    case 2: 
+      return "2g";
+    case 3: 
+      return "3g";
+    case 4: 
+      return "4g";
+    }
+    return "wifi";
+  }
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(amqe paramamqe);
-  
-  public abstract void b();
+  public static String b()
+  {
+    int i = 4;
+    switch (ndd.a())
+    {
+    }
+    for (;;)
+    {
+      return String.valueOf(i);
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 0;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.redtouch;
 
-import bkci;
-import bkcj;
+import bkgp;
+import bkgq;
 
 class RedTouchLifeTimeManager$1
   implements Runnable
 {
-  RedTouchLifeTimeManager$1(RedTouchLifeTimeManager paramRedTouchLifeTimeManager, bkcj parambkcj) {}
+  RedTouchLifeTimeManager$1(RedTouchLifeTimeManager paramRedTouchLifeTimeManager, bkgq parambkgq) {}
   
   public void run()
   {
-    bkci.a().a(this.a);
+    bkgp.a().a(this.a);
   }
 }
 

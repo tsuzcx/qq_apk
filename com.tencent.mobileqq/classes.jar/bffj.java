@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityFragment.6;
 
-class bffj
-  implements INetEventHandler
+public class bffj
+  implements DialogInterface.OnClickListener
 {
-  bffj(bffi parambffi) {}
+  public bffj(OpenAuthorityFragment.6 param6) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = ndd.a();
-    Iterator localIterator = bffi.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bffl)localIterator.next()).a(i);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

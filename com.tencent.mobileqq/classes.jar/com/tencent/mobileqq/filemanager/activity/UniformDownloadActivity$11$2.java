@@ -2,12 +2,12 @@ package com.tencent.mobileqq.filemanager.activity;
 
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aqio;
+import aqmx;
 
 public class UniformDownloadActivity$11$2
   implements Runnable
 {
-  public UniformDownloadActivity$11$2(aqio paramaqio) {}
+  public UniformDownloadActivity$11$2(aqmx paramaqmx) {}
   
   public void run()
   {

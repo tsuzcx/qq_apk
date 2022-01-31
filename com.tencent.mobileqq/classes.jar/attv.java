@@ -1,21 +1,18 @@
-import java.math.BigDecimal;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
 public class attv
+  implements View.OnLayoutChangeListener
 {
-  public String a;
-  public String b;
-  public String c;
+  public attv(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
   
-  public String a(int paramInt, float paramFloat)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    String str = null;
-    if (this.c != null)
-    {
-      str = this.c.replaceFirst("%param%", "" + paramInt);
-      paramFloat = new BigDecimal(paramFloat).setScale(1, 4).floatValue();
-      str = str.replaceFirst("%param%", "" + paramFloat);
-    }
-    return str;
+    paramView.setTop(paramInt6);
+    paramView.setBottom(paramInt8);
+    paramView.setLeft(paramInt5);
+    paramView.setRight(paramInt7);
   }
 }
 

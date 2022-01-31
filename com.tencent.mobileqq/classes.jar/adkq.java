@@ -1,38 +1,21 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adkq
+  implements DialogInterface.OnClickListener
 {
-  public PublicAccountInfo a;
-  public String a;
-  public String b = "";
+  public adkq(NotificationActivity paramNotificationActivity) {}
   
-  public adkq(PublicAccountInfo paramPublicAccountInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.jdField_a_of_type_JavaLangString = str;
-  }
-  
-  public void b(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.b = str;
+    NotificationActivity.b(this.a, 0);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adkq
  * JD-Core Version:    0.7.0.1
  */

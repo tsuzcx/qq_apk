@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.playvideo.dataprovider;
 
-import vld;
-import vlz;
+import vpm;
+import vqi;
 
 public class SimpleDataProvider$3
   implements Runnable
 {
-  public SimpleDataProvider$3(vlz paramvlz, vld paramvld) {}
+  public SimpleDataProvider$3(vqi paramvqi, vpm paramvpm) {}
   
   public void run()
   {
-    vlz.a(this.this$0, this.a);
+    vqi.a(this.this$0, this.a);
   }
 }
 

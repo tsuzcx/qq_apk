@@ -1,29 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-class aqtk
-  implements DialogInterface.OnClickListener
+final class aqtk
+  extends Handler
 {
-  aqtk(aqtf paramaqtf) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  aqtk(Looper paramLooper)
   {
-    if (this.a.jdField_a_of_type_Arek != null) {
-      this.a.jdField_a_of_type_Arek.a(false);
-    }
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      paramDialogInterface = (aqtd)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramDialogInterface != null) {
-        paramDialogInterface.aJ_();
-      }
-    }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Object[] arrayOfObject = (Object[])paramMessage.obj;
+    ((aqtp)arrayOfObject[0]).a(paramMessage.what, ((Boolean)arrayOfObject[1]).booleanValue(), arrayOfObject[2]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqtk
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class pzu
   extends pxl
 {
-  public pzu(Context paramContext, bcws parambcws, rqj paramrqj)
+  public pzu(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()
@@ -25,7 +25,7 @@ public class pzu
     LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
     localLinearLayout.setOrientation(1);
     if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pgq)) && (ors.s(((pgq)this.jdField_a_of_type_JavaLangObject).a()))) {
-      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aekt.a(250.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aepi.a(250.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
     }
     for (;;)
     {
@@ -37,7 +37,7 @@ public class pzu
       }
       a(localLinearLayout);
       return this;
-      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aekt.a(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aepi.a(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
     }
   }
   

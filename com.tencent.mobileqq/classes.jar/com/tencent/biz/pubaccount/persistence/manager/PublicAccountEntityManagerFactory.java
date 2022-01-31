@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.persistence.manager;
 
-import alxk;
+import ambz;
 import android.database.Cursor;
-import awbw;
-import awcj;
-import awcw;
+import awgf;
+import awgs;
+import awhf;
 import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.QQEntityManagerFactory.SQLiteOpenHelperImpl;
@@ -42,7 +42,7 @@ public class PublicAccountEntityManagerFactory
                 continue;
               }
               localObject = PAAdPreloadTask.class;
-              awcj.a(localArrayList, str, localCursor2, (Class)localObject);
+              awgs.a(localArrayList, str, localCursor2, (Class)localObject);
             }
             catch (ClassNotFoundException localClassNotFoundException)
             {
@@ -76,19 +76,19 @@ public class PublicAccountEntityManagerFactory
     com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
   }
   
-  public alxk build(String paramString)
+  public ambz build(String paramString)
   {
     if (this.dbHelper == null)
     {
       this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "public_account_database_" + paramString + ".db", null, 1);
-      this.dbHelper = new alxk(this.mInnerDbHelper);
+      this.dbHelper = new ambz(this.mInnerDbHelper);
     }
     return this.dbHelper;
   }
   
   public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
   {
-    paramSQLiteDatabase.execSQL(awcw.a(new PAAdPreloadTask()));
+    paramSQLiteDatabase.execSQL(awhf.a(new PAAdPreloadTask()));
   }
   
   public String getPackageName()
@@ -106,13 +106,13 @@ public class PublicAccountEntityManagerFactory
   {
     if (this.name.matches("^[0-9]*$"))
     {
-      awbw localawbw = createEntityManager();
-      PublicAccountEntityManagerFactory.VerifyEntity localVerifyEntity = (PublicAccountEntityManagerFactory.VerifyEntity)localawbw.a(PublicAccountEntityManagerFactory.VerifyEntity.class, "flags=?", new String[] { "public_account_database_verify_entity" });
+      awgf localawgf = createEntityManager();
+      PublicAccountEntityManagerFactory.VerifyEntity localVerifyEntity = (PublicAccountEntityManagerFactory.VerifyEntity)localawgf.a(PublicAccountEntityManagerFactory.VerifyEntity.class, "flags=?", new String[] { "public_account_database_verify_entity" });
       if (localVerifyEntity == null)
       {
         localVerifyEntity = new PublicAccountEntityManagerFactory.VerifyEntity();
         localVerifyEntity.name = this.name;
-        localawbw.b(localVerifyEntity);
+        localawgf.b(localVerifyEntity);
         return true;
       }
       if ((!localVerifyEntity.flags.equals("public_account_database_verify_entity")) || (!localVerifyEntity.name.equals(this.name)))
@@ -120,7 +120,7 @@ public class PublicAccountEntityManagerFactory
         this.mInnerDbHelper.dropAllTable();
         localVerifyEntity = new PublicAccountEntityManagerFactory.VerifyEntity();
         localVerifyEntity.name = this.name;
-        localawbw.b(localVerifyEntity);
+        localawgf.b(localVerifyEntity);
         return false;
       }
     }

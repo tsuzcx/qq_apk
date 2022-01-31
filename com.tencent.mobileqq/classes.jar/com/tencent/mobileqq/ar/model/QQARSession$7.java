@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.model;
 
-import amwl;
-import anbo;
+import anau;
+import anfx;
 
 public class QQARSession$7
   implements Runnable
 {
-  public QQARSession$7(anbo paramanbo, amwl paramamwl, ArLBSActivity paramArLBSActivity) {}
+  public QQARSession$7(anfx paramanfx, anau paramanau, ArLBSActivity paramArLBSActivity) {}
   
   public void run()
   {
-    anbo.a(this.this$0, this.jdField_a_of_type_Amwl, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
+    anfx.a(this.this$0, this.jdField_a_of_type_Anau, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
   }
 }
 

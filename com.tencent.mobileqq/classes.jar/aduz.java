@@ -1,24 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import mqq.os.MqqHandler;
 
-class aduz
-  implements DialogInterface.OnClickListener
+public class aduz
+  extends MqqHandler
 {
-  aduz(aduy paramaduy, azyv paramazyv) {}
+  public aduz(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramInt == 1) && (!TextUtils.isEmpty(this.jdField_a_of_type_Azyv.c)))
+    switch (paramMessage.what)
     {
-      paramDialogInterface = new Intent(this.jdField_a_of_type_Aduy.a, SubLoginActivity.class);
-      paramDialogInterface.putExtra("subuin", this.jdField_a_of_type_Azyv.c);
-      paramDialogInterface.putExtra("fromWhere", this.jdField_a_of_type_Aduy.a.b);
-      this.jdField_a_of_type_Aduy.a.startActivity(paramDialogInterface);
+    default: 
+      return;
     }
+    this.a.finish();
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import aluw;
+import alzl;
 
 public class PublicAccountDataManager$4
   implements Runnable
 {
-  public PublicAccountDataManager$4(aluw paramaluw, String paramString) {}
+  public PublicAccountDataManager$4(alzl paramalzl, String paramString) {}
   
   public void run()
   {

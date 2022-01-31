@@ -1,15 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
 
-public class blwb
-  implements DialogInterface.OnClickListener
+class blwb
+  implements bhtv
 {
-  public blwb(MusicProviderView paramMusicProviderView) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  blwb(blwa paramblwa) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt == 1) {
+      bhsj.b(this.jdField_a_of_type_Blwa.h);
+    }
+    while ((paramInt != 0) || (this.jdField_a_of_type_Blwa.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_Blwa.a.size())) {
+      return;
+    }
+    blwa.a(this.jdField_a_of_type_Blwa);
   }
 }
 

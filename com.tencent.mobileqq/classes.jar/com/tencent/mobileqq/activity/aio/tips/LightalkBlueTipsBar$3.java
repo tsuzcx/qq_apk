@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import agvj;
+import agzy;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,15 +8,15 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class LightalkBlueTipsBar$3
   implements Runnable
 {
-  public LightalkBlueTipsBar$3(agvj paramagvj) {}
+  public LightalkBlueTipsBar$3(agzy paramagzy) {}
   
   public void run()
   {
-    Object localObject = agvj.a(this.this$0).getPreferences();
-    if (((SharedPreferences)localObject).getInt("LT_tip_show_times" + agvj.a(this.this$0).getCurrentAccountUin(), 5) != 5)
+    Object localObject = agzy.a(this.this$0).getPreferences();
+    if (((SharedPreferences)localObject).getInt("LT_tip_show_times" + agzy.a(this.this$0).getCurrentAccountUin(), 5) != 5)
     {
       localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putInt("LT_tip_show_times" + agvj.a(this.this$0).getCurrentAccountUin(), 5);
+      ((SharedPreferences.Editor)localObject).putInt("LT_tip_show_times" + agzy.a(this.this$0).getCurrentAccountUin(), 5);
       ((SharedPreferences.Editor)localObject).commit();
     }
   }

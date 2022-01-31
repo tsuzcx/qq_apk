@@ -1,16 +1,10 @@
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bdts
+public abstract interface bdts
 {
-  public ImageView a;
-  public SeekBar a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
+  public abstract void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2);
+  
+  public abstract void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3);
 }
 
 

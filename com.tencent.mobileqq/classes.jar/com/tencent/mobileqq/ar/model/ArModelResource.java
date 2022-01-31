@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.model;
 
-import anbh;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anfq;
 
 public class ArModelResource
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArModelResource> CREATOR = new anbh();
+  public static final Parcelable.Creator<ArModelResource> CREATOR = new anfq();
   public int a;
   public long a;
   public String a;

@@ -1,12 +1,41 @@
-public abstract interface xka
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.FlowMusic;
+import com.tencent.qphone.base.util.QLog;
+
+class xka
+  implements blrq
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, String paramString);
+  xka(xjy paramxjy) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, String paramString);
-  
-  public abstract boolean a();
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    String str = xjy.a(this.a).getResources().getString(2131698630);
+    Object localObject = str;
+    if (paramBoolean)
+    {
+      paramObject = (FlowMusic)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("MusicCache", 2, "onGetSingleMusicInfo flowMusic:" + paramObject.toString());
+      }
+      if ((paramObject.playable == 1) && (!TextUtils.isEmpty(paramObject.url)))
+      {
+        localObject = new xkl();
+        ((xkl)localObject).jdField_b_of_type_JavaLangString = paramObject.songName;
+        ((xkl)localObject).d = paramObject.url;
+        ((xkl)localObject).jdField_b_of_type_Int = 2;
+        ((xkl)localObject).a = String.valueOf(paramObject.songId);
+        this.a.a(12, localObject);
+        return;
+      }
+      localObject = str;
+      if (paramObject.playable != 1) {
+        localObject = xjy.a(this.a).getResources().getString(2131698631);
+      }
+    }
+    this.a.a(7, localObject);
+  }
 }
 
 

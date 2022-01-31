@@ -1,15 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class ucr
-  implements View.OnClickListener
+public abstract interface ucr
 {
-  ucr(ucp paramucp) {}
-  
-  public void onClick(View paramView)
-  {
-    ucp.a(this.a);
-  }
+  public abstract void a();
 }
 
 

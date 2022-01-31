@@ -1,23 +1,46 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.GetConfigListen;
-import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
-import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
 
-public class bdkw
-  implements NormalConfigHandler.GetConfigListen<QAVFunCallConfig>
+class bdkw
+  implements View.OnClickListener
 {
-  public bdkw(QAVFunCallHandler paramQAVFunCallHandler) {}
+  bdkw(bdku parambdku, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void a(AppInterface paramAppInterface, QAVFunCallConfig paramQAVFunCallConfig)
+  public void onClick(View paramView)
   {
-    this.a.setConfig(paramQAVFunCallConfig);
-    this.a.onGetConfig(paramAppInterface);
-    QAVFunCallHandler.access$000(this.a, "onGetConfig", paramAppInterface);
+    this.jdField_a_of_type_Bdku.hideSoftInputFromWindow();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+    {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdku, 0);
+      if (this.jdField_a_of_type_Bdku.c)
+      {
+        if (!this.jdField_a_of_type_Bdku.jdField_a_of_type_Boolean) {
+          break label93;
+        }
+        this.jdField_a_of_type_Bdku.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bdku.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bdku.c = false;
+      label93:
+      try
+      {
+        if (this.jdField_a_of_type_Bdku.isShowing()) {
+          this.jdField_a_of_type_Bdku.dismiss();
+        }
+        return;
+      }
+      catch (Exception paramView) {}
+      this.jdField_a_of_type_Bdku.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bdku.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdkw
  * JD-Core Version:    0.7.0.1
  */

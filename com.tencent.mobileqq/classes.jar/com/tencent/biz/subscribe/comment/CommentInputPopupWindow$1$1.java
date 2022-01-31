@@ -1,12 +1,12 @@
 package com.tencent.biz.subscribe.comment;
 
-import ybu;
-import ybv;
+import ygd;
+import yge;
 
 public class CommentInputPopupWindow$1$1
   implements Runnable
 {
-  public CommentInputPopupWindow$1$1(ybv paramybv) {}
+  public CommentInputPopupWindow$1$1(yge paramyge) {}
   
   public void run()
   {

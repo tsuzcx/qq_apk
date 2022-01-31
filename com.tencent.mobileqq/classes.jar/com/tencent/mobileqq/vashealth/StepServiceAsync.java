@@ -2,9 +2,9 @@ package com.tencent.mobileqq.vashealth;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bdug;
-import bduj;
-import bduo;
+import bdyp;
+import bdys;
+import bdyx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -29,7 +29,7 @@ public class StepServiceAsync
     ((nud)localObject).b = System.currentTimeMillis();
     ((nud)localObject).a(null, null, false, null);
     localObject = BaseApplicationImpl.getApplication().getApplicationContext();
-    if (!bduj.a())
+    if (!bdys.a())
     {
       QLog.i("StepServiceAsync", 1, "step counter unsupported model.");
       return super.a();
@@ -38,7 +38,7 @@ public class StepServiceAsync
     QLog.i("StepServiceAsync", 1, "ban_info:" + str);
     if ((!TextUtils.isEmpty(str)) && (Integer.parseInt(str) == 0))
     {
-      localObject = new NewIntent((Context)localObject, bduo.class);
+      localObject = new NewIntent((Context)localObject, bdyx.class);
       ((NewIntent)localObject).putExtra("msf_cmd_type", "cmd_health_switch");
       ((NewIntent)localObject).putExtra("isOpen", false);
       this.a.app.startServlet((NewIntent)localObject);
@@ -48,12 +48,12 @@ public class StepServiceAsync
     if (!SignUtils.isSupportKeyStore()) {}
     for (boolean bool = true;; bool = false)
     {
-      bdug.b = bool;
-      localObject = (bduj)this.a.app.getManager(260);
-      if (bdug.a(1)) {
-        ((bduj)localObject).a("login");
+      bdyp.b = bool;
+      localObject = (bdys)this.a.app.getManager(260);
+      if (bdyp.a(1)) {
+        ((bdys)localObject).a("login");
       }
-      ((bduj)localObject).a();
+      ((bdys)localObject).a();
       return 7;
     }
   }

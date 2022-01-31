@@ -1,37 +1,18 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CMediaFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
 
 public class ahvk
-  extends aqnl
+  implements View.OnClickListener
 {
-  public ahvk(ChatHistoryC2CMediaFragment paramChatHistoryC2CMediaFragment) {}
+  public ahvk(SimpleSlidingIndicator paramSimpleSlidingIndicator, int paramInt) {}
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public void onClick(View paramView)
   {
-    if ((bkev.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.e == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.e >= 0) && (SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator) != null)) {
+      SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator).b(this.jdField_a_of_type_Int);
     }
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    if ((bkev.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryMediaBaseFragment", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bkev.a(paramInt2)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.a(this.jdField_a_of_type_Int, true, true);
   }
 }
 

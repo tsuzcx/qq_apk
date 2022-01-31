@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ngr
-  extends amni
+  extends amrx
 {
   public ngr(EqqAccountDetailActivity paramEqqAccountDetailActivity, npo paramnpo, int paramInt1, int paramInt2) {}
   
@@ -34,8 +34,8 @@ public class ngr
                 break label236;
               }
               this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(1);
-              azmj.b(EqqAccountDetailActivity.q(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.q(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "mp_msg_ziliao_2", "share_click", 0, 0, "", "", "", "");
-              azmj.b(EqqAccountDetailActivity.r(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.r(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8004F05", "0X8004F05", 0, 0, "", "", "", "");
+              azqs.b(EqqAccountDetailActivity.q(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.q(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "mp_msg_ziliao_2", "share_click", 0, 0, "", "", "", "");
+              azqs.b(EqqAccountDetailActivity.r(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.r(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8004F05", "0X8004F05", 0, 0, "", "", "", "");
             }
           }
         }
@@ -53,7 +53,7 @@ public class ngr
       this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Npo);
       return;
       label236:
-      azmj.b(EqqAccountDetailActivity.s(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.s(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8004F07", "0X8004F07", 0, 0, "", "", "", "");
+      azqs.b(EqqAccountDetailActivity.s(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.s(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8004F07", "0X8004F07", 0, 0, "", "", "", "");
     }
   }
   
@@ -67,7 +67,7 @@ public class ngr
   
   public void b(Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.d(2131695727);
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.d(2131695729);
   }
   
   public void b(boolean paramBoolean, Object paramObject)

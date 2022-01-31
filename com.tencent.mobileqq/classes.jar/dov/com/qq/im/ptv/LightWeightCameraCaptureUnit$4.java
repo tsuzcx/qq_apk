@@ -1,15 +1,15 @@
 package dov.com.qq.im.ptv;
 
-import bmba;
+import bmfm;
 
 public class LightWeightCameraCaptureUnit$4
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$4(bmba parambmba) {}
+  public LightWeightCameraCaptureUnit$4(bmfm parambmfm) {}
   
   public void run()
   {
-    bmba.a(this.this$0).setShadowColor(65535);
+    bmfm.a(this.this$0).setShadowColor(65535);
   }
 }
 

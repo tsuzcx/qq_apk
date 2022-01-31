@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import akua;
+import akyp;
 
 public class CmGameManager$2
   implements Runnable
 {
-  public CmGameManager$2(akua paramakua) {}
+  public CmGameManager$2(akyp paramakyp) {}
   
   public void run()
   {
-    akua.a(this.this$0);
-    akua.b(this.this$0);
+    akyp.a(this.this$0);
+    akyp.b(this.this$0);
   }
 }
 

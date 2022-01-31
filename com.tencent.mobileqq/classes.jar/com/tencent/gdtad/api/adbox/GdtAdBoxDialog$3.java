@@ -1,11 +1,11 @@
 package com.tencent.gdtad.api.adbox;
 
-import aaiu;
+import aanj;
 
 public class GdtAdBoxDialog$3
   implements Runnable
 {
-  public GdtAdBoxDialog$3(aaiu paramaaiu) {}
+  public GdtAdBoxDialog$3(aanj paramaanj) {}
   
   public void run()
   {

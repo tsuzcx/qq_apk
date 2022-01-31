@@ -1,57 +1,41 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.Spannable.Factory;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-class wkr
-  implements uni<vao, unf>
+public class wkr
+  implements View.OnTouchListener
 {
-  wkr(wkp paramwkp) {}
-  
-  public void a(@NonNull vao paramvao, @Nullable unf paramunf, @NonNull ErrorMessage paramErrorMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramunf = (vap)paramunf;
-    int j = paramErrorMessage.errorCode;
-    int k = paramvao.b.size();
-    if (paramunf == null) {}
-    for (int i = 0;; i = paramunf.jdField_a_of_type_JavaUtilList.size())
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
     {
-      wsv.d("Q.qqstory.home.data.FeedManager", "request feed item list from net rec , error :%d , req size :%d , resp size :%d , list :%s", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), paramvao.b });
-      if ((!paramErrorMessage.isFail()) && (paramunf != null)) {
-        break;
-      }
-      paramvao = paramvao.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramvao.hasNext())
+      Object localObject = ((TextView)paramView).getText();
+      localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
+      paramView = (TextView)paramView;
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramView.getTotalPaddingLeft();
+      int n = paramView.getTotalPaddingTop();
+      int i1 = paramView.getScrollX();
+      int i2 = paramView.getScrollY();
+      paramMotionEvent = paramView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      paramMotionEvent = (ClickableSpan[])((Spannable)localObject).getSpans(j, j, ClickableSpan.class);
+      if (paramMotionEvent.length != 0)
       {
-        paramunf = (wkh)paramvao.next();
-        wkp.a().remove(paramunf.a);
-      }
-    }
-    if (paramvao.jdField_a_of_type_JavaUtilList.size() != paramunf.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramErrorMessage = new ArrayList();
-      paramvao = paramvao.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramvao.hasNext())
-      {
-        wkh localwkh = (wkh)paramvao.next();
-        if (!paramunf.jdField_a_of_type_JavaUtilHashSet.contains(localwkh.a))
-        {
-          paramErrorMessage.add(localwkh.a);
-          wkp.a().remove(localwkh.a);
+        if (i == 1) {
+          paramMotionEvent[0].onClick(paramView);
         }
+        return true;
       }
-      wsv.d("Q.qqstory.home.data.FeedManager", "request feed item list from net rec warning , some feed not return ! %s", new Object[] { paramErrorMessage });
     }
-    paramvao = paramunf.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramvao.hasNext())
-    {
-      paramunf = (wme)paramvao.next();
-      this.a.a(paramunf.a());
-    }
+    return false;
   }
 }
 

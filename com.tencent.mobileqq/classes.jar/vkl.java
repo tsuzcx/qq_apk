@@ -1,18 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
-
-class vkl
-  implements View.OnClickListener
+public class vkl
+  implements vkk
 {
-  vkl(vkk paramvkk, vkj paramvkj) {}
+  private vji jdField_a_of_type_Vji;
+  private vkn jdField_a_of_type_Vkn;
   
-  public void onClick(View paramView)
+  public vkl(vji paramvji, vkn paramvkn)
   {
-    if (VideoCoverListBar.a(this.jdField_a_of_type_Vkk.jdField_a_of_type_Vkj.a) != null) {
-      VideoCoverListBar.a(this.jdField_a_of_type_Vkk.jdField_a_of_type_Vkj.a).a(vkk.a(this.jdField_a_of_type_Vkk));
+    this.jdField_a_of_type_Vji = paramvji;
+    this.jdField_a_of_type_Vkn = paramvkn;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Vji != null) {
+      this.jdField_a_of_type_Vji.c(this.jdField_a_of_type_Vkn);
     }
-    wta.a("play_video", "clk_mini", 0, 0, new String[] { "2", "", "", vkk.a(this.jdField_a_of_type_Vkk) });
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Vji != null) {
+      this.jdField_a_of_type_Vji.d(this.jdField_a_of_type_Vkn);
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Vji != null) {
+      this.jdField_a_of_type_Vji.e(this.jdField_a_of_type_Vkn);
+    }
   }
 }
 

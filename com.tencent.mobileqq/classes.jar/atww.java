@@ -1,33 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import java.util.Comparator;
 
-public class atww
-  implements ValueAnimator.AnimatorUpdateListener
+class atww
+  implements Comparator<atwn>
 {
-  public atww(MedalGuideView paramMedalGuideView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a(atwn paramatwn1, atwn paramatwn2)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("scale")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleX(f);
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleY(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("translationX")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationX(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("translationY")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
-    f = paramValueAnimator.getAnimatedFraction();
-    if ((!this.a.jdField_a_of_type_Boolean) && (f >= 1.0F))
-    {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_a_of_type_Bhow.sendEmptyMessage(3);
+    if (paramatwn1.a >= paramatwn2.a) {
+      return 1;
     }
-    if (f >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
-    }
+    return -1;
   }
 }
 

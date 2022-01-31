@@ -12,8 +12,8 @@ import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bhou;
-import bhqp;
+import bhtb;
+import bhuw;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -32,7 +32,7 @@ public class PhotoWallViewForAccountDetail
   private Activity jdField_a_of_type_AndroidAppActivity;
   View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bhqp jdField_a_of_type_Bhqp = new npp(this);
+  private bhuw jdField_a_of_type_Bhuw = new npp(this);
   public PhotoHorizontalScrollView a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public GridView a;
@@ -84,7 +84,7 @@ public class PhotoWallViewForAccountDetail
         this.jdField_a_of_type_ComTencentWidgetGridView.setLayoutParams(localLayoutParams);
         this.jdField_a_of_type_ComTencentWidgetGridView.setNumColumns(i);
         this.jdField_a_of_type_ComTencentWidgetGridView.setAdapter(localnpq);
-        this.jdField_a_of_type_ComTencentWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_Bhqp);
+        this.jdField_a_of_type_ComTencentWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_Bhuw);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         this.jdField_b_of_type_AndroidViewView.setVisibility(8);
         this.jdField_a_of_type_ComTencentWidgetGridView.setVisibility(0);
@@ -104,16 +104,16 @@ public class PhotoWallViewForAccountDetail
     if ((paramList != null) && (paramList.size() > 20)) {}
     for (this.jdField_a_of_type_JavaUtilList = paramList.subList(0, 20);; this.jdField_a_of_type_JavaUtilList = paramList)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).inflate(2131559439, this, true);
-      this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371888));
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).inflate(2131559438, this, true);
+      this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371908));
       this.jdField_a_of_type_ComTencentWidgetGridView.setClickable(true);
-      this.jdField_a_of_type_ComTencentBizPubaccountPhotoHorizontalScrollView = ((PhotoHorizontalScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371889));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372308));
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131374114);
+      this.jdField_a_of_type_ComTencentBizPubaccountPhotoHorizontalScrollView = ((PhotoHorizontalScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371909));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372328));
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131374165);
       this.c = getResources().getDimensionPixelSize(2131296256);
       this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131296258);
       this.jdField_b_of_type_Int = getResources().getDimensionPixelSize(2131296257);
-      if (bhou.c()) {
+      if (bhtb.c()) {
         this.jdField_a_of_type_ComTencentBizPubaccountPhotoHorizontalScrollView.setOverScrollMode(2);
       }
       a();

@@ -1,13 +1,17 @@
-import android.view.MotionEvent;
+import java.util.Random;
 
-class anto
-  implements beld
+public class anto
 {
-  anto(antn paramantn) {}
+  public static Random a = new Random();
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public static final float a(float paramFloat)
   {
-    return antn.a(this.a, paramMotionEvent);
+    return antq.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
+  }
+  
+  public static final float b(float paramFloat)
+  {
+    return antp.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
   }
 }
 

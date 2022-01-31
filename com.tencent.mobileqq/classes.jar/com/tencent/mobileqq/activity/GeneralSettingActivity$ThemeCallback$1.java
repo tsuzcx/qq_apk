@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import acys;
-import adto;
+import addh;
+import adyd;
 import android.view.View;
-import azib;
+import azmk;
 
 public class GeneralSettingActivity$ThemeCallback$1
   implements Runnable
 {
-  public GeneralSettingActivity$ThemeCallback$1(acys paramacys, adto paramadto, View paramView) {}
+  public GeneralSettingActivity$ThemeCallback$1(addh paramaddh, adyd paramadyd, View paramView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Adto.a(azib.c(), false);
+    this.jdField_a_of_type_Adyd.a(azmk.c(), false);
     this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
   }
 }

@@ -1,62 +1,118 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.PatternLockUtils;
-
 public class abwm
-  implements View.OnClickListener
 {
-  public abwm(AccountManageActivity paramAccountManageActivity, Dialog paramDialog) {}
+  private static StringBuilder a = new StringBuilder(512);
   
-  public void onClick(View paramView)
+  /* Error */
+  public static java.lang.String a(java.io.InputStream paramInputStream)
   {
-    QLog.flushLog();
-    boolean bool = ((CheckBox)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364242)).isChecked();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d = bool;
-    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getString(2131719109), "qqsetting_receivemsg_whenexit_key", bool);
-    SyncService.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d);
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a().b();
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a().a();
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity().getSharedPreferences("unreadcount", 4).edit();
-    paramView.putInt("unread", i + j);
-    paramView.commit();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.i();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d;
-    com.tencent.mobileqq.activity.MainFragment.c = true;
-    if (QQPlayerService.a())
-    {
-      paramView = new Intent();
-      paramView.setAction("qqplayer_exit_action");
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity().sendBroadcast(paramView);
-    }
-    PatternLockUtils.setFirstEnterAfterLoginState(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getCurrentAccountUin(), true);
-    paramView = new Intent("QQ_ACTION_MENU_QUIT");
-    paramView.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), SplashActivity.class);
-    paramView.addFlags(67108864);
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.startActivity(paramView);
-      label265:
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app, "CliOper", "", "", "0X800932A", "0X800932A", 0, 0, "0", "", "", "");
-      return;
-    }
-    catch (Exception paramView)
-    {
-      break label265;
-    }
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_1
+    //   2: new 26	java/io/BufferedReader
+    //   5: dup
+    //   6: new 28	java/io/InputStreamReader
+    //   9: dup
+    //   10: aload_0
+    //   11: invokespecial 31	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   14: invokespecial 34	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   17: astore_0
+    //   18: getstatic 16	abwm:a	Ljava/lang/StringBuilder;
+    //   21: iconst_0
+    //   22: getstatic 16	abwm:a	Ljava/lang/StringBuilder;
+    //   25: invokevirtual 38	java/lang/StringBuilder:length	()I
+    //   28: invokevirtual 42	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
+    //   31: pop
+    //   32: aload_0
+    //   33: invokevirtual 46	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   36: astore_1
+    //   37: aload_1
+    //   38: ifnull +41 -> 79
+    //   41: getstatic 16	abwm:a	Ljava/lang/StringBuilder;
+    //   44: aload_1
+    //   45: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: ldc 52
+    //   50: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: pop
+    //   54: goto -22 -> 32
+    //   57: astore_1
+    //   58: aload_0
+    //   59: ifnull +7 -> 66
+    //   62: aload_0
+    //   63: invokevirtual 55	java/io/BufferedReader:close	()V
+    //   66: getstatic 16	abwm:a	Ljava/lang/StringBuilder;
+    //   69: ifnull +54 -> 123
+    //   72: getstatic 16	abwm:a	Ljava/lang/StringBuilder;
+    //   75: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: areturn
+    //   79: aload_0
+    //   80: ifnull -14 -> 66
+    //   83: aload_0
+    //   84: invokevirtual 55	java/io/BufferedReader:close	()V
+    //   87: goto -21 -> 66
+    //   90: astore_0
+    //   91: goto -25 -> 66
+    //   94: astore_0
+    //   95: aconst_null
+    //   96: astore_0
+    //   97: aload_0
+    //   98: ifnull -32 -> 66
+    //   101: aload_0
+    //   102: invokevirtual 55	java/io/BufferedReader:close	()V
+    //   105: goto -39 -> 66
+    //   108: astore_0
+    //   109: goto -43 -> 66
+    //   112: astore_0
+    //   113: aload_1
+    //   114: ifnull +7 -> 121
+    //   117: aload_1
+    //   118: invokevirtual 55	java/io/BufferedReader:close	()V
+    //   121: aload_0
+    //   122: athrow
+    //   123: ldc 60
+    //   125: areturn
+    //   126: astore_0
+    //   127: goto -61 -> 66
+    //   130: astore_1
+    //   131: goto -10 -> 121
+    //   134: astore_2
+    //   135: aload_0
+    //   136: astore_1
+    //   137: aload_2
+    //   138: astore_0
+    //   139: goto -26 -> 113
+    //   142: astore_1
+    //   143: goto -46 -> 97
+    //   146: astore_0
+    //   147: aconst_null
+    //   148: astore_0
+    //   149: goto -91 -> 58
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	152	0	paramInputStream	java.io.InputStream
+    //   1	44	1	str	java.lang.String
+    //   57	61	1	localException	java.lang.Exception
+    //   130	1	1	localIOException	java.io.IOException
+    //   136	1	1	localInputStream	java.io.InputStream
+    //   142	1	1	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   134	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   18	32	57	java/lang/Exception
+    //   32	37	57	java/lang/Exception
+    //   41	54	57	java/lang/Exception
+    //   83	87	90	java/io/IOException
+    //   2	18	94	java/lang/OutOfMemoryError
+    //   101	105	108	java/io/IOException
+    //   2	18	112	finally
+    //   62	66	126	java/io/IOException
+    //   117	121	130	java/io/IOException
+    //   18	32	134	finally
+    //   32	37	134	finally
+    //   41	54	134	finally
+    //   18	32	142	java/lang/OutOfMemoryError
+    //   32	37	142	java/lang/OutOfMemoryError
+    //   41	54	142	java/lang/OutOfMemoryError
+    //   2	18	146	java/lang/Exception
   }
 }
 

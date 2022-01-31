@@ -4,21 +4,21 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import bglq;
+import bgpx;
 import com.tencent.qqmini.sdk.core.proxy.KingCardProxy;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniRuntime;
 
 public class KingCardProxyDefault
   implements KingCardProxy
 {
-  public static final String KINGCARD_GUIDE_DARK_LOTTIE = bglq.a("qqminiapp", "kingcardGuideDarkLottie", "https://d3g.qq.com/sngapp/app/update/20191105162320_6114/kingCardDark.zip");
+  public static final String KINGCARD_GUIDE_DARK_LOTTIE = bgpx.a("qqminiapp", "kingcardGuideDarkLottie", "https://d3g.qq.com/sngapp/app/update/20191105162320_6114/kingCardDark.zip");
   public static final String KINGCARD_GUIDE_ICON;
-  public static final String KINGCARD_GUIDE_LOTTIE = bglq.a("qqminiapp", "kingcardGuideLottie", "https://d3g.qq.com/sngapp/app/update/20191105163020_3367/kingCard.zip");
-  public static final String KINGCARD_GUIDE_TEXT = bglq.a("qqminiapp", "kingcardGuideText", "");
+  public static final String KINGCARD_GUIDE_LOTTIE = bgpx.a("qqminiapp", "kingcardGuideLottie", "https://d3g.qq.com/sngapp/app/update/20191105163020_3367/kingCard.zip");
+  public static final String KINGCARD_GUIDE_TEXT = bgpx.a("qqminiapp", "kingcardGuideText", "");
   
   static
   {
-    KINGCARD_GUIDE_ICON = bglq.a("qqminiapp", "kingcardGuideIcon", "");
+    KINGCARD_GUIDE_ICON = bgpx.a("qqminiapp", "kingcardGuideIcon", "");
   }
   
   public ImageView getCapsuleButtonMoreView(Context paramContext)
@@ -31,7 +31,7 @@ public class KingCardProxyDefault
     if (!TextUtils.isEmpty(KINGCARD_GUIDE_TEXT)) {
       return KINGCARD_GUIDE_TEXT;
     }
-    return paramContext.getResources().getString(2131694345);
+    return paramContext.getResources().getString(2131694347);
   }
   
   public boolean showKingCardTips(IMiniRuntime paramIMiniRuntime, ImageView paramImageView)

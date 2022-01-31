@@ -1,34 +1,12 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-
-public class bkxt
+public abstract interface bkxt
 {
-  public int a;
-  public MetaMaterial a;
-  public String a;
-  private boolean a;
-  public int b;
-  public String b;
-  public String c = "";
+  public abstract void a();
   
-  public bkxt()
-  {
-    this.jdField_a_of_type_Int = 10;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = null;
-  }
+  public abstract void a(blab paramblab);
   
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public abstract void b();
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
+  public abstract void c();
 }
 
 

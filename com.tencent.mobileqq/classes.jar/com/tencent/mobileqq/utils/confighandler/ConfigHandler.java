@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.utils.confighandler;
 
-import alpo;
+import alud;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bdky;
+import bdph;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -83,7 +83,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
     int j = paramInt;
     if (TextUtils.isEmpty(paramString2))
     {
-      paramString4 = bdky.a(paramString1, paramString3, paramString4);
+      paramString4 = bdph.a(paramString1, paramString3, paramString4);
       if (paramString4 == null) {
         break label172;
       }
@@ -120,7 +120,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
         paramString2.setUin(paramString3);
         paramString2.serverVer = j;
         if (!paramString2.tryParse(paramString1, str)) {
-          AudioHelper.c(paramString1 + alpo.a(2131702799));
+          AudioHelper.c(paramString1 + alud.a(2131702811));
         }
         return paramString2;
       }
@@ -169,7 +169,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
         paramClass.setUin(paramString3);
         paramClass.serverVer = lex.a(paramInt);
         if (!paramClass.tryParse(paramString1, paramString2)) {
-          AudioHelper.c(paramString1 + alpo.a(2131702800));
+          AudioHelper.c(paramString1 + alud.a(2131702812));
         }
         return paramClass;
       }

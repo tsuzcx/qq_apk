@@ -1,11 +1,16 @@
-public abstract class azaj
-  implements azah
+public class azaj
 {
-  public void a(int paramInt) {}
+  public int a;
+  public long a;
+  public int b;
+  public long b;
   
-  public void a(int paramInt, azaa paramazaa) {}
-  
-  public void b(int paramInt, azaa paramazaa) {}
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("----dump tempSession info----");
+    localStringBuilder.append("friendType:").append(this.jdField_a_of_type_Int).append(" groupCode:").append(this.jdField_a_of_type_Long).append(" groupUin:").append(this.b);
+    return localStringBuilder.toString();
+  }
 }
 
 

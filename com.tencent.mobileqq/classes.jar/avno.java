@@ -1,15 +1,14 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class avno
-  extends avma
+class avno
+  implements DialogInterface.OnClickListener
 {
-  public ImageView e;
-  public TextView g;
+  avno(avnl paramavnl, bdjz parambdjz) {}
   
-  public avno(avnn paramavnn)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramavnn);
+    this.jdField_a_of_type_Bdjz.dismiss();
   }
 }
 

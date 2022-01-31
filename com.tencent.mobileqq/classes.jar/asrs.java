@@ -1,12 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import java.util.List;
 
-class asrs
-  implements DialogInterface.OnClickListener
+public class asrs
+  implements aufy<List<FontBubble>>
 {
-  asrs(asrp paramasrp) {}
+  public asrs(FontBubblePanelView paramFontBubblePanelView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(List<FontBubble> paramList)
+  {
+    FontBubblePanelView.a(this.a, paramList);
+    FontBubblePanelView.a(this.a).notifyDataSetChanged();
+  }
 }
 
 

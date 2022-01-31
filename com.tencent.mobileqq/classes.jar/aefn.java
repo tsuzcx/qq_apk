@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aefn
+  implements View.OnTouchListener
 {
-  public int a;
-  public awbv a;
-  public String a;
+  public aefn(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public aefn(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, int paramInt, awbv paramawbv)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Awbv = paramawbv;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramMotionEvent.getAction() == 1)
+    {
+      this.a.j();
+      paramView = this.a.n;
+      this.a.a("Clk_find", paramView, "");
+    }
+    return true;
   }
 }
 

@@ -1,18 +1,8 @@
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.2.1;
+import android.view.View;
 
-public class uuf
-  implements uni<uvb, uvc>
+public abstract interface uuf
 {
-  uuf(uuc paramuuc) {}
-  
-  public void a(@NonNull uvb paramuvb, @Nullable uvc paramuvc, @NonNull ErrorMessage paramErrorMessage)
-  {
-    this.a.b.post(new MsgTabNodeListLoader.2.1(this, paramuvb, paramuvc, paramErrorMessage));
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

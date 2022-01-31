@@ -1,34 +1,78 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.qzone.panorama.widget.PanoramaLoadingBall;
+import cooperation.qzone.feed.CertifiedFakeFeed;
 
 public class bjjm
-  extends Handler
 {
-  public bjjm(PanoramaLoadingBall paramPanoramaLoadingBall, Looper paramLooper)
+  private CertifiedFakeFeed a = new CertifiedFakeFeed(null);
+  
+  public bjjm a(int paramInt)
   {
-    super(paramLooper);
+    CertifiedFakeFeed.a(this.a, paramInt);
+    return this;
   }
   
-  public void handleMessage(Message paramMessage)
+  public bjjm a(long paramLong)
   {
-    super.handleMessage(paramMessage);
-    if ((paramMessage.what == 291) && (Build.VERSION.SDK_INT >= 11))
-    {
-      if (PanoramaLoadingBall.a(this.a)) {
-        PanoramaLoadingBall.a(this.a, 60.0F);
-      }
-      if (PanoramaLoadingBall.a(this.a) == 0) {
-        this.a.setRotationX(PanoramaLoadingBall.a(this.a));
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.a.setRotationY(PanoramaLoadingBall.a(this.a));
+    CertifiedFakeFeed.a(this.a, paramLong);
+    return this;
+  }
+  
+  public bjjm a(String paramString)
+  {
+    CertifiedFakeFeed.a(this.a, paramString);
+    return this;
+  }
+  
+  public CertifiedFakeFeed a()
+  {
+    return this.a;
+  }
+  
+  public bjjm b(int paramInt)
+  {
+    CertifiedFakeFeed.b(this.a, paramInt);
+    return this;
+  }
+  
+  public bjjm b(String paramString)
+  {
+    CertifiedFakeFeed.b(this.a, paramString);
+    return this;
+  }
+  
+  public bjjm c(int paramInt)
+  {
+    CertifiedFakeFeed.c(this.a, paramInt);
+    return this;
+  }
+  
+  public bjjm c(String paramString)
+  {
+    CertifiedFakeFeed.c(this.a, paramString);
+    return this;
+  }
+  
+  public bjjm d(int paramInt)
+  {
+    CertifiedFakeFeed.d(this.a, paramInt);
+    return this;
+  }
+  
+  public bjjm d(String paramString)
+  {
+    CertifiedFakeFeed.d(this.a, paramString);
+    return this;
+  }
+  
+  public bjjm e(String paramString)
+  {
+    CertifiedFakeFeed.e(this.a, paramString);
+    return this;
+  }
+  
+  public bjjm f(String paramString)
+  {
+    CertifiedFakeFeed.f(this.a, paramString);
+    return this;
   }
 }
 

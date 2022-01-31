@@ -1,33 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
 
 public class aclr
-  implements DialogInterface.OnClickListener
 {
-  public aclr(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aclr(ChatFragment paramChatFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramInt == 1)
+    if ((ChatFragment.b()) && (this.a.jdField_a_of_type_Boolean))
     {
-      paramDialogInterface = new Intent(this.a, LoginActivity.class);
-      paramDialogInterface.putExtra("is_change_account", true);
-      paramDialogInterface.putExtra("if_check_account_same", true);
-      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
-      paramDialogInterface.putExtra("key_action", ChatSettingForTroop.class.getSimpleName());
-      paramDialogInterface.addFlags(268435456);
-      paramDialogInterface.addFlags(67108864);
-      this.a.a.cancel();
-      this.a.startActivity(paramDialogInterface);
-      this.a.finish();
+      bdnm.b("AIO_Start_cost", null);
+      SuspendThreadManager.a().c();
+      bdnm.a("AIO_onDrawView", "AIO_SysMsgCost");
+      ChatFragment.a(this.a);
+      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("uintype", -1) == 1008)
+      {
+        String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
+        bdiu.a("pubAcc_aio_open", null, str);
+        bdiu.a("pubAcc_structMsg_display", null, str);
+      }
+      ChatFragment.a(false);
     }
-    while (paramInt != 0) {
-      return;
-    }
-    this.a.finish();
   }
 }
 

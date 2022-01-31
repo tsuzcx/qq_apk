@@ -1,28 +1,23 @@
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.biz.subscribe.component.base.ComponentPageView;
+import android.widget.PopupWindow;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.3.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class yea
-  extends RecyclerView.ItemDecoration
+  implements ydg
 {
-  public yea(ComponentPageView paramComponentPageView, yds paramyds) {}
+  public yea(DetailBaseAdapter.3.1 param1) {}
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void a()
   {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    int i = paramRecyclerView.getChildLayoutPosition(paramView);
-    if ((this.a.a != null) && (this.a.a.b(i) != null)) {
-      this.a.a.b(i).a(paramRect, paramView, paramRecyclerView, paramState);
-    }
+    QLog.d(ydw.jdField_a_of_type_JavaLangString, 2, "showFollowTipView");
   }
   
-  public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void b()
   {
-    super.onDraw(paramCanvas, paramRecyclerView, paramState);
+    QLog.d(ydw.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow followTipView");
+    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    }
   }
 }
 

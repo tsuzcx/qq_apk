@@ -2,7 +2,7 @@ package com.tencent.mobileqq.transfile.dns;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bavf;
+import bazo;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCClient;
@@ -13,14 +13,14 @@ import java.util.Map;
 public class InnerDns$4
   implements Runnable
 {
-  public InnerDns$4(bavf parambavf) {}
+  public InnerDns$4(bazo parambazo) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("InnerDns", 1, "syncAddressData called, mServerProcName=" + bavf.a(this.this$0) + ", mConnected=" + bavf.a(this.this$0));
+      QLog.i("InnerDns", 1, "syncAddressData called, mServerProcName=" + bazo.a(this.this$0) + ", mConnected=" + bazo.a(this.this$0));
     }
-    if (bavf.a(this.this$0)) {
+    if (bazo.a(this.this$0)) {
       try
       {
         Object localObject1 = new Bundle();
@@ -31,18 +31,18 @@ public class InnerDns$4
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
             return;
           }
-          localObject1 = bavf.a((String)localObject1);
+          localObject1 = bazo.a((String)localObject1);
           if (localObject1 == null) {
             return;
           }
           try
           {
-            bavf.a(this.this$0, new HashMap((Map)localObject1));
+            bazo.a(this.this$0, new HashMap((Map)localObject1));
             return;
           }
           finally {}
         }
-        QLog.e("InnerDns", 1, "syncAddressData fail, mServerProcName=" + bavf.a(this.this$0));
+        QLog.e("InnerDns", 1, "syncAddressData fail, mServerProcName=" + bazo.a(this.this$0));
       }
       catch (Throwable localThrowable)
       {

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import atjn;
+import atnw;
 
 public class LyricsController$1
   implements Runnable
 {
-  public LyricsController$1(atjn paramatjn) {}
+  public LyricsController$1(atnw paramatnw) {}
   
   public void run()
   {

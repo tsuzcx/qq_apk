@@ -1,16 +1,26 @@
-import android.app.Activity;
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ExpandableListView;
 
 class aqnk
-  implements bhqd
+  implements xyf
 {
-  aqnk(aqnj paramaqnj, String paramString, bbpe parambbpe) {}
+  aqnk(aqni paramaqni, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    azmj.b(this.jdField_a_of_type_Aqnj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A7F3", "0X800A7F3", 2, 0, "", "", "", "");
-    new bboe(Long.parseLong(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Aqnj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Aqnj.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Bbpe.a);
-    this.jdField_a_of_type_Aqnj.a();
+    String str = (String)this.jdField_a_of_type_Aqni.getGroup(this.jdField_a_of_type_Int);
+    if (aqni.a(this.jdField_a_of_type_Aqni).c(this.jdField_a_of_type_Int))
+    {
+      QQAppInterface.f(str + alud.a(2131710020));
+      return;
+    }
+    QQAppInterface.f(str + alud.a(2131710000));
+  }
+  
+  public void b()
+  {
+    QLog.e("ACCESS_SILAS", 1, "onViewFocusClear");
   }
 }
 

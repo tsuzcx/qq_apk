@@ -1,76 +1,175 @@
-import android.support.annotation.NonNull;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.ToolRuntimePeak;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class blqr
-  extends QQUIEventReceiver<blqp, bmnp>
 {
-  public blqr(@NonNull blqp paramblqp)
+  private final HashMap<Integer, Object> a;
+  public final blqj[] a;
+  
+  private blqr()
   {
-    super(paramblqp);
+    this.jdField_a_of_type_ArrayOfBlqj = new blqj[20];
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public void a(@NonNull blqp paramblqp, @NonNull bmnp parambmnp)
+  public static blqj a(int paramInt)
   {
-    if (parambmnp.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.pack_id.equals(blqp.b(paramblqp)))
+    return blqt.a.c(paramInt);
+  }
+  
+  public static blqr a()
+  {
+    return blqt.a;
+  }
+  
+  public static AppInterface a()
+  {
+    return (AppInterface)a();
+  }
+  
+  public static AppRuntime a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return localAppRuntime;
+    }
+    return BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("peak");
+  }
+  
+  private void a(int paramInt, blqj paramblqj)
+  {
+    this.jdField_a_of_type_ArrayOfBlqj[paramInt] = paramblqj;
+  }
+  
+  private boolean a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMManager", 2, "check process: " + localAppRuntime);
+    }
+    return ((localAppRuntime instanceof QQAppInterface)) || ((localAppRuntime instanceof ToolRuntimePeak));
+  }
+  
+  public static blqj b(int paramInt)
+  {
+    return blqt.a.jdField_a_of_type_ArrayOfBlqj[paramInt];
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfBlqj.length)
     {
-      if (parambmnp.jdField_a_of_type_Int != 0) {
-        break label296;
+      blqj localblqj = this.jdField_a_of_type_ArrayOfBlqj[i];
+      wxe.b("QIMManager", "destroy manager : %s", localblqj);
+      Object localObject2;
+      synchronized (this.jdField_a_of_type_ArrayOfBlqj)
+      {
+        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(i))) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), new Object());
+        }
+        localObject2 = this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+        if (localblqj == null) {}
       }
-      if (!parambmnp.jdField_a_of_type_Boolean) {
-        break label155;
+      try
+      {
+        localblqj.b();
+        this.jdField_a_of_type_ArrayOfBlqj[i] = null;
+        i += 1;
       }
-      wsv.b(this.TAG, "notify ui we finish downloading");
-      paramblqp.a.b = false;
-      paramblqp.a.g = parambmnp.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.getLocalEmojiFolderPath();
-      paramblqp.a.c = 0;
-      paramblqp.a.d = 0;
-      paramblqp.d = 3;
-      paramblqp.b();
-      if (QLog.isColorLevel()) {
-        QLog.d(this.TAG, 2, "download finished id=" + blqp.b(paramblqp) + " name=" + blqp.a(paramblqp));
-      }
-      if (blqp.a(paramblqp) != null) {
-        uht.a().unRegisterSubscriber(blqp.a(paramblqp));
+      finally {}
+    }
+    localObject3 = finally;
+    throw localObject3;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return this.jdField_a_of_type_ArrayOfBlqj[paramInt] != null;
+  }
+  
+  public blqj c(int paramInt)
+  {
+    ??? = this.jdField_a_of_type_ArrayOfBlqj[paramInt];
+    Object localObject4 = ???;
+    Object localObject6;
+    if (??? == null) {
+      synchronized (this.jdField_a_of_type_ArrayOfBlqj)
+      {
+        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new Object());
+        }
+        localObject6 = this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
       }
     }
-    label155:
-    label296:
-    do
+    try
     {
-      do
+      localObject4 = this.jdField_a_of_type_ArrayOfBlqj[paramInt];
+      if (localObject4 != null)
       {
-        return;
-        wsv.a(this.TAG, "notify ui we new progress : " + parambmnp.b + " / " + parambmnp.jdField_a_of_type_Long);
-        paramblqp.a.b = true;
-        paramblqp.a.g = null;
-        paramblqp.a.c = ((int)parambmnp.jdField_a_of_type_Long);
-        paramblqp.a.d = ((int)parambmnp.b);
-        paramblqp.d = 1;
-      } while (!QLog.isColorLevel());
-      QLog.d(this.TAG, 2, "downloading=" + paramblqp.a.d + " max=" + paramblqp.a.c);
-      return;
-      paramblqp.a.b = false;
-      paramblqp.a.g = null;
-      paramblqp.a.c = 0;
-      paramblqp.a.d = 0;
-      wsv.e(this.TAG, "DoodleEmojiDownloadEventReceiver download error = " + parambmnp.jdField_a_of_type_Int);
-      wtb.a("0X80076C9");
-      wtb.b("0X80075DE");
-      paramblqp.d = 2;
-      paramblqp.a(parambmnp.jdField_a_of_type_Int);
-      if (QLog.isColorLevel()) {
-        QLog.d(this.TAG, 2, "download error id=" + blqp.b(paramblqp) + " name=" + blqp.a(paramblqp));
+        return localObject4;
+        localObject5 = finally;
+        throw localObject5;
       }
-    } while (blqp.a(paramblqp) == null);
-    uht.a().unRegisterSubscriber(blqp.a(paramblqp));
-  }
-  
-  public Class acceptEventClass()
-  {
-    return bmnp.class;
+      if (!a()) {
+        throw new RuntimeException("invalid process");
+      }
+    }
+    finally {}
+    Object localObject3 = localObject5;
+    switch (paramInt)
+    {
+    default: 
+      localObject3 = localObject5;
+    }
+    for (;;)
+    {
+      a(paramInt, (blqj)localObject3);
+      if (localObject3 != null)
+      {
+        ((blqj)localObject3).a();
+        wxe.b("QIMManager", "onInit manager : %s", localObject3);
+      }
+      return localObject3;
+      localObject3 = new blvu();
+      continue;
+      localObject3 = new QIMMusicConfigManager();
+      continue;
+      localObject3 = new bnpl();
+      continue;
+      localObject3 = new blvi();
+      continue;
+      localObject3 = new blrx();
+      continue;
+      localObject3 = new DynamicTextConfigManager();
+      continue;
+      localObject3 = new blrk();
+      continue;
+      localObject3 = new blua();
+      continue;
+      localObject3 = new blur();
+      continue;
+      localObject3 = new blvo();
+      continue;
+      localObject3 = new bknb();
+      continue;
+      localObject3 = new blwl();
+      continue;
+      localObject3 = new blsg();
+      continue;
+      localObject3 = new bmhq();
+      continue;
+      localObject3 = new bkzy();
+      continue;
+      localObject3 = new blgg();
+    }
   }
 }
 

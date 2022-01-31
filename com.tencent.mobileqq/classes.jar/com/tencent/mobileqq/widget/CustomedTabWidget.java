@@ -13,10 +13,10 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import bekk;
-import bekl;
-import bekm;
-import bekn;
+import beot;
+import beou;
+import beov;
+import beow;
 
 @SuppressLint({"ResourceAsColor"})
 public class CustomedTabWidget
@@ -28,8 +28,8 @@ public class CustomedTabWidget
   public Rect a;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public bekm a;
-  private bekn jdField_a_of_type_Bekn;
+  public beov a;
+  private beow jdField_a_of_type_Beow;
   public boolean a;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -43,12 +43,12 @@ public class CustomedTabWidget
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)inflate(paramContext, 2131562635, null));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)inflate(paramContext, 2131562653, null));
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidWidgetImageView.getBackground();
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130849705);
-    this.c = paramContext.getResources().getDrawable(2130849704);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130849778);
+    this.c = paramContext.getResources().getDrawable(2130849777);
     this.jdField_b_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Bekm = new bekm(this);
+    this.jdField_a_of_type_Beov = new beov(this);
   }
   
   private void a(int paramInt)
@@ -57,8 +57,8 @@ public class CustomedTabWidget
     do
     {
       return;
-      if (this.jdField_a_of_type_Bekn != null) {
-        this.jdField_a_of_type_Bekn.a(paramInt);
+      if (this.jdField_a_of_type_Beow != null) {
+        this.jdField_a_of_type_Beow.a(paramInt);
       }
       getChildAt(this.jdField_b_of_type_Int).setSelected(false);
       this.jdField_b_of_type_Int = paramInt;
@@ -66,13 +66,13 @@ public class CustomedTabWidget
       getChildAt(this.jdField_b_of_type_Int).getHitRect(this.jdField_a_of_type_AndroidGraphicsRect);
     } while ((this.jdField_a_of_type_AndroidGraphicsRect.left == this.jdField_b_of_type_AndroidGraphicsRect.left) && (this.jdField_a_of_type_AndroidGraphicsRect.right == this.jdField_b_of_type_AndroidGraphicsRect.right));
     this.jdField_a_of_type_Float = ((this.jdField_a_of_type_AndroidGraphicsRect.left - this.jdField_b_of_type_AndroidGraphicsRect.left) / 4);
-    this.jdField_a_of_type_Bekm.sendEmptyMessage(0);
+    this.jdField_a_of_type_Beov.sendEmptyMessage(0);
   }
   
   private void a(View paramView)
   {
-    paramView.setOnClickListener(new bekk(this));
-    paramView.setOnTouchListener(new bekl(this));
+    paramView.setOnClickListener(new beot(this));
+    paramView.setOnTouchListener(new beou(this));
     if (getChildCount() == 1) {
       paramView.setSelected(true);
     }
@@ -134,10 +134,10 @@ public class CustomedTabWidget
     }
   }
   
-  public void setOnSwitchTabListener(bekn parambekn)
+  public void setOnSwitchTabListener(beow parambeow)
   {
-    this.jdField_a_of_type_Bekm.removeMessages(0);
-    this.jdField_a_of_type_Bekn = parambekn;
+    this.jdField_a_of_type_Beov.removeMessages(0);
+    this.jdField_a_of_type_Beow = parambeow;
   }
 }
 

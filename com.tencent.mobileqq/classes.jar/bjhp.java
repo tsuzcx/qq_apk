@@ -1,15 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import cooperation.qzone.util.QZLog;
+import mqq.util.WeakReference;
 
-public class bjhp
-  implements View.OnClickListener
+final class bjhp
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public bjhp(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  bjhp(long paramLong, bjhq parambjhq) {}
   
-  public void onClick(View paramView)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    QzoneWebMusicJsPlugin.access$300(this.a, "buttonclick");
+    StringBuilder localStringBuilder = new StringBuilder().append("onPluginManagerLoaded: ");
+    Object localObject;
+    if (paramPluginManagerClient != null)
+    {
+      localObject = Boolean.valueOf(paramPluginManagerClient.isPluginInstalled("qzone_plugin.apk"));
+      QZLog.i("QZoneApiProxy", localObject + " cost " + (System.nanoTime() - this.jdField_a_of_type_Long));
+      bjho.a(new WeakReference(paramPluginManagerClient));
+      if (this.jdField_a_of_type_Bjhq != null)
+      {
+        localObject = this.jdField_a_of_type_Bjhq;
+        if ((paramPluginManagerClient == null) || (!paramPluginManagerClient.isPluginInstalled("qzone_plugin.apk"))) {
+          break label111;
+        }
+      }
+    }
+    label111:
+    for (boolean bool = true;; bool = false)
+    {
+      ((bjhq)localObject).a(bool);
+      return;
+      localObject = "null";
+      break;
+    }
   }
 }
 

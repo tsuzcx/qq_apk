@@ -1,20 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import java.lang.ref.WeakReference;
 
-class bbyd
-  implements DialogInterface.OnClickListener
+public class bbyd
 {
-  bbyd(bbyb parambbyb) {}
+  protected ImageView a;
+  protected SessionInfo a;
+  protected QQAppInterface a;
+  protected RedDotAnimateView a;
+  protected WeakReference<BaseActivity> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.c();
-    if (ReciteRecordLayout.a(this.a.a) != null) {
-      ReciteRecordLayout.a(this.a.a).e();
-    }
-    paramDialogInterface.dismiss();
-  }
+  public void a() {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean1, TroopChatPie paramTroopChatPie, boolean paramBoolean2) {}
+  
+  public void b() {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c() {}
 }
 
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afhq;
-import afhr;
+import afmf;
+import afmg;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 public class FilePicItemBuilder$3$1
   implements Runnable
 {
-  public FilePicItemBuilder$3$1(afhr paramafhr) {}
+  public FilePicItemBuilder$3$1(afmg paramafmg) {}
   
   public void run()
   {
-    ChatActivityUtils.a(this.a.a.a, 2131719744, 1);
+    ChatActivityUtils.a(this.a.a.a, 2131719756, 1);
   }
 }
 

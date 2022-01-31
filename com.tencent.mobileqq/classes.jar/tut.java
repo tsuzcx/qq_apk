@@ -1,8 +1,28 @@
-public abstract interface tut
+import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudWrite.StDoTopRsp;
+
+class tut
+  implements zac<FeedCloudWrite.StDoTopRsp>
 {
-  public abstract void a();
+  tut(tuk paramtuk, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment) {}
   
-  public abstract void b();
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoTopRsp paramStDoTopRsp)
+  {
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoTopRsp == null))
+    {
+      QLog.e(tuk.a(), 1, "cancelStickyFeedComment error:" + paramLong + "  errorMsg:" + paramString);
+      return;
+    }
+    QLog.d(tuk.a(), 1, "cancelStickyFeedComment Success");
+    tuk.a(this.jdField_a_of_type_Tuk, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), "");
+    yiw.a().a(new QCircleCommentUpdateEvent(7, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Tuk.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get())));
+    umc.a().dispatch(this.jdField_a_of_type_Tuk.a(new Object[] { Integer.valueOf(10), Long.valueOf(paramLong), paramString, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get(), Integer.valueOf(this.jdField_a_of_type_Tuk.hashCode()) }));
+  }
 }
 
 

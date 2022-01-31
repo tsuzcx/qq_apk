@@ -1,48 +1,18 @@
-import android.util.SparseArray;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.qzone.QZoneTitleTabManager.TabInfo;
 
-public class azav
+public final class azav
+  implements Parcelable.Creator<QZoneTitleTabManager.TabInfo>
 {
-  public float a;
-  public int a;
-  public SparseArray<azau> a;
-  public boolean a;
-  public int[] a;
-  public int b = 30;
-  public boolean b;
-  public int[] b;
-  public int c = 8;
-  public boolean c;
-  public int[] c;
-  public int d = 640;
-  public boolean d;
-  public int[] d;
-  public int e = 480;
-  public int[] e;
-  public int f = 550000;
-  public int[] f;
-  public int g = 100000;
-  public int[] g;
-  public int h = 35;
-  public int i = 3;
-  public int j = 3;
-  public int k = 1;
-  public int l = 1;
-  public int m;
-  public int n;
-  public int o;
-  public int p;
-  public int q;
-  public int r;
-  public int s = -1;
-  public int t = -1;
-  public int u = 2;
-  public int v = 3;
-  
-  public azav()
+  public QZoneTitleTabManager.TabInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_Float = 1.0F;
+    return new QZoneTitleTabManager.TabInfo(paramParcel);
+  }
+  
+  public QZoneTitleTabManager.TabInfo[] a(int paramInt)
+  {
+    return new QZoneTitleTabManager.TabInfo[paramInt];
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.view.widget;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import bcwh;
-import bdcq;
+import bdaq;
+import bdgz;
 import com.tencent.biz.pubaccount.readinjoy.view.BezierSideBarView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
@@ -27,13 +27,13 @@ public class DisableSlideHorizontalListView
   public DisableSlideHorizontalListView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = ((int)bdcq.a(paramContext, 18.0F));
+    this.jdField_a_of_type_Int = ((int)bdgz.a(paramContext, 18.0F));
   }
   
   public DisableSlideHorizontalListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = ((int)bdcq.a(paramContext, 18.0F));
+    this.jdField_a_of_type_Int = ((int)bdgz.a(paramContext, 18.0F));
   }
   
   private void a()
@@ -48,7 +48,7 @@ public class DisableSlideHorizontalListView
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView != null)
     {
       int i = getMeasuredHeight() / 2;
-      int j = aekt.a(18.0F, getResources());
+      int j = aepi.a(18.0F, getResources());
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView.a(paramInt, i - j);
     }
   }
@@ -76,7 +76,7 @@ public class DisableSlideHorizontalListView
       }
       float f2 = this.jdField_a_of_type_Float;
       f3 -= this.b;
-      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > bcwh.a(getContext(), 5.0F)))
+      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > bdaq.a(getContext(), 5.0F)))
       {
         getParent().requestDisallowInterceptTouchEvent(false);
         a(getScrollX() - this.jdField_a_of_type_Int);

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.listentogether.data;
 
-import alpo;
+import alud;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import atim;
-import atko;
-import bdbt;
+import atmv;
+import atox;
+import bdgc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -24,7 +24,7 @@ import tencent.aio.media.aio_media.Song;
 public class MusicInfo
   implements ISong
 {
-  public static final Parcelable.Creator<MusicInfo> CREATOR = new atim();
+  public static final Parcelable.Creator<MusicInfo> CREATOR = new atmv();
   public int a;
   public long a;
   public String a;
@@ -66,7 +66,7 @@ public class MusicInfo
     default: 
       return 0;
     }
-    return 2130840338;
+    return 2130840339;
   }
   
   public static MusicInfo a(aio_media.Song paramSong)
@@ -152,7 +152,7 @@ public class MusicInfo
     case 1: 
       return "QQ音乐";
     }
-    return alpo.a(2131707406);
+    return alud.a(2131707418);
   }
   
   public static String a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, long paramLong)
@@ -161,7 +161,7 @@ public class MusicInfo
       return "";
     }
     if (paramInt == 2) {}
-    for (paramQQAppInterface = bdbt.b(paramQQAppInterface, String.valueOf(paramLong), true);; paramQQAppInterface = bdbt.h(paramQQAppInterface, paramString, String.valueOf(paramLong)))
+    for (paramQQAppInterface = bdgc.b(paramQQAppInterface, String.valueOf(paramLong), true);; paramQQAppInterface = bdgc.h(paramQQAppInterface, paramString, String.valueOf(paramLong)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("AioShareMusic", 2, " getSourceStr() type = " + paramInt + " sessionUin = " + paramString + " shareUin =" + paramLong + " nickName =" + paramQQAppInterface);
@@ -221,7 +221,7 @@ public class MusicInfo
   
   public String c()
   {
-    return atko.a(this.jdField_a_of_type_JavaLangString);
+    return atox.a(this.jdField_a_of_type_JavaLangString);
   }
   
   public String d()

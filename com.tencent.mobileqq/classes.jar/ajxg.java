@@ -1,30 +1,15 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
 
 public class ajxg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public DiscussionInfo a;
-  public TroopInfo a;
-  public int b;
+  public ajxg(RotationSeekBar paramRotationSeekBar) {}
   
-  public ajxg(ajxc paramajxc, int paramInt, awbv paramawbv)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = ((TroopInfo)paramawbv);
-  }
-  
-  public ajxg(ajxc paramajxc, int paramInt, DiscussionInfo paramDiscussionInfo)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
-  }
-  
-  public ajxg(ajxc paramajxc, int paramInt1, DiscussionInfo paramDiscussionInfo, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
-    this.b = paramInt2;
+    RotationSeekBar.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
   }
 }
 

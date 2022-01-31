@@ -54,21 +54,21 @@ public class mqj
       QLog.i("QavRecordReporter", 2, "reportConvertPcmCostTime cost=" + paramLong);
     }
     HashMap localHashMap = new HashMap();
-    localHashMap.put("device_model", bdcb.d());
-    localHashMap.put("api", bdcb.e());
-    localHashMap.put("manufacture", bdcb.h());
-    azmz localazmz = azmz.a(BaseApplicationImpl.getContext());
+    localHashMap.put("device_model", bdgk.d());
+    localHashMap.put("api", bdgk.e());
+    localHashMap.put("manufacture", bdgk.h());
+    azri localazri = azri.a(BaseApplicationImpl.getContext());
     if (!jdField_a_of_type_Boolean) {}
     for (boolean bool = true;; bool = false)
     {
-      localazmz.a("", "av_record_convert_pcm_cost", bool, paramLong / 1000L, 0L, localHashMap, "", false);
+      localazri.a("", "av_record_convert_pcm_cost", bool, paramLong / 1000L, 0L, localHashMap, "", false);
       return;
     }
   }
   
   public static void a(String paramString)
   {
-    azmj.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
   }
   
   public static void a(boolean paramBoolean, int paramInt)
@@ -78,7 +78,7 @@ public class mqj
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    azmz.a(BaseApplicationImpl.getContext()).a("", "av_record_convert_pcm_success", paramBoolean, 0L, 0L, localHashMap, "", false);
+    azri.a(BaseApplicationImpl.getContext()).a("", "av_record_convert_pcm_success", paramBoolean, 0L, 0L, localHashMap, "", false);
   }
   
   public static void b()
@@ -101,19 +101,19 @@ public class mqj
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(c));
-    localHashMap.put("device_model", bdcb.d());
-    localHashMap.put("api", bdcb.e());
-    localHashMap.put("manufacture", bdcb.h());
+    localHashMap.put("device_model", bdgk.d());
+    localHashMap.put("api", bdgk.e());
+    localHashMap.put("manufacture", bdgk.h());
     localHashMap.put("throwable", String.valueOf(jdField_a_of_type_JavaLangThrowable));
     jdField_a_of_type_JavaLangThrowable = null;
     if (QLog.isColorLevel()) {
       QLog.i("QavRecordReporter", 2, "reportEnd params=" + localHashMap);
     }
-    azmz localazmz = azmz.a(BaseApplicationImpl.getContext());
+    azri localazri = azri.a(BaseApplicationImpl.getContext());
     if (!jdField_a_of_type_Boolean) {}
     for (boolean bool = true;; bool = false)
     {
-      localazmz.a("", "av_record_report_end", bool, 0L, 0L, localHashMap, "", false);
+      localazri.a("", "av_record_report_end", bool, 0L, 0L, localHashMap, "", false);
       return;
     }
   }
@@ -124,17 +124,17 @@ public class mqj
       QLog.i("QavRecordReporter", 2, "onAudioTrackInitFail");
     }
     HashMap localHashMap = new HashMap();
-    localHashMap.put("device_model", bdcb.d());
-    localHashMap.put("api", bdcb.e());
-    localHashMap.put("manufacture", bdcb.h());
+    localHashMap.put("device_model", bdgk.d());
+    localHashMap.put("api", bdgk.e());
+    localHashMap.put("manufacture", bdgk.h());
     if (QLog.isColorLevel()) {
       QLog.i("QavRecordReporter", 2, "onAudioTrackInitFail  params=" + localHashMap);
     }
-    azmz localazmz = azmz.a(BaseApplicationImpl.getContext());
+    azri localazri = azri.a(BaseApplicationImpl.getContext());
     if (!jdField_a_of_type_Boolean) {}
     for (boolean bool = true;; bool = false)
     {
-      localazmz.a("", "av_record_audio_fail", bool, 0L, 0L, localHashMap, "", false);
+      localazri.a("", "av_record_audio_fail", bool, 0L, 0L, localHashMap, "", false);
       return;
     }
   }
@@ -145,14 +145,14 @@ public class mqj
       QLog.i("QavRecordReporter", 2, "reportConvertPcmTimeout");
     }
     HashMap localHashMap = new HashMap();
-    localHashMap.put("device_model", bdcb.d());
-    localHashMap.put("api", bdcb.e());
-    localHashMap.put("manufacture", bdcb.h());
-    azmz localazmz = azmz.a(BaseApplicationImpl.getContext());
+    localHashMap.put("device_model", bdgk.d());
+    localHashMap.put("api", bdgk.e());
+    localHashMap.put("manufacture", bdgk.h());
+    azri localazri = azri.a(BaseApplicationImpl.getContext());
     if (!jdField_a_of_type_Boolean) {}
     for (boolean bool = true;; bool = false)
     {
-      localazmz.a("", "av_record_convert_pcm_timeout", bool, 0L, 0L, localHashMap, "", false);
+      localazri.a("", "av_record_convert_pcm_timeout", bool, 0L, 0L, localHashMap, "", false);
       return;
     }
   }

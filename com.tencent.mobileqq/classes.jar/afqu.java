@@ -1,12 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPoke;
 
-class afqu
-  implements DialogInterface.OnClickListener
+final class afqu
+  implements afug
 {
-  afqu(afqr paramafqr) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  {
+    paramQQAppInterface = (MessageForPoke)paramChatMessage;
+    if ((paramQQAppInterface.interactType == 126) && (!afxl.a(paramQQAppInterface.minVersion))) {
+      return 0;
+    }
+    return 62;
+  }
 }
 
 

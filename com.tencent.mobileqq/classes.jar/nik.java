@@ -14,7 +14,7 @@ public class nik
 {
   protected Context a;
   protected View.OnClickListener a;
-  protected bhqp a;
+  protected bhuw a;
   String a;
   protected ArrayList<npo> a;
   protected nhu a;
@@ -24,7 +24,7 @@ public class nik
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_AndroidViewView$OnClickListener = new nil(this);
-    this.jdField_a_of_type_Bhqp = new nim(this);
+    this.jdField_a_of_type_Bhuw = new nim(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
     this.jdField_a_of_type_Nhu = paramnhu;
@@ -87,10 +87,10 @@ public class nik
       Object localObject2;
       if (localObject1 != null)
       {
-        localObject2 = (aluw)((QQAppInterface)localObject1).getManager(56);
+        localObject2 = (alzl)((QQAppInterface)localObject1).getManager(56);
         if (localObject2 != null)
         {
-          localObject2 = ((aluw)localObject2).a(this.jdField_a_of_type_JavaLangString);
+          localObject2 = ((alzl)localObject2).a(this.jdField_a_of_type_JavaLangString);
           if ((localObject2 == null) || (((AccountDetail)localObject2).followType != 1)) {}
         }
       }

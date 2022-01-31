@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.location.net;
 
-import atln;
+import atpw;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 
 public class LocationHandler$9
   implements Runnable
 {
-  public LocationHandler$9(atln paramatln) {}
+  public LocationHandler$9(atpw paramatpw) {}
   
   public void run()
   {

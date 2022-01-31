@@ -62,7 +62,7 @@ public class pmx
       try
       {
         l1 = Long.parseLong(paramArticleInfo.mSubscribeID);
-        localObject1 = oqu.k + bdbi.encodeToString(String.valueOf(l1).getBytes(), 2);
+        localObject1 = oqu.k + bdfr.encodeToString(String.valueOf(l1).getBytes(), 2);
         l2 = l1;
         localObject3 = localObject1;
         if ((TextUtils.isEmpty((CharSequence)localObject1)) && (TextUtils.isEmpty(paramArticleInfo.mSubscribeID))) {
@@ -78,7 +78,7 @@ public class pmx
           QLog.i("PackProteusItem", 1, "[getJumpUrl], e = " + paramArticleInfo);
           continue;
         }
-        localObject3 = oqu.k + bdbi.encodeToString(String.valueOf(l1).getBytes(), 2);
+        localObject3 = oqu.k + bdfr.encodeToString(String.valueOf(l1).getBytes(), 2);
         l2 = l1;
         QLog.i("PackProteusItem", 1, "[getJumpUlr], url = " + (String)localObject3 + ", uin = " + l2);
         return localObject3;
@@ -107,13 +107,13 @@ public class pmx
           if (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw != null)
           {
             l1 = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw.a;
-            localObject2 = oqu.g + bdbi.encodeToString(String.valueOf(l1).getBytes(), 2);
+            localObject2 = oqu.g + bdfr.encodeToString(String.valueOf(l1).getBytes(), 2);
             continue;
             label376:
             if ((paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw != null))
             {
               l2 = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw.a;
-              localObject3 = oqu.g + bdbi.encodeToString(String.valueOf(l2).getBytes(), 2);
+              localObject3 = oqu.g + bdfr.encodeToString(String.valueOf(l2).getBytes(), 2);
             }
             else
             {
@@ -126,7 +126,7 @@ public class pmx
                 if (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qme != null)
                 {
                   l2 = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qme.a;
-                  localObject3 = oqu.g + bdbi.encodeToString(String.valueOf(l2).getBytes(), 2);
+                  localObject3 = oqu.g + bdfr.encodeToString(String.valueOf(l2).getBytes(), 2);
                 }
               }
             }
@@ -217,19 +217,19 @@ public class pmx
   {
     if (parampgd.e() == 56)
     {
-      paramComponentPolymericView.setDividerWidth(aekt.a(3.0F, paramContext.getResources()));
-      paramComponentPolymericView.setPadding(bcwh.a(paramContext, 6.0F), 0, bcwh.a(paramContext, 6.0F), bcwh.a(paramContext, 5.0F));
+      paramComponentPolymericView.setDividerWidth(aepi.a(3.0F, paramContext.getResources()));
+      paramComponentPolymericView.setPadding(bdaq.a(paramContext, 6.0F), 0, bdaq.a(paramContext, 6.0F), bdaq.a(paramContext, 5.0F));
     }
     for (;;)
     {
       paramComponentPolymericView.setClipToPadding(false);
       paramComponentPolymericView.setClipChildren(false);
       return;
-      paramComponentPolymericView.setDividerWidth(aekt.a(3.0F, paramContext.getResources()));
+      paramComponentPolymericView.setDividerWidth(aepi.a(3.0F, paramContext.getResources()));
       if (ors.m(parampgd.a())) {
-        paramComponentPolymericView.setPadding(bcwh.a(paramContext, 6.0F), 0, bcwh.a(paramContext, 12.0F), bcwh.a(paramContext, 2.0F));
+        paramComponentPolymericView.setPadding(bdaq.a(paramContext, 6.0F), 0, bdaq.a(paramContext, 12.0F), bdaq.a(paramContext, 2.0F));
       } else {
-        paramComponentPolymericView.setPadding(bcwh.a(paramContext, 6.0F), 0, bcwh.a(paramContext, 12.0F), 0);
+        paramComponentPolymericView.setPadding(bdaq.a(paramContext, 6.0F), 0, bdaq.a(paramContext, 12.0F), 0);
       }
     }
   }
@@ -379,7 +379,7 @@ public class pmx
       if ((localObject2 != null) && (((ArticleInfo)localObject1).mTopicRecommendFeedsInfo != null) && (((ArticleInfo)localObject1).mTopicRecommendFeedsInfo.a != null) && (((ArticleInfo)localObject1).mTopicRecommendFeedsInfo.a.size() > 0))
       {
         localObject3 = (qno)((ArticleInfo)localObject1).mTopicRecommendFeedsInfo.a.get(0);
-        ((NativeText)localObject2).setText(String.format(paramContainer.getContext().getString(2131719050), new Object[] { bjxj.b(((qno)localObject3).b) }));
+        ((NativeText)localObject2).setText(String.format(paramContainer.getContext().getString(2131719062), new Object[] { bkbq.b(((qno)localObject3).b) }));
         if (QLog.isColorLevel()) {
           QLog.d("PackProteusItem", 2, "PackProteusItem update articleInfo UI articleID = " + ((ArticleInfo)localObject1).mArticleID + ", mRecommendSeq =" + ((ArticleInfo)localObject1).mRecommendSeq + "，followType=" + ((qno)localObject3).c);
         }

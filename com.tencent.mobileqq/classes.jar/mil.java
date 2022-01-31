@@ -12,10 +12,10 @@ public class mil
   
   public void onClick(View paramView)
   {
-    ((TextView)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.findViewById(2131372890)).setVisibility(8);
+    ((TextView)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.findViewById(2131372916)).setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.f = true;
-    azmj.b(null, "CliOper", "", "", "0X800AEB8", "0X800AEB8", 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", "0X800AEB8", "0X800AEB8", 0, 0, "", "", "", "");
   }
 }
 

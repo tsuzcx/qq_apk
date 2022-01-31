@@ -1,28 +1,23 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 
-class aprx
-  implements URLDrawableDownListener
+public class aprx
 {
-  aprx(aprw paramaprw) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof ProgressBar))) {
-      ((ProgressBar)paramView).setVisibility(4);
-    }
-  }
+  public double a;
+  public float a = 1.0F;
+  public int a;
+  public Drawable a;
+  public EmojiStickerManager.StickerInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public Drawable b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
 }
 
 

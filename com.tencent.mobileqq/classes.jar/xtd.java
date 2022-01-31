@@ -1,83 +1,48 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import java.util.ArrayList;
 
-public class xtd
-  implements View.OnTouchListener
+class xtd
+  extends xtb
 {
-  protected float a;
-  protected final RecyclerView a;
-  protected xsw a;
-  protected xsx a;
-  protected xsy a;
-  protected xsz a;
-  protected final xtc a;
-  protected xte a;
+  xtd(xtc paramxtc, xtk paramxtk) {}
   
-  public xtd(RecyclerView paramRecyclerView)
+  public void onFailure(String paramString)
   {
-    this.jdField_a_of_type_Xsy = new xta();
-    this.jdField_a_of_type_Xtc = new xtc();
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.jdField_a_of_type_Xtk.onFailure(paramString);
   }
   
-  public View a()
+  public void onFinish(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Xsw = new xsw(this, -2.0F);
-    this.jdField_a_of_type_Xte = new xte(this, 3.0F, 1.0F);
-    this.jdField_a_of_type_Xsz = new xsz(this);
-    this.jdField_a_of_type_Xsx = this.jdField_a_of_type_Xsz;
-    b();
-  }
-  
-  public void a(RecyclerView.LayoutManager paramLayoutManager)
-  {
-    if ((paramLayoutManager instanceof LinearLayoutManager))
+    xtc localxtc;
+    if (this.jdField_a_of_type_Xtc.jdField_a_of_type_JavaUtilArrayList.size() == 0)
     {
-      paramLayoutManager = (LinearLayoutManager)paramLayoutManager;
-      this.jdField_a_of_type_Xsy.a(paramLayoutManager.getOrientation());
+      localxtc = this.jdField_a_of_type_Xtc;
+      if (!paramBoolean) {
+        break label44;
+      }
+    }
+    label44:
+    for (int i = 1;; i = 0)
+    {
+      localxtc.jdField_a_of_type_Int = i;
+      xtc.jdField_a_of_type_Xtc = null;
+      this.jdField_a_of_type_Xtk.onFinish(paramBoolean);
       return;
     }
-    this.jdField_a_of_type_Xsy.a(1);
   }
   
-  protected void a(xsx paramxsx)
+  public void onProgress(String paramString)
   {
-    xsx localxsx = this.jdField_a_of_type_Xsx;
-    this.jdField_a_of_type_Xsx = paramxsx;
-    this.jdField_a_of_type_Xsx.a(localxsx);
+    this.jdField_a_of_type_Xtk.onProgress(paramString);
   }
   
-  public void b()
+  public void onStart()
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnTouchListener(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
+    this.jdField_a_of_type_Xtk.onStart();
   }
   
-  public void c()
+  public void onSuccess(String paramString)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnTouchListener(null);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(0);
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-      return false;
-    case 2: 
-      return this.jdField_a_of_type_Xsx.a(paramMotionEvent);
-    }
-    return this.jdField_a_of_type_Xsx.b(paramMotionEvent);
+    this.jdField_a_of_type_Xtk.onSuccess(paramString);
   }
 }
 

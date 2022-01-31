@@ -1,31 +1,18 @@
+import android.view.View;
+
 class aqpt
+  implements bhvm
 {
-  private int jdField_a_of_type_Int;
-  private aqpn jdField_a_of_type_Aqpn;
+  aqpt(aqpq paramaqpq, View paramView) {}
   
-  public aqpt(aqpr paramaqpr, aqpn paramaqpn)
+  public void a()
   {
-    this.jdField_a_of_type_Aqpn = paramaqpn;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public aqpn a()
-  {
-    return this.jdField_a_of_type_Aqpn;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqpt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,113 @@
+import android.app.Activity;
+import android.net.Uri;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import android.util.Base64;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForGrayTips;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Map;
+import org.json.JSONObject;
 
 public class auet
-  extends aueo
 {
-  public static String b = aljq.aX + "ptt" + File.separator;
-  private static final String c = bayb.a(aufb.jdField_a_of_type_JavaLangString + "ptt" + File.separator);
-  private String d = (String)this.jdField_a_of_type_JavaUtilMap.get("md5");
-  private String e = (String)this.jdField_a_of_type_JavaUtilMap.get("uuid");
-  private String f = (String)this.jdField_a_of_type_JavaUtilMap.get("selfuin");
-  
-  public auet(MsgBackupResEntity paramMsgBackupResEntity)
+  public static aueu a(String paramString)
   {
-    super(paramMsgBackupResEntity);
-    if (this.d == null) {
-      this.d = "";
-    }
-    if (this.e == null) {
-      this.e = "";
-    }
-    if (this.f == null) {
-      this.f = "";
-    }
-    if ((TextUtils.isEmpty(this.d)) || (TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.f))) {
-      a("md5:" + this.d + " mUUID:" + this.e + " mSelfuin:" + this.f);
-    }
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    return bayb.a(b + paramString2 + File.separator + paramString1);
-  }
-  
-  public aucn a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
-    String str = a();
-    boolean bool = a(str);
-    if (QLog.isColorLevel()) {
-      a("getResDownloadObject,entity:" + ((MsgBackupResEntity)localObject).toLogString() + " tempPath:" + str + " exist:" + bool);
-    }
-    localObject = new aucn();
-    if (!bool) {}
-    for (bool = true;; bool = false)
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
     {
-      ((aucn)localObject).jdField_a_of_type_Boolean = bool;
-      ((aucn)localObject).jdField_a_of_type_JavaLangString = str;
-      return localObject;
+      return null;
+      paramString = Uri.parse(paramString);
+      if (paramString.isHierarchical())
+      {
+        paramString = paramString.getQueryParameter("_appinfo");
+        if (!TextUtils.isEmpty(paramString)) {
+          try
+          {
+            paramString = Base64.decode(paramString, 10);
+            if (paramString == null)
+            {
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.i("miniAppJump", 2, "appinfo decode error 2");
+              return null;
+            }
+          }
+          catch (Exception paramString)
+          {
+            QLog.e("miniAppJump", 1, "parse miniapp jump url error", paramString);
+            return null;
+          }
+        }
+      }
     }
+    paramString = new JSONObject(new String(paramString, "UTF-8"));
+    aueu localaueu = new aueu();
+    localaueu.jdField_a_of_type_Int = paramString.getInt("type");
+    localaueu.jdField_a_of_type_JavaLangString = paramString.getString("appid");
+    localaueu.jdField_b_of_type_JavaLangString = paramString.optString("pageName");
+    localaueu.jdField_b_of_type_Int = paramString.optInt("from");
+    localaueu.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("param");
+    return localaueu;
   }
   
-  public String a()
+  public static boolean a(Activity paramActivity, aueu paramaueu, Bundle paramBundle)
   {
-    return c + this.d + this.e + this.f;
+    if (paramaueu == null) {}
+    while ((paramaueu.jdField_a_of_type_Int == 4) || (paramaueu.jdField_a_of_type_Int != 3)) {
+      return false;
+    }
+    auek.a(paramActivity, paramaueu.jdField_a_of_type_JavaLangString, paramaueu.jdField_a_of_type_Int, null);
+    return true;
   }
   
-  public String b()
+  public static boolean a(Activity paramActivity, String paramString, Bundle paramBundle)
   {
-    return a(this.d, this.f);
+    return a(paramActivity, a(paramString), paramBundle);
+  }
+  
+  public static boolean a(BaseActivity paramBaseActivity, String paramString, MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {
+      return false;
+    }
+    Bundle localBundle = new Bundle();
+    QQAppInterface localQQAppInterface = paramBaseActivity.app;
+    localBundle.putString("uin", localQQAppInterface.getCurrentAccountUin());
+    boolean bool;
+    if (paramMessageRecord.istroop == 1)
+    {
+      localBundle.putString("gc", paramMessageRecord.frienduin);
+      if ((bcpx.a(localQQAppInterface, paramMessageRecord.frienduin, localQQAppInterface.c())) || (bcpx.b(localQQAppInterface, paramMessageRecord.frienduin, localQQAppInterface.c())))
+      {
+        bool = true;
+        localBundle.putBoolean("isAdmin", bool);
+      }
+    }
+    else
+    {
+      paramString = a(paramString);
+      bool = a(paramBaseActivity, paramString, localBundle);
+      if ((paramString != null) && (bool) && ((paramMessageRecord instanceof MessageForGrayTips)) && (paramString.jdField_a_of_type_Int == 4) && (paramString.jdField_a_of_type_JavaLangString.equals("101474665")))
+      {
+        if (paramString.jdField_b_of_type_Int != 1) {
+          break label186;
+        }
+        azqs.b(localQQAppInterface, "dc00899", "Grp_idol", "", "idol_follow", "follow_suc_clk", 0, 0, paramMessageRecord.frienduin, "", "", "");
+      }
+    }
+    for (;;)
+    {
+      return bool;
+      bool = false;
+      break;
+      label186:
+      if (paramString.jdField_b_of_type_Int == 2) {
+        bdes.a("Grp_idol", "Grp_AIO", "clk_renwu", 0, 0, new String[] { paramMessageRecord.frienduin });
+      }
+    }
   }
 }
 

@@ -1,102 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
+import android.text.TextUtils;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
-public class arll
-  extends arlr
+class arll
+  implements aris
 {
-  private MessageForFile jdField_a_of_type_ComTencentMobileqqDataMessageForFile = (MessageForFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = arni.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
+  arll(arkz paramarkz) {}
   
-  public arll(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public void a()
   {
-    super(paramQQAppInterface, paramChatMessage);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Arhz.a();
+    bbtn localbbtn = bcnt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity);
+    if ((TextUtils.isEmpty(arkz.a(this.a))) && (localbbtn.a != null)) {
+      arkz.a(this.a, localbbtn.a.toString());
+    }
+    bbsn localbbsn = new bbsn(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
+    if (((localbbtn.b == 3) || (localbbtn.b == 2)) && (localbbtn.a != null)) {
+      localbbsn.a(localbbtn.a);
+    }
+    localFileManagerEntity.status = 2;
+  }
+  
+  public void b()
+  {
+    Object localObject = this.a.jdField_a_of_type_Arhz.a();
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
+    localObject = bcnt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject);
+    if (!TextUtils.isEmpty(arkz.a(this.a)))
     {
-      QLog.e("OfflineFileSaveModel<QFile>", 1, "init: not find the target entity.");
-      return;
+      localTroopFileTransferManager.a(UUID.fromString(arkz.a(this.a)));
+      arkz.a(this.a, (bbtn)localObject);
     }
-    QLog.e("OfflineFileSaveModel<QFile>", 1, "init: uniseq[" + paramChatMessage.uniseq + "] session[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]");
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-    }
-    return 0L;
-  }
-  
-  public arlo a()
-  {
-    arlk localarlk = new arlk(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    localarlk.a(new arlm(this));
-    return localarlk;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
-    }
-    return "";
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OfflineFileSaveModel<QFile>", 1, "download: file entity is null.");
-      return false;
-    }
-    int i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType();
-    int j = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status;
-    String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
-    QLog.e("OfflineFileSaveModel<QFile>", 1, "download: uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq + "] session[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] cloudType[" + i + "] status[" + j + "]");
-    if ((!bdcs.b(str)) && (i != 0))
-    {
-      if (j == 3)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-        return true;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      return true;
-    }
-    QLog.e("OfflineFileSaveModel<QFile>", 1, "download: error, file status is not right.");
-    return false;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq;
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OfflineFileSaveModel<QFile>", 1, "stopDownload: file entity is null.");
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    return true;
-  }
-  
-  public boolean c()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getStatus() == 2) {
-        bool1 = true;
-      }
-    }
-    return bool1;
   }
 }
 

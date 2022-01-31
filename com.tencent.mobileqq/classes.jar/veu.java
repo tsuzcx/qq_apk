@@ -1,67 +1,62 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedLike;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
 
 public class veu
-  extends vex
+  extends urt
 {
   public static final String a;
-  public static final String b;
-  public static final String c;
-  private final int[] a;
+  private List<String> a;
   private int c;
-  private String k;
-  private String l;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "src_type=internal&version=1&uin=%s&usertype=%s&unionid=%s&fromId=%s&storysharefrom=%s" + ume.a(2131700053);
-    b = "mqqapi://qstory/infoCard?" + jdField_a_of_type_JavaLangString;
-    jdField_c_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?" + jdField_a_of_type_JavaLangString + "&actionnamekey=3&one_page=0";
+    jdField_a_of_type_JavaLangString = uqn.a("StorySvc.feed_like_list_batch_715");
   }
   
-  public veu(QQUserUIItem paramQQUserUIItem)
+  public veu(List<String> paramList, boolean paramBoolean)
   {
-    this.k = paramQQUserUIItem.qq;
-    this.i = paramQQUserUIItem.headUrl;
-    int i;
-    if (paramQQUserUIItem.isVip)
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
-      i = 1;
-      this.jdField_c_of_type_Int = i;
-      this.l = paramQQUserUIItem.uid;
-      this.d = (paramQQUserUIItem.nickName + alpo.a(2131706132) + ugx.jdField_a_of_type_JavaLangString);
-      this.f = ("[" + ugx.jdField_a_of_type_JavaLangString + alpo.a(2131706135) + paramQQUserUIItem.nickName + alpo.a(2131706138) + ugx.jdField_a_of_type_JavaLangString);
-      this.g = (paramQQUserUIItem.nickName + alpo.a(2131706137) + ugx.jdField_a_of_type_JavaLangString + alpo.a(2131706131) + ugx.jdField_a_of_type_JavaLangString + alpo.a(2131706134) + ume.a(2131700050) + alpo.a(2131706133));
-      if (paramQQUserUIItem.videoCount > 0) {
-        break label331;
+      this.c = i;
+      return;
+    }
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchFeedLike localRspBatchFeedLike = new qqstory_service.RspBatchFeedLike();
+    try
+    {
+      localRspBatchFeedLike.mergeFrom(paramArrayOfByte);
+      return new vev(localRspBatchFeedLike);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
       }
     }
-    label331:
-    for (this.e = "0个小视频";; this.e = (paramQQUserUIItem.videoCount + alpo.a(2131706136)))
-    {
-      this.j = ("#" + ugx.jdField_a_of_type_JavaLangString + "# " + this.d + "（" + this.e + "）");
-      this.jdField_a_of_type_Int = 102;
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 13, 14, 15, 16, 17, 18 };
-      return;
-      i = 0;
-      break;
-    }
   }
   
-  protected String a(int paramInt)
+  protected byte[] a()
   {
-    if (paramInt == 1) {
-      return String.format(b, new Object[] { this.k, Integer.valueOf(this.jdField_c_of_type_Int), this.l, Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), b(paramInt) });
-    }
-    return String.format(jdField_c_of_type_JavaLangString, new Object[] { this.k, Integer.valueOf(this.jdField_c_of_type_Int), this.l, Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), b(paramInt) });
-  }
-  
-  protected void a(vge paramvge)
-  {
-    super.a(paramvge);
-    if ((paramvge != null) && ((paramvge instanceof vgf))) {
-      ((vgf)paramvge).jdField_a_of_type_JavaLangString = (vgp.b(this.i) + "#private_share_cache");
-    }
+    qqstory_service.ReqBatchFeedLike localReqBatchFeedLike = new qqstory_service.ReqBatchFeedLike();
+    List localList = a(this.jdField_a_of_type_JavaUtilList);
+    localReqBatchFeedLike.feed_id_list.set(localList);
+    localReqBatchFeedLike.source.set(this.c);
+    return localReqBatchFeedLike.toByteArray();
   }
 }
 

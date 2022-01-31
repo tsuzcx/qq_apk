@@ -1,34 +1,25 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
 
-class bilq
-  implements ServiceConnection
+public class bilq
 {
-  bilq(bilo parambilo) {}
+  private static volatile bilq jdField_a_of_type_Bilq;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public static bilq a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoRemoteManager", 2, "Qav Service connected!");
+    if (jdField_a_of_type_Bilq == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Bilq == null) {
+        jdField_a_of_type_Bilq = new bilq();
+      }
+      return jdField_a_of_type_Bilq;
     }
-    this.a.jdField_a_of_type_Lqr = lqs.a(paramIBinder);
-    if ((this.a.jdField_a_of_type_Lqr != null) && (this.a.jdField_a_of_type_Bilp != null)) {
-      this.a.jdField_a_of_type_Bilp.a(this.a);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null or mOnReadyListener == null");
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoRemoteManager", 2, "Qav Service disconnected!");
-    }
-    this.a.jdField_a_of_type_Lqr = null;
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "POICacheDistance", 1000);
   }
 }
 

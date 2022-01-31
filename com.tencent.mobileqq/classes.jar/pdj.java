@@ -68,7 +68,7 @@ public class pdj
     label217:
     for (int j = 0;; j = 1)
     {
-      parampdj = new ron(ors.a(paramBaseArticleInfo.mAlgorithmID, ors.a(paramBaseArticleInfo), 0, i, j, bdee.h(parampdj.a()), str, paramBaseArticleInfo.mStrCircleId, paramBaseArticleInfo.innerUniqueID, ors.f(paramBaseArticleInfo), 409409, (ArticleInfo)paramBaseArticleInfo));
+      parampdj = new ron(ors.a(paramBaseArticleInfo.mAlgorithmID, ors.a(paramBaseArticleInfo), 0, i, j, bdin.h(parampdj.a()), str, paramBaseArticleInfo.mStrCircleId, paramBaseArticleInfo.innerUniqueID, ors.f(paramBaseArticleInfo), 409409, (ArticleInfo)paramBaseArticleInfo));
       parampdj.h(paramBaseArticleInfo.innerUniqueID).a(k).d(paramBaseArticleInfo.mStrategyId).g(ntd.a).h(409409).j(paramBaseArticleInfo.mVideoAdsJumpType).k(paramBaseArticleInfo.mVideoAdsSource).a(Boolean.valueOf(ors.w(paramBaseArticleInfo))).a(paramBaseArticleInfo.videoReportInfo).R(paramInt).r(paramString).f(paramBaseArticleInfo);
       if (paramVideoColumnInfo != null) {
         parampdj.aa(paramVideoColumnInfo.a);
@@ -97,11 +97,11 @@ public class pdj
       ((pdu)localObject).f = paramView;
       ((pdu)localObject).a = paramInt;
       paramView.setTag(localObject);
-      paramView.setTag(2131369009, a());
+      paramView.setTag(2131369027, a());
       paramViewGroup = new pjn(a(), a().a(), a(), a(), a().a(), a().a());
-      paramView.setTag(2131379915, paramViewGroup);
+      paramView.setTag(2131379973, paramViewGroup);
       localrvg = new rvg(paramView);
-      paramView.setTag(2131379918, localrvg);
+      paramView.setTag(2131379976, localrvg);
     }
     BaseArticleInfo localBaseArticleInfo;
     for (;;)
@@ -115,8 +115,8 @@ public class pdj
       return localrvg.a();
       localObject = (pdu)paramView.getTag();
       ((pdu)localObject).a = paramInt;
-      paramViewGroup = (piz)paramView.getTag(2131379915);
-      localrvg = (rvg)paramView.getTag(2131379918);
+      paramViewGroup = (piz)paramView.getTag(2131379973);
+      localrvg = (rvg)paramView.getTag(2131379976);
     }
     long l;
     if (i == 46)
@@ -132,7 +132,7 @@ public class pdj
         localObject = (ArticleInfo)a(paramInt + 1);
       }
       localObject = new pgq(a(), (ArticleInfo)localBaseArticleInfo, i, b(), c(), paramInt, a(), d(), (ArticleInfo)localObject, a());
-      paramView.setTag(2131379913, localObject);
+      paramView.setTag(2131379971, localObject);
       paramViewGroup.a(localrvg, (pgd)localObject, i);
       return localrvg.a();
       if (i == 4)
@@ -212,7 +212,7 @@ public class pdj
   public void a(View paramView, ListView paramListView)
   {
     this.jdField_a_of_type_Pdt = new pdt(this, null);
-    this.jdField_a_of_type_Boolean = bjxj.d();
+    this.jdField_a_of_type_Boolean = bkbq.d();
   }
   
   public boolean a(int paramInt)

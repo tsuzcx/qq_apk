@@ -6,8 +6,8 @@ import android.view.KeyEvent;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import bghn;
-import bgkd;
+import bglu;
+import bgok;
 import com.tencent.qqmini.sdk.core.widget.KeyboardLayout;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.utils.DisplayUtil;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 class InputJsPlugin$6
   implements TextView.OnEditorActionListener
 {
-  InputJsPlugin$6(InputJsPlugin paramInputJsPlugin, EditText paramEditText, bgkd parambgkd, KeyboardLayout paramKeyboardLayout, Context paramContext) {}
+  InputJsPlugin$6(InputJsPlugin paramInputJsPlugin, EditText paramEditText, bgok parambgok, KeyboardLayout paramKeyboardLayout, Context paramContext) {}
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {

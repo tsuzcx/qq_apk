@@ -3,13 +3,13 @@ package com.tencent.mobileqq.activity.photo.album;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
-import bhqp;
+import bhuw;
 import com.tencent.mobileqq.data.QQAlbumInfo;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.AdapterView;
 
 class AbstractAlbumListFragment$AlbumListItemClickListener
-  implements bhqp
+  implements bhuw
 {
   private AbstractAlbumListFragment$AlbumListItemClickListener(AbstractAlbumListFragment paramAbstractAlbumListFragment) {}
   

@@ -1,18 +1,31 @@
-import android.content.Context;
-import android.view.MotionEvent;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import java.util.ArrayList;
+import java.util.List;
 
-class aibw
-  implements View.OnTouchListener
+public class aibw
+  implements View.OnClickListener
 {
-  aibw(aibq paramaibq) {}
+  public aibw(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    xqq.a(this.a.a);
+    xqq.a(this.a.a.a);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.a.a.size())
+    {
+      paramView.add(((aidf)this.a.a.a.get(i)).a);
+      i += 1;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.getActivity().setResult(-1, localIntent);
+    this.a.getActivity().finish();
   }
 }
 

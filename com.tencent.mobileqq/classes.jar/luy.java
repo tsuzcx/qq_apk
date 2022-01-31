@@ -24,8 +24,8 @@ public class luy
 {
   private static luy jdField_a_of_type_Luy;
   private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = bdcb.d() / 124L;
-  private final bhow jdField_a_of_type_Bhow = new bhow(Looper.getMainLooper(), this);
+  private long jdField_a_of_type_Long = bdgk.d() / 124L;
+  private final bhtd jdField_a_of_type_Bhtd = new bhtd(Looper.getMainLooper(), this);
   private String jdField_a_of_type_JavaLangString;
   private final HashMap<String, luz> jdField_a_of_type_JavaUtilHashMap = new HashMap(5);
   private final int[] jdField_a_of_type_ArrayOfInt = new int[1];
@@ -209,7 +209,7 @@ public class luy
     this.jdField_b_of_type_Int = 1;
     this.c = 0;
     this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_Bhow.sendEmptyMessageDelayed(1, 200L);
+    this.jdField_a_of_type_Bhtd.sendEmptyMessageDelayed(1, 200L);
   }
   
   public void a(int paramInt)
@@ -254,7 +254,7 @@ public class luy
       QLog.i("MemoryPerfStat", 2, "stop");
     }
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Bhow.removeMessages(1);
+    this.jdField_a_of_type_Bhtd.removeMessages(1);
     this.jdField_a_of_type_JavaLangString = a();
   }
   

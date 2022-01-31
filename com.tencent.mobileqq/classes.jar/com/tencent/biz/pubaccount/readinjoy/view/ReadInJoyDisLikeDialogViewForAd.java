@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -18,7 +18,7 @@ public class ReadInJoyDisLikeDialogViewForAd
     super.a(paramContext);
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
     if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131713157));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131713169));
     }
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);

@@ -1,32 +1,24 @@
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSActivity.17.1;
 
 public class adqm
-  extends MqqHandler
+  implements Animation.AnimationListener
 {
-  public adqm(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
+  public adqm(QQLSActivity paramQQLSActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMessage.what)
-    {
-    case 107: 
-    default: 
-      return;
-    case 106: 
-      this.a.finish();
-      return;
+    if (QQLSActivity.a(this.a) != null) {
+      QQLSActivity.a(this.a).post(new QQLSActivity.17.1(this));
     }
-    int i = 0;
-    while (i < 6)
-    {
-      RegisterVerifyCodeActivity.a(this.a)[i].setText("");
-      i += 1;
-    }
-    RegisterVerifyCodeActivity.a(this.a)[0].requestFocus();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

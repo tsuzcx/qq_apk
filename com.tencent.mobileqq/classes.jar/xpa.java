@@ -1,216 +1,133 @@
-import android.content.Context;
-import android.os.AsyncTask;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteAsyncTask.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.concurrent.TimeoutException;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaMetadataRetriever;
+import android.widget.ImageView;
+import com.tencent.maxvideo.trim.TrimNative;
 
 public class xpa
-  extends AsyncTask<Void, String, xor>
+  extends xve
 {
-  public final long a;
-  public Context a;
-  public Boolean a;
-  public Process a;
-  public StringBuilder a;
-  public final xpb a;
-  public final xpr a;
-  public boolean a;
-  public final String[] a;
-  public long b;
-  public boolean b;
+  private long jdField_a_of_type_Long;
+  private MediaMetadataRetriever jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
+  private Integer jdField_a_of_type_JavaLangInteger;
+  private xpb jdField_a_of_type_Xpb;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
+  private int d;
   
-  xpa(Context paramContext, String[] paramArrayOfString, long paramLong, boolean paramBoolean, xpb paramxpb)
+  public xpa(ImageView paramImageView, MediaMetadataRetriever paramMediaMetadataRetriever, Integer paramInteger, int paramInt1, int paramInt2, long paramLong, int paramInt3, boolean paramBoolean1, xpb paramxpb, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    super(paramImageView);
+    this.jdField_a_of_type_JavaLangInteger = paramInteger;
+    this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever = paramMediaMetadataRetriever;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
     this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.d = paramInt3;
+    this.jdField_b_of_type_Boolean = paramBoolean1;
     this.jdField_a_of_type_Xpb = paramxpb;
-    this.jdField_a_of_type_Xpr = new xpr();
-    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+    this.jdField_c_of_type_Boolean = paramBoolean2;
   }
   
-  private xor a()
+  public String a()
   {
-    xor localxor = xor.a();
-    if (this.jdField_b_of_type_Boolean)
-    {
-      b(localxor);
-      localxor.jdField_b_of_type_Boolean = true;
+    return String.valueOf(this.jdField_a_of_type_JavaLangInteger);
+  }
+  
+  @TargetApi(10)
+  public void a()
+  {
+    wxe.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround:%s", new Object[] { a() });
+    long l3 = System.currentTimeMillis();
+    if ((xsm.a()) && (this.jdField_c_of_type_Boolean)) {
+      wxe.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround: TrimNative:%s", new Object[] { a() });
     }
-    return localxor;
-  }
-  
-  private xor a(Process paramProcess)
-  {
-    paramProcess = xor.a(paramProcess);
-    if (this.jdField_b_of_type_Boolean)
+    long l1;
+    Object localObject;
+    Bitmap localBitmap2;
+    for (;;)
     {
-      b(paramProcess);
-      paramProcess.jdField_b_of_type_Boolean = true;
-    }
-    return paramProcess;
-  }
-  
-  private void a()
-  {
-    if (!xps.a(this.jdField_a_of_type_JavaLangProcess))
-    {
-      if ((this.jdField_a_of_type_Long != 9223372036854775807L) && (SystemClock.uptimeMillis() > this.jdField_b_of_type_Long + this.jdField_a_of_type_Long))
+      try
       {
-        QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow]  timeout");
-        throw new TimeoutException("FFmpeg timed out");
-      }
-      for (;;)
-      {
-        String str;
-        try
+        Bitmap localBitmap1;
+        if (this.jdField_b_of_type_Boolean)
         {
-          BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(this.jdField_a_of_type_JavaLangProcess.getInputStream()));
-          str = localBufferedReader.readLine();
-          if (str == null) {
-            break;
+          localBitmap1 = Bitmap.createBitmap(this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
+          l1 = this.jdField_a_of_type_JavaLangInteger.intValue() * this.d;
+          long l2 = (this.jdField_a_of_type_JavaLangInteger.intValue() + 1) * this.d;
+          l1 = l2;
+          if (l2 > this.jdField_a_of_type_Long) {
+            l1 = this.jdField_a_of_type_Long;
           }
-          if (isCancelled()) {
-            return;
-          }
-          this.jdField_a_of_type_JavaLangStringBuilder.append(str).append("\n");
-          if (this.jdField_b_of_type_Boolean)
+          if (TrimNative.getThumbnail(0L, l1, localBitmap1) == 0)
           {
-            if ((TextUtils.isEmpty(str)) || (this.jdField_a_of_type_Xpb == null)) {
-              continue;
+            Bitmap localBitmap3 = localBitmap1.copy(Bitmap.Config.RGB_565, true);
+            localObject = localBitmap3;
+            if (this.jdField_b_of_type_Boolean) {
+              localObject = xsm.a(localBitmap3, 90.0F);
             }
-            this.jdField_a_of_type_Xpb.onProgress(str);
-            continue;
+            a(new BitmapDrawable((Bitmap)localObject));
+            localBitmap1.recycle();
+            l1 = System.currentTimeMillis() - l3;
+            wxe.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround: TrimNative 完成时间:%s,key=%s", new Object[] { Long.valueOf(l1), a() });
+            this.jdField_a_of_type_Xpb.a(this.jdField_a_of_type_JavaLangInteger.intValue(), l1);
           }
         }
-        catch (IOException localIOException)
+        else
         {
-          QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow]  IOException");
-          localIOException.printStackTrace();
+          localBitmap1 = Bitmap.createBitmap(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, Bitmap.Config.ARGB_8888);
+          continue;
         }
-        publishProgress(new String[] { str });
+        if ((localBitmap1 == null) || (localBitmap1.isRecycled())) {
+          continue;
+        }
+        localBitmap1.recycle();
       }
-    }
-  }
-  
-  private void b(xor paramxor)
-  {
-    if (this.jdField_a_of_type_Xpb != null)
-    {
-      this.jdField_a_of_type_JavaLangStringBuilder.append(paramxor.jdField_a_of_type_JavaLangString);
-      if (!paramxor.jdField_a_of_type_Boolean) {
-        break label92;
+      catch (Exception localException)
+      {
+        wxe.e("Q.qqstory.frameWidget.FrameLoader", "create bitmap width=%s,height=%s,error:%s", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int), localException });
+        continue;
+        localBitmap2 = this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.getFrameAtTime(this.jdField_a_of_type_JavaLangInteger.intValue() * this.d * 1000L);
+        if (localBitmap2 != null) {
+          continue;
+        }
+        wxe.e("Q.qqstory.frameWidget.FrameLoader", "mRetriever return null!");
+        return;
+        localObject = new Matrix();
+        if (!this.jdField_b_of_type_Boolean) {
+          break;
+        }
       }
-      this.jdField_a_of_type_Xpb.onSuccess(this.jdField_a_of_type_JavaLangStringBuilder.toString());
+      if (this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever == null)
+      {
+        wxe.e("Q.qqstory.frameWidget.FrameLoader", "mRetriever is null!");
+        return;
+        wxe.e("Q.qqstory.frameWidget.FrameLoader", "TrimNative return error!");
+      }
+      else
+      {
+        float f1 = this.jdField_b_of_type_Int / localBitmap2.getHeight();
+        float f2 = this.jdField_c_of_type_Int / localBitmap2.getWidth();
+        ((Matrix)localObject).postRotate(90.0F);
+        ((Matrix)localObject).postScale(f1, f2);
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Xpb.onFinish(paramxor.jdField_a_of_type_Boolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", 2, "ThreadName:" + Thread.currentThread().getName());
-      }
+      localObject = Bitmap.createBitmap(localBitmap2, 0, 0, localBitmap2.getWidth(), localBitmap2.getHeight(), (Matrix)localObject, true);
+      localBitmap2.recycle();
+      a(new BitmapDrawable((Bitmap)localObject));
+      l1 = System.currentTimeMillis() - l3;
+      wxe.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround: mRetriever 完成时间:%s,key=%s", new Object[] { Long.valueOf(l1), a() });
+      this.jdField_a_of_type_Xpb.a(this.jdField_a_of_type_JavaLangInteger.intValue(), l1);
       return;
-      label92:
-      this.jdField_a_of_type_Xpb.onFailure(this.jdField_a_of_type_JavaLangStringBuilder.toString());
+      ((Matrix)localObject).postScale(this.jdField_b_of_type_Int / localBitmap2.getWidth(), this.jdField_c_of_type_Int / localBitmap2.getHeight());
     }
-  }
-  
-  protected xor a(Void... paramVarArgs)
-  {
-    int i = 0;
-    try
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Boolean = xps.a(new File(xpm.a(this.jdField_a_of_type_AndroidContentContext)));
-      }
-      wsv.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "[story_ffmpeg]execute start cmd=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString));
-      this.jdField_a_of_type_JavaLangProcess = this.jdField_a_of_type_Xpr.a(this.jdField_a_of_type_ArrayOfJavaLangString);
-      paramVarArgs = this.jdField_a_of_type_JavaLangProcess;
-      if (paramVarArgs == null)
-      {
-        paramVarArgs = a();
-        return paramVarArgs;
-      }
-      if (this.jdField_a_of_type_JavaLangBoolean.booleanValue())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-        int j = arrayOfString.length;
-        while (i < j)
-        {
-          localStringBuilder.append(arrayOfString[i]);
-          localStringBuilder.append(' ');
-          i += 1;
-        }
-        publishProgress(new String[] { localStringBuilder.toString() });
-      }
-      a();
-      paramVarArgs = a(paramVarArgs);
-      return paramVarArgs;
-    }
-    catch (TimeoutException paramVarArgs)
-    {
-      wsv.c("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "FFmpeg timed out", paramVarArgs);
-      paramVarArgs = new xor(false, paramVarArgs.getMessage());
-      return paramVarArgs;
-    }
-    catch (Exception paramVarArgs)
-    {
-      wsv.c("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "Error running FFmpeg", paramVarArgs);
-      return a();
-    }
-    finally
-    {
-      xps.a(this.jdField_a_of_type_JavaLangProcess);
-      wsv.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "[story_ffmpeg]execute end cmd=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString));
-    }
-  }
-  
-  protected void a(xor paramxor)
-  {
-    if (!paramxor.jdField_b_of_type_Boolean) {
-      b(paramxor);
-    }
-  }
-  
-  protected void a(String... paramVarArgs)
-  {
-    if ((paramVarArgs != null) && (paramVarArgs[0] != null) && (this.jdField_a_of_type_Xpb != null)) {
-      this.jdField_a_of_type_Xpb.onProgress(paramVarArgs[0]);
-    }
-  }
-  
-  boolean a()
-  {
-    return xps.a(this.jdField_a_of_type_JavaLangProcess);
-  }
-  
-  protected void onPreExecute()
-  {
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    if (this.jdField_a_of_type_Xpb != null)
-    {
-      if (this.jdField_b_of_type_Boolean) {
-        ThreadManager.post(new FFmpegExecuteAsyncTask.1(this), 5, null, true);
-      }
-    }
-    else {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", 2, "ThreadName:" + Thread.currentThread().getName());
-    }
-    this.jdField_a_of_type_Xpb.onStart();
   }
 }
 

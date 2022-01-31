@@ -1,15 +1,18 @@
-import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-class arvn
-  implements asmp
+public class arvn
+  implements View.OnClickListener
 {
-  arvn(arvk paramarvk) {}
+  public arvn(SendBottomBar paramSendBottomBar) {}
   
-  public void a(Uri paramUri) {}
-  
-  public void a(String paramString1, String paramString2, long paramLong)
+  public void onClick(View paramView)
   {
-    this.a.a = arvk.a(this.a, paramString2, paramLong);
+    if (SendBottomBar.a(this.a) != null) {
+      SendBottomBar.a(this.a).a();
+    }
+    arrr.a(SendBottomBar.a(this.a));
   }
 }
 

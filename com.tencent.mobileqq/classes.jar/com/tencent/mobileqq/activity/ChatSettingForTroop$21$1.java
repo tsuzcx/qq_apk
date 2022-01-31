@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
 import android.widget.ImageView;
-import bcxb;
+import bdbk;
 
 class ChatSettingForTroop$21$1
   implements Runnable
 {
-  ChatSettingForTroop$21$1(ChatSettingForTroop.21 param21, ImageView paramImageView, bcxb parambcxb) {}
+  ChatSettingForTroop$21$1(ChatSettingForTroop.21 param21, ImageView paramImageView, bdbk parambdbk) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_Bcxb);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_Bdbk);
   }
 }
 

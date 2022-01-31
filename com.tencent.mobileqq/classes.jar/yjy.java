@@ -1,18 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.subscribe.widget.comment.component.richtext.element.ContentElement;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.qphone.base.util.QLog;
 
-public final class yjy
-  implements Parcelable.Creator<ContentElement>
+public class yjy
+  implements vwf
 {
-  public ContentElement a(Parcel paramParcel)
-  {
-    return new ContentElement();
-  }
+  public yjy(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
   
-  public ContentElement[] a(int paramInt)
+  public void a(vwa paramvwa)
   {
-    return new ContentElement[paramInt];
+    try
+    {
+      if (QQPlayerService.a()) {
+        QQPlayerService.c(this.a.getActivity());
+      }
+      return;
+    }
+    catch (Exception paramvwa)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SubscribeVideoDetailFragment", 2, "QQPlayerService.stopPlayMusic exception!", paramvwa);
+      }
+      paramvwa.printStackTrace();
+    }
   }
 }
 

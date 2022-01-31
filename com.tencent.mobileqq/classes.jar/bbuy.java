@@ -1,101 +1,71 @@
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.CheckConErroObserver;
 
 public class bbuy
+  extends CheckConErroObserver
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static boolean jdField_a_of_type_Boolean;
-  private static String b = "";
+  bbuz jdField_a_of_type_Bbuz;
+  bbva jdField_a_of_type_Bbva;
   
-  public bbuy()
+  public bbuy(TroopFileProtoReqMgr paramTroopFileProtoReqMgr, bbva parambbva, bbuz parambbuz)
   {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_JavaLangString = "";
-    b = "";
+    this.jdField_a_of_type_Bbva = parambbva;
+    this.jdField_a_of_type_Bbuz = parambbuz;
   }
   
-  public bbuy(boolean paramBoolean, String paramString1, String paramString2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
-    jdField_a_of_type_JavaLangString = paramString1;
-    b = paramString2;
-  }
-  
-  public static bbuy a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    Object localObject = "";
+    if (paramBundle != null)
+    {
+      localObject = paramBundle.getString("msf_con_erro");
+      paramBundle = (Bundle)localObject;
+      if (localObject == null) {
+        paramBundle = "";
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopFileProtoReqMgr", 2, "CheckConErroObserverImp.onReceive -> msfConErro: " + paramBundle);
+      }
+      localObject = paramBundle;
+      if (this.jdField_a_of_type_Bbva != null)
+      {
+        FromServiceMsg localFromServiceMsg = this.jdField_a_of_type_Bbva.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
+        localObject = paramBundle;
+        if (localFromServiceMsg != null)
+        {
+          localFromServiceMsg.addAttribute("_tag_socket_connerror", paramBundle);
+          localObject = paramBundle;
+        }
+      }
     }
-    String str2 = "";
+    if ((this.jdField_a_of_type_Bbuz != null) && (this.jdField_a_of_type_Bbuz.jdField_a_of_type_Nac != null))
+    {
+      paramBundle = new Bundle();
+      if (this.jdField_a_of_type_Bbuz.jdField_a_of_type_AndroidOsBundle != null) {
+        paramBundle.putAll(this.jdField_a_of_type_Bbuz.jdField_a_of_type_AndroidOsBundle);
+      }
+      if (this.jdField_a_of_type_Bbva.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg == null) {
+        break label287;
+      }
+      paramBundle.putString("data_error_msg", this.jdField_a_of_type_Bbva.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getBusinessFailMsg());
+      paramBundle.putInt("data_error_code", this.jdField_a_of_type_Bbva.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getBusinessFailCode());
+      bbvl.a("TroopFileProtoReqMgr", bbvl.a, "cookie<" + this.jdField_a_of_type_Bbva.jdField_a_of_type_Bbuz.b + "> onProtoResponse fail end. failCode:" + this.jdField_a_of_type_Bbva.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getBusinessFailCode() + " retryCount:" + this.jdField_a_of_type_Bbva.jdField_a_of_type_Alwy.c + " msfConErro:" + (String)localObject);
+    }
     for (;;)
     {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        int i = paramString.optInt("globalOpen", 0);
-        Object localObject;
-        localJSONException1.printStackTrace();
-      }
-      catch (JSONException localJSONException1)
-      {
-        try
-        {
-          localObject = paramString.optJSONObject("weikeUrls");
-          paramString = ((JSONObject)localObject).optString("choose_exam");
-        }
-        catch (JSONException localJSONException2)
-        {
-          for (;;)
-          {
-            boolean bool;
-            String str1;
-            paramString = "";
-          }
-        }
-        try
-        {
-          localObject = ((JSONObject)localObject).optString("get_exam_info");
-          if (i != 1) {
-            break label85;
-          }
-          bool = true;
-          return new bbuy(bool, paramString, (String)localObject);
-        }
-        catch (JSONException localJSONException3)
-        {
-          break label75;
-        }
-        localJSONException1 = localJSONException1;
-        i = 0;
-        paramString = "";
-      }
-      label75:
-      str1 = str2;
-      continue;
-      label85:
-      bool = false;
+      this.jdField_a_of_type_Bbuz.jdField_a_of_type_Nac.a(-1, null, this.jdField_a_of_type_Bbuz.jdField_a_of_type_AndroidOsBundle);
+      return;
+      label287:
+      bbvl.a("TroopFileProtoReqMgr", bbvl.a, "cookie<" + this.jdField_a_of_type_Bbva.jdField_a_of_type_Bbuz.b + "> onProtoResponse fail end. msfConErro:" + (String)localObject);
     }
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbuy
  * JD-Core Version:    0.7.0.1
  */

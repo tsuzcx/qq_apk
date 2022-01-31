@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewG
 import com.tencent.widget.AbsListView;
 
 public class ruk
-  implements bhpo
+  implements bhtv
 {
   public ruk(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
   
@@ -15,7 +15,7 @@ public class ruk
   {
     this.a.a(new rul(this, "onScrollStateChanged", paramAbsListView, paramInt));
     if ((ors.a()) && (paramInt != 0)) {
-      abqw.a().a("proteus_family_feeds");
+      abvl.a().a("proteus_family_feeds");
     }
   }
 }

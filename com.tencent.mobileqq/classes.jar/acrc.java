@@ -1,20 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
 
-class acrc
-  implements DialogInterface.OnClickListener
+public class acrc
+  implements DialogInterface.OnCancelListener
 {
-  acrc(acrb paramacrb) {}
+  public acrc(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    bdqe.a(this.a.a, "mvip.g.a.qnc_gc", "CJCLUBT", -1, false, true);
-    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acrc
  * JD-Core Version:    0.7.0.1
  */

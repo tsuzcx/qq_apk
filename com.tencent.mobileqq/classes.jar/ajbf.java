@@ -1,27 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
+import android.os.Bundle;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
+import eipc.EIPCResult;
 
-public class ajbf
-  implements Animation.AnimationListener
+class ajbf
+  implements aznf
 {
-  public ajbf(AnonymousEntranceView paramAnonymousEntranceView) {}
+  ajbf(ajaz paramajaz, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
   {
-    if (AnonymousEntranceView.b(this.a) != null) {
-      AnonymousEntranceView.b(this.a).setVisibility(4);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (AnonymousEntranceView.b(this.a) != null) {
-      AnonymousEntranceView.b(this.a).setVisibility(0);
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("res", paramSoInfo);
+    localBundle.putInt("code", paramInt);
+    this.jdField_a_of_type_Ajaz.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

@@ -1,16 +1,6 @@
-import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
-
-class anmx
-  implements alkr
+public abstract interface anmx
 {
-  anmx(anmv paramanmv, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
-      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(paramInt, paramBoolean, paramObject);
-    }
-  }
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 

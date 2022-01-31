@@ -28,7 +28,7 @@ public class ndz
       Object localObject = new JSONObject(paramString);
       paramString = ((JSONObject)localObject).getString("uin");
       localObject = ((JSONObject)localObject).getString("name");
-      Intent localIntent = aekt.a(new Intent(this.a, ChatActivity.class), null);
+      Intent localIntent = aepi.a(new Intent(this.a, ChatActivity.class), null);
       localIntent.putExtra("uin", paramString);
       localIntent.putExtra("uintype", 1024);
       localIntent.putExtra("uinname", (String)localObject);

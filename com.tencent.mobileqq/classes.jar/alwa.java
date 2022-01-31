@@ -1,12 +1,33 @@
-class alwa
-  implements bilp
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
+
+public class alwa
+  implements alpf
 {
-  alwa(alvt paramalvt, byte[] paramArrayOfByte) {}
+  private List<String> a = new ArrayList();
   
-  public void a(bilo parambilo)
+  public List<String> a(AppInterface paramAppInterface)
   {
-    parambilo.a(this.jdField_a_of_type_ArrayOfByte);
-    parambilo.a();
+    if (((paramAppInterface instanceof QQAppInterface)) && (!this.a.isEmpty())) {
+      return this.a;
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.a.isEmpty()) {
+      this.a.add("100066");
+    }
+  }
+  
+  public void b()
+  {
+    if (!this.a.isEmpty()) {
+      this.a.remove("100066");
+    }
   }
 }
 

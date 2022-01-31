@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.manager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bgrs;
+import bgvz;
 
 public class EngineChannel$MyReceiver
   extends ResultReceiver

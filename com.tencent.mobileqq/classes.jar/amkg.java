@@ -1,21 +1,53 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.app.qqdaily.QQDailyArkView;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.memory.QLogReporter.1;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class amkg
-  implements ArkViewImplement.LoadCallback
 {
-  public amkg(QQDailyArkView paramQQDailyArkView) {}
+  private static volatile amkg a;
+  public static final SimpleDateFormat a;
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  static
   {
-    onLoadState(paramInt1);
+    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy.MM.dd");
   }
   
-  public void onLoadState(int paramInt)
+  public static amkg a()
   {
-    if (paramInt != 1) {
-      QQDailyArkView.a(this.a);
+    if (jdField_a_of_type_Amkg == null) {}
+    try
+    {
+      if (jdField_a_of_type_Amkg == null) {
+        jdField_a_of_type_Amkg = new amkg();
+      }
+      return jdField_a_of_type_Amkg;
     }
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (new GregorianCalendar().get(11) < 2) {}
+    SharedPreferences localSharedPreferences;
+    long l1;
+    Calendar localCalendar;
+    String str;
+    do
+    {
+      return;
+      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qlog_reporter", 0);
+      l1 = System.currentTimeMillis();
+      long l2 = localSharedPreferences.getLong("LastLogSizeReportTime", 0L);
+      localCalendar = Calendar.getInstance();
+      localCalendar.setTimeInMillis(l2);
+      str = jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime());
+      localCalendar.setTimeInMillis(l1);
+    } while (str.equals(jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime())));
+    ThreadManager.executeOnSubThread(new QLogReporter.1(this, localSharedPreferences, l1));
   }
 }
 

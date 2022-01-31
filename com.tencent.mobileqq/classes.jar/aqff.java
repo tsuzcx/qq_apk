@@ -1,31 +1,20 @@
-import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
 public class aqff
   implements View.OnClickListener
 {
-  public aqff(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
+  public aqff(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
   public void onClick(View paramView)
   {
-    if (bdee.d(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity))
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009E2F", "0X8009E2F", 0, 0, "", "", "", "");
+    if (this.a.jdField_a_of_type_Aqeb != null)
     {
-      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.d();
-      paramView = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).obtainMessage();
-      paramView.what = 2;
-      paramView.arg1 = 2;
-      paramView.obj = this.jdField_a_of_type_JavaLangString;
-      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendMessage(paramView);
-      azmj.b(null, "CliOper", "", "", "0X80050EF", "0X80050EF", 2, 0, "", "", "", "");
-      return;
+      aqhg.a().b(3);
+      this.a.jdField_a_of_type_Aqeb.a();
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getResources().getString(2131692347);
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 0, paramView, 0).b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getTitleBarHeight());
   }
 }
 

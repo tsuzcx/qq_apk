@@ -26,7 +26,7 @@ public class lfc
   private int a()
   {
     int i = 0;
-    String str = bdee.a(BaseApplication.getContext());
+    String str = bdin.a(BaseApplication.getContext());
     if ("wifi".equals(str)) {
       i = 1;
     }

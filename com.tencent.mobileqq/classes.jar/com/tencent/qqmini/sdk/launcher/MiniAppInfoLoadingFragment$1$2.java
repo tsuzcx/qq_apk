@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.launcher;
 
 import android.text.TextUtils;
-import bgqp;
+import bguw;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 public class MiniAppInfoLoadingFragment$1$2
   implements Runnable
 {
-  public MiniAppInfoLoadingFragment$1$2(bgqp parambgqp, JSONObject paramJSONObject) {}
+  public MiniAppInfoLoadingFragment$1$2(bguw parambguw, JSONObject paramJSONObject) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class MiniAppInfoLoadingFragment$1$2
       str2 = "网络请求错误，无法加载";
     }
     QMLog.e("MiniAppInfoLoadingFragment", "getAppInfoById failed. retCode=" + l + " errMsg=" + str2);
-    MiniAppInfoLoadingFragment.a(this.jdField_a_of_type_Bgqp.a, str2, l);
+    MiniAppInfoLoadingFragment.a(this.jdField_a_of_type_Bguw.a, str2, l);
   }
 }
 

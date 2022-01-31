@@ -1,20 +1,6 @@
-public class axqq
+public abstract interface axqq
 {
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private final long b;
-  
-  private axqq(long paramLong1, long paramLong2, int paramInt)
-  {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "VideoTimeStamp{TIME-CLOCK=" + this.jdField_a_of_type_Long + ", TIME-FRAME=" + this.b + ", CYCLE=" + this.jdField_a_of_type_Int + '}';
-  }
+  public abstract void l();
 }
 
 

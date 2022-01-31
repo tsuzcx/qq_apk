@@ -6,16 +6,17 @@ import com.tencent.weseevideo.model.MediaModel;
 import com.tencent.weseevideo.model.resource.MediaClipModel;
 import com.tencent.weseevideo.model.resource.MediaResourceModel;
 import com.tencent.weseevideo.model.resource.VideoResourceModel;
+import java.util.HashMap;
 import java.util.List;
 
 class TAVCutImageSession$11
   implements Runnable
 {
-  TAVCutImageSession$11(TAVCutImageSession paramTAVCutImageSession, int paramInt, float paramFloat) {}
+  TAVCutImageSession$11(TAVCutImageSession paramTAVCutImageSession, int paramInt, HashMap paramHashMap) {}
   
   public void run()
   {
-    this.this$0.setAIFilterAlpha((MediaModel)this.this$0.mediaModels.get(this.val$index), (VideoRenderChainManager)this.this$0.renderChainManagers.get(this.val$index), this.val$alpha, 0L, ((MediaClipModel)((MediaModel)this.this$0.mediaModels.get(this.val$index)).getMediaResourceModel().getVideos().get(0)).getResource().getSelectTimeDuration());
+    this.this$0.setAIFilter((MediaModel)this.this$0.mediaModels.get(this.val$index), (VideoRenderChainManager)this.this$0.renderChainManagers.get(this.val$index), this.val$adjustParams, 0L, ((MediaClipModel)((MediaModel)this.this$0.mediaModels.get(this.val$index)).getMediaResourceModel().getVideos().get(0)).getResource().getSelectTimeDuration());
     this.this$0.render(this.val$index);
   }
 }

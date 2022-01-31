@@ -10,7 +10,7 @@ class RedPacketVoiceFragment$6$1
   public void run()
   {
     if (!this.a.this$0.c()) {
-      this.a.this$0.a(this.a.this$0.getResources().getString(2131695797));
+      this.a.this$0.a(this.a.this$0.getResources().getString(2131695799));
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import alrh;
+import alvw;
 import android.support.v4.app.FragmentActivity;
 
 class LangSettingFragment$5
@@ -10,7 +10,7 @@ class LangSettingFragment$5
   
   public void run()
   {
-    alrh.a(this.this$0.getActivity(), this.jdField_a_of_type_Int);
+    alvw.a(this.this$0.getActivity(), this.jdField_a_of_type_Int);
     this.this$0.getActivity().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
   }
 }

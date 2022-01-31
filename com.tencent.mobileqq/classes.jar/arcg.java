@@ -1,13 +1,11 @@
-import android.graphics.drawable.Drawable;
-import android.view.View.OnClickListener;
-
-public abstract interface arcg
+public class arcg
 {
-  public abstract void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
+  public int a;
+  public long a;
+  public Object a;
+  public String a;
+  public int b;
+  public String b;
 }
 
 

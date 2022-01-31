@@ -1,89 +1,72 @@
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.mobileqq.ocr.data.OcrConfig;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.now.ilive_feeds_read.ReadNearUserFeedsReq;
+import com.tencent.pb.now.ilive_feeds_write.DelFeedReq;
+import com.tencent.pb.now.ilive_feeds_write.DelFeedStuct;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class avrj
 {
-  public String a;
-  public HashMap<String, String> a;
-  public List<String> a;
-  public String b;
-  public List<String> b;
-  public String c;
-  public List<String> c;
-  
-  public avrj()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong, int paramInt1, int paramInt2, int paramInt3, avrr paramavrr)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-  }
-  
-  public Pair<String, String> a(String paramString)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    ilive_feeds_read.ReadNearUserFeedsReq localReadNearUserFeedsReq = new ilive_feeds_read.ReadNearUserFeedsReq();
+    try
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (((String)localEntry.getKey()).equalsIgnoreCase(paramString)) {
-        return new Pair(localEntry.getKey(), localEntry.getValue());
+      localReadNearUserFeedsReq.uin.set(Long.valueOf(paramString).longValue());
+      localReadNearUserFeedsReq.pos.set(paramInt2);
+      localReadNearUserFeedsReq.num.set(paramInt3);
+      localReadNearUserFeedsReq.nowid.set(paramLong);
+      localReadNearUserFeedsReq.id_type.set(paramInt1);
+      paramString = SosoInterface.b();
+      if ((paramString != null) && (paramString.a != null))
+      {
+        paramString = paramString.a;
+        localReadNearUserFeedsReq.lat.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramString.a)));
+        localReadNearUserFeedsReq.lng.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramString.b)));
+        if (QLog.isColorLevel()) {
+          QLog.i("NearbyMomentProtocol", 2, "getMomentList, req.lat=" + paramString.a + ",req.lng=" + paramString.b);
+        }
       }
+      new avdf(paramQQAppInterface).a(24624).b(10).a(new avrl(paramInt2, paramavrr)).a(new avrk(paramavrr, paramInt2)).a(localReadNearUserFeedsReq.toByteArray());
+      return;
     }
-    return null;
-  }
-  
-  public String a()
-  {
-    String str1 = "ocrLan:" + this.jdField_a_of_type_JavaLangString + ", ocrLanOptions:" + this.jdField_a_of_type_JavaUtilList.toString();
-    String str2 = "srcLan:" + this.jdField_b_of_type_JavaLangString + ", srcLanOptions:" + this.jdField_b_of_type_JavaUtilList.toString();
-    String str3 = "dstLan:" + this.jdField_c_of_type_JavaLangString + ", dstLanOptions:" + this.jdField_c_of_type_JavaUtilList.toString();
-    return str1 + "\n" + str2 + "\n" + str3;
-  }
-  
-  public String a(String paramString)
-  {
-    return OcrConfig.getDefaultLanguageName(paramString);
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
+    catch (NumberFormatException paramQQAppInterface)
     {
-      this.jdField_b_of_type_JavaLangString = paramString;
-      this.jdField_c_of_type_JavaUtilList = avrh.a(this.jdField_b_of_type_JavaLangString);
-      this.jdField_c_of_type_JavaLangString = ((String)this.jdField_c_of_type_JavaUtilList.get(0));
+      QLog.i("NearbyMomentProtocol", 1, "getNearbyMomentsList, transfer uin error, uin=" + paramString);
     }
   }
   
-  public boolean a(List<String> paramList, String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong, int paramInt, avrq paramavrq)
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      if (((String)paramList.next()).trim().equalsIgnoreCase(paramString)) {
-        return true;
-      }
-    }
-    return false;
+    ilive_feeds_write.DelFeedReq localDelFeedReq = new ilive_feeds_write.DelFeedReq();
+    ilive_feeds_write.DelFeedStuct localDelFeedStuct = new ilive_feeds_write.DelFeedStuct();
+    localDelFeedStuct.feed_id.set(ByteStringMicro.copyFromUtf8(paramString));
+    localDelFeedStuct.timestamp.set(paramLong);
+    localDelFeedStuct.feed_type.set(paramInt);
+    localDelFeedReq.del_type.set(2);
+    localDelFeedReq.select_all.set(0);
+    localDelFeedReq.del_st.get().add(localDelFeedStuct);
+    localDelFeedReq.uid.set(Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue());
+    new avdf(paramQQAppInterface).a(22528).b(5).a(new avrn(paramavrq, paramString)).a(new avrm(paramavrq, paramString)).a(localDelFeedReq.toByteArray());
   }
   
-  public String b(String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, avrs paramavrs)
   {
-    if (paramString.equalsIgnoreCase("zh")) {
-      return "en/ja/ko/fr/es/it/de/tr/ru/pt/vi/id/ms/th".trim().split("/")[0];
-    }
-    return "zh";
+    new avdj(paramQQAppInterface).a(paramString, new avro(paramavrs), null);
   }
   
-  public void b(String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, avrt paramavrt)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_c_of_type_JavaLangString = paramString;
-    }
+    new avdj(paramQQAppInterface).b(paramString, new avrp(paramavrt), null);
   }
 }
 

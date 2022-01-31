@@ -1,11 +1,18 @@
-import android.view.animation.Interpolator;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Pair;
+import java.util.List;
 
-public class bhov
-  implements Interpolator
+class bhov
+  implements bhol
 {
-  public float getInterpolation(float paramFloat)
+  bhov(bhou parambhou) {}
+  
+  public void a(List<Pair<Integer, Byte>> paramList)
   {
-    return bhnq.a(paramFloat);
+    Message localMessage = bhou.a(this.a).obtainMessage(2);
+    localMessage.obj = paramList;
+    bhou.a(this.a).sendMessage(localMessage);
   }
 }
 

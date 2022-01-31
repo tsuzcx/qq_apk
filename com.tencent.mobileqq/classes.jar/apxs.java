@@ -1,69 +1,17 @@
-import android.graphics.Rect;
-import android.view.View;
-import java.util.ArrayList;
+import java.util.List;
 
 class apxs
-  implements aqeo
+  implements apwu
 {
-  apxs(apxr paramapxr, ArrayList paramArrayList, int paramInt1, int paramInt2) {}
+  apxs(apxr paramapxr) {}
   
-  public int a()
+  public void a(List<apws> paramList)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Rect a(int paramInt)
-  {
-    Rect localRect = new Rect(0, 0, 0, 0);
-    int i = a();
-    if (i > 1) {
-      if (paramInt == 0)
-      {
-        localRect.right = this.b;
-        localRect.left = (this.b * 2);
-      }
-    }
-    while (i != 1)
+    if (paramList != null)
     {
-      return localRect;
-      if (paramInt == i - 1)
-      {
-        localRect.left = this.b;
-        localRect.right = (this.b * 2);
-        return localRect;
-      }
-      paramInt = this.b;
-      localRect.right = paramInt;
-      localRect.left = paramInt;
-      return localRect;
+      this.a.a(paramList);
+      this.a.notifyDataSetChanged();
     }
-    paramInt = this.b * 2;
-    localRect.right = paramInt;
-    localRect.left = paramInt;
-    return localRect;
-  }
-  
-  public View a(int paramInt)
-  {
-    int j = a();
-    if (j <= b()) {}
-    for (int i = 2131560923;; i = 2131560924)
-    {
-      View localView = View.inflate(this.jdField_a_of_type_Apxr.itemView.getContext(), i, null);
-      apxr.a(this.jdField_a_of_type_Apxr, localView, (apxq)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt, j);
-      apxr.a(this.jdField_a_of_type_Apxr, (apxq)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt, "0X800A9B0");
-      return localView;
-    }
-  }
-  
-  public int b()
-  {
-    return 2;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
   }
 }
 

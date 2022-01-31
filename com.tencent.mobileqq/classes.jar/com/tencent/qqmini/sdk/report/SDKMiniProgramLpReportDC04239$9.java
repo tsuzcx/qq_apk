@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.report;
 
-import bgyg;
+import bhcn;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public final class SDKMiniProgramLpReportDC04239$9
@@ -10,7 +10,7 @@ public final class SDKMiniProgramLpReportDC04239$9
   
   public void run()
   {
-    bgyg.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.f, null, null, null, null);
+    bhcn.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.f, null, null, null, null);
   }
 }
 

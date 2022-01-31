@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.troop.data;
 
-import bblc;
-import bbln;
+import bbpl;
+import bbpw;
 import java.util.List;
 
 public class TroopAioKeywordTipManager$6
   implements Runnable
 {
-  public TroopAioKeywordTipManager$6(bbln parambbln, String paramString1, String paramString2, Integer paramInteger) {}
+  public TroopAioKeywordTipManager$6(bbpw parambbpw, String paramString1, String paramString2, Integer paramInteger) {}
   
   public void run()
   {
-    String str = bbln.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_JavaLangInteger);
+    String str = bbpw.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_JavaLangInteger);
     synchronized (this.this$0.b)
     {
       if (!this.this$0.b.contains(str)) {
         this.this$0.b.add(str);
       }
-      bblc.a(this.this$0.a, str);
+      bbpl.a(this.this$0.a, str);
       return;
     }
   }

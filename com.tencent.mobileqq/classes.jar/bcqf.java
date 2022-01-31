@@ -1,23 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
-class bcqf
-  implements Animation.AnimationListener
+final class bcqf
+  extends bead
 {
-  bcqf(bcqe parambcqe) {}
+  bcqf(WeakReference paramWeakReference, File paramFile, baej parambaej) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDone(beae parambeae)
   {
-    paramAnimation = new ScaleAnimation(1.1F, 1.0F, 1.1F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(100L);
-    this.a.a.startAnimation(paramAnimation);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoAnimationUtils", 2, "onDone:" + parambeae.a);
+    }
+    bcqe.a(this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Baej);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,9 +1,9 @@
 package dov.com.qq.im.ae.camera.ui;
 
-import aekt;
+import aepi;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import bkpi;
+import bktp;
 import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
 
 class VideoStoryPiecesPart$9$1
@@ -13,16 +13,16 @@ class VideoStoryPiecesPart$9$1
   
   public void run()
   {
-    if ((bkpi.a(this.a.this$0) != null) && (bkpi.a(this.a.this$0) != null))
+    if ((bktp.a(this.a.this$0) != null) && (bktp.a(this.a.this$0) != null))
     {
-      BitmapDrawable localBitmapDrawable = new BitmapDrawable(bkpi.a(this.a.this$0));
-      int i = aekt.a(36.0F, bkpi.a(this.a.this$0).getResources());
+      BitmapDrawable localBitmapDrawable = new BitmapDrawable(bktp.a(this.a.this$0));
+      int i = aepi.a(36.0F, bktp.a(this.a.this$0).getResources());
       localBitmapDrawable.setBounds(0, 0, i, i);
-      bkpi.a(this.a.this$0).setImageDrawable(localBitmapDrawable);
-      bkpi.a(this.a.this$0).setEnabled(true);
+      bktp.a(this.a.this$0).setImageDrawable(localBitmapDrawable);
+      bktp.a(this.a.this$0).setEnabled(true);
       return;
     }
-    bkpi.a(this.a.this$0).setEnabled(false);
+    bktp.a(this.a.this$0).setEnabled(false);
   }
 }
 

@@ -1,18 +1,32 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.biz.videostory.video.FrameVideoHelper;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import java.util.ArrayList;
 
-public class airz
-  extends BroadcastReceiver
+class airz
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public airz(SendHbActivity paramSendHbActivity) {}
+  airz(airx paramairx, Intent paramIntent, ArrayList paramArrayList) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (SendHbActivity.a(this.a)) && ((this.a.a & 0x40) > 0)) {
-      this.a.finish();
+    if (bnfr.a(this.jdField_a_of_type_Airx.mActivity, paramLocalMediaInfo))
+    {
+      if ((airx.a(this.jdField_a_of_type_Airx) != null) && (paramLocalMediaInfo.mDuration > airx.a(this.jdField_a_of_type_Airx).videoDurationLimit))
+      {
+        ((NewPhotoListActivity)this.jdField_a_of_type_Airx.mActivity).cancleProgressDailog();
+        this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
+        PhotoUtils.a(this.jdField_a_of_type_Airx.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
+        return;
+      }
+      new FrameVideoHelper(paramLocalMediaInfo.path, paramLocalMediaInfo.mediaWidth, paramLocalMediaInfo.mediaHeight, paramLocalMediaInfo.mDuration).a(new aisa(this, paramLocalMediaInfo));
+      zaj.a("mystatus_localupload", "video_select", 0, 0, new String[0]);
+      return;
     }
+    ((NewPhotoListActivity)this.jdField_a_of_type_Airx.mActivity).cancleProgressDailog();
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import axvf;
+import axzo;
 
 public class AIOBrowserScene$1
   implements Runnable
 {
-  public AIOBrowserScene$1(axvf paramaxvf) {}
+  public AIOBrowserScene$1(axzo paramaxzo) {}
   
   public void run()
   {

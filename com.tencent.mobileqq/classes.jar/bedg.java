@@ -1,31 +1,11 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.smtt.sdk.WebView;
-
 class bedg
-  implements bedi
+  implements nbs
 {
-  bedg(bedf parambedf) {}
+  bedg(bede parambede) {}
   
-  public Activity a()
-  {
-    return this.a.a.a();
-  }
+  public void loaded(String paramString, int paramInt) {}
   
-  public bedf a()
-  {
-    return this.a;
-  }
-  
-  public WebViewFragment a()
-  {
-    return this.a.a.a();
-  }
-  
-  public WebView a()
-  {
-    return this.a.a.a();
-  }
+  public void progress(int paramInt) {}
 }
 
 

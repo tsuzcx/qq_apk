@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.pic;
 
-import awfa;
-import ayzf;
+import awjj;
+import azdo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class PicPreDownloader$ScreenBroadcastReceiver$1
   implements Runnable
 {
-  public PicPreDownloader$ScreenBroadcastReceiver$1(awfa paramawfa) {}
+  public PicPreDownloader$ScreenBroadcastReceiver$1(awjj paramawjj) {}
   
   public void run()
   {
@@ -18,14 +18,14 @@ public class PicPreDownloader$ScreenBroadcastReceiver$1
       if (localObject1 != null)
       {
         PicPreDownloader localPicPreDownloader = ((QQAppInterface)localObject1).a();
-        localObject1 = (ayzf)((QQAppInterface)localObject1).getManager(95);
+        localObject1 = (azdo)((QQAppInterface)localObject1).getManager(95);
         if (localPicPreDownloader != null)
         {
           localPicPreDownloader.f();
           localPicPreDownloader.e();
         }
         if (localObject1 != null) {
-          ((ayzf)localObject1).d();
+          ((azdo)localObject1).d();
         }
       }
       return;

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo;
 
-import azax;
-import bdje;
+import azfg;
+import bdnn;
 
 public class ShortVideoResourceManager$SVConfigItem
 {
@@ -21,12 +21,12 @@ public class ShortVideoResourceManager$SVConfigItem
   
   public boolean check64BitReady()
   {
-    return (!bdje.a(this.arm64v8a_md5)) && (!bdje.a(this.arm64v8a_url));
+    return (!bdnn.a(this.arm64v8a_md5)) && (!bdnn.a(this.arm64v8a_url));
   }
   
   public String getSignature()
   {
-    if ((azax.a()) && (check64BitReady())) {
+    if ((azfg.a()) && (check64BitReady())) {
       return this.arm64v8a_md5 + '_' + this.versionCode;
     }
     return this.armv7a_md5 + '_' + this.versionCode;

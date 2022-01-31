@@ -1,197 +1,119 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ARMapHongBaoListView;
-import cooperation.vip.pb.TianShuAccess.AdItem;
-import cooperation.vip.pb.TianShuAccess.MapEntry;
-import java.util.Iterator;
-import java.util.List;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.util.Map;
 
 public class bkaa
-  extends annv
-  implements bhpi
+  extends WebViewPlugin
+  implements befm
 {
-  public static float c = 112.0F;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private bkab jdField_a_of_type_Bkab;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TianShuAccess.AdItem jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem;
-  private String jdField_a_of_type_JavaLangString;
-  private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  
-  public bkaa(QQAppInterface paramQQAppInterface, View paramView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838220);
-    }
-  }
-  
-  private void f()
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ARMapHongBaoListView))) {
-      ((ARMapHongBaoListView)this.jdField_a_of_type_AndroidViewView).setPendantHolder(null);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem != null)) {
-      bjzt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 122, String.valueOf(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.iAdId.get()), this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.traceinfo.get());
-    }
-  }
-  
-  private void g()
-  {
-    bjzt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 4004);
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ARMapHongBaoListView)))
-    {
-      ((ARMapHongBaoListView)this.jdField_a_of_type_AndroidViewView).setPendantHolder(null);
-      ((ARMapHongBaoListView)this.jdField_a_of_type_AndroidViewView).setOnPendentClickListener(null);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem != null)) {
-      bjzt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 102, String.valueOf(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.iAdId.get()), this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.traceinfo.get());
-    }
-  }
-  
-  private void h()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("TianshuPendantHolder", 1, localThrowable, new Object[0]);
-    }
-  }
-  
-  public RectF a(int paramInt)
-  {
-    float f = -aekt.a(20.0F, this.jdField_a_of_type_AndroidViewView.getResources());
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.f - f, this.g - f - paramInt, this.f + this.h + f, f + (this.g + this.i) - paramInt);
-    return this.jdField_a_of_type_AndroidGraphicsRectF;
-  }
+  private BroadcastReceiver a = new bkab(this);
   
   public void a()
   {
-    try
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("QZoneCardPreDownload");
+    localIntentFilter.addAction("action_facade_qzone2js");
+    BaseApplication.getContext().registerReceiver(this.a, localIntentFilter);
+  }
+  
+  public void b()
+  {
+    BaseApplication.getContext().unregisterReceiver(this.a);
+  }
+  
+  public String[] getMultiNameSpace()
+  {
+    return new String[] { "qzcardstorre", "QzAvatar", "QzFloat" };
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    if ((paramLong == 2L) && (paramString.equals(bjzx.a))) {
+      bjzx.a(this.mRuntime, null);
+    }
+    return false;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePersonalizePlugin", 2, "handleJsRequest \n url: " + paramString1 + "\n pkgName:" + paramString2 + "\n method:" + paramString3);
+    }
+    if (bjwt.a(paramString3))
     {
-      int j = this.jdField_a_of_type_AndroidViewView.getWidth();
-      int i = j;
-      if (j == 0) {
-        i = azgq.a;
+      LocalMultiProcConfig.putBool("qzone_force_refresh", true);
+      LocalMultiProcConfig.putBool("qzone_force_refresh_passive", true);
+    }
+    if (paramString2.equals("qzcardstorre"))
+    {
+      if (paramString3.equals("closecardpreview")) {
+        return true;
       }
-      j = aekt.a(160.0F, this.jdField_a_of_type_AndroidViewView.getResources());
-      a(i - j - 0, 0, j, aekt.a(c, this.jdField_a_of_type_AndroidViewView.getResources()), this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.f + j - aekt.a(23.0F, this.jdField_a_of_type_AndroidViewView.getResources()), this.g + aekt.a(22.0F, this.jdField_a_of_type_AndroidViewView.getResources()), this.f + j - aekt.a(8.0F, this.jdField_a_of_type_AndroidViewView.getResources()), this.g + aekt.a(37.0F, this.jdField_a_of_type_AndroidViewView.getResources()));
-      this.jdField_b_of_type_AndroidGraphicsRect = new Rect(this.f + j - aekt.a(23.0F, this.jdField_a_of_type_AndroidViewView.getResources()), this.g, j + this.f, this.g + aekt.a(37.0F, this.jdField_a_of_type_AndroidViewView.getResources()));
-      return;
+      if (paramString3.equals("setcardfinish")) {
+        bjzp.a(this, this.mRuntime, paramVarArgs);
+      }
+      if (paramString3.equals("downloadcard"))
+      {
+        bjzp.a(this.mRuntime, paramVarArgs);
+        return true;
+      }
     }
-    catch (Throwable localThrowable)
+    else
     {
-      QLog.e("TianshuPendantHolder", 1, localThrowable, new Object[0]);
+      if (!paramString2.equals("QzAvatar")) {
+        break label208;
+      }
+      if (!paramString3.equals("downloadAvatar")) {
+        break label162;
+      }
+      bjzv.b(this.mRuntime, paramVarArgs);
     }
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    if ((this.jdField_b_of_type_AndroidGraphicsRect != null) && (this.jdField_b_of_type_AndroidGraphicsRect.contains((int)paramFloat1, (int)paramFloat2)))
-    {
-      f();
-      return;
-    }
-    g();
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-  }
-  
-  protected void a(Canvas paramCanvas) {}
-  
-  public void a(TianShuAccess.AdItem paramAdItem)
-  {
-    if (paramAdItem == null) {
-      QLog.e("TianshuPendantHolder", 2, "showLayer with null ");
-    }
+    label162:
+    label208:
     do
     {
       do
       {
-        return;
-        this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = paramAdItem;
-        this.jdField_a_of_type_JavaLangString = null;
-        Object localObject = paramAdItem.argList.get().iterator();
-        paramAdItem = null;
-        if (((Iterator)localObject).hasNext())
+        for (;;)
         {
-          TianShuAccess.MapEntry localMapEntry = (TianShuAccess.MapEntry)((Iterator)localObject).next();
-          if (localMapEntry.key.get().equals("image")) {
-            paramAdItem = localMapEntry.value.get();
-          }
-          for (;;)
-          {
-            break;
-            if (localMapEntry.key.get().equals("url")) {
-              this.jdField_a_of_type_JavaLangString = localMapEntry.value.get();
-            }
+          return false;
+          if (paramString3.equals("setAvatar")) {
+            bjzv.a(this.mRuntime, paramVarArgs);
+          } else if (paramString3.equalsIgnoreCase("checkIdList")) {
+            bjzv.c(this.mRuntime, new String[0]);
           }
         }
-        if ((TextUtils.isEmpty(paramAdItem)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-          break;
-        }
-        localObject = baul.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bdpt.a(paramAdItem, new int[] { 2 }, (Drawable)localObject, null, null);
-      } while (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null);
-      this.jdField_a_of_type_Bkab = new bkab(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    } while ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem == null));
-    bjzt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 101, String.valueOf(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.iAdId.get()), this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.traceinfo.get());
-    return;
-    QLog.e("TianshuPendantHolder", 1, "setpendantres error with image url " + paramAdItem + " jumpUrl " + this.jdField_a_of_type_JavaLangString);
-  }
-  
-  protected void b(Canvas paramCanvas)
-  {
-    super.b(paramCanvas);
-    if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      paramCanvas.save();
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      paramCanvas.restore();
-    }
-  }
-  
-  public void e()
-  {
-    try
-    {
-      h();
-      if (QLog.isColorLevel()) {
-        QLog.i("TianshuPendantHolder", 2, "stopAnimation...");
+      } while (!paramString2.equals("QzFloat"));
+      if (paramString3.equals("downloadFloat"))
+      {
+        bjzx.a(this.mRuntime, paramVarArgs);
+        return true;
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("TianshuPendantHolder", 1, localThrowable, new Object[0]);
-    }
+    } while (!paramString3.equals("setFloat"));
+    bjzx.b(this.mRuntime, paramVarArgs);
+    return true;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    a();
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bkaa
  * JD-Core Version:    0.7.0.1
  */

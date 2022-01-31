@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import adpp;
+import adue;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Handler;
 import android.view.ViewGroup;
-import beqa;
+import beuj;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 
 public class RegisterBaseActivity
@@ -23,7 +23,7 @@ public class RegisterBaseActivity
   public RegisterBaseActivity()
   {
     this.jdField_b_of_type_JavaLangString = "86";
-    this.jdField_b_of_type_AndroidOsHandler = new adpp(this);
+    this.jdField_b_of_type_AndroidOsHandler = new adue(this);
   }
   
   protected void a(int paramInt)
@@ -41,7 +41,7 @@ public class RegisterBaseActivity
   
   public void a(int paramInt1, int paramInt2)
   {
-    new beqa(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
+    new beuj(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
   }
   
   public void a(String paramString, int paramInt)
@@ -53,7 +53,7 @@ public class RegisterBaseActivity
     if (paramString.endsWith("\n")) {
       str = paramString.substring(0, paramString.length() - 1);
     }
-    new beqa(this).a(str, getTitleBarHeight(), 0, paramInt);
+    new beuj(this).a(str, getTitleBarHeight(), 0, paramInt);
   }
   
   public void a(String paramString1, String paramString2)

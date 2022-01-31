@@ -1,30 +1,30 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import wsv;
-import wxb;
+import wxe;
+import xbk;
 
 public class EditVideoSave$5
   implements Runnable
 {
-  public EditVideoSave$5(wxb paramwxb) {}
+  public EditVideoSave$5(xbk paramxbk) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean)
     {
-      wsv.b("EditVideoSave", "[updateProgress]stopUpdateProgress = " + this.this$0.jdField_a_of_type_Boolean);
+      wxe.b("EditVideoSave", "[updateProgress]stopUpdateProgress = " + this.this$0.jdField_a_of_type_Boolean);
       return;
     }
-    wxb localwxb;
+    xbk localxbk;
     if (this.this$0.jdField_a_of_type_Int < 50) {
-      localwxb = this.this$0;
+      localxbk = this.this$0;
     }
-    for (localwxb.jdField_a_of_type_Int += this.this$0.b; this.this$0.jdField_a_of_type_Int > 99; localwxb.jdField_a_of_type_Int += 1)
+    for (localxbk.jdField_a_of_type_Int += this.this$0.b; this.this$0.jdField_a_of_type_Int > 99; localxbk.jdField_a_of_type_Int += 1)
     {
       this.this$0.jdField_a_of_type_Int = 99;
       this.this$0.a(this.this$0.jdField_a_of_type_Int);
       return;
-      localwxb = this.this$0;
+      localxbk = this.this$0;
     }
     this.this$0.a(this.this$0.jdField_a_of_type_Int);
     this.this$0.f();

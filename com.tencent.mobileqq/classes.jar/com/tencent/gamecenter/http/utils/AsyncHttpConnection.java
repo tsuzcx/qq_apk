@@ -1,6 +1,6 @@
 package com.tencent.gamecenter.http.utils;
 
-import aadm;
+import aaib;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
@@ -89,7 +89,7 @@ public class AsyncHttpConnection
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
-    aadm.a().a(this);
+    aaib.a().a(this);
   }
   
   public void a(String paramString1, String paramString2)

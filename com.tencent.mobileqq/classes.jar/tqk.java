@@ -2,7 +2,7 @@ import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class tqk
-  extends amky
+  extends ampn
 {
   tqk(tqj paramtqj, String paramString, boolean paramBoolean)
   {

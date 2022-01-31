@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.FormMutiWithAvatarItem;
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ class AddContactsView$11$1
         localFormMutiWithAvatarItem.setOverloading();
       }
       if (this.jdField_a_of_type_Int != 0) {
-        localFormMutiWithAvatarItem.setPeopleText(this.jdField_a_of_type_Int + alpo.a(2131700197));
+        localFormMutiWithAvatarItem.setPeopleText(this.jdField_a_of_type_Int + alud.a(2131700209));
       }
     } while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0));
     String[] arrayOfString = new String[this.jdField_a_of_type_JavaUtilArrayList.size()];

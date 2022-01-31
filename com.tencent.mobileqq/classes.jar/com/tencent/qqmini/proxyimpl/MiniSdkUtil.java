@@ -4,8 +4,8 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.content.SharedPreferences;
-import aokd;
-import bgjw;
+import aoom;
+import bgod;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -24,12 +24,12 @@ public class MiniSdkUtil
   private static boolean lastMiniAppDecide;
   private static boolean lastMiniGameDecide;
   
-  public static ApkgInfo convert(bgjw parambgjw, MiniAppConfig paramMiniAppConfig)
+  public static ApkgInfo convert(bgod parambgod, MiniAppConfig paramMiniAppConfig)
   {
-    if ((parambgjw == null) || (paramMiniAppConfig == null)) {
+    if ((parambgod == null) || (paramMiniAppConfig == null)) {
       return null;
     }
-    return new ApkgInfo(parambgjw.apkgFolderPath, paramMiniAppConfig);
+    return new ApkgInfo(parambgod.apkgFolderPath, paramMiniAppConfig);
   }
   
   public static com.tencent.mobileqq.mini.apkg.ExtConfigInfo convert(com.tencent.qqmini.sdk.launcher.model.ExtConfigInfo paramExtConfigInfo)
@@ -554,7 +554,7 @@ public class MiniSdkUtil
     {
       try
       {
-        if (QzoneConfig.getInstance().getConfig("qqminiapp", "newnativesdkenable", 1) > 0)
+        if (QzoneConfig.getInstance().getConfig("qqminiapp", "newnativesdkenable", 0) > 0)
         {
           bool = true;
           lastMiniAppDecide = bool;
@@ -595,7 +595,7 @@ public class MiniSdkUtil
           QLog.e("MiniSdkUtil", 1, "needJumpToMiniSDK isMiniProcessLive useSDK = " + i);
           return lastMiniAppDecide;
         }
-        if (aokd.a("newsdkenable", 1) > 0)
+        if (aoom.a("newsdkenable", 0) > 0)
         {
           bool = true;
           lastMiniGameDecide = bool;

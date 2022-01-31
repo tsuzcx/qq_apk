@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.model;
 
-import aubp;
+import aufy;
 
 class QueryTask$1
   implements Runnable

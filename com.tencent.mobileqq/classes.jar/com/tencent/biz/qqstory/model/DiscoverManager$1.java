@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.model;
 
-import uqx;
+import uvg;
 
 public class DiscoverManager$1
   implements Runnable
 {
   public void run()
   {
-    uqx.a(this.this$0, this.a);
+    uvg.a(this.this$0, this.a);
   }
 }
 

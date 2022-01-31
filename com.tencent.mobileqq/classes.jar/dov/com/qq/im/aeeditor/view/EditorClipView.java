@@ -15,13 +15,13 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.ScaleGestureDetector.OnScaleGestureListener;
 import android.view.View;
-import bllp;
-import bllr;
-import blls;
-import bllt;
-import bllu;
-import bmoq;
-import bmor;
+import blqb;
+import blqd;
+import blqe;
+import blqf;
+import blqg;
+import bmtc;
+import bmtd;
 import dov.com.qq.im.aeeditor.module.clip.image.EditorPicInfo;
 
 public class EditorClipView
@@ -32,11 +32,11 @@ public class EditorClipView
   private int jdField_a_of_type_Int;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
-  private bllp jdField_a_of_type_Bllp = new bllp();
-  private bllr jdField_a_of_type_Bllr;
-  private blls jdField_a_of_type_Blls;
-  private bllt jdField_a_of_type_Bllt;
-  private bmor jdField_a_of_type_Bmor;
+  private blqb jdField_a_of_type_Blqb = new blqb();
+  private blqd jdField_a_of_type_Blqd;
+  private blqe jdField_a_of_type_Blqe;
+  private blqf jdField_a_of_type_Blqf;
+  private bmtd jdField_a_of_type_Bmtd;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
   private boolean jdField_b_of_type_Boolean;
@@ -54,7 +54,7 @@ public class EditorClipView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new bllu(this, null));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new blqg(this, null));
     this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, this);
   }
   
@@ -62,39 +62,39 @@ public class EditorClipView
   {
     paramCanvas.drawColor(getContext().getResources().getColor(2131165218));
     paramCanvas.save();
-    RectF localRectF = this.jdField_a_of_type_Bllp.a();
-    paramCanvas.rotate(this.jdField_a_of_type_Bllp.b(), localRectF.centerX(), localRectF.centerY());
-    this.jdField_a_of_type_Bllp.a(paramCanvas);
-    this.jdField_a_of_type_Bllp.a(paramCanvas, getScrollX(), getScrollY());
+    RectF localRectF = this.jdField_a_of_type_Blqb.a();
+    paramCanvas.rotate(this.jdField_a_of_type_Blqb.b(), localRectF.centerX(), localRectF.centerY());
+    this.jdField_a_of_type_Blqb.a(paramCanvas);
+    this.jdField_a_of_type_Blqb.a(paramCanvas, getScrollX(), getScrollY());
     paramCanvas.restore();
     if (paramBoolean)
     {
       paramCanvas.save();
       paramCanvas.translate(getScrollX(), getScrollY());
-      this.jdField_a_of_type_Bllp.a(paramCanvas, getScrollX(), getScrollY());
+      this.jdField_a_of_type_Blqb.a(paramCanvas, getScrollX(), getScrollY());
       paramCanvas.restore();
     }
   }
   
-  private void a(bmoq parambmoq)
+  private void a(bmtc parambmtc)
   {
-    this.jdField_a_of_type_Bllp.c(parambmoq.c);
-    this.jdField_a_of_type_Bllp.b(parambmoq.d);
-    if (!a(Math.round(parambmoq.a), Math.round(parambmoq.b))) {
+    this.jdField_a_of_type_Blqb.c(parambmtc.c);
+    this.jdField_a_of_type_Blqb.b(parambmtc.d);
+    if (!a(Math.round(parambmtc.a), Math.round(parambmtc.b))) {
       invalidate();
     }
   }
   
-  private void a(bmoq parambmoq1, bmoq parambmoq2)
+  private void a(bmtc parambmtc1, bmtc parambmtc2)
   {
-    if (this.jdField_a_of_type_Bmor == null)
+    if (this.jdField_a_of_type_Bmtd == null)
     {
-      this.jdField_a_of_type_Bmor = new bmor();
-      this.jdField_a_of_type_Bmor.addUpdateListener(this);
-      this.jdField_a_of_type_Bmor.addListener(this);
+      this.jdField_a_of_type_Bmtd = new bmtd();
+      this.jdField_a_of_type_Bmtd.addUpdateListener(this);
+      this.jdField_a_of_type_Bmtd.addListener(this);
     }
-    this.jdField_a_of_type_Bmor.a(parambmoq1, parambmoq2);
-    this.jdField_a_of_type_Bmor.start();
+    this.jdField_a_of_type_Bmtd.a(parambmtc1, parambmtc2);
+    this.jdField_a_of_type_Bmtd.start();
   }
   
   private boolean a(int paramInt1, int paramInt2)
@@ -116,32 +116,32 @@ public class EditorClipView
   {
     invalidate();
     d();
-    bmoq localbmoq1 = this.jdField_a_of_type_Bllp.b(getScrollX(), getScrollY());
-    bmoq localbmoq2 = this.jdField_a_of_type_Bllp.c(getScrollX(), getScrollY());
+    bmtc localbmtc1 = this.jdField_a_of_type_Blqb.b(getScrollX(), getScrollY());
+    bmtc localbmtc2 = this.jdField_a_of_type_Blqb.c(getScrollX(), getScrollY());
     if (this.jdField_a_of_type_Boolean)
     {
       setResetHome(false);
-      localbmoq2.a = 0.0F;
-      localbmoq2.b = 0.0F;
+      localbmtc2.a = 0.0F;
+      localbmtc2.b = 0.0F;
     }
-    a(localbmoq1, localbmoq2);
+    a(localbmtc1, localbmtc2);
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_Bmor != null) {
-      this.jdField_a_of_type_Bmor.cancel();
+    if (this.jdField_a_of_type_Bmtd != null) {
+      this.jdField_a_of_type_Bmtd.cancel();
     }
   }
   
   public RectF a()
   {
-    return this.jdField_a_of_type_Bllp.b();
+    return this.jdField_a_of_type_Blqb.b();
   }
   
   public EditorPicInfo a()
   {
-    return a(this.jdField_a_of_type_Bllp.b(), this.jdField_a_of_type_Bllp.a());
+    return a(this.jdField_a_of_type_Blqb.b(), this.jdField_a_of_type_Blqb.a());
   }
   
   public EditorPicInfo a(RectF paramRectF1, RectF paramRectF2)
@@ -160,14 +160,14 @@ public class EditorClipView
   
   public void a()
   {
-    this.jdField_a_of_type_Bllp.a();
+    this.jdField_a_of_type_Blqb.a();
     c();
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bllt != null) {
-      this.jdField_a_of_type_Bllt.a(paramInt);
+    if (this.jdField_a_of_type_Blqf != null) {
+      this.jdField_a_of_type_Blqf.a(paramInt);
     }
   }
   
@@ -175,10 +175,10 @@ public class EditorClipView
   {
     if (!b())
     {
-      this.jdField_a_of_type_Bllp.c(getScrollX(), getScrollY());
+      this.jdField_a_of_type_Blqb.c(getScrollX(), getScrollY());
       c();
-      if (this.jdField_a_of_type_Bllt != null) {
-        this.jdField_a_of_type_Bllt.a();
+      if (this.jdField_a_of_type_Blqf != null) {
+        this.jdField_a_of_type_Blqf.a();
       }
       return true;
     }
@@ -187,15 +187,15 @@ public class EditorClipView
   
   public boolean a(float paramFloat1, float paramFloat2)
   {
-    bmoq localbmoq = this.jdField_a_of_type_Bllp.a(getScrollX(), getScrollY(), -paramFloat1, -paramFloat2);
-    if (localbmoq != null)
+    bmtc localbmtc = this.jdField_a_of_type_Blqb.a(getScrollX(), getScrollY(), -paramFloat1, -paramFloat2);
+    if (localbmtc != null)
     {
-      if ((this.jdField_a_of_type_Bllt != null) && (!this.jdField_b_of_type_Boolean))
+      if ((this.jdField_a_of_type_Blqf != null) && (!this.jdField_b_of_type_Boolean))
       {
-        this.jdField_a_of_type_Bllt.a();
+        this.jdField_a_of_type_Blqf.a();
         setCrop(true);
       }
-      a(localbmoq);
+      a(localbmtc);
       return true;
     }
     return a(getScrollX() + Math.round(paramFloat1), getScrollY() + Math.round(paramFloat2));
@@ -215,10 +215,10 @@ public class EditorClipView
     for (;;)
     {
       return bool1 | bool2;
-      this.jdField_a_of_type_Bllp.a(paramMotionEvent.getX(), paramMotionEvent.getY(), false);
+      this.jdField_a_of_type_Blqb.a(paramMotionEvent.getX(), paramMotionEvent.getY(), false);
       a(1);
       continue;
-      this.jdField_a_of_type_Bllp.b(getScrollX(), getScrollY());
+      this.jdField_a_of_type_Blqb.b(getScrollX(), getScrollY());
       a(2);
       c();
     }
@@ -226,33 +226,33 @@ public class EditorClipView
   
   public RectF b()
   {
-    return this.jdField_a_of_type_Bllp.a();
+    return this.jdField_a_of_type_Blqb.a();
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Bllp.d();
+    this.jdField_a_of_type_Blqb.d();
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Bllp.a(paramInt);
+    this.jdField_a_of_type_Blqb.a(paramInt);
   }
   
   boolean b()
   {
-    return (this.jdField_a_of_type_Bmor != null) && (this.jdField_a_of_type_Bmor.isRunning());
+    return (this.jdField_a_of_type_Bmtd != null) && (this.jdField_a_of_type_Bmtd.isRunning());
   }
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Bllp.b(this.jdField_a_of_type_Bmor.a());
+    this.jdField_a_of_type_Blqb.b(this.jdField_a_of_type_Bmtd.a());
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Bllp.a(getScrollX(), getScrollY(), this.jdField_a_of_type_Bmor.a())) {
-      a(this.jdField_a_of_type_Bllp.a(getScrollX(), getScrollY()));
+    if (this.jdField_a_of_type_Blqb.a(getScrollX(), getScrollY(), this.jdField_a_of_type_Bmtd.a())) {
+      a(this.jdField_a_of_type_Blqb.a(getScrollX(), getScrollY()));
     }
   }
   
@@ -260,13 +260,13 @@ public class EditorClipView
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Bllp.a(this.jdField_a_of_type_Bmor.a());
+    this.jdField_a_of_type_Blqb.a(this.jdField_a_of_type_Bmtd.a());
   }
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Bllp.d(paramValueAnimator.getAnimatedFraction());
-    a((bmoq)paramValueAnimator.getAnimatedValue());
+    this.jdField_a_of_type_Blqb.d(paramValueAnimator.getAnimatedFraction());
+    a((bmtc)paramValueAnimator.getAnimatedValue());
   }
   
   protected void onDetachedFromWindow()
@@ -286,13 +286,13 @@ public class EditorClipView
     int i = (int)(paramInt3 - paramInt1 - 10.0F);
     if (this.jdField_b_of_type_Int != i)
     {
-      if (this.jdField_a_of_type_Blls != null) {
-        this.jdField_a_of_type_Blls.a(i);
+      if (this.jdField_a_of_type_Blqe != null) {
+        this.jdField_a_of_type_Blqe.a(i);
       }
       this.jdField_b_of_type_Int = i;
     }
     if (paramBoolean) {
-      this.jdField_a_of_type_Bllp.a(paramInt3 - paramInt1, paramInt4 - paramInt2);
+      this.jdField_a_of_type_Blqb.a(paramInt3 - paramInt1, paramInt4 - paramInt2);
     }
   }
   
@@ -300,7 +300,7 @@ public class EditorClipView
   {
     if (this.jdField_a_of_type_Int > 1)
     {
-      this.jdField_a_of_type_Bllp.b(paramScaleGestureDetector.getScaleFactor(), getScrollX() + paramScaleGestureDetector.getFocusX(), getScrollY() + paramScaleGestureDetector.getFocusY());
+      this.jdField_a_of_type_Blqb.b(paramScaleGestureDetector.getScaleFactor(), getScrollX() + paramScaleGestureDetector.getFocusX(), getScrollY() + paramScaleGestureDetector.getFocusY());
       invalidate();
       return true;
     }
@@ -311,7 +311,7 @@ public class EditorClipView
   {
     if (this.jdField_a_of_type_Int > 1)
     {
-      this.jdField_a_of_type_Bllp.b();
+      this.jdField_a_of_type_Blqb.b();
       return true;
     }
     return false;
@@ -319,13 +319,13 @@ public class EditorClipView
   
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
-    this.jdField_a_of_type_Bllp.c();
+    this.jdField_a_of_type_Blqb.c();
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Bllr != null) {
-      this.jdField_a_of_type_Bllr.a();
+    if (this.jdField_a_of_type_Blqd != null) {
+      this.jdField_a_of_type_Blqd.a();
     }
     switch (paramMotionEvent.getActionMasked())
     {
@@ -346,14 +346,14 @@ public class EditorClipView
     }
   }
   
-  public void setClipViewOperateListener(bllr parambllr)
+  public void setClipViewOperateListener(blqd paramblqd)
   {
-    this.jdField_a_of_type_Bllr = parambllr;
+    this.jdField_a_of_type_Blqd = paramblqd;
   }
   
-  public void setClipWindowWidthChangeListener(blls paramblls)
+  public void setClipWindowWidthChangeListener(blqe paramblqe)
   {
-    this.jdField_a_of_type_Blls = paramblls;
+    this.jdField_a_of_type_Blqe = paramblqe;
   }
   
   public void setCrop(boolean paramBoolean)
@@ -361,15 +361,15 @@ public class EditorClipView
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setCropListener(bllt parambllt)
+  public void setCropListener(blqf paramblqf)
   {
-    this.jdField_a_of_type_Bllt = parambllt;
+    this.jdField_a_of_type_Blqf = paramblqf;
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Bllp.a(this);
-    this.jdField_a_of_type_Bllp.a(paramBitmap);
+    this.jdField_a_of_type_Blqb.a(this);
+    this.jdField_a_of_type_Blqb.a(paramBitmap);
     setResetHome(false);
     setCrop(false);
     invalidate();

@@ -1,17 +1,16 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 
 public class aehn
-  extends bhnr
+  implements View.OnClickListener
 {
-  public aehn(VisitorsActivity paramVisitorsActivity) {}
+  public aehn(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.d.setVisibility(0);
-    this.a.a.setClipChildren(false);
+    paramView = this.a.d;
+    bcgq.a(this.a, paramView);
   }
 }
 

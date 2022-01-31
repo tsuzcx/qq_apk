@@ -1,30 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.weiyun.utils.Utils;
 
 public class bkmh
-  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  
-  public bkmh(bkme parambkme) {}
-  
-  public void a(int paramInt)
+  public static ByteStringMicro a(String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return ByteStringMicro.copyFrom(Utils.hexStr2Bytes(paramString));
   }
   
-  public void a(CheckBox paramCheckBox)
+  public static String a(ByteStringMicro paramByteStringMicro)
   {
-    this.jdField_a_of_type_AndroidWidgetCheckBox = paramCheckBox;
+    return Utils.bytes2HexStr(paramByteStringMicro.toByteArray());
   }
   
-  public void onClick(View paramView)
+  public static byte[] a(String paramString)
   {
-    if (this.jdField_a_of_type_Bkme.a.a != null) {
-      this.jdField_a_of_type_Bkme.a.a.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetCheckBox);
+    int j = paramString.length();
+    byte[] arrayOfByte = new byte[j / 2];
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfByte[(i / 2)] = ((byte)((Character.digit(paramString.charAt(i), 16) << 4) + Character.digit(paramString.charAt(i + 1), 16)));
+      i += 2;
     }
+    return arrayOfByte;
   }
 }
 

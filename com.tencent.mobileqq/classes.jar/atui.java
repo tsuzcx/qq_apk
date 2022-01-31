@@ -1,6 +1,15 @@
-public abstract interface atui
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class atui
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  atui(atuh paramatuh) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.b();
+  }
 }
 
 

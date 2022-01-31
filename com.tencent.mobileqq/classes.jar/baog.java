@@ -1,773 +1,907 @@
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory.Options;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.support.v4.util.MQLruCache;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Pair;
+import android.util.TypedValue;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.RoundRectBitmap;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.SingleLineTextView;
 import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
 
 public class baog
-  extends bame
 {
-  protected BaseApplicationImpl a;
+  private TypedValue jdField_a_of_type_AndroidUtilTypedValue = new TypedValue();
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  protected String a;
+  public boolean a;
+  protected boolean b = true;
   
-  public baog(BaseApplicationImpl paramBaseApplicationImpl)
+  public baog()
   {
-    this.a = paramBaseApplicationImpl;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public static Bitmap a(Drawable paramDrawable)
+  private TypedValue a()
   {
-    if ((paramDrawable instanceof BitmapDrawable)) {
-      return ((BitmapDrawable)paramDrawable).getBitmap();
-    }
-    Bitmap localBitmap = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_4444);
-    Canvas localCanvas = new Canvas(localBitmap);
-    paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
-    paramDrawable.draw(localCanvas);
-    return localBitmap;
-  }
-  
-  private RoundRectBitmap a(Bitmap paramBitmap)
-  {
-    for (;;)
+    TypedValue localTypedValue = null;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      float f3;
-      int j;
-      int n;
-      int k;
-      int i1;
-      try
+      if (this.jdField_a_of_type_AndroidUtilTypedValue != null)
       {
-        f3 = this.a.getResources().getDisplayMetrics().density;
-        int m = this.a.getResources().getDisplayMetrics().densityDpi;
-        j = aroa.c;
-        i = aroa.jdField_a_of_type_Int;
-        n = paramBitmap.getWidth();
-        k = paramBitmap.getHeight();
-        Paint localPaint = new Paint(1);
-        localPaint.setColor(-16777216);
-        i1 = aroa.e;
-        int i2 = aroa.f;
-        if ((n >= i2) && (k >= i2)) {
-          break label339;
-        }
-        if (n < k)
-        {
-          k = (int)(j / n * k + 0.5F);
-          if (k <= i) {
-            break label310;
-          }
-          Bitmap localBitmap = Bitmap.createBitmap(j, i, baul.b);
-          localBitmap.setDensity(m);
-          new Canvas(localBitmap).drawBitmap(paramBitmap, null, new Rect(0, 0, j, i), localPaint);
-          return new RoundRectBitmap(localBitmap, 14.0F * f3);
-        }
-        k = (int)(j / k * n + 0.5F);
-        if (k <= i) {
-          break label332;
-        }
+        localTypedValue = this.jdField_a_of_type_AndroidUtilTypedValue;
+        this.jdField_a_of_type_AndroidUtilTypedValue = null;
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        float f1;
-        float f2;
-        return new RoundRectBitmap(paramBitmap, 8.0F);
+      ??? = localTypedValue;
+      if (localTypedValue == null) {
+        ??? = new TypedValue();
       }
-      if (n > k)
-      {
-        f1 = i / n;
-        if (n > k)
-        {
-          f2 = j / k;
-          f1 = Math.max(f1, f2);
-          j = (int)(n * f1 + 0.5F);
-          i = (int)(f1 * k + 0.5F);
-        }
-      }
-      else
-      {
-        f1 = i / k;
-        continue;
-      }
-      f2 = j / n;
-      continue;
-      label310:
-      int i = k;
-      continue;
-      for (;;)
-      {
-        k = i;
-        i = j;
-        j = k;
-        break;
-        label332:
-        i = k;
-      }
-      label339:
-      if ((n < i1) && (k < i1))
-      {
-        j = (int)(n * f3 + 0.5F);
-        i = (int)(k * f3 + 0.5F);
-      }
+      return ???;
     }
+  }
+  
+  private Object a(String paramString)
+  {
+    paramString = (Pair)BaseApplicationImpl.sImageCache.get(paramString);
+    if (paramString == null) {
+      return null;
+    }
+    return paramString.first;
+  }
+  
+  private void a(TypedValue paramTypedValue)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_AndroidUtilTypedValue == null) {
+        this.jdField_a_of_type_AndroidUtilTypedValue = paramTypedValue;
+      }
+      return;
+    }
+  }
+  
+  public static void a(View paramView, Drawable paramDrawable)
+  {
+    if ((paramDrawable == null) || (paramView == null)) {
+      return;
+    }
+    int i = paramView.getPaddingTop();
+    int j = paramView.getPaddingLeft();
+    int k = paramView.getPaddingRight();
+    int m = paramView.getPaddingBottom();
+    paramView.setBackgroundDrawable(paramDrawable);
+    paramView.setPadding(j, i, k, m);
+  }
+  
+  private void a(String paramString, ColorStateList paramColorStateList)
+  {
+    BaseApplicationImpl.sImageCache.put(paramString, new Pair(paramColorStateList, Integer.valueOf(100)));
+  }
+  
+  private void a(String paramString, Drawable paramDrawable)
+  {
+    int i = paramDrawable.getIntrinsicHeight();
+    int j = paramDrawable.getIntrinsicWidth();
+    BaseApplicationImpl.sImageCache.put(paramString, new Pair(paramDrawable, Integer.valueOf(i * j * 4)));
   }
   
   /* Error */
-  private Object b(DownloadParams paramDownloadParams, baoh parambaoh)
+  protected ColorStateList a(Context paramContext, int paramInt)
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: aconst_null
-    //   3: astore 8
-    //   5: aconst_null
-    //   6: astore 7
-    //   8: aload_2
-    //   9: getfield 148	baoh:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   12: astore 10
-    //   14: aload 10
-    //   16: ifnonnull +8 -> 24
-    //   19: aload 7
-    //   21: astore_2
-    //   22: aload_2
-    //   23: areturn
-    //   24: new 150	java/io/File
-    //   27: dup
-    //   28: aload 10
-    //   30: invokespecial 153	java/io/File:<init>	(Ljava/lang/String;)V
-    //   33: astore 11
-    //   35: aload 11
-    //   37: invokestatic 159	com/tencent/image/GifDrawable:isGifFile	(Ljava/io/File;)Z
-    //   40: ifeq +63 -> 103
-    //   43: aload_2
-    //   44: getfield 162	baoh:jdField_a_of_type_Boolean	Z
-    //   47: ifeq +56 -> 103
-    //   50: aload 7
-    //   52: astore_2
-    //   53: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   56: ifeq -34 -> 22
-    //   59: ldc 170
-    //   61: iconst_2
-    //   62: new 172	java/lang/StringBuilder
-    //   65: dup
-    //   66: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   69: ldc 175
-    //   71: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   74: aload 11
-    //   76: invokevirtual 183	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   79: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: ldc 185
-    //   84: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: aload 10
-    //   89: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   95: invokestatic 192	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   98: aconst_null
-    //   99: areturn
-    //   100: astore_1
-    //   101: aload_1
-    //   102: athrow
-    //   103: new 194	android/graphics/BitmapFactory$Options
-    //   106: dup
-    //   107: invokespecial 195	android/graphics/BitmapFactory$Options:<init>	()V
-    //   110: astore 12
-    //   112: aload 12
-    //   114: getstatic 197	baul:a	Landroid/graphics/Bitmap$Config;
-    //   117: putfield 200	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
-    //   120: aload 12
-    //   122: sipush 160
-    //   125: putfield 203	android/graphics/BitmapFactory$Options:inDensity	I
-    //   128: aload 12
-    //   130: sipush 160
-    //   133: putfield 206	android/graphics/BitmapFactory$Options:inTargetDensity	I
-    //   136: aload 12
-    //   138: sipush 160
-    //   141: putfield 209	android/graphics/BitmapFactory$Options:inScreenDensity	I
-    //   144: aload_1
-    //   145: aload 10
-    //   147: invokestatic 215	com/tencent/image/JpegExifReader:readOrientation	(Ljava/lang/String;)I
-    //   150: putfield 220	com/tencent/image/DownloadParams:outOrientation	I
-    //   153: aload 12
-    //   155: iconst_1
-    //   156: putfield 223	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   159: new 225	java/io/FileInputStream
-    //   162: dup
-    //   163: aload 11
-    //   165: invokevirtual 183	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   168: invokespecial 226	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   171: astore 7
-    //   173: new 228	java/io/BufferedInputStream
-    //   176: dup
-    //   177: aload 7
-    //   179: invokespecial 231	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   182: astore_2
-    //   183: iconst_2
-    //   184: newarray byte
-    //   186: astore 9
-    //   188: aload_2
-    //   189: aload 9
-    //   191: invokevirtual 235	java/io/BufferedInputStream:read	([B)I
-    //   194: pop
-    //   195: aload 9
-    //   197: iconst_0
-    //   198: baload
-    //   199: bipush 66
-    //   201: if_icmpeq +77 -> 278
-    //   204: aload 9
-    //   206: iconst_1
-    //   207: baload
-    //   208: istore 4
-    //   210: iload 4
-    //   212: bipush 77
-    //   214: if_icmpeq +64 -> 278
-    //   217: aload_2
-    //   218: ifnull +7 -> 225
-    //   221: aload_2
-    //   222: invokevirtual 238	java/io/BufferedInputStream:close	()V
-    //   225: aload 7
-    //   227: ifnull +8 -> 235
-    //   230: aload 7
-    //   232: invokevirtual 239	java/io/FileInputStream:close	()V
-    //   235: aload 12
-    //   237: iconst_1
-    //   238: putfield 223	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   241: aload 11
-    //   243: invokevirtual 183	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   246: aload 12
-    //   248: invokestatic 245	com/tencent/image/SafeBitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   251: pop
-    //   252: aload 12
-    //   254: getfield 248	android/graphics/BitmapFactory$Options:outHeight	I
-    //   257: ifeq +11 -> 268
-    //   260: aload 12
-    //   262: getfield 251	android/graphics/BitmapFactory$Options:outWidth	I
-    //   265: ifne +171 -> 436
-    //   268: new 253	java/io/IOException
-    //   271: dup
-    //   272: ldc 255
-    //   274: invokespecial 256	java/io/IOException:<init>	(Ljava/lang/String;)V
-    //   277: athrow
-    //   278: aload_2
-    //   279: iconst_4
-    //   280: newarray byte
-    //   282: invokevirtual 235	java/io/BufferedInputStream:read	([B)I
-    //   285: pop
-    //   286: aload_2
-    //   287: ldc2_w 257
-    //   290: invokevirtual 262	java/io/BufferedInputStream:skip	(J)J
-    //   293: pop2
-    //   294: iconst_4
-    //   295: newarray byte
-    //   297: astore 9
-    //   299: aload_2
-    //   300: aload 9
-    //   302: invokevirtual 235	java/io/BufferedInputStream:read	([B)I
-    //   305: pop
-    //   306: aload_0
-    //   307: aload 9
-    //   309: invokevirtual 264	baog:a	([B)I
-    //   312: istore 4
-    //   314: iconst_4
-    //   315: newarray byte
-    //   317: astore 9
-    //   319: aload_2
-    //   320: aload 9
-    //   322: invokevirtual 235	java/io/BufferedInputStream:read	([B)I
-    //   325: pop
-    //   326: aload_0
-    //   327: aload 9
-    //   329: invokevirtual 264	baog:a	([B)I
-    //   332: invokestatic 268	java/lang/Math:abs	(I)I
-    //   335: istore 5
-    //   337: iload 4
-    //   339: iflt +14 -> 353
-    //   342: iload 4
-    //   344: iload 5
-    //   346: imul
-    //   347: ldc_w 269
-    //   350: if_icmple -133 -> 217
-    //   353: invokestatic 273	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   356: invokevirtual 276	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   359: ldc_w 277
-    //   362: invokevirtual 281	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
-    //   365: invokestatic 283	baog:a	(Landroid/graphics/drawable/Drawable;)Landroid/graphics/Bitmap;
-    //   368: astore 9
-    //   370: aload 9
-    //   372: astore_1
-    //   373: aload_2
-    //   374: ifnull +7 -> 381
-    //   377: aload_2
-    //   378: invokevirtual 238	java/io/BufferedInputStream:close	()V
-    //   381: aload_1
-    //   382: astore_2
-    //   383: aload 7
-    //   385: ifnull -363 -> 22
-    //   388: aload 7
-    //   390: invokevirtual 239	java/io/FileInputStream:close	()V
-    //   393: aload_1
-    //   394: areturn
-    //   395: aload_2
-    //   396: ifnull +7 -> 403
-    //   399: aload_2
-    //   400: invokevirtual 238	java/io/BufferedInputStream:close	()V
-    //   403: aload 7
-    //   405: ifnull -170 -> 235
-    //   408: aload 7
-    //   410: invokevirtual 239	java/io/FileInputStream:close	()V
-    //   413: goto -178 -> 235
-    //   416: aload_2
-    //   417: ifnull +7 -> 424
-    //   420: aload_2
-    //   421: invokevirtual 238	java/io/BufferedInputStream:close	()V
-    //   424: aload 7
-    //   426: ifnull +8 -> 434
-    //   429: aload 7
-    //   431: invokevirtual 239	java/io/FileInputStream:close	()V
-    //   434: aload_1
-    //   435: athrow
-    //   436: aload 12
-    //   438: aload 12
-    //   440: aload_1
-    //   441: getfield 286	com/tencent/image/DownloadParams:reqWidth	I
-    //   444: aload_1
-    //   445: getfield 289	com/tencent/image/DownloadParams:reqHeight	I
-    //   448: invokestatic 294	bamf:b	(Landroid/graphics/BitmapFactory$Options;II)I
-    //   451: putfield 297	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   454: aload 12
-    //   456: getfield 248	android/graphics/BitmapFactory$Options:outHeight	I
-    //   459: aload 12
-    //   461: getfield 251	android/graphics/BitmapFactory$Options:outWidth	I
-    //   464: imul
-    //   465: ldc_w 298
-    //   468: if_icmple +55 -> 523
-    //   471: ldc 170
-    //   473: iconst_1
-    //   474: new 172	java/lang/StringBuilder
-    //   477: dup
-    //   478: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   481: ldc_w 300
-    //   484: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   487: aload 12
-    //   489: getfield 248	android/graphics/BitmapFactory$Options:outHeight	I
-    //   492: invokevirtual 303	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   495: ldc_w 305
-    //   498: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   501: aload 12
-    //   503: getfield 251	android/graphics/BitmapFactory$Options:outWidth	I
-    //   506: invokevirtual 303	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   509: ldc_w 307
-    //   512: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   515: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   518: invokestatic 310	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   521: aconst_null
-    //   522: areturn
-    //   523: aload 12
-    //   525: getfield 251	android/graphics/BitmapFactory$Options:outWidth	I
-    //   528: istore 4
-    //   530: aload 12
-    //   532: getfield 248	android/graphics/BitmapFactory$Options:outHeight	I
-    //   535: istore 4
-    //   537: aload 12
-    //   539: iconst_0
-    //   540: putfield 223	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   543: aconst_null
-    //   544: astore_2
-    //   545: aload 8
-    //   547: astore_1
-    //   548: iload_3
-    //   549: iconst_3
-    //   550: if_icmpgt +219 -> 769
-    //   553: aload_2
-    //   554: astore_1
-    //   555: aload 11
-    //   557: invokevirtual 183	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   560: aload 12
-    //   562: invokestatic 245	com/tencent/image/SafeBitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   565: astore_2
-    //   566: aload_2
-    //   567: ifnonnull +177 -> 744
-    //   570: aload_2
-    //   571: astore_1
-    //   572: new 64	java/lang/OutOfMemoryError
-    //   575: dup
-    //   576: new 172	java/lang/StringBuilder
-    //   579: dup
-    //   580: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   583: ldc_w 312
-    //   586: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   589: aload 10
-    //   591: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   594: ldc_w 314
-    //   597: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   600: iload_3
-    //   601: invokevirtual 303	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   604: ldc_w 316
-    //   607: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   610: aload 11
-    //   612: invokevirtual 183	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   615: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   618: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   621: invokespecial 317	java/lang/OutOfMemoryError:<init>	(Ljava/lang/String;)V
-    //   624: athrow
-    //   625: astore_2
-    //   626: aload_1
-    //   627: ifnull +7 -> 634
-    //   630: aload_1
-    //   631: invokevirtual 320	android/graphics/Bitmap:recycle	()V
-    //   634: aload_2
-    //   635: ifnull +151 -> 786
-    //   638: aload_2
-    //   639: invokevirtual 323	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   642: astore_2
-    //   643: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   646: ifeq +77 -> 723
-    //   649: ldc 170
-    //   651: iconst_2
-    //   652: new 172	java/lang/StringBuilder
-    //   655: dup
-    //   656: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   659: ldc_w 325
-    //   662: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   665: iload_3
-    //   666: invokevirtual 303	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   669: ldc_w 327
-    //   672: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   675: aload 12
-    //   677: getfield 297	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   680: invokevirtual 303	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   683: ldc_w 329
-    //   686: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   689: aload 11
-    //   691: invokevirtual 183	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   694: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   697: ldc 185
-    //   699: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   702: aload 10
-    //   704: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   707: ldc_w 331
-    //   710: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   713: aload_2
-    //   714: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   717: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   720: invokestatic 192	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   723: aload 12
-    //   725: aload 12
-    //   727: getfield 297	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   730: iconst_2
-    //   731: imul
-    //   732: putfield 297	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   735: iload_3
-    //   736: iconst_1
-    //   737: iadd
-    //   738: istore_3
-    //   739: aload_1
-    //   740: astore_2
-    //   741: goto -196 -> 545
-    //   744: aload_2
-    //   745: astore_1
-    //   746: getstatic 336	android/os/Build$VERSION:SDK_INT	I
-    //   749: bipush 11
-    //   751: if_icmplt +16 -> 767
-    //   754: aload_2
-    //   755: astore_1
-    //   756: aload_2
-    //   757: invokestatic 342	com/tencent/image/SliceBitmap:needSlice	(Landroid/graphics/Bitmap;)Z
-    //   760: istore 6
-    //   762: iload 6
-    //   764: ifeq +3 -> 767
-    //   767: aload_2
-    //   768: astore_1
-    //   769: aload_1
-    //   770: astore_2
-    //   771: aload_1
-    //   772: ifnonnull -750 -> 22
-    //   775: new 253	java/io/IOException
-    //   778: dup
-    //   779: ldc_w 344
-    //   782: invokespecial 256	java/io/IOException:<init>	(Ljava/lang/String;)V
-    //   785: athrow
-    //   786: aconst_null
-    //   787: astore_2
-    //   788: goto -145 -> 643
-    //   791: astore_1
-    //   792: aconst_null
-    //   793: astore_2
-    //   794: goto -378 -> 416
-    //   797: astore_1
-    //   798: goto -382 -> 416
-    //   801: astore_2
-    //   802: aconst_null
-    //   803: astore_2
-    //   804: goto -409 -> 395
-    //   807: astore 9
-    //   809: goto -414 -> 395
-    //   812: astore_2
-    //   813: aconst_null
-    //   814: astore_2
-    //   815: aconst_null
-    //   816: astore 7
-    //   818: goto -423 -> 395
-    //   821: astore_1
-    //   822: aconst_null
-    //   823: astore 7
-    //   825: aconst_null
-    //   826: astore_2
-    //   827: goto -411 -> 416
+    //   0: aload_0
+    //   1: invokevirtual 104	baog:c	()Z
+    //   4: ifeq +13 -> 17
+    //   7: aload_0
+    //   8: getfield 18	baog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   11: invokestatic 110	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   14: ifeq +14 -> 28
+    //   17: aload_1
+    //   18: invokevirtual 116	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   21: iload_2
+    //   22: invokevirtual 122	android/content/res/Resources:getColorStateList	(I)Landroid/content/res/ColorStateList;
+    //   25: astore_1
+    //   26: aload_1
+    //   27: areturn
+    //   28: aload_0
+    //   29: new 124	java/lang/StringBuilder
+    //   32: dup
+    //   33: invokespecial 125	java/lang/StringBuilder:<init>	()V
+    //   36: aload_0
+    //   37: getfield 18	baog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   40: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: iload_2
+    //   44: invokevirtual 132	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   47: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   50: invokespecial 138	baog:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   53: astore_3
+    //   54: aload_3
+    //   55: ifnull +15 -> 70
+    //   58: aload_3
+    //   59: instanceof 140
+    //   62: ifeq +8 -> 70
+    //   65: aload_3
+    //   66: checkcast 140	android/content/res/ColorStateList
+    //   69: areturn
+    //   70: aload_0
+    //   71: invokespecial 142	baog:a	()Landroid/util/TypedValue;
+    //   74: astore_3
+    //   75: aload_1
+    //   76: invokevirtual 116	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   79: iload_2
+    //   80: aload_3
+    //   81: iconst_1
+    //   82: invokevirtual 146	android/content/res/Resources:getValue	(ILandroid/util/TypedValue;Z)V
+    //   85: aload_3
+    //   86: getfield 150	android/util/TypedValue:string	Ljava/lang/CharSequence;
+    //   89: checkcast 152	java/lang/String
+    //   92: astore 4
+    //   94: aload_0
+    //   95: aload_3
+    //   96: invokespecial 154	baog:a	(Landroid/util/TypedValue;)V
+    //   99: aload 4
+    //   101: ifnull +192 -> 293
+    //   104: new 124	java/lang/StringBuilder
+    //   107: dup
+    //   108: invokespecial 125	java/lang/StringBuilder:<init>	()V
+    //   111: aload_0
+    //   112: getfield 18	baog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   115: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: ldc 156
+    //   120: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: aload 4
+    //   125: aload 4
+    //   127: ldc 158
+    //   129: invokevirtual 162	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   132: iconst_1
+    //   133: iadd
+    //   134: invokevirtual 166	java/lang/String:substring	(I)Ljava/lang/String;
+    //   137: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   140: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   143: astore_3
+    //   144: new 168	java/io/File
+    //   147: dup
+    //   148: aload_3
+    //   149: invokespecial 171	java/io/File:<init>	(Ljava/lang/String;)V
+    //   152: invokevirtual 174	java/io/File:exists	()Z
+    //   155: ifeq +138 -> 293
+    //   158: new 176	com/tencent/theme/AndroidXmlResourceParser
+    //   161: dup
+    //   162: invokespecial 177	com/tencent/theme/AndroidXmlResourceParser:<init>	()V
+    //   165: astore 5
+    //   167: new 179	java/io/FileInputStream
+    //   170: dup
+    //   171: new 168	java/io/File
+    //   174: dup
+    //   175: aload_3
+    //   176: invokespecial 171	java/io/File:<init>	(Ljava/lang/String;)V
+    //   179: invokespecial 182	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   182: astore 4
+    //   184: aload 4
+    //   186: astore_3
+    //   187: aload 5
+    //   189: aload 4
+    //   191: ldc 184
+    //   193: invokeinterface 190 3 0
+    //   198: aload 4
+    //   200: astore_3
+    //   201: invokestatic 196	com/tencent/theme/SkinEngine:getInstances	()Lcom/tencent/theme/SkinEngine;
+    //   204: aload_1
+    //   205: invokevirtual 116	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   208: aload 5
+    //   210: iconst_1
+    //   211: invokestatic 202	com/tencent/theme/SkinnableColorStateList:createFromXml	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;Z)Lcom/tencent/theme/SkinnableColorStateList;
+    //   214: astore 5
+    //   216: aload 4
+    //   218: astore_3
+    //   219: aload_0
+    //   220: new 124	java/lang/StringBuilder
+    //   223: dup
+    //   224: invokespecial 125	java/lang/StringBuilder:<init>	()V
+    //   227: aload_0
+    //   228: getfield 18	baog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   231: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: iload_2
+    //   235: invokevirtual 132	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   238: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   241: aload 5
+    //   243: invokespecial 204	baog:a	(Ljava/lang/String;Landroid/content/res/ColorStateList;)V
+    //   246: aload 5
+    //   248: astore_1
+    //   249: aload 4
+    //   251: ifnull -225 -> 26
+    //   254: aload 4
+    //   256: invokevirtual 209	java/io/InputStream:close	()V
+    //   259: aload 5
+    //   261: areturn
+    //   262: astore_1
+    //   263: aload_1
+    //   264: invokevirtual 212	java/io/IOException:printStackTrace	()V
+    //   267: aload 5
+    //   269: areturn
+    //   270: astore 5
+    //   272: aconst_null
+    //   273: astore 4
+    //   275: aload 4
+    //   277: astore_3
+    //   278: aload 5
+    //   280: invokevirtual 212	java/io/IOException:printStackTrace	()V
+    //   283: aload 4
+    //   285: ifnull +8 -> 293
+    //   288: aload 4
+    //   290: invokevirtual 209	java/io/InputStream:close	()V
+    //   293: aload_1
+    //   294: invokevirtual 116	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   297: iload_2
+    //   298: invokevirtual 122	android/content/res/Resources:getColorStateList	(I)Landroid/content/res/ColorStateList;
+    //   301: areturn
+    //   302: astore_3
+    //   303: aload_3
+    //   304: invokevirtual 212	java/io/IOException:printStackTrace	()V
+    //   307: goto -14 -> 293
+    //   310: astore 5
+    //   312: aconst_null
+    //   313: astore 4
+    //   315: aload 4
+    //   317: astore_3
+    //   318: aload 5
+    //   320: invokevirtual 213	org/xmlpull/v1/XmlPullParserException:printStackTrace	()V
+    //   323: aload 4
+    //   325: ifnull -32 -> 293
+    //   328: aload 4
+    //   330: invokevirtual 209	java/io/InputStream:close	()V
+    //   333: goto -40 -> 293
+    //   336: astore_3
+    //   337: aload_3
+    //   338: invokevirtual 212	java/io/IOException:printStackTrace	()V
+    //   341: goto -48 -> 293
+    //   344: astore_1
+    //   345: aconst_null
+    //   346: astore_3
+    //   347: aload_3
+    //   348: ifnull +7 -> 355
+    //   351: aload_3
+    //   352: invokevirtual 209	java/io/InputStream:close	()V
+    //   355: aload_1
+    //   356: athrow
+    //   357: astore_3
+    //   358: aload_3
+    //   359: invokevirtual 212	java/io/IOException:printStackTrace	()V
+    //   362: goto -7 -> 355
+    //   365: astore_1
+    //   366: goto -19 -> 347
+    //   369: astore 5
+    //   371: goto -56 -> 315
+    //   374: astore 5
+    //   376: goto -101 -> 275
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	830	0	this	baog
-    //   0	830	1	paramDownloadParams	DownloadParams
-    //   0	830	2	parambaoh	baoh
-    //   1	738	3	i	int
-    //   208	328	4	j	int
-    //   335	12	5	k	int
-    //   760	3	6	bool	boolean
-    //   6	818	7	localFileInputStream	java.io.FileInputStream
-    //   3	543	8	localObject1	Object
-    //   186	185	9	localObject2	Object
-    //   807	1	9	localException	Exception
-    //   12	691	10	str	String
-    //   33	657	11	localFile	File
-    //   110	616	12	localOptions	BitmapFactory.Options
+    //   0	379	0	this	baog
+    //   0	379	1	paramContext	Context
+    //   0	379	2	paramInt	int
+    //   53	225	3	localObject1	Object
+    //   302	2	3	localIOException1	java.io.IOException
+    //   317	1	3	localObject2	Object
+    //   336	2	3	localIOException2	java.io.IOException
+    //   346	6	3	localObject3	Object
+    //   357	2	3	localIOException3	java.io.IOException
+    //   92	237	4	localObject4	Object
+    //   165	103	5	localObject5	Object
+    //   270	9	5	localIOException4	java.io.IOException
+    //   310	9	5	localXmlPullParserException1	org.xmlpull.v1.XmlPullParserException
+    //   369	1	5	localXmlPullParserException2	org.xmlpull.v1.XmlPullParserException
+    //   374	1	5	localIOException5	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   35	50	100	java/lang/Exception
-    //   53	98	100	java/lang/Exception
-    //   103	159	100	java/lang/Exception
-    //   221	225	100	java/lang/Exception
-    //   230	235	100	java/lang/Exception
-    //   235	268	100	java/lang/Exception
-    //   268	278	100	java/lang/Exception
-    //   377	381	100	java/lang/Exception
-    //   388	393	100	java/lang/Exception
-    //   399	403	100	java/lang/Exception
-    //   408	413	100	java/lang/Exception
-    //   420	424	100	java/lang/Exception
-    //   429	434	100	java/lang/Exception
-    //   434	436	100	java/lang/Exception
-    //   436	521	100	java/lang/Exception
-    //   523	543	100	java/lang/Exception
-    //   555	566	100	java/lang/Exception
-    //   572	625	100	java/lang/Exception
-    //   630	634	100	java/lang/Exception
-    //   638	643	100	java/lang/Exception
-    //   643	723	100	java/lang/Exception
-    //   723	735	100	java/lang/Exception
-    //   746	754	100	java/lang/Exception
-    //   756	762	100	java/lang/Exception
-    //   775	786	100	java/lang/Exception
-    //   555	566	625	java/lang/OutOfMemoryError
-    //   572	625	625	java/lang/OutOfMemoryError
-    //   746	754	625	java/lang/OutOfMemoryError
-    //   756	762	625	java/lang/OutOfMemoryError
-    //   173	183	791	finally
-    //   183	195	797	finally
-    //   278	337	797	finally
-    //   353	370	797	finally
-    //   173	183	801	java/lang/Exception
-    //   183	195	807	java/lang/Exception
-    //   278	337	807	java/lang/Exception
-    //   353	370	807	java/lang/Exception
-    //   159	173	812	java/lang/Exception
-    //   159	173	821	finally
+    //   254	259	262	java/io/IOException
+    //   158	184	270	java/io/IOException
+    //   288	293	302	java/io/IOException
+    //   158	184	310	org/xmlpull/v1/XmlPullParserException
+    //   328	333	336	java/io/IOException
+    //   158	184	344	finally
+    //   351	355	357	java/io/IOException
+    //   187	198	365	finally
+    //   201	216	365	finally
+    //   219	246	365	finally
+    //   278	283	365	finally
+    //   318	323	365	finally
+    //   187	198	369	org/xmlpull/v1/XmlPullParserException
+    //   201	216	369	org/xmlpull/v1/XmlPullParserException
+    //   219	246	369	org/xmlpull/v1/XmlPullParserException
+    //   187	198	374	java/io/IOException
+    //   201	216	374	java/io/IOException
+    //   219	246	374	java/io/IOException
   }
   
-  int a(byte[] paramArrayOfByte)
+  /* Error */
+  protected Drawable a(Context paramContext, int paramInt)
   {
-    return (paramArrayOfByte[3] & 0xFF) << 24 | (paramArrayOfByte[2] & 0xFF) << 16 | (paramArrayOfByte[1] & 0xFF) << 8 | paramArrayOfByte[0] & 0xFF;
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 104	baog:c	()Z
+    //   4: ifeq +13 -> 17
+    //   7: aload_0
+    //   8: getfield 18	baog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   11: invokestatic 110	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   14: ifeq +14 -> 28
+    //   17: aload_1
+    //   18: invokevirtual 116	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   21: iload_2
+    //   22: invokevirtual 220	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   25: astore_1
+    //   26: aload_1
+    //   27: areturn
+    //   28: aload_0
+    //   29: new 124	java/lang/StringBuilder
+    //   32: dup
+    //   33: invokespecial 125	java/lang/StringBuilder:<init>	()V
+    //   36: aload_0
+    //   37: getfield 18	baog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   40: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: iload_2
+    //   44: invokevirtual 132	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   47: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   50: invokespecial 138	baog:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   53: astore_3
+    //   54: aload_3
+    //   55: ifnull +15 -> 70
+    //   58: aload_3
+    //   59: instanceof 89
+    //   62: ifeq +8 -> 70
+    //   65: aload_3
+    //   66: checkcast 89	android/graphics/drawable/Drawable
+    //   69: areturn
+    //   70: aload_0
+    //   71: invokespecial 142	baog:a	()Landroid/util/TypedValue;
+    //   74: astore 5
+    //   76: aload_1
+    //   77: invokevirtual 116	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   80: iload_2
+    //   81: aload 5
+    //   83: iconst_1
+    //   84: invokevirtual 146	android/content/res/Resources:getValue	(ILandroid/util/TypedValue;Z)V
+    //   87: aload 5
+    //   89: getfield 150	android/util/TypedValue:string	Ljava/lang/CharSequence;
+    //   92: checkcast 152	java/lang/String
+    //   95: astore 6
+    //   97: aload_0
+    //   98: aload 5
+    //   100: invokespecial 154	baog:a	(Landroid/util/TypedValue;)V
+    //   103: aload 6
+    //   105: ifnull +197 -> 302
+    //   108: new 168	java/io/File
+    //   111: dup
+    //   112: new 124	java/lang/StringBuilder
+    //   115: dup
+    //   116: invokespecial 125	java/lang/StringBuilder:<init>	()V
+    //   119: aload_0
+    //   120: getfield 18	baog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   123: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   126: ldc 222
+    //   128: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: aload 6
+    //   133: aload 6
+    //   135: ldc 158
+    //   137: invokevirtual 162	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   140: iconst_1
+    //   141: iadd
+    //   142: invokevirtual 166	java/lang/String:substring	(I)Ljava/lang/String;
+    //   145: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   151: invokespecial 171	java/io/File:<init>	(Ljava/lang/String;)V
+    //   154: astore_3
+    //   155: aload_3
+    //   156: invokevirtual 174	java/io/File:exists	()Z
+    //   159: ifeq +143 -> 302
+    //   162: new 224	android/graphics/Rect
+    //   165: dup
+    //   166: invokespecial 225	android/graphics/Rect:<init>	()V
+    //   169: astore 7
+    //   171: aload 5
+    //   173: sipush 480
+    //   176: putfield 229	android/util/TypedValue:density	I
+    //   179: new 231	java/io/BufferedInputStream
+    //   182: dup
+    //   183: new 179	java/io/FileInputStream
+    //   186: dup
+    //   187: aload_3
+    //   188: invokespecial 182	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   191: invokespecial 234	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   194: astore 4
+    //   196: aload 4
+    //   198: astore_3
+    //   199: aload_1
+    //   200: invokevirtual 116	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   203: aload 5
+    //   205: aload 4
+    //   207: aload 6
+    //   209: aconst_null
+    //   210: aload 7
+    //   212: iconst_1
+    //   213: invokestatic 240	com/tencent/theme/ResourcesFactory:createImageFromResourceStream	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/a;
+    //   216: aload_1
+    //   217: invokevirtual 116	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   220: invokevirtual 246	android/graphics/drawable/Drawable$ConstantState:newDrawable	(Landroid/content/res/Resources;)Landroid/graphics/drawable/Drawable;
+    //   223: astore 5
+    //   225: aload 4
+    //   227: astore_3
+    //   228: aload_0
+    //   229: new 124	java/lang/StringBuilder
+    //   232: dup
+    //   233: invokespecial 125	java/lang/StringBuilder:<init>	()V
+    //   236: aload_0
+    //   237: getfield 18	baog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   240: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   243: iload_2
+    //   244: invokevirtual 132	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   247: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   250: aload 5
+    //   252: invokespecial 248	baog:a	(Ljava/lang/String;Landroid/graphics/drawable/Drawable;)V
+    //   255: aload 5
+    //   257: astore_1
+    //   258: aload 4
+    //   260: ifnull -234 -> 26
+    //   263: aload 4
+    //   265: invokevirtual 209	java/io/InputStream:close	()V
+    //   268: aload 5
+    //   270: areturn
+    //   271: astore_1
+    //   272: aload_1
+    //   273: invokevirtual 212	java/io/IOException:printStackTrace	()V
+    //   276: aload 5
+    //   278: areturn
+    //   279: astore 5
+    //   281: aconst_null
+    //   282: astore 4
+    //   284: aload 4
+    //   286: astore_3
+    //   287: aload 5
+    //   289: invokevirtual 249	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   292: aload 4
+    //   294: ifnull +8 -> 302
+    //   297: aload 4
+    //   299: invokevirtual 209	java/io/InputStream:close	()V
+    //   302: aload_1
+    //   303: invokevirtual 116	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   306: iload_2
+    //   307: invokevirtual 220	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   310: areturn
+    //   311: astore_3
+    //   312: aload_3
+    //   313: invokevirtual 212	java/io/IOException:printStackTrace	()V
+    //   316: goto -14 -> 302
+    //   319: astore 5
+    //   321: aconst_null
+    //   322: astore 4
+    //   324: aload 4
+    //   326: astore_3
+    //   327: aload 5
+    //   329: invokevirtual 212	java/io/IOException:printStackTrace	()V
+    //   332: aload 4
+    //   334: ifnull -32 -> 302
+    //   337: aload 4
+    //   339: invokevirtual 209	java/io/InputStream:close	()V
+    //   342: goto -40 -> 302
+    //   345: astore_3
+    //   346: aload_3
+    //   347: invokevirtual 212	java/io/IOException:printStackTrace	()V
+    //   350: goto -48 -> 302
+    //   353: astore_1
+    //   354: aconst_null
+    //   355: astore_3
+    //   356: aload_3
+    //   357: ifnull +7 -> 364
+    //   360: aload_3
+    //   361: invokevirtual 209	java/io/InputStream:close	()V
+    //   364: aload_1
+    //   365: athrow
+    //   366: astore_3
+    //   367: aload_3
+    //   368: invokevirtual 212	java/io/IOException:printStackTrace	()V
+    //   371: goto -7 -> 364
+    //   374: astore_1
+    //   375: goto -19 -> 356
+    //   378: astore 5
+    //   380: goto -56 -> 324
+    //   383: astore 5
+    //   385: goto -101 -> 284
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	388	0	this	baog
+    //   0	388	1	paramContext	Context
+    //   0	388	2	paramInt	int
+    //   53	234	3	localObject1	Object
+    //   311	2	3	localIOException1	java.io.IOException
+    //   326	1	3	localObject2	Object
+    //   345	2	3	localIOException2	java.io.IOException
+    //   355	6	3	localObject3	Object
+    //   366	2	3	localIOException3	java.io.IOException
+    //   194	144	4	localBufferedInputStream	java.io.BufferedInputStream
+    //   74	203	5	localObject4	Object
+    //   279	9	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   319	9	5	localIOException4	java.io.IOException
+    //   378	1	5	localIOException5	java.io.IOException
+    //   383	1	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   95	113	6	str	String
+    //   169	42	7	localRect	android.graphics.Rect
+    // Exception table:
+    //   from	to	target	type
+    //   263	268	271	java/io/IOException
+    //   179	196	279	java/lang/OutOfMemoryError
+    //   297	302	311	java/io/IOException
+    //   179	196	319	java/io/IOException
+    //   337	342	345	java/io/IOException
+    //   179	196	353	finally
+    //   360	364	366	java/io/IOException
+    //   199	225	374	finally
+    //   228	255	374	finally
+    //   287	292	374	finally
+    //   327	332	374	finally
+    //   199	225	378	java/io/IOException
+    //   228	255	378	java/io/IOException
+    //   199	225	383	java/lang/OutOfMemoryError
+    //   228	255	383	java/lang/OutOfMemoryError
   }
   
-  public baoh a(URL paramURL)
+  /* Error */
+  protected Drawable a(Context paramContext, int paramInt, String paramString)
   {
-    boolean bool2 = true;
-    try
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 104	baog:c	()Z
+    //   4: ifeq +13 -> 17
+    //   7: aload_0
+    //   8: getfield 18	baog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   11: invokestatic 110	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   14: ifeq +14 -> 28
+    //   17: aload_1
+    //   18: invokevirtual 116	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   21: iload_2
+    //   22: invokevirtual 220	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   25: astore_1
+    //   26: aload_1
+    //   27: areturn
+    //   28: aload_0
+    //   29: new 124	java/lang/StringBuilder
+    //   32: dup
+    //   33: invokespecial 125	java/lang/StringBuilder:<init>	()V
+    //   36: aload_0
+    //   37: getfield 18	baog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   40: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: iload_2
+    //   44: invokevirtual 132	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   47: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   50: invokespecial 138	baog:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   53: astore 4
+    //   55: aload 4
+    //   57: ifnull +17 -> 74
+    //   60: aload 4
+    //   62: instanceof 89
+    //   65: ifeq +9 -> 74
+    //   68: aload 4
+    //   70: checkcast 89	android/graphics/drawable/Drawable
+    //   73: areturn
+    //   74: aload_0
+    //   75: invokespecial 142	baog:a	()Landroid/util/TypedValue;
+    //   78: astore 5
+    //   80: aload_1
+    //   81: invokevirtual 116	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   84: iload_2
+    //   85: aload 5
+    //   87: iconst_1
+    //   88: invokevirtual 146	android/content/res/Resources:getValue	(ILandroid/util/TypedValue;Z)V
+    //   91: aload 5
+    //   93: getfield 150	android/util/TypedValue:string	Ljava/lang/CharSequence;
+    //   96: checkcast 152	java/lang/String
+    //   99: astore 6
+    //   101: aload_0
+    //   102: aload 5
+    //   104: invokespecial 154	baog:a	(Landroid/util/TypedValue;)V
+    //   107: aload 6
+    //   109: ifnull +187 -> 296
+    //   112: new 168	java/io/File
+    //   115: dup
+    //   116: new 124	java/lang/StringBuilder
+    //   119: dup
+    //   120: invokespecial 125	java/lang/StringBuilder:<init>	()V
+    //   123: aload_0
+    //   124: getfield 18	baog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   127: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   130: ldc 158
+    //   132: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: aload_3
+    //   136: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   139: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   142: invokespecial 171	java/io/File:<init>	(Ljava/lang/String;)V
+    //   145: astore_3
+    //   146: aload_3
+    //   147: invokevirtual 174	java/io/File:exists	()Z
+    //   150: ifeq +146 -> 296
+    //   153: new 224	android/graphics/Rect
+    //   156: dup
+    //   157: invokespecial 225	android/graphics/Rect:<init>	()V
+    //   160: astore 7
+    //   162: new 231	java/io/BufferedInputStream
+    //   165: dup
+    //   166: new 179	java/io/FileInputStream
+    //   169: dup
+    //   170: aload_3
+    //   171: invokespecial 182	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   174: invokespecial 234	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   177: astore 4
+    //   179: aload 4
+    //   181: astore_3
+    //   182: aload 5
+    //   184: sipush 480
+    //   187: putfield 229	android/util/TypedValue:density	I
+    //   190: aload 4
+    //   192: astore_3
+    //   193: aload_1
+    //   194: invokevirtual 116	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   197: aload 5
+    //   199: aload 4
+    //   201: aload 6
+    //   203: aconst_null
+    //   204: aload 7
+    //   206: iconst_1
+    //   207: invokestatic 240	com/tencent/theme/ResourcesFactory:createImageFromResourceStream	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/a;
+    //   210: aload_1
+    //   211: invokevirtual 116	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   214: invokevirtual 246	android/graphics/drawable/Drawable$ConstantState:newDrawable	(Landroid/content/res/Resources;)Landroid/graphics/drawable/Drawable;
+    //   217: astore 5
+    //   219: aload 4
+    //   221: astore_3
+    //   222: aload_0
+    //   223: new 124	java/lang/StringBuilder
+    //   226: dup
+    //   227: invokespecial 125	java/lang/StringBuilder:<init>	()V
+    //   230: aload_0
+    //   231: getfield 18	baog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   234: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   237: iload_2
+    //   238: invokevirtual 132	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   241: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   244: aload 5
+    //   246: invokespecial 248	baog:a	(Ljava/lang/String;Landroid/graphics/drawable/Drawable;)V
+    //   249: aload 5
+    //   251: astore_1
+    //   252: aload 4
+    //   254: ifnull -228 -> 26
+    //   257: aload 4
+    //   259: invokevirtual 209	java/io/InputStream:close	()V
+    //   262: aload 5
+    //   264: areturn
+    //   265: astore_1
+    //   266: aload_1
+    //   267: invokevirtual 212	java/io/IOException:printStackTrace	()V
+    //   270: aload 5
+    //   272: areturn
+    //   273: astore 5
+    //   275: aconst_null
+    //   276: astore 4
+    //   278: aload 4
+    //   280: astore_3
+    //   281: aload 5
+    //   283: invokevirtual 249	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   286: aload 4
+    //   288: ifnull +8 -> 296
+    //   291: aload 4
+    //   293: invokevirtual 209	java/io/InputStream:close	()V
+    //   296: aload_1
+    //   297: invokevirtual 116	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   300: iload_2
+    //   301: invokevirtual 220	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   304: areturn
+    //   305: astore_3
+    //   306: aload_3
+    //   307: invokevirtual 212	java/io/IOException:printStackTrace	()V
+    //   310: goto -14 -> 296
+    //   313: astore 5
+    //   315: aconst_null
+    //   316: astore 4
+    //   318: aload 4
+    //   320: astore_3
+    //   321: aload 5
+    //   323: invokevirtual 212	java/io/IOException:printStackTrace	()V
+    //   326: aload 4
+    //   328: ifnull -32 -> 296
+    //   331: aload 4
+    //   333: invokevirtual 209	java/io/InputStream:close	()V
+    //   336: goto -40 -> 296
+    //   339: astore_3
+    //   340: aload_3
+    //   341: invokevirtual 212	java/io/IOException:printStackTrace	()V
+    //   344: goto -48 -> 296
+    //   347: astore_1
+    //   348: aconst_null
+    //   349: astore_3
+    //   350: aload_3
+    //   351: ifnull +7 -> 358
+    //   354: aload_3
+    //   355: invokevirtual 209	java/io/InputStream:close	()V
+    //   358: aload_1
+    //   359: athrow
+    //   360: astore_3
+    //   361: aload_3
+    //   362: invokevirtual 212	java/io/IOException:printStackTrace	()V
+    //   365: goto -7 -> 358
+    //   368: astore_1
+    //   369: goto -19 -> 350
+    //   372: astore 5
+    //   374: goto -56 -> 318
+    //   377: astore 5
+    //   379: goto -101 -> 278
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	382	0	this	baog
+    //   0	382	1	paramContext	Context
+    //   0	382	2	paramInt	int
+    //   0	382	3	paramString	String
+    //   53	279	4	localObject1	Object
+    //   78	193	5	localObject2	Object
+    //   273	9	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   313	9	5	localIOException1	java.io.IOException
+    //   372	1	5	localIOException2	java.io.IOException
+    //   377	1	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   99	103	6	str	String
+    //   160	45	7	localRect	android.graphics.Rect
+    // Exception table:
+    //   from	to	target	type
+    //   257	262	265	java/io/IOException
+    //   162	179	273	java/lang/OutOfMemoryError
+    //   291	296	305	java/io/IOException
+    //   162	179	313	java/io/IOException
+    //   331	336	339	java/io/IOException
+    //   162	179	347	finally
+    //   354	358	360	java/io/IOException
+    //   182	190	368	finally
+    //   193	219	368	finally
+    //   222	249	368	finally
+    //   281	286	368	finally
+    //   321	326	368	finally
+    //   182	190	372	java/io/IOException
+    //   193	219	372	java/io/IOException
+    //   222	249	372	java/io/IOException
+    //   182	190	377	java/lang/OutOfMemoryError
+    //   193	219	377	java/lang/OutOfMemoryError
+    //   222	249	377	java/lang/OutOfMemoryError
+  }
+  
+  public StateListDrawable a(Context paramContext, int paramInt1, int paramInt2)
+  {
+    Drawable localDrawable = a(paramContext, paramInt1);
+    paramContext = a(paramContext, paramInt2);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842913 }, paramContext);
+    localStateListDrawable.addState(new int[] { 16842919 }, paramContext);
+    localStateListDrawable.addState(new int[0], localDrawable);
+    return localStateListDrawable;
+  }
+  
+  protected String a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaLangString + "/anim/" + paramString;
+  }
+  
+  protected void a(View paramView, int paramInt1, int paramInt2)
+  {
+    View localView = paramView.findViewById(paramInt1);
+    if ((localView instanceof TextView)) {
+      ((TextView)localView).setTextColor(a(paramView.getContext(), paramInt2));
+    }
+    while (!(localView instanceof SingleLineTextView)) {
+      return;
+    }
+    ((SingleLineTextView)localView).setTextColor(a(paramView.getContext(), paramInt2));
+  }
+  
+  protected void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    View localView = paramView.findViewById(paramInt1);
+    if ((localView instanceof ImageView)) {
+      ((ImageView)localView).setImageDrawable(a(paramView.getContext(), paramInt2, paramInt3));
+    }
+  }
+  
+  protected void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    View localView = paramView.findViewById(paramInt1);
+    if (localView != null)
     {
-      paramURL = paramURL.getFile().split("\\|");
-      baoh localbaoh = new baoh(this);
-      localbaoh.jdField_a_of_type_JavaLangString = paramURL[0];
-      localbaoh.jdField_a_of_type_Int = Integer.parseInt(paramURL[1]);
-      localbaoh.jdField_b_of_type_Int = Integer.parseInt(paramURL[2]);
-      localbaoh.jdField_a_of_type_Long = Long.parseLong(paramURL[3]);
-      if (paramURL.length > 4)
-      {
-        if (Integer.parseInt(paramURL[4]) == 1)
-        {
-          bool1 = true;
-          localbaoh.jdField_a_of_type_Boolean = bool1;
-        }
-      }
-      else
-      {
-        if (paramURL.length > 5)
-        {
-          if (Integer.parseInt(paramURL[5]) != 1) {
-            break label172;
-          }
-          bool1 = true;
-          label106:
-          localbaoh.jdField_b_of_type_Boolean = bool1;
-        }
-        if (paramURL.length > 6)
-        {
-          if (Integer.parseInt(paramURL[6]) != 1) {
-            break label177;
-          }
-          bool1 = true;
-          label132:
-          localbaoh.c = bool1;
-        }
-        if (paramURL.length > 7) {
-          if (Integer.parseInt(paramURL[7]) != 1) {
-            break label182;
-          }
-        }
-      }
-      label172:
-      label177:
-      label182:
-      for (boolean bool1 = bool2;; bool1 = false)
-      {
-        localbaoh.d = bool1;
-        return localbaoh;
-        bool1 = false;
-        break;
-        bool1 = false;
-        break label106;
-        bool1 = false;
-        break label132;
-      }
-      return null;
+      Drawable localDrawable1 = a(paramView.getContext(), paramInt2);
+      Drawable localDrawable2 = a(paramView.getContext(), paramInt3);
+      paramView = a(paramView.getContext(), paramInt4);
+      StateListDrawable localStateListDrawable = new StateListDrawable();
+      localStateListDrawable.addState(new int[] { -16842910 }, paramView);
+      localStateListDrawable.addState(new int[] { 16842919 }, localDrawable2);
+      localStateListDrawable.addState(new int[0], localDrawable1);
+      localView.setBackgroundDrawable(localStateListDrawable);
     }
-    catch (Exception paramURL) {}
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  protected void a(View paramView, int paramInt1, int paramInt2, String paramString)
   {
-    paramOutputStream = a(paramDownloadParams.url);
-    if ((paramOutputStream == null) || (paramOutputStream.jdField_a_of_type_JavaLangString == null)) {
-      return new File(aljq.aW);
+    paramView = paramView.findViewById(paramInt1);
+    if (paramView != null) {
+      paramView.setBackgroundDrawable(a(paramView.getContext(), paramInt2, paramString));
     }
-    return new File(paramOutputStream.jdField_a_of_type_JavaLangString);
   }
   
-  public Object a(DownloadParams paramDownloadParams, baoh parambaoh)
+  public void a(String paramString)
   {
-    paramDownloadParams = parambaoh.jdField_a_of_type_JavaLangString;
-    if (paramDownloadParams == null) {
-      paramDownloadParams = null;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  protected Drawable b(Context paramContext, int paramInt)
+  {
+    if ((!c()) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      return paramContext.getResources().getDrawable(paramInt);
     }
-    for (;;)
+    Object localObject1 = a(this.jdField_a_of_type_JavaLangString + paramInt);
+    if ((localObject1 != null) && ((localObject1 instanceof Drawable))) {
+      return (Drawable)localObject1;
+    }
+    localObject1 = a();
+    paramContext.getResources().getValue(paramInt, (TypedValue)localObject1, true);
+    Object localObject2 = (String)((TypedValue)localObject1).string;
+    a((TypedValue)localObject1);
+    if (localObject2 != null)
     {
-      return paramDownloadParams;
-      File localFile = new File(paramDownloadParams);
-      try
+      localObject1 = this.jdField_a_of_type_JavaLangString + "/drawable-xxhdpi/" + ((String)localObject2).substring(((String)localObject2).lastIndexOf("/") + 1);
+      if (new File((String)localObject1).exists())
       {
-        paramDownloadParams = new BitmapFactory.Options();
-        paramDownloadParams.inPreferredConfig = baul.b;
-        paramDownloadParams.inDensity = 160;
-        paramDownloadParams.inTargetDensity = 160;
-        paramDownloadParams.inScreenDensity = 160;
-        paramDownloadParams.inJustDecodeBounds = false;
-        parambaoh = SafeBitmapFactory.decodeFile(localFile.getAbsolutePath(), paramDownloadParams);
-        paramDownloadParams = parambaoh;
-        if (parambaoh == null) {
-          continue;
+        localObject2 = new BitmapFactory.Options();
+        ((BitmapFactory.Options)localObject2).inDensity = 480;
+        ((BitmapFactory.Options)localObject2).inTargetDensity = paramContext.getResources().getDisplayMetrics().densityDpi;
+        bdam localbdam = new bdam();
+        bdal.a((String)localObject1, (BitmapFactory.Options)localObject2, localbdam);
+        if (localbdam.jdField_a_of_type_Int == 0)
+        {
+          paramContext = new apko(paramContext.getResources(), localbdam.jdField_a_of_type_AndroidGraphicsBitmap);
+          a(this.jdField_a_of_type_JavaLangString + paramInt, paramContext);
+          return paramContext;
         }
-        paramDownloadParams = a(parambaoh);
-        if (!parambaoh.equals(paramDownloadParams.mBitmap)) {
-          parambaoh.recycle();
-        }
-        parambaoh = new RoundRectBitmap(new bauz(localFile.getAbsolutePath()).a(paramDownloadParams.mBitmap), paramDownloadParams.mCornerRadius, paramDownloadParams.mBoardColor, paramDownloadParams.mBorderWidth);
-        paramDownloadParams = parambaoh;
-        if (this.a == null) {
-          continue;
-        }
-        parambaoh.mDisplayWidth = this.a.getResources().getDisplayMetrics().widthPixels;
-        parambaoh.mDisplayHeight = this.a.getResources().getDisplayMetrics().heightPixels;
-        return parambaoh;
+        QLog.e("SkinDrawable", 1, (String)localObject1 + " decodeFail: " + localbdam.jdField_a_of_type_Int);
       }
-      catch (Exception paramDownloadParams)
-      {
-        throw paramDownloadParams;
-      }
+    }
+    return paramContext.getResources().getDrawable(paramInt);
+  }
+  
+  protected void b(View paramView, int paramInt1, int paramInt2)
+  {
+    paramView = paramView.findViewById(paramInt1);
+    if (paramView != null) {
+      paramView.setBackgroundDrawable(a(paramView.getContext(), paramInt2));
     }
   }
   
-  public boolean a()
+  protected void b(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    return false;
+    View localView = paramView.findViewById(paramInt1);
+    if (localView != null) {
+      localView.setBackgroundDrawable(a(paramView.getContext(), paramInt2, paramInt3));
+    }
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  protected void b(View paramView, int paramInt1, int paramInt2, String paramString)
   {
-    paramFile = AlbumThumbManager.getInstance(BaseApplicationImpl.getContext());
-    paramURLDrawableHandler = a(paramDownloadParams.url);
-    if (paramURLDrawableHandler == null) {
-      paramFile = null;
+    View localView = paramView.findViewById(paramInt1);
+    if ((localView instanceof ImageView)) {
+      ((ImageView)localView).setImageDrawable(a(paramView.getContext(), paramInt2, paramString));
     }
-    label107:
-    do
-    {
-      int i;
-      do
-      {
-        return paramFile;
-        if (arni.a(paramURLDrawableHandler.jdField_a_of_type_JavaLangString) == 2) {}
-        for (i = 1;; i = 0)
-        {
-          if ((!paramURLDrawableHandler.jdField_a_of_type_Boolean) || (paramURLDrawableHandler.c) || (i != 0)) {
-            break label107;
-          }
-          if (!paramURLDrawableHandler.d) {
-            break;
-          }
-          return a(paramDownloadParams, paramURLDrawableHandler);
-        }
-        paramDownloadParams = (Bitmap)b(paramDownloadParams, paramURLDrawableHandler);
-        paramFile = paramDownloadParams;
-      } while (!paramURLDrawableHandler.jdField_b_of_type_Boolean);
-      return arni.a(this.a, paramDownloadParams, 16);
-      if (paramURLDrawableHandler.c)
-      {
-        paramFile = arna.a(this.a, paramURLDrawableHandler.jdField_a_of_type_JavaLangString);
-        if (paramFile != null) {
-          paramFile = a(paramFile);
-        }
-      }
-      for (;;)
-      {
-        paramDownloadParams = paramFile;
-        if (paramFile == null)
-        {
-          paramFile = BaseApplicationImpl.getContext();
-          i = arni.a(paramURLDrawableHandler.jdField_a_of_type_JavaLangString);
-          paramDownloadParams = a(paramFile.getResources().getDrawable(arni.a(i)));
-        }
-        if (paramDownloadParams != null) {
-          break;
-        }
-        return null;
-        paramFile = a(BaseApplicationImpl.getContext().getResources().getDrawable(2130843803));
-        continue;
-        paramFile = paramFile.getThumb(paramDownloadParams.url, new baoi(this));
-      }
-      paramFile = paramDownloadParams;
-    } while (!paramURLDrawableHandler.jdField_b_of_type_Boolean);
-    return arni.a(this.a, paramDownloadParams, 16);
+  }
+  
+  public boolean c()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.b);
   }
 }
 

@@ -1,37 +1,44 @@
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-public class wkg
+public final class wkg
+  extends QQUIEventReceiver<wjw, vcp>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  
-  public wkg(String paramString1, int paramInt, @Nullable String paramString2)
+  public wkg(@NonNull wjw paramwjw)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramwjw);
   }
   
-  public wkg(String paramString1, int paramInt1, @Nullable String paramString2, int paramInt2)
+  public void a(@NonNull wjw paramwjw, @NonNull vcp paramvcp)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    if (wjw.a(paramwjw) == null) {
+      wxe.b(this.TAG, "ignore this feature event. %s.", paramvcp.toString());
+    }
+    uxd localuxd;
+    do
+    {
+      return;
+      while (!paramvcp.hasNext())
+      {
+        do
+        {
+          wxe.a(this.TAG, "receive feature event. %s.", paramvcp.toString());
+        } while (paramvcp.a == null);
+        paramvcp = paramvcp.a.iterator();
+      }
+      localuxd = (uxd)paramvcp.next();
+    } while (!localuxd.a.equals(wjw.a(paramwjw)));
+    wxe.a(this.TAG, "receive feature data. update visit count from %d to %d.", Long.valueOf(wjw.a(paramwjw).a.mViewTotalTime), Integer.valueOf(localuxd.c));
+    wjw.a(paramwjw).a.mViewTotalTime = localuxd.c;
+    paramwjw.a();
   }
   
-  public boolean a()
+  public Class acceptEventClass()
   {
-    return (this.jdField_a_of_type_Int != 1) && ((this.jdField_a_of_type_Int != 2) || (this.jdField_b_of_type_Int != 0));
-  }
-  
-  public String toString()
-  {
-    return "FeedCommentSync{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mNextCookie='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mSource=" + this.jdField_a_of_type_Int + '}';
+    return vcp.class;
   }
 }
 

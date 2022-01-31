@@ -11,7 +11,7 @@ public class tpe
   public void onSystemUiVisibilityChange(int paramInt)
   {
     if (paramInt == 4102) {}
-    while (!bhou.e()) {
+    while (!bhtb.e()) {
       return;
     }
     this.a.getWindow().getDecorView().setSystemUiVisibility(4102);

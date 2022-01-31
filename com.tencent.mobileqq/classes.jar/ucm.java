@@ -1,22 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleRecommendWidget;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import qqcircle.QQCircleDitto.StItemContainer;
-
-public class ucm
-  implements View.OnClickListener
+public abstract interface ucm
 {
-  public ucm(QCircleRecommendWidget paramQCircleRecommendWidget) {}
-  
-  public void onClick(View paramView)
-  {
-    if (QCircleRecommendWidget.a(this.a) != null)
-    {
-      tqs.a(this.a.getContext(), tqr.a(QCircleRecommendWidget.a(this.a).urlInfo.get(), "personRecomListUrl"));
-      tyg.a(29, 2, QCircleRecommendWidget.a(this.a));
-    }
-  }
+  public abstract void a();
 }
 
 

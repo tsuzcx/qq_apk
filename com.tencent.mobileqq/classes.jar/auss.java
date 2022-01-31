@@ -1,353 +1,396 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.app.AppInterface;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.NearbyVideoUtils.2;
-import com.tencent.mobileqq.nearby.NearbyVideoUtils.3;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class auss
 {
-  private static String a = "need_show_auth_video_guide_";
-  private static String b = "need_open_auth_video";
+  public static HashMap<String, Integer> a;
+  public static HashMap<String, Integer> b;
+  private static HashMap<String, Integer> c = new HashMap();
+  
+  static
+  {
+    c.put("hot_reactive_gray_intimate_lover_1_icon", Integer.valueOf(2130849612));
+    c.put("hot_reactive_gray_intimate_lover_2_icon", Integer.valueOf(2130849613));
+    c.put("hot_reactive_gray_intimate_lover_3_icon", Integer.valueOf(2130849614));
+    c.put("hot_reactive_gray_intimate_guimi_1_icon", Integer.valueOf(2130849606));
+    c.put("hot_reactive_gray_intimate_guimi_2_icon", Integer.valueOf(2130849607));
+    c.put("hot_reactive_gray_intimate_guimi_3_icon", Integer.valueOf(2130849608));
+    c.put("hot_reactive_gray_intimate_jiyou_1_icon", Integer.valueOf(2130849609));
+    c.put("hot_reactive_gray_intimate_jiyou_2_icon", Integer.valueOf(2130849610));
+    c.put("hot_reactive_gray_intimate_jiyou_3_icon", Integer.valueOf(2130849611));
+    c.put("hot_reactive_gray_friendship_1_icon", Integer.valueOf(2130849603));
+    c.put("hot_reactive_gray_friendship_2_icon", Integer.valueOf(2130849604));
+    c.put("hot_reactive_gray_friendship_3_icon", Integer.valueOf(2130849605));
+    c.put("gray_small_fire", Integer.valueOf(2130849630));
+    c.put("gray_big_fire", Integer.valueOf(2130849589));
+    c.put("gray_small_zan", Integer.valueOf(2130849634));
+    c.put("gray_big_zan", Integer.valueOf(2130849593));
+    c.put("gray_small_lover", Integer.valueOf(2130849622));
+    c.put("gray_big_lover", Integer.valueOf(2130849621));
+    c.put("qzone_gray_qzone_visit_normal", Integer.valueOf(2130849628));
+    c.put("qzone_gray_qzone_visit_super", Integer.valueOf(2130849629));
+    c.put("gray_small_ship", Integer.valueOf(2130849633));
+    c.put("gray_big_ship", Integer.valueOf(2130849592));
+    a = new HashMap();
+    a.put("skin_icon_small_fire", Integer.valueOf(2130849630));
+    a.put("skin_icon_big_fire", Integer.valueOf(2130849589));
+    a.put("skin_icon_small_flower", Integer.valueOf(2130849633));
+    a.put("skin_icon_big_flower", Integer.valueOf(2130849592));
+    a.put("skin_icon_small_praise", Integer.valueOf(2130849634));
+    a.put("skin_icon_big_praise", Integer.valueOf(2130849593));
+    a.put("skin_icon_lover_small", Integer.valueOf(2130849622));
+    a.put("skin_icon_lover_big", Integer.valueOf(2130849621));
+    a.put("skin_icon_qzone_visit_normal", Integer.valueOf(2130849628));
+    a.put("skin_icon_qzone_visit_super", Integer.valueOf(2130849629));
+    a.put("skin_icon_frdship_1", Integer.valueOf(2130849603));
+    a.put("skin_icon_frdship_2", Integer.valueOf(2130849604));
+    a.put("skin_icon_frdship_3", Integer.valueOf(2130849605));
+    a.put("skin_icon_intimate_lover_1", Integer.valueOf(2130849612));
+    a.put("skin_icon_intimate_lover_2", Integer.valueOf(2130849613));
+    a.put("skin_icon_intimate_lover_3", Integer.valueOf(2130849614));
+    a.put("skin_icon_intimate_guimi_1", Integer.valueOf(2130849606));
+    a.put("skin_icon_intimate_guimi_2", Integer.valueOf(2130849607));
+    a.put("skin_icon_intimate_guimi_3", Integer.valueOf(2130849608));
+    a.put("skin_icon_intimate_jiyou_1", Integer.valueOf(2130849609));
+    a.put("skin_icon_intimate_jiyou_2", Integer.valueOf(2130849610));
+    a.put("skin_icon_intimate_jiyou_3", Integer.valueOf(2130849611));
+    a.put("skin_icon_mutual_x_character_1", Integer.valueOf(2130849627));
+    a.put("skin_icon_mentorship", Integer.valueOf(2130849625));
+    a.put("skin_icon_mentorship_svip", Integer.valueOf(2130849624));
+    a.put("skin_icon_mentorship_yellowvip", Integer.valueOf(2130849626));
+    a.put("skin_icon_mentorship_newyear", Integer.valueOf(2130849623));
+    a.put("skin_icon_kapu_1", Integer.valueOf(2130849618));
+    a.put("skin_icon_kapu_2", Integer.valueOf(2130849619));
+    a.put("skin_icon_kapu_3", Integer.valueOf(2130849620));
+    a.put("skin_icon_forget_me_not_1", Integer.valueOf(2130849600));
+    a.put("skin_icon_forget_me_not_2", Integer.valueOf(2130849601));
+    a.put("skin_icon_forget_me_not_3", Integer.valueOf(2130849602));
+    b = new HashMap();
+    b.putAll(c);
+    b.putAll(a);
+    b.putAll(aute.a);
+  }
+  
+  public static int a()
+  {
+    return bdns.a(NetConnInfoCenter.getServerTimeMillis());
+  }
+  
+  public static int a(long paramLong1, long paramLong2)
+  {
+    return (int)(100000L + 10L * paramLong1 + paramLong2);
+  }
+  
+  public static long a(String paramString)
+  {
+    long l = 0L;
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      l = Long.valueOf(Long.parseLong(paramString)).longValue() % 10L;
+      return l;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("MutualMarkUtils", 1, "getTypeLevel error:" + paramString.getMessage());
+    }
+    return 0L;
+  }
   
   /* Error */
-  private static String a(android.graphics.Bitmap paramBitmap)
+  public static String a()
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 6
-    //   3: new 25	java/io/File
-    //   6: dup
-    //   7: getstatic 30	aljq:cg	Ljava/lang/String;
-    //   10: invokestatic 35	bduw:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   13: invokespecial 39	java/io/File:<init>	(Ljava/lang/String;)V
-    //   16: astore_1
-    //   17: aload_1
-    //   18: invokevirtual 43	java/io/File:mkdirs	()Z
-    //   21: pop
-    //   22: new 25	java/io/File
-    //   25: dup
-    //   26: aload_1
-    //   27: new 45	java/lang/StringBuilder
-    //   30: dup
-    //   31: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   34: ldc 49
-    //   36: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: invokestatic 59	java/lang/System:currentTimeMillis	()J
-    //   42: invokevirtual 62	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   45: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   48: invokespecial 69	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   51: astore 4
-    //   53: aload 4
-    //   55: invokevirtual 72	java/io/File:exists	()Z
-    //   58: ifeq +9 -> 67
-    //   61: aload 4
-    //   63: invokevirtual 75	java/io/File:delete	()Z
-    //   66: pop
-    //   67: new 77	java/io/FileOutputStream
-    //   70: dup
-    //   71: aload 4
-    //   73: invokespecial 80	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   76: astore_1
-    //   77: new 82	java/io/BufferedOutputStream
-    //   80: dup
-    //   81: aload_1
-    //   82: sipush 4096
-    //   85: invokespecial 85	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
-    //   88: astore 5
-    //   90: aload 5
-    //   92: astore_3
-    //   93: aload_1
-    //   94: astore_2
-    //   95: aload_0
-    //   96: getstatic 91	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   99: bipush 100
-    //   101: aload 5
-    //   103: invokevirtual 97	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   106: pop
-    //   107: aload 5
-    //   109: astore_3
-    //   110: aload_1
-    //   111: astore_2
-    //   112: aload 5
-    //   114: invokevirtual 100	java/io/BufferedOutputStream:flush	()V
-    //   117: aload 5
-    //   119: astore_3
-    //   120: aload_1
-    //   121: astore_2
-    //   122: aload 4
-    //   124: invokevirtual 103	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   127: astore_0
-    //   128: aload_1
-    //   129: ifnull +7 -> 136
-    //   132: aload_1
-    //   133: invokevirtual 106	java/io/FileOutputStream:close	()V
-    //   136: aload_0
-    //   137: astore_1
-    //   138: aload 5
-    //   140: ifnull +10 -> 150
-    //   143: aload 5
-    //   145: invokevirtual 107	java/io/BufferedOutputStream:close	()V
-    //   148: aload_0
-    //   149: astore_1
-    //   150: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   153: ifeq +28 -> 181
-    //   156: ldc 114
-    //   158: iconst_2
-    //   159: new 45	java/lang/StringBuilder
-    //   162: dup
-    //   163: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   166: ldc 116
-    //   168: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   171: aload_1
-    //   172: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   175: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   178: invokestatic 120	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   181: aload_1
-    //   182: areturn
-    //   183: astore_1
-    //   184: aload_1
-    //   185: invokevirtual 123	java/io/IOException:printStackTrace	()V
-    //   188: goto -52 -> 136
-    //   191: astore_1
-    //   192: aload_1
-    //   193: invokevirtual 123	java/io/IOException:printStackTrace	()V
-    //   196: aload_0
-    //   197: astore_1
-    //   198: goto -48 -> 150
-    //   201: astore 4
-    //   203: aconst_null
-    //   204: astore_0
-    //   205: aconst_null
-    //   206: astore_1
-    //   207: aload_0
-    //   208: astore_3
-    //   209: aload_1
-    //   210: astore_2
-    //   211: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   214: ifeq +17 -> 231
-    //   217: aload_0
-    //   218: astore_3
-    //   219: aload_1
-    //   220: astore_2
-    //   221: ldc 114
-    //   223: iconst_2
-    //   224: ldc 125
-    //   226: aload 4
-    //   228: invokestatic 129	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   231: aload_1
-    //   232: ifnull +7 -> 239
-    //   235: aload_1
-    //   236: invokevirtual 106	java/io/FileOutputStream:close	()V
-    //   239: aload 6
-    //   241: astore_1
-    //   242: aload_0
-    //   243: ifnull -93 -> 150
-    //   246: aload_0
-    //   247: invokevirtual 107	java/io/BufferedOutputStream:close	()V
-    //   250: aload 6
-    //   252: astore_1
-    //   253: goto -103 -> 150
-    //   256: astore_0
-    //   257: aload_0
-    //   258: invokevirtual 123	java/io/IOException:printStackTrace	()V
-    //   261: aload 6
-    //   263: astore_1
-    //   264: goto -114 -> 150
-    //   267: astore_1
-    //   268: aload_1
-    //   269: invokevirtual 123	java/io/IOException:printStackTrace	()V
-    //   272: goto -33 -> 239
-    //   275: astore_0
-    //   276: aconst_null
-    //   277: astore_3
-    //   278: aconst_null
-    //   279: astore_1
-    //   280: aload_1
-    //   281: ifnull +7 -> 288
-    //   284: aload_1
-    //   285: invokevirtual 106	java/io/FileOutputStream:close	()V
-    //   288: aload_3
-    //   289: ifnull +7 -> 296
-    //   292: aload_3
-    //   293: invokevirtual 107	java/io/BufferedOutputStream:close	()V
-    //   296: aload_0
-    //   297: athrow
-    //   298: astore_1
-    //   299: aload_1
-    //   300: invokevirtual 123	java/io/IOException:printStackTrace	()V
-    //   303: goto -15 -> 288
-    //   306: astore_1
-    //   307: aload_1
-    //   308: invokevirtual 123	java/io/IOException:printStackTrace	()V
-    //   311: goto -15 -> 296
-    //   314: astore_0
-    //   315: aconst_null
-    //   316: astore_3
-    //   317: goto -37 -> 280
-    //   320: astore_0
-    //   321: aload_2
-    //   322: astore_1
-    //   323: goto -43 -> 280
-    //   326: astore 4
-    //   328: aconst_null
-    //   329: astore_0
-    //   330: goto -123 -> 207
-    //   333: astore 4
-    //   335: aload 5
-    //   337: astore_0
-    //   338: goto -131 -> 207
+    //   1: astore_1
+    //   2: aconst_null
+    //   3: astore_0
+    //   4: ldc 250
+    //   6: astore_3
+    //   7: invokestatic 256	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   10: invokevirtual 262	com/tencent/qphone/base/util/BaseApplication:getAssets	()Landroid/content/res/AssetManager;
+    //   13: ldc_w 264
+    //   16: invokevirtual 270	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   19: astore_2
+    //   20: aload_2
+    //   21: astore_0
+    //   22: aload_2
+    //   23: astore_1
+    //   24: aload_2
+    //   25: invokestatic 275	ndq:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   28: astore 4
+    //   30: aload 4
+    //   32: astore_0
+    //   33: aload_0
+    //   34: astore_1
+    //   35: aload_2
+    //   36: ifnull +9 -> 45
+    //   39: aload_2
+    //   40: invokevirtual 280	java/io/InputStream:close	()V
+    //   43: aload_0
+    //   44: astore_1
+    //   45: aload_1
+    //   46: areturn
+    //   47: astore_2
+    //   48: aload_0
+    //   49: astore_1
+    //   50: aload_2
+    //   51: invokevirtual 283	java/lang/Throwable:printStackTrace	()V
+    //   54: aload_3
+    //   55: astore_1
+    //   56: aload_0
+    //   57: ifnull -12 -> 45
+    //   60: aload_0
+    //   61: invokevirtual 280	java/io/InputStream:close	()V
+    //   64: ldc 250
+    //   66: areturn
+    //   67: astore_0
+    //   68: ldc 250
+    //   70: areturn
+    //   71: astore_0
+    //   72: aload_1
+    //   73: ifnull +7 -> 80
+    //   76: aload_1
+    //   77: invokevirtual 280	java/io/InputStream:close	()V
+    //   80: aload_0
+    //   81: athrow
+    //   82: astore_1
+    //   83: aload_0
+    //   84: areturn
+    //   85: astore_1
+    //   86: goto -6 -> 80
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	341	0	paramBitmap	android.graphics.Bitmap
-    //   16	166	1	localObject1	Object
-    //   183	2	1	localIOException1	java.io.IOException
-    //   191	2	1	localIOException2	java.io.IOException
-    //   197	67	1	localObject2	Object
-    //   267	2	1	localIOException3	java.io.IOException
-    //   279	6	1	localObject3	Object
-    //   298	2	1	localIOException4	java.io.IOException
-    //   306	2	1	localIOException5	java.io.IOException
-    //   322	1	1	localObject4	Object
-    //   94	228	2	localObject5	Object
-    //   92	225	3	localObject6	Object
-    //   51	72	4	localFile	java.io.File
-    //   201	26	4	localException1	java.lang.Exception
-    //   326	1	4	localException2	java.lang.Exception
-    //   333	1	4	localException3	java.lang.Exception
-    //   88	248	5	localBufferedOutputStream	java.io.BufferedOutputStream
-    //   1	261	6	localObject7	Object
+    //   3	58	0	localObject1	Object
+    //   67	1	0	localIOException1	java.io.IOException
+    //   71	13	0	str1	String
+    //   1	76	1	localObject2	Object
+    //   82	1	1	localIOException2	java.io.IOException
+    //   85	1	1	localIOException3	java.io.IOException
+    //   19	21	2	localInputStream	java.io.InputStream
+    //   47	4	2	localThrowable	java.lang.Throwable
+    //   6	49	3	str2	String
+    //   28	3	4	str3	String
     // Exception table:
     //   from	to	target	type
-    //   132	136	183	java/io/IOException
-    //   143	148	191	java/io/IOException
-    //   67	77	201	java/lang/Exception
-    //   246	250	256	java/io/IOException
-    //   235	239	267	java/io/IOException
-    //   67	77	275	finally
-    //   284	288	298	java/io/IOException
-    //   292	296	306	java/io/IOException
-    //   77	90	314	finally
-    //   95	107	320	finally
-    //   112	117	320	finally
-    //   122	128	320	finally
-    //   211	217	320	finally
-    //   221	231	320	finally
-    //   77	90	326	java/lang/Exception
-    //   95	107	333	java/lang/Exception
-    //   112	117	333	java/lang/Exception
-    //   122	128	333	java/lang/Exception
+    //   7	20	47	java/lang/Throwable
+    //   24	30	47	java/lang/Throwable
+    //   60	64	67	java/io/IOException
+    //   7	20	71	finally
+    //   24	30	71	finally
+    //   50	54	71	finally
+    //   39	43	82	java/io/IOException
+    //   76	80	85	java/io/IOException
+  }
+  
+  public static String a(int paramInt)
+  {
+    Iterator localIterator = a.entrySet().iterator();
+    Map.Entry localEntry;
+    while (localIterator.hasNext())
+    {
+      localEntry = (Map.Entry)localIterator.next();
+      if (((Integer)localEntry.getValue()).intValue() == paramInt) {
+        return (String)localEntry.getKey();
+      }
+    }
+    localIterator = aute.a.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      localEntry = (Map.Entry)localIterator.next();
+      if (((Integer)localEntry.getValue()).intValue() == paramInt) {
+        return (String)localEntry.getKey();
+      }
+    }
+    return "";
+  }
+  
+  public static String a(long paramLong1, long paramLong2)
+  {
+    return String.valueOf(100000L + 10L * paramLong1 + paramLong2);
   }
   
   public static String a(String paramString)
   {
-    return a(ShortVideoUtils.a(null, paramString));
-  }
-  
-  public static void a(Activity paramActivity, AppInterface paramAppInterface, int paramInt) {}
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, boolean paramBoolean)
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("file_send_path", paramString1);
-    localIntent.putExtra("video_url", paramString2);
-    localIntent.putExtra("video_thumb_url", paramString3);
-    localIntent.putExtra("mode", paramInt);
-    localIntent.putExtra("uin", paramString4);
-    localIntent.putExtra("is_authentic", paramBoolean);
-    PublicFragmentActivity.a(paramActivity, localIntent, NearbyAuthVideoPlayerFragment.class, 11000);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = a + paramQQAppInterface.getCurrentAccountUin();
-    PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit().putBoolean(paramQQAppInterface, false).commit();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface.a(new NearbyVideoUtils.3(paramString, paramQQAppInterface));
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, baua parambaua)
-  {
-    parambaua.addFilter(new Class[] { baqs.class });
-    paramQQAppInterface.a().a(parambaua);
-    ThreadManager.post(new NearbyVideoUtils.2(paramQQAppInterface, paramString, (int)(System.currentTimeMillis() / 1000L)), 8, null, true);
-  }
-  
-  public static void a(String paramString)
-  {
-    try
-    {
-      boolean bool = new JSONObject(paramString).getBoolean("VideoAuthEnable");
-      String str = b;
-      PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit().putBoolean(str, bool).commit();
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
     }
-    catch (JSONException localJSONException)
+    return new String(bdfr.decode(paramString, 0));
+  }
+  
+  public static ArrayList<ausu> a(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramString = Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramString);
+    while (paramString.find())
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("NearbyVideoUtils", 2, "setAuthVideoConfig=" + paramString + ",error:" + localJSONException.toString());
+      ausu localausu = new ausu();
+      localausu.jdField_a_of_type_JavaLangString = paramString.group();
+      localausu.jdField_a_of_type_Int = paramString.start();
+      localausu.jdField_b_of_type_Int = (localausu.jdField_a_of_type_Int + localausu.jdField_a_of_type_JavaLangString.length());
+      localausu.jdField_b_of_type_JavaLangString = paramString.group(1);
+      if ((!TextUtils.isEmpty(localausu.jdField_b_of_type_JavaLangString)) && (localausu.jdField_b_of_type_JavaLangString.contains("client/42px-")))
+      {
+        Matcher localMatcher = Pattern.compile("x_character/([^\\)]+?)/client").matcher(localausu.jdField_b_of_type_JavaLangString);
+        if (localMatcher.find()) {
+          localausu.c = localMatcher.group(1);
+        }
+      }
+      localArrayList.add(localausu);
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkUtils", 2, "getMutualMarkImageUrlTemplateInfos. url:" + localausu.jdField_b_of_type_JavaLangString + " template:" + localausu.jdField_a_of_type_JavaLangString);
+      }
     }
+    return localArrayList;
   }
   
-  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
+  public static List<String> a()
   {
-    new azmo(null).a("dc00899").b("grp_lbs").c(paramString1).d(paramString2).a(paramInt1).b(paramInt2).a(paramVarArgs).a();
+    ArrayList localArrayList = new ArrayList(b.keySet());
+    Collections.sort(localArrayList, new aust());
+    return localArrayList;
   }
   
-  public static void a(String paramString, String... paramVarArgs)
+  public static boolean a(int paramInt)
   {
-    a("data_card", paramString, 0, 0, paramVarArgs);
+    if ((paramInt <= 100000) || (paramInt >= 200000)) {}
+    while (b(String.valueOf(paramInt)) <= 0L) {
+      return false;
+    }
+    return true;
   }
   
-  public static boolean a()
+  public static boolean a(long paramLong)
   {
-    String str = b;
-    return PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).getBoolean(str, true);
-  }
-  
-  public static boolean a(Activity paramActivity, QQAppInterface paramQQAppInterface)
-  {
-    if (!a(paramQQAppInterface)) {}
+    if (paramLong <= 0L) {}
+    int i;
     do
     {
       return false;
-      if (!paramActivity.isFinishing()) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("NearbyVideoUtils", 2, "showVoteUpdateDialog invoke, but activity is finishing");
-    return false;
-    ImageView localImageView = new ImageView(paramActivity);
-    localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    localImageView.setImageDrawable(URLDrawable.getDrawable("http://pub.idqqimg.com/pc/misc/files/20170807/f2f569d65bc74317bb9a6bfe482dcd2c.png?_t=1502087876532"));
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, aekt.a(150.0F, paramActivity.getResources()));
-    new avpi(paramActivity).a(localImageView, localLayoutParams).b(alpo.a(2131707774)).a(new avpc(alpo.a(2131707776), new aust(paramActivity, paramQQAppInterface))).show();
-    a(paramQQAppInterface);
+      i = a();
+    } while ((i < 18) || (i >= 24) || (bdns.c(paramLong) == 2131720894));
     return true;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = a + paramQQAppInterface.getCurrentAccountUin();
-    return PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).getBoolean(paramQQAppInterface, true);
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null)) {
+      return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("hotDisableInteractive", 0) == 1;
+    }
+    return false;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      bool1 = bool2;
+      if (paramString.startsWith("#image_url"))
+      {
+        bool1 = bool2;
+        if (Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramString).matches()) {
+          bool1 = true;
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkUtils", 2, "isMutualMarkImageUrlTemplate. res:" + bool1 + " template:" + paramString);
+    }
+    return bool1;
+  }
+  
+  public static long b(String paramString)
+  {
+    long l = 0L;
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      paramString = Long.valueOf(Long.parseLong(paramString));
+      l = (paramString.longValue() - 100000L - paramString.longValue() % 10L) / 10L;
+      return l;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("MutualMarkUtils", 1, "getType error:" + paramString.getMessage());
+    }
+    return 0L;
+  }
+  
+  public static String b(String paramString)
+  {
+    Object localObject = Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramString);
+    if (((Matcher)localObject).matches())
+    {
+      localObject = ((Matcher)localObject).group(1);
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkUtils", 2, "getMutualMarkImageUrlTemplateUrl. url:" + (String)localObject + " template:" + paramString);
+      }
+      return localObject;
+    }
+    return null;
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 2097153) || (paramInt == 2097154) || (paramInt == 2097155);
+  }
+  
+  public static boolean b(long paramLong)
+  {
+    boolean bool2 = false;
+    long[] arrayOfLong = ausi.b;
+    int j = arrayOfLong.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (arrayOfLong[i] == paramLong) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public static boolean c(long paramLong)
+  {
+    long[] arrayOfLong;
+    int j;
+    int i;
+    if (b(paramLong))
+    {
+      arrayOfLong = ausi.a;
+      j = arrayOfLong.length;
+      i = 0;
+    }
+    while (i < j)
+    {
+      if (arrayOfLong[i] == paramLong) {
+        return false;
+      }
+      i += 1;
+    }
+    return true;
   }
 }
 

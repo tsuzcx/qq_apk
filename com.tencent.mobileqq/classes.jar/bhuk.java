@@ -1,17 +1,12 @@
 import android.view.View;
-import com.tencent.widget.ListView;
 
-public class bhuk
+public abstract interface bhuk
 {
-  public View a;
-  public Object a;
-  public boolean a;
-  
-  public bhuk(ListView paramListView) {}
+  public abstract void OnClick(View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhuk
  * JD-Core Version:    0.7.0.1
  */

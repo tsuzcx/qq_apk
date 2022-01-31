@@ -1,66 +1,18 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
 
-public class aiop
-  extends aimu
+public final class aiop
+  implements Parcelable.Creator<PhotoSendParams>
 {
-  private final String a;
-  
-  aiop(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public PhotoSendParams a(Parcel paramParcel)
   {
-    super(paramNewPhotoPreviewActivity);
-    this.jdField_a_of_type_JavaLangString = "PhotoPreviewLogicAEPlay";
+    return new PhotoSendParams(paramParcel);
   }
   
-  private void c(String paramString)
+  public PhotoSendParams[] a(int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Aimr.lastTimeShowToast >= 700L)
-    {
-      this.jdField_a_of_type_Aimr.lastTimeShowToast = l;
-      QQToast.a(this.mActivity, paramString, 0).b(((NewPhotoPreviewActivity)this.mActivity).getResources().getDimensionPixelSize(2131298914));
-    }
-  }
-  
-  private boolean c()
-  {
-    return this.mPhotoCommonData.selectedPhotoList.size() < this.mPhotoCommonData.maxSelectNum;
-  }
-  
-  public void initUI()
-  {
-    super.initUI();
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new aioq(this));
-  }
-  
-  public void onSelectClick(View paramView)
-  {
-    if ((!this.mPhotoCommonData.selectedIndex.contains(Integer.valueOf(((NewPhotoPreviewActivity)this.mActivity).getCurrentSelectedPostion()))) && (this.mPhotoCommonData.selectedPhotoList.size() >= this.mPhotoCommonData.maxSelectNum))
-    {
-      c(String.format(((NewPhotoPreviewActivity)this.mActivity).getString(2131689820), new Object[] { Integer.valueOf(this.mPhotoCommonData.maxSelectNum) }));
-      return;
-    }
-    super.onSelectClick(paramView);
-  }
-  
-  public void updateButton()
-  {
-    super.updateButton();
-    String str = ((NewPhotoPreviewActivity)this.mActivity).getString(2131717485);
-    int i = this.mPhotoCommonData.selectedPhotoList.size();
-    str = str + " " + i + "/" + this.mPhotoCommonData.maxSelectNum;
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setText(str);
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setEnabled(true);
-    if (c())
-    {
-      ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setBackgroundResource(2130849134);
-      return;
-    }
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setBackgroundResource(2130837723);
+    return new PhotoSendParams[paramInt];
   }
 }
 

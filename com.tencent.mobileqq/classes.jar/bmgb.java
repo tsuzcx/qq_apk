@@ -1,11 +1,17 @@
-public abstract interface bmgb
-  extends bmiw
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+
+public class bmgb
+  implements View.OnTouchListener
 {
-  public abstract int a();
+  public bmgb(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return this.a.a(paramView, paramMotionEvent);
+  }
 }
 
 

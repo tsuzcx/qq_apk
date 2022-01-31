@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import albm;
-import albo;
+import algb;
+import algd;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -10,14 +10,14 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ApolloUrlInterceptor$3
   implements Runnable
 {
-  public ApolloUrlInterceptor$3(albm paramalbm, ByteArrayOutputStream paramByteArrayOutputStream) {}
+  public ApolloUrlInterceptor$3(algb paramalgb, ByteArrayOutputStream paramByteArrayOutputStream) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("apollo_client_ApolloUrlInterceptor", 1, "task(" + this.this$0.b + ") onClose:cachedStream size:" + this.a.size());
     }
-    if (!albm.a(this.this$0)) {}
+    if (!algb.a(this.this$0)) {}
     try
     {
       str = this.a.toString("UTF-8");
@@ -25,14 +25,14 @@ public class ApolloUrlInterceptor$3
       if (!TextUtils.isEmpty(str))
       {
         long l = System.currentTimeMillis();
-        albo.a().b(albm.a(this.this$0), str);
-        albm.a(this.this$0, true);
+        algd.a().b(algb.a(this.this$0), str);
+        algb.a(this.this$0, true);
         if (QLog.isColorLevel()) {
           QLog.d("apollo_client_ApolloUrlInterceptor", 4, "task(" + this.this$0.b + ") onClose:save bridgeStream " + (System.currentTimeMillis() - l) + " ms. htmlString.length:" + str.length());
         }
       }
-      albm.a(this.this$0).set(false);
-      if ((albm.b(this.this$0)) && (QLog.isColorLevel())) {
+      algb.a(this.this$0).set(false);
+      if ((algb.b(this.this$0)) && (QLog.isColorLevel())) {
         QLog.d("apollo_client_ApolloUrlInterceptor", 4, "task(" + this.this$0.b + ") onClose: postForceDestroyIfNeed send destroy message.");
       }
       return;

@@ -1,34 +1,26 @@
-import android.view.View;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.app.qqdaily.QQDailyArkView;
 
-public abstract interface amov
+public class amov
+  implements ArkViewImplement.LoadCallback
 {
-  public abstract int a();
+  public amov(QQDailyArkView paramQQDailyArkView) {}
   
-  public abstract int a(int paramInt);
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  {
+    onLoadState(paramInt1);
+  }
   
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void a(View paramView);
-  
-  public abstract void a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public void onLoadState(int paramInt)
+  {
+    if (paramInt != 1) {
+      QQDailyArkView.a(this.a);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amov
  * JD-Core Version:    0.7.0.1
  */

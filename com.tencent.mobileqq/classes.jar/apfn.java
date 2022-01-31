@@ -1,6 +1,19 @@
-public abstract interface apfn
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.QQPhotoInfo;
+
+public final class apfn
+  implements Parcelable.Creator<QQPhotoInfo>
 {
-  public abstract void a(int paramInt);
+  public QQPhotoInfo a(Parcel paramParcel)
+  {
+    return new QQPhotoInfo(paramParcel, null);
+  }
+  
+  public QQPhotoInfo[] a(int paramInt)
+  {
+    return new QQPhotoInfo[paramInt];
+  }
 }
 
 

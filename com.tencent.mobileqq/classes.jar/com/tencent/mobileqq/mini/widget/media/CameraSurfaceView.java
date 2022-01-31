@@ -16,8 +16,8 @@ import android.view.Display;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import azcv;
-import azcw;
+import azhe;
+import azhf;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
@@ -235,7 +235,7 @@ public class CameraSurfaceView
   
   boolean canFocus()
   {
-    return !azcw.d(azcw.a);
+    return !azhf.d(azhf.a);
   }
   
   public void closeCamera()
@@ -317,7 +317,7 @@ public class CameraSurfaceView
             bool1 = bool2;
           }
         }
-      } while (!azcv.a().a(paramString));
+      } while (!azhe.a().a(paramString));
       localRuntimeException.setFocusMode(paramString);
       bool2 = setCameraParameters(localRuntimeException);
       bool1 = bool2;
@@ -356,7 +356,7 @@ public class CameraSurfaceView
       {
         mCamera = Camera.open(i);
         i = 90;
-        if (azcw.d(azcw.g)) {
+        if (azhf.d(azhf.g)) {
           i = 270;
         }
         mCamera.setDisplayOrientation(i);

@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-class agjz
-  implements DialogInterface.OnClickListener
+public class agjz
 {
-  agjz(agjp paramagjp) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public URLImageView a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ((akji)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 319);
-  }
+  public agjz(agjx paramagjx) {}
 }
 
 

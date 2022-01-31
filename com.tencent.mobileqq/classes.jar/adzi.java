@@ -1,31 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.SplashActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class adzi
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public adzi(TroopInfoActivity paramTroopInfoActivity) {}
+  public adzi(SplashActivity.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QQAppInterface localQQAppInterface = this.a.app;
-    String str2 = this.a.a.troopUin;
-    if (this.a.a.bOwner) {}
-    for (String str1 = "0";; str1 = "1")
-    {
-      azmj.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "1", "");
-      paramDialogInterface.dismiss();
-      this.a.i();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("SplashActivity", 2, "onReceive:before_account_change");
     }
+    this.a.this$0.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adzi
  * JD-Core Version:    0.7.0.1
  */

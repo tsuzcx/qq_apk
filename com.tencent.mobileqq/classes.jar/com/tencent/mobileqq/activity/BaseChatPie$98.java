@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import bcfr;
+import bcka;
 
 class BaseChatPie$98
   implements Runnable
 {
-  BaseChatPie$98(BaseChatPie paramBaseChatPie, bcfr parambcfr, boolean paramBoolean) {}
+  BaseChatPie$98(BaseChatPie paramBaseChatPie, bcka parambcka, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bcfr.a(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Bcka.a(this.jdField_a_of_type_Boolean);
   }
 }
 

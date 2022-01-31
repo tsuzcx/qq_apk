@@ -1,34 +1,117 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import android.support.annotation.NonNull;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class axwm
-  implements DialogInterface.OnClickListener
+public class axwm
+  extends GPUBaseFilter
 {
-  axwm(axwf paramaxwf, int paramInt, Object paramObject) {}
+  private int jdField_a_of_type_Int = -1;
+  private List<GPUBaseFilter> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private List<RenderBuffer> b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private void a()
   {
-    switch (this.jdField_a_of_type_Int)
+    if (this.b != null)
     {
-    default: 
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext()) {
+        ((RenderBuffer)localIterator.next()).destroy();
+      }
+      this.b = null;
     }
-    do
+  }
+  
+  public RenderBuffer a()
+  {
+    if ((this.b != null) && (this.b.size() > 0)) {
+      return (RenderBuffer)this.b.get(this.b.size() - 1);
+    }
+    throw new RuntimeException("please check your state");
+  }
+  
+  public void a(@NonNull GPUBaseFilter paramGPUBaseFilter)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramGPUBaseFilter);
+  }
+  
+  public void destroy()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((GPUBaseFilter)localIterator.next()).destroy();
+    }
+    a();
+  }
+  
+  public void drawTexture(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    paramInt = 0;
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
     {
-      return;
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOVideoData));
-    paramDialogInterface = (AIOVideoData)this.jdField_a_of_type_JavaLangObject;
-    this.jdField_a_of_type_Axwf.a.a(paramDialogInterface);
-    this.jdField_a_of_type_Axwf.a.a(paramDialogInterface.jdField_a_of_type_Long, paramDialogInterface.jdField_a_of_type_Int, 2);
-    this.jdField_a_of_type_Axwf.updateUI();
+      if (paramInt != this.jdField_a_of_type_JavaUtilList.size() - 1)
+      {
+        ((RenderBuffer)this.b.get(paramInt)).bind();
+        ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, null, null);
+        ((RenderBuffer)this.b.get(paramInt)).unbind();
+        this.jdField_a_of_type_Int = ((RenderBuffer)this.b.get(paramInt)).getTexId();
+      }
+      for (;;)
+      {
+        paramInt += 1;
+        break;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, paramArrayOfFloat1, paramArrayOfFloat2);
+        }
+        else
+        {
+          ((RenderBuffer)this.b.get(paramInt)).bind();
+          ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, paramArrayOfFloat1, paramArrayOfFloat2);
+          ((RenderBuffer)this.b.get(paramInt)).unbind();
+          this.jdField_a_of_type_Int = ((RenderBuffer)this.b.get(paramInt)).getTexId();
+        }
+      }
+    }
+  }
+  
+  public void init()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((GPUBaseFilter)localIterator.next()).init();
+    }
+  }
+  
+  public void onOutputSizeChanged(int paramInt1, int paramInt2)
+  {
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((GPUBaseFilter)((Iterator)localObject).next()).onOutputSizeChanged(paramInt1, paramInt2);
+    }
+    a();
+    this.b = new ArrayList();
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    int i = j;
+    if (this.jdField_a_of_type_Boolean) {
+      i = j - 1;
+    }
+    j = 0;
+    while (j < i)
+    {
+      localObject = new RenderBuffer(paramInt1, paramInt2, 33984);
+      this.b.add(localObject);
+      j += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axwm
  * JD-Core Version:    0.7.0.1
  */

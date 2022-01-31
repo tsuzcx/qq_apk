@@ -1,16 +1,28 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.subscribe.comment.CommentInputPopupWindow.1.1;
+import com.tencent.biz.subscribe.SubscribeUtils.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class ybv
-  implements ybs
+  implements baug
 {
-  public void a(View paramView)
+  public ybv(SubscribeUtils.1 param1) {}
+  
+  public void onResp(bavf parambavf)
   {
-    if (this.a.isShowing()) {
-      ybu.a(this.a).runOnUiThread(new CommentInputPopupWindow.1.1(this));
+    QLog.i("DownLoadZipFile", 1, "download  onResp url:  resultcode: " + parambavf.c);
+    try
+    {
+      QLog.d("DownLoadZipFile", 4, "start unzip file to folderPath:" + this.a.jdField_a_of_type_JavaLangString);
+      ndr.a(this.a.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_JavaLangString);
+      bdhb.a(this.a.jdField_a_of_type_JavaIoFile);
+      return;
+    }
+    catch (Exception parambavf)
+    {
+      QLog.i("DownLoadZipFile", 1, "unzip file failed" + parambavf);
     }
   }
+  
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

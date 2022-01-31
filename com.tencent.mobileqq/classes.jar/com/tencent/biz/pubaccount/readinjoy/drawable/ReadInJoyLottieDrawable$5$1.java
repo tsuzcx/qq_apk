@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.drawable;
 
-import bjps;
+import bjtz;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.util.WeakReference;
@@ -14,7 +14,7 @@ public class ReadInJoyLottieDrawable$5$1
   
   public void run()
   {
-    if (bjps.b(this.this$0.jdField_a_of_type_JavaIoFile, this.this$0.b)) {}
+    if (bjtz.b(this.this$0.jdField_a_of_type_JavaIoFile, this.this$0.b)) {}
     try
     {
       out localout = (out)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get();

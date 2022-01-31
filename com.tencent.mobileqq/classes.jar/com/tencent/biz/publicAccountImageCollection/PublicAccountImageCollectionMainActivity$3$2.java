@@ -12,10 +12,10 @@ public class PublicAccountImageCollectionMainActivity$3$2
   {
     if (PublicAccountImageCollectionMainActivity.b(this.a.a))
     {
-      this.a.a.e.setImageResource(2130841293);
+      this.a.a.e.setImageResource(2130841294);
       return;
     }
-    this.a.a.e.setImageResource(2130841292);
+    this.a.a.e.setImageResource(2130841293);
   }
 }
 

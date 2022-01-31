@@ -1,42 +1,24 @@
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.observer.AccountObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
-class ailk
-  extends AccountObserver
+public class ailk
+  implements DialogInterface.OnClickListener
 {
-  ailk(ailh paramailh) {}
+  public ailk(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onUpdateSKey(String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    if (paramString1 == null)
-    {
-      for (;;)
-      {
-        int j = i - 1;
-        if (i <= 0) {
-          break;
-        }
-        paramString1 = ailh.a(this.a, ((TroopClipPic)this.a.jdField_a_of_type_JavaUtilArrayList.get(j)).ts);
-        if (paramString1 == null)
-        {
-          i = j;
-        }
-        else
-        {
-          this.a.jdField_a_of_type_JavaUtilList.remove(paramString1);
-          this.a.b(paramString1);
-          i = j;
-        }
-      }
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
+    BindNumberActivity.a(this.a);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.a.getIntent();
+    if (paramDialogInterface.getBooleanExtra("kFPhoneChange", false)) {
+      this.a.a("CliOper", "0X8005DE9", 1);
     }
-    this.a.a(this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    if (paramDialogInterface.getBooleanExtra("kUnityOther", false)) {
+      this.a.a("CliOper", "0X8005DE9", 2);
+    }
   }
 }
 

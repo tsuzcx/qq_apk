@@ -1,18 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.triton.sdk.callback.DialogCallback;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.ResultReceiver;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 class bgtw
-  implements DialogInterface.OnClickListener
+  implements Handler.Callback
 {
-  bgtw(bgtt parambgtt, DialogCallback paramDialogCallback) {}
+  bgtw(bgtv parambgtv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTritonSdkCallbackDialogCallback.onCancel();
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    int i = paramMessage.what;
+    paramMessage.getData().setClassLoader(bgtv.a(this.a).getClassLoader());
+    MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramMessage.getData().getParcelable("KEY_APPINFO");
+    ResultReceiver localResultReceiver = (ResultReceiver)paramMessage.getData().getParcelable("receiver");
+    bgtv.a(this.a, i, paramMessage.getData(), localMiniAppInfo, localResultReceiver);
+    return false;
   }
 }
 

@@ -1,84 +1,46 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.open.agent.AuthorityControlFragment;
-import com.tencent.open.model.AppInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
 
 public class beyh
-  extends bfml
 {
-  public beyh(AuthorityControlFragment paramAuthorityControlFragment) {}
+  private bexy[] a = new bexy[3];
   
-  protected void a(boolean paramBoolean, List<AppInfo> paramList)
+  public bexy a(Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AuthorityControlActivity", 2, "onDelApp: invoked.  isSuccess: " + paramBoolean + " infos: " + paramList);
+    Object localObject1;
+    if ((paramInt < 0) || (paramInt > 3)) {
+      localObject1 = null;
     }
-    QQAppInterface localQQAppInterface;
-    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
+    do
     {
-      AuthorityControlFragment.a(this.a).b(paramList);
-      AuthorityControlFragment.a(this.a).a();
-      if (AuthorityControlFragment.a(this.a).getCount() == 0) {
-        AuthorityControlFragment.a(this.a);
-      }
-      int i = paramList.size();
-      paramList = String.format(alpo.a(2131701169), new Object[] { Integer.valueOf(i) });
-      QQToast.a(AuthorityControlFragment.a(this.a), 2, paramList, 0).a();
-      localQQAppInterface = AuthorityControlFragment.a(this.a);
-      if (!paramBoolean) {
-        break label207;
-      }
-    }
-    label207:
-    for (paramList = "0";; paramList = "1")
+      do
+      {
+        return localObject1;
+        ??? = this.a[paramInt];
+        localObject1 = ???;
+      } while (??? != null);
+      localObject1 = ???;
+    } while (paramContext == null);
+    synchronized (this.a)
     {
-      azmj.b(localQQAppInterface, "dc00898", "", "", "0X8009E1D", "0X8009E1D", 0, 0, paramList, "", "", "");
-      return;
-      QQToast.a(AuthorityControlFragment.a(this.a), 1, alpo.a(2131701173), 0).a();
-      break;
+      localObject1 = this.a[paramInt];
+      if (localObject1 != null) {
+        return localObject1;
+      }
     }
-  }
-  
-  protected void a(boolean paramBoolean, List<AppInfo> paramList, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AuthorityControlActivity", 2, "onGetAuthorizeAppList: invoked.  isSuccess: " + paramBoolean + " infos: " + paramList);
-    }
-    if (paramBoolean)
+    switch (paramInt)
     {
-      paramString = paramList;
-      if (paramList == null) {
-        paramString = new ArrayList();
-      }
-      AuthorityControlFragment.a(this.a).a(paramString);
-      AuthorityControlFragment.a(this.a, new ArrayList(paramString));
-      if (AuthorityControlFragment.a(this.a).getCount() == 0) {
-        AuthorityControlFragment.a(this.a);
-      }
+    default: 
+      paramContext = (Context)localObject1;
     }
     for (;;)
     {
-      AuthorityControlFragment.a(this.a).notifyDataSetChanged();
-      if ((AuthorityControlFragment.a(this.a).isShowing()) && (!this.a.isRemoving())) {}
-      try
-      {
-        AuthorityControlFragment.a(this.a).dismiss();
-        label148:
-        AuthorityControlFragment.a(this.a, paramBoolean);
-        return;
-        AuthorityControlFragment.a(this.a).setVisibility(0);
-        this.a.setRightButton(2131690335, this.a);
-        continue;
-        AuthorityControlFragment.a(this.a);
-      }
-      catch (Throwable paramList)
-      {
-        break label148;
-      }
+      this.a[paramInt] = paramContext;
+      return paramContext;
+      paramContext = new beyb(paramContext);
+      continue;
+      paramContext = new bexz(paramContext);
+      continue;
+      paramContext = new beyf(paramContext);
     }
   }
 }

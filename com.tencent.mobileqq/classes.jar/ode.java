@@ -12,7 +12,7 @@ public class ode
 {
   public static void a(VideoInfo paramVideoInfo, ReadInJoyHeadImageView paramReadInJoyHeadImageView)
   {
-    Drawable localDrawable = bdda.a(true);
+    Drawable localDrawable = bdhj.a(true);
     if (!TextUtils.isEmpty(paramVideoInfo.n))
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
@@ -23,7 +23,7 @@ public class ode
       try
       {
         paramVideoInfo = URLDrawable.getDrawable(new URL(paramVideoInfo.n), localURLDrawableOptions);
-        paramVideoInfo.setDecodeHandler(bcuq.a);
+        paramVideoInfo.setDecodeHandler(bcyz.a);
         paramReadInJoyHeadImageView.setImageDrawable(paramVideoInfo);
         return;
       }

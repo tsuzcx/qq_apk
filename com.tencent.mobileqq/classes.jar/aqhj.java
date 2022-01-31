@@ -1,16 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqhj
-  implements View.OnClickListener
+class aqhj
+  extends aqbl
 {
-  public aqhj(FilePreviewActivity paramFilePreviewActivity) {}
+  aqhj(aqhi paramaqhi) {}
   
-  public void onClick(View paramView)
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    azmj.b(this.a.app, "dc00898", "", "", "0X8008A32", "0X8008A32", 0, 0, "", "", "", "");
-    FilePreviewActivity.a(this.a, bacb.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131720680), false));
+    if (paramObject == null) {}
+    do
+    {
+      do
+      {
+        Object[] arrayOfObject;
+        do
+        {
+          String str;
+          do
+          {
+            return;
+            arrayOfObject = (Object[])paramObject;
+            str = (String)arrayOfObject[0];
+            if (QLog.isColorLevel()) {
+              QLog.d("ExtendFriendSendMsgHelper", 2, String.format("onGetSigBy0xb4cCode success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+            }
+            if (!paramBoolean) {
+              break;
+            }
+            paramObject = (String)arrayOfObject[1];
+          } while (aqhi.a(this.a) == null);
+          aqhi.a(this.a).a(str, paramObject);
+          return;
+        } while (paramObject == null);
+        int i = ((Integer)arrayOfObject[1]).intValue();
+        if (QLog.isColorLevel()) {
+          QLog.d("ExtendFriendSendMsgHelper", 2, String.format("onGetSigBy0xb4cCode resetCode=%s", new Object[] { Integer.valueOf(i) }));
+        }
+        if (i != 20) {
+          break;
+        }
+      } while (aqhi.a(this.a) == null);
+      aqhi.a(this.a).a();
+      return;
+    } while (aqhi.a(this.a) == null);
+    aqhi.a(this.a).a(2131720551);
   }
 }
 

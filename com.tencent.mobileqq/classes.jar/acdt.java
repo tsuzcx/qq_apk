@@ -1,20 +1,16 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class acdt
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public acdt(BaseChatPie paramBaseChatPie) {}
+  public acdt(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.a.a, FavEmosmManageActivity.class);
-    this.a.a.startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    this.a.c();
+    azqs.b(this.a.app, "CliOper", "", "", "0X800AA44", "0X800AA44", 0, 0, "", "", "", "");
   }
 }
 

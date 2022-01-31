@@ -1,6 +1,6 @@
 package cooperation.readinjoy;
 
-import bjxj;
+import bkbq;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
@@ -13,18 +13,18 @@ public final class ReadInJoyHelper$4
   {
     int m = 0;
     int n = -1;
-    Object localObject2 = bjxj.a("remote_kd_tab_switch");
-    Object localObject1 = bjxj.a("local_kd_tab_switch");
+    Object localObject2 = bkbq.a("remote_kd_tab_switch");
+    Object localObject1 = bkbq.a("local_kd_tab_switch");
     int j;
     int i1;
     int i2;
     label69:
     int k;
-    if (bjxj.i())
+    if (bkbq.i())
     {
       j = 1;
-      i1 = bjxj.a("local_kd_tab_switch").intValue();
-      i2 = bjxj.a("local_kd_tab_switch_prefix").intValue();
+      i1 = bkbq.a("local_kd_tab_switch").intValue();
+      i2 = bkbq.a("local_kd_tab_switch_prefix").intValue();
       if (!(localObject2 instanceof Boolean)) {
         break label233;
       }
@@ -34,7 +34,7 @@ public final class ReadInJoyHelper$4
       i = 1;
       k = i;
       label71:
-      localObject2 = bjxj.a("local_kd_tab_has_set");
+      localObject2 = bkbq.a("local_kd_tab_has_set");
       if (!(localObject1 instanceof Boolean)) {
         break label244;
       }

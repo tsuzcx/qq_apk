@@ -1,13 +1,19 @@
-import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARRelationShipAIOMsg;
 
-public abstract interface amvg
-  extends IInterface
+public final class amvg
+  implements Parcelable.Creator<ARRelationShipAIOMsg>
 {
-  public abstract void a();
+  public ARRelationShipAIOMsg a(Parcel paramParcel)
+  {
+    return new ARRelationShipAIOMsg(paramParcel);
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public ARRelationShipAIOMsg[] a(int paramInt)
+  {
+    return new ARRelationShipAIOMsg[paramInt];
+  }
 }
 
 

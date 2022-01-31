@@ -1,31 +1,17 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
-import mqq.app.QQPermissionCallback;
-
-class bbbe
-  implements QQPermissionCallback
+public class bbbe
+  extends bbbi
 {
-  bbbe(bbbd parambbbd) {}
+  public int a;
+  public long a;
+  public byte[] a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public String toString()
   {
-    bdcd.a(this.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    paramArrayOfString = new Intent();
-    paramArrayOfString.putExtra("audio_max_length", this.a.a.h);
-    if (this.a.a.q != null)
-    {
-      paramArrayOfString.putExtra("from", "publish");
-      paramArrayOfString.putExtra("bid", this.a.a.q);
-      paramArrayOfString.putExtra("fromflag", this.a.a.b);
-      bcht.a(this.a.a.o, this.a.a.p, "Clk_record", this.a.a.q, this.a.a.b, "", "");
-    }
-    adky.a(this.a.a.a, paramArrayOfString, PublicTransFragmentActivity.class, AudioRecordFragment.class, 1003);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" size:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(" storeType:");
+    return localStringBuilder.toString();
   }
 }
 

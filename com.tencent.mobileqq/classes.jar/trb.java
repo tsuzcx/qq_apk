@@ -1,18 +1,24 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import com.tencent.TMG.utils.QLog;
+import feedcloud.FeedCloudWrite.StDoLikeRsp;
 
-public class trb
-  extends FlingGestureHandler
+final class trb
+  implements zac<FeedCloudWrite.StDoLikeRsp>
 {
-  public trb(Activity paramActivity)
-  {
-    super(paramActivity);
-  }
+  trb(zac paramzac) {}
   
-  public void flingLToR()
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoLikeRsp paramStDoLikeRsp)
   {
-    tyj.a("", 22, 10L);
-    super.flingLToR();
+    if ((paramBoolean) && (paramLong == 0L)) {
+      QLog.d("doubleclicklike", 3, " success");
+    }
+    for (;;)
+    {
+      if (this.a != null) {
+        this.a.a(paramBoolean, paramLong, paramString, paramStDoLikeRsp);
+      }
+      return;
+      QLog.d("doubleclicklike", 3, " failed：" + paramLong);
+    }
   }
 }
 

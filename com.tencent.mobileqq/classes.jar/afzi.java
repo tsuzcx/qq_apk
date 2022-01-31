@@ -1,27 +1,25 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
-import com.tencent.mobileqq.data.MessageForTribeShortVideo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 
-public class afzi
-  extends bdvu
+class afzi
+  implements aetk
 {
-  public afzi(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder, afzl paramafzl, MessageForTribeShortVideo paramMessageForTribeShortVideo) {}
+  afzi(afzh paramafzh) {}
   
-  public void onDone(bdvv parambdvv)
+  public boolean onLongClick(View paramView)
   {
-    String str = parambdvv.a().getString("filePath");
-    if (parambdvv.a == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("TribeShortVideoItemBuilder", 2, "download video success! videoFile:" + str);
-      }
-      this.jdField_a_of_type_Afzl.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Afzl.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.b();
-      this.jdField_a_of_type_Afzl.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder.a(this.jdField_a_of_type_Afzl.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.videoWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.videoHeight, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.coverImgUrl, str);
+    paramView = (afzr)((View)paramView.getParent().getParent().getParent()).getTag();
+    if (paramView != null) {
+      paramView.a.performLongClick();
     }
+    return true;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

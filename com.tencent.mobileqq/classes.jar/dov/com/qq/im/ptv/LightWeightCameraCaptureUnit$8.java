@@ -1,18 +1,18 @@
 package dov.com.qq.im.ptv;
 
-import alpo;
-import bmba;
+import alud;
+import bmfm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class LightWeightCameraCaptureUnit$8
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$8(bmba parambmba) {}
+  public LightWeightCameraCaptureUnit$8(bmfm parambmfm) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), alpo.a(2131706471), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), alud.a(2131706483), 0).a();
   }
 }
 

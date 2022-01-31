@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.proxy;
 
-import bgnj;
+import bgrq;
 
 public abstract interface VideoPlayerProviderProxy
 {
   public abstract String getUrl(String paramString);
   
-  public abstract bgnj getVideoPlayer();
+  public abstract bgrq getVideoPlayer();
 }
 
 

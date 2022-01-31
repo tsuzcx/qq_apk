@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 class agdk
-  implements DialogInterface.OnCancelListener
+  implements bemz
 {
-  agdk(agdi paramagdi) {}
+  agdk(agdj paramagdj) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a(View paramView)
   {
-    if (this.a.h) {
-      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
-    }
+    aepi.n = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

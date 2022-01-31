@@ -1,24 +1,27 @@
-import com.tencent.mobileqq.activity.photo.album.QAlbumCustomAlbumConstants;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 
 public class bdaq
-  implements QAlbumCustomAlbumConstants
 {
-  public static final String a = l + "SelectedPhotoList";
-  public static final String b = l + "ForwardWhere";
-  public static final String c = l + "FromWhere";
-  public static final String d = l + "AlbumName";
-  public static final String e = l + "AlbumId";
-  public static final String f = l + "InitActivityClass";
-  public static final String g = l + "DestActivityClass";
-  public static final String h = l + "RequestCode";
-  public static final String i = l + "TempSelectPhotoMap";
-  public static final String j = l + "PassToDestActivity";
-  public static final String k = l + "PassFromDestActivity";
-  private static final String l = bdaq.class.getName() + ".";
+  public static int a(Context paramContext, float paramFloat)
+  {
+    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+  }
+  
+  public static int b(Context paramContext, float paramFloat)
+  {
+    return (int)(paramFloat / paramContext.getResources().getDisplayMetrics().density + 0.5F);
+  }
+  
+  public static int c(Context paramContext, float paramFloat)
+  {
+    return (int)(paramContext.getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdaq
  * JD-Core Version:    0.7.0.1
  */

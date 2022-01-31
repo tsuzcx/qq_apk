@@ -1,25 +1,16 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
 
-final class auvd
-  implements DialogInterface.OnClickListener
+public class auvd
+  extends BroadcastReceiver
 {
-  auvd(Activity paramActivity, String paramString, int paramInt, long paramLong) {}
+  public auvd(NearbyJsInterface paramNearbyJsInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidAppActivity, GameRoomInviteActivity.class);
-    paramDialogInterface.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.putExtra("roomNum", this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Long > 0L)
-    {
-      paramDialogInterface.putExtra("gc", this.jdField_a_of_type_Long);
-      paramDialogInterface.putExtra("isInviteTroop", false);
-    }
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
+    this.a.tribePersonalDataModify();
   }
 }
 

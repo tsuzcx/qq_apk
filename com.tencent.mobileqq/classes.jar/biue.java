@@ -1,13 +1,17 @@
-import cooperation.qqpim.QQPimGetTipsInfoIPC.NoticeClickTipsRunnable;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class biue
-  implements EIPCResultCallback
+  implements DialogInterface.OnClickListener
 {
-  public biue(QQPimGetTipsInfoIPC.NoticeClickTipsRunnable paramNoticeClickTipsRunnable) {}
+  public biue(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.finish();
+  }
 }
 
 

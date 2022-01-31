@@ -1,22 +1,8 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.widget.SlideDownFrameLayout;
+import android.view.View;
 
-public class berd
-  implements Animator.AnimatorListener
+public abstract interface berd
 {
-  public berd(SlideDownFrameLayout paramSlideDownFrameLayout) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    SlideDownFrameLayout.a(this.a).a();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void setMotionView(View paramView, int paramInt);
 }
 
 

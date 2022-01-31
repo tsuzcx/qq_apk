@@ -1,16 +1,10 @@
 public abstract interface bmxq
 {
-  public abstract void cancelAnimator();
+  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
   
-  public abstract void displayPanel();
+  public abstract void c(int paramInt);
   
-  public abstract void displayPanelFinish();
-  
-  public abstract void fadeBackground(float paramFloat);
-  
-  public abstract void hidePanel();
-  
-  public abstract void hidePanelFinish();
+  public abstract void e(int paramInt);
 }
 
 

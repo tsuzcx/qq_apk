@@ -1,24 +1,15 @@
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
-class bcbv
-  implements alzv
+public class bcbv
+  implements DialogInterface.OnClickListener
 {
-  bcbv(bcbt parambcbt, String paramString1, String paramString2, bcbw parambcbw) {}
+  public bcbv(ReciteFragment paramReciteFragment) {}
   
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    List localList = null;
-    if (paramTroopMemberInfo != null) {
-      localList = this.jdField_a_of_type_Bcbt.a(paramTroopMemberInfo.honorList);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopHonor.manager", 2, String.format("getTroopHonorList, troopUin: %s, memberUin: %s, honorList: %s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b, localList }));
-    }
-    if (this.jdField_a_of_type_Bcbw != null) {
-      this.jdField_a_of_type_Bcbw.a(localList);
-    }
+    ReciteFragment.a(this.a);
   }
 }
 

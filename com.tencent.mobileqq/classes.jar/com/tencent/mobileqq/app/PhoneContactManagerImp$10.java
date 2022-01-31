@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import aubn;
+import aufw;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -17,7 +17,7 @@ class PhoneContactManagerImp$10
       {
         Iterator localIterator = PhoneContactManagerImp.a(this.this$0).iterator();
         while (localIterator.hasNext()) {
-          ((aubn)localIterator.next()).a(this.this$0.a);
+          ((aufw)localIterator.next()).a(this.this$0.a);
         }
         localObject = finally;
       }

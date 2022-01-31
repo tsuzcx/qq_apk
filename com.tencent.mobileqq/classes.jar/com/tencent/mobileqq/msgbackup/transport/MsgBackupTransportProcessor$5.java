@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.msgbackup.transport;
 
-import auey;
+import aujh;
 
 public class MsgBackupTransportProcessor$5
   implements Runnable
 {
-  public MsgBackupTransportProcessor$5(auey paramauey) {}
+  public MsgBackupTransportProcessor$5(aujh paramaujh) {}
   
   public void run()
   {
-    auey.a(this.this$0);
+    aujh.a(this.this$0);
   }
 }
 

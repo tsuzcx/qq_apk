@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,8 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import bdag;
-import besa;
+import bdep;
+import bewj;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.video.multivideo.MultiVideoFragment;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
@@ -48,7 +48,7 @@ public class ReadinjoyJumpActivity
   private static Runnable jdField_b_of_type_JavaLangRunnable;
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long = -1L;
-  private besa jdField_a_of_type_Besa;
+  private bewj jdField_a_of_type_Bewj;
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   private WebViewProgressBar jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar;
   private Runnable jdField_a_of_type_JavaLangRunnable = new ReadinjoyJumpActivity.1(this);
@@ -78,11 +78,11 @@ public class ReadinjoyJumpActivity
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = ((WebViewProgressBar)this.mContentView.findViewById(2131372322));
-    this.jdField_a_of_type_Besa = new besa();
-    this.jdField_a_of_type_Besa.a(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setController(this.jdField_a_of_type_Besa);
-    this.jdField_a_of_type_Besa.a((byte)0);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = ((WebViewProgressBar)this.mContentView.findViewById(2131372342));
+    this.jdField_a_of_type_Bewj = new bewj();
+    this.jdField_a_of_type_Bewj.a(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setController(this.jdField_a_of_type_Bewj);
+    this.jdField_a_of_type_Bewj.a((byte)0);
   }
   
   public static boolean b(Intent paramIntent)
@@ -197,8 +197,8 @@ public class ReadinjoyJumpActivity
     if (this.leftView != null)
     {
       this.leftView.setTextColor(-14408926);
-      this.leftView.setText(alpo.a(2131713377));
-      this.leftView.setBackgroundResource(2130848925);
+      this.leftView.setText(alud.a(2131713389));
+      this.leftView.setBackgroundResource(2130848998);
     }
     if (getTitleBarView() != null)
     {
@@ -219,9 +219,9 @@ public class ReadinjoyJumpActivity
   
   private void e()
   {
-    this.jdField_a_of_type_Besa.a((byte)2);
+    this.jdField_a_of_type_Bewj.a((byte)2);
     if (this.mContentView != null) {
-      this.mContentView.findViewById(2131365821).setVisibility(0);
+      this.mContentView.findViewById(2131365823).setVisibility(0);
     }
     QLog.d("ReadinjoyJumpActivity", 1, "show error page!");
   }
@@ -238,7 +238,7 @@ public class ReadinjoyJumpActivity
         if (!ThemeUtil.isInNightMode(((PublicFragmentActivity)localFragmentActivity).getAppRuntime())) {
           break label95;
         }
-        if ((bdag.b()) || (bdag.d())) {
+        if ((bdep.b()) || (bdep.d())) {
           break label82;
         }
         localSystemBarCompact.setStatusBarColor(-7829368);
@@ -250,13 +250,13 @@ public class ReadinjoyJumpActivity
     localSystemBarCompact.setStatusBarDarkMode(true);
     return;
     label95:
-    if ((Build.VERSION.SDK_INT >= 23) && (!bdag.b()) && (!bdag.d()))
+    if ((Build.VERSION.SDK_INT >= 23) && (!bdep.b()) && (!bdep.d()))
     {
       ((PublicFragmentActivity)localFragmentActivity).getWindow().getDecorView().setSystemUiVisibility(9216);
       localSystemBarCompact.setStatusBarColor(-1);
       return;
     }
-    if (!bdag.d())
+    if (!bdep.d())
     {
       localSystemBarCompact.setStatusBarColor(-2368549);
       return;
@@ -312,7 +312,7 @@ public class ReadinjoyJumpActivity
   
   public int getContentLayoutId()
   {
-    return 2131560050;
+    return 2131560049;
   }
   
   public boolean onBackEvent()

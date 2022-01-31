@@ -1,12 +1,28 @@
-import com.tencent.mobileqq.music.SongInfo;
-
-public abstract interface aumt
+public class aumt
 {
-  public abstract String getToken();
+  public String a;
+  public String b;
   
-  public abstract void onPlaySongChanged(SongInfo paramSongInfo);
+  public aumt(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
   
-  public abstract void onPlayStateChanged(int paramInt);
+  public int a()
+  {
+    return 0;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
 }
 
 

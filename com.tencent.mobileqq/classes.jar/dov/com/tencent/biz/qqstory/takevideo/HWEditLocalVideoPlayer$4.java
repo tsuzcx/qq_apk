@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bmeu;
+import bmjg;
 
 class HWEditLocalVideoPlayer$4
   implements Runnable
@@ -9,15 +9,15 @@ class HWEditLocalVideoPlayer$4
   
   public void run()
   {
-    bmeu localbmeu = (bmeu)this.this$0.a(bmeu.class);
-    if (localbmeu != null) {
-      localbmeu.b();
+    bmjg localbmjg = (bmjg)this.this$0.a(bmjg.class);
+    if (localbmjg != null) {
+      localbmjg.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.4
  * JD-Core Version:    0.7.0.1
  */

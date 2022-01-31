@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import azmz;
-import bjxj;
+import azri;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
@@ -34,7 +34,7 @@ public class ReadInJoyFollowFragment
   
   private void a()
   {
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131375298);
+    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131375349);
     this.jdField_a_of_type_Nwj = new nwj(getActivity());
     this.jdField_a_of_type_Nwj.a(70);
     this.jdField_a_of_type_Nwj.b(0);
@@ -70,7 +70,7 @@ public class ReadInJoyFollowFragment
       this.jdField_a_of_type_Nwj.b();
     }
     this.jdField_a_of_type_Boolean = true;
-    if ((!bjxj.i()) || ((paramActivity instanceof ReadInJoyNewFeedsActivity)))
+    if ((!bkbq.i()) || ((paramActivity instanceof ReadInJoyNewFeedsActivity)))
     {
       paramActivity = ((ReadInJoyNewFeedsActivity)paramActivity).a();
       int i = paramActivity.b();
@@ -86,7 +86,7 @@ public class ReadInJoyFollowFragment
       if (this.jdField_a_of_type_Nwj != null) {
         this.jdField_a_of_type_Nwj.h();
       }
-      azmz.a(getActivity()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "actReadInJoyEnterDD", true, 0L, 0L, null, null);
+      azri.a(getActivity()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "actReadInJoyEnterDD", true, 0L, 0L, null, null);
       return;
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.d(2);
     }
@@ -146,7 +146,7 @@ public class ReadInJoyFollowFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getActivity());
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560030, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560029, paramViewGroup, false);
     a();
     return this.jdField_a_of_type_AndroidViewView;
   }

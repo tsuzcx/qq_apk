@@ -28,8 +28,8 @@ public class qvj
     }
     ReadInJoySelectMemberAQFragment.a(this.a, true);
     ReadInJoySelectMemberAQFragment.a(this.a, 2);
-    ReadInJoySelectMemberAQFragment.a(this.a, alpo.a(2131713129) + paramInt);
-    QQToast.a(this.a.getActivity(), 1, this.a.getString(2131719010), 0).b(ReadInJoySelectMemberAQFragment.a(this.a));
+    ReadInJoySelectMemberAQFragment.a(this.a, alud.a(2131713141) + paramInt);
+    QQToast.a(this.a.getActivity(), 1, this.a.getString(2131719022), 0).b(ReadInJoySelectMemberAQFragment.a(this.a));
   }
 }
 

@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class auvh
-  implements View.OnClickListener
+class auvh
+  implements DialogInterface.OnClickListener
 {
-  public auvh(RecentUserInvitePanel paramRecentUserInvitePanel, auvm paramauvm) {}
+  auvh(auvg paramauvg) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a.a(paramView, this.jdField_a_of_type_Auvm);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

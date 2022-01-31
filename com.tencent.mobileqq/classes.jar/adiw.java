@@ -1,30 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class adiw
-  implements DialogInterface.OnClickListener
+public class adiw
+  implements GestureDetector.OnDoubleTapListener
 {
-  adiw(adiu paramadiu) {}
+  public adiw(MainFragment paramMainFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
-    if (!bdee.d(this.a.a))
-    {
-      PhoneUnityChangeActivity.a(this.a.a, 2131694829);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("MainFragment", 2, "onDoubleTap() called with: e = [" + paramMotionEvent + "]");
     }
-    if (this.a.a.b == null)
+    paramMotionEvent = (Conversation)this.a.a(Conversation.class);
+    if (paramMotionEvent != null) {}
+    for (int i = paramMotionEvent.d;; i = 0)
     {
-      this.a.a.b = new adix(this);
-      this.a.a.app.registObserver(this.a.a.b);
+      if (QLog.isColorLevel()) {
+        QLog.d("DynimiIcon", 2, "onDoubleTap() unReadCount = " + i);
+      }
+      paramMotionEvent = this.a.b();
+      if ((paramMotionEvent instanceof Conversation)) {
+        ((Conversation)paramMotionEvent).c();
+      }
+      if (i == 0) {
+        MainFragment.d(this.a);
+      }
+      return false;
     }
-    PhoneUnityChangeActivity.a(this.a.a).a(true, false);
-    PhoneUnityChangeActivity.a(this.a.a, 2131719773, 0L, true);
-    azmj.b(this.a.a.app, "CliOper", "", "", "0X8005B81", "0X8005B81", 0, 0, "", "", "", "");
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

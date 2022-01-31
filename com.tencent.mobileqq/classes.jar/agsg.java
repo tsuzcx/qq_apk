@@ -1,34 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.ExtendFriendUserInfo;
 
 class agsg
-  extends WtloginObserver
+  implements View.OnClickListener
 {
-  agsg(agse paramagse, long paramLong, int[] paramArrayOfInt, DevlockInfo[] paramArrayOfDevlockInfo) {}
+  agsg(agse paramagse) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void onClick(View paramView)
   {
-    long l;
-    if (QLog.isColorLevel())
+    aepi.n = true;
+    aetu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, null);
+    if (agse.a(this.a) != null)
     {
-      l = System.currentTimeMillis();
-      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
-      if (paramDevlockInfo != null) {
-        break label100;
+      if (agse.a(this.a).tagID == 1) {
+        azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD92", "0X800AD92", 1, 0, "", "", "", "");
       }
     }
-    label100:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("C2CMsgRoamProxy", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
-      this.jdField_a_of_type_ArrayOfInt[0] = paramInt;
-      this.jdField_a_of_type_ArrayOfOicqWlogin_sdkDevicelockDevlockInfo[0] = paramDevlockInfo;
-      agse.b(this.jdField_a_of_type_Agse).b();
+    else {
       return;
     }
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD92", "0X800AD92", 2, 0, "", "", agse.a(this.a).tagName, "");
   }
 }
 

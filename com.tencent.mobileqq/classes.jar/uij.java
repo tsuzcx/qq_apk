@@ -1,36 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class uij
-  implements uni<vby, vdj>
+public class uij
 {
-  uij(uid paramuid, uim paramuim, String paramString) {}
+  public List<String> a;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public int g;
   
-  public void a(@NonNull vby paramvby, @Nullable vdj paramvdj, @NonNull ErrorMessage paramErrorMessage)
+  public uij(int paramInt)
   {
-    wsv.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response " + paramvdj);
-    if ((paramErrorMessage.isFail()) || (paramvdj == null))
+    this.jdField_e_of_type_Int = paramInt;
+  }
+  
+  public uij a(JSONObject paramJSONObject, int paramInt)
+  {
+    this.d = paramJSONObject.optString("transId", "");
+    this.g = paramJSONObject.optInt("min_limit", paramInt);
+    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("wording");
+    this.f = paramJSONObject.optInt("text_id", -1);
+    paramJSONObject = paramJSONObject.optJSONArray("transList");
+    if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
     {
-      wsv.e("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response error!");
-      this.jdField_a_of_type_Uim.a(true);
-      return;
-    }
-    paramvby = (uro)urr.a(5);
-    if (paramvdj.a != null)
-    {
-      paramErrorMessage = paramvdj.a.iterator();
-      while (paramErrorMessage.hasNext()) {
-        ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
+      this.a = new ArrayList();
+      paramInt = 0;
+      while (paramInt < paramJSONObject.length())
+      {
+        this.a.add(paramJSONObject.getString(paramInt));
+        paramInt += 1;
       }
     }
-    paramvdj.a = paramvby.a(paramvdj.a);
-    ((uid)urr.a(28)).a(paramvdj.b);
-    this.jdField_a_of_type_Uid.c(this.jdField_a_of_type_JavaLangString, 0);
-    this.jdField_a_of_type_Uim.a(true);
+    return this;
   }
 }
 

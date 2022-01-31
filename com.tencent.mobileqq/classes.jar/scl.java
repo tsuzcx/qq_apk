@@ -616,7 +616,7 @@ public class scl
           paramJSONObject.put("collect_normalstate_image", str);
           if (paramFastWebArticleInfo.b > 0L)
           {
-            paramJSONObject.put("comment_count", bjxj.a(paramFastWebArticleInfo.b, 99990000L, "9999万+", sck.a));
+            paramJSONObject.put("comment_count", bkbq.a(paramFastWebArticleInfo.b, 99990000L, "9999万+", sck.a));
             paramJSONObject.put("count_txt_color", "#FFFFFF");
             paramJSONObject.put("count_bg_color", "#FF4222");
           }
@@ -686,12 +686,12 @@ public class scl
         paramJSONObject.put("like_normalstate_image", str);
         if (paramFastWebArticleInfo.c > 0L)
         {
-          paramJSONObject.put("biu_count", bjxj.a(paramFastWebArticleInfo.c, 99990000L, "9999万+", "Biu"));
+          paramJSONObject.put("biu_count", bkbq.a(paramFastWebArticleInfo.c, 99990000L, "9999万+", "Biu"));
           paramJSONObject.put("biu_count_txt_color", "#262626");
         }
         if (paramFastWebArticleInfo.b > 0L)
         {
-          paramJSONObject.put("comment_count", bjxj.a(paramFastWebArticleInfo.b, 99990000L, "9999万+", sck.a));
+          paramJSONObject.put("comment_count", bkbq.a(paramFastWebArticleInfo.b, 99990000L, "9999万+", sck.a));
           paramJSONObject.put("count_txt_color", "#FF4222");
         }
         QLog.d("FastWebPTSDataConverter", 2, "buildNewCommentBiuOperationData | dynamicData : " + paramJSONObject.toString());

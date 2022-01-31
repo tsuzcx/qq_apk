@@ -1,6 +1,26 @@
-public abstract interface azdk
+public class azdk
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public awjh a;
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if (this.a == null) {
+      this.a = new awjh();
+    }
+    this.a.a = paramString1;
+    this.a.b = paramString2;
+    awiw.b(this, paramString1, paramString2);
+  }
+  
+  protected boolean a()
+  {
+    return false;
+  }
 }
 
 

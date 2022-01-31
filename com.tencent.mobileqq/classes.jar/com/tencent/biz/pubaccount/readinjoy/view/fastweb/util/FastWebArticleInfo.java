@@ -189,7 +189,7 @@ public class FastWebArticleInfo
     //   198: invokevirtual 116	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   201: pop
     //   202: invokestatic 164	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   205: invokestatic 169	azmz:a	(Landroid/content/Context;)Lazmz;
+    //   205: invokestatic 169	azri:a	(Landroid/content/Context;)Lazri;
     //   208: aconst_null
     //   209: ldc 171
     //   211: iload_3
@@ -197,7 +197,7 @@ public class FastWebArticleInfo
     //   214: lconst_0
     //   215: aload 7
     //   217: aconst_null
-    //   218: invokevirtual 174	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   218: invokevirtual 174	azri:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   221: aload 6
     //   223: areturn
     //   224: aload 6

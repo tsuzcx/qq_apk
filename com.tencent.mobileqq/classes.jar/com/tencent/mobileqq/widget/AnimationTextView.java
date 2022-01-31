@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.widget;
 
-import afyl;
-import ajtm;
-import ajto;
+import agda;
+import ajyb;
+import ajyd;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -27,20 +27,20 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView.BufferType;
-import ansf;
-import anty;
-import baig;
-import bain;
-import baip;
-import beiq;
-import beir;
-import bhow;
+import anwo;
+import anyh;
+import bamp;
+import bamw;
+import bamy;
+import bemz;
+import bena;
+import bhtd;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
 
 public class AnimationTextView
   extends PatchedTextView
-  implements ajtm, Handler.Callback
+  implements ajyb, Handler.Callback
 {
   private static final int MSG_INVALIDATE = 1;
   private static final String TAG = "AnimationTextView";
@@ -51,7 +51,7 @@ public class AnimationTextView
   public boolean isSingleClick = true;
   private boolean mBlockRelayout;
   private MotionEvent mCurrentDownEvent;
-  private final Handler mHandler = new bhow(Looper.myLooper(), this);
+  private final Handler mHandler = new bhtd(Looper.myLooper(), this);
   private boolean mHasSelected;
   private int mHighlightBackgroundColor = -5250572;
   private Paint mHighlightPaint;
@@ -59,14 +59,14 @@ public class AnimationTextView
   private boolean mIsHighlight;
   private boolean mIsSelectable = true;
   private MotionEvent mPreviousUpEvent;
-  protected ajto mSelectDelegate;
+  protected ajyd mSelectDelegate;
   private int mSelectEnd;
   private int mSelectStart;
   private int mStrokeColor;
   private final int[] mTempLocation = new int[2];
   Runnable mTimerForSecondClick = new AnimationTextView.1(this);
-  public beiq onDoubleClick;
-  public beir onSingleClick;
+  public bemz onDoubleClick;
+  public bena onSingleClick;
   public float touchL;
   public float touchT;
   
@@ -113,33 +113,33 @@ public class AnimationTextView
   {
     int i = 0;
     float f1 = this.touchL;
-    float f3 = afyl.e;
-    float f2 = this.touchT - afyl.c;
-    ansf localansf = (ansf)getTag(2131363763);
-    Object localObject = (ChatMessage)getTag(2131364214);
+    float f3 = agda.e;
+    float f2 = this.touchT - agda.c;
+    anwo localanwo = (anwo)getTag(2131363765);
+    Object localObject = (ChatMessage)getTag(2131364216);
     if (localObject != null) {}
     for (boolean bool = ((ChatMessage)localObject).isSend();; bool = false)
     {
       if (bool) {}
-      for (f1 = this.touchL - afyl.f;; f1 -= f3)
+      for (f1 = this.touchL - agda.f;; f1 -= f3)
       {
         localObject = getText();
-        if ((localObject instanceof baig))
+        if ((localObject instanceof bamp))
         {
-          localObject = (baig)localObject;
-          localObject = (bain[])((baig)localObject).getSpans(0, ((baig)localObject).length(), bain.class);
+          localObject = (bamp)localObject;
+          localObject = (bamw[])((bamp)localObject).getSpans(0, ((bamp)localObject).length(), bamw.class);
           int k;
           for (int j = 0; i < localObject.length; j = k)
           {
-            baip localbaip = localObject[i];
+            bamy localbamy = localObject[i];
             k = j;
-            if ((localbaip instanceof baip))
+            if ((localbamy instanceof bamy))
             {
-              localbaip = (baip)localbaip;
-              f3 = localbaip.a;
-              float f4 = localbaip.b;
-              float f5 = localbaip.c;
-              float f6 = localbaip.d;
+              localbamy = (bamy)localbamy;
+              f3 = localbamy.a;
+              float f4 = localbamy.b;
+              float f5 = localbamy.c;
+              float f6 = localbamy.d;
               k = j;
               if (f1 >= f3)
               {
@@ -166,21 +166,21 @@ public class AnimationTextView
           if (j != 0)
           {
             localObject = getBackground();
-            if ((localObject == null) || (!(localObject instanceof anty))) {
+            if ((localObject == null) || (!(localObject instanceof anyh))) {
               break label277;
             }
-            ((anty)localObject).a = true;
+            ((anyh)localObject).a = true;
           }
         }
         label277:
-        while ((localObject == null) || (localansf == null)) {
+        while ((localObject == null) || (localanwo == null)) {
           return;
         }
         localObject = getResources();
         if (bool) {}
-        for (i = 2130849365;; i = 2130849189)
+        for (i = 2130849438;; i = 2130849262)
         {
-          localansf.a(this, ((Resources)localObject).getDrawable(i));
+          localanwo.a(this, ((Resources)localObject).getDrawable(i));
           return;
         }
       }
@@ -331,9 +331,9 @@ public class AnimationTextView
     return (paramInt > 0) && (localLayout.getLineForOffset(paramInt) == localLayout.getLineForOffset(paramInt - 1) + 1);
   }
   
-  public void bind(@Nullable ajto paramajto)
+  public void bind(@Nullable ajyd paramajyd)
   {
-    this.mSelectDelegate = paramajto;
+    this.mSelectDelegate = paramajyd;
   }
   
   public void clearHighlightContent()
@@ -358,7 +358,7 @@ public class AnimationTextView
   }
   
   @Nullable
-  public ajto delegate()
+  public ajyd delegate()
   {
     return this.mSelectDelegate;
   }
@@ -390,7 +390,7 @@ public class AnimationTextView
         localObject1 = getText();
       } while (!(localObject1 instanceof Spannable));
       localObject1 = (Spannable)localObject1;
-      localObject1 = (bain[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), bain.class);
+      localObject1 = (bamw[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), bamw.class);
     } while ((localObject1 == null) || (localObject1.length <= 0));
     this.mBlockRelayout = true;
     int j = localObject1.length;
@@ -623,7 +623,7 @@ public class AnimationTextView
     if ((localObject != paramCharSequence) && ((getText() instanceof Spanned)))
     {
       paramCharSequence = (Spanned)getText();
-      paramBufferType = (bain[])paramCharSequence.getSpans(0, paramCharSequence.length(), bain.class);
+      paramBufferType = (bamw[])paramCharSequence.getSpans(0, paramCharSequence.length(), bamw.class);
       localObject = new Drawable[paramBufferType.length];
       int i = 0;
       while (i < paramBufferType.length)

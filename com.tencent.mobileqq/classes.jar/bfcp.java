@@ -1,48 +1,19 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.open.agent.AuthorityControlFragment;
 
 public class bfcp
-  extends Handler
+  implements DialogInterface.OnCancelListener
 {
-  public bfcp(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bfcp(AuthorityControlFragment paramAuthorityControlFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (paramMessage.what)
-    {
+    paramDialogInterface = this.a.getActivity();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.doOnBackPressed();
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramMessage = (Bitmap)paramMessage.obj;
-          } while (paramMessage == null);
-          this.a.a.a("", "", paramMessage, true);
-          return;
-          paramMessage = (Bitmap)paramMessage.obj;
-        } while (paramMessage == null);
-        this.a.a.a("", paramMessage);
-        return;
-        paramMessage = (String)paramMessage.obj;
-      } while (TextUtils.isEmpty(paramMessage));
-      this.a.a.setAppType(paramMessage);
-      return;
-    } while (this.a.a.a == null);
-    this.a.a.a.d();
   }
 }
 

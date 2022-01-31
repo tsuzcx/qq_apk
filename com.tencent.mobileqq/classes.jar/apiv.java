@@ -1,28 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
 
-class apiv
-  implements apia
+public class apiv
 {
-  apiv(apiu paramapiu) {}
+  public View a;
+  public RelativeLayout a;
+  public TextView a;
+  public HeartLayout a;
+  public View b;
   
-  public void a(List<appw> paramList)
+  public boolean a()
   {
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = new ArrayList();
-    }
-    QLog.d("FavEmoRoamingHandler", 1, new Object[] { "fav emoticon size:", Integer.valueOf(((List)localObject).size()) });
-    if (((List)localObject).size() >= apkc.a) {
-      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CFA", "0X8005CFA", 0, 0, "", "", "", "");
-    }
-    if (((List)localObject).size() >= apkc.b) {
-      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CFB", "0X8005CFB", 0, 0, "", "", "", "");
-    }
-    if (this.a.jdField_a_of_type_Apik != null) {
-      this.a.jdField_a_of_type_Apik.b((List)localObject);
-    }
+    return (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.b != null);
+  }
+  
+  public boolean a(View paramView1, TextView paramTextView, View paramView2, RelativeLayout paramRelativeLayout, HeartLayout paramHeartLayout)
+  {
+    return (this.jdField_a_of_type_AndroidViewView == paramView1) && (this.jdField_a_of_type_AndroidWidgetTextView == paramTextView) && (this.b == paramView2) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == paramRelativeLayout) && (this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout == paramHeartLayout);
   }
 }
 

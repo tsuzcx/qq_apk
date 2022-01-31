@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.transfile;
 
-import baop;
+import basy;
 
 public class ForwardSdkShareProcessor$ForwardStep$1
   implements Runnable
 {
-  public ForwardSdkShareProcessor$ForwardStep$1(baop parambaop) {}
+  public ForwardSdkShareProcessor$ForwardStep$1(basy parambasy) {}
   
   public void run()
   {
-    baop.a(this.a).a();
+    basy.a(this.a).a();
   }
 }
 

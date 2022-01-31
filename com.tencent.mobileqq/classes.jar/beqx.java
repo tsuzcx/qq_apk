@@ -1,20 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
+import java.util.Stack;
 
 public class beqx
-  implements Animation.AnimationListener
 {
-  public beqx(ShaderAnimLayout paramShaderAnimLayout) {}
+  private Stack<ChatThumbView> jdField_a_of_type_JavaUtilStack = new Stack();
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public beqx(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
+  
+  public ChatThumbView a()
   {
-    this.a.setVisibility(8);
+    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
+      return null;
+    }
+    return (ChatThumbView)this.jdField_a_of_type_JavaUtilStack.pop();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(ChatThumbView paramChatThumbView)
+  {
+    this.jdField_a_of_type_JavaUtilStack.push(paramChatThumbView);
+  }
 }
 
 

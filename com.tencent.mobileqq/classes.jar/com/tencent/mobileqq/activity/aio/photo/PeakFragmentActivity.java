@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import azib;
+import azmk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.NativeVideoImage;
@@ -20,7 +20,7 @@ public class PeakFragmentActivity
   
   protected void adjustStatusBar()
   {
-    azib.a(this.mSystemBarComp, getWindow());
+    azmk.a(this.mSystemBarComp, getWindow());
   }
   
   public boolean doOnCreate(Bundle paramBundle)

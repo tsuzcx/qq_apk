@@ -1,104 +1,89 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.view.View;
-import android.view.ViewGroup;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aoys
+final class aoys
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  protected final View a;
+  private int jdField_a_of_type_Int = -1;
+  private final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public aoys(View paramView)
+  public static aoys a(aoko[] paramArrayOfaoko)
   {
-    if (paramView == null) {
-      throw new IllegalArgumentException("itemView may not be null");
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0))
+    {
+      QLog.e("TencentDocUrl2DocConfigBean", 1, "parse error, confFiles is no-valid.");
+      return null;
     }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  private View a(View paramView, float paramFloat1, float paramFloat2)
-  {
-    RectF localRectF = new RectF();
+    aoys localaoys = new aoys();
+    int k = paramArrayOfaoko.length;
     int i = 0;
-    Object localObject = null;
-    Iterator localIterator = paramView.getTouchables().iterator();
-    View localView;
-    float f1;
-    if (localIterator.hasNext())
+    while (i < k)
     {
-      localView = (View)localIterator.next();
-      f1 = localView.getX();
-      float f2 = localView.getY();
-      localRectF.set(f1, f2, localView.getMeasuredWidth() + f1, localView.getMeasuredWidth() + f2);
-      if (!localRectF.contains(paramFloat1, paramFloat2)) {
-        break label160;
-      }
-      if (localView.equals(paramView)) {
-        i = 1;
-      }
-    }
-    label160:
-    for (;;)
-    {
-      break;
-      localObject = localView;
-      if ((localView instanceof ViewGroup))
+      Object localObject1 = paramArrayOfaoko[i];
+      try
       {
-        localObject = a(paramView, paramFloat1 - f1, paramFloat2 - paramFloat1);
-        continue;
-        if ((i != 0) && (localObject == null)) {
-          localObject = paramView;
+        localObject1 = new JSONObject(((aoko)localObject1).a);
+        if ((localObject1 != null) && (((JSONObject)localObject1).has("url_2_doc_enable")))
+        {
+          if (((JSONObject)localObject1).optBoolean("url_2_doc_enable"))
+          {
+            j = 1;
+            localaoys.jdField_a_of_type_Int = j;
+          }
+        }
+        else
+        {
+          if ((localObject1 == null) || (!((JSONObject)localObject1).has("support_host"))) {
+            break label189;
+          }
+          localObject1 = ((JSONObject)localObject1).optJSONArray("support_host");
+          if (localObject1 == null) {
+            break label189;
+          }
+          j = 0;
+          while (j < ((JSONArray)localObject1).length())
+          {
+            String str = ((JSONArray)localObject1).optString(j);
+            if (!TextUtils.isEmpty(str)) {
+              localaoys.jdField_a_of_type_JavaUtilList.add(str);
+            }
+            j += 1;
+          }
         }
       }
-      else
+      catch (JSONException localJSONException)
       {
-        return localObject;
+        for (;;)
+        {
+          QLog.e("TencentDocUrl2DocConfigBean", 1, "parse error", localJSONException);
+          Object localObject2 = null;
+          continue;
+          int j = 0;
+        }
+        label189:
+        i += 1;
       }
-      return localObject;
     }
+    return localaoys;
   }
   
-  public int a()
+  public boolean a()
   {
-    return this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
+    return this.jdField_a_of_type_Int == 1;
   }
   
-  public View a(aoze paramaoze)
+  public boolean a(String paramString)
   {
-    return a(this.jdField_a_of_type_AndroidViewView, paramaoze.a(), paramaoze.b());
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidViewView.measure(paramInt1, paramInt2);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_AndroidViewView.layout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_a_of_type_AndroidViewView.getAlpha() * 255.0F));
-    int i = paramCanvas.saveLayer(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint, 31);
-    this.jdField_a_of_type_AndroidViewView.draw(paramCanvas);
-    paramCanvas.restoreToCount(i);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
+    return (!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilList.contains(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoys
  * JD-Core Version:    0.7.0.1
  */

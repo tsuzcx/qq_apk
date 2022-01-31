@@ -90,7 +90,7 @@ public class ork
   
   public static long a()
   {
-    Long localLong = (Long)bjxj.a("sp_key_readinjoy_refresh_optimize_id", Long.valueOf(0L));
+    Long localLong = (Long)bkbq.a("sp_key_readinjoy_refresh_optimize_id", Long.valueOf(0L));
     if (localLong != null) {}
     for (long l = localLong.longValue();; l = 0L)
     {
@@ -128,7 +128,7 @@ public class ork
         QLog.d("ReadInJoyRefreshOptimizeUtil", 1, "optimizeID is not a number");
       }
     }
-    bjxj.a("sp_key_readinjoy_refresh_optimize_id", Long.valueOf(l1));
+    bkbq.a("sp_key_readinjoy_refresh_optimize_id", Long.valueOf(l1));
   }
   
   public static void a(pve parampve)

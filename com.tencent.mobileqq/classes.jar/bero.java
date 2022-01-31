@@ -1,44 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.widget.PagingScrollView;
 import com.tencent.qphone.base.util.QLog;
 
-public final class bero
-  implements ValueAnimator.AnimatorUpdateListener
+public class bero
+  implements View.OnTouchListener
 {
-  public float a;
-  private final TabDragAnimationView a;
-  public boolean a;
-  public boolean b = false;
+  public bero(PagingScrollView paramPagingScrollView) {}
   
-  public bero(TabDragAnimationView paramTabDragAnimationView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_Float = 1.0F;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f - this.jdField_a_of_type_Float > 0.0F) {
-      this.jdField_a_of_type_Boolean = true;
+    if (this.a.mIsOnSpecialView)
+    {
+      int i = paramMotionEvent.getAction();
+      if ((i == 1) || (i == 3))
+      {
+        this.a.mIsOnSpecialView = false;
+        this.a.getParent().requestDisallowInterceptTouchEvent(false);
+        if (QLog.isDevelopLevel()) {
+          QLog.i("PageScrollView", 4, "C.TE ACT_UP or CANCEL");
+        }
+      }
     }
-    if ((this.jdField_a_of_type_Boolean) && (f > 0.8F)) {
-      this.b = false;
-    }
-    this.jdField_a_of_type_Float = f;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
-    if (QLog.isColorLevel()) {
-      QLog.d(TabDragAnimationView.class.getSimpleName(), 2, "do mScale animation, percent=" + this.jdField_a_of_type_Float + ",reversed=" + this.jdField_a_of_type_Boolean + ",doAnim=" + this.b);
-    }
+    return false;
   }
 }
 

@@ -1,23 +1,47 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class amuf
-  implements View.OnTouchListener
+class amuf
+  extends BroadcastReceiver
 {
-  public amuf(ScanningSurfaceView paramScanningSurfaceView) {}
+  amuf(amue paramamue) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramMotionEvent.getAction())
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    do
     {
-    }
-    for (;;)
-    {
-      return true;
-      ScanningSurfaceView.a(this.a, paramMotionEvent);
-    }
+      int i;
+      int j;
+      do
+      {
+        do
+        {
+          return;
+        } while ((!"tencent.businessnotify.qq.to.subprocess".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("bussinessType", 0) != 2));
+        switch (paramIntent.getIntExtra("event", 0))
+        {
+        default: 
+          return;
+        case 1: 
+          paramContext = paramIntent.getStringExtra("bussinessSubName");
+          i = paramIntent.getIntExtra("download_Index", 0);
+          j = paramIntent.getIntExtra("download_Progress", 0);
+          if (AudioHelper.e()) {
+            QLog.w(this.a.c, 1, "receive notify, index[" + i + "], progress[" + j + "]");
+          }
+          break;
+        }
+      } while (this.a.a == null);
+      this.a.a.b(paramContext, i, j);
+      return;
+      paramContext = paramIntent.getStringExtra("config_Content");
+      this.a.b(paramContext);
+    } while (this.a.a == null);
+    this.a.a.b();
   }
 }
 

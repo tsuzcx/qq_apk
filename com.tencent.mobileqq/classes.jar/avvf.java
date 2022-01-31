@@ -1,8 +1,11 @@
-public abstract interface avvf
+public class avvf
 {
-  public abstract void a(avvt paramavvt);
+  public String a = "auto";
   
-  public abstract void a(avvt paramavvt1, avvt paramavvt2);
+  public String toString()
+  {
+    return "ARCloudReqOcrInfo{language = " + this.a + '}';
+  }
 }
 
 

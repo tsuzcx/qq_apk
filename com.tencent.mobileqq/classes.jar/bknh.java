@@ -1,19 +1,13 @@
-import android.widget.Button;
-import mqq.util.WeakReference;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-class bknh
-  implements army
+public class bknh
+  implements bnmi
 {
-  bknh(bknd parambknd) {}
+  public bknh(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
   public void a()
   {
-    this.a.i();
-  }
-  
-  public void b()
-  {
-    ((bkml)this.a.a.get()).b.setClickable(true);
+    QIMEffectCameraCaptureUnit.d(this.a);
   }
 }
 

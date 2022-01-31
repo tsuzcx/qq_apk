@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bghn;
-import bgkd;
-import bgki;
+import bglu;
+import bgok;
+import bgop;
 import com.tencent.qqmini.sdk.core.manager.VoIPManager;
 import com.tencent.qqmini.sdk.core.manager.VoIPManager.JoinRoomListener;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -21,7 +21,7 @@ class VoIPJsPlugin$2$1
     try
     {
       localJSONObject.put("errCode", paramInt);
-      this.this$1.val$req.jdField_a_of_type_Bghn.a(this.this$1.val$req.b, bgki.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, localJSONObject).toString());
+      this.this$1.val$req.jdField_a_of_type_Bglu.a(this.this$1.val$req.b, bgop.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, localJSONObject).toString());
       return;
     }
     catch (JSONException localJSONException)
@@ -39,7 +39,7 @@ class VoIPJsPlugin$2$1
     try
     {
       localJSONObject.put("openIdList", paramJSONArray);
-      this.this$1.val$req.jdField_a_of_type_Bghn.a(this.this$1.val$req.b, bgki.a(this.this$1.val$req.jdField_a_of_type_JavaLangString, localJSONObject).toString());
+      this.this$1.val$req.jdField_a_of_type_Bglu.a(this.this$1.val$req.b, bgop.a(this.this$1.val$req.jdField_a_of_type_JavaLangString, localJSONObject).toString());
       VoIPManager.getInstance().setEventListener(new VoIPJsPlugin.2.1.1(this));
       return;
     }

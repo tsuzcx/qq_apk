@@ -1,26 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.Emoticon;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
 
-class acii
-  implements View.OnClickListener
+public class acii
+  implements DialogInterface.OnClickListener
 {
-  acii(acid paramacid, aptm paramaptm) {}
+  public acii(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramView != null) && ((paramView instanceof ImageView)))
-    {
-      View localView = (View)paramView.getParent();
-      paramView = paramView.getTag();
-      String str = apro.o.replace("[epId]", this.jdField_a_of_type_Aptm.a.epId).replace("[eId]", this.jdField_a_of_type_Aptm.a.eId);
-      if (this.jdField_a_of_type_Acid.a.a == null) {
-        this.jdField_a_of_type_Acid.a.a = new acio(this.jdField_a_of_type_Acid.a);
-      }
-      this.jdField_a_of_type_Acid.a.a.a(1, localView, paramView, str);
-    }
+    Intent localIntent = new Intent(this.a.a, FavEmosmManageActivity.class);
+    this.a.a.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 

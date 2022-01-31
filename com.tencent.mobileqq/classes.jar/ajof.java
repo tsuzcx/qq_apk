@@ -1,82 +1,51 @@
-public final class ajof
+import android.text.method.PasswordTransformationMethod;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
+
+class ajof
+  implements View.OnClickListener
 {
-  public final int a;
-  public final int b;
+  ajof(ajod paramajod, int paramInt) {}
   
-  public ajof(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public static ajof a(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return null;
-    }
-    int i = paramString.indexOf('*');
-    if (i < 0) {
-      i = paramString.indexOf('x');
-    }
-    for (;;)
+    this.jdField_a_of_type_Ajod.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_Ajod.a.jdField_a_of_type_AndroidTextTextWatcher);
+    this.jdField_a_of_type_Ajod.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.removeTextChangedListener(this.jdField_a_of_type_Ajod.a.b);
+    this.jdField_a_of_type_Ajod.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_Ajod.a.jdField_c_of_type_AndroidTextTextWatcher);
+    this.jdField_a_of_type_Ajod.a.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    paramView = (SimpleAccount)this.jdField_a_of_type_Ajod.a.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Ajod.a.jdField_a_of_type_Int);
+    ImageView localImageView;
+    if (!LoginView.h(this.jdField_a_of_type_Ajod.a))
     {
-      if (i < 0) {
-        throw a(paramString);
-      }
-      try
-      {
-        ajof localajof = new ajof(Integer.parseInt(paramString.substring(0, i)), Integer.parseInt(paramString.substring(i + 1)));
-        return localajof;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        throw a(paramString);
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        throw a(paramString);
+      LoginView.i(this.jdField_a_of_type_Ajod.a, true);
+      this.jdField_a_of_type_Ajod.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+      localImageView = this.jdField_a_of_type_Ajod.a.jdField_c_of_type_AndroidWidgetImageView;
+      if ((!LoginView.d(this.jdField_a_of_type_Ajod.a)) && (!LoginView.e(this.jdField_a_of_type_Ajod.a)) && (!LoginView.f(this.jdField_a_of_type_Ajod.a))) {
+        break label368;
       }
     }
-  }
-  
-  private static NumberFormatException a(String paramString)
-  {
-    throw new NumberFormatException("Invalid SizeF: \"" + paramString + "\"");
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool = true;
-    if (paramObject == null) {}
-    do
+    label368:
+    for (int i = 2130846524;; i = 2130844304)
     {
-      return false;
-      if (this == paramObject) {
-        return true;
-      }
-    } while (!(paramObject instanceof ajof));
-    paramObject = (ajof)paramObject;
-    if ((this.a == paramObject.a) && (this.b == paramObject.b)) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
+      localImageView.setImageResource(i);
+      this.jdField_a_of_type_Ajod.a.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131706750));
+      LoginView.a(this.jdField_a_of_type_Ajod.a, paramView);
+      this.jdField_a_of_type_Ajod.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_Ajod.a.jdField_a_of_type_AndroidTextTextWatcher);
+      this.jdField_a_of_type_Ajod.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.addTextChangedListener(this.jdField_a_of_type_Ajod.a.b);
+      this.jdField_a_of_type_Ajod.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.clearFocus();
+      this.jdField_a_of_type_Ajod.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_Ajod.a.jdField_c_of_type_AndroidTextTextWatcher);
+      this.jdField_a_of_type_Ajod.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.clearFocus();
+      this.jdField_a_of_type_Ajod.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setClearButtonVisible(false);
+      this.jdField_a_of_type_Ajod.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a().setVisibility(8);
+      return;
     }
-  }
-  
-  public String toString()
-  {
-    return this.a + "x" + this.b;
   }
 }
 

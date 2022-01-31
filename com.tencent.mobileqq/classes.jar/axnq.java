@@ -1,40 +1,55 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
+import java.lang.ref.WeakReference;
 
-public class axnq
-  implements Animator.AnimatorListener
+class axnq
+  extends Handler
 {
-  public axnq(ProviderContainerView paramProviderContainerView) {}
+  final WeakReference<axnn> a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public axnq(Looper paramLooper, axnn paramaxnn)
   {
-    this.a.c.setVisibility(8);
-    paramAnimator = ProviderContainerView.a(this.a);
-    if (paramAnimator != null) {
-      paramAnimator.a();
-    }
-    if (ProviderContainerView.a(this.a) != null)
-    {
-      paramAnimator = ProviderContainerView.a(this.a).iterator();
-      while (paramAnimator.hasNext()) {
-        ((axns)paramAnimator.next()).a();
-      }
-    }
+    super(paramLooper);
+    this.a = new WeakReference(paramaxnn);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    if (ProviderContainerView.a(this.a) != null) {
-      ProviderContainerView.a(this.a).b();
-    }
+    axnm.a("PTV.RichmediaClient", "handleMessage, msg.what = " + paramMessage.what);
+    axnn localaxnn = (axnn)this.a.get();
+    if (localaxnn == null) {}
+    do
+    {
+      return;
+      if (paramMessage.getData() != null) {
+        paramMessage.getData().getInt("msg_sub_cmd");
+      }
+      switch (paramMessage.what)
+      {
+      case 1001: 
+      default: 
+        super.handleMessage(paramMessage);
+        return;
+      case 1000: 
+        axnm.a("PTV.RichmediaClient", "handleMessage MSG_S2C_TEST");
+        return;
+      case 1002: 
+        axnm.a("PTV.RichmediaClient", "handleMessage MSG_S2C_VIDEO_SLICE_UPLOAD_FINISH");
+        paramMessage = paramMessage.getData();
+      }
+    } while (paramMessage == null);
+    paramMessage = paramMessage.getString("vidoe_record_uniseq");
+    localaxnn.a().a(paramMessage);
+    return;
+    AIOLongCaptureCtrl.a(paramMessage.getData());
+    return;
+    AIOLongCaptureCtrl.b(paramMessage.getData());
+    return;
+    paramMessage = paramMessage.getData();
+    aghu.a().a(paramMessage);
   }
 }
 

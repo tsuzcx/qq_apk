@@ -1,95 +1,39 @@
-import NS_MINI_INTERFACE.INTERFACE.StAddressInfo;
-import NS_MINI_INTERFACE.INTERFACE.StApiUserInfo;
-import NS_MINI_INTERFACE.INTERFACE.StBatchGetUserInfoReq;
-import NS_MINI_INTERFACE.INTERFACE.StBatchGetUserInfoRsp;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.os.Bundle;
+import android.os.RemoteException;
+import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bgyi
-  extends bgzp
+class bgyi
+  implements bgvo
 {
-  private INTERFACE.StBatchGetUserInfoReq a = new INTERFACE.StBatchGetUserInfoReq();
+  bgyi(bgye parambgye, MiniAppInfo paramMiniAppInfo) {}
   
-  public bgyi(String paramString1, String paramString2, String[] paramArrayOfString)
+  public void onInitApkgInfo(int paramInt, bgod parambgod, String paramString)
   {
-    this.a.appid.set(paramString1);
-    if (!TextUtils.isEmpty(paramString2)) {
-      this.a.lang.set(paramString2);
-    }
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
+    QMLog.d("ApkgMainProcessManager", "onInitApkgInfo load apkg in main process end " + parambgod);
+    parambgod = (List)bgye.a(this.jdField_a_of_type_Bgye).remove(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId);
+    if (parambgod != null)
     {
-      paramString1 = paramArrayOfString[i];
-      this.a.openIds.add(paramString1);
-      i += 1;
-    }
-  }
-  
-  protected String a()
-  {
-    return "mini_user_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    Object localObject = new INTERFACE.StBatchGetUserInfoRsp();
-    try
-    {
-      ((INTERFACE.StBatchGetUserInfoRsp)localObject).mergeFrom(a(paramArrayOfByte));
-      if ((localObject == null) || (((INTERFACE.StBatchGetUserInfoRsp)localObject).user == null)) {
-        break label270;
-      }
-      localObject = ((INTERFACE.StBatchGetUserInfoRsp)localObject).user.get();
-      paramArrayOfByte = new JSONArray();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      parambgod = parambgod.iterator();
+      while (parambgod.hasNext())
       {
-        INTERFACE.StApiUserInfo localStApiUserInfo = (INTERFACE.StApiUserInfo)((Iterator)localObject).next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("nickName", localStApiUserInfo.nick.get());
-        localJSONObject.put("avatarUrl", localStApiUserInfo.avatar.get());
-        localJSONObject.put("gender", localStApiUserInfo.gender.get());
-        localJSONObject.put("language", localStApiUserInfo.language.get());
-        localJSONObject.put("country", localStApiUserInfo.address.country.get());
-        localJSONObject.put("province", localStApiUserInfo.address.province.get());
-        localJSONObject.put("city", localStApiUserInfo.address.city.get());
-        localJSONObject.put("openId", localStApiUserInfo.openid.get());
-        paramArrayOfByte.put(localJSONObject);
+        paramString = (MiniCmdCallback)parambgod.next();
+        if (paramString != null) {
+          try
+          {
+            paramString.onCmdResult(true, new Bundle());
+          }
+          catch (RemoteException paramString)
+          {
+            paramString.printStackTrace();
+          }
+        }
       }
-      localObject = new JSONObject();
     }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("BatchGetUserInfoRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
-    }
-    ((JSONObject)localObject).put("data", paramArrayOfByte);
-    return localObject;
-    label270:
-    QMLog.d("BatchGetUserInfoRequest", "onResponse fail.rsp = null");
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "BatchGetUserInfo";
   }
 }
 

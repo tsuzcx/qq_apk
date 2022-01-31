@@ -1,14 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
 
-class aqft
-  implements DialogInterface.OnDismissListener
+public class aqft
+  implements DialogInterface.OnClickListener
 {
-  aqft(aqfq paramaqfq) {}
+  public aqft(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aqfq.a(this.a).dismiss();
+    ExtendFriendLimitChatMatchFragment.a(this.a);
   }
 }
 

@@ -9,7 +9,7 @@ public class ao
   
   public void onClick(View paramView)
   {
-    aekt.n = true;
+    aepi.n = true;
     paramView = (ef)((ef)paramView.getTag()).clone();
     this.a.a(paramView);
   }

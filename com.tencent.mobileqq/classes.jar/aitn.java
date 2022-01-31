@@ -1,25 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
-public class aitn
-  implements View.OnClickListener
+class aitn
+  implements afdp
 {
-  public aitn(LingHbFragment paramLingHbFragment) {}
+  aitn(aitm paramaitm) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((paramView instanceof TextView))
-    {
-      paramView = ((TextView)paramView).getText().toString();
-      QLog.i("LingHbFragment", 2, "choice: " + paramView);
-      this.a.c.setText(paramView);
-      this.a.a.post(new LingHbFragment.2.1(this));
-    }
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, new Intent());
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
+  }
+  
+  public void b()
+  {
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, new Intent());
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
   }
 }
 

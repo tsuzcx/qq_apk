@@ -4,14 +4,14 @@ import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFra
 import com.tencent.qphone.base.util.QLog;
 
 public class oko
-  extends baua
+  extends bayj
 {
   public oko(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
   public void handleMessage(Message paramMessage)
   {
-    baoj localbaoj = (baoj)paramMessage.obj;
-    if ((localbaoj == null) || (localbaoj.b != 24) || (localbaoj.c != 10)) {
+    bass localbass = (bass)paramMessage.obj;
+    if ((localbass == null) || (localbass.b != 24) || (localbass.c != 10)) {
       return;
     }
     switch (paramMessage.what)
@@ -27,8 +27,8 @@ public class oko
     try
     {
       ReadInJoyCommentComponentFragment.a(this.a).c = true;
-      ReadInJoyCommentComponentFragment.a(this.a).f = localbaoj.i;
-      ReadInJoyCommentComponentFragment.a(this.a).g = localbaoj.f;
+      ReadInJoyCommentComponentFragment.a(this.a).f = localbass.i;
+      ReadInJoyCommentComponentFragment.a(this.a).g = localbass.f;
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler url=" + ReadInJoyCommentComponentFragment.a(this.a).f + ", md5=" + ReadInJoyCommentComponentFragment.a(this.a).g);
       }
@@ -41,7 +41,7 @@ public class oko
         QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler send error or cancel!");
       }
       this.a.f();
-      this.a.a(1, this.a.getString(2131718847));
+      this.a.a(1, this.a.getString(2131718859));
       return;
     }
     catch (Exception paramMessage)

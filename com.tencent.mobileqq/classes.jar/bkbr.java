@@ -1,8 +1,16 @@
-import cooperation.vip.jsoninflate.model.AlumBasicData;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import cooperation.readinjoy.ReadInJoyHelper.1;
 
-public abstract interface bkbr
+public class bkbr
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public abstract void a(AlumBasicData paramAlumBasicData);
+  public bkbr(ReadInJoyHelper.1 param1) {}
+  
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  {
+    if (paramInt == 0) {}
+  }
 }
 
 

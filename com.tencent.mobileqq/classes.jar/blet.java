@@ -1,6 +1,8 @@
-class blet
+public class blet
 {
-  private static bler a = new bler(null);
+  public String a = "";
+  public String b = "";
+  public String c = "";
 }
 
 

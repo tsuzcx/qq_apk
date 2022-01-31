@@ -1,23 +1,15 @@
-import android.widget.ImageView;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.haoliyou.JefsClass.8;
 
-class asqj
-  implements ValueAnimator.AnimatorUpdateListener
+public class asqj
+  implements DialogInterface.OnClickListener
 {
-  asqj(asqh paramasqh) {}
+  public asqj(JefsClass.8 param8) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-    if (this.a.a.getVisibility() == 0) {
-      this.a.a.setAlpha(f);
-    }
-    HotVideoMongoliaRelativeLayout localHotVideoMongoliaRelativeLayout = this.a.a();
-    if (localHotVideoMongoliaRelativeLayout != null) {
-      localHotVideoMongoliaRelativeLayout.a(paramValueAnimator);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

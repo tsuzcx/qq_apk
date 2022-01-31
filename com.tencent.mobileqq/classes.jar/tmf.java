@@ -11,7 +11,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import java.util.List;
 
 public class tmf
-  extends bhzz<tmv, biac<tmv>>
+  extends bieg<tmv, biej<tmv>>
 {
   private WSPlayerManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
   private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
@@ -193,7 +193,7 @@ public class tmf
     return 0;
   }
   
-  public biac<tmv> a(ViewGroup paramViewGroup, int paramInt)
+  public biej<tmv> a(ViewGroup paramViewGroup, int paramInt)
   {
     return new tnj(paramViewGroup, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment);
   }
@@ -230,29 +230,29 @@ public class tmf
     }
   }
   
-  public void a(biac<tmv> parambiac)
+  public void a(biej<tmv> parambiej)
   {
-    super.onViewDetachedFromWindow(parambiac);
-    parambiac.c();
+    super.onViewDetachedFromWindow(parambiej);
+    parambiej.c();
   }
   
-  public void a(biac<tmv> parambiac, int paramInt)
+  public void a(biej<tmv> parambiej, int paramInt)
   {
-    tlo.b("WS_VIDEO_SCROLL", "WSVerticalPageAdapter onBindCustomViewHolder() position: " + paramInt + ", holder:" + parambiac);
+    tlo.b("WS_VIDEO_SCROLL", "WSVerticalPageAdapter onBindCustomViewHolder() position: " + paramInt + ", holder:" + parambiej);
     tmv localtmv = (tmv)a(paramInt);
     if (localtmv != null)
     {
-      parambiac.a(localtmv);
-      if ((parambiac instanceof tmw)) {
-        ((tmw)parambiac).jdField_a_of_type_Tcl.a(paramInt);
+      parambiej.a(localtmv);
+      if ((parambiej instanceof tmw)) {
+        ((tmw)parambiej).jdField_a_of_type_Tcl.a(paramInt);
       }
-      if ((parambiac instanceof tnj))
+      if ((parambiej instanceof tnj))
       {
-        parambiac = (tnj)parambiac;
-        d(parambiac);
-        a(parambiac, localtmv, paramInt);
+        parambiej = (tnj)parambiej;
+        d(parambiej);
+        a(parambiej, localtmv, paramInt);
         if (paramInt > 0) {
-          c(parambiac);
+          c(parambiej);
         }
       }
     }

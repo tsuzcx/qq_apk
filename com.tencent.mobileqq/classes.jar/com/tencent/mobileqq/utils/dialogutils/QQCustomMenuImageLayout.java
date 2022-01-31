@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils.dialogutils;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -13,9 +13,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bdkz;
-import bdla;
-import bdlb;
+import bdpi;
+import bdpj;
+import bdpk;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.BubblePopupWindow;
 
@@ -31,7 +31,7 @@ public class QQCustomMenuImageLayout
   public static int f = 90;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bdkz jdField_a_of_type_Bdkz;
+  private bdpi jdField_a_of_type_Bdpi;
   private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
   public int b;
   private ImageView b;
@@ -92,8 +92,8 @@ public class QQCustomMenuImageLayout
   private ImageView a()
   {
     ImageView localImageView = new ImageView(getContext());
-    localImageView.setImageResource(2130838684);
-    localImageView.setContentDescription(alpo.a(2131710584));
+    localImageView.setImageResource(2130838685);
+    localImageView.setContentDescription(alud.a(2131710596));
     localImageView.setBackgroundDrawable(null);
     localImageView.setOnClickListener(this);
     localImageView.setPadding((int)(this.h * jdField_a_of_type_Float), (int)(jdField_a_of_type_Float * 10.0F), (int)(this.h * jdField_a_of_type_Float), (int)(jdField_a_of_type_Float * 10.0F));
@@ -114,35 +114,35 @@ public class QQCustomMenuImageLayout
     return localTextView;
   }
   
-  private TextView a(bdlb parambdlb)
+  private TextView a(bdpk parambdpk)
   {
-    bdla localbdla = new bdla(this, getContext());
-    localbdla.setText(parambdlb.a());
-    localbdla.setTextSize(10.0F);
+    bdpj localbdpj = new bdpj(this, getContext());
+    localbdpj.setText(parambdpk.a());
+    localbdpj.setTextSize(10.0F);
     Resources localResources = getContext().getResources();
-    localbdla.setMinimumWidth(90);
-    localbdla.setMaxLines(1);
+    localbdpj.setMinimumWidth(90);
+    localbdpj.setMaxLines(1);
     try
     {
-      Drawable localDrawable = getContext().getResources().getDrawable(parambdlb.b());
-      localbdla.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable, null, null);
-      localbdla.setCompoundDrawablePadding(0);
-      int i = aekt.a(9.0F, localResources);
-      localbdla.setPadding(0, i, 0, i);
-      localbdla.setContentDescription(parambdlb.a());
-      localbdla.setId(parambdlb.a());
-      localbdla.setTextColor(-855638017);
-      localbdla.setBackgroundDrawable(null);
-      localbdla.setIncludeFontPadding(true);
-      localbdla.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localbdla.setGravity(17);
-      return localbdla;
+      Drawable localDrawable = getContext().getResources().getDrawable(parambdpk.b());
+      localbdpj.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable, null, null);
+      localbdpj.setCompoundDrawablePadding(0);
+      int i = aepi.a(9.0F, localResources);
+      localbdpj.setPadding(0, i, 0, i);
+      localbdpj.setContentDescription(parambdpk.a());
+      localbdpj.setId(parambdpk.a());
+      localbdpj.setTextColor(-855638017);
+      localbdpj.setBackgroundDrawable(null);
+      localbdpj.setIncludeFontPadding(true);
+      localbdpj.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localbdpj.setGravity(17);
+      return localbdpj;
     }
     catch (RuntimeException localRuntimeException)
     {
       for (;;)
       {
-        aekt.a("QQCustomMenuImageLayout", "creatTextViewWithTopIcon ERR", localRuntimeException);
+        aepi.a("QQCustomMenuImageLayout", "creatTextViewWithTopIcon ERR", localRuntimeException);
         Object localObject = null;
       }
     }
@@ -151,14 +151,14 @@ public class QQCustomMenuImageLayout
   public void a()
   {
     removeAllViews();
-    int m = this.jdField_a_of_type_Bdkz.a();
+    int m = this.jdField_a_of_type_Bdpi.a();
     int i = 0;
     Object localObject;
     int k;
     int j;
     if (i < m)
     {
-      localObject = a(this.jdField_a_of_type_Bdkz.a(i));
+      localObject = a(this.jdField_a_of_type_Bdpi.a(i));
       k = f;
       if (k < d)
       {
@@ -232,8 +232,8 @@ public class QQCustomMenuImageLayout
     {
       removeAllViews();
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838679);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alpo.a(2131710577));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838680);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131710589));
       this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetImageView.setPadding((int)(this.h * jdField_a_of_type_Float), (int)(jdField_a_of_type_Float * 10.0F), (int)(this.h * jdField_a_of_type_Float), (int)(jdField_a_of_type_Float * 10.0F));
@@ -243,9 +243,9 @@ public class QQCustomMenuImageLayout
       addView(this.jdField_a_of_type_AndroidWidgetImageView);
       int k = 0 + i;
       int j = this.g;
-      if (j < this.jdField_a_of_type_Bdkz.a())
+      if (j < this.jdField_a_of_type_Bdpi.a())
       {
-        localObject = a(this.jdField_a_of_type_Bdkz.a(j));
+        localObject = a(this.jdField_a_of_type_Bdpi.a(j));
         int m = f;
         if (m < d) {
           i = d;
@@ -286,11 +286,11 @@ public class QQCustomMenuImageLayout
     b();
   }
   
-  public void setMenu(bdkz parambdkz)
+  public void setMenu(bdpi parambdpi)
   {
-    this.jdField_a_of_type_Bdkz = parambdkz;
+    this.jdField_a_of_type_Bdpi = parambdpi;
     if (QLog.isColorLevel()) {
-      QLog.d("QQCustomMenuImageLayout", 4, "MENU:" + this.jdField_a_of_type_Bdkz.toString());
+      QLog.d("QQCustomMenuImageLayout", 4, "MENU:" + this.jdField_a_of_type_Bdpi.toString());
     }
   }
   

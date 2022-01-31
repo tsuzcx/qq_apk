@@ -19,7 +19,7 @@ final class okd
           this.jdField_a_of_type_Omg.notifyDataSetChanged();
         }
       }
-      bjxj.a("family_comment_card_hide_timestamp", Long.valueOf(System.currentTimeMillis()));
+      bkbq.a("family_comment_card_hide_timestamp", Long.valueOf(System.currentTimeMillis()));
     }
   }
 }

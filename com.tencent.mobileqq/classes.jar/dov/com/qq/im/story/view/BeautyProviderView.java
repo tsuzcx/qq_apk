@@ -3,36 +3,36 @@ package dov.com.qq.im.story.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import blbm;
-import blly;
-import xod;
+import blft;
+import blqk;
+import xsm;
 
 public class BeautyProviderView
   extends FrameLayout
 {
   private float jdField_a_of_type_Float = 1.0F;
   public int a;
-  private blbm jdField_a_of_type_Blbm;
-  private blly jdField_a_of_type_Blly;
+  private blft jdField_a_of_type_Blft;
+  private blqk jdField_a_of_type_Blqk;
   private int b = 500;
   private final int c = 300;
   
   public BeautyProviderView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = xod.a(getContext(), 242.0F);
+    this.jdField_a_of_type_Int = xsm.a(getContext(), 242.0F);
   }
   
   public BeautyProviderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = xod.a(getContext(), 242.0F);
+    this.jdField_a_of_type_Int = xsm.a(getContext(), 242.0F);
   }
   
-  public void setControllerAndManager(blly paramblly, blbm paramblbm)
+  public void setControllerAndManager(blqk paramblqk, blft paramblft)
   {
-    this.jdField_a_of_type_Blly = paramblly;
-    this.jdField_a_of_type_Blbm = paramblbm;
+    this.jdField_a_of_type_Blqk = paramblqk;
+    this.jdField_a_of_type_Blft = paramblft;
   }
 }
 

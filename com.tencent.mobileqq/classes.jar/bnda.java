@@ -1,16 +1,57 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class bnda
-  extends bnde
+class bnda
+  implements Animator.AnimatorListener
 {
-  public void a()
+  bnda(bncx parambncx) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    RMVideoStateMgr.a().a.c();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoIdleState", 2, "[@] initState end");
-    }
+    if (!bncx.a(this.a)) {}
+    do
+    {
+      return;
+      if (bncx.b(this.a)) {
+        break;
+      }
+      bncx.a(this.a, false);
+    } while (bncx.b(this.a) != 2);
+    bncx.a(this.a, 0);
+    return;
+    bncx.a(this.a, false);
+    bncx.a(this.a, 0);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (!bncx.a(this.a)) {
+      return;
+    }
+    if (!bncx.b(this.a))
+    {
+      bncx.a(this.a, false);
+      if (bncx.b(this.a) == 1)
+      {
+        bncx.a(this.a, 3);
+        return;
+      }
+      bncx.a(this.a, 0);
+      return;
+    }
+    if (bncx.b(this.a) == 1)
+    {
+      bncx.a(this.a, 2);
+      bncx.a(this.a, bncx.b(this.a), 1000);
+      return;
+    }
+    bncx.a(this.a, false);
+    bncx.a(this.a, 0);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

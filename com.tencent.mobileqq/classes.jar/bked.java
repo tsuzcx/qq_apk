@@ -1,13 +1,23 @@
-import cooperation.wadl.ipc.WadlResult;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import cooperation.vip.pb.TianShuAccess.AdItem;
 
-public abstract interface bked
+class bked
+  implements View.OnClickListener
 {
-  public abstract void onQueryCallback(ArrayList<WadlResult> paramArrayList);
+  bked(bkeb parambkeb) {}
   
-  public abstract void onQueryCallbackVia(ArrayList<WadlResult> paramArrayList);
-  
-  public abstract void onWadlTaskStatusChanged(WadlResult paramWadlResult);
+  public void onClick(View paramView)
+  {
+    bkeb.a(this.a);
+    if ((bkeb.a(this.a) != null) && (bkeb.a(this.a).a() != null) && (bkeb.a(this.a).a().app != null) && (bkeb.a(this.a) != null)) {
+      bkea.a(bkeb.a(this.a).a().app, 122, String.valueOf(bkeb.a(this.a).iAdId.get()), bkeb.a(this.a).traceinfo.get());
+    }
+  }
 }
 
 

@@ -1,14 +1,16 @@
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+
 public class bcjg
+  implements bcqu
 {
-  public int a;
-  public String a;
-  public short a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  public bcjg(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  
+  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
+  {
+    paramView.setVisibility(8);
+  }
 }
 
 

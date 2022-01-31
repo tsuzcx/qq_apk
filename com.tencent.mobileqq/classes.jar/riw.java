@@ -62,7 +62,7 @@ public class riw
   {
     String str;
     if (this.b) {
-      str = alpo.a(2131716627);
+      str = alud.a(2131716639);
     }
     for (;;)
     {
@@ -72,9 +72,9 @@ public class riw
       this.g = true;
       this.jdField_a_of_type_AndroidOsHandler.postAtTime(new VideoFeedsVideoUIDelegate.7(this, paramVideoInfo), Integer.valueOf(0), SystemClock.uptimeMillis() + 1000L);
       return;
-      str = alpo.a(2131716523) + rdm.b(paramVideoInfo.b);
+      str = alud.a(2131716535) + rdm.b(paramVideoInfo.b);
       if (paramVideoInfo.b <= 0L) {
-        str = alpo.a(2131716630);
+        str = alud.a(2131716642);
       }
     }
   }
@@ -109,7 +109,7 @@ public class riw
     do
     {
       return;
-      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842821));
+      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842834));
       this.jdField_a_of_type_Rbn.g.clearAnimation();
       paramString = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
       paramString.setDuration(500L);
@@ -121,25 +121,25 @@ public class riw
       this.jdField_a_of_type_Rbn.c.setVisibility(0);
       return;
       this.jdField_a_of_type_Rbn.g.clearAnimation();
-      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842823));
+      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842836));
       this.jdField_a_of_type_Rbn.c.setVisibility(0);
       return;
       this.jdField_a_of_type_Rbn.g.clearAnimation();
-      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842823));
+      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842836));
       this.jdField_a_of_type_Rbn.c.setVisibility(8);
       return;
       this.jdField_a_of_type_Rbn.g.clearAnimation();
-      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842823));
+      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842836));
       this.jdField_a_of_type_Rbn.c.setVisibility(0);
       return;
       this.jdField_a_of_type_Rbn.g.clearAnimation();
-      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842822));
+      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842835));
       this.jdField_a_of_type_Rbn.c.setVisibility(0);
       return;
       this.jdField_a_of_type_Rbn.g.clearAnimation();
-      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842822));
+      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842835));
       this.jdField_a_of_type_Rbn.c.setVisibility(8);
-    } while ((this.jdField_a_of_type_Rbn.x.getVisibility() != 0) || (!bdee.b(BaseApplicationImpl.getContext())));
+    } while ((this.jdField_a_of_type_Rbn.x.getVisibility() != 0) || (!bdin.b(BaseApplicationImpl.getContext())));
     this.jdField_a_of_type_Rbn.g.setVisibility(0);
     this.jdField_a_of_type_Rbn.x.setVisibility(8);
     this.jdField_a_of_type_Rbn.z.setVisibility(8);
@@ -147,7 +147,7 @@ public class riw
   
   private boolean b(rfs paramrfs)
   {
-    if (!bdee.b(BaseApplicationImpl.getContext())) {}
+    if (!bdin.b(BaseApplicationImpl.getContext())) {}
     while ((paramrfs == null) || (paramrfs.jdField_a_of_type_ComTencentBizPubaccountVideoInfo == null) || (!this.jdField_a_of_type_Boolean) || (this.g)) {
       return false;
     }
@@ -209,7 +209,7 @@ public class riw
   {
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = alpo.a(2131716598);
+      str = alud.a(2131716610);
     }
     this.jdField_a_of_type_AndroidOsHandler.post(new VideoFeedsVideoUIDelegate.2(this, str, paramrfs));
   }

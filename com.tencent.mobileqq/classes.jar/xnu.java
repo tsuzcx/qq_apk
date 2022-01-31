@@ -1,35 +1,8 @@
-class xnu
-  implements xnm
+public abstract interface xnu
 {
-  xnu(xnt paramxnt) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void a(xnr paramxnr, boolean paramBoolean)
-  {
-    int i = 0;
-    if (paramBoolean)
-    {
-      xnr[] arrayOfxnr = this.a.a();
-      j = arrayOfxnr.length;
-      i = 0;
-      while (i < j)
-      {
-        xnr localxnr = arrayOfxnr[i];
-        if (localxnr != paramxnr) {
-          localxnr.b(false);
-        }
-        i += 1;
-      }
-    }
-    paramxnr = this.a.a();
-    int j = paramxnr.length;
-    for (;;)
-    {
-      if ((i >= j) || (paramxnr[i].a())) {
-        return;
-      }
-      i += 1;
-    }
-  }
+  public abstract void j();
 }
 
 

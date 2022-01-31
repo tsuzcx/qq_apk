@@ -4,9 +4,9 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
-import atqz;
-import atrb;
-import behp;
+import atvi;
+import atvk;
+import bely;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Method;
@@ -19,7 +19,7 @@ import java.net.URL;
 public final class GateWayVerifyMobileHelper$2
   implements Runnable
 {
-  public GateWayVerifyMobileHelper$2(String paramString, atrb paramatrb) {}
+  public GateWayVerifyMobileHelper$2(String paramString, atvk paramatvk) {}
   
   public void run()
   {
@@ -31,7 +31,7 @@ public final class GateWayVerifyMobileHelper$2
       try
       {
         Object localObject1 = (ConnectivityManager)BaseApplicationImpl.getApplication().getSystemService("connectivity");
-        behp.a(ConnectivityManager.class, "startUsingNetworkFeature", new Class[] { Integer.TYPE, String.class }).invoke(localObject1, new Object[] { Integer.valueOf(0), "enableHIPRI" });
+        bely.a(ConnectivityManager.class, "startUsingNetworkFeature", new Class[] { Integer.TYPE, String.class }).invoke(localObject1, new Object[] { Integer.valueOf(0), "enableHIPRI" });
         i = 0;
         if (i < 4)
         {
@@ -46,8 +46,8 @@ public final class GateWayVerifyMobileHelper$2
           if (!(localObject2 instanceof Inet4Address)) {
             break label302;
           }
-          i = atqz.a(((InetAddress)localObject2).getHostAddress());
-          localObject1 = behp.a(ConnectivityManager.class, "requestRouteToHost", new Class[] { Integer.TYPE, Integer.TYPE }).invoke(localObject1, new Object[] { Integer.valueOf(5), Integer.valueOf(i) });
+          i = atvi.a(((InetAddress)localObject2).getHostAddress());
+          localObject1 = bely.a(ConnectivityManager.class, "requestRouteToHost", new Class[] { Integer.TYPE, Integer.TYPE }).invoke(localObject1, new Object[] { Integer.valueOf(5), Integer.valueOf(i) });
           if ((!(localObject1 instanceof Boolean)) || (!((Boolean)localObject1).booleanValue())) {
             break label357;
           }
@@ -56,7 +56,7 @@ public final class GateWayVerifyMobileHelper$2
           if (!bool) {
             break label325;
           }
-          atqz.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atrb);
+          atvi.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atvk);
           return;
         }
         localObject2 = ((NetworkInfo)localObject2).getState();
@@ -72,7 +72,7 @@ public final class GateWayVerifyMobileHelper$2
       catch (Exception localException)
       {
         QLog.e("GateWayVerifyMobileHelper", 1, new Object[] { "switch network error", localException.getMessage() });
-        this.jdField_a_of_type_Atrb.a(localException);
+        this.jdField_a_of_type_Atvk.a(localException);
         return;
       }
       Thread.sleep(1000L);
@@ -81,11 +81,11 @@ public final class GateWayVerifyMobileHelper$2
       label302:
       if ((localObject2 instanceof Inet6Address))
       {
-        i = atqz.a(((InetAddress)localObject2).getHostAddress()).intValue();
+        i = atvi.a(((InetAddress)localObject2).getHostAddress()).intValue();
         continue;
         label325:
         QLog.e("GateWayVerifyMobileHelper", 1, "切换网络失败or无数据网络");
-        this.jdField_a_of_type_Atrb.a(new Exception("change network to mobile failed or no mobile network"));
+        this.jdField_a_of_type_Atvk.a(new Exception("change network to mobile failed or no mobile network"));
       }
       else
       {

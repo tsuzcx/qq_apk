@@ -1,23 +1,31 @@
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aqjo
-  implements bhss
+  implements View.OnClickListener
 {
-  public aqjo(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public aqjo(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramInt == this.a.jdField_a_of_type_Aqiz.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null))
+    if (bdin.d(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity))
     {
-      if (!this.a.a()) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
-      }
-    }
-    else {
+      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.d();
+      paramView = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).obtainMessage();
+      paramView.what = 2;
+      paramView.arg1 = 2;
+      paramView.obj = this.jdField_a_of_type_JavaLangString;
+      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendMessage(paramView);
+      azqs.b(null, "CliOper", "", "", "0X80050EF", "0X80050EF", 2, 0, "", "", "", "");
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
+    paramView = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getResources().getString(2131692348);
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 0, paramView, 0).b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getTitleBarHeight());
   }
 }
 

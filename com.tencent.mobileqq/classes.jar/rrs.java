@@ -5,25 +5,25 @@ import java.util.Iterator;
 import java.util.List;
 
 public class rrs
-  implements bhpo
+  implements bhtv
 {
-  List<bhpo> a = new ArrayList();
+  List<bhtv> a = new ArrayList();
   
   public void a()
   {
     this.a.clear();
   }
   
-  public void a(bhpo parambhpo)
+  public void a(bhtv parambhtv)
   {
-    if (!this.a.contains(parambhpo)) {
-      this.a.add(parambhpo);
+    if (!this.a.contains(parambhtv)) {
+      this.a.add(parambhtv);
     }
   }
   
-  public void b(bhpo parambhpo)
+  public void b(bhtv parambhtv)
   {
-    this.a.remove(parambhpo);
+    this.a.remove(parambhtv);
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
@@ -31,10 +31,10 @@ public class rrs
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
-      bhpo localbhpo = (bhpo)localIterator.next();
+      bhtv localbhtv = (bhtv)localIterator.next();
       try
       {
-        localbhpo.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+        localbhtv.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
       }
       catch (Throwable localThrowable) {}
       if (QLog.isColorLevel()) {
@@ -48,10 +48,10 @@ public class rrs
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
-      bhpo localbhpo = (bhpo)localIterator.next();
+      bhtv localbhtv = (bhtv)localIterator.next();
       try
       {
-        localbhpo.onScrollStateChanged(paramAbsListView, paramInt);
+        localbhtv.onScrollStateChanged(paramAbsListView, paramInt);
       }
       catch (Throwable localThrowable) {}
       if (QLog.isColorLevel()) {

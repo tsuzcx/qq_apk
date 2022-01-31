@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.secspy;
 
-import ayto;
-import bcua;
+import ayxx;
+import bcyj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SecSpyFileManager$1
   implements Runnable
 {
-  public SecSpyFileManager$1(ayto paramayto) {}
+  public SecSpyFileManager$1(ayxx paramayxx) {}
   
   public void run()
   {
-    bcua.a(this.this$0.a.getApplication());
+    bcyj.a(this.this$0.a.getApplication());
   }
 }
 

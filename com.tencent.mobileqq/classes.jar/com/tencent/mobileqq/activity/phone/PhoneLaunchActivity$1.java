@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.phone;
 
-import aiip;
+import aine;
 import android.widget.Button;
-import bdee;
+import bdin;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class PhoneLaunchActivity$1
@@ -12,19 +12,19 @@ public class PhoneLaunchActivity$1
   
   public void run()
   {
-    if (!bdee.d(this.this$0))
+    if (!bdin.d(this.this$0))
     {
-      this.this$0.b(2131694829);
+      this.this$0.b(2131694831);
       PhoneLaunchActivity.a(this.this$0).setEnabled(true);
       return;
     }
     if (this.this$0.a == null)
     {
-      this.this$0.a = new aiip(this);
+      this.this$0.a = new aine(this);
       this.this$0.app.registObserver(this.this$0.a);
     }
     this.this$0.app.a(new PhoneLaunchActivity.1.2(this));
-    this.this$0.a(2131719773, 1000L, true);
+    this.this$0.a(2131719785, 1000L, true);
   }
 }
 

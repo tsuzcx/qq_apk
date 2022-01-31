@@ -46,7 +46,7 @@ public class GamePlayView
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     lek.c("ARZimuTask_GamePlayView", "init strResPath = " + paramString + "  |  code = " + paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView = ((ARGLSurfaceView)findViewById(2131367231));
+    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView = ((ARGLSurfaceView)findViewById(2131367241));
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentAvGameplayARNativeBridge = new ARNativeBridge();
     this.jdField_a_of_type_ComTencentAvGameplayARNativeBridge.native_updateResourcePath(paramString);

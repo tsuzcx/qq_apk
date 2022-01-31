@@ -1,22 +1,22 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bgjm;
-import bgkd;
-import bgkv;
+import bgnt;
+import bgok;
+import bgpc;
 import java.io.File;
 
 class FileJsPlugin$14
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$14(FileJsPlugin paramFileJsPlugin, String paramString, bgkd parambgkd) {}
+  FileJsPlugin$14(FileJsPlugin paramFileJsPlugin, String paramString, bgok parambgok) {}
   
   public String run()
   {
-    if (bgjm.a().a(this.val$filePath) == 9999) {
+    if (bgnt.a().a(this.val$filePath) == 9999) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "invalid path" + this.val$filePath);
     }
-    String str = bgjm.a().a(this.val$filePath);
+    String str = bgnt.a().a(this.val$filePath);
     if (TextUtils.isEmpty(str)) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "no such file or directory, open " + this.val$filePath);
     }
@@ -26,7 +26,7 @@ class FileJsPlugin$14
     if (!new File(str).exists()) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "no such file or directory, open " + this.val$filePath);
     }
-    bgkv.a(str, false);
+    bgpc.a(str, false);
     return FileJsPlugin.access$200(this.this$0, this.val$req, null);
   }
 }

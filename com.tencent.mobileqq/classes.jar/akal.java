@@ -1,52 +1,28 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-public class akal
+class akal
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
+  akal(akak paramakak) {}
   
-  static akal a(JSONObject paramJSONObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramJSONObject == null) {
-      return new akal();
+    if (this.a.a.d == 36) {
+      if (this.a.a.a == 1) {
+        this.a.a.m();
+      }
     }
-    akal localakal = new akal();
-    try
+    for (;;)
     {
-      localakal.jdField_a_of_type_Int = paramJSONObject.getInt("id");
-      localakal.jdField_a_of_type_JavaLangString = paramJSONObject.getString("name");
-      localakal.jdField_b_of_type_Int = paramJSONObject.getInt("type");
-      localakal.jdField_b_of_type_JavaLangString = paramJSONObject.optString("soundVersion", "0");
-      localakal.jdField_c_of_type_JavaLangString = paramJSONObject.getString("soundUrl");
-      localakal.jdField_d_of_type_JavaLangString = paramJSONObject.getString("whiteList");
-      localakal.jdField_c_of_type_Int = paramJSONObject.getInt("isShow");
-      localakal.jdField_e_of_type_Int = paramJSONObject.getInt("classify");
-      localakal.g = paramJSONObject.getString("classifyName");
-      localakal.jdField_e_of_type_JavaLangString = paramJSONObject.getString("backgroundUrl");
-      localakal.f = String.valueOf(paramJSONObject.getInt("vip_type"));
-      localakal.jdField_d_of_type_Int = paramJSONObject.getInt("useNum");
-      localakal.h = paramJSONObject.getString("trialstartday");
-      localakal.i = paramJSONObject.getString("trialendday");
-      return localakal;
+      paramDialogInterface.dismiss();
+      azqs.b(null, "CliOper", "", "", "0X8004CEE", "0X8004CEE", 0, 0, "", "", "", "");
+      return;
+      this.a.a.a();
+      continue;
+      this.a.a.a();
     }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-    return localakal;
   }
 }
 

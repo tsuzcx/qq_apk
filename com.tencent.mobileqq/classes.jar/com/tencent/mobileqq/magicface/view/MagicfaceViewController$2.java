@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.magicface.view;
 
-import atva;
+import atzj;
 
 public class MagicfaceViewController$2
   implements Runnable
 {
-  public MagicfaceViewController$2(atva paramatva) {}
+  public MagicfaceViewController$2(atzj paramatzj) {}
   
   public void run()
   {

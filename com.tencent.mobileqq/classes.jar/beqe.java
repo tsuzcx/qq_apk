@@ -1,237 +1,160 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewStub;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import cooperation.qzone.widget.ExtendButton;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.widget.GridListView;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class beqe
-  extends Dialog
+  extends BaseAdapter
 {
-  private TextView a;
+  public beqe(GridListView paramGridListView) {}
   
-  public beqe(Context paramContext, Intent paramIntent)
+  private LinearLayout a(ViewGroup paramViewGroup)
   {
-    super(paramContext, 2131755804);
-    String str2 = paramIntent.getStringExtra("qzone_plugin_activity_name");
-    Object localObject1 = LayoutInflater.from(paramContext).inflate(2131562278, null);
-    Object localObject2 = getWindow();
-    ((Window)localObject2).setWindowAnimations(2131755799);
-    ((Window)localObject2).setContentView((View)localObject1);
-    Object localObject3 = ((Window)localObject2).getAttributes();
-    ((WindowManager.LayoutParams)localObject3).width = -1;
-    ((WindowManager.LayoutParams)localObject3).height = -1;
-    ((WindowManager.LayoutParams)localObject3).gravity = 48;
-    ((WindowManager.LayoutParams)localObject3).y = ((WindowManager.LayoutParams)localObject3).y;
-    ((Window)localObject2).setAttributes((WindowManager.LayoutParams)localObject3);
-    setCanceledOnTouchOutside(false);
-    this.a = ((TextView)((View)localObject1).findViewById(2131370763));
-    localObject2 = paramIntent.getStringExtra("leftViewText");
-    if (localObject2 == null) {
-      localObject2 = paramContext.getString(2131690623);
+    paramViewGroup = new LinearLayout(this.a.getContext());
+    paramViewGroup.setOrientation(0);
+    paramViewGroup.setClickable(false);
+    paramViewGroup.setLongClickable(false);
+    paramViewGroup.setTag(new beqc(null));
+    return paramViewGroup;
+  }
+  
+  public int getCount()
+  {
+    if (this.a.c == 0)
+    {
+      if (this.a.jdField_a_of_type_AndroidViewView != null) {
+        return 1;
+      }
+      return 0;
     }
+    return this.a.c;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (this.a.c == 0) {
+      return 0;
+    }
+    if (this.a.jdField_a_of_type_Int == 0) {
+      return this.a.jdField_a_of_type_Beqd.getItemViewType(paramInt) + 2;
+    }
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.a.c == 0)
+    {
+      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(new AbsListView.LayoutParams(this.a.getWidth(), this.a.getHeight()));
+      paramViewGroup = this.a.jdField_a_of_type_AndroidViewView;
+      return paramViewGroup;
+    }
+    Object localObject;
+    int i;
+    if (this.a.jdField_a_of_type_Int == 1)
+    {
+      localObject = (LinearLayout)paramView;
+      paramView = (View)localObject;
+      if (localObject == null) {
+        paramView = a(paramViewGroup);
+      }
+      paramView.removeAllViews();
+      i = this.a.d - this.a.b * paramInt;
+      if (i < this.a.b) {
+        break label535;
+      }
+      i = this.a.b;
+    }
+    label535:
     for (;;)
     {
-      if ("com.qzone.album.business.albumlist.activity.QZonePersonalAlbumActivity".equals(str2))
-      {
-        localObject3 = ((ViewStub)((View)localObject1).findViewById(2131377301)).inflate();
-        localObject1 = paramIntent.getStringExtra("key_left_tab_title");
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label917;
-        }
-        localObject1 = paramContext.getString(2131718026);
+      beqc localbeqc = (beqc)paramView.getTag();
+      int j = paramInt * this.a.b;
+      paramInt = 0;
+      paramViewGroup = paramView;
+      if (paramInt >= i) {
+        break;
       }
-      label917:
+      paramViewGroup = localbeqc.a[paramInt];
+      int k = this.a.jdField_a_of_type_Beqd.b(j + paramInt);
+      if ((paramViewGroup != null) && (((Integer)paramViewGroup.getTag(2131361822)).intValue() != k)) {
+        paramViewGroup = null;
+      }
       for (;;)
       {
-        paramIntent = paramIntent.getStringExtra("key_rihgt_tab_title");
-        if (TextUtils.isEmpty(paramIntent)) {}
-        for (paramContext = paramContext.getString(2131718107);; paramContext = paramIntent)
+        View localView = this.a.jdField_a_of_type_Beqd.getView(j + paramInt, paramViewGroup, paramView);
+        localView.setTag(2131361822, Integer.valueOf(k));
+        localbeqc.a[paramInt] = localView;
+        localObject = (LinearLayout.LayoutParams)localView.getLayoutParams();
+        paramViewGroup = (ViewGroup)localObject;
+        if (localObject == null)
         {
-          paramIntent = (ExtendButton)((View)localObject3).findViewById(2131363522);
-          Object localObject4 = (ExtendButton)((View)localObject3).findViewById(2131363523);
-          paramIntent.setText((CharSequence)localObject1);
-          ((ExtendButton)localObject4).setText(paramContext);
-          ((ExtendButton)localObject4).setSelected(false);
-          paramIntent.setSelected(true);
-          paramContext = (Context)localObject3;
-          ((TextView)paramContext.findViewById(2131368613)).setText((CharSequence)localObject2);
-          ((ProgressBar)((ViewStub)paramContext.findViewById(2131368673)).inflate()).setVisibility(0);
-          return;
-          localObject4 = ((ViewStub)((View)localObject1).findViewById(2131364603)).inflate();
-          TextView localTextView = (TextView)((ViewStub)((View)localObject4).findViewById(2131368659)).inflate();
-          String str1 = "";
-          long l;
-          if ("com.qzone.homepage.ui.activity.QZoneUserHomeActivity".equals(str2))
-          {
-            l = paramIntent.getLongExtra("qqid", 0L);
-            paramContext = paramIntent.getStringExtra("qzone_uin");
-            if (String.valueOf(Long.valueOf(l)).equals(paramContext))
-            {
-              localObject1 = alpo.a(2131712583);
-              localObject3 = localObject2;
-            }
-          }
-          for (;;)
-          {
-            localTextView.setText((CharSequence)localObject1);
-            paramContext = (Context)localObject4;
-            localObject2 = localObject3;
-            break;
-            localObject1 = "";
-            localObject3 = localObject2;
-            continue;
-            if ("com.qzone.feed.ui.activity.QZoneFriendFeedActivity".equals(str2))
-            {
-              localObject1 = paramContext.getString(2131718254);
-              localObject3 = paramContext.getString(2131718177);
-            }
-            else if ("com.qzone.cover.ui.activity.QzoneCoverPhotoWallActivity".equals(str2))
-            {
-              localObject1 = paramContext.getString(2131718151);
-              localObject3 = localObject2;
-            }
-            else if ("com.qzone.cover.ui.activity.QZoneCoverStoreActivity".equals(str2))
-            {
-              localObject1 = paramContext.getString(2131718152);
-              localObject3 = localObject2;
-            }
-            else if ("com.qzone.detail.ui.activity.QzoneDetailActivity".equals(str2))
-            {
-              localObject1 = str1;
-              localObject3 = localObject2;
-              if (paramIntent.getBooleanExtra("qzone.sourceFrom", false))
-              {
-                localObject3 = paramContext.getString(2131699803);
-                localObject1 = str1;
-              }
-            }
-            else if ("com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity".equals(str2))
-            {
-              str1 = paramContext.getString(2131718634);
-              int i = paramIntent.getIntExtra("QZoneUploadPhotoActivity.key_state_type_src", -1);
-              paramIntent = paramIntent.getAction();
-              localObject1 = str1;
-              localObject3 = localObject2;
-              if (!TextUtils.isEmpty(paramIntent))
-              {
-                if (paramIntent.equals("com.tencent.intent.QZONE_RESHIP_FROM_QUN_AIO_TO_QUN")) {
-                  i = 5;
-                }
-                for (;;)
-                {
-                  switch (i)
-                  {
-                  case 9: 
-                  case 10: 
-                  default: 
-                    localObject1 = str1;
-                    localObject3 = localObject2;
-                    break;
-                  case 3: 
-                  case 4: 
-                  case 5: 
-                  case 6: 
-                  case 7: 
-                  case 8: 
-                  case 11: 
-                    localObject1 = paramContext.getString(2131718546);
-                    localObject3 = localObject2;
-                    break;
-                    if (paramIntent.equals("com.tencent.intent.QZONE_QUOTE_FROM_AIO")) {
-                      i = 11;
-                    }
-                    break;
-                  }
-                }
-              }
-            }
-            else if ("com.qzone.lbsv2.ui.QZoneMoodSelectLocation".equals(str2))
-            {
-              localObject1 = paramContext.getString(2131718573);
-              localObject3 = localObject2;
-            }
-            else if ("com.qzone.setting.QZoneSettingManager".equals(str2))
-            {
-              localObject1 = paramContext.getString(2131718582);
-              localObject3 = localObject2;
-            }
-            else if ("com.qzone.album.business.photolist.activity.QZonePersonalPhotoListActivity".equals(str2))
-            {
-              l = paramIntent.getLongExtra("key_album_face_uin", 0L);
-              paramContext = paramIntent.getStringExtra("key_alubm_name");
-              paramIntent = paramIntent.getStringExtra("key_album_face_nickname");
-              if ((Long.valueOf(l).longValue() != 0L) && (!TextUtils.isEmpty(paramIntent)))
-              {
-                localObject1 = paramIntent + alpo.a(2131712582);
-                localObject3 = localObject2;
-              }
-              else
-              {
-                localObject1 = paramContext;
-                localObject3 = localObject2;
-                if (paramContext == null)
-                {
-                  localObject1 = "";
-                  localObject3 = localObject2;
-                }
-              }
-            }
-            else if ("com.qzone.publish.ui.activity.QZonePublishMoodRealActivity".equals(str2))
-            {
-              localObject1 = paramIntent.getStringExtra("key_title");
-              localObject3 = localObject2;
-            }
-            else if ("com.qzone.publish.ui.activity.QZonePublishQueueAcitvity".equals(str2))
-            {
-              localObject1 = paramContext.getString(2131718498);
-              localObject3 = localObject2;
-            }
-            else
-            {
-              localObject1 = str1;
-              localObject3 = localObject2;
-              if ("com.qzone.permissionsetting.ui.activities.QZoneSinglePermissionSettingActivity".equals(str2))
-              {
-                localObject1 = paramContext.getString(2131718387);
-                localObject3 = localObject2;
-              }
-            }
+          paramViewGroup = new LinearLayout.LayoutParams(this.a.g, this.a.h);
+          localView.setLayoutParams(paramViewGroup);
+        }
+        paramViewGroup.width = this.a.g;
+        paramViewGroup.height = this.a.h;
+        paramViewGroup.leftMargin = this.a.e;
+        paramViewGroup.topMargin = this.a.f;
+        paramView.addView(localView);
+        if ((this.a.jdField_a_of_type_Bhuw != null) && (this.a.jdField_a_of_type_Beqd.isEnabled(j + paramInt)))
+        {
+          localView.setTag(2131361808, Integer.valueOf(j + paramInt));
+          localView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+        }
+        for (;;)
+        {
+          paramInt += 1;
+          break;
+          localView.setOnClickListener(null);
+        }
+        i = this.a.jdField_a_of_type_Beqd.a(paramInt) + 2;
+        localObject = paramView;
+        if (paramView != null)
+        {
+          localObject = paramView;
+          if (((Integer)paramView.getTag(2131361822)).intValue() != i) {
+            localObject = null;
           }
         }
+        paramView = this.a.jdField_a_of_type_Beqd.getView(paramInt, (View)localObject, paramViewGroup);
+        paramView.setTag(2131361822, Integer.valueOf(i));
+        if ((this.a.jdField_a_of_type_Bhuw != null) && (this.a.jdField_a_of_type_Beqd.isEnabled(paramInt)))
+        {
+          paramView.setTag(2131361808, Integer.valueOf(paramInt));
+          paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+          return paramView;
+        }
+        paramView.setOnClickListener(null);
+        return paramView;
       }
     }
   }
   
-  public void a(String paramString)
+  public int getViewTypeCount()
   {
-    this.a.setText(paramString);
+    return this.a.i + 2;
   }
   
-  public void dismiss()
+  public boolean isEnabled(int paramInt)
   {
-    try
-    {
-      super.dismiss();
-      return;
+    if ((this.a.c == 0) || (this.a.jdField_a_of_type_Int == 1)) {
+      return false;
     }
-    catch (Exception localException) {}
-  }
-  
-  public void setOnDismissListener(@Nullable DialogInterface.OnDismissListener paramOnDismissListener)
-  {
-    if (paramOnDismissListener == null) {
-      super.setOnDismissListener(paramOnDismissListener);
-    }
-    super.setOnDismissListener(new beqf(paramOnDismissListener));
+    return super.isEnabled(paramInt);
   }
 }
 

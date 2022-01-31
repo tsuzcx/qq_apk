@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ajwm;
-import aloz;
-import amjk;
+import akbb;
+import alto;
+import amnz;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import awbv;
+import awge;
 import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
@@ -24,10 +24,10 @@ import java.util.List;
 public class SelectMemberFromFriendGroup
   extends SelectMemberInnerFrame
 {
-  ajwm jdField_a_of_type_Ajwm;
+  akbb jdField_a_of_type_Akbb;
   private final ArrayList<Groups> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public List<Groups> a;
-  List<awbv> b = new ArrayList();
+  List<awge> b = new ArrayList();
   
   public SelectMemberFromFriendGroup(Context paramContext)
   {
@@ -52,7 +52,7 @@ public class SelectMemberFromFriendGroup
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
     if (localObject1 != null)
     {
-      Object localObject3 = ((amjk)localObject1).a(true);
+      Object localObject3 = ((amnz)localObject1).a(true);
       if (localObject3 != null)
       {
         Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
@@ -66,7 +66,7 @@ public class SelectMemberFromFriendGroup
             {
               if ((((RecentUser)localObject4).getType() == 0) && (Long.parseLong(((RecentUser)localObject4).uin) >= 10000L) && (!((RecentUser)localObject4).uin.equals(localObject2)) && (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d.contains(((RecentUser)localObject4).uin)))
               {
-                localObject4 = ((aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(((RecentUser)localObject4).uin);
+                localObject4 = ((alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(((RecentUser)localObject4).uin);
                 if ((localObject4 != null) && (((Friends)localObject4).isFriend())) {
                   ((List)localObject1).add(localObject4);
                 }
@@ -79,7 +79,7 @@ public class SelectMemberFromFriendGroup
         {
           localObject2 = new Groups();
           ((Groups)localObject2).group_id = 1003;
-          ((Groups)localObject2).group_name = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131719111);
+          ((Groups)localObject2).group_name = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131719123);
           ((Groups)localObject2).group_friend_count = ((List)localObject1).size();
           ((Groups)localObject2).seqid = 0;
           this.jdField_a_of_type_JavaUtilArrayList.add(0, localObject2);
@@ -116,7 +116,7 @@ public class SelectMemberFromFriendGroup
     if (paramGroups.group_id == 1003) {}
     Object localObject;
     ArrayList localArrayList;
-    for (paramGroups = this.b;; paramGroups = ((aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(paramGroups.group_id))
+    for (paramGroups = this.b;; paramGroups = ((alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(paramGroups.group_id))
     {
       localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b;
       localArrayList = new ArrayList();
@@ -154,9 +154,9 @@ public class SelectMemberFromFriendGroup
     if (localArrayList == null) {
       return false;
     }
-    aloz localaloz = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    alto localalto = (alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
     if (paramGroups.group_id == 1003) {}
-    for (paramGroups = this.b;; paramGroups = localaloz.a(paramGroups.group_id))
+    for (paramGroups = this.b;; paramGroups = localalto.a(paramGroups.group_id))
     {
       paramGroups = paramGroups.iterator();
       do
@@ -173,7 +173,7 @@ public class SelectMemberFromFriendGroup
   public void b(Bundle paramBundle)
   {
     super.b(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(true, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131719713), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131689743));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(true, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131719725), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131689743));
     f();
   }
   
@@ -181,7 +181,7 @@ public class SelectMemberFromFriendGroup
   {
     ArrayList localArrayList1 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.e;
     ArrayList localArrayList2 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b;
-    aloz localaloz = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    alto localalto = (alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
     Iterator localIterator1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     int i = 0;
     Groups localGroups;
@@ -216,7 +216,7 @@ public class SelectMemberFromFriendGroup
             }
             j = 1;
             continue;
-            localObject = localaloz.a(localGroups.group_id);
+            localObject = localalto.a(localGroups.group_id);
             break;
           }
         }
@@ -242,7 +242,7 @@ public class SelectMemberFromFriendGroup
           i = 1;
           continue;
           if (i != 0) {
-            this.jdField_a_of_type_Ajwm.notifyDataSetChanged();
+            this.jdField_a_of_type_Akbb.notifyDataSetChanged();
           }
           return;
         }
@@ -259,16 +259,16 @@ public class SelectMemberFromFriendGroup
     localXListView.setDivider(null);
     localLinearLayout.addView(localXListView);
     localXListView.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
-    this.jdField_a_of_type_Ajwm = new ajwm(this);
-    localXListView.setAdapter(this.jdField_a_of_type_Ajwm);
+    this.jdField_a_of_type_Akbb = new akbb(this);
+    localXListView.setAdapter(this.jdField_a_of_type_Akbb);
     setContentView(localLinearLayout);
   }
   
   void h()
   {
-    Object localObject = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    Object localObject = (alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
     if (localObject != null) {}
-    for (localObject = ((aloz)localObject).b();; localObject = null)
+    for (localObject = ((alto)localObject).b();; localObject = null)
     {
       if (((localObject == null) || (((List)localObject).size() == 0)) && (localObject == null)) {
         localObject = new ArrayList();

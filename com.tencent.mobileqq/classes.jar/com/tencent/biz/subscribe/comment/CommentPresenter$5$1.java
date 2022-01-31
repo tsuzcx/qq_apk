@@ -1,18 +1,18 @@
 package com.tencent.biz.subscribe.comment;
 
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import ybx;
-import yca;
+import ygg;
+import ygj;
 
 public class CommentPresenter$5$1
   implements Runnable
 {
-  public CommentPresenter$5$1(yca paramyca) {}
+  public CommentPresenter$5$1(ygj paramygj) {}
   
   public void run()
   {
-    ybx.a(this.a.a, 0, ybx.a(this.a.a).getReplyId());
-    ybx.b(this.a.a, false);
+    ygg.a(this.a.a, 0, ygg.a(this.a.a).getReplyId());
+    ygg.b(this.a.a, false);
   }
 }
 

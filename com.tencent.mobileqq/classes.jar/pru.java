@@ -26,7 +26,7 @@ class pru
         return;
       }
     }
-    QQToast.a(prr.a(this.jdField_a_of_type_Prr).getContext(), 1, 2131718949, 0).a();
+    QQToast.a(prr.a(this.jdField_a_of_type_Prr).getContext(), 1, 2131718961, 0).a();
   }
 }
 

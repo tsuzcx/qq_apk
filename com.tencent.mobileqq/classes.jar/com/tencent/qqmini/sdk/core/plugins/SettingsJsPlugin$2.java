@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.core.auth.AuthState;
 import com.tencent.qqmini.sdk.core.auth.UserAuthInfo;
 import com.tencent.qqmini.sdk.core.auth.UserSettingInfo;
@@ -11,7 +11,7 @@ import java.util.List;
 class SettingsJsPlugin$2
   implements ChannelProxy.AuthListResult
 {
-  SettingsJsPlugin$2(SettingsJsPlugin paramSettingsJsPlugin, AuthState paramAuthState, bgkd parambgkd) {}
+  SettingsJsPlugin$2(SettingsJsPlugin paramSettingsJsPlugin, AuthState paramAuthState, bgok parambgok) {}
   
   public void onReceiveResult(boolean paramBoolean, List<UserAuthInfo> paramList, List<UserSettingInfo> paramList1)
   {

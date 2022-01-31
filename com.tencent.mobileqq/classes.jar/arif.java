@@ -1,222 +1,72 @@
 import android.app.Activity;
 import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import java.util.ArrayList;
 import java.util.List;
 
 public class arif
-  extends arhu
-  implements arge, argf
 {
-  private int jdField_a_of_type_Int = this.jdField_a_of_type_Arfz.c();
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new arih(this);
-  protected arjx a;
-  private bhqp jdField_a_of_type_Bhqp = new arii(this);
-  private bhqr jdField_a_of_type_Bhqr = new arij(this);
-  private List<argc> jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Arfz.a();
-  boolean jdField_a_of_type_Boolean = false;
-  private int b = this.jdField_a_of_type_Arfz.c();
-  private boolean d;
+  protected int a;
+  protected QQAppInterface a;
+  protected FileManagerEntity a;
+  protected List<arhz> a;
+  private int b;
   
-  public arif(arfz paramarfz, Activity paramActivity)
+  public arif(QQAppInterface paramQQAppInterface)
   {
-    super(paramarfz, paramActivity);
-    this.jdField_a_of_type_Arjx = new arjx(paramActivity);
-    a(this.jdField_a_of_type_Arjx);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  private boolean a(String paramString)
+  public int a()
   {
-    return !TextUtils.isEmpty(paramString);
+    return this.jdField_a_of_type_Int;
   }
   
-  private String b()
+  public arfs a(BaseActivity paramBaseActivity)
   {
-    argc localargc = (argc)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Arfz.c());
-    if (localargc == null) {
-      return null;
+    return new arig(this, paramBaseActivity);
+  }
+  
+  public List<arhz> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public boolean a(Intent paramIntent, Activity paramActivity)
+  {
+    Object localObject = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
+    if (localObject == null) {
+      return false;
     }
-    String str = localargc.a();
-    if (TextUtils.isEmpty(str)) {
-      return localargc.b();
-    }
-    return str;
-  }
-  
-  private void c()
-  {
-    Object localObject = b();
-    if (TextUtils.isEmpty((CharSequence)localObject))
+    if (paramIntent.getBooleanExtra("from_webview", false))
     {
-      QLog.i("PictureFilePresenter<QFile>", 1, "startEditPicture. but file path is null.");
-      return;
+      bbtn localbbtn = bcnt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((ForwardFileInfo)localObject).a(), ((ForwardFileInfo)localObject).b(), ((ForwardFileInfo)localObject).e(), ((ForwardFileInfo)localObject).d(), ((ForwardFileInfo)localObject).d(), paramIntent.getIntExtra("bisId", 0));
+      l1 = ((ForwardFileInfo)localObject).a();
+      localObject = paramIntent.getStringExtra("sender_uin");
+      long l2 = paramIntent.getLongExtra("last_time", 0L);
+      arsx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramActivity, null, null, l1, localbbtn, (String)localObject, l2, -1, 0, null, false, false);
+      paramActivity.finish();
+      return false;
     }
-    localObject = EditPicActivity.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject, true, true, true, true, true, 2, 130, 7);
-    ((Intent)localObject).putExtra("open_chatfragment", true);
-    ((Intent)localObject).putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1041);
-    ((Intent)localObject).putExtra("key_enable_edit_title_bar", true);
-    ((Intent)localObject).putExtra("key_help_forward_pic", true);
-    ((Intent)localObject).putExtra("key_allow_multiple_forward_from_limit", false);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
-    int i;
-    switch (this.jdField_a_of_type_Arfz.k())
+    long l1 = ((ForwardFileInfo)localObject).b();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l1);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime = paramIntent.getLongExtra("last_time", 0L);
+    this.jdField_a_of_type_JavaUtilList.add(arhs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity));
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0)
     {
-    case 5: 
-    case 6: 
-    case 10: 
-    default: 
-      i = 0;
+      this.jdField_a_of_type_Int = 1;
+      return true;
     }
-    for (;;)
-    {
-      azmj.b(null, "dc00898", "", "", "0X800A1E2", "0X800A1E2", i, 0, "", "", "", "");
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(2130772036, 2130772038);
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-    }
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_Arfz.c();
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (QLog.isColorLevel()) {
-      QLog.w("PictureFilePresenter<QFile>", 1, "FileBrowserPresenter init: type = picture");
-    }
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int) != null) && (this.jdField_a_of_type_Arfz.e()))
-    {
-      this.jdField_a_of_type_Arjx.c(a(b()));
-      armz.b(BaseApplicationImpl.getContext().getString(2131692559));
-    }
-    this.jdField_a_of_type_Arjx.a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Arjx.a(this.jdField_a_of_type_Bhqp);
-    this.jdField_a_of_type_Arjx.a(new arig(this));
-    this.jdField_a_of_type_Arjx.a(this.jdField_a_of_type_Bhqr);
-    this.jdField_a_of_type_Arjx.b(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_Arjx.c(this.jdField_a_of_type_Arfz.c());
-    b();
-    this.jdField_a_of_type_Arfz.a(this);
-    this.jdField_a_of_type_Arfz.a(this);
-  }
-  
-  public void a(float paramFloat)
-  {
-    b(paramFloat);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Arfz.c(paramInt);
-    if ((this.jdField_a_of_type_Arfz.i()) && (this.jdField_a_of_type_Arfz.a() != null))
-    {
-      this.jdField_a_of_type_Arjx.b(true);
-      this.jdField_a_of_type_Arjx.a(false);
-      b(0.0F);
-      this.jdField_a_of_type_Arfz.a().a();
-    }
-    b();
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      if (QLog.isColorLevel()) {
-        QLog.e("PictureFilePresenter<QFile>", 1, "PictureFilePresenter onThumbDownload error : picture fileid is null!");
-      }
-    }
-    argc localargc;
-    do
-    {
-      return;
-      localargc = (argc)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Arfz.c());
-    } while (!localargc.a(paramString1));
-    if (TextUtils.isEmpty(paramString2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PictureFilePresenter<QFile>", 1, "PictureFilePresenter onThumbDownload error : picture thumbPath is null!");
-      }
-      localargc.a(3);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("PictureFilePresenter<QFile>", 1, "PictureFilePresenter onThumbDownload suc : fileId[" + paramString1 + "] thumbPath[" + paramString2 + "]");
-    }
-    localargc.a(paramString2);
-    localargc.a(2);
-    this.jdField_a_of_type_Arjx.c();
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  protected void b()
-  {
-    int i = this.jdField_a_of_type_Arfz.i();
-    if ((i == 2) || (i == 5))
-    {
-      this.jdField_a_of_type_Arjx.a(false);
-      this.jdField_a_of_type_Arjx.b(false);
-    }
-    do
-    {
-      return;
-      if (i == 6)
-      {
-        this.jdField_a_of_type_Arjx.a(true);
-        this.jdField_a_of_type_Arjx.b(false);
-      }
-      super.b();
-    } while (this.jdField_a_of_type_Arfz.f() != 9501);
-    this.jdField_a_of_type_Arjx.b();
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Arjx.a(false);
-    this.jdField_a_of_type_Arjx.b(true);
-    b(this.jdField_a_of_type_Arfz.a());
-  }
-  
-  public void e()
-  {
-    b();
-  }
-  
-  public void f()
-  {
-    b();
-    ((argc)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Arfz.c())).b(this.jdField_a_of_type_Arfz.d());
-    this.jdField_a_of_type_Arjx.c();
-    this.jdField_a_of_type_Arjx.d();
-    if (this.jdField_a_of_type_Ardn != null) {
-      this.jdField_a_of_type_Ardn.e();
-    }
-  }
-  
-  public void g()
-  {
-    this.jdField_a_of_type_Arjx.a(true);
-    this.jdField_a_of_type_Arjx.b(false);
-    b();
+    this.jdField_a_of_type_Int = 3;
+    return true;
   }
 }
 

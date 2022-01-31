@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import com.idlefish.flutterboost.FlutterBoost.BoostPluginsRegister;
+import com.tencent.qflutter.TextPlatformViewPlugin;
+import io.flutter.plugin.common.PluginRegistry;
+import io.flutter.plugin.common.PluginRegistry.Registrar;
+import io.flutter.plugins.GeneratedPluginRegistrant;
 
 class aryf
-  implements awfy
+  implements FlutterBoost.BoostPluginsRegister
 {
-  aryf(arye paramarye, long paramLong) {}
+  aryf(aryd paramaryd) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void registerPlugins(PluginRegistry paramPluginRegistry)
   {
-    return null;
-  }
-  
-  public void a(awfz paramawfz)
-  {
-    if (paramawfz != null) {
-      QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, "upCallBack updateMsg info =" + paramawfz);
-    }
-  }
-  
-  public void b(awfz paramawfz)
-  {
-    QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "upCallBack onSend result=", paramawfz });
-    arye.a(this.jdField_a_of_type_Arye, paramawfz, this.jdField_a_of_type_Long);
+    GeneratedPluginRegistrant.registerWith(paramPluginRegistry);
+    paramPluginRegistry = paramPluginRegistry.registrarFor("TextPlatformViewPlugin");
+    TextPlatformViewPlugin.register(paramPluginRegistry);
+    arwv.a().a(paramPluginRegistry.messenger());
   }
 }
 

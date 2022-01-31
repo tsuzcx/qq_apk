@@ -1,18 +1,32 @@
-import android.os.Bundle;
+import com.tencent.TMG.sdk.AVVideoCtrl.SwitchCameraCompleteCallback;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.9;
+import org.json.JSONObject;
 
-public abstract interface akxj
+public class akxj
+  extends AVVideoCtrl.SwitchCameraCompleteCallback
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public akxj(CmGameAvHandler.9 param9) {}
   
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle);
-  
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public void onComplete(int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    if (paramInt2 == 0) {}
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("ret", i);
+        localJSONObject.put("cameraPos", paramInt1);
+        localJSONObject.put("errCode", paramInt2);
+        akwd.a().callbackFromRequest(this.a.a, 0, "cs.audioRoom_camera_switch.local", localJSONObject.toString());
+        return;
+      }
+      catch (Exception localException) {}
+      i = -1;
+    }
+  }
 }
 
 

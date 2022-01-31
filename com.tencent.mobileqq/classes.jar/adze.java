@@ -1,50 +1,19 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adze
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adze(TroopInfoActivity paramTroopInfoActivity) {}
+  public adze(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {
-      return;
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId != 0L) || (this.a.c != 0L))
-    {
-      this.a.c();
-      return;
-    }
-    switch (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt)
-    {
-    default: 
-      return;
-    case 0: 
-    case 1: 
-      this.a.i();
-      return;
-    }
-    if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.jdField_a_of_type_Long <= this.a.jdField_b_of_type_Long) && (this.a.jdField_b_of_type_Int == 0))
-    {
-      paramView = bdcd.a(this.a, 230);
-      paramView.setTitle(null);
-      paramView.setMessage(this.a.getString(2131693595, new Object[] { this.a.jdField_a_of_type_Long + "" }));
-      paramView.setPositiveButton(this.a.getString(2131693572), new bdco());
-      paramView.setPositiveButtonContentDescription(this.a.getString(2131693572));
-      paramView.show();
-      return;
-    }
-    paramView = TroopInfoActivity.a(this.a);
-    if (!TextUtils.isEmpty(paramView))
-    {
-      this.a.a(paramView);
-      return;
-    }
-    TroopInfoActivity.a(this.a);
+    QQSettingCleanActivity.a(this.a);
+    azqs.b(this.a.app, "dc00898", "", "", "0X8007546", "0X8007546", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
+    this.a.finish();
   }
 }
 

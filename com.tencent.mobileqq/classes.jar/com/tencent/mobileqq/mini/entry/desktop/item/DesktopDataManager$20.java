@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import awbv;
-import awbw;
-import awbx;
-import awby;
+import awge;
+import awgf;
+import awgg;
+import awgh;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -21,14 +21,14 @@ class DesktopDataManager$20
     if (localObject1 == null) {
       QLog.e("DesktopDataManager", 1, "insertEntityWithBatch, app is null.");
     }
-    awbw localawbw;
+    awgf localawgf;
     do
     {
       return;
-      localawbw = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-    } while (localawbw == null);
-    awby localawby = localawbw.a();
-    localawby.a();
+      localawgf = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+    } while (localawgf == null);
+    awgh localawgh = localawgf.a();
+    localawgh.a();
     for (;;)
     {
       try
@@ -61,17 +61,17 @@ class DesktopDataManager$20
           continue;
         }
         QLog.d("DesktopDataManager", 2, new Object[] { "insertEntityWithBatch : ", localStringBuilder.toString() });
-        localawby.c();
+        localawgh.c();
         return;
       }
       finally
       {
-        localawby.b();
+        localawgh.b();
       }
       if (localObject1 != null)
       {
         ((DeskTopAppEntity)localObject1).setStatus(1000);
-        DesktopDataManager.access$3200(this.this$0, localawbw, (awbv)localObject1);
+        DesktopDataManager.access$3200(this.this$0, localawgf, (awge)localObject1);
         localStringBuilder.append(((DeskTopAppEntity)localObject1).name).append(", ");
         continue;
         label231:

@@ -1,18 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class bcer
-  implements View.OnClickListener
+class bcer
+  extends BroadcastReceiver
 {
-  public bcer(VisitorTroopCardFragment paramVisitorTroopCardFragment, Dialog paramDialog) {}
+  bcer(bcep parambcep) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    paramContext = paramIntent.getAction();
+    if ("com.tencent.mobileqq.activity.ai.audiopanel.startrecord_action".equals(paramContext)) {
+      this.a.b(bcep.a(this.a));
     }
+    while (!"com.tencent.mobileqq.troop.homework.xmediaeditor.ui.action_play_video".equals(paramContext)) {
+      return;
+    }
+    this.a.b(bcep.a(this.a));
   }
 }
 

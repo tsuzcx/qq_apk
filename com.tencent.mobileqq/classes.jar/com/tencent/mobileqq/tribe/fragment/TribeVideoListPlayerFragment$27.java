@@ -3,7 +3,7 @@ package com.tencent.mobileqq.tribe.fragment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bazr;
+import bbea;
 
 class TribeVideoListPlayerFragment$27
   implements Runnable
@@ -12,8 +12,8 @@ class TribeVideoListPlayerFragment$27
   
   public void run()
   {
-    bazr localbazr = (bazr)((View)this.this$0.a).getTag();
-    if (localbazr == null) {
+    bbea localbbea = (bbea)((View)this.this$0.a).getTag();
+    if (localbbea == null) {
       return;
     }
     switch (TribeVideoListPlayerFragment.a(this.this$0).a)
@@ -21,19 +21,19 @@ class TribeVideoListPlayerFragment$27
     default: 
       return;
     case 0: 
-      localbazr.j.setVisibility(0);
-      localbazr.i.setVisibility(8);
-      localbazr.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
+      localbbea.j.setVisibility(0);
+      localbbea.i.setVisibility(8);
+      localbbea.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
     case 1: 
-      localbazr.f.setVisibility(0);
-      localbazr.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
-      localbazr.a.setVisibility(8);
+      localbbea.f.setVisibility(0);
+      localbbea.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
+      localbbea.a.setVisibility(8);
       return;
     }
-    localbazr.h.setVisibility(0);
-    localbazr.g.setVisibility(8);
-    localbazr.d.setVisibility(8);
+    localbbea.h.setVisibility(0);
+    localbbea.g.setVisibility(8);
+    localbbea.d.setVisibility(8);
   }
 }
 

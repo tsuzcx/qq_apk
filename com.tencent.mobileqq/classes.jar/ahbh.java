@@ -1,30 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import mqq.os.MqqHandler;
 
 class ahbh
-  implements Animator.AnimatorListener
+  implements apjw
 {
-  ahbh(ahbf paramahbf) {}
+  ahbh(ahbf paramahbf, MqqHandler paramMqqHandler) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    this.a.a.a = true;
-    paramAnimator = new Intent(this.a.a, SearchContactsActivity.class);
-    paramAnimator.putExtra("from_key", this.a.a.a());
-    paramAnimator.putExtra("fromType", 13);
-    this.a.a.startActivity(paramAnimator);
-    this.a.a.overridePendingTransition(0, 0);
-    bdah.a(false);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(84);
+      return;
+    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(84, 10000L);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

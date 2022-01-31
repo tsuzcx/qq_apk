@@ -1,20 +1,18 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import android.content.Context;
+import android.widget.GridView;
+import com.tencent.biz.troopgift.GridListViewPager;
 
-class yvd
-  implements Downloader.DownloadListener
+public class yvd
+  extends GridView
 {
-  yvd(yvc paramyvc, yuk paramyuk, String paramString) {}
-  
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult) {}
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public yvd(GridListViewPager paramGridListViewPager, Context paramContext)
   {
-    yvc.a(this.jdField_a_of_type_Yvc, this.jdField_a_of_type_Yuk, yuz.a().b(this.jdField_a_of_type_JavaLangString));
+    super(paramContext);
+  }
+  
+  public void setOverScrollMode(int paramInt)
+  {
+    super.setOverScrollMode(2);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import adyx;
+import aedm;
 
 public class TroopInfoActivity$22$2
   implements Runnable
 {
-  public TroopInfoActivity$22$2(adyx paramadyx) {}
+  public TroopInfoActivity$22$2(aedm paramaedm) {}
   
   public void run()
   {

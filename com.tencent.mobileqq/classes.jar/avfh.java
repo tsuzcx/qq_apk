@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-public final class avfh
-  implements Parcelable.Creator<PicInfo>
+public class avfh
+  implements View.OnClickListener
 {
-  public PicInfo a(Parcel paramParcel)
-  {
-    return new PicInfo(paramParcel);
-  }
+  public avfh(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public PicInfo[] a(int paramInt)
-  {
-    return new PicInfo[paramInt];
-  }
+  public void onClick(View paramView) {}
 }
 
 

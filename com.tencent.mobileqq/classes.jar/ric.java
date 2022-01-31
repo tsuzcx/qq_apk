@@ -41,7 +41,7 @@ public class ric
   public ric(QQAppInterface paramQQAppInterface, Activity paramActivity, raw paramraw)
   {
     this.jdField_a_of_type_Rib = new rib(paramQQAppInterface);
-    this.jdField_a_of_type_Int = bcwh.a(paramActivity, 3.0F);
+    this.jdField_a_of_type_Int = bdaq.a(paramActivity, 3.0F);
     this.jdField_a_of_type_Raw = paramraw;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
@@ -57,9 +57,9 @@ public class ric
     {
       if ((paramrbt.q == null) && ((paramrbt instanceof rbs)))
       {
-        paramrbt.q = ((ViewGroup)((ViewStub)paramrbt.p.findViewById(2131379658)).inflate());
-        paramrbt.e = ((URLImageView)paramrbt.q.findViewById(2131376625));
-        paramrbt.G = ((TextView)paramrbt.q.findViewById(2131376626));
+        paramrbt.q = ((ViewGroup)((ViewStub)paramrbt.p.findViewById(2131379716)).inflate());
+        paramrbt.e = ((URLImageView)paramrbt.q.findViewById(2131376679));
+        paramrbt.G = ((TextView)paramrbt.q.findViewById(2131376680));
       }
       if (paramrbt.q != null)
       {
@@ -72,11 +72,11 @@ public class ric
       try
       {
         Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = bdkf.a(32.0F);
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = bdkf.a(32.0F);
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = bdoo.a(32.0F);
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = bdoo.a(32.0F);
         localObject1 = URLDrawable.getDrawable(paramECommerceEntranceInfo.jdField_c_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject1);
         ((URLDrawable)localObject1).setTag(new int[] { 0, 0, this.jdField_a_of_type_Int, 3 });
-        ((URLDrawable)localObject1).setDecodeHandler(bcuq.j);
+        ((URLDrawable)localObject1).setDecodeHandler(bcyz.j);
         paramrbt.e.setImageDrawable((Drawable)localObject1);
         paramrbt.G.setText(paramECommerceEntranceInfo.jdField_a_of_type_JavaLangString);
         rdm.a(paramrbt.q, 200);
@@ -98,12 +98,12 @@ public class ric
         if ((paramrbt.s == null) && (paramrbt.jdField_a_of_type_AndroidViewViewStub != null))
         {
           paramrbt.jdField_a_of_type_AndroidViewViewStub.inflate();
-          paramrbt.s = ((ViewGroup)paramrbt.jdField_t_of_type_AndroidViewView.findViewById(2131372961));
-          paramrbt.g = ((URLImageView)paramrbt.jdField_t_of_type_AndroidViewView.findViewById(2131377051));
-          paramrbt.L = ((TextView)paramrbt.jdField_t_of_type_AndroidViewView.findViewById(2131377050));
-          paramrbt.u = paramrbt.jdField_t_of_type_AndroidViewView.findViewById(2131377048);
-          paramrbt.M = ((TextView)paramrbt.jdField_t_of_type_AndroidViewView.findViewById(2131377052));
-          paramrbt.N = ((TextView)paramrbt.jdField_t_of_type_AndroidViewView.findViewById(2131377049));
+          paramrbt.s = ((ViewGroup)paramrbt.jdField_t_of_type_AndroidViewView.findViewById(2131372987));
+          paramrbt.g = ((URLImageView)paramrbt.jdField_t_of_type_AndroidViewView.findViewById(2131377105));
+          paramrbt.L = ((TextView)paramrbt.jdField_t_of_type_AndroidViewView.findViewById(2131377104));
+          paramrbt.u = paramrbt.jdField_t_of_type_AndroidViewView.findViewById(2131377102);
+          paramrbt.M = ((TextView)paramrbt.jdField_t_of_type_AndroidViewView.findViewById(2131377106));
+          paramrbt.N = ((TextView)paramrbt.jdField_t_of_type_AndroidViewView.findViewById(2131377103));
           paramrbt.u.setTag(paramrbt);
           paramrbt.u.setOnClickListener(this);
           paramrbt.L.setTag(paramrbt);
@@ -116,7 +116,7 @@ public class ric
         localObject2 = URLDrawable.getDrawable(paramECommerceEntranceInfo.jdField_c_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2);
         paramrbt.g.setImageDrawable((Drawable)localObject2);
         int i;
-        if ((paramECommerceEntranceInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo != null) && (bdem.a(this.jdField_a_of_type_AndroidAppActivity, paramECommerceEntranceInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.jdField_b_of_type_JavaLangString)))
+        if ((paramECommerceEntranceInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo != null) && (bdiv.a(this.jdField_a_of_type_AndroidAppActivity, paramECommerceEntranceInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.jdField_b_of_type_JavaLangString)))
         {
           i = 1;
           label591:
@@ -172,11 +172,11 @@ public class ric
     if ((paramrbt.jdField_t_of_type_AndroidViewViewGroup == null) && (paramrbt.b != null))
     {
       paramrbt.b.inflate();
-      paramrbt.jdField_t_of_type_AndroidViewViewGroup = ((ViewGroup)paramrbt.jdField_t_of_type_AndroidViewView.findViewById(2131372957));
-      paramrbt.O = ((TextView)paramrbt.jdField_t_of_type_AndroidViewViewGroup.findViewById(2131372958));
-      paramrbt.jdField_d_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramrbt.jdField_t_of_type_AndroidViewViewGroup.findViewById(2131379634));
+      paramrbt.jdField_t_of_type_AndroidViewViewGroup = ((ViewGroup)paramrbt.jdField_t_of_type_AndroidViewView.findViewById(2131372983));
+      paramrbt.O = ((TextView)paramrbt.jdField_t_of_type_AndroidViewViewGroup.findViewById(2131372984));
+      paramrbt.jdField_d_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramrbt.jdField_t_of_type_AndroidViewViewGroup.findViewById(2131379692));
       int i = (int)(rdm.b(this.jdField_a_of_type_AndroidAppActivity)[1] * 0.45F);
-      ((ViewGroup.MarginLayoutParams)paramrbt.jdField_t_of_type_AndroidViewViewGroup.findViewById(2131379640).getLayoutParams()).topMargin = i;
+      ((ViewGroup.MarginLayoutParams)paramrbt.jdField_t_of_type_AndroidViewViewGroup.findViewById(2131379698).getLayoutParams()).topMargin = i;
       this.jdField_a_of_type_Out = out.a("http://kd.qpic.cn/viola/test/lottie_d5d5ea43.zip");
       paramrbt.jdField_d_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibilityChangedListener(new rid(this, paramrbt));
       paramrbt.jdField_t_of_type_AndroidViewViewGroup.setOnClickListener(new rie(this));
@@ -384,8 +384,8 @@ public class ric
     {
     default: 
       return;
-    case 2131372960: 
-    case 2131377050: 
+    case 2131372986: 
+    case 2131377104: 
       c((rbt)localrbl);
       return;
     }

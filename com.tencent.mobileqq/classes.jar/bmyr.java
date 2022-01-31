@@ -1,107 +1,79 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.graphics.RectF;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 class bmyr
-  implements Animator.AnimatorListener
+  extends bmym<bmyp>
 {
-  bmyr(bmyp parambmyp) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367796);
+  private ImageView b = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367797);
+  private ImageView c = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370657);
+  private ImageView d = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370658);
   
-  public void onAnimationCancel(Animator paramAnimator)
+  private bmyr(bmyp parambmyp, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    if (bmyp.b(this.a))
-    {
-      bmyp.a(this.a, false);
-      bmyp.g(this.a, bmyp.e(this.a));
-      if (bmyp.e(this.a) != 1) {
-        break label53;
-      }
-      this.a.a(2);
-    }
-    label53:
-    do
-    {
-      return;
-      if (bmyp.e(this.a) == 3)
-      {
-        this.a.a(0);
-        return;
-      }
-    } while (bmyp.e(this.a) != 4);
-    if ((bmyp.a(this.a)) && (bmyp.a(this.a) != null))
-    {
-      paramAnimator = (bmza)bmyp.a(this.a).get();
-      if (paramAnimator != null)
-      {
-        RectF localRectF = bmyp.a(this.a).a(bmyp.f(this.a));
-        if (localRectF == null) {
-          break label183;
-        }
-        paramAnimator.a(bmyp.e(this.a), bmyp.f(this.a), localRectF);
-      }
-    }
-    for (;;)
-    {
-      bmyp.b(this.a, false);
-      this.a.a(0);
-      return;
-      label183:
-      QLog.d("GroundDrawable", 2, "onGroundMarkSelected error 2 !! rc is null:" + bmyp.f(this.a));
-    }
+    super(paramContext, paramViewGroup);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    if (this.a.isRunning())
-    {
-      bmyp.a(this.a, false);
-      bmyp.f(this.a, bmyp.e(this.a));
-      if (bmyp.e(this.a) != 1) {
-        break label53;
-      }
-      this.a.a(2);
-    }
-    label53:
-    do
-    {
-      return;
-      if (bmyp.e(this.a) == 3)
-      {
-        this.a.a(0);
-        return;
-      }
-    } while (bmyp.e(this.a) != 4);
-    if ((bmyp.a(this.a)) && (bmyp.a(this.a) != null))
-    {
-      paramAnimator = (bmza)bmyp.a(this.a).get();
-      if (paramAnimator != null)
-      {
-        RectF localRectF = bmyp.a(this.a).a(bmyp.f(this.a));
-        if (localRectF == null) {
-          break label183;
-        }
-        paramAnimator.a(bmyp.e(this.a), bmyp.f(this.a), localRectF);
-      }
-    }
-    for (;;)
-    {
-      bmyp.b(this.a, false);
-      this.a.a(0);
-      return;
-      label183:
-      QLog.d("GroundDrawable", 2, "onGroundMarkSelected error!! rc is null:" + bmyp.f(this.a));
-    }
+    return LayoutInflater.from(paramContext).inflate(2131561591, paramViewGroup, false);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  void a(ImageView paramImageView, char paramChar)
   {
-    if (this.a.isRunning()) {
-      bmyp.e(this.a, bmyp.e(this.a));
+    switch (paramChar)
+    {
+    default: 
+      return;
+    case '0': 
+      paramImageView.setImageResource(2130846235);
+      return;
+    case '1': 
+      paramImageView.setImageResource(2130846236);
+      return;
+    case '2': 
+      paramImageView.setImageResource(2130846237);
+      return;
+    case '3': 
+      paramImageView.setImageResource(2130846238);
+      return;
+    case '4': 
+      paramImageView.setImageResource(2130846239);
+      return;
+    case '5': 
+      paramImageView.setImageResource(2130846240);
+      return;
+    case '6': 
+      paramImageView.setImageResource(2130846241);
+      return;
+    case '7': 
+      paramImageView.setImageResource(2130846242);
+      return;
+    case '8': 
+      paramImageView.setImageResource(2130846243);
+      return;
     }
+    paramImageView.setImageResource(2130846244);
+  }
+  
+  public void a(bmyp parambmyp, int paramInt)
+  {
+    super.a(parambmyp, paramInt);
+    parambmyp = new SimpleDateFormat("HH:mm");
+    ((bmyp)this.jdField_a_of_type_Bmyl).c = parambmyp.format(new Date());
+    wxe.b("TimeFilterData", "TimeFilterData time:" + ((bmyp)this.jdField_a_of_type_Bmyl).c);
+    a(this.jdField_a_of_type_AndroidWidgetImageView, ((bmyp)this.jdField_a_of_type_Bmyl).c.charAt(0));
+    a(this.b, ((bmyp)this.jdField_a_of_type_Bmyl).c.charAt(1));
+    a(this.c, ((bmyp)this.jdField_a_of_type_Bmyl).c.charAt(3));
+    a(this.d, ((bmyp)this.jdField_a_of_type_Bmyl).c.charAt(4));
+    paramInt = xsm.d(this.jdField_a_of_type_AndroidViewView.getContext());
+    this.jdField_a_of_type_AndroidViewView.setPadding(0, paramInt / 3 * 2, 0, 0);
   }
 }
 

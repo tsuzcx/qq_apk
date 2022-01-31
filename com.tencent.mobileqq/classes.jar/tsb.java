@@ -1,25 +1,19 @@
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.MessageMicro;
 
 public class tsb
-  implements skr
 {
-  public tsb(QCircleFolderFragmentsPart paramQCircleFolderFragmentsPart) {}
+  public long a;
+  public MessageMicro a;
+  public String a;
+  public boolean a;
   
-  public View a(ViewGroup paramViewGroup)
+  public tsb(long paramLong, String paramString, MessageMicro paramMessageMicro, boolean paramBoolean)
   {
-    return LayoutInflater.from(BaseApplicationImpl.getApplication()).inflate(2131560550, paramViewGroup, false);
-  }
-  
-  public void a(sko paramsko1, @Nullable sko paramsko2, int paramInt)
-  {
-    if (paramsko1 != null) {
-      QCircleFolderFragmentsPart.a(this.a, paramsko1.a(), 1);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramMessageMicro;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

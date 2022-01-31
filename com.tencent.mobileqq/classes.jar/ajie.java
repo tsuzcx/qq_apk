@@ -1,240 +1,293 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.recent.parcelUtils.ParcelHelper.FieldChangedException;
-import com.tencent.mobileqq.activity.recent.parcelUtils.ParcelHelper.UnsupportedFieldTypeException;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.RecentHotChatCenterItem;
+import com.tencent.mobileqq.activity.recent.data.RecentItemActivateFriendsData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemAppletsFolderData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemChangeMachine;
+import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemConfessMsgBox;
+import com.tencent.mobileqq.activity.recent.data.RecentItemContactsGuideData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemDiscussionMsgData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemEcShopAssitant;
+import com.tencent.mobileqq.activity.recent.data.RecentItemImaxADData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemKandianMergeData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendVerticalListData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemMsgBox;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNewFriendMsgData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemPcDataLine;
+import com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountADFolderData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountChatMsgData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemQCallData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemRecommendTroopData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemRouterDataLine;
+import com.tencent.mobileqq.activity.recent.data.RecentItemServiceAccountFolderData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemSubAccount;
+import com.tencent.mobileqq.activity.recent.data.RecentItemTencentDocsAssistantData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemTroopAssistant;
+import com.tencent.mobileqq.activity.recent.data.RecentItemTroopBarAssitant;
+import com.tencent.mobileqq.activity.recent.data.RecentItemTroopMsgData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemTroopNotification;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.activity.recent.data.SendBlessRecentItemData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.List;
 
 public class ajie
-  extends ajid
 {
-  private static int a(Field paramField)
+  public static RecentBaseData a(RecentUser paramRecentUser, QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    paramField = paramField.getType();
-    int i = -1;
-    if (paramField == Byte.TYPE) {
-      i = 0;
+    return a(paramRecentUser, paramQQAppInterface, paramContext, true);
+  }
+  
+  public static RecentBaseData a(RecentUser paramRecentUser, QQAppInterface paramQQAppInterface, Context paramContext, boolean paramBoolean)
+  {
+    Object localObject3 = null;
+    Object localObject1 = null;
+    Object localObject2 = localObject1;
+    if (paramRecentUser != null)
+    {
+      localObject2 = localObject1;
+      if (paramQQAppInterface != null)
+      {
+        if (paramContext != null) {
+          break label33;
+        }
+        localObject2 = localObject1;
+      }
     }
+    label33:
     do
     {
-      return i;
-      if (paramField == Integer.TYPE) {
-        return 1;
+      return localObject2;
+      if (!TextUtils.isEmpty(paramRecentUser.uin)) {
+        break;
       }
-      if (paramField == String.class) {
-        return 2;
-      }
-      if (paramField == CharSequence.class) {
-        return 3;
-      }
-      if (paramField == Boolean.TYPE) {
-        return 5;
-      }
-    } while (paramField != Long.TYPE);
-    return 6;
-  }
-  
-  private void a(CharSequence paramCharSequence, Parcel paramParcel)
-  {
-    if ((paramCharSequence instanceof baig)) {}
-  }
-  
-  protected Object a(Object paramObject, Field paramField, byte[] paramArrayOfByte)
-  {
+      localObject2 = localObject1;
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.recent", 2, "buildRecentItemData, uin is null, " + paramRecentUser);
     return null;
-  }
-  
-  public final void a(Object paramObject, Parcel paramParcel, ArrayList<Field> paramArrayList)
-  {
-    b(paramObject, paramParcel, paramArrayList);
-  }
-  
-  void a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel) {}
-  
-  protected byte[] a(Object paramObject, Field paramField)
-  {
-    return null;
-  }
-  
-  protected void b(Object paramObject, Parcel paramParcel, ArrayList<Field> paramArrayList)
-  {
-    HashMap localHashMap = new HashMap(paramArrayList.size());
-    paramArrayList = paramArrayList.iterator();
-    Object localObject;
-    int i;
-    int k;
-    while (paramArrayList.hasNext())
+    int i = paramRecentUser.getType();
+    switch (i)
     {
-      localObject = (Field)paramArrayList.next();
-      ((Field)localObject).setAccessible(true);
-      String str = ((Field)localObject).getName();
-      i = ((Field)localObject).getModifiers();
-      localHashMap.put(str + "_" + i, localObject);
-      continue;
-      switch (k)
-      {
-      }
+    default: 
+      localObject1 = localObject3;
     }
     for (;;)
     {
-      if (paramParcel.dataAvail() > 0)
+      for (;;)
       {
-        localObject = paramParcel.readString();
-        i = paramParcel.readInt();
-        k = paramParcel.readInt();
-        paramArrayList = (Field)localHashMap.remove((String)localObject + "_" + i);
-        if (paramArrayList == null) {
-          throw new ParcelHelper.FieldChangedException("Field " + (String)localObject + "(" + paramObject + ") not found");
-        }
-        int j = a(paramArrayList);
-        i = j;
-        if (k == 4)
-        {
-          i = j;
-          if (j == -1) {
-            i = 4;
-          }
-        }
-        if (i == k) {
+        localObject2 = localObject1;
+        if (localObject1 == null) {
           break;
         }
-        paramArrayList = new StringBuilder().append("Field ").append((String)localObject).append("(");
-        paramParcel = paramObject;
-        if (paramObject != null) {
-          paramParcel = paramObject.getClass().getName();
-        }
-        throw new ParcelHelper.FieldChangedException(paramParcel + ") type changed" + k + "->" + i);
+        if (paramBoolean) {}
         try
         {
-          paramArrayList.set(paramObject, Byte.valueOf(paramParcel.readByte()));
+          ((RecentBaseData)localObject1).a(paramQQAppInterface, paramContext);
+          localObject2 = localObject1;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          long l = System.currentTimeMillis();
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.recent.cost", 4, "[" + (l - 0L) + ", " + ((RecentBaseData)localObject1).a() + "," + localObject1.getClass().getName() + "]");
+          }
+          ((RecentBaseData)localObject1).a();
+          return localObject1;
         }
-        catch (ParcelHelper.FieldChangedException paramObject)
+        catch (Throwable paramRecentUser)
         {
-          throw paramObject;
-          paramArrayList.set(paramObject, Integer.valueOf(paramParcel.readInt()));
+          ajkl.a(paramQQAppInterface.getApp(), false, paramRecentUser);
+          throw new RuntimeException(paramRecentUser);
         }
-        catch (Throwable paramObject)
+      }
+      localObject1 = new RecentItemTroopAssistant(paramRecentUser);
+      continue;
+      localObject1 = new RecentHotChatCenterItem(paramRecentUser);
+      continue;
+      localObject1 = new RecentItemPcDataLine(paramRecentUser);
+      continue;
+      localObject1 = new RecentItemPcDataLine(paramRecentUser);
+      continue;
+      localObject1 = new RecentItemRouterDataLine(paramRecentUser);
+      continue;
+      localObject1 = new RecentItemSubAccount(paramRecentUser);
+      continue;
+      localObject1 = new RecentItemMsgBox(paramRecentUser);
+      continue;
+      localObject1 = new RecentItemImaxADData(paramRecentUser);
+      continue;
+      if (TextUtils.equals(paramRecentUser.uin, alof.az))
+      {
+        localObject1 = localObject3;
+        if (bkbq.a(paramQQAppInterface)) {}
+      }
+      else if (paramRecentUser.lFlag == 16L)
+      {
+        localObject1 = new RecentItemPublicAccountADFolderData(paramRecentUser);
+      }
+      else if (i == 1008)
+      {
+        localObject1 = new RecentItemPublicAccountChatMsgData(paramRecentUser);
+      }
+      else
+      {
+        localObject1 = new RecentItemChatMsgData(paramRecentUser);
+        continue;
+        if (paramRecentUser.msg != null)
         {
-          throw new RuntimeException(paramObject);
+          localObject1 = localObject3;
+          if (!(paramRecentUser.msg instanceof String)) {}
         }
-        paramArrayList.set(paramObject, paramParcel.readString());
-        continue;
-        paramArrayList.set(paramObject, TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
-        continue;
-        localObject = new byte[paramParcel.readInt()];
-        paramParcel.readByteArray((byte[])localObject);
-        paramArrayList.set(paramObject, a(paramObject, paramArrayList, (byte[])localObject));
-        continue;
-        if (paramParcel.readInt() != 1) {
-          break label552;
+        else
+        {
+          localObject1 = new RecentItemNewFriendMsgData(paramRecentUser);
+          continue;
+          localObject1 = new RecentItemTroopMsgData(paramRecentUser);
+          continue;
+          localObject1 = new RecentItemTencentDocsAssistantData(paramRecentUser);
+          continue;
+          localObject1 = new RecentItemDiscussionMsgData(paramRecentUser);
+          continue;
+          localObject1 = new RecentItemTroopNotification(paramRecentUser);
+          continue;
+          localObject1 = new SendBlessRecentItemData(paramRecentUser);
+          continue;
+          localObject1 = new RecentItemMayKnowFriendData(paramRecentUser, paramQQAppInterface.getCurrentAccountUin());
+          continue;
+          localObject1 = new RecentItemMayKnowFriendVerticalListData(paramRecentUser);
+          continue;
+          localObject1 = new RecentItemRecommendTroopData(paramRecentUser);
+          continue;
+          localObject1 = localObject3;
+          if (!bkbq.a(paramQQAppInterface))
+          {
+            localObject1 = new RecentItemTroopBarAssitant(paramRecentUser);
+            continue;
+            localObject1 = localObject3;
+            if (bkbq.a(paramQQAppInterface))
+            {
+              localObject1 = localObject3;
+              if (!bkbq.c())
+              {
+                localObject1 = new RecentItemKandianMergeData(paramRecentUser);
+                continue;
+                localObject1 = new RecentItemServiceAccountFolderData(paramRecentUser);
+                continue;
+                localObject1 = new RecentItemEcShopAssitant(paramRecentUser);
+                continue;
+                localObject1 = new RecentItemQCallData(paramRecentUser);
+                continue;
+                localObject1 = new RecentItemChangeMachine(paramRecentUser);
+                continue;
+                localObject1 = new RecentItemChatMsgData(paramRecentUser);
+                continue;
+                localObject1 = new RecentItemConfessMsgBox(paramRecentUser);
+                continue;
+                localObject1 = new RecentItemActivateFriendsData(paramRecentUser);
+                continue;
+                localObject1 = new RecentItemAppletsFolderData(paramRecentUser);
+                continue;
+                localObject1 = new RecentItemContactsGuideData(paramRecentUser);
+              }
+            }
+          }
         }
       }
     }
-    label552:
-    for (boolean bool = true;; bool = false)
-    {
-      paramArrayList.set(paramObject, Boolean.valueOf(bool));
-      break;
-      paramArrayList.set(paramObject, Long.valueOf(paramParcel.readLong()));
-      break;
-      if (localHashMap.size() > 0)
-      {
-        paramObject = "object " + paramObject.getClass() + " field changed";
-        QLog.e("Recent.Parcel", 1, paramObject);
-        throw new RuntimeException(paramObject);
-      }
+  }
+  
+  public static void a(List<RecentUser> paramList, QQAppInterface paramQQAppInterface, Context paramContext, List<RecentBaseData> paramList1, int paramInt)
+  {
+    if (paramList1 == null) {
       return;
     }
-  }
-  
-  void b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel) {}
-  
-  final boolean b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
-  {
-    return c(paramObject, paramArrayList, paramParcel);
-  }
-  
-  protected final boolean c(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
-  {
-    Field localField;
-    int j;
     for (;;)
     {
+      int j;
       try
       {
-        localIterator = paramArrayList.iterator();
-        paramArrayList = null;
-      }
-      catch (ParcelHelper.UnsupportedFieldTypeException paramObject)
-      {
-        Iterator localIterator;
-        throw paramObject;
-        paramParcel.writeInt(localField.getInt(paramObject));
-        continue;
-      }
-      catch (IllegalAccessException paramObject)
-      {
-        label68:
-        throw new RuntimeException(paramObject);
-      }
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localField = (Field)localIterator.next();
-      localField.setAccessible(true);
-      j = a(localField);
-      i = j;
-      if (j == -1)
-      {
-        paramArrayList = a(paramObject, localField);
-        if (paramArrayList == null) {
-          break label331;
+        paramList1.clear();
+        if (paramList == null) {
+          break label370;
         }
-        i = 4;
+        i = paramList.size();
+        j = i;
+        if (paramQQAppInterface.a == null) {
+          break label355;
+        }
+        j = i;
+        if (!paramQQAppInterface.a.b()) {
+          break label355;
+        }
+        j = i;
+        if (i <= 90) {
+          break label355;
+        }
+        j = i;
+        if (System.currentTimeMillis() - paramQQAppInterface.a.a > 10000L) {
+          break label355;
+        }
+        i = Math.min(90, i);
+        j = i;
+        if (!QLog.isColorLevel()) {
+          break label355;
+        }
+        QLog.d("Q.recent", 2, "convertToRecentBaseDataList limit:" + paramInt + ",size:" + i);
+        j = i;
       }
-      if (i == -1) {
-        QLog.d("Recent.Parcel", 2, "Unsupported type " + paramObject.getClass() + "(" + localField.getName() + ")");
+      finally {}
+      if ((i >= paramInt) || (i >= j)) {
+        break;
       }
-      paramParcel.writeString(localField.getName());
-      paramParcel.writeInt(localField.getModifiers());
-      paramParcel.writeInt(i);
-      switch (i)
+      Object localObject2 = (RecentUser)paramList.get(i);
+      if ((localObject2 != null) && (((RecentUser)localObject2).getType() != 9503) && ((paramInt >= j) || (((RecentUser)localObject2).getType() != 7000)))
       {
-      case 0: 
-        paramParcel.writeByte(localField.getByte(paramObject));
-        break;
-      case 1: 
-      case 2: 
-        paramParcel.writeString((String)localField.get(paramObject));
-        break;
-      case 7: 
-        a((CharSequence)localField.get(paramObject), paramParcel);
-        break;
-      case 3: 
-        TextUtils.writeToParcel((CharSequence)localField.get(paramObject), paramParcel, 0);
-        break;
-      case 4: 
-        paramParcel.writeInt(paramArrayList.length);
-        paramParcel.writeByteArray(paramArrayList);
+        biby.a(((RecentUser)localObject2).uin);
+        String str = ajjj.a(((RecentUser)localObject2).uin, ((RecentUser)localObject2).getType());
+        Object localObject1 = ajjj.a().a(str);
+        if (localObject1 == null)
+        {
+          localObject2 = a((RecentUser)localObject2, paramQQAppInterface, paramContext);
+          localObject1 = localObject2;
+          if (localObject2 != null)
+          {
+            ajjj.a().a((RecentBaseData)localObject2, str);
+            localObject1 = localObject2;
+          }
+          if (localObject1 != null) {
+            paramList1.add(localObject1);
+          }
+          biby.a();
+        }
+        else
+        {
+          if ((localObject1 instanceof RecentUserBaseData)) {
+            ((RecentUserBaseData)localObject1).a((RecentUser)localObject2);
+          }
+          try
+          {
+            ((RecentBaseData)localObject1).a(paramQQAppInterface, paramContext);
+          }
+          catch (Throwable paramList)
+          {
+            ajkl.a(paramContext, false, paramList);
+            throw new RuntimeException(paramList);
+          }
+          label355:
+          i = 0;
+          continue;
+        }
       }
-    }
-    if (localField.getBoolean(paramObject)) {}
-    for (int i = 1;; i = 0)
-    {
-      paramParcel.writeInt(i);
-      break;
-      paramParcel.writeLong(localField.getLong(paramObject));
-      break;
-      return true;
-      label331:
-      i = j;
-      break label68;
-      break;
+      i += 1;
+      continue;
+      label370:
+      int i = 0;
     }
   }
 }

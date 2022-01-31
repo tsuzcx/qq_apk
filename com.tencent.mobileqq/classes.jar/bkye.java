@@ -1,30 +1,16 @@
 import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
 
 class bkye
-  implements bmac<bkxw>
+  implements bmeo<blfi>
 {
-  bkye(bkyc parambkyc, AEGIFOutlineTextView paramAEGIFOutlineTextView) {}
+  bkye(bkyd parambkyd) {}
   
-  public void a(@Nullable bkxw parambkxw)
+  public void a(@Nullable blfi paramblfi)
   {
-    if (parambkxw != null)
-    {
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setTextColor(parambkxw.a);
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineColor(parambkxw.b);
-      if (parambkxw.a.equals("#ccffffff"))
-      {
-        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadowParam(3.0F, 0.0F, 1.0F, "#73000000");
-        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadow(true);
-        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setStroke(false);
-      }
-    }
-    else
-    {
+    if (paramblfi == null) {
       return;
     }
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadow(false);
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setStroke(true);
+    bkyd.a(this.a, paramblfi.a);
   }
 }
 

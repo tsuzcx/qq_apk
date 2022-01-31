@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import bgpw;
+import bgud;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
 
 class AppBrandLaunchManager$2
   implements Runnable
 {
-  AppBrandLaunchManager$2(AppBrandLaunchManager paramAppBrandLaunchManager, bgpw parambgpw) {}
+  AppBrandLaunchManager$2(AppBrandLaunchManager paramAppBrandLaunchManager, bgud parambgud) {}
   
   public void run()
   {

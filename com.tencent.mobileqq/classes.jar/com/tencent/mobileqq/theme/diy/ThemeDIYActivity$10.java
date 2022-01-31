@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.theme.diy;
 
-import alpo;
+import alud;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import baks;
-import bdvu;
-import bdvv;
+import bapb;
+import bead;
+import beae;
 import com.tencent.qphone.base.util.QLog;
 
 class ThemeDIYActivity$10
-  extends bdvu
+  extends bead
 {
   ThemeDIYActivity$10(ThemeDIYActivity paramThemeDIYActivity) {}
   
-  public void onDone(bdvv parambdvv)
+  public void onDone(beae parambeae)
   {
-    super.onDone(parambdvv);
-    if ((parambdvv.a() == 3) && (parambdvv.a == 0)) {}
+    super.onDone(parambeae);
+    if ((parambeae.a() == 3) && (parambeae.a == 0)) {}
     int j;
     for (int i = 1;; i = 0)
     {
-      parambdvv = parambdvv.a();
-      j = parambdvv.getInt("type");
+      parambeae = parambeae.a();
+      j = parambeae.getInt("type");
       switch (j)
       {
       default: 
@@ -31,11 +31,11 @@ class ThemeDIYActivity$10
     }
     this.this$0.loadResJson(j, true);
     return;
-    baks localbaks = this.this$0.saveStyleCallback;
+    bapb localbapb = this.this$0.saveStyleCallback;
     if (i != 0) {}
     for (i = 4;; i = 8)
     {
-      localbaks.callback(13, i, parambdvv, null);
+      localbapb.callback(13, i, parambeae, null);
       return;
     }
   }
@@ -43,7 +43,7 @@ class ThemeDIYActivity$10
   public void onNetMobile2None()
   {
     QLog.e("ThemeDIYActivity", 2, "DownloadListener onNetMobile2None...");
-    this.this$0.mHandler.sendMessage(Message.obtain(this.this$0.mHandler, 27, alpo.a(2131715276)));
+    this.this$0.mHandler.sendMessage(Message.obtain(this.this$0.mHandler, 27, alud.a(2131715288)));
   }
 }
 

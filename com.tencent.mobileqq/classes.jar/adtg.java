@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 
 public class adtg
-  implements acgy
+  implements DialogInterface.OnDismissListener
 {
-  public adtg(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  public adtg(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
   
-  public void a()
-  {
-    this.a.finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
     this.a.finish();
   }

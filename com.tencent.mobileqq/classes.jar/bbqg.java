@@ -1,95 +1,303 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.TroopAIONotifyItem;
 import java.util.List;
-import mqq.app.AppRuntime;
+import java.util.Observer;
 
 public class bbqg
-  implements azzw
+  extends bbpi
 {
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private bbqf jdField_a_of_type_Bbqf;
-  private bejr jdField_a_of_type_Bejr = new bejr();
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  List<bejq> jdField_a_of_type_JavaUtilList;
+  public long a;
+  protected GestureDetector a;
+  bbpk jdField_a_of_type_Bbpk = new bbpk();
+  bbpo jdField_a_of_type_Bbpo = new bbpo();
+  bbqa jdField_a_of_type_Bbqa = new bbqa();
+  bbqd jdField_a_of_type_Bbqd = new bbqd();
+  bbqf jdField_a_of_type_Bbqf = new bbqf();
+  public long b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  public bbqg(bbpw parambbpw, QQAppInterface paramQQAppInterface, bbqf parambbqf)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bbqf = parambbqf;
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_Bbqd.a();
+    }
+    return 0;
   }
   
-  private void a(List<bejq> paramList, Canvas paramCanvas, Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3, Rect paramRect, int paramInt1, int paramInt2)
+  public bbpo a()
   {
-    Object localObject = (bejq)paramList.get(0);
-    if (((bejq)localObject).c == 3)
-    {
-      localObject = (bdof)((bejq)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
-      if (((bdof)localObject).a == 2) {
-        paramPaint.setColor(((bdof)localObject).b);
-      }
+    return this.jdField_a_of_type_Bbpo;
+  }
+  
+  public bbqa a()
+  {
+    return this.jdField_a_of_type_Bbqa;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Bbqa.a(paramInt);
     }
-    else
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Bbqa.a(paramLong);
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.c = paramBoolean;
+  }
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewGestureDetector != null)) {
+      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    }
+    k();
+  }
+  
+  public void a(List<TroopAIONotifyItem> paramList)
+  {
+    this.jdField_a_of_type_Bbqf.a(paramList);
+  }
+  
+  public void a(Observer paramObserver)
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramList = paramList.iterator();
+      this.jdField_a_of_type_Bbqd.jdField_b_of_type_JavaUtilObserver = paramObserver;
+      this.jdField_a_of_type_Bbqa.jdField_b_of_type_JavaUtilObserver = paramObserver;
+      this.jdField_a_of_type_Bbqf.jdField_b_of_type_JavaUtilObserver = paramObserver;
+      this.jdField_a_of_type_Bbpk.jdField_b_of_type_JavaUtilObserver = paramObserver;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    Object localObject;
+    RelativeLayout.LayoutParams localLayoutParams;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localObject = null;
+      if (!this.jdField_a_of_type_Bbqa.a()) {
+        break label65;
+      }
+      localObject = this.jdField_a_of_type_Bbqa;
+      if (localObject != null)
+      {
+        localObject = ((bbpi)localObject).a();
+        if (localObject != null)
+        {
+          localLayoutParams = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
+          if (!paramBoolean) {
+            break label101;
+          }
+          localLayoutParams.addRule(3, 2131378474);
+        }
+      }
     }
     for (;;)
     {
-      if (!paramList.hasNext()) {
-        break label275;
-      }
-      paramRect = (bejq)paramList.next();
-      switch (paramRect.c)
+      ((View)localObject).setLayoutParams(localLayoutParams);
+      return;
+      label65:
+      if (this.jdField_a_of_type_Bbqf.a())
       {
-      default: 
+        localObject = this.jdField_a_of_type_Bbqf;
         break;
-      case 1: 
-        paramCanvas.drawText(paramRect.jdField_a_of_type_JavaLangString, paramFloat1, paramFloat2 + paramFloat3, paramPaint);
-        paramFloat1 += paramPaint.measureText(paramRect.jdField_a_of_type_JavaLangString);
-        continue;
-        if (((bdof)localObject).a != 3) {
-          break;
-        }
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-        if (!(localAppRuntime instanceof QQAppInterface)) {
-          break;
-        }
-        paramPaint.setShader(bdnm.a((QQAppInterface)localAppRuntime).a(((bdof)localObject).b, paramList, paramFloat1, paramFloat2, paramRect, paramPaint, paramInt1, paramInt2));
+      }
+      if (!this.jdField_a_of_type_Bbpo.a()) {
         break;
-      case 2: 
-        paramRect = (bain)paramRect.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        paramInt1 = paramRect.a().getBounds().height();
-        paramRect.draw(paramCanvas, "", 0, 0, paramFloat1, (int)paramFloat2, (int)(paramInt1 + paramFloat2), (int)(paramInt1 + paramFloat2), paramPaint);
-        paramFloat1 += paramRect.a().getBounds().width();
+      }
+      localObject = this.jdField_a_of_type_Bbpo;
+      break;
+      label101:
+      int i = bbqa.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, new int[] { 2131373445, 2131373530, 2131373525 });
+      if (i > 0) {
+        localLayoutParams.addRule(3, i);
       }
     }
-    label275:
-    paramPaint.setShader(null);
   }
   
-  public int a(int paramInt1, int paramInt2, int paramInt3, String paramString, Paint paramPaint)
+  public boolean a()
   {
-    return bdnm.a(this.jdField_a_of_type_JavaUtilList, paramPaint, this.jdField_a_of_type_AndroidGraphicsRect);
+    return this.jdField_a_of_type_Bbqa.b();
   }
   
-  public String a(azzc paramazzc, String paramString)
+  public int b()
   {
-    return paramString.replace("$NICK$", bdbt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bbqf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bbqf.b, 1, 0));
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bbqa != null)) {
+      return this.jdField_a_of_type_Bbqa.a();
+    }
+    return -1;
   }
   
-  public void a(int paramInt, String paramString, Paint paramPaint)
+  public void b(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = bdnm.a(paramInt, paramString, paramPaint, this.jdField_a_of_type_Bejr, 32);
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Bbqa.e();
+    }
   }
   
-  public boolean a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2, Paint paramPaint)
+  public void b(List<ChatMessage> paramList)
   {
-    a(this.jdField_a_of_type_JavaUtilList, paramCanvas, paramPaint, paramFloat1, paramFloat2, paramFloat3, this.jdField_a_of_type_AndroidGraphicsRect, paramInt1, paramInt2);
-    return true;
+    if ((this.jdField_a_of_type_Boolean) && (!this.d)) {
+      this.jdField_a_of_type_Bbqa.a(paramList);
+    }
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_Bbqa.c();
+    }
+    return false;
+  }
+  
+  protected void c()
+  {
+    this.jdField_a_of_type_Bbqd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_Aeqo, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
+    this.jdField_a_of_type_Bbqa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_Aeqo, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
+    this.jdField_a_of_type_Bbqf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_Aeqo, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
+    this.jdField_a_of_type_Bbpk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_Aeqo, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
+    this.jdField_a_of_type_Bbpo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_Aeqo, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
+    this.jdField_a_of_type_Bbpo.a(this);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidContentContext, new bbqh(this));
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.c = false;
+  }
+  
+  public void c(int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Bbqd.a(paramInt);
+    }
+  }
+  
+  public boolean c()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_Bbqd.a();
+    }
+    return false;
+  }
+  
+  protected void d()
+  {
+    this.jdField_a_of_type_AndroidViewGestureDetector = null;
+    this.jdField_a_of_type_Bbqd.a();
+    this.jdField_a_of_type_Bbqa.a();
+    this.jdField_a_of_type_Bbqf.a();
+    this.jdField_a_of_type_Bbpk.a();
+    this.jdField_a_of_type_Bbpo.a();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.c = false;
+  }
+  
+  public boolean d()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_Bbqa.a();
+    }
+    return false;
+  }
+  
+  public void e()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (!this.d)) {
+      this.jdField_a_of_type_Bbqa.f();
+    }
+  }
+  
+  public boolean e()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_Bbqf.a();
+    }
+    return false;
+  }
+  
+  public void f()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (!this.d)) {
+      this.jdField_a_of_type_Bbqf.e();
+    }
+  }
+  
+  public boolean f()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_Bbpo.a();
+    }
+    return false;
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Bbqa.i();
+    }
+  }
+  
+  public boolean g()
+  {
+    return (d()) || (e()) || (f());
+  }
+  
+  public void h()
+  {
+    this.jdField_a_of_type_Bbqd.jdField_b_of_type_Boolean = true;
+  }
+  
+  public boolean h()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Boolean) {
+      if ((!d()) && (!c()) && (!this.jdField_a_of_type_Bbqf.a()))
+      {
+        bool1 = bool2;
+        if (!this.jdField_a_of_type_Bbpk.a()) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public void i()
+  {
+    this.jdField_a_of_type_Bbqd.jdField_b_of_type_Boolean = false;
+  }
+  
+  public void j()
+  {
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  public void k()
+  {
+    this.jdField_a_of_type_Bbpk.e();
   }
 }
 

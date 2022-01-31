@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class wwu
-  implements axll
+  implements View.OnClickListener
 {
-  wwu(wwr paramwwr, boolean paramBoolean) {}
+  wwu(wws paramwws) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Wwr.a = new wwv(this, "NewStoryTakeVideoActivity");
-    SosoInterface.a(this.jdField_a_of_type_Wwr.a);
+    if (wws.a(this.a) != null) {
+      wws.a(this.a).T_();
+    }
   }
 }
 

@@ -1,20 +1,44 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqcircle.widgets.QCircleRockeyPopupView;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView;
 
 public class uct
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public uct(QCircleRockeyPopupView paramQCircleRockeyPopupView, View paramView) {}
+  public uct(QCircleExpandableTextView paramQCircleExpandableTextView) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    paramView = this.a;
+    boolean bool;
+    if (!this.a.jdField_b_of_type_Boolean)
+    {
+      bool = true;
+      paramView.jdField_b_of_type_Boolean = bool;
+      if (!this.a.jdField_b_of_type_Boolean) {
+        break label137;
+      }
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_b_of_type_JavaLangString);
+      if (this.a.jdField_a_of_type_Ucw != null) {
+        this.a.jdField_a_of_type_Ucw.a(false);
+      }
+    }
+    for (paramView = new ucv(this.a, this.a.getHeight(), this.a.d, null);; paramView = new ucv(this.a, this.a.getHeight(), this.a.c + this.a.e, null))
+    {
+      paramView.setFillAfter(true);
+      paramView.setAnimationListener(new ucu(this));
+      this.a.clearAnimation();
+      this.a.startAnimation(paramView);
+      return;
+      bool = false;
+      break;
+      label137:
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_JavaLangString);
+      if (this.a.jdField_a_of_type_Ucw != null) {
+        this.a.jdField_a_of_type_Ucw.a(true);
+      }
+    }
   }
 }
 

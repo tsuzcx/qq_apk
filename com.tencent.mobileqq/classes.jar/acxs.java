@@ -1,24 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class acxs
-  implements DialogInterface.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public acxs(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public acxs(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGlobalLayout()
   {
-    azmj.b(this.a.app, "dc00898", "", "", "0X800A0D9", "0X800A0D9", 0, 0, "", "", "", "");
-    if (bdee.d(this.a)) {
-      FriendProfileMoreInfoActivity.b(this.a);
-    }
-    FriendProfileMoreInfoActivity.a(this.a, "https://ti.qq.com/hybrid-h5/school_relation/chooseschool?_wv=67108994");
+    this.a.getWindow().getDecorView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    ForwardRecentActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acxs
  * JD-Core Version:    0.7.0.1
  */

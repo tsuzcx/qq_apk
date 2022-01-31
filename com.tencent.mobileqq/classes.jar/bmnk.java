@@ -1,14 +1,21 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.view.View;
 
 class bmnk
-  implements FilenameFilter
+  implements bhuk
 {
-  bmnk(bmni parambmni) {}
+  bmnk(bmnj parambmnj, bhuf parambhuf) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      this.jdField_a_of_type_Bmnj.c();
+    }
   }
 }
 

@@ -19,14 +19,14 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bghn;
-import bgho;
-import bgjw;
-import bgkd;
-import bgki;
-import bgkk;
-import bgri;
-import bgte;
+import bglu;
+import bglv;
+import bgod;
+import bgok;
+import bgop;
+import bgor;
+import bgvp;
+import bgxl;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBannerAdView;
@@ -62,9 +62,9 @@ public class BannerAdPlugin
   private int mGameWidth;
   private boolean mHasNewAd;
   
-  private void bannerErrorStateCallbackDelay(bgkd parambgkd, int paramInt1, String paramString, int paramInt2)
+  private void bannerErrorStateCallbackDelay(bgok parambgok, int paramInt1, String paramString, int paramInt2)
   {
-    bgkk.a(new BannerAdPlugin.7(this, paramString, paramInt1, parambgkd), paramInt2);
+    bgor.a(new BannerAdPlugin.7(this, paramString, paramInt1, parambgok), paramInt2);
   }
   
   private void destroyBannerAd()
@@ -91,9 +91,9 @@ public class BannerAdPlugin
     return Math.round(this.mGameDensity * paramFloat);
   }
   
-  private void informJs(bgkd parambgkd, JSONObject paramJSONObject, String paramString)
+  private void informJs(bgok parambgok, JSONObject paramJSONObject, String paramString)
   {
-    parambgkd.jdField_a_of_type_Bghn.a(paramString, paramJSONObject.toString(), 0);
+    parambgok.jdField_a_of_type_Bglu.a(paramString, paramJSONObject.toString(), 0);
   }
   
   private boolean makeSureContainerAdded()
@@ -164,7 +164,7 @@ public class BannerAdPlugin
         if ((!this.mHasNewAd) && (this.mBannerAdContainer.getChildCount() > 0))
         {
           this.mBannerAdContainer.setVisibility(0);
-          bgri.a(this.mApkgInfo.appId, this.mBannerAdView.getAdID(), this.mBannerAdView.getView());
+          bgvp.a(this.mApkgInfo.appId, this.mBannerAdView.getAdID(), this.mBannerAdView.getView());
           bool = true;
         }
         else
@@ -181,7 +181,7 @@ public class BannerAdPlugin
             if ((this.mHasNewAd) && (this.mBannerAdPosInfo != null) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
               reportBannerAd((String)localObject2);
             }
-            bgri.a(this.mApkgInfo.appId, this.mBannerAdView.getAdID(), this.mBannerAdView.getView());
+            bgvp.a(this.mApkgInfo.appId, this.mBannerAdView.getAdID(), this.mBannerAdView.getView());
             this.mHasNewAd = false;
             bool = true;
           }
@@ -194,7 +194,7 @@ public class BannerAdPlugin
     }
   }
   
-  private void updateBannerSize(bgkd parambgkd)
+  private void updateBannerSize(bgok parambgok)
   {
     int n = 1;
     int i;
@@ -206,7 +206,7 @@ public class BannerAdPlugin
     float f2;
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       if (localJSONObject.has("left"))
       {
         i = localJSONObject.getInt("left");
@@ -260,25 +260,25 @@ public class BannerAdPlugin
         localJSONObject.put("state", "resize");
         localJSONObject.put("width", localBannerAdPosInfo.mAdRealWidth);
         localJSONObject.put("height", localBannerAdPosInfo.mAdRealHeight);
-        informJs(parambgkd, localJSONObject, "onBannerAdStateChange");
+        informJs(parambgok, localJSONObject, "onBannerAdStateChange");
         return;
       }
-      catch (JSONException parambgkd)
+      catch (JSONException parambgok)
       {
-        QMLog.e("BannerAdPlugin", "updateBannerAd informJs error", parambgkd);
+        QMLog.e("BannerAdPlugin", "updateBannerAd informJs error", parambgok);
         return;
       }
       if (i >= 0) {
         break label372;
       }
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
-      QMLog.e("BannerAdPlugin", "handle updateBannerAdSize parse json error", parambgkd);
+      QMLog.e("BannerAdPlugin", "handle updateBannerAdSize parse json error", parambgok);
       return;
     }
     label342:
-    bannerErrorStateCallbackDelay(parambgkd, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 0);
+    bannerErrorStateCallbackDelay(parambgok, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 0);
     return;
     label372:
     if ((j != -1) && (this.mIsMiniGame))
@@ -318,7 +318,7 @@ public class BannerAdPlugin
       }
       else
       {
-        bgkk.a(new BannerAdPlugin.6(this, j, i, parambgkd));
+        bgor.a(new BannerAdPlugin.6(this, j, i, parambgok));
         return;
         label517:
         j = 3;
@@ -348,7 +348,7 @@ public class BannerAdPlugin
     }
   }
   
-  public String createBannerAd(bgkd parambgkd)
+  public String createBannerAd(bgok parambgok)
   {
     int i = 90;
     Object localObject1;
@@ -361,13 +361,13 @@ public class BannerAdPlugin
         QMLog.i("BannerAdPlugin", "receive createBannerAd event");
         try
         {
-          localObject1 = BannerAdPosInfo.parseBannerAdPosInfoFromJson(parambgkd.b);
+          localObject1 = BannerAdPosInfo.parseBannerAdPosInfoFromJson(parambgok.b);
           if (localObject1 != null) {
             continue;
           }
-          bannerErrorStateCallbackDelay(parambgkd, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
-          QMLog.i("BannerAdPlugin", "handle createBannerAd error params, " + parambgkd.b);
-          parambgkd = "";
+          bannerErrorStateCallbackDelay(parambgok, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
+          QMLog.i("BannerAdPlugin", "handle createBannerAd error params, " + parambgok.b);
+          parambgok = "";
         }
         catch (Exception localException)
         {
@@ -380,25 +380,25 @@ public class BannerAdPlugin
           BannerAdPosInfo localBannerAdPosInfo;
           String str5;
           Object localObject4;
-          localObject1 = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, null);
+          localObject1 = bgop.b(parambgok.jdField_a_of_type_JavaLangString, null);
           if (localObject1 == null) {
             continue;
           }
           localObject1 = ((JSONObject)localObject1).toString();
-          bannerErrorStateCallbackDelay(parambgkd, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 0);
-          QMLog.i("BannerAdPlugin", "handle createBannerAd parse json error" + parambgkd.b, localException);
+          bannerErrorStateCallbackDelay(parambgok, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 0);
+          QMLog.i("BannerAdPlugin", "handle createBannerAd parse json error" + parambgok.b, localException);
           if (localObject1 == null) {
             continue;
           }
-          parambgkd = (bgkd)localObject1;
+          parambgok = (bgok)localObject1;
           continue;
           localObject1 = "";
           continue;
         }
-        return parambgkd;
+        return parambgok;
       }
       finally {}
-      str3 = bgte.a().a();
+      str3 = bgxl.a().a();
       f = ViewUtils.getDensity();
       j = ViewUtils.getScreenWidth();
       k = ViewUtils.getScreenWidth();
@@ -425,17 +425,17 @@ public class BannerAdPlugin
       QMLog.i("BannerAdPlugin", "handle createBannerAd appId = " + str4);
       if (TextUtils.isEmpty(str4))
       {
-        bannerErrorStateCallbackDelay(parambgkd, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
-        parambgkd = "";
+        bannerErrorStateCallbackDelay(parambgok, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
+        parambgok = "";
       }
       else
       {
         localBannerAdPosInfo = BannerAdPosInfo.buildFormatInfo((BannerAdPosInfo)localObject1, i, f, j, k);
         if ((localBannerAdPosInfo == null) || (!localBannerAdPosInfo.isValid()))
         {
-          bannerErrorStateCallbackDelay(parambgkd, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
+          bannerErrorStateCallbackDelay(parambgok, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
           QMLog.i("BannerAdPlugin", "handle createBannerAd invalid adInfo = " + localBannerAdPosInfo);
-          parambgkd = "";
+          parambgok = "";
         }
         else
         {
@@ -479,8 +479,8 @@ public class BannerAdPlugin
           ((Bundle)localObject4).putString(AdProxy.KEY_REPORT_DATA, (String)localObject2);
           ((Bundle)localObject4).putString(AdProxy.KEY_REFER, (String)localObject1);
           ((Bundle)localObject4).putString(AdProxy.KEY_VIA, str2);
-          bgkk.a(new BannerAdPlugin.1(this, str4, localBannerAdPosInfo, parambgkd, (Bundle)localObject4));
-          parambgkd = "";
+          bgor.a(new BannerAdPlugin.1(this, str4, localBannerAdPosInfo, parambgok, (Bundle)localObject4));
+          parambgok = "";
           break;
           localObject1 = "";
           break label413;
@@ -601,15 +601,15 @@ public class BannerAdPlugin
     }
   }
   
-  public String operateBannerAd(bgkd parambgkd)
+  public String operateBannerAd(bgok parambgok)
   {
     QMLog.i("BannerAdPlugin", "receive operateBannerAd event");
     try
     {
-      str = new JSONObject(parambgkd.b).getString("type");
+      str = new JSONObject(parambgok.b).getString("type");
       QMLog.i("BannerAdPlugin", "handle operateBannerAd type = " + str);
       if ("show".equals(str)) {
-        bgkk.a(new BannerAdPlugin.2(this, parambgkd), 300L);
+        bgor.a(new BannerAdPlugin.2(this, parambgok), 300L);
       }
       for (;;)
       {
@@ -617,18 +617,18 @@ public class BannerAdPlugin
         if (!"hide".equals(str)) {
           break;
         }
-        bgkk.a(new BannerAdPlugin.3(this));
+        bgor.a(new BannerAdPlugin.3(this));
       }
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
       for (;;)
       {
         String str;
-        QMLog.i("BannerAdPlugin", "handle operateBannerAd parse json error", parambgkd);
+        QMLog.i("BannerAdPlugin", "handle operateBannerAd parse json error", parambgok);
         continue;
         if ("destroy".equals(str)) {
-          bgkk.a(new BannerAdPlugin.4(this));
+          bgor.a(new BannerAdPlugin.4(this));
         } else {
           QMLog.i("BannerAdPlugin", "handle operateBannerAd not define type = " + str);
         }
@@ -678,10 +678,10 @@ public class BannerAdPlugin
     }
   }
   
-  public void updateBannerAdSize(bgkd parambgkd)
+  public void updateBannerAdSize(bgok parambgok)
   {
-    QMLog.i("BannerAdPlugin", "updateBannerAdSize " + parambgkd.b);
-    updateBannerSize(parambgkd);
+    QMLog.i("BannerAdPlugin", "updateBannerAdSize " + parambgok.b);
+    updateBannerSize(parambgok);
   }
 }
 

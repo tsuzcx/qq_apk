@@ -1,48 +1,8 @@
-import java.io.File;
-import java.util.ArrayList;
-
-class xov
-  extends xos
+public class xov
+  extends xow
 {
-  xov(xot paramxot, xpb paramxpb, File paramFile) {}
-  
-  public void onFailure(String paramString)
-  {
-    this.jdField_a_of_type_Xpb.onFailure(paramString);
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaIoFile.exists()) {
-      this.jdField_a_of_type_JavaIoFile.delete();
-    }
-    int i = 0;
-    while (i < this.jdField_a_of_type_Xot.b.size())
-    {
-      File localFile = new File((String)this.jdField_a_of_type_Xot.b.get(i));
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-      i += 1;
-    }
-    this.jdField_a_of_type_Xot.b = new ArrayList();
-    this.jdField_a_of_type_Xpb.onFinish(paramBoolean);
-  }
-  
-  public void onProgress(String paramString)
-  {
-    this.jdField_a_of_type_Xpb.onProgress(paramString);
-  }
-  
-  public void onStart()
-  {
-    this.jdField_a_of_type_Xpb.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    this.jdField_a_of_type_Xpb.onSuccess(paramString);
-  }
+  public static final int[] a = { -3866832, -10233288, -9576193, -16745729, -15975749, -6989057, -31233, -37737, -845543, -27392, -274353, -1, -16777216 };
+  public static final int[] b = { 2130846313, 2130846314, 2130846315, 2130846316, 2130846317, 2130846318, 2130846319, 2130846320, 2130846321, 2130846322, 2130846323, 2130846324, 2130846326 };
 }
 
 

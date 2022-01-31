@@ -1,18 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-
-public class bafa
-  extends baex
+public abstract interface bafa
 {
-  public bafa(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord, bafd parambafd)
-  {
-    super(paramQQAppInterface, paramDataLineMsgRecord, parambafd);
-  }
-  
-  protected String a()
-  {
-    return this.a.filename;
-  }
+  public abstract void a(int paramInt);
 }
 
 

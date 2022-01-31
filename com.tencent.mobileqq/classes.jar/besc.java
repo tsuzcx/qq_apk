@@ -1,32 +1,9 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import mqq.util.WeakReference;
-
-class besc
-  extends Handler
+public class besc
 {
-  final WeakReference<besa> a;
-  
-  public besc(besa parambesa)
-  {
-    super(Looper.getMainLooper());
-    this.a = new WeakReference(parambesa);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    besa localbesa = (besa)this.a.get();
-    if (localbesa == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    localbesa.e();
-  }
+  public int a;
+  public String a;
+  public int b;
+  public int c;
 }
 
 

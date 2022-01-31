@@ -77,7 +77,7 @@ public class mac
   
   public int a()
   {
-    return ((aubm)((QQAppInterface)this.a.a()).getManager(11)).d();
+    return ((aufv)((QQAppInterface)this.a.a()).getManager(11)).d();
   }
   
   public int a(int paramInt, String paramString)
@@ -86,7 +86,7 @@ public class mac
     if (paramInt == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      int i = bdex.a(localQQAppInterface, bool, paramString);
+      int i = bdjg.a(localQQAppInterface, bool, paramString);
       QLog.w("QQServiceForAV", 1, "getGroupMemberNum, relationType[" + paramInt + "], uin[" + paramString + "], 成员数[" + i + "]");
       return i;
     }
@@ -99,7 +99,7 @@ public class mac
   
   public long a(String paramString)
   {
-    paramString = ((almv)((QQAppInterface)this.a.a()).getManager(53)).a(paramString);
+    paramString = ((alrk)((QQAppInterface)this.a.a()).getManager(53)).a(paramString);
     long l = 0L;
     if (paramString != null) {
       l = paramString.mOrigin;
@@ -130,7 +130,7 @@ public class mac
         if (!this.a.jdField_b_of_type_JavaUtilArrayList.contains(paramString1)) {
           this.a.jdField_b_of_type_JavaUtilArrayList.add(paramString1);
         }
-        localQQAppInterface.addObserver(this.a.jdField_a_of_type_Alox);
+        localQQAppInterface.addObserver(this.a.jdField_a_of_type_Altm);
       }
       if ((paramString2 == null) && (paramBoolean2))
       {
@@ -139,14 +139,14 @@ public class mac
         }
         if (paramInt == 1)
         {
-          return bdda.f();
+          return bdhj.f();
           b = 5;
           break;
           paramString2 = localQQAppInterface.a(paramString1, b, true);
           continue;
           paramString2 = localQQAppInterface.a(paramString1, b, false, false);
           continue;
-          paramString2 = (BitmapDrawable)((almt)localQQAppInterface.a(6)).a(paramString1, false);
+          paramString2 = (BitmapDrawable)((alri)localQQAppInterface.a(6)).a(paramString1, false);
           if (paramString2 == null) {
             break label578;
           }
@@ -159,33 +159,33 @@ public class mac
       }
       for (;;)
       {
-        paramString2 = bcxb.b(localQQAppInterface, paramString2, b).a();
+        paramString2 = bdbk.b(localQQAppInterface, paramString2, b).a();
         break;
-        paramString2 = bcxb.a(localQQAppInterface, 200, paramString1, true).a();
+        paramString2 = bdbk.a(localQQAppInterface, 200, paramString1, true).a();
         break;
-        paramString2 = ((zpa)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51)).a(Long.parseLong(paramString1));
+        paramString2 = ((ztp)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51)).a(Long.parseLong(paramString1));
         paramString2 = DeviceHeadMgr.getInstance().getDeviceHeadByPID(paramString2.productId);
         break;
-        Object localObject = (aubm)localQQAppInterface.getManager(11);
+        Object localObject = (aufv)localQQAppInterface.getManager(11);
         if ((localObject != null) && (paramString2 != null)) {}
-        for (localObject = ((aubm)localObject).c(paramString2);; localObject = null)
+        for (localObject = ((aufv)localObject).c(paramString2);; localObject = null)
         {
           if (QLog.isColorLevel()) {
             QLog.d("QQServiceForAV", 2, "getFaceBitmap contact = " + localObject);
           }
           if (localObject != null)
           {
-            paramString2 = bcxb.b(localQQAppInterface, paramString2, b).a();
+            paramString2 = bdbk.b(localQQAppInterface, paramString2, b).a();
             break;
           }
           paramString2 = localQQAppInterface.a(16, paramString1, (byte)3, true, 16);
           break;
-          paramString2 = awvn.a(localQQAppInterface, paramString2);
+          paramString2 = awzw.a(localQQAppInterface, paramString2);
           break;
           if (paramInt == 3000) {
-            return bdda.h();
+            return bdhj.h();
           }
-          return bdda.a();
+          return bdhj.a();
           return paramString2;
         }
         label573:
@@ -238,19 +238,19 @@ public class mac
         continue;
         paramArrayOfByte = paramBundle.getString("uin");
         paramResultReceiver = (QQAppInterface)this.a.a();
-        bool1 = bdex.a("GetInviteFlag", paramResultReceiver, paramArrayOfByte);
-        bdex.a("GetInviteFlag", paramResultReceiver, paramArrayOfByte);
+        bool1 = bdjg.a("GetInviteFlag", paramResultReceiver, paramArrayOfByte);
+        bdjg.a("GetInviteFlag", paramResultReceiver, paramArrayOfByte);
         paramBundle.putBoolean("enableInvite", bool1);
         return paramBundle;
-        bdfe.a((QQAppInterface)this.a.a(), paramBundle);
+        bdjn.a((QQAppInterface)this.a.a(), paramBundle);
       }
     case 5: 
-      return bdfe.a((QQAppInterface)this.a.a(), paramBundle);
+      return bdjn.a((QQAppInterface)this.a.a(), paramBundle);
     case 6: 
-      return bdex.a((QQAppInterface)this.a.a(), paramBundle.getString("uin"));
+      return bdjg.a((QQAppInterface)this.a.a(), paramBundle.getString("uin"));
     }
     paramArrayOfByte = paramBundle.getString("red_touch_app_id");
-    paramBundle.putParcelable("red_touch_red_app_info", axht.a(((axho)((QQAppInterface)this.a.a()).getManager(36)).a(paramArrayOfByte)));
+    paramBundle.putParcelable("red_touch_red_app_info", axmc.a(((axlx)((QQAppInterface)this.a.a()).getManager(36)).a(paramArrayOfByte)));
     return paramBundle;
   }
   
@@ -286,7 +286,7 @@ public class mac
         label121:
         if (paramInt == 26)
         {
-          paramString1 = awvn.a(localQQAppInterface, paramString2);
+          paramString1 = awzw.a(localQQAppInterface, paramString2);
         }
         else if (paramInt == 25)
         {
@@ -295,9 +295,9 @@ public class mac
         else if (paramInt == 1)
         {
           if (!TextUtils.isEmpty(paramString2)) {
-            paramString1 = bdbt.h(localQQAppInterface, str1, paramString2);
+            paramString1 = bdgc.h(localQQAppInterface, str1, paramString2);
           } else {
-            paramString1 = bdbt.a(localQQAppInterface, str1, false);
+            paramString1 = bdgc.a(localQQAppInterface, str1, false);
           }
         }
         else
@@ -305,16 +305,16 @@ public class mac
           if (paramInt != 9500) {
             break;
           }
-          paramString1 = ((zpa)localQQAppInterface.a(51)).a(Long.parseLong(str1));
+          paramString1 = ((ztp)localQQAppInterface.a(51)).a(Long.parseLong(str1));
           if (paramString1 == null) {
             break label461;
           }
-          paramString1 = aabn.a(paramString1);
+          paramString1 = aagc.a(paramString1);
         }
       }
-      int i = bdbt.a(paramInt);
+      int i = bdgc.a(paramInt);
       if (i == -1) {}
-      for (paramString1 = bdbt.b(localQQAppInterface, str1, paramInt);; paramString1 = bdbt.a(localQQAppInterface, str1, paramString2, i, 0))
+      for (paramString1 = bdgc.b(localQQAppInterface, str1, paramInt);; paramString1 = bdgc.a(localQQAppInterface, str1, paramString2, i, 0))
       {
         if (!TextUtils.isEmpty(paramString1))
         {
@@ -323,7 +323,7 @@ public class mac
         }
         else
         {
-          str2 = bdbt.b(localQQAppInterface, str1, true);
+          str2 = bdgc.b(localQQAppInterface, str1, true);
         }
         paramString1 = str2;
         if (TextUtils.isEmpty(str2)) {
@@ -333,14 +333,14 @@ public class mac
         if (!str1.equals(paramString1)) {
           break;
         }
-        localObject = (aloz)localQQAppInterface.getManager(51);
+        localObject = (alto)localQQAppInterface.getManager(51);
         str2 = paramString1;
         if (localObject != null)
         {
-          localObject = ((aloz)localObject).e(str1);
+          localObject = ((alto)localObject).e(str1);
           str2 = paramString1;
           if (localObject != null) {
-            str2 = bdbt.a((Friends)localObject);
+            str2 = bdgc.a((Friends)localObject);
           }
         }
         if (!str1.equals(str2))
@@ -356,7 +356,7 @@ public class mac
           break;
         }
         this.a.jdField_a_of_type_JavaUtilArrayList.add(str1);
-        localQQAppInterface.addObserver(this.a.jdField_a_of_type_Alox);
+        localQQAppInterface.addObserver(this.a.jdField_a_of_type_Altm);
         paramString1.b(str1);
         localObject = str2;
         break;
@@ -393,18 +393,18 @@ public class mac
     }
     for (str = paramString2;; str = paramString1)
     {
-      localObject1 = (aubm)paramQQAppInterface.getManager(11);
+      localObject1 = (aufv)paramQQAppInterface.getManager(11);
       if (localObject1 != null) {}
       label236:
       label248:
-      for (localObject1 = ((aubm)localObject1).c(str);; localObject1 = null)
+      for (localObject1 = ((aufv)localObject1).c(str);; localObject1 = null)
       {
         if (localObject1 != null)
         {
           localObject1 = ((PhoneContact)localObject1).name;
           return localObject1;
         }
-        localObject1 = bdbt.e(paramQQAppInterface, str);
+        localObject1 = bdgc.e(paramQQAppInterface, str);
         Object localObject2 = localObject1;
         if (localObject1 == null)
         {
@@ -423,12 +423,12 @@ public class mac
           localObject2 = paramString1;
           if (paramString1 != null)
           {
-            bdbt.a(paramQQAppInterface, str, paramString1);
+            bdgc.a(paramQQAppInterface, str, paramString1);
             localObject2 = paramString1;
           }
           if (localObject2 != null)
           {
-            paramString1 = (aloz)paramQQAppInterface.getManager(51);
+            paramString1 = (alto)paramQQAppInterface.getManager(51);
             if (paramString1 == null) {
               break label248;
             }
@@ -436,7 +436,7 @@ public class mac
           for (paramString1 = paramString1.e((String)localObject2);; paramString1 = null)
           {
             if (paramString1 != null) {}
-            for (paramString1 = bdbt.a(paramString1);; paramString1 = null)
+            for (paramString1 = bdgc.a(paramString1);; paramString1 = null)
             {
               if ((paramString1 == null) || (paramString1.equals(localObject2)))
               {
@@ -446,7 +446,7 @@ public class mac
                   break;
                 }
                 this.a.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-                paramQQAppInterface.addObserver(this.a.jdField_a_of_type_Alox);
+                paramQQAppInterface.addObserver(this.a.jdField_a_of_type_Altm);
                 paramString1.b((String)localObject2);
                 return str;
                 paramString1 = null;
@@ -465,15 +465,15 @@ public class mac
     if (paramString == null) {
       return null;
     }
-    aubm localaubm = (aubm)((QQAppInterface)this.a.a()).getManager(11);
-    if (localaubm == null)
+    aufv localaufv = (aufv)((QQAppInterface)this.a.a()).getManager(11);
+    if (localaufv == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("QQServiceForAV", 2, "getPhoneNameByPhoneNum --> can not get PhoneContactManager");
       }
       return null;
     }
-    paramString = localaubm.b(paramString);
+    paramString = localaufv.b(paramString);
     if ((paramString == null) || (paramString.name == null))
     {
       if (QLog.isColorLevel()) {
@@ -503,19 +503,19 @@ public class mac
   
   public void a(int paramInt)
   {
-    Object localObject = (apgj)QQServiceForAV.d(this.a).getManager(77);
+    Object localObject = (apks)QQServiceForAV.d(this.a).getManager(77);
     if (localObject != null)
     {
-      aphj localaphj = (aphj)((apgj)localObject).a(aphj.e());
-      if (localaphj != null) {
-        localaphj.a(false);
+      apls localapls = (apls)((apks)localObject).a(apls.e());
+      if (localapls != null) {
+        localapls.a(false);
       }
     }
     if (localObject != null)
     {
-      localObject = (aphl)((apgj)localObject).a("qq.android.qav.video");
+      localObject = (aplu)((apks)localObject).a("qq.android.qav.video");
       if (localObject != null) {
-        ((aphl)localObject).a(false);
+        ((aplu)localObject).a(false);
       }
     }
   }
@@ -523,21 +523,21 @@ public class mac
   public void a(int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    alzf localalzf = (alzf)localQQAppInterface.a(20);
-    if (localalzf != null) {}
+    amdu localamdu = (amdu)localQQAppInterface.a(20);
+    if (localamdu != null) {}
     while (!QLog.isColorLevel()) {
       try
       {
         QLog.w("QQServiceForAV", 1, "requestGrayVideoWebViewConfig, identity[" + paramInt1 + "], guin[" + paramLong + "], clientId[" + paramInt2 + "], appVersion[" + paramInt3 + "]");
-        localQQAppInterface.addObserver(this.a.jdField_a_of_type_Amab);
-        localalzf.a(paramInt1, paramLong);
+        localQQAppInterface.addObserver(this.a.jdField_a_of_type_Ameq);
+        localamdu.a(paramInt1, paramLong);
         return;
       }
       catch (Exception localException)
       {
         do
         {
-          localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Amab);
+          localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Ameq);
         } while (!QLog.isColorLevel());
         QLog.e("QQServiceForAV", 2, "requestGrayVideoWebViewConfig-->error,e=" + localException.getMessage());
         return;
@@ -555,7 +555,7 @@ public class mac
     }
     this.a.jdField_a_of_type_Int = paramInt;
     this.a.jdField_b_of_type_JavaLangString = paramString;
-    this.a.jdField_b_of_type_Long = ayvc.a();
+    this.a.jdField_b_of_type_Long = ayzl.a();
     localQQAppInterface1.a().addObserver(this.a);
     if (QLog.isColorLevel()) {
       QLog.d("QQServiceForAV", 2, "startPumpMessage uinType = " + paramInt + ", peerUin = " + paramString + ",mStartTime:" + this.a.jdField_b_of_type_Long);
@@ -568,7 +568,7 @@ public class mac
     this.a.jdField_a_of_type_Int = paramInt;
     this.a.jdField_b_of_type_JavaLangString = paramString1;
     this.a.d = paramString2;
-    this.a.jdField_b_of_type_Long = ayvc.a();
+    this.a.jdField_b_of_type_Long = ayzl.a();
     if (QLog.isColorLevel()) {
       QLog.d("QQServiceForAV", 2, "setPeerInfo uinType = " + paramInt + ", peerUin = " + paramString1 + ", extraUin = " + paramString2 + ",mStartTime:" + this.a.jdField_b_of_type_Long);
     }
@@ -585,12 +585,12 @@ public class mac
       QLog.d("QQServiceForAV", 2, "reportGVideoOnlineTime uin = " + paramLong + " troopuin = " + paramString + " onlineTime" + paramInt);
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    localQQAppInterface.addObserver(this.a.jdField_a_of_type_Amab);
-    alzf localalzf = (alzf)localQQAppInterface.a(20);
-    if (localalzf != null) {
+    localQQAppInterface.addObserver(this.a.jdField_a_of_type_Ameq);
+    amdu localamdu = (amdu)localQQAppInterface.a(20);
+    if (localamdu != null) {
       try
       {
-        localalzf.a(paramLong, Long.parseLong(paramString), paramInt);
+        localamdu.a(paramLong, Long.parseLong(paramString), paramInt);
         return;
       }
       catch (NumberFormatException paramString)
@@ -602,7 +602,7 @@ public class mac
     if (QLog.isColorLevel()) {
       QLog.e("QQServiceForAV", 2, "getGVideoLevelInfo-->can not get TroopHandle");
     }
-    localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Amab);
+    localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Ameq);
   }
   
   public void a(long paramLong1, String paramString, long paramLong2)
@@ -616,9 +616,9 @@ public class mac
   public void a(String paramString)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    ausy localausy = (ausy)localQQAppInterface.a(60);
-    localQQAppInterface.addObserver(this.a.jdField_a_of_type_Autc);
-    localausy.a(paramString);
+    auxh localauxh = (auxh)localQQAppInterface.a(60);
+    localQQAppInterface.addObserver(this.a.jdField_a_of_type_Auxl);
+    localauxh.a(paramString);
   }
   
   public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
@@ -628,9 +628,9 @@ public class mac
   
   public void a(String paramString, long paramLong)
   {
-    Object localObject = (bcfr)((QQAppInterface)this.a.a()).getManager(223);
+    Object localObject = (bcka)((QQAppInterface)this.a.a()).getManager(223);
     if (localObject != null) {
-      ((bcfr)localObject).a(paramString);
+      ((bcka)localObject).a(paramString);
     }
     if ((paramLong > 0L) && ((QQServiceForAV.h(this.a) instanceof QQAppInterface)))
     {
@@ -638,7 +638,7 @@ public class mac
       SessionInfo localSessionInfo = new SessionInfo();
       localSessionInfo.jdField_a_of_type_JavaLangString = paramString;
       localSessionInfo.jdField_a_of_type_Int = 1;
-      acex.a((QQAppInterface)localObject, localSessionInfo);
+      acjm.a((QQAppInterface)localObject, localSessionInfo);
     }
   }
   
@@ -653,8 +653,8 @@ public class mac
       paramString1 = (QQAppInterface)this.a.a();
       return;
     }
-    MessageRecord localMessageRecord = ayvw.a(-1000);
-    long l = ayvc.a();
+    MessageRecord localMessageRecord = azaf.a(-1000);
+    long l = ayzl.a();
     localMessageRecord.init(paramString2.getCurrentAccountUin(), paramString3, paramString2.getCurrentAccountUin(), paramString1, l, -1000, 1, l);
     localMessageRecord.issend = 1;
     paramString2.a().a(localMessageRecord, null);
@@ -713,22 +713,22 @@ public class mac
       return;
     }
     Object localObject = (QQAppInterface)this.a.a();
-    localObject = (allj)QQServiceForAV.a(this.a).getManager(59);
+    localObject = (alpy)QQServiceForAV.a(this.a).getManager(59);
     if (localObject != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQServiceForAV", 2, "getAddressConfig for IQQServiceLocationCallback");
       }
-      if (((allj)localObject).a() == 1)
+      if (((alpy)localObject).a() == 1)
       {
-        if (((allj)localObject).a(((allj)localObject).a(), true) == 0)
+        if (((alpy)localObject).a(((alpy)localObject).a(), true) == 0)
         {
           if (QQServiceForAV.a(this.a) == null) {
-            QQServiceForAV.a(this.a, new lzy(this, (allj)localObject, paramlzj));
+            QQServiceForAV.a(this.a, new lzy(this, (alpy)localObject, paramlzj));
           }
           for (;;)
           {
-            ((allj)localObject).c(QQServiceForAV.a(this.a));
+            ((alpy)localObject).c(QQServiceForAV.a(this.a));
             return;
             QQServiceForAV.a(this.a).a(paramlzj);
           }
@@ -797,12 +797,12 @@ public class mac
       QLog.d("QQServiceForAV", 2, "getGVideoLevelInfo uins = " + paramArrayOfLong.toString() + " troopuin = " + paramString);
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    localQQAppInterface.addObserver(this.a.jdField_a_of_type_Amab);
-    alzf localalzf = (alzf)localQQAppInterface.a(20);
-    if (localalzf != null) {
+    localQQAppInterface.addObserver(this.a.jdField_a_of_type_Ameq);
+    amdu localamdu = (amdu)localQQAppInterface.a(20);
+    if (localamdu != null) {
       try
       {
-        localalzf.a(paramArrayOfLong, Long.parseLong(paramString));
+        localamdu.a(paramArrayOfLong, Long.parseLong(paramString));
         return;
       }
       catch (NumberFormatException paramArrayOfLong)
@@ -814,7 +814,7 @@ public class mac
     if (QLog.isColorLevel()) {
       QLog.e("QQServiceForAV", 2, "getGVideoLevelInfo-->can not get TroopHandle");
     }
-    localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Amab);
+    localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Ameq);
   }
   
   public boolean a()
@@ -830,18 +830,18 @@ public class mac
   public boolean a(long paramLong)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    alzf localalzf = (alzf)localQQAppInterface.a(20);
-    if (localalzf != null) {
+    amdu localamdu = (amdu)localQQAppInterface.a(20);
+    if (localamdu != null) {
       try
       {
         QLog.w("QQServiceForAV", 1, "getAdminMemberList, troopUin[" + paramLong + "]");
-        localQQAppInterface.addObserver(this.a.jdField_a_of_type_Amab);
-        localalzf.a(paramLong, 0L, 2, 0, 0);
+        localQQAppInterface.addObserver(this.a.jdField_a_of_type_Ameq);
+        localamdu.a(paramLong, 0L, 2, 0, 0);
         return true;
       }
       catch (Exception localException)
       {
-        localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Amab);
+        localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Ameq);
         QLog.w("QQServiceForAV", 1, "getAdminMemberList Exception, troopUin[" + paramLong + "]", localException);
         return false;
       }
@@ -854,12 +854,12 @@ public class mac
   
   public boolean a(String paramString)
   {
-    return ((aloz)((QQAppInterface)this.a.a()).getManager(51)).b(paramString);
+    return ((alto)((QQAppInterface)this.a.a()).getManager(51)).b(paramString);
   }
   
   public boolean a(String paramString, int paramInt)
   {
-    paramString = ((almv)((QQAppInterface)this.a.a()).getManager(53)).a(paramString);
+    paramString = ((alrk)((QQAppInterface)this.a.a()).getManager(53)).a(paramString);
     if (paramString != null)
     {
       paramString.mOrigin = paramInt;
@@ -898,17 +898,17 @@ public class mac
   public boolean a(String paramString, boolean paramBoolean)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    localQQAppInterface.addObserver(this.a.jdField_a_of_type_Amab);
-    alzf localalzf = (alzf)localQQAppInterface.a(20);
-    if (localalzf != null) {
+    localQQAppInterface.addObserver(this.a.jdField_a_of_type_Ameq);
+    amdu localamdu = (amdu)localQQAppInterface.a(20);
+    if (localamdu != null) {
       try
       {
-        localalzf.f(paramString, paramBoolean);
+        localamdu.f(paramString, paramBoolean);
         return true;
       }
       catch (Exception paramString)
       {
-        localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Amab);
+        localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Ameq);
         QLog.e("QQServiceForAV", 2, "joinOrExitOpenTroop-->error,e=" + paramString.getMessage());
         return false;
       }
@@ -916,7 +916,7 @@ public class mac
     if (QLog.isColorLevel()) {
       QLog.e("QQServiceForAV", 2, "joinOrExitOpenTroop-->can not get TroopHandle");
     }
-    localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Amab);
+    localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Ameq);
     return false;
   }
   
@@ -928,7 +928,7 @@ public class mac
   
   public long[] a(String paramString)
   {
-    paramString = ((almv)((QQAppInterface)this.a.a()).getManager(53)).a(paramString);
+    paramString = ((alrk)((QQAppInterface)this.a.a()).getManager(53)).a(paramString);
     if (paramString != null)
     {
       int j = paramString.size();
@@ -985,9 +985,9 @@ public class mac
   
   String b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    aubm localaubm = (aubm)paramQQAppInterface.getManager(11);
-    if ((localaubm != null) && (paramString2 != null)) {}
-    for (paramString2 = localaubm.c(paramString2);; paramString2 = null)
+    aufv localaufv = (aufv)paramQQAppInterface.getManager(11);
+    if ((localaufv != null) && (paramString2 != null)) {}
+    for (paramString2 = localaufv.c(paramString2);; paramString2 = null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQServiceForAV", 2, "getDisplayName contact = " + paramString2);
@@ -995,10 +995,10 @@ public class mac
       if (paramString2 != null) {
         return paramString2.name;
       }
-      paramString2 = ((awvw)paramQQAppInterface.getManager(140)).a(paramString1);
-      paramQQAppInterface = (awvt)paramQQAppInterface.a(79);
+      paramString2 = ((axaf)paramQQAppInterface.getManager(140)).a(paramString1);
+      paramQQAppInterface = (axac)paramQQAppInterface.a(79);
       paramQQAppInterface.a(paramString1);
-      paramQQAppInterface.a(this.a.jdField_a_of_type_Awvu);
+      paramQQAppInterface.a(this.a.jdField_a_of_type_Axad);
       if ((paramString2 != null) && (paramString2.nickname != null)) {
         return paramString2.nickname;
       }
@@ -1067,7 +1067,7 @@ public class mac
       {
         return;
         QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-        if ((localQQAppInterface.getApp() == null) || (!bdee.d(localQQAppInterface.getApp().getApplicationContext()))) {
+        if ((localQQAppInterface.getApp() == null) || (!bdin.d(localQQAppInterface.getApp().getApplicationContext()))) {
           break;
         }
         if (QQServiceForAV.a(this.a) == null) {
@@ -1077,7 +1077,7 @@ public class mac
         if (QQServiceForAV.a(this.a).a() == 1)
         {
           localQQAppInterface.addObserver(QQServiceForAV.a(this.a));
-          ((alqx)localQQAppInterface.a(3)).b();
+          ((alvm)localQQAppInterface.a(3)).b();
           return;
         }
       } while (!QLog.isColorLevel());
@@ -1095,7 +1095,7 @@ public class mac
   
   public void b(boolean paramBoolean)
   {
-    SharedPreferences localSharedPreferences = bdiv.a(((QQAppInterface)this.a.a()).getApplication().getApplicationContext());
+    SharedPreferences localSharedPreferences = bdne.a(((QQAppInterface)this.a.a()).getApplication().getApplicationContext());
     SharedPreferences.Editor localEditor = localSharedPreferences.edit();
     if (paramBoolean)
     {
@@ -1142,22 +1142,22 @@ public class mac
       QLog.d("QQServiceForAV", 2, "requestDecodeStrangeFace");
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    if (this.a.jdField_a_of_type_Bcws == null)
+    if (this.a.jdField_a_of_type_Bdbb == null)
     {
-      this.a.jdField_a_of_type_Bcws = new bcws(localQQAppInterface.getApp().getApplicationContext(), localQQAppInterface);
-      this.a.jdField_a_of_type_Bcws.a(this.a.jdField_a_of_type_Bcwt);
+      this.a.jdField_a_of_type_Bdbb = new bdbb(localQQAppInterface.getApp().getApplicationContext(), localQQAppInterface);
+      this.a.jdField_a_of_type_Bdbb.a(this.a.jdField_a_of_type_Bdbc);
     }
     if (paramInt == 25) {
-      return this.a.jdField_a_of_type_Bcws.b(paramString, 16, true, false);
+      return this.a.jdField_a_of_type_Bdbb.b(paramString, 16, true, false);
     }
-    return this.a.jdField_a_of_type_Bcws.a(paramString, 200, true, false);
+    return this.a.jdField_a_of_type_Bdbb.a(paramString, 200, true, false);
   }
   
   public long[] b(String paramString)
   {
-    bcfr localbcfr = (bcfr)((QQAppInterface)this.a.a()).getManager(223);
-    if (localbcfr != null) {
-      return localbcfr.a(paramString);
+    bcka localbcka = (bcka)((QQAppInterface)this.a.a()).getManager(223);
+    if (localbcka != null) {
+      return localbcka.a(paramString);
     }
     return null;
   }
@@ -1189,7 +1189,7 @@ public class mac
       return null;
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    paramString = ((aubm)QQServiceForAV.e(this.a).getManager(11)).b(paramString);
+    paramString = ((aufv)QQServiceForAV.e(this.a).getManager(11)).b(paramString);
     if (paramString == null) {
       return null;
     }
@@ -1235,11 +1235,11 @@ public class mac
       l = Long.parseLong(paramString);
       int i = mww.b(1);
       l = localQQAppInterface.a().a(i, l);
-      bcjl localbcjl = (bcjl)((QQAppInterface)QQServiceForAV.l(this.a)).getManager(48);
-      boolean bool1 = localbcjl.a(paramString, localQQAppInterface.getCurrentAccountUin());
-      boolean bool2 = localbcjl.a(paramString);
-      boolean bool3 = localbcjl.b(paramString);
-      paramString = localbcjl.a(paramString);
+      bcnu localbcnu = (bcnu)((QQAppInterface)QQServiceForAV.l(this.a)).getManager(48);
+      boolean bool1 = localbcnu.a(paramString, localQQAppInterface.getCurrentAccountUin());
+      boolean bool2 = localbcnu.a(paramString);
+      boolean bool3 = localbcnu.b(paramString);
+      paramString = localbcnu.a(paramString);
       if ((l == 0L) && (((!bool3) && (bool1)) || ((!bool2) && (paramString != null) && (paramString.a > 0L)))) {
         return true;
       }
@@ -1275,7 +1275,7 @@ public class mac
       return localObject3;
     }
     Object localObject2 = (QQAppInterface)this.a.a();
-    localObject2 = ((aloz)QQServiceForAV.f(this.a).getManager(51)).b(paramString);
+    localObject2 = ((alto)QQServiceForAV.f(this.a).getManager(51)).b(paramString);
     if (localObject2 != null)
     {
       localObject1 = ((Card)localObject2).getCardInfo();
@@ -1327,7 +1327,7 @@ public class mac
   
   public void d(String paramString)
   {
-    ((axho)((QQAppInterface)this.a.a()).getManager(36)).b(paramString);
+    ((axlx)((QQAppInterface)this.a.a()).getManager(36)).b(paramString);
   }
   
   public void d(boolean paramBoolean)
@@ -1344,7 +1344,7 @@ public class mac
     if (QQServiceForAV.a(this.a) == null) {
       QQServiceForAV.a(this.a, new mab(this.a));
     }
-    boolean bool = azgk.a(localQQAppInterface, localQQAppInterface.getApplication().getApplicationContext(), QQServiceForAV.a(this.a));
+    boolean bool = azkt.a(localQQAppInterface, localQQAppInterface.getApplication().getApplicationContext(), QQServiceForAV.a(this.a));
     if (QLog.isDevelopLevel()) {
       QLog.w("QQServiceForAV", 4, "getEffectsSoLoadIsOk, ret[" + bool + "]");
     }
@@ -1353,8 +1353,8 @@ public class mac
   
   public void e(String paramString)
   {
-    axho localaxho = (axho)((QQAppInterface)this.a.a()).getManager(36);
-    localaxho.b(localaxho.a(paramString), "");
+    axlx localaxlx = (axlx)((QQAppInterface)this.a.a()).getManager(36);
+    localaxlx.b(localaxlx.a(paramString), "");
   }
   
   public boolean e()
@@ -1362,7 +1362,7 @@ public class mac
     if (QQServiceForAV.a(this.a) == null) {
       QQServiceForAV.a(this.a, new maa(this.a));
     }
-    bkwi.a().a(bkwh.c, QQServiceForAV.a(this.a), false);
+    blap.a().a(blao.c, QQServiceForAV.a(this.a), false);
     if (QLog.isDevelopLevel()) {
       QLog.w("QQServiceForAV", 4, "try download AEKit compenent");
     }
@@ -1371,11 +1371,11 @@ public class mac
   
   public void f(String paramString)
   {
-    axho localaxho = (axho)((QQAppInterface)this.a.a()).getManager(36);
+    axlx localaxlx = (axlx)((QQAppInterface)this.a.a()).getManager(36);
     if (QLog.isColorLevel()) {
       QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "redTouchManagerDismiss, appId " + paramString);
     }
-    localaxho.c(paramString);
+    localaxlx.c(paramString);
   }
   
   public boolean f()

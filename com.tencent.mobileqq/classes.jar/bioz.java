@@ -1,16 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
+import com.tencent.qphone.base.util.QLog;
 
-final class bioz
-  implements View.OnClickListener
+class bioz
+  extends AVAudioCtrl.EnableSpeakerCompleteCallback
 {
-  bioz(Dialog paramDialog) {}
+  bioz(biov parambiov) {}
   
-  public void onClick(View paramView)
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    if (this.a != null) {
-      this.a.dismiss();
+    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.b(paramBoolean, paramInt);
     }
   }
 }

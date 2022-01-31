@@ -1,14 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 
 class bgwt
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  bgwt(bgws parambgws) {}
+  bgwt(bgwp parambgwp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bgws.a(this.a);
+    this.a.b(paramDialogInterface);
+    bgwl.a();
+    if (bgwp.a(this.a) != null) {
+      bgwp.a(this.a).onDismiss(paramDialogInterface);
+    }
   }
 }
 

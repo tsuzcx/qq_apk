@@ -1,29 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageForVideo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class agbv
-  implements View.OnClickListener
+public class agbv
+  extends AnimatorListenerAdapter
 {
-  agbv(agbu paramagbu) {}
+  public agbv(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!agbu.a(this.a)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((!lnz.c()) || (!lnz.d()));
-        paramView = (aemk)aekt.a(paramView);
-      } while (paramView == null);
-      paramView = (MessageForVideo)paramView.a;
-      agbu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramView, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    } while (paramView.istroop != 1044);
-    azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD93", "0X800AD93", 0, 0, "", "", "", "");
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.a) {
+      return;
+    }
+    this.a.b();
   }
 }
 

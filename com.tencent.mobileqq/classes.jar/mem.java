@@ -5,7 +5,7 @@ public class mem
 {
   public static void a(String paramString)
   {
-    azmj.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
   }
   
   public static void b(String paramString)

@@ -1,16 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class ajwv
-  implements View.OnClickListener
+public abstract interface ajwv
 {
-  ajwv(ajwu paramajwu) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = paramView.getTag();
-    ajwu.a(this.a, (akdg)paramView);
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,17 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.customviews.PicProgressView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class afxa
-  implements ValueAnimator.AnimatorUpdateListener
+  extends aeqi
 {
-  public afxa(SixCombolEffectView paramSixCombolEffectView) {}
+  public ImageView a;
+  public URLDrawable a;
+  public PicProgressView a;
+  public BubbleImageView a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
-  }
+  public afxa(afwu paramafwu) {}
 }
 
 

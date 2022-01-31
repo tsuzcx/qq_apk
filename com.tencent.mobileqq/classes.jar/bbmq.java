@@ -1,15 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import java.util.Collection;
+import java.util.Iterator;
 
-class bbmq
-  implements DialogInterface.OnDismissListener
+public class bbmq
 {
-  bbmq(bbml parambbml) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static String a(Collection<TroopAIOAppInfo> paramCollection)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (bbmp.a(paramCollection))
+    {
+      localStringBuilder.append("empty apps");
+      return localStringBuilder.toString();
+    }
+    localStringBuilder.append("[gray+ red*]");
+    paramCollection = paramCollection.iterator();
+    label41:
+    TroopAIOAppInfo localTroopAIOAppInfo;
+    if (paramCollection.hasNext())
+    {
+      localTroopAIOAppInfo = (TroopAIOAppInfo)paramCollection.next();
+      if (localTroopAIOAppInfo.isGray) {
+        localStringBuilder.append("+");
+      }
+      if (localTroopAIOAppInfo.redPoint) {
+        localStringBuilder.append("*");
+      }
+      if (TextUtils.isEmpty(localTroopAIOAppInfo.name)) {
+        break label117;
+      }
+      localStringBuilder.append(localTroopAIOAppInfo.name);
+    }
+    for (;;)
+    {
+      localStringBuilder.append(" ");
+      break label41;
+      break;
+      label117:
+      localStringBuilder.append("id:");
+      localStringBuilder.append(localTroopAIOAppInfo.appid);
     }
   }
 }

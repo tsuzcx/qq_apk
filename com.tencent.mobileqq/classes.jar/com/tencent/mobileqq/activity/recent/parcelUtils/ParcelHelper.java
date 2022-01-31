@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent.parcelUtils;
 
-import ajib;
-import ajic;
+import ajmq;
+import ajmr;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class ParcelHelper
         if (i < j)
         {
           Field localField = arrayOfField[i];
-          if ((((localField.getModifiers() & 0x10) != 0) && ((localField.getModifiers() & 0x8) != 0)) || (localField.isAnnotationPresent(ajib.class)) || (("$jacocoData".endsWith(localField.getName())) && (localField.getType() == [Z.class))) {
+          if ((((localField.getModifiers() & 0x10) != 0) && ((localField.getModifiers() & 0x8) != 0)) || (localField.isAnnotationPresent(ajmq.class)) || (("$jacocoData".endsWith(localField.getName())) && (localField.getType() == [Z.class))) {
             break label153;
           }
           localField.setAccessible(true);
@@ -45,7 +45,7 @@ public class ParcelHelper
   
   private static void a(Object paramObject)
   {
-    if (!paramObject.getClass().isAnnotationPresent(ajic.class)) {
+    if (!paramObject.getClass().isAnnotationPresent(ajmr.class)) {
       throw new RuntimeException("Object to Parcel must describe @ParcelObject");
     }
   }
@@ -215,11 +215,11 @@ public class ParcelHelper
     //   278: aload 4
     //   280: astore_3
     //   281: aload_0
-    //   282: invokestatic 156	ajif:a	(Ljava/lang/Object;)Lajid;
+    //   282: invokestatic 156	ajmu:a	(Ljava/lang/Object;)Lajms;
     //   285: aload_0
     //   286: aload 4
     //   288: aload_1
-    //   289: invokevirtual 161	ajid:a	(Ljava/lang/Object;Landroid/os/Parcel;Ljava/util/ArrayList;)V
+    //   289: invokevirtual 161	ajms:a	(Ljava/lang/Object;Landroid/os/Parcel;Ljava/util/ArrayList;)V
     //   292: aload 4
     //   294: ifnull +8 -> 302
     //   297: aload 4
@@ -379,11 +379,11 @@ public class ParcelHelper
     //   49: aload_1
     //   50: astore_2
     //   51: aload_0
-    //   52: invokestatic 156	ajif:a	(Ljava/lang/Object;)Lajid;
+    //   52: invokestatic 156	ajmu:a	(Ljava/lang/Object;)Lajms;
     //   55: aload_0
     //   56: aload 4
     //   58: aload_1
-    //   59: invokevirtual 175	ajid:a	(Ljava/lang/Object;Ljava/util/ArrayList;Landroid/os/Parcel;)Z
+    //   59: invokevirtual 175	ajms:a	(Ljava/lang/Object;Ljava/util/ArrayList;Landroid/os/Parcel;)Z
     //   62: pop
     //   63: aload_1
     //   64: astore_2

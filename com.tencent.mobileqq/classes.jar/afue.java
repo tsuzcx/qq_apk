@@ -1,24 +1,19 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afue
-  implements ujj
+class afue
+  extends afuf
 {
-  long jdField_a_of_type_Long;
-  afuf jdField_a_of_type_Afuf;
-  String jdField_a_of_type_JavaLangString;
-  
-  public void a(afuf paramafuf, String paramString, long paramLong)
+  afue(afpy paramafpy)
   {
-    this.jdField_a_of_type_Afuf = paramafuf;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramafpy, null);
   }
   
-  public void a(String paramString1, String paramString2, int paramInt) {}
-  
-  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
-  
-  public void b(String paramString1, String paramString2, int paramInt) {}
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ScribbleItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

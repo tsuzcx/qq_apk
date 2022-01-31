@@ -1,26 +1,22 @@
+import android.content.Intent;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class aqmq
-  implements Cloneable
+  implements View.OnClickListener
 {
-  public int a;
-  public View a;
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
-  public int b;
-  public TextView b;
-  public int c;
+  public aqmq(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, FileManagerEntity paramFileManagerEntity) {}
   
-  public aqmq(aqmo paramaqmo) {}
+  public void onClick(View paramView)
+  {
+    paramView = new Intent();
+    paramView.putExtra("isNeedFinish", true);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.setResult(-1, paramView);
+    TroopFileZipPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity);
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.app, "dc00899", "Grp_files", null, "oper", "pre_arc_close", 0, 0, "" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, "", "", "1");
+  }
 }
 
 

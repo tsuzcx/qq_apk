@@ -1,22 +1,9 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import java.util.List;
 
-class yuy
-  implements Animation.AnimationListener
+public class yuy
 {
-  yuy(yuu paramyuu) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (yuu.b(this.a) != null) {
-      yuu.b(this.a).setVisibility(0);
-    }
-  }
+  public String a;
+  public List<yuz> a;
 }
 
 

@@ -1,35 +1,28 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.text.Editable;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
 
-class atnk
-  implements View.OnClickListener
+public class atnk
+  implements View.OnTouchListener
 {
-  atnk(atnf paramatnf, Activity paramActivity, EditText paramEditText) {}
+  float jdField_a_of_type_Float = 0.0F;
   
-  public void onClick(View paramView)
+  public atnk(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
-    }
-    atnf.a(this.jdField_a_of_type_Atnf).setClickable(false);
-    atnf.a(this.jdField_a_of_type_Atnf).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840353));
-    atnf.a(this.jdField_a_of_type_Atnf).a(true);
-    atnf.a(this.jdField_a_of_type_Atnf, atnf.a(this.jdField_a_of_type_Atnf).a());
-    if (this.jdField_a_of_type_AndroidWidgetEditText.getText().length() > 0) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_Float = paramView.getAlpha();
+      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
     }
     for (;;)
     {
-      azmj.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
-      return;
-      this.jdField_a_of_type_Atnf.a("");
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+        paramView.setAlpha(this.jdField_a_of_type_Float);
+      }
     }
   }
 }

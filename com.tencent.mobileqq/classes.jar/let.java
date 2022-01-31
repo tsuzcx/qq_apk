@@ -2,12 +2,12 @@ import java.util.List;
 
 public class let
 {
-  @atcn(a="testInfos")
+  @atgw(a="testInfos")
   public List<leu> a;
   
   public static let a(String paramString)
   {
-    return (let)atco.a(paramString, let.class);
+    return (let)atgx.a(paramString, let.class);
   }
 }
 

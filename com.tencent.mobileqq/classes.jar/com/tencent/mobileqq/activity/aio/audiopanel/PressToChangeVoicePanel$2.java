@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import apgj;
-import apgu;
-import aphj;
-import azmj;
+import apks;
+import apld;
+import apls;
+import azqs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.startup.step.UpdateAvSo;
@@ -32,18 +32,18 @@ final class PressToChangeVoicePanel$2
     {
       try
       {
-        apgu localapgu = ((apgj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(77)).a(aphj.e());
-        if (localapgu == null) {
+        apld localapld = ((apks)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(77)).a(apls.e());
+        if (localapld == null) {
           continue;
         }
-        localapgu.a(false);
+        localapld.a(false);
       }
       catch (Exception localException)
       {
         QLog.e("AIOAudioPanel", 1, "voiceChang checkVcSo Exception:" + localException.getMessage());
         continue;
       }
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
       return;
       QLog.e("AIOAudioPanel", 1, "voiceChang checkVcSo null == earlyHandler:");
       continue;

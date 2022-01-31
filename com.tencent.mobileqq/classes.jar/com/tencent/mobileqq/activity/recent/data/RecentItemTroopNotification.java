@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ahla;
-import ajgs;
-import aljq;
+import ahpp;
+import ajlh;
+import alof;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import baba;
+import bafj;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -73,12 +73,12 @@ public class RecentItemTroopNotification
       return;
       super.a(paramQQAppInterface, paramContext);
       if (TextUtils.isEmpty(this.mTitleName)) {
-        this.mTitleName = paramContext.getString(2131691141);
+        this.mTitleName = paramContext.getString(2131691142);
       }
-      this.mUnreadNum = ahla.a(paramQQAppInterface);
-      String str = baba.a().a(paramQQAppInterface);
-      paramContext = baba.a().a();
-      paramQQAppInterface = paramQQAppInterface.a().b(aljq.N, 0);
+      this.mUnreadNum = ahpp.a(paramQQAppInterface);
+      String str = bafj.a().a(paramQQAppInterface);
+      paramContext = bafj.a().a();
+      paramQQAppInterface = paramQQAppInterface.a().b(alof.N, 0);
       if (paramQQAppInterface == null) {
         break label279;
       }
@@ -94,7 +94,7 @@ public class RecentItemTroopNotification
         this.mLastMsg = str;
       }
       if ((this.mDisplayTime > 0L) && (this.mDisplayTime != 9223372036854775806L)) {
-        this.mShowTime = ajgs.a().a(a(), this.mDisplayTime);
+        this.mShowTime = ajlh.a().a(a(), this.mDisplayTime);
       }
       this.mUser.jumpTabMode = 1;
     } while (!AppSetting.c);

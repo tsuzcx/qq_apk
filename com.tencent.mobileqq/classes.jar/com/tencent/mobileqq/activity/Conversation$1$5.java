@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import acms;
+import acrh;
 import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
 
 public class Conversation$1$5
   implements Runnable
 {
-  public Conversation$1$5(acms paramacms) {}
+  public Conversation$1$5(acrh paramacrh) {}
   
   public void run() {}
 }

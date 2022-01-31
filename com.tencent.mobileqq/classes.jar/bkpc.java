@@ -1,13 +1,9 @@
-class bkpc
-  extends blnr
+import java.io.File;
+
+public class bkpc
 {
-  bkpc(bkpa parambkpa) {}
-  
-  public void a()
-  {
-    super.a();
-    this.a.j();
-  }
+  public static final String a = bkpi.b + File.separator + "gif";
+  public static final String b = a + File.separator + "gifPreview";
 }
 
 

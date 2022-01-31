@@ -70,12 +70,12 @@ public class rbd
     if (paramBoolean)
     {
       localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_Rbi.jdField_g_of_type_AndroidViewViewGroup.getLayoutParams();
-      localMarginLayoutParams.bottomMargin = aekt.a(0.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
+      localMarginLayoutParams.bottomMargin = aepi.a(0.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
       this.jdField_a_of_type_Rbi.jdField_g_of_type_AndroidViewViewGroup.setLayoutParams(localMarginLayoutParams);
       return;
     }
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_Rbi.jdField_g_of_type_AndroidViewViewGroup.getLayoutParams();
-    localMarginLayoutParams.bottomMargin = (aekt.a(15.0F, raw.a(this.jdField_a_of_type_Raw).getResources()) - 20);
+    localMarginLayoutParams.bottomMargin = (aepi.a(15.0F, raw.a(this.jdField_a_of_type_Raw).getResources()) - 20);
     this.jdField_a_of_type_Rbi.jdField_g_of_type_AndroidViewViewGroup.setLayoutParams(localMarginLayoutParams);
   }
   
@@ -95,7 +95,7 @@ public class rbd
     {
       if (!TextUtils.isEmpty(paramVideoInfo.j))
       {
-        paramImageView.setImageDrawable(bcxb.a(raw.a(this.jdField_a_of_type_Raw), 1, paramVideoInfo.j, 1, raw.a(this.jdField_a_of_type_Raw), raw.a(this.jdField_a_of_type_Raw)));
+        paramImageView.setImageDrawable(bdbk.a(raw.a(this.jdField_a_of_type_Raw), 1, paramVideoInfo.j, 1, raw.a(this.jdField_a_of_type_Raw), raw.a(this.jdField_a_of_type_Raw)));
         paramImageView.setOnClickListener(this.jdField_a_of_type_Raw);
         paramImageView.setTag(this.jdField_a_of_type_Rbi);
       }
@@ -104,8 +104,8 @@ public class rbd
       return;
     }
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = aekt.a(paramInt1, raw.a(this.jdField_a_of_type_Raw).getResources());
-    localURLDrawableOptions.mRequestHeight = aekt.a(paramInt1, raw.a(this.jdField_a_of_type_Raw).getResources());
+    localURLDrawableOptions.mRequestWidth = aepi.a(paramInt1, raw.a(this.jdField_a_of_type_Raw).getResources());
+    localURLDrawableOptions.mRequestHeight = aepi.a(paramInt1, raw.a(this.jdField_a_of_type_Raw).getResources());
     localURLDrawableOptions.mLoadingDrawable = raw.a(this.jdField_a_of_type_Raw);
     localURLDrawableOptions.mFailedDrawable = raw.a(this.jdField_a_of_type_Raw);
     for (;;)
@@ -126,12 +126,12 @@ public class rbd
           }
         }
         localObject1 = URLDrawable.getDrawable((URL)localObject2, localURLDrawableOptions);
-        ((URLDrawable)localObject1).setTag(bcuq.b(aekt.a(paramInt1, raw.a(this.jdField_a_of_type_Raw).getResources()), aekt.a(paramInt1, raw.a(this.jdField_a_of_type_Raw).getResources()), aekt.a(paramInt2, raw.a(this.jdField_a_of_type_Raw).getResources())));
+        ((URLDrawable)localObject1).setTag(bcyz.b(aepi.a(paramInt1, raw.a(this.jdField_a_of_type_Raw).getResources()), aepi.a(paramInt1, raw.a(this.jdField_a_of_type_Raw).getResources()), aepi.a(paramInt2, raw.a(this.jdField_a_of_type_Raw).getResources())));
         if ((!raw.b(paramVideoInfo)) || (this.jdField_a_of_type_Rbi.jdField_e_of_type_AndroidWidgetImageView == null) || (this.jdField_a_of_type_Rbi.jdField_e_of_type_AndroidWidgetImageView != paramImageView)) {
           break label385;
         }
         ((URLDrawable)localObject1).setTag(new int[] { 0, 0, paramInt2, 3 });
-        ((URLDrawable)localObject1).setDecodeHandler(bcuq.j);
+        ((URLDrawable)localObject1).setDecodeHandler(bcyz.j);
         paramImageView.setImageDrawable((Drawable)localObject1);
       }
       catch (MalformedURLException paramVideoInfo) {}
@@ -144,7 +144,7 @@ public class rbd
       Object localObject1 = new URL(paramVideoInfo.n);
       continue;
       label385:
-      ((URLDrawable)localObject1).setDecodeHandler(bcuq.i);
+      ((URLDrawable)localObject1).setDecodeHandler(bcyz.i);
     }
   }
   
@@ -239,9 +239,9 @@ public class rbd
           localObject6 = (LinearLayout.LayoutParams)((TextView)localObject1).getLayoutParams();
           localObject7 = (LinearLayout.LayoutParams)((View)localObject4).getLayoutParams();
           localObject8 = (LinearLayout.LayoutParams)((View)localObject5).getLayoutParams();
-          ((LinearLayout.LayoutParams)localObject6).topMargin = aekt.a(14.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
-          ((LinearLayout.LayoutParams)localObject7).topMargin = aekt.a(14.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
-          ((LinearLayout.LayoutParams)localObject8).topMargin = aekt.a(14.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
+          ((LinearLayout.LayoutParams)localObject6).topMargin = aepi.a(14.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
+          ((LinearLayout.LayoutParams)localObject7).topMargin = aepi.a(14.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
+          ((LinearLayout.LayoutParams)localObject8).topMargin = aepi.a(14.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
           ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject6);
           ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject7);
           ((View)localObject5).setLayoutParams((ViewGroup.LayoutParams)localObject8);
@@ -254,7 +254,7 @@ public class rbd
         this.jdField_a_of_type_Rbi.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setVisibility(8);
         paramVideoInfo = this.jdField_a_of_type_Rbi.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.getLayoutParams();
         if ((paramVideoInfo instanceof LinearLayout.LayoutParams)) {
-          ((LinearLayout.LayoutParams)paramVideoInfo).leftMargin = aekt.a(15.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
+          ((LinearLayout.LayoutParams)paramVideoInfo).leftMargin = aepi.a(15.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
         }
         this.jdField_a_of_type_Rbi.jdField_c_of_type_AndroidWidgetTextView.setTextSize(14.0F);
         this.jdField_a_of_type_Rbi.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -273,10 +273,10 @@ public class rbd
       this.jdField_a_of_type_Rbi.jdField_l_of_type_AndroidViewViewGroup.setVisibility(8);
       break label262;
       label941:
-      this.jdField_a_of_type_Rbi.jdField_c_of_type_AndroidWidgetTextView.setText(((Resources)localObject5).getText(2131719081));
+      this.jdField_a_of_type_Rbi.jdField_c_of_type_AndroidWidgetTextView.setText(((Resources)localObject5).getText(2131719093));
       break label357;
       label962:
-      this.jdField_a_of_type_Rbi.jdField_b_of_type_AndroidWidgetTextView.setText(((Resources)localObject5).getText(2131719079));
+      this.jdField_a_of_type_Rbi.jdField_b_of_type_AndroidWidgetTextView.setText(((Resources)localObject5).getText(2131719091));
     }
     label983:
     int i;
@@ -410,17 +410,17 @@ public class rbd
         if (!TextUtils.isEmpty((CharSequence)localObject4))
         {
           localObject6 = new LinearLayout.LayoutParams(-2, -2);
-          ((LinearLayout.LayoutParams)localObject6).rightMargin = aekt.a(6.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
+          ((LinearLayout.LayoutParams)localObject6).rightMargin = aepi.a(6.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
           localObject7 = new TextView(raw.a(this.jdField_a_of_type_Raw));
           ((TextView)localObject7).setTextSize(10.0F);
           ((TextView)localObject7).setTextColor(Color.parseColor("#737373"));
           ((TextView)localObject7).setIncludeFontPadding(false);
-          ((TextView)localObject7).setBackgroundResource(2130848756);
+          ((TextView)localObject7).setBackgroundResource(2130848829);
           ((TextView)localObject7).setText((CharSequence)localObject4);
           ((TextView)localObject7).setLayoutParams((ViewGroup.LayoutParams)localObject6);
           ((TextView)localObject7).setOnClickListener(new rbg(this, paramVideoInfo));
           j = ors.a(raw.a(this.jdField_a_of_type_Raw))[0];
-          k = aekt.a(125.0F, (Resources)localObject5);
+          k = aepi.a(125.0F, (Resources)localObject5);
           int m = (int)((TextView)localObject7).getPaint().measureText((String)localObject4);
           if (i + m >= j - k) {
             break label3636;
@@ -467,7 +467,7 @@ public class rbd
         ((SpannableStringBuilder)localObject6).append(ors.a(paramVideoInfo.c, 72));
         ((SpannableStringBuilder)localObject6).append("  ");
       }
-      localObject4 = alpo.a(2131716617);
+      localObject4 = alud.a(2131716629);
       j = 1;
       for (;;)
       {
@@ -509,16 +509,16 @@ public class rbd
           localObject4 = new Paint();
           ((Paint)localObject4).setAntiAlias(true);
           ((Paint)localObject4).setStyle(Paint.Style.FILL);
-          ((Paint)localObject4).setTextSize(aekt.a(10.0F, (Resources)localObject5));
+          ((Paint)localObject4).setTextSize(aepi.a(10.0F, (Resources)localObject5));
           ((Paint)localObject4).setColor(-1291845633);
           f = ((Paint)localObject4).measureText((String)localObject2);
-          i = aekt.a(6.0F, (Resources)localObject5);
+          i = aepi.a(6.0F, (Resources)localObject5);
           i = (int)f + i;
-          j = aekt.a(1.0F, (Resources)localObject5) / 2;
-          k = aekt.a(14.0F, (Resources)localObject5);
+          j = aepi.a(1.0F, (Resources)localObject5) / 2;
+          k = aepi.a(14.0F, (Resources)localObject5);
           localObject7 = Bitmap.createBitmap(i, k, Bitmap.Config.ARGB_8888);
           localObject8 = new Canvas((Bitmap)localObject7);
-          ((Canvas)localObject8).drawText((String)localObject2, aekt.a(3.0F, (Resources)localObject5), k / 2 - (((Paint)localObject4).descent() + ((Paint)localObject4).ascent()) / 2.0F, (Paint)localObject4);
+          ((Canvas)localObject8).drawText((String)localObject2, aepi.a(3.0F, (Resources)localObject5), k / 2 - (((Paint)localObject4).descent() + ((Paint)localObject4).ascent()) / 2.0F, (Paint)localObject4);
           if (oed.a()) {
             continue;
           }
@@ -533,7 +533,7 @@ public class rbd
           ((SpannableStringBuilder)localObject6).setSpan(new VerticalCenterImageSpan(raw.a(this.jdField_a_of_type_Raw), (Bitmap)localObject7), ((SpannableStringBuilder)localObject6).length() - 1, ((SpannableStringBuilder)localObject6).length(), 33);
           ((SpannableStringBuilder)localObject6).setSpan(new rbh(this), ((SpannableStringBuilder)localObject6).length() - 1, ((SpannableStringBuilder)localObject6).length(), 33);
           localObject2 = this.jdField_a_of_type_Rbi.jdField_c_of_type_AndroidWidgetTextView;
-          ((TextView)localObject2).setPadding(((TextView)localObject2).getPaddingLeft(), ((TextView)localObject2).getPaddingTop(), ((TextView)localObject2).getPaddingRight(), aekt.a(1.0F, (Resources)localObject5));
+          ((TextView)localObject2).setPadding(((TextView)localObject2).getPaddingLeft(), ((TextView)localObject2).getPaddingTop(), ((TextView)localObject2).getPaddingRight(), aepi.a(1.0F, (Resources)localObject5));
         }
         this.jdField_a_of_type_Rbi.jdField_c_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
         this.jdField_a_of_type_Rbi.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject6);
@@ -553,9 +553,9 @@ public class rbd
         }
         if (this.jdField_a_of_type_Rbi.jdField_i_of_type_AndroidWidgetTextView != null)
         {
-          this.jdField_a_of_type_Rbi.jdField_i_of_type_AndroidWidgetTextView.setText(alpo.a(2131716533));
-          i = aekt.a(12.0F, (Resources)localObject5);
-          localObject2 = ((Resources)localObject5).getDrawable(2130842691);
+          this.jdField_a_of_type_Rbi.jdField_i_of_type_AndroidWidgetTextView.setText(alud.a(2131716545));
+          i = aepi.a(12.0F, (Resources)localObject5);
+          localObject2 = ((Resources)localObject5).getDrawable(2130842704);
           ((Drawable)localObject2).setBounds(0, 0, i, i);
           this.jdField_a_of_type_Rbi.jdField_i_of_type_AndroidWidgetTextView.setCompoundDrawables((Drawable)localObject2, null, null, null);
         }
@@ -576,7 +576,7 @@ public class rbd
         i = 0;
         localObject2 = localObject4;
       }
-      ((LinearLayout.LayoutParams)localObject5).topMargin = aekt.a(7.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
+      ((LinearLayout.LayoutParams)localObject5).topMargin = aepi.a(7.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
       break label606;
       Object localObject3 = this.jdField_a_of_type_Rbi.jdField_b_of_type_AndroidWidgetSeekBar;
       localObject5 = ((SeekBar)localObject3).getLayoutParams();
@@ -589,9 +589,9 @@ public class rbd
         if (raw.b(paramVideoInfo))
         {
           i = 4;
-          ((LinearLayout.LayoutParams)localObject5).bottomMargin = aekt.a(0.5F, raw.a(this.jdField_a_of_type_Raw).getResources());
+          ((LinearLayout.LayoutParams)localObject5).bottomMargin = aepi.a(0.5F, raw.a(this.jdField_a_of_type_Raw).getResources());
         }
-        ((LinearLayout.LayoutParams)localObject5).topMargin = aekt.a(10, raw.a(this.jdField_a_of_type_Raw).getResources());
+        ((LinearLayout.LayoutParams)localObject5).topMargin = aepi.a(10, raw.a(this.jdField_a_of_type_Raw).getResources());
         ((ViewGroup)localObject4).addView((View)localObject3, i, (ViewGroup.LayoutParams)localObject5);
         paramVideoInfo = this.jdField_a_of_type_Rbi.jdField_d_of_type_AndroidWidgetTextView;
         localObject3 = this.jdField_a_of_type_Rbi.jdField_a_of_type_AndroidViewView;
@@ -599,9 +599,9 @@ public class rbd
         localObject5 = (LinearLayout.LayoutParams)paramVideoInfo.getLayoutParams();
         localObject6 = (LinearLayout.LayoutParams)((View)localObject3).getLayoutParams();
         localObject7 = (LinearLayout.LayoutParams)((View)localObject4).getLayoutParams();
-        ((LinearLayout.LayoutParams)localObject5).topMargin = aekt.a(0.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
-        ((LinearLayout.LayoutParams)localObject6).topMargin = aekt.a(7.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
-        ((LinearLayout.LayoutParams)localObject7).topMargin = aekt.a(15.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
+        ((LinearLayout.LayoutParams)localObject5).topMargin = aepi.a(0.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
+        ((LinearLayout.LayoutParams)localObject6).topMargin = aepi.a(7.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
+        ((LinearLayout.LayoutParams)localObject7).topMargin = aepi.a(15.0F, raw.a(this.jdField_a_of_type_Raw).getResources());
         paramVideoInfo.setLayoutParams((ViewGroup.LayoutParams)localObject5);
         ((View)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject6);
         ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject7);
@@ -638,7 +638,7 @@ public class rbd
     ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
     paramVideoInfo = URLDrawable.getDrawable(paramVideoInfo.a(), (URLDrawable.URLDrawableOptions)localObject);
-    paramVideoInfo.setDecodeHandler(bcuq.w);
+    paramVideoInfo.setDecodeHandler(bcyz.w);
     paramVideoInfo.setAlpha(80);
     this.jdField_a_of_type_Rbi.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramVideoInfo);
   }

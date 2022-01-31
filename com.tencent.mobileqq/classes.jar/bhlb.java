@@ -1,44 +1,6 @@
-import com.tencent.qqprotect.qsec.IRuntimeInterface;
-import com.tencent.qqprotect.qsec.QSecFramework;
-
-public class bhlb
-  implements IRuntimeInterface
+public abstract interface bhlb
 {
-  private static volatile bhlb a;
-  
-  private bhlb()
-  {
-    QSecFramework.a(3L, new bhlc(this));
-  }
-  
-  public static bhlb a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new bhlb();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (paramInt1 == 1) {
-      bhin.a(paramString, paramInt2);
-    }
-    while (paramInt1 != 2) {
-      return;
-    }
-    bhin.b(paramString, paramInt2);
-  }
-  
-  public String getInterfaceName()
-  {
-    return "Rpt";
-  }
+  public abstract void a(int paramInt);
 }
 
 

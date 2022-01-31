@@ -1,34 +1,66 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.mobileqq.music.SongInfo;
 
-public class auqt
-  extends BroadcastReceiver
+public abstract interface auqt
+  extends IInterface
 {
-  public auqt(NearbyJsInterface paramNearbyJsInterface) {}
+  public abstract int a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    int i = paramIntent.getIntExtra("command_type", 0);
-    QLog.i("NearbyJsInterface", 2, "receive request" + paramIntent.getExtras());
-    switch (i)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (TextUtils.isEmpty(NearbyJsInterface.a(this.a)));
-      this.a.callJs(NearbyJsInterface.a(this.a), new String[] { paramIntent.getStringExtra("data") });
-      NearbyJsInterface.a(this.a, "");
-      return;
-    } while (TextUtils.isEmpty(NearbyJsInterface.b(this.a)));
-    this.a.callJs(NearbyJsInterface.b(this.a), new String[] { paramIntent.getStringExtra("data") });
-  }
+  public abstract Intent a();
+  
+  public abstract Bundle a();
+  
+  public abstract SongInfo a();
+  
+  public abstract String a();
+  
+  public abstract String a(int paramInt, String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(Intent paramIntent);
+  
+  public abstract void a(Bundle paramBundle);
+  
+  public abstract void a(auqq paramauqq);
+  
+  public abstract void a(String paramString, SongInfo[] paramArrayOfSongInfo, int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract SongInfo[] a();
+  
+  public abstract int b();
+  
+  public abstract SongInfo b();
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(auqq paramauqq);
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract int d();
+  
+  public abstract void d();
+  
+  public abstract int e();
+  
+  public abstract void e();
+  
+  public abstract int f();
+  
+  public abstract int g();
 }
 
 

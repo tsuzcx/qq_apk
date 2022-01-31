@@ -1,28 +1,57 @@
+import NS_MINI_INTERFACE.INTERFACE.StGetFormIdReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetFormIdRsp;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage.MessageLevel;
-import com.tencent.smtt.sdk.WebChromeClient;
+import org.json.JSONObject;
 
-class bhdb
-  extends WebChromeClient
+public class bhdb
+  extends bhdw
 {
-  bhdb(bhda parambhda) {}
+  private INTERFACE.StGetFormIdReq a = new INTERFACE.StGetFormIdReq();
   
-  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  public bhdb(String paramString)
   {
-    if (paramConsoleMessage != null)
+    this.a.appid.set(paramString);
+  }
+  
+  protected String a()
+  {
+    return "mini_app_userapp";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    INTERFACE.StGetFormIdRsp localStGetFormIdRsp = new INTERFACE.StGetFormIdRsp();
+    try
     {
-      if (paramConsoleMessage.messageLevel() != ConsoleMessage.MessageLevel.ERROR) {
-        break label51;
+      localStGetFormIdRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetFormIdRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("formId", localStGetFormIdRsp.formId.get());
+        return paramArrayOfByte;
       }
-      QMLog.e("AppBrandWebviewService", "consoleMessage.message()  line:" + paramConsoleMessage.lineNumber());
+      QMLog.d("GetFormIdRequest", "onResponse fail.rsp = null");
+      return null;
     }
-    for (;;)
+    catch (Exception paramArrayOfByte)
     {
-      return super.onConsoleMessage(paramConsoleMessage);
-      label51:
-      QMLog.i("AppBrandWebviewService", "consoleMessage.message() " + paramConsoleMessage.message());
+      QMLog.d("GetFormIdRequest", "onResponse fail." + paramArrayOfByte);
     }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GetFormId";
   }
 }
 

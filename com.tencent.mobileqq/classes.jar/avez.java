@@ -1,83 +1,24 @@
-import android.content.Context;
-import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.common.galleryactivity.AbstractImageAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.1;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.2;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.3;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class avez
-  extends AbstractImageAdapter
-  implements avff
+  implements View.OnTouchListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private avff jdField_a_of_type_Avff;
+  public avez(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public avez(Context paramContext)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a(int paramInt)
-  {
-    int i = ndd.a();
-    if ((i != 1) && (i != 4)) {}
-    avfd localavfd;
-    do
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      ShortVideoCommentsView.a(this.a).setTextColor(2130706432);
+    }
+    for (;;)
     {
-      return;
-      localavfd = (avfd)getItem(paramInt + 1);
-      if (localavfd != null) {
-        localavfd.a();
-      }
-      localavfd = (avfd)getItem(paramInt - 1);
-    } while (localavfd == null);
-    localavfd.a();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.1(this, paramInt1, paramInt2));
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.3(this, paramInt, paramBoolean));
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    ((avfd)getItem(paramInt)).a(paramView, paramInt, this);
-  }
-  
-  public void a(avff paramavff)
-  {
-    this.jdField_a_of_type_Avff = paramavff;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.2(this, paramInt1, paramInt2));
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView != null) {
-      return paramView;
+      return false;
+      ShortVideoCommentsView.a(this.a).setTextColor(-16777216);
     }
-    paramView = (avfd)getItem(paramInt);
-    paramViewGroup = paramView.a;
-    if (((this.jdField_a_of_type_AndroidContentContext instanceof PicBrowserActivity)) && (((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).b)) {
-      ((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).app.a().b(paramViewGroup.a);
-    }
-    paramView = paramView.a(paramInt, this.jdField_a_of_type_AndroidOsHandler, this);
-    paramView.setTag(2131296390, Boolean.valueOf(true));
-    return paramView;
   }
 }
 

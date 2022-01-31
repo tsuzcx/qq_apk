@@ -1,19 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
 public class ahuz
-  extends arqb
 {
-  public ahuz(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
+  public long a;
+  public boolean a;
   
-  public void a(View paramView)
+  public ahuz()
   {
-    if ((paramView.getTag() instanceof String)) {
-      return;
-    }
-    paramView = (FileManagerEntity)((ahzc)paramView.getTag()).a;
-    this.a.a(paramView);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 300000L;
+  }
+  
+  public String toString()
+  {
+    return "{isEnable=" + this.jdField_a_of_type_Boolean + ",interval=" + this.jdField_a_of_type_Long + "}";
   }
 }
 

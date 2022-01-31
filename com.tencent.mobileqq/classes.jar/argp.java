@@ -1,14 +1,13 @@
-class argp
-  implements army
+import android.graphics.drawable.Drawable;
+import android.view.View.OnClickListener;
+
+public abstract interface argp
 {
-  argp(argo paramargo) {}
+  public abstract void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener);
   
-  public void a()
-  {
-    this.a.a.u();
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public void b() {}
+  public abstract void b(boolean paramBoolean);
 }
 
 

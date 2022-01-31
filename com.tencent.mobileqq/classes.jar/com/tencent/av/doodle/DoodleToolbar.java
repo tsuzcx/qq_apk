@@ -30,7 +30,7 @@ public class DoodleToolbar
   
   private ColorPickerView addColorPickerView(ViewGroup paramViewGroup)
   {
-    Object localObject2 = (ColorPickerView)paramViewGroup.findViewById(2131372587);
+    Object localObject2 = (ColorPickerView)paramViewGroup.findViewById(2131372613);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -49,7 +49,7 @@ public class DoodleToolbar
   
   private void removeColorPickerView(ViewGroup paramViewGroup)
   {
-    View localView = paramViewGroup.findViewById(2131372587);
+    View localView = paramViewGroup.findViewById(2131372613);
     if (localView != null) {
       paramViewGroup.removeView(localView);
     }
@@ -61,9 +61,9 @@ public class DoodleToolbar
     {
       this.mUIInfo = new mej();
       this.mUIInfo.d = 3;
-      this.mUIInfo.f = 2131559639;
-      this.mUIInfo.e = 2130841658;
-      this.mUIInfo.a = this.mApp.getApp().getString(2131696384);
+      this.mUIInfo.f = 2131559638;
+      this.mUIInfo.e = 2130841671;
+      this.mUIInfo.a = this.mApp.getApp().getString(2131696386);
     }
     return this.mUIInfo;
   }
@@ -76,15 +76,15 @@ public class DoodleToolbar
       int i = 0;
       loc localloc = loc.a();
       if (!log.a()) {
-        i = 2131695922;
+        i = 2131695924;
       }
       while (i != 0)
       {
         return localAVActivity.getString(i);
         if (!localloc.a()) {
-          i = 2131695921;
+          i = 2131695923;
         } else if (!localloc.b) {
-          i = 2131695920;
+          i = 2131695922;
         }
       }
     }
@@ -116,7 +116,7 @@ public class DoodleToolbar
         localObject1 = (ViewGroup)localAVActivity.findViewById(2131362964);
         if (localObject1 != null)
         {
-          localObject2 = (DoodleSurfaceView)((ViewGroup)localObject1).findViewById(2131372598);
+          localObject2 = (DoodleSurfaceView)((ViewGroup)localObject1).findViewById(2131372624);
           if (localObject2 != null)
           {
             ((DoodleSurfaceView)localObject2).setClickable(false);
@@ -124,7 +124,7 @@ public class DoodleToolbar
               log.a((ViewGroup)localObject1);
             }
           }
-          localObject2 = (ColorPickerView)((ViewGroup)localObject1).findViewById(2131372587);
+          localObject2 = (ColorPickerView)((ViewGroup)localObject1).findViewById(2131372613);
           if (localObject2 != null)
           {
             ((ColorPickerView)localObject2).clearAnimation();

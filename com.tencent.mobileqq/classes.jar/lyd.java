@@ -33,7 +33,7 @@ public class lyd
         {
           localJSONObject.put("uin", paramVideoAppInterface.getLongAccountUin());
           localJSONObject.put("skey", paramVideoAppInterface.b());
-          localJSONObject.put("qqversion", "8.3.3");
+          localJSONObject.put("qqversion", "8.3.5");
           localJSONObject.put("time", System.currentTimeMillis());
           if (paramString != null) {
             localJSONObject.put("attach", paramString);

@@ -1,21 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher.1;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class vib
-  implements bnle
+  extends uro
 {
-  public vib(FollowCaptureLauncher.1 param1) {}
+  public int b;
   
-  public void a()
+  public vib(qqstory_service.RspWatchVideo paramRspWatchVideo)
   {
-    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65541);
+    super(paramRspWatchVideo.result);
+    this.b = paramRspWatchVideo.unread_count.get();
   }
   
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void b()
+  public String toString()
   {
-    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65542);
+    return "WatchVideoResponse{unReadCount=" + this.b + '}';
   }
 }
 

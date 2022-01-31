@@ -1,14 +1,12 @@
-public final class arkm
+public abstract interface arkm
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  public abstract void a(String paramString1, String paramString2);
   
-  public arkm()
-  {
-    this.a = 1;
-  }
+  public abstract void aE_();
+  
+  public abstract void aF_();
+  
+  public abstract void c();
 }
 
 

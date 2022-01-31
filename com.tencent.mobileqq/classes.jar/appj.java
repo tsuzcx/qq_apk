@@ -1,298 +1,206 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
+import android.os.Environment;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.List;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import java.io.File;
+import java.io.IOException;
 
 public class appj
-  extends apov
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplication.getContext().getResources().getDrawable(2130837918);
-  public apqy a;
-  BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private int jdField_a_of_type_Int;
+  File jdField_a_of_type_JavaIoFile = new File(Environment.getExternalStorageDirectory(), "dslv_state.txt");
+  StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public appj(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, appt paramappt, BaseChatPie paramBaseChatPie)
+  public appj(DragSortListView paramDragSortListView)
   {
-    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramappt);
-    this.jdField_a_of_type_Apqy = new appk(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  private void a(URLImageView paramURLImageView, ImageView paramImageView)
-  {
-    URLDrawable localURLDrawable = (URLDrawable)paramURLImageView.getBackground();
-    if (localURLDrawable.getStatus() == 0)
+    if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
+    try
     {
-      paramURLImageView.setVisibility(8);
-      paramImageView.setVisibility(0);
-      if (!localURLDrawable.isDownloadStarted()) {
-        localURLDrawable.startDownload();
-      }
-      if (!(paramImageView.getDrawable() instanceof Animatable)) {
-        paramImageView.setImageDrawable((Drawable)BaseApplication.getContext().getResources().getDrawable(2130839224));
-      }
-      paramURLImageView = (Animatable)paramImageView.getDrawable();
-      if (!paramURLImageView.isRunning()) {
-        paramURLImageView.start();
-      }
+      this.jdField_a_of_type_JavaIoFile.createNewFile();
       return;
     }
-    if ((localURLDrawable.getStatus() == 2) || (localURLDrawable.getStatus() == 3))
-    {
-      paramURLImageView.setVisibility(8);
-      paramImageView.setVisibility(0);
-      if ((paramImageView.getDrawable() instanceof Animatable)) {
-        ((Animatable)paramImageView.getDrawable()).stop();
-      }
-      paramImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      return;
-    }
-    paramURLImageView.setVisibility(0);
-    paramImageView.setVisibility(8);
+    catch (IOException paramDragSortListView) {}
   }
   
-  private RelativeLayout b()
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraEmotionAdapter", 2, "getCameraEmoView");
-    }
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(this.d / this.jdField_a_of_type_Int, (int)(61.0F * this.jdField_a_of_type_Float)));
-    Object localObject = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((URLImageView)localObject).setId(2131365666);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Float * 56.0F), (int)(this.jdField_a_of_type_Float * 56.0F));
-    localLayoutParams.addRule(13, -1);
-    localLayoutParams.addRule(12, -1);
-    localLayoutParams.setMargins(0, 0, 0, (int)(5.0F * this.jdField_a_of_type_Float));
-    ((URLImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
-    ((URLImageView)localObject).setAdjustViewBounds(false);
-    localRelativeLayout.addView((View)localObject, localLayoutParams);
-    localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((ImageView)localObject).setId(2131365667);
-    localLayoutParams = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Float * 56.0F), (int)(this.jdField_a_of_type_Float * 56.0F));
-    localLayoutParams.addRule(13, -1);
-    localLayoutParams.addRule(12, -1);
-    localLayoutParams.setMargins(0, 0, 0, (int)(5.0F * this.jdField_a_of_type_Float));
-    ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-    ((ImageView)localObject).setAdjustViewBounds(false);
-    ((ImageView)localObject).setVisibility(8);
-    localRelativeLayout.addView((View)localObject, localLayoutParams);
-    localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((ImageView)localObject).setId(2131365672);
-    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    ((ImageView)localObject).setBackgroundResource(2130837757);
-    localLayoutParams.addRule(7, 2131365666);
-    localLayoutParams.addRule(8, 2131365666);
-    localLayoutParams.setMargins(0, 0, (int)(-5.0F * this.jdField_a_of_type_Float), (int)(-5.0F * this.jdField_a_of_type_Float));
-    localRelativeLayout.addView((View)localObject, localLayoutParams);
-    ((ImageView)localObject).setVisibility(8);
-    if (AppSetting.c) {
-      localRelativeLayout.setFocusable(true);
-    }
-    return localRelativeLayout;
-  }
-  
-  private void b(View paramView, apsj paramapsj)
-  {
-    if ((paramView == null) || (!(paramapsj instanceof appi))) {
-      QLog.e("CameraEmotionAdapter", 1, "emotionInfo or contentView = null");
-    }
-    for (;;)
-    {
-      return;
-      Object localObject = (URLImageView)paramView.findViewById(2131365666);
-      appi localappi = (appi)paramapsj;
-      paramView.setTag(localappi);
-      paramView.setVisibility(0);
-      if ((QLog.isColorLevel()) && (!bdje.a(localappi.i))) {
-        QLog.d("CameraEmotionAdapter", 2, "updateUI info = " + localappi.i);
-      }
-      if (((URLImageView)localObject).getTag(2131379913) != paramapsj)
-      {
-        ((URLImageView)localObject).setTag(2131379913, paramapsj);
-        paramapsj = (ImageView)paramView.findViewById(2131365667);
-        paramView = (ImageView)paramView.findViewById(2131365672);
-        ((URLImageView)localObject).setVisibility(0);
-        ((URLImageView)localObject).setURLDrawableDownListener(null);
-        if ("cameraEdit".equals(localappi.i))
-        {
-          ((URLImageView)localObject).setImageDrawable(null);
-          ((URLImageView)localObject).setBackgroundResource(2130846587);
-          paramapsj.setVisibility(4);
-          paramView.setVisibility(4);
-          if (AppSetting.c) {
-            ((URLImageView)localObject).setContentDescription(alpo.a(2131701683));
-          }
-        }
-        else if ("cameraJump".equals(localappi.i))
-        {
-          ((URLImageView)localObject).setImageDrawable(null);
-          ((URLImageView)localObject).setBackgroundResource(2130837833);
-          paramapsj.setVisibility(4);
-          paramView.setVisibility(4);
-          if (AppSetting.c) {
-            ((URLImageView)localObject).setContentDescription(alpo.a(2131701680));
-          }
-        }
-        else
-        {
-          Drawable localDrawable = localappi.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Float);
-          ((URLImageView)localObject).setBackgroundDrawable(localDrawable);
-          if (localappi.h.equals("needUpload"))
-          {
-            ((URLImageView)localObject).setImageDrawable(new ColorDrawable(-419430401));
-            localObject = (Animatable)BaseApplication.getContext().getResources().getDrawable(2130839224);
-            paramapsj.setImageDrawable((Drawable)localObject);
-            ((Animatable)localObject).start();
-            paramapsj.setVisibility(0);
-            paramView.setVisibility(4);
-          }
-          while (!TextUtils.isEmpty(localappi.d))
-          {
-            azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A370", "0X800A370", 0, 0, "", "", localappi.d, "");
-            return;
-            if (localappi.h.equals("failed"))
-            {
-              ((URLImageView)localObject).setImageDrawable(new ColorDrawable(-419430401));
-              paramapsj.setVisibility(4);
-              paramView.setVisibility(0);
-            }
-            else
-            {
-              ((URLImageView)localObject).setImageDrawable(null);
-              paramapsj.setVisibility(4);
-              paramView.setVisibility(4);
-              if ((localDrawable instanceof URLDrawable))
-              {
-                ((URLImageView)localObject).setURLDrawableDownListener(new appl(this, localappi, (URLImageView)localObject, paramapsj));
-                a((URLImageView)localObject, paramapsj);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public View a(apow paramapow, int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int j = 0;
-    boolean bool;
-    if (QLog.isColorLevel())
-    {
-      paramViewGroup = new StringBuilder().append("getEmotionView position = ").append(paramInt).append(" convertView NULL is ");
-      if (paramView == null)
-      {
-        bool = true;
-        QLog.d("CameraEmotionAdapter", 2, bool);
-      }
-    }
-    else
-    {
-      paramViewGroup = (appn)paramapow;
-      if (paramView != null) {
-        break label409;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraEmotionAdapter", 2, "getEmotionView position = " + paramInt + "; view from inflater");
-      }
-      paramapow = new EmoticonPanelLinearLayout(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, -1);
-      paramapow.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-      paramapow.setOrientation(0);
-      if (paramInt != 0) {
-        break label217;
-      }
-    }
-    label217:
-    for (int i = 16;; i = 14)
-    {
-      paramapow.setPadding(0, (int)(i * this.jdField_a_of_type_Float), 0, 0);
-      i = 0;
-      while (i < this.jdField_a_of_type_Int)
-      {
-        paramView = b();
-        paramView.setVisibility(8);
-        paramView.setFocusable(true);
-        paramView.setFocusableInTouchMode(true);
-        paramapow.addView(paramView);
-        i += 1;
-      }
-      bool = false;
-      break;
-    }
-    paramapow.jdField_a_of_type_Apqy = this.jdField_a_of_type_Apqy;
-    ((EmoticonPanelLinearLayout)paramapow).setCallBack(this.jdField_a_of_type_Appt);
-    paramView = (ViewGroup)paramapow;
-    paramViewGroup.a = new RelativeLayout[this.jdField_a_of_type_Int];
-    i = 0;
-    while (i < this.jdField_a_of_type_Int)
-    {
-      paramViewGroup.a[i] = ((RelativeLayout)paramView.getChildAt(i));
-      i += 1;
-    }
-    paramapow.setTag(paramViewGroup);
-    i = j;
-    for (;;)
-    {
-      if (i < this.jdField_a_of_type_Int)
-      {
-        j = this.jdField_a_of_type_Int * paramInt + i;
-        if (j > this.jdField_a_of_type_JavaUtilList.size() - 1)
-        {
-          paramViewGroup.a[i].setTag(null);
-          paramViewGroup.a[i].setVisibility(8);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          b(paramViewGroup.a[i], (apsj)this.jdField_a_of_type_JavaUtilList.get(j));
-        }
-      }
-      return paramapow;
-      label409:
-      paramapow = paramView;
-      i = j;
-    }
-  }
-  
-  public apow a()
-  {
-    return new appn();
+    this.jdField_a_of_type_JavaLangStringBuilder.append("<DSLVStates>\n");
+    this.b = 0;
+    this.jdField_a_of_type_Boolean = true;
   }
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraEmotionAdapter", 2, "refreshPanelData");
-    }
-    apsk localapsk = apsk.a();
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    int j = this.c;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {}
-    for (int i = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().jdField_a_of_type_Int;; i = -1)
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
     {
-      localapsk.a(localQQAppInterface, j, null, -1, i, false, new appm(this));
       return;
+      this.jdField_a_of_type_JavaLangStringBuilder.append("<DSLVState>\n");
+      int j = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildCount();
+      int k = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getFirstVisiblePosition();
+      this.jdField_a_of_type_JavaLangStringBuilder.append("    <Positions>");
+      int i = 0;
+      while (i < j)
+      {
+        this.jdField_a_of_type_JavaLangStringBuilder.append(k + i).append(",");
+        i += 1;
+      }
+      this.jdField_a_of_type_JavaLangStringBuilder.append("</Positions>\n");
+      this.jdField_a_of_type_JavaLangStringBuilder.append("    <Tops>");
+      i = 0;
+      while (i < j)
+      {
+        this.jdField_a_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildAt(i).getTop()).append(",");
+        i += 1;
+      }
+      this.jdField_a_of_type_JavaLangStringBuilder.append("</Tops>\n");
+      this.jdField_a_of_type_JavaLangStringBuilder.append("    <Bottoms>");
+      i = 0;
+      while (i < j)
+      {
+        this.jdField_a_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildAt(i).getBottom()).append(",");
+        i += 1;
+      }
+      this.jdField_a_of_type_JavaLangStringBuilder.append("</Bottoms>\n");
+      this.jdField_a_of_type_JavaLangStringBuilder.append("    <FirstExpPos>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c).append("</FirstExpPos>\n");
+      this.jdField_a_of_type_JavaLangStringBuilder.append("    <FirstExpBlankHeight>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c) - this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c)).append("</FirstExpBlankHeight>\n");
+      this.jdField_a_of_type_JavaLangStringBuilder.append("    <SecondExpPos>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.d).append("</SecondExpPos>\n");
+      this.jdField_a_of_type_JavaLangStringBuilder.append("    <SecondExpBlankHeight>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.d) - this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.d)).append("</SecondExpBlankHeight>\n");
+      this.jdField_a_of_type_JavaLangStringBuilder.append("    <SrcPos>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.e).append("</SrcPos>\n");
+      this.jdField_a_of_type_JavaLangStringBuilder.append("    <SrcHeight>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.i + this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getDividerHeight()).append("</SrcHeight>\n");
+      this.jdField_a_of_type_JavaLangStringBuilder.append("    <ViewHeight>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeight()).append("</ViewHeight>\n");
+      this.jdField_a_of_type_JavaLangStringBuilder.append("    <LastY>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.l).append("</LastY>\n");
+      this.jdField_a_of_type_JavaLangStringBuilder.append("    <FloatY>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.jdField_a_of_type_Int).append("</FloatY>\n");
+      this.jdField_a_of_type_JavaLangStringBuilder.append("    <ShuffleEdges>");
+      i = 0;
+      while (i < j)
+      {
+        this.jdField_a_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a(k + i, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildAt(i).getTop())).append(",");
+        i += 1;
+      }
+      this.jdField_a_of_type_JavaLangStringBuilder.append("</ShuffleEdges>\n");
+      this.jdField_a_of_type_JavaLangStringBuilder.append("</DSLVState>\n");
+      this.jdField_a_of_type_Int += 1;
+    } while (this.jdField_a_of_type_Int <= 1000);
+    c();
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  /* Error */
+  public void c()
+  {
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore_1
+    //   2: aload_0
+    //   3: getfield 58	appj:jdField_a_of_type_Boolean	Z
+    //   6: ifne +4 -> 10
+    //   9: return
+    //   10: aload_0
+    //   11: getfield 56	appj:b	I
+    //   14: ifne +119 -> 133
+    //   17: new 176	java/io/FileWriter
+    //   20: dup
+    //   21: aload_0
+    //   22: getfield 40	appj:jdField_a_of_type_JavaIoFile	Ljava/io/File;
+    //   25: iload_1
+    //   26: invokespecial 179	java/io/FileWriter:<init>	(Ljava/io/File;Z)V
+    //   29: astore_2
+    //   30: aload_2
+    //   31: aload_0
+    //   32: getfield 25	appj:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
+    //   35: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   38: invokevirtual 187	java/io/FileWriter:write	(Ljava/lang/String;)V
+    //   41: aload_0
+    //   42: getfield 25	appj:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
+    //   45: iconst_0
+    //   46: aload_0
+    //   47: getfield 25	appj:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
+    //   50: invokevirtual 190	java/lang/StringBuilder:length	()I
+    //   53: invokevirtual 194	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
+    //   56: pop
+    //   57: aload_2
+    //   58: invokevirtual 197	java/io/FileWriter:flush	()V
+    //   61: aload_0
+    //   62: aload_0
+    //   63: getfield 56	appj:b	I
+    //   66: iconst_1
+    //   67: iadd
+    //   68: putfield 56	appj:b	I
+    //   71: aload_2
+    //   72: ifnull -63 -> 9
+    //   75: aload_2
+    //   76: invokevirtual 200	java/io/FileWriter:close	()V
+    //   79: return
+    //   80: astore_2
+    //   81: aload_2
+    //   82: invokevirtual 203	java/io/IOException:printStackTrace	()V
+    //   85: return
+    //   86: astore_2
+    //   87: aconst_null
+    //   88: astore_2
+    //   89: aload_2
+    //   90: ifnull -81 -> 9
+    //   93: aload_2
+    //   94: invokevirtual 200	java/io/FileWriter:close	()V
+    //   97: return
+    //   98: astore_2
+    //   99: aload_2
+    //   100: invokevirtual 203	java/io/IOException:printStackTrace	()V
+    //   103: return
+    //   104: astore_3
+    //   105: aconst_null
+    //   106: astore_2
+    //   107: aload_2
+    //   108: ifnull +7 -> 115
+    //   111: aload_2
+    //   112: invokevirtual 200	java/io/FileWriter:close	()V
+    //   115: aload_3
+    //   116: athrow
+    //   117: astore_2
+    //   118: aload_2
+    //   119: invokevirtual 203	java/io/IOException:printStackTrace	()V
+    //   122: goto -7 -> 115
+    //   125: astore_3
+    //   126: goto -19 -> 107
+    //   129: astore_3
+    //   130: goto -41 -> 89
+    //   133: iconst_1
+    //   134: istore_1
+    //   135: goto -118 -> 17
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	138	0	this	appj
+    //   1	134	1	bool	boolean
+    //   29	47	2	localFileWriter	java.io.FileWriter
+    //   80	2	2	localIOException1	IOException
+    //   86	1	2	localIOException2	IOException
+    //   88	6	2	localObject1	Object
+    //   98	2	2	localIOException3	IOException
+    //   106	6	2	localObject2	Object
+    //   117	2	2	localIOException4	IOException
+    //   104	12	3	localObject3	Object
+    //   125	1	3	localObject4	Object
+    //   129	1	3	localIOException5	IOException
+    // Exception table:
+    //   from	to	target	type
+    //   75	79	80	java/io/IOException
+    //   17	30	86	java/io/IOException
+    //   93	97	98	java/io/IOException
+    //   17	30	104	finally
+    //   111	115	117	java/io/IOException
+    //   30	71	125	finally
+    //   30	71	129	java/io/IOException
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_JavaLangStringBuilder.append("</DSLVStates>\n");
+      c();
+      this.jdField_a_of_type_Boolean = false;
     }
   }
 }

@@ -1,98 +1,152 @@
+import android.app.Activity;
+import android.graphics.Rect;
+import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class arod
-  implements Animation.AnimationListener
+public abstract class arod
 {
-  public static int a;
-  public static int b;
-  View jdField_a_of_type_AndroidViewView;
-  aroe jdField_a_of_type_Aroe;
-  List<aroe> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt = new int[1];
+  public Activity a;
+  protected Bundle a;
+  public View a;
+  protected ViewGroup a;
+  protected ProgressBar a;
+  protected RelativeLayout a;
+  protected TextView a;
+  protected aroe a;
+  protected View b;
+  protected TextView b;
+  protected TextView c;
   
-  public arod(View paramView)
+  public arod(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  private void b(aroe paramaroe)
+  public Rect a()
   {
-    this.jdField_a_of_type_Aroe = paramaroe;
-    Animation localAnimation = (Animation)paramaroe.jdField_a_of_type_JavaLangObject;
-    localAnimation.setDuration(paramaroe.b);
-    localAnimation.setAnimationListener(this);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-        continue;
-      }
-      synchronized (this.jdField_a_of_type_ArrayOfInt)
-      {
-        aroe localaroe = (aroe)this.jdField_a_of_type_JavaUtilList.get(0);
-        this.jdField_a_of_type_JavaUtilList.remove(0);
-        if ((localaroe == null) || ((localaroe.jdField_a_of_type_Boolean == true) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) || ((!localaroe.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) || (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4)))) {
-          continue;
-        }
-        this.jdField_a_of_type_AndroidViewView.setAnimation((Animation)localaroe.jdField_a_of_type_JavaLangObject);
-        this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localaroe.jdField_a_of_type_JavaLangObject);
-        return;
-      }
+    if (this.jdField_a_of_type_AndroidOsBundle != null) {
+      return (Rect)this.jdField_a_of_type_AndroidOsBundle.getParcelable("file_browser_params_thumb_bound");
     }
+    return null;
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public abstract void a();
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null))
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378269));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131378237));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378246));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365863));
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378236);
+    }
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
   }
   
   public void a(aroe paramaroe)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Aroe = paramaroe;
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
     }
-    synchronized (this.jdField_a_of_type_ArrayOfInt)
+  }
+  
+  public void a(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    if (this.c == null) {
+      this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371395));
+    }
+    if (this.c != null)
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramaroe);
-      b(paramaroe);
+      this.c.setText(paramString);
+      this.c.setOnClickListener(paramOnClickListener);
+      this.c.setVisibility(0);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    TextView localTextView;
+    if (this.c != null)
+    {
+      localTextView = this.c;
+      if (!paramBoolean) {
+        break label24;
+      }
+    }
+    label24:
+    for (int i = 0;; i = 4)
+    {
+      localTextView.setVisibility(i);
       return;
     }
   }
   
   public void b()
   {
-    synchronized (this.jdField_a_of_type_ArrayOfInt)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      return;
+    if (this.jdField_b_of_type_AndroidViewView != null) {
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Aroe.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      a();
-      return;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void b(String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    RelativeLayout localRelativeLayout;
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    {
+      localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      if (!paramBoolean) {
+        break label24;
+      }
+    }
+    label24:
+    for (int i = 0;; i = 8)
+    {
+      localRelativeLayout.setVisibility(i);
+      return;
+    }
   }
 }
 

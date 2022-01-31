@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
+import awge;
 
 public class ShareGroupListEntry
-  extends awbv
+  extends awge
 {
   public static final int LIST_TYPE_PICKER = 0;
   public int listType = 0;

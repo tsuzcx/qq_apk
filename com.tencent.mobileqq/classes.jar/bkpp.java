@@ -1,52 +1,14 @@
 import android.support.annotation.Nullable;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
 class bkpp
-  implements bmac<Boolean>
+  implements bmeo<blfi>
 {
-  bkpp(bkpi parambkpi) {}
+  bkpp(bkpl parambkpl) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void a(@Nullable blfi paramblfi)
   {
-    if (paramBoolean == null) {
-      return;
-    }
-    if (paramBoolean.booleanValue()) {
-      if (bkpi.a(this.a).a())
-      {
-        bkpi.c(this.a).setVisibility(0);
-        bkpi.a(this.a).setVisibility(8);
-        bkpi.a(this.a).setVisibility(8);
-        bkpi.a(this.a).setEntryPresent(false);
-      }
-    }
-    for (;;)
-    {
-      blfg.a("VideoStoryPiecesPart", "[GifAuthor]---checkShowGifAuthor when other buttons visibility change");
-      bkpi.a(this.a);
-      return;
-      if (bkpi.a(this.a).b())
-      {
-        bkpi.c(this.a).setVisibility(0);
-        bkpi.a(this.a).setVisibility(0);
-        bkpi.a(this.a).setEntryPresent(true);
-        if (bkpi.b(this.a)) {
-          bkpi.a(this.a).setVisibility(0);
-        }
-      }
-      else if (bkpi.a(this.a).c())
-      {
-        bkpi.c(this.a).setVisibility(0);
-        bkpi.a(this.a).setVisibility(8);
-        bkpi.a(this.a).setVisibility(8);
-        bkpi.a(this.a).setEntryPresent(false);
-        continue;
-        bkpi.a(this.a).setVisibility(8);
-        bkpi.a(this.a).setVisibility(8);
-      }
+    if (paramblfi != null) {
+      bkpl.a(this.a, paramblfi.a);
     }
   }
 }

@@ -1,14 +1,17 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-class vuk
-  implements MediaPlayer.OnPreparedListener
+public class vuk
+  extends vut<String>
 {
-  vuk(vuj paramvuj, vue paramvue) {}
-  
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public vuk(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    this.jdField_a_of_type_Vue.a_(this.jdField_a_of_type_Vuj);
+    super(paramVideoViewVideoHolder, null);
+  }
+  
+  public void a(String paramString)
+  {
+    super.onNext(paramString);
+    VideoViewVideoHolder.a(this.a);
   }
 }
 

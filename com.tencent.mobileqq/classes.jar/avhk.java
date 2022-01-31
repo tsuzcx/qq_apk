@@ -1,75 +1,57 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.ilive_feeds_like.FeedsLikeRsp;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
 class avhk
-  implements bfka
+  implements avdq
 {
-  avhk(avgk paramavgk) {}
+  avhk(avhf paramavhf, VideoData paramVideoData) {}
   
-  public void installSucceed(String paramString1, String paramString2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.jdField_a_of_type_Int = 4;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-    if (avgk.a(this.a) != null) {
-      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_done", 0, 0, avgk.a(this.a).uin, "", "yes", "android");
-    }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 2;
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 3;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-    if (this.a.jdField_a_of_type_Avlm != null) {
-      this.a.jdField_a_of_type_Avlm.a(5);
-    }
-    if (avgk.a(this.a) != null) {
-      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_done", 0, 0, avgk.a(this.a).uin, "", "yes", "android");
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 2;
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    this.a.jdField_a_of_type_Int = 1;
-    if ((paramList != null) && (paramList.size() > 0))
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      paramList = (DownloadInfo)paramList.get(0);
-      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-      localMessage.what = 2;
-      localMessage.arg1 = paramList.f;
-      localMessage.sendToTarget();
-      if ((paramList.f == 0) && (avgk.a(this.a) != null)) {
-        azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_begin", 0, 0, avgk.a(this.a).uin, "", "yes", "android");
+      paramBundle = new oidb_0xada.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (QLog.isColorLevel()) {
+          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + avhf.a(this.jdField_a_of_type_Avhf));
+        }
+        if (paramBundle.busi_buf.has())
+        {
+          paramArrayOfByte = new ilive_feeds_like.FeedsLikeRsp();
+          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+          this.jdField_a_of_type_Avhf.f(true);
+          this.jdField_a_of_type_Avhf.d(paramArrayOfByte.total.get());
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Int = avhf.a(this.jdField_a_of_type_Avhf);
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Boolean = true;
+          avhf.b(this.jdField_a_of_type_Avhf, false);
+          avhf.b(this.jdField_a_of_type_Avhf, false);
+          ((avrb)this.jdField_a_of_type_Avhf.a.getManager(263)).a(avhf.a(this.jdField_a_of_type_Avhf), paramArrayOfByte.total.get());
+          if (QLog.isColorLevel()) {
+            QLog.i("PlayOperationViewModel", 2, "total:   " + paramArrayOfByte.total.get() + ",ret:     " + paramArrayOfByte.ret.get());
+          }
+        }
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.w("PlayOperationViewModel", 1, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + avhf.a(this.jdField_a_of_type_Avhf) + "  e:" + paramArrayOfByte);
+        return;
       }
     }
+    QLog.w("PlayOperationViewModel", 1, "errorCode:   " + paramInt + " isLiked=" + avhf.a(this.jdField_a_of_type_Avhf));
+    avhf.b(this.jdField_a_of_type_Avhf, false);
   }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 2;
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

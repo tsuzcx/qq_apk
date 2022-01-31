@@ -1,42 +1,42 @@
 package com.tencent.biz.qqstory.network.handler;
 
 import android.os.Bundle;
-import bfhi;
+import bflr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import mqq.manager.TicketManager;
 import ndd;
-import uzn;
-import vhj;
-import wsv;
+import vdw;
+import vls;
+import wxe;
 
 public class ReportEvilToXinanHandler$1
   implements Runnable
 {
-  public ReportEvilToXinanHandler$1(uzn paramuzn, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
+  public ReportEvilToXinanHandler$1(vdw paramvdw, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
   
   public void run()
   {
-    String str4 = uzn.a(this.this$0);
+    String str4 = vdw.a(this.this$0);
     if (this.jdField_a_of_type_Boolean) {}
     for (String str1 = "1";; str1 = "0")
     {
       String str2 = this.jdField_a_of_type_JavaLangString;
       String str3 = this.b;
-      str4 = bfhi.d("android" + "_" + "8.3.3" + "_" + "1111" + "_" + str4);
-      wsv.a("ReportEvilToXinanHandler", "get cryptograph step1. scretKey = %s.", str4);
-      str4 = bfhi.d(this.c + "_" + "" + "_" + str2 + "_" + "" + "_" + "" + "_" + str3 + "_" + "" + "_" + "" + "_" + str4);
-      wsv.a("ReportEvilToXinanHandler", "get cryptograph step2. cryptograph = %s.", str4);
-      Object localObject2 = (TicketManager)vhj.a().getManager(2);
-      Object localObject1 = vhj.a().getCurrentAccountUin();
+      str4 = bflr.d("android" + "_" + "8.3.5" + "_" + "1111" + "_" + str4);
+      wxe.a("ReportEvilToXinanHandler", "get cryptograph step1. scretKey = %s.", str4);
+      str4 = bflr.d(this.c + "_" + "" + "_" + str2 + "_" + "" + "_" + "" + "_" + str3 + "_" + "" + "_" + "" + "_" + str4);
+      wxe.a("ReportEvilToXinanHandler", "get cryptograph step2. cryptograph = %s.", str4);
+      Object localObject2 = (TicketManager)vls.a().getManager(2);
+      Object localObject1 = vls.a().getCurrentAccountUin();
       String str5 = ((TicketManager)localObject2).getSkey((String)localObject1);
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("cookie", "uin=" + (String)localObject1 + ";skey=" + str5);
       localObject1 = new Bundle();
       ((Bundle)localObject1).putString("system", "android");
-      ((Bundle)localObject1).putString("version", "8.3.3");
+      ((Bundle)localObject1).putString("version", "8.3.5");
       ((Bundle)localObject1).putString("uintype", "1");
       ((Bundle)localObject1).putString("eviluin", this.c);
       ((Bundle)localObject1).putString("appname", "KQQ");
@@ -58,7 +58,7 @@ public class ReportEvilToXinanHandler$1
       try
       {
         str1 = ndd.a(BaseApplicationImpl.getContext(), "https://jubao.qq.com/uniform_impeach/impeach_submit", "POST", (Bundle)localObject1, (Bundle)localObject2);
-        uzn.a(this.this$0, this.c, this.e, this.d, str1);
+        vdw.a(this.this$0, this.c, this.e, this.d, str1);
         return;
       }
       catch (IOException localIOException)

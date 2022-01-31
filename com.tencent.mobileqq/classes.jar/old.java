@@ -40,10 +40,10 @@ public class old
       return;
       this.jdField_a_of_type_Boolean = true;
       if (paramInt == 1001) {
-        xxb.a(1, 2131718775);
+        ybk.a(1, 2131718787);
       }
     } while (paramInt != 1003);
-    xxb.a(1, 2131718776);
+    ybk.a(1, 2131718788);
   }
 }
 

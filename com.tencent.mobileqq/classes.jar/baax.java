@@ -1,88 +1,66 @@
-import android.media.MediaMetadataRetriever;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
-import com.tencent.mobileqq.vpng.view.VPNGImageView;
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class baax
-  extends baav
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/ModeSwitchManager$SwitchingStatus;", "", "isSwitching", "", "targetMode", "", "oldMode", "(ZII)V", "()Z", "getOldMode", "()I", "getTargetMode", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "toString", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class baax
 {
-  protected VPNGImageView a;
+  private final int jdField_a_of_type_Int;
+  private final boolean jdField_a_of_type_Boolean;
+  private final int b;
   
-  public baax(SpriteNativeView paramSpriteNativeView, String paramString)
+  public baax()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = paramSpriteNativeView;
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView = new VPNGImageView(paramSpriteNativeView.getContext());
-    paramSpriteNativeView = new MediaMetadataRetriever();
-    try
+    this(false, 0, 0, 7, null);
+  }
+  
+  public baax(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public final int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public final boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public final int b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
     {
-      paramSpriteNativeView.setDataSource(paramString);
-      paramString = paramSpriteNativeView.extractMetadata(18);
-      String str = paramSpriteNativeView.extractMetadata(19);
-      this.jdField_a_of_type_Float = (Integer.parseInt(paramString) / 2);
-      this.b = Integer.parseInt(str);
-      paramString = new FrameLayout.LayoutParams((int)this.jdField_a_of_type_Float, (int)this.b);
-      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setLayoutParams(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setPivotX(this.jdField_a_of_type_Float / 2.0F);
-      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setPivotY(this.b / 2.0F);
-      return;
+      if ((paramObject instanceof baax))
+      {
+        paramObject = (baax)paramObject;
+        if ((this.jdField_a_of_type_Boolean != paramObject.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {}
+      }
     }
-    catch (Exception paramString)
-    {
-      QLog.e("VideoSprite", 2, "MediaMetadataRetriever exception " + paramString);
-      return;
+    else {
+      return true;
     }
-    finally
-    {
-      paramSpriteNativeView.release();
-    }
+    return false;
   }
   
-  public void a()
+  public int hashCode()
   {
-    super.a();
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  @NotNull
+  public String toString()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setVideo(paramString, paramBoolean);
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.onPause();
-  }
-  
-  public void c()
-  {
-    super.c();
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.onResume();
-  }
-  
-  public boolean c()
-  {
-    boolean bool = super.c();
-    a(this.jdField_a_of_type_Azze);
-    float f1 = this.jdField_a_of_type_Azze.jdField_a_of_type_Float;
-    float f2 = b();
-    float f3 = this.jdField_a_of_type_Float / 2.0F;
-    float f4 = this.f;
-    float f5 = this.jdField_a_of_type_Azze.b;
-    float f6 = b();
-    float f7 = this.b / 2.0F;
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setX(f1 * f2 - f3);
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setY(f4 - f5 * f6 - f7);
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setScaleX(this.e * b());
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setScaleY(this.e * b());
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setRotation(this.g);
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setAlpha(this.jdField_a_of_type_Int * (b() / 255.0F) / 255.0F);
-    return bool;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.addView(this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView);
+    return "SwitchingStatus(isSwitching=" + this.jdField_a_of_type_Boolean + ", targetMode=" + this.jdField_a_of_type_Int + ", oldMode=" + this.b + ")";
   }
 }
 

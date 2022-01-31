@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.managers;
 
-import atvt;
+import auac;
 import java.util.ArrayList;
 
 public class ShieldMsgManger$2
   implements Runnable
 {
-  public ShieldMsgManger$2(atvt paramatvt, ArrayList paramArrayList) {}
+  public ShieldMsgManger$2(auac paramauac, ArrayList paramArrayList) {}
   
   public void run()
   {

@@ -1,48 +1,57 @@
-import com.tencent.qqprotect.qsec.QSecFramework;
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.widget.media.MiniAppLivePlayer;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class bhkp
-  implements bhjk
+public class bhkp
+  implements bhkz
 {
-  public bhks a;
+  public bhkp(MiniAppLivePlayer paramMiniAppLivePlayer, bgok parambgok) {}
   
-  bhkp(bhkn parambhkn) {}
-  
-  public void a()
+  public void a(int paramInt, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_Bhks.jdField_b_of_type_JavaLangString == null) || (this.jdField_a_of_type_Bhks.jdField_b_of_type_JavaLangString.contains("..")))
+    QMLog.d("MiniAppLivePlayer", "onPlayEvent code:" + paramInt);
+    try
     {
-      this.jdField_a_of_type_Bhks.d = 15;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("livePlayerId", this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetMediaMiniAppLivePlayer.jdField_a_of_type_Long);
+      localJSONObject.put("errCode", paramInt);
+      localJSONObject.put("errMsg", paramBundle.get("EVT_MSG"));
+      this.jdField_a_of_type_Bgok.a.a("onLivePlayerEvent", localJSONObject.toString(), this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetMediaMiniAppLivePlayer.jdField_a_of_type_Int);
+      QMLog.e("MiniAppLivePlayer", "operate start evaluateSubcribeJS onLivePlayerEvent = " + localJSONObject.toString());
       return;
     }
-    Object localObject = new File(this.jdField_a_of_type_Bhks.jdField_b_of_type_JavaLangString);
-    if (!((File)localObject).exists())
+    catch (JSONException paramBundle)
     {
-      this.jdField_a_of_type_Bhks.d = 12;
-      return;
-    }
-    this.jdField_a_of_type_Bhks.jdField_a_of_type_Bhld = new bhld();
-    if ((this.jdField_a_of_type_Bhks.jdField_b_of_type_Int == 2) || (this.jdField_a_of_type_Bhks.jdField_b_of_type_Int == 1)) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 1) && (!bhlq.a((File)localObject, null)))
-      {
-        this.jdField_a_of_type_Bhks.d = 10;
-        return;
-      }
-      localObject = new Object[1];
-      this.jdField_a_of_type_Bhks.d = QSecFramework.a(2L, this.jdField_a_of_type_Bhks.jdField_b_of_type_Int, this.jdField_a_of_type_Bhks.jdField_a_of_type_Int, 0L, this.jdField_a_of_type_Bhks.jdField_b_of_type_JavaLangString, null, null, (Object[])localObject);
-      if ((localObject[0] == null) || (!(localObject[0] instanceof Integer))) {
-        break;
-      }
-      this.jdField_a_of_type_Bhks.f = ((Integer)localObject[0]).intValue();
-      return;
+      paramBundle.printStackTrace();
     }
   }
   
-  public void b()
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bhks.d = 26;
+    try
+    {
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("VIDEO_BITRATE", paramBundle.get("VIDEO_BITRATE"));
+      localJSONObject2.put("AUDIO_BITRATE", paramBundle.get("AUDIO_BITRATE"));
+      localJSONObject2.put("VIDEO_FPS", paramBundle.get("VIDEO_FPS"));
+      localJSONObject2.put("VIDEO_GOP", paramBundle.get("VIDEO_GOP"));
+      localJSONObject2.put("NET_SPEED", paramBundle.get("NET_SPEED"));
+      localJSONObject2.put("NET_JITTER", paramBundle.get("NET_JITTER"));
+      localJSONObject2.put("VIDEO_WIDTH", paramBundle.get("VIDEO_WIDTH"));
+      localJSONObject2.put("VIDEO_HEIGHT", paramBundle.get("VIDEO_HEIGHT"));
+      localJSONObject1.put("livePlayerId", this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetMediaMiniAppLivePlayer.jdField_a_of_type_Long);
+      localJSONObject1.put("info", localJSONObject2);
+      this.jdField_a_of_type_Bgok.a.a("onLivePlayerNetStatus", localJSONObject1.toString(), this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetMediaMiniAppLivePlayer.jdField_a_of_type_Int);
+      QMLog.e("MiniAppLivePlayer", "operate start evaluateSubcribeJS onLivePlayerNetStatus = " + localJSONObject1.toString());
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
   }
 }
 

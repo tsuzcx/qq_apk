@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public final class bjaj
-  implements DialogInterface.OnDismissListener
+class bjaj
+  extends Handler
 {
-  public bjaj(FragmentActivity paramFragmentActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  bjaj(bjah parambjah, Looper paramLooper)
   {
-    this.a.finish();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 100001)
+    {
+      bjah.b(this.a);
+      bjah.a(this.a).sendEmptyMessageDelayed(100001, 1000L);
+    }
   }
 }
 

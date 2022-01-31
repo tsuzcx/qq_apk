@@ -1,21 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Bundle;
 
 class avdp
-  implements View.OnTouchListener
+  extends nab
 {
-  avdp(avcw paramavcw) {}
+  avdp(avdj paramavdj, avdq paramavdq) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131376512).setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.findViewById(2131376512).setAlpha(1.0F);
+    if (this.jdField_a_of_type_Avdq != null) {
+      this.jdField_a_of_type_Avdq.a(paramInt, paramArrayOfByte, paramBundle);
     }
   }
 }

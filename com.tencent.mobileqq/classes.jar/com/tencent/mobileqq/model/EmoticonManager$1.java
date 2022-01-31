@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.model;
 
-import aube;
+import aufn;
 import com.tencent.commonsdk.cache.QQConcurrentHashMap;
 import com.tencent.mobileqq.data.EmotionKeyword;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -8,7 +8,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class EmoticonManager$1
   extends QQConcurrentHashMap<String, CopyOnWriteArrayList<EmotionKeyword>>
 {
-  public EmoticonManager$1(aube paramaube, int paramInt1, int paramInt2, int paramInt3)
+  public EmoticonManager$1(aufn paramaufn, int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramInt1, paramInt2, paramInt3);
   }

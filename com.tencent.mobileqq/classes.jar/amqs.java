@@ -1,30 +1,17 @@
-public abstract interface amqs
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class amqs
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(amra paramamra);
-  
-  public abstract int b();
-  
-  public abstract int c();
-  
-  public abstract String c();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract boolean d();
-  
-  public abstract void e();
-  
-  public abstract boolean e();
-  
-  public abstract void f();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import java.util.List;
 
 class avme
-  implements View.OnClickListener
+  extends FragmentPagerAdapter
 {
-  avme(avmd paramavmd, ViewGroup paramViewGroup) {}
+  private List<Fragment> jdField_a_of_type_JavaUtilList;
   
-  public void onClick(View paramView)
+  avme(FragmentManager paramFragmentManager, List<Fragment> paramList)
   {
-    if (avmd.a(this.jdField_a_of_type_Avmd) != null) {
-      avmd.a(this.jdField_a_of_type_Avmd).a(this.jdField_a_of_type_AndroidViewViewGroup);
+    super(paramList);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  Fragment a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
+      return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
+    return null;
+  }
+  
+  public int getCount()
+  {
+    return 2;
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
 }
 

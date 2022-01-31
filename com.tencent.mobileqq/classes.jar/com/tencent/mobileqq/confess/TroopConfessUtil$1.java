@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.confess;
 
-import azmj;
+import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class TroopConfessUtil$1
@@ -16,7 +16,7 @@ public final class TroopConfessUtil$1
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c().equals(this.jdField_a_of_type_JavaLangString))
       {
         i = 1;
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800956F", "0X800956F", i, 0, "", "", "", "");
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800956F", "0X800956F", i, 0, "", "", "", "");
       }
     }
     else {
@@ -27,7 +27,7 @@ public final class TroopConfessUtil$1
     label95:
     for (String str = "0X8009302";; str = "0X8009303")
     {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
       return;
       i = 2;
       break;

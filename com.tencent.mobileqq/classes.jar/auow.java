@@ -1,273 +1,28 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import common.config.service.QzoneConfig;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class auow
+  implements auoy
 {
-  private static auow a;
+  QQAppInterface a;
   
-  public static auow a()
+  public auow(QQAppInterface paramQQAppInterface)
   {
-    if (a == null) {}
-    try
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a(aupm paramaupm, HashMap<String, ArrayList<MessageRecord>> paramHashMap, auoz paramauoz) {}
+  
+  public boolean a(int paramInt)
+  {
+    switch (paramInt)
     {
-      if (a == null) {
-        a = new auow();
-      }
-      return a;
+    default: 
+      return false;
     }
-    finally {}
-  }
-  
-  public static String a(String paramString)
-  {
-    aomx localaomx = (aomx)aogj.a().a(490);
-    if ((localaomx != null) && (localaomx.jdField_a_of_type_JavaUtilHashMap != null)) {
-      return (String)localaomx.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    }
-    return "";
-  }
-  
-  public static void a(Resources paramResources, ImageView paramImageView, String paramString, Drawable paramDrawable)
-  {
-    paramString = bdpt.a(paramString, bdpt.b, paramDrawable, null, new auox(paramResources, paramImageView));
-    if (paramString != null)
-    {
-      int i = aekt.a(21.0F, paramResources);
-      int j = paramString.getIntrinsicWidth() * i / paramString.getIntrinsicHeight();
-      paramResources = paramImageView.getLayoutParams();
-      paramResources.height = i;
-      paramResources.width = j;
-      paramImageView.setImageDrawable(paramString);
-      paramImageView.setLayoutParams(paramResources);
-      paramImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString, aupa paramaupa)
-  {
-    if ((paramQQAppInterface == null) || (paramaupa == null) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
-      int i;
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              do
-                              {
-                                do
-                                {
-                                  do
-                                  {
-                                    return;
-                                    paramQQAppInterface = (aomx)aogj.a().a(490);
-                                    switch ((int)paramaupa.a)
-                                    {
-                                    default: 
-                                      return;
-                                    }
-                                  } while ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.jdField_b_of_type_JavaLangString)));
-                                  i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 2);
-                                  if ((paramaupa.jdField_b_of_type_Long != 0L) || (i <= 0)) {
-                                    break;
-                                  }
-                                  paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "lover1");
-                                  paramaupa.jdField_b_of_type_JavaLangString = paramaupa.jdField_b_of_type_JavaLangString.replace("{vip}", "vip");
-                                  return;
-                                } while ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.jdField_b_of_type_JavaLangString)));
-                                i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 0);
-                                if (paramaupa.jdField_b_of_type_Long != 1L) {
-                                  break;
-                                }
-                                if (i == 2)
-                                {
-                                  paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "smallfire");
-                                  paramaupa.jdField_b_of_type_JavaLangString = paramaupa.jdField_b_of_type_JavaLangString.replace("{vip}", "union_vip");
-                                  return;
-                                }
-                              } while (i != 1);
-                              paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "smallfire");
-                              paramaupa.jdField_b_of_type_JavaLangString = paramaupa.jdField_b_of_type_JavaLangString.replace("{vip}", "svip");
-                              return;
-                            } while (paramaupa.jdField_b_of_type_Long != 2L);
-                            if (i == 2)
-                            {
-                              paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "bigfire");
-                              paramaupa.jdField_b_of_type_JavaLangString = paramaupa.jdField_b_of_type_JavaLangString.replace("{vip}", "union_vip");
-                              return;
-                            }
-                          } while (i != 1);
-                          paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "bigfire");
-                          paramaupa.jdField_b_of_type_JavaLangString = paramaupa.jdField_b_of_type_JavaLangString.replace("{vip}", "svip");
-                          return;
-                        } while ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.jdField_b_of_type_JavaLangString)));
-                        i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 1);
-                        if (paramaupa.jdField_b_of_type_Long != 1L) {
-                          break;
-                        }
-                        if (i == 2)
-                        {
-                          paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "smallship");
-                          paramaupa.jdField_b_of_type_JavaLangString = paramaupa.jdField_b_of_type_JavaLangString.replace("{vip}", "union_vip");
-                          return;
-                        }
-                      } while (i != 1);
-                      paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "smallship");
-                      paramaupa.jdField_b_of_type_JavaLangString = paramaupa.jdField_b_of_type_JavaLangString.replace("{vip}", "svip");
-                      return;
-                    } while (paramaupa.jdField_b_of_type_Long != 2L);
-                    if (i == 2)
-                    {
-                      paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "bigship");
-                      paramaupa.jdField_b_of_type_JavaLangString = paramaupa.jdField_b_of_type_JavaLangString.replace("{vip}", "union_vip");
-                      return;
-                    }
-                  } while (i != 1);
-                  paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "bigship");
-                  paramaupa.jdField_b_of_type_JavaLangString = paramaupa.jdField_b_of_type_JavaLangString.replace("{vip}", "svip");
-                  return;
-                  if ((paramaupa.jdField_b_of_type_Long == 1L) && (i > 0))
-                  {
-                    paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "lover2");
-                    paramaupa.jdField_b_of_type_JavaLangString = paramaupa.jdField_b_of_type_JavaLangString.replace("{vip}", "vip");
-                    return;
-                  }
-                } while ((paramaupa.jdField_b_of_type_Long != 2L) || (i <= 0));
-                paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "lover3");
-                paramaupa.jdField_b_of_type_JavaLangString = paramaupa.jdField_b_of_type_JavaLangString.replace("{vip}", "vip");
-                return;
-              } while ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.jdField_b_of_type_JavaLangString)));
-              i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 3);
-              if ((paramaupa.jdField_b_of_type_Long == 0L) && (i > 0))
-              {
-                paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "sister1");
-                paramString = paramaupa.jdField_b_of_type_JavaLangString;
-                if (i == 1) {}
-                for (paramQQAppInterface = "svip";; paramQQAppInterface = "union_vip")
-                {
-                  paramaupa.jdField_b_of_type_JavaLangString = paramString.replace("{vip}", paramQQAppInterface);
-                  return;
-                }
-              }
-              if ((paramaupa.jdField_b_of_type_Long == 1L) && (i > 0))
-              {
-                paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "sister2");
-                paramString = paramaupa.jdField_b_of_type_JavaLangString;
-                if (i == 1) {}
-                for (paramQQAppInterface = "svip";; paramQQAppInterface = "union_vip")
-                {
-                  paramaupa.jdField_b_of_type_JavaLangString = paramString.replace("{vip}", paramQQAppInterface);
-                  return;
-                }
-              }
-            } while ((paramaupa.jdField_b_of_type_Long != 2L) || (i <= 0));
-            paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "sister3");
-            paramString = paramaupa.jdField_b_of_type_JavaLangString;
-            if (i == 1) {}
-            for (paramQQAppInterface = "svip";; paramQQAppInterface = "union_vip")
-            {
-              paramaupa.jdField_b_of_type_JavaLangString = paramString.replace("{vip}", paramQQAppInterface);
-              return;
-            }
-          } while ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.jdField_b_of_type_JavaLangString)));
-          i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 4);
-          if ((paramaupa.jdField_b_of_type_Long == 0L) && (i > 0))
-          {
-            paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "brother1");
-            paramString = paramaupa.jdField_b_of_type_JavaLangString;
-            if (i == 1) {}
-            for (paramQQAppInterface = "svip";; paramQQAppInterface = "union_vip")
-            {
-              paramaupa.jdField_b_of_type_JavaLangString = paramString.replace("{vip}", paramQQAppInterface);
-              return;
-            }
-          }
-          if ((paramaupa.jdField_b_of_type_Long == 1L) && (i > 0))
-          {
-            paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "brother2");
-            paramString = paramaupa.jdField_b_of_type_JavaLangString;
-            if (i == 1) {}
-            for (paramQQAppInterface = "svip";; paramQQAppInterface = "union_vip")
-            {
-              paramaupa.jdField_b_of_type_JavaLangString = paramString.replace("{vip}", paramQQAppInterface);
-              return;
-            }
-          }
-        } while ((paramaupa.jdField_b_of_type_Long != 2L) || (i <= 0));
-        paramaupa.jdField_b_of_type_JavaLangString = paramQQAppInterface.jdField_b_of_type_JavaLangString.replace("{type}", "brother3");
-        paramString = paramaupa.jdField_b_of_type_JavaLangString;
-        if (i == 1) {}
-        for (paramQQAppInterface = "svip";; paramQQAppInterface = "union_vip")
-        {
-          paramaupa.jdField_b_of_type_JavaLangString = paramString.replace("{vip}", paramQQAppInterface);
-          return;
-        }
-        i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 5);
-        if ((i == 1) && (paramaupa.jdField_b_of_type_Long == 1L))
-        {
-          paramaupa.jdField_b_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("H5Url", "mentorship_svip_apng_url", "https://qzonestyle.gtimg.cn/aoi/sola/20191127150330_NTF6EEcVWV.png");
-          return;
-        }
-        if ((i == 2) && (paramaupa.jdField_b_of_type_Long == 1L))
-        {
-          paramaupa.jdField_b_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("H5Url", "mentorship_apng_url", "https://qzonestyle.gtimg.cn/aoi/sola/20191111173708_UYRdOtYOfJ.png");
-          return;
-        }
-        if ((i == 3) && (paramaupa.jdField_b_of_type_Long == 1L))
-        {
-          paramaupa.jdField_b_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("H5Url", "mentorship_yellowvip_apng_url", "https://qzonestyle.gtimg.cn/aoi/sola/20191127145904_DNAFqFLjOz.png");
-          return;
-        }
-      } while ((i != 4) || (paramaupa.jdField_b_of_type_Long != 1L));
-      paramaupa.jdField_b_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("H5Url", "mentorship_newyear_apng_url", "https://qzonestyle.gtimg.cn/aoi/sola/20191127150330_evBQGhifVq.png");
-      return;
-      if (paramaupa.jdField_b_of_type_Long == 1L)
-      {
-        paramaupa.jdField_b_of_type_JavaLangString = "https://cmshow.qq.com/xydata/cmshow/devAct/7/24f5b4859404c4de52aa329d4d05ee5d.png";
-        return;
-      }
-      if (paramaupa.jdField_b_of_type_Long == 2L)
-      {
-        paramaupa.jdField_b_of_type_JavaLangString = "https://cmshow.qq.com/xydata/cmshow/devAct/7/16baf9bdf1b7a672001939b447e5f3c9.png";
-        return;
-      }
-    } while (paramaupa.jdField_b_of_type_Long != 3L);
-    paramaupa.jdField_b_of_type_JavaLangString = "https://cmshow.qq.com/xydata/cmshow/devAct/7/c4e28479a1f47ff9e3104cf3e96c2430.png";
-  }
-  
-  public boolean a()
-  {
-    aomx localaomx = (aomx)aogj.a().a(490);
-    return (localaomx != null) && (localaomx.jdField_a_of_type_Int != 0);
+    return true;
   }
 }
 

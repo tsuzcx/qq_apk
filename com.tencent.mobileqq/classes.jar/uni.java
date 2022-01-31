@@ -1,10 +1,10 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-
-public abstract interface uni<Request extends unk, Respond extends unf>
+public abstract interface uni
 {
-  public abstract void a(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage);
+  public abstract void a(unj paramunj);
+  
+  public abstract boolean a();
+  
+  public abstract void b(unj paramunj);
 }
 
 

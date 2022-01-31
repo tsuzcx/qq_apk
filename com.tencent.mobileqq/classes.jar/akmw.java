@@ -1,35 +1,13 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
-import java.util.List;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 
-public class akmw
-  extends ajee
+public abstract interface akmw
 {
-  public akmw(HotChatCenterFragment paramHotChatCenterFragment, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, ajdx paramajdx, int paramInt)
-  {
-    super(paramContext, paramQQAppInterface, paramXListView, paramajdx, paramInt);
-  }
-  
-  public void a(RecentBaseData paramRecentBaseData, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.a(paramRecentBaseData, paramString);
-  }
-  
-  public void b(RecentBaseData paramRecentBaseData, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramRecentBaseData);
-      notifyDataSetChanged();
-    }
-  }
+  public abstract void a(Canvas paramCanvas, Paint paramPaint);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akmw
  * JD-Core Version:    0.7.0.1
  */

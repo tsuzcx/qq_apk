@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
 import QQService.DiscussMemberInfo;
-import adal;
-import adam;
-import adan;
-import adao;
-import almt;
-import alox;
-import alpo;
+import adfa;
+import adfb;
+import adfc;
+import adfd;
+import alri;
+import altm;
+import alud;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bdee;
+import bdin;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
@@ -29,10 +29,10 @@ public class JoinDiscussionActivity
 {
   int jdField_a_of_type_Int = 0;
   public long a;
-  private adan jdField_a_of_type_Adan;
-  private adao jdField_a_of_type_Adao;
-  public almt a;
-  private alox jdField_a_of_type_Alox = new adam(this);
+  private adfc jdField_a_of_type_Adfc;
+  private adfd jdField_a_of_type_Adfd;
+  public alri a;
+  private altm jdField_a_of_type_Altm = new adfb(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -58,34 +58,34 @@ public class JoinDiscussionActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365312));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365325));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365331));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364921));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368973));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365871));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365314));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365327));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365333));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364923));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368991));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365873));
   }
   
   private void c()
   {
-    setTitle(alpo.a(2131706258));
+    setTitle(alud.a(2131706270));
     setRightButton(2131690648, this);
     this.leftView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new adal(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new adfa(this));
   }
   
   private void d()
   {
-    if (bdee.d(this))
+    if (bdin.d(this))
     {
       startTitleProgress();
       if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0)) {
-        this.jdField_a_of_type_Almt.c(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Alri.c(this.jdField_a_of_type_JavaLangString);
       }
       while ((this.jdField_b_of_type_JavaLangString == null) || (this.jdField_b_of_type_JavaLangString.length() <= 0)) {
         return;
       }
-      this.jdField_a_of_type_Almt.b(this.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_Alri.b(this.jdField_b_of_type_JavaLangString);
       return;
     }
     a(0, -160);
@@ -98,10 +98,10 @@ public class JoinDiscussionActivity
   
   public void a()
   {
-    if (bdee.d(this))
+    if (bdin.d(this))
     {
       startTitleProgress();
-      this.jdField_a_of_type_Almt.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Alri.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
       return;
     }
     a(1, -160);
@@ -115,7 +115,7 @@ public class JoinDiscussionActivity
     {
     default: 
       if (paramInt1 == 1) {
-        str = alpo.a(2131706256);
+        str = alud.a(2131706268);
       }
       break;
     }
@@ -123,19 +123,19 @@ public class JoinDiscussionActivity
     {
       QQToast.a(this, str, 0).b(getTitleBarHeight());
       return;
-      str = alpo.a(2131706250);
+      str = alud.a(2131706262);
       continue;
-      str = alpo.a(2131706254);
+      str = alud.a(2131706266);
       continue;
-      str = alpo.a(2131706252);
+      str = alud.a(2131706264);
       continue;
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       return;
-      str = alpo.a(2131706253);
+      str = alud.a(2131706265);
       continue;
       if (paramInt1 == 0) {
-        str = alpo.a(2131706251);
+        str = alud.a(2131706263);
       }
     }
   }
@@ -143,13 +143,13 @@ public class JoinDiscussionActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559204);
+    super.setContentView(2131559203);
     paramBundle = getIntent().getExtras();
-    this.jdField_a_of_type_Adao = new adao(this, null);
-    this.jdField_a_of_type_Adan = new adan(this, null);
-    addObserver(this.jdField_a_of_type_Adao);
-    addObserver(this.jdField_a_of_type_Adan);
-    addObserver(this.jdField_a_of_type_Alox);
+    this.jdField_a_of_type_Adfd = new adfd(this, null);
+    this.jdField_a_of_type_Adfc = new adfc(this, null);
+    addObserver(this.jdField_a_of_type_Adfd);
+    addObserver(this.jdField_a_of_type_Adfc);
+    addObserver(this.jdField_a_of_type_Altm);
     this.jdField_a_of_type_Int = paramBundle.getInt("addDisSource");
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("sig");
     this.jdField_b_of_type_JavaLangString = paramBundle.getString("innerSig");
@@ -168,16 +168,16 @@ public class JoinDiscussionActivity
     }
     b();
     c();
-    this.jdField_a_of_type_Almt = ((almt)this.app.a(6));
+    this.jdField_a_of_type_Alri = ((alri)this.app.a(6));
     d();
     return true;
   }
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Adao);
-    removeObserver(this.jdField_a_of_type_Adan);
-    removeObserver(this.jdField_a_of_type_Alox);
+    removeObserver(this.jdField_a_of_type_Adfd);
+    removeObserver(this.jdField_a_of_type_Adfc);
+    removeObserver(this.jdField_a_of_type_Altm);
     super.doOnDestroy();
   }
   

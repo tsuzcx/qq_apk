@@ -1,15 +1,19 @@
-class xol
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+
+public class xol
+  implements AdapterView.OnItemSelectedListener
 {
-  public final int a;
-  public final String a;
-  public final String b;
+  public xol(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public xol(int paramInt, String paramString1, String paramString2)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    HorizontalSelectColorLayout.a(this.a, paramInt);
   }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

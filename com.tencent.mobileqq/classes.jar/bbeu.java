@@ -1,30 +1,6 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.16;
-
-public class bbeu
-  implements View.OnClickListener
+public abstract interface bbeu
 {
-  public bbeu(TroopBarPublishActivity.16 param16) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = new Intent();
-    paramView.putExtra("path", this.a.a);
-    PublicFragmentActivity.a(this.a.this$0, paramView, TribeVideoPreviewFragment.class);
-    this.a.this$0.overridePendingTransition(2130772321, 2130772322);
-    if ((this.a.this$0.b != null) && (this.a.this$0.b.getVisibility() == 0)) {}
-    for (int i = 2;; i = 1)
-    {
-      azmj.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_full_screen", i, 0, "", "", "", "");
-      return;
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

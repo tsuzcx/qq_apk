@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ark.API;
 
-import andw;
-import andz;
-import anek;
-import anel;
-import anff;
+import anif;
+import anii;
+import anit;
+import aniu;
+import anjo;
 
 public class ArkAppDeviceModule$ObserverMethod$6$3$1
   implements Runnable
 {
-  public ArkAppDeviceModule$ObserverMethod$6$3$1(anek paramanek) {}
+  public ArkAppDeviceModule$ObserverMethod$6$3$1(anit paramanit) {}
   
   public void run()
   {
-    anel localanel = new anel(this);
-    this.a.a.jdField_a_of_type_Andz.a.a.a(localanel, this.a.a.jdField_a_of_type_Long);
+    aniu localaniu = new aniu(this);
+    this.a.a.jdField_a_of_type_Anii.a.a.a(localaniu, this.a.a.jdField_a_of_type_Long);
   }
 }
 

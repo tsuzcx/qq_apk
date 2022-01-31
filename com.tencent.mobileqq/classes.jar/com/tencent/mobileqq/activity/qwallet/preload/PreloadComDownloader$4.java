@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import aivk;
+import aizz;
 import android.os.Bundle;
-import bdvu;
-import bdvv;
-import bdwa;
+import bead;
+import beae;
+import beaj;
 
 public class PreloadComDownloader$4
   implements Runnable
 {
-  public PreloadComDownloader$4(aivk paramaivk, bdvv parambdvv, bdvu parambdvu, Bundle paramBundle) {}
+  public PreloadComDownloader$4(aizz paramaizz, beae parambeae, bead parambead, Bundle paramBundle) {}
   
   public void run()
   {
-    if (aivk.a(this.this$0) != null) {
-      aivk.a(this.this$0).a(this.jdField_a_of_type_Bdvv, this.jdField_a_of_type_Bdvu, this.jdField_a_of_type_AndroidOsBundle);
+    if (aizz.a(this.this$0) != null) {
+      aizz.a(this.this$0).a(this.jdField_a_of_type_Beae, this.jdField_a_of_type_Bead, this.jdField_a_of_type_AndroidOsBundle);
     }
   }
 }

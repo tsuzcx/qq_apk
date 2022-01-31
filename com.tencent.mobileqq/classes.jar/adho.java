@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.mobileqq.activity.Now;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class adho
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public adho(Now paramNow) {}
+  public adho(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (Now.a(this.a) != null) {
-      Now.a(this.a).m();
-    }
+    LoginInfoActivity.a(this.a).setVisibility(4);
+    LoginInfoActivity.a(this.a).clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

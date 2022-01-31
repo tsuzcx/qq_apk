@@ -1,13 +1,17 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+
 public class bnmn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public float a;
-  public int a;
-  public long a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public boolean b;
-  public int c;
+  public bnmn(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a(f);
+  }
 }
 
 

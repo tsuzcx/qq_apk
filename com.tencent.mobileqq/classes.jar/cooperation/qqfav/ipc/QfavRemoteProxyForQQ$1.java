@@ -1,16 +1,16 @@
 package cooperation.qqfav.ipc;
 
-import bisb;
-import bisd;
+import biwi;
+import biwk;
 
 public class QfavRemoteProxyForQQ$1
   implements Runnable
 {
-  public QfavRemoteProxyForQQ$1(bisb parambisb, bisd parambisd) {}
+  public QfavRemoteProxyForQQ$1(biwi parambiwi, biwk parambiwk) {}
   
   public void run()
   {
-    bisb.a(this.this$0, this.a);
+    biwi.a(this.this$0, this.a);
   }
 }
 

@@ -1,82 +1,23 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import java.util.ArrayList;
+import android.widget.PopupWindow;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.4.1;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class yec<E>
-  extends ydn<E>
+public class yec
+  implements ydg
 {
-  protected static final String b;
-  protected String a;
-  protected boolean a;
-  protected boolean b;
+  public yec(DetailBaseAdapter.4.1 param1) {}
   
-  static
+  public void a()
   {
-    jdField_b_of_type_JavaLangString = alpo.a(2131709241);
+    QLog.d(ydw.jdField_a_of_type_JavaLangString, 2, "showPraiseTipView");
   }
   
-  public yec()
+  public void b()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  protected int a()
-  {
-    return 1;
-  }
-  
-  protected abstract RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt);
-  
-  protected abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    QLog.d(ydw.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow priseTipView");
+    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
     }
-    this.jdField_a_of_type_JavaLangString = str;
-    notifyItemChanged(getItemCount() - 1);
-  }
-  
-  protected abstract RecyclerView.ViewHolder b(ViewGroup paramViewGroup, int paramInt);
-  
-  protected abstract void b(RecyclerView.ViewHolder paramViewHolder, int paramInt);
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() + 1;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-      return 0;
-    }
-    return 99999;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((paramViewHolder == null) || (paramInt >= getItemCount())) {
-      return;
-    }
-    if (99999 == getItemViewType(paramInt))
-    {
-      a(paramViewHolder, paramInt);
-      return;
-    }
-    b(paramViewHolder, paramInt);
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (paramInt == 99999) {
-      return a(paramViewGroup, paramInt);
-    }
-    return b(paramViewGroup, paramInt);
   }
 }
 

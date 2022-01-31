@@ -1,25 +1,19 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
 
 public class ayev
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends ayem
 {
-  public ayev(MixSearchWebFragment paramMixSearchWebFragment) {}
-  
-  public void onGlobalLayout()
+  public ayev(LikesView paramLikesView, int paramInt, String paramString)
   {
-    InputMethodManager localInputMethodManager = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-    if (localInputMethodManager != null)
-    {
-      this.a.a.requestFocus();
-      localInputMethodManager.showSoftInput(this.a.a, 0);
+    super(paramInt);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView) != null) {
+      LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView).a(this.jdField_a_of_type_JavaLangString);
     }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

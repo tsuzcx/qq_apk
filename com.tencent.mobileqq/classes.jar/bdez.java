@@ -1,24 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.photo.album.QAlbumCustomAlbumConstants;
 
-final class bdez
-  extends amab
+public class bdez
+  implements QAlbumCustomAlbumConstants
 {
-  bdez(String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-    QLog.w("QAVGroupConfig", 1, "onGetTroopInfoResult[" + this.b + "], troopuin[" + this.jdField_a_of_type_JavaLangString + "], isSuc[" + paramBoolean + "]");
-    if (paramBoolean) {
-      bdfb.a(this.b + ".onGetTroopInfoResult", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-  }
+  public static final String a = l + "SelectedPhotoList";
+  public static final String b = l + "ForwardWhere";
+  public static final String c = l + "FromWhere";
+  public static final String d = l + "AlbumName";
+  public static final String e = l + "AlbumId";
+  public static final String f = l + "InitActivityClass";
+  public static final String g = l + "DestActivityClass";
+  public static final String h = l + "RequestCode";
+  public static final String i = l + "TempSelectPhotoMap";
+  public static final String j = l + "PassToDestActivity";
+  public static final String k = l + "PassFromDestActivity";
+  private static final String l = bdez.class.getName() + ".";
 }
 
 

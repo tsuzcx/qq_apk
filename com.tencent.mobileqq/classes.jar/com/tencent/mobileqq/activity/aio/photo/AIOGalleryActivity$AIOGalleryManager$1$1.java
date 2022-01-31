@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import agcw;
-import agcx;
-import agdi;
-import aget;
+import aghl;
+import aghm;
+import aghx;
+import agji;
 import com.tencent.qphone.base.util.QLog;
 
 public class AIOGalleryActivity$AIOGalleryManager$1$1
   implements Runnable
 {
-  public AIOGalleryActivity$AIOGalleryManager$1$1(agcx paramagcx, boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
+  public AIOGalleryActivity$AIOGalleryManager$1$1(aghm paramaghm, boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
   
   public void run()
   {
-    if (agcw.a(this.jdField_a_of_type_Agcx.a) != null)
+    if (aghl.a(this.jdField_a_of_type_Aghm.a) != null)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("peak_pgjpeg", 4, "IAIOImageProviderCallBack.notifyImageResult():isPart " + this.jdField_a_of_type_Boolean);
       }
-      ((agdi)agcw.b(this.jdField_a_of_type_Agcx.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      ((aghx)aghl.b(this.jdField_a_of_type_Aghm.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
     }
-    if (this.jdField_a_of_type_Agcx.a.a != null) {
-      ((aget)this.jdField_a_of_type_Agcx.a.a).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Aghm.a.a != null) {
+      ((agji)this.jdField_a_of_type_Aghm.a.a).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

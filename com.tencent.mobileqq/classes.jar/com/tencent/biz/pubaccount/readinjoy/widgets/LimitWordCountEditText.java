@@ -55,7 +55,7 @@ public class LimitWordCountEditText
         if (!localTypedArray.getBoolean(3, true)) {
           break label275;
         }
-        LayoutInflater.from(paramContext).inflate(2131562500, this);
+        LayoutInflater.from(paramContext).inflate(2131562518, this);
       }
     }
     for (;;)
@@ -75,10 +75,10 @@ public class LimitWordCountEditText
       localTypedArray.recycle();
       localObject1 = paramAttributeSet;
       localObject2 = paramContext;
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365839));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377884));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378911));
-      findViewById(2131375981).setOnClickListener(new sru(this));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365841));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377938));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378969));
+      findViewById(2131376034).setOnClickListener(new sru(this));
       this.jdField_a_of_type_AndroidTextTextWatcher = new srv(this);
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
       setHint((String)localObject2);
@@ -87,7 +87,7 @@ public class LimitWordCountEditText
       setContentTextSize(f1);
       return;
       label275:
-      LayoutInflater.from(paramContext).inflate(2131562499, this);
+      LayoutInflater.from(paramContext).inflate(2131562517, this);
     }
   }
   

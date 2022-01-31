@@ -1,25 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class aehc
-  implements DialogInterface.OnClickListener
+  extends akit
 {
-  public aehc(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.n();
-    if (!TextUtils.isEmpty(this.a.a())) {}
-    for (paramDialogInterface = "1";; paramDialogInterface = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, ndd.a(), paramDialogInterface, "0");
-      this.a.finish();
-      return;
-    }
-  }
+  public View a;
+  public RelativeLayout a;
+  public TextView a;
+  public TextView b;
 }
 
 

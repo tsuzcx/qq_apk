@@ -1,48 +1,64 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.data.MessageForPokeEmo;
+import com.tencent.mobileqq.data.MessageForScribble;
 
-class aiiv
-  implements DialogInterface.OnClickListener
+public class aiiv
+  extends agda
 {
-  aiiv(aiit paramaiit) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aiiv(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    if (this.a.a.jdField_a_of_type_Int == 2) {
-      this.a.a.a("0X8005B8A", 1);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+  }
+  
+  public void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, aeqi paramaeqi, int paramInt1, int paramInt2)
+  {
+    super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramaeqi, paramInt1, paramInt2);
+    paramContext = (agdh)paramaeqi;
+    if (paramContext.d != null)
+    {
+      if ((!(paramChatMessage instanceof MessageForPoke)) && (!(paramChatMessage instanceof MessageForPokeEmo))) {
+        break label109;
+      }
+      if (!TextUtils.isEmpty(paramChatMessage.msg)) {
+        break label95;
+      }
+      paramContext.d.setText(alud.a(2131707230));
     }
     for (;;)
     {
-      paramDialogInterface.dismiss();
-      if (bdee.d(this.a.a)) {
-        break;
+      if (paramContext.b != null) {
+        paramContext.b.setVisibility(8);
       }
-      this.a.a.b(2131694829);
+      if (paramContext.c != null) {
+        paramContext.c.setVisibility(8);
+      }
       return;
-      if (this.a.a.jdField_a_of_type_Int == 6) {
-        this.a.a.a("0X8005B8A", 2);
-      } else if (this.a.a.jdField_a_of_type_Int == 7) {
-        this.a.a.a("0X8005B8A", 3);
+      label95:
+      paramContext.d.setText(paramChatMessage.msg);
+      continue;
+      label109:
+      if ((paramChatMessage instanceof MessageForScribble)) {
+        paramContext.d.setText(alud.a(2131707229));
+      } else {
+        paramContext.d.setText(alud.a(2131707231));
       }
     }
-    paramDialogInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a();
-    if ((paramDialogInterface == null) || (paramDialogInterface.nationCode == null) || (paramDialogInterface.mobileNo == null))
-    {
-      this.a.a.setResult(0);
-      this.a.a.finish();
-      return;
-    }
-    if (this.a.a.b == null)
-    {
-      this.a.a.b = new aiiw(this);
-      this.a.a.app.registObserver(this.a.a.b);
-    }
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(paramDialogInterface.nationCode, paramDialogInterface.mobileNo);
-    this.a.a.a(2131719773, 300L, true);
+  }
+  
+  public void b(View paramView)
+  {
+    super.b(paramView);
   }
 }
 

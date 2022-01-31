@@ -59,7 +59,7 @@ class sxh
                   localJSONObject.put("msg", "mediaId for serverId error");
                   this.jdField_a_of_type_Sxe.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
                   this.jdField_a_of_type_Sxe.c((String)localObject);
-                  azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
+                  azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
                   break label807;
                   if (!QLog.isColorLevel()) {
                     break;
@@ -98,7 +98,7 @@ class sxh
               ((JSONObject)localObject).put("retCode", -1);
               ((JSONObject)localObject).put("msg", "mediaId for serverId error");
               this.jdField_a_of_type_Sxe.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
-              azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
+              azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
             }
             catch (JSONException localJSONException3)
             {
@@ -126,7 +126,7 @@ class sxh
               if (this.jdField_a_of_type_Boolean)
               {
                 this.jdField_a_of_type_Sxe.c(this.b);
-                azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
+                azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
                 return;
               }
             }
@@ -136,7 +136,7 @@ class sxh
               {
                 localJSONException1.printStackTrace();
               }
-              azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
+              azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
               return;
             }
             if (QLog.isColorLevel()) {
@@ -151,7 +151,7 @@ class sxh
               if (this.jdField_a_of_type_Boolean)
               {
                 this.jdField_a_of_type_Sxe.c(this.b);
-                azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
+                azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
                 return;
               }
             }
@@ -161,7 +161,7 @@ class sxh
               {
                 localJSONException2.printStackTrace();
               }
-              azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
+              azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
               return;
             }
           }

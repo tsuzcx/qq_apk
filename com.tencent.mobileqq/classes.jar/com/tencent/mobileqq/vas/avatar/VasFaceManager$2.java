@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas.avatar;
 
-import bdbg;
+import bdfp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -21,8 +21,8 @@ class VasFaceManager$2
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqhead.VasFaceManager", 2, "requestFaceId uin: " + this.a);
     }
-    bdbg.a(this.a);
-    bdbg.a(this.this$0.a);
+    bdfp.a(this.a);
+    bdfp.a(this.this$0.a);
   }
 }
 

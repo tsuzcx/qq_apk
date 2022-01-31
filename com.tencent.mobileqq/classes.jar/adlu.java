@@ -1,18 +1,45 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adlu
-  extends alsi
+  extends BroadcastReceiver
 {
-  public adlu(QQLSActivity paramQQLSActivity) {}
+  public adlu(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.a(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.PCActive"))
+    {
+      paramContext = paramIntent.getStringExtra("uin");
+      NotifyPushSettingActivity.a(this.a, paramContext);
     }
-    QQLSActivity.a(this.a);
+    do
+    {
+      boolean bool;
+      do
+      {
+        return;
+        if (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive")) {
+          break;
+        }
+        paramContext = paramIntent.getStringExtra("uin");
+        bool = paramIntent.getBooleanExtra("configPCActive", false);
+      } while (!this.a.app.getAccount().equals(paramContext));
+      if (true == bool)
+      {
+        NotifyPushSettingActivity.g(this.a).setVisibility(0);
+        return;
+      }
+      NotifyPushSettingActivity.g(this.a).setVisibility(8);
+      return;
+    } while (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.HelloLiveMessage"));
+    paramContext = paramIntent.getStringExtra("uin");
+    NotifyPushSettingActivity.b(this.a, paramContext);
   }
 }
 

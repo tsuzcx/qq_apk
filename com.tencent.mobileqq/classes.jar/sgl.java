@@ -20,7 +20,7 @@ public class sgl
   {
     QLog.i("ProteusCDNUtils", 1, "[updateCDNUrl], bid = " + paramString1 + ", cdn url = " + paramString2);
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-      bjxj.a(a(paramString1), paramString2);
+      bkbq.a(a(paramString1), paramString2);
     }
   }
   
@@ -97,7 +97,7 @@ public class sgl
   
   private static String b(String paramString)
   {
-    String str = (String)bjxj.a(a(paramString), "");
+    String str = (String)bkbq.a(a(paramString), "");
     QLog.i("ProteusCDNUtils", 1, "[getCDNUrl], bid = " + paramString + ", cdnUrl = " + str);
     return str;
   }
@@ -109,7 +109,7 @@ public class sgl
       QLog.i("ProteusCDNUtils", 1, "[downloadByCDN], no need to download by cdn, bid = " + paramString);
       return;
     }
-    String str1 = bduw.a(aljq.cE + paramString + ".7z");
+    String str1 = bdzf.a(alof.cE + paramString + ".7z");
     String str2 = b(paramString);
     QLog.i("ProteusCDNUtils", 1, "[downloadByCDN], bid = " + paramString + ", localPath = " + str1 + ", cdnUrl = " + str2);
     ThreadManager.excute(new ProteusCDNUtils.1(str1, paramString, str2), 128, null, false);

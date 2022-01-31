@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqwa;
+import araj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class UniformDownloadMgr$2
   implements Runnable
 {
-  public UniformDownloadMgr$2(aqwa paramaqwa) {}
+  public UniformDownloadMgr$2(araj paramaraj) {}
   
   public void run()
   {
     try
     {
-      if (aqwa.a(this.this$0) != null)
+      if (araj.a(this.this$0) != null)
       {
-        BaseApplicationImpl.getApplication().unregisterReceiver(aqwa.a(this.this$0));
-        aqwa.a(this.this$0, null);
+        BaseApplicationImpl.getApplication().unregisterReceiver(araj.a(this.this$0));
+        araj.a(this.this$0, null);
         QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr unRegister UNIDOWNLOAD_BORDCAST");
         return;
       }

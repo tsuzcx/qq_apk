@@ -5,7 +5,7 @@ import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
 import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 class sxd
-  implements bejn
+  implements benw
 {
   sxd(sxb paramsxb) {}
   

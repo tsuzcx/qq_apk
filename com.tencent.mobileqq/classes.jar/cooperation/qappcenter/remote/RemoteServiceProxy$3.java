@@ -1,13 +1,13 @@
 package cooperation.qappcenter.remote;
 
 import android.os.RemoteException;
-import biny;
-import bioc;
+import bisf;
+import bisj;
 
 public class RemoteServiceProxy$3
   implements Runnable
 {
-  public RemoteServiceProxy$3(bioc parambioc, SendMsg paramSendMsg) {}
+  public RemoteServiceProxy$3(bisj parambisj, SendMsg paramSendMsg) {}
   
   public void run()
   {

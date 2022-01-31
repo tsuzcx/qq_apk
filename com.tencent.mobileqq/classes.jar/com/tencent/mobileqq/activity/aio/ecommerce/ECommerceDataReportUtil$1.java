@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.ecommerce;
 
-import aeya;
-import aeyb;
-import aogj;
+import afcp;
+import afcq;
+import aoks;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -17,12 +17,12 @@ public final class ECommerceDataReportUtil$1
   {
     try
     {
-      aeya localaeya = (aeya)aogj.a().a(592);
-      if ((localaeya != null) && (localaeya.a != null) && (!localaeya.a.isEmpty()))
+      afcp localafcp = (afcp)aoks.a().a(592);
+      if ((localafcp != null) && (localafcp.a != null) && (!localafcp.a.isEmpty()))
       {
-        aeyb.a(localaeya.a);
-        aeyb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        aeyb.a((QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+        afcq.a(localafcp.a);
+        afcq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        afcq.a((QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
       }
       return;
     }

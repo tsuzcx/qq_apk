@@ -1,92 +1,83 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.vfs.CancellationSignalCompat;
-import com.tencent.mm.vfs.StatisticsCallback;
+import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.app.AppRuntime;
+import java.util.List;
 
 public class bduv
-  implements StatisticsCallback
 {
-  private static CopyOnWriteArrayList<Map<String, Object>> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private static boolean jdField_a_of_type_Boolean;
-  private static CopyOnWriteArrayList<Throwable> b = new CopyOnWriteArrayList();
+  private static int a = 57600;
+  private static int b = -1;
   
-  private void a(Throwable paramThrowable)
+  private static Bitmap a(Bitmap paramBitmap)
   {
-    azlf.a(paramThrowable);
-  }
-  
-  protected void a()
-  {
+    double d2 = -1.0D;
+    int i;
+    double d1;
+    if (a > 0)
+    {
+      i = paramBitmap.getWidth() * paramBitmap.getHeight();
+      d1 = d2;
+      if (i > a) {
+        d1 = Math.sqrt(a / i);
+      }
+    }
+    while (d1 <= 0.0D)
+    {
+      return paramBitmap;
+      d1 = d2;
+      if (b > 0)
+      {
+        i = Math.max(paramBitmap.getWidth(), paramBitmap.getHeight());
+        d1 = d2;
+        if (i > b) {
+          d1 = b / i;
+        }
+      }
+    }
     try
     {
-      jdField_a_of_type_Boolean = true;
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      Iterator localIterator2 = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator2.hasNext())
-      {
-        Map localMap = (Map)localIterator2.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("VFSRegisterProxy", 2, "statisticsReportCache params -> " + localMap);
-        }
-        azmz.a(BaseApplicationImpl.getContext()).a(str, "vfs_statistics_tag", true, 0L, 0L, (HashMap)localMap, null);
-      }
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+      paramBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)Math.ceil(paramBitmap.getWidth() * d1), (int)Math.ceil(d1 * paramBitmap.getHeight()), false);
+      return paramBitmap;
     }
-    catch (Exception localException)
+    catch (OutOfMemoryError paramBitmap)
     {
-      QLog.d("VFSRegisterProxy", 1, "statisticsReportCache report error!", localException);
-      return;
+      QLog.e("VasPalette", 1, "scaleBitmapDown failed.", paramBitmap);
     }
-    Iterator localIterator1 = b.iterator();
-    while (localIterator1.hasNext()) {
-      a((Throwable)localIterator1.next());
-    }
-    b.clear();
+    return null;
   }
   
-  public void deleteFiles(CancellationSignalCompat paramCancellationSignalCompat) {}
-  
-  public void reportError(Throwable paramThrowable)
+  public static List<bduw> a(Bitmap paramBitmap)
   {
-    QLog.e("VFSRegisterProxy", 1, paramThrowable, new Object[0]);
-    if (jdField_a_of_type_Boolean)
+    if (paramBitmap != null)
     {
-      a(paramThrowable);
-      return;
+      paramBitmap = a(paramBitmap);
+      if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+      {
+        bduy localbduy = new bduy();
+        try
+        {
+          localbduy.a(a(paramBitmap), 16);
+          paramBitmap.recycle();
+          return localbduy.a();
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          for (;;)
+          {
+            QLog.e("VasPalette", 1, localOutOfMemoryError.getMessage());
+          }
+        }
+      }
     }
-    b.add(paramThrowable);
+    return null;
   }
   
-  public void statistics(String paramString, int paramInt, Map<String, Object> paramMap)
+  private static int[] a(Bitmap paramBitmap)
   {
-    if (paramMap != null) {
-      try
-      {
-        paramMap.put("id", paramString);
-        paramMap.put("phase", String.valueOf(paramInt));
-        if (jdField_a_of_type_Boolean)
-        {
-          paramString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-          azmz.a(BaseApplicationImpl.getContext()).a(paramString, "vfs_statistics_tag", true, 0L, 0L, (HashMap)paramMap, null);
-        }
-        while (QLog.isColorLevel())
-        {
-          QLog.d("VFSRegisterProxy", 2, "report params -> " + paramMap + ", mCanAccurReport = " + jdField_a_of_type_Boolean);
-          return;
-          jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramMap);
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        QLog.d("VFSRegisterProxy", 1, "vfs report error!", paramString);
-      }
-    }
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    int[] arrayOfInt = new int[i * j];
+    paramBitmap.getPixels(arrayOfInt, 0, i, 0, 0, i, j);
+    return arrayOfInt;
   }
 }
 

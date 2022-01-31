@@ -1,48 +1,36 @@
-import com.qq.taf.jce.JceStruct;
-import com.tencent.tmassistant.common.ProtocolPackage;
-import com.tencent.tmassistant.common.jce.ReqHead;
-import com.tencent.tmassistant.common.jce.Request;
-import com.tencent.tmassistant.common.jce.SdkInfo;
-import com.tencent.tmassistant.common.jce.Ticket;
-import com.tencent.tmassistant.common.jce.TicketWtLogin;
-import com.tencent.tmassistantbase.network.PostHttpRequest;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.OpenFrame;
+import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class bfee
-  extends PostHttpRequest
+public class bfee
+  implements bhuw
 {
-  public int a(JceStruct paramJceStruct)
+  public bfee(FriendChooser paramFriendChooser) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    try
-    {
-      paramJceStruct = ProtocolPackage.buildRequest(paramJceStruct);
-      if (paramJceStruct == null) {
-        return -1;
-      }
+    paramAdapterView = (Friend)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_Bfhr.a(paramAdapterView.a))) {
+      return;
     }
-    catch (Throwable paramJceStruct)
+    if (this.a.jdField_a_of_type_Bfhr.c() >= this.a.jdField_a_of_type_Int)
     {
-      for (;;)
-      {
-        paramJceStruct = null;
-      }
-      Object localObject = new SdkInfo();
-      ((SdkInfo)localObject).versionCode = 1;
-      ((SdkInfo)localObject).versionName = bexd.a().c();
-      ((SdkInfo)localObject).name = "AppNews";
-      ((SdkInfo)localObject).channel = "";
-      ((SdkInfo)localObject).builderNum = "";
-      paramJceStruct.head.sdkInfo = ((SdkInfo)localObject);
-      localObject = new TicketWtLogin();
-      ((TicketWtLogin)localObject).uin = bexd.a().a();
-      ((TicketWtLogin)localObject).A2 = bexd.a().b().getBytes();
-      Ticket localTicket = new Ticket();
-      localTicket.value = ProtocolPackage.jceStructToUTF8Byte((JceStruct)localObject);
-      localTicket.type = 1;
-      paramJceStruct.head.ticket = localTicket;
-      int i = paramJceStruct.head.requestId;
-      sendRequest(ProtocolPackage.buildPostData(paramJceStruct));
-      return i;
+      this.a.h();
+      return;
     }
+    paramView = (OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView();
+    this.a.b.add(paramAdapterView);
+    this.a.jdField_a_of_type_Bfhr.a(paramAdapterView.a);
+    this.a.e();
+    paramView.g();
+    this.a.b(false);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
   }
 }
 

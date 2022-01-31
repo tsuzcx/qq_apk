@@ -1,47 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.subscribe.comment.CommentEditText;
-import com.tencent.qphone.base.util.QLog;
-
-public class ybr
-  implements TextWatcher
+class ybr
+  implements ymm
 {
-  int jdField_a_of_type_Int = -1;
-  String jdField_a_of_type_JavaLangString = null;
+  ybr(ybq paramybq, String paramString1, String paramString2) {}
   
-  public ybr(CommentEditText paramCommentEditText) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    try
+    if (!paramBoolean2)
     {
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setText(this.jdField_a_of_type_JavaLangString);
-      if (i > this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.length()) {
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setSelection(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.length());
+      this.jdField_a_of_type_Ybq.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0}" });
+      if (ybq.a(this.jdField_a_of_type_Ybq) == null)
+      {
+        ybq.a(this.jdField_a_of_type_Ybq, yqz.a());
+        ybq.a(this.jdField_a_of_type_Ybq).a();
       }
+      ybq.a(this.jdField_a_of_type_Ybq).i(paramString, this.b);
+      zaj.a(paramString, "auth_follow", "clk_unfollow", 0, 0, new String[] { "", "", this.b });
       return;
     }
-    catch (Exception paramEditable)
-    {
-      QLog.e("CommentInputPopupWindow", 1, "setTextError");
-    }
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramInt2 = paramCharSequence.toString().indexOf("[/", paramInt1);
-    int i = paramCharSequence.toString().indexOf(']', paramInt1);
-    if ((paramInt2 >= paramInt1) && (paramInt2 < paramInt1 + paramInt3) && ((i > paramInt1 + paramInt3) || (i == -1)))
-    {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.getSelectionEnd();
-      this.jdField_a_of_type_JavaLangString = (paramCharSequence.subSequence(0, paramInt2).toString() + paramCharSequence.subSequence(paramInt1 + paramInt3, paramCharSequence.length()));
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = null;
+    zaj.a(paramString, "auth_follow", "clk_cancel", 0, 0, new String[] { "", "", this.b });
   }
 }
 

@@ -1,23 +1,25 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.graphics.Bitmap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.tavcut.session.TAVCutVideoSession;
+import com.tencent.tavcut.session.callback.FrameExtractCallback;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
 
-class blnn
-  implements Handler.Callback
+public class blnn
+  implements FrameExtractCallback
 {
-  blnn(blnl paramblnl) {}
+  public blnn(AEEditorVideoEditFragment paramAEEditorVideoEditFragment, String paramString1, String paramString2, String paramString3) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onFrameExtracted(Bitmap paramBitmap)
   {
-    switch (paramMessage.what)
+    bdhb.a(paramBitmap, this.jdField_a_of_type_JavaLangString);
+    blkf.a().a(this.b, AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment), this.c, this.jdField_a_of_type_JavaLangString, AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment).getMediaModel());
+    this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment.b();
+    if (this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment.getActivity() == null)
     {
+      blpw.a(BaseApplicationImpl.getContext(), this.c, this.jdField_a_of_type_JavaLangString, this.b, AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment), AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment), AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment));
+      return;
     }
-    for (;;)
-    {
-      return false;
-      if ((paramMessage.obj instanceof blnt)) {
-        paramMessage = (blnt)paramMessage.obj;
-      }
-    }
+    AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment, this.c, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

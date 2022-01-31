@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-public abstract interface auyf
+public class auyf
+  implements DialogInterface.OnClickListener
 {
-  @Deprecated
-  public abstract void a();
+  public auyf(GameRoomInviteActivity paramGameRoomInviteActivity, bdjz parambdjz) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(VideoData paramVideoData);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bdjz.dismiss();
+  }
 }
 
 

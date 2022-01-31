@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import amzf;
-import azmz;
+import ando;
+import azri;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARReport$11
   implements Runnable
 {
-  public ARReport$11(amzf paramamzf, long paramLong, boolean paramBoolean) {}
+  public ARReport$11(ando paramando, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ARReport$11
     }
     for (;;)
     {
-      azmz.a(BaseApplication.getContext()).a("", "ARLocalMarkerRecoglSo", true, 0L, 0L, localHashMap, "");
+      azri.a(BaseApplication.getContext()).a("", "ARLocalMarkerRecoglSo", true, 0L, 0L, localHashMap, "");
       return;
       localHashMap.put("result", "1");
     }

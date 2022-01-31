@@ -10,7 +10,7 @@ class nvv
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
-    bdcd.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
+    bdgm.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.transfile;
 
-import baqf;
+import bauo;
 
 public class LightVideoUploadProcessor$2
   implements Runnable
 {
-  public LightVideoUploadProcessor$2(baqf parambaqf) {}
+  public LightVideoUploadProcessor$2(bauo parambauo) {}
   
   public void run()
   {
-    baqf.a(this.this$0, 1003);
+    bauo.a(this.this$0, 1003);
   }
 }
 

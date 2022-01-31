@@ -1,21 +1,88 @@
-import android.os.Handler;
-import com.tencent.biz.qqcircle.report.QCircleLpReportDc05502.1;
-import feedcloud.FeedCloudCommon.Entry;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentVideo;
+import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
 import java.util.List;
 
-public class tyh
+class tyh
+  implements View.OnClickListener
 {
-  public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, FeedCloudMeta.StFeed paramStFeed, List<FeedCloudCommon.Entry> paramList)
-  {
-    int i = tym.a().a();
-    int j = tym.a().b();
-    typ.a().a().post(new QCircleLpReportDc05502.1(paramString1, paramInt3, paramString2, paramString3, i, j, paramString4, paramString5, paramString6, paramString7, paramList, paramStFeed, paramInt1, paramInt2));
-  }
+  tyh(txz paramtxz) {}
   
-  private static int b()
+  public void onClick(View paramView)
   {
-    return 5502;
+    boolean bool2 = false;
+    trz localtrz = new trz();
+    Object localObject = null;
+    ReportExtraTypeInfo localReportExtraTypeInfo = new ReportExtraTypeInfo();
+    paramView = (View)localObject;
+    if (txz.a(this.a) != null)
+    {
+      paramView = (View)localObject;
+      if (txz.a(this.a).a() != null)
+      {
+        localObject = txz.a(this.a).a();
+        if (!(localObject instanceof txm)) {
+          break label267;
+        }
+        paramView = ((txm)localObject).a;
+        if (paramView == null) {
+          break label304;
+        }
+        paramView = (FeedCloudMeta.StFeed)paramView.a();
+      }
+    }
+    for (;;)
+    {
+      localReportExtraTypeInfo.mFeed = paramView;
+      localReportExtraTypeInfo.mDataPosition = ((RecyclerView.ViewHolder)localObject).getAdapterPosition();
+      localReportExtraTypeInfo.mPlayScene = 2;
+      localtrz.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = localReportExtraTypeInfo;
+      localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramView;
+      localtrz.jdField_a_of_type_Int = 0;
+      if (!tra.a(localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed)) {}
+      for (boolean bool1 = true;; bool1 = false)
+      {
+        localtrz.c = bool1;
+        localtrz.b = tra.a(localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed);
+        localtrz.d = false;
+        if (localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null)
+        {
+          localObject = localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.opMask2.get();
+          if ((localObject != null) && (((List)localObject).contains(Integer.valueOf(3))))
+          {
+            bool1 = bool2;
+            if (!tra.a((FeedCloudMeta.StUser)localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.get())) {
+              bool1 = true;
+            }
+            localtrz.d = bool1;
+          }
+        }
+        if (paramView != null)
+        {
+          this.a.b("share_action_show_share_sheet", localtrz);
+          txz.a(this.a, true);
+        }
+        return;
+        label267:
+        if (!(localObject instanceof txn)) {
+          break label304;
+        }
+        paramView = ((txn)localObject).a;
+        if (paramView == null) {
+          break label304;
+        }
+        paramView = (FeedCloudMeta.StFeed)paramView.a();
+        break;
+      }
+      label304:
+      paramView = null;
+    }
   }
 }
 

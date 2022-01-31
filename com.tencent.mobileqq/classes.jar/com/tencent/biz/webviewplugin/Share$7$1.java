@@ -2,17 +2,17 @@ package com.tencent.biz.webviewplugin;
 
 import android.app.Activity;
 import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import zbj;
-import zbm;
+import zfy;
+import zgb;
 
 public class Share$7$1
   implements Runnable
 {
-  public Share$7$1(zbm paramzbm, GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse) {}
+  public Share$7$1(zgb paramzgb, GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Zbm.a.a(this.jdField_a_of_type_Zbm.a.a.getApplicationContext(), this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse);
+    this.jdField_a_of_type_Zgb.a.a(this.jdField_a_of_type_Zgb.a.a.getApplicationContext(), this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse);
   }
 }
 

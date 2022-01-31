@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import aanp;
+import aase;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.Application;
@@ -32,7 +32,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bngs;
+import bnle;
 import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerVideoItemData;
 import com.tencent.biz.pubaccount.readinjoy.ad.view.ClipLayout;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
@@ -324,17 +324,17 @@ public class ReadInjoyIMAXAdFragment
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_b_of_type_AndroidOsHandler = new pbs(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewClipLayout = ((ClipLayout)this.jdField_f_of_type_AndroidViewView.findViewById(2131379595));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131368038));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131368037));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131368041));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131379101));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131369662);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131369722);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131375946);
-    this.jdField_d_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131375945);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131371344));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131379602));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewClipLayout = ((ClipLayout)this.jdField_f_of_type_AndroidViewView.findViewById(2131379653));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131368049));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131368048));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131368052));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131379159));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131369681);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131369741);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131375999);
+    this.jdField_d_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131375998);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131371363));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131379660));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewClipLayout.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this);
@@ -399,7 +399,7 @@ public class ReadInjoyIMAXAdFragment
     }
     catch (Throwable paramContext)
     {
-      aanp.a("ReadInjoyIMAXAdFragment", "installSDK t==" + paramContext.toString());
+      aase.a("ReadInjoyIMAXAdFragment", "installSDK t==" + paramContext.toString());
     }
   }
   
@@ -817,12 +817,12 @@ public class ReadInjoyIMAXAdFragment
       {
         this.jdField_b_of_type_Boolean = true;
         this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(true);
-        this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130842528));
+        this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130842541));
         return;
       }
       this.jdField_b_of_type_Boolean = false;
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(false);
-      this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130842529));
+      this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130842542));
       return;
       getActivity().finish();
     } while (this.jdField_h_of_type_Boolean);
@@ -832,19 +832,19 @@ public class ReadInjoyIMAXAdFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_f_of_type_AndroidViewView = ((ViewGroup)rha.a(2131560047, true, new ViewGroup.LayoutParams(-1, -1)));
+    this.jdField_f_of_type_AndroidViewView = ((ViewGroup)rha.a(2131560046, true, new ViewGroup.LayoutParams(-1, -1)));
     paramLayoutInflater = paramViewGroup.getContext();
     this.jdField_a_of_type_AndroidContentContext = paramLayoutInflater;
     b(paramLayoutInflater);
     rdm.a(getActivity());
     getActivity().getWindow().setFlags(1024, 1024);
-    bngs.a(getActivity());
-    if (bngs.b()) {
-      bngs.c(getActivity());
+    bnle.a(getActivity());
+    if (bnle.b()) {
+      bnle.c(getActivity());
     }
-    if (bngs.b())
+    if (bnle.b())
     {
-      this.n = bngs.b(getActivity());
+      this.n = bnle.b(getActivity());
       paramLayoutInflater = (RelativeLayout.LayoutParams)this.jdField_d_of_type_AndroidWidgetImageView.getLayoutParams();
       int i1 = paramLayoutInflater.topMargin + this.n;
       paramLayoutInflater.topMargin = i1;

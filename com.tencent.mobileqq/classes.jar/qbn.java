@@ -8,15 +8,15 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class qbn
   extends qbh
 {
-  public qbn(Context paramContext, bcws parambcws, rqj paramrqj)
+  public qbn(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()
   {
     this.jdField_a_of_type_Boolean = true;
-    return d(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).q().g().l().j().n();
+    return d(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).q().g().l().j().n();
   }
   
   public pxl d()
@@ -35,7 +35,7 @@ public class qbn
       LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
       localLinearLayout2.setOrientation(1);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.setMargins(aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLayoutParams.setMargins(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       localLinearLayout2.setLayoutParams(localLayoutParams);
       localLinearLayout2.addView((ComponentContentBigImageVideo)this.jdField_a_of_type_Pxk);
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import aizx;
+import ajem;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
@@ -31,7 +31,7 @@ public class EmojiGifHelper
       getInstance().compositeAndTransToGifInner(paramConvertParam, paramOnConvertListener);
       return;
     }
-    aizx.a(paramConvertParam, new EmojiGifHelper.1(paramOnConvertListener));
+    ajem.a(paramConvertParam, new EmojiGifHelper.1(paramOnConvertListener));
   }
   
   public static EmojiGifHelper getInstance()
@@ -58,7 +58,7 @@ public class EmojiGifHelper
       getInstance().removeTaskInner(paramInt);
       return;
     }
-    aizx.a(paramInt);
+    ajem.a(paramInt);
   }
   
   private void sendPicToAIO(EmojiGifHelper.EmojiInfo paramEmojiInfo)

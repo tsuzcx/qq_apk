@@ -1,6 +1,15 @@
-public abstract interface befd
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class befd
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  befd(befc parambefc) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

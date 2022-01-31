@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public class aixk
-  implements aemp
+class aixk
+  extends RecyclerView.ViewHolder
 {
-  public aixk(RedPacketManager paramRedPacketManager, IRedPacket.OnGetSkinListener paramOnGetSkinListener) {}
+  aixl jdField_a_of_type_Aixl;
   
-  public void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  aixk(aixj paramaixj, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener.onGetSkin(paramRedPacketInfo);
+    super(paramView);
+    this.jdField_a_of_type_Aixl = ((aixl)paramView);
   }
 }
 

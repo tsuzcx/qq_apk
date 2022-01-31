@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
 import android.util.Base64;
-import bgkz;
+import bgpg;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.RequestProxy.RequestListener;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -55,7 +55,7 @@ class ChannelProxyDefault$3
       }
       localJSONObject.put("statusCode", paramInt);
       localJSONObject.put("wnsCode", 0);
-      localJSONObject.put("header", bgkz.a(paramMap));
+      localJSONObject.put("header", bgpg.a(paramMap));
       if (this.val$listener == null) {
         return;
       }

@@ -1,33 +1,44 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class adtp
-  extends RecyclerView.ViewHolder
+public class adtp
+  implements bhuk
 {
-  View jdField_a_of_type_AndroidViewView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  URLImageView b;
+  public adtp(RecentLoginDevActivity paramRecentLoginDevActivity, String paramString, ArrayList paramArrayList, int paramInt) {}
   
-  public adtp(adto paramadto, View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368042));
-    this.b = ((URLImageView)paramView.findViewById(2131368057));
-    this.b.setBackgroundDrawable(a());
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369748);
-  }
-  
-  private Drawable a()
-  {
-    Resources localResources = this.itemView.getResources();
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(aekt.a(5.0F, localResources));
-    localGradientDrawable.setStroke(aekt.a(1.5F, localResources), localResources.getColor(2131167003));
-    return localGradientDrawable;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if ((RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity) != null) && (RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.isFinishing()))
+      {
+        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).dismiss();
+        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).cancel();
+        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, null);
+      }
+      return;
+      if (!bdin.d(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity))
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.getString(2131692398), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.getTitleBarHeight());
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.devlock.RecentLoginDevActivity", 2, "OnClick begin to delHistoryDev");
+        }
+        if (aqbd.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int)) {
+          RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity);
+        } else if (QLog.isColorLevel()) {
+          QLog.d("Q.devlock.RecentLoginDevActivity", 2, "showDelDevActionSheet.OnClick delHistoryDev failed");
+        }
+      }
+    }
   }
 }
 

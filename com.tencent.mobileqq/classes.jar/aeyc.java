@@ -1,53 +1,23 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.ListView;
+import android.content.Context;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenPanel;
 
 public class aeyc
-  implements afal
+  extends AccessibilityDelegateCompat
 {
-  private aeyd jdField_a_of_type_Aeyd;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private boolean jdField_a_of_type_Boolean;
+  public aeyc(ListenPanel paramListenPanel) {}
   
-  public aeyc(BaseChatPie paramBaseChatPie)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  private ListView a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof agnz)) {
-      return ((agnz)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a();
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (ListenPanel.a(this.a) < 1000.0D) {}
+    for (int i = 0;; i = (int)(ListenPanel.a(this.a) / 1000.0D + 0.5D))
     {
-    default: 
-    case 2: 
-    case 6: 
-    case 17: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_Aeyd = new aeyd();
-        return;
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Aeyd.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
-        return;
-      } while (!this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Aeyd.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
+      paramAccessibilityNodeInfoCompat.setContentDescription(i + this.a.getContext().getString(2131691158));
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Aeyd = null;
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 2, 6, 11, 17 };
   }
 }
 

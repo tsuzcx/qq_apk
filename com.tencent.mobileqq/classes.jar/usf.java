@@ -1,71 +1,86 @@
-import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class usf
-  extends uqq<usi>
+  extends utx
 {
-  private long jdField_a_of_type_Long;
-  private utn jdField_a_of_type_Utn = new usg(this);
+  public static final String a;
+  public static final String b = uqn.a("StorySvc.del_feed_comment");
+  public static final String c = uqn.a("StorySvc.get_comment_list");
+  protected int a;
+  protected ust a;
   protected boolean a;
+  private String d;
   
-  public usf()
+  static
   {
-    d();
+    jdField_a_of_type_JavaLangString = uqn.a("StorySvc.add_feed_comment");
   }
   
-  private void d()
+  public usf(ust paramust)
   {
-    Object localObject = (urk)urr.a(10);
-    this.jdField_a_of_type_Long = ((Long)((urk)localObject).b("edit_video_weather_expiry_time", Long.valueOf(0L))).longValue();
-    if (this.jdField_a_of_type_Long >= System.currentTimeMillis())
+    this.jdField_a_of_type_Ust = paramust;
+  }
+  
+  public static void a(CommentEntry paramCommentEntry, uud paramuud)
+  {
+    paramCommentEntry = new usj(paramCommentEntry, paramuud);
+    paramuud = new usk(paramuud);
+    utz.a().a(paramCommentEntry, paramuud);
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    long l = System.currentTimeMillis();
+    Object localObject1 = null;
+    try
     {
-      int i = ((Integer)((urk)localObject).b("edit_video_weather_filter_data", Integer.valueOf(-999))).intValue();
-      localObject = (String)((urk)localObject).b("edit_video_weather_desc", "");
-      if ((i != -999) && (!TextUtils.isEmpty((CharSequence)localObject)))
+      Object localObject2 = new JSONObject();
+      ((JSONObject)localObject2).putOpt("vid", paramString3);
+      ((JSONObject)localObject2).putOpt("feedid", paramString4);
+      ((JSONObject)localObject2).putOpt("pvid", paramString5);
+      ((JSONObject)localObject2).putOpt("styles", new JSONArray(paramString6));
+      localObject2 = ((JSONObject)localObject2).toString();
+      localObject1 = localObject2;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        wsv.b("WeatherDataProvider", "get local weather data. temperature = %d. expiryTime = %d. currentTime=%d.", Integer.valueOf(i), Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(System.currentTimeMillis()));
-        this.jdField_a_of_type_JavaLangObject = new usi(i, (String)localObject);
-        return;
+        QLog.e("Q.qqstory:FeedCommentDataProvider", 2, "addGamePKComment jsonException " + localJSONException);
       }
     }
-    wsv.d("WeatherDataProvider", "no valid local weather data.");
+    a(paramString1, null, paramString2, l, paramInt, localObject1, 4, new usg(paramString1, paramInt, l, paramString2, paramString3, paramString4, paramString5, paramString6));
   }
   
-  public usi a()
+  public static void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, String paramString4, int paramInt2, uud paramuud)
   {
-    if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_a_of_type_Long >= System.currentTimeMillis())) {
-      return null;
-    }
-    return (usi)this.jdField_a_of_type_JavaLangObject;
+    paramString1 = new ush(paramString1, paramString2, paramString3, paramLong, paramInt1, paramString4, paramInt2, paramuud);
+    paramString2 = new usi(paramuud);
+    utz.a().a(paramString1, paramString2);
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  public static void b(CommentEntry paramCommentEntry, uud paramuud)
   {
-    wsv.a("WeatherDataProvider", "requestWeather[longitude=%s,latitude=%s]", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-    vca localvca = new vca(1, paramInt1, paramInt2);
-    ung.a().a(localvca, new ush(this));
+    paramCommentEntry = new ush(paramCommentEntry, paramuud);
+    paramuud = new usi(paramuud);
+    utz.a().a(paramCommentEntry, paramuud);
   }
   
-  protected void a(utj paramutj)
+  public void a()
   {
-    wsv.b("WeatherDataProvider", "requestWeather.");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      wsv.b("WeatherDataProvider", "is request ing....");
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    utk localutk = (utk)urr.a(9);
-    utj localutj = paramutj;
-    if (paramutj == null) {
-      localutj = localutk.b();
-    }
-    if (localutj != null)
-    {
-      a(localutj.b, localutj.a);
-      return;
-    }
-    localutk.a(this.jdField_a_of_type_Utn);
-    localutk.c();
+    a(this.jdField_a_of_type_Ust.a.feedId, 0);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    paramString = new usl(this, paramString, paramInt);
+    usm localusm = new usm(this);
+    utz.a().a(paramString, localusm);
   }
 }
 

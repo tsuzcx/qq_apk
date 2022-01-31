@@ -1,39 +1,23 @@
 import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class vom
-  extends vnz
+final class vom
+  extends SimpleJob<Object>
 {
-  public ImageView a;
-  private voo jdField_a_of_type_Voo;
-  private xmj jdField_a_of_type_Xmj;
-  
-  public vom(@NonNull ViewGroup paramViewGroup)
+  vom(String paramString)
   {
-    super(paramViewGroup);
+    super(paramString);
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return paramViewGroup;
-  }
-  
-  public void a(int paramInt)
-  {
-    wsv.b(this.jdField_a_of_type_JavaLangString, "setVisibility ignore");
-  }
-  
-  protected void b()
-  {
-    super.b();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379721));
-    ((StoryPlayerGroupHolder)a()).a.setOnTouchListener(new vop(this, null));
-    this.jdField_a_of_type_Voo = new voo(this, null);
-    this.jdField_a_of_type_Xmj = new xmj(a(), this.jdField_a_of_type_Voo);
-    this.jdField_a_of_type_Xmj.a(50);
+    paramJobContext = voi.a();
+    if (paramJobContext != null) {
+      voi.b(paramJobContext);
+    }
+    return null;
   }
 }
 

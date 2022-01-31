@@ -1,25 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import java.util.List;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class anyz
-  implements View.OnClickListener
+public class anyz
+  extends ContentObserver
 {
-  anyx jdField_a_of_type_Anyx;
-  anzb jdField_a_of_type_Anzb;
-  
-  anyz(anyx paramanyx, anzb paramanzb)
+  public anyz(BusinessCardEditActivity paramBusinessCardEditActivity, Handler paramHandler)
   {
-    this.jdField_a_of_type_Anyx = paramanyx;
-    this.jdField_a_of_type_Anzb = paramanzb;
+    super(paramHandler);
   }
   
-  public void onClick(View paramView)
+  public void onChange(boolean paramBoolean)
   {
-    anxn.a(paramView.getContext(), (ColorNote)anyx.a(this.jdField_a_of_type_Anyx).get(this.jdField_a_of_type_Anzb.getAdapterPosition()));
-    if (anyx.a(this.jdField_a_of_type_Anyx) != null) {
-      anyx.a(this.jdField_a_of_type_Anyx).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_EditActivity", 2, "Contact changed selfChange=" + paramBoolean);
+    }
+    if (BusinessCardEditActivity.a(this.a))
+    {
+      this.a.a(2131698953, 2);
+      BusinessCardEditActivity.a(this.a, false);
     }
   }
 }

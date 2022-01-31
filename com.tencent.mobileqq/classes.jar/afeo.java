@@ -1,20 +1,36 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class afeo
-  implements QQPermissionCallback
+public class afeo
+  implements affa
 {
-  afeo(afem paramafem, BaseActivity paramBaseActivity) {}
+  private BaseChatPie a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public afeo(BaseChatPie paramBaseChatPie)
   {
-    bdcd.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
-    this.jdField_a_of_type_Afem.denied();
+    this.a = paramBaseChatPie;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  private void a()
   {
-    this.jdField_a_of_type_Afem.grant();
+    if ((this.a != null) && (this.a.a != null)) {
+      ((auqc)this.a.a.getManager(324)).onDestroy();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 11 };
   }
 }
 

@@ -1,17 +1,12 @@
-import android.view.View;
-
-public abstract class aexo
+public class aexo
 {
-  private View a;
+  public int a;
+  public String a;
   
-  public View a()
+  private aexo(aexk paramaexk, String paramString, int paramInt)
   {
-    return this.a;
-  }
-  
-  public void a(View paramView)
-  {
-    this.a = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

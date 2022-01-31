@@ -1,36 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import java.util.List;
 
-class wey
-  implements View.OnTouchListener
+public class wey
+  extends wmf
 {
-  wey(wew paramwew) {}
+  protected final int a;
+  protected final String a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public wey(String paramString1, int paramInt, String paramString2)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (wew.a(this.a)) {
-        break label105;
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(wew.a(this.a), wew.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, wew.a(this.a).jdField_a_of_type_Boolean);
-      wew.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
-      paramView = this.a;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
-        break label100;
-      }
-    }
-    label100:
-    for (boolean bool = true;; bool = false)
-    {
-      wew.a(paramView, bool);
-      return false;
-    }
-    label105:
-    this.a.b();
-    return false;
+    super(paramString1, paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected vce a(String paramString, List<String> paramList)
+  {
+    return new vek(paramString, paramList);
+  }
+  
+  protected vcf a()
+  {
+    return new wez(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.c);
   }
 }
 

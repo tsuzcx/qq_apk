@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -20,7 +20,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhpy;
+import bhuf;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -82,7 +82,7 @@ public class GAudioMembersCtrlActivity
       }
     }
     label43:
-    for (String str = alpo.a(2131705531);; str = alpo.a(2131705530))
+    for (String str = alud.a(2131705543);; str = alud.a(2131705542))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(str, new Object[] { Integer.valueOf(paramInt) }));
       return;
@@ -107,35 +107,35 @@ public class GAudioMembersCtrlActivity
   @TargetApi(14)
   private void d()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)super.findViewById(2131375981);
+    RelativeLayout localRelativeLayout = (RelativeLayout)super.findViewById(2131376034);
     if ((ImmersiveUtils.isSupporImmersive() == 1) && (Build.VERSION.SDK_INT >= 14)) {
       localRelativeLayout.setFitsSystemWindows(true);
     }
     boolean bool = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368659));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131368620);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)super.findViewById(2131378400));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372734));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368670));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131368631);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)super.findViewById(2131378454));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372760));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
     if (bool)
     {
       localRelativeLayout.setBackgroundColor(Color.parseColor("#000000"));
-      super.findViewById(2131377903).setBackgroundColor(-16777216);
-      super.findViewById(2131372036).setBackgroundColor(Color.parseColor("#000000"));
-      ((TextView)super.findViewById(2131368613)).setBackgroundDrawable(getResources().getDrawable(2130849471));
+      super.findViewById(2131377957).setBackgroundColor(-16777216);
+      super.findViewById(2131372056).setBackgroundColor(Color.parseColor("#000000"));
+      ((TextView)super.findViewById(2131368624)).setBackgroundDrawable(getResources().getDrawable(2130849544));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#A8A8A8"));
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#A8A8A8"));
     }
     Object localObject;
     if (this.jdField_a_of_type_Boolean)
     {
-      localObject = super.getLayoutInflater().inflate(2131559570, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
+      localObject = super.getLayoutInflater().inflate(2131559569, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
       if (!bool) {
         break label383;
       }
-      ((View)localObject).findViewById(2131375981).setBackgroundColor(Color.parseColor("#080808"));
-      ((TextView)((View)localObject).findViewById(2131377567)).setTextColor(Color.parseColor("#757575"));
+      ((View)localObject).findViewById(2131376034).setBackgroundColor(Color.parseColor("#080808"));
+      ((TextView)((View)localObject).findViewById(2131377621)).setTextColor(Color.parseColor("#757575"));
     }
     label383:
     for (;;)
@@ -155,7 +155,7 @@ public class GAudioMembersCtrlActivity
       for (localObject = "#080808";; localObject = "#F5F6FA")
       {
         localView.setBackgroundColor(Color.parseColor((String)localObject));
-        localView.setLayoutParams(new AbsListView.LayoutParams(-1, aekt.a(12.0F, localRelativeLayout.getResources())));
+        localView.setLayoutParams(new AbsListView.LayoutParams(-1, aepi.a(12.0F, localRelativeLayout.getResources())));
         localObject = localView;
         break;
       }
@@ -168,15 +168,15 @@ public class GAudioMembersCtrlActivity
       QLog.d("GAudioMembersCtrlActivity", 2, "showMenuMuteAll");
     }
     b();
-    bhpy localbhpy = bhpy.c(this);
-    View localView = super.getLayoutInflater().inflate(2131559566, null);
-    TextView localTextView1 = (TextView)localView.findViewById(2131372618);
+    bhuf localbhuf = bhuf.c(this);
+    View localView = super.getLayoutInflater().inflate(2131559565, null);
+    TextView localTextView1 = (TextView)localView.findViewById(2131372644);
     localView.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    localbhpy.a(localView);
+    localbhuf.a(localView);
     localView = new View(this);
     localView.setBackgroundColor(Color.parseColor("#E5E6E7"));
-    localView.setLayoutParams(new ViewGroup.LayoutParams(-1, aekt.a(1.0F, getResources())));
-    localbhpy.a(localView);
+    localView.setLayoutParams(new ViewGroup.LayoutParams(-1, aepi.a(1.0F, getResources())));
+    localbhuf.a(localView);
     localView = super.getLayoutInflater().inflate(2131558434, null);
     TextView localTextView2 = (TextView)localView.findViewById(2131361915);
     localView.setId(0);
@@ -185,18 +185,18 @@ public class GAudioMembersCtrlActivity
     int i;
     if (this.jdField_a_of_type_ComTencentAvVideoController.a().V)
     {
-      localTextView2.setText(super.getString(2131695995));
+      localTextView2.setText(super.getString(2131695997));
       localTextView2.setTextColor(super.getResources().getColor(2131165204));
       if (bool) {}
-      for (i = 2131695996;; i = 2131695997)
+      for (i = 2131695998;; i = 2131695999)
       {
         localTextView1.setText(super.getString(i));
-        localbhpy.a(localView);
-        localbhpy.d(super.getResources().getString(2131690624));
-        localView.setOnClickListener(new mgl(this, localbhpy));
-        localbhpy.setOnDismissListener(new mgm(this));
-        localbhpy.setCanceledOnTouchOutside(true);
-        this.jdField_a_of_type_AndroidAppDialog = localbhpy;
+        localbhuf.a(localView);
+        localbhuf.d(super.getResources().getString(2131690624));
+        localView.setOnClickListener(new mgl(this, localbhuf));
+        localbhuf.setOnDismissListener(new mgm(this));
+        localbhuf.setCanceledOnTouchOutside(true);
+        this.jdField_a_of_type_AndroidAppDialog = localbhuf;
         try
         {
           this.jdField_a_of_type_AndroidAppDialog.show();
@@ -207,10 +207,10 @@ public class GAudioMembersCtrlActivity
     }
     else
     {
-      localTextView2.setText(super.getString(2131695998));
+      localTextView2.setText(super.getString(2131696000));
       localTextView2.setTextColor(super.getResources().getColor(2131165201));
       if (bool) {}
-      for (i = 2131695999;; i = 2131696000)
+      for (i = 2131696001;; i = 2131696002)
       {
         localTextView1.setText(super.getString(i));
         break;
@@ -248,13 +248,13 @@ public class GAudioMembersCtrlActivity
     if (locallid != null)
     {
       if (locallid.V) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(super.getString(2131695995));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(super.getString(2131695997));
       }
     }
     else {
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(super.getString(2131695998));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(super.getString(2131696000));
   }
   
   @TargetApi(11)
@@ -329,7 +329,7 @@ public class GAudioMembersCtrlActivity
     this.mActNeedImmersive = false;
     this.isClearCoverLayer = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559568);
+    super.setContentView(2131559567);
     paramBundle = super.getIntent().getStringExtra("discussUin");
     this.jdField_a_of_type_Boolean = super.getIntent().getBooleanExtra("Owner", true);
     this.jdField_b_of_type_Boolean = super.getIntent().getBooleanExtra("isInRoom", true);
@@ -442,7 +442,7 @@ public class GAudioMembersCtrlActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131372734) {
+    if (paramView.getId() == 2131372760) {
       e();
     }
   }

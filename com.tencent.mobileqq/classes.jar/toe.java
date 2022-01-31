@@ -12,8 +12,8 @@ public class toe
   
   public toe(WSTabLayout paramWSTabLayout, @NonNull View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380260));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380257));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380318));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380315));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new tof(this, paramWSTabLayout));
   }
   

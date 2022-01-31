@@ -1,24 +1,54 @@
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.SpecialCareInfo;
-import java.util.Comparator;
+import android.content.Context;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.BrowserAppInterface.TBSLogRunnable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.utils.TbsLogClient;
+import mqq.os.MqqHandler;
 
-class alpb
-  implements Comparator<SpecialCareInfo>
+public class alpb
+  extends TbsLogClient
 {
-  alpb(aloz paramaloz) {}
-  
-  private String a(SpecialCareInfo paramSpecialCareInfo)
+  public alpb(BrowserAppInterface paramBrowserAppInterface, Context paramContext)
   {
-    Friends localFriends = this.a.b(paramSpecialCareInfo.uin);
-    if (localFriends == null) {
-      return paramSpecialCareInfo.uin;
-    }
-    return bdbt.a(localFriends) + localFriends.uin;
+    super(paramContext);
   }
   
-  public int a(SpecialCareInfo paramSpecialCareInfo1, SpecialCareInfo paramSpecialCareInfo2)
+  public void d(String paramString1, String paramString2)
   {
-    return allu.a(a(paramSpecialCareInfo1), a(paramSpecialCareInfo2));
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
+    }
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+  }
+  
+  public void showLog(String paramString)
+  {
+    if (this.a.b == -1) {
+      this.a.b = 0;
+    }
+    if (this.a.b == 1) {
+      this.a.getHandler(BrowserAppInterface.class).post(new BrowserAppInterface.TBSLogRunnable(this.a, paramString));
+    }
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
   }
 }
 

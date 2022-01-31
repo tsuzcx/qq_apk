@@ -54,7 +54,7 @@ public class tne
   
   protected int b()
   {
-    return 2131559873;
+    return 2131559872;
   }
   
   protected void b()
@@ -69,7 +69,7 @@ public class tne
   
   protected void e()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar = ((WSPlayerControlBar)a(2131379807));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar = ((WSPlayerControlBar)a(2131379865));
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.setSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
     i();
   }

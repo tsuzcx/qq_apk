@@ -5,9 +5,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import bepm;
-import bepn;
-import bepo;
+import betv;
+import betw;
+import betx;
 import com.tencent.map.lib.basemap.data.GeoPoint;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.maps.MapView;
@@ -22,7 +22,7 @@ public class QQMapView
   extends MapView
 {
   public static boolean b;
-  public bepo a;
+  public betx a;
   GeoPoint jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint;
   private TencentMap.OnCameraChangeListener jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener;
   public boolean a;
@@ -30,14 +30,14 @@ public class QQMapView
   public QQMapView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = new bepn(this);
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = new betw(this);
     getMap().setOnCameraChangeListener(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener);
   }
   
   public QQMapView(Context paramContext, AttributeSet paramAttributeSet, TencentMapOptions paramTencentMapOptions)
   {
     super(paramContext, paramTencentMapOptions);
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = new bepm(this);
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = new betv(this);
     getMap().setOnCameraChangeListener(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener);
   }
   
@@ -54,7 +54,7 @@ public class QQMapView
       }
     }
     if (!b) {
-      this.jdField_a_of_type_Bepo.onMapScrollEnd(paramCameraPosition);
+      this.jdField_a_of_type_Betx.onMapScrollEnd(paramCameraPosition);
     }
     for (;;)
     {
@@ -67,7 +67,7 @@ public class QQMapView
   
   public void a()
   {
-    this.jdField_a_of_type_Bepo = null;
+    this.jdField_a_of_type_Betx = null;
     this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = null;
   }
   
@@ -82,9 +82,9 @@ public class QQMapView
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void setObserver(bepo parambepo)
+  public void setObserver(betx parambetx)
   {
-    this.jdField_a_of_type_Bepo = parambepo;
+    this.jdField_a_of_type_Betx = parambetx;
   }
 }
 

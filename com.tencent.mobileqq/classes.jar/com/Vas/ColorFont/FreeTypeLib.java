@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
-import bdcb;
+import bdgk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import i;
@@ -28,9 +28,9 @@ public class FreeTypeLib
   {
     int i = 1;
     int[] arrayOfInt = a();
-    int j = (int)bdcb.b();
+    int j = (int)bdgk.b();
     int k = Runtime.getRuntime().availableProcessors();
-    int m = (int)(bdcb.d() / 1024L);
+    int m = (int)(bdgk.d() / 1024L);
     i.a("FreeTypeLib", "......cpuFrequency:" + j + "   maxMemory:" + m);
     int n = arrayOfInt[0];
     int i1 = arrayOfInt[1];

@@ -1,23 +1,4 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.1;
-
-public class anko
-{
-  protected static boolean a = false;
-  
-  public static void a()
-  {
-    if (!a) {
-      a = true;
-    }
-  }
-  
-  public static void a(ankq paramankq)
-  {
-    ThreadManager.post(new ArkMessageServerLogic.1(paramankq), 5, null, true);
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anko

@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
-public class aihi
-  implements DialogInterface.OnClickListener
+class aihi
+  implements bhux
 {
-  public aihi(BindVerifyActivity paramBindVerifyActivity) {}
+  aihi(aiha paramaiha) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramDialogInterface.dismiss();
-    this.a.setResult(0);
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
+    }
+    return true;
   }
 }
 

@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v4.app.FragmentActivity;
 
-class aiat
-  extends avqs
+public class aiat
+  extends aiac
 {
-  aiat(aiak paramaiak) {}
+  public static final int[] a = { 2131690787 };
+  public static final int[] b = { 2131364161 };
   
-  protected void a(Object paramObject)
+  public aiat(FragmentActivity paramFragmentActivity)
   {
-    this.a.g();
-    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a.app.a() != null)) {
-      this.a.a.app.a().e();
-    }
+    super(paramFragmentActivity);
+  }
+  
+  protected int[] a()
+  {
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
   }
 }
 

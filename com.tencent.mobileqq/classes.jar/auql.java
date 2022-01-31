@@ -1,27 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.NearbyFakeActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class auql
-  extends Handler
+class auql
+  extends awkf
 {
-  public auql(NearbyFakeActivity paramNearbyFakeActivity) {}
+  auql(auqc paramauqc, String paramString, aupx paramaupx) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, awjm paramawjm)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiRichMediaSaveManager", 2, "downloadPic key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt);
     }
-    for (;;)
+    int j = 0;
+    String str2 = "";
+    String str1 = str2;
+    int i = j;
+    if (paramawjm != null)
     {
-      super.handleMessage(paramMessage);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyFakeActivity", 2, "procPreload time out");
+      str1 = str2;
+      i = j;
+      if (paramawjm.a != null)
+      {
+        i = paramawjm.a.a;
+        str1 = paramawjm.a.b;
       }
-      NearbyFakeActivity.a(this.a, 1);
     }
+    auqc.a(this.jdField_a_of_type_Auqc, this.jdField_a_of_type_Aupx, paramInt, i, str1);
+  }
+  
+  public void a_(int paramInt, boolean paramBoolean)
+  {
+    auqc.a(this.jdField_a_of_type_Auqc, this.jdField_a_of_type_Aupx, paramInt);
   }
 }
 

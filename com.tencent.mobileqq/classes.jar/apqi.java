@@ -1,54 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import java.lang.ref.WeakReference;
 
 class apqi
-  extends alku
+  extends VasQuickUpdateManager.CallBacker
 {
-  apqi(apqf paramapqf) {}
+  apqi(apqh paramapqh) {}
   
-  protected void a()
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelCameraHelper", 2, "CameraEmo, onCameraEmoInsert");
-    }
-    this.a.k();
-    if ((this.a.a.a != null) && (((apjm)this.a.a.a.getManager(333)).a() > 0)) {
-      this.a.j();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelCameraHelper", 2, "CameraEmo, doOnGetEmoListResult");
-    }
-    if (paramInt == 0)
+    paramString2 = (MessengerService)this.a.a.get();
+    if (paramString2 == null) {}
+    do
     {
-      if ((this.a.a.a != null) && (((apjm)this.a.a.a.getManager(333)).a() > 0)) {
-        this.a.j();
-      }
-      this.a.k();
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelCameraHelper", 2, "CameraEmo, onCameraEmoSend");
-    }
-    this.a.k();
-    apqf.a(this.a, paramInt);
-  }
-  
-  protected void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelCameraHelper", 2, "CameraEmo, doOnDeleteEmoResult");
-    }
-    if (paramInt == 0) {
-      this.a.k();
-    }
+      do
+      {
+        return;
+      } while ((paramLong != 15L) || (!paramString1.startsWith("card.")));
+      paramString1 = new Bundle();
+    } while ((this == null) || (this.a.a.get() == null) || (paramString2.d == null));
+    paramString2.d.putString("cmd", "card_download");
+    paramString1.putInt("result", paramInt1);
+    paramString1.putString("message", paramString3);
+    paramString2.d.putBundle("response", paramString1);
+    paramString2.a(paramString2.d);
+    paramString2.d = null;
   }
 }
 

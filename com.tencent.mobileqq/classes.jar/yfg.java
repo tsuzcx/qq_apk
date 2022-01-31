@@ -1,49 +1,79 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import android.annotation.TargetApi;
+import android.app.Dialog;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.view.Window;
 
 public class yfg
-  implements yvn<CertifiedAccountRead.StGetMainPageRsp>
+  extends Dialog
 {
-  public yfg(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public yfg(@NonNull Context paramContext, int paramInt)
   {
-    SubscribePersonalDetailFragment.a(this.a, paramBoolean);
-    if (paramBoolean)
+    super(paramContext, paramInt);
+  }
+  
+  @TargetApi(19)
+  public void P_()
+  {
+    int i = 0;
+    if (Build.VERSION.SDK_INT >= 19)
     {
-      if (paramStGetMainPageRsp != null)
-      {
-        wsv.c("SubscribePersonalDetail", "sendRequest GetMainPage success");
-        SubscribePersonalDetailFragment.a(this.a, paramStGetMainPageRsp);
-        if ((this.a.a != null) && (SubscribePersonalDetailFragment.a(this.a).user != null)) {
-          this.a.a.poster.set(SubscribePersonalDetailFragment.a(this.a).user.get());
-        }
-        xxf.a(paramStGetMainPageRsp);
-        SubscribePersonalDetailFragment.a(this.a, paramString);
-        SubscribePersonalDetailFragment.a(this.a);
-        SubscribePersonalDetailFragment.a(this.a).d(true);
-        if (paramStGetMainPageRsp.user.type.get() == 0) {
-          yvu.b(paramStGetMainPageRsp.user.id.get(), "auth_person", "user_exp", 0, 0, new String[0]);
-        }
+      if (Build.VERSION.SDK_INT < 21) {
+        break label84;
       }
-      yvu.a("subscribe_personal_detail_page_request", yvu.a(0L, System.currentTimeMillis() - SubscribePersonalDetailFragment.a(this.a)));
+      if ((getWindow() != null) && (getWindow().getDecorView() != null))
+      {
+        getWindow().clearFlags(67108864);
+        getWindow().getDecorView().setSystemUiVisibility(1280);
+        getWindow().addFlags(-2147483648);
+        getWindow().setStatusBarColor(0);
+        break label83;
+        break label83;
+        break label83;
+      }
+    }
+    label74:
+    Object localObject = getWindow();
+    if (localObject == null) {}
+    label188:
+    for (;;)
+    {
+      label83:
       return;
+      label84:
+      if (getWindow() == null) {
+        break label74;
+      }
+      getWindow().addFlags(67108864);
+      break label74;
+      localObject = ((Window)localObject).getDecorView();
+      if (!(localObject instanceof ViewGroup)) {
+        break;
+      }
+      localObject = ((ViewGroup)localObject).getChildAt(0);
+      if (!(localObject instanceof ViewGroup)) {
+        break;
+      }
+      int j = ((ViewGroup)localObject).getChildCount();
+      for (;;)
+      {
+        if (i >= j) {
+          break label188;
+        }
+        View localView = ((ViewGroup)localObject).getChildAt(i);
+        if ((localView == null) || (localView.getId() == 16908290)) {
+          break;
+        }
+        if (!(localView instanceof ViewStub)) {
+          localView.setAlpha(0.0F);
+        }
+        i += 1;
+      }
     }
-    wsv.c("SubscribePersonalDetail", "sendRequest GetMainPage error");
-    paramStGetMainPageRsp = paramString;
-    if (!TextUtils.isEmpty(paramString)) {
-      paramStGetMainPageRsp = alpo.a(2131715026);
-    }
-    if (this.a.getActivity() != null) {
-      QQToast.a(this.a.getActivity(), paramStGetMainPageRsp, 0).a();
-    }
-    yvu.a("subscribe_personal_detail_page_request", yvu.a(paramLong, System.currentTimeMillis() - SubscribePersonalDetailFragment.a(this.a)));
   }
 }
 

@@ -1,16 +1,20 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.theme.diy.ResData;
 
-class aufj
-  implements bevy
+public class aufj
+  implements bapb
 {
-  aufj(aufi paramaufi) {}
+  public aufj(ChatBackgroundManager paramChatBackgroundManager) {}
   
-  public void a(BaseResp paramBaseResp)
+  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
   {
-    QLog.d("AIOShareActionSheet", 1, "WXShareResult trans:" + paramBaseResp.transaction + " ,errCode:" + paramBaseResp.errCode + " ,errStr:" + paramBaseResp.errStr);
-    WXShareHelper.a().b(this);
+    if (paramInt2 == 4) {
+      BaseApplicationImpl.sImageCache.evictAll();
+    }
+    return 0;
   }
 }
 

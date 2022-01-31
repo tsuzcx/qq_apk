@@ -7,7 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.View;
-import bdcq;
+import bdgz;
 
 public class TriangleView
   extends View
@@ -30,7 +30,7 @@ public class TriangleView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setPathEffect(new CornerPathEffect(bdcq.a(paramContext, 2.0F)));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setPathEffect(new CornerPathEffect(bdgz.a(paramContext, 2.0F)));
   }
   
   protected void onDraw(Canvas paramCanvas)

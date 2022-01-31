@@ -1,16 +1,11 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
 
-public class aqgr
-  implements View.OnClickListener
+public abstract interface aqgr<V extends View>
 {
-  public aqgr(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
+  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase);
   
-  public void onClick(View paramView)
-  {
-    this.a.i();
-  }
+  public abstract void b(PullToRefreshBase<V> paramPullToRefreshBase);
 }
 
 

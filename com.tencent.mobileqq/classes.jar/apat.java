@@ -1,98 +1,82 @@
+import android.content.ClipData;
+import android.content.ClipData.Item;
+import android.content.ClipDescription;
+import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextPaint;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletTips;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
-import java.util.Map;
-import org.json.JSONObject;
+import mqq.manager.Manager;
 
 public class apat
-  extends ClickableSpan
+  implements Manager
 {
-  public apat(MessageForQQWalletTips paramMessageForQQWalletTips, SoftReference paramSoftReference1, SoftReference paramSoftReference2, QQAppInterface paramQQAppInterface, Context paramContext, afbe paramafbe, aipw paramaipw, int paramInt) {}
+  private ClipboardManager jdField_a_of_type_AndroidContentClipboardManager;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void onClick(View paramView)
+  public apat(QQAppInterface paramQQAppInterface)
   {
-    QLog.i(MessageForQQWalletTips.access$000(), 2, "rich click, msgtype: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.msgType + ", msgsubtype: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.subType);
-    paramView = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-    Object localObject1 = (QQAppInterface)this.b.get();
-    if ((localObject1 == null) || (paramView == null)) {}
-    do
-    {
-      return;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.bytes_jumpurl))
-      {
-        QLog.i(MessageForQQWalletTips.access$000(), 2, "gold red package...");
-        paramView = bixy.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.bytes_jumpurl, MessageForQQWalletTips.access$100(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), true);
-        ajae.a(this.jdField_a_of_type_AndroidContentContext, paramView);
-        return;
-      }
-      if ((MessageForQQWalletTips.access$200(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips) != 524288) || (this.jdField_a_of_type_Afbe == null) || (this.jdField_a_of_type_Aipw == null)) {
-        break;
-      }
-      localObject2 = this.jdField_a_of_type_Aipw.a(MessageForQQWalletTips.access$300(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips));
-      if ((localObject2 == null) || (((aipv)localObject2).a) || (((aipv)localObject2).b) || (((aipv)localObject2).a())) {
-        break;
-      }
-      paramView = this.jdField_a_of_type_Aipw.a(((aipv)localObject2).e);
-    } while (bdje.a(paramView));
-    this.jdField_a_of_type_Afbe.a(MessageForQQWalletTips.access$300(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips), paramView, aghr.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.subChannel), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.subChannel);
-    return;
-    if (TextUtils.isEmpty(MessageForQQWalletTips.access$300(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips)))
-    {
-      QLog.i(MessageForQQWalletTips.access$000(), 2, "error, listId is null");
-      return;
-    }
-    Object localObject2 = MessageForQQWalletTips.access$400(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips, (QQAppInterface)localObject1);
-    String str1 = (String)((Map)localObject2).get("grouptype");
-    String str2 = (String)((Map)localObject2).get("name");
-    String str3 = (String)((Map)localObject2).get("groupId");
-    JSONObject localJSONObject = new JSONObject();
-    localObject2 = new JSONObject();
-    try
-    {
-      localJSONObject.put("listid", MessageForQQWalletTips.access$300(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips));
-      localJSONObject.put("name", str2);
-      localJSONObject.put("grouptype", str1);
-      localJSONObject.put("groupid", str3);
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.authKey != null) {
-        localJSONObject.put("authkey", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.authKey);
-      }
-      ((JSONObject)localObject2).put("userId", ((QQAppInterface)localObject1).getCurrentAccountUin());
-      ((JSONObject)localObject2).put("viewTag", "redgiftDetail");
-      ((JSONObject)localObject2).put("app_info", "appid#1344242394|bargainor_id#1000030201|channel#graytips");
-      ((JSONObject)localObject2).put("come_from", 2);
-      ((JSONObject)localObject2).put("extra_data", localJSONObject);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-    localObject1 = new Bundle();
-    ((Bundle)localObject1).putString("json", ((JSONObject)localObject2).toString());
-    ((Bundle)localObject1).putString("callbackSn", "0");
-    localObject2 = new Intent(paramView, PayBridgeActivity.class);
-    ((Intent)localObject2).putExtras((Bundle)localObject1);
-    ((Intent)localObject2).putExtra("pay_requestcode", 5);
-    paramView.startActivity((Intent)localObject2);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  private ClipboardManager a()
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.clearShadowLayer();
+    if (this.jdField_a_of_type_AndroidContentClipboardManager == null) {
+      this.jdField_a_of_type_AndroidContentClipboardManager = ((ClipboardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getSystemService("clipboard"));
+    }
+    return this.jdField_a_of_type_AndroidContentClipboardManager;
+  }
+  
+  private SharedPreferences a()
+  {
+    if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
+      this.jdField_a_of_type_AndroidContentSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+    }
+    return this.jdField_a_of_type_AndroidContentSharedPreferences;
+  }
+  
+  public String a()
+  {
+    if (Build.VERSION.SDK_INT >= 26)
+    {
+      long l1 = a().getLong("KEY_LAST_COPY_TIME", 0L);
+      Object localObject = a().getPrimaryClipDescription();
+      if (localObject != null)
+      {
+        long l2 = ((ClipDescription)localObject).getTimestamp();
+        long l3 = System.currentTimeMillis();
+        if ((l2 != l1) && (l3 - l2 < 180000L))
+        {
+          a().edit().putLong("KEY_LAST_COPY_TIME", l2).apply();
+          if ((a().hasPrimaryClip()) && (a().getPrimaryClip() != null) && (a().getPrimaryClip().getItemCount() > 0))
+          {
+            localObject = a().getPrimaryClip().getItemAt(0);
+            if (QLog.isColorLevel()) {
+              QLog.d("CopyPromptManager", 2, "origin copy data : " + localObject);
+            }
+            if (localObject != null)
+            {
+              localObject = ((ClipData.Item)localObject).getText();
+              if ((localObject != null) && (!TextUtils.isEmpty((CharSequence)localObject))) {
+                return String.valueOf(localObject);
+              }
+            }
+          }
+        }
+      }
+    }
+    return "";
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences = null;
   }
 }
 

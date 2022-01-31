@@ -1,36 +1,42 @@
-import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-public abstract interface bmpp
+public class bmpp
 {
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
+  private List<bmpr> a = new LinkedList();
   
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6);
+  public static bmpp a()
+  {
+    return bmps.a;
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void a()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bmpr)localIterator.next()).b();
+    }
+  }
   
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  public void a(boolean paramBoolean)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bmpr)localIterator.next()).a(paramBoolean);
+    }
+  }
   
-  public abstract void a(bmrr parambmrr);
+  public boolean a(@NonNull bmpr parambmpr)
+  {
+    return this.a.add(parambmpr);
+  }
   
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void b(int paramInt, Object paramObject);
-  
-  public abstract void b(String paramString);
-  
-  public abstract boolean b();
-  
-  public abstract void o();
-  
-  public abstract void p();
-  
-  public abstract void q();
-  
-  public abstract void r();
-  
-  public abstract void s();
-  
-  public abstract void t();
+  public boolean b(@NonNull bmpr parambmpr)
+  {
+    return this.a.remove(parambmpr);
+  }
 }
 
 

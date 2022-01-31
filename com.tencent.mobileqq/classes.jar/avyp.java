@@ -1,27 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
+import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
+import com.tencent.mobileqq.ocr.ui.SearchResultViewPagerAdapter;
 
-class avyp
-  implements DialogInterface.OnClickListener
+public class avyp
+  implements ViewPager.OnPageChangeListener
 {
-  avyp(avyo paramavyo) {}
+  public avyp(SearchResultFragment paramSearchResultFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountPanel", 2, "onAccoutChangeFailed -> LoginActivity");
+    this.a.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setCurrentTab(paramInt);
+    if (this.a.jdField_a_of_type_Int != paramInt) {
+      this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter.a(paramInt);
     }
-    paramDialogInterface = new Intent(avyo.a(this.a), LoginActivity.class);
-    paramDialogInterface.putExtra("is_change_account", true);
-    paramDialogInterface.putExtra("uin", avyo.a(this.a));
-    paramDialogInterface.putExtra("befault_uin", avyo.a(this.a).getCurrentAccountUin());
-    avyo.a(this.a).startActivity(paramDialogInterface);
-    avyo.a(this.a, null);
+    this.a.jdField_a_of_type_Int = paramInt;
   }
 }
 

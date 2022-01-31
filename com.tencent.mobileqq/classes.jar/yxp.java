@@ -1,16 +1,45 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
+import android.view.View;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.widget.ListView;
 
-class yxp
-  implements yvn<CLIENT.StSmartMatchMusicRsp>
+public class yxp
+  implements bhzf
 {
-  yxp(yxj paramyxj) {}
+  public yxp(RefreshView paramRefreshView) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StSmartMatchMusicRsp paramStSmartMatchMusicRsp)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    long l = System.currentTimeMillis() - yxj.a(this.a);
-    yvu.a("edit_smart_music", yvu.a(paramLong, l, "", 0L));
-    this.a.a(alpo.a(2131704282) + l + "ms");
-    yxj.a(this.a, paramBoolean, paramLong, paramString, paramStSmartMatchMusicRsp);
+    if (this.a.jdField_a_of_type_Int == 2)
+    {
+      this.a.jdField_a_of_type_Yxi.at_();
+      return;
+    }
+    this.a.jdField_a_of_type_Yxi.c(0L);
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Int != 2)
+    {
+      RefreshView.a(this.a, false);
+      this.a.a(RefreshView.a(this.a));
+      this.a.jdField_a_of_type_Yxi.a(0L);
+      this.a.jdField_a_of_type_Int = 2;
+      RefreshView.a(this.a);
+    }
+    return false;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Int != 2) {
+      this.a.jdField_a_of_type_Yxi.b(0L);
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.a();
   }
 }
 

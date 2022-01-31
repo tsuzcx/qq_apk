@@ -1,15 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class adal
-  implements View.OnClickListener
+  implements amep
 {
-  public adal(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  public adal(FriendProfileCardActivity paramFriendProfileCardActivity, Intent paramIntent) {}
   
-  public void onClick(View paramView)
+  public void a(Object paramObject)
   {
-    this.a.a();
+    if ((paramObject instanceof String))
+    {
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+    }
   }
 }
 

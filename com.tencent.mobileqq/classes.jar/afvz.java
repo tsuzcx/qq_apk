@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
 class afvz
-  implements bevo
+  extends aepm
 {
-  afvz(afvt paramafvt, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
+  public long a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  public String a;
+  TextView b;
+  TextView c;
+  TextView d;
+  TextView e;
   
-  public void a(int paramInt)
-  {
-    if (paramInt == 2)
-    {
-      this.jdField_a_of_type_Afvt.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
-      ayyu.jdField_a_of_type_Boolean = true;
-    }
-    while ((paramInt != 3) && (paramInt != 1)) {
-      return;
-    }
-    ayyu.jdField_a_of_type_Long = 0L;
-  }
+  afvz(afvw paramafvw) {}
 }
 
 

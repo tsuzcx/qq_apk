@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abol;
-import aljq;
+import abta;
+import alof;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -29,7 +29,7 @@ public class RecentItemNearbyLiveTipData
       return;
     }
     Object localObject = paramQQAppInterface.a();
-    abol localabol = paramQQAppInterface.a();
+    abta localabta = paramQQAppInterface.a();
     if (localObject != null) {}
     for (localObject = ((QQMessageFacade)localObject).a(this.mData.senderuin, this.mData.istroop);; localObject = null)
     {
@@ -55,9 +55,9 @@ public class RecentItemNearbyLiveTipData
       this.nearbyLiveTipMsg.parse();
       this.mTitleName = this.nearbyLiveTipMsg.nickName;
       localMsgSummary.strContent = this.nearbyLiveTipMsg.msg;
-      if (localabol != null)
+      if (localabta != null)
       {
-        this.mUnreadNum = localabol.a(((QQMessageFacade.Message)localObject).frienduin, ((QQMessageFacade.Message)localObject).istroop);
+        this.mUnreadNum = localabta.a(((QQMessageFacade.Message)localObject).frienduin, ((QQMessageFacade.Message)localObject).istroop);
         if (c().equals("1822701914")) {
           this.mUnreadFlag = 3;
         }
@@ -100,9 +100,9 @@ public class RecentItemNearbyLiveTipData
     {
       long l1 = Long.valueOf(str2).longValue();
       String str1 = str2;
-      if (l1 > aljq.l)
+      if (l1 > alof.l)
       {
-        long l2 = aljq.l;
+        long l2 = alof.l;
         str1 = l1 - l2 + "";
       }
       return str1;

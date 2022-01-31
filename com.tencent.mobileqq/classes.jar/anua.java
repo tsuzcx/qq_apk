@@ -1,124 +1,26 @@
-import android.content.Context;
-import android.text.SpannableStringBuilder;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.RspBody;
 
 public class anua
-  extends ClickableSpan
 {
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  String b = "http://m.sogou.com/web/searchList.jsp?pid=sogou-appi-4fc28b7093b135c2&keyword=";
+  public ArrayList<anub> a;
   
-  anua(QQAppInterface paramQQAppInterface, String paramString)
+  public static anua a(oidb_0x74b.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-  }
-  
-  public static SpannableStringBuilder a(QQAppInterface paramQQAppInterface, String paramString, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayOfHotWordItem == null)) {
-      return null;
+    Object localObject;
+    if (paramRspBody == null) {
+      localObject = null;
     }
-    localSpannableStringBuilder = new SpannableStringBuilder(paramString);
-    try
-    {
-      byte[] arrayOfByte = paramString.getBytes("GB2312");
-      int i = 0;
-      int k;
-      for (int j = -1; i < paramArrayOfHotWordItem.length; j = k)
-      {
-        String str = new String(arrayOfByte, 0, paramArrayOfHotWordItem[i].offset, "GB2312");
-        if (a(paramString, str))
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("HotWord", 2, "转换到gbk的时候出现了乱码字符。不添加span了");
-          break;
-        }
-        k = j;
-        if (j != str.length())
-        {
-          k = str.length() + paramArrayOfHotWordItem[i].hotWord.length();
-          localSpannableStringBuilder.setSpan(new anua(paramQQAppInterface, paramArrayOfHotWordItem[i].hotWord), str.length(), k, 33);
-          if (paramQQAppInterface != null) {
-            azmj.b(paramQQAppInterface, "P_CliOper", "aio_search", "", "aio_hotword", "view_hotword", 0, 0, "", "", paramArrayOfHotWordItem[i].hotWord, "");
-          }
-        }
-        i += 1;
-      }
-      return localSpannableStringBuilder;
-    }
-    catch (Exception paramQQAppInterface) {}
-  }
-  
-  private void a(Context paramContext)
-  {
-    bhpy localbhpy = (bhpy)bhql.a(paramContext, null);
-    localbhpy.a(2131697711, 5);
-    localbhpy.c(2131690648);
-    localbhpy.a(new anub(this, paramContext, localbhpy));
-    if (!localbhpy.isShowing()) {
-      localbhpy.show();
-    }
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramString1.length() < paramString2.length())
-    {
-      bool1 = true;
-      return bool1;
-    }
-    int i = 0;
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i >= paramString2.length()) {
-        break;
-      }
-      char c1 = paramString1.charAt(i);
-      char c2 = paramString2.charAt(i);
-      if ((c2 == '?') && (c1 != c2))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("HotWord", 2, "isErrorCharAfterGBKConvert temp1=" + c1 + " temp2=" + c2);
-        }
-        return true;
-      }
-      i += 1;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView == null) {}
+    anua localanua;
     do
     {
-      do
-      {
-        return;
-        paramView = paramView.getContext();
-      } while (paramView == null);
-      a(paramView);
-    } while ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
-    azmj.b((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), "P_CliOper", "aio_search", "", "aio_hotword", "click_hotword", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, "");
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(true);
+      return localObject;
+      localanua = new anua();
+      localObject = localanua;
+    } while (!paramRspBody.rpt_msg_uin_head_list.has());
+    localanua.a = anub.a(paramRspBody.rpt_msg_uin_head_list.get());
+    return localanua;
   }
 }
 

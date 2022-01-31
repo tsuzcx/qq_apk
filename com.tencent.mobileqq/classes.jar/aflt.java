@@ -1,17 +1,19 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 class aflt
-  extends afpq
+  implements bemz
 {
-  aflt(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  aflt(aflo paramaflo) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(View paramView)
   {
-    return new afcv(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    aepi.n = true;
+    if (this.a.a()) {
+      return;
+    }
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

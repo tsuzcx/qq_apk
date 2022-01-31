@@ -1,22 +1,68 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
 
-class bkgv
-  implements ThreadPool.Job<Void>
+final class bkgv
+  extends Drawable.ConstantState
 {
-  bkgv(bkgl parambkgl, List paramList) {}
+  int jdField_a_of_type_Int;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+  Drawable b = null;
+  Drawable c = null;
+  Drawable d = null;
+  Drawable e = null;
+  Drawable f = null;
+  Drawable g = null;
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  bkgv() {}
+  
+  bkgv(bkgv parambkgv)
   {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramJobContext.hasNext())
+    if ((parambkgv.b != null) && (parambkgv.b.getConstantState() != null))
     {
-      long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_Bkgl.b(l);
+      this.b = parambkgv.b.getConstantState().newDrawable();
+      this.b.setBounds(parambkgv.b.getBounds());
     }
-    return null;
+    if ((parambkgv.c != null) && (parambkgv.c.getConstantState() != null))
+    {
+      this.c = parambkgv.c.getConstantState().newDrawable();
+      this.c.setBounds(parambkgv.c.getBounds());
+    }
+    if ((parambkgv.d != null) && (parambkgv.d.getConstantState() != null))
+    {
+      this.d = parambkgv.d.getConstantState().newDrawable();
+      this.d.setBounds(parambkgv.d.getBounds());
+    }
+    if ((parambkgv.e != null) && (parambkgv.e.getConstantState() != null))
+    {
+      this.e = parambkgv.e.getConstantState().newDrawable();
+      this.e.setBounds(parambkgv.e.getBounds());
+    }
+    if ((parambkgv.f != null) && (parambkgv.f.getConstantState() != null))
+    {
+      this.f = parambkgv.f.getConstantState().newDrawable();
+      this.f.setBounds(parambkgv.f.getBounds());
+    }
+    if ((parambkgv.g != null) && (parambkgv.g.getConstantState() != null))
+    {
+      this.g = parambkgv.g.getConstantState().newDrawable();
+      this.g.setBounds(parambkgv.g.getBounds());
+    }
+    if ((parambkgv.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (parambkgv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState() != null))
+    {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = parambkgv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable();
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(parambkgv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds());
+    }
+    this.jdField_a_of_type_Int = parambkgv.jdField_a_of_type_Int;
+  }
+  
+  public int getChangingConfigurations()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Drawable newDrawable()
+  {
+    return new bkgu(new bkgv(this));
   }
 }
 

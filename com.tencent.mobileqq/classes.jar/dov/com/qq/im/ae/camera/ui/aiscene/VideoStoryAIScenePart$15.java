@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
-import alpo;
+import alud;
 import android.widget.Toast;
-import bkqa;
+import bkuh;
 
 public class VideoStoryAIScenePart$15
   implements Runnable
 {
-  public VideoStoryAIScenePart$15(bkqa parambkqa) {}
+  public VideoStoryAIScenePart$15(bkuh parambkuh) {}
   
   public void run()
   {
-    Toast.makeText(bkqa.e(this.this$0), alpo.a(2131716791), 0).show();
+    Toast.makeText(bkuh.e(this.this$0), alud.a(2131716803), 0).show();
   }
 }
 

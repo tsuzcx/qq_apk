@@ -39,7 +39,7 @@ public class cd
   
   void a(List<String> paramList)
   {
-    allz localallz = (allz)this.a.app.a(8);
+    alqo localalqo = (alqo)this.a.app.a(8);
     for (;;)
     {
       int j = paramList.size();
@@ -48,14 +48,14 @@ public class cd
         i = 0;
         while (i < j)
         {
-          localallz.a(a((String)paramList.get(i), 0, 0, 0), false);
+          localalqo.a(a((String)paramList.get(i), 0, 0, 0), false);
           i += 1;
         }
       }
       if ((j > 3) && (j < 50))
       {
         localArrayList = new ArrayList();
-        int k = localallz.a();
+        int k = localalqo.a();
         i = 0;
         while (i < j)
         {
@@ -63,11 +63,11 @@ public class cd
           i += 1;
         }
         dl.n(this.a.app);
-        localallz.a(localArrayList, false);
+        localalqo.a(localArrayList, false);
         return;
       }
       ArrayList localArrayList = new ArrayList();
-      j = localallz.a();
+      j = localalqo.a();
       int i = 0;
       while (i < 50)
       {
@@ -75,7 +75,7 @@ public class cd
         i += 1;
       }
       dl.n(this.a.app);
-      localallz.a(localArrayList, false);
+      localalqo.a(localArrayList, false);
       i = 0;
       while (i < 50)
       {

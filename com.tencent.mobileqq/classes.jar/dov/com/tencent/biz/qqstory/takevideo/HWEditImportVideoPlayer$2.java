@@ -1,39 +1,39 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import aljq;
+import alof;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.os.SystemClock;
-import axld;
-import bmkq;
-import bmks;
-import bmvg;
-import bnka;
-import bnkb;
-import bnke;
+import axpm;
+import bmpc;
+import bmpe;
+import bmzs;
+import bnom;
+import bnon;
+import bnoq;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.util.ArrayList;
 import java.util.List;
-import wsv;
-import xmn;
-import xmx;
-import xom;
-import xon;
+import wxe;
+import xqw;
+import xrg;
+import xsv;
+import xsw;
 
 public class HWEditImportVideoPlayer$2
   implements Runnable
 {
-  public HWEditImportVideoPlayer$2(bmkq parambmkq) {}
+  public HWEditImportVideoPlayer$2(bmpc parambmpc) {}
   
   public void run()
   {
-    wsv.d("Q.qqstory.record.HWEditImportVideoPlayer", "thumb get start");
+    wxe.d("Q.qqstory.record.HWEditImportVideoPlayer", "thumb get start");
     if (this.this$0.jdField_a_of_type_Boolean) {}
     Object localObject2;
     int i;
     for (long l1 = 10000L;; l1 = 2147483647L)
     {
-      localObject2 = xom.a(bmkq.a(this.this$0), l1);
+      localObject2 = xsv.a(bmpc.a(this.this$0), l1);
       if (localObject2 != null) {
         break label954;
       }
@@ -41,7 +41,7 @@ public class HWEditImportVideoPlayer$2
       i = 0;
       while (i < this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration / l1)
       {
-        ((ArrayList)localObject2).add(new xon(i * l1, l1));
+        ((ArrayList)localObject2).add(new xsw(i * l1, l1));
         i += 1;
       }
     }
@@ -50,7 +50,7 @@ public class HWEditImportVideoPlayer$2
     for (;;)
     {
       if (((ArrayList)localObject2).size() <= 0) {
-        ((ArrayList)localObject2).add(new xon(0L, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration));
+        ((ArrayList)localObject2).add(new xsw(0L, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration));
       }
       long l3 = SystemClock.uptimeMillis();
       i = 0;
@@ -58,9 +58,9 @@ public class HWEditImportVideoPlayer$2
       int j;
       if (i < ((ArrayList)localObject2).size())
       {
-        localObject1 = (xon)((ArrayList)localObject2).get(i);
+        localObject1 = (xsw)((ArrayList)localObject2).get(i);
         long l4 = SystemClock.uptimeMillis();
-        long l2 = Math.min(bmkq.a(this.this$0) + ((xon)localObject1).b, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration);
+        long l2 = Math.min(bmpc.a(this.this$0) + ((xsw)localObject1).b, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration);
         l1 = l2;
         if (1000L + l2 > this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration) {
           l1 = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration;
@@ -68,34 +68,34 @@ public class HWEditImportVideoPlayer$2
         if (i == 5) {
           l1 = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration;
         }
-        Object localObject3 = bnkb.a(bmkq.a(this.this$0), bmkq.a(this.this$0));
+        Object localObject3 = bnon.a(bmpc.a(this.this$0), bmpc.a(this.this$0));
         localObject1 = localObject3;
         if (i == 0)
         {
           localObject1 = localObject3;
           if (localObject3 != null)
           {
-            float f = bmvg.a((Bitmap)localObject3);
-            wsv.b("Q.qqstory.record.HWEditImportVideoPlayer", "blackPrecent = %f start fix black frame.", Float.valueOf(f));
+            float f = bmzs.a((Bitmap)localObject3);
+            wxe.b("Q.qqstory.record.HWEditImportVideoPlayer", "blackPrecent = %f start fix black frame.", Float.valueOf(f));
             localObject1 = localObject3;
             if (f > 0.9F)
             {
-              bnke localbnke = bnkb.a(bmkq.a(this.this$0), bmkq.a(this.this$0));
+              bnoq localbnoq = bnon.a(bmpc.a(this.this$0), bmpc.a(this.this$0));
               localObject1 = localObject3;
-              if (localbnke.jdField_a_of_type_AndroidGraphicsBitmap != null)
+              if (localbnoq.jdField_a_of_type_AndroidGraphicsBitmap != null)
               {
                 localObject1 = localObject3;
-                if (localbnke.jdField_a_of_type_Long > 0L)
+                if (localbnoq.jdField_a_of_type_Long > 0L)
                 {
                   localObject1 = localObject3;
-                  if (bmvg.a(localbnke.jdField_a_of_type_AndroidGraphicsBitmap) <= 0.9F)
+                  if (bmzs.a(localbnoq.jdField_a_of_type_AndroidGraphicsBitmap) <= 0.9F)
                   {
                     if (!((Bitmap)localObject3).isRecycled()) {
                       ((Bitmap)localObject3).recycle();
                     }
-                    localObject1 = localbnke.jdField_a_of_type_AndroidGraphicsBitmap;
-                    bmkq.a(this.this$0, (int)(localbnke.jdField_a_of_type_Long / 1000L));
-                    wsv.d("Q.qqstory.record.HWEditImportVideoPlayer", "Fix black frame. adjust star time to " + bmkq.a(this.this$0));
+                    localObject1 = localbnoq.jdField_a_of_type_AndroidGraphicsBitmap;
+                    bmpc.a(this.this$0, (int)(localbnoq.jdField_a_of_type_Long / 1000L));
+                    wxe.d("Q.qqstory.record.HWEditImportVideoPlayer", "Fix black frame. adjust star time to " + bmpc.a(this.this$0));
                   }
                 }
               }
@@ -105,8 +105,8 @@ public class HWEditImportVideoPlayer$2
         localObject3 = localObject1;
         if (localObject1 != null)
         {
-          j = axld.a(((Bitmap)localObject1).getWidth());
-          int k = axld.a(((Bitmap)localObject1).getHeight());
+          j = axpm.a(((Bitmap)localObject1).getWidth());
+          int k = axpm.a(((Bitmap)localObject1).getHeight());
           if (j == ((Bitmap)localObject1).getWidth())
           {
             localObject3 = localObject1;
@@ -114,33 +114,33 @@ public class HWEditImportVideoPlayer$2
           }
           else
           {
-            wsv.d("Q.qqstory.record.HWEditImportVideoPlayer", "origin bitmap width:%d, height:%d, should change size to w:%d, h:%d", new Object[] { Integer.valueOf(((Bitmap)localObject1).getWidth()), Integer.valueOf(((Bitmap)localObject1).getHeight()), Integer.valueOf(j), Integer.valueOf(j) });
-            localObject3 = xmn.a((Bitmap)localObject1, new Rect(0, 0, j, k), true);
+            wxe.d("Q.qqstory.record.HWEditImportVideoPlayer", "origin bitmap width:%d, height:%d, should change size to w:%d, h:%d", new Object[] { Integer.valueOf(((Bitmap)localObject1).getWidth()), Integer.valueOf(((Bitmap)localObject1).getHeight()), Integer.valueOf(j), Integer.valueOf(j) });
+            localObject3 = xqw.a((Bitmap)localObject1, new Rect(0, 0, j, k), true);
           }
         }
-        localObject1 = new bmks(i, (Bitmap)localObject3);
-        bmks.a((bmks)localObject1, bmkq.a(this.this$0));
-        bmks.b((bmks)localObject1, bmkq.b(this.this$0));
+        localObject1 = new bmpe(i, (Bitmap)localObject3);
+        bmpe.a((bmpe)localObject1, bmpc.a(this.this$0));
+        bmpe.b((bmpe)localObject1, bmpc.b(this.this$0));
         this.this$0.jdField_a_of_type_JavaUtilList.add(localObject1);
-        wsv.b("Q.qqstory.record.HWEditImportVideoPlayer", "create fragment info = %s, cost = %dms", localObject1, Long.valueOf(SystemClock.uptimeMillis() - l4));
+        wxe.b("Q.qqstory.record.HWEditImportVideoPlayer", "create fragment info = %s, cost = %dms", localObject1, Long.valueOf(SystemClock.uptimeMillis() - l4));
         if (l1 < this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration) {}
       }
       else
       {
-        wsv.b("Q.qqstory.record.HWEditImportVideoPlayer", "create fragment info count = %d, cost = %dms", Integer.valueOf(this.this$0.jdField_a_of_type_JavaUtilList.size()), Long.valueOf(SystemClock.uptimeMillis() - l3));
+        wxe.b("Q.qqstory.record.HWEditImportVideoPlayer", "create fragment info count = %d, cost = %dms", Integer.valueOf(this.this$0.jdField_a_of_type_JavaUtilList.size()), Long.valueOf(SystemClock.uptimeMillis() - l3));
         i = 0;
         if (i >= this.this$0.jdField_a_of_type_JavaUtilList.size()) {
           break label937;
         }
-        localObject1 = (bmks)this.this$0.jdField_a_of_type_JavaUtilList.get(i);
-        localObject2 = xmx.a(bmkq.a(this.this$0));
-        localObject2 = aljq.ch + (String)localObject2 + "_" + i + ".IFrames.audio";
-        j = bnka.a(bmkq.b(this.this$0), (String)localObject2, (float)bmks.a((bmks)localObject1) * 1.0F / (float)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration, (float)bmks.b((bmks)localObject1) * 1.0F / (float)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration);
+        localObject1 = (bmpe)this.this$0.jdField_a_of_type_JavaUtilList.get(i);
+        localObject2 = xrg.a(bmpc.a(this.this$0));
+        localObject2 = alof.ch + (String)localObject2 + "_" + i + ".IFrames.audio";
+        j = bnom.a(bmpc.b(this.this$0), (String)localObject2, (float)bmpe.a((bmpe)localObject1) * 1.0F / (float)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration, (float)bmpe.b((bmpe)localObject1) * 1.0F / (float)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration);
         if (j != 0) {
           break label873;
         }
-        wsv.b("Q.qqstory.record.HWEditImportVideoPlayer", "clipAudioFile finished audioFilePath" + (String)localObject2);
-        ((bmks)localObject1).b = ((String)localObject2);
+        wxe.b("Q.qqstory.record.HWEditImportVideoPlayer", "clipAudioFile finished audioFilePath" + (String)localObject2);
+        ((bmpe)localObject1).b = ((String)localObject2);
       }
       for (;;)
       {
@@ -149,7 +149,7 @@ public class HWEditImportVideoPlayer$2
         i += 1;
         break;
         label873:
-        wsv.e("Q.qqstory.record.HWEditImportVideoPlayer", "clipAudioFile failed. errcode =%s,  audioFilePath=%s, duration=%s, startTime=%s, endTime=%s", new Object[] { Integer.valueOf(j), localObject2, Long.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration), Long.valueOf(bmks.a((bmks)localObject1)), Long.valueOf(bmks.b((bmks)localObject1)) });
+        wxe.e("Q.qqstory.record.HWEditImportVideoPlayer", "clipAudioFile failed. errcode =%s,  audioFilePath=%s, duration=%s, startTime=%s, endTime=%s", new Object[] { Integer.valueOf(j), localObject2, Long.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration), Long.valueOf(bmpe.a((bmpe)localObject1)), Long.valueOf(bmpe.b((bmpe)localObject1)) });
       }
       this.this$0.a(new HWEditImportVideoPlayer.2.1(this), 0L);
       return;

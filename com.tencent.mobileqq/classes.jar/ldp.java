@@ -3,9 +3,9 @@ import com.rookery.translate.type.TranslateError;
 
 public abstract interface ldp
 {
-  public abstract void a(long paramLong, String paramString1, Language paramLanguage, String paramString2, afyy paramafyy);
+  public abstract void a(long paramLong, String paramString1, Language paramLanguage, String paramString2, agdn paramagdn);
   
-  public abstract void a(long paramLong, String paramString, TranslateError paramTranslateError, afyy paramafyy);
+  public abstract void a(long paramLong, String paramString, TranslateError paramTranslateError, agdn paramagdn);
 }
 
 

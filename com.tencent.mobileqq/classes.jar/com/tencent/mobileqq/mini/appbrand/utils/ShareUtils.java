@@ -6,9 +6,9 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import arum;
-import bizm;
-import bizt;
+import aryv;
+import bjdt;
+import bjea;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -99,7 +99,7 @@ public class ShareUtils
     paramString = new Intent();
     paramString.putExtras(localBundle);
     MiniAppController.getInstance().setActivityResultListener(new ShareUtils.1(paramActivity));
-    arum.a(paramActivity, paramString, 1010);
+    aryv.a(paramActivity, paramString, 1010);
   }
   
   public static void startSharePicToQzone(Activity paramActivity, String paramString, ApkgInfo paramApkgInfo)
@@ -107,9 +107,9 @@ public class ShareUtils
     if (QLog.isColorLevel()) {
       QLog.d("AppBrandRuntime", 2, "startSharePicToQzone. localPicPath=" + paramString);
     }
-    bizt localbizt = bizt.a();
-    localbizt.a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    bizm.a(paramActivity, localbizt, paramString, paramApkgInfo.apkgName, "", -1);
+    bjea localbjea = bjea.a();
+    localbjea.a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    bjdt.a(paramActivity, localbjea, paramString, paramApkgInfo.apkgName, "", -1);
     paramActivity = new Bundle();
     paramActivity.putString("key_mini_report_event_action_type", "user_click");
     paramActivity.putString("key_mini_report_event_sub_action_type", "custom_button");

@@ -1,16 +1,12 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bkze
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  bkze(bkzd parambkzd) {}
+  bkze(bkyz parambkyz) {}
   
-  public void onClick(View paramView)
-  {
-    bkzd.a(this.a).finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

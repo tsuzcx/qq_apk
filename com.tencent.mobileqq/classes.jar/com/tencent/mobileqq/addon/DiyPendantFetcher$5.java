@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.addon;
 
-import akii;
+import akmx;
 import android.text.TextUtils;
-import awbw;
-import awbx;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.LRULinkedHashMap;
@@ -13,7 +13,7 @@ import java.util.List;
 public class DiyPendantFetcher$5
   implements Runnable
 {
-  public DiyPendantFetcher$5(akii paramakii, QQAppInterface paramQQAppInterface) {}
+  public DiyPendantFetcher$5(akmx paramakmx, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

@@ -1,37 +1,24 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.widget.ksong.KSongTextView;
-import com.tencent.mobileqq.widget.ksong.KSongView;
-import cooperation.qwallet.plugin.QwAdapter.IViewHolder;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import java.util.Comparator;
+import tencent.im.oidb.oidb_0xd9f.oidb_0xd9f.TopicItem;
 
 public class bess
-  implements QwAdapter.IViewHolder<atse>
+  implements Comparator<oidb_0xd9f.TopicItem>
 {
-  public KSongTextView a;
+  public bess(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
   
-  public bess(KSongView paramKSongView) {}
-  
-  public void a(int paramInt, View paramView, atse paramatse)
+  public int a(oidb_0xd9f.TopicItem paramTopicItem1, oidb_0xd9f.TopicItem paramTopicItem2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView.a();
-    KSongTextView localKSongTextView = this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView;
-    if (TextUtils.isEmpty(paramatse.a)) {}
-    for (paramView = "";; paramView = paramatse.a)
+    if (paramTopicItem1 == null) {}
+    do
     {
-      localKSongTextView.setText(paramView);
-      return;
-    }
-  }
-  
-  public QwAdapter.IViewHolder clone()
-  {
-    return (QwAdapter.IViewHolder)super.clone();
-  }
-  
-  public View initView(int paramInt, View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView = ((KSongTextView)paramView.findViewById(2131373877));
-    return paramView;
+      return 1;
+      if (paramTopicItem2 == null) {
+        return -1;
+      }
+    } while (paramTopicItem1.uint32_frd_num.get() <= paramTopicItem2.uint32_frd_num.get());
+    return -1;
   }
 }
 

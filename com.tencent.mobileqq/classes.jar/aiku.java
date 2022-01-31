@@ -1,17 +1,14 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
-final class aiku
-  implements DialogInterface.OnClickListener
+public class aiku
+  extends avva
 {
-  aiku(Activity paramActivity) {}
+  public aiku(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramInt == 0) {
-      this.a.finish();
-    }
+    AvatarPendantActivity.a(this.a);
   }
 }
 

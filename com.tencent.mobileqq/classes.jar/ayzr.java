@@ -1,79 +1,134 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 
-class ayzr
-  implements ayzw
+public class ayzr
 {
-  ayzp jdField_a_of_type_Ayzp;
+  public static final String[] a;
+  private int jdField_a_of_type_Int;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private ayzm jdField_a_of_type_Ayzm;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = true;
-  boolean b = true;
-  boolean c = true;
-  boolean d = true;
-  boolean e = true;
+  private ArrayList<ConcurrentHashMap<String, Long>> jdField_a_of_type_JavaUtilArrayList;
+  private ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(2);
+  private ConcurrentHashMap<String, ArrayList<Object[]>> b = new ConcurrentHashMap(2);
   
-  public ayzr(String paramString, ayzp paramayzp)
+  static
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Ayzp = paramayzp;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "msg_cached_max_seq", "msg_cached_min_seq", "msg_readed_seq", "msg_expired_seq" };
   }
   
-  public void G_()
+  public ayzr(QQAppInterface paramQQAppInterface, int paramInt, String paramString, SharedPreferences paramSharedPreferences, ayzm paramayzm)
   {
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onNetWorkNone...", null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
+    this.jdField_a_of_type_Ayzm = paramayzm;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(jdField_a_of_type_ArrayOfJavaLangString.length);
+    paramInt = 0;
+    while (paramInt <= 3)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(new ConcurrentHashMap(2));
+      paramInt += 1;
+    }
+  }
+  
+  public int a(String paramString)
+  {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(2));
+    }
+    return ((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).intValue();
+  }
+  
+  public long a(int paramInt, String paramString)
+  {
+    if ((paramInt < 0) || (paramInt > 3) || (TextUtils.isEmpty(paramString))) {
+      return 0L;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() == null) {
+      return 0L;
+    }
+    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if (!localConcurrentHashMap.containsKey(paramString)) {
+      localConcurrentHashMap.put(paramString, Long.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(a(paramInt, paramString), 0L)));
+    }
+    return ((Long)localConcurrentHashMap.get(paramString)).longValue();
+  }
+  
+  public String a(int paramInt, String paramString)
+  {
+    if ((paramInt < 0) || (paramInt > 3) || (TextUtils.isEmpty(paramString))) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("_").append(jdField_a_of_type_ArrayOfJavaLangString[paramInt]).append("_").append(paramString);
+    return localStringBuilder.toString();
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.b) && (this.c) && (this.e)) {
-      ayzp.a(this.jdField_a_of_type_Ayzp);
+    int i = 0;
+    while (i <= 3)
+    {
+      ((ConcurrentHashMap)this.jdField_a_of_type_JavaUtilArrayList.get(i)).clear();
+      i += 1;
     }
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void a(int paramInt1, String paramString, long paramLong, int paramInt2)
   {
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onDownloadFinish| name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-    if (paramString1.startsWith("new_qq_android_native_short_video_")) {
-      this.jdField_a_of_type_Boolean = true;
+    if ((paramInt1 < 0) || (paramInt1 > 3) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    long l1;
+    if (paramInt2 == 1) {
+      l1 = Math.max(paramLong, a(paramInt1, paramString));
     }
     for (;;)
     {
-      a();
+      ((ConcurrentHashMap)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).put(paramString, Long.valueOf(l1));
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() == null) {
+        break;
+      }
+      this.jdField_a_of_type_Ayzm.putLong(a(paramInt1, paramString), l1);
       return;
-      if (paramString1.startsWith("new_qq_android_native_short_filter_"))
+      l1 = paramLong;
+      if (paramInt2 == 2)
       {
-        this.b = true;
-        paramString1 = new Intent();
-        paramString1.setAction("new_qq_android_native_short_filter_");
-        paramString1.setPackage(BaseApplicationImpl.getContext().getPackageName());
-        BaseApplicationImpl.getContext().sendBroadcast(paramString1);
-      }
-      else if (paramString1.startsWith("new_qq_android_native_art_filter_"))
-      {
-        this.c = true;
-      }
-      else if (paramString1.startsWith("new_qq_android_native_portrait_filter_"))
-      {
-        this.d = true;
-      }
-      else if (paramString1.startsWith("new_qq_android_native_object_tracking_"))
-      {
-        this.e = true;
+        long l2 = a(paramInt1, paramString);
+        l1 = paramLong;
+        if (l2 != 0L) {
+          l1 = Math.min(paramLong, l2);
+        }
       }
     }
   }
   
-  public void a(String paramString, long paramLong1, long paramLong2)
+  public void a(String paramString, Object[] paramArrayOfObject)
   {
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "name=" + paramString + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i, null);
+    ArrayList localArrayList2 = (ArrayList)this.b.get(paramString);
+    ArrayList localArrayList1;
+    if (localArrayList2 != null)
+    {
+      localArrayList1 = localArrayList2;
+      if (localArrayList2.size() != 0) {}
+    }
+    else
+    {
+      localArrayList1 = new ArrayList();
+    }
+    localArrayList1.add(paramArrayOfObject);
+    this.b.put(paramString, localArrayList1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ayzr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.content.Context;
-import bdfq;
+import bdjz;
 
 class ThemeJsPlugin$5
-  extends bdfq
+  extends bdjz
 {
   ThemeJsPlugin$5(ThemeJsPlugin paramThemeJsPlugin, Context paramContext, int paramInt, String paramString1, String paramString2, boolean paramBoolean, String paramString3)
   {

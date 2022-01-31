@@ -1,10 +1,18 @@
-public class bbug
+import android.content.Context;
+import android.widget.ScrollView;
+
+class bbug
+  extends ScrollView
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
+  bbug(bbuf parambbuf, Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public void setOverScrollMode(int paramInt)
+  {
+    super.setOverScrollMode(2);
+  }
 }
 
 

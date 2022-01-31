@@ -1,25 +1,22 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class anuq
-  extends ContentObserver
+  implements azhn
 {
-  public anuq(BusinessCardEditActivity paramBusinessCardEditActivity, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  public anuq(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void onChange(boolean paramBoolean)
+  public void a(Exception paramException)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("BusinessCard_EditActivity", 2, "Contact changed selfChange=" + paramBoolean);
+      QLog.i("DynamicAvatarRecordActivity", 2, "[onCameraException]", paramException);
     }
-    if (BusinessCardEditActivity.a(this.a))
-    {
-      this.a.a(2131698941, 2);
-      BusinessCardEditActivity.a(this.a, false);
+  }
+  
+  public void a(RuntimeException paramRuntimeException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("DynamicAvatarRecordActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
     }
   }
 }

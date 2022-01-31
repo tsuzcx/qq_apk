@@ -19,8 +19,8 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcwh;
-import bdcb;
+import bdaq;
+import bdgk;
 import com.nineoldandroids.animation.ValueAnimator;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
@@ -67,7 +67,7 @@ public class VariableSizeTextView
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#E8E8E8"));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 16.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLineSpacing(bcwh.a(paramContext, 3.0F), 1.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setLineSpacing(bdaq.a(paramContext, 3.0F), 1.0F);
     paramContext = new RelativeLayout.LayoutParams(-1, -2);
     paramContext.addRule(10);
     addView(this.jdField_a_of_type_AndroidWidgetTextView, paramContext);
@@ -130,7 +130,7 @@ public class VariableSizeTextView
     b();
     int k = getMeasuredWidth();
     if (k == 0) {
-      k = (int)bdcb.k();
+      k = (int)bdgk.k();
     }
     for (;;)
     {
@@ -268,8 +268,8 @@ public class VariableSizeTextView
     paramInt1 = a(paramInt1 + 1);
     paramInt2 = a(paramInt2);
     localObject = new SpannableStringBuilder((CharSequence)localObject);
-    ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(bcwh.a(getContext(), 17.0F)), 0, paramInt1, 33);
-    ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(bcwh.a(getContext(), 12.0F)), paramInt1, paramInt2 + paramInt1 + 1, 33);
+    ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(bdaq.a(getContext(), 17.0F)), 0, paramInt1, 33);
+    ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(bdaq.a(getContext(), 12.0F)), paramInt1, paramInt2 + paramInt1 + 1, 33);
     ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#E8E8E8")), paramInt1, paramInt2 + paramInt1 + 1, 33);
     ((SpannableStringBuilder)localObject).append("  ");
     if (!TextUtils.isEmpty(paramCharSequence)) {

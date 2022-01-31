@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView.ScaleType;
-import azgq;
+import azkz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -22,11 +22,11 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import qqcircle.QQCircleFeedBase.StPolyLike;
 import tql;
-import tvt;
-import ubr;
-import ubs;
-import ubx;
-import ytt;
+import twe;
+import uek;
+import uel;
+import ueq;
+import yyi;
 
 public class QCirclePolymorphicAniView
   extends FrameLayout
@@ -50,7 +50,7 @@ public class QCirclePolymorphicAniView
   
   private String fetchLocal(String paramString)
   {
-    paramString = tvt.a().a(paramString);
+    paramString = twe.a().a(paramString);
     if (!TextUtils.isEmpty(paramString))
     {
       paramString = new File(paramString);
@@ -75,14 +75,14 @@ public class QCirclePolymorphicAniView
     return "";
   }
   
-  public void startZanAni(ubx paramubx, View paramView1, View paramView2, int[] paramArrayOfInt, boolean paramBoolean, ytt paramytt)
+  public void startZanAni(ueq paramueq, View paramView1, View paramView2, int[] paramArrayOfInt, boolean paramBoolean, yyi paramyyi)
   {
     Object localObject3;
     Object localObject1;
     Object localObject2;
     PointF localPointF1;
     PointF localPointF2;
-    if ((paramubx != null) && (paramubx.a() != null) && (paramArrayOfInt != null) && (paramView1 != null) && (paramView2 != null))
+    if ((paramueq != null) && (paramueq.a() != null) && (paramArrayOfInt != null) && (paramView1 != null) && (paramView2 != null))
     {
       setVisibility(0);
       localObject3 = new int[2];
@@ -98,31 +98,31 @@ public class QCirclePolymorphicAniView
       if (!paramBoolean) {
         break label593;
       }
-      localPointF1.x = (localObject3[0] - azgq.a(7.5F));
+      localPointF1.x = (localObject3[0] - azkz.a(7.5F));
     }
-    for (localPointF1.y = (localObject3[1] - azgq.a(7.5F));; localPointF1.y = localObject3[1])
+    for (localPointF1.y = (localObject3[1] - azkz.a(7.5F));; localPointF1.y = localObject3[1])
     {
       localPointF2.x = ((localPointF1.x + ((PointF)localObject2).x) / 2.0F);
-      localPointF2.y = (((PointF)localObject2).y - azgq.a(150.0F));
+      localPointF2.y = (((PointF)localObject2).y - azkz.a(150.0F));
       QLog.d("QCirclePolymorphicAniView", 1, "start pos:" + ((PointF)localObject2).x + " " + ((PointF)localObject2).y + "  control pos:" + localPointF2.x + " " + localPointF2.y + " edn pos:" + localPointF1.x + " " + localPointF1.y + "aniPanel:" + getWidth() + " " + getHeight());
       paramView1 = new QCirclePolymorphicAniView.MovingImg(getContext());
       paramView1.setScaleType(ImageView.ScaleType.CENTER_CROP);
       localObject3 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843565);
-      ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = paramubx.a().getWidth();
-      ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = paramubx.a().getHeight();
-      tql.a(fetchLocal(paramubx.a().polySource.get()), paramView1, (URLDrawable.URLDrawableOptions)localObject3, true);
+      ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843582);
+      ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = paramueq.a().getWidth();
+      ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = paramueq.a().getHeight();
+      tql.a(fetchLocal(paramueq.a().polySource.get()), paramView1, (URLDrawable.URLDrawableOptions)localObject3, true);
       paramView1.setTopShift(localObject1[1]);
       paramView1.setX(paramArrayOfInt[0]);
       paramView1.setY(paramArrayOfInt[1] - localObject1[1]);
-      addView(paramView1, new FrameLayout.LayoutParams(paramubx.a().getWidth(), paramubx.a().getHeight()));
-      paramArrayOfInt = ObjectAnimator.ofObject(paramView1, "mPointF", new ubs(this, localPointF2), new Object[] { localObject2, localPointF1 });
-      localObject1 = ObjectAnimator.ofObject(paramView1, "mScale", new ubs(this, new PointF(0.88F, 1.0F)), new Object[] { new PointF(1.0F, 1.0F), new PointF(0.0F, 0.0F) });
+      addView(paramView1, new FrameLayout.LayoutParams(paramueq.a().getWidth(), paramueq.a().getHeight()));
+      paramArrayOfInt = ObjectAnimator.ofObject(paramView1, "mPointF", new uel(this, localPointF2), new Object[] { localObject2, localPointF1 });
+      localObject1 = ObjectAnimator.ofObject(paramView1, "mScale", new uel(this, new PointF(0.88F, 1.0F)), new Object[] { new PointF(1.0F, 1.0F), new PointF(0.0F, 0.0F) });
       localObject2 = new AnimatorSet();
       ((AnimatorSet)localObject2).playTogether(new Animator[] { paramArrayOfInt, localObject1 });
       ((AnimatorSet)localObject2).setDuration(300L);
       ((AnimatorSet)localObject2).start();
-      ((AnimatorSet)localObject2).addListener(new ubr(this, paramytt, paramView2, paramView1, paramubx));
+      ((AnimatorSet)localObject2).addListener(new uek(this, paramyyi, paramView2, paramView1, paramueq));
       return;
       label593:
       localPointF1.x = localObject3[0];

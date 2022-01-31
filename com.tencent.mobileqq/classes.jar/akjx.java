@@ -1,26 +1,45 @@
-import java.util.Arrays;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class akjx
+class akjx
+  extends Animation
 {
-  public int a;
-  public boolean a;
-  public int[] a;
-  public int b;
-  public int[] b;
-  public int c;
-  public int d;
-  public int e;
+  akjx(akjt paramakjt, View paramView, int paramInt) {}
   
-  public String toString()
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("userStatus:").append(this.d).append(",roleId:").append(this.jdField_a_of_type_Int).append(",dressIds:").append(Arrays.toString(this.jdField_a_of_type_ArrayOfInt)).append(",threeRoleId:").append(this.jdField_b_of_type_Int).append(",threeDressIds:").append(Arrays.toString(this.jdField_b_of_type_ArrayOfInt));
-    return localStringBuilder.toString();
+    paramFloat = (float)(paramFloat * (0.5D + Math.sqrt(paramFloat) / 2.0D));
+    this.jdField_a_of_type_AndroidViewView.getLayoutParams().width = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    if (paramFloat <= 0.4F) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramFloat > 0.99F) {
+          break;
+        }
+      } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      return;
+    } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akjx
  * JD-Core Version:    0.7.0.1
  */

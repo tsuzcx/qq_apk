@@ -1,172 +1,120 @@
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.os.Build.VERSION;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.io.File;
 
 public class azem
 {
-  public static HashMap<String, WeakReference<Drawable>> a;
-  private static boolean a;
-  public static String[] a;
+  private static String a = "Xiaomi;Redmi 4X;23|LGE;Nexus 5X;27|HUAWEI;CAM-UL00;23";
   
-  static
+  public static int a(ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "Le X620", "Nexus 5X", "ZTE A2017", "PRA-AL00X" };
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (paramSVConfigItem.versionCode >= 1) {}
+    for (int i = 0;; i = -4)
+    {
+      VideoEnvironment.a("ShortVideoTrackingResourceMgr", "[checkResourceLowLimitVersion]limitVer=1 downVer=" + paramSVConfigItem.versionCode + " errCode=" + i, null);
+      return i;
+    }
   }
   
-  public static Drawable a(Context paramContext, String paramString)
+  public static String a()
   {
-    Object localObject1 = null;
-    Object localObject2;
-    if (jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
-    {
-      localObject2 = (Drawable)((WeakReference)jdField_a_of_type_JavaUtilHashMap.get(paramString)).get();
-      localObject1 = localObject2;
-      if (localObject2 != null) {
-        return localObject2;
-      }
+    String str = BaseApplicationImpl.getApplication().getSharedPreferences("tracking_short_video_mgr_sp", 4).getString("tracking_sv_md5_version_soname_key", "Tracking000_0");
+    boolean bool = azcr.a(str, 1);
+    VideoEnvironment.a("ShortVideoTrackingResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
+    if (bool) {
+      return str;
     }
-    if (paramString.equals("fivea")) {
-      paramContext = paramContext.getResources().getDrawable(2130841778);
-    }
+    return "Tracking000_0";
+  }
+  
+  static boolean a()
+  {
+    return azll.a();
+  }
+  
+  static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  {
+    return azkt.i();
+  }
+  
+  static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    boolean bool2 = true;
+    boolean bool1 = false;
+    label349:
     for (;;)
     {
-      localObject2 = paramContext;
-      if (paramContext == null) {
-        break;
-      }
-      jdField_a_of_type_JavaUtilHashMap.put(paramString, new WeakReference(paramContext));
-      return paramContext;
-      if (paramString.equals("palmup"))
+      try
       {
-        paramContext = paramContext.getResources().getDrawable(2130841779);
-      }
-      else if (paramString.equals("qheart"))
-      {
-        paramContext = paramContext.getResources().getDrawable(2130841780);
-      }
-      else
-      {
-        paramContext = localObject1;
-        if (!paramString.equals("")) {
-          paramContext = new BitmapDrawable(arof.a(azce.a() + paramString + ".png"));
+        paramQQAppInterface = b();
+        paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
+        File localFile = new File(paramQQAppInterface);
+        if (localFile.exists())
+        {
+          if ((a().equals(paramString1)) && (azcr.b(paramQQAppInterface, "tracking_config_file")))
+          {
+            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[checkUnzipFileListSizeIsOK]success=true", null);
+            return bool1;
+          }
+          bdhb.a(paramQQAppInterface);
+          VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
         }
+        bool1 = localFile.mkdirs();
+        VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[exists]mkOK=" + bool1, null);
+        try
+        {
+          bdhb.a(paramString2, paramQQAppInterface, false);
+          boolean bool3 = azcr.b(paramQQAppInterface, "tracking_config_file");
+          VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK success=" + bool3, null);
+          bool1 = bool2;
+          if (bool3)
+          {
+            bool1 = a(paramString1);
+            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK saveOK=" + bool1, null);
+            if (bool1) {
+              break label349;
+            }
+            bool1 = a(paramString1);
+            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool1, null);
+            if (bool1) {
+              break label349;
+            }
+            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK[two] needRestore=true,saveOK=false", null);
+            bool1 = a("Tracking000_0");
+            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK clearMemoryOK=" + bool1 + ",signature=" + paramString1, null);
+            bool1 = bool2;
+          }
+        }
+        catch (Exception paramQQAppInterface)
+        {
+          paramQQAppInterface.printStackTrace();
+          bool1 = bool2;
+          continue;
+        }
+        bool1 = false;
       }
+      finally {}
     }
   }
   
-  public static axkp a(axkp paramaxkp)
+  private static boolean a(String paramString)
   {
-    if ((!c()) || (!b())) {}
-    for (int i = 1; i == 0; i = 0) {
-      return paramaxkp;
-    }
-    axkp localaxkp = new axkp();
-    localaxkp.jdField_a_of_type_Int = paramaxkp.jdField_a_of_type_Int;
-    localaxkp.jdField_a_of_type_JavaLangString = paramaxkp.jdField_a_of_type_JavaLangString;
-    localaxkp.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramaxkp = paramaxkp.jdField_a_of_type_JavaUtilList.iterator();
-    if (i != 0) {
-      while (paramaxkp.hasNext())
-      {
-        PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramaxkp.next();
-        if (!localPtvTemplateInfo.hasGesture()) {
-          localaxkp.jdField_a_of_type_JavaUtilList.add(localPtvTemplateInfo);
-        }
-      }
-    }
-    return localaxkp;
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (jdField_a_of_type_Boolean == paramBoolean) {
-      return;
-    }
-    jdField_a_of_type_Boolean = paramBoolean;
-    bdiv.a(BaseApplicationImpl.getApplication().getSharedPreferences("GestureRecognitionUtils", 4).edit().putBoolean("shared_gesture_recognize_result", paramBoolean));
-  }
-  
-  public static boolean a()
-  {
-    boolean bool2 = false;
-    String str = Build.MODEL;
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (arrayOfString[i].contains(str)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GestureRecognitionUtils", 2, "isPhoneInBlackList ： phone = " + str + ", result=" + bool1);
-        }
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
-  public static boolean b()
-  {
-    boolean bool = azbx.a().a();
-    if (!bool) {
-      azbx.a().b();
-    }
-    QLog.d("GestureRecognitionUtils", 2, "GestureRecognitionUtils check gestureResource ready " + bool);
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("tracking_short_video_mgr_sp", 4).edit();
+    localEditor.putString("tracking_sv_md5_version_soname_key", paramString);
+    boolean bool = localEditor.commit();
+    VideoEnvironment.a("ShortVideoTrackingResourceMgr", "storeNewPendantUnzipPath commitValue=" + bool + ",pathName=" + paramString, null);
     return bool;
   }
   
-  public static boolean c()
+  public static String b()
   {
-    boolean bool1;
-    if ((lsa.a(8, 1400000L)) || (lsa.a(4, 2150000L)))
-    {
-      bool1 = true;
-      QLog.d("GestureRecognitionUtils", 2, "GestureRecognitionUtils check condition 2 +cpuNumber is" + bool1);
-      lrg locallrg = lrg.a();
-      if ((locallrg == null) || (locallrg.b())) {
-        break label196;
-      }
-    }
-    label196:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      if (Build.VERSION.SDK_INT > 17) {}
-      for (boolean bool3 = true;; bool3 = false)
-      {
-        boolean bool4 = azfz.d();
-        boolean bool5 = a();
-        QLog.d("GestureRecognitionUtils", 2, "GestureRecognitionUtils isSupportGestureFilter faceFilterCheck: " + true + ";checkDeviceSupport:" + bool1 + ":inBlackLists:" + bool2 + ":isSDKEnable:" + bool3 + ":isNotInShortVideoBlackWhiteList:" + bool4 + ":isHardCodePhoneInBlackList" + bool5);
-        if ((bool1) && (!bool2) && (bool3) && (bool4) && (!bool5))
-        {
-          return true;
-          bool1 = false;
-          break;
-        }
-        return false;
-      }
-    }
+    String str = azkt.a(VideoEnvironment.a());
+    return str + "tracking_res_cache" + File.separator;
   }
 }
 

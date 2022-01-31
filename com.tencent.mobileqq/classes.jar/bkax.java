@@ -1,24 +1,82 @@
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build.VERSION;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.DownloaderFactory;
-import com.tencent.component.network.downloader.Downloader;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
-import cooperation.vip.ar.util.VipQGLoaderManager.1;
-import java.util.HashMap;
+import android.text.TextUtils.TruncateAt;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.widget.QzoneGuideBubbleHelper.1;
+import cooperation.qzone.widget.TriangleView;
+import java.lang.ref.WeakReference;
 
 public class bkax
-  implements bkad
 {
-  private static final int jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("QZoneSetting", "vipARLevelValue", 20);
-  private static bkax jdField_a_of_type_Bkax;
-  private aonw jdField_a_of_type_Aonw;
-  private Downloader jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(BaseApplicationImpl.getContext()).getCommonDownloader();
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static volatile bkax jdField_a_of_type_Bkax;
+  private int jdField_a_of_type_Int = 0;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
+  private bkau jdField_a_of_type_Bkau;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new QzoneGuideBubbleHelper.1(this);
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  private static Rect a(View paramView)
+  {
+    if (paramView == null) {
+      return new Rect();
+    }
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    return new Rect(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getMeasuredWidth(), arrayOfInt[1] + paramView.getMeasuredHeight());
+  }
+  
+  public static ShapeDrawable a(float paramFloat1, float paramFloat2, int paramInt)
+  {
+    Object localObject = new float[8];
+    float[] arrayOfFloat = new float[8];
+    int i = 0;
+    while (i < 8)
+    {
+      localObject[i] = (paramFloat1 + paramFloat2);
+      arrayOfFloat[i] = paramFloat1;
+      i += 1;
+    }
+    localObject = new ShapeDrawable(new RoundRectShape((float[])localObject, new RectF(paramFloat2, paramFloat2, paramFloat2, paramFloat2), arrayOfFloat));
+    ((ShapeDrawable)localObject).getPaint().setColor(paramInt);
+    return localObject;
+  }
+  
+  private static FrameLayout a(Context paramContext)
+  {
+    if ((paramContext == null) || (!(paramContext instanceof Activity))) {
+      return null;
+    }
+    paramContext = (ViewGroup)((Activity)paramContext).getWindow().getDecorView();
+    FrameLayout localFrameLayout = (FrameLayout)paramContext.findViewById(2131374726);
+    if (localFrameLayout == null) {
+      return (FrameLayout)paramContext.findViewById(16908290);
+    }
+    return localFrameLayout;
+  }
   
   public static bkax a()
   {
@@ -33,85 +91,288 @@ public class bkax
     finally {}
   }
   
-  public void a(aonw paramaonw)
+  private int[] a(View paramView, ViewGroup paramViewGroup, String paramString, float paramFloat, int paramInt1, double paramDouble1, double paramDouble2, int paramInt2, boolean paramBoolean, bkaz parambkaz, int paramInt3, int paramInt4)
   {
-    if (paramaonw != null)
+    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Bkau == null) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
     {
-      this.jdField_a_of_type_Aonw = paramaonw;
-      QLog.i("VipARQGLoaderManager", 1, "onConfigLoadSuccess bean != null  switch = " + paramaonw.jdField_a_of_type_Int);
-    }
-  }
-  
-  public void a(aonx paramaonx, bkac parambkac)
-  {
-    if ((paramaonx == null) || (TextUtils.isEmpty(paramaonx.b))) {}
-    String str1;
-    do
-    {
-      return;
-      str1 = paramaonx.b;
-      if (this.jdField_a_of_type_JavaUtilHashMap.get(str1) == null) {
-        break;
+      this.jdField_a_of_type_Bkau = new bkau((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      this.jdField_a_of_type_Bkau.setWidth(-2);
+      this.jdField_a_of_type_Bkau.setHeight(-2);
+      this.jdField_a_of_type_Bkau.setTouchable(paramBoolean);
+      if (paramBoolean) {
+        paramViewGroup.setOnTouchListener(new bkay(this));
       }
-      QZLog.i("VipARQGLoaderManager", 1, "getQGModelData map exist");
-    } while (parambkac == null);
-    parambkac.a((String)this.jdField_a_of_type_JavaUtilHashMap.get(str1));
-    return;
-    String str2 = QzoneZipCacheHelper.getBasePath("vip_qg", String.valueOf(str1.hashCode()));
-    if (TextUtils.isEmpty(str2))
-    {
-      QZLog.i("VipARQGLoaderManager", 1, "getQGModelData pathDir = null");
-      return;
+      this.jdField_a_of_type_Bkau.setOutsideTouchable(true);
+      this.jdField_a_of_type_Bkau.setBackgroundDrawable(new ColorDrawable(0));
     }
-    ThreadManager.executeOnFileThread(new VipQGLoaderManager.1(this, str2, str1, parambkac, paramaonx));
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.e("VipARQGLoaderManager", 1, "onConfigLoadFail error = " + paramString);
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Aonw != null) && (this.jdField_a_of_type_Aonw.jdField_a_of_type_Int != 0) && (!bkar.a(this.jdField_a_of_type_Aonw.jdField_a_of_type_JavaLangString)) && (Build.VERSION.SDK_INT > jdField_a_of_type_Int);
-  }
-  
-  public void b(aonw paramaonw)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("setVipARConfig vipARConfig == null  ");
-    if (paramaonw == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("VipARQGLoaderManager", 1, bool);
-      this.jdField_a_of_type_Aonw = paramaonw;
-      return;
+    paramView = a(paramViewGroup, paramView, paramString, paramFloat, paramInt1, paramInt2, parambkaz, paramInt3, paramInt4);
+    if (paramView == null) {}
+    while (this.jdField_a_of_type_Bkau == null) {
+      return paramView;
     }
+    this.jdField_a_of_type_Bkau.setContentView(paramViewGroup);
+    this.jdField_a_of_type_Bkau.update();
+    return paramView;
   }
   
-  public void b(aonx paramaonx, bkac parambkac)
+  private int[] a(ViewGroup paramViewGroup, View paramView, String paramString, float paramFloat, int paramInt1, int paramInt2, bkaz parambkaz, int paramInt3, int paramInt4)
   {
-    if ((paramaonx == null) || (TextUtils.isEmpty(paramaonx.b)) || (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader == null))
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+      return null;
+    }
+    paramView = a(paramView);
+    if ((paramView.left <= 0) && (paramView.right <= 0) && (paramView.top <= 0) && (paramView.bottom <= 0)) {
+      return null;
+    }
+    TextView localTextView = new TextView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    localTextView.setId(2131374727);
+    localTextView.setTextColor(-1);
+    localTextView.setTextSize(paramFloat);
+    localTextView.setText(paramString);
+    int n = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298472);
+    if (parambkaz != null)
     {
-      if (parambkac != null)
+      paramString = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDrawable(parambkaz.jdField_a_of_type_Int);
+      if (paramString != null)
       {
-        localObject = new StringBuilder().append("downloadQGModelData zipUrl = null or Download = null , config == null ");
-        if (paramaonx != null) {
-          break label61;
+        paramString.setBounds(0, 0, parambkaz.b, parambkaz.c);
+        localTextView.setCompoundDrawables(paramString, null, null, null);
+        localTextView.setCompoundDrawablePadding(parambkaz.d);
+      }
+    }
+    int i = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298474);
+    int j = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298473);
+    localTextView.setPadding(j, i, j, i);
+    localTextView.setGravity(17);
+    if (paramInt4 > 0)
+    {
+      localTextView.setMaxLines(paramInt4);
+      localTextView.setEllipsize(TextUtils.TruncateAt.valueOf("END"));
+    }
+    i = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298475);
+    a(localTextView, a(i, 0.0F, paramInt2));
+    paramString = new TriangleView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramInt1, paramInt2);
+    paramString.setId(2131374725);
+    parambkaz = new RelativeLayout.LayoutParams(-2, -2);
+    int k = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298471);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(k, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298470));
+    int m;
+    if (paramInt1 == 0)
+    {
+      parambkaz.addRule(10);
+      localLayoutParams.addRule(3, 2131374727);
+      parambkaz.addRule(14);
+      localLayoutParams.leftMargin = paramInt3;
+      paramViewGroup.addView(localTextView, parambkaz);
+      paramViewGroup.addView(paramString, localLayoutParams);
+      paramInt2 = a(12.0F);
+      paramViewGroup.measure(View.MeasureSpec.makeMeasureSpec(a() - a(12.0F) * 2, -2147483648), View.MeasureSpec.makeMeasureSpec(0, 0));
+      m = paramViewGroup.getMeasuredWidth();
+      paramInt3 = paramViewGroup.getMeasuredHeight();
+      j = paramView.left + (paramView.right - paramView.left) / 2 - m / 2;
+      if (paramInt1 != 0) {
+        break label654;
+      }
+      paramInt4 = paramView.top - paramInt3 - n;
+      label553:
+      paramInt1 = a();
+      if (j >= paramInt2) {
+        break label669;
+      }
+      paramInt1 = paramInt2;
+    }
+    for (;;)
+    {
+      label570:
+      j = paramView.left - paramInt1 + (paramView.right - paramView.left - k) / 2;
+      if (j < i) {
+        paramInt2 = i;
+      }
+      for (;;)
+      {
+        aoac.g(paramString, paramInt2);
+        return new int[] { paramInt1, paramInt4, paramInt2, paramInt3 };
+        if (paramInt1 != 1) {
+          break;
+        }
+        parambkaz.addRule(3, 2131374725);
+        break;
+        label654:
+        paramInt4 = paramView.bottom + n;
+        paramInt3 = 0;
+        break label553;
+        label669:
+        if (j <= paramInt1 - m - paramInt2) {
+          break label725;
+        }
+        paramInt1 = paramInt1 - m - paramInt2;
+        break label570;
+        paramInt2 = j;
+        if (j + k > m - i) {
+          paramInt2 = m - i - k;
         }
       }
-      label61:
-      for (boolean bool = true;; bool = false)
+      label725:
+      paramInt1 = j;
+    }
+  }
+  
+  public float a()
+  {
+    float f = -1.0F;
+    if (-1.0F < 0.0F) {
+      f = BaseApplication.getContext().getResources().getDisplayMetrics().density;
+    }
+    return f;
+  }
+  
+  public int a()
+  {
+    int i;
+    int j;
+    if (BaseApplication.getContext().getResources().getConfiguration().orientation == 2)
+    {
+      i = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels;
+      j = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;
+      if (i <= j) {}
+    }
+    int k;
+    do
+    {
+      return i;
+      return j;
+      j = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels;
+      k = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;
+      i = j;
+    } while (k > j);
+    return k;
+  }
+  
+  public int a(float paramFloat)
+  {
+    return Math.round(a() * paramFloat);
+  }
+  
+  public void a()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    FrameLayout localFrameLayout;
+    View localView;
+    do
+    {
+      do
       {
-        parambkac.b(bool);
+        do
+        {
+          do
+          {
+            return;
+          } while (this.jdField_a_of_type_Bkau == null);
+          this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+          try
+          {
+            this.jdField_a_of_type_Bkau.dismiss();
+            this.jdField_a_of_type_Bkau = null;
+            return;
+          }
+          catch (Exception localException)
+          {
+            return;
+          }
+        } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
+        localFrameLayout = a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      } while (localFrameLayout == null);
+      localView = localFrameLayout.findViewById(2131374728);
+    } while (localView == null);
+    localFrameLayout.removeViewInLayout(localView);
+  }
+  
+  public void a(Activity paramActivity, View paramView, String paramString, int paramInt1, float paramFloat, double paramDouble1, double paramDouble2, long paramLong, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, int paramInt3, bkaz parambkaz, int paramInt4)
+  {
+    a(paramActivity, paramView, paramString, paramInt1, paramFloat, paramDouble1, paramDouble2, paramLong, paramInt2, paramBoolean1, paramBoolean2, paramInt3, parambkaz, paramInt4, 0, 0);
+  }
+  
+  public void a(Activity paramActivity, View paramView, String paramString, int paramInt1, float paramFloat, double paramDouble1, double paramDouble2, long paramLong, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, int paramInt3, bkaz parambkaz, int paramInt4, int paramInt5, int paramInt6)
+  {
+    this.jdField_a_of_type_Int = paramInt6;
+    a();
+    if ((paramActivity == null) || (paramView == null) || (paramInt1 < 0) || (paramInt1 > 1)) {}
+    label29:
+    do
+    {
+      do
+      {
         return;
+      } while (TextUtils.isEmpty(paramString));
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+      paramActivity = new RelativeLayout(paramActivity);
+      switch (this.jdField_a_of_type_Int)
+      {
       }
+      for (;;)
+      {
+        for (;;)
+        {
+          paramString = a(paramView, paramActivity, paramString, paramFloat, paramInt1, paramDouble1, paramDouble2, paramInt2, paramBoolean2, parambkaz, paramInt4, paramInt5);
+          if (paramString == null) {
+            break;
+          }
+          paramInt4 = paramString[0] - paramInt4;
+          paramInt5 = paramString[1];
+          paramInt2 = paramInt3;
+          if (paramInt1 == 0) {
+            paramInt2 = -paramInt3;
+          }
+          paramInt1 = paramInt5 + paramInt2;
+          switch (this.jdField_a_of_type_Int)
+          {
+          default: 
+            return;
+          case 0: 
+            try
+            {
+              this.jdField_a_of_type_Bkau.showAtLocation(paramView, 0, paramInt4, paramInt1);
+              paramActivity.setVisibility(0);
+              if (paramLong <= 0L) {
+                break label29;
+              }
+              this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramLong);
+              return;
+            }
+            catch (Exception paramActivity)
+            {
+              return;
+            }
+          }
+        }
+        paramActivity.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+        continue;
+        paramActivity.setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
+      }
+      paramView = a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    } while (paramView == null);
+    paramActivity.setId(2131374728);
+    paramString = (FrameLayout.LayoutParams)paramActivity.getLayoutParams();
+    paramString.leftMargin = Math.max(paramInt4, bdoo.a(12.0F));
+    paramString.topMargin = paramInt1;
+    paramString.rightMargin = bdoo.a(12.0F);
+    paramView.addView(paramActivity);
+  }
+  
+  @TargetApi(16)
+  public void a(View paramView, Drawable paramDrawable)
+  {
+    if (paramView == null) {
+      return;
     }
-    Object localObject = paramaonx.b;
-    String str = QzoneZipCacheHelper.getBasePath("vip_qg", String.valueOf(((String)localObject).hashCode())) + ".zip";
-    if (QZLog.isColorLevel()) {
-      QZLog.i("VipARQGLoaderManager", 2, "download qg js file zipUrl = " + (String)localObject + " tempPath = " + str);
+    if (Build.VERSION.SDK_INT < 16)
+    {
+      paramView.setBackgroundDrawable(paramDrawable);
+      return;
     }
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download((String)localObject, str, false, new bkay(this, parambkac, (String)localObject, str, paramaonx));
+    paramView.setBackground(paramDrawable);
   }
 }
 

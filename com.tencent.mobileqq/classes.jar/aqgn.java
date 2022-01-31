@@ -1,35 +1,13 @@
-public abstract class aqgn
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
+
+public class aqgn
+  implements aqgs
 {
-  public int a = 1;
-  public String e;
+  public aqgn(PullToRefreshBase paramPullToRefreshBase) {}
   
-  public aqgn(int paramInt, String paramString)
+  public void a()
   {
-    this.a = paramInt;
-    this.e = paramString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject instanceof aqgn))
-    {
-      paramObject = (aqgn)paramObject;
-      if (this.e == null) {
-        if ((this.a != paramObject.a) || (paramObject.e != null)) {}
-      }
-      while ((this.a == paramObject.a) && (this.e.equals(paramObject.e)))
-      {
-        return true;
-        return false;
-      }
-      return false;
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    return this.e;
+    PullToRefreshBase.a(this.a);
   }
 }
 

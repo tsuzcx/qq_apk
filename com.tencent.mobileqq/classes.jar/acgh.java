@@ -1,17 +1,55 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import QQService.SvcDevLoginInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public final class acgh
-  implements bdff
+public class acgh
+  implements View.OnClickListener
 {
-  public acgh(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
+  public acgh(AuthDevActivity paramAuthDevActivity, List paramList, RelativeLayout paramRelativeLayout, int paramInt, SvcDevLoginInfo paramSvcDevLoginInfo) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("MeetingStasks", paramInt);
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    boolean bool3 = this.jdField_a_of_type_JavaUtilList.equals(AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity));
+    ArrayList localArrayList;
+    Object localObject;
+    boolean bool1;
+    String str1;
+    String str2;
+    int i;
+    if (bool3)
+    {
+      paramView = "0X800AC55";
+      azqs.b(null, "dc00898", "", "", paramView, paramView, 0, 0, "", "", "", "");
+      paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
+      localArrayList = new ArrayList();
+      localArrayList.add(paramView.stDeviceItemDes);
+      localObject = NetConnInfoCenter.GUID;
+      bool1 = false;
+      if (Arrays.equals((byte[])localObject, paramView.vecGuid)) {
+        bool1 = true;
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity;
+      str1 = paramView.strDeviceName;
+      str2 = AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
+      i = this.jdField_a_of_type_Int;
+      if (paramView.iLoginPlatform != 3L) {
+        break label179;
+      }
+    }
+    label179:
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      AuthDevActivity.a((AuthDevActivity)localObject, str1, localArrayList, str2, i, bool2, bool1, paramView.iAppId, paramView.iLoginTime, this.jdField_a_of_type_QQServiceSvcDevLoginInfo.vecGuid, bool3, paramView);
+      return;
+      paramView = "0X800AC57";
+      break;
+    }
   }
 }
 

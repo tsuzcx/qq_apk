@@ -49,9 +49,9 @@ public class pgy
   private Map<Integer, phb> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   private volatile long b;
   
-  public pgy(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public pgy(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
     if (QLog.isColorLevel()) {
       QLog.d("SelfInfoModule", 2, "construct!");
     }
@@ -114,7 +114,7 @@ public class pgy
   private void a(String paramString, int paramInt, phb paramphb)
   {
     oidb_cmd0xbe4.ReqBody localReqBody = new oidb_cmd0xbe4.ReqBody();
-    localReqBody.client_version.set("8.3.3");
+    localReqBody.client_version.set("8.3.5");
     oidb_cmd0xbe4.MsgGetReq localMsgGetReq = new oidb_cmd0xbe4.MsgGetReq();
     if (Aladdin.getConfig(215).getIntegerFromString("message_reddot_style", 1) == 2)
     {
@@ -207,9 +207,9 @@ public class pgy
         if (QLog.isColorLevel()) {
           QLog.d("SelfInfoModule", 1, "handle0x97bGetFollowAndFansCount result userinfo=" + j + ", signinStatus=" + l3 + ", userDesc=" + paramToServiceMsg + ",userTotalLike=" + l1 + ",userTotalFeeds=" + l2);
         }
-        bjxj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, k, m, paramFromServiceMsg);
-        bjxj.k(this.jdField_a_of_type_ComTencentCommonAppAppInterface, bool);
-        bjxj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramObject, (String)localObject, i, l1, l2, paramToServiceMsg, l3);
+        bkbq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, k, m, paramFromServiceMsg);
+        bkbq.k(this.jdField_a_of_type_ComTencentCommonAppAppInterface, bool);
+        bkbq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramObject, (String)localObject, i, l1, l2, paramToServiceMsg, l3);
         paramToServiceMsg = null;
         if (localRspBody.msg_simpleinfo.rpt_msg_medal_info.has())
         {
@@ -222,7 +222,7 @@ public class pgy
         if ((paramToServiceMsg == null) || (paramToServiceMsg.isEmpty())) {
           break label939;
         }
-        bjxj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (nxe)paramToServiceMsg.get(0));
+        bkbq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (nxe)paramToServiceMsg.get(0));
       }
       for (;;)
       {
@@ -250,7 +250,7 @@ public class pgy
         l3 = -1L;
         break label635;
         label939:
-        bjxj.e(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+        bkbq.e(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
       }
     }
   }
@@ -297,13 +297,13 @@ public class pgy
   public void a()
   {
     long l1 = System.currentTimeMillis();
-    long l2 = ((Long)bjxj.a("key_sp_readinjoy_youngster_last_pull_time", Long.valueOf(0L))).longValue();
-    if (((Integer)bjxj.a("key_sp_is_readinjoy_youngster", Integer.valueOf(0))).intValue() == 0) {}
-    for (int i = 1; (bjpr.a(l1, l2)) && (i == 0); i = 0) {
+    long l2 = ((Long)bkbq.a("key_sp_readinjoy_youngster_last_pull_time", Long.valueOf(0L))).longValue();
+    if (((Integer)bkbq.a("key_sp_is_readinjoy_youngster", Integer.valueOf(0))).intValue() == 0) {}
+    for (int i = 1; (bjty.a(l1, l2)) && (i == 0); i = 0) {
       return;
     }
     QLog.e("SelfInfoModule", 2, "updateSelfYoungsterModeSetting.");
-    bjxj.a("key_sp_readinjoy_youngster_last_pull_time", Long.valueOf(l1));
+    bkbq.a("key_sp_readinjoy_youngster_last_pull_time", Long.valueOf(l1));
     oidb_0xe1b.ReqBody localReqBody = new oidb_0xe1b.ReqBody();
     localReqBody.uint32_req_type.set(1);
     oidb_0xe1b.GetFlagInfoReq localGetFlagInfoReq = new oidb_0xe1b.GetFlagInfoReq();

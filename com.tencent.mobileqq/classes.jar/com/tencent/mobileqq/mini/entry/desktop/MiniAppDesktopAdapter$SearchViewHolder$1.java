@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -49,7 +49,7 @@ class MiniAppDesktopAdapter$SearchViewHolder$1
     }
     for (;;)
     {
-      paramView = alpo.a(2131707176);
+      paramView = alud.a(2131707188);
       if (MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).getText() != null) {
         paramView = MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).getText().toString();
       }

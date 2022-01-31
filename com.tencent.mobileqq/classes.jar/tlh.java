@@ -1,7 +1,7 @@
 final class tlh
-  implements bhqf
+  implements bhum
 {
-  tlh(bhqf parambhqf) {}
+  tlh(bhum parambhum) {}
   
   public void onDismiss()
   {

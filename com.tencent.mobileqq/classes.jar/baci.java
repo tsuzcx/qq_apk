@@ -1,48 +1,31 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.TeamWorkFileExportHandler.1;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.manager.TicketManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.CountDownLatch;
 
-public class baci
-  extends alko
-  implements Handler.Callback
+class baci
+  implements babu
 {
-  private String[] a = { "docs.qq.com" };
+  baci(bacg parambacg, File paramFile, Exception[] paramArrayOfException, CountDownLatch paramCountDownLatch) {}
   
-  public baci(QQAppInterface paramQQAppInterface)
+  public void a()
   {
-    super(paramQQAppInterface);
-  }
-  
-  private void a(Runnable paramRunnable)
-  {
-    if (this.app == null) {}
-    while (((TicketManager)this.app.getManager(2)).GetPskey(this.app.getCurrentAccountUin(), 16L, this.a, new bacj(this, paramRunnable)) == null) {
-      return;
+    QLog.d("studyroom.CdnPmUpdater", 1, " download cdn success");
+    if (!bacg.a(this.jdField_a_of_type_Bacg).renameTo(this.jdField_a_of_type_JavaIoFile)) {
+      this.jdField_a_of_type_ArrayOfJavaLangException[0] = new RuntimeException(alud.a(2131701853) + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
     }
-    ThreadManager.executeOnNetWorkThread(paramRunnable);
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    a(new TeamWorkFileExportHandler.1(this, paramString1, paramString2, paramString3, paramString4));
+    this.jdField_a_of_type_ArrayOfJavaLangException[0] = new Exception("下载失败 retcode:" + paramInt1 + " httpCode:" + paramInt2 + " err:" + paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("studyroom.CdnPmUpdater", 2, " onDownloadFailed ");
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
-  }
-  
-  protected Class<? extends alkr> observerClass()
-  {
-    return bacg.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public void a(long paramLong1, long paramLong2, int paramInt) {}
 }
 
 

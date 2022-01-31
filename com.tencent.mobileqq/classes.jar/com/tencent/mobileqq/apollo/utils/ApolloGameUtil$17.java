@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import alfp;
+import alke;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import bdix;
+import bdng;
 
 final class ApolloGameUtil$17
   implements Runnable
 {
-  ApolloGameUtil$17(Context paramContext, String paramString, alfp paramalfp, Intent paramIntent, Bitmap paramBitmap) {}
+  ApolloGameUtil$17(Context paramContext, String paramString, alke paramalke, Intent paramIntent, Bitmap paramBitmap) {}
   
   public void run()
   {
-    if (bdix.a(this.jdField_a_of_type_AndroidContentContext, new String[] { this.jdField_a_of_type_JavaLangString }))
+    if (bdng.a(this.jdField_a_of_type_AndroidContentContext, new String[] { this.jdField_a_of_type_JavaLangString }))
     {
       ApolloGameUtil.a(2);
-      if (this.jdField_a_of_type_Alfp != null) {
-        this.jdField_a_of_type_Alfp.a(2);
+      if (this.jdField_a_of_type_Alke != null) {
+        this.jdField_a_of_type_Alke.a(2);
       }
     }
     label130:
@@ -32,13 +32,13 @@ final class ApolloGameUtil$17
           {
             ApolloGameUtil.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
             Thread.sleep(1000L);
-            if (!bdix.a(this.jdField_a_of_type_AndroidContentContext, new String[] { this.jdField_a_of_type_JavaLangString })) {
+            if (!bdng.a(this.jdField_a_of_type_AndroidContentContext, new String[] { this.jdField_a_of_type_JavaLangString })) {
               break label130;
             }
             ApolloGameUtil.a(0);
-            if (this.jdField_a_of_type_Alfp != null)
+            if (this.jdField_a_of_type_Alke != null)
             {
-              this.jdField_a_of_type_Alfp.a(0);
+              this.jdField_a_of_type_Alke.a(0);
               return;
             }
           }
@@ -47,12 +47,12 @@ final class ApolloGameUtil$17
             ApolloGameUtil.a(4);
           }
         }
-      } while (this.jdField_a_of_type_Alfp == null);
-      this.jdField_a_of_type_Alfp.a(4);
+      } while (this.jdField_a_of_type_Alke == null);
+      this.jdField_a_of_type_Alke.a(4);
       return;
       ApolloGameUtil.a(3);
-    } while (this.jdField_a_of_type_Alfp == null);
-    this.jdField_a_of_type_Alfp.a(3);
+    } while (this.jdField_a_of_type_Alke == null);
+    this.jdField_a_of_type_Alke.a(3);
   }
 }
 

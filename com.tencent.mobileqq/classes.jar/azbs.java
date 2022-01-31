@@ -1,123 +1,43 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import NS_USER_ACTION_REPORT.UserActionReport;
+import NS_USER_ACTION_REPORT.UserCommReport;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
 
 public class azbs
-  implements Handler.Callback
+  extends MSFServlet
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  public HandlerThread a;
-  private azbt jdField_a_of_type_Azbt;
-  private int b;
-  private int c;
-  
-  public azbs(int paramInt1, int paramInt2)
+  public static void a(AppRuntime paramAppRuntime, UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
   {
-    this.jdField_a_of_type_Int = (1000 / paramInt1);
-    this.b = ((int)(paramInt2 / 1000.0F * paramInt1) + 1);
-    this.c = 0;
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("shortvideo_Timer");
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), azbs.class);
+    localNewIntent.putExtra("userCommReport", paramUserCommReport);
+    localNewIntent.putExtra("reportInfos", paramArrayList);
+    paramAppRuntime.startServlet(localNewIntent);
   }
   
-  private boolean a(Message paramMessage)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (azdv.a)
+    if (paramFromServiceMsg != null) {}
+    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
     {
-      paramMessage = RMVideoStateMgr.a();
-      if (!paramMessage.b) {
-        break label179;
+      if (QLog.isColorLevel()) {
+        QLog.d("MobileReport.Servlet", 2, "servlet result code is " + i);
       }
-      paramMessage.jdField_a_of_type_Double = (System.currentTimeMillis() - paramMessage.jdField_a_of_type_Long);
-      if (paramMessage.jdField_a_of_type_Double >= azds.c) {
-        bool1 = true;
-      }
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        bool2 = bool1;
-        if (bool1)
-        {
-          QLog.d("TCTimer", 2, "handleLooperEvent startTime=" + paramMessage.jdField_a_of_type_Long + " total=" + paramMessage.jdField_a_of_type_Double);
-          bool2 = bool1;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (bool2) {
-        this.c = this.b;
-      }
-      int i = this.c;
-      int j = this.jdField_a_of_type_Int;
-      if (this.jdField_a_of_type_Azbt != null) {
-        this.jdField_a_of_type_Azbt.a(this.jdField_a_of_type_Azbt, bool2, i * j, this.c);
-      }
-      this.c += 1;
-      return true;
-      label179:
-      if (this.c >= this.b) {
-        bool2 = true;
-      }
+      return;
     }
   }
   
-  public int a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1398036036);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_a_of_type_Int);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public void a(azbt paramazbt)
-  {
-    this.jdField_a_of_type_Azbt = paramazbt;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-  }
-  
-  public void b(int paramInt)
-  {
-    this.c = (paramInt / this.jdField_a_of_type_Int);
-  }
-  
-  public void c()
-  {
-    this.c = 0;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1398036036);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_a_of_type_Int);
-    }
-    return a(paramMessage);
+    paramIntent = new bjkn((UserCommReport)paramIntent.getSerializableExtra("userCommReport"), (ArrayList)paramIntent.getSerializableExtra("reportInfos"));
+    paramPacket.setTimeout(10000L);
+    paramPacket.setSSOCommand(paramIntent.getCmdString());
+    paramPacket.putSendData(paramIntent.encode());
   }
 }
 

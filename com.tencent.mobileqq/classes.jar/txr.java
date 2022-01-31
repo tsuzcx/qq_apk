@@ -1,15 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.biz.qqcircle.requests.QCircleGetFeedDetailRequest;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudCommon.StCommonExt;
+import feedcloud.FeedCloudRead.StGetFeedDetailRsp;
 
 class txr
-  implements View.OnTouchListener
+  implements zac<FeedCloudRead.StGetFeedDetailRsp>
 {
-  txr(txp paramtxp) {}
+  txr(txq paramtxq, QCircleGetFeedDetailRequest paramQCircleGetFeedDetailRequest) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
   {
-    return false;
+    QLog.d("QCircleContentModel", 1, "getSingleFeed onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedDetailRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedDetailRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
+    if ((paramStGetFeedDetailRsp != null) && (paramStGetFeedDetailRsp.extInfo.has())) {
+      this.jdField_a_of_type_Txq.a((FeedCloudCommon.StCommonExt)paramStGetFeedDetailRsp.extInfo.get());
+    }
+    txq.a(this.jdField_a_of_type_Txq).postValue(new tsb(paramLong, paramString, paramStGetFeedDetailRsp, false));
+    this.jdField_a_of_type_Txq.a().a(4);
   }
 }
 

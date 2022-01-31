@@ -1,13 +1,21 @@
-import java.util.ArrayList;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class apxp
-  extends apyo
+class apxp
+  implements View.OnClickListener
 {
-  public ArrayList<apxq> a;
+  apxp(apxn paramapxn, IPSiteModel.Goods paramGoods) {}
   
-  public apxp()
+  public void onClick(View paramView)
   {
-    this.mType = 6;
+    paramView = new Intent(apxn.a(this.jdField_a_of_type_Apxn), QQBrowserActivity.class);
+    paramView.putExtra("hide_operation_bar", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(apxn.a(this.jdField_a_of_type_Apxn), this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Goods.moreUrl, -1L, paramView, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(apxn.a(this.jdField_a_of_type_Apxn), "IP", "aio_productmore", "", 0, 0, 0, apxn.b(this.jdField_a_of_type_Apxn), apxn.c(this.jdField_a_of_type_Apxn), "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

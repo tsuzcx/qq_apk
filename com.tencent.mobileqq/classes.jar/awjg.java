@@ -1,10 +1,25 @@
-import com.tencent.mobileqq.data.PrecoverResource;
-
-public abstract interface awjg
+public class awjg
 {
-  public abstract void a(int paramInt, String paramString, PrecoverResource paramPrecoverResource, Object paramObject);
+  public awjh a;
   
-  public abstract void a(PrecoverResource paramPrecoverResource, Object paramObject, long paramLong1, long paramLong2);
+  public String a()
+  {
+    return null;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.a == null) {
+      this.a = new awjh();
+    }
+    this.a.a = paramString1;
+    this.a.b = paramString2;
+  }
+  
+  protected boolean a()
+  {
+    return false;
+  }
 }
 
 

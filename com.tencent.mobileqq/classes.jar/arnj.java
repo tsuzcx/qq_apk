@@ -1,43 +1,50 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import android.media.AudioManager;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class arnj
-  implements arnv
+class arnj
+  implements View.OnClickListener
 {
-  arnj(String paramString1, String paramString2) {}
+  arnj(arnb paramarnb) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if (paramBitmap == null) {
-      return;
-    }
-    try
+    switch (paramView.getId())
     {
-      arof.a(paramBitmap, this.a);
-      paramBitmap.recycle();
-      int i = fa.a(this.b);
-      fa.a(this.a, i);
-      return;
     }
-    catch (FileNotFoundException paramBitmap)
+    int i;
+    int j;
+    do
     {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + paramBitmap.getMessage());
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null);
+      if (arnb.a(this.a))
+      {
+        arnb.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        arrp.a("0X8004BE5");
+        this.a.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(arnb.a(this.a));
+        arnb.a(this.a);
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_Aron.d(arnb.a(this.a));
+        return;
+        arnb.b(this.a);
+      }
+      paramView = this.a.jdField_a_of_type_Arki.b();
+      arnb.a(this.a, paramView);
+      String str = this.a.a() + "(" + arso.a(this.a.jdField_a_of_type_Arki.c()) + ")";
+      this.a.a(paramView, str);
       return;
-    }
-    catch (IOException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + paramBitmap.getMessage());
+      this.a.n();
       return;
-    }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramBitmap.getMessage());
-    }
+      i = this.a.jdField_a_of_type_Arki.i();
+      j = this.a.jdField_a_of_type_Arki.h();
+    } while ((i != 6) || (j != 1) || (this.a.jdField_a_of_type_Arki.a() == null));
+    this.a.jdField_a_of_type_Arki.a().a();
   }
 }
 

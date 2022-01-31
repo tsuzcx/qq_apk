@@ -1,66 +1,48 @@
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
 public class betj
-  extends WebViewPlugin
+  implements View.OnClickListener
 {
-  public betj()
+  final WeakReference<QQAppInterface> a;
+  final WeakReference<awqt> b;
+  
+  public betj(QQAppInterface paramQQAppInterface, awqt paramawqt)
   {
-    this.mPluginNameSpace = "floatingWindow";
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramawqt);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    awqt localawqt = (awqt)this.b.get();
+    if ((localQQAppInterface == null) || (localawqt == null) || (localawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null)) {
+      return;
     }
-    if ("floatingWindow".equals(paramString2))
+    if (((bcgc)localQQAppInterface.getManager(346)).b(localawqt.jdField_a_of_type_JavaLangString)) {}
+    for (String str = bcos.a().a(localawqt.jdField_a_of_type_JavaLangString, localawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);; str = bcos.a().a(localawqt.jdField_a_of_type_JavaLangString, localawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, awrt.a(localQQAppInterface, localawqt.jdField_a_of_type_JavaLangString, localawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, localawqt.jdField_a_of_type_ComTencentMobileqqDataCard), "3", "aio"))
     {
-      if ("show".equals(paramString3))
+      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("url", str);
+      paramView.getContext().startActivity(localIntent);
+      if (bbtx.a().a(localawqt.jdField_a_of_type_JavaLangString, localawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
       {
-        betl.a(BaseApplication.getContext(), true, 16);
-        return true;
+        paramView = paramView.findViewById(2131375551);
+        if (paramView != null) {
+          paramView.setVisibility(8);
+        }
+        bbtx.a().a(localawqt.jdField_a_of_type_JavaLangString, localawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, false);
       }
-      if ("hide".equals(paramString3))
-      {
-        betl.a(BaseApplication.getContext(), false, 16);
-        return true;
-      }
-      if ("close".equals(paramString3))
-      {
-        betl.a(BaseApplicationImpl.getContext(), 16);
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.onActivityResult(paramIntent, paramByte, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, "onActivityResult requestCode=" + paramByte + "  resultCode=" + paramInt);
-    }
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, "onCreate");
-    }
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, "onDestroy");
+      bbtx.a("grp_data", "clk_medal");
+      new azqx(localQQAppInterface).a("dc00899").b("Grp_mem_card").c("page").d("title_clk").a(new String[] { localawqt.jdField_a_of_type_JavaLangString }).a();
+      return;
     }
   }
 }

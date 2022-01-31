@@ -1,30 +1,61 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.Friends;
+import org.json.JSONObject;
 
 public class bmvz
 {
-  @NonNull
-  protected final Friends a;
-  protected boolean a;
+  public int a;
+  private bmvy a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l = "";
+  public String m;
   
-  public bmvz(@NonNull Friends paramFriends)
+  public bmvz()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_f_of_type_Int = -1;
   }
   
-  public String a()
+  public bmvz(JSONObject paramJSONObject)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_f_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("poi_poster_id");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("poster_name");
+    this.jdField_a_of_type_Int = paramJSONObject.getInt("poster_type");
+    this.c = paramJSONObject.getString("thumb_url");
+    this.jdField_b_of_type_Int = paramJSONObject.optInt("predownload", 0);
+    this.d = paramJSONObject.getString("static_url");
+    paramJSONObject = paramJSONObject.getJSONObject("resource");
+    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("resurl", "");
+    this.jdField_f_of_type_JavaLangString = paramJSONObject.optString("md5", "");
+    this.g = paramJSONObject.optString("name");
+    this.h = paramJSONObject.optString("id", "");
+    this.jdField_a_of_type_Boolean = bmwa.a(this.jdField_a_of_type_Int);
   }
   
-  public void a()
+  public bmvy a()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
+    return this.jdField_a_of_type_Bmvy;
+  }
+  
+  public void a(bmvy parambmvy)
+  {
+    this.jdField_a_of_type_Bmvy = parambmvy;
   }
 }
 

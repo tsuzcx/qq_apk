@@ -13,27 +13,27 @@ import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
-import bmvs;
-import bmvv;
-import bmvw;
+import bnae;
+import bnah;
+import bnai;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import xom;
+import xsv;
 
 public class SegmentRangeView
   extends View
-  implements bmvw
+  implements bnai
 {
   private float jdField_a_of_type_Float = 8.0F;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private bmvv jdField_a_of_type_Bmvv;
-  private WeakReference<bmvs> jdField_a_of_type_JavaLangRefWeakReference;
+  private bnah jdField_a_of_type_Bnah;
+  private WeakReference<bnae> jdField_a_of_type_JavaLangRefWeakReference;
   private List<Bitmap> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float = 20.0F;
@@ -231,10 +231,10 @@ public class SegmentRangeView
   public void a()
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    if (this.jdField_a_of_type_Bmvv != null)
+    if (this.jdField_a_of_type_Bnah != null)
     {
-      this.jdField_a_of_type_Bmvv.c();
-      this.jdField_a_of_type_Bmvv = null;
+      this.jdField_a_of_type_Bnah.c();
+      this.jdField_a_of_type_Bnah = null;
     }
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_b_of_type_JavaUtilList = null;
@@ -256,20 +256,20 @@ public class SegmentRangeView
     invalidate();
   }
   
-  public void a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, bmvs parambmvs, boolean paramBoolean2)
+  public void a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, bnae parambnae, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambmvs);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambnae);
     this.jdField_a_of_type_Long = (paramLong2 - paramLong1);
     this.jdField_b_of_type_Long = paramLong1;
     this.jdField_d_of_type_Boolean = paramBoolean1;
-    boolean bool = xom.a(paramInt2, paramInt3, paramInt1);
+    boolean bool = xsv.a(paramInt2, paramInt3, paramInt1);
     if (paramBoolean1)
     {
       this.jdField_d_of_type_Int = paramInt2;
       this.jdField_e_of_type_Int = paramInt3;
       paramInt1 = 0;
-      this.jdField_a_of_type_Bmvv = new bmvv(getContext(), paramBoolean2, bool);
-      this.jdField_a_of_type_Bmvv.a(paramString, paramLong1, paramLong2, paramInt1, this);
+      this.jdField_a_of_type_Bnah = new bnah(getContext(), paramBoolean2, bool);
+      this.jdField_a_of_type_Bnah.a(paramString, paramLong1, paramLong2, paramInt1, this);
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(2130706432);
       this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
@@ -278,8 +278,8 @@ public class SegmentRangeView
       this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-15550475);
       this.f = this.jdField_b_of_type_Float;
       this.g = this.f;
-      this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130844168);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130844170);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130844240);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130844242);
       return;
     }
     if ((bool) && (paramBoolean2)) {}
@@ -303,9 +303,9 @@ public class SegmentRangeView
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bmvs localbmvs = (bmvs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbmvs != null) {
-        localbmvs.a(paramList);
+      bnae localbnae = (bnae)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbnae != null) {
+        localbnae.a(paramList);
       }
     }
   }
@@ -384,10 +384,10 @@ public class SegmentRangeView
           this.jdField_c_of_type_Int += 1;
         }
       } while (this.jdField_c_of_type_Int == 0);
-      if (this.jdField_a_of_type_Bmvv != null)
+      if (this.jdField_a_of_type_Bnah != null)
       {
-        this.jdField_a_of_type_Bmvv.b();
-        this.jdField_a_of_type_Bmvv.a(this.jdField_c_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Bnah.b();
+        this.jdField_a_of_type_Bnah.a(this.jdField_c_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       }
     }
     List localList = this.jdField_b_of_type_JavaUtilList;
@@ -437,7 +437,7 @@ public class SegmentRangeView
     }
     label455:
     label457:
-    for (paramMotionEvent = (bmvs)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
+    for (paramMotionEvent = (bnae)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
     {
       if (paramMotionEvent != null)
       {
@@ -465,7 +465,7 @@ public class SegmentRangeView
             this.g = (this.f + getWidth() * 0.1F);
           }
           if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-          for (paramMotionEvent = (bmvs)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
+          for (paramMotionEvent = (bnae)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
           {
             if (paramMotionEvent == null) {
               break label455;

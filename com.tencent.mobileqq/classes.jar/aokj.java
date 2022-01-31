@@ -1,20 +1,6 @@
-public class aokj
+public abstract interface aokj<Y>
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  aokj(String paramString1, String paramString2, String paramString3)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
-  
-  public String toString()
-  {
-    return "UIElement(" + this.a + ", " + this.b + ", " + this.c + ")";
-  }
+  public abstract void a(Y paramY);
 }
 
 

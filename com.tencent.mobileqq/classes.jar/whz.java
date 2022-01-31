@@ -1,35 +1,29 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
 import java.util.ArrayList;
+import java.util.List;
 
-class whz
-  extends SimpleJob<Object>
+public class whz
+  extends vcb
 {
-  whz(whw paramwhw, String paramString1, String paramString2)
+  public int a;
+  public String a;
+  public List<CommentEntry> a;
+  public int b;
+  public String b;
+  public int c;
+  
+  public whz(ErrorMessage paramErrorMessage, String paramString, int paramInt)
   {
-    super(paramString1);
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(0);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramInt;
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public String toString()
   {
-    paramJobContext = (ure)urr.a(19);
-    paramVarArgs = paramJobContext.a(uxx.a(this.jdField_a_of_type_Whw.b));
-    wib localwib = new wib(this.jdField_a_of_type_Whw.c);
-    ArrayList localArrayList = new ArrayList();
-    localwib.jdField_a_of_type_JavaUtilList = paramJobContext.a(this.jdField_a_of_type_JavaLangString, localArrayList);
-    localwib.jdField_a_of_type_JavaUtilArrayList = localArrayList;
-    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localwib.jdField_a_of_type_Boolean = bool;
-      uht.a().dispatch(localwib);
-      wsv.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localwib.jdField_a_of_type_JavaUtilList);
-      return null;
-    }
+    return "GetFeedCommentEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mType=" + this.jdField_a_of_type_Int + ", mSource=" + this.c + ", mCommentEntries=" + this.jdField_a_of_type_JavaUtilList.size() + ", mTotalCount=" + this.b + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

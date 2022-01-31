@@ -1,9 +1,6 @@
-class ajwd
-  implements bhrf
+public abstract interface ajwd
 {
-  ajwd(ajwc paramajwc) {}
-  
-  public void a() {}
+  public abstract void a(float paramFloat1, float paramFloat2);
 }
 
 

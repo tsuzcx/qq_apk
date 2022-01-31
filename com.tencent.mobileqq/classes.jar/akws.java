@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import org.json.JSONObject;
 
-public final class akws
-  implements Parcelable.Creator<SpriteTaskParam>
+class akws
+  implements MediaPlayer.OnCompletionListener
 {
-  public SpriteTaskParam a(Parcel paramParcel)
-  {
-    return new SpriteTaskParam(paramParcel);
-  }
+  akws(akwn paramakwn, akxn paramakxn, JSONObject paramJSONObject) {}
   
-  public SpriteTaskParam[] a(int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    return new SpriteTaskParam[paramInt];
+    this.jdField_a_of_type_Akxn.a(this.jdField_a_of_type_OrgJsonJSONObject);
+    this.jdField_a_of_type_Akwn.a(10);
   }
 }
 

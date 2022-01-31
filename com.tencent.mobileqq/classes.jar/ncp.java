@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
 
 public class ncp
-  implements aywc
+  implements azal
 {
   private QQAppInterface a;
   
@@ -32,7 +32,7 @@ public class ncp
     localReqItem.eServiceID = 118;
     BnrReport.BNRConfigMsg localBNRConfigMsg = nco.a(this.a.getCurrentAccountUin());
     if (localBNRConfigMsg != null) {
-      localReqItem.vecParam = bdku.a(localBNRConfigMsg.toByteArray());
+      localReqItem.vecParam = bdpd.a(localBNRConfigMsg.toByteArray());
     }
     nco.a = true;
     return localReqItem;
@@ -47,7 +47,7 @@ public class ncp
     if (paramRespItem.cResult == 2) {
       if (paramRespItem.eServiceID == 118)
       {
-        paramRespItem = bdku.b(paramRespItem.vecUpdate);
+        paramRespItem = bdpd.b(paramRespItem.vecUpdate);
         if (paramRespItem != null) {
           localBNRConfigMsg = new BnrReport.BNRConfigMsg();
         }

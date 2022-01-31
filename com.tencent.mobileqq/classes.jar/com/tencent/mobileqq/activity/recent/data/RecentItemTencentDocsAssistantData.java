@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ajgs;
+import ajlh;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.config.AppSetting;
@@ -31,7 +31,7 @@ public class RecentItemTencentDocsAssistantData
       QLog.d("RecentItemTencentDocsAssistantData", 2, "RecentItemTencentDocsAssistantData update");
     }
     super.a(paramQQAppInterface, paramContext);
-    this.mTitleName = paramContext.getString(2131720729);
+    this.mTitleName = paramContext.getString(2131720741);
     this.mMsgExtroInfo = "";
     oidb_0x791.RedDotInfo localRedDotInfo = ((nan)paramQQAppInterface.getManager(70)).a(46, false);
     if (localRedDotInfo == null)
@@ -39,7 +39,7 @@ public class RecentItemTencentDocsAssistantData
       this.mUnreadNum = 0;
       this.mDisplayTime = 0L;
       this.mShowTime = "";
-      this.mLastMsg = paramContext.getString(2131720730);
+      this.mLastMsg = paramContext.getString(2131720742);
       if (AppSetting.c)
       {
         paramQQAppInterface = new StringBuilder();
@@ -132,10 +132,10 @@ public class RecentItemTencentDocsAssistantData
           QLog.e("RecentItemTencentDocsAssistantData", 1, "RecentItemTencentDocsAssistantData update error" + paramQQAppInterface.getMessage());
           localObject2 = localObject1;
           continue;
-          this.mLastMsg = paramContext.getString(2131720730);
+          this.mLastMsg = paramContext.getString(2131720742);
         }
         if ((this.mDisplayTime > 0L) && (this.mDisplayTime != 9223372036854775806L)) {
-          this.mShowTime = ajgs.a().a(a(), this.mDisplayTime);
+          this.mShowTime = ajlh.a().a(a(), this.mDisplayTime);
         }
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           continue;

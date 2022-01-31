@@ -303,9 +303,9 @@ public class lnx
       QLog.d("NativeEventHandler", 1, "NETWORK_CHECK: recv send network check request from SDK, peerUin = " + str);
       this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.H();
       break;
-      azmj.b(null, "CliOper", "", "", "0X800A7A4", "0X800A7A4", 0, (int)((lny)localObject).c, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X800A7A4", "0X800A7A4", 0, (int)((lny)localObject).c, "", "", "", "");
       break;
-      azmj.b(null, "CliOper", "", "", "0X800A7A5", "0X800A7A5", 0, (int)((lny)localObject).c, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X800A7A5", "0X800A7A5", 0, (int)((lny)localObject).c, "", "", "", "");
       break;
       this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.g((int)((lny)localObject).c);
       break;

@@ -1,25 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment;
-import com.tencent.qphone.base.util.QLog;
-
 public class auee
-  implements best
+  extends uli
 {
-  public auee(MsgBackupQRFragment paramMsgBackupQRFragment) {}
+  public int a;
+  public auef a;
+  public String a;
+  public boolean a;
+  public Object[] a;
   
-  public void a(View paramView, int paramInt)
+  public String toString()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("MsgBackup.MsgBackupQRFragment", 2, "TO_QRCODE page click left btn");
-    }
-    aucf.a().d();
-    this.a.onBackEvent();
-    auff.a("0X800A242", 4);
+    return "MiniAppEvent {, isSuccess=" + this.jdField_a_of_type_Boolean + ", type=" + this.jdField_a_of_type_Int + ", src=" + this.jdField_a_of_type_JavaLangString + " }";
   }
 }
 

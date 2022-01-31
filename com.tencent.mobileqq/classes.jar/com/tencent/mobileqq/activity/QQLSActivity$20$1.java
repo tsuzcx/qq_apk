@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import adly;
+import adqn;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQLSActivity$20$1
   implements Runnable
 {
-  public QQLSActivity$20$1(adly paramadly) {}
+  public QQLSActivity$20$1(adqn paramadqn) {}
   
   public void run()
   {

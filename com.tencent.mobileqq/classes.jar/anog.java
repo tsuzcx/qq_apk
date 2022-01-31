@@ -1,67 +1,110 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.util.LruCache;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
-class anog
-  extends Handler
+public class anog
 {
-  anog(anoe paramanoe, Looper paramLooper)
+  private static final anog jdField_a_of_type_Anog = new anog(1);
+  private static boolean jdField_a_of_type_Boolean;
+  private static final anog jdField_b_of_type_Anog = new anog(2);
+  private static anog jdField_c_of_type_Anog = jdField_b_of_type_Anog;
+  private final int jdField_a_of_type_Int;
+  private final SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private final String jdField_a_of_type_JavaLangString;
+  private final SharedPreferences jdField_b_of_type_AndroidContentSharedPreferences;
+  private final String jdField_b_of_type_JavaLangString;
+  private final String jdField_c_of_type_JavaLangString;
+  
+  private anog(int paramInt)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = a(paramInt);
+    this.jdField_c_of_type_JavaLangString = b(paramInt);
+    this.jdField_a_of_type_AndroidContentSharedPreferences = a(paramInt);
+    this.jdField_b_of_type_AndroidContentSharedPreferences = b(paramInt);
+    if (paramInt == 1)
+    {
+      this.jdField_b_of_type_JavaLangString = "test.ark.qq.com";
+      return;
+    }
+    this.jdField_b_of_type_JavaLangString = "cgi.ark.qq.com";
   }
   
-  public void handleMessage(Message paramMessage)
+  private static SharedPreferences a(int paramInt)
   {
-    if (paramMessage.what == 1000) {
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList.size());
-        paramMessage.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-        this.a.a(paramMessage);
-      }
+    if (paramInt == 2) {
+      return BaseApplication.getContext().getSharedPreferences("ArkAppServerConfig", 0);
     }
-    Object localObject;
-    String str;
-    do
+    return BaseApplication.getContext().getSharedPreferences("ArkAppServerConfigDebug", 0);
+  }
+  
+  public static anog a()
+  {
+    if (!jdField_a_of_type_Boolean)
     {
-      this.a.jdField_a_of_type_JavaUtilArrayList.removeAll(paramMessage);
-      for (;;)
-      {
-        return;
-        if (paramMessage.what == 1002) {
-          try
-          {
-            localObject = (Bundle)paramMessage.obj;
-            paramMessage = (Bitmap)((Bundle)localObject).getParcelable("bmp");
-            str = ((Bundle)localObject).getString("uin");
-            localObject = ((Bundle)localObject).getString("path");
-            if (paramMessage != null) {
-              this.a.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(str, paramMessage);
-            }
-            Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-            while (localIterator.hasNext())
-            {
-              anoi localanoi = (anoi)localIterator.next();
-              if (localanoi != null) {
-                localanoi.a(str, (String)localObject, paramMessage);
-              }
-            }
-            if (!QLog.isColorLevel()) {}
-          }
-          catch (Exception paramMessage) {}
-        }
-      }
-      QLog.e("NonMainAppHeadLoader", 2, "refreshImg, exception:" + paramMessage.toString());
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("NonMainAppHeadLoader", 2, "refreshImg, uin:" + str + ", path=" + (String)localObject);
+      jdField_a_of_type_Boolean = true;
+      ArkAppCenter.c("ArkApp", "ArkTemp.getCurrent sso env isTestEnv=" + false);
+    }
+    jdField_c_of_type_Anog = jdField_b_of_type_Anog;
+    return jdField_c_of_type_Anog;
+  }
+  
+  private static String a(int paramInt)
+  {
+    String str = e();
+    if (paramInt == 1) {
+      return str + "/ArkAppTest";
+    }
+    return str + "/ArkApp";
+  }
+  
+  private static SharedPreferences b(int paramInt)
+  {
+    if (paramInt == 2) {
+      return BaseApplication.getContext().getSharedPreferences("ArkAppCacheConfig", 0);
+    }
+    return BaseApplication.getContext().getSharedPreferences("ArkAppCacheConfigDebug", 0);
+  }
+  
+  private static String b(int paramInt)
+  {
+    String str = e();
+    if (paramInt == 1) {
+      return str + "/pddata/prd/arkapp/test";
+    }
+    return str + "/pddata/prd/arkapp";
+  }
+  
+  private static String e()
+  {
+    return BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return this.jdField_c_of_type_JavaLangString + "/Dict";
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_JavaLangString + "/Debug";
+  }
+  
+  public String d()
+  {
+    return this.jdField_a_of_type_JavaLangString + "/Crash";
   }
 }
 

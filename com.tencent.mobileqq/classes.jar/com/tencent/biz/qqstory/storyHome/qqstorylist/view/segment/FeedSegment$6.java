@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
 import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import wps;
+import wub;
 
 public class FeedSegment$6
   implements Runnable
 {
-  public FeedSegment$6(wps paramwps, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
+  public FeedSegment$6(wub paramwub, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
   
   public void run()
   {
-    if (wps.b(this.this$0)) {
+    if (wub.b(this.this$0)) {
       this.a.smoothScrollBy(1, 0);
     }
   }

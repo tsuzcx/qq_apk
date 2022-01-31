@@ -1,19 +1,87 @@
-import com.tencent.mobileqq.portal.PortalManager.TimerConfig;
-import java.util.Comparator;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public final class awit
-  implements Comparator<PortalManager.TimerConfig>
+public abstract class awit
+  extends Binder
+  implements awis
 {
-  public int a(PortalManager.TimerConfig paramTimerConfig1, PortalManager.TimerConfig paramTimerConfig2)
+  public awit()
   {
-    long l = paramTimerConfig1.uiBegin - paramTimerConfig2.uiBegin;
-    if (l > 0L) {
-      return 1;
+    attachInterface(this, "com.tencent.mobileqq.pic.IPresendPicMgr");
+  }
+  
+  public static awis a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    if (l < 0L) {
-      return -1;
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+    if ((localIInterface != null) && ((localIInterface instanceof awis))) {
+      return (awis)localIInterface;
     }
-    return 0;
+    return new awiu(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.pic.IPresendPicMgr");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      String str1 = paramParcel1.readString();
+      String str2 = paramParcel1.readString();
+      if (paramParcel1.readInt() != 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        a(str1, str2, bool, paramParcel1.readInt(), paramParcel1.readInt());
+        paramParcel2.writeNoException();
+        return true;
+      }
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      a(paramParcel1.readString(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 4: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 5: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      paramInt1 = a();
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 6: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      paramParcel1 = a();
+      paramParcel2.writeNoException();
+      paramParcel2.writeBooleanArray(paramParcel1);
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+    paramParcel1 = a();
+    paramParcel2.writeNoException();
+    paramParcel2.writeIntArray(paramParcel1);
+    return true;
   }
 }
 

@@ -37,7 +37,7 @@ public class meu
   
   protected void a(long paramLong1, boolean paramBoolean1, boolean paramBoolean2, long paramLong2) {}
   
-  protected void a(bdfb parambdfb) {}
+  protected void a(bdjk parambdjk) {}
   
   protected void a(Object paramObject) {}
   
@@ -230,7 +230,7 @@ public class meu
       return;
       f((mey)paramObject[1]);
       return;
-      a((bdfb)paramObject[1]);
+      a((bdjk)paramObject[1]);
       return;
       a((String)paramObject[1], (String)paramObject[2]);
       return;

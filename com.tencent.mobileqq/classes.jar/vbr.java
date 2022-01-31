@@ -1,59 +1,66 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import java.util.List;
 
 public class vbr
-  extends unk
+  extends vbo
 {
-  public static final String a;
-  public utj a;
-  public String b;
-  
-  static
+  public vbr(ViewGroup paramViewGroup)
   {
-    jdField_a_of_type_JavaLangString = ume.a("StorySvc.homepage_batch_feeds_720");
+    super(paramViewGroup, 2131561509);
   }
   
-  public String a()
+  public void a()
   {
-    return jdField_a_of_type_JavaLangString;
+    this.a.setTag(2131373850, null);
   }
   
-  public unf a(byte[] paramArrayOfByte)
+  public void a(uyg paramuyg)
   {
-    qqstory_service.RspStoryFeedIdList localRspStoryFeedIdList = new qqstory_service.RspStoryFeedIdList();
-    try
+    super.a(paramuyg);
+    this.a.setDisplayState(2);
+    c(paramuyg.jdField_b_of_type_JavaLangString);
+    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout;
+    String str;
+    if (!TextUtils.isEmpty(paramuyg.j))
     {
-      localRspStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new vbs(localRspStoryFeedIdList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramuyg.c))
       {
-        paramArrayOfByte.printStackTrace();
+        str = alud.a(2131713657);
+        localStoryMsgNodeFrameLayout.setNodeName(str, paramuyg.j);
+        if ((paramuyg.jdField_a_of_type_JavaUtilList == null) || (paramuyg.jdField_a_of_type_JavaUtilList.isEmpty())) {
+          this.a.a(1, 1 - paramuyg.jdField_b_of_type_Int);
+        }
+        str = (String)this.a.getTag(2131373850);
+        if (!TextUtils.equals(paramuyg.jdField_a_of_type_JavaLangString, str)) {
+          switch (paramuyg.jdField_a_of_type_Int)
+          {
+          default: 
+            str = "unknown";
+          }
+        }
       }
     }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqStoryFeedIdList localReqStoryFeedIdList = new qqstory_service.ReqStoryFeedIdList();
-    localReqStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.b));
-    if (this.jdField_a_of_type_Utj != null)
+    for (;;)
     {
-      localReqStoryFeedIdList.coordinate.set(this.jdField_a_of_type_Utj.c);
-      localReqStoryFeedIdList.gps.setHasFlag(true);
-      localReqStoryFeedIdList.gps.lat.set(this.jdField_a_of_type_Utj.a);
-      localReqStoryFeedIdList.gps.lng.set(this.jdField_a_of_type_Utj.b);
+      wxj.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramuyg.jdField_a_of_type_JavaLangString, str });
+      this.a.setTag(2131373850, paramuyg.jdField_a_of_type_JavaLangString);
+      return;
+      str = paramuyg.c;
+      break;
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramuyg.c)) {}
+      for (str = alud.a(2131713664);; str = paramuyg.c)
+      {
+        localStoryMsgNodeFrameLayout.setNodeName(str, false);
+        break;
+      }
+      str = "2";
+      continue;
+      str = "3";
     }
-    localReqStoryFeedIdList.client_version.set(6);
-    return localReqStoryFeedIdList.toByteArray();
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import android.content.Context;
-import apnb;
-import bdcy;
+import aprk;
+import bdhh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import java.io.File;
 public final class LebaIconDownloader$1
   implements Runnable
 {
-  public LebaIconDownloader$1(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, bdcy parambdcy) {}
+  public LebaIconDownloader$1(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, bdhh parambdhh) {}
   
   public void run()
   {
@@ -19,8 +19,8 @@ public final class LebaIconDownloader$1
     try
     {
       Object localObject = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), this.jdField_a_of_type_JavaLangString);
-      localObject = new apnb(this.jdField_a_of_type_JavaLangString, (File)localObject, 0);
-      if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (apnb)localObject, this.jdField_a_of_type_Bdcy) == 0) {
+      localObject = new aprk(this.jdField_a_of_type_JavaLangString, (File)localObject, 0);
+      if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (aprk)localObject, this.jdField_a_of_type_Bdhh) == 0) {
         bool = true;
       }
       if (bool)

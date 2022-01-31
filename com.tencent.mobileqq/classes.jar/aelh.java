@@ -1,11 +1,30 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aelh
+  extends awhw
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public boolean a;
+  public aelh(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
+    }
+    this.a.a();
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        VerifyPhoneNumActivity.a(this.a, true);
+        VerifyPhoneNumActivity.c(this.a);
+        return;
+      }
+      VerifyPhoneNumActivity.c(this.a);
+      return;
+    }
+    VerifyPhoneNumActivity.c(this.a);
+  }
 }
 
 

@@ -1,21 +1,68 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.ad.tangram.image.AdImageViewAdapter;
-import com.tencent.ad.tangram.image.AdImageViewAdapter.Params;
-import com.tencent.gdtad.views.image.GdtGifImageView;
-import java.lang.ref.WeakReference;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import java.util.Map;
 
 public class aahp
-  implements AdImageViewAdapter
+  implements asms
 {
-  public View buildImageView(AdImageViewAdapter.Params paramParams)
+  public aahp(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((paramParams != null) && (paramParams.isValid()))
+    aahr localaahr;
+    if (paramInt1 == 3)
     {
-      WeakReference localWeakReference = new WeakReference(new aahq(this, paramParams));
-      return new GdtGifImageView((Context)paramParams.context.get(), paramParams.url, paramParams.guassianUrl, localWeakReference);
+      localaahr = (aahr)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+      if (localaahr != null) {
+        this.a.callJs(localaahr.g + "(" + localaahr.a() + ");");
+      }
     }
-    return null;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (paramInt1 != 5) {
+              break;
+            }
+            localaahr = (aahr)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+          } while (localaahr == null);
+          this.a.callJs(localaahr.f + "(" + localaahr.a() + ");");
+          return;
+          if (paramInt1 != 7) {
+            break;
+          }
+          localaahr = (aahr)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+        } while (localaahr == null);
+        this.a.callJs(localaahr.h + "(" + localaahr.a() + ");");
+        return;
+      } while (paramInt1 != 0);
+      localaahr = (aahr)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+    } while (localaahr == null);
+    this.a.callJs(localaahr.i + "(" + localaahr.a() + ");");
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    aahr localaahr = (aahr)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt));
+    if (localaahr != null)
+    {
+      localaahr.c = paramBoolean;
+      this.a.callJs(localaahr.d + "(" + localaahr.a() + ");");
+    }
+  }
+  
+  public void b(boolean paramBoolean, int paramInt)
+  {
+    aahr localaahr = (aahr)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt));
+    if (localaahr != null)
+    {
+      localaahr.a = paramBoolean;
+      this.a.callJs(localaahr.e + "(" + localaahr.a() + ");");
+    }
   }
 }
 

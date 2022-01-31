@@ -1,77 +1,79 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.multicard.RecommendPerson;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.util.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class auor
-  implements bavq
+public class auor
 {
-  auor(auoo paramauoo, String paramString, String[] paramArrayOfString, auot paramauot) {}
-  
-  public void a(bavp parambavp)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, RecommendPerson paramRecommendPerson)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZipResourcesDownloader", 2, String.format("onPreDownloadStart url=%s", new Object[] { parambavp.a.jdField_a_of_type_JavaLangString }));
-    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramRecommendPerson);
+    a("grp_card_add", paramInt2, paramQQAppInterface, paramRecommendPerson.cardTypeID, paramRecommendPerson.uin, paramInt1, localArrayList);
   }
   
-  public void onResp(baqw parambaqw)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, List<RecommendPerson> paramList)
   {
-    String str = ((baps)parambaqw.jdField_a_of_type_Baqv).jdField_a_of_type_JavaLangString;
-    if (QLog.isColorLevel()) {
-      QLog.d("ZipResourcesDownloader", 2, String.format("onResp url=%s result=%s", new Object[] { str, Integer.valueOf(parambaqw.jdField_a_of_type_Int) }));
-    }
-    switch (parambaqw.jdField_a_of_type_Int)
+    a("grp_card_exp", 0, paramQQAppInterface, paramInt1, "", paramInt2, paramList);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, RecommendPerson paramRecommendPerson)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramRecommendPerson);
+    a("grp_card_clk", 0, paramQQAppInterface, paramRecommendPerson.cardTypeID, paramRecommendPerson.uin, paramInt, localArrayList);
+  }
+  
+  private static void a(String paramString1, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString2, int paramInt3, List<RecommendPerson> paramList)
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    StringBuilder localStringBuilder3 = new StringBuilder();
+    StringBuilder localStringBuilder4 = new StringBuilder();
+    JSONObject localJSONObject = new JSONObject();
+    int i = 0;
+    if (i < paramList.size())
     {
-    default: 
-      return;
-    case 0: 
-      if (this.jdField_a_of_type_Auoo.a == null) {
+      if (paramList.get(i) == null) {}
+      for (;;)
+      {
+        i += 1;
         break;
+        if (i > 0)
+        {
+          localStringBuilder1.append(",");
+          localStringBuilder2.append(",");
+          localStringBuilder3.append(",");
+          localStringBuilder4.append(",");
+        }
+        localStringBuilder1.append(((RecommendPerson)paramList.get(i)).uin);
+        localStringBuilder2.append(((RecommendPerson)paramList.get(i)).recommendReason);
+        localStringBuilder3.append(((RecommendPerson)paramList.get(i)).recommendALghrithm);
+        localStringBuilder4.append(((RecommendPerson)paramList.get(i)).recommendRecall);
       }
     }
-    for (Object localObject = (bavr)this.jdField_a_of_type_Auoo.a.get();; localObject = null)
+    try
     {
-      if (localObject != null) {
-        ((bavr)localObject).a(str, parambaqw.jdField_a_of_type_Long);
+      if ("grp_card_exp".equals(paramString1)) {
+        localJSONObject.put("exp_uin", localStringBuilder1.toString());
       }
-      parambaqw = (baps)parambaqw.jdField_a_of_type_Baqv;
-      if (auoo.a(parambaqw.c, this.jdField_a_of_type_JavaLangString))
+      localJSONObject.put("exp_reason", localStringBuilder2.toString());
+      localJSONObject.put("algh_id", localStringBuilder3.toString());
+      localJSONObject.put("recall_id", localStringBuilder4.toString());
+    }
+    catch (JSONException paramList)
+    {
+      for (;;)
       {
-        localObject = new File(auoo.a(this.jdField_a_of_type_JavaLangString));
-        if (!((File)localObject).exists()) {
-          ((File)localObject).mkdirs();
-        }
-        boolean bool1 = auoo.b(parambaqw.c, auoo.a(this.jdField_a_of_type_JavaLangString));
-        boolean bool2 = auoo.b(str, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString);
         if (QLog.isColorLevel()) {
-          QLog.d("ZipResourcesDownloader", 2, String.format("onResp ResultOk unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+          QLog.i("TroopMemberRecommend.Report", 2, "reportRecommend error: " + paramList.getMessage());
         }
-        auoo.a(this.jdField_a_of_type_Auoo, str, this.jdField_a_of_type_JavaLangString, bool2, this.jdField_a_of_type_Auot);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("ZipResourcesDownloader", 2, "onResp ResultOk file check invalid.");
-      }
-      auoo.a(parambaqw.c);
-      auoo.a(this.jdField_a_of_type_Auoo, str, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Auot);
-      return;
-      if (this.jdField_a_of_type_Auoo.a != null) {}
-      for (parambaqw = (bavr)this.jdField_a_of_type_Auoo.a.get();; parambaqw = null)
-      {
-        if (parambaqw != null) {
-          parambaqw.a(str, -1L);
-        }
-        auoo.a(this.jdField_a_of_type_Auoo, str, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Auot);
-        return;
       }
     }
-  }
-  
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZipResourcesDownloader", 2, String.format("onUpdateProgeress url=%s totalLen=%s curOffset=%s", new Object[] { ((baps)parambaqv).jdField_a_of_type_JavaLangString, Long.valueOf(paramLong2), Long.valueOf(paramLong1) }));
-    }
+    azqs.b(paramQQAppInterface, "dc00898", "", paramString2, "frd_recom", paramString1, paramInt2, paramInt1, String.valueOf(paramInt3), "", localJSONObject.toString(), "");
   }
 }
 

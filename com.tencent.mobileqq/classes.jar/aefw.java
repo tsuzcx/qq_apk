@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aefw
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aefw(UpgradeActivity paramUpgradeActivity, bdef parambdef, int paramInt) {}
+  public aefw(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bdef.d();
-    bdii.c(true);
-    bdii.c(this.jdField_a_of_type_Int);
-    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeActivity, amlp.a().a(), false, true, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeActivity.finish();
+    paramView = new ArrayList();
+    Iterator localIterator = this.a.a.b.iterator();
+    while (localIterator.hasNext()) {
+      paramView.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
+    }
+    TroopMemberListActivity.a(this.a, paramView);
   }
 }
 

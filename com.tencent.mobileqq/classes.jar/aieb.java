@@ -1,113 +1,43 @@
 import android.content.Context;
-import android.support.v4.util.ArraySet;
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
 import java.util.List;
 
-public class aieb
-  extends aelz
+class aieb
+  implements View.OnClickListener
 {
-  public final String a;
+  aieb(aidz paramaidz, TroopLinkElement paramTroopLinkElement, aied paramaied) {}
   
-  public aieb(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public void onClick(View paramView)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo, null, null);
-    this.jdField_a_of_type_JavaLangString = "MiniPie.MiniChatAdapter";
-    this.jdField_a_of_type_Aflj = new aiec(paramContext, paramQQAppInterface, paramSessionInfo, null, null);
-    this.jdField_a_of_type_Aema = null;
-  }
-  
-  public void a(List<ChatMessage> paramList, CharSequence paramCharSequence, int paramInt)
-  {
-    long l1 = 0L;
-    paramInt = 0;
-    paramCharSequence = null;
-    ChatMessage localChatMessage;
-    boolean bool1;
-    if (paramInt < paramList.size())
+    if (!aidz.a(this.jdField_a_of_type_Aidz))
     {
-      localChatMessage = (ChatMessage)paramList.get(paramInt);
-      boolean bool2 = ayvy.b(localChatMessage.msgtype);
-      if ((bool2) && ((paramInt == 0) || ((localChatMessage.time < this.b) && (localChatMessage.time - l1 > 300L)) || ((localChatMessage.time >= this.b) && (localChatMessage.time - l1 > 300L) && ((paramCharSequence == null) || (localChatMessage.time - paramCharSequence.time > 60L))) || ((this.jdField_a_of_type_AndroidSupportV4UtilArraySet.contains(Long.valueOf(localChatMessage.uniseq))) && (l1 / 60L != localChatMessage.time / 60L))))
-      {
-        bool1 = true;
-        label165:
-        localChatMessage.mNeedTimeStamp = bool1;
-        if (localChatMessage.mNeedTimeStamp)
-        {
-          long l2 = localChatMessage.time;
-          l1 = l2;
-          if (localChatMessage.time < this.b)
-          {
-            aepv.a(localChatMessage);
-            l1 = l2;
-          }
-        }
-        if ((!bool2) || (((localChatMessage instanceof MessageForUniteGrayTip)) && (((MessageForUniteGrayTip)localChatMessage).tipParam.b == 1))) {
-          break label362;
-        }
-        paramCharSequence = localChatMessage;
-      }
-    }
-    label362:
-    for (;;)
-    {
-      if (paramInt != paramList.size() - 1) {
-        localChatMessage.isFlowMessage = false;
-      }
-      paramInt += 1;
-      break;
-      bool1 = false;
-      break label165;
-      if (paramList.size() > 0) {
-        this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(Long.valueOf(((ChatMessage)paramList.get(0)).uniseq));
-      }
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      QLog.d("MiniPie.MiniChatAdapter", 1, "list addr = " + paramList.hashCode() + ",size = " + paramList.size());
-      super.notifyDataSetChanged();
+      paramView = new Intent(aidz.a(this.jdField_a_of_type_Aidz), QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement.url);
+      aidz.a(this.jdField_a_of_type_Aidz).startActivity(paramView);
       return;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ((aiec)this.jdField_a_of_type_Aflj).a(paramBoolean);
-  }
-  
-  protected boolean a()
-  {
-    return false;
-  }
-  
-  public void c()
-  {
-    super.c();
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = super.getView(paramInt, paramView, paramViewGroup);
-    if ((paramView != null) && ((paramView instanceof aidz)))
+    boolean bool = aied.a(this.jdField_a_of_type_Aied).isChecked();
+    if (bool)
     {
-      paramViewGroup = (aidz)paramView;
-      paramViewGroup.setIsShieldTouchForItem(true);
-      paramViewGroup.setFrom(((aiec)this.jdField_a_of_type_Aflj).a);
-      if ((paramView instanceof BaseChatItemLayout)) {
-        ((BaseChatItemLayout)paramView).c();
+      aidz.a(this.jdField_a_of_type_Aidz).remove(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
+      paramView = aied.a(this.jdField_a_of_type_Aied);
+      if (bool) {
+        break label125;
       }
     }
-    return paramView;
-  }
-  
-  public String toString()
-  {
-    return "list.addr = " + this.jdField_a_of_type_JavaUtilList.hashCode();
+    label125:
+    for (bool = true;; bool = false)
+    {
+      paramView.setChecked(bool);
+      return;
+      aidz.a(this.jdField_a_of_type_Aidz).add(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
+      break;
+    }
   }
 }
 

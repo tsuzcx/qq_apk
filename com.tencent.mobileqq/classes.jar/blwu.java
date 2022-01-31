@@ -1,7 +1,20 @@
-public abstract interface blwu
-  extends axns
+import android.graphics.RectF;
+import android.text.TextPaint;
+
+public abstract class blwu
 {
-  public abstract void a(boolean paramBoolean);
+  protected int a;
+  protected RectF a;
+  protected TextPaint a;
+  protected int b;
+  
+  public blwu(int paramInt1, int paramInt2, TextPaint paramTextPaint, RectF paramRectF)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF;
+  }
 }
 
 

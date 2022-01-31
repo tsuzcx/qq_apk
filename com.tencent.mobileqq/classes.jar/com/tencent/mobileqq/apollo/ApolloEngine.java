@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo;
 
-import albu;
-import alef;
-import alfz;
+import algj;
+import aliu;
+import alko;
 import android.graphics.RectF;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -30,7 +30,7 @@ public class ApolloEngine
   
   static
   {
-    alfz.a("classLoad");
+    alko.a("classLoad");
   }
   
   public ApolloEngine()
@@ -53,9 +53,9 @@ public class ApolloEngine
   
   public static boolean a()
   {
-    if (!alfz.a())
+    if (!alko.a())
     {
-      alfz.a("other");
+      alko.a("other");
       ApolloGameStateMachine.a().a(5, "not load lib");
       return false;
     }
@@ -64,10 +64,10 @@ public class ApolloEngine
   
   private void b()
   {
-    new File(alef.a, "slave");
-    String str1 = alef.c + "/def/role/0/script/slave/";
-    String str2 = alef.c + "/";
-    nativeSetFileHomeDir(alef.av, alef.g, alef.a, alef.a, alef.a + "/extension/", str1, str2);
+    new File(aliu.a, "slave");
+    String str1 = aliu.c + "/def/role/0/script/slave/";
+    String str2 = aliu.c + "/";
+    nativeSetFileHomeDir(aliu.av, aliu.g, aliu.a, aliu.a, aliu.a + "/extension/", str1, str2);
   }
   
   private void c()
@@ -164,7 +164,7 @@ public class ApolloEngine
     QLog.d("ApolloManager.Engine", 1, "[createDirector] tid: " + Thread.currentThread().getId() + ", mIsInit:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", isEngineReady:" + a() + ",glVersion:" + paramInt4);
     if (a())
     {
-      new File(alef.i).mkdirs();
+      new File(aliu.i).mkdirs();
       if (paramInt4 != 3) {
         break label220;
       }
@@ -244,7 +244,7 @@ public class ApolloEngine
   
   public void a(double paramDouble)
   {
-    a(String.format(albu.b(), new Object[] { Double.valueOf(paramDouble) }));
+    a(String.format(algj.b(), new Object[] { Double.valueOf(paramDouble) }));
   }
   
   public void a(double paramDouble, int paramInt)

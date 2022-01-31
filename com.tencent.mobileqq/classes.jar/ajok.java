@@ -1,6 +1,23 @@
-public abstract interface ajok
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.widget.QQToast;
+
+public class ajok
+  implements ajpf
 {
-  public abstract void a(boolean paramBoolean);
+  public ajok(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  
+  public void a() {}
+  
+  public void a(String paramString)
+  {
+    EditLocalVideoActivity.a(this.a, paramString);
+    EditLocalVideoActivity.g(this.a);
+  }
+  
+  public void b()
+  {
+    QQToast.a(this.a, 2131695264, 1).a();
+  }
 }
 
 

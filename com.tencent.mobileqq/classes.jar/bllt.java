@@ -1,8 +1,14 @@
-public abstract interface bllt
+import dov.com.qq.im.aeeditor.module.clip.image.AEEditorImageClipFragment;
+
+public class bllt
+  implements blqd
 {
-  public abstract void a();
+  public bllt(AEEditorImageClipFragment paramAEEditorImageClipFragment) {}
   
-  public abstract void a(int paramInt);
+  public void a()
+  {
+    AEEditorImageClipFragment.a(this.a, true);
+  }
 }
 
 

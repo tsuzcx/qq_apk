@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import apwx;
-import aqao;
-import aqap;
+import aqbg;
+import aqex;
+import aqey;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -14,16 +14,16 @@ import java.util.List;
 
 public class ExtendFriendCampusSearchFragment
   extends ExtendFriendSearchBaseFragment
-  implements aqap
+  implements aqey
 {
-  private apwx jdField_a_of_type_Apwx;
-  private aqao jdField_a_of_type_Aqao;
+  private aqbg jdField_a_of_type_Aqbg;
+  private aqex jdField_a_of_type_Aqex;
   
   private void c()
   {
-    String str = this.jdField_a_of_type_Apwx.b();
-    List localList1 = this.jdField_a_of_type_Apwx.b(1);
-    List localList2 = this.jdField_a_of_type_Aqao.a();
+    String str = this.jdField_a_of_type_Aqbg.b();
+    List localList1 = this.jdField_a_of_type_Aqbg.b(1);
+    List localList2 = this.jdField_a_of_type_Aqex.a();
     b(str);
     b((ArrayList)localList1);
     a((ArrayList)localList2);
@@ -31,7 +31,7 @@ public class ExtendFriendCampusSearchFragment
   
   void a()
   {
-    this.jdField_a_of_type_Aqao.a();
+    this.jdField_a_of_type_Aqex.a();
   }
   
   void a(ViewGroup paramViewGroup)
@@ -49,20 +49,20 @@ public class ExtendFriendCampusSearchFragment
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendCampusSearchFragment", 2, String.format("onSearch searchKey=%s", new Object[] { paramString }));
     }
-    this.jdField_a_of_type_Aqao.a(paramString);
+    this.jdField_a_of_type_Aqex.a(paramString);
   }
   
   public void b()
   {
-    a((ArrayList)this.jdField_a_of_type_Aqao.a());
+    a((ArrayList)this.jdField_a_of_type_Aqex.a());
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Apwx = ((apwx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(264));
-    this.jdField_a_of_type_Aqao = this.jdField_a_of_type_Apwx.b();
-    this.jdField_a_of_type_Aqao.a(this);
+    this.jdField_a_of_type_Aqbg = ((aqbg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(264));
+    this.jdField_a_of_type_Aqex = this.jdField_a_of_type_Aqbg.b();
+    this.jdField_a_of_type_Aqex.a(this);
   }
   
   public void onResume()

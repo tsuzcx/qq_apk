@@ -5,14 +5,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.View;
-import betk;
-import betl;
-import betm;
-import betn;
-import betp;
-import betq;
-import betw;
-import bety;
+import bext;
+import bexu;
+import bexv;
+import bexw;
+import bexy;
+import bexz;
+import beyf;
+import beyh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView;
 import com.tencent.mobileqq.widget.QQToast;
@@ -29,7 +29,7 @@ public class FloatingScreenManager
   public static final String QQFS_SP_NAME = "qqfs_floating_sp";
   private static final String TAG = "FloatingScreenManager";
   private static FloatingScreenManager mFloatingManager;
-  private bety mWrapperFactory = new bety();
+  private beyh mWrapperFactory = new beyh();
   
   public static FloatingScreenManager getInstance()
   {
@@ -66,7 +66,7 @@ public class FloatingScreenManager
       return i;
       try
       {
-        betk.b(paramInt);
+        bext.b(paramInt);
         if (!FloatingScreenPermission.checkPermission(paramContext)) {
           continue;
         }
@@ -74,7 +74,7 @@ public class FloatingScreenManager
           QLog.d("FloatingScreenManager", 2, new Object[] { "enterFloatingScree:", paramView.toString() });
         }
         sendWindowClosedBroadcastWithId(paramContext, paramInt);
-        betl.a(BaseApplicationImpl.getContext(), 50, 2);
+        bexu.a(BaseApplicationImpl.getContext(), 50, 2);
         FloatingScreenParams localFloatingScreenParams = paramFloatingScreenParams;
         if (paramFloatingScreenParams == null) {
           localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setShapeType(2).build();
@@ -98,7 +98,7 @@ public class FloatingScreenManager
         if (j != 0) {
           continue;
         }
-        betk.a(paramInt);
+        bext.a(paramInt);
         i = j;
       }
       finally {}
@@ -132,8 +132,8 @@ public class FloatingScreenManager
           i = 3;
           continue;
         }
-        if ((paramContext instanceof betq)) {
-          ((betq)paramContext).a(localFloatingScreenParams);
+        if ((paramContext instanceof bexz)) {
+          ((bexz)paramContext).a(localFloatingScreenParams);
         }
         i = paramContext.a(localFloatingScreenParams, paramView);
       }
@@ -157,7 +157,7 @@ public class FloatingScreenManager
         }
         if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool"))
         {
-          QQToast.a(paramContext, 2131699950, 0).a();
+          QQToast.a(paramContext, 2131699962, 0).a();
           i = -1;
           continue;
         }
@@ -174,8 +174,8 @@ public class FloatingScreenManager
           i = 3;
           continue;
         }
-        if ((paramContext instanceof betw)) {
-          ((betw)paramContext).a(localFloatingScreenParams);
+        if ((paramContext instanceof beyf)) {
+          ((beyf)paramContext).a(localFloatingScreenParams);
         }
         i = paramContext.a(localFloatingScreenParams, paramWatchTogetherFloatingView);
       }
@@ -185,17 +185,17 @@ public class FloatingScreenManager
   
   public void quitFloatingScreen()
   {
-    betp localbetp = this.mWrapperFactory.a(null, 0);
-    if (localbetp != null) {
-      localbetp.b(4);
+    bexy localbexy = this.mWrapperFactory.a(null, 0);
+    if (localbexy != null) {
+      localbexy.b(4);
     }
   }
   
   public void quitFloatingScreen(int paramInt)
   {
-    betp localbetp = this.mWrapperFactory.a(null, paramInt);
-    if (localbetp != null) {
-      localbetp.b(4);
+    bexy localbexy = this.mWrapperFactory.a(null, paramInt);
+    if (localbexy != null) {
+      localbexy.b(4);
     }
   }
   
@@ -210,9 +210,9 @@ public class FloatingScreenManager
   public IVideoOuterStatusListener setFloatingVideoListener(IVideoInnerStatusListener paramIVideoInnerStatusListener)
   {
     IVideoOuterStatusListener localIVideoOuterStatusListener = null;
-    betp localbetp = this.mWrapperFactory.a(null, 0);
-    if (localbetp != null) {
-      localIVideoOuterStatusListener = localbetp.a(paramIVideoInnerStatusListener);
+    bexy localbexy = this.mWrapperFactory.a(null, 0);
+    if (localbexy != null) {
+      localIVideoOuterStatusListener = localbexy.a(paramIVideoInnerStatusListener);
     }
     return localIVideoOuterStatusListener;
   }
@@ -220,9 +220,9 @@ public class FloatingScreenManager
   public IVideoOuterStatusListener setFloatingVideoListener(IVideoInnerStatusListener paramIVideoInnerStatusListener, int paramInt)
   {
     IVideoOuterStatusListener localIVideoOuterStatusListener = null;
-    betp localbetp = this.mWrapperFactory.a(null, paramInt);
-    if (localbetp != null) {
-      localIVideoOuterStatusListener = localbetp.a(paramIVideoInnerStatusListener);
+    bexy localbexy = this.mWrapperFactory.a(null, paramInt);
+    if (localbexy != null) {
+      localIVideoOuterStatusListener = localbexy.a(paramIVideoInnerStatusListener);
     }
     return localIVideoOuterStatusListener;
   }
@@ -230,41 +230,41 @@ public class FloatingScreenManager
   @Deprecated
   public void setFullScreenListener(IFullScreenEnterListener paramIFullScreenEnterListener)
   {
-    betp localbetp = this.mWrapperFactory.a(null, 0);
-    if (localbetp != null) {
-      localbetp.a(paramIFullScreenEnterListener);
+    bexy localbexy = this.mWrapperFactory.a(null, 0);
+    if (localbexy != null) {
+      localbexy.a(paramIFullScreenEnterListener);
     }
   }
   
-  public void setFullScreenViewClickListener(betm parambetm)
+  public void setFullScreenViewClickListener(bexv parambexv)
   {
-    betp localbetp = this.mWrapperFactory.a(null, 0);
-    if (localbetp != null) {
-      localbetp.a(parambetm);
+    bexy localbexy = this.mWrapperFactory.a(null, 0);
+    if (localbexy != null) {
+      localbexy.a(parambexv);
     }
   }
   
-  public void setWindowClickListener(int paramInt, betn parambetn)
+  public void setWindowClickListener(int paramInt, bexw parambexw)
   {
-    betp localbetp = this.mWrapperFactory.a(null, paramInt);
-    if (localbetp != null) {
-      localbetp.a(parambetn);
+    bexy localbexy = this.mWrapperFactory.a(null, paramInt);
+    if (localbexy != null) {
+      localbexy.a(parambexw);
     }
   }
   
   public void updateFloatingWindowRatio(float paramFloat, int paramInt)
   {
-    betp localbetp = this.mWrapperFactory.a(null, paramInt);
-    if (localbetp != null) {
-      localbetp.a(paramFloat);
+    bexy localbexy = this.mWrapperFactory.a(null, paramInt);
+    if (localbexy != null) {
+      localbexy.a(paramFloat);
     }
   }
   
   public void updateFloatingWindowShape(int paramInt1, int paramInt2)
   {
-    betp localbetp = this.mWrapperFactory.a(null, paramInt2);
-    if (localbetp != null) {
-      localbetp.a(paramInt1);
+    bexy localbexy = this.mWrapperFactory.a(null, paramInt2);
+    if (localbexy != null) {
+      localbexy.a(paramInt1);
     }
   }
 }

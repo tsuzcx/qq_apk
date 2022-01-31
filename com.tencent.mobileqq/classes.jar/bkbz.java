@@ -1,100 +1,48 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
 public class bkbz
 {
-  private static bkbz jdField_a_of_type_Bkbz;
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).getBoolean("HAS_PULL", false);
-  private boolean b;
-  
-  private int a()
-  {
-    if (this.b) {
-      return this.jdField_a_of_type_Int;
-    }
-    this.b = true;
-    long l = a(BaseApplicationImpl.getApplication());
-    if (b(BaseApplicationImpl.getApplication()) > l) {}
-    for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0) {
-      return this.jdField_a_of_type_Int;
-    }
-  }
-  
-  public static long a(Context paramContext)
-  {
-    String str = paramContext.getPackageName();
-    try
-    {
-      long l = paramContext.getPackageManager().getPackageInfo(str, 0).firstInstallTime;
-      return l;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return 0L;
-  }
+  private static bkbz jdField_a_of_type_Bkbz = new bkbz();
+  private bkca jdField_a_of_type_Bkca;
+  bkcb jdField_a_of_type_Bkcb;
   
   public static bkbz a()
   {
-    if (jdField_a_of_type_Bkbz == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bkbz == null) {
-        jdField_a_of_type_Bkbz = new bkbz();
-      }
-      return jdField_a_of_type_Bkbz;
-    }
-    finally {}
+    return jdField_a_of_type_Bkbz;
   }
   
-  private void a()
+  public void a()
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).edit();
-    localEditor.putBoolean("HAS_PULL", this.jdField_a_of_type_Boolean);
-    localEditor.apply();
+    this.jdField_a_of_type_Bkca = null;
   }
   
-  public static long b(Context paramContext)
+  public void a(bkca parambkca)
   {
-    String str = paramContext.getPackageName();
-    try
-    {
-      long l = paramContext.getPackageManager().getPackageInfo(str, 0).lastUpdateTime;
-      return l;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return 0L;
+    this.jdField_a_of_type_Bkca = parambkca;
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public void a(bkcb parambkcb)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      QLog.d("PackageUpdateManager", 1, "checkUpgrade has pulll");
-    }
-    while (a() != 1) {
+    this.jdField_a_of_type_Bkcb = parambkcb;
+  }
+  
+  public void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Bkca == null) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    QLog.d("PackageUpdateManager", 1, "checkUpgrade need pull friendlist ");
-    ((FriendListHandler)paramQQAppInterface.a(1)).a(true);
-    a();
+    this.jdField_a_of_type_Bkca.a(paramString, paramLong1, paramArrayOfLong, paramLong2);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    bkcb localbkcb = this.jdField_a_of_type_Bkcb;
+    if ((localbkcb != null) && (!"0X8009831".equals(paramString1)) && (!"0X8009830".equals(paramString1)) && (!"0X800982E".equals(paramString1)) && (!"0X800982F".equals(paramString1))) {
+      localbkcb.a(paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkbz
  * JD-Core Version:    0.7.0.1
  */

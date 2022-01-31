@@ -1,19 +1,50 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import android.content.res.Resources;
+import java.io.IOException;
+import org.xmlpull.v1.XmlPullParserException;
 
-class bazw
-  implements QQPermissionCallback
+public class bazw
 {
-  bazw(bazv parambazv) {}
+  private static bazv jdField_a_of_type_Bazv;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  private static bazv a(Context paramContext)
   {
-    TribeVideoPreviewFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment, false);
+    a(paramContext);
+    return jdField_a_of_type_Bazv;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static String a(Context paramContext, String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.a.jdField_a_of_type_JavaLangString);
+    String str = paramString;
+    if (paramString != null) {
+      str = paramString.toLowerCase();
+    }
+    return a(paramContext).a(str);
+  }
+  
+  private static void a(Context paramContext)
+  {
+    bazu localbazu;
+    if (!jdField_a_of_type_Boolean)
+    {
+      localbazu = new bazu();
+      paramContext = paramContext.getResources().getXml(2131886084);
+    }
+    try
+    {
+      jdField_a_of_type_Bazv = localbazu.a(paramContext);
+      jdField_a_of_type_Boolean = true;
+      return;
+    }
+    catch (XmlPullParserException paramContext)
+    {
+      throw new RuntimeException("PreselectedChannelsActivity: XmlPullParserException");
+    }
+    catch (IOException paramContext)
+    {
+      throw new RuntimeException("PreselectedChannelsActivity: IOException");
+    }
   }
 }
 

@@ -1,23 +1,23 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.mobileqq.data.MessageForLightVideo;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class afpt
-  implements bhqd
+class afpt
+  implements assw
 {
-  public afpt(LightVideoItemBuilder paramLightVideoItemBuilder, MessageForLightVideo paramMessageForLightVideo, afpw paramafpw, bhpy parambhpy) {}
+  afpt(afps paramafps) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(View paramView)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("HiBoomFont.ItemBuilder", 2, "onDoubleClick");
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
+    aepi.n = true;
+    if (this.a.a()) {
       return;
-      LightVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo, this.jdField_a_of_type_Afpw);
     }
+    ChatActivityUtils.a(this.a.a, paramView, (FragmentActivity)this.a.b);
   }
 }
 

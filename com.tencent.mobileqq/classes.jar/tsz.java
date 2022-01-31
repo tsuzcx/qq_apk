@@ -1,25 +1,13 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.widget.QQToast;
-
 class tsz
-  implements bevy
+  implements yia
 {
-  tsz(tsv paramtsv) {}
+  tsz(tsw paramtsw) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void a(yii paramyii, Object paramObject)
   {
-    if ((tsv.a(this.a) == null) || (!tsv.a(this.a).equals(paramBaseResp.transaction))) {
-      return;
+    if (paramyii.e()) {
+      tsw.a(this.a).a(tsw.a(this.a), true, false);
     }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      QQToast.a(this.a.a(), 1, alpo.a(2131715027), 0).a();
-      return;
-    }
-    QQToast.a(this.a.a(), 2, alpo.a(2131715029), 0).a();
   }
 }
 

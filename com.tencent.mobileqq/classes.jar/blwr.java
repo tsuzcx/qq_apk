@@ -1,24 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.capture.view.ProviderView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.text.Spanned;
 
-public class blwr
-  implements Animation.AnimationListener
+class blwr
+  extends bmsw
 {
-  public blwr(QIMProviderContainerView paramQIMProviderContainerView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  blwr(blwp paramblwp, int paramInt)
   {
-    if (QIMProviderContainerView.a(this.a) != null)
-    {
-      QIMProviderContainerView.a(this.a).setAlpha(1.0F);
-      QIMProviderContainerView.a(this.a).setVisibility(0);
-    }
+    super(paramInt);
+  }
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    String str = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
+    this.jdField_a_of_type_Int = (str.length() - bcnt.b(str).length() + 20);
+    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
   }
 }
 

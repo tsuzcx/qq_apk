@@ -1,10 +1,22 @@
-import android.view.View;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public abstract interface agao
+class agao
+  implements bezx
 {
-  public abstract void a(View paramView);
+  agao(agai paramagai, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
   
-  public abstract void b(View paramView);
+  public void a(int paramInt)
+  {
+    if (paramInt == 2)
+    {
+      this.jdField_a_of_type_Agai.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+      azdd.jdField_a_of_type_Boolean = true;
+    }
+    while ((paramInt != 3) && (paramInt != 1)) {
+      return;
+    }
+    azdd.jdField_a_of_type_Long = 0L;
+  }
 }
 
 

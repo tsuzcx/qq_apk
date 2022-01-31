@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import alsl;
+import alxa;
 
 public class MessageRoamManager$12
   implements Runnable
 {
-  public MessageRoamManager$12(alsl paramalsl) {}
+  public MessageRoamManager$12(alxa paramalxa) {}
   
   public void run()
   {

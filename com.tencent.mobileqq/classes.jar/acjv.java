@@ -1,38 +1,22 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class acjv
-  implements ackl
+public final class acjv
+  implements DialogInterface.OnCancelListener
 {
-  public acjv(ChatSettingActivity paramChatSettingActivity) {}
+  public acjv(aclo paramaclo, acln paramacln) {}
   
-  public void a(Activity paramActivity)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    QQToast.a(this.a, 2, 2131691565, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramInt == 0) {
-      azmj.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 1, 0, "", "", "", "");
+    if (this.jdField_a_of_type_Aclo.a) {
+      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
     }
-    while (paramInt != 1) {
-      return;
+    if (this.jdField_a_of_type_Acln != null) {
+      this.jdField_a_of_type_Acln.a();
     }
-    azmj.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 1, 0, "", "", "", "");
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramInt == 0) {
-      azmj.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 1, 0, "", "", "", "");
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    while (paramInt != 1) {
-      return;
-    }
-    azmj.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 1, 0, "", "", "", "");
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import axkd;
+import axom;
 
 public class CaptureVideoFilterManager$2
   implements Runnable
 {
   public void run()
   {
-    axkd.a(this.this$0);
+    axom.a(this.this$0);
   }
 }
 

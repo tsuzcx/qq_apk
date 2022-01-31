@@ -8,12 +8,12 @@ import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import aqcl;
+import aqgu;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Orientation;
 
 public class RotateLoadingLayout
-  extends aqcl
+  extends aqgu
 {
   private float jdField_a_of_type_Float;
   private final Matrix jdField_a_of_type_AndroidGraphicsMatrix;
@@ -55,7 +55,7 @@ public class RotateLoadingLayout
   
   public int b()
   {
-    return 2130841253;
+    return 2130841254;
   }
   
   public void b(float paramFloat)

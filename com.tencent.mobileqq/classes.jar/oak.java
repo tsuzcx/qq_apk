@@ -15,7 +15,7 @@ public class oak
     paramDialogInterface = this.a.this$0.getIntent();
     Bundle localBundle = new Bundle();
     localBundle.putInt("retCode", 1);
-    localBundle.putString("msg", alpo.a(2131713470));
+    localBundle.putString("msg", alud.a(2131713482));
     paramDialogInterface.putExtra("Bundle", localBundle);
     this.a.this$0.setResult(-1, paramDialogInterface);
     this.a.this$0.finish();

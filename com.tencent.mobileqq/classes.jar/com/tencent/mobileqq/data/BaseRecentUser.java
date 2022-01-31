@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
+import awge;
 
 public abstract class BaseRecentUser
-  extends awbv
+  extends awge
 {
   public boolean mIsParsed;
   

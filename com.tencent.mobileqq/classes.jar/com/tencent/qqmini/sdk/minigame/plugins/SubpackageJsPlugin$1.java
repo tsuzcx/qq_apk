@@ -1,21 +1,21 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import bgkd;
-import bgtj;
-import bgum;
-import bgun;
-import bgwc;
+import bgok;
+import bgxq;
+import bgyt;
+import bgyu;
+import bhaj;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
 import com.tencent.mobileqq.triton.sdk.game.IGameLauncher;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 class SubpackageJsPlugin$1
-  implements bgum
+  implements bgyt
 {
   private float lastProgress;
   
-  SubpackageJsPlugin$1(SubpackageJsPlugin paramSubpackageJsPlugin, String paramString, int paramInt, bgkd parambgkd) {}
+  SubpackageJsPlugin$1(SubpackageJsPlugin paramSubpackageJsPlugin, String paramString, int paramInt, bgok parambgok) {}
   
   public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
   {
@@ -23,11 +23,11 @@ class SubpackageJsPlugin$1
     {
       this.lastProgress = paramFloat;
       paramMiniAppInfo = null;
-      if ((SubpackageJsPlugin.access$200(this.this$0) instanceof bgtj)) {
-        paramMiniAppInfo = ((bgtj)SubpackageJsPlugin.access$300(this.this$0)).a();
+      if ((SubpackageJsPlugin.access$200(this.this$0) instanceof bgxq)) {
+        paramMiniAppInfo = ((bgxq)SubpackageJsPlugin.access$300(this.this$0)).a();
       }
       if (paramMiniAppInfo == null) {
-        bgwc.a().e("SubpackageJsPlugin", "loadSubPackage onInitGpkgInfo but ttEngine is null");
+        bhaj.a().e("SubpackageJsPlugin", "loadSubPackage onInitGpkgInfo but ttEngine is null");
       }
     }
     else
@@ -37,21 +37,21 @@ class SubpackageJsPlugin$1
     paramMiniAppInfo.getJsRuntime(1).runOnJsThread(new SubpackageJsPlugin.1.2(this, paramFloat, paramLong));
   }
   
-  public void onInitGpkgInfo(int paramInt, bgun parambgun, String paramString)
+  public void onInitGpkgInfo(int paramInt, bgyu parambgyu, String paramString)
   {
     String str = null;
-    if ((SubpackageJsPlugin.access$000(this.this$0) instanceof bgtj)) {}
-    for (ITTEngine localITTEngine = ((bgtj)SubpackageJsPlugin.access$100(this.this$0)).a();; localITTEngine = null)
+    if ((SubpackageJsPlugin.access$000(this.this$0) instanceof bgxq)) {}
+    for (ITTEngine localITTEngine = ((bgxq)SubpackageJsPlugin.access$100(this.this$0)).a();; localITTEngine = null)
     {
       if (localITTEngine == null)
       {
-        bgwc.a().e("SubpackageJsPlugin", "loadSubPackage onInitGpkgInfo but ttEngine is null");
+        bhaj.a().e("SubpackageJsPlugin", "loadSubPackage onInitGpkgInfo but ttEngine is null");
         return;
       }
-      bgwc.a().i("SubpackageJsPlugin", "loadSubPackage callback onInitGpkgInfo, resCode:" + paramInt + ", error msg=" + paramString);
+      bhaj.a().i("SubpackageJsPlugin", "loadSubPackage callback onInitGpkgInfo, resCode:" + paramInt + ", error msg=" + paramString);
       IGameLauncher localIGameLauncher = localITTEngine.getGameLauncher();
-      if (parambgun != null) {
-        str = parambgun.getRootPath(this.val$subPackageName);
+      if (parambgyu != null) {
+        str = parambgyu.getRootPath(this.val$subPackageName);
       }
       localITTEngine.getJsRuntime(1).runOnJsThread(new SubpackageJsPlugin.1.1(this, paramInt, str, paramString, localIGameLauncher));
       return;

@@ -1,16 +1,31 @@
-import android.view.View;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.Date;
 
-public abstract interface asrg
+class asrg
 {
-  public abstract void a();
+  static asrg jdField_a_of_type_Asrg = new asrg(false, new Date(0L), new Date(0L));
+  final Date jdField_a_of_type_JavaUtilDate;
+  final boolean jdField_a_of_type_Boolean;
+  final Date b;
   
-  public abstract void a(int paramInt, View paramView);
+  asrg(boolean paramBoolean, @NonNull Date paramDate1, @NonNull Date paramDate2)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilDate = paramDate1;
+    this.b = paramDate2;
+  }
   
-  public abstract void a(View paramView);
+  private boolean b()
+  {
+    long l = NetConnInfoCenter.getServerTime() * 1000L;
+    return (this.jdField_a_of_type_JavaUtilDate.getTime() <= l) && (this.b.getTime() >= l);
+  }
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
+  boolean a()
+  {
+    return (b()) && (this.jdField_a_of_type_Boolean);
+  }
 }
 
 

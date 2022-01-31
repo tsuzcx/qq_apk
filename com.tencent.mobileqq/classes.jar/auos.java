@@ -1,12 +1,33 @@
-class auos
+import java.util.LinkedList;
+import java.util.List;
+
+public class auos<T>
 {
-  public auot a;
-  public String a;
+  private List<T> a = new LinkedList();
   
-  public auos(auoo paramauoo, String paramString, auot paramauot)
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Auot = paramauot;
+    return this.a.size();
+  }
+  
+  public T a()
+  {
+    if (this.a.size() == 0) {
+      return null;
+    }
+    return this.a.remove(0);
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(T paramT)
+  {
+    if (!this.a.contains(paramT)) {
+      this.a.add(paramT);
+    }
   }
 }
 

@@ -1,46 +1,25 @@
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import dov.com.qq.im.capture.adapter.CaptureModeAdapter;
+import java.util.List;
 
-class blqu
-  implements bnkw
+public class blqu
+  implements View.OnClickListener
 {
-  blqu(blqt paramblqt) {}
+  public blqu(CaptureModeAdapter paramCaptureModeAdapter) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void onClick(View paramView)
   {
-    synchronized (blqt.a(this.a))
+    Integer localInteger = (Integer)paramView.getTag();
+    if (localInteger.intValue() == CaptureModeAdapter.a(this.a)) {}
+    do
     {
-      if (paramPtvTemplateInfo.id.equals(blqt.a(this.a).id))
-      {
-        blqt.a(this.a).downloading = true;
-        blqt.a(this.a, 1.0F * paramInt / 100.0F);
-        blqt.a(this.a, 1);
-      }
       return;
-    }
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    synchronized (blqt.a(this.a))
-    {
-      if (paramPtvTemplateInfo.id.equals(blqt.a(this.a).id))
-      {
-        blqt.a(this.a).downloading = false;
-        blqt.a(this.a).usable = paramBoolean;
-      }
-      if (paramBoolean)
-      {
-        if (blqt.a(this.a).id.equals(paramPtvTemplateInfo.id))
-        {
-          blqt.a(this.a, 3);
-          blqt.a(this.a, 1.0F);
-          this.a.b();
-        }
-        return;
-      }
-      this.a.a(4);
-      blqt.a(this.a, 2);
-    }
+      ((TextView)CaptureModeAdapter.a(this.a).get(CaptureModeAdapter.a(this.a))).setTextColor(CaptureModeAdapter.b(this.a));
+      CaptureModeAdapter.a(this.a, localInteger.intValue());
+    } while (CaptureModeAdapter.a(this.a) == null);
+    CaptureModeAdapter.a(this.a).a(localInteger.intValue(), paramView);
   }
 }
 

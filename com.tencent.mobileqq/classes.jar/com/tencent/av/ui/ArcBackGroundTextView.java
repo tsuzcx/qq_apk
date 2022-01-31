@@ -55,7 +55,7 @@ public class ArcBackGroundTextView
     this.jdField_a_of_type_Int = Math.round(this.jdField_b_of_type_Float);
     this.jdField_b_of_type_Int = ((int)Math.round(Math.sqrt(Math.pow(this.jdField_a_of_type_Float, 2.0D) - Math.pow(this.jdField_a_of_type_Float - this.jdField_a_of_type_Int, 2.0D)) * 2.0D));
     setMeasuredDimension(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
-    if (getId() == 2131375145) {}
+    if (getId() == 2131375196) {}
     for (paramInt1 = 0;; paramInt1 = 5) {
       for (float f1 = 0.0F; f1 < this.jdField_b_of_type_Int; f1 = (float)(f1 + 0.2D))
       {

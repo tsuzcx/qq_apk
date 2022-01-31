@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
+import awge;
 
 public class MemoriesYearNodeEntry
-  extends awbv
+  extends awge
 {
   public int videoCount;
   public int year;

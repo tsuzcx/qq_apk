@@ -1,31 +1,18 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class agil
-  extends agij
+class agil
+  implements betp
 {
-  public Bitmap a;
-  public String b;
+  agil(aghx paramaghx) {}
   
-  public agil(String paramString)
+  public void a(betn parambetn)
   {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
-    {
-      this.a = paramRedPacketInfo.icon;
-      this.b = paramRedPacketInfo.resPath;
+    if (QLog.isColorLevel()) {
+      QLog.i("AIOGalleryScene", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambetn);
     }
   }
   
-  public boolean a()
-  {
-    return (this.a != null) && (!TextUtils.isEmpty(this.b));
-  }
+  public void a(betn parambetn, int paramInt1, int paramInt2) {}
 }
 
 

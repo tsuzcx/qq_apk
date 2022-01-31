@@ -1,101 +1,84 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.util.AndroidRuntimeException;
+import com.tencent.qqmini.sdk.annotation.RuntimeLoaderInfo;
+import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
 import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bguz
 {
-  private static MiniAppInfo a;
-  private static MiniAppInfo b;
+  private final List<bgva> a = new ArrayList();
   
-  public static void a()
+  public bguz(AppRuntimeLoaderManager paramAppRuntimeLoaderManager)
   {
-    QMLog.d("JsApiUpdateManager", "handleUpdateApp() called");
-    if ((a != null) && (b != null) && (a.launchParam != null) && (b.launchParam != null))
+    paramAppRuntimeLoaderManager = (bglq)paramAppRuntimeLoaderManager.getClass().getAnnotation(bglq.class);
+    if (paramAppRuntimeLoaderManager == null) {}
+    do
     {
-      b.forceReroad = 3;
-      b.launchParam.scene = a.launchParam.scene;
-      Bundle localBundle = new Bundle();
-      localBundle.putParcelable("key_app_info", b);
-      bgpn.a().a("cmd_update_app_for_mini_game", localBundle, null);
       return;
-    }
-    QMLog.e("JsApiUpdateManager", "handleUpdateApp olderMiniAppInfo = " + a + " newerMiniAppInfo = " + b);
-  }
-  
-  public static void a(bgtg parambgtg, boolean paramBoolean)
-  {
-    try
+      paramAppRuntimeLoaderManager = paramAppRuntimeLoaderManager.a();
+    } while (paramAppRuntimeLoaderManager == null);
+    int j = paramAppRuntimeLoaderManager.length;
+    int i = 0;
+    label49:
+    bgva localbgva;
+    Object localObject2;
+    if (i < j)
     {
-      QMLog.d("JsApiUpdateManager", "handleUpdateCheckResult() called with: gameJsPluginEngine = [" + parambgtg + "], hasUpdate = [" + paramBoolean + "]");
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("hasUpdate", paramBoolean);
-      if (parambgtg != null) {
-        parambgtg.getJsRuntime(1).evaluateSubscribeJs("onUpdateCheckResult", localJSONObject.toString());
-      }
-      return;
-    }
-    catch (JSONException parambgtg)
-    {
-      QMLog.e("JsApiUpdateManager", "handleNativeRequest", parambgtg);
-    }
-  }
-  
-  public static void a(MiniAppInfo paramMiniAppInfo, bgtg parambgtg)
-  {
-    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
-    {
-      a = paramMiniAppInfo;
-      QMLog.d("JsApiUpdateManager", "checkUpdate() called with: oldMiniAppConfig = [" + paramMiniAppInfo + "], gameJsPluginEngine = [" + parambgtg + "]");
-      if (paramMiniAppInfo.verType != 3)
+      Object localObject1 = paramAppRuntimeLoaderManager[i];
+      try
       {
-        QMLog.w("JsApiUpdateManager", "checkForUpdate skip check for not online version");
-        a(parambgtg, false);
-        return;
-      }
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(paramMiniAppInfo.appId, "", "", new bgva(paramMiniAppInfo, parambgtg));
-      return;
-    }
-    QMLog.e("JsApiUpdateManager", "checkUpdate() called with: oldMiniAppConfig = [" + paramMiniAppInfo + "], gameJsPluginEngine = [" + parambgtg + "]");
-  }
-  
-  private static void b(bgtg parambgtg, MiniAppInfo paramMiniAppInfo)
-  {
-    if (paramMiniAppInfo != null)
-    {
-      QMLog.d("JsApiUpdateManager", "handleUpdateDownload() called with: gameJsPluginEngine = [" + parambgtg + "], miniAppConfig = [" + paramMiniAppInfo + "]");
-      bgud.a(paramMiniAppInfo, new bgvb(parambgtg));
-    }
-  }
-  
-  private static void c(bgtg parambgtg, boolean paramBoolean)
-  {
-    try
-    {
-      QMLog.d("JsApiUpdateManager", "handleUpdateDownloadResult() called with: gameJsPluginEngine = [" + parambgtg + "], success = [" + paramBoolean + "]");
-      JSONObject localJSONObject = new JSONObject();
-      if (paramBoolean) {}
-      for (String str = "success";; str = "failed")
-      {
-        localJSONObject.put("updateResult", str);
-        if (parambgtg == null) {
-          break;
+        localbgva = new bgva();
+        localObject2 = Class.forName(localObject1.className());
+        if (!bgun.class.isAssignableFrom((Class)localObject2)) {
+          throw new AndroidRuntimeException("RuntimeLoaderConfig requires child class of BaseAppRuntimeLoader, current class is " + localObject1.className());
         }
-        parambgtg.getJsRuntime(1).evaluateSubscribeJs("onUpdateDownloadResult", localJSONObject.toString());
-        return;
       }
-      return;
+      catch (Throwable localThrowable)
+      {
+        QMLog.w("RuntimeLoaderConfiguration", "", localThrowable);
+      }
     }
-    catch (JSONException parambgtg)
+    for (;;)
     {
-      QMLog.e("JsApiUpdateManager", "handleUpdateDownloadResult", parambgtg);
+      i += 1;
+      break label49;
+      break;
+      localbgva.jdField_a_of_type_JavaLangClass = ((Class)localObject2);
+      localbgva.jdField_a_of_type_Int = localThrowable.type();
+      localObject2 = localbgva.jdField_a_of_type_JavaLangClass.getField("CREATOR");
+      if ((((Field)localObject2).getModifiers() & 0x8) == 0) {
+        throw new AndroidRuntimeException("RuntimeLoader protocol requires the CREATOR object to be static on class " + localThrowable.className());
+      }
+      if (!bguo.class.isAssignableFrom(((Field)localObject2).getType())) {
+        throw new AndroidRuntimeException("RuntimeLoader requires a BaseAppRuntimeLoader.Creator object called CREATOR on class " + localThrowable.className());
+      }
+      localbgva.jdField_a_of_type_Bguo = ((bguo)((Field)localObject2).get(null));
+      this.a.add(localbgva);
     }
+  }
+  
+  public List<bgva> a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{");
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      bgva localbgva = (bgva)localIterator.next();
+      if (localbgva != null) {
+        localStringBuilder.append("***Loader:").append(localbgva.jdField_a_of_type_JavaLangClass.getName()).append(", Creator:").append(localbgva.jdField_a_of_type_Bguo.getClass().getName()).append("***");
+      }
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,19 +1,18 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
 
 public class aeav
-  implements View.OnClickListener
+  implements bcyb
 {
-  public aeav(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aeav(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void b()
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
-    this.a.startActivity(paramView);
+    Message localMessage = this.a.a.obtainMessage(20);
+    this.a.a.sendMessage(localMessage);
   }
 }
 

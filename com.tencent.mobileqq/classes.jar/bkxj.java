@@ -1,17 +1,8 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.2.1;
-import mqq.os.MqqHandler;
+import android.view.View;
 
-public class bkxj
-  implements bmac<Boolean>
+public abstract interface bkxj
 {
-  bkxj(bkxi parambkxi) {}
-  
-  public void a(@Nullable Boolean paramBoolean)
-  {
-    ThreadManager.getSubThreadHandler().post(new AEVideoStoryGIFTplViewModel.2.1(this));
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

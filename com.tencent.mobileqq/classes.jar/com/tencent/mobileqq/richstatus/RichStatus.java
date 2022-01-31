@@ -9,14 +9,14 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.widget.TextView;
-import axxn;
-import axxo;
-import ayaw;
-import ayay;
-import aybd;
-import bdcv;
-import bemz;
-import berh;
+import aybw;
+import aybx;
+import ayff;
+import ayfh;
+import ayfm;
+import bdhe;
+import beri;
+import bevq;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -49,7 +49,7 @@ public class RichStatus
   public static final float OFFSET_IMAGE_SPAN = -0.1F;
   public static final int SPAN_ALIGN_MODE = 0;
   private static RichStatus a;
-  public static final ColorStateList sActionColor = new ColorStateList(new int[][] { { 16842919 }, new int[0] }, new int[] { -2039584, -8947849 });
+  public static final ColorStateList sActionColor;
   private static final long serialVersionUID = 1L;
   public int actId;
   public int actionId = 0;
@@ -72,13 +72,19 @@ public class RichStatus
   public ArrayList<RichStatus.StickerInfo> mStickerInfos;
   public List<String> mUins;
   public ArrayList<String> plainText;
-  public HashMap<Integer, axxo> sigZanInfo;
+  public HashMap<Integer, aybx> sigZanInfo;
   public int signType;
   public long time;
   public List<Pair<Integer, String>> topics = new ArrayList();
   public List<Pair<Integer, Integer>> topicsPos = new ArrayList();
   public int tplId;
   public int tplType;
+  
+  static
+  {
+    int[] arrayOfInt = new int[0];
+    sActionColor = new ColorStateList(new int[][] { { 16842919 }, arrayOfInt }, new int[] { -2039584, -8947849 });
+  }
   
   public RichStatus(String paramString)
   {
@@ -156,7 +162,7 @@ public class RichStatus
           break label118;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("Q.richstatus.status", 2, bdcv.a(paramArrayOfByte));
+          QLog.d("Q.richstatus.status", 2, bdhe.a(paramArrayOfByte));
         }
       }
       for (;;)
@@ -182,7 +188,7 @@ public class RichStatus
           break;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("Q.richstatus.status", 2, bdcv.a(paramArrayOfByte));
+          QLog.d("Q.richstatus.status", 2, bdhe.a(paramArrayOfByte));
         }
       }
       n = i + 2;
@@ -243,7 +249,7 @@ public class RichStatus
         if (localByteBuffer.remaining() < 8)
         {
           if (QLog.isColorLevel()) {
-            QLog.d("Q.richstatus.status", 2, bdcv.a(paramArrayOfByte));
+            QLog.d("Q.richstatus.status", 2, bdhe.a(paramArrayOfByte));
           }
         }
         else
@@ -254,7 +260,7 @@ public class RichStatus
           if (localByteBuffer.remaining() < 8)
           {
             if (QLog.isColorLevel()) {
-              QLog.d("Q.richstatus.status", 2, bdcv.a(paramArrayOfByte));
+              QLog.d("Q.richstatus.status", 2, bdhe.a(paramArrayOfByte));
             }
           }
           else
@@ -265,7 +271,7 @@ public class RichStatus
             localRichStatus.feedsId = new String(paramArrayOfByte, n, j);
             if (QLog.isColorLevel())
             {
-              QLog.d("Q.richstatus.status", 2, bdcv.a(paramArrayOfByte) + ",sign feeds id=" + localRichStatus.feedsId);
+              QLog.d("Q.richstatus.status", 2, bdhe.a(paramArrayOfByte) + ",sign feeds id=" + localRichStatus.feedsId);
               continue;
               localRichStatus.tplId = localByteBuffer.getInt();
               continue;
@@ -329,7 +335,7 @@ public class RichStatus
         if (!QLog.isColorLevel()) {
           break label464;
         }
-        QLog.d("Q.richstatus.status", 2, bdcv.a(paramArrayOfByte));
+        QLog.d("Q.richstatus.status", 2, bdhe.a(paramArrayOfByte));
         break label464;
       }
       i = localByteBuffer.getInt();
@@ -348,7 +354,7 @@ public class RichStatus
         if (!QLog.isColorLevel()) {
           break label464;
         }
-        QLog.d("Q.richstatus.status", 2, bdcv.a(paramArrayOfByte));
+        QLog.d("Q.richstatus.status", 2, bdhe.a(paramArrayOfByte));
         break label464;
       }
       i = j;
@@ -702,15 +708,15 @@ public class RichStatus
       }
       try
       {
-        localObject2 = BitmapFactory.decodeResource(paramResources, 2130848972);
+        localObject2 = BitmapFactory.decodeResource(paramResources, 2130849045);
         if (localObject2 == null) {
           continue;
         }
         int i = (int)(0.9F * paramFloat + 0.5F);
         int j = ((Bitmap)localObject2).getWidth() * i / ((Bitmap)localObject2).getHeight();
-        paramResources = new berh(paramResources, (Bitmap)localObject2, false, true);
+        paramResources = new bevq(paramResources, (Bitmap)localObject2, false, true);
         paramResources.setBounds(0, 0, j, i);
-        paramResources = new bemz(paramResources, 0).a(-0.1F);
+        paramResources = new beri(paramResources, 0).a(-0.1F);
         if (paramCharSequence == null) {}
         for (i = 0;; i = paramCharSequence.length())
         {
@@ -875,7 +881,7 @@ public class RichStatus
   public void sortTopicPos()
   {
     if ((this.topicsPos != null) && (this.topicsPos.size() > 1)) {
-      Collections.sort(this.topicsPos, new axxn(this));
+      Collections.sort(this.topicsPos, new aybw(this));
     }
   }
   
@@ -960,7 +966,7 @@ public class RichStatus
     }
   }
   
-  public CharSequence toSpannableStringWithTopic(String paramString, int paramInt1, int paramInt2, ayay paramayay)
+  public CharSequence toSpannableStringWithTopic(String paramString, int paramInt1, int paramInt2, ayfh paramayfh)
   {
     String str1 = paramString;
     if (paramString == null) {
@@ -978,7 +984,7 @@ public class RichStatus
     {
       int k;
       String str2;
-      ayaw localayaw;
+      ayff localayff;
       if (shouldShowAtHead())
       {
         j = 0;
@@ -991,9 +997,9 @@ public class RichStatus
             break;
             k = paramString.length();
             str2 = (String)((Pair)this.topics.get(j)).second;
-            localayaw = new ayaw(paramayay, aybd.a(-11692801, -2142399233), new Pair(((Pair)this.topics.get(j)).first, str2));
+            localayff = new ayff(paramayfh, ayfm.a(-11692801, -2142399233), new Pair(((Pair)this.topics.get(j)).first, str2));
             paramString.append(str2);
-            paramString.setSpan(localayaw, k, str2.length() + k, 33);
+            paramString.setSpan(localayff, k, str2.length() + k, 33);
           }
         }
       }
@@ -1035,9 +1041,9 @@ public class RichStatus
           }
           return paramString;
         }
-        localayaw = new ayaw(paramayay, aybd.a(-11692801, -2142399233), new Pair(((Pair)this.topicsPos.get(j)).first, str2));
+        localayff = new ayff(paramayfh, ayfm.a(-11692801, -2142399233), new Pair(((Pair)this.topicsPos.get(j)).first, str2));
         paramString.insert(k, str2);
-        paramString.setSpan(localayaw, k, str2.length() + k, 33);
+        paramString.setSpan(localayff, k, str2.length() + k, 33);
       }
     }
   }
@@ -1048,13 +1054,13 @@ public class RichStatus
   }
   
   @NotNull
-  public CharSequence toSpannableStringWithoutAction(ayay paramayay)
+  public CharSequence toSpannableStringWithoutAction(ayfh paramayfh)
   {
     int k = 0;
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     int j;
     String str;
-    ayaw localayaw;
+    ayff localayff;
     if (shouldShowAtHead())
     {
       i = 0;
@@ -1067,9 +1073,9 @@ public class RichStatus
           break;
           j = localSpannableStringBuilder.length();
           str = (String)((Pair)this.topics.get(i)).second;
-          localayaw = new ayaw(paramayay, aybd.a(-11692801, -2142399233), new Pair(((Pair)this.topics.get(i)).first, str));
+          localayff = new ayff(paramayfh, ayfm.a(-11692801, -2142399233), new Pair(((Pair)this.topics.get(i)).first, str));
           localSpannableStringBuilder.append(str);
-          localSpannableStringBuilder.setSpan(localayaw, j, str.length() + j, 33);
+          localSpannableStringBuilder.setSpan(localayff, j, str.length() + j, 33);
         }
       }
     }
@@ -1107,9 +1113,9 @@ public class RichStatus
       if (j > localSpannableStringBuilder.length()) {
         return localSpannableStringBuilder;
       }
-      localayaw = new ayaw(paramayay, aybd.a(-11692801, -2142399233), new Pair(((Pair)this.topicsPos.get(i)).first, str));
+      localayff = new ayff(paramayfh, ayfm.a(-11692801, -2142399233), new Pair(((Pair)this.topicsPos.get(i)).first, str));
       localSpannableStringBuilder.insert(j, str);
-      localSpannableStringBuilder.setSpan(localayaw, j, str.length() + j, 33);
+      localSpannableStringBuilder.setSpan(localayff, j, str.length() + j, 33);
     }
   }
   

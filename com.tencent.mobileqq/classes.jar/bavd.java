@@ -1,69 +1,50 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import mqq.manager.Manager;
 
 public class bavd
+  implements Manager
 {
-  public static long a = -1L;
-  public static long b = -1L;
+  public baue a;
+  public baue b;
   
-  public static long a()
+  public baue a(bdpy parambdpy)
   {
-    if (a < 0L)
+    if (this.b == null) {}
+    try
     {
-      a = a("SP_KEY_C2C_PIC_SIZE_LIMIT", 16777216L);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicUploadFileSizeLimit", 2, "getLimitC2C:" + a);
-      }
+      parambdpy = new HttpCommunicator(parambdpy, 32);
+      parambdpy.a();
+      this.b = new bavh(parambdpy, true);
+      return this.b;
     }
-    return a;
+    finally {}
   }
   
-  private static long a(String paramString, long paramLong)
+  public baue a(AppInterface paramAppInterface, int paramInt)
   {
-    long l = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_PIC_SIZE_LIMIT", 4).getLong(paramString, -1L);
-    if (l < 0L) {
-      return paramLong;
-    }
-    return l;
-  }
-  
-  public static void a(long paramLong)
-  {
-    a("SP_KEY_C2C_PIC_SIZE_LIMIT", paramLong);
-    if (paramLong > 0L) {
-      a = paramLong;
-    }
-  }
-  
-  private static void a(String paramString, long paramLong)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_PIC_SIZE_LIMIT", 4).edit();
-    localEditor.putLong(paramString, paramLong);
-    localEditor.commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("PicUploadFileSizeLimit", 2, "setLimit:" + paramString + " size:" + paramLong);
-    }
-  }
-  
-  public static long b()
-  {
-    if (b < 0L)
+    if (paramInt == 0)
     {
-      b = a("SP_KEY_GROUP_PIC_SIZE_LIMIT", 16777216L);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicUploadFileSizeLimit", 2, "getLimitGroup:" + b);
+      if (this.a == null) {}
+      try
+      {
+        if (this.a == null) {
+          this.a = new bavh(paramAppInterface.getHttpCommunicatort(), false);
+        }
+        return this.a;
       }
+      finally {}
     }
-    return b;
+    return null;
   }
   
-  public static void b(long paramLong)
+  public void onDestroy()
   {
-    a("SP_KEY_GROUP_PIC_SIZE_LIMIT", paramLong);
-    if (paramLong > 0L) {
-      b = paramLong;
+    if (this.a != null) {
+      ((bavh)this.a).a();
+    }
+    if (this.b != null) {
+      ((bavh)this.b).a();
     }
   }
 }

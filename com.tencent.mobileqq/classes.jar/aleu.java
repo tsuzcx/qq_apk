@@ -1,8 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
 
-public abstract interface aleu
+public class aleu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  public aleu(ApolloCardWindow paramApolloCardWindow, TextView paramTextView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      if (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow)) {
+        break label42;
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(aler.c(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+    }
+    label42:
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_AndroidWidgetTextView == ApolloCardWindow.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow))
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(aler.b(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+        return;
+      }
+    } while (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.c(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(aler.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+  }
 }
 
 

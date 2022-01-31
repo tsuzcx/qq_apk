@@ -1,18 +1,24 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-class afnk
-  extends afpq
+public class afnk
+  extends aeqi
 {
-  afnk(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  float jdField_a_of_type_Float;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  UnlimitedBladeWorks jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks;
+  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  ImageView b;
+  public View c;
+  ImageView c;
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new afun(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
+  public afnk(afmy paramafmy) {}
 }
 
 

@@ -1,13 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
+import com.tencent.mobileqq.profile.stickynote.publish.StickyNotePublishConstant.1;
+import java.util.List;
 
 public class awsz
-  implements View.OnClickListener
 {
-  public awsz(LSRecordPanel paramLSRecordPanel) {}
-  
-  public void onClick(View paramView) {}
+  public static final List<awtf> a = new StickyNotePublishConstant.1();
 }
 
 

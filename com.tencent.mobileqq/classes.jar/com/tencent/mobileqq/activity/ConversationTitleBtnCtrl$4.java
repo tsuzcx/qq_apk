@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acos;
+import acth;
 
 public class ConversationTitleBtnCtrl$4
   implements Runnable
 {
-  public ConversationTitleBtnCtrl$4(acos paramacos) {}
+  public ConversationTitleBtnCtrl$4(acth paramacth) {}
   
   public void run()
   {

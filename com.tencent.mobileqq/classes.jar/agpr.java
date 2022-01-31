@@ -1,23 +1,24 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.35.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
 
-public class agpr
+class agpr
   implements DialogInterface.OnClickListener
 {
-  agpr(agot paramagot, PublicAccountInfo paramPublicAccountInfo, aluw paramaluw) {}
+  agpr(agpp paramagpp, String paramString) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs = true;
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected = true;
-    this.jdField_a_of_type_Aluw.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
-    this.jdField_a_of_type_Agot.a(1, null);
-    paramDialogInterface = new PublicAccountChatPie.35.1(this);
-    this.jdField_a_of_type_Agot.a.a(paramDialogInterface);
-    agot.c(this.jdField_a_of_type_Agot);
+    ((alrk)this.jdField_a_of_type_Agpp.a.a.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Agpp.a.a.a().a();
+    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
+    if (localRecentUser != null) {
+      paramDialogInterface.b(localRecentUser);
+    }
+    ((alri)this.jdField_a_of_type_Agpp.a.a.a(6)).a();
+    this.jdField_a_of_type_Agpp.a.I();
   }
 }
 

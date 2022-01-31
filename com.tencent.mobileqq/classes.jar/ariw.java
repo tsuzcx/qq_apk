@@ -1,27 +1,21 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.12.1;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.12.2;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class ariw
-  implements aqtd
+  extends ariu
 {
-  ariw(aris paramaris) {}
-  
-  public void a(int paramInt, String paramString)
+  public ariw(arhz paramarhz)
   {
-    this.a.a(paramInt, paramString);
+    super(paramarhz);
   }
   
-  public void a(String paramString1, String paramString2)
+  public boolean a(String paramString)
   {
-    this.a.a.runOnUiThread(new VideoFilePresenter.12.1(this, paramString1));
-  }
-  
-  public void aJ_() {}
-  
-  public void aK_()
-  {
-    this.a.a.runOnUiThread(new VideoFilePresenter.12.2(this));
+    FileManagerEntity localFileManagerEntity = this.a.a();
+    if (localFileManagerEntity == null) {}
+    while ((localFileManagerEntity.strTroopFilePath == null) || (!localFileManagerEntity.strTroopFilePath.equalsIgnoreCase(paramString))) {
+      return false;
+    }
+    return true;
   }
 }
 

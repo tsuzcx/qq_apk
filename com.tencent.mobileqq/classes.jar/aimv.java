@@ -1,17 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
 
-class aimv
-  implements View.OnClickListener
+public class aimv
+  implements Animation.AnimationListener
 {
-  aimv(aimu paramaimu) {}
+  public aimv(NewStyleCountryActivity paramNewStyleCountryActivity, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ((NewPhotoPreviewActivity)this.a.mActivity).flashPicCb.toggle();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

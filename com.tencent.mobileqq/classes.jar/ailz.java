@@ -1,39 +1,20 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.widget.XListView;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
 
 public class ailz
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public MessageForShortVideo a;
-  public String a;
-  public boolean a;
-  public String[] a;
-  public int b = -1;
-  public long b;
-  public String b;
-  public boolean b;
-  public long c;
-  public String c;
-  public boolean c;
-  public long d;
-  public boolean d;
-  public long e;
-  public boolean e;
+  public ailz(ContactListView paramContactListView) {}
   
-  public ailz()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Long = -1L;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaLangString = ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
-    return this.jdField_a_of_type_JavaLangString;
+    ContactListView.a(this.a).removeHeaderView(ContactListView.a(this.a));
+    ContactListView.a(this.a, null);
+    biyr.a(this.a.getContext(), QQPimGetTipsInfoIPC.a().a);
+    QQPimGetTipsInfoIPC.a().c();
   }
 }
 

@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agrt
-  extends badk
+class agrt
+  implements DialogInterface.OnClickListener
 {
-  public agrt(TroopChatPie paramTroopChatPie) {}
+  agrt(agrr paramagrr) {}
   
-  public void c(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    badt.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, TroopChatPie.l(this.a), paramBoolean, paramArrayOfObject);
-  }
-  
-  public void d(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    badt.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, TroopChatPie.m(this.a), paramBoolean, paramArrayOfObject);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

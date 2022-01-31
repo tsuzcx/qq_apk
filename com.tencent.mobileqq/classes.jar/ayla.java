@@ -1,15 +1,26 @@
-import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.fragment.SelectMemberContactSearchFragment;
+import com.tencent.widget.ListView;
 
 public class ayla
+  extends ayjo<aynu, aywd>
 {
-  public int a;
-  public ayjl a;
-  public MostUsedSearchItem a;
-  public boolean a;
-  
-  public ayla(aykx paramaykx)
+  public ayla(SelectMemberContactSearchFragment paramSelectMemberContactSearchFragment, ListView paramListView, bdbb parambdbb)
   {
-    this.jdField_a_of_type_Int = 0;
+    super(paramListView, parambdbb);
+  }
+  
+  protected ayqp<aynu, aywd> a(int paramInt)
+  {
+    return new ayqe(this.jdField_a_of_type_Bdbb);
+  }
+  
+  protected aywe a(int paramInt, ViewGroup paramViewGroup)
+  {
+    if (ayvm.a(SelectMemberContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentSelectMemberContactSearchFragment))) {
+      return new ayvx(paramViewGroup, 2131562601);
+    }
+    return new ayvx(paramViewGroup, 2131562602);
   }
 }
 

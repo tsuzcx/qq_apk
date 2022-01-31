@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -12,8 +12,8 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdee;
-import bdvr;
+import bdin;
+import beaa;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KanDianRoundCornerTextView;
@@ -51,7 +51,7 @@ public class ComponentContentBigImageVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559946, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559945, this, true);
   }
   
   public URL a(pgd parampgd)
@@ -110,9 +110,9 @@ public class ComponentContentBigImageVideo
   public void a(View paramView)
   {
     super.a(paramView);
-    this.b = ((TextView)paramView.findViewById(2131365504));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372065));
-    this.c = ((TextView)paramView.findViewById(2131380291));
+    this.b = ((TextView)paramView.findViewById(2131365506));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372085));
+    this.c = ((TextView)paramView.findViewById(2131380349));
   }
   
   public void a(Object paramObject)
@@ -127,7 +127,7 @@ public class ComponentContentBigImageVideo
         }
       }
     }
-    while (bdee.h(getContext()))
+    while (bdin.h(getContext()))
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       this.c.setVisibility(4);
@@ -145,21 +145,21 @@ public class ComponentContentBigImageVideo
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     this.c.setVisibility(0);
-    Drawable localDrawable = getContext().getResources().getDrawable(2130842757);
+    Drawable localDrawable = getContext().getResources().getDrawable(2130842770);
     this.c.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
-    this.c.setCompoundDrawablePadding(aekt.a(6.0F, getContext().getResources()));
+    this.c.setCompoundDrawablePadding(aepi.a(6.0F, getContext().getResources()));
     this.c.setVisibility(0);
-    if (bdvr.a() == 1)
+    if (beaa.a() == 1)
     {
-      this.c.setText(alpo.a(2131702634));
+      this.c.setText(alud.a(2131702646));
       return;
     }
     if (paramObject.mXGFileSize > 0L)
     {
-      this.c.setText(rdm.b(paramObject.mXGFileSize) + alpo.a(2131702687));
+      this.c.setText(rdm.b(paramObject.mXGFileSize) + alud.a(2131702699));
       return;
     }
-    this.c.setText(alpo.a(2131702719));
+    this.c.setText(alud.a(2131702731));
   }
   
   public void b()

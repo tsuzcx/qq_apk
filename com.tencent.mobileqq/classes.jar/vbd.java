@@ -1,42 +1,17 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBaseList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class vbd
-  extends unf
+  extends DataSetObserver
 {
-  public List<vbc> a;
+  vbd(vaw paramvaw) {}
   
-  public vbd(qqstory_service.RspStoryFeedTagInfo paramRspStoryFeedTagInfo)
+  public void onChanged()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramRspStoryFeedTagInfo = paramRspStoryFeedTagInfo.tag_info.get();
-    if (paramRspStoryFeedTagInfo != null)
-    {
-      paramRspStoryFeedTagInfo = paramRspStoryFeedTagInfo.iterator();
-      while (paramRspStoryFeedTagInfo.hasNext())
-      {
-        Object localObject = (qqstory_struct.TagInfoBaseList)paramRspStoryFeedTagInfo.next();
-        vbc localvbc = new vbc();
-        localvbc.jdField_a_of_type_JavaLangString = ((qqstory_struct.TagInfoBaseList)localObject).feed_id.get().toStringUtf8();
-        localObject = ((qqstory_struct.TagInfoBaseList)localObject).tag_info_list.get();
-        if (localObject != null)
-        {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            xjw localxjw = new xjw((qqstory_struct.TagInfoBase)((Iterator)localObject).next());
-            localvbc.jdField_a_of_type_JavaUtilList.add(localxjw);
-          }
-        }
-        this.jdField_a_of_type_JavaUtilList.add(localvbc);
-      }
+    if (this.a.a == 0) {
+      ThreadManager.getUIHandler().post(new MsgTabStoryNodeListManager.7.1(this));
     }
   }
 }

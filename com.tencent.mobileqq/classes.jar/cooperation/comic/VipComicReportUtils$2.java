@@ -88,7 +88,7 @@ public final class VipComicReportUtils$2
     //   153: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   156: bipush 95
     //   158: invokevirtual 73	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   161: invokestatic 132	biiv:a	()Ljava/util/Random;
+    //   161: invokestatic 132	binc:a	()Ljava/util/Random;
     //   164: sipush 10000
     //   167: invokevirtual 138	java/util/Random:nextInt	(I)I
     //   170: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -115,12 +115,12 @@ public final class VipComicReportUtils$2
     //   220: iload_2
     //   221: istore_1
     //   222: iload_2
-    //   223: getstatic 161	aljq:c	[Ljava/lang/String;
+    //   223: getstatic 161	alof:c	[Ljava/lang/String;
     //   226: arraylength
     //   227: if_icmplt +5 -> 232
     //   230: iconst_0
     //   231: istore_1
-    //   232: getstatic 161	aljq:c	[Ljava/lang/String;
+    //   232: getstatic 161	alof:c	[Ljava/lang/String;
     //   235: iload_1
     //   236: aaload
     //   237: astore 12

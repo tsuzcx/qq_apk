@@ -1,15 +1,4 @@
-import com.tencent.mobileqq.app.automator.step.CheckAuthCode;
-
-public class amcv
-  extends alls
-{
-  private amcv(CheckAuthCode paramCheckAuthCode) {}
-  
-  public void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.a.a(7);
-  }
-}
+public class amcv {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

@@ -1,24 +1,19 @@
-import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
 
-public abstract interface xcg
+public class xcg
+  implements vyn
 {
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  public xcg(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(xdm paramxdm);
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt, Object paramObject);
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void i();
+  public void a_(vyi paramvyi)
+  {
+    wxe.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
+    LocalVideoSelectActivity.a(this.a).c();
+    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
+  }
 }
 
 

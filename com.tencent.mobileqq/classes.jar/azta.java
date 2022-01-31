@@ -1,9 +1,7 @@
-import com.tencent.biz.now.NowVideoLayout;
-
-public class azta
+public final class azta
 {
-  public azrs a;
-  public NowVideoLayout a;
+  public long a;
+  public Object a;
 }
 
 

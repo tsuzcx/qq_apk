@@ -1,15 +1,31 @@
-import org.jetbrains.annotations.NotNull;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aosi
 {
   public int a;
-  public String a;
   
-  @NotNull
+  public static aosi a(String paramString)
+  {
+    aosi localaosi = new aosi();
+    try
+    {
+      localaosi.a = new JSONObject(paramString).optInt("preloadPskey", 0);
+      QLog.d("WVPreloadPskeyConfProcessor", 2, "confBean = " + localaosi.toString());
+      return localaosi;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WVPreloadPskeyConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    }
+    return localaosi;
+  }
+  
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("{");
-    localStringBuilder.append("topicId: ").append(this.jdField_a_of_type_Int).append(",topicName: ").append(this.jdField_a_of_type_JavaLangString).append("}");
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("preloadPskey:").append(this.a);
     return localStringBuilder.toString();
   }
 }

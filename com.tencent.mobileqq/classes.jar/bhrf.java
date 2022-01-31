@@ -1,6 +1,32 @@
-public abstract interface bhrf
+import com.tencent.sveffects.DpcSwitcher;
+
+public class bhrf
+  implements DpcSwitcher
 {
-  public abstract void a();
+  public float getBeatyRate()
+  {
+    return azki.a();
+  }
+  
+  public boolean isBeautySwitchOpen()
+  {
+    return azki.b();
+  }
+  
+  public boolean isDeNoiseSwitchOpen()
+  {
+    return azki.e();
+  }
+  
+  public boolean isPortraitSwitchOpen()
+  {
+    return azkt.g();
+  }
+  
+  public boolean isSvafSwitchOpen()
+  {
+    return azki.c();
+  }
 }
 
 

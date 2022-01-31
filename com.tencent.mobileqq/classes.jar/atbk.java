@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
-
 class atbk
-  implements IVideoInnerStatusListener
+  implements atbm
 {
   atbk(atbj paramatbj) {}
   
-  public void notifyVideoClose(int paramInt) {}
-  
-  public void notifyVideoSeek(int paramInt) {}
-  
-  public void notifyVideoStart()
+  public void a(int paramInt, String paramString)
   {
-    if (atbj.a(this.a) != null)
+    try
     {
-      atxn.a().a(1, atbj.a(this.a));
+      if (atbj.a(this.a) != null) {
+        atbj.a(this.a).a(paramInt, paramString);
+      }
       return;
     }
-    this.a.a(false);
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
-  
-  public void notifyVideoStop() {}
 }
 
 

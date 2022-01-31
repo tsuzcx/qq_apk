@@ -40,7 +40,7 @@ public class tfa
   
   static
   {
-    jdField_a_of_type_JavaLangString = alpo.a(2131717282);
+    jdField_a_of_type_JavaLangString = alud.a(2131717294);
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
@@ -97,12 +97,12 @@ public class tfa
   
   private static String a(int paramInt)
   {
-    Object localObject2 = bfgi.a().b("com.tencent.weishi", 4);
+    Object localObject2 = bfkr.a().b("com.tencent.weishi", 4);
     Object localObject1 = localObject2;
     if (((List)localObject2).size() == 0) {
-      localObject1 = bfgi.a().a("com.tencent.weishi", 4);
+      localObject1 = bfkr.a().a("com.tencent.weishi", 4);
     }
-    localObject2 = bfkb.a().a("10261931");
+    localObject2 = bfok.a().a("10261931");
     if (localObject2 != null)
     {
       ((DownloadInfo)localObject2).a(4);
@@ -175,7 +175,7 @@ public class tfa
   
   private static ArrayList<RockDownloadInfo> a(tes paramtes, RockDownloadInfo paramRockDownloadInfo)
   {
-    ArrayList localArrayList = anrq.a(paramRockDownloadInfo);
+    ArrayList localArrayList = anvz.a(paramRockDownloadInfo);
     if ((localArrayList == null) || (localArrayList.size() == 0)) {
       return null;
     }
@@ -234,11 +234,11 @@ public class tfa
         return;
         tlo.d("WeishiDownloadUtil", "WSDownloadParams:" + paramWSDownloadParams.toString());
         localtes = new tes(paramActivity);
-        if (xne.b(paramActivity)) {
+        if (xrn.b(paramActivity)) {
           break;
         }
       } while (a(paramWSDownloadParams, localtes, localtes.a(), 3));
-      QQToast.a(paramActivity, alpo.a(2131717281), 0).a();
+      QQToast.a(paramActivity, alud.a(2131717293), 0).a();
       return;
       if (c())
       {
@@ -267,7 +267,7 @@ public class tfa
         tju.a(false, paramWSDownloadParams);
         tju.a(paramWSDownloadParams, 3);
         WSPublicAccReport.getInstance().reportDownload(paramWSDownloadParams.mEventId, 3, 0, 3, 0);
-        bfgh.a(paramActivity, paramWSDownloadParams.mScheme, "com.tencent.weishi", "biz_src_jc_gzh_weishi");
+        bfkq.a(paramActivity, paramWSDownloadParams.mScheme, "com.tencent.weishi", "biz_src_jc_gzh_weishi");
         return;
       }
       localRockDownloadInfo = localtes.a();
@@ -291,7 +291,7 @@ public class tfa
   public static void a(Activity paramActivity, WSDownloadParams paramWSDownloadParams, tez paramtez, RockDownloadListenerWrapper paramRockDownloadListenerWrapper)
   {
     paramtez = new tes(paramActivity);
-    if (!xne.b(paramActivity)) {
+    if (!xrn.b(paramActivity)) {
       if (!a(paramWSDownloadParams, paramtez, paramtez.a(), 3)) {}
     }
     RockDownloadInfo localRockDownloadInfo;
@@ -300,7 +300,7 @@ public class tfa
       do
       {
         return;
-        QQToast.a(paramActivity, alpo.a(2131717281), 0).a();
+        QQToast.a(paramActivity, alud.a(2131717293), 0).a();
         return;
         if ((!tee.a().e()) || (!tkq.a(paramActivity))) {
           break;
@@ -312,12 +312,12 @@ public class tfa
       {
         tlo.c("WeishiDownloadUtil", "当前有下载的Rock任务,开始中断-----");
         paramActivity = tee.a().c();
-        bfgm.a().b(paramActivity, false);
+        bfkv.a().b(paramActivity, false);
         return;
       }
       paramActivity = tee.a().d();
       tlo.c("WeishiDownloadUtil", "当当前有QQ下载的任务,开始中断~~");
-      bfgm.a().b(paramActivity, false);
+      bfkv.a().b(paramActivity, false);
       return;
       paramtez = new tes(paramActivity);
       localRockDownloadInfo = paramtez.a();
@@ -364,7 +364,7 @@ public class tfa
   
   private static void a(String paramString, int paramInt)
   {
-    Object localObject2 = bfgi.a().a();
+    Object localObject2 = bfkr.a().a();
     if (localObject2 == null) {}
     for (;;)
     {
@@ -407,7 +407,7 @@ public class tfa
       {
         localObject1 = (DownloadInfo)paramString.next();
         tlo.d("WeishiDownloadUtil", "删除了info:" + ((DownloadInfo)localObject1).d);
-        bfgi.a().b(((DownloadInfo)localObject1).d, false);
+        bfkr.a().b(((DownloadInfo)localObject1).d, false);
       }
     }
   }
@@ -426,7 +426,7 @@ public class tfa
   public static boolean a(Activity paramActivity, WSDownloadParams paramWSDownloadParams)
   {
     a(false);
-    if (xoo.a(paramActivity))
+    if (xsx.a(paramActivity))
     {
       tlo.d("WeishiDownloadUtil", "本地已经安装微视app");
       return false;
@@ -472,18 +472,18 @@ public class tfa
     tlo.a("WeishiDownloadUtil", String.format("downloadWeishi : autoInstall = %s, showNotification = %s, mDownloadUrlStr = %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
     b();
     Bundle localBundle = new Bundle();
-    localBundle.putString(bfjy.jdField_b_of_type_JavaLangString, "10261931");
-    localBundle.putString(bfjy.l, jdField_a_of_type_JavaLangString);
-    localBundle.putString(bfjy.f, "com.tencent.weishi");
-    localBundle.putString(bfjy.j, paramString);
-    localBundle.putInt(bfjy.k, 2);
-    localBundle.putBoolean(bfjy.h, false);
-    paramString = bfjy.x;
+    localBundle.putString(bfoh.jdField_b_of_type_JavaLangString, "10261931");
+    localBundle.putString(bfoh.l, jdField_a_of_type_JavaLangString);
+    localBundle.putString(bfoh.f, "com.tencent.weishi");
+    localBundle.putString(bfoh.j, paramString);
+    localBundle.putInt(bfoh.k, 2);
+    localBundle.putBoolean(bfoh.h, false);
+    paramString = bfoh.x;
     if (!paramBoolean2) {}
     for (paramBoolean1 = true;; paramBoolean1 = false)
     {
       localBundle.putBoolean(paramString, paramBoolean1);
-      bfgm.a().a(paramActivity, localBundle, "biz_src_jc_gzh_weishi", null, 0);
+      bfkv.a().a(paramActivity, localBundle, "biz_src_jc_gzh_weishi", null, 0);
       jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams = paramWSDownloadParams;
       tju.a(true, paramWSDownloadParams);
       tju.a(paramWSDownloadParams, 2);
@@ -494,7 +494,7 @@ public class tfa
   
   private static boolean a(WSDownloadParams paramWSDownloadParams, int paramInt, String paramString)
   {
-    if (bfij.a(bexd.a().a(), paramString, "biz_src_jc_gzh_weishi", ""))
+    if (bfms.a(bfbm.a().a(), paramString, "biz_src_jc_gzh_weishi", ""))
     {
       tlo.a("WeishiDownloadUtil", "本地QQ包的版本有效，启动开始安装成功！");
       tju.a(1, 2);
@@ -608,7 +608,7 @@ public class tfa
     a(paramInt1);
     b(paramInt2);
     jdField_a_of_type_Tez = new tfb();
-    bfgi.a().a(jdField_a_of_type_Tez);
+    bfkr.a().a(jdField_a_of_type_Tez);
     return jdField_a_of_type_Tez;
   }
   
@@ -735,7 +735,7 @@ public class tfa
     if ((TextUtils.equals(paramString1, "10261931")) && (TextUtils.equals(paramString2, "com.tencent.weishi")))
     {
       tlo.d("WeishiDownloadUtil", "这是统一的DownloadListener，installSucceed, appId:" + paramString1 + ",packName:" + paramString2);
-      bfgi.a().b(jdField_a_of_type_Tez);
+      bfkr.a().b(jdField_a_of_type_Tez);
       tby.b = 0;
       if (!paramBoolean) {
         break label155;
@@ -812,7 +812,7 @@ public class tfa
     a(paramInt1);
     b(paramInt2);
     jdField_b_of_type_Tez = new tfc();
-    bfgi.a().a(jdField_b_of_type_Tez);
+    bfkr.a().a(jdField_b_of_type_Tez);
     tlo.a("WeishiDownloadUtil", "qzone registerListener");
     return jdField_b_of_type_Tez;
   }

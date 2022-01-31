@@ -1,12 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Interpolator;
+import com.tencent.biz.qqcircle.transition.QCircleTransitionImageView;
 
-class uar
-  implements DialogInterface.OnClickListener
+public class uar
+  implements Interpolator
 {
-  uar(uan paramuan) {}
+  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  private uar(QCircleTransitionImageView paramQCircleTransitionImageView) {}
+  
+  public void a(Interpolator paramInterpolator)
+  {
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
+  }
+  
+  public float getInterpolation(float paramFloat)
+  {
+    float f = paramFloat;
+    if (this.jdField_a_of_type_AndroidViewAnimationInterpolator != null) {
+      f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(paramFloat);
+    }
+    return f;
+  }
 }
 
 

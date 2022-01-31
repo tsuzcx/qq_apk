@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public class actn
-  implements Comparator<RecentUser>
+class actn
+  implements DialogInterface.OnClickListener
 {
-  public actn(ForwardRecentActivity paramForwardRecentActivity) {}
+  actn(actm paramactm) {}
   
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (int)(paramRecentUser2.showUpTime - paramRecentUser1.showUpTime);
+    this.a.a.a();
+    DevlockQuickLoginActivity.b(this.a.a);
+    DevlockQuickLoginActivity.b(this.a.a, 0, 2130772001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     actn
  * JD-Core Version:    0.7.0.1
  */

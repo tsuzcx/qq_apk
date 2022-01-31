@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgho;
-import bgkd;
+import bglv;
+import bgok;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
@@ -9,7 +9,7 @@ import org.json.JSONObject;
 class InternalJSPlugin$4
   implements AsyncResult
 {
-  InternalJSPlugin$4(InternalJSPlugin paramInternalJSPlugin, String paramString1, bgkd parambgkd, String paramString2, String paramString3) {}
+  InternalJSPlugin$4(InternalJSPlugin paramInternalJSPlugin, String paramString1, bgok parambgok, String paramString2, String paramString3) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {

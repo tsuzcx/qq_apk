@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import aeun;
-import aeuo;
+import aezc;
+import aezd;
 import java.util.TimerTask;
 
 public class VoiceTextShowAnimator$1
   extends TimerTask
 {
-  public VoiceTextShowAnimator$1(aeun paramaeun) {}
+  public VoiceTextShowAnimator$1(aezc paramaezc) {}
   
   public void run()
   {
-    int i = aeun.a(this.this$0) / 3;
-    aeun.a(this.this$0, aeun.a()[(i % 3)]);
-    if (aeun.a(this.this$0) != null) {
-      aeun.a(this.this$0).h();
+    int i = aezc.a(this.this$0) / 3;
+    aezc.a(this.this$0, aezc.a()[(i % 3)]);
+    if (aezc.a(this.this$0) != null) {
+      aezc.a(this.this$0).h();
     }
   }
 }

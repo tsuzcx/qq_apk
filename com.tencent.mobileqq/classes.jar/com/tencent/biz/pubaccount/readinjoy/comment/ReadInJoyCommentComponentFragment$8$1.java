@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import agwq;
+import ahbf;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
@@ -13,10 +13,10 @@ public class ReadInJoyCommentComponentFragment$8$1
   
   public void run()
   {
-    agwq localagwq = ReadInJoyCommentComponentFragment.a(this.a.a);
-    if ((localagwq != null) && (ReadInJoyCommentComponentFragment.a(this.a.a)))
+    ahbf localahbf = ReadInJoyCommentComponentFragment.a(this.a.a);
+    if ((localahbf != null) && (ReadInJoyCommentComponentFragment.a(this.a.a)))
     {
-      localagwq.c();
+      localahbf.c();
       ReadInJoyCommentComponentFragment.a(this.a.a, false);
       this.a.a.f.setSelected(false);
     }
@@ -25,7 +25,7 @@ public class ReadInJoyCommentComponentFragment$8$1
     ReadInJoyCommentComponentFragment.a(this.a.a);
     if (this.a.a.jdField_a_of_type_Boolean)
     {
-      this.a.a.g.setImageResource(2130842451);
+      this.a.a.g.setImageResource(2130842464);
       ReadInJoyCommentComponentFragment.b(this.a.a, true);
     }
   }

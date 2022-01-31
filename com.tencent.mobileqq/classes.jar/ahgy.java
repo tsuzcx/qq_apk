@@ -1,316 +1,171 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
-import com.tencent.widget.ThemeImageView;
-import com.tencent.widget.ThemeLabelTextView;
+import com.tencent.widget.GridView;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public abstract class ahgy
+public class ahgy
+  extends BaseAdapter
+  implements bdbc, nrw
 {
-  public static final int[] a;
-  public static final int[] b;
-  public static final int[] c = { 2131370179 };
-  public akgy a;
-  protected Context a;
-  public avqe a;
-  protected bhxa a;
-  public QQAppInterface a;
-  protected int b;
+  private ajjp jdField_a_of_type_Ajjp = new ajjp(paramClassificationSearchFragment.a, this, false);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ahgz(this);
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<nry> jdField_a_of_type_JavaUtilArrayList;
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  public ahgy(ClassificationSearchFragment paramClassificationSearchFragment)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131691561 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130839328 };
+    a(true);
   }
   
-  public ahgy(Context paramContext, QQAppInterface paramQQAppInterface, akgy paramakgy, avqe paramavqe)
+  public String a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Akgy = paramakgy;
-    this.jdField_a_of_type_Avqe = paramavqe;
-    this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297294);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public static void a(View paramView, boolean paramBoolean)
+  public ArrayList<nry> a()
   {
-    if (paramView == null) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      paramView.setBackgroundResource(2130839218);
-      return;
-    }
-    if (ThemeUtil.isDefaultTheme())
-    {
-      paramView.setBackgroundResource(2130839216);
-      return;
-    }
-    paramView.setBackgroundResource(2130839213);
+    return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
-  public static void a(TextView paramTextView, int paramInt1, int paramInt2, StringBuilder paramStringBuilder)
+  public void a()
   {
-    int j;
-    int i;
-    switch (paramInt1)
+    if (this.jdField_a_of_type_Ajjp != null) {
+      this.jdField_a_of_type_Ajjp.a();
+    }
+  }
+  
+  public void a(ArrayList<nry> paramArrayList, String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment) != null)
     {
-    default: 
-      paramTextView.setBackgroundResource(2130845387);
-      j = 0;
-      i = 0;
+      if (getCount() == 0)
+      {
+        ((TextView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131376263)).setText(alud.a(2131702306));
+        ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).setVisibility(8);
+      }
+    }
+    else
+    {
+      if (!QLog.isColorLevel()) {
+        return;
+      }
+      paramString = new StringBuilder("onGetRecommendSuccess->isFromRecommend:" + paramBoolean + ", title:" + paramString + ", list:");
+      if (paramArrayList != null) {
+        break label271;
+      }
+      paramString.append("null");
     }
     for (;;)
     {
-      if ((paramInt2 > 0) && ((paramInt1 == 0) || (paramInt1 == 1)))
+      QLog.d("ClassificationSearchFragment", 2, paramString.toString());
+      if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
+        return;
+      }
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
       {
-        paramTextView.setText(String.valueOf(paramInt2));
-        if ((paramStringBuilder == null) || (!AppSetting.c)) {
-          break label225;
-        }
-        paramStringBuilder.append(",").append(String.valueOf(paramInt2));
-        i = 1;
+        paramString = (nry)paramArrayList.next();
+        QLog.d("ClassificationSearchFragment", 2, "onGetRecommendSuccess->" + paramString.toString());
+      }
+      if (TextUtils.isEmpty(paramString)) {
+        ((TextView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131376263)).setText(alud.a(2131702311));
       }
       for (;;)
       {
-        paramTextView.setCompoundDrawablesWithIntrinsicBounds(j, 0, 0, 0);
-        if (i != 0)
-        {
-          if ((paramTextView instanceof ThemeLabelTextView)) {
-            ((ThemeLabelTextView)paramTextView).setSupportMaskView(true);
-          }
-          paramTextView.setVisibility(0);
-          return;
-          j = 2130845386;
-          paramTextView.setBackgroundResource(2130845387);
-          i = j;
-          if (paramStringBuilder == null) {
-            break label231;
-          }
-          i = j;
-          if (!AppSetting.c) {
-            break label231;
-          }
-          paramStringBuilder.append(",男");
-          j = 2130845386;
-          i = 1;
-          break;
-          j = 2130845384;
-          paramTextView.setBackgroundResource(2130845385);
-          i = j;
-          if (paramStringBuilder == null) {
-            break label231;
-          }
-          i = j;
-          if (!AppSetting.c) {
-            break label231;
-          }
-          paramStringBuilder.append(",女");
-          j = 2130845384;
-          i = 1;
-          break;
-          paramTextView.setText("");
-          continue;
-        }
-        paramTextView.setVisibility(8);
-        return;
-        label225:
-        i = 1;
+        ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).setVisibility(0);
+        notifyDataSetChanged();
+        break;
+        ((TextView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131376263)).setText(paramString);
       }
-      label231:
-      j = i;
-      i = 1;
+      label271:
+      paramString.append("size:").append(paramArrayList.size());
     }
   }
   
-  public static void b(View paramView, int paramInt)
+  public void a(boolean paramBoolean)
   {
+    nru.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment.a, paramBoolean, this);
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return null;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
     if (paramView == null) {
-      return;
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment.getActivity()).inflate(2131559500, null);
     }
-    Object localObject = paramView.getLayoutParams();
-    if (localObject == null) {
-      localObject = new AbsListView.LayoutParams(-1, paramInt);
-    }
-    for (;;)
+    paramView = (nry)getItem(paramInt);
+    if (paramView != null)
     {
-      paramView.setMinimumHeight(paramInt);
-      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      return;
-      ((ViewGroup.LayoutParams)localObject).width = -1;
-      ((ViewGroup.LayoutParams)localObject).height = paramInt;
-    }
-  }
-  
-  public static void b(View paramView, boolean paramBoolean)
-  {
-    if (paramView == null) {
-      return;
-    }
-    int i = paramView.getPaddingBottom();
-    int j = paramView.getPaddingTop();
-    int k = paramView.getPaddingRight();
-    int m = paramView.getPaddingLeft();
-    if (paramBoolean) {
-      paramView.setBackgroundResource(2130839218);
-    }
-    for (;;)
-    {
-      paramView.setPadding(m, j, k, i);
-      return;
-      if (ThemeUtil.isDefaultTheme()) {
-        paramView.setBackgroundResource(2130839216);
-      } else {
-        paramView.setBackgroundResource(2130839213);
-      }
-    }
-  }
-  
-  protected int a()
-  {
-    return 0;
-  }
-  
-  public abstract View a(int paramInt, View paramView);
-  
-  protected View a(Context paramContext, int paramInt, ahha paramahha)
-  {
-    View localView = LayoutInflater.from(paramContext).inflate(paramInt, null);
-    if (this.jdField_a_of_type_Akgy != null) {
-      return this.jdField_a_of_type_Bhxa.a(paramContext, localView, paramahha, -1);
-    }
-    paramahha.g = localView;
-    paramahha.a = null;
-    return localView;
-  }
-  
-  protected bhxa a(Context paramContext)
-  {
-    int i = paramContext.getResources().getDimensionPixelSize(2131298631);
-    int j = paramContext.getResources().getDimensionPixelSize(2131298632);
-    paramContext = c;
-    int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
-    int[] arrayOfInt2 = jdField_b_of_type_ArrayOfInt;
-    return new ahgz(this, 1, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
-  }
-  
-  protected void a() {}
-  
-  protected void a(Context paramContext, View paramView, int paramInt, Object paramObject, bhxb parambhxb, View.OnClickListener paramOnClickListener)
-  {
-    if (this.jdField_a_of_type_Bhxa != null) {}
-    for (int i = this.jdField_a_of_type_Bhxa.a(paramContext, paramView, paramInt, paramObject, parambhxb, paramOnClickListener);; i = 0)
-    {
-      if ((this.jdField_a_of_type_Akgy != null) && (this.jdField_a_of_type_Akgy.a != -1))
+      if (this.jdField_a_of_type_Ajjp != null)
       {
-        if (paramInt != this.jdField_a_of_type_Akgy.a) {
-          paramView.scrollTo(0, 0);
-        }
+        Drawable localDrawable = this.jdField_a_of_type_Ajjp.a(1008, paramView.jdField_a_of_type_JavaLangString);
+        ((URLImageView)paramViewGroup.findViewById(2131367516)).setImageDrawable(localDrawable);
       }
-      else {
-        return;
-      }
-      paramView.scrollTo(i, 0);
-      return;
+      ((TextView)paramViewGroup.findViewById(2131370977)).setText(paramView.b);
+      paramViewGroup.findViewById(2131364736).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramViewGroup.findViewById(2131364736).setTag(paramView);
+      paramViewGroup.setTag(paramView);
     }
+    return paramViewGroup;
   }
   
-  protected void a(View paramView)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (!bdal.a("tag_swip_icon_menu_item", paramView.getTag())) {}
+    if ((ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment) == null) || (TextUtils.isEmpty(paramString))) {}
     for (;;)
     {
       return;
-      if (!bdee.g(this.jdField_a_of_type_AndroidContentContext))
+      if (((paramBitmap != null) || (paramInt1 <= 0)) && (paramBitmap != null))
       {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692397), 0).b(c());
-        return;
-      }
-      Object localObject1 = paramView.getTag(-1);
-      Object localObject2 = paramView.getTag(-2);
-      if ((!(localObject1 instanceof Integer)) || (!(localObject2 instanceof Integer)))
-      {
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.i("Q.newfriend", 4, "SystemMsgListAdpater onClick tag is not int");
-        return;
-      }
-      int i = ((Integer)localObject1).intValue();
-      int j = ((Integer)localObject2).intValue();
-      localObject1 = null;
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.newfriend", 2, "SystemMsgListAdpater onClick position = " + i + "nMenuStrId = " + j + "v.getId() = " + paramView.getId());
-      }
-      try
-      {
-        paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getString(j);
-        if (!bdal.a(paramView, this.jdField_a_of_type_AndroidContentContext.getResources().getString(jdField_a_of_type_ArrayOfInt[0]))) {
-          continue;
-        }
-        a();
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
+        GridView localGridView = (GridView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131376259);
+        paramInt2 = localGridView.getChildCount();
+        paramInt1 = 0;
+        while (paramInt1 < paramInt2)
         {
-          paramView = localObject1;
-          if (QLog.isDevelopLevel())
-          {
-            QLog.i("Q.newfriend", 4, localException.toString());
-            paramView = localObject1;
+          View localView = localGridView.getChildAt(paramInt1);
+          if (paramString.equals(((nry)localView.getTag()).jdField_a_of_type_JavaLangString)) {
+            ((URLImageView)localView.findViewById(2131367516)).setImageBitmap(paramBitmap);
           }
+          paramInt1 += 1;
         }
       }
     }
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    if (paramView == null) {}
-    View localView;
-    do
-    {
-      return;
-      localView = paramView.findViewById(2131375820);
-      if ((localView == paramView) || (localView == null))
-      {
-        b(paramView, paramInt);
-        return;
-      }
-      paramView = localView.getLayoutParams();
-    } while (paramView == null);
-    paramView.width = -1;
-    paramView.height = paramInt;
-    localView.setLayoutParams(paramView);
-  }
-  
-  public void a(avqe paramavqe)
-  {
-    this.jdField_a_of_type_Avqe = paramavqe;
-  }
-  
-  public void b(View paramView)
-  {
-    if ((paramView instanceof ThemeImageView)) {
-      ((ThemeImageView)paramView).setSupportMaskView(true);
-    }
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914);
   }
 }
 

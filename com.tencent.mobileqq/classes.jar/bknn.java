@@ -1,23 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Matrix;
-import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-public class bknn
-  implements ValueAnimator.AnimatorUpdateListener
+class bknn
+  implements View.OnClickListener
 {
-  public bknn(AECropperImageView paramAECropperImageView, float paramFloat) {}
+  bknn(bknm parambknm) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    paramValueAnimator = this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.getImageMatrix();
-    if (AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView, paramValueAnimator) <= AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView)) {
-      return;
-    }
-    double d = Math.pow(AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView) / this.jdField_a_of_type_Float, 0.0500000007450581D);
-    paramValueAnimator.postScale((float)d, (float)d, AECropperImageView.b(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView), AECropperImageView.c(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView));
-    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.setImageMatrix(paramValueAnimator);
-    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.invalidate();
+    this.a.a.performClick();
+    azqs.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.back", 0, 0, "", "", "", "");
   }
 }
 

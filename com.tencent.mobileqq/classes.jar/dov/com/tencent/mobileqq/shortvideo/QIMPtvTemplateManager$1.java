@@ -1,9 +1,9 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
 import android.content.res.AssetManager;
-import blok;
-import blpe;
-import bnkz;
+import blsw;
+import bltq;
+import bnpl;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +17,7 @@ import ndq;
 public class QIMPtvTemplateManager$1
   implements Runnable
 {
-  public QIMPtvTemplateManager$1(bnkz parambnkz, boolean paramBoolean) {}
+  public QIMPtvTemplateManager$1(bnpl parambnpl, boolean paramBoolean) {}
   
   public void run()
   {
@@ -96,7 +96,7 @@ public class QIMPtvTemplateManager$1
             if (this.this$0.a() == null) {
               continue;
             }
-            this.this$0.a().notifyObservers(blpe.class, 3, true, null);
+            this.this$0.a().notifyObservers(bltq.class, 3, true, null);
             return;
           }
         }
@@ -115,12 +115,12 @@ public class QIMPtvTemplateManager$1
           localObject3 = localObject1;
         }
       }
-      localObject1 = bnkz.a(this.this$0, (String)localObject3);
+      localObject1 = bnpl.a(this.this$0, (String)localObject3);
     } while ((localObject1 == null) || (((List)localObject1).isEmpty()));
     localObject3 = ((List)localObject1).iterator();
     while (((Iterator)localObject3).hasNext())
     {
-      localObject5 = ((blok)((Iterator)localObject3).next()).jdField_a_of_type_JavaUtilList.iterator();
+      localObject5 = ((blsw)((Iterator)localObject3).next()).jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject5).hasNext())
       {
         localObject6 = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject5).next();

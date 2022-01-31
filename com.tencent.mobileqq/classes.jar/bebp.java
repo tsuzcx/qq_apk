@@ -1,46 +1,70 @@
+import android.app.Activity;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.ProfileCardFavorShowView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.HashMap;
+import org.json.JSONObject;
 
-class bebp
-  implements TouchWebView.OnScrollChangedListener
+public class bebp
+  extends bebj
 {
-  int jdField_a_of_type_Int = 0;
-  
-  bebp(bebk parambebk) {}
-  
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public bebp(Activity paramActivity, JSONObject paramJSONObject, awqt paramawqt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_SwiftIphoneTitleBarUI", 2, "-->onScrollChanged:" + paramInt1 + "," + paramInt2 + "," + paramInt3 + "," + paramInt4);
-    }
-    if (ImmersiveUtils.isSupporImmersive() == 1) {}
-    for (paramInt1 = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());; paramInt1 = 0)
+    super(paramActivity, paramJSONObject, paramawqt);
+    this.d = xsm.a(paramActivity, 3.0F);
+  }
+  
+  public ProfileCardFavorShowView a(Activity paramActivity)
+  {
+    return new ProfileCardFavorShowView(paramActivity, null, 2131561811);
+  }
+  
+  protected void a(JSONObject paramJSONObject, View paramView, TextView paramTextView, ImageView paramImageView)
+  {
+    if ((paramView != null) && (paramTextView != null))
     {
-      paramInt1 = paramInt1 + bcwh.a(BaseApplicationImpl.getApplication(), 50.0F) + 180;
-      if (Math.abs(paramInt2 - this.jdField_a_of_type_Int) > 20) {
-        if (paramInt2 < paramInt1 / 3) {
-          this.jdField_a_of_type_Bebk.a.v = true;
-        }
+      paramTextView.setTextColor(this.c);
+      String str = b(paramJSONObject);
+      if (TextUtils.isEmpty(str)) {
+        break label141;
       }
-      while (paramInt2 >= paramInt1 / 3) {
-        for (;;)
-        {
-          this.jdField_a_of_type_Int = paramInt2;
-          this.jdField_a_of_type_Bebk.h();
-          return;
-          if (paramInt2 >= paramInt1) {
-            this.jdField_a_of_type_Bebk.a.v = false;
-          }
-        }
-      }
-      this.jdField_a_of_type_Bebk.a.v = true;
-      this.jdField_a_of_type_Int = paramInt2;
-      this.jdField_a_of_type_Bebk.h();
-      return;
+      int i = xsm.a(this.jdField_a_of_type_AndroidAppActivity, 300.0F);
+      int j = (int)paramTextView.getPaint().measureText(paramTextView.getText().toString());
+      int k = xsm.a(this.jdField_a_of_type_AndroidAppActivity, 23.0F);
+      int m = xsm.a(this.jdField_a_of_type_AndroidAppActivity, 40.0F);
+      paramView.setBackgroundDrawable(a(str, new bebq(Math.min(j + k, i), m)));
     }
+    for (;;)
+    {
+      if (paramImageView != null)
+      {
+        paramView = c(paramJSONObject);
+        if (TextUtils.isEmpty(paramView)) {
+          break;
+        }
+        paramImageView.setImageDrawable(a(paramView));
+      }
+      return;
+      label141:
+      if (paramJSONObject != null) {
+        QLog.e("DIYProfileTemplate.ProfileTemplateBase", 1, paramJSONObject.optString("type") + " bind title icon is null!");
+      }
+      paramView.setVisibility(8);
+    }
+    if (paramJSONObject != null) {
+      QLog.e("DIYProfileTemplate.ProfileTemplateBase", 1, paramJSONObject.optString("type") + " bind arrow icon is null!");
+    }
+    paramImageView.setVisibility(8);
+  }
+  
+  public void b(HashMap<String, View> paramHashMap)
+  {
+    paramHashMap.put("map_key_qzone", this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561820, null));
   }
 }
 

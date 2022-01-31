@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.detail.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import wec;
-import wef;
-import weh;
+import wil;
+import wio;
+import wiq;
 
 public class DetailFeedAllInfoPuller$2
   implements Runnable
 {
-  public DetailFeedAllInfoPuller$2(wec paramwec, weh paramweh, boolean paramBoolean, ErrorMessage paramErrorMessage) {}
+  public DetailFeedAllInfoPuller$2(wil paramwil, wiq paramwiq, boolean paramBoolean, ErrorMessage paramErrorMessage) {}
   
   public void run()
   {
-    wec.a(this.this$0).a(this.jdField_a_of_type_Weh, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    wil.a(this.this$0).a(this.jdField_a_of_type_Wiq, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
   }
 }
 

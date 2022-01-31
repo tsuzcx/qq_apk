@@ -1,192 +1,218 @@
 import android.content.Context;
-import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.tips.QQOperateTips.1;
+import com.tencent.mobileqq.activity.aio.tips.QQOperateTips.2;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x935.oidb_0x935.GPS;
+import com.tencent.widget.XPanelContainer;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class ahai
+public class ahai
+  implements agzt, ahan
 {
-  public ahad a;
-  protected ahal a;
-  protected alws a;
-  private amab jdField_a_of_type_Amab = new ahak(this);
-  protected Context a;
-  protected TextView a;
-  private bhpo jdField_a_of_type_Bhpo = new ahaj(this);
-  protected QQAppInterface a;
-  protected XListView a;
-  public boolean a;
-  protected boolean b = true;
-  protected boolean c = true;
+  private int jdField_a_of_type_Int = -1;
+  private long jdField_a_of_type_Long = -1L;
+  private aeqo jdField_a_of_type_Aeqo;
+  private ahap jdField_a_of_type_Ahap;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  protected List<QQOperationViopTipTask> a;
+  private long jdField_b_of_type_Long = -1L;
+  private WeakReference<XPanelContainer> jdField_b_of_type_JavaLangRefWeakReference;
   
-  public ahai()
+  public ahai(QQAppInterface paramQQAppInterface, ahap paramahap, Context paramContext, XPanelContainer paramXPanelContainer, List<QQOperationViopTipTask> paramList, SessionInfo paramSessionInfo, aeqo paramaeqo)
   {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public ahai(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, ahal paramahal)
-  {
-    this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_Ahal = paramahal;
-    a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramXPanelContainer);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Ahap = paramahap;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_Aeqo = paramaeqo;
   }
   
-  private void f()
+  private void a()
   {
-    g();
-    this.jdField_a_of_type_Ahad = a();
-    this.jdField_a_of_type_Ahad.a(null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ahad);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setDividerHeight(0);
-    if (this.c) {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this.jdField_a_of_type_Bhpo);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new QQOperateTips.1(this));
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new QQOperateTips.2(this));
+  }
+  
+  private void b(QQOperationViopTipTask paramQQOperationViopTipTask)
+  {
+    List localList = this.jdField_a_of_type_Aeqo.a();
+    if (localList == null) {
+      return;
     }
-  }
-  
-  private void g()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131713641));
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
-    int i = aekt.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_a_of_type_AndroidWidgetTextView.setPadding(i, i, i, i);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166979));
-    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-  }
-  
-  private void h()
-  {
-    c();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    if (a()) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131713642));
+    int j = localList.size();
+    int i = j - 1;
+    label27:
+    if (i >= 0) {
+      if (i < j - 10) {
+        i = 0;
+      }
     }
-  }
-  
-  protected abstract ahad a();
-  
-  public XListView a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetXListView;
-  }
-  
-  protected oidb_0x935.GPS a()
-  {
-    Object localObject = amkv.a("recommend_troop");
-    double d1;
-    int k;
-    double d2;
-    String str;
-    int i;
-    if (localObject != null)
+    for (;;)
     {
-      d1 = ((SosoInterface.SosoLbsInfo)localObject).a.e;
-      k = (int)((SosoInterface.SosoLbsInfo)localObject).a.jdField_a_of_type_Float;
-      d2 = ((SosoInterface.SosoLbsInfo)localObject).a.jdField_a_of_type_Long;
-      str = ((SosoInterface.SosoLbsInfo)localObject).a.f;
+      if (i != 0)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("QQOperateTips", 2, " findExcludeMsg, just return ");
+        return;
+        if (((ChatMessage)localList.get(i)).msgtype == -1043)
+        {
+          i = 1;
+          continue;
+        }
+        i -= 1;
+        break label27;
+      }
+      this.jdField_a_of_type_Ahap.a(this, new Object[] { paramQQOperationViopTipTask });
+      return;
       i = 0;
     }
-    try
+  }
+  
+  public int a()
+  {
+    return 40;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    if ((paramVarArgs[0] instanceof QQOperationViopTipTask))
     {
-      int j = Integer.parseInt(str);
-      i = j;
+      paramVarArgs = (QQOperationViopTipTask)paramVarArgs[0];
+      if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+        return null;
+      }
+      View localView = LayoutInflater.from((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).inflate(2131560824, null);
+      TextView localTextView = (TextView)localView.findViewById(2131373449);
+      Button localButton = (Button)localView.findViewById(2131373446);
+      localTextView.setText(paramVarArgs.adwords);
+      localButton.setText(paramVarArgs.clickableWord);
+      localButton.setOnClickListener(new ahaj(this, paramVarArgs));
+      return localView;
     }
-    catch (Exception localException)
-    {
-      label66:
-      double d3;
-      double d4;
-      break label66;
-    }
-    d3 = Double.valueOf(((SosoInterface.SosoLbsInfo)localObject).a.jdField_a_of_type_Double * 1000000.0D).intValue();
-    d4 = Double.valueOf(((SosoInterface.SosoLbsInfo)localObject).a.b * 1000000.0D).intValue();
-    localObject = new oidb_0x935.GPS();
-    ((oidb_0x935.GPS)localObject).uint32_latitude.set((int)d3);
-    ((oidb_0x935.GPS)localObject).uint32_longitude.set((int)d4);
-    ((oidb_0x935.GPS)localObject).uint32_altitude.set((int)d1);
-    ((oidb_0x935.GPS)localObject).uint32_accuracy.set(k);
-    ((oidb_0x935.GPS)localObject).uint32_time.set((int)d2);
-    ((oidb_0x935.GPS)localObject).uint32_cityid.set(i);
-    ((oidb_0x935.GPS)localObject).bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.3.3"));
-    ((oidb_0x935.GPS)localObject).uint32_client.set(2);
-    return localObject;
     return null;
   }
   
-  protected void a()
+  public MessageRecord a(Object... paramVarArgs)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetXListView == null) {
-      this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(this.jdField_a_of_type_AndroidContentContext);
+    if ((paramVarArgs[0] instanceof QQOperationViopTipTask))
+    {
+      paramVarArgs = (QQOperationViopTipTask)paramVarArgs[0];
+      MessageRecord localMessageRecord = azaf.a(-1041);
+      long l = ayzl.a();
+      localMessageRecord.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramVarArgs.adwords + "|" + paramVarArgs.clickableWord + "|" + paramVarArgs.linkOffset + "|" + paramVarArgs.url + "|" + paramVarArgs.taskid, l, -1041, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, l);
+      localMessageRecord.isread = true;
+      if (!alww.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, false)) {
+        return localMessageRecord;
+      }
+      return null;
     }
-    this.jdField_a_of_type_Alws = ((alws)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(22));
-    f();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amab);
-    if ((this.jdField_a_of_type_Boolean) && (this.b)) {
-      a(false);
+    return null;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000)) {}
+    do
+    {
+      return;
+      if (paramInt == 1000)
+      {
+        a();
+        return;
+      }
+    } while (paramInt != 1001);
+    b();
+  }
+  
+  public void a(QQOperationViopTipTask paramQQOperationViopTipTask)
+  {
+    this.jdField_a_of_type_Ahap.a(this, new Object[] { paramQQOperationViopTipTask });
+  }
+  
+  public void a(List<QQOperationViopTipTask> paramList)
+  {
+    aozd localaozd = aozd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    paramList = paramList.iterator();
+    label195:
+    label198:
+    for (;;)
+    {
+      int i;
+      QQOperationViopTipTask localQQOperationViopTipTask;
+      if (paramList.hasNext())
+      {
+        i = ((QQOperationViopTipTask)paramList.next()).taskid;
+        localQQOperationViopTipTask = localaozd.a(i);
+        if ((QLog.isDevelopLevel()) && (localQQOperationViopTipTask == null)) {
+          QLog.d("QQOperateVoIP", 4, "on showTips, voipTask is null, taskId=" + i);
+        }
+        XPanelContainer localXPanelContainer = (XPanelContainer)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+        if (localXPanelContainer == null) {
+          break label195;
+        }
+        if (localXPanelContainer.a() == 0) {
+          i = 1;
+        }
+      }
+      for (;;)
+      {
+        if (localQQOperationViopTipTask == null) {
+          break label198;
+        }
+        if (localQQOperationViopTipTask.isBlueTipsTask())
+        {
+          if (i != 0)
+          {
+            a(localQQOperationViopTipTask);
+            break;
+            i = 0;
+            continue;
+          }
+          if (this.jdField_a_of_type_JavaUtilList == null) {
+            break;
+          }
+          this.jdField_a_of_type_JavaUtilList.add(localQQOperationViopTipTask);
+          break;
+        }
+        if ((!localQQOperationViopTipTask.isGryTipsTask()) || (localaozd.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 2))) {
+          break;
+        }
+        b(localQQOperationViopTipTask);
+        break;
+        return;
+        i = 1;
+      }
     }
   }
   
-  protected void a(boolean paramBoolean)
+  public int[] a()
   {
-    this.jdField_a_of_type_Alws.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), a());
+    return null;
   }
   
-  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3) {}
-  
-  protected void a(boolean paramBoolean1, int paramInt1, String paramString, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3) {}
-  
-  protected void a(boolean paramBoolean1, long paramLong, int paramInt, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList) {}
-  
-  protected boolean a()
+  public int b()
   {
-    return this.jdField_a_of_type_Alws.a == 1;
-  }
-  
-  public void b()
-  {
-    a(false);
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      h();
-    }
-  }
-  
-  protected void c()
-  {
-    this.jdField_a_of_type_Ahad.a(this.jdField_a_of_type_Alws.b);
-    this.jdField_a_of_type_Ahad.notifyDataSetChanged();
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopListWrapper", 2, "checkAndLoadMoreRecommList isEnd = " + a());
-    }
-    if (!a()) {
-      a(true);
-    }
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amab);
+    return 6;
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import armo;
-import arna;
-import arqz;
+import arqx;
+import arrj;
+import arvi;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -18,21 +18,21 @@ class QfileLocalFileAppTabView$2
     Object localObject;
     if (this.this$0.f)
     {
-      arna.a(this.this$0.a, this.this$0);
-      arna.a(true, armo.a().b(), ".apk", "", localHashMap, this.this$0);
-      localObject = armo.a().a();
+      arrj.a(this.this$0.a, this.this$0);
+      arrj.a(true, arqx.a().b(), ".apk", "", localHashMap, this.this$0);
+      localObject = arqx.a().a();
       if (localObject != null) {
-        arna.a(true, (String)localObject, ".apk", "", localHashMap, null);
+        arrj.a(true, (String)localObject, ".apk", "", localHashMap, null);
       }
     }
     for (;;)
     {
-      arna.a(localHashMap);
+      arrj.a(localHashMap);
       QfileLocalFileAppTabView.a(this.this$0, new QfileLocalFileAppTabView.2.1(this));
       return;
       localObject = this.this$0.d.iterator();
       while (((Iterator)localObject).hasNext()) {
-        arna.a(true, ((arqz)((Iterator)localObject).next()).a(), ".apk", "", localHashMap, this.this$0);
+        arrj.a(true, ((arvi)((Iterator)localObject).next()).a(), ".apk", "", localHashMap, this.this$0);
       }
     }
   }

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.richmediabrowser;
 
-import axtq;
+import axxz;
 
 public class AIOGalleryActivity$2$4
   implements Runnable
 {
-  public AIOGalleryActivity$2$4(axtq paramaxtq) {}
+  public AIOGalleryActivity$2$4(axxz paramaxxz) {}
   
   public void run() {}
 }

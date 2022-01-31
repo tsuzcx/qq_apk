@@ -1,25 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class adgk
-  implements View.OnClickListener
+  implements babe
 {
-  public adgk(NotificationActivity paramNotificationActivity) {}
+  public adgk(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    QLog.i("Q.lebatab.leba", 1, "StudyModeChange onChange " + paramBoolean);
+    if (this.a.a.a() != null) {
+      this.a.a.a().c();
     }
-    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adgk
  * JD-Core Version:    0.7.0.1
  */

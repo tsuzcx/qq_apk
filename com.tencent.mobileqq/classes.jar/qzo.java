@@ -10,10 +10,10 @@ import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class qzo
-  implements ajdh
+  implements ajhw
 {
   @Nullable
-  private ajdj jdField_a_of_type_Ajdj;
+  private ajhy jdField_a_of_type_Ajhy;
   @NonNull
   private final PendingIntent jdField_a_of_type_AndroidAppPendingIntent;
   String jdField_a_of_type_JavaLangString;
@@ -47,7 +47,7 @@ public class qzo
     String str2 = paramIntent.getStringExtra("banner_readinjoy_vid");
     String str3 = paramIntent.getStringExtra("banner_readinjoy_md5");
     paramIntent = new qzo(paramPendingIntent, paramQQAppInterface, str1, paramIntent.getStringExtra("banner_readinjoy_article_id"), str2, str3, paramIntent.getBooleanExtra("banner_readinjoy_is_weishi_mode", false));
-    paramQQAppInterface = ajbm.a(paramQQAppInterface, i, paramString1, paramString2, paramIntent);
+    paramQQAppInterface = ajgb.a(paramQQAppInterface, i, paramString1, paramString2, paramIntent);
     paramIntent.a();
     paramIntent.a(paramQQAppInterface);
   }
@@ -80,9 +80,9 @@ public class qzo
     a("0X80097F8");
   }
   
-  public void a(@Nullable ajdj paramajdj)
+  public void a(@Nullable ajhy paramajhy)
   {
-    this.jdField_a_of_type_Ajdj = paramajdj;
+    this.jdField_a_of_type_Ajhy = paramajhy;
   }
   
   public boolean isNeedAutoCloseWhenAccountChange()
@@ -92,21 +92,21 @@ public class qzo
   
   public void onClose()
   {
-    if (this.jdField_a_of_type_Ajdj == null) {}
+    if (this.jdField_a_of_type_Ajhy == null) {}
     QQAppInterface localQQAppInterface;
     do
     {
       return;
       localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     } while (localQQAppInterface == null);
-    ajbm.a(localQQAppInterface, this.jdField_a_of_type_Ajdj);
+    ajgb.a(localQQAppInterface, this.jdField_a_of_type_Ajhy);
     VideoFeedsLoadDelegate.a(this.jdField_a_of_type_AndroidAppPendingIntent);
     a("0X80097FA");
   }
   
   public void onEnter()
   {
-    if (this.jdField_a_of_type_Ajdj == null) {}
+    if (this.jdField_a_of_type_Ajhy == null) {}
     QQAppInterface localQQAppInterface;
     do
     {
@@ -116,7 +116,7 @@ public class qzo
     try
     {
       this.jdField_a_of_type_AndroidAppPendingIntent.send();
-      ajbm.a(localQQAppInterface, this.jdField_a_of_type_Ajdj);
+      ajgb.a(localQQAppInterface, this.jdField_a_of_type_Ajhy);
       a("0X80097F9");
       return;
     }

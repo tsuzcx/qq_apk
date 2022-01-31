@@ -1,59 +1,39 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.networkedmodule.QzoneModuleConst;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.NetworkState;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.contentbox.MsgPhotoView;
 
 public class bjin
-  extends bjic
+  implements View.OnClickListener
 {
-  public bjin(QzoneModuleManager paramQzoneModuleManager) {}
+  public bjin(MsgPhotoView paramMsgPhotoView) {}
   
-  private void a()
+  public void onClick(View paramView)
   {
-    if (!NetworkState.isWifiConn())
+    if (MsgPhotoView.a(this.a) != null)
     {
-      QLog.w("QzoneModuleManager", 1, "isWifiConn:false,so stop update.");
+      if (paramView == MsgPhotoView.a(this.a)) {
+        MsgPhotoView.a(this.a).a(this.a.a, paramView, 1);
+      }
+    }
+    else {
       return;
     }
-    QzoneModuleManager.access$008(this.a);
-    for (;;)
+    if (paramView == MsgPhotoView.b(this.a))
     {
-      if (QzoneModuleManager.access$000(this.a) < QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size())
-      {
-        String str = (String)QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.get(QzoneModuleManager.access$000(this.a));
-        if (this.a.checkIfNeedUpdate(str)) {
-          this.a.updateModule(str, this);
-        }
-      }
-      else
-      {
-        if (QzoneModuleManager.access$000(this.a) != QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size()) {
-          break;
-        }
-        QLog.i("QzoneModuleManager", 1, "updateAllModules completed--totalModules:" + QzoneModuleManager.access$000(this.a));
-        return;
-      }
-      QzoneModuleManager.access$008(this.a);
+      MsgPhotoView.a(this.a).a(this.a.a, paramView, 2);
+      return;
     }
-  }
-  
-  public void onDownloadCanceled(String paramString)
-  {
-    super.onDownloadCanceled(paramString);
-    a();
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    super.onDownloadFailed(paramString);
-    a();
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    super.onDownloadSucceed(paramString);
-    a();
+    if (paramView == MsgPhotoView.c(this.a))
+    {
+      MsgPhotoView.a(this.a).a(this.a.a, paramView, 3);
+      return;
+    }
+    if (paramView == MsgPhotoView.d(this.a))
+    {
+      MsgPhotoView.a(this.a).a(this.a.a, paramView, 4);
+      return;
+    }
+    MsgPhotoView.a(this.a).a(this.a.a, paramView, 0);
   }
 }
 

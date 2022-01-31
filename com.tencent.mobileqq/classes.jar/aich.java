@@ -1,32 +1,39 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
 
-class aich
-  implements bhqp
+public class aich
+  extends bcoc
 {
-  aich(aica paramaica) {}
+  public aich(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
+      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList error");
     }
-    if ((this.a.jdField_a_of_type_Aiby.getCount() <= 0) || (paramInt <= 0)) {}
-    do
+    ChatHistoryTroopMemberFragment.a(this.a, true);
+    if (ChatHistoryTroopMemberFragment.b(this.a))
     {
-      return;
-      paramAdapterView = (aicu)this.a.jdField_a_of_type_Aiby.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
+      paramString = this.a.b.obtainMessage(12, null);
+      this.a.b.sendMessage(paramString);
     }
-    ChatHistoryActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.h, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, 0);
+  }
+  
+  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList");
+    }
+    ChatHistoryTroopMemberFragment.a(this.a, paramArrayOfLong1);
+    ChatHistoryTroopMemberFragment.b(this.a, paramArrayOfLong2);
+    ChatHistoryTroopMemberFragment.c(this.a, paramArrayOfLong3);
+    ChatHistoryTroopMemberFragment.a(this.a, true);
+    if (ChatHistoryTroopMemberFragment.b(this.a))
+    {
+      paramArrayOfLong1 = this.a.b.obtainMessage(12, null);
+      this.a.b.sendMessage(paramArrayOfLong1);
+    }
   }
 }
 

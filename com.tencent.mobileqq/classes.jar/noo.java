@@ -32,7 +32,7 @@ public class noo
         QLog.d("NativeAdPreloadManager", 2, "createManager width:" + localDisplayMetrics.widthPixels + ", height:" + localDisplayMetrics.heightPixels);
       }
     }
-    bfkb.a();
+    bfok.a();
   }
   
   private void b()

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn;
 
-import aljq;
+import alof;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -18,11 +18,11 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdag;
-import bdar;
-import bepp;
-import bhou;
-import bhza;
+import bdep;
+import bdfa;
+import bety;
+import bhtb;
+import bidh;
 import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
 import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
 import com.tencent.image.URLDrawable;
@@ -62,7 +62,7 @@ public abstract class AbsPublishColumnFragment
 {
   protected ImageView a;
   protected TextView a;
-  protected bepp a;
+  protected bety a;
   public LimitWordCountEditText a;
   protected ImmersiveTitleBar2 a;
   protected String a;
@@ -71,7 +71,7 @@ public abstract class AbsPublishColumnFragment
   protected qxd a;
   protected ImageView b;
   protected TextView b;
-  protected bepp b;
+  protected bety b;
   protected LimitWordCountEditText b;
   protected String b;
   protected TextView c;
@@ -165,7 +165,7 @@ public abstract class AbsPublishColumnFragment
   
   private void l()
   {
-    if ((bhou.k()) && (!bdag.b()) && (!bdag.d()))
+    if ((bhtb.k()) && (!bdep.b()) && (!bdep.d()))
     {
       getActivity().getWindow().getDecorView().setSystemUiVisibility(9216);
       this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(-1);
@@ -188,14 +188,14 @@ public abstract class AbsPublishColumnFragment
     localIntent.putExtra("PhotoConst.IS_SINGLE_NEED_EDIT", true);
     localIntent.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
     localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-    String str = aljq.aX + localFragmentActivity.app.getCurrentAccountUin() + "/" + "nearby_people_photo/";
+    String str = alof.aX + localFragmentActivity.app.getCurrentAccountUin() + "/" + "nearby_people_photo/";
     localIntent.putExtra("PhotoConst.TARGET_PATH", str + System.currentTimeMillis() + ".jpg");
     localIntent.putExtra("PhotoConst.CLIP_WIDTH", 640);
     localIntent.putExtra("PhotoConst.CLIP_HEIGHT", 640);
     localIntent.putExtra("PhotoConst.TARGET_WIDTH", 640);
     localIntent.putExtra("PhotoConst.TARGET_HEIGHT", 640);
     localFragmentActivity.startActivity(localIntent);
-    bdar.anim(localFragmentActivity, false, true);
+    bdfa.anim(localFragmentActivity, false, true);
   }
   
   private void o()
@@ -219,17 +219,17 @@ public abstract class AbsPublishColumnFragment
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bepp == null)
+    if (this.jdField_a_of_type_Bety == null)
     {
-      this.jdField_a_of_type_Bepp = new bepp(getActivity());
-      this.jdField_a_of_type_Bepp.c(2131718767);
+      this.jdField_a_of_type_Bety = new bety(getActivity());
+      this.jdField_a_of_type_Bety.c(2131718779);
     }
-    if (this.jdField_a_of_type_Bepp.isShowing())
+    if (this.jdField_a_of_type_Bety.isShowing())
     {
       QLog.i("RIJUGC.PublishTopicFragment", 1, "showUploadLoadingProgress, but dialog is showing");
       return;
     }
-    this.jdField_a_of_type_Bepp.show();
+    this.jdField_a_of_type_Bety.show();
   }
   
   public void a(int paramInt)
@@ -273,8 +273,8 @@ public abstract class AbsPublishColumnFragment
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
-      this.jdField_a_of_type_Bepp.dismiss();
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+      this.jdField_a_of_type_Bety.dismiss();
     }
   }
   
@@ -297,21 +297,21 @@ public abstract class AbsPublishColumnFragment
   
   public void c()
   {
-    if (this.jdField_b_of_type_Bepp == null) {
-      this.jdField_b_of_type_Bepp = new bepp(getActivity());
+    if (this.jdField_b_of_type_Bety == null) {
+      this.jdField_b_of_type_Bety = new bety(getActivity());
     }
-    if (this.jdField_b_of_type_Bepp.isShowing())
+    if (this.jdField_b_of_type_Bety.isShowing())
     {
       QLog.i("RIJUGC.PublishTopicFragment", 1, "showPublishLoadingProgress, but dialog is showing");
       return;
     }
-    this.jdField_b_of_type_Bepp.show();
+    this.jdField_b_of_type_Bety.show();
   }
   
   public void d()
   {
-    if ((this.jdField_b_of_type_Bepp != null) && (this.jdField_b_of_type_Bepp.isShowing())) {
-      this.jdField_b_of_type_Bepp.dismiss();
+    if ((this.jdField_b_of_type_Bety != null) && (this.jdField_b_of_type_Bety.isShowing())) {
+      this.jdField_b_of_type_Bety.dismiss();
     }
   }
   
@@ -436,10 +436,10 @@ public abstract class AbsPublishColumnFragment
     default: 
       QLog.e("RIJUGC.PublishTopicFragment", 1, "onClick, no handler, view = " + paramView.getClass().getSimpleName());
       return;
-    case 2131368928: 
+    case 2131368946: 
       h();
       return;
-    case 2131378990: 
+    case 2131379048: 
       f();
       return;
     }
@@ -451,27 +451,27 @@ public abstract class AbsPublishColumnFragment
     super.onCreate(paramBundle);
     this.jdField_b_of_type_JavaLangString = getActivity().getIntent().getStringExtra("arg_callback");
     getActivity().getWindow().setSoftInputMode(16);
-    bhza.a(getActivity());
+    bidh.a(getActivity());
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     this.jdField_a_of_type_Qtv.a(this);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559984, null);
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramLayoutInflater.findViewById(2131377976));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131378985));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131378990));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131368739));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131368712));
-    this.c = ((TextView)paramLayoutInflater.findViewById(2131378595));
-    this.d = ((TextView)paramLayoutInflater.findViewById(2131378639));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText = ((LimitWordCountEditText)paramLayoutInflater.findViewById(2131365833));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText = ((LimitWordCountEditText)paramLayoutInflater.findViewById(2131365832));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559983, null);
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramLayoutInflater.findViewById(2131378030));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131379043));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131379048));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131368753));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131368726));
+    this.c = ((TextView)paramLayoutInflater.findViewById(2131378649));
+    this.d = ((TextView)paramLayoutInflater.findViewById(2131378693));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText = ((LimitWordCountEditText)paramLayoutInflater.findViewById(2131365835));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText = ((LimitWordCountEditText)paramLayoutInflater.findViewById(2131365834));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.setCountLimit(this.jdField_a_of_type_Qtv.a());
     this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.setCountLimit(this.jdField_a_of_type_Qtv.b());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.setTitleTypeFace(Typeface.defaultFromStyle(1));
     this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.setTitleTypeFace(Typeface.defaultFromStyle(1));
-    paramLayoutInflater.findViewById(2131368928).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131368946).setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.setCountChangeListener(new qtj(this));

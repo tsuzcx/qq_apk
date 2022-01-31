@@ -1,8 +1,65 @@
-import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public abstract interface aldz
+final class aldz
+  extends bead
 {
-  public abstract int a(Bundle paramBundle);
+  aldz(File paramFile) {}
+  
+  public void onDone(beae parambeae)
+  {
+    super.onDone(parambeae);
+    if ((3 == parambeae.a()) && (this.a.exists())) {}
+    try
+    {
+      ndr.a(this.a, this.a.getParent() + File.separator);
+      label166:
+      return;
+    }
+    catch (Exception parambeae)
+    {
+      parambeae = parambeae;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error  error->" + parambeae.getMessage());
+      }
+      try
+      {
+        this.a.delete();
+        return;
+      }
+      catch (Exception parambeae)
+      {
+        return;
+      }
+    }
+    catch (OutOfMemoryError parambeae)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + parambeae.getMessage());
+      }
+      try
+      {
+        this.a.delete();
+        return;
+      }
+      catch (Exception parambeae)
+      {
+        return;
+      }
+    }
+    finally
+    {
+      try
+      {
+        this.a.delete();
+        throw parambeae;
+      }
+      catch (Exception localException)
+      {
+        break label166;
+      }
+    }
+  }
 }
 
 

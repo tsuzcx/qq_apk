@@ -1,30 +1,27 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wmr
-  extends LruCache<wms, Drawable>
+public class wmr
+  extends QQUIEventReceiver<wml, uvf>
 {
-  wmr(wmp paramwmp, int paramInt)
+  public wmr(wml paramwml)
   {
-    super(paramInt);
+    super(paramwml);
   }
   
-  protected int a(wms paramwms, Drawable paramDrawable)
+  public void a(@NonNull wml paramwml, @NonNull uvf paramuvf)
   {
-    if ((paramDrawable instanceof BitmapDrawable))
+    if (paramuvf.a.isSuccess())
     {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
-      {
-        int i = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * i;
-        wnb.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramwms, " size=", Integer.valueOf(i) });
-        return i;
-      }
+      wxe.a("Q.qqstory.memories.ProfileFeedPresenter", "receive video delete event. %s. start to refresh year node list", paramuvf.toString());
+      wml.a(paramwml, true);
     }
-    return 524288;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uvf.class;
   }
 }
 

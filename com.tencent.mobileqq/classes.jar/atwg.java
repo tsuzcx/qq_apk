@@ -1,23 +1,25 @@
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.view.Window;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.graphics.drawable.Drawable.Callback;
+import com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView;
 
 public class atwg
+  implements Drawable.Callback
 {
-  public static ProgressDialog a(Context paramContext, String paramString)
+  public atwg(LoveZoneTabRedDotView paramLoveZoneTabRedDotView) {}
+  
+  public void invalidateDrawable(Drawable paramDrawable)
   {
-    Drawable localDrawable = paramContext.getResources().getDrawable(2130848983);
-    paramContext = new ProgressDialog(paramContext, 2131755801);
-    paramContext.show();
-    paramContext.getWindow().setContentView(2131558428);
-    paramContext.setContentView(2131558428);
-    ((TextView)paramContext.findViewById(2131365231)).setText(paramString);
-    ((ProgressBar)paramContext.findViewById(2131366685)).setIndeterminateDrawable(localDrawable);
-    return paramContext;
+    this.a.invalidate();
+  }
+  
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
+  {
+    this.a.scheduleDrawable(paramDrawable, paramRunnable, paramLong);
+  }
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
+  {
+    this.a.unscheduleDrawable(paramDrawable, paramRunnable);
   }
 }
 

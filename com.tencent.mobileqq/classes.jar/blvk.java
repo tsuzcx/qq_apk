@@ -1,25 +1,13 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.animation.Transformation;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 
-public class blvk
-  implements bdjy<Float>
+class blvk
+  implements axpu
 {
-  public blvk(AdvancedProviderView paramAdvancedProviderView, QIMProviderContainerView paramQIMProviderContainerView, View paramView) {}
+  blvk(blvi paramblvi, boolean paramBoolean) {}
   
-  @TargetApi(11)
-  public void a(bdjs<Float> parambdjs, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void a()
   {
-    paramFloat = paramFloat1.floatValue();
-    if (this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView != null) {
-      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setBackGroundAlpha(paramFloat);
-    }
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
-    }
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, paramFloat);
+    SosoInterface.a(new blvl(this, "NewStoryTakeVideoActivity"));
   }
 }
 

@@ -1,35 +1,43 @@
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.NormalCardInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
-class wll
-  extends uhn
+public class wll
 {
-  wll(wli paramwli) {}
+  private qqstory_struct.NormalCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo;
+  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  public wll(qqstory_struct.NormalCardInfo paramNormalCardInfo)
   {
-    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo = paramNormalCardInfo;
+  }
+  
+  public wll(byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo = new qqstory_struct.NormalCardInfo();
+    try
     {
-      wsv.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new comment push: %s", new Object[] { paramStoryPushMsg });
-      this.a.a(paramStoryPushMsg.d);
-    }
-    do
-    {
+      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo.mergeFrom(paramArrayOfByte);
       return;
-      if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 18))
-      {
-        wsv.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new like push: %s", new Object[] { paramStoryPushMsg });
-        this.a.b(paramStoryPushMsg.d);
-        return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
+    }
+  }
+  
+  public CardItem.CardVideoInfo a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo.story_video_info.size() == 0) {
+        return null;
       }
-      if (paramStoryPushMsg.a == 17)
-      {
-        wsv.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete comment push: %s", new Object[] { paramStoryPushMsg });
-        ((uqo)urr.a(17)).a(paramStoryPushMsg.d, paramStoryPushMsg.c);
-        return;
-      }
-    } while (paramStoryPushMsg.a != 16);
-    wsv.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete like push: %s", new Object[] { paramStoryPushMsg });
-    this.a.b(paramStoryPushMsg.d);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo.story_video_info.get(0));
+    }
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   }
 }
 

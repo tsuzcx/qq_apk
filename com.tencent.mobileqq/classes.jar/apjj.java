@@ -1,114 +1,39 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CameraEmotionData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
 public class apjj
 {
-  private static int a;
-  public static blnc a;
-  
-  static
+  public static int a(AppInterface paramAppInterface, Context paramContext)
   {
-    jdField_a_of_type_Int = -1;
-    jdField_a_of_type_Blnc = new blnc();
-  }
-  
-  private static int a()
-  {
-    Object localObject = (apjm)((QQAppInterface)bllv.a()).getManager(333);
-    if (jdField_a_of_type_Int == -1)
-    {
-      jdField_a_of_type_Int = 1;
-      localObject = ((apjm)localObject).a();
-      if (localObject != null)
-      {
-        i = 0;
-        while (i < ((List)localObject).size())
-        {
-          int j = ((CameraEmotionData)((List)localObject).get(i)).emoId;
-          if (jdField_a_of_type_Int < j) {
-            jdField_a_of_type_Int = j;
-          }
-          i += 1;
-        }
-      }
+    int i = 0;
+    if ((paramAppInterface == null) || (paramContext == null)) {
+      QLog.e("TencentDocGuideHelper", 1, "getShownTimes sth is null");
     }
-    int i = jdField_a_of_type_Int + 1;
-    jdField_a_of_type_Int = i;
-    return i;
+    int j;
+    do
+    {
+      return i;
+      j = paramContext.getSharedPreferences("tencent_doc", 4).getInt("shown_" + paramAppInterface.getCurrentAccountUin(), 0);
+      i = j;
+    } while (!QLog.isColorLevel());
+    QLog.i("TencentDocGuideHelper", 2, "getShownTimes " + j);
+    return j;
   }
   
-  private static CameraEmotionData a(String paramString1, String paramString2, String paramString3)
+  public static void a(AppInterface paramAppInterface, Context paramContext, int paramInt)
   {
-    CameraEmotionData localCameraEmotionData = new CameraEmotionData();
-    localCameraEmotionData.uin = bllv.a().getCurrentAccountUin();
-    localCameraEmotionData.emoPath = paramString1;
-    localCameraEmotionData.RomaingType = "needUpload";
-    localCameraEmotionData.strContext = paramString2;
-    localCameraEmotionData.templateId = paramString3;
-    return localCameraEmotionData;
-  }
-  
-  private static CameraEmotionData a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    CameraEmotionData localCameraEmotionData = new CameraEmotionData();
-    localCameraEmotionData.uin = bllv.a().getCurrentAccountUin();
-    localCameraEmotionData.emoOriginalPath = paramString1;
-    localCameraEmotionData.thumbPath = paramString3;
-    localCameraEmotionData.RomaingType = "needUpload";
-    localCameraEmotionData.strContext = paramString2;
-    localCameraEmotionData.templateId = paramString4;
-    return localCameraEmotionData;
-  }
-  
-  public static void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3)
-  {
-    Object localObject = (QQAppInterface)bllv.a();
-    if (localObject == null) {
+    if (QLog.isColorLevel()) {
+      QLog.i("TencentDocGuideHelper", 2, "setShownTimes " + paramInt);
+    }
+    if ((paramAppInterface == null) || (paramContext == null))
+    {
+      QLog.e("TencentDocGuideHelper", 1, "setShownTimes sth is null");
       return;
     }
-    apjm localapjm = (apjm)((QQAppInterface)localObject).getManager(333);
-    localObject = (alks)((QQAppInterface)localObject).a(160);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayList1.size())
-    {
-      CameraEmotionData localCameraEmotionData = a((String)paramArrayList1.get(i), (String)paramArrayList2.get(i), (String)paramArrayList3.get(i));
-      localCameraEmotionData.emoId = a();
-      localapjm.c(localCameraEmotionData);
-      localArrayList.add(localCameraEmotionData);
-      i += 1;
-    }
-    ((alks)localObject).notifyUI(4, true, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraEmoSendControl", 2, "doStep, insert completed");
-    }
-    jdField_a_of_type_Blnc.a(String.valueOf(1011), new Object[] { localArrayList });
-  }
-  
-  public static void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3, ArrayList<String> paramArrayList4)
-  {
-    Object localObject = (QQAppInterface)bllv.a();
-    apjm localapjm = (apjm)((QQAppInterface)localObject).getManager(333);
-    localObject = (alks)((QQAppInterface)localObject).a(160);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayList1.size())
-    {
-      CameraEmotionData localCameraEmotionData = a((String)paramArrayList1.get(i), (String)paramArrayList2.get(i), (String)paramArrayList3.get(i), (String)paramArrayList4.get(i));
-      localCameraEmotionData.emoId = a();
-      localapjm.c(localCameraEmotionData);
-      localArrayList.add(localCameraEmotionData);
-      i += 1;
-    }
-    ((alks)localObject).notifyUI(4, true, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraEmoSendControl", 2, "doStep, insert completed");
-    }
-    jdField_a_of_type_Blnc.a(String.valueOf(1011), new Object[] { localArrayList });
+    paramContext.getSharedPreferences("tencent_doc", 4).edit().putInt("shown_" + paramAppInterface.getCurrentAccountUin(), paramInt).commit();
   }
 }
 

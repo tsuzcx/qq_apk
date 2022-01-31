@@ -1,35 +1,65 @@
-import android.opengl.Matrix;
+import android.app.Activity;
+import android.os.Build.VERSION;
+import mqq.app.AppActivity;
+import mqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
 public class axpt
+  implements QQPermissionCallback
 {
-  public static float[] a = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-  public static final float[] b = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private axpu jdField_a_of_type_Axpu;
   
-  public static float[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public axpt(Activity paramActivity, axpu paramaxpu)
   {
-    float f1 = paramInt3 / paramInt4;
-    float f2 = paramInt1 / paramInt2;
-    if (f1 < f2)
-    {
-      f2 = paramInt4 * f2 / paramInt3;
-      f1 = 1.0F;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Axpu = paramaxpu;
+  }
+  
+  public void a()
+  {
+    if (Build.VERSION.SDK_INT < 23) {
+      if (this.jdField_a_of_type_Axpu != null) {
+        this.jdField_a_of_type_Axpu.a();
+      }
     }
-    for (;;)
+    label119:
+    do
     {
-      float[] arrayOfFloat = new float[16];
-      Matrix.setIdentityM(arrayOfFloat, 0);
-      Matrix.scaleM(arrayOfFloat, 0, f2, f1, 1.0F);
-      return arrayOfFloat;
-      if (f1 > f2)
+      do
       {
-        f1 = paramInt3 / (f2 * paramInt4);
-        f2 = 1.0F;
-      }
-      else
-      {
-        f1 = 1.0F;
-        f2 = 1.0F;
-      }
+        do
+        {
+          return;
+        } while (this.jdField_a_of_type_AndroidAppActivity == null);
+        if (this.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) {}
+        for (int i = 1;; i = 0)
+        {
+          if (i != 0) {
+            break label119;
+          }
+          if (!(this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity)) {
+            break;
+          }
+          ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+          return;
+        }
+      } while (!(this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity));
+      ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      return;
+    } while (this.jdField_a_of_type_Axpu == null);
+    this.jdField_a_of_type_Axpu.a();
+  }
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bdgm.a(this.jdField_a_of_type_AndroidAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (this.jdField_a_of_type_Axpu != null) {
+      this.jdField_a_of_type_Axpu.a();
     }
   }
 }

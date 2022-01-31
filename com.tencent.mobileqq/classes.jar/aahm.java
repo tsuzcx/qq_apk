@@ -1,108 +1,17 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.ad.tangram.canvas.download.AdDownloaderAdapter;
-import com.tencent.ad.tangram.canvas.download.IAdDownloader;
-import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
-import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
 
 public class aahm
-  implements AdDownloaderAdapter
+  implements TouchWebView.OnScrollChangedListener
 {
-  public void doDownloadAction(Activity paramActivity, Bundle paramBundle, String paramString, int paramInt)
-  {
-    bfgm.a().a(paramActivity, paramBundle, paramString, null, paramInt);
-  }
+  public aahm(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public int getCurrentPkgDownloadProgress(Context paramContext, String paramString1, String paramString2)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    return aaon.c(paramContext, paramString1, paramString2);
-  }
-  
-  public Object getDownloadInfoByUrl(String paramString)
-  {
-    paramString = bfgi.a().b(paramString);
-    paramString.m = "biz_src_ads";
-    return paramString;
-  }
-  
-  public IAdDownloader getDownloader()
-  {
-    return this;
-  }
-  
-  public int getProgress(Object paramObject)
-  {
-    if (!(paramObject instanceof DownloadInfo)) {
-      return 0;
-    }
-    paramObject = (DownloadInfo)DownloadInfo.class.cast(paramObject);
-    if (paramObject != null) {}
-    for (int i = paramObject.f;; i = 0) {
-      return i;
-    }
-  }
-  
-  public void installDownload(Object paramObject)
-  {
-    if ((paramObject instanceof DownloadInfo)) {
-      bfgi.a().a((DownloadInfo)paramObject);
-    }
-    while (!(paramObject instanceof Bundle)) {
-      return;
-    }
-    bfgm.a((Bundle)paramObject);
-  }
-  
-  public boolean isCurrentPkgTask(Pair<String, String> paramPair, Object paramObject)
-  {
-    if ((paramPair == null) || (TextUtils.isEmpty((CharSequence)paramPair.first)) || (TextUtils.isEmpty((CharSequence)paramPair.second)) || (!(paramObject instanceof AdAppBtnData))) {}
-    do
-    {
-      do
-      {
-        return false;
-        paramPair = bfgi.a().b((String)paramPair.first);
-      } while (paramPair == null);
-      paramObject = (AdAppBtnData)paramObject;
-    } while ((TextUtils.isEmpty(paramPair.e)) || (TextUtils.isEmpty(paramPair.c)) || (TextUtils.isEmpty(paramObject.packageName)) || (TextUtils.isEmpty(paramObject.mGdtAd_appId)));
-    return (paramPair.e.equals(paramObject.packageName)) && (paramPair.c.equals(paramObject.mGdtAd_appId));
-  }
-  
-  public int isPkgDownloadPaused(Context paramContext, String paramString1, String paramString2)
-  {
-    return aaon.b(paramContext, paramString1, paramString2);
-  }
-  
-  public int isPkgDownloading(Context paramContext, String paramString1, String paramString2)
-  {
-    return aaon.a(paramContext, paramString1, paramString2);
-  }
-  
-  public boolean isPkgExist(Context paramContext, String paramString1, String paramString2)
-  {
-    return aaon.b(paramContext, paramString2);
-  }
-  
-  public void pauseDownload(String paramString1, String paramString2)
-  {
-    bfgi.a().a(paramString2);
-  }
-  
-  public void registerListener(IAdDownloader.Callback paramCallback)
-  {
-    if ((paramCallback instanceof bfka)) {
-      bfgi.a().a((bfka)paramCallback);
-    }
-  }
-  
-  public void unregisterListener(IAdDownloader.Callback paramCallback)
-  {
-    if ((paramCallback instanceof bfka)) {
-      bfgi.a().b((bfka)paramCallback);
+    if (GameCenterAPIJavaScript.access$000(this.a) != null) {
+      GameCenterAPIJavaScript.access$000(this.a).scrollBy(0, paramInt2 - paramInt4);
     }
   }
 }

@@ -1,17 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bgof
-  implements View.OnClickListener
+public class bgof
 {
-  bgof(bgob parambgob) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
   
-  public void onClick(View paramView)
+  public static boolean a(int paramInt)
   {
-    this.a.dismiss();
-    if (bgob.a(this.a) != null) {
-      bgob.a(this.a).onDismiss();
-    }
+    return (paramInt & 0x1) != 0;
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt & 0x2) != 0;
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    return (paramInt & 0x4) != 0;
+  }
+  
+  public static boolean d(int paramInt)
+  {
+    return (paramInt & 0x8) != 0;
   }
 }
 

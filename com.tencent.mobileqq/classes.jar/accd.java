@@ -1,10 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class accd
-  extends Handler
+  implements DialogInterface.OnDismissListener
 {
-  public accd(AuthDevRenameActivity paramAuthDevRenameActivity) {}
+  public accd(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.finish();
+  }
 }
 
 

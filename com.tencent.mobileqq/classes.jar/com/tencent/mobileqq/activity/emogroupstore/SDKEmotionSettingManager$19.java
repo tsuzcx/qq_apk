@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import ahsh;
-import ahta;
+import ahww;
+import ahxp;
 
 public class SDKEmotionSettingManager$19
   implements Runnable
 {
-  public SDKEmotionSettingManager$19(ahsh paramahsh, String paramString, int paramInt) {}
+  public SDKEmotionSettingManager$19(ahww paramahww, String paramString, int paramInt) {}
   
   public void run()
   {
-    ahsh.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    ahww.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

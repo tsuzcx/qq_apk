@@ -45,7 +45,7 @@ public class sau
       paramView = new HashMap();
       paramView.put("isSharpP", String.valueOf(bool));
       paramView.put("url", paramThrowable.jdField_a_of_type_JavaLangString);
-      azmz.a(BaseApplication.getContext()).a(null, "NativeWebImageUI", false, 0L, 0L, paramView, "", true);
+      azri.a(BaseApplication.getContext()).a(null, "NativeWebImageUI", false, 0L, 0L, paramView, "", true);
       return;
     }
   }
@@ -76,7 +76,7 @@ public class sau
       paramView = new HashMap();
       paramView.put("isSharpP", String.valueOf(bool));
       paramView.put("url", localImageData.jdField_a_of_type_JavaLangString);
-      azmz.a(BaseApplication.getContext()).a(null, "NativeWebImageUI", true, 0L, 0L, paramView, "", true);
+      azri.a(BaseApplication.getContext()).a(null, "NativeWebImageUI", true, 0L, 0L, paramView, "", true);
       return;
     }
   }

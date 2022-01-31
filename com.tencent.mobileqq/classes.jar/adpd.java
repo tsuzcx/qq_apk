@@ -1,15 +1,18 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class adpd
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public adpd(RecommendFriendActivity paramRecommendFriendActivity) {}
+  public adpd(PublicAccountListActivity paramPublicAccountListActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.finish();
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

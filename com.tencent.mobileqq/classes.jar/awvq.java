@@ -1,76 +1,27 @@
-import android.content.Context;
-import android.provider.ContactsContract.CommonDataKinds.Phone;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profile.view.ProfileQVipDiyView;
 
 public class awvq
-  extends BaseAdapter
+  implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<PhoneContact> jdField_a_of_type_JavaUtilList;
+  public awvq(ProfileQVipDiyView paramProfileQVipDiyView) {}
   
-  public awvq(Context paramContext, List<PhoneContact> paramList)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  private View a(int paramInt, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560856, null);
-    awvs localawvs = new awvs(null);
-    localawvs.a = ((TextView)paramViewGroup.findViewById(2131373441));
-    localawvs.b = ((TextView)paramViewGroup.findViewById(2131373440));
-    paramViewGroup.setTag(localawvs);
-    return paramViewGroup;
-  }
-  
-  private void a(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (awvs)paramView.getTag();
-    PhoneContact localPhoneContact = (PhoneContact)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramInt = localPhoneContact.type;
-    paramView = null;
-    if (paramInt == 0) {
-      paramView = localPhoneContact.label;
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131374164: 
+      ProfileQVipDiyView.a(this.a, ProfileQVipDiyView.a(this.a));
+      bdmj.a(this.a.jdField_a_of_type_Awqt.a, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qvip", "0X8009E7B", 0, 0, "", "", "", "");
+      return;
     }
-    paramView = (String)ContactsContract.CommonDataKinds.Phone.getTypeLabel(this.jdField_a_of_type_AndroidContentContext.getResources(), paramInt, paramView);
-    paramViewGroup.a.setText(paramView);
-    paramViewGroup.b.setText(localPhoneContact.mobileNo);
-  }
-  
-  public int getCount()
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (i > 20) {
-      return 20;
-    }
-    return i;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = a(paramInt, paramViewGroup);
-    }
-    a(paramInt, localView, paramViewGroup);
-    return localView;
+    ProfileQVipDiyView.a(this.a, ProfileQVipDiyView.a(this.a));
+    bddf.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qvip", "0X8009E7C", 0, 0, "", "", "", "");
   }
 }
 

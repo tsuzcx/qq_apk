@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.servlet;
 
-import ayxn;
+import azbw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.service.qzone.QZoneTitleTabManager;
 import com.tencent.qphone.base.util.QLog;
@@ -9,22 +9,22 @@ import cooperation.qzone.LocalMultiProcConfig;
 public class QZoneManagerImp$2
   implements Runnable
 {
-  public QZoneManagerImp$2(ayxn paramayxn, QQAppInterface paramQQAppInterface) {}
+  public QZoneManagerImp$2(azbw paramazbw, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     boolean bool = true;
     int i = LocalMultiProcConfig.getInt4Uin("qzone_feed_gray_mask", 1, this.a.getLongAccountUin());
-    ayxn localayxn = this.this$0;
+    azbw localazbw = this.this$0;
     if ((i & 0x80) != 0) {}
     for (;;)
     {
-      localayxn.b(bool);
+      localazbw.b(bool);
       QZoneTitleTabManager.a(this.a.getCurrentAccountUin());
-      ayxn.a(this.this$0);
-      ayxn.a(this.this$0, ayxn.b(this.this$0));
+      azbw.a(this.this$0);
+      azbw.a(this.this$0, azbw.b(this.this$0));
       if (QLog.isColorLevel()) {
-        QLog.d("UndealCount.QZoneManagerImp.", 2, "QZoneManagerImp init notifyQQTab type:" + Long.toBinaryString(ayxn.a(this.this$0)));
+        QLog.d("UndealCount.QZoneManagerImp.", 2, "QZoneManagerImp init notifyQQTab type:" + Long.toBinaryString(azbw.a(this.this$0)));
       }
       return;
       bool = false;

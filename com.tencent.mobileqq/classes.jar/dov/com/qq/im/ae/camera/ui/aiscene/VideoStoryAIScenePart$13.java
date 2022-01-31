@@ -1,10 +1,10 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
 import android.os.Bundle;
-import bkle;
-import bkqa;
-import blen;
-import blnl;
+import bkpl;
+import bkuh;
+import bliu;
+import blrx;
 import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 import dov.com.qq.im.ae.camera.ui.panel.AEFilterProviderView;
 import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
@@ -12,17 +12,17 @@ import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
 public class VideoStoryAIScenePart$13
   implements Runnable
 {
-  public VideoStoryAIScenePart$13(bkqa parambkqa, QIMFilterCategoryItem paramQIMFilterCategoryItem, blnl paramblnl, Bundle paramBundle) {}
+  public VideoStoryAIScenePart$13(bkuh parambkuh, QIMFilterCategoryItem paramQIMFilterCategoryItem, blrx paramblrx, Bundle paramBundle) {}
   
   public void run()
   {
-    if ((bkqa.a(this.this$0) != null) && (!bkqa.a(this.this$0).b())) {}
-    while ((bkqa.c(this.this$0) == null) || (bkqa.a(this.this$0).b() != 2)) {
+    if ((bkuh.a(this.this$0) != null) && (!bkuh.a(this.this$0).b())) {}
+    while ((bkuh.c(this.this$0) == null) || (bkuh.a(this.this$0).b() != 2)) {
       return;
     }
-    bkqa.b(this.this$0, true);
-    blen.a().d(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.a);
-    this.jdField_a_of_type_Blnl.a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem, bkqa.d(this.this$0), this.jdField_a_of_type_AndroidOsBundle);
+    bkuh.b(this.this$0, true);
+    bliu.a().d(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.a);
+    this.jdField_a_of_type_Blrx.a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem, bkuh.d(this.this$0), this.jdField_a_of_type_AndroidOsBundle);
     AEFilterProviderView.a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.a);
   }
 }

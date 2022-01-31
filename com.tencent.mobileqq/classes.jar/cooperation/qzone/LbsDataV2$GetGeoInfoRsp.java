@@ -4,12 +4,12 @@ import LBS_V2_PROTOCOL.GetGeoInfoRsp_V2;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import biyu;
+import bjdb;
 
 public class LbsDataV2$GetGeoInfoRsp
   implements Parcelable
 {
-  public static final Parcelable.Creator<GetGeoInfoRsp> CREATOR = new biyu();
+  public static final Parcelable.Creator<GetGeoInfoRsp> CREATOR = new bjdb();
   public LbsDataV2.GeoInfo stGeoInfo;
   public LbsDataV2.GpsInfo stGps;
   

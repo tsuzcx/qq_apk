@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.customviews;
 
-import afcu;
+import afhj;
 import android.graphics.drawable.Drawable;
 
 public class FilePicMesProgressTextView
@@ -29,8 +29,8 @@ public class FilePicMesProgressTextView
       if (localDrawable != null)
       {
         localDrawable.setLevel((100 - paramInt) * 100);
-        if (((localDrawable instanceof afcu)) && (!this.jdField_a_of_type_Boolean)) {
-          ((afcu)localDrawable).a(this.jdField_a_of_type_Int, this.b);
+        if (((localDrawable instanceof afhj)) && (!this.jdField_a_of_type_Boolean)) {
+          ((afhj)localDrawable).a(this.jdField_a_of_type_Int, this.b);
         }
       }
       return;

@@ -1,25 +1,43 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class avgc
-  implements asar
+class avgc
+  implements avgk
 {
-  public avgc(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  avgc(avfx paramavfx) {}
   
-  public void a()
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    bhoh localbhoh = bhoh.b;
-    if ((localbhoh != null) && (localbhoh.a()))
-    {
-      if (!localbhoh.a(1)) {
-        localbhoh.b(1);
-      }
-      if ((!localbhoh.a(8)) && (localbhoh.a(5))) {
-        localbhoh.b(8);
-      }
-      if ((!localbhoh.a(9)) && (localbhoh.a(6))) {
-        localbhoh.b(9);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.w("VideoPlayerView", 2, "OnDownloadListener error ! vid = " + paramString1 + "  url = " + paramString2 + "  errorCode=" + paramInt);
     }
+    if (this.a.jdField_a_of_type_Aveq != null) {
+      this.a.jdField_a_of_type_Aveq.a(paramString1, 199, paramInt, "use sdk download error");
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong)
+  {
+    this.a.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("VideoPlayerView", 2, "OnDownloadListener onProgress   ! vid = " + paramString1 + "  url = " + paramString2 + "  offset=" + paramLong2);
+    }
+    this.a.jdField_a_of_type_Long = paramLong1;
+    if (paramLong2 > this.a.b) {
+      this.a.b = paramLong2;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, File paramFile)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoPlayerView", 2, "OnDownloadListener onSuccess ! vid = " + paramString1 + "  url = " + paramString2);
+    }
+    avfx.a(paramFile);
   }
 }
 

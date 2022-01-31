@@ -1,43 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
-
-public final class bedp
-  implements WtTicketPromise
+public class bedp
 {
-  public bedp(String paramString, long paramLong) {}
+  public String a;
+  public boolean a;
+  public boolean b = true;
+  public boolean c = true;
+  public boolean d = false;
+  public boolean e = true;
   
-  public void Done(Ticket paramTicket)
+  public bedp(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, String paramString)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("pt4_token response received for ").append(this.jdField_a_of_type_JavaLangString).append(", cost=").append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-      if (paramTicket == null) {
-        break label64;
-      }
-    }
-    label64:
-    for (paramTicket = "";; paramTicket = ". But result was null!")
-    {
-      QLog.d("SwiftBrowserCookieMonster", 2, paramTicket);
-      return;
-    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+    this.c = paramBoolean3;
+    this.d = paramBoolean4;
+    this.e = paramBoolean5;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public static bedp a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("SwiftBrowserCookieMonster", 2, "Get pt4_token failed for " + this.jdField_a_of_type_JavaLangString + " because " + paramErrMsg + ", cost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
+    return new bedp(true, false, true, true, true, null);
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  public static bedp a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("SwiftBrowserCookieMonster", 2, "Get pt4_token timeout for " + this.jdField_a_of_type_JavaLangString + " because " + paramErrMsg + ", cost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
+    return new bedp(false, true, true, false, true, paramString);
   }
 }
 

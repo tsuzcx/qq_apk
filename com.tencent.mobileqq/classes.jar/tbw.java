@@ -1,7 +1,7 @@
 import org.json.JSONObject;
 
 class tbw
-  implements absf
+  implements abwu
 {
   tbw(tbv paramtbv) {}
   

@@ -1,15 +1,17 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
+import com.tencent.biz.subscribe.event.RecommendFeedbackEvent;
 
-public class ycq
+class ycq
+  implements yls
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public LinearLayout b;
-  public TextView b;
-  public TextView c;
+  ycq(ycp paramycp) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      yiw.a().a(new RecommendFeedbackEvent(RecommendBannerItemView.a(this.a.a)));
+    }
+  }
 }
 
 

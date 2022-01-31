@@ -1,30 +1,66 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import android.view.View;
+import android.view.ViewStub;
+import java.util.LinkedList;
+import java.util.Queue;
 
-public class bktk
-  implements Animator.AnimatorListener
+public abstract class bktk
 {
-  public bktk(AEMaterialPanel paramAEMaterialPanel, Runnable paramRunnable) {}
+  private final ViewStub jdField_a_of_type_AndroidViewViewStub;
+  private Queue<Runnable> jdField_a_of_type_JavaUtilQueue;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public bktk(ViewStub paramViewStub)
   {
-    AEMaterialPanel.b(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, false);
-    if (AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel) != null) {
-      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).c();
-    }
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
+    this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  }
+  
+  private void b()
+  {
+    for (;;)
+    {
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
+      if (localRunnable != null) {
+        try
+        {
+          localRunnable.run();
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+          throw new RuntimeException("doPendingActions encounter an error", localException);
+        }
+      }
     }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  protected final void a()
   {
-    AEMaterialPanel.b(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, true);
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    View localView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
+    this.jdField_a_of_type_Boolean = true;
+    a(localView);
+    b();
+  }
+  
+  protected abstract void a(View paramView);
+  
+  protected void a(Runnable paramRunnable)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      paramRunnable.run();
+    }
+    while (paramRunnable == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilQueue.add(paramRunnable);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

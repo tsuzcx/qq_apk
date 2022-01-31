@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class bbfa
-  implements DialogInterface.OnClickListener
 {
-  public bbfa(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(JSONObject paramJSONObject)
   {
-    this.a.finish();
+    this.a = paramJSONObject.optString("left");
+    this.b = paramJSONObject.optString("text");
+    this.c = paramJSONObject.optString("right");
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
   }
 }
 

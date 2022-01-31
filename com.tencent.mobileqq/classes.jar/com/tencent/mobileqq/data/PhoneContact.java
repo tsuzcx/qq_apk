@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import ahab;
-import awbv;
-import awdg;
-import awdj;
+import aheq;
+import awge;
+import awhp;
+import awhs;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 
 public class PhoneContact
-  extends awbv
+  extends awge
   implements Serializable, Cloneable
 {
   public int ability;
@@ -34,7 +34,7 @@ public class PhoneContact
   public String md5;
   @Deprecated
   public String mobileCode;
-  @awdj
+  @awhs
   public String mobileNo;
   public String name;
   @Deprecated
@@ -45,12 +45,12 @@ public class PhoneContact
   @Deprecated
   public long originBinder;
   public String pinyinAll;
-  @awdg
+  @awhp
   public String pinyinFirst;
   public String pinyinInitial;
   public String remark;
   public byte[] richBuffer;
-  @awdg
+  @awhp
   private RichStatus richStatus;
   public long richTime;
   public int samFriend;
@@ -92,7 +92,7 @@ public class PhoneContact
         i = this.netTypeIconId;
       }
     }
-    ahab localahab;
+    aheq localaheq;
     do
     {
       return i;
@@ -101,7 +101,7 @@ public class PhoneContact
       if (((this.detalStatusFlag == -55) && (this.iTermType == 68361) && ((this.abilityBits & 1L) == 0L)) || (this.iTermType == 68104) || (this.iTermType == 65805)) {
         return 0;
       }
-      localahab = ahab.a();
+      localaheq = aheq.a();
       if (this.eNetworkType != 0) {
         break;
       }
@@ -109,8 +109,8 @@ public class PhoneContact
         return 0;
       }
       i = j;
-    } while (1 != localahab.a(this.iTermType, 1));
-    if (1 != localahab.a(this.iTermType, 1)) {
+    } while (1 != localaheq.a(this.iTermType, 1));
+    if (1 != localaheq.a(this.iTermType, 1)) {
       i = j;
     }
     switch (this.netTypeIconId)

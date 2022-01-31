@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity;
 
-import aecp;
+import aehe;
 import android.os.Handler;
 import android.os.Message;
-import bcru;
-import bcrv;
+import bcwd;
+import bcwe;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class TroopRequestActivity$11$1
   implements Runnable
 {
-  public TroopRequestActivity$11$1(aecp paramaecp, TroopInfo paramTroopInfo) {}
+  public TroopRequestActivity$11$1(aehe paramaehe, TroopInfo paramTroopInfo) {}
   
   public void run()
   {
-    bcru localbcru = bcrv.a(BaseApplication.getContext()).a(this.jdField_a_of_type_Aecp.a, Long.toString(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwGroupClassExt));
-    if (localbcru != null)
+    bcwd localbcwd = bcwe.a(BaseApplication.getContext()).a(this.jdField_a_of_type_Aehe.a, Long.toString(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwGroupClassExt));
+    if (localbcwd != null)
     {
       Message localMessage = new Message();
       localMessage.what = 2;
-      localMessage.obj = localbcru.a();
-      this.jdField_a_of_type_Aecp.a.a.sendMessage(localMessage);
+      localMessage.obj = localbcwd.a();
+      this.jdField_a_of_type_Aehe.a.a.sendMessage(localMessage);
     }
   }
 }

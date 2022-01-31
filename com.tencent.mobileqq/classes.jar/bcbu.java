@@ -1,24 +1,15 @@
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
-class bcbu
-  implements alzv
+public class bcbu
+  implements View.OnClickListener
 {
-  bcbu(bcbt parambcbt, String paramString1, String paramString2, bcbw parambcbw) {}
+  public bcbu(ReciteFragment paramReciteFragment) {}
   
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public void onClick(View paramView)
   {
-    List localList = null;
-    if (paramTroopMemberInfo != null) {
-      localList = this.jdField_a_of_type_Bcbt.a(paramTroopMemberInfo.honorList);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopHonor.manager", 2, String.format("getTroopHonorList, troopUin: %s, memberUin: %s, honorList: %s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b, localList }));
-    }
-    if (this.jdField_a_of_type_Bcbw != null) {
-      this.jdField_a_of_type_Bcbw.a(localList);
-    }
+    this.a.m();
   }
 }
 

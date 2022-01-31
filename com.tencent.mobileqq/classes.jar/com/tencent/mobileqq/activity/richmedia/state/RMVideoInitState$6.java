@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ajoy;
-import alpo;
+import ajtn;
+import alud;
 
 public class RMVideoInitState$6
   implements Runnable
 {
-  public RMVideoInitState$6(ajoy paramajoy) {}
+  public RMVideoInitState$6(ajtn paramajtn) {}
   
   public void run()
   {
-    RMVideoStateMgr.a().b(0, alpo.a(2131713835), false);
+    RMVideoStateMgr.a().b(0, alud.a(2131713847), false);
   }
 }
 

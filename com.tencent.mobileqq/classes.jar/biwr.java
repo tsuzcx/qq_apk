@@ -1,44 +1,67 @@
 import android.view.View;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import cooperation.qqreader.shadow.ReaderShadowImpl.1;
+import java.util.List;
 
-public class biwr
-  implements EnterCallback
+class biwr
+  implements bhuk
 {
-  public biwr(ReaderShadowImpl.1 param1, long paramLong) {}
+  biwr(biwp parambiwp) {}
   
-  public void onCloseLoadingView()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
-      this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onCloseLoadingView();
+    if ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_Biws == null)) {
+      return;
     }
-    bixe.c("ReaderShadowImpl", "[onCloseLoadingView] formId = " + this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long);
-  }
-  
-  public void onEnterComplete()
-  {
-    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
-      this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onEnterComplete();
-    }
-    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long == 1002L) {
-      bixh.a(this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_AndroidContentContext, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "0");
+    this.a.jdField_a_of_type_Boolean = true;
+    if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).intValue();
+      if (paramInt == 16) {
+        this.a.jdField_a_of_type_Biws.h();
+      }
     }
     for (;;)
     {
-      bixe.c("ReaderShadowImpl", "[onEnterComplete] formId = " + this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long);
+      this.a.jdField_a_of_type_Bhuf.dismiss();
       return;
-      if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long == 1003L) {
-        bixh.a(this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_AndroidContentContext, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "1");
+      if (paramInt == 32)
+      {
+        this.a.jdField_a_of_type_Biws.a();
+      }
+      else if (paramInt == 1)
+      {
+        this.a.jdField_a_of_type_Biws.f();
+        biwp.a(this.a);
+      }
+      else if (paramInt == 2)
+      {
+        this.a.jdField_a_of_type_Biws.i();
+      }
+      else if (paramInt == 4)
+      {
+        this.a.jdField_a_of_type_Biws.j();
+      }
+      else if (paramInt == 8)
+      {
+        this.a.jdField_a_of_type_Biws.g();
+      }
+      else if (paramInt == 64)
+      {
+        this.a.jdField_a_of_type_Biws.b();
+      }
+      else if (paramInt == 128)
+      {
+        this.a.jdField_a_of_type_Biws.c();
+      }
+      else if (paramInt == 256)
+      {
+        this.a.jdField_a_of_type_Biws.d();
+        continue;
+        paramInt -= this.a.jdField_a_of_type_JavaUtilList.size();
+        if ((paramInt >= 0) && (paramInt < this.a.b.size())) {
+          this.a.jdField_a_of_type_Biws.a((String)this.a.b.get(paramInt));
+        }
       }
     }
-  }
-  
-  public void onShowLoadingView(View paramView)
-  {
-    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
-      this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onShowLoadingView(paramView);
-    }
-    bixe.c("ReaderShadowImpl", "[onShowLoadingView] formId = " + this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long);
   }
 }
 

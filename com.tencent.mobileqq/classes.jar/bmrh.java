@@ -1,136 +1,19 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Cap;
-import android.graphics.Paint.Join;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.view.MotionEvent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.ArrayList;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
 public class bmrh
-  extends bmqi
+  implements bmrl
 {
-  public static final int a;
-  public float a;
-  public Paint a;
-  bmqe a;
-  public bmrg a;
-  public float b;
-  public int b;
-  public Paint b;
-  public int c = aekt.a(6.0F, BaseApplicationImpl.getContext().getResources());
+  public static final String[] a = { "AtLayer0", "AtLayer1", "AtLayer2", "AtLayer3", "AtLayer4", "AtLayer5" };
   
-  static
+  public void a(List<bmri> paramList, DoodleView paramDoodleView)
   {
-    jdField_a_of_type_Int = bnao.a[1];
-  }
-  
-  public bmrh(bmqe parambmqe)
-  {
-    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bmqe = parambmqe;
-  }
-  
-  private void a(Paint paramPaint, bmrg parambmrg)
-  {
-    paramPaint.setXfermode(null);
-    paramPaint.setColor(parambmrg.jdField_b_of_type_Int);
-    paramPaint.setStrokeWidth(parambmrg.c);
-    paramPaint.setShader(null);
-  }
-  
-  public Paint a()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsPaint;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(Canvas paramCanvas, bmqf parambmqf, Paint paramPaint)
-  {
-    if ((parambmqf instanceof bmrg))
+    int i = 0;
+    while (i < a.length)
     {
-      parambmqf = (bmrg)parambmqf;
-      if (parambmqf.jdField_a_of_type_AndroidGraphicsPath != null)
-      {
-        a(paramPaint, parambmqf);
-        paramCanvas.drawPath(parambmqf.jdField_a_of_type_AndroidGraphicsPath, paramPaint);
-      }
+      paramList.add(new bmqa(paramDoodleView, a[i]));
+      i += 1;
     }
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-      this.jdField_a_of_type_Bmrg = new bmrg(new Path(), 101, this.jdField_a_of_type_AndroidGraphicsPaint.getColor(), this.c);
-      if (this.jdField_a_of_type_Bmqe != null) {
-        this.jdField_a_of_type_Bmqe.a(this.jdField_a_of_type_Bmrg);
-      }
-      DoodleLayout.a("use_graffiti");
-      this.jdField_a_of_type_Bmrg.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_Bmrg.jdField_a_of_type_AndroidGraphicsPath.moveTo(f1, f2);
-      this.jdField_a_of_type_Bmrg.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1 + 1.0F, f2 + 1.0F);
-      this.jdField_a_of_type_Bmrg.jdField_a_of_type_JavaUtilArrayList.add(new bmrf(bmrf.jdField_a_of_type_Int, f1, f2));
-      this.jdField_a_of_type_Bmrg.jdField_a_of_type_JavaUtilArrayList.add(new bmrf(bmrf.jdField_b_of_type_Int, f1 + 1.0F, f2 + 1.0F));
-      continue;
-      float f3 = (this.jdField_a_of_type_Float + f1) / 2.0F;
-      float f4 = (this.jdField_b_of_type_Float + f2) / 2.0F;
-      if (this.jdField_a_of_type_Bmrg != null)
-      {
-        this.jdField_a_of_type_Bmrg.jdField_a_of_type_AndroidGraphicsPath.quadTo(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f3, f4);
-        this.jdField_a_of_type_Bmrg.jdField_a_of_type_JavaUtilArrayList.add(new bmrf(bmrf.c, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f3, f4));
-      }
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-    }
-  }
-  
-  public Paint b()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPaint;
-  }
-  
-  public void b()
-  {
-    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bmrg = null;
   }
 }
 

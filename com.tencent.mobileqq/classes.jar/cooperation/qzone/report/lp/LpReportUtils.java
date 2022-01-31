@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import alpo;
+import alud;
 import android.os.Build;
 import android.os.SystemClock;
 import android.text.TextUtils;
@@ -17,10 +17,10 @@ import mqq.app.AppRuntime;
 
 public class LpReportUtils
 {
-  public static final String ALL_REPORT = alpo.a(2131706780);
-  public static final String CLICK_MESSAGE = alpo.a(2131706782);
-  public static final String NOT_HIT = alpo.a(2131706779);
-  public static final String SAMPLE_REPORT = alpo.a(2131706781);
+  public static final String ALL_REPORT = alud.a(2131706792);
+  public static final String CLICK_MESSAGE = alud.a(2131706794);
+  public static final String NOT_HIT = alud.a(2131706791);
+  public static final String SAMPLE_REPORT = alud.a(2131706793);
   private static final String TAG = "LpReport.LpReportUtils";
   private static boolean isSampled;
   private static long sampleValidEndTime;

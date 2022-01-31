@@ -1,29 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment.7;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bngn
-  implements DialogInterface.OnClickListener
+class bngn
+  implements View.OnClickListener
 {
-  public bngn(CaptureQmcfSoDownloadFragment.7 param7) {}
+  bngn(bngl parambngl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = this.a.this$0.getActivity();
-    if (paramInt == 1)
+    wxj.a("video_edit_new", "clk_cutdown", 0, 0, new String[0]);
+    if (!bngl.a(this.a).q)
     {
-      CaptureQmcfSoDownloadFragment.a(this.a.this$0).setCameraPermissionResult(false);
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", paramDialogInterface.getPackageName(), null));
-      paramDialogInterface.startActivity(localIntent);
+      bngl.b(this.a);
       return;
     }
-    paramDialogInterface.finish();
+    bngl.a(this.a).q = false;
+    bngl.b(this.a).setSelected(false);
+    bngl.a(this.a).d(3003);
   }
 }
 

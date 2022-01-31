@@ -1,21 +1,22 @@
-import android.app.Dialog;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
 class aipg
   implements DialogInterface.OnClickListener
 {
-  aipg(aipf paramaipf) {}
+  aipg(aipa paramaipa) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", ((NewPhotoPreviewActivity)this.a.a.mActivity).getCurrentSelectedPostion());
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, paramDialogInterface);
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
-    aipe.a(this.a.a).dismiss();
+    if (paramInt == 1) {
+      aipa.a(this.a, aipa.a(this.a));
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    this.a.b();
+    aipa.a(this.a).moveTaskToBack(true);
   }
 }
 

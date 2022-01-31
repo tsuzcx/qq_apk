@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.task;
 
-import bhhs;
+import bhlz;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.Queue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -8,14 +8,14 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class TaskThreadPool$2
   implements Runnable
 {
-  public TaskThreadPool$2(bhhs parambhhs) {}
+  public TaskThreadPool$2(bhlz parambhlz) {}
   
   public void run()
   {
     try
     {
-      if (bhhs.a(this.this$0)) {
-        bhhs.a(this.this$0).execute((Runnable)bhhs.a(this.this$0).poll());
+      if (bhlz.a(this.this$0)) {
+        bhlz.a(this.this$0).execute((Runnable)bhlz.a(this.this$0).poll());
       }
       return;
     }

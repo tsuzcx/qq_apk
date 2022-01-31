@@ -1,33 +1,19 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.3.1;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class ajso
-  implements INetInfoHandler
+  implements DialogInterface.OnClickListener
 {
-  ajso(ajsn paramajsn) {}
+  public ajso(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = Thread.currentThread().getId();
-    if (ajsn.a(this.a) == l) {
-      ajsn.a(this.a);
-    }
-    while (ajsn.a(this.a) == null) {
-      return;
-    }
-    ajsn.a(this.a).post(new LbsFilterStatusManager.3.1(this));
+    LpReportInfo_pf00064.allReport(680, 1, 2);
+    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
+    this.a.a();
   }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
 }
 
 

@@ -1,43 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
 public class addm
-  extends WtloginObserver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public addm(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
+  public addm(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
   
-  public void OnCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel())
+    int j = 1;
+    paramCompoundButton = this.a;
+    String str = this.a.app.getCurrentAccountUin();
+    if (paramBoolean)
     {
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + paramString2);
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
-      if (paramErrMsg != null) {
-        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
+      i = 2;
+      GesturePWDUtils.setGesturePWDState(paramCompoundButton, str, i);
+      this.a.a(paramBoolean);
+      paramCompoundButton = this.a.app;
+      if (!paramBoolean) {
+        break label93;
       }
     }
-    this.a.c();
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if (paramInt3 == 0)
+    label93:
+    for (int i = j;; i = 0)
     {
+      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
       this.a.a();
       return;
+      i = 1;
+      break;
     }
-    paramString1 = null;
-    if (paramErrMsg != null) {
-      paramString1 = paramErrMsg.getMessage();
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      this.a.a(null, paramString1);
-      return;
-    }
-    this.a.b();
   }
 }
 

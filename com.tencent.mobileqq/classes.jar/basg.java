@@ -1,17 +1,45 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.media.ThumbnailUtils;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 class basg
-  implements almm
+  implements bazg
 {
   basg(basf parambasf) {}
   
-  public void a(boolean paramBoolean)
+  public Bitmap getBitmap(URL paramURL)
   {
-    if (paramBoolean)
+    LocalMediaInfo localLocalMediaInfo = this.a.a(paramURL);
+    if (localLocalMediaInfo == null) {}
+    for (;;)
     {
-      String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HttpTimeoutParam.name());
-      this.a.a(str);
+      return null;
+      paramURL = new BitmapFactory.Options();
+      paramURL.inDensity = 160;
+      paramURL.inTargetDensity = 160;
+      paramURL.inScreenDensity = 160;
+      try
+      {
+        paramURL = BitmapFactory.decodeFile(localLocalMediaInfo.path, paramURL);
+        if (paramURL == null) {
+          continue;
+        }
+        return ThumbnailUtils.extractThumbnail(paramURL, localLocalMediaInfo.thumbWidth, localLocalMediaInfo.thumbHeight, 2);
+      }
+      catch (OutOfMemoryError paramURL)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("VIdeoThumbDownloader", 2, "DeviceImgBitmapDecoder getBitmap", paramURL);
+          }
+          paramURL = null;
+        }
+      }
     }
   }
 }

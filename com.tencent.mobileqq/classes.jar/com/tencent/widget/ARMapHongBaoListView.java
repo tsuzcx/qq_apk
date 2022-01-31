@@ -9,26 +9,26 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
-import annv;
-import annx;
-import bhpf;
-import bhpg;
-import bhph;
-import bhpi;
+import anse;
+import ansg;
+import bhtm;
+import bhtn;
+import bhto;
+import bhtp;
 import com.tencent.qphone.base.util.QLog;
-import wsv;
+import wxe;
 
 public class ARMapHongBaoListView
   extends HongBaoListView
 {
-  public annv a;
-  public annx a;
-  private bhpg jdField_a_of_type_Bhpg;
-  private bhph jdField_a_of_type_Bhph;
-  private bhpi jdField_a_of_type_Bhpi;
+  public anse a;
+  public ansg a;
+  private bhtn jdField_a_of_type_Bhtn;
+  private bhto jdField_a_of_type_Bhto;
+  private bhtp jdField_a_of_type_Bhtp;
   public boolean a;
   private Handler b;
-  public volatile annv b;
+  public volatile anse b;
   public boolean b;
   boolean c = true;
   boolean d = true;
@@ -40,29 +40,29 @@ public class ARMapHongBaoListView
   {
     super(paramContext);
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new bhpf(this));
+    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new bhtm(this));
   }
   
   public ARMapHongBaoListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new bhpf(this));
+    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new bhtm(this));
   }
   
   private void b(int paramInt)
   {
-    if ((this.jdField_a_of_type_Annx != null) && (!this.jdField_a_of_type_Annx.b()))
+    if ((this.jdField_a_of_type_Ansg != null) && (!this.jdField_a_of_type_Ansg.b()))
     {
-      this.jdField_a_of_type_Annx.a(0);
-      this.jdField_a_of_type_Annx.b(paramInt);
+      this.jdField_a_of_type_Ansg.a(0);
+      this.jdField_a_of_type_Ansg.b(paramInt);
     }
   }
   
-  public void a(annv paramannv)
+  public void a(anse paramanse)
   {
     this.jdField_e_of_type_Boolean = true;
-    this.jdField_b_of_type_Annv = paramannv;
+    this.jdField_b_of_type_Anse = paramanse;
     if (QLog.isColorLevel()) {
       QLog.i("ARMapHongBaoListView", 2, "showBreathLight:");
     }
@@ -78,7 +78,7 @@ public class ARMapHongBaoListView
   public void c()
   {
     this.jdField_e_of_type_Boolean = false;
-    this.jdField_b_of_type_Annv = null;
+    this.jdField_b_of_type_Anse = null;
     if (QLog.isColorLevel()) {
       QLog.i("ARMapHongBaoListView", 2, "dismissBreathLight:");
     }
@@ -86,8 +86,8 @@ public class ARMapHongBaoListView
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bhph != null) {
-      this.jdField_a_of_type_Bhph.onFlingScrollHeader(this.jdField_e_of_type_Int, getScrollY());
+    if (this.jdField_a_of_type_Bhto != null) {
+      this.jdField_a_of_type_Bhto.onFlingScrollHeader(this.jdField_e_of_type_Int, getScrollY());
     }
     super.dispatchDraw(paramCanvas);
   }
@@ -104,11 +104,11 @@ public class ARMapHongBaoListView
       if (j < 0) {
         i = 0;
       }
-      if (this.jdField_a_of_type_Annv == null) {
+      if (this.jdField_a_of_type_Anse == null) {
         break label181;
       }
-      this.jdField_a_of_type_Annv.c = (-i);
-      if (!this.jdField_a_of_type_Annv.a(paramCanvas)) {
+      this.jdField_a_of_type_Anse.c = (-i);
+      if (!this.jdField_a_of_type_Anse.a(paramCanvas)) {
         break label181;
       }
     }
@@ -118,7 +118,7 @@ public class ARMapHongBaoListView
       if (i != 0) {
         invalidate();
       }
-      if ((this.jdField_e_of_type_Boolean) && (this.jdField_b_of_type_Annv != null) && (this.d))
+      if ((this.jdField_e_of_type_Boolean) && (this.jdField_b_of_type_Anse != null) && (this.d))
       {
         j = getListViewScrollY();
         i = j;
@@ -129,11 +129,11 @@ public class ARMapHongBaoListView
         if (this.jdField_e_of_type_Boolean)
         {
           j = k;
-          if (this.jdField_b_of_type_Annv != null)
+          if (this.jdField_b_of_type_Anse != null)
           {
-            this.jdField_b_of_type_Annv.c = (-i);
+            this.jdField_b_of_type_Anse.c = (-i);
             j = k;
-            if (this.jdField_b_of_type_Annv.a(paramCanvas)) {
+            if (this.jdField_b_of_type_Anse.a(paramCanvas)) {
               j = 1;
             }
           }
@@ -151,19 +151,19 @@ public class ARMapHongBaoListView
     if (QLog.isColorLevel()) {
       QLog.d("ARMapHongBaoListView", 2, "story getSpringbackOffset, scrollY:" + getScrollY());
     }
-    if (this.jdField_a_of_type_Bhph == null) {
+    if (this.jdField_a_of_type_Bhto == null) {
       return super.getSpringbackOffset();
     }
     int i = getScrollY();
     if ((this.mEnableStory) && (this.mOverscrollHeaderViewContainer != null) && (i <= 0))
     {
-      if (this.jdField_a_of_type_Bhph.getMode() == 2)
+      if (this.jdField_a_of_type_Bhto.getMode() == 2)
       {
-        wsv.b("ARMapHongBaoListView", "story node start refresh getSpringbackOffset.");
+        wxe.b("ARMapHongBaoListView", "story node start refresh getSpringbackOffset.");
         this.mOverscrollHeadState = 2;
         super.getSpringbackOffset();
       }
-      return this.jdField_a_of_type_Bhph.getSpringbackOffset(this);
+      return this.jdField_a_of_type_Bhto.getSpringbackOffset(this);
     }
     return super.getSpringbackOffset();
   }
@@ -173,7 +173,7 @@ public class ARMapHongBaoListView
     if (((!this.f) || (!this.g)) && (!this.i)) {
       return super.onInterceptTouchEvent(paramMotionEvent);
     }
-    if (((this.jdField_a_of_type_Annx != null) && (!this.jdField_a_of_type_Annx.jdField_a_of_type_Boolean)) || (!this.n)) {
+    if (((this.jdField_a_of_type_Ansg != null) && (!this.jdField_a_of_type_Ansg.jdField_a_of_type_Boolean)) || (!this.n)) {
       return true;
     }
     switch (paramMotionEvent.getAction() & 0xFF)
@@ -181,11 +181,11 @@ public class ARMapHongBaoListView
     default: 
       return super.onInterceptTouchEvent(paramMotionEvent);
     }
-    if (this.jdField_a_of_type_Bhpg != null) {
-      this.jdField_a_of_type_Bhpg.a(this);
+    if (this.jdField_a_of_type_Bhtn != null) {
+      this.jdField_a_of_type_Bhtn.a(this);
     }
     int i;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Annv != null))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Anse != null))
     {
       i = getListViewScrollY();
       int j = getScrollY();
@@ -198,7 +198,7 @@ public class ARMapHongBaoListView
     for (;;)
     {
       float f = paramMotionEvent.getY();
-      if (!this.jdField_a_of_type_Annv.a(i).contains(paramMotionEvent.getX(), f)) {
+      if (!this.jdField_a_of_type_Anse.a(i).contains(paramMotionEvent.getX(), f)) {
         break;
       }
       this.j = true;
@@ -214,10 +214,10 @@ public class ARMapHongBaoListView
   {
     super.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
     if (!this.g) {}
-    while (this.jdField_a_of_type_Bhpg == null) {
+    while (this.jdField_a_of_type_Bhtn == null) {
       return;
     }
-    this.jdField_a_of_type_Bhpg.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Bhtn.a(paramInt1, paramInt2);
   }
   
   public boolean onRequestSendAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
@@ -241,13 +241,13 @@ public class ARMapHongBaoListView
     boolean bool3 = true;
     boolean bool2 = false;
     boolean bool1;
-    if ((this.mEnableStory) && (this.jdField_a_of_type_Bhph != null))
+    if ((this.mEnableStory) && (this.jdField_a_of_type_Bhto != null))
     {
-      bhph localbhph = this.jdField_a_of_type_Bhph;
+      bhto localbhto = this.jdField_a_of_type_Bhto;
       if ((this.mTouchMode == 3) || (this.mTouchMode == 5))
       {
         bool1 = true;
-        localbhph.onTouchMoving(this, bool1, paramMotionEvent);
+        localbhto.onTouchMoving(this, bool1, paramMotionEvent);
       }
     }
     else
@@ -266,11 +266,11 @@ public class ARMapHongBaoListView
         return bool1;
         bool1 = false;
         break;
-        if (this.jdField_a_of_type_Annx == null) {
+        if (this.jdField_a_of_type_Ansg == null) {
           break label114;
         }
         bool1 = bool3;
-      } while (!this.jdField_a_of_type_Annx.jdField_a_of_type_Boolean);
+      } while (!this.jdField_a_of_type_Ansg.jdField_a_of_type_Boolean);
       bool1 = bool3;
     } while (!this.n);
     int i = paramMotionEvent.getAction();
@@ -283,9 +283,9 @@ public class ARMapHongBaoListView
       for (;;)
       {
         return bool3;
-        if (this.jdField_a_of_type_Bhpg != null)
+        if (this.jdField_a_of_type_Bhtn != null)
         {
-          paramMotionEvent = this.jdField_a_of_type_Bhpg;
+          paramMotionEvent = this.jdField_a_of_type_Bhtn;
           if (this.mTouchMode != 3)
           {
             bool1 = bool2;
@@ -299,7 +299,7 @@ public class ARMapHongBaoListView
         }
       }
     case 1: 
-      if ((this.j) && ((this.jdField_a_of_type_Bhpg != null) || (this.jdField_a_of_type_Bhpi != null)) && (this.jdField_a_of_type_Annv != null))
+      if ((this.j) && ((this.jdField_a_of_type_Bhtn != null) || (this.jdField_a_of_type_Bhtp != null)) && (this.jdField_a_of_type_Anse != null))
       {
         i = getListViewScrollY();
         int j = getScrollY();
@@ -314,17 +314,17 @@ public class ARMapHongBaoListView
     for (;;)
     {
       float f = paramMotionEvent.getY();
-      if ((this.jdField_a_of_type_Annv.a(i).contains(paramMotionEvent.getX(), f)) && (this.c))
+      if ((this.jdField_a_of_type_Anse.a(i).contains(paramMotionEvent.getX(), f)) && (this.c))
       {
-        if (this.jdField_a_of_type_Bhpg != null) {
-          this.jdField_a_of_type_Bhpg.a();
+        if (this.jdField_a_of_type_Bhtn != null) {
+          this.jdField_a_of_type_Bhtn.a();
         }
-        if (this.jdField_a_of_type_Bhpi != null) {
-          this.jdField_a_of_type_Bhpi.a(paramMotionEvent.getX(), f);
+        if (this.jdField_a_of_type_Bhtp != null) {
+          this.jdField_a_of_type_Bhtp.a(paramMotionEvent.getX(), f);
         }
       }
-      if (this.jdField_a_of_type_Bhpg != null) {
-        this.jdField_a_of_type_Bhpg.b(this);
+      if (this.jdField_a_of_type_Bhtn != null) {
+        this.jdField_a_of_type_Bhtn.b(this);
       }
       this.j = false;
       break;
@@ -333,9 +333,9 @@ public class ARMapHongBaoListView
     }
   }
   
-  public void setActiveListViewListener(bhpg parambhpg)
+  public void setActiveListViewListener(bhtn parambhtn)
   {
-    this.jdField_a_of_type_Bhpg = parambhpg;
+    this.jdField_a_of_type_Bhtn = parambhtn;
   }
   
   public void setEnableTouch(boolean paramBoolean)
@@ -346,17 +346,17 @@ public class ARMapHongBaoListView
     this.n = paramBoolean;
   }
   
-  public void setOnPendentClickListener(bhpi parambhpi)
+  public void setOnPendentClickListener(bhtp parambhtp)
   {
-    this.jdField_a_of_type_Bhpi = parambhpi;
+    this.jdField_a_of_type_Bhtp = parambhtp;
   }
   
-  public void setPendantHolder(annv paramannv)
+  public void setPendantHolder(anse paramanse)
   {
     boolean bool = true;
-    this.jdField_a_of_type_Annv = paramannv;
+    this.jdField_a_of_type_Anse = paramanse;
     this.i = true;
-    if (this.jdField_a_of_type_Annv != null) {}
+    if (this.jdField_a_of_type_Anse != null) {}
     for (;;)
     {
       this.jdField_a_of_type_Boolean = bool;
@@ -366,9 +366,9 @@ public class ARMapHongBaoListView
     }
   }
   
-  public void setQQStoryListViewListener(bhph parambhph)
+  public void setQQStoryListViewListener(bhto parambhto)
   {
-    this.jdField_a_of_type_Bhph = parambhph;
+    this.jdField_a_of_type_Bhto = parambhto;
   }
   
   public void setScrollState(int paramInt)
@@ -386,10 +386,10 @@ public class ARMapHongBaoListView
   
   public void springBackOverScrollHeaderView()
   {
-    if ((this.mEnableStory) && (this.jdField_a_of_type_Bhph != null))
+    if ((this.mEnableStory) && (this.jdField_a_of_type_Bhto != null))
     {
       this.mOverscrollHeadState = 0;
-      super.springBackOverScrollHeaderView(this.jdField_a_of_type_Bhph.onViewCompleteAfterRefresh(this));
+      super.springBackOverScrollHeaderView(this.jdField_a_of_type_Bhto.onViewCompleteAfterRefresh(this));
       return;
     }
     super.springBackOverScrollHeaderView();

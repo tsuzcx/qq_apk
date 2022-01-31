@@ -9,7 +9,7 @@ class omm
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQToast.a(this.jdField_a_of_type_Oml.jdField_a_of_type_Omg.a, 2, alpo.a(2131713422), 0).a();
+    QQToast.a(this.jdField_a_of_type_Oml.jdField_a_of_type_Omg.a, 2, alud.a(2131713434), 0).a();
     if (this.jdField_a_of_type_Oml.jdField_a_of_type_Olz != null) {
       this.jdField_a_of_type_Oml.jdField_a_of_type_Olz.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt);
     }

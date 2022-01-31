@@ -1,86 +1,62 @@
-import QC.HamletCheck;
-import QC.UniBusinessCheckItem;
-import QC.UniLoginCheckRsp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.step.ChatBackgroundAuth;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-
 public class amct
-  implements alkr
+  implements alpg
 {
-  private WeakReference<QQAppInterface> a;
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public amct(QQAppInterface paramQQAppInterface)
-  {
-    this.a = new WeakReference(paramQQAppInterface);
-  }
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  protected void c(boolean paramBoolean, Object paramObject) {}
+  
+  protected void d(boolean paramBoolean, Object paramObject) {}
+  
+  protected void e(boolean paramBoolean, Object paramObject) {}
+  
+  protected void f(boolean paramBoolean, Object paramObject) {}
+  
+  protected void g(boolean paramBoolean, Object paramObject) {}
+  
+  protected void h(boolean paramBoolean, Object paramObject) {}
+  
+  protected void i(boolean paramBoolean, Object paramObject) {}
+  
+  protected void j(boolean paramBoolean, Object paramObject) {}
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    if (localQQAppInterface == null) {}
-    for (;;)
+    switch (paramInt)
     {
+    case 4: 
+    default: 
       return;
-      if ((paramObject instanceof UniLoginCheckRsp))
-      {
-        bdsn.a(localQQAppInterface).a(((UniLoginCheckRsp)paramObject).stKeyWord);
-        paramObject = (UniLoginCheckRsp)paramObject;
-        if (paramObject.ret != 0) {
-          break;
-        }
-        ChatBackgroundManager localChatBackgroundManager = (ChatBackgroundManager)localQQAppInterface.getManager(63);
-        localChatBackgroundManager.a();
-        localChatBackgroundManager.b();
-        if (QLog.isColorLevel()) {
-          QLog.d("QQInitHandler", 2, "bg and effect id clear");
-        }
-        Iterator localIterator = paramObject.stHamletList.iterator();
-        while (localIterator.hasNext())
-        {
-          HamletCheck localHamletCheck = (HamletCheck)localIterator.next();
-          if ((localHamletCheck.itemlist != null) && (localHamletCheck.itemlist.size() > 0))
-          {
-            int i = -1;
-            paramInt = -1;
-            paramObject = localHamletCheck.itemlist.iterator();
-            Object localObject;
-            while (paramObject.hasNext())
-            {
-              localObject = (UniBusinessCheckItem)paramObject.next();
-              if (((UniBusinessCheckItem)localObject).appid == 8) {
-                i = ((UniBusinessCheckItem)localObject).itemid;
-              } else if (((UniBusinessCheckItem)localObject).appid == 35) {
-                paramInt = ((UniBusinessCheckItem)localObject).itemid;
-              }
-            }
-            if (i >= 0)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("QQInitHandler", 2, "bgId:" + i + " effectId:" + paramInt);
-              }
-              localObject = String.valueOf(localHamletCheck.uid);
-              paramObject = localObject;
-              if (localQQAppInterface.getAccount().equals(localObject))
-              {
-                paramObject = localObject;
-                if (localHamletCheck.locationtype == 1) {
-                  paramObject = null;
-                }
-              }
-              if ((!"99".equals(String.valueOf(i))) || (paramInt > 0)) {
-                localChatBackgroundManager.a(i, paramInt, paramObject, "chatbgAuth", ChatBackgroundAuth.a(localHamletCheck.locationtype));
-              }
-            }
-          }
-        }
-      }
+    case 7: 
+      b(paramBoolean, paramObject);
+      return;
+    case 5: 
+      c(paramBoolean, paramObject);
+      return;
+    case 6: 
+      a(paramBoolean, paramObject);
+      return;
+    case 3: 
+      d(paramBoolean, paramObject);
+      return;
+    case 8: 
+      e(paramBoolean, paramObject);
+      return;
+    case 9: 
+      f(paramBoolean, paramObject);
+      return;
+    case 10: 
+      g(paramBoolean, paramObject);
+      return;
+    case 11: 
+      h(paramBoolean, paramObject);
+      return;
+    case 12: 
+      i(paramBoolean, paramObject);
+      return;
     }
-    QLog.e("QQInitHandler", 1, "onResponse: ret:" + paramObject.ret + " errmsg:" + paramObject.errmsg);
+    j(paramBoolean, paramObject);
   }
 }
 

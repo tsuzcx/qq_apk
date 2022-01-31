@@ -1,96 +1,112 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtReq;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
-public abstract class bcqa
+public class bcqa
+  implements Manager
 {
-  int jdField_a_of_type_Int;
-  bcpx jdField_a_of_type_Bcpx;
-  protected ITransactionCallback a;
-  protected Transaction a;
-  public String a;
-  protected boolean a;
-  protected String b;
+  protected Handler a;
+  QQAppInterface a;
+  public Map<String, Integer> a;
   
-  public bcqa(bcpx parambcpx, int paramInt)
+  public bcqa(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHighwayApiITransactionCallback = new bcqb(this);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    this.jdField_a_of_type_Bcpx = parambcpx;
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    b();
   }
   
-  protected QQAppInterface a()
+  public int a(String paramString)
   {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    paramString = (Integer)this.jdField_a_of_type_JavaUtilMap.get(String.valueOf(paramString));
+    if (paramString != null) {
+      return paramString.intValue();
     }
-    return null;
+    return 0;
   }
   
-  public abstract void a();
-  
-  protected boolean a(String paramString)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadPic path= " + paramString);
-    }
-    ITransactionCallback localITransactionCallback = this.jdField_a_of_type_ComTencentMobileqqHighwayApiITransactionCallback;
-    QQAppInterface localQQAppInterface = a();
-    String str = localQQAppInterface.c();
-    byte[] arrayOfByte;
-    if (localQQAppInterface != null)
+    Object localObject = new StringBuilder();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      arrayOfByte = amvj.a(paramString);
-      if (arrayOfByte != null) {
-        break label83;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadPic md5 null ");
+      String str = (String)localIterator.next();
+      if (((Integer)this.jdField_a_of_type_JavaUtilMap.get(str)).intValue() == 1) {
+        ((StringBuilder)localObject).append(str).append(";");
       }
     }
-    label83:
-    int i;
-    do
+    if (((StringBuilder)localObject).length() > 0)
     {
-      return false;
-      Bdh_extinfo.CommFileExtReq localCommFileExtReq = new Bdh_extinfo.CommFileExtReq();
-      localCommFileExtReq.uint32_action_type.set(0);
-      localCommFileExtReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
-      paramString = new Transaction(str, 75, paramString, 0, arrayOfByte, localITransactionCallback, localCommFileExtReq.toByteArray(), false);
-      i = localQQAppInterface.getHwEngine().submitTransactionTask(paramString);
-      if (i == 0)
+      localObject = ((StringBuilder)localObject).substring(0, ((StringBuilder)localObject).length() - 1).toString();
+      bdea.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify", (String)localObject);
+      return;
+    }
+    bdea.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify", "");
+  }
+  
+  public void a(long paramLong)
+  {
+    int j = 0;
+    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(String.valueOf(paramLong));
+    if (localInteger != null) {}
+    for (int i = localInteger.intValue();; i = 0)
+    {
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(paramLong);
+      if ((bool) && (i == 0)) {
+        j = 1;
+      }
+      for (;;)
       {
-        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = paramString;
-        return true;
+        this.jdField_a_of_type_JavaUtilMap.put(String.valueOf(paramLong), Integer.valueOf(j));
+        if (j != i) {
+          a();
+        }
+        return;
+        if (bool) {
+          j = i;
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadPic submitTransactionTask  retCode= " + i);
-    return false;
-  }
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onFailed ");
     }
-    c();
-    d();
   }
+  
+  public void a(String paramString)
+  {
+    if (a(paramString) == 1)
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, Integer.valueOf(2));
+      a();
+    }
+  }
+  
+  public void b()
+  {
+    Object localObject = bdea.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split(";");
+      if (localObject != null)
+      {
+        int i = 0;
+        while (i < localObject.length)
+        {
+          this.jdField_a_of_type_JavaUtilMap.put(localObject[i], Integer.valueOf(1));
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public void onDestroy() {}
 }
 
 

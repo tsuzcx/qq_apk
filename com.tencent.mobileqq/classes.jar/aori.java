@@ -1,56 +1,69 @@
 import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
 public class aori
-  extends aopw<aorh>
+  extends aokh<aorj>
 {
+  public static aorj a()
+  {
+    return (aorj)aoks.a().a(564);
+  }
+  
   public int a()
   {
-    return 26;
+    return 564;
   }
   
   @NonNull
-  public aorh a()
+  public aorj a(int paramInt)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    allf localallf = (allf)localQQAppInterface.a(16);
-    if (localallf != null) {
-      localallf.a(localQQAppInterface.getApplication().getApplicationContext());
-    }
-    return new aorh();
+    return new aorj();
   }
   
-  @NonNull
-  public aorh a(aogf[] paramArrayOfaogf)
+  @Nullable
+  public aorj a(aoko[] paramArrayOfaoko)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    allf localallf = (allf)localQQAppInterface.a(16);
-    if (localallf != null) {
-      localallf.a(localQQAppInterface, paramArrayOfaogf[0].a);
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length == 0)) {
+      return null;
     }
+    paramArrayOfaoko = paramArrayOfaoko[0].a;
     if (QLog.isColorLevel()) {
-      QLog.d("QVipResourceProcessor", 2, "receiveAllConfigs|type: 26,content: " + paramArrayOfaogf[0]);
+      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor onParsed, content:" + paramArrayOfaoko);
     }
-    return new aorh();
+    return aorj.a(paramArrayOfaoko);
   }
   
-  public Class<aorh> a()
+  public Class<aorj> a()
   {
-    return aorh.class;
+    return aorj.class;
   }
   
-  @NonNull
-  public aorh b()
+  public void a(int paramInt) {}
+  
+  public void a(aorj paramaorj)
   {
-    return new aorh();
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor update.");
+    }
+    if (paramaorj != null) {
+      aybg.a = (int)(paramaorj.a * 60.0D * 60.0D);
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
   }
   
   public boolean c()
   {
-    return false;
+    return true;
   }
 }
 

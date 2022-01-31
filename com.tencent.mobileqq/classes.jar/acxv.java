@@ -1,117 +1,108 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneClickReport;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class acxv
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  public boolean a;
-  private int b;
-  public boolean b;
-  private int c;
+  public acxv(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public acxv(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, int paramInt, EditText paramEditText)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    localObject1 = paramEditable;
-    if (paramEditable.getBytes().length > this.jdField_a_of_type_Int) {
-      localEditable = paramEditable;
-    }
-    try
+    paramView = this.a.getIntent();
+    Object localObject = paramView.getStringExtra("key_forward_business_id");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      String str1 = paramEditable.substring(0, this.jdField_b_of_type_Int);
-      localEditable = paramEditable;
-      String str2 = paramEditable.substring(this.jdField_b_of_type_Int + this.c, paramEditable.length());
-      localEditable = paramEditable;
-      Object localObject2 = paramEditable.substring(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int + this.c);
-      localObject1 = paramEditable;
-      localEditable = paramEditable;
-      if (str1.getBytes().length + str2.getBytes().length <= this.jdField_a_of_type_Int)
-      {
-        localObject1 = localObject2;
-        for (;;)
-        {
-          localEditable = paramEditable;
-          if (paramEditable.getBytes().length <= this.jdField_a_of_type_Int) {
-            break;
-          }
-          localEditable = paramEditable;
-          if (((String)localObject1).length() <= 0) {
-            break;
-          }
-          localEditable = paramEditable;
-          localObject1 = ((String)localObject1).substring(0, ((String)localObject1).length() - 1);
-          localEditable = paramEditable;
-          paramEditable = str1 + (String)localObject1 + str2;
-        }
-        localEditable = paramEditable;
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(paramEditable);
-        localEditable = paramEditable;
-        localObject2 = this.jdField_a_of_type_AndroidWidgetEditText;
-        localEditable = paramEditable;
-        int i = str1.length();
-        localEditable = paramEditable;
-        ((EditText)localObject2).setSelection(((String)localObject1).length() + i);
-        localObject1 = paramEditable;
+      boolean bool = paramView.hasExtra("file_send_path");
+      acyd.a(this.a.app, this.a, paramView, (String)localObject, bool);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Aryv.a().putString("uin", "-1010");
+      this.a.jdField_a_of_type_Aryv.B();
+      azqs.b(this.a.app, "CliOper", "", "", "friendchoose", "0X800A2D7", ForwardRecentActivity.a(this.a), 0, "", "", "", ForwardRecentActivity.a(this.a));
+      paramView = new Bundle();
+      paramView.putLong("key_receiver_type", 3L);
+      if ("caller_aecamera".equals(this.a.c)) {
+        QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", "ae_camera_get_info_client", "action_get_send_to_info", paramView, null);
       }
-    }
-    catch (Exception paramEditable)
-    {
-      for (;;)
-      {
-        label292:
-        localObject1 = localEditable;
-      }
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_AndroidWidgetEditText != this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.jdField_a_of_type_AndroidWidgetEditText) {
-        break label292;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a(FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.jdField_a_of_type_AndroidWidgetEditText, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131695575), (String)localObject1);
-    }
-    do
-    {
       return;
-      this.jdField_b_of_type_Boolean = true;
-      break;
-      if (this.jdField_a_of_type_AndroidWidgetEditText == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.b)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a(FriendProfileMoreInfoActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131695525), (String)localObject1);
-        return;
+      int j = paramView.getIntExtra("req_type", 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOption.ForwardEntranceActivity", 2, "-->addQZoneEntry--onClick--req_type = " + j);
       }
-      if (this.jdField_a_of_type_AndroidWidgetEditText == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.c)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a(FriendProfileMoreInfoActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131695602), (String)localObject1);
-        return;
+      Bundle localBundle = paramView.getExtras();
+      localObject = localBundle.getString("image_url_remote");
+      paramView = (View)localObject;
+      if (localObject == null) {
+        paramView = localBundle.getString("image_url");
       }
-    } while (this.jdField_a_of_type_AndroidWidgetEditText != this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.d);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a(FriendProfileMoreInfoActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.d, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131695558), (String)localObject1);
+      localObject = new ArrayList();
+      if (!TextUtils.isEmpty(paramView))
+      {
+        paramView = paramView.split(";");
+        int i = 0;
+        while (i < paramView.length)
+        {
+          ((ArrayList)localObject).add(URLDecoder.decode(paramView[i]));
+          i += 1;
+        }
+      }
+      localBundle.putStringArrayList("image_url", (ArrayList)localObject);
+      localBundle.putString("share_action", "shareToQQ");
+      localBundle.putString("jfrom", "login");
+      localBundle.putBoolean("thirdPartShare", true);
+      com.tencent.mobileqq.app.PhoneContactManagerImp.f = true;
+      bjev.a(this.a.app, this.a, localBundle, null);
+      paramView = new bjdn();
+      paramView.c = "1";
+      paramView.d = "0";
+      paramView.b = 4;
+      paramView.l = "5";
+      paramView.m = "thirdApp";
+      paramView.n = "activefeed";
+      QZoneClickReport.startReportImediately(this.a.app.getAccount(), paramView);
+      paramView = new HashMap();
+      paramView.put("source_type", "5");
+      paramView.put("source_from", "thirdApp");
+      paramView.put("source_to", "activefeed");
+      azri.a(this.a.getApplicationContext()).a(this.a.app.getAccount(), "actQZSourceDataReport", true, 0L, 0L, paramView, null);
+      if (this.a.jdField_a_of_type_Boolean)
+      {
+        bfhz.a().a(this.a.app.getAccount(), "", this.a.b, "1000", "33", "0", false);
+        if ((this.a.jdField_a_of_type_Aryv instanceof ascq))
+        {
+          paramView = (ascq)this.a.jdField_a_of_type_Aryv;
+          localObject = new Bundle();
+          ((Bundle)localObject).putString("report_type", "102");
+          ((Bundle)localObject).putString("act_type", "81");
+          ((Bundle)localObject).putString("intext_1", "" + bfif.a(paramView.d));
+          ((Bundle)localObject).putString("intext_2", "" + bfif.a(-1, alof.aH));
+          ((Bundle)localObject).putString("intext_3", "0");
+          bfhz.a().a((Bundle)localObject, "", this.a.app.getCurrentAccountUin(), false);
+        }
+      }
+      if ((!this.a.jdField_a_of_type_Boolean) || (j != 5)) {
+        this.a.finish();
+      } else {
+        ForwardRecentActivity.i(this.a);
+      }
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt3;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acxv
  * JD-Core Version:    0.7.0.1
  */

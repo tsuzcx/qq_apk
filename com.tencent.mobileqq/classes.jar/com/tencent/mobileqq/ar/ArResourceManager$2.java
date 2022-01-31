@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar;
 
-import amst;
-import amsx;
+import amxi;
+import amxm;
 import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
 
 public class ArResourceManager$2
   implements Runnable
 {
-  public ArResourceManager$2(amsx paramamsx, ArConfigInfo paramArConfigInfo, boolean paramBoolean1, boolean paramBoolean2) {}
+  public ArResourceManager$2(amxm paramamxm, ArConfigInfo paramArConfigInfo, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {

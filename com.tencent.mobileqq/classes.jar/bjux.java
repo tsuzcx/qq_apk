@@ -1,209 +1,353 @@
-import android.app.Activity;
-import android.os.Bundle;
+import android.content.Intent;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin.2;
-import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin.3;
-import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin.4;
-import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin.5;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QzonePluginProxyService;
+import cooperation.qzone.ServerListProvider;
+import cooperation.qzone.util.QZoneDistributedAppCtrl.1;
+import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class bjux
-  extends bjts
-  implements bjmq
+  implements Handler.Callback
 {
-  private String a;
-  private String b;
+  private static bjux jdField_a_of_type_Bjux;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  public static String a;
   
-  public bjux()
+  bjux(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = bjux.class.getSimpleName();
+    jdField_a_of_type_JavaLangString = paramString;
   }
   
-  private void a(String paramString)
+  public static bjux a(String paramString)
   {
-    try
+    if (jdField_a_of_type_Bjux == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 1, "getLocalProxyUrl. json=" + paramString);
-      Object localObject = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject).getJSONArray("playList");
-      localObject = ((JSONObject)localObject).getString("callback");
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        this.b = ((String)localObject);
+      if (jdField_a_of_type_Bjux == null) {
+        jdField_a_of_type_Bjux = new bjux(paramString);
       }
-      localObject = new ArrayList();
-      ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < paramString.length())
-      {
-        ((ArrayList)localObject).add(paramString.getJSONObject(i).getString("url"));
-        localArrayList.add(paramString.getJSONObject(i).getString("vid"));
-        i += 1;
+      return jdField_a_of_type_Bjux;
+    }
+  }
+  
+  public static void a()
+  {
+    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), QzonePluginProxyService.class);
+    BaseApplicationImpl.getContext().stopService(localIntent);
+    bdeu.a(BaseApplicationImpl.getContext(), "com.tencent.mobileqq:qzone");
+  }
+  
+  public static void a(Map<String, String> paramMap)
+  {
+    String str = (String)paramMap.get("key_rndev_bundle_url");
+    paramMap = (String)paramMap.get("key_rndev_bundle_on");
+    LocalMultiProcConfig.putString("Qzone.React.DevBundleUrl", str);
+    LocalMultiProcConfig.putString("Qzone.React.DevBundleOn", paramMap);
+    QLog.i("QZoneDistributedAppCtrl", 1, "rnbundleurl=" + str + ",rndevon=" + paramMap);
+  }
+  
+  private void a(boolean paramBoolean, int paramInt, String paramString)
+  {
+    LocalMultiProcConfig.putBool("comboqz_protect_enable", paramBoolean);
+    LocalMultiProcConfig.putInt("qzapp_vercode", paramInt);
+    if (paramBoolean)
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        LocalMultiProcConfig.putString("qzh5_url", paramString);
       }
-      if (((ArrayList)localObject).size() > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bjux.class).post(new QzoneVideoTabJsPlugin.2(this, (ArrayList)localObject, localArrayList));
+      LocalMultiProcConfig.putBool("qz_safe_mode_no_tip", false);
+      LocalMultiProcConfig.putString("comboqz_qua", bjdm.a());
+    }
+  }
+  
+  private void b(bjuy parambjuy)
+  {
+    boolean bool2 = false;
+    int i = parambjuy.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneDistributedAppCtrl", 2, "execCtrl cmd:" + i);
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    long l1;
+    long l2;
+    switch (i)
+    {
+    case 6: 
+    default: 
+      if (QLog.isDevelopLevel()) {
+        QLog.w("QZoneDistributedAppCtrl", 4, "unknown ctrl cmd " + i);
       }
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  private static Activity b(Activity paramActivity)
-  {
-    Activity localActivity;
-    if (paramActivity == null) {
-      localActivity = null;
-    }
-    do
-    {
-      return localActivity;
-      localActivity = paramActivity;
-    } while (!(paramActivity instanceof BasePluginActivity));
-    return ((BasePluginActivity)paramActivity).getOutActivity();
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bjux.class).post(new QzoneVideoTabJsPlugin.4(this));
-  }
-  
-  private void b(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString).getJSONArray("state");
-      ArrayList localArrayList1 = new ArrayList();
-      ArrayList localArrayList2 = new ArrayList();
-      int i = 0;
-      while (i < paramString.length())
-      {
-        JSONObject localJSONObject = paramString.getJSONObject(i);
-        localArrayList1.add(localJSONObject.getString("url"));
-        localArrayList2.add(localJSONObject.getString("state"));
-        i += 1;
-      }
-      if (localArrayList1.size() > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bjux.class).post(new QzoneVideoTabJsPlugin.3(this, localArrayList1, localArrayList2));
-      }
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  private void c(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString).optString("url");
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bjux.class).post(new QzoneVideoTabJsPlugin.5(this, paramString));
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e(this.jdField_a_of_type_JavaLangString, 1, paramString, new Object[0]);
-    }
-  }
-  
-  public void a()
-  {
-    bjmn.a().b(this);
-    super.a();
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
-      return false;
-    }
-    if (("videoProxyGetLocalProxyURL".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
-    {
-      bjmn.a().a(this);
-      a(paramVarArgs[0]);
-      return true;
-    }
-    if (("videoProxySetPlayState".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
-    {
-      bjmn.a().a(this);
-      b(paramVarArgs[0]);
-      return true;
-    }
-    if ("videoProxyStopAll".equals(paramString3))
-    {
-      bjmn.a().a(this);
-      b();
-      return true;
-    }
-    if ("videoProxySaveVideoToAlbum".equals(paramString3))
-    {
-      paramJsBridgeListener = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-      if ((paramJsBridgeListener != null) && (bjqu.a(paramJsBridgeListener, new bjuy(this, paramVarArgs, paramJsBridgeListener), 1))) {
-        c(paramVarArgs[0]);
-      }
-    }
-    return false;
-  }
-  
-  public void onWebEvent(String paramString, Bundle paramBundle)
-  {
-    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
-    do
-    {
+    case 4: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 5: 
       do
       {
-        return;
-        paramBundle = paramBundle.getBundle("data");
-        if (paramBundle == null)
+        do
         {
-          QLog.e(this.jdField_a_of_type_JavaLangString, 1, "call js function,bundle is empty");
           return;
-        }
-      } while (!"cmd.videoGetLocalProxyUrl".equals(paramString));
-      paramString = paramBundle.getStringArrayList("param.videoLocalUrls");
-      ArrayList localArrayList = paramBundle.getStringArrayList("param.videoId");
-      paramBundle = new JSONObject();
-      JSONArray localJSONArray = new JSONArray();
-      if ((paramString != null) && (localArrayList != null)) {}
-      try
+          a();
+          return;
+          bjdt.b(BaseApplicationImpl.getContext(), jdField_a_of_type_JavaLangString);
+          return;
+        } while (!(localObject instanceof QQAppInterface));
+        bjdt.a((AppRuntime)localObject, true);
+        return;
+        a();
+      } while (!(localObject instanceof QQAppInterface));
+      bjdt.a((QQAppInterface)localObject, "QZoneDistributedAppCtrl");
+      return;
+    case 7: 
+      parambjuy = (String)parambjuy.jdField_a_of_type_JavaUtilMap.get("key_upload_dbname");
+      bjut.a(BaseApplicationImpl.getContext(), jdField_a_of_type_JavaLangString, parambjuy);
+      return;
+    case 8: 
+      bjut.a(BaseApplicationImpl.getContext(), jdField_a_of_type_JavaLangString);
+      return;
+    case 9: 
+      localObject = (String)parambjuy.jdField_a_of_type_JavaUtilMap.get("key_trace_baseTime");
+      parambjuy = (String)parambjuy.jdField_a_of_type_JavaUtilMap.get("key_trace_offset");
+      if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        if (paramString.size() == localArrayList.size())
-        {
-          int i = 0;
-          while (i < paramString.size())
-          {
-            String str = (String)paramString.get(i);
-            JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("vid", localArrayList.get(i));
-            localJSONObject.put("url", str);
-            localJSONArray.put(localJSONObject);
-            i += 1;
-          }
+        l1 = System.currentTimeMillis();
+        if (!TextUtils.isEmpty(parambjuy)) {
+          break label451;
         }
-        paramBundle.put("proxyList", localJSONArray);
+        l2 = 1800000L;
+        label311:
+        if (l1 > 0L) {
+          break label1190;
+        }
+        l1 = System.currentTimeMillis();
       }
-      catch (JSONException paramString)
+      break;
+    }
+    label451:
+    boolean bool1;
+    label1190:
+    for (;;)
+    {
+      for (;;)
       {
         for (;;)
         {
-          QLog.w(this.jdField_a_of_type_JavaLangString, 2, "getLocalProxyUrl result is invalid.", paramString);
+          l3 = l2;
+          if (l2 <= 0L) {
+            l3 = 1800000L;
+          }
+          l2 = l1 - l3;
+          if (QLog.isDevelopLevel()) {
+            QLog.d("QZoneDistributedAppCtrlQZoneAppCtrlUploadFileLogic", 4, "trace startTime: " + l2 + "ms\t offsettime: " + l3 + "\t trace endTime: " + l1 + "ms");
+          }
+          bjut.a(BaseApplicationImpl.getContext(), jdField_a_of_type_JavaLangString, l2, l1);
+          return;
+          try
+          {
+            l1 = Long.valueOf((String)localObject).longValue();
+            l1 *= 1000L;
+          }
+          catch (NumberFormatException localNumberFormatException)
+          {
+            localNumberFormatException.printStackTrace();
+            l1 = 0L;
+          }
+        }
+        break;
+        try
+        {
+          l2 = Long.valueOf(parambjuy).longValue();
+          l2 *= 1000L;
+        }
+        catch (NumberFormatException parambjuy)
+        {
+          parambjuy.printStackTrace();
+          l2 = 0L;
         }
       }
-      QLog.i(this.jdField_a_of_type_JavaLangString, 1, "getLocalProxyUrl result=" + paramBundle);
-    } while (TextUtils.isEmpty(this.b));
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.b, new String[] { paramBundle.toString() });
+      break label311;
+      String str = (String)parambjuy.jdField_a_of_type_JavaUtilMap.get("key_avsdk_startTime");
+      parambjuy = (String)parambjuy.jdField_a_of_type_JavaUtilMap.get("key_avsdk_endTime");
+      long l3 = bjut.a(str);
+      l2 = bjut.a(parambjuy);
+      if (l3 == -1L) {
+        break;
+      }
+      l1 = l2;
+      if (l2 == -1L) {
+        l1 = System.currentTimeMillis();
+      }
+      l2 = l1;
+      if (l3 > l1) {
+        l2 = System.currentTimeMillis();
+      }
+      bjut.b(BaseApplicationImpl.getContext(), jdField_a_of_type_JavaLangString, l3, l2);
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.d("QZoneDistributedAppCtrlQZoneAppCtrlUploadFileLogic", 4, "avsdk log push, starttime=" + str + ",endTime=" + parambjuy);
+      return;
+      bjut.c(BaseApplicationImpl.getContext(), jdField_a_of_type_JavaLangString);
+      return;
+      try
+      {
+        bool1 = Boolean.parseBoolean((String)parambjuy.jdField_a_of_type_JavaUtilMap.get("key_qzcombo_protect"));
+        parambjuy = (String)parambjuy.jdField_a_of_type_JavaUtilMap.get("key_ctrl_param_enable");
+      }
+      catch (Throwable parambjuy)
+      {
+        for (;;)
+        {
+          try
+          {
+            i = Integer.parseInt((String)parambjuy.jdField_a_of_type_JavaUtilMap.get("key_qzapp_versioncode"));
+          }
+          catch (Throwable parambjuy)
+          {
+            i = 82;
+            continue;
+          }
+          try
+          {
+            parambjuy = (String)parambjuy.jdField_a_of_type_JavaUtilMap.get("key_qzh5_url");
+            a(bool1, i, parambjuy);
+            return;
+          }
+          catch (Throwable parambjuy)
+          {
+            continue;
+            bool1 = false;
+            continue;
+          }
+          parambjuy = parambjuy;
+          i = 82;
+          bool1 = bool2;
+          QLog.e("QZoneDistributedAppCtrlQZoneAppCtrlUploadFileLogic", 1, "error: execute CMD_COMBQZ_PROTECT", parambjuy);
+          parambjuy = "";
+        }
+      }
+      if (!TextUtils.isEmpty(parambjuy)) {
+        ServerListProvider.enableDebug(Boolean.valueOf(parambjuy).booleanValue());
+      }
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.w("QZoneDistributedAppCtrl", 4, "CMD_ENABLE_DEBUG, param：" + parambjuy);
+      return;
+      parambjuy = (String)parambjuy.jdField_a_of_type_JavaUtilMap.get("key_ctrl_param_enable");
+      if (!TextUtils.isEmpty(parambjuy))
+      {
+        if (!Boolean.valueOf(parambjuy).booleanValue()) {
+          break label882;
+        }
+        LocalMultiProcConfig.putString("LooperMonitor", System.currentTimeMillis() + "");
+      }
+      while (QLog.isDevelopLevel())
+      {
+        QLog.w("QZoneDistributedAppCtrl", 4, "CMD_ENABLE_PERFORMANCE_MONITOR, param：" + parambjuy);
+        return;
+        label882:
+        LocalMultiProcConfig.putString("LooperMonitor", "-1");
+      }
+      str = (String)parambjuy.jdField_a_of_type_JavaUtilMap.get("key_path_tencent");
+      if (TextUtils.isEmpty(str))
+      {
+        str = (String)parambjuy.jdField_a_of_type_JavaUtilMap.get("key_path_data");
+        bool1 = true;
+        if (TextUtils.isEmpty(str)) {
+          break;
+        }
+        parambjuy = (String)parambjuy.jdField_a_of_type_JavaUtilMap.get("key_upload_maxsize");
+        try
+        {
+          l1 = Long.valueOf(parambjuy).longValue();
+          if (QLog.isDevelopLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder().append("CMD_UPLOAD_CUSTOM, param：");
+            if (bool1)
+            {
+              parambjuy = "dataPath";
+              QLog.w("QZoneDistributedAppCtrl", 4, parambjuy + "," + str);
+            }
+          }
+          else
+          {
+            bjut.a(BaseApplicationImpl.getContext(), str, jdField_a_of_type_JavaLangString, l1, bool1);
+            return;
+          }
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.w("QZoneDistributedAppCtrl", 4, "CMD_UPLOAD_CUSTOM, param：" + parambjuy + ",error:Not long");
+            }
+            l1 = 1048576L;
+            continue;
+            parambjuy = "tencentPath";
+          }
+        }
+        str = (String)parambjuy.jdField_a_of_type_JavaUtilMap.get("key_wns_config_main");
+        parambjuy = (String)parambjuy.jdField_a_of_type_JavaUtilMap.get("key_wns_config_second");
+        QzoneConfig.getInstance().printWNSConfig(str, parambjuy);
+        bdys.d();
+        return;
+        parambjuy = (String)parambjuy.jdField_a_of_type_JavaUtilMap.get("key_url");
+        bjut.b(BaseApplicationImpl.getContext(), parambjuy);
+        return;
+        a(parambjuy.jdField_a_of_type_JavaUtilMap);
+        return;
+      }
+    }
+  }
+  
+  private void c(bjuy parambjuy)
+  {
+    int i = parambjuy.jdField_a_of_type_Int;
+    switch (i)
+    {
+    default: 
+      if (QLog.isDevelopLevel()) {
+        QLog.e("QZoneDistributedAppCtrl", 4, "unknown ctrl cmd " + i);
+      }
+      break;
+    }
+  }
+  
+  public void a(bjuy parambjuy)
+  {
+    if (parambjuy != null) {
+      ThreadManager.executeOnNetWorkThread(new QZoneDistributedAppCtrl.1(this, parambjuy));
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QZoneDistributedAppCtrl", 4, "recv msg " + paramMessage);
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 1: 
+      b((bjuy)paramMessage.obj);
+    }
+    for (;;)
+    {
+      return true;
+      c((bjuy)paramMessage.obj);
+    }
   }
 }
 

@@ -131,23 +131,23 @@ public class pdl
   
   public View a(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560198, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131375981);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377884));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372060));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131365504));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131367910));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup = ((VideoViewGroup)paramViewGroup.findViewById(2131379680));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131371416));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131371417));
-    this.e = ((TextView)paramViewGroup.findViewById(2131369078));
-    this.jdField_b_of_type_AndroidViewView = paramViewGroup.findViewById(2131377935);
-    this.jdField_c_of_type_AndroidViewView = paramViewGroup.findViewById(2131377962);
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560197, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131376034);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377938));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372080));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131365506));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131367921));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup = ((VideoViewGroup)paramViewGroup.findViewById(2131379738));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131371435));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131371436));
+    this.e = ((TextView)paramViewGroup.findViewById(2131369096));
+    this.jdField_b_of_type_AndroidViewView = paramViewGroup.findViewById(2131377989);
+    this.jdField_c_of_type_AndroidViewView = paramViewGroup.findViewById(2131378016);
     this.jdField_d_of_type_AndroidViewView = ((ViewGroup)paramViewGroup.findViewById(2131363376));
-    this.f = ((TextView)paramViewGroup.findViewById(2131366273));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131366274));
-    this.g = ((TextView)paramViewGroup.findViewById(2131366275));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131379242));
+    this.f = ((TextView)paramViewGroup.findViewById(2131366275));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131366276));
+    this.g = ((TextView)paramViewGroup.findViewById(2131366277));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131379300));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setTag(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup.setTag(this);
@@ -209,12 +209,12 @@ public class pdl
     {
     default: 
       return;
-    case 2131367910: 
-    case 2131379680: 
+    case 2131367921: 
+    case 2131379738: 
       a(paramView);
       return;
     case 2131363376: 
-    case 2131375981: 
+    case 2131376034: 
       b(paramView);
       return;
     }

@@ -1,17 +1,29 @@
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.widget.QQToast;
 
-class acve
-  implements bhrf
+public class acve
+  extends alsc
 {
-  acve(acvc paramacvc, View paramView) {}
+  public acve(EditActivity paramEditActivity) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Acvc.a = false;
-    if ((this.jdField_a_of_type_AndroidViewView instanceof TextView)) {
-      this.jdField_a_of_type_Acvc.a((TextView)this.jdField_a_of_type_AndroidViewView);
+    EditActivity.a(this.a);
+    if (paramBoolean)
+    {
+      paramObject = (CustomEmotionData)paramObject;
+      if (paramObject != null)
+      {
+        ((apoo)this.a.app.getManager(103)).c(paramObject);
+        EditActivity.b(this.a);
+      }
     }
+    while (!(paramObject instanceof String)) {
+      return;
+    }
+    QQToast.a(this.a, 1, (String)paramObject, 1).a();
   }
 }
 

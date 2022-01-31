@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.os.Bundle;
-import bgho;
-import bgkd;
+import bglv;
+import bgok;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBannerAdView;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -12,7 +12,7 @@ import com.tencent.qqmini.sdk.utils.BannerAdPosInfo;
 class BannerAdPlugin$1
   implements Runnable
 {
-  BannerAdPlugin$1(BannerAdPlugin paramBannerAdPlugin, String paramString, BannerAdPosInfo paramBannerAdPosInfo, bgkd parambgkd, Bundle paramBundle) {}
+  BannerAdPlugin$1(BannerAdPlugin paramBannerAdPlugin, String paramString, BannerAdPosInfo paramBannerAdPosInfo, bgok parambgok, Bundle paramBundle) {}
   
   public void run()
   {

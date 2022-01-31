@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.discoperation;
 
-import aqzo;
-import aqzq;
+import ardx;
+import ardz;
 
 public class DiscFileOperator$1
   implements Runnable
 {
-  public DiscFileOperator$1(aqzo paramaqzo) {}
+  public DiscFileOperator$1(ardx paramardx) {}
   
   public void run()
   {

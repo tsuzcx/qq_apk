@@ -1,31 +1,22 @@
-import org.json.JSONObject;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 public class bdxw
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public int a;
-  public boolean a;
+  public bdxw(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public bdxw()
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_Int = -30009;
-  }
-  
-  public bdxw(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Int = -30009;
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("ret", -30009);
-    if ((this.jdField_a_of_type_Int == 0) && (paramJSONObject.optInt("flag", 0) == 1)) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-      bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("HealthBusinessPlugin", 2, "Completion video000");
     }
-  }
-  
-  public String toString()
-  {
-    return "LiangHaoStatusRsp{ret=" + this.jdField_a_of_type_Int + ", flag=" + this.jdField_a_of_type_Boolean + '}';
+    paramTVK_IMediaPlayer.seekTo(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("HealthBusinessPlugin", 2, "Completion video");
+    }
   }
 }
 

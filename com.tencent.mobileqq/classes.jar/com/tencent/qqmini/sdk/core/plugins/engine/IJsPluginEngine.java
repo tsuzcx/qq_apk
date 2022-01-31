@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
-import bghn;
+import bglu;
 import com.tencent.qqmini.sdk.core.plugins.ILifeCycle;
 
 public abstract interface IJsPluginEngine
   extends ILifeCycle
 {
-  public abstract String handleNativeRequest(String paramString1, String paramString2, bghn parambghn, int paramInt);
+  public abstract String handleNativeRequest(String paramString1, String paramString2, bglu parambglu, int paramInt);
 }
 
 

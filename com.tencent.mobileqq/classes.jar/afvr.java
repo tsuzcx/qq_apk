@@ -1,12 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class afvr
-  implements DialogInterface.OnClickListener
+public class afvr
+  implements View.OnClickListener
 {
-  afvr(afvo paramafvo) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    ThreadManager.post(new MarketFaceItemBuilder.7.1(this), 5, null, true);
+  }
 }
 
 

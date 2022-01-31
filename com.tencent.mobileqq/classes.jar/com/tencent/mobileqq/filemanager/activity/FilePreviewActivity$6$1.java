@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import aqhk;
-import arng;
-import arnh;
-import arof;
+import aqlt;
+import arrp;
+import arrq;
+import arso;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.widget.FileWebView;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 public class FilePreviewActivity$6$1
   implements Runnable
 {
-  public FilePreviewActivity$6$1(aqhk paramaqhk) {}
+  public FilePreviewActivity$6$1(aqlt paramaqlt) {}
   
   public void run()
   {
@@ -30,11 +30,11 @@ public class FilePreviewActivity$6$1
     for (;;)
     {
       QLog.i("<FileAssistant>FilePreviewActivity", 1, "mWebView.loadUrl(" + str1 + ")");
-      arnh localarnh = new arnh();
-      localarnh.b = "sf_preview_again";
-      localarnh.jdField_c_of_type_JavaLangString = arof.a(this.a.a.jdField_c_of_type_JavaLangString);
-      localarnh.jdField_a_of_type_Long = this.a.a.jdField_a_of_type_Long;
-      arng.a(this.a.a.app.getCurrentAccountUin(), localarnh);
+      arrq localarrq = new arrq();
+      localarrq.b = "sf_preview_again";
+      localarrq.jdField_c_of_type_JavaLangString = arso.a(this.a.a.jdField_c_of_type_JavaLangString);
+      localarrq.jdField_a_of_type_Long = this.a.a.jdField_a_of_type_Long;
+      arrp.a(this.a.a.app.getCurrentAccountUin(), localarrq);
       try
       {
         this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(str1);

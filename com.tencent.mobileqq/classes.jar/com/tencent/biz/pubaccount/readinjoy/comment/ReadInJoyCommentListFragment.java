@@ -19,8 +19,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bdee;
-import bhpo;
+import bdin;
+import bhtv;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
@@ -84,7 +84,7 @@ public class ReadInJoyCommentListFragment
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bhpo jdField_a_of_type_Bhpo = new olc(this);
+  private bhtv jdField_a_of_type_Bhtv = new olc(this);
   private ReadInJoyCommentListView jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView;
   private ReadInJoyCommentTopGestureLayout jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentTopGestureLayout;
   private ReadInJoySecondCommentListFragment jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment;
@@ -131,7 +131,7 @@ public class ReadInJoyCommentListFragment
   
   public ReadInJoyCommentListFragment()
   {
-    this.jdField_a_of_type_Int = 2131376241;
+    this.jdField_a_of_type_Int = 2131376295;
   }
   
   private int a()
@@ -261,11 +261,11 @@ public class ReadInJoyCommentListFragment
     if (paramView == null) {
       return;
     }
-    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131371166);
+    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131371185);
     this.jdField_e_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131371182);
+    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131371201);
     this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_f_of_type_AndroidViewView = paramView.findViewById(2131372951);
+    this.jdField_f_of_type_AndroidViewView = paramView.findViewById(2131372977);
     this.jdField_f_of_type_AndroidViewView.setOnClickListener(null);
   }
   
@@ -280,7 +280,7 @@ public class ReadInJoyCommentListFragment
         FragmentTransaction localFragmentTransaction = a();
         if (localFragmentTransaction != null)
         {
-          localFragmentTransaction.setCustomAnimations(2130772330, 0);
+          localFragmentTransaction.setCustomAnimations(2130772331, 0);
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramAnchorData.jdField_a_of_type_JavaLangString, paramAnchorData.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_Int);
           localFragmentTransaction.show(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment);
           localFragmentTransaction.commitAllowingStateLoss();
@@ -334,12 +334,12 @@ public class ReadInJoyCommentListFragment
   private void b(View paramView)
   {
     this.jdField_a_of_type_Oln = new oln();
-    this.jdField_a_of_type_Oln.a(this.jdField_a_of_type_Bhpo);
+    this.jdField_a_of_type_Oln.a(this.jdField_a_of_type_Bhtv);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.setOnScrollListener(this.jdField_a_of_type_Oln);
-    paramView.findViewById(2131364334).setOnClickListener(this);
-    paramView.findViewById(2131368332).setOnClickListener(this);
-    paramView.findViewById(2131377884).setOnClickListener(this);
-    paramView.findViewById(2131371167).setOnClickListener(this);
+    paramView.findViewById(2131364336).setOnClickListener(this);
+    paramView.findViewById(2131368343).setOnClickListener(this);
+    paramView.findViewById(2131377938).setOnClickListener(this);
+    paramView.findViewById(2131371186).setOnClickListener(this);
     if (this.jdField_a_of_type_Oly != null) {
       this.jdField_a_of_type_Oly.a(paramView);
     }
@@ -376,7 +376,7 @@ public class ReadInJoyCommentListFragment
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentTopGestureLayout.setRootView(this.jdField_b_of_type_AndroidViewView, true);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentTopGestureLayout.setCommentListView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView);
     if (this.jdField_j_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentTopGestureLayout.setBackgroundResource(2130841371);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentTopGestureLayout.setBackgroundResource(2130841372);
     }
   }
   
@@ -385,13 +385,13 @@ public class ReadInJoyCommentListFragment
     View localView;
     if (this.jdField_e_of_type_Boolean)
     {
-      localView = paramView.findViewById(2131364538);
+      localView = paramView.findViewById(2131364540);
       localView.setVisibility(0);
       localView.setOnClickListener(this);
     }
     if (this.jdField_g_of_type_Boolean)
     {
-      localView = paramView.findViewById(2131376513);
+      localView = paramView.findViewById(2131376567);
       localView.setVisibility(0);
       localView.setOnClickListener(this);
     }
@@ -405,10 +405,10 @@ public class ReadInJoyCommentListFragment
   
   private void g()
   {
-    this.jdField_g_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131562495, null, false);
-    this.jdField_h_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131371166);
-    this.jdField_j_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131371182);
-    this.jdField_i_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131369762);
+    this.jdField_g_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131562513, null, false);
+    this.jdField_h_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131371185);
+    this.jdField_j_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131371201);
+    this.jdField_i_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131369781);
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView != null) && (this.jdField_h_of_type_Boolean)) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.addHeaderView(this.jdField_g_of_type_AndroidViewView);
     }
@@ -688,7 +688,7 @@ public class ReadInJoyCommentListFragment
       return;
     }
     this.jdField_b_of_type_Boolean = true;
-    if (!bdee.g(getActivity())) {
+    if (!bdin.g(getActivity())) {
       b(3);
     }
     for (;;)
@@ -786,7 +786,7 @@ public class ReadInJoyCommentListFragment
       {
         if ((this.jdField_a_of_type_Olk != null) && (this.jdField_a_of_type_Olk.jdField_d_of_type_Int == 2))
         {
-          paramString1.setCustomAnimations(2130772329, 0);
+          paramString1.setCustomAnimations(2130772330, 0);
           paramString1.hide(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment);
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment.d();
           paramString1.commitAllowingStateLoss();
@@ -817,7 +817,7 @@ public class ReadInJoyCommentListFragment
       if ((this.jdField_a_of_type_Olk == null) || (this.jdField_a_of_type_Olk.jdField_d_of_type_Int != 2)) {
         break label298;
       }
-      localFragmentTransaction.setCustomAnimations(2130772329, 0);
+      localFragmentTransaction.setCustomAnimations(2130772330, 0);
     }
     for (;;)
     {
@@ -944,7 +944,7 @@ public class ReadInJoyCommentListFragment
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131372164).setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131372184).setVisibility(8);
   }
   
   public void c(int paramInt)
@@ -1088,13 +1088,13 @@ public class ReadInJoyCommentListFragment
     {
     default: 
     case 2131363318: 
-    case 2131364334: 
-    case 2131364538: 
-    case 2131376513: 
-    case 2131368332: 
-    case 2131371167: 
-    case 2131371166: 
-    case 2131371182: 
+    case 2131364336: 
+    case 2131364540: 
+    case 2131376567: 
+    case 2131368343: 
+    case 2131371186: 
+    case 2131371185: 
+    case 2131371201: 
       do
       {
         do
@@ -1112,7 +1112,7 @@ public class ReadInJoyCommentListFragment
             return;
           } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null);
           d();
-        } while (paramView.getId() != 2131368332);
+        } while (paramView.getId() != 2131368343);
         paramView = new olw(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, null).a(this.jdField_e_of_type_Int).a();
         nrt.a((QQAppInterface)getActivity().getAppInterface(), olt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), "0X800900C", "0X800900C", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, paramView, false);
         return;
@@ -1120,7 +1120,7 @@ public class ReadInJoyCommentListFragment
       b(1);
       this.jdField_a_of_type_Ola.a();
       return;
-    case 2131377884: 
+    case 2131377938: 
       n();
       return;
     }
@@ -1130,21 +1130,21 @@ public class ReadInJoyCommentListFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor != null) {}
-    for (paramLayoutInflater = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a(2131559937, true, new ViewGroup.LayoutParams(-1, -1));; paramLayoutInflater = paramLayoutInflater.inflate(2131559937, paramViewGroup, false))
+    for (paramLayoutInflater = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a(2131559936, true, new ViewGroup.LayoutParams(-1, -1));; paramLayoutInflater = paramLayoutInflater.inflate(2131559936, paramViewGroup, false))
     {
       this.jdField_a_of_type_AndroidViewView = paramLayoutInflater;
       this.jdField_b_of_type_AndroidViewView = paramLayoutInflater;
       this.jdField_c_of_type_AndroidViewView = paramLayoutInflater.findViewById(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131378660));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131378714));
       this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131363377));
       if (this.jdField_a_of_type_AndroidWidgetTextView.getPaint() != null) {
         this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView = ((ReadInJoyCommentListView)paramLayoutInflater.findViewById(2131364569));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131366277));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131372164));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView = ((ReadInJoyCommentListView)paramLayoutInflater.findViewById(2131364571));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131366279));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131372184));
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369718));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369737));
       l();
       if (this.jdField_j_of_type_Boolean)
       {

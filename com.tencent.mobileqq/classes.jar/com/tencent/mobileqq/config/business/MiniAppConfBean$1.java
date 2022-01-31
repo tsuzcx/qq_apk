@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.config.business;
 
-import aokc;
+import aool;
 import java.util.ArrayList;
 
 public class MiniAppConfBean$1
   extends ArrayList<Integer>
 {
-  public MiniAppConfBean$1(aokc paramaokc)
+  public MiniAppConfBean$1(aool paramaool)
   {
     add(Integer.valueOf(1044));
     add(Integer.valueOf(1007));

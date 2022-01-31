@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.forward;
 
 import android.widget.ScrollView;
-import asaf;
+import aseo;
 
 public class ForwardTribeShortVideoMsgOption$1
   implements Runnable
 {
-  public ForwardTribeShortVideoMsgOption$1(asaf paramasaf) {}
+  public ForwardTribeShortVideoMsgOption$1(aseo paramaseo) {}
   
   public void run()
   {

@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
-import bghk;
-import bgjd;
+import bglr;
+import bgnk;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsInterstitialAdView;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.lang.ref.WeakReference;
@@ -24,8 +24,8 @@ class InterstitialAdPlugin$MiniInterstitialAd$1
           if ((localActivity != null) && (InterstitialAdPlugin.MiniInterstitialAd.access$100(this.this$1).show(localActivity)))
           {
             InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$1, true, "operateInterstitialAd", this.val$compId, 0, this.val$callbackId);
-            bgjd.a().a(new InterstitialAdPlugin.MiniInterstitialAd.1.1(this));
-            bghk.b(true);
+            bgnk.a().a(new InterstitialAdPlugin.MiniInterstitialAd.1.1(this));
+            bglr.b(true);
             return;
           }
           QMLog.e("SDK_MiniInterstitialAd", "activity is null");

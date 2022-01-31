@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.msgTabNode.view.viewholder;
 
 import com.tencent.image.AbstractGifImage;
-import uxg;
+import vbp;
 
 public class MsgNodeViewHolder$1$1
   implements Runnable
 {
-  public MsgNodeViewHolder$1$1(uxg paramuxg) {}
+  public MsgNodeViewHolder$1$1(vbp paramvbp) {}
   
   public void run() {}
 }

@@ -1,38 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
 public class vqm
-  implements DialogInterface.OnDismissListener
+  extends Subscriber.SingleEventSubscriberNoRefect<veb>
 {
-  private final WeakReference<VideoViewVideoHolder> jdField_a_of_type_JavaLangRefWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
+  vqi a;
   
-  public vqm(VideoViewVideoHolder paramVideoViewVideoHolder, boolean paramBoolean)
+  public vqm(@NonNull vqi paramvqi)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoViewVideoHolder);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramvqi;
   }
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(@NonNull veb paramveb)
   {
-    paramDialogInterface = (VideoViewVideoHolder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramDialogInterface != null)
-    {
-      if ((paramDialogInterface.a()) && (!paramDialogInterface.a().isFinishing())) {
-        break label40;
-      }
-      wsv.b("OnNewGuideDialogDismissListener", "activity token invalid, preventing from showing dialog");
+    if (paramveb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      this.a.a(paramveb.jdField_a_of_type_JavaLangString);
     }
-    label40:
-    while (paramDialogInterface.e()) {
-      return;
-    }
-    paramDialogInterface.c(this.jdField_a_of_type_Boolean);
-    paramDialogInterface.d();
-    paramDialogInterface.a = null;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return veb.class;
   }
 }
 

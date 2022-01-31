@@ -1,64 +1,65 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import QQService.EVIPSPEC;
+import com.tencent.mobileqq.data.Friends;
+import java.util.Comparator;
 
-public class bbnk
-  extends bbnf
+class bbnk
+  implements Comparator<bbni>
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  public int a(bbni parambbni)
   {
-    int j = 0;
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {
-      return null;
+    if (parambbni.jdField_a_of_type_Int != -1) {
+      return parambbni.jdField_a_of_type_Int;
     }
-    localTroopFeedItem.type = 12;
+    Friends localFriends = parambbni.jdField_a_of_type_ComTencentMobileqqDataFriends;
+    int k = bdgc.a(localFriends.detalStatusFlag, localFriends.iTermType);
+    int j;
+    int i;
+    if ((k != 6) && (k != 0))
+    {
+      j = 65536;
+      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
+        break label132;
+      }
+      i = 4096;
+      switch (k)
+      {
+      case 5: 
+      case 6: 
+      default: 
+        label64:
+        i = j | i | (int)localFriends.getLastLoginType();
+      }
+    }
     for (;;)
     {
-      int i;
-      try
+      parambbni.jdField_a_of_type_Int = i;
+      return i;
+      j = 131072;
+      break;
+      label132:
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
       {
-        localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
-        paramJSONObject = paramJSONObject.getJSONObject("vote");
-        if (paramJSONObject != null)
-        {
-          JSONArray localJSONArray = paramJSONObject.getJSONArray("opts");
-          i = 0;
-          if ((i >= localJSONArray.length()) || (j > 1))
-          {
-            paramJSONObject = paramJSONObject.getJSONArray("title");
-            if (paramJSONObject.length() > 0) {
-              localTroopFeedItem.title = paramJSONObject.getJSONObject(0).getString("value");
-            }
-          }
-          else
-          {
-            Object localObject = localJSONArray.getJSONArray(i);
-            k = j;
-            if (((JSONArray)localObject).length() <= 0) {
-              break label177;
-            }
-            localObject = ((JSONArray)localObject).getJSONObject(0);
-            if (j == 0) {
-              localTroopFeedItem.content = ((JSONObject)localObject).getString("value");
-            } else {
-              localTroopFeedItem.ex_1 = ((JSONObject)localObject).getString("value");
-            }
-          }
-        }
+        i = 8192;
+        break label64;
       }
-      catch (JSONException paramJSONObject)
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
       {
-        paramJSONObject.printStackTrace();
-        return null;
+        i = 12288;
+        break label64;
       }
-      return localTroopFeedItem;
-      int k = j + 1;
-      label177:
-      i += 1;
-      j = k;
+      i = 16384;
+      break label64;
+      i = j | i | 0x1;
+      continue;
+      i = j | i | 0x2;
+      continue;
+      i = j | i | 0x3;
     }
+  }
+  
+  public int a(bbni parambbni1, bbni parambbni2)
+  {
+    return a(parambbni1) - a(parambbni2);
   }
 }
 

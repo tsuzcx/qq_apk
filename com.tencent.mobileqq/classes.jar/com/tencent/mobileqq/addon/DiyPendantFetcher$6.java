@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.addon;
 
-import akii;
-import akij;
+import akmx;
+import akmy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -10,7 +10,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class DiyPendantFetcher$6
   implements Runnable
 {
-  public DiyPendantFetcher$6(akii paramakii) {}
+  public DiyPendantFetcher$6(akmx paramakmx) {}
   
   public void run()
   {
@@ -18,18 +18,18 @@ public class DiyPendantFetcher$6
     Iterator localIterator = this.this$0.a.iterator();
     while (localIterator.hasNext())
     {
-      akij localakij = (akij)localIterator.next();
-      if ((localakij != null) && (localakij.a() != null))
+      akmy localakmy = (akmy)localIterator.next();
+      if ((localakmy != null) && (localakmy.a() != null))
       {
-        if (!localHashSet.contains(localakij))
+        if (!localHashSet.contains(localakmy))
         {
-          localHashSet.add(localakij);
-          localakij.invalidateSelf();
-          this.this$0.a.remove(localakij);
+          localHashSet.add(localakmy);
+          localakmy.invalidateSelf();
+          this.this$0.a.remove(localakmy);
         }
       }
       else {
-        this.this$0.a.remove(localakij);
+        this.this$0.a.remove(localakmy);
       }
     }
     if (QLog.isColorLevel()) {

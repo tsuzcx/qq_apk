@@ -141,7 +141,7 @@ public class rjh
         new JSONObject();
         ThreadManager.post(new VideoPlayManager.1.3(this, localrjk, localrkb), 5, null, true);
       }
-      azmj.b(null, "dc00899", "Pb_account_lifeservice", "", "0X800709B", "0X800709B", 0, 0, "", "", "", localrjk.jdField_c_of_type_JavaLangString);
+      azqs.b(null, "dc00899", "Pb_account_lifeservice", "", "0X800709B", "0X800709B", 0, 0, "", "", "", localrjk.jdField_c_of_type_JavaLangString);
       paramrjn = localrjk.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
       if ((paramrjn != null) && (oee.a((int)paramrjn.mChannelID)) && (AdvertisementInfo.isAdvertisementInfo(paramrjn)) && (localrjk.jdField_b_of_type_Boolean))
       {
@@ -209,7 +209,7 @@ public class rjh
         }
         for (;;)
         {
-          paramrjn = new StringBuilder().append(alpo.a(2131716709)).append(paramrjn.jdField_b_of_type_Boolean).append(alpo.a(2131716726));
+          paramrjn = new StringBuilder().append(alud.a(2131716721)).append(paramrjn.jdField_b_of_type_Boolean).append(alud.a(2131716738));
           if (paramObject.jdField_a_of_type_Qlq != null) {
             l = paramObject.jdField_a_of_type_Qlq.jdField_c_of_type_Long;
           }

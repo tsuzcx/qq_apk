@@ -4,9 +4,9 @@ import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigGalle
 public class pxu
   extends pxv
 {
-  public pxu(Context paramContext, bcws parambcws, rqj paramrqj)
+  public pxu(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl g()

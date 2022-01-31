@@ -1,16 +1,15 @@
 import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class agbl
-  implements afgj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agbl(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  public agbl(SixCombolEffectView paramSixCombolEffectView, agbz paramagbz) {}
   
-  public void onUpdate(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt == 23) {
-      UnlimitedBladeWorks.a(this.a).start();
-    }
+    this.jdField_a_of_type_Agbz.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
   }
 }
 

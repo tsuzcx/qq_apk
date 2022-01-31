@@ -19,7 +19,7 @@ public class ppi
       if ((pph.a(this.a) != null) && (pph.a(this.a).mSocialFeedInfo != null))
       {
         owy.a().b(pph.a(pph.a(this.a)), paramInt);
-        str = ors.a(pph.a(this.a).mAlgorithmID, ors.a(pph.a(this.a)), (int)pph.a(this.a).mChannelID, 0, 0, bdee.h(pph.a(this.a)), pph.a(pph.a(this.a)) + "", null, pph.a(this.a).innerUniqueID, null, pph.a(this.a));
+        str = ors.a(pph.a(this.a).mAlgorithmID, ors.a(pph.a(this.a)), (int)pph.a(this.a).mChannelID, 0, 0, bdin.h(pph.a(this.a)), pph.a(pph.a(this.a)) + "", null, pph.a(this.a).innerUniqueID, null, pph.a(this.a));
         if (!szp.a(pph.a(this.a).mChannelID)) {
           break label300;
         }
@@ -32,7 +32,7 @@ public class ppi
         return;
       }
     }
-    QQToast.a(pph.a(this.a), alpo.a(2131708226), 0).a();
+    QQToast.a(pph.a(this.a), alud.a(2131708238), 0).a();
   }
 }
 

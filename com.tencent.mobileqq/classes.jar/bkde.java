@@ -1,15 +1,8 @@
-import com.tencent.component.animation.rebound.SimpleSpringListener;
-import com.tencent.component.animation.rebound.Spring;
-
-class bkde
-  extends SimpleSpringListener
+public abstract interface bkde
 {
-  bkde(bkdd parambkdd) {}
+  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3);
   
-  public void onSpringUpdate(Spring paramSpring)
-  {
-    bkdd.a(this.a);
-  }
+  public abstract void a(String paramString, long paramLong1, long paramLong2);
 }
 
 

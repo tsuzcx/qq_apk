@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.transfile;
 
-import bapa;
-import bapb;
+import batj;
+import batk;
 
 public class GroupPicUploadProcessor$2$1
   implements Runnable
 {
-  public GroupPicUploadProcessor$2$1(bapb parambapb, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public GroupPicUploadProcessor$2$1(batk parambatk, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bapb.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
+    this.jdField_a_of_type_Batk.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
   }
 }
 

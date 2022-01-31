@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgjw;
-import bgkd;
+import bgod;
+import bgok;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 
 public class CustomerJsPlugin
@@ -10,9 +10,9 @@ public class CustomerJsPlugin
   private static final String TAG = "CustomerJsPlugin";
   private ChannelProxy mChannelProxy;
   
-  public void openCustomerServiceConversation(bgkd parambgkd)
+  public void openCustomerServiceConversation(bgok parambgok)
   {
-    this.mChannelProxy.getRobotUin(this.mApkgInfo.appId, new CustomerJsPlugin.1(this, parambgkd));
+    this.mChannelProxy.getRobotUin(this.mApkgInfo.appId, new CustomerJsPlugin.1(this, parambgok));
   }
 }
 

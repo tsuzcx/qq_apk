@@ -74,16 +74,16 @@ public class mvg
   
   private static Bitmap a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Object localObject2 = ((aubm)paramQQAppInterface.getManager(11)).b(paramString);
+    Object localObject2 = ((aufv)paramQQAppInterface.getManager(11)).b(paramString);
     Object localObject1 = null;
     if (localObject2 != null) {
-      localObject1 = bdbt.b(((PhoneContact)localObject2).name);
+      localObject1 = bdgc.b(((PhoneContact)localObject2).name);
     }
     localObject2 = localObject1;
     if (localObject1 == null) {
-      localObject2 = bdbt.b(paramString);
+      localObject2 = bdgc.b(paramString);
     }
-    paramString = new bcyv(paramQQAppInterface.getApp(), (String)localObject2);
+    paramString = new bdde(paramQQAppInterface.getApp(), (String)localObject2);
     int i = paramString.getIntrinsicWidth();
     int j = paramString.getIntrinsicHeight();
     if (paramString.getOpacity() != -1) {}
@@ -108,7 +108,7 @@ public class mvg
     do
     {
       return paramQQAppInterface;
-      paramQQAppInterface = (awwg)paramQQAppInterface.getManager(38);
+      paramQQAppInterface = (axap)paramQQAppInterface.getManager(38);
       if (paramQQAppInterface == null) {
         break;
       }
@@ -272,12 +272,12 @@ public class mvg
     if ((localObject2 == null) || (((ArrayList)localObject2).size() == 0)) {
       return null;
     }
-    localObject1 = (almv)paramQQAppInterface.getManager(53);
+    localObject1 = (alrk)paramQQAppInterface.getManager(53);
     if (localObject1 == null) {
       return null;
     }
-    paramString = ((almv)localObject1).a(paramString);
-    localObject1 = (aubm)paramQQAppInterface.getManager(11);
+    paramString = ((alrk)localObject1).a(paramString);
+    localObject1 = (aufv)paramQQAppInterface.getManager(11);
     ArrayList localArrayList = new ArrayList();
     localObject2 = ((ArrayList)localObject2).iterator();
     AVPhoneUserInfo localAVPhoneUserInfo;
@@ -287,7 +287,7 @@ public class mvg
       paramQQAppInterface = localAVPhoneUserInfo.telInfo.mobile;
       if ((paramQQAppInterface != null) && (paramQQAppInterface.length() != 0))
       {
-        paramQQAppInterface = ((aubm)localObject1).b(paramQQAppInterface);
+        paramQQAppInterface = ((aufv)localObject1).b(paramQQAppInterface);
         if (paramQQAppInterface == null) {
           break label266;
         }
@@ -324,12 +324,12 @@ public class mvg
     if ((localArrayList1 == null) || (localArrayList1.size() == 0)) {
       return null;
     }
-    localObject = (almv)paramQQAppInterface.getManager(53);
+    localObject = (alrk)paramQQAppInterface.getManager(53);
     if (localObject == null) {
       return null;
     }
-    Map localMap = ((almv)localObject).a(paramString);
-    aubm localaubm = (aubm)paramQQAppInterface.getManager(11);
+    Map localMap = ((alrk)localObject).a(paramString);
+    aufv localaufv = (aufv)paramQQAppInterface.getManager(11);
     ArrayList localArrayList2 = new ArrayList();
     paramInt2 = Math.min(paramInt2, localArrayList1.size());
     paramInt1 = 0;
@@ -342,7 +342,7 @@ public class mvg
       {
         paramInt1 += 1;
         break;
-        PhoneContact localPhoneContact = localaubm.b(str);
+        PhoneContact localPhoneContact = localaufv.b(str);
         paramString = null;
         if (localPhoneContact != null) {
           paramString = localPhoneContact.uin;

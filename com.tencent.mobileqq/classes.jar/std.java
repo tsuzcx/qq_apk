@@ -3,7 +3,7 @@ import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import java.util.List;
 
 class std
-  extends bdin
+  extends bdmw
 {
   std(Context paramContext, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
@@ -12,7 +12,7 @@ class std
   
   protected int a()
   {
-    return 2131562509;
+    return 2131562527;
   }
 }
 

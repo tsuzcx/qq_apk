@@ -1,13 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class agob
-  extends alkl
+  implements View.OnClickListener
 {
-  agob(agnz paramagnz) {}
+  agob(agnn paramagnn) {}
   
-  protected void a(Object paramObject)
+  public void onClick(View paramView)
   {
-    if (agnz.a(this.a) != null) {
-      agnz.a(this.a).notifyDataSetChanged();
-    }
+    aepi.n = true;
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+    aetu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "2", "0", "", "");
   }
 }
 

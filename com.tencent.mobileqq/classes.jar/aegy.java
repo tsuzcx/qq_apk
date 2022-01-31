@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.util.Comparator;
 
 public class aegy
-  implements DialogInterface.OnClickListener
+  implements Comparator<aegt>
 {
-  public aegy(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public aegy(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(aegt paramaegt1, aegt paramaegt2)
   {
-    this.a.n();
-    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, ndd.a(), "2", "0");
+    return paramaegt1.f.compareToIgnoreCase(paramaegt2.f);
   }
 }
 

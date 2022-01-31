@@ -1,12 +1,15 @@
-public abstract interface bktm
+public class bktm
+  extends bktl
 {
-  public abstract void a();
+  public int a(int paramInt)
+  {
+    return paramInt;
+  }
   
-  public abstract void a(bkvu parambkvu);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public boolean a(int paramInt)
+  {
+    return paramInt > 0;
+  }
 }
 
 

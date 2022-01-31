@@ -1,63 +1,18 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiFeedInfo;
 
-final class bjll
-  implements ServiceConnection
+public final class bjll
+  implements Parcelable.Creator<WeishiFeedInfo>
 {
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public WeishiFeedInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZonePluginManger", 2, "onServiceConnected");
-    }
-    if (bjlk.a() == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZonePluginManger", 2, "return WeakReference<OnPluginInterfaceReadyListener> is null");
-      }
-      bjlk.a();
-      return;
-    }
-    paramComponentName = (bjlm)bjlk.a().get();
-    if (paramComponentName == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZonePluginManger", 2, "return OnPluginManagerLoadedListener is null");
-      }
-      bjlk.a();
-      return;
-    }
-    if ((paramIBinder != null) && (paramIBinder.isBinderAlive()) && (paramIBinder.pingBinder()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZonePluginManger", 2, "binder alive");
-      }
-      bjlk.a = new bjko(bjlw.a(paramIBinder));
-      paramComponentName.onQzonePluginClientReady(bjlk.a);
-    }
-    for (;;)
-    {
-      bjlk.a();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("QZonePluginManger", 2, "binder not alive");
-      }
-      paramComponentName.onQzonePluginClientReady(null);
-    }
+    return new WeishiFeedInfo(paramParcel);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public WeishiFeedInfo[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "onServiceDisconnected");
-    }
-    if (bjlk.a != null)
-    {
-      bjlk.a.b();
-      bjlk.a = null;
-    }
+    return new WeishiFeedInfo[paramInt];
   }
 }
 

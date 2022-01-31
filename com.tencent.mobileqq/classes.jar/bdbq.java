@@ -1,81 +1,46 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.cache.Sizeable;
+import com.tencent.mobileqq.util.FaceInfo;
+import java.lang.ref.WeakReference;
 
 public class bdbq
+  implements bdbo
 {
-  public static Bitmap a(String paramString)
+  public String a;
+  public WeakReference<bdbk> a;
+  
+  bdbq(bdbm parambdbm, bdbk parambdbk)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambdbk);
+    if ((parambdbk != null) && (parambdbk.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo != null)) {
+      this.jdField_a_of_type_JavaLangString = parambdbk.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString;
     }
-    if (BaseApplicationImpl.sImageCache != null)
-    {
-      paramString = BaseApplicationImpl.sImageCache.get(paramString);
-      if ((paramString != null) && ((paramString instanceof Bitmap))) {
-        return (Bitmap)paramString;
-      }
-    }
-    return null;
   }
   
-  public static Sizeable a(String paramString)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (BaseApplicationImpl.sImageCache != null)
-    {
-      paramString = BaseApplicationImpl.sImageCache.get(paramString);
-      if ((paramString != null) && ((paramString instanceof Sizeable))) {
-        return (Sizeable)paramString;
-      }
-    }
-    return null;
+    this.jdField_a_of_type_Bdbm.a(paramBoolean, 11, paramString, this.jdField_a_of_type_Bdbm.jdField_a_of_type_Bdbq);
   }
   
-  public static sfc a(String paramString)
+  public void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (BaseApplicationImpl.sImageCache != null)
-    {
-      paramString = BaseApplicationImpl.sImageCache.get(paramString);
-      if ((paramString instanceof sfc)) {
-        return (sfc)paramString;
-      }
-    }
-    return null;
+    this.jdField_a_of_type_Bdbm.a(paramBoolean1, 32, paramString, this.jdField_a_of_type_Bdbm.jdField_a_of_type_Bdbq);
   }
   
-  public static void a(String paramString, Bitmap paramBitmap)
+  public void b(boolean paramBoolean, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    while (BaseApplicationImpl.sImageCache == null) {
+    this.jdField_a_of_type_Bdbm.a(paramBoolean, 1, paramString, this.jdField_a_of_type_Bdbm.jdField_a_of_type_Bdbq);
+  }
+  
+  public void b(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  {
+    if ((this.jdField_a_of_type_Bdbm.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramInt != this.jdField_a_of_type_Bdbm.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b)) {
       return;
     }
-    BaseApplicationImpl.sImageCache.put(paramString, paramBitmap);
+    this.jdField_a_of_type_Bdbm.a(paramBoolean1, 16, paramString, this.jdField_a_of_type_Bdbm.jdField_a_of_type_Bdbq);
   }
   
-  public static void a(String paramString, Sizeable paramSizeable)
+  public void c(boolean paramBoolean, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramSizeable == null)) {}
-    while (BaseApplicationImpl.sImageCache == null) {
-      return;
-    }
-    BaseApplicationImpl.sImageCache.put(paramString, paramSizeable);
-  }
-  
-  public static void a(String paramString, sfc paramsfc)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramsfc == null)) {}
-    while (BaseApplicationImpl.sImageCache == null) {
-      return;
-    }
-    BaseApplicationImpl.sImageCache.put(paramString, paramsfc);
+    this.jdField_a_of_type_Bdbm.a(paramBoolean, 4, paramString, this.jdField_a_of_type_Bdbm.jdField_a_of_type_Bdbq);
   }
 }
 

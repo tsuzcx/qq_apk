@@ -1,85 +1,119 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class bcin
-  extends alkl
+public class bcin
 {
-  static
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private ArrayList<bcij> jdField_a_of_type_JavaUtilArrayList;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private int jdField_c_of_type_Int;
+  private long jdField_c_of_type_Long;
+  
+  public bcin()
   {
-    if (!bcil.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilArrayList = null;
   }
   
-  bcin(bcil parambcil) {}
-  
-  protected void a(Object arg1)
+  public bcin(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ArrayList<bcij> paramArrayList)
   {
-    boolean bool = true;
-    if ((??? == null) || (!(??? instanceof bbpe))) {
-      return;
-    }
-    Object localObject2 = (bbpe)???;
-    synchronized (this.jdField_a_of_type_Bcil)
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Long = (System.currentTimeMillis() + paramInt1 * 1000);
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt3;
+    this.jdField_c_of_type_Int = (paramInt4 * 1000);
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public bcij a(long paramLong)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      if (((bbpe)localObject2).jdField_b_of_type_Long != this.jdField_a_of_type_Bcil.jdField_a_of_type_Long) {
-        return;
+      bcij localbcij = (bcij)localIterator.next();
+      if (localbcij.a() == paramLong) {
+        return localbcij;
       }
     }
-    bbnr localbbnr1 = (bbnr)this.jdField_a_of_type_Bcil.b.get(((bbpe)localObject2).a);
-    if ((!jdField_a_of_type_Boolean) && (localbbnr1 == null)) {
-      throw new AssertionError();
+    return null;
+  }
+  
+  public ArrayList<bcij> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public List<Long> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(Long.valueOf(((bcij)localIterator.next()).a()));
     }
-    if (localbbnr1 == null) {
-      return;
-    }
-    int i = localbbnr1.e;
-    if ((localbbnr1.b == null) && (((bbpe)localObject2).e != null)) {
-      this.jdField_a_of_type_Bcil.c.put(((bbpe)localObject2).e, localbbnr1);
-    }
-    localbbnr1.a((bbpe)localObject2, this.jdField_a_of_type_Bcil.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (((bbpe)localObject2).jdField_b_of_type_Int == 12)
+    return localArrayList;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_c_of_type_Long = paramLong;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      localObject2 = (bbnr)this.jdField_a_of_type_Bcil.c.get(localbbnr1.f);
-      if (localObject2 != null) {
-        ((bbnr)localObject2).a(localbbnr1);
-      }
-      this.jdField_a_of_type_Bcil.d(localbbnr1);
-      return;
-    }
-    if (localbbnr1.jdField_a_of_type_Boolean) {
-      if (((bbpe)localObject2).jdField_b_of_type_Int != 11) {
-        break label399;
+      bcij localbcij = (bcij)localIterator.next();
+      if ((localbcij.a() != paramLong) && (localbcij.a() == 0)) {
+        return false;
       }
     }
-    for (;;)
-    {
-      for (localbbnr1.jdField_a_of_type_Boolean = bool;; localbbnr1.jdField_a_of_type_Boolean = true) {
-        do
-        {
-          if (!"/".equals(localbbnr1.f))
-          {
-            bbnr localbbnr2 = (bbnr)this.jdField_a_of_type_Bcil.c.get(localbbnr1.f);
-            if ((localbbnr2 != null) && ((localbbnr1.e == 9) || (localbbnr1.e == 10) || (localbbnr1.e == 11))) {
-              localbbnr2.a(localbbnr1);
-            }
-          }
-          if ((((bbpe)localObject2).jdField_b_of_type_Int == 6) && (i != 6))
-          {
-            localbbnr1.a((int)NetConnInfoCenter.getServerTime());
-            localbbnr1.b((int)NetConnInfoCenter.getServerTime());
-            this.jdField_a_of_type_Bcil.e(localbbnr1);
-          }
-          this.jdField_a_of_type_Bcil.d(localbbnr1);
-          return;
-        } while ((((bbpe)localObject2).jdField_b_of_type_Int != 11) || (localbbnr1.e == 11));
-      }
-      label399:
-      bool = false;
-    }
+    return true;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public long b()
+  {
+    return this.jdField_c_of_type_Long;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public int c()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_b_of_type_Long = paramInt;
   }
 }
 

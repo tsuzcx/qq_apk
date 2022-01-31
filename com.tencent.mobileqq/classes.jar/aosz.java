@@ -1,9 +1,41 @@
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class aosz
 {
-  public String a;
-  public String[] a;
-  public String b;
-  public String[] b;
+  private int a;
+  
+  public aosz()
+  {
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public static aosz a(aoko paramaoko)
+  {
+    aosz localaosz = new aosz();
+    if (paramaoko != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SysSuspiciousConfBean", 2, "parse taskid->" + paramaoko.jdField_a_of_type_Int + " content->" + paramaoko.jdField_a_of_type_JavaLangString);
+      }
+    }
+    try
+    {
+      localaosz.jdField_a_of_type_Int = new JSONObject(paramaoko.jdField_a_of_type_JavaLangString).optInt("suspiciousSwitch", 1);
+      return localaosz;
+    }
+    catch (JSONException paramaoko)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("SysSuspiciousConfBean", 2, "parse error->" + paramaoko.toString());
+    }
+    return localaosz;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
 }
 
 

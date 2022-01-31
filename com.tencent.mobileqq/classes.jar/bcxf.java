@@ -1,14 +1,12 @@
-public abstract interface bcxf
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class bcxf
 {
-  public abstract void a(boolean paramBoolean, String paramString);
-  
-  public abstract void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2);
-  
-  public abstract void b(boolean paramBoolean, String paramString);
-  
-  public abstract void b(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2);
-  
-  public abstract void c(boolean paramBoolean, String paramString);
+  public View a;
+  public ImageView a;
+  public TextView a;
 }
 
 

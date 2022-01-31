@@ -1,6 +1,8 @@
 public abstract interface vki
 {
-  public abstract void a(String paramString);
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

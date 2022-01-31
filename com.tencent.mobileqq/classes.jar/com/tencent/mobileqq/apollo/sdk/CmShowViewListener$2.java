@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import akxn;
-import akxo;
-import akxr;
-import akyc;
+import alcc;
+import alcd;
+import alcg;
+import alcr;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.Iterator;
 public class CmShowViewListener$2
   implements Runnable
 {
-  public CmShowViewListener$2(akyc paramakyc, boolean paramBoolean, Object paramObject) {}
+  public CmShowViewListener$2(alcr paramalcr, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {
@@ -20,23 +20,23 @@ public class CmShowViewListener$2
     {
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangObject != null))
       {
-        if (akyc.a(this.this$0).get() == null) {
+        if (alcr.a(this.this$0).get() == null) {
           return;
         }
         Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaLangObject;
         if ((localObject2 != null) && (((ArrayList)localObject2).size() != 0))
         {
-          Object localObject1 = (akxn)akyc.a(this.this$0).get();
-          akxo localakxo = ((akxn)localObject1).a();
-          localObject1 = ((akxn)localObject1).a();
-          if ((localakxo != null) && (localObject1 != null))
+          Object localObject1 = (alcc)alcr.a(this.this$0).get();
+          alcd localalcd = ((alcc)localObject1).a();
+          localObject1 = ((alcc)localObject1).a();
+          if ((localalcd != null) && (localObject1 != null))
           {
             localObject2 = ((ArrayList)localObject2).iterator();
             while (((Iterator)localObject2).hasNext())
             {
               String str = (String)((Iterator)localObject2).next();
-              if (str.equals(((akxr)localObject1).b)) {
-                localakxo.a(str, true);
+              if (str.equals(((alcg)localObject1).b)) {
+                localalcd.a(str, true);
               }
             }
           }

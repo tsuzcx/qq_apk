@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo.sendpanel;
 
-import bmxp;
-import bmxz;
+import bncb;
+import bncl;
 
 public class SendPanelManager$4
   implements Runnable
 {
-  public SendPanelManager$4(bmxz parambmxz) {}
+  public SendPanelManager$4(bncl parambncl) {}
   
   public void run()
   {
-    bmxz.a(this.this$0).a(bmxz.a(this.this$0));
+    bncl.a(this.this$0).a(bncl.a(this.this$0));
   }
 }
 

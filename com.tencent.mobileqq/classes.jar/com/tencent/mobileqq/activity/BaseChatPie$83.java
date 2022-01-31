@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import acex;
+import acjm;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -18,7 +18,7 @@ class BaseChatPie$83
   
   public void run()
   {
-    acex.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    acjm.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a, false);
     Object localObject = EmojiStickerManager.a(this.a);
     if (localObject != null)

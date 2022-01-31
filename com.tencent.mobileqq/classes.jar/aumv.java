@@ -1,67 +1,142 @@
-import android.content.Intent;
-import android.media.MediaPlayer;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.IntimateInfo;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
-public final class aumv
-  extends Handler
+public class aumv
+  implements View.OnClickListener, aunp, aunq, aunr
 {
-  public aumv(QQPlayerService paramQQPlayerService, Looper paramLooper)
+  private long jdField_a_of_type_Long;
+  public Context a;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  auno jdField_a_of_type_Auno;
+  MultiCardFragment jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment;
+  private Long jdField_a_of_type_JavaLangLong;
+  public boolean a;
+  
+  private void b(boolean paramBoolean)
   {
-    super(paramLooper);
+    View localView;
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378765);
+      if (localView != null) {
+        if (!paramBoolean) {
+          break label33;
+        }
+      }
+    }
+    label33:
+    for (int i = 0;; i = 8)
+    {
+      localView.setVisibility(i);
+      return;
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public View a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      QQPlayerService.a(this.a, (Intent)paramMessage.obj);
-    }
-    for (;;)
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a()
+  {
+    a(false);
+  }
+  
+  public void a(long paramLong, ArrayList<Long> paramArrayList)
+  {
+    if (this.jdField_a_of_type_Long != paramLong) {}
+    do
     {
       return;
-      try
+      if ((paramArrayList == null) || (paramArrayList.size() == 0))
       {
-        BaseApplicationImpl.getContext().unregisterReceiver(QQPlayerService.a(this.a));
-        paramMessage = (aumu)paramMessage.obj;
-        if (paramMessage == null) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("QQPlayerService", 2, "release player");
-        }
-        if (paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-        {
-          paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-          if (QQPlayerService.a() == paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer) {
-            QQPlayerService.a(null);
-          }
-        }
-        if (paramMessage.jdField_a_of_type_AndroidOsLooper != null) {
-          paramMessage.jdField_a_of_type_AndroidOsLooper.quit();
-        }
-        if (QQPlayerService.d() != paramMessage.jdField_a_of_type_ComTencentMobileqqMusicSongInfo) {
-          continue;
-        }
-        QQPlayerService.a(null);
+        b(true);
+        a(null);
         return;
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQPlayerService", 2, "onDestroy unregisterReceiver exception ");
-          }
-        }
-      }
+      b(false);
+    } while (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment == null);
+    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment.a(paramArrayList, null, null);
+  }
+  
+  public void a(long paramLong, HashMap<Long, String> paramHashMap)
+  {
+    if ((this.jdField_a_of_type_Long != paramLong) || (paramHashMap == null)) {}
+    while (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment == null) {
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment.a(null, null, paramHashMap);
+  }
+  
+  public void a(String paramString)
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetTextView != null)) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(null);
+    }
+  }
+  
+  public void a(ArrayList<Long> paramArrayList, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramArrayList == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onPreLoadData : ");
+          localStringBuilder.append(paramArrayList.size());
+          localStringBuilder.append("  ");
+          Iterator localIterator = paramArrayList.iterator();
+          while (localIterator.hasNext())
+          {
+            localStringBuilder.append((Long)localIterator.next());
+            localStringBuilder.append(" ");
+          }
+          QLog.d("MultiCardContainer", 2, "onPreLoadData : " + localStringBuilder.toString());
+        }
+      } while (this.jdField_a_of_type_Auno == null);
+      if (paramBoolean1) {
+        this.jdField_a_of_type_Auno.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, paramArrayList, this);
+      }
+    } while (!paramBoolean2);
+    this.jdField_a_of_type_Auno.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, paramArrayList, this);
+  }
+  
+  public void a(HashMap<Long, IntimateInfo> paramHashMap)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment.a(null, paramHashMap, null);
+    }
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void onClick(View paramView)
+  {
+    long l = SystemClock.elapsedRealtime();
+    if ((this.jdField_a_of_type_JavaLangLong != null) && (l - this.jdField_a_of_type_JavaLangLong.longValue() < 500L)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangLong = Long.valueOf(l);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    a(true);
   }
 }
 

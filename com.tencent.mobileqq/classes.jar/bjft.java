@@ -1,13 +1,18 @@
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudWrite.StDoFollowRsp;
+import java.util.concurrent.CountDownLatch;
 
 class bjft
+  implements zac<FeedCloudWrite.StDoFollowRsp>
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<bjfi> jdField_a_of_type_JavaLangRefWeakReference;
-  int b;
+  bjft(bjfr parambjfr, boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
   
-  private bjft(bjfl parambjfl) {}
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoFollowRsp paramStDoFollowRsp)
+  {
+    QLog.i("QzoneIPCModule", 1, "flow qq circle resp " + paramBoolean + " " + paramLong + " " + paramString);
+    this.jdField_a_of_type_ArrayOfBoolean[0] = paramBoolean;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+  }
 }
 
 

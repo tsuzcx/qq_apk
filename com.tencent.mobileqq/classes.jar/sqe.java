@@ -90,14 +90,14 @@ public class sqe
       if ((paramString != null) && (paramString.a != null) && (QLog.isColorLevel())) {
         QLog.d("Viola.VideoPlayManager", 2, "播放状态回调 onError() " + paramrjn + ", vid=" + paramString.a.a);
       }
-      alpo.a(2131716721);
+      alud.a(2131716733);
       if (paramInt1 != 123) {
         break label290;
       }
       if (paramInt2 != 103) {
         break label250;
       }
-      paramrjn = alpo.a(2131716701) + paramInt1 + "-" + paramInt2 + ")";
+      paramrjn = alud.a(2131716713) + paramInt1 + "-" + paramInt2 + ")";
     }
     for (;;)
     {
@@ -108,29 +108,29 @@ public class sqe
       paramrjn = "";
       break;
       label250:
-      paramrjn = alpo.a(2131716697) + paramInt1 + "-" + paramInt2 + ")";
+      paramrjn = alud.a(2131716709) + paramInt1 + "-" + paramInt2 + ")";
       continue;
       label290:
       if (paramInt1 == 122)
       {
         if (paramInt2 == 204) {
-          paramrjn = alpo.a(2131716717) + paramInt1 + "-" + paramInt2 + ")";
+          paramrjn = alud.a(2131716729) + paramInt1 + "-" + paramInt2 + ")";
         } else if (paramInt2 == 202) {
-          paramrjn = alpo.a(2131716714) + paramInt1 + "-" + paramInt2 + ")";
+          paramrjn = alud.a(2131716726) + paramInt1 + "-" + paramInt2 + ")";
         } else {
-          paramrjn = alpo.a(2131716725) + paramInt1 + "-" + paramInt2 + ")";
+          paramrjn = alud.a(2131716737) + paramInt1 + "-" + paramInt2 + ")";
         }
       }
       else if (paramInt1 == 101)
       {
         if (paramInt2 == 80) {
-          paramrjn = alpo.a(2131716707) + paramInt1 + "-" + paramInt2 + ")";
+          paramrjn = alud.a(2131716719) + paramInt1 + "-" + paramInt2 + ")";
         } else {
-          paramrjn = alpo.a(2131716698) + paramInt1 + "-" + paramInt2 + ")";
+          paramrjn = alud.a(2131716710) + paramInt1 + "-" + paramInt2 + ")";
         }
       }
       else {
-        paramrjn = alpo.a(2131716722) + paramInt1 + "-" + paramInt2 + ")";
+        paramrjn = alud.a(2131716734) + paramInt1 + "-" + paramInt2 + ")";
       }
     }
     return false;

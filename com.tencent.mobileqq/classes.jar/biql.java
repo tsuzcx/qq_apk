@@ -1,17 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.io.File;
 
-class biql
-  implements DialogInterface.OnClickListener
+public abstract interface biql
 {
-  biql(biqi parambiqi) {}
+  public abstract void a(File paramFile1, File paramFile2);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.b = true;
-    biqi.a(this.a, 2);
-    biqi.c(this.a);
-  }
+  public abstract void a(File paramFile1, File paramFile2, File paramFile3);
+  
+  public abstract void a(File paramFile1, File paramFile2, Throwable paramThrowable);
 }
 
 

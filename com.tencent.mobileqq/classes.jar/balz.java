@@ -1,22 +1,10 @@
-class balz
-  implements bama
+public abstract interface balz
 {
-  balz(baly parambaly, bamb parambamb) {}
+  public abstract void a(int paramInt);
   
-  public void a()
-  {
-    this.jdField_a_of_type_Bamb.a.d();
-  }
+  public abstract void a(String paramString);
   
-  public void b()
-  {
-    this.jdField_a_of_type_Bamb.a.c();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Bamb.a.f();
-  }
+  public abstract void b(int paramInt);
 }
 
 

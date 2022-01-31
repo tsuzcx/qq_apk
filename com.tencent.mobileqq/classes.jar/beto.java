@@ -1,12 +1,46 @@
-public abstract interface beto
+import android.os.Handler;
+import android.os.Message;
+
+class beto
+  extends Handler
 {
-  public abstract void a();
+  public int a;
   
-  public abstract void a(boolean paramBoolean);
+  beto(betn parambetn) {}
   
-  public abstract void b();
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public abstract void c();
+  public void handleMessage(Message paramMessage)
+  {
+    if (!this.jdField_a_of_type_Betn.isVisible())
+    {
+      this.jdField_a_of_type_Betn.b = this.jdField_a_of_type_Int;
+      return;
+    }
+    if (this.jdField_a_of_type_Betn.b > this.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_Betn.c(this.jdField_a_of_type_Betn.b - 1);
+      sendEmptyMessageDelayed(0, this.jdField_a_of_type_Betn.e);
+      return;
+    }
+    if (this.jdField_a_of_type_Betn.b < this.jdField_a_of_type_Int)
+    {
+      int i = this.jdField_a_of_type_Betn.b + this.jdField_a_of_type_Betn.f;
+      if (i <= this.jdField_a_of_type_Int) {
+        this.jdField_a_of_type_Betn.c(i);
+      }
+      for (;;)
+      {
+        sendEmptyMessageDelayed(0, this.jdField_a_of_type_Betn.e);
+        return;
+        this.jdField_a_of_type_Betn.c(this.jdField_a_of_type_Int);
+      }
+    }
+    removeMessages(0);
+  }
 }
 
 

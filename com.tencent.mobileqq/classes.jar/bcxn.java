@@ -1,31 +1,22 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.qphone.base.util.QLog;
+
 class bcxn
-  extends alox
+  implements DialogInterface.OnDismissListener
 {
-  private bcxn(bcxl parambcxl) {}
+  bcxn(bcxl parambcxl) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a(4, paramBoolean, new Object[] { paramString });
-  }
-  
-  public void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(39, paramBoolean, new Object[] { paramString });
-  }
-  
-  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(6, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(5, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(30, paramBoolean, new Object[] { paramString });
+    if ((this.a.jdField_a_of_type_Int == -1) && ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)))
+    {
+      ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopShareUtility", 2, "mShareActionSheet noItemClick, onDismiss");
+      }
+    }
   }
 }
 

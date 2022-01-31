@@ -1,20 +1,11 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.ui.MainPageFragment;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.runtime.flutter.SurfaceFlutterVideoView;
 
 public class bhhw
-  implements AsyncResult
+  implements bgrr
 {
-  public bhhw(MainPageFragment paramMainPageFragment) {}
+  public bhhw(SurfaceFlutterVideoView paramSurfaceFlutterVideoView) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    if ((paramBoolean) && (paramJSONObject != null))
-    {
-      paramJSONObject = paramJSONObject.optString("token");
-      MainPageFragment.a(this.a, paramJSONObject);
-    }
-  }
+  public void a(bgrq parambgrq, int paramInt) {}
 }
 
 

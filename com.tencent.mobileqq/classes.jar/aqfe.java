@@ -1,16 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
 public class aqfe
-  implements View.OnClickListener
+  implements aqik
 {
-  public aqfe(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
+  public aqfe(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, int paramInt)
   {
-    bcyw.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_JavaLangString, 0);
+    if (!paramString.equals(this.a.b))
+    {
+      this.a.b = paramString;
+      if (!aqbg.a.equals(this.a.b)) {
+        break label186;
+      }
+      ExtendFriendSquareFragment.a(this.a, false);
+    }
+    label186:
+    for (boolean bool1 = ExtendFriendSquareFragment.c(this.a);; bool1 = false)
+    {
+      boolean bool2 = ExtendFriendSquareFragment.a(this.a, false, paramString);
+      long l = Math.abs(System.currentTimeMillis() - ExtendFriendSquareFragment.a(this.a));
+      if ((!bool2) || (l > 60000L) || (bool1))
+      {
+        ExtendFriendSquareFragment.b(this.a, false);
+        this.a.jdField_a_of_type_Aqfh.a();
+        this.a.jdField_a_of_type_Aqfh.notifyDataSetChanged();
+        this.a.jdField_a_of_type_Aqfh.a(false);
+        ExtendFriendSquareFragment.c(this.a);
+        ExtendFriendSquareFragment.a(this.a).removeMessages(11);
+        ExtendFriendSquareFragment.a(this.a).sendEmptyMessageDelayed(11, 500L);
+        return;
+      }
+      ExtendFriendSquareFragment.b(this.a, true);
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    PublicFragmentActivity.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, ExtendFriendSearchFragment.class, 3);
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(0, 2130772324);
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009417", "0X8009417", 0, 0, "", "", "", "");
   }
 }
 

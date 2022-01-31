@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.app;
 
-import allq;
-import arni;
+import alqf;
+import arrr;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import protocol.KQQConfig.GetResourceRespInfo;
 
 public class ConfigHandler$4
   implements Runnable
 {
-  public ConfigHandler$4(allq paramallq, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public ConfigHandler$4(alqf paramalqf, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   public void run()
   {
-    arni.a(this.this$0.app, MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer);
+    arrr.a(this.this$0.app, MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer);
   }
 }
 

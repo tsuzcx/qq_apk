@@ -1,15 +1,8 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
-class bhzt
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bhzt
 {
-  bhzt(bhzs parambhzs, bhzk parambhzk) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.jdField_a_of_type_Bhzs.a(paramValueAnimator.getAnimatedFraction());
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

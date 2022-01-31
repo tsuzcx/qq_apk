@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class TroopAssistantData
-  extends awbv
+  extends awge
 {
   public long lastdrafttime;
   public long lastmsgtime;
-  @awdj
+  @awhs
   public String troopUin;
 }
 

@@ -1,36 +1,54 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupStoryInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqIconPostfix;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class vdf
-  extends unf
+  extends uub
 {
-  public List<StoryVideoItem> a;
+  private ArrayList<String> a;
   
-  public vdf(qqstory_service.RspBatchGetVideoInfo paramRspBatchGetVideoInfo)
+  public vdf(ArrayList<String> paramArrayList)
   {
-    super(paramRspBatchGetVideoInfo.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (paramRspBatchGetVideoInfo.vid_info_list.has())
-    {
-      paramRspBatchGetVideoInfo = paramRspBatchGetVideoInfo.vid_info_list.get().iterator();
-      while (paramRspBatchGetVideoInfo.hasNext())
-      {
-        qqstory_struct.GroupStoryInfo localGroupStoryInfo = (qqstory_struct.GroupStoryInfo)paramRspBatchGetVideoInfo.next();
-        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-        localStoryVideoItem.convertFrom("Q.qqstory.shareGroup:GetShareGroupVideoInfoResponse", localGroupStoryInfo);
-        this.jdField_a_of_type_JavaUtilList.add(localStoryVideoItem);
-      }
-    }
+    this.a = paramArrayList;
   }
   
-  public String toString()
+  public String a()
   {
-    return "GetShareGroupVideoInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", mVideoItemList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    return uqn.a("StorySvc.batch_get_user_icon_info");
+  }
+  
+  public uuc a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspIconPostfix localRspIconPostfix = new qqstory_service.RspIconPostfix();
+    try
+    {
+      localRspIconPostfix.mergeFrom(paramArrayOfByte);
+      return new vdg(localRspIconPostfix);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.d("GetUserIconHandler", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqIconPostfix localReqIconPostfix = new qqstory_service.ReqIconPostfix();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (!TextUtils.isEmpty(str)) {
+        localReqIconPostfix.union_id_list.add(ByteStringMicro.copyFromUtf8(str));
+      }
+    }
+    return localReqIconPostfix.toByteArray();
   }
 }
 

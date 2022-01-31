@@ -1,8 +1,22 @@
-public abstract interface addq
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class addq
+  extends altm
 {
-  public abstract void a();
+  public addq(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public abstract void b();
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
+    while (this.a.a == null) {
+      return;
+    }
+    paramString = this.a.app.a(this.a.app.getCurrentAccountUin(), (byte)3, false);
+    this.a.a.setImageBitmap(paramString);
+  }
 }
 
 

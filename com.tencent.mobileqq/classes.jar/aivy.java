@@ -1,160 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.MD5;
-import java.io.File;
-import mqq.app.AppRuntime;
+import android.content.res.Resources;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.widget.ksong.KSongView;
 
-public abstract class aivy
+public class aivy
+  extends bewx
 {
-  public static boolean b = TextUtils.isEmpty(c());
-  public AppRuntime a;
+  public aivy(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public aivy(AppRuntime paramAppRuntime)
+  public void a()
   {
-    this.a = paramAppRuntime;
-  }
-  
-  private int a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return 0;
-      if (paramString.equalsIgnoreCase("WiFi")) {
-        return 1;
-      }
-      if (paramString.equalsIgnoreCase("4G")) {
-        return 4;
-      }
-      if (paramString.equalsIgnoreCase("3G")) {
-        return 3;
-      }
-      if (paramString.equalsIgnoreCase("2G")) {
-        return 2;
-      }
-    } while (!paramString.equalsIgnoreCase("5G"));
-    return 6;
-  }
-  
-  public static String a()
-  {
-    return a(0);
-  }
-  
-  public static String a(int paramInt)
-  {
-    if (paramInt == 1) {
-      return b();
-    }
-    String str = c();
-    if (!TextUtils.isEmpty(str))
-    {
-      b = false;
-      return str;
-    }
-    b = true;
-    return b();
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      String str = b(paramString, paramInt);
-      if ((!TextUtils.isEmpty(str)) && (new File(str).exists()))
-      {
-        aiwy.a(paramString, paramInt, NetConnInfoCenter.getServerTimeMillis());
-        return str;
-      }
-    }
-    return null;
-  }
-  
-  public static String a(AppRuntime paramAppRuntime)
-  {
-    return ajal.c + paramAppRuntime.getAccount() + "/" + ".preloaduni" + "/";
-  }
-  
-  public static String a(AppRuntime paramAppRuntime, String paramString)
-  {
-    return a(paramAppRuntime) + paramString;
-  }
-  
-  public static String b()
-  {
-    return ajal.c + ".preloaduni" + "/";
-  }
-  
-  public static String b(String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    paramString = MD5.toMD5(paramString);
-    return a(paramInt) + paramString;
-  }
-  
-  public static String c()
-  {
-    String str1 = null;
-    try
-    {
-      String str2 = ajal.a;
-      if (!TextUtils.isEmpty(str2)) {
-        str1 = str2 + ".preloaduni" + "/";
-      }
-      return str1;
-    }
-    catch (Throwable localThrowable) {}
-    return null;
-  }
-  
-  public static String e(String paramString)
-  {
-    return a(paramString, 0);
-  }
-  
-  public static String f(String paramString)
-  {
-    return b(paramString, 0);
-  }
-  
-  public abstract void a(DownloadParam paramDownloadParam, aivw paramaivw);
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return true;
-    }
-    paramString = paramString.split("\\|");
-    int j = bdee.a(this.a.getApplication());
-    int k = paramString.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= k) {
-        break label57;
-      }
-      if (a(paramString[i]) == j) {
-        break;
-      }
-      i += 1;
-    }
-    label57:
-    return false;
-  }
-  
-  public void c(String paramString, aivw paramaivw)
-  {
-    DownloadParam localDownloadParam = new DownloadParam();
-    localDownloadParam.url = paramString;
-    a(localDownloadParam, paramaivw);
-  }
-  
-  public String d(String paramString)
-  {
-    return null;
+    super.a();
+    this.a.b = false;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a();
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.getResources().getDrawable(2130846847));
+    this.a.c.setText(alud.a(2131713697));
   }
 }
 

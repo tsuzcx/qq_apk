@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.net.Proxy;
 
-class bjsr
-  implements bjbi
+final class bjsr
+  extends bjsq
 {
-  bjsr(bjsq parambjsq, String paramString) {}
-  
-  public void a()
+  public int a()
   {
-    if (this.jdField_a_of_type_Bjsq.a != null)
-    {
-      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playAnimationFinish:1})";
-      this.jdField_a_of_type_Bjsq.a.callJs(str);
-    }
+    return Proxy.getDefaultPort();
+  }
+  
+  public String a()
+  {
+    return Proxy.getDefaultHost();
   }
 }
 

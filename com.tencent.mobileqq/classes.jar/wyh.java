@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditPicActivity;
 
-final class wyh
-  implements Animation.AnimationListener
+public class wyh
+  extends azcv
 {
-  wyh(View paramView) {}
+  public wyh(EditPicActivity paramEditPicActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.a.setAnimation(null);
+    wxe.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
+    wxs localwxs = (wxs)this.a.a.a(wxs.class);
+    if (localwxs != null) {
+      localwxs.ad_();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

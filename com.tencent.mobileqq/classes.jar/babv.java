@@ -1,19 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.teamwork.ReSendCmd;
+import com.tencent.hlyyb.downloader.DownloaderTask;
 
-public final class babv
-  implements Parcelable.Creator<ReSendCmd>
+public abstract interface babv
 {
-  public ReSendCmd a(Parcel paramParcel)
-  {
-    return new ReSendCmd(paramParcel);
-  }
+  public abstract void a(DownloaderTask paramDownloaderTask);
   
-  public ReSendCmd[] a(int paramInt)
-  {
-    return new ReSendCmd[paramInt];
-  }
+  public abstract void b(DownloaderTask paramDownloaderTask);
+  
+  public abstract void c(DownloaderTask paramDownloaderTask);
+  
+  public abstract void d(DownloaderTask paramDownloaderTask);
+  
+  public abstract void e(DownloaderTask paramDownloaderTask);
+  
+  public abstract void f(DownloaderTask paramDownloaderTask);
 }
 
 

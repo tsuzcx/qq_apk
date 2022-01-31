@@ -10,7 +10,7 @@ final class tev
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (xoo.a(this.jdField_a_of_type_AndroidAppActivity))
+    if (xsx.a(this.jdField_a_of_type_AndroidAppActivity))
     {
       tlq.a(this.jdField_a_of_type_AndroidAppActivity, "biz_src_jc_gzh_weishi", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
       tjr.a(114, this.jdField_a_of_type_Int, this.b, null);

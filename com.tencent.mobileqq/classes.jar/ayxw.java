@@ -1,94 +1,53 @@
-import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_rsp;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.MobileQQ;
-import mqq.app.Packet;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ayxw
-  extends MSFServlet
+  extends ayvx
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private View a;
+  public Button a;
+  
+  public ayxw(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramFromServiceMsg != null) {}
-    for (;;)
-    {
-      try
-      {
-        if (paramFromServiceMsg.getResultCode() == 1000)
-        {
-          paramFromServiceMsg = biyq.a(paramFromServiceMsg.getWupBuffer(), new int[1]);
-          if (paramFromServiceMsg != null)
-          {
-            if ((getAppRuntime() != null) && (getAppRuntime().getApplication() != null))
-            {
-              MobileQQ localMobileQQ = getAppRuntime().getApplication();
-              if ((paramFromServiceMsg.map_ext == null) || (!"1".equals(paramFromServiceMsg.map_ext.get("show_feeds")))) {
-                break label260;
-              }
-              bool = true;
-              if (paramFromServiceMsg.map_ext == null)
-              {
-                paramIntent = null;
-                bjdh.a(localMobileQQ, bool, paramIntent);
-              }
-            }
-            else
-            {
-              paramIntent = new Bundle();
-              paramIntent.putSerializable("data", paramFromServiceMsg);
-              notifyObserver(null, 1004, true, paramIntent, avqu.class);
-              return;
-            }
-            paramIntent = (String)paramFromServiceMsg.map_ext.get("title_name");
-            continue;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("QzonePublicMsgServlet", 2, "inform QzonePublicMsgServlet isSuccess false");
-          }
-          notifyObserver(null, 1004, false, new Bundle(), avqu.class);
-          return;
-        }
-      }
-      catch (Throwable paramIntent)
-      {
-        QLog.e("QzonePublicMsgServlet", 1, paramIntent + "onReceive error");
-        notifyObserver(null, 1004, false, new Bundle(), avqu.class);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QzonePublicMsgServlet", 2, "inform QzonePublicMsgServlet resultcode fail.");
-      }
-      notifyObserver(null, 1004, false, new Bundle(), avqu.class);
-      if (paramFromServiceMsg != null) {}
-      return;
-      label260:
-      boolean bool = false;
-    }
+    super(paramViewGroup, paramInt);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public Button a()
   {
-    long l = paramIntent.getLongExtra("key_uin", 0L);
-    paramIntent = paramIntent.getStringExtra("has_photo");
-    Object localObject = new HashMap();
-    ((Map)localObject).put("has_photo", paramIntent);
-    biyq localbiyq = new biyq(l, (Map)localObject);
-    localObject = localbiyq.encode();
-    paramIntent = (Intent)localObject;
-    if (localObject == null)
+    return this.jdField_a_of_type_AndroidWidgetButton;
+  }
+  
+  protected void a()
+  {
+    this.h = ((TextView)this.b.findViewById(2131371161));
+    this.e = ((ImageView)this.b.findViewById(2131361795));
+    this.i = ((TextView)this.b.findViewById(2131375729));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.b.findViewById(2131375716));
+    this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131689628));
+    this.k = ((TextView)this.b.findViewById(2131376899));
+    this.j = ((TextView)this.b.findViewById(2131375726));
+    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131378980);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    View localView;
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localbiyq.uniKey());
-      paramIntent = new byte[4];
+      localView = this.jdField_a_of_type_AndroidViewView;
+      if (!paramBoolean) {
+        break label24;
+      }
     }
-    paramPacket.setTimeout(30000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localbiyq.uniKey());
-    paramPacket.putSendData(paramIntent);
+    label24:
+    for (int i = 0;; i = 8)
+    {
+      localView.setVisibility(i);
+      return;
+    }
   }
 }
 

@@ -34,7 +34,7 @@ public class smu
       if (!ViolaFragment.a(this.a))
       {
         this.a.a(Boolean.valueOf(false));
-        aizy.a(this.a.getActivity(), true);
+        ajen.a(this.a.getActivity(), true);
         ViolaFragment.a(this.a, true);
       }
     }
@@ -43,7 +43,7 @@ public class smu
       return;
     }
     this.a.a(Boolean.valueOf(true));
-    aizy.a(this.a.getActivity(), false);
+    ajen.a(this.a.getActivity(), false);
     ViolaFragment.a(this.a, false);
   }
   

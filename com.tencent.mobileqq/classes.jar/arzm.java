@@ -1,24 +1,10 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-
-final class arzm
-  implements DialogInterface.OnClickListener
+public abstract interface arzm
 {
-  arzm(long paramLong, int paramInt, Activity paramActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardShareByServerHelper", 2, "-->qbShowShareResultDialog--stay");
-    }
-    arzk.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppActivity);
-  }
+  public static final String g = alud.a(2131705136);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arzm
  * JD-Core Version:    0.7.0.1
  */

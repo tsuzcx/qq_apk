@@ -1,6 +1,10 @@
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager.ChainBuilder;
+
 public abstract interface axrm
 {
-  public abstract void a();
+  public abstract void a(QQFilterRenderManager.ChainBuilder paramChainBuilder);
+  
+  public abstract void m();
 }
 
 

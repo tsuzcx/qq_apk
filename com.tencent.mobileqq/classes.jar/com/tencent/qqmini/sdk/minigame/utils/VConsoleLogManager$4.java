@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.minigame.utils;
 
 import android.webkit.WebView;
-import bgwh;
+import bhao;
 
 public class VConsoleLogManager$4
   implements Runnable
 {
-  public VConsoleLogManager$4(bgwh parambgwh, String paramString) {}
+  public VConsoleLogManager$4(bhao parambhao, String paramString) {}
   
   public void run()
   {
-    bgwh.a(this.this$0).loadUrl(this.a);
+    bhao.a(this.this$0).loadUrl(this.a);
   }
 }
 

@@ -1,12 +1,29 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-public abstract interface awkn
+public class awkn
+  extends awkp
 {
-  public abstract void a();
+  awkn(CompressInfo paramCompressInfo)
+  {
+    super(paramCompressInfo);
+  }
   
-  public abstract void a(PersonalityLabel paramPersonalityLabel, boolean paramBoolean1, boolean paramBoolean2);
+  protected int a()
+  {
+    return 80;
+  }
   
-  public abstract void setNick(String paramString);
+  protected final int[] a()
+  {
+    if (this.a.g == 2) {
+      return null;
+    }
+    int[] arrayOfInt = new int[2];
+    arrayOfInt[0] = 2560;
+    arrayOfInt[1] = (arrayOfInt[0] * 2);
+    awiw.a("PicTypeNormal", "getScaleLargerSide", "PicType.SendPhotoMaxLongSide = " + arrayOfInt[0]);
+    return arrayOfInt;
+  }
 }
 
 

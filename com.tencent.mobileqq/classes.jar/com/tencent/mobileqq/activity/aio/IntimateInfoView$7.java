@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aenv;
-import asdz;
+import aesk;
+import asii;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class IntimateInfoView$7
   implements Runnable
 {
-  public IntimateInfoView$7(aenv paramaenv) {}
+  public IntimateInfoView$7(aesk paramaesk) {}
   
   public void run()
   {
-    if ((aenv.a(this.this$0) != null) && (this.this$0.a != null)) {
-      ((asdz)this.this$0.a.getManager(323)).a(aenv.a(this.this$0));
+    if ((aesk.a(this.this$0) != null) && (this.this$0.a != null)) {
+      ((asii)this.this$0.a.getManager(323)).a(aesk.a(this.this$0));
     }
   }
 }

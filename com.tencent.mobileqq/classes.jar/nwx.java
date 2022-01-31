@@ -37,7 +37,7 @@ class nwx
     }
   }
   
-  public void ax_()
+  public void au_()
   {
     if ((nww.a(this.a) != null) && ((nww.a(this.a) instanceof ReadInJoyListViewGroup))) {
       ((ReadInJoyListViewGroup)nww.a(this.a)).p();

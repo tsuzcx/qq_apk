@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar;
 
-import amsf;
+import amwu;
 
 public class ArConfigService$4$1
   implements Runnable
 {
-  public ArConfigService$4$1(amsf paramamsf, int paramInt) {}
+  public ArConfigService$4$1(amwu paramamwu, int paramInt) {}
   
   public void run()
   {
-    ArConfigService.a(this.jdField_a_of_type_Amsf.a, this.jdField_a_of_type_Int);
+    ArConfigService.a(this.jdField_a_of_type_Amwu.a, this.jdField_a_of_type_Int);
   }
 }
 

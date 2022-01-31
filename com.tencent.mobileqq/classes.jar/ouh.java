@@ -31,7 +31,7 @@ public class ouh
             if (!TextUtils.equals(str1, "autoplay_disable")) {
               continue;
             }
-            bjxj.p(Integer.parseInt(str2));
+            bkbq.p(Integer.parseInt(str2));
           }
         }
         else
@@ -52,7 +52,7 @@ public class ouh
   public void onWipeConfig(int paramInt)
   {
     super.onWipeConfig(paramInt);
-    bjxj.p(0);
+    bkbq.p(0);
   }
 }
 

@@ -1,59 +1,23 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
+import android.graphics.Shader.TileMode;
+import android.graphics.drawable.ShapeDrawable.ShaderFactory;
 
-public class ahrb
-  extends ahrd
+class ahrb
+  extends ShapeDrawable.ShaderFactory
 {
-  public ahrb(CommonRefreshLayout paramCommonRefreshLayout)
-  {
-    super(paramCommonRefreshLayout);
-  }
+  ahrb(ahra paramahra, float paramFloat) {}
   
-  public void a()
+  public Shader resize(int paramInt1, int paramInt2)
   {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof ahri)) && ((ahre.a(CommonRefreshLayout.a(this.a))) || (ahre.h(CommonRefreshLayout.a(this.a)))))
-    {
-      CommonRefreshLayout.a(this.a).setVisibility(0);
-      ((ahri)CommonRefreshLayout.a(this.a)).a();
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof ahri)) && (ahre.c(CommonRefreshLayout.a(this.a))))
-    {
-      if (CommonRefreshLayout.a(this.a).getVisibility() != 0) {
-        CommonRefreshLayout.a(this.a).setVisibility(0);
-      }
-      ((ahri)CommonRefreshLayout.a(this.a)).a(paramInt, paramBoolean1, paramBoolean2);
-    }
-  }
-  
-  public void b()
-  {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof ahri)) && (ahre.e(CommonRefreshLayout.a(this.a)))) {
-      ((ahri)CommonRefreshLayout.a(this.a)).b();
-    }
-  }
-  
-  public void c()
-  {
-    if ((CommonRefreshLayout.a(this.a) != null) && (ahre.b(CommonRefreshLayout.a(this.a))))
-    {
-      if ((CommonRefreshLayout.a(this.a) instanceof ahrh)) {
-        ((ahrh)CommonRefreshLayout.a(this.a)).c();
-      }
-      if (CommonRefreshLayout.a(this.a) != null) {
-        CommonRefreshLayout.a(this.a).a();
-      }
-    }
-  }
-  
-  public void d()
-  {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof ahri)) && ((ahre.a(CommonRefreshLayout.a(this.a))) || (ahre.h(CommonRefreshLayout.a(this.a))))) {
-      ((ahri)CommonRefreshLayout.a(this.a)).d();
-    }
+    float f1 = paramInt1;
+    paramInt1 = Color.parseColor("#00FFFFFF");
+    paramInt2 = Color.parseColor("#FFFFFFFF");
+    int i = Color.parseColor("#FFFFFFFF");
+    float f2 = this.jdField_a_of_type_Float;
+    Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
+    return new LinearGradient(0.0F, 0.0F, f1, 0.0F, new int[] { paramInt1, paramInt2, i }, new float[] { 0.0F, f2, 1.0F }, localTileMode);
   }
 }
 

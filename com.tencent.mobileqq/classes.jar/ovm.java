@@ -53,7 +53,7 @@ public class ovm
     }
   }
   
-  public biac a(ViewGroup paramViewGroup, int paramInt)
+  public biej a(ViewGroup paramViewGroup, int paramInt)
   {
     if (this.jdField_a_of_type_Ovl.a(paramInt))
     {
@@ -83,11 +83,11 @@ public class ovm
     }
   }
   
-  public void a(biac parambiac, int paramInt)
+  public void a(biej parambiej, int paramInt)
   {
     DynamicChannelDataModel localDynamicChannelDataModel = (DynamicChannelDataModel)a(paramInt);
-    int i = parambiac.getItemViewType();
-    parambiac = (ProteusItemView)parambiac.itemView;
+    int i = parambiej.getItemViewType();
+    parambiej = (ProteusItemView)parambiej.itemView;
     if (localDynamicChannelDataModel != null)
     {
       if (!this.jdField_a_of_type_Ovl.a(i)) {
@@ -96,15 +96,15 @@ public class ovm
       if (i != ovd.b) {
         break label120;
       }
-      parambiac.setVisibility(8);
+      parambiej.setVisibility(8);
     }
     for (;;)
     {
       a(localDynamicChannelDataModel.uniqueID, localDynamicChannelDataModel);
-      QLog.d("ReadInJoyCGIDynamicChannelAdapter", 2, new Object[] { "onBindViewHolder, dataModel = ", localDynamicChannelDataModel, ", proteusItemView = ", parambiac, " , position = ", Integer.valueOf(paramInt), ", type = ", Integer.valueOf(i) });
+      QLog.d("ReadInJoyCGIDynamicChannelAdapter", 2, new Object[] { "onBindViewHolder, dataModel = ", localDynamicChannelDataModel, ", proteusItemView = ", parambiej, " , position = ", Integer.valueOf(paramInt), ", type = ", Integer.valueOf(i) });
       return;
       label120:
-      this.jdField_a_of_type_Ovl.a(parambiac, i, localDynamicChannelDataModel, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt);
+      this.jdField_a_of_type_Ovl.a(parambiej, i, localDynamicChannelDataModel, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt);
       continue;
       label139:
       QLog.d("ReadInJoyCGIDynamicChannelAdapter", 1, "onBindViewHolder not the right type");

@@ -77,10 +77,10 @@ public class nlc
         paramMessage = this.a.getSupportFragmentManager().beginTransaction();
         PublicAccountAdvertisementActivity.a(this.a, WebpageFragment.a(this.a.getIntent()));
         PublicAccountAdvertisementActivity.a(this.a).a(PublicAccountAdvertisementActivity.a(this.a));
-        paramMessage.add(2131380118, PublicAccountAdvertisementActivity.a(this.a));
+        paramMessage.add(2131380176, PublicAccountAdvertisementActivity.a(this.a));
         paramMessage.commit();
       } while (!ThemeUtil.isInNightMode(this.a.getAppRuntime()));
-      paramMessage = this.a.findViewById(2131371149);
+      paramMessage = this.a.findViewById(2131371168);
     } while (paramMessage == null);
     paramMessage.setVisibility(0);
   }

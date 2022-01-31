@@ -13,8 +13,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import bkds;
-import bkdu;
+import bkhz;
+import bkib;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -27,7 +27,7 @@ public class WadlProvider
   public static String a;
   public static boolean a;
   ContentResolver jdField_a_of_type_AndroidContentContentResolver;
-  bkds jdField_a_of_type_Bkds;
+  bkhz jdField_a_of_type_Bkhz;
   private volatile AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
   static
@@ -60,8 +60,8 @@ public class WadlProvider
       if (QLog.isColorLevel()) {
         QLog.d("WadlProvider", 2, "init...");
       }
-      this.jdField_a_of_type_Bkds = new bkds(getContext());
-      this.jdField_a_of_type_Bkds.a(this.jdField_a_of_type_Bkds.getReadableDatabase(), this.jdField_a_of_type_Bkds.getWritableDatabase());
+      this.jdField_a_of_type_Bkhz = new bkhz(getContext());
+      this.jdField_a_of_type_Bkhz.a(this.jdField_a_of_type_Bkhz.getReadableDatabase(), this.jdField_a_of_type_Bkhz.getWritableDatabase());
       this.jdField_a_of_type_AndroidContentContentResolver = getContext().getContentResolver();
     }
   }
@@ -89,7 +89,7 @@ public class WadlProvider
     if (localBaseApplicationImpl != null) {
       localObject = localBaseApplicationImpl.getRuntime();
     }
-    boolean bool3 = bkdu.a("com.tencent.mobileqq:TMAssistantDownloadSDKService");
+    boolean bool3 = bkib.a("com.tencent.mobileqq:TMAssistantDownloadSDKService");
     if (localObject != null) {
       bool2 = ((AppRuntime)localObject).isLogin();
     }
@@ -121,9 +121,9 @@ public class WadlProvider
       default: 
         return 0;
       }
-      if (!TextUtils.isEmpty(bkdu.b(paramUri.getQueryParameter("encryptStr"), jdField_a_of_type_JavaLangString)))
+      if (!TextUtils.isEmpty(bkib.b(paramUri.getQueryParameter("encryptStr"), jdField_a_of_type_JavaLangString)))
       {
-        int i = this.jdField_a_of_type_Bkds.a(paramString, paramArrayOfString);
+        int i = this.jdField_a_of_type_Bkhz.a(paramString, paramArrayOfString);
         this.jdField_a_of_type_AndroidContentContentResolver.notifyChange(paramUri, null);
         return i;
       }
@@ -156,9 +156,9 @@ public class WadlProvider
       default: 
         return paramUri;
       }
-      if (!TextUtils.isEmpty(bkdu.b(paramUri.getQueryParameter("encryptStr"), jdField_a_of_type_JavaLangString)))
+      if (!TextUtils.isEmpty(bkib.b(paramUri.getQueryParameter("encryptStr"), jdField_a_of_type_JavaLangString)))
       {
-        this.jdField_a_of_type_Bkds.a(paramContentValues);
+        this.jdField_a_of_type_Bkhz.a(paramContentValues);
         this.jdField_a_of_type_AndroidContentContentResolver.notifyChange(paramUri, null);
         return paramUri;
       }
@@ -200,10 +200,10 @@ public class WadlProvider
         default: 
           return null;
         }
-        if (TextUtils.isEmpty(bkdu.b(paramUri.getQueryParameter("encryptStr"), jdField_a_of_type_JavaLangString))) {
+        if (TextUtils.isEmpty(bkib.b(paramUri.getQueryParameter("encryptStr"), jdField_a_of_type_JavaLangString))) {
           break;
         }
-        paramArrayOfString1 = this.jdField_a_of_type_Bkds.a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+        paramArrayOfString1 = this.jdField_a_of_type_Bkhz.a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
         paramUri = paramArrayOfString1;
       } while (!QLog.isColorLevel());
       QLog.d("WadlProvider", 2, "query cursor=" + paramArrayOfString1);
@@ -229,9 +229,9 @@ public class WadlProvider
       default: 
         return 0;
       }
-      if (!TextUtils.isEmpty(bkdu.b(paramUri.getQueryParameter("encryptStr"), jdField_a_of_type_JavaLangString)))
+      if (!TextUtils.isEmpty(bkib.b(paramUri.getQueryParameter("encryptStr"), jdField_a_of_type_JavaLangString)))
       {
-        int i = this.jdField_a_of_type_Bkds.a(paramContentValues, paramString, paramArrayOfString);
+        int i = this.jdField_a_of_type_Bkhz.a(paramContentValues, paramString, paramArrayOfString);
         this.jdField_a_of_type_AndroidContentContentResolver.notifyChange(paramUri, null);
         return i;
       }

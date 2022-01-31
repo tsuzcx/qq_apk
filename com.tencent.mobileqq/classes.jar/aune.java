@@ -1,58 +1,22 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
 
-class aune
-  implements ServiceConnection
+public class aune
+  extends AnimatorListenerAdapter
 {
-  aune(aund paramaund) {}
+  public aune(MultiCardFragment paramMultiCardFragment) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    aund.a(this.a, auml.a(paramIBinder));
-    try
-    {
-      aund.a(this.a).a(aund.a(this.a));
-      if (aund.a(this.a) != null)
-      {
-        paramComponentName = new JSONObject();
-        paramComponentName.put("code", "0");
-        aund.a(this.a).a(paramComponentName);
-        aund.a(this.a, null);
-      }
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      paramComponentName.printStackTrace();
-    }
+    super.onAnimationCancel(paramAnimator);
+    MultiCardFragment.c(this.a);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    try
-    {
-      if (aund.a(this.a) != null) {
-        aund.a(this.a).b(aund.a(this.a));
-      }
-      if (aund.a(this.a) != null)
-      {
-        paramComponentName = new JSONObject();
-        paramComponentName.put("code", "1");
-        aund.a(this.a).a(paramComponentName);
-        aund.a(this.a, null);
-      }
-    }
-    catch (Exception paramComponentName)
-    {
-      for (;;)
-      {
-        paramComponentName.printStackTrace();
-      }
-    }
-    aund.a(this.a, null);
+    super.onAnimationEnd(paramAnimator);
+    MultiCardFragment.c(this.a);
   }
 }
 

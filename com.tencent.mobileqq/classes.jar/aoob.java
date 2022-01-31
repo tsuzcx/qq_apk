@@ -1,38 +1,42 @@
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class aoob
 {
-  public int a;
-  public int b;
+  public boolean a;
   
-  public static aoob a(String paramString)
+  public static aoob a(aoko[] paramArrayOfaoko)
   {
-    if (paramString == null) {}
-    do
+    boolean bool = false;
+    aoob localaoob = new aoob();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaoko != null) {
+      localObject1 = localObject2;
+    }
+    try
     {
-      return null;
-      try
+      if (paramArrayOfaoko.length > 0) {
+        localObject1 = paramArrayOfaoko[0].a;
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject1))
       {
-        aoob localaoob = new aoob();
-        paramString = new JSONObject(paramString);
-        localaoob.a = paramString.optInt("switch", 0);
-        localaoob.b = paramString.optInt("stoppreload", 0);
-        QLog.d("ConfBean", 2, "confBean = " + localaoob.a);
+        QLog.i("LebaRedTouchSwitchBean", 1, "content is empty");
         return localaoob;
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("result:").append(this.a);
-    localStringBuilder.append(" stoppreload:").append(this.b);
-    return localStringBuilder.toString();
+      if (new JSONObject((String)localObject1).optInt("red_touch_all_tianshu", 0) == 1) {
+        bool = true;
+      }
+      localaoob.a = bool;
+      QLog.i("LebaRedTouchSwitchBean", 1, "parse config=" + (String)localObject1 + ",mRedTouchAllTianshu=" + localaoob.a);
+      return localaoob;
+    }
+    catch (Exception paramArrayOfaoko)
+    {
+      QLog.i("LebaRedTouchSwitchBean", 1, "handleLebaConfig parse", paramArrayOfaoko);
+    }
+    return localaoob;
   }
 }
 

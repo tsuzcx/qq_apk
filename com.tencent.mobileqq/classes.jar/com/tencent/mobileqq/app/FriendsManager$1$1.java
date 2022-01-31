@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import aloz;
-import alpa;
+import alto;
+import altp;
 
 public class FriendsManager$1$1
   implements Runnable
 {
-  public FriendsManager$1$1(alpa paramalpa, String paramString1, String paramString2) {}
+  public FriendsManager$1$1(altp paramaltp, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Alpa.a.a(this.jdField_a_of_type_JavaLangString, this.b);
+    this.jdField_a_of_type_Altp.a.a(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

@@ -1,15 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
 
-class adiz
-  implements DialogInterface.OnClickListener
+public class adiz
 {
-  adiz(adiy paramadiy) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public ResourcePluginInfo a;
+  public String a;
 }
 
 

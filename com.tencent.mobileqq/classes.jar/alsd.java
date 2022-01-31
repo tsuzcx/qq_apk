@@ -1,13 +1,6 @@
 public class alsd
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
+  public static final String a = bdzf.a(alof.bd);
 }
 
 

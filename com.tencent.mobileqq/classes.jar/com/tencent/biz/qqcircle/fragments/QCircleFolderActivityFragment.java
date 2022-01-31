@@ -13,32 +13,31 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.List;
 import tqg;
-import tsa;
 import tsf;
-import tsp;
-import tsu;
-import ttl;
-import tvg;
+import tsk;
+import tsw;
+import ttg;
+import ttk;
+import tua;
+import tvv;
 
 public class QCircleFolderActivityFragment
   extends QCircleBaseFragment
 {
   private QCircleFolderFragmentsPart jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart;
-  private List<tvg> jdField_a_of_type_JavaUtilList;
-  private tsf jdField_a_of_type_Tsf;
-  private tsp jdField_a_of_type_Tsp;
+  private List<tvv> jdField_a_of_type_JavaUtilList;
+  private tsk jdField_a_of_type_Tsk;
+  private ttg jdField_a_of_type_Ttg;
   
   private void c()
   {
+    int i = 1;
     Intent localIntent = getActivity().getIntent();
-    boolean bool = localIntent.getBooleanExtra("key_enable_splash", false);
-    if (this.jdField_a_of_type_Tsf != null) {
-      this.jdField_a_of_type_Tsf.a(bool);
+    boolean bool = localIntent.getBooleanExtra("key_enable_splash", true);
+    if (this.jdField_a_of_type_Tsk != null) {
+      this.jdField_a_of_type_Tsk.a(bool);
     }
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart != null) {
-      i = 1;
-    }
+    if (this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart != null) {}
     try
     {
       int j = Integer.parseInt(localIntent.getStringExtra("key_first_show_tab"));
@@ -54,29 +53,35 @@ public class QCircleFolderActivityFragment
   
   public int a()
   {
-    return 2131560547;
+    return 2131560549;
   }
   
-  public List<tvg> a()
+  public String a()
+  {
+    return "QCircleFolderActivityFragment";
+  }
+  
+  public List<tvv> a()
   {
     if (this.jdField_a_of_type_JavaUtilList == null)
     {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilList.add(new tsa());
-      this.jdField_a_of_type_JavaUtilList.add(new tsu(tqg.a()));
+      this.jdField_a_of_type_JavaUtilList.add(new tsf());
+      this.jdField_a_of_type_JavaUtilList.add(new ttk(tqg.a()));
       List localList = this.jdField_a_of_type_JavaUtilList;
-      Object localObject = new tsp(tqg.a());
-      this.jdField_a_of_type_Tsp = ((tsp)localObject);
+      Object localObject = new ttg(tqg.a());
+      this.jdField_a_of_type_Ttg = ((ttg)localObject);
       localList.add(localObject);
+      this.jdField_a_of_type_JavaUtilList.add(new tsw());
       localList = this.jdField_a_of_type_JavaUtilList;
       localObject = new QCircleFolderFragmentsPart();
       this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart = ((QCircleFolderFragmentsPart)localObject);
       localList.add(localObject);
       localList = this.jdField_a_of_type_JavaUtilList;
-      localObject = new tsf();
-      this.jdField_a_of_type_Tsf = ((tsf)localObject);
+      localObject = new tsk();
+      this.jdField_a_of_type_Tsk = ((tsk)localObject);
       localList.add(localObject);
-      this.jdField_a_of_type_JavaUtilList.add(new ttl());
+      this.jdField_a_of_type_JavaUtilList.add(new tua());
     }
     c();
     return this.jdField_a_of_type_JavaUtilList;
@@ -84,6 +89,7 @@ public class QCircleFolderActivityFragment
   
   public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
+    QLog.d("QCircleFolderActivityFragment", 1, "QCircleFolderActivityFragment->doOnCreateView");
     if (paramViewGroup != null) {}
     try
     {
@@ -108,26 +114,30 @@ public class QCircleFolderActivityFragment
   public void b()
   {
     StringBuilder localStringBuilder = new StringBuilder().append("onWriteClick?");
-    if (this.jdField_a_of_type_Tsp != null) {}
+    if (this.jdField_a_of_type_Ttg != null) {}
     for (boolean bool = true;; bool = false)
     {
       QLog.d("QCircleFolderActivityFragment", 4, bool);
-      if (this.jdField_a_of_type_Tsp != null)
+      if (this.jdField_a_of_type_Ttg != null)
       {
-        this.jdField_a_of_type_Tsp.a();
-        this.jdField_a_of_type_Tsp.a(1);
+        this.jdField_a_of_type_Ttg.a();
+        this.jdField_a_of_type_Ttg.a(1);
       }
       return;
     }
   }
   
+  public void onDestroy()
+  {
+    super.onDestroy();
+  }
+  
   public void onNewIntent(Intent paramIntent)
   {
+    int i = 1;
+    QLog.d("QCircleFolderActivityFragment", 1, "QCircleFolderActivityFragment->onNewIntent");
     super.onNewIntent(paramIntent);
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart != null) {
-      i = 1;
-    }
+    if (this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart != null) {}
     try
     {
       int j = Integer.parseInt(paramIntent.getStringExtra("key_first_show_tab"));
@@ -135,14 +145,15 @@ public class QCircleFolderActivityFragment
     }
     catch (Exception paramIntent)
     {
-      label26:
-      break label26;
+      label34:
+      break label34;
     }
     this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart.a(i, false, false);
   }
   
   public void onResume()
   {
+    QLog.d("QCircleFolderActivityFragment", 1, "QCircleFolderActivityFragment->onResume");
     super.onResume();
   }
 }

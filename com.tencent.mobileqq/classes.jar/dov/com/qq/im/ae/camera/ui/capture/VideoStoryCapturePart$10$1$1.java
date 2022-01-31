@@ -1,8 +1,8 @@
 package dov.com.qq.im.ae.camera.ui.capture;
 
 import android.view.View;
-import bkrq;
-import bkrs;
+import bkvx;
+import bkvz;
 
 class VideoStoryCapturePart$10$1$1
   implements Runnable
@@ -11,8 +11,8 @@ class VideoStoryCapturePart$10$1$1
   
   public void run()
   {
-    if (bkrq.a(this.a.a.a)) {
-      bkrq.e(this.a.a.a).setVisibility(8);
+    if (bkvx.a(this.a.a.a)) {
+      bkvx.e(this.a.a.a).setVisibility(8);
     }
   }
 }

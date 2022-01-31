@@ -1,60 +1,35 @@
-import android.support.v4.view.ViewPager;
-import android.view.MotionEvent;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class axkv
-  implements GLGestureListener
+  extends ameq
 {
-  private ViewPager a;
+  public axkv(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public axkv(ViewPager paramViewPager)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    this.a = paramViewPager;
-  }
-  
-  public void a(ViewPager paramViewPager)
-  {
-    this.a = paramViewPager;
-  }
-  
-  public int onGetPriority()
-  {
-    return 1002;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    int i = paramMotionEvent.getPointerCount();
-    paramMotionEvent.getAction();
-    if ((i == 1) && (!paramBoolean) && (this.a != null) && (this.a.isShown())) {}
-    try
+    if (paramBoolean)
     {
-      this.a.onTouchEvent(paramMotionEvent);
-      if ((i != 2) || (!paramBoolean) || (this.a == null) || (!this.a.isShown())) {}
-    }
-    catch (Exception localException)
-    {
-      try
+      if (!this.a.isAdded())
       {
-        if (GLGestureProxy.getInstance().checkSecendFinger(paramMotionEvent))
-        {
-          paramMotionEvent = GLGestureProxy.getInstance().getSecendFingerMotionEvent(paramMotionEvent);
-          this.a.onTouchEvent(paramMotionEvent);
-          paramMotionEvent.recycle();
+        if (QLog.isColorLevel()) {
+          QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "onUpdateTroopGetMemberList succ with fragment is detached");
         }
-        return false;
-        localException = localException;
-        localException.printStackTrace();
+        return;
       }
-      catch (Exception paramMotionEvent)
-      {
-        for (;;)
-        {
-          paramMotionEvent.printStackTrace();
-        }
-      }
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).getApp().getSharedPreferences("last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a).getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a), paramLong).apply();
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(4);
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).removeObserver(this);
+      return;
     }
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(-1);
+    QLog.d("ReceiptMessageReadMemberListContainerFragment", 1, "mTroopObserver onUpdateTroopGetMemberList fail");
   }
 }
 

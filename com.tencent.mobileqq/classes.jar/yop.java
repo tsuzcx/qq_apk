@@ -1,31 +1,20 @@
-import android.graphics.Rect;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.BounceScrollView;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class yop
-  implements bejd
+public class yop
+  implements View.OnClickListener
 {
-  yop(yom paramyom) {}
+  public yop(CommodityListView paramCommodityListView, CertifiedAccountMeta.StUser paramStUser) {}
   
-  public void a(float paramFloat1, float paramFloat2) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_Bbnq != null) && (this.a.d))
-    {
-      Rect localRect = new Rect();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getHitRect(localRect);
-      if (this.a.jdField_a_of_type_ComTencentImageURLImageView.getLocalVisibleRect(localRect))
-      {
-        this.a.d = false;
-        bcht.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, this.a.jdField_a_of_type_Bbnq.a, 0, null, null);
-        azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "exp_ad", 0, 0, this.a.b, String.valueOf(this.a.jdField_a_of_type_Bbnp.a), "8020205751015455", "");
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopTipsPopWindow", 2, "onScrollChanged 广告图片可见-------------------------");
-        }
-      }
-    }
+    zaj.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + yod.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView.a()), "clk_shop", 0, 0, new String[0]);
+    ybt.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
   }
 }
 

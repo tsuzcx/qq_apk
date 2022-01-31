@@ -1,10 +1,21 @@
-final class aews
-  implements aewj<aewr>
+import android.support.annotation.IntRange;
+
+public abstract interface aews
 {
-  public aewr a(aewg paramaewg)
-  {
-    return new aewr(paramaewg);
-  }
+  @IntRange(from=0L, to=3L)
+  public abstract int a();
+  
+  public abstract void a();
+  
+  public abstract void a(aewt paramaewt);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

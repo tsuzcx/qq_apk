@@ -18,7 +18,7 @@ public class okl
     int i;
     label51:
     label86:
-    agwq localagwq;
+    ahbf localahbf;
     if ((paramEditable instanceof ohr))
     {
       i = ((ohr)paramEditable).a();
@@ -35,8 +35,8 @@ public class okl
       this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FF4222"));
       this.a.d = true;
       ReadInJoyCommentComponentFragment.a(this.a);
-      localagwq = ReadInJoyCommentComponentFragment.a(this.a);
-      if (localagwq != null)
+      localahbf = ReadInJoyCommentComponentFragment.a(this.a);
+      if (localahbf != null)
       {
         i = paramEditable.toString().trim().length();
         if (i > 0) {
@@ -47,16 +47,16 @@ public class okl
     }
     for (;;)
     {
-      if ((i <= 0) || (paramEditable.length() > 24) || (!localagwq.a(paramEditable))) {
+      if ((i <= 0) || (paramEditable.length() > 24) || (!localahbf.a(paramEditable))) {
         break label308;
       }
       if (ReadInJoyCommentComponentFragment.a(this.a))
       {
-        localagwq.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramEditable, null, 7220, false);
+        localahbf.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramEditable, null, 7220, false);
         this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(84);
         this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(84, 10000L);
       }
-      this.a.f.setImageResource(2130842433);
+      this.a.f.setImageResource(2130842446);
       return;
       i = paramEditable.length();
       break;
@@ -71,10 +71,10 @@ public class okl
       this.a.f.setVisibility(0);
     }
     label308:
-    localagwq.c();
+    localahbf.c();
     ReadInJoyCommentComponentFragment.a(this.a, false);
     this.a.f.setSelected(false);
-    this.a.f.setImageResource(2130842793);
+    this.a.f.setImageResource(2130842806);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

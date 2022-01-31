@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ajpa;
-import ajpj;
-import wsv;
+import ajtp;
+import ajty;
+import wxe;
 
 public class RMVideoRecordState$3
   implements Runnable
 {
-  public RMVideoRecordState$3(ajpa paramajpa) {}
+  public RMVideoRecordState$3(ajtp paramajtp) {}
   
   public void run()
   {
     RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
     if (!localRMVideoStateMgr.b())
     {
-      wsv.c("RMRecordState", "run record finish, but state is not right");
+      wxe.c("RMRecordState", "run record finish, but state is not right");
       return;
     }
     this.this$0.b();

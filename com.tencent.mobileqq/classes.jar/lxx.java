@@ -15,7 +15,7 @@ public class lxx
     localStrokeTextView = new StrokeTextView(RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
     try
     {
-      localStrokeTextView.setLayoutParams(new FrameLayout.LayoutParams(aekt.a(42.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()), -1));
+      localStrokeTextView.setLayoutParams(new FrameLayout.LayoutParams(aepi.a(42.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()), -1));
       localStrokeTextView.setTextSize(0, RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
       localStrokeTextView.setIncludeFontPadding(false);
       if (this.jdField_a_of_type_Boolean) {}
@@ -24,7 +24,7 @@ public class lxx
         localStrokeTextView.setText(str);
         localStrokeTextView.setStrokeEnable(true);
         localStrokeTextView.setStrokeColor(-1);
-        localStrokeTextView.setStrokeSize(aekt.a(6.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()));
+        localStrokeTextView.setStrokeSize(aepi.a(6.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()));
         localStrokeTextView.setInnerTextColor(-2094274);
         localStrokeTextView.setTypeface(Typeface.defaultFromStyle(1));
         localStrokeTextView.setGravity(17);

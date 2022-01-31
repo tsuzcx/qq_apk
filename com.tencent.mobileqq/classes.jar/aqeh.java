@@ -1,19 +1,42 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
-class aqeh
-  implements Animation.AnimationListener
+public class aqeh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aqeh(aqeg paramaqeg) {}
+  private int jdField_a_of_type_Int;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aqeh(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
+  
+  public void onGlobalLayout()
   {
-    this.a.a.c();
+    ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
+    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
+    if (i != this.jdField_a_of_type_Int)
+    {
+      int j = ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getRootView().getHeight();
+      int k = j - i;
+      if (k <= j / 4) {
+        break label90;
+      }
+      ExtendFriendProfileEditFragment.c(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment, k);
+      this.jdField_a_of_type_Boolean = true;
+      ExtendFriendProfileEditFragment.d(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
+      label90:
+      if (this.jdField_a_of_type_Boolean) {
+        ExtendFriendProfileEditFragment.e(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

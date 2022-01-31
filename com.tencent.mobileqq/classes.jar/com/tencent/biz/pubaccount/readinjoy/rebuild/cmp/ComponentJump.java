@@ -215,13 +215,13 @@ public class ComponentJump
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559901, this, true);
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368989));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368991));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368993));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368994));
-    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = this.jdField_a_of_type_AndroidViewView.findViewById(2131368990);
-    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = this.jdField_a_of_type_AndroidViewView.findViewById(2131368992);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559900, this, true);
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369007));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369009));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369011));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369012));
+    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = this.jdField_a_of_type_AndroidViewView.findViewById(2131369008);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = this.jdField_a_of_type_AndroidViewView.findViewById(2131369010);
   }
   
   public void a(Object paramObject)

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -52,7 +52,7 @@ public class ComponentNotIntrest
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559976, this, true).findViewById(2131379242);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559975, this, true).findViewById(2131379300);
   }
   
   public void a(Object paramObject)
@@ -73,15 +73,15 @@ public class ComponentNotIntrest
   {
     if (this.jdField_a_of_type_Qbs.a())
     {
-      this.jdField_a_of_type_AndroidViewView.setPadding(aekt.a(5.0F, getResources()), aekt.a(5.0F, getResources()), aekt.a(5.0F, getResources()), aekt.a(5.0F, getResources()));
+      this.jdField_a_of_type_AndroidViewView.setPadding(aepi.a(5.0F, getResources()), aepi.a(5.0F, getResources()), aepi.a(5.0F, getResources()), aepi.a(5.0F, getResources()));
       return;
     }
     if (ors.l(this.jdField_a_of_type_Qbs.jdField_a_of_type_Pgd.a()))
     {
-      this.jdField_a_of_type_AndroidViewView.setPadding(aekt.a(5.0F, getResources()), aekt.a(5.0F, getResources()), aekt.a(9.0F, getResources()), aekt.a(5.0F, getResources()));
+      this.jdField_a_of_type_AndroidViewView.setPadding(aepi.a(5.0F, getResources()), aepi.a(5.0F, getResources()), aepi.a(9.0F, getResources()), aepi.a(5.0F, getResources()));
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setPadding(aekt.a(12.0F, getResources()), aekt.a(9.0F, getResources()), aekt.a(12.0F, getResources()), aekt.a(9.0F, getResources()));
+    this.jdField_a_of_type_AndroidViewView.setPadding(aepi.a(12.0F, getResources()), aepi.a(9.0F, getResources()), aepi.a(12.0F, getResources()), aepi.a(9.0F, getResources()));
   }
   
   public void onClick(View paramView)

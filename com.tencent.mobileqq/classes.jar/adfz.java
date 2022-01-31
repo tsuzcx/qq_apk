@@ -1,20 +1,19 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.Leba;
 
 public class adfz
-  implements View.OnClickListener
+  implements adgm
 {
-  public adfz(NotificationActivity paramNotificationActivity) {}
+  public adfz(Leba paramLeba, View paramView, aozs paramaozs) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a(this.jdField_a_of_type_AndroidViewView, false, this.jdField_a_of_type_Aozs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adfz
  * JD-Core Version:    0.7.0.1
  */

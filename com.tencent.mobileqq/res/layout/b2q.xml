@@ -9,6 +9,6 @@
         <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/jcq" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:switchChecked="true" formItem:switchText="@string/hzf" />
         <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/jcp" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:switchChecked="true" formItem:switchText="@string/hzb" />
         <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/jco" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:switchChecked="true" formItem:switchText="@string/hza" />
-        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/kuk" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:switchChecked="true" formItem:switchText="@string/we4" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/l2q" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:switchChecked="true" formItem:switchText="@string/we6" />
     </LinearLayout>
 </com.tencent.mobileqq.widget.BounceScrollView>

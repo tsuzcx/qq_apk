@@ -1,21 +1,39 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
 class wqb
-  extends SimpleJob<Object>
+  extends umf<wpr, wiu>
 {
-  wqb(wps paramwps, String paramString1, String paramString2)
+  wqb(wpr paramwpr)
   {
-    super(paramString1);
+    super(paramwpr);
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(@NonNull wpr paramwpr, @NonNull wiu paramwiu)
   {
-    wps.a(this.jdField_a_of_type_Wps).a(this.jdField_a_of_type_JavaLangString);
-    return null;
+    Object localObject = paramwpr.a(paramwiu.jdField_a_of_type_JavaLangString);
+    if ((localObject == null) || (paramwiu.jdField_a_of_type_Boolean))
+    {
+      wxe.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramwiu.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramwiu.jdField_a_of_type_Boolean) });
+      return;
+    }
+    if (!(localObject instanceof woi))
+    {
+      wxe.e(this.TAG, "that is error type!");
+      return;
+    }
+    localObject = (woi)localObject;
+    ((CommentLikeFeedItem)((woi)localObject).a).mLikeCount = paramwiu.b;
+    ((woi)localObject).b(paramwiu.jdField_a_of_type_JavaUtilList, true);
+    wpr.a(paramwpr).b(paramwiu.jdField_a_of_type_JavaLangString);
   }
+  
+  public Class acceptEventClass()
+  {
+    return wiu.class;
+  }
+  
+  public void b(@NonNull wpr paramwpr, @NonNull wiu paramwiu) {}
 }
 
 

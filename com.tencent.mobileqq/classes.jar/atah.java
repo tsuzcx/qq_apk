@@ -1,89 +1,53 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
-public class atah
-  extends aswm
-  implements ymm
+class atah
+  implements aszv
 {
-  private String c;
+  atah(atad paramatad) {}
   
-  public atah()
+  public void a(List<atap> paramList)
   {
-    this.mPluginNameSpace = "odapp";
-  }
-  
-  public void callback(Bundle paramBundle)
-  {
-    if (paramBundle == null) {}
-    while ((!"onOpenRoomResult".equals(paramBundle.getString("method"))) || (this.c == null)) {
-      return;
-    }
-    int i = paramBundle.getInt("code", 0);
-    paramBundle = new JSONObject();
-    try
-    {
-      paramBundle.put("code", i);
-      callJs(this.c, new String[] { paramBundle.toString() });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (!"odapp".equals(paramString2)) {}
-    label129:
+    if (atad.a(this.a) == null) {}
     do
     {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.i("XProxy|ODAppJSPlugin", 2, "handleJsRequest: url = " + paramString1 + ", pkgName = " + paramString2 + ", method = " + paramString3 + ", args = " + paramVarArgs);
-      }
-      if ((TextUtils.equals(paramString3, "open")) || (TextUtils.equals(paramString3, "cancelPage")))
+      return;
+      Object localObject = new HashMap(atad.a(this.a).a().d);
+      amai localamai = atad.a(this.a).a();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-        return false;
-      }
-      paramString2 = "";
-      paramString1 = "";
-      paramJsBridgeListener = null;
-      try
-      {
-        localObject = new JSONObject(paramVarArgs[0]);
-        paramJsBridgeListener = (JsBridgeListener)localObject;
-      }
-      catch (JSONException localJSONException)
-      {
-        Object localObject;
-        break label129;
-        int j = 0;
+        atap localatap = (atap)paramList.next();
+        long[] arrayOfLong = new long[localatap.jdField_a_of_type_JavaUtilList.size()];
         int i = 0;
-        paramJsBridgeListener = paramString2;
-        continue;
+        while (i < arrayOfLong.length)
+        {
+          arrayOfLong[i] = ((Long)localatap.jdField_a_of_type_JavaUtilList.get(i)).longValue();
+          i += 1;
+        }
+        ((bcqa)atad.a(this.a).getManager(164)).a(localatap.jdField_a_of_type_Long);
+        localamai.a(1, String.valueOf(localatap.jdField_a_of_type_Long), localatap.jdField_a_of_type_Int, arrayOfLong, 14, localatap.c, localatap.d, localatap.e);
+        ((Map)localObject).remove(String.valueOf(localatap.jdField_a_of_type_Long));
       }
-      if (paramJsBridgeListener == null) {
-        break;
+      paramList = ((Map)localObject).entrySet().iterator();
+      while (paramList.hasNext())
+      {
+        localObject = (Map.Entry)paramList.next();
+        if (((Integer)((Map.Entry)localObject).getValue()).intValue() == 14) {
+          localamai.a(1, (String)((Map.Entry)localObject).getKey(), 0, null, 14, 0, 0, -1);
+        }
       }
-      localObject = paramJsBridgeListener.optString("callback");
-      i = paramJsBridgeListener.optInt("roomid");
-      paramString2 = paramJsBridgeListener.optString("vasname");
-      paramString1 = paramJsBridgeListener.optString("userdata");
-      j = paramJsBridgeListener.optInt("fromid");
-      this.c = ((String)localObject);
-      paramJsBridgeListener = paramString2;
-    } while ((!"odOpenRoom".equals(paramString3)) || (paramVarArgs.length != 1));
-    this.a.a(0, i, paramJsBridgeListener, paramString1, j);
-    return true;
+      paramList = atad.a(this.a).getHandler(Conversation.class);
+    } while (paramList == null);
+    paramList.sendEmptyMessage(1009);
   }
 }
 

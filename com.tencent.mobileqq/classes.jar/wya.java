@@ -1,8 +1,19 @@
-public abstract interface wya
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+
+public final class wya
+  implements Parcelable.Creator<EditLocalPhotoSource>
 {
-  public abstract void i();
+  public EditLocalPhotoSource a(Parcel paramParcel)
+  {
+    return new EditLocalPhotoSource(paramParcel);
+  }
   
-  public abstract void l();
+  public EditLocalPhotoSource[] a(int paramInt)
+  {
+    return new EditLocalPhotoSource[paramInt];
+  }
 }
 
 

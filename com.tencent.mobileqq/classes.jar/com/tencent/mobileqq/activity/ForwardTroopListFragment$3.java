@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import actp;
+import acye;
 
 class ForwardTroopListFragment$3
   implements Runnable

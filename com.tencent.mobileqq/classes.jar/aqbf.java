@@ -1,12 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 class aqbf
-  implements DialogInterface.OnClickListener
+  implements alpg
 {
-  aqbf(aqbb paramaqbb) {}
+  aqbf(aqbe paramaqbe, String paramString, int paramInt1, int paramInt2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      paramObject = (alto)this.jdField_a_of_type_Aqbe.app.getManager(51);
+      Card localCard = paramObject.c(this.jdField_a_of_type_JavaLangString);
+      localCard.clothesId = this.jdField_a_of_type_Int;
+      localCard.fontId = this.b;
+      localCard.updateTime = NetConnInfoCenter.getServerTimeMillis();
+      paramObject.a(localCard);
+      this.jdField_a_of_type_Aqbe.notifyUI(1, paramBoolean, null);
+    }
+  }
 }
 
 

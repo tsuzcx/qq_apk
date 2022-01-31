@@ -1,289 +1,228 @@
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.opengl.GLES20;
-import android.opengl.GLSurfaceView;
-import android.opengl.Matrix;
-import android.os.Handler;
-import android.support.annotation.RequiresApi;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
-import android.view.SurfaceHolder;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.os.Environment;
+import android.text.TextUtils;
+import com.tencent.component.network.DownloaderFactory;
+import com.tencent.component.network.downloader.Downloader;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.vip.ar.controller.VipARCameraController.3;
-import cooperation.vip.ar.controller.VipARCameraController.6;
-import cooperation.vip.ar.controller.VipARCameraController.7;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.opengles.GL10;
-import mqq.os.MqqHandler;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bkae
-  extends bkak
+  extends bjxz
 {
-  private int jdField_a_of_type_Int;
-  private GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
-  private ScaleGestureDetector.OnScaleGestureListener jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener = new bkai(this);
-  private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
-  private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bkah(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bkal jdField_a_of_type_Bkal;
-  private bkao jdField_a_of_type_Bkao;
-  private bkap jdField_a_of_type_Bkap;
-  private bkaw jdField_a_of_type_Bkaw = new bkaf(this);
-  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  private boolean jdField_a_of_type_Boolean;
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  private int jdField_b_of_type_Int;
-  private bkaw jdField_b_of_type_Bkaw = new bkag(this);
-  private boolean jdField_b_of_type_Boolean;
-  private float[] jdField_b_of_type_ArrayOfFloat;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private float[] jdField_c_of_type_ArrayOfFloat;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private boolean f;
-  private boolean g = true;
-  private boolean h = true;
-  private boolean i;
-  private boolean j;
+  private bkad jdField_a_of_type_Bkad = new bkad();
+  private String jdField_a_of_type_JavaLangString = "";
+  private bkad jdField_b_of_type_Bkad = new bkad();
+  private String jdField_b_of_type_JavaLangString = "";
   
-  static
+  private String a()
   {
-    System.loadLibrary("c++_shared");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      if (!Environment.getExternalStorageState().equals("mounted"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("QzoneSoundPlugin", 2, "no sdcard");
+        }
+        return "";
+      }
+      Object localObject = bjih.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_JavaLangString = ((String)localObject + "tencent/Qzone/tinyprogram/");
+      localObject = new File(this.jdField_a_of_type_JavaLangString);
+      if (!((File)localObject).exists())
+      {
+        if (!((File)localObject).mkdirs())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("QzoneSoundPlugin", 2, "make dir fail");
+          }
+          return "";
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("QzoneSoundPlugin", 2, "make dir suc");
+        }
+      }
+    }
+    for (;;)
+    {
+      return this.jdField_a_of_type_JavaLangString;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("QzoneSoundPlugin", 2, "dir is exists");
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.i("QzoneSoundPlugin", 2, "cache root found use : " + this.jdField_a_of_type_JavaLangString);
+        }
+      }
+    }
   }
   
-  @RequiresApi(8)
-  public bkae(Context paramContext, ViewGroup paramViewGroup)
+  private void a(String... paramVarArgs)
   {
-    super(paramContext, paramViewGroup);
-    if (paramContext.getResources().getConfiguration().orientation == 2) {}
-    for (this.jdField_a_of_type_Int = 0;; this.jdField_a_of_type_Int = 1)
+    if (this.jdField_a_of_type_Bkad != null) {
+      this.jdField_a_of_type_Bkad.b();
+    }
+  }
+  
+  private void b(String... paramVarArgs)
+  {
+    if (this.jdField_b_of_type_Bkad != null) {
+      this.jdField_b_of_type_Bkad.b();
+    }
+  }
+  
+  private void c(String... paramVarArgs)
+  {
+    try
     {
-      bkar.a().b(this.jdField_b_of_type_Bkaw);
-      this.jdField_a_of_type_Bkal = new bkal(paramContext, paramViewGroup);
+      paramVarArgs = bflr.d(new JSONObject(paramVarArgs[0]).optString("url"));
+      paramVarArgs = a() + paramVarArgs + ".mp3";
+      QLog.d("QzoneSoundPlugin", 2, "playLocalSound : " + paramVarArgs);
+      if (new File(paramVarArgs).exists())
+      {
+        this.jdField_b_of_type_Bkad.a(paramVarArgs);
+        this.jdField_b_of_type_Bkad.a();
+      }
       return;
     }
+    catch (Exception paramVarArgs) {}
   }
   
-  private float[] a(float paramFloat1, float paramFloat2)
+  private void d(String... paramVarArgs)
   {
-    float f1;
-    if (this.jdField_a_of_type_Int == 0)
+    try
     {
-      paramFloat1 /= this.jdField_b_of_type_Int;
-      paramFloat1 = this.jdField_d_of_type_Int * paramFloat1;
-      f1 = paramFloat2 / this.jdField_c_of_type_Int * this.jdField_e_of_type_Int;
-      paramFloat2 = paramFloat1;
+      paramVarArgs = bflr.d(new JSONObject(paramVarArgs[0]).optString("url"));
+      paramVarArgs = a() + paramVarArgs + ".mp3";
+      QLog.d("QzoneSoundPlugin", 2, "playLocalBackSound : " + paramVarArgs);
+      if (new File(paramVarArgs).exists())
+      {
+        this.jdField_a_of_type_Bkad.a(paramVarArgs);
+        this.jdField_a_of_type_Bkad.a();
+      }
+      return;
     }
-    for (paramFloat1 = f1;; paramFloat1 = this.jdField_e_of_type_Int - paramFloat1 * f1)
-    {
-      return new float[] { paramFloat2, paramFloat1 };
-      paramFloat1 /= this.jdField_b_of_type_Int;
-      f1 = this.jdField_e_of_type_Int;
-      paramFloat2 = paramFloat2 / this.jdField_c_of_type_Int * this.jdField_d_of_type_Int;
-    }
+    catch (Exception paramVarArgs) {}
   }
   
-  private void g()
+  private void e(String... paramVarArgs)
   {
-    this.jdField_a_of_type_Bkao = new bkao();
-    this.jdField_a_of_type_Bkao.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
-    this.jdField_d_of_type_Int = this.jdField_a_of_type_Bkao.a();
-    this.jdField_e_of_type_Int = this.jdField_a_of_type_Bkao.b();
-    this.jdField_c_of_type_Boolean = true;
-    ThreadManager.getUIHandler().post(new VipARCameraController.3(this));
-  }
-  
-  private void h()
-  {
-    if (!this.i)
-    {
-      this.i = true;
-      ThreadManagerV2.getUIHandlerV2().post(new VipARCameraController.6(this));
-    }
-  }
-  
-  private void i()
-  {
-    if (!this.j)
-    {
-      this.j = true;
-      ThreadManagerV2.getUIHandlerV2().post(new VipARCameraController.7(this));
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+      try
+      {
+        Object localObject2 = new JSONObject(paramVarArgs[0]);
+        paramVarArgs = ((JSONObject)localObject2).optString("callback");
+        Object localObject1 = ((JSONObject)localObject2).optString("url");
+        localObject2 = bflr.d(((JSONObject)localObject2).optString("url"));
+        QLog.d("QzoneSoundPlugin", 2, "downloadMusicUrl : " + (String)localObject1);
+        QLog.d("QzoneSoundPlugin", 2, "downloadMusicMD5 : " + (String)localObject2);
+        this.jdField_b_of_type_JavaLangString = (a() + (String)localObject2 + ".mp3");
+        QLog.d("QzoneSoundPlugin", 2, "mDownloadMusicFinalCachePath : " + this.jdField_b_of_type_JavaLangString);
+        if (!new File(this.jdField_b_of_type_JavaLangString).exists())
+        {
+          DownloaderFactory.getInstance(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a()).getCommonDownloader().download((String)localObject1, this.jdField_b_of_type_JavaLangString, new bkaf(this, paramVarArgs));
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("QzoneSoundPlugin", 2, "The Music File is Exist");
+        }
+        try
+        {
+          localObject1 = new JSONObject();
+          ((JSONObject)localObject1).put("code", 0);
+          ((JSONObject)localObject1).put("message", "success");
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramVarArgs, new String[] { ((JSONObject)localObject1).toString() });
+          return;
+        }
+        catch (Exception paramVarArgs)
+        {
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+        }
+        QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadSucceed : " + paramVarArgs.getMessage());
+        return;
+      }
+      catch (JSONException paramVarArgs)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QzoneSoundPlugin", 2, "METHOD_DOWNLOAD_SUPER_LIKE_MUSIC: ", paramVarArgs);
+        }
+      }
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = ((GLSurfaceView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363901));
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setEGLContextClientVersion(2);
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setEGLContextFactory(new bkaj(this, null));
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setRenderer(this);
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setRenderMode(1);
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setPreserveEGLContextOnPause(true);
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener);
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377702));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_Bkap == null) {
-      this.jdField_a_of_type_Bkap = new bkap();
+    super.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, "onDestroy");
     }
-    this.jdField_a_of_type_Bkap.jdField_a_of_type_Int = bdkf.a();
-    this.jdField_a_of_type_Bkap.jdField_b_of_type_Int = bdkf.b();
-    this.jdField_a_of_type_Bkap.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Bkap.c = paramString2;
-    if (this.jdField_a_of_type_Bkal != null) {
-      this.jdField_a_of_type_Bkal.a(this.jdField_a_of_type_Bkap);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_Bkao.a();
-    }
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_a_of_type_Bkal != null) {
-      this.jdField_a_of_type_Bkal.c();
-    }
-  }
-  
-  public void d()
-  {
-    super.d();
-    QLog.d("VipARCameraController", 2, "onActivityResume " + this.jdField_c_of_type_Boolean);
-    this.f = true;
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_Bkao.a();
-    }
-    if (this.jdField_a_of_type_Bkal != null) {
-      this.jdField_a_of_type_Bkal.d();
-    }
-  }
-  
-  public void e()
-  {
-    super.e();
-    QLog.d("VipARCameraController", 2, "onActivityStop " + this.jdField_c_of_type_Boolean);
-    this.f = false;
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_Bkao.b();
-    }
-  }
-  
-  public void f()
-  {
-    super.f();
-    QLog.d("VipARCameraController", 2, "onActivityDestroy " + this.jdField_c_of_type_Boolean);
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_Bkao.c();
-    }
-    if (this.jdField_a_of_type_Bkal != null) {
-      this.jdField_a_of_type_Bkal.f();
-    }
-  }
-  
-  public void onDrawFrame(GL10 paramGL10)
-  {
-    GLES20.glClear(16640);
-    if (!this.jdField_c_of_type_Boolean) {}
-    do
+    if (this.jdField_a_of_type_Bkad != null)
     {
-      float[] arrayOfFloat;
-      do
-      {
-        do
-        {
-          return;
-          h();
-          if (this.jdField_a_of_type_Bkao.a(this.jdField_a_of_type_AndroidViewSurfaceHolder, false) == 0) {
-            break;
-          }
-        } while (this.jdField_a_of_type_Bkal == null);
-        this.jdField_a_of_type_Bkal.onDrawFrame(null);
-        return;
-        if (this.h)
-        {
-          bkar.a("ar_tar_show", "1");
-          this.h = false;
-        }
-        i();
-        if (this.jdField_a_of_type_ArrayOfFloat == null) {
-          this.jdField_a_of_type_ArrayOfFloat = new float[16];
-        }
-        if (this.jdField_b_of_type_ArrayOfFloat == null) {
-          this.jdField_b_of_type_ArrayOfFloat = new float[16];
-        }
-        if (this.jdField_c_of_type_ArrayOfFloat == null) {
-          this.jdField_c_of_type_ArrayOfFloat = new float[16];
-        }
-        Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-        Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
-        Matrix.setIdentityM(this.jdField_c_of_type_ArrayOfFloat, 0);
-        arrayOfFloat = this.jdField_a_of_type_Bkao.d();
-      } while (arrayOfFloat == null);
-      this.jdField_b_of_type_ArrayOfFloat[0] = arrayOfFloat[0];
-      this.jdField_b_of_type_ArrayOfFloat[5] = arrayOfFloat[1];
-      this.jdField_b_of_type_ArrayOfFloat[10] = arrayOfFloat[2];
-      Matrix.scaleM(this.jdField_c_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_Bkao.a(), 0, 1.0F / arrayOfFloat[0], 1.0F / arrayOfFloat[1], 1.0F / arrayOfFloat[2]);
-      Matrix.multiplyMM(this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_Bkao.b(), 0, this.jdField_c_of_type_ArrayOfFloat, 0);
-    } while (this.jdField_a_of_type_Bkal == null);
-    this.jdField_a_of_type_Bkal.a(this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_Bkao.c());
-    this.jdField_a_of_type_Bkal.onDrawFrame(paramGL10);
+      this.jdField_a_of_type_Bkad.a();
+      this.jdField_a_of_type_Bkad = null;
+    }
+    if (this.jdField_b_of_type_Bkad != null)
+    {
+      this.jdField_b_of_type_Bkad.a();
+      this.jdField_b_of_type_Bkad = null;
+    }
   }
   
-  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    QLog.d("VipARCameraController", 2, "onSurfaceChanged");
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-    GLES20.glClearDepthf(1.0F);
-    GLES20.glEnable(2929);
-    GLES20.glDepthFunc(515);
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    GLES20.glViewport(0, 0, paramInt1, paramInt2);
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_Bkao.a(0, 0, paramInt1, paramInt2);
+    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
+      return false;
     }
-    if (this.jdField_a_of_type_Bkal != null) {
-      this.jdField_a_of_type_Bkal.onSurfaceChanged(paramGL10, paramInt1, paramInt2);
+    if (paramString3.equalsIgnoreCase("playLocalSound"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneSoundPlugin", 2, "playLocalSound");
+      }
+      c(paramVarArgs);
+      return true;
     }
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
-  {
-    QLog.d("VipARCameraController", 2, "onSurfaceCreated" + this.jdField_c_of_type_Boolean);
-    this.jdField_a_of_type_Bkap.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_Bkao.d();
+    if (paramString3.equalsIgnoreCase("playLocalBackSound"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneSoundPlugin", 2, "playLocalBackSound");
+      }
+      d(paramVarArgs);
+      return true;
     }
-    if (this.jdField_a_of_type_Bkal != null) {
-      this.jdField_a_of_type_Bkal.onSurfaceCreated(paramGL10, paramEGLConfig);
+    if (paramString3.equalsIgnoreCase("preloadSound"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneSoundPlugin", 2, "preloadSound");
+      }
+      e(paramVarArgs);
+      return true;
     }
-    this.jdField_a_of_type_Boolean = true;
+    if (paramString3.equalsIgnoreCase("stopLocalSound"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneSoundPlugin", 2, "stopLocalSound");
+      }
+      b(new String[0]);
+      return true;
+    }
+    if (paramString3.equalsIgnoreCase("stopLocalBackSound"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneSoundPlugin", 2, "stopLocalBackSound");
+      }
+      a(new String[0]);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bkae
  * JD-Core Version:    0.7.0.1
  */

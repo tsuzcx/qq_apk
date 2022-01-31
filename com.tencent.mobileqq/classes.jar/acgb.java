@@ -1,20 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AuthDevActivity;
 
-public final class acgb
-  implements DialogInterface.OnClickListener
+public class acgb
+  extends Handler
 {
-  public acgb(acgy paramacgy) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.a != null) {
-      this.a.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  public acgb(AuthDevActivity paramAuthDevActivity) {}
 }
 
 

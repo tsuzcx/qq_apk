@@ -2,9 +2,9 @@ import android.app.Activity;
 import android.view.View;
 
 class ncz
-  implements bhqd
+  implements bhuk
 {
-  ncz(ncv paramncv, Activity paramActivity, String paramString, bhpy parambhpy) {}
+  ncz(ncv paramncv, Activity paramActivity, String paramString, bhuf parambhuf) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -13,7 +13,7 @@ class ncz
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhpy.dismiss();
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
       ncv.b(this.jdField_a_of_type_Ncv, this.jdField_a_of_type_AndroidAppActivity);
       continue;

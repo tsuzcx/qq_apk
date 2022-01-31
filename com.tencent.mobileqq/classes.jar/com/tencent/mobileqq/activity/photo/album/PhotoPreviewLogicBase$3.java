@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.photo.album;
 
 import android.view.View;
-import bhqr;
+import bhuy;
 import com.tencent.widget.AdapterView;
 
 class PhotoPreviewLogicBase$3
-  implements bhqr
+  implements bhuy
 {
   PhotoPreviewLogicBase$3(PhotoPreviewLogicBase paramPhotoPreviewLogicBase) {}
   

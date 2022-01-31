@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.launcher;
 
 import android.text.TextUtils;
-import bgqq;
+import bgux;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 public class MiniAppInfoLoadingFragment$2$1
   implements Runnable
 {
-  public MiniAppInfoLoadingFragment$2$1(bgqq parambgqq, JSONObject paramJSONObject) {}
+  public MiniAppInfoLoadingFragment$2$1(bgux parambgux, JSONObject paramJSONObject) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class MiniAppInfoLoadingFragment$2$1
     if (TextUtils.isEmpty(str2)) {
       str1 = "网络请求错误，无法加载";
     }
-    MiniAppInfoLoadingFragment.a(this.jdField_a_of_type_Bgqq.a, str1, l);
+    MiniAppInfoLoadingFragment.a(this.jdField_a_of_type_Bgux.a, str1, l);
   }
 }
 

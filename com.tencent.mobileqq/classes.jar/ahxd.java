@@ -1,34 +1,29 @@
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
 import java.util.ArrayList;
 
-public class ahxd
+class ahxd
   implements View.OnClickListener
 {
-  public ahxd(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ahxd(ahww paramahww, int paramInt, ArrayList paramArrayList) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.d == 15) && (ChatHistoryTroopMemberFragment.a(this.a).size() > 0))
+    if (!ahww.a(this.jdField_a_of_type_Ahww))
     {
-      paramView = new Intent();
-      paramView.putExtra("param_deleted_uins", ChatHistoryTroopMemberFragment.a(this.a));
-      this.a.getActivity().setResult(-1, paramView);
-      if ((this.a.f == null) || (!this.a.f.equals(this.a.getActivity().app.getCurrentAccountUin()))) {
-        break label171;
+      if (this.jdField_a_of_type_Int == 1) {
+        SDKSetEmotionPreviewFragment.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0), ahww.a(this.jdField_a_of_type_Ahww), null);
       }
     }
-    label171:
-    for (int i = 0;; i = 1)
-    {
-      azmj.b(this.a.getActivity().app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.c, "" + i, "1", ChatHistoryTroopMemberFragment.a(this.a).toString());
-      this.a.getActivity().finish();
+    else {
       return;
     }
+    paramView = new Intent();
+    paramView.putStringArrayListExtra("path_list", this.jdField_a_of_type_JavaUtilArrayList);
+    PublicFragmentActivity.a(ahww.a(this.jdField_a_of_type_Ahww), paramView, SDKSetEmotionPreviewFragment.class);
   }
 }
 

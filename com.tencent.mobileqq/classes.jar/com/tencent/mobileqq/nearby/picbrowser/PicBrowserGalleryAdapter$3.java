@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import avez;
-import avff;
+import avji;
+import avjo;
 
 public class PicBrowserGalleryAdapter$3
   implements Runnable
 {
-  public PicBrowserGalleryAdapter$3(avez paramavez, int paramInt, boolean paramBoolean) {}
+  public PicBrowserGalleryAdapter$3(avji paramavji, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    avez.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-    if (avez.a(this.this$0) != null) {
-      avez.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    avji.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    if (avji.a(this.this$0) != null) {
+      avji.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
     }
   }
 }

@@ -1,9 +1,16 @@
-public class avny
-  extends avnz
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class avny
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
+  avny(avnx paramavnx, bdjz parambdjz) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bdjz.dismiss();
+    this.jdField_a_of_type_Avnx.a.f();
+  }
 }
 
 

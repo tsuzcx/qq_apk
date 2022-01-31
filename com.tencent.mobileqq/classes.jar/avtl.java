@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.OcrConfig;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class avtl
-  implements Parcelable.Creator<OcrConfig>
+public class avtl
+  extends avtm
 {
-  public OcrConfig a(Parcel paramParcel)
+  public avtl(String paramString, avtu paramavtu)
   {
-    return new OcrConfig(paramParcel);
+    super(paramString, paramavtu);
   }
   
-  public OcrConfig[] a(int paramInt)
+  public void a()
   {
-    return new OcrConfig[paramInt];
+    super.a();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130839108);
+    this.jdField_a_of_type_Int = -1;
   }
 }
 

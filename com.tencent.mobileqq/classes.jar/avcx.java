@@ -1,18 +1,18 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.MedalInfo;
 
-class avcx
-  implements View.OnTouchListener
+public final class avcx
+  implements Parcelable.Creator<MedalInfo>
 {
-  avcx(avcw paramavcw) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public MedalInfo a(Parcel paramParcel)
   {
-    this.a.c();
-    avcw.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
+    return new MedalInfo(paramParcel);
+  }
+  
+  public MedalInfo[] a(int paramInt)
+  {
+    return new MedalInfo[paramInt];
   }
 }
 

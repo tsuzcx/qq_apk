@@ -1,158 +1,234 @@
-import android.content.res.Resources;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import java.util.HashMap;
 
-public class bavc
+class bavc
+  implements ITransactionCallback
 {
-  private static int a(int paramInt, MessageRecord paramMessageRecord, String paramString)
+  bavc(bavb parambavb, long paramLong) {}
+  
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    int i = 2;
-    if ((paramInt == 9063) || (paramInt == 90632)) {
-      paramInt = 1;
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
+    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
+    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
+    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
+    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
+    String str1 = (String)paramHashMap.get("rep_bdhTrans");
+    String str2 = (String)paramHashMap.get("segspercnt");
+    String str3 = (String)paramHashMap.get("param_conf_segSize");
+    String str4 = (String)paramHashMap.get("param_conf_segNum");
+    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms");
     }
-    int j;
-    do
-    {
-      do
-      {
-        return paramInt;
-        if ((paramMessageRecord.istroop != 1) && (paramMessageRecord.istroop != 3000)) {
-          break;
-        }
-        if (paramInt != -9527) {
-          break label119;
-        }
-        j = a(paramString);
-        paramInt = i;
-      } while (j == 197);
-      if ((j != 202) && (j != 201)) {
-        break;
-      }
-      return 3;
-      if (paramInt != -9527) {
-        break;
-      }
-      j = a(paramString);
-      paramInt = i;
-    } while (j == 199);
-    if ((j == 206) || (j == 207)) {
-      return 3;
-    }
-    label119:
-    return -1;
+    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", paramArrayOfByte);
+    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
+    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
+    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
+    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
+    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
+    this.jdField_a_of_type_Bavb.a(l2, l3, l4, l5);
+    this.jdField_a_of_type_Bavb.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Bavb.jdField_b_of_type_Barh);
+    this.jdField_a_of_type_Bavb.d();
   }
   
-  private static int a(String paramString)
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    int j = 0;
-    int i = j;
-    if (paramString != null)
-    {
-      paramString = paramString.split("_");
-      i = j;
-      if (paramString != null)
-      {
-        i = j;
-        if (paramString.length != 2) {}
-      }
+    long l5 = SystemClock.uptimeMillis();
+    long l1 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
+    long l2 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
+    long l3 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
+    long l4 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
+    Object localObject = (String)paramHashMap.get("tc_p:");
+    String str1 = (String)paramHashMap.get("rep_bdhTrans");
+    String str2 = (String)paramHashMap.get("segspercnt");
+    String str3 = (String)paramHashMap.get("param_conf_segSize");
+    String str4 = (String)paramHashMap.get("param_conf_segNum");
+    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l5 - this.jdField_a_of_type_Long) + "ms ,fileSize:" + this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.jdField_a_of_type_Long + " transInfo:" + str1);
     }
-    try
-    {
-      i = Integer.parseInt(paramString[1]);
-      return i;
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return 0;
-  }
-  
-  private static String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-    case 2: 
-      return BaseApplicationImpl.getApplication().getResources().getString(2131690029);
-    }
-    return BaseApplicationImpl.getApplication().getResources().getString(2131690028);
-  }
-  
-  public static String a(MessageForPic paramMessageForPic)
-  {
-    Object localObject2 = null;
-    int i;
-    try
-    {
-      String str = paramMessageForPic.getExtInfoFromExtStr("PicUploadExplicitError");
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty(str)) {
-        break label155;
-      }
-      i = a(Integer.parseInt(str), paramMessageForPic, paramMessageForPic.getExtInfoFromExtStr("PicUploadExplicitErrorReason"));
-      if (i == 3)
-      {
-        str = paramMessageForPic.getExtInfoFromExtStr("SEND_PHOTO_DAY_KEY");
-        localObject1 = localObject2;
-        if (TextUtils.isEmpty(str)) {
-          break label155;
-        }
-        long l1 = Long.parseLong(str);
-        long l2 = SystemClock.uptimeMillis();
-        if (orr.a(l1, l2))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PicUploadExplicitError", 2, "getFailedTip,lastSendPicTime:" + l1 + " timeCurrent:" + l2);
-          }
-          return a(i);
-        }
-        paramMessageForPic.removeExtInfoToExtStr("SEND_PHOTO_DAY_KEY");
-        paramMessageForPic.updateMsgExtFiled();
-        return null;
-      }
-    }
-    catch (Exception paramMessageForPic)
-    {
-      paramMessageForPic.printStackTrace();
-      return null;
-    }
-    Object localObject1 = a(i);
-    label155:
-    return localObject1;
-  }
-  
-  public static void a(MessageRecord paramMessageRecord, int paramInt, String paramString1, String paramString2)
-  {
-    if ((paramMessageRecord instanceof MessageForPic))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PicUploadExplicitError", 2, "uploadFailUpdateMsg,errCode:" + paramInt + " errStr:" + paramString1 + " uinType:" + paramMessageRecord.istroop + " msg:" + paramMessageRecord);
-      }
-      int i = a(paramInt, paramMessageRecord, paramString2);
-      if (i > 0)
-      {
-        if (i != 3) {
-          break label124;
-        }
-        paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitError", String.valueOf(paramInt));
-        paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitErrorReason", paramString2);
-        paramMessageRecord.saveExtInfoToExtStr("SEND_PHOTO_DAY_KEY", String.valueOf(SystemClock.uptimeMillis()));
-      }
+    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", localObject);
+    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
+    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
+    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
+    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
+    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
+    this.jdField_a_of_type_Bavb.jdField_b_of_type_Barh.b();
+    this.jdField_a_of_type_Bavb.jdField_b_of_type_Barh.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Bavb.s = this.jdField_a_of_type_Bavb.q;
+    if ((this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 50) || (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 51)) {
+      paramHashMap = new Bdh_extinfo.UploadPicExtInfo();
     }
     for (;;)
     {
-      ((MessageForPic)paramMessageRecord).updateMsgExtFiled();
-      return;
-      label124:
-      paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitError", String.valueOf(paramInt));
-      paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitErrorReason", paramString2);
+      try
+      {
+        paramHashMap.mergeFrom(paramArrayOfByte, 0, paramArrayOfByte.length);
+        this.jdField_a_of_type_Bavb.n = paramHashMap.bytes_file_resid.get().toStringUtf8();
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Bavb.n))
+        {
+          this.jdField_a_of_type_Bavb.e();
+          this.jdField_a_of_type_Bavb.a(l1, l2, l3, l4);
+          this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.a();
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+        continue;
+        this.jdField_a_of_type_Bavb.d();
+        continue;
+      }
+      int i;
+      if (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 23)
+      {
+        paramHashMap = new Bdh_extinfo.CommFileExtRsp();
+        try
+        {
+          paramHashMap.mergeFrom(paramArrayOfByte, 0, paramArrayOfByte.length);
+          localObject = this.jdField_a_of_type_Bavb;
+          if (paramHashMap.bytes_download_url.has())
+          {
+            paramArrayOfByte = paramHashMap.bytes_download_url.get().toStringUtf8();
+            ((bavb)localObject).jdField_o_of_type_JavaLangString = paramArrayOfByte;
+            if (!paramHashMap.int32_retcode.has()) {
+              break label612;
+            }
+            i = paramHashMap.int32_retcode.get();
+            if (QLog.isColorLevel()) {
+              QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "NearbyPeoplePhotoUploadProcessor.ITransactionCallback.onSuccess(), business result code = " + i + " url : " + this.jdField_a_of_type_Bavb.jdField_o_of_type_JavaLangString);
+            }
+            if (i != 0) {
+              break label617;
+            }
+            this.jdField_a_of_type_Bavb.e();
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          for (;;)
+          {
+            paramArrayOfByte.printStackTrace();
+            continue;
+            paramArrayOfByte = "";
+            continue;
+            label612:
+            i = -1;
+          }
+          label617:
+          this.jdField_a_of_type_Bavb.d();
+        }
+      }
+      else
+      {
+        paramHashMap = ByteBuffer.wrap(paramArrayOfByte);
+        i = paramHashMap.get();
+        if (QLog.isColorLevel()) {
+          QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "NearbyPeoplePhotoUploadProcessor.ITransactionCallback.onSuccess(), business result code = " + i);
+        }
+        if (i == 0)
+        {
+          if ((this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 8) || (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 64)) {
+            bavb.jdField_a_of_type_Int = Integer.parseInt(new String(paramArrayOfByte, 2, paramHashMap.get() & 0xFF));
+          }
+          for (;;)
+          {
+            this.jdField_a_of_type_Bavb.e();
+            break;
+            if (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 21)
+            {
+              i = paramHashMap.get();
+              this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaLangString = new String(paramArrayOfByte, 2, i & 0xFF);
+            }
+            else if (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 22)
+            {
+              i = paramHashMap.get();
+              this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaLangString = new String(paramArrayOfByte, 2, i & 0xFF);
+            }
+            else if (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 35)
+            {
+              this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+            }
+            else if ((this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 36) || (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 37) || (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 38) || (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 39) || (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 40) || (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 41))
+            {
+              i = paramHashMap.get();
+              int j = paramHashMap.get();
+              int k = paramHashMap.get();
+              int m = paramHashMap.get();
+              this.jdField_a_of_type_Bavb.jdField_b_of_type_JavaLangString = new String(paramArrayOfByte, 5, (m & 0xFF) << 24 | 0x0 | i | (j & 0xFF) << 8 | (k & 0xFF) << 16);
+            }
+            else if (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 48)
+            {
+              i = paramHashMap.get();
+              this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaLangString = new String(paramArrayOfByte, 2, i & 0xFF);
+            }
+            else if (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 56)
+            {
+              try
+              {
+                paramHashMap.getInt();
+                l5 = paramHashMap.getLong();
+                i = paramHashMap.getInt();
+                this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaLangString = new String(paramArrayOfByte, paramHashMap.position(), i);
+                if (QLog.isColorLevel()) {
+                  QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "NearbyPeoplePhotoUploadProcessor.ITransactionCallback.onSuccess(). personalityLabel uuid:" + l5 + " url:" + this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaLangString);
+                }
+                this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Bavb.jdField_a_of_type_Bayk.j;
+                this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.jdField_d_of_type_Long = l5;
+                this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.i = this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaLangString;
+                if (TextUtils.isEmpty(this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.i)) {
+                  this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.i = this.jdField_a_of_type_Bavb.jdField_a_of_type_Bayk.i;
+                }
+              }
+              catch (Exception paramArrayOfByte) {}
+            }
+          }
+        }
+        if (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 34)
+        {
+          paramArrayOfByte = new String(paramArrayOfByte);
+          this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaLangString = paramArrayOfByte;
+          this.jdField_a_of_type_Bavb.e();
+        }
+        else
+        {
+          this.jdField_a_of_type_Bavb.d(1005);
+          this.jdField_a_of_type_Bavb.d();
+        }
+      }
+    }
+  }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
+  {
+    this.jdField_a_of_type_Bavb.d("<BDH_LOG> onTransStart()");
+    this.jdField_a_of_type_Bavb.jdField_b_of_type_Barh.a();
+  }
+  
+  public void onUpdateProgress(int paramInt)
+  {
+    bavb localbavb = this.jdField_a_of_type_Bavb;
+    bass localbass = this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass;
+    long l = paramInt;
+    localbass.e = l;
+    localbavb.s = l;
+    if ((paramInt <= this.jdField_a_of_type_Bavb.q) && (!this.jdField_a_of_type_Bavb.jdField_o_of_type_Boolean) && (!this.jdField_a_of_type_Bavb.k)) {
+      this.jdField_a_of_type_Bavb.i();
     }
   }
 }

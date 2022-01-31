@@ -1,19 +1,14 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
-
-public class aqzj
-  extends ayfe<ayjl, ayru>
+class aqzj
+  extends aqzb
 {
-  public aqzj(TroopFileSearchFragment paramTroopFileSearchFragment) {}
-  
-  protected aymg<ayjl, ayru> a(int paramInt)
+  public aqzj(aqyp paramaqyp)
   {
-    return new aqzl();
+    super(paramaqyp);
   }
   
-  protected ayrv a(int paramInt, ViewGroup paramViewGroup)
+  protected String a()
   {
-    return new aqzn(paramViewGroup);
+    return "StateRefuseByPC";
   }
 }
 

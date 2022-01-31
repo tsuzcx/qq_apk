@@ -1,12 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class affm
-  implements DialogInterface.OnClickListener
+  implements anxq
 {
-  affm(affh paramaffh) {}
+  affm(affl paramaffl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    affl.a(this.a);
+  }
 }
 
 

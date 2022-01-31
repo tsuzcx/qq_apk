@@ -1,26 +1,34 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Rect;
 
 public class bhyo
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bhyo(XPanelContainer paramXPanelContainer, int paramInt) {}
+  private int jdField_a_of_type_Int;
+  private Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private int b;
+  private int c;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private bhyo(Bitmap paramBitmap, int paramInt)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a)
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
+    if (paramBitmap != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("XPanelContainer", 2, "colseAnim resetPosition");
-      }
-      XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, 0);
+      this.b = paramBitmap.getScaledWidth(paramInt);
+      this.c = paramBitmap.getScaledHeight(paramInt);
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_AndroidGraphicsBitmap$Config = paramBitmap.getConfig();
       return;
     }
-    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
+    this.jdField_a_of_type_Int = 4;
+  }
+  
+  private void a(Rect paramRect)
+  {
+    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
   }
 }
 

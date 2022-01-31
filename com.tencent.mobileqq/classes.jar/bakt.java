@@ -1,11 +1,19 @@
-import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 
 public class bakt
+  implements View.OnClickListener
 {
-  public Drawable a;
-  public String a;
-  public int[] a;
-  public String b;
+  public bakt(GroupTeamWorkListActivity paramGroupTeamWorkListActivity, View paramView) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).notifyDataSetChanged();
+    bdne.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.c(), 1, false);
+  }
 }
 
 

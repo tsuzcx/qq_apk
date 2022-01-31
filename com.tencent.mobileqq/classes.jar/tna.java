@@ -76,7 +76,7 @@ public class tna
       continue;
       paramstSimpleMetaPerson = paramstSimpleMetaPerson.schema;
       int i = tee.a().a();
-      if (xoo.a(this.jdField_a_of_type_AndroidContentContext))
+      if (xsx.a(this.jdField_a_of_type_AndroidContentContext))
       {
         tlq.a(this.jdField_a_of_type_AndroidContentContext, "biz_src_jc_gzh_weishi", paramstSimpleMetaPerson, 1, i, 1);
         tnt.c(1000003, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
@@ -108,7 +108,7 @@ public class tna
   private void f()
   {
     if (!ndk.a(a())) {
-      bfhq.a().a(2131721476);
+      bflz.a().a(2131721489);
     }
     Object localObject;
     do
@@ -154,7 +154,7 @@ public class tna
   
   protected int b()
   {
-    return 2131559874;
+    return 2131559873;
   }
   
   @UiThread
@@ -186,11 +186,11 @@ public class tna
     localLayoutParams.topMargin = tlu.b((Activity)this.jdField_a_of_type_AndroidContentContext);
     localLayoutParams.leftMargin = tlu.a();
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)a(2131379499));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)a(2131379557));
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379501));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379559));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.b = ((TextView)a(2131379500));
+    this.b = ((TextView)a(2131379558));
     this.b.setOnClickListener(this);
   }
   
@@ -201,8 +201,8 @@ public class tna
     {
     default: 
       return;
-    case 2131379499: 
-    case 2131379501: 
+    case 2131379557: 
+    case 2131379559: 
       b(localstSimpleMetaPerson);
       return;
     }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import ammx;
+import amrm;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,15 +9,15 @@ import android.os.Build.VERSION;
 import android.os.Looper;
 import android.support.v4.util.LruCache;
 import android.text.TextUtils;
-import bdcb;
-import bdcv;
-import bedm;
-import bedn;
-import bedo;
-import bedp;
-import bedq;
-import bedr;
-import befe;
+import bdgk;
+import bdhe;
+import behv;
+import behw;
+import behx;
+import behy;
+import behz;
+import beia;
+import bejn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -54,7 +54,7 @@ import oicq.wlogin_sdk.request.Ticket;
 public class SwiftBrowserCookieMonster
 {
   private static final LruCache<String, SwiftBrowserCookieMonster> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(8);
-  public static volatile bedr a;
+  public static volatile beia a;
   public static volatile String a;
   public static final AtomicInteger a;
   private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
@@ -63,7 +63,7 @@ public class SwiftBrowserCookieMonster
   public static volatile String d;
   public static volatile String e;
   long jdField_a_of_type_Long = 0L;
-  final ConcurrentHashMap<String, CopyOnWriteArrayList<bedq>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  final ConcurrentHashMap<String, CopyOnWriteArrayList<behz>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   public final myl a;
   public volatile boolean a;
   final AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
@@ -219,9 +219,9 @@ public class SwiftBrowserCookieMonster
     paramStringBuilder.append(paramString2).append(paramString3);
   }
   
-  static void a(List<String> paramList, befe parambefe)
+  static void a(List<String> paramList, bejn parambejn)
   {
-    ThreadManager.post(new SwiftBrowserCookieMonster.5(paramList, parambefe), 5, null, false);
+    ThreadManager.post(new SwiftBrowserCookieMonster.5(paramList, parambejn), 5, null, false);
   }
   
   public static void a(AppRuntime arg0)
@@ -308,14 +308,14 @@ public class SwiftBrowserCookieMonster
           paramIntent = paramAppRuntime.getAppRuntime("modular_web");
           if ((paramIntent instanceof AppInterface))
           {
-            Object localObject2 = new befe((AppInterface)paramIntent);
-            paramIntent = ((befe)localObject2).a("p_skey");
+            Object localObject2 = new bejn((AppInterface)paramIntent);
+            paramIntent = ((bejn)localObject2).a("p_skey");
             if ((paramIntent != null) && (paramIntent.size() > 0))
             {
               if (QLog.isColorLevel()) {
                 QLog.i("SwiftBrowserCookieMonster", 2, "p_skey top hosts: " + TextUtils.join(", ", paramIntent));
               }
-              a(paramIntent, (befe)localObject2);
+              a(paramIntent, (bejn)localObject2);
               if (localObject1 == null) {
                 break label551;
               }
@@ -364,7 +364,7 @@ public class SwiftBrowserCookieMonster
             if (QLog.isColorLevel()) {
               QLog.i("SwiftBrowserCookieMonster", 2, "now preGetPskey and pt4Token: " + TextUtils.join(",", (Object[])localObject2));
             }
-            localTicketManager.GetPskey(str, 16L, (String[])localObject2, new bedn());
+            localTicketManager.GetPskey(str, 16L, (String[])localObject2, new behw());
             if (QLog.isColorLevel()) {
               QLog.d("SwiftBrowserCookieMonster", 2, "Batch load pt4_token when process preload");
             }
@@ -415,22 +415,22 @@ public class SwiftBrowserCookieMonster
   {
     if (paramString1.equalsIgnoreCase("https://aq.qq.com/"))
     {
-      paramCookiesMap.addCookie(paramString1, a("dvid1", bdcv.a(NetConnInfoCenter.GUID), paramString2, true));
-      paramString2 = bdcb.a();
+      paramCookiesMap.addCookie(paramString1, a("dvid1", bdhe.a(NetConnInfoCenter.GUID), paramString2, true));
+      paramString2 = bdgk.a();
       if (!TextUtils.isEmpty(paramString2)) {
-        paramCookiesMap.addCookie(paramString1, a("dvid5", bdcv.a(NetConnInfoCenter.GUID), paramString2, true));
+        paramCookiesMap.addCookie(paramString1, a("dvid5", bdhe.a(NetConnInfoCenter.GUID), paramString2, true));
       }
-      paramString2 = bdcb.b();
+      paramString2 = bdgk.b();
       if (!TextUtils.isEmpty(paramString2)) {
-        paramCookiesMap.addCookie(paramString1, a("dvid4", bdcv.a(NetConnInfoCenter.GUID), Md5Utils.getMD5(paramString2), true));
+        paramCookiesMap.addCookie(paramString1, a("dvid4", bdhe.a(NetConnInfoCenter.GUID), Md5Utils.getMD5(paramString2), true));
       }
-      paramString2 = bdcb.c(BaseApplication.getContext());
+      paramString2 = bdgk.c(BaseApplication.getContext());
       if (!TextUtils.isEmpty(paramString2)) {
-        paramCookiesMap.addCookie(paramString1, a("dvid2", bdcv.a(NetConnInfoCenter.GUID), Md5Utils.getMD5(paramString2), true));
+        paramCookiesMap.addCookie(paramString1, a("dvid2", bdhe.a(NetConnInfoCenter.GUID), Md5Utils.getMD5(paramString2), true));
       }
-      paramString2 = bdcb.b(BaseApplication.getContext());
+      paramString2 = bdgk.b(BaseApplication.getContext());
       if (!TextUtils.isEmpty(paramString2)) {
-        paramCookiesMap.addCookie(paramString1, a("dvid3", bdcv.a(NetConnInfoCenter.GUID), Md5Utils.getMD5(paramString2), true));
+        paramCookiesMap.addCookie(paramString1, a("dvid3", bdhe.a(NetConnInfoCenter.GUID), Md5Utils.getMD5(paramString2), true));
       }
       return true;
     }
@@ -483,8 +483,8 @@ public class SwiftBrowserCookieMonster
       long l1 = System.currentTimeMillis();
       String str1 = paramAppRuntime.getAccount();
       String str2 = String.format("(%d)%s", new Object[] { Integer.valueOf(134217728), paramString });
-      bedp localbedp = new bedp(paramString, l1);
-      localObject = ((TicketManager)localObject).GetPskey(str1, 16L, new String[] { str2 }, localbedp);
+      behy localbehy = new behy(paramString, l1);
+      localObject = ((TicketManager)localObject).GetPskey(str1, 16L, new String[] { str2 }, localbehy);
       if (localObject == null) {
         break label258;
       }
@@ -494,7 +494,7 @@ public class SwiftBrowserCookieMonster
     {
       paramAppRuntime = paramAppRuntime.getAppRuntime("modular_web");
       if ((paramAppRuntime instanceof AppInterface)) {
-        new befe((AppInterface)paramAppRuntime).a(paramString, "pt4_token");
+        new bejn((AppInterface)paramAppRuntime).a(paramString, "pt4_token");
       }
       if (QLog.isColorLevel())
       {
@@ -516,7 +516,7 @@ public class SwiftBrowserCookieMonster
   
   public static void b(AppRuntime paramAppRuntime, Intent paramIntent)
   {
-    ThreadManager.postImmediately(new SwiftBrowserCookieMonster.6(paramAppRuntime, paramIntent), new bedo(), false);
+    ThreadManager.postImmediately(new SwiftBrowserCookieMonster.6(paramAppRuntime, paramIntent), new behx(), false);
   }
   
   public static boolean b()
@@ -687,13 +687,13 @@ public class SwiftBrowserCookieMonster
     e = "";
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(1);
     jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
-    jdField_a_of_type_Bedr = null;
+    jdField_a_of_type_Beia = null;
     QLog.i("SwiftBrowserCookieMonster", 1, "resetAllKeyAndCache");
   }
   
   static void e()
   {
-    if (jdField_a_of_type_Bedr == null) {
+    if (jdField_a_of_type_Beia == null) {
       ThreadManager.postImmediately(new SwiftBrowserCookieMonster.9(), null, false);
     }
   }
@@ -795,7 +795,7 @@ public class SwiftBrowserCookieMonster
       String str = ((TicketManager)paramAppRuntime.getManager(2)).getPskey(paramAppRuntime.getAccount(), paramString);
       paramAppRuntime = paramAppRuntime.getAppRuntime("modular_web");
       if ((paramAppRuntime instanceof AppInterface)) {
-        new befe((AppInterface)paramAppRuntime).a(paramString, "p_skey");
+        new bejn((AppInterface)paramAppRuntime).a(paramString, "p_skey");
       }
       if (QLog.isColorLevel())
       {
@@ -824,17 +824,17 @@ public class SwiftBrowserCookieMonster
     this.jdField_a_of_type_Long = 0L;
   }
   
-  public void a(bedq parambedq)
+  public void a(behz parambehz)
   {
-    if (parambedq != null)
+    if (parambehz != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (String)localIterator.next();
         localObject = (CopyOnWriteArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-        if (((CopyOnWriteArrayList)localObject).contains(parambedq)) {
-          ((CopyOnWriteArrayList)localObject).remove(parambedq);
+        if (((CopyOnWriteArrayList)localObject).contains(parambehz)) {
+          ((CopyOnWriteArrayList)localObject).remove(parambehz);
         }
       }
     }
@@ -842,7 +842,7 @@ public class SwiftBrowserCookieMonster
   
   void a(SwiftBrowserCookieMonster.CookiesMap paramCookiesMap)
   {
-    String str = ammx.a(BaseApplicationImpl.getContext(), "key_local_cache", "0");
+    String str = amrm.a(BaseApplicationImpl.getContext(), "key_local_cache", "0");
     if ("0".equals(str)) {
       QLog.e("SwiftBrowserCookieMonster", 1, "addLocaleIdCookie, localeIdStr = 0");
     }
@@ -981,7 +981,7 @@ public class SwiftBrowserCookieMonster
     return bool2;
   }
   
-  public boolean a(String paramString, bedq parambedq, AppRuntime paramAppRuntime, Intent paramIntent)
+  public boolean a(String paramString, behz parambehz, AppRuntime paramAppRuntime, Intent paramIntent)
   {
     Object localObject1;
     Object localObject2;
@@ -991,7 +991,7 @@ public class SwiftBrowserCookieMonster
       {
         localObject1 = BaseApplicationImpl.getApplication().getRuntime();
         localObject1 = a(paramString, (AppRuntime)localObject1);
-        if (parambedq == null) {
+        if (parambehz == null) {
           break label326;
         }
         if (this.jdField_a_of_type_Long > 0L)
@@ -1005,7 +1005,7 @@ public class SwiftBrowserCookieMonster
         }
         QLog.e("SwiftBrowserCookieMonster", 1, "some cookie goes wrong, retry set cookie: " + (String)localObject2 + "");
         a();
-        a(paramString, parambedq, paramAppRuntime, paramIntent);
+        a(paramString, parambehz, paramAppRuntime, paramIntent);
       }
       for (;;)
       {
@@ -1018,7 +1018,7 @@ public class SwiftBrowserCookieMonster
           if (this.jdField_b_of_type_Boolean) {
             QLog.i("SwiftBrowserCookieMonster", 1, "cookie is wrong, need do jump ptlogin! " + ndq.b((String)localObject1, new String[0]));
           }
-          parambedq.a((String)localObject1, null, this.jdField_a_of_type_Long);
+          parambehz.a((String)localObject1, null, this.jdField_a_of_type_Long);
           b();
         }
         else
@@ -1026,12 +1026,12 @@ public class SwiftBrowserCookieMonster
           if (QLog.isColorLevel()) {
             QLog.i("SwiftBrowserCookieMonster", 2, "hit cookie cache, just call onSetCookiesFinished " + ndq.b((String)localObject1, new String[0]) + ", errorCode: " + this.jdField_a_of_type_Long);
           }
-          parambedq.a((String)localObject1, null, this.jdField_a_of_type_Long);
+          parambehz.a((String)localObject1, null, this.jdField_a_of_type_Long);
         }
       }
     }
     label326:
-    if (parambedq != null)
+    if (parambehz != null)
     {
       localObject2 = (CopyOnWriteArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
       localObject1 = localObject2;
@@ -1040,8 +1040,8 @@ public class SwiftBrowserCookieMonster
         localObject1 = new CopyOnWriteArrayList();
         this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject1);
       }
-      if (!((CopyOnWriteArrayList)localObject1).contains(parambedq)) {
-        ((CopyOnWriteArrayList)localObject1).add(parambedq);
+      if (!((CopyOnWriteArrayList)localObject1).contains(parambehz)) {
+        ((CopyOnWriteArrayList)localObject1).add(parambehz);
       }
       if (QLog.isColorLevel()) {
         QLog.i("SwiftBrowserCookieMonster", 2, "now add callback for " + ndq.b(paramString, new String[0]));
@@ -1055,7 +1055,7 @@ public class SwiftBrowserCookieMonster
       if (QLog.isColorLevel()) {
         QLog.i("SwiftBrowserCookieMonster", 2, "post thread to set all cookies");
       }
-      ThreadManager.postImmediately(paramString, new bedm(this), false);
+      ThreadManager.postImmediately(paramString, new behv(this), false);
     }
     return true;
   }

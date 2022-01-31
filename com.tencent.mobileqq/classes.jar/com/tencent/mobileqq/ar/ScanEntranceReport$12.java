@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import azmz;
+import azri;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -13,7 +13,7 @@ public class ScanEntranceReport$12
     localHashMap.put("last_total_time", String.valueOf(this.jdField_a_of_type_Long));
     localHashMap.put("upload_count", String.valueOf(this.jdField_a_of_type_Int));
     localHashMap.put("session_ids", this.jdField_a_of_type_JavaLangString);
-    azmz.a(BaseApplication.getContext()).a("", "scanner_first_ar_recog", true, this.b, 0L, localHashMap, "");
+    azri.a(BaseApplication.getContext()).a("", "scanner_first_ar_recog", true, this.b, 0L, localHashMap, "");
   }
 }
 

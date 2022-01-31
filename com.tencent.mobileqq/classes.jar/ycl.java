@@ -1,24 +1,19 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
 import com.tencent.mobileqq.pb.PBStringField;
 
-class ycl
-  implements View.OnClickListener
+public class ycl
+  implements ydm
 {
-  ycl(ych paramych, CertifiedAccountMeta.StReply paramStReply) {}
+  public ycl(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = (ClipboardManager)ybx.i(this.jdField_a_of_type_Ych.a).getSystemService("clipboard");
-    if (paramView != null)
-    {
-      paramView.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.content.get()));
-      ybx.a(this.jdField_a_of_type_Ych.a).dismiss();
+    if (RecommendBannerFeedItemView.a(this.a) == null) {
+      return;
     }
+    zaj.a(RecommendBannerFeedItemView.a(this.a).poster.id.get(), "auth_page", "recom_follow_b", 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
   }
 }
 

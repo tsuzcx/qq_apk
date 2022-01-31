@@ -1,37 +1,32 @@
-import android.os.Bundle;
-import android.os.RemoteException;
-import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager;
 import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
-class bgub
-  implements bgrh
+public class bgub
+  implements bgvw
 {
-  bgub(bgtx parambgtx, MiniAppInfo paramMiniAppInfo) {}
+  public bgub(AppBrandLaunchManager paramAppBrandLaunchManager) {}
   
-  public void onInitApkgInfo(int paramInt, bgjw parambgjw, String paramString)
+  public void a(int paramInt)
   {
-    QMLog.d("ApkgMainProcessManager", "onInitApkgInfo load apkg in main process end " + parambgjw);
-    parambgjw = (List)bgtx.a(this.jdField_a_of_type_Bgtx).remove(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId);
-    if (parambgjw != null)
+    QMLog.w("minisdk-start_AppBrandLaunchManager", "updateBaseLib ret=" + paramInt);
+    if (paramInt == 0) {
+      return;
+    }
+    if (paramInt == 1)
     {
-      parambgjw = parambgjw.iterator();
-      while (parambgjw.hasNext())
-      {
-        paramString = (MiniCmdCallback)parambgjw.next();
-        if (paramString != null) {
-          try
-          {
-            paramString.onCmdResult(true, new Bundle());
-          }
-          catch (RemoteException paramString)
-          {
-            paramString.printStackTrace();
-          }
-        }
+      QMLog.w("minisdk-start_AppBrandLaunchManager", "基础库无更新.");
+      return;
+    }
+    String str = "基础库更新失败.";
+    if (paramInt == 1100) {
+      str = "础库更新请求失败.";
+    }
+    for (;;)
+    {
+      QMLog.w("minisdk-start_AppBrandLaunchManager", str);
+      return;
+      if (paramInt == 1101) {
+        str = "基础库下载失败.";
       }
     }
   }

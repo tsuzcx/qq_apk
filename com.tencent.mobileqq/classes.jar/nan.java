@@ -109,7 +109,7 @@ public class nan
         if ((localLong != null) && (paramMap.get(localLong) != null))
         {
           byte[] arrayOfByte = ((oidb_0x791.RedDotInfo)paramMap.get(localLong)).toByteArray();
-          localJSONObject.put(String.valueOf(localLong), bdbi.encodeToString(arrayOfByte, 0));
+          localJSONObject.put(String.valueOf(localLong), bdfr.encodeToString(arrayOfByte, 0));
         }
       }
       paramMap = localJSONObject.toString();
@@ -163,9 +163,9 @@ public class nan
     //   51: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   57: invokespecial 323	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   60: invokestatic 328	bdcs:a	(Ljava/io/File;)[B
+    //   60: invokestatic 328	bdhb:a	(Ljava/io/File;)[B
     //   63: iconst_0
-    //   64: invokestatic 332	bdbi:decode	([BI)[B
+    //   64: invokestatic 332	bdfr:decode	([BI)[B
     //   67: invokespecial 335	java/lang/String:<init>	([B)V
     //   70: invokespecial 121	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   73: astore_2
@@ -189,7 +189,7 @@ public class nan
     //   113: invokevirtual 342	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
     //   116: checkcast 28	java/lang/String
     //   119: iconst_0
-    //   120: invokestatic 345	bdbi:decode	(Ljava/lang/String;I)[B
+    //   120: invokestatic 345	bdfr:decode	(Ljava/lang/String;I)[B
     //   123: invokevirtual 349	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   126: pop
     //   127: aload 5
@@ -275,7 +275,7 @@ public class nan
     //   35: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   41: invokespecial 323	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   44: invokestatic 328	bdcs:a	(Ljava/io/File;)[B
+    //   44: invokestatic 328	bdhb:a	(Ljava/io/File;)[B
     //   47: astore_3
     //   48: new 82	tencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes
     //   51: dup
@@ -422,7 +422,7 @@ public class nan
     {
       paramRedDotInfo = new JSONObject(paramRedDotInfo);
       if (paramRedDotInfo.optInt("is_c2c") == 1) {
-        aush.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "key_nearby_msg_box_say_hello_msg_type", Integer.valueOf(paramRedDotInfo.optInt("say_hello_red_dot_type")));
+        auwq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "key_nearby_msg_box_say_hello_msg_type", Integer.valueOf(paramRedDotInfo.optInt("say_hello_red_dot_type")));
       }
       return;
     }
@@ -454,7 +454,7 @@ public class nan
         i += 1;
         j = k;
         break;
-        boolean bool = bdiv.g(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        boolean bool = bdne.g(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
         k = j;
         if (localRedDotInfo.uint32_number.get() > 0)
         {
@@ -481,7 +481,7 @@ public class nan
     if ((this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes == null) || (paramQQAppInterface == null)) {
       return 0;
     }
-    boolean bool3 = auqf.a(paramQQAppInterface);
+    boolean bool3 = auuo.a(paramQQAppInterface);
     boolean bool4 = a();
     boolean bool1;
     boolean bool2;
@@ -547,12 +547,12 @@ public class nan
     }
   }
   
-  public avoh a(boolean paramBoolean)
+  public avsq a(boolean paramBoolean)
   {
     try
     {
-      avoh localavoh = a(paramBoolean, true);
-      return localavoh;
+      avsq localavsq = a(paramBoolean, true);
+      return localavsq;
     }
     finally
     {
@@ -561,13 +561,13 @@ public class nan
     }
   }
   
-  public avoh a(boolean paramBoolean1, boolean paramBoolean2)
+  public avsq a(boolean paramBoolean1, boolean paramBoolean2)
   {
     for (;;)
     {
       Object localObject;
       BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo1;
-      avoh localavoh;
+      avsq localavsq;
       int k;
       BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo2;
       BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo3;
@@ -580,12 +580,12 @@ public class nan
         localObject = (nan)localQQAppInterface.getManager(70);
         localRedTypeInfo1 = ((nan)localObject).a();
         j = 0;
-        localavoh = new avoh();
+        localavsq = new avsq();
         if (!paramBoolean1) {
           break label868;
         }
         k = 1;
-        if (!auqf.a(localQQAppInterface)) {
+        if (!auuo.a(localQQAppInterface)) {
           break label810;
         }
         localRedTypeInfo2 = ((nan)localObject).b();
@@ -605,8 +605,8 @@ public class nan
           i = j;
           if (localArrayList1.size() > 0)
           {
-            localavoh.a(5);
-            localavoh.b(localArrayList1.size());
+            localavsq.a(5);
+            localavsq.b(localArrayList1.size());
             i = 56;
           }
         }
@@ -617,16 +617,16 @@ public class nan
           if (localArrayList2.size() > 0)
           {
             j = i;
-            if (auqf.b(localQQAppInterface))
+            if (auuo.b(localQQAppInterface))
             {
-              localavoh.a(5);
-              localavoh.b(localArrayList2.size());
+              localavsq.a(5);
+              localavsq.b(localArrayList2.size());
               j = 61;
             }
           }
         }
         i = k;
-        if (!auqf.b(localQQAppInterface)) {
+        if (!auuo.b(localQQAppInterface)) {
           break label882;
         }
         if (QLog.isColorLevel()) {
@@ -640,9 +640,9 @@ public class nan
           if (m <= 0) {
             break label882;
           }
-          localavoh.a(5);
-          localavoh.b(m);
-          QLog.d("nearby.redpoint", 1, "addRedNum:" + m + ", total=" + localavoh.jdField_b_of_type_Int + ", type=" + 60);
+          localavsq.a(5);
+          localavsq.b(m);
+          QLog.d("nearby.redpoint", 1, "addRedNum:" + m + ", total=" + localavsq.jdField_b_of_type_Int + ", type=" + 60);
           i = 2;
           if (j != 0) {
             break label882;
@@ -655,20 +655,20 @@ public class nan
           {
             k = i;
             m = j;
-            if (auqf.a(localQQAppInterface, 1))
+            if (auuo.a(localQQAppInterface, 1))
             {
               if (localRedTypeInfo3.red_type.get() != 0) {
                 break label593;
               }
-              localavoh.a(0);
+              localavsq.a(0);
               break label885;
             }
           }
           if ((localRedTypeInfo4 != null) && (localRedTypeInfo4.red_type.get() == 5))
           {
-            localavoh.a(5);
-            localavoh.a(localRedTypeInfo4.red_content.get());
-            bdiv.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext());
+            localavsq.a(5);
+            localavsq.a(localRedTypeInfo4.red_content.get());
+            bdne.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext());
           }
           j = k;
           i = m;
@@ -678,18 +678,18 @@ public class nan
           if (this.jdField_a_of_type_Int != -1) {
             break label687;
           }
-          localavoh.a(0);
+          localavsq.a(0);
           j = 2;
           i = 60;
           break label907;
-          localavoh.jdField_c_of_type_Int = j;
-          QLog.d("nearby.redpoint", 1, "getNearbyRedPoint, needShow, isNewTab=" + paramBoolean1 + ", redType=" + i + ", redInfo=" + localavoh);
-          localavoh.d = i;
-          return localavoh;
+          localavsq.jdField_c_of_type_Int = j;
+          QLog.d("nearby.redpoint", 1, "getNearbyRedPoint, needShow, isNewTab=" + paramBoolean1 + ", redType=" + i + ", redInfo=" + localavsq);
+          localavsq.d = i;
+          return localavsq;
         }
         else
         {
-          this.jdField_a_of_type_Int = MsgBoxListActivity.a(localQQAppInterface, aljq.I, true);
+          this.jdField_a_of_type_Int = MsgBoxListActivity.a(localQQAppInterface, alof.I, true);
           continue;
         }
         if (localRedTypeInfo3.red_type.get() != 5) {
@@ -698,32 +698,32 @@ public class nan
       }
       finally {}
       label593:
-      localavoh.a(5);
-      localavoh.a(localRedTypeInfo3.red_content.get());
+      localavsq.a(5);
+      localavsq.a(localRedTypeInfo3.red_content.get());
       int i = 2;
-      QLog.d("nearby.redpoint", 1, "addRedNum:" + localRedTypeInfo3.red_content.get() + ", total=" + localavoh.jdField_b_of_type_Int + ", type=" + 38);
+      QLog.d("nearby.redpoint", 1, "addRedNum:" + localRedTypeInfo3.red_content.get() + ", total=" + localavsq.jdField_b_of_type_Int + ", type=" + 38);
       label687:
-      if ((localRedTypeInfo1 != null) && (auqf.a(localAppInterface, 2)))
+      if ((localRedTypeInfo1 != null) && (auuo.a(localAppInterface, 2)))
       {
-        localavoh.a(0);
+        localavsq.a(0);
         i = 25;
         j = k;
       }
-      else if ((localRedTypeInfo2 != null) && (auqf.a(localAppInterface, 3)))
+      else if ((localRedTypeInfo2 != null) && (auuo.a(localAppInterface, 3)))
       {
         i = 23;
-        localavoh.a(0);
+        localavsq.a(0);
         j = k;
       }
       else if (localRedTypeInfo5 != null)
       {
-        localavoh.a(0);
+        localavsq.a(0);
         i = 42;
         j = k;
       }
       else if (localRedTypeInfo6 != null)
       {
-        localavoh.a(0);
+        localavsq.a(0);
         i = 53;
         j = k;
       }
@@ -732,22 +732,22 @@ public class nan
         if (localObject == null) {
           break label912;
         }
-        localavoh.a(0);
+        localavsq.a(0);
         i = 54;
         j = k;
         break label907;
         if (((nan)localObject).c() != null)
         {
-          localavoh.a(0);
+          localavsq.a(0);
           i = 24;
           j = 1;
           paramBoolean1 = false;
           continue;
         }
-        if ((localRedTypeInfo1 == null) || (!auqf.a(localAppInterface, 1001))) {
+        if ((localRedTypeInfo1 == null) || (!auuo.a(localAppInterface, 1001))) {
           break label921;
         }
-        localavoh.a(0);
+        localavsq.a(0);
         i = 25;
         j = 1;
         paramBoolean1 = false;
@@ -785,7 +785,7 @@ public class nan
     }
   }
   
-  public avoi a()
+  public avsr a()
   {
     label192:
     label197:
@@ -795,13 +795,13 @@ public class nan
       int i;
       try
       {
-        avoi localavoi = new avoi();
+        avsr localavsr = new avsr();
         if (this.jdField_a_of_type_JavaUtilMap == null) {
           this.jdField_a_of_type_JavaUtilMap = a();
         }
         i = this.jdField_a_of_type_JavaUtilMap.size();
         if (i <= 0) {
-          return localavoi;
+          return localavsr;
         }
         Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
         if (!localIterator.hasNext()) {
@@ -811,20 +811,20 @@ public class nan
         String str = ((oidb_0x791.RedDotInfo)localObject2).str_custom_buffer.get().toStringUtf8();
         try
         {
-          localavoi.jdField_a_of_type_Int = ((oidb_0x791.RedDotInfo)localObject2).uint32_number.get();
+          localavsr.jdField_a_of_type_Int = ((oidb_0x791.RedDotInfo)localObject2).uint32_number.get();
           localObject2 = new JSONObject(str);
           if (((JSONObject)localObject2).optInt("official_topic") != 1) {
             break label192;
           }
           i = 1;
           if (i != 0) {
-            localavoi.jdField_b_of_type_Int += 1;
+            localavsr.jdField_b_of_type_Int += 1;
           }
           i = ((JSONObject)localObject2).optInt("red_content_type");
           if (i != 1) {
             break label197;
           }
-          localavoi.jdField_c_of_type_Int += 1;
+          localavsr.jdField_c_of_type_Int += 1;
         }
         catch (Exception localException)
         {
@@ -854,19 +854,19 @@ public class nan
     return null;
   }
   
-  public String a(String paramString, long paramLong, avog paramavog)
+  public String a(String paramString, long paramLong, avsp paramavsp)
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("faceUrl", paramString);
       localJSONObject.put("uin", paramLong);
-      localJSONObject.put("isOfficialNotify", paramavog.jdField_b_of_type_Boolean);
-      localJSONObject.put("redContentType", paramavog.jdField_b_of_type_Int);
-      localJSONObject.put("redContentMsg", paramavog.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("topicId", paramavog.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("msgId", paramavog.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("userType", paramavog.jdField_c_of_type_Int);
+      localJSONObject.put("isOfficialNotify", paramavsp.jdField_b_of_type_Boolean);
+      localJSONObject.put("redContentType", paramavsp.jdField_b_of_type_Int);
+      localJSONObject.put("redContentMsg", paramavsp.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("topicId", paramavsp.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("msgId", paramavsp.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("userType", paramavsp.jdField_c_of_type_Int);
       return localJSONObject.toString();
     }
     catch (Exception paramString)
@@ -999,7 +999,7 @@ public class nan
         if (localGetRedDotRes == null) {
           return null;
         }
-        bool1 = ((uur)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(252)).jdField_a_of_type_Boolean;
+        bool1 = ((uza)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(252)).jdField_a_of_type_Boolean;
         bool2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().jdField_a_of_type_Boolean;
         Iterator localIterator = this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get().iterator();
         localGetRedDotRes = null;
@@ -1016,13 +1016,13 @@ public class nan
         }
         if ((i == 37) && (localRedDotInfo2.uint32_expire_time.get() < NetConnInfoCenter.getServerTime()))
         {
-          wsv.d(this.jdField_c_of_type_JavaLangString, "%d red dot time out", new Object[] { Integer.valueOf(i) });
+          wxe.d(this.jdField_c_of_type_JavaLangString, "%d red dot time out", new Object[] { Integer.valueOf(i) });
           continue;
         }
         if (i != 37) {}
       }
       finally {}
-      if ((!bool2) && (i != 48) && ((bool1) || (i != 28)) && ((i != xnv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (localRedDotInfo2.uint32_number.get() > 0))) {
+      if ((!bool2) && (i != 48) && ((bool1) || (i != 28)) && ((i != xse.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (localRedDotInfo2.uint32_number.get() > 0))) {
         if (naf.a(localRedDotInfo2, localRedDotInfo1) > 0)
         {
           Object localObject = localRedDotInfo2;
@@ -1135,7 +1135,7 @@ public class nan
       finally {}
       a(this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes);
       if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().jdField_a_of_type_Boolean) {
-        aiab.jdField_a_of_type_Int |= 0x2;
+        aieq.jdField_a_of_type_Int |= 0x2;
       }
       if (QLog.isColorLevel())
       {
@@ -2066,13 +2066,13 @@ public class nan
     //   272: dup
     //   273: invokespecial 667	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo:<init>	()V
     //   276: astore 16
-    //   278: new 687	avog
+    //   278: new 687	avsp
     //   281: dup
-    //   282: invokespecial 928	avog:<init>	()V
+    //   282: invokespecial 928	avsp:<init>	()V
     //   285: astore 17
     //   287: aload 17
     //   289: aload 12
-    //   291: invokevirtual 929	avog:a	(Ltencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo;)V
+    //   291: invokevirtual 929	avsp:a	(Ltencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo;)V
     //   294: iload 10
     //   296: ifne +12 -> 308
     //   299: aload 16
@@ -2097,7 +2097,7 @@ public class nan
     //   343: iload 9
     //   345: ifeq +20 -> 365
     //   348: aload 17
-    //   350: getfield 933	avog:jdField_a_of_type_Boolean	Z
+    //   350: getfield 933	avsp:jdField_a_of_type_Boolean	Z
     //   353: ifne +12 -> 365
     //   356: aload 16
     //   358: getfield 599	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo:red_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
@@ -2107,7 +2107,7 @@ public class nan
     //   366: aload 13
     //   368: lload 7
     //   370: aload 17
-    //   372: invokevirtual 935	nan:a	(Ljava/lang/String;JLavog;)Ljava/lang/String;
+    //   372: invokevirtual 935	nan:a	(Ljava/lang/String;JLavsp;)Ljava/lang/String;
     //   375: astore 12
     //   377: aload 16
     //   379: getfield 675	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo:red_desc	Lcom/tencent/mobileqq/pb/PBStringField;
@@ -2263,7 +2263,7 @@ public class nan
     //   564	1	15	localException4	Exception
     //   578	14	15	localObject8	Object
     //   49	503	16	localRedTypeInfo	BusinessInfoCheckUpdate.RedTypeInfo
-    //   285	86	17	localavog	avog
+    //   285	86	17	localavsp	avsp
     // Exception table:
     //   from	to	target	type
     //   2	17	394	finally

@@ -1,87 +1,82 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.QQLevelIconConfig;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
 
 public class aoqg
-  extends aopw<QQLevelIconConfig>
+  extends aokh<blze>
 {
-  public static QQLevelIconConfig c()
-  {
-    QQLevelIconConfig localQQLevelIconConfig2 = (QQLevelIconConfig)aogj.a().a(542);
-    QQLevelIconConfig localQQLevelIconConfig1 = localQQLevelIconConfig2;
-    if (localQQLevelIconConfig2 == null) {
-      localQQLevelIconConfig1 = new QQLevelIconConfig();
-    }
-    return localQQLevelIconConfig1;
-  }
-  
   public int a()
   {
-    return 542;
+    return 306;
   }
   
   @NonNull
-  public QQLevelIconConfig a()
+  public blze a(int paramInt)
   {
-    return new QQLevelIconConfig();
+    return new blze();
   }
   
-  @NonNull
-  public QQLevelIconConfig a(aogf[] paramArrayOfaogf)
+  @Nullable
+  public blze a(aoko[] paramArrayOfaoko)
   {
-    boolean bool2 = false;
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length == 0)) {
+      return null;
+    }
+    paramArrayOfaoko = paramArrayOfaoko[0].a;
     if (QLog.isColorLevel()) {
-      QLog.d("QQLevelIconProcessor", 1, paramArrayOfaogf[0].a);
+      QLog.d("QIMFilterConfigProcessor", 2, "handleGetQIMFilterConfig onParsed, content:" + paramArrayOfaoko);
     }
-    QQLevelIconConfig localQQLevelIconConfig = new QQLevelIconConfig();
-    paramArrayOfaogf = paramArrayOfaogf[0].a;
-    for (;;)
+    return new blzb().a(paramArrayOfaoko, len.e(), "temp_filter_zip", new aoqh(this));
+  }
+  
+  public Class<blze> a()
+  {
+    return blze.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMFilterConfigProcessor", 2, "handleGetQIMFilterConfig onReqFailed");
+    }
+  }
+  
+  public void a(blze paramblze)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMFilterConfigProcessor", 2, "handleGetQIMFilterConfig onUpdate");
+    }
+  }
+  
+  public int b()
+  {
+    if (!new File(bnkr.a + "filter_config_new.xml").exists()) {
+      return 0;
+    }
+    return bnhb.a(BaseApplicationImpl.getContext());
+  }
+  
+  public int b(int paramInt)
+  {
+    if (!new File(bnkr.a + "filter_config_new.xml").exists())
     {
-      try
-      {
-        if (!TextUtils.isEmpty(paramArrayOfaogf))
-        {
-          paramArrayOfaogf = new JSONObject(paramArrayOfaogf);
-          if (paramArrayOfaogf.optInt("newguideswitch", 1) != 1) {
-            continue;
-          }
-          bool1 = true;
-          localQQLevelIconConfig.mIsEnableGuide = bool1;
-          bool1 = bool2;
-          if (paramArrayOfaogf.optInt("rushfeeswitch", 1) == 1) {
-            bool1 = true;
-          }
-          localQQLevelIconConfig.mIsNotifyPayment = bool1;
-          localQQLevelIconConfig.mNotifyPaymentText = paramArrayOfaogf.optString("rushfeetips", localQQLevelIconConfig.mNotifyPaymentText);
-          localQQLevelIconConfig.mExpiredNotifyPaymentText = paramArrayOfaogf.optString("expiredtips", localQQLevelIconConfig.mExpiredNotifyPaymentText);
-        }
-      }
-      catch (JSONException paramArrayOfaogf)
-      {
-        boolean bool1;
-        wsv.e("QQLevelIconProcessor", "QVipBigClubSVIP9Config onParsed exception :" + paramArrayOfaogf.getMessage());
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("QQLevelIconProcessor", 1, " : " + localQQLevelIconConfig.toString());
-      }
-      return localQQLevelIconConfig;
-      bool1 = false;
+      QLog.i("QIMFilterConfigProcessor", 1, "config file not exist");
+      aoks.a().a(306, 0);
+      return 0;
     }
+    return super.b(paramInt);
   }
   
-  public Class<QQLevelIconConfig> a()
+  public boolean b()
   {
-    return QQLevelIconConfig.class;
+    return false;
   }
   
-  @NonNull
-  public QQLevelIconConfig b()
+  public boolean c()
   {
-    return new QQLevelIconConfig();
+    return true;
   }
 }
 

@@ -1,43 +1,11 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public class ahkx
-  implements bhvu
+public abstract interface ahkx
 {
-  public ahkx(TroopActivity paramTroopActivity) {}
+  public abstract void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
   
-  public void a(bhvt parambhvt)
-  {
-    switch (parambhvt.a)
-    {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-        azmj.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_create", 0, 0, "", "", "", "");
-        azmj.b(this.a.app, "CliOper", "", "", "0X8006622", "0X8006622", 0, 0, "", "", "", "");
-        parambhvt = (bbml)this.a.app.getManager(32);
-      } while (parambhvt == null);
-      parambhvt.a(this.a, 0);
-      return;
-    case 1: 
-      azmj.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_join", 0, 0, "", "", "", "");
-      azmj.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_join", 47, 0, "", "", "", "");
-      AddContactsActivity.a(this.a, 1);
-      return;
-    case 2: 
-      azmj.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_msgset", 0, 0, "", "", "", "");
-      azmj.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_setting", 0, 0, "", "", "", "");
-      parambhvt = new Intent(this.a, TroopAssisSettingActivity.class);
-      this.a.startActivity(parambhvt);
-      return;
-    }
-    TroopActivity.b(this.a);
-  }
+  public abstract boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
 }
 
 

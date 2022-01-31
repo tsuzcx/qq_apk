@@ -1,73 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.utils.DebugUtil;
-import org.json.JSONObject;
+import java.util.List;
+import java.util.Map;
 
 class bgvk
-  implements AsyncResult
+  implements DownloaderProxy.DownloadListener
 {
-  bgvk(bgvi parambgvi) {}
+  bgvk(bgvi parambgvi, bgvn parambgvn, String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo, String paramString3, String paramString4, long paramLong) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onDownloadFailed(int paramInt, String paramString)
   {
-    if ((paramBoolean) && (paramJSONObject != null))
+    if (this.jdField_a_of_type_Bgvn != null)
     {
-      long l = paramJSONObject.optLong("retCode");
-      Object localObject = paramJSONObject.optString("errMsg");
-      QMLog.d("MiniAppInfoLoadTask", "getAppInfoByLink, retCode = " + l + ",errMsg = " + (String)localObject);
-      if (l != 0L)
-      {
-        if ((TextUtils.isEmpty((CharSequence)localObject)) && (DebugUtil.isDebugVersion())) {
-          new StringBuilder().append("请求失败").append(", retCode = ").append(l).toString();
-        }
-        this.a.e();
-      }
-      localObject = (MiniAppInfo)paramJSONObject.opt("appInfo");
-      paramJSONObject = paramJSONObject.optString("shareTicket", "");
-      if ((l == 0L) && (localObject != null) && (!TextUtils.isEmpty(((MiniAppInfo)localObject).appId)))
-      {
-        ((MiniAppInfo)localObject).launchParam.clone(bgvi.a(this.a).launchParam);
-        ((MiniAppInfo)localObject).apkgInfo = bgvi.a(this.a).apkgInfo;
-        ((MiniAppInfo)localObject).launchParam.miniAppId = ((MiniAppInfo)localObject).appId;
-        ((MiniAppInfo)localObject).launchParam.shareTicket = paramJSONObject;
-        ((MiniAppInfo)localObject).launchParam.navigateExtData = ((MiniAppInfo)localObject).extraData;
-        if (!TextUtils.isEmpty(((MiniAppInfo)localObject).launchParam.shareTicket)) {
-          ((MiniAppInfo)localObject).launchParam.scene = 1044;
-        }
-        if (TextUtils.isEmpty(((MiniAppInfo)localObject).launchParam.reportData)) {
-          ((MiniAppInfo)localObject).launchParam.reportData = ((MiniAppInfo)localObject).reportData;
-        }
-        for (;;)
-        {
-          if (((MiniAppInfo)localObject).verType != 3) {
-            ((MiniAppInfo)localObject).forceReroad = 3;
-          }
-          bgvi.a(this.a, (MiniAppInfo)localObject);
-          this.a.c();
-          return;
-          if (!TextUtils.isEmpty(((MiniAppInfo)localObject).reportData)) {
-            ((MiniAppInfo)localObject).launchParam.reportData = (((MiniAppInfo)localObject).launchParam.reportData + "&" + ((MiniAppInfo)localObject).reportData);
-          }
-        }
-      }
-      bgyg.a(bgvi.a(this.a), "1", null, "load_fail", "shortcut_request_fail");
-      bgxl.a("2launch_fail", "shotcut_request_fail", null, bgvi.a(this.a));
-      if (localObject == null) {
-        QMLog.e("MiniAppInfoLoadTask", "getAppInfoByLink  onCmdListener appinfo==null retCode= " + l);
-      }
-      for (;;)
-      {
-        this.a.e();
-        return;
-        QMLog.e("MiniAppInfoLoadTask", "getAppInfoByLink  onCmdListener retCode= " + l + " appid=" + ((MiniAppInfo)localObject).appId);
-      }
+      this.jdField_a_of_type_Bgvn.a(null, 1, "下载失败");
+      QMLog.d("ApkgManager", "onDownloadFailed() called with: statusCode = [" + paramInt + "], errorMsg = [" + paramString + "]");
     }
-    bgyg.a(bgvi.a(this.a), "1", null, "load_fail", "shortcut_request_fail");
-    bgxl.a("2launch_fail", "shotcut_request_fail", null, bgvi.a(this.a));
-    this.a.e();
+  }
+  
+  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
+  
+  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2) {}
+  
+  public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
+  {
+    bgvi.a(this.jdField_a_of_type_Bgvi, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.c, this.d, this.jdField_a_of_type_Bgvn);
+    bgvi.jdField_a_of_type_Long = System.currentTimeMillis() - this.jdField_a_of_type_Long;
   }
 }
 

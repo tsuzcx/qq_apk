@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
-import aaoo;
-import aaop;
-import aaoq;
+import aatd;
+import aate;
+import aatf;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.BaseApplication;
 import org.json.JSONException;
@@ -17,12 +17,12 @@ class BridgeModule$14
   public void run()
   {
     JSONObject localJSONObject = new JSONObject();
-    Object localObject1 = new aaop();
-    ((aaop)localObject1).a = "ce2d9f";
-    localObject1 = aaoo.a(BaseApplication.getContext(), (aaop)localObject1);
+    Object localObject1 = new aate();
+    ((aate)localObject1).a = "ce2d9f";
+    localObject1 = aatd.a(BaseApplication.getContext(), (aate)localObject1);
     if (localObject1 != null) {}
     Object localObject2;
-    for (localObject1 = ((aaoq)localObject1).a;; localObject2 = null)
+    for (localObject1 = ((aatf)localObject1).a;; localObject2 = null)
     {
       if (localObject1 != null) {}
       try

@@ -1,17 +1,17 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.data.ChatMessage;
 
-public class afua
-  implements DialogInterface.OnClickListener
+class afua
+  extends afuf
 {
-  public afua(QQStoryItemBuilder paramQQStoryItemBuilder, Context paramContext, ChatMessage paramChatMessage) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  afua(afpy paramafpy)
   {
-    acex.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+    super(paramafpy, null);
+  }
+  
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agfh(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

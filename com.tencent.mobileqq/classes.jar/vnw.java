@@ -1,26 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Build.VERSION;
-import android.widget.ImageView;
-
 class vnw
-  extends AnimatorListenerAdapter
+  implements vss
 {
   vnw(vnu paramvnu) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.a.a.setImageAlpha(255);
-    }
-    for (;;)
-    {
-      this.a.a.setVisibility(8);
-      return;
-      this.a.a.setImageResource(2130849999);
-    }
-  }
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

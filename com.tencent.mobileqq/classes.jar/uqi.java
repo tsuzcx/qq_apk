@@ -1,66 +1,64 @@
-import android.os.Bundle;
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.1;
-import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.2;
-import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.3;
-import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.4;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppRuntime;
+import android.media.MediaMetadataRetriever;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
 public class uqi
-  extends wmk
-  implements View.OnClickListener
+  implements upz
 {
-  public EditText a;
-  public urp a;
-  public EditText b;
+  public uqi(StoryVideoUploadTask paramStoryVideoUploadTask) {}
   
-  public void a()
+  public void a(upy paramupy)
   {
-    super.a();
-  }
-  
-  public void a(Bundle paramBundle1, Bundle paramBundle2)
-  {
-    super.a(paramBundle1, paramBundle2);
-    this.jdField_a_of_type_Urp = ((urp)urr.a(29));
-    a(2131558442);
-    a(2131363586).setOnClickListener(this);
-    a(2131363635).setOnClickListener(this);
-    a(2131363537).setOnClickListener(this);
-    a(2131363668).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131365604));
-    this.b = ((EditText)a(2131365571));
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    upw localupw = (upw)paramupy;
+    ((uqf)this.a.a).g = localupw.a.a;
+    ((uqf)this.a.a).h = localupw.a.c;
+    ((uqf)this.a.a).a = localupw.b;
+    localMediaMetadataRetriever = new MediaMetadataRetriever();
+    for (;;)
     {
-    default: 
+      try
+      {
+        localMediaMetadataRetriever.setDataSource(localupw.b);
+        String str = localMediaMetadataRetriever.extractMetadata(24);
+        paramupy = str;
+        if (str == null) {
+          paramupy = "0";
+        }
+        int i = Integer.valueOf(paramupy).intValue();
+        j = Integer.valueOf(localMediaMetadataRetriever.extractMetadata(18)).intValue();
+        k = Integer.valueOf(localMediaMetadataRetriever.extractMetadata(19)).intValue();
+        if (i % 180 <= 0) {
+          continue;
+        }
+        ((uqf)this.a.a).d = k;
+        ((uqf)this.a.a).e = j;
+      }
+      catch (Exception paramupy)
+      {
+        int j;
+        int k;
+        long l;
+        wxe.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "format fail", paramupy);
+        localMediaMetadataRetriever.release();
+        continue;
+      }
+      finally
+      {
+        localMediaMetadataRetriever.release();
+      }
+      l = StoryVideoUploadTask.a(localupw.b);
+      if (l > 0L)
+      {
+        wxe.a("Q.qqstory.publish.upload:StoryVideoUploadTask", "video old duration=%d, new duration=%d", Long.valueOf(((uqf)this.a.a).b), Long.valueOf(l));
+        ((uqf)this.a.a).b = l;
+        wxe.a("Q.qqstory.publish.upload:StoryVideoUploadTask", "generate vid=%s, duration=%d mp4=%s", ((uqf)this.a.a).a(), Long.valueOf(((uqf)this.a.a).b), ((uqf)this.a.a).a);
+      }
+      ((uqf)this.a.a).c = xrg.a(localupw.b);
+      this.a.a(1, new ErrorMessage());
       return;
-    case 2131363586: 
-      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.1(this), true);
-      return;
-    case 2131363635: 
-      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.2(this), true);
-      return;
-    case 2131363537: 
-      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.3(this));
-      return;
-    case 2131363540: 
-      this.b.getText().toString();
-      this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      this.b.getText().clear();
-      this.jdField_a_of_type_AndroidWidgetEditText.getText().clear();
-      new uqh(BaseApplicationImpl.getApplication().getRuntime().getAccount()).a();
-      return;
+      ((uqf)this.a.a).d = j;
+      ((uqf)this.a.a).e = k;
     }
-    ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.4(this, this.b.getText().toString(), this.jdField_a_of_type_AndroidWidgetEditText.getText().toString()));
   }
 }
 

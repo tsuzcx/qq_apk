@@ -1,16 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.dating.DatingUtil.1;
+import android.annotation.TargetApi;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.data.ArkBabyqCardInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class apdt
-  implements DialogInterface.OnClickListener
+  implements ArkViewImplement.LoadCallback
 {
-  public apdt(DatingUtil.1 param1) {}
+  public apdt(ArkBabyqCardInfo paramArkBabyqCardInfo, anou paramanou, anoq paramanoq, afih paramafih, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @TargetApi(14)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    onLoadState(paramInt1);
+  }
+  
+  @TargetApi(14)
+  public void onLoadState(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkBabyqCardInfo", 2, "attachArkView onLoadFinish ArkBabyqCardInfo state=" + paramInt);
+    }
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_Anou.b.setVisibility(0);
+      this.jdField_a_of_type_Anoq.a(this.jdField_a_of_type_Anou, this.jdField_a_of_type_ComTencentMobileqqDataArkBabyqCardInfo);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Anoq.a(this.jdField_a_of_type_Afih, this.jdField_a_of_type_Int);
+      return;
+      this.jdField_a_of_type_Anou.b.setVisibility(8);
     }
   }
 }

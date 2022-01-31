@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.contacts.base;
 
-import ahnp;
+import ahse;
 import java.util.ArrayList;
 
 public class CardViewController$2
   implements Runnable
 {
-  public CardViewController$2(ahnp paramahnp) {}
+  public CardViewController$2(ahse paramahse) {}
   
   public void run()
   {
-    ArrayList localArrayList = ahnp.a(this.this$0);
-    ahnp.a(this.this$0, localArrayList);
+    ArrayList localArrayList = ahse.a(this.this$0);
+    ahse.a(this.this$0, localArrayList);
   }
 }
 

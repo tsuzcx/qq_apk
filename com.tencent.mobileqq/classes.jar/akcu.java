@@ -1,17 +1,17 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.vas.avatar.VasAvatar;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class akcu
+final class akcu
+  implements DialogInterface.OnClickListener
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public VasAvatar a;
-  public ImageView b;
+  akcu(Context paramContext) {}
   
-  public akcu(akct paramakct) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ((Activity)this.a).finish();
+  }
 }
 
 

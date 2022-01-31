@@ -1,34 +1,13 @@
-import android.app.Activity;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
 
 public class abui
-  extends absp
 {
-  public boolean b;
-  protected String c;
-  public String d;
-  public String e;
-  
-  public abui(Activity paramActivity, int paramInt, String paramString1, String paramString2)
+  public static void a(String paramString1, String paramString2)
   {
-    super(paramActivity, paramInt, paramString1);
-    this.c = paramString2;
+    QLog.d(paramString1, 1, paramString2);
   }
   
-  protected Map<String, absg> a()
-  {
-    return abus.a();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Int == 2;
-  }
-  
-  protected void c()
-  {
-    absu.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, new abuj(this));
-  }
+  public static void b(String paramString1, String paramString2) {}
 }
 
 

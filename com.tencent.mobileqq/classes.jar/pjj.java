@@ -10,7 +10,7 @@ class pjj
   public void onClick(View paramView)
   {
     if (pji.a(this.jdField_a_of_type_Pji) == null) {
-      pji.a(this.jdField_a_of_type_Pji, new bhtq(pji.a(this.jdField_a_of_type_Pji)));
+      pji.a(this.jdField_a_of_type_Pji, new bhxx(pji.a(this.jdField_a_of_type_Pji)));
     }
     pji.a(this.jdField_a_of_type_Pji).a((pgq)this.jdField_a_of_type_Pgd, this.jdField_a_of_type_Pgd.a().mDislikeInfos);
     pji.a(this.jdField_a_of_type_Pji).a(paramView, new pjk(this));

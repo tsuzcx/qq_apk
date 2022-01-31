@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
-import bgho;
-import bgjd;
-import bgjw;
-import bgkd;
+import bglv;
+import bgnk;
+import bgod;
+import bgok;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.auth.AuthState;
 import com.tencent.qqmini.sdk.core.auth.AuthStateItem;
@@ -23,12 +23,12 @@ public class SettingsJsPlugin
   private static final String TAG = "SettingsJsPlugin";
   private ChannelProxy mProxy;
   
-  private void callbackSettingEvent(bgkd parambgkd)
+  private void callbackSettingEvent(bgok parambgok)
   {
-    callbackSettingEvent(MiniAppEnv.g().getAuthSate(this.mApkgInfo.appId), parambgkd);
+    callbackSettingEvent(MiniAppEnv.g().getAuthSate(this.mApkgInfo.appId), parambgok);
   }
   
-  private void callbackSettingEvent(AuthState paramAuthState, bgkd parambgkd)
+  private void callbackSettingEvent(AuthState paramAuthState, bgok parambgok)
   {
     if (paramAuthState == null) {
       return;
@@ -62,26 +62,26 @@ public class SettingsJsPlugin
       }
       catch (JSONException paramAuthState)
       {
-        QMLog.e("SettingsJsPlugin", parambgkd.a + " error.", paramAuthState);
-        parambgkd.b();
+        QMLog.e("SettingsJsPlugin", parambgok.a + " error.", paramAuthState);
+        parambgok.b();
         return;
       }
     }
     paramAuthState.put("authSetting", localJSONArray);
-    parambgkd.a(paramAuthState);
+    parambgok.a(paramAuthState);
   }
   
-  private void openSettingActivity(Activity paramActivity, bgjw parambgjw)
+  private void openSettingActivity(Activity paramActivity, bgod parambgod)
   {
-    if (parambgjw == null)
+    if (parambgod == null)
     {
-      QMLog.e("SettingsJsPlugin", "openSettingActivity, appInfo:" + parambgjw);
+      QMLog.e("SettingsJsPlugin", "openSettingActivity, appInfo:" + parambgod);
       return;
     }
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openPermissionSettingsActivity(paramActivity, parambgjw.appId, parambgjw.apkgName);
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openPermissionSettingsActivity(paramActivity, parambgod.appId, parambgod.apkgName);
   }
   
-  public void getSetting(bgkd parambgkd)
+  public void getSetting(bgok parambgok)
   {
     String str = this.mApkgInfo.appId;
     AuthState localAuthState = MiniAppEnv.g().getAuthSate(str);
@@ -92,15 +92,15 @@ public class SettingsJsPlugin
     }
     if (localAuthState.isSynchronized())
     {
-      callbackSettingEvent(localAuthState, parambgkd);
+      callbackSettingEvent(localAuthState, parambgok);
       return;
     }
-    this.mProxy.getAuthList(str, new SettingsJsPlugin.2(this, localAuthState, parambgkd));
+    this.mProxy.getAuthList(str, new SettingsJsPlugin.2(this, localAuthState, parambgok));
   }
   
-  public void openSetting(bgkd parambgkd)
+  public void openSetting(bgok parambgok)
   {
-    bgjd.a().a(new SettingsJsPlugin.1(this, parambgkd));
+    bgnk.a().a(new SettingsJsPlugin.1(this, parambgok));
     openSettingActivity(this.mMiniAppContext.a(), this.mApkgInfo);
   }
 }

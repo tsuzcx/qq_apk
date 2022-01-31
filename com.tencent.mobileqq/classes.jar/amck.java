@@ -1,113 +1,81 @@
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class amck
-  implements Comparator<awbv>
+  implements SensorEventListener
 {
-  private boolean a;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private float b;
+  private float c;
+  private float d;
   
-  public amck(boolean paramBoolean)
+  private void a(long paramLong)
   {
-    this.a = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.b = 0.0F;
+    this.c = 0.0F;
+    this.d = 0.0F;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public int a(awbv paramawbv1, awbv paramawbv2)
+  protected void a() {}
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    paramawbv1 = (RecentUser)paramawbv1;
-    paramawbv2 = (RecentUser)paramawbv2;
-    long l3 = Math.max(paramawbv1.lastmsgtime, paramawbv1.lastmsgdrafttime);
-    long l2 = Math.max(paramawbv2.lastmsgtime, paramawbv2.lastmsgdrafttime);
+    float f1 = 0.0F;
+    float f2;
+    float f3;
+    float f4;
     long l1;
-    if (this.a) {
-      if ((paramawbv1.showUpTime > 0L) && (l3 == 0L))
-      {
-        l1 = Math.max(paramawbv1.opTime, paramawbv1.showUpTime);
-        if ((paramawbv2.showUpTime <= 0L) || (l2 != 0L)) {
-          break label194;
-        }
-        l3 = Math.max(paramawbv2.opTime, paramawbv2.showUpTime);
-        l2 = l1;
-        l1 = l3;
-      }
-    }
-    for (;;)
+    long l2;
+    if (paramSensorEvent.sensor.getType() == 1)
     {
-      if (l2 > l1)
-      {
-        l1 = 3L;
-        label117:
-        l3 = l1;
-        if (!this.a) {
-          break label280;
-        }
-        l2 = l1;
-        if (paramawbv1.showUpTime > 0L) {
-          l2 = l1 | 0x1000;
-        }
-        l3 = l2;
-        if (paramawbv2.showUpTime <= 0L) {
-          break label280;
-        }
-        l1 = 0x2 | 0x1000;
-        label167:
-        if (l2 >= l1) {
-          break label269;
-        }
-        return 1;
-        l1 = l3;
-        if (l3 != 0L) {
-          break;
-        }
-        l1 = paramawbv1.opTime;
-        break;
-        label194:
-        if (l2 != 0L) {
-          break label310;
-        }
-        l3 = paramawbv2.opTime;
-        l2 = l1;
-        l1 = l3;
-        continue;
-        if (l3 != 0L) {
-          break label304;
-        }
+      f2 = paramSensorEvent.values[0];
+      f3 = paramSensorEvent.values[1];
+      f4 = paramSensorEvent.values[2];
+      l1 = System.currentTimeMillis();
+      l2 = l1 - this.jdField_a_of_type_Long;
+      if (l2 <= 5000L) {
+        break label66;
       }
-      label269:
-      label280:
-      label304:
-      for (l1 = paramawbv1.opTime;; l1 = l3)
-      {
-        if (l2 == 0L)
-        {
-          l3 = paramawbv2.opTime;
-          l2 = l1;
-          l1 = l3;
-          break;
-          if (l2 < l1)
-          {
-            l1 = 1L;
-            break label117;
-          }
-          l1 = 2L;
-          break label117;
-          if (l2 == l1) {
-            return 0;
-          }
-          return -1;
-          l2 = l3;
-          l1 = 2L;
-          break label167;
-        }
-        l3 = l1;
-        l1 = l2;
-        l2 = l3;
-        break;
-      }
-      label310:
-      l3 = l1;
-      l1 = l2;
-      l2 = l3;
+      a(l1);
     }
+    label66:
+    while (l2 <= 80L) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
+      f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
+    }
+    this.d += f1;
+    if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("CIO_test", 2, "now[" + f2 + "," + f3 + "," + f4 + "]duration:" + l2 + " shake:" + f1);
+        QLog.d("CIO_test", 2, "last[" + this.jdField_a_of_type_Float + "," + this.b + "," + this.c + "]total_shake:" + f1);
+      }
+      a();
+      a(l1);
+      return;
+    }
+    if (this.jdField_a_of_type_Int < 10)
+    {
+      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_Float = f2;
+      this.b = f3;
+      this.c = f4;
+      this.jdField_a_of_type_Long = l1;
+      return;
+    }
+    a(l1);
   }
 }
 

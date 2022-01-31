@@ -1,8 +1,23 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
+import android.view.SurfaceView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface akeb
+public class akeb
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a(DiscussionInfo paramDiscussionInfo);
+  public akeb(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  
+  public void onGlobalLayout()
+  {
+    this.a.e = this.a.a.getWidth();
+    this.a.f = this.a.a.getHeight();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.e + ",mSurfaceViewHeight:" + this.a.f);
+    }
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+  }
 }
 
 

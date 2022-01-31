@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
+import bgok;
 
 class QQFriendJsPlugin$1
   implements QQFriendJsPlugin.IAddFriendCallBack
 {
-  QQFriendJsPlugin$1(QQFriendJsPlugin paramQQFriendJsPlugin, bgkd parambgkd) {}
+  QQFriendJsPlugin$1(QQFriendJsPlugin paramQQFriendJsPlugin, bgok parambgok) {}
   
   public void onAddFriendCallBack(String paramString1, boolean paramBoolean, String paramString2)
   {

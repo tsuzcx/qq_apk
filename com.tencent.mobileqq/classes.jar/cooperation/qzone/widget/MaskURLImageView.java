@@ -70,7 +70,7 @@ public class MaskURLImageView
   {
     int i = (int)((getWidth() - this.d) / 2.0F);
     int j = (int)((getHeight() - this.d) / 2.0F);
-    Drawable localDrawable = getResources().getDrawable(2130847756);
+    Drawable localDrawable = getResources().getDrawable(2130847829);
     if (localDrawable != null)
     {
       localDrawable.setBounds(i, j, (int)(i + this.d), (int)(j + this.d));
@@ -97,7 +97,7 @@ public class MaskURLImageView
     float f2 = ((Paint.FontMetrics)localObject).top;
     f1 = (getHeight() - (f1 - f2)) / 2.0F;
     f2 = ((Paint.FontMetrics)localObject).top;
-    localObject = getResources().getDrawable(2130847159);
+    localObject = getResources().getDrawable(2130847232);
     if ((!jdField_a_of_type_Boolean) && (localObject == null)) {
       throw new AssertionError();
     }

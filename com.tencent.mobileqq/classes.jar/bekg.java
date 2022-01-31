@@ -1,9 +1,23 @@
-public abstract class bekg
-  implements beiv
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.animation.Transformation;
+
+class bekg
+  implements bdoh<Integer>
 {
-  public static final beiv a = new bekh();
-  public static final beiv b = new beki();
-  public static final beiv c = new bekj();
+  bekg(beke parambeke, int paramInt) {}
+  
+  public void a(bdob<Integer> parambdob, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  {
+    if (!this.jdField_a_of_type_Beke.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Beke.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
+      this.jdField_a_of_type_Beke.jdField_a_of_type_Int = paramInteger.intValue();
+    } while (this.jdField_a_of_type_Beke.jdField_a_of_type_Int != this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Beke.jdField_a_of_type_Boolean = false;
+  }
 }
 
 

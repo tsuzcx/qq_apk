@@ -1,17 +1,14 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollectionID;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Comparator;
 
-public class uzy
+class uzy
+  implements Comparator<vlp>
 {
-  public int a;
-  public int b;
+  uzy(uzx paramuzx) {}
   
-  public qqstory_struct.DateVideoCollectionID a()
+  public int a(vlp paramvlp1, vlp paramvlp2)
   {
-    qqstory_struct.DateVideoCollectionID localDateVideoCollectionID = new qqstory_struct.DateVideoCollectionID();
-    localDateVideoCollectionID.collection_id.set(this.a);
-    localDateVideoCollectionID.collection_type.set(this.b);
-    return localDateVideoCollectionID;
+    return vae.a(paramvlp1.a.mCreateTime, paramvlp2.a.mCreateTime);
   }
 }
 

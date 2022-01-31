@@ -1,55 +1,58 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.biz.qqstory.widget.StoryCoverView;
 
 public class wob
-  extends unf
+  extends bibi
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  public String a;
-  public int b;
-  public String c;
-  public String d;
-  public String e;
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  StoryCoverView jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView;
+  String jdField_a_of_type_JavaLangString;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  String jdField_b_of_type_JavaLangString;
+  TextView c;
+  TextView d;
+  TextView e;
+  TextView f;
   
-  public wob(qqstory_service.RspGetUserGuide paramRspGetUserGuide)
+  public wob(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
   {
-    if (paramRspGetUserGuide.pic_url.has())
-    {
-      localObject1 = paramRspGetUserGuide.pic_url.get().toStringUtf8();
-      this.a = ((String)localObject1);
-      if (!paramRspGetUserGuide.word.has()) {
-        break label129;
-      }
-      localObject1 = paramRspGetUserGuide.word.get().toStringUtf8();
-      label53:
-      this.c = ((String)localObject1);
-      this.b = paramRspGetUserGuide.seqno.get();
-      if (!paramRspGetUserGuide.confirm_word.has()) {
-        break label134;
-      }
-    }
-    label129:
-    label134:
-    for (Object localObject1 = paramRspGetUserGuide.confirm_word.get().toStringUtf8();; localObject1 = null)
-    {
-      this.d = ((String)localObject1);
-      localObject1 = localObject2;
-      if (paramRspGetUserGuide.cancel_word.has()) {
-        localObject1 = paramRspGetUserGuide.cancel_word.get().toStringUtf8();
-      }
-      this.e = ((String)localObject1);
-      return;
-      localObject1 = null;
-      break;
-      localObject1 = null;
-      break label53;
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362973));
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131377824));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371139));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364511));
+    this.c = ((TextView)paramView.findViewById(2131371246));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369436);
+    this.d = ((TextView)paramView.findViewById(2131377876));
+    this.e = ((TextView)paramView.findViewById(2131379610));
+    this.f = ((TextView)paramView.findViewById(2131379611));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369451);
+    paramView.setOnClickListener(this);
+    paramView.setOnLongClickListener(this);
   }
   
-  public String toString()
+  public void a(int paramInt)
   {
-    return "Response{imageUrl='" + this.a + '\'' + ", word='" + this.c + '\'' + ", seqno=" + this.b + ", confirmBtnTxt='" + this.d + '\'' + ", cancelBtnTxt='" + this.e + '\'' + '}';
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.onItemClick(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
   }
 }
 

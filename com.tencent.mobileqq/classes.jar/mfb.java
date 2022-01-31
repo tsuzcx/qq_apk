@@ -88,7 +88,7 @@ public class mfb
     case 3: 
       return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690308);
     case 4: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695923);
+      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695925);
     case 5: 
       return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690309);
     case 6: 
@@ -135,7 +135,7 @@ public class mfb
   
   public void a(View paramView)
   {
-    a((ViewGroup)paramView.findViewById(2131372864), (TextView)paramView.findViewById(2131372594));
+    a((ViewGroup)paramView.findViewById(2131372890), (TextView)paramView.findViewById(2131372620));
   }
   
   public void a(mfd parammfd)

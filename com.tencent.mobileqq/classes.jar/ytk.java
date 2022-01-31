@@ -1,19 +1,52 @@
-import WEISHI_USER_GROWTH.WEISHI.stMetaFeed;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class ytk
+class ytk
+  implements bckx
 {
-  int jdField_a_of_type_Int;
-  WEISHI.stMetaFeed jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed = null;
+  ytk(ytb paramytb) {}
   
-  ytk(WEISHI.stMetaFeed paramstMetaFeed, int paramInt)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed = paramstMetaFeed;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("requstTroopNotifyAd", 2, "result = " + paramJSONObject + ", requestCode = " + paramInt);
+    }
+    if (paramJSONObject != null)
+    {
+      paramJSONObject = paramJSONObject.optJSONObject("data");
+      if (paramJSONObject != null)
+      {
+        paramJSONObject = paramJSONObject.optJSONObject("8020205751015455");
+        if (paramJSONObject != null)
+        {
+          paramJSONObject = paramJSONObject.optJSONArray("list");
+          if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+          {
+            paramJSONObject = bbrz.a(paramJSONObject.optJSONObject(0));
+            if (paramJSONObject != null)
+            {
+              this.a.jdField_a_of_type_Bbrz = paramJSONObject;
+              this.a.d = true;
+              if (QLog.isColorLevel()) {
+                QLog.d("requstTroopNotifyAd", 2, "apurl = " + this.a.jdField_a_of_type_Bbrz.a + ", img = " + this.a.jdField_a_of_type_Bbrz.c + ", rl = " + this.a.jdField_a_of_type_Bbrz.b);
+              }
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result ready -----------");
+            }
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+            return;
+          }
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result null -----------");
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
   }
 }
 

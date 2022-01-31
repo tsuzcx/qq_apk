@@ -1,17 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
+import com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity;
 
-class belx
+public class belx
   implements View.OnClickListener
 {
-  belx(belw parambelw, boolean paramBoolean) {}
+  public belx(HalfScreenBrowserActivity paramHalfScreenBrowserActivity) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Belw.a.dismiss();
-    }
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 

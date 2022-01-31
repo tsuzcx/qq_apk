@@ -1,167 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.os.Build.VERSION;
-import android.preference.PreferenceManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.bgprobe.BackgroundException;
-import com.tencent.mobileqq.bgprobe.BackgroundProbeManager.1;
-import com.tencent.mobileqq.bgprobe.BackgroundProbeManager.2;
-import com.tencent.mobileqq.bgprobe.BackgroundService;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
+import com.tencent.ark.ArkEnvironmentManager.IDataReport;
+import com.tencent.ark.open.ArkAppReport;
 
-public class anrc
+final class anrc
+  implements ArkEnvironmentManager.IDataReport
 {
-  private static final long jdField_a_of_type_Long = TimeUnit.DAYS.toMillis(1L);
-  private static boolean jdField_a_of_type_Boolean;
-  private static boolean jdField_b_of_type_Boolean;
-  private static boolean c;
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.context;
-  private long jdField_b_of_type_Long = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getLong("KEY_LAST_PROBE_SERVICE_START_TIME_MS", 0L);
-  
-  private anrc()
+  public void report(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString3, String paramString4)
   {
-    if (new Random(System.currentTimeMillis()).nextInt(100000) == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      c = bool;
-      return;
-    }
-  }
-  
-  private static int a()
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getPackageManager();
-    try
-    {
-      localObject = ((PackageManager)localObject).getApplicationInfo("com.tencent.mobileqq", 128);
-      if (localObject != null)
-      {
-        int i = ((ApplicationInfo)localObject).targetSdkVersion;
-        return i;
-      }
-    }
-    catch (Throwable localThrowable) {}
-    return 0;
-  }
-  
-  public static anrc a()
-  {
-    return anrd.a();
-  }
-  
-  public static void a()
-  {
-    anrc localanrc = a();
-    BackgroundProbeManager.1 local1 = new BackgroundProbeManager.1(localanrc);
-    BackgroundProbeManager.2 local2 = new BackgroundProbeManager.2(localanrc);
-    boolean bool = localanrc.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("BackgroundProbeManager", 2, "onRunningBackground: invoked.  probeEnabled: " + bool);
-    }
-    if (bool) {
-      bbig.a(local1, 180000L);
-    }
-    bbig.a(local2, 181000L);
-  }
-  
-  public static void a(Intent paramIntent)
-  {
-    if (new Random(System.currentTimeMillis()).nextInt(400) == 0) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((c) && (b()) && (!jdField_b_of_type_Boolean) && (i != 0) && (paramIntent.getComponent() == null))
-      {
-        BackgroundException localBackgroundException = new BackgroundException("Implicit Broadcast");
-        azlf.a(localBackgroundException, "intent: " + paramIntent.toString());
-        jdField_b_of_type_Boolean = true;
-        if (QLog.isColorLevel()) {
-          QLog.i("BackgroundProbeManager", 2, "reportImplicitBroadcast: invoked.  exception: " + localBackgroundException);
-        }
-      }
-      return;
-    }
-  }
-  
-  private boolean a()
-  {
-    if (System.currentTimeMillis() - this.jdField_b_of_type_Long > jdField_a_of_type_Long) {}
-    for (int i = 1; (b()) && (i != 0); i = 0) {
-      return true;
-    }
-    return false;
-  }
-  
-  private void b()
-  {
-    try
-    {
-      if (!jdField_a_of_type_Boolean)
-      {
-        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, BackgroundService.class);
-        this.jdField_a_of_type_AndroidContentContext.startService(localIntent);
-        this.jdField_b_of_type_Long = System.currentTimeMillis();
-        jdField_a_of_type_Boolean = true;
-        PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).edit().putLong("KEY_LAST_PROBE_SERVICE_START_TIME_MS", this.jdField_b_of_type_Long).apply();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      azlf.a(new BackgroundException("startProbeService failed"));
-    }
-  }
-  
-  private static boolean b()
-  {
-    int i;
-    if (a() >= 26)
-    {
-      i = 1;
-      if (Build.VERSION.SDK_INT < 24) {
-        break label35;
-      }
-    }
-    label35:
-    for (int j = 1;; j = 0)
-    {
-      if ((i == 0) || (j == 0)) {
-        break label40;
-      }
-      return true;
-      i = 0;
-      break;
-    }
-    label40:
-    return false;
-  }
-  
-  private void c()
-  {
-    try
-    {
-      if (jdField_a_of_type_Boolean)
-      {
-        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, BackgroundService.class);
-        this.jdField_a_of_type_AndroidContentContext.stopService(localIntent);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("BackgroundProbeManager", 2, "stopProbeService: failed. ", localThrowable);
-    }
+    ArkAppReport.platformEventReport(paramString1, paramString2, paramInt2, paramInt1, paramInt3, paramLong1, paramLong2, paramString3, paramString4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anrc
  * JD-Core Version:    0.7.0.1
  */

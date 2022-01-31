@@ -1,25 +1,6 @@
-import android.content.DialogInterface.OnClickListener;
-
-class bgsh
+public class bgsh
 {
-  private final int jdField_a_of_type_Int;
-  private final DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-  
-  bgsh(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
-  }
-  
-  int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public DialogInterface.OnClickListener a()
-  {
-    return this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-  }
+  public int a;
 }
 
 

@@ -57,9 +57,9 @@ public class pfi
   private LinkedHashMap<Integer, ChannelInfo> jdField_b_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   private boolean jdField_b_of_type_Boolean;
   
-  public pfi(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public pfi(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
   }
   
   private void a(Integer paramInteger)
@@ -95,7 +95,7 @@ public class pfi
     if (this.jdField_b_of_type_Boolean) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_Awbw.a(ChannelInfo.class, true, null, null, null, null, null, null);
+    Object localObject = this.jdField_a_of_type_Awgf.a(ChannelInfo.class, true, null, null, null, null, null, null);
     if (localObject == null)
     {
       this.jdField_b_of_type_Boolean = true;

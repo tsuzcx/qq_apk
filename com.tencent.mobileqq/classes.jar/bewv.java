@@ -1,7 +1,4 @@
-public abstract interface bewv
-{
-  public abstract void exec(String paramString, bews parambews);
-}
+public class bewv {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

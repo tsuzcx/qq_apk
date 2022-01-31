@@ -1,6 +1,25 @@
-public abstract interface aybo
+import com.tencent.mobileqq.richstatus.EditActivity;
+
+public class aybo
+  implements ayca
 {
-  public abstract void a();
+  public aybo(EditActivity paramEditActivity) {}
+  
+  public void a(benx parambenx)
+  {
+    if (EditActivity.a(this.a) == parambenx)
+    {
+      if (EditActivity.a(this.a) != null) {
+        EditActivity.a(this.a).a(null);
+      }
+      EditActivity.a(this.a, null);
+    }
+  }
+  
+  public boolean a(benx parambenx)
+  {
+    return parambenx != EditActivity.a(this.a);
+  }
 }
 
 

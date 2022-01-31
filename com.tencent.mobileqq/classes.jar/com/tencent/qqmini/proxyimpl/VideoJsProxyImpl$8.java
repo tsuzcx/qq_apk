@@ -2,12 +2,12 @@ package com.tencent.qqmini.proxyimpl;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import bgjd;
-import bgje;
+import bgnk;
+import bgnl;
 import java.io.File;
 
 class VideoJsProxyImpl$8
-  implements bgje
+  implements bgnl
 {
   VideoJsProxyImpl$8(VideoJsProxyImpl paramVideoJsProxyImpl, File paramFile, boolean paramBoolean) {}
   
@@ -24,7 +24,7 @@ class VideoJsProxyImpl$8
       return true;
     }
     VideoJsProxyImpl.access$1500(this.this$0, this.val$videoFile, this.val$compress);
-    bgjd.a().b(this);
+    bgnk.a().b(this);
     return true;
   }
 }

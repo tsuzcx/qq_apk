@@ -1,12 +1,12 @@
 package com.tencent.biz.huanjiplugin;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import bimg;
-import bimp;
+import biqn;
+import biqw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
@@ -23,21 +23,21 @@ public class TranslucentActivty
       QLog.w("HuanjiPlugin", 2, "begin startPlugin.......");
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (((bimg)localQQAppInterface.getManager(27)).isPlugininstalled("qhuanji_plugin.apk"))
+    if (((biqn)localQQAppInterface.getManager(27)).isPlugininstalled("qhuanji_plugin.apk"))
     {
       nff.a().a(4, 5, 100);
       paramIntent.putExtra("userQqResources", 2);
-      bimp localbimp = new bimp(0);
-      localbimp.jdField_b_of_type_JavaLangString = "qhuanji_plugin.apk";
-      localbimp.d = alpo.a(2131715450);
-      localbimp.jdField_a_of_type_JavaLangString = localQQAppInterface.c();
-      localbimp.e = "com.tencent.huanji.activity.SwitchPhoneActivity";
-      localbimp.jdField_a_of_type_JavaLangClass = QHuanjiPluginProxyActivity.class;
-      localbimp.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      localbimp.jdField_b_of_type_Int = -1;
-      localbimp.c = 10000;
-      localbimp.f = null;
-      bimg.a(this, localbimp);
+      biqw localbiqw = new biqw(0);
+      localbiqw.jdField_b_of_type_JavaLangString = "qhuanji_plugin.apk";
+      localbiqw.d = alud.a(2131715462);
+      localbiqw.jdField_a_of_type_JavaLangString = localQQAppInterface.c();
+      localbiqw.e = "com.tencent.huanji.activity.SwitchPhoneActivity";
+      localbiqw.jdField_a_of_type_JavaLangClass = QHuanjiPluginProxyActivity.class;
+      localbiqw.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      localbiqw.jdField_b_of_type_Int = -1;
+      localbiqw.c = 10000;
+      localbiqw.f = null;
+      biqn.a(this, localbiqw);
       nff.a().a(4, 6, 100);
       finish();
       return;

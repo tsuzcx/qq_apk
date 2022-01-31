@@ -1,21 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
 class bbvf
-  implements View.OnClickListener
+  implements aqxn
 {
-  bbvf(bbvd parambbvd, CheckBox paramCheckBox) {}
+  bbvf(bbvc parambbvc, TroopFileTransferManager.Item paramItem) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void b()
   {
-    paramView = this.jdField_a_of_type_AndroidWidgetCheckBox;
-    if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
-      return;
-    }
+    aqxi.a(new arjc(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(bbvc.e(this.jdField_a_of_type_Bbvc))));
   }
 }
 

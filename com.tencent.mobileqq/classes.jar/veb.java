@@ -1,36 +1,20 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Map;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class veb
-  extends vfy
+  extends uli
 {
-  StoryVideoItem a;
-  public vzs a;
+  public final String a;
   
-  public veb(StoryVideoItem paramStoryVideoItem)
+  public veb(ErrorMessage paramErrorMessage, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a()
+  public String toString()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
-    {
-      wsv.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
-      b(false);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout() != null)
-    {
-      this.jdField_a_of_type_Vzs = new vzp();
-      this.jdField_a_of_type_Vzs.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new vec(this));
-      return;
-    }
-    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
-    b(true);
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + "} ";
   }
-  
-  protected void a(Map<String, Object> paramMap) {}
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.game;
 
-import akpo;
+import akud;
 import android.os.Process;
-import bdcb;
+import bdgk;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class ApolloGameStateMachine$1
@@ -12,14 +12,14 @@ class ApolloGameStateMachine$1
   
   public void run()
   {
-    akpo localakpo2 = ApolloGameStateMachine.jdField_a_of_type_Akpo;
-    akpo localakpo1 = localakpo2;
-    if (localakpo2 == null) {
-      localakpo1 = new akpo();
+    akud localakud2 = ApolloGameStateMachine.jdField_a_of_type_Akud;
+    akud localakud1 = localakud2;
+    if (localakud2 == null) {
+      localakud1 = new akud();
     }
-    localakpo1.b = bdcb.a(Process.myPid());
-    localakpo1.c = bdcb.f();
-    ApolloGameStateMachine.jdField_a_of_type_Akpo = localakpo1;
+    localakud1.b = bdgk.a(Process.myPid());
+    localakud1.c = bdgk.f();
+    ApolloGameStateMachine.jdField_a_of_type_Akud = localakud1;
     ApolloGameStateMachine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.API;
 
-import angk;
-import angl;
+import ankt;
+import anku;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,16 +9,16 @@ import java.util.Iterator;
 public class ArkAppMusicModule$GlobalMusicCallback$1
   implements Runnable
 {
-  public ArkAppMusicModule$GlobalMusicCallback$1(angl paramangl, int paramInt) {}
+  public ArkAppMusicModule$GlobalMusicCallback$1(anku paramanku, int paramInt) {}
   
   public void run()
   {
-    Iterator localIterator = angk.a.iterator();
+    Iterator localIterator = ankt.a.iterator();
     while (localIterator.hasNext())
     {
-      angk localangk = (angk)((WeakReference)localIterator.next()).get();
-      if (localangk != null) {
-        localangk.a(this.a);
+      ankt localankt = (ankt)((WeakReference)localIterator.next()).get();
+      if (localankt != null) {
+        localankt.a(this.a);
       }
     }
   }

@@ -1,15 +1,8 @@
-public class xfg
+import java.util.List;
+
+public abstract interface xfg
 {
-  public int a;
-  public String a;
-  public xfc<Boolean, xfh> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public xfc<Boolean, xfi> b;
-  public boolean b;
-  public int c;
-  public int d;
+  public abstract void a(int paramInt, List<uxf> paramList);
 }
 
 

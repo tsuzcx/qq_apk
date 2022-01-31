@@ -11,12 +11,12 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import wmf;
-import xjv;
-import xjw;
+import wqo;
+import xoe;
+import xof;
 
 public class TagFeedItem
-  extends VideoListFeedItem<wmf, TagUserItem>
+  extends VideoListFeedItem<wqo, TagUserItem>
 {
   public String blurb;
   public String content;
@@ -24,7 +24,7 @@ public class TagFeedItem
   public long recommendId;
   public String recommendTitle = "";
   public String schema;
-  public xjv tagItem;
+  public xoe tagItem;
   public int videoCount;
   
   protected int assignType()
@@ -58,7 +58,7 @@ public class TagFeedItem
     {
       this.mIsVideoEnd = bool;
       this.mVideoNextCookie = paramTagFeed.next_cookie.get().toStringUtf8();
-      this.tagItem = new xjv((qqstory_struct.TagItem)paramTagFeed.tag_item.get());
+      this.tagItem = new xoe((qqstory_struct.TagItem)paramTagFeed.tag_item.get());
       this.videoCount = paramTagFeed.video_total.get();
       this.schema = paramTagFeed.schema.get().toStringUtf8();
       this.content = paramTagFeed.content.get().toStringUtf8();
@@ -78,10 +78,10 @@ public class TagFeedItem
     SerializationPB.TagFeed localTagFeed = new SerializationPB.TagFeed();
     localTagFeed.video_list_feed.set(super.writeVideoListFeedLocalPB());
     localTagFeed.video_count.set(this.videoCount);
-    localTagFeed.tag_id.set(this.tagItem.jdField_a_of_type_Xjw.jdField_a_of_type_Long);
-    localTagFeed.tag_type.set(this.tagItem.jdField_a_of_type_Xjw.jdField_a_of_type_Int);
-    localTagFeed.tag_name.set(this.tagItem.jdField_a_of_type_Xjw.jdField_a_of_type_JavaLangString);
-    localTagFeed.tag_desc.set(this.tagItem.jdField_a_of_type_Xjw.b);
+    localTagFeed.tag_id.set(this.tagItem.jdField_a_of_type_Xof.jdField_a_of_type_Long);
+    localTagFeed.tag_type.set(this.tagItem.jdField_a_of_type_Xof.jdField_a_of_type_Int);
+    localTagFeed.tag_name.set(this.tagItem.jdField_a_of_type_Xof.jdField_a_of_type_JavaLangString);
+    localTagFeed.tag_desc.set(this.tagItem.jdField_a_of_type_Xof.b);
     localTagFeed.join_count.set(this.tagItem.jdField_a_of_type_Int);
     localTagFeed.wording.set(this.tagItem.jdField_a_of_type_JavaLangString);
     localTagFeed.schema.set(this.schema);
@@ -95,9 +95,9 @@ public class TagFeedItem
   }
   
   @NonNull
-  public wmf generateHomeFeed()
+  public wqo generateHomeFeed()
   {
-    return new wmf(this);
+    return new wqo(this);
   }
   
   public int getCommentLikeType()
@@ -131,7 +131,7 @@ public class TagFeedItem
     String str1 = localTagFeed.tag_desc.get();
     int j = localTagFeed.join_count.get();
     String str2 = localTagFeed.wording.get();
-    this.tagItem = new xjv(new xjw(l, paramArrayOfByte, str1, i), j, str2);
+    this.tagItem = new xoe(new xof(l, paramArrayOfByte, str1, i), j, str2);
     this.schema = localTagFeed.schema.get();
     this.content = localTagFeed.content.get();
     this.blurb = localTagFeed.blur.get();

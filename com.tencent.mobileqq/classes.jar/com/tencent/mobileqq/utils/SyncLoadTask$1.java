@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.utils;
 
 import android.content.res.Resources;
-import bdjf;
-import bdjg;
+import bdno;
+import bdnp;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,7 +11,7 @@ import mqq.os.MqqHandler;
 public final class SyncLoadTask$1
   implements Runnable
 {
-  public SyncLoadTask$1(ArrayList paramArrayList1, Resources paramResources, bdjg parambdjg, ArrayList paramArrayList2) {}
+  public SyncLoadTask$1(ArrayList paramArrayList1, Resources paramResources, bdnp parambdnp, ArrayList paramArrayList2) {}
   
   public void run()
   {
@@ -20,15 +20,15 @@ public final class SyncLoadTask$1
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      bdjf localbdjf = (bdjf)localIterator.next();
-      if (localbdjf.runOnSubThread(this.jdField_a_of_type_AndroidContentResResources))
+      bdno localbdno = (bdno)localIterator.next();
+      if (localbdno.runOnSubThread(this.jdField_a_of_type_AndroidContentResResources))
       {
-        localArrayList1.add(localbdjf);
+        localArrayList1.add(localbdno);
       }
       else
       {
-        localbdjf.clean();
-        localArrayList2.add(localbdjf);
+        localbdno.clean();
+        localArrayList2.add(localbdno);
       }
     }
     ThreadManager.getUIHandler().post(new SyncLoadTask.1.1(this, localArrayList1, localArrayList2));

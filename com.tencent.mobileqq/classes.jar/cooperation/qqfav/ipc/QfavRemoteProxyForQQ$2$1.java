@@ -1,22 +1,22 @@
 package cooperation.qqfav.ipc;
 
-import bisb;
-import bisc;
-import bisd;
+import biwi;
+import biwj;
+import biwk;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class QfavRemoteProxyForQQ$2$1
   extends Thread
 {
-  public QfavRemoteProxyForQQ$2$1(bisc parambisc) {}
+  public QfavRemoteProxyForQQ$2$1(biwj parambiwj) {}
   
   public void run()
   {
     while (!this.a.a.a.isEmpty())
     {
-      bisd localbisd = (bisd)this.a.a.a.poll();
-      if (localbisd != null) {
-        bisb.a(this.a.a, localbisd);
+      biwk localbiwk = (biwk)this.a.a.a.poll();
+      if (localbiwk != null) {
+        biwi.a(this.a.a, localbiwk);
       }
     }
   }

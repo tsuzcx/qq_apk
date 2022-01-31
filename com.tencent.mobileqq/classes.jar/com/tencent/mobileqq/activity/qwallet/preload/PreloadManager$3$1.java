@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import aivo;
+import ajad;
 
 public class PreloadManager$3$1
   implements Runnable
 {
-  public PreloadManager$3$1(aivo paramaivo) {}
+  public PreloadManager$3$1(ajad paramajad) {}
   
   public void run()
   {
-    PreloadManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_Bdvu, this.a.jdField_a_of_type_Boolean);
+    PreloadManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_Bead, this.a.jdField_a_of_type_Boolean);
   }
 }
 

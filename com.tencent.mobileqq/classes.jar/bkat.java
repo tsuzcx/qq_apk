@@ -1,43 +1,32 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.qzone.widget.FastAnimationDrawable;
+import java.lang.ref.WeakReference;
 
-class bkat
-  implements ModuleDownloadListener
+public class bkat
+  extends Handler
 {
-  bkat(bkar parambkar, bkaw parambkaw) {}
+  private final WeakReference<Drawable> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onDownloadCanceled(String paramString)
+  public bkat(FastAnimationDrawable paramFastAnimationDrawable, Drawable paramDrawable)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+    super(Looper.getMainLooper());
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDrawable);
   }
   
-  public void onDownloadFailed(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
-    bkar.b(this.jdField_a_of_type_Bkar, false);
-    this.jdField_a_of_type_Bkaw.a(false);
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("libTar.so")) {
-      return;
+    paramMessage = (Drawable)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramMessage != null) {
+      paramMessage.invalidateSelf();
     }
-    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bkar.c(), " onDownloadSucceed = ", bkar.d() });
-    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bkar.d());
-    bkar.b(this.jdField_a_of_type_Bkar);
-    this.jdField_a_of_type_Bkaw.a(bkar.b(this.jdField_a_of_type_Bkar));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bkat
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,107 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import java.util.HashMap;
 
-class areu
-  extends ypt
+public class areu
+  extends arfb
 {
-  areu(aret paramaret, aqtd paramaqtd) {}
+  long jdField_a_of_type_Long = 0L;
+  ExcitingTransferUploadResultRp jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp;
+  final String jdField_a_of_type_JavaLangString = "ExcitingTransfer.ExtfGroupRP<FileAssistant>";
+  boolean jdField_a_of_type_Boolean = false;
+  long b = 0L;
+  long c;
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
+  public areu(QQAppInterface paramQQAppInterface)
   {
-    if (paramDownloadFileRspBody == null)
+    super(paramQQAppInterface);
+  }
+  
+  protected int a()
+  {
+    return 2;
+  }
+  
+  protected String a(boolean paramBoolean)
+  {
+    return "actGroupXTFUpload";
+  }
+  
+  protected HashMap<String, String> a()
+  {
+    HashMap localHashMap = super.a();
+    localHashMap.put("param_IsFlashFile", String.valueOf(this.jdField_a_of_type_Boolean));
+    localHashMap.put("param_TotalCostTime", String.valueOf(this.c));
+    localHashMap.put("param_CalcShaCostTime", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("param_CalcHashCostTime", String.valueOf(this.b));
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp != null)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("VideoForTroop<QFile>", 4, "error DownloadFileRspBody is null!!!!!");
-      }
-      this.jdField_a_of_type_Aqtd.a(-1, "");
-      return;
+      localHashMap.put("param_Result", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_nResult));
+      localHashMap.put("param_IsXTFValid", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_bIsXTFValid));
+      localHashMap.put("param_HttpTime", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64HttpTime));
+      localHashMap.put("param_SrvReturCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_nSrvReturCode));
+      localHashMap.put("param_TransferSpeed", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64TransferSpeed));
+      localHashMap.put("param_TransferSize", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64TransferSize));
+      localHashMap.put("param_StartSize", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64StartSize));
+      localHashMap.put("param_ServerIp", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_strServerIp));
+      localHashMap.put("param_ServerPort", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_wServerPort));
+      localHashMap.put("param_FileUrl", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_strFileUrl));
+      localHashMap.put("param_MaxUploadingFtnNum", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uMaxUploadingFtnNum));
+      localHashMap.put("param_RetryCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uRetryCount));
+      localHashMap.put("param_IpChangeCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uIpChangeCount));
+      localHashMap.put("param_RollBackCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uRollBackCount));
+      localHashMap.put("param_QueryHoleCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uQueryHoleCount));
+      localHashMap.put("param_RangDiffCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uRangDiffCount));
+      localHashMap.put("param_DelayTotoalCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uDelayTotoalCount));
+      localHashMap.put("param_TcpCnnCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_nTcpCnnCode));
+      localHashMap.put("param_TcpSocketCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_nTcpSocketCode));
+      localHashMap.put("param_HttpsSupport", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_wHttpsSupport));
     }
-    paramBundle = TroopFileTransferManager.a(aret.a(this.jdField_a_of_type_Aret).b);
-    if (paramBundle == null)
+    for (;;)
     {
-      QLog.e("VideoForTroop<QFile>", 1, "getUrl: onReqDownloadFileResult: get troopFileTransferManager failed.");
-      return;
+      QLog.i("ExcitingTransfer.ExtfGroupRP<FileAssistant>", 1, "Id[" + this.d + "] >>> GroupSendDataReport:act=" + a(false) + localHashMap.toString());
+      return localHashMap;
+      localHashMap.put("param_IsXTFValid", String.valueOf(false));
+      localHashMap.put("param_HttpTime", String.valueOf(0));
+      localHashMap.put("param_SrvReturCode", String.valueOf(0));
+      localHashMap.put("param_TransferSpeed", String.valueOf(0));
+      localHashMap.put("param_TransferSize", String.valueOf(0));
+      localHashMap.put("param_StartSize", String.valueOf(0));
+      localHashMap.put("param_ServerIp", "");
+      localHashMap.put("param_ServerPort", String.valueOf(0));
+      localHashMap.put("param_FileUrl", "");
+      localHashMap.put("param_MaxUploadingFtnNum", String.valueOf(0));
+      localHashMap.put("param_RetryCount", String.valueOf(0));
+      localHashMap.put("param_IpChangeCount", String.valueOf(0));
+      localHashMap.put("param_RollBackCount", String.valueOf(0));
+      localHashMap.put("param_QueryHoleCount", String.valueOf(0));
+      localHashMap.put("param_RangDiffCount", String.valueOf(0));
+      localHashMap.put("param_DelayTotoalCount", String.valueOf(0));
+      localHashMap.put("param_TcpCnnCode", String.valueOf(0));
+      localHashMap.put("param_TcpSocketCode", String.valueOf(0));
+      localHashMap.put("param_HttpsSupport", String.valueOf(0));
     }
-    paramBundle = paramBundle.a(aret.a(this.jdField_a_of_type_Aret));
-    if (paramBundle == null)
-    {
-      this.jdField_a_of_type_Aqtd.a(-2, "");
-      return;
-    }
-    paramInt = paramDownloadFileRspBody.int32_ret_code.get();
-    QLog.e("VideoForTroop<QFile>", 1, String.format("onRspDownload - retCode: %d", new Object[] { Integer.valueOf(paramInt) }));
-    if (paramDownloadFileRspBody.bytes_cookie_val.has())
-    {
-      paramBundle.cookieValue = bdcv.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
-      paramBundle.cookieValue = paramBundle.cookieValue.toLowerCase();
-    }
-    paramBundle.DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
-    paramBundle.DownloadUrl = bdcv.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-    paramBundle.Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
-    paramBundle.NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
-    if ((paramInt == -133) || (paramInt == -132) || (paramInt == -134))
-    {
-      QLog.w("VideoForTroop<QFile>", 1, "file invalidate retCode = " + paramInt);
-      this.jdField_a_of_type_Aqtd.a(paramInt, "");
-      return;
-    }
-    if ((paramInt == -103) || (paramInt == -301))
-    {
-      QLog.w("VideoForTroop<QFile>", 1, "file invalidate retCode = " + paramInt);
-      return;
-    }
-    paramDownloadFileRspBody = arcy.a(paramBundle.DownloadIp, paramBundle.DownloadUrl, paramBundle.FilePath, paramBundle.cookieValue, "");
-    if (QLog.isColorLevel()) {
-      QLog.e("VideoForTroop<QFile>", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + paramBundle.cookieValue);
-    }
-    if (!TextUtils.isEmpty(paramDownloadFileRspBody))
-    {
-      this.jdField_a_of_type_Aqtd.a(paramDownloadFileRspBody, paramBundle.cookieValue);
-      return;
-    }
-    this.jdField_a_of_type_Aqtd.a(-3, "");
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp = paramExcitingTransferUploadResultRp;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.c = paramLong;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

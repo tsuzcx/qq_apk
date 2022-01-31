@@ -1,49 +1,41 @@
-import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class vpl
-  extends vle
+  extends vpn
 {
-  public final ErrorMessage a;
-  public final boolean a;
-  public final String b;
+  public ErrorMessage a;
   
-  public vpl(@NonNull ErrorMessage paramErrorMessage, boolean paramBoolean)
+  public vpl(vpm paramvpm, @Nullable ErrorMessage paramErrorMessage)
   {
-    super(new vld("ERROR_" + paramErrorMessage));
-    this.b = null;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add("ERROR");
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilMap.put("ERROR", "ERROR");
+    super(paramvpm);
+    if (paramErrorMessage == null) {}
+    for (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(97000001, "loading");; this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage)
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      return;
+    }
   }
   
-  public vpl(@NonNull String paramString, boolean paramBoolean)
+  public boolean a()
   {
-    super(new vld("LOADING_" + paramString));
-    this.b = paramString;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add("LOADING");
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilMap.put("LOADING", "LOADING");
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000000;
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null;
+    return (!a()) && (!c());
   }
   
   public boolean c()
   {
-    return this.b != null;
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000001;
+  }
+  
+  public String toString()
+  {
+    return "fg{g=" + this.jdField_a_of_type_Vpm + ", em=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
   }
 }
 

@@ -24,7 +24,7 @@ public class nmh
 {
   public static int a()
   {
-    switch (bdee.a(BaseApplication.getContext()))
+    switch (bdin.a(BaseApplication.getContext()))
     {
     case 0: 
     default: 
@@ -62,31 +62,31 @@ public class nmh
         localObject2 = ((AbsShareMsg)localObject2).mStructMsgItemLists.iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          Object localObject3 = (azqj)((Iterator)localObject2).next();
+          Object localObject3 = (azus)((Iterator)localObject2).next();
           int j = i;
-          if ((localObject3 instanceof azqk))
+          if ((localObject3 instanceof azut))
           {
-            localObject3 = (azqk)localObject3;
+            localObject3 = (azut)localObject3;
             j = i;
-            if (((azqk)localObject3).a != null)
+            if (((azut)localObject3).a != null)
             {
               j = i;
-              if (((azqk)localObject3).a.size() > 0)
+              if (((azut)localObject3).a.size() > 0)
               {
-                localObject3 = ((azqk)localObject3).a.iterator();
+                localObject3 = ((azut)localObject3).a.iterator();
                 for (;;)
                 {
                   j = i;
                   if (!((Iterator)localObject3).hasNext()) {
                     break;
                   }
-                  Object localObject4 = (azqj)((Iterator)localObject3).next();
-                  if ((localObject4 instanceof azvm))
+                  Object localObject4 = (azus)((Iterator)localObject3).next();
+                  if ((localObject4 instanceof azzv))
                   {
-                    localObject4 = (azvm)localObject4;
-                    if ((!TextUtils.isEmpty(((azvm)localObject4).S)) && (!TextUtils.isEmpty(((azvm)localObject4).T)))
+                    localObject4 = (azzv)localObject4;
+                    if ((!TextUtils.isEmpty(((azzv)localObject4).S)) && (!TextUtils.isEmpty(((azzv)localObject4).T)))
                     {
-                      localObject4 = new nlp(i, ((azvm)localObject4).S, ((azvm)localObject4).T);
+                      localObject4 = new nlp(i, ((azzv)localObject4).S, ((azzv)localObject4).T);
                       i += 1;
                       ((ArrayList)localObject1).add(localObject4);
                       localArrayList2.add(((nlp)localObject4).b);
@@ -153,7 +153,7 @@ public class nmh
     String str = ods.c();
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = bfhi.d(((String)localObject).toLowerCase()).toLowerCase();
+      localObject = bflr.d(((String)localObject).toLowerCase()).toLowerCase();
       localPhoneInfo.bytes_muid.set(ByteStringMicro.copyFromUtf8((String)localObject));
       localPhoneInfo.uint32_muid_type.set(1);
       localObject = str;
@@ -165,7 +165,7 @@ public class nmh
       i = 0;
       try
       {
-        int j = bdcb.e();
+        int j = bdgk.e();
         i = j;
       }
       catch (Exception localException)
@@ -174,9 +174,9 @@ public class nmh
         break label79;
       }
       localPhoneInfo.uint32_carrier.set(i);
-      str = bdcb.e();
+      str = bdgk.e();
       localPhoneInfo.bytes_os_ver.set(ByteStringMicro.copyFromUtf8(str));
-      str = bdcb.c();
+      str = bdgk.c();
       localPhoneInfo.bytes_qq_ver.set(ByteStringMicro.copyFromUtf8(str));
       i = AppSetting.a();
       localPhoneInfo.bytes_appid.set(ByteStringMicro.copyFromUtf8(String.valueOf(i)));
@@ -191,7 +191,7 @@ public class nmh
       if (!TextUtils.isEmpty(str))
       {
         localObject = str.replaceAll(":", "").toUpperCase();
-        str = bfhi.d((String)localObject).toLowerCase();
+        str = bflr.d((String)localObject).toLowerCase();
         localPhoneInfo.bytes_muid.set(ByteStringMicro.copyFromUtf8(str));
         localPhoneInfo.uint32_muid_type.set(3);
       }

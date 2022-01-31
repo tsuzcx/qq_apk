@@ -1,24 +1,10 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.view.View;
 
 public class akay
-  extends akbg
+  extends akba
 {
-  public akay(SpecailCareListActivity paramSpecailCareListActivity)
-  {
-    super(paramSpecailCareListActivity, null);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
-  {
-    if (this.a.d != 0) {
-      this.a.b = true;
-    }
-    while ((paramInt2 != 200) || (paramBitmap == null)) {
-      return;
-    }
-    this.a.a.notifyDataSetChanged();
-  }
+  public long a;
+  public View a;
 }
 
 

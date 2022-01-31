@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import blmf;
-import blrc;
-import bmpm;
+import blqr;
+import blvo;
+import bmty;
 
 public class DoodleLayout$8$1
   implements Runnable
 {
-  public DoodleLayout$8$1(bmpm parambmpm) {}
+  public DoodleLayout$8$1(bmty parambmty) {}
   
   public void run()
   {
-    ((blrc)blmf.a().c(12)).c();
+    ((blvo)blqr.a().c(12)).c();
   }
 }
 

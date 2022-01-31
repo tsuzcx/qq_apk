@@ -1,72 +1,68 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.UploadServerInfoCallback;
-import com.tencent.weiyun.transmission.upload.UploadFile;
-import com.tencent.weiyun.utils.Utils;
-import cooperation.weiyun.channel.pb.WeiyunPB.QqSdkFileUploadMsgRsp;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import java.io.File;
+import java.util.HashMap;
 
 class bkff
-  implements bkgc<WeiyunPB.QqSdkFileUploadMsgRsp>
+  implements Downloader.DownloadListener
 {
-  bkff(bkfd parambkfd, WeiyunTransmissionGlobal.UploadServerInfoCallback paramUploadServerInfoCallback, UploadFile paramUploadFile) {}
+  bkff(bkfe parambkfe, bkej parambkej, String paramString1, String paramString2, aosg paramaosg) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.QqSdkFileUploadMsgRsp paramQqSdkFileUploadMsgRsp)
+  public void onDownloadCanceled(String paramString)
   {
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, paramInt, paramString);
+    QZLog.i("VipARQGLoaderManager", 2, "onDownloadCanceled = " + paramString);
+    if (this.jdField_a_of_type_Bkej != null) {
+      this.jdField_a_of_type_Bkej.b("download canceld url = " + paramString);
+    }
   }
   
-  public void a(WeiyunPB.QqSdkFileUploadMsgRsp paramQqSdkFileUploadMsgRsp)
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (paramQqSdkFileUploadMsgRsp == null)
+    QZLog.i("VipARQGLoaderManager", 2, "onDownloadFailed = " + paramString);
+    if (this.jdField_a_of_type_Bkej != null) {
+      this.jdField_a_of_type_Bkej.b("download fail url = " + paramString);
+    }
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    QZLog.i("VipARQGLoaderManager", 2, "onDownloadSucceed = " + paramString);
+    paramString = QzoneZipCacheHelper.getBasePath("vip_qg", String.valueOf(this.jdField_a_of_type_JavaLangString.hashCode()));
+    paramDownloadResult = bflr.a(this.b);
+    if (this.jdField_a_of_type_Aosg != null) {
+      QZLog.i("VipARQGLoaderManager", 1, "download fileMD5 = " + paramDownloadResult + " config.md5 = " + this.jdField_a_of_type_Aosg.c);
+    }
+    if ((this.jdField_a_of_type_Aosg != null) && (!TextUtils.isEmpty(paramDownloadResult)) && (paramDownloadResult.equalsIgnoreCase(this.jdField_a_of_type_Aosg.c)))
     {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, 1828004, alpo.a(2131715456));
+      paramDownloadResult = new File(this.b);
+      QzoneZipCacheHelper.unzipFile(paramDownloadResult.getAbsolutePath(), paramString);
+      if (paramDownloadResult.exists()) {
+        arso.a(paramDownloadResult);
+      }
+      if (new File(paramString).exists())
+      {
+        QZLog.i("VipARQGLoaderManager", 1, "download success file exist start put to map = " + paramString);
+        bkfe.a(this.jdField_a_of_type_Bkfe).put(this.jdField_a_of_type_JavaLangString, paramString);
+        if (this.jdField_a_of_type_Bkej != null) {
+          this.jdField_a_of_type_Bkej.a(paramString);
+        }
+      }
+    }
+    while (this.jdField_a_of_type_Bkej == null)
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Bkej == null);
+      this.jdField_a_of_type_Bkej.b("download success but the file is not exist");
       return;
     }
-    Object localObject1 = paramQqSdkFileUploadMsgRsp.pdir_key.get();
-    Object localObject3 = paramQqSdkFileUploadMsgRsp.ppdir_key.get();
-    Object localObject2;
-    label57:
-    boolean bool;
-    String str;
-    if (localObject1 == null)
-    {
-      localObject1 = null;
-      if (localObject3 != null) {
-        break label240;
-      }
-      localObject2 = null;
-      if ((localObject1 != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey))) {
-        this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey = ((String)localObject1);
-      }
-      if ((localObject3 != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey))) {
-        this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey = ((String)localObject2);
-      }
-      bkfl.a((String)localObject2, (String)localObject1);
-      localObject2 = this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile;
-      bool = paramQqSdkFileUploadMsgRsp.file_exist.get();
-      localObject3 = paramQqSdkFileUploadMsgRsp.file_id.get();
-      str = paramQqSdkFileUploadMsgRsp.server_name.get();
-      if (!WeiyunTransmissionGlobal.getInstance().isNativeUpload()) {
-        break label250;
-      }
-    }
-    label240:
-    label250:
-    for (localObject1 = paramQqSdkFileUploadMsgRsp.inside_upload_ip.get();; localObject1 = paramQqSdkFileUploadMsgRsp.outside_upload_ip.get())
-    {
-      ((UploadFile)localObject2).setServerInfo(bool, (String)localObject3, str, (String)localObject1, paramQqSdkFileUploadMsgRsp.server_port.get(), Utils.bytes2HexStr(paramQqSdkFileUploadMsgRsp.check_key.get().toByteArray()).toLowerCase(), paramQqSdkFileUploadMsgRsp.channel_count.get(), Integer.toString(paramQqSdkFileUploadMsgRsp.file_version.get()));
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, true, 0, null);
-      return;
-      localObject1 = bkia.a((ByteStringMicro)localObject1);
-      break;
-      localObject2 = bkia.a((ByteStringMicro)localObject3);
-      break label57;
-    }
+    this.jdField_a_of_type_Bkej.b("download success but the file md5 is not match");
   }
 }
 

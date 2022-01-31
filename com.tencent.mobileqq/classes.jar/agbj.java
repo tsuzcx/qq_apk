@@ -1,16 +1,16 @@
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class agbj
-  implements afgj
+  implements View.OnTouchListener
 {
-  public agbj(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  public agbj(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onUpdate(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt == 23) {
-      UnlimitedBladeWorks.a(this.a).start();
-    }
+    return true;
   }
 }
 

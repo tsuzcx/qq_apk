@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.extendfriend.limitchat.limitchatstatehandler;
 
-import apyc;
-import aqbz;
-import aqca;
-import aqcb;
+import aqcl;
+import aqgi;
+import aqgj;
+import aqgk;
 
 class MatchingStateHandler$1$1
   implements Runnable
@@ -12,23 +12,23 @@ class MatchingStateHandler$1$1
   
   public void run()
   {
-    if (this.a.this$0.jdField_a_of_type_Aqbz != null)
+    if (this.a.this$0.jdField_a_of_type_Aqgi != null)
     {
-      this.a.this$0.jdField_a_of_type_Aqbz.a(100, null);
-      if (this.a.this$0.jdField_a_of_type_Aqbz.a != null)
+      this.a.this$0.jdField_a_of_type_Aqgi.a(100, null);
+      if (this.a.this$0.jdField_a_of_type_Aqgi.a != null)
       {
         String str2 = "";
         String str1 = str2;
-        if (this.a.this$0.jdField_a_of_type_Apyc != null)
+        if (this.a.this$0.jdField_a_of_type_Aqcl != null)
         {
           str1 = str2;
-          if (this.a.this$0.jdField_a_of_type_Apyc.d != null) {
-            str1 = this.a.this$0.jdField_a_of_type_Apyc.d;
+          if (this.a.this$0.jdField_a_of_type_Aqcl.d != null) {
+            str1 = this.a.this$0.jdField_a_of_type_Aqcl.d;
           }
         }
-        this.a.this$0.jdField_a_of_type_Aqbz.a.a(0, this.a.this$0.jdField_a_of_type_Apyc, str1, "");
+        this.a.this$0.jdField_a_of_type_Aqgi.a.a(0, this.a.this$0.jdField_a_of_type_Aqcl, str1, "");
       }
-      aqcb.a(this.a.this$0);
+      aqgk.a(this.a.this$0);
     }
   }
 }

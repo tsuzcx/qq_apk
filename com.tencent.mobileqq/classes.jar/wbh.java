@@ -1,152 +1,53 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoDelete;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
 
-public class wbh
-  extends wav
-  implements View.OnClickListener
+class wbh
+  extends naa
 {
-  final Button jdField_a_of_type_AndroidWidgetButton;
-  final ImageView jdField_a_of_type_AndroidWidgetImageView;
-  final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  final TextView jdField_a_of_type_AndroidWidgetTextView;
-  List<QQUserUIItem> jdField_a_of_type_JavaUtilList = new ArrayList();
-  final wbb jdField_a_of_type_Wbb;
-  final ImageView jdField_b_of_type_AndroidWidgetImageView;
-  final TextView jdField_b_of_type_AndroidWidgetTextView;
+  wbh(wbg paramwbg) {}
   
-  public wbh(View paramView, wbb paramwbb)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Wbb = paramwbb;
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377659));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377685));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372266));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131377171));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370135));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367953));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-  }
-  
-  private void a(List<String> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
+    this.a.jdField_a_of_type_Wax.l();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_Wax.jdField_b_of_type_JavaLangString, 2, "troop story delete result, code=" + paramInt);
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    Object localObject1 = (usd)urr.a(2);
-    Object localObject2 = new ArrayList();
-    int j = Math.min(paramList.size(), 6);
-    int i = 0;
-    if (i < j)
-    {
-      String str = (String)paramList.get(i);
-      QQUserUIItem localQQUserUIItem = ((usd)localObject1).b(str);
-      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.headUrl))) {
-        this.jdField_a_of_type_JavaUtilList.add(localQQUserUIItem);
-      }
-      for (;;)
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      try
       {
-        i += 1;
-        break;
-        ((List)localObject2).add(new usy("", str));
+        paramBundle = this.a.jdField_a_of_type_Wax.a.jdField_b_of_type_JavaLangString;
+        Object localObject = new qqstory_group.RspGroupVideoDelete();
+        ((qqstory_group.RspGroupVideoDelete)localObject).mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (qqstory_struct.ErrorInfo)((qqstory_group.RspGroupVideoDelete)localObject).result.get();
+        this.a.jdField_a_of_type_Wpe.a(paramBundle, 0, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        this.a.jdField_a_of_type_Wpe.a(paramBundle, 1, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        localObject = new uvf(new ErrorMessage(), this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, false);
+        ((uvf)localObject).jdField_b_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+        ((uvf)localObject).d = paramBundle;
+        ((uvf)localObject).jdField_b_of_type_Boolean = false;
+        ((uvf)localObject).c = this.a.jdField_a_of_type_Wax.b();
+        ((uvf)localObject).a = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
+        if (((uvf)localObject).a == 0L) {
+          ((uvf)localObject).a = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
+        }
+        Bosses.get().scheduleJobDelayed(new wbi(this, this.a.jdField_a_of_type_Wax.jdField_b_of_type_JavaLangString, (uvf)localObject), 400);
+        return paramArrayOfByte;
       }
-    }
-    if (!((List)localObject2).isEmpty()) {
-      new uza(1, (List)localObject2).a();
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    int k = this.jdField_a_of_type_JavaUtilList.size();
-    j = 0;
-    label181:
-    label193:
-    int m;
-    if (j < k)
-    {
-      if (j != 0) {
-        break label274;
-      }
-      i = -1;
-      paramList = this.jdField_a_of_type_Wbb.jdField_a_of_type_AndroidContentContext;
-      localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
-      localObject2 = (QQUserUIItem)this.jdField_a_of_type_JavaUtilList.get(j);
-      m = this.jdField_a_of_type_Wbb.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.memberCount;
-      if (this.jdField_a_of_type_Wbb.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.memberCount <= 6) {
-        break label292;
-      }
-    }
-    label274:
-    label292:
-    for (boolean bool = true;; bool = false)
-    {
-      vyw.a(paramList, (LinearLayout)localObject1, 34, (QQUserUIItem)localObject2, i, m, bool);
-      j += 1;
-      break label181;
-      break;
-      if (j == k - 1)
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        i = 1;
-        break label193;
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.jdField_a_of_type_Wax.jdField_b_of_type_JavaLangString, 2, "parse RspGroupVideoDelete error", paramArrayOfByte);
+        }
       }
-      i = 0;
-      break label193;
     }
-  }
-  
-  public void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt)
-  {
-    if (this.jdField_a_of_type_Wbb.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem == null) {
-      return;
-    }
-    paramView = this.jdField_a_of_type_Wbb.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem;
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramView.name);
-    if (paramView.type == 1)
-    {
-      paramVideoCollectionItem = alpo.a(2131714306);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846287);
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(paramView.backgroundUrl)) {
-        xod.a(this.jdField_b_of_type_AndroidWidgetImageView, paramView.backgroundUrl, 0, 0, null);
-      }
-      if (paramView.headerUnionIdList != null) {
-        paramView.memberCount = Math.max(paramView.headerUnionIdList.size(), paramView.memberCount);
-      }
-      paramVideoCollectionItem = paramVideoCollectionItem + " · " + paramView.memberCount + alpo.a(2131714308);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramVideoCollectionItem);
-      a(paramView.headerUnionIdList);
-      return;
-      paramVideoCollectionItem = null;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131377171: 
-      this.jdField_a_of_type_Wbb.jdField_a_of_type_Wbl.a(this.jdField_a_of_type_AndroidWidgetButton);
-      return;
-    case 2131370135: 
-      this.jdField_a_of_type_Wbb.jdField_a_of_type_Wbl.b(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-      return;
-    }
-    this.jdField_a_of_type_Wbb.jdField_a_of_type_Wbl.b(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    return null;
   }
 }
 

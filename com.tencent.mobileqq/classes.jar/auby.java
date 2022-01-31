@@ -1,9 +1,26 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public abstract interface auby
+class auby
+  extends Handler
 {
-  public abstract void a(List<RecentBaseData> paramList);
+  auby(aubx paramaubx, Looper paramLooper, aubw paramaubw)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    synchronized (aubw.a(this.jdField_a_of_type_Aubx.jdField_a_of_type_Aubw))
+    {
+      auca localauca = aubw.a(this.jdField_a_of_type_Aubx.jdField_a_of_type_Aubw, (String)paramMessage.obj);
+      if (localauca != null) {
+        localauca.a(paramMessage.what);
+      }
+      return;
+    }
+  }
 }
 
 

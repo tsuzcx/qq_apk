@@ -1,67 +1,50 @@
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.widget.media.MiniAppLivePusher;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
 
-public class bhgl
-  implements bhhc
+public abstract class bhgl
 {
-  public bhgl(MiniAppLivePusher paramMiniAppLivePusher, bgkd parambgkd) {}
-  
-  public void a()
+  public int a(int paramInt)
   {
-    QMLog.e("MiniAppLivePusher", "onBGMStart");
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("livePusherId", this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetMediaMiniAppLivePusher.jdField_a_of_type_Long);
-      this.jdField_a_of_type_Bgkd.a.a("onLivePusherBGMStart", localJSONObject.toString(), this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetMediaMiniAppLivePusher.jdField_a_of_type_Int);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+    return paramInt;
   }
   
-  public void a(int paramInt)
+  public int a(View paramView)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("MiniAppLivePusher", "onBGMComplete, errCode:" + paramInt);
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("livePusherId", this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetMediaMiniAppLivePusher.jdField_a_of_type_Long);
-      localJSONObject.put("errCode", paramInt);
-      this.jdField_a_of_type_Bgkd.a.a("onLivePusherBGMComplete", localJSONObject.toString(), this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetMediaMiniAppLivePusher.jdField_a_of_type_Int);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+    return 0;
   }
   
-  public void a(long paramLong1, long paramLong2)
+  public int a(View paramView, int paramInt1, int paramInt2)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.e("MiniAppLivePusher", "onBGMProgress progress:" + paramLong1 + ",duration:" + paramLong2);
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("livePusherId", this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetMediaMiniAppLivePusher.jdField_a_of_type_Long);
-      localJSONObject.put("progress", paramLong1);
-      localJSONObject.put("duration", paramLong2);
-      this.jdField_a_of_type_Bgkd.a.a("onLivePusherBGMProgress", localJSONObject.toString(), this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetMediaMiniAppLivePusher.jdField_a_of_type_Int);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+    return 0;
   }
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(View paramView, float paramFloat1, float paramFloat2) {}
+  
+  public void a(View paramView, int paramInt) {}
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
+  
+  public abstract boolean a(View paramView, int paramInt);
+  
+  public int b(View paramView)
+  {
+    return 0;
+  }
+  
+  public int b(View paramView, int paramInt1, int paramInt2)
+  {
+    return 0;
+  }
+  
+  public void b(int paramInt1, int paramInt2) {}
 }
 
 

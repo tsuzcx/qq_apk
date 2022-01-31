@@ -3,13 +3,13 @@ package com.tencent.mobileqq.theme;
 import android.graphics.Bitmap;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import bakh;
+import baoq;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ThemeSwitchManager$1
   implements Runnable
 {
-  public ThemeSwitchManager$1(bakh parambakh) {}
+  public ThemeSwitchManager$1(baoq parambaoq) {}
   
   public void run()
   {

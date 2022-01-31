@@ -1,19 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import java.util.ArrayList;
 
-public class aitp
-  implements aixw
+class aitp
+  extends airj
 {
-  public aitp(LingHbFragment paramLingHbFragment) {}
-  
-  public void a(int paramInt)
+  protected aitp(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    if (paramInt == 0)
-    {
-      this.a.a.findViewById(2131368202).setVisibility(8);
-      return;
-    }
-    this.a.a.findViewById(2131368202).setVisibility(0);
+    super(paramNewPhotoPreviewActivity);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.a.customSendBtnText = ((NewPhotoPreviewActivity)this.mActivity).getString(2131695309);
+  }
+  
+  public void initUI()
+  {
+    super.initUI();
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new aitq(this));
+  }
+  
+  public boolean needShowMultiPhoto()
+  {
+    return (this.mPhotoCommonData.selectedPhotoList != null) && (!this.mPhotoCommonData.selectedPhotoList.isEmpty());
   }
 }
 

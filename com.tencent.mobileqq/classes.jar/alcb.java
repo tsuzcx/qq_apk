@@ -1,6 +1,19 @@
-public abstract interface alcb
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
+
+public final class alcb
+  implements Parcelable.Creator<CmShowRenderView.PlayActionConfig>
 {
-  public abstract void a(long paramLong, String paramString);
+  public CmShowRenderView.PlayActionConfig a(Parcel paramParcel)
+  {
+    return new CmShowRenderView.PlayActionConfig(paramParcel);
+  }
+  
+  public CmShowRenderView.PlayActionConfig[] a(int paramInt)
+  {
+    return new CmShowRenderView.PlayActionConfig[paramInt];
+  }
 }
 
 

@@ -10,7 +10,7 @@ import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StUser;
 import mqq.util.WeakReference;
 import tra;
-import yej;
+import yiw;
 
 class QCircleRecommendImageView$LongPressTimerTask$1
   implements Runnable
@@ -36,7 +36,7 @@ class QCircleRecommendImageView$LongPressTimerTask$1
           QCircleRecommendImageView.b(localQCircleRecommendImageView, true);
           FeedCloudMeta.StFeed localStFeed = localQCircleRecommendImageView.a();
           if ((localStFeed != null) && (!TextUtils.isEmpty(localStFeed.id.get()))) {
-            yej.a().a(new QCirclePushAnimationEvent(localStFeed.id.get(), QCircleRecommendImageView.e(localQCircleRecommendImageView), 3, QCircleRecommendImageView.f(localQCircleRecommendImageView)));
+            yiw.a().a(new QCirclePushAnimationEvent(localStFeed.id.get(), QCircleRecommendImageView.e(localQCircleRecommendImageView), 3, QCircleRecommendImageView.f(localQCircleRecommendImageView)));
           }
           ((Vibrator)localQCircleRecommendImageView.getContext().getSystemService("vibrator")).vibrate(50L);
           return;
@@ -45,7 +45,7 @@ class QCircleRecommendImageView$LongPressTimerTask$1
     }
     catch (Exception localException)
     {
-      QLog.e("QCircleRecommend", 1, localException.getMessage());
+      QLog.e("QCircleRecommend_", 1, localException.getMessage());
       localException.printStackTrace();
     }
   }

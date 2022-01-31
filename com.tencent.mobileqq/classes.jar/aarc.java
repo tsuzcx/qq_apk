@@ -1,8 +1,29 @@
-import java.util.Map;
+import com.tencent.gdtad.jsbridge.GdtBannerFragmentForJS;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface aarc
+public class aarc
+  implements aaru
 {
-  public abstract boolean a(String paramString, long paramLong, Map<String, Object> paramMap);
+  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
+  {
+    if (paramaarb != null) {}
+    for (paramString = paramaarb.a(); (paramaarb == null) || (paramString == null); paramString = null)
+    {
+      aase.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    try
+    {
+      GdtBannerFragmentForJS.a(paramString, new JSONObject(paramVarArgs[0]), GdtBannerFragmentForJS.class);
+      return true;
+    }
+    catch (JSONException paramaarb)
+    {
+      aase.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramaarb);
+    }
+    return true;
+  }
 }
 
 

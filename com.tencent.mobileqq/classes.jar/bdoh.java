@@ -1,6 +1,8 @@
-class bdoh
+import android.view.animation.Transformation;
+
+public abstract interface bdoh<T>
 {
-  private static final bdog a = new bdog(null);
+  public abstract void a(bdob<T> parambdob, float paramFloat, T paramT, Transformation paramTransformation);
 }
 
 

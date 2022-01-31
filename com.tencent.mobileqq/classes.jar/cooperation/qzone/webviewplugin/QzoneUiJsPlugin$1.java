@@ -1,17 +1,17 @@
 package cooperation.qzone.webviewplugin;
 
-import bjmn;
-import bjmp;
-import bjur;
+import bjqu;
+import bjqw;
+import bjyy;
 
 public class QzoneUiJsPlugin$1
   implements Runnable
 {
-  public QzoneUiJsPlugin$1(bjur parambjur, String paramString) {}
+  public QzoneUiJsPlugin$1(bjyy parambjyy, String paramString) {}
   
   public void run()
   {
-    bjmn.a().a().g(this.a);
+    bjqu.a().a().g(this.a);
   }
 }
 

@@ -1,89 +1,126 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.statistics.fdcount.FdTrie.1;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 public class azti
-  extends azqk
 {
-  private LinearLayout a(Context paramContext)
-  {
-    paramContext = new LinearLayout(paramContext);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    localLayoutParams.gravity = 17;
-    paramContext.setLayoutParams(localLayoutParams);
-    return paramContext;
-  }
+  static final List<String> jdField_a_of_type_JavaUtilList = new FdTrie.1(10);
+  private azth jdField_a_of_type_Azth = new azth();
+  private HashMap<azth, String> jdField_a_of_type_JavaUtilHashMap = new HashMap(100);
+  private HashMap<azth, String> b = new HashMap(jdField_a_of_type_JavaUtilList.size());
   
-  protected int b()
+  static String a(String paramString)
   {
-    return 23;
-  }
-  
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    Object localObject2;
-    if ((paramView != null) && ((paramView instanceof LinearLayout)) && ((paramView.getTag() instanceof aztj)))
-    {
-      localaztj = (aztj)paramView.getTag();
-      localIterator = this.a.iterator();
-      for (;;)
-      {
-        localObject1 = paramView;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject1 = (azqj)localIterator.next();
-        if ("button".equals(((azqj)localObject1).a))
-        {
-          localObject2 = (TextView)((azqj)localObject1).a(paramContext, localaztj.a, paramBundle);
-          if (TextUtils.isEmpty(((azsg)localObject1).c())) {
-            ((TextView)localObject2).setTextSize(16.0F);
-          }
-          if (TextUtils.isEmpty(((azsg)localObject1).d())) {
-            ((TextView)localObject2).setTextColor(Color.parseColor("#12b7f5"));
-          }
-        }
-      }
-    }
-    Object localObject1 = a(paramContext);
-    aztj localaztj = new aztj();
-    Iterator localIterator = this.a.iterator();
-    paramView = null;
+    Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      localObject2 = (azqj)localIterator.next();
-      if ("button".equals(((azqj)localObject2).a))
-      {
-        paramView = (TextView)((azqj)localObject2).a(paramContext, null, paramBundle);
-        if (TextUtils.isEmpty(((azsg)localObject2).c())) {
-          paramView.setTextSize(16.0F);
-        }
-        if (TextUtils.isEmpty(((azsg)localObject2).d())) {
-          paramView.setTextColor(Color.parseColor("#12b7f5"));
-        }
-        localObject2 = new LinearLayout.LayoutParams(-1, aekt.a(41.0F, paramContext.getResources()));
-        ((LinearLayout.LayoutParams)localObject2).gravity = 17;
-        ((LinearLayout)localObject1).addView(paramView, (ViewGroup.LayoutParams)localObject2);
+      String str = (String)localIterator.next();
+      if ((paramString != null) && (paramString.contains(str))) {
+        return str;
       }
     }
-    if (paramView != null) {
-      localaztj.a = paramView;
-    }
-    ((LinearLayout)localObject1).setTag(localaztj);
-    return localObject1;
+    return null;
   }
   
-  public String b()
+  private static List<String> a(String paramString)
   {
-    return "layout23";
+    paramString = paramString.split("/");
+    ArrayList localArrayList = new ArrayList(paramString.length);
+    localArrayList.addAll(Arrays.asList(paramString));
+    return localArrayList;
+  }
+  
+  private void a(azth paramazth, String paramString)
+  {
+    if (paramazth == null) {
+      return;
+    }
+    Object localObject = a(paramString);
+    if (localObject != null) {
+      this.b.put(paramazth, localObject);
+    }
+    localObject = paramazth.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    azth localazth;
+    do
+    {
+      if (!((Iterator)localObject).hasNext()) {
+        break;
+      }
+      localazth = (azth)((Iterator)localObject).next();
+    } while ((localazth == null) || (localazth.a()));
+    for (int i = 0;; i = 1)
+    {
+      if ((i != 0) && (!paramazth.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramazth, paramString);
+        return;
+      }
+      localObject = paramazth.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      label117:
+      while (((Iterator)localObject).hasNext())
+      {
+        localazth = (azth)((Iterator)localObject).next();
+        if (localazth != null) {
+          if (paramString == null) {
+            break label186;
+          }
+        }
+      }
+      label186:
+      for (paramazth = paramString + "/" + localazth.jdField_a_of_type_JavaLangString;; paramazth = localazth.jdField_a_of_type_JavaLangString)
+      {
+        a(localazth, paramazth);
+        break label117;
+        break;
+      }
+    }
+  }
+  
+  private void b(azth paramazth, String paramString)
+  {
+    Iterator localIterator = a(paramString).iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      paramString = paramazth.a(str);
+      if (paramString != null)
+      {
+        paramString.jdField_a_of_type_Int += 1;
+        paramazth = paramString;
+      }
+      else
+      {
+        paramString = new azth(str);
+        paramString.jdField_a_of_type_Int = 1;
+        paramazth.jdField_a_of_type_JavaUtilHashMap.put(paramString.jdField_a_of_type_JavaLangString, paramString);
+        paramazth = paramString;
+      }
+    }
+  }
+  
+  public HashMap<azth, String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  public void a()
+  {
+    a(this.jdField_a_of_type_Azth, null);
+  }
+  
+  public void a(@NonNull String paramString)
+  {
+    b(this.jdField_a_of_type_Azth, paramString);
+  }
+  
+  public HashMap<azth, String> b()
+  {
+    return this.b;
   }
 }
 

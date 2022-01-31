@@ -9,10 +9,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Window;
-import bkwi;
-import bkwm;
-import blfg;
-import bngp;
+import blap;
+import blat;
+import bljn;
+import bnlb;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.QIMCameraCaptureActivity;
@@ -21,7 +21,7 @@ import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownload
 
 public class CaptureQmcfSoDownloadActivity
   extends FragmentActivity
-  implements bngp
+  implements bnlb
 {
   public static final String a;
   private int jdField_a_of_type_Int;
@@ -71,8 +71,8 @@ public class CaptureQmcfSoDownloadActivity
     localIntent.putExtras(paramBundle);
     localIntent.putExtra("pendingIntentClass", paramString);
     localIntent.putExtra("pendingIntentAllWait", paramBoolean);
-    int i = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", bkwm.a.a());
-    if ((i == bkwm.l.a()) || (i == bkwm.k.a())) {
+    int i = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", blat.a.a());
+    if ((i == blat.l.a()) || (i == blat.k.a())) {
       localIntent.setFlags(268435456);
     }
     paramContext.startActivity(localIntent);
@@ -126,7 +126,7 @@ public class CaptureQmcfSoDownloadActivity
     this.mActNeedImmersive = false;
     this.isClearCoverLayer = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560857);
+    super.setContentView(2131560875);
     this.jdField_a_of_type_AndroidSupportV4AppFragment = new CaptureQmcfSoDownloadFragment();
     this.b = getIntent().getStringExtra("pendingIntentClass");
     if (getIntent().getBooleanExtra("pendingIntentAllWait", false)) {
@@ -140,16 +140,16 @@ public class CaptureQmcfSoDownloadActivity
       this.jdField_a_of_type_Int = getIntent().getIntExtra("pendingIntentRequest", 0);
     }
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
-    bkwi.a().a(true);
-    blfg.b(jdField_a_of_type_JavaLangString, "【Activity doOnCreate】");
+    blap.a().a(true);
+    bljn.b(jdField_a_of_type_JavaLangString, "【Activity doOnCreate】");
     return false;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bkwi.a().a(false);
-    blfg.b(jdField_a_of_type_JavaLangString, "【Activity doOnDestroy】");
+    blap.a().a(false);
+    bljn.b(jdField_a_of_type_JavaLangString, "【Activity doOnDestroy】");
   }
 }
 

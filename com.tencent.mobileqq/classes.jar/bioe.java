@@ -1,18 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.SendMsg;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-public final class bioe
-  implements Parcelable.Creator<SendMsg>
+public class bioe
 {
-  public SendMsg a(Parcel paramParcel)
+  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, long paramLong)
   {
-    return new SendMsg(paramParcel);
-  }
-  
-  public SendMsg[] a(int paramInt)
-  {
-    return new SendMsg[paramInt];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt2 + "|");
+    localStringBuilder.append(paramInt1 + "|");
+    localStringBuilder.append(paramLong + "|");
+    localStringBuilder.append(Build.BRAND + "|");
+    localStringBuilder.append(Build.MODEL + "|");
+    localStringBuilder.append(Build.VERSION.RELEASE);
+    if ((paramAppRuntime instanceof QQAppInterface)) {}
+    for (paramAppRuntime = (QQAppInterface)paramAppRuntime;; paramAppRuntime = null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadSuccessRateReporter", 2, "[preloadSuccessRate]: " + localStringBuilder.toString());
+      }
+      azps.a(paramAppRuntime, "sendtdbank|b_sng_qqvip_qqcomic|preloadSuccessRate", localStringBuilder.toString(), true);
+      return;
+    }
   }
 }
 

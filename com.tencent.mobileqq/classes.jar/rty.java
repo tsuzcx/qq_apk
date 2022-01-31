@@ -54,12 +54,12 @@ public class rty
   {
     GradientDrawable localGradientDrawable1 = new GradientDrawable();
     localGradientDrawable1.setShape(0);
-    localGradientDrawable1.setCornerRadius(bdkf.a(17.0F));
+    localGradientDrawable1.setCornerRadius(bdoo.a(17.0F));
     localGradientDrawable1.setColor(-723466);
     localGradientDrawable1.setStroke(1, paramInt);
     GradientDrawable localGradientDrawable2 = new GradientDrawable();
     localGradientDrawable2.setShape(0);
-    localGradientDrawable2.setCornerRadius(bdkf.a(17.0F));
+    localGradientDrawable2.setCornerRadius(bdoo.a(17.0F));
     localGradientDrawable2.setColor(-2697514);
     localGradientDrawable2.setStroke(1, paramInt);
     StateListDrawable localStateListDrawable = new StateListDrawable();
@@ -107,9 +107,9 @@ public class rty
     if (paramView == null)
     {
       localObject = new rub(this, null);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560075, paramViewGroup, false);
-      ((rub)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131364735);
-      ((rub)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377349));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560074, paramViewGroup, false);
+      ((rub)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131364736);
+      ((rub)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377403));
       paramView.setTag(localObject);
       paramViewGroup = (ViewGroup)localObject;
       localObject = (ChannelCoverInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
@@ -118,7 +118,7 @@ public class rty
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((ChannelCoverInfo)localObject).mChannelCoverName);
         int i = 5;
         paramInt = 12;
-        if (bdcb.m() < 1080L)
+        if (bdgk.m() < 1080L)
         {
           i = 4;
           paramInt = 11;
@@ -130,7 +130,7 @@ public class rty
     }
     for (;;)
     {
-      float f = alnq.a() / 16.0F;
+      float f = alsf.a() / 16.0F;
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextSize(paramInt / f);
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(((ChannelCoverInfo)localObject).mFontColor);
       a(paramViewGroup.jdField_a_of_type_AndroidViewView, this.c);
@@ -147,7 +147,7 @@ public class rty
         return paramView;
         paramViewGroup = (rub)paramView.getTag();
         break;
-        paramViewGroup.jdField_a_of_type_AndroidViewView.setPadding(bdkf.a(8.0F), 0, bdkf.a(8.0F), 0);
+        paramViewGroup.jdField_a_of_type_AndroidViewView.setPadding(bdoo.a(8.0F), 0, bdoo.a(8.0F), 0);
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
       }

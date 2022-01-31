@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.entry;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class MiniAppSettingSwitchInfoEntity
-  extends awbv
+  extends awge
 {
   public static final String TAG = "MiniAppSettingSwitchInfoEntity";
-  @awdj
+  @awhs
   public String key;
   public String subTitle;
   public String title;

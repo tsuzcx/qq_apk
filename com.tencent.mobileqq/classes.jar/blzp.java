@@ -1,47 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.RestrictTo;
-import java.util.HashMap;
-import java.util.Map.Entry;
+import android.view.View;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class blzp<K, V>
-  extends blzq<K, V>
+public class blzp
 {
-  private HashMap<K, blzt<K, V>> a = new HashMap();
+  public float a;
+  public long a;
+  public View a;
+  public String a;
+  public float b;
+  public long b;
   
-  protected blzt<K, V> a(K paramK)
+  public blzp(View paramView, String paramString, float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
   {
-    return (blzt)this.a.get(paramK);
-  }
-  
-  public V a(@NonNull K paramK)
-  {
-    Object localObject = super.a(paramK);
-    this.a.remove(paramK);
-    return localObject;
-  }
-  
-  public V a(@NonNull K paramK, @NonNull V paramV)
-  {
-    blzt localblzt = a(paramK);
-    if (localblzt != null) {
-      return localblzt.jdField_b_of_type_JavaLangObject;
-    }
-    this.a.put(paramK, a(paramK, paramV));
-    return null;
-  }
-  
-  public Map.Entry<K, V> a(K paramK)
-  {
-    if (a(paramK)) {
-      return ((blzt)this.a.get(paramK)).jdField_b_of_type_Blzt;
-    }
-    return null;
-  }
-  
-  public boolean a(K paramK)
-  {
-    return this.a.containsKey(paramK);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
 }
 

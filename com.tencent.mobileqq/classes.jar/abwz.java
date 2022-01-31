@@ -1,40 +1,33 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
+import com.tencent.qphone.base.util.QLog;
 
 public class abwz
-  implements View.OnFocusChangeListener
 {
-  public abwz(AddAccountActivity paramAddAccountActivity) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public static abwy a(Class<? extends abwy> paramClass, abwx paramabwx)
   {
-    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
-      if (true == paramBoolean)
-      {
-        if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.isPopupShowing()) {
-          this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.dismissDropDown();
+    if (paramClass == abxy.class) {
+      paramClass = new abxy();
+    }
+    for (;;)
+    {
+      if (paramClass != null) {
+        paramClass.a(paramabwx);
+      }
+      return paramClass;
+      if (paramClass == abye.class) {
+        paramClass = new abye();
+      } else {
+        try
+        {
+          abwy localabwy = (abwy)paramClass.newInstance();
+          paramClass = localabwy;
         }
-        if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length() > 0)) {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        catch (Exception localException)
+        {
+          QLog.e("DoraemonOpenAPI.moduleFactory", 1, "newInstance error module=" + paramClass, localException);
+          paramClass = null;
         }
-        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
       }
     }
-    while ((paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText) || (true != paramBoolean))
-    {
-      do
-      {
-        return;
-      } while ((this.a.jdField_a_of_type_AndroidWidgetImageView == null) || (!this.a.jdField_a_of_type_AndroidWidgetImageView.isShown()));
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.getText().length());
   }
 }
 

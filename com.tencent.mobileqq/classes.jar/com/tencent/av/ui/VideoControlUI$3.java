@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import alpo;
+import alud;
 import android.view.View;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +20,7 @@ class VideoControlUI$3
       if (AudioHelper.a(1) != 1) {
         break label46;
       }
-      AudioHelper.a(alpo.a(2131716502));
+      AudioHelper.a(alud.a(2131716514));
     }
     label46:
     Object localObject;
@@ -31,7 +31,7 @@ class VideoControlUI$3
       if (localObject == null) {
         break;
       }
-      localObject = ((AVActivity)localObject).findViewById(2131372744);
+      localObject = ((AVActivity)localObject).findViewById(2131372770);
     } while ((localObject != null) && (((View)localObject).getVisibility() == 0));
     this.this$0.e(0);
   }

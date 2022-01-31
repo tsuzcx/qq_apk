@@ -1,31 +1,35 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.widget.RoundImageView;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aocp
-  implements anoi
+public class aocp
 {
-  aocp(aoco paramaoco) {}
+  private int a = 1;
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public static aocp a(String paramString)
   {
-    paramString2 = (List)aoco.a(this.a).get(paramString1);
-    if ((paramString2 != null) && (paramString2.size() > 0))
-    {
-      paramString2 = paramString2.iterator();
-      while (paramString2.hasNext())
-      {
-        aocs localaocs = (aocs)paramString2.next();
-        if ((localaocs != null) && (localaocs.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView != null) && (localaocs.jdField_a_of_type_Aoxp != null))
-        {
-          localaocs.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageBitmap(paramBitmap);
-          localaocs.jdField_a_of_type_Aoxp.c(true);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteRecentConfBean", 2, String.format("parse content=%s", new Object[] { paramString }));
     }
-    aoco.a(this.a).remove(paramString1);
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      try
+      {
+        aocp localaocp = new aocp();
+        localaocp.a = new JSONObject(paramString).getInt("ifrecent");
+        return localaocp;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ColorNoteRecentConfBean", 2, "ColorNoteRecentConfBean parse err: ", paramString);
+    return null;
+  }
+  
+  public boolean a()
+  {
+    return this.a == 1;
   }
 }
 

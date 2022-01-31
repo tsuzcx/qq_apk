@@ -14,8 +14,8 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import azgq;
-import bcwh;
+import azkz;
+import bdaq;
 import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 import com.tencent.biz.subscribe.event.FollowUpdateEvent;
 import com.tencent.biz.subscribe.event.SimpleBaseEvent;
@@ -24,20 +24,20 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
-import xxd;
-import xxk;
-import xyc;
-import xyd;
-import xye;
-import yej;
-import yel;
-import ygy;
-import yhi;
-import yvu;
+import ybm;
+import ybt;
+import ycl;
+import ycm;
+import ycn;
+import yiw;
+import yiy;
+import yll;
+import ylv;
+import zaj;
 
 public class RecommendBannerFeedItemView
   extends RelativeLayout
-  implements View.OnClickListener, View.OnLongClickListener, yel
+  implements View.OnClickListener, View.OnLongClickListener, yiy
 {
   private int jdField_a_of_type_Int;
   private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
@@ -67,48 +67,41 @@ public class RecommendBannerFeedItemView
     a(paramContext);
   }
   
-  public ArrayList<Class> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(FollowUpdateEvent.class);
-    return localArrayList;
-  }
-  
   protected void a(Context paramContext)
   {
-    inflate(paramContext, 2131558730, this);
-    setId(2131364072);
-    setMinimumHeight(bcwh.a(paramContext, 213.0F));
-    setPadding(bcwh.a(paramContext, 6.0F), bcwh.a(paramContext, 10.0F), bcwh.a(paramContext, 6.0F), bcwh.a(paramContext, 20.0F));
+    inflate(paramContext, 2131558729, this);
+    setId(2131364074);
+    setMinimumHeight(bdaq.a(paramContext, 213.0F));
+    setPadding(bdaq.a(paramContext, 6.0F), bdaq.a(paramContext, 10.0F), bdaq.a(paramContext, 6.0F), bdaq.a(paramContext, 20.0F));
     setWillNotDraw(false);
     setLayerType(1, null);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131364879));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131364881));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(ImmersiveUtils.a(6.0F));
     this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131362973));
     this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(ImmersiveUtils.a(24.0F));
     this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setBorder(true);
     this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setColor(-1);
     this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setBorderWidth(ImmersiveUtils.a(2.0F));
-    this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getLayoutParams().width = azgq.a(26.0F);
-    this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getLayoutParams().height = azgq.a(26.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370958));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365102));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAddFollowTextView = ((AddFollowTextView)findViewById(2131366644));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAddFollowTextView.setItemPreClickListener(new xyc(this));
+    this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getLayoutParams().width = azkz.a(26.0F);
+    this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getLayoutParams().height = azkz.a(26.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370977));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365104));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAddFollowTextView = ((AddFollowTextView)findViewById(2131366650));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAddFollowTextView.setItemPreClickListener(new ycl(this));
     setOnClickListener(this);
     setOnLongClickListener(this);
   }
   
-  public void a(SimpleBaseEvent paramSimpleBaseEvent)
+  public ArrayList<Class> getEventClass()
   {
-    if (((paramSimpleBaseEvent instanceof FollowUpdateEvent)) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) && (TextUtils.equals(((FollowUpdateEvent)paramSimpleBaseEvent).useId, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()))) {
-      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.followState.set(((FollowUpdateEvent)paramSimpleBaseEvent).followStatus);
-    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(FollowUpdateEvent.class);
+    return localArrayList;
   }
   
   protected void onAttachedToWindow()
   {
-    yej.a().a(this);
+    yiw.a().a(this);
     super.onAttachedToWindow();
   }
   
@@ -119,13 +112,13 @@ public class RecommendBannerFeedItemView
     default: 
       return;
     }
-    xxk.a(null, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-    yvu.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_page", "recom_head_b", 0, 0, new String[] { "", this.jdField_a_of_type_Int + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+    ybt.a(null, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    zaj.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_page", "recom_head_b", 0, 0, new String[] { "", this.jdField_a_of_type_Int + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
   }
   
   protected void onDetachedFromWindow()
   {
-    yej.a().b(this);
+    yiw.a().b(this);
     super.onDetachedFromWindow();
   }
   
@@ -145,10 +138,10 @@ public class RecommendBannerFeedItemView
     {
       if (!this.jdField_b_of_type_Boolean)
       {
-        i2 = bcwh.a(getContext(), 5.0F);
-        localPaint.setShadowLayer(bcwh.a(getContext(), 15.0F), 0, i2, 436207616);
+        i2 = bdaq.a(getContext(), 5.0F);
+        localPaint.setShadowLayer(bdaq.a(getContext(), 15.0F), 0, i2, 436207616);
       }
-      int i2 = bcwh.a(getContext(), 6.0F);
+      int i2 = bdaq.a(getContext(), 6.0F);
       paramCanvas.drawRoundRect(new RectF(i, j, k - m, n - i1), i2, i2, localPaint);
       super.onDraw(paramCanvas);
       return;
@@ -165,9 +158,16 @@ public class RecommendBannerFeedItemView
     {
       return false;
     } while (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null);
-    ygy.a(getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, new xyd(this), new xye(this));
-    yvu.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_page", "recom_remove", 0, 0, new String[] { "", this.jdField_a_of_type_Int + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+    yll.a(getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, new ycm(this), new ycn(this));
+    zaj.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_page", "recom_remove", 0, 0, new String[] { "", this.jdField_a_of_type_Int + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
     return true;
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if (((paramSimpleBaseEvent instanceof FollowUpdateEvent)) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) && (TextUtils.equals(((FollowUpdateEvent)paramSimpleBaseEvent).useId, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()))) {
+      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.followState.set(((FollowUpdateEvent)paramSimpleBaseEvent).followStatus);
+    }
   }
   
   public void setData(CertifiedAccountMeta.StFeed paramStFeed, int paramInt)
@@ -178,12 +178,12 @@ public class RecommendBannerFeedItemView
     }
     this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
     this.jdField_a_of_type_Int = paramInt;
-    xxd.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.icon.get(), this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView);
+    ybm.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.icon.get(), this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get());
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get());
     if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.width.get() > this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.height.get())
     {
-      yhi.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.url.get(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView);
+      ylv.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.url.get(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView);
       if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.followState.get() != 1) {
         break label294;
       }
@@ -191,9 +191,9 @@ public class RecommendBannerFeedItemView
     }
     for (;;)
     {
-      yvu.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_page", "recom_exp_b", 0, 0, new String[] { "", this.jdField_a_of_type_Int + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+      zaj.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_page", "recom_exp_b", 0, 0, new String[] { "", this.jdField_a_of_type_Int + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
       return;
-      xxd.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.url.get(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView);
+      ybm.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.url.get(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView);
       break;
       label294:
       this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAddFollowTextView.setVisibility(0);

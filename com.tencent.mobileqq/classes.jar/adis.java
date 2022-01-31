@@ -1,20 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.util.Pair;
+import android.view.View;
+import com.tencent.mobileqq.activity.MainFragment;
+import java.util.List;
 
 public class adis
-  implements DialogInterface.OnClickListener
+  implements bhuk
 {
-  public adis(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public adis(MainFragment paramMainFragment, List paramList, bhuf parambhuf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "showRecommendDialog confirm clicked!");
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.e();
+    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return;
     }
-    PhoneUnityBindInfoActivity.c(this.a);
-    azmj.b(this.a.app, "dc00898", "", "", "0X800A604", "0X800A604", 0, 0, "", "", "", "");
+    try
+    {
+      MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (adiz)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      paramView.printStackTrace();
+    }
   }
 }
 

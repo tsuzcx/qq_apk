@@ -1,22 +1,7 @@
-public class aohn
-  extends aohi
-{
-  private aoih a;
-  
-  public aohn(String paramString, aoih paramaoih)
-  {
-    super(paramString);
-    this.a = paramaoih;
-  }
-  
-  public aoih a()
-  {
-    return this.a;
-  }
-}
+public class aohn {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohn
  * JD-Core Version:    0.7.0.1
  */

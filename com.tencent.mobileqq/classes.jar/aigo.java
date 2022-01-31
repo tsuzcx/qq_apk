@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class aigo
-  implements View.OnClickListener
+class aigo
+  implements Comparator<aihj>
 {
-  public aigo(BaseActivityView paramBaseActivityView) {}
+  aigo(aign paramaign) {}
   
-  public void onClick(View paramView)
+  public int a(aihj paramaihj1, aihj paramaihj2)
   {
-    this.a.f();
+    return (int)(paramaihj2.a.time - paramaihj1.a.time);
   }
 }
 

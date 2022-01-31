@@ -1,15 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
-public class aije
-  implements DialogInterface.OnCancelListener
+class aije
+  implements Comparator<RecentBaseData>
 {
-  public aije(CameraPreviewActivity paramCameraPreviewActivity) {}
+  aije(aijd paramaijd) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
   {
-    this.a.a = null;
+    int j = 0;
+    int i = j;
+    long l1;
+    long l2;
+    if ((paramRecentBaseData1 instanceof RecentUserBaseData))
+    {
+      i = j;
+      if ((paramRecentBaseData2 instanceof RecentUserBaseData))
+      {
+        paramRecentBaseData1 = (RecentUserBaseData)paramRecentBaseData1;
+        paramRecentBaseData2 = (RecentUserBaseData)paramRecentBaseData2;
+        l1 = Math.max(paramRecentBaseData1.mUser.lastmsgtime, paramRecentBaseData1.mUser.lastmsgdrafttime);
+        l2 = Math.max(paramRecentBaseData2.mUser.lastmsgtime, paramRecentBaseData2.mUser.lastmsgdrafttime);
+        if (l1 <= l2) {
+          break label83;
+        }
+        i = -1;
+      }
+    }
+    label83:
+    do
+    {
+      return i;
+      i = j;
+    } while (l1 >= l2);
+    return 1;
   }
 }
 

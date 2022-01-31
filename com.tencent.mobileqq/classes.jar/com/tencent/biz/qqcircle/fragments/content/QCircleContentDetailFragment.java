@@ -1,6 +1,7 @@
 package com.tencent.biz.qqcircle.fragments.content;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -10,11 +11,12 @@ import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
 import java.util.ArrayList;
 import java.util.List;
 import tql;
-import tsv;
+import tra;
 import ttl;
-import tvg;
-import txe;
-import tym;
+import tua;
+import tvv;
+import txz;
+import tzy;
 
 public class QCircleContentDetailFragment
   extends QCircleBaseFragment
@@ -24,57 +26,72 @@ public class QCircleContentDetailFragment
     return 2131560525;
   }
   
-  public List<tvg> a()
+  public String a()
+  {
+    return "QCircleContentDetailFragment";
+  }
+  
+  public List<tvv> a()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new txe());
-    localArrayList.add(new tsv());
+    localArrayList.add(new txz());
     localArrayList.add(new ttl());
+    localArrayList.add(new tua());
     return localArrayList;
   }
   
-  public void a()
-  {
-    tym.a().a(57);
-  }
+  public void a() {}
   
   public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
+    tra.a(getActivity(), false);
   }
   
   public boolean a()
   {
-    return true;
+    return false;
+  }
+  
+  public int b()
+  {
+    return getResources().getColor(2131167140);
+  }
+  
+  public boolean isWrapContent()
+  {
+    return false;
   }
   
   public boolean needImmersive()
   {
-    return false;
+    return true;
   }
   
   public boolean needStatusTrans()
   {
-    return false;
+    return true;
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    if (tym.a().b(57)) {
-      tym.a().a(getActivity().getIntent());
+    if (tzy.a().b(57)) {
+      tzy.a().a(getActivity().getIntent());
     }
   }
   
   public void onDestroy()
   {
-    super.onDestroy();
+    tra.a(getActivity());
     tql.a();
+    super.onDestroy();
   }
   
   public void onDetach()
   {
     super.onDetach();
+    tzy.a().a(57);
   }
 }
 

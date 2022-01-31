@@ -1,15 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.haoliyou.JefsClass.8;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 
-public class aslz
-  implements DialogInterface.OnClickListener
+class aslz
+  implements View.OnClickListener
 {
-  public aslz(JefsClass.8 param8) {}
+  aslz(asly paramasly, FeedsItemData paramFeedsItemData) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl)) {
+      if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl.startsWith("mqqapi://miniapp/")) {
+        MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Asly.a, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl, 2016, null);
+      }
+    }
+    while (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.groupId))
+    {
+      return;
+      paramView = new Intent(this.jdField_a_of_type_Asly.a, QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl);
+      this.jdField_a_of_type_Asly.a.startActivity(paramView);
+      return;
+    }
+    asnl.a(this.jdField_a_of_type_Asly.a, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.groupId);
   }
 }
 

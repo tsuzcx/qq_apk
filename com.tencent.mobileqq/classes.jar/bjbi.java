@@ -1,6 +1,14 @@
-public abstract interface bjbi
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
+
+public final class bjbi
 {
-  public abstract void a();
+  private static SharedPreferences b(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("reader_user" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
+  }
 }
 
 

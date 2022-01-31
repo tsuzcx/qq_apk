@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import alpo;
+import alud;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -19,11 +19,11 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.FrameLayout;
-import bcwh;
-import bdbt;
-import bdvr;
-import bhou;
-import bjxj;
+import bdaq;
+import bdgc;
+import beaa;
+import bhtb;
+import bkbq;
 import com.tencent.biz.pubaccount.VideoAdInfo;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
@@ -310,7 +310,7 @@ public class VideoFeedsRecommendFragment
     this.jdField_d_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("VIDEO_FROM_TYPE", -1);
     this.jdField_b_of_type_Long = this.jdField_a_of_type_AndroidOsBundle.getLong("VIDEO_FROM_POLYMERIC_TOPIC_ID", -1L);
     this.jdField_c_of_type_Long = this.jdField_a_of_type_AndroidOsBundle.getLong("VIDEO_FROM_POLYMERIC_PUIN", 0L);
-    this.jdField_f_of_type_Boolean = bjxj.e(this.jdField_d_of_type_Int);
+    this.jdField_f_of_type_Boolean = bkbq.e(this.jdField_d_of_type_Int);
     this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidOsBundle.getLong("VIDEO_PLAY_POSITION", 0L);
     this.h = this.jdField_a_of_type_AndroidOsBundle.getBoolean("VIDEO_SHOW_COMMENT", false);
     label242:
@@ -333,10 +333,10 @@ public class VideoFeedsRecommendFragment
       this.jdField_b_of_type_Boolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean("KEY_IS_WEISHI_MODE", false);
       this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("VIDEO_COMMON_DATA");
       this.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_AndroidOsBundle.getByteArray("VIDEO_BUSINESS_INFO");
-      this.n = bjxj.d(this.jdField_d_of_type_Int);
+      this.n = bkbq.d(this.jdField_d_of_type_Int);
       this.jdField_e_of_type_Int = ors.e();
       this.jdField_f_of_type_Int = ntd.a();
-      if (bdvr.a() != 1) {
+      if (beaa.a() != 1) {
         break label685;
       }
       bool1 = true;
@@ -345,7 +345,7 @@ public class VideoFeedsRecommendFragment
       this.o = this.jdField_a_of_type_AndroidOsBundle.getBoolean("key_is_from_floating_window");
       this.jdField_a_of_type_Pen = new rgc(this, null);
       if (jdField_a_of_type_Int <= 0) {
-        jdField_a_of_type_Int = bcwh.a(getActivity(), 120.0F);
+        jdField_a_of_type_Int = bdaq.a(getActivity(), 120.0F);
       }
       this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = ((VideoInfo)this.jdField_a_of_type_AndroidOsBundle.getParcelable("ARGS_REUQEST_VIDEO_INFO"));
       localArrayList = new ArrayList();
@@ -386,10 +386,10 @@ public class VideoFeedsRecommendFragment
   
   private void k()
   {
-    if (bhou.d()) {
+    if (bhtb.d()) {
       getActivity().getWindow().setFlags(16777216, 16777216);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView = ((VideoFeedsRecyclerView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379755));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView = ((VideoFeedsRecyclerView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379813));
     VideoFeedsAccessibilityHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setScrollable(false);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setExtraFooterCount(0);
@@ -433,7 +433,7 @@ public class VideoFeedsRecommendFragment
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.addOnScrollListener(this.jdField_a_of_type_Rgk);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.addOnItemTouchListener(this.jdField_a_of_type_Rgk);
       this.jdField_a_of_type_Rcc = new rga(this, null);
-      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364586));
+      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364588));
       this.jdField_a_of_type_Rby = new rby(getActivity(), getChildFragmentManager(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView, this.jdField_a_of_type_Raw, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager, this.jdField_b_of_type_AndroidViewViewGroup);
       this.jdField_a_of_type_Rby.b();
       this.jdField_a_of_type_Rby.a((VideoInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0));
@@ -522,7 +522,7 @@ public class VideoFeedsRecommendFragment
     VideoInfo localVideoInfo = (VideoInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0);
     b(localVideoInfo);
     if ((localVideoInfo.jdField_b_of_type_Boolean) && (TextUtils.isEmpty(localVideoInfo.k))) {
-      localVideoInfo.k = bdbt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localVideoInfo.j, true);
+      localVideoInfo.k = bdgc.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localVideoInfo.j, true);
     }
     this.jdField_a_of_type_Qzw = new qzw(this.jdField_a_of_type_Raw, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView, this.jdField_a_of_type_AndroidOsHandler);
     this.jdField_a_of_type_Qzw.a(this.n);
@@ -543,7 +543,7 @@ public class VideoFeedsRecommendFragment
     do
     {
       return;
-      VideoFeedsPlayActivity.a(alpo.a(2131716607) + this.g);
+      VideoFeedsPlayActivity.a(alud.a(2131716619) + this.g);
     } while (this.g);
     p();
     this.jdField_a_of_type_Raw.d(1);
@@ -1163,7 +1163,7 @@ public class VideoFeedsRecommendFragment
       this.jdField_a_of_type_Raw.b(paramIntent);
       return;
     } while (paramInt2 != -1);
-    QQToast.a(getActivity(), -1, getString(2131700043), 0).b(getActivity().getTitleBarHeight());
+    QQToast.a(getActivity(), -1, getString(2131700055), 0).b(getActivity().getTitleBarHeight());
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
@@ -1178,7 +1178,7 @@ public class VideoFeedsRecommendFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)rha.a(2131560188, true, new ViewGroup.LayoutParams(-1, -1)));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)rha.a(2131560187, true, new ViewGroup.LayoutParams(-1, -1)));
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)ors.a());
     j();
     k();

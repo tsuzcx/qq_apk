@@ -6,7 +6,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import bdda;
+import bdhj;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
@@ -23,7 +23,7 @@ public class ReadInJoyHeadImageView
   extends KandianUrlImageView
   implements IView, pgr
 {
-  private static final Drawable b = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841396));
+  private static final Drawable b = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841397));
   private long a;
   
   public ReadInJoyHeadImageView(Context paramContext)
@@ -47,7 +47,7 @@ public class ReadInJoyHeadImageView
   private void a()
   {
     setRound(true);
-    a(bdda.a());
+    a(bdhj.a());
     this.jdField_a_of_type_Sfd.a(false);
   }
   

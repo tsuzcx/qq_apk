@@ -1,8 +1,8 @@
 package com.tencent.biz.qqcircle.fragments;
 
-import alpo;
+import alud;
 import android.arch.lifecycle.MutableLiveData;
-import com.tencent.biz.qqcircle.component.ComponentPageView;
+import com.tencent.biz.qqcircle.component.QCircleComponentPageView;
 import com.tencent.biz.qqcircle.widgets.QCircleStatusView;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
@@ -13,92 +13,92 @@ import feedcloud.FeedCloudMeta.StFeed;
 import java.util.ArrayList;
 import java.util.List;
 import tra;
-import trl;
-import tvm;
-import twn;
-import tzf;
-import tzm;
-import yeb;
+import trq;
+import tvw;
+import txe;
+import ubq;
+import ubz;
+import yii;
 
 public class QCirclePersonalDynamicFragment
   extends QCirclePersonalBaseBottomFragment
 {
-  private void a(tzm<List<FeedCloudMeta.StFeed>> paramtzm)
+  private void a(ubz<List<FeedCloudMeta.StFeed>> paramubz)
   {
-    if (paramtzm == null)
+    if (paramubz == null)
     {
       QLog.e(jdField_a_of_type_JavaLangString, 1, "handleFeedDataRsp return unexpected data！");
       return;
     }
-    boolean bool = paramtzm.a();
+    boolean bool = paramubz.a();
     int i;
-    switch (paramtzm.a())
+    switch (paramubz.a())
     {
     default: 
       i = 0;
     }
-    while ((i != 0) && (this.jdField_a_of_type_Trl != null))
+    while ((i != 0) && (this.jdField_a_of_type_Trq != null))
     {
-      this.jdField_a_of_type_Trl.a(true, bool);
+      this.jdField_a_of_type_Trq.a(true, bool);
       return;
       QLog.e(jdField_a_of_type_JavaLangString, 1, "handleFeedDataRsp() return empty data");
-      if ((paramtzm.b()) && (this.jdField_a_of_type_Trl != null) && (this.jdField_a_of_type_Trl.getItemCount() > 0))
+      if ((paramubz.b()) && (this.jdField_a_of_type_Trq != null) && (this.jdField_a_of_type_Trq.getItemCount() > 0))
       {
-        this.jdField_a_of_type_Trl.a().a(bool);
+        this.jdField_a_of_type_Trq.getLoadInfo().a(bool);
         i = 1;
       }
       else
       {
-        if ((this.jdField_a_of_type_Tvm != null) && (this.jdField_a_of_type_Trl != null) && (!this.jdField_a_of_type_Trl.a()))
+        if ((this.jdField_a_of_type_Tvw != null) && (this.jdField_a_of_type_Trq != null) && (!this.jdField_a_of_type_Trq.a()))
         {
           if (tra.a(this.b)) {}
-          for (paramtzm = getString(2131698301);; paramtzm = getString(2131698303))
+          for (paramubz = getString(2131698304);; paramubz = getString(2131698306))
           {
-            this.jdField_a_of_type_Tvm.a().a().b(paramtzm);
+            ((QCircleStatusView)this.jdField_a_of_type_Tvw.a().a()).b(paramubz);
             f();
-            this.jdField_a_of_type_Trl.a();
-            this.jdField_a_of_type_Trl.notifyDataSetChanged();
+            this.jdField_a_of_type_Trq.clearData();
+            this.jdField_a_of_type_Trq.notifyDataSetChanged();
             i = 1;
             break;
           }
-          if (paramtzm.a() == null) {}
-          for (paramtzm = alpo.a(2131720466);; paramtzm = paramtzm.a())
+          if (paramubz.a() == null) {}
+          for (paramubz = alud.a(2131720478);; paramubz = paramubz.a())
           {
-            QLog.e(jdField_a_of_type_JavaLangString, 1, "handleFeedDataRsp() return error！errMsg:" + paramtzm);
-            if ((this.jdField_a_of_type_Trl == null) || (this.jdField_a_of_type_Trl.getItemCount() <= 0)) {
-              break label298;
+            QLog.e(jdField_a_of_type_JavaLangString, 1, "handleFeedDataRsp() return error！errMsg:" + paramubz);
+            if ((this.jdField_a_of_type_Trq == null) || (this.jdField_a_of_type_Trq.getItemCount() <= 0)) {
+              break label301;
             }
-            QQToast.a(BaseApplicationImpl.getContext(), 1, paramtzm, 1).a();
+            QQToast.a(BaseApplicationImpl.getContext(), 1, paramubz, 1).a();
             i = 1;
             break;
           }
-          label298:
-          if (this.jdField_a_of_type_Tvm != null)
+          label301:
+          if (this.jdField_a_of_type_Tvw != null)
           {
-            this.jdField_a_of_type_Tvm.a().a().c(paramtzm);
+            ((QCircleStatusView)this.jdField_a_of_type_Tvw.a().a()).c(paramubz);
             f();
             i = 1;
             continue;
             i = 0;
             continue;
-            ArrayList localArrayList = (ArrayList)paramtzm.a();
-            if (this.jdField_a_of_type_Trl != null)
+            ArrayList localArrayList = (ArrayList)paramubz.a();
+            if (this.jdField_a_of_type_Trq != null)
             {
-              if (paramtzm.b()) {
-                this.jdField_a_of_type_Trl.a(localArrayList);
+              if (paramubz.b()) {
+                this.jdField_a_of_type_Trq.addAll(localArrayList);
               }
               for (;;)
               {
-                if (this.jdField_a_of_type_Tvm != null)
+                if (this.jdField_a_of_type_Tvw != null)
                 {
-                  this.jdField_a_of_type_Tvm.a().a().setVisibility(8);
-                  this.jdField_a_of_type_Tvm.a().a().setVisibility(0);
+                  ((QCircleStatusView)this.jdField_a_of_type_Tvw.a().a()).setVisibility(8);
+                  this.jdField_a_of_type_Tvw.a().a().setVisibility(0);
                 }
-                this.jdField_a_of_type_Trl.a().a(bool);
+                this.jdField_a_of_type_Trq.getLoadInfo().a(bool);
                 i = 1;
                 break;
-                this.jdField_a_of_type_Trl.a(localArrayList);
-                this.jdField_a_of_type_Trl.Q_();
+                this.jdField_a_of_type_Trq.setDatas(localArrayList);
+                this.jdField_a_of_type_Trq.a();
               }
             }
           }
@@ -110,22 +110,23 @@ public class QCirclePersonalDynamicFragment
   
   protected void a()
   {
-    if (this.jdField_a_of_type_Trl != null)
+    if (this.jdField_a_of_type_Trq != null)
     {
       localObject = new ExtraTypeInfo();
       ((ExtraTypeInfo)localObject).pageType = 8;
-      this.jdField_a_of_type_Trl.a((ExtraTypeInfo)localObject);
+      this.jdField_a_of_type_Trq.a((ExtraTypeInfo)localObject);
     }
     if (a() != null)
     {
-      this.jdField_a_of_type_Tzf = ((tzf)a(a(), null, tzf.class));
-      this.jdField_a_of_type_Tzf.b().observe(a(), new twn(this));
+      this.jdField_a_of_type_Ubq = ((ubq)a(a(), null, ubq.class));
+      this.jdField_a_of_type_Ubq.b().observe(a(), new txe(this));
     }
     if (tra.a(this.b)) {}
-    for (Object localObject = getString(2131698301);; localObject = getString(2131698303))
+    for (Object localObject = getString(2131698304);; localObject = getString(2131698306))
     {
-      this.jdField_a_of_type_Tvm.a().a().b((String)localObject);
-      this.jdField_a_of_type_Tvm.a().a().setVisibility(8);
+      ((QCircleStatusView)this.jdField_a_of_type_Tvw.a().a()).b((String)localObject);
+      ((QCircleStatusView)this.jdField_a_of_type_Tvw.a().a()).setVisibility(8);
+      this.jdField_a_of_type_Tvw.a().a().setNestedScrollingEnabled(true);
       return;
     }
   }
@@ -137,8 +138,8 @@ public class QCirclePersonalDynamicFragment
   
   protected void b()
   {
-    if (this.jdField_a_of_type_Tzf != null) {
-      this.jdField_a_of_type_Tzf.a(this.b);
+    if (this.jdField_a_of_type_Ubq != null) {
+      this.jdField_a_of_type_Ubq.b(this.b);
     }
   }
 }

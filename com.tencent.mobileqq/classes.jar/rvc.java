@@ -3,7 +3,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView;
 import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class rvc
-  implements azzx
+  implements baeg
 {
   public rvc(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView) {}
   

@@ -1,169 +1,113 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class bkif
+class bkif
+  implements bkid
 {
-  private static volatile long jdField_a_of_type_Long;
-  private static bdfq jdField_a_of_type_Bdfq;
-  private static bkij jdField_a_of_type_Bkij = new bkij(Looper.getMainLooper());
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "TroopFileDetailBrowserActivity", "FMActivity", "FileBrowserActivity", "ChatHistoryFileActivity", "FileAssistantActivity" };
+  private IBinder a;
   
-  public static void a()
+  bkif(IBinder paramIBinder)
   {
-    Message localMessage = jdField_a_of_type_Bkij.obtainMessage();
-    localMessage.what = 3001;
-    jdField_a_of_type_Bkij.sendMessage(localMessage);
+    this.a = paramIBinder;
   }
   
-  public static void a(Activity paramActivity, int paramInt)
+  public void a(bkig parambkig)
   {
-    if (a(paramInt)) {
-      b(paramActivity, paramInt);
-    }
-  }
-  
-  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
-  {
-    StringBuffer localStringBuffer = new StringBuffer("https://jump.weiyun.com?from=3092");
-    if (paramString != null) {
-      localStringBuffer.append("&aid=").append(paramString);
-    }
-    paramString = new Intent();
-    paramString.setClass(BaseApplication.getContext(), QQBrowserActivity.class);
-    paramString.putExtra("url", localStringBuffer.toString());
-    if (paramBoolean)
+    IBinder localIBinder = null;
+    Parcel localParcel = Parcel.obtain();
+    try
     {
-      paramActivity.startActivityForResult(paramString, 2000);
+      localParcel.writeInterfaceToken("cooperation.wadl.ipc.IWadlService");
+      if (parambkig != null) {
+        localIBinder = parambkig.asBinder();
+      }
+      localParcel.writeStrongBinder(localIBinder);
+      this.a.transact(2, localParcel, null, 1);
       return;
     }
-    paramActivity.startActivity(paramString);
-  }
-  
-  private static boolean a()
-  {
-    if (jdField_a_of_type_Long == 0L) {}
-    long l;
-    do
+    finally
     {
-      return true;
-      l = SystemClock.uptimeMillis();
-    } while (jdField_a_of_type_Long + 4000L < l);
-    return false;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (c(paramInt)) || (b(paramInt));
-  }
-  
-  private static boolean a(Activity paramActivity)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    String[] arrayOfString;
-    int j;
-    int i;
-    if (paramActivity != null)
-    {
-      paramActivity = paramActivity.getClass().getName();
-      arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-      j = arrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
-      {
-        String str = arrayOfString[i];
-        if ((!TextUtils.isEmpty(paramActivity)) && (paramActivity.contains(str))) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
-      }
-      i += 1;
+      localParcel.recycle();
     }
   }
   
-  public static void b(Activity paramActivity, int paramInt)
+  /* Error */
+  public void a(java.lang.String paramString, android.os.Bundle paramBundle)
   {
-    QLog.d("OpenWeiyunVipHelper", 2, "showLimitDialog");
-    jdField_a_of_type_Bkij.removeMessages(3000);
-    Message localMessage = jdField_a_of_type_Bkij.obtainMessage();
-    localMessage.what = 3000;
-    localMessage.obj = paramActivity;
-    localMessage.arg1 = paramInt;
-    jdField_a_of_type_Bkij.sendMessageDelayed(localMessage, 1000L);
+    // Byte code:
+    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_3
+    //   4: aload_3
+    //   5: ldc 25
+    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_3
+    //   11: aload_1
+    //   12: invokevirtual 51	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   15: aload_2
+    //   16: ifnull +33 -> 49
+    //   19: aload_3
+    //   20: iconst_1
+    //   21: invokevirtual 55	android/os/Parcel:writeInt	(I)V
+    //   24: aload_2
+    //   25: aload_3
+    //   26: iconst_0
+    //   27: invokevirtual 61	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
+    //   30: aload_0
+    //   31: getfield 15	bkif:a	Landroid/os/IBinder;
+    //   34: iconst_1
+    //   35: aload_3
+    //   36: aconst_null
+    //   37: iconst_1
+    //   38: invokeinterface 44 5 0
+    //   43: pop
+    //   44: aload_3
+    //   45: invokevirtual 47	android/os/Parcel:recycle	()V
+    //   48: return
+    //   49: aload_3
+    //   50: iconst_0
+    //   51: invokevirtual 55	android/os/Parcel:writeInt	(I)V
+    //   54: goto -24 -> 30
+    //   57: astore_1
+    //   58: aload_3
+    //   59: invokevirtual 47	android/os/Parcel:recycle	()V
+    //   62: aload_1
+    //   63: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	64	0	this	bkif
+    //   0	64	1	paramString	java.lang.String
+    //   0	64	2	paramBundle	android.os.Bundle
+    //   3	56	3	localParcel	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   4	15	57	finally
+    //   19	30	57	finally
+    //   30	44	57	finally
+    //   49	54	57	finally
   }
   
-  public static void b(Activity paramActivity, String paramString, boolean paramBoolean)
+  public IBinder asBinder()
   {
-    paramString = String.format("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&aid=%s", new Object[] { paramString });
-    Intent localIntent = new Intent();
-    localIntent.setClass(BaseApplication.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    if (paramBoolean)
+    return this.a;
+  }
+  
+  public void b(bkig parambkig)
+  {
+    IBinder localIBinder = null;
+    Parcel localParcel = Parcel.obtain();
+    try
     {
-      paramActivity.startActivityForResult(localIntent, 2000);
+      localParcel.writeInterfaceToken("cooperation.wadl.ipc.IWadlService");
+      if (parambkig != null) {
+        localIBinder = parambkig.asBinder();
+      }
+      localParcel.writeStrongBinder(localIBinder);
+      this.a.transact(3, localParcel, null, 1);
       return;
     }
-    paramActivity.startActivity(localIntent);
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == 1053) || (paramInt == 22081);
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    return (paramInt == 1127) || (paramInt == 22000);
-  }
-  
-  private static void d(Activity paramActivity, int paramInt)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing()) || (paramActivity != BaseActivity.sTopActivity))
+    finally
     {
-      paramActivity = BaseActivity.sTopActivity;
-      if ((paramActivity != null) && (!paramActivity.isFinishing()) && (a(paramActivity))) {
-        break label44;
-      }
-    }
-    label44:
-    while (((jdField_a_of_type_Bdfq != null) && (jdField_a_of_type_Bdfq.isShowing())) || (!a()))
-    {
-      return;
-      break;
-    }
-    String str1;
-    if (b(paramInt))
-    {
-      str1 = BaseApplicationImpl.getContext().getString(2131692796);
-      if (!b(paramInt)) {
-        break label161;
-      }
-    }
-    label161:
-    for (String str2 = BaseApplicationImpl.getContext().getString(2131692789);; str2 = BaseApplicationImpl.getContext().getString(2131692792))
-    {
-      jdField_a_of_type_Bdfq = bdcd.a(paramActivity, 230, str1, str2, 2131692794, 2131692795, new bkig(paramInt, paramActivity), new bkih());
-      jdField_a_of_type_Bdfq.setOnDismissListener(new bkii());
-      jdField_a_of_type_Bdfq.show();
-      return;
-      str1 = BaseApplicationImpl.getContext().getString(2131692797);
-      break;
+      localParcel.recycle();
     }
   }
 }

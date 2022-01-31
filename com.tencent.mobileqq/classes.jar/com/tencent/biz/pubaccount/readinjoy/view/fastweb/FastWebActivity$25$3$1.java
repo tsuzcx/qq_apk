@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
 import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketPopupView;
 import ryq;
-import xee;
+import xin;
 
 class FastWebActivity$25$3$1
   implements Runnable
@@ -14,9 +14,9 @@ class FastWebActivity$25$3$1
   {
     int i = this.a.jdField_a_of_type_ArrayOfInt[0];
     int j = FastWebActivity.a(this.a.jdField_a_of_type_Ryq.a).getWidth() / 2;
-    int k = xee.b(this.a.jdField_a_of_type_Ryq.a, 13.0F);
+    int k = xin.b(this.a.jdField_a_of_type_Ryq.a, 13.0F);
     int m = this.a.jdField_a_of_type_ArrayOfInt[1];
-    int n = xee.b(this.a.jdField_a_of_type_Ryq.a, 3.0F);
+    int n = xin.b(this.a.jdField_a_of_type_Ryq.a, 3.0F);
     FastWebActivity.a(this.a.jdField_a_of_type_Ryq.a, FastWebActivity.a(this.a.jdField_a_of_type_Ryq.a), i - j + k, m + n, false, false, this.a.jdField_a_of_type_JavaLangString, RIJRedPacketManager.a().d());
   }
 }

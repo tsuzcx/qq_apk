@@ -1,40 +1,41 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
 
-class avkr
-  extends baua
+public abstract class avkr
 {
-  avkr(avkg paramavkg) {}
+  protected Context a;
+  protected View a;
   
-  public void handleMessage(Message paramMessage)
+  public avkr(Context paramContext)
   {
-    baoj localbaoj = (baoj)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    case 1004: 
-    default: 
-    case 1003: 
-      do
-      {
-        do
-        {
-          return;
-        } while (localbaoj.b != 8);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + baqs.a);
-        }
-      } while (avkg.a(this.a) == null);
-      avkg.a(this.a).a = baqs.a;
-      avkg.a(this.a);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
-    }
-    this.a.a.a();
-    this.a.a.b(alpo.a(2131707695));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
+  
+  protected abstract int a();
+  
+  public View a()
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      return this.jdField_a_of_type_AndroidViewView;
+    }
+    int i = a();
+    if (i > 0)
+    {
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, null);
+      a(this.jdField_a_of_type_AndroidViewView);
+    }
+    for (;;)
+    {
+      return this.jdField_a_of_type_AndroidViewView;
+      this.jdField_a_of_type_AndroidViewView = null;
+    }
+  }
+  
+  protected void a(View paramView) {}
+  
+  public abstract void a(NearbyPeopleCard paramNearbyPeopleCard);
 }
 
 

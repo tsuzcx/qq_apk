@@ -1,13 +1,47 @@
 import android.graphics.Bitmap;
-import android.view.animation.Animation;
 
-public abstract interface xcf
+public class xcf
+  extends xcs
 {
-  public abstract void a(Animation paramAnimation);
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  public String a;
+  public boolean a;
+  private long jdField_b_of_type_Long;
+  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  public String b;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
+  private boolean d;
   
-  public abstract Bitmap b();
+  public xcf(int paramInt, Bitmap paramBitmap)
+  {
+    super(paramInt, paramBitmap);
+    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
   
-  public abstract void b(Animation paramAnimation);
+  public xcf a(Bitmap paramBitmap)
+  {
+    paramBitmap = new xcf(this.jdField_c_of_type_Int, paramBitmap);
+    paramBitmap.jdField_b_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    paramBitmap.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    paramBitmap.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+    paramBitmap.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    paramBitmap.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
+    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    paramBitmap.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramBitmap.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    this.jdField_c_of_type_Boolean = false;
+    this.d = false;
+    this.jdField_a_of_type_Boolean = false;
+    return paramBitmap;
+  }
+  
+  public String toString()
+  {
+    return "Mp4VideoFragmentInfo{index=" + this.jdField_c_of_type_Int + ", bitmap=" + this.jdField_c_of_type_AndroidGraphicsBitmap + ", startTime=" + this.jdField_a_of_type_Long + ", endTime=" + this.jdField_b_of_type_Long + ", mRevertFailed=" + this.jdField_a_of_type_Boolean + '}';
+  }
 }
 
 

@@ -1,22 +1,6 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-
-public class ayfc
-  extends ClickableSpan
+public abstract interface ayfc
 {
-  public ayfc(UniteSearchActivity paramUniteSearchActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.openContextMenu(this.a.a);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
-  }
+  public abstract void k();
 }
 
 

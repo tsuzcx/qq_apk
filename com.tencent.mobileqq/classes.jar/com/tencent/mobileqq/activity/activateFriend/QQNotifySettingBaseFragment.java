@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import Wallet.AcsGetMsgRsp;
-import aeiz;
-import aejd;
-import aeje;
-import aejf;
-import aejt;
-import aejw;
-import aejx;
-import alpo;
+import aeno;
+import aens;
+import aent;
+import aenu;
+import aeoi;
+import aeol;
+import aeom;
+import alud;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -29,12 +29,12 @@ import mqq.app.AppRuntime;
 
 public abstract class QQNotifySettingBaseFragment
   extends PublicBaseFragment
-  implements aejt, View.OnClickListener
+  implements aeoi, View.OnClickListener
 {
   private static final String b;
   protected int a;
-  private aejd jdField_a_of_type_Aejd;
-  private aejx jdField_a_of_type_Aejx;
+  private aens jdField_a_of_type_Aens;
+  private aeom jdField_a_of_type_Aeom;
   private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   protected View a;
   protected Button a;
@@ -69,12 +69,12 @@ public abstract class QQNotifySettingBaseFragment
   
   private void b()
   {
-    aejw.b(this.c, this.e, new aeje(this));
+    aeol.b(this.c, this.e, new aent(this));
   }
   
   private void c()
   {
-    aejw.a(this.c, this.e, new aejf(this));
+    aeol.a(this.c, this.e, new aenu(this));
   }
   
   public abstract View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup);
@@ -101,14 +101,14 @@ public abstract class QQNotifySettingBaseFragment
       if (l != 0L) {
         break label54;
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(alpo.a(2131710955));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131710967));
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
       return;
       label54:
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(aeiz.a(l * 1000L, "yyyy-MM-dd HH:mm:ss"));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(aeno.a(l * 1000L, "yyyy-MM-dd HH:mm:ss"));
     }
     label74:
     a();
@@ -138,8 +138,8 @@ public abstract class QQNotifySettingBaseFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.jdField_a_of_type_Aejd = new aejd(getActivity());
-    this.jdField_a_of_type_Aejd.show();
+    this.jdField_a_of_type_Aens = new aens(getActivity());
+    this.jdField_a_of_type_Aens.show();
     this.jdField_a_of_type_CooperationQwalletPluginFakeUrl = new FakeUrl(getActivity());
     b();
   }
@@ -149,7 +149,7 @@ public abstract class QQNotifySettingBaseFragment
     switch (paramView.getId())
     {
     default: 
-    case 2131363710: 
+    case 2131363712: 
       do
       {
         return;
@@ -168,30 +168,30 @@ public abstract class QQNotifySettingBaseFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    aejw.a(a());
+    aeol.a(a());
     this.jdField_a_of_type_AndroidViewView = a(paramLayoutInflater, paramViewGroup);
-    new ImmersionBar(getActivity(), 0, this.jdField_a_of_type_AndroidViewView.findViewById(2131376953));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378851));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378852));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363710));
+    new ImmersionBar(getActivity(), 0, this.jdField_a_of_type_AndroidViewView.findViewById(2131377007));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378908));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378909));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363712));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.c = getArguments().getString("key_msgid");
     this.d = getArguments().getString("key_busid");
     this.e = getArguments().getString("key_domain");
-    this.jdField_a_of_type_Aejx = new aejx(a());
+    this.jdField_a_of_type_Aeom = new aeom(a());
     return this.jdField_a_of_type_AndroidViewView;
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    if ((this.jdField_a_of_type_Aejd != null) && (this.jdField_a_of_type_Aejd.isShowing())) {
-      this.jdField_a_of_type_Aejd.dismiss();
+    if ((this.jdField_a_of_type_Aens != null) && (this.jdField_a_of_type_Aens.isShowing())) {
+      this.jdField_a_of_type_Aens.dismiss();
     }
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    aejw.a();
+    aeol.a();
   }
 }
 

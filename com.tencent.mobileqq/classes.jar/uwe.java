@@ -1,37 +1,44 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class uwe
-  extends QQUIEventReceiver<uvz, uym>
+class uwe
+  implements urr<vfk, vfm>
 {
-  public uwe(@NonNull uvz paramuvz)
-  {
-    super(paramuvz);
-  }
+  uwe(uwd paramuwd) {}
   
-  public void a(@NonNull uvz paramuvz, @NonNull uym paramuym)
+  public void a(@NonNull vfk paramvfk, @Nullable vfm paramvfm, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (paramuym.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    paramvfk = paramvfk.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramvfk.hasNext())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("zivonchen", 2, "MsgTabStoryNodeDelegate#GetGroupInfoEventReceiver isSuccess sharegroupInfo: " + paramuym.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
-      }
-      if (paramuym.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null) {
-        paramuvz.a(paramuvz.a.a(8, paramuym.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.shareGroupId));
-      }
+      localObject = (String)paramvfk.next();
+      uwd.a(this.a).remove(localObject);
     }
-    while (!QLog.isColorLevel()) {
+    paramvfk = new uwf();
+    paramvfk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    if ((paramErrorMessage.isFail()) || (paramvfm == null))
+    {
+      wxe.d("Q.qqstory:TagManager", "request fail for get tag request");
+      umc.a().dispatch(paramvfk);
       return;
     }
-    QLog.i("zivonchen", 2, "MsgTabStoryNodeDelegate#GetGroupInfoEventReceiver errorInfo: " + paramuym.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", sharegroupInfo = " + paramuym.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uym.class;
+    paramErrorMessage = paramvfk.jdField_a_of_type_JavaUtilMap;
+    Object localObject = (uwd)uwa.a(27);
+    paramvfm = paramvfm.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramvfm.hasNext())
+    {
+      vfl localvfl = (vfl)paramvfm.next();
+      ((uwd)localObject).a(localvfl.jdField_a_of_type_JavaLangString, localvfl.jdField_a_of_type_JavaUtilList);
+      paramErrorMessage.put(localvfl.jdField_a_of_type_JavaLangString, localvfl);
+      wxe.a("Q.qqstory:TagManager", "save feedId :%s , %s", localvfl.jdField_a_of_type_JavaLangString, localvfl.jdField_a_of_type_JavaUtilList);
+    }
+    umc.a().dispatch(paramvfk);
   }
 }
 

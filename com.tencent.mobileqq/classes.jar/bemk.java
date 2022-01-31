@@ -1,37 +1,16 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
 
 public class bemk
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements auxq
 {
-  public bemk(InputMethodRelativeLayout paramInputMethodRelativeLayout) {}
+  public bemk(WerewolvesHostInterface paramWerewolvesHostInterface, boolean paramBoolean) {}
   
-  public void onGlobalLayout()
+  public void bw()
   {
-    int i;
-    if (this.a.a != null)
-    {
-      i = InputMethodRelativeLayout.a(this.a);
-      if (i != InputMethodRelativeLayout.b(this.a))
-      {
-        int j = this.a.getRootView().getHeight();
-        if (j - i <= j / 4) {
-          break label102;
-        }
-        InputMethodRelativeLayout.a(this.a, true);
-      }
-    }
-    for (;;)
-    {
-      this.a.a.a(InputMethodRelativeLayout.a(this.a), InputMethodRelativeLayout.b(this.a), i);
-      this.a.requestLayout();
-      InputMethodRelativeLayout.a(this.a, i);
-      return;
-      label102:
-      InputMethodRelativeLayout.a(this.a, false);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.mGameRoomAVController.a(this.jdField_a_of_type_Boolean);
   }
+  
+  public void bx() {}
 }
 
 

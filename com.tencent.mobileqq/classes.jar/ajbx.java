@@ -1,25 +1,21 @@
+import Wallet.SetSelectedSkinRsp;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class ajbx
-  implements View.OnClickListener
+public class ajbx
+  implements BusinessObserver
 {
-  ajbx(ajbm paramajbm) {}
+  public ajbx(RedPacketManager paramRedPacketManager, BusinessObserver paramBusinessObserver) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    SetSelectedSkinRsp localSetSelectedSkinRsp = (SetSelectedSkinRsp)paramBundle.getSerializable("rsp");
+    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, paramBoolean, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("RedPacketManager", 2, "setSelectedSkin2ServerIfChanged onReceive isSuccess:" + paramBoolean);
     }
-    paramView = new Bundle();
-    paramView.putBoolean("string_from", false);
-    paramView.putBoolean("string_uin", true);
-    paramView.putLong("device_din", 0L);
-    paramView.putInt("sTitleID", 0);
-    biqg.a(ajbm.a(this.a), paramView, "com.qqdataline.activity.LiteWifiphotoActivity");
   }
 }
 

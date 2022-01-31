@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.playvideo.floatdialog;
 
-import vml;
-import vmn;
+import vqu;
+import vqw;
 
 public class CommentFloatDialog$2$1
   implements Runnable
 {
-  public CommentFloatDialog$2$1(vmn paramvmn) {}
+  public CommentFloatDialog$2$1(vqw paramvqw) {}
   
   public void run()
   {

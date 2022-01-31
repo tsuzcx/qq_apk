@@ -1,22 +1,21 @@
-import android.os.Bundle;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-class bitq
-  extends alls
+public class bitq
+  implements DialogInterface.OnClickListener
 {
-  bitq(bito parambito) {}
+  public bitq(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putInt("result", paramInt);
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 3, localBundle);
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bitq
  * JD-Core Version:    0.7.0.1
  */

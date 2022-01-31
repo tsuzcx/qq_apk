@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-
-public class aqgs
-  extends aqnl
+public abstract interface aqgs
 {
-  public aqgs(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
-  
-  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
-  {
-    super.a(paramString1, paramString2, paramInteger, paramString3, paramBoolean);
-  }
+  public abstract void a();
 }
 
 

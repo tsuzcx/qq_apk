@@ -2,9 +2,9 @@ package com.tencent.mobileqq.studyroom.pluginimpl;
 
 import android.content.Context;
 import android.os.Bundle;
-import aszx;
-import azxi;
-import azxj;
+import ateg;
+import babr;
+import babs;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqinterface.CommonCallback;
 import com.tencent.qqinterface.DownloadCallback;
@@ -13,19 +13,19 @@ import com.tencent.qqinterface.QQConfigAbilityInterface;
 import com.tencent.qqinterface.QQConfigAbilityInterface.Callback;
 import java.util.concurrent.Future;
 import org.json.JSONObject;
-import ymk;
+import yqz;
 
 public class QQBaseAbilityInterfaceImpl
   implements QQBaseAbilityInterface, QQConfigAbilityInterface
 {
   private static final String TAG = "studyroom.QQBaseAbilityInterface";
-  private final aszx impl = aszx.a();
-  private final ymk mClient;
+  private final ateg impl = ateg.a();
+  private final yqz mClient;
   
   public QQBaseAbilityInterfaceImpl()
   {
     QLog.d("studyroom.QQBaseAbilityInterface", 4, "init");
-    this.mClient = ymk.a();
+    this.mClient = yqz.a();
     this.mClient.a();
   }
   
@@ -51,9 +51,9 @@ public class QQBaseAbilityInterfaceImpl
   
   public JSONObject getConfigFromQQ()
   {
-    azxi localazxi = azxj.a();
-    if (localazxi != null) {
-      return localazxi.a;
+    babr localbabr = babs.a();
+    if (localbabr != null) {
+      return localbabr.a;
     }
     return new JSONObject();
   }
@@ -102,7 +102,7 @@ public class QQBaseAbilityInterfaceImpl
     if (paramCallback != null) {
       paramCallback.onResult(getConfigFromQQ());
     }
-    azxj.b();
+    babs.b();
   }
   
   public void sendSSOTask(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback) {}

@@ -1,31 +1,78 @@
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceStruct;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import org.json.JSONObject;
 
 public class bjzo
+  extends WebViewPlugin
 {
-  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
+  private String a = bjzo.class.getSimpleName();
+  
+  public bjzo()
   {
-    if (paramArrayOfByte == null) {
-      return null;
+    this.mPluginNameSpace = "QzMoodSelectPicture";
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    return super.handleEvent(paramString, paramLong, paramMap);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!paramString2.equals("QzMoodSelectPicture")) {}
+    while ((!paramString3.equals("selectPicture")) || (paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+      return false;
     }
+    paramJsBridgeListener = new Intent();
+    paramString1 = new Bundle();
     try
     {
-      paramClass = (JceStruct)paramClass.newInstance();
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-      paramArrayOfByte.setServerEncoding("utf8");
-      paramClass.readFrom(paramArrayOfByte);
-      return paramClass;
+      paramString2 = new JSONObject(paramVarArgs[0]);
+      paramString1.putString("mood_web_pic_url", paramString2.getString("url"));
+      paramString1.putString("mood_web_pic_id", paramString2.getString("imageId"));
+      paramString1.putInt("mood_web_pic_width", paramString2.getInt("width"));
+      paramString1.putInt("mood_web_pic_height", paramString2.getInt("height"));
+      paramString1.putInt("mood_web_pic_sourceid", paramString2.optInt("sourceid"));
+      paramString1.putString("mood_web_pic_attachinfo", paramString2.getString("quickselect"));
+      paramJsBridgeListener.putExtras(paramString1);
+      if (this.mRuntime.a() != null)
+      {
+        this.mRuntime.a().setResult(-1, paramJsBridgeListener);
+        this.mRuntime.a().finish();
+      }
+      return true;
     }
-    catch (Exception paramClass)
+    catch (Exception paramString2)
     {
-      paramClass.printStackTrace();
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w(this.a, 2, "select mood picture,decode param error");
+        }
+      }
     }
-    return null;
   }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    Intent localIntent = new Intent();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("url", "http://www.baidu.com");
+    localIntent.putExtras(localBundle);
+    this.mRuntime.a().setResult(50, localIntent);
+  }
+  
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjzo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,440 +1,323 @@
-import android.content.Context;
-import android.os.AsyncTask;
-import android.os.Process;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.mediadevice.EncodeThread;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.mobileqq.activity.selectable.CommonMenuWrapper.1;
+import com.tencent.widget.BubblePopupWindow;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class ajxt
-  extends AsyncTask<Void, Void, Integer>
+  implements ajyf
 {
-  public static ConcurrentHashMap<Long, ajxt> a;
-  private static xot jdField_a_of_type_Xot;
-  private int jdField_a_of_type_Int;
-  private ajxw jdField_a_of_type_Ajxw = new ajxv(this);
-  private ajxy jdField_a_of_type_Ajxy;
-  private ajxz jdField_a_of_type_Ajxz;
-  private Context jdField_a_of_type_AndroidContentContext;
-  public PublishVideoEntry a;
-  public MessageForShortVideo a;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean;
-  private String jdField_e_of_type_JavaLangString;
-  private boolean jdField_e_of_type_Boolean;
-  private boolean f;
+  private static final int e = bdoo.b(72.0F);
+  private static final int f = bdoo.b(63.0F);
+  public int a;
+  private ajyd jdField_a_of_type_Ajyd;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  bdpi jdField_a_of_type_Bdpi;
+  private bhvm jdField_a_of_type_Bhvm;
+  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+  public int b;
+  private bdpi b;
+  private int jdField_c_of_type_Int;
+  private bdpi jdField_c_of_type_Bdpi;
+  private int d;
   
-  static
+  private void c()
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  public ajxt(Context paramContext, String paramString, boolean paramBoolean, ajxz paramajxz)
-  {
-    this(paramContext, paramString, paramBoolean, paramajxz, false);
-  }
-  
-  public ajxt(Context paramContext, String paramString, boolean paramBoolean1, ajxz paramajxz, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Ajxz = paramajxz;
-    this.jdField_c_of_type_Boolean = paramBoolean1;
-    if (paramajxz != null) {
-      this.jdField_b_of_type_JavaLangString = paramajxz.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Ajyd == null) {
+      throw new IllegalStateException("Delegate has not bound.");
     }
-    this.jdField_d_of_type_Boolean = paramBoolean2;
   }
   
-  public ajxt(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, boolean paramBoolean, ajxz paramajxz, MessageForShortVideo paramMessageForShortVideo)
+  public int a()
   {
-    this(paramContext, paramString, paramBoolean, paramajxz, false);
-    if ((paramMessageForShortVideo != null) && (paramMessageForShortVideo.busiType == 1) && (paramQQAppInterface != null))
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public ajxu a(View paramView, BaseChatPie paramBaseChatPie)
+  {
+    int m = 0;
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationInWindow(arrayOfInt);
+    int n = arrayOfInt[1];
+    int i = arrayOfInt[1];
+    i = paramView.getHeight() + i;
+    paramView = paramBaseChatPie;
+    if (paramBaseChatPie == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
-      paramMessageForShortVideo.videoFileStatus = 998;
-    }
-    try
-    {
-      paramMessageForShortVideo.serial();
-      paramQQAppInterface.a().a(paramMessageForShortVideo.frienduin, paramMessageForShortVideo.istroop, paramMessageForShortVideo.uniseq, paramMessageForShortVideo.msgData);
-      if (QLog.isColorLevel()) {
-        QLog.i("EncodeVideoTask", 2, "encodeVideoTask uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+      paramView = paramBaseChatPie;
+      if ((this instanceof ajxl)) {
+        paramView = ((ajxl)this).a;
       }
-      return;
     }
-    catch (Exception paramQQAppInterface)
+    int j;
+    int k;
+    if ((paramView != null) && (paramView.a != null) && (paramView.a.getVisibility() == 0))
     {
-      QLog.e("EncodeVideoTask", 2, "CompressTask Init", paramQQAppInterface);
+      paramView.a.getLocationInWindow(arrayOfInt);
+      j = arrayOfInt[1];
+      if (n + 0 >= e + ImmersiveUtils.jdField_c_of_type_Int) {
+        break label344;
+      }
+      if (i + 0 >= e + ImmersiveUtils.jdField_c_of_type_Int) {
+        break label221;
+      }
+      if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int + 0 <= e + ImmersiveUtils.jdField_c_of_type_Int)) {
+        break label171;
+      }
+      i = this.jdField_a_of_type_Int + 0;
+      k = m;
     }
-  }
-  
-  public static void a(long paramLong, int paramInt)
-  {
-    a(paramLong, paramInt, 0);
-  }
-  
-  public static void a(long paramLong, int paramInt1, int paramInt2)
-  {
-    if (paramLong <= 0L) {}
-    label121:
-    label125:
     for (;;)
     {
-      return;
-      String str = "";
-      HashMap localHashMap;
-      if (paramInt1 == 1)
+      return new ajxu(i, k);
+      j = bdoo.b();
+      break;
+      label171:
+      if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + f + 0 < j))
       {
-        str = "actShortVideoGenerateSource";
-        if (paramInt2 == 0) {
-          break label121;
-        }
-        localHashMap = new HashMap();
-        localHashMap.put("hcState", String.valueOf(paramInt2));
+        i = this.jdField_a_of_type_Int + 0;
+        k = 1;
       }
+      else
+      {
+        i = e + ImmersiveUtils.jdField_c_of_type_Int;
+        k = m;
+        continue;
+        label221:
+        i += 0;
+        if (f + i > j) {
+          if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + 0 > e + ImmersiveUtils.jdField_c_of_type_Int))
+          {
+            j = this.jdField_a_of_type_Int + 0;
+            i = 0;
+          }
+        }
+        for (;;)
+        {
+          k = i;
+          i = j;
+          break;
+          if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + f + 0 < j))
+          {
+            j = this.jdField_a_of_type_Int + 0;
+            i = 1;
+          }
+          else
+          {
+            j = e + ImmersiveUtils.jdField_c_of_type_Int + f + 0;
+            i = 0;
+            continue;
+            k = 1;
+            j = i;
+            i = k;
+          }
+        }
+        label344:
+        i = j;
+        k = m;
+        if (n <= j)
+        {
+          i = n + 0;
+          k = m;
+        }
+      }
+    }
+  }
+  
+  @Nullable
+  public ajyd a()
+  {
+    return this.jdField_a_of_type_Ajyd;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b())) {
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void a(@Nullable ajyd paramajyd)
+  {
+    this.jdField_a_of_type_Ajyd = paramajyd;
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    c();
+    bdpi localbdpi;
+    if (this.jdField_a_of_type_Ajyd.c())
+    {
+      int i = this.jdField_a_of_type_Ajyd.c();
+      int j = this.jdField_a_of_type_Ajyd.b();
+      if (this.jdField_a_of_type_Ajyd.a() == i - j) {
+        localbdpi = this.b;
+      }
+    }
+    for (;;)
+    {
+      a(localbdpi, paramView, paramInt1, paramInt2, paramInt3);
+      return;
+      if (this.jdField_c_of_type_Bdpi != null)
+      {
+        localbdpi = this.jdField_c_of_type_Bdpi;
+      }
+      else
+      {
+        if (this.jdField_a_of_type_Bdpi == null)
+        {
+          this.jdField_a_of_type_Bdpi = new bdpi();
+          this.jdField_a_of_type_Bdpi.a(2131364912, alud.a(2131702624), 2130838669);
+          this.jdField_a_of_type_Bdpi.a(2131376341, alud.a(2131702622), 2130838687);
+          this.jdField_a_of_type_Bdpi.a(2131366760, alud.a(2131702626), 2130838678);
+          this.jdField_a_of_type_Bdpi.a(2131366017, alud.a(2131702623), 2130838677);
+        }
+        localbdpi = this.jdField_a_of_type_Bdpi;
+        continue;
+        localbdpi = this.b;
+      }
+    }
+  }
+  
+  protected void a(View paramView, int paramInt1, int paramInt2, bdpi parambdpi, int paramInt3, boolean paramBoolean)
+  {
+    a(paramView, paramInt1, paramInt2, parambdpi, paramInt3, paramBoolean, null);
+  }
+  
+  protected void a(View paramView, int paramInt1, int paramInt2, bdpi parambdpi, int paramInt3, boolean paramBoolean, Activity paramActivity)
+  {
+    boolean bool = true;
+    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
+    {
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
+    }
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(bdft.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), parambdpi, this.jdField_a_of_type_AndroidViewView$OnClickListener, true));
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new ColorDrawable(0));
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(paramBoolean);
+    if (paramBoolean) {
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(true);
+    }
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(1);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b(2);
+    parambdpi = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if (paramInt3 == 1) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      parambdpi.d(paramBoolean);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this.jdField_a_of_type_Bhvm);
+      paramView.post(new CommonMenuWrapper.1(this, paramActivity, paramView, paramInt1, paramInt2));
+      this.jdField_c_of_type_Int = paramInt1;
+      this.d = paramInt2;
+      return;
+    }
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, bdpi parambdpi, boolean paramBoolean, int paramInt3)
+  {
+    a(paramView, paramInt1, paramInt2, parambdpi, paramBoolean, paramInt3, null);
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, bdpi parambdpi, boolean paramBoolean, int paramInt3, Activity paramActivity)
+  {
+    this.b = parambdpi;
+    this.jdField_c_of_type_Bdpi = null;
+    a(paramView, paramInt1, paramInt2, parambdpi, paramInt3, paramBoolean, paramActivity);
+  }
+  
+  void a(bdpi parambdpi, View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    a(paramView, paramInt1, paramInt2, parambdpi, paramInt3, false);
+  }
+  
+  public void a(bdpi parambdpi, boolean paramBoolean)
+  {
+    this.b = parambdpi;
+    this.jdField_c_of_type_Bdpi = null;
+    Object localObject;
+    int i;
+    if ((paramBoolean) && (parambdpi != null))
+    {
+      localObject = parambdpi.a();
+      if ((localObject != null) && (localObject.length > 0))
+      {
+        parambdpi = new ArrayList(Arrays.asList((Object[])localObject));
+        i = 0;
+        if (i >= localObject.length) {
+          break label171;
+        }
+        if (localObject[i].a() != 2131364912) {}
+      }
+    }
+    for (;;)
+    {
+      localObject = new bdpk();
+      ((bdpk)localObject).a(2131376341);
+      ((bdpk)localObject).a(alud.a(2131702625));
+      ((bdpk)localObject).b(2130838687);
+      parambdpi.add(i + 1, localObject);
+      this.jdField_c_of_type_Bdpi = new bdpi();
+      parambdpi = parambdpi.iterator();
       for (;;)
       {
-        if (TextUtils.isEmpty(str)) {
-          break label125;
-        }
-        azmz.a(BaseApplicationImpl.getContext()).a(null, str, true, paramLong, 0L, localHashMap, "");
-        return;
-        if (paramInt1 == 2)
+        if (parambdpi.hasNext())
         {
-          str = "actShortVideoGenerateAudio";
+          localObject = (bdpk)parambdpi.next();
+          this.jdField_c_of_type_Bdpi.a((bdpk)localObject);
+          continue;
+          i += 1;
           break;
         }
-        if (paramInt1 == 3)
-        {
-          str = "actShortVideoGeneratePic";
-          break;
-        }
-        if (paramInt1 == 4)
-        {
-          str = "actMediaCodecMergeEdit";
-          break;
-        }
-        if (paramInt1 != 5) {
-          break;
-        }
-        str = "actMediaCodecMergeSelfAudio";
-        break;
-        localHashMap = null;
-      }
-    }
-  }
-  
-  private static void b(String paramString, PublishVideoEntry paramPublishVideoEntry, ajxw paramajxw)
-  {
-    String str = ShortVideoUtils.b(new File(paramPublishVideoEntry.mLocalRawVideoDir));
-    if (jdField_a_of_type_Xot == null) {
-      jdField_a_of_type_Xot = xot.a(BaseApplicationImpl.getApplication());
-    }
-    if (jdField_a_of_type_Xot.a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EncodeVideoTask", 2, "generate files mFFmpeg is running!");
       }
       return;
-    }
-    try
-    {
-      ajya localajya = new ajya(paramPublishVideoEntry, paramString, str, paramajxw);
-      jdField_a_of_type_Xot.a(str);
-      jdField_a_of_type_Xot.a(paramPublishVideoEntry.doodlePath, paramString, str, paramPublishVideoEntry.videoWidth, paramPublishVideoEntry.videoHeight, localajya);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramajxw.a(-12);
-      QLog.e("EncodeVideoTask", 2, "generate files save alum:", paramString);
+      label171:
+      i = 0;
     }
   }
   
-  protected Integer a()
+  public void a(bhvm parambhvm)
   {
-    long l = System.currentTimeMillis();
-    if (blun.jdField_c_of_type_Boolean) {
-      blun.g.b();
-    }
-    PublishVideoEntry localPublishVideoEntry = uku.a(this.jdField_a_of_type_JavaLangString);
-    if (localPublishVideoEntry == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("EncodeVideoTask", 2, "[StoryEncodeType]configure param error, fakeVid:" + this.jdField_a_of_type_JavaLangString);
-      }
-      return Integer.valueOf(-62);
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = localPublishVideoEntry;
-    if (TextUtils.isEmpty(localPublishVideoEntry.mLocalRawVideoDir))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("EncodeVideoTask", 2, "[StoryEncodeType]configure param error, fakeId:" + this.jdField_a_of_type_JavaLangString + ", EntryId:" + localPublishVideoEntry.fakeVid);
-      }
-      axsh.a(new RuntimeException("onMediaCodecEncode failed"));
-      return Integer.valueOf(-62);
-    }
-    String str = ShortVideoUtils.b(new File(localPublishVideoEntry.mLocalRawVideoDir).getParentFile());
-    new uku().a(localPublishVideoEntry, str, false, true, new ajxu(this, localPublishVideoEntry, str, l));
-    return Integer.valueOf(0);
-  }
-  
-  protected Integer a(Void... paramVarArgs)
-  {
-    if (!this.jdField_c_of_type_Boolean) {
-      return c(paramVarArgs);
-    }
-    return b(paramVarArgs);
-  }
-  
-  public void a(int paramInt, PublishVideoEntry paramPublishVideoEntry, long paramLong)
-  {
-    if ((paramPublishVideoEntry != null) && (paramPublishVideoEntry.publishState == 0)) {}
-    label336:
-    label339:
-    for (;;)
-    {
-      return;
-      if (paramPublishVideoEntry != null)
-      {
-        paramPublishVideoEntry.publishState = 0;
-        QQStoryContext.a().a().createEntityManager().a(paramPublishVideoEntry);
-      }
-      boolean bool;
-      if (paramInt == 0)
-      {
-        bool = true;
-        if (paramInt != 0) {
-          break label99;
-        }
-      }
-      label99:
-      for (String str = "1";; str = "0")
-      {
-        wta.a("AIOMergeVideoSuc", bool, 0L, new String[] { str });
-        if (paramInt == 0) {
-          break label107;
-        }
-        wta.a("AIOMergeVideoError", true, 0L, new String[] { String.valueOf(paramInt) });
-        return;
-        bool = false;
-        break;
-      }
-      label107:
-      if (paramLong == 0L)
-      {
-        paramLong = 0L;
-        if ((paramPublishVideoEntry == null) || (!paramPublishVideoEntry.isPicture)) {
-          break label336;
-        }
-      }
-      for (paramInt = 1;; paramInt = 0)
-      {
-        if ((!blun.jdField_c_of_type_Boolean) || (paramInt != 0) || (!blun.g.a())) {
-          break label339;
-        }
-        long l1 = blun.g.a[0];
-        long l2 = blun.g.a[1];
-        long l3 = blun.g.a[2];
-        long l4 = blun.g.a[3];
-        long l5 = blun.g.a[4];
-        if ((wta.a(paramLong, 0L, 120000L)) && (wta.a(l1, 0L, 120000L)) && (wta.a(l2, 0L, 120000L)) && (wta.a(l3, 0L, 10000L)) && (wta.a(l4, 0L, 120000L)) && (wta.a(l5, 0L, 120000L))) {
-          wta.a("AIOMergeVideoCost", true, paramLong, new String[] { String.valueOf(l1), String.valueOf(l2), String.valueOf(l3), String.valueOf(l4), String.valueOf(l5) });
-        }
-        blun.g.c();
-        return;
-        paramLong = System.currentTimeMillis() - paramLong;
-        break;
-      }
-    }
-  }
-  
-  public void a(ajxy paramajxy)
-  {
-    this.jdField_a_of_type_Ajxy = paramajxy;
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    super.onPostExecute(paramInteger);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", Integer.toString(paramInteger.intValue()));
-    azmz localazmz = azmz.a(BaseApplicationImpl.getContext());
-    if (paramInteger.intValue() == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localazmz.a(null, "actMediaCodecEncodeSuccessRate", bool, 0L, 0L, localHashMap, "");
-      if (paramInteger.intValue() != 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("EncodeVideoTask", 2, "onPostExecute result:" + paramInteger);
-        }
-        this.jdField_a_of_type_Ajxy.a(paramInteger.intValue());
-      }
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Bhvm = parambhvm;
   }
   
   public boolean a()
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.isCancel = true;
-      this.f = true;
-      boolean bool = azfu.a();
-      xpc.a();
-      if (QLog.isColorLevel()) {
-        QLog.i("EncodeVideoTask", 2, "shortVideoCancel, cancelMerge:" + bool);
-      }
-      return true;
-    }
-    return false;
+    return (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b());
   }
   
-  protected Integer b(Void... paramVarArgs)
+  public int b()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_Ajxw.a(-61, null, null, null, 0L);
-      return Integer.valueOf(-61);
-    }
-    long l = SystemClock.uptimeMillis();
-    int i = absd.a().a(0, 1, 1, Process.myTid(), 8000, 603, 1L, Process.myTid(), "video", true);
-    int j = a().intValue();
-    if (j != 0) {
-      this.jdField_a_of_type_Ajxw.a(j, null, null, null, 0L);
-    }
-    if (i != 0) {
-      absd.a().a(i);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EncodeVideoTask", 2, new Object[] { "encode cost=" + (SystemClock.uptimeMillis() - l), " ret:", Integer.valueOf(j) });
-    }
-    return Integer.valueOf(j);
+    return this.d;
   }
   
-  public void b(boolean paramBoolean)
+  public void b()
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
   }
   
-  protected Integer c(Void... paramVarArgs)
+  public void b(int paramInt)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return Integer.valueOf(-1);
-    }
-    PublishVideoEntry localPublishVideoEntry = uku.a(this.jdField_a_of_type_JavaLangString);
-    if (localPublishVideoEntry == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("EncodeVideoTask", 2, "configure param error, fakeVid:" + this.jdField_a_of_type_JavaLangString);
-      }
-      return Integer.valueOf(-2);
-    }
-    azds.y = (int)localPublishVideoEntry.recordTime;
-    azds.z = localPublishVideoEntry.recordFrames;
-    if (localPublishVideoEntry.saveMode != 0) {
-      azds.J = localPublishVideoEntry.saveMode;
-    }
-    int i;
-    label131:
-    int j;
-    Object localObject2;
-    Object localObject1;
-    long l;
-    if (localPublishVideoEntry.businessId == 2)
-    {
-      i = 0;
-      azds.D = i;
-      if (TextUtils.isEmpty(localPublishVideoEntry.backgroundMusicPath)) {
-        break label385;
-      }
-      i = 1;
-      if (TextUtils.isEmpty(localPublishVideoEntry.doodlePath)) {
-        break label390;
-      }
-      j = 1;
-      localObject2 = new File(localPublishVideoEntry.mLocalRawVideoDir);
-      localObject1 = ShortVideoUtils.c((File)localObject2);
-      paramVarArgs = (Void[])localObject1;
-      if (i == 0)
-      {
-        paramVarArgs = (Void[])localObject1;
-        if (j == 0) {
-          paramVarArgs = ShortVideoUtils.b((File)localObject2);
-        }
-      }
-      l = System.currentTimeMillis();
-      localObject1 = new EncodeThread(null, null, localPublishVideoEntry.mLocalRawVideoDir, paramVarArgs, null);
-      ((EncodeThread)localObject1).a(false);
-      ((EncodeThread)localObject1).b(false);
-      ((EncodeThread)localObject1).d(localPublishVideoEntry.isMuteRecordVoice);
-      if (localPublishVideoEntry.mMosaicMask != null) {
-        ((EncodeThread)localObject1).a(localPublishVideoEntry.mMosaicMask, localPublishVideoEntry.mMosaicSize);
-      }
-      ((EncodeThread)localObject1).run();
-      a(System.currentTimeMillis() - l, 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("EncodeVideoTask", 2, "generate files|first step cost:" + (System.currentTimeMillis() - l) / 1000.0D);
-      }
-      if (i == 0) {
-        break label415;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject1 = ShortVideoUtils.d((File)localObject2);
-        l = ShortVideoUtils.b(paramVarArgs);
-        localObject2 = new ajxx(localPublishVideoEntry, paramVarArgs, (String)localObject1);
-        ((ajxx)localObject2).a(this.jdField_a_of_type_Ajxw);
-        xpc.b(this.jdField_a_of_type_AndroidContentContext, paramVarArgs, localPublishVideoEntry.backgroundMusicPath, localPublishVideoEntry.backgroundMusicOffset, (int)l, (String)localObject1, (xos)localObject2);
-        return Integer.valueOf(0);
-        i = 1;
-        break;
-        label385:
-        i = 0;
-        break label131;
-        label390:
-        j = 0;
-      }
-      catch (Exception paramVarArgs)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("EncodeVideoTask", 2, "generate error:", paramVarArgs);
-        continue;
-      }
-      label415:
-      this.jdField_a_of_type_Ajxw.a(localPublishVideoEntry, paramVarArgs);
-    }
+    this.d = paramInt;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.storyHome.atvideo.view;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -30,28 +30,28 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import urr;
-import wdk;
-import wdl;
-import wdm;
-import wdr;
-import wec;
-import wef;
-import weh;
-import wes;
-import wgw;
-import wkv;
-import wmz;
-import wps;
-import wsi;
-import wsv;
-import wta;
-import xod;
-import xrv;
+import uwa;
+import wht;
+import whu;
+import whv;
+import wia;
+import wil;
+import wio;
+import wiq;
+import wjb;
+import wlf;
+import wpe;
+import wri;
+import wub;
+import wwr;
+import wxe;
+import wxj;
+import xsm;
+import xwe;
 
 public class StoryAtVideoFragment
   extends QQStoryBaseFragment
-  implements wdr, wef, wmz, wsi, xrv
+  implements wia, wio, wri, wwr, xwe
 {
   public ViewGroup a;
   public RelativeLayout a;
@@ -59,11 +59,11 @@ public class StoryAtVideoFragment
   public QQStoryAutoPlayView a;
   public StoryHomeHorizontalListView a;
   public String a;
-  public wdm a;
-  public wec a;
-  public weh a;
-  public wes a;
-  public wkv a;
+  public whv a;
+  public wil a;
+  public wiq a;
+  public wjb a;
+  public wpe a;
   public TextView b;
   public String b;
   
@@ -73,12 +73,12 @@ public class StoryAtVideoFragment
     localIntent.putExtra("extra_at_video_feed_id", paramString1);
     localIntent.putExtra("extra_at_video_scroll_to_feed_id", paramString2);
     PublicFragmentActivity.a(paramActivity, localIntent, StoryAtVideoFragment.class, paramInt);
-    paramActivity.overridePendingTransition(2130772292, 2130771990);
+    paramActivity.overridePendingTransition(2130772293, 2130771990);
   }
   
-  public void T_() {}
+  public void Q_() {}
   
-  public void U_() {}
+  public void R_() {}
   
   public void a() {}
   
@@ -93,7 +93,7 @@ public class StoryAtVideoFragment
   
   public void a(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt)
   {
-    wdm.a(getActivity(), paramVideoListFeedItem, paramStoryVideoItem);
+    whv.a(getActivity(), paramVideoListFeedItem, paramStoryVideoItem);
     getActivity().finish();
   }
   
@@ -101,34 +101,34 @@ public class StoryAtVideoFragment
   
   public void a(@NonNull Map<Subscriber, String> paramMap)
   {
-    paramMap.put(new wdl(this), "StoryDetailPresenter");
-    paramMap.put(new wdk(this), "");
+    paramMap.put(new whu(this), "StoryDetailPresenter");
+    paramMap.put(new wht(this), "");
   }
   
-  public void a(weh paramweh)
+  public void a(wiq paramwiq)
   {
     int j = -7829368;
     int i = 0;
-    if ((paramweh == null) || (!paramweh.c())) {
-      wsv.e("Q.qqstory.atvideo.StoryAtVideoFragment", "this feed does not support video list.");
+    if ((paramwiq == null) || (!paramwiq.c())) {
+      wxe.e("Q.qqstory.atvideo.StoryAtVideoFragment", "this feed does not support video list.");
     }
     label269:
     label731:
     for (;;)
     {
       return;
-      this.jdField_a_of_type_Weh = paramweh;
-      wsv.b("Q.qqstory.atvideo.StoryAtVideoFragment", "update feed video info. %s.", paramweh.toString());
-      if ((this.jdField_a_of_type_Weh.a == null) || (this.jdField_a_of_type_Weh.a().isEmpty()))
+      this.jdField_a_of_type_Wiq = paramwiq;
+      wxe.b("Q.qqstory.atvideo.StoryAtVideoFragment", "update feed video info. %s.", paramwiq.toString());
+      if ((this.jdField_a_of_type_Wiq.a == null) || (this.jdField_a_of_type_Wiq.a().isEmpty()))
       {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(8);
         this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
         return;
       }
-      if (this.jdField_a_of_type_Weh.a().size() == 1)
+      if (this.jdField_a_of_type_Wiq.a().size() == 1)
       {
-        localObject1 = (StoryVideoItem)this.jdField_a_of_type_Weh.a().get(0);
+        localObject1 = (StoryVideoItem)this.jdField_a_of_type_Wiq.a().get(0);
         if ((((StoryVideoItem)localObject1).isUploading()) || (((StoryVideoItem)localObject1).isUploadFail()))
         {
           this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
@@ -139,30 +139,30 @@ public class StoryAtVideoFragment
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(8);
         this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.setItemData(this.jdField_a_of_type_Weh.a(), (StoryVideoItem)localObject1, 0);
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.setItemData(this.jdField_a_of_type_Wiq.a(), (StoryVideoItem)localObject1, 0);
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.setStoryCoverClickListener(this);
-        wps.a((StoryVideoItem)localObject1, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView, "QQStory_feed");
-        paramweh = this.jdField_a_of_type_AndroidWidgetTextView;
+        wub.a((StoryVideoItem)localObject1, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView, "QQStory_feed");
+        paramwiq = this.jdField_a_of_type_AndroidWidgetTextView;
         if (((StoryVideoItem)localObject1).mHadRead == 1)
         {
           i = -7829368;
-          paramweh.setTextColor(i);
-          paramweh = this.jdField_b_of_type_AndroidWidgetTextView;
+          paramwiq.setTextColor(i);
+          paramwiq = this.jdField_b_of_type_AndroidWidgetTextView;
           if (((StoryVideoItem)localObject1).mHadRead != 1) {
             break label351;
           }
           i = j;
-          paramweh.setTextColor(i);
+          paramwiq.setTextColor(i);
           if (((StoryVideoItem)localObject1).mTimeZoneOffsetMillis == 2147483647L) {
             break label357;
           }
         }
         label351:
         label357:
-        for (paramweh = xod.a(((StoryVideoItem)localObject1).mCreateTime, ((StoryVideoItem)localObject1).mTimeZoneOffsetMillis);; paramweh = xod.b(((StoryVideoItem)localObject1).mCreateTime))
+        for (paramwiq = xsm.a(((StoryVideoItem)localObject1).mCreateTime, ((StoryVideoItem)localObject1).mTimeZoneOffsetMillis);; paramwiq = xsm.b(((StoryVideoItem)localObject1).mCreateTime))
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(paramweh);
-          if (!(this.jdField_a_of_type_Weh.a.getOwner() instanceof ShareGroupItem)) {
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(paramwiq);
+          if (!(this.jdField_a_of_type_Wiq.a.getOwner() instanceof ShareGroupItem)) {
             break label369;
           }
           this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -180,17 +180,17 @@ public class StoryAtVideoFragment
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(0);
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-      if (this.jdField_a_of_type_Wdm == null)
+      if (this.jdField_a_of_type_Whv == null)
       {
-        this.jdField_a_of_type_Wdm = new wdm(getActivity(), getActivity(), 0, 0);
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setAdapter(this.jdField_a_of_type_Wdm);
+        this.jdField_a_of_type_Whv = new whv(getActivity(), getActivity(), 0, 0);
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setAdapter(this.jdField_a_of_type_Whv);
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setDividerWidth(getResources().getDimensionPixelSize(2131298356));
       }
-      paramweh = this.jdField_a_of_type_Weh.a();
+      paramwiq = this.jdField_a_of_type_Wiq.a();
       Object localObject1 = new ArrayList();
-      if (!paramweh.isEmpty())
+      if (!paramwiq.isEmpty())
       {
-        localObject2 = paramweh.iterator();
+        localObject2 = paramwiq.iterator();
         while (((Iterator)localObject2).hasNext())
         {
           StoryVideoItem localStoryVideoItem = (StoryVideoItem)((Iterator)localObject2).next();
@@ -199,29 +199,29 @@ public class StoryAtVideoFragment
           }
         }
       }
-      this.jdField_a_of_type_Wdm.a((List)localObject1, this.jdField_a_of_type_Weh.a());
+      this.jdField_a_of_type_Whv.a((List)localObject1, this.jdField_a_of_type_Wiq.a());
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setDataCount(((List)localObject1).size());
       Object localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView;
       boolean bool;
-      if (!this.jdField_a_of_type_Weh.a().mIsVideoEnd)
+      if (!this.jdField_a_of_type_Wiq.a().mIsVideoEnd)
       {
         bool = true;
         ((StoryHomeHorizontalListView)localObject2).setLoadMoreComplete(bool);
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setOnLoadMoreListener(this);
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setOnScrollChangeListener(this);
-        if ((paramweh.size() != ((List)localObject1).size()) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
+        if ((paramwiq.size() != ((List)localObject1).size()) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
       }
       else
       {
         for (;;)
         {
-          if (i >= this.jdField_a_of_type_Weh.a().size()) {
+          if (i >= this.jdField_a_of_type_Wiq.a().size()) {
             break label731;
           }
-          if (((StoryVideoItem)this.jdField_a_of_type_Weh.a().get(i)).mVid.equals(this.jdField_b_of_type_JavaLangString))
+          if (((StoryVideoItem)this.jdField_a_of_type_Wiq.a().get(i)).mVid.equals(this.jdField_b_of_type_JavaLangString))
           {
-            wsv.b("Q.qqstory.atvideo.StoryAtVideoFragment", "select video position:%d.", Integer.valueOf(i));
-            this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.resetCurrentX(wgw.a(getActivity(), i));
+            wxe.b("Q.qqstory.atvideo.StoryAtVideoFragment", "select video position:%d.", Integer.valueOf(i));
+            this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.resetCurrentX(wlf.a(getActivity(), i));
             return;
             bool = false;
             break;
@@ -232,18 +232,18 @@ public class StoryAtVideoFragment
     }
   }
   
-  public void a(weh paramweh, boolean paramBoolean, ErrorMessage paramErrorMessage)
+  public void a(wiq paramwiq, boolean paramBoolean, ErrorMessage paramErrorMessage)
   {
     if (a())
     {
-      wsv.e("Q.qqstory.atvideo.StoryAtVideoFragment", "feed data back after activity destroy.");
+      wxe.e("Q.qqstory.atvideo.StoryAtVideoFragment", "feed data back after activity destroy.");
       return;
     }
     boolean bool;
     if (paramBoolean)
     {
       if (paramErrorMessage.isSuccess()) {
-        a(paramweh);
+        a(paramwiq);
       }
       a(false);
       bool = paramErrorMessage.isSuccess();
@@ -252,24 +252,24 @@ public class StoryAtVideoFragment
       }
     }
     label151:
-    for (paramweh = this.jdField_a_of_type_Weh.toString();; paramweh = "null")
+    for (paramwiq = this.jdField_a_of_type_Wiq.toString();; paramwiq = "null")
     {
-      wsv.a("Q.qqstory.atvideo.StoryAtVideoFragment", "on feed data back. result=%s, isLocal = %s, data = %s.", Boolean.valueOf(bool), Boolean.valueOf(paramBoolean), paramweh);
+      wxe.a("Q.qqstory.atvideo.StoryAtVideoFragment", "on feed data back. result=%s, isLocal = %s, data = %s.", Boolean.valueOf(bool), Boolean.valueOf(paramBoolean), paramwiq);
       return;
       if (!paramErrorMessage.isSuccess()) {
         break;
       }
-      if (this.jdField_a_of_type_Wes != null)
+      if (this.jdField_a_of_type_Wjb != null)
       {
-        if (!this.jdField_a_of_type_Weh.c())
+        if (!this.jdField_a_of_type_Wiq.c())
         {
-          wsv.e("Q.qqstory.atvideo.StoryAtVideoFragment", "this feed does not support video list.");
+          wxe.e("Q.qqstory.atvideo.StoryAtVideoFragment", "this feed does not support video list.");
           return;
         }
-        FeedVideoInfo localFeedVideoInfo = this.jdField_a_of_type_Weh.a().getVideoInfo();
-        this.jdField_a_of_type_Wes.a(localFeedVideoInfo.mVideoPullType, localFeedVideoInfo.mVideoNextCookie, localFeedVideoInfo.mVideoSeq);
+        FeedVideoInfo localFeedVideoInfo = this.jdField_a_of_type_Wiq.a().getVideoInfo();
+        this.jdField_a_of_type_Wjb.a(localFeedVideoInfo.mVideoPullType, localFeedVideoInfo.mVideoNextCookie, localFeedVideoInfo.mVideoSeq);
       }
-      a(paramweh);
+      a(paramwiq);
       break;
     }
   }
@@ -278,33 +278,33 @@ public class StoryAtVideoFragment
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Wec.a();
+      this.jdField_a_of_type_Wil.a();
       return;
     }
-    this.jdField_a_of_type_Wec.b();
+    this.jdField_a_of_type_Wil.b();
   }
   
   public boolean a(boolean paramBoolean)
   {
-    wsv.b("Q.qqstory.atvideo.StoryAtVideoFragment", "load more video");
+    wxe.b("Q.qqstory.atvideo.StoryAtVideoFragment", "load more video");
     b();
     return true;
   }
   
   public void b()
   {
-    wsv.c("Q.qqstory.atvideo.StoryAtVideoFragment", "request load next page video.");
-    if (this.jdField_a_of_type_Wes == null)
+    wxe.c("Q.qqstory.atvideo.StoryAtVideoFragment", "request load next page video.");
+    if (this.jdField_a_of_type_Wjb == null)
     {
-      if (!this.jdField_a_of_type_Weh.c())
+      if (!this.jdField_a_of_type_Wiq.c())
       {
-        wsv.e("Q.qqstory.atvideo.StoryAtVideoFragment", "this feed does not support video list. can't execute loading next page.");
+        wxe.e("Q.qqstory.atvideo.StoryAtVideoFragment", "this feed does not support video list. can't execute loading next page.");
         return;
       }
-      this.jdField_a_of_type_Wes = new wes(2, this.jdField_a_of_type_Weh.a().getVideoInfo());
-      this.jdField_a_of_type_Wes.b("StoryDetailPresenter");
+      this.jdField_a_of_type_Wjb = new wjb(2, this.jdField_a_of_type_Wiq.a().getVideoInfo());
+      this.jdField_a_of_type_Wjb.b("StoryDetailPresenter");
     }
-    this.jdField_a_of_type_Wes.c();
+    this.jdField_a_of_type_Wjb.c();
   }
   
   public void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt) {}
@@ -318,42 +318,42 @@ public class StoryAtVideoFragment
     paramLayoutInflater = getArguments();
     this.jdField_a_of_type_JavaLangString = paramLayoutInflater.getString("extra_at_video_feed_id");
     this.jdField_b_of_type_JavaLangString = paramLayoutInflater.getString("extra_at_video_scroll_to_feed_id");
-    setTitle(alpo.a(2131714783));
-    setLeftButton(alpo.a(2131714782), null);
+    setTitle(alud.a(2131714795));
+    setLeftButton(alud.a(2131714794), null);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView = ((StoryHomeHorizontalListView)a(2131362871));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131373709));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView = ((QQStoryAutoPlayView)a(2131373706));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131373708));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131373707));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131373683));
-    this.jdField_a_of_type_Wkv = ((wkv)urr.a(12));
-    this.jdField_a_of_type_Wec = new wec(this.jdField_a_of_type_JavaLangString, this, false);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131373760));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView = ((QQStoryAutoPlayView)a(2131373757));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131373759));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131373758));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131373734));
+    this.jdField_a_of_type_Wpe = ((wpe)uwa.a(12));
+    this.jdField_a_of_type_Wil = new wil(this.jdField_a_of_type_JavaLangString, this, false);
     a(true);
-    wta.a("home_page", "exp_choose", 0, 0, new String[0]);
+    wxj.a("home_page", "exp_choose", 0, 0, new String[0]);
   }
   
   public void f() {}
   
   public int getContentLayoutId()
   {
-    return 2131561388;
+    return 2131561406;
   }
   
   public boolean onBackEvent()
   {
-    wdm.a(getActivity(), null, null);
-    wta.a("home_page", "choose_cancel", 0, 0, new String[0]);
+    whv.a(getActivity(), null, null);
+    wxj.a("home_page", "choose_cancel", 0, 0, new String[0]);
     return super.onBackEvent();
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    if (this.jdField_a_of_type_Wec != null) {
-      this.jdField_a_of_type_Wec.c();
+    if (this.jdField_a_of_type_Wil != null) {
+      this.jdField_a_of_type_Wil.c();
     }
-    if (this.jdField_a_of_type_Wes != null) {
-      this.jdField_a_of_type_Wes.d();
+    if (this.jdField_a_of_type_Wjb != null) {
+      this.jdField_a_of_type_Wjb.d();
     }
   }
 }

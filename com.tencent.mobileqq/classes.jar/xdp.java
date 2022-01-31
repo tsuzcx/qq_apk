@@ -1,15 +1,15 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
 class xdp
-  implements FileFilter
+  implements ValueAnimator.AnimatorUpdateListener
 {
   xdp(xdo paramxdo) {}
   
-  public boolean accept(File paramFile)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramFile = paramFile.getName();
-    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp"));
+    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.g();
   }
 }
 

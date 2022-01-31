@@ -1,29 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class waj
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, ukn>
+class waj
+  implements DialogInterface.OnDismissListener
 {
-  public waj(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  waj(wah paramwah, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull ukn paramukn)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramukn = paramukn.a;
-    if (paramukn == null) {}
-    while (wnc.a(paramukn.mUploadStatus) != 3) {
-      return;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
-    paramQQStoryShareGroupProfileActivity.b = true;
-  }
-  
-  public Class acceptEventClass()
-  {
-    return ukn.class;
   }
 }
 

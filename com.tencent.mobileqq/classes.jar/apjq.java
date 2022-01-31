@@ -1,22 +1,25 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-final class apjq
-  implements DialogInterface.OnClickListener
+class apjq
 {
-  apjq(QQAppInterface paramQQAppInterface, Context paramContext) {}
+  apjq(apjp paramapjp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @QQPermissionDenied(1818)
+  public void denied()
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (paramInt == 1) {
-      bdqe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, "mvip.n.a.bqsc_aio", 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131720510), "");
-    }
+    QLog.e("VoiceInputHelper", 1, "checkPermission user denied");
+    apjp.a(this.a);
+    this.a.onGetError(1830001);
+  }
+  
+  @QQPermissionGrant(1818)
+  public void grant()
+  {
+    QLog.d("VoiceInputHelper", 1, "checkPermission user grant");
+    apjp.a(this.a);
+    apjp.b(this.a);
   }
 }
 

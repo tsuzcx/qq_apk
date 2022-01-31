@@ -2,7 +2,7 @@ package com.tencent.sharp.jni;
 
 import android.media.AudioManager;
 import android.os.Build.VERSION;
-import bhmk;
+import bhqr;
 import com.tencent.qphone.base.util.QLog;
 
 class TraeAudioManager$bluetoothHeadsetSwitchThread
@@ -103,7 +103,7 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
                 str = "Y";
                 localStringBuilder.append(str);
                 localStringBuilder.append(" :");
-                localStringBuilder.append(this.this$0.jdField_a_of_type_Bhmk.a());
+                localStringBuilder.append(this.this$0.jdField_a_of_type_Bhqr.a());
                 localStringBuilder.append("\n");
                 QLog.w(this.jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
               }
@@ -123,7 +123,7 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
                 if ((QLog.isColorLevel()) && (k == 0)) {
                   QLog.e(this.jdField_a_of_type_JavaLangString, 2, "bluetoothHeadsetSwitchThread sco fail,remove btheadset");
                 }
-                this.this$0.jdField_a_of_type_Bhmk.a(a(), false);
+                this.this$0.jdField_a_of_type_Bhqr.a(a(), false);
                 a(10);
                 this.this$0.a(this.jdField_a_of_type_Long);
               }

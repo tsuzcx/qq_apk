@@ -1,24 +1,33 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
-
-public class abvp
-  implements View.OnClickListener
+public final class abvp
 {
-  public abvp(AboutActivity paramAboutActivity, atwc paramatwc) {}
+  public int a;
+  public long a;
+  public long[] a;
+  public long b;
   
-  public void onClick(View paramView)
+  public abvp()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Atwc.d))
+    this.jdField_a_of_type_ArrayOfLong = new long[] { 0L, 0L, 0L, 0L, 0L, 0L };
+  }
+  
+  public abvp(long paramLong1, long paramLong2, long[] paramArrayOfLong)
+  {
+    this.jdField_a_of_type_ArrayOfLong = new long[] { 0L, 0L, 0L, 0L, 0L, 0L };
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfLong.length)
     {
-      ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app.getManager(256)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, this.jdField_a_of_type_Atwc.d);
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X800865C", "0X800865C", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_ArrayOfLong[i] = 0L;
+      i += 1;
     }
-    this.jdField_a_of_type_Atwc.a();
-    AboutActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, null);
   }
 }
 

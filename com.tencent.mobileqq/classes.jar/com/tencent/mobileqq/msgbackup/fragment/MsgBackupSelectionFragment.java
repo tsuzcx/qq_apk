@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import abot;
+import abti;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler.Callback;
@@ -18,15 +18,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aucf;
-import auds;
-import audu;
-import auef;
-import aueg;
-import aueh;
-import auff;
-import bdee;
-import bdkf;
+import augo;
+import auib;
+import auid;
+import auio;
+import auip;
+import auiq;
+import aujo;
+import bdin;
+import bdoo;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
@@ -52,9 +52,9 @@ public class MsgBackupSelectionFragment
   private Button jdField_a_of_type_AndroidWidgetButton;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aucf jdField_a_of_type_Aucf;
-  private auds jdField_a_of_type_Auds;
-  private audu jdField_a_of_type_Audu = new aueh(this);
+  private augo jdField_a_of_type_Augo;
+  private auib jdField_a_of_type_Auib;
+  private auid jdField_a_of_type_Auid = new auiq(this);
   private String jdField_a_of_type_JavaLangString;
   public List<RecentBaseData> a;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
@@ -172,49 +172,49 @@ public class MsgBackupSelectionFragment
   
   private void b()
   {
-    this.jdField_a_of_type_Aucf = aucf.a();
+    this.jdField_a_of_type_Augo = augo.a();
   }
   
   private void c()
   {
-    aucf.a().a.clear();
-    aucf.a().a(new auef(this));
-    aucf.a().n();
+    augo.a().a.clear();
+    augo.a().a(new auio(this));
+    augo.a().n();
   }
   
   private void d()
   {
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131363363));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131376286));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131376340));
     a(this.jdField_a_of_type_AndroidWidgetButton, 2131690427);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365002));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365004));
     a(this.jdField_c_of_type_AndroidWidgetTextView, 2131690428);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131376303));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131376357));
     a(this.jdField_a_of_type_AndroidWidgetButton, 2131690417);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370411));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370430));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131370407));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131370426));
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getActivity());
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(1);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Auds = new auds(getActivity(), getActivity().app, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Auds);
-    this.jdField_a_of_type_Auds.a(this.jdField_a_of_type_Audu);
-    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131365758);
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131369738);
+    this.jdField_a_of_type_Auib = new auib(getActivity(), getActivity().app, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Auib);
+    this.jdField_a_of_type_Auib.a(this.jdField_a_of_type_Auid);
+    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131365760);
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131369757);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.vg.setOnItemSelectListener(new aueg(this));
+    this.vg.setOnItemSelectListener(new auip(this));
   }
   
   private void e()
   {
-    bdkf.b(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, 0);
-    bdkf.b(this.jdField_b_of_type_AndroidViewView, 8);
-    bdkf.b(this.jdField_a_of_type_AndroidViewView, 8);
+    bdoo.b(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, 0);
+    bdoo.b(this.jdField_b_of_type_AndroidViewView, 8);
+    bdoo.b(this.jdField_a_of_type_AndroidViewView, 8);
   }
   
   private void f()
@@ -223,7 +223,7 @@ public class MsgBackupSelectionFragment
     {
       h();
       if (this.jdField_a_of_type_Int == 0) {
-        auff.a("0X800A233", 2);
+        aujo.a("0X800A233", 2);
       }
     }
     do
@@ -231,17 +231,17 @@ public class MsgBackupSelectionFragment
       do
       {
         return;
-      } while (!aucf.c);
-      auff.a("0X800A258", 2);
+      } while (!augo.c);
+      aujo.a("0X800A258", 2);
       return;
       g();
       if (this.jdField_a_of_type_Int == 0)
       {
-        auff.a("0X800A233", 1);
+        aujo.a("0X800A233", 1);
         return;
       }
-    } while (!aucf.c);
-    auff.a("0X800A258", 1);
+    } while (!augo.c);
+    aujo.a("0X800A258", 1);
   }
   
   private void g()
@@ -257,10 +257,10 @@ public class MsgBackupSelectionFragment
       while (localIterator.hasNext())
       {
         RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
-        aucf.a().a.add(localRecentBaseData);
+        augo.a().a.add(localRecentBaseData);
       }
     }
-    this.jdField_a_of_type_Auds.b();
+    this.jdField_a_of_type_Auib.b();
   }
   
   private void h()
@@ -270,8 +270,8 @@ public class MsgBackupSelectionFragment
     {
       this.jdField_a_of_type_Boolean = bool;
       a(0, this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Auds.c();
-      aucf.a().c();
+      this.jdField_a_of_type_Auib.c();
+      augo.a().c();
       return;
     }
   }
@@ -280,12 +280,12 @@ public class MsgBackupSelectionFragment
   {
     int m = 3;
     int k = 2;
-    Object localObject = aucf.a().a.iterator();
+    Object localObject = augo.a().a.iterator();
     int i = 0;
     int j = i;
     if (((Iterator)localObject).hasNext())
     {
-      if (!abot.d(((RecentBaseData)((Iterator)localObject).next()).a())) {
+      if (!abti.d(((RecentBaseData)((Iterator)localObject).next()).a())) {
         break label135;
       }
       if (i == 2) {
@@ -323,7 +323,7 @@ public class MsgBackupSelectionFragment
       for (;;)
       {
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          auff.a((String)localObject, j, i);
+          aujo.a((String)localObject, j, i);
         }
         return;
         i = 1;
@@ -338,7 +338,7 @@ public class MsgBackupSelectionFragment
         }
         i = 4;
         break label97;
-        if (aucf.c) {
+        if (augo.c) {
           localObject = "0X800A25D";
         }
       }
@@ -353,12 +353,12 @@ public class MsgBackupSelectionFragment
     b();
     d();
     c();
-    aucf.a().c();
+    augo.a().c();
   }
   
   public int getContentLayoutId()
   {
-    return 2131561256;
+    return 2131561274;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -371,9 +371,9 @@ public class MsgBackupSelectionFragment
     e();
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      this.jdField_a_of_type_Auds.a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_Auds.a();
-      this.jdField_a_of_type_Auds.notifyDataSetChanged();
+      this.jdField_a_of_type_Auib.a(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Auib.a();
+      this.jdField_a_of_type_Auib.notifyDataSetChanged();
       return false;
     }
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(4);
@@ -402,7 +402,7 @@ public class MsgBackupSelectionFragment
         if (QLog.isColorLevel()) {
           QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "onActivityResult startTime = " + this.jdField_a_of_type_Long + ", endTime = " + this.jdField_b_of_type_Long + ", mCurContentType = " + this.jdField_b_of_type_Int + ", startTimeShow = " + this.jdField_a_of_type_JavaLangString + ", endTimeShow = " + this.jdField_b_of_type_JavaLangString);
         }
-        a(this.jdField_a_of_type_Aucf.a.size());
+        a(this.jdField_a_of_type_Augo.a.size());
       }
     }
     while ((1000 != paramInt1) || (paramInt2 != 1001)) {
@@ -420,10 +420,10 @@ public class MsgBackupSelectionFragment
     {
     default: 
       return;
-    case 2131376286: 
+    case 2131376340: 
       f();
       return;
-    case 2131365002: 
+    case 2131365004: 
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "date_select startTime = " + this.jdField_a_of_type_Long + ", endTime = " + this.jdField_b_of_type_Long + ", mCurContentType = " + this.jdField_b_of_type_Int + ", startTimeShow = " + this.jdField_a_of_type_JavaLangString + ", endTimeShow = " + this.jdField_b_of_type_JavaLangString);
       }
@@ -437,11 +437,11 @@ public class MsgBackupSelectionFragment
       PublicFragmentActivity.a(getActivity(), paramView, MsgBackupDateFragment.class, 1000);
       return;
     }
-    aucf.jdField_b_of_type_Int = aucf.a().a.size();
-    auff.a();
-    auff.a.jdField_b_of_type_Long = aucf.jdField_b_of_type_Int;
+    augo.jdField_b_of_type_Int = augo.a().a.size();
+    aujo.a();
+    aujo.a.jdField_b_of_type_Long = augo.jdField_b_of_type_Int;
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "select session detail, sessionCount = " + aucf.jdField_b_of_type_Int);
+      QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "select session detail, sessionCount = " + augo.jdField_b_of_type_Int);
     }
     paramView = new Intent();
     paramView.putExtra("session_start_time", this.jdField_a_of_type_Long);
@@ -450,14 +450,14 @@ public class MsgBackupSelectionFragment
     boolean bool;
     if (this.jdField_a_of_type_Int == 0)
     {
-      bool = bdee.a(BaseApplication.getContext());
+      bool = bdin.a(BaseApplication.getContext());
       paramView.putExtra("session_net_status", bool);
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "onClick!!! TYPE_TO_OTHER_DEVICE isNetEnable = " + bool);
       }
       if (bool)
       {
-        aucf.a().a(false);
+        augo.a().a(false);
         PublicFragmentActivity.a(getActivity(), paramView, MsgBackupQRFragment.class, 1000);
       }
     }
@@ -492,16 +492,16 @@ public class MsgBackupSelectionFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Auds != null) {
-      this.jdField_a_of_type_Auds.d();
+    if (this.jdField_a_of_type_Auib != null) {
+      this.jdField_a_of_type_Auib.d();
     }
-    aucf.a().a(null);
+    augo.a().a(null);
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Auds.notifyDataSetChanged();
+    this.jdField_a_of_type_Auib.notifyDataSetChanged();
   }
 }
 

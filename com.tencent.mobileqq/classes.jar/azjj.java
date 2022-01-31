@@ -1,32 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Process;
-import com.tencent.mobileqq.startup.step.CheckPermission;
-import mqq.app.AppActivity;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
 
-public class azjj
-  implements DialogInterface.OnClickListener
+class azjj
+  implements afkw
 {
-  public azjj(CheckPermission paramCheckPermission) {}
+  azjj(azjh paramazjh, CustomFrameAnimationDrawable paramCustomFrameAnimationDrawable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramInt == 1)
-    {
-      if (this.a.checkPermission(CheckPermission.access$000(this.a)))
-      {
-        CheckPermission.access$002(this.a, null);
-        this.a.mDirector.b();
-      }
+    if (this.jdField_a_of_type_Azjh.c > 0) {
       return;
     }
-    CheckPermission.access$000(this.a).superFinish();
-    Process.killProcess(Process.myPid());
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.h();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.c();
+    azjh localazjh = this.jdField_a_of_type_Azjh;
+    localazjh.c += 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azjj
  * JD-Core Version:    0.7.0.1
  */

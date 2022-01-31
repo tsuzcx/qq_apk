@@ -1,42 +1,28 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-public class adgu
-  implements CompoundButton.OnCheckedChangeListener
+class adgu
+  implements Animation.AnimationListener
 {
-  public adgu(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  adgu(adgt paramadgt, boolean paramBoolean) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (AppSetting.c) {
-      NotifyPushSettingActivity.f(this.a).setContentDescription(alpo.a(2131708033));
+    if ((this.jdField_a_of_type_Boolean) && (adgt.a(this.jdField_a_of_type_Adgt) != null) && (adgt.a(this.jdField_a_of_type_Adgt).size() >= 2)) {
+      adgt.a(this.jdField_a_of_type_Adgt).sendEmptyMessageDelayed(1688002, 1400L);
     }
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131719109), "qqsetting_receivemsg_whenexit_key", paramBoolean);
-    SyncService.a(this.a, paramBoolean);
-    QQAppInterface localQQAppInterface = this.a.app;
-    int i;
-    if (paramBoolean)
+    if (adgt.a(this.jdField_a_of_type_Adgt) != null)
     {
-      i = 1;
-      if (!paramBoolean) {
-        break label107;
-      }
-    }
-    label107:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      azmj.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Logout_msg", 0, i, paramCompoundButton, "", "", "");
-      return;
-      i = 0;
-      break;
+      adgt.a(this.jdField_a_of_type_Adgt).a();
+      adgt.a(this.jdField_a_of_type_Adgt, null);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,26 +1,43 @@
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import mqq.os.MqqHandler;
 
 public class ahoo
-  extends zoz
+  implements View.OnTouchListener
 {
-  public ahoo(DeviceFragment paramDeviceFragment) {}
+  protected float a;
+  protected float b;
   
-  protected void a(ArrayList<DeviceInfo> paramArrayList)
+  public ahoo(NotificationView paramNotificationView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.e)
-    {
-      this.a.e = false;
-      if (this.a.jdField_a_of_type_Ahoj != null) {
-        this.a.jdField_a_of_type_Ahoj.a(this.a.b(), true, null);
+    if (paramMotionEvent.getAction() == 0) {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a(paramMotionEvent.getRawY()))
+      {
+        this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+        this.b = paramMotionEvent.getRawY();
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.sendEmptyMessageDelayed(1013, 500L);
       }
     }
-    if (this.a.jdField_a_of_type_Ahna == null) {
-      return;
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
+      continue;
+      if (paramMotionEvent.getAction() == 2)
+      {
+        if ((Math.abs(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float) > 60.0F) || (Math.abs(paramMotionEvent.getRawY() - this.b) > 60.0F)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
+        }
+      }
+      else {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
+      }
     }
-    this.a.jdField_a_of_type_Ahna.a = ((ArrayList)paramArrayList.clone());
-    this.a.jdField_a_of_type_Ahna.notifyDataSetChanged();
   }
 }
 

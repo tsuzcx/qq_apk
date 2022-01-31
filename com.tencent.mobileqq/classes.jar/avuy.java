@@ -1,17 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend;
 
 public class avuy
-  implements ValueAnimator.AnimatorUpdateListener
+  extends avun
 {
-  public avuy(ScanOcrView paramScanOcrView, avuz paramavuz) {}
+  public QIMNotifyAddFriend a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public avuy(QIMNotifyAddFriend paramQIMNotifyAddFriend)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_Avuz.e = i;
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
+    this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend = paramQIMNotifyAddFriend;
+    this.jdField_a_of_type_Long = paramQIMNotifyAddFriend.pushTime;
+  }
+  
+  public String a()
+  {
+    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.uin);
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface)
+  {
+    return "getMessage";
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.hasRead;
   }
 }
 

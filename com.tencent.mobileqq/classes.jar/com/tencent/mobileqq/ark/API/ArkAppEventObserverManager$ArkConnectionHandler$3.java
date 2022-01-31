@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ark.API;
 
-import anff;
-import anfh;
-import anfj;
+import anjo;
+import anjq;
+import anjs;
 
 public class ArkAppEventObserverManager$ArkConnectionHandler$3
   implements Runnable
 {
-  public ArkAppEventObserverManager$ArkConnectionHandler$3(anfh paramanfh) {}
+  public ArkAppEventObserverManager$ArkConnectionHandler$3(anjq paramanjq) {}
   
   public void run()
   {
-    if ((anff.a(this.a.a) != null) && (!"wifi".equals(anff.b(this.a.a))))
+    if ((anjo.a(this.a.a) != null) && (!"wifi".equals(anjo.b(this.a.a))))
     {
-      anff.a(this.a.a).a(true, "wifi");
-      anff.a(this.a.a, "wifi");
+      anjo.a(this.a.a).a(true, "wifi");
+      anjo.a(this.a.a, "wifi");
     }
   }
 }

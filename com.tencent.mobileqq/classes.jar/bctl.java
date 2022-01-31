@@ -1,6 +1,10 @@
+import android.view.MotionEvent;
+
 public abstract interface bctl
 {
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

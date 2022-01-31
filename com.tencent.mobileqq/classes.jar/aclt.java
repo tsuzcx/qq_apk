@@ -1,64 +1,20 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-public class aclt
-  implements CompoundButton.OnCheckedChangeListener
+class aclt
+  implements DialogInterface.OnCancelListener
 {
-  public aclt(ChatSettingForTroop paramChatSettingForTroop) {}
+  aclt(acls paramacls) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (((Boolean)paramCompoundButton.getTag()).booleanValue()) {
-      paramCompoundButton.setTag(Boolean.FALSE);
+    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    label20:
-    int i;
-    do
-    {
-      do
-      {
-        break label20;
-        do
-        {
-          return;
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null);
-        i = this.a.app.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      } while (i == -1);
-      if (!paramBoolean) {
-        break;
-      }
-    } while (i != 1);
-    ChatSettingForTroop.a(this.a, 4);
-    label74:
-    if (ChatSettingForTroop.a(this.a) != null) {
-      ChatSettingForTroop.d(this.a);
-    }
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean)
-    {
-      paramCompoundButton = "msg_open";
-      label107:
-      azmj.b(localQQAppInterface, "dc00899", "Grp_msg", "", "Grp_data", paramCompoundButton, 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "", "", "");
-      if (!paramBoolean) {
-        break label209;
-      }
-    }
-    label209:
-    for (paramCompoundButton = "msg_open";; paramCompoundButton = "msg_close")
-    {
-      bdaj.a("Grp_msg", "grpData_admin", paramCompoundButton, 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bdaj.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
-      return;
-      if (i == 1) {
-        break;
-      }
-      ChatSettingForTroop.a(this.a, 1);
-      break label74;
-      paramCompoundButton = "msg_close";
-      break label107;
-    }
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
   }
 }
 

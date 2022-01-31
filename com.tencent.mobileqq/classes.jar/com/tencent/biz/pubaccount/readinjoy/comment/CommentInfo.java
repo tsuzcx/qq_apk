@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import alpo;
+import alud;
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import ayvy;
-import baig;
+import azah;
+import bamp;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -43,7 +43,7 @@ public class CommentInfo
   public String commentId = "";
   public long commentTime;
   public int commentType;
-  public transient baig decodedCommentContent;
+  public transient bamp decodedCommentContent;
   public int disLikeCount;
   public boolean disLiked;
   public transient JSONArray gift_list;
@@ -67,9 +67,9 @@ public class CommentInfo
   public void createDecodedCommentContent()
   {
     if ((TextUtils.isEmpty(this.commentContent)) && (this.gift_list == null)) {
-      this.commentContent = alpo.a(2131702557);
+      this.commentContent = alud.a(2131702569);
     }
-    this.decodedCommentContent = new baig(ayvy.b(this.commentContent), 7, 16);
+    this.decodedCommentContent = new bamp(azah.b(this.commentContent), 7, 16);
   }
   
   public void createProcessedAuthorComment()
@@ -79,7 +79,7 @@ public class CommentInfo
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
       localSpannableStringBuilder.append("作者回复：");
       localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#FF8444")), 0, localSpannableStringBuilder.length(), 33);
-      localSpannableStringBuilder.append(new baig(ayvy.b(this.authorComment), 7, 16));
+      localSpannableStringBuilder.append(new bamp(azah.b(this.authorComment), 7, 16));
       this.authorRealCommentSpanSb = localSpannableStringBuilder;
     }
   }
@@ -129,7 +129,7 @@ public class CommentInfo
       }
       localSpannableStringBuilder.append("：");
       if (!TextUtils.isEmpty(localCommentInfo.commentContent)) {
-        localSpannableStringBuilder.append(new baig(ayvy.b(localCommentInfo.commentContent), 7, 16));
+        localSpannableStringBuilder.append(new bamp(azah.b(localCommentInfo.commentContent), 7, 16));
       }
       this.secondLevelCommentSpanSbList.add(localSpannableStringBuilder);
     }

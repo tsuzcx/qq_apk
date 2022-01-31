@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.apollo;
 
-import akji;
-import akkx;
-import akky;
+import aknx;
+import akpm;
+import akpn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloActionData;
 
 public class ApolloResponseManager$1$1
   implements Runnable
 {
-  public ApolloResponseManager$1$1(akky paramakky, ApolloActionData paramApolloActionData) {}
+  public ApolloResponseManager$1$1(akpn paramakpn, ApolloActionData paramApolloActionData) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Akky.a.a == null) {
+    if (this.jdField_a_of_type_Akpn.a.a == null) {
       return;
     }
-    ((akji)this.jdField_a_of_type_Akky.a.a.getManager(153)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 4);
+    ((aknx)this.jdField_a_of_type_Akpn.a.a.getManager(153)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 4);
   }
 }
 

@@ -1,33 +1,23 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.portal.PortalManager.5.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class awnd
+  extends altm
 {
-  public String a;
-  public String b;
+  public awnd(PortalManager paramPortalManager) {}
   
-  public String a()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.a);
-    return localStringBuilder.toString();
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("PortalManagerhead", 2, "onUpdateCustomHead isSuccess = " + paramBoolean + ", mobileNumber = " + paramString);
     }
-    paramString = paramString.split(" ");
-    if ((paramString != null) && (paramString.length == 2))
-    {
-      this.b = paramString[0];
-      this.a = paramString[1];
-      return;
+    if (this.a.a.containsKey(paramString)) {
+      ThreadManager.getSubThreadHandler().post(new PortalManager.5.1(this, paramString, paramBoolean));
     }
-    this.b = "";
-    this.a = "";
   }
 }
 

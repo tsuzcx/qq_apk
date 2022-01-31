@@ -1,12 +1,23 @@
 class bmjy
-  implements xrz
+  implements blwi
 {
-  bmjy(bmjx parambmjx) {}
+  bmjy(bmjt parambmjt) {}
   
-  public void a()
+  public void aX_()
   {
-    bmkb localbmkb = bmjx.a(this.a);
-    bmjx.a(this.a, bmjx.a(this.a)).a(localbmkb);
+    bmjt.a(this.a).d();
+  }
+  
+  public void b()
+  {
+    bmjt.a(this.a).d();
+    bmjt.a(this.a).a();
+    bmjt.a(this.a).a(bmjt.a(this.a));
+  }
+  
+  public void c()
+  {
+    bmjt.a(this.a).d();
   }
 }
 

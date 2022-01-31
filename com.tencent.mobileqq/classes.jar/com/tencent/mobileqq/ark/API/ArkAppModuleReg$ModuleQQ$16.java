@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.API;
 
-import afdt;
-import anfv;
+import afii;
+import anke;
 import com.tencent.ark.ark;
 import com.tencent.ark.ark.Container;
 import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
@@ -11,7 +11,7 @@ import java.lang.ref.WeakReference;
 public class ArkAppModuleReg$ModuleQQ$16
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$16(anfv paramanfv, long paramLong) {}
+  public ArkAppModuleReg$ModuleQQ$16(anke paramanke, long paramLong) {}
   
   public void run()
   {
@@ -27,11 +27,11 @@ public class ArkAppModuleReg$ModuleQQ$16
           return;
         } while (!(BaseActivity.sTopActivity instanceof ArkFullScreenAppActivity));
         localArkFullScreenAppActivity = (ArkFullScreenAppActivity)BaseActivity.sTopActivity;
-        localObject = afdt.a((ark.Container)localObject);
+        localObject = afii.a((ark.Container)localObject);
       } while (localObject == null);
-      localObject = (afdt)((WeakReference)localObject).get();
+      localObject = (afii)((WeakReference)localObject).get();
     } while (localObject == null);
-    localArkFullScreenAppActivity.a((afdt)localObject, false);
+    localArkFullScreenAppActivity.a((afii)localObject, false);
   }
 }
 

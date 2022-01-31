@@ -1,21 +1,59 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.confess.BaseMsgListFragment;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+
 public class aoin
+  extends altm
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public aoin(BaseMsgListFragment paramBaseMsgListFragment) {}
   
-  public aoin(String paramString1, String paramString2, String paramString3, String paramString4)
+  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
+    if ((paramBoolean) && ((paramObject instanceof HashMap))) {}
+    try
+    {
+      paramObject = ((HashMap)paramObject).entrySet().iterator();
+      do
+      {
+        Map.Entry localEntry;
+        do
+        {
+          if (!paramObject.hasNext()) {
+            break;
+          }
+          localEntry = (Map.Entry)paramObject.next();
+        } while (localEntry == null);
+        paramBoolean = this.a.a((String)localEntry.getKey(), 2);
+      } while (!paramBoolean);
+      i = 1;
+    }
+    catch (Throwable paramObject)
+    {
+      for (;;)
+      {
+        int i = 0;
+        continue;
+        i = 0;
+      }
+    }
+    if (i != 0) {
+      this.a.b();
+    }
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a(paramString, 1))) {
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoin
  * JD-Core Version:    0.7.0.1
  */

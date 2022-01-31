@@ -21,7 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bdkf;
+import bdoo;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import cooperation.qzone.util.QZLog;
@@ -62,7 +62,7 @@ public class ActionSheetDialog
     this.mContext = paramContext;
     setTransparentStatusBar();
     this.mInflater = LayoutInflater.from(paramContext);
-    setContentView(2131561873);
+    setContentView(2131561891);
     init();
     bindEvents();
   }
@@ -74,8 +74,8 @@ public class ActionSheetDialog
   
   private void init()
   {
-    this.customButtonContainer = ((LinearLayout)findViewById(2131364959));
-    this.mContainer = ((LinearLayout)findViewById(2131369919));
+    this.customButtonContainer = ((LinearLayout)findViewById(2131364961));
+    this.mContainer = ((LinearLayout)findViewById(2131369938));
     this.backgroundLayout = ((RelativeLayout)findViewById(2131363034));
   }
   
@@ -129,10 +129,10 @@ public class ActionSheetDialog
         continue;
         j = this.mContext.getResources().getColor(2131165204);
         continue;
-        bdkf.a(8.0F);
+        bdoo.a(8.0F);
         j = this.mContext.getResources().getColor(2131165201);
         localObject2 = new SpannableString(((Button)localObject1).getText());
-        Object localObject3 = this.mContext.getResources().getDrawable(2130848748);
+        Object localObject3 = this.mContext.getResources().getDrawable(2130848821);
         ((Drawable)localObject3).setBounds(0, 0, ((Drawable)localObject3).getIntrinsicWidth(), ((Drawable)localObject3).getIntrinsicHeight());
         localObject3 = new ImageSpan((Drawable)localObject3, 1);
         if ((((SpannableString)localObject2).length() >= 1) && (((SpannableString)localObject2).charAt(((SpannableString)localObject2).length() - 1) == '@')) {
@@ -355,10 +355,10 @@ public class ActionSheetDialog
   {
     if (paramButton != null)
     {
-      int i = bdkf.a(8.0F);
+      int i = bdoo.a(8.0F);
       int j = this.mContext.getResources().getColor(2131165201);
       SpannableString localSpannableString = new SpannableString(paramButton.getText());
-      Drawable localDrawable = this.mContext.getResources().getDrawable(2130848748);
+      Drawable localDrawable = this.mContext.getResources().getDrawable(2130848821);
       localDrawable.setBounds(i, 0, localDrawable.getIntrinsicWidth() + i, localDrawable.getIntrinsicHeight());
       localSpannableString.setSpan(new ImageSpan(localDrawable, 1), localSpannableString.length() - 1, localSpannableString.length(), 33);
       paramButton.setText(localSpannableString);

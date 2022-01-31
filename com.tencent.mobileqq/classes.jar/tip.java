@@ -91,7 +91,7 @@ public class tip
         return;
         paramArrayList = (stSimpleMetaFeed)paramArrayList.get(0);
       } while ((paramArrayList == null) || (paramArrayList.map_pass_back == null) || (paramArrayList.map_pass_back.size() != 0));
-      arrayOfByte = bdcs.a(((oye)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(274)).b());
+      arrayOfByte = bdhb.a(((oye)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(274)).b());
     } while (arrayOfByte == null);
     tlo.a("weishi-report", "load map passback length:" + arrayOfByte.length);
     tlo.b("weishi-report", "load map passback:" + tlv.a(arrayOfByte));
@@ -156,7 +156,7 @@ public class tip
           bool = false;
         }
       }
-      localWSRecommendFragment.a(paramthe.b, alpo.a(2131717392), paramBoolean1, paramBoolean2);
+      localWSRecommendFragment.a(paramthe.b, alud.a(2131717404), paramBoolean1, paramBoolean2);
       a(paramthe, paramBoolean1, paramLong);
       return;
     }
@@ -197,7 +197,7 @@ public class tip
     }
     catch (JSONException paramJSONObject1)
     {
-      aanp.d("WSRecommendFragmentPresenter", "onResult", paramJSONObject1);
+      aase.d("WSRecommendFragmentPresenter", "onResult", paramJSONObject1);
     }
   }
   
@@ -224,7 +224,7 @@ public class tip
       }
       catch (JSONException paramString)
       {
-        aanp.d("WSRecommendFragmentPresenter", "setGdtArgs", paramString);
+        aase.d("WSRecommendFragmentPresenter", "setGdtArgs", paramString);
       }
     }
     for (;;)

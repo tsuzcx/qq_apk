@@ -2,28 +2,28 @@ package com.tencent.mobileqq.servlet;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
-import ayxn;
-import bjct;
+import azbw;
+import bjha;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
-import zdu;
+import zij;
 
 public class QZoneManagerImp$3
   implements Runnable
 {
-  public QZoneManagerImp$3(ayxn paramayxn, bjct parambjct, int paramInt) {}
+  public QZoneManagerImp$3(azbw paramazbw, bjha parambjha, int paramInt) {}
   
   public void run()
   {
-    if (ayxn.a(this.this$0) == null) {
+    if (azbw.a(this.this$0) == null) {
       return;
     }
-    ContentValues localContentValues = this.jdField_a_of_type_Bjct.a();
-    localContentValues.put("own_uin", ayxn.a(this.this$0).getAccount());
+    ContentValues localContentValues = this.jdField_a_of_type_Bjha.a();
+    localContentValues.put("own_uin", azbw.a(this.this$0).getAccount());
     localContentValues.put("type", Integer.valueOf(this.jdField_a_of_type_Int));
     try
     {
-      ayxn.a(this.this$0).getApplication().getContentResolver().insert(zdu.h, localContentValues);
+      azbw.a(this.this$0).getApplication().getContentResolver().insert(zij.h, localContentValues);
       return;
     }
     catch (Exception localException)

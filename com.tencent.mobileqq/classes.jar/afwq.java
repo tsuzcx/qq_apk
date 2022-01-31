@@ -1,18 +1,8 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
-
 public class afwq
-  implements bemn
 {
-  public afwq(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, afwt paramafwt) {}
-  
-  public void a(String paramString)
+  public static boolean a(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Afwt.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Afwt.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Afwt.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
-    }
+    return ("2658655094".equals(paramString)) || ("3142131160".equals(paramString));
   }
 }
 

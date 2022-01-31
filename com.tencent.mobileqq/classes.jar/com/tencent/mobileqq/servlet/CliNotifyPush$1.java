@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.servlet;
 
-import aywx;
+import azbg;
 
 public class CliNotifyPush$1
   implements Runnable
 {
-  public CliNotifyPush$1(aywx paramaywx) {}
+  public CliNotifyPush$1(azbg paramazbg) {}
   
   public void run()
   {
-    aywx.a(this.this$0);
+    azbg.a(this.this$0);
   }
 }
 

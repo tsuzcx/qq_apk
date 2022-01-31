@@ -1,6 +1,17 @@
-public abstract interface uin
+import com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader.3;
+
+public class uin
+  implements nbt
 {
-  public abstract void a(uil paramuil);
+  public uin(StoryAlbumResourceDownloader.3 param3) {}
+  
+  public void loaded(int paramInt, String paramString)
+  {
+    uik.a(this.a.this$0);
+    uik.a(this.a.this$0, false);
+    uik.a(this.a.this$0, false);
+    wxe.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "unzip success , code = %d", Integer.valueOf(paramInt));
+  }
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import acai;
-import ahpq;
+import acex;
+import ahuf;
 
 public class AssistantSettingActivity$32$1
   implements Runnable
 {
-  public AssistantSettingActivity$32$1(acai paramacai) {}
+  public AssistantSettingActivity$32$1(acex paramacex) {}
   
   public void run()
   {

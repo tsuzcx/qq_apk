@@ -1,71 +1,64 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavVideoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.datareportviewer.ReportData;
+import java.util.ArrayList;
 
 public class aphl
-  extends apgu
+  extends BaseAdapter
 {
-  public aphl(QQAppInterface paramQQAppInterface)
+  public aphl(DataReportViewer paramDataReportViewer) {}
+  
+  public int getCount()
   {
-    super("qq.android.qav.video", paramQQAppInterface);
+    return this.a.a.size();
   }
   
-  public int a()
+  public Object getItem(int paramInt)
   {
-    return 10049;
+    return this.a.a.get(paramInt);
   }
   
-  public Class<? extends XmlData> a()
+  public long getItemId(int paramInt)
   {
-    return QavVideoData.class;
+    return paramInt;
   }
   
-  public String a()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return "qavDownloadVideoDuration";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavVideoDownloadHandler", 2, "download success: " + paramString);
-    }
-    try
+    if (paramView == null)
     {
-      bdcs.a(paramString, mum.c(), false);
-      return;
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131559473, paramViewGroup, false);
+      paramViewGroup = new aphm(this.a, paramView);
+      paramView.setTag(paramViewGroup);
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      paramString.printStackTrace();
+      ReportData localReportData = (ReportData)this.a.a.get(paramInt);
+      paramViewGroup.a.setText(localReportData.table);
+      paramViewGroup.b.setText(localReportData.mainAction);
+      paramViewGroup.c.setText(localReportData.subAction);
+      paramViewGroup.d.setText(localReportData.actionName);
+      paramViewGroup.e.setText(String.valueOf(localReportData.opType));
+      paramViewGroup.f.setText(String.valueOf(localReportData.result));
+      paramViewGroup.g.setText(localReportData.r2);
+      paramViewGroup.h.setText(localReportData.r3);
+      paramViewGroup.i.setText(localReportData.r4);
+      paramViewGroup.j.setText(localReportData.r5);
+      if (!localReportData.isLightBlueBg) {
+        break;
+      }
+      paramView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166488));
+      return paramView;
+      paramViewGroup = (aphm)paramView.getTag();
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QavVideoData localQavVideoData = (QavVideoData)a();
-    if ((localQavVideoData != null) && (!localQavVideoData.autoDownload))
-    {
-      localQavVideoData.autoDownload = true;
-      apgi.a(localQavVideoData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    return ((QavVideoData)a()).autoDownload;
+    paramView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167194));
+    return paramView;
   }
 }
 

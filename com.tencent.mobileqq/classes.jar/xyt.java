@@ -1,16 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
+import android.view.View;
 
-public class xyt
-  extends AnimatorListenerAdapter
+class xyt
+  implements bhvm
 {
-  public xyt(TopPanelViewNew paramTopPanelViewNew) {}
+  xyt(xys paramxys, View paramView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    this.a.clearAnimation();
-    this.a.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

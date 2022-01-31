@@ -1,17 +1,10 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.3;
-import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.3.1.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
 public class angn
-  implements aaif
+  extends angm
 {
-  public angn(ArkAppNotifyCenter.GdtNotify.3 param3) {}
-  
-  public void onResponse(aaie paramaaie)
-  {
-    ArkAppCenter.a().postToArkThread(new ArkAppNotifyCenter.GdtNotify.3.1.1(this, paramaaie));
-  }
+  public void a(AppInterface paramAppInterface, Bundle paramBundle) {}
 }
 
 

@@ -1,11 +1,6 @@
-import android.support.annotation.RestrictTo;
-import java.util.HashMap;
-import java.util.Map;
-
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class blzd
+public abstract interface blzd
 {
-  private Map<String, Integer> a = new HashMap();
+  public abstract void a(String paramString);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bedf;
-import beet;
+import beho;
+import bejc;
 
 class WebViewFragment$8$1
   implements Runnable
@@ -10,9 +10,9 @@ class WebViewFragment$8$1
   
   public void run()
   {
-    beet localbeet = (beet)this.a.this$0.a.a(16);
-    if (localbeet != null) {
-      localbeet.a();
+    bejc localbejc = (bejc)this.a.this$0.a.a(16);
+    if (localbejc != null) {
+      localbejc.a();
     }
   }
 }

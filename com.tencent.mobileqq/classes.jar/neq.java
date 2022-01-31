@@ -6,7 +6,7 @@ import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public final class neq
-  implements ymm
+  implements yrb
 {
   public neq(Activity paramActivity, boolean paramBoolean, String paramString) {}
   
@@ -25,7 +25,7 @@ public final class neq
     }
     if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
     {
-      paramBundle = aekt.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
+      paramBundle = aepi.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
       paramBundle.putExtra("uin", this.jdField_a_of_type_JavaLangString);
       paramBundle.putExtra("uintype", 1);
       this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);

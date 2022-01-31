@@ -124,8 +124,8 @@ public class odv
       localURLDrawableOptions.mRequestWidth = paramInt2;
       localURLDrawableOptions.mRequestHeight = paramInt3;
       paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-      paramString.setTag(bcuq.b(paramInt2, paramInt3, aekt.a(paramInt1, paramContext.getResources())));
-      paramString.setDecodeHandler(bcuq.i);
+      paramString.setTag(bcyz.b(paramInt2, paramInt3, aepi.a(paramInt1, paramContext.getResources())));
+      paramString.setDecodeHandler(bcyz.i);
       paramViewBase.setImageDrawable(paramString, true);
       return;
     }

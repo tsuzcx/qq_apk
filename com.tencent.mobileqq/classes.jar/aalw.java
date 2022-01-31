@@ -1,25 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
+import com.tencent.ark.ArkViewImplement.InputCallback;
 
 class aalw
-  extends BroadcastReceiver
+  implements ArkViewImplement.InputCallback
 {
-  private aalw(aalu paramaalu) {}
+  aalw(aalt paramaalt, AdArkAdapter.Callback paramCallback) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onFocusChanged(View paramView, boolean paramBoolean)
   {
-    int i = paramIntent.getIntExtra("android.media.EXTRA_VOLUME_STREAM_TYPE", -1);
-    if (i == 3) {}
-    for (boolean bool = true;; bool = false)
-    {
-      aanp.a("VolumeBroadcastReceiver", "VolumeBroadcastReceiver action type = " + paramIntent.getAction() + ", isStreamMusic = " + bool + ", streamType = " + i);
-      if (("android.media.VOLUME_CHANGED_ACTION".equals(paramIntent.getAction())) && (bool) && (aalu.a(this.a) != null)) {
-        aalu.a(this.a).a(new Object[0]);
-      }
-      return;
+    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
+      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.onFocusChanged(paramView, paramBoolean);
     }
   }
+  
+  public void onHideMenu(View paramView) {}
+  
+  public void onSelectChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  
+  public void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import bhpa;
+import bhth;
 import com.tencent.commonsdk.util.notification.NotificationLimiterUtil;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 
@@ -18,7 +18,7 @@ public class MiniMsgTabServerInitStep
   private void b()
   {
     a = true;
-    NotificationLimiterUtil.setLimiter(new bhpa());
+    NotificationLimiterUtil.setLimiter(new bhth());
   }
   
   public int a()

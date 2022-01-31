@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import com.tencent.biz.qqcircle.fragments.QCirclePersonalBaseBottomFragment;
 
 public class twy
-  implements View.OnClickListener
+  implements yia<trq>
 {
-  public twy(QCircleContentOperationView paramQCircleContentOperationView) {}
+  public twy(QCirclePersonalBaseBottomFragment paramQCirclePersonalBaseBottomFragment) {}
   
-  public void onClick(View paramView)
+  public void a(yii paramyii, trq paramtrq)
   {
-    QCircleContentOperationView.a(this.a, 4);
+    if (paramyii.e()) {
+      this.a.b();
+    }
   }
 }
 

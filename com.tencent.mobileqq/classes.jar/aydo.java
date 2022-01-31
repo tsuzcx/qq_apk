@@ -1,8 +1,17 @@
-public abstract interface aydo
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+
+class aydo
+  implements ayet
 {
-  public abstract void a(boolean paramBoolean);
+  aydo(aydn paramaydn) {}
   
-  public abstract boolean b();
+  public void a(String paramString)
+  {
+    if (SignatureHistoryFragment.b(this.a.a)) {
+      return;
+    }
+    SignatureHistoryFragment.a(this.a.a, paramString);
+  }
 }
 
 

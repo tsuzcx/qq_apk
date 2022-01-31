@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import awkp;
-import awkr;
+import awoy;
+import awpa;
 import java.util.List;
 
 public class PLUploadManager$1
   implements Runnable
 {
-  public PLUploadManager$1(awkp paramawkp, List paramList, long paramLong) {}
+  public PLUploadManager$1(awoy paramawoy, List paramList, long paramLong) {}
   
   public void run()
   {

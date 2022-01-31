@@ -1,377 +1,492 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.BaseConstants;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.highway.openup.SessionInfo;
+import com.tencent.mobileqq.highway.transaction.TransReport;
+import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.highway.utils.HwNetworkCenter;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.PhantomReference;
-import java.lang.ref.ReferenceQueue;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class bark
+  extends barf
 {
-  static int jdField_a_of_type_Int;
-  public static long a;
-  static PhantomReference<Object> jdField_a_of_type_JavaLangRefPhantomReference;
-  static ReferenceQueue<Object> jdField_a_of_type_JavaLangRefReferenceQueue = new ReferenceQueue();
-  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
-  public static ConcurrentHashMap<String, Long> a;
-  public static boolean a;
-  static int jdField_b_of_type_Int;
-  static long jdField_b_of_type_Long;
-  public static boolean b;
-  static int jdField_c_of_type_Int;
-  static long jdField_c_of_type_Long;
-  static boolean jdField_c_of_type_Boolean;
-  static long d;
+  bigh jdField_a_of_type_Bigh = new bigh();
+  public RandomAccessFile a;
+  ArrayList<bawy> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public byte[] a;
+  public Transaction b;
+  protected byte[] b;
+  public String c;
+  protected boolean c;
+  protected byte[] c;
+  String jdField_d_of_type_JavaLangString;
+  boolean jdField_d_of_type_Boolean = false;
+  String jdField_e_of_type_JavaLangString;
+  boolean jdField_e_of_type_Boolean = false;
+  protected String f;
+  boolean f = false;
+  protected String l;
+  String m;
+  int p;
+  int q;
+  public long q;
+  protected int r = 0;
+  protected long r;
+  protected int s;
+  public long s;
+  protected int t;
+  long t;
+  public int u = -1;
+  public long u;
+  public int v = -1;
+  protected int w = 0;
   
-  static
+  public bark(bard parambard, bayk parambayk)
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    super(parambard, parambayk);
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_s_of_type_Long = 0L;
+    this.jdField_s_of_type_Int = 0;
+    this.jdField_t_of_type_Int = 0;
+    this.jdField_t_of_type_Long = 20480L;
+    c(parambayk.jdField_c_of_type_JavaLangString + parambayk.jdField_a_of_type_Long);
+    this.jdField_c_of_type_Boolean = parambayk.jdField_e_of_type_Boolean;
   }
   
-  public static final int a(int paramInt1, int paramInt2)
+  public int a()
   {
-    return (paramInt2 & 0xF) + paramInt1 * 100;
+    return super.a();
   }
   
-  public static void a()
+  protected long a(long paramLong)
   {
-    int i = lnz.f();
-    int j = lnz.e();
-    long l1 = lnz.d();
-    long l2 = bdcb.d() / 1048576L;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("cpuArch", String.valueOf(i));
-    localHashMap.put("numCores", String.valueOf(j));
-    localHashMap.put("maxFreq", String.valueOf(l1));
-    localHashMap.put("memory", String.valueOf(l2));
-    localHashMap.put("param_FailCode", String.valueOf(i));
-    azmz.a(BaseApplication.getContext()).a(null, "actPttCpuArch", false, 0L, 0L, localHashMap, "");
+    long l1 = this.q;
+    return Math.min(this.jdField_t_of_type_Long, l1 - paramLong);
   }
   
-  public static void a(int paramInt)
+  protected baub a(byte[] paramArrayOfByte)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    azmz.a(BaseApplication.getContext()).a(null, "actPttLongPressFate2", false, 0L, 0L, localHashMap, "");
+    baub localbaub = new baub();
+    localbaub.jdField_a_of_type_Baug = this;
+    localbaub.jdField_a_of_type_JavaLangString = a(paramArrayOfByte);
+    localbaub.jdField_a_of_type_Int = 1;
+    localbaub.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    localbaub.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilArrayList;
+    localbaub.jdField_e_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Bayk.jdField_a_of_type_Long);
+    localbaub.g = this.jdField_a_of_type_Bayk.jdField_a_of_type_Int;
+    localbaub.f = this.jdField_a_of_type_Bayk.jdField_b_of_type_Int;
+    localbaub.jdField_k_of_type_Boolean = true;
+    localbaub.jdField_a_of_type_JavaUtilHashMap.put("Range", "bytes=" + this.jdField_s_of_type_Long + "-");
+    localbaub.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
+    return localbaub;
   }
   
-  public static void a(int paramInt1, int paramInt2)
+  protected String a(byte[] paramArrayOfByte)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("type", String.valueOf(paramInt1));
-    if (jdField_b_of_type_Int != 0) {}
-    for (long l1 = jdField_c_of_type_Long / jdField_b_of_type_Int;; l1 = 0L)
-    {
-      if (jdField_c_of_type_Int != 0) {}
-      for (long l2 = d / jdField_c_of_type_Int;; l2 = 0L)
-      {
-        localHashMap.put("consumePerFrame", String.valueOf(l1));
-        localHashMap.put("releasePerGc", String.valueOf(l2));
-        localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-        if (QLog.isColorLevel())
-        {
-          QLog.e("PttInfoCollector", 2, "reportSoundProcessCost gcCount=" + jdField_a_of_type_Int + " type=" + paramInt1 + " time" + paramInt2);
-          QLog.e("PttInfoCollector", 2, "reportSoundProcessCost consume=" + l1 + " release=" + l2);
-        }
-        azmz.a(BaseApplication.getContext()).a(null, "actPttGcCount", true, paramInt2, jdField_a_of_type_Int, localHashMap, "");
-        jdField_a_of_type_Int = 0;
-        jdField_c_of_type_Boolean = false;
-        jdField_a_of_type_JavaLangRefReferenceQueue.poll();
-        jdField_b_of_type_Long = 0L;
-        jdField_c_of_type_Long = 0L;
-        d = 0L;
-        jdField_b_of_type_Int = 0;
-        jdField_c_of_type_Int = 0;
-        return;
-      }
+    return null;
+  }
+  
+  public void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, int paramInt)
+  {
+    if (paramLong1 != 0L) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 1, paramInt, this.jdField_a_of_type_Bayk.jdField_a_of_type_Int, paramLong1);
+    }
+    if (paramLong2 != 0L) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 1, paramInt, this.jdField_a_of_type_Bayk.jdField_a_of_type_Int, paramLong2);
+    }
+    if (paramLong3 != 0L) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 0, paramInt, this.jdField_a_of_type_Bayk.jdField_a_of_type_Int, paramLong3);
+    }
+    if (paramLong4 != 0L) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 0, paramInt, this.jdField_a_of_type_Bayk.jdField_a_of_type_Int, paramLong4);
     }
   }
   
-  public static void a(long paramLong1, int paramInt1, long paramLong2, int paramInt2)
+  protected void a(String paramString1, boolean paramBoolean, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    HashMap localHashMap;
-    if (Math.abs(jdField_a_of_type_JavaUtilRandom.nextInt() % 100) < 10)
-    {
-      int i = lnz.f();
-      int j = lnz.e();
-      long l1 = lnz.d();
-      long l2 = bdcb.d() / 1048576L;
-      localHashMap = new HashMap();
-      localHashMap.put("cpuArch", String.valueOf(i));
-      localHashMap.put("numCores", String.valueOf(j));
-      localHashMap.put("maxFreq", String.valueOf(l1));
-      localHashMap.put("memory", String.valueOf(l2));
-      if (paramInt2 <= 2) {
-        break label172;
-      }
-    }
-    label172:
-    for (boolean bool = jdField_b_of_type_Boolean;; bool = jdField_a_of_type_Boolean)
-    {
-      localHashMap.put("v7so", String.valueOf(bool));
-      localHashMap.put("type", String.valueOf(paramInt2));
-      localHashMap.put("maxFrameCost", String.valueOf(paramLong2));
-      azmz.a(BaseApplication.getContext()).a(null, "actPttProcessFrameCost", true, paramLong1, paramInt1, localHashMap, "");
-      return;
-    }
+    this.jdField_a_of_type_Bawi.j = paramString4;
+    this.jdField_a_of_type_Bawi.k = paramString5;
+    this.jdField_a_of_type_Bawi.l = paramString6;
+    this.jdField_a_of_type_Bawi.jdField_c_of_type_JavaLangString = String.valueOf(paramInt);
+    this.jdField_a_of_type_Bawi.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Bawi.jdField_b_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_Bawi.jdField_b_of_type_Long = this.q;
+    a(paramString1, paramBoolean);
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    azmj.b(paramQQAppInterface, "CliOper", "", "", "0X80059B1", "0X80059B1", paramInt, 0, "", "", "", "8.3.3");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 0) {
-      paramInt1 = 9999;
-    }
-    for (;;)
-    {
-      azmj.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1D", "0X8005C1D", paramInt1, paramInt2, "", "", "", "8.3.3");
-      return;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, MessageRecord paramMessageRecord)
-  {
-    int i = 1;
-    if (!(paramMessageRecord instanceof MessageForPtt)) {}
-    for (;;)
-    {
-      return;
-      if (paramMessageRecord.getPttStreamFlag() != 10001)
-      {
-        if (!paramMessageRecord.isSend()) {
-          break;
-        }
-        if (((MessageForPtt)paramMessageRecord).voiceChangeFlag == 1) {}
-        while ((i != 0) && (paramInt == 1001))
-        {
-          a(paramQQAppInterface, 4);
-          return;
-          i = 0;
-        }
-      }
-    }
-    switch (paramInt)
-    {
-    case 2002: 
-    case 2004: 
-    default: 
-      return;
-    case 2001: 
-      a(paramQQAppInterface, 2);
-      return;
-    case 2003: 
-      a(paramQQAppInterface, 1);
-      return;
-    }
-    a(paramQQAppInterface, 3);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, boolean paramBoolean, int paramInt2)
-  {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      azmj.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1C", "0X8005C1C", i * 10 + paramInt1 * 100 + paramInt2, 0, "", "", "", "8.3.3");
-      return;
-    }
-  }
-  
-  public static void a(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt, long paramLong)
-  {
-    for (;;)
-    {
-      try
-      {
-        localObject = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-        if ((localObject == null) || (((Long)localObject).longValue() <= 0L)) {
-          continue;
-        }
-        if (!paramBoolean1) {
-          continue;
-        }
-        str = "pttSendTotalCost";
-      }
-      catch (Exception paramString)
-      {
-        Object localObject;
-        String str;
-        long l1;
-        long l2;
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.e("PttInfoCollector", 2, "report sendcost error" + paramString);
-        return;
-        if (!paramBoolean1) {
-          continue;
-        }
-        continue;
-      }
-      l1 = SystemClock.uptimeMillis();
-      l2 = ((Long)localObject).longValue();
-      localObject = new HashMap();
-      ((HashMap)localObject).put("isVoiceChange", String.valueOf(paramInt));
-      ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
-      azmz.a(BaseApplication.getContext()).a(null, str, paramBoolean2, l1 - l2, paramLong, (HashMap)localObject, "");
-      if ((!paramBoolean1) || (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))) {
-        return;
-      }
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      return;
-      str = "offlinePttHandleCost";
-      continue;
-      paramBoolean2 = true;
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    HashMap localHashMap = new HashMap();
-    azmz.a(BaseApplication.getContext()).a(null, "actPttDownloadStream2Offline", paramBoolean, 0L, 0L, localHashMap, "");
-  }
-  
-  public static void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3)
-  {
-    if ((paramLong1 == 1000L) || (paramLong1 == 1001L) || (paramLong1 == 10002L) || (paramLong1 == 10004L) || (paramLong1 == 1002L) || (paramLong1 == 1003L) || (paramLong1 == 1004L) || (paramLong1 == 1005L) || (paramLong1 == 1006L) || (paramLong1 == 1008L) || (paramLong1 == 1009L) || (paramLong1 == 1010L) || (paramLong1 == 1011L) || (paramLong1 == 1020L) || (paramLong1 == 1021L) || (paramLong1 == 1022L) || (paramLong1 == 1023L) || (paramLong1 == 1024L) || (paramLong1 == 1025L))
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_FailCode", String.valueOf(paramLong1));
-      azmz.a(BaseApplication.getContext()).a(null, "actAllC2CPttUp", paramBoolean, paramLong2, paramLong3, localHashMap, "");
-    }
-  }
-  
-  public static void a(boolean paramBoolean, String paramString)
-  {
-    int i = 1;
-    if (paramString.equals("codecsilk")) {
-      if (paramBoolean)
-      {
-        jdField_a_of_type_Boolean = true;
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      paramString = new HashMap();
-      paramString.put("param_FailCode", String.valueOf(i));
-      paramString.put(BaseConstants.RDM_NoChangeFailCode, "");
-      azmz.a(BaseApplication.getContext()).a(null, "actPttSoUpdate", false, 0L, 0L, paramString, "");
-      return;
-      jdField_a_of_type_Boolean = false;
-      continue;
-      if (paramBoolean)
-      {
-        jdField_b_of_type_Boolean = true;
-        i = 2;
-      }
-      else
-      {
-        i = 3;
-        jdField_b_of_type_Boolean = false;
-      }
-    }
-  }
-  
-  public static void b()
-  {
-    c();
-    d();
-  }
-  
-  public static void b(int paramInt)
-  {
-    azmz localazmz = azmz.a(BaseApplication.getContext());
-    long l = SystemClock.uptimeMillis() - jdField_a_of_type_Long;
-    if (l > 0L)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-      localazmz.a("", "PTTCostUntilPrepare", true, l, paramInt, localHashMap, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("PttInfoCollector", 2, "COST : " + l + " from : " + paramInt);
-      }
-    }
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    azmz.a(BaseApplication.getContext()).a(null, "actPttNoRangeFailed", paramBoolean, 0L, 0L, localHashMap, "");
-  }
-  
-  private static void c()
-  {
-    if (jdField_a_of_type_JavaLangRefReferenceQueue.poll() != null)
-    {
-      jdField_a_of_type_Int += 1;
-      jdField_c_of_type_Boolean = false;
-      if (QLog.isColorLevel()) {
-        QLog.e("PttInfoCollector", 2, "gc occurred:" + jdField_a_of_type_Int);
-      }
-    }
-    if (!jdField_c_of_type_Boolean)
-    {
-      jdField_a_of_type_JavaLangRefPhantomReference = new PhantomReference(new Object(), jdField_a_of_type_JavaLangRefReferenceQueue);
-      jdField_c_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.e("PttInfoCollector", 2, "add object enqueue to detect gc");
-      }
-    }
-  }
-  
-  public static void c(int paramInt)
-  {
-    azmz localazmz = azmz.a(BaseApplication.getContext());
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    localazmz.a("", "PTTStraightRecordCount", false, 0L, 0L, localHashMap, "");
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PttInfoCollector", 4, "pttStraightRecordCount " + paramInt);
-    }
-  }
-  
-  private static void d()
+  byte[] a(int paramInt1, int paramInt2)
   {
     try
     {
-      Runtime localRuntime = Runtime.getRuntime();
-      long l1 = localRuntime.freeMemory();
-      long l2 = localRuntime.totalMemory();
-      if (jdField_b_of_type_Long != 0L)
+      this.jdField_a_of_type_JavaIoRandomAccessFile.seek(paramInt1);
+      byte[] arrayOfByte = new byte[paramInt2];
+      int i = 0;
+      paramInt1 = paramInt2;
+      while (i < paramInt2)
       {
-        if (l2 - l1 <= jdField_b_of_type_Long) {
-          break label64;
+        int j = this.jdField_a_of_type_JavaIoRandomAccessFile.read(arrayOfByte, i, paramInt1);
+        if (j == -1)
+        {
+          b(9303, "fileSize not enough");
+          this.jdField_b_of_type_Barh.b();
+          return null;
         }
-        jdField_c_of_type_Long += l2 - l1 - jdField_b_of_type_Long;
-        jdField_b_of_type_Int += 1;
+        i += j;
+        paramInt1 -= j;
       }
-      for (;;)
+      return arrayOfByte;
+    }
+    catch (IOException localIOException)
+    {
+      a(localIOException);
+      localIOException.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected void aN_()
+  {
+    this.jdField_b_of_type_Barh.a();
+    long l1 = this.jdField_s_of_type_Long;
+    long l2 = a(l1);
+    Object localObject = a((int)l1, (int)l2);
+    if (localObject == null) {
+      d();
+    }
+    do
+    {
+      return;
+      b("sendingdata", "pos:" + l1 + "  transferData len:" + localObject.length);
+      localObject = a((byte[])localObject);
+      if (l1 + l2 >= this.q) {
+        ((baub)localObject).jdField_a_of_type_JavaUtilHashMap.put("Connection", "close");
+      }
+    } while (!f());
+    this.jdField_a_of_type_Bave = ((bave)localObject);
+    n();
+    this.jdField_a_of_type_Baue.a((bave)localObject);
+  }
+  
+  public int b()
+  {
+    return super.b();
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (!this.jdField_k_of_type_Boolean)
+    {
+      this.jdField_k_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        b("pause", "");
+      }
+      d(1004);
+      if (this.jdField_a_of_type_Bbax != null)
       {
-        jdField_b_of_type_Long = l2 - l1;
-        return;
-        label64:
-        d += jdField_b_of_type_Long - (l2 - l1);
-        jdField_c_of_type_Int += 1;
+        bbcd.b(this.jdField_a_of_type_Bbax);
+        this.jdField_a_of_type_Bbax = null;
+      }
+      if (this.jdField_a_of_type_Bave != null)
+      {
+        this.jdField_a_of_type_Baue.b(this.jdField_a_of_type_Bave);
+        this.jdField_a_of_type_Bave = null;
+      }
+    }
+  }
+  
+  public void d(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseTransProcessor", 2, paramString);
+    }
+  }
+  
+  protected void finalize()
+  {
+    super.finalize();
+    if (this.jdField_a_of_type_JavaIoRandomAccessFile != null) {}
+    try
+    {
+      this.jdField_a_of_type_JavaIoRandomAccessFile.close();
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaIoRandomAccessFile = null;
+    }
+  }
+  
+  protected boolean g()
+  {
+    return (this.jdField_c_of_type_ArrayOfByte != null) && (this.jdField_c_of_type_ArrayOfByte.length > 0) && (this.jdField_b_of_type_ArrayOfByte != null) && (this.jdField_b_of_type_ArrayOfByte.length > 0);
+  }
+  
+  /* Error */
+  public boolean h()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 131	bark:jdField_a_of_type_Bayk	Lbayk;
+    //   4: getfield 330	bayk:i	Ljava/lang/String;
+    //   7: astore 4
+    //   9: new 332	java/io/FileInputStream
+    //   12: dup
+    //   13: aload 4
+    //   15: invokespecial 334	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   18: astore_3
+    //   19: aload_3
+    //   20: astore_2
+    //   21: aload_0
+    //   22: aload_3
+    //   23: aload_0
+    //   24: getfield 337	bark:jdField_a_of_type_Bass	Lbass;
+    //   27: getfield 340	bass:jdField_a_of_type_Long	J
+    //   30: invokestatic 346	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   33: putfield 347	bark:jdField_a_of_type_ArrayOfByte	[B
+    //   36: aload_3
+    //   37: astore_2
+    //   38: aload_0
+    //   39: aload_0
+    //   40: getfield 347	bark:jdField_a_of_type_ArrayOfByte	[B
+    //   43: invokestatic 352	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   46: putfield 354	bark:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   49: aload_3
+    //   50: astore_2
+    //   51: aload_0
+    //   52: aload_0
+    //   53: getfield 354	bark:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   56: putfield 355	bark:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   59: aload_3
+    //   60: astore_2
+    //   61: aload_0
+    //   62: getfield 337	bark:jdField_a_of_type_Bass	Lbass;
+    //   65: aload_0
+    //   66: getfield 354	bark:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   69: putfield 357	bass:f	Ljava/lang/String;
+    //   72: aload_3
+    //   73: astore_2
+    //   74: aload_0
+    //   75: new 74	java/lang/StringBuilder
+    //   78: dup
+    //   79: invokespecial 75	java/lang/StringBuilder:<init>	()V
+    //   82: aload_0
+    //   83: getfield 354	bark:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   86: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: ldc_w 359
+    //   92: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: aload_0
+    //   96: getfield 360	bark:jdField_e_of_type_JavaLangString	Ljava/lang/String;
+    //   99: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   105: putfield 354	bark:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   108: aload_3
+    //   109: ifnull +7 -> 116
+    //   112: aload_3
+    //   113: invokevirtual 361	java/io/FileInputStream:close	()V
+    //   116: iconst_1
+    //   117: istore_1
+    //   118: iload_1
+    //   119: ireturn
+    //   120: astore_2
+    //   121: aload_3
+    //   122: astore_2
+    //   123: new 363	java/io/File
+    //   126: dup
+    //   127: aload 4
+    //   129: invokespecial 364	java/io/File:<init>	(Ljava/lang/String;)V
+    //   132: astore 4
+    //   134: aload_3
+    //   135: astore_2
+    //   136: aload 4
+    //   138: invokevirtual 367	java/io/File:exists	()Z
+    //   141: istore_1
+    //   142: iload_1
+    //   143: ifeq -107 -> 36
+    //   146: aload_3
+    //   147: astore_2
+    //   148: aload 4
+    //   150: invokestatic 372	bhpp:a	(Ljava/io/File;)Ljava/lang/String;
+    //   153: astore 4
+    //   155: aload 4
+    //   157: ifnull +17 -> 174
+    //   160: aload_3
+    //   161: astore_2
+    //   162: aload_0
+    //   163: aload 4
+    //   165: invokestatic 376	com/qq/taf/jce/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
+    //   168: putfield 347	bark:jdField_a_of_type_ArrayOfByte	[B
+    //   171: goto -135 -> 36
+    //   174: ldc_w 295
+    //   177: astore 4
+    //   179: goto -19 -> 160
+    //   182: astore_2
+    //   183: aload_2
+    //   184: invokevirtual 237	java/io/IOException:printStackTrace	()V
+    //   187: goto -71 -> 116
+    //   190: astore 4
+    //   192: aconst_null
+    //   193: astore_3
+    //   194: aload_3
+    //   195: astore_2
+    //   196: aload_0
+    //   197: aconst_null
+    //   198: putfield 347	bark:jdField_a_of_type_ArrayOfByte	[B
+    //   201: aload_3
+    //   202: astore_2
+    //   203: aload_0
+    //   204: aload 4
+    //   206: invokevirtual 234	bark:a	(Ljava/io/IOException;)V
+    //   209: iconst_0
+    //   210: istore_1
+    //   211: aload_3
+    //   212: ifnull -94 -> 118
+    //   215: aload_3
+    //   216: invokevirtual 361	java/io/FileInputStream:close	()V
+    //   219: iconst_0
+    //   220: ireturn
+    //   221: astore_2
+    //   222: aload_2
+    //   223: invokevirtual 237	java/io/IOException:printStackTrace	()V
+    //   226: iconst_0
+    //   227: ireturn
+    //   228: astore_3
+    //   229: aconst_null
+    //   230: astore_2
+    //   231: aload_2
+    //   232: ifnull +7 -> 239
+    //   235: aload_2
+    //   236: invokevirtual 361	java/io/FileInputStream:close	()V
+    //   239: aload_3
+    //   240: athrow
+    //   241: astore_2
+    //   242: aload_2
+    //   243: invokevirtual 237	java/io/IOException:printStackTrace	()V
+    //   246: goto -7 -> 239
+    //   249: astore_3
+    //   250: goto -19 -> 231
+    //   253: astore 4
+    //   255: goto -61 -> 194
+    //   258: astore_2
+    //   259: goto -223 -> 36
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	262	0	this	bark
+    //   117	94	1	bool	boolean
+    //   20	54	2	localFileInputStream1	java.io.FileInputStream
+    //   120	1	2	localUnsatisfiedLinkError	java.lang.UnsatisfiedLinkError
+    //   122	40	2	localFileInputStream2	java.io.FileInputStream
+    //   182	2	2	localIOException1	IOException
+    //   195	8	2	localFileInputStream3	java.io.FileInputStream
+    //   221	2	2	localIOException2	IOException
+    //   230	6	2	localObject1	Object
+    //   241	2	2	localIOException3	IOException
+    //   258	1	2	localIOException4	IOException
+    //   18	198	3	localFileInputStream4	java.io.FileInputStream
+    //   228	12	3	localObject2	Object
+    //   249	1	3	localObject3	Object
+    //   7	171	4	localObject4	Object
+    //   190	15	4	localIOException5	IOException
+    //   253	1	4	localIOException6	IOException
+    // Exception table:
+    //   from	to	target	type
+    //   21	36	120	java/lang/UnsatisfiedLinkError
+    //   112	116	182	java/io/IOException
+    //   9	19	190	java/io/IOException
+    //   215	219	221	java/io/IOException
+    //   9	19	228	finally
+    //   235	239	241	java/io/IOException
+    //   21	36	249	finally
+    //   38	49	249	finally
+    //   51	59	249	finally
+    //   61	72	249	finally
+    //   74	108	249	finally
+    //   123	134	249	finally
+    //   136	142	249	finally
+    //   148	155	249	finally
+    //   162	171	249	finally
+    //   196	201	249	finally
+    //   203	209	249	finally
+    //   21	36	253	java/io/IOException
+    //   38	49	253	java/io/IOException
+    //   51	59	253	java/io/IOException
+    //   61	72	253	java/io/IOException
+    //   74	108	253	java/io/IOException
+    //   123	134	253	java/io/IOException
+    //   136	142	253	java/io/IOException
+    //   148	155	258	java/io/IOException
+    //   162	171	258	java/io/IOException
+  }
+  
+  protected boolean i()
+  {
+    HwNetworkCenter.getInstance(BaseApplication.getContext()).updateNetInfo(BaseApplication.getContext());
+    return HwNetworkCenter.getInstance(BaseApplication.getContext()).getNetType() != 0L;
+  }
+  
+  protected void o()
+  {
+    try
+    {
+      int i;
+      if (SessionInfo.getInstance(this.jdField_a_of_type_Bayk.jdField_b_of_type_JavaLangString).getHttpconn_sig_session() != null)
+      {
+        i = SessionInfo.getInstance(this.jdField_a_of_type_Bayk.jdField_b_of_type_JavaLangString).getHttpconn_sig_session().length;
+        this.jdField_c_of_type_ArrayOfByte = new byte[i];
+        System.arraycopy(SessionInfo.getInstance(this.jdField_a_of_type_Bayk.jdField_b_of_type_JavaLangString).getHttpconn_sig_session(), 0, this.jdField_c_of_type_ArrayOfByte, 0, i);
+      }
+      if (SessionInfo.getInstance(this.jdField_a_of_type_Bayk.jdField_b_of_type_JavaLangString).getSessionKey() != null)
+      {
+        i = SessionInfo.getInstance(this.jdField_a_of_type_Bayk.jdField_b_of_type_JavaLangString).getSessionKey().length;
+        this.jdField_b_of_type_ArrayOfByte = new byte[i];
+        System.arraycopy(SessionInfo.getInstance(this.jdField_a_of_type_Bayk.jdField_b_of_type_JavaLangString).getSessionKey(), 0, this.jdField_b_of_type_ArrayOfByte, 0, i);
       }
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    finally {}
+  }
+  
+  protected void p()
+  {
+    int i = 1;
+    if ((this.w == 2) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("param_BdhTrans"))) {
+      if ((this.n > 0L) && (this.jdField_o_of_type_Long > 0L))
+      {
+        if ((this.p) && (i != 0))
+        {
+          this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+          this.jdField_a_of_type_JavaLangStringBuilder.append("s").append(this.jdField_o_of_type_Int).append("_").append("tr").append(this.n).append("_").append("ht").append(this.m).append("_").append("pic").append(this.jdField_o_of_type_Long).append(";");
+          this.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", String.valueOf(this.jdField_o_of_type_Long));
+          this.jdField_a_of_type_JavaUtilHashMap.put("param_CostEach", this.jdField_a_of_type_JavaLangStringBuilder.toString());
+          this.jdField_a_of_type_JavaUtilHashMap.put("param_sliceNum", String.valueOf(this.jdField_o_of_type_Int));
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("sn:").append(this.jdField_o_of_type_Int).append(";").append("tc_s:").append(this.n).append(";").append("tc_h:").append(this.m).append(";").append("tc_p:").append(this.jdField_o_of_type_Long).append(";");
+        this.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", localStringBuilder.toString());
+      }
     }
+    while ((this.w != 1) || (this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction == null)) {
+      for (;;)
+      {
+        StringBuilder localStringBuilder;
+        return;
+        i = 0;
+      }
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", String.valueOf(this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.mTransReport.timeCost_Cache));
+  }
+  
+  public void q()
+  {
+    this.jdField_k_of_type_Long = System.nanoTime();
   }
 }
 

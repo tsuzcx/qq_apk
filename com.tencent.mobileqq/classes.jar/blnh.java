@@ -1,10 +1,16 @@
-public abstract interface blnh
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+
+public class blnh
+  implements View.OnClickListener
 {
-  public abstract void a(blng paramblng);
+  public blnh(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public abstract void a(blng paramblng, int paramInt);
-  
-  public abstract void b(blng paramblng);
+  public void onClick(View paramView)
+  {
+    this.a.f();
+  }
 }
 
 

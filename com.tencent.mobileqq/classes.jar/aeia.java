@@ -1,12 +1,16 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.app.ProgressDialog;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
 
 public class aeia
+  implements alqc
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public aeia(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    TroopRobotPickerActivity.a(this.a);
+    this.a.a.dismiss();
+  }
 }
 
 

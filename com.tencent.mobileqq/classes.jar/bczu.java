@@ -1,24 +1,39 @@
-import java.util.Comparator;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
 final class bczu
-  implements Comparator
+  implements DownloadParams.DecodeHandler
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    long l1 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject1)[1]);
-    long l2 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject2)[1]);
-    if (l1 == l2) {
-      return 0;
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    if (l1 < l2) {
-      return 2;
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    if (paramDownloadParams[0] == 0) {
+      paramDownloadParams[0] = paramBitmap.getWidth();
     }
-    return -1;
+    if (paramDownloadParams[1] == 0) {
+      paramDownloadParams[1] = paramBitmap.getHeight();
+    }
+    return bdhj.d(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bczu
  * JD-Core Version:    0.7.0.1
  */

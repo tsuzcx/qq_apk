@@ -1,23 +1,6 @@
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-
-public class bdtn
-  implements TVK_IMediaPlayer.OnCompletionListener
+public abstract interface bdtn
 {
-  public bdtn(HealthBusinessPlugin paramHealthBusinessPlugin) {}
-  
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "Completion video000");
-    }
-    paramTVK_IMediaPlayer.seekTo(0);
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "Completion video");
-    }
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2);
 }
 
 

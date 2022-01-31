@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.leba;
 
-import aiac;
-import aiad;
-import aiae;
-import aiag;
-import alny;
+import aier;
+import aies;
+import aiet;
+import aiev;
+import alsn;
 import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -15,10 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import azib;
-import bjdh;
-import bjdm;
-import bjmt;
+import azmk;
+import bjho;
+import bjht;
+import bjra;
 import com.tencent.component.media.image.ImageLoader;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FrameHelperActivity;
@@ -29,14 +29,14 @@ import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.report.lp.QZoneLoginReportHelper;
 
 public class QzoneFrame
-  extends alny
+  extends alsn
 {
   public static int a;
   public static String a;
   public static int b;
-  private aiae jdField_a_of_type_Aiae = new aiad(this);
+  private aiet jdField_a_of_type_Aiet = new aies(this);
   private Fragment jdField_a_of_type_AndroidAppFragment;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aiac(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aier(this);
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
@@ -65,14 +65,14 @@ public class QzoneFrame
   
   public View a(LayoutInflater paramLayoutInflater)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131562109, null);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131562127, null);
     return this.jdField_a_of_type_AndroidViewView;
   }
   
   public void a()
   {
     super.a();
-    bjdh.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    bjho.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     e();
   }
   
@@ -104,13 +104,13 @@ public class QzoneFrame
   public void a(boolean paramBoolean)
   {
     QLog.i("QzoneFrame", 1, "onSwitchToQzone:" + paramBoolean);
-    bjmt.a().b(0);
+    bjra.a().b(0);
     ThreadManager.executeOnSubThread(new QzoneFrame.3(this));
     LpReportInfo_pf00064.allReport(637, 30, 1);
     LpReportInfo_pf00064.allReport(637, 31, 1);
     if (paramBoolean)
     {
-      aiag.b();
+      aiev.b();
       return;
     }
     LpReportInfo_pf00064.allReport(637, 23, 2);
@@ -118,8 +118,8 @@ public class QzoneFrame
   
   public void b()
   {
-    if ((this.jdField_a_of_type_AndroidAppFragment != null) && ((this.jdField_a_of_type_AndroidAppFragment instanceof bjdm))) {
-      ((bjdm)this.jdField_a_of_type_AndroidAppFragment).setQzoneSwitchlistener(this.jdField_a_of_type_Aiae);
+    if ((this.jdField_a_of_type_AndroidAppFragment != null) && ((this.jdField_a_of_type_AndroidAppFragment instanceof bjht))) {
+      ((bjht)this.jdField_a_of_type_AndroidAppFragment).setQzoneSwitchlistener(this.jdField_a_of_type_Aiet);
     }
   }
   
@@ -134,11 +134,11 @@ public class QzoneFrame
   {
     try
     {
-      bjmt.a().a();
-      ImmersiveUtils.a(azib.d(), a().getWindow());
+      bjra.a().a();
+      ImmersiveUtils.a(azmk.d(), a().getWindow());
       ImageLoader.getInstance().clear(false);
       if (this.jdField_a_of_type_AndroidAppFragment != null) {
-        ((bjdm)this.jdField_a_of_type_AndroidAppFragment).onSwitchOutofQzone();
+        ((bjht)this.jdField_a_of_type_AndroidAppFragment).onSwitchOutofQzone();
       }
       return;
     }
@@ -152,18 +152,18 @@ public class QzoneFrame
   {
     QLog.d("QzoneFrame", 1, "onCreate: ");
     super.e();
-    bjdh.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    bjdh.b(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131374645));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131374263));
-    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131374638));
-    this.jdField_b_of_type_AndroidAppFragment = bjdh.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "com.qzone.feed.ui.activity.QQLebaFriendFeedFragment");
+    bjho.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    bjho.b(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131374696));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131374314));
+    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131374689));
+    this.jdField_b_of_type_AndroidAppFragment = bjho.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "com.qzone.feed.ui.activity.QQLebaFriendFeedFragment");
     this.jdField_a_of_type_AndroidAppFragment = this.jdField_b_of_type_AndroidAppFragment;
     b();
     Object localObject;
     if (this.jdField_a_of_type_AndroidAppFragment != null)
     {
-      ((bjdm)this.jdField_b_of_type_AndroidAppFragment).setTitleView(this.jdField_a_of_type_AndroidViewViewGroup);
+      ((bjht)this.jdField_b_of_type_AndroidAppFragment).setTitleView(this.jdField_a_of_type_AndroidViewViewGroup);
       this.jdField_a_of_type_AndroidAppFragment.onAttach(a());
       this.jdField_a_of_type_AndroidAppFragment.onCreate(null);
       localObject = this.jdField_a_of_type_AndroidAppFragment.onCreateView(a().getLayoutInflater(), null, null);
@@ -185,10 +185,10 @@ public class QzoneFrame
         a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
         QZoneLoginReportHelper.reportLoginFromSimpleMode();
         return;
-        if (!(this.jdField_b_of_type_AndroidAppFragment instanceof bjdm)) {
+        if (!(this.jdField_b_of_type_AndroidAppFragment instanceof bjht)) {
           continue;
         }
-        ((bjdm)this.jdField_b_of_type_AndroidAppFragment).forceRefresh();
+        ((bjht)this.jdField_b_of_type_AndroidAppFragment).forceRefresh();
       }
       catch (Exception localException)
       {
@@ -208,8 +208,8 @@ public class QzoneFrame
     do
     {
       return;
-      if ((this.jdField_b_of_type_AndroidViewViewGroup != null) && (this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131368613) != null)) {
-        this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131368613).setVisibility(8);
+      if ((this.jdField_b_of_type_AndroidViewViewGroup != null) && (this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131368624) != null)) {
+        this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131368624).setVisibility(8);
       }
       this.jdField_a_of_type_AndroidAppFragment.onResume();
       FrameHelperActivity.c(true);
@@ -254,8 +254,8 @@ public class QzoneFrame
   public void j()
   {
     l();
-    azib.jdField_c_of_type_Int = 0;
-    azib.d = 0;
+    azmk.jdField_c_of_type_Int = 0;
+    azmk.d = 0;
     e();
   }
   
@@ -299,11 +299,11 @@ public class QzoneFrame
     if (this.jdField_c_of_type_AndroidAppFragment != null) {
       this.jdField_c_of_type_AndroidAppFragment.onDestroy();
     }
-    if ((this.jdField_b_of_type_AndroidAppFragment instanceof bjdm)) {
-      ((bjdm)this.jdField_b_of_type_AndroidAppFragment).clearCache();
+    if ((this.jdField_b_of_type_AndroidAppFragment instanceof bjht)) {
+      ((bjht)this.jdField_b_of_type_AndroidAppFragment).clearCache();
     }
-    if ((this.jdField_c_of_type_AndroidAppFragment instanceof bjdm)) {
-      ((bjdm)this.jdField_c_of_type_AndroidAppFragment).clearCache();
+    if ((this.jdField_c_of_type_AndroidAppFragment instanceof bjht)) {
+      ((bjht)this.jdField_c_of_type_AndroidAppFragment).clearCache();
     }
     this.jdField_b_of_type_AndroidAppFragment = null;
     this.jdField_c_of_type_AndroidAppFragment = null;

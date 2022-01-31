@@ -25,7 +25,7 @@ import tencent.im.oidb.cmd0xc13.oidb_0xc13.ReqBody;
 import tencent.im.oidb.cmd0xc13.oidb_0xc13.RspBody;
 
 public class nnp
-  extends alko
+  extends alpd
 {
   private String jdField_a_of_type_JavaLangString;
   private nnr jdField_a_of_type_Nnr;
@@ -64,7 +64,7 @@ public class nnp
     ThreadManager.excute(new EncryptUinHandler.3(this), 128, null, true);
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return nnr.class;
   }

@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.FilterCategory;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public final class blod
-  implements Parcelable.Creator<FilterCategory>
+public class blod
+  extends RecyclerView.ViewHolder
 {
-  public FilterCategory a(Parcel paramParcel)
-  {
-    return new FilterCategory(paramParcel);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView b;
   
-  public FilterCategory[] a(int paramInt)
+  public blod(bloa parambloa, View paramView)
   {
-    return new FilterCategory[paramInt];
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367944));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377620));
+    this.b = ((ImageView)paramView.findViewById(2131376339));
   }
 }
 

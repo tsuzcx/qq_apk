@@ -1,91 +1,74 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.mobileqq.intervideo.huayang.MonitorConfig.1;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aswz
+class aswz
+  implements INetInfoHandler
 {
-  public static Map<String, aswz> a;
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  aswz(aswy paramaswy) {}
   
-  static
+  public void onNetMobile2None()
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    if (jdField_a_of_type_JavaUtilMap.get(paramString) != null) {}
-    do
-    {
-      return;
-      paramContext = paramContext.getApplicationContext().getSharedPreferences("pre_huayang_plugin_new_start_mode", 4).getString("pre_monitor" + paramString, null);
-    } while (paramContext == null);
-    a(paramString, paramContext);
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    if ((jdField_a_of_type_JavaUtilMap.get(paramString1) != null) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    paramContext.getApplicationContext().getSharedPreferences("pre_huayang_plugin_new_start_mode", 4).edit().putString("pre_monitor" + paramString1, paramString2).commit();
-    a(paramString1, paramString2);
-  }
-  
-  private static void a(String paramString1, String paramString2)
-  {
-    try
-    {
-      paramString2 = new JSONObject(paramString2);
-      aswz localaswz = new aswz();
-      localaswz.jdField_a_of_type_Int = paramString2.optInt("startupId");
-      localaswz.b = paramString2.optInt("downloadSucId");
-      localaswz.c = paramString2.optInt("downloadFailId");
-      localaswz.d = paramString2.optInt("loadSucId");
-      localaswz.e = paramString2.optInt("loadFailId");
-      localaswz.f = paramString2.optInt("startSucId");
-      localaswz.g = paramString2.optInt("firstUserId");
-      localaswz.h = paramString2.optInt("exitId");
-      jdField_a_of_type_JavaUtilMap.put(paramString1, localaswz);
-      if (QLog.isColorLevel()) {
-        QLog.d("MonitorConfig", 2, paramString1 + localaswz);
-      }
-      return;
-    }
-    catch (Throwable paramString1)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MonitorConfig", 2, "pareMonitorConfig exception :" + paramString1);
-    }
-  }
-  
-  public static void b(Context paramContext, String paramString)
-  {
-    if (jdField_a_of_type_JavaUtilMap.get(paramString) != null)
-    {
-      aswy.b(String.valueOf(((aswz)jdField_a_of_type_JavaUtilMap.get(paramString)).jdField_a_of_type_Int));
-      return;
+    Iterator localIterator = aswy.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((asxb)localIterator.next()).a(5);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("MonitorConfig", 2, "没有找到匹配的monitor离线配置文件，重新拉取一次");
+      QLog.i("VideoItemEventManager", 2, "onNetMobile2None onConnClose");
     }
-    aswy.b("3235982");
-    new Handler(Looper.getMainLooper()).postDelayed(new MonitorConfig.1(paramContext, paramString), 1500L);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    paramString = aswy.a(this.a).iterator();
+    while (paramString.hasNext()) {
+      ((asxb)paramString.next()).a(4);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoItemEventManager", 2, "onNetMobile2Wifi onConnOK");
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    paramString = aswy.a(this.a).iterator();
+    while (paramString.hasNext()) {
+      ((asxb)paramString.next()).a(3);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoItemEventManager", 2, "onNetNone2Mobile onConnOK");
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    paramString = aswy.a(this.a).iterator();
+    while (paramString.hasNext()) {
+      ((asxb)paramString.next()).a(2);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoItemEventManager", 2, "onNetNone2Wifi onConnOK");
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    paramString = aswy.a(this.a).iterator();
+    while (paramString.hasNext()) {
+      ((asxb)paramString.next()).a(1);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    Iterator localIterator = aswy.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((asxb)localIterator.next()).a(0);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoItemEventManager", 2, "onNetWifi2None onConnClose");
+    }
   }
 }
 

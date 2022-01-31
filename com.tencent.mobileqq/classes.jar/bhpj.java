@@ -1,44 +1,25 @@
-import android.content.Context;
-import android.view.KeyEvent;
-import android.view.inputmethod.InputConnection;
-import android.view.inputmethod.InputConnectionWrapper;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.widget.AbsListView;
+import com.tencent.qphone.base.util.QLog;
 
-public class bhpj
-  extends InputConnectionWrapper
+class bhpj
+  implements bhot
 {
-  public bhpj(AbsListView paramAbsListView, InputConnection paramInputConnection, boolean paramBoolean)
-  {
-    super(paramInputConnection, paramBoolean);
-  }
+  bhpj(bhpi parambhpi) {}
   
-  public boolean performEditorAction(int paramInt)
+  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    if (paramInt == 6)
+    if ((paramObject1 != null) && ((paramObject1 instanceof String)))
     {
-      InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getContext().getSystemService("input_method");
-      if (localInputMethodManager != null) {
-        localInputMethodManager.hideSoftInputFromWindow(this.a.getWindowToken(), 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.Rpt", 2, String.format("Op: %d, Rid: %d, val: %s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), (String)paramObject1 }));
       }
-      return true;
+      this.a.a((int)paramLong1, (int)paramLong2, (String)paramObject1);
     }
-    return false;
-  }
-  
-  public boolean reportFullscreenMode(boolean paramBoolean)
-  {
-    return AbsListView.access$3400(this.a).reportFullscreenMode(paramBoolean);
-  }
-  
-  public boolean sendKeyEvent(KeyEvent paramKeyEvent)
-  {
-    return AbsListView.access$3400(this.a).sendKeyEvent(paramKeyEvent);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhpj
  * JD-Core Version:    0.7.0.1
  */

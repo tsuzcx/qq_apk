@@ -1,25 +1,63 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.net.Uri;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.manager.AccountManager;
+import mqq.observer.WtloginObserver;
+import mqq.os.MqqHandler;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public final class acgo
-  implements DialogInterface.OnClickListener
+public class acgo
+  extends WtloginObserver
 {
-  public acgo(Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
+  public acgo(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if (paramInt == 1)
+    if (paramInt == 0)
     {
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", this.jdField_a_of_type_AndroidAppActivity.getPackageName(), null));
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+      paramWUserSigInfo = (AccountManager)this.a.app.getManager(0);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
+      }
+      aqbd.a().a(this.a.app, this.a, this.a.app.getCurrentAccountUin(), true);
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131692161), 0).b(this.a.getTitleBarHeight());
+      paramWUserSigInfo = this.a.app.getHandler(LoginInfoActivity.class);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.obtainMessage(20140331, 1, 0).sendToTarget();
+      }
+      AuthDevOpenUgActivity.a(this.a, true, 0);
+      paramErrMsg = new Intent();
+      paramErrMsg.putExtra("auth_dev_open", true);
+      if (AuthDevOpenUgActivity.a(this.a) != null) {}
+      for (paramWUserSigInfo = AuthDevOpenUgActivity.a(this.a).Mobile;; paramWUserSigInfo = "")
+      {
+        paramErrMsg.putExtra("phone_num", paramWUserSigInfo);
+        this.a.a(-1, paramErrMsg);
+        return;
+      }
     }
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
+      return;
     }
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131692217), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  {
+    if ((paramInt != 0) || (paramDevlockInfo == null))
+    {
+      QQToast.a(this.a, this.a.getString(2131692227), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    AuthDevOpenUgActivity.a(this.a, paramDevlockInfo);
   }
 }
 

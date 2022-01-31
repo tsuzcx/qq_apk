@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import abzq;
+import acef;
 import android.content.Intent;
-import bdfk;
+import bdjt;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class ArkFullScreenAppActivity$8$1
   implements Runnable
 {
-  public ArkFullScreenAppActivity$8$1(abzq paramabzq) {}
+  public ArkFullScreenAppActivity$8$1(acef paramacef) {}
   
   public void run()
   {

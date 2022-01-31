@@ -1,93 +1,73 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeed;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class vex
-  extends vez
+public class vex
+  extends urt
 {
-  protected int a;
-  protected boolean a;
-  protected int b = -1;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
-  protected String h = QQStoryContext.a().b();
-  protected String i;
-  protected String j;
+  public static final String a;
+  public List<woq> a;
+  public List<String> b = new ArrayList();
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = uqn.a("StorySvc.homepage_batch_feeds_detail_720");
+  }
   
   public vex()
   {
-    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public final void a(vgd paramvgd)
+  public String a()
   {
-    super.a(paramvgd);
-    paramvgd.jdField_a_of_type_JavaLangString = a(6);
-    a(paramvgd);
+    return jdField_a_of_type_JavaLangString;
   }
   
-  protected void a(vge paramvge) {}
-  
-  public void a(vgf paramvgf)
+  public uro a(byte[] paramArrayOfByte)
   {
-    super.a(paramvgf);
-    paramvgf.b = 1;
-    paramvgf.m = this.g;
-    paramvgf.jdField_d_of_type_JavaLangString = this.f;
-    paramvgf.l = this.e;
-    paramvgf.k = this.jdField_d_of_type_JavaLangString;
-    paramvgf.jdField_a_of_type_JavaLangString = this.i;
-    paramvgf.h = a(1);
-    if (this.jdField_a_of_type_Int != -1) {
-      paramvgf.jdField_d_of_type_Int = this.jdField_a_of_type_Int;
+    qqstory_service.RspStoryFeed localRspStoryFeed = new qqstory_service.RspStoryFeed();
+    try
+    {
+      localRspStoryFeed.mergeFrom(paramArrayOfByte);
+      return new vey(localRspStoryFeed);
     }
-    if (this.b != -1) {
-      paramvgf.e = this.b;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
-    a(paramvgf);
   }
   
-  public void a(vgg paramvgg)
+  protected byte[] a()
   {
-    super.a(paramvgg);
-    paramvgg.c = this.jdField_d_of_type_JavaLangString;
-    paramvgg.jdField_d_of_type_JavaLangString = this.e;
-    paramvgg.jdField_a_of_type_JavaLangString = this.i;
-    paramvgg.e = a(2);
-    a(paramvgg);
-  }
-  
-  public void a(vgh paramvgh)
-  {
-    super.a(paramvgh);
-    paramvgh.jdField_a_of_type_JavaLangString = this.j;
-    paramvgh.e = this.i;
-    paramvgh.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    paramvgh.jdField_d_of_type_JavaLangString = vgp.a(this.i);
-    paramvgh.c = a(5);
-    a(paramvgh);
-  }
-  
-  public void a(vgi paramvgi)
-  {
-    super.a(paramvgi);
-    paramvgi.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-    paramvgi.c = this.e;
-    paramvgi.jdField_d_of_type_JavaLangString = a(3);
-    paramvgi.e = this.i;
-    paramvgi.b = true;
-    a(paramvgi);
-  }
-  
-  public void b(vgi paramvgi)
-  {
-    super.b(paramvgi);
-    paramvgi.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-    paramvgi.c = this.e;
-    paramvgi.jdField_d_of_type_JavaLangString = a(4);
-    paramvgi.e = this.i;
-    paramvgi.b = true;
-    a(paramvgi);
+    qqstory_service.ReqStoryFeed localReqStoryFeed = new qqstory_service.ReqStoryFeed();
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      woq localwoq = (woq)localIterator.next();
+      if (localwoq != null) {
+        if (TextUtils.isEmpty(localwoq.jdField_a_of_type_JavaLangString)) {
+          wxe.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "check your param feedId is null");
+        } else {
+          localArrayList.add(localwoq.a());
+        }
+      }
+    }
+    if (localArrayList.size() == 0) {
+      throw new QQStoryCmdHandler.IllegalUinException("feed id seq is null");
+    }
+    localReqStoryFeed.feed_id_list.set(localArrayList);
+    return localReqStoryFeed.toByteArray();
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import aepf;
-import aixa;
-import aixd;
+import aetu;
+import ajbp;
+import ajbs;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,19 +13,19 @@ class HongBaoPanel$5
   
   public void onItemClick(View paramView, int paramInt)
   {
-    aixd localaixd = this.this$0.mAdapter.getPanelDataAtPos(paramInt);
+    ajbs localajbs = this.this$0.mAdapter.getPanelDataAtPos(paramInt);
     if (QLog.isColorLevel()) {
-      if ("OnHolderItemClickListener onItemClick  panelData=" + localaixd != null) {
+      if ("OnHolderItemClickListener onItemClick  panelData=" + localajbs != null) {
         break label126;
       }
     }
     label126:
-    for (paramView = "null";; paramView = localaixd + ",p=" + paramInt)
+    for (paramView = "null";; paramView = localajbs + ",p=" + paramInt)
     {
       QLog.d("HongBaoPanel", 2, paramView);
-      aepf.a(this.this$0.mApp, this.this$0.mActivity, this.this$0.mSessionInfo, localaixd, this.this$0.mAdapter.getDatas(), 3);
-      if ((this.this$0.redManager != null) && (localaixd != null)) {
-        this.this$0.redManager.a(localaixd.a);
+      aetu.a(this.this$0.mApp, this.this$0.mActivity, this.this$0.mSessionInfo, localajbs, this.this$0.mAdapter.getDatas(), 3);
+      if ((this.this$0.redManager != null) && (localajbs != null)) {
+        this.this$0.redManager.a(localajbs.a);
       }
       this.this$0.mAdapter.notifyItemChanged(paramInt);
       return;

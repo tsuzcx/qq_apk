@@ -1,39 +1,42 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
 
-class ahqa
-  implements bhpo
+public class ahqa
+  extends RecyclerView.OnScrollListener
 {
-  ahqa(ahpz paramahpz) {}
+  public ahqa(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("contacts.RecommendsAdapter", 2, "onScrollStateChanged firstVisibleItem: " + paramInt1 + " visibleItemCount: " + paramInt2 + " totalItemCount: " + paramInt3);
-    }
-    if ((paramInt1 >= 1) && (paramInt1 - 1 >= 0) && (paramInt1 - 1 < this.a.getCount()))
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 0)
     {
-      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 - 1);
-      if (paramAbsListView != null) {
-        this.a.a.b(paramAbsListView, 24, 0, 1);
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopSuspiciousFragment.a(this.a).getItemCount())) {
+        TroopSuspiciousFragment.a(this.a);
       }
     }
-    if ((paramInt1 + paramInt2 < paramInt3) && (paramInt1 + paramInt2 >= 0) && (paramInt1 + paramInt2 < this.a.getCount()))
+    if (this.a.jdField_a_of_type_Bdbb != null)
     {
-      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 + paramInt2);
-      if (paramAbsListView != null) {
-        this.a.a.b(paramAbsListView, 24, 0, 1);
+      if (paramInt == 0) {
+        break label94;
       }
+      this.a.jdField_a_of_type_Bdbb.a();
+      this.a.jdField_a_of_type_Bdbb.c();
     }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt != 0) {
+    label94:
+    while (!this.a.jdField_a_of_type_Bdbb.a()) {
       return;
     }
-    this.a.f();
+    this.a.jdField_a_of_type_Bdbb.b();
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

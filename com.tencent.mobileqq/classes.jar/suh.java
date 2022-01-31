@@ -21,14 +21,14 @@ class suh
       this.jdField_a_of_type_Sue.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.a.getResources().getColor(2131166018));
       if (!this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Sue.c.setBackgroundResource(2130842809);
+        this.jdField_a_of_type_Sue.c.setBackgroundResource(2130842822);
         return false;
       }
-      this.jdField_a_of_type_Sue.c.setBackgroundResource(2130842810);
+      this.jdField_a_of_type_Sue.c.setBackgroundResource(2130842823);
       return false;
     }
     this.jdField_a_of_type_Sue.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.a.getResources().getColor(2131166017));
-    this.jdField_a_of_type_Sue.c.setBackgroundResource(2130842818);
+    this.jdField_a_of_type_Sue.c.setBackgroundResource(2130842831);
     return false;
   }
 }

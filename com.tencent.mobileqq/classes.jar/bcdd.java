@@ -1,52 +1,60 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.text.SpannableString;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
+import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
+import java.util.List;
+import java.util.Set;
 
-class bcdd
+public class bcdd
+  extends BaseAdapter
 {
-  public final int a;
-  public final SpannableString a;
+  protected List<ParagraphInfo> a;
+  protected Set<Integer> a;
   
-  public bcdd(int paramInt, SpannableString paramSpannableString)
+  public bcdd(List<ParagraphInfo> paramList, Set<Integer> paramSet)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidTextSpannableString = paramSpannableString;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaUtilSet = paramSet;
   }
   
-  public boolean equals(Object paramObject)
+  public ParagraphInfo a(int paramInt)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (bcdd)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
-        return false;
-      }
-      if (this.jdField_a_of_type_AndroidTextSpannableString != null) {
-        return this.jdField_a_of_type_AndroidTextSpannableString.equals(paramObject.jdField_a_of_type_AndroidTextSpannableString);
-      }
-    } while (paramObject.jdField_a_of_type_AndroidTextSpannableString == null);
-    return false;
+    return (ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  public int hashCode()
+  public int getCount()
   {
-    int j = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_AndroidTextSpannableString != null) {}
-    for (int i = this.jdField_a_of_type_AndroidTextSpannableString.hashCode();; i = 0) {
-      return i + j * 31;
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560476, paramViewGroup, false);
     }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("AtTag{");
-    localStringBuilder.append("startIndex=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", atSpan=").append(this.jdField_a_of_type_AndroidTextSpannableString);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    Object localObject1 = (CheckBox)localView.findViewById(2131364254);
+    paramView = (TextView)localView.findViewById(2131378722);
+    ((CheckBox)localObject1).setChecked(this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt)));
+    Object localObject2 = a(paramInt);
+    localObject1 = String.format(SelectReciteParagraphFragment.b, new Object[] { Integer.valueOf(((ParagraphInfo)localObject2).pid + 1) });
+    localObject2 = new SpannableString((String)localObject1 + ((ParagraphInfo)localObject2).content_html);
+    ((SpannableString)localObject2).setSpan(new bcqs(paramViewGroup.getContext(), paramViewGroup.getContext().getResources().getColor(2131166976), 17, 4, 3, 12, Color.parseColor("#777777"), (String)localObject1), 0, ((String)localObject1).length(), 33);
+    paramView.setText((CharSequence)localObject2);
+    return localView;
   }
 }
 

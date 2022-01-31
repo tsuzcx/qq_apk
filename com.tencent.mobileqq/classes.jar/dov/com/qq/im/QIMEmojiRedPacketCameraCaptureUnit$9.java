@@ -1,22 +1,22 @@
 package dov.com.qq.im;
 
-import alpo;
+import alud;
 import android.widget.TextView;
-import azmj;
-import bkjf;
+import azqs;
+import bknm;
 import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
 
 public class QIMEmojiRedPacketCameraCaptureUnit$9
   implements Runnable
 {
-  public QIMEmojiRedPacketCameraCaptureUnit$9(bkjf parambkjf) {}
+  public QIMEmojiRedPacketCameraCaptureUnit$9(bknm parambknm) {}
   
   public void run()
   {
     this.this$0.g();
-    this.this$0.c.setText(alpo.a(2131710177));
+    this.this$0.c.setText(alud.a(2131710189));
     this.this$0.a.B();
-    azmj.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.failure", 0, 0, "", "", "", "");
+    azqs.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.failure", 0, 0, "", "", "", "");
   }
 }
 

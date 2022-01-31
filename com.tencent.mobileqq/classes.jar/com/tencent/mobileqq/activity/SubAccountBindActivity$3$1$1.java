@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import adva;
-import advb;
+import adzp;
+import adzq;
 import android.content.Intent;
 import com.tencent.qphone.base.remote.SimpleAccount;
 
 public class SubAccountBindActivity$3$1$1
   implements Runnable
 {
-  public SubAccountBindActivity$3$1$1(advb paramadvb) {}
+  public SubAccountBindActivity$3$1$1(adzq paramadzq) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Adva.a.e();
-    this.a.jdField_a_of_type_Adva.a.b(this.a.jdField_a_of_type_Adva.a.getString(2131720450));
-    Intent localIntent = new Intent(this.a.jdField_a_of_type_Adva.a, SubLoginActivity.class);
+    this.a.jdField_a_of_type_Adzp.a.e();
+    this.a.jdField_a_of_type_Adzp.a.b(this.a.jdField_a_of_type_Adzp.a.getString(2131720462));
+    Intent localIntent = new Intent(this.a.jdField_a_of_type_Adzp.a, SubLoginActivity.class);
     localIntent.putExtra("subuin", this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin());
-    localIntent.putExtra("fromWhere", this.a.jdField_a_of_type_Adva.a.b);
-    this.a.jdField_a_of_type_Adva.a.startActivity(localIntent);
+    localIntent.putExtra("fromWhere", this.a.jdField_a_of_type_Adzp.a.b);
+    this.a.jdField_a_of_type_Adzp.a.startActivity(localIntent);
   }
 }
 

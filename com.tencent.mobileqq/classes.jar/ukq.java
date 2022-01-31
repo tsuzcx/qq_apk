@@ -1,66 +1,25 @@
 import android.os.Handler;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager.ProgressStatus.1;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.album.view.AlbumImageView;
 
-public class ukq
+class ukq
+  implements Animation.AnimationListener
 {
-  public int a;
-  private Runnable a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  private boolean b;
+  ukq(ukp paramukp) {}
   
-  private ukq(ukp paramukp)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new StoryVideoUploadProgressManager.ProgressStatus.1(this);
-  }
-  
-  private void c()
-  {
-    switch (this.jdField_a_of_type_Int)
+    if (ukl.a(this.a.a) == 1)
     {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            this.jdField_b_of_type_Int = 0;
-            return;
-            this.jdField_b_of_type_Int += 1;
-          } while (this.jdField_b_of_type_Int < 60);
-          this.jdField_b_of_type_Int = 59;
-          return;
-          this.jdField_b_of_type_Int += 1;
-        } while (this.jdField_b_of_type_Int < 95);
-        this.jdField_b_of_type_Int = 94;
-        return;
-        this.jdField_b_of_type_Int += 1;
-      } while (this.jdField_b_of_type_Int < 100);
-      this.jdField_b_of_type_Int = 99;
-      return;
+      this.a.a.b.setVisibility(8);
+      ukl.a(this.a.a).sendEmptyMessage(1);
     }
-    this.jdField_b_of_type_Int = 100;
   }
   
-  public void a()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    ukp.a(this.jdField_a_of_type_Ukp).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void b()
-  {
-    this.jdField_b_of_type_Boolean = true;
-    ukp.a(this.jdField_a_of_type_Ukp).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

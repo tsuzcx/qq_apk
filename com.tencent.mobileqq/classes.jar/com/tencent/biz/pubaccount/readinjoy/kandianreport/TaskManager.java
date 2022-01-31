@@ -4,9 +4,9 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.text.TextUtils;
-import bdcb;
-import bdcs;
-import bjxj;
+import bdgk;
+import bdhb;
+import bkbq;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
@@ -251,7 +251,7 @@ public class TaskManager
   
   public static boolean getConfigOn()
   {
-    return ((Integer)bjxj.a("kandianreport_ON", Integer.valueOf(0))).intValue() == 1;
+    return ((Integer)bkbq.a("kandianreport_ON", Integer.valueOf(0))).intValue() == 1;
   }
   
   public static TaskManager getInstance()
@@ -379,7 +379,7 @@ public class TaskManager
           if (((File)localObject1).exists())
           {
             localObject2 = new StringBuffer();
-            localObject1 = bdcs.b((File)localObject1);
+            localObject1 = bdhb.b((File)localObject1);
             if (localJSContext == null) {
               continue;
             }
@@ -448,13 +448,13 @@ public class TaskManager
   
   private boolean isTaskAvailable(Task paramTask)
   {
-    int i = ((Integer)bjxj.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(0))).intValue();
+    int i = ((Integer)bkbq.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(0))).intValue();
     return (i != Task.STATUS_FAIL) && (i != Task.STATUS_QUIT);
   }
   
   private Task readTaskConfigFile(File paramFile)
   {
-    return readTaskConfigJson(bdcs.a(paramFile));
+    return readTaskConfigJson(bdhb.a(paramFile));
   }
   
   private Task readTaskConfigJson(String paramString)
@@ -526,7 +526,7 @@ public class TaskManager
   private void readTasksFromConfigFile()
   {
     QLog.d("kandianreport.taskmanager", 1, "readTasksFromConfigFile...");
-    if (bdcs.a(TASK_CONFIG_DIR))
+    if (bdhb.a(TASK_CONFIG_DIR))
     {
       Object localObject1 = new File(TASK_CONFIG_DIR).listFiles();
       this.taskList.clear();
@@ -607,8 +607,8 @@ public class TaskManager
     paramString1.put("version", scriptVersion + "");
     paramString1.put("so_version", KandianReportSoLoader.getSoVersion() + "");
     paramString1.put("phone", Build.MODEL);
-    paramString1.put("sys_version", bdcb.e());
-    paramString1.put("qq_version", bdcb.c());
+    paramString1.put("sys_version", bdgk.e());
+    paramString1.put("qq_version", bdgk.c());
     paramString1.put("appid", AppSetting.a() + "");
     nrt.a(null, "", "0X800982F", "0X800982F", 0, 0, "", "", "", paramString1.toString(), false);
   }
@@ -634,7 +634,7 @@ public class TaskManager
       if (isStarted) {
         return;
       }
-      if (bdcs.a(SCRIPT_ROOT_PATH)) {
+      if (bdhb.a(SCRIPT_ROOT_PATH)) {
         break label124;
       }
       QLog.d("kandianreport.taskmanager", 1, "startTasksIfExist: offline root dir is null");
@@ -786,7 +786,7 @@ public class TaskManager
   {
     QLog.d("kandianreport.taskmanager", 2, "mark task fail " + paramTask.id);
     paramTask.status = Task.STATUS_FAIL;
-    bjxj.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(Task.STATUS_FAIL));
+    bkbq.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(Task.STATUS_FAIL));
   }
   
   public void qlog(int paramInt, String paramString)
@@ -807,7 +807,7 @@ public class TaskManager
           initTask(localTask);
           startTask(localTask);
           localTask.status = Task.STATUS_ACCEPT;
-          bjxj.a("kandianreport.taskmanager" + paramString, Integer.valueOf(Task.STATUS_ACCEPT));
+          bkbq.a("kandianreport.taskmanager" + paramString, Integer.valueOf(Task.STATUS_ACCEPT));
         }
         catch (Exception localException)
         {
@@ -840,7 +840,7 @@ public class TaskManager
   public void restore()
   {
     QLog.d("kandianreport.taskmanager", 1, "restore");
-    bjxj.a("kandianreport_ON", Integer.valueOf(1));
+    bkbq.a("kandianreport_ON", Integer.valueOf(1));
   }
   
   public void startAllTasks()

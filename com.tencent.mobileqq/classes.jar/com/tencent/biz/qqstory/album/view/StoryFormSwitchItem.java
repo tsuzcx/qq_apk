@@ -17,8 +17,8 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcvq;
-import beln;
+import bczz;
+import bepw;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
@@ -26,7 +26,7 @@ import com.tencent.widget.Switch;
 
 public class StoryFormSwitchItem
   extends RelativeLayout
-  implements beln
+  implements bepw
 {
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
@@ -78,14 +78,14 @@ public class StoryFormSwitchItem
   private void a()
   {
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131366747);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131366757);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
     int m = getContext().getResources().getDimensionPixelSize(2131296653);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, m);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166901));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166903));
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
     setLeftIcon(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.i, this.j);
@@ -99,13 +99,13 @@ public class StoryFormSwitchItem
     this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_a_of_type_Boolean);
     if ((AppSetting.c) && (Build.VERSION.SDK_INT >= 16))
     {
-      bcvq.a(this.jdField_a_of_type_AndroidWidgetTextView, false);
-      bcvq.a(this.jdField_a_of_type_ComTencentWidgetSwitch, false);
+      bczz.a(this.jdField_a_of_type_AndroidWidgetTextView, false);
+      bczz.a(this.jdField_a_of_type_ComTencentWidgetSwitch, false);
       if (TextUtils.isEmpty(getContentDescription())) {
         setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText());
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetSwitch.setId(2131366746);
+    this.jdField_a_of_type_ComTencentWidgetSwitch.setId(2131366756);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.rightMargin = this.h;
     localLayoutParams.addRule(11);
@@ -310,7 +310,7 @@ public class StoryFormSwitchItem
       {
         this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166901));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166903));
       }
     }
     else {

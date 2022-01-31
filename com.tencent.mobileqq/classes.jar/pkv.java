@@ -111,9 +111,9 @@ public class pkv
     if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
       l = paramBaseArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Long;
     }
-    JSONObject localJSONObject = new pjo().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l).f(paramBaseArticleInfo).g(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).k(paramBaseArticleInfo).p(paramBaseArticleInfo).r(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).x(paramBaseArticleInfo).A(paramBaseArticleInfo).B(paramBaseArticleInfo).D(paramBaseArticleInfo).C(paramBaseArticleInfo).a("ReadInjoy_original_cell").E(paramBaseArticleInfo).I(paramBaseArticleInfo).a(paramBaseArticleInfo, alpo.a(2131700642)).a();
+    JSONObject localJSONObject = new pjo().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l).f(paramBaseArticleInfo).g(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).k(paramBaseArticleInfo).p(paramBaseArticleInfo).r(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).x(paramBaseArticleInfo).A(paramBaseArticleInfo).B(paramBaseArticleInfo).D(paramBaseArticleInfo).C(paramBaseArticleInfo).a("ReadInjoy_original_cell").E(paramBaseArticleInfo).I(paramBaseArticleInfo).a(paramBaseArticleInfo, alud.a(2131700654)).a();
     if (!opj.a(paramBaseArticleInfo)) {
-      a(paramBaseArticleInfo, alpo.a(2131700641), localJSONObject);
+      a(paramBaseArticleInfo, alud.a(2131700653), localJSONObject);
     }
     return localJSONObject;
   }
@@ -134,7 +134,7 @@ public class pkv
         localLinearLayout.setOrientation(1);
         localLinearLayout.addView(new ComponentContentGridImage(paramContainer.getContext()));
         localLinearLayout.addView(new ComponentContentUgcImage(paramContainer.getContext()));
-        paramInt1 = aekt.a(12.0F, paramContainer.getContext().getResources());
+        paramInt1 = aepi.a(12.0F, paramContainer.getContext().getResources());
         ((RelativeLayout.LayoutParams)localObject3).setMargins(paramInt1, 0, paramInt1, 0);
         ((prm)localObject1).a((RelativeLayout.LayoutParams)localObject3);
         ((NativeMiddleBodyView)localObject2).a(localLinearLayout, (RelativeLayout.LayoutParams)localObject3);

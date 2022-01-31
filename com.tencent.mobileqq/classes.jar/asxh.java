@@ -1,29 +1,42 @@
 import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0x87a.RspBody;
 
-class asxh
-  implements View.OnClickListener
+final class asxh
+  extends avvc
 {
-  asxh(asxg paramasxg) {}
+  asxh(Activity paramActivity, String paramString, Runnable paramRunnable) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    asxx.a.a(31, null);
-    aswd.a(asxg.a(this.a).getApplicationContext(), this.a.a).a();
-    asxg.a(this.a).finish();
-    asxg.a(this.a).opType("huiyin").opName("loading_close").d1(String.valueOf(bdee.a(asxg.a(this.a).getApplicationContext()))).d2(String.valueOf(asxg.a(this.a))).report();
-    if (asxg.a(this.a) == 1)
-    {
-      if (!bdee.a(asxg.a(this.a).getApplicationContext())) {
-        asxg.a(this.a).opType("huiyin").opName("plugin_download_close").report();
-      }
+    QLog.e("FaceLoginHelper", 1, new Object[] { "cmd : ", paramString1, " code : ", Integer.valueOf(paramInt), " message : ", paramString2 });
+    if (paramInt == 89) {
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131699376), 0).a();
     }
-    else {
+    for (;;)
+    {
+      if (this.jdField_a_of_type_JavaLangRunnable != null) {
+        this.jdField_a_of_type_JavaLangRunnable.run();
+      }
+      return;
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, 0).a();
+    }
+  }
+  
+  public void a(oidb_0x87a.RspBody paramRspBody)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, AuthDevVerifyCodeActivity.class);
+    localIntent.putExtra("k_from", "f_SetFaceData");
+    if (this.jdField_a_of_type_JavaLangString == null) {}
+    for (paramRspBody = "";; paramRspBody = this.jdField_a_of_type_JavaLangString)
+    {
+      localIntent.putExtra("phone_num", paramRspBody);
+      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 11);
       return;
     }
-    asxg.a(this.a).opType("huiyin").opName("plugin_download_loading_close").report();
   }
 }
 

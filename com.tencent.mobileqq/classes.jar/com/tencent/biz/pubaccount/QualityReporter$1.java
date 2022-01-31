@@ -21,7 +21,7 @@ public final class QualityReporter$1
     cc_sso_report_svr.ReportInfoReq localReportInfoReq = new cc_sso_report_svr.ReportInfoReq();
     localReportInfoReq.basic_info.channel.set(0);
     localReportInfoReq.basic_info.platform.set(1);
-    localReportInfoReq.basic_info.version.set("8.3.3.4515");
+    localReportInfoReq.basic_info.version.set("8.3.5.4555");
     localReportInfoReq.basic_info.setHasFlag(true);
     localReportInfoReq.video_info.busitype.set(this.a.jdField_a_of_type_Int);
     localReportInfoReq.video_info.file_size.set(this.a.p);

@@ -1,16 +1,27 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbgm
-  implements bbgq
+  extends ampt
 {
-  public bbgm(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
-  
-  public void a(Bitmap paramBitmap)
+  public bbgm(QLifeCommentActivity paramQLifeCommentActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bevy);
-    WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QLifeCommentActivity", 2, "onLocationFinish() errCode=" + paramInt);
+    }
+    if (paramSosoLbsInfo != null)
+    {
+      this.a.a = paramSosoLbsInfo.a.a;
+      this.a.b = paramSosoLbsInfo.a.b;
+    }
+    QLifeCommentActivity.a(this.a, this.a.a, this.a.b);
   }
 }
 

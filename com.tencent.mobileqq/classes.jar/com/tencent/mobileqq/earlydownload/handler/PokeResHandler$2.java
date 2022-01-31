@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.earlydownload.handler;
 
-import afsw;
-import aphc;
+import afxl;
+import apll;
 
 public class PokeResHandler$2
   implements Runnable
 {
-  public PokeResHandler$2(aphc paramaphc) {}
+  public PokeResHandler$2(apll paramapll) {}
   
   public void run()
   {
-    afsw.a(this.this$0.a, null);
+    afxl.a(this.this$0.a, null);
   }
 }
 

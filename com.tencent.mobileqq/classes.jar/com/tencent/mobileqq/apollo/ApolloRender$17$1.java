@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo;
 
-import akkn;
+import akpc;
 import android.text.Editable;
 
 public class ApolloRender$17$1
   extends IApolloRunnableTask
 {
-  public ApolloRender$17$1(akkn paramakkn, Editable paramEditable) {}
+  public ApolloRender$17$1(akpc paramakpc, Editable paramEditable) {}
   
   public String a()
   {

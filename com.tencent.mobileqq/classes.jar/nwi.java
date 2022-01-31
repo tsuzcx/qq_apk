@@ -72,7 +72,7 @@ public abstract class nwi
   
   public void a()
   {
-    bjxj.e(true);
+    bkbq.e(true);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
@@ -116,7 +116,7 @@ public abstract class nwi
   
   public void d()
   {
-    bjxj.e(false);
+    bkbq.e(false);
   }
   
   public void e() {}

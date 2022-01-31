@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import becq;
+import begz;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,7 +19,7 @@ class EmojiJsPlugin$6
     try
     {
       paramDialogInterface.put("result", 2);
-      paramDialogInterface.put("message", this.this$0.mRuntime.a().getString(2131692099));
+      paramDialogInterface.put("message", this.this$0.mRuntime.a().getString(2131692100));
       if (QLog.isColorLevel()) {
         QLog.i(EmojiJsPlugin.TAG, 2, "startDownloadEmoji resp to js:" + paramDialogInterface.toString());
       }

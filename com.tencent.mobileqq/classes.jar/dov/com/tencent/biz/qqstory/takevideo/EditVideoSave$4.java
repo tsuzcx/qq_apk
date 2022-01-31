@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.app.Dialog;
-import bmjn;
+import bmnz;
 
 public class EditVideoSave$4
   implements Runnable
 {
-  public EditVideoSave$4(bmjn parambmjn) {}
+  public EditVideoSave$4(bmnz parambmnz) {}
   
   public void run()
   {
-    bmjn.a(this.this$0).show();
+    bmnz.a(this.this$0).show();
   }
 }
 

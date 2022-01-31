@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version;
 
-import utx;
-import uuq;
+import uyg;
+import uyz;
 
 public final class RecommendActivityViewHolder$1
   implements Runnable
 {
-  public RecommendActivityViewHolder$1(utx paramutx) {}
+  public RecommendActivityViewHolder$1(uyg paramuyg) {}
   
   public void run()
   {
-    uuq.d(this.a);
+    uyz.d(this.a);
   }
 }
 

@@ -1,8 +1,6 @@
-import java.util.Collection;
-
 public abstract interface bjdz
 {
-  public abstract Collection<bjds> a();
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

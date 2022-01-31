@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class StoryEntry
-  extends awbv
+  extends awge
 {
   public String coverUrl;
   public long dbTime = System.currentTimeMillis();
@@ -12,7 +12,7 @@ public class StoryEntry
   public String extra2;
   public String extra3;
   public int hasUnWatchVideo;
-  @awdj
+  @awhs
   public String key;
   public String mDoodleText;
   public int seq;

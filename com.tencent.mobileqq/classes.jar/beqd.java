@@ -1,39 +1,20 @@
-import com.tencent.mobileqq.data.MedalList;
-import com.tencent.mobileqq.data.MedalList.Info;
-import java.util.ArrayList;
+import android.widget.BaseAdapter;
 
-public class beqd
+public abstract class beqd
+  extends BaseAdapter
 {
-  private MedalList a;
+  protected int a = 0;
   
-  public int a()
+  public abstract int a();
+  
+  public abstract int a(int paramInt);
+  
+  public void a(int paramInt)
   {
-    if (this.a != null) {
-      return this.a.infoList.size();
-    }
-    return 0;
+    this.a = paramInt;
   }
   
-  public int a(int paramInt)
-  {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
-      return ((MedalList.Info)this.a.infoList.get(paramInt)).type;
-    }
-    return 0;
-  }
-  
-  public String a(int paramInt)
-  {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
-      return ((MedalList.Info)this.a.infoList.get(paramInt)).value;
-    }
-    return null;
-  }
-  
-  public void a(MedalList paramMedalList)
-  {
-    this.a = paramMedalList;
-  }
+  public abstract int b(int paramInt);
 }
 
 

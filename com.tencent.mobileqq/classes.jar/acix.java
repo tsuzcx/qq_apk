@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import java.util.List;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class acix
-  implements army
+  implements bets
 {
-  public acix(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList) {}
+  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131372245);
   
-  public void a()
+  public acix(BaseChatPie paramBaseChatPie) {}
+  
+  public boolean a()
   {
-    arni.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+    return (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.isDirty()) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.isDirty()) || (this.jdField_a_of_type_AndroidViewView.isDirty());
   }
-  
-  public void b() {}
 }
 
 

@@ -1,32 +1,12 @@
+import android.content.Context;
 import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.NowLive;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import com.tencent.shadow.dynamic.host.PluginManager;
 
-class aszg
-  implements ataw
+public abstract interface aszg
+  extends PluginManager
 {
-  aszg(asyy paramasyy) {}
-  
-  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 101);
-    NowLive.sendServerPushMessage(asyy.a(this.a, localBundle, paramNewTogetherRoomMessageData));
-  }
-  
-  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 102);
-    NowLive.sendServerPushMessage(asyy.a(this.a, localBundle, paramNewTogetherRoomMessageData));
-  }
-  
-  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 103);
-    NowLive.sendServerPushMessage(asyy.a(this.a, localBundle, paramNewTogetherRoomMessageData));
-  }
+  public abstract void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback);
 }
 
 

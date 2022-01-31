@@ -1,84 +1,60 @@
-import android.app.Activity;
-import android.text.SpannableString;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arik
-  extends arin
+  implements aocf
 {
-  private arnx a;
+  private String a;
   
-  public arik(arfz paramarfz, Activity paramActivity)
+  public arik(String paramString)
   {
-    super(paramarfz, paramActivity);
-    this.jdField_a_of_type_Arnx = new aril(this);
+    this.a = paramString;
+    if (bdhb.b(this.a)) {
+      this.a = new File(this.a).getAbsolutePath();
+    }
   }
   
-  private boolean c()
+  private String a()
   {
-    return (d()) && (!this.jdField_a_of_type_Arfz.f());
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("file_color_note_local_path", this.a);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JSONException localJSONException) {}
+    return "";
   }
   
-  private boolean d()
+  public ColorNote getColorNote()
   {
-    return (arni.a(this.jdField_a_of_type_AndroidAppActivity.getBaseContext(), this.jdField_a_of_type_Arfz.c(), this.jdField_a_of_type_Arfz.c())) || (badt.c(this.jdField_a_of_type_Arfz.d(), this.jdField_a_of_type_Arfz.c(), this.jdField_a_of_type_Arfz.c()));
-  }
-  
-  public void a()
-  {
-    super.a();
+    if (!bdhb.b(this.a))
+    {
+      QLog.i("FavFileColorNoteServiceInfo", 1, "getColorNote: loacl file path is null");
+      return null;
+    }
+    aocl localaocl = new aocl();
+    localaocl.a(17039360);
+    String str = arsx.b(4, this.a);
     if (QLog.isColorLevel()) {
-      QLog.i("SimpleFilePresenter<FileAssistant>", 1, "FileBrowserPresenter init: type = preview simple");
+      QLog.i("FavFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
     }
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_Arfz.h())) || (16 == this.jdField_a_of_type_Arfz.b()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d(false);
-      if (this.jdField_a_of_type_Arfz.b() != 16) {
-        break label123;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131692559));
+    localaocl.a(str);
+    str = arrr.a(this.a);
+    localaocl.b(str);
+    localaocl.c(arso.a(arrr.a(this.a)));
+    int i = arrr.a(arrr.a(str));
+    localaocl.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localaocl.a(str.getBytes());
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(true);
-      if (this.jdField_a_of_type_Arfz.i()) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(false);
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(this.jdField_a_of_type_Arfz.h());
-      break;
-      label123:
-      if (this.jdField_a_of_type_Arfz.d())
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131692750));
-      }
-      else
-      {
-        if (c()) {
-          break label178;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131692919));
-      }
-    }
-    label178:
-    Object localObject;
-    if (bdee.d(BaseApplicationImpl.getContext())) {
-      if (bdee.h(BaseApplication.getContext())) {
-        localObject = BaseApplicationImpl.getContext().getString(2131692941);
-      }
-    }
-    for (;;)
-    {
-      localObject = arni.a((String)localObject, alpo.a(2131708791), this.jdField_a_of_type_Arnx);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a((SpannableString)localObject);
-      break;
-      localObject = BaseApplicationImpl.getContext().getString(2131692943);
-      continue;
-      localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131692919);
-    }
+    return localaocl.a();
   }
 }
 

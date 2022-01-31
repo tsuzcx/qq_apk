@@ -1,39 +1,92 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.handler.VidToBasicInfoHandler.1;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-class vei
-  extends unj<vcf, vcg>
+public class vei
+  extends vce
+  implements urr<vgh, vhs>
 {
-  vei(veh paramveh, String[] paramArrayOfString) {}
+  private static ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public List<String> a;
+  private final boolean jdField_a_of_type_Boolean;
   
-  public void a(@NonNull vcf paramvcf, @Nullable vcg paramvcg, @NonNull ErrorMessage paramErrorMessage)
+  public vei(List<String> paramList)
   {
-    if ((paramvcg == null) || (paramvcg.jdField_a_of_type_Int != 0))
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    a(paramList);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public vei(List<String> paramList, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    a(paramList);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  private void a(List<String> paramList)
+  {
+    if (paramList != null)
     {
-      if (paramvcg != null) {}
-      for (int i = paramvcg.jdField_a_of_type_Int;; i = -1)
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("EncryptUrlJob", 2, "encrypt failed, error code = " + i);
+        String str = (String)paramList.next();
+        if (!StoryVideoItem.isFakeVid(str)) {
+          this.jdField_a_of_type_JavaUtilList.add(str);
         }
-        veh.a(this.jdField_a_of_type_Veh, false);
-        return;
       }
     }
-    if (((Boolean)((urk)urr.a(10)).b("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue()) {}
-    for (paramvcf = vgp.a(this.jdField_a_of_type_ArrayOfJavaLangString[1], veh.a(this.jdField_a_of_type_Veh));; paramvcf = this.jdField_a_of_type_ArrayOfJavaLangString[1])
+  }
+  
+  public void a()
+  {
+    Bosses.get().postLightWeightJob(new VidToBasicInfoHandler.1(this), 0);
+  }
+  
+  public void a(@NonNull vgh paramvgh, @Nullable vhs paramvhs, @NonNull ErrorMessage paramErrorMessage)
+  {
+    vej localvej = new vej();
+    if ((paramvhs == null) || (paramErrorMessage.isFail()))
     {
-      paramvcf = this.jdField_a_of_type_ArrayOfJavaLangString[0] + "?token=" + paramvcg.jdField_a_of_type_JavaLangString + "&" + paramvcf;
-      if (QLog.isColorLevel()) {
-        QLog.d("EncryptUrlJob", 2, new Object[] { "encrypt done url:", paramvcf });
-      }
-      this.jdField_a_of_type_Veh.a("EncryptUrlJob_coverUrl", paramvcg.c);
-      this.jdField_a_of_type_Veh.a("EncryptUrlJob_encryptedUrl", paramvcf);
-      veh.b(this.jdField_a_of_type_Veh, true);
-      return;
+      c();
+      localvej.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      umc.a().dispatch(localvej);
+      paramvgh = paramvgh.jdField_a_of_type_JavaUtilList.iterator();
     }
+    while (paramvgh.hasNext())
+    {
+      paramvhs = (String)paramvgh.next();
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramvhs);
+      continue;
+      paramvgh = (uvx)uwa.a(5);
+      if (paramvhs.jdField_a_of_type_JavaUtilList != null)
+      {
+        paramErrorMessage = paramvhs.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramErrorMessage.hasNext()) {
+          ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
+        }
+      }
+      paramvhs.jdField_a_of_type_JavaUtilList = paramvgh.a(paramvhs.jdField_a_of_type_JavaUtilList);
+      localvej.jdField_a_of_type_JavaUtilList = paramvhs.jdField_a_of_type_JavaUtilList;
+      ((umm)uwa.a(28)).a(paramvhs.b);
+      umc.a().dispatch(localvej);
+      b();
+    }
+  }
+  
+  public String toString()
+  {
+    return "VidToBasicInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

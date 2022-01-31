@@ -1,14 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 
-class acee
-  implements DialogInterface.OnClickListener
+public class acee
+  implements View.OnClickListener
 {
-  acee(acec paramacec) {}
+  public acee(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    this.a.finish();
+    this.a.overridePendingTransition(2130771997, 2130772001);
   }
 }
 

@@ -1,15 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class aduc
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public aduc(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public aduc(RegisterActivity paramRegisterActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SoundAndVibrateActivity.a(this.a, paramBoolean);
+    paramDialogInterface.dismiss();
+    this.a.a.sendEmptyMessage(1);
   }
 }
 

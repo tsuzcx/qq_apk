@@ -1,13 +1,13 @@
 package com.tencent.gdtad.api;
 
-import aaie;
-import aaif;
-import aaig;
-import aain;
-import aaio;
-import aaip;
-import aaiq;
-import aanp;
+import aamt;
+import aamu;
+import aamv;
+import aanc;
+import aand;
+import aane;
+import aanf;
+import aase;
 import android.content.Context;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -21,22 +21,22 @@ public abstract class GdtAd
 {
   private static int jdField_a_of_type_Int;
   private static long jdField_a_of_type_Long = -2147483648L;
-  private WeakReference<aaip> listener;
-  private aaif loadListener = new aain(this);
+  private WeakReference<aane> listener;
+  private aamu loadListener = new aanc(this);
   private long loadedTimeMillis = -2147483648L;
-  private aaie loader;
+  private aamt loader;
   private int status = 0;
   
-  public GdtAd(aaiq paramaaiq)
+  public GdtAd(aanf paramaanf)
   {
-    if (paramaaiq == null)
+    if (paramaanf == null)
     {
-      aanp.d("GdtAd", "constructor");
+      aase.d("GdtAd", "constructor");
       return;
     }
-    aaig localaaig = new aaig();
-    localaaig.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = paramaaiq.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet;
-    this.loader = new aaie(localaaig, new WeakReference(this.loadListener));
+    aamv localaamv = new aamv();
+    localaamv.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = paramaanf.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet;
+    this.loader = new aamt(localaamv, new WeakReference(this.loadListener));
   }
   
   private void a()
@@ -45,10 +45,10 @@ public abstract class GdtAd
     new Handler().post(new GdtAd.2(this, localWeakReference));
   }
   
-  private void a(aaio paramaaio)
+  private void a(aand paramaand)
   {
     WeakReference localWeakReference = new WeakReference(this);
-    new Handler().post(new GdtAd.1(this, localWeakReference, paramaaio));
+    new Handler().post(new GdtAd.1(this, localWeakReference, paramaand));
   }
   
   public com.tencent.gdtad.aditem.GdtAd getAd()
@@ -96,12 +96,12 @@ public abstract class GdtAd
     return 0;
   }
   
-  public aaie getGdtAdLoader()
+  public aamt getGdtAdLoader()
   {
     return this.loader;
   }
   
-  public abstract aaiq getParams();
+  public abstract aanf getParams();
   
   public boolean isInvalidated()
   {
@@ -123,7 +123,7 @@ public abstract class GdtAd
     if (paramContext == null) {}
     for (;;)
     {
-      aanp.d("GdtAd", String.format("load error, status:%d", new Object[] { Integer.valueOf(this.status) }));
+      aase.d("GdtAd", String.format("load error, status:%d", new Object[] { Integer.valueOf(this.status) }));
       return false;
       if ((isValid()) && ((this.status == 0) || (this.status == 3)))
       {
@@ -134,7 +134,7 @@ public abstract class GdtAd
           break label114;
         }
         this.status = 3;
-        a(new aaio(2));
+        a(new aand(2));
       }
     }
     jdField_a_of_type_Int = 0;
@@ -164,7 +164,7 @@ public abstract class GdtAd
     new Handler().post(new GdtAd.3(this, localWeakReference));
   }
   
-  public void setListener(WeakReference<aaip> paramWeakReference)
+  public void setListener(WeakReference<aane> paramWeakReference)
   {
     this.listener = paramWeakReference;
   }

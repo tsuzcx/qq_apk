@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video.multivideo;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -18,21 +18,21 @@ public class MultiVideoLoadingFooter
   public MultiVideoLoadingFooter(Context paramContext)
   {
     super(paramContext);
-    inflate(paramContext, 2131560161, this);
+    inflate(paramContext, 2131560160, this);
     addOnLayoutChangeListener(new rni(this));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369762));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369771));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131369768));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369781));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369790));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131369787));
     a(1);
   }
   
   private String a(int paramInt)
   {
     if (paramInt == 1) {
-      return alpo.a(2131716628);
+      return alud.a(2131716640);
     }
     if (paramInt == 2) {
-      return alpo.a(2131716625);
+      return alud.a(2131716637);
     }
     return null;
   }

@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-
 public class abwg
-  implements DialogInterface.OnClickListener
 {
-  public abwg(AccountManageActivity paramAccountManageActivity) {}
+  public double a;
+  public long a;
+  public String a;
+  public double b;
+  public long b;
+  public long c = 9223372036854775807L;
+  public long d = 9223372036854775807L;
+  public long e = 9223372036854775807L;
+  public long f;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public abwg()
   {
-    azmj.b(this.a.app, "CliOper", "", "", "0X80040A7", "0X80040A7", 0, 0, "", "", "", "");
-    this.a.d();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 9223372036854775807L;
+    this.jdField_b_of_type_Long = 9223372036854775807L;
+    this.jdField_a_of_type_Double = (0.0D / 0.0D);
+    this.jdField_b_of_type_Double = (0.0D / 0.0D);
   }
 }
 

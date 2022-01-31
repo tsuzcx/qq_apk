@@ -1,81 +1,96 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import com.tencent.mobileqq.profile.view.ProfileLabelPanelAdapter;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import java.net.URLEncoder;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class awrg
-  extends BaseAdapter
+  extends VasWebviewJsPlugin
 {
-  List<ProfileLabelInfo> jdField_a_of_type_JavaUtilList;
-  
-  private awrg(ProfileLabelPanelAdapter paramProfileLabelPanelAdapter) {}
-  
-  public void a(List<ProfileLabelInfo> paramList)
+  public awrg()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.mPluginNameSpace = "profie_edit";
   }
   
-  public int getCount()
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    ProfileLabelInfo localProfileLabelInfo;
-    if (paramView == null)
+    try
     {
-      paramView = new ToggleButton(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_AndroidContentContext);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(28.0F * this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_Float)));
-      paramView.setBackgroundResource(2130849852);
-      paramViewGroup = (ToggleButton)paramView;
-      paramViewGroup.setGravity(17);
-      paramViewGroup.setTextSize(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_AndroidContentContext.getResources().getInteger(2131427334));
-      paramViewGroup.setTextColor(Color.parseColor("#777777"));
-      paramViewGroup.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter);
-      localProfileLabelInfo = (ProfileLabelInfo)getItem(paramInt);
-      if (localProfileLabelInfo == null) {
-        break label204;
-      }
-      paramViewGroup.setTag(localProfileLabelInfo);
-      if (localProfileLabelInfo.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
-        break label198;
+      localObject = URLEncoder.encode(paramString, "UTF-8");
+      paramString = (String)localObject;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        try
+        {
+          Object localObject;
+          paramContext.startActivity((Intent)localObject);
+          return;
+        }
+        catch (SecurityException paramQQAppInterface) {}
+        localException = localException;
+        QLog.e("ProfileEditWebViewPlugin", 2, "openNickSetWeb", localException);
       }
     }
-    label198:
-    for (boolean bool = true;; bool = false)
+    paramString = "https://ti.qq.com/hybrid-h5/qq/nick" + "?curNick=" + paramString;
+    localObject = new Intent(paramContext, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
+    ((Intent)localObject).putExtra("url", paramString);
+  }
+  
+  protected void a(String paramString)
+  {
+    for (;;)
     {
-      paramViewGroup.setChecked(bool);
-      paramViewGroup.setText(localProfileLabelInfo.labelName);
-      paramViewGroup.setTextOn(localProfileLabelInfo.labelName);
-      paramViewGroup.setTextOff(localProfileLabelInfo.labelName);
-      if (localProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_Awre.a(localProfileLabelInfo, paramViewGroup);
+      try
+      {
+        paramString = new JSONObject(paramString).optString("nickname");
+        if (this.mRuntime.a() == null) {
+          return;
+        }
+        if ((this.mRuntime.a() == null) || (this.mRuntime.a() == null)) {
+          break;
+        }
+        Object localObject1 = QIPCClientHelper.getInstance().getClient();
+        Object localObject2 = new Bundle();
+        ((Bundle)localObject2).putString("nickname", paramString);
+        localObject1 = ((EIPCClient)localObject1).callServer("CommonModule", "set_nickname", (Bundle)localObject2);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        localObject2 = new StringBuilder().append("setNickName, result=");
+        if (localObject1 != null)
+        {
+          i = ((EIPCResult)localObject1).code;
+          QLog.d("ProfileEditWebViewPlugin", 2, i + ", nickname = " + paramString);
+          return;
+        }
       }
-      return paramView;
-      paramViewGroup = (ToggleButton)paramView;
-      break;
+      catch (JSONException paramString)
+      {
+        return;
+      }
+      int i = -1;
     }
-    label204:
-    paramViewGroup.setVisibility(8);
-    return paramView;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (("profie_edit".equals(paramString2)) && ("setnick".equals(paramString3)) && (paramVarArgs.length == 1)) {
+      a(paramVarArgs[0]);
+    }
+    return false;
   }
 }
 

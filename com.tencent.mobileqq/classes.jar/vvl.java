@@ -1,29 +1,29 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
 public class vvl
-  extends uhw<vvc, uow>
+  implements Animator.AnimatorListener
 {
-  public vvl(vvc paramvvc)
-  {
-    super(paramvvc);
-  }
+  public vvl(XViewPager paramXViewPager) {}
   
-  public void a(@NonNull vvc paramvvc, @NonNull uow paramuow)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((paramvvc.a != null) && (TextUtils.equals(paramvvc.a.b, paramuow.a)))
-    {
-      wsv.a(this.TAG, "receive feed info change event. %s.", paramuow.toString());
-      paramvvc.i();
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(0);
     }
   }
   
-  public Class acceptEventClass()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return uow.class;
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(0);
+    }
   }
   
-  public void b(@NonNull vvc paramvvc, @NonNull uow paramuow) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

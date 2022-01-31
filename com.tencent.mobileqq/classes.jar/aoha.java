@@ -1,76 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.RoundImageView;
 
-public class aoha
-  extends aofy<aohb>
+class aoha
+  extends apdb
 {
-  public int a()
-  {
-    return 537;
-  }
+  public ETTextView a;
+  public RoundImageView a;
   
-  @NonNull
-  public aohb a(int paramInt)
+  public aoha(aogx paramaogx, View paramView)
   {
-    return new aohb();
-  }
-  
-  @Nullable
-  public aohb a(aogf[] paramArrayOfaogf)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed");
-    }
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
-    {
-      paramArrayOfaogf = paramArrayOfaogf[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed, content:" + paramArrayOfaogf);
-      }
-      return aohb.a(paramArrayOfaogf);
-    }
-    return new aohb();
-  }
-  
-  public Class a()
-  {
-    return aohb.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOVideoPlayConfigProcessor", 2, "onReqFailed");
-    }
-  }
-  
-  public void a(aohb paramaohb)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOVideoPlayConfigProcessor", 2, "onUpdate");
-    }
-    azqe.a().a(paramaohb);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView.findViewById(2131367819));
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)paramView.findViewById(2131364511));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoha
  * JD-Core Version:    0.7.0.1
  */

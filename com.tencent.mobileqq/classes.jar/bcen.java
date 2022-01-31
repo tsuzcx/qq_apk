@@ -1,26 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ArithmeticImageView;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class bcen
-  implements bhqd
+  implements beqw
 {
-  public bcen(VisitorTroopCardFragment paramVisitorTroopCardFragment, bhpy parambhpy) {}
+  public bcen(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(String paramString)
   {
-    switch (this.jdField_a_of_type_Bhpy.a(paramInt).c)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      VisitorTroopCardFragment.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
-      continue;
-      bclo.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      continue;
-      bclo.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
+    this.a.a.setVisibility(8);
   }
 }
 

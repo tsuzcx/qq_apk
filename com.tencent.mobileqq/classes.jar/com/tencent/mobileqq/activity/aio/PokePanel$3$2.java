@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aepp;
-import aeps;
+import aeue;
+import aeuh;
 
 public class PokePanel$3$2
   implements Runnable
 {
-  public PokePanel$3$2(aepp paramaepp, String paramString1, String paramString2, boolean paramBoolean) {}
+  public PokePanel$3$2(aeue paramaeue, String paramString1, String paramString2, boolean paramBoolean) {}
   
   public void run()
   {
-    PokePanel.a(this.jdField_a_of_type_Aepp.a).a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.b).intValue(), false, this.jdField_a_of_type_Boolean);
+    PokePanel.a(this.jdField_a_of_type_Aeue.a).a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.b).intValue(), false, this.jdField_a_of_type_Boolean);
   }
 }
 

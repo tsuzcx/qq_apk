@@ -1,40 +1,33 @@
-import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class azvn
+public class azvn
   implements View.OnClickListener
 {
-  azvn(azvm paramazvm) {}
+  public azvn(StructMsgForGeneralShare paramStructMsgForGeneralShare, PopupWindow paramPopupWindow, Context paramContext) {}
   
   public void onClick(View paramView)
   {
-    Context localContext = paramView.getContext();
-    if (bdee.a(localContext) == 1)
-    {
-      azvm.a(this.a, localContext, paramView);
-      if ((localContext instanceof BaseActivity)) {
-        azmj.b(((BaseActivity)localContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
-      }
+    QLog.d(StructMsgForGeneralShare.access$000(), 1, "delete_ad");
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
     }
-    for (;;)
-    {
-      azmj.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
-      return;
-      if (!bdee.g(localContext))
-      {
-        QQToast.a(localContext, 2131692397, 0).a();
-      }
-      else
-      {
-        Resources localResources = localContext.getResources();
-        bdcd.a(localContext, 232, "", alpo.a(2131714972), localResources.getString(2131690648), localResources.getString(2131694951), new azvo(this, localContext, paramView), new azvp(this)).show();
-      }
-    }
+    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
+    ((nud)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(8, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
+    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692458), 1).a();
   }
 }
 

@@ -52,7 +52,7 @@ class pgz
         if (j != 0) {
           break label168;
         }
-        bjxj.a("key_sp_is_readinjoy_youngster", Integer.valueOf(2));
+        bkbq.a("key_sp_is_readinjoy_youngster", Integer.valueOf(2));
         return;
       }
       catch (Exception paramArrayOfByte) {}
@@ -62,7 +62,7 @@ class pgz
       QLog.d("SelfInfoModule", 2, "updateSelfYoungsterModeSetting failed.");
       return;
       label168:
-      bjxj.a("key_sp_is_readinjoy_youngster", Integer.valueOf(1));
+      bkbq.a("key_sp_is_readinjoy_youngster", Integer.valueOf(1));
       return;
       label178:
       i += 1;

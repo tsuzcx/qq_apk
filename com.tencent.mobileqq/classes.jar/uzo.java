@@ -1,23 +1,48 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeWatched;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class uzo
-  extends ugz
+  extends urt<uzp>
 {
-  public final String a;
-  public final String b;
-  public final String c;
+  static final String a = uqn.a("StorySvc.msgtab_node_watched");
+  public long b;
+  public String b;
+  public int c;
+  public int d;
   
-  public uzo(ErrorMessage paramErrorMessage, String paramString1, String paramString2, String paramString3)
+  public String a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.c = paramString3;
+    return a;
   }
   
-  public String toString()
+  public uro a(byte[] paramArrayOfByte)
   {
-    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.c + "} " + super.toString();
+    qqstory_service.RspMsgTabNodeWatched localRspMsgTabNodeWatched = new qqstory_service.RspMsgTabNodeWatched();
+    try
+    {
+      localRspMsgTabNodeWatched.mergeFrom(paramArrayOfByte);
+      return new uzp(localRspMsgTabNodeWatched);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.d("Q.qqstory.msgTab:ReqMsgTabNodeWatched", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqMsgTabNodeWatched localReqMsgTabNodeWatched = new qqstory_service.ReqMsgTabNodeWatched();
+    localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    localReqMsgTabNodeWatched.node_type.set(this.c);
+    localReqMsgTabNodeWatched.operation.set(this.d);
+    localReqMsgTabNodeWatched.recommend_id.set(this.jdField_b_of_type_Long);
+    return localReqMsgTabNodeWatched.toByteArray();
   }
 }
 

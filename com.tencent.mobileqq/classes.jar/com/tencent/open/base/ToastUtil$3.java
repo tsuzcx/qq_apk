@@ -2,19 +2,19 @@ package com.tencent.open.base;
 
 import android.view.View;
 import android.widget.Toast;
-import bexd;
-import bfhq;
+import bfbm;
+import bflz;
 
 public class ToastUtil$3
   implements Runnable
 {
-  public ToastUtil$3(bfhq parambfhq, View paramView, int paramInt) {}
+  public ToastUtil$3(bflz parambflz, View paramView, int paramInt) {}
   
   public void run()
   {
     if (this.this$0.b == null)
     {
-      this.this$0.b = new Toast(bexd.a().a());
+      this.this$0.b = new Toast(bfbm.a().a());
       this.this$0.b.setView(this.jdField_a_of_type_AndroidViewView);
       this.this$0.b.setDuration(this.jdField_a_of_type_Int);
       this.this$0.b.show();

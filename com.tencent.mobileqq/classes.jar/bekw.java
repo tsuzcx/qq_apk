@@ -1,55 +1,30 @@
-import android.graphics.Point;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.widget.DraggableGridView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bekw
-  extends BaseAdapter
+  implements bela
 {
-  private int jdField_a_of_type_Int;
+  public bekw(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState, long paramLong) {}
   
-  public bekw(DraggableGridView paramDraggableGridView, int paramInt)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext()), this.jdField_a_of_type_Int, paramInt, paramViewGroup);
+    if (TextUtils.isEmpty(paramString)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Int = 10003;
     }
-    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(localView, this.jdField_a_of_type_Int, paramInt);
-    paramView = new beku(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, this.jdField_a_of_type_Int, paramInt);
-    localView.setOnClickListener(paramView);
-    localView.setOnLongClickListener(paramView);
-    if ((!DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)) && ((DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).y != this.jdField_a_of_type_Int) || (DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).x != paramInt) || (!DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)))) {
-      localView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_JavaLangString = paramString;
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.g = true;
     }
-    return localView;
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = false;
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Bekm.d = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Boolean = true;
+    }
   }
 }
 

@@ -1,16 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.14;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ajyn
-  implements DialogInterface.OnClickListener
+  extends awhw
 {
-  public ajyn(ShortVideoPlayActivity.14 param14) {}
+  public ajyn(ContactsInnerFrame paramContactsInnerFrame) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.this$0.s();
+    this.a.a.unRegistObserver(this);
+    switch (ContactsInnerFrame.a(this.a).d())
+    {
+    case 2: 
+    case 3: 
+    case 4: 
+    case 8: 
+    default: 
+      ContactsInnerFrame.c(this.a);
+      return;
+    case 0: 
+    case 7: 
+    case 9: 
+      ContactsInnerFrame.a(this.a);
+      return;
+    case 1: 
+    case 5: 
+      ContactsInnerFrame.b(this.a);
+      return;
+    }
+    if (ContactsInnerFrame.a(this.a).a().lastUsedFlag == 2L)
+    {
+      ContactsInnerFrame.a(this.a);
+      return;
+    }
+    ContactsInnerFrame.b(this.a);
   }
 }
 

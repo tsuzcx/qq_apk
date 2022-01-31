@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amof;
-import amqu;
-import amrl;
+import amsu;
+import amvj;
+import amwa;
 
 public class Interactive3DRenderable$1
   implements Runnable
 {
-  public Interactive3DRenderable$1(amrl paramamrl) {}
+  public Interactive3DRenderable$1(amwa paramamwa) {}
   
   public void run()
   {
-    if (amrl.a(this.this$0) != 9) {}
+    if (amwa.a(this.this$0) != 9) {}
     do
     {
       return;
-      if (amrl.a(this.this$0) != null) {
-        amrl.a(this.this$0).b(0, 2);
+      if (amwa.a(this.this$0) != null) {
+        amwa.a(this.this$0).b(0, 2);
       }
-    } while (amrl.a(this.this$0) == null);
-    amrl.a(this.this$0).a(true);
+    } while (amwa.a(this.this$0) == null);
+    amwa.a(this.this$0).a(true);
   }
 }
 

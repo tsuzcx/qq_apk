@@ -1,13 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class avmu
-  implements avnk
+  implements DialogInterface.OnClickListener
 {
-  avmu(avms paramavms, String paramString) {}
+  avmu(avmf paramavmf) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      this.jdField_a_of_type_Avms.b(this.jdField_a_of_type_JavaLangString, paramInt);
-    }
+    this.a.d(true);
+    azqs.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
   }
 }
 

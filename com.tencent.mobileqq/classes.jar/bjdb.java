@@ -1,30 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.GeoInfo;
+import cooperation.qzone.LbsDataV2.GetGeoInfoRsp;
+import cooperation.qzone.LbsDataV2.GpsInfo;
 
-class bjdb
-  extends BroadcastReceiver
+public final class bjdb
+  implements Parcelable.Creator<LbsDataV2.GetGeoInfoRsp>
 {
-  private String jdField_a_of_type_JavaLangString;
-  
-  private bjdb(bjcz parambjcz) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public LbsDataV2.GetGeoInfoRsp a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    LbsDataV2.GetGeoInfoRsp localGetGeoInfoRsp = new LbsDataV2.GetGeoInfoRsp();
+    if (paramParcel != null)
     {
-      if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
-        break label40;
-      }
-      bjcz.a(this.jdField_a_of_type_Bjcz, true);
+      localGetGeoInfoRsp.stGps = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
+      localGetGeoInfoRsp.stGeoInfo = ((LbsDataV2.GeoInfo)paramParcel.readParcelable(LbsDataV2.GeoInfo.class.getClassLoader()));
     }
-    label40:
-    while (!this.jdField_a_of_type_JavaLangString.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
-      return;
-    }
-    bjcz.b(this.jdField_a_of_type_Bjcz, true);
+    return localGetGeoInfoRsp;
+  }
+  
+  public LbsDataV2.GetGeoInfoRsp[] a(int paramInt)
+  {
+    return null;
   }
 }
 

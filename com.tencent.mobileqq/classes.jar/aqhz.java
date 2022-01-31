@@ -1,13 +1,24 @@
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-class aqhz
-  implements bhrf
+final class aqhz
+  implements View.OnClickListener
 {
-  aqhz(aqhx paramaqhx, View paramView) {}
+  aqhz(Context paramContext, Dialog paramDialog) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", "https://ti.qq.com/extend-friend/?_wv=536870912");
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    azqs.b(null, "dc00898", "", "", "kuolie", "0X80097DE", 0, 0, "", "", "", "");
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

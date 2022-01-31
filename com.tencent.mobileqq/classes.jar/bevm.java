@@ -1,13 +1,22 @@
-import android.content.Context;
-import com.tencent.wifisdk.TMSDKCustomConfig.IInstaller;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.SlideDownFrameLayout;
 
-final class bevm
-  implements TMSDKCustomConfig.IInstaller
+public class bevm
+  implements Animator.AnimatorListener
 {
-  public boolean installApp(Context paramContext, String paramString)
+  public bevm(SlideDownFrameLayout paramSlideDownFrameLayout) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return bfij.a(paramContext, paramString, "biz_src_wifi");
+    SlideDownFrameLayout.a(this.a).a();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

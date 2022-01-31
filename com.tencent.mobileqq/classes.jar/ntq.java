@@ -12,7 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ntq
-  implements aoga<String>
+  implements aokj<String>
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = 3000L;
@@ -211,28 +211,28 @@ public class ntq
     return this;
   }
   
-  public static ntq a(aogf[] paramArrayOfaogf)
+  public static ntq a(aoko[] paramArrayOfaoko)
   {
     Object localObject1 = new ntq();
     Object localObject2 = localObject1;
     label94:
     Object localObject3;
-    if (paramArrayOfaogf != null)
+    if (paramArrayOfaoko != null)
     {
       localObject2 = localObject1;
-      if (paramArrayOfaogf.length > 0)
+      if (paramArrayOfaoko.length > 0)
       {
         int i1 = 0;
         String str;
         for (;;)
         {
-          if (i1 >= paramArrayOfaogf.length) {
+          if (i1 >= paramArrayOfaoko.length) {
             break label94;
           }
-          str = paramArrayOfaogf[i1].jdField_a_of_type_JavaLangString;
+          str = paramArrayOfaoko[i1].jdField_a_of_type_JavaLangString;
           try
           {
-            localObject2 = ((ntq)localObject1).a((ntq)aogt.a(str, ntq.class), str);
+            localObject2 = ((ntq)localObject1).a((ntq)aolc.a(str, ntq.class), str);
             localObject1 = localObject2;
           }
           catch (QStorageInstantiateException localQStorageInstantiateException)

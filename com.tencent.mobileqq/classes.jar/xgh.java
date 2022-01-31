@@ -1,8 +1,8 @@
-class xgh
+public abstract interface xgh
 {
-  int jdField_a_of_type_Int;
-  xgf jdField_a_of_type_Xgf;
-  xgg jdField_a_of_type_Xgg;
+  public abstract void a();
+  
+  public abstract void a(Runnable paramRunnable);
 }
 
 

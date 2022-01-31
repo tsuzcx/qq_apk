@@ -1,129 +1,165 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.tablequery.ReportData.ReportDataItem;
-import com.tencent.mobileqq.tablequery.ReportData.RspBody;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.util.List;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import android.text.TextUtils;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.studymode.StudyModeSwitchDialog.btnSwitchOn.2;
+import com.tencent.mobileqq.studymode.StudyModeSwitchDialog.ivClose.2;
+import com.tencent.mobileqq.studymode.StudyModeSwitchDialog.manager.2;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import kotlin.Lazy;
+import kotlin.LazyKt;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class babh
-  extends MSFServlet
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/StudyModeSwitchDialog;", "Landroid/app/Dialog;", "Lcom/tencent/mobileqq/studymode/ModeSwitchManager$OnModeChangeResultCallback;", "activity", "Lcom/tencent/mobileqq/app/BaseActivity;", "(Lcom/tencent/mobileqq/app/BaseActivity;)V", "btnSwitchOn", "Landroid/widget/Button;", "getBtnSwitchOn", "()Landroid/widget/Button;", "btnSwitchOn$delegate", "Lkotlin/Lazy;", "ivClose", "Landroid/widget/ImageView;", "getIvClose", "()Landroid/widget/ImageView;", "ivClose$delegate", "loadingDialog", "Lcom/tencent/mobileqq/widget/QQProgressDialog;", "manager", "Lcom/tencent/mobileqq/studymode/ModeSwitchManager;", "getManager", "()Lcom/tencent/mobileqq/studymode/ModeSwitchManager;", "manager$delegate", "onModeChangeComplete", "", "isSuccess", "", "targetType", "", "oldType", "message", "", "onModeChangeStart", "onModeSwitching", "onSelectModeRecover", "onSwitchClick", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class babh
+  extends Dialog
+  implements baav
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private bety jdField_a_of_type_Bety;
+  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private final Lazy jdField_a_of_type_KotlinLazy;
+  private final Lazy b;
+  private final Lazy c;
+  
+  public babh(@NotNull BaseActivity paramBaseActivity)
   {
-    Bundle localBundle = new Bundle();
-    bool1 = paramFromServiceMsg.isSuccess();
-    bool2 = bool1;
-    Object localObject;
-    if (bool1)
+    super((Context)paramBaseActivity, 2131755172);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new StudyModeSwitchDialog.ivClose.2(this));
+    this.b = LazyKt.lazy((Function0)new StudyModeSwitchDialog.btnSwitchOn.2(this));
+    this.c = LazyKt.lazy((Function0)new StudyModeSwitchDialog.manager.2(this));
+    paramBaseActivity = getWindow();
+    if (paramBaseActivity != null)
     {
-      localObject = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-      paramFromServiceMsg = new byte[((ByteBuffer)localObject).getInt() - 4];
-      ((ByteBuffer)localObject).get(paramFromServiceMsg);
-      localObject = new oidb_sso.OIDBSSOPkg();
-      bool2 = bool1;
+      if (ImmersiveUtils.isSupporImmersive() == 1) {
+        paramBaseActivity.addFlags(67108864);
+      }
+      ImmersiveUtils.a(paramBaseActivity, true);
     }
-    for (;;)
+    setContentView(2131558866);
+    a().a((baav)this);
+    a().setOnClickListener((View.OnClickListener)new babi(this));
+    a().setOnClickListener((View.OnClickListener)new babj(this));
+    setOnDismissListener((DialogInterface.OnDismissListener)new babk(this));
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "dc00898", "", "", "0X800ADD4", "0X800ADD4", 0, 0, "", "", "", "");
+  }
+  
+  private final Button a()
+  {
+    return (Button)this.b.getValue();
+  }
+  
+  private final ImageView a()
+  {
+    return (ImageView)this.jdField_a_of_type_KotlinLazy.getValue();
+  }
+  
+  private final baau a()
+  {
+    return (baau)this.c.getValue();
+  }
+  
+  private final void a()
+  {
+    if (a().a())
     {
-      try
-      {
-        ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom(paramFromServiceMsg);
-        bool2 = bool1;
-        i = ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get();
-        if (i != 0) {
-          continue;
-        }
-        bool1 = true;
-        if (!bool1) {
-          continue;
-        }
-        bool2 = bool1;
-        ReportData.RspBody localRspBody = new ReportData.RspBody();
-        bool2 = bool1;
-        localRspBody.mergeFrom(((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get().toByteArray());
-        bool2 = bool1;
-        l = localRspBody.ret.get();
-        bool2 = bool1;
-        paramFromServiceMsg = localRspBody.msg.get().toByteArray();
-        bool2 = bool1;
-        localObject = localRspBody.reportArray.get();
-        bool2 = bool1;
-        if (localObject != null)
-        {
-          bool2 = bool1;
-          i = ((List)localObject).size();
-          if (i != 0) {
-            continue;
-          }
-          bool2 = bool1;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        int i;
-        long l;
-        QLog.e("TableQueryServlet", 2, paramFromServiceMsg, new Object[0]);
-        continue;
-        bool2 = bool1;
-        QLog.d("TableQueryServlet", 1, "OIDBSSOPkg回包错误，Result: " + i);
-        bool2 = bool1;
-        continue;
-      }
-      notifyObserver(paramIntent, 0, bool2, localBundle, babg.class);
+      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131719907, 0).a();
       return;
-      bool1 = false;
-      continue;
-      bool2 = bool1;
-      localObject = (ReportData.ReportDataItem)((List)localObject).get(0);
-      bool2 = bool1;
-      localBundle.putLong("ret", l);
-      bool2 = bool1;
-      localBundle.putByteArray("msg", paramFromServiceMsg);
-      bool2 = bool1;
-      localBundle.putString("reqReportId", ((ReportData.ReportDataItem)localObject).reqReportId.get());
-      bool2 = bool1;
-      localBundle.putString("reportId", ((ReportData.ReportDataItem)localObject).reportId.get());
-      bool2 = bool1;
-      localBundle.putLong("pv", ((ReportData.ReportDataItem)localObject).pv.get());
-      bool2 = bool1;
-      localBundle.putString("pv_day_earlier", ((ReportData.ReportDataItem)localObject).pv_day_earlier.get());
-      bool2 = bool1;
-      localBundle.putString("pv_month_earlier", ((ReportData.ReportDataItem)localObject).pv_month_earlier.get());
-      bool2 = bool1;
-      localBundle.putLong("uv", ((ReportData.ReportDataItem)localObject).uv.get());
-      bool2 = bool1;
-      localBundle.putString("uv_day_earlier", ((ReportData.ReportDataItem)localObject).uv_day_earlier.get());
-      bool2 = bool1;
-      localBundle.putString("uv_month_earlier", ((ReportData.ReportDataItem)localObject).uv_month_earlier.get());
-      bool2 = bool1;
-      localBundle.putString("time", ((ReportData.ReportDataItem)localObject).time.get());
-      bool2 = bool1;
-      localBundle.putString("param", ((ReportData.ReportDataItem)localObject).param.get());
-      bool2 = bool1;
-      localBundle.putString("description", ((ReportData.ReportDataItem)localObject).description.get());
-      bool2 = bool1;
+    }
+    if (baar.a() == 2)
+    {
+      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131720355, 0).a();
+      dismiss();
+      return;
+    }
+    int i = azmk.c();
+    baax localbaax = a().a((Activity)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, i, true);
+    if ((!localbaax.a()) && (localbaax.a() == localbaax.b()))
+    {
+      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131720355, 0).a();
+      dismiss();
+    }
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "dc00898", "", "", "0X800ADD5", "0X800ADD5", 0, 0, "", "", "", "");
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, @NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "message");
+    Context localContext;
+    if (!TextUtils.isEmpty((CharSequence)paramString))
+    {
+      localContext = (Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      if (!paramBoolean) {
+        break label70;
+      }
+    }
+    label70:
+    for (paramInt1 = 2;; paramInt1 = 1)
+    {
+      QQToast.a(localContext, paramInt1, (CharSequence)paramString, 0).a();
+      paramString = this.jdField_a_of_type_Bety;
+      if (paramString != null) {
+        paramString.dismiss();
+      }
+      dismiss();
+      return;
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
-    if (paramIntent == null) {
-      return;
+    baaw.a(this, paramBoolean1, paramBoolean2, paramBoolean3, paramInt);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, @Nullable String paramString)
+  {
+    baaw.a(this, paramBoolean1, paramBoolean2, paramBoolean3, paramInt, paramString);
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    bety localbety = this.jdField_a_of_type_Bety;
+    if ((localbety != null) && (localbety.isShowing() == true))
+    {
+      localbety = this.jdField_a_of_type_Bety;
+      if (localbety != null) {
+        localbety.dismiss();
+      }
     }
-    paramPacket.setSSOCommand("OidbSvc.0xd34_2");
-    paramPacket.putSendData(bdku.a(paramIntent.getByteArrayExtra("RequestBytes")));
+    this.jdField_a_of_type_Bety = new bety((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    localbety = this.jdField_a_of_type_Bety;
+    if (localbety == null) {
+      Intrinsics.throwNpe();
+    }
+    Window localWindow = localbety.getWindow();
+    if (localWindow != null) {
+      localWindow.setDimAmount(0.0F);
+    }
+    localbety.show();
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    bety localbety = this.jdField_a_of_type_Bety;
+    if (localbety != null) {
+      localbety.dismiss();
+    }
+  }
+  
+  public void d(int paramInt1, int paramInt2)
+  {
+    QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131719907, 0).a();
   }
 }
 

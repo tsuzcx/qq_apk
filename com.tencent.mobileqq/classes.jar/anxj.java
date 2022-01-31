@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.chat.ui.MessageNotificationSettingFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.TypeEvaluator;
+import android.annotation.TargetApi;
 
+@TargetApi(11)
 public class anxj
-  extends amab
+  implements TypeEvaluator<anxi>
 {
-  public anxj(MessageNotificationSettingFragment paramMessageNotificationSettingFragment) {}
+  public anxj(anxd paramanxd) {}
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public anxi a(float paramFloat, anxi paramanxi1, anxi paramanxi2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MessageNotificationSettingFragment", 2, "onOIDB0XA80_0_Ret: invoked.  isSuccess : " + paramBoolean + " op: " + paramInt1 + " type: " + Integer.toHexString(paramInt2));
-    }
-    if (paramBoolean) {
-      MessageNotificationSettingFragment.a(this.a).a(paramString1, paramInt1, paramInt2);
-    }
+    return paramanxi2;
   }
 }
 

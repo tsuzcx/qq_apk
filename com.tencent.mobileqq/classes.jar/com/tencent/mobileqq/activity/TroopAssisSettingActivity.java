@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import adwy;
-import adwz;
-import adxa;
-import adxb;
-import adxc;
-import adxd;
-import akhm;
-import alox;
-import amjk;
+import aebn;
+import aebo;
+import aebp;
+import aebq;
+import aebr;
+import aebs;
+import akmb;
+import altm;
+import amnz;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -20,10 +20,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import atwd;
-import bdih;
-import bhpy;
-import bhql;
+import auam;
+import bdmq;
+import bhuf;
+import bhus;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -49,11 +49,11 @@ public class TroopAssisSettingActivity
   extends IphoneTitleBarActivity
   implements Observer
 {
-  public akhm a;
-  protected alox a;
+  public akmb a;
+  protected altm a;
   protected Handler a;
   protected CompoundButton.OnCheckedChangeListener a;
-  public bdih a;
+  public bdmq a;
   protected XExpandableListView a;
   protected Runnable a;
   String a;
@@ -63,16 +63,16 @@ public class TroopAssisSettingActivity
   public TroopAssisSettingActivity()
   {
     this.jdField_a_of_type_JavaLangRunnable = new TroopAssisSettingActivity.1(this);
-    this.jdField_a_of_type_AndroidOsHandler = new adwy(this, Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new adwz(this);
-    this.jdField_a_of_type_Alox = new adxd(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aebn(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new aebo(this);
+    this.jdField_a_of_type_Altm = new aebs(this);
   }
   
   private View a()
   {
     Object localObject1 = b();
-    Object localObject2 = getActivity().getLayoutInflater().inflate(2131558856, null);
-    this.jdField_a_of_type_ComTencentWidgetXExpandableListView = ((XExpandableListView)View.inflate(this, 2131559222, null));
+    Object localObject2 = getActivity().getLayoutInflater().inflate(2131558855, null);
+    this.jdField_a_of_type_ComTencentWidgetXExpandableListView = ((XExpandableListView)View.inflate(this, 2131559221, null));
     this.jdField_a_of_type_ComTencentWidgetXExpandableListView.addHeaderView((View)localObject1);
     this.jdField_a_of_type_ComTencentWidgetXExpandableListView.addFooterView((View)localObject2);
     localObject1 = (TroopManager)this.app.getManager(52);
@@ -91,12 +91,12 @@ public class TroopAssisSettingActivity
           if (this.app.b(localTroopInfo.troopuin) == 2) {
             localTroopInfo.lastMsgTime = this.app.a().a(localTroopInfo.troopuin, 1).time;
           } else {
-            localTroopInfo.lastMsgTime = ((amjk)localObject2).a(localTroopInfo.troopuin, 1).lastmsgtime;
+            localTroopInfo.lastMsgTime = ((amnz)localObject2).a(localTroopInfo.troopuin, 1).lastmsgtime;
           }
         }
       }
-      this.jdField_a_of_type_Akhm = new akhm(this, this.app, (List)localObject1, null);
-      this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setAdapter(this.jdField_a_of_type_Akhm);
+      this.jdField_a_of_type_Akmb = new akmb(this, this.app, (List)localObject1, null);
+      this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setAdapter(this.jdField_a_of_type_Akmb);
       d();
       this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setFooterDividersEnabled(true);
       ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 8, null, true);
@@ -106,16 +106,16 @@ public class TroopAssisSettingActivity
   
   private View b()
   {
-    View localView = View.inflate(this, 2131559221, null);
-    localView.findViewById(2131376604).setFocusable(true);
-    Object localObject = (Switch)localView.findViewById(2131376603);
-    ((Switch)localObject).setChecked(atwd.a().a());
+    View localView = View.inflate(this, 2131559220, null);
+    localView.findViewById(2131376658).setFocusable(true);
+    Object localObject = (Switch)localView.findViewById(2131376657);
+    ((Switch)localObject).setChecked(auam.a().a());
     ((Switch)localObject).setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-    localObject = (TextView)localView.findViewById(2131377403);
-    if (atwd.a().d(this.app)) {
-      atwd.a().g(this.app);
+    localObject = (TextView)localView.findViewById(2131377457);
+    if (auam.a().d(this.app)) {
+      auam.a().g(this.app);
     }
-    for (int i = 2131693307;; i = 2131693306)
+    for (int i = 2131693309;; i = 2131693308)
     {
       ((TextView)localObject).setText(i);
       ((TextView)localObject).setFocusable(true);
@@ -146,8 +146,8 @@ public class TroopAssisSettingActivity
     this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setCacheColorHint(0);
     this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setGroupIndicator(null);
     this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnItemClickListener(null);
-    this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnGroupClickListener(new adxb(this));
-    this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnChildClickListener(new adxc(this));
+    this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnGroupClickListener(new aebq(this));
+    this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnChildClickListener(new aebr(this));
   }
   
   void a()
@@ -165,15 +165,15 @@ public class TroopAssisSettingActivity
         if (i <= 99) {
           break label68;
         }
-        this.leftView.setText(getString(2131720570) + "(99+)");
+        this.leftView.setText(getString(2131720582) + "(99+)");
       }
     }
     return;
     label68:
-    this.leftView.setText(getString(2131720570) + "(" + i + ")");
+    this.leftView.setText(getString(2131720582) + "(" + i + ")");
     return;
     label112:
-    this.leftView.setText(getString(2131720570));
+    this.leftView.setText(getString(2131720582));
   }
   
   public void a(TroopInfo paramTroopInfo)
@@ -182,37 +182,37 @@ public class TroopAssisSettingActivity
     Object localObject;
     if (paramTroopInfo != null)
     {
-      localObject = (Boolean)this.jdField_a_of_type_Bdih.c.get(paramTroopInfo.troopuin);
+      localObject = (Boolean)this.jdField_a_of_type_Bdmq.c.get(paramTroopInfo.troopuin);
       if ((localObject == null) || (!((Boolean)localObject).booleanValue())) {}
     }
     else
     {
       return;
     }
-    bhpy localbhpy = (bhpy)bhql.a(this, null);
+    bhuf localbhuf = (bhuf)bhus.a(this, null);
     int i = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramTroopInfo.troopuin)).intValue();
     if (TextUtils.isEmpty(paramTroopInfo.getTroopName()))
     {
       localObject = paramTroopInfo.troopuin;
-      localbhpy.a(getString(2131720619, new Object[] { localObject }));
+      localbhuf.a(getString(2131720631, new Object[] { localObject }));
       if (i != 1) {
         break label216;
       }
       bool1 = true;
       label114:
-      localbhpy.a(2131698076, bool1);
+      localbhuf.a(2131698078, bool1);
       if (i != 4) {
         break label221;
       }
       bool1 = true;
       label130:
-      localbhpy.a(2131698081, bool1);
+      localbhuf.a(2131698083, bool1);
       if (i != 2) {
         break label226;
       }
       bool1 = true;
       label146:
-      localbhpy.a(2131698077, bool1);
+      localbhuf.a(2131698079, bool1);
       if (i != 3) {
         break label231;
       }
@@ -223,10 +223,10 @@ public class TroopAssisSettingActivity
     label231:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      localbhpy.a(2131698073, bool1);
-      localbhpy.d(getString(2131690648));
-      localbhpy.a(new adxa(this, i, paramTroopInfo, localbhpy));
-      localbhpy.show();
+      localbhuf.a(2131698075, bool1);
+      localbhuf.d(getString(2131690648));
+      localbhuf.a(new aebp(this, i, paramTroopInfo, localbhuf));
+      localbhuf.show();
       return;
       localObject = paramTroopInfo.getTroopName();
       break;
@@ -242,7 +242,7 @@ public class TroopAssisSettingActivity
   public void b()
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_Akhm.getGroupCount())
+    while (i < this.jdField_a_of_type_Akmb.getGroupCount())
     {
       this.jdField_a_of_type_ComTencentWidgetXExpandableListView.a(i);
       i += 1;
@@ -253,15 +253,15 @@ public class TroopAssisSettingActivity
   {
     super.doOnCreate(paramBundle);
     super.setContentView(a());
-    setContentBackgroundResource(2130838591);
-    setTitle(2131693304);
-    addObserver(this.jdField_a_of_type_Alox);
+    setContentBackgroundResource(2130838592);
+    setTitle(2131693306);
+    addObserver(this.jdField_a_of_type_Altm);
     this.app.a().addObserver(this);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("from");
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals("conversation"))) {
       a();
     }
-    this.jdField_a_of_type_Bdih = ((bdih)this.app.getManager(31));
+    this.jdField_a_of_type_Bdmq = ((bdmq)this.app.getManager(31));
     return false;
   }
   
@@ -281,7 +281,7 @@ public class TroopAssisSettingActivity
   
   public void finish()
   {
-    removeObserver(this.jdField_a_of_type_Alox);
+    removeObserver(this.jdField_a_of_type_Altm);
     super.finish();
   }
   

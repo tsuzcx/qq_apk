@@ -1,59 +1,54 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.GrayTipsSpan;
-import com.tencent.mobileqq.data.MessageForGrayTips;
-import com.tencent.mobileqq.data.MessageForNewGrayTips;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class amfw
+  extends alpd
 {
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  public amfw(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddMessageHelper", 2, "-----addDatingSafetyGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + bdal.a(paramString2));
-    }
-    long l = ayvc.a();
-    MessageForGrayTips localMessageForGrayTips = (MessageForGrayTips)ayvw.a(-1028);
-    localMessageForGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, -1028, paramInt, l);
-    localMessageForGrayTips.isread = true;
-    if (!alsh.a(paramQQAppInterface, localMessageForGrayTips)) {
-      paramQQAppInterface.a().a(localMessageForGrayTips, paramQQAppInterface.getCurrentAccountUin());
-    }
+    super(paramQQAppInterface);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, ArrayList<GrayTipsSpan> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public void a(int paramInt)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "WifiCloudCheckSvc.req");
+    localToServiceMsg.addAttribute("request_type", Integer.valueOf(paramInt));
+    super.send(localToServiceMsg);
+  }
+  
+  protected Class<? extends alpg> observerClass()
+  {
+    return amfx.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + bdal.a(paramString2));
+      QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive resultCode: " + paramFromServiceMsg.getResultCode() + " errorMsg: " + paramFromServiceMsg.getBusinessFailMsg() + " serviceCmd: " + paramToServiceMsg.getServiceCmd());
     }
-    if ((paramBoolean1) && (abot.e(paramInt)) && (QLog.isColorLevel())) {
-      QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage faild : no troop uin");
-    }
-    long l = ayvc.a();
-    if (paramBoolean1) {}
-    for (int i = -5001;; i = -5000)
+    int i = 0;
+    try
     {
-      QQMessageFacade.Message localMessage = paramQQAppInterface.a().a(paramString1, paramInt);
-      MessageForNewGrayTips localMessageForNewGrayTips = (MessageForNewGrayTips)ayvw.a(i);
-      localMessageForNewGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, i, paramInt, l);
-      if (localMessage != null) {
-        localMessageForNewGrayTips.shmsgseq = localMessage.shmsgseq;
+      if ("WifiCloudCheckSvc.req".equals(paramToServiceMsg.getServiceCmd()))
+      {
+        int j = ((Integer)paramToServiceMsg.getAttribute("request_type")).intValue();
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive type: " + j);
+          i = j;
+        }
       }
-      localMessageForNewGrayTips.isread = paramBoolean3;
-      localMessageForNewGrayTips.spans = paramArrayList;
-      localMessageForNewGrayTips.updateMsgData();
-      if ((!paramBoolean2) || (!alsh.a(paramQQAppInterface, localMessageForNewGrayTips, false))) {
-        paramQQAppInterface.a().a(localMessageForNewGrayTips, paramQQAppInterface.getCurrentAccountUin());
-      }
+      super.notifyUI(i, paramFromServiceMsg.isSuccess(), paramObject);
       return;
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    a(paramQQAppInterface, paramString1, paramString2, paramInt, null, paramBoolean1, paramBoolean2, true);
+    catch (Exception paramToServiceMsg)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive exception: " + paramToServiceMsg.getMessage());
+    }
   }
 }
 

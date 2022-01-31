@@ -1,6 +1,19 @@
-public abstract interface bgnn
+public class bgnn
 {
-  public abstract boolean a(bgnj parambgnj, int paramInt1, int paramInt2);
+  private static volatile bgnn jdField_a_of_type_Bgnn;
+  private static volatile byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  
+  public static bgnn a()
+  {
+    if (jdField_a_of_type_Bgnn == null) {}
+    synchronized (jdField_a_of_type_ArrayOfByte)
+    {
+      if (jdField_a_of_type_Bgnn == null) {
+        jdField_a_of_type_Bgnn = new bgnn();
+      }
+      return jdField_a_of_type_Bgnn;
+    }
+  }
 }
 
 

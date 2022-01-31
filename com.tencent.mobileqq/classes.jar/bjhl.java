@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastMusicInfo;
+import java.util.List;
 
-public final class bjhl
-  implements Parcelable.Creator<BroadcastMusicInfo>
+public abstract interface bjhl
 {
-  public BroadcastMusicInfo a(Parcel paramParcel)
-  {
-    return new BroadcastMusicInfo(paramParcel);
-  }
-  
-  public BroadcastMusicInfo[] a(int paramInt)
-  {
-    return new BroadcastMusicInfo[paramInt];
-  }
+  public abstract void a(String paramString, List<Long> paramList);
 }
 
 

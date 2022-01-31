@@ -6,20 +6,20 @@ import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.webkit.ValueCallback;
-import bghn;
-import bgho;
-import bgjm;
-import bgkk;
-import bgkv;
-import bgll;
-import bglo;
-import bgnf;
-import bhex;
-import bhfe;
-import bhfj;
-import bhfl;
-import bhfm;
-import bhfn;
+import bglu;
+import bglv;
+import bgnt;
+import bgor;
+import bgpc;
+import bgps;
+import bgpv;
+import bgrm;
+import bhje;
+import bhjl;
+import bhjq;
+import bhjs;
+import bhjt;
+import bhju;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -36,11 +36,11 @@ import java.io.File;
 
 public class InnerWebView
   extends WebView
-  implements bghn
+  implements bglu
 {
   public int a;
   private Activity jdField_a_of_type_AndroidAppActivity;
-  private bgho jdField_a_of_type_Bgho;
+  private bglv jdField_a_of_type_Bglv;
   private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
   private String jdField_a_of_type_JavaLangString;
   
@@ -99,31 +99,31 @@ public class InnerWebView
     if ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
     {
       QMLog.e("ProgressWebView", "savaPicToAlbum failed, because of mActivity is empty");
-      bgnf.a(this.jdField_a_of_type_AndroidAppActivity, 1, "保存失败", 0).a();
+      bgrm.a(this.jdField_a_of_type_AndroidAppActivity, 1, "保存失败", 0).a();
     }
     if (TextUtils.isEmpty(paramString))
     {
       QMLog.e("ProgressWebView", "savaPicToAlbum failed, because of sourceUrl is empty");
-      bgnf.a(this.jdField_a_of_type_AndroidAppActivity, 1, "保存失败", 0).a();
+      bgrm.a(this.jdField_a_of_type_AndroidAppActivity, 1, "保存失败", 0).a();
       return;
     }
     Object localObject1;
     Object localObject2;
     if ((paramString.toLowerCase().startsWith("http://")) || (paramString.toLowerCase().startsWith("https://")))
     {
-      localObject1 = bgjm.a().g(paramString);
+      localObject1 = bgnt.a().g(paramString);
       localObject2 = (DownloaderProxy)ProxyManager.get(DownloaderProxy.class);
       if (localObject2 == null)
       {
         QMLog.e("ProgressWebView", "savaPicToAlbum proxy is null");
         return;
       }
-      ((DownloaderProxy)localObject2).download(paramString, null, (String)localObject1, 60, new bhfl(this, (String)localObject1));
+      ((DownloaderProxy)localObject2).download(paramString, null, (String)localObject1, 60, new bhjs(this, (String)localObject1));
       return;
     }
     if (a(paramString))
     {
-      localObject2 = bgjm.a().g(paramString);
+      localObject2 = bgnt.a().g(paramString);
       if (paramString.startsWith("data:image/jpg;base64,")) {
         localObject1 = (String)localObject2 + ".jpg";
       }
@@ -155,7 +155,7 @@ public class InnerWebView
     if (QMLog.isColorLevel()) {
       QMLog.d("ProgressWebView", "[evaluateCallbackJs] callbackStr=" + paramString);
     }
-    bgkk.a(new InnerWebView.4(this, paramString));
+    bgor.a(new InnerWebView.4(this, paramString));
   }
   
   private boolean a(String paramString)
@@ -345,7 +345,7 @@ public class InnerWebView
     if (TextUtils.isEmpty(paramString))
     {
       QMLog.e("ProgressWebView", "sharePicToQQ failed, because of sourceUrl is empty");
-      bgnf.a(this.jdField_a_of_type_AndroidAppActivity, 1, "分享失败", 0).a();
+      bgrm.a(this.jdField_a_of_type_AndroidAppActivity, 1, "分享失败", 0).a();
     }
     for (;;)
     {
@@ -354,19 +354,19 @@ public class InnerWebView
       Object localObject2;
       if ((paramString.toLowerCase().startsWith("http://")) || (paramString.toLowerCase().startsWith("https://")))
       {
-        localObject1 = bgjm.a().g(paramString);
+        localObject1 = bgnt.a().g(paramString);
         localObject2 = (DownloaderProxy)ProxyManager.get(DownloaderProxy.class);
         if (localObject2 == null)
         {
           QMLog.e("ProgressWebView", "savaPicToAlbum proxy is null");
           return;
         }
-        ((DownloaderProxy)localObject2).download(paramString, null, (String)localObject1, 60, new bhfm(this, (String)localObject1));
+        ((DownloaderProxy)localObject2).download(paramString, null, (String)localObject1, 60, new bhjt(this, (String)localObject1));
         return;
       }
       if (a(paramString))
       {
-        localObject2 = bgjm.a().g(paramString);
+        localObject2 = bgnt.a().g(paramString);
         if (paramString.startsWith("data:image/jpg;base64,")) {
           localObject1 = (String)localObject2 + ".jpg";
         }
@@ -395,21 +395,21 @@ public class InnerWebView
     if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
     {
       Object localObject = new File(paramString);
-      localObject = bgll.a() + System.currentTimeMillis() / 1000L + "_" + ((File)localObject).getName();
-      if (bgkv.a(this.jdField_a_of_type_AndroidAppActivity, paramString, (String)localObject))
+      localObject = bgps.a() + System.currentTimeMillis() / 1000L + "_" + ((File)localObject).getName();
+      if (bgpc.a(this.jdField_a_of_type_AndroidAppActivity, paramString, (String)localObject))
       {
         if (QMLog.isColorLevel()) {
           QMLog.d("ProgressWebView", "savaPicToAlbum success.");
         }
-        bgnf.a(this.jdField_a_of_type_AndroidAppActivity, 2, "保存成功", 0).a();
+        bgrm.a(this.jdField_a_of_type_AndroidAppActivity, 2, "保存成功", 0).a();
         return;
       }
       QMLog.e("ProgressWebView", "savaPicToAlbum failed.");
-      bgnf.a(this.jdField_a_of_type_AndroidAppActivity, 1, "保存失败", 0).a();
+      bgrm.a(this.jdField_a_of_type_AndroidAppActivity, 1, "保存失败", 0).a();
       return;
     }
     QMLog.e("ProgressWebView", "savaPicToAlbum failed. activity error.");
-    bgnf.a(this.jdField_a_of_type_AndroidAppActivity, 1, "保存失败", 0).a();
+    bgrm.a(this.jdField_a_of_type_AndroidAppActivity, 1, "保存失败", 0).a();
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
@@ -420,17 +420,17 @@ public class InnerWebView
     a(paramString, paramInt);
   }
   
-  public void a(bgho parambgho)
+  public void a(bglv parambglv)
   {
-    this.jdField_a_of_type_Bgho = parambgho;
-    if (bglo.a(this.jdField_a_of_type_JavaLangString)) {
+    this.jdField_a_of_type_Bglv = parambglv;
+    if (bgpv.a(this.jdField_a_of_type_JavaLangString)) {
       this.jdField_a_of_type_JavaLangString = AppLoaderFactory.g().getMiniAppEnv().getBaselibLoader().getBaselib().miniappWebviewStr;
     }
     this.jdField_a_of_type_ComTencentSmttSdkWebView = this;
-    addJavascriptInterface(new bhfn(this, null), "QQJSCore");
-    setWebChromeClient(new bhex(this));
-    setWebViewClient(new bhfe(this));
-    setOnLongClickListener(new bhfj(this));
+    addJavascriptInterface(new bhju(this, null), "QQJSCore");
+    setWebChromeClient(new bhje(this));
+    setWebViewClient(new bhjl(this));
+    setOnLongClickListener(new bhjq(this));
   }
   
   public void a(String paramString, ValueCallback paramValueCallback)

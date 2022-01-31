@@ -48,7 +48,7 @@ public class mcl
       QLog.i("QavSo", 1, String.format("isModelReady, spMd5[%s], zipMd5[%s]", new Object[] { str2, str1 }));
       return false;
     }
-    if (!bdcs.a(paramDownloadInfo))
+    if (!bdhb.a(paramDownloadInfo))
     {
       QLog.i("QavSo", 1, String.format("isModelReady, file no exist, fileName[%s]", new Object[] { paramDownloadInfo }));
       return false;
@@ -71,7 +71,7 @@ public class mcl
       QLog.i("QavSo", 1, String.format("isSoReady, spMd5[%s], zipMd5[%s]", new Object[] { str2, str1 }));
       return false;
     }
-    if (!bdcs.a(paramDownloadInfo))
+    if (!bdhb.a(paramDownloadInfo))
     {
       QLog.i("QavSo", 1, String.format("isSoReady, file no exist, fileNameSoWxVoiceEmbedQQEgg[%s]", new Object[] { paramDownloadInfo }));
       return false;

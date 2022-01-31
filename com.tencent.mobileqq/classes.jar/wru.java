@@ -1,17 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.7.1;
+import com.tribe.async.dispatch.IEventReceiver;
 
 public class wru
-  implements wop
+  implements IEventReceiver
 {
-  wru(wrh paramwrh) {}
+  protected wrd a;
   
-  public void a(ErrorMessage paramErrorMessage)
+  public wrd a()
   {
-    wsv.e("NewMyStorySegment", "error occur when get friends data from server steps=%s,error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
-    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.7.1(this));
+    return this.a;
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    wxe.b("Q.qqstory.home.Repository", "executeRunnableOnWorkThread");
+  }
+  
+  public boolean isValidate()
+  {
+    return false;
   }
 }
 

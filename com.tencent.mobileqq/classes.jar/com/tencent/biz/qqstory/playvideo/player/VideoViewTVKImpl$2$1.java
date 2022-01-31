@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
-import vrs;
-import vsx;
+import vwb;
+import vxg;
 
 public class VideoViewTVKImpl$2$1
   implements Runnable
 {
-  public VideoViewTVKImpl$2$1(vsx paramvsx, vrs paramvrs) {}
+  public VideoViewTVKImpl$2$1(vxg paramvxg, vwb paramvwb) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Vrs.b(this.jdField_a_of_type_Vsx.a);
+    this.jdField_a_of_type_Vwb.b(this.jdField_a_of_type_Vxg.a);
   }
 }
 

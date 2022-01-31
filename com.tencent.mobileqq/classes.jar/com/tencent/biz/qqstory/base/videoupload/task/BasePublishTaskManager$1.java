@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.base.videoupload.task;
 
-import ult;
+import uqc;
 
 public class BasePublishTaskManager$1
   implements Runnable
 {
-  public BasePublishTaskManager$1(ult paramult) {}
+  public BasePublishTaskManager$1(uqc paramuqc) {}
   
   public void run()
   {

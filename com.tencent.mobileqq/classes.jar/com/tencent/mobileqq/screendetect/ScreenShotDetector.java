@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.screendetect;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -16,17 +16,17 @@ import android.os.Looper;
 import android.provider.MediaStore.Images.Media;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import aybn;
-import aybo;
-import aybw;
+import ayfw;
+import ayfx;
+import aygf;
 import com.tencent.mobileqq.activity.QQLSActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import zdg;
+import zhv;
 
 public class ScreenShotDetector
-  extends zdg
+  extends zhv
 {
   private static Point jdField_a_of_type_AndroidGraphicsPoint;
   private static ScreenShotDetector jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotDetector = new ScreenShotDetector();
@@ -34,13 +34,13 @@ public class ScreenShotDetector
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "_data", "datetaken" };
   private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "_data", "datetaken", "width", "height" };
   private static final String[] c = { "screenshot", "screen_shot", "screen-shot", "screen shot", "screencapture", "screen_capture", "screen-capture", "screen capture", "screencap", "screen_cap", "screen-cap", "screen cap" };
-  private static final String[] d = { "三星F9000", "三星A8S", "三星S8+", "华为MHA-AL00", "华为P30", "vivoX27", "小米9", "OPPOA59S", "魅族Pro7-H", alpo.a(2131713966), alpo.a(2131713967) };
+  private static final String[] d = { "三星F9000", "三星A8S", "三星S8+", "华为MHA-AL00", "华为P30", "vivoX27", "小米9", "OPPOA59S", "魅族Pro7-H", alud.a(2131713978), alud.a(2131713979) };
   private long jdField_a_of_type_Long;
   private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private aybn jdField_a_of_type_Aybn;
-  private aybo jdField_a_of_type_Aybo;
+  private ayfw jdField_a_of_type_Ayfw;
+  private ayfx jdField_a_of_type_Ayfx;
   private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private aybn jdField_b_of_type_Aybn;
+  private ayfw jdField_b_of_type_Ayfw;
   
   static
   {
@@ -205,9 +205,9 @@ public class ScreenShotDetector
         if (QLog.isColorLevel()) {
           QLog.d("ScreenShotDetector", 2, "ScreenShot 机型：" + Build.MANUFACTURER + Build.MODEL);
         }
-        aybw.a("0X8009FED", 0);
-        if (this.jdField_a_of_type_Aybo != null) {
-          this.jdField_a_of_type_Aybo.a();
+        aygf.a("0X8009FED", 0);
+        if (this.jdField_a_of_type_Ayfx != null) {
+          this.jdField_a_of_type_Ayfx.a();
         }
         this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
         this.jdField_a_of_type_AndroidOsHandler.post(new ScreenShotDetector.1(this, paramString));
@@ -242,7 +242,7 @@ public class ScreenShotDetector
     }
     if (jdField_a_of_type_AndroidGraphicsPoint == null)
     {
-      jdField_a_of_type_AndroidGraphicsPoint = aybw.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      jdField_a_of_type_AndroidGraphicsPoint = aygf.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
       if (jdField_a_of_type_AndroidGraphicsPoint == null) {
         break label190;
       }
@@ -287,8 +287,8 @@ public class ScreenShotDetector
     {
       try
       {
-        localContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.INTERNAL_CONTENT_URI, true, this.jdField_a_of_type_Aybn);
-        localContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, this.jdField_b_of_type_Aybn);
+        localContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.INTERNAL_CONTENT_URI, true, this.jdField_a_of_type_Ayfw);
+        localContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, this.jdField_b_of_type_Ayfw);
         return;
       }
       catch (Exception localException)
@@ -315,31 +315,31 @@ public class ScreenShotDetector
     //   18: aload_1
     //   19: ifnull +82 -> 101
     //   22: aload_0
-    //   23: getfield 358	com/tencent/mobileqq/screendetect/ScreenShotDetector:jdField_a_of_type_Aybn	Laybn;
+    //   23: getfield 358	com/tencent/mobileqq/screendetect/ScreenShotDetector:jdField_a_of_type_Ayfw	Layfw;
     //   26: astore_2
     //   27: aload_2
     //   28: ifnull +19 -> 47
     //   31: aload_1
     //   32: invokevirtual 166	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   35: aload_0
-    //   36: getfield 358	com/tencent/mobileqq/screendetect/ScreenShotDetector:jdField_a_of_type_Aybn	Laybn;
+    //   36: getfield 358	com/tencent/mobileqq/screendetect/ScreenShotDetector:jdField_a_of_type_Ayfw	Layfw;
     //   39: invokevirtual 380	android/content/ContentResolver:unregisterContentObserver	(Landroid/database/ContentObserver;)V
     //   42: aload_0
     //   43: aconst_null
-    //   44: putfield 358	com/tencent/mobileqq/screendetect/ScreenShotDetector:jdField_a_of_type_Aybn	Laybn;
+    //   44: putfield 358	com/tencent/mobileqq/screendetect/ScreenShotDetector:jdField_a_of_type_Ayfw	Layfw;
     //   47: aload_0
-    //   48: getfield 367	com/tencent/mobileqq/screendetect/ScreenShotDetector:jdField_b_of_type_Aybn	Laybn;
+    //   48: getfield 367	com/tencent/mobileqq/screendetect/ScreenShotDetector:jdField_b_of_type_Ayfw	Layfw;
     //   51: astore_2
     //   52: aload_2
     //   53: ifnull +57 -> 110
     //   56: aload_1
     //   57: invokevirtual 166	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   60: aload_0
-    //   61: getfield 367	com/tencent/mobileqq/screendetect/ScreenShotDetector:jdField_b_of_type_Aybn	Laybn;
+    //   61: getfield 367	com/tencent/mobileqq/screendetect/ScreenShotDetector:jdField_b_of_type_Ayfw	Layfw;
     //   64: invokevirtual 380	android/content/ContentResolver:unregisterContentObserver	(Landroid/database/ContentObserver;)V
     //   67: aload_0
     //   68: aconst_null
-    //   69: putfield 367	com/tencent/mobileqq/screendetect/ScreenShotDetector:jdField_b_of_type_Aybn	Laybn;
+    //   69: putfield 367	com/tencent/mobileqq/screendetect/ScreenShotDetector:jdField_b_of_type_Ayfw	Layfw;
     //   72: return
     //   73: astore_2
     //   74: aload_2
@@ -367,7 +367,7 @@ public class ScreenShotDetector
     //   17	40	1	localContext	Context
     //   81	8	1	localException1	Exception
     //   93	2	1	localException2	Exception
-    //   26	27	2	localaybn	aybn
+    //   26	27	2	localayfw	ayfw
     //   73	2	2	localException3	Exception
     // Exception table:
     //   from	to	target	type
@@ -386,9 +386,9 @@ public class ScreenShotDetector
     return jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotDetector;
   }
   
-  public void a(aybo paramaybo)
+  public void a(ayfx paramayfx)
   {
-    this.jdField_a_of_type_Aybo = paramaybo;
+    this.jdField_a_of_type_Ayfx = paramayfx;
   }
   
   public void c(Context paramContext)
@@ -401,8 +401,8 @@ public class ScreenShotDetector
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Aybn = new aybn(this, MediaStore.Images.Media.INTERNAL_CONTENT_URI, this.jdField_a_of_type_AndroidOsHandler);
-    this.jdField_b_of_type_Aybn = new aybn(this, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, this.jdField_a_of_type_AndroidOsHandler);
+    this.jdField_a_of_type_Ayfw = new ayfw(this, MediaStore.Images.Media.INTERNAL_CONTENT_URI, this.jdField_a_of_type_AndroidOsHandler);
+    this.jdField_b_of_type_Ayfw = new ayfw(this, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, this.jdField_a_of_type_AndroidOsHandler);
     ThreadManager.executeOnSubThread(new ScreenShotDetector.2(this), false);
   }
   
@@ -414,7 +414,7 @@ public class ScreenShotDetector
   
   public void disaptchTouchEventCallback(Activity paramActivity, MotionEvent paramMotionEvent)
   {
-    aybw.a(paramActivity, paramMotionEvent);
+    aygf.a(paramActivity, paramMotionEvent);
   }
   
   public void onWindowFocusChanged(Activity paramActivity, boolean paramBoolean)
@@ -424,12 +424,12 @@ public class ScreenShotDetector
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     if (paramBoolean) {
-      aybw.a(paramActivity, this.jdField_a_of_type_AndroidOsHandler);
+      aygf.a(paramActivity, this.jdField_a_of_type_AndroidOsHandler);
     }
     while (!"XIAOMI".equalsIgnoreCase(Build.MANUFACTURER)) {
       return;
     }
-    aybw.b(paramActivity);
+    aygf.b(paramActivity);
   }
 }
 

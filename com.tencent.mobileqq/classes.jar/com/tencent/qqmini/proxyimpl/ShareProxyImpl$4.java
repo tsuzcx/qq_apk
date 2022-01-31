@@ -40,7 +40,7 @@ class ShareProxyImpl$4
       {
         paramJSONObject = URLDrawable.URLDrawableOptions.obtain();
         if (this.val$activity != null) {
-          paramJSONObject.mFailedDrawable = this.val$activity.getResources().getDrawable(2130847854);
+          paramJSONObject.mFailedDrawable = this.val$activity.getResources().getDrawable(2130847927);
         }
         Bitmap localBitmap = ImageUtil.drawableToBitmap(URLDrawable.getDrawable(this.val$shareData.sharePicPath, paramJSONObject).getCurrDrawable());
         paramJSONObject = localBitmap;
@@ -73,7 +73,7 @@ class ShareProxyImpl$4
           for (;;)
           {
             QLog.e("AppBrandRuntime", 1, "startShareToWeChat. get an exception when handling URLbmp:" + paramJSONObject);
-            paramJSONObject = ImageUtil.drawableToBitmap(this.val$activity.getResources().getDrawable(2130847854));
+            paramJSONObject = ImageUtil.drawableToBitmap(this.val$activity.getResources().getDrawable(2130847927));
           }
         } while (this.val$shareType != 4);
         WXShareHelper.a().c(String.valueOf(System.currentTimeMillis()), "QQ小程序 · " + this.val$miniAppInfo.name + ": " + this.val$finalDescription, paramJSONObject, "", str);

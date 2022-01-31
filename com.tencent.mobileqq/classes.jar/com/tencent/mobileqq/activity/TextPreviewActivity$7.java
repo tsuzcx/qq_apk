@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import asnx;
+import assg;
 
 class TextPreviewActivity$7
   implements Runnable
 {
-  TextPreviewActivity$7(TextPreviewActivity paramTextPreviewActivity, asnx paramasnx) {}
+  TextPreviewActivity$7(TextPreviewActivity paramTextPreviewActivity, assg paramassg) {}
   
   public void run()
   {

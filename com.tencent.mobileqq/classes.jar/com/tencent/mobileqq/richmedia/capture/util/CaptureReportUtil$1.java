@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.util;
 
-import axlc;
-import axle;
+import axpl;
+import axpn;
 import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport;
 import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport.BoyItem;
 import java.util.ArrayList;
@@ -14,16 +14,16 @@ public final class CaptureReportUtil$1
   
   public void run()
   {
-    axlc.a(this.a.mGameTotalScore, this.a.mGameDuration);
+    axpl.a(this.a.mGameTotalScore, this.a.mGameDuration);
     Iterator localIterator = this.a.mBoyData.iterator();
     while (localIterator.hasNext())
     {
       BoyDataReport.BoyItem localBoyItem = (BoyDataReport.BoyItem)localIterator.next();
       if (localBoyItem.mEnd) {
-        axlc.a(localBoyItem.mId, "" + localBoyItem.mScore, axlc.a(localBoyItem.status));
+        axpl.a(localBoyItem.mId, "" + localBoyItem.mScore, axpl.a(localBoyItem.status));
       }
     }
-    axle.a().a(this.a);
+    axpn.a().a(this.a);
   }
 }
 

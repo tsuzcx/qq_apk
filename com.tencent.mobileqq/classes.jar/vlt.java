@@ -1,52 +1,35 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-class vlt
-  extends SimpleObserver<List<vhg>>
+final class vlt
+  implements URLDrawable.URLDrawableListener
 {
-  vlt(vls paramvls, vll paramvll) {}
+  vlt(long paramLong, vme paramvme) {}
   
-  public void a(List<vhg> paramList)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    ArrayList localArrayList = new ArrayList();
-    vle localvle = new vle(vls.a(this.jdField_a_of_type_Vls));
-    localvle.jdField_a_of_type_JavaUtilList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      vhg localvhg = (vhg)localIterator.next();
-      String str = localvhg.jdField_a_of_type_JavaLangString;
-      localvle.jdField_a_of_type_JavaUtilMap.put(localvhg.b, str);
-      localvle.jdField_a_of_type_JavaUtilList.add(localvhg.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
     }
-    paramList = vlq.a(paramList);
-    if ((paramList != null) && (!vls.a(this.jdField_a_of_type_Vls).a())) {
-      localvle.jdField_a_of_type_JavaLangString = paramList.b;
-    }
-    localArrayList.add(localvle);
-    paramList = this.jdField_a_of_type_Vll;
-    if (!vls.a(this.jdField_a_of_type_Vls).a()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramList.a(localArrayList, bool);
-      return;
+    if (this.jdField_a_of_type_Vme != null) {
+      this.jdField_a_of_type_Vme.b();
     }
   }
   
-  public void onError(@NonNull Error paramError)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    int i = 0;
-    if ((paramError instanceof ErrorMessage)) {
-      i = ((ErrorMessage)paramError).errorCode;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadSuccessed");
     }
-    paramError = new ArrayList();
-    paramError.add(vls.a(this.jdField_a_of_type_Vls));
-    this.jdField_a_of_type_Vll.a(new ErrorMessage(i, "fail"), paramError);
+    wxj.b("storypic", "load_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
+    if (this.jdField_a_of_type_Vme != null) {
+      this.jdField_a_of_type_Vme.a();
+    }
   }
 }
 

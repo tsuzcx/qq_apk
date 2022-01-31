@@ -1,6 +1,15 @@
-public abstract interface assc
+import java.util.List;
+
+public class assc
 {
-  public abstract void a(boolean paramBoolean);
+  public int a;
+  public String a;
+  public List<assd> a;
+  public int[] a;
+  public String b;
+  public List<asse> b;
+  public String c;
+  public String d;
 }
 
 

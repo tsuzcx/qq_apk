@@ -1,11 +1,18 @@
-public abstract interface behh
-  extends bebx
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
+
+class behh
+  extends behj
 {
-  public abstract String g();
+  behh(behe parambehe)
+  {
+    super(parambehe);
+  }
   
-  public abstract String h();
-  
-  public abstract String i();
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  {
+    return a(paramWebView, paramString);
+  }
 }
 
 

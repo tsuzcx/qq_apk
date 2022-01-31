@@ -1,29 +1,20 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import tencent.im.cs.group_file_common.group_file_common.FileInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment.17;
 
 public class bcjd
-  extends ypo
+  implements DialogInterface.OnClickListener
 {
-  public bcjd(TroopFileTransferManager paramTroopFileTransferManager) {}
+  public bcjd(VisitorTroopCardFragment.17 param17) {}
   
-  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (paramFileInfo != null))
+    if (paramInt == 1)
     {
-      String str = paramFileInfo.str_file_id.get();
-      Object localObject = str;
-      if (!str.startsWith("/")) {
-        localObject = "/" + str;
-      }
-      localObject = this.a.a().a((String)localObject);
-      if (localObject != null)
-      {
-        ((bbnr)localObject).a = paramFileInfo.uint32_bus_id.get();
-        ((bbnr)localObject).c = paramFileInfo.uint32_dead_time.get();
-      }
-      this.a.a().d((bbnr)localObject);
+      this.a.this$0.a.cancel();
+      this.a.this$0.getActivity().finish();
     }
   }
 }

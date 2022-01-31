@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.transport;
 
-import aucf;
-import auey;
+import augo;
+import aujh;
 
 class MsgBackupNotifier$9
   implements Runnable
@@ -10,7 +10,7 @@ class MsgBackupNotifier$9
   
   public void run()
   {
-    aucf.a().a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
+    augo.a().a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
   }
 }
 

@@ -1,35 +1,20 @@
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class aekg
+  implements DialogInterface.OnClickListener
 {
-  @atcn(a="structmsg_switch")
-  public int a;
-  @atcn(a="msf_http_monitor_ban")
-  public boolean a;
-  @atcn(a="structmsg_sampling")
-  public int b;
-  @atcn(a="structmsg_filternumber")
-  public int c;
-  @atcn(a="switch_background_start_activity")
-  public int d;
-  @atcn(a="switch_open_third_app")
-  public int e;
-  @atcn(a="switch_imei")
-  public int f;
+  public aekg(UpgradeActivity paramUpgradeActivity) {}
   
-  public JSONObject a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return atco.a(this);
-  }
-  
-  public String toString()
-  {
-    return a().toString();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aekg
  * JD-Core Version:    0.7.0.1
  */

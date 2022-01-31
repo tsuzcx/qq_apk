@@ -16,7 +16,7 @@ public class rsg
   {
     ImageView localImageView = ReadInJoyFastWebBottomSocialView.a(this.a);
     if (ReadInJoyFastWebBottomSocialView.a(this.a).a) {}
-    for (int i = 2130842475;; i = 2130842477)
+    for (int i = 2130842488;; i = 2130842490)
     {
       localImageView.setImageResource(i);
       paramAnimation.setInterpolator(new AnticipateInterpolator());

@@ -1,118 +1,113 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
 public class amgz
-  extends abnt
+  implements Comparator<awge>
 {
-  public amgz(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, aboq paramaboq)
+  private boolean a;
+  
+  public amgz(boolean paramBoolean)
   {
-    super(paramQQAppInterface, paramQQMessageFacade, paramaboq);
+    this.a = paramBoolean;
   }
   
-  public long a(MessageRecord paramMessageRecord)
+  public int a(awge paramawge1, awge paramawge2)
   {
-    return 0L;
-  }
-  
-  public void a(MessageRecord paramMessageRecord, awbw paramawbw, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, abnu paramabnu)
-  {
-    if (paramMessageRecord == null) {
-      return;
-    }
-    if (paramMessageRecord.time == 0L) {
-      paramMessageRecord.time = ayvc.a();
-    }
-    if (paramMessageRecord.msgseq == 0L) {
-      paramMessageRecord.msgseq = ((int)paramMessageRecord.time);
-    }
-    a(paramMessageRecord, true, 1);
-  }
-  
-  public void a(String paramString, int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2, Bundle paramBundle) {}
-  
-  public void a(String paramString, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded uin=" + paramString + ",type=" + paramInt1 + ",needDelMark=" + paramBoolean2);
-    }
-    if (paramString == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded return : uin=null");
+    paramawge1 = (RecentUser)paramawge1;
+    paramawge2 = (RecentUser)paramawge2;
+    long l3 = Math.max(paramawge1.lastmsgtime, paramawge1.lastmsgdrafttime);
+    long l2 = Math.max(paramawge2.lastmsgtime, paramawge2.lastmsgdrafttime);
+    long l1;
+    if (this.a) {
+      if ((paramawge1.showUpTime > 0L) && (l3 == 0L))
+      {
+        l1 = Math.max(paramawge1.opTime, paramawge1.showUpTime);
+        if ((paramawge2.showUpTime <= 0L) || (l2 != 0L)) {
+          break label194;
+        }
+        l3 = Math.max(paramawge2.opTime, paramawge2.showUpTime);
+        l2 = l1;
+        l1 = l3;
       }
     }
     for (;;)
     {
-      return;
-      if (!aljq.x.equals(paramString)) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded return : clean all");
-      }
-      paramString = (azyu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(61);
-      if (paramString != null)
+      if (l2 > l1)
       {
-        paramString = paramString.a().iterator();
-        while (paramString.hasNext())
-        {
-          String str = (String)paramString.next();
-          if (!TextUtils.isEmpty(str)) {
-            c(str, paramInt1, paramBoolean1, paramBoolean1);
-          }
+        l1 = 3L;
+        label117:
+        l3 = l1;
+        if (!this.a) {
+          break label280;
+        }
+        l2 = l1;
+        if (paramawge1.showUpTime > 0L) {
+          l2 = l1 | 0x1000;
+        }
+        l3 = l2;
+        if (paramawge2.showUpTime <= 0L) {
+          break label280;
+        }
+        l1 = 0x2 | 0x1000;
+        label167:
+        if (l2 >= l1) {
+          break label269;
+        }
+        return 1;
+        l1 = l3;
+        if (l3 != 0L) {
+          break;
+        }
+        l1 = paramawge1.opTime;
+        break;
+        label194:
+        if (l2 != 0L) {
+          break label310;
+        }
+        l3 = paramawge2.opTime;
+        l2 = l1;
+        l1 = l3;
+        continue;
+        if (l3 != 0L) {
+          break label304;
         }
       }
-    }
-    c(paramString, paramInt1, paramBoolean1, paramBoolean2);
-  }
-  
-  public void b(String paramString, int paramInt1, int paramInt2, abpd paramabpd) {}
-  
-  public void c(String paramString, int paramInt)
-  {
-    super.c(paramString, paramInt);
-    aonj localaonj = (aonj)aogj.a().a(607);
-    if ((localaonj == null) || (localaonj.a)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramString, paramInt, 0);
-  }
-  
-  public void c(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramInt) > 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded clean one uin = " + paramString);
-      }
-      localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramInt).a(paramString, paramInt);
-      localabol = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      if (localMessageRecord != null)
+      label269:
+      label280:
+      label304:
+      for (l1 = paramawge1.opTime;; l1 = l3)
       {
-        l = a(localMessageRecord);
-        localabol.a(paramString, paramInt, l, paramBoolean1, paramBoolean2);
-        c(paramString, paramInt);
-        this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(paramString, paramInt));
+        if (l2 == 0L)
+        {
+          l3 = paramawge2.opTime;
+          l2 = l1;
+          l1 = l3;
+          break;
+          if (l2 < l1)
+          {
+            l1 = 1L;
+            break label117;
+          }
+          l1 = 2L;
+          break label117;
+          if (l2 == l1) {
+            return 0;
+          }
+          return -1;
+          l2 = l3;
+          l1 = 2L;
+          break label167;
+        }
+        l3 = l1;
+        l1 = l2;
+        l2 = l3;
+        break;
       }
+      label310:
+      l3 = l1;
+      l1 = l2;
+      l2 = l3;
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramString, paramInt) <= 0) {
-      for (;;)
-      {
-        MessageRecord localMessageRecord;
-        abol localabol;
-        return;
-        long l = 0L;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setTroopReaded clean one uin = " + paramString);
-    }
-    c(paramString, paramInt);
   }
 }
 

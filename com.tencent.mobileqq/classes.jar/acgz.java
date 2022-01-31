@@ -1,19 +1,72 @@
-import java.util.Map;
+import java.lang.ref.WeakReference;
+import mqq.manager.VerifyDevLockManager.NotifyType;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class acgz
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public int a;
-  public String a;
-  public Map<String, String> a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public String e;
-  public boolean e;
+  private WeakReference<VerifyDevLockManager.VerifyDevLockObserver> a;
+  
+  public acgz(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
+  {
+    this.a = new WeakReference(paramVerifyDevLockObserver);
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+    this.a = null;
+  }
+  
+  public int getSeq()
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null) {
+        return localVerifyDevLockObserver.getSeq();
+      }
+    }
+    return super.getSeq();
+  }
+  
+  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null) {
+        localVerifyDevLockObserver.onRecvNotice(paramNotifyType, paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
+      }
+    }
+  }
+  
+  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null) {
+        localVerifyDevLockObserver.onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
+      }
+    }
+  }
+  
+  public void setSeq(int paramInt)
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null)
+      {
+        localVerifyDevLockObserver.setSeq(paramInt);
+        return;
+      }
+    }
+    super.setSeq(paramInt);
+  }
 }
 
 

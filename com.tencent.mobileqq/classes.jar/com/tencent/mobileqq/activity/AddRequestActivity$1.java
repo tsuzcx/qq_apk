@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aloz;
+import alto;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 
@@ -11,7 +11,7 @@ class AddRequestActivity$1
   
   public void run()
   {
-    Card localCard = ((aloz)this.this$0.app.getManager(51)).b(this.this$0.a);
+    Card localCard = ((alto)this.this$0.app.getManager(51)).b(this.this$0.a);
     this.this$0.runOnUiThread(new AddRequestActivity.1.1(this, localCard));
   }
 }

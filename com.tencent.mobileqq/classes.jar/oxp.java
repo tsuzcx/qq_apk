@@ -184,7 +184,7 @@ public class oxp
         {
           ((StringBuilder)localObject1).append(localObject3[m]);
           ((StringBuilder)localObject1).append("_");
-          String str = bdem.a(BaseApplicationImpl.getContext(), localObject2[m]);
+          String str = bdiv.a(BaseApplicationImpl.getContext(), localObject2[m]);
           if (("0".equals(str)) || (TextUtils.isEmpty(str)))
           {
             ((StringBuilder)localObject1).append("0_");
@@ -262,14 +262,14 @@ public class oxp
     }
   }
   
-  private String a(azqk paramazqk)
+  private String a(azut paramazut)
   {
-    paramazqk = paramazqk.a.iterator();
-    while (paramazqk.hasNext())
+    paramazut = paramazut.a.iterator();
+    while (paramazut.hasNext())
     {
-      azqj localazqj = (azqj)paramazqk.next();
-      if ((localazqj instanceof StructMsgItemTitle)) {
-        return ((StructMsgItemTitle)localazqj).b();
+      azus localazus = (azus)paramazut.next();
+      if ((localazus instanceof StructMsgItemTitle)) {
+        return ((StructMsgItemTitle)localazus).b();
       }
     }
     return "";
@@ -296,10 +296,10 @@ public class oxp
         paramList = ((StructMsgForGeneralShare)paramList).mStructMsgItemLists.iterator();
         while (paramList.hasNext())
         {
-          Object localObject = (azqj)paramList.next();
-          if ((localObject instanceof azqk))
+          Object localObject = (azus)paramList.next();
+          if ((localObject instanceof azut))
           {
-            localObject = a((azqk)localObject);
+            localObject = a((azut)localObject);
             if (!TextUtils.isEmpty((CharSequence)localObject))
             {
               if (localStringBuilder.length() > 0) {
@@ -332,7 +332,7 @@ public class oxp
     oxr localoxr = new oxr(this);
     int m = 0;
     int n = 0;
-    Object localObject = bjxj.a();
+    Object localObject = bkbq.a();
     long l1 = ((Integer)((Pair)localObject).first).intValue();
     long l2 = ((Integer)((Pair)localObject).second).intValue();
     long l3 = NetConnInfoCenter.getServerTime();
@@ -514,7 +514,7 @@ public class oxp
         int i1;
         boolean bool2;
         m = 0;
-        aekt.a("onMainFragmentTabClick", "onMainFragmentTabClick", localException1);
+        aepi.a("onMainFragmentTabClick", "onMainFragmentTabClick", localException1);
         continue;
       }
       try
@@ -650,7 +650,7 @@ public class oxp
                       return true;
                       try
                       {
-                        Pair localPair = bjxj.b();
+                        Pair localPair = bkbq.b();
                         paramInt = (int)(Long.valueOf(ors.a()).longValue() % 100L);
                         if ((localPair != null) && (paramInt >= ((Integer)localPair.first).intValue()))
                         {
@@ -710,13 +710,13 @@ public class oxp
   
   public static void e(int paramInt)
   {
-    Object localObject = xmq.a();
-    if (TextUtils.equals((CharSequence)localObject, (String)bjxj.a("dau_report_type_" + paramInt, "")))
+    Object localObject = xqz.a();
+    if (TextUtils.equals((CharSequence)localObject, (String)bkbq.a("dau_report_type_" + paramInt, "")))
     {
       QLog.d("ReadinjoySPEventReport", 2, "has report dau for type today, type :" + paramInt);
       return;
     }
-    bjxj.a("dau_report_type_" + paramInt, localObject);
+    bkbq.a("dau_report_type_" + paramInt, localObject);
     localObject = new oidb_cmd0x80a.AttributeList();
     ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(1);
     ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("Type");
@@ -1000,7 +1000,7 @@ public class oxp
       {
         ((PBStringField)localObject2).set(String.valueOf(n));
         localArrayList.add(localObject1);
-        i1 = syb.a(aljq.aR);
+        i1 = syb.a(alof.aR);
         localObject3 = new oidb_cmd0x80a.AttributeList();
         ((oidb_cmd0x80a.AttributeList)localObject3).att_id.set(113);
         ((oidb_cmd0x80a.AttributeList)localObject3).att_name.set("subscribe_folderstatus");
@@ -1045,7 +1045,7 @@ public class oxp
       {
         ((PBStringField)localObject3).set((String)localObject1);
         localArrayList.add(localObject2);
-        localObject1 = xne.c(BaseApplicationImpl.getContext());
+        localObject1 = xrn.c(BaseApplicationImpl.getContext());
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
           localObject2 = new oidb_cmd0x80a.AttributeList();
@@ -1122,7 +1122,7 @@ public class oxp
         label1954:
         ((PBStringField)localObject3).set((String)localObject1);
         localArrayList.add(localObject2);
-        paramInt = bjxj.a((QQAppInterface)ors.a());
+        paramInt = bkbq.a((QQAppInterface)ors.a());
         if (paramInt != -1)
         {
           localObject1 = new oidb_cmd0x80a.AttributeList();
@@ -1131,7 +1131,7 @@ public class oxp
           ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(paramInt + "");
           localArrayList.add(localObject1);
         }
-        localObject1 = bdcb.b(BaseApplicationImpl.getContext());
+        localObject1 = bdgk.b(BaseApplicationImpl.getContext());
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
           localObject2 = new oidb_cmd0x80a.AttributeList();
@@ -1161,7 +1161,7 @@ public class oxp
           ((oidb_cmd0x80a.AttributeList)localObject2).att_value.set((String)localObject1);
           localArrayList.add(localObject2);
         }
-        localObject1 = bdcb.e();
+        localObject1 = bdgk.e();
         if ((!TextUtils.isEmpty((CharSequence)localObject1)) && ((((String)localObject1).equals("5")) || (((String)localObject1).equals("5.0")) || (((String)localObject1).compareTo("5.0.0") >= 0)))
         {
           localObject2 = ReadInJoyMMapKvStorage.getInstance(a("80aEvent"));
@@ -1175,7 +1175,7 @@ public class oxp
           }
         }
         label2346:
-        bool = azib.a();
+        bool = azmk.a();
         localObject2 = new oidb_cmd0x80a.AttributeList();
         ((oidb_cmd0x80a.AttributeList)localObject2).att_id.set(128);
         ((oidb_cmd0x80a.AttributeList)localObject2).att_name.set("is_jcjj_mode");
@@ -1231,7 +1231,7 @@ public class oxp
         ((oidb_cmd0x80a.AttributeList)localObject2).att_id.set(134);
         ((oidb_cmd0x80a.AttributeList)localObject2).att_name.set("is_study_mode");
         localObject3 = ((oidb_cmd0x80a.AttributeList)localObject2).att_value;
-        if (!azwu.a()) {
+        if (!babd.a()) {
           break label2957;
         }
       }
@@ -1413,14 +1413,14 @@ public class oxp
     }
   }
   
-  public void a(String paramString, azqj paramazqj)
+  public void a(String paramString, azus paramazus)
   {
     if ("2909288299".equals(paramString))
     {
       b("ClickMsg");
-      if ((paramazqj != null) && ((paramazqj instanceof azqk)))
+      if ((paramazus != null) && ((paramazus instanceof azut)))
       {
-        paramString = a((azqk)paramazqj);
+        paramString = a((azut)paramazus);
         if (!TextUtils.isEmpty(paramString))
         {
           if (this.jdField_a_of_type_JavaLangStringBuilder.length() > 0) {

@@ -1,68 +1,15 @@
-import com.tencent.TMG.utils.QLog;
-import java.lang.ref.SoftReference;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
 
 public class txt
+  implements View.OnClickListener
 {
-  public static final String a;
-  private static volatile txt jdField_a_of_type_Txt;
-  private List<SoftReference<Object>> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private ConcurrentHashMap<String, Boolean> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public txt(QCircleContentOperationView paramQCircleContentOperationView) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = txt.class.getSimpleName();
-  }
-  
-  public static txt a()
-  {
-    if (jdField_a_of_type_Txt == null) {}
-    try
-    {
-      if (jdField_a_of_type_Txt == null) {
-        jdField_a_of_type_Txt = new txt();
-      }
-      return jdField_a_of_type_Txt;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
-    {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "clear all");
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (paramString != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString));
-  }
-  
-  public boolean b(String paramString)
-  {
-    if (a(paramString))
-    {
-      paramString = (Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (paramString == null)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "mUinFollowMap getValue uin null");
-        return false;
-      }
-      return paramString.booleanValue();
-    }
-    return false;
+    QCircleContentOperationView.a(this.a, 4);
   }
 }
 

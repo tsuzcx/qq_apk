@@ -1,24 +1,13 @@
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-class arrl
-  implements army
+final class arrl
+  implements Comparator<Map.Entry<String, Integer>>
 {
-  arrl(arrk paramarrk) {}
-  
-  public void a()
+  public int a(Map.Entry<String, Integer> paramEntry1, Map.Entry<String, Integer> paramEntry2)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(aqxj.a());
-    Intent localIntent = new Intent();
-    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
-    SendBottomBar.a(this.a.a).setResult(-1, localIntent);
-    SendBottomBar.a(this.a.a).finish();
+    return ((Integer)paramEntry2.getValue()).intValue() - ((Integer)paramEntry1.getValue()).intValue();
   }
-  
-  public void b() {}
 }
 
 

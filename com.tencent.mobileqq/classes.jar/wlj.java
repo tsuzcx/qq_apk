@@ -1,23 +1,18 @@
-import android.support.annotation.Nullable;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
 
-class wlj
-  implements utn
+public final class wlj
+  implements Parcelable.Creator<CardItem.CardVideoInfo>
 {
-  wlj(wli paramwli, utk paramutk) {}
-  
-  public void a(boolean paramBoolean, @Nullable utj paramutj)
+  public CardItem.CardVideoInfo a(Parcel paramParcel)
   {
-    wsv.e("Q.qqstory.home.data.HomeFeedPresenter", "lbs update %b %s", new Object[] { Boolean.valueOf(paramBoolean), paramutj });
-    this.jdField_a_of_type_Utk.b(this);
-    if (this.jdField_a_of_type_Wli.a.get())
-    {
-      wsv.d("Q.qqstory.home.data.HomeFeedPresenter", "is destroy");
-      return;
-    }
-    wli.a(this.jdField_a_of_type_Wli).a = paramutj;
-    wli.a(this.jdField_a_of_type_Wli).a(null, 0);
-    ((wkp)urr.a(11)).a = paramutj;
+    return new CardItem.CardVideoInfo(paramParcel);
+  }
+  
+  public CardItem.CardVideoInfo[] a(int paramInt)
+  {
+    return new CardItem.CardVideoInfo[paramInt];
   }
 }
 

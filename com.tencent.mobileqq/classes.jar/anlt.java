@@ -1,24 +1,67 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import KQQ.BatchResponse;
+import KQQ.RespBatchProcess;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class anlt
-  implements View.OnClickListener
+class anlt
+  extends ameq
 {
-  public anlt(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  anlt(anlr paramanlr) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, long paramLong, RespBatchProcess paramRespBatchProcess)
   {
-    paramView = (bhpy)bhql.a(BaseActivity.sTopActivity, null);
-    paramView.a(BaseActivity.sTopActivity.getString(2131690268));
-    paramView.a(2131690267, 3);
-    paramView.c(2131690266);
-    paramView.setOnDismissListener(new anlu(this, paramView));
-    paramView.a(new anlv(this, paramView));
-    if (!paramView.isShowing()) {
-      paramView.show();
+    this.a.a().removeObserver(this);
+    TroopInfoData localTroopInfoData = new TroopInfoData();
+    localTroopInfoData.isMember = true;
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("onBatchGetTroopInfoResp, isSucc=").append(paramBoolean).append(", resp IsNull=");
+      if (paramRespBatchProcess == null)
+      {
+        paramBoolean = true;
+        QLog.d("ark.Troop", 2, paramBoolean);
+      }
     }
+    else
+    {
+      if ((paramRespBatchProcess != null) && (paramRespBatchProcess.batch_response_list != null) && (paramRespBatchProcess.batch_response_list.size() != 0)) {
+        break label121;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("ark.Troop", 2, "onBatchGetTroopInfoResp, return");
+      }
+    }
+    label121:
+    int j;
+    do
+    {
+      return;
+      paramBoolean = false;
+      break;
+      j = paramRespBatchProcess.batch_response_list.size();
+      int i = 0;
+      if (i < j)
+      {
+        localObject = (BatchResponse)paramRespBatchProcess.batch_response_list.get(i);
+        if ((localObject == null) || (((BatchResponse)localObject).result != 0)) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (((BatchResponse)localObject).type == 1)
+          {
+            TroopInfo localTroopInfo = ((TroopManager)this.a.a().getManager(52)).b(this.a.a);
+            this.a.a((BatchResponse)localObject, localTroopInfoData, localTroopInfo);
+          }
+        }
+      }
+    } while (j <= 0);
+    anlr.a(this.a, this.a.a, localTroopInfoData);
   }
 }
 

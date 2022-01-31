@@ -1,32 +1,95 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 public class bkgg
-  implements Cloneable
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  private static bkgg jdField_a_of_type_Bkgg;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).getBoolean("HAS_PULL", false);
+  private boolean b;
   
-  private bkgg(bkge parambkge, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  private int a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
+    if (this.b) {
+      return this.jdField_a_of_type_Int;
+    }
+    this.b = true;
+    long l = a(BaseApplicationImpl.getApplication());
+    if (b(BaseApplicationImpl.getApplication()) > l) {}
+    for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0) {
+      return this.jdField_a_of_type_Int;
+    }
   }
   
-  public bkgg a()
+  public static long a(Context paramContext)
   {
+    String str = paramContext.getPackageName();
     try
     {
-      bkgg localbkgg = (bkgg)super.clone();
-      return localbkgg;
+      long l = paramContext.getPackageManager().getPackageInfo(str, 0).firstInstallTime;
+      return l;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0L;
+  }
+  
+  public static bkgg a()
+  {
+    if (jdField_a_of_type_Bkgg == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bkgg == null) {
+        jdField_a_of_type_Bkgg = new bkgg();
+      }
+      return jdField_a_of_type_Bkgg;
+    }
+    finally {}
+  }
+  
+  private void a()
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).edit();
+    localEditor.putBoolean("HAS_PULL", this.jdField_a_of_type_Boolean);
+    localEditor.apply();
+  }
+  
+  public static long b(Context paramContext)
+  {
+    String str = paramContext.getPackageName();
+    try
+    {
+      long l = paramContext.getPackageManager().getPackageInfo(str, 0).lastUpdateTime;
+      return l;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0L;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      QLog.d("PackageUpdateManager", 1, "checkUpgrade has pulll");
+    }
+    while (a() != 1) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    QLog.d("PackageUpdateManager", 1, "checkUpgrade need pull friendlist ");
+    ((FriendListHandler)paramQQAppInterface.a(1)).a(true);
+    a();
   }
 }
 

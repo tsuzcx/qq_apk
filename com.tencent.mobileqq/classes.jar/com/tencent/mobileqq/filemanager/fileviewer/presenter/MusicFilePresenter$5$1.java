@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import ardf;
-import arhz;
-import arjw;
+import arho;
+import armi;
+import arof;
 
 class MusicFilePresenter$5$1
   implements Runnable
@@ -11,11 +11,11 @@ class MusicFilePresenter$5$1
   
   public void run()
   {
-    if ((this.a.this$0.jdField_a_of_type_Ardf != null) && (this.a.this$0.jdField_a_of_type_Ardf.b(arhz.a(this.a.this$0))))
+    if ((this.a.this$0.jdField_a_of_type_Arho != null) && (this.a.this$0.jdField_a_of_type_Arho.b(armi.a(this.a.this$0))))
     {
-      int i = this.a.this$0.jdField_a_of_type_Ardf.a();
+      int i = this.a.this$0.jdField_a_of_type_Arho.a();
       this.a.this$0.b(i);
-      this.a.this$0.jdField_a_of_type_Arjw.c(i);
+      this.a.this$0.jdField_a_of_type_Arof.c(i);
     }
   }
 }

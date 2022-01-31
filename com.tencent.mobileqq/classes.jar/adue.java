@@ -1,25 +1,26 @@
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
 public class adue
-  extends ClickableSpan
+  extends Handler
 {
-  public adue(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public adue(RegisterBaseActivity paramRegisterBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    SoundAndVibrateActivity.a(this.a);
-    VipUtils.a(this.a.app, "Vip_SpecialCare", "0X80049EE", "0X80049EE", 0, 1, null);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(this.a.getResources().getColor(2131166909));
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.c();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131721212);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 

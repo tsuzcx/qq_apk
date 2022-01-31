@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 
 public class ppy
-  implements bhpo
+  implements bhtv
 {
   private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
   private BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;

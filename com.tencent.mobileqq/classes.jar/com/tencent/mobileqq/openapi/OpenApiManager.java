@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.openapi;
 
-import abol;
-import abot;
-import acex;
-import acfe;
-import aekt;
-import aenj;
-import aenl;
-import aftc;
-import aloz;
-import alsi;
+import abta;
+import abti;
+import acjm;
+import acjt;
+import aepi;
+import aery;
+import aesa;
+import afxr;
+import alto;
+import alwx;
 import android.content.ContentProvider;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,25 +21,25 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.view.View;
-import awav;
-import awaw;
-import awax;
-import away;
-import awaz;
-import awbc;
-import awbd;
-import awbe;
-import awbg;
-import awbh;
-import awbi;
-import baig;
-import banc;
-import baoj;
-import bdbt;
-import bdcs;
-import bdew;
-import bdje;
-import bfua;
+import awfe;
+import awff;
+import awfg;
+import awfh;
+import awfi;
+import awfl;
+import awfm;
+import awfn;
+import awfp;
+import awfq;
+import awfr;
+import bamp;
+import barl;
+import bass;
+import bdgc;
+import bdhb;
+import bdjf;
+import bdnn;
+import bfyh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -85,12 +85,12 @@ public class OpenApiManager
   private String mLastGetPayCodePermission;
   private String mLastGetPayCodePkgName;
   private QQAppInterface mLoginSucApp;
-  private alsi mMsgObserver = new awav(this);
-  private final Queue<awbh> mPayMsgRspQueue = new LinkedList();
+  private alwx mMsgObserver = new awfe(this);
+  private final Queue<awfq> mPayMsgRspQueue = new LinkedList();
   private View mPttHolderView;
-  private aenl mPttTransferCallback;
+  private aesa mPttTransferCallback;
   private ConcurrentHashMap<Long, String> mSendingMsgMap = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, awaz> mThirdAppMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, awfi> mThirdAppMap = new ConcurrentHashMap();
   private int msgTypeFilterOfApps = 0;
   private int uinTypeFilterOfApps = 0;
   
@@ -101,17 +101,17 @@ public class OpenApiManager
     if ((paramMessageRecord != null) && ((paramMessageRecord instanceof MessageForPtt)))
     {
       localMessageForPtt = (MessageForPtt)paramMessageRecord;
-      i = aftc.a(paramQQAppInterface, localMessageForPtt);
+      i = afxr.a(paramQQAppInterface, localMessageForPtt);
       if (i != -1) {
         break label46;
       }
-      acex.a(paramQQAppInterface, paramMessageRecord.frienduin, localMessageForPtt, true, 3, 0, true);
+      acjm.a(paramQQAppInterface, paramMessageRecord.frienduin, localMessageForPtt, true, 3, 0, true);
     }
     label46:
     while ((!paramBoolean) || ((i != 2005) && (i != 2004))) {
       return;
     }
-    acex.a(paramQQAppInterface, paramMessageRecord.frienduin, localMessageForPtt, true, 2, 0, false);
+    acjm.a(paramQQAppInterface, paramMessageRecord.frienduin, localMessageForPtt, true, 2, 0, false);
   }
   
   private void checkDownloadPtt(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong)
@@ -119,23 +119,23 @@ public class OpenApiManager
     checkDownloadPtt(paramQQAppInterface, paramQQAppInterface.a().b(paramString, paramInt, paramLong), false);
   }
   
-  private boolean checkNeedPayAuth(awbh paramawbh)
+  private boolean checkNeedPayAuth(awfq paramawfq)
   {
-    if ((paramawbh == null) || (paramawbh.jdField_a_of_type_Int != 3)) {}
+    if ((paramawfq == null) || (paramawfq.jdField_a_of_type_Int != 3)) {}
     for (;;)
     {
       return false;
       try
       {
-        int i = new JSONObject(paramawbh.jdField_a_of_type_JavaLangString).optInt("retcode");
+        int i = new JSONObject(paramawfq.jdField_a_of_type_JavaLangString).optInt("retcode");
         if (i != 10001) {
           continue;
         }
         try
         {
-          paramawbh = this.mLoginSucApp;
+          paramawfq = this.mLoginSucApp;
           Object localObject = new JSONObject();
-          ((JSONObject)localObject).put("userId", paramawbh.getCurrentAccountUin());
+          ((JSONObject)localObject).put("userId", paramawfq.getCurrentAccountUin());
           ((JSONObject)localObject).put("viewTag", "showWearPayAuthor");
           ((JSONObject)localObject).put("app_info", "appInfo");
           ((JSONObject)localObject).put("come_from", 2);
@@ -143,25 +143,25 @@ public class OpenApiManager
           Bundle localBundle = new Bundle();
           localBundle.putString("json", ((JSONObject)localObject).toString());
           localBundle.putString("callbackSn", "0");
-          localObject = new Intent(paramawbh.getApplication(), PayBridgeActivity.class);
+          localObject = new Intent(paramawfq.getApplication(), PayBridgeActivity.class);
           ((Intent)localObject).putExtras(localBundle);
           ((Intent)localObject).addFlags(268435456);
           ((Intent)localObject).putExtra("pay_requestcode", 5);
-          paramawbh.getApplication().startActivity((Intent)localObject);
+          paramawfq.getApplication().startActivity((Intent)localObject);
           return true;
         }
-        catch (Exception paramawbh)
+        catch (Exception paramawfq)
         {
           for (;;)
           {
             if (QLog.isDevelopLevel()) {
-              paramawbh.printStackTrace();
+              paramawfq.printStackTrace();
             }
           }
         }
         return false;
       }
-      catch (JSONException paramawbh) {}
+      catch (JSONException paramawfq) {}
     }
   }
   
@@ -172,7 +172,7 @@ public class OpenApiManager
     this.mPttTransferCallback = null;
   }
   
-  private awbe copyMsgFromMessageRecord(MessageRecord paramMessageRecord, String paramString, int paramInt)
+  private awfn copyMsgFromMessageRecord(MessageRecord paramMessageRecord, String paramString, int paramInt)
   {
     return null;
   }
@@ -202,9 +202,9 @@ public class OpenApiManager
     int j = 0;
     while (localIterator.hasNext())
     {
-      awaz localawaz = (awaz)localIterator.next();
-      j |= localawaz.a();
-      i = localawaz.b() | i;
+      awfi localawfi = (awfi)localIterator.next();
+      j |= localawfi.a();
+      i = localawfi.b() | i;
     }
     this.msgTypeFilterOfApps = j;
     this.uinTypeFilterOfApps = i;
@@ -220,8 +220,8 @@ public class OpenApiManager
       return;
     }
     this.mPttHolderView = new View(BaseApplicationImpl.sApplication);
-    this.mPttTransferCallback = new awaw(this);
-    aenj.a(this.mLoginSucApp).a(this.mPttHolderView, this.mPttTransferCallback);
+    this.mPttTransferCallback = new awff(this);
+    aery.a(this.mLoginSucApp).a(this.mPttHolderView, this.mPttTransferCallback);
   }
   
   /* Error */
@@ -247,7 +247,7 @@ public class OpenApiManager
     //   30: getfield 47	com/tencent/mobileqq/openapi/OpenApiManager:mThirdAppMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   33: aload_1
     //   34: invokevirtual 346	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   37: checkcast 277	awaz
+    //   37: checkcast 277	awfi
     //   40: astore 15
     //   42: aload 15
     //   44: ifnonnull +20 -> 64
@@ -260,7 +260,7 @@ public class OpenApiManager
     //   60: invokespecial 342	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   63: areturn
     //   64: aload 15
-    //   66: getfield 348	awaz:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   66: getfield 348	awfi:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   69: aload_2
     //   70: invokevirtual 354	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   73: ifne +20 -> 93
@@ -274,7 +274,7 @@ public class OpenApiManager
     //   92: areturn
     //   93: aload 15
     //   95: sipush 256
-    //   98: invokevirtual 357	awaz:a	(I)Z
+    //   98: invokevirtual 357	awfi:a	(I)Z
     //   101: ifne +20 -> 121
     //   104: new 333	android/util/Pair
     //   107: dup
@@ -286,21 +286,21 @@ public class OpenApiManager
     //   120: areturn
     //   121: aload 15
     //   123: aload_3
-    //   124: invokevirtual 360	awaz:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   124: invokevirtual 360	awfi:b	(Ljava/lang/String;)Ljava/lang/String;
     //   127: astore_1
     //   128: aload 15
     //   130: aload 5
-    //   132: invokevirtual 360	awaz:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   135: astore_3
+    //   132: invokevirtual 360	awfi:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   135: astore_2
     //   136: lconst_0
     //   137: lstore 13
-    //   139: aload_3
+    //   139: aload_2
     //   140: invokestatic 366	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   143: lstore 11
     //   145: aload_1
     //   146: invokestatic 372	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   149: ifne +17 -> 166
-    //   152: aload_3
+    //   152: aload_2
     //   153: invokestatic 372	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   156: ifne +10 -> 166
     //   159: lload 11
@@ -315,7 +315,7 @@ public class OpenApiManager
     //   176: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   179: invokespecial 342	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   182: areturn
-    //   183: astore_2
+    //   183: astore_3
     //   184: lload 13
     //   186: lstore 11
     //   188: invokestatic 285	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -323,7 +323,7 @@ public class OpenApiManager
     //   194: ldc 16
     //   196: iconst_2
     //   197: ldc_w 374
-    //   200: aload_2
+    //   200: aload_3
     //   201: invokestatic 377	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   204: lload 13
     //   206: lstore 11
@@ -332,11 +332,11 @@ public class OpenApiManager
     //   213: iconst_1
     //   214: if_icmpne +598 -> 812
     //   217: aload 6
-    //   219: getstatic 382	aljq:aW	Ljava/lang/String;
+    //   219: getstatic 382	alof:aW	Ljava/lang/String;
     //   222: invokevirtual 386	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   225: ifne +31 -> 256
     //   228: aload 7
-    //   230: getstatic 382	aljq:aW	Ljava/lang/String;
+    //   230: getstatic 382	alof:aW	Ljava/lang/String;
     //   233: invokevirtual 386	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   236: ifne +20 -> 256
     //   239: new 333	android/util/Pair
@@ -348,7 +348,7 @@ public class OpenApiManager
     //   252: invokespecial 342	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   255: areturn
     //   256: aload 6
-    //   258: invokestatic 390	bdcs:a	(Ljava/lang/String;)Z
+    //   258: invokestatic 390	bdhb:a	(Ljava/lang/String;)Z
     //   261: ifne +20 -> 281
     //   264: new 333	android/util/Pair
     //   267: dup
@@ -374,7 +374,7 @@ public class OpenApiManager
     //   301: invokespecial 393	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   304: astore_1
     //   305: aload_1
-    //   306: invokestatic 398	bdic:a	(Ljava/io/InputStream;)B
+    //   306: invokestatic 398	bdml:a	(Ljava/io/InputStream;)B
     //   309: istore 8
     //   311: iload 8
     //   313: ifge +57 -> 370
@@ -408,7 +408,7 @@ public class OpenApiManager
     //   368: aload_3
     //   369: areturn
     //   370: aload 7
-    //   372: invokestatic 407	bdcs:a	(Ljava/lang/String;)Ljava/io/File;
+    //   372: invokestatic 407	bdhb:a	(Ljava/lang/String;)Ljava/io/File;
     //   375: pop
     //   376: new 409	java/io/FileOutputStream
     //   379: dup
@@ -416,17 +416,17 @@ public class OpenApiManager
     //   382: invokespecial 410	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   385: astore_3
     //   386: iload 8
-    //   388: invokestatic 413	bdic:a	(B)I
+    //   388: invokestatic 413	bdml:a	(B)I
     //   391: istore 4
     //   393: iload 4
-    //   395: invokestatic 416	bdic:a	(I)I
+    //   395: invokestatic 416	bdml:a	(I)I
     //   398: istore 9
     //   400: iload 9
     //   402: newarray byte
-    //   404: astore 6
+    //   404: astore 7
     //   406: iload 9
     //   408: newarray byte
-    //   410: astore 7
+    //   410: astore 6
     //   412: new 418	com/tencent/mobileqq/utils/SilkCodecWrapper
     //   415: dup
     //   416: aload 17
@@ -470,7 +470,7 @@ public class OpenApiManager
     //   490: invokespecial 342	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   493: areturn
     //   494: aload 5
-    //   496: invokestatic 437	bdic:a	([B)I
+    //   496: invokestatic 437	bdml:a	([B)I
     //   499: istore 10
     //   501: iload 10
     //   503: ifgt +55 -> 558
@@ -502,7 +502,7 @@ public class OpenApiManager
     //   555: aload 5
     //   557: areturn
     //   558: aload_1
-    //   559: aload 6
+    //   559: aload 7
     //   561: iconst_0
     //   562: iload 10
     //   564: invokevirtual 440	java/io/FileInputStream:read	([BII)I
@@ -535,8 +535,8 @@ public class OpenApiManager
     //   619: aload 5
     //   621: areturn
     //   622: aload_2
-    //   623: aload 6
-    //   625: aload 7
+    //   623: aload 7
+    //   625: aload 6
     //   627: iload 10
     //   629: iload 9
     //   631: invokevirtual 443	com/tencent/mobileqq/utils/SilkCodecWrapper:a	([B[BII)I
@@ -569,7 +569,7 @@ public class OpenApiManager
     //   686: aload 5
     //   688: areturn
     //   689: aload_3
-    //   690: aload 7
+    //   690: aload 6
     //   692: invokevirtual 447	java/io/FileOutputStream:write	([B)V
     //   695: goto -256 -> 439
     //   698: astore 6
@@ -735,7 +735,7 @@ public class OpenApiManager
     //   445	183	10	j	int
     //   143	64	11	l1	long
     //   137	68	13	l2	long
-    //   40	865	15	localawaz	awaz
+    //   40	865	15	localawfi	awfi
     //   282	656	16	localObject	Object
     //   4	413	17	localQQAppInterface	QQAppInterface
     // Exception table:
@@ -798,7 +798,7 @@ public class OpenApiManager
     if (localQQAppInterface == null) {
       return new Pair(Integer.valueOf(-1), Integer.valueOf(0));
     }
-    paramString1 = (awaz)this.mThirdAppMap.get(paramString1);
+    paramString1 = (awfi)this.mThirdAppMap.get(paramString1);
     if (paramString1 == null) {
       return new Pair(Integer.valueOf(-2), Integer.valueOf(0));
     }
@@ -819,7 +819,7 @@ public class OpenApiManager
       l = Long.parseLong(paramString1);
       if (paramInt == 1)
       {
-        paramString1 = ((aloz)localQQAppInterface.getManager(51)).e(paramString2);
+        paramString1 = ((alto)localQQAppInterface.getManager(51)).e(paramString2);
         if ((paramString1 == null) || (!paramString1.isFriend())) {
           return new Pair(Integer.valueOf(-11), Integer.valueOf(0));
         }
@@ -834,21 +834,21 @@ public class OpenApiManager
     }
     if ((paramInt == 2) || (paramInt == 1) || (paramInt == 4))
     {
-      paramString1 = localQQAppInterface.a().b(paramString2, awbi.c(paramInt), l);
+      paramString1 = localQQAppInterface.a().b(paramString2, awfr.c(paramInt), l);
       if ((paramString1 == null) || (paramString1.isSendFromLocal())) {
         return new Pair(Integer.valueOf(-14), Integer.valueOf(0));
       }
       checkDownloadPtt(localQQAppInterface, paramString1, true);
-      return new Pair(Integer.valueOf(0), Integer.valueOf(awbi.a(localQQAppInterface, (MessageForPtt)paramString1)));
+      return new Pair(Integer.valueOf(0), Integer.valueOf(awfr.a(localQQAppInterface, (MessageForPtt)paramString1)));
     }
     return new Pair(Integer.valueOf(-5), Integer.valueOf(0));
   }
   
-  public awbh[] exchangeUins(String paramString1, String paramString2, long paramLong1, long paramLong2, String[] paramArrayOfString)
+  public awfq[] exchangeUins(String paramString1, String paramString2, long paramLong1, long paramLong2, String[] paramArrayOfString)
   {
-    paramString2 = new awbh[1];
-    paramString2[0] = new awbh(0, null);
-    paramString1 = awax.a(BaseApplicationImpl.sApplication, paramString1);
+    paramString2 = new awfq[1];
+    paramString2[0] = new awfq(0, null);
+    paramString1 = awfg.a(BaseApplicationImpl.sApplication, paramString1);
     if (paramString1.d != paramLong2)
     {
       paramString2[0].jdField_b_of_type_Int = -20;
@@ -859,19 +859,19 @@ public class OpenApiManager
       paramString2[0].jdField_b_of_type_Int = -19;
       return paramString2;
     }
-    paramString1 = new awaz(paramString1);
+    paramString1 = new awfi(paramString1);
     if (!paramString1.a(4))
     {
       paramString2[0].jdField_b_of_type_Int = -4;
       return paramString2;
     }
-    paramString2 = new awbh[paramArrayOfString.length];
+    paramString2 = new awfq[paramArrayOfString.length];
     int i = 0;
     for (;;)
     {
       if (i < paramArrayOfString.length)
       {
-        paramString2[i] = new awbh(0, null);
+        paramString2[i] = new awfq(0, null);
         try
         {
           paramString2[i].jdField_a_of_type_JavaLangString = paramString1.a(paramString1.c(paramArrayOfString[i]));
@@ -901,25 +901,25 @@ public class OpenApiManager
     return paramString2;
   }
   
-  public awbh getAvatarPath(String paramString1, String paramString2, String paramString3, int paramInt)
+  public awfq getAvatarPath(String paramString1, String paramString2, String paramString3, int paramInt)
   {
     QQAppInterface localQQAppInterface = this.mLoginSucApp;
     if (localQQAppInterface == null) {
-      return new awbh(-1, null);
+      return new awfq(-1, null);
     }
-    paramString1 = (awaz)this.mThirdAppMap.get(paramString1);
+    paramString1 = (awfi)this.mThirdAppMap.get(paramString1);
     if (paramString1 == null) {
-      return new awbh(-2, null);
+      return new awfq(-2, null);
     }
     if (!paramString1.jdField_b_of_type_JavaLangString.equals(paramString2)) {
-      return new awbh(-7, null);
+      return new awfq(-7, null);
     }
     if (!paramString1.a(4)) {
-      return new awbh(-4, null);
+      return new awfq(-4, null);
     }
     paramString1 = paramString1.b(paramString3);
     if (TextUtils.isEmpty(paramString1)) {
-      return new awbh(-6, null);
+      return new awfq(-6, null);
     }
     int i = 1;
     if (paramInt == 2) {
@@ -927,38 +927,38 @@ public class OpenApiManager
     }
     for (;;)
     {
-      return new awbh(0, localQQAppInterface.a(i, paramString1, 0));
+      return new awfq(0, localQQAppInterface.a(i, paramString1, 0));
       if (paramInt == 4) {
         i = 4;
       }
     }
   }
   
-  public int getLastMessages(List<awbe> paramList, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  public int getLastMessages(List<awfn> paramList, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     QQAppInterface localQQAppInterface = this.mLoginSucApp;
     if (localQQAppInterface == null) {
       return -1;
     }
-    if (!awbd.a(paramInt1)) {
+    if (!awfm.a(paramInt1)) {
       return -5;
     }
-    awaz localawaz = (awaz)this.mThirdAppMap.get(paramString1);
-    if (localawaz == null) {
+    awfi localawfi = (awfi)this.mThirdAppMap.get(paramString1);
+    if (localawfi == null) {
       return -2;
     }
-    if (!localawaz.jdField_b_of_type_JavaLangString.equals(paramString2)) {
+    if (!localawfi.jdField_b_of_type_JavaLangString.equals(paramString2)) {
       return -7;
     }
-    paramString1 = localawaz.b(paramString3);
+    paramString1 = localawfi.b(paramString3);
     if (TextUtils.isEmpty(paramString1)) {
       return -6;
     }
-    if (!localawaz.a(2)) {
+    if (!localawfi.a(2)) {
       return -4;
     }
-    List localList = localQQAppInterface.a().a(paramString1, awbi.c(paramInt1), paramInt2);
-    abot.a(paramString1, awbi.c(paramInt1), localList, localQQAppInterface);
+    List localList = localQQAppInterface.a().a(paramString1, awfr.c(paramInt1), paramInt2);
+    abti.a(paramString1, awfr.c(paramInt1), localList, localQQAppInterface);
     paramInt2 = 0;
     if (paramInt2 < localList.size())
     {
@@ -972,111 +972,111 @@ public class OpenApiManager
       if ((localMessageRecord instanceof ChatMessage)) {
         ((ChatMessage)localMessageRecord).parse();
       }
-      int i = awbi.a(localMessageRecord.msgtype);
-      String str2 = localawaz.a(String.valueOf(localMessageRecord.uniseq));
+      int i = awfr.a(localMessageRecord.msgtype);
+      String str2 = localawfi.a(String.valueOf(localMessageRecord.uniseq));
       paramString1 = null;
       paramString2 = null;
       int j = 1007;
-      if ((i == 1) && (localawaz.a(paramInt1, 1)))
+      if ((i == 1) && (localawfi.a(paramInt1, 1)))
       {
-        paramString1 = new baig(localMessageRecord.msg, 3).a();
+        paramString1 = new bamp(localMessageRecord.msg, 3).a();
         label269:
         if (paramInt1 != 1) {
           break label545;
         }
       }
       label545:
-      for (String str1 = "";; str1 = localawaz.a(localMessageRecord.senderuin))
+      for (String str1 = "";; str1 = localawfi.a(localMessageRecord.senderuin))
       {
-        paramList.add(new awbe(paramString3, paramInt1, str1, i, str2, localMessageRecord.time, localMessageRecord.isSend(), paramString1, paramString2, j));
+        paramList.add(new awfn(paramString3, paramInt1, str1, i, str2, localMessageRecord.time, localMessageRecord.isSend(), paramString1, paramString2, j));
         break;
-        if ((i == 2) && ((localMessageRecord instanceof MessageForPtt)) && (localawaz.a(paramInt1, 2)))
+        if ((i == 2) && ((localMessageRecord instanceof MessageForPtt)) && (localawfi.a(paramInt1, 2)))
         {
           checkDownloadPtt(localQQAppInterface, localMessageRecord, false);
           paramString2 = ((MessageForPtt)localMessageRecord).getLocalFilePath();
-          j = awbi.a(localQQAppInterface, (MessageForPtt)localMessageRecord);
+          j = awfr.a(localQQAppInterface, (MessageForPtt)localMessageRecord);
           break label269;
         }
-        if ((i == 4) && (localawaz.a(paramInt1, 4)))
+        if ((i == 4) && (localawfi.a(paramInt1, 4)))
         {
-          paramString1 = new baig(localMessageRecord.msg, 3).a();
+          paramString1 = new bamp(localMessageRecord.msg, 3).a();
           break label269;
         }
-        if ((i == 8) && (localawaz.a(paramInt1, 8)))
+        if ((i == 8) && (localawfi.a(paramInt1, 8)))
         {
-          paramString1 = awbe.jdField_b_of_type_JavaLangString;
+          paramString1 = awfn.jdField_b_of_type_JavaLangString;
           break label269;
         }
-        if ((i == 16) && (localawaz.a(paramInt1, 16)))
+        if ((i == 16) && (localawfi.a(paramInt1, 16)))
         {
-          paramString1 = awbe.c;
+          paramString1 = awfn.c;
           break label269;
         }
-        if ((i == 32) && (localawaz.a(paramInt1, 32)))
+        if ((i == 32) && (localawfi.a(paramInt1, 32)))
         {
-          paramString1 = awbe.d;
+          paramString1 = awfn.d;
           break label269;
         }
-        if ((i == 64) && (localawaz.a(paramInt1, 64)))
+        if ((i == 64) && (localawfi.a(paramInt1, 64)))
         {
-          paramString1 = awbe.e;
+          paramString1 = awfn.e;
           break label269;
         }
-        if (!localawaz.a(paramInt1, 1073741824)) {
+        if (!localawfi.a(paramInt1, 1073741824)) {
           break;
         }
         i = 1073741824;
-        paramString1 = awbe.f;
+        paramString1 = awfn.f;
         break label269;
       }
     }
     return 0;
   }
   
-  public awbh getNickName(String paramString1, String paramString2, String paramString3, int paramInt)
+  public awfq getNickName(String paramString1, String paramString2, String paramString3, int paramInt)
   {
     if (this.mLoginSucApp == null) {
-      return new awbh(-1, null);
+      return new awfq(-1, null);
     }
-    paramString1 = (awaz)this.mThirdAppMap.get(paramString1);
+    paramString1 = (awfi)this.mThirdAppMap.get(paramString1);
     if (paramString1 == null) {
-      return new awbh(-2, null);
+      return new awfq(-2, null);
     }
     if (!paramString1.jdField_b_of_type_JavaLangString.equals(paramString2)) {
-      return new awbh(-7, null);
+      return new awfq(-7, null);
     }
     if (!paramString1.a(8)) {
-      return new awbh(-4, null);
+      return new awfq(-4, null);
     }
-    if (!awbd.a(paramInt)) {
-      return new awbh(-5, null);
+    if (!awfm.a(paramInt)) {
+      return new awfq(-5, null);
     }
     paramString1 = paramString1.b(paramString3);
     if (TextUtils.isEmpty(paramString1)) {
-      return new awbh(-6, null);
+      return new awfq(-6, null);
     }
-    paramInt = awbi.c(paramInt);
-    return new awbh(0, bdbt.a(this.mLoginSucApp, paramString1, paramInt));
+    paramInt = awfr.c(paramInt);
+    return new awfq(0, bdgc.a(this.mLoginSucApp, paramString1, paramInt));
   }
   
-  public List<awbh> handlePayMsgReq(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
+  public List<awfq> handlePayMsgReq(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
   {
     QQAppInterface localQQAppInterface = this.mLoginSucApp;
     if (localQQAppInterface == null) {
-      return handlePayMsgRsp(new awbh(paramInt, -1, paramString4));
+      return handlePayMsgRsp(new awfq(paramInt, -1, paramString4));
     }
     if ((TextUtils.isEmpty(paramString3)) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return handlePayMsgRsp(new awbh(paramInt, -6, paramString4));
+      return handlePayMsgRsp(new awfq(paramInt, -6, paramString4));
     }
-    paramString1 = awax.a(BaseApplicationImpl.sApplication, paramString1);
+    paramString1 = awfg.a(BaseApplicationImpl.sApplication, paramString1);
     if (paramString1 == null) {
-      return handlePayMsgRsp(new awbh(paramInt, -8, paramString4));
+      return handlePayMsgRsp(new awfq(paramInt, -8, paramString4));
     }
     if (!paramString1.jdField_b_of_type_JavaLangString.equals(paramString2)) {
-      return handlePayMsgRsp(new awbh(paramInt, -7, paramString4));
+      return handlePayMsgRsp(new awfq(paramInt, -7, paramString4));
     }
-    if (!awax.a(BaseApplicationImpl.sApplication, paramString2, paramString1.c)) {
-      return handlePayMsgRsp(new awbh(paramInt, -7, paramString4));
+    if (!awfg.a(BaseApplicationImpl.sApplication, paramString2, paramString1.c)) {
+      return handlePayMsgRsp(new awfq(paramInt, -7, paramString4));
     }
     this.mLastGetPayCodePkgName = paramString2;
     this.mLastGetPayCodePermission = paramString3;
@@ -1109,7 +1109,7 @@ public class OpenApiManager
     }
   }
   
-  public List<awbh> handlePayMsgRsp(awbh paramawbh)
+  public List<awfq> handlePayMsgRsp(awfq paramawfq)
   {
     ArrayList localArrayList = new ArrayList();
     synchronized (this.mPayMsgRspQueue)
@@ -1119,8 +1119,8 @@ public class OpenApiManager
       }
     }
     this.mPayMsgRspQueue.clear();
-    if (paramawbh != null) {
-      localArrayList.add(paramawbh);
+    if (paramawfq != null) {
+      localArrayList.add(paramawfq);
     }
     return localArrayList;
   }
@@ -1139,9 +1139,9 @@ public class OpenApiManager
     return true;
   }
   
-  public void onFileTransStatusChanged(baoj parambaoj, int paramInt1, int paramInt2)
+  public void onFileTransStatusChanged(bass parambass, int paramInt1, int paramInt2)
   {
-    if (parambaoj.jdField_b_of_type_Int != 2) {}
+    if (parambass.jdField_b_of_type_Int != 2) {}
     label641:
     label647:
     for (;;)
@@ -1151,28 +1151,28 @@ public class OpenApiManager
       {
         Object localObject1;
         Object localObject2;
-        if ((this.mSendingMsgMap.contains(Long.valueOf(parambaoj.jdField_b_of_type_Long))) && ((paramInt1 == 1004) || (paramInt1 == 1005) || (paramInt1 == 1003)))
+        if ((this.mSendingMsgMap.contains(Long.valueOf(parambass.jdField_b_of_type_Long))) && ((paramInt1 == 1004) || (paramInt1 == 1005) || (paramInt1 == 1003)))
         {
-          localObject1 = (String)this.mSendingMsgMap.remove(Long.valueOf(parambaoj.jdField_b_of_type_Long));
-          localObject1 = (awaz)this.mThirdAppMap.get(localObject1);
+          localObject1 = (String)this.mSendingMsgMap.remove(Long.valueOf(parambass.jdField_b_of_type_Long));
+          localObject1 = (awfi)this.mThirdAppMap.get(localObject1);
           if (QLog.isColorLevel()) {
             QLog.d("OpenApi.Manager", 2, "onPttStateChange, thirdApp = " + localObject1 + ", status = " + paramInt1);
           }
           if (localObject1 != null)
           {
-            localObject2 = new Intent("com.tencent.mobileqq.openapi.ACTION_MSG_SENDED." + ((awaz)localObject1).jdField_b_of_type_JavaLangString);
-            ((Intent)localObject2).putExtra("msgid", ((awaz)localObject1).a(String.valueOf(parambaoj.jdField_b_of_type_Long)));
+            localObject2 = new Intent("com.tencent.mobileqq.openapi.ACTION_MSG_SENDED." + ((awfi)localObject1).jdField_b_of_type_JavaLangString);
+            ((Intent)localObject2).putExtra("msgid", ((awfi)localObject1).a(String.valueOf(parambass.jdField_b_of_type_Long)));
             if (paramInt1 != 1003) {
               break label595;
             }
             paramInt2 = 0;
             label229:
             ((Intent)localObject2).putExtra("rs_code", paramInt2);
-            BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject2, ((awaz)localObject1).c);
+            BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject2, ((awfi)localObject1).c);
           }
         }
         int i;
-        if (parambaoj.h == 0)
+        if (parambass.h == 0)
         {
           paramInt2 = 0;
           i = 1;
@@ -1183,12 +1183,12 @@ public class OpenApiManager
           if (((this.msgTypeFilterOfApps & 0x2) <= 0) || ((this.uinTypeFilterOfApps & i) <= 0)) {
             break label647;
           }
-          String str = parambaoj.q;
+          String str = parambass.q;
           localObject1 = this.mLoginSucApp;
-          if (parambaoj.jdField_a_of_type_Int == 0) {}
+          if (parambass.jdField_a_of_type_Int == 0) {}
           for (boolean bool = true;; bool = false)
           {
-            paramInt1 = awbi.a((QQAppInterface)localObject1, paramInt1, bool);
+            paramInt1 = awfr.a((QQAppInterface)localObject1, paramInt1, bool);
             if (QLog.isColorLevel()) {
               QLog.d("OpenApi.Manager", 2, "onPttStateChange, uin = " + str + ", extStatus = " + paramInt1);
             }
@@ -1196,7 +1196,7 @@ public class OpenApiManager
             localObject2 = null;
             while (localIterator.hasNext())
             {
-              awaz localawaz = (awaz)localIterator.next();
+              awfi localawfi = (awfi)localIterator.next();
               localObject1 = localObject2;
               if (localObject2 == null)
               {
@@ -1210,18 +1210,18 @@ public class OpenApiManager
                 localObject2 = this.mLoginSucApp.a();
                 if (localObject2 != null)
                 {
-                  localObject2 = ((QQMessageFacade)localObject2).b(str, paramInt2, parambaoj.jdField_b_of_type_Long);
+                  localObject2 = ((QQMessageFacade)localObject2).b(str, paramInt2, parambass.jdField_b_of_type_Long);
                   if (localObject2 != null) {
                     ((Intent)localObject1).putExtra("media_path", ((MessageForPtt)localObject2).getLocalFilePath());
                   }
                 }
               }
               localObject2 = localObject1;
-              if (localawaz.b(i, 2))
+              if (localawfi.b(i, 2))
               {
-                ((Intent)localObject1).putExtra("msgid", localawaz.a(String.valueOf(parambaoj.jdField_b_of_type_Long)));
-                ((Intent)localObject1).setAction("com.tencent.mobileqq.openapi.ACTION_MSG_STATUS_UPDATE." + localawaz.jdField_b_of_type_JavaLangString);
-                BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject1, localawaz.c);
+                ((Intent)localObject1).putExtra("msgid", localawfi.a(String.valueOf(parambass.jdField_b_of_type_Long)));
+                ((Intent)localObject1).setAction("com.tencent.mobileqq.openapi.ACTION_MSG_STATUS_UPDATE." + localawfi.jdField_b_of_type_JavaLangString);
+                BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject1, localawfi.c);
                 localObject2 = localObject1;
               }
             }
@@ -1229,13 +1229,13 @@ public class OpenApiManager
             label595:
             paramInt2 = -9;
             break label229;
-            if (parambaoj.h == 2)
+            if (parambass.h == 2)
             {
               paramInt2 = 3000;
               i = 2;
               break label264;
             }
-            if (parambaoj.h != 1) {
+            if (parambass.h != 1) {
               break label641;
             }
             paramInt2 = 1;
@@ -1260,7 +1260,7 @@ public class OpenApiManager
       return;
       if ((paramInt == 0) || (paramInt == 3000) || (paramInt == 1))
       {
-        paramInt = awbi.b(paramInt);
+        paramInt = awfr.b(paramInt);
         if ((this.uinTypeFilterOfApps & paramInt) <= 0) {
           break;
         }
@@ -1268,7 +1268,7 @@ public class OpenApiManager
         Iterator localIterator = this.mThirdAppMap.values().iterator();
         while (localIterator.hasNext())
         {
-          awaz localawaz = (awaz)localIterator.next();
+          awfi localawfi = (awfi)localIterator.next();
           Object localObject2 = localObject1;
           if (localObject1 == null)
           {
@@ -1278,11 +1278,11 @@ public class OpenApiManager
             ((Intent)localObject2).putExtra("msgTime", paramLong);
           }
           localObject1 = localObject2;
-          if (localawaz.c(paramInt))
+          if (localawfi.c(paramInt))
           {
-            ((Intent)localObject2).putExtra("uin", localawaz.a(paramString));
-            ((Intent)localObject2).setAction("com.tencent.mobileqq.openapi.ACTION_MSG_READED." + localawaz.jdField_b_of_type_JavaLangString);
-            BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject2, localawaz.c);
+            ((Intent)localObject2).putExtra("uin", localawfi.a(paramString));
+            ((Intent)localObject2).setAction("com.tencent.mobileqq.openapi.ACTION_MSG_READED." + localawfi.jdField_b_of_type_JavaLangString);
+            BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject2, localawfi.c);
             localObject1 = localObject2;
           }
         }
@@ -1290,9 +1290,9 @@ public class OpenApiManager
     }
   }
   
-  public final void onPayMsgRsp(awbh paramawbh)
+  public final void onPayMsgRsp(awfq paramawfq)
   {
-    if (checkNeedPayAuth(paramawbh)) {}
+    if (checkNeedPayAuth(paramawfq)) {}
     for (;;)
     {
       return;
@@ -1304,13 +1304,13 @@ public class OpenApiManager
         }
         while ((i <= 50) || (!QLog.isDevelopLevel()))
         {
-          this.mPayMsgRspQueue.add(paramawbh);
+          this.mPayMsgRspQueue.add(paramawfq);
           if ((this.mLoginSucApp == null) || (!isSDKEnable())) {
             break;
           }
-          paramawbh = new Intent();
-          paramawbh.setAction("com.tencent.mobileqq.openapi.ACTION_PAYMSG_RCV." + this.mLastGetPayCodePkgName);
-          BaseApplicationImpl.sApplication.sendBroadcast(paramawbh, this.mLastGetPayCodePermission);
+          paramawfq = new Intent();
+          paramawfq.setAction("com.tencent.mobileqq.openapi.ACTION_PAYMSG_RCV." + this.mLastGetPayCodePkgName);
+          BaseApplicationImpl.sApplication.sendBroadcast(paramawfq, this.mLastGetPayCodePermission);
           return;
         }
         QLog.i("OpenApi.Manager", 4, "Pay rsp queue size:" + i);
@@ -1331,14 +1331,14 @@ public class OpenApiManager
       {
         return;
       } while ((paramMessage.istroop != 0) && (paramMessage.istroop != 3000) && (paramMessage.istroop != 1));
-      k = awbi.a(paramMessage.msgtype);
-      m = awbi.b(paramMessage.istroop);
+      k = awfr.a(paramMessage.msgtype);
+      m = awfr.b(paramMessage.istroop);
     } while ((((this.msgTypeFilterOfApps & k) <= 0) && ((this.msgTypeFilterOfApps & 0x40000000) <= 0)) || ((this.uinTypeFilterOfApps & m) <= 0));
     String str1 = paramMessage.frienduin;
     String str2 = paramMessage.senderuin;
     int n = localQQAppInterface.a().a(paramMessage.frienduin, paramMessage.istroop);
     if (QLog.isColorLevel()) {
-      QLog.d("OpenApi.Manager", 2, "new msg, uin = " + bdje.e(str1));
+      QLog.d("OpenApi.Manager", 2, "new msg, uin = " + bdnn.e(str1));
     }
     Object localObject1 = null;
     Iterator localIterator = this.mThirdAppMap.values().iterator();
@@ -1347,7 +1347,7 @@ public class OpenApiManager
     int j;
     if (localIterator.hasNext())
     {
-      awaz localawaz = (awaz)localIterator.next();
+      awfi localawfi = (awfi)localIterator.next();
       localObject2 = localObject1;
       if (localObject1 == null)
       {
@@ -1355,8 +1355,8 @@ public class OpenApiManager
         ((Intent)localObject2).putExtra("uin_type", m);
         ((Intent)localObject2).putExtra("unreadCount", n);
       }
-      boolean bool = localawaz.b(m, k);
-      if ((!bool) && (!localawaz.b(m))) {
+      boolean bool = localawfi.b(m, k);
+      if ((!bool) && (!localawfi.b(m))) {
         break label415;
       }
       if (!bool) {
@@ -1365,10 +1365,10 @@ public class OpenApiManager
       j = k;
       label284:
       ((Intent)localObject2).putExtra("msg_type", j);
-      ((Intent)localObject2).putExtra("uin", localawaz.a(str1));
-      ((Intent)localObject2).putExtra("senderUin", localawaz.a(str2));
-      ((Intent)localObject2).setAction("com.tencent.mobileqq.openapi.ACTION_NEW_MSG." + localawaz.jdField_b_of_type_JavaLangString);
-      BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject2, localawaz.c);
+      ((Intent)localObject2).putExtra("uin", localawfi.a(str1));
+      ((Intent)localObject2).putExtra("senderUin", localawfi.a(str2));
+      ((Intent)localObject2).setAction("com.tencent.mobileqq.openapi.ACTION_NEW_MSG." + localawfi.jdField_b_of_type_JavaLangString);
+      BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject2, localawfi.c);
       if ((paramMessage.msgtype != -2002) || (i != 0)) {
         break label415;
       }
@@ -1408,7 +1408,7 @@ public class OpenApiManager
     if (localQQAppInterface == null) {
       return -1;
     }
-    paramString1 = (awaz)this.mThirdAppMap.get(paramString1);
+    paramString1 = (awfi)this.mThirdAppMap.get(paramString1);
     if (paramString1 == null) {
       return -2;
     }
@@ -1424,16 +1424,16 @@ public class OpenApiManager
     }
     if (paramInt == 1)
     {
-      paramString2 = ((aloz)localQQAppInterface.getManager(51)).e(paramString1);
+      paramString2 = ((alto)localQQAppInterface.getManager(51)).e(paramString1);
       if ((paramString2 == null) || (!paramString2.isFriend())) {
         return -11;
       }
-      paramString3 = aekt.a(new Intent(BaseApplicationImpl.sApplication, SplashActivity.class), new int[] { 2 });
+      paramString3 = aepi.a(new Intent(BaseApplicationImpl.sApplication, SplashActivity.class), new int[] { 2 });
       paramString3.addFlags(268435456);
       paramString3.putExtra("uin", paramString1);
       paramString3.putExtra("cSpecialFlag", paramString2.cSpecialFlag);
-      paramString3.putExtra("uinname", bdbt.a(paramString2));
-      if ((ndv.a(paramString2.cSpecialFlag)) || (bfua.b(paramString2.cSpecialFlag)))
+      paramString3.putExtra("uinname", bdgc.a(paramString2));
+      if ((ndv.a(paramString2.cSpecialFlag)) || (bfyh.b(paramString2.cSpecialFlag)))
       {
         paramString3.setClass(BaseApplicationImpl.sApplication, SplashActivity.class);
         paramString3.putExtra("chat_subType", 1);
@@ -1446,35 +1446,35 @@ public class OpenApiManager
     return -5;
   }
   
-  public awbg registerThirdApp(String paramString1, String paramString2, long paramLong, int paramInt1, int paramInt2, String paramString3)
+  public awfp registerThirdApp(String paramString1, String paramString2, long paramLong, int paramInt1, int paramInt2, String paramString3)
   {
     QQAppInterface localQQAppInterface = this.mLoginSucApp;
     if (localQQAppInterface == null) {
-      return new awbg(-1, 0L, null);
+      return new awfp(-1, 0L, null);
     }
-    Object localObject = (awaz)this.mThirdAppMap.get(paramString1);
+    Object localObject = (awfi)this.mThirdAppMap.get(paramString1);
     if (localObject == null)
     {
-      localObject = awax.a(BaseApplicationImpl.sApplication, paramString1);
+      localObject = awfg.a(BaseApplicationImpl.sApplication, paramString1);
       if (localObject == null) {
-        return new awbg(-8, 0L, null);
+        return new awfp(-8, 0L, null);
       }
-      if (!((away)localObject).jdField_b_of_type_JavaLangString.equals(paramString2)) {
-        return new awbg(-7, 0L, null);
+      if (!((awfh)localObject).jdField_b_of_type_JavaLangString.equals(paramString2)) {
+        return new awfp(-7, 0L, null);
       }
-      if (!awax.a(BaseApplicationImpl.sApplication, paramString2, ((away)localObject).c)) {
-        return new awbg(-7, 0L, null);
+      if (!awfg.a(BaseApplicationImpl.sApplication, paramString2, ((awfh)localObject).c)) {
+        return new awfp(-7, 0L, null);
       }
-      if ((((away)localObject).jdField_b_of_type_Boolean) && (paramLong != ((away)localObject).d)) {
-        return new awbg(-18, ((away)localObject).d, null);
+      if ((((awfh)localObject).jdField_b_of_type_Boolean) && (paramLong != ((awfh)localObject).d)) {
+        return new awfp(-18, ((awfh)localObject).d, null);
       }
-      if ((!((away)localObject).jdField_b_of_type_Boolean) && (paramLong != ((away)localObject).jdField_b_of_type_Long)) {
-        return new awbg(-18, ((away)localObject).jdField_b_of_type_Long, null);
+      if ((!((awfh)localObject).jdField_b_of_type_Boolean) && (paramLong != ((awfh)localObject).jdField_b_of_type_Long)) {
+        return new awfp(-18, ((awfh)localObject).jdField_b_of_type_Long, null);
       }
-      if (((away)localObject).jdField_b_of_type_Boolean) {
-        awax.a(BaseApplicationImpl.sApplication, (away)localObject);
+      if (((awfh)localObject).jdField_b_of_type_Boolean) {
+        awfg.a(BaseApplicationImpl.sApplication, (awfh)localObject);
       }
-      paramString2 = new awaz((away)localObject);
+      paramString2 = new awfi((awfh)localObject);
       paramString2.c = paramString3;
       this.mThirdAppMap.put(paramString1, paramString2);
       paramString3 = paramString2;
@@ -1483,56 +1483,56 @@ public class OpenApiManager
     {
       this.mThirdAppMap.remove(paramString1);
       resetFilters();
-      return new awbg(-18, paramString3.a, null);
+      return new awfp(-18, paramString3.a, null);
       paramString3 = (String)localObject;
-      if (!((awaz)localObject).jdField_b_of_type_JavaLangString.equals(paramString2)) {
-        return new awbg(-7, 0L, null);
+      if (!((awfi)localObject).jdField_b_of_type_JavaLangString.equals(paramString2)) {
+        return new awfp(-7, 0L, null);
       }
     }
     paramString3.a(paramInt1, paramInt2);
     resetFilters();
-    return new awbg(0, 0L, paramString3.a(localQQAppInterface.getCurrentAccountUin()));
+    return new awfp(0, 0L, paramString3.a(localQQAppInterface.getCurrentAccountUin()));
   }
   
-  public awbh sendMessage(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5)
+  public awfq sendMessage(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5)
   {
     QQAppInterface localQQAppInterface = this.mLoginSucApp;
     if (localQQAppInterface == null) {
-      return new awbh(-1, null);
+      return new awfq(-1, null);
     }
-    awaz localawaz = (awaz)this.mThirdAppMap.get(paramString1);
-    if (localawaz == null) {
-      return new awbh(-2, null);
+    awfi localawfi = (awfi)this.mThirdAppMap.get(paramString1);
+    if (localawfi == null) {
+      return new awfq(-2, null);
     }
-    if (!localawaz.jdField_b_of_type_JavaLangString.equals(paramString2)) {
-      return new awbh(-7, null);
+    if (!localawfi.jdField_b_of_type_JavaLangString.equals(paramString2)) {
+      return new awfq(-7, null);
     }
-    if (!localawaz.a(8)) {
-      return new awbh(-4, null);
+    if (!localawfi.a(8)) {
+      return new awfq(-4, null);
     }
-    paramString3 = localawaz.b(paramString3);
+    paramString3 = localawfi.b(paramString3);
     if (TextUtils.isEmpty(paramString3)) {
-      return new awbh(-6, null);
+      return new awfq(-6, null);
     }
     long l1 = 0L;
     if (paramInt1 == 1)
     {
-      paramString2 = ((aloz)localQQAppInterface.getManager(51)).e(paramString3);
+      paramString2 = ((alto)localQQAppInterface.getManager(51)).e(paramString3);
       if ((paramString2 == null) || (!paramString2.isFriend())) {
-        return new awbh(-11, null);
+        return new awfq(-11, null);
       }
       paramString2 = new SessionInfo();
       paramString2.jdField_a_of_type_JavaLangString = paramString3;
       paramString2.jdField_a_of_type_Int = 0;
-      paramString2.d = bdbt.m(localQQAppInterface, paramString3);
+      paramString2.d = bdgc.m(localQQAppInterface, paramString3);
       if (paramInt2 == 1)
       {
         if (TextUtils.isEmpty(paramString4)) {
-          return new awbh(-6, null);
+          return new awfq(-6, null);
         }
-        paramString2 = acex.a(localQQAppInterface, localQQAppInterface.getApp(), paramString2, paramString4, null, new acfe());
+        paramString2 = acjm.a(localQQAppInterface, localQQAppInterface.getApp(), paramString2, paramString4, null, new acjt());
         if ((paramString2 == null) || (paramString2.length == 0)) {
-          return new awbh(-9, null);
+          return new awfq(-9, null);
         }
         l1 = paramString2[(paramString2.length - 1)];
       }
@@ -1542,32 +1542,32 @@ public class OpenApiManager
         if (QLog.isColorLevel()) {
           QLog.d("OpenApi.Manager", 2, "send message: " + l1);
         }
-        return new awbh(0, localawaz.a(String.valueOf(l1)));
+        return new awfq(0, localawfi.a(String.valueOf(l1)));
         if (paramInt2 == 2)
         {
           if (TextUtils.isEmpty(paramString5)) {
-            return new awbh(-6, null);
+            return new awfq(-6, null);
           }
           paramString3 = new File(paramString5);
           if ((!paramString3.exists()) || (paramString3.length() < 700L) || (paramString3.length() > 42000L)) {
-            return new awbh(-6, null);
+            return new awfq(-6, null);
           }
-          if (!bdew.a(paramString5, awbc.a)) {
-            return new awbh(-13, null);
+          if (!bdjf.a(paramString5, awfl.a)) {
+            return new awfq(-13, null);
           }
-          paramString3 = MessageForPtt.getLocalFilePath(2, banc.a(localQQAppInterface.getCurrentAccountUin(), null, 2, null));
-          bdcs.d(paramString5, paramString3);
-          paramString4 = acex.a(localQQAppInterface, paramString3, paramString2, -3, 0);
+          paramString3 = MessageForPtt.getLocalFilePath(2, barl.a(localQQAppInterface.getCurrentAccountUin(), null, 2, null));
+          bdhb.d(paramString5, paramString3);
+          paramString4 = acjm.a(localQQAppInterface, paramString3, paramString2, -3, 0);
           ((MessageForPtt)paramString4).c2cViaOffline = true;
           l1 = paramString4.uniseq;
           long l2 = QQRecorder.a(paramString3);
           paramString5 = new Bundle();
           paramString5.putInt("DiyTextId", paramString4.vipBubbleDiyTextId);
-          acex.a(localQQAppInterface, paramString2.jdField_a_of_type_Int, paramString2.jdField_a_of_type_JavaLangString, paramString3, l1, true, (int)(1000L * l2), 0, true, 0, 0, true, paramString4.vipSubBubbleId, paramString5);
+          acjm.a(localQQAppInterface, paramString2.jdField_a_of_type_Int, paramString2.jdField_a_of_type_JavaLangString, paramString3, l1, true, (int)(1000L * l2), 0, true, 0, 0, true, paramString4.vipSubBubbleId, paramString5);
         }
       }
     }
-    return new awbh(-5, null);
+    return new awfq(-5, null);
   }
   
   public int setMessageReaded(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
@@ -1576,18 +1576,18 @@ public class OpenApiManager
     if (localQQAppInterface == null) {
       return -1;
     }
-    awaz localawaz = (awaz)this.mThirdAppMap.get(paramString1);
-    if (localawaz == null) {
+    awfi localawfi = (awfi)this.mThirdAppMap.get(paramString1);
+    if (localawfi == null) {
       return -2;
     }
-    if (!localawaz.jdField_b_of_type_JavaLangString.equals(paramString2)) {
+    if (!localawfi.jdField_b_of_type_JavaLangString.equals(paramString2)) {
       return -7;
     }
-    if (!localawaz.a(16)) {
+    if (!localawfi.a(16)) {
       return -4;
     }
-    paramString1 = localawaz.b(paramString3);
-    paramString2 = localawaz.b(paramString4);
+    paramString1 = localawfi.b(paramString3);
+    paramString2 = localawfi.b(paramString4);
     long l2 = 0L;
     try
     {
@@ -1627,8 +1627,8 @@ public class OpenApiManager
     if (QLog.isColorLevel()) {
       QLog.d("OpenApi.Manager", 2, "unregister, appid = " + paramString1);
     }
-    awaz localawaz = (awaz)this.mThirdAppMap.get(paramString1);
-    if ((localawaz != null) && (!localawaz.jdField_b_of_type_JavaLangString.equals(paramString2))) {
+    awfi localawfi = (awfi)this.mThirdAppMap.get(paramString1);
+    if ((localawfi != null) && (!localawfi.jdField_b_of_type_JavaLangString.equals(paramString2))) {
       return -7;
     }
     this.mThirdAppMap.remove(paramString1);

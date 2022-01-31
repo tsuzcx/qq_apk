@@ -1,6 +1,10 @@
+import android.graphics.Paint;
+
 public abstract interface axre
 {
-  public abstract void a();
+  public abstract String a(float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public abstract void a(Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 

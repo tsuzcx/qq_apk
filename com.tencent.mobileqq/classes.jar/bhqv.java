@@ -1,41 +1,26 @@
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.view.View;
+import android.annotation.TargetApi;
+import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import com.tencent.sharp.jni.TraeAudioManager;
+import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
 
 public class bhqv
-  implements bhxs
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  private Locale jdField_a_of_type_JavaUtilLocale;
-  private boolean jdField_a_of_type_Boolean;
+  public bhqv(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
   
-  public bhqv(Context paramContext)
+  @TargetApi(8)
+  public void onAudioFocusChange(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilLocale = paramContext.getResources().getConfiguration().locale;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public CharSequence getTransformation(CharSequence paramCharSequence, View paramView)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (paramCharSequence != null) {
-        return paramCharSequence.toString().toUpperCase(this.jdField_a_of_type_JavaUtilLocale);
-      }
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.w("TraeAudioManager", 2, "focusChange:" + paramInt + " _focusSteamType:" + this.a.c + " currMode:" + this.a.this$0.jdField_a_of_type_AndroidMediaAudioManager.getMode() + " _activeMode:" + this.a.this$0.jdField_a_of_type_Int);
     }
-    QLog.w("AllCapsTransformationMethod", 2, "Caller did not enable length changes; not transforming text");
-    return paramCharSequence;
+    if (paramInt == -1) {}
+    while ((paramInt == -2) || (paramInt == -3) || (paramInt != 1)) {
+      return;
+    }
   }
-  
-  public void onFocusChanged(View paramView, CharSequence paramCharSequence, boolean paramBoolean, int paramInt, Rect paramRect) {}
 }
 
 

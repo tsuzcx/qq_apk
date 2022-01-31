@@ -1,14 +1,24 @@
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
 public class wur
+  extends QQUIEventReceiver<wub, uve>
 {
-  public final int a;
-  public final CharSequence a;
-  public final int b;
-  
-  public wur(int paramInt1, int paramInt2, CharSequence paramCharSequence)
+  public wur(@NonNull wub paramwub)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    super(paramwub);
+  }
+  
+  public void a(@NonNull wub paramwub, @NonNull uve paramuve)
+  {
+    if (paramuve.a) {
+      wub.d(paramwub);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uve.class;
   }
 }
 

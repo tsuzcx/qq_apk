@@ -25,7 +25,7 @@ public class lvi
     if (paramRandomWebProtocol == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = "8.3.3";
+    this.jdField_a_of_type_JavaLangString = "8.3.5";
     this.jdField_a_of_type_Boolean = false;
     try
     {

@@ -1,10 +1,10 @@
 package com.tencent.widget;
 
 import android.view.View;
-import bhpt;
+import bhua;
 
 class AbsListView$CheckForKeyLongPress
-  extends bhpt
+  extends bhua
   implements Runnable
 {
   private AbsListView$CheckForKeyLongPress(AbsListView paramAbsListView)
